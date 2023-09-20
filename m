@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F974C04ABA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 17:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB08C04EB5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 18:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JIV/Ilp/DtMNMY73XSxfGfxbgx1bqGrQzMzLisjmZ+I=; b=On/dP8R0DVEuQv
-	F+QbLtoan09srOTI86e036PA7MAzdJi2dJMFyj/FPR9m6imPjQIJ08XdODwlLNCaUJvnRKmRfg+0r
-	xCYvvFz6kSSO2Opwqa9qeZrwzomsA5oYVIYZFjWED7E8XRHnqU/Q9Sm7U48Th/T+WuRW6ARWLrC4/
-	xtsJby+eQn3V5P5TIeipSzgqMA4qrZhYXqDUSn5XV1pz/Ai2IbtzaO5qwzxaqwuazMbyM5Gk4HTrI
-	x3YXVF4pmeN1P/U/dhzBwolbzvzBwT9/mkKnz//27hLng87sHMhESSgQ31gp6WkXxukDbg1/7oH8y
-	FAQxRu1vnq6ToRHob5Hw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vOdhYHthzRWJ7632fxLUEzmmEEdB0+SW4X1C28cm+HA=; b=TXGpeCb/MN295c
+	ewg0IMwV+ICd3RpK51fZEbLbFGN6cSGhu3Lvp13Rf9I6/FTouNPQZL0gQehCZN2vK3J8dv850hGJ1
+	wTiWL3TYALhOaqHBLYE42iNEkeK2bCnS/NcNNjzX9U34UB5awWtctr+s/9QYx1hptoe7unr+3GQaJ
+	WtuiVfJaJ8zyvzD4QluPg/xhfXthq5Yi8SMx7yCmEz6sK0k9AnY/wZKopJby5dSSes7t4L9N+GrAC
+	O0YtspcL9eTwbAek9kbFPRELMyWRGsfZqgSvR7eLMNAaN+mqCYouuOYhRX0sH0YHtV/8mYmFg+qWz
+	qSaid82XeF10DIgYR91A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj0ni-003imR-1z;
-	Wed, 20 Sep 2023 17:15:46 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1qj1ah-003oQI-3D;
+	Wed, 20 Sep 2023 18:06:24 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj0nf-003ilZ-0s;
-	Wed, 20 Sep 2023 17:15:44 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-9aa0495f9cfso260969666b.1;
-        Wed, 20 Sep 2023 10:15:40 -0700 (PDT)
+	id 1qj1ad-003oOo-2l;
+	Wed, 20 Sep 2023 18:06:21 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1bf55a81eeaso612065ad.0;
+        Wed, 20 Sep 2023 11:06:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695230139; x=1695834939; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7BA/1TKZ7fFQpqXSbCVNQn/zfVi+d+HyfuxOxnEyY4I=;
-        b=d6jey/32gln19xztt8oI1+oUa7JMyAVnpZBAllCl1Q7kToODTWxdbdXGBBp6kyESX4
-         IbTTY6RNKSy/U5XFtd+09jW2TVfNf5jMboh/2Wdlyq5Nv1jJEG739gmSRz+jLEY95yEj
-         oZr2LoIQY0ByhvcKXMHIzYwaofyuzOhqMyAgqutIu2xlQbyY51n/8pYm5zpc43etnCJJ
-         CzN3MbkDWCQSowcHBpON8ngXgYWUeFep4ts5ynmUPgt6bgsmcziF0E6hISwjVUQjZNWs
-         4FzkVn22pF3t65GMKKXYRRD4Pr8Nf3yHRtOYNq/NfDvOUVl4TKPCzQhScGLtp6h2EK0o
-         Gk/w==
+        d=gmail.com; s=20230601; t=1695233176; x=1695837976; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Lk5LMCrB1hlireITILa/a7+QS+B96DKq4sXjoXiXD7Q=;
+        b=I0GIuBxP0Coe533l9XhgtRZxZS4J5XttkjlvVoDXz8dGl/3QlYqPJjCDQx6oIaOg7M
+         YKKHRXcK48f7YB4vvca3LSCW55eFdEU0ao3Zim3KZOGPWlALADQPFazgj/eXMeC1yIlf
+         W4CvPBgzZ/bwavEaVT9/p0eG0wfq8oCHsqnFiUbaLNbKkbHv5nCL3MKXLDPVu072SZN5
+         EPoYbsNcsdBBZBCBRFLcLuNfU5US7EHObNapQs+isP6dYlSIcxNXujTpWiWzWlq0ma2F
+         Iio0AcrpXYmt9U0LSAMFQJLQLoZWITdKt8/eS1GQwGRmBbBgCgsQGPbyhuPwaXhF++Vz
+         7h/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695230139; x=1695834939;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7BA/1TKZ7fFQpqXSbCVNQn/zfVi+d+HyfuxOxnEyY4I=;
-        b=fPNb0nhVOXOLJO6kEkcmgreCajKEwj09whHZ5qGckWMe/pWCXHgq16skanqverbbIi
-         TzrYS3LJ23Tp3biJUuSmFhdmyWhEhSSmM7uziIT3LAESVnf01anWf5Rwa7GvgRt4d+rO
-         UFtMg6fmAcRlQ0e2SQQsiRFP85s3/Y3/jr/w/EHeM2Z4x7XfWO5bh+ObDnFXtBcS6OOr
-         DNonaf1jXuooFTDRxWZyWepG1ENEOzmS5TBfGgZgsGK1au8HePPETehxbSZpBSjSmc4x
-         +ry7LaLGcoDltw78VZvus9sJQr+Zj62fhAHlMDs+dSbJtDnQn2iLYaQ7RIViMaBvzvdZ
-         qFEQ==
-X-Gm-Message-State: AOJu0Yz8ue10ufsFEnrwC1iFUXh4CsYlroT1KtRCJYJwZwxawkMoaNEm
-	FU3U0MhZ8oOgLtT9W0a89BA=
-X-Google-Smtp-Source: AGHT+IEQhqAdu9sZQ70y0DS8nngdK+Mk0pkfbWS4qneo1KxLRSZ3qBsiVtqIu4sC8i/YErZyL1rzjQ==
-X-Received: by 2002:a17:906:3147:b0:993:eee4:e704 with SMTP id e7-20020a170906314700b00993eee4e704mr4288238eje.38.1695230139300;
-        Wed, 20 Sep 2023 10:15:39 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
-        by smtp.gmail.com with ESMTPSA id lx12-20020a170906af0c00b00988f168811bsm9649634ejb.135.2023.09.20.10.15.37
+        d=1e100.net; s=20230601; t=1695233176; x=1695837976;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Lk5LMCrB1hlireITILa/a7+QS+B96DKq4sXjoXiXD7Q=;
+        b=akrXisZcD5Qy7awRf5+ahbKGR3Sk2ZJ+V8EnoJZQ6mYorArO5H6QVA56Ss8SHEOuil
+         zbatuVcofZUEUJ+nP21XhdRGqY7JiyDeDauKbZz6yHFZaLHeoPz4My9khMZ5x3aJCrES
+         FpaHdR/mD/zrsQQUQDQF+v0jYY6OZXOlhPjQbA8IJdsYDte3C3DP0RJ33mJ7jwmR60Bh
+         OHIC3W7C2JrKeRzcPGsDOuDdTRdMrIwVg0bLKhtjSaGAUWTs3uovH3HqD8tZnV7H34LJ
+         LQt9yhvSufTl1hg/uZa5blf8hdqllYellnyPbSuUNN6UBa1vVy0dFBjw9yAyk7+23KNI
+         i3ow==
+X-Gm-Message-State: AOJu0YyIpvzprHT8TJbM1GhpX4a7hbFE7WIWPtxiybhFEboVmoU/09Na
+	G4JX47I88mK0T5TmicfKVxY=
+X-Google-Smtp-Source: AGHT+IE9OVsfDxWS3wjB9H50IWbTtK8NuKIknyOygk/PJG01wNTPVNNiVAdA6HOhGIYFnaMX0hWhyA==
+X-Received: by 2002:a17:903:2281:b0:1b5:561a:5c9a with SMTP id b1-20020a170903228100b001b5561a5c9amr3702357plh.39.1695233176268;
+        Wed, 20 Sep 2023 11:06:16 -0700 (PDT)
+Received: from localhost ([2a00:79e1:abd:4a00:6c80:7c10:75a0:44f4])
+        by smtp.gmail.com with ESMTPSA id b7-20020a170902d50700b001a80ad9c599sm12142732plg.294.2023.09.20.11.06.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Sep 2023 10:15:38 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>,
- Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
- Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Chen-Yu Tsai <wens@csie.org>, Samuel Holland <samuel@sholland.org>,
- Maxime Ripard <mripard@kernel.org>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH RFC v2 07/37] drm/connector: hdmi: Add HDMI compute clock helper
-Date: Wed, 20 Sep 2023 19:15:37 +0200
-Message-ID: <1967070.usQuhbGJ8B@jernej-laptop>
-In-Reply-To: <20230920-kms-hdmi-connector-state-v2-7-17932daddd7d@kernel.org>
-References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
- <20230920-kms-hdmi-connector-state-v2-7-17932daddd7d@kernel.org>
+        Wed, 20 Sep 2023 11:06:15 -0700 (PDT)
+From: Rob Clark <robdclark@gmail.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-arm-msm@vger.kernel.org,
+	Rob Clark <robdclark@chromium.org>,
+	Helen Koike <helen.koike@collabora.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+	Daniel Stone <daniels@collabora.com>,
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH] drm/ci: Uprev IGT to pull in fixes
+Date: Wed, 20 Sep 2023 11:05:00 -0700
+Message-ID: <20230920180526.137369-1-robdclark@gmail.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_101543_449344_126853CF 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20230920_110619_896282_951EC5A1 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,99 +97,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime!
+From: Rob Clark <robdclark@chromium.org>
 
-Dne sreda, 20. september 2023 ob 16:35:22 CEST je Maxime Ripard napisal(a):
-> A lot of HDMI drivers have some variation of the formula to calculate
-> the TMDS character rate from a mode, but few of them actually take all
-> parameters into account.
-> 
-> Let's create a helper to provide that rate taking all parameters into
-> account.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/drm_connector.c | 31 +++++++++++++++++++++++++++++++
->  include/drm/drm_connector.h     |  5 +++++
->  2 files changed, 36 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index b01cb4783ea6..4c1af97971bb 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -2944,6 +2944,37 @@ void drm_connector_update_privacy_screen(const struct drm_connector_state *conne
->  }
->  EXPORT_SYMBOL(drm_connector_update_privacy_screen);
->  
-> +/**
-> + * drm_connector_hdmi_compute_mode_clock() - Computes the TMDS Character Rate
-> + * @mode: Display mode to compute the clock for
-> + * @bpc: Bits per character
-> + * @fmt: Output Pixel Format used
-> + *
-> + * Returns the TMDS Character Rate for a given mode, bpc count and output format.
-> + *
-> + * RETURNS:
-> + * The TMDS Character Rate, in Hertz
-> + */
-> +unsigned long long
-> +drm_connector_hdmi_compute_mode_clock(const struct drm_display_mode *mode,
-> +				      unsigned int bpc,
-> +				      enum hdmi_colorspace fmt)
-> +{
-> +	unsigned long long clock = mode->clock * 1000ULL;
-> +
-> +	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
-> +		clock = clock * 2;
-> +
-> +	if (fmt == HDMI_COLORSPACE_YUV422)
-> +		bpc = 8;
+There have been a few igt test fixes compared to the commit that we were
+currently using.  Pull in a newer igt and update expectations.
 
-I think you're missing YUV420 handling, which needs half of clock speed. But
-this is a thing of HDMI2.
+Signed-off-by: Rob Clark <robdclark@chromium.org>
+---
+ drivers/gpu/drm/ci/gitlab-ci.yml               |  2 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt  |  4 ++--
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt   | 11 -----------
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt   |  2 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt   |  1 -
+ drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt | 18 +-----------------
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt    |  2 ++
+ 7 files changed, 7 insertions(+), 33 deletions(-)
 
-Best regards,
-Jernej
-
-> +
-> +	clock = clock * bpc;
-> +	do_div(clock, 8);
-> +
-> +	return clock;
-> +}
-> +EXPORT_SYMBOL(drm_connector_hdmi_compute_mode_clock);
-> +
->  int drm_connector_set_obj_prop(struct drm_mode_object *obj,
->  				    struct drm_property *property,
->  				    uint64_t value)
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index a66cb4e35d7b..d74e9c64ee88 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -38,6 +38,7 @@ struct drm_connector_helper_funcs;
->  struct drm_modeset_acquire_ctx;
->  struct drm_device;
->  struct drm_crtc;
-> +struct drm_display_mode;
->  struct drm_encoder;
->  struct drm_panel;
->  struct drm_property;
-> @@ -2115,6 +2116,10 @@ void drm_connector_attach_privacy_screen_properties(struct drm_connector *conn);
->  void drm_connector_attach_privacy_screen_provider(
->  	struct drm_connector *connector, struct drm_privacy_screen *priv);
->  void drm_connector_update_privacy_screen(const struct drm_connector_state *connector_state);
-> +unsigned long long
-> +drm_connector_hdmi_compute_mode_clock(const struct drm_display_mode *mode,
-> +				      unsigned int bpc,
-> +				      enum hdmi_colorspace fmt);
->  
->  /**
->   * struct drm_tile_group - Tile group metadata
-> 
-> 
-
-
-
+diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+index 2c4df53f5dfe..3ecb5879e80f 100644
+--- a/drivers/gpu/drm/ci/gitlab-ci.yml
++++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+@@ -5,7 +5,7 @@ variables:
+   UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+   TARGET_BRANCH: drm-next
+ 
+-  IGT_VERSION: 471bfababd070e1dac0ebb87470ac4f2ae85e663
++  IGT_VERSION: 2517e42d612e0c1ca096acf8b5f6177f7ef4bce7
+ 
+   DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/anholt/deqp-runner.git
+   DEQP_RUNNER_GIT_TAG: v0.15.0
+diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+index bd9392536e7c..bab21930a0d4 100644
+--- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+@@ -1,7 +1,6 @@
+ kms_addfb_basic@bad-pitch-65536,Fail
+ kms_addfb_basic@bo-too-small,Fail
+ kms_async_flips@invalid-async-flip,Fail
+-kms_atomic@plane-immutable-zpos,Fail
+ kms_atomic_transition@plane-toggle-modeset-transition,Fail
+ kms_bw@linear-tiling-1-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-1-displays-3840x2160p,Fail
+@@ -11,9 +10,10 @@ kms_color@degamma,Fail
+ kms_cursor_crc@cursor-size-change,Fail
+ kms_cursor_crc@pipe-A-cursor-size-change,Fail
+ kms_cursor_crc@pipe-B-cursor-size-change,Fail
+-kms_cursor_legacy@forked-move,Fail
+ kms_hdr@bpc-switch,Fail
+ kms_hdr@bpc-switch-dpms,Fail
+ kms_plane_multiple@atomic-pipe-A-tiling-none,Fail
+ kms_rmfb@close-fd,Fail
+ kms_rotation_crc@primary-rotation-180,Fail
++kms_flip@flip-vs-modeset-vs-hang,Fail
++kms_flip@flip-vs-panning-vs-hang,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
+index 46397ce38d5a..2e3b7c5dac3c 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
+@@ -8,13 +8,6 @@ kms_bw@linear-tiling-3-displays-3840x2160p,Fail
+ kms_bw@linear-tiling-4-displays-1920x1080p,Fail
+ kms_bw@linear-tiling-4-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-4-displays-3840x2160p,Fail
+-kms_color@ctm-0-25,Fail
+-kms_color@ctm-0-50,Fail
+-kms_color@ctm-0-75,Fail
+-kms_color@ctm-max,Fail
+-kms_color@ctm-negative,Fail
+-kms_color@ctm-red-to-blue,Fail
+-kms_color@ctm-signed,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+@@ -38,8 +31,6 @@ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytile-upscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytilegen12rcccs-upscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytilercccs-downscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytilercccs-upscaling,Fail
+-kms_hdmi_inject@inject-4k,Timeout
+-kms_plane@plane-position-hole,Timeout
+ kms_plane_alpha_blend@alpha-basic,Fail
+ kms_plane_alpha_blend@alpha-opaque-fb,Fail
+ kms_plane_alpha_blend@alpha-transparent-fb,Fail
+@@ -53,6 +44,4 @@ kms_plane_alpha_blend@pipe-B-constant-alpha-max,Fail
+ kms_plane_alpha_blend@pipe-C-alpha-opaque-fb,Fail
+ kms_plane_alpha_blend@pipe-C-alpha-transparent-fb,Fail
+ kms_plane_alpha_blend@pipe-C-constant-alpha-max,Fail
+-kms_plane_multiple@tiling-y,Timeout
+-kms_pwrite_crc,Timeout
+ kms_sysfs_edid_timing,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+index 6139b410e767..13c0a25fc627 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+@@ -1,4 +1,3 @@
+-kms_color@ctm-0-25,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+@@ -16,3 +15,4 @@ kms_plane_alpha_blend@alpha-basic,Fail
+ kms_plane_alpha_blend@alpha-opaque-fb,Fail
+ kms_plane_alpha_blend@alpha-transparent-fb,Fail
+ kms_plane_alpha_blend@constant-alpha-max,Fail
++kms_async_flips@crc,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+index a6da5544e198..27bfca1c6f2c 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+@@ -8,7 +8,6 @@ kms_bw@linear-tiling-4-displays-3840x2160p,Fail
+ kms_bw@linear-tiling-5-displays-1920x1080p,Fail
+ kms_bw@linear-tiling-5-displays-2560x1440p,Fail
+ kms_bw@linear-tiling-5-displays-3840x2160p,Fail
+-kms_color@ctm-0-25,Fail
+ kms_flip@flip-vs-panning-vs-hang,Timeout
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt
+index 410e0eeb3161..e59a2fddfde0 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-skips.txt
+@@ -4,20 +4,4 @@
+ # Test incorrectly assumes that CTM support implies gamma/degamma
+ # LUT support.  None of the subtests handle the case of only having
+ # CTM support
+-kms_color.*
+-
+-# 4k@60 is not supported on this hw, but driver doesn't handle it
+-# too gracefully.. https://gitlab.freedesktop.org/drm/msm/-/issues/15
+-kms_bw@linear-tiling-.*-displays-3840x2160p
+-
+-# Until igt fix lands: https://patchwork.freedesktop.org/patch/493175/
+-kms_bw@linear-tiling-2.*
+-kms_bw@linear-tiling-3.*
+-kms_bw@linear-tiling-4.*
+-kms_bw@linear-tiling-5.*
+-kms_bw@linear-tiling-6.*
+-
+-# igt fix posted: https://patchwork.freedesktop.org/patch/499926/
+-# failure mode is flakey due to randomization but fails frequently
+-# enough to be detected as a Crash or occasionally UnexpectedPass.
+-kms_plane_multiple@atomic-pipe-A-tiling-none
++#kms_color.*
+diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+index 2a1baa948e12..15ac861a58bf 100644
+--- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+@@ -46,3 +46,5 @@ kms_properties@connector-properties-legacy,Crash
+ kms_properties@get_properties-sanity-atomic,Crash
+ kms_properties@get_properties-sanity-non-atomic,Crash
+ kms_setmode@invalid-clone-single-crtc,Crash
++kms_flip@flip-vs-modeset-vs-hang,Crash
++kms_flip@flip-vs-panning-vs-hang,Crash
+-- 
+2.41.0
 
 
 _______________________________________________
