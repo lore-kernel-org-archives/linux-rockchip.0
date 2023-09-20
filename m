@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D6BC04AA7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B36C04AA9
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 15:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d88s5qJcunP0IAg8/MMwKacj0G8gcGXCMqKeZvaQY4U=; b=gCSdQJl4mEGnWG
-	NWKegNsi24eKwmNa8l5V24OPk/59n0Ci6TXqwhqrh7DltGWsYQHzNKaUbFN9qruWKmT+aQJwlzl42
-	d6QqY3iFHFrVS53uaM7ze2Nzus5Y3hn60zdOT+olU/K266G81blHKuvRpTUcGjJ90f+P6UVdtcvXG
-	eag3zdjwioWmqc3NnR3CulVR0cY+HlZhjo+oLB/2gLwsV+ofKr5sMoqN0NtpI5CG3+eRGX/FhYIVr
-	YD/ZCv2oEKh5kCGiAKAwaFzf9ma5ro/5VlZPXSNBwiY6U7DHuzFh8amWZSojJIW1L1NuaeLqXuliK
-	SjHvFweTcKOtyxIIKbfQ==;
+	List-Owner; bh=Ev0ssokg3ttYGUaenPLAGKUUcM0cStNrKEbryorRoxo=; b=Xk8IfhQn3Pg4y+
+	n9ob6CJS4nkmmraSPZhW1b1jKu52Q5qIw87ahd1Fx+eYtT5/p+19Sotw3Q4KJZaA9P6EICP4NgsB6
+	YoXsM9QCy7t6BcZt/Sa/RuTooRT+X75ir6uAmhjC6775KpMmc2U2sgPBRXztVnz4txl/MAFxjBJpa
+	2Y6+iQos9zylAhBh1hj/TM5bDFi3s2kqoOrmP9A68ItXNpR1m6hXILnpcR/53L/uzdX+o8jQsyB/F
+	pyYkrjPS6R88IQq5/BSo0q2WhCvR2A8de6JCGpZLUm8R66yIZnpi9vguotSLYwVzb9HtHROBQurUp
+	Tl6whAnQoB+4EZfB03LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qizOh-003XYD-3B;
-	Wed, 20 Sep 2023 15:45:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qizOi-003XYY-2w;
+	Wed, 20 Sep 2023 15:45:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyJc-003LVA-0G;
-	Wed, 20 Sep 2023 14:36:36 +0000
+	id 1qiyJe-003LXu-2I;
+	Wed, 20 Sep 2023 14:36:37 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 56DA061CCD;
-	Wed, 20 Sep 2023 14:36:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB04BC433CA;
-	Wed, 20 Sep 2023 14:36:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 18BC061CCE;
+	Wed, 20 Sep 2023 14:36:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C0DFC433D9;
+	Wed, 20 Sep 2023 14:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695220591;
-	bh=M2G6LOjWKL55s6a+6IU/6bn6CB2qn7/s2odBTDcEBoM=;
+	s=k20201202; t=1695220593;
+	bh=NPcmog8rmIBDaqZDT4O0fzD3K2AFLpEEWCR2cLRhvQQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VG6HXzEJjtHNlREEXb+KlWhW8N8tg+/g4J5oZFgY6CMqXyawkmlGFx6afBVlftbm2
-	 QAN3ejUw5Qki1aigMuDZP6YE2pxsoRb7fZ/uKH0n7dsMDyz+dyCIjMwrlKdpaFluUs
-	 Sey8pjkvVmjNilcgqLRDkMZrUS3QDfLBX2uynPQ0w/785xtFmDSWhukAk40MlsZ7Wo
-	 O60ULnHF5B7AGvcDsCk0hd4LZYkaMT0J6jfNODwqvoHQ1xnj4iUhi7Fw16gK6QCdHO
-	 G6v+W4roW9NYOyKn9+pali3nCGZY+lXuh8eLHa2JI2NRnXCWM4soGsOPU2Yg2f40m3
-	 QOIKkES9+QPjQ==
+	b=dFiXFmHUTKnj6NvyMNzPPY+oci/F+xV+LQ0BT0gzWbZry4cOvnWkTDDjCuZWWVMqp
+	 EtdRGyXIJ9qc4wczWkcRGWYYkNCh3XiREhDdrcQK2GhuvXTKeWfPiYtOv4pQFo+nSw
+	 qbgQEfKRNENbPuXMBNIQxgXCkMWZLp5Vk5sHOCRTqYtRnyV3vD2e82p7lr8DpKtTY6
+	 9AnYw2QRvgZvQuG+AEhgpSvKlt6SFBLNTPch7XnT/CTJrmj84sYIJLF3RHFl7lWlRo
+	 8vgL7aDa97j8/UWtg63Ta7q7t7O31eYGFDkxjXm1awk1Z/81+CZ6eZapKEUUmTvhEb
+	 ZVNJenYuT84aw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 20 Sep 2023 16:35:32 +0200
-Subject: [PATCH RFC v2 17/37] drm/rockchip: inno_hdmi: Switch encoder hooks
- to atomic
+Date: Wed, 20 Sep 2023 16:35:33 +0200
+Subject: [PATCH RFC v2 18/37] drm/rockchip: inno_hdmi: Get rid of mode_set
 MIME-Version: 1.0
-Message-Id: <20230920-kms-hdmi-connector-state-v2-17-17932daddd7d@kernel.org>
+Message-Id: <20230920-kms-hdmi-connector-state-v2-18-17932daddd7d@kernel.org>
 References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 In-Reply-To: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,17 +64,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2182; i=mripard@kernel.org;
- h=from:subject:message-id; bh=M2G6LOjWKL55s6a+6IU/6bn6CB2qn7/s2odBTDcEBoM=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczJaq4o+8FodPkG5TsuSra9xrXJI9ZfEuH6XJdQEvh
- dKsKpU6SlkYxLgYZMUUWWKEzZfEnZr1upONbx7MHFYmkCEMXJwCMJFvpxj+B89jTmpZmPFjodS5
- s06ajbImncuXRWls3vVX01075b56AMM/Q62VOaUna67se90dEjGjze7/iVvfNMt67pxunHhpVjg
- nKwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1884; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=NPcmog8rmIBDaqZDT4O0fzD3K2AFLpEEWCR2cLRhvQQ=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczJa1O/2Y9BYrR3B9Yj+f0jvbzEo0Yc3Je48/8G05n
+ fYp1+9tRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACay6j4jwztdwXe5TeUX+ENm
+ hx2dkF+5bsnfMLVl904urNLf8YV3vS/D//z4IuXYZ3Pc592ZqDZpmcdT843/IwyEvoZWvDQsFav
+ ewgYA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_073632_310586_F81DF2DF 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20230920_073634_954915_20DEBDCF 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,60 +91,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The inno_hdmi encoder still uses the !atomic variants of enable, disable
-and modeset. Convert to their atomic equivalents.
+We're not doing anything special in atomic_mode_set so we can simply
+merge it into atomic_enable.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 4f5844fc115a..cc86d273ca4a 100644
+index cc86d273ca4a..4db18195246e 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -491,22 +491,25 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+@@ -490,21 +490,22 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+ 	return 0;
  }
  
- static void inno_hdmi_encoder_mode_set(struct drm_encoder *encoder,
--				       struct drm_display_mode *mode,
--				       struct drm_display_mode *adj_mode)
-+				       struct drm_crtc_state *crtc_state,
-+				       struct drm_connector_state *conn_state)
- {
-+	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
- 
- 	inno_hdmi_setup(hdmi, adj_mode);
- }
- 
--static void inno_hdmi_encoder_enable(struct drm_encoder *encoder)
-+static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
-+				     struct drm_atomic_state *state)
+-static void inno_hdmi_encoder_mode_set(struct drm_encoder *encoder,
+-				       struct drm_crtc_state *crtc_state,
+-				       struct drm_connector_state *conn_state)
+-{
+-	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
+-	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
+-
+-	inno_hdmi_setup(hdmi, adj_mode);
+-}
+-
+ static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
+ 				     struct drm_atomic_state *state)
  {
  	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
++	struct drm_connector_state *conn_state;
++	struct drm_crtc_state *crtc_state;
  
++	conn_state = drm_atomic_get_new_connector_state(state, &hdmi->connector);
++	if (WARN_ON(!conn_state))
++		return;
++
++	crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
++	if (WARN_ON(!crtc_state))
++		return;
++
++	inno_hdmi_setup(hdmi, &crtc_state->adjusted_mode);
  	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
  }
  
--static void inno_hdmi_encoder_disable(struct drm_encoder *encoder)
-+static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
-+				      struct drm_atomic_state *state)
- {
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
- 
-@@ -527,10 +530,10 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
- }
- 
- static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
--	.enable     = inno_hdmi_encoder_enable,
--	.disable    = inno_hdmi_encoder_disable,
--	.mode_set   = inno_hdmi_encoder_mode_set,
--	.atomic_check = inno_hdmi_encoder_atomic_check,
-+	.atomic_check	= inno_hdmi_encoder_atomic_check,
-+	.atomic_enable	= inno_hdmi_encoder_enable,
-+	.atomic_disable	= inno_hdmi_encoder_disable,
-+	.atomic_mode_set	= inno_hdmi_encoder_mode_set,
+@@ -533,7 +534,6 @@ static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
+ 	.atomic_check	= inno_hdmi_encoder_atomic_check,
+ 	.atomic_enable	= inno_hdmi_encoder_enable,
+ 	.atomic_disable	= inno_hdmi_encoder_disable,
+-	.atomic_mode_set	= inno_hdmi_encoder_mode_set,
  };
  
  static enum drm_connector_status
