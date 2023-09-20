@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65AC7CE79DC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 14:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98931CE79DC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 14:38:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zhq1ygMoluw5PR3lhzsDK/5FBs6xlL6wV3PWdIUOGR0=; b=TV4SkGgJMFQpFQ
-	3ZMH6tbcOPPppFT3gZjVftqXsykZjbrzc9Nt6MD6Srld32jjZfWjZsg2FFNoeSzexcXgoLlO+4gSb
-	nL5updOrUDCtGQA4zwRu/p9G7JW8peSedFRmsUYHlhosRZfTIw0mYEc8GTv/KngSihn8lWeakKVD0
-	2lQoYb/yM8AbmW36Rg0tFVeWYR5lJeLr+kq3Snwsrvouls+hJEhpg8c0AuYDnufmRSJ6elHNpaOL5
-	gEv1kIMh64Rup1lQVm5wt5ulcJAb/yHenox3CWJR1xonnh+pOnkvnYMBqGcuvnFV+y9szvkdW+1+0
-	x4KC+6u3cxrRUN8jOHlg==;
+	List-Owner; bh=FAEMFan7Mekv9g+PAhoVc2ujLSASYt5L6g5sPFuQcAU=; b=ud1PSIjNut6YRI
+	LxcSSx8s5fsxup91w4LwZZetlv7rUYd2swg3y22fSeSdUfduErhlIdtyncOmmGAxBqNdZWEBO96YR
+	b7UUbPejEhfBlLREUe9+zvVPpTlnx0GIkNHtcJHzYfhc1JqMdvfLOSItqagxXA2za29dJ8mgEmSj9
+	9W/Z86NDXoFq9UOiv3VpguAa7c6Jfl5DSxF1MVZsSeFYJrJntjKMVsWd3EDQG0d38hksOeRqUJvuF
+	jnfpeupTU6kF2zaW/BdtYO34q6qpZjCSvDO3EjqbAxKtTC9iIj+PEwE3ZuiOICABY9QySU9vNyRru
+	GriRPhFukpLT+yoIYc2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyLh-003Nd9-1S;
-	Wed, 20 Sep 2023 14:38:41 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qiyLs-003NnE-22;
+	Wed, 20 Sep 2023 14:38:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyKE-003M8h-1q;
-	Wed, 20 Sep 2023 14:37:15 +0000
+	id 1qiyKK-003MFr-2L;
+	Wed, 20 Sep 2023 14:37:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 90D4BB81D88;
-	Wed, 20 Sep 2023 14:37:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC105C433CB;
-	Wed, 20 Sep 2023 14:37:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 23C98619B5;
+	Wed, 20 Sep 2023 14:37:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32429C433C8;
+	Wed, 20 Sep 2023 14:37:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695220627;
-	bh=TGSMVN8rfPhwS5amDVMAYsc9HM0SUQlWIoXQfpiVcYQ=;
+	s=k20201202; t=1695220635;
+	bh=c0jADGC6TjAEj2UIRZa0xYYM+pIDgthxehFYDaZ1tpk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OrPevwjvY7nCca+nEY+ZoXHY2KLWmgoGSwcemuq07e6T6K3nCIJRL76f5Tx3fG1Q+
-	 IFVR1BV3roZYB05WzpTtYOcemKrR8HytpJTnKd4ilnzwBndtWNytCEPM1gnygBOWUX
-	 PNgndcKT28BNCNlLCUTt2nD3CZY64rb3egVb0uYStWxS1EyQ9zxjP1/lyT+D5r2H/Y
-	 B5AMW0Z5vrC07ajos6GWkzHiNcj/bonVNBw2PQu+T7ZfIM7ptRhirQh4X/NkHWqs8r
-	 Q2cBeZAfcUnqMpYLWVr71sazcVA64rFi9/LfYQp6vJQ5qFo+WzqSAkPqS58tfR9vyl
-	 xnDTbIhLP7XMQ==
+	b=YEHMZuIxfUCYu+qfpqbo6g41ytV6KAGJEOO+FOV8BzK4yyl4/LO+8KNDHFTuCBAZ1
+	 gxA3YVI9DgdXfcjspkqv7+y+Hzz9MLCBaGNvY2GnxI8/eNQ/YcJpXjtfKu2epNqDGG
+	 lJYpPEQ/GNMvW0vSWN/InHDd/rSTUk40wfrHLXFJHd//+7jJ9xZ3tG7Ne3+pTJqFH5
+	 uLJ26/zidx5A9AcqSrUctXh2qPdv2CP9ppNTPU8AiCiz+F10xuqbG+6XOXsWDABsek
+	 hJ9JyT7V3uJboOKW687Zk70FMCr3pxOmjY1AcDZf/b4DhwByaaqEcLledvOLGrmVy0
+	 3zbcqY8eayfvA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 20 Sep 2023 16:35:45 +0200
-Subject: [PATCH RFC v2 30/37] drm/rockchip: inno_hdmi: Switch to infoframe
- type
+Date: Wed, 20 Sep 2023 16:35:48 +0200
+Subject: [PATCH RFC v2 33/37] drm/sun4i: hdmi: Convert encoder to atomic
 MIME-Version: 1.0
-Message-Id: <20230920-kms-hdmi-connector-state-v2-30-17932daddd7d@kernel.org>
+Message-Id: <20230920-kms-hdmi-connector-state-v2-33-17932daddd7d@kernel.org>
 References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 In-Reply-To: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,17 +64,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5167; i=mripard@kernel.org;
- h=from:subject:message-id; bh=TGSMVN8rfPhwS5amDVMAYsc9HM0SUQlWIoXQfpiVcYQ=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFbRLrt2//i3u7ThVGGtpDST/LXeczP+XxeV/LNRX
- 0Ql1n9hRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACbyvpHhf4ajutzefXMuLTsT
- s/D56eMcrutkMjet2ePXod1k9O/kMzWGvxIat3iyPilPczWf+2ap5Gn2BdelvzpaNz14wmC3Y+b
- h91wA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2311; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=c0jADGC6TjAEj2UIRZa0xYYM+pIDgthxehFYDaZ1tpk=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFaMjeoPhZ5/Fm66Nqvme8q6+/N33NHQ/hPK9i73V
+ U3My1OdHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZjI23eMDOsc5J0Z7tvtaOMI
+ FVEo3HJFyl5iQdqtI/5fSiUVeIOPijEynGTuX1boeV37D+Pj6f+UJJsPM7lVBD1Y6SYoNy/Kb8E
+ jFgA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_073711_073918_B3592E7B 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20230920_073716_918144_0AC8C4A1 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,169 +91,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The inno_hdmi driver relies on its own internal infoframe type matching
-the hardware.
-
-This works fine, but in order to make further reworks easier, let's
-switch to the HDMI spec definition of those types.
+The sun4i_hdmi driver still uses the non-atomic variants of the encoder
+hooks, so let's convert to their atomic equivalents.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 71 +++++++++++++++++++++++-------------
- 1 file changed, 45 insertions(+), 26 deletions(-)
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index bc7fb1278cb2..ed1d10efbef4 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -156,61 +156,80 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
- 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
- }
- 
-+static u32 inno_hdmi_get_frame_index(struct inno_hdmi *hdmi,
-+				    enum hdmi_infoframe_type type)
-+{
-+	struct drm_device *drm = hdmi->connector.dev;
-+
-+	switch (type) {
-+	case HDMI_INFOFRAME_TYPE_VENDOR:
-+		return INFOFRAME_VSI;
-+	case HDMI_INFOFRAME_TYPE_AVI:
-+		return INFOFRAME_AVI;
-+	default:
-+		drm_err(drm, "Unknown infoframe type: %u\n", type);
-+	}
-+
-+	return 0;
-+}
-+
- static u32 inno_hdmi_get_frame_mask(struct inno_hdmi *hdmi,
--				    u32 frame_index)
-+				    enum hdmi_infoframe_type type)
- {
- 	struct drm_device *drm = hdmi->connector.dev;
- 
--	switch (frame_index) {
--	case INFOFRAME_VSI:
-+	switch (type) {
-+	case HDMI_INFOFRAME_TYPE_VENDOR:
- 		return m_PACKET_VSI_EN;
--	case INFOFRAME_AVI:
-+	case HDMI_INFOFRAME_TYPE_AVI:
- 		return 0;
- 	default:
--		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+		drm_err(drm, "Unknown infoframe type: %u\n", type);
- 	}
- 
+diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+index 152375f3de2e..799a26215cc2 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
++++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+@@ -82,7 +82,8 @@ static int sun4i_hdmi_atomic_check(struct drm_encoder *encoder,
  	return 0;
  }
  
- static u32 inno_hdmi_get_frame_disable(struct inno_hdmi *hdmi,
--				       u32 frame_index)
-+				       enum hdmi_infoframe_type type)
+-static void sun4i_hdmi_disable(struct drm_encoder *encoder)
++static void sun4i_hdmi_disable(struct drm_encoder *encoder,
++			       struct drm_atomic_state *state)
  {
- 	struct drm_device *drm = hdmi->connector.dev;
- 
--	switch (frame_index) {
--	case INFOFRAME_VSI:
-+	switch (type) {
-+	case HDMI_INFOFRAME_TYPE_VENDOR:
- 		return v_PACKET_VSI_EN(0);
--	case INFOFRAME_AVI:
-+	case HDMI_INFOFRAME_TYPE_AVI:
- 		return 0;
- 	default:
--		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+		drm_err(drm, "Unknown infoframe type: %u\n", type);
- 	}
- 
- 	return 0;
+ 	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
+ 	u32 val;
+@@ -96,7 +97,8 @@ static void sun4i_hdmi_disable(struct drm_encoder *encoder)
+ 	clk_disable_unprepare(hdmi->tmds_clk);
  }
  
- static u32 inno_hdmi_get_frame_enable(struct inno_hdmi *hdmi,
--				      u32 frame_index)
-+				      enum hdmi_infoframe_type type)
+-static void sun4i_hdmi_enable(struct drm_encoder *encoder)
++static void sun4i_hdmi_enable(struct drm_encoder *encoder,
++			      struct drm_atomic_state *state)
  {
- 	struct drm_device *drm = hdmi->connector.dev;
- 
--	switch (frame_index) {
--	case INFOFRAME_VSI:
-+	switch (type) {
-+	case HDMI_INFOFRAME_TYPE_VENDOR:
- 		return v_PACKET_VSI_EN(1);
--	case INFOFRAME_AVI:
-+	case HDMI_INFOFRAME_TYPE_AVI:
- 		return 0;
- 	default:
--		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+		drm_err(drm, "Unknown infoframe type: %u\n", type);
- 	}
- 
- 	return 0;
+ 	struct drm_display_mode *mode = &encoder->crtc->state->adjusted_mode;
+ 	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
+@@ -120,9 +122,10 @@ static void sun4i_hdmi_enable(struct drm_encoder *encoder)
  }
  
--static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi, u32 frame_index)
-+static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
-+				    enum hdmi_infoframe_type type)
+ static void sun4i_hdmi_mode_set(struct drm_encoder *encoder,
+-				struct drm_display_mode *mode,
+-				struct drm_display_mode *adjusted_mode)
++				struct drm_crtc_state *crtc_state,
++				struct drm_connector_state *conn_state)
  {
--	u32 disable = inno_hdmi_get_frame_disable(hdmi, frame_index);
--	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
-+	u32 frame_index = inno_hdmi_get_frame_index(hdmi, type);
-+	u32 disable = inno_hdmi_get_frame_disable(hdmi, type);
-+	u32 mask = inno_hdmi_get_frame_mask(hdmi, type);
++	const struct drm_display_mode *mode = &crtc_state->mode;
+ 	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
+ 	unsigned int x, y;
+ 	u32 val;
+@@ -201,9 +204,9 @@ static enum drm_mode_status sun4i_hdmi_mode_valid(struct drm_encoder *encoder,
  
- 	if (mask)
- 		hdmi_modb(hdmi, HDMI_PACKET_SEND_AUTO, mask, disable);
-@@ -219,14 +238,14 @@ static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi, u32 frame_index)
- }
+ static const struct drm_encoder_helper_funcs sun4i_hdmi_helper_funcs = {
+ 	.atomic_check	= sun4i_hdmi_atomic_check,
+-	.disable	= sun4i_hdmi_disable,
+-	.enable		= sun4i_hdmi_enable,
+-	.mode_set	= sun4i_hdmi_mode_set,
++	.atomic_disable	= sun4i_hdmi_disable,
++	.atomic_enable	= sun4i_hdmi_enable,
++	.atomic_mode_set	= sun4i_hdmi_mode_set,
+ 	.mode_valid	= sun4i_hdmi_mode_valid,
+ };
  
- static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
--				  union hdmi_infoframe *frame, u32 frame_index)
-+				  union hdmi_infoframe *frame, enum hdmi_infoframe_type type)
- {
--	u32 enable = inno_hdmi_get_frame_enable(hdmi, frame_index);
--	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
-+	u32 enable = inno_hdmi_get_frame_enable(hdmi, type);
-+	u32 mask = inno_hdmi_get_frame_mask(hdmi, type);
- 	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
- 	ssize_t rc, i;
- 
--	inno_hdmi_disable_frame(hdmi, frame_index);
-+	inno_hdmi_disable_frame(hdmi, type);
- 
- 	rc = hdmi_infoframe_pack(frame, packed_frame,
- 				 sizeof(packed_frame));
-@@ -253,11 +272,11 @@ static int inno_hdmi_config_video_vsi(struct inno_hdmi *hdmi,
- 							 &hdmi->connector,
- 							 mode);
- 	if (rc) {
--		inno_hdmi_disable_frame(hdmi, INFOFRAME_VSI);
-+		inno_hdmi_disable_frame(hdmi, HDMI_INFOFRAME_TYPE_VENDOR);
- 		return rc;
- 	}
- 
--	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_VSI);
-+	return inno_hdmi_upload_frame(hdmi, &frame, HDMI_INFOFRAME_TYPE_VENDOR);
- }
- 
- static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
-@@ -270,13 +289,13 @@ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
- 						      &hdmi->connector,
- 						      mode);
- 	if (rc) {
--		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI);
-+		inno_hdmi_disable_frame(hdmi, HDMI_INFOFRAME_TYPE_AVI);
- 		return rc;
- 	}
- 
- 	frame.avi.colorspace = HDMI_COLORSPACE_RGB;
- 
--	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI);
-+	return inno_hdmi_upload_frame(hdmi, &frame, HDMI_INFOFRAME_TYPE_AVI);
- }
- 
- static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
 
 -- 
 2.41.0
