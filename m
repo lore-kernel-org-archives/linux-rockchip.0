@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829A5CE79DF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445A1CE79DD
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 14:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tAtZaU/ak7I6/hMQGaY2jg0TttGyI2RayLrZgNhauVA=; b=riYJs9qmncI0Wc
-	jdFbF8SlsEtf7psqdMxN412mEJc2DvzK0vw+7bJGms8Qg8yHjAJat+srI3gFOYdDyR186/5EpuKz+
-	syJTMzgHMmVFAIOcOLM0ZuYj85LS0ZdLBJbP6S1f2jSSCm4QiXdohNCIcl+72P8runOL7E6Eaj6Ty
-	VoZlygylh+BtCYIeG96SrL6ACCD11QF5VJySD+YccyjFt4xBN7JoHegid2ihkKgfDok3GrMDb0pZW
-	YcK+pezf/ml9XmwbucLyAJo56G70IPCXKM3tg7941hy/Qv5BXABMoHufvd7MQtu9fEGJ7rH/Y6LkN
-	dPNCYZ+c48ZmqcyMIzpA==;
+	List-Owner; bh=dCMLU0wOc0zFLDX8hBgAKfim9UXJtnKUxfnXQGdT6ZU=; b=xbeC5sUc+1Fc3E
+	60G0rjIx77OHnBxAudooEU5s/yHB4P5r4M1scsTabh6ErfbN0eHYu5ZRVzvi17/31BkRqh7vnblWw
+	so4/oqg4UKG2a3tJqwG0WkddJc8AmRGOaUog7T5gH11TV1JGMYEVWo3YaE2fcdIQa/Vxv7CAo71uc
+	oIwwJMRY4BjMI3IXVL+WaPeFc8+XP8kpwqGAytVGMUzigS8VA7stol4wLTxWnNxSm56L3i5/eqlOb
+	lVM7v+Hki1FmqhLIEqJDuP2AjGKXNee6HhQ7B/U5Weo5nU5vr2QSu85nmK4IpSUU1wKZd7nuq1JAA
+	3tGDYZk/AcRIDJiWbO2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyLH-003NDJ-0o;
-	Wed, 20 Sep 2023 14:38:15 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qiyLE-003NAT-2K;
+	Wed, 20 Sep 2023 14:38:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyK5-003Lzy-0G;
-	Wed, 20 Sep 2023 14:37:06 +0000
+	id 1qiyJz-003Lum-0g;
+	Wed, 20 Sep 2023 14:37:03 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 37D20CE1AD8;
-	Wed, 20 Sep 2023 14:36:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76A9CC433CC;
-	Wed, 20 Sep 2023 14:36:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 84EA961CDB;
+	Wed, 20 Sep 2023 14:36:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 022C6C433C7;
+	Wed, 20 Sep 2023 14:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695220618;
-	bh=Tsq7e3D9EFCrDXU+KVxek7WzLF5tJh+8D3LvlOttulE=;
+	s=k20201202; t=1695220613;
+	bh=+5JYn8V0UryLv4NGrPj7TOsjDrccf86rOvDhC/BodNA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aIvEXLA2SRn5HB7S3fteKflX3x4c5bXTwkTzVExV3LXxt4x4RRIHx8ODUVFLe5YXS
-	 L8JUkjvqI8VEnt0YN0Y74nzmocUQMZHNgeMDMpDzDSUj8VsDHydMqBoZAP2UybR7FU
-	 IXwekwsSXQqglRst//IgahWDv8hIPaqkQHB6gIbxCKww2lTHTFpxL1eBq54Hh8sYUi
-	 gGWoDZuvPMhu97XU49Bacq93wrpcVKwSrgvBRiSgSj4HOv1vSTcV1Bs8rxiRCzMuKo
-	 bcJThGddjwMwSq2R5KaXbI9TcFwxHJGcqbNdsN/yB7zh3Amf86Edbqqpm0t/vi0StY
-	 45PslQmPi1cKw==
+	b=OZ+I9FweOxmoztsNgrZKhkpeT+XT95IbLMipMLu5MJZc0HRbOOUWSF43KXcGkgYUl
+	 BJrctQwvixE+bhBA2aETCX7R/Ko1ptlgF5eJUfC3skeomdN5cZzNQe0J7QA3g6nPTN
+	 WaLmnAdaWBPTX1VmtIZkPQxIRZXS2VxctqN8S4dxbo6VjcEe9EWqH/n9Y0S2p5lkEO
+	 1MfGfTXRPkcln77bnIWBhECU710sRjkqu4uj9kAyE+wTMdl3YckBv0P9+K8mD5ZWy4
+	 S7EnEOaRB7GGcy0zzkwdB0hrHWisMMI8NsOr2QeY4u4UxbwsDtmiT1kK9O8YPcX33p
+	 eki/lFY9aXbig==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 20 Sep 2023 16:35:42 +0200
-Subject: [PATCH RFC v2 27/37] drm/rockchip: inno_hdmi: Remove useless
- mode_valid
+Date: Wed, 20 Sep 2023 16:35:40 +0200
+Subject: [PATCH RFC v2 25/37] drm/rockchip: inno_hdmi: Remove tmds rate
+ from structure
 MIME-Version: 1.0
-Message-Id: <20230920-kms-hdmi-connector-state-v2-27-17932daddd7d@kernel.org>
+Message-Id: <20230920-kms-hdmi-connector-state-v2-25-17932daddd7d@kernel.org>
 References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 In-Reply-To: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,17 +65,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1311; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Tsq7e3D9EFCrDXU+KVxek7WzLF5tJh+8D3LvlOttulE=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFbHk+wvOq1uP2GSxxtybIn066wHDX/kTqUut7i3z
- S3BdsnnjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzEvZeR4fDOtbrPlDWeJFnw
- /vrIyXbSVOzJgmP6M//2nnrezO3oLcjwm1VR83uSW9fzDXpmB+0sVQ/cibi8i/u9mk/hco4FHXq
- 93AA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2323; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=+5JYn8V0UryLv4NGrPj7TOsjDrccf86rOvDhC/BodNA=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFZ/GBMFIp6xPXgu080ROWHOi8nTDJ7sN3Nq6wu7m
+ rLGtLato5SFQYyLQVZMkSVG2HxJ3KlZrzvZ+ObBzGFlAhnCwMUpABPhn8TIcO3Nz8eNgsvVn2U2
+ NAVeq/3q9eNyVNKvEwvzU5fNm3J7swzD/zCBMN308Lm/RM3XZjHPe1FsxMTHazipxzph76y83j0
+ uDAA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_073701_626264_B0DE4DEF 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20230920_073655_443041_81CD2D70 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,42 +92,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The inno_hdmi mode_valid implementation always return MODE_OK which is
-what the core assumes when we don't have an implementation.
+The tmds_rate field in the inno_hdmi structure is used mostly to
+configure the internal i2c controller divider through a call to the
+inno_hdmi_i2c_init() function.
 
-Let's get rid of it.
+We can simply make that rate an argument to that function, which also
+removes a workaround to initialize the divider at probe time when we
+don't have a mode yet.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index e4fe02b79a98..59b2b676b7b8 100644
+index f05417c6b637..35f44e556fcf 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -400,13 +400,6 @@ static int inno_hdmi_connector_get_modes(struct drm_connector *connector)
- 	return ret;
- }
+@@ -50,8 +50,6 @@ struct inno_hdmi {
  
--static enum drm_mode_status
--inno_hdmi_connector_mode_valid(struct drm_connector *connector,
--			       struct drm_display_mode *mode)
--{
--	return MODE_OK;
--}
+ 	struct inno_hdmi_i2c *i2c;
+ 	struct i2c_adapter *ddc;
 -
- static int
- inno_hdmi_probe_single_connector_modes(struct drm_connector *connector,
- 				       uint32_t maxX, uint32_t maxY)
-@@ -431,7 +424,6 @@ static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
- 
- static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
- 	.get_modes = inno_hdmi_connector_get_modes,
--	.mode_valid = inno_hdmi_connector_mode_valid,
+-	unsigned int tmds_rate;
  };
  
- static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+ static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
+@@ -155,11 +153,11 @@ static inline void hdmi_modb(struct inno_hdmi *hdmi, u16 offset,
+ 	hdmi_writeb(hdmi, offset, temp);
+ }
+ 
+-static void inno_hdmi_i2c_init(struct inno_hdmi *hdmi)
++static void inno_hdmi_i2c_init(struct inno_hdmi *hdmi, unsigned long long rate)
+ {
+-	int ddc_bus_freq;
++	unsigned long long ddc_bus_freq = rate >> 2;
+ 
+-	ddc_bus_freq = (hdmi->tmds_rate >> 2) / HDMI_SCL_RATE;
++	do_div(ddc_bus_freq, HDMI_SCL_RATE);
+ 
+ 	hdmi_writeb(hdmi, DDC_BUS_FREQ_L, ddc_bus_freq & 0xFF);
+ 	hdmi_writeb(hdmi, DDC_BUS_FREQ_H, (ddc_bus_freq >> 8) & 0xFF);
+@@ -389,8 +387,7 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+ 	 * DCLK_LCDC, so we need to init the TMDS rate to mode pixel
+ 	 * clock rate, and reconfigure the DDC clock.
+ 	 */
+-	hdmi->tmds_rate = mode->clock * 1000;
+-	inno_hdmi_i2c_init(hdmi);
++	inno_hdmi_i2c_init(hdmi, mode->clock * 1000);
+ 
+ 	/* Unmute video and audio output */
+ 	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
+@@ -768,8 +765,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 	 * PCLK_HDMI, so we need to init the TMDS rate to PCLK rate,
+ 	 * and reconfigure the DDC clock.
+ 	 */
+-	hdmi->tmds_rate = clk_get_rate(hdmi->pclk);
+-	inno_hdmi_i2c_init(hdmi);
++	inno_hdmi_i2c_init(hdmi, clk_get_rate(hdmi->pclk));
+ 
+ 	ret = inno_hdmi_register(drm, hdmi);
+ 	if (ret)
 
 -- 
 2.41.0
