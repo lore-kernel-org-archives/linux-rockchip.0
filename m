@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445A1CE79DD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 14:38:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DA7CE79DD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 14:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dCMLU0wOc0zFLDX8hBgAKfim9UXJtnKUxfnXQGdT6ZU=; b=xbeC5sUc+1Fc3E
-	60G0rjIx77OHnBxAudooEU5s/yHB4P5r4M1scsTabh6ErfbN0eHYu5ZRVzvi17/31BkRqh7vnblWw
-	so4/oqg4UKG2a3tJqwG0WkddJc8AmRGOaUog7T5gH11TV1JGMYEVWo3YaE2fcdIQa/Vxv7CAo71uc
-	oIwwJMRY4BjMI3IXVL+WaPeFc8+XP8kpwqGAytVGMUzigS8VA7stol4wLTxWnNxSm56L3i5/eqlOb
-	lVM7v+Hki1FmqhLIEqJDuP2AjGKXNee6HhQ7B/U5Weo5nU5vr2QSu85nmK4IpSUU1wKZd7nuq1JAA
-	3tGDYZk/AcRIDJiWbO2Q==;
+	List-Owner; bh=QiYAbQv2ECr51YGWqHUVZOTkcRmyfLk8skLpGIGmXNk=; b=ykvjGF47NgzMXy
+	tvk4+2KOJ0elhbKsXcFpPwrTi6f9awR1coj1DKX02TF75JGIq881SiuNM8Ien9dq3lY2zmO8ZRTAZ
+	0tMQn2YgQAhHjkeDA6Rcd1tetkc8f6IIodI0HyWV/Cvy2HGLGcLNVrscs2QV2SsCq0an0j/9A46gx
+	V6OOyvCqdDX4I/B3nP54uTp++XZ2GgFN3sHcsGFdmaVT2HfvWb1eUNNgRxSK19F1l0wNGQ5fAj2GQ
+	pCG31bN9r4v8tGkA6juzxzeF5GhbeC/XMYlMxSeA8aEnsTzNWTs3XHiLdpc1hjC7F9GaHYtKxOUFs
+	PR8eizUO7YFhCK4z+FOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyLE-003NAT-2K;
-	Wed, 20 Sep 2023 14:38:12 +0000
+	id 1qiyLZ-003NW8-2J;
+	Wed, 20 Sep 2023 14:38:33 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiyJz-003Lum-0g;
-	Wed, 20 Sep 2023 14:37:03 +0000
+	id 1qiyK8-003Lum-2k;
+	Wed, 20 Sep 2023 14:37:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 84EA961CDB;
-	Wed, 20 Sep 2023 14:36:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 022C6C433C7;
-	Wed, 20 Sep 2023 14:36:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9C4A2619B5;
+	Wed, 20 Sep 2023 14:37:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C0A6C433C9;
+	Wed, 20 Sep 2023 14:37:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695220613;
-	bh=+5JYn8V0UryLv4NGrPj7TOsjDrccf86rOvDhC/BodNA=;
+	s=k20201202; t=1695220624;
+	bh=j0kuHfqXTtY8F7hrGO9Pbcf8nYj5w/LWDfi3cdsMJFw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OZ+I9FweOxmoztsNgrZKhkpeT+XT95IbLMipMLu5MJZc0HRbOOUWSF43KXcGkgYUl
-	 BJrctQwvixE+bhBA2aETCX7R/Ko1ptlgF5eJUfC3skeomdN5cZzNQe0J7QA3g6nPTN
-	 WaLmnAdaWBPTX1VmtIZkPQxIRZXS2VxctqN8S4dxbo6VjcEe9EWqH/n9Y0S2p5lkEO
-	 1MfGfTXRPkcln77bnIWBhECU710sRjkqu4uj9kAyE+wTMdl3YckBv0P9+K8mD5ZWy4
-	 S7EnEOaRB7GGcy0zzkwdB0hrHWisMMI8NsOr2QeY4u4UxbwsDtmiT1kK9O8YPcX33p
-	 eki/lFY9aXbig==
+	b=BZJGNZ1nrNa7UZVvVELZO9FeBOWE2Jpwp1gBzMeWHxTUG+rsbYnVieRhbXkqUpbl2
+	 8mLZGiuNNUbEHwqcxTh+SNR4nwtmqd1XS/m4D0I0/cy1AxQQh9W3lyx1IwDxPwqj+t
+	 thXEJYu+JEqXFwwcAU7twqianYqc5hMATpO0/IDF/OYwPCExpV31O7e2Qz/W6BHMOZ
+	 nILrIHbvdlDijqdPRVKoPIAtTYpI8Khtx+g+6nwTmlo4QQ4yFLBDnj4Fo3OS4Kun3e
+	 PX8zAnLdvWdwBrxV7T2Ci2upElINZEh+//1J7MT3lxA7mg+L8FO4eyOxJ9k95oDCc/
+	 sT5uT4C/h1Ssw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Wed, 20 Sep 2023 16:35:40 +0200
-Subject: [PATCH RFC v2 25/37] drm/rockchip: inno_hdmi: Remove tmds rate
- from structure
+Date: Wed, 20 Sep 2023 16:35:44 +0200
+Subject: [PATCH RFC v2 29/37] drm/rockchip: inno_hdmi: Create mask
+ retrieval functions
 MIME-Version: 1.0
-Message-Id: <20230920-kms-hdmi-connector-state-v2-25-17932daddd7d@kernel.org>
+Message-Id: <20230920-kms-hdmi-connector-state-v2-29-17932daddd7d@kernel.org>
 References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 In-Reply-To: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,17 +65,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2323; i=mripard@kernel.org;
- h=from:subject:message-id; bh=+5JYn8V0UryLv4NGrPj7TOsjDrccf86rOvDhC/BodNA=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFZ/GBMFIp6xPXgu080ROWHOi8nTDJ7sN3Nq6wu7m
- rLGtLato5SFQYyLQVZMkSVG2HxJ3KlZrzvZ+ObBzGFlAhnCwMUpABPhn8TIcO3Nz8eNgsvVn2U2
- NAVeq/3q9eNyVNKvEwvzU5fNm3J7swzD/zCBMN308Lm/RM3XZjHPe1FsxMTHazipxzph76y83j0
- uDAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4130; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=j0kuHfqXTtY8F7hrGO9Pbcf8nYj5w/LWDfi3cdsMJFw=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnczFbs24Ks9pZVhH+4rnZiZVzp7bpu1Yl/GiexJOkoe
+ 2rPuLixo5SFQYyLQVZMkSVG2HxJ3KlZrzvZ+ObBzGFlAhnCwMUpABMx+MTIsMWpZcmpuhPiXNFB
+ KdqtAYv+vln66O3tPVc865TtWE01LRgZVmxekyC46v/iSa1CgTINCvx8h4Uf1ZVHB3dzLalbliv
+ NCwA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_073655_443041_81CD2D70 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20230920_073705_053034_3D237987 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +92,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The tmds_rate field in the inno_hdmi structure is used mostly to
-configure the internal i2c controller divider through a call to the
-inno_hdmi_i2c_init() function.
+The register mask and bits to enable or disable a given infoframe
+depends on its type.
 
-We can simply make that rate an argument to that function, which also
-removes a workaround to initialize the divider at probe time when we
-don't have a mode yet.
+This is currently passed as an argument to the function that writes an
+infoframe, but let's create a helper function to retrieve them based on
+the type to make further reworks easier.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 75 ++++++++++++++++++++++++++++++------
+ 1 file changed, 63 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index f05417c6b637..35f44e556fcf 100644
+index e3a421d98dd4..bc7fb1278cb2 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -50,8 +50,6 @@ struct inno_hdmi {
- 
- 	struct inno_hdmi_i2c *i2c;
- 	struct i2c_adapter *ddc;
--
--	unsigned int tmds_rate;
- };
- 
- static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
-@@ -155,11 +153,11 @@ static inline void hdmi_modb(struct inno_hdmi *hdmi, u16 offset,
- 	hdmi_writeb(hdmi, offset, temp);
+@@ -156,10 +156,62 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
+ 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
  }
  
--static void inno_hdmi_i2c_init(struct inno_hdmi *hdmi)
-+static void inno_hdmi_i2c_init(struct inno_hdmi *hdmi, unsigned long long rate)
+-static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
+-				    u32 frame_index,
+-				    u32 mask, u32 disable)
++static u32 inno_hdmi_get_frame_mask(struct inno_hdmi *hdmi,
++				    u32 frame_index)
  {
--	int ddc_bus_freq;
-+	unsigned long long ddc_bus_freq = rate >> 2;
++	struct drm_device *drm = hdmi->connector.dev;
++
++	switch (frame_index) {
++	case INFOFRAME_VSI:
++		return m_PACKET_VSI_EN;
++	case INFOFRAME_AVI:
++		return 0;
++	default:
++		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
++	}
++
++	return 0;
++}
++
++static u32 inno_hdmi_get_frame_disable(struct inno_hdmi *hdmi,
++				       u32 frame_index)
++{
++	struct drm_device *drm = hdmi->connector.dev;
++
++	switch (frame_index) {
++	case INFOFRAME_VSI:
++		return v_PACKET_VSI_EN(0);
++	case INFOFRAME_AVI:
++		return 0;
++	default:
++		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
++	}
++
++	return 0;
++}
++
++static u32 inno_hdmi_get_frame_enable(struct inno_hdmi *hdmi,
++				      u32 frame_index)
++{
++	struct drm_device *drm = hdmi->connector.dev;
++
++	switch (frame_index) {
++	case INFOFRAME_VSI:
++		return v_PACKET_VSI_EN(1);
++	case INFOFRAME_AVI:
++		return 0;
++	default:
++		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
++	}
++
++	return 0;
++}
++
++static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi, u32 frame_index)
++{
++	u32 disable = inno_hdmi_get_frame_disable(hdmi, frame_index);
++	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
++
+ 	if (mask)
+ 		hdmi_modb(hdmi, HDMI_PACKET_SEND_AUTO, mask, disable);
  
--	ddc_bus_freq = (hdmi->tmds_rate >> 2) / HDMI_SCL_RATE;
-+	do_div(ddc_bus_freq, HDMI_SCL_RATE);
+@@ -167,13 +219,14 @@ static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
+ }
  
- 	hdmi_writeb(hdmi, DDC_BUS_FREQ_L, ddc_bus_freq & 0xFF);
- 	hdmi_writeb(hdmi, DDC_BUS_FREQ_H, (ddc_bus_freq >> 8) & 0xFF);
-@@ -389,8 +387,7 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 	 * DCLK_LCDC, so we need to init the TMDS rate to mode pixel
- 	 * clock rate, and reconfigure the DDC clock.
- 	 */
--	hdmi->tmds_rate = mode->clock * 1000;
--	inno_hdmi_i2c_init(hdmi);
-+	inno_hdmi_i2c_init(hdmi, mode->clock * 1000);
+ static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
+-				  union hdmi_infoframe *frame, u32 frame_index,
+-				  u32 mask, u32 disable, u32 enable)
++				  union hdmi_infoframe *frame, u32 frame_index)
+ {
++	u32 enable = inno_hdmi_get_frame_enable(hdmi, frame_index);
++	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
+ 	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
+ 	ssize_t rc, i;
  
- 	/* Unmute video and audio output */
- 	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
-@@ -768,8 +765,7 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
- 	 * PCLK_HDMI, so we need to init the TMDS rate to PCLK rate,
- 	 * and reconfigure the DDC clock.
- 	 */
--	hdmi->tmds_rate = clk_get_rate(hdmi->pclk);
--	inno_hdmi_i2c_init(hdmi);
-+	inno_hdmi_i2c_init(hdmi, clk_get_rate(hdmi->pclk));
+-	inno_hdmi_disable_frame(hdmi, frame_index, mask, disable);
++	inno_hdmi_disable_frame(hdmi, frame_index);
  
- 	ret = inno_hdmi_register(drm, hdmi);
- 	if (ret)
+ 	rc = hdmi_infoframe_pack(frame, packed_frame,
+ 				 sizeof(packed_frame));
+@@ -200,13 +253,11 @@ static int inno_hdmi_config_video_vsi(struct inno_hdmi *hdmi,
+ 							 &hdmi->connector,
+ 							 mode);
+ 	if (rc) {
+-		inno_hdmi_disable_frame(hdmi, INFOFRAME_VSI,
+-					m_PACKET_VSI_EN, v_PACKET_VSI_EN(0));
++		inno_hdmi_disable_frame(hdmi, INFOFRAME_VSI);
+ 		return rc;
+ 	}
+ 
+-	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_VSI,
+-		m_PACKET_VSI_EN, v_PACKET_VSI_EN(0), v_PACKET_VSI_EN(1));
++	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_VSI);
+ }
+ 
+ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
+@@ -219,13 +270,13 @@ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
+ 						      &hdmi->connector,
+ 						      mode);
+ 	if (rc) {
+-		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI, 0, 0);
++		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI);
+ 		return rc;
+ 	}
+ 
+ 	frame.avi.colorspace = HDMI_COLORSPACE_RGB;
+ 
+-	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI, 0, 0, 0);
++	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI);
+ }
+ 
+ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
 
 -- 
 2.41.0
