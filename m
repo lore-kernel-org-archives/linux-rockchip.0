@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C859FCD4936
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Sep 2023 23:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21ADFE706F0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Sep 2023 08:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jmCRHV96Zycsq9yTSAkHfbXUM8T/4DgtPUYgA8BnmQ4=; b=AYGRuE6V3x6l18
-	eAv5oNWjdTzdUbC8bDAL0VO03KIAP0QCMb1QSE72FcGyUbayqdVi8tgMTOZVQv38LeVVk8JBoCBbY
-	K/4zV3Xmr8xaW6JW8DpCJRe/3AyLYAvw9D5zyJUarTHOoVsZ02WeM9yKHHcBKVhfSlmTFCIjWs+AD
-	OlxOkXA01i3V3QDnu6rszbTwBxL5xpaThF7VL50Ym+2fyslSu+jc4w9q7K/telJsjpFAEhWOSnpVY
-	vf5sEoU0EgGdXMArGKjREaL8BLxL0i4VpMnzCVThZ8xzz2Jmsd1FdvEXrZeWl/ejLylz0xVEUrBJd
-	QBQptqoc34Hl9AP1uPew==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nKtTU2+hRNaENrNKxM6ncpfulCQcSwZx7SXyR9VtXE8=; b=LG3KOeVMQnkfNVD1FRWT9iIRuY
+	WjIxRJHAEaxzhoDz+13RDyeDFls8mSK5dcEGbNpdKhYVDenMD4sWXfhHGMohM0P26U6cnWXk67dvc
+	b4zPHn2tV0tfIX60r5MjOw/WgI6AsCIN2F0MIz7K7aFED4Af9FCaL+8GPC493iTLvvKHREo29Tj0h
+	ZYw8WRp4Xjif3exBNtEuT7Mv/fV0V8dRMAHsX55XsGcK1Ai1skR32Ch8ti9dt59PwICNrbAGFLa5p
+	7XzBJniFRzt7vzcok1zT6piBXZ9hTsa+ja5irY02lEtpajYjsMV0A5tJeLV4hp2AQlbtWrVincndx
+	31tnEG5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj6XG-004Rhe-0K;
-	Wed, 20 Sep 2023 23:23:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qjFDl-005VWS-0F;
+	Thu, 21 Sep 2023 08:39:37 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qj6XB-004RgZ-1l;
-	Wed, 20 Sep 2023 23:23:07 +0000
-Received: from [192.168.68.123] (unknown [177.98.21.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 848E866071F4;
-	Thu, 21 Sep 2023 00:23:00 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695252183;
-	bh=+YZpoRmce8OurCbnO+g1RkxNh8kILN8Pm0hmQiuUJow=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IC8IAmTPSxv+Im6k4NJe2Pk7Wfav6sU+pQjM9vnJfNF/NlzQzu6QxUT9/H0v5S+Gr
-	 bcFTPVR3TzhDebh8rhYGZo0l0uARJZHlzZuMFvmKv0QkZJOsKtUGTRb/h/8ZdHRHf+
-	 MaVnYaRscPtnOLQ0vOil/YNXEbXXXxL7GsxzzQxGzQICvSDLZskFt0tfdxaIGOdAkt
-	 f1NSnfamQQRrEXzQJ0905Kbv7LEELWamwG4t4MTietpE+EeXSOp4gc/K6ehe5XV3fZ
-	 Zx1nOAwRlycY7Ncx3ugNYSSc0GIGfk/Ct+4in7MKdz5oha9LeDaMIWTePoJ0+PW76A
-	 10XVrneKXdIxA==
-Message-ID: <7318d141-12b7-eab7-52dd-8953305d85c6@collabora.com>
-Date: Wed, 20 Sep 2023 20:22:55 -0300
+	id 1qjFDh-005VVT-12;
+	Thu, 21 Sep 2023 08:39:35 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2bffdf50212so10661601fa.1;
+        Thu, 21 Sep 2023 01:39:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1695285569; x=1695890369; darn=lists.infradead.org;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=do13wE1NZGvZdh+vY8gzmZTIIEx/P59A/WkG5M6tfxM=;
+        b=dmMddjQ8oXBDMErBGKO42/LdZvSF8D96HJbcDtlI9t3fck4B2bBzghQ7ENlY2cjoPO
+         CzghHBAiv5H4xyfzIO7tmilcc15zVerfn6JWCfzY03MZNzuDj1RHD7mgP79eytTpoH0y
+         vWtVMzo92XjrqnLGBK0PyhkEcGY75N1ZpfgLIk5m0d8D7gCePVzYpB62qyAKvK+11XLz
+         Wwbuh+OmC4KdmEjZklFe9OcTE6FVhyi2WTLRwco3lAWX8O/SVJOtEe2xuVUnvf7oi6DZ
+         2Vg329OlG4ytMO5zRVbvwrPgym8SJGqwiwYEhbNL2YY6ajdge4TKth3r3pwJFnWJypuD
+         dpaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695285569; x=1695890369;
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=do13wE1NZGvZdh+vY8gzmZTIIEx/P59A/WkG5M6tfxM=;
+        b=dsm+53bVDrVIP7aigRaS5yquBv30+oBzFhNcLP8I6kJy31mwScny7oPM1s13DsrlQV
+         FlndTY1ZpQdY/aEN18KvxOYh/03Re6PkHdgrZOr07K9TrPzlN/oSa9O6A+WS1yavVdip
+         KanfzwYJn53ZTA79E3NUZcckyOtIQWH0kCPglHWcRXEaRZXGSkjiCDjwNGhf4ySgHqKY
+         DIrcayolnMlYB/rpK9zWW7KGFvUPePk4toxBZvTmiBvcvtquovdmINlX30aqqXcLQ3W5
+         sTPKfs7sVPz8tMMS7EWLKf1yJUeEaLXbnd5mlc0LaXG97oBrWaB3on/+GzhuwQbPnOXm
+         3PHg==
+X-Gm-Message-State: AOJu0YwFlVNlEWLarsI+NZwCkJxBV3Ocz1f4N3IMB8QhvJUEnTnOG5DW
+	EL9QE6YGjp9M36mfYNtdq4M=
+X-Google-Smtp-Source: AGHT+IEg+Q5URv4DOIHpsqZ5z/w2kZYXI9iypMN4HV1bJyRLV6UA2HEdGUB18nSebb4ZlpNiEyGH2w==
+X-Received: by 2002:a2e:8ed4:0:b0:2bf:fa16:2787 with SMTP id e20-20020a2e8ed4000000b002bffa162787mr3966289ljl.39.1695285568444;
+        Thu, 21 Sep 2023 01:39:28 -0700 (PDT)
+Received: from eldfell ([194.136.85.206])
+        by smtp.gmail.com with ESMTPSA id a24-20020a05651c011800b002b9de06f119sm224076ljb.67.2023.09.21.01.39.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Sep 2023 01:39:27 -0700 (PDT)
+Date: Thu, 21 Sep 2023 11:39:11 +0300
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+ <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet
+ <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, Heiko =?UTF-8?B?U3Q=?=
+ =?UTF-8?B?w7xibmVy?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
+ <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH RFC v2 03/37] drm/connector: hdmi: Add Broadcast RGB
+ property
+Message-ID: <20230921113911.7799583d@eldfell>
+In-Reply-To: <20230920-kms-hdmi-connector-state-v2-3-17932daddd7d@kernel.org>
+References: <20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org>
+	<20230920-kms-hdmi-connector-state-v2-3-17932daddd7d@kernel.org>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH] drm/ci: Uprev IGT to pull in fixes
-Content-Language: en-US
-To: Rob Clark <robdclark@gmail.com>
-Cc: Rob Clark <robdclark@chromium.org>, linux-arm-msm@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>, dri-devel@lists.freedesktop.org,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, Daniel Stone <daniels@collabora.com>
-References: <20230920180526.137369-1-robdclark@gmail.com>
- <CAF6AEGvUOX-D+-vwov-FDp46rJdo8wq1Do-9Gj3k5v313wVJhA@mail.gmail.com>
- <2ec320ca-d768-89ec-200f-695839e48538@collabora.com>
- <CAF6AEGvhav3kX0fRpjeGbJYqQ_J5gonng-wYjZUeRunOBuUC1A@mail.gmail.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <CAF6AEGvhav3kX0fRpjeGbJYqQ_J5gonng-wYjZUeRunOBuUC1A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230920_162305_901786_5EE51ECA 
-X-CRM114-Status: GOOD (  20.79  )
+X-CRM114-CacheID: sfid-20230921_013933_380794_B4CBA4AF 
+X-CRM114-Status: GOOD (  40.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,174 +95,281 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============1660166781939687065=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyMC8wOS8yMDIzIDE2OjQ0LCBSb2IgQ2xhcmsgd3JvdGU6Cj4gT24gV2VkLCBTZXAgMjAs
-IDIwMjMgYXQgMTE6NTPigK9BTSBIZWxlbiBLb2lrZSA8aGVsZW4ua29pa2VAY29sbGFib3JhLmNv
-bT4gd3JvdGU6Cj4+Cj4+IEhpIFJvYiwKPj4KPj4gVGhhbmtzIGZvciB0aGUgcGF0Y2guCj4+Cj4+
-IE9uIDIwLzA5LzIwMjMgMTU6MTAsIFJvYiBDbGFyayB3cm90ZToKPj4+IE9uIFdlZCwgU2VwIDIw
-LCAyMDIzIGF0IDExOjA24oCvQU0gUm9iIENsYXJrIDxyb2JkY2xhcmtAZ21haWwuY29tPiB3cm90
-ZToKPj4+Pgo+Pj4+IEZyb206IFJvYiBDbGFyayA8cm9iZGNsYXJrQGNocm9taXVtLm9yZz4KPj4+
-Pgo+Pj4+IFRoZXJlIGhhdmUgYmVlbiBhIGZldyBpZ3QgdGVzdCBmaXhlcyBjb21wYXJlZCB0byB0
-aGUgY29tbWl0IHRoYXQgd2Ugd2VyZQo+Pj4+IGN1cnJlbnRseSB1c2luZy4gIFB1bGwgaW4gYSBu
-ZXdlciBpZ3QgYW5kIHVwZGF0ZSBleHBlY3RhdGlvbnMuCj4+Pj4KPj4+PiBTaWduZWQtb2ZmLWJ5
-OiBSb2IgQ2xhcmsgPHJvYmRjbGFya0BjaHJvbWl1bS5vcmc+Cj4+Pj4gLS0tCj4+Cj4+IENvdWxk
-IHlvdSBzZW5kIGhlcmUgdGhlIHVybCBvZiBhIHBpcGVsaW5lIHJ1biB3aXRoIHRoaXMgY2hhbmdl
-Pwo+IAo+IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9kcm0vbXNtLy0vcGlwZWxpbmVz
-Lzk4OTkxMwoKVGhhbmtzLCBsZ3RtLgoKQWNrZWQtYnk6IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lr
-ZUBjb2xsYWJvcmEuY29tPgoKPiAKPiBUaGF0IHdhcyBiZWZvcmUgSSB3cm90ZSBhIHByb3BlciBj
-b21taXQgbXNnIHNvIHlvdSBjYW4gaWdub3JlIHRoZQo+IGNoZWNrcGF0Y2ggam9iLi4gYW5kIHRo
-ZXJlIGlzIGFuIHVucmVsYXRlZCBpc3N1ZSB3aXRoIHRoZSBzZG04NDUKPiBydW5uZXJzIG5vdCBi
-b290aW5nIHcvIHY2LjYtcmMyLCB3aGljaCBzdGlsbCBuZWVkcyB0byBiZSB0cmFja2VkIGRvd24u
-Cj4gCj4gQlIsCj4gLVIKPiAKPj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnlt
-bCAgICAgICAgICAgICAgIHwgIDIgKy0KPj4+PiAgICAuLi4vZ3B1L2RybS9jaS94ZmFpbHMvYW1k
-Z3B1LXN0b25leS1mYWlscy50eHQgIHwgIDQgKystLQo+Pj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9j
-aS94ZmFpbHMvaTkxNS1hcGwtZmFpbHMudHh0ICAgfCAxMSAtLS0tLS0tLS0tLQo+Pj4+ICAgIGRy
-aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1jbWwtZmFpbHMudHh0ICAgfCAgMiArLQo+Pj4+
-ICAgIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS10Z2wtZmFpbHMudHh0ICAgfCAgMSAt
-Cj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXNraXBzLnR4dCB8
-IDE4ICstLS0tLS0tLS0tLS0tLS0tLQo+Pj4+ICAgIC4uLi9kcm0vY2kveGZhaWxzL3JvY2tjaGlw
-LXJrMzI4OC1mYWlscy50eHQgICAgfCAgMiArKwo+Pj4+ICAgIDcgZmlsZXMgY2hhbmdlZCwgNyBp
-bnNlcnRpb25zKCspLCAzMyBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbCBiL2RyaXZlcnMvZ3B1L2RybS9jaS9naXRsYWIt
-Y2kueW1sCj4+Pj4gaW5kZXggMmM0ZGY1M2Y1ZGZlLi4zZWNiNTg3OWU4MGYgMTAwNjQ0Cj4+Pj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwKPj4+PiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbAo+Pj4+IEBAIC01LDcgKzUsNyBAQCB2YXJpYWJsZXM6
-Cj4+Pj4gICAgICBVUFNUUkVBTV9SRVBPOiBnaXQ6Ly9hbm9uZ2l0LmZyZWVkZXNrdG9wLm9yZy9k
-cm0vZHJtCj4+Pj4gICAgICBUQVJHRVRfQlJBTkNIOiBkcm0tbmV4dAo+Pj4+Cj4+Pj4gLSAgSUdU
-X1ZFUlNJT046IDQ3MWJmYWJhYmQwNzBlMWRhYzBlYmI4NzQ3MGFjNGYyYWU4NWU2NjMKPj4+PiAr
-ICBJR1RfVkVSU0lPTjogMjUxN2U0MmQ2MTJlMGMxY2EwOTZhY2Y4YjVmNjE3N2Y3ZWY0YmNlNwo+
-Pj4+Cj4+Pj4gICAgICBERVFQX1JVTk5FUl9HSVRfVVJMOiBodHRwczovL2dpdGxhYi5mcmVlZGVz
-a3RvcC5vcmcvYW5ob2x0L2RlcXAtcnVubmVyLmdpdAo+Pj4+ICAgICAgREVRUF9SVU5ORVJfR0lU
-X1RBRzogdjAuMTUuMAo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxz
-L2FtZGdwdS1zdG9uZXktZmFpbHMudHh0IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9hbWRn
-cHUtc3RvbmV5LWZhaWxzLnR4dAo+Pj4+IGluZGV4IGJkOTM5MjUzNmU3Yy4uYmFiMjE5MzBhMGQ0
-IDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvYW1kZ3B1LXN0b25l
-eS1mYWlscy50eHQKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2FtZGdwdS1z
-dG9uZXktZmFpbHMudHh0Cj4+Pj4gQEAgLTEsNyArMSw2IEBACj4+Pj4gICAga21zX2FkZGZiX2Jh
-c2ljQGJhZC1waXRjaC02NTUzNixGYWlsCj4+Pj4gICAga21zX2FkZGZiX2Jhc2ljQGJvLXRvby1z
-bWFsbCxGYWlsCj4+Pj4gICAga21zX2FzeW5jX2ZsaXBzQGludmFsaWQtYXN5bmMtZmxpcCxGYWls
-Cj4+Pj4gLWttc19hdG9taWNAcGxhbmUtaW1tdXRhYmxlLXpwb3MsRmFpbAo+Pj4+ICAgIGttc19h
-dG9taWNfdHJhbnNpdGlvbkBwbGFuZS10b2dnbGUtbW9kZXNldC10cmFuc2l0aW9uLEZhaWwKPj4+
-PiAgICBrbXNfYndAbGluZWFyLXRpbGluZy0xLWRpc3BsYXlzLTI1NjB4MTQ0MHAsRmFpbAo+Pj4+
-ICAgIGttc19id0BsaW5lYXItdGlsaW5nLTEtZGlzcGxheXMtMzg0MHgyMTYwcCxGYWlsCj4+Pj4g
-QEAgLTExLDkgKzEwLDEwIEBAIGttc19jb2xvckBkZWdhbW1hLEZhaWwKPj4+PiAgICBrbXNfY3Vy
-c29yX2NyY0BjdXJzb3Itc2l6ZS1jaGFuZ2UsRmFpbAo+Pj4+ICAgIGttc19jdXJzb3JfY3JjQHBp
-cGUtQS1jdXJzb3Itc2l6ZS1jaGFuZ2UsRmFpbAo+Pj4+ICAgIGttc19jdXJzb3JfY3JjQHBpcGUt
-Qi1jdXJzb3Itc2l6ZS1jaGFuZ2UsRmFpbAo+Pj4+IC1rbXNfY3Vyc29yX2xlZ2FjeUBmb3JrZWQt
-bW92ZSxGYWlsCj4+Pj4gICAga21zX2hkckBicGMtc3dpdGNoLEZhaWwKPj4+PiAgICBrbXNfaGRy
-QGJwYy1zd2l0Y2gtZHBtcyxGYWlsCj4+Pj4gICAga21zX3BsYW5lX211bHRpcGxlQGF0b21pYy1w
-aXBlLUEtdGlsaW5nLW5vbmUsRmFpbAo+Pj4+ICAgIGttc19ybWZiQGNsb3NlLWZkLEZhaWwKPj4+
-PiAgICBrbXNfcm90YXRpb25fY3JjQHByaW1hcnktcm90YXRpb24tMTgwLEZhaWwKPj4+PiAra21z
-X2ZsaXBAZmxpcC12cy1tb2Rlc2V0LXZzLWhhbmcsRmFpbAo+Pj4+ICtrbXNfZmxpcEBmbGlwLXZz
-LXBhbm5pbmctdnMtaGFuZyxGYWlsCj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9j
-aS94ZmFpbHMvaTkxNS1hcGwtZmFpbHMudHh0IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9p
-OTE1LWFwbC1mYWlscy50eHQKPj4+PiBpbmRleCA0NjM5N2NlMzhkNWEuLjJlM2I3YzVkYWMzYyAx
-MDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtYXBsLWZhaWxz
-LnR4dAo+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1hcGwtZmFpbHMu
-dHh0Cj4+Pj4gQEAgLTgsMTMgKzgsNiBAQCBrbXNfYndAbGluZWFyLXRpbGluZy0zLWRpc3BsYXlz
-LTM4NDB4MjE2MHAsRmFpbAo+Pj4+ICAgIGttc19id0BsaW5lYXItdGlsaW5nLTQtZGlzcGxheXMt
-MTkyMHgxMDgwcCxGYWlsCj4+Pj4gICAga21zX2J3QGxpbmVhci10aWxpbmctNC1kaXNwbGF5cy0y
-NTYweDE0NDBwLEZhaWwKPj4+PiAgICBrbXNfYndAbGluZWFyLXRpbGluZy00LWRpc3BsYXlzLTM4
-NDB4MjE2MHAsRmFpbAo+Pj4+IC1rbXNfY29sb3JAY3RtLTAtMjUsRmFpbAo+Pj4+IC1rbXNfY29s
-b3JAY3RtLTAtNTAsRmFpbAo+Pj4+IC1rbXNfY29sb3JAY3RtLTAtNzUsRmFpbAo+Pj4+IC1rbXNf
-Y29sb3JAY3RtLW1heCxGYWlsCj4+Pj4gLWttc19jb2xvckBjdG0tbmVnYXRpdmUsRmFpbAo+Pj4+
-IC1rbXNfY29sb3JAY3RtLXJlZC10by1ibHVlLEZhaWwKPj4+PiAta21zX2NvbG9yQGN0bS1zaWdu
-ZWQsRmFpbAo+Pj4+ICAgIGttc19mbGlwX3NjYWxlZF9jcmNAZmxpcC0zMmJwcC1saW5lYXItdG8t
-NjRicHAtbGluZWFyLWRvd25zY2FsaW5nLEZhaWwKPj4+PiAgICBrbXNfZmxpcF9zY2FsZWRfY3Jj
-QGZsaXAtMzJicHAtbGluZWFyLXRvLTY0YnBwLWxpbmVhci11cHNjYWxpbmcsRmFpbAo+Pj4+ICAg
-IGttc19mbGlwX3NjYWxlZF9jcmNAZmxpcC0zMmJwcC14dGlsZS10by02NGJwcC14dGlsZS1kb3du
-c2NhbGluZyxGYWlsCj4+Pj4gQEAgLTM4LDggKzMxLDYgQEAga21zX2ZsaXBfc2NhbGVkX2NyY0Bm
-bGlwLTY0YnBwLXl0aWxlLXRvLTMyYnBwLXl0aWxlLXVwc2NhbGluZyxGYWlsCj4+Pj4gICAga21z
-X2ZsaXBfc2NhbGVkX2NyY0BmbGlwLTY0YnBwLXl0aWxlLXRvLTMyYnBwLXl0aWxlZ2VuMTJyY2Nj
-cy11cHNjYWxpbmcsRmFpbAo+Pj4+ICAgIGttc19mbGlwX3NjYWxlZF9jcmNAZmxpcC02NGJwcC15
-dGlsZS10by0zMmJwcC15dGlsZXJjY2NzLWRvd25zY2FsaW5nLEZhaWwKPj4+PiAgICBrbXNfZmxp
-cF9zY2FsZWRfY3JjQGZsaXAtNjRicHAteXRpbGUtdG8tMzJicHAteXRpbGVyY2Njcy11cHNjYWxp
-bmcsRmFpbAo+Pj4+IC1rbXNfaGRtaV9pbmplY3RAaW5qZWN0LTRrLFRpbWVvdXQKPj4+PiAta21z
-X3BsYW5lQHBsYW5lLXBvc2l0aW9uLWhvbGUsVGltZW91dAo+Pj4+ICAgIGttc19wbGFuZV9hbHBo
-YV9ibGVuZEBhbHBoYS1iYXNpYyxGYWlsCj4+Pj4gICAga21zX3BsYW5lX2FscGhhX2JsZW5kQGFs
-cGhhLW9wYXF1ZS1mYixGYWlsCj4+Pj4gICAga21zX3BsYW5lX2FscGhhX2JsZW5kQGFscGhhLXRy
-YW5zcGFyZW50LWZiLEZhaWwKPj4+PiBAQCAtNTMsNiArNDQsNCBAQCBrbXNfcGxhbmVfYWxwaGFf
-YmxlbmRAcGlwZS1CLWNvbnN0YW50LWFscGhhLW1heCxGYWlsCj4+Pj4gICAga21zX3BsYW5lX2Fs
-cGhhX2JsZW5kQHBpcGUtQy1hbHBoYS1vcGFxdWUtZmIsRmFpbAo+Pj4+ICAgIGttc19wbGFuZV9h
-bHBoYV9ibGVuZEBwaXBlLUMtYWxwaGEtdHJhbnNwYXJlbnQtZmIsRmFpbAo+Pj4+ICAgIGttc19w
-bGFuZV9hbHBoYV9ibGVuZEBwaXBlLUMtY29uc3RhbnQtYWxwaGEtbWF4LEZhaWwKPj4+PiAta21z
-X3BsYW5lX211bHRpcGxlQHRpbGluZy15LFRpbWVvdXQKPj4+PiAta21zX3B3cml0ZV9jcmMsVGlt
-ZW91dAo+Pj4+ICAgIGttc19zeXNmc19lZGlkX3RpbWluZyxGYWlsCj4+Pj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS1jbWwtZmFpbHMudHh0IGIvZHJpdmVycy9n
-cHUvZHJtL2NpL3hmYWlscy9pOTE1LWNtbC1mYWlscy50eHQKPj4+PiBpbmRleCA2MTM5YjQxMGU3
-NjcuLjEzYzBhMjVmYzYyNyAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZh
-aWxzL2k5MTUtY21sLWZhaWxzLnR4dAo+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFp
-bHMvaTkxNS1jbWwtZmFpbHMudHh0Cj4+Pj4gQEAgLTEsNCArMSwzIEBACj4+Pj4gLWttc19jb2xv
-ckBjdG0tMC0yNSxGYWlsCj4+Pj4gICAga21zX2ZsaXBfc2NhbGVkX2NyY0BmbGlwLTMyYnBwLWxp
-bmVhci10by02NGJwcC1saW5lYXItZG93bnNjYWxpbmcsRmFpbAo+Pj4+ICAgIGttc19mbGlwX3Nj
-YWxlZF9jcmNAZmxpcC0zMmJwcC1saW5lYXItdG8tNjRicHAtbGluZWFyLXVwc2NhbGluZyxGYWls
-Cj4+Pj4gICAga21zX2ZsaXBfc2NhbGVkX2NyY0BmbGlwLTMyYnBwLXh0aWxlLXRvLTY0YnBwLXh0
-aWxlLWRvd25zY2FsaW5nLEZhaWwKPj4+PiBAQCAtMTYsMyArMTUsNCBAQCBrbXNfcGxhbmVfYWxw
-aGFfYmxlbmRAYWxwaGEtYmFzaWMsRmFpbAo+Pj4+ICAgIGttc19wbGFuZV9hbHBoYV9ibGVuZEBh
-bHBoYS1vcGFxdWUtZmIsRmFpbAo+Pj4+ICAgIGttc19wbGFuZV9hbHBoYV9ibGVuZEBhbHBoYS10
-cmFuc3BhcmVudC1mYixGYWlsCj4+Pj4gICAga21zX3BsYW5lX2FscGhhX2JsZW5kQGNvbnN0YW50
-LWFscGhhLW1heCxGYWlsCj4+Pj4gK2ttc19hc3luY19mbGlwc0BjcmMsRmFpbAo+Pj4+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL2k5MTUtdGdsLWZhaWxzLnR4dCBiL2Ry
-aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvaTkxNS10Z2wtZmFpbHMudHh0Cj4+Pj4gaW5kZXggYTZk
-YTU1NDRlMTk4Li4yN2JmY2ExYzZmMmMgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2NpL3hmYWlscy9pOTE1LXRnbC1mYWlscy50eHQKPj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-Y2kveGZhaWxzL2k5MTUtdGdsLWZhaWxzLnR4dAo+Pj4+IEBAIC04LDcgKzgsNiBAQCBrbXNfYndA
-bGluZWFyLXRpbGluZy00LWRpc3BsYXlzLTM4NDB4MjE2MHAsRmFpbAo+Pj4+ICAgIGttc19id0Bs
-aW5lYXItdGlsaW5nLTUtZGlzcGxheXMtMTkyMHgxMDgwcCxGYWlsCj4+Pj4gICAga21zX2J3QGxp
-bmVhci10aWxpbmctNS1kaXNwbGF5cy0yNTYweDE0NDBwLEZhaWwKPj4+PiAgICBrbXNfYndAbGlu
-ZWFyLXRpbGluZy01LWRpc3BsYXlzLTM4NDB4MjE2MHAsRmFpbAo+Pj4+IC1rbXNfY29sb3JAY3Rt
-LTAtMjUsRmFpbAo+Pj4+ICAgIGttc19mbGlwQGZsaXAtdnMtcGFubmluZy12cy1oYW5nLFRpbWVv
-dXQKPj4+PiAgICBrbXNfZmxpcF9zY2FsZWRfY3JjQGZsaXAtMzJicHAtbGluZWFyLXRvLTY0YnBw
-LWxpbmVhci1kb3duc2NhbGluZyxGYWlsCj4+Pj4gICAga21zX2ZsaXBfc2NhbGVkX2NyY0BmbGlw
-LTMyYnBwLWxpbmVhci10by02NGJwcC1saW5lYXItdXBzY2FsaW5nLEZhaWwKPj4+PiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXNraXBzLnR4dCBiL2Ry
-aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvbXNtLXNjNzE4MC1za2lwcy50eHQKPj4+PiBpbmRleCA0
-MTBlMGVlYjMxNjEuLmU1OWEyZmRkZmRlMCAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vY2kveGZhaWxzL21zbS1zYzcxODAtc2tpcHMudHh0Cj4+Pj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL2NpL3hmYWlscy9tc20tc2M3MTgwLXNraXBzLnR4dAo+Pj4KPj4+IFNpZGUgbm90ZSwgSSBu
-b3RpY2VkIGZvciBzYzcxODAtc2tpcHMgKGFuZCBhIGxvdCBvZiBvdGhlciBib2FyZHMpIHdlIGhh
-dmU6Cj4+Pgo+Pj4gIyBTdXNwZW5kIHRvIFJBTSBzZWVtcyB0byBiZSBicm9rZW4gb24gdGhpcyBt
-YWNoaW5lCj4+PiAuKnN1c3BlbmQuKgo+Pj4KPj4+IExvY2FsbHkgSSd2ZSBub3QgaGFkIHByb2Js
-ZW1zIHdpdGggdGhlIHN1c3BlbmQgdGVzdHMsIEknbSBndWVzc2luZyB0aGUKPj4+IGFjdHVhbCBp
-c3N1ZSBpcyB1c2ItZXRoZXJuZXQgdnMgbmZzcm9vdC4gIEJ1dCBtYXliZSB0aGUgZmlsZXN5cyBm
-b3IKPj4+IGlndCBqb2JzIGlzIHNtYWxsIGVub3VnaCB0aGF0IHdlIGNhbiBkbyBpbml0cmFtZnMg
-aW5zdGVhZD8gIFNvbWVvbmUKPj4+IHNob3VsZCBwcm9iYWJseSBjb25maXJtIHdoYXQgdGhlIHJv
-b3QgaXNzdWUgaXMgYW5kIHVwZGF0ZSB0aGUKPj4+IGNvbW1lbnRzLCBzbyBkZXZlbG9wZXJzIGFy
-ZW4ndCB0aGlua2luZyB0aGF0IHN1c3BlbmQgaXMgc29tZXRoaW5nIHRoYXQKPj4+IG5lZWRzIHRv
-IGJlIGRlYnVnZ2VkCj4+Cj4+IEFncmVlZC4KPj4KPj4gUmVnYXJkcywKPj4gSGVsZW4KPj4KPj4+
-Cj4+PiBCUiwKPj4+IC1SCj4+Pgo+Pj4KPj4+PiBAQCAtNCwyMCArNCw0IEBACj4+Pj4gICAgIyBU
-ZXN0IGluY29ycmVjdGx5IGFzc3VtZXMgdGhhdCBDVE0gc3VwcG9ydCBpbXBsaWVzIGdhbW1hL2Rl
-Z2FtbWEKPj4+PiAgICAjIExVVCBzdXBwb3J0LiAgTm9uZSBvZiB0aGUgc3VidGVzdHMgaGFuZGxl
-IHRoZSBjYXNlIG9mIG9ubHkgaGF2aW5nCj4+Pj4gICAgIyBDVE0gc3VwcG9ydAo+Pj4+IC1rbXNf
-Y29sb3IuKgo+Pj4+IC0KPj4+PiAtIyA0a0A2MCBpcyBub3Qgc3VwcG9ydGVkIG9uIHRoaXMgaHcs
-IGJ1dCBkcml2ZXIgZG9lc24ndCBoYW5kbGUgaXQKPj4+PiAtIyB0b28gZ3JhY2VmdWxseS4uIGh0
-dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9kcm0vbXNtLy0vaXNzdWVzLzE1Cj4+Pj4gLWtt
-c19id0BsaW5lYXItdGlsaW5nLS4qLWRpc3BsYXlzLTM4NDB4MjE2MHAKPj4+PiAtCj4+Pj4gLSMg
-VW50aWwgaWd0IGZpeCBsYW5kczogaHR0cHM6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0b3Aub3JnL3Bh
-dGNoLzQ5MzE3NS8KPj4+PiAta21zX2J3QGxpbmVhci10aWxpbmctMi4qCj4+Pj4gLWttc19id0Bs
-aW5lYXItdGlsaW5nLTMuKgo+Pj4+IC1rbXNfYndAbGluZWFyLXRpbGluZy00LioKPj4+PiAta21z
-X2J3QGxpbmVhci10aWxpbmctNS4qCj4+Pj4gLWttc19id0BsaW5lYXItdGlsaW5nLTYuKgo+Pj4+
-IC0KPj4+PiAtIyBpZ3QgZml4IHBvc3RlZDogaHR0cHM6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0b3Au
-b3JnL3BhdGNoLzQ5OTkyNi8KPj4+PiAtIyBmYWlsdXJlIG1vZGUgaXMgZmxha2V5IGR1ZSB0byBy
-YW5kb21pemF0aW9uIGJ1dCBmYWlscyBmcmVxdWVudGx5Cj4+Pj4gLSMgZW5vdWdoIHRvIGJlIGRl
-dGVjdGVkIGFzIGEgQ3Jhc2ggb3Igb2NjYXNpb25hbGx5IFVuZXhwZWN0ZWRQYXNzLgo+Pj4+IC1r
-bXNfcGxhbmVfbXVsdGlwbGVAYXRvbWljLXBpcGUtQS10aWxpbmctbm9uZQo+Pj4+ICsja21zX2Nv
-bG9yLioKPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hp
-cC1yazMyODgtZmFpbHMudHh0IGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1y
-azMyODgtZmFpbHMudHh0Cj4+Pj4gaW5kZXggMmExYmFhOTQ4ZTEyLi4xNWFjODYxYTU4YmYgMTAw
-NjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1yazMyODgt
-ZmFpbHMudHh0Cj4+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy9yb2NrY2hpcC1y
-azMyODgtZmFpbHMudHh0Cj4+Pj4gQEAgLTQ2LDMgKzQ2LDUgQEAga21zX3Byb3BlcnRpZXNAY29u
-bmVjdG9yLXByb3BlcnRpZXMtbGVnYWN5LENyYXNoCj4+Pj4gICAga21zX3Byb3BlcnRpZXNAZ2V0
-X3Byb3BlcnRpZXMtc2FuaXR5LWF0b21pYyxDcmFzaAo+Pj4+ICAgIGttc19wcm9wZXJ0aWVzQGdl
-dF9wcm9wZXJ0aWVzLXNhbml0eS1ub24tYXRvbWljLENyYXNoCj4+Pj4gICAga21zX3NldG1vZGVA
-aW52YWxpZC1jbG9uZS1zaW5nbGUtY3J0YyxDcmFzaAo+Pj4+ICtrbXNfZmxpcEBmbGlwLXZzLW1v
-ZGVzZXQtdnMtaGFuZyxDcmFzaAo+Pj4+ICtrbXNfZmxpcEBmbGlwLXZzLXBhbm5pbmctdnMtaGFu
-ZyxDcmFzaAo+Pj4+IC0tCj4+Pj4gMi40MS4wCj4+Pj4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============1660166781939687065==
+Content-Type: multipart/signed; boundary="Sig_/whNYN0BaPvA7+2Dd9n3sm9G";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
+
+--Sig_/whNYN0BaPvA7+2Dd9n3sm9G
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 20 Sep 2023 16:35:18 +0200
+Maxime Ripard <mripard@kernel.org> wrote:
+
+> The i915 driver has a property to force the RGB range of an HDMI output.
+> The vc4 driver then implemented the same property with the same
+> semantics. KWin has support for it, and a PR for mutter is also there to
+> support it.
+>=20
+> Both drivers implementing the same property with the same semantics,
+> plus the userspace having support for it, is proof enough that it's
+> pretty much a de-facto standard now and we can provide helpers for it.
+>=20
+> Let's plumb it into the newly created HDMI connector.
+>=20
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  Documentation/gpu/kms-properties.csv      |  1 -
+>  drivers/gpu/drm/drm_atomic.c              |  5 +++
+>  drivers/gpu/drm/drm_atomic_state_helper.c | 17 +++++++
+>  drivers/gpu/drm/drm_atomic_uapi.c         |  4 ++
+>  drivers/gpu/drm/drm_connector.c           | 74 +++++++++++++++++++++++++=
+++++++
+>  include/drm/drm_connector.h               | 39 ++++++++++++++++
+>  6 files changed, 139 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/gpu/kms-properties.csv b/Documentation/gpu/kms=
+-properties.csv
+> index 0f9590834829..caef14c532d4 100644
+> --- a/Documentation/gpu/kms-properties.csv
+> +++ b/Documentation/gpu/kms-properties.csv
+> @@ -17,7 +17,6 @@ Owner Module/Drivers,Group,Property Name,Type,Property =
+Values,Object attached,De
+>  ,Virtual GPU,=E2=80=9Csuggested X=E2=80=9D,RANGE,"Min=3D0, Max=3D0xfffff=
+fff",Connector,property to suggest an X offset for a connector
+>  ,,=E2=80=9Csuggested Y=E2=80=9D,RANGE,"Min=3D0, Max=3D0xffffffff",Connec=
+tor,property to suggest an Y offset for a connector
+>  ,Optional,"""aspect ratio""",ENUM,"{ ""None"", ""4:3"", ""16:9"" }",Conn=
+ector,TDB
+> -i915,Generic,"""Broadcast RGB""",ENUM,"{ ""Automatic"", ""Full"", ""Limi=
+ted 16:235"" }",Connector,"When this property is set to Limited 16:235 and =
+CTM is set, the hardware will be programmed with the result of the multipli=
+cation of CTM by the limited range matrix to ensure the pixels normally in =
+the range 0..1.0 are remapped to the range 16/255..235/255."
+
+Hi,
+
+have a look at this old doc for the property, and...
+
+>  ,,=E2=80=9Caudio=E2=80=9D,ENUM,"{ ""force-dvi"", ""off"", ""auto"", ""on=
+"" }",Connector,TBD
+>  ,SDVO-TV,=E2=80=9Cmode=E2=80=9D,ENUM,"{ ""NTSC_M"", ""NTSC_J"", ""NTSC_4=
+43"", ""PAL_B"" } etc.",Connector,TBD
+>  ,,"""left_margin""",RANGE,"Min=3D0, Max=3D SDVO dependent",Connector,TBD
+
+...
+
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
+tor.c
+> index d9a7e101e4e5..b45471d540ac 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -1174,6 +1174,29 @@ static const u32 dp_colorspaces =3D
+>  	BIT(DRM_MODE_COLORIMETRY_BT2020_CYCC) |
+>  	BIT(DRM_MODE_COLORIMETRY_BT2020_YCC);
+> =20
+> +static const struct drm_prop_enum_list broadcast_rgb_names[] =3D {
+> +	{ DRM_HDMI_BROADCAST_RGB_AUTO, "Automatic" },
+> +	{ DRM_HDMI_BROADCAST_RGB_FULL, "Full" },
+> +	{ DRM_HDMI_BROADCAST_RGB_LIMITED, "Limited 16:235" },
+> +};
+> +
+> +/*
+> + * drm_hdmi_connector_get_broadcast_rgb_name - Return a string for HDMI =
+connector RGB broadcast selection
+> + * @broadcast_rgb: Broadcast RGB selection to compute name of
+> + *
+> + * Returns: the name of the Broadcast RGB selection, or NULL if the type
+> + * is not valid.
+> + */
+> +const char *
+> +drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb br=
+oadcast_rgb)
+> +{
+> +	if (broadcast_rgb > DRM_HDMI_BROADCAST_RGB_LIMITED)
+> +		return NULL;
+> +
+> +	return broadcast_rgb_names[broadcast_rgb].name;
+> +}
+> +EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
+> +
+>  /**
+>   * DOC: standard connector properties
+>   *
+> @@ -1640,6 +1663,24 @@ EXPORT_SYMBOL(drm_connector_attach_dp_subconnector=
+_property);
+>  /**
+>   * DOC: HDMI connector properties
+>   *
+> + * Broadcast RGB (HDMI Specific):
+> + *      Indicates the RGB Range (Full vs Limited) used.
+> + *
+> + *      The value of this property can be one of the following:
+> + *
+> + *      Automatic:
+> + *              RGB Range is selected automatically based on the mode
+> + *              according to the HDMI specifications.
+> + *
+> + *      Full:
+> + *              Full RGB Range is forced.
+> + *
+> + *      Limited 16:235:
+> + *              Limited RGB Range is forced.
+> + *
+> + *      Drivers can set up this property by calling
+> + *      drm_connector_attach_broadcast_rgb_property().
+
+...compare it to this. There is one crucial detail lost: setting this
+property does two or three things: it clips conversion input values to
+[0.0, 1.0] range, programs a conversion matrix to convert full-range
+RGB to destination RGB, and sends infoframes to indicate the chosen
+destination RGB.
+
+The distinction is important, because use cases like PLUGE calibration
+(Rec. ITU-R BT.814-4) rely on indicating limited range while pixel
+values are still able to carry sub-black values. Other procedures might
+also want to use super-whites. This is impossible with the existing
+"Broadcast RGB" property, but that is a different matter.
+
+The old doc didn't exactly say it sets the infoframe fields either, but
+I presume it does.
+
+I feel the documentation needs to be much more explicit here.
+
+> + *
+>   * content type (HDMI specific):
+>   *	Indicates content type setting to be used in HDMI infoframes to indic=
+ate
+>   *	content type for the external device, so that it adjusts its display
+> @@ -2500,6 +2541,39 @@ int drm_connector_attach_hdr_output_metadata_prope=
+rty(struct drm_connector *conn
+>  }
+>  EXPORT_SYMBOL(drm_connector_attach_hdr_output_metadata_property);
+> =20
+> +/**
+> + * drm_connector_attach_broadcast_rgb_property - attach "Broadcast RGB" =
+property
+> + * @connector: connector to attach max bpc property on.
+
+"max bpc" pasta.
+
+> + *
+> + * This is used to add support for forcing the RGB range on a connector
+> + *
+> + * Returns:
+> + * Zero on success, negative errno on failure.
+> + */
+> +int drm_connector_attach_broadcast_rgb_property(struct drm_connector *co=
+nnector)
+> +{
+> +	struct drm_device *dev =3D connector->dev;
+> +	struct drm_property *prop;
+> +
+> +	prop =3D connector->broadcast_rgb_property;
+> +	if (!prop) {
+> +		prop =3D drm_property_create_enum(dev, DRM_MODE_PROP_ENUM,
+> +						"Broadcast RGB",
+> +						broadcast_rgb_names,
+> +						ARRAY_SIZE(broadcast_rgb_names));
+> +		if (!prop)
+> +			return -EINVAL;
+> +
+> +		connector->broadcast_rgb_property =3D prop;
+> +	}
+> +
+> +	drm_object_attach_property(&connector->base, prop,
+> +				   DRM_HDMI_BROADCAST_RGB_AUTO);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(drm_connector_attach_broadcast_rgb_property);
+> +
+>  /**
+>   * drm_connector_attach_colorspace_property - attach "Colorspace" proper=
+ty
+>   * @connector: connector to attach the property on.
+> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> index 5961f2ad48b1..fdcf64ab91a9 100644
+> --- a/include/drm/drm_connector.h
+> +++ b/include/drm/drm_connector.h
+> @@ -368,6 +368,33 @@ enum drm_panel_orientation {
+>  	DRM_MODE_PANEL_ORIENTATION_RIGHT_UP,
+>  };
+> =20
+> +/**
+> + * enum drm_hdmi_broadcast_rgb - Broadcast RGB Selection for a @drm_hdmi=
+_connector
+> + *
+> + * This enum is used to track broadcast RGB selection. There are no
+> + * separate #defines for the uapi!
+
+Why the "no separate defines" comment? That's the norm.
+
+The KMS property UAPI works by string names for enum values. Some enum
+properties might expose C enums for the values, but that is an
+exception that cannot be fixed due to stable UAPI.
+
+
+Thanks,
+pq
+
+> + */
+> +enum drm_hdmi_broadcast_rgb {
+> +	/**
+> +	 * @DRM_HDMI_BROADCAST_RGB_AUTO: The RGB range is selected
+> +	 * automatically based on the mode.
+> +	 */
+> +	DRM_HDMI_BROADCAST_RGB_AUTO,
+> +
+> +	/**
+> +	 * @DRM_HDMI_BROADCAST_RGB_FULL: Full range RGB is forced.
+> +	 */
+> +	DRM_HDMI_BROADCAST_RGB_FULL,
+> +
+> +	/**
+> +	 * @DRM_HDMI_BROADCAST_RGB_LIMITED: Limited range RGB is forced.
+> +	 */
+> +	DRM_HDMI_BROADCAST_RGB_LIMITED,
+> +};
+
+--Sig_/whNYN0BaPvA7+2Dd9n3sm9G
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmUMAS8ACgkQI1/ltBGq
+qqc3XA/9ECTVC9T0gCqODWNk5wpTe/rrNuuHwqZsSzh3lDAK8NrTGSnuIuMXWGSj
+vljtNwo3HH3V9o/dn5AsgBH6W2TQkFAeth05KqFVSXbcNO4eNSNNxmFlWl+fZ8HA
+ePTbRN2FWZ1FWujVDZEWBetPxs3a662dH7YOjZrhh6dMxU0PbgKgOaUVoUrimRht
+Lh3VJUfi3utYySd2kHSqO7/yaT8M7hC2wVfSk1OcD3PNb9w6ntBMAfzDQ/Nubo6V
+nNGZsB+DrKkSYa7q7LDienXuonsPyVpLw9e90tZJcHmzD6gUYDymEoTdy4rv6u2N
+Gn2kTUbPFPCNlEuBpe0lQhRrTJcl2oqF19zllvRSrEgwBX1c8PSx8C6RUlqd0l7c
+btRB6rNODtr52ySQLOHWUjaQ/xAT8pbswadOilUFRJFrNJHSkXxR2Ij21L7TbLpb
+KstqX3IAk33IVQzafw5fdXfofU/PvUvLiFYJV/5nsbSeU409buZu+p7kCjvNaG5R
+385N6MTELzTD5fjvZn7OtAjdmsRlb2opYASo5vU9F4zw/NqDUFEqzRj3IeOZ7SAe
+orEitPwAzPSsS4+6D4bJbzutcvHLpScQ8go7iZzeY/idr2BcsCkpNGlDZ89uk6Lu
+wIH7tiRHk8r/2akYDa2Sl1zPnU/ELxUrbbWCWyjJSeE1CF5LZpc=
+=A8/v
+-----END PGP SIGNATURE-----
+
+--Sig_/whNYN0BaPvA7+2Dd9n3sm9G--
+
+
+--===============1660166781939687065==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1660166781939687065==--
+
