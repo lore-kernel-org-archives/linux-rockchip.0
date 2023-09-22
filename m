@@ -4,67 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF730E6FE32
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Sep 2023 13:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07ADE6FE41
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Sep 2023 15:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lyHk1Zi5WiOcw907ZSXXCe83zMD7C29gl60goFyjKdU=; b=birK2yi2RTxCAW
-	DZZK0zN9B+ZwUw2yVEHqaWTpSd/NVVc4AKBXkk/QaPq8jmTd7bvAMsL8Z2tVMtyW7FlquqTNcFDSq
-	lzawJ0kZMeruBHPEijoOOw8kPOv4A6BVCLdghePXiucYeOT0KeAY3WyZ4skEBe357wwJWY3Lu4zac
-	Hpxs0S6te23R/LhhYZ7PGS8QNOZkOJv5qHAzObBVhdXzl9QkSciOWaS88lgDwYg6VuB4ivWGf1Spq
-	XQHsRRVw9ZwIEP/ikgO7XYb0FE1oKXIWHwU+yRKhjd30MGt7tbhVaMYHGXQ5eu2pQd6XqQHB5NQFv
-	FP4huAN09/FcU9+IBYZg==;
+	List-Owner; bh=wOnMouEyN1dLrXeB0ijZ04Ul9JGYAAZqUH98+iza1nU=; b=Y241lta1ZiWenJ
+	qe50lknUs9JSJcqxoPjVfD66UuZePAuiVBHkPlMA/aschdYL9iPnzuhPq9kFIic2QKARU/Cdd3XIB
+	9pD32OmgaFJMMf9EWUopzos/eRPiE9F3BsX9W4w7H0XF9QU0NA9p294fILtCLkwNzJfVzRIwnabdt
+	W9LkG1G9zeTO1wIYbYnxT3D8svL+a6oDx7G5KFw2OewYS2BhIPVTUFCIjdAIZ0V5N8xV7ZQY/7vU+
+	+uMI6vs5NoaJvQ4Jml8Dbdz/F2CCWNT27FaEjriljuj5MQoD0Nsw5hRzH5aOPDK2+9r62nkQOKTlf
+	OTVRJoZDFMX/o/b7w6qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjgbP-0099ZS-1u;
-	Fri, 22 Sep 2023 13:53:51 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qjhvf-009Ih2-2I;
+	Fri, 22 Sep 2023 15:18:51 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qjgbM-0099YK-0B;
-	Fri, 22 Sep 2023 13:53:49 +0000
-Received: from [192.168.68.123] (unknown [177.98.21.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 284DF66072BD;
-	Fri, 22 Sep 2023 14:53:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695390824;
-	bh=WoiS3+8J2m0h7J1ZYU1c9DU2eQCub1jdA/yONAZ1bYk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QeM9MoNZ0/i5NssNN3eIMNJnh/KuVZ3GdFE4UdN3s1KKEbL+KzuAVB/ktU+FuhnJC
-	 2S/z3KiEBwnQuUKfuClAANB8gx1laSJWGF+dVNjSVsQibm/e4vVN6psO7SfYGcvB/O
-	 wd6txqBR8BO7J0rysd5/XpgWVU0bllFaaHRtRfQPlTCUh26jiIcFReYnN2yU+gCfqI
-	 Xidw9JbP3gAW8YpqOY5dmlydxyvDa2VschOrDhA/e7Y/qyiCUAq9Jz5eY7R923xCAo
-	 tCjp4fvc2Gd6CbX0qStK2UywRUBlsIjiX4tVIc2lKtP+QikTO5Dq5xf31grl3eStWs
-	 52QFxq9cMkqLQ==
-Message-ID: <26cb3404-56ad-8e23-5da5-eee94c4c4350@collabora.com>
-Date: Fri, 22 Sep 2023 10:53:35 -0300
+	id 1qjhvb-009Icj-39;
+	Fri, 22 Sep 2023 15:18:49 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 04FE5968;
+	Fri, 22 Sep 2023 17:16:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1695395808;
+	bh=2J9SlBU+ytt0y3KvMFmzHUbWbCAyEXh4/rzIlFpUB0w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ct7MuQZ/eQBmDokZWM1/hhuJFkZMWrbUO5xFmdhrmhCaxW1seVYTzX/OLB4sj4aVS
+	 xIw1Fa8XJ7OYNKIviYH9lf91nEnJk23dfvEDtzC8Gj8gjIlZ2HpCGyFj0YAzDM40jJ
+	 +Az23dSDP0ZyqhxCsO2maTWGxd2oOT3XWV+RsVVQ=
+Date: Fri, 22 Sep 2023 18:18:38 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Martijn Braam <martijn@brixit.nl>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rkisp1: Promote link validation error to dev_err
+Message-ID: <20230922151838.GA22696@pendragon.ideasonboard.com>
+References: <20230719145534.9812-1-martijn@brixit.nl>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v4 0/7] drm: ci: fixes
-Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>, airlied@gmail.com,
- daniel@ffwll.ch
-Cc: david.heidelberg@collabora.com, sergi.blanch.torne@collabora.com,
- guilherme.gallo@collabora.com, daniels@collabora.com,
- gustavo.padovan@collabora.com, emma@anholt.net, robdclark@gmail.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- virtualization@lists.linux-foundation.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20230914085426.883255-1-vignesh.raman@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20230914085426.883255-1-vignesh.raman@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20230719145534.9812-1-martijn@brixit.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230922_065348_268576_3F874EA5 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20230922_081848_180954_AE4DA188 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,66 +64,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Martijn,
 
+Thank you for the patch.
 
-On 14/09/2023 05:54, Vignesh Raman wrote:
-> The patch series contains improvements, enabling new ci jobs which
-> enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
-> fixing issues with the ci jobs and updating the expectation files.
-> This series is intended for drm branch drm-next.
+On Wed, Jul 19, 2023 at 04:55:33PM +0200, Martijn Braam wrote:
+> Show an error when the pipeline cannot start due to an invalid link
+> instead of hiding it behind the debugging system.
+
+While this can help debugging issues in applications, allowing
+unpriviledged applications to control messages being printed to the
+kernel log is frowned upon, is it could flood the log. This is why these
+messages use dev_dbg() and not dev_err().
+
+> Signed-off-by: Martijn Braam <martijn@brixit.nl>
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> v2:
->    - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
->    - Reworded the commit message for enabling jobs
->    - Added a new patch in the series to use scripts/config to enable/disable configs
-> 
-> v3:
->    - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
->    - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
->    - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
->    - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
-> 
-> v4:
->    - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
->    - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
->      This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index 8f3cba319762..9361b9086f6b 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -1340,7 +1340,7 @@ static int rkisp1_capture_link_validate(struct media_link *link)
+>  	if (sd_fmt.format.height != cap->pix.fmt.height ||
+>  	    sd_fmt.format.width != cap->pix.fmt.width ||
+>  	    sd_fmt.format.code != fmt->mbus) {
+> -		dev_dbg(cap->rkisp1->dev,
+> +		dev_err(cap->rkisp1->dev,
+>  			"link '%s':%u -> '%s':%u not valid: 0x%04x/%ux%u != 0x%04x/%ux%u\n",
+>  			link->source->entity->name, link->source->index,
+>  			link->sink->entity->name, link->sink->index,
 
-Jfyi, this patch got applied, see 
-https://lore.kernel.org/lkml/169539077994.4014786.12440074307606036817.b4-ty@kernel.org/
-
+-- 
 Regards,
-Helen
-> 
-> Vignesh Raman (7):
->    drm: ci: igt_runner: Remove todo
->    drm: ci: Force db410c to host mode
->    drm: ci: virtio: Update ci variables
->    drm: ci: Enable regulator
->    drm: ci: Update xfails
->    drm: ci: Enable new jobs
->    drm: ci: Use scripts/config to enable/disable configs
-> 
->   drivers/gpu/drm/ci/arm64.config                  |  1 +
->   drivers/gpu/drm/ci/build.sh                      | 16 ++++++++--------
->   drivers/gpu/drm/ci/igt_runner.sh                 |  1 -
->   drivers/gpu/drm/ci/test.yml                      | 16 +++++-----------
->   .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt    |  1 -
->   drivers/gpu/drm/ci/xfails/i915-cml-fails.txt     |  1 -
->   drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt    |  2 ++
->   drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt    |  1 +
->   .../gpu/drm/ci/xfails/mediatek-mt8173-fails.txt  |  2 --
->   .../gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt | 16 ++++++++++++++++
->   drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt |  2 ++
->   .../gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt |  1 +
->   .../gpu/drm/ci/xfails/rockchip-rk3399-fails.txt  |  4 ++--
->   .../gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt |  3 +++
->   14 files changed, 41 insertions(+), 26 deletions(-)
-> 
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
