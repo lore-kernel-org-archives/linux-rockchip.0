@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EFCFCE79A4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 21:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7E03CE79A4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 21:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xO4/+VQlpoEAohPum1PH6WUuUTSCRCIeHvbPZA8xRU8=; b=pmY1hynW4Gjsfy
-	Av5Y82XbFzH6e9kEt6EHLPvew8EAUmJr/EhdMesddjKMLJa3rCiTiIr2gTQwfUO8195AqeEc6MV9X
-	9Pl8djsPz5vv8swhszzsDB9B5DQiNSlx/bdQTL6HxG8Gk+PG9V1SDtLqb7C5/bgPwuYWSjQEY2jRx
-	RpyZD16LiCbl2Re5qi0aV0uFhfkB+rvu0JHNSn9coa1zSE72Cde2MvVVhXrJx+/p8u/az9uxiZadm
-	jcH4zOC6kacQ3yMc4jRNRpS0HUQsRrpwBdroxy1nUfvFiXOhScsp4Vz1bIKuFZURMa71oc38Gu/kX
-	OTCGZ7FXs8dvOZmN0ykg==;
+	List-Owner; bh=hPcn2nrKiu7xLKUMwdeQVcA5h+kbDL6B1K8hSScZ6rc=; b=ZHQ50/VLEM0ep5
+	CcwNkCKax8bZ6oykACYRVom19Js1MdlpabUoCgNip/YeSM6oiEROymuAGJ+bSqI9PQhLgddYBZecF
+	Wstz1wP/iw6dZfYxtmqRfn/Q+/J4JApiI6B5rYl8SmyWnJo5LwM4kKTCIxT+KZTPDrFf7nM5B8W15
+	RYuUBT/rII0lk8HL4x1L2h689UeOzwztOPpMU2YaLWiXChrCuBHFpQfN93SU6j1jdanZGW1N+9qrQ
+	waSCyCc3+vwqUERxa7pMLIJrvBj5O0M/0cZsznYESRtPaqkqHFzmpbZJM3/tFNGqy2xiiG2Obn6GW
+	RqGL1k+UDtwS4Jyt7QZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkt74-00F38a-1k;
-	Mon, 25 Sep 2023 21:27:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qkt7f-00F3LS-0K;
+	Mon, 25 Sep 2023 21:28:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkt70-00F37Z-1f;
-	Mon, 25 Sep 2023 21:27:28 +0000
+	id 1qkt7a-00F3Ib-1y;
+	Mon, 25 Sep 2023 21:28:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C7FF46123A;
-	Mon, 25 Sep 2023 21:27:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F28BDC433C8;
-	Mon, 25 Sep 2023 21:27:22 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 18322B80E3E;
+	Mon, 25 Sep 2023 21:28:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CFE8C433CA;
+	Mon, 25 Sep 2023 21:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695677245;
-	bh=ttt9MxqlXu8nD2JgUN9u6TOQN+41IkV1ecAtDT3N474=;
+	s=k20201202; t=1695677280;
+	bh=/O3CPAN/HC+aJwYPv4Gy4+9esRpB0kLO0vBTmNz9WPc=;
 	h=From:To:Cc:Subject:Date:From;
-	b=kYnloxV/57uAVpHewX8XeuFQPLiTF2QIJwR0cP+ubSh+Jx6ve4QYl+vRxwIp1BshC
-	 nvlL3Jqc63g61QjTGgGm/6AfydVlM+FMEagcyDPX04Km1rjPfNX9f11AfahfOAyJCu
-	 Sf4EtAb5DSS0GSkbtBII0jf3EfkACJf2tv7vhTRZU2XbVdbTclfy8HDeSGCdGhAJr7
-	 j4JJP1n2KZtDHbuH5oBJWz+wrl6Y7tN/U0HuyXP5S001xOEvMYkaw/fFPUTcLHaPDd
-	 nvM/48XZgpcbSmqU6KpQPj5JkTS1JSpjAKN2XpeHTQSP9RU8RA7ZNfKmD+S8Utl/76
-	 K+u3kLdH8dn1A==
-Received: (nullmailer pid 1976042 invoked by uid 1000);
-	Mon, 25 Sep 2023 21:27:19 -0000
+	b=JoJn+1u8Q6A2ET+C1mL8s3BDRWYdDAk6Tzsxyj/GtRfXrq5MQRvGDXrtUOKbSixCc
+	 U1vg6A4YsNkifiVEL6u1kC/FWTY6wHEwgsVeBQhbUYR5JW3QXmkS6xO9BUJDyN0pOB
+	 t9sQgTXx/CQRlYucZkgOitprFi4Ttpa26X1EvS1eRGFSXKLjDTTbR46z9NDM+AFJfu
+	 /VtM0mgb2HdzO0ybi97omBUfEw19cWpCvenkIBQBfdVm/fqk26tbme+fW9jt1WDU6h
+	 oxxVzDn99Jg3LR8dOBjxw/iTrG3awSXNXc97dgOmHEswX2ydYxAYGKMHAcjHUHQM8g
+	 zwRB+Ja/jg0Lw==
+Received: (nullmailer pid 1976712 invoked by uid 1000);
+	Mon, 25 Sep 2023 21:27:53 -0000
 From: Rob Herring <robh@kernel.org>
-To: Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, Magnus Damm <magnus.damm@gmail.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, Fabrizio Castro <fabrizio.castro.jz@renesas.com>
-Cc: Konrad Dybcio <konrad.dybcio@somainline.org>, linux-arm-msm@vger.kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH] dt-bindings: pinctrl: Add missing additionalProperties on child node schemas
-Date: Mon, 25 Sep 2023 16:27:10 -0500
-Message-Id: <20230925212713.1975800-1-robh@kernel.org>
+To: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Patrick Rudolph <patrick.rudolph@9elements.com>, Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, - Keerthy <j-keerthy@ti.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH] dt-bindings: mfd: Add missing unevaluatedProperties on child node schemas
+Date: Mon, 25 Sep 2023 16:27:24 -0500
+Message-Id: <20230925212729.1976117-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_142726_874227_CDA1EAB2 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20230925_142802_933031_A784AEE4 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +76,146 @@ the top level of schemas, they should (and will) also be required for
 child node schemas. That ensures only documented properties are
 present for any node.
 
+Add unevaluatedProperties as needed, and then add any missing properties
+flagged by the addition.
+
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/pinctrl/qcom,mdm9607-tlmm.yaml         | 3 ++-
- .../devicetree/bindings/pinctrl/renesas,rzg2l-pinctrl.yaml     | 1 +
- .../devicetree/bindings/pinctrl/renesas,rzv2m-pinctrl.yaml     | 1 +
- .../devicetree/bindings/pinctrl/rockchip,pinctrl.yaml          | 2 ++
- 4 files changed, 6 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/maxim,max5970.yaml   | 5 +++++
+ Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml | 2 ++
+ Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml  | 3 ++-
+ Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml  | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml   | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml   | 1 +
+ Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml   | 1 +
+ 9 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,mdm9607-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,mdm9607-tlmm.yaml
-index 2aedb7e7bc8b..5ece3b9d676b 100644
---- a/Documentation/devicetree/bindings/pinctrl/qcom,mdm9607-tlmm.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/qcom,mdm9607-tlmm.yaml
-@@ -43,7 +43,8 @@ patternProperties:
-   "-state$":
-     oneOf:
-       - $ref: "#/$defs/qcom-mdm9607-tlmm-state"
--      - patternProperties:
-+      - additionalProperties: false
-+        patternProperties:
-           ".*":
-             $ref: "#/$defs/qcom-mdm9607-tlmm-state"
+diff --git a/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml b/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
+index da67742c5aa9..0da5cae3852e 100644
+--- a/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
++++ b/Documentation/devicetree/bindings/mfd/maxim,max5970.yaml
+@@ -45,8 +45,13 @@ properties:
+     patternProperties:
+       "^led@[0-3]$":
+         $ref: /schemas/leds/common.yaml#
++        unevaluatedProperties: false
+         type: object
  
-diff --git a/Documentation/devicetree/bindings/pinctrl/renesas,rzg2l-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/renesas,rzg2l-pinctrl.yaml
-index 145c5442f268..4782f96feb7e 100644
---- a/Documentation/devicetree/bindings/pinctrl/renesas,rzg2l-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/renesas,rzg2l-pinctrl.yaml
-@@ -73,6 +73,7 @@ properties:
- additionalProperties:
-   anyOf:
-     - type: object
-+      additionalProperties: false
-       allOf:
-         - $ref: pincfg-node.yaml#
-         - $ref: pinmux-node.yaml#
-diff --git a/Documentation/devicetree/bindings/pinctrl/renesas,rzv2m-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/renesas,rzv2m-pinctrl.yaml
-index cb81a17bd0b1..5fa5d31f8866 100644
---- a/Documentation/devicetree/bindings/pinctrl/renesas,rzv2m-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/renesas,rzv2m-pinctrl.yaml
-@@ -53,6 +53,7 @@ properties:
- additionalProperties:
-   anyOf:
-     - type: object
-+      additionalProperties: false
-       allOf:
-         - $ref: pincfg-node.yaml#
-         - $ref: pinmux-node.yaml#
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-index 10c335efe619..20e806dce1ec 100644
---- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-@@ -115,6 +115,8 @@ additionalProperties:
-   type: object
-   additionalProperties:
-     type: object
-+    additionalProperties: false
++        properties:
++          reg:
++            maximum: 3
 +
-     properties:
-       rockchip,pins:
-         $ref: /schemas/types.yaml#/definitions/uint32-matrix
+     additionalProperties: false
+ 
+   vss1-supply:
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+index fc2a53148e1c..37423c2e0fdf 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+@@ -40,6 +40,7 @@ properties:
+   regulators:
+     type: object
+     $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
++    unevaluatedProperties: false
+     description:
+       List of MT6357 BUCKs and LDOs regulators.
+ 
+@@ -59,6 +60,7 @@ properties:
+   keys:
+     type: object
+     $ref: /schemas/input/mediatek,pmic-keys.yaml
++    unevaluatedProperties: false
+     description:
+       MT6357 power and home keys.
+ 
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+index 4992f71b6fc3..af6cd1969c22 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -80,6 +80,7 @@ properties:
+       "^(DCDC_REG[1-4]|LDO_REG[1-3])$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ allOf:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+index f5908fa01a61..8a16d651c2a3 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+@@ -107,6 +107,7 @@ properties:
+       "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+index 7fb849ac74a7..e922e0176ee7 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+@@ -86,7 +86,8 @@ properties:
+     patternProperties:
+       "^(LDO_REG[1-9]|DCDC_REG[1-5]|SWITCH_REG[1-2])$":
+         type: object
+-        $ref: ../regulator/regulator.yaml#
++        $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ allOf:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+index b57c4b005cf4..ee5bca6e75df 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+@@ -99,6 +99,7 @@ properties:
+       "^(DCDC_REG[1-4]|DCDC_BOOST|LDO_REG[1-9]|SWITCH_REG|HDMI_SWITCH|OTG_SWITCH)$":
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
+index f6cac4b1079c..ae149eb8593d 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87524-q1.yaml
+@@ -37,6 +37,7 @@ properties:
+       "^buck[0123]$":
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck0
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
+index dc5a29b5ef7d..5167d6eb904a 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87561-q1.yaml
+@@ -41,6 +41,7 @@ properties:
+       buck3210:
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck3210
+diff --git a/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml b/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
+index 012d25111054..eca430edf608 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,lp87565-q1.yaml
+@@ -47,6 +47,7 @@ properties:
+       "^buck(10|23)$":
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - buck10
 -- 
 2.40.1
 
