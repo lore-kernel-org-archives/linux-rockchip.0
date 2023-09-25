@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 006D2CE7A91
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 00:41:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63896CE7A96
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 00:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s6Cno0M+9+9pvwf3hO95dnGeh24MGT5ucNLge+l5gRE=; b=vUN3o8qCEVtFpy
-	E+L397a+n4LSdP9TM09R8vLO8EN5OiUK8BUDrhp5a6yWCdJ2vMcrr7b/DcmG8R2gKcf4VqS4pa0zL
-	alHm6591+HTuDWo5nkpPTbL+y9UoCmER2XiZ1p5cfgirO8W2GnMBKBCa3MF2DRFCp0iPusHgh1AMR
-	AN4pkXfNRd9aZ+7AHJSUCY9Lrq+LXgqmLI5NukEmGC/wLILzUnVmG3A5A5+bTuTlRv9ZDok6tedYZ
-	SyTG5O3/uwn2y3ufEpXWjJpjnP2mJHVh8PJE1I4SxDyghGrEf3m9cNFx3RE/HRke5Lf3FqOAHBzV+
-	pxOkipEZkRlkmyp0bBMg==;
+	List-Owner; bh=DZ28ripV3gpdUc1S/2QELbCLUUELkrM/Z/avOo2XMsk=; b=v/6aGdWqyLOztq
+	OQ/Hv5/L1TJEsGukW6E3G3BnFuFdbR8qLXp8WgOLfCvWdiJFHe+BGBFCE6gv9ngSEp/yTGNNkOLZ2
+	YNb/61lE8iBUKrDxg6ADlWa4ZAUJxEbqNlP/clepRuHH1C6YGsyYawqlFVwmS/SQpfcii3YKB04AH
+	3//CzYK7Tob2ezUtuodRoSYKiJArHEqWgA6dE0mp7HrN+QMg9pdIrSjSHSD8kf8rf71JILXklmAyR
+	cPUjVFSBfxstEAUyY3D4B3TeuQSfZftfkuX45ubDe7guQrq/dVIHopQz2AufORHRJKRHL9xJJKCoQ
+	a/yCyWAU8tYKAzlTGGqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkZf0-00D1wo-0H;
-	Mon, 25 Sep 2023 00:41:14 +0000
+	id 1qkZf4-00D208-18;
+	Mon, 25 Sep 2023 00:41:18 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkZes-00D1tM-2z
+	id 1qkZez-00D1w4-1w
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Sep 2023 00:41:11 +0000
+	Mon, 25 Sep 2023 00:41:14 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1054B8E1;
-	Mon, 25 Sep 2023 02:39:24 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9D1832CF;
+	Mon, 25 Sep 2023 02:39:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1695602365;
-	bh=MXd3iv4jfs5zPZ1AEA4RU72ppLDPzxf2I/40lNBQnrM=;
+	s=mail; t=1695602372;
+	bh=p36jN2uaI3nsLt9GCf4RazFnx5SCbQz4V6wr9yJ4OGY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qw8Nz2GY+Snv51VQYWax3ckS/K76a5nzyArmC0pvRoJH1MBn2iRf66pPkC7kuukZt
-	 +R9WD9pgCYcxPUO6BTbgsWBtRM57BTeXqdvIy8ibaF1ewXxu5thPyG/MxIHdDsA8ya
-	 hI6sHwYhRAjimNl1PN6ERzCEo1crZ9jVuQS87coo=
+	b=RXmK5akcszYJflXdZxU05qn6HKt6tB7m5eaNHoUfGFr2qBCDWMvHdOaE1s54lMkRd
+	 7x0j2E4Lq4p4+d/8arqkbML+W1icpcv2WB4lDjr1J7667/21Z+60fStkpKZDjxZig2
+	 xYNe9zxe16eKtM3swoMRGsAVNNiV9XY3ybvzKENM=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>,
 	Paul Elder <paul.elder@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 02/14] media: rkisp1: resizer: Use V4L2 subdev active state
-Date: Mon, 25 Sep 2023 03:41:00 +0300
-Message-ID: <20230925004112.22797-3-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 07/14] media: rkisp1: Fix line stride calculation
+Date: Mon, 25 Sep 2023 03:41:05 +0300
+Message-ID: <20230925004112.22797-8-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230925004112.22797-1-laurent.pinchart@ideasonboard.com>
 References: <20230925004112.22797-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_174107_252297_2DAE2D59 
-X-CRM114-Status: GOOD (  20.99  )
+X-CRM114-CacheID: sfid-20230924_174113_798061_3C122FFA 
+X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,431 +69,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the V4L2 subdev active state API to store the active format and crop
-rectangle. This simplifies the driver not only by dropping the state
-stored in the rkisp1_resizer structure, but also by replacing the
-ops_lock with the state lock.
+The line stride is expressed in the hardware as a number of pixels for
+the first plane. The bytesperline must thus be a multiple of the first
+plane's bpp value. Enforce this constraint.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h  |   6 -
- .../platform/rockchip/rkisp1/rkisp1-resizer.c | 184 +++++++-----------
- 2 files changed, 66 insertions(+), 124 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 20 ++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index d30f0ecb1bfd..5a03e460e08d 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -390,10 +390,7 @@ struct rkisp1_params {
-  * @id:	       id of the resizer, one of RKISP1_SELFPATH, RKISP1_MAINPATH
-  * @rkisp1:    pointer to the rkisp1 device
-  * @pads:      media pads
-- * @pad_cfg:   configurations for the pads
-  * @config:    the set of registers to configure the resizer
-- * @pixel_enc: pixel encoding of the resizer
-- * @ops_lock:  a lock for the subdev ops
-  */
- struct rkisp1_resizer {
- 	struct v4l2_subdev sd;
-@@ -401,10 +398,7 @@ struct rkisp1_resizer {
- 	enum rkisp1_stream_id id;
- 	struct rkisp1_device *rkisp1;
- 	struct media_pad pads[RKISP1_RSZ_PAD_MAX];
--	struct v4l2_subdev_pad_config pad_cfg[RKISP1_RSZ_PAD_MAX];
- 	const struct rkisp1_rsz_config *config;
--	enum v4l2_pixel_encoding pixel_enc;
--	struct mutex ops_lock; /* serialize the subdevice ops */
- };
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 8f3cba319762..3c1e2c1a8bbe 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1101,14 +1101,20 @@ rkisp1_fill_pixfmt(struct v4l2_pix_format_mplane *pixm,
+ 	memset(pixm->plane_fmt, 0, sizeof(pixm->plane_fmt));
+ 	info = v4l2_format_info(pixm->pixelformat);
+ 	pixm->num_planes = info->mem_planes;
+-	stride = info->bpp[0] * pixm->width;
+-	/* Self path supports custom stride but Main path doesn't */
+-	if (id == RKISP1_MAINPATH || plane_y->bytesperline < stride)
+-		plane_y->bytesperline = stride;
+-	plane_y->sizeimage = plane_y->bytesperline * pixm->height;
  
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index c15ae0218118..6845df38ef5f 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -117,34 +117,6 @@ static inline void rkisp1_rsz_write(struct rkisp1_resizer *rsz, u32 offset,
- 	rkisp1_write(rsz->rkisp1, rsz->regs_base + offset, value);
- }
- 
--static struct v4l2_mbus_framefmt *
--rkisp1_rsz_get_pad_fmt(struct rkisp1_resizer *rsz,
--		       struct v4l2_subdev_state *sd_state,
--		       unsigned int pad, u32 which)
--{
--	struct v4l2_subdev_state state = {
--		.pads = rsz->pad_cfg,
--	};
--	if (which == V4L2_SUBDEV_FORMAT_TRY)
--		return v4l2_subdev_get_try_format(&rsz->sd, sd_state, pad);
--	else
--		return v4l2_subdev_get_try_format(&rsz->sd, &state, pad);
--}
--
--static struct v4l2_rect *
--rkisp1_rsz_get_pad_crop(struct rkisp1_resizer *rsz,
--			struct v4l2_subdev_state *sd_state,
--			unsigned int pad, u32 which)
--{
--	struct v4l2_subdev_state state = {
--		.pads = rsz->pad_cfg,
--	};
--	if (which == V4L2_SUBDEV_FORMAT_TRY)
--		return v4l2_subdev_get_try_crop(&rsz->sd, sd_state, pad);
--	else
--		return v4l2_subdev_get_try_crop(&rsz->sd, &state, pad);
--}
--
- /* ----------------------------------------------------------------------------
-  * Dual crop hw configs
-  */
-@@ -165,17 +137,18 @@ static void rkisp1_dcrop_disable(struct rkisp1_resizer *rsz,
- }
- 
- /* configure dual-crop unit */
--static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz)
-+static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz,
-+				struct v4l2_subdev_state *sd_state)
- {
- 	struct rkisp1_device *rkisp1 = rsz->rkisp1;
- 	struct v4l2_mbus_framefmt *sink_fmt;
- 	struct v4l2_rect *sink_crop;
- 	u32 dc_ctrl;
- 
--	sink_crop = rkisp1_rsz_get_pad_crop(rsz, NULL, RKISP1_RSZ_PAD_SINK,
--					    V4L2_SUBDEV_FORMAT_ACTIVE);
--	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, NULL, RKISP1_RSZ_PAD_SINK,
--					  V4L2_SUBDEV_FORMAT_ACTIVE);
-+	sink_crop = v4l2_subdev_get_pad_crop(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SINK);
-+	sink_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					      RKISP1_RSZ_PAD_SINK);
- 
- 	if (sink_crop->width == sink_fmt->width &&
- 	    sink_crop->height == sink_fmt->height &&
-@@ -296,6 +269,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
- }
- 
- static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
-+			      struct v4l2_subdev_state *sd_state,
- 			      enum rkisp1_shadow_regs_when when)
- {
- 	const struct rkisp1_rsz_yuv_mbus_info *sink_yuv_info, *src_yuv_info;
-@@ -303,20 +277,21 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
- 	struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
- 	struct v4l2_rect *sink_crop;
- 
--	sink_crop = rkisp1_rsz_get_pad_crop(rsz, NULL, RKISP1_RSZ_PAD_SINK,
--					    V4L2_SUBDEV_FORMAT_ACTIVE);
--	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, NULL, RKISP1_RSZ_PAD_SRC,
--					 V4L2_SUBDEV_FORMAT_ACTIVE);
--	src_yuv_info = rkisp1_rsz_get_yuv_mbus_info(src_fmt->code);
--	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, NULL, RKISP1_RSZ_PAD_SINK,
--					  V4L2_SUBDEV_FORMAT_ACTIVE);
-+	sink_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					      RKISP1_RSZ_PAD_SINK);
-+	sink_crop = v4l2_subdev_get_pad_crop(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SINK);
-+	src_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SRC);
+-	/* normalize stride to pixels per line */
+-	stride = DIV_ROUND_UP(plane_y->bytesperline, info->bpp[0]);
++	/*
++	 * The SP supports custom strides, expressed as a number of pixels for
++	 * the Y plane. Clamp the stride to a reasonable value to avoid integer
++	 * overflows when calculating the bytesperline and sizeimage values.
++	 */
++	if (id == RKISP1_SELFPATH)
++		stride = clamp(DIV_ROUND_UP(plane_y->bytesperline, info->bpp[0]),
++			       pixm->width, 65536U);
++	else
++		stride = pixm->width;
 +
- 	sink_yuv_info = rkisp1_rsz_get_yuv_mbus_info(sink_fmt->code);
-+	src_yuv_info = rkisp1_rsz_get_yuv_mbus_info(src_fmt->code);
++	plane_y->bytesperline = stride * info->bpp[0];
++	plane_y->sizeimage = plane_y->bytesperline * pixm->height;
  
- 	/*
- 	 * The resizer only works on yuv formats,
- 	 * so return if it is bayer format.
- 	 */
--	if (rsz->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
-+	if (!sink_yuv_info) {
- 		rkisp1_rsz_disable(rsz, when);
- 		return;
- 	}
-@@ -405,7 +380,7 @@ static int rkisp1_rsz_init_config(struct v4l2_subdev *sd,
- 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
- 	struct v4l2_rect *sink_crop;
- 
--	sink_fmt = v4l2_subdev_get_try_format(sd, sd_state,
-+	sink_fmt = v4l2_subdev_get_pad_format(sd, sd_state,
- 					      RKISP1_RSZ_PAD_SRC);
- 	sink_fmt->width = RKISP1_DEFAULT_WIDTH;
- 	sink_fmt->height = RKISP1_DEFAULT_HEIGHT;
-@@ -423,7 +398,7 @@ static int rkisp1_rsz_init_config(struct v4l2_subdev *sd,
- 	sink_crop->left = 0;
- 	sink_crop->top = 0;
- 
--	src_fmt = v4l2_subdev_get_try_format(sd, sd_state,
-+	src_fmt = v4l2_subdev_get_pad_format(sd, sd_state,
- 					     RKISP1_RSZ_PAD_SINK);
- 	*src_fmt = *sink_fmt;
- 
-@@ -434,16 +409,16 @@ static int rkisp1_rsz_init_config(struct v4l2_subdev *sd,
- 
- static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
- 				   struct v4l2_subdev_state *sd_state,
--				   struct v4l2_mbus_framefmt *format,
--				   unsigned int which)
-+				   struct v4l2_mbus_framefmt *format)
- {
- 	const struct rkisp1_mbus_info *sink_mbus_info;
- 	struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
- 
--	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
--					  which);
--	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SRC,
--					 which);
-+	sink_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					      RKISP1_RSZ_PAD_SINK);
-+	src_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SRC);
-+
- 	sink_mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 
- 	/* for YUV formats, userspace can change the mbus code on the src pad if it is supported */
-@@ -463,18 +438,16 @@ static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
- 
- static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
- 				     struct v4l2_subdev_state *sd_state,
--				     struct v4l2_rect *r,
--				     unsigned int which)
-+				     struct v4l2_rect *r)
- {
- 	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *sink_fmt;
- 	struct v4l2_rect *sink_crop;
- 
--	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
--					  which);
--	sink_crop = rkisp1_rsz_get_pad_crop(rsz, sd_state,
--					    RKISP1_RSZ_PAD_SINK,
--					    which);
-+	sink_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					      RKISP1_RSZ_PAD_SINK);
-+	sink_crop = v4l2_subdev_get_pad_crop(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SINK);
- 
- 	/* Not crop for MP bayer raw data */
- 	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
-@@ -501,21 +474,20 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
- 
- static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 				    struct v4l2_subdev_state *sd_state,
--				    struct v4l2_mbus_framefmt *format,
--				    unsigned int which)
-+				    struct v4l2_mbus_framefmt *format)
- {
- 	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
- 	struct v4l2_rect *sink_crop;
- 	bool is_yuv;
- 
--	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
--					  which);
--	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SRC,
--					 which);
--	sink_crop = rkisp1_rsz_get_pad_crop(rsz, sd_state,
--					    RKISP1_RSZ_PAD_SINK,
--					    which);
-+	sink_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					      RKISP1_RSZ_PAD_SINK);
-+	src_fmt = v4l2_subdev_get_pad_format(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SRC);
-+	sink_crop = v4l2_subdev_get_pad_crop(&rsz->sd, sd_state,
-+					     RKISP1_RSZ_PAD_SINK);
-+
- 	if (rsz->id == RKISP1_SELFPATH)
- 		sink_fmt->code = MEDIA_BUS_FMT_YUYV8_2X8;
- 	else
-@@ -526,8 +498,6 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 		sink_fmt->code = RKISP1_DEF_FMT;
- 		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 	}
--	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
--		rsz->pixel_enc = mbus_info->pixel_enc;
- 
- 	sink_fmt->width = clamp_t(u32, format->width,
- 				  RKISP1_ISP_MIN_WIDTH,
-@@ -576,21 +546,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 	src_fmt->quantization = sink_fmt->quantization;
- 
- 	/* Update sink crop */
--	rkisp1_rsz_set_sink_crop(rsz, sd_state, sink_crop, which);
--}
--
--static int rkisp1_rsz_get_fmt(struct v4l2_subdev *sd,
--			      struct v4l2_subdev_state *sd_state,
--			      struct v4l2_subdev_format *fmt)
--{
--	struct rkisp1_resizer *rsz =
--		container_of(sd, struct rkisp1_resizer, sd);
--
--	mutex_lock(&rsz->ops_lock);
--	fmt->format = *rkisp1_rsz_get_pad_fmt(rsz, sd_state, fmt->pad,
--					      fmt->which);
--	mutex_unlock(&rsz->ops_lock);
--	return 0;
-+	rkisp1_rsz_set_sink_crop(rsz, sd_state, sink_crop);
- }
- 
- static int rkisp1_rsz_set_fmt(struct v4l2_subdev *sd,
-@@ -600,15 +556,11 @@ static int rkisp1_rsz_set_fmt(struct v4l2_subdev *sd,
- 	struct rkisp1_resizer *rsz =
- 		container_of(sd, struct rkisp1_resizer, sd);
- 
--	mutex_lock(&rsz->ops_lock);
- 	if (fmt->pad == RKISP1_RSZ_PAD_SINK)
--		rkisp1_rsz_set_sink_fmt(rsz, sd_state, &fmt->format,
--					fmt->which);
-+		rkisp1_rsz_set_sink_fmt(rsz, sd_state, &fmt->format);
- 	else
--		rkisp1_rsz_set_src_fmt(rsz, sd_state, &fmt->format,
--				       fmt->which);
-+		rkisp1_rsz_set_src_fmt(rsz, sd_state, &fmt->format);
- 
--	mutex_unlock(&rsz->ops_lock);
- 	return 0;
- }
- 
-@@ -616,35 +568,32 @@ static int rkisp1_rsz_get_selection(struct v4l2_subdev *sd,
- 				    struct v4l2_subdev_state *sd_state,
- 				    struct v4l2_subdev_selection *sel)
- {
--	struct rkisp1_resizer *rsz =
--		container_of(sd, struct rkisp1_resizer, sd);
- 	struct v4l2_mbus_framefmt *mf_sink;
- 	int ret = 0;
- 
- 	if (sel->pad == RKISP1_RSZ_PAD_SRC)
- 		return -EINVAL;
- 
--	mutex_lock(&rsz->ops_lock);
- 	switch (sel->target) {
- 	case V4L2_SEL_TGT_CROP_BOUNDS:
--		mf_sink = rkisp1_rsz_get_pad_fmt(rsz, sd_state,
--						 RKISP1_RSZ_PAD_SINK,
--						 sel->which);
-+		mf_sink = v4l2_subdev_get_pad_format(sd, sd_state,
-+						     RKISP1_RSZ_PAD_SINK);
- 		sel->r.height = mf_sink->height;
- 		sel->r.width = mf_sink->width;
- 		sel->r.left = 0;
- 		sel->r.top = 0;
- 		break;
-+
- 	case V4L2_SEL_TGT_CROP:
--		sel->r = *rkisp1_rsz_get_pad_crop(rsz, sd_state,
--						  RKISP1_RSZ_PAD_SINK,
--						  sel->which);
-+		sel->r = *v4l2_subdev_get_pad_crop(sd, sd_state,
-+						   RKISP1_RSZ_PAD_SINK);
- 		break;
-+
- 	default:
- 		ret = -EINVAL;
-+		break;
- 	}
- 
--	mutex_unlock(&rsz->ops_lock);
- 	return ret;
- }
- 
-@@ -661,9 +610,7 @@ static int rkisp1_rsz_set_selection(struct v4l2_subdev *sd,
- 	dev_dbg(rsz->rkisp1->dev, "%s: pad: %d sel(%d,%d)/%dx%d\n", __func__,
- 		sel->pad, sel->r.left, sel->r.top, sel->r.width, sel->r.height);
- 
--	mutex_lock(&rsz->ops_lock);
--	rkisp1_rsz_set_sink_crop(rsz, sd_state, &sel->r, sel->which);
--	mutex_unlock(&rsz->ops_lock);
-+	rkisp1_rsz_set_sink_crop(rsz, sd_state, &sel->r);
- 
- 	return 0;
- }
-@@ -677,7 +624,7 @@ static const struct v4l2_subdev_pad_ops rkisp1_rsz_pad_ops = {
- 	.get_selection = rkisp1_rsz_get_selection,
- 	.set_selection = rkisp1_rsz_set_selection,
- 	.init_cfg = rkisp1_rsz_init_config,
--	.get_fmt = rkisp1_rsz_get_fmt,
-+	.get_fmt = v4l2_subdev_get_fmt,
- 	.set_fmt = rkisp1_rsz_set_fmt,
- 	.link_validate = v4l2_subdev_link_validate_default,
- };
-@@ -693,6 +640,7 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
- 	struct rkisp1_device *rkisp1 = rsz->rkisp1;
- 	struct rkisp1_capture *other = &rkisp1->capture_devs[rsz->id ^ 1];
- 	enum rkisp1_shadow_regs_when when = RKISP1_SHADOW_REGS_SYNC;
-+	struct v4l2_subdev_state *sd_state;
- 
- 	if (!enable) {
- 		rkisp1_dcrop_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
-@@ -703,11 +651,13 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
- 	if (other->is_streaming)
- 		when = RKISP1_SHADOW_REGS_ASYNC;
- 
--	mutex_lock(&rsz->ops_lock);
--	rkisp1_rsz_config(rsz, when);
--	rkisp1_dcrop_config(rsz);
-+	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
-+
-+	rkisp1_rsz_config(rsz, sd_state, when);
-+	rkisp1_dcrop_config(rsz, sd_state);
-+
-+	v4l2_subdev_unlock_state(sd_state);
- 
--	mutex_unlock(&rsz->ops_lock);
- 	return 0;
- }
- 
-@@ -726,15 +676,12 @@ static void rkisp1_rsz_unregister(struct rkisp1_resizer *rsz)
- 		return;
- 
- 	v4l2_device_unregister_subdev(&rsz->sd);
-+	v4l2_subdev_cleanup(&rsz->sd);
- 	media_entity_cleanup(&rsz->sd.entity);
--	mutex_destroy(&rsz->ops_lock);
- }
- 
- static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
- {
--	struct v4l2_subdev_state state = {
--		.pads = rsz->pad_cfg,
--	};
- 	static const char * const dev_names[] = {
- 		RKISP1_RSZ_MP_DEV_NAME,
- 		RKISP1_RSZ_SP_DEV_NAME
-@@ -763,25 +710,26 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
- 	pads[RKISP1_RSZ_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE |
- 					 MEDIA_PAD_FL_MUST_CONNECT;
- 
--	rsz->pixel_enc = RKISP1_DEF_PIXEL_ENC;
--
--	mutex_init(&rsz->ops_lock);
- 	ret = media_entity_pads_init(&sd->entity, RKISP1_RSZ_PAD_MAX, pads);
- 	if (ret)
--		goto error;
-+		goto err_entity_cleanup;
-+
-+	ret = v4l2_subdev_init_finalize(sd);
-+	if (ret)
-+		goto err_entity_cleanup;
- 
- 	ret = v4l2_device_register_subdev(&rsz->rkisp1->v4l2_dev, sd);
- 	if (ret) {
- 		dev_err(sd->dev, "Failed to register resizer subdev\n");
--		goto error;
-+		goto err_subdev_cleanup;
- 	}
- 
--	rkisp1_rsz_init_config(sd, &state);
- 	return 0;
- 
--error:
-+err_subdev_cleanup:
-+	v4l2_subdev_cleanup(sd);
-+err_entity_cleanup:
- 	media_entity_cleanup(&sd->entity);
--	mutex_destroy(&rsz->ops_lock);
- 	return ret;
- }
- 
+ 	for (i = 1; i < info->comp_planes; i++) {
+ 		struct v4l2_plane_pix_format *plane = &pixm->plane_fmt[i];
 -- 
 Regards,
 
