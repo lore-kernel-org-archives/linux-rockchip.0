@@ -4,55 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7EA5CE7A89
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 07:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA87CE7A89
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 07:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=50Q3z62A1w7+kUPXImgMZHLGpKGI4WVRROUW4F2KfG4=; b=zOCD5Xvs1CT4Ge
-	g7UC+/Fe7nNFCIOGaaHohws9EbM0ycsSpjad/kvMn2AbV98TTT000Lz6rt/kPlhxvcQPINf49dw3V
-	McG08AtB5y+NyROTzlB26QfmHpYXC5TWBf5CBLu6pLTkbUT1P/UZZRTsmLPD+qjBmArBS9whQafK3
-	9mY2V77Jfm7ld62MCesACKZZwjC3AJEl4hAObnQ5djazCbt/tNItG8hc6pR4AQb6WLiNLqs5hqjrG
-	muwL3z3oWw8Xyc2w2qceeLBT8OHcMyUlvjdrINjr7Nz7c7kh0eNk0ndvFCNNPcvJZG0hE/QH7DV+1
-	UgZ6LTPUaiiWI3t/NBXA==;
+	List-Owner; bh=6lOVBwvHMjvlPn7TULcjXbCYWwtYWyR9lsXIiblRqeo=; b=mpeg0LZFidh9pp
+	L+udRj0kfp6ft41q3JoJZ4Iw8RNcYgg0il6GbAotfmMyV6rRtw4EAHlrtjq4MppR3EgPipS3Bnqe7
+	dOaj10Ck6AZ1U47uZSA1s1T9LQUQJRkvHXmk2qSl7hFI+VdmfvjIYFx/h7ARoXMDIerzQ0p3zcZzt
+	8u7JzwKZZS0t3H4K5n3UWTknO0+iNcii6Mkpt6uQkIhEvraqHo5PEbnyuHc6D4IExwTbJjKgvByCO
+	zItK2GhfM1rfu6Zg9PYoykMaMZjYYS2MxdWY7ovLOVg1dzrVaFVlE+xV2CCiCwkr3H7Nqd8KFDRPN
+	bZW4XfcimLe4Z4gG6xew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkg0B-00DbiE-31;
-	Mon, 25 Sep 2023 07:27:31 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qkg5S-00Dcgm-1z;
+	Mon, 25 Sep 2023 07:32:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkg08-00Dbdz-0r;
-	Mon, 25 Sep 2023 07:27:29 +0000
+	id 1qkg5O-00DcfO-2e;
+	Mon, 25 Sep 2023 07:32:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id BB40EB80C99;
-	Mon, 25 Sep 2023 07:27:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFAD5C433C7;
-	Mon, 25 Sep 2023 07:27:23 +0000 (UTC)
-Message-ID: <f2a1b5ba-c5b3-4690-bad4-3792d895eb60@xs4all.nl>
-Date: Mon, 25 Sep 2023 09:27:21 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1EF5860F4D;
+	Mon, 25 Sep 2023 07:32:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45CAFC433C7;
+	Mon, 25 Sep 2023 07:32:51 +0000 (UTC)
+Message-ID: <8175c3d7-9e28-4483-a573-c64109784c60@xs4all.nl>
+Date: Mon, 25 Sep 2023 09:32:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 02/13] media: rockchip: rga: extract helper to fill
  descriptors
 Content-Language: en-US, nl
-To: Robin Murphy <robin.murphy@arm.com>,
- Michael Tretter <m.tretter@pengutronix.de>,
+To: Michael Tretter <m.tretter@pengutronix.de>,
  Jacob Chen <jacob-chen@iotwrt.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
  <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
  Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Diederik de Haas <didi.debian@cknow.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@pengutronix.de
+ Robin Murphy <robin.murphy@arm.com>, Diederik de Haas <didi.debian@cknow.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
 References: <20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de>
  <20230914-rockchip-rga-multiplanar-v1-2-abfd77260ae3@pengutronix.de>
- <239e2853-f89f-20da-2492-7f6d33aede63@arm.com>
- <20230914175724.GB1580188@pengutronix.de>
- <dde29b86-1cca-0712-0f0d-25d7e6d3327e@arm.com>
 From: Hans Verkuil <hverkuil@xs4all.nl>
 Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  xsFNBFQ84W0BEAC7EF1iL4s3tY8cRTVkJT/297h0Hz0ypA+ByVM4CdU9sN6ua/YoFlr9k0K4
@@ -97,10 +93,10 @@ Autocrypt: addr=hverkuil@xs4all.nl; keydata=
  gYmkrmv0duG1FStpY+IIQn1TOkuXrciTVfZY1cZD0aVxwlxXBnUNZZNslldvXFtndxR0SFat
  sflovhDxKyhFwXOP0Rv8H378/+14TaykknRBIKEc0+lcr+EMOSUR5eg4aURb8Gc3Uc7fgQ6q
  UssTXzHPyj1hAyDpfu8DzAwlh4kKFTodxSsKAjI45SLjadSc94/5Gy8645Y1KgBzBPTH7Q==
-In-Reply-To: <dde29b86-1cca-0712-0f0d-25d7e6d3327e@arm.com>
+In-Reply-To: <20230914-rockchip-rga-multiplanar-v1-2-abfd77260ae3@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_002728_587978_76FADCD0 
-X-CRM114-Status: GOOD (  24.56  )
+X-CRM114-CacheID: sfid-20230925_003254_945837_96134274 
+X-CRM114-Status: GOOD (  27.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,73 +108,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2023 22:33, Robin Murphy wrote:
-> On 2023-09-14 18:57, Michael Tretter wrote:
->> Hi Robin,
->>
->> On Thu, 14 Sep 2023 16:06:27 +0100, Robin Murphy wrote:
->>> On 2023-09-14 13:40, Michael Tretter wrote:
->>>> The IOMMU of the RGA is programmed with a list of DMA descriptors that
->>>> contain an 32 bit address per 4k page in the video buffers. The address
->>>> in the descriptor points to the start address of the page.
->>>>
->>>> Introduce 'struct rga_dma_desc' to make the handling of the DMA
->>>> descriptors explicit instead of hiding them behind standard types.
->>>>
->>>> As the descriptors only handle 32 bit addresses, addresses above 4 GB
->>>> cannot be addressed. If this is detected, stop filling the descriptor
->>>> list and report an error.
->>>
->>> That sounds unnecessary, since the only DMA addresses the RGA should be
->>> seeing are those from a dma_map_sg() call using the RGA device itself, and
->>> that would have failed if it was unable to provide a valid DMA address for
->>> the device.
->>>
->>> The existing rga_buf_map() code is so clearly wrong I can't tell whether
->>> that mapping is done somewhere out in the core framework or whether the
->>> driver's supposed to be doing it for itself.
->>
->> The sg_table is filled by dma_map_sgtable in
->> drivers/media/common/videobuf2/videobuf2-dma-sg.c.
-> 
-> Ah, great - in that case all you should need to do here is fill out the DMA descriptors with the correct DMA address as you are doing. If buf->dev is the right thing and you've set your DMA masks
-> correctly then you can rely on the DMA addresses being appropriate already, since it's vb2-dma-sg's job to get that right (which per another recent thread it will do, but could do better...)
-
-A lot of media drivers that require 32 bit DMA set the vb2_queue gfp_flags:
-
-q->gfp_flags = __GFP_DMA32;
-
-This is ORed in the vb2 framework when calling alloc_pages().
-
-That said, that's only used for the V4L2_MEMORY_MMAP streaming model, i.e. when
-the driver allocates the memory. For MEMORY_DMABUF this isn't used and you still
-need the correct DMA mask for the device.
-
-Since I do not see __GFP_DMA32, I suspect that allocating buffers in vb2 might
-still choose buffers above 4 GB, which would be wrong for this driver.
-
-Regards,
-
-	Hans
-
-> 
->> Do you suggest to just drop the check for the addresses or is there something
->> fundamentally wrong with filling the descriptor list in the driver? Can you
->> explain what exactly is wrong with this code and do you have a pointer how to
->> implement this correctly?
-> 
-> The rest of your patch is frankly more correct than what it's replacing, you can just drop the redundant upper_32_bits() check :)
-> 
-> Cheers,
-> Robin.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTQvMDkvMjAyMyAxNDo0MCwgTWljaGFlbCBUcmV0dGVyIHdyb3RlOgo+IFRoZSBJT01NVSBv
+ZiB0aGUgUkdBIGlzIHByb2dyYW1tZWQgd2l0aCBhIGxpc3Qgb2YgRE1BIGRlc2NyaXB0b3JzIHRo
+YXQKPiBjb250YWluIGFuIDMyIGJpdCBhZGRyZXNzIHBlciA0ayBwYWdlIGluIHRoZSB2aWRlbyBi
+dWZmZXJzLiBUaGUgYWRkcmVzcwo+IGluIHRoZSBkZXNjcmlwdG9yIHBvaW50cyB0byB0aGUgc3Rh
+cnQgYWRkcmVzcyBvZiB0aGUgcGFnZS4KPiAKPiBJbnRyb2R1Y2UgJ3N0cnVjdCByZ2FfZG1hX2Rl
+c2MnIHRvIG1ha2UgdGhlIGhhbmRsaW5nIG9mIHRoZSBETUEKPiBkZXNjcmlwdG9ycyBleHBsaWNp
+dCBpbnN0ZWFkIG9mIGhpZGluZyB0aGVtIGJlaGluZCBzdGFuZGFyZCB0eXBlcy4KPiAKPiBBcyB0
+aGUgZGVzY3JpcHRvcnMgb25seSBoYW5kbGUgMzIgYml0IGFkZHJlc3NlcywgYWRkcmVzc2VzIGFi
+b3ZlIDQgR0IKPiBjYW5ub3QgYmUgYWRkcmVzc2VkLiBJZiB0aGlzIGlzIGRldGVjdGVkLCBzdG9w
+IGZpbGxpbmcgdGhlIGRlc2NyaXB0b3IKPiBsaXN0IGFuZCByZXBvcnQgYW4gZXJyb3IuCj4gCj4g
+V2hpbGUgYXQgaXQsIHVzZSBwcm92aWRlZCBoZWxwZXJzIGZvciBpdGVyYXRpbmcgdGhlIHNnX3Rh
+YmxlIGluc3RlYWQgb2YKPiBtYW51YWxseSBjYWxjdWxhdGluZyB0aGUgRE1BIGFkZHJlc3Nlcy4K
+PiAKPiBTaWduZWQtb2ZmLWJ5OiBNaWNoYWVsIFRyZXR0ZXIgPG0udHJldHRlckBwZW5ndXRyb25p
+eC5kZT4KPiAtLS0KPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLWJ1
+Zi5jIHwgNDcgKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5oICAgICB8ICA4ICsrKy0tCj4gIDIgZmlsZXMgY2hhbmdl
+ZCwgMzMgaW5zZXJ0aW9ucygrKSwgMjIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS1idWYuYyBiL2RyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS1idWYuYwo+IGluZGV4IDgxNTA4ZWQ1YWJmMy4u
+ZGY1ZWJjOTBlMzJkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2No
+aXAvcmdhL3JnYS1idWYuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAv
+cmdhL3JnYS1idWYuYwo+IEBAIC01LDYgKzUsNyBAQAo+ICAgKi8KPiAgCj4gICNpbmNsdWRlIDxs
+aW51eC9wbV9ydW50aW1lLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9zY2F0dGVybGlzdC5oPgo+ICAK
+PiAgI2luY2x1ZGUgPG1lZGlhL3Y0bDItZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxtZWRpYS92NGwy
+LWlvY3RsLmg+Cj4gQEAgLTE1LDYgKzE2LDI1IEBACj4gICNpbmNsdWRlICJyZ2EtaHcuaCIKPiAg
+I2luY2x1ZGUgInJnYS5oIgo+ICAKPiArc3RhdGljIGludCBmaWxsX2Rlc2NyaXB0b3JzKHN0cnVj
+dCByZ2FfZG1hX2Rlc2MgKmRlc2MsIHN0cnVjdCBzZ190YWJsZSAqc2d0KQo+ICt7Cj4gKwlzdHJ1
+Y3Qgc2dfZG1hX3BhZ2VfaXRlciBpdGVyOwo+ICsJc3RydWN0IHJnYV9kbWFfZGVzYyAqdG1wID0g
+ZGVzYzsKPiArCXVuc2lnbmVkIGludCBudW1fZGVzYyA9IDA7Cj4gKwlkbWFfYWRkcl90IGFkZHI7
+Cj4gKwo+ICsJZm9yX2VhY2hfc2d0YWJsZV9kbWFfcGFnZShzZ3QsICZpdGVyLCAwKSB7Cj4gKwkJ
+YWRkciA9IHNnX3BhZ2VfaXRlcl9kbWFfYWRkcmVzcygmaXRlcik7Cj4gKwkJaWYgKHVwcGVyXzMy
+X2JpdHMoYWRkcikgIT0gMEwpCj4gKwkJCXJldHVybiAtMTsKPiArCQl0bXAtPmFkZHIgPSBsb3dl
+cl8zMl9iaXRzKGFkZHIpOwo+ICsJCXRtcCsrOwo+ICsJCW51bV9kZXNjKys7Cj4gKwl9Cj4gKwo+
+ICsJcmV0dXJuIG51bV9kZXNjOwo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50Cj4gIHJnYV9xdWV1ZV9z
+ZXR1cChzdHJ1Y3QgdmIyX3F1ZXVlICp2cSwKPiAgCQl1bnNpZ25lZCBpbnQgKm5idWZmZXJzLCB1
+bnNpZ25lZCBpbnQgKm5wbGFuZXMsCj4gQEAgLTExNCwxMSArMTM0LDggQEAgdm9pZCByZ2FfYnVm
+X21hcChzdHJ1Y3QgdmIyX2J1ZmZlciAqdmIpCj4gIHsKPiAgCXN0cnVjdCByZ2FfY3R4ICpjdHgg
+PSB2YjJfZ2V0X2Rydl9wcml2KHZiLT52YjJfcXVldWUpOwo+ICAJc3RydWN0IHJvY2tjaGlwX3Jn
+YSAqcmdhID0gY3R4LT5yZ2E7Cj4gLQlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKPiAtCXN0cnVjdCBz
+Y2F0dGVybGlzdCAqc2dsOwo+IC0JdW5zaWduZWQgaW50ICpwYWdlczsKPiAtCXVuc2lnbmVkIGlu
+dCBhZGRyZXNzLCBsZW4sIGksIHA7Cj4gLQl1bnNpZ25lZCBpbnQgbWFwcGVkX3NpemUgPSAwOwo+
+ICsJc3RydWN0IHJnYV9kbWFfZGVzYyAqcGFnZXM7Cj4gKwl1bnNpZ25lZCBpbnQgbnVtX2Rlc2Mg
+PSAwOwo+ICAKPiAgCWlmICh2Yi0+dHlwZSA9PSBWNEwyX0JVRl9UWVBFX1ZJREVPX09VVFBVVCkK
+PiAgCQlwYWdlcyA9IHJnYS0+c3JjX21tdV9wYWdlczsKPiBAQCAtMTI2LDIzICsxNDMsMTMgQEAg
+dm9pZCByZ2FfYnVmX21hcChzdHJ1Y3QgdmIyX2J1ZmZlciAqdmIpCj4gIAkJcGFnZXMgPSByZ2Et
+PmRzdF9tbXVfcGFnZXM7Cj4gIAo+ICAJLyogQ3JlYXRlIGxvY2FsIE1NVSB0YWJsZSBmb3IgUkdB
+ICovCj4gLQlzZ3QgPSB2YjJfcGxhbmVfY29va2llKHZiLCAwKTsKPiAtCj4gLQlmb3JfZWFjaF9z
+ZyhzZ3QtPnNnbCwgc2dsLCBzZ3QtPm5lbnRzLCBpKSB7Cj4gLQkJbGVuID0gc2dfZG1hX2xlbihz
+Z2wpID4+IFBBR0VfU0hJRlQ7Cj4gLQkJYWRkcmVzcyA9IHNnX3BoeXMoc2dsKTsKPiAtCj4gLQkJ
+Zm9yIChwID0gMDsgcCA8IGxlbjsgcCsrKSB7Cj4gLQkJCWRtYV9hZGRyX3QgcGh5cyA9IGFkZHJl
+c3MgKwo+IC0JCQkJCSAgKChkbWFfYWRkcl90KXAgPDwgUEFHRV9TSElGVCk7Cj4gLQo+IC0JCQlw
+YWdlc1ttYXBwZWRfc2l6ZSArIHBdID0gcGh5czsKPiAtCQl9Cj4gLQo+IC0JCW1hcHBlZF9zaXpl
+ICs9IGxlbjsKPiArCW51bV9kZXNjID0gZmlsbF9kZXNjcmlwdG9ycyhwYWdlcywgdmIyX2RtYV9z
+Z19wbGFuZV9kZXNjKHZiLCAwKSk7Cj4gKwlpZiAobnVtX2Rlc2MgPCAwKSB7Cj4gKwkJZGV2X2Vy
+cihyZ2EtPmRldiwgIkZhaWxlZCB0byBtYXAgYnVmZmVyIik7Cj4gKwkJcmV0dXJuOwo+ICAJfQo+
+ICAKPiAgCS8qIHN5bmMgbG9jYWwgTU1VIHRhYmxlIGZvciBSR0EgKi8KPiAgCWRtYV9zeW5jX3Np
+bmdsZV9mb3JfZGV2aWNlKHJnYS0+ZGV2LCB2aXJ0X3RvX3BoeXMocGFnZXMpLAo+IC0JCQkJICAg
+OCAqIFBBR0VfU0laRSwgRE1BX0JJRElSRUNUSU9OQUwpOwo+ICsJCQkJICAgbnVtX2Rlc2MgKiBz
+aXplb2YoKnBhZ2VzKSwgRE1BX0JJRElSRUNUSU9OQUwpOwo+ICB9Cj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5oIGIvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmgKPiBpbmRleCA1ZmE5ZDJmMzY2ZGMuLjIyZjdkYTI4
+YWM1MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JnYS9y
+Z2EuaAo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5oCj4g
+QEAgLTQwLDYgKzQwLDEwIEBAIHN0cnVjdCByZ2FfZnJhbWUgewo+ICAJdTMyIHNpemU7Cj4gIH07
+Cj4gIAo+ICtzdHJ1Y3QgcmdhX2RtYV9kZXNjIHsKPiArCXUzMiBhZGRyOwo+ICt9Owo+ICsKPiAg
+c3RydWN0IHJvY2tjaGlwX3JnYV92ZXJzaW9uIHsKPiAgCXUzMiBtYWpvcjsKPiAgCXUzMiBtaW5v
+cjsKPiBAQCAtODEsOCArODUsOCBAQCBzdHJ1Y3Qgcm9ja2NoaXBfcmdhIHsKPiAgCXN0cnVjdCBy
+Z2FfY3R4ICpjdXJyOwo+ICAJZG1hX2FkZHJfdCBjbWRidWZfcGh5Owo+ICAJdm9pZCAqY21kYnVm
+X3ZpcnQ7Cj4gLQl1bnNpZ25lZCBpbnQgKnNyY19tbXVfcGFnZXM7Cj4gLQl1bnNpZ25lZCBpbnQg
+KmRzdF9tbXVfcGFnZXM7Cj4gKwlzdHJ1Y3QgcmdhX2RtYV9kZXNjICpzcmNfbW11X3BhZ2VzOwo+
+ICsJc3RydWN0IHJnYV9kbWFfZGVzYyAqZHN0X21tdV9wYWdlczsKClRoaXMgYnJlYWtzIGNvbXBp
+bGF0aW9uOgoKZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmM6IEluIGZ1
+bmN0aW9uIOKAmHJnYV9wcm9iZeKAmToKZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9y
+Z2EvcmdhLmM6ODc1OjI4OiBlcnJvcjogYXNzaWdubWVudCB0byDigJhzdHJ1Y3QgcmdhX2RtYV9k
+ZXNjICrigJkgZnJvbSBpbmNvbXBhdGlibGUgcG9pbnRlciB0eXBlIOKAmHVuc2lnbmVkIGludCAq
+4oCZIFstV2Vycm9yPWluY29tcGF0aWJsZS1wb2ludGVyLXR5cGVzXQogIDg3NSB8ICAgICAgICAg
+cmdhLT5zcmNfbW11X3BhZ2VzID0KICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICBe
+CmRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5jOjg4MToyODogZXJyb3I6
+IGFzc2lnbm1lbnQgdG8g4oCYc3RydWN0IHJnYV9kbWFfZGVzYyAq4oCZIGZyb20gaW5jb21wYXRp
+YmxlIHBvaW50ZXIgdHlwZSDigJh1bnNpZ25lZCBpbnQgKuKAmSBbLVdlcnJvcj1pbmNvbXBhdGli
+bGUtcG9pbnRlci10eXBlc10KICA4ODEgfCAgICAgICAgIHJnYS0+ZHN0X21tdV9wYWdlcyA9CiAg
+ICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKSXQncyBwcm9iYWJseSBzb21ldGhp
+bmcgdGhhdCBpcyBmaXhlZCBpbiBhIGxhdGVyIHBhdGNoLCBidXQgYXMgaXQgaXMgcmlnaHQKbm93
+IHRoaXMgc2VyaWVzIGJyZWFrcyBiaXNlY3QuCgpSZWdhcmRzLAoKCUhhbnMKCj4gIH07Cj4gIAo+
+ICBzdHJ1Y3QgcmdhX2ZyYW1lICpyZ2FfZ2V0X2ZyYW1lKHN0cnVjdCByZ2FfY3R4ICpjdHgsIGVu
+dW0gdjRsMl9idWZfdHlwZSB0eXBlKTsKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
