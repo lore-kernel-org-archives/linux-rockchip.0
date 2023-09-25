@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80AD3CE7A8B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 00:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1ACCE7A94
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Sep 2023 00:41:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KlrZYi4z1Bh7//QXAvKA4sPAmFqXRfZdzvps9sELV5c=; b=Yt0cLvxzm5J5RO
-	0DpSsRkgWnRjuD0nX1wkmbdpWEjmsiDqHrlNZVKeNI4MmdJE39NUCkEIeDnChcuR1YQfT8kIHz/sK
-	xgaAuRCIRw7pR00JZUdN9DDzejs5k6mxsFbUMoIJQkM2vqbfEo++pPQp0AyYT5ciFmHzIhl8R5zOB
-	vYPt4oue9bJkcVo7wvszgq+KgA1B58r6LMDqDYfabLP/tUlFLPF1lCZo5v7qNzwFd5ulohebriaax
-	DXBinNRmTNdd95WFW5MG9oss0jRQCpWf1lxmuXSPPLrOLUKmmfBjmfXnHQwBBAkTgxgITA9Tq6lF8
-	QqvOJ0NXMr3p0WlWC+gg==;
+	List-Owner; bh=mYte1KcIOq5eXtylr4OzOM9p0abV2ciSwJ4TMqSjCC0=; b=DLfa8lBJx1ObYu
+	0WW2c1xRxEixfXlkO1N0dZz0Od3f+syvOEcl7gQa+B2zF8OFbFc4oOkjsqbNoYCS5eol/MZpi5FFC
+	ieAFWO58nLwT1ch3AUvYsKioQqa2KVCCkDePU0Qb6QgvC8ndpu6nr6v+8kKjmMRtKWKT+sAeRyYSY
+	4NgVYDU4ZQTE6Il1GXuh4GdrHs6zuc8gOiVY+ngERsALPznIW81HgVVyy651fxh7h3t95TFUhD1FL
+	fXSxSN/880yGKA4ObK5jdD4SbXH+4X162QzeBawRTDjRRovITVRF6GpcLvE5i1+Nd4nv+82d8ksAK
+	EXKuZEdr/EVOAyjI3pXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkZew-00D1vA-2i;
-	Mon, 25 Sep 2023 00:41:10 +0000
+	id 1qkZf3-00D1yz-1W;
+	Mon, 25 Sep 2023 00:41:17 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkZeq-00D1sB-2D
+	id 1qkZeu-00D1tu-36
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Sep 2023 00:41:09 +0000
+	Mon, 25 Sep 2023 00:41:13 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 95CD3842;
-	Mon, 25 Sep 2023 02:39:23 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EB202DFB;
+	Mon, 25 Sep 2023 02:39:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1695602363;
-	bh=laEefnxjMh2UpaIdGxB5tTY7Z0R+cQ3cKGIWvbQ8Jxk=;
+	s=mail; t=1695602368;
+	bh=2sXztG/iy+FJCC2HtiODrg1LhqnG1d+yQj7W+MMZ200=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DeFjlpaLyFtP4fNaKlvIBqszUhPgHzNy72uamgvVJmZZvsSXYN64oBUe6wrmQHMpN
-	 xH68G96dVFlG2buW3AqrLqkRTM+yG1O3rxXerEb2VhVLaqrM1VRwNubjD7kkfhNr2e
-	 i4I4p88S7eWQmkdN0O7OMH/cSqH7QU9zUQT0zzfY=
+	b=vx+QcSJ+HfQkOFrXIEgIQm67jlnM7R8TmHG3/m0ImyCVvV9U1eMCr8ZzCzH7bJFhy
+	 B006XVFvesTHTADp3lvJJ98hif6PfTXOuRDXzMthNm3QLezWw6M7vCZSIinICEAC/Y
+	 rfqG2AJp02rIgOhXQCwBxg1I55QJUkc7GsODK/0A=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>,
 	Paul Elder <paul.elder@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 01/14] MAINTAINERS: Add co-maintainer for the rkisp1 driver
-Date: Mon, 25 Sep 2023 03:40:59 +0300
-Message-ID: <20230925004112.22797-2-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 04/14] media: rkisp1: csi: Use V4L2 subdev active state
+Date: Mon, 25 Sep 2023 03:41:02 +0300
+Message-ID: <20230925004112.22797-5-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230925004112.22797-1-laurent.pinchart@ideasonboard.com>
 References: <20230925004112.22797-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230924_174104_877724_2CA929AD 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230924_174109_153852_7649D0C8 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,26 +68,308 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As I'm actively working on the rkisp1 driver, I would like to volunteer
-as a co-maintainer, mostly to make sure I get CC on patches.
+Use the V4L2 subdev active state API to store the active format and crop
+rectangle. This simplifies the driver not only by dropping the state
+stored in the rkisp1_csi structure, but also by replacing the ops_lock
+with the state lock.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |   6 -
+ .../platform/rockchip/rkisp1/rkisp1-csi.c     | 107 ++++++------------
+ 2 files changed, 33 insertions(+), 80 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index bf0f54c24f81..9ce0d128410c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -18512,6 +18512,7 @@ F:	sound/soc/rockchip/rockchip_i2s_tdm.*
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 053ce04066b6..1e7cea1bea5e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -167,9 +167,6 @@ struct rkisp1_sensor_async {
+  * @is_dphy_errctrl_disabled: if dphy errctrl is disabled (avoid endless interrupt)
+  * @sd: v4l2_subdev variable
+  * @pads: media pads
+- * @pad_cfg: configurations for the pads
+- * @sink_fmt: input format
+- * @lock: protects pad_cfg and sink_fmt
+  * @source: source in-use, set when starting streaming
+  */
+ struct rkisp1_csi {
+@@ -178,9 +175,6 @@ struct rkisp1_csi {
+ 	bool is_dphy_errctrl_disabled;
+ 	struct v4l2_subdev sd;
+ 	struct media_pad pads[RKISP1_CSI_PAD_NUM];
+-	struct v4l2_subdev_pad_config pad_cfg[RKISP1_CSI_PAD_NUM];
+-	const struct rkisp1_mbus_info *sink_fmt;
+-	struct mutex lock;
+ 	struct v4l2_subdev *source;
+ };
  
- ROCKCHIP ISP V1 DRIVER
- M:	Dafna Hirschfeld <dafna@fastmail.com>
-+M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
- L:	linux-media@vger.kernel.org
- L:	linux-rockchip@lists.infradead.org
- S:	Maintained
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index fdff3d0da4e5..6e17b2817e61 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -30,23 +30,6 @@ static inline struct rkisp1_csi *to_rkisp1_csi(struct v4l2_subdev *sd)
+ 	return container_of(sd, struct rkisp1_csi, sd);
+ }
+ 
+-static struct v4l2_mbus_framefmt *
+-rkisp1_csi_get_pad_fmt(struct rkisp1_csi *csi,
+-		       struct v4l2_subdev_state *sd_state,
+-		       unsigned int pad, u32 which)
+-{
+-	struct v4l2_subdev_state state = {
+-		.pads = csi->pad_cfg
+-	};
+-
+-	lockdep_assert_held(&csi->lock);
+-
+-	if (which == V4L2_SUBDEV_FORMAT_TRY)
+-		return v4l2_subdev_get_try_format(&csi->sd, sd_state, pad);
+-	else
+-		return v4l2_subdev_get_try_format(&csi->sd, &state, pad);
+-}
+-
+ int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
+ 			   struct rkisp1_sensor_async *s_asd,
+ 			   unsigned int source_pad)
+@@ -76,7 +59,8 @@ int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
+ }
+ 
+ static int rkisp1_csi_config(struct rkisp1_csi *csi,
+-			     const struct rkisp1_sensor_async *sensor)
++			     const struct rkisp1_sensor_async *sensor,
++			     const struct rkisp1_mbus_info *format)
+ {
+ 	struct rkisp1_device *rkisp1 = csi->rkisp1;
+ 	unsigned int lanes = sensor->lanes;
+@@ -98,7 +82,7 @@ static int rkisp1_csi_config(struct rkisp1_csi *csi,
+ 
+ 	/* Configure Data Type and Virtual Channel */
+ 	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMG_DATA_SEL,
+-		     RKISP1_CIF_MIPI_DATA_SEL_DT(csi->sink_fmt->mipi_dt) |
++		     RKISP1_CIF_MIPI_DATA_SEL_DT(format->mipi_dt) |
+ 		     RKISP1_CIF_MIPI_DATA_SEL_VC(0));
+ 
+ 	/* Clear MIPI interrupts */
+@@ -151,7 +135,8 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
+ }
+ 
+ static int rkisp1_csi_start(struct rkisp1_csi *csi,
+-			    const struct rkisp1_sensor_async *sensor)
++			    const struct rkisp1_sensor_async *sensor,
++			    const struct rkisp1_mbus_info *format)
+ {
+ 	struct rkisp1_device *rkisp1 = csi->rkisp1;
+ 	union phy_configure_opts opts;
+@@ -159,7 +144,7 @@ static int rkisp1_csi_start(struct rkisp1_csi *csi,
+ 	s64 pixel_clock;
+ 	int ret;
+ 
+-	ret = rkisp1_csi_config(csi, sensor);
++	ret = rkisp1_csi_config(csi, sensor, format);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -169,7 +154,7 @@ static int rkisp1_csi_start(struct rkisp1_csi *csi,
+ 		return -EINVAL;
+ 	}
+ 
+-	phy_mipi_dphy_get_default_config(pixel_clock, csi->sink_fmt->bus_width,
++	phy_mipi_dphy_get_default_config(pixel_clock, format->bus_width,
+ 					 sensor->lanes, cfg);
+ 	phy_set_mode(csi->dphy, PHY_MODE_MIPI_DPHY);
+ 	phy_configure(csi->dphy, &opts);
+@@ -248,7 +233,6 @@ static int rkisp1_csi_enum_mbus_code(struct v4l2_subdev *sd,
+ 				     struct v4l2_subdev_state *sd_state,
+ 				     struct v4l2_subdev_mbus_code_enum *code)
+ {
+-	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+ 	unsigned int i;
+ 	int pos = 0;
+ 
+@@ -258,15 +242,10 @@ static int rkisp1_csi_enum_mbus_code(struct v4l2_subdev *sd,
+ 		if (code->index)
+ 			return -EINVAL;
+ 
+-		mutex_lock(&csi->lock);
+-
+-		sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state,
+-						  RKISP1_CSI_PAD_SINK,
+-						  code->which);
++		sink_fmt = v4l2_subdev_get_pad_format(sd, sd_state,
++						      RKISP1_CSI_PAD_SINK);
+ 		code->code = sink_fmt->code;
+ 
+-		mutex_unlock(&csi->lock);
+-
+ 		return 0;
+ 	}
+ 
+@@ -296,9 +275,9 @@ static int rkisp1_csi_init_config(struct v4l2_subdev *sd,
+ {
+ 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+ 
+-	sink_fmt = v4l2_subdev_get_try_format(sd, sd_state,
++	sink_fmt = v4l2_subdev_get_pad_format(sd, sd_state,
+ 					      RKISP1_CSI_PAD_SINK);
+-	src_fmt = v4l2_subdev_get_try_format(sd, sd_state,
++	src_fmt = v4l2_subdev_get_pad_format(sd, sd_state,
+ 					     RKISP1_CSI_PAD_SRC);
+ 
+ 	sink_fmt->width = RKISP1_DEFAULT_WIDTH;
+@@ -311,36 +290,18 @@ static int rkisp1_csi_init_config(struct v4l2_subdev *sd,
+ 	return 0;
+ }
+ 
+-static int rkisp1_csi_get_fmt(struct v4l2_subdev *sd,
+-			      struct v4l2_subdev_state *sd_state,
+-			      struct v4l2_subdev_format *fmt)
+-{
+-	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+-
+-	mutex_lock(&csi->lock);
+-	fmt->format = *rkisp1_csi_get_pad_fmt(csi, sd_state, fmt->pad,
+-					      fmt->which);
+-	mutex_unlock(&csi->lock);
+-
+-	return 0;
+-}
+-
+ static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
+ 			      struct v4l2_subdev_state *sd_state,
+ 			      struct v4l2_subdev_format *fmt)
+ {
+-	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+ 	const struct rkisp1_mbus_info *mbus_info;
+ 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+ 
+ 	/* The format on the source pad always matches the sink pad. */
+ 	if (fmt->pad == RKISP1_CSI_PAD_SRC)
+-		return rkisp1_csi_get_fmt(sd, sd_state, fmt);
++		return v4l2_subdev_get_fmt(sd, sd_state, fmt);
+ 
+-	mutex_lock(&csi->lock);
+-
+-	sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SINK,
+-					  fmt->which);
++	sink_fmt = v4l2_subdev_get_pad_format(sd, sd_state, RKISP1_CSI_PAD_SINK);
+ 
+ 	sink_fmt->code = fmt->format.code;
+ 
+@@ -359,16 +320,10 @@ static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
+ 
+ 	fmt->format = *sink_fmt;
+ 
+-	if (fmt->which == V4L2_SUBDEV_FORMAT_ACTIVE)
+-		csi->sink_fmt = mbus_info;
+-
+ 	/* Propagate the format to the source pad. */
+-	src_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SRC,
+-					 fmt->which);
++	src_fmt = v4l2_subdev_get_pad_format(sd, sd_state, RKISP1_CSI_PAD_SRC);
+ 	*src_fmt = *sink_fmt;
+ 
+-	mutex_unlock(&csi->lock);
+-
+ 	return 0;
+ }
+ 
+@@ -380,8 +335,11 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+ {
+ 	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+ 	struct rkisp1_device *rkisp1 = csi->rkisp1;
++	const struct v4l2_mbus_framefmt *sink_fmt;
++	const struct rkisp1_mbus_info *format;
+ 	struct rkisp1_sensor_async *source_asd;
+ 	struct v4l2_async_connection *asc;
++	struct v4l2_subdev_state *sd_state;
+ 	struct media_pad *source_pad;
+ 	struct v4l2_subdev *source;
+ 	int ret;
+@@ -415,9 +373,12 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+ 	if (source_asd->mbus_type != V4L2_MBUS_CSI2_DPHY)
+ 		return -EINVAL;
+ 
+-	mutex_lock(&csi->lock);
+-	ret = rkisp1_csi_start(csi, source_asd);
+-	mutex_unlock(&csi->lock);
++	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
++	sink_fmt = v4l2_subdev_get_pad_format(sd, sd_state, RKISP1_CSI_PAD_SINK);
++	format = rkisp1_mbus_info_get_by_code(sink_fmt->code);
++	v4l2_subdev_unlock_state(sd_state);
++
++	ret = rkisp1_csi_start(csi, source_asd, format);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -447,7 +408,7 @@ static const struct v4l2_subdev_video_ops rkisp1_csi_video_ops = {
+ static const struct v4l2_subdev_pad_ops rkisp1_csi_pad_ops = {
+ 	.enum_mbus_code = rkisp1_csi_enum_mbus_code,
+ 	.init_cfg = rkisp1_csi_init_config,
+-	.get_fmt = rkisp1_csi_get_fmt,
++	.get_fmt = v4l2_subdev_get_fmt,
+ 	.set_fmt = rkisp1_csi_set_fmt,
+ };
+ 
+@@ -459,13 +420,11 @@ static const struct v4l2_subdev_ops rkisp1_csi_ops = {
+ int rkisp1_csi_register(struct rkisp1_device *rkisp1)
+ {
+ 	struct rkisp1_csi *csi = &rkisp1->csi;
+-	struct v4l2_subdev_state state = {};
+ 	struct media_pad *pads;
+ 	struct v4l2_subdev *sd;
+ 	int ret;
+ 
+ 	csi->rkisp1 = rkisp1;
+-	mutex_init(&csi->lock);
+ 
+ 	sd = &csi->sd;
+ 	v4l2_subdev_init(sd, &rkisp1_csi_ops);
+@@ -481,26 +440,26 @@ int rkisp1_csi_register(struct rkisp1_device *rkisp1)
+ 	pads[RKISP1_CSI_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE |
+ 					 MEDIA_PAD_FL_MUST_CONNECT;
+ 
+-	csi->sink_fmt = rkisp1_mbus_info_get_by_code(RKISP1_CSI_DEF_FMT);
+-
+ 	ret = media_entity_pads_init(&sd->entity, RKISP1_CSI_PAD_NUM, pads);
+ 	if (ret)
+-		goto error;
++		goto err_entity_cleanup;
+ 
+-	state.pads = csi->pad_cfg;
+-	rkisp1_csi_init_config(sd, &state);
++	ret = v4l2_subdev_init_finalize(sd);
++	if (ret)
++		goto err_entity_cleanup;
+ 
+ 	ret = v4l2_device_register_subdev(&csi->rkisp1->v4l2_dev, sd);
+ 	if (ret) {
+ 		dev_err(sd->dev, "Failed to register csi receiver subdev\n");
+-		goto error;
++		goto err_subdev_cleanup;
+ 	}
+ 
+ 	return 0;
+ 
+-error:
++err_subdev_cleanup:
++	v4l2_subdev_cleanup(sd);
++err_entity_cleanup:
+ 	media_entity_cleanup(&sd->entity);
+-	mutex_destroy(&csi->lock);
+ 	csi->rkisp1 = NULL;
+ 	return ret;
+ }
+@@ -513,8 +472,8 @@ void rkisp1_csi_unregister(struct rkisp1_device *rkisp1)
+ 		return;
+ 
+ 	v4l2_device_unregister_subdev(&csi->sd);
++	v4l2_subdev_cleanup(&csi->sd);
+ 	media_entity_cleanup(&csi->sd.entity);
+-	mutex_destroy(&csi->lock);
+ }
+ 
+ int rkisp1_csi_init(struct rkisp1_device *rkisp1)
 -- 
 Regards,
 
