@@ -4,85 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A25E7D241
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Sep 2023 06:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7B0AE7D24D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Sep 2023 08:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M4ycSUvmWQcQJOzqfFLJeJMbRGWOcSGKOHM6kHCtkzQ=; b=B6m/6ABJpp60/V
-	Fmy16p8DiV5BG6KAfTtP2IJk7A/gwcBpU5Mq+VMuy1uBQTJRJdMb3zTU3ELZoONKCeO4KpOQUedC3
-	YtMzac7JGdimcB4XUOrdDwz5SXUqSoZ2MbMnIj763Yofc30jth3W4+6rnXnonNYIc4DR0k4a6e0Hk
-	tXcvjYzNKJMXg5SCJHXkUPIKSg20i9UO+Krw4LnaZntp22iK0O1z+vie90XEDWJApvVq9OywSl/UE
-	NRcYSB5IVWLBlST+r2G2IukQ2tWJGnRSWcq7W9+kQQHJemyj8MkFUXWQl9QuSxQ2b7fzXoReiviG9
-	zvAq/4an74gQ0DqQJfOQ==;
+	List-Owner; bh=PZet3onr6xeOupBbkK/yAsxC0DQpQ9A47xTbQnoxVjQ=; b=D3qWFYJLb9Gs64
+	EjnOs1Rbi+Pj9ukTqYPqBq40yPNflOJXRBvCnkSTH24j+6Loxa9UJAzUrqlddXJoitqh3nkHI+iqi
+	VYh7tu8+i4eSrc7KGKRXcUwzbqjfmHU01AK1ImnjruttugRBk6EXhkqBMXb6I/k2z9M/UorE2gfB4
+	iAZ+bkF83SEl/TRmJqi3fBnchEyoeaRS/0bo7nmPNfGNC6iiH6GpJ1VLAlQIiplFvabI4ZAg4WLMp
+	Vy1DS1hZRcAYXX2t45UjGwaK6/AexMGB+C7jqClfYjFNFyQIhZjreIW4qzXPEquUHzj6XT9sUP2wE
+	sdPJZeYm9PbG+iIk8OpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql1yp-00FkpS-1X;
-	Tue, 26 Sep 2023 06:55:35 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1ql37J-00Fqnj-35;
+	Tue, 26 Sep 2023 08:08:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1ql1yn-00Fko7-0i
-	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Sep 2023 06:55:34 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-59f6e6b7600so46519477b3.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Sep 2023 23:55:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695711330; x=1696316130; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eHSkNGK03t5d9rG+f10qQXua3Wp3jtHQqzKshE119FY=;
-        b=tpJ5dqqt2J7xVrpi1+N2Ri6SjQGAZJtxcHP5UU+Wf9Evwzlok81U5eAbPOY2f9otNd
-         45Nb2e81FkSA2/+0UIrGqDXYnMJWoitHeOZvWpyy5LTnBdsbawUwrdQJrzSvR7nTDSml
-         +kHvRY/gdeQ++hcH4ckBijiFyhNO4vcBhvWFhvQ6ir0ytt16X6lZW8tO7nvPda51W9mc
-         g7Vq/ezT/ow3OHAICamA/gKTmgS7U01Vpvc5n+Ll72yGKkTMUxU1/aV8/oSa6Qb6puyj
-         iJy2xV0AaCjeyQ3SkJ4N1QadKOi5TjHMXpb2LPI4ZOtwYebK8+C6/V5X202JJxnwVC4Z
-         /+lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695711330; x=1696316130;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eHSkNGK03t5d9rG+f10qQXua3Wp3jtHQqzKshE119FY=;
-        b=BVPCzOw8Qvhu5VqSylPs553LarJahcoNXoqwKUYsWgrk+8I73pOl4dW/TXJLFYA/9O
-         BE+xoBsCj9wUusV+z2zvmqK1a8B+2r/f58MMlWyxyabBR7aWQIXSEST3tf+5RC/MnGey
-         aAs5I8g/zWDPe/t244US+4rXqwrTRImZsZKMG5RudvJbjZXtkOWCpwq+lYpsichyuGVR
-         jFGZlQk7NbGxdX/hwOG1OXGe8pnEMKV2IjU10xYz7n2v19EHhjfjmnIBTupTgGt8OFKP
-         JWRJVyhfEMJA4FszZOl2nv+itucToTq/OJikeDGKIlEx3sUVNeYY0Gwwb4FTh1SyRwQv
-         jcGA==
-X-Gm-Message-State: AOJu0YyHG4szx4Jld+vKBYSRmzW+ubN6x8o3fdfepw0DH8Q7MXhEcrzH
-	Wt1s4jCUhEEwuuQ6y3Hh8lF4TjuaNDcQEwtCWmmD6A==
-X-Google-Smtp-Source: AGHT+IHoO7TBziPA5htbsuH2VXUX9yGcO/aIOtLwPZZVCJAErZgDwgIkJ3nSHIbU3VSV/WI7WX5/gfB00KELiu+FW9A=
-X-Received: by 2002:a81:4f92:0:b0:592:60e9:97cf with SMTP id
- d140-20020a814f92000000b0059260e997cfmr8225904ywb.12.1695711326765; Mon, 25
- Sep 2023 23:55:26 -0700 (PDT)
+	id 1ql37G-00Fqmq-2r;
+	Tue, 26 Sep 2023 08:08:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 581B261326;
+	Tue, 26 Sep 2023 08:08:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F12C4C433C8;
+	Tue, 26 Sep 2023 08:08:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695715702;
+	bh=UjHcxElqJT2Xn40h70QVPAzMGgQiQRJNiS+9s0Gk/2Y=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Tbfzb396Id5RYpSZusFkKdTiL9aPVNcGgS0A0dsHmqnoeaLC1HtiE+jwMZNzXUs9H
+	 uuRoqOoSaznBmPFFknL2+Obbdu3r2S8RdSLvjueky9tM0+prY6DIqOuHyWNXvEVpO1
+	 CQZaVkCTpHqMv04Zgn6xY9NV7Ynab9biQhu5D0HL9Bh0bRX9bvuaQ5avK/6cc0Ovfx
+	 AYLacydmC1YKFY3nr83v3IQDO1tvJPc/HkP656G6Tm+iwQDWPaMCm1NclDK6AaWwf4
+	 Gkk2ejWhkF/NzRyL/ZxjpS8AO1pfdyLbtwFwDqIZiqP7CN7Yn2SjJyCCn1UVy5CYHS
+	 c93sy0mgxUI7w==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Lee Jones <lee@kernel.org>, 
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, Alex Bee <knaerzche@gmail.com>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, 
+ Johan Jonker <jbx6244@gmail.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ alsa-devel@alsa-project.org, linux-clk@vger.kernel.org, 
+ linux-phy@lists.infradead.org
+In-Reply-To: <20230829171647.187787-1-knaerzche@gmail.com>
+References: <20230829171647.187787-1-knaerzche@gmail.com>
+Subject: Re: (subset) [PATCH 00/31] Fix and improve Rockchip RK3128 support
+Message-Id: <169571569769.2520438.14041840367987493896.b4-ty@kernel.org>
+Date: Tue, 26 Sep 2023 10:08:17 +0200
 MIME-Version: 1.0
-References: <20230925212713.1975800-1-robh@kernel.org>
-In-Reply-To: <20230925212713.1975800-1-robh@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 26 Sep 2023 08:55:09 +0200
-Message-ID: <CACRpkdYSvgUsuMS+-=LXmCtH0bLF=EMguuvWwZ7VjUfnx+uyaQ@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: Add missing additionalProperties on
- child node schemas
-To: Rob Herring <robh@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Magnus Damm <magnus.damm@gmail.com>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>, 
-	Konrad Dybcio <konrad.dybcio@somainline.org>, linux-arm-msm@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.13-dev-099c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_235533_259603_F8EDE910 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230926_010822_986012_68D9CF89 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,18 +77,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBTZXAgMjUsIDIwMjMgYXQgMTE6MjfigK9QTSBSb2IgSGVycmluZyA8cm9iaEBrZXJu
-ZWwub3JnPiB3cm90ZToKCj4gSnVzdCBhcyB1bmV2YWx1YXRlZFByb3BlcnRpZXMgb3IgYWRkaXRp
-b25hbFByb3BlcnRpZXMgYXJlIHJlcXVpcmVkIGF0Cj4gdGhlIHRvcCBsZXZlbCBvZiBzY2hlbWFz
-LCB0aGV5IHNob3VsZCAoYW5kIHdpbGwpIGFsc28gYmUgcmVxdWlyZWQgZm9yCj4gY2hpbGQgbm9k
-ZSBzY2hlbWFzLiBUaGF0IGVuc3VyZXMgb25seSBkb2N1bWVudGVkIHByb3BlcnRpZXMgYXJlCj4g
-cHJlc2VudCBmb3IgYW55IG5vZGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9i
-aEBrZXJuZWwub3JnPgoKUGF0Y2ggYXBwbGllZCEKCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Tue, 29 Aug 2023 19:16:16 +0200, Alex Bee wrote:
+> this series fixes some issues I found when testing my "new" RK3128 board
+> with the mainline kernel and adds some core functionality like SMP bringup,
+> usb and networking.
+> 
+> The propably most distinctive change is the split up of the DTs for the
+> different SoCs of this platform: RK3126 and RK3128. Even if I'm not adding
+> a RK3126 board in this series: I think this change should be done as early
+> as possible in order to avoid issues in future.
+> Actually it should have been done like that in the first place.
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[03/31] dt-bindings: ASoC: rockchip: Add compatible for RK3128 spdif
+        commit: 5c8a033f5674ae62d5aa2ebbdb9980b89380c34f
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
