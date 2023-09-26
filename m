@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E31B0CE7A8E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Sep 2023 04:06:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A25E7D241
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Sep 2023 06:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ey94SA3oW8AjMqlVPD0WqjPOGGL30r01vdRmZNqywRo=; b=gZQ/BdV+E9AnWa
-	MOC/l0VNAQcTP5K4hpf6ovoRXLIsqjBN8WaVwsL+oIwv2cQwBn626J67mGdKganZJW93741vRepQV
-	O0utmK9jFnhthoWWrQsvv+xjyQkojmKyhgUSXi75/r7bOsvRhbYgzbygMeIgY9PzTXt1Lj9PLpiCX
-	sawOuvfgBhmj0Z38iLhT1Hzt6f3c082nTGyzSA6b6DuYR3XT2tZ/iBBmNwQwgtPl0FQhHxkJBlse4
-	ibbEPiQwZbudnjRVCjOavFAr/+SBwGqPoM2kDc2flmiXWjP/4V/vPsOsR3bfUUm5qbO0Bz0dtEcbH
-	R2YLJVYDp3lMlYXWTJXg==;
+	List-Owner; bh=M4ycSUvmWQcQJOzqfFLJeJMbRGWOcSGKOHM6kHCtkzQ=; b=B6m/6ABJpp60/V
+	Fmy16p8DiV5BG6KAfTtP2IJk7A/gwcBpU5Mq+VMuy1uBQTJRJdMb3zTU3ELZoONKCeO4KpOQUedC3
+	YtMzac7JGdimcB4XUOrdDwz5SXUqSoZ2MbMnIj763Yofc30jth3W4+6rnXnonNYIc4DR0k4a6e0Hk
+	tXcvjYzNKJMXg5SCJHXkUPIKSg20i9UO+Krw4LnaZntp22iK0O1z+vie90XEDWJApvVq9OywSl/UE
+	NRcYSB5IVWLBlST+r2G2IukQ2tWJGnRSWcq7W9+kQQHJemyj8MkFUXWQl9QuSxQ2b7fzXoReiviG9
+	zvAq/4an74gQ0DqQJfOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkzLH-00FWd6-08;
-	Tue, 26 Sep 2023 04:06:35 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1ql1yp-00FkpS-1X;
+	Tue, 26 Sep 2023 06:55:35 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qkzLC-00FWcN-2y;
-	Tue, 26 Sep 2023 04:06:32 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2bffa8578feso132869881fa.2;
-        Mon, 25 Sep 2023 21:06:29 -0700 (PDT)
+	id 1ql1yn-00Fko7-0i
+	for linux-rockchip@lists.infradead.org;
+	Tue, 26 Sep 2023 06:55:34 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-59f6e6b7600so46519477b3.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Sep 2023 23:55:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695701188; x=1696305988; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=linaro.org; s=google; t=1695711330; x=1696316130; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mGB+hW8EcgpXNNSjmf7fJ24sLwC+iJpETWg7Drt2OpU=;
-        b=Fz36+RqlcJXSru8Qa7tQe9/Jl90O4DMk0bCZqKzVudZRpq+DpT0fSGVZWypDM3GYoE
-         sNt1AUBuQgsuBT2YYJQy3+neR4+ypmHEAMtYQo1MKHgvBTNdZgle3Dt2Kr4/M7ygSrTV
-         4oql26a5nA6v1fbpb1Eaz3zBTm9/F6K4ay3Xr2zOIGhwZsQv2UCso+2RwwrxvaY1GX7x
-         uziFvKH1TxbvOL0My1Pk7lOEwDFp0jLBHGvPsW7k4zQGivcT3cQQKHGADdfvnC/NUJKN
-         YfaLC3o/GP5HZoh9km8ijyL89QulRvjAwBgJQlh9K/J26hrWrZv4HXseCpxzPQPEjxnX
-         qq6w==
+        bh=eHSkNGK03t5d9rG+f10qQXua3Wp3jtHQqzKshE119FY=;
+        b=tpJ5dqqt2J7xVrpi1+N2Ri6SjQGAZJtxcHP5UU+Wf9Evwzlok81U5eAbPOY2f9otNd
+         45Nb2e81FkSA2/+0UIrGqDXYnMJWoitHeOZvWpyy5LTnBdsbawUwrdQJrzSvR7nTDSml
+         +kHvRY/gdeQ++hcH4ckBijiFyhNO4vcBhvWFhvQ6ir0ytt16X6lZW8tO7nvPda51W9mc
+         g7Vq/ezT/ow3OHAICamA/gKTmgS7U01Vpvc5n+Ll72yGKkTMUxU1/aV8/oSa6Qb6puyj
+         iJy2xV0AaCjeyQ3SkJ4N1QadKOi5TjHMXpb2LPI4ZOtwYebK8+C6/V5X202JJxnwVC4Z
+         /+lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695701188; x=1696305988;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1695711330; x=1696316130;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mGB+hW8EcgpXNNSjmf7fJ24sLwC+iJpETWg7Drt2OpU=;
-        b=JBKyMTM3Rx2WQGJA9gCosTtMwmB0Da4X1tYWTivU8aZgeogTEBU04tcGuvlgjAjciI
-         bb9fqNmVxRqRFGDdWTnkohWGHSYgHc47TXT0PoOoUdkYY3uYCGjvpRK0eJWQj3NEbUCg
-         N9367RTWCo6EUjL2WtV+gyGq9UU0VXc+f2hgo41OfjGRjC0h6ZeN1imkCwxADPMxiYtK
-         3VtO3dmauguomuolZ6eiSj630sXy0uSWi1KmwEth5T5fW8chTJoKc5pLAHk8LmLMFM7M
-         DnWlHZILfhQ9M/P+hLsvyqwE34R11RRz42umGDCDHKhFbNu8nNDj4AO9KMuG1DZC6V+K
-         D+Gw==
-X-Gm-Message-State: AOJu0YyN9TLVP9poKqYzibfwOowLXEjXhoopQau68IlLfqYcOxA+u8jO
-	qGGjjoasKxLrQ2hS7OAadqs=
-X-Google-Smtp-Source: AGHT+IFnZUohBRjAdg6nVKhBrCjO2Fo24nnQvaYhhpnODnccZ+1NZtjpOOBB8jCfNGJgy9YzuEpoYA==
-X-Received: by 2002:a05:651c:118:b0:2bc:d94f:ad04 with SMTP id a24-20020a05651c011800b002bcd94fad04mr6668385ljb.13.1695701187599;
-        Mon, 25 Sep 2023 21:06:27 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-12-148.dynamic.telemach.net. [82.149.12.148])
-        by smtp.gmail.com with ESMTPSA id h1-20020a1709063c0100b0099bc038eb2bsm7137424ejg.58.2023.09.25.21.06.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 21:06:26 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Mark Brown <broonie@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Heiko Stuebner <heiko@sntech.de>,
- Serge Semin <fancer.lancer@gmail.com>, Maxime Ripard <mripard@kernel.org>,
- Chris Morgan <macromorgan@hotmail.com>, Rob Herring <robh@kernel.org>
-Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] spi: dt-bindings: Make "additionalProperties: true" explicit
-Date: Tue, 26 Sep 2023 06:06:25 +0200
-Message-ID: <2783820.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <20230925212614.1974243-1-robh@kernel.org>
-References: <20230925212614.1974243-1-robh@kernel.org>
+        bh=eHSkNGK03t5d9rG+f10qQXua3Wp3jtHQqzKshE119FY=;
+        b=BVPCzOw8Qvhu5VqSylPs553LarJahcoNXoqwKUYsWgrk+8I73pOl4dW/TXJLFYA/9O
+         BE+xoBsCj9wUusV+z2zvmqK1a8B+2r/f58MMlWyxyabBR7aWQIXSEST3tf+5RC/MnGey
+         aAs5I8g/zWDPe/t244US+4rXqwrTRImZsZKMG5RudvJbjZXtkOWCpwq+lYpsichyuGVR
+         jFGZlQk7NbGxdX/hwOG1OXGe8pnEMKV2IjU10xYz7n2v19EHhjfjmnIBTupTgGt8OFKP
+         JWRJVyhfEMJA4FszZOl2nv+itucToTq/OJikeDGKIlEx3sUVNeYY0Gwwb4FTh1SyRwQv
+         jcGA==
+X-Gm-Message-State: AOJu0YyHG4szx4Jld+vKBYSRmzW+ubN6x8o3fdfepw0DH8Q7MXhEcrzH
+	Wt1s4jCUhEEwuuQ6y3Hh8lF4TjuaNDcQEwtCWmmD6A==
+X-Google-Smtp-Source: AGHT+IHoO7TBziPA5htbsuH2VXUX9yGcO/aIOtLwPZZVCJAErZgDwgIkJ3nSHIbU3VSV/WI7WX5/gfB00KELiu+FW9A=
+X-Received: by 2002:a81:4f92:0:b0:592:60e9:97cf with SMTP id
+ d140-20020a814f92000000b0059260e997cfmr8225904ywb.12.1695711326765; Mon, 25
+ Sep 2023 23:55:26 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230925212713.1975800-1-robh@kernel.org>
+In-Reply-To: <20230925212713.1975800-1-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 26 Sep 2023 08:55:09 +0200
+Message-ID: <CACRpkdYSvgUsuMS+-=LXmCtH0bLF=EMguuvWwZ7VjUfnx+uyaQ@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Add missing additionalProperties on
+ child node schemas
+To: Rob Herring <robh@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Magnus Damm <magnus.damm@gmail.com>, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>, 
+	Konrad Dybcio <konrad.dybcio@somainline.org>, linux-arm-msm@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230925_210630_981718_A8D12B5A 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20230925_235533_259603_F8EDE910 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,103 +94,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne ponedeljek, 25. september 2023 ob 23:26:00 CEST je Rob Herring napisal(a):
-> Make it explicit that child nodes have additional properties and the
-> child node schema is not complete. The complete schemas are applied
-> separately based the compatible strings.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml        | 2 ++
->  .../devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml        | 2 ++
-
-For Allwinner:
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-
-Best regards,
-Jernej
-
->  Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml | 1 +
->  Documentation/devicetree/bindings/spi/rockchip-sfc.yaml         | 2 ++
->  Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml      | 2 ++
->  5 files changed, 9 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml b/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-> index a6f34bdd1d3c..e1ab3f523ad6 100644
-> --- a/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/allwinner,sun4i-a10-spi.yaml
-> @@ -46,6 +46,8 @@ properties:
->  patternProperties:
->    "^.*@[0-9a-f]+":
->      type: object
-> +    additionalProperties: true
-> +
->      properties:
->        reg:
->          items:
-> diff --git a/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml b/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-> index 28b8ace63044..3b47b68b92cb 100644
-> --- a/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/allwinner,sun6i-a31-spi.yaml
-> @@ -68,6 +68,8 @@ properties:
->  patternProperties:
->    "^.*@[0-9a-f]+":
->      type: object
-> +    additionalProperties: true
-> +
->      properties:
->        reg:
->          items:
-> diff --git a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> index 9ae1611175f2..48e97e240265 100644
-> --- a/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> +++ b/Documentation/devicetree/bindings/spi/nvidia,tegra210-quad.yaml
-> @@ -50,6 +50,7 @@ properties:
->  patternProperties:
->    "@[0-9a-f]+$":
->      type: object
-> +    additionalProperties: true
->  
->      properties:
->        spi-rx-bus-width:
-> diff --git a/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
-> index 339fb39529f3..ac1503de0478 100644
-> --- a/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
-> +++ b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
-> @@ -47,6 +47,8 @@ properties:
->  patternProperties:
->    "^flash@[0-3]$":
->      type: object
-> +    additionalProperties: true
-> +
->      properties:
->        reg:
->          minimum: 0
-> diff --git a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> index a47cb144b09f..6348a387a21c 100644
-> --- a/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/snps,dw-apb-ssi.yaml
-> @@ -160,6 +160,8 @@ properties:
->  patternProperties:
->    "^.*@[0-9a-f]+$":
->      type: object
-> +    additionalProperties: true
-> +
->      properties:
->        reg:
->          minimum: 0
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBTZXAgMjUsIDIwMjMgYXQgMTE6MjfigK9QTSBSb2IgSGVycmluZyA8cm9iaEBrZXJu
+ZWwub3JnPiB3cm90ZToKCj4gSnVzdCBhcyB1bmV2YWx1YXRlZFByb3BlcnRpZXMgb3IgYWRkaXRp
+b25hbFByb3BlcnRpZXMgYXJlIHJlcXVpcmVkIGF0Cj4gdGhlIHRvcCBsZXZlbCBvZiBzY2hlbWFz
+LCB0aGV5IHNob3VsZCAoYW5kIHdpbGwpIGFsc28gYmUgcmVxdWlyZWQgZm9yCj4gY2hpbGQgbm9k
+ZSBzY2hlbWFzLiBUaGF0IGVuc3VyZXMgb25seSBkb2N1bWVudGVkIHByb3BlcnRpZXMgYXJlCj4g
+cHJlc2VudCBmb3IgYW55IG5vZGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9i
+aEBrZXJuZWwub3JnPgoKUGF0Y2ggYXBwbGllZCEKCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
