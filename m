@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F430E82CA6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3836E82CA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9SlKkkRGRa6dQ42+H6XWzVsbQi3tO5KK42PVLvFPaLA=; b=tiYyXySTO2Ajpi
-	rLeTnwoRcOYJuzc9h6Ge8sUyhg2Yzsk++30xbYui3FpfUmGAvhwY0+gIPZyMJlNeEJ+2QtQ6x0H+g
-	4MrbLoScZ92ySEmclZNFQ15CXep4OwE35eUKNnNpHhdeYpz4ZU0UGhlTdSgES54Ce6BRUIcEV4kJ3
-	9b6QhLgKQTBBSRP5d5H5xmXb8pIdbN1PB536eKNI0ctJNcbR8Mme2J33DwMdm6M5nu1kHnNh5VbGi
-	0wPTpkpPBkDdLuje3s/5z7Q+z3X6DA3otEvcgVgynKDWXW+qXZ6EhStsESmoGpCyG7NEa96A35/IH
-	b+LVQJIzHakzSHutOulw==;
+	List-Owner; bh=e/8KySJGZO4RfPbpLOhcrTn7OZWjGSf0j9n1hDqH910=; b=sIGO30Y0ED7Xr7
+	ffgdJuP1iJZSafCgKKqP2VOvritSNb5mStb0F5CTk4Q0IRpTj4fzX1HJF4m8RudvTLvbH4LHzznHp
+	3aGxtql6WhUHcHdmLP0bRCDNVWD9xpiCMFhX3jvTMiuYB+Mg98IOaKVNfzEND5p0rpQR/RtaP/R8m
+	R/VOquusjWcy/rIHJ3qLCok8Lta5X+ndGrD0pCJOt9KgAWYTYQu+O8JiRq5d3pYBE5vXHfmNQD3lc
+	Ag3S0+dML6t9XRNUaIV5SRp6AY7xl83uoRjM4RcwdtcFWkhLG/s2X/uAorUiWeDGFdBBmua3wRgB4
+	zYohDKXpob5HnzPPWqAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWbY-001Hoi-1G;
-	Wed, 27 Sep 2023 15:37:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaN-001GRF-0z;
-	Wed, 27 Sep 2023 15:36:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=cUa/TY+Am8ySB21RfaC1a0J9/53VTglM2vrOBadwXyE=; b=Kfl2lOPqMi2nWfUBmXjQrfRvv7
-	Q+ohaGyhK/da4Aj+NtVOjQRSEOXm7aq/b1H9XTc18bnO4WdwdeMiJWR8qmJvRoB9/nx3qWqn9RPen
-	CevB0Vdz3KWQjXDedcr0jvnP9Un2yU38xIN4NSzEZFCKRmZ1ePKUwHvDBICNmeKhJi9A1J9Fitfan
-	VS3qx5WQcGLgtsKjO65gtnDRQ3qAEN0hBPLub0dk8tH5RS5EzjVdvn1wj2qPyRY3zFPsPnGwAoro2
-	FY+x7SJLSGAMRIuGET3kzL1G/lwmAfc7JxlxhIu6Lz9sxv4y/W+WBOIk+KB76QlAf80CxHMF91uVf
-	MlnMTWMQ==;
+	id 1qlWbd-001HvT-1x;
+	Wed, 27 Sep 2023 15:37:41 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaG-00401X-0G;
-	Wed, 27 Sep 2023 15:36:21 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlWaG-001GJq-2t;
+	Wed, 27 Sep 2023 15:36:23 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2F4926607330;
-	Wed, 27 Sep 2023 16:36:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3DA0E6607348;
+	Wed, 27 Sep 2023 16:36:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828974;
-	bh=/rw+5kiG9NH9F1WJEwdp/d4z1jjMgH/1J5yw8ccESj4=;
+	s=mail; t=1695828975;
+	bh=gAzQ/SGzIm4inZNC+PXcs+p3IPzDsrNiBUGyKW1mkfg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MHc5XXwbElP/sYWulqSWUB5MkN+oouj22lFu0xGDkcd6IHAAV6uz12XDviwnv5sof
-	 AGXqFzfqHpIFG98OAtRu/pmCdcxinlHaeoqAgQ2Ydd1gp5EY2zcOF0+53+b+APTG6P
-	 9EaBBNF4kWsTHmQB863FnTYy3ySK/dNAlKSgiyQb0kWx1iSsuNN/YJozX1r5Kj+NG6
-	 hrqvkh0xKukJxb1ZimvJiRgXKFOqeq7eyXoIwWFtfBIFagwSXFTxtSZPd9yb6eE1t5
-	 1Sc/drQvX3DnmCvYBjqPcDJ8GUfSefDyvZzLGxAYKgfyqkzdZc7fYfZk4IPusfyfag
-	 nFhmiuQun0DXA==
+	b=fz7L7URA6VG0t2aTr5V4BNuQpp/yeWevC+ajxAbUi0gRORHfMaI5pjmRvy79DDq9G
+	 1fpA5E4Cfb4nlEtRGyu4qVCtjLNM5l3EzI/Cycld7woGAvrJRQmafflICrJQvdqeE5
+	 LDk7LTpXY0FisojdtWh8Ye4iqFPogI3yW65qhe6jHkzgM6yFwtugcS6WzdxwFfibYt
+	 g1g+j0yzQ2n6aQ/LRkOfauEZ3kwxsLZw9pt0kAkenUyicEA9f2vXVtQZFClQ+Cfyzf
+	 tOOpcvFY3CVyCiAguNU0ijkxQK0DgeUYMXHUpcfsZe7yIC4iFDDSrCj3YS0uj59yDb
+	 xOBfrHDI/FptQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 15/53] media: test-drivers: vicodec: Increase max supported capture queue buffers
-Date: Wed, 27 Sep 2023 17:35:20 +0200
-Message-Id: <20230927153558.159278-16-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 17/53] media: verisilicon: Store chroma and motion vectors offset
+Date: Wed, 27 Sep 2023 17:35:22 +0200
+Message-Id: <20230927153558.159278-18-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_163617_720125_EB38CE77 
-X-CRM114-Status: UNSURE (   8.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_083617_099327_09B29390 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,25 +88,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Allow to allocated up to 64 buffers on capture queue.
+Store computed values of chroma and motion vectors offset because
+they depends on width and height values which change if the resolution
+change.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/test-drivers/vicodec/vicodec-core.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/verisilicon/hantro.h            | 2 ++
+ drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
-index 6f0e20df74e9..69cbe2c094e1 100644
---- a/drivers/media/test-drivers/vicodec/vicodec-core.c
-+++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
-@@ -1718,6 +1718,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
- 			V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE :
- 			V4L2_BUF_TYPE_VIDEO_CAPTURE);
- 	dst_vq->io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF;
-+	dst_vq->max_num_buffers = 64;
- 	dst_vq->drv_priv = ctx;
- 	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
- 	dst_vq->ops = &vicodec_qops;
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0948b04a9f8d..6f5eb975d0e3 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -328,6 +328,8 @@ struct hantro_vp9_decoded_buffer_info {
+ 	/* Info needed when the decoded frame serves as a reference frame. */
+ 	unsigned short width;
+ 	unsigned short height;
++	size_t chroma_offset;
++	size_t mv_offset;
+ 	u32 bit_depth : 4;
+ };
+ 
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 6fc4b555517f..6db1c32fce4d 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -158,9 +158,11 @@ static void config_output(struct hantro_ctx *ctx,
+ 
+ 	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
++	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
+ 
+ 	mv_addr = luma_addr + mv_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
++	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
+ }
+ 
+ struct hantro_vp9_ref_reg {
+@@ -195,7 +197,7 @@ static void config_ref(struct hantro_ctx *ctx,
+ 	luma_addr = hantro_get_dec_buf_addr(ctx, &buf->base.vb.vb2_buf);
+ 	hantro_write_addr(ctx->dev, ref_reg->y_base, luma_addr);
+ 
+-	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
++	chroma_addr = luma_addr + buf->vp9.chroma_offset;
+ 	hantro_write_addr(ctx->dev, ref_reg->c_base, chroma_addr);
+ }
+ 
+@@ -238,7 +240,7 @@ static void config_ref_registers(struct hantro_ctx *ctx,
+ 	config_ref(ctx, dst, &ref_regs[2], dec_params, dec_params->alt_frame_ts);
+ 
+ 	mv_addr = hantro_get_dec_buf_addr(ctx, &mv_ref->base.vb.vb2_buf) +
+-		  mv_offset(ctx, dec_params);
++		  mv_ref->vp9.mv_offset;
+ 	hantro_write_addr(ctx->dev, G2_REF_MV_ADDR(0), mv_addr);
+ 
+ 	hantro_reg_write(ctx->dev, &vp9_last_sign_bias,
 -- 
 2.39.2
 
