@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D0ABE80A8A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 22:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620FDE80ABC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 22:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/i+avrFzHnUz50Df21ykEDYtlJ/mC0rn5T1U9vVhIhY=; b=Db6iJi7NpZeFHn
-	9PimV9SpzfKLlwG1p6Hwun8YCrazm/4hkwQdQhomybf5r4OcY2BmyK9+laZn94/ZY7Ys8OVZXWDQh
-	YiHGvjhYQb8ZaGV+jt0QfNOjTdcW8ey+CvllAfmx/79ZURXXvMW2YcSuDfP/R6c08HbLwL9ygXBvQ
-	+6E7B+gqgR0yZc7V2gMzKZA3fM2Fz6KmBFWHAAx5Q6VLvA3sknY6LLNtIVOg7JFgrs2cnWQPOfibh
-	6ZuLUVO+r5zMb6eFciIbcTGBJd5v2KtC1+QeOFyQFVZy0MAeqcy0v10yDR+PxJLjKL/+Du4wemvd8
-	sqCLeshWra+49oBx5XFA==;
+	List-Owner; bh=MXwiK/lJvIEoyMUdCb/WoD60UkS4LWqh1Yw/+KjF1t0=; b=WPGqDEPbj4wscI
+	usGHqvhN3Wl2q5yMHC/0E+w1uD98JjM+FLmPHdrkTaX9rrOVoFddYKepfbCXe8GXPV2Vst9KDm5c0
+	omlFtRQZ1SOr6w2BvYT9aGEvVzEkMXUheKkI863qYVuZwE1Rjo/BNBA3DezAJESUzkXIuZESIWQRd
+	6YZR8vDizAorhJTLvJmf6qjpqkTeAyx05+vFHao8r9sIELX1cmugy3l6wYg12xbaDE7pmryiZyE6k
+	EPGxJh63MDai9qF3SZADv/sg4fK3lvAsSDjRN6OjNXh/vCJQCuaRCwenL46UKj0FMQVGASVT/uR0X
+	S5YLry3XhLHSZDLThvhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qldJV-001rno-37;
-	Wed, 27 Sep 2023 22:47:25 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1qldTf-001tMp-2W;
+	Wed, 27 Sep 2023 22:57:55 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qldJT-001rlD-0G
-	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Sep 2023 22:47:24 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-504427aae4fso11782594e87.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 27 Sep 2023 15:47:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695854838; x=1696459638; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CY0vsjcVCBgE58w9UR6SBm++3xKyQBSwPNYicIzid6s=;
-        b=BVFPxKw1GiHs4XiGuoPWG4ChbbSkKK6U6hSyGau/z4DTKEOf8FRrmkaTW1sID2KaOK
-         R/e4mXHBpL3djilswoJKDjdcoMi53n05BClOl0snkOVUZVZe1U/I5PQzt9/uAMJsIc9y
-         k/+MDYVU9mOa/RcboAk1O1jHHfRNeQvZBf0HI41ymW0WBC3K0LQNSQjBZE5kfoPM1eeh
-         X1LheYd3Ndfqc/o8C0pjxLr764OAqtGe1Hlg45xxyIxV91SmGAgHE8H4XJiXFw8JGFdn
-         KhJ8aDld+GzbeimJLUtfmjpk4WsC3L0zKuX+bC4V9juxKW97OqjquycKCrYrOEtEO279
-         uf3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695854838; x=1696459638;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CY0vsjcVCBgE58w9UR6SBm++3xKyQBSwPNYicIzid6s=;
-        b=rPjPpciu9dzo/+aTOkdOPJzu5LJF74td+GAsN0xTcGJ9nzEcNWsjj1eTicXw/Tv5Xz
-         UDpPt5IvitvD9pYjRXhHHGEPQlL0IqizTf8v0QrDACLnQouvdIHR86sVY8OYvQuGjjL/
-         VE87YCmDAyfsB7C+/NcmAP5O0pjDRqrQJQxnofvbRm4PSaOUrFJsSSXhyZhjfyl8LR2z
-         eVt0cPddiM+ohVCQBrmEasFFSoFlKZ0ZgwvBrqTtktOTHkPPEFM4TAr8rYK0qY85m6v4
-         f4MXjqbfINl0AbJB3zoxpNid7HBpzt6Jy9iDzcrFaDHSWz+wbtLv+SQ46StiAyNDuFUh
-         aSwA==
-X-Gm-Message-State: AOJu0YyTjWlb+SfxKOWoFldsTzal4P8i8pz2kZ3EuhOlxjQIwdd4pvOR
-	ktp/P7wJnSZdPHEsEupoyLTfg5j0BQ0zj76pSFY=
-X-Google-Smtp-Source: AGHT+IEX4yAeJVMQ9xLxRU+QUVQR8aPJSks9x5s8hY6YWkQ+B5BI90m9BXzskEw8JTnRLhnt+p9GEg==
-X-Received: by 2002:a05:6512:110d:b0:501:bf37:1fb3 with SMTP id l13-20020a056512110d00b00501bf371fb3mr2796624lfg.24.1695854837664;
-        Wed, 27 Sep 2023 15:47:17 -0700 (PDT)
-Received: from [127.0.1.1] ([85.235.12.238])
-        by smtp.gmail.com with ESMTPSA id ep14-20020a056512484e00b0050296068a12sm2801746lfb.30.2023.09.27.15.47.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Sep 2023 15:47:17 -0700 (PDT)
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 28 Sep 2023 00:47:16 +0200
-Subject: [PATCH 3/4] ASoC: rockchip: Drop includes from Rockchip MAX98090
+	id 1qldTa-001tLk-1n;
+	Wed, 27 Sep 2023 22:57:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 0A5BAB818F7;
+	Wed, 27 Sep 2023 22:57:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E53C9C433C7;
+	Wed, 27 Sep 2023 22:57:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695855467;
+	bh=U6mvGN6IUsN3aQ3Mg+rtFDHole4TLUqxeXU4RuqCc9I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BghfInz1dtGj+a0NwGrQpQyiHTPQFE7pGKytrpsBClpu9NX2eDcjSChVYZmAF6XDB
+	 owkxfj0jdteMSoWlG/cGItYI7rwQRUHp8gvgTfu6LqVuG2Ju3NmaLW+PzihWROGETC
+	 8im2c1V6bhHXdTgg2FyeVqoOoGl2C9rGCm7cO+QnD4KASaYNOMS1b5kWe3RD3hlBwa
+	 8K94UVok49+wD2jCK35a7ooWNY6CyXEsRolTaaTlHbmMq6gapMGZ2q5sD3ePlXHOQS
+	 huIRK9HVFU8DWh9mV8DVS8hYOkca+rRCVDtybY9i3VxzNc3SAJ8sCy+Qm1xR/Ceo4m
+	 4kcCfJF20jzJQ==
+Date: Wed, 27 Sep 2023 16:01:58 -0700
+From: Bjorn Andersson <andersson@kernel.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Joel Stanley <joel@jms.id.au>, 
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Leo Li <leoyang.li@nxp.com>, 
+	Herve Codina <herve.codina@bootlin.com>, Qiang Zhao <qiang.zhao@nxp.com>, 
+	Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>, Huisong Li <lihuisong@huawei.com>, 
+	Krzysztof Halasa <khalasa@piap.pl>, Karol Gugala <kgugala@antmicro.com>, 
+	Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, 
+	Yinbo Zhu <zhuyinbo@loongson.cn>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"Conor.Dooley" <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jon Hunter <jonathanh@nvidia.com>, 
+	Sumit Gupta <sumitg@nvidia.com>, Shang XiaoJing <shangxiaojing@huawei.com>, 
+	Muhammad Usama Anjum <usama.anjum@collabora.com>, Rob Herring <robh@kernel.org>, Nishanth Menon <nm@ti.com>, 
+	Santosh Shilimkar <ssantosh@kernel.org>, Michal Simek <michal.simek@amd.com>, 
+	Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, 
+	linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, Zev Weiss <zev@bewilderbeest.net>, 
+	linuxppc-dev@lists.ozlabs.org, loongarch@lists.linux.dev, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, "zhang.songyi" <zhang.songyi@zte.com.cn>, 
+	Lubomir Rintel <lkundrak@v3.sk>, linux-arm-msm@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>, 
+	linux-samsung-soc@vger.kernel.org, Nick Alcock <nick.alcock@oracle.com>, 
+	Yang Yingliang <yangyingliang@huawei.com>, linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
+	Ruan Jinjie <ruanjinjie@huawei.com>, Pengutronix Kernel Team <kernel@pengutronix.de>
+Subject: Re: [PATCH 00/40] soc: Convert to platform remove callback returning
+ void
+Message-ID: <f4hvrslynlgmxu4a2gogc5idvumskhaalxgwildy56yqk2wz7d@lkh4swkv52mi>
+References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
+ <CACPK8XeROYz_XaB3TvUhdXm7Vm8fjC8yU+mfvA58=_FiDrBy-g@mail.gmail.com>
+ <1b2fddf8-c0a6-4afa-8ad0-f280dea1607f@app.fastmail.com>
 MIME-Version: 1.0
-Message-Id: <20230928-descriptors-asoc-rockchip-v1-3-a142a42d4787@linaro.org>
-References: <20230928-descriptors-asoc-rockchip-v1-0-a142a42d4787@linaro.org>
-In-Reply-To: <20230928-descriptors-asoc-rockchip-v1-0-a142a42d4787@linaro.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: alsa-devel@alsa-project.org, linux-gpio@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, 
- Linus Walleij <linus.walleij@linaro.org>
-X-Mailer: b4 0.12.3
+Content-Disposition: inline
+In-Reply-To: <1b2fddf8-c0a6-4afa-8ad0-f280dea1607f@app.fastmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_154723_118459_949D43C3 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_155750_885635_78B07194 
+X-CRM114-Status: GOOD (  24.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,37 +91,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip MAX98090 ASoC driver includes two legacy GPIO
-headers but doesn't use symbols from any of them. Delete
-the includes.
+On Wed, Sep 27, 2023 at 10:43:16AM +0200, Arnd Bergmann wrote:
+> On Wed, Sep 27, 2023, at 04:25, Joel Stanley wrote:
+> > On Mon, 25 Sept 2023 at 09:55, Uwe Kleine-K=F6nig <u.kleine-koenig@peng=
+utronix.de> wrote:
+> >>
+> >> this series converts all platform drivers below drivers/soc to use
+> >> .remove_new(). The motivation is to get rid of an integer return code
+> >> that is (mostly) ignored by the platform driver core and error prone on
+> >> the driver side.
+> >>
+> >> See commit 5c5a7680e67b ("platform: Provide a remove callback that
+> >> returns no value") for an extended explanation and the eventual goal.
+> >>
+> >> As there is no single maintainer team for drivers/soc, I suggest the
+> >> individual maintainers to pick up "their" patches.
+> >
+> > I'd be happy if Arnd merged the lot at once. Arnd, what do you think?
+> >
+> > If that will be too messy then I understand. I have queued the aspeed
+> > ones locally and will push that out if we decide that's the best way
+> > to go.
+> =
 
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
----
- sound/soc/rockchip/rockchip_max98090.c | 2 --
- 1 file changed, 2 deletions(-)
+> The main downside of merging it all at once through the soc tree
+> is that there may be patches that conflict with other work going on
+> in individual drivers.
+> =
 
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index 150ac524a590..8e48eb8aa7ad 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -9,8 +9,6 @@
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
--#include <linux/gpio.h>
--#include <linux/of_gpio.h>
- #include <sound/core.h>
- #include <sound/jack.h>
- #include <sound/pcm.h>
+> What I'd suggest doing here is:
+> =
 
--- 
-2.34.1
+> - have platform maintainers pick up patches for their drivers
+>   if that is their preference for any reason
+> =
 
+
+I'd prefer this for the qcom drivers at least, please let me know if you
+would like me to proceed.
+
+Regards,
+Bjorn
+
+> - get a pull request from Uwe for the soc tree for anything that has
+>   not been picked up in one or two weeks from now
+> =
+
+>       Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
