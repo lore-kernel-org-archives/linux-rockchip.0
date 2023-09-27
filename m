@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6222E82CA6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3259EE82CA7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:41:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C//fYaf/QAqS3PvA0YB79Y8dZJfJVc1niBmVp4bNZ4E=; b=NdCCa6vbsyIkKz
-	uuNFR2dC2lORM6P6Hg6QGckSy1llf+XNhTJ54lCwKzaSEMfQ3e0EE1Ic49CQB/GOmVZl5NkhtBQRa
-	6g7Dmq20PLD7pEbjen2UuRwj/J1Jis++ZLALOeZBT6YnVbruC13bOZ/DAomj3eW0fw9TV0g0Isja7
-	FPbUYdzauOMV/Z9hetgZCBlWJTCqGUj2nea7fmkF4g6yWXM3l9SuflvxRuJOFkXGKgmSM0o3Zf08I
-	8EmRULMdIBPPqzyvP6gv8v0hbUcaK/kTJx81RqPp26d2HM2u8aXj5tjuymgsEYHpvekfdK5tpnOTH
-	QG3HyXM5lB0iTPM9UNrg==;
+	List-Owner; bh=QBjMcOzwv/ToNznwu7CAdZvaVSSZEr6JLuCrIbf2sV4=; b=a223X5gTjRzQSn
+	z/4Tciw6j6H9E6ZPmIuqPn7cEqpIWFgVw4tvvGYsajgepgxzfIGbXODvRsStfsOqcDBgcuUQg/bwu
+	Q/Qc9Fp4cD/w3ZuPA9KmyqEi0v83B1rhCRqovHbjogLh4LbbY9rjYgeNndNPSSQL1LWy9O4TTHFKv
+	zNfCo/5nkY6gHj/kunXBTqR235F6upcyRRJD41I0SYUgHtMmt4eBtIGUGyTyWHV9La58JMRmcTyls
+	HxsJHwCNNtgyCwX5PsYRIJgzosg3VR1cWdgjKp8tfMSHin1Ny6SMG0v8fMatVdZ78lr0vlGubaHS1
+	0VvfmAWeS4pqfJLOWkYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWee-001Kx3-12;
-	Wed, 27 Sep 2023 15:40:48 +0000
+	id 1qlWej-001L41-1Z;
+	Wed, 27 Sep 2023 15:40:53 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWac-001Gj6-1p;
-	Wed, 27 Sep 2023 15:36:38 +0000
+	id 1qlWag-001GnS-2k;
+	Wed, 27 Sep 2023 15:36:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=VX8R6FNAbkZWYkueMBme92XT1wQcqt/mdQigvZGLeSI=; b=Y8bzOwCM1rfYdB6vFQCp093ibd
-	dBEJ+ErzFIUjsDEBqAqIC5cv2ofu4C8aVci1fj8vGm81rhFiZ9j7gkzQx+2IHWy4r3uPKbw5mb3mx
-	GcRvzGo930wQbxheYB7PIgKXicXjnZv7GQtxXVk2/wK3jtcs/ME5znrrLa7J0B3AIJf+WWF0pglNc
-	R9qhp/IZsz/C768XGw7d33n9iMG7E+4FwjX4W6AEl7tX09hWmIwsNRkYmwampgTOZ6QADThLLWwZK
-	x1EvCEJg+g5+IaOXi1dNWAr+J9BibilehtVriYKhnsU/86AGXvIHKvfOcclFiKeppFDZYwVCqtIxv
-	gatJUgJg==;
+	bh=2qWN9gcWE1cCd4QDbOtoUFT3dABxhAehI8TgvGuMY4I=; b=C3PIded8ZqHbIwLbFRzlavR0Tc
+	VqPo8ZYfk//E4x+GtfdlWIS+YEfoU72kbRLVjcVWgWT2AKuDZNcLXNWd9uPrLnuN5rJuwTqzMYznh
+	36vs3LSz3h7SSYWvS5YjKiUvi/uJK2TIR7n0zS675XsxjH6pfAJqDcn800w1G9RjWTbrz8iZAgwaf
+	ki9+Yy0valN6HwzNEgXKQ+ul2pjpX/VPA4CAZSicFFVfojpFL9YuBxEcrWIZKuFNnBgvUXw2enN0f
+	yokLn89OyULOJeujmytalKx8OxxGTejujXdJX3PT73dGmW8sdQoCYpiF2M/6D23wUYBC2wjRoq3eo
+	QutrKUpw==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qlWaW-00EesW-N4; Wed, 27 Sep 2023 15:36:37 +0000
+	id 1qlWaX-00EeuF-Li; Wed, 27 Sep 2023 15:36:41 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 949A4660737E;
-	Wed, 27 Sep 2023 16:36:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1DC526607381;
+	Wed, 27 Sep 2023 16:36:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828991;
-	bh=KSp/qlyb4qZpMVJTjYq3/CPJYCUJtKhZMjqFSVLO9ao=;
+	s=mail; t=1695828992;
+	bh=Tn/0+SEs92pxnf0JZtLBn6EtBJkC+KjsYnF3S+7Li74=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Z9XT//pNSSGX4LBSeOtPtJ2TABK4QPyHBj8m9jujd+0oex5aXQ0zMxDIWGrVPGorv
-	 Aobtgq32zoxra+5/8mNmyXZI6FOTEbCKJKE4lkG7ujWT/aZ3Xmb9D1+X7hGthonSNK
-	 KqD73NIkD3KNFkMmgT4l4UdAdyLdVRc7DIyzryz5LoWjUs8VWVwywEXD1fCQo2pxj9
-	 J9NXBfBjNx9DeHxEDCZfYa9ajxh0z6SD3GWBPieNnTh3MLCSRUJ9MaLTPy6L1IzuQg
-	 EfvBB/dEYI00LXxpKvILsOk8Z1pNqKWt+tPJ/8oms38l4MRWCF5As6rlMNoz34ujTl
-	 D7FUba1Aq56sg==
+	b=l7hvUjhRCDvOCfXpTo+2MjkpJn4DcC9K4yXxmAhH1ri88E6W2bLcmZNcP21AdwLfU
+	 4HhtSPFyBFX4ETWeOuF5us2fENDMrD7axP6qDageUb1fvZqUZis8nrtwOt+EDf/yBt
+	 FVN72t4l3bJYRbns8Ehf3KNXbDUHoTDVzXQLUvmWRjRuQTLXAnr4xEaiQLmTYQbv1h
+	 zmDpUqjYDOEGKhglbQByAQ2laL2RiWPbT4kSYQ0QC/46/M5KC7zQVY/0LpfQnJbM62
+	 7OZqO4nkGpjZ7z5t6W5ybB5ZSAn6v+obR/jP6Ed1VRGaa/cULLkRsWgmXtUsCmlZS4
+	 9h+pmqY0RrdwA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,17 +75,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 47/53] media: cedrus: Stop direct calls to queue num_buffers field
-Date: Wed, 27 Sep 2023 17:35:52 +0200
-Message-Id: <20230927153558.159278-48-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 50/53] media: core: Free range of buffers
+Date: Wed, 27 Sep 2023 17:35:55 +0200
+Message-Id: <20230927153558.159278-51-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_163632_793824_055F0C73 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_163633_766539_7F99A3D8 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,54 +101,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() and queue max_num_buffers field
-to avoid using queue num_buffer field directly.
+Improve __vb2_queue_free() and __vb2_free_mem() to free
+range of buffers and not only the last few buffers.
+Intoduce starting index to be flexible on range and change the loops
+according to this parameters.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++++++--
- drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
- 2 files changed, 13 insertions(+), 4 deletions(-)
+ .../media/common/videobuf2/videobuf2-core.c   | 36 ++++++++-----------
+ 1 file changed, 15 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-index dfb401df138a..88061310f815 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
-@@ -653,8 +653,12 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 8d35cf7cef42..3bf455f03461 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -518,13 +518,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ /*
+  * __vb2_free_mem() - release all video buffer memory for a given queue
+  */
+-static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
++static void __vb2_free_mem(struct vb2_queue *q, unsigned int start, unsigned int count)
+ {
+-	unsigned int buffer = 0;
+-	long i = q->max_num_buffers;
++	unsigned int i;
+ 	struct vb2_buffer *vb;
  
- 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+-	for (i = q->max_num_buffers; i >= 0 && buffer < buffers; i--) {
++	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
+ 		vb = vb2_get_buffer(q, i);
+ 		if (!vb)
+ 			continue;
+@@ -536,36 +535,32 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
+ 			__vb2_buf_dmabuf_put(vb);
+ 		else
+ 			__vb2_buf_userptr_put(vb);
+-		buffer++;
+ 	}
+ }
  
--	for (i = 0; i < vq->num_buffers; i++) {
--		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
-+	for (i = 0; i < vq->max_num_buffers; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
-+
-+		if (!vb)
-+			continue;
-+		buf = vb2_to_cedrus_buffer(vb);
+ /*
+- * __vb2_queue_free() - free buffers at the end of the queue - video memory and
++ * __vb2_queue_free() - free count buffers from start index of the queue - video memory and
+  * related information, if no buffers are left return the queue to an
+  * uninitialized state. Might be called even if the queue has already been freed.
+  */
+-static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
++static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
+ {
+-	unsigned int buffer;
+-	long i = q->max_num_buffers;
++	unsigned int i;
  
- 		if (buf->codec.h264.mv_col_buf_size > 0) {
- 			dma_free_attrs(dev->dev,
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-index fc9297232456..b8b66d0d951e 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
-@@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ctx)
+ 	lockdep_assert_held(&q->mmap_lock);
  
- 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+ 	/* Call driver-provided cleanup function for each buffer, if provided */
+-	for (i = q->max_num_buffers, buffer = 0; i >= 0 && buffer < buffers; i--) {
++	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
+ 		struct vb2_buffer *vb = vb2_get_buffer(q, i);
  
--	for (i = 0; i < vq->num_buffers; i++) {
--		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
-+	for (i = 0; i < vq->max_num_buffers; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
-+
-+		if (!vb)
-+			continue;
-+
-+		buf = vb2_to_cedrus_buffer(vb);
+ 		if (!vb)
+ 			continue;
+-		if (vb->planes[0].mem_priv) {
++		if (vb->planes[0].mem_priv)
+ 			call_void_vb_qop(vb, buf_cleanup, vb);
+-			buffer++;
+-		}
+ 	}
  
- 		if (buf->codec.h265.mv_col_buf_size > 0) {
- 			dma_free_attrs(dev->dev,
+ 	/* Release video buffer memory */
+-	__vb2_free_mem(q, buffers);
++	__vb2_free_mem(q, start, count);
+ 
+ #ifdef CONFIG_VIDEO_ADV_DEBUG
+ 	/*
+@@ -650,15 +645,14 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ #endif
+ 
+ 	/* Free vb2 buffers */
+-	for (i = q->max_num_buffers, buffer = 0; i > 0 && buffer < buffers; i--) {
+-		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
++	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
++		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+ 
+ 		if (!vb)
+ 			continue;
+ 
+ 		vb2_queue_remove_buffer(vb);
+ 		kfree(vb);
+-		buffer++;
+ 	}
+ 
+ 	if (!vb2_get_num_buffers(q)) {
+@@ -852,7 +846,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		 * queued without ever calling STREAMON.
+ 		 */
+ 		__vb2_queue_cancel(q);
+-		__vb2_queue_free(q, q_num_bufs);
++		__vb2_queue_free(q, 0, q_num_bufs);
+ 		mutex_unlock(&q->mmap_lock);
+ 
+ 		/*
+@@ -962,7 +956,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		 * from already queued buffers and it will reset q->memory to
+ 		 * VB2_MEMORY_UNKNOWN.
+ 		 */
+-		__vb2_queue_free(q, allocated_buffers);
++		__vb2_queue_free(q, first_index, allocated_buffers);
+ 		mutex_unlock(&q->mmap_lock);
+ 		return ret;
+ 	}
+@@ -1102,7 +1096,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		 * from already queued buffers and it will reset q->memory to
+ 		 * VB2_MEMORY_UNKNOWN.
+ 		 */
+-		__vb2_queue_free(q, allocated_buffers);
++		__vb2_queue_free(q, *first_index, allocated_buffers);
+ 		mutex_unlock(&q->mmap_lock);
+ 		return -ENOMEM;
+ 	}
+@@ -2568,7 +2562,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	__vb2_cleanup_fileio(q);
+ 	__vb2_queue_cancel(q);
+ 	mutex_lock(&q->mmap_lock);
+-	__vb2_queue_free(q, q->max_num_buffers);
++	__vb2_queue_free(q, 0, q->max_num_buffers);
+ 	kfree(q->bufs);
+ 	q->bufs = NULL;
+ 	bitmap_free(q->bufs_bitmap);
 -- 
 2.39.2
 
