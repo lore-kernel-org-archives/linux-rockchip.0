@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FFBE82CA1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E98E82CA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lAW0Hcqq+Kv20WZT2M4zMmi+MK9kCMau83yLYKuLlpc=; b=iz4he3XwGxwp1L
-	lim4CO5uMop8obP+dAqzHXhf2HoAgbrlzhHXUs92aAnXpiCvbWCZHea7Ee1nQ5ZsgFfYe4B3JyKkH
-	FZLoXhbhi4tHyYcWkRkGGrv9tcYT+ObiHnX4EePcdlcRwKtArjhn0fpoHkZVRgHjDayuuErntJNuz
-	Ieyc6l7I3pq0uu75mVUKyzgISosjTYbyIRcRfGmwm79zjHtMPJOzE1CBoYMVDyyYbIA/HZHT+bawp
-	W2KWKtrODnBbgyP8yYk7oXUG5a7V4NzFO4fnTBE8LSWKgjP51Ff/71zsaohp06bU0W80BIBFCbELz
-	XmlQQZEc2ZYzw4wzMmFw==;
+	List-Owner; bh=ERHuEIaZL52z1ug56rW2Ql8NEMEKYGlrQrPk6kAMqxY=; b=1WGfpohfywkydh
+	Yo+X8ZpOK/VVtM+DuPsvy1RTVPhCr4++mCvbp6SDhBaoGS8zT8jB+OfvUTrKF0KEL49g8N56DrlRP
+	Hgm8oGV0bNY1Se7fZ0fSsjcc/A8b0zkfF2sMPLatrvKmr7NBOcE4MSmsqGjrPYZVWXD+H6RbQ2eBK
+	c2BsPU9jHgblnHqercudt/yTqPT30R6CQIgXkfYlnPLuBtg/Q/UOB2Yt4gAVioh1ZCsvZBHvICRb0
+	+a0K9VQXd2xcevs5jdcJRqOiJ7oJBUF/AO12W9HWrL6genFMxmEWFjBU50iIoc8l+2dMjS8p1xyzu
+	sl7fCHspJWDa0F4wZxjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWdM-001JfG-2q;
-	Wed, 27 Sep 2023 15:39:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlWdW-001Joe-23;
+	Wed, 27 Sep 2023 15:39:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaN-001GQu-0H;
-	Wed, 27 Sep 2023 15:36:27 +0000
+	id 1qlWaP-001GUc-2n;
+	Wed, 27 Sep 2023 15:36:29 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78BFD6607333;
-	Wed, 27 Sep 2023 16:36:21 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 133B36607366;
+	Wed, 27 Sep 2023 16:36:24 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828981;
-	bh=fLRtME703ZZcICdPkAIYRy+HHmsEI0CB5+N7/vWII0U=;
+	s=mail; t=1695828984;
+	bh=RTtrEWB+iCCua3F+YDyTtBODpNsAwbuQk2kDkvELWIg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=L/oRV5LStiuUvpApTOjadIJ0XawpBOpmIwVozAHay97sIxlaffgztofF2r+/BHvT1
-	 aW9Iz2XU9y4ysXIkIzppTR84m9LqM/jcz+3pJzXCEL+jyI+3p9cpWqJrOWf6M3G9Y1
-	 cPHysLXWSgG0zEjS4O95GvlBqM/zQzxoA9jfDxnVZTQEVDwsDyfGtgJLfPoqijO39s
-	 U4BfxFSryZcm4yz/9T/geTtlNVHNZ84OTmul0gG+E1DKZi/BjfXhnWzrPkuILtr2S/
-	 wLBJRCy1p/lFcFoaQXDgIWMFMApQwn7h59+i5qn5v7mr4aONQ1FfnkF7ceKdXIqbu6
-	 C3YEEJEQTnvNg==
+	b=Uk1tNrOQzdkZ4dXxiRhTxcmUD+5OiLEWY+hGF5IX0nM4UkLyDVtPLR7KxaHOB53zT
+	 5hfiYhOAegQ3DLWDQh65dllY2Hsm4QPO0X6eVG8C8k/AXmaQ7qSjyeYbrml1mCOl3K
+	 rzINSIGcw2ChfD5ewJJADIpS5awMxZdrr/WCKHRLIVIDfq3NkBG8UuJNse5/2r/cjv
+	 n+J2MqTNIv1gV8WigohX8BaxBp6LJzErFx9swIcVTDv+AxFvWCFRij5Iyv1gno9eCI
+	 YLPZHHIIe85zniOWZyH9Fayub9jRCinjz6MYaFMw/7pkFFNgcdy+gHfqMIext5Caa+
+	 x/MrZeHRcDOVQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 29/53] media: pci: tw686x: Set min_buffers_needed to 3
-Date: Wed, 27 Sep 2023 17:35:34 +0200
-Message-Id: <20230927153558.159278-30-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 34/53] media: renesas: Set min_buffers_needed to 16
+Date: Wed, 27 Sep 2023 17:35:39 +0200
+Message-Id: <20230927153558.159278-35-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083623_286014_0AAAE4A6 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20230927_083626_063557_75A36955 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,45 +89,42 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 vb2 queue_setup checks for a minimum number of buffers so set
-min_buffers_needed to 3 and remove the useless check in
-tw686x_queue_setup().
+min_buffers_needed to 16 and remove the useless check in
+rcar_drif_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/pci/tw686x/tw686x-video.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ drivers/media/platform/renesas/rcar_drif.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
-index 3ebf7a2c95f0..74cd864365aa 100644
---- a/drivers/media/pci/tw686x/tw686x-video.c
-+++ b/drivers/media/pci/tw686x/tw686x-video.c
-@@ -426,13 +426,6 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
- 	unsigned int szimage =
- 		(vc->width * vc->height * vc->format->depth) >> 3;
+diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
+index 163a4ba61c17..8a9a70565d3f 100644
+--- a/drivers/media/platform/renesas/rcar_drif.c
++++ b/drivers/media/platform/renesas/rcar_drif.c
+@@ -425,13 +425,9 @@ static int rcar_drif_queue_setup(struct vb2_queue *vq,
+ {
+ 	struct rcar_drif_sdr *sdr = vb2_get_drv_priv(vq);
  
--	/*
--	 * Let's request at least three buffers: two for the
--	 * DMA engine and one for userspace.
--	 */
--	if (vq->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - vq->num_buffers;
+-	/* Need at least 16 buffers */
+-	if (vq->num_buffers + *num_buffers < 16)
+-		*num_buffers = 16 - vq->num_buffers;
 -
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < szimage)
- 			return -EINVAL;
-@@ -1221,7 +1214,11 @@ int tw686x_video_init(struct tw686x_dev *dev)
- 		vc->vidq.ops = &tw686x_video_qops;
- 		vc->vidq.mem_ops = dev->dma_ops->mem_ops;
- 		vc->vidq.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
--		vc->vidq.min_buffers_needed = 2;
-+		/*
-+		 * Let's request at least three buffers: two for the
-+		 * DMA engine and one for userspace.
-+		 */
-+		vc->vidq.min_buffers_needed = 3;
- 		vc->vidq.lock = &vc->vb_mutex;
- 		vc->vidq.gfp_flags = dev->dma_mode != TW686X_DMA_MODE_MEMCPY ?
- 				     GFP_DMA32 : 0;
+ 	*num_planes = 1;
+ 	sizes[0] = PAGE_ALIGN(sdr->fmt->buffersize);
+-	rdrif_dbg(sdr, "num_bufs %d sizes[0] %d\n", *num_buffers, sizes[0]);
++	rdrif_dbg(sdr, "num_bufs %u sizes[0] %d\n", vb2_get_num_buffers(vq), sizes[0]);
+ 
+ 	return 0;
+ }
+@@ -1311,6 +1307,8 @@ static int rcar_drif_sdr_probe(struct rcar_drif_sdr *sdr)
+ 	/* Init videobuf2 queue structure */
+ 	sdr->vb_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
+ 	sdr->vb_queue.io_modes = VB2_READ | VB2_MMAP | VB2_DMABUF;
++	/* Need at least 16 buffers */
++	sdr->vb_queue.min_buffers_needed = 16;
+ 	sdr->vb_queue.drv_priv = sdr;
+ 	sdr->vb_queue.buf_struct_size = sizeof(struct rcar_drif_frame_buf);
+ 	sdr->vb_queue.ops = &rcar_drif_vb2_ops;
 -- 
 2.39.2
 
