@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CEE1E82CA5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6222E82CA6
 	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1mof2ST7V+2L22k3ZUxu/IyVSJqMYjgtDQyFvCiEN+Y=; b=0Pnwe/Gvjtf/d2
-	/xyIIyXkiLranQM494rXaHG90izw3AD+WN+MYGUbl5h/IE0V25MebblSUHwoLoWNPCqRlQ/2TMSmH
-	b3gyzYcvAHvGJiq4GqNZfenmjB3ES0LCnMSnp3PK8A9bVPb9NdDacJCEZ2EUMbuBsSwJb0JrJumXO
-	jtowbyPOIMCi+mNvWM/q/m2C4XhOXZDkOTyyrAhEhiZHEkvogrbp+cUJ07e2lpI7Zv/lFhfPXXLf0
-	dYHQUU02g7HZCEbanu10HzTkxv9FE9aBJi/EiRbL2hhJflGiibu/ADg6dCUGJImnJAWrT7bk8HnSU
-	oCTQN0rGEhKuaLPBmopg==;
+	List-Owner; bh=C//fYaf/QAqS3PvA0YB79Y8dZJfJVc1niBmVp4bNZ4E=; b=NdCCa6vbsyIkKz
+	uuNFR2dC2lORM6P6Hg6QGckSy1llf+XNhTJ54lCwKzaSEMfQ3e0EE1Ic49CQB/GOmVZl5NkhtBQRa
+	6g7Dmq20PLD7pEbjen2UuRwj/J1Jis++ZLALOeZBT6YnVbruC13bOZ/DAomj3eW0fw9TV0g0Isja7
+	FPbUYdzauOMV/Z9hetgZCBlWJTCqGUj2nea7fmkF4g6yWXM3l9SuflvxRuJOFkXGKgmSM0o3Zf08I
+	8EmRULMdIBPPqzyvP6gv8v0hbUcaK/kTJx81RqPp26d2HM2u8aXj5tjuymgsEYHpvekfdK5tpnOTH
+	QG3HyXM5lB0iTPM9UNrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWeg-001L0h-2b;
-	Wed, 27 Sep 2023 15:40:50 +0000
+	id 1qlWee-001Kx3-12;
+	Wed, 27 Sep 2023 15:40:48 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWac-001Giv-0i;
+	id 1qlWac-001Gj6-1p;
 	Wed, 27 Sep 2023 15:36:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=oTtmKjE7vQhNKhTumrx56oub9WvRubSN6lcnNjeiil4=; b=uhC5ETrfPIDW/WH0THdw8LkJw5
-	L1Se3GnxLID6oOgnqulqaq41LWy+VcZhSKZB4wSXOAZeO8B3gDJO9H5wIQsMMuQ0rw7gbuBOQtca/
-	hN0afx5OD629KAhO4bgj2mFLXz2seQhytwTjE743nk732Mfioh6lMBs3lQxwGfoKlmrSgXISgZoXH
-	djIDxwTvk098Iqayiy86FfW1IlPZMTI5A0eVlQ/ReBT6X+WBWyO94cjppTWu4IpbEf8lMCsdgsfyr
-	I2X9avqRdbqT9gF+9hzc8wDUhck8oXoDyaOgDd4/Nnw2X3YNMUuuZeV2+2JdAuWCapR90pbdYjk6r
-	UxndBB1g==;
+	bh=VX8R6FNAbkZWYkueMBme92XT1wQcqt/mdQigvZGLeSI=; b=Y8bzOwCM1rfYdB6vFQCp093ibd
+	dBEJ+ErzFIUjsDEBqAqIC5cv2ofu4C8aVci1fj8vGm81rhFiZ9j7gkzQx+2IHWy4r3uPKbw5mb3mx
+	GcRvzGo930wQbxheYB7PIgKXicXjnZv7GQtxXVk2/wK3jtcs/ME5znrrLa7J0B3AIJf+WWF0pglNc
+	R9qhp/IZsz/C768XGw7d33n9iMG7E+4FwjX4W6AEl7tX09hWmIwsNRkYmwampgTOZ6QADThLLWwZK
+	x1EvCEJg+g5+IaOXi1dNWAr+J9BibilehtVriYKhnsU/86AGXvIHKvfOcclFiKeppFDZYwVCqtIxv
+	gatJUgJg==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qlWaW-00EesL-JU; Wed, 27 Sep 2023 15:36:36 +0000
+	id 1qlWaW-00EesW-N4; Wed, 27 Sep 2023 15:36:37 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 87EFA6607361;
-	Wed, 27 Sep 2023 16:36:23 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 949A4660737E;
+	Wed, 27 Sep 2023 16:36:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828983;
-	bh=cXivZNqToe41YcZuXIOZnOz7dFiXtOZiRZUwxPYGOCA=;
+	s=mail; t=1695828991;
+	bh=KSp/qlyb4qZpMVJTjYq3/CPJYCUJtKhZMjqFSVLO9ao=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oC/kHGv4ZioGmHcfzKWYhBUVtj0cu/V30JOA6y67nZeYqqpNIaZQqDZc30qHerica
-	 G33/7F/SiGVjWm932qPxtDA2Wuj1yJ19ORbDFY8s9mB8vWYU3BM2QoAGaMn6jH28Ns
-	 Zga3k6v2QwduEZLamhf8BLR/miqIi1nsuw1NLCVTdkaiz4qD9r0vWWoQWVQ8h1v8lj
-	 tkoQFEWqsOFQFTMa8egQ7qeM4yigtSNv6VXexm/jX5nVDTOwGlA0xLuoBSo3DdOAOG
-	 pv7QXYVQZAnJiLbDGxCgn64U5X5sFdRpv+Zyg+CQGOwpXcGY9vS2XzXXDDy3H37oTP
-	 pE2CrIyB7DwGw==
+	b=Z9XT//pNSSGX4LBSeOtPtJ2TABK4QPyHBj8m9jujd+0oex5aXQ0zMxDIWGrVPGorv
+	 Aobtgq32zoxra+5/8mNmyXZI6FOTEbCKJKE4lkG7ujWT/aZ3Xmb9D1+X7hGthonSNK
+	 KqD73NIkD3KNFkMmgT4l4UdAdyLdVRc7DIyzryz5LoWjUs8VWVwywEXD1fCQo2pxj9
+	 J9NXBfBjNx9DeHxEDCZfYa9ajxh0z6SD3GWBPieNnTh3MLCSRUJ9MaLTPy6L1IzuQg
+	 EfvBB/dEYI00LXxpKvILsOk8Z1pNqKWt+tPJ/8oms38l4MRWCF5As6rlMNoz34ujTl
+	 D7FUba1Aq56sg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,16 +75,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 33/53] media: nxp: Stop direct calls to queue num_buffers field
-Date: Wed, 27 Sep 2023 17:35:38 +0200
-Message-Id: <20230927153558.159278-34-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 47/53] media: cedrus: Stop direct calls to queue num_buffers field
+Date: Wed, 27 Sep 2023 17:35:52 +0200
+Message-Id: <20230927153558.159278-48-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_163632_717588_AC623D09 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20230927_163632_793824_055F0C73 
+X-CRM114-Status: UNSURE (   9.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,43 +102,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+Use vb2_get_num_buffers() and queue max_num_buffers field
+to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++++++--
+ drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
+ 2 files changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
-index 15049c6aab37..4c467fb82789 100644
---- a/drivers/media/platform/nxp/imx7-media-csi.c
-+++ b/drivers/media/platform/nxp/imx7-media-csi.c
-@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 				      struct device *alloc_devs[])
- {
- 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
- 	unsigned int count = *nbuffers;
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+index dfb401df138a..88061310f815 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+@@ -653,8 +653,12 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
  
-@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
- 	if (*nplanes) {
- 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
- 			return -EINVAL;
--		count += vq->num_buffers;
-+		count += q_num_bufs;
- 	}
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
  
- 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
+-	for (i = 0; i < vq->num_buffers; i++) {
+-		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
++	for (i = 0; i < vq->max_num_buffers; i++) {
++		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
++
++		if (!vb)
++			continue;
++		buf = vb2_to_cedrus_buffer(vb);
  
- 	if (*nplanes)
--		*nbuffers = (count < vq->num_buffers) ? 0 :
--			count - vq->num_buffers;
-+		*nbuffers = (count < q_num_bufs) ? 0 :
-+			count - q_num_bufs;
- 	else
- 		*nbuffers = count;
+ 		if (buf->codec.h264.mv_col_buf_size > 0) {
+ 			dma_free_attrs(dev->dev,
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+index fc9297232456..b8b66d0d951e 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+@@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ctx)
  
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+ 
+-	for (i = 0; i < vq->num_buffers; i++) {
+-		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
++	for (i = 0; i < vq->max_num_buffers; i++) {
++		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
++
++		if (!vb)
++			continue;
++
++		buf = vb2_to_cedrus_buffer(vb);
+ 
+ 		if (buf->codec.h265.mv_col_buf_size > 0) {
+ 			dma_free_attrs(dev->dev,
 -- 
 2.39.2
 
