@@ -4,128 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F34CE810A8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 08:44:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2350FE810D9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 12:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Date:References:
-	In-Reply-To:Message-Id:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9RnNP1NnQWK28SVlJ+Dp87NPvpkxlFj/nxp+aEr1H/Y=; b=UWCz78pkfw/2w7
-	ulE/VDrlNxInlegRB3TpgGJR6rVO0zgL+ipDHnFTn0dOR1uD1ppbDSzp0AWDZlqQINxp1EyfoUFr/
-	23DyQBaxk2jiLJ3jCMOWjTkQFUfZEQu2c96KeRxQicgCRHmHXtSeVvaKcuwsAPxjKkFm+n0dERbXe
-	22p7epjwS0cxHliDrn615LW6SI71P+IuIEDew82+/jkiINlw/q3B9f+/novmtZBOjZKtCH6MF1MiF
-	eywL4dOqAzSsRPLxLQP2NXscQEf+NZuSl2y8eK/R7yqN1QU2hoYj/smX2Er8KxxQ9l2gU0/wR2HTX
-	iz7dN21lvXMgN7P/11Ww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=F7i8jg/iexJiBAPyq5JDIToiuc8ZaPozkwc4fMmUodM=; b=jZaFAlpktIPGBB
+	CuApNHRxqnYL7DnwYwv2FsW2ZvWdk9VOmoCOLTzpKi3OyOIsjkQRI4O7JeJLXK49qiW0Fx3qW9f1N
+	ZY0lqyzMNwD8OHRcKvPp7oyX8tWCrq8/6NpNFvDrKaWwmsSkFBf3Mduu23QBE92Cy41swIbM3eaN/
+	dRvffyjiHbbax06afLwLc2a6TgMSiNDDHt0AfOx5AzIu3/wn4XqV5Ek757mWd9oyV7ISsRMojcpKz
+	FKOfS3cXi5uXjqtm80RPWxfpQZ2CLqD8XScWSarIZylu9IdVQv9JNAvg3iN3EHl/3uQapBMwBWnDS
+	3KmbOIgrkFN2g9bhLp2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQ9H-000N0M-1N;
-	Wed, 27 Sep 2023 08:43:59 +0000
-Received: from wnew4-smtp.messagingengine.com ([64.147.123.18])
+	id 1qlTMN-000qv3-1T;
+	Wed, 27 Sep 2023 12:09:43 +0000
+Received: from m1-bln.bund.de ([77.87.224.105])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlQ9B-000MyG-1r;
-	Wed, 27 Sep 2023 08:43:55 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailnew.west.internal (Postfix) with ESMTP id AD2CB2B00190;
-	Wed, 27 Sep 2023 04:43:40 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Wed, 27 Sep 2023 04:43:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to; s=fm1; t=
-	1695804220; x=1695811420; bh=o7VjoUAbmEtRJA+8mE/ljFlKqx4X7034jZT
-	pRVdZN6U=; b=ADzfipzn1H6nvZj6IPUSg2e6bCMhLYRmEs66usghC3Y3gx5303Q
-	aTTmtJG0A0L9CHLezJhajL9yKQwYfnfAFiXMKhwusvHW50CG5uI5iEl7tt3E5O/c
-	109Prl9v1WY5Dz5zbA1UlVJNeFc9OyrqpbnS2acBLHAax7mj4JSazShKhZ2AKtL5
-	Kb+sO9zLKfRG70g6mMx2NTtBQwA5XqhQTr1ML37jliO1pEZ8oPvMjAfQWzjpeRwp
-	P93tKMWDgbtYnrHOA50hnF/3YZr7ca8sSU/zKOdnxmfL7uNzchYn4fxuizIz9Uwo
-	wSMlNWEE93us8pOvJ6bXAOtzDZ3Y1r8Dkqg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1695804220; x=1695811420; bh=o7VjoUAbmEtRJA+8mE/ljFlKqx4X7034jZT
-	pRVdZN6U=; b=T05vfZWD4SeZP01Wx6kQneLrsFr8U69yAe1OGWDRowa7yugQwJ3
-	94K12SDEFGNefEiYGYpscPNiz8fBtJOZO5fFMXK84Cq+DLpoiisAlVL+RurIMkNt
-	Nb2Kj7pvRYINg5vwBm6juNHbkdHU+vbRdM25KS0/MoCFoR7dMv4jNuYUJK728O7n
-	iuONNqsQxEpFoNEgNZeMqcSx2GySa1Mo1t3OXUYum79164XAx8pAzMB2VEr5DM4K
-	l2fTK2Za9USzPDJVwoXHD61JS9bNxlIY3Zqu64JfZbZVGMo1Hh9jhGdTq1v3tyYS
-	fgvfYIMPcx51AjviWxI9VX5zh0EwxD/MAaA==
-X-ME-Sender: <xms:OusTZTxl4DMJTP59c2KJ3iAewQQWbzZvdalDvbWGKOLzv2EzLdBGuA>
-    <xme:OusTZbQexVSnj58RtwR8RCEaMhCEDqGXO2BE_Mcdl6H_L2Irne_1ea8tvqBCQSDTq
-    Rq5c7228oHf_xSqDlE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvjedrtddvgddtjecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpedftehr
-    nhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrth
-    htvghrnhepgeefjeehvdelvdffieejieejiedvvdfhleeivdelveehjeelteegudektdfg
-    jeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprg
-    hrnhgusegrrhhnuggsrdguvg
-X-ME-Proxy: <xmx:OusTZdUi1I6Gdh1mDxeBlJHg-Yno8M5T2KHxAbUCNM4lr_pKsVlrxA>
-    <xmx:OusTZdie3X4oFed4rWhvAe5IK10Jrbz1ltYCRBKW4lbI9_Q9epjx-A>
-    <xmx:OusTZVB2dhx1vK4otJlVYTjXkXX07gEQS0rDAla7iUQqudzIuChogw>
-    <xmx:POsTZXqlhNzvo9JMY5-8GSCqucFjQ1YuFjO0FqgTBEXKd9KEj2fANC8DefA>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 30D92B60089; Wed, 27 Sep 2023 04:43:38 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-957-ga1ccdb4cff-fm-20230919.001-ga1ccdb4c
+	id 1qlTMJ-000qtY-0V
+	for linux-rockchip@lists.infradead.org;
+	Wed, 27 Sep 2023 12:09:42 +0000
+Received: from m1-bln.bund.de (localhost [127.0.0.1])
+	by m1-bln.bund.de (Postfix) with ESMTP id 860B8AB5A4
+	for <linux-rockchip@lists.infradead.org>; Wed, 27 Sep 2023 14:09:33 +0200 (CEST)
+Received: (from localhost) by m1-bln.bund.de (MSCAN) id 6/m1-bln.bund.de/smtp-gw/mscan;
+     Wed Sep 27 14:09:33 2023
+X-NdB-Source: NdB
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/simple; d=itzbund.de;
+	s=230316-2017-ed25519; t=1695816564;
+	bh=NuCL+Ul/0dtzEbUBik1/xqBHCY4XgXXsKJePOuodXgc=;
+	h=Date:From:To:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Autocrypt:Cc:Content-Transfer-Encoding:
+	 Content-Type:Date:From:In-Reply-To:Mime-Version:Openpgp:References:
+	 Reply-To:Resent-To:Sender:Subject:To;
+	b=m3WK8HWV8Phw/6g/5K0mztQsI40tSrH/UQrP7sv09nfbV+0R6WSU2eDepZldVZc7U
+	 TmYAY4ya/pBhMGFsl25AQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=itzbund.de;
+	s=230316-2017-rsa; t=1695816564;
+	bh=NuCL+Ul/0dtzEbUBik1/xqBHCY4XgXXsKJePOuodXgc=;
+	h=Date:From:To:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Autocrypt:Cc:Content-Transfer-Encoding:
+	 Content-Type:Date:From:In-Reply-To:Mime-Version:Openpgp:References:
+	 Reply-To:Resent-To:Sender:Subject:To;
+	b=QCx2HS4tW2zLAslqSVY1RV+LawK2hSF8QTfG+CUWj5aEaVy5jMjFETg+gKlYSk2WD
+	 Rvfuu9em9sE9JzqnIXNGQRh3dYG3tMeIR3ShfE2kmpq0yAkA0pR1uvB0toJ3FcmCmD
+	 xfKjgg+MB0vSU8d2Y7eOW/sB7JjDJxBOz/jflp87z0nfFfgk6p0rwEmyqSY+EcLSE/
+	 JQpgZG+m9Y0Rwv/YlJyKOCL7MXjSA9l2iJRaqHl7SMfpr/fSsCkdWl9csl9DZ3WEaz
+	 uKZ6PuIMqJ862OLOeydNy6UQmxSapCp8FRhfk/l26hfK3PfUYgdG0LnQFrs/csqsNx
+	 HESAp5e68B/xw==
+X-P350-Id: 28a0dba0e2249512
+Date: Wed, 27 Sep 2023 14:09:24 +0200
+From: E-Mail-Administration ITZBund <noreply@itzbund.de>
+To: linux-rockchip@lists.infradead.org
+Subject: Ihre E-Mail konnte nicht zugestellt werden
+Message-ID: <20230927120924.GA4351@vlp22140.prod.groupware.itz.itzbund.net>
 MIME-Version: 1.0
-Message-Id: <1b2fddf8-c0a6-4afa-8ad0-f280dea1607f@app.fastmail.com>
-In-Reply-To: <CACPK8XeROYz_XaB3TvUhdXm7Vm8fjC8yU+mfvA58=_FiDrBy-g@mail.gmail.com>
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
- <CACPK8XeROYz_XaB3TvUhdXm7Vm8fjC8yU+mfvA58=_FiDrBy-g@mail.gmail.com>
-Date: Wed, 27 Sep 2023 10:43:16 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Joel Stanley" <joel@jms.id.au>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: "Leo Li" <leoyang.li@nxp.com>, "Herve Codina" <herve.codina@bootlin.com>,
- "Qiang Zhao" <qiang.zhao@nxp.com>,
- "Hitomi Hasegawa" <hasegawa-hitomi@fujitsu.com>,
- "Huisong Li" <lihuisong@huawei.com>,
- "Krzysztof Halasa" <khalasa@piap.pl>,
- "Karol Gugala" <kgugala@antmicro.com>,
- "Mateusz Holenko" <mholenko@antmicro.com>,
- "Gabriel Somlo" <gsomlo@gmail.com>, "Yinbo Zhu" <zhuyinbo@loongson.cn>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "Conor.Dooley" <conor.dooley@microchip.com>,
- "Daire McNamara" <daire.mcnamara@microchip.com>,
- "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>,
- "Andy Gross" <agross@kernel.org>,
- "Bjorn Andersson" <andersson@kernel.org>,
- "Konrad Dybcio" <konrad.dybcio@linaro.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- "Thierry Reding" <thierry.reding@gmail.com>,
- "Jon Hunter" <jonathanh@nvidia.com>, "Sumit Gupta" <sumitg@nvidia.com>,
- "Shang XiaoJing" <shangxiaojing@huawei.com>,
- "Muhammad Usama Anjum" <usama.anjum@collabora.com>,
- "Rob Herring" <robh@kernel.org>, "Nishanth Menon" <nm@ti.com>,
- "Santosh Shilimkar" <ssantosh@kernel.org>,
- "Michal Simek" <michal.simek@amd.com>,
- "Andrew Jeffery" <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- "Zev Weiss" <zev@bewilderbeest.net>, linuxppc-dev@lists.ozlabs.org,
- loongarch@lists.linux.dev,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
- "zhang.songyi" <zhang.songyi@zte.com.cn>,
- "Lubomir Rintel" <lkundrak@v3.sk>, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- "Alim Akhtar" <alim.akhtar@samsung.com>,
- linux-samsung-soc@vger.kernel.org,
- "Nick Alcock" <nick.alcock@oracle.com>,
- "Yang Yingliang" <yangyingliang@huawei.com>, linux-tegra@vger.kernel.org,
- linux-pm@vger.kernel.org, "Ruan Jinjie" <ruanjinjie@huawei.com>,
- "Pengutronix Kernel Team" <kernel@pengutronix.de>
-Subject: Re: [PATCH 00/40] soc: Convert to platform remove callback returning void
+User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Disposition: inline
+X-Rusd: domwl, Pass through domain itzbund.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_014354_115267_8BB88597 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20230927_050940_529121_3F4E371E 
+X-CRM114-Status: UNSURE (   0.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,35 +80,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBTZXAgMjcsIDIwMjMsIGF0IDA0OjI1LCBKb2VsIFN0YW5sZXkgd3JvdGU6Cj4gT24g
-TW9uLCAyNSBTZXB0IDIwMjMgYXQgMDk6NTUsIFV3ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1r
-b2VuaWdAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+Pgo+PiB0aGlzIHNlcmllcyBjb252ZXJ0cyBh
-bGwgcGxhdGZvcm0gZHJpdmVycyBiZWxvdyBkcml2ZXJzL3NvYyB0byB1c2UKPj4gLnJlbW92ZV9u
-ZXcoKS4gVGhlIG1vdGl2YXRpb24gaXMgdG8gZ2V0IHJpZCBvZiBhbiBpbnRlZ2VyIHJldHVybiBj
-b2RlCj4+IHRoYXQgaXMgKG1vc3RseSkgaWdub3JlZCBieSB0aGUgcGxhdGZvcm0gZHJpdmVyIGNv
-cmUgYW5kIGVycm9yIHByb25lIG9uCj4+IHRoZSBkcml2ZXIgc2lkZS4KPj4KPj4gU2VlIGNvbW1p
-dCA1YzVhNzY4MGU2N2IgKCJwbGF0Zm9ybTogUHJvdmlkZSBhIHJlbW92ZSBjYWxsYmFjayB0aGF0
-Cj4+IHJldHVybnMgbm8gdmFsdWUiKSBmb3IgYW4gZXh0ZW5kZWQgZXhwbGFuYXRpb24gYW5kIHRo
-ZSBldmVudHVhbCBnb2FsLgo+Pgo+PiBBcyB0aGVyZSBpcyBubyBzaW5nbGUgbWFpbnRhaW5lciB0
-ZWFtIGZvciBkcml2ZXJzL3NvYywgSSBzdWdnZXN0IHRoZQo+PiBpbmRpdmlkdWFsIG1haW50YWlu
-ZXJzIHRvIHBpY2sgdXAgInRoZWlyIiBwYXRjaGVzLgo+Cj4gSSdkIGJlIGhhcHB5IGlmIEFybmQg
-bWVyZ2VkIHRoZSBsb3QgYXQgb25jZS4gQXJuZCwgd2hhdCBkbyB5b3UgdGhpbms/Cj4KPiBJZiB0
-aGF0IHdpbGwgYmUgdG9vIG1lc3N5IHRoZW4gSSB1bmRlcnN0YW5kLiBJIGhhdmUgcXVldWVkIHRo
-ZSBhc3BlZWQKPiBvbmVzIGxvY2FsbHkgYW5kIHdpbGwgcHVzaCB0aGF0IG91dCBpZiB3ZSBkZWNp
-ZGUgdGhhdCdzIHRoZSBiZXN0IHdheQo+IHRvIGdvLgoKVGhlIG1haW4gZG93bnNpZGUgb2YgbWVy
-Z2luZyBpdCBhbGwgYXQgb25jZSB0aHJvdWdoIHRoZSBzb2MgdHJlZQppcyB0aGF0IHRoZXJlIG1h
-eSBiZSBwYXRjaGVzIHRoYXQgY29uZmxpY3Qgd2l0aCBvdGhlciB3b3JrIGdvaW5nIG9uCmluIGlu
-ZGl2aWR1YWwgZHJpdmVycy4KCldoYXQgSSdkIHN1Z2dlc3QgZG9pbmcgaGVyZSBpczoKCi0gaGF2
-ZSBwbGF0Zm9ybSBtYWludGFpbmVycyBwaWNrIHVwIHBhdGNoZXMgZm9yIHRoZWlyIGRyaXZlcnMK
-ICBpZiB0aGF0IGlzIHRoZWlyIHByZWZlcmVuY2UgZm9yIGFueSByZWFzb24KCi0gZ2V0IGEgcHVs
-bCByZXF1ZXN0IGZyb20gVXdlIGZvciB0aGUgc29jIHRyZWUgZm9yIGFueXRoaW5nIHRoYXQgaGFz
-CiAgbm90IGJlZW4gcGlja2VkIHVwIGluIG9uZSBvciB0d28gd2Vla3MgZnJvbSBub3cKCiAgICAg
-IEFybmQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Sehr geehrte Damen und Herren,
+
+bitte antworten Sie nicht auf diese Benachrichtigung. Kontaktm=F6glichkeite=
+n entnehmen Sie bitte der E-Mail-Signatur.
+
+Aufgrund eines Zertifikatsproblems auf einem Antivirus-Gateway des ITZBund =
+konnten E-Mails nicht zugestellt werden. Diese Nachrichten sollten daher no=
+ch einmal versendet werden.
+
+Sie erhalten diese Benachrichtigung, da Ihre E-Mail-Adresse in einer der fr=
+aglichen Nachrichten enthalten war. Nachfolgend finden Sie die Einzelheiten=
+ zu dieser E-Mail:
+
+Datumsstempel: 25.09.2023 11:48
+
+Absender: joro@8bytes.org
+Empf=E4nger: samuel@sholland.org, mpe@ellerman.id.au, christophe.leroy@csgr=
+oup.eu, orsonzhai@gmail.com, jsnitsel@redhat.com, angelogioacchino.delregno=
+@collabora.com, linux-sunxi@lists.linux.dev, matthias.bgg@gmail.com, digetx=
+@gmail.com, yong.wu@mediatek.com, jonathanh@nvidia.com, linux-arm-kernel@li=
+sts.infradead.org, mjrosato@linux.ibm.com, jernej.skrabec@gmail.com, baolu.=
+lu@linux.intel.com, krzysztof.kozlowski@linaro.org, jgg@nvidia.com, thierry=
+.reding@gmail.com, alim.akhtar@samsung.com, will@kernel.org, m.szyprowski@s=
+amsung.com, nicolinc@nvidia.com, linux-mediatek@lists.infradead.org, anders=
+son@kernel.org, agross@kernel.org, linux-tegra@vger.kernel.org, linuxppc-de=
+v@lists.ozlabs.org, extern.martin.grimm@itzbund.de, treding@nvidia.com, kon=
+rad.dybcio@linaro.org, baolin.wang@linux.alibaba.com, npiggin@gmail.com, ke=
+vin.tian@intel.com, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kern=
+el.org, linux@armlinux.org.uk, zhang.lyra@gmail.com, steven.price@arm.com, =
+schnelle@linux.ibm.com, gerald.schaefer@linux.ibm.com, linux-rockchip@lists=
+.infradead.org, iommu@lists.linux.dev, vdumpa@nvidia.com, heiko@sntech.de, =
+linux-arm-msm@vger.kernel.org, robin.murphy@arm.com, wens@csie.org, robdcla=
+rk@gmail.com
+
+Betreff: 'Re: [PATCH v8 00/24] iommu: Make default_domain's mandatory'
+
+Sollten Sie der Absender sein, so erw=E4gen Sie bitte den erneuten Versand.=
+ In dem Fall, da=DF Sie diese E-Mail h=E4tten erhalten sollen, informieren =
+Sie bitte den Absender =FCber Ihren Wunsch, die E-Mail erneut zu versenden.
+
+Wir m=F6chten uns f=FCr die Unannehmlichkeiten entschuldigen.
+
+F=FCr R=FCckfragen steht Ihnen die E-Mail-Administration des ITZBund gerne =
+zur Verf=FCgung.
+
+
+Freundliche Gr=FC=DFe
+
+Ihre E-Mail-Administration
+_______________________________________
+V A 51 40 - Gateway-Systeme und Schnittstellen
+Informationstechnikzentrum Bund (ITZBund)
+
+Postanschrift: Postfach 301645, 53196 Bonn
+E-Mail: VA5140@itzbund.de
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
