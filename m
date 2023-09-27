@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0565E82CA6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:38:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAF5E82CA7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9rFlKzBncqhaMJoQzq6QGY0pnUK7+Cvgm8Xh4zZ8xEo=; b=x8/EwyA29kgs/T
-	emnNgyD1YSPt0u83LjtJNNYYToIOrEjodWHBqbd/7iTS95bo7PKQ0T1O446761jkI2/MMs4Wn8a2R
-	QPiMKcAsF6IPZ6bI1qdZQO3+RFbicY+EbMEu4U++LcrlMSFBFqYHoYWuyImhchdBkm9Cr61njZgPt
-	LOA6m1HGrOz+adpOT3XXCTJHbZtn1pCt7X8GrC/51ccJCyNqQhPAcCCSkf9nJy5yh1niz7Skn/MYA
-	OTPgjtCjuA4rE+VYnm4Rz6Q9FGgRyJK1sdXsURgGdn8tgjrKawf7qqKQqpZRdVLdA883Y3nWzJN1K
-	dqL0rjaQWCa2l/P22o9w==;
+	List-Owner; bh=rogwT1CuKGKsaYzUXewg+jpNugFO1tnwO4D8CLniIpQ=; b=4etf9c/HZ6TER3
+	dakDsFQ6sZga74GJrXeao9uZRAzjucUfjWFG0gW9qHNPFN2y1T2agcZ4WbcW+oWge9thBLxKFYESF
+	lQE/eDxVN4WC+CdpeFC6kxZY6EdGklILBpSN0IyoA/1LzR5iy6euMsrjRvF/PwGkDpSkDsrtQrcMG
+	XwTfm9nejuCAP/g6iBGy+SLVQpJdjZcAqs+rfxPDcrysObecFh3uotGE/qP1nC5hL8ogWjLOfwpj4
+	9SnTGdhw0H5H7KT/S9pFcesR23IieXM+qsRlLuhKfpel8KBD8rdf2/Mlo9VmE8TqCnjYPzsKw7A0O
+	BMbZEXCwtzLyDfTHbJuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWcD-001IY5-1e;
-	Wed, 27 Sep 2023 15:38:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qlWcl-001J5o-2n;
+	Wed, 27 Sep 2023 15:38:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaI-001GMB-2K;
+	id 1qlWaO-001GT9-2L;
 	Wed, 27 Sep 2023 15:36:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=mxhqX9L/LTLjAo8r4FRZmw55ljZYm0j0MEPgb49dKlI=; b=qKtaYaoJrCXWT8ITJgSHTz5Cki
+	oyrMep83VPA6rX7f0Ix1Ej0whDCzxu8ziyozRBmD238UDV+QxcB8kkheJwlAJYBIBb78PTQV3b9d3
+	IjXvuxXHnjyZLsiVAYsW05/c0HurGEVntmuGHrRpF6lv5qtf7XCp5QP1p57Ifr+E11DrM5Auunpk/
+	g2k/wsJdxshIvqvFKYYR67Q0rNpwhTbDR2nnKtDfXTxY1nrL8V4qFJo2bXQaCvxk8G0udMFreEgEz
+	Gas7uLldJXARX16f3ZOZ/8r0WYFB/TTLaw3dFKVurj23MY2CObNxK4AVnCo7g1y55yxO0ZKh/8cdL
+	AuO8oVhw==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlWaK-004025-0F;
+	Wed, 27 Sep 2023 15:36:23 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BDC59660734C;
-	Wed, 27 Sep 2023 16:36:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D9BA66607359;
+	Wed, 27 Sep 2023 16:36:19 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828977;
-	bh=nC5JveIjPzMVC1zxPduxcDxFwp3MsqPq43pscFJumwg=;
+	s=mail; t=1695828980;
+	bh=7OP/lnsbD5MzPZ4L/gceSmxIzda3Ng9eLtu0phjni7k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kqUQ9S0b5mgGvycKsdnIVMdl6gR7Xdu5VBy17S2W8Hi4ie+wiGRaseU2nXp5bE2km
-	 b85t/REOouISSEEWEkdQpWiuqaBJEc7D9hgBncOUZijgVJKM6UOzMYrPmmXVO+9wu2
-	 iyicQkSoGP2PjGvkJenK1VJhuGud77LPqs7NL3FYNMlzyvtV90N9X1fUi0+uAfdlkO
-	 0BuNnK2v13mdnfAojusg3DlL/C0qu2I82OvUGN5G6QyqpenA0a2PpNWz8D3WjV1m7o
-	 FkjdyDdzKhvvsIkJeuv6CxsMjIBIPupCx/aJSsM0ZHBAbes3SI3pKhgtpV+j3k0NSE
-	 LwqIRGBi8cYhw==
+	b=IxIyfSHJ44tLlQoFsxviRbbUq6rarZAqls9wdxqoNbWuAZDPqeXVRCqr+OY7PRns/
+	 joe28B6uA0yz7N8orO7KVeScGvNdsbx0zqGumSsZEGBNDY0B63zorgBu+CuFC8BMWy
+	 zD8DnZER8lhBV9VriT8t5LsbiklO9NKPwszDTRsiWsWnwxnUHYWs1M4RcYJm2M9zWQ
+	 H6XLWZqPWdbiSvGKElVLHmbuXFiJezP46H3R6qwMLn4UJ/YO+byCo4LKcPMbfdLNDG
+	 1hdhwZcEk70qKi01OK0ZU2CqmE5oGTUD749BGA5yF9pNP12TFX9DxPVHq59QjY11+t
+	 iuS7rZSf1AJiw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 20/53] media: Remove duplicated index vs q->num_buffers check
-Date: Wed, 27 Sep 2023 17:35:25 +0200
-Message-Id: <20230927153558.159278-21-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 26/53] media: pci: dt3155: Remove useless check
+Date: Wed, 27 Sep 2023 17:35:31 +0200
+Message-Id: <20230927153558.159278-27-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083618_923184_8B3921F2 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_163621_600393_B2152BD4 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +102,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vb2_get_buffer() already checks if the requested index is valid.
-Stop duplicating this kind of check everywhere.
+min_buffers_needed is already set to 2 so remove this useless
+check.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/common/videobuf2/videobuf2-v4l2.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ drivers/media/pci/dt3155/dt3155.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 655133f1ae2b..9a4b11279fe7 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -378,11 +378,6 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
- 		return -EINVAL;
- 	}
+diff --git a/drivers/media/pci/dt3155/dt3155.c b/drivers/media/pci/dt3155/dt3155.c
+index 548156b199cc..d09cde2f6ee4 100644
+--- a/drivers/media/pci/dt3155/dt3155.c
++++ b/drivers/media/pci/dt3155/dt3155.c
+@@ -128,8 +128,6 @@ dt3155_queue_setup(struct vb2_queue *vq,
+ 	struct dt3155_priv *pd = vb2_get_drv_priv(vq);
+ 	unsigned size = pd->width * pd->height;
  
--	if (b->index >= q->num_buffers) {
--		dprintk(q, 1, "%s: buffer index out of range\n", opname);
--		return -EINVAL;
--	}
--
- 	vb = vb2_get_buffer(q, b->index);
- 	if (!vb) {
- 		dprintk(q, 1, "%s: buffer %u is NULL\n", opname,  b->index);
-@@ -834,10 +829,6 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
- 		return -EBUSY;
- 	}
- 
--	if (b->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, b->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", b->index);
-@@ -909,10 +900,6 @@ int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
- {
- 	struct vb2_buffer *vb;
- 
--	if (eb->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, eb->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", eb->index);
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+ 	if (*num_planes)
+ 		return sizes[0] < size ? -EINVAL : 0;
+ 	*num_planes = 1;
 -- 
 2.39.2
 
