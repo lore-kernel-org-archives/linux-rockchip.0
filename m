@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA06E82CA1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE614E82CA6
 	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,51 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mqtrYpud/K/e17cBKFo1ExX4Mrt+0tWe1SNs4cZ/riM=; b=U35UdrkFaZa7jh
-	czZfX3mojk41CthgexxybCm4e84xpEfFbJlEvEK+7vXJHhcogpKPTXzAzp843ab16ssWInlMsJxI0
-	40InTADUV7EWfJlMo9lbcwoWXF5Y9MWX3Xn0DkrQ6bbA3OiufyZdck7NC70yw090qJke1p73z/HJz
-	NEFrs+GuFryoXYJ0dlvAAJ7vgh5VfMvTxof07Z2r7PJ962g9vDIqlU3gckStDST/WjDg/qNMgRwe4
-	2pJapF6tK4vemc+oH9v79vCbVX9QB9K/nJ2DleSEsA/ByAy2O/52FZJABXBpZ+FA0UcgFM2ZxmadB
-	PaBYwHocNUBjWxDEZrLg==;
+	List-Owner; bh=oRcro5CqbMwJTRyFK9LU5dLcfnzfIjmHlJtxsxucHgo=; b=rZRVProvGQv99n
+	EbYRnuCvLKqveeFGlHYOSmpnCXjI+3dysZabpmhyHNwMNebjPGIlnLjUsXR2H6+FT0yrPqwSYB9hx
+	j37m57/ktJ8r4/AQJxQFDnvYHACStRnTJPMtxN3yoIdBEFDXcTRhij1GqHcII08Ial2D7EZOCqJjF
+	dhhL3ioervSzjn9w5OmTgMdLXeyhIwSk0MJaa11GwsfrYIuuZmAHlBWiWWbbODUhz9RpiwZALZ30F
+	JlvxVJxHnb3Ms1PjBq5BNLHweCcjC6TWirY/olz/1jbQG/Kci6Tkb6g9nzMWTDtL+WYDwPTrnGqMG
+	cP/ADZhW2GbEfZ9vhknA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWdJ-001Jbm-0d;
-	Wed, 27 Sep 2023 15:39:25 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaR-001GW0-0N;
-	Wed, 27 Sep 2023 15:36:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=KnK9e8ZFi3pebVdrAjDVtxSA0qCAi/hA6TDylmv0g/A=; b=oaN7hUAbj3o2eEqeNZNDsuBGf7
-	cd5Nyk91NZKm61x3aIU3oxLLzHXpsFcjG0PFmQW8URGwVXd6ZhNwUOhROquLZ1gO8F+vocwdHmtzG
-	EKbY7CKxxgT4NFx4eH2nhP6Wy04/SQBAO2A7FH3kOoyUlZq0wK2lR3mqzH23x0XTUjS/SF4b2P1Q7
-	LX1fMxvbpgPP7yQwvzW7jZZRkCco2HZ9A3GCDpC9KW2sp3E/mPCAq8T9lqKSaVJ/k8UG1OUXHV1vr
-	y5ZULCSwq2jnA3gICMX24Gr/2okYVME5TVeXnFwVTVvPtVaHXzCaUvsywxjuM26rRzI6mZdd+mdKX
-	4FZ7sIvg==;
+	id 1qlWdF-001JYF-28;
+	Wed, 27 Sep 2023 15:39:21 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaM-00403T-1S;
-	Wed, 27 Sep 2023 15:36:25 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlWaK-001GOS-2X;
+	Wed, 27 Sep 2023 15:36:26 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79ECC6607356;
-	Wed, 27 Sep 2023 16:36:22 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D437E6607353;
+	Wed, 27 Sep 2023 16:36:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828982;
-	bh=vej0xyoaRLN25qHgld1P1pTyfPCEtxO7zlLcrG23sig=;
+	s=mail; t=1695828979;
+	bh=uLtpgbM1S6TEQd3BheD+tuaw3lVo9oisDECpkyjdDDQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eGQ39OwLaIm9EJms2W8ErEii3GkWljsCnHEI5DOInTuSCVf37BQsFawnqiYxkLuD0
-	 PU9VunYfXQ1Ra1dxXITVZcUD53mr9h4Kb8l2Z50RoMR80+dOIf4NbX9qJt7O7adIzR
-	 VBKpDfqECg3c9e0YXI1HKek2UvZUi8ViQrBV0EV8BNzREKuNH+sMr3IhDOhNH2Sn9I
-	 rGDe6RazYfMlKoI3G3a2y48mCp1JRE8O7lgHj7ujX7bgoy7ArwZewBhXuLaAX3tvK6
-	 XbVrJsyj8+QBRt7NC38VLiABVyFlQCtMyXZnx8M4ZTLTBFNMeTHFN7YlNhGF+rjDfU
-	 HpAhO1s5igRmw==
+	b=S+L84mcHo60rVTDABPpaqi9turpx6HRLsClDamnQGpQrKfTz+xkRtnEbxp/La5GHI
+	 Ljl25UOwbiCeibBWFAKjFVz/TAeZJfA1JARxGSiyrUxI9JrczK5IcWpncpQ3PSH/bi
+	 Se3jPRQNPSBmTLcExTEJe6AcwgkVMxfPLBxoG0+TUhWm2PbJzg9x/cHeJJ+VHvDkKA
+	 Sb920qcy5xUk83izC9jTaNrun3MxL71COaloMEcHwupLV1xnh5W5eN8vCXGUl7uQwu
+	 SiH+oRyBYyvgzzDhaxS+o+837rtORFjoHodqSzZymuWfGlbYOi6rKig+j+n5aMdP9z
+	 uSJUnAeJ4Ir0g==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 31/53] media: coda: Stop direct calls to queue num_buffers field
-Date: Wed, 27 Sep 2023 17:35:36 +0200
-Message-Id: <20230927153558.159278-32-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 24/53] media: video-i2c: Set min_buffers_needed to 2
+Date: Wed, 27 Sep 2023 17:35:29 +0200
+Message-Id: <20230927153558.159278-25-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_163624_163084_0C8EF947 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230927_083620_972237_C25022B8 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,25 +88,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to 2 and remove the useless check in video-i2c
+queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/chips-media/coda-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/i2c/video-i2c.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/chips-media/coda-common.c b/drivers/media/platform/chips-media/coda-common.c
-index cc4892129aaf..f1d85758f6dd 100644
---- a/drivers/media/platform/chips-media/coda-common.c
-+++ b/drivers/media/platform/chips-media/coda-common.c
-@@ -794,7 +794,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+diff --git a/drivers/media/i2c/video-i2c.c b/drivers/media/i2c/video-i2c.c
+index 537ebd9fa8d7..5692d0b529d7 100644
+--- a/drivers/media/i2c/video-i2c.c
++++ b/drivers/media/i2c/video-i2c.c
+@@ -406,9 +406,6 @@ static int queue_setup(struct vb2_queue *vq,
+ 	struct video_i2c_data *data = vb2_get_drv_priv(vq);
+ 	unsigned int size = data->chip->buffer_size;
  
- 	if (vb2_is_busy(vq)) {
- 		v4l2_err(&ctx->dev->v4l2_dev, "%s: %s queue busy: %d\n",
--			 __func__, v4l2_type_names[f->type], vq->num_buffers);
-+			 __func__, v4l2_type_names[f->type], vb2_get_num_buffers(vq));
- 		return -EBUSY;
- 	}
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2;
+-
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
+ 
+@@ -798,7 +795,7 @@ static int video_i2c_probe(struct i2c_client *client)
+ 	queue->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+ 	queue->drv_priv = data;
+ 	queue->buf_struct_size = sizeof(struct video_i2c_buffer);
+-	queue->min_buffers_needed = 1;
++	queue->min_buffers_needed = 2;
+ 	queue->ops = &video_i2c_video_qops;
+ 	queue->mem_ops = &vb2_vmalloc_memops;
  
 -- 
 2.39.2
