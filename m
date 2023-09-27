@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3911DE82CA5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CEE1E82CA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U2Ow0eDaZQsQhKtYA0j7ROs8Sw8a7WqfjbtSd8b325w=; b=iIhSVSZX8xs+PS
-	w08I7pYVf4I5hPnrLNHfAqOY35Un/OzAzxgWOcTsYYJNXAu7151v7C7thZDPu/sMVK/eQQc+QOu62
-	jj8eiXpoX674fVFzMMXeciL5KgxeXZauBuSDYZXC0lWXO5L7HUftoNg/SkajRnywCaiCAju7af1qM
-	R42yfpRTMgMG8+V9OnLh2Pzu+FkFbdWhOeb2cGb3BILye9xsFL6BFgO1SWU8j3BJFVdYSDwMIui/p
-	h9eOyqSRmfl+otvhG/nE2iEmYnNnP+brWizY/UC+ObXRYEmD2XJ1qQz02knk1MRlVOW33SRm2njW+
-	Apk3zUqJ85CSAgn+1snw==;
+	List-Owner; bh=1mof2ST7V+2L22k3ZUxu/IyVSJqMYjgtDQyFvCiEN+Y=; b=0Pnwe/Gvjtf/d2
+	/xyIIyXkiLranQM494rXaHG90izw3AD+WN+MYGUbl5h/IE0V25MebblSUHwoLoWNPCqRlQ/2TMSmH
+	b3gyzYcvAHvGJiq4GqNZfenmjB3ES0LCnMSnp3PK8A9bVPb9NdDacJCEZ2EUMbuBsSwJb0JrJumXO
+	jtowbyPOIMCi+mNvWM/q/m2C4XhOXZDkOTyyrAhEhiZHEkvogrbp+cUJ07e2lpI7Zv/lFhfPXXLf0
+	dYHQUU02g7HZCEbanu10HzTkxv9FE9aBJi/EiRbL2hhJflGiibu/ADg6dCUGJImnJAWrT7bk8HnSU
+	oCTQN0rGEhKuaLPBmopg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWef-001Kyn-1H;
-	Wed, 27 Sep 2023 15:40:49 +0000
+	id 1qlWeg-001L0h-2b;
+	Wed, 27 Sep 2023 15:40:50 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaa-001GgH-2A;
-	Wed, 27 Sep 2023 15:36:36 +0000
+	id 1qlWac-001Giv-0i;
+	Wed, 27 Sep 2023 15:36:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=FHOt7PQRA0EqPTIJ3sJv4yUzGbHmzKa5gMgXsSJImO0=; b=UFS+arnxHVZ+pzJU0JA4jDdM98
-	apLNotlTAe9qzIqBbUVc8jPv+kXvyESn/qV9IHNIhELPeiSqZ+a85mwD1SvBMf5x7dzLJrd6rRsjm
-	r7zRQlBGSk52rPrANIy3v5VyYJ8G4yXYORht4a6mtG83XRxGB1XcFo+GnT+sFHmkjQahNUtMokbzY
-	syhUtUf/aHNyURLvHxMqukbYandprpZyVZi5Nk0pYEpd5zWcsScpDCuVeS+V/RLIMPht5nWYUetIt
-	Ax3UvsgQsPQCq3JmJ7Vmr3dV8E7jS4wmzWxoEtSywWjPfa4oebad3N7dQQUc3lC+NdjmY6UnDU224
-	QNw3ckXw==;
+	bh=oTtmKjE7vQhNKhTumrx56oub9WvRubSN6lcnNjeiil4=; b=uhC5ETrfPIDW/WH0THdw8LkJw5
+	L1Se3GnxLID6oOgnqulqaq41LWy+VcZhSKZB4wSXOAZeO8B3gDJO9H5wIQsMMuQ0rw7gbuBOQtca/
+	hN0afx5OD629KAhO4bgj2mFLXz2seQhytwTjE743nk732Mfioh6lMBs3lQxwGfoKlmrSgXISgZoXH
+	djIDxwTvk098Iqayiy86FfW1IlPZMTI5A0eVlQ/ReBT6X+WBWyO94cjppTWu4IpbEf8lMCsdgsfyr
+	I2X9avqRdbqT9gF+9hzc8wDUhck8oXoDyaOgDd4/Nnw2X3YNMUuuZeV2+2JdAuWCapR90pbdYjk6r
+	UxndBB1g==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qlWaW-00EesS-Ja; Wed, 27 Sep 2023 15:36:34 +0000
+	id 1qlWaW-00EesL-JU; Wed, 27 Sep 2023 15:36:36 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 944136607379;
-	Wed, 27 Sep 2023 16:36:29 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 87EFA6607361;
+	Wed, 27 Sep 2023 16:36:23 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828989;
-	bh=uwQYrGuMm2ejNz+6p1iPg1BLomW4NJekCoZt42bzvk0=;
+	s=mail; t=1695828983;
+	bh=cXivZNqToe41YcZuXIOZnOz7dFiXtOZiRZUwxPYGOCA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AlqQgzobtesqfGrDxwhOqSYfYn2QQtcUygEczU7exug94O8iDwsanECUJ8iRrMj4F
-	 9NFbx+V5AXelw+8SEPMa6XW+VPySUyhXEi45/9lhGnvdR4n2hGJ/4MOlKQ9UbojxZE
-	 XFpTRhzXm8YSK3wssqLifIjWe7nCNXxPHH4iwdbyX3L40+8ZIBwX44kOIEJoVacGCL
-	 RGcWMolRAl3kW68fvjhZLcGsBJCe+YgXmqAqoIRfy4XLM/Qso035ePPv/d8XmMNFgo
-	 w+FZQg8L9eTKhCZASwBwvK/jUIGAf74yAShBfxBa2CdTqa8ByYm/rFfeQMl22OEnY4
-	 qut9i7JQcC9GQ==
+	b=oC/kHGv4ZioGmHcfzKWYhBUVtj0cu/V30JOA6y67nZeYqqpNIaZQqDZc30qHerica
+	 G33/7F/SiGVjWm932qPxtDA2Wuj1yJ19ORbDFY8s9mB8vWYU3BM2QoAGaMn6jH28Ns
+	 Zga3k6v2QwduEZLamhf8BLR/miqIi1nsuw1NLCVTdkaiz4qD9r0vWWoQWVQ8h1v8lj
+	 tkoQFEWqsOFQFTMa8egQ7qeM4yigtSNv6VXexm/jX5nVDTOwGlA0xLuoBSo3DdOAOG
+	 pv7QXYVQZAnJiLbDGxCgn64U5X5sFdRpv+Zyg+CQGOwpXcGY9vS2XzXXDDy3H37oTP
+	 pE2CrIyB7DwGw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,16 +75,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 45/53] touchscreen: sur40: Stop direct calls to queue num_buffers field
-Date: Wed, 27 Sep 2023 17:35:50 +0200
-Message-Id: <20230927153558.159278-46-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 33/53] media: nxp: Stop direct calls to queue num_buffers field
+Date: Wed, 27 Sep 2023 17:35:38 +0200
+Message-Id: <20230927153558.159278-34-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_163632_740833_312C9830 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20230927_163632_717588_AC623D09 
+X-CRM114-Status: UNSURE (   8.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,26 +106,39 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/input/touchscreen/sur40.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/media/platform/nxp/imx7-media-csi.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/input/touchscreen/sur40.c b/drivers/input/touchscreen/sur40.c
-index 8ddb3f7d307a..e7d2a52169a0 100644
---- a/drivers/input/touchscreen/sur40.c
-+++ b/drivers/input/touchscreen/sur40.c
-@@ -847,9 +847,10 @@ static int sur40_queue_setup(struct vb2_queue *q,
- 		       unsigned int sizes[], struct device *alloc_devs[])
+diff --git a/drivers/media/platform/nxp/imx7-media-csi.c b/drivers/media/platform/nxp/imx7-media-csi.c
+index 15049c6aab37..4c467fb82789 100644
+--- a/drivers/media/platform/nxp/imx7-media-csi.c
++++ b/drivers/media/platform/nxp/imx7-media-csi.c
+@@ -1245,6 +1245,7 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
+ 				      struct device *alloc_devs[])
  {
- 	struct sur40_state *sur40 = vb2_get_drv_priv(q);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	struct imx7_csi *csi = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	struct v4l2_pix_format *pix = &csi->vdev_fmt;
+ 	unsigned int count = *nbuffers;
  
--	if (q->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - q->num_buffers;
-+	if (q_num_bufs + *nbuffers < 3)
-+		*nbuffers = 3 - q_num_bufs;
+@@ -1254,14 +1255,14 @@ static int imx7_csi_video_queue_setup(struct vb2_queue *vq,
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < pix->sizeimage)
+ 			return -EINVAL;
+-		count += vq->num_buffers;
++		count += q_num_bufs;
+ 	}
+ 
+ 	count = min_t(__u32, IMX7_CSI_VIDEO_MEM_LIMIT / pix->sizeimage, count);
  
  	if (*nplanes)
- 		return sizes[0] < sur40->pix_fmt.sizeimage ? -EINVAL : 0;
+-		*nbuffers = (count < vq->num_buffers) ? 0 :
+-			count - vq->num_buffers;
++		*nbuffers = (count < q_num_bufs) ? 0 :
++			count - q_num_bufs;
+ 	else
+ 		*nbuffers = count;
+ 
 -- 
 2.39.2
 
