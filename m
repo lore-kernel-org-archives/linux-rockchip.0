@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4358EE82CA7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E23CE82CA1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Sep 2023 15:37:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hznvOSVjaVF5/foaX8sr/HjOxMlsT758TwKJBgFvjyE=; b=Kdli8jKMVnt0rN
-	cm3FmoEVxCtST/uGyASIzDqn4gjfWsLW60TV2ht4z4mhSiHKKgadsqXljVxbsdFF9OvZ7fJbG6/i0
-	hpOZiGR8trlW0iBQSD8qURNgCKW3lEXZ3gRF0r3+MA+aJIiGt+ubuVuS3vNwE55prlgA8G1W/mi44
-	2kAFhFQTf39VLUKgdFOB78w9UsDTsau/MHMvYYeVjBN4Gwz2d6+uAxbX7amI7QmTaojVNn7kqYMbx
-	f2lUWJ/es7Sv4khdxFhlZKj/vFfKDigcAoOVVXNVZai9UinTWEZ8MKatM22kpiRmirEqntgthmhYD
-	HiafJUabSc+bjgfUrgqQ==;
+	List-Owner; bh=I/YS0qMWvDZKO1jBcZVFsFdHG9fykTBccGixP0YDMx0=; b=n2kqTB0dl8YgMg
+	7x/tpyt2keisosWGHLChT4jEH0dcYYlHz68CgC4Jt5Iqjcd8hyW7grgG9Dwy0m/xXXOc+L8CkESHf
+	2YLRNvyYCJETDTOiIJeoNP6MZSDAODWyawUnf8oV6Drc8CrIFM7cPjg38kRMrImW8w+pC+wtAlL9G
+	5wfEOTWpXIHj4uEZKw+33p+Pwu6+Qj8kj91U7Xf3FB44T4DZTXrJtLZeayOo7clheNn3Rua9mnSQX
+	jVHoh0fc3J9UeHb7ShrkrIw4FwJdbbAoa71LH8kq3d6To5BHLqdSMAuXdmn93+/Le+TvE5Zk+xMpQ
+	tyKgjV1oPNxyv7d3L5Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWay-001H7G-06;
-	Wed, 27 Sep 2023 15:37:00 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qlWaz-001H8i-0j;
+	Wed, 27 Sep 2023 15:37:01 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlWaD-001GEm-0j;
+	id 1qlWaD-001GEM-0b;
 	Wed, 27 Sep 2023 15:36:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:46bd:3ec7:6cdf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9ED936607337;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 296086607335;
 	Wed, 27 Sep 2023 16:36:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695828972;
-	bh=EMKVWITArl2PHuWHDFd/NcTii9pr6T7GjKNa1Tuop1w=;
+	s=mail; t=1695828971;
+	bh=zXmFfNU0uMtsKoYh9PP3wEGhm6Xs7lwp8Ba27axk8pE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TCVzKYNE4Wnb4NkghJe3VZhRfV+u+zHYIQXfj3xeN7mfbf1sAxiZZmnwR5B6iEZor
-	 X/maYWBGaq17bh52pa7d2fOcT2w9owWsHlqa6XXqSJ565cYkGRFqJJK/HV4/enrPzY
-	 CIfnefqkYRkrGAepxiGHZD494uL28cRqhx7BdQe/B3M2y+jvZKk2q5bzJHgJlXHnBp
-	 Szd/HonJ87kYgs4vhyVB0QhdQ+NEAsNIAHIjn/m43k6jTuO3ppkB1xV871+ye57k24
-	 7BXloLTvwRJKiFQi+6W9uL8MGzZ+P5LcnD0Aeyc/mOF/09Hm+BDqPVwcXbjY5SJHhO
-	 8eONpC4U3YPSQ==
+	b=BOQtuDkMoqtsOACLQs67RS/PzXJb5sAPVe0BvP7L3NBGr5awaCxUhaOTXaZ5/Wqrk
+	 6QjnDL1a6U02Nv8XVHibFLjrjOb1oHop8q/X17tzszTjAs7Jg6XkVhwHuIClrAgHsh
+	 X2umz2XaAltPAbCfS0QYfvi8MyrqVp0mUmC7ItAGBteZx2XQNJHOsxdTZSsoXlxs9P
+	 9WOvGb80FDe3h4IgjJcdfeObMMyFD5cuj6GccdEFXqSTWnhLF2tnNzGB1bNogM+G/O
+	 sjZTEXwwXBZa2SA81nvFkkV+LaGvCWGnYCCLGU+hRLuzy/0fDLbnTDFDDvawWZh3Di
+	 XKHGXATN5662A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 10/53] media: dvb-core: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Wed, 27 Sep 2023 17:35:15 +0200
-Message-Id: <20230927153558.159278-11-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 09/53] media: atomisp: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Wed, 27 Sep 2023 17:35:14 +0200
+Message-Id: <20230927153558.159278-10-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230927_083613_405112_16F49855 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20230927_083613_389142_7C8DF21F 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,53 +91,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
 This could allow to change the type bufs[] field of vb2_buffer structure if
 needed.
-After each call to vb2_get_buffer() we need to be sure that we get
-a valid pointer so check the return value of all of them.
+No need to check the result of vb2_get_buffer, vb2_ioctl_dqbuf() already
+checked that it is valid.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/dvb-core/dvb_vb2.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-index b322ef179f05..3a966fdf814c 100644
---- a/drivers/media/dvb-core/dvb_vb2.c
-+++ b/drivers/media/dvb-core/dvb_vb2.c
-@@ -355,12 +355,13 @@ int dvb_vb2_reqbufs(struct dvb_vb2_ctx *ctx, struct dmx_requestbuffers *req)
- int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- {
- 	struct vb2_queue *q = &ctx->vb_q;
-+	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+index d2174156573a..4b65c69fa60d 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
+@@ -1061,7 +1061,7 @@ static int atomisp_dqbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer
+ 	if (ret)
+ 		return ret;
  
--	if (b->index >= q->num_buffers) {
--		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
-+	if (!vb2) {
-+		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
- 		return -EINVAL;
- 	}
--	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
-+	vb2_core_querybuf(&ctx->vb_q, vb2, b);
- 	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
- 	return 0;
- }
-@@ -385,13 +386,14 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
- int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- {
- 	struct vb2_queue *q = &ctx->vb_q;
-+	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
- 	int ret;
+-	vb = pipe->vb_queue.bufs[buf->index];
++	vb = vb2_get_buffer(&pipe->vb_queue, buf->index);
+ 	frame = vb_to_frame(vb);
  
--	if (b->index >= q->num_buffers) {
--		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
-+	if (!vb2) {
-+		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
- 		return -EINVAL;
- 	}
--	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
-+	ret = vb2_core_qbuf(&ctx->vb_q, vb2, b, NULL);
- 	if (ret) {
- 		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
- 			b->index, ret);
+ 	buf->reserved = asd->frame_status[buf->index];
 -- 
 2.39.2
 
