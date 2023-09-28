@@ -4,72 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821C3CE7B1A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Sep 2023 10:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F7CE732C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Sep 2023 12:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5U3jhO0rHv/hX+fizLzthVvYJR4cH2MbLGFwy6q+ydk=; b=QTMJS3XPZFYO2a
-	cA/NZUpMpJ4SiS3y++GY6lELqKKfGpqMub8va6Fh0YKY5+P2jEKgesLtff6Osr6oC7/K+uRyRWfM/
-	mqvxCBbyyO8OF/dfi6EIYY9EZXcnENVTXDTRzMxFUDbVPvoZ3BSkUzZjBzHoNe/Sbwq3V9KhNg/Gz
-	GP28ddjgMS7SKDGHhS04gtgj7H9umb1QSv74+Fs16ZclzDeKrWlQewhG+JbAkNhMnou6KkfpJLDFH
-	PE1dZfHM7qj43IHqOJ1QLLmBDhVBVEJ/qykvhSUW9B7pqDS4DF39awPCFzXQ23lkx8oTxjJP68x7r
-	R9P9vMyn0mwVpIK6Tx5A==;
+	List-Owner; bh=AS/cK7R2+X2agCAB+8mQGz/ZndRWnk9M1Dzhj9IJND0=; b=hZEMl5ZYHaP9Em
+	KZVOlK6w4OL2o060sCDJBC3G+Qnjuwzs+SBrDkTILS6jiyX4JV43fldFv/W8R2AH4BVGK4+tYRH41
+	9e6pBKfCbzpVc15ADt4LZBEzuZY/hkR+iONXV5/Q2XdpeXanRSd6ZcUv6tRdK8lgQWsH1Rz5vm7wI
+	8dEAphly+cN1xQ2mBmHVmGhetG//+4rTLzjDff3SlD1dJ5CF/m8UM1CZMMo9drfQKGzH29bY5jNOP
+	ZIeckRyWSVZDSHQrQBwFgIr4q/knlCpCVv+5CBCKNc4iHEHo2ANnE2HUajNe/mHY0dTP/D1GVe0JB
+	qNkqM+K9XwIbOGZ8Mk3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qloci-002xnm-1s;
-	Thu, 28 Sep 2023 10:52:00 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qloce-002xlI-0A;
-	Thu, 28 Sep 2023 10:51:57 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 38SApdDT010995;
-	Thu, 28 Sep 2023 05:51:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1695898299;
-	bh=yQ23yP/4dLIZZYBzgjMWswPX30FCFAgk9cKsBV41l1w=;
-	h=Date:From:To:CC:Subject:References:In-Reply-To;
-	b=m5ODKqDG5onzNxq/eWYNosvJKXhxGK4K9GBtgPrZxKvOYPw5sUxVzLmIc3XDWp9wQ
-	 8U638e914wJ1FuQiCJABqJKYcrctXxxxRPL/Z6ZmsIb/OFYpdPEUiG9E+KQ75tDBtC
-	 jezhpFs3N96g557+2STN2iI/STq0TXTieMBVgfE4=
-Received: from DLEE106.ent.ti.com (dlee106.ent.ti.com [157.170.170.36])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 38SApd4a056756
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 28 Sep 2023 05:51:39 -0500
-Received: from DLEE104.ent.ti.com (157.170.170.34) by DLEE106.ent.ti.com
- (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Thu, 28
- Sep 2023 05:51:39 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Thu, 28 Sep 2023 05:51:39 -0500
-Received: from localhost (ileaxei01-snat2.itg.ti.com [10.180.69.6])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 38SApcig093586;
-	Thu, 28 Sep 2023 05:51:39 -0500
-Date: Thu, 28 Sep 2023 16:21:37 +0530
-From: Dhruva Gole <d-gole@ti.com>
-To: Muhammed Efe Cetin <efectn@6tel.net>
-CC: <linux-rockchip@lists.infradead.org>, <devicetree@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-        <conor+dt@kernel.org>, <heiko@sntech.de>,
-        <sebastian.reichel@collabora.com>, <jonas@kwiboo.se>, <megi@xff.cz>
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: Add Orange Pi 5
-Message-ID: <20230928105137.5ljhuoxjc7et5thw@dhruva>
-References: <cover.1692632346.git.efectn@6tel.net>
- <1dac46f3d6d4b4a1b2621534da0bdde9a9cf777c.1692632346.git.efectn@6tel.net>
+	id 1qlqEV-003p8R-0t;
+	Thu, 28 Sep 2023 12:35:07 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qlqER-003p5b-2i
+	for linux-rockchip@lists.infradead.org;
+	Thu, 28 Sep 2023 12:35:05 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 998461FB;
+	Thu, 28 Sep 2023 05:35:39 -0700 (PDT)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2F5CB3F5A1;
+	Thu, 28 Sep 2023 05:35:00 -0700 (PDT)
+Message-ID: <9199562c-65ac-d8b1-20bd-429a32ede6c9@arm.com>
+Date: Thu, 28 Sep 2023 13:34:56 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1dac46f3d6d4b4a1b2621534da0bdde9a9cf777c.1692632346.git.efectn@6tel.net>
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 1/4] ASoC: rockchip: Convert RK3288 HDMI to GPIO
+ descriptors
+Content-Language: en-GB
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: alsa-devel@alsa-project.org, linux-gpio@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20230928-descriptors-asoc-rockchip-v1-0-a142a42d4787@linaro.org>
+ <20230928-descriptors-asoc-rockchip-v1-1-a142a42d4787@linaro.org>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20230928-descriptors-asoc-rockchip-v1-1-a142a42d4787@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_035156_185973_83A0BD66 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20230928_053503_995777_7AE83475 
+X-CRM114-Status: GOOD (  26.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +65,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBBdWcgMjEsIDIwMjMgYXQgMTg6NDc6NTkgKzAzMDAsIE11aGFtbWVkIEVmZSBDZXRp
-biB3cm90ZToKPiBBZGQgaW5pdGlhbCBzdXBwb3J0IGZvciBPUGk1IHRoYXQgaW5jbHVkZXMgc3Vw
-cG9ydCBmb3IgVVNCMiwgUENJZTIsIFNhdGEsCj4gU2RtbWMsIFNQSSBGbGFzaCwgUE1JQy4KPiAK
-PiBTaWduZWQtb2ZmLWJ5OiBNdWhhbW1lZCBFZmUgQ2V0aW4gPGVmZWN0bkA2dGVsLm5ldD4KPiBS
-ZXZpZXdlZC1ieTogT25kxZllaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+IC0tLQo+ICBhcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgfCAgIDEgKwo+ICAuLi4vYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFuZ2VwaS01LmR0cyAgfCA2NzMgKysrKysrKysrKysr
-KysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgNjc0IGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vcmFuZ2VwaS01
-LmR0cwo+IAouLi4KCkNhbiB5b3UgcHJvdmlkZSBzb21lIHNvcnQgb2YgZG9jdW1lbnRhdGlvbiBv
-biBob3cgSSBjYW4gYnVpbGQgYW5kIGJvb3QKdGhlIGtlcm5lbCBvbiB0aGlzIGJvYXJkPyBJIHdh
-cyB1bmFibGUgdG8gdXNlIHRoZSB1cHN0cmVhbSBhcm02NApkZWZjb25maWcgd2l0aCB0aGlzIGV4
-YWN0IHNlcmllcyBhcHBsaWVkIHRvIGJvb3QgdGhlIGJvYXJkLgoKPiArCj4gKyZpMmM2IHsKPiAr
-CXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwlwaW5jdHJsLTAgPSA8JmkyYzZtM194ZmVy
-PjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArCj4gKwloeW04NTYzOiBydGNANTEgewo+ICsJCWNv
-bXBhdGlibGUgPSAiaGFveXUsaHltODU2MyI7Cj4gKwkJcmVnID0gPDB4NTE+Owo+ICsJCSNjbG9j
-ay1jZWxscyA9IDwwPjsKPiArCQljbG9jay1vdXRwdXQtbmFtZXMgPSAiaHltODU2MyI7Cj4gKwkJ
-cGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8Jmh5bTg1NjNfaW50
-PjsKPiArCQlpbnRlcnJ1cHQtcGFyZW50ID0gPCZncGlvMD47Cj4gKwkJaW50ZXJydXB0cyA9IDxS
-S19QQjAgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiArCQl3YWtldXAtc291cmNlOwoKQXJlIHlvdSBh
-YmxlIHRvIGFjdHVhbGx5IHVzZSBydGMgYXMgYSB3YWtldXAgc291cmNlPyBJIHRyaWVkIHRoaXMK
-b24gYSBkb3duc3RyZWFtIGtlcm5lbCB0aGF0IEkgbWVudGlvbiBiZWxvdy4uCgpydGN3YWtlIC1z
-IDEwIC1tIG1lbQoKZGlkbid0IGFjdHVhbGx5IHNlZW0gdG8gd2FrZSB0aGUgZGV2aWNlIGZyb20g
-ZGVlcHNsZWVwIGFmdGVyIDEwIHNlY29uZHMuCkRvIHlvdSBrbm93IHdoYXQgb3RoZXIgcGlucyBJ
-IGNhbiB1c2UgYXMgd2FrZXVwIHNvdXJjZXM/Cgo+ICsJfTsKPiArfTsKPiArCj4gKyZtZGlvMSB7
-Cj4gKwlyZ21paV9waHkxOiBldGhlcm5ldC1waHlAMSB7Cj4gKwkJY29tcGF0aWJsZSA9ICJldGhl
-cm5ldC1waHktaWVlZTgwMi4zLWMyMiI7CgpKdXN0IHdvbmRlcmluZywgY2FuIHlvdSBwbGVhc2Ug
-Z2l2ZSBzb21lIGxvZ3Mgb2YgdGhlIGJvYXJkIHdpdGggZXRoCndvcmtpbmc/IFRoZSBpbWFnZSB0
-aGF0IEkgaGF2ZSBmcm9tIG9waSBzZWVtcyB0byBmYWlsIGV0aD8gQXMgaW4gSSBhbQpub3QgYWJs
-ZSB0byBzZWUgYW55IGlwIGFkZHJlc3MuIGhlcmUgYXJlIHRoZSBsb2dzOgoKaHR0cHM6Ly9naXN0
-LmdpdGh1Yi5jb20vRGhydXZhRzIwMDAvZWRhMjc2MmUzNTAxM2M4ZDVhYzlmMzdlODE4MTAzYTMK
-Ci4uLgoKLS0gCkJlc3QgcmVnYXJkcywKRGhydXZhIEdvbGUgPGQtZ29sZUB0aS5jb20+CgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 27/09/2023 11:47 pm, Linus Walleij wrote:
+> This converts the Rockchip RK3288 HDMI driver to use GPIO
+> descriptors:
+> 
+> - Look up the HP EN GPIO as a descriptor and handle it directly.
+> 
+> - Let the Jack detection core obtain and handle the HP detection
+>    GPIO, just pass the right name and gpiod_dev and it will
+>    do the job.
+> 
+> - As the probe() code is very insistent on getting valid
+>    GPIOs out of the device before it will continue, there
+>    is no point to carry all the code handling the GPIOs as
+>    optional, drop all these checks.
+
+Isn't it allowing them to be optional as long as of_get_named_gpio() 
+returns -ENODEV (which I guess may come out of the chip->of_xlate 
+callback)? Or is it implied that that's never actually been able to happen?
+
+(just curious...)
+
+FWIW the DT binding does define them as optional, but the only in-tree 
+user provides both, so it seems unlikely to pose a regression in 
+practice even if we did just drop the notional support.
+
+Thanks,
+Robin.
+
+> Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
+>   sound/soc/rockchip/rk3288_hdmi_analog.c | 54 +++++++++++----------------------
+>   1 file changed, 17 insertions(+), 37 deletions(-)
+> 
+> diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
+> index 0c6bd9a019db..7199f991ec26 100644
+> --- a/sound/soc/rockchip/rk3288_hdmi_analog.c
+> +++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
+> @@ -12,8 +12,7 @@
+>   #include <linux/module.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/slab.h>
+> -#include <linux/gpio.h>
+> -#include <linux/of_gpio.h>
+> +#include <linux/gpio/consumer.h>
+>   #include <sound/core.h>
+>   #include <sound/jack.h>
+>   #include <sound/pcm.h>
+> @@ -26,8 +25,7 @@
+>   #define DRV_NAME "rk3288-snd-hdmi-analog"
+>   
+>   struct rk_drvdata {
+> -	int gpio_hp_en;
+> -	int gpio_hp_det;
+> +	struct gpio_desc *gpio_hp_en;
+>   };
+>   
+>   static int rk_hp_power(struct snd_soc_dapm_widget *w,
+> @@ -35,11 +33,8 @@ static int rk_hp_power(struct snd_soc_dapm_widget *w,
+>   {
+>   	struct rk_drvdata *machine = snd_soc_card_get_drvdata(w->dapm->card);
+>   
+> -	if (!gpio_is_valid(machine->gpio_hp_en))
+> -		return 0;
+> -
+> -	gpio_set_value_cansleep(machine->gpio_hp_en,
+> -				SND_SOC_DAPM_EVENT_ON(event));
+> +	gpiod_set_value_cansleep(machine->gpio_hp_en,
+> +				 SND_SOC_DAPM_EVENT_ON(event));
+>   
+>   	return 0;
+>   }
+> @@ -113,24 +108,23 @@ static int rk_hw_params(struct snd_pcm_substream *substream,
+>   }
+>   
+>   static struct snd_soc_jack_gpio rk_hp_jack_gpio = {
+> -	.name = "Headphone detection",
+> +	.name = "rockchip,hp-det",
+>   	.report = SND_JACK_HEADPHONE,
+>   	.debounce_time = 150
+>   };
+>   
+>   static int rk_init(struct snd_soc_pcm_runtime *runtime)
+>   {
+> -	struct rk_drvdata *machine = snd_soc_card_get_drvdata(runtime->card);
+> +	struct snd_soc_card *card = runtime->card;
+> +	struct device *dev = card->dev;
+>   
+>   	/* Enable Headset Jack detection */
+> -	if (gpio_is_valid(machine->gpio_hp_det)) {
+> -		snd_soc_card_jack_new_pins(runtime->card, "Headphone Jack",
+> -					   SND_JACK_HEADPHONE, &headphone_jack,
+> -					   headphone_jack_pins,
+> -					   ARRAY_SIZE(headphone_jack_pins));
+> -		rk_hp_jack_gpio.gpio = machine->gpio_hp_det;
+> -		snd_soc_jack_add_gpios(&headphone_jack, 1, &rk_hp_jack_gpio);
+> -	}
+> +	rk_hp_jack_gpio.gpiod_dev = dev;
+> +	snd_soc_card_jack_new_pins(runtime->card, "Headphone Jack",
+> +				   SND_JACK_HEADPHONE, &headphone_jack,
+> +				   headphone_jack_pins,
+> +				   ARRAY_SIZE(headphone_jack_pins));
+> +	snd_soc_jack_add_gpios(&headphone_jack, 1, &rk_hp_jack_gpio);
+>   
+>   	return 0;
+>   }
+> @@ -182,24 +176,10 @@ static int snd_rk_mc_probe(struct platform_device *pdev)
+>   
+>   	card->dev = &pdev->dev;
+>   
+> -	machine->gpio_hp_det = of_get_named_gpio(np,
+> -		"rockchip,hp-det-gpios", 0);
+> -	if (!gpio_is_valid(machine->gpio_hp_det) && machine->gpio_hp_det != -ENODEV)
+> -		return machine->gpio_hp_det;
+> -
+> -	machine->gpio_hp_en = of_get_named_gpio(np,
+> -		"rockchip,hp-en-gpios", 0);
+> -	if (!gpio_is_valid(machine->gpio_hp_en) && machine->gpio_hp_en != -ENODEV)
+> -		return machine->gpio_hp_en;
+> -
+> -	if (gpio_is_valid(machine->gpio_hp_en)) {
+> -		ret = devm_gpio_request_one(&pdev->dev, machine->gpio_hp_en,
+> -					    GPIOF_OUT_INIT_LOW, "hp_en");
+> -		if (ret) {
+> -			dev_err(card->dev, "cannot get hp_en gpio\n");
+> -			return ret;
+> -		}
+> -	}
+> +	machine->gpio_hp_en = devm_gpiod_get(&pdev->dev, "rockchip,hp-en", GPIOD_OUT_LOW);
+> +	if (IS_ERR(machine->gpio_hp_en))
+> +		return PTR_ERR(machine->gpio_hp_en);
+> +	gpiod_set_consumer_name(machine->gpio_hp_en, "hp_en");
+>   
+>   	ret = snd_soc_of_parse_card_name(card, "rockchip,model");
+>   	if (ret) {
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
