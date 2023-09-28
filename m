@@ -4,40 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFB7E732C8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Sep 2023 13:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461DDE732CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Sep 2023 13:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VmtRFcEXrD6oviPmuZs8y9BPiECakIC+EIK6qHT1A6s=; b=daHYxDPc0qh+f8
-	MUcqIIzxOZbwID+n69yg3qPrFsXxRkH7P5T/cKyMRaB3FdLMHu0i1H/fVnemI4VSu44XruPyzXk5O
-	8AwhO6rBvBLbo80Bu1wVaxiM7bzmuj7euDbFuTbXXvU9WzSCvE93xxg1SgtHczqs3UHGDz/AiO5r5
-	xe0j/7Vl6C84okpvQi7RZthz0kJXrlDmXdj6ApAo1AFc+CKZnlWDWXYzlr/Mi3q8p4J/5B8TKqw5s
-	To3JyHf9bsQZyUmyDZE5dYklzSagbVTPci5ItrTGXqAn/dhQMhk0gn1qWeHPkJjwKVM5SU437GNZI
-	o0zAktpXiJfXEUOxvggw==;
+	List-Owner; bh=Fha/zOrGBhPoQZzFccQbujtfVb/i3yDA6yQT/BwuXlc=; b=aEmX136T1f17DC
+	M5dOsoJNN7CBQs7Kkvo9hoXh/K2wk9ckj0+f8OOYeoAwdG0bF7I4MPtpERGunqcYMXeI+54QV1Ewn
+	BmTAcxdwNKh90U/0VXwM52tWIZE+4mAxwmv80ME5u0WAmR++sK3ICVCzg0nfoF5CtIdKxiewvXBQx
+	lMSJ6uuRzvTDNLjtPVOH6ZHV4xa3EOVcCrNvZ+6vDEXZGH5SrgBu1m3WM2a03SaMUsO1LwYchR0ny
+	etwrJYhIkKVS4xwErUyslL0blJd3GVE5An/tnX9fccYpuegVZZQ+MAkSkQzQ4fuTj7Vt7okFJ0D6K
+	Z5WwQ1ysdcnzPnwrkwBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlqhH-0045hu-2j;
-	Thu, 28 Sep 2023 13:04:51 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qlqsq-004CMY-2q;
+	Thu, 28 Sep 2023 13:16:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qlqhA-0045c1-35;
-	Thu, 28 Sep 2023 13:04:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 2F9ECB81C0A;
-	Thu, 28 Sep 2023 13:04:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 999A4C433C7;
-	Thu, 28 Sep 2023 13:04:39 +0000 (UTC)
-Message-ID: <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
-Date: Thu, 28 Sep 2023 15:04:37 +0200
+	id 1qlqsk-004CGl-1R;
+	Thu, 28 Sep 2023 13:16:45 +0000
+Received: from [IPV6:2a01:e0a:120:3210:cdc6:9c5d:b170:7a75] (unknown [IPv6:2a01:e0a:120:3210:cdc6:9c5d:b170:7a75])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 51F96660732D;
+	Thu, 28 Sep 2023 14:16:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695906998;
+	bh=oH0Vb3NF/5Yn11HeygHgikKpcJ+zJ/zw9NvY6oqveYA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=N4Fx+YwxtEM9RjTY+MoxYcTWZJ+tHV6QfB8p4S4lD8JcEiBphsRXVYkZM36v7zH0m
+	 11cEzpgixrBE5yYNRjmKd18T6VHkGJt3DnhWg/R0CVzUGKRkgiB+d80meS3hGaqsY7
+	 LDceM/ZQ8bjlJ5OjiQtAoRdti4+YcSaReWb5ieIwQdTB3cUQrML20/5OWPfk83WZp1
+	 QY0ofszIixJhKB4ehOg13AZECgFsE9AbeIMSTe8FPyboGUMh857/IEqR5pVMD7et2s
+	 JLR3iLm6J8cADDtmPBIwz7yZAZIYlrRfOGQHonbRNc3gPDXtnxf846lQVRRT8KJzLS
+	 uDRsm7ysJppgw==
+Message-ID: <5cc5a999-e22d-4ef8-c857-ffd77630eeb9@collabora.com>
+Date: Thu, 28 Sep 2023 15:16:34 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
 Subject: Re: [PATCH v8 00/53] Add DELETE_BUF ioctl
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+Content-Language: en-US
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
  ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
  gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
@@ -46,11 +59,12 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
 References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+ <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230928_060445_302370_F0C3A84F 
-X-CRM114-Status: GOOD (  36.67  )
+X-CRM114-CacheID: sfid-20230928_061643_053158_25DF6E3E 
+X-CRM114-Status: GOOD (  35.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,350 +76,343 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-On 27/09/2023 17:35, Benjamin Gaignard wrote:
-> Unlike when resolution change on keyframes, dynamic resolution change
-> on inter frames doesn't allow to do a stream off/on sequence because
-> it is need to keep all previous references alive to decode inter frames.
-> This constraint have two main problems:
-> - more memory consumption.
-> - more buffers in use.
-> To solve these issue this series introduce DELETE_BUFS ioctl and remove
-> the 32 buffers limit per queue.
-> 
-> VP9 conformance tests using fluster give a score of 210/305.
-> The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-> but require to use postprocessor.
-> 
-> Kernel branch is available here:
-> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v8
-> 
-> GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-> change is here:
-> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-I applied patches 1-46 on top of staging and applied patch 1/2 of v4l-utils. I chose
-1-46 since those would be the first batch to be merged.
-
-I had to apply a small patch on top, since amphion was still using max_allowed_buffers:
-
-https://git.linuxtv.org/hverkuil/media_tree.git/commit/?h=delbuf&id=fce79aa0239a3a4e5c7634b9b7ffc356057b70b4
-
-With that change everything compiled cleanly.
-
-But running the regression tests (test-media script) failed with a kernel oops:
-
-Buffer ioctls (Input 0):
-                fail: v4l2-test-buffers.cpp(611): q.reqbufs(node, 1)
-        test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: FAIL
-[   25.309343] general protection fault, probably for non-canonical address 0xdffffc0000000001: 0000 [#1] PREEMPT SMP DEBUG_PAGEALLOC KASAN
-[   25.310067] KASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]
-[   25.310471] CPU: 0 PID: 187 Comm: v4l2-compliance Not tainted 6.6.0-rc3+ #1
-[   25.310837] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.2-debian-1.16.2-1 04/01/2014
-[   25.311334] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
-[   25.311688] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
-0f 0b 4c 89 e8
-[   25.312670] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
-[   25.312948] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
-[   25.313331] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
-[   25.313708] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
-[   25.314097] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
-[   25.314470] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
-[   25.314854] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
-[   25.315281] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   25.315594] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
-[   25.315982] Call Trace:
-[   25.316122]  <TASK>
-[   25.316243]  ? die_addr+0x37/0xa0
-[   25.316433]  ? exc_general_protection+0x144/0x210
-[   25.316693]  ? asm_exc_general_protection+0x22/0x30
-[   25.316955]  ? entry_SYSCALL_64_after_hwframe+0x46/0xb0
-[   25.317235]  ? __vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
-[   25.317555]  vb2_core_create_bufs+0x5a0/0xce0 [videobuf2_common]
-[   25.317879]  ? __vb2_queue_alloc+0xd00/0xd00 [videobuf2_common]
-[   25.318213]  vb2_create_bufs+0x680/0x7f0 [videobuf2_v4l2]
-[   25.318506]  ? __kasan_kmalloc+0x83/0x90
-[   25.318729]  ? __kmalloc+0x5c/0x150
-[   25.318924]  ? __video_do_ioctl+0x3a5/0xc20 [videodev]
-[   25.319223]  ? __copy_timestamp+0x270/0x270 [videobuf2_v4l2]
-[   25.319532]  ? v4l_sanitize_format+0x121/0x340 [videodev]
-[   25.319839]  vb2_ioctl_create_bufs+0x280/0x440 [videobuf2_v4l2]
-[   25.320162]  ? check_fmt+0x15/0x5e0 [videodev]
-[   25.320420]  v4l_create_bufs+0xa8/0x150 [videodev]
-[   25.320693]  __video_do_ioctl+0x8d0/0xc20 [videodev]
-[   25.320975]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
-[   25.321250]  ? __might_fault+0x112/0x170
-[   25.321463]  ? __might_fault+0x112/0x170
-[   25.321675]  video_usercopy+0x48c/0xd00 [videodev]
-[   25.321949]  ? v4l_prepare_buf+0xa0/0xa0 [videodev]
-[   25.322228]  ? v4l_enumstd+0x60/0x60 [videodev]
-[   25.322497]  ? selinux_bprm_creds_for_exec+0xa90/0xa90
-[   25.322779]  ? rseq_ip_fixup+0x304/0x480
-[   25.322995]  ? __up_read+0x10b/0x750
-[   25.323201]  ? rseq_get_rseq_cs+0x680/0x680
-[   25.323430]  v4l2_ioctl+0x17f/0x1f0 [videodev]
-[   25.323689]  __x64_sys_ioctl+0x127/0x190
-[   25.323905]  do_syscall_64+0x35/0x80
-[   25.324105]  entry_SYSCALL_64_after_hwframe+0x46/0xb0
-[   25.324372] RIP: 0033:0x7fa524bf44eb
-[   25.324564] Code: 00 48 89 44 24 18 31 c0 48 8d 44 24 60 c7 04 24 10 00 00 00 48 89 44 24 08 48 8d 44 24 20 48 89 44 24 10 b8 10 00 00 00 0f 05 <89> c2 3d 00 f0 ff ff 77 1c 48 8b 44 24 18 64 48 2b
-04 25 28 00 00
-[   25.325533] RSP: 002b:00007ffc888efee0 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-[   25.325933] RAX: ffffffffffffffda RBX: 00007ffc888f0350 RCX: 00007fa524bf44eb
-[   25.326314] RDX: 00007ffc888effb0 RSI: 00000000c100565c RDI: 0000000000000023
-[   25.326702] RBP: 00007ffc888f8550 R08: 0000000000000000 R09: 0000000000000001
-[   25.327081] R10: 0000000000000016 R11: 0000000000000246 R12: 0000000000000000
-[   25.327468] R13: 0000000000000001 R14: 00007ffc888f8010 R15: 00007ffc888f1790
-[   25.327852]  </TASK>
-[   25.327979] Modules linked in: vivid videobuf2_dma_contig v4l2_tpg v4l2_dv_timings cec videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videodev videobuf2_common mc rc_core
-[   25.328835] ---[ end trace 0000000000000000 ]---
-[   25.329083] RIP: 0010:__vb2_queue_alloc+0x34c/0xd00 [videobuf2_common]
-[   25.329434] Code: 89 f8 48 c1 e8 03 80 3c 18 00 0f 85 0c 07 00 00 49 8b b7 40 01 00 00 44 89 f0 4c 8d 2c c6 41 39 ce 73 18 4c 89 e8 48 c1 e8 03 <80> 3c 18 00 0f 85 d2 08 00 00 49 83 7d 00 00 74 02
-0f 0b 4c 89 e8
-[   25.330417] RSP: 0018:ffff88810afef930 EFLAGS: 00010212
-[   25.330812] RAX: 0000000000000001 RBX: dffffc0000000000 RCX: 0000000000000040
-[   25.331194] RDX: ffff88810ce08814 RSI: 0000000000000000 RDI: ffff88810cfb72e0
-[   25.331594] RBP: ffff88810ce08800 R08: 0000000000001800 R09: 0000000000000001
-[   25.331978] R10: ffffffff91560b0f R11: ffffffff8f40006a R12: ffff88810afefa74
-[   25.332360] R13: 0000000000000008 R14: 0000000000000001 R15: ffff88810cfb71a0
-[   25.332746] FS:  00007fa524908440(0000) GS:ffff88811aa00000(0000) knlGS:0000000000000000
-[   25.333170] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   25.333486] CR2: 0000562855948270 CR3: 0000000109e21000 CR4: 0000000000350ef0
-[   25.333861] Kernel panic - not syncing: Fatal exception
-[   25.334179] Kernel Offset: 0xbe00000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
-[   25.334748] Rebooting in 30 seconds..
-
-I use the build scripts as described here:
-
-https://lore.kernel.org/linux-media/18989016-6392-a77b-6cf7-1223c9161def@xs4all.nl/
-
-I use this command to run the regression tests:
-
-./build.sh -virtme -virtme-utils-path /usr/local/bin none delbuf
-
-(delbuf is the name of my branch)
-
-I don't really want to spend time reviewing this series until this is fixed...
-
-Regards,
-
-	Hans
-
-> 
-> changes in version 8:
-> - Add V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS and new 'max_buffers' field in v4l2_create_buffers
->   structure to report the maximum number of buffers that a queue could allocate.
-> - Add V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS to indicate that a queue support
->   DELETE_BUFS ioctl.
-> - Make some test drivers use more than 32 buffers and DELETE_BUFS ioctl.
-> - Fix remarks done by Hans
-> - Move "media: core: Rework how create_buf index returned value is
->   computed" patch to the top of the serie.
-> 
-> changes in version 7:
-> - Use a bitmap to know which entries are valid in queue bufs array.
->   The number of buffers in the queue could must calculated from the
->   bitmap so num_buffers becomes useless. This led to add quite few
->   patches to remove it from all the drivers.
->   Note: despiste my attention I may have miss some calls to
->   num_buffers...
-> - Split patches to make them more readable.
-> - Run v4l2-compliance with additional delete-bufs tests.
-> - Run ./test-media -kmemleak vivid and no more failures.
->   Note: I had to remove USERPTR streaming test because they to much
->   frequentely hit get_framevec bug. It is not related to my series
->   since this happens all the time on master branch.
-> - Fix Hans remarks on v6
-> 
-> changes in version 6:
-> - Get a patch per driver to use vb2_get_buffer() instead of directly access
->   to queue buffers array.
-> - Add lock in vb2_core_delete_buf()
-> - Use vb2_buffer instead of index
-> - Fix various comments
-> - Change buffer index name to BUFFER_INDEX_MASK
-> - Stop spamming kernel log with unbalanced counters
-> 
-> changes in version 5:
-> - Rework offset cookie encoding pattern is n ow the first patch of the
->   serie.
-> - Use static array instead of allocated one for postprocessor buffers.
-> 
-> changes in version 4:
-> - Stop using Xarray, instead let queues decide about their own maximum
->   number of buffer and allocate bufs array given that value.
-> - Rework offset cookie encoding pattern.
-> - Change DELETE_BUF to DELETE_BUFS because it now usable for
->   range of buffer to be symetrical of CREATE_BUFS.
-> - Add fixes tags on couple of Verisilicon related patches.
-> - Be smarter in Verisilicon postprocessor buffers management.
-> - Rebase on top of v6.4
-> 
-> changes in version 3:
-> - Use Xarray API to store allocated video buffers.
-> - No module parameter to limit the number of buffer per queue.
-> - Use Xarray inside Verisilicon driver to store postprocessor buffers
->   and remove VB2_MAX_FRAME limit.
-> - Allow Versilicon driver to change of resolution while streaming
-> - Various fixes the Verisilicon VP9 code to improve fluster score.
->  
-> changes in version 2:
-> - Use a dynamic array and not a list to keep trace of allocated buffers.
->   Not use IDR interface because it is marked as deprecated in kernel
->   documentation.
-> - Add a module parameter to limit the number of buffer per queue.
-> - Add DELETE_BUF ioctl and m2m helpers.
-> 
-> Regards,
-> Benjamin
-> 
-> Benjamin Gaignard (53):
->   media: videobuf2: Rework offset 'cookie' encoding pattern
->   media: videobuf2: Stop spamming kernel log with all queue counter
->   media: videobuf2: Use vb2_buffer instead of index
->   media: amphion: Use vb2_get_buffer() instead of directly access to
->     buffers array
->   media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
->     to buffers array
->   media: mediatek: vdec: Remove useless loop
->   media: sti: hva: Use vb2_get_buffer() instead of directly access to
->     buffers array
->   media: visl: Use vb2_get_buffer() instead of directly access to
->     buffers array
->   media: atomisp: Use vb2_get_buffer() instead of directly access to
->     buffers array
->   media: dvb-core: Use vb2_get_buffer() instead of directly access to
->     buffers array
->   media: videobuf2: Access vb2_queue bufs array through helper functions
->   media: videobuf2: Be more flexible on the number of queue stored
->     buffers
->   media: Report the maximum possible number of buffers for the queue
->   media: test-drivers: vivid: Increase max supported buffers for capture
->     queues
->   media: test-drivers: vicodec: Increase max supported capture queue
->     buffers
->   media: verisilicon: Refactor postprocessor to store more buffers
->   media: verisilicon: Store chroma and motion vectors offset
->   media: verisilicon: g2: Use common helpers to compute chroma and mv
->     offsets
->   media: verisilicon: vp9: Allow to change resolution while streaming
->   media: Remove duplicated index vs q->num_buffers check
->   media: core: Add helper to get queue number of buffers
->   media: dvb-core: Do not initialize twice queue num_buffer field
->   media: dvb-frontends: rtl2832_srd: Use queue min_buffers_needed field
->   media: video-i2c: Set min_buffers_needed to 2
->   media: pci: cx18: Set correct value to min_buffers_needed field
->   media: pci: dt3155: Remove useless check
->   media: pci: netup_unidvb: Remove useless number of buffers check
->   media: pci: tw68: Stop direct calls to queue num_buffers field
->   media: pci: tw686x: Set min_buffers_needed to 3
->   media: amphion: Stop direct calls to queue num_buffers field
->   media: coda: Stop direct calls to queue num_buffers field
->   media: mediatek: vcodec: Stop direct calls to queue num_buffers field
->   media: nxp: Stop direct calls to queue num_buffers field
->   media: renesas: Set min_buffers_needed to 16
->   media: ti: Use queue min_buffers_needed field to set the min number of
->     buffers
->   media: verisilicon: Stop direct calls to queue num_buffers field
->   media: test-drivers: Stop direct calls to queue num_buffers field
->   media: usb: airspy: Set min_buffers_needed to 8
->   media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
->   media: usb: hackrf: Set min_buffers_needed to 8
->   media: usb: usbtv: Set min_buffers_needed to 2
->   media: atomisp: Stop direct calls to queue num_buffers field
->   media: imx: Stop direct calls to queue num_buffers field
->   media: meson: vdec: Stop direct calls to queue num_buffers field
->   touchscreen: sur40: Stop direct calls to queue num_buffers field
->   sample: v4l: Stop direct calls to queue num_buffers field
->   media: cedrus: Stop direct calls to queue num_buffers field
->   media: core: Rework how create_buf index returned value is computed
->   media: core: Add bitmap manage bufs array entries
->   media: core: Free range of buffers
->   media: v4l2: Add DELETE_BUFS ioctl
->   media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
->   media: test-drivers: Use helper for DELETE_BUFS ioctl
-> 
->  .../userspace-api/media/v4l/user-func.rst     |   1 +
->  .../media/v4l/vidioc-create-bufs.rst          |   8 +-
->  .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
->  .../media/v4l/vidioc-reqbufs.rst              |   2 +
->  drivers/input/touchscreen/sur40.c             |   5 +-
->  .../media/common/videobuf2/videobuf2-core.c   | 556 +++++++++++-------
->  .../media/common/videobuf2/videobuf2-v4l2.c   | 121 +++-
->  drivers/media/dvb-core/dvb_vb2.c              |  17 +-
->  drivers/media/dvb-frontends/rtl2832_sdr.c     |   9 +-
->  drivers/media/i2c/video-i2c.c                 |   5 +-
->  drivers/media/pci/cx18/cx18-streams.c         |  13 +-
->  drivers/media/pci/dt3155/dt3155.c             |   2 -
->  .../pci/netup_unidvb/netup_unidvb_core.c      |   4 +-
->  drivers/media/pci/tw68/tw68-video.c           |   6 +-
->  drivers/media/pci/tw686x/tw686x-video.c       |  13 +-
->  drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
->  drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
->  .../media/platform/chips-media/coda-common.c  |   2 +-
->  .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
->  .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
->  .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
->  drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
->  drivers/media/platform/renesas/rcar_drif.c    |   8 +-
->  drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
->  .../media/platform/ti/am437x/am437x-vpfe.c    |   7 +-
->  drivers/media/platform/ti/cal/cal-video.c     |   5 +-
->  .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
->  .../media/platform/ti/davinci/vpif_display.c  |   5 +-
->  drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
->  drivers/media/platform/verisilicon/hantro.h   |   9 +-
->  .../media/platform/verisilicon/hantro_drv.c   |   5 +-
->  .../media/platform/verisilicon/hantro_g2.c    |  14 +
->  .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
->  .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
->  .../media/platform/verisilicon/hantro_hw.h    |   7 +-
->  .../platform/verisilicon/hantro_postproc.c    |  93 ++-
->  .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
->  .../media/test-drivers/vicodec/vicodec-core.c |   3 +
->  drivers/media/test-drivers/vim2m.c            |   2 +
->  .../media/test-drivers/vimc/vimc-capture.c    |   2 +
->  drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
->  drivers/media/test-drivers/visl/visl-video.c  |   2 +
->  drivers/media/test-drivers/vivid/vivid-core.c |  14 +
->  .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
->  .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
->  .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
->  .../media/test-drivers/vivid/vivid-vbi-cap.c  |   5 +-
->  .../media/test-drivers/vivid/vivid-vbi-out.c  |   5 +-
->  .../media/test-drivers/vivid/vivid-vid-cap.c  |   5 +-
->  .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
->  drivers/media/usb/airspy/airspy.c             |   9 +-
->  drivers/media/usb/cx231xx/cx231xx-417.c       |   4 +-
->  drivers/media/usb/cx231xx/cx231xx-video.c     |   4 +-
->  drivers/media/usb/hackrf/hackrf.c             |   9 +-
->  drivers/media/usb/usbtv/usbtv-video.c         |   3 +-
->  drivers/media/v4l2-core/v4l2-dev.c            |   1 +
->  drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
->  drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
->  .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
->  drivers/staging/media/imx/imx-media-capture.c |   7 +-
->  drivers/staging/media/meson/vdec/vdec.c       |  13 +-
->  .../staging/media/sunxi/cedrus/cedrus_h264.c  |   8 +-
->  .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
->  include/media/v4l2-ioctl.h                    |   4 +
->  include/media/v4l2-mem2mem.h                  |  12 +
->  include/media/videobuf2-core.h                |  65 +-
->  include/media/videobuf2-v4l2.h                |  13 +
->  include/uapi/linux/videodev2.h                |  24 +-
->  samples/v4l/v4l2-pci-skeleton.c               |   5 +-
->  69 files changed, 969 insertions(+), 502 deletions(-)
->  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDI4LzA5LzIwMjMgw6AgMTU6MDQsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IEhpIEJl
+bmphbWluLAo+Cj4gT24gMjcvMDkvMjAyMyAxNzozNSwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6
+Cj4+IFVubGlrZSB3aGVuIHJlc29sdXRpb24gY2hhbmdlIG9uIGtleWZyYW1lcywgZHluYW1pYyBy
+ZXNvbHV0aW9uIGNoYW5nZQo+PiBvbiBpbnRlciBmcmFtZXMgZG9lc24ndCBhbGxvdyB0byBkbyBh
+IHN0cmVhbSBvZmYvb24gc2VxdWVuY2UgYmVjYXVzZQo+PiBpdCBpcyBuZWVkIHRvIGtlZXAgYWxs
+IHByZXZpb3VzIHJlZmVyZW5jZXMgYWxpdmUgdG8gZGVjb2RlIGludGVyIGZyYW1lcy4KPj4gVGhp
+cyBjb25zdHJhaW50IGhhdmUgdHdvIG1haW4gcHJvYmxlbXM6Cj4+IC0gbW9yZSBtZW1vcnkgY29u
+c3VtcHRpb24uCj4+IC0gbW9yZSBidWZmZXJzIGluIHVzZS4KPj4gVG8gc29sdmUgdGhlc2UgaXNz
+dWUgdGhpcyBzZXJpZXMgaW50cm9kdWNlIERFTEVURV9CVUZTIGlvY3RsIGFuZCByZW1vdmUKPj4g
+dGhlIDMyIGJ1ZmZlcnMgbGltaXQgcGVyIHF1ZXVlLgo+Pgo+PiBWUDkgY29uZm9ybWFuY2UgdGVz
+dHMgdXNpbmcgZmx1c3RlciBnaXZlIGEgc2NvcmUgb2YgMjEwLzMwNS4KPj4gVGhlIDI0IHJlc2l6
+ZSBpbnRlciB0ZXN0cyAodnA5MC0yLTIxLXJlc2l6ZV9pbnRlcl8qIGZpbGVzKSBhcmUgb2sKPj4g
+YnV0IHJlcXVpcmUgdG8gdXNlIHBvc3Rwcm9jZXNzb3IuCj4+Cj4+IEtlcm5lbCBicmFuY2ggaXMg
+YXZhaWxhYmxlIGhlcmU6Cj4+IGh0dHBzOi8vZ2l0bGFiLmNvbGxhYm9yYS5jb20vYmVuamFtaW4u
+Z2FpZ25hcmQvZm9yLXVwc3RyZWFtLy0vY29tbWl0cy9yZW1vdmVfdmIyX3F1ZXVlX2xpbWl0X3Y4
+Cj4+Cj4+IEdTdHJlYW1lciBicmFuY2ggdG8gdXNlIERFTEVURV9CVUYgaW9jdGwgYW5kIHRlc3Rp
+bmcgZHluYW1pYyByZXNvbHV0aW9uCj4+IGNoYW5nZSBpcyBoZXJlOgo+PiBodHRwczovL2dpdGxh
+Yi5mcmVlZGVza3RvcC5vcmcvYmVuamFtaW4uZ2FpZ25hcmQxL2dzdHJlYW1lci8tL2NvbW1pdHMv
+VlA5X2RyYwo+IEkgYXBwbGllZCBwYXRjaGVzIDEtNDYgb24gdG9wIG9mIHN0YWdpbmcgYW5kIGFw
+cGxpZWQgcGF0Y2ggMS8yIG9mIHY0bC11dGlscy4gSSBjaG9zZQo+IDEtNDYgc2luY2UgdGhvc2Ug
+d291bGQgYmUgdGhlIGZpcnN0IGJhdGNoIHRvIGJlIG1lcmdlZC4KPgo+IEkgaGFkIHRvIGFwcGx5
+IGEgc21hbGwgcGF0Y2ggb24gdG9wLCBzaW5jZSBhbXBoaW9uIHdhcyBzdGlsbCB1c2luZyBtYXhf
+YWxsb3dlZF9idWZmZXJzOgo+Cj4gaHR0cHM6Ly9naXQubGludXh0di5vcmcvaHZlcmt1aWwvbWVk
+aWFfdHJlZS5naXQvY29tbWl0Lz9oPWRlbGJ1ZiZpZD1mY2U3OWFhMDIzOWEzYTRlNWM3NjM0Yjli
+N2ZmYzM1NjA1N2I3MGI0Cj4KPiBXaXRoIHRoYXQgY2hhbmdlIGV2ZXJ5dGhpbmcgY29tcGlsZWQg
+Y2xlYW5seS4KPgo+IEJ1dCBydW5uaW5nIHRoZSByZWdyZXNzaW9uIHRlc3RzICh0ZXN0LW1lZGlh
+IHNjcmlwdCkgZmFpbGVkIHdpdGggYSBrZXJuZWwgb29wczoKPgo+IEJ1ZmZlciBpb2N0bHMgKElu
+cHV0IDApOgo+ICAgICAgICAgICAgICAgICAgZmFpbDogdjRsMi10ZXN0LWJ1ZmZlcnMuY3BwKDYx
+MSk6IHEucmVxYnVmcyhub2RlLCAxKQo+ICAgICAgICAgIHRlc3QgVklESU9DX1JFUUJVRlMvQ1JF
+QVRFX0JVRlMvUVVFUllCVUY6IEZBSUwKPiBbICAgMjUuMzA5MzQzXSBnZW5lcmFsIHByb3RlY3Rp
+b24gZmF1bHQsIHByb2JhYmx5IGZvciBub24tY2Fub25pY2FsIGFkZHJlc3MgMHhkZmZmZmMwMDAw
+MDAwMDAxOiAwMDAwIFsjMV0gUFJFRU1QVCBTTVAgREVCVUdfUEFHRUFMTE9DIEtBU0FOCj4gWyAg
+IDI1LjMxMDA2N10gS0FTQU46IG51bGwtcHRyLWRlcmVmIGluIHJhbmdlIFsweDAwMDAwMDAwMDAw
+MDAwMDgtMHgwMDAwMDAwMDAwMDAwMDBmXQo+IFsgICAyNS4zMTA0NzFdIENQVTogMCBQSUQ6IDE4
+NyBDb21tOiB2NGwyLWNvbXBsaWFuY2UgTm90IHRhaW50ZWQgNi42LjAtcmMzKyAjMQo+IFsgICAy
+NS4zMTA4MzddIEhhcmR3YXJlIG5hbWU6IFFFTVUgU3RhbmRhcmQgUEMgKGk0NDBGWCArIFBJSVgs
+IDE5OTYpLCBCSU9TIDEuMTYuMi1kZWJpYW4tMS4xNi4yLTEgMDQvMDEvMjAxNAo+IFsgICAyNS4z
+MTEzMzRdIFJJUDogMDAxMDpfX3ZiMl9xdWV1ZV9hbGxvYysweDM0Yy8weGQwMCBbdmlkZW9idWYy
+X2NvbW1vbl0KPiBbICAgMjUuMzExNjg4XSBDb2RlOiA4OSBmOCA0OCBjMSBlOCAwMyA4MCAzYyAx
+OCAwMCAwZiA4NSAwYyAwNyAwMCAwMCA0OSA4YiBiNyA0MCAwMSAwMCAwMCA0NCA4OSBmMCA0YyA4
+ZCAyYyBjNiA0MSAzOSBjZSA3MyAxOCA0YyA4OSBlOCA0OCBjMSBlOCAwMyA8ODA+IDNjIDE4IDAw
+IDBmIDg1IGQyIDA4IDAwIDAwIDQ5IDgzIDdkIDAwIDAwIDc0IDAyCj4gMGYgMGIgNGMgODkgZTgK
+PiBbICAgMjUuMzEyNjcwXSBSU1A6IDAwMTg6ZmZmZjg4ODEwYWZlZjkzMCBFRkxBR1M6IDAwMDEw
+MjEyCj4gWyAgIDI1LjMxMjk0OF0gUkFYOiAwMDAwMDAwMDAwMDAwMDAxIFJCWDogZGZmZmZjMDAw
+MDAwMDAwMCBSQ1g6IDAwMDAwMDAwMDAwMDAwNDAKPiBbICAgMjUuMzEzMzMxXSBSRFg6IGZmZmY4
+ODgxMGNlMDg4MTQgUlNJOiAwMDAwMDAwMDAwMDAwMDAwIFJESTogZmZmZjg4ODEwY2ZiNzJlMAo+
+IFsgICAyNS4zMTM3MDhdIFJCUDogZmZmZjg4ODEwY2UwODgwMCBSMDg6IDAwMDAwMDAwMDAwMDE4
+MDAgUjA5OiAwMDAwMDAwMDAwMDAwMDAxCj4gWyAgIDI1LjMxNDA5N10gUjEwOiBmZmZmZmZmZjkx
+NTYwYjBmIFIxMTogZmZmZmZmZmY4ZjQwMDA2YSBSMTI6IGZmZmY4ODgxMGFmZWZhNzQKPiBbICAg
+MjUuMzE0NDcwXSBSMTM6IDAwMDAwMDAwMDAwMDAwMDggUjE0OiAwMDAwMDAwMDAwMDAwMDAxIFIx
+NTogZmZmZjg4ODEwY2ZiNzFhMAo+IFsgICAyNS4zMTQ4NTRdIEZTOiAgMDAwMDdmYTUyNDkwODQ0
+MCgwMDAwKSBHUzpmZmZmODg4MTFhYTAwMDAwKDAwMDApIGtubEdTOjAwMDAwMDAwMDAwMDAwMDAK
+PiBbICAgMjUuMzE1MjgxXSBDUzogIDAwMTAgRFM6IDAwMDAgRVM6IDAwMDAgQ1IwOiAwMDAwMDAw
+MDgwMDUwMDMzCj4gWyAgIDI1LjMxNTU5NF0gQ1IyOiAwMDAwNTYyODU1OTQ4MjcwIENSMzogMDAw
+MDAwMDEwOWUyMTAwMCBDUjQ6IDAwMDAwMDAwMDAzNTBlZjAKPiBbICAgMjUuMzE1OTgyXSBDYWxs
+IFRyYWNlOgo+IFsgICAyNS4zMTYxMjJdICA8VEFTSz4KPiBbICAgMjUuMzE2MjQzXSAgPyBkaWVf
+YWRkcisweDM3LzB4YTAKPiBbICAgMjUuMzE2NDMzXSAgPyBleGNfZ2VuZXJhbF9wcm90ZWN0aW9u
+KzB4MTQ0LzB4MjEwCj4gWyAgIDI1LjMxNjY5M10gID8gYXNtX2V4Y19nZW5lcmFsX3Byb3RlY3Rp
+b24rMHgyMi8weDMwCj4gWyAgIDI1LjMxNjk1NV0gID8gZW50cnlfU1lTQ0FMTF82NF9hZnRlcl9o
+d2ZyYW1lKzB4NDYvMHhiMAo+IFsgICAyNS4zMTcyMzVdICA/IF9fdmIyX3F1ZXVlX2FsbG9jKzB4
+MzRjLzB4ZDAwIFt2aWRlb2J1ZjJfY29tbW9uXQo+IFsgICAyNS4zMTc1NTVdICB2YjJfY29yZV9j
+cmVhdGVfYnVmcysweDVhMC8weGNlMCBbdmlkZW9idWYyX2NvbW1vbl0KPiBbICAgMjUuMzE3ODc5
+XSAgPyBfX3ZiMl9xdWV1ZV9hbGxvYysweGQwMC8weGQwMCBbdmlkZW9idWYyX2NvbW1vbl0KPiBb
+ICAgMjUuMzE4MjEzXSAgdmIyX2NyZWF0ZV9idWZzKzB4NjgwLzB4N2YwIFt2aWRlb2J1ZjJfdjRs
+Ml0KPiBbICAgMjUuMzE4NTA2XSAgPyBfX2thc2FuX2ttYWxsb2MrMHg4My8weDkwCj4gWyAgIDI1
+LjMxODcyOV0gID8gX19rbWFsbG9jKzB4NWMvMHgxNTAKPiBbICAgMjUuMzE4OTI0XSAgPyBfX3Zp
+ZGVvX2RvX2lvY3RsKzB4M2E1LzB4YzIwIFt2aWRlb2Rldl0KPiBbICAgMjUuMzE5MjIzXSAgPyBf
+X2NvcHlfdGltZXN0YW1wKzB4MjcwLzB4MjcwIFt2aWRlb2J1ZjJfdjRsMl0KPiBbICAgMjUuMzE5
+NTMyXSAgPyB2NGxfc2FuaXRpemVfZm9ybWF0KzB4MTIxLzB4MzQwIFt2aWRlb2Rldl0KPiBbICAg
+MjUuMzE5ODM5XSAgdmIyX2lvY3RsX2NyZWF0ZV9idWZzKzB4MjgwLzB4NDQwIFt2aWRlb2J1ZjJf
+djRsMl0KPiBbICAgMjUuMzIwMTYyXSAgPyBjaGVja19mbXQrMHgxNS8weDVlMCBbdmlkZW9kZXZd
+Cj4gWyAgIDI1LjMyMDQyMF0gIHY0bF9jcmVhdGVfYnVmcysweGE4LzB4MTUwIFt2aWRlb2Rldl0K
+PiBbICAgMjUuMzIwNjkzXSAgX192aWRlb19kb19pb2N0bCsweDhkMC8weGMyMCBbdmlkZW9kZXZd
+Cj4gWyAgIDI1LjMyMDk3NV0gID8gdjRsX3ByZXBhcmVfYnVmKzB4YTAvMHhhMCBbdmlkZW9kZXZd
+Cj4gWyAgIDI1LjMyMTI1MF0gID8gX19taWdodF9mYXVsdCsweDExMi8weDE3MAo+IFsgICAyNS4z
+MjE0NjNdICA/IF9fbWlnaHRfZmF1bHQrMHgxMTIvMHgxNzAKPiBbICAgMjUuMzIxNjc1XSAgdmlk
+ZW9fdXNlcmNvcHkrMHg0OGMvMHhkMDAgW3ZpZGVvZGV2XQo+IFsgICAyNS4zMjE5NDldICA/IHY0
+bF9wcmVwYXJlX2J1ZisweGEwLzB4YTAgW3ZpZGVvZGV2XQo+IFsgICAyNS4zMjIyMjhdICA/IHY0
+bF9lbnVtc3RkKzB4NjAvMHg2MCBbdmlkZW9kZXZdCj4gWyAgIDI1LjMyMjQ5N10gID8gc2VsaW51
+eF9icHJtX2NyZWRzX2Zvcl9leGVjKzB4YTkwLzB4YTkwCj4gWyAgIDI1LjMyMjc3OV0gID8gcnNl
+cV9pcF9maXh1cCsweDMwNC8weDQ4MAo+IFsgICAyNS4zMjI5OTVdICA/IF9fdXBfcmVhZCsweDEw
+Yi8weDc1MAo+IFsgICAyNS4zMjMyMDFdICA/IHJzZXFfZ2V0X3JzZXFfY3MrMHg2ODAvMHg2ODAK
+PiBbICAgMjUuMzIzNDMwXSAgdjRsMl9pb2N0bCsweDE3Zi8weDFmMCBbdmlkZW9kZXZdCj4gWyAg
+IDI1LjMyMzY4OV0gIF9feDY0X3N5c19pb2N0bCsweDEyNy8weDE5MAo+IFsgICAyNS4zMjM5MDVd
+ICBkb19zeXNjYWxsXzY0KzB4MzUvMHg4MAo+IFsgICAyNS4zMjQxMDVdICBlbnRyeV9TWVNDQUxM
+XzY0X2FmdGVyX2h3ZnJhbWUrMHg0Ni8weGIwCj4gWyAgIDI1LjMyNDM3Ml0gUklQOiAwMDMzOjB4
+N2ZhNTI0YmY0NGViCj4gWyAgIDI1LjMyNDU2NF0gQ29kZTogMDAgNDggODkgNDQgMjQgMTggMzEg
+YzAgNDggOGQgNDQgMjQgNjAgYzcgMDQgMjQgMTAgMDAgMDAgMDAgNDggODkgNDQgMjQgMDggNDgg
+OGQgNDQgMjQgMjAgNDggODkgNDQgMjQgMTAgYjggMTAgMDAgMDAgMDAgMGYgMDUgPDg5PiBjMiAz
+ZCAwMCBmMCBmZiBmZiA3NyAxYyA0OCA4YiA0NCAyNCAxOCA2NCA0OCAyYgo+IDA0IDI1IDI4IDAw
+IDAwCj4gWyAgIDI1LjMyNTUzM10gUlNQOiAwMDJiOjAwMDA3ZmZjODg4ZWZlZTAgRUZMQUdTOiAw
+MDAwMDI0NiBPUklHX1JBWDogMDAwMDAwMDAwMDAwMDAxMAo+IFsgICAyNS4zMjU5MzNdIFJBWDog
+ZmZmZmZmZmZmZmZmZmZkYSBSQlg6IDAwMDA3ZmZjODg4ZjAzNTAgUkNYOiAwMDAwN2ZhNTI0YmY0
+NGViCj4gWyAgIDI1LjMyNjMxNF0gUkRYOiAwMDAwN2ZmYzg4OGVmZmIwIFJTSTogMDAwMDAwMDBj
+MTAwNTY1YyBSREk6IDAwMDAwMDAwMDAwMDAwMjMKPiBbICAgMjUuMzI2NzAyXSBSQlA6IDAwMDA3
+ZmZjODg4Zjg1NTAgUjA4OiAwMDAwMDAwMDAwMDAwMDAwIFIwOTogMDAwMDAwMDAwMDAwMDAwMQo+
+IFsgICAyNS4zMjcwODFdIFIxMDogMDAwMDAwMDAwMDAwMDAxNiBSMTE6IDAwMDAwMDAwMDAwMDAy
+NDYgUjEyOiAwMDAwMDAwMDAwMDAwMDAwCj4gWyAgIDI1LjMyNzQ2OF0gUjEzOiAwMDAwMDAwMDAw
+MDAwMDAxIFIxNDogMDAwMDdmZmM4ODhmODAxMCBSMTU6IDAwMDA3ZmZjODg4ZjE3OTAKPiBbICAg
+MjUuMzI3ODUyXSAgPC9UQVNLPgo+IFsgICAyNS4zMjc5NzldIE1vZHVsZXMgbGlua2VkIGluOiB2
+aXZpZCB2aWRlb2J1ZjJfZG1hX2NvbnRpZyB2NGwyX3RwZyB2NGwyX2R2X3RpbWluZ3MgY2VjIHZp
+ZGVvYnVmMl92bWFsbG9jIHZpZGVvYnVmMl9tZW1vcHMgdmlkZW9idWYyX3Y0bDIgdmlkZW9kZXYg
+dmlkZW9idWYyX2NvbW1vbiBtYyByY19jb3JlCj4gWyAgIDI1LjMyODgzNV0gLS0tWyBlbmQgdHJh
+Y2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tCj4gWyAgIDI1LjMyOTA4M10gUklQOiAwMDEwOl9fdmIy
+X3F1ZXVlX2FsbG9jKzB4MzRjLzB4ZDAwIFt2aWRlb2J1ZjJfY29tbW9uXQo+IFsgICAyNS4zMjk0
+MzRdIENvZGU6IDg5IGY4IDQ4IGMxIGU4IDAzIDgwIDNjIDE4IDAwIDBmIDg1IDBjIDA3IDAwIDAw
+IDQ5IDhiIGI3IDQwIDAxIDAwIDAwIDQ0IDg5IGYwIDRjIDhkIDJjIGM2IDQxIDM5IGNlIDczIDE4
+IDRjIDg5IGU4IDQ4IGMxIGU4IDAzIDw4MD4gM2MgMTggMDAgMGYgODUgZDIgMDggMDAgMDAgNDkg
+ODMgN2QgMDAgMDAgNzQgMDIKPiAwZiAwYiA0YyA4OSBlOAo+IFsgICAyNS4zMzA0MTddIFJTUDog
+MDAxODpmZmZmODg4MTBhZmVmOTMwIEVGTEFHUzogMDAwMTAyMTIKPiBbICAgMjUuMzMwODEyXSBS
+QVg6IDAwMDAwMDAwMDAwMDAwMDEgUkJYOiBkZmZmZmMwMDAwMDAwMDAwIFJDWDogMDAwMDAwMDAw
+MDAwMDA0MAo+IFsgICAyNS4zMzExOTRdIFJEWDogZmZmZjg4ODEwY2UwODgxNCBSU0k6IDAwMDAw
+MDAwMDAwMDAwMDAgUkRJOiBmZmZmODg4MTBjZmI3MmUwCj4gWyAgIDI1LjMzMTU5NF0gUkJQOiBm
+ZmZmODg4MTBjZTA4ODAwIFIwODogMDAwMDAwMDAwMDAwMTgwMCBSMDk6IDAwMDAwMDAwMDAwMDAw
+MDEKPiBbICAgMjUuMzMxOTc4XSBSMTA6IGZmZmZmZmZmOTE1NjBiMGYgUjExOiBmZmZmZmZmZjhm
+NDAwMDZhIFIxMjogZmZmZjg4ODEwYWZlZmE3NAo+IFsgICAyNS4zMzIzNjBdIFIxMzogMDAwMDAw
+MDAwMDAwMDAwOCBSMTQ6IDAwMDAwMDAwMDAwMDAwMDEgUjE1OiBmZmZmODg4MTBjZmI3MWEwCj4g
+WyAgIDI1LjMzMjc0Nl0gRlM6ICAwMDAwN2ZhNTI0OTA4NDQwKDAwMDApIEdTOmZmZmY4ODgxMWFh
+MDAwMDAoMDAwMCkga25sR1M6MDAwMDAwMDAwMDAwMDAwMAo+IFsgICAyNS4zMzMxNzBdIENTOiAg
+MDAxMCBEUzogMDAwMCBFUzogMDAwMCBDUjA6IDAwMDAwMDAwODAwNTAwMzMKPiBbICAgMjUuMzMz
+NDg2XSBDUjI6IDAwMDA1NjI4NTU5NDgyNzAgQ1IzOiAwMDAwMDAwMTA5ZTIxMDAwIENSNDogMDAw
+MDAwMDAwMDM1MGVmMAo+IFsgICAyNS4zMzM4NjFdIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5n
+OiBGYXRhbCBleGNlcHRpb24KPiBbICAgMjUuMzM0MTc5XSBLZXJuZWwgT2Zmc2V0OiAweGJlMDAw
+MDAgZnJvbSAweGZmZmZmZmZmODEwMDAwMDAgKHJlbG9jYXRpb24gcmFuZ2U6IDB4ZmZmZmZmZmY4
+MDAwMDAwMC0weGZmZmZmZmZmYmZmZmZmZmYpCj4gWyAgIDI1LjMzNDc0OF0gUmVib290aW5nIGlu
+IDMwIHNlY29uZHMuLgo+Cj4gSSB1c2UgdGhlIGJ1aWxkIHNjcmlwdHMgYXMgZGVzY3JpYmVkIGhl
+cmU6Cj4KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8xODk4OTAxNi02Mzky
+LWE3N2ItNmNmNy0xMjIzYzkxNjFkZWZAeHM0YWxsLm5sLwo+Cj4gSSB1c2UgdGhpcyBjb21tYW5k
+IHRvIHJ1biB0aGUgcmVncmVzc2lvbiB0ZXN0czoKPgo+IC4vYnVpbGQuc2ggLXZpcnRtZSAtdmly
+dG1lLXV0aWxzLXBhdGggL3Vzci9sb2NhbC9iaW4gbm9uZSBkZWxidWYKPgo+IChkZWxidWYgaXMg
+dGhlIG5hbWUgb2YgbXkgYnJhbmNoKQo+Cj4gSSBkb24ndCByZWFsbHkgd2FudCB0byBzcGVuZCB0
+aW1lIHJldmlld2luZyB0aGlzIHNlcmllcyB1bnRpbCB0aGlzIGlzIGZpeGVkLi4uCgpZZXMgdGhh
+dCBtYWtlIHNlbnNlLgpJdCB3aWxsIHdvcmsgb24gaXQgYW5kIGxldCB5b3Ugbm93IHdoZW4gSSBo
+YWQgZml4IGl0LgpSZWdhcmRzLApCZW5qYW1pbgoKPgo+IFJlZ2FyZHMsCj4KPiAJSGFucwo+Cj4+
+IGNoYW5nZXMgaW4gdmVyc2lvbiA4Ogo+PiAtIEFkZCBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfU0VU
+X01BWF9CVUZTIGFuZCBuZXcgJ21heF9idWZmZXJzJyBmaWVsZCBpbiB2NGwyX2NyZWF0ZV9idWZm
+ZXJzCj4+ICAgIHN0cnVjdHVyZSB0byByZXBvcnQgdGhlIG1heGltdW0gbnVtYmVyIG9mIGJ1ZmZl
+cnMgdGhhdCBhIHF1ZXVlIGNvdWxkIGFsbG9jYXRlLgo+PiAtIEFkZCBWNEwyX0JVRl9DQVBfU1VQ
+UE9SVFNfREVMRVRFX0JVRlMgdG8gaW5kaWNhdGUgdGhhdCBhIHF1ZXVlIHN1cHBvcnQKPj4gICAg
+REVMRVRFX0JVRlMgaW9jdGwuCj4+IC0gTWFrZSBzb21lIHRlc3QgZHJpdmVycyB1c2UgbW9yZSB0
+aGFuIDMyIGJ1ZmZlcnMgYW5kIERFTEVURV9CVUZTIGlvY3RsLgo+PiAtIEZpeCByZW1hcmtzIGRv
+bmUgYnkgSGFucwo+PiAtIE1vdmUgIm1lZGlhOiBjb3JlOiBSZXdvcmsgaG93IGNyZWF0ZV9idWYg
+aW5kZXggcmV0dXJuZWQgdmFsdWUgaXMKPj4gICAgY29tcHV0ZWQiIHBhdGNoIHRvIHRoZSB0b3Ag
+b2YgdGhlIHNlcmllLgo+Pgo+PiBjaGFuZ2VzIGluIHZlcnNpb24gNzoKPj4gLSBVc2UgYSBiaXRt
+YXAgdG8ga25vdyB3aGljaCBlbnRyaWVzIGFyZSB2YWxpZCBpbiBxdWV1ZSBidWZzIGFycmF5Lgo+
+PiAgICBUaGUgbnVtYmVyIG9mIGJ1ZmZlcnMgaW4gdGhlIHF1ZXVlIGNvdWxkIG11c3QgY2FsY3Vs
+YXRlZCBmcm9tIHRoZQo+PiAgICBiaXRtYXAgc28gbnVtX2J1ZmZlcnMgYmVjb21lcyB1c2VsZXNz
+LiBUaGlzIGxlZCB0byBhZGQgcXVpdGUgZmV3Cj4+ICAgIHBhdGNoZXMgdG8gcmVtb3ZlIGl0IGZy
+b20gYWxsIHRoZSBkcml2ZXJzLgo+PiAgICBOb3RlOiBkZXNwaXN0ZSBteSBhdHRlbnRpb24gSSBt
+YXkgaGF2ZSBtaXNzIHNvbWUgY2FsbHMgdG8KPj4gICAgbnVtX2J1ZmZlcnMuLi4KPj4gLSBTcGxp
+dCBwYXRjaGVzIHRvIG1ha2UgdGhlbSBtb3JlIHJlYWRhYmxlLgo+PiAtIFJ1biB2NGwyLWNvbXBs
+aWFuY2Ugd2l0aCBhZGRpdGlvbmFsIGRlbGV0ZS1idWZzIHRlc3RzLgo+PiAtIFJ1biAuL3Rlc3Qt
+bWVkaWEgLWttZW1sZWFrIHZpdmlkIGFuZCBubyBtb3JlIGZhaWx1cmVzLgo+PiAgICBOb3RlOiBJ
+IGhhZCB0byByZW1vdmUgVVNFUlBUUiBzdHJlYW1pbmcgdGVzdCBiZWNhdXNlIHRoZXkgdG8gbXVj
+aAo+PiAgICBmcmVxdWVudGVseSBoaXQgZ2V0X2ZyYW1ldmVjIGJ1Zy4gSXQgaXMgbm90IHJlbGF0
+ZWQgdG8gbXkgc2VyaWVzCj4+ICAgIHNpbmNlIHRoaXMgaGFwcGVucyBhbGwgdGhlIHRpbWUgb24g
+bWFzdGVyIGJyYW5jaC4KPj4gLSBGaXggSGFucyByZW1hcmtzIG9uIHY2Cj4+Cj4+IGNoYW5nZXMg
+aW4gdmVyc2lvbiA2Ogo+PiAtIEdldCBhIHBhdGNoIHBlciBkcml2ZXIgdG8gdXNlIHZiMl9nZXRf
+YnVmZmVyKCkgaW5zdGVhZCBvZiBkaXJlY3RseSBhY2Nlc3MKPj4gICAgdG8gcXVldWUgYnVmZmVy
+cyBhcnJheS4KPj4gLSBBZGQgbG9jayBpbiB2YjJfY29yZV9kZWxldGVfYnVmKCkKPj4gLSBVc2Ug
+dmIyX2J1ZmZlciBpbnN0ZWFkIG9mIGluZGV4Cj4+IC0gRml4IHZhcmlvdXMgY29tbWVudHMKPj4g
+LSBDaGFuZ2UgYnVmZmVyIGluZGV4IG5hbWUgdG8gQlVGRkVSX0lOREVYX01BU0sKPj4gLSBTdG9w
+IHNwYW1taW5nIGtlcm5lbCBsb2cgd2l0aCB1bmJhbGFuY2VkIGNvdW50ZXJzCj4+Cj4+IGNoYW5n
+ZXMgaW4gdmVyc2lvbiA1Ogo+PiAtIFJld29yayBvZmZzZXQgY29va2llIGVuY29kaW5nIHBhdHRl
+cm4gaXMgbiBvdyB0aGUgZmlyc3QgcGF0Y2ggb2YgdGhlCj4+ICAgIHNlcmllLgo+PiAtIFVzZSBz
+dGF0aWMgYXJyYXkgaW5zdGVhZCBvZiBhbGxvY2F0ZWQgb25lIGZvciBwb3N0cHJvY2Vzc29yIGJ1
+ZmZlcnMuCj4+Cj4+IGNoYW5nZXMgaW4gdmVyc2lvbiA0Ogo+PiAtIFN0b3AgdXNpbmcgWGFycmF5
+LCBpbnN0ZWFkIGxldCBxdWV1ZXMgZGVjaWRlIGFib3V0IHRoZWlyIG93biBtYXhpbXVtCj4+ICAg
+IG51bWJlciBvZiBidWZmZXIgYW5kIGFsbG9jYXRlIGJ1ZnMgYXJyYXkgZ2l2ZW4gdGhhdCB2YWx1
+ZS4KPj4gLSBSZXdvcmsgb2Zmc2V0IGNvb2tpZSBlbmNvZGluZyBwYXR0ZXJuLgo+PiAtIENoYW5n
+ZSBERUxFVEVfQlVGIHRvIERFTEVURV9CVUZTIGJlY2F1c2UgaXQgbm93IHVzYWJsZSBmb3IKPj4g
+ICAgcmFuZ2Ugb2YgYnVmZmVyIHRvIGJlIHN5bWV0cmljYWwgb2YgQ1JFQVRFX0JVRlMuCj4+IC0g
+QWRkIGZpeGVzIHRhZ3Mgb24gY291cGxlIG9mIFZlcmlzaWxpY29uIHJlbGF0ZWQgcGF0Y2hlcy4K
+Pj4gLSBCZSBzbWFydGVyIGluIFZlcmlzaWxpY29uIHBvc3Rwcm9jZXNzb3IgYnVmZmVycyBtYW5h
+Z2VtZW50Lgo+PiAtIFJlYmFzZSBvbiB0b3Agb2YgdjYuNAo+Pgo+PiBjaGFuZ2VzIGluIHZlcnNp
+b24gMzoKPj4gLSBVc2UgWGFycmF5IEFQSSB0byBzdG9yZSBhbGxvY2F0ZWQgdmlkZW8gYnVmZmVy
+cy4KPj4gLSBObyBtb2R1bGUgcGFyYW1ldGVyIHRvIGxpbWl0IHRoZSBudW1iZXIgb2YgYnVmZmVy
+IHBlciBxdWV1ZS4KPj4gLSBVc2UgWGFycmF5IGluc2lkZSBWZXJpc2lsaWNvbiBkcml2ZXIgdG8g
+c3RvcmUgcG9zdHByb2Nlc3NvciBidWZmZXJzCj4+ICAgIGFuZCByZW1vdmUgVkIyX01BWF9GUkFN
+RSBsaW1pdC4KPj4gLSBBbGxvdyBWZXJzaWxpY29uIGRyaXZlciB0byBjaGFuZ2Ugb2YgcmVzb2x1
+dGlvbiB3aGlsZSBzdHJlYW1pbmcKPj4gLSBWYXJpb3VzIGZpeGVzIHRoZSBWZXJpc2lsaWNvbiBW
+UDkgY29kZSB0byBpbXByb3ZlIGZsdXN0ZXIgc2NvcmUuCj4+ICAgCj4+IGNoYW5nZXMgaW4gdmVy
+c2lvbiAyOgo+PiAtIFVzZSBhIGR5bmFtaWMgYXJyYXkgYW5kIG5vdCBhIGxpc3QgdG8ga2VlcCB0
+cmFjZSBvZiBhbGxvY2F0ZWQgYnVmZmVycy4KPj4gICAgTm90IHVzZSBJRFIgaW50ZXJmYWNlIGJl
+Y2F1c2UgaXQgaXMgbWFya2VkIGFzIGRlcHJlY2F0ZWQgaW4ga2VybmVsCj4+ICAgIGRvY3VtZW50
+YXRpb24uCj4+IC0gQWRkIGEgbW9kdWxlIHBhcmFtZXRlciB0byBsaW1pdCB0aGUgbnVtYmVyIG9m
+IGJ1ZmZlciBwZXIgcXVldWUuCj4+IC0gQWRkIERFTEVURV9CVUYgaW9jdGwgYW5kIG0ybSBoZWxw
+ZXJzLgo+Pgo+PiBSZWdhcmRzLAo+PiBCZW5qYW1pbgo+Pgo+PiBCZW5qYW1pbiBHYWlnbmFyZCAo
+NTMpOgo+PiAgICBtZWRpYTogdmlkZW9idWYyOiBSZXdvcmsgb2Zmc2V0ICdjb29raWUnIGVuY29k
+aW5nIHBhdHRlcm4KPj4gICAgbWVkaWE6IHZpZGVvYnVmMjogU3RvcCBzcGFtbWluZyBrZXJuZWwg
+bG9nIHdpdGggYWxsIHF1ZXVlIGNvdW50ZXIKPj4gICAgbWVkaWE6IHZpZGVvYnVmMjogVXNlIHZi
+Ml9idWZmZXIgaW5zdGVhZCBvZiBpbmRleAo+PiAgICBtZWRpYTogYW1waGlvbjogVXNlIHZiMl9n
+ZXRfYnVmZmVyKCkgaW5zdGVhZCBvZiBkaXJlY3RseSBhY2Nlc3MgdG8KPj4gICAgICBidWZmZXJz
+IGFycmF5Cj4+ICAgIG1lZGlhOiBtZWRpYXRlazoganBlZzogVXNlIHZiMl9nZXRfYnVmZmVyKCkg
+aW5zdGVhZCBvZiBkaXJlY3RseSBhY2Nlc3MKPj4gICAgICB0byBidWZmZXJzIGFycmF5Cj4+ICAg
+IG1lZGlhOiBtZWRpYXRlazogdmRlYzogUmVtb3ZlIHVzZWxlc3MgbG9vcAo+PiAgICBtZWRpYTog
+c3RpOiBodmE6IFVzZSB2YjJfZ2V0X2J1ZmZlcigpIGluc3RlYWQgb2YgZGlyZWN0bHkgYWNjZXNz
+IHRvCj4+ICAgICAgYnVmZmVycyBhcnJheQo+PiAgICBtZWRpYTogdmlzbDogVXNlIHZiMl9nZXRf
+YnVmZmVyKCkgaW5zdGVhZCBvZiBkaXJlY3RseSBhY2Nlc3MgdG8KPj4gICAgICBidWZmZXJzIGFy
+cmF5Cj4+ICAgIG1lZGlhOiBhdG9taXNwOiBVc2UgdmIyX2dldF9idWZmZXIoKSBpbnN0ZWFkIG9m
+IGRpcmVjdGx5IGFjY2VzcyB0bwo+PiAgICAgIGJ1ZmZlcnMgYXJyYXkKPj4gICAgbWVkaWE6IGR2
+Yi1jb3JlOiBVc2UgdmIyX2dldF9idWZmZXIoKSBpbnN0ZWFkIG9mIGRpcmVjdGx5IGFjY2VzcyB0
+bwo+PiAgICAgIGJ1ZmZlcnMgYXJyYXkKPj4gICAgbWVkaWE6IHZpZGVvYnVmMjogQWNjZXNzIHZi
+Ml9xdWV1ZSBidWZzIGFycmF5IHRocm91Z2ggaGVscGVyIGZ1bmN0aW9ucwo+PiAgICBtZWRpYTog
+dmlkZW9idWYyOiBCZSBtb3JlIGZsZXhpYmxlIG9uIHRoZSBudW1iZXIgb2YgcXVldWUgc3RvcmVk
+Cj4+ICAgICAgYnVmZmVycwo+PiAgICBtZWRpYTogUmVwb3J0IHRoZSBtYXhpbXVtIHBvc3NpYmxl
+IG51bWJlciBvZiBidWZmZXJzIGZvciB0aGUgcXVldWUKPj4gICAgbWVkaWE6IHRlc3QtZHJpdmVy
+czogdml2aWQ6IEluY3JlYXNlIG1heCBzdXBwb3J0ZWQgYnVmZmVycyBmb3IgY2FwdHVyZQo+PiAg
+ICAgIHF1ZXVlcwo+PiAgICBtZWRpYTogdGVzdC1kcml2ZXJzOiB2aWNvZGVjOiBJbmNyZWFzZSBt
+YXggc3VwcG9ydGVkIGNhcHR1cmUgcXVldWUKPj4gICAgICBidWZmZXJzCj4+ICAgIG1lZGlhOiB2
+ZXJpc2lsaWNvbjogUmVmYWN0b3IgcG9zdHByb2Nlc3NvciB0byBzdG9yZSBtb3JlIGJ1ZmZlcnMK
+Pj4gICAgbWVkaWE6IHZlcmlzaWxpY29uOiBTdG9yZSBjaHJvbWEgYW5kIG1vdGlvbiB2ZWN0b3Jz
+IG9mZnNldAo+PiAgICBtZWRpYTogdmVyaXNpbGljb246IGcyOiBVc2UgY29tbW9uIGhlbHBlcnMg
+dG8gY29tcHV0ZSBjaHJvbWEgYW5kIG12Cj4+ICAgICAgb2Zmc2V0cwo+PiAgICBtZWRpYTogdmVy
+aXNpbGljb246IHZwOTogQWxsb3cgdG8gY2hhbmdlIHJlc29sdXRpb24gd2hpbGUgc3RyZWFtaW5n
+Cj4+ICAgIG1lZGlhOiBSZW1vdmUgZHVwbGljYXRlZCBpbmRleCB2cyBxLT5udW1fYnVmZmVycyBj
+aGVjawo+PiAgICBtZWRpYTogY29yZTogQWRkIGhlbHBlciB0byBnZXQgcXVldWUgbnVtYmVyIG9m
+IGJ1ZmZlcnMKPj4gICAgbWVkaWE6IGR2Yi1jb3JlOiBEbyBub3QgaW5pdGlhbGl6ZSB0d2ljZSBx
+dWV1ZSBudW1fYnVmZmVyIGZpZWxkCj4+ICAgIG1lZGlhOiBkdmItZnJvbnRlbmRzOiBydGwyODMy
+X3NyZDogVXNlIHF1ZXVlIG1pbl9idWZmZXJzX25lZWRlZCBmaWVsZAo+PiAgICBtZWRpYTogdmlk
+ZW8taTJjOiBTZXQgbWluX2J1ZmZlcnNfbmVlZGVkIHRvIDIKPj4gICAgbWVkaWE6IHBjaTogY3gx
+ODogU2V0IGNvcnJlY3QgdmFsdWUgdG8gbWluX2J1ZmZlcnNfbmVlZGVkIGZpZWxkCj4+ICAgIG1l
+ZGlhOiBwY2k6IGR0MzE1NTogUmVtb3ZlIHVzZWxlc3MgY2hlY2sKPj4gICAgbWVkaWE6IHBjaTog
+bmV0dXBfdW5pZHZiOiBSZW1vdmUgdXNlbGVzcyBudW1iZXIgb2YgYnVmZmVycyBjaGVjawo+PiAg
+ICBtZWRpYTogcGNpOiB0dzY4OiBTdG9wIGRpcmVjdCBjYWxscyB0byBxdWV1ZSBudW1fYnVmZmVy
+cyBmaWVsZAo+PiAgICBtZWRpYTogcGNpOiB0dzY4Nng6IFNldCBtaW5fYnVmZmVyc19uZWVkZWQg
+dG8gMwo+PiAgICBtZWRpYTogYW1waGlvbjogU3RvcCBkaXJlY3QgY2FsbHMgdG8gcXVldWUgbnVt
+X2J1ZmZlcnMgZmllbGQKPj4gICAgbWVkaWE6IGNvZGE6IFN0b3AgZGlyZWN0IGNhbGxzIHRvIHF1
+ZXVlIG51bV9idWZmZXJzIGZpZWxkCj4+ICAgIG1lZGlhOiBtZWRpYXRlazogdmNvZGVjOiBTdG9w
+IGRpcmVjdCBjYWxscyB0byBxdWV1ZSBudW1fYnVmZmVycyBmaWVsZAo+PiAgICBtZWRpYTogbnhw
+OiBTdG9wIGRpcmVjdCBjYWxscyB0byBxdWV1ZSBudW1fYnVmZmVycyBmaWVsZAo+PiAgICBtZWRp
+YTogcmVuZXNhczogU2V0IG1pbl9idWZmZXJzX25lZWRlZCB0byAxNgo+PiAgICBtZWRpYTogdGk6
+IFVzZSBxdWV1ZSBtaW5fYnVmZmVyc19uZWVkZWQgZmllbGQgdG8gc2V0IHRoZSBtaW4gbnVtYmVy
+IG9mCj4+ICAgICAgYnVmZmVycwo+PiAgICBtZWRpYTogdmVyaXNpbGljb246IFN0b3AgZGlyZWN0
+IGNhbGxzIHRvIHF1ZXVlIG51bV9idWZmZXJzIGZpZWxkCj4+ICAgIG1lZGlhOiB0ZXN0LWRyaXZl
+cnM6IFN0b3AgZGlyZWN0IGNhbGxzIHRvIHF1ZXVlIG51bV9idWZmZXJzIGZpZWxkCj4+ICAgIG1l
+ZGlhOiB1c2I6IGFpcnNweTogU2V0IG1pbl9idWZmZXJzX25lZWRlZCB0byA4Cj4+ICAgIG1lZGlh
+OiB1c2I6IGN4MjMxeHg6IFNldCBtaW5fYnVmZmVyc19uZWVkZWQgdG8gQ1gyMzFYWF9NSU5fQlVG
+Cj4+ICAgIG1lZGlhOiB1c2I6IGhhY2tyZjogU2V0IG1pbl9idWZmZXJzX25lZWRlZCB0byA4Cj4+
+ICAgIG1lZGlhOiB1c2I6IHVzYnR2OiBTZXQgbWluX2J1ZmZlcnNfbmVlZGVkIHRvIDIKPj4gICAg
+bWVkaWE6IGF0b21pc3A6IFN0b3AgZGlyZWN0IGNhbGxzIHRvIHF1ZXVlIG51bV9idWZmZXJzIGZp
+ZWxkCj4+ICAgIG1lZGlhOiBpbXg6IFN0b3AgZGlyZWN0IGNhbGxzIHRvIHF1ZXVlIG51bV9idWZm
+ZXJzIGZpZWxkCj4+ICAgIG1lZGlhOiBtZXNvbjogdmRlYzogU3RvcCBkaXJlY3QgY2FsbHMgdG8g
+cXVldWUgbnVtX2J1ZmZlcnMgZmllbGQKPj4gICAgdG91Y2hzY3JlZW46IHN1cjQwOiBTdG9wIGRp
+cmVjdCBjYWxscyB0byBxdWV1ZSBudW1fYnVmZmVycyBmaWVsZAo+PiAgICBzYW1wbGU6IHY0bDog
+U3RvcCBkaXJlY3QgY2FsbHMgdG8gcXVldWUgbnVtX2J1ZmZlcnMgZmllbGQKPj4gICAgbWVkaWE6
+IGNlZHJ1czogU3RvcCBkaXJlY3QgY2FsbHMgdG8gcXVldWUgbnVtX2J1ZmZlcnMgZmllbGQKPj4g
+ICAgbWVkaWE6IGNvcmU6IFJld29yayBob3cgY3JlYXRlX2J1ZiBpbmRleCByZXR1cm5lZCB2YWx1
+ZSBpcyBjb21wdXRlZAo+PiAgICBtZWRpYTogY29yZTogQWRkIGJpdG1hcCBtYW5hZ2UgYnVmcyBh
+cnJheSBlbnRyaWVzCj4+ICAgIG1lZGlhOiBjb3JlOiBGcmVlIHJhbmdlIG9mIGJ1ZmZlcnMKPj4g
+ICAgbWVkaWE6IHY0bDI6IEFkZCBERUxFVEVfQlVGUyBpb2N0bAo+PiAgICBtZWRpYTogdjRsMjog
+QWRkIG1lbTJtZW0gaGVscGVycyBmb3IgREVMRVRFX0JVRlMgaW9jdGwKPj4gICAgbWVkaWE6IHRl
+c3QtZHJpdmVyczogVXNlIGhlbHBlciBmb3IgREVMRVRFX0JVRlMgaW9jdGwKPj4KPj4gICAuLi4v
+dXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvdXNlci1mdW5jLnJzdCAgICAgfCAgIDEgKwo+PiAgIC4u
+Li9tZWRpYS92NGwvdmlkaW9jLWNyZWF0ZS1idWZzLnJzdCAgICAgICAgICB8ICAgOCArLQo+PiAg
+IC4uLi9tZWRpYS92NGwvdmlkaW9jLWRlbGV0ZS1idWZzLnJzdCAgICAgICAgICB8ICA4MCArKysK
+Pj4gICAuLi4vbWVkaWEvdjRsL3ZpZGlvYy1yZXFidWZzLnJzdCAgICAgICAgICAgICAgfCAgIDIg
+Kwo+PiAgIGRyaXZlcnMvaW5wdXQvdG91Y2hzY3JlZW4vc3VyNDAuYyAgICAgICAgICAgICB8ICAg
+NSArLQo+PiAgIC4uLi9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMgICB8
+IDU1NiArKysrKysrKysrKy0tLS0tLS0KPj4gICAuLi4vbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92
+aWRlb2J1ZjItdjRsMi5jICAgfCAxMjEgKysrLQo+PiAgIGRyaXZlcnMvbWVkaWEvZHZiLWNvcmUv
+ZHZiX3ZiMi5jICAgICAgICAgICAgICB8ICAxNyArLQo+PiAgIGRyaXZlcnMvbWVkaWEvZHZiLWZy
+b250ZW5kcy9ydGwyODMyX3Nkci5jICAgICB8ICAgOSArLQo+PiAgIGRyaXZlcnMvbWVkaWEvaTJj
+L3ZpZGVvLWkyYy5jICAgICAgICAgICAgICAgICB8ICAgNSArLQo+PiAgIGRyaXZlcnMvbWVkaWEv
+cGNpL2N4MTgvY3gxOC1zdHJlYW1zLmMgICAgICAgICB8ICAxMyArLQo+PiAgIGRyaXZlcnMvbWVk
+aWEvcGNpL2R0MzE1NS9kdDMxNTUuYyAgICAgICAgICAgICB8ICAgMiAtCj4+ICAgLi4uL3BjaS9u
+ZXR1cF91bmlkdmIvbmV0dXBfdW5pZHZiX2NvcmUuYyAgICAgIHwgICA0ICstCj4+ICAgZHJpdmVy
+cy9tZWRpYS9wY2kvdHc2OC90dzY4LXZpZGVvLmMgICAgICAgICAgIHwgICA2ICstCj4+ICAgZHJp
+dmVycy9tZWRpYS9wY2kvdHc2ODZ4L3R3Njg2eC12aWRlby5jICAgICAgIHwgIDEzICstCj4+ICAg
+ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9hbXBoaW9uL3ZwdV9kYmcuYyAgICAgIHwgIDMwICstCj4+
+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9hbXBoaW9uL3ZwdV92NGwyLmMgICAgIHwgICA0ICst
+Cj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL2NoaXBzLW1lZGlhL2NvZGEtY29tbW9uLmMgIHwgICAy
+ICstCj4+ICAgLi4uL3BsYXRmb3JtL21lZGlhdGVrL2pwZWcvbXRrX2pwZWdfY29yZS5jICAgIHwg
+ICA3ICstCj4+ICAgLi4uL3Zjb2RlYy9kZWNvZGVyL3ZkZWMvdmRlY192cDlfcmVxX2xhdF9pZi5j
+IHwgICA5ICstCj4+ICAgLi4uL21lZGlhdGVrL3Zjb2RlYy9lbmNvZGVyL210a192Y29kZWNfZW5j
+LmMgIHwgICAyICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9ueHAvaW14Ny1tZWRpYS1j
+c2kuYyAgIHwgICA3ICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yZW5lc2FzL3JjYXJf
+ZHJpZi5jICAgIHwgICA4ICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zdC9zdGkvaHZh
+L2h2YS12NGwyLmMgIHwgICA5ICstCj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3RpL2FtNDM3eC9h
+bTQzN3gtdnBmZS5jICAgIHwgICA3ICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS90aS9j
+YWwvY2FsLXZpZGVvLmMgICAgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3RpL2Rh
+dmluY2kvdnBpZl9jYXB0dXJlLmMgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3Rp
+L2RhdmluY2kvdnBpZl9kaXNwbGF5LmMgIHwgICA1ICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS90aS9vbWFwL29tYXBfdm91dC5jICAgIHwgICA1ICstCj4+ICAgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm8uaCAgIHwgICA5ICstCj4+ICAgLi4uL21lZGlhL3Bs
+YXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19kcnYuYyAgIHwgICA1ICstCj4+ICAgLi4uL21lZGlh
+L3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMi5jICAgIHwgIDE0ICsKPj4gICAuLi4vcGxh
+dGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX2hldmNfZGVjLmMgfCAgMTggKy0KPj4gICAuLi4v
+cGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX3ZwOV9kZWMuYyAgfCAgMjggKy0KPj4gICAu
+Li4vbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2h3LmggICAgfCAgIDcgKy0KPj4g
+ICAuLi4vcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX3Bvc3Rwcm9jLmMgICAgfCAgOTMgKyst
+Cj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb192NGwyLmMgIHwgIDI3
+ICstCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJpdmVycy92aWNvZGVjL3ZpY29kZWMtY29yZS5jIHwg
+ICAzICsKPj4gICBkcml2ZXJzL21lZGlhL3Rlc3QtZHJpdmVycy92aW0ybS5jICAgICAgICAgICAg
+fCAgIDIgKwo+PiAgIC4uLi9tZWRpYS90ZXN0LWRyaXZlcnMvdmltYy92aW1jLWNhcHR1cmUuYyAg
+ICB8ICAgMiArCj4+ICAgZHJpdmVycy9tZWRpYS90ZXN0LWRyaXZlcnMvdmlzbC92aXNsLWRlYy5j
+ICAgIHwgIDMyICstCj4+ICAgZHJpdmVycy9tZWRpYS90ZXN0LWRyaXZlcnMvdmlzbC92aXNsLXZp
+ZGVvLmMgIHwgICAyICsKPj4gICBkcml2ZXJzL21lZGlhL3Rlc3QtZHJpdmVycy92aXZpZC92aXZp
+ZC1jb3JlLmMgfCAgMTQgKwo+PiAgIC4uLi9tZWRpYS90ZXN0LWRyaXZlcnMvdml2aWQvdml2aWQt
+bWV0YS1jYXAuYyB8ICAgMyAtCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJpdmVycy92aXZpZC92aXZp
+ZC1tZXRhLW91dC5jIHwgICA1ICstCj4+ICAgLi4uL3Rlc3QtZHJpdmVycy92aXZpZC92aXZpZC10
+b3VjaC1jYXAuYyAgICAgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJpdmVycy92aXZp
+ZC92aXZpZC12YmktY2FwLmMgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJpdmVycy92
+aXZpZC92aXZpZC12Ymktb3V0LmMgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJpdmVy
+cy92aXZpZC92aXZpZC12aWQtY2FwLmMgIHwgICA1ICstCj4+ICAgLi4uL21lZGlhL3Rlc3QtZHJp
+dmVycy92aXZpZC92aXZpZC12aWQtb3V0LmMgIHwgICA1ICstCj4+ICAgZHJpdmVycy9tZWRpYS91
+c2IvYWlyc3B5L2FpcnNweS5jICAgICAgICAgICAgIHwgICA5ICstCj4+ICAgZHJpdmVycy9tZWRp
+YS91c2IvY3gyMzF4eC9jeDIzMXh4LTQxNy5jICAgICAgIHwgICA0ICstCj4+ICAgZHJpdmVycy9t
+ZWRpYS91c2IvY3gyMzF4eC9jeDIzMXh4LXZpZGVvLmMgICAgIHwgICA0ICstCj4+ICAgZHJpdmVy
+cy9tZWRpYS91c2IvaGFja3JmL2hhY2tyZi5jICAgICAgICAgICAgIHwgICA5ICstCj4+ICAgZHJp
+dmVycy9tZWRpYS91c2IvdXNidHYvdXNidHYtdmlkZW8uYyAgICAgICAgIHwgICAzICstCj4+ICAg
+ZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1kZXYuYyAgICAgICAgICAgIHwgICAxICsKPj4g
+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMgICAgICAgICAgfCAgMjEgKy0K
+Pj4gICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLW1lbTJtZW0uYyAgICAgICAgfCAgMjAg
+Kwo+PiAgIC4uLi9zdGFnaW5nL21lZGlhL2F0b21pc3AvcGNpL2F0b21pc3BfaW9jdGwuYyB8ICAg
+NCArLQo+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9pbXgvaW14LW1lZGlhLWNhcHR1cmUuYyB8
+ICAgNyArLQo+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9tZXNvbi92ZGVjL3ZkZWMuYyAgICAg
+ICB8ICAxMyArLQo+PiAgIC4uLi9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2
+NC5jICB8ICAgOCArLQo+PiAgIC4uLi9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNf
+aDI2NS5jICB8ICAgOSArLQo+PiAgIGluY2x1ZGUvbWVkaWEvdjRsMi1pb2N0bC5oICAgICAgICAg
+ICAgICAgICAgICB8ICAgNCArCj4+ICAgaW5jbHVkZS9tZWRpYS92NGwyLW1lbTJtZW0uaCAgICAg
+ICAgICAgICAgICAgIHwgIDEyICsKPj4gICBpbmNsdWRlL21lZGlhL3ZpZGVvYnVmMi1jb3JlLmgg
+ICAgICAgICAgICAgICAgfCAgNjUgKy0KPj4gICBpbmNsdWRlL21lZGlhL3ZpZGVvYnVmMi12NGwy
+LmggICAgICAgICAgICAgICAgfCAgMTMgKwo+PiAgIGluY2x1ZGUvdWFwaS9saW51eC92aWRlb2Rl
+djIuaCAgICAgICAgICAgICAgICB8ICAyNCArLQo+PiAgIHNhbXBsZXMvdjRsL3Y0bDItcGNpLXNr
+ZWxldG9uLmMgICAgICAgICAgICAgICB8ICAgNSArLQo+PiAgIDY5IGZpbGVzIGNoYW5nZWQsIDk2
+OSBpbnNlcnRpb25zKCspLCA1MDIgZGVsZXRpb25zKC0pCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IERvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvdmlkaW9jLWRlbGV0ZS1idWZz
+LnJzdAo+Pgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Cj4gS2VybmVsIG1haWxpbmcgbGlzdCAtLSBrZXJuZWxAbWFpbG1hbi5jb2xsYWJvcmEuY29tCj4g
+VG8gdW5zdWJzY3JpYmUgc2VuZCBhbiBlbWFpbCB0byBrZXJuZWwtbGVhdmVAbWFpbG1hbi5jb2xs
+YWJvcmEuY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
