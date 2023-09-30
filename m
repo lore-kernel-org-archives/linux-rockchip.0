@@ -4,130 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76978E77376
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Sep 2023 15:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17450E728E1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Sep 2023 19:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hoQ1VrqQMN2heBGffydaunLNOeNSeyMeD6qZVu8ipKQ=; b=mf1c3K1KfvpUyP
-	QgzNC1KhkSEGKi1j4m/2bIQNI0dk70rJCX7S+HX/eMDN0UZ8K4F1fvCdEN2pKZ3mU461MELq6L4g1
-	Ry8fXFC8OT0u9WczEmBdXD5VY14vOuql49i5eOBSZT5L/6/6CS9iIfX9tj5oXf5MEBrZIBsE20u5V
-	Yn2SJqkMKnchC4AerZq/zHtdVnBCzVrXhIBaz2HMhMThICCBiwZDsNmmfjCdFuafUIChB+Xl4xi1s
-	wc9vbTPoGnsceI0jBU9cwhYLBVh2iV17wvqCjit2tSK6IGyf3OU/3bO+Ufb4z5QRx3ZN7vwqZFh22
-	SNl1JUH8192XXddstXcQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vNvHMbhYF6glrGyFCqDPbjVJIPpIwo9//KhyWRjlxro=; b=jmGK+rMQffolAYRpOzX+WTX5YK
+	MrJwYhxHXEzD5MeAe1BgXxLptLFZHIxihVPw+wTzgaSzGT3VeNgrd3XJ4ERFZktu80jiiKba4rchU
+	VwfmO2UnNHqGUUcEaTduRCHo/dupmPjGoWaZfbpP/eBejDttQTbe/HopvINiy9MOavtb9T7C6htTR
+	ScAXG1tfK2QKwhA/S/+tYgXXiDgVJJwBViNx+MSPvaCFPwrGW8oB3jj4jkspcwHJjA0KVH/RlsEFv
+	y3Bs1BOcHK2WhDMYiadLVHM90tUBzhbqPfClgAkuyNpzg4WdeDWygGCK3NCc/+3nBbnLiXlZLlMdY
+	Yoekt2Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmbWE-009j22-0s;
-	Sat, 30 Sep 2023 15:04:34 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1qmfjH-00A48Q-0S;
+	Sat, 30 Sep 2023 19:34:19 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmbWA-009j1N-1x
+	id 1qmfjE-00A47p-0R
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Sep 2023 15:04:32 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-52bd9ddb741so19808789a12.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 30 Sep 2023 08:04:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696086268; x=1696691068; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=cHgLhVHDgOAlF4wu9DFadd8d0WYR6p1ep8mvPGVkL/s=;
-        b=pJw0AoBzwdC23N1b3jbywFEcVnQMJ93XoKG2I3olZO3Ggu9RuPXvDRkL6aa152PlTU
-         G1oyPsA0J+f1QXIYOOmxjUpQNHPkWfy6QBEZyxUvqoVWTelDEFH6CMq6D0FH8aiuZNRa
-         hHXUlfi8rlFGimz8qRMLC0cBtw8WWbuP9xLsU20ag5G/a5zXH16ZlO7yqoCBfS85KufY
-         QCXflj313U4sxNRwOHwv4fcXj+qcWI/9UEjl9AbVTtFDhqyjf05FLRqjPH0qTFGmSjDj
-         hNXHD/uTmbu3B9pqcyGd0YEi59euPbmogSCNdPl28HT6p+K343LSLJMa+AAk6wziHiI8
-         jtpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696086268; x=1696691068;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=cHgLhVHDgOAlF4wu9DFadd8d0WYR6p1ep8mvPGVkL/s=;
-        b=b4ZnL5tymPI4T8UN84i6vsX3yhiPYKluEW5LKUvJB5SwP/Po9zwbkb1LJUx2zRRzv6
-         ieniQmLgPmB7t27ldyzSXSDJHXjgWTPqQOLm2SyuYJ8sILv1/u1bKbfMjmo8tZBpAmiN
-         gzwQCPoycZnrbtIwXSUneE3JMOBdI8XXpMt1jwxIL7cXZSlSHK/vKPRJZzlpw14n1gJc
-         2XW0dZeLGxHsaDdP4J5JlJaCI9ctqvxVDGKE08EKSLI5NL0ULberDODQ113AKYVlWWUi
-         YugeQJjdVIpfGyCVLSU0/ZUpi1q+KDyUr9A6wP69u+E76keJ4kByKzxWdiYoK2Rx5+pm
-         7sBQ==
-X-Gm-Message-State: AOJu0YxlbvAqa8kbCk0M7mdIpBfZaE8wonFPJCVHrt0WftI8FSxeTWRq
-	WnD+ST9KbbZTJNFk+dC2Xvmm5g==
-X-Google-Smtp-Source: AGHT+IHhRctQjp6SEkrLfgDpbelzW7ba1wtfB09VjYgl+5ev3gZPCEXIDBvesM/Ymznx/D35vZDtYg==
-X-Received: by 2002:aa7:ca48:0:b0:522:38cb:d8cb with SMTP id j8-20020aa7ca48000000b0052238cbd8cbmr5845250edt.20.1696086268499;
-        Sat, 30 Sep 2023 08:04:28 -0700 (PDT)
-Received: from [192.168.8.76] ([88.154.47.206])
-        by smtp.gmail.com with ESMTPSA id v10-20020aa7dbca000000b005330b2d1904sm12695228edt.71.2023.09.30.08.04.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 30 Sep 2023 08:04:28 -0700 (PDT)
-Message-ID: <51f4ac00-40c1-4dc2-9ab2-611f18462a84@linaro.org>
-Date: Sat, 30 Sep 2023 17:04:18 +0200
+	Sat, 30 Sep 2023 19:34:18 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qmfj4-00042n-Ll; Sat, 30 Sep 2023 21:34:06 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qmfj3-00A7Oc-8H; Sat, 30 Sep 2023 21:34:05 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qmfj2-006cq8-Sn; Sat, 30 Sep 2023 21:34:04 +0200
+Date: Sat, 30 Sep 2023 21:34:04 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org,
+	Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 01/13] dt-bindings: pwm: rockchip: Document rv1126-pwm
+Message-ID: <20230930193404.cmr7c4rwprjkk6z7@pengutronix.de>
+References: <20230731103518.2906147-1-jagan@edgeble.ai>
+ <20230731103518.2906147-2-jagan@edgeble.ai>
+ <20230731145129.mrrkb6tcuvlpmxan@pengutronix.de>
+ <5533260.88bMQJbFj6@phil>
+ <3efc0e28-3a5a-bfc7-57e3-e7e3d5ae1740@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/3] media: rockchip: Add a driver for Rockhip's camera
- interface
-Content-Language: en-US
-To: Mehdi Djait <mehdi.djait@bootlin.com>, mchehab@kernel.org,
- heiko@sntech.de, ezequiel@vanguardiasur.com.ar, hverkuil-cisco@xs4all.nl,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
-Cc: paul.kocialkowski@bootlin.com, miquel.raynal@bootlin.com,
- maxime.chevallier@bootlin.com, luca.ceresoli@bootlin.com,
- thomas.petazzoni@bootlin.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <cover.1695981374.git.mehdi.djait@bootlin.com>
- <2214ee8c72a870360c8009441a7fab9a2ad01ce2.1695981374.git.mehdi.djait@bootlin.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <2214ee8c72a870360c8009441a7fab9a2ad01ce2.1695981374.git.mehdi.djait@bootlin.com>
+In-Reply-To: <3efc0e28-3a5a-bfc7-57e3-e7e3d5ae1740@linaro.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230930_080430_674679_27C572D8 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20230930_123416_174976_9DBFF48E 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,195 +77,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8025991796706942778=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/09/2023 12:08, Mehdi Djait wrote:
-> Introduce a driver for the camera interface on some Rockchip platforms.
-> 
-...
 
-> +static const struct of_device_id rk_vip_plat_of_match[] = {
-> +	{
-> +		.compatible = "rockchip,px30-vip",
-> +		.data = &px30_vip_match_data,
-> +	},
-> +	{},
-> +};
-> +
-> +void rk_vip_soft_reset(struct rk_vip_device *vip_dev)
-> +{
-> +	reset_control_assert(vip_dev->vip_rst);
-> +
-> +	udelay(5);
-> +
-> +	reset_control_deassert(vip_dev->vip_rst);
-> +}
-> +
-> +static int rk_vip_plat_probe(struct platform_device *pdev)
-> +{
-> +	const struct of_device_id *match;
-> +	struct device_node *node = pdev->dev.of_node;
-> +	struct device *dev = &pdev->dev;
-> +	struct v4l2_device *v4l2_dev;
-> +	struct rk_vip_device *vip_dev;
-> +	const struct vip_match_data *data;
-> +	struct resource *res;
-> +	int i, ret, irq;
-> +
-> +	match = of_match_node(rk_vip_plat_of_match, node);
-> +	if (IS_ERR(match))
-
-of_match_node does no return ERR_PTR.
-
-> +		return PTR_ERR(match);
-> +
-> +	vip_dev = devm_kzalloc(dev, sizeof(*vip_dev), GFP_KERNEL);
-> +	if (!vip_dev)
-> +		return -ENOMEM;
-> +
-> +	dev_set_drvdata(dev, vip_dev);
-> +	vip_dev->dev = dev;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = devm_request_irq(dev, irq, rk_vip_irq_pingpong, IRQF_SHARED,
-
-Shared? With devm? This is error-prone pattern (as discussed few times
-on the list). Are you 100% sure that all your use-cases are correct?
-
-> +			       dev_driver_string(dev), dev);
-> +	if (ret < 0) {
-> +		dev_err(dev, "request irq failed: %d\n", ret);
-
-return dev_err_probe
-
-> +		return ret;
-> +	}
-> +
-> +	vip_dev->irq = irq;
-> +	data = match->data;
-> +	vip_dev->chip_id = data->chip_id;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	vip_dev->base_addr = devm_ioremap_resource(dev, res);
-
-Use wrapper for these two.
-
-> +
-> +	if (IS_ERR(vip_dev->base_addr))
-> +		return PTR_ERR(vip_dev->base_addr);
-> +
-> +	for (i = 0; i < data->clks_num; i++)
-> +		vip_dev->clks[i].id = data->clks[i];
-> +
-> +	vip_dev->num_clk = data->clks_num;
-> +
-> +	ret = devm_clk_bulk_get(dev, vip_dev->num_clk, vip_dev->clks);
-> +	if (ret)
-> +		return ret;
-> +
-> +	vip_dev->vip_rst = devm_reset_control_array_get(dev, false, false);
-> +	if (IS_ERR(vip_dev->vip_rst))
-> +		return PTR_ERR(vip_dev->vip_rst);
-> +
-> +	/* Initialize the stream */
-> +	rk_vip_stream_init(vip_dev);
-> +	strscpy(vip_dev->media_dev.model, "rk_vip",
-> +		sizeof(vip_dev->media_dev.model));
-> +	vip_dev->media_dev.dev = &pdev->dev;
-> +	v4l2_dev = &vip_dev->v4l2_dev;
-> +	v4l2_dev->mdev = &vip_dev->media_dev;
-> +	strscpy(v4l2_dev->name, "rk_vip", sizeof(v4l2_dev->name));
-> +
-> +	ret = v4l2_device_register(vip_dev->dev, &vip_dev->v4l2_dev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	media_device_init(&vip_dev->media_dev);
-> +
-> +	ret = media_device_register(&vip_dev->media_dev);
-> +	if (ret < 0) {
-> +		v4l2_err(v4l2_dev, "Failed to register media device: %d\n",
-> +			 ret);
-> +		goto err_unreg_v4l2_dev;
-> +	}
-> +
-> +	/* create & register platform subdev (from of_node) */
-> +	ret = rk_vip_register_platform_subdevs(vip_dev);
-> +	if (ret < 0)
-> +		goto err_unreg_media_dev;
-> +
-> +	vip_dev->sensor.std = V4L2_STD_NTSC;
-> +	rk_vip_set_default_format(vip_dev);
-> +	pm_runtime_enable(&pdev->dev);
-> +
-> +	return 0;
-> +
-> +err_unreg_media_dev:
-> +	media_device_unregister(&vip_dev->media_dev);
-> +err_unreg_v4l2_dev:
-> +	v4l2_device_unregister(&vip_dev->v4l2_dev);
-> +	return ret;
-> +}
-> +
-> +static int rk_vip_plat_remove(struct platform_device *pdev)
-> +{
-> +	struct rk_vip_device *vip_dev = platform_get_drvdata(pdev);
-> +
-> +	pm_runtime_disable(&pdev->dev);
-> +
-> +	media_device_unregister(&vip_dev->media_dev);
-> +	v4l2_device_unregister(&vip_dev->v4l2_dev);
-> +	rk_vip_unregister_stream_vdev(vip_dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused rk_vip_runtime_suspend(struct device *dev)
-> +{
-> +	struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
-> +
-> +	clk_bulk_disable_unprepare(vip_dev->num_clk, vip_dev->clks);
-> +
-> +	return pinctrl_pm_select_sleep_state(dev);
-> +}
-> +
-> +static int __maybe_unused rk_vip_runtime_resume(struct device *dev)
-> +{
-> +	struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
-> +	int ret;
-> +
-> +	ret = pinctrl_pm_select_default_state(dev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	return clk_bulk_prepare_enable(vip_dev->num_clk, vip_dev->clks);
-> +}
-> +
-> +static const struct dev_pm_ops rk_vip_plat_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> +				pm_runtime_force_resume)
-> +	SET_RUNTIME_PM_OPS(rk_vip_runtime_suspend, rk_vip_runtime_resume, NULL)
-> +};
-> +
-> +static struct platform_driver rk_vip_plat_drv = {
-> +	.driver = {
-> +		   .name = VIP_DRIVER_NAME,
-> +		   .of_match_table = of_match_ptr(rk_vip_plat_of_match),
-
-drop of_match_ptr, causes warnings in your code.
+--===============8025991796706942778==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ubitorhfqz2eres4"
+Content-Disposition: inline
 
 
-Best regards,
-Krzysztof
+--ubitorhfqz2eres4
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+Hello Heiko,
+
+On Tue, Aug 15, 2023 at 10:59:57PM +0200, Krzysztof Kozlowski wrote:
+> On 09/08/2023 16:02, Heiko Stuebner wrote:
+> > Am Montag, 31. Juli 2023, 16:51:29 CEST schrieb Uwe Kleine-K=F6nig:
+> >> On Mon, Jul 31, 2023 at 04:05:06PM +0530, Jagan Teki wrote:
+> >>> Document pwm compatible for rv1126 which is fallback compatible
+> >>> of rk3328-pwm group.
+> >>>
+> >>> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> >>
+> >> Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> >>
+> >> Should this go in via the pwm tree, or together with the other patches
+> >> via rockchip?
+> >=20
+> > I have no clue, sadly. I _can_ pick it up, but I guess that would
+> > require an Ack from Thierry? Otherwise I guess we'll need to wait
+> > for him.
+>=20
+> General preference is that binding goes via subsystem (so Thierry), but
+> there are no driver changes here and your DTS branch would benefit from
+> it (less dtbs_check warnings). Therefore I propose - just grab it -
+> unless Thierry wants other way.
+
+There are no other changes on the list to that file, so I don't think
+we'll run into conflicts. I guess Thierry doesn't feel strong here, so
+I'm with Krzysztof here: Pick up this patch together with patches #2 to
+#5.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--ubitorhfqz2eres4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmUYeCsACgkQj4D7WH0S
+/k60AAf/RHvVEkErr8WLnxhT5b2uMA4OBD63CyJTpWXV51pjHtuo64WKA4pAKpSZ
+ROgtKqDjV4WE+vJAJfFu7eBLaX42J9G7On+w3sxOi1kNA90BdBQC9Org1Uqnn9Ig
+XUbq05OwRf/2nKWhCq79kbdQgXVoIRTvyxlt5gciQ7nW96RayA0sIoBj5HrxgLC5
+x1iN23uWo0fVM57lMGClHyNQacwXV4D0/p0+ScdgTj1sqC3kbearRNu/epNM+A/B
+76I8Lh4TcKpvL7S4p9sBUB4yXx3mQVOEFuxUWS7Uc2WXNkGtqCBA15qtmdknhMbJ
+3GP4wd6pDarFGTJjmNmO2/fRSIFn5w==
+=Q19Z
+-----END PGP SIGNATURE-----
+
+--ubitorhfqz2eres4--
+
+
+--===============8025991796706942778==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8025991796706942778==--
+
