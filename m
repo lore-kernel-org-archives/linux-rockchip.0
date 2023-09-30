@@ -4,56 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9FE4E71D2D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Sep 2023 13:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B58E77354
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Sep 2023 05:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lWI1ME2Ty1QoM1jRCyytkZMOXc8zBdp3rgKn16+UNCg=; b=VBFnBpwP+JR/zH
-	H7dbYNOMEFAa+vRyekcs4kIj+PFZ0mrNJOKAKAwhwqE/+ZSE+3NsZpldMZFAZ3DUXF4GfkXba+g1+
-	NTZeIsTynyETpk09dw5e5zpc7GT71U5ANloZQiLopkIzPCsufSlX8xHGbSf/GBku/0uoqyG/Dgmbe
-	Rgb9NrMlsR/vIGLjOodsUC/VU3peATsOW9qy0/P5zckxHjdf+6nnVcOuE671izoIYm7GYyJqWyGzo
-	qXVlB/Sh3xew+IJcMWKHHwYfRWK35eqkrkmpqsh0GKoxlfsexcU2W2eaIL5ZPvAVAZhZ02CE1Y6eK
-	RjhB+HxR7ILCshMcUvpQ==;
+	List-Owner; bh=9pwJOqdkewxI/YlCqwlziWSLSqns43bu6kARWGrbR5c=; b=LwJFmuT2/nIsjC
+	6OjZjNyYm9lefqqFJy44yKkCW/Xsy0nE4npxlupQ5w/uGZ1aT3mvUpvAVl9ZEDDFZ+Q8DCuHafKP9
+	dE3jyjJuGY735aWxKUOl7K1kgUIqhXTLCET32J+Zaa6C7Dt0yaRhyjvpFubQt/tu9tePCRk234mfw
+	NaD+zgbH64aovEX6JZfzsdW0MDtXCB2tbt08lu6MeLyQGS/OIzri+FGbA+IVKyqS1mtopL6ZuErmk
+	P+fzevJkEVG+FO790hnKyOx0pCftPr4pZtPc+7uNMxFYf3moHrq0r34FUp3lxdmalPd8Bh3JmY+jp
+	70GKMBxc5hLxKiCXIbJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmDMu-007wsi-34;
-	Fri, 29 Sep 2023 13:17:20 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qmSEg-008z3q-1k;
+	Sat, 30 Sep 2023 05:09:50 +0000
+Received: from mgamail.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmDMp-007wr7-2O;
-	Fri, 29 Sep 2023 13:17:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E7669CE2428;
-	Fri, 29 Sep 2023 13:17:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED1BC433C7;
-	Fri, 29 Sep 2023 13:17:10 +0000 (UTC)
-Message-ID: <9c38c002-8452-4fb7-a7ee-cc8e9e1b849e@xs4all.nl>
-Date: Fri, 29 Sep 2023 15:17:08 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/53] Add DELETE_BUF ioctl
-Content-Language: en-US, nl
+	id 1qmSEb-008z34-2v;
+	Sat, 30 Sep 2023 05:09:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696050585; x=1727586585;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qswovL8KxKdf3oMfZOvKErO4KUB0d6/EYbBFUBi2r2Q=;
+  b=i3lN2HAzdlb22vNILhgfNK+5n9r0jxP2UJ4X0cgmip8zn/hZtcfjea6R
+   IXOuVyu3LVmPP9/y/wL3ykULRkr2BQhsxILEWKjE/PzczFRKPxcxEDZ20
+   IInYFvUMoW3R3tJNg5B3INDSdL4V86bIDYHIyarbJktOJFbkMlv8nj+SO
+   qktsGMIKaVwQJpZILQ+z88s/y4UNNozkdnjSxrajDUpTLky30e/HEkS97
+   MISmq7KnrNaZnmAsMwHU0FMpADrUgdrZQJJ6Fad/jEX7pDeO1kNb6hGca
+   lHWPMPJySzeHSbpMwuS+5HTRHsseGAV8nf83AHRW9RJpdRiZYSvyRigt8
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10848"; a="386291877"
+X-IronPort-AV: E=Sophos;i="6.03,189,1694761200"; 
+   d="scan'208";a="386291877"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Sep 2023 22:09:44 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.03,189,1694761200"; 
+   d="scan'208";a="1057982"
+Received: from lkp-server02.sh.intel.com (HELO c3b01524d57c) ([10.239.97.151])
+  by fmviesa001.fm.intel.com with ESMTP; 29 Sep 2023 22:09:40 -0700
+Received: from kbuild by c3b01524d57c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qmSES-0003jB-2R;
+	Sat, 30 Sep 2023 05:09:36 +0000
+Date: Sat, 30 Sep 2023 13:09:34 +0800
+From: kernel test robot <lkp@intel.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
- <ce043b11-aea9-4127-ba00-6c351651dc1e@xs4all.nl>
- <5cc5a999-e22d-4ef8-c857-ffd77630eeb9@collabora.com>
- <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <38ec1120-7c92-833b-6e59-35086f4a3c10@collabora.com>
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v8 50/53] media: core: Free range of buffers
+Message-ID: <202309301247.Y0hH4pjx-lkp@intel.com>
+References: <20230927153558.159278-51-benjamin.gaignard@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230927153558.159278-51-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230929_061716_116649_4702ADEF 
-X-CRM114-Status: GOOD (  29.66  )
+X-CRM114-CacheID: sfid-20230929_220946_045064_F9FCE664 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,200 +86,179 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjkvMDkvMjAyMyAxMzo0NCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gCj4gTGUgMjgv
-MDkvMjAyMyDDoCAxNToxNiwgQmVuamFtaW4gR2FpZ25hcmQgYSDDqWNyaXTCoDoKPj4KPj4gTGUg
-MjgvMDkvMjAyMyDDoCAxNTowNCwgSGFucyBWZXJrdWlsIGEgw6ljcml0wqA6Cj4+PiBIaSBCZW5q
-YW1pbiwKPj4+Cj4+PiBPbiAyNy8wOS8yMDIzIDE3OjM1LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90
-ZToKPj4+PiBVbmxpa2Ugd2hlbiByZXNvbHV0aW9uIGNoYW5nZSBvbiBrZXlmcmFtZXMsIGR5bmFt
-aWMgcmVzb2x1dGlvbiBjaGFuZ2UKPj4+PiBvbiBpbnRlciBmcmFtZXMgZG9lc24ndCBhbGxvdyB0
-byBkbyBhIHN0cmVhbSBvZmYvb24gc2VxdWVuY2UgYmVjYXVzZQo+Pj4+IGl0IGlzIG5lZWQgdG8g
-a2VlcCBhbGwgcHJldmlvdXMgcmVmZXJlbmNlcyBhbGl2ZSB0byBkZWNvZGUgaW50ZXIgZnJhbWVz
-Lgo+Pj4+IFRoaXMgY29uc3RyYWludCBoYXZlIHR3byBtYWluIHByb2JsZW1zOgo+Pj4+IC0gbW9y
-ZSBtZW1vcnkgY29uc3VtcHRpb24uCj4+Pj4gLSBtb3JlIGJ1ZmZlcnMgaW4gdXNlLgo+Pj4+IFRv
-IHNvbHZlIHRoZXNlIGlzc3VlIHRoaXMgc2VyaWVzIGludHJvZHVjZSBERUxFVEVfQlVGUyBpb2N0
-bCBhbmQgcmVtb3ZlCj4+Pj4gdGhlIDMyIGJ1ZmZlcnMgbGltaXQgcGVyIHF1ZXVlLgo+Pj4+Cj4+
-Pj4gVlA5IGNvbmZvcm1hbmNlIHRlc3RzIHVzaW5nIGZsdXN0ZXIgZ2l2ZSBhIHNjb3JlIG9mIDIx
-MC8zMDUuCj4+Pj4gVGhlIDI0IHJlc2l6ZSBpbnRlciB0ZXN0cyAodnA5MC0yLTIxLXJlc2l6ZV9p
-bnRlcl8qIGZpbGVzKSBhcmUgb2sKPj4+PiBidXQgcmVxdWlyZSB0byB1c2UgcG9zdHByb2Nlc3Nv
-ci4KPj4+Pgo+Pj4+IEtlcm5lbCBicmFuY2ggaXMgYXZhaWxhYmxlIGhlcmU6Cj4+Pj4gaHR0cHM6
-Ly9naXRsYWIuY29sbGFib3JhLmNvbS9iZW5qYW1pbi5nYWlnbmFyZC9mb3ItdXBzdHJlYW0vLS9j
-b21taXRzL3JlbW92ZV92YjJfcXVldWVfbGltaXRfdjgKPj4+Pgo+Pj4+IEdTdHJlYW1lciBicmFu
-Y2ggdG8gdXNlIERFTEVURV9CVUYgaW9jdGwgYW5kIHRlc3RpbmcgZHluYW1pYyByZXNvbHV0aW9u
-Cj4+Pj4gY2hhbmdlIGlzIGhlcmU6Cj4+Pj4gaHR0cHM6Ly9naXRsYWIuZnJlZWRlc2t0b3Aub3Jn
-L2JlbmphbWluLmdhaWduYXJkMS9nc3RyZWFtZXIvLS9jb21taXRzL1ZQOV9kcmMKPj4+IEkgYXBw
-bGllZCBwYXRjaGVzIDEtNDYgb24gdG9wIG9mIHN0YWdpbmcgYW5kIGFwcGxpZWQgcGF0Y2ggMS8y
-IG9mIHY0bC11dGlscy4gSSBjaG9zZQo+Pj4gMS00NiBzaW5jZSB0aG9zZSB3b3VsZCBiZSB0aGUg
-Zmlyc3QgYmF0Y2ggdG8gYmUgbWVyZ2VkLgo+Pj4KPj4+IEkgaGFkIHRvIGFwcGx5IGEgc21hbGwg
-cGF0Y2ggb24gdG9wLCBzaW5jZSBhbXBoaW9uIHdhcyBzdGlsbCB1c2luZyBtYXhfYWxsb3dlZF9i
-dWZmZXJzOgo+Pj4KPj4+IGh0dHBzOi8vZ2l0LmxpbnV4dHYub3JnL2h2ZXJrdWlsL21lZGlhX3Ry
-ZWUuZ2l0L2NvbW1pdC8/aD1kZWxidWYmaWQ9ZmNlNzlhYTAyMzlhM2E0ZTVjNzYzNGI5YjdmZmMz
-NTYwNTdiNzBiNAo+Pj4KPj4+IFdpdGggdGhhdCBjaGFuZ2UgZXZlcnl0aGluZyBjb21waWxlZCBj
-bGVhbmx5Lgo+Pj4KPj4+IEJ1dCBydW5uaW5nIHRoZSByZWdyZXNzaW9uIHRlc3RzICh0ZXN0LW1l
-ZGlhIHNjcmlwdCkgZmFpbGVkIHdpdGggYSBrZXJuZWwgb29wczoKPj4+Cj4+PiBCdWZmZXIgaW9j
-dGxzIChJbnB1dCAwKToKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZhaWw6
-IHY0bDItdGVzdC1idWZmZXJzLmNwcCg2MTEpOiBxLnJlcWJ1ZnMobm9kZSwgMSkKPj4+IMKgwqDC
-oMKgwqDCoMKgwqAgdGVzdCBWSURJT0NfUkVRQlVGUy9DUkVBVEVfQlVGUy9RVUVSWUJVRjogRkFJ
-TAo+Pj4gW8KgwqAgMjUuMzA5MzQzXSBnZW5lcmFsIHByb3RlY3Rpb24gZmF1bHQsIHByb2JhYmx5
-IGZvciBub24tY2Fub25pY2FsIGFkZHJlc3MgMHhkZmZmZmMwMDAwMDAwMDAxOiAwMDAwIFsjMV0g
-UFJFRU1QVCBTTVAgREVCVUdfUEFHRUFMTE9DIEtBU0FOCj4+PiBbwqDCoCAyNS4zMTAwNjddIEtB
-U0FOOiBudWxsLXB0ci1kZXJlZiBpbiByYW5nZSBbMHgwMDAwMDAwMDAwMDAwMDA4LTB4MDAwMDAw
-MDAwMDAwMDAwZl0KPj4+IFvCoMKgIDI1LjMxMDQ3MV0gQ1BVOiAwIFBJRDogMTg3IENvbW06IHY0
-bDItY29tcGxpYW5jZSBOb3QgdGFpbnRlZCA2LjYuMC1yYzMrICMxCj4+PiBbwqDCoCAyNS4zMTA4
-MzddIEhhcmR3YXJlIG5hbWU6IFFFTVUgU3RhbmRhcmQgUEMgKGk0NDBGWCArIFBJSVgsIDE5OTYp
-LCBCSU9TIDEuMTYuMi1kZWJpYW4tMS4xNi4yLTEgMDQvMDEvMjAxNAo+Pj4gW8KgwqAgMjUuMzEx
-MzM0XSBSSVA6IDAwMTA6X192YjJfcXVldWVfYWxsb2MrMHgzNGMvMHhkMDAgW3ZpZGVvYnVmMl9j
-b21tb25dCj4+PiBbwqDCoCAyNS4zMTE2ODhdIENvZGU6IDg5IGY4IDQ4IGMxIGU4IDAzIDgwIDNj
-IDE4IDAwIDBmIDg1IDBjIDA3IDAwIDAwIDQ5IDhiIGI3IDQwIDAxIDAwIDAwIDQ0IDg5IGYwIDRj
-IDhkIDJjIGM2IDQxIDM5IGNlIDczIDE4IDRjIDg5IGU4IDQ4IGMxIGU4IDAzIDw4MD4gM2MgMTgg
-MDAgMGYgODUgZDIgMDggMDAgMDAgNDkgODMgN2QgMDAgMDAgNzQgMDIKPj4+IDBmIDBiIDRjIDg5
-IGU4Cj4+PiBbwqDCoCAyNS4zMTI2NzBdIFJTUDogMDAxODpmZmZmODg4MTBhZmVmOTMwIEVGTEFH
-UzogMDAwMTAyMTIKPj4+IFvCoMKgIDI1LjMxMjk0OF0gUkFYOiAwMDAwMDAwMDAwMDAwMDAxIFJC
-WDogZGZmZmZjMDAwMDAwMDAwMCBSQ1g6IDAwMDAwMDAwMDAwMDAwNDAKPj4+IFvCoMKgIDI1LjMx
-MzMzMV0gUkRYOiBmZmZmODg4MTBjZTA4ODE0IFJTSTogMDAwMDAwMDAwMDAwMDAwMCBSREk6IGZm
-ZmY4ODgxMGNmYjcyZTAKPj4+IFvCoMKgIDI1LjMxMzcwOF0gUkJQOiBmZmZmODg4MTBjZTA4ODAw
-IFIwODogMDAwMDAwMDAwMDAwMTgwMCBSMDk6IDAwMDAwMDAwMDAwMDAwMDEKPj4+IFvCoMKgIDI1
-LjMxNDA5N10gUjEwOiBmZmZmZmZmZjkxNTYwYjBmIFIxMTogZmZmZmZmZmY4ZjQwMDA2YSBSMTI6
-IGZmZmY4ODgxMGFmZWZhNzQKPj4+IFvCoMKgIDI1LjMxNDQ3MF0gUjEzOiAwMDAwMDAwMDAwMDAw
-MDA4IFIxNDogMDAwMDAwMDAwMDAwMDAwMSBSMTU6IGZmZmY4ODgxMGNmYjcxYTAKPj4+IFvCoMKg
-IDI1LjMxNDg1NF0gRlM6wqAgMDAwMDdmYTUyNDkwODQ0MCgwMDAwKSBHUzpmZmZmODg4MTFhYTAw
-MDAwKDAwMDApIGtubEdTOjAwMDAwMDAwMDAwMDAwMDAKPj4+IFvCoMKgIDI1LjMxNTI4MV0gQ1M6
-wqAgMDAxMCBEUzogMDAwMCBFUzogMDAwMCBDUjA6IDAwMDAwMDAwODAwNTAwMzMKPj4+IFvCoMKg
-IDI1LjMxNTU5NF0gQ1IyOiAwMDAwNTYyODU1OTQ4MjcwIENSMzogMDAwMDAwMDEwOWUyMTAwMCBD
-UjQ6IDAwMDAwMDAwMDAzNTBlZjAKPj4+IFvCoMKgIDI1LjMxNTk4Ml0gQ2FsbCBUcmFjZToKPj4+
-IFvCoMKgIDI1LjMxNjEyMl3CoCA8VEFTSz4KPj4+IFvCoMKgIDI1LjMxNjI0M13CoCA/IGRpZV9h
-ZGRyKzB4MzcvMHhhMAo+Pj4gW8KgwqAgMjUuMzE2NDMzXcKgID8gZXhjX2dlbmVyYWxfcHJvdGVj
-dGlvbisweDE0NC8weDIxMAo+Pj4gW8KgwqAgMjUuMzE2NjkzXcKgID8gYXNtX2V4Y19nZW5lcmFs
-X3Byb3RlY3Rpb24rMHgyMi8weDMwCj4+PiBbwqDCoCAyNS4zMTY5NTVdwqAgPyBlbnRyeV9TWVND
-QUxMXzY0X2FmdGVyX2h3ZnJhbWUrMHg0Ni8weGIwCj4+PiBbwqDCoCAyNS4zMTcyMzVdwqAgPyBf
-X3ZiMl9xdWV1ZV9hbGxvYysweDM0Yy8weGQwMCBbdmlkZW9idWYyX2NvbW1vbl0KPj4+IFvCoMKg
-IDI1LjMxNzU1NV3CoCB2YjJfY29yZV9jcmVhdGVfYnVmcysweDVhMC8weGNlMCBbdmlkZW9idWYy
-X2NvbW1vbl0KPj4+IFvCoMKgIDI1LjMxNzg3OV3CoCA/IF9fdmIyX3F1ZXVlX2FsbG9jKzB4ZDAw
-LzB4ZDAwIFt2aWRlb2J1ZjJfY29tbW9uXQo+Pj4gW8KgwqAgMjUuMzE4MjEzXcKgIHZiMl9jcmVh
-dGVfYnVmcysweDY4MC8weDdmMCBbdmlkZW9idWYyX3Y0bDJdCj4+PiBbwqDCoCAyNS4zMTg1MDZd
-wqAgPyBfX2thc2FuX2ttYWxsb2MrMHg4My8weDkwCj4+PiBbwqDCoCAyNS4zMTg3MjldwqAgPyBf
-X2ttYWxsb2MrMHg1Yy8weDE1MAo+Pj4gW8KgwqAgMjUuMzE4OTI0XcKgID8gX192aWRlb19kb19p
-b2N0bCsweDNhNS8weGMyMCBbdmlkZW9kZXZdCj4+PiBbwqDCoCAyNS4zMTkyMjNdwqAgPyBfX2Nv
-cHlfdGltZXN0YW1wKzB4MjcwLzB4MjcwIFt2aWRlb2J1ZjJfdjRsMl0KPj4+IFvCoMKgIDI1LjMx
-OTUzMl3CoCA/IHY0bF9zYW5pdGl6ZV9mb3JtYXQrMHgxMjEvMHgzNDAgW3ZpZGVvZGV2XQo+Pj4g
-W8KgwqAgMjUuMzE5ODM5XcKgIHZiMl9pb2N0bF9jcmVhdGVfYnVmcysweDI4MC8weDQ0MCBbdmlk
-ZW9idWYyX3Y0bDJdCj4+PiBbwqDCoCAyNS4zMjAxNjJdwqAgPyBjaGVja19mbXQrMHgxNS8weDVl
-MCBbdmlkZW9kZXZdCj4+PiBbwqDCoCAyNS4zMjA0MjBdwqAgdjRsX2NyZWF0ZV9idWZzKzB4YTgv
-MHgxNTAgW3ZpZGVvZGV2XQo+Pj4gW8KgwqAgMjUuMzIwNjkzXcKgIF9fdmlkZW9fZG9faW9jdGwr
-MHg4ZDAvMHhjMjAgW3ZpZGVvZGV2XQo+Pj4gW8KgwqAgMjUuMzIwOTc1XcKgID8gdjRsX3ByZXBh
-cmVfYnVmKzB4YTAvMHhhMCBbdmlkZW9kZXZdCj4+PiBbwqDCoCAyNS4zMjEyNTBdwqAgPyBfX21p
-Z2h0X2ZhdWx0KzB4MTEyLzB4MTcwCj4+PiBbwqDCoCAyNS4zMjE0NjNdwqAgPyBfX21pZ2h0X2Zh
-dWx0KzB4MTEyLzB4MTcwCj4+PiBbwqDCoCAyNS4zMjE2NzVdwqAgdmlkZW9fdXNlcmNvcHkrMHg0
-OGMvMHhkMDAgW3ZpZGVvZGV2XQo+Pj4gW8KgwqAgMjUuMzIxOTQ5XcKgID8gdjRsX3ByZXBhcmVf
-YnVmKzB4YTAvMHhhMCBbdmlkZW9kZXZdCj4+PiBbwqDCoCAyNS4zMjIyMjhdwqAgPyB2NGxfZW51
-bXN0ZCsweDYwLzB4NjAgW3ZpZGVvZGV2XQo+Pj4gW8KgwqAgMjUuMzIyNDk3XcKgID8gc2VsaW51
-eF9icHJtX2NyZWRzX2Zvcl9leGVjKzB4YTkwLzB4YTkwCj4+PiBbwqDCoCAyNS4zMjI3NzldwqAg
-PyByc2VxX2lwX2ZpeHVwKzB4MzA0LzB4NDgwCj4+PiBbwqDCoCAyNS4zMjI5OTVdwqAgPyBfX3Vw
-X3JlYWQrMHgxMGIvMHg3NTAKPj4+IFvCoMKgIDI1LjMyMzIwMV3CoCA/IHJzZXFfZ2V0X3JzZXFf
-Y3MrMHg2ODAvMHg2ODAKPj4+IFvCoMKgIDI1LjMyMzQzMF3CoCB2NGwyX2lvY3RsKzB4MTdmLzB4
-MWYwIFt2aWRlb2Rldl0KPj4+IFvCoMKgIDI1LjMyMzY4OV3CoCBfX3g2NF9zeXNfaW9jdGwrMHgx
-MjcvMHgxOTAKPj4+IFvCoMKgIDI1LjMyMzkwNV3CoCBkb19zeXNjYWxsXzY0KzB4MzUvMHg4MAo+
-Pj4gW8KgwqAgMjUuMzI0MTA1XcKgIGVudHJ5X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ2
-LzB4YjAKPj4+IFvCoMKgIDI1LjMyNDM3Ml0gUklQOiAwMDMzOjB4N2ZhNTI0YmY0NGViCj4+PiBb
-wqDCoCAyNS4zMjQ1NjRdIENvZGU6IDAwIDQ4IDg5IDQ0IDI0IDE4IDMxIGMwIDQ4IDhkIDQ0IDI0
-IDYwIGM3IDA0IDI0IDEwIDAwIDAwIDAwIDQ4IDg5IDQ0IDI0IDA4IDQ4IDhkIDQ0IDI0IDIwIDQ4
-IDg5IDQ0IDI0IDEwIGI4IDEwIDAwIDAwIDAwIDBmIDA1IDw4OT4gYzIgM2QgMDAgZjAgZmYgZmYg
-NzcgMWMgNDggOGIgNDQgMjQgMTggNjQgNDggMmIKPj4+IDA0IDI1IDI4IDAwIDAwCj4+PiBbwqDC
-oCAyNS4zMjU1MzNdIFJTUDogMDAyYjowMDAwN2ZmYzg4OGVmZWUwIEVGTEFHUzogMDAwMDAyNDYg
-T1JJR19SQVg6IDAwMDAwMDAwMDAwMDAwMTAKPj4+IFvCoMKgIDI1LjMyNTkzM10gUkFYOiBmZmZm
-ZmZmZmZmZmZmZmRhIFJCWDogMDAwMDdmZmM4ODhmMDM1MCBSQ1g6IDAwMDA3ZmE1MjRiZjQ0ZWIK
-Pj4+IFvCoMKgIDI1LjMyNjMxNF0gUkRYOiAwMDAwN2ZmYzg4OGVmZmIwIFJTSTogMDAwMDAwMDBj
-MTAwNTY1YyBSREk6IDAwMDAwMDAwMDAwMDAwMjMKPj4+IFvCoMKgIDI1LjMyNjcwMl0gUkJQOiAw
-MDAwN2ZmYzg4OGY4NTUwIFIwODogMDAwMDAwMDAwMDAwMDAwMCBSMDk6IDAwMDAwMDAwMDAwMDAw
-MDEKPj4+IFvCoMKgIDI1LjMyNzA4MV0gUjEwOiAwMDAwMDAwMDAwMDAwMDE2IFIxMTogMDAwMDAw
-MDAwMDAwMDI0NiBSMTI6IDAwMDAwMDAwMDAwMDAwMDAKPj4+IFvCoMKgIDI1LjMyNzQ2OF0gUjEz
-OiAwMDAwMDAwMDAwMDAwMDAxIFIxNDogMDAwMDdmZmM4ODhmODAxMCBSMTU6IDAwMDA3ZmZjODg4
-ZjE3OTAKPj4+IFvCoMKgIDI1LjMyNzg1Ml3CoCA8L1RBU0s+Cj4+PiBbwqDCoCAyNS4zMjc5Nzld
-IE1vZHVsZXMgbGlua2VkIGluOiB2aXZpZCB2aWRlb2J1ZjJfZG1hX2NvbnRpZyB2NGwyX3RwZyB2
-NGwyX2R2X3RpbWluZ3MgY2VjIHZpZGVvYnVmMl92bWFsbG9jIHZpZGVvYnVmMl9tZW1vcHMgdmlk
-ZW9idWYyX3Y0bDIgdmlkZW9kZXYgdmlkZW9idWYyX2NvbW1vbiBtYyByY19jb3JlCj4+PiBbwqDC
-oCAyNS4zMjg4MzVdIC0tLVsgZW5kIHRyYWNlIDAwMDAwMDAwMDAwMDAwMDAgXS0tLQo+Pj4gW8Kg
-wqAgMjUuMzI5MDgzXSBSSVA6IDAwMTA6X192YjJfcXVldWVfYWxsb2MrMHgzNGMvMHhkMDAgW3Zp
-ZGVvYnVmMl9jb21tb25dCj4+PiBbwqDCoCAyNS4zMjk0MzRdIENvZGU6IDg5IGY4IDQ4IGMxIGU4
-IDAzIDgwIDNjIDE4IDAwIDBmIDg1IDBjIDA3IDAwIDAwIDQ5IDhiIGI3IDQwIDAxIDAwIDAwIDQ0
-IDg5IGYwIDRjIDhkIDJjIGM2IDQxIDM5IGNlIDczIDE4IDRjIDg5IGU4IDQ4IGMxIGU4IDAzIDw4
-MD4gM2MgMTggMDAgMGYgODUgZDIgMDggMDAgMDAgNDkgODMgN2QgMDAgMDAgNzQgMDIKPj4+IDBm
-IDBiIDRjIDg5IGU4Cj4+PiBbwqDCoCAyNS4zMzA0MTddIFJTUDogMDAxODpmZmZmODg4MTBhZmVm
-OTMwIEVGTEFHUzogMDAwMTAyMTIKPj4+IFvCoMKgIDI1LjMzMDgxMl0gUkFYOiAwMDAwMDAwMDAw
-MDAwMDAxIFJCWDogZGZmZmZjMDAwMDAwMDAwMCBSQ1g6IDAwMDAwMDAwMDAwMDAwNDAKPj4+IFvC
-oMKgIDI1LjMzMTE5NF0gUkRYOiBmZmZmODg4MTBjZTA4ODE0IFJTSTogMDAwMDAwMDAwMDAwMDAw
-MCBSREk6IGZmZmY4ODgxMGNmYjcyZTAKPj4+IFvCoMKgIDI1LjMzMTU5NF0gUkJQOiBmZmZmODg4
-MTBjZTA4ODAwIFIwODogMDAwMDAwMDAwMDAwMTgwMCBSMDk6IDAwMDAwMDAwMDAwMDAwMDEKPj4+
-IFvCoMKgIDI1LjMzMTk3OF0gUjEwOiBmZmZmZmZmZjkxNTYwYjBmIFIxMTogZmZmZmZmZmY4ZjQw
-MDA2YSBSMTI6IGZmZmY4ODgxMGFmZWZhNzQKPj4+IFvCoMKgIDI1LjMzMjM2MF0gUjEzOiAwMDAw
-MDAwMDAwMDAwMDA4IFIxNDogMDAwMDAwMDAwMDAwMDAwMSBSMTU6IGZmZmY4ODgxMGNmYjcxYTAK
-Pj4+IFvCoMKgIDI1LjMzMjc0Nl0gRlM6wqAgMDAwMDdmYTUyNDkwODQ0MCgwMDAwKSBHUzpmZmZm
-ODg4MTFhYTAwMDAwKDAwMDApIGtubEdTOjAwMDAwMDAwMDAwMDAwMDAKPj4+IFvCoMKgIDI1LjMz
-MzE3MF0gQ1M6wqAgMDAxMCBEUzogMDAwMCBFUzogMDAwMCBDUjA6IDAwMDAwMDAwODAwNTAwMzMK
-Pj4+IFvCoMKgIDI1LjMzMzQ4Nl0gQ1IyOiAwMDAwNTYyODU1OTQ4MjcwIENSMzogMDAwMDAwMDEw
-OWUyMTAwMCBDUjQ6IDAwMDAwMDAwMDAzNTBlZjAKPj4+IFvCoMKgIDI1LjMzMzg2MV0gS2VybmVs
-IHBhbmljIC0gbm90IHN5bmNpbmc6IEZhdGFsIGV4Y2VwdGlvbgo+Pj4gW8KgwqAgMjUuMzM0MTc5
-XSBLZXJuZWwgT2Zmc2V0OiAweGJlMDAwMDAgZnJvbSAweGZmZmZmZmZmODEwMDAwMDAgKHJlbG9j
-YXRpb24gcmFuZ2U6IDB4ZmZmZmZmZmY4MDAwMDAwMC0weGZmZmZmZmZmYmZmZmZmZmYpCj4+PiBb
-wqDCoCAyNS4zMzQ3NDhdIFJlYm9vdGluZyBpbiAzMCBzZWNvbmRzLi4KPj4+Cj4+PiBJIHVzZSB0
-aGUgYnVpbGQgc2NyaXB0cyBhcyBkZXNjcmliZWQgaGVyZToKPj4+Cj4+PiBodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9saW51eC1tZWRpYS8xODk4OTAxNi02MzkyLWE3N2ItNmNmNy0xMjIzYzkxNjFk
-ZWZAeHM0YWxsLm5sLwo+Pj4KPj4+IEkgdXNlIHRoaXMgY29tbWFuZCB0byBydW4gdGhlIHJlZ3Jl
-c3Npb24gdGVzdHM6Cj4+Pgo+Pj4gLi9idWlsZC5zaCAtdmlydG1lIC12aXJ0bWUtdXRpbHMtcGF0
-aCAvdXNyL2xvY2FsL2JpbiBub25lIGRlbGJ1Zgo+Pj4KPj4+IChkZWxidWYgaXMgdGhlIG5hbWUg
-b2YgbXkgYnJhbmNoKQo+Pj4KPj4+IEkgZG9uJ3QgcmVhbGx5IHdhbnQgdG8gc3BlbmQgdGltZSBy
-ZXZpZXdpbmcgdGhpcyBzZXJpZXMgdW50aWwgdGhpcyBpcyBmaXhlZC4uLgo+Pgo+PiBZZXMgdGhh
-dCBtYWtlIHNlbnNlLgo+PiBJdCB3aWxsIHdvcmsgb24gaXQgYW5kIGxldCB5b3Ugbm93IHdoZW4g
-SSBoYWQgZml4IGl0Lgo+PiBSZWdhcmRzLAo+PiBCZW5qYW1pbgo+IAo+IFRoaXMgcGF0Y2ggZml4
-IHRoZSBwcm9ibGVtOgo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRl
-b2J1ZjIvdmlkZW9idWYyLWNvcmUuYyBiL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92
-aWRlb2J1ZjItY29yZS5jCj4gaW5kZXggMzIwZjM3ZTQ2MzQzLi4wNTk4YzFlNGU5YjUgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMK
-PiArKysgYi9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+
-IEBAIC00MjgsNiArNDI4LDggQEAgc3RhdGljIHZvaWQgdmIyX3F1ZXVlX2FkZF9idWZmZXIoc3Ry
-dWN0IHZiMl9xdWV1ZSAqcSwgc3RydWN0IHZiMl9idWZmZXIgKnZiLCB1bnMKPiDCoCAqLwo+IMKg
-c3RhdGljIHZvaWQgdmIyX3F1ZXVlX3JlbW92ZV9idWZmZXIoc3RydWN0IHZiMl9idWZmZXIgKnZi
-KQo+IMKgewo+ICvCoMKgwqAgaWYgKHZiLT52YjJfcXVldWUtPm51bV9idWZmZXJzKQo+ICvCoMKg
-wqAgwqDCoMKgIHZiLT52YjJfcXVldWUtPm51bV9idWZmZXJzLS07Cj4gwqDCoMKgwqAgdmItPnZi
-Ml9xdWV1ZS0+YnVmc1t2Yi0+aW5kZXhdID0gTlVMTDsKPiDCoMKgwqDCoCB2Yi0+dmIyX3F1ZXVl
-ID0gTlVMTDsKPiDCoH0KPiBAQCAtNjQxLDggKzY0Myw4IEBAIHN0YXRpYyB2b2lkIF9fdmIyX3F1
-ZXVlX2ZyZWUoc3RydWN0IHZiMl9xdWV1ZSAqcSwgdW5zaWduZWQgaW50IGJ1ZmZlcnMpCj4gwqAj
-ZW5kaWYKPiAKPiDCoMKgwqDCoCAvKiBGcmVlIHZiMiBidWZmZXJzICovCj4gLcKgwqDCoCBmb3Ig
-KGkgPSBxLT5tYXhfbnVtX2J1ZmZlcnMsIGJ1ZmZlciA9IDA7IGkgPiAwICYmIGJ1ZmZlciA8IGJ1
-ZmZlcnM7IGktLSkgewo+IC3CoMKgwqAgwqDCoMKgIHN0cnVjdCB2YjJfYnVmZmVyICp2YiA9IHZi
-Ml9nZXRfYnVmZmVyKHEsIGJ1ZmZlcik7Cj4gK8KgwqDCoCBmb3IgKGkgPSBxLT5tYXhfbnVtX2J1
-ZmZlcnMsIGJ1ZmZlciA9IDA7IGkgPj0gMCAmJiBidWZmZXIgPCBidWZmZXJzOyBpLS0pIHsKPiAr
-wqDCoMKgIMKgwqDCoCBzdHJ1Y3QgdmIyX2J1ZmZlciAqdmIgPSB2YjJfZ2V0X2J1ZmZlcihxLCBp
-KTsKPiAKPiDCoMKgwqDCoCDCoMKgwqAgaWYgKCF2YikKPiDCoMKgwqDCoCDCoMKgwqAgwqDCoMKg
-IGNvbnRpbnVlOwo+IEBAIC0yNTQxLDYgKzI1NDMsNyBAQCB2b2lkIHZiMl9jb3JlX3F1ZXVlX3Jl
-bGVhc2Uoc3RydWN0IHZiMl9xdWV1ZSAqcSkKPiDCoMKgwqDCoCBfX3ZiMl9xdWV1ZV9mcmVlKHEs
-IHEtPm1heF9udW1fYnVmZmVycyk7Cj4gwqDCoMKgwqAga2ZyZWUocS0+YnVmcyk7Cj4gwqDCoMKg
-wqAgcS0+YnVmcyA9IE5VTEw7Cj4gK8KgwqDCoCBxLT5udW1fYnVmZmVycyA9IDA7Cj4gwqDCoMKg
-wqAgbXV0ZXhfdW5sb2NrKCZxLT5tbWFwX2xvY2spOwo+IMKgfQo+IMKgRVhQT1JUX1NZTUJPTF9H
-UEwodmIyX2NvcmVfcXVldWVfcmVsZWFzZSk7Cj4gCj4gSSdtIHByZXBhcmluZyBhIHY5IHdpdGgg
-dGhpcyArIHlvdXIgcGF0Y2ggZm9yIEFtcGhpb24gZHJpdmVyOgo+IAo+IGh0dHBzOi8vZ2l0bGFi
-LmNvbGxhYm9yYS5jb20vYmVuamFtaW4uZ2FpZ25hcmQvZm9yLXVwc3RyZWFtLy0vY29tbWl0cy9y
-ZW1vdmVfdmIyX3F1ZXVlX2xpbWl0X3Y5CgpFdmVuIHdpdGggdGhpcyBwYXRjaCBJIHN0aWxsIGdl
-dCBlcnJvcnMuIERpZCB5b3UganVzdCB0ZXN0IHZpdmlkPwoKUnVuICd0ZXN0LW1lZGlhIG1jJyB0
-byB0ZXN0IGl0IGZvciBhbGwgdmlydHVhbCBkcml2ZXJzLiBJIGdldCBib3RoIGNvbXBsaWFuY2UK
-ZmFpbHVyZXMsIGEgV0FSTl9PTiBpbiBkcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlk
-ZW9idWYyLWNvcmUuYzoyNDg5LAphbmQgbWVtb3J5IGxlYWtzLiBJdCBjdXJyZW50bHkgZmFpbHMg
-YW5kIGV4aXN0cyBjb21wbGV0ZWx5IHdpdGggdGhlIHZpbWMgdGVzdHMsCmJ1dCB0aGluZ3MgbWF5
-IGFscmVhZHkgaGF2ZSBnb25lIHBlYXItc2hhcGVkIHdpdGggdGhlIHZpbTJtIHRlc3QuCgpJJ2xs
-IG1haWwgeW91IHRoZSBmdWxsIG91dHB1dCBmcm9tIGEgdGVzdCBydW4gd2l0aCB0aGUgYnVpbGQg
-c2NyaXB0cwpzZXBhcmF0ZWx5IChpdCdzIGEgYml0IHRvbyBiaWcgdG8gYWRkIGhlcmUpLgoKSSBk
-b24ndCBrbm93IGlmIHlvdSBjYW4gcnVuIHRoZSBidWlsZCBzY3JpcHQgd2l0aCB0aGUgLXZpcnRt
-ZSBvcHRpb24sIGluc3RydWN0aW9ucwpmb3IgdGhhdCBhcmUgY3VycmVudGx5IG9ubHkgYXZhaWxh
-YmxlIGZvciBkZWJpYW4gMTIuIElmIG5vdCwgdGhlbiBhc2sgU2ViYXN0aWFuCkZyaWNrZSAoaGUg
-aXMgd29ya2luZyBvbiBhIGRvY2tlciBmb3IgdGhpcyksIGFsdGVybmF0aXZlbHkgeW91IGNhbiB0
-YWtlCmNvbmZpZ3MvdmlydG1lLmNvbmZpZyBmcm9tIHRoZSBidWlsZCBzY3JpcHRzIGdpdCByZXBv
-IGFuZCB1c2UgdGhhdCBhcyB0aGUga2VybmVsCmNvbmZpZyB0byB0ZXN0IHVuZGVyLiBUaGlzIGNv
-bmZpZyBlbmFibGVzIG1lbW9yeSBsZWFrIGRldGVjdGlvbiBhbmQgYSB3aG9sZSBidW5jaApvZiBv
-dGhlciBkZWJ1Z2dpbmcgc3R1ZmYuCgpSZWdhcmRzLAoKCUhhbnMKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Benjamin,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on sunxi/sunxi/for-next dtor-input/next linus/master v6.6-rc3]
+[cannot apply to dtor-input/for-linus next-20230929]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230928-003247
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230927153558.159278-51-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v8 50/53] media: core: Free range of buffers
+config: powerpc64-randconfig-001-20230930 (https://download.01.org/0day-ci/archive/20230930/202309301247.Y0hH4pjx-lkp@intel.com/config)
+compiler: powerpc64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230930/202309301247.Y0hH4pjx-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309301247.Y0hH4pjx-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/media/common/videobuf2/videobuf2-core.c:39:2: error: #error Expected PAGE_SHIFT to be 12
+      39 | #error Expected PAGE_SHIFT to be 12
+         |  ^~~~~
+   drivers/media/common/videobuf2/videobuf2-core.c: In function '__vb2_queue_free':
+>> drivers/media/common/videobuf2/videobuf2-core.c:596:14: error: 'buffer' undeclared (first use in this function)
+     596 |         for (buffer = 0; buffer < q->max_num_buffers; buffer++) {
+         |              ^~~~~~
+   drivers/media/common/videobuf2/videobuf2-core.c:596:14: note: each undeclared identifier is reported only once for each function it appears in
+
+
+vim +/buffer +596 drivers/media/common/videobuf2/videobuf2-core.c
+
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  540  
+2a87af6ba1b9df drivers/media/v4l2-core/videobuf2-core.c        Mauro Carvalho Chehab 2017-11-27  541  /*
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  542   * __vb2_queue_free() - free count buffers from start index of the queue - video memory and
+2d86401c2cbfce drivers/media/video/videobuf2-core.c            Guennadi Liakhovetski 2011-09-28  543   * related information, if no buffers are left return the queue to an
+2d86401c2cbfce drivers/media/video/videobuf2-core.c            Guennadi Liakhovetski 2011-09-28  544   * uninitialized state. Might be called even if the queue has already been freed.
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  545   */
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  546  static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  547  {
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  548  	unsigned int i;
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  549  
+01cb370ff6c5ab drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-11-30  550  	lockdep_assert_held(&q->mmap_lock);
+63faabfd89f4db drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2013-12-13  551  
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  552  	/* Call driver-provided cleanup function for each buffer, if provided */
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  553  	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  554  		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+256f3162c17595 drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  555  
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  556  		if (!vb)
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  557  			continue;
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  558  		if (vb->planes[0].mem_priv)
+a1d36d8c705e10 drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-03-17  559  			call_void_vb_qop(vb, buf_cleanup, vb);
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  560  	}
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  561  
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  562  	/* Release video buffer memory */
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  563  	__vb2_free_mem(q, start, count);
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  564  
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  565  #ifdef CONFIG_VIDEO_ADV_DEBUG
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  566  	/*
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  567  	 * Check that all the calls were balanced during the life-time of this
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  568  	 * queue. If not then dump the counters to the kernel log.
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  569  	 */
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  570  	if (vb2_get_num_buffers(q)) {
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  571  		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  572  				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  573  				  q->cnt_wait_prepare != q->cnt_wait_finish;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  574  
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  575  		if (unbalanced) {
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  576  			pr_info("unbalanced counters for queue %p:\n", q);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  577  			if (q->cnt_start_streaming != q->cnt_stop_streaming)
+2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  578  				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  579  					q->cnt_queue_setup, q->cnt_start_streaming,
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  580  					q->cnt_stop_streaming);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  581  			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
+a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  582  				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
+a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  583  					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  584  			if (q->cnt_wait_prepare != q->cnt_wait_finish)
+2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  585  				pr_info("     wait_prepare: %u wait_finish: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  586  					q->cnt_wait_prepare, q->cnt_wait_finish);
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  587  		}
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  588  		q->cnt_queue_setup = 0;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  589  		q->cnt_wait_prepare = 0;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  590  		q->cnt_wait_finish = 0;
+a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  591  		q->cnt_prepare_streaming = 0;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  592  		q->cnt_start_streaming = 0;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  593  		q->cnt_stop_streaming = 0;
+a10b2153257403 drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-06-22  594  		q->cnt_unprepare_streaming = 0;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  595  	}
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27 @596  	for (buffer = 0; buffer < q->max_num_buffers; buffer++) {
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  597  		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  598  		bool unbalanced;
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  599  
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  600  		if (!vb)
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  601  			continue;
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  602  
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  603  		unbalanced = vb->cnt_mem_alloc != vb->cnt_mem_put ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  604  			     vb->cnt_mem_prepare != vb->cnt_mem_finish ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  605  			     vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  606  			     vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  607  			     vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  608  			     vb->cnt_buf_queue != vb->cnt_buf_done ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  609  			     vb->cnt_buf_prepare != vb->cnt_buf_finish ||
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  610  			     vb->cnt_buf_init != vb->cnt_buf_cleanup;
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  611  
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  612  		if (unbalanced) {
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  613  			pr_info("unbalanced counters for queue %p, buffer %d:\n",
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  614  				q, buffer);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  615  			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  616  				pr_info("     buf_init: %u buf_cleanup: %u\n",
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  617  					vb->cnt_buf_init, vb->cnt_buf_cleanup);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  618  			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  619  				pr_info("     buf_prepare: %u buf_finish: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  620  					vb->cnt_buf_prepare, vb->cnt_buf_finish);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  621  			if (vb->cnt_buf_queue != vb->cnt_buf_done)
+28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  622  				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
+28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  623  					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
+28d77c21cbeb2c drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2019-01-16  624  					vb->cnt_buf_done, vb->cnt_buf_request_complete);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  625  			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  626  				pr_info("     alloc: %u put: %u\n",
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  627  					vb->cnt_mem_alloc, vb->cnt_mem_put);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  628  			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  629  				pr_info("     prepare: %u finish: %u\n",
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  630  					vb->cnt_mem_prepare, vb->cnt_mem_finish);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  631  			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
+2e33dbb06da407 drivers/media/common/videobuf/videobuf2-core.c  Mauro Carvalho Chehab 2017-12-28  632  				pr_info("     get_userptr: %u put_userptr: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  633  					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  634  			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  635  				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  636  					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  637  			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  638  				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  639  					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  640  			pr_info("     get_dmabuf: %u num_users: %u\n",
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  641  				vb->cnt_mem_get_dmabuf,
+14700b816b3d49 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  642  				vb->cnt_mem_num_users);
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  643  		}
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  644  	}
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  645  #endif
+b5b4541eef8eac drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-01-29  646  
+3e947c36af524b drivers/media/common/videobuf2/videobuf2-core.c Hans Verkuil          2022-08-10  647  	/* Free vb2 buffers */
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  648  	for (i = start; i < q->max_num_buffers && i < start + count; i++) {
+de4be4166a32b9 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  649  		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  650  
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  651  		if (!vb)
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  652  			continue;
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  653  
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  654  		vb2_queue_remove_buffer(vb);
+145085ced318ad drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  655  		kfree(vb);
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  656  	}
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  657  
+6e57b95def5189 drivers/media/common/videobuf2/videobuf2-core.c Benjamin Gaignard     2023-09-27  658  	if (!vb2_get_num_buffers(q)) {
+ce4686702f8f56 drivers/media/common/videobuf/videobuf2-core.c  Satendra Singh Thakur 2017-12-28  659  		q->memory = VB2_MEMORY_UNKNOWN;
+bd50d999d4d4f3 drivers/media/video/videobuf2-core.c            Marek Szyprowski      2011-10-25  660  		INIT_LIST_HEAD(&q->queued_list);
+a7afcaccfab2fb drivers/media/v4l2-core/videobuf2-core.c        Hans Verkuil          2014-02-24  661  	}
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  662  }
+e23ccc0ad92586 drivers/media/video/videobuf2-core.c            Pawel Osciak          2010-10-11  663  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
