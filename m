@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F206DE748F0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Sep 2023 23:43:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A0DE748EE
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Oct 2023 07:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QSkLlIm2gU1zJHWd6t9156OpEFFPstFINoeGB6Q6zR0=; b=klIKYaYm/nkKy6
-	8gvfguD4LXdACT/QJvTbNFyT6Lzibw7ZQtBgoof1RhGI51CWwa7USAtIuXROk2nva3aZKz06aRGFg
-	Wy3OqvTyYfHMv/qAF6ufn01AFK6u/twwuU53UEzfXEykstBAteWMkhDh63e5QJ//l3RA8w5+MPV0b
-	kyU8e0X2a7vBjNPF0t5KEW+A0kDArUZzXd5tDQownqPheHe+sxcqP0gnqFDIpp9N8moj1X2ERRtcz
-	bfZMaha+4a9apgqHSZ0odb2ovudi47V6nrJOsWUfHCbLsiA/aN5E7eYLapnoln5x3SVyeVKWgXU6r
-	EqFoiEG/YWvEg2tttigw==;
+	List-Owner; bh=xuBJwI7CesNNnsHl+GauAVf0DCVcnXkN1cs9JuXdvOg=; b=KeqC73xpmx0rzz
+	okp9Myu8OnirU1TQQNyvMXtwf6mrUZi0Bsbtc4nikhe5sk1ozKVeWmMe3bJTOK1rYoDiHFT71Gus/
+	8JVxpkNX6i3PmUwaWSSee2YJollzJXZTM929xLRXLMH8le94mTjhvD4iZC+qc+PYw/s105n2NqOod
+	Gsajmrz67URNzHtExz8FEN9gZkuzvvi+HCjk66OFpLmIIBDVRQ7BcB4xAiq8KYs/eieoSXYncE+xI
+	bEF9N4mT5ZVpBC4c6Ocm5eloVNG5foo3vGALPhTR5yF4bNDsgHaqmZfHxu5xWAlVIwGc22C/l+O/N
+	EgXSzqnvmKEkKWD9XGsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmjc1-00AEiV-07;
-	Sat, 30 Sep 2023 23:43:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qmr7m-00AiFP-0a;
+	Sun, 01 Oct 2023 07:44:22 +0000
+Received: from smtp-17.smtpout.orange.fr ([80.12.242.17] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qmjbx-00AEhF-0S;
-	Sat, 30 Sep 2023 23:43:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7A8A160B10;
-	Sat, 30 Sep 2023 23:42:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 381EBC433C7;
-	Sat, 30 Sep 2023 23:42:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696117376;
-	bh=CsxBwJVm1bZHCwijbrh6IQBWuJt6PpsEf/jvmsVNvRY=;
-	h=From:Date:Subject:To:Cc:From;
-	b=MBl1S22Ey5vJOpMt7MZmO4cFGeksYRtpYNKfp4e0/UJIklgc59TlVV8s4N9KGAUJ8
-	 P7naw0vpFvKtfjSPNOObAHytteAOkn7Ft5Y3EkoOez6bGDm4SNmYqOloHuAxRLyVzc
-	 UYTBD/sfqipCoRN55LcP8vVz2kxr9O9mw3KiMz9oYpjDUDoP1nl926bb/mOXU1zHdF
-	 YW+NsAP6C3G1/3POpDz10OyM0Y+3OxQXtqXKvap67v6ZA8jxeonf54biNUPfYrUnA4
-	 7H50wNtBR60ESmh7ljQax//71B8AvT8V4iVSur8vekkEc1cWG4jpdQs3BSFJvbBng9
-	 BjpECuPVqjD5g==
-From: Mark Brown <broonie@kernel.org>
-Date: Sun, 01 Oct 2023 01:42:50 +0200
-Subject: [PATCH] drm/rockchip: vop2: Convert to use maple tree register
- cache
+	id 1qmr7i-00AiEC-05
+	for linux-rockchip@lists.infradead.org;
+	Sun, 01 Oct 2023 07:44:20 +0000
+Received: from pop-os.home ([86.243.2.178])
+	by smtp.orange.fr with ESMTPA
+	id mr7WqrKgVBuYSmr7WqgwKV; Sun, 01 Oct 2023 09:44:09 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1696146249;
+	bh=Lh4Gb5zv5Lb8ZWaUBSVtVqXkD3aAwWj7aSRzIFudknA=;
+	h=From:To:Cc:Subject:Date;
+	b=tARfd9pL5l6goRYfpkXD4TKuCYNR9qfYDZclZw2NvhvzAI+6L1i/4samAyFBMaPqA
+	 keFShjXpLMdUxQJLMBQE9F0nMNs8RC+WNlUr4mhQ3RCNAtmmjGRFMhembtafGCGiwN
+	 IzUX2Xav5NVCBinR1CnJxRnvNoivk6mwZP9xCIRORrRXCiw62bIPTYwn9sV7/F1VWl
+	 uWiknbsaq/hJbJ9U2dV5iufGtW1YI6XsfsaXEzrOrBB+sDkpa8zCh4uXtmS/kuJ6Lf
+	 QPjOrtfjXWuYsTC1xHnwSC15nQZBrmP0Xwc8fDzvKhuA3h0OAti6wtH5cjNLen9CrV
+	 rx8jRh5pe69xQ==
+X-ME-Helo: pop-os.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 01 Oct 2023 09:44:09 +0200
+X-ME-IP: 86.243.2.178
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kees Cook <keescook@chromium.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-mtd@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-hardening@vger.kernel.org,
+	llvm@lists.linux.dev
+Subject: [PATCH] mtd: rawnand: rockchip: Use struct_size()
+Date: Sun,  1 Oct 2023 09:44:04 +0200
+Message-Id: <481721c2c7fe570b4027dbe231d523961c953d5a.1696146232.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Message-Id: <20231001-drm-rockchip-maple-v1-1-ca396ab75be7@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAHmyGGUC/x3MSQqAMAxA0atI1gZqHECvIi5KG21wKimIIN7d4
- vIt/n8gsQonGIoHlC9Jch4ZVVmAC/ZYGMVnAxmqTU89et1RT7e6IBF3GzfGuaO29p1tiBhyGJV
- nuf/pOL3vBxyQm81kAAAA
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Mark Brown <broonie@kernel.org>
-X-Mailer: b4 0.13-dev-0438c
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1127; i=broonie@kernel.org;
- h=from:subject:message-id; bh=CsxBwJVm1bZHCwijbrh6IQBWuJt6PpsEf/jvmsVNvRY=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBlGLJ8Jjc9oOR/vpaDIbuwyZK0zdfJwcMVH3fC4
- iKZdLtuhZiJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCZRiyfAAKCRAk1otyXVSH
- 0Gm2B/4o4oxx5OVAaCiOxtwlofHIC0BmPsGKG6uszu0m+fL9D/qQkzplaxJFgi/p463XzlxQ0dV
- jlGa9ezoe9nSuDtunTGpDbtfUNmCL/62eBa9mTWxrXr7rl/bjBihDHtOj2I5oCMEAhHVGj/GOeV
- fRnmMPXwL30YQeh25JsSdauTXobdV+j0Rz07UtoYc1cbYM9uNkEeQdbPZVsTdsmwlUdn9fclCm3
- RKMdkxCzP5qJtr8+rLSDnfIUn34iOL7HQuaEJh9QojpnNZ51T4ih5qZDBraX/VYXSWXizCa73Ng
- egbcCbalJvzMbnAZPkeiLK1y+0np28+i2iIPTKsJKtdtherZ
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230930_164301_242035_6714DF15 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20231001_004418_208502_0844A9A2 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +86,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The maple tree register cache is based on a much more modern data structure
-than the rbtree cache and makes optimisation choices which are probably
-more appropriate for modern systems than those made by the rbtree cache.
+Use struct_size() instead of hand writing it.
+This is less verbose and more robust.
 
-Signed-off-by: Mark Brown <broonie@kernel.org>
+While at it, prepare for the coming implementation by GCC and Clang of the
+__counted_by attribute. Flexible array members annotated with __counted_by
+can have their accesses bounds-checked at run-time checking via
+CONFIG_UBSAN_BOUNDS (for array indexing) and CONFIG_FORTIFY_SOURCE (for
+strcpy/memcpy-family functions).
+
+Also remove a useless comment about the position of a flex-array in a
+structure.
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch is part of a work done in parallel of what is currently worked
+on by Kees Cook.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 583df4d22f7e..9f4470171cf4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2641,7 +2641,7 @@ static const struct regmap_config vop2_regmap_config = {
- 	.max_register	= 0x3000,
- 	.name		= "vop2",
- 	.volatile_table	= &vop2_volatile_table,
--	.cache_type	= REGCACHE_RBTREE,
-+	.cache_type	= REGCACHE_MAPLE,
+My patches are only related to corner cases that do NOT match the
+semantic of his Coccinelle script[1].
+
+In this case, struct_size() was not used to compute the size needed for the
+structure and its flex array.
+
+[1] https://github.com/kees/kernel-tools/blob/trunk/coccinelle/examples/counted_by.cocci
+---
+ drivers/mtd/nand/raw/rockchip-nand-controller.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+index 5bc90ffa721f..596cf9a78274 100644
+--- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
++++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+@@ -158,8 +158,7 @@ struct rk_nfc_nand_chip {
+ 	u32 timing;
+ 
+ 	u8 nsels;
+-	u8 sels[];
+-	/* Nothing after this field. */
++	u8 sels[] __counted_by(nsels);
  };
  
- static int vop2_bind(struct device *dev, struct device *master, void *data)
-
----
-base-commit: 6465e260f48790807eef06b583b38ca9789b6072
-change-id: 20230929-drm-rockchip-maple-f6253d6a422e
-
-Best regards,
+ struct rk_nfc {
+@@ -1119,7 +1118,7 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 		return -EINVAL;
+ 	}
+ 
+-	rknand = devm_kzalloc(dev, sizeof(*rknand) + nsels * sizeof(u8),
++	rknand = devm_kzalloc(dev, struct_size(rknand, sels, nsels),
+ 			      GFP_KERNEL);
+ 	if (!rknand)
+ 		return -ENOMEM;
 -- 
-Mark Brown <broonie@kernel.org>
+2.34.1
 
 
 _______________________________________________
