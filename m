@@ -4,48 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44994E784A4
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Oct 2023 22:58:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1442DE7849C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Oct 2023 23:02:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AZmD4sn/oo0qGEIxOxTTmdQQ/cp3eFt5/jZTj6UXClE=; b=Qo9LymlnHABX7m
-	jjAQI7bRDiqYowbizRBrRfHY+i4yKdYqndsFsBV9p+sRj2CbSErJYgNBjJJkssSxl6ih4WA07vwbu
-	prSsDM23pOx7gJ2p748NeGvJU2LJfsj7GmFx/6sVvzG7fo+IvRvMzwstPDZxSiroNtInz3EzXnSDc
-	CN8OO37alcGh0kkktvp85M2JQdeBxcvYFEWOUAnzPFrxwK3YeK0alWVWbjd/ooQrMh2tYk1D/FzXC
-	r1NFGiN1TlKwilWoo5eViJQhf5y/X3d3sagM0pXZsVlyGPB7ar11cIo1iMGDVhdoO1H0B31zARz9u
-	/VhfZe2uCpmo+Un35vCA==;
+	List-Owner; bh=5DQMPEp6i6dv0luTZTQrqCF/EpQNSkdGTbJCCw82UAg=; b=pRSVh1DAXEMQJL
+	r4SIGlAQ0yZddnMAdMwf+xN+ExIUVuunDsEmqYDBG6NHauQAUXz9Dn7VYLdPMY7pgQzl9x/IcbPVz
+	Ioj29CO4Stq+2GPq3RAWA6IGs1fb4JscdxW8uMWaM2j5xe32y+IH9bYXIWr9mzuFOft3S0DYr10XF
+	bEWXzKhWmReq1mq4Y5W6Y9DlCT1H5Pndwx1M3YcAwNFvNLa3boVzctXfHywYxip8LzRidamzmtRi6
+	RVJBNtGKyLBIrRAIFiEJ8xknG1TtKS3fYD9NyXXDHEpvl/TN9rn3Hq0MGv8O49/eMrbJJucWuPWlG
+	Lip/mizhvthdPpuldJFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qn5OO-00Bicx-0L;
-	Sun, 01 Oct 2023 22:58:28 +0000
+	id 1qn5SP-00BioY-01;
+	Sun, 01 Oct 2023 23:02:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qn5OK-00BicM-2t;
-	Sun, 01 Oct 2023 22:58:26 +0000
-Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.localnet)
+	id 1qn5SM-00BioA-1B;
+	Sun, 01 Oct 2023 23:02:35 +0000
+Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qn5OJ-0002s5-Gy; Mon, 02 Oct 2023 00:58:23 +0200
+	id 1qn5SF-0002tX-Vy; Mon, 02 Oct 2023 01:02:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@pengutronix.de
-Subject: Re: [PATCH 30/40] soc/rockchip: io-domain: Convert to platform remove
- callback returning void
-Date: Mon, 02 Oct 2023 00:58:30 +0200
-Message-ID: <1865054.tdWV9SEqCh@phil>
-In-Reply-To: <20230925095532.1984344-31-u.kleine-koenig@pengutronix.de>
-References: <20230925095532.1984344-1-u.kleine-koenig@pengutronix.de>
- <20230925095532.1984344-31-u.kleine-koenig@pengutronix.de>
+To: Jagan Teki <jagan@edgeble.ai>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: (subset) [PATCH 00/13] arm64: rockchip: Add more RV1126 DT nodes
+Date: Mon,  2 Oct 2023 01:02:33 +0200
+Message-Id: <169620134724.283788.8556096916301682585.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230731103518.2906147-1-jagan@edgeble.ai>
+References: <20230731103518.2906147-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231001_155824_959655_6A3FE6F3 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20231001_160234_402942_1C9B3ECD 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,34 +62,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 25. September 2023, 11:55:21 CEST schrieb Uwe Kleine-K=F6nig:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is ignored (apart
-> from emitting a warning) and this typically results in resource leaks.
-> To improve here there is a quest to make the remove callback return
-> void. In the first step of this quest all drivers are converted to
-> .remove_new() which already returns void. Eventually after all drivers
-> are converted, .remove_new() will be renamed to .remove().
-> =
+On Mon, 31 Jul 2023 16:05:05 +0530, Jagan Teki wrote:
+> Patchset adds more DT nodes for Rockchip RV1126.
+> 
+> Jagan Teki (12):
+>   dt-bindings: pwm: rockchip: Document rv1126-pwm
+>   ARM: dts: rockchip: rv1126: Add pwm2m0 pins
+>   ARM: dts: rockchip: rv1126: Add pwm2 node
+>   ARM: dts: rockchip: rv1126: Add pwm11m0 pins
+>   ARM: dts: rockchip: rv1126: Add pwm11 node
+>   ARM: dts: rockchip: rv1126: Add SFC node
+>   ARM: dts: rockchip: rv1126: Add FSPI pins
+>   ARM: dts: rockchip: rv1126: Add uart5m2_xfer pins
+>   ARM: dts: rv1126: Enable pwm fan for edgeble-neu2
+>   ARM: dts: rv1126: Drop EMMC_RSTN for edgeble-neu2
+>   ARM: dts: rv1126: Add 3V3_SYS regulator for edgeble-neu2
+>   ARM: dts: rv1126: Add 12V main supply for edgeble-neu2
+> 
+> [...]
 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> =
+Applied, thanks!
 
-> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+[01/13] dt-bindings: pwm: rockchip: Document rv1126-pwm
+        commit: b0d587be2407ae7319098339034296370a851939
+[02/13] ARM: dts: rockchip: rv1126: Add pwm2m0 pins
+        commit: 32cd0ebf1f7961ef049cf9e286568f8e2dfbb88b
+[03/13] ARM: dts: rockchip: rv1126: Add pwm2 node
+        commit: 8625206d7c3811dfdaef1df9a0bd134f17098b5f
+[04/13] ARM: dts: rockchip: rv1126: Add pwm11m0 pins
+        commit: 19d79ef9faad6cc15315c3bb0d5fc3594c869d71
+[05/13] ARM: dts: rockchip: rv1126: Add pwm11 node
+        commit: 8cc85fa1b7640a5de02a3697aaaef4491cf8dba3
+[09/13] ARM: dts: rv1126: Enable pwm fan for edgeble-neu2
+        commit: 9b201229814fd8d77cc069962b43c4f451592217
 
-applied for 6.7
-
-Thanks
-Heiko
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
