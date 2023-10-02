@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D86E784AD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58094E784B6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gUMx0dujk/6H0lDY6lzJQ+9c02hvtGxuNb0QTn4Cl6M=; b=WzPsaadKwGKn0H
-	MUJVbMMMdtiZ83FYxdi4JUMvniT0RV6Oa5yVRoelqXhQcfrpYfN4m5rqLm+HOGOLPM21EUVCqjtYr
-	PWaO9cRjd8J2R9NScYnNdOgyl9U7MlMp0vpOF4G04UtPTTTtNTNzyipW161AIL6D0Dzjm9Ym/VaPk
-	8/q9i0BJ6BD65jBG1samA/MoWFGRtU8/3sklvsANctHgTgXrpA1F17CrQc95xhdzP/QjSbRBcdHu5
-	4d7kDg0R+aP8JDbWUieJozYZ7xET2eZ6nte7v8ldDy4WDHWbXldYl/sZ/Up3sBcbxlO2fOVNzzST/
-	xFgaIWbJvz5np4WFChxQ==;
+	List-Owner; bh=ZetiY2C/IhhyaYVToTKY5uWfOb95hrjZgX6nTv9VYew=; b=Po6CeLfYpKNlWP
+	1bOA4jWN0u5Vs4bqFQ2qWbG2sN3pW0c1R4Ba7Tv/eK08ipmldxBf7njPzL5QuMOhuHUc5i4Y7wOnD
+	AstpQfObCxmb24akJtzL4PWBgU0wRKzWrAjZi31owjG2sMB5LWomSBBbc5xPiaZTZrBmrjuX07HRr
+	I8TQgxCluwm4u8AM8wUU5vnwx9Q5mjKjelS6UQud4RFEU12ln2Jnl/jo31R17fFi8mfWxrzT5MFV/
+	MToJBxPh9Zsi3guedTRTgfjhrKIqI+cdzWpX1W/JGhyHGYYbZGpqbnkL15gev+ayNUL4qzLiKM+hz
+	G+yBwdjP5sxt6f1JMdqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHkZ-00Cffu-0P;
-	Mon, 02 Oct 2023 12:10:11 +0000
+	id 1qnHkY-00CfeU-25;
+	Mon, 02 Oct 2023 12:10:10 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHha-00Cbjr-1y;
-	Mon, 02 Oct 2023 12:07:06 +0000
+	id 1qnHhX-00Cbg6-2U;
+	Mon, 02 Oct 2023 12:07:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=AwSW5gVeLPqR/N/979XMemhTqTrP8+bbKdd1NF98OMc=; b=H8SfFMD4dpANp788TeT77KIhbN
-	LQFLSJI/jktUZpx/Z7NT7ZyLANXWNKvgAdkV2VXWco9XvcuFCtPEqk8H80LpTDVEYnKGJrWs5D373
-	Mw6hF70C2AskzYs00BqyTYJyArWdAoEN0LfL2/Vnfnk3s1qhES0nftkEu3G64PnlGnCq3g68nXHd4
-	50OgK/XV9gzvTCcDbXAQsqPQY6KwBh44HYk3EUK8PFvNFu6NMVxAc4a6+zq+dovtPiIUy2sCk4g5n
-	wURbz2btjy0pWDJXxwVvusFEKz3vfjWcsyY3hTo2iNgv2z7o4JVAH0Pv6T3tevyE6AQ9Ki/2tCE5v
-	Nd3eFofg==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	bh=NHwNkhr5QFK9GIbxnuRVaaAZiMba2Wdss9SCt91KwfI=; b=Y8vHoYDusdEHqeBvpKDaEHUfA4
+	VZVAgK7EOUPgHXWWOgpud9v6jGTK8qFXd3sQo/6jcAfVLBwY15f3iVgdDe3tYLVooU90mRjpJfO0V
+	lmapxiXNHkbVy1qyuwW8/BBs+JvtURy6TCofCqv91dBztSCeb/tPz3tUHEKGzdhnPntqScx3yCwjW
+	jKKEcmEApY5JfhkiuDSZfrTpKKe35tlxTFgwRkS6QcVDwQOldEwKtDAPdJvTSZohgff/xgJq2na8N
+	ab6w51cjWt7Ojvfgpy1rXn5ap7wDtFaEnSyq041MC4yPs20REJXAAXAgs4ijMx9XqG6ui29V/LpP/
+	0kL1iaWA==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhP-0090U7-0S;
-	Mon, 02 Oct 2023 12:07:04 +0000
+	id 1qnHhK-0090Rb-2m;
+	Mon, 02 Oct 2023 12:06:59 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 477E1660739B;
-	Mon,  2 Oct 2023 13:06:52 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1D1DF660738B;
+	Mon,  2 Oct 2023 13:06:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248412;
-	bh=jDPDI95HlRE0YbU8tWH1tF/YAu4YVw3uRkbYqHG/IGc=;
+	s=mail; t=1696248409;
+	bh=/cndzbQG0EfdVraDFE6iiWONWcwO1/xN2meedcRh5A0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OF1tMbtCLK3VUt6b0OB8SzAvQ3TZQubhX/CSBCAVVD9UvHI15alxR/0nLG0rKDCVB
-	 8csVmdrbC45HtcXWzhSJ2zaf5ae1ShQOdJp7eEdSPA6p6ImQfuQn0T3xJprdPnVGF+
-	 1mrNuamKQGYsCyrWFeVQNaeRmnfJ67suZnJZkH6G3Hzj+CNLSdcqGm4VWlNNiEEhBB
-	 dUMIsYd4+8U+lY+FFY+axBiZmlB0UlxjWfsKywfHh+Xm0TFg/vGojTN2L3Zn13IoLq
-	 Cd4U5a95nXNxx9fhN2PW5zDLENLrK4VrnkRn60B+apwYCn8T5AByQv+/MSxIhQlAC/
-	 Sp0ClgsFYL9Rg==
+	b=OZIZlYiZZBJVXu8Pjtt7ACOpjp2e09ky4E+doqU+FZoBSFfKpaaSEEnMzBCvVKe0G
+	 kcQBxMRwq5WboOadi3pNaVJkoFB3hYrYEqXQuj/Usz5LZmMumKq+BJ4BdehzrbQU6w
+	 +wtE8ZXtN21IkRbesIipT6PpOuwhxGUN1ELcvYHmCWTrzqhxF2JaSvBvHAOuZWocCe
+	 PT62SMp/vuNB1QGmmEYhvVxrJgCh5arMwkL4qz/08+QSEbSP1uz/qapw7PgVHNg3tQ
+	 l9HBOgJ203mFYR9o7F8qevla+unEkgQG4j6bSYiYuLQzljzcaSH4bTceUlOVKiNMg8
+	 qwR7V7meifDmw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 52/53] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Mon,  2 Oct 2023 14:06:16 +0200
-Message-Id: <20231002120617.119602-53-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 46/53] sample: v4l: Stop direct calls to queue num_buffers field
+Date: Mon,  2 Oct 2023 14:06:10 +0200
+Message-Id: <20231002120617.119602-47-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_130659_608718_B70FB0B2 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20231002_130652_771000_14E19A59 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,129 +102,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
+Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/platform/verisilicon/hantro_drv.c   |  1 +
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  2 ++
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 5 files changed, 36 insertions(+)
+ samples/v4l/v4l2-pci-skeleton.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index ad6b086f0526..1195a163d9e8 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -247,6 +247,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->dev->vpu_mutex;
- 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
-+	src_vq->supports_delete_bufs = true;
- 
- 	return vb2_queue_init(dst_vq);
- }
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 27a1e77cca38..0fd1c2fc78c8 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..17213ce42059 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-@@ -1133,6 +1134,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
- 	dst_vq->mem_ops = &vb2_vmalloc_memops;
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->vb_mutex;
-+	dst_vq->supports_delete_bufs = true;
- 
- 	return vb2_queue_init(dst_vq);
- }
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
- 
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
-+
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
+diff --git a/samples/v4l/v4l2-pci-skeleton.c b/samples/v4l/v4l2-pci-skeleton.c
+index a61f94db18d9..a65aa9d1e9da 100644
+--- a/samples/v4l/v4l2-pci-skeleton.c
++++ b/samples/v4l/v4l2-pci-skeleton.c
+@@ -155,6 +155,7 @@ static int queue_setup(struct vb2_queue *vq,
+ 		       unsigned int sizes[], struct device *alloc_devs[])
  {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
+ 	struct skeleton *skel = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index d6c8eb2b5201..161f85c42dc8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
+ 	skel->field = skel->format.field;
+ 	if (skel->field == V4L2_FIELD_ALTERNATE) {
+@@ -167,8 +168,8 @@ static int queue_setup(struct vb2_queue *vq,
+ 		skel->field = V4L2_FIELD_TOP;
+ 	}
  
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
+ 
+ 	if (*nplanes)
+ 		return sizes[0] < skel->format.sizeimage ? -EINVAL : 0;
 -- 
 2.39.2
 
