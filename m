@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E9D0E784AD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A672EE784AD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2njQ7e611392WyZH1vHySDDNewCXFdaWidU4u1GD7bg=; b=XW+HFRc/nfjek2
-	UYm5qqxkSVS70htFyoBrFWt+HEfFk5XmBdaIGDhAVZe0pmdGQeXqLQHGbIJ0dMXPcafbBNzRyJdj2
-	pXfx80Ehcg051E+eq7tGA7rWbDFA+VeGYvIERis7Jr21Trc1tO4yWAkoXnmnOHhVE89o1JMXgn1tZ
-	cJMHAfo55MTv5vbhPy31/TKTYOpmOJ6zVRbD5ZCD+qA1DlIp7Rb1W+f2T+El+tjLHA7ZNcT8cX+K5
-	0gZKfgGRDy1JZSSWO/o6+DxmRmifACvbxGRoz3NFRATQuZVbh1t18FxZw89tY0hS1eMPSwuYcyU/g
-	oarL6zWscGT2rYFDpVPQ==;
+	List-Owner; bh=uH3fkv+q9xZ7SE6/f/zkWaAjSAVtPMWZoc//w6C41ho=; b=JpUWuhy1H6mjN2
+	VgN4fRND/PqXAdnXrFxOxF150Gjy2zIxD14s77OGmUi5nJ4ZoQOoM7GVHq9FmtFMKTDrTIW+dTRkE
+	0t6fnJz3mFANVvmtFUMUPZ4t8g59ZF41MIu5LOx21fKIYIQOIvIO58qxsCTtqmtYQ3bUjNPUJspaJ
+	h78ilLL//sgErY1JMIdDpzvoLL3ffMAuPzWSq/76gJqAjGX+vxOjETrTPdDD02y2/U6BU58ndBsfi
+	dtTRH6YHify/k14TccFQc3nAzpE2YcceNf+yrYJcQWffnHlgzU7RWYi+PGETrM+R0j6I1ekPAjOwk
+	bWi1eqsXKDSsLKN3ESxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHjr-00CebR-1N;
-	Mon, 02 Oct 2023 12:09:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhK-00CbPs-3A;
-	Mon, 02 Oct 2023 12:06:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=5xy6ulbgeM0AXpFjPT8iDRlOuwuMKx6m/ngwiUulPb0=; b=RINPpeWGDkWNmpwR/G84oljqLw
-	a8ZFAK0YzzGkAw3FEM0xwtrJsMN8f0KFsu+lWa/cQGBlkETkUERciSyYHc5oBwllSzenMlqfJkZ5g
-	hkXVRKkNSO0l1gpZxTZS92AHLxGQ1C2qyQP14XFgekAAOqLZ3UGGIF09O+VYrIzgnOo0Q9aVb9dvQ
-	ppDEGDYLhwMgoqbkVVUlPKAHoYguC+G7J3JelP2vIvvke7qL6aCqkKX3GolKQZ94H/1ziZPp15TYA
-	na1k19V9ztPYSMhA8RJagsRP11nfV7A3VzBrJhM77lIx+r2UPeiVuIfLhuYvzK66yrSDy5Qje7jtC
-	ztbUZU7g==;
+	id 1qnHk6-00CeuJ-1c;
+	Mon, 02 Oct 2023 12:09:42 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhC-0090N6-08;
-	Mon, 02 Oct 2023 12:06:47 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnHhK-00CbP1-0h;
+	Mon, 02 Oct 2023 12:06:57 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2176C66071CC;
-	Mon,  2 Oct 2023 13:06:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 724486607359;
+	Mon,  2 Oct 2023 13:06:46 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248395;
-	bh=1dskbbkJ3zkcIpXG7ctqvahZ8PrAeLCG0dqn3ErBFLM=;
+	s=mail; t=1696248406;
+	bh=nwepyznt8z6pxABzkpFHR6clGV59kYVToyX8aj6cN+w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GArcyLDYSkfOg/bRKLRtfDV9Evg/+21CqpgAh6HhTBGfXQIGHHUuS/XCWsQnf/7i9
-	 CSaGi7Jt1IK1NGij2mJXYpy281QKk8QUVguf0acAhCQQdzvUpAFbFEpk2qd68oMbI2
-	 BKg3BmMVWXHJXJKRGE6jViuJ1u2Brp+QeeLc4TE5RksfLxqV8c7XBHa4gs/PBsZ2nM
-	 tiE8AbIfCXlnFgAlotVblXispb6RehFvXjviSmLA3Jvfwnu23j74teo2SQPFWqHRg2
-	 rwcQTJJ+et+PYC2ylLZF4sBFrpD0cfGk3RIDo57rRlzVCDm6MM7NmYTzSjufTd2yME
-	 Q8KRX6Sh721yA==
+	b=XWIVFqhWOpa4B7VDWOVRJGz3fA17ClvB9LjIPQwm/0c8Kl9uyMI0ppriwDG9c22MR
+	 FOI5dyNd7BekgAMf8F0Q4+jbg0QEodgR3S96WKOLELLdWNlrf2EdSjVfqLGWlWWETw
+	 og7iUoEvuPrma5iT45XjpFobPF1YQPlx2710pE0Ho5SDD09tEYnW3JvI7cnVCIDbI+
+	 y0gPcM4UR/uN3rwrDM928sxDIl++K9qR5tOnESOFRg7sT7E8AA1XqOuPZ3JymIb9hg
+	 skTIYPbhzLEas0808uc5H0Pc5vCTZWZyMxUxvj6ZOZsA/Zneo/ko3gD5fBMvnmPQL+
+	 uhQlrYixtszvQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 20/53] media: Remove duplicated index vs q->num_buffers check
-Date: Mon,  2 Oct 2023 14:05:44 +0200
-Message-Id: <20231002120617.119602-21-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 41/53] media: usb: usbtv: Set min_buffers_needed to 2
+Date: Mon,  2 Oct 2023 14:06:05 +0200
+Message-Id: <20231002120617.119602-42-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_130644_156530_36D7A5A7 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231002_050650_483394_62F5B0C8 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +88,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vb2_get_buffer() already checks if the requested index is valid.
-Stop duplicating this kind of check everywhere.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to 2 and remove the useless check in
+usbtv_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/common/videobuf2/videobuf2-v4l2.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ drivers/media/usb/usbtv/usbtv-video.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 51b16cd14582..38eef0c5d18c 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -378,11 +378,6 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
- 		return -EINVAL;
- 	}
+diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
+index 1e30e05953dc..0e9e860be47f 100644
+--- a/drivers/media/usb/usbtv/usbtv-video.c
++++ b/drivers/media/usb/usbtv/usbtv-video.c
+@@ -727,8 +727,6 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
+ 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
+ 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
  
--	if (b->index >= q->num_buffers) {
--		dprintk(q, 1, "%s: buffer index out of range\n", opname);
--		return -EINVAL;
--	}
--
- 	vb = vb2_get_buffer(q, b->index);
- 	if (!vb) {
- 		dprintk(q, 1, "%s: buffer %u is NULL\n", opname,  b->index);
-@@ -833,10 +828,6 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
- 		return -EBUSY;
- 	}
- 
--	if (b->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, b->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", b->index);
-@@ -908,10 +899,6 @@ int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
- {
- 	struct vb2_buffer *vb;
- 
--	if (eb->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, eb->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", eb->index);
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
+ 	*nplanes = 1;
+@@ -892,6 +890,7 @@ int usbtv_video_init(struct usbtv *usbtv)
+ 	/* videobuf2 structure */
+ 	usbtv->vb2q.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	usbtv->vb2q.io_modes = VB2_MMAP | VB2_USERPTR | VB2_READ;
++	usbtv->vb2q.min_buffers_needed = 2;
+ 	usbtv->vb2q.drv_priv = usbtv;
+ 	usbtv->vb2q.buf_struct_size = sizeof(struct usbtv_buf);
+ 	usbtv->vb2q.ops = &usbtv_vb2_ops;
 -- 
 2.39.2
 
