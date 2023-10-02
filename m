@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E45E7849A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 958E9E784B6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h7k8uldVILoLY3SbqLE1fUxFIDRyXNiK9pmcqPU3rbA=; b=fPh5hwbWxnqqTR
-	svq21APNBIUpnW9o4AoHvO+76sIMjYGwiZEMURVnDB3ZbxqT272KAQwXWumAMG0DnFscqB/P7X3EM
-	qmjPPZDLbHUKIlSWD99ahHUmRyKKykZKbh1GMXpCeWE6MpM0aVyopOmNZcByhnUZDLvq2JU8hS0Jq
-	ncJLio4TE7lVHCgdtfz/CoX+CkA/aljCuRCYRmhJ/5g6Z8ZdffVSZvz0dggVUrSLeQ30QxUiJtz9s
-	TCeVV+OsvEt/wLn2lLH4PLGsme7fn6fvwifMwUn9RClCTJDspNPI1NEtCcxj816b6DHUh7q/flI/h
-	LDMkvXOT7IKEcpQPembA==;
+	List-Owner; bh=lAW0Hcqq+Kv20WZT2M4zMmi+MK9kCMau83yLYKuLlpc=; b=upffWqE+PsFHkq
+	vSmLF7xB2BrqGh3W1Css83v8/iaKb/G++7RPeOemUshmXoJ1cq/K9cg/9rN49tcnLB2TREQCmeKUR
+	9vtQYZvHikFKdPaSsZE4QiK7a0tAG8SXSsvzKnGNqKKUMHlz66S/WD3RK8klVl19enVbGQzeAI0Sh
+	rM6cpCg2uWADJWZwooyJkW6axiYkLe4hanTYbB9LKDwWLUW9h/hCipuupWM6IbA/sWtLXVcOMhAwa
+	wsCSJrMnlOuUMjAk+jfeuEsXxlxCOa/RdmnIY3p5+JMSRKzXNiMHeOXl0SN/uNYD43ajwexfaNbZr
+	2bvuGqlOX/7H2Q/HNQkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHjL-00Cdup-2u;
-	Mon, 02 Oct 2023 12:08:55 +0000
+	id 1qnHjP-00Ce0I-2N;
+	Mon, 02 Oct 2023 12:08:59 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhD-00CbFZ-1M;
-	Mon, 02 Oct 2023 12:06:49 +0000
+	id 1qnHhB-00CbDp-2w;
+	Mon, 02 Oct 2023 12:06:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 920F06607368;
-	Mon,  2 Oct 2023 13:06:41 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E6A57660735E;
+	Mon,  2 Oct 2023 13:06:39 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248402;
-	bh=GZZRScc0G+g9MpmVo+b1q2mYVPFLCSqMx1Hk2ETt1Vc=;
+	s=mail; t=1696248400;
+	bh=fLRtME703ZZcICdPkAIYRy+HHmsEI0CB5+N7/vWII0U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CnzI5EmZWPH0C/k47H1uHc3OmkZL34PD3BEWk2+K+WQA6OEXZQZrRSwxALkZEc+Ww
-	 Tw/bgpb0vH0rNmH/KT7l5JnhXzYgemFib3g6q5Z6JzDHULIEbe9CrfZfw42pnULANJ
-	 WgqjVNTAm/3+2DqfQEOwExXb9pIwsPc+aqq1fh7NxMA1mMsYwxEuFnVegIlVrQRL/S
-	 aA7p/EgmLcSe3nEu8r16DNZSqtmjRwS/3AeYmjV6BBv/W6GCXDK030pXc9Uz94stbK
-	 QGNlAU+2KSBllTAcXhyRRHlFbahrLdiNjVnVvU6Nbx0jGxIDPVfgiIh/rIULGZFDGc
-	 Eq+WOq0N173ZA==
+	b=c03Ru1tYnGMpuFqjWI31KctbRJeleYz1GuYndnICw+Daiw3FIxZGlxwCDsEbjUJ1K
+	 Ptdhz2+zKwmXgAWkiqJNqNZi5iwMcf/VY/ipG30ATm7B8C8m8ZycwGo9bQBkEW7dxl
+	 pYdHV6sk4nWApiN5YR/lC4+yAMtAOujsu3Lt7oW994srKL4+Kwm1aLKRT2oO42tUa3
+	 1ri8HXQhKTCIyt8lvRgTIfvKo+bcZdWjd3ikbpmbpKvVYAylveu9YYdVCdiAXOOxF2
+	 /EzG3nDp+J1AaiSSnzElHO9JuEt+6IDhbi5PjXRwLU3dW5tO3MBvBrFe8L5ODpxIhW
+	 TOP8WG4fyYBjQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 32/53] media: mediatek: vcodec: Stop direct calls to queue num_buffers field
-Date: Mon,  2 Oct 2023 14:05:56 +0200
-Message-Id: <20231002120617.119602-33-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 29/53] media: pci: tw686x: Set min_buffers_needed to 3
+Date: Mon,  2 Oct 2023 14:05:53 +0200
+Message-Id: <20231002120617.119602-30-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_050643_624697_445A7E12 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20231002_050642_125532_9BD0AA41 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +88,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to 3 and remove the useless check in
+tw686x_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/pci/tw686x/tw686x-video.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index 04948d3eb011..8c580956b905 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -923,7 +923,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 		mtk_v4l2_venc_err(ctx, "pm_runtime_put fail %d", pm_ret);
+diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
+index 3ebf7a2c95f0..74cd864365aa 100644
+--- a/drivers/media/pci/tw686x/tw686x-video.c
++++ b/drivers/media/pci/tw686x/tw686x-video.c
+@@ -426,13 +426,6 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 	unsigned int szimage =
+ 		(vc->width * vc->height * vc->format->depth) >> 3;
  
- err_start_stream:
--	for (i = 0; i < q->num_buffers; ++i) {
-+	for (i = 0; i < q->max_num_buffers; ++i) {
- 		struct vb2_buffer *buf = vb2_get_buffer(q, i);
- 
- 		/*
+-	/*
+-	 * Let's request at least three buffers: two for the
+-	 * DMA engine and one for userspace.
+-	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
+-
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
+ 			return -EINVAL;
+@@ -1221,7 +1214,11 @@ int tw686x_video_init(struct tw686x_dev *dev)
+ 		vc->vidq.ops = &tw686x_video_qops;
+ 		vc->vidq.mem_ops = dev->dma_ops->mem_ops;
+ 		vc->vidq.timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+-		vc->vidq.min_buffers_needed = 2;
++		/*
++		 * Let's request at least three buffers: two for the
++		 * DMA engine and one for userspace.
++		 */
++		vc->vidq.min_buffers_needed = 3;
+ 		vc->vidq.lock = &vc->vb_mutex;
+ 		vc->vidq.gfp_flags = dev->dma_mode != TW686X_DMA_MODE_MEMCPY ?
+ 				     GFP_DMA32 : 0;
 -- 
 2.39.2
 
