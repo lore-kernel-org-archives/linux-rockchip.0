@@ -4,41 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE6EE784AC
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 13:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79E43E7849A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 13:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uh7g6g+Xw2P4P7C91HtInlsA95B8rbC9z5SrZls0xMI=; b=TUV/+cv+ibZ//x
-	gYRgsmshGY1UcFB9gcdzIytV4POupkCmato01zc16Co73vIvj3EL5kBqL6u7K337xtUAhBq0iKwc4
-	sSMGtsYAH5XEmdy5qiCOpF5J018NKLyk5PKgzh8uuKWtv3axpWPAZrWRvC5jY+aW96x5jErwktYZM
-	ExFsb9ySpb4duZ/e5I+VIkZC0gHewU/UsJV3sLbp7zW98ogH4BlzpHt3+KmqE4hDJFtNY280eoMEp
-	a531Vc6yhcOGqp3ZwdA/jEBVZCRFxueNZYXvvvVseA4743Ko3w7eOYB5U1x9TMEhTsRVPSpf1zeOh
-	qPI/HLx9zZx/5Ui+HPYg==;
+	List-Owner; bh=VkPmZ9FXxGcer6zGcr7fjBDH6lYVf5jLid9dZzl4YKE=; b=ye2raFodb8+JMQ
+	aOLVJzOku5+FKN5q66ld0rJH4hPYAzVU9cXEQBhqRD7vamnoWeGlYZ9iILDD0Ip6ZuekUXxBGYOi5
+	TIpcEpI3dnDIDWoUq65+Y1KDj+ALzN6Yl2fwTFgjbyzIhgAvBzMXuk8cJSaNoCNVYi954WPH7+E0R
+	WPo6Qana87XDGg7N9efPoCPfDDNjC+iN0l6ybGrmZuoWhrbqcM8b7LZQnZ8UNtU6h5QHo67e1Hjh5
+	Pu2JMrsi3PjVxjJWSjTREqb8JbsmjoloN7vZOWb1aI1DSO3P+1gMKFbWL/HorFCMoDwquwrstYiI6
+	P0xfjJ+98b3/xDTMagyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJFZ-00Cnx2-2J;
-	Mon, 02 Oct 2023 13:46:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qnJG0-00Co3D-28;
+	Mon, 02 Oct 2023 13:46:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJFV-00Cnvh-1M;
-	Mon, 02 Oct 2023 13:46:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 94A7560C74;
-	Mon,  2 Oct 2023 13:46:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4D2BC433CA;
-	Mon,  2 Oct 2023 13:46:08 +0000 (UTC)
-Message-ID: <08636b49-9022-4361-96d2-574de2548ab0@xs4all.nl>
-Date: Mon, 2 Oct 2023 15:46:07 +0200
+	id 1qnJFw-00Co0H-14;
+	Mon, 02 Oct 2023 13:46:42 +0000
+Received: from [IPV6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae] (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F338666072E6;
+	Mon,  2 Oct 2023 14:46:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696254396;
+	bh=O8vCK6vbi9I+g3gLwposBxmUwfZuUOIFgHZEhwLWTJk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=J3C+UmCPkSghlJzrlCZtSc86BTp3xMsv2L5lMzt7TXVLP8PKavhKS7i+5165v1ocK
+	 fX8bq/RCfPN/UatRG3P37MPOs3MnwnzoRI29RyjaB2H/JFxBZPCNrUlhygaoxGNA1u
+	 KneR40HdAwVKxQbkSkBzApvDOmttUvrRIsbl8a1yEeDuRoc6ArQ9o3MLnnD8EZyTO+
+	 4HHm6ZGzCmjb05nRK0Geaj4X2mIQoxMEZUY5OPVgahVXmev0TbKmIn60e0bdUVScwL
+	 zeXDiwACehxY2oE8Z1uNJ6+UroVJmJDZ3o1/E15LsgrEYZYA+qWAGFBFt0/6Ks81e7
+	 3pAJRzmUjdaQg==
+Message-ID: <2f1d1983-6038-c216-e362-d08a05c344fc@collabora.com>
+Date: Mon, 2 Oct 2023 15:46:33 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 01/53] media: videobuf2: Rework offset 'cookie'
- encoding pattern
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v8 13/53] media: Report the maximum possible number of
+ buffers for the queue
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
  ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
  gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
@@ -46,13 +58,15 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
- <20231002120617.119602-2-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20231002120617.119602-2-benjamin.gaignard@collabora.com>
+References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
+ <20230927153558.159278-14-benjamin.gaignard@collabora.com>
+ <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_064613_543335_B10E76D6 
-X-CRM114-Status: GOOD (  31.24  )
+X-CRM114-CacheID: sfid-20231002_064640_684636_297A62F8 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,208 +78,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02/10/2023 14:05, Benjamin Gaignard wrote:
-> Change how offset 'cookie' field value is computed to make possible
-> to use more buffers.
-> The maximum number of buffers depends of PAGE_SHIFT value and can
-> go up to 0x7fff when PAGE_SHIFT = 12.
-> With this encoding pattern we know the maximum number that a queue
-> could store so we can check it at  queue init time.
-> It also make easier and faster to find buffer and plane from using
-> the offset field.
-> Change __find_plane_by_offset() prototype to return the video buffer
-> itself rather than it index.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> changes in version 9:
-> - BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
->   architectures requirements.
-> 
->  .../media/common/videobuf2/videobuf2-core.c   | 71 +++++++++----------
->  1 file changed, 32 insertions(+), 39 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index cf6727d9c81f..a0540b2e461f 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -31,6 +31,10 @@
->  
->  #include <trace/events/vb2.h>
->  
-> +#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
-> +#define PLANE_INDEX_MASK	0x7
-> +#define BUFFER_INDEX_MASK	(BIT_MASK(30 - PLANE_INDEX_SHIFT) - 1)
-> +
->  static int debug;
->  module_param(debug, int, 0644);
->  
-> @@ -358,21 +362,24 @@ static void __setup_offsets(struct vb2_buffer *vb)
->  	unsigned int plane;
->  	unsigned long off = 0;
->  
-> -	if (vb->index) {
-> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
-> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
-> -
-> -		off = PAGE_ALIGN(p->m.offset + p->length);
-> -	}
-> +	/*
-> +	 * Offsets cookies value have the following constraints:
-> +	 * - a buffer could have up to 8 planes.
-
-could -> can
-
-> +	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
-
-use -> uses
-
-> +	 * - must be page aligned
-> +	 * That led to this bit mapping when PAGE_SHIFT = 12:
-> +	 * |30                |29        15|14       12|11 0|
-> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
-> +	 * where there are 15 bits to store buffer index.
-
-buffer index -> the buffer index
-
-> +	 * Depending on PAGE_SHIFT value we can have else bits to store buffer index.
-
-else bits? You probably mean "fewer bits".
-
-buffer index -> the buffer index
-
-> +	 */
-> +	off = vb->index << PLANE_INDEX_SHIFT;
->  
->  	for (plane = 0; plane < vb->num_planes; ++plane) {
-> -		vb->planes[plane].m.offset = off;
-> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
->  
->  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
->  				vb->index, plane, off);
-> -
-> -		off += vb->planes[plane].length;
-> -		off = PAGE_ALIGN(off);
->  	}
->  }
-
-Regards,
-
-	Hans
-
->  
-> @@ -2185,13 +2192,12 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
->  EXPORT_SYMBOL_GPL(vb2_core_streamoff);
->  
->  /*
-> - * __find_plane_by_offset() - find plane associated with the given offset off
-> + * __find_plane_by_offset() - find video buffer and plane associated with the given offset off
->   */
->  static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
-> -			unsigned int *_buffer, unsigned int *_plane)
-> +			struct vb2_buffer **vb, unsigned int *plane)
->  {
-> -	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int buffer;
->  
->  	/*
->  	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
-> @@ -2209,24 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
->  		return -EBUSY;
->  	}
->  
-> -	/*
-> -	 * Go over all buffers and their planes, comparing the given offset
-> -	 * with an offset assigned to each plane. If a match is found,
-> -	 * return its buffer and plane numbers.
-> -	 */
-> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
-> -		vb = q->bufs[buffer];
-> +	/* Get buffer and plane from the offset */
-> +	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
-> +	*plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
->  
-> -		for (plane = 0; plane < vb->num_planes; ++plane) {
-> -			if (vb->planes[plane].m.offset == off) {
-> -				*_buffer = buffer;
-> -				*_plane = plane;
-> -				return 0;
-> -			}
-> -		}
-> -	}
-> +	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
-> +		return -EINVAL;
->  
-> -	return -EINVAL;
-> +	*vb = q->bufs[buffer];
-> +	return 0;
->  }
->  
->  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
-> @@ -2306,7 +2303,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  {
->  	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer = 0, plane = 0;
-> +	unsigned int plane = 0;
->  	int ret;
->  	unsigned long length;
->  
-> @@ -2335,12 +2332,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	/*
->  	 * MMAP requires page_aligned buffers.
->  	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
-> @@ -2368,7 +2363,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	if (ret)
->  		return ret;
->  
-> -	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
-> +	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(vb2_mmap);
-> @@ -2382,7 +2377,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  {
->  	unsigned long off = pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int plane;
->  	void *vaddr;
->  	int ret;
->  
-> @@ -2392,12 +2387,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	vaddr = vb2_plane_vaddr(vb, plane);
->  	mutex_unlock(&q->mmap_lock);
->  	return vaddr ? (unsigned long)vaddr : -EINVAL;
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDAyLzEwLzIwMjMgw6AgMTU6MzcsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDI3
+LzA5LzIwMjMgMTc6MzUsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+PiBVc2Ugb25lIG9mIHRo
+ZSBzdHJ1Y3QgdjRsMl9jcmVhdGVfYnVmZmVycyByZXNlcnZlZCBieXRlcyB0byByZXBvcnQKPj4g
+dGhlIG1heGltdW0gcG9zc2libGUgbnVtYmVyIG9mIGJ1ZmZlcnMgZm9yIHRoZSBxdWV1ZS4KPj4g
+VjRsMiBmcmFtZXdvcmsgc2V0IFY0TDJfQlVGX0NBUF9TVVBQT1JUU19TRVRfTUFYX0JVRlMgZmxh
+Z3MgaW4gcXVldWUKPj4gY2FwYWJpbGl0aWVzIHNvIHVzZXJsYW5kIGNhbiBrbm93IHdoZW4gdGhl
+IGZpZWxkIGlzIHZhbGlkLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8
+YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICAgLi4uL3VzZXJzcGFj
+ZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1jcmVhdGUtYnVmcy5yc3QgICAgICAgfCA4ICsrKysrKy0t
+Cj4+ICAgRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC92aWRpb2MtcmVxYnVm
+cy5yc3QgfCAxICsKPj4gICBkcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYy
+LXY0bDIuYyAgICAgICAgICB8IDkgKysrKysrKy0tCj4+ICAgZHJpdmVycy9tZWRpYS92NGwyLWNv
+cmUvdjRsMi1pb2N0bC5jICAgICAgICAgICAgICAgICAgICAgfCA0ICsrLS0KPj4gICBpbmNsdWRl
+L3VhcGkvbGludXgvdmlkZW9kZXYyLmggICAgICAgICAgICAgICAgICAgICAgICAgICB8IDcgKysr
+KysrLQo+PiAgIDUgZmlsZXMgY2hhbmdlZCwgMjIgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMo
+LSkKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92
+NGwvdmlkaW9jLWNyZWF0ZS1idWZzLnJzdCBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9t
+ZWRpYS92NGwvdmlkaW9jLWNyZWF0ZS1idWZzLnJzdAo+PiBpbmRleCBhMDQ4YTlmNmI3YjYuLjFh
+NDY1NDllNzQ2MiAxMDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21l
+ZGlhL3Y0bC92aWRpb2MtY3JlYXRlLWJ1ZnMucnN0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNl
+cnNwYWNlLWFwaS9tZWRpYS92NGwvdmlkaW9jLWNyZWF0ZS1idWZzLnJzdAo+PiBAQCAtMTE2LDkg
+KzExNiwxMyBAQCB0aGFuIHRoZSBudW1iZXIgcmVxdWVzdGVkLgo+PiAgICAgICAgIC0gYGBmbGFn
+c2BgCj4+ICAgICAgICAgLSBTcGVjaWZpZXMgYWRkaXRpb25hbCBidWZmZXIgbWFuYWdlbWVudCBh
+dHRyaWJ1dGVzLgo+PiAgIAlTZWUgOnJlZjpgbWVtb3J5LWZsYWdzYC4KPj4gLQo+PiAgICAgICAq
+IC0gX191MzIKPj4gLSAgICAgIC0gYGByZXNlcnZlZGBgXCBbNl0KPj4gKyAgICAgIC0gYGBtYXhf
+YnVmZmVyc2BgCj4+ICsgICAgICAtIElmIFY0TDJfQlVGX0NBUF9TVVBQT1JUU19TRVRfTUFYX0JV
+RlMgY2FwYWJpbGl0eSBmbGFnIGlzIHNldAo+PiArICAgICAgICB0aGlzIGZpZWxkIGluZGljYXRl
+IHRoZSBtYXhpbXVtIHBvc3NpYmxlIG51bWJlciBvZiBidWZmZXJzCj4+ICsgICAgICAgIGZvciB0
+aGlzIHF1ZXVlLgo+PiArICAgICogLSBfX3UzMgo+PiArICAgICAgLSBgYHJlc2VydmVkYGBcIFs1
+XQo+PiAgICAgICAgIC0gQSBwbGFjZSBob2xkZXIgZm9yIGZ1dHVyZSBleHRlbnNpb25zLiBEcml2
+ZXJzIGFuZCBhcHBsaWNhdGlvbnMKPj4gICAJbXVzdCBzZXQgdGhlIGFycmF5IHRvIHplcm8uCj4+
+ICAgCj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRs
+L3ZpZGlvYy1yZXFidWZzLnJzdCBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92
+NGwvdmlkaW9jLXJlcWJ1ZnMucnN0Cj4+IGluZGV4IDA5OWZhNjY5NTE2Ny4uMDM5NTE4N2UxYTVh
+IDEwMDY0NAo+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3Zp
+ZGlvYy1yZXFidWZzLnJzdAo+PiArKysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVk
+aWEvdjRsL3ZpZGlvYy1yZXFidWZzLnJzdAo+PiBAQCAtMTIwLDYgKzEyMCw3IEBAIGFib3J0aW5n
+IG9yIGZpbmlzaGluZyBhbnkgRE1BIGluIHByb2dyZXNzLCBhbiBpbXBsaWNpdAo+PiAgIC4uIF9W
+NEwyLUJVRi1DQVAtU1VQUE9SVFMtT1JQSEFORUQtQlVGUzoKPj4gICAuLiBfVjRMMi1CVUYtQ0FQ
+LVNVUFBPUlRTLU0yTS1IT0xELUNBUFRVUkUtQlVGOgo+PiAgIC4uIF9WNEwyLUJVRi1DQVAtU1VQ
+UE9SVFMtTU1BUC1DQUNIRS1ISU5UUzoKPj4gKy4uIF9WNEwyLUJVRi1DQVAtU1VQUE9SVFMtU0VU
+LU1BWC1CVUZTOgo+PiAgIAo+PiAgIC4uIHJhdzo6IGxhdGV4Cj4+ICAgCj4+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLXY0bDIuYyBiL2RyaXZl
+cnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItdjRsMi5jCj4+IGluZGV4IDI3OGVh
+MTEwN2IwMS4uNjU1MTMzZjFhZTJiIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL21lZGlhL2NvbW1v
+bi92aWRlb2J1ZjIvdmlkZW9idWYyLXY0bDIuYwo+PiArKysgYi9kcml2ZXJzL21lZGlhL2NvbW1v
+bi92aWRlb2J1ZjIvdmlkZW9idWYyLXY0bDIuYwo+PiBAQCAtNjg2LDYgKzY4Niw3IEBAIEVYUE9S
+VF9TWU1CT0wodmIyX3F1ZXJ5YnVmKTsKPj4gICBzdGF0aWMgdm9pZCBmaWxsX2J1Zl9jYXBzKHN0
+cnVjdCB2YjJfcXVldWUgKnEsIHUzMiAqY2FwcykKPj4gICB7Cj4+ICAgCSpjYXBzID0gVjRMMl9C
+VUZfQ0FQX1NVUFBPUlRTX09SUEhBTkVEX0JVRlM7Cj4+ICsJKmNhcHMgfD0gVjRMMl9CVUZfQ0FQ
+X1NVUFBPUlRTX1NFVF9NQVhfQlVGUzsKPj4gICAJaWYgKHEtPmlvX21vZGVzICYgVkIyX01NQVAp
+Cj4+ICAgCQkqY2FwcyB8PSBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfTU1BUDsKPj4gICAJaWYgKHEt
+PmlvX21vZGVzICYgVkIyX1VTRVJQVFIpCj4+IEBAIC03NjcsOSArNzY4LDEzIEBAIGludCB2YjJf
+Y3JlYXRlX2J1ZnMoc3RydWN0IHZiMl9xdWV1ZSAqcSwgc3RydWN0IHY0bDJfY3JlYXRlX2J1ZmZl
+cnMgKmNyZWF0ZSkKPj4gICAKPj4gICAJZmlsbF9idWZfY2FwcyhxLCAmY3JlYXRlLT5jYXBhYmls
+aXRpZXMpOwo+PiAgIAl2YWxpZGF0ZV9tZW1vcnlfZmxhZ3MocSwgY3JlYXRlLT5tZW1vcnksICZj
+cmVhdGUtPmZsYWdzKTsKPj4gLQljcmVhdGUtPmluZGV4ID0gcS0+bnVtX2J1ZmZlcnM7Cj4+IC0J
+aWYgKGNyZWF0ZS0+Y291bnQgPT0gMCkKPj4gKwo+PiArCWNyZWF0ZS0+bWF4X2J1ZmZlcnMgPSBx
+LT5tYXhfbnVtX2J1ZmZlcnM7Cj4+ICsKPj4gKwlpZiAoY3JlYXRlLT5jb3VudCA9PSAwKSB7Cj4+
+ICsJCWNyZWF0ZS0+aW5kZXggPSB2YjJfZ2V0X251bV9idWZmZXJzKHEpOwo+IFRoaXMgYnJlYWtz
+IGdpdCBiaXNlY3Q6IHRoaXMgZnVuY3Rpb24gaXNuJ3QgaW50cm9kdWNlZCB1bnRpbCBwYXRjaCAy
+MS81My4KPgo+IE5vdGU6IHdpdGggdGhlIGJ1aWxkIHNjcmlwdHMgeW91IGNhbiBqdXN0IHJ1biBp
+dCB3aXRoOgo+Cj4gLi9idWlsZC5zaCAtcGF0Y2hlcyA1MyAuLi4KPgo+IGFuZCBpdCB3aWxsIGFw
+cGx5IGVhY2ggcGF0Y2ggaW4gc2VxdWVuY2UgYW5kIGF0dGVtcHQgdG8gY29tcGlsZSBpdC4KCkl0
+IHNob3VsZCAgYmUgY3JlYXRlLT5pbmRleCA9IHEtPm51bV9idWZmZXJzOwpUaGUgZXJyb3IgaXMg
+YWxzbyBpbiB2OS4uLgoKPgo+IFJlZ2FyZHMsCj4KPiAJSGFucwo+Cj4+ICAgCQlyZXR1cm4gcmV0
+ICE9IC1FQlVTWSA/IHJldCA6IDA7Cj4+ICsJfQo+PiAgIAo+PiAgIAlzd2l0Y2ggKGYtPnR5cGUp
+IHsKPj4gICAJY2FzZSBWNEwyX0JVRl9UWVBFX1ZJREVPX0NBUFRVUkVfTVBMQU5FOgo+PiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jIGIvZHJpdmVycy9t
+ZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4+IGluZGV4IGY0ZDlkNjI3OTA5NC4uNzAwZGIx
+OTdlMzcxIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3Rs
+LmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4+IEBAIC00
+ODMsOSArNDgzLDkgQEAgc3RhdGljIHZvaWQgdjRsX3ByaW50X2NyZWF0ZV9idWZmZXJzKGNvbnN0
+IHZvaWQgKmFyZywgYm9vbCB3cml0ZV9vbmx5KQo+PiAgIHsKPj4gICAJY29uc3Qgc3RydWN0IHY0
+bDJfY3JlYXRlX2J1ZmZlcnMgKnAgPSBhcmc7Cj4+ICAgCj4+IC0JcHJfY29udCgiaW5kZXg9JWQs
+IGNvdW50PSVkLCBtZW1vcnk9JXMsIGNhcGFiaWxpdGllcz0weCUwOHgsICIsCj4+ICsJcHJfY29u
+dCgiaW5kZXg9JWQsIGNvdW50PSVkLCBtZW1vcnk9JXMsIGNhcGFiaWxpdGllcz0weCUwOHgsIG1h
+eCBidWZmZXJzPSV1IiwKPj4gICAJCXAtPmluZGV4LCBwLT5jb3VudCwgcHJ0X25hbWVzKHAtPm1l
+bW9yeSwgdjRsMl9tZW1vcnlfbmFtZXMpLAo+PiAtCQlwLT5jYXBhYmlsaXRpZXMpOwo+PiArCQlw
+LT5jYXBhYmlsaXRpZXMsIHAtPm1heF9idWZmZXJzKTsKPj4gICAJdjRsX3ByaW50X2Zvcm1hdCgm
+cC0+Zm9ybWF0LCB3cml0ZV9vbmx5KTsKPj4gICB9Cj4+ICAgCj4+IGRpZmYgLS1naXQgYS9pbmNs
+dWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYy
+LmgKPj4gaW5kZXggNzgyNjBlNWQ5OTg1Li5iMGRiYjFiZTcyOGMgMTAwNjQ0Cj4+IC0tLSBhL2lu
+Y2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+PiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgv
+dmlkZW9kZXYyLmgKPj4gQEAgLTEwMzQsNiArMTAzNCw3IEBAIHN0cnVjdCB2NGwyX3JlcXVlc3Ri
+dWZmZXJzIHsKPj4gICAjZGVmaW5lIFY0TDJfQlVGX0NBUF9TVVBQT1JUU19PUlBIQU5FRF9CVUZT
+CQkoMSA8PCA0KQo+PiAgICNkZWZpbmUgVjRMMl9CVUZfQ0FQX1NVUFBPUlRTX00yTV9IT0xEX0NB
+UFRVUkVfQlVGCSgxIDw8IDUpCj4+ICAgI2RlZmluZSBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfTU1B
+UF9DQUNIRV9ISU5UUwkJKDEgPDwgNikKPj4gKyNkZWZpbmUgVjRMMl9CVUZfQ0FQX1NVUFBPUlRT
+X1NFVF9NQVhfQlVGUwkJKDEgPDwgNykKPj4gICAKPj4gICAvKioKPj4gICAgKiBzdHJ1Y3QgdjRs
+Ml9wbGFuZSAtIHBsYW5lIGluZm8gZm9yIG11bHRpLXBsYW5hciBidWZmZXJzCj4+IEBAIC0yNjA0
+LDYgKzI2MDUsOSBAQCBzdHJ1Y3QgdjRsMl9kYmdfY2hpcF9pbmZvIHsKPj4gICAgKiBAZmxhZ3M6
+CWFkZGl0aW9uYWwgYnVmZmVyIG1hbmFnZW1lbnQgYXR0cmlidXRlcyAoaWdub3JlZCB1bmxlc3Mg
+dGhlCj4+ICAgICoJCXF1ZXVlIGhhcyBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfTU1BUF9DQUNIRV9I
+SU5UUyBjYXBhYmlsaXR5Cj4+ICAgICoJCWFuZCBjb25maWd1cmVkIGZvciBNTUFQIHN0cmVhbWlu
+ZyBJL08pLgo+PiArICogQG1heF9idWZmZXJzOiBpZiBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfU0VU
+X01BWF9CVUZTIGNhcGFiaWxpdHkgZmxhZyBpcyBzZXQKPj4gKyAqCQkgdGhpcyBmaWVsZCBpbmRp
+Y2F0ZSB0aGUgbWF4aW11bSBwb3NzaWJsZSBudW1iZXIgb2YgYnVmZmVycwo+PiArICoJCSBmb3Ig
+dGhpcyBxdWV1ZS4KPj4gICAgKiBAcmVzZXJ2ZWQ6CWZ1dHVyZSBleHRlbnNpb25zCj4+ICAgICov
+Cj4+ICAgc3RydWN0IHY0bDJfY3JlYXRlX2J1ZmZlcnMgewo+PiBAQCAtMjYxMyw3ICsyNjE3LDgg
+QEAgc3RydWN0IHY0bDJfY3JlYXRlX2J1ZmZlcnMgewo+PiAgIAlzdHJ1Y3QgdjRsMl9mb3JtYXQJ
+Zm9ybWF0Owo+PiAgIAlfX3UzMgkJCWNhcGFiaWxpdGllczsKPj4gICAJX191MzIJCQlmbGFnczsK
+Pj4gLQlfX3UzMgkJCXJlc2VydmVkWzZdOwo+PiArCV9fdTMyCQkJbWF4X2J1ZmZlcnM7Cj4+ICsJ
+X191MzIJCQlyZXNlcnZlZFs1XTsKPj4gICB9Owo+PiAgIAo+PiAgIC8qCj4KCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
