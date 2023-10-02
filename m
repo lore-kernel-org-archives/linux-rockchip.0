@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D32EE784B3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58065E784B7
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AGG1PT+SnkrDSV4CBIBvCI+O87tkODzMKVv8G6kDYTc=; b=cGsMoYzHFcjrRs
-	fYiF0HWmlVmG/mMa+LYIARd5Uf/7ZYxPn3GIXyZiF/lmzgprTe5vCCHIB5NrV7n78qC5fPHCPh9L0
-	RQnFyT7p7SGmNqsrKRhwthDimTHv8tHhdaebzTGoVF5XW7ORKCapmdJQhUiBHSeTyYy8pLrtPPvPQ
-	/VX+BruV+HrdoXqEXLVWh8EAzQzNOXxPNH0Uof8IDQ436jg7MCDYZg3X9IXTplP9Upv9nwnMy+Qby
-	4G3ha1Rmrbx4L1wI0Ydbj4SN+gYT+R35vnXiEtmLVQZ+ulFO/jzuHPJ4kxdgxrQ+6gE+yB3HS1cur
-	Ie1qg2MfR2sxml0k2RrA==;
+	List-Owner; bh=868BKDZWE8QeXP0uDQt5Wr0f5vUS04nYk1tyg7wFYmU=; b=anHb3464DvjG3R
+	/681z8Q68l11LcyaleXMs+H/NcqqKTXfdSxz71HrTPHzlf64bI81yHGkkzOihJL7QHDHV5hnQxhNT
+	420s8cpGlUZp074xKyT/9vYrYrDPxDShZTYOjtJszg0BLua2bjaRv3a9lWwSTjDqHTxrVnHzs+oHd
+	8OmD9tfb4w1GjlVXUdF5rOZG7cAtyBO1GW7VPKsBYxGkdv0bikMHknWyI1jN4Asom74yleyqJCebX
+	ZqzCD9ZgnXSxAqeg0cvhNDNRKNC5yU0Q4OCsCTQuYHHO0ac3NWd2mOtfXYInGL+q3vKSoPZghc86v
+	ebnA6IvCUvPP6xwsQPNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHkS-00CfTx-0n;
-	Mon, 02 Oct 2023 12:10:04 +0000
+	id 1qnHkX-00CfdP-2i;
+	Mon, 02 Oct 2023 12:10:09 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhZ-00Cbit-22;
-	Mon, 02 Oct 2023 12:07:05 +0000
+	id 1qnHhX-00CbgN-28;
+	Mon, 02 Oct 2023 12:07:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=ZdZmEqrRMV9dFRqrdxtUi212e5SCpoGEwXf2tM4rGjc=; b=cjYAq6Jggxj0r1wUVJuh2M8mfx
-	7wcJMWA2b01lfCr3eexbjY8U00at9xR4vLpwI1ld9uUonLxYEK3S/CFAvS9BrIAV0o2/yRp5Rx51b
-	p/fRC53JT0+8dElmPDtu+g5FaH0tTWD3tWzXQ1VU8/3b3fSTzxMV7TyGgZQEf3zkXN81SEXUAPCHB
-	MIm3tr99zCgxnfoFMdWI+7vXV2a8usOOimYWZD9NRnYM8Vp+6IR1nNJlKj2uKnbIS9l91LdId1Y2y
-	HbC2VZ5iFeun5jhm11NrJU2SFdxjVc8sLB9WKe6juaMtRQXzDmL5SUnBowSIE5XMlzN0vrCTLuTbB
-	g9kRuj0A==;
+	bh=u3nndBmOIa5aTyPdxH8URZ6RNVydaSV8aLaykgwN9r0=; b=CkcD3M8Lh0hlSTOUDeRU045BCm
+	Zb5gbca0c8SW0Iq/01k8Hc7i82jmuHccW84SpOtkcknqYm3EegQ1PC5AgoQ/qwTHH1f7njEf2QWdT
+	nht/caU4fMBNLJWtYKD67rr46uhMI7RRIdpNhv3T4D30CG0dXCUPSSzys+HHBpykW6egpsp4aE3Nr
+	kTD0NuzwuaBi+IcyHNcsKytLlStq1Ykux71Rncs5g9/5lJD2o7ElmXgTTyXMa9rxS1a6S1Qi9DA4U
+	C0f1NMW8x/tTKdB6GAMRCkXLxDwkq0JP3E40e02f7X7ZIQ+kKd7W41Z1+0q7RA02BKFlg4rAqPjhg
+	BMPeQ4gw==;
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhM-0090TQ-31;
-	Mon, 02 Oct 2023 12:07:03 +0000
+	id 1qnHhL-0090Ro-1O;
+	Mon, 02 Oct 2023 12:07:01 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B14046607393;
-	Mon,  2 Oct 2023 13:06:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9CE17660738D;
+	Mon,  2 Oct 2023 13:06:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248411;
-	bh=sn5wF6D6IMQITXuycpSqegm5P50srmeBUI7DJutIPII=;
+	s=mail; t=1696248410;
+	bh=ab3b0OnRgwE0tLcrbw3ezabANr7f3bguMXcLjpsSnBA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NXjk4ZR3JH1ZPbpPnY/8ljdgOME6ON1K0X0GqQlczupovWX6I9lMesxCaOazI/Vig
-	 2rpiHG08Mc0N/2AfKpY7RkAFzbussmEpL/RM5VGkhxuhP4f8236CgSMovYJB3Xun2P
-	 QzXUQfmudUMm24y+3rRwneofxTycJtF1gw+/qkX+NxL1XTCsn+G+wfqwHm1de2aBOb
-	 kBNdbOhhCNCvnteE0BkW2yxbHEMlqyo0hfYSXf7rQbA4/aV/T3qT8wNKk68pyrFoM3
-	 T46UYK54Rr2xowaE5wspEkmWMKQ1odXSWc6Qrbfj1EzkC8fX/mwfFdA2n2EmKBsPTr
-	 0ykQNDodUnGxA==
+	b=TUzURIJgF2X3CiZYQcFBU9DwTk6hOQTEp8ajqLhxSjnJLLik+662uPT1MFD6S5Ycm
+	 +KeL402Cz3X9esFjhVCgQW+NDOtg+LIiRTuJZPBj6e4Ck2tPuyJLBFfWso0bcKlhI/
+	 9u8PvwrI6+MA4sNJTITeRVreIbm8VJLqHUXKFjePse/pCrk+tldbte5FxScZAArVBq
+	 KuWgvrd5FN+9pS+Z5JC6udbyWxnJP8M7CnEYL6XxR8lqNiWgQ1A4MnPr/MsB1XuGzr
+	 EIzUTuc5JR3C/+YzzmNY4BW107tVWBp4HOGIQBJvqGbxQOOHHWAjCP09mKZwO9+zyF
+	 WQFVXzHjMaIrg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 49/53] media: core: Add bitmap manage bufs array entries
-Date: Mon,  2 Oct 2023 14:06:13 +0200
-Message-Id: <20231002120617.119602-50-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 47/53] media: cedrus: Stop direct calls to queue num_buffers field
+Date: Mon,  2 Oct 2023 14:06:11 +0200
+Message-Id: <20231002120617.119602-48-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_130654_758223_94D7DFC9 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20231002_130653_252194_1C43933C 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,202 +102,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a bitmap field to know which of bufs array entries are
-used or not.
-Remove no more used num_buffers field from queue structure.
-Use bitmap_find_next_zero_area() to find the first possible
-range when creating new buffers to fill the gaps.
+Use vb2_get_num_buffers() and queue max_num_buffers field
+to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 43 ++++++++++++++-----
- include/media/videobuf2-core.h                | 19 +++++---
- 2 files changed, 47 insertions(+), 15 deletions(-)
+version 9:
+- run 'test-media -kmemleak mc' at this point of the series without
+  problems.
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 92de8af58bdc..4cbc17e8b53e 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -412,11 +412,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
- {
--	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
-+	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
+ drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 8 ++++++--
+ drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+index dfb401df138a..88061310f815 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+@@ -653,8 +653,12 @@ static void cedrus_h264_stop(struct cedrus_ctx *ctx)
  
- 	q->bufs[index] = vb;
- 	vb->index = index;
- 	vb->vb2_queue = q;
-+	set_bit(index, q->bufs_bitmap);
- }
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
  
- /**
-@@ -425,8 +426,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
-  */
- static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
- {
--	if (vb->vb2_queue->num_buffers)
--		vb->vb2_queue->num_buffers--;
-+	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
- 	vb->vb2_queue->bufs[vb->index] = NULL;
- 	vb->vb2_queue = NULL;
- }
-@@ -448,11 +448,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned long index;
- 	int ret;
- 
--	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-+	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
- 			    q->max_num_buffers - vb2_get_num_buffers(q));
- 
--	index = vb2_get_num_buffers(q);
-+	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-+					   0, num_buffers, 0);
- 
- 	*first_index = index;
- 
-@@ -874,6 +875,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
- 	if (!q->bufs)
- 		ret = -ENOMEM;
+-	for (i = 0; i < vq->num_buffers; i++) {
+-		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
++	for (i = 0; i < vq->max_num_buffers; i++) {
++		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
 +
-+	if (!q->bufs_bitmap)
-+		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+	if (!q->bufs_bitmap) {
-+		ret = -ENOMEM;
-+		kfree(q->bufs);
-+		q->bufs = NULL;
-+	}
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
- 	if (ret)
-@@ -943,7 +952,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
++		if (!vb)
++			continue;
++		buf = vb2_to_cedrus_buffer(vb);
  
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers = allocated_buffers;
+ 		if (buf->codec.h264.mv_col_buf_size > 0) {
+ 			dma_free_attrs(dev->dev,
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+index fc9297232456..b8b66d0d951e 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+@@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ctx)
  
- 	if (ret < 0) {
- 		/*
-@@ -970,6 +978,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	mutex_lock(&q->mmap_lock);
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 	mutex_unlock(&q->mmap_lock);
-+	kfree(q->bufs);
-+	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-@@ -1006,9 +1018,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->memory = memory;
- 		if (!q->bufs)
- 			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--		if (!q->bufs)
-+		if (!q->bufs) {
- 			ret = -ENOMEM;
-+			goto unlock;
-+		}
-+		if (!q->bufs_bitmap)
-+			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+		if (!q->bufs_bitmap) {
-+			ret = -ENOMEM;
-+			kfree(q->bufs);
-+			q->bufs = NULL;
-+		}
- 		mutex_unlock(&q->mmap_lock);
-+unlock:
- 		if (ret)
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
-@@ -1070,7 +1092,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
  
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers += allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -2547,7 +2568,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_free(q, q->max_num_buffers);
- 	kfree(q->bufs);
- 	q->bufs = NULL;
--	q->num_buffers = 0;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
+-	for (i = 0; i < vq->num_buffers; i++) {
+-		buf = vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
++	for (i = 0; i < vq->max_num_buffers; i++) {
++		struct vb2_buffer *vb = vb2_get_buffer(vq, i);
 +
- 	mutex_unlock(&q->mmap_lock);
- }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-@@ -2902,7 +2925,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
- 	 * Check if we need to dequeue the buffer.
- 	 */
- 	index = fileio->cur_index;
--	if (index >= q->num_buffers) {
-+	if (!test_bit(index, q->bufs_bitmap)) {
- 		struct vb2_buffer *b;
- 
- 		/*
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index d433bf84e30c..fc1fcd8faa64 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -346,7 +346,7 @@ struct vb2_buffer {
-  *			describes the requested number of planes and sizes\[\]
-  *			contains the requested plane sizes. In this case
-  *			\*num_buffers are being allocated additionally to
-- *			q->num_buffers. If either \*num_planes or the requested
-+ *			queue buffers. If either \*num_planes or the requested
-  *			sizes are invalid callback must return %-EINVAL.
-  * @wait_prepare:	release any locks taken while calling vb2 functions;
-  *			it is called before an ioctl needs to wait for a new
-@@ -557,7 +557,7 @@ struct vb2_buf_ops {
-  * @memory:	current memory type used
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-- * @num_buffers: number of allocated/used buffers
-+ * @bufs_bitmap: bitmap to manage bufs entries.
-  * @max_num_buffers: upper limit of number of allocated/used buffers
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-@@ -621,7 +621,7 @@ struct vb2_queue {
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
- 	struct vb2_buffer		**bufs;
--	unsigned int			num_buffers;
-+	unsigned long			*bufs_bitmap;
- 	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
-@@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
-  */
- static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
- {
--	return q->num_buffers;
-+	if (!q->bufs_bitmap)
-+		return 0;
++		if (!vb)
++			continue;
 +
-+	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
- }
++		buf = vb2_to_cedrus_buffer(vb);
  
- /**
-@@ -1253,7 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
- {
--	if (index < q->num_buffers)
-+	if (!q->bufs_bitmap)
-+		return NULL;
-+
-+	if (index >= q->max_num_buffers)
-+		return NULL;
-+
-+	if (test_bit(index, q->bufs_bitmap))
- 		return q->bufs[index];
- 	return NULL;
- }
+ 		if (buf->codec.h265.mv_col_buf_size > 0) {
+ 			dma_free_attrs(dev->dev,
 -- 
 2.39.2
 
