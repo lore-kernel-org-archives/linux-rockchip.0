@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E39E784AC
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9785E7849A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rogwT1CuKGKsaYzUXewg+jpNugFO1tnwO4D8CLniIpQ=; b=uMg+CZNvLxQgVs
-	+4ppoXtx2OAOK4Ils5+f2M94jnyJ6h8BeRIevQyGGkSKAb2SNiawmIUb9TViPFofQBxQw75YVZJv+
-	p2uASkratcLD4QVQvwGMIjOFTLBU8qqbSG4kTxJQro8DAYhaOgt4JBsd3UtzCn+MblVmRFcriJ+O9
-	adjuWybWPbZT3uFniPgrA3ojMrqnVp1RWVjPp4+myx9MXKgWjxFuCSNAfRnySizO6h5ZegtzDE+f3
-	SpB/eiYSYXLu0ab/fe6XCiCzJo/KaInt/VFq8Y/ePg1R1Q0axyU/h/hlvgPp9y2bapD17G8G/0D5d
-	ZcEMhNw4k8XsewksOFZw==;
+	List-Owner; bh=B/KwqNdYo+5P2wcrBIAxZfqRG8GzTDZSGzryqVEJGDw=; b=Rz3chOY8gLKV1b
+	UwHzqIo09uozNR2RbsC0msAKHe//qg7tb++VBbShRHWtzlnYBpETyjtNSP8EMAJNZQJCcX0ZnE/xW
+	rsKWxL62eNPKh8dn0/ZGj1B3LiHR0q2QGhWQIKLtXy3Q7RWZCbGeR163efvkoUpLt7m6bGvhM8Bm+
+	mwyeKBUUJoOO5vCzX/YqjpMrin/iyGDHJwudgvy77QMHdr9dBE0O02FOOjUbhNp++X5gOXwjDIWpW
+	xNUdkQfaaEpfPjrQrDel3lYbTVoryV9CDcnsQqLwNbwO9nsRTeMrDue3qcpJuoAxOXMsFKNwKpWD6
+	Gk3XBq9IpEOW4Az+GZjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHjf-00CeJx-2y;
-	Mon, 02 Oct 2023 12:09:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhL-00CbRF-2M;
-	Mon, 02 Oct 2023 12:06:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=mxhqX9L/LTLjAo8r4FRZmw55ljZYm0j0MEPgb49dKlI=; b=XZ/0bXVhNFyxQsWxPjZBImvJSY
-	A5wc9pKX3YXxIaUYPJHfRDhg5z+IlaXXwNgrAVDeippe2U3EqRjKffwzMwWxfxsQAHEsANZ1IqRO4
-	Bxp9kflw9gvOkRJ+54QDpHtzBLftkzLMHxNnlrKCtbUjoaKGsbJ7XykMp05RhI/0nE6TCkFLAP19t
-	Y+XZVFmzZMm5YxaxRkqa97eM1CgX5ToNfwDEaYIiwtt9W5732faf35vlIm72BtNQIv5WbHk0LAzxP
-	CNPzgGwsyc++J/b3nugK0V9nIf1kBaogffxx/4iw11Y3U4X4TBlYZajieFZq8qqpTpsQWO4lFqv7s
-	qy8XUZaQ==;
+	id 1qnHjk-00CeR4-2I;
+	Mon, 02 Oct 2023 12:09:20 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhC-0090NA-08;
-	Mon, 02 Oct 2023 12:06:49 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnHhA-00CbC1-2d;
+	Mon, 02 Oct 2023 12:06:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4E233660731D;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D95976607356;
 	Mon,  2 Oct 2023 13:06:38 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248398;
-	bh=7OP/lnsbD5MzPZ4L/gceSmxIzda3Ng9eLtu0phjni7k=;
+	s=mail; t=1696248399;
+	bh=ZWZu+iiWZeSR97TuxWAcPyCT2zWmqcsNlEZTasx6lQc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=f88Lkm0oKTrBkVS+11PzY0oHDtH24yH2hRy+ovgFH1RcJt5BuaKf6dhZxZLVj0d1m
-	 pEzDe/zH34BjfmNCWHk1Svyw2F0rYKTA0eC9K3BsAvthcKPWLO/lVfpBVpCabDtXy6
-	 rlKYM4QI0x7Qk85CCDVH9q6BouBVguyNbu+VOFQ0yAyJ2trsFPY0DuP4fZshU3ycxI
-	 RhqyY6MdSIb8qkbL9MDzvwRW4iTiRZJI26o6YziZ7lkHlbOiT8kT8pdOhQoP461h+l
-	 cYL1AwoinjFwZCpMScAjefTMXBVzvZ/bJY7xQ0t36JVzRr+x6xGZSgr4yqr9FwgL5N
-	 5Lpd1ZJ/O0xVA==
+	b=jHuIY1C3xdaiIOcz8Gnf5aJox/kRb26KCOPiCbxf/EP7Q4CYPzisp52Z9WHgipQGK
+	 1olsqWV1yrelchZO27XT5TZl8znK3yUVD1ZLGBuDsXGazsGSBKlLN1QNFjTgUYvmdl
+	 EU0twmXBgV45JyyTtRYUOeX3nclSp6MAV+16D7L2DPC0cT6sfat/49+Khg38EPriEJ
+	 58yE+KobUFleYnvREnM9aj9XS1ml0CBr1XpuaOQ1RRhpEm1Hbe3AMSGb5na0pn1/Kc
+	 L2qJehzRfvjg6plJ5W9XGnM4oNagK60r1k7SG+ZQ0P6S2pne7VFZkUUvlx0joAqCCG
+	 kUVB5ZLvMQU6w==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 26/53] media: pci: dt3155: Remove useless check
-Date: Mon,  2 Oct 2023 14:05:50 +0200
-Message-Id: <20231002120617.119602-27-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 27/53] media: pci: netup_unidvb: Remove useless number of buffers check
+Date: Mon,  2 Oct 2023 14:05:51 +0200
+Message-Id: <20231002120617.119602-28-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_130644_325789_80394BA2 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20231002_050641_016488_6142BB85 
+X-CRM114-Status: UNSURE (   8.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,27 +89,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-min_buffers_needed is already set to 2 so remove this useless
-check.
+vb2 core tests this already so remove it.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/pci/dt3155/dt3155.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/media/pci/netup_unidvb/netup_unidvb_core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/media/pci/dt3155/dt3155.c b/drivers/media/pci/dt3155/dt3155.c
-index 548156b199cc..d09cde2f6ee4 100644
---- a/drivers/media/pci/dt3155/dt3155.c
-+++ b/drivers/media/pci/dt3155/dt3155.c
-@@ -128,8 +128,6 @@ dt3155_queue_setup(struct vb2_queue *vq,
- 	struct dt3155_priv *pd = vb2_get_drv_priv(vq);
- 	unsigned size = pd->width * pd->height;
+diff --git a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
+index d85bfbb77a25..52de9b0af812 100644
+--- a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
++++ b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
+@@ -297,11 +297,9 @@ static int netup_unidvb_queue_setup(struct vb2_queue *vq,
+ 	dev_dbg(&dma->ndev->pci_dev->dev, "%s()\n", __func__);
  
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
- 	if (*num_planes)
- 		return sizes[0] < size ? -EINVAL : 0;
- 	*num_planes = 1;
+ 	*nplanes = 1;
+-	if (vq->num_buffers + *nbuffers < VIDEO_MAX_FRAME)
+-		*nbuffers = VIDEO_MAX_FRAME - vq->num_buffers;
+ 	sizes[0] = PAGE_ALIGN(NETUP_DMA_PACKETS_COUNT * 188);
+ 	dev_dbg(&dma->ndev->pci_dev->dev, "%s() nbuffers=%d sizes[0]=%d\n",
+-		__func__, *nbuffers, sizes[0]);
++		__func__, vb2_get_num_buffers(vq), sizes[0]);
+ 	return 0;
+ }
+ 
 -- 
 2.39.2
 
