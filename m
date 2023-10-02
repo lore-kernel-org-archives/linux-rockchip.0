@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F6AE784AC
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 13:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24DDEE7849A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 13:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N70IdExAo8kI7b1ZSINKdE7jKmGP0CMgzQGKW2OpWFo=; b=JPxnWRCrTorPzw
-	YoWvx8fEtv3LivzqgCY17Ch9US0TXwyKcyFcXhwI4tpmJB3cOtAlN+QpS/YojHqRWVkHY8aUJm1tQ
-	zBY9PzVf7JBSEBrEZxsqEFLMb35/TAj6ThnbH+vxmLla49kpHMwMcusnsdwZTxPYISBpSMIY31oUC
-	3vTWwzMpFqNwbdTiYQzVzDoLLSZGAD9AGzVwHJPjMhDzrJJsGvsKAM0BRDcGxfGqKx0M9eGh5zj7w
-	R3aef18NZ7qdliLSacUZQ+9rY60Q1ewIa12OkQLPxxR3d1GEUFYJRNC/A3LDtKTP1sO//V80eWgGu
-	YkZsw1UfC0aLL7gZGH2Q==;
+	List-Owner; bh=AjMY2s9WF2ILatZ14+o153j34nM676TopUdIfCJzgP4=; b=wzAB/9yfOfYe7R
+	VwDfq1gVvrwi+OAYdkjMQUxckT1dKkrct1htXSDIVfW21gl1PmgeB4SyoplvOUmkY5KMzfQnA4ua8
+	f2ZjTP1FAm7kkogJKo46tnMdZ6RvpHa7470ZHpCl8f4N3umoWo6EuUL5vLWB+DJsDGbs3f4iD4GZr
+	r3xc5jPp33vYYNh2xPGT7a0/iYAph4EX8nvO97P8THNgnusiaHR/kz4vZ4mRovO3dYpIc3YV8+fZM
+	XYB/MU0oGSPkUKeshfY4rCGpgRs6HVajJciBuhH0MkY1o5IuxcsyvloCfOcDV5QAKOoGeiFOriDLj
+	xMc0mT859wU1qnKiUyzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJJB-00CoTH-1d;
-	Mon, 02 Oct 2023 13:50:01 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qnJQY-00CpK8-0E;
+	Mon, 02 Oct 2023 13:57:38 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnJJ6-00CoRW-2n;
-	Mon, 02 Oct 2023 13:49:59 +0000
+	id 1qnJQU-00CpI8-0g;
+	Mon, 02 Oct 2023 13:57:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E33B0CE0E13;
-	Mon,  2 Oct 2023 13:49:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1566C433C8;
-	Mon,  2 Oct 2023 13:49:47 +0000 (UTC)
-Message-ID: <71d5e43f-fab8-49ea-b5d1-441beb6cf351@xs4all.nl>
-Date: Mon, 2 Oct 2023 15:49:45 +0200
+	by ams.source.kernel.org (Postfix) with ESMTP id 95701B80D44;
+	Mon,  2 Oct 2023 13:57:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ADA0C433C8;
+	Mon,  2 Oct 2023 13:57:28 +0000 (UTC)
+Message-ID: <b7e01161-0883-46c5-ba06-bdb8dd80c237@xs4all.nl>
+Date: Mon, 2 Oct 2023 15:57:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 13/53] media: Report the maximum possible number of
- buffers for the queue
+Subject: Re: [PATCH v9 01/53] media: videobuf2: Rework offset 'cookie'
+ encoding pattern
 Content-Language: en-US, nl
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
  tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
@@ -46,15 +46,13 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230927153558.159278-1-benjamin.gaignard@collabora.com>
- <20230927153558.159278-14-benjamin.gaignard@collabora.com>
- <cf73025e-0bb0-44c2-9ab3-e426c09bebd8@xs4all.nl>
- <2f1d1983-6038-c216-e362-d08a05c344fc@collabora.com>
+References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
+ <20231002120617.119602-2-benjamin.gaignard@collabora.com>
 From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <2f1d1983-6038-c216-e362-d08a05c344fc@collabora.com>
+In-Reply-To: <20231002120617.119602-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_064957_245959_65AF46EC 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20231002_065734_549909_410CE76F 
+X-CRM114-Status: GOOD (  32.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,131 +64,202 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDIvMTAvMjAyMyAxNTo0NiwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gCj4gTGUgMDIv
-MTAvMjAyMyDDoCAxNTozNywgSGFucyBWZXJrdWlsIGEgw6ljcml0wqA6Cj4+IE9uIDI3LzA5LzIw
-MjMgMTc6MzUsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+Pj4gVXNlIG9uZSBvZiB0aGUgc3Ry
-dWN0IHY0bDJfY3JlYXRlX2J1ZmZlcnMgcmVzZXJ2ZWQgYnl0ZXMgdG8gcmVwb3J0Cj4+PiB0aGUg
-bWF4aW11bSBwb3NzaWJsZSBudW1iZXIgb2YgYnVmZmVycyBmb3IgdGhlIHF1ZXVlLgo+Pj4gVjRs
-MiBmcmFtZXdvcmsgc2V0IFY0TDJfQlVGX0NBUF9TVVBQT1JUU19TRVRfTUFYX0JVRlMgZmxhZ3Mg
-aW4gcXVldWUKPj4+IGNhcGFiaWxpdGllcyBzbyB1c2VybGFuZCBjYW4ga25vdyB3aGVuIHRoZSBm
-aWVsZCBpcyB2YWxpZC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8
-YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPj4+IC0tLQo+Pj4gwqAgLi4uL3VzZXJz
-cGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1jcmVhdGUtYnVmcy5yc3TCoMKgwqDCoMKgwqAgfCA4
-ICsrKysrKy0tCj4+PiDCoCBEb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3Zp
-ZGlvYy1yZXFidWZzLnJzdCB8IDEgKwo+Pj4gwqAgZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9i
-dWYyL3ZpZGVvYnVmMi12NGwyLmPCoMKgwqDCoMKgwqDCoMKgwqAgfCA5ICsrKysrKystLQo+Pj4g
-wqAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDQgKystLQo+Pj4gwqAgaW5jbHVkZS91YXBpL2xpbnV4
-L3ZpZGVvZGV2Mi5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8IDcgKysrKysrLQo+Pj4gwqAgNSBmaWxlcyBjaGFuZ2VkLCAyMiBpbnNlcnRpb25z
-KCspLCA3IGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3Vz
-ZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1jcmVhdGUtYnVmcy5yc3QgYi9Eb2N1bWVudGF0
-aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1jcmVhdGUtYnVmcy5yc3QKPj4+IGlu
-ZGV4IGEwNDhhOWY2YjdiNi4uMWE0NjU0OWU3NDYyIDEwMDY0NAo+Pj4gLS0tIGEvRG9jdW1lbnRh
-dGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC92aWRpb2MtY3JlYXRlLWJ1ZnMucnN0Cj4+PiAr
-KysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlvYy1jcmVhdGUt
-YnVmcy5yc3QKPj4+IEBAIC0xMTYsOSArMTE2LDEzIEBAIHRoYW4gdGhlIG51bWJlciByZXF1ZXN0
-ZWQuCj4+PiDCoMKgwqDCoMKgwqDCoCAtIGBgZmxhZ3NgYAo+Pj4gwqDCoMKgwqDCoMKgwqAgLSBT
-cGVjaWZpZXMgYWRkaXRpb25hbCBidWZmZXIgbWFuYWdlbWVudCBhdHRyaWJ1dGVzLgo+Pj4gwqDC
-oMKgwqDCoCBTZWUgOnJlZjpgbWVtb3J5LWZsYWdzYC4KPj4+IC0KPj4+IMKgwqDCoMKgwqAgKiAt
-IF9fdTMyCj4+PiAtwqDCoMKgwqDCoCAtIGBgcmVzZXJ2ZWRgYFwgWzZdCj4+PiArwqDCoMKgwqDC
-oCAtIGBgbWF4X2J1ZmZlcnNgYAo+Pj4gK8KgwqDCoMKgwqAgLSBJZiBWNEwyX0JVRl9DQVBfU1VQ
-UE9SVFNfU0VUX01BWF9CVUZTIGNhcGFiaWxpdHkgZmxhZyBpcyBzZXQKPj4+ICvCoMKgwqDCoMKg
-wqDCoCB0aGlzIGZpZWxkIGluZGljYXRlIHRoZSBtYXhpbXVtIHBvc3NpYmxlIG51bWJlciBvZiBi
-dWZmZXJzCj4+PiArwqDCoMKgwqDCoMKgwqAgZm9yIHRoaXMgcXVldWUuCj4+PiArwqDCoMKgICog
-LSBfX3UzMgo+Pj4gK8KgwqDCoMKgwqAgLSBgYHJlc2VydmVkYGBcIFs1XQo+Pj4gwqDCoMKgwqDC
-oMKgwqAgLSBBIHBsYWNlIGhvbGRlciBmb3IgZnV0dXJlIGV4dGVuc2lvbnMuIERyaXZlcnMgYW5k
-IGFwcGxpY2F0aW9ucwo+Pj4gwqDCoMKgwqDCoCBtdXN0IHNldCB0aGUgYXJyYXkgdG8gemVyby4K
-Pj4+IMKgIGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRs
-L3ZpZGlvYy1yZXFidWZzLnJzdCBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92
-NGwvdmlkaW9jLXJlcWJ1ZnMucnN0Cj4+PiBpbmRleCAwOTlmYTY2OTUxNjcuLjAzOTUxODdlMWE1
-YSAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwv
-dmlkaW9jLXJlcWJ1ZnMucnN0Cj4+PiArKysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkv
-bWVkaWEvdjRsL3ZpZGlvYy1yZXFidWZzLnJzdAo+Pj4gQEAgLTEyMCw2ICsxMjAsNyBAQCBhYm9y
-dGluZyBvciBmaW5pc2hpbmcgYW55IERNQSBpbiBwcm9ncmVzcywgYW4gaW1wbGljaXQKPj4+IMKg
-IC4uIF9WNEwyLUJVRi1DQVAtU1VQUE9SVFMtT1JQSEFORUQtQlVGUzoKPj4+IMKgIC4uIF9WNEwy
-LUJVRi1DQVAtU1VQUE9SVFMtTTJNLUhPTEQtQ0FQVFVSRS1CVUY6Cj4+PiDCoCAuLiBfVjRMMi1C
-VUYtQ0FQLVNVUFBPUlRTLU1NQVAtQ0FDSEUtSElOVFM6Cj4+PiArLi4gX1Y0TDItQlVGLUNBUC1T
-VVBQT1JUUy1TRVQtTUFYLUJVRlM6Cj4+PiDCoCDCoCAuLiByYXc6OiBsYXRleAo+Pj4gwqAgZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItdjRsMi5j
-IGIvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi12NGwyLmMKPj4+IGlu
-ZGV4IDI3OGVhMTEwN2IwMS4uNjU1MTMzZjFhZTJiIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9t
-ZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi12NGwyLmMKPj4+ICsrKyBiL2RyaXZlcnMv
-bWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItdjRsMi5jCj4+PiBAQCAtNjg2LDYgKzY4
-Niw3IEBAIEVYUE9SVF9TWU1CT0wodmIyX3F1ZXJ5YnVmKTsKPj4+IMKgIHN0YXRpYyB2b2lkIGZp
-bGxfYnVmX2NhcHMoc3RydWN0IHZiMl9xdWV1ZSAqcSwgdTMyICpjYXBzKQo+Pj4gwqAgewo+Pj4g
-wqDCoMKgwqDCoCAqY2FwcyA9IFY0TDJfQlVGX0NBUF9TVVBQT1JUU19PUlBIQU5FRF9CVUZTOwo+
-Pj4gK8KgwqDCoCAqY2FwcyB8PSBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfU0VUX01BWF9CVUZTOwo+
-Pj4gwqDCoMKgwqDCoCBpZiAocS0+aW9fbW9kZXMgJiBWQjJfTU1BUCkKPj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoCAqY2FwcyB8PSBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfTU1BUDsKPj4+IMKgwqDCoMKg
-wqAgaWYgKHEtPmlvX21vZGVzICYgVkIyX1VTRVJQVFIpCj4+PiBAQCAtNzY3LDkgKzc2OCwxMyBA
-QCBpbnQgdmIyX2NyZWF0ZV9idWZzKHN0cnVjdCB2YjJfcXVldWUgKnEsIHN0cnVjdCB2NGwyX2Ny
-ZWF0ZV9idWZmZXJzICpjcmVhdGUpCj4+PiDCoCDCoMKgwqDCoMKgIGZpbGxfYnVmX2NhcHMocSwg
-JmNyZWF0ZS0+Y2FwYWJpbGl0aWVzKTsKPj4+IMKgwqDCoMKgwqAgdmFsaWRhdGVfbWVtb3J5X2Zs
-YWdzKHEsIGNyZWF0ZS0+bWVtb3J5LCAmY3JlYXRlLT5mbGFncyk7Cj4+PiAtwqDCoMKgIGNyZWF0
-ZS0+aW5kZXggPSBxLT5udW1fYnVmZmVyczsKPj4+IC3CoMKgwqAgaWYgKGNyZWF0ZS0+Y291bnQg
-PT0gMCkKPj4+ICsKPj4+ICvCoMKgwqAgY3JlYXRlLT5tYXhfYnVmZmVycyA9IHEtPm1heF9udW1f
-YnVmZmVyczsKPj4+ICsKPj4+ICvCoMKgwqAgaWYgKGNyZWF0ZS0+Y291bnQgPT0gMCkgewo+Pj4g
-K8KgwqDCoMKgwqDCoMKgIGNyZWF0ZS0+aW5kZXggPSB2YjJfZ2V0X251bV9idWZmZXJzKHEpOwo+
-PiBUaGlzIGJyZWFrcyBnaXQgYmlzZWN0OiB0aGlzIGZ1bmN0aW9uIGlzbid0IGludHJvZHVjZWQg
-dW50aWwgcGF0Y2ggMjEvNTMuCj4+Cj4+IE5vdGU6IHdpdGggdGhlIGJ1aWxkIHNjcmlwdHMgeW91
-IGNhbiBqdXN0IHJ1biBpdCB3aXRoOgo+Pgo+PiAuL2J1aWxkLnNoIC1wYXRjaGVzIDUzIC4uLgo+
-Pgo+PiBhbmQgaXQgd2lsbCBhcHBseSBlYWNoIHBhdGNoIGluIHNlcXVlbmNlIGFuZCBhdHRlbXB0
-IHRvIGNvbXBpbGUgaXQuCj4gCj4gSXQgc2hvdWxkwqAgYmUgY3JlYXRlLT5pbmRleCA9IHEtPm51
-bV9idWZmZXJzOwo+IFRoZSBlcnJvciBpcyBhbHNvIGluIHY5Li4uCgpTb3JyeSwgSSBtZWFudCB0
-byByZXBseSB0byB0aGUgdjkgcGF0Y2gsIHNvIHllcywgaXQgaXMgYWxzbyBpbiB2OSA6LSkKCglI
-YW5zCgo+IAo+Pgo+PiBSZWdhcmRzLAo+Pgo+PiDCoMKgwqDCoEhhbnMKPj4KPj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoCByZXR1cm4gcmV0ICE9IC1FQlVTWSA/IHJldCA6IDA7Cj4+PiArwqDCoMKgIH0K
-Pj4+IMKgIMKgwqDCoMKgwqAgc3dpdGNoIChmLT50eXBlKSB7Cj4+PiDCoMKgwqDCoMKgIGNhc2Ug
-VjRMMl9CVUZfVFlQRV9WSURFT19DQVBUVVJFX01QTEFORToKPj4+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29y
-ZS92NGwyLWlvY3RsLmMKPj4+IGluZGV4IGY0ZDlkNjI3OTA5NC4uNzAwZGIxOTdlMzcxIDEwMDY0
-NAo+Pj4gLS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4+PiArKysg
-Yi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPj4+IEBAIC00ODMsOSArNDgz
-LDkgQEAgc3RhdGljIHZvaWQgdjRsX3ByaW50X2NyZWF0ZV9idWZmZXJzKGNvbnN0IHZvaWQgKmFy
-ZywgYm9vbCB3cml0ZV9vbmx5KQo+Pj4gwqAgewo+Pj4gwqDCoMKgwqDCoCBjb25zdCBzdHJ1Y3Qg
-djRsMl9jcmVhdGVfYnVmZmVycyAqcCA9IGFyZzsKPj4+IMKgIC3CoMKgwqAgcHJfY29udCgiaW5k
-ZXg9JWQsIGNvdW50PSVkLCBtZW1vcnk9JXMsIGNhcGFiaWxpdGllcz0weCUwOHgsICIsCj4+PiAr
-wqDCoMKgIHByX2NvbnQoImluZGV4PSVkLCBjb3VudD0lZCwgbWVtb3J5PSVzLCBjYXBhYmlsaXRp
-ZXM9MHglMDh4LCBtYXggYnVmZmVycz0ldSIsCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcC0+aW5k
-ZXgsIHAtPmNvdW50LCBwcnRfbmFtZXMocC0+bWVtb3J5LCB2NGwyX21lbW9yeV9uYW1lcyksCj4+
-PiAtwqDCoMKgwqDCoMKgwqAgcC0+Y2FwYWJpbGl0aWVzKTsKPj4+ICvCoMKgwqDCoMKgwqDCoCBw
-LT5jYXBhYmlsaXRpZXMsIHAtPm1heF9idWZmZXJzKTsKPj4+IMKgwqDCoMKgwqAgdjRsX3ByaW50
-X2Zvcm1hdCgmcC0+Zm9ybWF0LCB3cml0ZV9vbmx5KTsKPj4+IMKgIH0KPj4+IMKgIGRpZmYgLS1n
-aXQgYS9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggYi9pbmNsdWRlL3VhcGkvbGludXgv
-dmlkZW9kZXYyLmgKPj4+IGluZGV4IDc4MjYwZTVkOTk4NS4uYjBkYmIxYmU3MjhjIDEwMDY0NAo+
-Pj4gLS0tIGEvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4+PiArKysgYi9pbmNsdWRl
-L3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPj4+IEBAIC0xMDM0LDYgKzEwMzQsNyBAQCBzdHJ1Y3Qg
-djRsMl9yZXF1ZXN0YnVmZmVycyB7Cj4+PiDCoCAjZGVmaW5lIFY0TDJfQlVGX0NBUF9TVVBQT1JU
-U19PUlBIQU5FRF9CVUZTwqDCoMKgwqDCoMKgwqAgKDEgPDwgNCkKPj4+IMKgICNkZWZpbmUgVjRM
-Ml9CVUZfQ0FQX1NVUFBPUlRTX00yTV9IT0xEX0NBUFRVUkVfQlVGwqDCoMKgICgxIDw8IDUpCj4+
-PiDCoCAjZGVmaW5lIFY0TDJfQlVGX0NBUF9TVVBQT1JUU19NTUFQX0NBQ0hFX0hJTlRTwqDCoMKg
-wqDCoMKgwqAgKDEgPDwgNikKPj4+ICsjZGVmaW5lIFY0TDJfQlVGX0NBUF9TVVBQT1JUU19TRVRf
-TUFYX0JVRlPCoMKgwqDCoMKgwqDCoCAoMSA8PCA3KQo+Pj4gwqAgwqAgLyoqCj4+PiDCoMKgICog
-c3RydWN0IHY0bDJfcGxhbmUgLSBwbGFuZSBpbmZvIGZvciBtdWx0aS1wbGFuYXIgYnVmZmVycwo+
-Pj4gQEAgLTI2MDQsNiArMjYwNSw5IEBAIHN0cnVjdCB2NGwyX2RiZ19jaGlwX2luZm8gewo+Pj4g
-wqDCoCAqIEBmbGFnczrCoMKgwqAgYWRkaXRpb25hbCBidWZmZXIgbWFuYWdlbWVudCBhdHRyaWJ1
-dGVzIChpZ25vcmVkIHVubGVzcyB0aGUKPj4+IMKgwqAgKsKgwqDCoMKgwqDCoMKgIHF1ZXVlIGhh
-cyBWNEwyX0JVRl9DQVBfU1VQUE9SVFNfTU1BUF9DQUNIRV9ISU5UUyBjYXBhYmlsaXR5Cj4+PiDC
-oMKgICrCoMKgwqDCoMKgwqDCoCBhbmQgY29uZmlndXJlZCBmb3IgTU1BUCBzdHJlYW1pbmcgSS9P
-KS4KPj4+ICsgKiBAbWF4X2J1ZmZlcnM6IGlmIFY0TDJfQlVGX0NBUF9TVVBQT1JUU19TRVRfTUFY
-X0JVRlMgY2FwYWJpbGl0eSBmbGFnIGlzIHNldAo+Pj4gKyAqwqDCoMKgwqDCoMKgwqDCoCB0aGlz
-IGZpZWxkIGluZGljYXRlIHRoZSBtYXhpbXVtIHBvc3NpYmxlIG51bWJlciBvZiBidWZmZXJzCj4+
-PiArICrCoMKgwqDCoMKgwqDCoMKgIGZvciB0aGlzIHF1ZXVlLgo+Pj4gwqDCoCAqIEByZXNlcnZl
-ZDrCoMKgwqAgZnV0dXJlIGV4dGVuc2lvbnMKPj4+IMKgwqAgKi8KPj4+IMKgIHN0cnVjdCB2NGwy
-X2NyZWF0ZV9idWZmZXJzIHsKPj4+IEBAIC0yNjEzLDcgKzI2MTcsOCBAQCBzdHJ1Y3QgdjRsMl9j
-cmVhdGVfYnVmZmVycyB7Cj4+PiDCoMKgwqDCoMKgIHN0cnVjdCB2NGwyX2Zvcm1hdMKgwqDCoCBm
-b3JtYXQ7Cj4+PiDCoMKgwqDCoMKgIF9fdTMywqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjYXBhYmls
-aXRpZXM7Cj4+PiDCoMKgwqDCoMKgIF9fdTMywqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmbGFnczsK
-Pj4+IC3CoMKgwqAgX191MzLCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlc2VydmVkWzZdOwo+Pj4g
-K8KgwqDCoCBfX3UzMsKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbWF4X2J1ZmZlcnM7Cj4+PiArwqDC
-oMKgIF9fdTMywqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXNlcnZlZFs1XTsKPj4+IMKgIH07Cj4+
-PiDCoCDCoCAvKgo+PgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On 02/10/2023 14:05, Benjamin Gaignard wrote:
+> Change how offset 'cookie' field value is computed to make possible
+> to use more buffers.
+> The maximum number of buffers depends of PAGE_SHIFT value and can
+> go up to 0x7fff when PAGE_SHIFT = 12.
+> With this encoding pattern we know the maximum number that a queue
+> could store so we can check it at  queue init time.
+> It also make easier and faster to find buffer and plane from using
+> the offset field.
+> Change __find_plane_by_offset() prototype to return the video buffer
+> itself rather than it index.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> changes in version 9:
+> - BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
+>   architectures requirements.
+> 
+>  .../media/common/videobuf2/videobuf2-core.c   | 71 +++++++++----------
+>  1 file changed, 32 insertions(+), 39 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index cf6727d9c81f..a0540b2e461f 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -31,6 +31,10 @@
+>  
+>  #include <trace/events/vb2.h>
+>  
+> +#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
+> +#define PLANE_INDEX_MASK	0x7
+> +#define BUFFER_INDEX_MASK	(BIT_MASK(30 - PLANE_INDEX_SHIFT) - 1)
+
+I think it is better to write this slightly different:
+
+#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
+#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
+
+That avoids the use of "BUFFER_INDEX_MASK + 1" in a few places in this patch
+series. I think that's rather ugly.
+
+Regards,
+
+	Hans
+
+> +
+>  static int debug;
+>  module_param(debug, int, 0644);
+>  
+> @@ -358,21 +362,24 @@ static void __setup_offsets(struct vb2_buffer *vb)
+>  	unsigned int plane;
+>  	unsigned long off = 0;
+>  
+> -	if (vb->index) {
+> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+> -
+> -		off = PAGE_ALIGN(p->m.offset + p->length);
+> -	}
+> +	/*
+> +	 * Offsets cookies value have the following constraints:
+> +	 * - a buffer could have up to 8 planes.
+> +	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
+> +	 * - must be page aligned
+> +	 * That led to this bit mapping when PAGE_SHIFT = 12:
+> +	 * |30                |29        15|14       12|11 0|
+> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
+> +	 * where there are 15 bits to store buffer index.
+> +	 * Depending on PAGE_SHIFT value we can have else bits to store buffer index.
+> +	 */
+> +	off = vb->index << PLANE_INDEX_SHIFT;
+>  
+>  	for (plane = 0; plane < vb->num_planes; ++plane) {
+> -		vb->planes[plane].m.offset = off;
+> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+>  
+>  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+>  				vb->index, plane, off);
+> -
+> -		off += vb->planes[plane].length;
+> -		off = PAGE_ALIGN(off);
+>  	}
+>  }
+>  
+> @@ -2185,13 +2192,12 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
+>  EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+>  
+>  /*
+> - * __find_plane_by_offset() - find plane associated with the given offset off
+> + * __find_plane_by_offset() - find video buffer and plane associated with the given offset off
+>   */
+>  static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+> -			unsigned int *_buffer, unsigned int *_plane)
+> +			struct vb2_buffer **vb, unsigned int *plane)
+>  {
+> -	struct vb2_buffer *vb;
+> -	unsigned int buffer, plane;
+> +	unsigned int buffer;
+>  
+>  	/*
+>  	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+> @@ -2209,24 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+>  		return -EBUSY;
+>  	}
+>  
+> -	/*
+> -	 * Go over all buffers and their planes, comparing the given offset
+> -	 * with an offset assigned to each plane. If a match is found,
+> -	 * return its buffer and plane numbers.
+> -	 */
+> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> -		vb = q->bufs[buffer];
+> +	/* Get buffer and plane from the offset */
+> +	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
+> +	*plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+>  
+> -		for (plane = 0; plane < vb->num_planes; ++plane) {
+> -			if (vb->planes[plane].m.offset == off) {
+> -				*_buffer = buffer;
+> -				*_plane = plane;
+> -				return 0;
+> -			}
+> -		}
+> -	}
+> +	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
+> +		return -EINVAL;
+>  
+> -	return -EINVAL;
+> +	*vb = q->bufs[buffer];
+> +	return 0;
+>  }
+>  
+>  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+> @@ -2306,7 +2303,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  {
+>  	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
+>  	struct vb2_buffer *vb;
+> -	unsigned int buffer = 0, plane = 0;
+> +	unsigned int plane = 0;
+>  	int ret;
+>  	unsigned long length;
+>  
+> @@ -2335,12 +2332,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  	 * Find the plane corresponding to the offset passed by userspace. This
+>  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+>  	 */
+> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
+> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
+>  	if (ret)
+>  		goto unlock;
+>  
+> -	vb = q->bufs[buffer];
+> -
+>  	/*
+>  	 * MMAP requires page_aligned buffers.
+>  	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+> @@ -2368,7 +2363,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+>  	if (ret)
+>  		return ret;
+>  
+> -	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
+> +	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_mmap);
+> @@ -2382,7 +2377,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+>  {
+>  	unsigned long off = pgoff << PAGE_SHIFT;
+>  	struct vb2_buffer *vb;
+> -	unsigned int buffer, plane;
+> +	unsigned int plane;
+>  	void *vaddr;
+>  	int ret;
+>  
+> @@ -2392,12 +2387,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+>  	 * Find the plane corresponding to the offset passed by userspace. This
+>  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+>  	 */
+> -	ret = __find_plane_by_offset(q, off, &buffer, &plane);
+> +	ret = __find_plane_by_offset(q, off, &vb, &plane);
+>  	if (ret)
+>  		goto unlock;
+>  
+> -	vb = q->bufs[buffer];
+> -
+>  	vaddr = vb2_plane_vaddr(vb, plane);
+>  	mutex_unlock(&q->mmap_lock);
+>  	return vaddr ? (unsigned long)vaddr : -EINVAL;
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
