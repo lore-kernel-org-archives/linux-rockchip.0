@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E6AE784B6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 417ADE748F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Oct 2023 12:07:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MYRFFdTHLfr3q6h9LjjKgR981zGnc+0utgdTpZ82Wg0=; b=KntNepDXbTHlfq
-	VfdJRsIAYddZh/qoLwljx0es847ERUvm26SJ18p/+CNW3fE+9Rt0kTSpjly3JEybaRBEIie66IMQW
-	l9/qycLYspWJdohXG9iY6vN7x58UjA++wXuAOehlaSLXaqyKE602O5xaqxBT2fA0K8UiLxJiRhtGQ
-	bseXaZFAI7mU39e4UkAbESWQlLk3EHsPN8VmhjAporohFK08vVwaxiDKmgCXWutTVLaD/Uc09UOQe
-	tCSRGWAH9SVVPswPJuq7MP+k8u+bVFpX2JgOl6jH7eeWNLXkYZlUcrlhTnkUuNvALKeBVYRpi2AF9
-	wHdveGNgbe7HrMV564ew==;
+	List-Owner; bh=CyElLwtHqaR9JX/Vok3uJfj9s0q1b6OdVQevAY3audI=; b=p9QhBJLatkOLjs
+	OZ3TMm7tZXvvRZgzdZQrJRNfbnKx85fP+NyiAeZ6Zvl7LiavEWfq6DIUBQ003SoHLrvcfoj1f1LV4
+	jm1Rzpbe1ABsM/cVWd/lmYwqzbwiXIvj/hHUpsast+wm466M/O6YWovXws6WoTerEevk2gC2Ggx26
+	d9sin1ehvIfalttKzeGjo0JUgTga34U/gq97am59vgFuWwoQCjTex7C5JHyjLsH0P6mbivKwdz/AI
+	TS5CrEGfyREkN5mgb9+LU3Ott2zeat1nyhL9gbAwji5TzpVGK3XcF+0bJnzqXGk9GALDn46Smf+MM
+	OKf+sh4wfXzPmlqv0O4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHhF-00CbIy-24;
-	Mon, 02 Oct 2023 12:06:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qnHhd-00Cbne-2T;
+	Mon, 02 Oct 2023 12:07:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnHgy-00Cb0F-0R;
-	Mon, 02 Oct 2023 12:06:32 +0000
+	id 1qnHh0-00Cb1K-2r;
+	Mon, 02 Oct 2023 12:06:35 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:9537:67ca:c85e:d0ae])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8E75666072FB;
-	Mon,  2 Oct 2023 13:06:26 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9CE336607314;
+	Mon,  2 Oct 2023 13:06:27 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696248387;
-	bh=swS7yYiqBxggjIra2XX2pXDY4PPq3f683TK0rKa6DhQ=;
+	s=mail; t=1696248388;
+	bh=MAfzqnBElYsriZOe56F+JFfMksB0FEVAHWT7iRLKeFk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=giuIe/fVSLygz4HErc6sFwbwJmDnvrm52UiCkx/M2fccRfO+Ne0i+/neDDX39GxNa
-	 KfVc3COaAoRLhuBm+BIKJ4NznCR0J0M4IFn247wArNNfQMouLhriiuR4CwYdsVJEmy
-	 T6sGr47TfKy/1+xLr38gwF7rvzU0NtGYvT5olCNNaO6QyoKEqXUziy/QI19UEriG0L
-	 ELooCGI0b7wmeddY7d5sPc4c6SQ6RFr/Nw4WKaiHriBeRJCEw2msFICeRCaKNCELEK
-	 mzK/yFia3472lzjIY7nkpfqvsSPFHVrKUFveTRI+Jj4WeNutHFdMvM/WOA0HItc3Zp
-	 t/wxBw5fWS8kQ==
+	b=gQft/qs4HXHcaOnvsTV1VjfLtIR4x6frTn77MseWecOwzxMKmTVmft0lsnmGNa6On
+	 2HHrXuVCR5s7Hz+C3s0duze8XZOStWWbxDTPaalTbQBpJs6j3dWDHIaGnD73gebmd7
+	 3+rOKk6ULRfiOU5QMtOcVjjcQIPIXj3ll3GL095Dde5Ew0IhGFTXB9GBdZHsOJeOco
+	 gV2pEqHk+/NWMDQclk3UM4QZu5U3iLMFDe6pBXtUXnKpd8ORJYhnh1iq8qPDBBzwrH
+	 x/z6MLJINJYdc+eyeOfpDmgGIOMnc3kIv8torqzwf1Z6xa3WxZj7RAfye/0nZackJ4
+	 /8O4PridKzwYw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v9 04/53] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Mon,  2 Oct 2023 14:05:28 +0200
-Message-Id: <20231002120617.119602-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 06/53] media: mediatek: vdec: Remove useless loop
+Date: Mon,  2 Oct 2023 14:05:30 +0200
+Message-Id: <20231002120617.119602-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 References: <20231002120617.119602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231002_050628_304372_BA2855B0 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20231002_050631_052756_5B9E4307 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,63 +88,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
-This could allow to change the type bufs[] field of vb2_buffer structure if
-needed.
-After each call to vb2_get_buffer() we need to be sure that we get
-a valid pointer so check the return value of all of them.
+Simplify code by removing useless loop by using video buffer index.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+ .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c   | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
-index 982c2c777484..a462d6fe4ea9 100644
---- a/drivers/media/platform/amphion/vpu_dbg.c
-+++ b/drivers/media/platform/amphion/vpu_dbg.c
-@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+index e393e3e668f8..69d37b93bd35 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+@@ -1695,13 +1695,8 @@ static int vdec_vp9_slice_setup_core_buffer(struct vdec_vp9_slice_instance *inst
+ 		return -EINVAL;
  
- 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
+ 	/* update internal buffer's width/height */
+-	for (i = 0; i < vq->num_buffers; i++) {
+-		if (vb == vq->bufs[i]) {
+-			instance->dpb[i].width = w;
+-			instance->dpb[i].height = h;
+-			break;
+-		}
+-	}
++	instance->dpb[vb->index].width = w;
++	instance->dpb[vb->index].height = h;
  
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"output [%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
-@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 
- 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
- 
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"capture[%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
+ 	/*
+ 	 * get buffer's width/height from instance
 -- 
 2.39.2
 
