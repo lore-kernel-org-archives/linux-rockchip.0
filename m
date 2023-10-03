@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17214E75434
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C4CAE75439
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yiiM+p1ChuGQZnNHTI2ZfnQXgOvJNu1sYD+GKbWvQUs=; b=jEowhfpetNeDx/
-	I0eRHqznhHeAKXRvSFFSHrHs0pWVkQ9dpvmOKeJckAmJL7N6vUxFT1lCymTZDXut1O2BxA2vrGWlS
-	htsm2j2mzq8+ratDMe4ai8+br8hOAHGWh+9Ryg0/au26uG5ce4VvJOm9wEqFlw0mHiE1zBxMEZZI1
-	7JCTIGCMr/Br4OYgSWb63bqxZsD5mWO7eT0rA90Z1gy8eeUbxY9wJlOUYM0G/aB3FQ3KKPyiE0qn0
-	SGIzzEfYowqUUY6YS7obuhclf4GoQB9x+zTmseYKP/CazumK0sAdco+YOD560SaNN3cfe/iLgfmK1
-	2thm2RHIe741qU54Hfpg==;
+	List-Owner; bh=NRjWXNUjq1heiDDY/SsY/JGScHJxM1OUUHuI98ORziw=; b=wjIYjpkn+OuA8O
+	y+c5ymkY8zAMM4cPLqtcUq11q2PjCEnF/ggkXcMLKdbgM5OWtqEPiPJm/q+vRTrZvS/ys70Flr5Rh
+	cktL6TjT0TW5nB8hgS8GNR+7p1CkVfSNyDUjgLohy8VXONWc3UIfyw0+RnsH7uzpAmzKFKEzG4Qjn
+	DgI5hwOV5p+csxOG0ZWUHkJu9QUieGY4WAK7a8AtZXHgMfevKLK48I0J2P0FwZ2C4T4YiPXRMBSlx
+	KH6ZRqOZssDD2MWxnQHDmlBKV5GkGLwpJu1iXRXq7rU0URdu509iJVeU4hJdDg4OtRQTzRRSVdt1+
+	HJvOeiaumh0+/ZaBkphg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaU5-00E73g-07;
-	Tue, 03 Oct 2023 08:10:25 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qnaU9-00E7Ay-1W;
+	Tue, 03 Oct 2023 08:10:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRT-00E3a4-23;
-	Tue, 03 Oct 2023 08:07:43 +0000
+	id 1qnaRU-00E3aW-0q;
+	Tue, 03 Oct 2023 08:07:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=Og4LlbJBiymUpAzpII335idKUT/YD2hVLoI7j+fK+Do=; b=tY50eASRDFczuUqWsOyiDTjnr9
-	ujnDTbK6g1IhBPyZc0krtlVwy9ApUyWc4c6jnQ4wiTCK1XDr7B1yBZ1DZY8RbYlv3Btza4uB3I6/L
-	y+r3gyLPDgQi92UTrLSyapR7YUabhCWjGfF1d90GjQyXEYme+e2nqzihdr2IhdkGWXF9I9DDJSaS/
-	3czxlsu9daNPTplNiwCXKgBkcfRwZsbS+2U34M/pieW3KAK2WpKuqHHi1mxtOE9s7CIaSDAcHCNNM
-	N8zJaWmWavJvIMTk59zMOT94MIl/ZBerwEl4YZXzIEfbDMQjAx5sYZ8JvEXsvEcD+ldANyMAC/Y9u
-	eGUIHDpg==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qnaRQ-00DuHP-6L; Tue, 03 Oct 2023 08:07:42 +0000
+	bh=u8zczsYwGqvaKRf+FC+QQEU2D+hBDhW9iNnNE/FqbdI=; b=BGoeKsZwnKOk0GX5JcrE0o/SV0
+	jGkKvghDXw20PNKe98DDzPJD1Ec08vgvr8crGwAnQA7BaGTCKJ1928c++8qcextsAvRIbU3ghUyM7
+	axcrxMy+2UDPZMXHysBnti8bNZ6Dv9/NvArQ6l6kdqtba9FxXQR54oe0lsf0yc4xB27fJ7BoN8I2y
+	Uw+IXtdh+LBZHzvTziDo5dgNUs+EKRjH/UNzsYOVB8XzGin1ilp2XtjD4Tyo5ZojIRPSduY0fj/aI
+	REbM7ZQewJHoWGpN6OFPoy1dOPqTVQ3YsISvKw0ANPe8VgXcn2IPgyHDq9Ot/7x16Rh387w7D6foO
+	niTZRd5g==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnaRK-009jtJ-2V;
+	Tue, 03 Oct 2023 08:07:42 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 73F44660735F;
-	Tue,  3 Oct 2023 09:07:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 295A36607377;
+	Tue,  3 Oct 2023 09:07:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320458;
-	bh=wB4sQiMR9YdZLlurPoJdXQiGaX0CoGGpXiBFK9+XFCI=;
+	s=mail; t=1696320452;
+	bh=OKKl92mS0RJ4pRr3nE8UzbQQ6Z5/x2ee+cgMWQr4mBQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=O2cJokiLRxG/YD7xdQKkS1vBqzB4psIO4k5MD3aEjjDk0Jh4oq75A77DkV8PChVC+
-	 0ixtP0ze4Cyw99Alaby7ILg3eVsKBcQ8iuz0RhrMWC1RkTMoZ2SV+4vU1ZJhEQh2ZS
-	 BSfHaRoDF8ROJuxk14DG+Jqm7ys3syfYpMKJ7pUFM0LPKCXNk5T5YhgdiCJMkUcIDu
-	 6KrHXI66QTEpSiOrzOc+wTpf3DUbR2LYwLoUL8EywBAduEz6tK/vVhRorxA1cY2eWi
-	 64aw7OcnNoJw4wo5IsmQ9vtjRL5+VmQ17XZVqUcrjn2r3fbM4MAkKLCBJxBplSN+c8
-	 dlamxslWhVT7Q==
+	b=iUpdLbPIaoG9iv3BMGdIcp+Sp1+HLj9fxMxAT+uH3iJ7e/SvI3LdLC26jgGseGnwB
+	 Cstkv+AYG0x1E2tbdSQl/du5jqDTnxJwpiQVzrFgYza9w9yuAklopEAgAcA8dmX8vL
+	 WkWPLLFiOmBKcSEZgkypoblcXqNJhQYnjCTlt8XNq5y9rbc77y0+c+vur84VQzs30h
+	 yiP4biDjL755rP8tpYCpTZlyojacjW1XastceeVkMfJtC3xXWZwkNgUCuyS6ul7fdL
+	 lTpi2hAELgYO1JSPcAOw/IwyvICdJ3bLCObsFdBqQICb72KfDkecUbrh/k36IaLwqq
+	 LKmN3oPvsRq8w==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 49/54] media: core: Rework how create_buf index returned value is computed
-Date: Tue,  3 Oct 2023 10:06:58 +0200
-Message-Id: <20231003080704.43911-50-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 37/54] media: test-drivers: Stop direct calls to queue num_buffers field
+Date: Tue,  3 Oct 2023 10:06:46 +0200
+Message-Id: <20231003080704.43911-38-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_090740_309230_4D4CEE41 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20231003_090736_911622_87981F0D 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,161 +102,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When DELETE_BUFS will be introduced holes could created in bufs array.
-To be able to reuse these unused indices reworking how create->index
-is set is mandatory.
-Let __vb2_queue_alloc() decide which first index is correct and
-forward this to the caller.
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+If min_buffers_needed is set remove useless checks.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 21 ++++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 20 +++++++++++-------
- include/media/videobuf2-core.h                |  5 ++++-
- 3 files changed, 31 insertions(+), 15 deletions(-)
+ drivers/media/test-drivers/visl/visl-dec.c         | 4 ++--
+ drivers/media/test-drivers/vivid/vivid-meta-cap.c  | 3 ---
+ drivers/media/test-drivers/vivid/vivid-meta-out.c  | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-touch-cap.c | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-vbi-cap.c   | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-vbi-out.c   | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-vid-cap.c   | 5 +++--
+ drivers/media/test-drivers/vivid/vivid-vid-out.c   | 5 +----
+ 8 files changed, 18 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 62e987ad9b33..21ea096864a5 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -441,15 +441,21 @@ static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
-  */
- static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			     unsigned int num_buffers, unsigned int num_planes,
--			     const unsigned plane_sizes[VB2_MAX_PLANES])
-+			     const unsigned plane_sizes[VB2_MAX_PLANES],
-+			     unsigned int *first_index)
- {
- 	unsigned int buffer, plane;
- 	struct vb2_buffer *vb;
-+	unsigned long index;
- 	int ret;
+diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+index ba20ea998d19..7aa70da72b97 100644
+--- a/drivers/media/test-drivers/visl/visl-dec.c
++++ b/drivers/media/test-drivers/visl/visl-dec.c
+@@ -287,7 +287,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
  
- 	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
--			    q->max_num_buffers - q->num_buffers);
-+			    q->max_num_buffers - vb2_get_num_buffers(q));
-+
-+	index = vb2_get_num_buffers(q);
-+
-+	*first_index = index;
+ 	len = 0;
+-	for (i = 0; i < out_q->num_buffers; i++) {
++	for (i = 0; i < out_q->max_num_buffers; i++) {
+ 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+ 		u32 old_len = len;
+ 		struct vb2_buffer *vb2;
+@@ -347,7 +347,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
  
- 	for (buffer = 0; buffer < num_buffers; ++buffer) {
- 		/* Allocate vb2 buffer structures */
-@@ -469,7 +475,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			vb->planes[plane].min_length = plane_sizes[plane];
- 		}
+ 	len = 0;
+-	for (i = 0; i < cap_q->num_buffers; i++) {
++	for (i = 0; i < cap_q->max_num_buffers; i++) {
+ 		u32 old_len = len;
+ 		struct vb2_buffer *vb2;
+ 		char *q_status;
+diff --git a/drivers/media/test-drivers/vivid/vivid-meta-cap.c b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
+index 780f96860a6d..0a718d037e59 100644
+--- a/drivers/media/test-drivers/vivid/vivid-meta-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
+@@ -30,9 +30,6 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
  
--		vb2_queue_add_buffer(q, vb, q->num_buffers + buffer);
-+		vb2_queue_add_buffer(q, vb, index++);
- 		call_void_bufop(q, init_buffer, vb);
- 
- 		/* Allocate video buffer memory for the MMAP type */
-@@ -812,7 +818,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
--	unsigned int i;
-+	unsigned int i, first_index;
- 	int ret = 0;
- 
- 	if (q->streaming) {
-@@ -898,7 +904,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers =
--		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes);
-+		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes, &first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-@@ -972,7 +978,8 @@ EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[])
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index)
- {
- 	unsigned int num_planes = 0, num_buffers, allocated_buffers;
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
-@@ -1034,7 +1041,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers = __vb2_queue_alloc(q, memory, num_buffers,
--				num_planes, plane_sizes);
-+				num_planes, plane_sizes, first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index a4ebef82d94e..6d9f1be41a19 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -808,11 +808,16 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
- 	for (i = 0; i < requested_planes; i++)
- 		if (requested_sizes[i] == 0)
- 			return -EINVAL;
--	return ret ? ret : vb2_core_create_bufs(q, create->memory,
--						create->flags,
--						&create->count,
--						requested_planes,
--						requested_sizes);
-+	if (ret)
-+		return ret;
-+
-+	ret = vb2_core_create_bufs(q, create->memory,
-+				   create->flags,
-+				   &create->count,
-+				   requested_planes,
-+				   requested_sizes,
-+				   &create->index);
-+	return ret;
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = 1;
+ 	return 0;
  }
- EXPORT_SYMBOL_GPL(vb2_create_bufs);
+diff --git a/drivers/media/test-drivers/vivid/vivid-meta-out.c b/drivers/media/test-drivers/vivid/vivid-meta-out.c
+index 95835b52b58f..4a569a6e58be 100644
+--- a/drivers/media/test-drivers/vivid/vivid-meta-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-meta-out.c
+@@ -18,6 +18,7 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 				struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned int size =  sizeof(struct vivid_meta_out_buf);
  
-@@ -1040,15 +1045,16 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
- 	int res = vb2_verify_memory_type(vdev->queue, p->memory,
- 			p->format.type);
+ 	if (!vivid_is_webcam(dev))
+@@ -30,8 +31,8 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
  
--	p->index = vdev->queue->num_buffers;
- 	fill_buf_caps(vdev->queue, &p->capabilities);
- 	validate_memory_flags(vdev->queue, p->memory, &p->flags);
- 	/*
- 	 * If count == 0, then just check if memory and type are valid.
- 	 * Any -EBUSY result from vb2_verify_memory_type can be mapped to 0.
- 	 */
--	if (p->count == 0)
-+	if (p->count == 0) {
-+		p->index = vb2_get_num_buffers(vdev->queue);
- 		return res != -EBUSY ? res : 0;
-+	}
- 	if (res)
- 		return res;
- 	if (vb2_queue_is_busy(vdev->queue, file))
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index dffb9647d4d1..d433bf84e30c 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -803,6 +803,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
-  * @count: requested buffer count.
-  * @requested_planes: number of planes requested.
-  * @requested_sizes: array with the size of the planes.
-+ * @first_index: index of the first created buffer, all allocated buffers have
-+ *		 indices in the range [first..first+count]
-  *
-  * Videobuf2 core helper to implement VIDIOC_CREATE_BUFS() operation. It is
-  * called internally by VB2 by an API-specific handler, like
-@@ -819,7 +821,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[]);
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index);
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
  
- /**
-  * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-touch-cap.c b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
+index c7f6e23df51e..4b3c6ea0afde 100644
+--- a/drivers/media/test-drivers/vivid/vivid-touch-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
+@@ -13,6 +13,7 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 				 struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	struct v4l2_pix_format *f = &dev->tch_format;
+ 	unsigned int size = f->sizeimage;
+ 
+@@ -23,8 +24,8 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
+ 		sizes[0] = size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
+index b65b02eeeb97..fcd7f40385e9 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
+@@ -124,6 +124,7 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
+ 		       unsigned sizes[], struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	bool is_60hz = dev->std_cap[dev->input] & V4L2_STD_525_60;
+ 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_CAPTURE ?
+ 		36 * sizeof(struct v4l2_sliced_vbi_data) :
+@@ -134,8 +135,8 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = size;
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-out.c b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
+index cd56476902a2..8f0da5d88bcc 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vbi-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
+@@ -20,6 +20,7 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
+ 		       unsigned sizes[], struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	bool is_60hz = dev->std_out & V4L2_STD_525_60;
+ 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_OUTPUT ?
+ 		36 * sizeof(struct v4l2_sliced_vbi_data) :
+@@ -30,8 +31,8 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = size;
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = 1;
+ 	return 0;
+diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
+index 3a06df35a2d7..0cc7602b9fb2 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
++++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
+@@ -77,6 +77,7 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
+ 		       unsigned sizes[], struct device *alloc_devs[])
+ {
+ 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned buffers = tpg_g_buffers(&dev->tpg);
+ 	unsigned h = dev->fmt_cap_rect.height;
+ 	unsigned p;
+@@ -117,8 +118,8 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
+ 					dev->fmt_cap->data_offset[p];
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 
+ 	*nplanes = buffers;
+ 
+diff --git a/drivers/media/test-drivers/vivid/vivid-vid-out.c b/drivers/media/test-drivers/vivid/vivid-vid-out.c
+index 184a6df2c29f..24c6dc896255 100644
+--- a/drivers/media/test-drivers/vivid/vivid-vid-out.c
++++ b/drivers/media/test-drivers/vivid/vivid-vid-out.c
+@@ -73,12 +73,9 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
+ 				       vfmt->data_offset[p] : size;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
+-
+ 	*nplanes = planes;
+ 
+-	dprintk(dev, 1, "%s: count=%d\n", __func__, *nbuffers);
++	dprintk(dev, 1, "%s: count=%u\n", __func__, vb2_get_num_buffers(vq));
+ 	for (p = 0; p < planes; p++)
+ 		dprintk(dev, 1, "%s: size[%u]=%u\n", __func__, p, sizes[p]);
+ 	return 0;
 -- 
 2.39.2
 
