@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6EC8E75436
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D701E75438
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=alCLeJ3ZC2KfS6PaIqdffdYQLjbNkZhbSZnSId6NvR0=; b=408T9wWH2RN7kj
-	x/y6TS26jMu1BKxpdzhNh1fQ4xXxbrrnfKLqLX7tjRYt0tsUM8fp0J9NZyK2p61Bz4EUPYX46/rMR
-	1O6CfuSNPbMbh03E0L7FmdtP1eZssA+Ktgh9Yphfr3XDmB8TekY5WcnTVJAXDKqbJQWagwNKfptM/
-	wuTM8IMQZYMMPpISLcqTJWwcdDtmo3Qf9Z4RPGTdXruVzH9FivnaYRsYSkcA2Qztil853N8o7mXWC
-	jLkrqidyT/aR9K2xOSQRWRbqM6F6kHIiqaqEdYASF2DrPAOP0CDYIuN+naUJ7Cn4Epw7uP2OTXA0y
-	cpf6xkDNrYRV+9fgZvKQ==;
+	List-Owner; bh=TXJrGHtpNxvBnfr3O/s4cAofpKhPeHW788wy5NtwPyo=; b=yBCNDpbWtq2IlR
+	0d5H9y4JTkksplI2SMJjmh6+0eCoM4XFOf58dQhafRmny75Ne3MRAxUCMhr1AaCfY5O7AsRALjyet
+	rgSh2dGp75ghSvgQ4jase4ojUDnXLCzkRKoZ91Z6vDtRZQ0AHP80rI7+Xgj7rmN6hYzU0pRbihqeH
+	vy+XyyJA/xp8Gs3gXl6X7cyeaDDqLDhmwp/B4ay46jiFoUKaDJ5+sD9c3RC79mykjRXG+fmev1nF1
+	ria/n/nYEpWdLTLJwZqomWnFgXhDIxCofXManO0IHqBy29Zz4m+zNnsAMr0iFd2mdh+/UcHQiMbt0
+	ntemfZRBxJ5kXeOKDWig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTV-00E62P-0j;
-	Tue, 03 Oct 2023 08:09:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qnaTS-00E5xc-1Z;
+	Tue, 03 Oct 2023 08:09:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRH-00E3JB-0N;
-	Tue, 03 Oct 2023 08:07:35 +0000
+	id 1qnaRN-00E3Qc-0p;
+	Tue, 03 Oct 2023 08:07:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=mBXaPj6DG3Z3CGCFPIqmZfr720c4sPgatvICR4AllgI=; b=F4rX7FqIA/xBAZdP5T4XTMnxcz
+	EHhz1oLm1DimP4R9qA3UOnMrg9Hqa51d/RWuOpiP/H2qauiK8OyQ08YhA956e/LhT8JIcWgTsoKYH
+	z6ksqLj4isuzmEmRudVXjIxZCJra4cE9Yv3PdzANs3d0NyQrSkBEHMdaYW6cJ8gCwcyv4GbdIjXtm
+	O8pzjdJM2Co3IDVaX7SyK2jZnFqPxn1//0Arg8funcPSVfK8PUeJ7PW4FRhG/24L96HnQHQ7zdoqk
+	+j9WstfVWUrghiTLdBmQ91DfVYSFF6tTHMpndboToHXk81GcGeO+BhKcoQ+JSj7iVX+JrEE3pab8v
+	B9eDynYQ==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qnaRB-009jqs-0o;
+	Tue, 03 Oct 2023 08:07:34 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 808EF6607327;
-	Tue,  3 Oct 2023 09:07:29 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 58DF56607353;
+	Tue,  3 Oct 2023 09:07:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320449;
-	bh=MYUuJWbv+ZXdDCGlYiYfyK0RcIjAuLHGgJwZJ+iw65U=;
+	s=mail; t=1696320445;
+	bh=ZEZh/1jz6LKW7llMFxu5ts8tvF/3dDwXLVtLxVrQsiY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aouIgfHUpZ34XMtP486egUVR8pDgPO7TclzgII3ekgLNikTOpAI2UpcEAC7LLwSH7
-	 D89yIlTrqRBJBVUgNynJm4jABlV9JXe8NwU3MkdLvU9JqpuHZwKHVSAM20+UN7E4my
-	 vKBNekMVXQKK9IE3rXLp1doGJvHzdnpJ1+xR+Dzymw6uxxaPDMrfW7jVt/vYpPO8K5
-	 ars2ELVawrq7HymAUbvuO8AMNUOY+KSjHyZ6JDRCTCdefdAFOLaEDfCox2pFrE1LOb
-	 sJ4DaKDcGlWcLGARps36iPnYBSgpqrvOEyDft22Ox0RqD5qVZJI963hREHDylSiUhj
-	 JIsaci3tkkXQw==
+	b=dUB7Zp9TtJlX7vcgy2qMpzBC6McncVMZg6xRpfBrZ+llPsL14RTXOlX4h4Q138FqW
+	 /aHz9cqUgfVRdX/CNCC17tmVsJP3p9dDRiiv4VbUT/CfZF3zo/3xr1ao9dxv0H7fL0
+	 +817VxBq56jxIpBk6oeL3d9zu3bEaJHvUKRrdEoD1LF/lxypp3XyE8OzPh2cq231wN
+	 0qOwO0hlS2mrRWQ17Z/EsPdbcHwTT67C27fuPpMosyWepNl0TXzM6/DcEXE6GY4wRt
+	 //hesVP/BqnkBYvX2ZwLz7ib7nBrhJBMDMIadDDDR7DY5UXr1nHNWd0eMKB7GeIwoB
+	 auHEZ+C/n3U0g==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 32/54] media: mediatek: vcodec: Stop direct calls to queue num_buffers field
-Date: Tue,  3 Oct 2023 10:06:41 +0200
-Message-Id: <20231003080704.43911-33-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 24/54] media: video-i2c: Set min_buffers_needed to 2
+Date: Tue,  3 Oct 2023 10:06:33 +0200
+Message-Id: <20231003080704.43911-25-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010731_773337_D7C13781 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20231003_090732_564038_4A21E877 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +102,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-se vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to 2 and remove the useless check in video-i2c
+queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/i2c/video-i2c.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index 04948d3eb011..8c580956b905 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -923,7 +923,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 		mtk_v4l2_venc_err(ctx, "pm_runtime_put fail %d", pm_ret);
+diff --git a/drivers/media/i2c/video-i2c.c b/drivers/media/i2c/video-i2c.c
+index 178bd06cc2ed..0a38b9614764 100644
+--- a/drivers/media/i2c/video-i2c.c
++++ b/drivers/media/i2c/video-i2c.c
+@@ -406,9 +406,6 @@ static int queue_setup(struct vb2_queue *vq,
+ 	struct video_i2c_data *data = vb2_get_drv_priv(vq);
+ 	unsigned int size = data->chip->buffer_size;
  
- err_start_stream:
--	for (i = 0; i < q->num_buffers; ++i) {
-+	for (i = 0; i < q->max_num_buffers; ++i) {
- 		struct vb2_buffer *buf = vb2_get_buffer(q, i);
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2;
+-
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
  
- 		/*
+@@ -794,7 +791,7 @@ static int video_i2c_probe(struct i2c_client *client)
+ 	queue->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+ 	queue->drv_priv = data;
+ 	queue->buf_struct_size = sizeof(struct video_i2c_buffer);
+-	queue->min_buffers_needed = 1;
++	queue->min_buffers_needed = 2;
+ 	queue->ops = &video_i2c_video_qops;
+ 	queue->mem_ops = &vb2_vmalloc_memops;
+ 
 -- 
 2.39.2
 
