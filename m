@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54228E75434
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 698D4E75436
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sSzGRewQ0dEoOip95VcFAAgDgrBWCAbyB/tH+lvxkyE=; b=N4j3g/BnEBmwL/
-	H2Q6cJETtPGS1aZGvVqOqfdAz+6+5UdQhW6rUo14YG9ZAHCHaFQxBXWi7Gr9F31TNxsIuye4jD4Fg
-	q1HjHJn/OAQ9aub90IuhGxl+TMJsxFljVqTNjqgxZWfwIkv+XxfwZJFYgK7xXstwTfyQlDwgyNjxI
-	vkVJOhqhqmXMgIFqWdAEMXQAvfIUxDv42hDmwkNYfkcuTwhuOuKG2WUloPDufEBGDTR6G5PgFtCMG
-	w6P4BRFSMLoV6cuz+aObcWMSk2Ep4iD4bMu67N+JV9Mt8PtJC+yxEn+P8YeEKw1UhhQOvY+MB8PMv
-	y6shEyMMYNJuDMgqINxg==;
+	List-Owner; bh=/EjL2ChQ7ISWUnsbvYu/zgj8XwmZjOPGyKDevOy4Fxw=; b=DHTo1cto7njl56
+	1nl5R31JP6+Iq+omhtaDYiJaGQpRUBIlOZTY0HTZJ5uOO6BvHOmS7oFfPjgLrk3kqRC9jPpEbHBJ1
+	BO0P0WMO4CtXkGlk7Si28km0E+/IPt5U9KVmIBDlF7EOjYUtdFzXsh2MnztZG4thnpfimYQYUxqf2
+	aKSa8zBSzvTnP4PA3+m9cw0ZMtdE9NPJx4EaAXKtvToB75lTLIeb+/x+yJKazMEp6IOIu7ofjza6Z
+	jp1Fd2dQPyEIzYq+c5YmeQgx77BDPOdt/xF2zd20OfAM3PWcTOBWwIu7154Qmfr3rWxuOFVRBSaSf
+	sKY3s72UyNolzubOTxYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTk-00E6U8-2M;
-	Tue, 03 Oct 2023 08:10:04 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnaTh-00E6OU-2r;
+	Tue, 03 Oct 2023 08:10:02 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRM-00E3Pe-1j;
-	Tue, 03 Oct 2023 08:07:40 +0000
+	id 1qnaRL-00E3OU-23;
+	Tue, 03 Oct 2023 08:07:39 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C2122660737F;
-	Tue,  3 Oct 2023 09:07:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 38D36660737C;
+	Tue,  3 Oct 2023 09:07:33 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320455;
-	bh=7wWHAQBKZERZL+C0cKr4cK8pX2+DM141L+tvnughidA=;
+	s=mail; t=1696320453;
+	bh=fi+Fxcs6m07q1y5Umer9Ad8BDnSh9/sSAfF+r67YVOU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IuRAw8jEBFwvC2xOA/+4P3LEk57X/hk2wWBg5ouQdwIO4kYGW8RycUbB/FHSLpd8k
-	 EEprlsd3AcrU5Tc7K1iwvBPLNY9Fq5zfZw34tKHJ7mw18ifFBi8vxtf4XJVF1cAe+J
-	 YYQyONScYasy99wzVUpCZCfNNFh0RK2IH2T/s6fecMp0Ikm8cIg7pZTjsJ2aO9JptW
-	 BSZHx2y50l1EGbWT873dFgi+8hVdinYG2fV5CpIJD+11q7q7rSu+Im9CLGwsK3onnQ
-	 oSoQfRbHuA7aGOzhb6r885lDPCTLzPxRbX2I5maECc91KwYM97QnhwYFjNLQnvGmf1
-	 KtBYwBT2ITOcg==
+	b=ZHl9kcaIjEE3QPHTc0x6G9y5uUi6tcSbCAI3vRU+1S3tcOuUoUQvglY1UkD8fJLaq
+	 UHwDtEdwOS8zYExRaEFzAfdlI6a5+zi2VlsfW1Eb21VWV+hvdLAKC1MX6cLxJj1Ahf
+	 MTGEXC33jOTxI5kegirgL8iL8GKatS85mlqKQEcn9kVNHOhqlk+cy8AUQdcPzGmUqx
+	 smAZxcTczGTF/8OKqTI6CJeBMu/tVodTcN9fQjV7tJJWjggUp4oL2GfmFGs7aaOyCR
+	 sgjIKPmtkRluKu4zcUsYc0OtMi4OD96aXDd1uc7o1QOB3al7N6fRF6NEttWjalhBuv
+	 smbqutsiK9nQw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 42/54] media: atomisp: Stop direct calls to queue num_buffers field
-Date: Tue,  3 Oct 2023 10:06:51 +0200
-Message-Id: <20231003080704.43911-43-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 39/54] media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
+Date: Tue,  3 Oct 2023 10:06:48 +0200
+Message-Id: <20231003080704.43911-40-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010736_776441_33407B8F 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20231003_010735_853454_92DE895D 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +88,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+vb2 queue_setup checks for a minimum number of buffers so set
+min_buffers_needed to  aCX231XX_MIN_BUFnd remove the useless check in
+cx231xx queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/usb/cx231xx/cx231xx-417.c   | 4 +---
+ drivers/media/usb/cx231xx/cx231xx-video.c | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-index a8a964b2f1a8..09c0091b920f 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-@@ -1028,7 +1028,7 @@ static int atomisp_qbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer
- 	struct atomisp_device *isp = video_get_drvdata(vdev);
- 	struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
+diff --git a/drivers/media/usb/cx231xx/cx231xx-417.c b/drivers/media/usb/cx231xx/cx231xx-417.c
+index c5e21785fafe..fecdb12f5ef7 100644
+--- a/drivers/media/usb/cx231xx/cx231xx-417.c
++++ b/drivers/media/usb/cx231xx/cx231xx-417.c
+@@ -1223,9 +1223,6 @@ static int queue_setup(struct vb2_queue *vq,
+ 	dev->ts1.ts_packet_size  = mpeglinesize;
+ 	dev->ts1.ts_packet_count = mpeglines;
  
--	if (buf->index >= vdev->queue->num_buffers)
-+	if (buf->index >= vb2_get_num_buffers(vdev->queue))
- 		return -EINVAL;
+-	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
+-		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
+-
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
+ 	*nplanes = 1;
+@@ -1777,6 +1774,7 @@ int cx231xx_417_register(struct cx231xx *dev)
+ 	q = &dev->mpegq;
+ 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
++	q->min_buffers_needed = CX231XX_MIN_BUF;
+ 	q->drv_priv = dev;
+ 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
+ 	q->ops = &cx231xx_video_qops;
+diff --git a/drivers/media/usb/cx231xx/cx231xx-video.c b/drivers/media/usb/cx231xx/cx231xx-video.c
+index e23b8ccd79d4..26b593844157 100644
+--- a/drivers/media/usb/cx231xx/cx231xx-video.c
++++ b/drivers/media/usb/cx231xx/cx231xx-video.c
+@@ -717,9 +717,6 @@ static int queue_setup(struct vb2_queue *vq,
  
- 	if (buf->reserved2 & ATOMISP_BUFFER_HAS_PER_FRAME_SETTING) {
+ 	dev->size = (dev->width * dev->height * dev->format->depth + 7) >> 3;
+ 
+-	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
+-		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
+-
+ 	if (*nplanes)
+ 		return sizes[0] < dev->size ? -EINVAL : 0;
+ 	*nplanes = 1;
+@@ -1805,6 +1802,7 @@ int cx231xx_register_analog_devices(struct cx231xx *dev)
+ 	q = &dev->vidq;
+ 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+ 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
++	q->min_buffers_needed = CX231XX_MIN_BUF;
+ 	q->drv_priv = dev;
+ 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
+ 	q->ops = &cx231xx_video_qops;
 -- 
 2.39.2
 
