@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDEDE75438
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 09:15:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A90E7543C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 09:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=q7Apq46vJcq/tcpDuXjgHqUQzHAK+kaO0fDesISS+rw=; b=m2Uy/VtwoOgrlt
-	lv7sIhnx+Axb/Cm219UKpY9NyKiU8fYLFlcHNkzvSvoNufSZGshck8KyN236RChZvKUuGnScJk0sv
-	fx9p3p9NosHf7xa8OtzUKB21ruB6xqctphUZZP8BJRm1QHf0qRVp8ZhD/+tVz2wFlgPUJodDI9h0m
-	iE4j3zUAWuhYU+PkSAwmzsgCY+WPQ5hScj6lVtPrEq9S9adnRsCXe8TqDiL2hfzXzQ6LAzWubszn8
-	JRV46g62hcQ/834NxRKXGBHlLLTODEW73NIyePsn1jr+0eOCC+R1CeexRazXnp07+LURs4pzVr4Mx
-	NUX3Merw6E02LeEgMslA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QVcW9wWBfrfLVJR1l6v6OhtPfqEOJA8X/Uy0ETkVTcQ=; b=26lfqMe9taf1q7
+	uqYlSr60N3QW6GVQOQjU59INlZt70TEG0C4CGRA2c3pr3oAZtxk7g0ITndOud8ROHDuJUISEHrvBv
+	JTBKDVZdoE1eR4c8wzzxmsNjTM257t3RxCHW5UTWBNNnNXMnx9HLPwLw4/DpoBtY6cG5K+3VWhV3m
+	B3XPuNHeqBgjB5aPYglsRhrDhIgaWcmsRiZMd2A8zUlkG5Kb482bZVCOoMM4pHcEb4KPu638vkTro
+	RChlwAg2TRoZRu9YBAt+vnnu6NosC5AhqPAQVRCNBYJBeb9dMPjBBxKV0+bv1A4tMYkxYcNayy5aN
+	ZxCmQ3WshFyjCSkbYsCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnbV3-00EDPS-22;
-	Tue, 03 Oct 2023 09:15:29 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnbV6-00EDRe-01;
+	Tue, 03 Oct 2023 09:15:32 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaR3-00E34e-03;
-	Tue, 03 Oct 2023 08:07:20 +0000
+	id 1qnaR5-00E362-2s;
+	Tue, 03 Oct 2023 08:07:22 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CD6A06607313;
-	Tue,  3 Oct 2023 09:07:12 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7C58E660731D;
+	Tue,  3 Oct 2023 09:07:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320433;
-	bh=qj0bnDV/xFPYTBegLSnkEtqZDOJIKZaMrpfQDOlp2LI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=jYodERC3YXqPMp8tA+HsW/6Tpa+h3Z9OOMfSzq/5MvdGvAZJZ2cPhnFl9U8nMYLu0
-	 RahbQCrhjnHarLpzsE3Ksdg1hGIoCL1NNA5UjjthY83q1WPmR4WYkW2K1easCR8IDI
-	 LiK8ED58c3dXV8uBYW035cQ0vLGvKRisUdwXDWChVlOvxxLMaQPnoJ5Fc5siDZfwNL
-	 IlOVPZoB8paE0F/P5nEpfmAsAo/evBCDMa/Zx52k3v8FfY3xMntnf53CwgGr6goA+e
-	 NQMdNl4GbZzP+pYKOt8Dy8czmZ0I/lqEH5Dnz2u/viiaApqiPMMNMXUj7eo3MW/GB/
-	 s0Ohe84diqQtA==
+	s=mail; t=1696320436;
+	bh=dORnTzB2rXmsaHgnhN9KRI5xHQJEBU6mRdZelnGjotA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BSEfBTA5Hdnv9NBFBNyAyqI/purU07ob4LXwE+mG3TccYJznfRorGX1tFhGAHauhh
+	 1ceA/+57ED7z/Tpm83Q6VvnzFnz/IDGRmKkWfYZhOAoi5pfUtPVUl/afKNe3xuEJO7
+	 EDNcqDGJOqRmCFVEW2O0QH6XefoWgUiNcWmxxqWwtbevvt319kFacWuJiBTzYEC4xV
+	 HxhGLgEqPg/CLdi+wFInEmKJ0hBBkMgI1lnm/l1vf+4aR8G5iK2mwuQ9C7RG9o+ElS
+	 bRg4L061Wr88t0cmGLB6btO7jhhut0ePiKM+uG1vz9P4FQuVNtFC2FkqTD3cl7ea06
+	 lMWQr3OVX3uqA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,14 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 00/54] Add DELETE_BUF ioctl
-Date: Tue,  3 Oct 2023 10:06:09 +0200
-Message-Id: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 07/54] media: sti: hva: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Tue,  3 Oct 2023 10:06:16 +0200
+Message-Id: <20231003080704.43911-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
+References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010717_318645_BF66FADC 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20231003_010720_066982_D7C1B1BF 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,216 +88,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
+Remove index range test since it is done by vb2_get_buffer().
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ drivers/media/platform/st/sti/hva/hva-v4l2.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v10
-
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 10:
-- Make BUFFER_INDEX_MASK definition more readable
-- Rebase on media_stage/master branch and add a patch for nuvoton
-  driver.
-- Fix issue on patch 13
-
-changes in version 9:
-- BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
-  architectures requirements.
-- Correctly initialize max_num_buffers in vb2_core_queue_init()
-- run 'test-media -kmemleak mc' on top of the series and on patches 1 to 47 without failures.
-- fix compilation issue in patch 50
-
-changes in version 8:
-- Add V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS and new 'max_buffers' field in v4l2_create_buffers
-  structure to report the maximum number of buffers that a queue could allocate.
-- Add V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS to indicate that a queue support
-  DELETE_BUFS ioctl.
-- Make some test drivers use more than 32 buffers and DELETE_BUFS ioctl.
-- Fix remarks done by Hans
-- Move "media: core: Rework how create_buf index returned value is
-  computed" patch to the top of the serie.
-
-changes in version 7:
-- Use a bitmap to know which entries are valid in queue bufs array.
-  The number of buffers in the queue could must calculated from the
-  bitmap so num_buffers becomes useless. This led to add quite few
-  patches to remove it from all the drivers.
-  Note: despiste my attention I may have miss some calls to
-  num_buffers...
-- Split patches to make them more readable.
-- Run v4l2-compliance with additional delete-bufs tests.
-- Run ./test-media -kmemleak vivid and no more failures.
-  Note: I had to remove USERPTR streaming test because they to much
-  frequentely hit get_framevec bug. It is not related to my series
-  since this happens all the time on master branch.
-- Fix Hans remarks on v6
-
-changes in version 6:
-- Get a patch per driver to use vb2_get_buffer() instead of directly access
-  to queue buffers array.
-- Add lock in vb2_core_delete_buf()
-- Use vb2_buffer instead of index
-- Fix various comments
-- Change buffer index name to BUFFER_INDEX_MASK
-- Stop spamming kernel log with unbalanced counters
-
-Regards,
-Benjamin
+diff --git a/drivers/media/platform/st/sti/hva/hva-v4l2.c b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+index 3a848ca32a0e..cfe83e9dc01b 100644
+--- a/drivers/media/platform/st/sti/hva/hva-v4l2.c
++++ b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+@@ -569,14 +569,11 @@ static int hva_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ 		struct vb2_buffer *vb2_buf;
  
-Benjamin Gaignard (54):
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Stop spamming kernel log with all queue counter
-  media: videobuf2: Use vb2_buffer instead of index
-  media: amphion: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: mediatek: vdec: Remove useless loop
-  media: sti: hva: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: visl: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: dvb-core: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: Report the maximum possible number of buffers for the queue
-  media: test-drivers: vivid: Increase max supported buffers for capture
-    queues
-  media: test-drivers: vicodec: Increase max supported capture queue
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: g2: Use common helpers to compute chroma and mv
-    offsets
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: Remove duplicated index vs q->num_buffers check
-  media: core: Add helper to get queue number of buffers
-  media: dvb-core: Do not initialize twice queue num_buffer field
-  media: dvb-frontends: rtl2832_srd: Use queue min_buffers_needed field
-  media: video-i2c: Set min_buffers_needed to 2
-  media: pci: cx18: Set correct value to min_buffers_needed field
-  media: pci: dt3155: Remove useless check
-  media: pci: netup_unidvb: Remove useless number of buffers check
-  media: pci: tw68: Stop direct calls to queue num_buffers field
-  media: pci: tw686x: Set min_buffers_needed to 3
-  media: amphion: Stop direct calls to queue num_buffers field
-  media: coda: Stop direct calls to queue num_buffers field
-  media: mediatek: vcodec: Stop direct calls to queue num_buffers field
-  media: nxp: Stop direct calls to queue num_buffers field
-  media: renesas: Set min_buffers_needed to 16
-  media: ti: Use queue min_buffers_needed field to set the min number of
-    buffers
-  media: verisilicon: Stop direct calls to queue num_buffers field
-  media: test-drivers: Stop direct calls to queue num_buffers field
-  media: usb: airspy: Set min_buffers_needed to 8
-  media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
-  media: usb: hackrf: Set min_buffers_needed to 8
-  media: usb: usbtv: Set min_buffers_needed to 2
-  media: atomisp: Stop direct calls to queue num_buffers field
-  media: imx: Stop direct calls to queue num_buffers field
-  media: meson: vdec: Stop direct calls to queue num_buffers field
-  touchscreen: sur40: Stop direct calls to queue num_buffers field
-  sample: v4l: Stop direct calls to queue num_buffers field
-  media: cedrus: Stop direct calls to queue num_buffers field
-  media: nuvoton: Stop direct calls to queue num_buffers field
-  media: core: Rework how create_buf index returned value is computed
-  media: core: Add bitmap manage bufs array entries
-  media: core: Free range of buffers
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-  media: test-drivers: Use helper for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-create-bufs.rst          |   8 +-
- .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
- .../media/v4l/vidioc-reqbufs.rst              |   2 +
- drivers/input/touchscreen/sur40.c             |   5 +-
- .../media/common/videobuf2/videobuf2-core.c   | 554 +++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 118 +++-
- drivers/media/dvb-core/dvb_vb2.c              |  17 +-
- drivers/media/dvb-frontends/rtl2832_sdr.c     |   9 +-
- drivers/media/i2c/video-i2c.c                 |   5 +-
- drivers/media/pci/cx18/cx18-streams.c         |  13 +-
- drivers/media/pci/dt3155/dt3155.c             |   2 -
- .../pci/netup_unidvb/netup_unidvb_core.c      |   4 +-
- drivers/media/pci/tw68/tw68-video.c           |   6 +-
- drivers/media/pci/tw686x/tw686x-video.c       |  13 +-
- drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
- drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
- .../media/platform/chips-media/coda-common.c  |   2 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
- drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
- drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
- drivers/media/platform/renesas/rcar_drif.c    |   8 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
- .../media/platform/ti/am437x/am437x-vpfe.c    |   7 +-
- drivers/media/platform/ti/cal/cal-video.c     |   5 +-
- .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
- .../media/platform/ti/davinci/vpif_display.c  |   5 +-
- drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   5 +-
- .../media/platform/verisilicon/hantro_g2.c    |  14 +
- .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
- .../media/platform/verisilicon/hantro_hw.h    |   7 +-
- .../platform/verisilicon/hantro_postproc.c    |  93 ++-
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- .../media/test-drivers/vicodec/vicodec-core.c |   3 +
- drivers/media/test-drivers/vim2m.c            |   2 +
- .../media/test-drivers/vimc/vimc-capture.c    |   2 +
- drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
- drivers/media/test-drivers/visl/visl-video.c  |   2 +
- drivers/media/test-drivers/vivid/vivid-core.c |  14 +
- .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
- .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
- .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
- .../media/test-drivers/vivid/vivid-vbi-cap.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vbi-out.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vid-cap.c  |   5 +-
- .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
- drivers/media/usb/airspy/airspy.c             |   9 +-
- drivers/media/usb/cx231xx/cx231xx-417.c       |   4 +-
- drivers/media/usb/cx231xx/cx231xx-video.c     |   4 +-
- drivers/media/usb/hackrf/hackrf.c             |   9 +-
- drivers/media/usb/usbtv/usbtv-video.c         |   3 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
- drivers/staging/media/imx/imx-media-capture.c |   7 +-
- drivers/staging/media/meson/vdec/vdec.c       |  13 +-
- .../staging/media/sunxi/cedrus/cedrus_h264.c  |   8 +-
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  65 +-
- include/media/videobuf2-v4l2.h                |  13 +
- include/uapi/linux/videodev2.h                |  24 +-
- samples/v4l/v4l2-pci-skeleton.c               |   5 +-
- 70 files changed, 966 insertions(+), 502 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
+ 		vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, buf->type);
+-
+-		if (buf->index >= vq->num_buffers) {
+-			dev_dbg(dev, "%s buffer index %d out of range (%d)\n",
+-				ctx->name, buf->index, vq->num_buffers);
++		vb2_buf = vb2_get_buffer(vq, buf->index);
++		if (!vb2_buf) {
++			dev_dbg(dev, "%s buffer index %d not found\n", ctx->name, buf->index);
+ 			return -EINVAL;
+ 		}
+-
+-		vb2_buf = vb2_get_buffer(vq, buf->index);
+ 		stream = to_hva_stream(to_vb2_v4l2_buffer(vb2_buf));
+ 		stream->bytesused = buf->bytesused;
+ 	}
 -- 
 2.39.2
 
