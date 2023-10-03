@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B25D7E75435
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E02E75438
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QPTPUK6hJk1P9hX1j58lPQCDR/hGF9s63IXnAKCnQ6k=; b=QJWLAubgy+YyTq
-	BbiR+IVespls4W3Lskp85//GhfHbMB9L4X2G3T8Fh2PjDrwMC8w3X3joWz5p2hTqsq2v4FAKhslrH
-	YEfbuVRbaAPghqdTraR3WPVER1m4s5JYP5LFLUuO+BzpDOZ8nsEXyxIWXOWZEKjRAUIErVnEcMv5t
-	ZU9a4qwfiZXY58ZoR3uo2Jbt+rRT+wHXBDTl0XCgwRqcdLTF3g/huSsi4nHCilhFFzHcm6znqMgoL
-	xtNUOehxLaLxY210rdsMhrwkRgIrlnMYdtELtpDZzJ3DF/ebZUpAkMKinKMhRC4Za1ayi24X+88GH
-	+q1sLCKV14EzMLUezOtg==;
+	List-Owner; bh=0iRj5zVemnJ5GoeINZ0ojChRUmaSN3hfIbsKfAAsD9s=; b=1ZHUEl4gvolG1Y
+	zKCBrnkkkrr+uqzJqq055VsrdLNVA3CKIUtG6UDVcvzkYY56J3pKKFREs5UaD2awGHTlpF1qr+Dfe
+	54D25pIvMn0yrCTSDktOWcCCwiXUOw5xP3EtEcadqUVIPNqbMlZ6GrnSwMwnhAl+/QjspcDEqwcoH
+	ZW72VKCfl6Ui0B0/3v9/YdeNqFqY4GinJWz0acW8beZe/HHVaDSJwZfyVvVW8qYtsotST8wcXf3Dx
+	W3aDPQnPGo9/QDQfXYk64JWIU9kHZQosu+EI10OEAxstEacXf8JoynOdqTInk1gfpJn52TLpyl3rO
+	0zOGyzabFEu/eAhrOkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTC-00E5XD-1N;
-	Tue, 03 Oct 2023 08:09:30 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnaTG-00E5cP-0d;
+	Tue, 03 Oct 2023 08:09:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRG-00E3Il-1t;
-	Tue, 03 Oct 2023 08:07:33 +0000
+	id 1qnaRB-00E3CW-0G;
+	Tue, 03 Oct 2023 08:07:34 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F40526607369;
-	Tue,  3 Oct 2023 09:07:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A65B6607350;
+	Tue,  3 Oct 2023 09:07:23 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320449;
-	bh=7ahm4bRo2QGnRbUv4/W2PwABO3vJuq3eWNYXbDqDhag=;
+	s=mail; t=1696320443;
+	bh=qLvZsJraHy1cyquUmJgnlrPrhNUiYIy8VUcF3+5BgA0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HA2RIAoByMGpvUIqJYxtjI9p1yDsTJ33qXlbjyujOEEVM5r6CnssSgETWDp4xC++N
-	 E2/HLLIsJ8V1RfglnYWRXAl4V4o7Xo4HAWiU96mKqhbDZE0tqoCYK9rTVpfI9HqVrB
-	 vTTW6l2h1hSYeIuN4vBPZRxpghalCQVRPqxWdB8prlNviaaPDbwnSGSE2Pdw+R3SJR
-	 vmSjJdud8Vmv8pkHT1zqlYhryufNlSNHY7PCaD46FNTrwm/pipRXaDHTaWoDbjVkn1
-	 OIQ+jrX6vrXDqzEF3jvEQ9BhpqjyM1s7dQ0sW/HExgkW4IETrTd1mSSS8xqtyTN/Wd
-	 P5GdSFQTpY87g==
+	b=VxqczClSQp5zz7dzFXnSeQ+VItyAdodAT1c1CFllI6/95XCVmC4urN90RiVgJhZ1x
+	 fnPE+jcB09DnHsfl6c89eAPlfvuqkiS+54g3DnnkdKpRAbndQX0aS+7NnmBkDiWJm6
+	 Ljo7953dHbAjD2agQy3ZHtPqqS5nMTlA2v33AhdIYBd9UxVTAjcBayyzQVKqPiBT3l
+	 StP/H9mm320pKpNOrx2dGXfayyTtKWUqXw01OnrRXlo7KO+njY0DgXSEpIunOkGJ1n
+	 gKGlSQQJEsELad66EEc9axVOUCkQZlE5LzMqU1/ohB0Lxpd3fUqVmVUZMrCpTP25W5
+	 IqxED93tA5uxw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 31/54] media: coda: Stop direct calls to queue num_buffers field
-Date: Tue,  3 Oct 2023 10:06:40 +0200
-Message-Id: <20231003080704.43911-32-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 20/54] media: Remove duplicated index vs q->num_buffers check
+Date: Tue,  3 Oct 2023 10:06:29 +0200
+Message-Id: <20231003080704.43911-21-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010731_721328_37E0D5ED 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20231003_010725_282794_26303A38 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +89,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+vb2_get_buffer() already checks if the requested index is valid.
+Stop duplicating this kind of check everywhere.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/chips-media/coda-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/common/videobuf2/videobuf2-v4l2.c | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-diff --git a/drivers/media/platform/chips-media/coda-common.c b/drivers/media/platform/chips-media/coda-common.c
-index cc4892129aaf..f1d85758f6dd 100644
---- a/drivers/media/platform/chips-media/coda-common.c
-+++ b/drivers/media/platform/chips-media/coda-common.c
-@@ -794,7 +794,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+index 42da0adc052a..cf881c8d8d4d 100644
+--- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
++++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+@@ -378,11 +378,6 @@ static int vb2_queue_or_prepare_buf(struct vb2_queue *q, struct media_device *md
+ 		return -EINVAL;
+ 	}
  
- 	if (vb2_is_busy(vq)) {
- 		v4l2_err(&ctx->dev->v4l2_dev, "%s: %s queue busy: %d\n",
--			 __func__, v4l2_type_names[f->type], vq->num_buffers);
-+			 __func__, v4l2_type_names[f->type], vb2_get_num_buffers(vq));
+-	if (b->index >= q->num_buffers) {
+-		dprintk(q, 1, "%s: buffer index out of range\n", opname);
+-		return -EINVAL;
+-	}
+-
+ 	vb = vb2_get_buffer(q, b->index);
+ 	if (!vb) {
+ 		dprintk(q, 1, "%s: buffer %u is NULL\n", opname,  b->index);
+@@ -833,10 +828,6 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
  		return -EBUSY;
  	}
  
+-	if (b->index >= q->num_buffers) {
+-		dprintk(q, 1, "buffer index out of range\n");
+-		return -EINVAL;
+-	}
+ 	vb = vb2_get_buffer(q, b->index);
+ 	if (!vb) {
+ 		dprintk(q, 1, "can't find the requested buffer %u\n", b->index);
+@@ -908,10 +899,6 @@ int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
+ {
+ 	struct vb2_buffer *vb;
+ 
+-	if (eb->index >= q->num_buffers) {
+-		dprintk(q, 1, "buffer index out of range\n");
+-		return -EINVAL;
+-	}
+ 	vb = vb2_get_buffer(q, eb->index);
+ 	if (!vb) {
+ 		dprintk(q, 1, "can't find the requested buffer %u\n", eb->index);
 -- 
 2.39.2
 
