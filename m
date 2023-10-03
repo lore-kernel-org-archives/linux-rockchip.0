@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93118E75433
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA612E75435
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dzXNdjedNLmejc2E8cpDuLp0YecLxKzV5qmbV/bBYNo=; b=JDelYeqo5NS66u
-	pp4tHbW6I5X4iGfWaKbKSQ9MgDuh9I9zOm4Bx36YGTpeZGf+e0HHyRshTk52Bb5IFRXqUHeF42CVu
-	+hds/NPcUCL2NGu1pO3p7lqQMfFp9rz0i8BmWTB+UV/5DzpLmicgikGMLRrMB7okvappi9gbkOTH6
-	PZ5QgxHHMkEWhCQRYJpJH+6b49d0tR7JLicNcCENqV3rhfjhmYQP0QFJ9/zIyNsXPosrs+/nFcfrb
-	viDJUC6hvoQdX0T9CGoYBkXDLwwCMcThd4LD3oryE6S1oHtA0M1voutv8Lvtsdn4SaDaieiAUrWpk
-	wH3wLeVTl1R5blG7lyHA==;
+	List-Owner; bh=Vp6ZIba9EthaK/rlfaDkaaWJNfBKzY1IppWQ6uVdNSs=; b=Ayut340GWXqR5e
+	cYE6P+xvuMKOnLncnPhWu0fq2CAu8wQu456QPdtEUz2gTezN8VpJ2J6i9zRQyQ2nSBzkKBKadER//
+	tCrVXZgfZKO36FSi8hw8zugGu0ErYvu/HY6+jG9tT1z8AsVVwKIRhGw7RZhkifQc7//nS25xonSct
+	elN66BnYvKDLFVckg/JiuDQ9mgs/M59cm2FA08+FQ7vmXIxy1+VM5HKDb3/dFJxgQBWX/zEPlZUFy
+	ivOTzENjj5POEWlKZR7j/PodZeGfrJE1dSyA7AkQDjK2hgFMkVyigYTgDlR1TneERCnYu2RnIuMob
+	PBmqFWWkB52eP8faIzww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRi-00E3oq-00;
-	Tue, 03 Oct 2023 08:07:58 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnaRo-00E3vR-0c;
+	Tue, 03 Oct 2023 08:08:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaR5-00E361-2p;
-	Tue, 03 Oct 2023 08:07:23 +0000
+	id 1qnaR7-00E37Z-2x;
+	Tue, 03 Oct 2023 08:07:27 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 04B03660731F;
-	Tue,  3 Oct 2023 09:07:17 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16BF46607332;
+	Tue,  3 Oct 2023 09:07:19 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320437;
-	bh=Osy0YWOEVUvzSOYoJm+JBXSigMNkmpw77qpRTwkivks=;
+	s=mail; t=1696320439;
+	bh=G8knIPo83zGnCq6daz/QCUSlTh5ZQNn2reYpJKWrvh0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EbF87OCFiLweOCAVwYBz906D2Uuqqjyo1DaU4a83x1EgCNBTYwy5gZz9qo/htsYON
-	 W57dG31ES6IEu4tSZHfFb2XrTxlW38GP3G/vPqnFbMkXZPpOthCVmo4UcsY+HqevuC
-	 dm4P7YGzMmwqEw8gqDlZ40AY8yKwG6QTTPTRNsVv2QcFmRoT2KrRTQWQNcNXkp2D0V
-	 a95zAmahJKLdZppmq/5VCdP+DbCun9fGwTOaMkoGgQj/1MJHe60hkIUHSHsnZCHMBz
-	 MgwUPaqqq5RY4WfMKuf6cT4xxrEF3bniL7aoLIFftCLx5OVDfk909v3YieueYFM85I
-	 BkCd9Mdtfi+Sw==
+	b=SlolRjrGL92H321lhwSsF0zGAgJXlLTvOgWMVQUuRz6aKG59sDWgrGizgJilvq9gp
+	 ZlSc6JhP7cy6JX/mSBA2JzYKABHJI164sH5IlDwtcxrN1IzNQCCF1uTzQn5Aa0riXb
+	 G7bMgmAKDj2riq0SDkm3jJ5U3FyOF03ffP5jbzCsQyvsKU014nhlwY8Wkp5yWyCNQB
+	 nvfv1cUeG32tXiXG8yInCKF3ly8KnKbpWyNZsjxI9RvkysaLjzJBmfI7osDZ+cz/it
+	 LLwBzbjhK8lpJKBMgz+s5OKyGEof/xogp6XLudQCP/EPLQRL4TBK0WoeFCZUzz4IJc
+	 BrbToCkZUB/FA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 08/54] media: visl: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Tue,  3 Oct 2023 10:06:17 +0200
-Message-Id: <20231003080704.43911-9-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 12/54] media: videobuf2: Be more flexible on the number of queue stored buffers
+Date: Tue,  3 Oct 2023 10:06:21 +0200
+Message-Id: <20231003080704.43911-13-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010720_056944_1AA53C74 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20231003_010722_251076_6546BE3D 
+X-CRM114-Status: GOOD (  19.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,70 +88,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
-This could allow to change the type bufs[] field of vb2_buffer structure if
-needed.
-After each call to vb2_get_buffer() we need to be sure that we get
-a valid pointer so check the return value of all of them.
+Add 'max_num_buffers' field in vb2_queue struct to let drivers decide
+how many buffers could be stored in a queue.
+This require 'bufs' array to be allocated at queue init time and freed
+when releasing the queue.
+By default VB2_MAX_FRAME remains the limit.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 ---
- drivers/media/test-drivers/visl/visl-dec.c | 28 ++++++++++++++++------
- 1 file changed, 21 insertions(+), 7 deletions(-)
+ .../media/common/videobuf2/videobuf2-core.c   | 41 +++++++++++++++----
+ .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
+ include/media/videobuf2-core.h                |  4 +-
+ 3 files changed, 37 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
-index 318d675e5668..ba20ea998d19 100644
---- a/drivers/media/test-drivers/visl/visl-dec.c
-+++ b/drivers/media/test-drivers/visl/visl-dec.c
-@@ -290,13 +290,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	for (i = 0; i < out_q->num_buffers; i++) {
- 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
- 		u32 old_len = len;
--		char *q_status = visl_get_vb2_state(out_q->bufs[i]->state);
-+		struct vb2_buffer *vb2;
-+		char *q_status;
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index d23ee4b86cc0..c0104f824577 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -413,7 +413,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+  */
+ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+ {
+-	WARN_ON(index >= VB2_MAX_FRAME || q->bufs[index]);
++	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
+ 
+ 	q->bufs[index] = vb;
+ 	vb->index = index;
+@@ -445,9 +445,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 	struct vb2_buffer *vb;
+ 	int ret;
+ 
+-	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
++	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
+ 	num_buffers = min_t(unsigned int, num_buffers,
+-			    VB2_MAX_FRAME - q->num_buffers);
++			    q->max_num_buffers - q->num_buffers);
+ 
+ 	for (buffer = 0; buffer < num_buffers; ++buffer) {
+ 		/* Allocate vb2 buffer structures */
+@@ -806,7 +806,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+ 	unsigned int i;
+-	int ret;
++	int ret = 0;
+ 
+ 	if (q->streaming) {
+ 		dprintk(q, 1, "streaming active\n");
+@@ -850,17 +850,22 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	/*
+ 	 * Make sure the requested values and current defaults are sane.
+ 	 */
+-	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
+ 	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+-	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
++	num_buffers = min_t(unsigned int, num_buffers, q->max_num_buffers);
+ 	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+ 	/*
+ 	 * Set this now to ensure that drivers see the correct q->memory value
+ 	 * in the queue_setup op.
+ 	 */
+ 	mutex_lock(&q->mmap_lock);
++	if (!q->bufs)
++		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
++	if (!q->bufs)
++		ret = -ENOMEM;
+ 	q->memory = memory;
+ 	mutex_unlock(&q->mmap_lock);
++	if (ret)
++		return ret;
+ 	set_queue_coherency(q, non_coherent_mem);
+ 
+ 	/*
+@@ -966,9 +971,9 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+ 	bool no_previous_buffers = !q->num_buffers;
+-	int ret;
++	int ret = 0;
+ 
+-	if (q->num_buffers == VB2_MAX_FRAME) {
++	if (q->num_buffers == q->max_num_buffers) {
+ 		dprintk(q, 1, "maximum number of buffers already allocated\n");
+ 		return -ENOBUFS;
+ 	}
+@@ -985,7 +990,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 		 */
+ 		mutex_lock(&q->mmap_lock);
+ 		q->memory = memory;
++		if (!q->bufs)
++			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
++		if (!q->bufs)
++			ret = -ENOMEM;
+ 		mutex_unlock(&q->mmap_lock);
++		if (ret)
++			return ret;
+ 		q->waiting_for_buffers = !q->is_output;
+ 		set_queue_coherency(q, non_coherent_mem);
+ 	} else {
+@@ -997,7 +1008,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return -EINVAL;
+ 	}
+ 
+-	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
++	num_buffers = min(*count, q->max_num_buffers - q->num_buffers);
+ 
+ 	if (requested_planes && requested_sizes) {
+ 		num_planes = requested_planes;
+@@ -2456,6 +2467,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 	/*
+ 	 * Sanity check
+ 	 */
++	if (!q->max_num_buffers)
++		q->max_num_buffers = VB2_MAX_FRAME;
 +
-+		vb2 = vb2_get_buffer(out_q, i);
-+		if (!vb2)
-+			continue;
++	/* The maximum is limited by offset cookie encoding pattern */
++	q->max_num_buffers = min_t(unsigned int, q->max_num_buffers, MAX_BUFFER_INDEX);
 +
-+		q_status = visl_get_vb2_state(vb2->state);
+ 	if (WARN_ON(!q)			  ||
+ 	    WARN_ON(!q->ops)		  ||
+ 	    WARN_ON(!q->mem_ops)	  ||
+@@ -2465,6 +2482,10 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 	    WARN_ON(!q->ops->buf_queue))
+ 		return -EINVAL;
  
- 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
- 				 entry, i, q_status,
--				 to_vb2_v4l2_buffer(out_q->bufs[i])->request_fd);
-+				 to_vb2_v4l2_buffer(vb2)->request_fd);
- 
--		len += visl_fill_bytesused(to_vb2_v4l2_buffer(out_q->bufs[i]),
-+		len += visl_fill_bytesused(to_vb2_v4l2_buffer(vb2),
- 					   &buf[len],
- 					   TPG_STR_BUF_SZ - len);
- 
-@@ -342,13 +349,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	len = 0;
- 	for (i = 0; i < cap_q->num_buffers; i++) {
- 		u32 old_len = len;
--		char *q_status = visl_get_vb2_state(cap_q->bufs[i]->state);
-+		struct vb2_buffer *vb2;
-+		char *q_status;
++	if (WARN_ON(q->max_num_buffers > MAX_BUFFER_INDEX) ||
++	    WARN_ON(q->min_buffers_needed > q->max_num_buffers))
++		return -EINVAL;
 +
-+		vb2 = vb2_get_buffer(cap_q, i);
-+		if (!vb2)
-+			continue;
-+
-+		q_status = visl_get_vb2_state(vb2->state);
+ 	if (WARN_ON(q->requires_requests && !q->supports_requests))
+ 		return -EINVAL;
  
- 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
- 				 "index: %u, status: %s, timestamp: %llu, is_held: %d",
--				 cap_q->bufs[i]->index, q_status,
--				 cap_q->bufs[i]->timestamp,
--				 to_vb2_v4l2_buffer(cap_q->bufs[i])->is_held);
-+				 vb2->index, q_status,
-+				 vb2->timestamp,
-+				 to_vb2_v4l2_buffer(vb2)->is_held);
+@@ -2511,6 +2532,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	__vb2_queue_cancel(q);
+ 	mutex_lock(&q->mmap_lock);
+ 	__vb2_queue_free(q, q->num_buffers);
++	kfree(q->bufs);
++	q->bufs = NULL;
+ 	mutex_unlock(&q->mmap_lock);
+ }
+ EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+index 3395e702ad1f..278ea1107b01 100644
+--- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
++++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+@@ -1156,7 +1156,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
  
- 		tpg_gen_text(&ctx->tpg, basep, line++ * line_height, 16, &buf[old_len]);
- 		frame_dprintk(ctx->dev, run->dst->sequence, "%s", &buf[old_len]);
+ 	if (lock)
+ 		mutex_lock(lock);
+-	if (file->private_data == vdev->queue->owner) {
++	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
+ 		vb2_queue_release(vdev->queue);
+ 		vdev->queue->owner = NULL;
+ 	}
+@@ -1284,7 +1284,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
+ 	 */
+ 	get_device(&vdev->dev);
+ 	video_unregister_device(vdev);
+-	if (vdev->queue && vdev->queue->owner) {
++	if (vdev->queue) {
+ 		struct mutex *lock = vdev->queue->lock ?
+ 			vdev->queue->lock : vdev->lock;
+ 
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index cd3ff1cd759d..1d6d68e8a711 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -558,6 +558,7 @@ struct vb2_buf_ops {
+  * @dma_dir:	DMA mapping direction.
+  * @bufs:	videobuf2 buffer structures
+  * @num_buffers: number of allocated/used buffers
++ * @max_num_buffers: upper limit of number of allocated/used buffers
+  * @queued_list: list of buffers currently queued from userspace
+  * @queued_count: number of buffers queued and ready for streaming.
+  * @owned_by_drv_count: number of buffers owned by the driver
+@@ -619,8 +620,9 @@ struct vb2_queue {
+ 	struct mutex			mmap_lock;
+ 	unsigned int			memory;
+ 	enum dma_data_direction		dma_dir;
+-	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
++	struct vb2_buffer		**bufs;
+ 	unsigned int			num_buffers;
++	unsigned int			max_num_buffers;
+ 
+ 	struct list_head		queued_list;
+ 	unsigned int			queued_count;
 -- 
 2.39.2
 
