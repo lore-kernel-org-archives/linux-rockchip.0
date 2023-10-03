@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FFBE75436
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0666E75434
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MYRFFdTHLfr3q6h9LjjKgR981zGnc+0utgdTpZ82Wg0=; b=ENOKhmwsXvN705
-	vTfod0lpqqZsY6Vtfs+akUvzoSsRHCVKN5vYiVn09f+zFptrFBP3MNoWgf7flhHimYxzCOuX0K/jh
-	mZyTqSjp8WZev7YQrVGpuLFEUHIL0FR50FmQseryRpneM0QXlufRls6hBH9dyLE5RT2Jx4HliM4tS
-	VZA/zgbe9+qYuzrucSMct7ceMr90Xz7F1201S+xNUlS6BvQsK6mhSprxSHaJfJS2Fn7ppiog7zNSF
-	DXJPz9iO/qWqb0JdQEYpJAxwL8iqQXz3wNIJIckqRF74q/a+hgx6zQI6a7tW7pX8U00Bb2JfBfEAA
-	pcWtRwR2f3JIBgXcY0Eg==;
+	List-Owner; bh=I1IQmDb0SMhZLtBRybY4MYU3SxcD7tKbYAfw4Ya+0Rg=; b=W1Mvggy/OY3ejJ
+	bdhoaEIdaNuemzaHOncyjP4uL6avnycRpXnS4aoRIhT9D+emhZEbQiZ+BxkcUBiqpt+NZHSgT5I2p
+	+EfuMr2onBm43b0KLsDJObJmWQkcsqz3ldO3zEVpVKyNmyp4fBZxhjwBuWZ3gmxXHREWHdP8YFc3y
+	JQUVZqtscXTtHyG3pTsILprx+c3K2IbyXdebgJJPxe9Fc+gmbR2OE+XhYsfGeYiLu6WwNt5+R6cCT
+	t0lAPwB4Mibi/52Qw9IwJEnvX0dXFHv+mT/zuamYYmTzE/3uwg4Z2f/bxy6jSGadbI5m5D+NjJzTw
+	/J+xILWH0xbObn7EqO5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaR8-00E39q-1o;
-	Tue, 03 Oct 2023 08:07:22 +0000
+	id 1qnaRh-00E3oQ-1j;
+	Tue, 03 Oct 2023 08:07:57 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaR3-00E34m-03;
-	Tue, 03 Oct 2023 08:07:18 +0000
+	id 1qnaR5-00E35t-29;
+	Tue, 03 Oct 2023 08:07:23 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EAA9D6607312;
-	Tue,  3 Oct 2023 09:07:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 716F56607318;
+	Tue,  3 Oct 2023 09:07:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1696320435;
-	bh=swS7yYiqBxggjIra2XX2pXDY4PPq3f683TK0rKa6DhQ=;
+	bh=xgQ59ci0u36Sg6Kfk6W/knjQu2QF8jMpnRAVGSPYz3E=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ezn1xtT+nlzICJXTJx0uIND417DHUexBcDMUO5TS9LDKREqcHxr8Xee69W2Sm/u6o
-	 /rZ99CxtG+OfUsPXWhQOWJQ8PiG4zPh9K0HMSCcDjA9F31381g1z824Fari2skT9gQ
-	 NMWd3qCCUYUo6+RY27YNTrvVdhY3Q9gxA0PQSZ0puXvirg0cphkoRodaZ1e5K1x4Ea
-	 N3dR3LLnXMOsmxeipfww9imDST3qN/YzNCVdXaOkIlA/VeK/gAe9z/W1YLVxEej3oL
-	 K1LG/2Awtmpr/0zOn6wyd+8fOh2UCkcwDc81rKq9mqIQ6mbr5DAGqY5VRt5KFSKIeR
-	 Igb/JtZfZaBkg==
+	b=MqR/337qaBaeM2xhBO323b7fASbEIQFNsiApNazHjton1vaqccRdDupCKmzcUXXHY
+	 101y9VY4UxDD0kieue9DEHiAOY7JrerIONfrrlvFgVailtnPPiF1SGI+2v2ZvFpTH/
+	 8i5XWifha+0WvS/W0yCcozLOu9rc4HCm21u+N2lKO0MFBTMSM+uEKe9v3+8h0vTwU9
+	 YWwxiZDLvH8ONHPq/9/RSymA6dAVZTgT1esecZR/OqrYiPv/yuIHPVS/rAg0zyJJlh
+	 1wcYJ/Bfz6Vyt+aLH0LtqRIAIuToGkgncwpz0WoZdFru62Btey30yp9DCtweBS2FwM
+	 zeBHIYhKjZ46A==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 04/54] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Tue,  3 Oct 2023 10:06:13 +0200
-Message-Id: <20231003080704.43911-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 05/54] media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Tue,  3 Oct 2023 10:06:14 +0200
+Message-Id: <20231003080704.43911-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010717_249974_06C6B902 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20231003_010719_833585_6ABFB73C 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +96,29 @@ a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
-index 982c2c777484..a462d6fe4ea9 100644
---- a/drivers/media/platform/amphion/vpu_dbg.c
-+++ b/drivers/media/platform/amphion/vpu_dbg.c
-@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 7194f88edc0f..73a063b1569b 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -598,12 +598,11 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ 		goto end;
  
- 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
+ 	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
+-	if (buf->index >= vq->num_buffers) {
+-		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
++	vb = vb2_get_buffer(vq, buf->index);
++	if (!vb) {
++		dev_err(ctx->jpeg->dev, "buffer not found\n");
+ 		return -EINVAL;
+ 	}
+-
+-	vb = vq->bufs[buf->index];
+ 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+ 	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
  
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"output [%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
-@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 
- 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
- 
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"capture[%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
 -- 
 2.39.2
 
