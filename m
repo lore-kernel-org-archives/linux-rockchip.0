@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A0A3E7543C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 606AAE75433
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Oct 2023 08:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=baPgtFKWKb9WdyUoE5JoU2Df9imo/fkDyMhi5m+xGXY=; b=Tz1gp8jXC2VmX8
-	WJBbOAhNOL7E3DVMoKLxEK+sKU0Wi6Sy+BeMBexGIpKYR/V9ZS0lFU+nWJAbLWvuU8P+yKFTtqq60
-	8lliI7vxfZwbuzGfMJo3TNchDgJ6DhIXe5Y8lv/UFENxJpIxJPUFmcoXVXsGfykPlrt+iUGee61En
-	A3gJytGHRCX0BEPHX1GvROG5mj+70xxB1G5JsEWhyTKO/BveRLE8C0KhRMOsDeV4/94EIyYekQKO3
-	akOChAEKni40F+mDJHqLTC9YcT6NFeAPs60wDv2jyCBzN+Nqtf/CMgWSLBd5nf5kff2Vdhmw5udxx
-	1zDXdOleZeopTg7mWKcg==;
+	List-Owner; bh=/IoFHSmKR19jAekxlx42YH8B4XWGrcsIn+3g6cUf2/I=; b=RZt/mEOmGS5YCu
+	L1ygC2e52jH2/ody95dPIkCcbNW0scEIRLKOKoSnZhx4XguTWWJ0XiRyjBGX+c54g9tmC1qlSRWZY
+	gpg9EZyiOi9NF0XYD+yVmKIuspIT06PxA+cm9qPSUbp+sVQBmj8GgtGNjCNT85YqnFFnZyyGdPiod
+	u7NmZ+6RrDMckKmLKN4yeBVsugObLAOly+3USI4c05SW+kfEgy9/DBIjuurO6rV/dGG5M9e0LO2Rx
+	KChMVEsNIdKegdwPrsXnZSBesRtN4QjMudXE3b9VNAix24g+q3x2Fu8fRWT6xOvCICKpOfb3TOmMC
+	ywyx4qqn5IEf4xmZQOTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaTf-00E6Lm-3D;
-	Tue, 03 Oct 2023 08:10:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qnaTn-00E6Ys-0X;
+	Tue, 03 Oct 2023 08:10:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qnaRI-00E3Kw-2b;
-	Tue, 03 Oct 2023 08:07:37 +0000
+	id 1qnaRL-00E3Ou-2m;
+	Tue, 03 Oct 2023 08:07:39 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:b6df:b784:6a0f:8451])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8998D6607370;
-	Tue,  3 Oct 2023 09:07:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B9F14660737D;
+	Tue,  3 Oct 2023 09:07:33 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696320450;
-	bh=H1GfOB6mMJ44+7OCOGMjuo+dWjaU6UnQ+DdGWJmRb1Q=;
+	s=mail; t=1696320454;
+	bh=pDUB2yjXKjklQT9CTDtddlAytBql2bguZ0k3zUQQEeE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XlWAfaSTXg87NJNtSL7sLxzjqJul6QYunE6ahi5vV4Uwkf8VdGmA6gNwUHl4ixPNc
-	 64TU1XdVJe/F/b9nWagYg5XjyPn8TM+ZxvU83snjR6s8wHawbsVbGsb+F/2NBWlBd7
-	 VcLlJP92mf3JlSsS/7D6NBjoyMppFVRewnSWN8r7sFGQed4yJlfoQSBRNCiqYuE948
-	 0Idvq+NpO8ypyvXkhZ6YYkFKQKKjiw8iDg5mk/mProNOEeyCl/3kqg4gSjYcPuYQXx
-	 YI1swEP1ce5FqXJJPH06LBBS2LOrOqnOZiI57yfHm7iGK9dXgsCM1Lj8Za4iaHCpD8
-	 PiCRmsiXDx5Pg==
+	b=dXnbzTmpsOk4IgBNUvj38HbbxM7ZpTofbuwq30ClOKB8rTKBd0WrjLHS6NRhJs+3m
+	 RJCn21UOpSReIQKDlanWpHlfUDzjarItawFO2o2fJlsUaYTcI8j6Sur84i8kC/Q8Uv
+	 SiUjZAvehJ12Qr6C4UeWEZJtAx7fo19jcdwlKoCy8cKI6a0gGk1KCDppo+8Ne9Ytkf
+	 ITO5dx853jwq7VKQSEJc3auLPyqhCTRxoq5lng7jG9h/LoOCLh026JRWk26hptiOEM
+	 9hEyDR/G6SRwrIXv+RRl9WlaNCvtcEH9D7h9bmVPTUe1ofBpFtrmBqiPdLV4+PvA61
+	 Bhr4LcAXyiADA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 34/54] media: renesas: Set min_buffers_needed to 16
-Date: Tue,  3 Oct 2023 10:06:43 +0200
-Message-Id: <20231003080704.43911-35-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 40/54] media: usb: hackrf: Set min_buffers_needed to 8
+Date: Tue,  3 Oct 2023 10:06:49 +0200
+Message-Id: <20231003080704.43911-41-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 References: <20231003080704.43911-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231003_010733_000142_2C51297D 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20231003_010736_147159_8A8A3D59 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,42 +89,44 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 vb2 queue_setup checks for a minimum number of buffers so set
-min_buffers_needed to 16 and remove the useless check in
-rcar_drif_queue_setup().
+min_buffers_needed to 8 and remove the useless check in
+hackrf_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/renesas/rcar_drif.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ drivers/media/usb/hackrf/hackrf.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
-index 292c5bf9e50c..bb84fc089d5d 100644
---- a/drivers/media/platform/renesas/rcar_drif.c
-+++ b/drivers/media/platform/renesas/rcar_drif.c
-@@ -425,13 +425,9 @@ static int rcar_drif_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/usb/hackrf/hackrf.c b/drivers/media/usb/hackrf/hackrf.c
+index 3e535be2c520..2e856b20aa21 100644
+--- a/drivers/media/usb/hackrf/hackrf.c
++++ b/drivers/media/usb/hackrf/hackrf.c
+@@ -754,15 +754,10 @@ static int hackrf_queue_setup(struct vb2_queue *vq,
  {
- 	struct rcar_drif_sdr *sdr = vb2_get_drv_priv(vq);
+ 	struct hackrf_dev *dev = vb2_get_drv_priv(vq);
  
--	/* Need at least 16 buffers */
--	if (vq->num_buffers + *num_buffers < 16)
--		*num_buffers = 16 - vq->num_buffers;
+-	dev_dbg(dev->dev, "nbuffers=%d\n", *nbuffers);
 -
- 	*num_planes = 1;
- 	sizes[0] = PAGE_ALIGN(sdr->fmt->buffersize);
--	rdrif_dbg(sdr, "num_bufs %d sizes[0] %d\n", *num_buffers, sizes[0]);
-+	rdrif_dbg(sdr, "num_bufs %u sizes[0] %d\n", vb2_get_num_buffers(vq), sizes[0]);
+-	/* Need at least 8 buffers */
+-	if (vq->num_buffers + *nbuffers < 8)
+-		*nbuffers = 8 - vq->num_buffers;
+ 	*nplanes = 1;
+ 	sizes[0] = PAGE_ALIGN(dev->buffersize);
  
+-	dev_dbg(dev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
++	dev_dbg(dev->dev, "nbuffers=%u sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
  	return 0;
  }
-@@ -1310,6 +1306,8 @@ static int rcar_drif_sdr_probe(struct rcar_drif_sdr *sdr)
- 	/* Init videobuf2 queue structure */
- 	sdr->vb_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
- 	sdr->vb_queue.io_modes = VB2_READ | VB2_MMAP | VB2_DMABUF;
-+	/* Need at least 16 buffers */
-+	sdr->vb_queue.min_buffers_needed = 16;
- 	sdr->vb_queue.drv_priv = sdr;
- 	sdr->vb_queue.buf_struct_size = sizeof(struct rcar_drif_frame_buf);
- 	sdr->vb_queue.ops = &rcar_drif_vb2_ops;
+ 
+@@ -1392,6 +1387,8 @@ static int hackrf_probe(struct usb_interface *intf,
+ 	dev->rx_vb2_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
+ 	dev->rx_vb2_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF |
+ 				     VB2_READ;
++	/* Need at least 8 buffers */
++	dev->rx_vb2_queue.min_buffers_needed = 8;
+ 	dev->rx_vb2_queue.ops = &hackrf_vb2_ops;
+ 	dev->rx_vb2_queue.mem_ops = &vb2_vmalloc_memops;
+ 	dev->rx_vb2_queue.drv_priv = dev;
 -- 
 2.39.2
 
