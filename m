@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF9AE936EC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:33:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17D7E936EA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xCo0/nmAlHEc1VPBFrAdir2HwxXCaTctk8eDUT0t9+c=; b=C3UzldJf0gr41s
-	zGXCKe/jPNFcJMMX+U0iZcvo+Ods217KXThSJ9zkEjhCq5E1Kg2GJ4qvQng4wh+Y6sbkDHaWDMcdC
-	YUjOh8ikDG1p9Lo/pPb+Ue2RxO6KQAQYMU0WZbMiq/iwfie4CMj209zgkAsYKOqdk0JBiiYyrn5o6
-	HWJPm8emPCK0ny8skkqMKLay4EE4k+v3PlfX7aCtOLk13xBzCZoKHE6zNaU+iIDocPp393wY5SpP+
-	J99gYYUgo2yVC3gKmUZBI7MYbzmSGdok6ZToqNQASNuggJ9Z0dxHCZW6miZwBq6XzNcZNUlME+5Pu
-	ZbybHRdZ5EiTYeLhAGJA==;
+	List-Owner; bh=Ps899dEzhiYumwFR8CcsBEnIts+Pd+Z0COi94w3KKBo=; b=1QJ6BiDxWkpPX2
+	djbKpD0N5/8SBVU2d2youYx+2QFLJlP4x1hutqQqkMkeHon4naiygTldK5+WhxAt9y37s5IKaHlNi
+	xsjkJcgKHxfZyNscWQwXX+xyTz/duqxLe8n9mRJY+y19dlAmSQFzTQQW8gORb8CL7fBcEWFD5YEJ+
+	+wP5zpkLH/Sbdw6vWx4upL4xSAPJ9YKMzJfI2T6I+K49Abmdu4mSfm0YKP0BzxL9jPw+2wJpk509X
+	Fzf556E6R0FdrQoiNrJ58Y0nOR4mxMG2ILHjfmmYqgeVk+llTTs3YL+3hA/E5fgSL39F+hkJB1zt1
+	lqAGutrxBbax3omK9duA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UG-000vpU-1V;
-	Wed, 04 Oct 2023 21:32:56 +0000
+	id 1qo9UJ-000vrb-1h;
+	Wed, 04 Oct 2023 21:32:59 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UD-000vp5-22;
-	Wed, 04 Oct 2023 21:32:54 +0000
+	id 1qo9UG-000vpP-0f;
+	Wed, 04 Oct 2023 21:32:57 +0000
 Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qo9UA-0005RF-Aq; Wed, 04 Oct 2023 23:32:50 +0200
+	id 1qo9UB-0005RF-08; Wed, 04 Oct 2023 23:32:51 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Conor Dooley <conor+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	John Clark <inindev@gmail.com>,
+	Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>,
 	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+	Jakob Unterwurzacher <jakobunt@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Ermin Sunj <ermin.sunj@theobroma-systems.com>,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
+	stable@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Thomas McKahan <tmckahan@singleboardsolutions.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
-Date: Wed,  4 Oct 2023 23:32:41 +0200
-Message-Id: <169645508392.141514.12518327886843465241.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: use codec as clock master on px30-ringneck-haikou
+Date: Wed,  4 Oct 2023 23:32:42 +0200
+Message-Id: <169645508392.141514.933069936235927740.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230906012305.7113-1-inindev@gmail.com>
-References: <20230906012305.7113-1-inindev@gmail.com>
+In-Reply-To: <20230907151725.198347-1-jakob.unterwurzacher@theobroma-systems.com>
+References: <20230907151725.198347-1-jakob.unterwurzacher@theobroma-systems.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_143253_691504_D2E969DD 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231004_143256_245412_B2614053 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,21 +71,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 6 Sep 2023 01:23:05 +0000, John Clark wrote:
-> before
-> ~~~~
-> 0000:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
-> 0002:20:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
-> 0002:21:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
-> 0004:40:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
-> 0004:41:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
+On Thu, 7 Sep 2023 17:17:15 +0200, Jakob Unterwurzacher wrote:
+> From: Ermin Sunj <ermin.sunj@theobroma-systems.com>
+> 
+> If the codec is not the clock master, the MCLK needs to be
+> synchronous to both I2S_SCL ans I2S_LRCLK. We do not have that
+> on Haikou, causing distorted audio.
+> 
+> Before:
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
-      commit: ac76b786cc370b000c76f3115a5d2ee76ff05c08
+[1/2] arm64: dts: rockchip: use codec as clock master on px30-ringneck-haikou
+      commit: 84fa1865edbb3800f3344e2a5bc73c187adf42d0
+[2/2] arm64: dts: rockchip: set codec system-clock-fixed on px30-ringneck-haikou
+      commit: 1e585cd0aad3d491938230318d6d479f09589fd8
 
 Best regards,
 -- 
