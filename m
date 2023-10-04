@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5036E936E7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85343E936E6
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:33:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PbAkrWgPh8Lm3O6YCyueraGtUR/QAnuuNovnCTVnobk=; b=PWulcWPsZRA4K3
-	FpK45fKiY38zr6gnIehCyUWoDPyWYjRwp6jd8WJVHRRbD5nder7FvMY8aC9+Cc3GpI82IWKAcrtuJ
-	0D8S4knn49Rs+fyH90tBiOZgHexYrCP83d1HxEK16WRQNyW5ugFX9crpoZJ2jg8GMisjCra1D2CRn
-	VIPKkmFEZtRO1BNTL0c0o3pDdNzZr6aMoQv6KNpzHd4z5Sm59ga+qlklyY+0pRb67tbByus+207Bw
-	CL59VfSgE/uTpP65GMulGnW3Tk25i22n9JV5sUIBmdre6tVvnca5Sk68fBNDYc55Sfx/MJAz1Xo+I
-	Gud+iqq2nOM5lAM+6mSQ==;
+	List-Owner; bh=NPhMESxvUD5ZVLuIqFoTxxtuYEmfmjZV9AdRBJPdfrU=; b=iI8Lvhxup8ZM/l
+	Mk+NPVjDuYgHA89ottD3NrUu7xGE43rxNyi8QSjRfO3xcV4R4HESLBiXamZfEsY/OfCoYEU+YgAky
+	JlncFdawpr1N5TljW7R9k3Fqdm0UTGGRO32RY0KIV3TNyohkFCTzCSidVOfjYmdLIp4IWy059Pjfd
+	i9V3fOM2XXW0if7dMOYyRUfgi7DMbMRDYENXYDFkzWE1rSFPDgYgqEskH8l09rEYLdu7/gHyeaoY5
+	fBLrKs61FOPgL7rBC/arTxOHCj062uHcgSa5pqZ5dQwZZ5/+afehOtWUSrZKPNUcLWxWBXCHfUf+/
+	aTmnXyY1AbBAOCGyA61w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UK-000vsq-1n;
-	Wed, 04 Oct 2023 21:33:00 +0000
+	id 1qo9UM-000vu2-1I;
+	Wed, 04 Oct 2023 21:33:02 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UG-000vpQ-1V
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Oct 2023 21:32:57 +0000
+	id 1qo9UG-000vpW-34;
+	Wed, 04 Oct 2023 21:32:59 +0000
 Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qo9UC-0005RF-Fq; Wed, 04 Oct 2023 23:32:52 +0200
+	id 1qo9UB-0005RF-Vw; Wed, 04 Oct 2023 23:32:52 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chris Morgan <macroalpha82@gmail.com>,
-	devicetree@vger.kernel.org
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Alex Bee <knaerzche@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	krzysztof.kozlowski+dt@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	jagan@edgeble.ai,
-	conor+dt@kernel.org,
-	robh+dt@kernel.org
-Subject: Re: [PATCH V2 0/3] Add Additional Functionality to Indiedroid Nova
-Date: Wed,  4 Oct 2023 23:32:45 +0200
-Message-Id: <169645508388.141514.14578991143413617261.b4-ty@sntech.de>
+	Johan Jonker <jbx6244@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: (subset) [PATCH v2 0/6] Device tree fixes for RK3128
+Date: Wed,  4 Oct 2023 23:32:44 +0200
+Message-Id: <169645508393.141514.14390917103512726577.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230918173255.1325-1-macroalpha82@gmail.com>
-References: <20230918173255.1325-1-macroalpha82@gmail.com>
+In-Reply-To: <20230829203721.281455-4-knaerzche@gmail.com>
+References: <20230829203721.281455-4-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_143256_511677_6B8E98B2 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20231004_143256_987627_C36328D7 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,25 +68,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Sep 2023 12:32:52 -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Tue, 29 Aug 2023 22:37:19 +0200, Alex Bee wrote:
+> This series contains several device tree fixes which currently prevent
+> the hardware from actually working.
+> Please see commit messages of the individual patches for details.
 > 
-> Update the Indiedroid Nova device tree to benefit from hardware that
-> has recently been enabled in the mainline kernel. This includes
-> enabling the PCI Express bus to activate the RTL8111 ethernet
-> controller, the USB-A 2.0 ports (USB 3.0 still pending), and the ADC
-> controller with the boot and recovery buttons.
+> These patches have been part of the pretty huge RK3128 fix-up series [0]
+> which I've splitted up now, as suggested.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: add PCIe to rk3588s-indiedroid-nova
-      commit: f5fb02c7125e3564aa773f54add37655d09e64f1
-[2/3] arm64: dts: rockchip: add USB2 to rk3588s-indiedroid
-      commit: aee432b50f6e15886bddcb6f92028265db4b254e
-[3/3] arm64: dts: rockchip: Add saradc node to Indiedroid Nova
-      commit: f48a288a4a65bc8c3830b4295afb98101f234412
+[1/5] ARM: dts: rockchip: Fix i2c0 register address for RK3128
+      commit: 2e9cbc4167da3134412ce47e4cdadbfdea30bbff
+[2/5] ARM: dts: rockchip: Add missing arm timer interrupt for RK3128
+      commit: 7e3be9ea299927e6d65242c247eca0a21bc26a58
+[3/5] ARM: dts: rockchip: Add missing quirk for RK3128's dma engine
+      commit: b0b4e978784943c4ed8412dbb475178f8c51ba8e
+[4/5] ARM: dts: rockchip: Fix timer clocks for RK3128
+      commit: 2c68d26f072b449bd45427241612cb3f8f997f82
+
+As Robin mentioned, DT describes hardware not Linux's
+specificalities, so I ignored patch6.
+
 
 Best regards,
 -- 
