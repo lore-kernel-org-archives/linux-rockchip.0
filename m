@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622EEE936E8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF9AE936EC
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jlpDTRg82FF1wJbQqYET5Dwmt4KlYeFrrbEmuwPK+rc=; b=B1cFb40nFiUHWw
-	ouPWZ1yq96yYJnczd/u8dSk3AW01AF70BqSFGxo4x3ZlM+9jMoNMgdfRThJCvZRdudJYlI/NUwmam
-	UZFzuxd2FqWISstjhEprC1rsgx1au9r/43uN3bQ1KlSBGCw+Kz9Zflul9HIvkKiSxUdXRCjYv4dZg
-	l/0IBoforZvxkRgm4EpsjB+o1Yw04YJKQ3gk73alPNQoFanDwi5qvockxL0TS8BQGojJzwlQW6KD+
-	p9ozOzXX7Mf5hdVN+nJwwc/Rc/Sq369Su1Cu6/ZyK/nMVGnN9dqszdpSI1MPkPlGGf3Knh4arYB6l
-	Da/4MMHa/8gX/dvdtrBw==;
+	List-Owner; bh=xCo0/nmAlHEc1VPBFrAdir2HwxXCaTctk8eDUT0t9+c=; b=C3UzldJf0gr41s
+	zGXCKe/jPNFcJMMX+U0iZcvo+Ods217KXThSJ9zkEjhCq5E1Kg2GJ4qvQng4wh+Y6sbkDHaWDMcdC
+	YUjOh8ikDG1p9Lo/pPb+Ue2RxO6KQAQYMU0WZbMiq/iwfie4CMj209zgkAsYKOqdk0JBiiYyrn5o6
+	HWJPm8emPCK0ny8skkqMKLay4EE4k+v3PlfX7aCtOLk13xBzCZoKHE6zNaU+iIDocPp393wY5SpP+
+	J99gYYUgo2yVC3gKmUZBI7MYbzmSGdok6ZToqNQASNuggJ9Z0dxHCZW6miZwBq6XzNcZNUlME+5Pu
+	ZbybHRdZ5EiTYeLhAGJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UM-000vtJ-05;
-	Wed, 04 Oct 2023 21:33:02 +0000
+	id 1qo9UG-000vpU-1V;
+	Wed, 04 Oct 2023 21:32:56 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo9UH-000vqQ-2R;
-	Wed, 04 Oct 2023 21:32:59 +0000
+	id 1qo9UD-000vp5-22;
+	Wed, 04 Oct 2023 21:32:54 +0000
 Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qo9UD-0005RF-08; Wed, 04 Oct 2023 23:32:53 +0200
+	id 1qo9UA-0005RF-Aq; Wed, 04 Oct 2023 23:32:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-kernel@vger.kernel.org,
+To: Conor Dooley <conor+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
+	John Clark <inindev@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 0/2] RK3588 EVB1 PCIe support
-Date: Wed,  4 Oct 2023 23:32:46 +0200
-Message-Id: <169645508389.141514.5769106389673512468.b4-ty@sntech.de>
+	Thomas McKahan <tmckahan@singleboardsolutions.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
+Date: Wed,  4 Oct 2023 23:32:41 +0200
+Message-Id: <169645508392.141514.12518327886843465241.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230918141327.131108-1-sebastian.reichel@collabora.com>
-References: <20230918141327.131108-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20230906012305.7113-1-inindev@gmail.com>
+References: <20230906012305.7113-1-inindev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_143257_789480_3DC5BDD7 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20231004_143253_691504_D2E969DD 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,25 +69,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Sep 2023 16:13:25 +0200, Sebastian Reichel wrote:
-> This enables PCIe network card and the PCIe slot for the RK3588 EVB1.
-> There is one more PCIe lane being used for a WLAN card, but I did not
-> yet get that working.
-> 
-> -- Sebastian
-> 
-> Sebastian Reichel (2):
->   arm64: dts: rockchip: rk3588-evb1: add PCIe2 network controller
->   arm64: dts: rockchip: rk3588-evb1: add PCIe3 bus
+On Wed, 6 Sep 2023 01:23:05 +0000, John Clark wrote:
+> before
+> ~~~~
+> 0000:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
+> 0002:20:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
+> 0002:21:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
+> 0004:40:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
+> 0004:41:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: rk3588-evb1: add PCIe2 network controller
-      commit: 86a2024d95e259c4309ced53242c0db6d993320b
-[2/2] arm64: dts: rockchip: rk3588-evb1: add PCIe3 bus
-      commit: 46bb398ea1d81302e3735087ceb4b5763d5afc29
+[1/1] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
+      commit: ac76b786cc370b000c76f3115a5d2ee76ff05c08
 
 Best regards,
 -- 
