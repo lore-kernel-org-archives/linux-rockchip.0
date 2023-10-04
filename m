@@ -4,49 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA95E936E6
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66BD4E936E6
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Oct 2023 21:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fQPZrnn5erTRjrIb9OiwSduaG7X3zzVoDdD+7tsDoNs=; b=GLQz4Twsi897Bm
-	Yy2vBt336B1huQbFculJM//DKuyjCq7WDH9aRHWieM13WA4fYeszH2+mFIXNQYKHePJumZIIhrhp1
-	zIm9c4s+e3ttKgszsxB6sb46ETcO5GJY6xpr+2jEL9gGFOWUx+9iBn3KTm7ZPglbaFrW1o5h0pK74
-	2CYQSgGkp7d5UiaRCK26PWDO/tqSgQ6OWXZt/nh1YuHlf8GSp2jXcCjSQ4DHqmKV51B6MVgNTdb3i
-	bFVSna43m3hFKIoGoVOsv6egyprrXF+RumdcySLeM7Yk0lDIj6+K96ofENrymr1TAqX7Xiv9UNbL7
-	FuLnaowkns9KXjufGi7w==;
+	List-Owner; bh=gy0ChZGg9BYJtPmRIQuWPEW+v2cxMXI6mvVdaZU8ujs=; b=CDXYUlUZnr7pUR
+	nO01y5r8vYIGP8F29KUzGXTIPXYsD9Hte+A6PjcrjL5bx/IPEGtKy6uyCN1JH6a8SnZr++Z0fRwvK
+	T6wqP7iYaIfhCW0MoNF4Sup0GAh94SQOY/IMicy5jC/BytR41wx/Sn/wam7gmK3gMkWh9G7exaXSh
+	N1krYbrI7WXpqMlVfV7ZCDjaFUDQh3/6Ol8n3xqXe/ylr4eP2qqP2XDx82yq2T7VUP0MClBkkzoQg
+	hlJVrNe0riXt8iIzuxdpCahlfL8sgKFzdpxSxrsI/Wo/M+iBYXWSGyOEEel3Yk1ogf+zpOT0WGbVU
+	WaEm0TVkbegnGI66djQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo99N-000uVk-1p;
-	Wed, 04 Oct 2023 21:11:21 +0000
+	id 1qo9HR-000vCV-32;
+	Wed, 04 Oct 2023 21:19:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qo99J-000uVK-0n;
-	Wed, 04 Oct 2023 21:11:19 +0000
+	id 1qo9HN-000vBK-1d;
+	Wed, 04 Oct 2023 21:19:38 +0000
 Received: from i53875a3c.versanet.de ([83.135.90.60] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qo99B-0005Kh-FC; Wed, 04 Oct 2023 23:11:09 +0200
+	id 1qo9GZ-0005NJ-Hp; Wed, 04 Oct 2023 23:18:47 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 10/17] pmdomain: rockchip: Move Kconfig option to the pmdomain
- subsystem
-Date: Wed, 04 Oct 2023 23:11:08 +0200
-Message-ID: <38558074.10thIPus4b@diego>
-In-Reply-To: <20230914111811.586668-1-ulf.hansson@linaro.org>
-References: <20230914111811.586668-1-ulf.hansson@linaro.org>
+To: broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org,
+ joel@jms.id.au, andrew@aj.id.au, florian.fainelli@broadcom.com,
+ rjui@broadcom.com, sbranden@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com,
+ olteanv@gmail.com, neil.armstrong@linaro.org, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+ conor.dooley@microchip.com, daire.mcnamara@microchip.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
+ venture@google.com, yuenn@google.com, benjaminfair@google.com,
+ linus.walleij@linaro.org, Li Zetao <lizetao1@huawei.com>
+Cc: lizetao1@huawei.com, linux-spi@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH -next 25/25] spi: rockchip: Use helper function
+ devm_clk_get_enabled()
+Date: Wed, 04 Oct 2023 23:18:45 +0200
+Message-ID: <16634210.geO5KgaWL5@diego>
+In-Reply-To: <20230822131237.1022815-26-lizetao1@huawei.com>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230822131237.1022815-26-lizetao1@huawei.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231004_141117_287210_5B7CDF40 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20231004_141937_548318_AF9EE659 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,15 +76,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 14. September 2023, 13:18:11 CEST schrieb Ulf Hansson:
-> The Kconfig option belongs closer to the corresponding implementation,
-> hence let's move it from the soc subsystem to the pmdomain subsystem.
+Am Dienstag, 22. August 2023, 15:12:37 CEST schrieb Li Zetao:
+> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_enabled() when driver enables (and possibly
+> prepares) the clocks for the whole lifetime of the device. Moreover, it is
+> no longer necessary to unprepare and disable the clocks explicitly.
 > 
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: <linux-rockchip@lists.infradead.org>
-> Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 
 
