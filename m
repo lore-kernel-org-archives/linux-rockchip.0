@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A60EE92733
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 19:46:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610ACE92734
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 19:47:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5+ktJMG5094zI/1RbRQV+uFPTohdGV+VEjeltjgxSd4=; b=033rSpZpuzLGKx
-	jeWLyK1mGc+25yiNrNReBmdoen+fzfGyh6YunQcPtfSeTlNd6K777Rdhjs/4uRI4D7piz4zC4sUSi
-	/588EaLYneG5vTj1ylElcNJLi1J6OeSoy8dbUEO18seKcdJhnx7XFG6fCH7fkF805tkl4pH7t8G5G
-	4M0rYU3Pq1IuXVYyXagDgxVuDnRIYZ0egqNtPktkdLlBgBep5BxlMPqnSGeZfcQ455aWkegtT3uXG
-	DLxEhH9v2i2y3XRnfF2KEYjF21uCNBo+7n1vAFoeC/MtGwdLaBPF0uoeC7sE+OdtoTLjU89/xo7fu
-	H1oxBPIzMjP0pmrRJdSw==;
+	List-Owner; bh=LcSLvNFCf/EQoqa5fsvfyPma/Oyl5Gl5yLLxJj6fFS4=; b=VXgMu4nOEq8/bw
+	sOWX9DvxGGrkCN1D50U5NQW68SB60Q8osfX4Yi2eqJVUU0d3tvhu8sQDC/+menMcFjFypeAFeYLHD
+	x7dX7I4edog4VAsfMN2BJT1vc5ubWTax51k1wpGUPspY9Cyd1rVmSc+GLk5P/9Z69B1+KNjSs92oZ
+	TrsN10Ghj44zSeGaAGV6VCiyqDYti2IAm8I/JweYKI0nlPn/NIQB3EP/4FIjDEL1J6nEx3mbC28e3
+	f5WZYznjHWEHU/d/hDlbIzV8Ua7EcC7tuCcHsfiMLG4B9ezb0TQO7iSCNeC41FDoLuPXBBVODaYL4
+	7bD5tOvG43sokvR6izbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUIO-004Oby-2A;
-	Thu, 05 Oct 2023 19:46:04 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1qoUJM-004Olp-2q;
+	Thu, 05 Oct 2023 19:47:04 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUIL-004Oa7-0C
+	id 1qoUJJ-004OkG-2S
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Oct 2023 19:46:02 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9b6559cbd74so258878066b.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Oct 2023 12:45:58 -0700 (PDT)
+	Thu, 05 Oct 2023 19:47:02 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9ad810be221so241940966b.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Oct 2023 12:47:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696535157; x=1697139957; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1696535219; x=1697140019; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Ik9YL8VnNpg1lJ/vbd7jFsLiLi0RhkEzGwr++CWAbHQ=;
-        b=ru6/yybB9lz2UtFdG11i0bJboj9ysiRvdWYQwvvma0FwMFLaTorIfwCblNTBOFQ7Nj
-         Dz6firabg/EIdHfn+UdoDHXbfEvAMyFkXOR7A+uVRfZ82zc3Xgavr7qKvp3uyOLJT/Ue
-         Jh5AU4IbmLlEts68EZXs8aobs/SbYavOxEkT3wusxwzOInFVjRcBINKW3yNTpJaMbwk2
-         sqc2pyyGZI9qKNY+PEoqwBwV2Z4wbXhIdUub/F8lf+6GlNjyt1lpOtKrXVLywgULPpt4
-         iWT2nxeVOxI1RxvE6e1UG8s0jA/lsL8x6iMUsYvWdKnSqHVHb3BmvNOpgbFXOxGU7wZK
-         XlgA==
+        bh=3Dt9k8PRGqt54iiTeBVK6B2nTooRkAx1cay9o3WY25Q=;
+        b=ebw0gR/w6Z0VxW2oSfjJAG0z3cRSQLYejv4dVrW/i2VZCfu7SozJgnInJ0ofDajdth
+         E0na3WMIiL2RnsxemJhxqsLeBKkz5apaBX0SpafF5jzG6vm8fnKjPIR+2gZ2dLXQnlGN
+         0D0tc2R6n+zCPviBP9lTb4QDI0EOw0CNSN+3R115zjKnpLW5FbhiCKwKD5yof8H5Gy3f
+         9r2t1C+ZqdO3H57LdX6sgeXJ3pqjT6nxckt/U78NRzhWyOMA46XyvkCpm/S7yaqcGhvG
+         BWqpf4eB7t9kCyod56GB/A/S4R64jNNOXOxJletXfAWcgIr78jxb5T+IFVhpcOHvx+tP
+         xtYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696535157; x=1697139957;
+        d=1e100.net; s=20230601; t=1696535219; x=1697140019;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ik9YL8VnNpg1lJ/vbd7jFsLiLi0RhkEzGwr++CWAbHQ=;
-        b=PT/fvZECQYcbYtaRCIRRnaBlFhalxcFDJ9M07rF6hTo9AFM+o9QtMU3rwbChdnFS4T
-         VlxlMjAccnxRYtJQc4F7pH+mQsq8IUWYBiCv1n7oFS89PIs9IAqdmL3/lqxc8JorXv7L
-         H31p42Il85sHbbzR0aFWCRiWGRIKbEhV4ssMONWZa9ThMCiQA+Oj0091CMe80jRTF4tT
-         nCH4eNpQ35aU8otL4G9NJCh3c+XLtVn9uQshbbiBZjy5KODaVJVMSfiyawhL7lGxbnm6
-         J+Y1j8rxnZwVy+siD6koj2bz5cmYmULy4RErL1nv3bZVI4H0mnDb/E1+G+JNlW4buV0I
-         fBhw==
-X-Gm-Message-State: AOJu0YzxYt2+62nubZqqL8+onuaziwZo9ZubXbTaG8WmAXWaMWo5fBo3
-	X8nPmr9oGSeVDXJ6XHFlitnJuw==
-X-Google-Smtp-Source: AGHT+IHMWpBKneJvc9b9ZE30LKT+kjlsnIAA831v7xOsC61FcEvROazvXapZ3Yh/FlOK+oT/ZEZzUg==
-X-Received: by 2002:a17:906:844a:b0:9ae:73ca:bbae with SMTP id e10-20020a170906844a00b009ae73cabbaemr4882997ejy.62.1696535157416;
-        Thu, 05 Oct 2023 12:45:57 -0700 (PDT)
+        bh=3Dt9k8PRGqt54iiTeBVK6B2nTooRkAx1cay9o3WY25Q=;
+        b=mwf4y37JuogKO/uAeasbruxSxhnAwE8ycvYu3GFFEsQ1gAzOSzfH+DdQZUqBDzvdTc
+         tLMiFNpiz/RbuUHvz0QkwAl9cPOKw0ACnBYbjdccg8vOvx/LvbnNkkfYjbh+/hfYNDdj
+         vQ6LirxO9873UHi/39euNcqLm75x4TCE9P0b09RgtwdpoAkhykHYp9qf8akYnN2fvxSr
+         ugLUNMi1t1rz0laRDsOGK6cWGztUr/k69UwWdJzOEitslJrHyN5yU5M/r+m0IRR4Ih+o
+         cftWv7NVzMR6QWBkeLW00IwswCMzdyQ5Lu0SksA4zUfIuZe7ofbshNnbbEKPl9fMu+i2
+         YGFA==
+X-Gm-Message-State: AOJu0YwhatFuvOteVK2OnsyW72TfDUHBB0A6M3M75xtSW2PjtP1Ir/yP
+	P5ppYQdJjWoQYdYHtVQz4cSwmg==
+X-Google-Smtp-Source: AGHT+IExuH8kOzj/dTZpci/l66+zbVuI1Q4ansN6TEuNcT5VkMIxS+P4Zhp6GYS72DXTGfUPCsQq5A==
+X-Received: by 2002:a17:907:780d:b0:9b6:4df9:e5b5 with SMTP id la13-20020a170907780d00b009b64df9e5b5mr5792518ejc.61.1696535218928;
+        Thu, 05 Oct 2023 12:46:58 -0700 (PDT)
 Received: from [192.168.1.197] (5-157-101-10.dyn.eolo.it. [5.157.101.10])
-        by smtp.gmail.com with ESMTPSA id jw5-20020a170906e94500b009ae6a6451fdsm1651578ejb.35.2023.10.05.12.45.55
+        by smtp.gmail.com with ESMTPSA id jw5-20020a170906e94500b009ae6a6451fdsm1651578ejb.35.2023.10.05.12.46.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Oct 2023 12:45:56 -0700 (PDT)
-Message-ID: <6bc60e4a-ddf1-4125-ba27-53ab55a553d2@linaro.org>
-Date: Thu, 5 Oct 2023 21:45:55 +0200
+        Thu, 05 Oct 2023 12:46:58 -0700 (PDT)
+Message-ID: <86886ecb-dd39-49fb-a575-9e9bf303a8b1@linaro.org>
+Date: Thu, 5 Oct 2023 21:46:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] dt-bindings: media: Document STM32MP25 VENC video
- encoder
+Subject: Re: [PATCH 5/7] arm64: dts: st: add soc & rifsc structure to
+ stm32mp255
 Content-Language: en-US
 To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
@@ -83,7 +83,7 @@ To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
  linux-rockchip@lists.infradead.org
 Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 References: <20231004091552.3531659-1-hugues.fruchet@foss.st.com>
- <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
+ <20231004091552.3531659-6-hugues.fruchet@foss.st.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,11 +129,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
+In-Reply-To: <20231004091552.3531659-6-hugues.fruchet@foss.st.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_124601_097853_861B5CBF 
-X-CRM114-Status: UNSURE (   5.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231005_124701_804508_A232B265 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,11 +150,28 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 04/10/2023 11:15, Hugues Fruchet wrote:
-> Add STM32MP25 VENC video encoder bindings.
+> Add soc & rifsc structure to stm32mp255.
 > 
+> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+> ---
+>  arch/arm64/boot/dts/st/stm32mp255.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/st/stm32mp255.dtsi b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+> index e6fa596211f5..4f2b224fe077 100644
+> --- a/arch/arm64/boot/dts/st/stm32mp255.dtsi
+> +++ b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+> @@ -6,4 +6,8 @@
+>  #include "stm32mp253.dtsi"
+>  
+>  / {
+> +	soc@0 {
+> +		rifsc: rifsc-bus@42080000 {
 
-I don't understand why this binding is separate from video decoder.
-Merge them.
+
+This change on its own makes little sense. We do not add empty
+placeholders...
+
 
 Best regards,
 Krzysztof
