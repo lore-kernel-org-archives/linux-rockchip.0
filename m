@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF94E92733
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 19:45:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A60EE92733
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 19:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5+fMmiHWZgFicNhyIuU868qgXicIzNWghJNwWonNib4=; b=PPpbX6ZmgRPfMW
-	IoA5Q0LLlpuesU/iIpECQL3A0bgk5zWxVhFYiGzN0Qt6g6vYyKXC28g3beFz0MWW+1NaACFlZ0Xd6
-	o1b4iS8EbAKNZY0/73JMnu2FOuaMo9K7fEYwofrhL0jwxTj7cx+GhwmLbCbrFexx0vcOPLb+R0UyJ
-	ZtTBiq6+aoNlHIyNd+1vRJXhMQRfR5pKxDO75lIw0qxTO3y4YKjMv9lz31Dm7AcKazvktTPxmFznX
-	0/vQCGE4XTQLztS7ootoHVPDzN1VIx4Ea/pvQln/4Q6O3PI8fWrXIc2bOvb0IromSydsBAM28CBso
-	6rR8l/vCCR/Wsf+L/9uA==;
+	List-Owner; bh=5+ktJMG5094zI/1RbRQV+uFPTohdGV+VEjeltjgxSd4=; b=033rSpZpuzLGKx
+	jeWLyK1mGc+25yiNrNReBmdoen+fzfGyh6YunQcPtfSeTlNd6K777Rdhjs/4uRI4D7piz4zC4sUSi
+	/588EaLYneG5vTj1ylElcNJLi1J6OeSoy8dbUEO18seKcdJhnx7XFG6fCH7fkF805tkl4pH7t8G5G
+	4M0rYU3Pq1IuXVYyXagDgxVuDnRIYZ0egqNtPktkdLlBgBep5BxlMPqnSGeZfcQ455aWkegtT3uXG
+	DLxEhH9v2i2y3XRnfF2KEYjF21uCNBo+7n1vAFoeC/MtGwdLaBPF0uoeC7sE+OdtoTLjU89/xo7fu
+	H1oxBPIzMjP0pmrRJdSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUHq-004OV0-3A;
-	Thu, 05 Oct 2023 19:45:30 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1qoUIO-004Oby-2A;
+	Thu, 05 Oct 2023 19:46:04 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoUHm-004OTL-2F
+	id 1qoUIL-004Oa7-0C
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Oct 2023 19:45:29 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-533d6a8d6b6so2517183a12.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Oct 2023 12:45:24 -0700 (PDT)
+	Thu, 05 Oct 2023 19:46:02 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9b6559cbd74so258878066b.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Oct 2023 12:45:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696535123; x=1697139923; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1696535157; x=1697139957; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=iljXuYUAjELF3JTZfU540yBCvcXAVIxHWaJlcxhjXfE=;
-        b=hJZfHAaSlLOVqMEYobiVZep5vCb9JZGjG7YOjKMfzTtly9Kc6tNAkaubktKVfpo1dC
-         GvyuHnVEo+7xBIybudg4T05FKF01GjWN+jmAsU6rACD9NgD1fKdrIytZwxS+sVXI+fcf
-         ESbuUSvQM2NDKS+MUzfU2Zc7aFK0GYnhgtc3hdafjBERoSxo8y9ZZ5GIatmr0arlrOst
-         gpwC7tPLEO0yC1HT1B/GwYQ0TazZHoKkQRF55/tk4Uq5RoTd7alZxCfR0K4jNvCsZkEi
-         ENQrKmT6xmBp8/CK/mKbWdwzKEBn+3eBqt5x5TR1zL6BqEVvJkVKVIzFgvU6NVT1kIxY
-         5kmg==
+        bh=Ik9YL8VnNpg1lJ/vbd7jFsLiLi0RhkEzGwr++CWAbHQ=;
+        b=ru6/yybB9lz2UtFdG11i0bJboj9ysiRvdWYQwvvma0FwMFLaTorIfwCblNTBOFQ7Nj
+         Dz6firabg/EIdHfn+UdoDHXbfEvAMyFkXOR7A+uVRfZ82zc3Xgavr7qKvp3uyOLJT/Ue
+         Jh5AU4IbmLlEts68EZXs8aobs/SbYavOxEkT3wusxwzOInFVjRcBINKW3yNTpJaMbwk2
+         sqc2pyyGZI9qKNY+PEoqwBwV2Z4wbXhIdUub/F8lf+6GlNjyt1lpOtKrXVLywgULPpt4
+         iWT2nxeVOxI1RxvE6e1UG8s0jA/lsL8x6iMUsYvWdKnSqHVHb3BmvNOpgbFXOxGU7wZK
+         XlgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696535123; x=1697139923;
+        d=1e100.net; s=20230601; t=1696535157; x=1697139957;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iljXuYUAjELF3JTZfU540yBCvcXAVIxHWaJlcxhjXfE=;
-        b=bXdVfRWUo7Eqx8ryx0M3VPxrVR6jzkRPz9gJWlkPJkOvmDFKtodW0z1aykYin2toVW
-         c+7srqqgPpDkxjvqW+AP/96Dw0cwUfwMO42LIjaV1m0WkLTeqIyDnIExRkd8aIpyHqXH
-         7w6TOYJMpHFIEh2zOiTI68yJPmID0FRNPIKJ6IFeLjBECYjF3vz/2jwG0IkAWYbyrISp
-         /E3kxYk86aojyzwCBC/dI+F0tC56ykVgfbUF2IVeR6NB34Zb0kUeSTlBuXxx8HMdNpR1
-         g5KmOv+5r5rk7oGGYGkujvlIR+JmorhqVyHnRlUHv0Qizjo1ruX3M5UbaKRLSA8IvZRF
-         1ZMA==
-X-Gm-Message-State: AOJu0Yxe4E7NyHqT4CpBI5Y2lVQ+BTXO9rB14vWV7+RqV8BO6ajFo56k
-	FdTChVtaUDp6DsILX+0EM9FcSg==
-X-Google-Smtp-Source: AGHT+IFYWezR6E7QYDCKulrXN21ehyHEbyujbkBa6odFyVFazs2vbFMzKlAnOs2zqFt3/Ql5EY0S3A==
-X-Received: by 2002:a17:907:7ea0:b0:9a5:9038:b1e7 with SMTP id qb32-20020a1709077ea000b009a59038b1e7mr7179350ejc.36.1696535122861;
-        Thu, 05 Oct 2023 12:45:22 -0700 (PDT)
+        bh=Ik9YL8VnNpg1lJ/vbd7jFsLiLi0RhkEzGwr++CWAbHQ=;
+        b=PT/fvZECQYcbYtaRCIRRnaBlFhalxcFDJ9M07rF6hTo9AFM+o9QtMU3rwbChdnFS4T
+         VlxlMjAccnxRYtJQc4F7pH+mQsq8IUWYBiCv1n7oFS89PIs9IAqdmL3/lqxc8JorXv7L
+         H31p42Il85sHbbzR0aFWCRiWGRIKbEhV4ssMONWZa9ThMCiQA+Oj0091CMe80jRTF4tT
+         nCH4eNpQ35aU8otL4G9NJCh3c+XLtVn9uQshbbiBZjy5KODaVJVMSfiyawhL7lGxbnm6
+         J+Y1j8rxnZwVy+siD6koj2bz5cmYmULy4RErL1nv3bZVI4H0mnDb/E1+G+JNlW4buV0I
+         fBhw==
+X-Gm-Message-State: AOJu0YzxYt2+62nubZqqL8+onuaziwZo9ZubXbTaG8WmAXWaMWo5fBo3
+	X8nPmr9oGSeVDXJ6XHFlitnJuw==
+X-Google-Smtp-Source: AGHT+IHMWpBKneJvc9b9ZE30LKT+kjlsnIAA831v7xOsC61FcEvROazvXapZ3Yh/FlOK+oT/ZEZzUg==
+X-Received: by 2002:a17:906:844a:b0:9ae:73ca:bbae with SMTP id e10-20020a170906844a00b009ae73cabbaemr4882997ejy.62.1696535157416;
+        Thu, 05 Oct 2023 12:45:57 -0700 (PDT)
 Received: from [192.168.1.197] (5-157-101-10.dyn.eolo.it. [5.157.101.10])
-        by smtp.gmail.com with ESMTPSA id jw5-20020a170906e94500b009ae6a6451fdsm1651578ejb.35.2023.10.05.12.45.20
+        by smtp.gmail.com with ESMTPSA id jw5-20020a170906e94500b009ae6a6451fdsm1651578ejb.35.2023.10.05.12.45.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Oct 2023 12:45:22 -0700 (PDT)
-Message-ID: <d5dc9b70-00b5-4bda-8fe9-9438f19ecba6@linaro.org>
-Date: Thu, 5 Oct 2023 21:45:19 +0200
+        Thu, 05 Oct 2023 12:45:56 -0700 (PDT)
+Message-ID: <6bc60e4a-ddf1-4125-ba27-53ab55a553d2@linaro.org>
+Date: Thu, 5 Oct 2023 21:45:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/7] dt-bindings: media: Document STM32MP25 VDEC video
- decoder
+Subject: Re: [PATCH 3/7] dt-bindings: media: Document STM32MP25 VENC video
+ encoder
 Content-Language: en-US
 To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
@@ -83,7 +83,7 @@ To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
  linux-rockchip@lists.infradead.org
 Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 References: <20231004091552.3531659-1-hugues.fruchet@foss.st.com>
- <20231004091552.3531659-2-hugues.fruchet@foss.st.com>
+ <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,10 +129,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231004091552.3531659-2-hugues.fruchet@foss.st.com>
+In-Reply-To: <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_124526_743854_62E95092 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20231005_124601_097853_861B5CBF 
+X-CRM114-Status: UNSURE (   5.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,83 +151,11 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 04/10/2023 11:15, Hugues Fruchet wrote:
-> Add STM32MP25 VDEC video decoder bindings.
+> Add STM32MP25 VENC video encoder bindings.
 > 
-> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
-> ---
->  .../bindings/media/st,stm32mp25-vdec.yaml     | 56 +++++++++++++++++++
->  1 file changed, 56 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml b/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
-> new file mode 100644
-> index 000000000000..cf41f704113f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
-> @@ -0,0 +1,56 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/st,stm32mp25-vdec.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: STMicroelectronics STM32MP25 VDEC video decoder
-> +
-> +maintainers:
-> +  - Hugues Fruchet <hugues.fruchet@foss.st.com>
-> +
-> +description:
-> +  The STMicroelectronics STM32MP25 SOCs embeds a VDEC video hardware decoder
-> +  peripheral based on Verisilicon VC8000NanoD IP (former Hantro G1).
-> +
-> +properties:
-> +  compatible:
-> +    const: st,stm32mp25-vdec
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-names:
-> +    maxItems: 1
 
-This must be specific or just drop (little use of names for one entry)
-
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    maxItems: 1
-
-Same problem.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +  - clock-names
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    vdec: vdec@580d0000 {
-
-Drop label. Node name: video-codec
-(assuming this is video coder/decoder)
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
+I don't understand why this binding is separate from video decoder.
+Merge them.
 
 Best regards,
 Krzysztof
