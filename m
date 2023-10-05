@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E0FFE92706
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 14:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D32E92706
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 14:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4YDoT98fRxmA7xfh8ylFPk7wI5PoEKPR1+llT4mjbJM=; b=r4x6yy7nTRcO9h
-	ibZWUPrXcHfERDluxMji3yAMKGQaO6bYhYD9rVEhjVNIebemaG3pG28Qm/kLBe2KuANsCAYi/7XJ/
-	9bbE4PCsX8k49xuMalAviPx366uyDo5x5sTAyPfwVGiqNt/t+BKA4HQBq3IlfJbE2Z9CGpyJhXHSn
-	q2UAqHQVdJ4m6+QWBoL9a14G/QLXEEiygGIespvrgDXkB6stE84FFZwqj/nYTSH7vjR3CN2Ix+UYF
-	TXH4TugAikcbFX7G7WIEwGV+mhIviG/jXkxpGSZRByeeNcCvPkshHqpZRm4vit+I1NmC9sXL7AuRW
-	q2IuMdNFFxlHHX7c1rBQ==;
+	List-Owner; bh=+ieLsPFgRI8V7J6HtuYCVuL+hG7O4pFdg0HeeJ/MGFI=; b=vLAF+MyGEnvoZJ
+	yUvEKbYvZk9Mm3LoNU1SfSsxmuDdwB4rIcaU3sZ7oq8O8bPB5rZFqcs00YV4ohmK2b3bsrf9d8jaL
+	+PO2YBqHRT1NsA04X3SUdr4GiDuzUD6Gc7Jj0qi3Fckrq95zeQ8KMhFqqHlY+SbZ6fLUAwBuhXIS8
+	GR92jgX5Mi4fiLYg9b9imqbPEOy1fIVrbvai3DqoLoLItrzM5OTRTq6ZZcUTtYxWx/lu29ZHwv4i3
+	1LRMJNlw+Hoyrf6OuxHaZtc6Rpqc+zLeSXEJkRm2PbgfybuBavFT9C15jM6ygg6mgtI3e8ocwCjB9
+	7Fb75jNDSJwMGIIxlDEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoPhE-003nje-2e;
-	Thu, 05 Oct 2023 14:51:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qoPkF-003o8Y-0r;
+	Thu, 05 Oct 2023 14:54:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoPhB-003niS-0v;
-	Thu, 05 Oct 2023 14:51:22 +0000
+	id 1qoPkB-003o7U-2k;
+	Thu, 05 Oct 2023 14:54:29 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4c53:5fd0:f25b:b0dd])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFC116607332;
-	Thu,  5 Oct 2023 15:51:19 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C73D66607331;
+	Thu,  5 Oct 2023 15:54:23 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1696517480;
-	bh=8E9tatO7XF3qA6yFPN13hUYBUv5FfV7BEJl+01O2HNE=;
+	s=mail; t=1696517664;
+	bh=F9sFnhe+57/E8C+QJ0cI/glDDOJt5cWzzhvbcEd44Ns=;
 	h=From:To:Cc:Subject:Date:From;
-	b=ZhaVFHLeSCV0wkWBCRlcchb7HcokXa6OUJGAtEevwIq7LrpHacYltDGrk8rRFcCDU
-	 oBNbqJu4I/bqQau24FMLCp7P9+DVl+khhcRIw5R415LWXRUaKY0YaRwEUnDTn6xMEc
-	 4zXk/w5A/ulPVFprS1OyAHIXngyxO9+WW70F0LvkXLDNWFaXlbhn2pKKmLdMk91S2N
-	 jnjO1lhQnm80EFbclxjG/jKQNe1DY28dnuozgRS07GMgiUJYZxdNSAqbssDpCQVTyz
-	 6r1DoC1Z1aBpejtZmfsxzeO2pijk9g6LhTLpzL1ZIGmz9K+NM1upwYcfcUAbJkSheY
-	 UIqUb4apP6NpA==
+	b=lY3vUzcEyIqRx98mguxeDEJLRoc2xL7klMc1LBGuC653yii12PciBPF5PEimHUnbR
+	 MKPLkJEtS9ccGR1SKXhg0b2dfyzqozJ89GR5vozII0IcelwEKmVHWAM9jsDfP3NglF
+	 Cw6pv4hSEb6fWn+yZKJs3VeB4WChmm1l9iXCb7qcarQddV7tMhMP9ncnYQ1S66tKH6
+	 FLPSaD6ze4mLAQGVHrW/yadqJJ5KxrmrYU9Bo+RizCH7Yz9NlRvQMBUa41czZFGZ7r
+	 K1bxll2ZGNLL3Skd7+h6FMCW9AqXSwgcSGRrCyG7KBpHcGKdSpCdZ+eHnr49y1EpOn
+	 w12VoIzIUY0zg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org,
-	heiko@sntech.de,
-	hverkuil-cisco@xs4all.nl
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH] media: verisilicon: Fixes clock list for rk3588 av1 decoder
-Date: Thu,  5 Oct 2023 16:51:16 +0200
-Message-Id: <20231005145116.169411-1-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: rk3588is: Add AV1 decoder node
+Date: Thu,  5 Oct 2023 16:54:20 +0200
+Message-Id: <20231005145420.169594-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_075121_456837_F3727559 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20231005_075428_036945_FE016F6D 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +80,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Mainlined RK3588 clock driver manage by itself the dependency between
-aclk/hclk and their root clocks (aclk_vdpu_root/hclk_vdpu_root).
-RK3588 av1 video decoder do not have to take car of it anymore so
-remove them from the list and be compliant with yaml bindings description.
+Add node for AV1 video decoder.
 
-Fixes: 003afda97c65 ("media: verisilicon: Enable AV1 decoder on rk3588")
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 816ffa905a4b..f97527670783 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -648,7 +648,7 @@ static const char * const rockchip_vpu_clk_names[] = {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 5544f66c6ff4..835e66d85d5f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -2304,6 +2304,20 @@ gpio4: gpio@fec50000 {
+ 			#interrupt-cells = <2>;
+ 		};
+ 	};
++
++	av1d: av1d@fdc70000 {
++		compatible = "rockchip,rk3588-av1-vpu";
++		reg = <0x0 0xfdc70000 0x0 0x800>;
++		interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vdpu";
++		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++		clock-names = "aclk", "hclk";
++		assigned-clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++		assigned-clock-rates = <400000000>, <400000000>;
++		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
++		power-domains = <&power RK3588_PD_AV1>;
++		status = "okay";
++	};
  };
  
- static const char * const rk3588_vpu981_vpu_clk_names[] = {
--	"aclk", "hclk", "aclk_vdpu_root", "hclk_vdpu_root"
-+	"aclk", "hclk",
- };
- 
- /* VDPU1/VEPU1 */
+ #include "rk3588s-pinctrl.dtsi"
 -- 
 2.39.2
 
