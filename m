@@ -4,51 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03EDE9270D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 15:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D831BE772A0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Oct 2023 16:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/AJswCWulU0jzbFVWgxbY36PH0JqaC4ppOO55NqjL8U=; b=JcubNYxRBf8g++
-	4Q0Iw74j1AgMM36I+RW8anJ0cVIrMsThdBH0mQM8HiAmtA2KUozHImzfkgfXy6DjQHXiR1vidTHpr
-	n4O1Rp8pDY3jkLpqHORB+uzwF0+QZWUvaq6D0VZVX3yoajqAu2LutRlkTVjKbQZ81KH/uSFjeKGBR
-	0y8k6pYa+xTbu5Dbw3aEfcsy/gvxR6bBeUfvWi+/TavGhcAuXDq/poFSGC4UnfW8/cambjgUGrNvc
-	p+rKUZyKkEuVEXncxhBUIdu7e46MbNiLWOnUog3MFrT8xoJ/N5pXY9LzQ+N2ff7hxSn+D9CiVW0Je
-	f8QO790vpC0l/9nMV+WA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/2nq/pcmFOre3Jh5qg4bWg6wC6po//c1syx76jFj1nw=; b=Y5oS0p8r3kEhCg
+	W841AYoK+pI7TEUTXeNJ4rx7k12es5zQ5iGlU5CRTc66BWW64WF33fZiJb73IiZ1jkXfJEhSlxnQq
+	wAMCuXUP/cCpu8+IVSq/nNdgfdDF5Y2D6S4/C0YhBD7OpcgY3OUAPWxwj56NzdCEVPRPB3MMIvZzX
+	eHcQk1F43rix8/OY35gj/A6AF1qiG67N0Z1LAn72oUOLDPhd3q0rY7O22BCSKUvJRKlralieeKPbi
+	e1La2DjfeYR2dByJD4XeyJLVlx3S/xR9a71+9frvs3bjGLUls6B0D0ut0PWAWJ2Rik45VaStvVhUs
+	EyPF4uZrKTCNbzday4kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQVx-003vPG-03;
-	Thu, 05 Oct 2023 15:43:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qoQvW-0040Ve-2K;
+	Thu, 05 Oct 2023 16:10:15 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoQVt-003vNr-32;
-	Thu, 05 Oct 2023 15:43:47 +0000
-Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qoQVr-0006gu-Jp; Thu, 05 Oct 2023 17:43:43 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3588is: Add AV1 decoder node
-Date: Thu, 05 Oct 2023 17:43:42 +0200
-Message-ID: <8278535.T7Z3S40VBb@phil>
-In-Reply-To: <531ea6cc-83b5-4c88-90a3-576e2e38bf80@collabora.com>
-References: <20231005145420.169594-1-benjamin.gaignard@collabora.com>
- <2298521.ElGaqSPkdT@phil>
- <531ea6cc-83b5-4c88-90a3-576e2e38bf80@collabora.com>
+	id 1qoQvQ-0040U7-2R;
+	Thu, 05 Oct 2023 16:10:11 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4c53:5fd0:f25b:b0dd])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E8665660733A;
+	Thu,  5 Oct 2023 17:10:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1696522204;
+	bh=MS3ouzfxPge6VQw34LqgJIvXVcUvybR31bUNy63VMFE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=UvRfEuBrzq3bFekdh91Yo8rKZQeI9iC3Ym2AgINk2TWrzuYDtFjVoTWtNK6Eyh8ej
+	 xC7DoMMlRR2r15aYl8MLCaIdeIGECTQu9RneHGeY4A+8f8ZeCs3j4TALNxb3xwPHNu
+	 66GJDJA6zFjp2LS3KaAERz+tIejMrLsqgcUKj/8Yt6t6COg4TdJOG7Mdp4bzRs8LCR
+	 uXe2HtJFr+qVUgNpjgVFngFyGy0kc+lx/Vq0AWc4Svp0gPGFfyceHbKdILR31zym1a
+	 VvRh5aPrUH/Q/K8bB28Ss+qLo8CKO8zHnaSL3zeBmQETcOxYRv/CjnAoD+SoyOROrT
+	 fe6IKSv4N0jSg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v2] arm64: dts: rockchip: rk3588s: Add AV1 decoder node
+Date: Thu,  5 Oct 2023 18:09:57 +0200
+Message-Id: <20231005160957.269202-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231005_084346_005301_C7D6073C 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20231005_091008_922642_BFD9791A 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,50 +75,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 5. Oktober 2023, 17:39:18 CEST schrieb Benjamin Gaignard:
-> =
+Add node for AV1 video decoder.
 
-> Le 05/10/2023 =E0 17:30, Heiko Stuebner a =E9crit :
-> > Am Donnerstag, 5. Oktober 2023, 17:12:10 CEST schrieb Sebastian Reichel:
-> >> Hi,
-> >>
-> >> On Thu, Oct 05, 2023 at 04:54:20PM +0200, Benjamin Gaignard wrote:
-> >>> Add node for AV1 video decoder.
-> >>>
-> >>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> >>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> >> No need for my SoB. Instead have this one:
-> >>
-> >> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> >>
-> >> Also worth mentioning, that this Patch needs one small fix in the DT
-> >> binding (adding "resets") and one small fix in the driver for out of
-> >> the box AV1 support:
-> >>
-> >> https://lore.kernel.org/all/20231005144934.169356-1-benjamin.gaignard@=
-collabora.com/
-> >> https://lore.kernel.org/all/20231005145116.169411-1-benjamin.gaignard@=
-collabora.com/
-> > additionally the node name should be generic.
-> > The phandle can of course be av1d but the node
-> > name itself needs a change.
-> =
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+version 2:
+- change node name to video-codec
+- fix typo in commit header
 
-> Does "video-codec-av1@fdc70000" sound good for you ?
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Nope ... please go with
-	video-codec@fdc...
-I.e. see the other Rockchip soc dtsi for reference.
-
-
-Thanks
-Heiko
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 5544f66c6ff4..1a50da77c7c6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -2304,6 +2304,20 @@ gpio4: gpio@fec50000 {
+ 			#interrupt-cells = <2>;
+ 		};
+ 	};
++
++	av1d: video-codec@fdc70000 {
++		compatible = "rockchip,rk3588-av1-vpu";
++		reg = <0x0 0xfdc70000 0x0 0x800>;
++		interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vdpu";
++		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++		clock-names = "aclk", "hclk";
++		assigned-clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++		assigned-clock-rates = <400000000>, <400000000>;
++		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
++		power-domains = <&power RK3588_PD_AV1>;
++		status = "okay";
++	};
+ };
+ 
+ #include "rk3588s-pinctrl.dtsi"
+-- 
+2.39.2
 
 
 _______________________________________________
