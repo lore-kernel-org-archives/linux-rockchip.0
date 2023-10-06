@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A24E81E19
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 16:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6E0E81E19
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 16:22:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OcBmjQTBPEDflezKA6upab0kXHHo/W5dtgN/0fPSik4=; b=RvBP3CULfTq10G
-	G9LONoTaei6bJWe7mI10a6JNOXjJQh0Q3gcKEk/wadOhliwqYOd0BpyG3eBYAuQfNkzJtPdUIdI+g
-	3VGnYndCrkGuqXmGxYiMrInjArhkEtB5DvXmYE47VR4qB10WIR6bE8gT1cl0OXJAIFbeJ31hINEcV
-	wSaJIq/6LjtqtJnAGunm9jHRSKgr8bN/1tarhDnKVgbTYs+r6uO/AZVgmLaLYVToybEVgtn2+Flpa
-	RLQ0txXxEwfxUT0zOgdmArdGa3IskVFCe6PFo04JKcybzA3hwfjJeGAeXQZK1WYCsvnmZ8SvUgnc2
-	Fx5Bf2q0ZnFKM3pQxmOQ==;
+	List-Owner; bh=FjD5Yy3quWIWsKUqwrPM77gR+0vxq1a5tfyWD70uS8g=; b=Hr+RAKN3qm0uMV
+	dNqSv2g1elBANRX6zfcODcX/HMpfFzfkC85rmc8RsH8EhVa7MH1ZF5ua3MvwKS6WD/jQQ4TcSk3X8
+	nEFKEhROv+8Fw/5TRmDxu7TGd5o5j6a80ptloGRaoPie5TdOjHm94N8pnnFdFVNzyAkJFi38QllTb
+	L93yrQ3bk/HUHRVPyjy0PcpE6nKawIxY9RTDBBjGpoznK1aSoHAZGPpmTFplvVaVPogyYkRbsIBww
+	qLPXyVuJEE50SdBNVfeslPcJXjSeBHdsFKV+mzAm+7NKkYET1tJiyJJLQ9GcXxIF/3bD+uh33n63v
+	URUUy0HgtiYdSXyBYK7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qonVF-006A5W-3D;
-	Fri, 06 Oct 2023 16:16:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qonbC-006B1p-13;
+	Fri, 06 Oct 2023 16:22:46 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qonVA-006A3C-0w;
-	Fri, 06 Oct 2023 16:16:33 +0000
+	id 1qonb8-006B09-17;
+	Fri, 06 Oct 2023 16:22:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 8FF49B829EF;
-	Fri,  6 Oct 2023 16:16:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89291C433C7;
-	Fri,  6 Oct 2023 16:16:17 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E0886CE28C2;
+	Fri,  6 Oct 2023 16:22:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24B26C433C7;
+	Fri,  6 Oct 2023 16:22:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696608982;
-	bh=nn2PakBIGbgtsjEPpxAO4jVlLqjVjHADYSnUr1qUXew=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lFkTvMoc5xPxQnjGQFbbukgR7nGvQnaMUmIi8cIFrTDFwzZVKr9iEZ8kf9UwtmkqS
-	 JjVmj8vB0ZE3TTOhwWGNB1o+JGF1B090dzJEdIgroxf4E0ngIgy808gaNyUPH5DIJl
-	 J26870g4clx/9i8PyhovxrsBJET6ud3yGuLTEpzfK6WP1sXVcDOKmAYFwmPgx7Hx42
-	 TgUnvqo/j6K5BNN2TivJ1Z+rTg5nraUATk/swrNf592B9syT+5kdlaHuidRWPb9A8x
-	 eVXAhvs+zO1q6xgZPse0VgS1i3yG6J3XpznXuO3teSMIwX7oX5V6lQddll6CHRjwHj
-	 1rUD3xOytS4kg==
-Received: (nullmailer pid 4022504 invoked by uid 1000);
-	Fri, 06 Oct 2023 16:16:16 -0000
-Date: Fri, 6 Oct 2023 11:16:16 -0500
-From: Rob Herring <robh@kernel.org>
-To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Komal Bajaj <quic_kbajaj@quicinc.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Andy Gross <agross@kernel.org>, Hector Martin <marcan@marcan.st>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, NXP Linux Team <linux-imx@nxp.com>, linux-rockchip@lists.infradead.org, linux-rtc@vger.kernel.org, linux-mtd@lists.infradead.org, Vincent Shih <vincent.sunplus@gmail.com>, Christian Marangi <ansuelsmth@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Kumar Thella <sthella@codeaurora.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, devicetree@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Anson Huang <Anson.Huang@nxp.com>, linux-kernel@vger.kernel.org, A
- ndrew-CT Chen <andrew-ct.chen@mediatek.com>, linux-arm-msm@vger.kernel.org, Fabio Estevam <festevam@gmail.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Conor Dooley <conor+dt@kernel.org>, asahi@lists.linux.dev, Keiji Hayashibara <hayashibara.keiji@socionext.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Lala Lin <lala.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, Vignesh Raghavendra <vigneshr@ti.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Richard Weinberger <richard@nod.at>, Sven Peter <sven@svenpeter.dev>, Rob Herring <robh+dt@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH V2] dt-bindings: nvmem: move deprecated cells binding to
- its own file
-Message-ID: <169660897594.4022464.17777045780008018792.robh@kernel.org>
-References: <20231003064018.7502-1-zajec5@gmail.com>
+	s=k20201202; t=1696609358;
+	bh=uBFklTtcxYYolSP1xeVJ+qDQ45NL1scnT8mlqYObgng=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ExHkbbykJhmkAWEtl2xsVh5Yo76a3FDW+JZz3ZIG02s8kMluIsuN/5EDTF69w5f8k
+	 66sHcHImRQUNpqNfybn/aiRGQS8aO4zRJX11icoKdY3G0vxf1hGUmIB7J8jJwP1VFW
+	 J6RiMlpSsUOx+ytr+9vCml3UXM0NvAao8T9JsK5CSOR4Q+qNmXZJ3c7IfNmw8288iB
+	 aeE88wuvk5vpHH+LglqINv0iQp0pnoWfcbeU8rq5q+WVm9smsAHRCS71nL1TVXcz/z
+	 N23QkA+PvjNxHgMIzx4U04r8DscZ47VUothGEX7AwvH9FvwxIfskAGSdCYI3Sr6tqb
+	 Faua7ZQwTeMqg==
+Message-ID: <5f4dec5b-88a6-ee72-78a9-71c6b20b8da2@kernel.org>
+Date: Sat, 7 Oct 2023 01:22:33 +0900
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231003064018.7502-1-zajec5@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v7 04/26] PM / devfreq: rockchip-dfi: Add SoC specific
+ init function
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20230704093242.583575-1-s.hauer@pengutronix.de>
+ <20230704093242.583575-5-s.hauer@pengutronix.de>
+From: Chanwoo Choi <chanwoo@kernel.org>
+In-Reply-To: <20230704093242.583575-5-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_091632_591849_B0929BB0 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20231006_092242_725762_544C701F 
+X-CRM114-Status: GOOD (  27.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,44 +79,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ck9uIFR1ZSwgMDMgT2N0IDIwMjMgMDg6NDA6MTggKzAyMDAsIFJhZmHFgiBNacWCZWNraSB3cm90
-ZToKPiBGcm9tOiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4gCj4gU3VwcG9y
-dCBmb3Igb2xkIE5WTUVNIGZpeGVkIGNlbGxzIHdhcyBkZXByZWNhdGVkIGluIGZhdm91ciBvZgo+
-ICJmaXhlZC1sYXlvdXQiLiBJdCdzIHN0aWxsIHBhcnQgb2YgdGhlIG52bWVtLnlhbWwgdGhvdWdo
-IGFuZCBtYXkgYmUKPiB1bmtub3dpbmdseSB1c2VkIGJ5IG5ldyBiaW5kaW5ncyBhZGRlZCB3aXRo
-b3V0IG11Y2ggb2YgYW5hbHl6ZS4KPiAKPiBUbyBtYWtlIGl0IG1vcmUgZGlmZmljdWx0IHRvIGFj
-Y2lkZW50YWxseSBzdXBwb3J0IG9sZCBzeW50YXggbW92ZSBpdHMKPiBiaW5kaW5nIHRvIHNlcGFy
-YXRlZCBmaWxlIHdpdGggImRlcHJlY2F0ZWQiIGluIGl0cyBuYW1lLgo+IAo+IFNpZ25lZC1vZmYt
-Ynk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiAtLS0KPiBWMjogRml4IHBh
-dGggdG8gbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sIGluIGFtbG9naWMsbWVzb242LXJ0Yy55
-YW1sCj4gCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9tdGQueWFtbCAgICAgICAgICB8
-ICA3ICsrKystCj4gIC4uLi9iaW5kaW5ncy9tdGQvcGFydGl0aW9ucy9udm1lbS1jZWxscy55YW1s
-ICB8ICAxICsKPiAgLi4uL252bWVtL2FtbG9naWMsbWVzb24tZ3hiYi1lZnVzZS55YW1sICAgICAg
-IHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vYW1sb2dpYyxtZXNvbjYtZWZ1c2UueWFtbCAg
-fCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9hcHBsZSxlZnVzZXMueWFtbCAgICAgICAgICB8
-ICAxICsKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbnZtZW0vaW14LW9jb3RwLnlhbWwgIHwg
-IDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vbWVkaWF0ZWssZWZ1c2UueWFtbCAgICAgICAgfCAg
-MSArCj4gIC4uLi9udm1lbS9taWNyb2NoaXAsc2FtYTdnNS1vdHBjLnlhbWwgICAgICAgICB8ICAx
-ICsKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbnZtZW0vbXhzLW9jb3RwLnlhbWwgIHwgIDEg
-Kwo+ICAuLi4vbnZtZW0vbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sICAgICAgICAgfCAyOCAr
-KysrKysrKysrKysrKysrKysrCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL252bWVtL252bWVt
-LnlhbWwgICAgICB8ICA5IC0tLS0tLQo+ICAuLi4vYmluZGluZ3MvbnZtZW0vcWNvbSxxZnByb20u
-eWFtbCAgICAgICAgICAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9xY29tLHNlYy1xZnBy
-b20ueWFtbCAgICAgICB8ICAxICsKPiAgLi4uL2JpbmRpbmdzL252bWVtL3Fjb20sc3BtaS1zZGFt
-LnlhbWwgICAgICAgIHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vcm9ja2NoaXAsb3RwLnlh
-bWwgICAgICAgICAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9yb2NrY2hpcC1lZnVzZS55
-YW1sICAgICAgICB8ICAxICsKPiAgLi4uL252bWVtL3NvY2lvbmV4dCx1bmlwaGllci1lZnVzZS55
-YW1sICAgICAgIHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vc3VucGx1cyxzcDcwMjEtb2Nv
-dHAueWFtbCAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9ydGMvYW1sb2dpYyxtZXNvbjYtcnRjLnlh
-bWwgICAgICB8ICAxICsKPiAgMTkgZmlsZXMgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKSwgMTAg
-ZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvbnZtZW0vbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sCj4gCgpSZXZpZXdl
-ZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 23. 7. 4. 18:32, Sascha Hauer wrote:
+> Move the RK3399 specifics to a SoC specific init function to make
+> the way free for supporting other SoCs later.
+> 
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+> 
+> Notes:
+>     Changes since v4:
+>     - use of_device_get_match_data()
+>     - use a callback rather than a struct type as driver data
+> 
+>  drivers/devfreq/event/rockchip-dfi.c | 48 +++++++++++++++++++---------
+>  1 file changed, 33 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+> index e19e5acaa362c..6b1ef29df7048 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -17,6 +17,7 @@
+>  #include <linux/slab.h>
+>  #include <linux/list.h>
+>  #include <linux/of.h>
+> +#include <linux/of_device.h>
+>  
+>  #include <soc/rockchip/rk3399_grf.h>
+>  
+> @@ -55,27 +56,21 @@ struct rockchip_dfi {
+>  	void __iomem *regs;
+>  	struct regmap *regmap_pmu;
+>  	struct clk *clk;
+> +	u32 ddr_type;
+>  };
+>  
+>  static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+>  {
+>  	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+>  	void __iomem *dfi_regs = dfi->regs;
+> -	u32 val;
+> -	u32 ddr_type;
+> -
+> -	/* get ddr type */
+> -	regmap_read(dfi->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+> -	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+> -		    RK3399_PMUGRF_DDRTYPE_MASK;
+>  
+>  	/* clear DDRMON_CTRL setting */
+>  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+>  
+>  	/* set ddr type to dfi */
+> -	if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
+> +	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
+>  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+> -	else if (ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
+> +	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
+>  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+>  
+>  	/* enable count, use software mode */
+> @@ -167,8 +162,26 @@ static const struct devfreq_event_ops rockchip_dfi_ops = {
+>  	.set_event = rockchip_dfi_set_event,
+>  };
+>  
+> +static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+> +{
+> +	struct regmap *regmap_pmu = dfi->regmap_pmu;
+> +	u32 val;
+> +
+> +	dfi->clk = devm_clk_get(dfi->dev, "pclk_ddr_mon");
+> +	if (IS_ERR(dfi->clk))
+> +		return dev_err_probe(dfi->dev, PTR_ERR(dfi->clk),
+> +				     "Cannot get the clk pclk_ddr_mon\n");
+> +
+> +	/* get ddr type */
+> +	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+> +	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+> +			RK3399_PMUGRF_DDRTYPE_MASK;
+> +
+> +	return 0;
+> +};
+> +
+>  static const struct of_device_id rockchip_dfi_id_match[] = {
+> -	{ .compatible = "rockchip,rk3399-dfi" },
+> +	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
+>  	{ },
+>  };
+>  MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
+> @@ -179,6 +192,12 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+>  	struct rockchip_dfi *dfi;
+>  	struct devfreq_event_desc *desc;
+>  	struct device_node *np = pdev->dev.of_node, *node;
+> +	int (*soc_init)(struct rockchip_dfi *dfi);
+> +	int ret;
+> +
+> +	soc_init = of_device_get_match_data(&pdev->dev);
+> +	if (!soc_init)
+> +		return -EINVAL;
+>  
+>  	dfi = devm_kzalloc(dev, sizeof(*dfi), GFP_KERNEL);
+>  	if (!dfi)
+> @@ -188,11 +207,6 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+>  	if (IS_ERR(dfi->regs))
+>  		return PTR_ERR(dfi->regs);
+>  
+> -	dfi->clk = devm_clk_get(dev, "pclk_ddr_mon");
+> -	if (IS_ERR(dfi->clk))
+> -		return dev_err_probe(dev, PTR_ERR(dfi->clk),
+> -				     "Cannot get the clk pclk_ddr_mon\n");
+> -
+>  	node = of_parse_phandle(np, "rockchip,pmu", 0);
+>  	if (!node)
+>  		return dev_err_probe(&pdev->dev, -ENODEV, "Can't find pmu_grf registers\n");
+> @@ -209,6 +223,10 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+>  	desc->driver_data = dfi;
+>  	desc->name = np->name;
+>  
+> +	ret = soc_init(dfi);
+> +	if (ret)
+> +		return ret;
+> +
+>  	dfi->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
+>  	if (IS_ERR(dfi->edev)) {
+>  		dev_err(&pdev->dev,
+
+
+Applied it. Thanks.
+-- 
+Best Regards,
+Samsung Electronics
+Chanwoo Choi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
