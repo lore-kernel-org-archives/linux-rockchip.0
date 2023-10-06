@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 342D3E81E1E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 18:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927EAE81E1E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 18:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JTY3dSGJIIW5IvIVyfKwjKcFo1teeyCy4nhivo+8PRk=; b=VFQNcn4qJcU9UP
-	Ht5VPzCwD28t7G2JPGCHyQRuKuACVEYynRZ/Lfa9rA+5IqCG7KI6K6uVGFfY/NFZuRb1v2/HupWdt
-	BOBhpZ10cGF5er5E3p3NXtqfOxD1N+Im0mKO9L0SxgksJZTAw/3aqipweFpoNg83HGfkdHzPDy2GY
-	bxKs63aCgAejNPqrnDL3NaSXumb3SiRnXO2T+cVRexo12+w9ljPMb26Z23iePKDb3BmZLnhWeQezY
-	9x4wRtUIf05JY75MFMpSOhQY7hJQOwQ4ZiXeqFNxhpdySGAgiImt1XnlHMap3Bpi9Oi8TNaMDLXbr
-	8xsh9QaUupPiuzMn9hoA==;
+	List-Owner; bh=sDF1SbN2f34FemBGciQxuc1jF2rAJClXK5hq2thJueY=; b=LFUQuEnFjC3Qg2
+	6VRutvmzRsHhE1HyXXdZbCDk+FpQ9uPVw0gWH9W0j8ZPvZFcJYlB0UV8jJ08oIxmdzLdxbYbGa40x
+	656vhSVXHyQfdHtwgLG3ec57G1RzTWGmFyRNUBv45hctViEW7FRrhfdMqg/kDjJHpzn0aAjFrUeka
+	+cWYjyKdUfPQkATByllNo2drnudeJXRqdLkG+aiS9ZmVUst/CamTFkMgqVdktrUZ4kU5sbvCSh9Sa
+	9mAdm3tkNohVG5CKrUFxvVRrc3nhfTTwaWHmFsDa61eTSy6NdeGWQqJoY7FvvK7MM8ecVch6G09Bd
+	a2XUsH4u9a9RYHyTb+Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qopWg-006JaT-1U;
-	Fri, 06 Oct 2023 18:26:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qopYu-006JnI-1k;
+	Fri, 06 Oct 2023 18:28:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qopWc-006JZ4-16;
-	Fri, 06 Oct 2023 18:26:12 +0000
+	id 1qopYq-006JmQ-2o;
+	Fri, 06 Oct 2023 18:28:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EB09FCE2886;
-	Fri,  6 Oct 2023 18:26:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02E30C433C9;
-	Fri,  6 Oct 2023 18:26:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 226D3613DC;
+	Fri,  6 Oct 2023 18:28:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8708CC433C8;
+	Fri,  6 Oct 2023 18:28:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696616767;
-	bh=DMnsAyUwTj54QnEen7gCvken46S4eDiVAXnoNg1seOA=;
+	s=k20201202; t=1696616907;
+	bh=419cJuZmJuJNTF0RmDLSgwkt/ONnou7TalvMAEjbMCo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Oa1pz1OTZt/oOkqajeiEN0hflFW2ehI8EIMVSkZYPhy7fcEOUb7ZSsWTRAp28nrPP
-	 JklCWOaq6FbD0G7uGVy5K/qzHyDLv4azhg0ideDhw1ptBJefMJRarfnwJV4uKUEBQ5
-	 jdLgsVuTiSUtCBFb+2Fm6jFEa9seNnqECjW7dwScGcG58l+orK55KZLoaeI/fApeay
-	 9M+wRqR38/fj5zAFIxD3u/uloiBFTWv5OwSaFtOar4eGzicdGRxsYC1+ebdHEHH6s6
-	 gkz9uW3a1J/+qlMvqzn+vewd/aBpMoBjAsg+nhpGnrDBMamI4gSFJ8+j8eED6ZG0d5
-	 F5CkIJ5UbXwPA==
-Message-ID: <aa8b7d74-008d-f704-5d63-1cbaac70cf77@kernel.org>
-Date: Sat, 7 Oct 2023 03:26:02 +0900
+	b=ptVo9Kb2WOXjnOHBICUNbRBDehPqeulTNd6R4UwSscC5vjfJlicbneeh8DdnN4rPP
+	 jkoxKsJqHDImQ8XzBke7clntSzL1NqlkH3lDpCcEkGdf0kHRqHbHlU8zgj12huY+//
+	 0xkgMf8si23cEiFdoZzPBTnTYnFk80ROr1WRYCUh91jWR0n1SrKC4PGExsKc5wbd6H
+	 Po69NMFqTdAsZcZBhUyoFduXDUfzNQfWI9R1AsPy+7p4U9Bj3b1Q7RLk0jSwm+wvNx
+	 1naXy4taAD7Lb+LlNGdEgu4mIPuhs+MtXnSdmw/mX7Whg77TQ/zxINq/2Rq2TTRUof
+	 qPRpx0rxnuTKA==
+Message-ID: <860d60a7-9f03-1bf0-5061-8012d9da957b@kernel.org>
+Date: Sat, 7 Oct 2023 03:28:22 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH v7 12/26] PM / devfreq: rockchip-dfi: Handle LPDDR4X
+Subject: Re: [PATCH v7 13/26] PM / devfreq: rockchip-dfi: Pass private data
+ struct to internal functions
 Content-Language: en-US
 To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -62,12 +63,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Sebastian Reichel <sebastian.reichel@collabora.com>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
- <20230704093242.583575-13-s.hauer@pengutronix.de>
+ <20230704093242.583575-14-s.hauer@pengutronix.de>
 From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20230704093242.583575-13-s.hauer@pengutronix.de>
+In-Reply-To: <20230704093242.583575-14-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_112610_556738_47A61901 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20231006_112829_014718_29C2320B 
+X-CRM114-Status: GOOD (  20.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,41 +86,80 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 23. 7. 4. 18:32, Sascha Hauer wrote:
-> In the DFI driver LPDDR4X can be handled in the same way as LPDDR4. Add
-> the missing case.
+> The internal functions do not need the struct devfreq_event_dev *,
+> so pass them the struct rockchip_dfi *. This is a preparation for
+> adding perf support later which doesn't have a struct devfreq_event_dev *.
 > 
 > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c | 1 +
->  include/soc/rockchip/rockchip_grf.h  | 1 +
->  2 files changed, 2 insertions(+)
+>  drivers/devfreq/event/rockchip-dfi.c | 15 ++++++---------
+>  1 file changed, 6 insertions(+), 9 deletions(-)
 > 
 > diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 16cd5365671f7..0a568c5551699 100644
+> index 0a568c5551699..d39db5de7f19c 100644
 > --- a/drivers/devfreq/event/rockchip-dfi.c
 > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -89,6 +89,7 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  			       dfi_regs + DDRMON_CTRL);
->  		break;
->  	case ROCKCHIP_DDRTYPE_LPDDR4:
-> +	case ROCKCHIP_DDRTYPE_LPDDR4X:
->  		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
->  			       dfi_regs + DDRMON_CTRL);
->  		break;
-> diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-> index dde1a9796ccb5..e46fd72aea8d1 100644
-> --- a/include/soc/rockchip/rockchip_grf.h
-> +++ b/include/soc/rockchip/rockchip_grf.h
-> @@ -12,6 +12,7 @@ enum {
->  	ROCKCHIP_DDRTYPE_LPDDR2	= 5,
->  	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
->  	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
-> +	ROCKCHIP_DDRTYPE_LPDDR4X = 8,
+> @@ -72,9 +72,8 @@ struct rockchip_dfi {
+>  	unsigned int channel_mask;
 >  };
 >  
->  #endif /* __SOC_ROCKCHIP_GRF_H */
+> -static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+> +static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
+>  {
+> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+>  	void __iomem *dfi_regs = dfi->regs;
+>  
+>  	/* clear DDRMON_CTRL setting */
+> @@ -102,18 +101,16 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+>  		       dfi_regs + DDRMON_CTRL);
+>  }
+>  
+> -static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
+> +static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
+>  {
+> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+>  	void __iomem *dfi_regs = dfi->regs;
+>  
+>  	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+>  		       dfi_regs + DDRMON_CTRL);
+>  }
+>  
+> -static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dmc_count *count)
+> +static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
+>  {
+> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+>  	u32 i;
+>  	void __iomem *dfi_regs = dfi->regs;
+>  
+> @@ -131,7 +128,7 @@ static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
+>  {
+>  	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+>  
+> -	rockchip_dfi_stop_hardware_counter(edev);
+> +	rockchip_dfi_stop_hardware_counter(dfi);
+>  	clk_disable_unprepare(dfi->clk);
+>  
+>  	return 0;
+> @@ -148,7 +145,7 @@ static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
+>  		return ret;
+>  	}
+>  
+> -	rockchip_dfi_start_hardware_counter(edev);
+> +	rockchip_dfi_start_hardware_counter(dfi);
+>  	return 0;
+>  }
+>  
+> @@ -166,7 +163,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+>  	u32 access = 0, total = 0;
+>  	int i;
+>  
+> -	rockchip_dfi_read_counters(edev, &count);
+> +	rockchip_dfi_read_counters(dfi, &count);
+>  
+>  	/* We can only report one channel, so find the busiest one */
+>  	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
 
 Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
