@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F29E81E1E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 17:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6B41E81E1B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 18:17:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9xBGmZzbVDDweSmzK0l4Xa5Uicp+UNyJrW9hZJFJlTk=; b=tYKV1lzioPAtph
-	RjEte5D4cJLFmKOuR5Pziym7lpfHd3iMHStHYb6/bEloEQEBYCidV/vNb+L7YwMVMelnzMIDIH+3E
-	L/uXJO3OHNCyh7CzhSxsBuQCfT6FvuirJ8sfhg56qqiYjmj6SgQ3lsswG+JPL8X1wcLzrngwfwWHt
-	GUn0vFFkuk+EDY2NxArmEYM5LzLq2h3XtyfcbT1i1xh00GtWCVqL7x/9CUW0EFSclcNw/SRPiAUKU
-	ntYpICVEnit0MiZYyAUwcDsLZ0u5QllF1FIPRPN5gevDzLzL+WgGLuP7Ic2XUds0vLtYm8tNBixh+
-	rwCvJ7HdxDtDlDHuo8/g==;
+	List-Owner; bh=Ox5rw4DSpDJv0sZO1PhEYTLzZ83zB4e3kXxvAoBAxC0=; b=o78YlxxD7GiEde
+	2wcOxAxXN2BcXabye2OPS4nEWIPUzPpSBZRY7flfy9aRKfwZ5N1i3nf3/JtlWmj5J6s5R60slSi04
+	nghhMRiL+tG3MqRAvvHYv+rTDGr9sw2+jpHHQRPpchbqloXKWKrysfJE7S53bUl2vp1IXBjTTwgCZ
+	m83v47wuTZFC42zLCGK6PeD9gZ32y+YtS2USoxFrzDOI7bjJap7hKhwQ9Lg15h0AaZzRq39JlHNR4
+	yhncfY+YkFUG382puBR4MeJTAt9EZnCEYlxUebog3ExiDMcWZ+nbRzI4QkuSmvhX/Wo/YxNrEjaxp
+	ITse4Qr1DAcYmVgVCOcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoor8-006GZZ-1s;
-	Fri, 06 Oct 2023 17:43:18 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qopOB-006InZ-2H;
+	Fri, 06 Oct 2023 18:17:27 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qoor4-006GYp-1H;
-	Fri, 06 Oct 2023 17:43:16 +0000
+	id 1qopO7-006ImG-0X;
+	Fri, 06 Oct 2023 18:17:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 22CE5CE28DC;
-	Fri,  6 Oct 2023 17:43:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2BDCC433C7;
-	Fri,  6 Oct 2023 17:43:06 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id AB6DCB829FB;
+	Fri,  6 Oct 2023 18:17:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 334F3C433C8;
+	Fri,  6 Oct 2023 18:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696614190;
-	bh=3pHBD8r/iPh/v5cgOzJJy4If3hivbFUEGjN+b6bqFKI=;
+	s=k20201202; t=1696616241;
+	bh=Q5nU/VnkY41EgR/l98nYHQwwOM+DruvUM8ho7kEhbRA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OvPbzaM2D/+mLKHaRTMMFrEpSKvYejfKtoC/+RB+YAabg/6A0VNDQRGB+7TAtZuak
-	 uS64Q/Sft1qfwBN87fAPShxrS7YYollPm7HQlVrSl4w+8Hnap/mYjI8utfUE3Jo2XN
-	 /I4fS8KyXJfgv0wbgfQM9uVPr+JIU2/Sn/pJmg9xyPWj7wHBvSmxz1dM2Znfd80spl
-	 FHbIf7UeIREC89a4S8JbzrDSKg26GiJilhrzCNvELcupBvD8/LGtqzEE9KPV+TPDUS
-	 pmaNKW7CLwgRk67DkXeq5yjKGSVIKm5sSpEkNaErN0y7HOgag4Oqz3CikmAxgbODEF
-	 TvQO2dMbhDbnA==
-Message-ID: <f142ae65-0609-ccf2-5908-663cd2ecab73@kernel.org>
-Date: Sat, 7 Oct 2023 02:43:04 +0900
+	b=Yx/Z2MezLls8bssK8inWG6QIM0MhXOLRR7hmISdcAzRWTNwLKvZmD1pNagCqVXfSl
+	 S5oXVsbVRk5qtmmQBbXkc03z/UVNFSTvu90R7N8po8u3NYTCUEEVsX77cfEJ1jXVn1
+	 zrGvg9TAUMlO5bQ5FAk1FM3YxYNedM8E/2o1Xl14xjytHXWnbQk0l506NHVwepliJn
+	 JQTbALADom1AK532Pcqc7iAOJuQSfg7OChOAN5BY2P3fZnugPSsPqwCMNqLU0R6Sgj
+	 dXEpop5n0iTWWFje3eKRfzmXJ3TJ1g6H7IKIRTTmv19P51e+o46rxl45SpeKfcOL+W
+	 I4kb54FdDrE4A==
+Message-ID: <ac224dfe-ff7d-57c7-89ad-f10939975b4d@kernel.org>
+Date: Sat, 7 Oct 2023 03:17:14 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH v7 08/26] PM / devfreq: rk3399_dmc,dfi: generalize DDRTYPE
- defines
+Subject: Re: [PATCH v7 10/26] PM / devfreq: rockchip-dfi: Add RK3568 support
 Content-Language: en-US
 To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -62,12 +61,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
  Sebastian Reichel <sebastian.reichel@collabora.com>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
- <20230704093242.583575-9-s.hauer@pengutronix.de>
+ <20230704093242.583575-11-s.hauer@pengutronix.de>
 From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20230704093242.583575-9-s.hauer@pengutronix.de>
+In-Reply-To: <20230704093242.583575-11-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_104314_779525_5FDBD29F 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20231006_111723_629792_1A3447A3 
+X-CRM114-Status: GOOD (  24.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,140 +84,87 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 23. 7. 4. 18:32, Sascha Hauer wrote:
-> The DDRTYPE defines are named to be RK3399 specific, but they can be
-> used for other Rockchip SoCs as well, so replace the RK3399_PMUGRF_
-> prefix with ROCKCHIP_. They are defined in a SoC specific header
-> file, so when generalizing the prefix also move the new defines to
-> a SoC agnostic header file. While at it use GENMASK to define the
-> DDRTYPE bitfield and give it a name including the full register name.
+> This adds RK3568 support to the DFI driver.  Only iniitialization
+> differs from the currently supported RK3399.
 > 
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c |  9 +++++----
->  drivers/devfreq/rk3399_dmc.c         | 10 +++++-----
->  include/soc/rockchip/rk3399_grf.h    |  7 +------
->  include/soc/rockchip/rockchip_grf.h  | 17 +++++++++++++++++
->  4 files changed, 28 insertions(+), 15 deletions(-)
->  create mode 100644 include/soc/rockchip/rockchip_grf.h
+>  drivers/devfreq/event/rockchip-dfi.c | 21 +++++++++++++++++++++
+>  include/soc/rockchip/rk3568_grf.h    | 12 ++++++++++++
+>  2 files changed, 33 insertions(+)
+>  create mode 100644 include/soc/rockchip/rk3568_grf.h
 > 
 > diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 82de24a027579..6bccb6fbcfc0c 100644
+> index 6b3ef97b3be09..261d112580c9e 100644
 > --- a/drivers/devfreq/event/rockchip-dfi.c
 > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -18,8 +18,10 @@
->  #include <linux/list.h>
->  #include <linux/of.h>
->  #include <linux/of_device.h>
-> +#include <linux/bitfield.h>
->  #include <linux/bits.h>
+> @@ -23,6 +23,7 @@
 >  
-> +#include <soc/rockchip/rockchip_grf.h>
+>  #include <soc/rockchip/rockchip_grf.h>
 >  #include <soc/rockchip/rk3399_grf.h>
+> +#include <soc/rockchip/rk3568_grf.h>
 >  
 >  #define DMC_MAX_CHANNELS	2
-> @@ -74,9 +76,9 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
 >  
->  	/* set ddr type to dfi */
-> -	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
-> +	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
->  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
-> -	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
-> +	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
->  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
+> @@ -209,10 +210,30 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+>  	return 0;
+>  };
 >  
->  	/* enable count, use software mode */
-> @@ -191,8 +193,7 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
->  
->  	/* get ddr type */
->  	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> -	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> -			RK3399_PMUGRF_DDRTYPE_MASK;
-> +	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
->  
->  	dfi->channel_mask = GENMASK(1, 0);
->  
-> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-> index daff407026157..fd2c5ffedf41e 100644
-> --- a/drivers/devfreq/rk3399_dmc.c
-> +++ b/drivers/devfreq/rk3399_dmc.c
-> @@ -22,6 +22,7 @@
->  #include <linux/suspend.h>
->  
->  #include <soc/rockchip/pm_domains.h>
-> +#include <soc/rockchip/rockchip_grf.h>
->  #include <soc/rockchip/rk3399_grf.h>
->  #include <soc/rockchip/rockchip_sip.h>
->  
-> @@ -381,17 +382,16 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  	}
->  
->  	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> -	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> -		    RK3399_PMUGRF_DDRTYPE_MASK;
-> +	ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
->  
->  	switch (ddr_type) {
-> -	case RK3399_PMUGRF_DDRTYPE_DDR3:
-> +	case ROCKCHIP_DDRTYPE_DDR3:
->  		data->odt_dis_freq = data->ddr3_odt_dis_freq;
->  		break;
-> -	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
-> +	case ROCKCHIP_DDRTYPE_LPDDR3:
->  		data->odt_dis_freq = data->lpddr3_odt_dis_freq;
->  		break;
-> -	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
-> +	case ROCKCHIP_DDRTYPE_LPDDR4:
->  		data->odt_dis_freq = data->lpddr4_odt_dis_freq;
->  		break;
->  	default:
-> diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
-> index 3eebabcb28123..775f8444bea8d 100644
-> --- a/include/soc/rockchip/rk3399_grf.h
-> +++ b/include/soc/rockchip/rk3399_grf.h
-> @@ -11,11 +11,6 @@
->  
->  /* PMU GRF Registers */
->  #define RK3399_PMUGRF_OS_REG2		0x308
-> -#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
-> -#define RK3399_PMUGRF_DDRTYPE_MASK	7
-> -#define RK3399_PMUGRF_DDRTYPE_DDR3	3
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
-> +#define RK3399_PMUGRF_OS_REG2_DDRTYPE		GENMASK(15, 13)
->  
->  #endif
-> diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-> new file mode 100644
-> index 0000000000000..dde1a9796ccb5
-> --- /dev/null
-> +++ b/include/soc/rockchip/rockchip_grf.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0+ */
-> +/*
-> + * Rockchip General Register Files definitions
-> + */
+> +static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+> +{
+> +	struct regmap *regmap_pmu = dfi->regmap_pmu;
+> +	u32 reg2, reg3;
 > +
-> +#ifndef __SOC_ROCKCHIP_GRF_H
-> +#define __SOC_ROCKCHIP_GRF_H
+> +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG2, &reg2);
+> +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG3, &reg3);
 > +
-> +/* Rockchip DDRTYPE defines */
-> +enum {
-> +	ROCKCHIP_DDRTYPE_DDR3	= 3,
-> +	ROCKCHIP_DDRTYPE_LPDDR2	= 5,
-> +	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
-> +	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
+> +	dfi->ddr_type = FIELD_GET(RK3568_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
+> +
+> +	if (FIELD_GET(RK3568_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
+> +		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
+
+There are no reason of why shifting the '3'.
+Could you add the comment about '3' or add the constant definition '3'?
+
+> +
+> +	dfi->channel_mask = 1;
+
+nitpick.
+On other rkXXXX_dfi_init, use GENMASK() to initialize 'dfi->channel_mask'.
+In order to keep the consistency, it is better to use BIT() macro as following:
+	dfi->channel_mask = BIT(0);
+
+> +
+> +	return 0;
 > +};
 > +
-> +#endif /* __SOC_ROCKCHIP_GRF_H */
-
-
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
-
-This patch must require Ack of rockchip Maintainer (Heiko Stuebner)
-because of include/soc/rockchip.
+>  static const struct of_device_id rockchip_dfi_id_match[] = {
+>  	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
+> +	{ .compatible = "rockchip,rk3568-dfi", .data = rk3568_dfi_init },
+>  	{ },
+>  };
+> +
+>  MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
+>  
+>  static int rockchip_dfi_probe(struct platform_device *pdev)
+> diff --git a/include/soc/rockchip/rk3568_grf.h b/include/soc/rockchip/rk3568_grf.h
+> new file mode 100644
+> index 0000000000000..575584e9d8834
+> --- /dev/null
+> +++ b/include/soc/rockchip/rk3568_grf.h
+> @@ -0,0 +1,12 @@
+> +/* SPDX-License-Identifier: GPL-2.0+ */
+> +#ifndef __SOC_RK3568_GRF_H
+> +#define __SOC_RK3568_GRF_H
+> +
+> +#define RK3568_PMUGRF_OS_REG2		0x208
+> +#define RK3568_PMUGRF_OS_REG2_DRAMTYPE_INFO		GENMASK(15, 13)
+> +
+> +#define RK3568_PMUGRF_OS_REG3		0x20c
+> +#define RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3		GENMASK(13, 12)
+> +#define RK3568_PMUGRF_OS_REG3_SYSREG_VERSION		GENMASK(31, 28)
+> +
+> +#endif /* __SOC_RK3568_GRF_H */
 
 -- 
 Best Regards,
