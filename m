@@ -4,71 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 682F5E81E13
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 16:07:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A24E81E19
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Oct 2023 16:16:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GBKBdt+/f8UOmFOJR9Y17kSe4FS/R2azKz7Z6KHiDxM=; b=xyuCJvmx7igeUV
-	lVWu5bxE+iAwPgVpBc0udIfYYpE0+MSZm9KlqDoMv069RJwqbsUf7faO3lkKktSZJYJyPfCdpSvFk
-	sc1+k4inymwKcN6/KVjrmqnzPjFJTqA+ODskL4NaJDObPw40EL1oGWItgSA4bEVBgknbqWn2l8uda
-	XAnQqFlgdDJNRbGF0XS/nhXA7hDaPo9LAEiS2Y4fK6aHRpGta2nhO8paq5M9GWZGfJJofxjwQjxxM
-	ipZGLilOz1MolstYqIyWDvV3ZCiFsqj4IUuHwUsZhr9K0f0+CyHzEHYUebeJkKKy27Xbas2m3NQIL
-	gDyg9PtvWrCM2bjtdMpA==;
+	List-Owner; bh=OcBmjQTBPEDflezKA6upab0kXHHo/W5dtgN/0fPSik4=; b=RvBP3CULfTq10G
+	G9LONoTaei6bJWe7mI10a6JNOXjJQh0Q3gcKEk/wadOhliwqYOd0BpyG3eBYAuQfNkzJtPdUIdI+g
+	3VGnYndCrkGuqXmGxYiMrInjArhkEtB5DvXmYE47VR4qB10WIR6bE8gT1cl0OXJAIFbeJ31hINEcV
+	wSaJIq/6LjtqtJnAGunm9jHRSKgr8bN/1tarhDnKVgbTYs+r6uO/AZVgmLaLYVToybEVgtn2+Flpa
+	RLQ0txXxEwfxUT0zOgdmArdGa3IskVFCe6PFo04JKcybzA3hwfjJeGAeXQZK1WYCsvnmZ8SvUgnc2
+	Fx5Bf2q0ZnFKM3pQxmOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qonLx-0068yk-1H;
-	Fri, 06 Oct 2023 16:07:01 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qonVF-006A5W-3D;
+	Fri, 06 Oct 2023 16:16:37 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qonLs-0068xJ-05;
-	Fri, 06 Oct 2023 16:06:59 +0000
+	id 1qonVA-006A3C-0w;
+	Fri, 06 Oct 2023 16:16:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 61D42CE28B8;
-	Fri,  6 Oct 2023 16:06:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D6D8C433C7;
-	Fri,  6 Oct 2023 16:06:48 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 8FF49B829EF;
+	Fri,  6 Oct 2023 16:16:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89291C433C7;
+	Fri,  6 Oct 2023 16:16:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696608412;
-	bh=GWaM8xnuoLmMEmGVN4yEJutUhLeAptLIbj6d/aZecRQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XvURkYyp+vFwfxOmTfjnGChVG49yDk07Q/bLtjFPEmVCdLdbKDleBzSLzEDFZYYDD
-	 yFEe1UC91xzRvQrR8RgfmvtxeSK+u8uo49wEXGI7Q9gvFWUnex0hQZd+kTW7UsnWTG
-	 8NHCNahcG2/AayVtnxmKCOmx9GjAp5Wrl7mBEENGHzXmMuajGiSDpGSKroF7oUpSSC
-	 5U6G2rQW/C3EUnZEeBO3G+EXuZXjki0vd+F3usGqPHf1gXgGRJu/n6ejqqBQ33dwDy
-	 jmSx1zvvn9HDunquJnlpHOiI4fUcm+yXMtr/q1noMLFNKH3+I203wyHf0s61grtfSM
-	 naazDZmlmOjyg==
-Message-ID: <3352fa1a-185b-34d6-078a-6ebb7fb60cc1@kernel.org>
-Date: Sat, 7 Oct 2023 01:06:46 +0900
+	s=k20201202; t=1696608982;
+	bh=nn2PakBIGbgtsjEPpxAO4jVlLqjVjHADYSnUr1qUXew=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lFkTvMoc5xPxQnjGQFbbukgR7nGvQnaMUmIi8cIFrTDFwzZVKr9iEZ8kf9UwtmkqS
+	 JjVmj8vB0ZE3TTOhwWGNB1o+JGF1B090dzJEdIgroxf4E0ngIgy808gaNyUPH5DIJl
+	 J26870g4clx/9i8PyhovxrsBJET6ud3yGuLTEpzfK6WP1sXVcDOKmAYFwmPgx7Hx42
+	 TgUnvqo/j6K5BNN2TivJ1Z+rTg5nraUATk/swrNf592B9syT+5kdlaHuidRWPb9A8x
+	 eVXAhvs+zO1q6xgZPse0VgS1i3yG6J3XpznXuO3teSMIwX7oX5V6lQddll6CHRjwHj
+	 1rUD3xOytS4kg==
+Received: (nullmailer pid 4022504 invoked by uid 1000);
+	Fri, 06 Oct 2023 16:16:16 -0000
+Date: Fri, 6 Oct 2023 11:16:16 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Komal Bajaj <quic_kbajaj@quicinc.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Andy Gross <agross@kernel.org>, Hector Martin <marcan@marcan.st>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, NXP Linux Team <linux-imx@nxp.com>, linux-rockchip@lists.infradead.org, linux-rtc@vger.kernel.org, linux-mtd@lists.infradead.org, Vincent Shih <vincent.sunplus@gmail.com>, Christian Marangi <ansuelsmth@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Kumar Thella <sthella@codeaurora.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, devicetree@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>, Anson Huang <Anson.Huang@nxp.com>, linux-kernel@vger.kernel.org, A
+ ndrew-CT Chen <andrew-ct.chen@mediatek.com>, linux-arm-msm@vger.kernel.org, Fabio Estevam <festevam@gmail.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, Conor Dooley <conor+dt@kernel.org>, asahi@lists.linux.dev, Keiji Hayashibara <hayashibara.keiji@socionext.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Lala Lin <lala.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org, Vignesh Raghavendra <vigneshr@ti.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Richard Weinberger <richard@nod.at>, Sven Peter <sven@svenpeter.dev>, Rob Herring <robh+dt@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH V2] dt-bindings: nvmem: move deprecated cells binding to
+ its own file
+Message-ID: <169660897594.4022464.17777045780008018792.robh@kernel.org>
+References: <20231003064018.7502-1-zajec5@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v7 03/26] PM / devfreq: rockchip-dfi: use consistent name
- for private data struct
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Robin Murphy <robin.murphy@arm.com>,
- Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
-References: <20230704093242.583575-1-s.hauer@pengutronix.de>
- <20230704093242.583575-4-s.hauer@pengutronix.de>
-From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20230704093242.583575-4-s.hauer@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <20231003064018.7502-1-zajec5@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231006_090656_411990_2BCA08DF 
-X-CRM114-Status: GOOD (  25.22  )
+X-CRM114-CacheID: sfid-20231006_091632_591849_B0929BB0 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,200 +69,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23. 7. 4. 18:32, Sascha Hauer wrote:
-> The variable name for the private data struct is 'info' in some
-> functions and 'data' in others. Both names do not give a clue what
-> type the variable has, so consistently use 'dfi'.
-> 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/devfreq/event/rockchip-dfi.c | 72 ++++++++++++++--------------
->  1 file changed, 36 insertions(+), 36 deletions(-)
-> 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 467f9f42d38f7..e19e5acaa362c 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -59,13 +59,13 @@ struct rockchip_dfi {
->  
->  static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> -	void __iomem *dfi_regs = info->regs;
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
-> +	void __iomem *dfi_regs = dfi->regs;
->  	u32 val;
->  	u32 ddr_type;
->  
->  	/* get ddr type */
-> -	regmap_read(info->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> +	regmap_read(dfi->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
->  	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
->  		    RK3399_PMUGRF_DDRTYPE_MASK;
->  
-> @@ -84,28 +84,28 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  
->  static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev *edev)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> -	void __iomem *dfi_regs = info->regs;
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
-> +	void __iomem *dfi_regs = dfi->regs;
->  
->  	writel_relaxed(SOFTWARE_DIS, dfi_regs + DDRMON_CTRL);
->  }
->  
->  static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->  	u32 tmp, max = 0;
->  	u32 i, busier_ch = 0;
-> -	void __iomem *dfi_regs = info->regs;
-> +	void __iomem *dfi_regs = dfi->regs;
->  
->  	rockchip_dfi_stop_hardware_counter(edev);
->  
->  	/* Find out which channel is busier */
->  	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
-> -		info->ch_usage[i].access = readl_relaxed(dfi_regs +
-> +		dfi->ch_usage[i].access = readl_relaxed(dfi_regs +
->  				DDRMON_CH0_DFI_ACCESS_NUM + i * 20) * 4;
-> -		info->ch_usage[i].total = readl_relaxed(dfi_regs +
-> +		dfi->ch_usage[i].total = readl_relaxed(dfi_regs +
->  				DDRMON_CH0_COUNT_NUM + i * 20);
-> -		tmp = info->ch_usage[i].access;
-> +		tmp = dfi->ch_usage[i].access;
->  		if (tmp > max) {
->  			busier_ch = i;
->  			max = tmp;
-> @@ -118,20 +118,20 @@ static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
->  
->  static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->  
->  	rockchip_dfi_stop_hardware_counter(edev);
-> -	clk_disable_unprepare(info->clk);
-> +	clk_disable_unprepare(dfi->clk);
->  
->  	return 0;
->  }
->  
->  static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->  	int ret;
->  
-> -	ret = clk_prepare_enable(info->clk);
-> +	ret = clk_prepare_enable(dfi->clk);
->  	if (ret) {
->  		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
->  		return ret;
-> @@ -149,13 +149,13 @@ static int rockchip_dfi_set_event(struct devfreq_event_dev *edev)
->  static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
->  				  struct devfreq_event_data *edata)
->  {
-> -	struct rockchip_dfi *info = devfreq_event_get_drvdata(edev);
-> +	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->  	int busier_ch;
->  
->  	busier_ch = rockchip_dfi_get_busier_ch(edev);
->  
-> -	edata->load_count = info->ch_usage[busier_ch].access;
-> -	edata->total_count = info->ch_usage[busier_ch].total;
-> +	edata->load_count = dfi->ch_usage[busier_ch].access;
-> +	edata->total_count = dfi->ch_usage[busier_ch].total;
->  
->  	return 0;
->  }
-> @@ -176,47 +176,47 @@ MODULE_DEVICE_TABLE(of, rockchip_dfi_id_match);
->  static int rockchip_dfi_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> -	struct rockchip_dfi *data;
-> +	struct rockchip_dfi *dfi;
->  	struct devfreq_event_desc *desc;
->  	struct device_node *np = pdev->dev.of_node, *node;
->  
-> -	data = devm_kzalloc(dev, sizeof(struct rockchip_dfi), GFP_KERNEL);
-> -	if (!data)
-> +	dfi = devm_kzalloc(dev, sizeof(*dfi), GFP_KERNEL);
-> +	if (!dfi)
->  		return -ENOMEM;
->  
-> -	data->regs = devm_platform_ioremap_resource(pdev, 0);
-> -	if (IS_ERR(data->regs))
-> -		return PTR_ERR(data->regs);
-> +	dfi->regs = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(dfi->regs))
-> +		return PTR_ERR(dfi->regs);
->  
-> -	data->clk = devm_clk_get(dev, "pclk_ddr_mon");
-> -	if (IS_ERR(data->clk))
-> -		return dev_err_probe(dev, PTR_ERR(data->clk),
-> +	dfi->clk = devm_clk_get(dev, "pclk_ddr_mon");
-> +	if (IS_ERR(dfi->clk))
-> +		return dev_err_probe(dev, PTR_ERR(dfi->clk),
->  				     "Cannot get the clk pclk_ddr_mon\n");
->  
->  	node = of_parse_phandle(np, "rockchip,pmu", 0);
->  	if (!node)
->  		return dev_err_probe(&pdev->dev, -ENODEV, "Can't find pmu_grf registers\n");
->  
-> -	data->regmap_pmu = syscon_node_to_regmap(node);
-> +	dfi->regmap_pmu = syscon_node_to_regmap(node);
->  	of_node_put(node);
-> -	if (IS_ERR(data->regmap_pmu))
-> -		return PTR_ERR(data->regmap_pmu);
-> +	if (IS_ERR(dfi->regmap_pmu))
-> +		return PTR_ERR(dfi->regmap_pmu);
->  
-> -	data->dev = dev;
-> +	dfi->dev = dev;
->  
-> -	desc = &data->desc;
-> +	desc = &dfi->desc;
->  	desc->ops = &rockchip_dfi_ops;
-> -	desc->driver_data = data;
-> +	desc->driver_data = dfi;
->  	desc->name = np->name;
->  
-> -	data->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
-> -	if (IS_ERR(data->edev)) {
-> +	dfi->edev = devm_devfreq_event_add_edev(&pdev->dev, desc);
-> +	if (IS_ERR(dfi->edev)) {
->  		dev_err(&pdev->dev,
->  			"failed to add devfreq-event device\n");
-> -		return PTR_ERR(data->edev);
-> +		return PTR_ERR(dfi->edev);
->  	}
->  
-> -	platform_set_drvdata(pdev, data);
-> +	platform_set_drvdata(pdev, dfi);
->  
->  	return 0;
->  }
-
-Applied it. Thanks.
-
--- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIFR1ZSwgMDMgT2N0IDIwMjMgMDg6NDA6MTggKzAyMDAsIFJhZmHFgiBNacWCZWNraSB3cm90
+ZToKPiBGcm9tOiBSYWZhxYIgTWnFgmVja2kgPHJhZmFsQG1pbGVja2kucGw+Cj4gCj4gU3VwcG9y
+dCBmb3Igb2xkIE5WTUVNIGZpeGVkIGNlbGxzIHdhcyBkZXByZWNhdGVkIGluIGZhdm91ciBvZgo+
+ICJmaXhlZC1sYXlvdXQiLiBJdCdzIHN0aWxsIHBhcnQgb2YgdGhlIG52bWVtLnlhbWwgdGhvdWdo
+IGFuZCBtYXkgYmUKPiB1bmtub3dpbmdseSB1c2VkIGJ5IG5ldyBiaW5kaW5ncyBhZGRlZCB3aXRo
+b3V0IG11Y2ggb2YgYW5hbHl6ZS4KPiAKPiBUbyBtYWtlIGl0IG1vcmUgZGlmZmljdWx0IHRvIGFj
+Y2lkZW50YWxseSBzdXBwb3J0IG9sZCBzeW50YXggbW92ZSBpdHMKPiBiaW5kaW5nIHRvIHNlcGFy
+YXRlZCBmaWxlIHdpdGggImRlcHJlY2F0ZWQiIGluIGl0cyBuYW1lLgo+IAo+IFNpZ25lZC1vZmYt
+Ynk6IFJhZmHFgiBNacWCZWNraSA8cmFmYWxAbWlsZWNraS5wbD4KPiAtLS0KPiBWMjogRml4IHBh
+dGggdG8gbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sIGluIGFtbG9naWMsbWVzb242LXJ0Yy55
+YW1sCj4gCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9tdGQueWFtbCAgICAgICAgICB8
+ICA3ICsrKystCj4gIC4uLi9iaW5kaW5ncy9tdGQvcGFydGl0aW9ucy9udm1lbS1jZWxscy55YW1s
+ICB8ICAxICsKPiAgLi4uL252bWVtL2FtbG9naWMsbWVzb24tZ3hiYi1lZnVzZS55YW1sICAgICAg
+IHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vYW1sb2dpYyxtZXNvbjYtZWZ1c2UueWFtbCAg
+fCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9hcHBsZSxlZnVzZXMueWFtbCAgICAgICAgICB8
+ICAxICsKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbnZtZW0vaW14LW9jb3RwLnlhbWwgIHwg
+IDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vbWVkaWF0ZWssZWZ1c2UueWFtbCAgICAgICAgfCAg
+MSArCj4gIC4uLi9udm1lbS9taWNyb2NoaXAsc2FtYTdnNS1vdHBjLnlhbWwgICAgICAgICB8ICAx
+ICsKPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvbnZtZW0vbXhzLW9jb3RwLnlhbWwgIHwgIDEg
+Kwo+ICAuLi4vbnZtZW0vbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sICAgICAgICAgfCAyOCAr
+KysrKysrKysrKysrKysrKysrCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL252bWVtL252bWVt
+LnlhbWwgICAgICB8ICA5IC0tLS0tLQo+ICAuLi4vYmluZGluZ3MvbnZtZW0vcWNvbSxxZnByb20u
+eWFtbCAgICAgICAgICAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9xY29tLHNlYy1xZnBy
+b20ueWFtbCAgICAgICB8ICAxICsKPiAgLi4uL2JpbmRpbmdzL252bWVtL3Fjb20sc3BtaS1zZGFt
+LnlhbWwgICAgICAgIHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vcm9ja2NoaXAsb3RwLnlh
+bWwgICAgICAgICAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9udm1lbS9yb2NrY2hpcC1lZnVzZS55
+YW1sICAgICAgICB8ICAxICsKPiAgLi4uL252bWVtL3NvY2lvbmV4dCx1bmlwaGllci1lZnVzZS55
+YW1sICAgICAgIHwgIDEgKwo+ICAuLi4vYmluZGluZ3MvbnZtZW0vc3VucGx1cyxzcDcwMjEtb2Nv
+dHAueWFtbCAgfCAgMSArCj4gIC4uLi9iaW5kaW5ncy9ydGMvYW1sb2dpYyxtZXNvbjYtcnRjLnlh
+bWwgICAgICB8ICAxICsKPiAgMTkgZmlsZXMgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKSwgMTAg
+ZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbnZtZW0vbnZtZW0tZGVwcmVjYXRlZC1jZWxscy55YW1sCj4gCgpSZXZpZXdl
+ZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
