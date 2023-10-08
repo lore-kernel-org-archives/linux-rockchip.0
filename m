@@ -4,55 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E706BE95A82
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Oct 2023 10:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E1AE95A67
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Oct 2023 11:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/F5IG5SuN61qhtjFpy0w3K3d6bb9Q5oySiasiJyYVtQ=; b=uifpM0vv+3rWYB
-	VfrY3Z3PEOlc5HxptR9H0ptBta3QcP1c8P5lqJ/jgLE/CMH5eL/ZHPAol8Bk2RldJWxgbhIvpGEEu
-	a1eUE2zXXwSx4bONUdtpG4L1O35WPQNDPXo0EhMh1I+57UX9Qb/CZm6oYwdFzXlygpqI1tBaFld/j
-	QhXrmI+4ivHk6QX7QEeRddKPdVsWpnV1+YgNCXk0Sg+AR6VE8dtvf2U9FVHo4puL/Ki71VSkzRzsM
-	Qy66EXrcVv9B2IC7bilQHnMYtvQg1/Fy5fS3Q5GTyQaLpxklY2Naku/8pfBFHxMH9OqEg1Z02fAfH
-	NhvBtqwNi7iZJ2BHImjA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8rShhlxZRrRwUbo1uQI8h+3gckU3iMoRl9wqhxR2kno=; b=GVWhRSZyoD/cha
+	/PCxETDXN1XbBlk+3NKrGfX8cVH5vTOs3kspGKdztrJ7k3OnGvTPgsS/fAbRDGureMPo5lEj7GA4u
+	s94g3zDjBmQaCM7PDvOKsaGDzN07x+PMFSTpElfiAf7cbsozdCLP8LCUkHdIlDj3aLise7u7467cs
+	uhHWQVINYlhUFCu97XyalezGBCiCneEM1gCpdyePG2LAqeNQSF2Sm9lpbJZRDyHHGHVci/QCwyjsB
+	ZRtTo6ryWsI421RLOlPI6ph2yul8efWDH6LHMFtqT95RLsRwAlgzT+M6VjFZ2R6Tc1JI6huOlspai
+	puC5ZHt8+nFdwNLxDCHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpRUQ-008lkO-0I;
-	Sun, 08 Oct 2023 10:58:26 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1qpS0X-008o7J-18;
+	Sun, 08 Oct 2023 11:31:37 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpRUM-008lk1-2P
+	id 1qpS0R-008o6F-32
 	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Oct 2023 10:58:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1696762697; bh=qXa/e6dsZkHqTj5+9b+2AVei1x9XTbZ2qUQGrtBvnEU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dwGbQbsLJzPpqvpntiNI1HeMG3loOi+yEI9tQrHeF7fxdSzMQ0Oou0j2gqatvXBiN
-	 56GY0J2qpGciNqr1rcEalDfkIwjbxdDK47+Nx7ditupOEevfuejBup7PKrNCFdgXw4
-	 OD1Jzee3rofXZujURlcnKQrx8lqL2KLbqCMu/TMU=
-From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
-To: linux-rockchip@lists.infradead.org
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Mark Brown <broonie@kernel.org>,
-	Bjorn Andersson <quic_bjorande@quicinc.com>,
-	Jens Axboe <axboe@kernel.dk>,
-	Qais Yousef <qyousef@layalina.io>,
-	Stephen Hemminger <stephen@networkplumber.org>,
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH] MAINTAINERS: update my email address
-Date: Sun,  8 Oct 2023 12:58:07 +0200
-Message-ID: <20231008105812.1084226-1-megi@xff.cz>
+	Sun, 08 Oct 2023 11:31:35 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4066241289bso33322505e9.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 08 Oct 2023 04:31:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1696764688; x=1697369488; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8kpDL/2EkbzoWnMzxiTllgB1Bfvz+hmiO3MPGwZuxmA=;
+        b=jrjLBzontg7g8Zc8yuE2hNpOw/jCu9QqV3KYjtzrQDI4Hw2PDxrWuMgd7gUIYVwSjE
+         wf5Bt8eRFESzpuf7AC1POAXy/yLHalCD6ZIX7tJeLxhHQxwpSJJ04xcwAwFW0lqt4FS+
+         EhndufciVL2aPGy+WTNKXLiayV2Ij53nd0Yp2JJVeaWOu3N5UK3iz/+kW7g0fpXNDT3X
+         Y0tzrz38u1By1FrAz6v1k42HXT+Frb7KR6RFhFXmKb4FiPaGyMfPJMaSLA/LiRJ2iUhr
+         TtD/9grCqZv8FrEAWmqTl6D1jVfMZ1PCW76b/Z098wDTaNHLOW/y2fBQ7jhaiqxlPlQ5
+         /VLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696764688; x=1697369488;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8kpDL/2EkbzoWnMzxiTllgB1Bfvz+hmiO3MPGwZuxmA=;
+        b=YY9WvuEoNxaG5K+w+MheSqyf8czjKtB3Id3Yb3vBvqsMYndx2fcpSsUyDN08uQNFY+
+         xZDHWICa6gTf7qBZt2//ABirXoTmXCraDMenPL1qCvwilrICWPGF6dHhrPZSR5KoHW4P
+         2jlDbo0C5UKdwkXyqBBfXQCO6Gi9x36BMP8ttp8yzXHC3fD2IbUOtEkhQkbLSMZdOSAC
+         vgIVTIF9RmA3NwJBlokO2MLGOuTkwsZJyCvXJC5tczsiMFDDUwdQYhlrpIyZ/KobKq0d
+         5KKYNF5FHrl4OCeh6bPvJ2ttUyLwNuJ+Q8MW+DyhU7FSfYOQgbpDX6MGkxMC1u2LS37P
+         C4Tw==
+X-Gm-Message-State: AOJu0YwO9t2qB9CRxhJJ9dd5vcOU8Je+oRZ5XfiU0lY2rIiGR37TWPfN
+	/6u7amBD/bln6V/VClJndY8Sng==
+X-Google-Smtp-Source: AGHT+IFPEbZR50sq5ODDkFct/jnfXgWL6wPX/6VCH/Rs6bVrKrQ3/cjmK38N6x+AWj1VB3/hWYVlyQ==
+X-Received: by 2002:adf:fd0f:0:b0:319:8a28:4001 with SMTP id e15-20020adffd0f000000b003198a284001mr11889027wrr.41.1696764687977;
+        Sun, 08 Oct 2023 04:31:27 -0700 (PDT)
+Received: from [192.168.1.197] (5-157-101-10.dyn.eolo.it. [5.157.101.10])
+        by smtp.gmail.com with ESMTPSA id 10-20020a05600c228a00b004065d72ab19sm10659953wmf.0.2023.10.08.04.31.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Oct 2023 04:31:27 -0700 (PDT)
+Message-ID: <f6aad872-8732-48a0-a1d8-5d7180c6ea57@linaro.org>
+Date: Sun, 8 Oct 2023 13:31:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: Use device_get_match_data()
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, David Lechner <david@lechnology.com>,
+ Sekhar Nori <nsekhar@ti.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Tero Kristo <kristo@kernel.org>
+Cc: patches@opensource.cirrus.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org
+References: <20231006213959.334439-1-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231006213959.334439-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231008_035823_552698_BCFC8B3B 
-X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-CacheID: sfid-20231008_043131_983328_65E720D8 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,37 +145,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpVcGRhdGUgbXkgZW1haWwtYWRkcmVz
-cyBpbiBNQUlOVEFJTkVSUyB0byA8bWVnaUB4ZmYuY3o+LiBBbHNvIGFkZAoubWFpbG1hcCBlbnRy
-aWVzIHRvIG1hcCBteSBvbGQsIG5vdyBibG9ja2VkLCBlbWFpbCBhZGRyZXNzLgoKU2lnbmVkLW9m
-Zi1ieTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Ci0tLQogLm1haWxtYXAgICAgfCAxICsK
-IE1BSU5UQUlORVJTIHwgMiArLQogMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEg
-ZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS8ubWFpbG1hcCBiLy5tYWlsbWFwCmluZGV4IGEwYTZl
-ZmU4NzE4Ni4uMjA4NGJmOGVjMmFiIDEwMDY0NAotLS0gYS8ubWFpbG1hcAorKysgYi8ubWFpbG1h
-cApAQCAtNDUyLDYgKzQ1Miw3IEBAIE9sZWtzaWogUmVtcGVsIDxsaW51eEByZW1wZWwtcHJpdmF0
-LmRlPiA8Zml4ZWQtdGVybS5PbGVrc2lqLlJlbXBlbEBkZS5ib3NjaC5jb20+CiBPbGVrc2lqIFJl
-bXBlbCA8bGludXhAcmVtcGVsLXByaXZhdC5kZT4gPG8ucmVtcGVsQHBlbmd1dHJvbml4LmRlPgog
-T2xla3NpaiBSZW1wZWwgPGxpbnV4QHJlbXBlbC1wcml2YXQuZGU+IDxvcmVAcGVuZ3V0cm9uaXgu
-ZGU+CiBPbGl2ZXIgVXB0b24gPG9saXZlci51cHRvbkBsaW51eC5kZXY+IDxvdXB0b25AZ29vZ2xl
-LmNvbT4KK09uZMWZZWogSmlybWFuIDxtZWdpQHhmZi5jej4gPG1lZ291c0BtZWdvdXMuY29tPgog
-T3phIFBhd2FuZGVlcCA8cXVpY19wb3phQHF1aWNpbmMuY29tPiA8cG96YUBjb2RlYXVyb3JhLm9y
-Zz4KIFBhbGkgUm9ow6FyIDxwYWxpQGtlcm5lbC5vcmc+IDxwYWxpLnJvaGFyQGdtYWlsLmNvbT4K
-IFBhb2xvICdCbGFpc29yYmxhZGUnIEdpYXJydXNzbyA8YmxhaXNvcmJsYWRlQHlhaG9vLml0Pgpk
-aWZmIC0tZ2l0IGEvTUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCBiZjNlNmNlODZjYmMu
-LmM5ZDUzYzRmYjg5ZSAxMDA2NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRBSU5FUlMK
-QEAgLTY3NTQsNyArNjc1NCw3IEBAIEY6CWRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaXRy
-b25peC1zdDc3MDEuYwogRFJNIERSSVZFUiBGT1IgU0lUUk9OSVggU1Q3NzAzIFBBTkVMUwogTToJ
-R3VpZG8gR8O8bnRoZXIgPGFneEBzaWd4Y3B1Lm9yZz4KIFI6CVB1cmlzbSBLZXJuZWwgVGVhbSA8
-a2VybmVsQHB1cmkuc20+Ci1SOglPbmRyZWogSmlybWFuIDxtZWdvdXNAbWVnb3VzLmNvbT4KK1I6
-CU9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6PgogUzoJTWFpbnRhaW5lZAogRjoJRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvcm9ja3RlY2gsamgwNTduMDA5
-MDAueWFtbAogRjoJZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpdHJvbml4LXN0NzcwMy5j
-Ci0tIAoyLjQyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+On 06/10/2023 23:39, Rob Herring wrote:
+> Use preferred device_get_match_data() instead of of_match_device() to
+> get the driver match data. With this, adjust the includes to explicitly
+> include the correct headers.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/clk/clk-lochnagar.c             |  9 ++-------
+>  drivers/clk/davinci/da8xx-cfgchip.c     |  8 +++-----
+>  drivers/clk/davinci/pll.c               | 10 +++-------
+>  drivers/clk/davinci/psc.c               | 10 +++-------
+>  drivers/clk/qcom/gcc-msm8960.c          | 13 +++++--------
+>  drivers/clk/qcom/gcc-msm8974.c          | 10 +++-------
+>  drivers/clk/qcom/kpss-xcc.c             |  9 ++-------
+>  drivers/clk/qcom/krait-cc.c             | 14 +++++---------
+>  drivers/clk/qcom/mmcc-msm8960.c         | 16 +++++-----------
+>  drivers/clk/qcom/mmcc-sdm660.c          |  8 ++------
+>  drivers/clk/rockchip/clk-rk3399.c       |  9 ++-------
+>  drivers/clk/samsung/clk-exynos-clkout.c |  8 +++-----
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> # Samsung
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
