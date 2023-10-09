@@ -4,61 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB272CD612D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 19:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6737FCD6131
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 20:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0TSMIhENIsUdR2qaEWOAzUY6zEm+bcRx3CuQ4+WbHqk=; b=rLw3zmCrEq6MoIGwZZCZOUGziV
-	8datNbVEu7/Shq2nbfn9reHnKmS8R2PbaA3cAE+21KYSXt2jt4gIozGoVBZy94pvQiGQXJE8jNaju
-	VPSkz/MZgV1GuJnFLiJkSaXvHtNTAol3Q6iZQg0kvgZ++QDxw7rDQaH9c+UHT9YKNyOmqCbEJbcdm
-	F5qcVz+hrXy0idxr2kuO4EfVot2hn3fhxivmhZGEgtSkRmiE24zldOs9Ch3Zani4oRjdW5FlYaltn
-	ZzsqQXiskgjPdd5W3RYiLLXLlPgcF95rDSIZPXlkB6grQAIqKEbL9uPMy2jKR1TA5X4bURknUAbFx
-	Ij3ogaJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BCKnssN8XY873pjqxbEzCgDHYzyO2iDdh9kc5Frl2lE=; b=aSjFDX0w+QR4Jn
+	nD6VoEdqZX9UPk4ptF1fyGVsTbpLJU0p9QOiugA/x1nMfUlu+XTeZU0cYJIEWCPLx3chLn0wr6Izg
+	DH4neU9hxjM1iUeSZQu0hRpGra76k7EiPvWppTAHSlP/hTELT/CXvJy+SQzM2SDS003tpCi5tzh0u
+	pCoeGj85vzxegumfgWXkeUTmIBryZpRgcvYlduH29Tvd0D7QTVd8GR4X4jwwAlhe7MgoCgrNlpAUn
+	Du+XIKjYGqKgYTEcp3EuAHidKkEQdT0P9q/8y4SvHnzsvksIYpQFLCL4cL7Jg5Df0yaFzPHhsrf8c
+	fjgjH4r/n3VIYixsZ9og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvxs-00BV51-0C;
-	Mon, 09 Oct 2023 19:30:52 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qpwQE-00BWtu-1p;
+	Mon, 09 Oct 2023 20:00:10 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvxo-00BV46-2p
+	id 1qpwQ9-00BWs2-2I
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Oct 2023 19:30:50 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpvxa-0004aW-PB; Mon, 09 Oct 2023 21:30:34 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpvxZ-000UJS-07; Mon, 09 Oct 2023 21:30:33 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1qpvxY-00CWYe-Mq; Mon, 09 Oct 2023 21:30:32 +0200
-Date: Mon, 9 Oct 2023 21:30:32 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Rob Herring <robh@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] pwm: Use device_get_match_data()
-Message-ID: <20231009193032.y7vn2bnluqhrfmmy@pengutronix.de>
-References: <20231009172923.2457844-21-robh@kernel.org>
+	Mon, 09 Oct 2023 20:00:08 +0000
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-6c62cb79b02so3268261a34.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 09 Oct 2023 13:00:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1696881603; x=1697486403; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=XnnNZrfQHu6U702fU9qv9YujuMNy/CqVElyAPuDlNS8=;
+        b=etPPSnzmJgzQYzJLjCfaPs3lrXtlSK0BY7Fxbw0vC2ycifMhWx8OJ/rsbHe5xG+hj6
+         tBoLjBe7adqQipQF5SIJ5rWyTnn2YUTyXEztaEnLHbzxVD6smSlGZCuDQ9DHo6Gj2/7/
+         odQemWvjtx8YAQKvKPWUqdfny0MuOiNhihE94=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696881603; x=1697486403;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XnnNZrfQHu6U702fU9qv9YujuMNy/CqVElyAPuDlNS8=;
+        b=s1bj3xwo0+/yU08Bsu/KFoqUrgWofFWF+Z11FC68/rUw0X24P2aXhi0/4Fo3IfOYo0
+         Sa9zSe/dwvT4wCXbYPIWCbuwlIKPkX8PX2Ygg4gaFAl6W83TDQgBLAt3sMdugtn1XBmJ
+         nuDWVKryvZSjXw8wCAzjV6PMTcpGeEfYH8pFjiAUJclEiS+0IkCbP4lAVhk3yEY8ETkv
+         ej2ZoHpzhoZ/Mv0cW5+dqMf4k9yHVTKAzy3jxxNpL1bFk2dH1yUGpKTKRI5SeJrFqK4+
+         jdmKDRKZbsEXdGq2PPEAFznaY1Z7B+/VeGQx5uqLXhrLnDU8Kd4yvdpPIE/+ayAjqK2G
+         Ga7w==
+X-Gm-Message-State: AOJu0Yz0rGlTv91vXGL9BCBlWcojbYoLa9tTmT5im1VwO1vbUivdPtRZ
+	fJFOlimg5VHyoB2so3PoG+eXGw==
+X-Google-Smtp-Source: AGHT+IFr2diKV0FUnPCKvbVJgM9zVEQvrx9lAF5Q6PUGXjcm/39HFBRDZ6m3k4XI8U3B8QraX/ZFbw==
+X-Received: by 2002:a05:6358:42a6:b0:143:321:f36b with SMTP id s38-20020a05635842a600b001430321f36bmr14035556rwc.18.1696881603565;
+        Mon, 09 Oct 2023 13:00:03 -0700 (PDT)
+Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
+        by smtp.gmail.com with ESMTPSA id b21-20020a170902d31500b001bdc8a5e96csm10053257plc.169.2023.10.09.13.00.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Oct 2023 13:00:03 -0700 (PDT)
+Date: Mon, 9 Oct 2023 12:59:58 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>, linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org, linux-mtd@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-hardening@vger.kernel.org,
+	llvm@lists.linux.dev
+Subject: Re: [PATCH] mtd: rawnand: rockchip: Use struct_size()
+Message-ID: <202310091259.1D9E73DAE@keescook>
+References: <481721c2c7fe570b4027dbe231d523961c953d5a.1696146232.git.christophe.jaillet@wanadoo.fr>
 MIME-Version: 1.0
-In-Reply-To: <20231009172923.2457844-21-robh@kernel.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <481721c2c7fe570b4027dbe231d523961c953d5a.1696146232.git.christophe.jaillet@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_123048_913089_A6B24E1C 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20231009_130005_834026_D367B9BF 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,162 +93,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4323873562391219392=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Sun, Oct 01, 2023 at 09:44:04AM +0200, Christophe JAILLET wrote:
+> Use struct_size() instead of hand writing it.
+> This is less verbose and more robust.
+> 
+> While at it, prepare for the coming implementation by GCC and Clang of the
+> __counted_by attribute. Flexible array members annotated with __counted_by
+> can have their accesses bounds-checked at run-time checking via
+> CONFIG_UBSAN_BOUNDS (for array indexing) and CONFIG_FORTIFY_SOURCE (for
+> strcpy/memcpy-family functions).
+> 
+> Also remove a useless comment about the position of a flex-array in a
+> structure.
+> 
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 
---===============4323873562391219392==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b4ssm2ues5etelul"
-Content-Disposition: inline
+It seems the consensus is to keep the struct_size() changes together
+with the __counted_by annotation, so yes, this looks correct to me:
 
+Reviewed-by: Kees Cook <keescook@chromium.org>
 
---b4ssm2ues5etelul
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Oct 09, 2023 at 12:29:16PM -0500, Rob Herring wrote:
-> Use preferred device_get_match_data() instead of of_match_device() to
-> get the driver match data. With this, adjust the includes to explicitly
-> include the correct headers.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/pwm/pwm-img.c      | 8 ++------
->  drivers/pwm/pwm-rockchip.c | 9 ++-------
->  2 files changed, 4 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/pwm/pwm-img.c b/drivers/pwm/pwm-img.c
-> index 326af85888e7..e32b5e8c203d 100644
-> --- a/drivers/pwm/pwm-img.c
-> +++ b/drivers/pwm/pwm-img.c
-> @@ -13,9 +13,9 @@
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> -#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/property.h>
->  #include <linux/pwm.h>
->  #include <linux/regmap.h>
->  #include <linux/slab.h>
-> @@ -261,7 +261,6 @@ static int img_pwm_probe(struct platform_device *pdev)
->  	u64 val;
->  	unsigned long clk_rate;
->  	struct img_pwm_chip *imgchip;
-> -	const struct of_device_id *of_dev_id;
-> =20
->  	imgchip =3D devm_kzalloc(&pdev->dev, sizeof(*imgchip), GFP_KERNEL);
->  	if (!imgchip)
-> @@ -273,10 +272,7 @@ static int img_pwm_probe(struct platform_device *pde=
-v)
->  	if (IS_ERR(imgchip->base))
->  		return PTR_ERR(imgchip->base);
-> =20
-> -	of_dev_id =3D of_match_device(img_pwm_of_match, &pdev->dev);
-> -	if (!of_dev_id)
-> -		return -ENODEV;
-> -	imgchip->data =3D of_dev_id->data;
-> +	imgchip->data =3D device_get_match_data(&pdev->dev);
-
-Is this a semantical change? If there is a match, the code is
-equivalent. Otherwise it was:
-
-	return -ENODEV;
-
-before and now it's
-
-	imgchip->data =3D NULL;
-
-isn't it?
-
->  	imgchip->periph_regs =3D syscon_regmap_lookup_by_phandle(pdev->dev.of_n=
-ode,
->  							       "img,cr-periph");
-> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-> index 03ee18fb82d5..339165ef1f07 100644
-> --- a/drivers/pwm/pwm-rockchip.c
-> +++ b/drivers/pwm/pwm-rockchip.c
-> @@ -10,8 +10,8 @@
->  #include <linux/io.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> -#include <linux/of_device.h>
->  #include <linux/platform_device.h>
-> +#include <linux/property.h>
->  #include <linux/pwm.h>
->  #include <linux/time.h>
-> =20
-> @@ -297,16 +297,11 @@ MODULE_DEVICE_TABLE(of, rockchip_pwm_dt_ids);
-> =20
->  static int rockchip_pwm_probe(struct platform_device *pdev)
->  {
-> -	const struct of_device_id *id;
->  	struct rockchip_pwm_chip *pc;
->  	u32 enable_conf, ctrl;
->  	bool enabled;
->  	int ret, count;
-> =20
-> -	id =3D of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
-> -	if (!id)
-> -		return -EINVAL;
-> -
->  	pc =3D devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
->  	if (!pc)
->  		return -ENOMEM;
-> @@ -345,7 +340,7 @@ static int rockchip_pwm_probe(struct platform_device =
-*pdev)
-> =20
->  	platform_set_drvdata(pdev, pc);
-> =20
-> -	pc->data =3D id->data;
-> +	pc->data =3D device_get_match_data(&pdev->dev);
->  	pc->chip.dev =3D &pdev->dev;
->  	pc->chip.ops =3D &rockchip_pwm_ops;
->  	pc->chip.npwm =3D 1;
-
-This has the same semantical change.
-
-If this change is ok, it IMHO needs a more verbose commit log.
-
-Best regards
-Uwe
-=20
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---b4ssm2ues5etelul
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmUkVNcACgkQj4D7WH0S
-/k410wf/XHMt6hh90SKkqHpgUzDi2hphcdwAwpbBNl+kFGlxlCfE2Nei/c5UXFL7
-+f1VaEeTwk5oP11cZekezkN15BFqlOb9ppgttRaQwYRpiSFlUaJ4JtHKLNEcTAKN
-bvQWffqdmRY1D2rw4aa1tHWce95IEb2pxgIFqhJd3RN2l94+qurOD0aRQj7YH9Mz
-KDRq0t26Rph5PvXn+SKcg68YAvkzn1imVTLumKggDRyWf2rL/xAbFq6byHk/GcJ7
-DJQcTWLPI0zJc1Ck5T3EFvBvRoeRKUHi32Xm3eOOksgQTTEBBqQDW0rBWnj5OESY
-pg/eTzQx5mWz+hP4OtRyd1iiIG1+vw==
-=n1+d
------END PGP SIGNATURE-----
-
---b4ssm2ues5etelul--
-
-
---===============4323873562391219392==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Kees Cook
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4323873562391219392==--
-
