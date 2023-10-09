@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0869FCD6136
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57E6CD6137
 	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 20:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,49 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3elzcazr6jm89YJlvOj9Y+/90AjkQdc3EUSMXWqrQzs=; b=qmJIBxAejv6wlo
-	GNU7ovxPp9EkV0Z2G1Qj3Vn+mb/Ia/YvMaHd8TwiM2WttlT2wnlU2kgyryzZIEw+ULmsewQKkiJAc
-	s1kpAR3qLGdjpItgZDqUmFfq9mZ6qIAqp+yzxrcb45lw4cYCCjUdHCVVWAoBrPbNK5+tIInVDC9H3
-	CJpQ96UZlpzM0lHKE1uLvKbZgpbXGU83uJgix0MZ6wPt24b0OSemUWiwi+SQCxh/ZBYa6r5zQw8Am
-	GV23k/YFPsvMY5+CX3RIkrUQTsqif5k+tegARjlEgGzjqjgJ9rv2Pek/yov76iXEu4ouIzYMd237i
-	cWkso4/gz0fUZrrmpMWQ==;
+	List-Owner; bh=5kfgcKjG8j4CLJq9DqAav7SGKovI9lZW5yZOcin0lUc=; b=MCuNAl769ccixz
+	3zGeyuMRqMuJ/7jaBR7myZFokxB68nP2najqS6mcQtZPJyrqhZddvA8XKo3781yYvc13dEp8KabVJ
+	FF1kRuxzplLv7SrTbDT8fjHqoPYSSTxdzAwHTGuMTEfSdqxSVuUW8iNT1IPlzQFHNZzZFyUBVRSne
+	6kSJZ/oaN4Y2zxpkGcsfsJ03w9gtKNNuyLm2HVR2gUPe+TMORyNECxm3DxY4XBnIb4y/F/6rCA6b0
+	buPhH4uEmwRJPHxdeW0HD4my+VhoNpGuwOViAcZa/Hoc8fHEr5UndBGpQ/bGSMAzHiIACvmJmUpcQ
+	0Wc2XVA/wlwC+xwTa6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpx0I-00BaQh-1y;
-	Mon, 09 Oct 2023 20:37:26 +0000
+	id 1qpx0H-00BaPV-1k;
+	Mon, 09 Oct 2023 20:37:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpx0D-00BaOo-1v;
-	Mon, 09 Oct 2023 20:37:23 +0000
+	id 1qpx0C-00BaOa-2B;
+	Mon, 09 Oct 2023 20:37:21 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qpx07-00058Z-Dy; Mon, 09 Oct 2023 22:37:15 +0200
+	id 1qpx07-00058Z-Nj; Mon, 09 Oct 2023 22:37:15 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: David Airlie <airlied@gmail.com>,
-	Sean Paul <seanpaul@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Jeffy Chen <jeffy.chen@rock-chips.com>
+To: hjc@rock-chips.com,
+	Michael Tretter <m.tretter@pengutronix.de>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	dri-devel@lists.freedesktop.org,
+	daniel@ffwll.ch,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: cdn-dp: Fix some error handling paths in cdn_dp_probe()
-Date: Mon,  9 Oct 2023 22:37:10 +0200
-Message-Id: <169688381986.192795.11170132261049443621.b4-ty@sntech.de>
+	kernel@pengutronix.de,
+	airlied@gmail.com
+Subject: Re: [PATCH] drm/rockchip: vop2: Demote message in mod_supported to drm_dbg_kms
+Date: Mon,  9 Oct 2023 22:37:11 +0200
+Message-Id: <169688381983.192795.11789020562880068365.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <8494a41602fadb7439630921a9779640698f2f9f.1693676045.git.christophe.jaillet@wanadoo.fr>
-References: <8494a41602fadb7439630921a9779640698f2f9f.1693676045.git.christophe.jaillet@wanadoo.fr>
+In-Reply-To: <20231009103753.830458-1-m.tretter@pengutronix.de>
+References: <20231009103753.830458-1-m.tretter@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_133721_629357_4B1D7CC2 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231009_133720_718245_990A89C8 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,18 +67,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2 Sep 2023 19:34:31 +0200, Christophe JAILLET wrote:
-> cdn_dp_audio_codec_init() can fail. So add some error handling.
+On Mon, 9 Oct 2023 12:37:53 +0200, Michael Tretter wrote:
+> Checking if a modifier is supported by a plane is normal behavior. It is
+> normal that a plane may not support certain modifiers. Failing the check
+> doesn't justify an error message in the kernel log and may mislead
+> users.
 > 
-> If component_add() fails, the previous cdn_dp_audio_codec_init() call
-> should be undone, as already done in the remove function.
+> Demote the error message to drm_dbg_kms to only print the message if the
+> respective debug messages are enabled. This is similar to the behavior
+> in rockchip_drm_vop.c.
 > 
-> 
+> [...]
 
 Applied, thanks!
 
-[1/1] drm/rockchip: cdn-dp: Fix some error handling paths in cdn_dp_probe()
-      commit: 44b968d0d0868b7a9b7a5c64464ada464ff4d532
+[1/1] drm/rockchip: vop2: Demote message in mod_supported to drm_dbg_kms
+      commit: eb23cffdd7f085149799e5eda12a9aff792cc34d
 
 Best regards,
 -- 
