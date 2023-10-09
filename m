@@ -4,96 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F436E95A8E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 13:07:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ADB7E95A96
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 13:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2jQ7zvXhwSweoeeNuWtu1zXTOpVTv4FQjdEJwuYtbpI=; b=sCZRBRmboqVUP1
-	pPQTfVxMOXx0hQPZoN1sfyqMWqX21nqte50QVqQp0wCdZqNlpfnCt2c5TwSf0aI+zajaoywuHu9pM
-	88xCClZdgRbWi1kL/4FP+EyoZEAEBEtggSaIr5v880hizMKDNbZJ3Hj4DqqqjZ2+IizbyasDF3Mok
-	JfKA6+dbn8PEjlFOjfjTQgwZQ8Ud2+uSxiUGchpUoOIrza9WOuunIDpAQadq0u+1LavXmDjCDZN9A
-	OM/q0BISVfyBodQMvgb0UO+RCW223apHcsdRkqtEtChK7ovq2trw7UONfWFeiqqB0galmb0875yGO
-	w/0Vsbhq4TDalEVs1oTw==;
+	List-Owner; bh=XE7x5QIZVNEeqe1LcKlLB5YVB4zgn98ZigV44x2KhG0=; b=DvKZx4dMcob4t8
+	C2pjBRI9CgbQudIyYh92Nch4L4o49GVf+ZQjLv8wCL7McEvp9blIPLx1LLRwqUeWhFv0uWFnvqG/z
+	xD+OfA2sHxeqfxtRP35majv4B9Ay6wlwkplNIsygslHDrZjg3ezMX4Hu90NpE73gK+4PI6uIPPVPi
+	6XXFEQx3i2FH0/zSXxmO2Z+uX5RldsookNJ1gaIxVJSp5Vs2rIlA75+sWgdTqIw8gzgJUIwqQ4fE8
+	JSChyuiI5WyHTath4v1ZD0YmCldCLeK2Cb5I8Wqyjs7Dp2p86dOgx7G2Hbfa3zPGx4b/UBv7g8cZ5
+	zJgx+fgx78QzOgRp6ufA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qppyH-00Al7G-36;
-	Mon, 09 Oct 2023 13:06:53 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1qpq1i-00Am1k-0b;
+	Mon, 09 Oct 2023 13:10:26 +0000
+Received: from mx07-00178001.pphosted.com ([185.132.182.106])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qppyE-00Al5n-2U;
-	Mon, 09 Oct 2023 13:06:52 +0000
-Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39988KWV002751;
-	Mon, 9 Oct 2023 15:06:33 +0200
+	id 1qpq1d-00Alx9-2W;
+	Mon, 09 Oct 2023 13:10:25 +0000
+Received: from pps.filterd (m0369458.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 399D7FAX012942;
+	Mon, 9 Oct 2023 15:10:12 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
 	message-id:date:mime-version:subject:to:cc:references:from
 	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=3PQ+2v2hmYuHs5jDOC8Az7oTSOTXepldPGCW+7kNOTA=; b=qj
-	KXN6ucPltGfUQkCxs5eJy7A75jo7dich1n9YVbSe4Eii8m5W4Nbhpj+Fn/qDpai5
-	Dbo9az6CTZcEyjF5vlr3tce4X4YgmKmg0OPJ9hnWqu9Z2OlOtebz6gtyJb2Z/J6t
-	xc9ps9L7MmTXwV+T0t0XHRjixFUwKPPfuOqxzONPy2uecd6OVygRbjgmxK3toVK+
-	nvZKlPFnhc10HgFuCJnCOVdHMdZCyGsQnj++QSIPoZ4XvfN80uhgRa/i7Ut6/+g+
-	mtnknabD4AxY0yNQeLZBNya+nocaQ9n4k+zR2xJwwxvDkZzK/04tESU95bPjf5a4
-	OiQr0lskndAPscCSkm3g==
+	selector1; bh=dfLHM8Y/UzU7etH/A55fKiYTRZ0gEKXngehJqU3T/I4=; b=rl
+	PHqK7uLpGElo7aPc2ynDZjZdrdMI1PGlvuA8yPxnSS/0AZRuM/uMd/UPLm9rt0Wx
+	EuEeQZ1IK+8IUHZiBWhiThDPOHxnqGAGotdjN+QFeyq7marVITHx78VGcy2+SQIO
+	l/ikBrPFHjaDK0kyQnamiAaHyD4bfLSo9olcY+5GoQuCoKRwzUe5TVMZv4LgF9v3
+	5T3AFJr8yNHQbcBJmuK0xZJvw9QvdlKmxe84W50z+03p5gdtxiaAmiMvaIqH0cdt
+	jJ7oHazCg3ng0BHT5jP6ktR6fP5aMHlQEWjhU1K06PYcv8Q2GMElfefPD2b5MuH9
+	GSs96KProJ6rztMrpAYw==
 Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhfdw9uw-1
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhk3d8vw-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Oct 2023 15:06:32 +0200 (MEST)
+	Mon, 09 Oct 2023 15:10:12 +0200 (MEST)
 Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 5FA51100063;
-	Mon,  9 Oct 2023 15:06:30 +0200 (CEST)
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 056C310005E;
+	Mon,  9 Oct 2023 15:10:12 +0200 (CEST)
 Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 52ABC23D411;
-	Mon,  9 Oct 2023 15:06:30 +0200 (CEST)
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id F0E38245508;
+	Mon,  9 Oct 2023 15:10:11 +0200 (CEST)
 Received: from [10.201.20.120] (10.201.20.120) by SHFDAG1NODE1.st.com
  (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 9 Oct
- 2023 15:06:29 +0200
-Message-ID: <fb77b886-b557-b2af-a2f5-c0057a95b589@foss.st.com>
-Date: Mon, 9 Oct 2023 15:06:28 +0200
+ 2023 15:10:11 +0200
+Message-ID: <b4367291-9e9e-dae3-3b56-c487e714683c@foss.st.com>
+Date: Mon, 9 Oct 2023 15:10:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH 3/7] dt-bindings: media: Document STM32MP25 VENC video
- encoder
+Subject: Re: [PATCH 1/7] dt-bindings: media: Document STM32MP25 VDEC video
+ decoder
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Adam Ford <aford173@gmail.com>
-CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Philipp Zabel
-	<p.zabel@pengutronix.de>,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+        Ezequiel Garcia
+	<ezequiel@vanguardiasur.com.ar>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
         Mauro Carvalho Chehab <mchehab@kernel.org>,
-        Hans
- Verkuil <hverkuil@xs4all.nl>, <linux-media@vger.kernel.org>,
+        Hans Verkuil
+	<hverkuil@xs4all.nl>, <linux-media@vger.kernel.org>,
         Maxime Coquelin
 	<mcoquelin.stm32@gmail.com>,
         Alexandre Torgue <alexandre.torgue@foss.st.com>,
         <linux-stm32@st-md-mailman.stormreply.com>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+        Rob Herring <robh+dt@kernel.org>,
+        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley
+	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        Andrzej
- Pietrasiewicz <andrzej.p@collabora.com>
+        <linux-rockchip@lists.infradead.org>
+CC: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 References: <20231004091552.3531659-1-hugues.fruchet@foss.st.com>
- <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
- <CAHCN7xKrriTPaRMJ-r86cSgFDUUP1At08imLBr_zEP0g3fga_g@mail.gmail.com>
- <20231006162703.GA4030032-robh@kernel.org>
+ <20231004091552.3531659-2-hugues.fruchet@foss.st.com>
+ <d5dc9b70-00b5-4bda-8fe9-9438f19ecba6@linaro.org>
 From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
-In-Reply-To: <20231006162703.GA4030032-robh@kernel.org>
+In-Reply-To: <d5dc9b70-00b5-4bda-8fe9-9438f19ecba6@linaro.org>
 X-Originating-IP: [10.201.20.120]
 X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
  (10.75.129.69)
 X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-09_11,2023-10-09_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_060651_118729_2693EC7F 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20231009_061022_142748_441269BD 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +104,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUm9iLAoKT24gMTAvNi8yMyAxODoyNywgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24gV2VkLCBP
-Y3QgMDQsIDIwMjMgYXQgMDY6NDE6MDlQTSAtMDUwMCwgQWRhbSBGb3JkIHdyb3RlOgo+PiBPbiBX
-ZWQsIE9jdCA0LCAyMDIzIGF0IDQ6MTbigK9BTSBIdWd1ZXMgRnJ1Y2hldAo+PiA8aHVndWVzLmZy
-dWNoZXRAZm9zcy5zdC5jb20+IHdyb3RlOgo+Pj4KPj4+IEFkZCBTVE0zMk1QMjUgVkVOQyB2aWRl
-byBlbmNvZGVyIGJpbmRpbmdzLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEh1Z3VlcyBGcnVjaGV0
-IDxodWd1ZXMuZnJ1Y2hldEBmb3NzLnN0LmNvbT4KPj4+IC0tLQo+Pj4gICAuLi4vYmluZGluZ3Mv
-bWVkaWEvc3Qsc3RtMzJtcDI1LXZlbmMueWFtbCAgICAgfCA1NiArKysrKysrKysrKysrKysrKysr
-Cj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspCj4+PiAgIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvc3Qsc3RtMzJt
-cDI1LXZlbmMueWFtbAo+Pj4KPj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvbWVkaWEvc3Qsc3RtMzJtcDI1LXZlbmMueWFtbCBiL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9zdCxzdG0zMm1wMjUtdmVuYy55YW1sCj4+PiBuZXcg
-ZmlsZSBtb2RlIDEwMDY0NAo+Pj4gaW5kZXggMDAwMDAwMDAwMDAwLi5jNjllMGEzNGY2NzUKPj4+
-IC0tLSAvZGV2L251bGwKPj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9tZWRpYS9zdCxzdG0zMm1wMjUtdmVuYy55YW1sCj4+PiBAQCAtMCwwICsxLDU2IEBACj4+PiAr
-IyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjAgT1IgQlNELTItQ2xhdXNlKQo+Pj4g
-Kwo+Pj4gKyVZQU1MIDEuMgo+Pj4gKy0tLQo+Pj4gKyRpZDogaHR0cDovL2RldmljZXRyZWUub3Jn
-L3NjaGVtYXMvbWVkaWEvc3Qsc3RtMzJtcDI1LXZlbmMueWFtbCMKPj4KPj4gQ2FuIHRoaXMgZHQt
-YmluZGluZyBiZSBtYWRlIG1vcmUgZ2VuZXJpYywgbGlrZSBzb21ldGhpbmcgbGlrZQo+PiBoYW50
-cm8taDEgb3IgVkM4MDAwTmFub0U/Cj4+Cj4+IEkgdGhpbmsgdGhlcmUgd2lsbCBiZSBtb3JlIGJv
-YXJkcyB0aGF0IG1heSBpbmNvcnBvcmF0ZSB0aGUgSGFudHJvLUgxCj4+IG9yIGEgVkM4MDAwIGlu
-IHRoZSBmdXR1cmUsIGJlY2F1c2UgSSBkb24ndCB0aGluayB0aGlzIElQIGlzIHVuaXF1ZSB0bwo+
-PiB0aGUgU1RNMzJNUDI1Lgo+IAo+IFVubGVzcyB0aGUgdW5kZXJseWluZyBJUCBpcyB3ZWxsIGRv
-Y3VtZW50ZWQgKGkuZS4gcHVibGljKSwgdGhlbiBpdCdzCj4ga2luZCBvZiBwb2ludGxlc3MuIEV2
-ZXJ5b25lIHdpbGwganVzdCBpbnZlbnQgdGhlaXIgb3duIG51bWJlcnMgYW5kIG5hbWVzCj4gb2Yg
-Y2xvY2tzLCByZXNldHMsIGV0Yy4gdW5sZXNzIHNvbWVvbmUgY2FuIGVuZm9yY2Ugbm90IGRvaW5n
-IHRoYXQuCgpVbmZvcnR1bmF0ZWx5IHRoZSBJUCBkb2N1bWVudGF0aW9uIGlzIG5vdCBwdWJsaWMs
-IHRoZXJlIGFyZSBubyBkb2N1bWVudHMgCnByb3ZpZGVkIHB1YmxpY2x5IGJ5IFZlcmlzaWxpY29u
-IGZvciB0aGUgdGltZSBiZWluZy4KCj4gCj4gUm9iCgpCUiwKSHVndWVzCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Krzysztof,
+
+On 10/5/23 21:45, Krzysztof Kozlowski wrote:
+> On 04/10/2023 11:15, Hugues Fruchet wrote:
+>> Add STM32MP25 VDEC video decoder bindings.
+>>
+>> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+>> ---
+>>   .../bindings/media/st,stm32mp25-vdec.yaml     | 56 +++++++++++++++++++
+>>   1 file changed, 56 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml b/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
+>> new file mode 100644
+>> index 000000000000..cf41f704113f
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/media/st,stm32mp25-vdec.yaml
+>> @@ -0,0 +1,56 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/media/st,stm32mp25-vdec.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: STMicroelectronics STM32MP25 VDEC video decoder
+>> +
+>> +maintainers:
+>> +  - Hugues Fruchet <hugues.fruchet@foss.st.com>
+>> +
+>> +description:
+>> +  The STMicroelectronics STM32MP25 SOCs embeds a VDEC video hardware decoder
+>> +  peripheral based on Verisilicon VC8000NanoD IP (former Hantro G1).
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: st,stm32mp25-vdec
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  interrupts:
+>> +    maxItems: 1
+>> +
+>> +  interrupt-names:
+>> +    maxItems: 1
+> 
+> This must be specific or just drop (little use of names for one entry)
+I'll drop in v2.
+
+> 
+>> +
+>> +  clocks:
+>> +    maxItems: 1
+>> +
+>> +  clock-names:
+>> +    maxItems: 1
+> 
+> Same problem.
+I'll drop in v2.
+
+> 
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - interrupts
+>> +  - interrupt-names
+>> +  - clocks
+>> +  - clock-names
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>> +    vdec: vdec@580d0000 {
+> 
+> Drop label. Node name: video-codec
+> (assuming this is video coder/decoder)
+> 
+> Node names should be generic. See also an explanation and list of
+> examples (not exhaustive) in DT specification:
+> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+I'll do in v2, thanks for pointing-out the "video-codec" generic name.
+
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
+
+BR,
+Hugues.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
