@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943E1CD6138
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 20:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6797CD612F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 20:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6zjfuTwu7utovBkzTTcwZ+cFn83eoII/vfKiGHZcDRA=; b=tw3ePSSIEk3qEA
-	HM9zQNbOG111rFztmc4XGCRRX695+EvbMVSPtffK25mdpoIDpc1xacvZ7gyd4V8y6eMphDZ9yD8lj
-	smvFBt7Dqp9nYp5+YpLYCGY36PTyZOsEnluFRzj9L0etP1gIdsBmfmRORJaDmDZPxC8s9L3xZCJL8
-	86WskIzrC/AVRl0I6p8IhC7X0xo+kN7zIgewpSEL+0Cvo9phKrVnwngFEiHpwyPRxXL0xiqHJdgkf
-	TKHrbrgV9ZjoH62TbO/nLPPq0+KUSnQcXv5XN41GQ+f5b3kqUaWFtQRRA9TnaEyx9F2z2XRMFKW8X
-	ocl2Mm62YJubScOi6qXA==;
+	List-Owner; bh=HdP63xMMIZvAYKr+L2bZDigpduF/Gceo9isB7sl27/A=; b=Tc+QKAbr/0/29m
+	vbecAJV2/KebpaJeMiH3gm94k96luyJR+5p8LSBgMOXrWeEZv1gEQ2LWKxt+1ONYxR17d59Rsdrvu
+	/4gxSc6ClacS+s0CN5ZpQ0bFBlFNdNGoPQKfx4UGA1mrtWvnRW1MFgLRQqBPOzt0ORIv41m+4yOtQ
+	rwFxGf3NY18C/KJ4dhkh3YnP6SDWfUW8O2JV792RvsWzfgtEXYi7YKrkQ+BK6w3QB1JdbbvVnHuDI
+	jITxXgqyDbfgsyxUp2SK7/ChxJ1uIdnaXIpeUzIxpEPKl1cx9q53FLKtfWjYejSPSvkzsLKcbNveF
+	eHc8NTF4RotYm3QjdQ1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpx0L-00BaSV-2W;
-	Mon, 09 Oct 2023 20:37:29 +0000
+	id 1qpx0M-00BaSj-0d;
+	Mon, 09 Oct 2023 20:37:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpx0G-00BaPU-1h;
-	Mon, 09 Oct 2023 20:37:25 +0000
+	id 1qpx0H-00BaPa-0k;
+	Mon, 09 Oct 2023 20:37:26 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qpx07-00058Z-20; Mon, 09 Oct 2023 22:37:15 +0200
+	id 1qpx08-00058Z-0N; Mon, 09 Oct 2023 22:37:16 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Mark Brown <broonie@kernel.org>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	David Airlie <airlied@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+To: arnd@arndb.de,
 	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] drm/rockchip: vop2: Convert to use maple tree register cache
-Date: Mon,  9 Oct 2023 22:37:09 +0200
-Message-Id: <169688381984.192795.6257914410959231324.b4-ty@sntech.de>
+	u.kleine-koenig@pengutronix.de,
+	linux-rockchip@lists.infradead.org,
+	daniel@ffwll.ch,
+	linux-arm-kernel@lists.infradead.org,
+	airlied@gmail.com,
+	hjc@rock-chips.com,
+	Zhu Wang <wangzhu9@huawei.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH -next] drm/rockchip: remove redundant of_match_ptr
+Date: Mon,  9 Oct 2023 22:37:12 +0200
+Message-Id: <169688381987.192795.13711895828418269641.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231001-drm-rockchip-maple-v1-1-ca396ab75be7@kernel.org>
-References: <20231001-drm-rockchip-maple-v1-1-ca396ab75be7@kernel.org>
+In-Reply-To: <20230731125304.87059-1-wangzhu9@huawei.com>
+References: <20230731125304.87059-1-wangzhu9@huawei.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_133724_562577_26E2BB81 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231009_133725_263401_B8221870 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,17 +68,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 01 Oct 2023 01:42:50 +0200, Mark Brown wrote:
-> The maple tree register cache is based on a much more modern data structure
-> than the rbtree cache and makes optimisation choices which are probably
-> more appropriate for modern systems than those made by the rbtree cache.
+On Mon, 31 Jul 2023 20:53:04 +0800, Zhu Wang wrote:
+> The driver depends on CONFIG_OF, so it is not necessary to use
+> of_match_ptr here.
 > 
+> Even for drivers that do not depend on CONFIG_OF, it's almost always
+> better to leave out the of_match_ptr(), since the only thing it can
+> possibly do is to save a few bytes of .text if a driver can be used both
+> with and without it. Hence we remove of_match_ptr.
 > 
+> [...]
 
 Applied, thanks!
 
-[1/1] drm/rockchip: vop2: Convert to use maple tree register cache
-      commit: 3d59c22bbb8d03f3f14e6d0845d44c146fb48f35
+[1/1] drm/rockchip: remove redundant of_match_ptr
+      commit: 63a06c9fe30bf84d1ab6f07d0e408bd1d4ccaf85
 
 Best regards,
 -- 
