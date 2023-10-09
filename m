@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E007E95A96
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 13:50:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D118E95A8E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 13:54:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Dy/CrJhKi6xTKNXwwhQ5ckkVgOse9u6Xn7R21yQ9Z8=; b=45/iVHKBTB5+EB
-	mf1LUtI0tyBbPCODMZSXJcYaSpJasQXIVp4Ekzf6vuELDdWBvsyg74Zri7YjTdVsgicFXTkhGeQy5
-	BhYvn1+DxAn3LIpbuTfDbVSyI4hN/tY6Ji4UpYaxy7BMwXqclaz6QYczgB5KDsQEC2OPRwaO73wX5
-	+1VMUHT+0JsjPN68wXZmEfK9SMOE2pVqsW+xxN5MK5uFGFo0N6ZUaXsnlfEB+FpCOjcbkUYJHDfti
-	fiCRwSwQWVyttKUXPTNoqwrP843ceba9DsdcV99A4PJYj8jbSJh2KlU0yvNrJBxUhrOwOQ2xQVCBx
-	AOdSXSjZ8zK9r6UQ6ImA==;
+	List-Owner; bh=hseQuKtDTbsD8c5uaSpbhtVVo8IUUeDhc3OFy7i5u0Y=; b=1qr+lewMWYrrrS
+	tfCnwyl47yfpQeY5ac2UOTKyQtfmO3ukJzplcq53pJamUXLxe0N6qmXRP9ZE+G2+Ca/LGXhMGY981
+	z0HTBOLjJcdHJHbRS7VPWNNPUjYOkzlWixs6aZ7s9uqFNi3YzHJstPmgCV6OxkGsH9ZVoXcF6Hn6s
+	Q+i+dpANDhOwmOIorCOJXmFZHQAxJQAPagJmwuEfVK2RaQ2DwMCN9I6X90D95CUE7eUaaIowEkIgi
+	E26iMwY7nfh75XTOBiYAGbpLKVLgSKgvviHO318gHQotZSIVt+t6sX5KOVwxEyxOUKb2UH3OxdqQ0
+	AsGlL4g6qCeN8sC5Bqyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpqdy-00Aqxn-2r;
-	Mon, 09 Oct 2023 13:49:58 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1qpqiI-00ArUo-2C;
+	Mon, 09 Oct 2023 13:54:26 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpqdv-00Aqwl-0o;
-	Mon, 09 Oct 2023 13:49:57 +0000
-Received: from pps.filterd (m0369458.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 399D7Qxg013177;
-	Mon, 9 Oct 2023 15:49:43 +0200
+	id 1qpqiF-00ArTg-2o;
+	Mon, 09 Oct 2023 13:54:25 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 399D7FtN016203;
+	Mon, 9 Oct 2023 15:54:14 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
 	message-id:date:mime-version:subject:to:cc:references:from
 	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=Rl6XtwYBshIFAdYkV2eozsWds6Rxm1JhSGil6DuD480=; b=u2
-	qZ9iUMCuSQohPkXzoktEV4wucBR6zC7z6pbKCvxrCE4UE1N2O5wD8pTNA1GTdk5i
-	BzWqVSGKd7RgwFXHk5CRBwZMRUYRZDN98g5rEVFJTuZw0uUwVCjli7A/Na7+RZIW
-	9QhDxTQuE4QE+jaQFgPP7wqDRJZA/roFtr8ywVHuBqPG75ly+UmlP4EeRkyz9Mlu
-	AAq9wxKEmWKpOQMdS+ncv8PsR0yY/lQz/h8w11IGePTgm5KyPcq4d3qUj5CVV/Zu
-	TONWGDQMxSGSvmQm1nZmN58BTEu6NLDsGPeKE6VU671d/CRfQJg+W627CeHyuMdV
-	QHdV36dKtBka4r+BAz0Q==
+	selector1; bh=VYzUeQtCRSwWQdye7rKIPm5i7nIiZjO3UlgmNVPCqnM=; b=P3
+	uZlUed27OO16Q43zRjjfq56m6C5YKBlmR/dUZcgmb5hiRQMkXRIjWxkgSxKvKZYv
+	OUmy1GQeMyAnOxAWvwM3XXSXsamrjwc/j5SDQZvQGikG/sPqQXCeI6n9g4wsfKKv
+	Ljg6Prw7K/QzzDF3BUaolsWsW4GWWnxKDI0hAOvpbzmE8CcvnJC/3NzO78nvSBwB
+	7OU4EP9tBMXy2C/D0+ZCGOFyRiNboGYuhdbwahuQ5bpu8L/VruQwCb4PypE4dMl6
+	QVcePMl/rePH4DIPe/L1j6HH/l/RqGnl1z8ycOPrgGLgEYTxjgVN6/XOVOuWw22B
+	pfNWsXzYVfNsHzMd+XYw==
 Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhk3de1y-1
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhf7dg40-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Oct 2023 15:49:43 +0200 (MEST)
+	Mon, 09 Oct 2023 15:54:14 +0200 (MEST)
 Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id F243210005E;
-	Mon,  9 Oct 2023 15:49:42 +0200 (CEST)
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 2235810005E;
+	Mon,  9 Oct 2023 15:54:14 +0200 (CEST)
 Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id E6F9924FF4F;
-	Mon,  9 Oct 2023 15:49:42 +0200 (CEST)
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 18595229A87;
+	Mon,  9 Oct 2023 15:54:14 +0200 (CEST)
 Received: from [10.201.20.120] (10.201.20.120) by SHFDAG1NODE1.st.com
  (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 9 Oct
- 2023 15:49:41 +0200
-Message-ID: <0de2ae74-2ba1-0e8d-aa7b-77806ac8b252@foss.st.com>
-Date: Mon, 9 Oct 2023 15:49:41 +0200
+ 2023 15:54:13 +0200
+Message-ID: <26e0112b-6420-c583-4462-d5ab2a2c4197@foss.st.com>
+Date: Mon, 9 Oct 2023 15:54:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH 3/7] dt-bindings: media: Document STM32MP25 VENC video
- encoder
+Subject: Re: [PATCH 5/7] arm64: dts: st: add soc & rifsc structure to
+ stm32mp255
 Content-Language: en-US
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
         Ezequiel Garcia
@@ -80,20 +80,19 @@ To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
         <linux-rockchip@lists.infradead.org>
 CC: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 References: <20231004091552.3531659-1-hugues.fruchet@foss.st.com>
- <20231004091552.3531659-4-hugues.fruchet@foss.st.com>
- <6bc60e4a-ddf1-4125-ba27-53ab55a553d2@linaro.org>
+ <20231004091552.3531659-6-hugues.fruchet@foss.st.com>
+ <86886ecb-dd39-49fb-a575-9e9bf303a8b1@linaro.org>
 From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
-In-Reply-To: <6bc60e4a-ddf1-4125-ba27-53ab55a553d2@linaro.org>
+In-Reply-To: <86886ecb-dd39-49fb-a575-9e9bf303a8b1@linaro.org>
 X-Originating-IP: [10.201.20.120]
 X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
  (10.75.129.69)
 X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-09_11,2023-10-09_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_064955_609631_42B619DC 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231009_065424_199365_445C6764 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,26 +111,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Krzysztof,
 
-On 10/5/23 21:45, Krzysztof Kozlowski wrote:
+On 10/5/23 21:46, Krzysztof Kozlowski wrote:
 > On 04/10/2023 11:15, Hugues Fruchet wrote:
->> Add STM32MP25 VENC video encoder bindings.
+>> Add soc & rifsc structure to stm32mp255.
 >>
+>> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+>> ---
+>>   arch/arm64/boot/dts/st/stm32mp255.dtsi | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/st/stm32mp255.dtsi b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+>> index e6fa596211f5..4f2b224fe077 100644
+>> --- a/arch/arm64/boot/dts/st/stm32mp255.dtsi
+>> +++ b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+>> @@ -6,4 +6,8 @@
+>>   #include "stm32mp253.dtsi"
+>>   
+>>   / {
+>> +	soc@0 {
+>> +		rifsc: rifsc-bus@42080000 {
 > 
-> I don't understand why this binding is separate from video decoder.
-> Merge them.
-VDEC and VENC are two independent IPs with their own clock, reset, 
-interrupt & register set, they have their own access to APB/AXI bus.
-Moreover future chipsets may embed only VENC or VDEC.
+> 
+> This change on its own makes little sense. We do not add empty
+> placeholders...
 
-Hoping that this clarifies the reason of two different bindings.
+So I will add it with introduction of vdec node... will do in v2.
 
+> 
 > 
 > Best regards,
 > Krzysztof
 > 
 
-
-Br,
+BR,
 Hugues.
 
 _______________________________________________
