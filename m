@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387A8CD612E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 19:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB272CD612D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 19:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QTrwtDq5vEgcLx4EXWw1YDr9MC5X/MaWbU2ESA95Ukc=; b=tM97hf6K5KfKQ6
-	CKbuN+R6IszuKgmvroNjduGVFYK3i3l7XmkNuX/NvUBM9Su97os7623XFQlAr4Hwi3Dd7HsY8vzic
-	yngxPDNliVEXMvb1DNZAeMUtt2SvgFmpMfrjgQRJcL7XxBGq5qaEBlQJMgIXLv1Us7ogjUkZYzAGH
-	2JfYXdBS61qY2cScekKWIbGaOuiHAV4JxnRmgUwsXqiUz96+H0X2/a6iAjBDPvIbuFcSmMi3ILA0O
-	iHvlw3Q2Psdy0qtMAYQpJGleIAmVELh4asPcKgKD35tZRB0id5g3MQZNdxUXTHATVNi6F3X72/3CX
-	9Jz7GkspeLuHL/RPTtMQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0TSMIhENIsUdR2qaEWOAzUY6zEm+bcRx3CuQ4+WbHqk=; b=rLw3zmCrEq6MoIGwZZCZOUGziV
+	8datNbVEu7/Shq2nbfn9reHnKmS8R2PbaA3cAE+21KYSXt2jt4gIozGoVBZy94pvQiGQXJE8jNaju
+	VPSkz/MZgV1GuJnFLiJkSaXvHtNTAol3Q6iZQg0kvgZ++QDxw7rDQaH9c+UHT9YKNyOmqCbEJbcdm
+	F5qcVz+hrXy0idxr2kuO4EfVot2hn3fhxivmhZGEgtSkRmiE24zldOs9Ch3Zani4oRjdW5FlYaltn
+	ZzsqQXiskgjPdd5W3RYiLLXLlPgcF95rDSIZPXlkB6grQAIqKEbL9uPMy2jKR1TA5X4bURknUAbFx
+	Ij3ogaJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvvU-00BUZs-2h;
-	Mon, 09 Oct 2023 19:28:24 +0000
-Received: from forward100a.mail.yandex.net ([2a02:6b8:c0e:500:1:45:d181:d100])
+	id 1qpvxs-00BV51-0C;
+	Mon, 09 Oct 2023 19:30:52 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpvvO-00BUWu-3A;
-	Mon, 09 Oct 2023 19:28:22 +0000
-Received: from mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net [IPv6:2a02:6b8:c1d:3e8e:0:640:2b73:0])
-	by forward100a.mail.yandex.net (Yandex) with ESMTP id A3BA942B1A;
-	Mon,  9 Oct 2023 22:28:12 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id cRi0fk6DeCg0-YKn8TPPD;
-	Mon, 09 Oct 2023 22:28:11 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail;
-	t=1696879691; bh=yUgbniaymaplXh58CVULTjy+821cujog1UtQo54FcWc=;
-	h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
-	b=WGSyZ3yg3Abpi12OgA0iu13YTPOA3SJt5uy22ubd+/7kwHk6BcDVcsI/cXq86ErUE
-	 FZiNcukrTnDwp0FO+EoAQfLXdNPkTUZvUhG6TGb7GJgAlvur4OKCzYJpIQF0NwC0Kt
-	 M98DmF6EmB7JZCTmxGK8bCrHAsO1eR8yu1GyHarA=
-Authentication-Results: mail-nwsmtp-smtp-production-main-51.vla.yp-c.yandex.net; dkim=pass header.i=@6tel.net
-From: Muhammed Efe Cetin <efectn@6tel.net>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	sebastian.reichel@collabora.com,
-	jonas@kwiboo.se,
-	megi@xff.cz,
-	d-gole@ti.com,
-	Muhammed Efe Cetin <efectn@6tel.net>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 board
-Date: Mon,  9 Oct 2023 22:27:25 +0300
-Message-ID: <89e92c8df546a0b926ba7481aa83c1945e81e8a4.1696878787.git.efectn@6tel.net>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <cover.1696878787.git.efectn@6tel.net>
-References: <cover.1696878787.git.efectn@6tel.net>
+	id 1qpvxo-00BV46-2p
+	for linux-rockchip@lists.infradead.org;
+	Mon, 09 Oct 2023 19:30:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qpvxa-0004aW-PB; Mon, 09 Oct 2023 21:30:34 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qpvxZ-000UJS-07; Mon, 09 Oct 2023 21:30:33 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qpvxY-00CWYe-Mq; Mon, 09 Oct 2023 21:30:32 +0200
+Date: Mon, 9 Oct 2023 21:30:32 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] pwm: Use device_get_match_data()
+Message-ID: <20231009193032.y7vn2bnluqhrfmmy@pengutronix.de>
+References: <20231009172923.2457844-21-robh@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20231009172923.2457844-21-robh@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_122819_206952_8A5EA827 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231009_123048_913089_A6B24E1C 
+X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,41 +70,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4323873562391219392=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Orange Pi 5 SBC from Xunlong.
 
-Signed-off-by: Muhammed Efe Cetin <efectn@6tel.net>
-Reviewed-by: Dhruva Gole <d-gole@ti.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+--===============4323873562391219392==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="b4ssm2ues5etelul"
+Content-Disposition: inline
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ca5389862887..b9649e27bc82 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -877,6 +877,11 @@ properties:
-               - xunlong,orangepi-r1-plus-lts
-           - const: rockchip,rk3328
- 
-+      - description: Xunlong Orange Pi 5
-+        items:
-+          - const: xunlong,orangepi-5
-+          - const: rockchip,rk3588s
-+
-       - description: Zkmagic A95X Z2
-         items:
-           - const: zkmagic,a95x-z2
--- 
-2.42.0
 
+--b4ssm2ues5etelul
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 09, 2023 at 12:29:16PM -0500, Rob Herring wrote:
+> Use preferred device_get_match_data() instead of of_match_device() to
+> get the driver match data. With this, adjust the includes to explicitly
+> include the correct headers.
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/pwm/pwm-img.c      | 8 ++------
+>  drivers/pwm/pwm-rockchip.c | 9 ++-------
+>  2 files changed, 4 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/drivers/pwm/pwm-img.c b/drivers/pwm/pwm-img.c
+> index 326af85888e7..e32b5e8c203d 100644
+> --- a/drivers/pwm/pwm-img.c
+> +++ b/drivers/pwm/pwm-img.c
+> @@ -13,9 +13,9 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> -#include <linux/of_device.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/property.h>
+>  #include <linux/pwm.h>
+>  #include <linux/regmap.h>
+>  #include <linux/slab.h>
+> @@ -261,7 +261,6 @@ static int img_pwm_probe(struct platform_device *pdev)
+>  	u64 val;
+>  	unsigned long clk_rate;
+>  	struct img_pwm_chip *imgchip;
+> -	const struct of_device_id *of_dev_id;
+> =20
+>  	imgchip =3D devm_kzalloc(&pdev->dev, sizeof(*imgchip), GFP_KERNEL);
+>  	if (!imgchip)
+> @@ -273,10 +272,7 @@ static int img_pwm_probe(struct platform_device *pde=
+v)
+>  	if (IS_ERR(imgchip->base))
+>  		return PTR_ERR(imgchip->base);
+> =20
+> -	of_dev_id =3D of_match_device(img_pwm_of_match, &pdev->dev);
+> -	if (!of_dev_id)
+> -		return -ENODEV;
+> -	imgchip->data =3D of_dev_id->data;
+> +	imgchip->data =3D device_get_match_data(&pdev->dev);
+
+Is this a semantical change? If there is a match, the code is
+equivalent. Otherwise it was:
+
+	return -ENODEV;
+
+before and now it's
+
+	imgchip->data =3D NULL;
+
+isn't it?
+
+>  	imgchip->periph_regs =3D syscon_regmap_lookup_by_phandle(pdev->dev.of_n=
+ode,
+>  							       "img,cr-periph");
+> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+> index 03ee18fb82d5..339165ef1f07 100644
+> --- a/drivers/pwm/pwm-rockchip.c
+> +++ b/drivers/pwm/pwm-rockchip.c
+> @@ -10,8 +10,8 @@
+>  #include <linux/io.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> -#include <linux/of_device.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/property.h>
+>  #include <linux/pwm.h>
+>  #include <linux/time.h>
+> =20
+> @@ -297,16 +297,11 @@ MODULE_DEVICE_TABLE(of, rockchip_pwm_dt_ids);
+> =20
+>  static int rockchip_pwm_probe(struct platform_device *pdev)
+>  {
+> -	const struct of_device_id *id;
+>  	struct rockchip_pwm_chip *pc;
+>  	u32 enable_conf, ctrl;
+>  	bool enabled;
+>  	int ret, count;
+> =20
+> -	id =3D of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
+> -	if (!id)
+> -		return -EINVAL;
+> -
+>  	pc =3D devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
+>  	if (!pc)
+>  		return -ENOMEM;
+> @@ -345,7 +340,7 @@ static int rockchip_pwm_probe(struct platform_device =
+*pdev)
+> =20
+>  	platform_set_drvdata(pdev, pc);
+> =20
+> -	pc->data =3D id->data;
+> +	pc->data =3D device_get_match_data(&pdev->dev);
+>  	pc->chip.dev =3D &pdev->dev;
+>  	pc->chip.ops =3D &rockchip_pwm_ops;
+>  	pc->chip.npwm =3D 1;
+
+This has the same semantical change.
+
+If this change is ok, it IMHO needs a more verbose commit log.
+
+Best regards
+Uwe
+=20
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--b4ssm2ues5etelul
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmUkVNcACgkQj4D7WH0S
+/k410wf/XHMt6hh90SKkqHpgUzDi2hphcdwAwpbBNl+kFGlxlCfE2Nei/c5UXFL7
++f1VaEeTwk5oP11cZekezkN15BFqlOb9ppgttRaQwYRpiSFlUaJ4JtHKLNEcTAKN
+bvQWffqdmRY1D2rw4aa1tHWce95IEb2pxgIFqhJd3RN2l94+qurOD0aRQj7YH9Mz
+KDRq0t26Rph5PvXn+SKcg68YAvkzn1imVTLumKggDRyWf2rL/xAbFq6byHk/GcJ7
+DJQcTWLPI0zJc1Ck5T3EFvBvRoeRKUHi32Xm3eOOksgQTTEBBqQDW0rBWnj5OESY
+pg/eTzQx5mWz+hP4OtRyd1iiIG1+vw==
+=n1+d
+-----END PGP SIGNATURE-----
+
+--b4ssm2ues5etelul--
+
+
+--===============4323873562391219392==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4323873562391219392==--
+
