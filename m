@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD47E95A67
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Oct 2023 22:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF415E95A95
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 00:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vj9L5IzvculGDhjpesUxEkBvfeJGWDdTSxgrlcY4zF0=; b=W9aaSgq3SuenHa
-	Djd658h9OSKBo/0Y2agCaFAf0sPExmZiF04K0O2Kx8NZh4CmEox0LbqpSJFo8A/v4mr8uv1q+lO7G
-	7hYtPWkIqar1h2PA440Qo6fJRM6WF0XVAZK4kQGsDgAHQ6F5LZaP+9ILZlBtntlV+nVVT0R/6GKgc
-	4VZxGnTJVeD+8v8uVJTO2HMkFO9sAYMQwdq59wFjv4xSKUdi6r+zdAkMoo6VtBGpMrq3yuBafyvYx
-	C0LGLeOgHo4zApTQ6O9hPOvmMCiWBn53fSyJb4JecfFbk8q1J5mKLCV19BIld8UQ5d5lZJZCddPhb
-	GeiiX0O9wuVlWpoFH/mA==;
+	List-Owner; bh=joBj9CsjCktD/nkKuUhZ424K9LVcMtoOv8ujB8lbE1Q=; b=wX68X6IJpzEfEr
+	NnzsbGQlunfJqjiH65w60zD9edy9KcuRMaJBu1nbyAunu79Q94zHN0KYg+hy/lxiga8H+gTObrncF
+	Jhehxwh5RS0gbbF4TuVn8IxPEkMHh8789rLIXMowlGPwLQprBSzpLw7wfQG6b74jsfGeIJhBuYNmx
+	Gb3CLr7rLfjcdMi7nVn4amX8nEiz5jgjcUNYllhylz80fkY1q/tornAjPMVF327v7TLz06uMYTZgK
+	pC6KbGcQgl0S4pxmxb9RposNCzreW/XfngivjzIeAOnw7SRlElaCtX7uOrTp8i2E/ONvZekpQC+m1
+	bPpjntzQW1wKbcJVPDzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpcXG-009Q4I-1K;
-	Sun, 08 Oct 2023 22:46:06 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qpeJz-009Xlg-0q;
+	Mon, 09 Oct 2023 00:40:31 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpcXD-009Q3k-17;
-	Sun, 08 Oct 2023 22:46:04 +0000
+	id 1qpeJv-009Xjv-2O;
+	Mon, 09 Oct 2023 00:40:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 74AD2CE0B08;
-	Sun,  8 Oct 2023 22:46:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71A95C433C7;
-	Sun,  8 Oct 2023 22:45:57 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id C0C04B80CA6;
+	Mon,  9 Oct 2023 00:40:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A52EDC433C8;
+	Mon,  9 Oct 2023 00:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696805160;
-	bh=kotJJ9gsZkQcnHWqrlxm2deUqRwlycTaO/tg2RqNNko=;
+	s=k20201202; t=1696812021;
+	bh=J0GRDxm080uPCD8Am8KeUyA7JKGTDkfvRl5M8xldpxw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n2k3nv66A7YBlXrB+jn/PMmf6Kbwu1QoO5H+tphBlky4GMOjW4R7XqmXs/eNXcmr1
-	 hk4vuH7fVWuNoawxFa3MyQCO871yng630/NymD5hLqsIbrp6D6U5byi4+F97ZINg2V
-	 6rwvVDTbqifL2wF/faMWkaLEFQvPfkqhB7m77IVtYb2pBeU0Npu3q40mrz5lvuaYRr
-	 ciqDwM3eNE/Z38lx+7CXnXA1RETJDcJ/4mJyLEVgCupZjXLLslt/Q8DNTQqzPn6s0q
-	 YSCaeMuriz9y7ylXS8teEJ8gv2AsaNeXUzW2Q63zlLa7mMVD3MahYpIz2qXMGaxGzh
-	 lVqAk/rR2bYFQ==
-Message-ID: <729f0d44-7db9-46d2-bdee-9a58022d9229@kernel.org>
-Date: Mon, 9 Oct 2023 07:45:55 +0900
+	b=TaduiPvw4uewX3e7GiHqNWuI+H0eTaDAhLngRqTzr4/1KPmzqP9zCPAxH/lieIm7X
+	 v9XTWRvZwIW1I0OTQ27eYokYRysoDYMlOUDdxL+RMQGS+R9nvguwvx2BmS7jK1mJQW
+	 RG/bET3ZJgw9NmlpkLm8+TbygS7cV6sgKPGLP02/VL8jntA3bY7Vbv78MukH66EZcV
+	 wZpImZdqRyTSzXfyiGTSlbOsaYdDKU+1RKaNaFS4hXdOsVRAsUccU9mP7o78385F20
+	 w+a2DyAC9eK/egYLXpMEgdG9d0r+26DueE/IPOhGbQXl/Lj7GORjKntVkSFfn+jhhD
+	 yTeHH58wdPrWQ==
+Message-ID: <d33cadd3-4432-44c7-8570-1a28e5669939@kernel.org>
+Date: Mon, 9 Oct 2023 09:40:16 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: Use device_get_match_data()
-To: Rob Herring <robh@kernel.org>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, David Lechner <david@lechnology.com>,
- Sekhar Nori <nsekhar@ti.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Tero Kristo <kristo@kernel.org>
-Cc: patches@opensource.cirrus.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org
-References: <20231006213959.334439-1-robh@kernel.org>
-From: Chanwoo Choi <chanwoo@kernel.org>
+Subject: Re: [PATCH v7 20/26] dt-bindings: devfreq: event: convert Rockchip
+ DFI binding to yaml
 Content-Language: en-US
-In-Reply-To: <20231006213959.334439-1-robh@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Rob Herring <robh@kernel.org>
+References: <20230704093242.583575-1-s.hauer@pengutronix.de>
+ <20230704093242.583575-21-s.hauer@pengutronix.de>
+From: Chanwoo Choi <chanwoo@kernel.org>
+In-Reply-To: <20230704093242.583575-21-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231008_154603_589276_D54FA338 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231008_174028_080866_9391690C 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +84,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23. 10. 7. 06:39, Rob Herring wrote:
-> Use preferred device_get_match_data() instead of of_match_device() to
-> get the driver match data. With this, adjust the includes to explicitly
-> include the correct headers.
+On 23. 7. 4. 18:32, Sascha Hauer wrote:
+> Convert the Rockchip DFI binding to yaml.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  drivers/clk/clk-lochnagar.c             |  9 ++-------
->  drivers/clk/davinci/da8xx-cfgchip.c     |  8 +++-----
->  drivers/clk/davinci/pll.c               | 10 +++-------
->  drivers/clk/davinci/psc.c               | 10 +++-------
->  drivers/clk/qcom/gcc-msm8960.c          | 13 +++++--------
->  drivers/clk/qcom/gcc-msm8974.c          | 10 +++-------
->  drivers/clk/qcom/kpss-xcc.c             |  9 ++-------
->  drivers/clk/qcom/krait-cc.c             | 14 +++++---------
->  drivers/clk/qcom/mmcc-msm8960.c         | 16 +++++-----------
->  drivers/clk/qcom/mmcc-sdm660.c          |  8 ++------
->  drivers/clk/rockchip/clk-rk3399.c       |  9 ++-------
->  drivers/clk/samsung/clk-exynos-clkout.c |  8 +++-----
->  drivers/clk/ti/adpll.c                  | 14 ++++----------
->  13 files changed, 42 insertions(+), 96 deletions(-)
 > 
+> Notes:
+>     Changes since v4:
+>     
+>     - Revert to state of v3 (changes were lost in v4)
+> 
+>  .../bindings/devfreq/event/rockchip,dfi.yaml  | 61 +++++++++++++++++++
+>  .../bindings/devfreq/event/rockchip-dfi.txt   | 18 ------
+>  .../rockchip,rk3399-dmc.yaml                  |  2 +-
+>  3 files changed, 62 insertions(+), 19 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+> new file mode 100644
+> index 0000000000000..7a82f6ae0701e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+> @@ -0,0 +1,61 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/devfreq/event/rockchip,dfi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip DFI
+> +
+> +maintainers:
+> +  - Sascha Hauer <s.hauer@pengutronix.de>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3399-dfi
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pclk_ddr_mon
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  rockchip,pmu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the syscon managing the "PMU general register files".
+> +
+> +required:
+> +  - compatible
+> +  - clocks
+> +  - clock-names
+> +  - interrupts
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/rk3308-cru.h>
+> +
+> +    bus {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      dfi: dfi@ff630000 {
+> +        compatible = "rockchip,rk3399-dfi";
+> +        reg = <0x00 0xff630000 0x00 0x4000>;
+> +        interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        rockchip,pmu = <&pmugrf>;
+> +        clocks = <&cru PCLK_DDR_MON>;
+> +        clock-names = "pclk_ddr_mon";
+> +      };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt b/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> deleted file mode 100644
+> index 148191b0fc158..0000000000000
+> --- a/Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
+> +++ /dev/null
+> @@ -1,18 +0,0 @@
+> -
+> -* Rockchip rk3399 DFI device
+> -
+> -Required properties:
+> -- compatible: Must be "rockchip,rk3399-dfi".
+> -- reg: physical base address of each DFI and length of memory mapped region
+> -- rockchip,pmu: phandle to the syscon managing the "pmu general register files"
+> -- clocks: phandles for clock specified in "clock-names" property
+> -- clock-names : the name of clock used by the DFI, must be "pclk_ddr_mon";
+> -
+> -Example:
+> -	dfi: dfi@ff630000 {
+> -		compatible = "rockchip,rk3399-dfi";
+> -		reg = <0x00 0xff630000 0x00 0x4000>;
+> -		rockchip,pmu = <&pmugrf>;
+> -		clocks = <&cru PCLK_DDR_MON>;
+> -		clock-names = "pclk_ddr_mon";
+> -	};
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
+> index fb4920397d08e..aba8649aaeb10 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
+> @@ -18,7 +18,7 @@ properties:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description:
+>        Node to get DDR loading. Refer to
+> -      Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt.
+> +      Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml.
+>  
+>    clocks:
+>      maxItems: 1
 
-For samsung exynos,
 Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
 -- 
