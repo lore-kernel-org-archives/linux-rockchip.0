@@ -4,64 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613E1CD68ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Oct 2023 06:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5BDCD68ED
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Oct 2023 07:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BSKKl3Hq1BnXDEBip//XiAAK7oI9nWGAH2olDC/Yh40=; b=gGAYt1ABSdCavW
-	r3u7qknXqVCF79qM/1XqztJH1q4v6VZJdZhT+UGq8jrTUCJdgLsD6fM6CrPxEleWjYhCBSQJneyTe
-	wshXy+wj6wQj4lSy3EPxTDxb41s/JYDCF22IMaGvz/6vzD4KSPpjfqksWYC0tR4OlU3kkwtFqz4vU
-	mQt62D7E2JPmOgKtfMycuOtCS5a/oiSLwrWzvrqW6m+lt/nGcw96o7lJNfkp02LH+HQqabGlmXJ1h
-	hpu4bjO/3YEdS9ZpIXIyLC09Kvor9qwE6xFR5ozYZAL8UTv2C8eyMQKt+rY9Bj/8pm/lDi46isTgt
-	fjk4DowXYgsoN2xXF0VA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=49pOPw2OjoIBgeAdmjXv/pAF5ZrNyUyDWmIDG1BAYuY=; b=XkS+akH72hFdQ7
+	j/uQsdHOIn5kzaF22fTkQgci+8oZfZ/mA5f6Xtj4cmo7hql/wqfA/VbX5kVKJmF4m0VRZZSRKTgOa
+	caVRxxKsNoxnaf5Ni5unNfgspmErnYe6pYk05OFFpEGcNM4hJhcBGNyCXjVqUdQzZNs6xrj6iPjJC
+	O18r0h5mIpBjM9yTpOMMAs1bXaFGG00vUU60n1BF5pqmkL4De1GA6VE00vlPPpQcPE7ii/6haNAaW
+	nRaP/fQ+lmEabcMuOs8oWlK5ML4QbIrLvGeB1hW7nTuToP6SQ4vfHAaUje+9KaCJ7LoLBBGaD4yyY
+	LMfou/0me6yKkbFq/Mhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qq66v-00CZ0h-1d;
-	Tue, 10 Oct 2023 06:20:53 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qq6qh-00CfjV-21;
+	Tue, 10 Oct 2023 07:08:12 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qq66r-00CZ01-12
+	id 1qq6qa-00CfiB-29
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Oct 2023 06:20:52 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qq66p-0006wE-8B; Tue, 10 Oct 2023 08:20:47 +0200
-Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qq66o-000ay1-LH; Tue, 10 Oct 2023 08:20:46 +0200
-Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qq66o-00Dg73-Is; Tue, 10 Oct 2023 08:20:46 +0200
-Date: Tue, 10 Oct 2023 08:20:46 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Doug Brewer <brewer.doug@gmail.com>
-Cc: linux-rockchip@lists.infradead.org
-Subject: Re: RK356x hdmi doesn't support resolutions up to 4k@60Hz
-Message-ID: <20231010062046.GC3114228@pengutronix.de>
-References: <CAG0V13R4Z2iMTYHDqdKR5pkXicLz5eFPWsaLGVGBdXD-n=3Kzw@mail.gmail.com>
+	Tue, 10 Oct 2023 07:08:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1696921675; bh=4lNplERnI6yZsihONwZhR1SOQRzefzq61EbgYbT+Bl4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=u9HA17p7oMjX7AEpQ9GGFvYeQ7rA7lsBRNbzq6/RpIbGCbQ2KQlco8lZ1vw3O/EGP
+	 b2BGQhYZEx5gRHcbg2QDf/VgPjNTUaB2+jby10JNMtqUDC5886z2UoC2MA22NHh0B8
+	 UwURBQ4Cf8MkSqwyXU9boo2KWNtYDH/pHBm3FU9A=
+From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+To: linux-rockchip@lists.infradead.org
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Nicholas Roth <nicholas@rothemail.net>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org (open list:OMNIVISION OV8858 SENSOR DRIVER),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH v2] media: i2c: ov8858: Don't set fwnode in the driver
+Date: Tue, 10 Oct 2023 09:07:44 +0200
+Message-ID: <20231010070747.1781612-1-megi@xff.cz>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAG0V13R4Z2iMTYHDqdKR5pkXicLz5eFPWsaLGVGBdXD-n=3Kzw@mail.gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_232049_384583_73C37120 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20231010_000804_875332_1AF6BAE6 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +65,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 10, 2023 at 11:15:22AM +0800, Doug Brewer wrote:
-> Hi,
-> 
-> I tested the Linux kernel 6.5.6 on Rock 3A, the hdmi doesn't support
-> resolutions up to 4k@60Hz.  4k@30Hz works for me.
-> Any idea how to fix it?  Thanks.
-> 
+From: Ondrej Jirman <megi@xff.cz>
 
-Yes, 4k@60 is not yet working. In principle all that's missing should be
-the patch below. However, it didn't work for me the time I tested it, so
-I haven't tried upstreaming it.
+This makes the driver work with the new check in
+v4l2_async_register_subdev() that was introduced recently in 6.6-rc1.
+Without this change, probe fails with:
 
-Sascha
+ov8858 1-0036: Detected OV8858 sensor, revision 0xb2
+ov8858 1-0036: sub-device fwnode is an endpoint!
+ov8858 1-0036: v4l2 async register subdev failed
+ov8858: probe of 1-0036 failed with error -22
 
---------------------------------8<-------------------------------
+This also simplifies the driver a bit.
 
-From 069ce874a58dbd164825207377c421837de0f0e8 Mon Sep 17 00:00:00 2001
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Date: Mon, 23 Jan 2023 12:37:32 +0100
-Subject: [PATCH] drm/rockchip: dw_hdmi: Add support for 4k@60 resolution
-
-Does not work yet on our Samsung monitor, it looses synchronization
-every now and then.
-
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+v2:
+- call fwnode_handle_put earlier to avoid multiple calls to it in
+  error code paths (suggested by Jacopo Mondi)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 725952811752b..ef219cc6e1cdd 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -168,6 +168,12 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 			{ 0x5a64, 0x0003 },
- 		},
- 	}, {
-+		600000000, {
-+			{ 0x1a40, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
-+		},
-+	},{
- 		~0UL, {
- 			{ 0x00a0, 0x000a },
- 			{ 0x2001, 0x000f },
-@@ -204,6 +210,7 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
- 	{ 74250000,  0x8009, 0x0004, 0x0272},
- 	{ 148500000, 0x802b, 0x0004, 0x028d},
- 	{ 297000000, 0x8039, 0x0005, 0x028d},
-+	{ 594000000, 0x8039, 0x0000, 0x019d},
- 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
- };
+ drivers/media/i2c/ov8858.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/media/i2c/ov8858.c b/drivers/media/i2c/ov8858.c
+index 3af6125a2eee..4d9fd76e2f60 100644
+--- a/drivers/media/i2c/ov8858.c
++++ b/drivers/media/i2c/ov8858.c
+@@ -1850,9 +1850,9 @@ static int ov8858_parse_of(struct ov8858 *ov8858)
+ 	}
  
+ 	ret = v4l2_fwnode_endpoint_parse(endpoint, &vep);
++	fwnode_handle_put(endpoint);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to parse endpoint: %d\n", ret);
+-		fwnode_handle_put(endpoint);
+ 		return ret;
+ 	}
+ 
+@@ -1864,12 +1864,9 @@ static int ov8858_parse_of(struct ov8858 *ov8858)
+ 	default:
+ 		dev_err(dev, "Unsupported number of data lanes %u\n",
+ 			ov8858->num_lanes);
+-		fwnode_handle_put(endpoint);
+ 		return -EINVAL;
+ 	}
+ 
+-	ov8858->subdev.fwnode = endpoint;
+-
+ 	return 0;
+ }
+ 
+@@ -1913,7 +1910,7 @@ static int ov8858_probe(struct i2c_client *client)
+ 
+ 	ret = ov8858_init_ctrls(ov8858);
+ 	if (ret)
+-		goto err_put_fwnode;
++		return ret;
+ 
+ 	sd = &ov8858->subdev;
+ 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_HAS_EVENTS;
+@@ -1964,8 +1961,6 @@ static int ov8858_probe(struct i2c_client *client)
+ 	media_entity_cleanup(&sd->entity);
+ err_free_handler:
+ 	v4l2_ctrl_handler_free(&ov8858->ctrl_handler);
+-err_put_fwnode:
+-	fwnode_handle_put(ov8858->subdev.fwnode);
+ 
+ 	return ret;
+ }
+@@ -1978,7 +1973,6 @@ static void ov8858_remove(struct i2c_client *client)
+ 	v4l2_async_unregister_subdev(sd);
+ 	media_entity_cleanup(&sd->entity);
+ 	v4l2_ctrl_handler_free(&ov8858->ctrl_handler);
+-	fwnode_handle_put(ov8858->subdev.fwnode);
+ 
+ 	pm_runtime_disable(&client->dev);
+ 	if (!pm_runtime_status_suspended(&client->dev))
 -- 
-2.39.2
+2.42.0
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
