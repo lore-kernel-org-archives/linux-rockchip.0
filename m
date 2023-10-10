@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319DCCD8CB0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3F7CD8CAE
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Oct 2023 17:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2e+/Oznz62ddnXxmpnk2rYcU5fp5fH9QnPe7n7VZxoo=; b=YyQSD6t+Txw2Pg
-	Fni+K1HiwpogTDboL54NGpuwMAY6nIch3ngVPkXx4cRn7rPoac0kmcbCPdEgs32oZPxvXjEV4/VTQ
-	1CtU+0PGCiFdXPPr5Tk7PeRNTqz6/GoJqe6Kaw9B/ElfBg9p93EPgIkjvp4Ex9c6sEpdz02FeBemS
-	LTrUxYIYDceF7vtjAdXgeLhx+ej7RQZi89XqXPBU7evnpqg6nSEFC9J0Ak4cwWmYzwNVV4BcXORVp
-	FALHvTz5C3f+XfBCwB6NdvOyx2OFZeE3h1cIwJQImJRtGYYvrFiCZdHVA7wgn71DIfHzjkArBtk+e
-	7MGhIdv41Y0tTSzs6k7w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dKqw7YL6ItCMJeO/D1RF9oIrl29zq3DpoqrCA386L9g=; b=KpuOvu4JkArsXR
+	3lVA1lomnf0z86y/boX4u0LTVlTZmNx+qmjdH90dEr0HWWHSBRtwOIFlCwqkdkE4vNITNV6OWAx/G
+	3U4HUuGGnMpxBJbsAsM9kfLSNlej7kkbUZfn64oz5vVpVb1RRnpo4HkcWCfi7YLKwaVpWVDuhWUtX
+	mpq4ly/VWaEZIPKy+mSNDiLiekPB9QnBPUluC4M1B8WQDBG7ClQwimfnm8R4BCpY7bY17Xf7AbJJy
+	ZzPyz1DHjYQqlLLECCjPpiq0ZKnc2QDeQnSdPJjAlFHZ90OTMs3MrdwUlSjZOWRD+3x058gqWj0If
+	vFki84x/9mlduaFAp2JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqGkG-00Dsnf-2F;
-	Tue, 10 Oct 2023 17:42:12 +0000
+	id 1qqGk4-00DsiN-1d;
+	Tue, 10 Oct 2023 17:42:00 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqGjy-00DscN-29;
-	Tue, 10 Oct 2023 17:41:58 +0000
+	id 1qqGjy-00DscL-28;
+	Tue, 10 Oct 2023 17:41:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1696959704; bh=yPDh6hJLq22uDFOey2IIVHRlfj1c4mTbnIg8EjMCl5U=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=NoYx7XNEpgN6QUeonOy3qhj5yXlQQHqEaGxe7LZCkqHEdtRUfGoiAEGUEzGZHkbZK
-	 yq+OXssDFoudzx4rQiyGqK9EFrzrh3j+a+4IKdtaWe3dlRLYutCws6U14jR7drKiN2
-	 xoambTdMj9QNGVsHudJ3ASdVvwQFqKKmc+1VBXmw=
+	t=1696959703; bh=/8eyXVZVo+6H0ggSI00a2syb+M4L/ZVwCYosxg3zmWQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Qv9h4wFkkQoOkxA6OUuw7tHRH83UZdo5Acc+vtpPfjaJk2f8W7Z6Lg+9TyQZGonum
+	 Z83zRVzLwFPL01Xi8WxcjLNpry/gl97iiBCn2fXOJN8sInAucDipfmekMUhH+OuBR7
+	 ve5xuaTq7nnhCcRLQQrbI6fl8kNaAbqgMFmITPsA=
 From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -44,15 +44,13 @@ Cc: Ondrej Jirman <megi@xff.cz>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/4] dt-bindings: mfd: rk806: Allow system-power-controller property
-Date: Tue, 10 Oct 2023 19:41:17 +0200
-Message-ID: <20231010174138.1888396-3-megi@xff.cz>
-In-Reply-To: <20231010174138.1888396-1-megi@xff.cz>
-References: <20231010174138.1888396-1-megi@xff.cz>
+Subject: [PATCH v3 0/4] Add support for poweroff via RK806 PMIC
+Date: Tue, 10 Oct 2023 19:41:15 +0200
+Message-ID: <20231010174138.1888396-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_104154_937953_38B56CE7 
-X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-CacheID: sfid-20231010_104154_871106_4D7D686A 
+X-CRM114-Status: UNSURE (   8.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,38 +63,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ondrej Jirman <megi@xff.cz>
-
-Declare support for this property.
-
-Signed-off-by: Ondrej Jirman <megi@xff.cz>
----
- Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-index cf2500f2e9a0..3c2b06629b75 100644
---- a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-@@ -29,6 +29,8 @@ properties:
-   '#gpio-cells':
-     const: 2
- 
-+  system-power-controller: true
-+
-   vcc1-supply:
-     description:
-       The input supply for dcdc-reg1.
--- 
-2.42.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpUaGUgUE1JQyBzdXBwb3J0cyBwb3dl
+cmluZyBvZmYgYnkgdHdpZGRsaW5nIHNvbWUgYml0cyBpbiBhIHJlZ2lzdGVyLiBBZGQgc3VwcG9y
+dApmb3IgaXQgdmlhIHByZS1leGlzdGluZyByb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxl
+ciBEVCBwcm9wZXJ0eS4KClRoZSBzZXJpZXMgd2FzIHRlc3RlZCBhZ2FpbnN0IExpbnV4IDYuNi1y
+YzQuCgpQbGVhc2UgdGFrZSBhIGxvb2suCgpUaGFuayB5b3UsCglPbmTFmWVqIEppcm1hbgoKdjM6
+Ci0gdXNlIHN5c3RlbS1wb3dlci1jb250cm9sbGVyCi0gZGVwcmVjYXRlIHJvY2tjaGlwLHN5c3Rl
+bS1wb3dlci1jb250cm9sbGVyCnYyOgotIGFkZCBhIG1pc3NpbmcgZHJpdmVyIHBhdGNoCgpPbmRy
+ZWogSmlybWFuICg0KToKICBkdC1iaW5kaW5nczogbWZkOiByazh4eDogRGVwcmVjYXRlIHJvY2tj
+aGlwLHN5c3RlbS1wb3dlci1jb250cm9sbGVyCiAgZHQtYmluZGluZ3M6IG1mZDogcms4MDY6IEFs
+bG93IHN5c3RlbS1wb3dlci1jb250cm9sbGVyIHByb3BlcnR5CiAgbWZkOiByazh4eDogQWRkIHN1
+cHBvcnQgZm9yIHN0YW5kYXJkIHN5c3RlbS1wb3dlci1jb250cm9sbGVyIHByb3BlcnR5CiAgbWZk
+OiByazh4eDogQWRkIHN1cHBvcnQgZm9yIFJLODA2IHBvd2VyIG9mZgoKIERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcm9ja2NoaXAscms4MDUueWFtbCB8IDMgKysrCiBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODA2LnlhbWwgfCAy
+ICsrCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODA4
+LnlhbWwgfCAzICsrKwogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9yb2Nr
+Y2hpcCxyazgwOS55YW1sIHwgMyArKysKIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9tZmQvcm9ja2NoaXAscms4MTcueWFtbCB8IDMgKysrCiBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODE4LnlhbWwgfCAzICsrKwogZHJpdmVycy9tZmQv
+cms4eHgtY29yZS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgNyArKysrKyst
+CiA3IGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCi0tIAoy
+LjQyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
