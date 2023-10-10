@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FF9E95A97
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Oct 2023 23:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6561CD68E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Oct 2023 00:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Raa1Y9nnB+e2fMxDbazk5y1SD1fzrcAL6jeIqMBd1OA=; b=SOH+CgCjmfWTxn
-	MbasKGMjSqK3CY3DlTi+Bqrp2pcgOWRlZ/zgYDNyRTRySdfbicXGmenVQK15mU96he2icAMvsdx5C
-	Xgvs6dpPUVI0/Cu4pjVPdfuH6WC3zr1po8n16dOL0Y4E2V/rqYONwjUjcP6cql7UIt6s9gOnB7qQE
-	KTVedd7z97NusbANZOrGxxhof964QSO4f8O/zOq0aJeSjzp37RiReAKlZw5AJw34rHPEJKQ0G24Rs
-	k7qCr7xgHHaOT0JcsM291ZDwQAT46HC09LR/hhlPMgMDoq4QT3txajn3/Wi0Lv1wG19Raoc/XHB33
-	KA4XfVXwV5bxW3anw5yw==;
+	List-Owner; bh=32uQMNYn0sKJLOoH+p2BvnbGxJGCwK+up7H+D6S//24=; b=mQ+bTJU8SKBPUX
+	xzQJ6SK2XMjdOcsCUeC52VtDOJkUtmC23OpNGSEEqSW1wMKQM52qVo6e4eayMohObUBPKWa5lresl
+	hvvwJTCYvWjzKbcGCFvAMJFCNAFMGivtxDXDCI32J9Mb8r48w660QORLzsPK2fIlycnITaW+pI9VC
+	kMixhoIN8QxkLrcE7OGerl40YEnck+WDhtrR/RzfItK2mTiEJncZe3/d2hLyeyfCD1t+4E1AEp9o3
+	oE7mKNE9g8cb7gaHTwSkJsNY9VMrknIqx5xOvaHdO4IJKhbljlPVyfsrXAcgzdz+63ueq7QLjv81l
+	WBpl9hpdhR0si9qIX+oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpzzA-00BpYn-2u;
-	Mon, 09 Oct 2023 23:48:28 +0000
+	id 1qq0Kg-00Bqzv-0o;
+	Tue, 10 Oct 2023 00:10:42 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qpzz8-00BpYH-0f;
-	Mon, 09 Oct 2023 23:48:28 +0000
+	id 1qq0Kc-00BqzS-3B;
+	Tue, 10 Oct 2023 00:10:40 +0000
 Received: from i53875a3c.versanet.de ([83.135.90.60] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qpzz1-0006TR-1E; Tue, 10 Oct 2023 01:48:19 +0200
+	id 1qq0KV-0006dZ-M3; Tue, 10 Oct 2023 02:10:31 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Muhammed Efe Cetin <efectn@6tel.net>,
-	linux-rockchip@lists.infradead.org
+To: Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>,
+	Rob Herring <robh+dt@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	conor+dt@kernel.org,
-	d-gole@ti.com,
-	megi@xff.cz,
-	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	jonas@kwiboo.se,
-	robh+dt@kernel.org,
-	sebastian.reichel@collabora.com
-Subject: Re: [PATCH v4 0/3] Add Support for Orange Pi 5
-Date: Tue, 10 Oct 2023 01:48:17 +0200
-Message-Id: <169689524286.203772.4910357852010517555.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jagan Teki <jagan@edgeble.ai>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 0/4] Add support for Orange Pi 5 Plus
+Date: Tue, 10 Oct 2023 02:10:30 +0200
+Message-Id: <169689659830.206679.15041236943735063930.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1696878787.git.efectn@6tel.net>
-References: <cover.1696878787.git.efectn@6tel.net>
+In-Reply-To: <20231008130515.1155664-1-megi@xff.cz>
+References: <20231008130515.1155664-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231009_164826_249574_1E544425 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20231009_171039_046292_03C3C327 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,46 +66,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 9 Oct 2023 22:27:24 +0300, Muhammed Efe Cetin wrote:
-> These series add initial support for Orange Pi 5 and SFC node for RK3588S.
-> 
-> Changes in v4:
-> * Update SFC patch commit description.
-> * Add Reviewed-by tags from Dhruva Gole <d-gole@ti.com>.
-> 
-> Changes in v3:
-> * Remove cap-mmc-highspeed property from sdmmc.
-> * Make vcc_1v1_nldo_s3 an alias of dcdc-reg6 and add regulator-max-microvolt, regulator-min-microvolt properties.
-> * Make press-threshold-microvolt 1800 for recovery button.
-> * Remove assigned-clocks from sfc node.
-> * Drop some properties from sfc node in orangepi5 devicetree.
-> * Move snps reset properties to rgmii_phy1.
-> 
-> [...]
-
-Applied, thanks!
-
-[1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 board
-      commit: ce9d927720d642e20296988b6c1c0f877209be8d
-[2/3] arm64: dts: rockchip: Add sfc node to rk3588s
-      commit: 3eaf2abd11aa7f3b2fb04d60c64b2c756fe030eb
-[3/3] arm64: dts: rockchip: Add Orange Pi 5
-      commit: f20a420e21644a0f79e0f8108a50b9836306cf23
-
-I've dropped the vendor mem-supply stuff and resorted some properties
-and nodes.
-
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCA4IE9jdCAyMDIzIDE1OjA0OjU4ICswMjAwLCBPbmTFmWVqIEppcm1hbiB3cm90ZToK
+PiBGcm9tOiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiAKPiBUaGlzIHNlcmllcyBhZGRz
+IGFuIGluaXRpYWwgc3VwcG9ydCBmb3IgT3JhbmdlIFBpIDUgUGx1cy4gVGhlIG9ubHkKPiB0aGlu
+ZyBtaXNzaW5nIHRoYXQgY2FuIGJlIHJlYWRpbHkgYWRkZWQgaXMgVVNCIDMuMCBzdXBwb3J0LCBi
+ZWNhdXNlCj4gcmVxdWlyZWQgcGF0Y2hlcyB3ZXJlIG5vdCB5ZXQgbWVyZ2VkLiBTdXBwb3J0IGZv
+ciBVU0IgMy4wIGlzIGF2YWlsYWJsZQo+IGF0IGh0dHBzOi8veGZmLmN6L2dpdC9saW51eC9sb2cv
+P2g9b3BpNS02LjYKPiAKPiBbLi4uXQoKQXBwbGllZCwgdGhhbmtzIQoKWzEvNF0gYXJtNjQ6IGR0
+czogcm9ja2NoaXA6IHJrMzU4OHMtcGluY3RybDogQWRkIEkyUzIgTTAgcGluIGRlZmluaXRpb25z
+CiAgICAgIGNvbW1pdDogYmYwMTIzNjhiYjBhYjY5MTY3ZDQ5NzE1Nzg5ZmFjMzRkZmNkNDU3ZQpb
+Mi80XSBhcm02NDogZHRzOiByb2NrY2hpcDogcmszNTg4cy1waW5jdHJsOiBBZGQgVUFSVDkgTTAg
+cGluIGRlZmluaXRpb25zCiAgICAgIGNvbW1pdDogM2Q3N2EzZTUxYjBmYWVkODIwYThkYjk4NWRj
+ZTVhZjFjYzRlYWUzMgpbMy80XSBkdC1iaW5kaW5nczogYXJtOiByb2NrY2hpcDogQWRkIE9yYW5n
+ZSBQaSA1IFBsdXMKICAgICAgY29tbWl0OiAwOTM2MTg4YjdmMmY2ZDMzMjhmNzM3YTAzY2VmNzM4
+MWY2ODhhNmNjCls0LzRdIGFybTY0OiBkdHM6IHJrMzU4OC1vcmFuZ2VwaS01LXBsdXM6IEFkZCBi
+b2FyZCBkZXZpY2UgdHJlZQogICAgICBjb21taXQ6IDIzNmQyMjVlMWVlNzJhMjhhYTdjMmIxZTM5
+ODk0ZTQzOTBiYmY1MWMKCkFsc28gZHJvcHBlZCB0aGUgbWVtLXN1cHBseSBzdHVmZiB0aGF0IGlz
+IGZyb20gdGhlIHZlbmRvci1rZXJuZWwgYW5kCnJlb3JkZXJlZCBzb21lIHN0dWZmLgoKCkJlc3Qg
+cmVnYXJkcywKLS0gCkhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
