@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A0FCDB47E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Oct 2023 21:59:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D242CDB483
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Oct 2023 21:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mN5TrK/3XaVUXEt7UU2ogqoyqVdIefL8JBYUsdRpxMw=; b=C7zKOFsAhuUMf0
-	QAn0yyVEvuUV2xgYBi/vzOsAmhlPLrHUz/gON1p+4qizSMZFkFmn5qoK+cY9Gkuw0IYZxOu5VUbpP
-	fVsFJnbr6IwuG55daqrxUYDNKQADfQw2/SUMdmcm6ltxD+9a5An4qop45divfuB9g/f8BQYZnLuRY
-	iF7ruZrdB7dvine8mse2gqRUjXeSxOEfbGuMmWlxmrXdVsDGx73/3u6QXpKBctv2vA1EJ6gxE3zhF
-	BueoeIt/kN2y40VyNuj4fz+ytohwvZF9F9F1rdU2oXeSXPZA9vPrBt9bNf2xHog3e4ttqd0O0V+Cd
-	nDCRQemZ3Amw/mT9HdqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BheLCH1wooFmEAGs8/Z48JjQDpfmMEVNiibQ8v/z594=; b=LD9wsJx/OIVXz2
+	cf7FN8OwpWGPl5rA84KtmRZl3lIsiBIWg/PI/xE0WGFJoeBw/2ICjF9N4MmqteGLmjXh0Ics6DKNP
+	UAoIieVJ+38H6otS8VklIT7msXhgN1BQfqukL9CfjW6htzkyK75RQ2qmTxKdt7+YGNHSHx7StmYKW
+	KTScLjIhsGEsSNHUqFYRB+aw6AS9rJZc6eFGyRZTVE3HxTbuzJAECXj+b7BHNNMHwv7ERz9pytDgM
+	J3whXW8IIbu0mgTH4qynzZOIgdPNXDJx0ht7Cfczz/8JfBWj9MfhzikCaOJjnJbliY4dWERgrsGJo
+	zwhQVnZeNLJ1ZDRrnxkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqhEZ-00GnTo-0a;
-	Wed, 11 Oct 2023 21:59:15 +0000
+	id 1qqhEX-00GnSY-0u;
+	Wed, 11 Oct 2023 21:59:13 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqhET-00GnPz-2C;
+	id 1qqhET-00GnQ0-27;
 	Wed, 11 Oct 2023 21:59:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1697061541; bh=KbH2UqL5Mw2DaM0t8hbR9+M4YCGdx1V6vRdWjgihY6U=;
-	h=From:To:Cc:Subject:Date:From;
-	b=AJArDmKAuk2M5SJOFYHjrqFmvosIDKD3ckQD0LyGpYCgpWbpX9ydCFYSL0ZnxWeHM
-	 +dLEH+deWk+ZOLCLGE5n9J1EXl6wqCwZl1aik0v0ptnBjR9JTJx0PAQpWLL4rmMh1k
-	 ePUwqvqhBwmBz3iPx5ivEDBy0yHZhvGg1rBB1Ryc=
+	t=1697061541; bh=FcSaXpgQugUavyg7HRKXSvvgQNzH7q5WbnBTnWUJw30=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=E5Ef/3d5n6dykqvrjokPoXVgXLMnmTpFaa2N9YUmZK49wapNlJ3NUC3ZBGYe+fAjX
+	 h4mUIYcnC/bfJGwROjLaSo2et9kB52hzHCXpue0VQHN36LRZUq06D9t4Q99N9NpXc5
+	 scsD3yFyHxlVBviAMc7yC21VBJkOYcIJ/61bl+mw=
 From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -46,14 +46,18 @@ Cc: Ondrej Jirman <megi@xff.cz>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/2] Add support for Pine64 QuartzPro64
-Date: Wed, 11 Oct 2023 23:58:43 +0200
-Message-ID: <20231011215856.2082241-1-megi@xff.cz>
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Pine64 QuarzPro64
+Date: Wed, 11 Oct 2023 23:58:44 +0200
+Message-ID: <20231011215856.2082241-2-megi@xff.cz>
+In-Reply-To: <20231011215856.2082241-1-megi@xff.cz>
+References: <20231011215856.2082241-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_145910_171444_C59AB492 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20231011_145910_171760_8E146590 
+X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,35 +69,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpUaGlzIHNlcmllcyBhZGRzIGFuIGlu
-aXRpYWwgc3VwcG9ydCBmb3IgUGluZTY0IFF1YXJ0elBybzY0IFNCQy4KClRoZSBzZXJpZXMgd2Fz
-IHRlc3RlZCBhZ2FpbnN0IExpbnV4IDYuNi1yYzQuCgpQbGVhc2UgdGFrZSBhIGxvb2suCgpGb3Ig
-djIsIEkgcHJvYWN0aXZlbHkgd2VudCB0aHJvdWdoIGNoYW5nZXMgbWFkZSBieSBIZWlrbyB3aGVu
-IG1lcmdpbmcgbXkKb3RoZXIgcGF0Y2hzZXQgZm9yIE9yYW5nZSBQaSA1IFBsdXMsIGFuZCBtYWRl
-IHRoZSBzYW1lIGNoYW5nZXMgdG8gdGhpcwpwYXRjaHNldCwgd2hpY2ggaGFkIHNvbWUgc2ltaWxh
-ciBpc3N1ZXM6CgotIG9yZGVyIHJlZ3VsYXRvci1uYW1lIGluc2lkZSBwbWljIG5vZGVzIGFzIHRo
-ZSBmaXJzdCBwcm9wZXJ0eQotIHJlLW9yZWRlciBzb21lIG90aGVyIHByb3BlcnRpZXMgYWxwaGFi
-ZXRpY2FsbHkgKGluIHJ0YyBub2RlIGFuZCBpbgogIHNvbWUgcmVndWxhdG9ycyB1bmRlciAvKQot
-IGRyb3Agcm9ja2NoaXAsc3lzdGVtLXBvd2VyLWNvbnRyb2xsZXIgKHdpbGwgcmUtYWRkIGxhdGVy
-IHdpdGhvdXQgcHJlZml4IG9uY2UKICBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzIwMjMx
-MDEwMTc0MTM4LjE4ODgzOTYtMS1tZWdpQHhmZi5jei8gZ2V0cyBtZXJnZWQpCi0gZHJvcCBtZW0t
-c3VwcGx5IGZyb20gY3B1IG5vZGVzICh0aGlzIHdpbGwgYWxzbyBiZSByZS1hZGRlZCBsYXRlcgog
-IG9uY2UgY3B1ZnJlcSBzdXBwb3J0IGlzIHVwc3RyZWFtZWQpCi0gc29ydCBub2RlcyB1bmRlciBw
-aW5jdHJsIGFscGhhYmV0aWNhbGx5Ci0gYWRkZWQgYWNrZWQtYnkgdGFnIGZvciBEVCBiaW5kaW5n
-cyBwYXRjaAoKVGhhbmsgeW91LAoJT25kxZllaiBKaXJtYW4KCk9uZHJlaiBKaXJtYW4gKDIpOgog
-IGR0LWJpbmRpbmdzOiBhcm06IHJvY2tjaGlwOiBBZGQgUGluZTY0IFF1YXJ6UHJvNjQKICBhcm02
-NDogZHRzOiByazM1ODgtcXVhcnR6cHJvNjQ6IEFkZCBRdWFydHpQcm82NCBTQkMgZGV2aWNlIHRy
-ZWUKCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbCAgICAgfCAgICA1
-ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICB8ICAgIDEg
-KwogLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1xdWFydHpwcm82NC5kdHMgIHwgMTEzNyAr
-KysrKysrKysrKysrKysrKwogMyBmaWxlcyBjaGFuZ2VkLCAxMTQzIGluc2VydGlvbnMoKykKIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1xdWFy
-dHpwcm82NC5kdHMKCi0tIAoyLjQyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Ondrej Jirman <megi@xff.cz>
+
+Add devicetree binding documentation for Pine64 QuartzPro64 SBC.
+
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ca5389862887..0bd51ba0d6a8 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -660,6 +660,11 @@ properties:
+               - pine64,quartz64-b
+           - const: rockchip,rk3566
+ 
++      - description: Pine64 QuartzPro64
++        items:
++          - const: pine64,quartzpro64
++          - const: rockchip,rk3588
++
+       - description: Pine64 SoQuartz SoM
+         items:
+           - enum:
+-- 
+2.42.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
