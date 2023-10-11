@@ -4,64 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D37CDB468
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Oct 2023 16:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFBDCDB474
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Oct 2023 18:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsC/vrlHj1kSqY7NRZyhWQKF8lXprfBhKUn8Fm7DOl4=; b=NZoueS2/30y+u4RPjd3wYAb0v4
-	re36B1Js4TI9a/rB7YFL2lNirkioFj83HFnbUBaCsSmJbnno5vF6rQuX8xxP2ovBanbKlm3CSsS1P
-	iDzOU2FAwgAMdLV4zJTmX+QsvhYspUaySagiPIDZfRnvV8T8s6h/MwvOZ4qoJ/3CxtALz7phzwliL
-	mxZsV7dNBKOZMuVC8NP9W9YQRqNF1Aau6zpBppt8E4rSkBK3Gbd/9CWoUsKhwcwh/VWjpaWbDIFXC
-	nKFfhzBYmj50CqPLGl84Kfnf8Mgdh4MzKWA5Q4p37axCPlBu5zeuKTeMlOrXXEiQOGaBJ0wkbU2Kf
-	ukO8okOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:From:To
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9b7tmXxt67RevwhcOHSve0r0HmhtVXw14+26p43+EyA=; b=n+Cp5lm9z9COcn
+	zeEpE7G+HWIkBwbjO4Y/00bk7a1V60nQW/MSFgGFWU4BIaMbIHXI7ypyV/ybuWjqIjj9NaC85VVAm
+	2e9MCDpMb7Pk0CO02YL6LHKhdq2G+BRg+Ck4cB4hTf/KLy4VkU3ONKY7vTAYTcAIJdBYUY0YuYou3
+	ISW8VVuKdELvfmm8IlJagfMWlCp2qMGf5GC52A+Rp5rwzvsIeuWBp4aFsW5bhnW18OuENk+nzm8Pd
+	ABoSTzc0w94V/cD75PASAj3rEpXyCXFt3l3nxjBcewS0BjWuh7F8vw+qgFBbQoJet0Mjo3ld6mZrL
+	OCvnQ16CCGwQieeUdPmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqcDx-00GGeJ-1y;
-	Wed, 11 Oct 2023 16:38:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qqdmp-00GR3p-1n;
+	Wed, 11 Oct 2023 18:18:23 +0000
+Received: from mail-40133.protonmail.ch ([185.70.40.133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqcDu-00GGcx-19;
-	Wed, 11 Oct 2023 16:38:15 +0000
-Received: from mercury (dyndsl-091-248-188-112.ewe-ip-backbone.de [91.248.188.112])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C288F66072FC;
-	Wed, 11 Oct 2023 17:38:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697042289;
-	bh=6d+YP9X/mScC8F/S9P2hzPpSwGEPT+aRLtDeURjMSr8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RtHw85TNMbkmXfqXyWSfB7GQizo2HD+Wjg0BBmntlPqVS091gimpCtA2YAabAQ5fG
-	 KxwBmXlJwP8HxDxMwAw9lqOPF1qmNeCUdv4XDGvL2JPBQnj9VkYp0HvpEroQZlAnil
-	 0+JyUGmPoXi7KdtoJ58Z7382buA30UUwDex064FQOQICJR1zOgNbNmKo7ENahu9Yi8
-	 FsEnz20EC2TwSCqb9OcdPWZK2CAeg+PDESP3mzm0ZmNs+c5mxFrI61OzwX60DoV5SB
-	 m+R1rtK0ZY/RRqFLvvB9ocs34y5fHAmZVfWsii/5na6cFl+kbF4P6h1pQwWZAmRz9N
-	 cLzjkJpDwUqIQ==
-Received: by mercury (Postfix, from userid 1000)
-	id 9447510609A6; Wed, 11 Oct 2023 18:38:07 +0200 (CEST)
-Date: Wed, 11 Oct 2023 18:38:07 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/4] Add support for poweroff via RK806 PMIC
-Message-ID: <20231011163807.tmouszvx7oahvzld@mercury.elektranox.org>
-References: <20231010174138.1888396-1-megi@xff.cz>
+	id 1qqdmn-00GR1s-0V
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Oct 2023 18:18:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.ch;
+	s=protonmail3; t=1697048290; x=1697307490;
+	bh=ynQ1glqOOY0YVbH7mWAv/jyhEaTBs+pK+QoCHGvfw0U=;
+	h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=DkR2C1Omyrv0l6cXrVNpLQfKq6s6KpCFW1FRQpyN7/O8o9fm/bxkaVhK5b72BxQK7
+	 aA5OJfPskfPEJs1K3b3nWxFIi0zHM56W17OzuUm6eTofIkKkRuWiVk0Hh6g3PKfgkm
+	 cpFKf0M+mb3+DmT64JQY3Igzmg2snv37v6Q43/taIzxjfIYhpss0mEdlH3sXIJnnFD
+	 AIYfVHeCk0P4jDoi1TcfSe9Lt3K3Oc8x9v9ur6WIUvHgAs2WSh6Slf6tfYaW+K7ugk
+	 bQ3EdylYP00NNGblRO8Y3lejV5NC1KRGjHRkipo61qoxRv5udSfTsBzcgeHddZvJmI
+	 EQbD+AxmwObbA==
+Date: Wed, 11 Oct 2023 18:18:05 +0000
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Christopher Obbard <chris.obbard@collabora.com>, Shreeya Patel <shreeya.patel@collabora.com>, =?utf-8?Q?Tam=C3=A1s_Sz=C5=B1cs?= <tszucs@protonmail.ch>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: =?utf-8?Q?Tam=C3=A1s_Sz=C5=B1cs?= <tszucs@protonmail.ch>
+Subject: [PATCH] arm64: dts: rockchip: Remove duplicate regulator vcc3v3_wf from rock-5b
+Message-ID: <20231011181757.58047-1-tszucs@protonmail.ch>
+Feedback-ID: 53029:user:proton
 MIME-Version: 1.0
-In-Reply-To: <20231010174138.1888396-1-megi@xff.cz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_093814_618034_02762463 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20231011_111821_384216_557454F8 
+X-CRM114-Status: UNSURE (   5.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,100 +60,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0353874010684520695=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============0353874010684520695==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7tyk6joawtz5bvah"
-Content-Disposition: inline
-
-
---7tyk6joawtz5bvah
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue, Oct 10, 2023 at 07:41:15PM +0200, Ond=C5=99ej Jirman wrote:
-> From: Ondrej Jirman <megi@xff.cz>
->=20
-> The PMIC supports powering off by twiddling some bits in a register. Add =
-support
-> for it via pre-existing rockchip,system-power-controller DT property.
->=20
-> The series was tested against Linux 6.6-rc4.
->=20
-> Please take a look.
->=20
-> Thank you,
-> 	Ond=C5=99ej Jirman
->=20
-> v3:
-> - use system-power-controller
-> - deprecate rockchip,system-power-controller
-> v2:
-> - add a missing driver patch
->=20
-> Ondrej Jirman (4):
->   dt-bindings: mfd: rk8xx: Deprecate rockchip,system-power-controller
->   dt-bindings: mfd: rk806: Allow system-power-controller property
->   mfd: rk8xx: Add support for standard system-power-controller property
->   mfd: rk8xx: Add support for RK806 power off
->=20
->  Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml | 3 +++
->  Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml | 2 ++
->  Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml | 3 +++
->  Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 3 +++
->  Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml | 3 +++
->  Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml | 3 +++
->  drivers/mfd/rk8xx-core.c                                  | 7 ++++++-
->  7 files changed, 23 insertions(+), 1 deletion(-)
-
-The series is
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Thanks,
-
--- Sebastian
-
---7tyk6joawtz5bvah
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmUmz2cACgkQ2O7X88g7
-+poFMRAAiPJHXDicrEuNY5pm9aZCmEOfySeJUpAc0zVkbifdO+xNi/QQX/lURhxw
-vRLnIIDVpy07GyfgfqEVNG9lt/0ImdtUIGzkmzlmZ46zRTqXad0oeM1LLoDyO2g5
-JFJmm3paUauIqNC9uN+PuapzQIYRuxSswiwcoynwwOa2ZVmOIpUkHXiic3d5IBMt
-PG8q2OIG80wtwDq6HFqDpvN89uhKG8Cd0vNS+YEYGmqAnsPmcbS1Y6BltBQ36RIU
-o2Y27CxhwZ0VDoCjngo3b1wt8lq3FYgd/vVfhDovqGmBm3IVZIFeF6uEd0BY20sl
-x3xAdNzRNvLxhOZcCro4Co08frGxjHktpflunVPVdHTpF78wxZ+WDc7zsZAc2jHE
-sxJBhgHtRXO7Z7cTvh9tYxkem9pPHebcGo1ZoLKowqcwJm4EUV84r4DkZ2blcQhZ
-S7aIgO6+KqgDw01DaTjX7K6gC6mnlK3sgWrbN6Ajl+IGLaU7GudtHL7YMdiPMQxN
-lG/n9jMEQLSCQcl03jZk3V0wg+Zp8KXda4JUHR0xl9xJPbuhiifEEukPfz+4m8se
-D1cDO5Jwz+3wdgi9g3JqZTZrm+gHecdah5x9QPCnBbguqbi2z/0pVweQFxhHQDkJ
-47RnEsD44dgrF3g/xmpfjlwShXEkGekmEhCjKOj5QYYLyoXV0t4=
-=D+Qq
------END PGP SIGNATURE-----
-
---7tyk6joawtz5bvah--
-
-
---===============0353874010684520695==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0353874010684520695==--
-
+UmVndWxhdG9yIGZvciBWQ0MzVjNfV0YgaGFzIGJlZW4gYWRkZWQgYXMgdmNjM3YzX3BjaWUyeDFs
+MCBmaXJzdC4gQ2xlYW4gdGhpcyB1cC4KClNpZ25lZC1vZmYtYnk6IFRhbcOhcyBTesWxY3MgPHRz
+enVjc0Bwcm90b25tYWlsLmNoPgotLS0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9j
+ay01Yi5kdHMgICAgICB8IDIzICstLS0tLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAx
+IGluc2VydGlvbigrKSwgMjIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzU4OC1yb2NrLTViLmR0cwppbmRleCA4NjE4ODg3ODk5ZDkuLjM5MmFjNzgz
+YzNhZCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9j
+ay01Yi5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01
+Yi5kdHMKQEAgLTExNCwyMSArMTE0LDYgQEAgdmNjXzF2MV9ubGRvX3MzOiB2Y2MtMXYxLW5sZG8t
+czMtcmVndWxhdG9yIHsKIAkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTEwMDAwMD47CiAJ
+CXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+OwogCX07Ci0KLQl2Y2MzdjNfd2Y6IHZjYzN2My13
+Zi1yZWd1bGF0b3IgewotCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Ci0JCXJlZ3Vs
+YXRvci1uYW1lID0gInZjYzN2M193ZiI7Ci0JCXJlZ3VsYXRvci1hbHdheXMtb247Ci0JCXJlZ3Vs
+YXRvci1ib290LW9uOwotCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKLQkJ
+cmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Ci0JCWVuYWJsZS1hY3RpdmUtaGln
+aDsKLQkJZ3Bpb3MgPSA8JmdwaW8xIFJLX1BEMiBHUElPX0FDVElWRV9ISUdIPjsKLQkJcGluY3Ry
+bC1uYW1lcyA9ICJkZWZhdWx0IjsKLQkJcGluY3RybC0wID0gPCZ2Y2MzdjNfd2ZfZW4+OwotCQlz
+dGFydHVwLWRlbGF5LXVzID0gPDUwMDAwPjsKLQkJdmluLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47
+Ci0JfTsKIH07CiAKICZjb21icGh5MF9wcyB7CkBAIC0zMzUsMTIgKzMyMCw2IEBAIHZjYzV2MF9o
+b3N0X2VuOiB2Y2M1djAtaG9zdC1lbiB7CiAJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEIwIFJL
+X0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwogCQl9OwogCX07Ci0KLQltMmUgewotCQl2Y2Mz
+djNfd2ZfZW46IHZjYzN2My13Zi1lbiB7Ci0JCQlyb2NrY2hpcCxwaW5zID0gPDEgUktfUEQyIFJL
+X0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwotCQl9OwotCX07CiB9OwogCiAmcHdtMSB7CkBA
+IC0zOTEsNyArMzcwLDcgQEAgJnNkaW8gewogCXNkLXVocy1zZHIyNTsKIAlzZC11aHMtc2RyNTA7
+CiAJc2QtdWhzLXNkcjEwNDsKLQl2bW1jLXN1cHBseSA9IDwmdmNjM3YzX3dmPjsKKwl2bW1jLXN1
+cHBseSA9IDwmdmNjM3YzX3BjaWUyeDFsMD47CiAJdnFtbWMtc3VwcGx5ID0gPCZ2Y2NfMXY4X3Mz
+PjsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmc2Rpb20wX3Bp
+bnM+OwotLSAKMi40Mi4wCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
