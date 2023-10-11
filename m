@@ -4,54 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3F7CD8CAE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Oct 2023 17:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEAECD98F9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Oct 2023 08:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dKqw7YL6ItCMJeO/D1RF9oIrl29zq3DpoqrCA386L9g=; b=KpuOvu4JkArsXR
-	3lVA1lomnf0z86y/boX4u0LTVlTZmNx+qmjdH90dEr0HWWHSBRtwOIFlCwqkdkE4vNITNV6OWAx/G
-	3U4HUuGGnMpxBJbsAsM9kfLSNlej7kkbUZfn64oz5vVpVb1RRnpo4HkcWCfi7YLKwaVpWVDuhWUtX
-	mpq4ly/VWaEZIPKy+mSNDiLiekPB9QnBPUluC4M1B8WQDBG7ClQwimfnm8R4BCpY7bY17Xf7AbJJy
-	ZzPyz1DHjYQqlLLECCjPpiq0ZKnc2QDeQnSdPJjAlFHZ90OTMs3MrdwUlSjZOWRD+3x058gqWj0If
-	vFki84x/9mlduaFAp2JA==;
+	List-Owner; bh=MqWyA09r4zc7T7Wmmbpkg8EQpHjNm+YqmDJ++SDZkjw=; b=UKC5Qfhk/og03P
+	d27fwXKLkQz4UBsHaSPDqQlyapuTyN1+XIEBkaj33ZSI61+nk7f0adTGvzFLjBE5S0jqlLnVqeNxB
+	WLIbVMYmMhlhiPmcAQEsvFiLAifH6rAawRw7tV64tKbXQEymEzPKMWlcBLFpdtivs7NFgAnI+oVta
+	0BpObl/ZgQdlHxoqmn8vfE9ITgBFgMjBk9A6PH6SQIMUIrZ8nSOER/lTinYWPZnG08zjQGymAhtfC
+	wDn036cqPQwJZ2kXAVfIwfaxOtDIL1/Z7YIy3lei0W5w8Cftp8gLF8frpoWuqwt/FJG8cmysd+CDr
+	UWbO/YX+d4W/pCUhbhfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqGk4-00DsiN-1d;
-	Tue, 10 Oct 2023 17:42:00 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1qqUAI-00FBO7-1C;
+	Wed, 11 Oct 2023 08:01:58 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqGjy-00DscL-28;
-	Tue, 10 Oct 2023 17:41:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1696959703; bh=/8eyXVZVo+6H0ggSI00a2syb+M4L/ZVwCYosxg3zmWQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Qv9h4wFkkQoOkxA6OUuw7tHRH83UZdo5Acc+vtpPfjaJk2f8W7Z6Lg+9TyQZGonum
-	 Z83zRVzLwFPL01Xi8WxcjLNpry/gl97iiBCn2fXOJN8sInAucDipfmekMUhH+OuBR7
-	 ve5xuaTq7nnhCcRLQQrbI6fl8kNaAbqgMFmITPsA=
-From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
-To: Lee Jones <lee@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	devicetree@vger.kernel.org,
+	id 1qqUAG-00FBMV-01
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Oct 2023 08:01:57 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-3226cc3e324so6358070f8f.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Oct 2023 01:01:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697011312; x=1697616112; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YZT/8mXHXiKgkNO5lwynSIruokO6XSAvA489Hqpy4Bo=;
+        b=ZD9Ic02o+KApf5yJD3eHKHyPa9/BdfIkULH3ozINmtpYiv8csAZymywh74gINsfIYQ
+         JgWo8snWp0XMLZMt+FubsTh6oPrK1w1mQLWjJ2siYaNHQqqi4TxqmINRGsDTHHafn9aR
+         BW8itgUcpi9iHX33wO3lXugx1wUF5P8tBEjzYcR777EVU7uMT6Kh5b7e0mkgnS8NfmE9
+         P+LxfAyGjhiArNRwI+hEdVCb4CawoMvZ5T/CMFwLthYNmLSqG36LKL0MzB4zvis4bx6E
+         Zj1+90DupBQkuxOr2ecAfBFTDGdbBEpqj0ev7s283n5RuALbbNeh0cvP/tWWWVQJk4QU
+         eUZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697011312; x=1697616112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YZT/8mXHXiKgkNO5lwynSIruokO6XSAvA489Hqpy4Bo=;
+        b=DdMZfpU4kts4bB9p/cJ7R7LFa2rTfbCFodB3RSzEPMlQR3qT8tHhLo9pztf349ZTYw
+         8YDROCzJMLbkC7lNViDl5eNgl5xzDQ47aMML8ZQlroccVpLg5exRFEASq91/nQIc2dav
+         WeT3dC3cRmL+HKTKEbC9NF3nx030+xkBH9atMfq+LycE5qZ1LCA8w6JAL5WljtKOXUmm
+         WTiQyLxBxK/vs23UFcWDCi+jJ8cunfhe4TxHMvzhJYSGa32zFwfbGbgp7gEcpdYXXcUW
+         96TwGN8/mLje5sCiSdKD4p3mk1He8aIpgJgYE90ot+3Ry/CRyxkHCctVyNQQ5Gj+pEs8
+         q9Gw==
+X-Gm-Message-State: AOJu0YyaZ4M35+ZNEdM7KTRYFXhlbI/HgZJkvpjTZ/P4I/LciWL2h6fH
+	djjgrYX0dV2ntWbiY5irKvpQlA==
+X-Google-Smtp-Source: AGHT+IHlYGaipThrXKIKMr2CcQW1kf8ZvYk9AY5BdTWtgsZ4chvat2yBykWEZU5sAaKVW2Tsl/EQeQ==
+X-Received: by 2002:a5d:5911:0:b0:324:e284:fab8 with SMTP id v17-20020a5d5911000000b00324e284fab8mr19093365wrd.39.1697011312630;
+        Wed, 11 Oct 2023 01:01:52 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id n6-20020adffe06000000b003140f47224csm14690117wrr.15.2023.10.11.01.01.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 01:01:52 -0700 (PDT)
+Date: Wed, 11 Oct 2023 11:01:48 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Shunqian Zheng <zhengsq@rock-chips.com>,
+	rjan Eide <orjan.eide@arm.com>, Mark Yao <markyao0591@gmail.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 0/4] Add support for poweroff via RK806 PMIC
-Date: Tue, 10 Oct 2023 19:41:15 +0200
-Message-ID: <20231010174138.1888396-1-megi@xff.cz>
+	linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] drm/rockchip: Fix type promotion bug in
+ rockchip_gem_iommu_map()
+Message-ID: <2bfa28b5-145d-4b9e-a18a-98819dd686ce@moroto.mountain>
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231010_104154_871106_4D7D686A 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231011_010156_058301_C6C38613 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,33 +94,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpUaGUgUE1JQyBzdXBwb3J0cyBwb3dl
-cmluZyBvZmYgYnkgdHdpZGRsaW5nIHNvbWUgYml0cyBpbiBhIHJlZ2lzdGVyLiBBZGQgc3VwcG9y
-dApmb3IgaXQgdmlhIHByZS1leGlzdGluZyByb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxl
-ciBEVCBwcm9wZXJ0eS4KClRoZSBzZXJpZXMgd2FzIHRlc3RlZCBhZ2FpbnN0IExpbnV4IDYuNi1y
-YzQuCgpQbGVhc2UgdGFrZSBhIGxvb2suCgpUaGFuayB5b3UsCglPbmTFmWVqIEppcm1hbgoKdjM6
-Ci0gdXNlIHN5c3RlbS1wb3dlci1jb250cm9sbGVyCi0gZGVwcmVjYXRlIHJvY2tjaGlwLHN5c3Rl
-bS1wb3dlci1jb250cm9sbGVyCnYyOgotIGFkZCBhIG1pc3NpbmcgZHJpdmVyIHBhdGNoCgpPbmRy
-ZWogSmlybWFuICg0KToKICBkdC1iaW5kaW5nczogbWZkOiByazh4eDogRGVwcmVjYXRlIHJvY2tj
-aGlwLHN5c3RlbS1wb3dlci1jb250cm9sbGVyCiAgZHQtYmluZGluZ3M6IG1mZDogcms4MDY6IEFs
-bG93IHN5c3RlbS1wb3dlci1jb250cm9sbGVyIHByb3BlcnR5CiAgbWZkOiByazh4eDogQWRkIHN1
-cHBvcnQgZm9yIHN0YW5kYXJkIHN5c3RlbS1wb3dlci1jb250cm9sbGVyIHByb3BlcnR5CiAgbWZk
-OiByazh4eDogQWRkIHN1cHBvcnQgZm9yIFJLODA2IHBvd2VyIG9mZgoKIERvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcm9ja2NoaXAscms4MDUueWFtbCB8IDMgKysrCiBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODA2LnlhbWwgfCAy
-ICsrCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODA4
-LnlhbWwgfCAzICsrKwogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9yb2Nr
-Y2hpcCxyazgwOS55YW1sIHwgMyArKysKIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9tZmQvcm9ja2NoaXAscms4MTcueWFtbCB8IDMgKysrCiBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODE4LnlhbWwgfCAzICsrKwogZHJpdmVycy9tZmQv
-cms4eHgtY29yZS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgNyArKysrKyst
-CiA3IGZpbGVzIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCi0tIAoy
-LjQyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+The "ret" variable is declared as ssize_t and it can hold negative error
+codes but the "rk_obj->base.size" variable is type size_t.  This means
+that when we compare them, they are both type promoted to size_t and the
+negative error code becomes a high unsigned value and is treated as
+success.  Add a cast to fix this.
+
+Fixes: 38f993b7c59e ("drm/rockchip: Do not use DMA mapping API if attached to IOMMU domain")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index b8f8b45ebf59..93ed841f5dce 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -40,7 +40,7 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
+ 
+ 	ret = iommu_map_sgtable(private->domain, rk_obj->dma_addr, rk_obj->sgt,
+ 				prot);
+-	if (ret < rk_obj->base.size) {
++	if (ret < (ssize_t)rk_obj->base.size) {
+ 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
+ 			  ret, rk_obj->base.size);
+ 		ret = -ENOMEM;
+-- 
+2.39.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
