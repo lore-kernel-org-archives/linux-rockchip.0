@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1561CDB484
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B1FACDB482
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9SlKkkRGRa6dQ42+H6XWzVsbQi3tO5KK42PVLvFPaLA=; b=N2+OGwZ0IO64r8
-	PdJvj7C1ovBI0qlDhbGMiXFMOHpkcbxUBm5mw/agId48R7luM8f6dqG53nXZpb0Qw3zOGue9HJdRB
-	OCBW/NTh2KwVA4X4NAbzANG+ItYMNps/HHIyo/pKq7bE2Z6ol10F3Upgnqgp/jgIdunpL9uKvdquV
-	eQfGEWoDhqdyyUD7CYfScx2Wa0CMfBdA/1AMjbgZ8TjttTK3EVkTzISP3U9d/kO5skx6Y21lZ6/3C
-	I/uZyy2MD04noXgaA+FmtUeDYd9Pcd7EmtLUSgES4AcyjBFrcO1pHWF/pyO+IXCLDBU4jm6RfzrSG
-	APBkAonXQ4u74+YykcIw==;
+	List-Owner; bh=IKDYQn/DYlb0y9RDCkQ1dIwBN4AZT775O+aanlaOjs8=; b=Ib2iUOhKvKekor
+	BIok+FqPWuQL+IiAkXZuEwVVDRmWQ5KwTg5ZK3gd9igv0zqZ7re4U1T9TRHA6TLkiZEFczCfXhhP4
+	VawCl/0NBbLslbJfDuJA/fhSNMQYZ+DX3ouptmOE87yKDoQnccLuBWEF1B5tdSr1u7RDKdbdrhXBT
+	+JNLxQX6lzxtPlOEXhUegV3xjFe9M1e2v+heF8Xak7EexjIAWo8SAvy4kd/teZ9YC53ZyhhZUmP8U
+	it1287hS3Win2dQ+z+TeMmjdkl5pwIf/Kql21B6IWOk+YrKEB08Z7Qe8YM3P0rH1dA0N/ccbPsnfZ
+	jiIVY+mgDauqEclIgt4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquDM-000rjZ-0S;
-	Thu, 12 Oct 2023 11:50:52 +0000
+	id 1qquDI-000rf2-1T;
+	Thu, 12 Oct 2023 11:50:48 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9r-000oGU-1o;
-	Thu, 12 Oct 2023 11:47:18 +0000
+	id 1qqu9r-000oG2-08;
+	Thu, 12 Oct 2023 11:47:16 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E35066607392;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 658226607379;
 	Thu, 12 Oct 2023 12:47:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111234;
-	bh=/rw+5kiG9NH9F1WJEwdp/d4z1jjMgH/1J5yw8ccESj4=;
+	s=mail; t=1697111233;
+	bh=MaJc8KF/Sr+P2A1rELzeazrdtI+Dtx39Ekc9mMARKkw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WWNlOzYeWVdxJz0kJwj+I9ycT6eJ4G22oLnn1DWjjxeeE5QXv7BMcIPaI+vzbcF+G
-	 Y0fWXtlK28SSY4yS3dqwpL/uchKuTIK2x0EuV61TnOcc8enduMYwuz9grrAlw/7jXR
-	 Fbcz0LZaETZtulmiAmsTum8VlgR7WSK2KEWoQjrIt7+F6pOrIURMbpBVYfj//17SLr
-	 Jd74m04DhypvE+IDP5iGI6NNZ6recSZlVUiMR9MFxOkuifg0MkBunJiYPIj75SNtrQ
-	 VeBsD6VodeM4CC9jsGV2mFbs3OZAr6FomolF2Fbhx+WaPNDasvVIF2JGK6A3/4F+nF
-	 PUe6XzUrtJqBQ==
+	b=WAouVKN3OAalElzf429fDxDA3/X/KhRsnUm3ukPaWmjHHSEZdBhsjtFVUSjP2l+qq
+	 9KVnzkreD84VAAr3Y5CIxt6zyFHRUzEDzGKGlN/gp0fQMumcwtSf4zapr/lo6UeSXv
+	 JTU6Sa95+SIAdK6M5QCN2QcYp9WZRb0Zb1/KxrUCH+LJK7Bob798lW8d/G4Ws3fmyR
+	 WpB5ztYPv0DJbSY6g3L8H0iPvnA5Fx68im1FbQiqpKf4qsbSfHt/2gSwvzvOdBVR8I
+	 T1u46E1GZQikH219t2eYkO71x4a+vgjX50i2G5mhsPk3kOAwOwJLmN2+J6Gvjps//5
+	 9RBi3mbPAHH9g==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 46/56] media: test-drivers: vicodec: Increase max supported capture queue buffers
-Date: Thu, 12 Oct 2023 13:46:32 +0200
-Message-Id: <20231012114642.19040-47-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 45/56] media: test-drivers: vivid: Increase max supported buffers for capture queues
+Date: Thu, 12 Oct 2023 13:46:31 +0200
+Message-Id: <20231012114642.19040-46-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_044715_840151_48453406 
-X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-CacheID: sfid-20231012_044715_359505_91A5C885 
+X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,25 +89,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Allow to allocated up to 64 buffers on capture queue.
+Change the maximum number of buffers of some capture queues in order
+to test max_num_buffers field.
+
+Allow to allocate up to:
+- 64 buffers for video capture queue.
+- 1024 buffers for sdr capture queue.
+- 32768 buffers for vbi capture queue.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/test-drivers/vicodec/vicodec-core.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/test-drivers/vivid/vivid-core.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
-index 6f0e20df74e9..69cbe2c094e1 100644
---- a/drivers/media/test-drivers/vicodec/vicodec-core.c
-+++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
-@@ -1718,6 +1718,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
- 			V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE :
- 			V4L2_BUF_TYPE_VIDEO_CAPTURE);
- 	dst_vq->io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF;
-+	dst_vq->max_num_buffers = 64;
- 	dst_vq->drv_priv = ctx;
- 	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
- 	dst_vq->ops = &vicodec_qops;
+diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+index 394c9f81ea72..b5656330578d 100644
+--- a/drivers/media/test-drivers/vivid/vivid-core.c
++++ b/drivers/media/test-drivers/vivid/vivid-core.c
+@@ -876,6 +876,13 @@ static int vivid_create_queue(struct vivid_dev *dev,
+ 	q->type = buf_type;
+ 	q->io_modes = VB2_MMAP | VB2_DMABUF;
+ 	q->io_modes |= V4L2_TYPE_IS_OUTPUT(buf_type) ?  VB2_WRITE : VB2_READ;
++	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
++		q->max_num_buffers = 64;
++	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE)
++		q->max_num_buffers = 1024;
++	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE)
++		q->max_num_buffers = 32768;
++
+ 	if (allocators[dev->inst] != 1)
+ 		q->io_modes |= VB2_USERPTR;
+ 	q->drv_priv = dev;
 -- 
 2.39.2
 
