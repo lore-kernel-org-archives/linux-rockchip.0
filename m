@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EC1CDB46E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F66CDB483
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/EjL2ChQ7ISWUnsbvYu/zgj8XwmZjOPGyKDevOy4Fxw=; b=fOTZCGh6DTXjnk
-	C4NZS+EK0ERfxcdjmwGalEwCG0qKDM3epzEJ0MjC/GmbiHC8y+ZxbDHgBZ3JWPmvdGDgiJ2Niau5h
-	ipBUm2rDro281yGzgGWsWo0mD0hTnyz/lLvlIvWRsT5m0skywIseRW4zlF96WxpJIy37d3ar7qCu3
-	xh9AlJW1/2P1yjmD/PXTp9O6kAsXQNNW65hkAqQ57L+zRps8ZtmSQ54AKmJU5D0HlJZEnOfMMcTym
-	4utU+/Q2zRJBo9fpP4QoXW/Vdw3GwywymIpRptaE9cWd4seMiRW2DWL8gXZnffk/tpzjuz93r3H3x
-	kNHn2ZB0Dit1wvuo+3pw==;
+	List-Owner; bh=xvfBG8GD95l91h38tTpsoGWAGQGsmXpWWBpUiPGyqPU=; b=bR8DgBFIsNejZb
+	M6vJ55auTYfCAuv+Tr38NypeBo9Y3BuL2e2jPN1PBf9J9RvejAiOY6+tJ3I0ihPYQjlWW0/CmA6y1
+	MIuY4X3Jm3wX5bMf0faeV8RzTB8MK8Iy9KF0wnlGygW8drX1ai64La4ymSjA9Yqo5kVkUk9uHrt95
+	OOczEopQgDZSaREO0t5s3pvPwmZUy0h5vfN6vp2fHfHu9zt5x04KTiZC5bjZkD7hbYNafowITXi9e
+	H4yQtS6OrAu5Wcvbs+1RXatqZ9Q4e7yI47YU5H+183f9b0EnlbM2zB4vnaYUKbX8b9ChVaA/GXfXv
+	ye39pStnVo2zqPzBjWww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquCf-000qzb-26;
-	Thu, 12 Oct 2023 11:50:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qquCn-000r7g-2a;
+	Thu, 12 Oct 2023 11:50:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9l-000o8k-04;
-	Thu, 12 Oct 2023 11:47:12 +0000
+	id 1qqu9l-000o9a-2G;
+	Thu, 12 Oct 2023 11:47:13 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AD7A6607342;
-	Thu, 12 Oct 2023 12:47:07 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 04BCE660738E;
+	Thu, 12 Oct 2023 12:47:08 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111227;
-	bh=fi+Fxcs6m07q1y5Umer9Ad8BDnSh9/sSAfF+r67YVOU=;
+	s=mail; t=1697111228;
+	bh=Zne8+1+gt7T5bArgwI34aDgBwx9md9yjRlThQEon5Pk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MeUP9vNzWBasugY68j+66SW3C/LzkLPve86K4aNyyQ8g++Q76e+RYBrQ7LINrkiK2
-	 dsRGKCnEg6ehWToc0Tncef+RTzatdbeo/RNZrTk3Dbo5KvI4v47Vt6wvsvpenCVL0/
-	 y+0a8Wh1yV6ny/p02Tl32UDcVc7xMtAlNltup5VYEr43eFC1BV4fb0nqEsusg3DHtU
-	 rQCOAq2Yfh3yQTde3Wfmp7KWiR0PWlxKxpY3IszrosThGBVzGgCd5HOOCuLe0XWICi
-	 EZvCqXBc9OZUrFfT5a44sHvMPfl1hTbJXeMn5R0TEEji6U92aR0Ok3gWrm45MOQ8ky
-	 0oR+n+dAb7a5Q==
+	b=Gf62AcjPOWvhMdRnJLmE7bGshcMQ4KNh+hthHIVDXid8l3MkgBetP/26Xjn2KSMtb
+	 H8EIQSwmX8n+aIhWpFXtdiS3F+VD8K0qfKNtKDWURVfH22H2dLYAxvb+SWUBXxslQB
+	 7fhI0AoGLYmOPsk2AfDcf2O9hPNloqPwd89JElrVskjwHUhCpOGFyyeJdn6VboNJhP
+	 Ac99fN6a8lkBmEnmkgSvKIVnNUyJSXkvto5CExml7BtvuC4Nx1w5XdmzPPb7C8Qi3b
+	 342KiEz+CMwVHJEKp5FmaLjASvSoTU+TKexyrkuS7nQqQLVOR5ZPbF8Gs3IfcZmZDz
+	 wauoulmDnt5fw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,17 +61,19 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 34/56] media: usb: cx231xx: Set min_buffers_needed to CX231XX_MIN_BUF
-Date: Thu, 12 Oct 2023 13:46:20 +0200
-Message-Id: <20231012114642.19040-35-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Antti Palosaari <crope@iki.fi>
+Subject: [PATCH v11 35/56] media: usb: hackrf: Set min_buffers_needed to 8
+Date: Thu, 12 Oct 2023 13:46:21 +0200
+Message-Id: <20231012114642.19040-36-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_044709_239269_34759902 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20231012_044709_882933_C22DFCF5 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +91,45 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 vb2 queue_setup checks for a minimum number of buffers so set
-min_buffers_needed to  aCX231XX_MIN_BUFnd remove the useless check in
-cx231xx queue_setup().
+min_buffers_needed to 8 and remove the useless check in
+hackrf_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Antti Palosaari <crope@iki.fi>
 ---
- drivers/media/usb/cx231xx/cx231xx-417.c   | 4 +---
- drivers/media/usb/cx231xx/cx231xx-video.c | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+ drivers/media/usb/hackrf/hackrf.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/usb/cx231xx/cx231xx-417.c b/drivers/media/usb/cx231xx/cx231xx-417.c
-index c5e21785fafe..fecdb12f5ef7 100644
---- a/drivers/media/usb/cx231xx/cx231xx-417.c
-+++ b/drivers/media/usb/cx231xx/cx231xx-417.c
-@@ -1223,9 +1223,6 @@ static int queue_setup(struct vb2_queue *vq,
- 	dev->ts1.ts_packet_size  = mpeglinesize;
- 	dev->ts1.ts_packet_count = mpeglines;
+diff --git a/drivers/media/usb/hackrf/hackrf.c b/drivers/media/usb/hackrf/hackrf.c
+index 3e535be2c520..2e856b20aa21 100644
+--- a/drivers/media/usb/hackrf/hackrf.c
++++ b/drivers/media/usb/hackrf/hackrf.c
+@@ -754,15 +754,10 @@ static int hackrf_queue_setup(struct vb2_queue *vq,
+ {
+ 	struct hackrf_dev *dev = vb2_get_drv_priv(vq);
  
--	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
--		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
+-	dev_dbg(dev->dev, "nbuffers=%d\n", *nbuffers);
 -
- 	if (*nplanes)
- 		return sizes[0] < size ? -EINVAL : 0;
+-	/* Need at least 8 buffers */
+-	if (vq->num_buffers + *nbuffers < 8)
+-		*nbuffers = 8 - vq->num_buffers;
  	*nplanes = 1;
-@@ -1777,6 +1774,7 @@ int cx231xx_417_register(struct cx231xx *dev)
- 	q = &dev->mpegq;
- 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
- 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
-+	q->min_buffers_needed = CX231XX_MIN_BUF;
- 	q->drv_priv = dev;
- 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
- 	q->ops = &cx231xx_video_qops;
-diff --git a/drivers/media/usb/cx231xx/cx231xx-video.c b/drivers/media/usb/cx231xx/cx231xx-video.c
-index e23b8ccd79d4..26b593844157 100644
---- a/drivers/media/usb/cx231xx/cx231xx-video.c
-+++ b/drivers/media/usb/cx231xx/cx231xx-video.c
-@@ -717,9 +717,6 @@ static int queue_setup(struct vb2_queue *vq,
+ 	sizes[0] = PAGE_ALIGN(dev->buffersize);
  
- 	dev->size = (dev->width * dev->height * dev->format->depth + 7) >> 3;
+-	dev_dbg(dev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
++	dev_dbg(dev->dev, "nbuffers=%u sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
+ 	return 0;
+ }
  
--	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
--		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
--
- 	if (*nplanes)
- 		return sizes[0] < dev->size ? -EINVAL : 0;
- 	*nplanes = 1;
-@@ -1805,6 +1802,7 @@ int cx231xx_register_analog_devices(struct cx231xx *dev)
- 	q = &dev->vidq;
- 	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
- 	q->io_modes = VB2_USERPTR | VB2_MMAP | VB2_DMABUF | VB2_READ;
-+	q->min_buffers_needed = CX231XX_MIN_BUF;
- 	q->drv_priv = dev;
- 	q->buf_struct_size = sizeof(struct cx231xx_buffer);
- 	q->ops = &cx231xx_video_qops;
+@@ -1392,6 +1387,8 @@ static int hackrf_probe(struct usb_interface *intf,
+ 	dev->rx_vb2_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
+ 	dev->rx_vb2_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF |
+ 				     VB2_READ;
++	/* Need at least 8 buffers */
++	dev->rx_vb2_queue.min_buffers_needed = 8;
+ 	dev->rx_vb2_queue.ops = &hackrf_vb2_ops;
+ 	dev->rx_vb2_queue.mem_ops = &vb2_vmalloc_memops;
+ 	dev->rx_vb2_queue.drv_priv = dev;
 -- 
 2.39.2
 
