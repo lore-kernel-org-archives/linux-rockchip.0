@@ -4,64 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBCCCDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 02:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28897CDB47E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 07:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ON/E3/iE2ITTSO9MjQa22b+G8ZsvkMSYUMrkUUCAdlU=; b=SGOqoXvE4kVmny
-	ml1CgNkS1sBil8meTqfzzJCAeYI89rhg7wbAUqf2bmEAsWEzbcwyQG5JeJWGQJCnw8RHCnkzR0eZy
-	fujo7KJtrEe1fsFVqbh6rLbpE0K6WWyxXZ0BhupN19o7htoJXeonAthilnh49rkyeODNpRhN/Wmj5
-	gVUmX5QZUc2dncE2BxRD0JZQseqtzEKSWbu6sCwe+ciJ2nBGZAchDSw9DVMXbLmY/xxh9A1QFPxyK
-	hQx9GDDgaEfZMURnRAsLmBHiVWN+HJFZ930qhdumO2Q9lzzKtgb+jC0OWcd+k1i4ri02ycWvj+4pN
-	wCLI+sSiMez+3i9+9P7A==;
+	List-Owner; bh=2dbHccynB9ALCq6kLeSqoOw7XbqvbrQsgxWpMqdJ7Oc=; b=UtD/A+oY5FmYtX
+	ZKjHwoVKdphXHw4EaTNb9CCytQwRrNaUq1nSXGCP3bKj6uxySxLbB+I0liGxHYSxtVInTw6IDkthN
+	qrVFGGsJkpKp4T5ZiLQucn0tX6Af9rTQYecBVy4VH3t+6atgfpZXnarVlzK7XIFXzdjYjbw2aaC+k
+	czRLqeQQNa1VDhfZceeNwPYk1Cmh5z5x8EClYA+jKwiRwTd0on2RnHmnCHt6TK3CtisbtRV/Amrxt
+	gZnPvax38morikdTy66ztsgnd5eIdHm7oykEKUPtSHYte5QqABrbst50AhGXR8ViMSKRqKkj81pwi
+	Wt1FrPCgMCsKfFiQe4eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqlZk-00HCa6-0z;
-	Thu, 12 Oct 2023 02:37:24 +0000
-Received: from m12.mail.163.com ([220.181.12.215])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqlZg-00HCYy-22
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Oct 2023 02:37:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=V2Qn8
-	0O+DIwJixoj7jqNQwuc43YnzGHFevQESeTJiA0=; b=W0H4hvk6YpSbquSIdnbYa
-	O5sPGD7IwTnqDQnwNJVHZSr8fC4ub210TEV+LxF3mgP5DGfGdwseSLhB8mc00ech
-	6n24nRSonOYSrsw81wrWhN0BEpOgNQ6uixGd3xFSm/WHOhhg2MkozafvJsx+ijZR
-	szP1MSdxSknE93Xz78I8NY=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g4-3 (Coremail) with SMTP id _____wD3v9HSWydlF2ZJAQ--.58923S2;
-	Thu, 12 Oct 2023 10:37:09 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de
-Cc: s.hauer@pengutronix.de,
-	hjc@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	sjoerd.simons@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 3/3] drm/rockchip: fix the plane format defination of rk3568/6
-Date: Thu, 12 Oct 2023 10:37:05 +0800
-Message-Id: <20231012023705.1497648-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231012023439.1497304-1-andyshrk@163.com>
-References: <20231012023439.1497304-1-andyshrk@163.com>
+	id 1qqqWb-0006vu-1s;
+	Thu, 12 Oct 2023 07:54:29 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qqqWW-0006tH-1p;
+	Thu, 12 Oct 2023 07:54:28 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 39C7VCCd016347;
+	Thu, 12 Oct 2023 09:54:07 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	message-id:date:mime-version:subject:to:cc:references:from
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	selector1; bh=iE8X+9XFj8ZYJlss7mivX3vLbG+BQZYVJPofdFi6K34=; b=lt
+	HpikgsqsH7F422xIipYUFJuFCrPu73LTTYdETTkILZiTlL4RGBEktjHyL+sFm4Ou
+	UYmxaOXl6aw5q92sGvosYAwqCY7bo1viQoHT2+SvYImvVPDQh6oQTbE+X/yVBDs6
+	tdVPDBrzqy+aA9yRYddI6WuPcCCmRwJaUyui5GAl7QZHr6vrRwWWn/Vjm4ceIe3/
+	0DHekb8m3XJOlEBez6myKIk02zmKNDsCczM0KLxlIhqBcT9N45grJnJb7X5k1lfT
+	VPW1Y9jU3K2sEExhMYD3Qlte2ibIBYbCBL6axUk1kcBiChPTpNr7qS0WKuFRYD2J
+	e+YPsUCsryAxda5TmK2w==
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhf7txhq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 12 Oct 2023 09:54:07 +0200 (MEST)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id BA887100056;
+	Thu, 12 Oct 2023 09:54:05 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id AAD13215BD5;
+	Thu, 12 Oct 2023 09:54:05 +0200 (CEST)
+Received: from [10.201.20.120] (10.201.20.120) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 12 Oct
+ 2023 09:54:04 +0200
+Message-ID: <97f843cb-f6fb-b282-676b-d2ecea0c3db4@foss.st.com>
+Date: Thu, 12 Oct 2023 09:54:03 +0200
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3v9HSWydlF2ZJAQ--.58923S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuw47Cw43Zw4UKF45ZFyDGFg_yoW7ArWUpa
-	yDurnxWF4rZFyrK3WUJ3yUZr4rC3ZxGa1S9w4rG3Z7KFy5KF9rJr1Dtas8C34DKFy8Aw12
-	yr4aqry5Zr47trJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jyE__UUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiOwwHXmC5nzHvxAABsz
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v2 1/5] dt-bindings: media: Document STM32MP25 VDEC & VENC
+ video codecs
+Content-Language: en-US
+To: Conor Dooley <conor@kernel.org>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+        Philipp Zabel
+	<p.zabel@pengutronix.de>,
+        Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+        Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+        Sakari Ailus
+	<sakari.ailus@linux.intel.com>,
+        Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+        Laurent Pinchart
+	<laurent.pinchart+renesas@ideasonboard.com>,
+        Daniel Almeida
+	<daniel.almeida@collabora.com>,
+        Benjamin Mugnier
+	<benjamin.mugnier@foss.st.com>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Mauro
+ Carvalho Chehab <mchehab@kernel.org>,
+        Hans Verkuil <hverkuil@xs4all.nl>, <linux-media@vger.kernel.org>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        Rob Herring <robh+dt@kernel.org>,
+        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley
+	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>,
+        Marco Felsch <m.felsch@pengutronix.de>, Adam Ford <aford173@gmail.com>
+References: <20231010091643.3666290-1-hugues.fruchet@foss.st.com>
+ <20231010091643.3666290-2-hugues.fruchet@foss.st.com>
+ <20231011-jogger-designing-0eb6e2daacba@spud>
+From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
+In-Reply-To: <20231011-jogger-designing-0eb6e2daacba@spud>
+X-Originating-IP: [10.201.20.120]
+X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-12_03,2023-10-11_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231011_193721_080980_403DF395 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20231012_005424_885345_92F92371 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,154 +116,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Hi Conor,
 
-The cluster windows on rk3568/6 only support afbc format,
-linear format(RGB/YUV) are not supported.
-The cluster windows on rk3588 support both linear and afbc rgb
-format, but for yuv format it only support afbc.
+Will do all in v3, thanks !
 
-The esmart windows on rk3588 support uv swap for yuyv, but
-rk356x does not support it.
+On 10/11/23 17:55, Conor Dooley wrote:
+> Hey,
+> 
+> On Tue, Oct 10, 2023 at 11:16:39AM +0200, Hugues Fruchet wrote:
+>> Add STM32MP25 VDEC video decoder & VENC video encoder bindings.
+>>
+>> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+>> ---
+>>   .../media/st,stm32mp25-video-codec.yaml       | 58 +++++++++++++++++++
+>>   1 file changed, 58 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
+>> new file mode 100644
+>> index 000000000000..479566171568
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
+>> @@ -0,0 +1,58 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/media/st,stm32mp25-video-codec.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: STMicroelectronics STM32MP25 VDEC video decoder & VENC video encoder
+>> +
+>> +maintainers:
+>> +  - Hugues Fruchet <hugues.fruchet@foss.st.com>
+>> +
+>> +description:
+>> +  The STMicroelectronics STM32MP25 SOCs embeds a VDEC video hardware
+>> +  decoder peripheral based on Verisilicon VC8000NanoD IP (former Hantro G1)
+>> +  and a VENC video hardware encoder peripheral based on Verisilicon
+>> +  VC8000NanoE IP (former Hantro H1).
+>> +
+>> +properties:
+>> +  compatible:
+>> +    items:
+> 
+> This "items:" is not needed, the enum on its own is enough.
+> 
+>> +      - enum:
+>> +          - st,stm32mp25-vdec
+>> +          - st,stm32mp25-venc
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  interrupts:
+>> +    maxItems: 1
+>> +
+>> +  clocks:
+>> +    maxItems: 1
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - interrupts
+>> +  - clocks
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>> +    vdec: video-codec@580d0000 {
+> 
+> The node labels for both nodes here are not used & should be dropped.
+> 
+> Otherwise, this seems fine to me.
+> 
+> Cheers,
+> Conor.
+> 
+>> +        compatible = "st,stm32mp25-vdec";
+>> +        reg = <0x580d0000 0x3c8>;
+>> +        interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+>> +        clocks = <&ck_icn_p_vdec>;
+>> +    };
+>> +  - |
+>> +    venc: video-codec@580e0000 {
+>> +        compatible = "st,stm32mp25-venc";
+>> +        reg = <0x580e0000 0x800>;
+>> +        interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>;
+>> +        clocks = <&ck_icn_p_venc>;
+>> +    };
+>> -- 
+>> 2.25.1
+>>
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
-
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 53 +++++++++++---------
- 1 file changed, 30 insertions(+), 23 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 62b573f282a7..cde85a17f138 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -15,7 +15,11 @@
- 
- #include "rockchip_drm_vop2.h"
- 
--static const uint32_t formats_win_full_10bit[] = {
-+static const uint32_t formats_for_cluster[] = {
-+	DRM_FORMAT_XRGB2101010,
-+	DRM_FORMAT_ARGB2101010,
-+	DRM_FORMAT_XBGR2101010,
-+	DRM_FORMAT_ABGR2101010,
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_XBGR8888,
-@@ -24,12 +28,14 @@ static const uint32_t formats_win_full_10bit[] = {
- 	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
- 	DRM_FORMAT_BGR565,
--	DRM_FORMAT_NV12,
--	DRM_FORMAT_NV16,
--	DRM_FORMAT_NV24,
-+	DRM_FORMAT_YUV420_8BIT, /* yuv420_8bit non-Linear mode only */
-+	DRM_FORMAT_YUV420_10BIT, /* yuv420_10bit non-Linear mode only */
-+	DRM_FORMAT_YUYV, /* yuv422_8bit non-Linear mode only*/
-+	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
- };
- 
--static const uint32_t formats_win_full_10bit_yuyv[] = {
-+/* RK356x can't support uv swap for YUYV and UYVY */
-+static const uint32_t formats_for_rk356x_esmart[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_XBGR8888,
-@@ -38,14 +44,15 @@ static const uint32_t formats_win_full_10bit_yuyv[] = {
- 	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
- 	DRM_FORMAT_BGR565,
--	DRM_FORMAT_NV12,
--	DRM_FORMAT_NV16,
--	DRM_FORMAT_NV24,
--	DRM_FORMAT_YVYU,
--	DRM_FORMAT_VYUY,
-+	DRM_FORMAT_NV12, /* yuv420_8bit linear mode, 2 plane */
-+	DRM_FORMAT_NV16, /* yuv422_8bit linear mode, 2 plane */
-+	DRM_FORMAT_NV24, /* yuv444_8bit linear mode, 2 plane */
-+	DRM_FORMAT_NV15, /* yuv420_10bit linear mode, 2 plane, no padding */
-+	DRM_FORMAT_YUYV, /* yuv422_8bit[YUYV] linear mode */
-+	DRM_FORMAT_UYVY, /* yuv422_8bit[UYVY] linear mode */
- };
- 
--static const uint32_t formats_win_lite[] = {
-+static const uint32_t formats_for_smart[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_XBGR8888,
-@@ -144,8 +151,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Smart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART0,
- 		.base = 0x1c00,
--		.formats = formats_win_lite,
--		.nformats = ARRAY_SIZE(formats_win_lite),
-+		.formats = formats_for_smart,
-+		.nformats = ARRAY_SIZE(formats_for_smart),
- 		.format_modifiers = format_modifiers,
- 		.layer_sel_id = 3,
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
-@@ -156,8 +163,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Smart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART1,
--		.formats = formats_win_lite,
--		.nformats = ARRAY_SIZE(formats_win_lite),
-+		.formats = formats_for_smart,
-+		.nformats = ARRAY_SIZE(formats_for_smart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1e00,
- 		.layer_sel_id = 7,
-@@ -169,8 +176,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART1,
--		.formats = formats_win_full_10bit_yuyv,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit_yuyv),
-+		.formats = formats_for_rk356x_esmart,
-+		.nformats = ARRAY_SIZE(formats_for_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1a00,
- 		.layer_sel_id = 6,
-@@ -182,8 +189,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART0,
--		.formats = formats_win_full_10bit_yuyv,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit_yuyv),
-+		.formats = formats_for_rk356x_esmart,
-+		.nformats = ARRAY_SIZE(formats_for_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1800,
- 		.layer_sel_id = 2,
-@@ -196,8 +203,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster0-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER0,
- 		.base = 0x1000,
--		.formats = formats_win_full_10bit,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit),
-+		.formats = formats_for_cluster,
-+		.nformats = ARRAY_SIZE(formats_for_cluster),
- 		.format_modifiers = format_modifiers_afbc,
- 		.layer_sel_id = 0,
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
-@@ -211,8 +218,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster1-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER1,
- 		.base = 0x1200,
--		.formats = formats_win_full_10bit,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit),
-+		.formats = formats_for_cluster,
-+		.nformats = ARRAY_SIZE(formats_for_cluster),
- 		.format_modifiers = format_modifiers_afbc,
- 		.layer_sel_id = 1,
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
--- 
-2.34.1
-
+BR,
+Hugues.
 
 _______________________________________________
 Linux-rockchip mailing list
