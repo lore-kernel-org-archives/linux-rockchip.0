@@ -4,142 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596F2CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 12:39:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D16E2CDB47E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 13:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZOEYPWo6+95Zddyb24/d1tWG4n30x/fuJ3im/o46wJI=; b=2TicJf9gZzMlTR
-	8OtsqV1/WY1mZuQLLgXwMKZKW1Wl6VfZsmixWPHXEoJgDsYXpPjiGofz+hcvMljPxGO6tgSzEWJCR
-	/FzqJXtLIidaC2hJfCs2WKO/P4J2Q2bOvEpngEXSLDeKm0Uwk8M803aUu2aNdJAK1j6I2308Lqr+r
-	Fj92JhUFbB5qu5u/qkkHHgd7WQuDqCtsWMEQPNIq+NwJjZqC0Jb7nu9MsXsvs5ijsuLasvZ8tyqOx
-	OtBVI94cXguWjTtTQIranBWvgSjwPVMDV+vHQ4kKdjYrctGUD9jw+OPiI1txXDLMVd9IYW9I7IufO
-	r0csrcHeYtHBiMoNPOEw==;
+	List-Owner; bh=KQyc4GPzwf6UasmRciPAKuLLy2qgKF+QpuMWh7PhqAc=; b=KgiFT/DRSJiM8b
+	wVUHewaGIvuTKcXcRzOk/VvtGqVVcPBl8L4J31RH4ghdxe2yFdWQTCz9u7n0Lk5x9GwZFWITFn+Qj
+	B7wI3R0tMtC+Geu9SJm9m1FSFiLdCbrGLwoBktnja6Kht6WkhFiwpUzjctEX7f8SFQe6Zx7oxZ4vM
+	UaDPkHvXoA/oPdpJ3U49gaHxnUbSCDllInBiD4+bYp7u022Rv0fIEh+e3OC8r2Ib5KoZtAbD7HVz0
+	Qy/HzhF+5kjCvzkweBLh8Xx2OOQaAtQ7FL+0+n1MImAOh2wN2bqj20/7NFC7zqvanDfINV+H17m1I
+	KxFYScwU3CXPcJShn+Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquy9-000zZb-0m;
-	Thu, 12 Oct 2023 12:39:13 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1qqvJ0-0011h7-2B;
+	Thu, 12 Oct 2023 13:00:46 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquy6-000zYa-2t
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Oct 2023 12:39:12 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-32d849cc152so892221f8f.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 12 Oct 2023 05:39:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697114348; x=1697719148; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=SKYKtF8Rs4Df9JqahwPF42+aeaV4P03MLBBouRg8VCs=;
-        b=IZtYfCFjBlKVEjlBSnL+jO/z4c5GGovf2S1wB+lGAMY5F6yLIAc8cgYFcT/eAJjnAS
-         uH57h17OF9Yf1bbkW2gZ4Lp71VI42PzUQ+hJeMtCTnW2Lp7hg4GBrYbzwrwdRc6uJpIz
-         wHSkSHZekADrcj4JvDWxcqeWB1OyIKghzfYsBSDIX6Z4+BTyyjI7keHfwWhhIHqPKfmE
-         DgUyAGsnIoi1vw5U92V28yesiVPxbwVVURXPsEqMksVJbmzD5jGKcqiihGpOXxsz0Scj
-         5+FlgulVF0wedMe/jB8dX+EBFOYv2Prh4r1giPMhBqb9eWod0e5Q0VqMmWEIOb0f+iFg
-         11fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697114348; x=1697719148;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SKYKtF8Rs4Df9JqahwPF42+aeaV4P03MLBBouRg8VCs=;
-        b=vhEt/fYeAo77lh6ptkkzHqDVl5aeikOz6Bv/zY97DG9AW1zMGYGtxrRhWg8XzeXZAG
-         oeKtVkNqrS5g17etcq446wsmMC7GiSTc4iVdr5Cq40NF26W+uNrbc8kzgd8B9tN9D8/N
-         HT8a6fJOYV/47bqUx+4V5HxmojpIC6bd7M3+SGfBN0hQ13TE0oaIuCMsFm0oQM1qbkoW
-         B/y/DviDwedanEYfYr/DAYcGrVmOajgiWokZ60eRSzAPSXeyy/C5/wSBI8NG8BwuNvuU
-         pFgsj2NNOZItamjuOBDVxaKHQrXarlEjPW7mi0ZBVmAhTYn6/d7iZ2BzsP5RCfF6NIoL
-         lh9w==
-X-Gm-Message-State: AOJu0YwdP1lky0A3oi/hOS/kmYfTawbRjmB3aZS7l1mPvVPZnlAC2MM6
-	WXYtxY2VG1iAa4MIOQqF+JrBQA==
-X-Google-Smtp-Source: AGHT+IFBWgt+00+f3S0x0ai2M74aG+SX8T3vAsi59DA/kcaO81wHegEjRyQgxUJBa/frUcvaQZKWIg==
-X-Received: by 2002:a5d:55ce:0:b0:32d:8ac4:d23f with SMTP id i14-20020a5d55ce000000b0032d8ac4d23fmr2836947wrw.29.1697114348486;
-        Thu, 12 Oct 2023 05:39:08 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.100])
-        by smtp.gmail.com with ESMTPSA id n4-20020a5d4004000000b003197c7d08ddsm18412766wrp.71.2023.10.12.05.39.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Oct 2023 05:39:08 -0700 (PDT)
-Message-ID: <315c152a-da9f-4df8-aa91-9f641a33f1e2@linaro.org>
-Date: Thu, 12 Oct 2023 14:39:00 +0200
+	id 1qqu9V-000nsh-2m;
+	Thu, 12 Oct 2023 11:46:55 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 52F226607347;
+	Thu, 12 Oct 2023 12:46:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697111210;
+	bh=7foNNb6amO3+FMMwIl173lEOz6gYhJG/dA79F9jwpAU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WgyGRT3Wun6oQTjVb/4d2xo/H9h+Mo51gVh/Qv4FpnOR8cd80YKFO/8Zh4K4zPGas
+	 hjIR2gGYFRJmkUgurilkUADwklRY+OK7p5fTIO6ZkrEvl37tn9PQ5gnAftD0pwJIQa
+	 VLMXBNvUQCw0lQ6KilJH5GQk2JDNxO9Ac6KjjJEJmzmUNASybx9wVA8QEDYLRUaKYe
+	 tPR5blQGz+SdckyNdIm/itHL86EH1uITlplFCeK/mHWi5WWYBEy8f6G0zqysttAFNT
+	 GF5HQrLx0jU8QB7ngsivbga72hPDZ6Qg5jkQN8ezpwVnBC9ICpHxQGDQyRp26XR9H5
+	 kntHkJmG+XW/A==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 02/56] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Thu, 12 Oct 2023 13:45:48 +0200
+Message-Id: <20231012114642.19040-3-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] dt-bindings: media: Document STM32MP25 VDEC & VENC
- video codecs
-Content-Language: en-US
-To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
- Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-media@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-stm32@st-md-mailman.stormreply.com, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Cc: Marco Felsch <m.felsch@pengutronix.de>, Adam Ford <aford173@gmail.com>
-References: <20231010091643.3666290-1-hugues.fruchet@foss.st.com>
- <20231010091643.3666290-2-hugues.fruchet@foss.st.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231010091643.3666290-2-hugues.fruchet@foss.st.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_053910_966998_075CB832 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20231012_044654_172864_7FD85DEB 
+X-CRM114-Status: GOOD (  20.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,77 +88,178 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/10/2023 11:16, Hugues Fruchet wrote:
-> Add STM32MP25 VDEC video decoder & VENC video encoder bindings.
-> 
-> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
-> ---
->  .../media/st,stm32mp25-video-codec.yaml       | 58 +++++++++++++++++++
->  1 file changed, 58 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
-> new file mode 100644
-> index 000000000000..479566171568
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
-> @@ -0,0 +1,58 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/st,stm32mp25-video-codec.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: STMicroelectronics STM32MP25 VDEC video decoder & VENC video encoder
-> +
-> +maintainers:
-> +  - Hugues Fruchet <hugues.fruchet@foss.st.com>
-> +
-> +description:
-> +  The STMicroelectronics STM32MP25 SOCs embeds a VDEC video hardware
-> +  decoder peripheral based on Verisilicon VC8000NanoD IP (former Hantro G1)
-> +  and a VENC video hardware encoder peripheral based on Verisilicon
-> +  VC8000NanoE IP (former Hantro H1).
-> +
-> +properties:
-> +  compatible:
-> +    items:
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers.
+The maximum number of buffers depends of PAGE_SHIFT value and can
+go up to 0x7fff when PAGE_SHIFT = 12.
+With this encoding pattern we know the maximum number that a queue
+could store so we can check it at  queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
+Change __find_plane_by_offset() prototype to return the video buffer
+itself rather than it index.
 
-Drop "items", we keep simple enum in such case.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 73 +++++++++----------
+ 1 file changed, 35 insertions(+), 38 deletions(-)
 
-> +      - enum:
-> +          - st,stm32mp25-vdec
-> +          - st,stm32mp25-venc
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-
-...
-
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    vdec: video-codec@580d0000 {
-> +        compatible = "st,stm32mp25-vdec";
-> +        reg = <0x580d0000 0x3c8>;
-> +        interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&ck_icn_p_vdec>;
-> +    };
-> +  - |
-> +    venc: video-codec@580e0000 {
-> +        compatible = "st,stm32mp25-venc";
-> +        reg = <0x580e0000 0x800>;
-> +        interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&ck_icn_p_venc>;
-> +    };
-
-You can drop second example - it is the same as the first.
-
-Best regards,
-Krzysztof
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index a5e57affeb30..09be8e026044 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -31,6 +31,11 @@
+ 
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
++#define PLANE_INDEX_MASK	0x7
++#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
++#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
++
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,21 +363,27 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long offset = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+-		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+-
+-		offset = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * The offset "cookie" value has the following constraints:
++	 * - a buffer can have up to 8 planes.
++	 * - v4l2 mem2mem uses bit 30 to distinguish between
++	 *   OUTPUT (aka "source", bit 30 is 0) and
++	 *   CAPTURE (aka "destination", bit 30 is 1) buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping when PAGE_SHIFT = 12:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there are 15 bits to store the buffer index.
++	 * Depending on PAGE_SHIFT value we can have fewer bits
++	 * to store the buffer index.
++	 */
++	offset = vb->index << PLANE_INDEX_SHIFT;
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = offset;
++		vb->planes[plane].m.offset = offset + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, offset);
+-
+-		offset += vb->planes[plane].length;
+-		offset = PAGE_ALIGN(offset);
+ 	}
+ }
+ 
+@@ -2188,10 +2199,9 @@ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+  * __find_plane_by_offset() - find plane associated with the given offset
+  */
+ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+-			unsigned int *_buffer, unsigned int *_plane)
++			struct vb2_buffer **vb, unsigned int *plane)
+ {
+-	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int buffer;
+ 
+ 	/*
+ 	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+@@ -2209,24 +2219,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+ 		return -EBUSY;
+ 	}
+ 
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = q->bufs[buffer];
++	/* Get buffer and plane from the offset */
++	buffer = (offset >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
++	*plane = (offset >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == offset) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
+-	}
++	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
++		return -EINVAL;
+ 
+-	return -EINVAL;
++	*vb = q->bufs[buffer];
++	return 0;
+ }
+ 
+ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+@@ -2306,7 +2307,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ {
+ 	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer = 0, plane = 0;
++	unsigned int plane = 0;
+ 	int ret;
+ 	unsigned long length;
+ 
+@@ -2335,12 +2336,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	/*
+ 	 * MMAP requires page_aligned buffers.
+ 	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+@@ -2368,7 +2367,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	if (ret)
+ 		return ret;
+ 
+-	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
++	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(vb2_mmap);
+@@ -2382,7 +2381,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ {
+ 	unsigned long offset = pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int plane;
+ 	void *vaddr;
+ 	int ret;
+ 
+@@ -2392,12 +2391,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	vaddr = vb2_plane_vaddr(vb, plane);
+ 	mutex_unlock(&q->mmap_lock);
+ 	return vaddr ? (unsigned long)vaddr : -EINVAL;
+-- 
+2.39.2
 
 
 _______________________________________________
