@@ -4,45 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F66CDB483
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B1BCDB46E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xvfBG8GD95l91h38tTpsoGWAGQGsmXpWWBpUiPGyqPU=; b=bR8DgBFIsNejZb
-	M6vJ55auTYfCAuv+Tr38NypeBo9Y3BuL2e2jPN1PBf9J9RvejAiOY6+tJ3I0ihPYQjlWW0/CmA6y1
-	MIuY4X3Jm3wX5bMf0faeV8RzTB8MK8Iy9KF0wnlGygW8drX1ai64La4ymSjA9Yqo5kVkUk9uHrt95
-	OOczEopQgDZSaREO0t5s3pvPwmZUy0h5vfN6vp2fHfHu9zt5x04KTiZC5bjZkD7hbYNafowITXi9e
-	H4yQtS6OrAu5Wcvbs+1RXatqZ9Q4e7yI47YU5H+183f9b0EnlbM2zB4vnaYUKbX8b9ChVaA/GXfXv
-	ye39pStnVo2zqPzBjWww==;
+	List-Owner; bh=SRLTNJhRzSUDNGvTYvJEX1jQJOFn1ntUwcxIhw5vmbw=; b=NQCfSf2upTof5Q
+	i9C2ZJn94C3Xr2L7uzkHdfFAUa7USBUa/mZu7tT2/FyX7qxpC54St8h1msTR+CiOu0079mrsQhgQe
+	g4a/XOZGY69kbgpEdbLxAV/lG2DV+7rJcDI2f5ZX5VjYbWYnzw6FMaL9uFdkfT9CtgD5DwCV/OBOT
+	GzXuBBmspJ9A8936Ip+RXmoevjXUGOPoXYRKwdL8zCLPe04UNBZKWbWj9KjhjYHzfx8YEAux9aZW8
+	aBu0Z7hayOqVCAB05Tq7J0PeYU7M0N2JEKxAcKWodY0WfHD8vu+bndWkaCYK3xB82PXPz6vKdw3G9
+	3cxnIoYvckEDlS+7Eg6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qquCn-000r7g-2a;
-	Thu, 12 Oct 2023 11:50:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qquCe-000qxa-0I;
+	Thu, 12 Oct 2023 11:50:08 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqu9l-000o9a-2G;
+	id 1qqu9o-000oDF-3B;
 	Thu, 12 Oct 2023 11:47:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=mZs75sxNyEMKxgyp24DosHVVPoQJidrdHhoLAIzZ8gc=; b=hSt5z9S6RjDXsQ3jN1d1lt33G2
+	6h6tuXHaEDrFH7t1c7JmRZyo8tYzPMKTK5SFo3uaFF6lh1r8ASVvfk5fK8Dt/aqD0iFDW1CIAoiWf
+	z8FfD9qfi/mlfchDbD/d8/Xw6mwsAsWWhOGlMY/mIPHxQdd6r7OLVlsNNaYB69/XFYiugEo4OQMWV
+	AVbSAOwAy5pwR1ZjDy1mQNGrljQgpkpDDdv5Qs+Vy5T5WmT6M+HJ/QYmex3U0O1mqvTjjWTw21Y6t
+	C0ZABj41jfmelQgVYYGzEzi+hCOgwi1ckjQ1JQURwoKWM5zvr3/KXgxFYrEk+FuwH19pD/zw7XMVM
+	jWQbTWTg==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1qqu9l-00GgrT-HP; Thu, 12 Oct 2023 11:47:11 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 04BCE660738E;
-	Thu, 12 Oct 2023 12:47:08 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC0CF660738C;
+	Thu, 12 Oct 2023 12:47:06 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697111228;
-	bh=Zne8+1+gt7T5bArgwI34aDgBwx9md9yjRlThQEon5Pk=;
+	s=mail; t=1697111227;
+	bh=2/0WQage6iY7ZIfSwpoGdnzQlJzC1UZq8fdQbr8LRKw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Gf62AcjPOWvhMdRnJLmE7bGshcMQ4KNh+hthHIVDXid8l3MkgBetP/26Xjn2KSMtb
-	 H8EIQSwmX8n+aIhWpFXtdiS3F+VD8K0qfKNtKDWURVfH22H2dLYAxvb+SWUBXxslQB
-	 7fhI0AoGLYmOPsk2AfDcf2O9hPNloqPwd89JElrVskjwHUhCpOGFyyeJdn6VboNJhP
-	 Ac99fN6a8lkBmEnmkgSvKIVnNUyJSXkvto5CExml7BtvuC4Nx1w5XdmzPPb7C8Qi3b
-	 342KiEz+CMwVHJEKp5FmaLjASvSoTU+TKexyrkuS7nQqQLVOR5ZPbF8Gs3IfcZmZDz
-	 wauoulmDnt5fw==
+	b=L8cYZ8LKwxDdQJC/fkFna0Z4loJWQY4rlLc2nv/Iu86jK57Dgo5nLbgWL6uzreecL
+	 kXVb7RHCUVlKxJXrPlrZTBFj0wjGyXvpXiK45iRJ3QADd1AjZvZTBkp4lJ47u1w2tz
+	 8LSUo+83BEFBQ9rAZKDCL3bHB+qY/PPmhiOLoehJZIQtbLpsWqyyk8XPRxj1K1ZTbY
+	 xBeynsjCo2i/JM5xiLNWE8A8rfak1nxqGNM5ADSU/4GokgPl+JIZaITV8jQKANfJXE
+	 vR5aneBs49rxfpAOgs6fzUVB2eslLVMTPIGMR8A6GyzQlfki+NJE+lFeWQ+IidYIrS
+	 iFucW8Q+HNdxw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -63,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Antti Palosaari <crope@iki.fi>
-Subject: [PATCH v11 35/56] media: usb: hackrf: Set min_buffers_needed to 8
-Date: Thu, 12 Oct 2023 13:46:21 +0200
-Message-Id: <20231012114642.19040-36-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 33/56] media: usb: airspy: Set min_buffers_needed to 8
+Date: Thu, 12 Oct 2023 13:46:19 +0200
+Message-Id: <20231012114642.19040-34-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_044709_882933_C22DFCF5 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20231012_124709_660669_797E38BD 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,44 +105,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 vb2 queue_setup checks for a minimum number of buffers so set
 min_buffers_needed to 8 and remove the useless check in
-hackrf_queue_setup().
+airspy_queue_setup().
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 CC: Antti Palosaari <crope@iki.fi>
 ---
- drivers/media/usb/hackrf/hackrf.c | 9 +++------
+ drivers/media/usb/airspy/airspy.c | 9 +++------
  1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/usb/hackrf/hackrf.c b/drivers/media/usb/hackrf/hackrf.c
-index 3e535be2c520..2e856b20aa21 100644
---- a/drivers/media/usb/hackrf/hackrf.c
-+++ b/drivers/media/usb/hackrf/hackrf.c
-@@ -754,15 +754,10 @@ static int hackrf_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/usb/airspy/airspy.c b/drivers/media/usb/airspy/airspy.c
+index 462eb8423506..56bc1b23d39b 100644
+--- a/drivers/media/usb/airspy/airspy.c
++++ b/drivers/media/usb/airspy/airspy.c
+@@ -483,15 +483,10 @@ static int airspy_queue_setup(struct vb2_queue *vq,
  {
- 	struct hackrf_dev *dev = vb2_get_drv_priv(vq);
+ 	struct airspy *s = vb2_get_drv_priv(vq);
  
--	dev_dbg(dev->dev, "nbuffers=%d\n", *nbuffers);
+-	dev_dbg(s->dev, "nbuffers=%d\n", *nbuffers);
 -
 -	/* Need at least 8 buffers */
 -	if (vq->num_buffers + *nbuffers < 8)
 -		*nbuffers = 8 - vq->num_buffers;
  	*nplanes = 1;
- 	sizes[0] = PAGE_ALIGN(dev->buffersize);
+ 	sizes[0] = PAGE_ALIGN(s->buffersize);
  
--	dev_dbg(dev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
-+	dev_dbg(dev->dev, "nbuffers=%u sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
+-	dev_dbg(s->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
++	dev_dbg(s->dev, "nbuffers=%d sizes[0]=%d\n", vb2_get_num_buffers(vq), sizes[0]);
  	return 0;
  }
  
-@@ -1392,6 +1387,8 @@ static int hackrf_probe(struct usb_interface *intf,
- 	dev->rx_vb2_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
- 	dev->rx_vb2_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_DMABUF |
- 				     VB2_READ;
+@@ -1011,6 +1006,8 @@ static int airspy_probe(struct usb_interface *intf,
+ 	/* Init videobuf2 queue structure */
+ 	s->vb_queue.type = V4L2_BUF_TYPE_SDR_CAPTURE;
+ 	s->vb_queue.io_modes = VB2_MMAP | VB2_USERPTR | VB2_READ;
 +	/* Need at least 8 buffers */
-+	dev->rx_vb2_queue.min_buffers_needed = 8;
- 	dev->rx_vb2_queue.ops = &hackrf_vb2_ops;
- 	dev->rx_vb2_queue.mem_ops = &vb2_vmalloc_memops;
- 	dev->rx_vb2_queue.drv_priv = dev;
++	s->vb_queue.min_buffers_needed = 8;
+ 	s->vb_queue.drv_priv = s;
+ 	s->vb_queue.buf_struct_size = sizeof(struct airspy_frame_buf);
+ 	s->vb_queue.ops = &airspy_vb2_ops;
 -- 
 2.39.2
 
