@@ -4,107 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28897CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 07:54:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68BB5CDB46E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Oct 2023 11:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2dbHccynB9ALCq6kLeSqoOw7XbqvbrQsgxWpMqdJ7Oc=; b=UtD/A+oY5FmYtX
-	ZKjHwoVKdphXHw4EaTNb9CCytQwRrNaUq1nSXGCP3bKj6uxySxLbB+I0liGxHYSxtVInTw6IDkthN
-	qrVFGGsJkpKp4T5ZiLQucn0tX6Af9rTQYecBVy4VH3t+6atgfpZXnarVlzK7XIFXzdjYjbw2aaC+k
-	czRLqeQQNa1VDhfZceeNwPYk1Cmh5z5x8EClYA+jKwiRwTd0on2RnHmnCHt6TK3CtisbtRV/Amrxt
-	gZnPvax38morikdTy66ztsgnd5eIdHm7oykEKUPtSHYte5QqABrbst50AhGXR8ViMSKRqKkj81pwi
-	Wt1FrPCgMCsKfFiQe4eA==;
+	List-Owner; bh=+h9q5sf7PUOmO+1lNsYDQNTfgsqSsrIuX2X7kSRUHJ4=; b=Mv9BWusW3BLn40
+	hV5loCMIfHxxjfBhnhWs/BXRn/mLgQiAnkj2FLRILXr2RsfY3FliHLWzU2Ogs8kc/BvJBhikKOs5a
+	7iniE3PeKRE39M7nIjr5/Y+1ZRMViMeFahTKKqGVa0iCxI0eSRGKflK4pGoqvFkjPWtw0IOJiD8KF
+	T/dJCYrGNhSMTyHZcR89zOAYID68Zo/e2lHOfv+F3rjRzwic2KgKiZUSLL5p/0ZyBIfS4YsinTduZ
+	bIpb2avjz9vpbJ0exlK6njh7LvFgRFn44SQHkJUgRk2kXV6EdYt0IogkbI4UfaxjAHy5Qd0+fEUBE
+	+ToxZGyRsbxfjF5L39ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqqWb-0006vu-1s;
-	Thu, 12 Oct 2023 07:54:29 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
+	id 1qqu9v-000oMi-1D;
+	Thu, 12 Oct 2023 11:47:19 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qqqWW-0006tH-1p;
-	Thu, 12 Oct 2023 07:54:28 +0000
-Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 39C7VCCd016347;
-	Thu, 12 Oct 2023 09:54:07 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	selector1; bh=iE8X+9XFj8ZYJlss7mivX3vLbG+BQZYVJPofdFi6K34=; b=lt
-	HpikgsqsH7F422xIipYUFJuFCrPu73LTTYdETTkILZiTlL4RGBEktjHyL+sFm4Ou
-	UYmxaOXl6aw5q92sGvosYAwqCY7bo1viQoHT2+SvYImvVPDQh6oQTbE+X/yVBDs6
-	tdVPDBrzqy+aA9yRYddI6WuPcCCmRwJaUyui5GAl7QZHr6vrRwWWn/Vjm4ceIe3/
-	0DHekb8m3XJOlEBez6myKIk02zmKNDsCczM0KLxlIhqBcT9N45grJnJb7X5k1lfT
-	VPW1Y9jU3K2sEExhMYD3Qlte2ibIBYbCBL6axUk1kcBiChPTpNr7qS0WKuFRYD2J
-	e+YPsUCsryAxda5TmK2w==
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3tkhf7txhq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Oct 2023 09:54:07 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id BA887100056;
-	Thu, 12 Oct 2023 09:54:05 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id AAD13215BD5;
-	Thu, 12 Oct 2023 09:54:05 +0200 (CEST)
-Received: from [10.201.20.120] (10.201.20.120) by SHFDAG1NODE1.st.com
- (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 12 Oct
- 2023 09:54:04 +0200
-Message-ID: <97f843cb-f6fb-b282-676b-d2ecea0c3db4@foss.st.com>
-Date: Thu, 12 Oct 2023 09:54:03 +0200
+	id 1qqu9V-000nsi-34;
+	Thu, 12 Oct 2023 11:46:57 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7ae7:b86d:c19a:877e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D22196607348;
+	Thu, 12 Oct 2023 12:46:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697111211;
+	bh=xMJ8tMojfr13gTY+PpecndOGeS4i3P9Tk9kRrGKcBSQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=d0Vb5yg800NBnbps2lBfIjdmI+Nk9X7Z+HUG/OhSGGIb/xKUKkaChkfykyV+Z0igH
+	 +yat9F7ZLG5f7N992/tn+aNdv8m82HKhXpeV+iTbq79HNk0nTQbwznumDPfXqQk5ni
+	 3s++jlxrkL5b+92W/j07LlSI2nTDHAcWwKBcEaMYhXO9rTndxm3uEvNHCCcRcjBXHX
+	 Dft0V8mD1KhWU45yBziHsUaKEar+UseGWgsVQSpZO/r9x3Q72APSdm/8nJS+3L9mLm
+	 vjK7S0r7JpPPMibS2H5+Y/RIyYqz87CJUnsZELLjnKP0pTNWO+UMgBz0Vxj0r1tD8k
+	 yjxLkgoLP6NAg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 03/56] media: videobuf2: Stop spamming kernel log with all queue counter
+Date: Thu, 12 Oct 2023 13:45:49 +0200
+Message-Id: <20231012114642.19040-4-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
+References: <20231012114642.19040-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2 1/5] dt-bindings: media: Document STM32MP25 VDEC & VENC
- video codecs
-Content-Language: en-US
-To: Conor Dooley <conor@kernel.org>
-CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Philipp Zabel
-	<p.zabel@pengutronix.de>,
-        Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-        Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-        Sakari Ailus
-	<sakari.ailus@linux.intel.com>,
-        Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>,
-        Laurent Pinchart
-	<laurent.pinchart+renesas@ideasonboard.com>,
-        Daniel Almeida
-	<daniel.almeida@collabora.com>,
-        Benjamin Mugnier
-	<benjamin.mugnier@foss.st.com>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Mauro
- Carvalho Chehab <mchehab@kernel.org>,
-        Hans Verkuil <hverkuil@xs4all.nl>, <linux-media@vger.kernel.org>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        Rob Herring <robh+dt@kernel.org>,
-        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley
-	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <linux-rockchip@lists.infradead.org>,
-        Marco Felsch <m.felsch@pengutronix.de>, Adam Ford <aford173@gmail.com>
-References: <20231010091643.3666290-1-hugues.fruchet@foss.st.com>
- <20231010091643.3666290-2-hugues.fruchet@foss.st.com>
- <20231011-jogger-designing-0eb6e2daacba@spud>
-From: Hugues FRUCHET <hugues.fruchet@foss.st.com>
-In-Reply-To: <20231011-jogger-designing-0eb6e2daacba@spud>
-X-Originating-IP: [10.201.20.120]
-X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
- (10.75.129.69)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-12_03,2023-10-11_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231012_005424_885345_92F92371 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20231012_044654_242510_B296C2AD 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,108 +83,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Conor,
+Only report unbalanced queue counters do avoid spamming kernel log
+with useless information.
 
-Will do all in v3, thanks !
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 79 +++++++++++--------
+ 1 file changed, 44 insertions(+), 35 deletions(-)
 
-On 10/11/23 17:55, Conor Dooley wrote:
-> Hey,
-> 
-> On Tue, Oct 10, 2023 at 11:16:39AM +0200, Hugues Fruchet wrote:
->> Add STM32MP25 VDEC video decoder & VENC video encoder bindings.
->>
->> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
->> ---
->>   .../media/st,stm32mp25-video-codec.yaml       | 58 +++++++++++++++++++
->>   1 file changed, 58 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
->> new file mode 100644
->> index 000000000000..479566171568
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
->> @@ -0,0 +1,58 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/media/st,stm32mp25-video-codec.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: STMicroelectronics STM32MP25 VDEC video decoder & VENC video encoder
->> +
->> +maintainers:
->> +  - Hugues Fruchet <hugues.fruchet@foss.st.com>
->> +
->> +description:
->> +  The STMicroelectronics STM32MP25 SOCs embeds a VDEC video hardware
->> +  decoder peripheral based on Verisilicon VC8000NanoD IP (former Hantro G1)
->> +  and a VENC video hardware encoder peripheral based on Verisilicon
->> +  VC8000NanoE IP (former Hantro H1).
->> +
->> +properties:
->> +  compatible:
->> +    items:
-> 
-> This "items:" is not needed, the enum on its own is enough.
-> 
->> +      - enum:
->> +          - st,stm32mp25-vdec
->> +          - st,stm32mp25-venc
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  interrupts:
->> +    maxItems: 1
->> +
->> +  clocks:
->> +    maxItems: 1
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - interrupts
->> +  - clocks
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +    vdec: video-codec@580d0000 {
-> 
-> The node labels for both nodes here are not used & should be dropped.
-> 
-> Otherwise, this seems fine to me.
-> 
-> Cheers,
-> Conor.
-> 
->> +        compatible = "st,stm32mp25-vdec";
->> +        reg = <0x580d0000 0x3c8>;
->> +        interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
->> +        clocks = <&ck_icn_p_vdec>;
->> +    };
->> +  - |
->> +    venc: video-codec@580e0000 {
->> +        compatible = "st,stm32mp25-venc";
->> +        reg = <0x580e0000 0x800>;
->> +        interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>;
->> +        clocks = <&ck_icn_p_venc>;
->> +    };
->> -- 
->> 2.25.1
->>
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 09be8e026044..47dba2a20d73 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -533,25 +533,26 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 
+ #ifdef CONFIG_VIDEO_ADV_DEBUG
+ 	/*
+-	 * Check that all the calls were balances during the life-time of this
+-	 * queue. If not (or if the debug level is 1 or up), then dump the
+-	 * counters to the kernel log.
++	 * Check that all the calls were balanced during the life-time of this
++	 * queue. If not then dump the counters to the kernel log.
+ 	 */
+ 	if (q->num_buffers) {
+ 		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+ 				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+ 				  q->cnt_wait_prepare != q->cnt_wait_finish;
+ 
+-		if (unbalanced || debug) {
+-			pr_info("counters for queue %p:%s\n", q,
+-				unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
+-				q->cnt_queue_setup, q->cnt_start_streaming,
+-				q->cnt_stop_streaming);
+-			pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
+-				q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
+-			pr_info("     wait_prepare: %u wait_finish: %u\n",
+-				q->cnt_wait_prepare, q->cnt_wait_finish);
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p:\n", q);
++			if (q->cnt_start_streaming != q->cnt_stop_streaming)
++				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
++					q->cnt_queue_setup, q->cnt_start_streaming,
++					q->cnt_stop_streaming);
++			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
++				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
++					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
++			if (q->cnt_wait_prepare != q->cnt_wait_finish)
++				pr_info("     wait_prepare: %u wait_finish: %u\n",
++					q->cnt_wait_prepare, q->cnt_wait_finish);
+ 		}
+ 		q->cnt_queue_setup = 0;
+ 		q->cnt_wait_prepare = 0;
+@@ -572,29 +573,37 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 				  vb->cnt_buf_prepare != vb->cnt_buf_finish ||
+ 				  vb->cnt_buf_init != vb->cnt_buf_cleanup;
+ 
+-		if (unbalanced || debug) {
+-			pr_info("   counters for queue %p, buffer %d:%s\n",
+-				q, buffer, unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     buf_init: %u buf_cleanup: %u buf_prepare: %u buf_finish: %u\n",
+-				vb->cnt_buf_init, vb->cnt_buf_cleanup,
+-				vb->cnt_buf_prepare, vb->cnt_buf_finish);
+-			pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
+-				vb->cnt_buf_out_validate, vb->cnt_buf_queue,
+-				vb->cnt_buf_done, vb->cnt_buf_request_complete);
+-			pr_info("     alloc: %u put: %u prepare: %u finish: %u mmap: %u\n",
+-				vb->cnt_mem_alloc, vb->cnt_mem_put,
+-				vb->cnt_mem_prepare, vb->cnt_mem_finish,
+-				vb->cnt_mem_mmap);
+-			pr_info("     get_userptr: %u put_userptr: %u\n",
+-				vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
+-			pr_info("     attach_dmabuf: %u detach_dmabuf: %u map_dmabuf: %u unmap_dmabuf: %u\n",
+-				vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf,
+-				vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
+-			pr_info("     get_dmabuf: %u num_users: %u vaddr: %u cookie: %u\n",
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p, buffer %d:\n",
++				q, buffer);
++			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
++				pr_info("     buf_init: %u buf_cleanup: %u\n",
++					vb->cnt_buf_init, vb->cnt_buf_cleanup);
++			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
++				pr_info("     buf_prepare: %u buf_finish: %u\n",
++					vb->cnt_buf_prepare, vb->cnt_buf_finish);
++			if (vb->cnt_buf_queue != vb->cnt_buf_done)
++				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
++					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
++					vb->cnt_buf_done, vb->cnt_buf_request_complete);
++			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
++				pr_info("     alloc: %u put: %u\n",
++					vb->cnt_mem_alloc, vb->cnt_mem_put);
++			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
++				pr_info("     prepare: %u finish: %u\n",
++					vb->cnt_mem_prepare, vb->cnt_mem_finish);
++			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
++				pr_info("     get_userptr: %u put_userptr: %u\n",
++					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
++			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
++				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
++					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
++			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
++				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
++					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
++			pr_info("     get_dmabuf: %u num_users: %u\n",
+ 				vb->cnt_mem_get_dmabuf,
+-				vb->cnt_mem_num_users,
+-				vb->cnt_mem_vaddr,
+-				vb->cnt_mem_cookie);
++				vb->cnt_mem_num_users);
+ 		}
+ 	}
+ #endif
+-- 
+2.39.2
 
-BR,
-Hugues.
 
 _______________________________________________
 Linux-rockchip mailing list
