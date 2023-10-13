@@ -4,75 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 819A3CDB482
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:48:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB44CDB47E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 12:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BzXlmPyDBEP5uVE0NCjU2OOD4bAODxqOjyR2mPcEFNs=; b=u/MkGkRNkytkcf
-	BN9M/ik97Z1/tAzV6Pflzsk9ISijCsgDVv0eAVplSEkg1rz7ugYk5nZY6Dsg1NCAdZbLutYVhjZGR
-	ADABnavvPJSQv5vNAThERrKlYEo1fGG6ybN6ewlZEfu6VXq+39UtqtaXJiDzDNkC3mnKDiKw+hhdm
-	Q0X71ZPkafVd7K4y6lM1d/U2VOwi6Hww6BRGut0UKSsLdafMHcJhp80JEXRv+hImlzwFJRht/Y7rQ
-	8flIxDc/Zjdpc+788ENYrvZLZZ3Ctv+KviasObZj5V7avgZjpiuDX19cn5ykQc2CwDv9txcvMw+4G
-	QZR3ROH3NpFtthkjGMgg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KTIRAQfBkux+Igq4imq1k5KEZnZRZHfhw3GBZJ4wbsM=; b=uWhgtVnF0bo9Hz
+	xreXgT97EHDiEb6gqmQLH3F5UN7DrluHoQGxZWR4Vz6fQB6vZCIFTkxlns0pBVmizFDs5xliUibCo
+	gGXK8AUSXeyUXuGJJq78g8ACTkafH7J5+dfAwt5c6Vixq3VJ7uXbxSQZuRJlXX7rSCbpI1vGzGg4D
+	LqI7X/fRVUsMjy+hjh/TwLCOvh2BLQ5LdW765jTutmYDNl0BJQUNlItUw+/SNhyUSqPwG7yldbA1J
+	xt0LbzKznfCKbO6hps/K9xbT/t06dvQz2vNW9wWobe4QSK1M0w4Xmd4khlob8dsbS/Hyn8o0phWsh
+	edl3ob0zzuN8vD6AC6Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrGe3-003L9T-37;
-	Fri, 13 Oct 2023 11:47:55 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qrH5O-003Otb-1C;
+	Fri, 13 Oct 2023 12:16:10 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrGe0-003L7L-2G;
-	Fri, 13 Oct 2023 11:47:54 +0000
-Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:c2e1:3bb7:ed5c:6a0d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2144A6607357;
-	Fri, 13 Oct 2023 12:47:47 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697197667;
-	bh=qnEq8Sp9V5HwTo+4/aFGw2RoRPviwf6K6ml/tXqx2No=;
-	h=From:To:Cc:Subject:Date:From;
-	b=JiQL9f4Ayn30azENa7+igcoAIQ8NfZVhzBwjA7B8zBOpHkw9R8ycMAMRXIWUYryBg
-	 VRBJ0ZOJtlCJ6kUaCmoVLgZaQiSPluFz7xJ35xZRN2t75JRsHHxLl3s+mj0eIDhxfn
-	 emLlFw+8Jc08eZnnb4vLxWhAj7aPYPNrzL2m5ZPgTBgCcnWUgyco0iszgf5QKUCHOp
-	 6+7l+LDfaaOlOZd5U5ZW3yI63AS2dTrvUi/BklPTjSL9QA/Jbx4NyawVidQlJs3GdG
-	 akgQJL1VjiHa35R+2KxAaeUUXUWRkht6v0K6M6GXzStP/+6gIwgpu+wbletEp4Pp8C
-	 TWiFjyZcNFl/w==
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Caleb Connolly <kc@postmarketos.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Judy Hsiao <judyhsiao@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Yogesh Hegde <yogi.kernel@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 0/2] Fix i2s0 pin conflict on ROCK Pi 4 RK3399 boards
-Date: Fri, 13 Oct 2023 12:47:25 +0100
-Message-ID: <20231013114737.494410-1-chris.obbard@collabora.com>
-X-Mailer: git-send-email 2.42.0
+	id 1qrFuh-003FlM-2n
+	for linux-rockchip@lists.infradead.org;
+	Fri, 13 Oct 2023 11:01:08 +0000
+Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
+	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+	(envelope-from <m.tretter@pengutronix.de>)
+	id 1qrFuU-0006xJ-ID; Fri, 13 Oct 2023 13:00:50 +0200
+From: Michael Tretter <m.tretter@pengutronix.de>
+Date: Fri, 13 Oct 2023 13:00:32 +0200
+Subject: [PATCH v2 11/13] media: rockchip: rga: switch to multi-planar API
 MIME-Version: 1.0
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-11-bbfa6abf8bbf@pengutronix.de>
+References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
+In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
+To: Jacob Chen <jacob-chen@iotwrt.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Robin Murphy <robin.murphy@arm.com>, 
+ Diederik de Haas <didi.debian@cknow.org>, Hans Verkuil <hverkuil@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de, 
+ Michael Tretter <m.tretter@pengutronix.de>
+X-Mailer: b4 0.12.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:1101:1d::54
+X-SA-Exim-Mail-From: m.tretter@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_044752_912905_41D49C19 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231013_040103_932183_5C679557 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,34 +72,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-i2s0 fails to probe on my Radxa ROCK 4SE and ROCK Pi 4B boards with:
+Switch to the multi-planar API, which allows to handle buffers with
+separate planes.
 
-    rockchip-pinctrl pinctrl: pin gpio3-29 already requested by leds; cannot claim for ff880000.i2s
-    rockchip-pinctrl pinctrl: pin-125 (ff880000.i2s) status -22
-    rockchip-pinctrl pinctrl: could not request pin 125 (gpio3-29) from group i2s0-8ch-bus-bclk-off  on device rockchip-pinctrl
-    rockchip-i2s ff880000.i2s: Error applying setting, reverse things back
-    rockchip-i2s ff880000.i2s: bclk disable failed -22
+The RGA driver doesn't expose multi-planar formats, yet. The existing
+contiguous planar formats can be used with the multi-planar API as well,
+but the multi-planar API is required for multi-planar formats.
 
-This is due to the pinctl attempting to request a GPIO which the boards
-use for a different function.
+Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+---
+Changes in v2: None
+---
+ drivers/media/platform/rockchip/rga/rga.c | 60 +++++++++++++++----------------
+ 1 file changed, 29 insertions(+), 31 deletions(-)
 
-The first patch adds a missing pinctl node i2s0_2ch_bus_bclk_off to the
-RK3399 devicetree.
-
-The second patch sets the i2s0 pinctrl to use the new node when idle and
-fixes the issue.
-
-
-Christopher Obbard (2):
-  arm64: dts: rockchip: Add i2s0-2ch-bus-bclk-off pins to RK3399
-  arm64: dts: rockchip: Fix i2s0 pin conflict on ROCK Pi 4 boards
-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  1 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 10 ++++++++++
- 2 files changed, 11 insertions(+)
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 91be87e01dab..f549966c3649 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -93,7 +93,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	struct rga_ctx *ctx = priv;
+ 	int ret;
+ 
+-	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT;
++	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+ 	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+ 	src_vq->drv_priv = ctx;
+ 	src_vq->ops = &rga_qops;
+@@ -108,7 +108,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	if (ret)
+ 		return ret;
+ 
+-	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
++	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+ 	dst_vq->drv_priv = ctx;
+ 	dst_vq->ops = &rga_qops;
+@@ -445,7 +445,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+ 
+ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+-	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
++	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
+ 	struct rga_ctx *ctx = prv;
+ 	struct vb2_queue *vq;
+ 	struct rga_frame *frm;
+@@ -457,12 +457,9 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
+ 
+-	pix_fmt->width = frm->width;
+-	pix_fmt->height = frm->height;
++	v4l2_fill_pixfmt_mp(pix_fmt, frm->fmt->fourcc, frm->width, frm->height);
++
+ 	pix_fmt->field = V4L2_FIELD_NONE;
+-	pix_fmt->pixelformat = frm->fmt->fourcc;
+-	pix_fmt->bytesperline = frm->stride;
+-	pix_fmt->sizeimage = frm->size;
+ 	pix_fmt->colorspace = frm->colorspace;
+ 
+ 	return 0;
+@@ -470,41 +467,33 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 
+ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+-	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
++	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
+ 	struct rga_fmt *fmt;
+ 
+-	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
++	fmt = rga_fmt_find(pix_fmt->pixelformat);
+ 	if (!fmt)
+ 		fmt = &formats[0];
+ 
+-	pix_fmt->pixelformat = fmt->fourcc;
+-
+-	pix_fmt->field = V4L2_FIELD_NONE;
+-
+ 	pix_fmt->width = clamp(pix_fmt->width,
+ 			       (u32)MIN_WIDTH, (u32)MAX_WIDTH);
+ 	pix_fmt->height = clamp(pix_fmt->height,
+ 				(u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
+ 
+-	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
+-		pix_fmt->bytesperline = pix_fmt->width;
+-	else
+-		pix_fmt->bytesperline = (pix_fmt->width * fmt->depth) >> 3;
+-
+-	pix_fmt->sizeimage =
+-		pix_fmt->height * (pix_fmt->width * fmt->depth) >> 3;
++	v4l2_fill_pixfmt_mp(pix_fmt, fmt->fourcc, pix_fmt->width, pix_fmt->height);
++	pix_fmt->field = V4L2_FIELD_NONE;
+ 
+ 	return 0;
+ }
+ 
+ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+-	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
++	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
+ 	struct rga_ctx *ctx = prv;
+ 	struct rockchip_rga *rga = ctx->rga;
+ 	struct vb2_queue *vq;
+ 	struct rga_frame *frm;
+ 	int ret = 0;
++	int i;
+ 
+ 	/* Adjust all values accordingly to the hardware capabilities
+ 	 * and chosen format.
+@@ -522,9 +511,11 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 		return PTR_ERR(frm);
+ 	frm->width = pix_fmt->width;
+ 	frm->height = pix_fmt->height;
+-	frm->size = pix_fmt->sizeimage;
++	frm->size = 0;
++	for (i = 0; i < pix_fmt->num_planes; i++)
++		frm->size += pix_fmt->plane_fmt[i].sizeimage;
+ 	frm->fmt = rga_fmt_find(pix_fmt->pixelformat);
+-	frm->stride = pix_fmt->bytesperline;
++	frm->stride = pix_fmt->plane_fmt[0].bytesperline;
+ 	frm->colorspace = pix_fmt->colorspace;
+ 
+ 	/* Reset crop settings */
+@@ -539,6 +530,13 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 		  &frm->fmt->fourcc, frm->width, frm->height,
+ 		  frm->stride, frm->size);
+ 
++	for (i = 0; i < pix_fmt->num_planes; i++) {
++		v4l2_dbg(debug, 1, &rga->v4l2_dev,
++			 "plane[%d]: size %d, bytesperline %d\n",
++			 i, pix_fmt->plane_fmt[i].sizeimage,
++			 pix_fmt->plane_fmt[i].bytesperline);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -649,14 +647,14 @@ static const struct v4l2_ioctl_ops rga_ioctl_ops = {
+ 	.vidioc_querycap = vidioc_querycap,
+ 
+ 	.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt,
+-	.vidioc_g_fmt_vid_cap = vidioc_g_fmt,
+-	.vidioc_try_fmt_vid_cap = vidioc_try_fmt,
+-	.vidioc_s_fmt_vid_cap = vidioc_s_fmt,
++	.vidioc_g_fmt_vid_cap_mplane = vidioc_g_fmt,
++	.vidioc_try_fmt_vid_cap_mplane = vidioc_try_fmt,
++	.vidioc_s_fmt_vid_cap_mplane = vidioc_s_fmt,
+ 
+ 	.vidioc_enum_fmt_vid_out = vidioc_enum_fmt,
+-	.vidioc_g_fmt_vid_out = vidioc_g_fmt,
+-	.vidioc_try_fmt_vid_out = vidioc_try_fmt,
+-	.vidioc_s_fmt_vid_out = vidioc_s_fmt,
++	.vidioc_g_fmt_vid_out_mplane = vidioc_g_fmt,
++	.vidioc_try_fmt_vid_out_mplane = vidioc_try_fmt,
++	.vidioc_s_fmt_vid_out_mplane = vidioc_s_fmt,
+ 
+ 	.vidioc_reqbufs = v4l2_m2m_ioctl_reqbufs,
+ 	.vidioc_querybuf = v4l2_m2m_ioctl_querybuf,
+@@ -683,7 +681,7 @@ static const struct video_device rga_videodev = {
+ 	.minor = -1,
+ 	.release = video_device_release,
+ 	.vfl_dir = VFL_DIR_M2M,
+-	.device_caps = V4L2_CAP_VIDEO_M2M | V4L2_CAP_STREAMING,
++	.device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING,
+ };
+ 
+ static int rga_enable_clocks(struct rockchip_rga *rga)
 
 -- 
-2.42.0
+2.39.2
 
 
 _______________________________________________
