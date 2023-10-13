@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C888DCDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 819A3CDB482
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fiqopz+C60O1q2O9IdHXk3ihfp/qG4ncTOzV2vaMUTY=; b=NA//S4WOXYxClG
-	ZGi6rS058iRcdJR1i+/JIQ5NycuHOfTS8gYJaRIhDqwTX8clKGgm494qTcQSD+FtKnj8olP1FVpiM
-	r7oqDvw7zgEbJZTOu2kYhemVLA8jTPYxxwbH2Vse1xVc+IWn8eOiyGf0/IoI7wP4caZgwj/4c3tsb
-	eI0nJWHe6MePAHqwQTTfs4YloI21fb+B1VqwRqb2kmwCJVSJpFD737KwPZkQ2hKHPlX6JwLHRgOL/
-	D6fD/GnilMOXk6/49ZVsX2EZNJY6X2CbcYgdfPdYFBHHWA3sn7n6fA+dQTbmwOHu38ydaWky5J0XE
-	gDQ25yJ5AZcp47uLgaTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BzXlmPyDBEP5uVE0NCjU2OOD4bAODxqOjyR2mPcEFNs=; b=u/MkGkRNkytkcf
+	BN9M/ik97Z1/tAzV6Pflzsk9ISijCsgDVv0eAVplSEkg1rz7ugYk5nZY6Dsg1NCAdZbLutYVhjZGR
+	ADABnavvPJSQv5vNAThERrKlYEo1fGG6ybN6ewlZEfu6VXq+39UtqtaXJiDzDNkC3mnKDiKw+hhdm
+	Q0X71ZPkafVd7K4y6lM1d/U2VOwi6Hww6BRGut0UKSsLdafMHcJhp80JEXRv+hImlzwFJRht/Y7rQ
+	8flIxDc/Zjdpc+788ENYrvZLZZ3Ctv+KviasObZj5V7avgZjpiuDX19cn5ykQc2CwDv9txcvMw+4G
+	QZR3ROH3NpFtthkjGMgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrGeC-003LDA-1X;
-	Fri, 13 Oct 2023 11:48:04 +0000
+	id 1qrGe3-003L9T-37;
+	Fri, 13 Oct 2023 11:47:55 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrGe0-003L7O-2F;
-	Fri, 13 Oct 2023 11:47:57 +0000
+	id 1qrGe0-003L7L-2G;
+	Fri, 13 Oct 2023 11:47:54 +0000
 Received: from obbardc-t14.home (unknown [IPv6:2a00:23c8:b70a:ae01:c2e1:3bb7:ed5c:6a0d])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24893660735E;
-	Fri, 13 Oct 2023 12:47:48 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2144A6607357;
+	Fri, 13 Oct 2023 12:47:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697197668;
-	bh=CCYO2Nxk6wHQeFOamNkL/4O7unR6kwkhjTCQuRoEydY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XN2hI3fYED/cM0FKRFyzVDLMLuOThRPGfqH52Baig1uVi93sCyF8orvE3K3/wyciY
-	 aTS3P6U34nJKMd4bIw94gbKZ3tS6O/3CXTLqLqH8RreEWYVVUzk4/PjRvWZ9V4LMle
-	 BCmwQY8zEhnTacnUQd0jkK9iIjgaoRskGmDNUl81/Gp24lVEBIWVgqTfu2OD+Wki63
-	 5TmLyj6gQTDowHkDOuj5S7eD8+/R0xsViFXcCp6ZRRar37ixnfPBUSDsyJjwgrhsMh
-	 UyiMdWzRBVN4zmyrYH+TtYadA5v0mcApRkiLgQdEdrh46GXHfmFhbOpW8Sy6+KiOyy
-	 BsCRc9JizbPvg==
+	s=mail; t=1697197667;
+	bh=qnEq8Sp9V5HwTo+4/aFGw2RoRPviwf6K6ml/tXqx2No=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JiQL9f4Ayn30azENa7+igcoAIQ8NfZVhzBwjA7B8zBOpHkw9R8ycMAMRXIWUYryBg
+	 VRBJ0ZOJtlCJ6kUaCmoVLgZaQiSPluFz7xJ35xZRN2t75JRsHHxLl3s+mj0eIDhxfn
+	 emLlFw+8Jc08eZnnb4vLxWhAj7aPYPNrzL2m5ZPgTBgCcnWUgyco0iszgf5QKUCHOp
+	 6+7l+LDfaaOlOZd5U5ZW3yI63AS2dTrvUi/BklPTjSL9QA/Jbx4NyawVidQlJs3GdG
+	 akgQJL1VjiHa35R+2KxAaeUUXUWRkht6v0K6M6GXzStP/+6gIwgpu+wbletEp4Pp8C
+	 TWiFjyZcNFl/w==
 From: Christopher Obbard <chris.obbard@collabora.com>
 To: linux-rockchip@lists.infradead.org
 Cc: kernel@collabora.com,
 	Christopher Obbard <chris.obbard@collabora.com>,
+	Arnaud Ferraris <arnaud.ferraris@collabora.com>,
 	Brian Norris <briannorris@chromium.org>,
+	Caleb Connolly <kc@postmarketos.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Corentin Labbe <clabbe@baylibre.com>,
 	FUKAUMI Naoki <naoki@radxa.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Jagan Teki <jagan@amarulasolutions.com>,
+	Johan Jonker <jbx6244@gmail.com>,
 	Judy Hsiao <judyhsiao@chromium.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Yogesh Hegde <yogi.kernel@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/2] arm64: dts: rockchip: Fix i2s0 pin conflict on ROCK Pi 4 boards
-Date: Fri, 13 Oct 2023 12:47:27 +0100
-Message-ID: <20231013114737.494410-3-chris.obbard@collabora.com>
+Subject: [PATCH v1 0/2] Fix i2s0 pin conflict on ROCK Pi 4 RK3399 boards
+Date: Fri, 13 Oct 2023 12:47:25 +0100
+Message-ID: <20231013114737.494410-1-chris.obbard@collabora.com>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231013114737.494410-1-chris.obbard@collabora.com>
-References: <20231013114737.494410-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_044752_911281_472D055F 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20231013_044752_912905_41D49C19 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,17 +89,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 91419ae0420f ("arm64: dts: rockchip: use BCLK to GPIO switch on
-rk3399") modified i2s0 to switch the corresponding pins off when idle.
-For the ROCK Pi 4 boards, this means that i2s0 has the following pinctrl
-setting:
-
-    pinctrl-names = "bclk_on", "bclk_off";
-    pinctrl-0 = <&i2s0_2ch_bus>;
-    pinctrl-1 = <&i2s0_8ch_bus_bclk_off>;
-
-Due to this change, i2s0 fails to probe on my Radxa ROCK 4SE and ROCK Pi
-4B boards:
+i2s0 fails to probe on my Radxa ROCK 4SE and ROCK Pi 4B boards with:
 
     rockchip-pinctrl pinctrl: pin gpio3-29 already requested by leds; cannot claim for ff880000.i2s
     rockchip-pinctrl pinctrl: pin-125 (ff880000.i2s) status -22
@@ -103,34 +97,24 @@ Due to this change, i2s0 fails to probe on my Radxa ROCK 4SE and ROCK Pi
     rockchip-i2s ff880000.i2s: Error applying setting, reverse things back
     rockchip-i2s ff880000.i2s: bclk disable failed -22
 
-A pin requested for i2s0_8ch_bus_bclk_off has already been requested by
-user_led2, so whichever driver probes first will have the pin allocated.
+This is due to the pinctl attempting to request a GPIO which the boards
+use for a different function.
 
-The hardware uses 2-channel i2s so fix this error by setting pinctl-1 to
-i2s0_2ch_bus_bclk_off which doesn't contain the pin allocated to user_led2.
+The first patch adds a missing pinctl node i2s0_2ch_bus_bclk_off to the
+RK3399 devicetree.
 
-I checked the schematics for all Radxa boards based on ROCK Pi 4 and this
-change is compatible with all boards.
+The second patch sets the i2s0 pinctrl to use the new node when idle and
+fixes the issue.
 
-Fixes: 91419ae0420f ("arm64: dts: rockchip: use BCLK to GPIO switch on rk3399")
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
----
 
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Christopher Obbard (2):
+  arm64: dts: rockchip: Add i2s0-2ch-bus-bclk-off pins to RK3399
+  arm64: dts: rockchip: Fix i2s0 pin conflict on ROCK Pi 4 boards
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 7dccbe8a93930..f2279aa6ca9e1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -492,6 +492,7 @@ &i2c4 {
- 
- &i2s0 {
- 	pinctrl-0 = <&i2s0_2ch_bus>;
-+	pinctrl-1 = <&i2s0_2ch_bus_bclk_off>;
- 	rockchip,capture-channels = <2>;
- 	rockchip,playback-channels = <2>;
- 	status = "okay";
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
+
 -- 
 2.42.0
 
