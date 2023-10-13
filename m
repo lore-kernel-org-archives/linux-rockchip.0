@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB8ACCDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 18:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31510CDB484
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 18:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=10qezKaTM3ndHy3SEt9Q/QaEvT8ErjsD0GfuCRMpLYo=; b=I9UPSITkHXzAFs
-	fKLegxnVyQq53WybFX4WBC4pFWl340QXGT8Klb0e8S3wgKV6VTi0RL+rBVyPthSJqHB0kLYaEP8VL
-	ieG47tPNnLqwVI7fuhWSLXwN70n7D2cCFZxPlti/dnpB1Q+6Jrn8Uu0BZukUsCg13mexMq6pw/hfg
-	gD+hZOZ1WyxAG5nlIqyJoeE1SZUt5iTZ/jR6G4EB1UDU+Stv8MI/s8tQfgxoUK81iv/N6lTtfD3P/
-	mhchxKFAJMvSWRRHY5ooyqRKCRt5RLR5bdx/j8UH+RH2NTnhi5621xQ9mpc1rBm3uHQhb1xfWFPCW
-	hVkS5AY/A/yRgFFjjVDQ==;
+	List-Owner; bh=DyDCOgGbz+hR9FyrdLLorqLQEL7GzhBPjfECnsvSbd0=; b=gQmNY584LYOXuu
+	DsJF7UIhddG1q0zk4ZyFbFQD3am0vRjdvlx3nhtcMaQEAeq+8msnBYydi1iYvHVVOMNhaOZtoW6AR
+	bI48UrtUPJN7M8xP+eXWsnt8FGOskqkFGMfq+HNM04o0LO/cMq89wStG0q4vX4ET0hhTqde2UBKMk
+	gdRC2T21kSh/VfdgSfKLIHzkaObc56K9YJf1dyRld0hSbHPDhrmsVC6Ujn4QwGG93pajN7cjlJ0w+
+	sj2Su6lt1Kzs6b3faM7XpmWjN5T/cukkrQKywfE4Q5PTztvxUeZcVh4XxEdajus703XY7Sc+Vokh0
+	5dIV3/5QOuWwELQrPB1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrN4Q-0043y8-10;
-	Fri, 13 Oct 2023 18:39:34 +0000
+	id 1qrN4N-0043x3-2O;
+	Fri, 13 Oct 2023 18:39:31 +0000
 Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrN4L-0043vq-1Z
+	id 1qrN4K-0043ub-15
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 18:39:31 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-3add37de892so1431952b6e.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Oct 2023 11:39:29 -0700 (PDT)
+	Fri, 13 Oct 2023 18:39:29 +0000
+Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-3af609c4dfeso1462951b6e.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Oct 2023 11:39:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697222368; x=1697827168; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1697222365; x=1697827165; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=taQ7vAEpEsyYFLFUuiwGBIsz4PkgF1SnWSyqumrI0Hg=;
-        b=MeEvMJNG2IlFmMy2hvsJA3a3YkkiGbRry/e4ICFVwNG6/WCuFJxtzEw9nF7bHXuSLZ
-         HBQlymQwCHZ+yUwzK6wSyz9GhCSK9dz95jAxKEl+dfWF7xQZ8Kaz19gUUD4c2HtmqQjb
-         TlhDAr361qoQJR5fJ6U3R+p5F/FX0R3LM7Hzngew8eadTgRlZdfCFGdecgwirKS35PIO
-         5Gu4vI1BermJxyG3qGR/PVOHwtqfLFfm6MiQ+54J8vPF+3b6B9Mm0aLSF7E6NxJKZsiR
-         IZNF9wkm11dpP0FBm9xxerTbkgpeLM1apAfuqOkwX0Gv3JyiQ8EaVU2olYqyVyALrG5K
-         pWgg==
+        bh=DL5nx56ml8EwdqvqmpvvdFpkJtuFtwq0M/Gm2EXLElQ=;
+        b=kkLnVSAPYB69NWhJ2iQiUcqnMxB3KUTz5vCGB5o02CqjNivhcrgemGdPdAt8T9I9Oz
+         TMsw3fzS+2ttJL1vbdrAF7TAQ/oFc/BUrajmHhx/YterftN+2yzxISVWi3QYqWqhH97e
+         KfNztRxyaq+GzbkCYIH5GppAdJ7F/FcVeWJqf0ihg1Ha3Mner4sTFaRzQ9RWyNUbKG1p
+         rn3gXMdJVIS71tMNfuWayPChrtv+kSWIdLt+r+S0Z1OOvP96jFqTVRKPJx4qrYl5l/57
+         qs2dmd1bQ0JllpGjgVneZD5FXiYCJpn9XbEYCy6m92C6mRebnZY0BJBH4H4LSy0uzw3S
+         uH4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697222368; x=1697827168;
+        d=1e100.net; s=20230601; t=1697222365; x=1697827165;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=taQ7vAEpEsyYFLFUuiwGBIsz4PkgF1SnWSyqumrI0Hg=;
-        b=olziGQ7QvsLLtFyXLWRTAl0MaSsyItRr4aQRwnWWLciYVS/mvrEDHE2eoGvieWVu8c
-         JNJaiqdY9Dz5kpZBcCT8/wutKbz2NwAaAZN3lW5RRHlGVOPzBFa2uvFowgrQGWn+HtiS
-         9QG3AGDNijdvQlH+MPObRRdB3JPuQg8UPM/zRjIXQ08v84WnTqICI0Q28fV10va7WK8R
-         NvLuGeIKFBI/AWMLumDWusjK/2vLK77OFSpppCHHuaZPgxcLqBO0zBwFl0wP1o6C9K69
-         3FjUf0wN+xGDep/rYiv0q5GZY+pPmx7zOo+AduSQRHDzuJa7NS49kf8RALcImsIpxGEY
-         YhNg==
-X-Gm-Message-State: AOJu0Ywy8qAQTO51ZHjwjEfoylBHVXGBkG6kG8Z5fqPkOQiScF2PYK7L
-	tmt6kPMuzi684S9B3yM/Pi3n6rdplaw=
-X-Google-Smtp-Source: AGHT+IEOHRMzzwdVAGQ57P+LsaY7TAEk+aijWm2eVqpD+nW1THPcnfl7PoK9r88Yvpx6L8xVpVn8yg==
-X-Received: by 2002:aca:220e:0:b0:3af:26e3:92e with SMTP id b14-20020aca220e000000b003af26e3092emr23790520oic.28.1697222368552;
-        Fri, 13 Oct 2023 11:39:28 -0700 (PDT)
+        bh=DL5nx56ml8EwdqvqmpvvdFpkJtuFtwq0M/Gm2EXLElQ=;
+        b=p8z5PMwpanb5lvY+0p7Yj4GVFv+2y66duJYtyqo874r2bSipCNQZiZlXr02XuPsHal
+         N85gj8AfwY710F/hYcB/Y9bupgxLDmvgJUpSsqok0eTvZD1nMkoPzf2mvar42A+qm9QN
+         XrjveuatRnQf0Skub4Ewpc6x1/iVdRHgt2acj7ntLJhQ7re+rXnlKfNoNw8kuXqIZGxC
+         zDD5Gjyfh3Ymfueiea5er/46nTB36RzN9r4Y5ropMjhYJk/z+a95nGam9IxMecEeRuU3
+         yLYMEy+5EUlVZ+UGOzkxL3kf5smEgZuBP6iIB6fKmrNPySExfOAmukN1oLonYWftDYer
+         F1uw==
+X-Gm-Message-State: AOJu0YzewjtjLfFLMwdTz4N1b6AQ1LZCHthUc8F8fYPPdFWaK4ngwNmJ
+	lEmiRD5H/o+rtxGgQ1dnfB6se9jIRCI=
+X-Google-Smtp-Source: AGHT+IHAQ4slZoIai8CkCpzcohRVPtVa4yKRxIDPVGcNh8vLB3G0lzsMzhjH1ZSyUz9BdmXegQFNMg==
+X-Received: by 2002:a05:6808:1b0e:b0:3af:6cb9:ffc7 with SMTP id bx14-20020a0568081b0e00b003af6cb9ffc7mr36242744oib.16.1697222365565;
+        Fri, 13 Oct 2023 11:39:25 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id bx19-20020a0568081b1300b003afe584ed4fsm842159oib.42.2023.10.13.11.39.27
+        by smtp.gmail.com with ESMTPSA id bx19-20020a0568081b1300b003afe584ed4fsm842159oib.42.2023.10.13.11.39.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Oct 2023 11:39:28 -0700 (PDT)
+        Fri, 13 Oct 2023 11:39:25 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -81,16 +81,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 5/5] arm64: dts: rockchip: add support for Powkiddy RGB30
-Date: Fri, 13 Oct 2023 13:39:18 -0500
-Message-Id: <20231013183918.225666-6-macroalpha82@gmail.com>
+Subject: [PATCH 1/5] dt-bindings: vendor-prefixes: document Powkiddy
+Date: Fri, 13 Oct 2023 13:39:14 -0500
+Message-Id: <20231013183918.225666-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231013183918.225666-1-macroalpha82@gmail.com>
 References: <20231013183918.225666-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_113929_522907_D317961F 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20231013_113928_396244_0883995B 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,203 +110,26 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-The Powkiddy RGB30 is a portable game device based on the Rockchip
-RK3566 SoC. It has GPIO buttons on the face and sides for input, stereo
-speakers, a 720x720 4 inch DSI display, a USB-C host port and a USB-C
-peripheral port, dual SD card slots, WiFi, Bluetooth, and 1GB of RAM.
-
-Working/Tested:
-- SDMMC
-- UART (for debugging)
-- Buttons
-- Charging/battery/PMIC
-- Speaker/Headphones
-- USB
-- WiFi
-- Bluetooth
-- Display (at 59.04hz)
-
-Not Working/TODO:
-- Display does not resume from suspend properly. I'm working with the
-  manufacturer to resolve this.
+Document Powkiddy (https://powkiddy.com/).
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3566-powkiddy-rgb30.dts    | 152 ++++++++++++++++++
- 2 files changed, 153 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e7728007fd1b..3f01b429a3aa 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -77,6 +77,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.2.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-powkiddy-rgb30.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-radxa-cm3-io.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-new file mode 100644
-index 000000000000..c7828c99a1bb
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-@@ -0,0 +1,152 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/linux-event-codes.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3566-anbernic-rg353x.dtsi"
-+
-+/ {
-+	model = "RGB30";
-+	compatible = "powkiddy,rgb30", "rockchip,rk3566";
-+
-+	aliases {
-+		mmc1 = &sdmmc0;
-+		mmc2 = &sdmmc1;
-+		mmc3 = &sdmmc2;
-+	};
-+
-+	battery: battery {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3151000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4250000>;
-+		factory-internal-resistance-micro-ohms = <117000>;
-+		voltage-max-design-microvolt = <4172000>;
-+		voltage-min-design-microvolt = <3400000>;
-+
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =  <4172000 100>, <4092000 95>, <4035000 90>, <3990000 85>,
-+					<3939000 80>, <3895000 75>, <3852000 70>, <3807000 65>,
-+					<3762000 60>, <3713000 55>, <3672000 50>, <3647000 45>,
-+					<3629000 40>, <3613000 35>, <3598000 30>, <3578000 25>,
-+					<3550000 20>, <3519000 15>, <3479000 10>, <3438000 5>,
-+					<3400000 0>;
-+	};
-+
-+	/*
-+	 * Channels reversed for speakers. Headphones automatically switch via hardware when
-+	 * detected with no ability to control output in software. Headphones appear to be mono
-+	 * (each output channel receives all audio). No microphone support on 3.5mm jack.
-+	 */
-+	sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "rk817_ext";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,widgets =
-+			"Headphone", "Headphones";
-+		simple-audio-card,routing =
-+			"Headphones", "HPOL",
-+			"Headphones", "HPOR";
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&rk817>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_8ch>;
-+		};
-+	};
-+};
-+
-+/delete-node/ &adc_keys;
-+
-+&cru {
-+	assigned-clocks = <&pmucru CLK_RTC_32K>, <&cru PLL_GPLL>,
-+			  <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
-+	assigned-clock-rates = <32768>, <1200000000>,
-+			       <200000000>, <108000000>;
-+};
-+
-+&gpio_keys_control {
-+	button-r1 {
-+		gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_LOW>;
-+		label = "TR";
-+		linux,code = <BTN_TR>;
-+	};
-+
-+	button-r2 {
-+		gpios = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-+		label = "TR2";
-+		linux,code = <BTN_TR2>;
-+	};
-+};
-+
-+/delete-node/ &{/i2c@fdd40000/regulator@40};
-+
-+&i2c0 {
-+	vdd_cpu: regulator@1c {
-+		compatible = "tcs,tcs4525";
-+		reg = <0x1c>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1390000>;
-+		regulator-name = "vdd_cpu";
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc_sys>;
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+/*
-+ * Device has 2 red LEDs instead of an amber and a red. Relabel LEDs as
-+ * red_led0 and red_led1.
-+ */
-+/delete-node/ &{/pwm-leds/led-1};
-+/delete-node/ &{/pwm-leds/led-2};
-+
-+&leds {
-+	red_led0: led-1 {
-+		color = <LED_COLOR_ID_RED>;
-+		function = LED_FUNCTION_CHARGING;
-+		max-brightness = <255>;
-+		pwms = <&pwm7 0 25000 0>;
-+	};
-+
-+	red_led1: led-2 {
-+		color = <LED_COLOR_ID_RED>;
-+		default-state = "off";
-+		function = LED_FUNCTION_STATUS;
-+		max-brightness = <255>;
-+		pwms = <&pwm0 0 25000 0>;
-+	};
-+};
-+
-+&panel {
-+	compatible = "powkiddy,rgb30-panel";
-+	vcc-supply = <&vcc3v3_lcd0_n>;
-+	iovcc-supply = <&vcc3v3_lcd0_n>;
-+	/delete-property/ vdd-supply;
-+};
-+
-+&pwm5 {
-+	status = "disabled";
-+};
-+
-+&rk817 {
-+	rk817_charger: charger {
-+		monitored-battery = <&battery>;
-+		rockchip,resistor-sense-micro-ohms = <10000>;
-+		rockchip,sleep-enter-current-microamp = <300000>;
-+		rockchip,sleep-filter-current-microamp = <100000>;
-+	};
-+};
-+
-+/delete-node/ &vibrator;
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 573578db9509..25fd2dc378f5 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -1081,6 +1081,8 @@ patternProperties:
+     description: Powertip Tech. Corp.
+   "^powervr,.*":
+     description: PowerVR (deprecated, use img)
++  "^powkiddy,.*":
++    description: Powkiddy
+   "^primux,.*":
+     description: Primux Trading, S.L.
+   "^probox2,.*":
 -- 
 2.34.1
 
