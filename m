@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3BFCDB482
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA869CDB483
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YWUBXcb4hx9TO56oBCdQhtcIOL+hn1Lpi9MACRhMYTM=; b=QK58q859lBtFp6
-	UtRJjd9+hZPUR66GrTdpyU4TVoE56oxNDxqb7SQ3ld0Zxzx7lY5M2BDvfyYnlttrYxsJ+JGu2Anc6
-	wJB2ZocPBWVaetDQM38KzIfZCKMt6WrrM2pMJ5S3n5i56NEjPjN0UbccPlEiel6L8CnW+0LLRUPTm
-	pdR6HQu2xaKwQMFc7n9BJr22QX4+/0HYtKCmgSlodisW082Ot5ucHLylZgEyGqQj4QCwjq7djJmnm
-	J74Kzc+q2vkG8HtJMb7Rxd/uZPqrd3rMK88cc/WIQgBDn8oFsEWytX0q36QersSV7Yxcj7T+WeM+/
-	1wlu80mnalmwbFcoRfYg==;
+	List-Owner; bh=tTaY5mA1TC6DN1sdtezAwdXtiYIYwEJcpHMSib80Zko=; b=khQ/fqpNDzCZt+
+	cvCZ8YglkqZnDd3hx51/0M0+tXXU0vVK+eqYcBsg7laclMeWgiCRRIaE4huwjN7v82vyqtCCFyAg8
+	hol1hYml+nD98S4/MfzclFjbXrHpIy6kad2r1hk6EeMwYd0xdrY5Y9SjZjfnodA7nOlZX7Dtqs2/P
+	mqQORswIFkF+vM570tqku5C/7XI4BiBpKQxxDuut+dP0Oeov/hIAD5iUy8CR6JfFPaVb96KMNRkcu
+	DQg5eqQkXBdRWkEQ8J99om4Ofl3m3Qh8TfQYfhCqiOR9P0l7aoUbn7UD3KWSSNR9CgKpfW0eWQe0p
+	BZx1XbliSzJeypP5cNow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuk-003Fp6-19;
-	Fri, 13 Oct 2023 11:01:06 +0000
+	id 1qrFuj-003Fp1-2a;
+	Fri, 13 Oct 2023 11:01:05 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuh-003FlH-1U
+	id 1qrFuh-003FlB-10
 	for linux-rockchip@lists.infradead.org;
 	Fri, 13 Oct 2023 11:01:04 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qrFuU-0006xJ-8e; Fri, 13 Oct 2023 13:00:50 +0200
+	id 1qrFuT-0006xJ-Tp; Fri, 13 Oct 2023 13:00:49 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 13 Oct 2023 13:00:27 +0200
-Subject: [PATCH v2 06/13] media: rockchip: rga: set dma mask to 32 bits
+Date: Fri, 13 Oct 2023 13:00:22 +0200
+Subject: [PATCH v2 01/13] media: rockchip: rga: fix swizzling for RGB
+ formats
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v2-6-bbfa6abf8bbf@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-1-bbfa6abf8bbf@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -54,8 +55,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_040103_500594_EC556B90 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20231013_040103_350875_BDCAB9E7 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,54 +73,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RGA DMA descriptor list contains only 32-bit addresses. Set the
-dma_mask to only allocate memory that is addressable by the descriptors.
+When using 32 bit RGB formats, the RGA on the rk3568 produces wrong
+colors as the wrong color channels are read or written.  The reason is
+that the format description for the channel swizzeling is wrong and the
+wrong bits are configured. For example, when converting ARGB32 to NV12,
+the alpha channel is used as blue channel.. This doesn't happen if the
+color format is the same on both sides.
 
-This prevents errors when preparing vb2 buffers that were allocated by
-the RGA.
+Fix the color_swap settings of the formats to correctly handle 32 bit
+RGB formats.
+
+For RGA_COLOR_FMT_XBGR8888, the RGA_COLOR_ALPHA_SWAP bit doesn't have an
+effect. Thus, it isn't possible to handle the V4L2_PIX_FMT_XRGB32. Thus,
+it is removed from the list of supported formats.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
-Changes in v2:
-- Add mask for DMA coherent
-- Set gfp_flags to DMA32
+Changes in v2: None
 ---
- drivers/media/platform/rockchip/rga/rga.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/media/platform/rockchip/rga/rga.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index f18fccc7b204..ea566c11734a 100644
+index f1c532a5802a..25f5b5eebf13 100644
 --- a/drivers/media/platform/rockchip/rga/rga.c
 +++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -98,6 +98,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->drv_priv = ctx;
- 	src_vq->ops = &rga_qops;
- 	src_vq->mem_ops = &vb2_dma_sg_memops;
-+	dst_vq->gfp_flags = __GFP_DMA32;
- 	src_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	src_vq->lock = &ctx->rga->mutex;
-@@ -112,6 +113,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->drv_priv = ctx;
- 	dst_vq->ops = &rga_qops;
- 	dst_vq->mem_ops = &vb2_dma_sg_memops;
-+	dst_vq->gfp_flags = __GFP_DMA32;
- 	dst_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->rga->mutex;
-@@ -824,6 +826,12 @@ static int rga_probe(struct platform_device *pdev)
- 		goto err_put_clk;
- 	}
- 
-+	ret = dma_set_mask_and_coherent(rga->dev, DMA_BIT_MASK(32));
-+	if (ret) {
-+		dev_err(rga->dev, "32-bit DMA not supported");
-+		goto err_put_clk;
-+	}
-+
- 	ret = v4l2_device_register(&pdev->dev, &rga->v4l2_dev);
- 	if (ret)
- 		goto err_put_clk;
+@@ -184,25 +184,16 @@ static int rga_setup_ctrls(struct rga_ctx *ctx)
+ static struct rga_fmt formats[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_ARGB32,
+-		.color_swap = RGA_COLOR_RB_SWAP,
++		.color_swap = RGA_COLOR_ALPHA_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_ABGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
+ 		.y_div = 1,
+ 		.x_div = 1,
+ 	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_XRGB32,
+-		.color_swap = RGA_COLOR_RB_SWAP,
+-		.hw_format = RGA_COLOR_FMT_XBGR8888,
+-		.depth = 32,
+-		.uv_factor = 1,
+-		.y_div = 1,
+-		.x_div = 1,
+-	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_ABGR32,
+-		.color_swap = RGA_COLOR_ALPHA_SWAP,
++		.color_swap = RGA_COLOR_RB_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_ABGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
+@@ -211,7 +202,7 @@ static struct rga_fmt formats[] = {
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_XBGR32,
+-		.color_swap = RGA_COLOR_ALPHA_SWAP,
++		.color_swap = RGA_COLOR_RB_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_XBGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
 
 -- 
 2.39.2
