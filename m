@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F749CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 18:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80594CDB482
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 18:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6xGQAuH9w/e9omT4Ibf+z9wszuezmXKByuXYacka1to=; b=Hg6le5FJlxE5Tw
-	8a12iGpn4gmYaJqF8tnE2/eaub+UaVXl3qmsY7+f83MC+OOjZROwvxLqBa5JWt8dvHm8sL2KxbVYj
-	1sa5kXzpsX0ZbKSsc7sQDQWJ96FP5Mgq5WXpBESYCV2nMTCScAGJMZmyqFKi3Lv5iN3X/StZYGjP2
-	tjoi9YhXdIYLPaTSQ2eSS3XqCQhrS1mFvCBK41hf7HWk2TJKrvO8I/jDQnkNUCLgAWpz/4PS3H0iE
-	BJaJcH4/+8WEKOmQmYrAf0gtlelFJ46OcJwCcSlrtxeINTUzPqEbv6sK662M8pYSUkf6vP6gZWDgX
-	fAq7s0HXLT++dp58l+8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LiHIfDKQGWUzYM7xS2akFx+zWJeFs9UD4YPfuHqkcyE=; b=Adfg78+mS3OF+5
+	bwmTp/C8/G0pEq4oKeK1Hjlzpzzwv4pLId3nkjLmT+XVGvhWMkFvzHebw28IOSi2Zrwb8e0qwWtru
+	3G4dtzd7XbjM9Qv0jA6Jw7AAmH1A3e3dBWSvf79SkUfx6uoJTJhsDwYBWaXszGY8WAIe/jgcERp5z
+	hVGLncSWhtp/45rNVAFYTJQhnNbO3OL48She6CIAb5yTgenJN060Ms+SdkDi1rLTweiBnzkYJ/5/k
+	BEA32fQSshar0B2prap2vKl+W+fABPjs/g1xrBiTxuYtskh7yNkPooVof/EmLz5Whxh5uD/BDzyLc
+	+bckuoy8BrBRfiusdX3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrN4M-0043wR-0d;
-	Fri, 13 Oct 2023 18:39:30 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1qrN4P-0043xe-0c;
+	Fri, 13 Oct 2023 18:39:33 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrN4K-0043uZ-1H
+	id 1qrN4K-0043uh-2X
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 18:39:29 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3b2b1a7874dso522455b6e.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Oct 2023 11:39:25 -0700 (PDT)
+	Fri, 13 Oct 2023 18:39:31 +0000
+Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-3b2b1ae4c21so500002b6e.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Oct 2023 11:39:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697222365; x=1697827165; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=B+4iJr3L/oL+sIJn3dRrv8W005oNdqoHpRNAcI3ngyc=;
-        b=OlVVUSwwppHvB3Kj5P6Ut+QHfiRpGCzaKJym4JyYSOXtotPj0KsZg1pY/eyowrbotS
-         DjoUhOPBedGI3XlLs5oQMbQD/u7DbMdmV29/XjRBa//FOilqFnzyYu56SVSlu8uVSGUe
-         TBJAI5VUXWdTd994mtW/T3VNkRF6aRIwD2cHLQySigRpsVIfuAn7njyDTk5+CV85Nl2d
-         xr8s72uiBioklwjP3ZlWM0F7EFUFet+AiN4l16LBOr+gPCNxpsVc02SEfUhglnh3Vuxq
-         ry2o4C6Ja/1PwQeFPTyK1oQ6wuo4qK+4IESpS6jqGnmghh/giMzsaHtBQPDNM00lnhHD
-         4m1g==
+        d=gmail.com; s=20230601; t=1697222366; x=1697827166; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=F1wTDexLYvM5LHX90F6rxGOJ9LXZcSYzdsLh84YqciA=;
+        b=Ik8H7FLFjhG5DcpVpi1/8Kzc4/LVNgJCeGbmNjl87Lqc1rCS9qfZH6t4kKxHJknlqD
+         zJHZskdNU8h0MExsrd7CuO9O0lA8KvpbxDPrhQ4+lheQocFXIX4B88aijJumcKayGPH3
+         N0XPTCLiFviBqhD0ZMy8kwvdM9jGB5m7+rO3J9YgVneBz5JMTOrsPnmXhAAgx0yfti9v
+         HYoV8Rxu3WV/AOGpWDt8lDx+kicKVmB+tfpTspjm216r3hfnanWkiazKznaf0TmJswky
+         k5IVrZhabN1m5n/TvRTvEUzdq+pxrKF22TTgI6KAmhdhljFsM6S5ez1qvLAzpyXSIike
+         vw9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697222365; x=1697827165;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=B+4iJr3L/oL+sIJn3dRrv8W005oNdqoHpRNAcI3ngyc=;
-        b=iMIPqZ9xcDVG2S9R5CvkiAJqhgvVLhWzd/tsUR6nHgWw65IeGBw1pvIs6QdMzipAy/
-         ZFY6ODfgHJzLrHe+XTVnud+oHnNSVFBO5jb1OfdwgAaqZDUVa5MhxMspu9RrUZJMD6rM
-         4FdTsfipPmILK1aUJUJgc3k7BSILBOvz/egWFgwBvJYKe0du/eQhojvf6D31fFBvIW8T
-         Pmn1NcCvLwmpWWrfwZZ1K7kgX6aRn21bIvEp02W4IY+/blB93T0ohg24+G0pi8fhVFXk
-         PJWWIeXIiTxr9HikYoFdSCuththHsPH8G31uEWPMzRHz2sE1Ih6aCAhkAO5lRJi8yINK
-         X83Q==
-X-Gm-Message-State: AOJu0Yy7CsAScFNpGSLA7RTYQ7Y9nMf6d8KK0riHqxWmLG9FtkAmdX6O
-	+0ha2+aqU9Jw2Y3fYHyAzD4XT7fPNbE=
-X-Google-Smtp-Source: AGHT+IHJC9V7h7MhayXpUhwpuDTdyl0xVlDREHaqLEmdq1p11Ep4ugULWD3Vjs8KZWefYghyrkmQyQ==
-X-Received: by 2002:aca:1b13:0:b0:3ae:2b43:dd4a with SMTP id b19-20020aca1b13000000b003ae2b43dd4amr28374791oib.45.1697222364849;
-        Fri, 13 Oct 2023 11:39:24 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1697222366; x=1697827166;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=F1wTDexLYvM5LHX90F6rxGOJ9LXZcSYzdsLh84YqciA=;
+        b=OTDSqHzpu7B3mGU+2xrdR0JM4PyV+A6RKVzAmy8FGb4L1c1lWGE5aKMcZKURyRW122
+         8/0UrK9VPIMm7z3NpQkKDn268EJoIOQ12DDl8x933VO9rGPGNPOFbBwWWNcGrplNzMWJ
+         0zrz0M2BpsBEOnyO0CYvMI7GRfcDU47jGi3zRPHAidhNiRAOFN+qg++SHo0E1LRx+5Hu
+         tGv6xygOT3zMlnOAkrGmE5qZmeilP8FsCQTKPAoBec4kWrgkNL2ll8JmcKshiTzUsVQG
+         0y3aoqBLEPvP1s81NoPOB5pGJQLpGPhFrXqTNPqVwOK5RMY8dV2o35XIJHE9fso0YAO7
+         vA0Q==
+X-Gm-Message-State: AOJu0YyqwStgjLECOeL1h5w10mGi4U3GekNynK2NLU4QCQh61roofBpP
+	F6fhv+ywaz0UJSNggOWBLeD0U7ohihg=
+X-Google-Smtp-Source: AGHT+IHdkztdQit8wuetjEnY18VnhEAH1GKxj23Osp/28dvXk64uW/pxMEBq7iAjlCbL8hSHMTdQhw==
+X-Received: by 2002:a05:6808:1994:b0:3a7:366f:3b01 with SMTP id bj20-20020a056808199400b003a7366f3b01mr37101888oib.33.1697222366461;
+        Fri, 13 Oct 2023 11:39:26 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id bx19-20020a0568081b1300b003afe584ed4fsm842159oib.42.2023.10.13.11.39.24
+        by smtp.gmail.com with ESMTPSA id bx19-20020a0568081b1300b003afe584ed4fsm842159oib.42.2023.10.13.11.39.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Oct 2023 11:39:24 -0700 (PDT)
+        Fri, 13 Oct 2023 11:39:26 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -80,15 +81,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/5] Add Support for RK3566 Powkiddy RGB30
-Date: Fri, 13 Oct 2023 13:39:13 -0500
-Message-Id: <20231013183918.225666-1-macroalpha82@gmail.com>
+Subject: [PATCH 2/5] dt-bindings: panel: Add Powkiddy RGB30 panel compatible
+Date: Fri, 13 Oct 2023 13:39:15 -0500
+Message-Id: <20231013183918.225666-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231013183918.225666-1-macroalpha82@gmail.com>
+References: <20231013183918.225666-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_113928_431080_02364A1E 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231013_113928_819748_9F2073FB 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,24 +109,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Powkiddy RGB30 handheld gaming console.
+The Powkiddy RGB30 panel is a 4 inch 720x720 MIPI-DSI LCD panel. It
+appears to be based on the ST7703 LCD controller (this is assumed from
+the init sequence similarity between this and other displays). Powkiddy
+would not share the part number or name for the display from the bill
+of materials and there were no obvious external markings, so name the
+panel for the device (Powkiddy RGB30).
 
-Chris Morgan (5):
-  dt-bindings: vendor-prefixes: document Powkiddy
-  dt-bindings: panel: Add Powkiddy RGB30 panel compatible
-  drm/panel: st7703: Add Powkiddy RGB30 Panel Support
-  dt-bindings: arm64: rockchip: add Powkiddy RGB30
-  arm64: dts: rockchip: add support for Powkiddy RGB30
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../devicetree/bindings/display/panel/rocktech,jh057n00900.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../display/panel/rocktech,jh057n00900.yaml   |   2 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3566-powkiddy-rgb30.dts    | 152 ++++++++++++++++++
- drivers/gpu/drm/panel/panel-sitronix-st7703.c |  89 ++++++++++
- 6 files changed, 251 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-
+diff --git a/Documentation/devicetree/bindings/display/panel/rocktech,jh057n00900.yaml b/Documentation/devicetree/bindings/display/panel/rocktech,jh057n00900.yaml
+index 5ea74426b1d5..97cccd8a8479 100644
+--- a/Documentation/devicetree/bindings/display/panel/rocktech,jh057n00900.yaml
++++ b/Documentation/devicetree/bindings/display/panel/rocktech,jh057n00900.yaml
+@@ -22,6 +22,8 @@ properties:
+     enum:
+       # Anberic RG353V-V2 5.0" 640x480 TFT LCD panel
+       - anbernic,rg353v-panel-v2
++      # Powkiddy RGB30 3.0" 720x720 TFT LCD panel
++      - powkiddy,rgb30-panel
+       # Rocktech JH057N00900 5.5" 720x1440 TFT LCD panel
+       - rocktech,jh057n00900
+       # Xingbangda XBD599 5.99" 720x1440 TFT LCD panel
 -- 
 2.34.1
 
