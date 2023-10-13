@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EEE9CDB485
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3518AC46CA1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5paJ2VYjsvL7b6aAagYENtWNrqKUS+N4d/znDbgTiFk=; b=XcAvFdWang1l2c
-	Q2pqCkFRrZ/cmGu8hN4u25d9OpIZatzzSSXn8DclrrbiOsmBoRDH0EaFaeA/EsdD/kh/eGYEsxVc8
-	aLdpGs6AXQQ3jMIyon+JOAz6MiojCIeu1YyBPPy676GuD/XWhCUM10xe6sZ3GGbdMyQR4GcszuRN/
-	eOUF55oj67TcyCCy5j9/4WNr3y88dbqvuEba77KJqJ7WeQia8eEKGWpF9iyMUQ1fzuEGZ/4T+dc1b
-	Yy0mmr5C25JV+Ox8ckVQqVCGMNgonNv3f/IVvXYnR0VEZANONVuibezRa51sjvOAjcFhxEF3pc9j/
-	7xBnyOqheeBkU8CI4T8g==;
+	List-Owner; bh=bqkDxjZab4pjq9JwRBsHrMePFl76TRq9BdOAazQ8ez8=; b=SGGoLcj13c/9RF
+	qv+ICImidMCrRYrBq7LdA274hQPc7XiNLxjkjwdkEhzQVFiRewXlZgC6Rylebu60zjo/HjMldWLao
+	FzA6uOWJ8APSeME8hFlPKf7R/LWrzJy0/j5B7ak6iUl7AbB0WHoxN+fnNZD6+8KwOk8m4/uNzIHcY
+	im0BtyaLUQUjX9ap8TRJfGzSanOAK8tVNUPwzUghAlK5RhzxxhHKyVXdMor4oxdWiXnQzt37clUxa
+	Q2IRpaomHZp9J6N4jQTz0rKKcGzqm8fLNCBAANeAMbGbfJxtysBT/UqrAXwoH4KZ4G0UMzfW+PvwV
+	MJrldRsCyOvvw37losVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFup-003FuR-0X;
-	Fri, 13 Oct 2023 11:01:11 +0000
+	id 1qrFuu-003Fza-1Q;
+	Fri, 13 Oct 2023 11:01:16 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuh-003FlJ-2i
+	id 1qrFuh-003FlG-2X
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 11:01:07 +0000
+	Fri, 13 Oct 2023 11:01:10 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qrFuU-0006xJ-CR; Fri, 13 Oct 2023 13:00:50 +0200
+	id 1qrFuU-0006xJ-6f; Fri, 13 Oct 2023 13:00:50 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 13 Oct 2023 13:00:29 +0200
-Subject: [PATCH v2 08/13] media: rockchip: rga: use pixelformat to find
- format
+Date: Fri, 13 Oct 2023 13:00:26 +0200
+Subject: [PATCH v2 05/13] media: rockchip: rga: pre-calculate plane offsets
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v2-8-bbfa6abf8bbf@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-5-bbfa6abf8bbf@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -55,8 +54,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_040103_931896_392471D7 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20231013_040103_984925_CF91DB95 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,80 +72,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the pixelformat instead of the v4l2_format to find the rga_fmt. This
-avoids knowing the structure and type of v4l2_format in rga_fmt_find and
-simplifies the function.
+Calculate the plane offsets and store them with the video buffer while
+creating the buffer mapping.
 
-Also cleanup the users of the function. In try_fmt always return the
-found pixel format to make sure that the pixel format is always set.
-Thus, we can be sure that we will find the rga_fmt in s_fmt and can drop
-the check if a given format has been found.
+This allows the driver to more freely handle the memory of the DMA
+mapping as the offsets and the mapping can be kept in sync.
+
+The driver still has to update the offsets to respect the configured
+cropping and rotation, but this calculation is now separated from the
+calculation of the plane offsets.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
-Changes in v2: None
+Changes in v2:
+- Drop unused uv_factor to fix smatch warning
 ---
- drivers/media/platform/rockchip/rga/rga.c | 18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
+ drivers/media/platform/rockchip/rga/rga-buf.c | 16 ++++++++++++
+ drivers/media/platform/rockchip/rga/rga-hw.c  | 36 +++++++++++----------------
+ drivers/media/platform/rockchip/rga/rga.h     |  9 +++++++
+ 3 files changed, 40 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 792084918798..8ae68890a8f7 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -320,12 +320,12 @@ static struct rga_fmt formats[] = {
+diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+index ff36efade060..d6774a844d9b 100644
+--- a/drivers/media/platform/rockchip/rga/rga-buf.c
++++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+@@ -74,6 +74,18 @@ static int rga_buf_init(struct vb2_buffer *vb)
+ 	return 0;
+ }
  
- #define NUM_FORMATS ARRAY_SIZE(formats)
- 
--static struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
-+static struct rga_fmt *rga_fmt_find(u32 pixelformat)
- {
- 	unsigned int i;
- 
- 	for (i = 0; i < NUM_FORMATS; i++) {
--		if (formats[i].fourcc == f->fmt.pix.pixelformat)
-+		if (formats[i].fourcc == pixelformat)
- 			return &formats[i];
- 	}
- 	return NULL;
-@@ -474,11 +474,11 @@ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
- 	struct rga_fmt *fmt;
- 
--	fmt = rga_fmt_find(f);
--	if (!fmt) {
-+	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
-+	if (!fmt)
- 		fmt = &formats[0];
--		f->fmt.pix.pixelformat = fmt->fourcc;
--	}
++static int get_plane_offset(struct rga_frame *f, int plane)
++{
++	if (plane == 0)
++		return 0;
++	if (plane == 1)
++		return f->width * f->height;
++	if (plane == 2)
++		return f->width * f->height + (f->width * f->height / f->fmt->uv_factor);
 +
-+	f->fmt.pix.pixelformat = fmt->fourcc;
++	return -EINVAL;
++}
++
+ static int rga_buf_prepare(struct vb2_buffer *vb)
+ {
+ 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+@@ -89,6 +101,10 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
+ 	/* Create local MMU table for RGA */
+ 	fill_descriptors(rbuf->dma_desc, vb2_dma_sg_plane_desc(vb, 0));
  
- 	f->fmt.pix.field = V4L2_FIELD_NONE;
++	rbuf->offset.y_off = get_plane_offset(f, 0);
++	rbuf->offset.u_off = get_plane_offset(f, 1);
++	rbuf->offset.v_off = get_plane_offset(f, 2);
++
+ 	return 0;
+ }
  
-@@ -504,7 +504,6 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
+index 836ec7721b21..11c3d7234757 100644
+--- a/drivers/media/platform/rockchip/rga/rga-hw.c
++++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+@@ -16,12 +16,6 @@ enum e_rga_start_pos {
+ 	RB = 3,
+ };
+ 
+-struct rga_addr_offset {
+-	unsigned int y_off;
+-	unsigned int u_off;
+-	unsigned int v_off;
+-};
+-
+ struct rga_corners_addr_offset {
+ 	struct rga_addr_offset left_top;
+ 	struct rga_addr_offset right_top;
+@@ -43,13 +37,13 @@ static unsigned int rga_get_scaling(unsigned int src, unsigned int dst)
+ }
+ 
+ static struct rga_corners_addr_offset
+-rga_get_addr_offset(struct rga_frame *frm, unsigned int x, unsigned int y,
+-		    unsigned int w, unsigned int h)
++rga_get_addr_offset(struct rga_frame *frm, struct rga_addr_offset *offset,
++		    unsigned int x, unsigned int y, unsigned int w, unsigned int h)
+ {
+ 	struct rga_corners_addr_offset offsets;
+ 	struct rga_addr_offset *lt, *lb, *rt, *rb;
+ 	unsigned int x_div = 0,
+-		     y_div = 0, uv_stride = 0, pixel_width = 0, uv_factor = 0;
++		     y_div = 0, uv_stride = 0, pixel_width = 0;
+ 
+ 	lt = &offsets.left_top;
+ 	lb = &offsets.left_bottom;
+@@ -58,14 +52,12 @@ rga_get_addr_offset(struct rga_frame *frm, unsigned int x, unsigned int y,
+ 
+ 	x_div = frm->fmt->x_div;
+ 	y_div = frm->fmt->y_div;
+-	uv_factor = frm->fmt->uv_factor;
+ 	uv_stride = frm->stride / x_div;
+ 	pixel_width = frm->stride / frm->width;
+ 
+-	lt->y_off = y * frm->stride + x * pixel_width;
+-	lt->u_off =
+-		frm->width * frm->height + (y / y_div) * uv_stride + x / x_div;
+-	lt->v_off = lt->u_off + frm->width * frm->height / uv_factor;
++	lt->y_off = offset->y_off + y * frm->stride + x * pixel_width;
++	lt->u_off = offset->u_off + (y / y_div) * uv_stride + x / x_div;
++	lt->v_off = offset->v_off + (y / y_div) * uv_stride + x / x_div;
+ 
+ 	lb->y_off = lt->y_off + (h - 1) * frm->stride;
+ 	lb->u_off = lt->u_off + (h / y_div - 1) * uv_stride;
+@@ -317,7 +309,8 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+ 	dest[(RGA_DST_INFO - RGA_MODE_BASE_REG) >> 2] = dst_info.val;
+ }
+ 
+-static void rga_cmd_set_src_info(struct rga_ctx *ctx)
++static void rga_cmd_set_src_info(struct rga_ctx *ctx,
++				 struct rga_addr_offset *offset)
+ {
+ 	struct rga_corners_addr_offset src_offsets;
  	struct rockchip_rga *rga = ctx->rga;
- 	struct vb2_queue *vq;
- 	struct rga_frame *frm;
--	struct rga_fmt *fmt;
- 	int ret = 0;
+@@ -332,8 +325,8 @@ static void rga_cmd_set_src_info(struct rga_ctx *ctx)
+ 	/*
+ 	 * Calculate the source framebuffer base address with offset pixel.
+ 	 */
+-	src_offsets = rga_get_addr_offset(&ctx->in, src_x, src_y,
+-					  src_w, src_h);
++	src_offsets = rga_get_addr_offset(&ctx->in, offset,
++					  src_x, src_y, src_w, src_h);
  
- 	/* Adjust all values accordingly to the hardware capabilities
-@@ -521,13 +520,10 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	frm = rga_get_frame(ctx, f->type);
- 	if (IS_ERR(frm))
- 		return PTR_ERR(frm);
--	fmt = rga_fmt_find(f);
--	if (!fmt)
--		return -EINVAL;
- 	frm->width = f->fmt.pix.width;
- 	frm->height = f->fmt.pix.height;
- 	frm->size = f->fmt.pix.sizeimage;
--	frm->fmt = fmt;
-+	frm->fmt = rga_fmt_find(f->fmt.pix.pixelformat);
- 	frm->stride = f->fmt.pix.bytesperline;
- 	frm->colorspace = f->fmt.pix.colorspace;
+ 	dest[(RGA_SRC_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+ 		src_offsets.left_top.y_off;
+@@ -343,7 +336,8 @@ static void rga_cmd_set_src_info(struct rga_ctx *ctx)
+ 		src_offsets.left_top.v_off;
+ }
  
+-static void rga_cmd_set_dst_info(struct rga_ctx *ctx)
++static void rga_cmd_set_dst_info(struct rga_ctx *ctx,
++				 struct rga_addr_offset *offset)
+ {
+ 	struct rga_addr_offset *dst_offset;
+ 	struct rga_corners_addr_offset offsets;
+@@ -381,7 +375,7 @@ static void rga_cmd_set_dst_info(struct rga_ctx *ctx)
+ 	/*
+ 	 * Configure the dest framebuffer base address with pixel offset.
+ 	 */
+-	offsets = rga_get_addr_offset(&ctx->out, dst_x, dst_y, dst_w, dst_h);
++	offsets = rga_get_addr_offset(&ctx->out, offset, dst_x, dst_y, dst_w, dst_h);
+ 	dst_offset = rga_lookup_draw_pos(&offsets, mir_mode, rot_mode);
+ 
+ 	dest[(RGA_DST_Y_RGB_BASE_ADDR - RGA_MODE_BASE_REG) >> 2] =
+@@ -432,8 +426,8 @@ static void rga_cmd_set(struct rga_ctx *ctx,
+ 	rga_cmd_set_dst_addr(ctx, dst->dma_desc_pa);
+ 	rga_cmd_set_mode(ctx);
+ 
+-	rga_cmd_set_src_info(ctx);
+-	rga_cmd_set_dst_info(ctx);
++	rga_cmd_set_src_info(ctx, &src->offset);
++	rga_cmd_set_dst_info(ctx, &dst->offset);
+ 	rga_cmd_set_trans_info(ctx);
+ 
+ 	rga_write(rga, RGA_CMD_BASE, rga->cmdbuf_phy);
+diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
+index 678f0f627bdd..f3953a07d9e7 100644
+--- a/drivers/media/platform/rockchip/rga/rga.h
++++ b/drivers/media/platform/rockchip/rga/rga.h
+@@ -87,6 +87,12 @@ struct rockchip_rga {
+ 	void *cmdbuf_virt;
+ };
+ 
++struct rga_addr_offset {
++	unsigned int y_off;
++	unsigned int u_off;
++	unsigned int v_off;
++};
++
+ struct rga_vb_buffer {
+ 	struct vb2_v4l2_buffer vb_buf;
+ 	struct list_head queue;
+@@ -95,6 +101,9 @@ struct rga_vb_buffer {
+ 	struct rga_dma_desc *dma_desc;
+ 	dma_addr_t dma_desc_pa;
+ 	size_t n_desc;
++
++	/* Plane offsets of this buffer into the mapping */
++	struct rga_addr_offset offset;
+ };
+ 
+ static inline struct rga_vb_buffer *vb_to_rga(struct vb2_v4l2_buffer *vb)
 
 -- 
 2.39.2
