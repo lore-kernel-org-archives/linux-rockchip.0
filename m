@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE662CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 12:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B52CDB47E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 14:11:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yx8qlV1LteoMalO5WPA/ZinNQHTaU4r98nya+pP4+e8=; b=jn6gf8vRbu8U2Z
-	2jATcj7gOD470IVriSeAvKk1y8K8VSYO8OZX6Kf685QY1iXGs5h1t+DaKMnnc5OWwE5mfs8QFN2zc
-	r3V5WpeOMFnJ56/pQY2Wh3+8AjUitN4l3+fit/RWNu/wCuoLrkdoeLGGEtiz7o49bJv8J9UVrkhm4
-	C4DUP7s57e+TKxFEt2IrcGD6piab6IiREDjHX3aOKPMf4jzxhcxQbmban5Yw5Sf3rX4eSEXStWVxa
-	DeJBjX4HB0WCfgsMLUf4HaSJPBBM7hPNwvNbrs7cEqestGtI2hYA2Rqhdj6y7r0ZG0zpjS0iFErOy
-	Lfgqs/gpsQhW2VTiyl+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:In-Reply-To:References:To:From:Cc:Subject:Message-Id:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QvrSIcbKIoHk7ffaiCzrQImuQKPeKKh+zQJNhbnHDp8=; b=hTu0S1xMYyrAN2fNfEAaIcjS6i
+	q4p2PXhEuutKjQNHUgHB0wp/2woOGYzKezPdIYtlclv9cjMxn+/VF/s6RIE+IHCGz0BY+hZgFY2Md
+	W4pChr1XzhPmJ0nbMvalIBU6o1H1DTQs2XjwG/ybhNQMq0EnRuGA4uvniqGmCzxOXshI+6uXAC2XW
+	k9Frd8Fne3ZjipRgP2K+YwtSdBvXYiVzGFpijVk5HsUPplziMrJ81XHYIKDg8yakWmxon9PrUnRVI
+	efYTg0W9cGMZXr8YEGt60qF2Mqs5U/ZhrCIz6EhI2C6Fc6UAC6aQ2rEDbYvyjQ8PKIXUnFGqTXVZ2
+	vnMa0O2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrHAr-003PNx-20;
-	Fri, 13 Oct 2023 12:21:49 +0000
-Received: from m12.mail.163.com ([220.181.12.196])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrHAo-003PMV-0I
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 12:21:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=7vbeS
-	vE0+nN2xFlJ3s3DLsu1/gcvjE/n2nTDWrgjPuE=; b=FC5AdfUNLhVoQrOx26FMf
-	CGTpGLBYqK0M+Jir08Ek+AJSS2iD0jRUkUd0lgcmRRbVK7MomO/xr+WInqAYjPt1
-	a1c3prmYEcvISqE6ieLKYIqRbqWH1OAP8ZnlnE9HVfor6IeEZtKClK9ZcFIKgWBg
-	OcKl01sfWd3vQ1vsqi4ths=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wD3_xxKNillelXIAQ--.30261S2;
-	Fri, 13 Oct 2023 20:21:34 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de
-Cc: s.hauer@pengutronix.de,
-	hjc@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	sjoerd.simons@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 4/4] drm/rockchip: rename windows format for vop2
-Date: Fri, 13 Oct 2023 20:21:29 +0800
-Message-Id: <20231013122129.1594307-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231013122001.1594009-1-andyshrk@163.com>
-References: <20231013122001.1594009-1-andyshrk@163.com>
-MIME-Version: 1.0
-X-CM-TRANSID: _____wD3_xxKNillelXIAQ--.30261S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxAF1xKF43Kr1xGF15GryUKFg_yoWrCF1xpa
-	9F9rnxuF45uF45Wr1UJayUZr4rC3ZIka1a9wn5G3Z7KF43KF9rXr1UKas8CryDKFy8Ar1U
-	Ar4aqryUZr47tFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jk18PUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiEBAIXl8YLt0+AwAAsf
+	id 1qrIt9-003Z9B-0y;
+	Fri, 13 Oct 2023 14:11:39 +0000
+Received: from www522.your-server.de ([195.201.215.122])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qrIt4-003Z81-1K;
+	Fri, 13 Oct 2023 14:11:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=folker-schwesinger.de; s=default2212; h=In-Reply-To:References:
+	Content-Transfer-Encoding:To:From:Cc:Subject:Message-Id:Date:Content-Type:
+	Sender:Reply-To:MIME-Version:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=TxwwokEAbgE2tWmv/Wot1RPxsCzOem/ELZjKvvjAb+M=; b=TY0kQ4rYjnJByIpl42J3+RKmun
+	F+N+FRYTXPViiQDUgf3Sw+XssHSi1xvG7DzyPVg24tCIgxIoTBWg2Dy6/X657L5BFsLgp2g67H4/t
+	34dJbD1ViiCT+8j62dj/nzVi+QuXrWGANBDQ0Xkr23NORANlk/edKrUf/6n/jIKA8z61KAqvkwmYT
+	KAi3gS5dJAp3J9Z+sVR3dgutoNvFI3XGTA/YBQEn2k/CeD27ajKDvpTGG2TjWvO9GNBeUZcMvJ/93
+	IS2t0WgXks0Q6J4Ye3oJ3TT0rhI8/Ry7EHJwUCEZjGqMchg+3oPIrrSTQUYv8AggXpkUBtJefvNVP
+	5iOT6+KA==;
+Received: from sslproxy02.your-server.de ([78.47.166.47])
+	by www522.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1qrIsv-000HXg-MS; Fri, 13 Oct 2023 16:11:25 +0200
+Received: from [80.88.27.155] (helo=localhost)
+	by sslproxy02.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1qrIsk-000T92-MZ; Fri, 13 Oct 2023 16:11:24 +0200
+Date: Fri, 13 Oct 2023 14:11:13 +0000
+Message-Id: <CW7DEUEAKEXO.KE3YKH135Y3C@folker-schwesinger.de>
+Subject: Re: [PATCH v1 0/2] Fix i2s0 pin conflict on ROCK Pi 4 RK3399 boards
+Cc: <kernel@collabora.com>, "Arnaud Ferraris"
+ <arnaud.ferraris@collabora.com>, "Brian Norris" <briannorris@chromium.org>,
+ "Caleb Connolly" <kc@postmarketos.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Corentin Labbe" <clabbe@baylibre.com>, "FUKAUMI
+ Naoki" <naoki@radxa.com>, "Heiko Stuebner" <heiko@sntech.de>, "Jagan Teki"
+ <jagan@amarulasolutions.com>, "Johan Jonker" <jbx6244@gmail.com>, "Judy
+ Hsiao" <judyhsiao@chromium.org>, "Krzysztof Kozlowski"
+ <krzysztof.kozlowski+dt@linaro.org>, "Rick Wertenbroek"
+ <rick.wertenbroek@gmail.com>, "Rob Herring" <robh+dt@kernel.org>, "Yogesh
+ Hegde" <yogi.kernel@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+From: "Folker Schwesinger" <dev@folker-schwesinger.de>
+To: "Christopher Obbard" <chris.obbard@collabora.com>,
+ <linux-rockchip@lists.infradead.org>
+X-Mailer: aerc 0.16.0-6-gd179485eefe5
+References: <20231013114737.494410-1-chris.obbard@collabora.com>
+In-Reply-To: <20231013114737.494410-1-chris.obbard@collabora.com>
+X-Authenticated-Sender: dev@folker-schwesinger.de
+X-Virus-Scanned: Clear (ClamAV 0.103.10/27060/Fri Oct 13 09:41:49 2023)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_052146_936608_549ED932 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231013_071134_749832_3E7A4F49 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,130 +83,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============2719821989954422795=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+--===============2719821989954422795==
+Content-Type: multipart/signed;
+ boundary=0377e7501be3d79d6faabf808a2de3b62744369f17e3be7eb4f7324fb286;
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+Content-Transfer-Encoding: quoted-printable
 
-formats_win_full_10bit is for cluster window,
-formats_win_full_10bit_yuyv is for rk356x esmart, rk3588 esmart window
-will support more format.
-formats_win_lite is for smart window.
+--0377e7501be3d79d6faabf808a2de3b62744369f17e3be7eb4f7324fb286
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Rename it based the windows type may let meaning is clearer
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+On Fri Oct 13, 2023 at 1:47 PM CEST, Christopher Obbard wrote:
+> i2s0 fails to probe on my Radxa ROCK 4SE and ROCK Pi 4B boards with:
+>
+>     rockchip-pinctrl pinctrl: pin gpio3-29 already requested by leds; can=
+not claim for ff880000.i2s
+>     rockchip-pinctrl pinctrl: pin-125 (ff880000.i2s) status -22
+>     rockchip-pinctrl pinctrl: could not request pin 125 (gpio3-29) from g=
+roup i2s0-8ch-bus-bclk-off  on device rockchip-pinctrl
+>     rockchip-i2s ff880000.i2s: Error applying setting, reverse things bac=
+k
+>     rockchip-i2s ff880000.i2s: bclk disable failed -22
+>
+> This is due to the pinctl attempting to request a GPIO which the boards
+> use for a different function.
+>
+> The first patch adds a missing pinctl node i2s0_2ch_bus_bclk_off to the
+> RK3399 devicetree.
+>
+> The second patch sets the i2s0 pinctrl to use the new node when idle and
+> fixes the issue.
+>
+>
+> Christopher Obbard (2):
+>   arm64: dts: rockchip: Add i2s0-2ch-bus-bclk-off pins to RK3399
+>   arm64: dts: rockchip: Fix i2s0 pin conflict on ROCK Pi 4 boards
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 10 ++++++++++
+>  2 files changed, 11 insertions(+)
 
-(no changes since v1)
+Thanks, works as advertised on my Rock 4SE!
 
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 30 ++++++++++----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+So for the entire series:
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 05aee588e8c9..574cb013639e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -15,7 +15,7 @@
- 
- #include "rockchip_drm_vop2.h"
- 
--static const uint32_t formats_win_full_10bit[] = {
-+static const uint32_t formats_cluster[] = {
- 	DRM_FORMAT_XRGB2101010,
- 	DRM_FORMAT_ARGB2101010,
- 	DRM_FORMAT_XBGR2101010,
-@@ -34,7 +34,7 @@ static const uint32_t formats_win_full_10bit[] = {
- 	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
- };
- 
--static const uint32_t formats_win_full_10bit_yuyv[] = {
-+static const uint32_t formats_rk356x_esmart[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_XBGR8888,
-@@ -51,7 +51,7 @@ static const uint32_t formats_win_full_10bit_yuyv[] = {
- 	DRM_FORMAT_VYUY, /* yuv422_8bit[VYUY] linear mode */
- };
- 
--static const uint32_t formats_win_lite[] = {
-+static const uint32_t formats_smart[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_XBGR8888,
-@@ -150,8 +150,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Smart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART0,
- 		.base = 0x1c00,
--		.formats = formats_win_lite,
--		.nformats = ARRAY_SIZE(formats_win_lite),
-+		.formats = formats_smart,
-+		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
- 		.layer_sel_id = 3,
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
-@@ -162,8 +162,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Smart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_SMART1,
--		.formats = formats_win_lite,
--		.nformats = ARRAY_SIZE(formats_win_lite),
-+		.formats = formats_smart,
-+		.nformats = ARRAY_SIZE(formats_smart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1e00,
- 		.layer_sel_id = 7,
-@@ -175,8 +175,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart1-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART1,
--		.formats = formats_win_full_10bit_yuyv,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit_yuyv),
-+		.formats = formats_rk356x_esmart,
-+		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1a00,
- 		.layer_sel_id = 6,
-@@ -188,8 +188,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 	}, {
- 		.name = "Esmart0-win0",
- 		.phys_id = ROCKCHIP_VOP2_ESMART0,
--		.formats = formats_win_full_10bit_yuyv,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit_yuyv),
-+		.formats = formats_rk356x_esmart,
-+		.nformats = ARRAY_SIZE(formats_rk356x_esmart),
- 		.format_modifiers = format_modifiers,
- 		.base = 0x1800,
- 		.layer_sel_id = 2,
-@@ -202,8 +202,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster0-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER0,
- 		.base = 0x1000,
--		.formats = formats_win_full_10bit,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit),
-+		.formats = formats_cluster,
-+		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
- 		.layer_sel_id = 0,
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
-@@ -217,8 +217,8 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
- 		.name = "Cluster1-win0",
- 		.phys_id = ROCKCHIP_VOP2_CLUSTER1,
- 		.base = 0x1200,
--		.formats = formats_win_full_10bit,
--		.nformats = ARRAY_SIZE(formats_win_full_10bit),
-+		.formats = formats_cluster,
-+		.nformats = ARRAY_SIZE(formats_cluster),
- 		.format_modifiers = format_modifiers_afbc,
- 		.layer_sel_id = 1,
- 		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
--- 
-2.34.1
+Tested-By: Folker Schwesinger <dev@folker-schwesinger.de>
 
+Kind regards,
+Folker
+
+--0377e7501be3d79d6faabf808a2de3b62744369f17e3be7eb4f7324fb286
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJAEABYIADgWIQQFbmi0A2l3pTuK+esCQHEyPYq7fQUCZSlQAhocZGV2QGZvbGtl
+ci1zY2h3ZXNpbmdlci5kZQAKCRACQHEyPYq7fcaaAPsFBvjaD6faGXW/mZLedAE8
+Oio8383iwlnrrWOmoshgcAEAxShIZ4xIjPkCTtOnd8Z/OI4flfytkRBns2asy9ei
+9AE=
+=n0fE
+-----END PGP SIGNATURE-----
+
+--0377e7501be3d79d6faabf808a2de3b62744369f17e3be7eb4f7324fb286--
+
+
+--===============2719821989954422795==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2719821989954422795==--
+
