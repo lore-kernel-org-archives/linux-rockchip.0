@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2220DCDB482
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BCDCDB47E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7RGJVzvt57dw20+hBmdu3BFLZ2dwy7+ZpIRi76uyKmA=; b=LTimFq5XbBednm
-	GTJI6J9eFL8CX96NqAr2pR9EBSeG3S3RNca0fGBMR4pHtKo/D2vn89cEhq4tRitiVCZktvSKY+rxG
-	Eug1CND+y1lXcD5Q0JoHnM4T6Asqd0BM4/UkDnNhCstOUv/H60VS+zFY42Vxdsbsa75y9dwtAnL1y
-	tnDtkVwNNewIZfky8Ez5EDVSJ4aMStgnzigd1T5MqkPm4oPN5HkQp/lFEfIaY6zR2xknnKjjZvcCT
-	wuGBPitM8t/LaHe3vqKhbGUuJekFyH2+qerWtu3EJvWz0kiM6AU5UW6ux7zuJPdOmdF9MQHNMqGaw
-	LM6eokP+yPrTnf7DdgtA==;
+	List-Owner; bh=2iX1tih/Vrd2VYThyUFGIIiUrMGWfvC9Q/r7eBG/PVY=; b=4mRIsFoTYhonD8
+	wBJc7dJCsD5Cdhbqe8lq+OFuKEP9SZ23IIGg2T8SqS6oEmarBjp5h5fw36S6iOzBBHGzjo9MYH3Ye
+	Sv7hxVGUhXA1e98a3xLMCIG9wcJuFbd75FfRcreTOcD6wKcYbO/MRFX4B/cyjjMWHSUBddYbFgsCV
+	Dsp031LmYbdH4i5umsxBQa0cUvzevrbyo/Riw5MoKtyBNFBfiYKE51cOPPGht6QpSgb8+w6gkgy/K
+	vL1ojgFn0vD8mhRtnMDLEDx4NibM03gzyOXCK5GHiPRmYJxI7KXfkA4+ouPdUxWR5qdfCv0uoLx1s
+	yxY/3x8MV4kXpS8Hz5OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuw-003G1T-0b;
-	Fri, 13 Oct 2023 11:01:18 +0000
+	id 1qrFuq-003FwM-1n;
+	Fri, 13 Oct 2023 11:01:12 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuh-003FlE-2b
+	id 1qrFuh-003FlN-2n
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 11:01:11 +0000
+	Fri, 13 Oct 2023 11:01:09 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qrFuU-0006xJ-1c; Fri, 13 Oct 2023 13:00:50 +0200
+	id 1qrFuU-0006xJ-KE; Fri, 13 Oct 2023 13:00:50 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 13 Oct 2023 13:00:24 +0200
-Subject: [PATCH v2 03/13] media: rockchip: rga: allocate DMA descriptors
- per buffer
+Date: Fri, 13 Oct 2023 13:00:33 +0200
+Subject: [PATCH v2 12/13] media: rockchip: rga: rework buffer handling for
+ multi-planar formats
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v2-3-bbfa6abf8bbf@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-12-bbfa6abf8bbf@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -55,8 +55,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_040104_156142_15B8CEA8 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20231013_040103_944913_EB15EFE1 
+X-CRM114-Status: GOOD (  22.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,354 +73,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RGA driver allocates two buffers for the DMA descriptors of the
-input and output buffers. Whenever a new job is processed, the
-descriptor list is updated for the current buffers.
+Multi-planar formats may have multiple planes that must be handled and
+correctly mapped into a continuous buffer for the RGA by using the DMA
+descriptors.
 
-By updating the descriptor list during buf_prepare, it is possible to
-correctly fail DMABUF imports if the buffers that shall be imported are
-not within the 32 bit address range that can be addressed by the RGA.
-
-Managing the DMA descriptor list with the buffer also makes it easier to
-track the buffer mapping and the plane offsets into this mapping.
-
-The cost is that the driver now requires DMA coherent memory per buffer
-for the descriptor list. However, the size scales with the size of the
-video buffers and is not allocated if the RGA is not used.
-
-While at it, use dma_alloc_coherent to allocate the descriptors and get
-rid of the virt_to_phys calls to get the physical addresses.
+The plane offsets in the continuous mapping may now start at page
+boundaries and the previous calculation based on the frame sizes is only
+valid for planar buffers in a single memory. Therefore, the offsets must
+be detected and set while creating the mapping.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
 Changes in v2:
-- Drop useless dma_sync_single_for_device()
+- Add size check for descriptor table when mapping video buffer
 ---
- drivers/media/platform/rockchip/rga/rga-buf.c | 62 +++++++++++++++++----------
- drivers/media/platform/rockchip/rga/rga-hw.c  | 26 +++++------
- drivers/media/platform/rockchip/rga/rga.c     | 31 ++------------
- drivers/media/platform/rockchip/rga/rga.h     | 21 +++++++--
- 4 files changed, 74 insertions(+), 66 deletions(-)
+ drivers/media/platform/rockchip/rga/rga-buf.c | 61 ++++++++++++++++++++++-----
+ drivers/media/platform/rockchip/rga/rga.c     |  7 +++
+ drivers/media/platform/rockchip/rga/rga.h     |  1 +
+ 3 files changed, 58 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index fc3f38f6b5e1..ff36efade060 100644
+index d6774a844d9b..662c81b6d0b5 100644
 --- a/drivers/media/platform/rockchip/rga/rga-buf.c
 +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -53,8 +53,31 @@ rga_queue_setup(struct vb2_queue *vq,
+@@ -7,6 +7,7 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/scatterlist.h>
+ 
++#include <media/v4l2-common.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-ioctl.h>
+ #include <media/v4l2-mem2mem.h>
+@@ -16,7 +17,8 @@
+ #include "rga-hw.h"
+ #include "rga.h"
+ 
+-static size_t fill_descriptors(struct rga_dma_desc *desc, struct sg_table *sgt)
++static ssize_t fill_descriptors(struct rga_dma_desc *desc, size_t max_desc,
++				struct sg_table *sgt)
+ {
+ 	struct sg_dma_page_iter iter;
+ 	struct rga_dma_desc *tmp = desc;
+@@ -24,6 +26,8 @@ static size_t fill_descriptors(struct rga_dma_desc *desc, struct sg_table *sgt)
+ 	dma_addr_t addr;
+ 
+ 	for_each_sgtable_dma_page(sgt, &iter, 0) {
++		if (n_desc > max_desc)
++			return -EINVAL;
+ 		addr = sg_page_iter_dma_address(&iter);
+ 		tmp->addr = lower_32_bits(addr);
+ 		tmp++;
+@@ -40,15 +44,29 @@ rga_queue_setup(struct vb2_queue *vq,
+ {
+ 	struct rga_ctx *ctx = vb2_get_drv_priv(vq);
+ 	struct rga_frame *f = rga_get_frame(ctx, vq->type);
++	const struct v4l2_pix_format_mplane *pix_fmt;
++	int i;
+ 
+ 	if (IS_ERR(f))
+ 		return PTR_ERR(f);
+ 
+-	if (*nplanes)
+-		return sizes[0] < f->size ? -EINVAL : 0;
++	pix_fmt = &f->pix;
+ 
+-	sizes[0] = f->size;
+-	*nplanes = 1;
++	if (*nplanes) {
++		if (*nplanes != pix_fmt->num_planes)
++			return -EINVAL;
++
++		for (i = 0; i < pix_fmt->num_planes; i++)
++			if (sizes[i] < pix_fmt->plane_fmt[i].sizeimage)
++				return -EINVAL;
++
++		return 0;
++	}
++
++	*nplanes = pix_fmt->num_planes;
++
++	for (i = 0; i < pix_fmt->num_planes; i++)
++		sizes[i] = pix_fmt->plane_fmt[i].sizeimage;
+ 
  	return 0;
  }
- 
-+static int rga_buf_init(struct vb2_buffer *vb)
-+{
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
-+	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-+	struct rockchip_rga *rga = ctx->rga;
-+	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
-+	size_t n_desc = 0;
-+
-+	n_desc = DIV_ROUND_UP(f->size, PAGE_SIZE);
-+
-+	rbuf->n_desc = n_desc;
-+	rbuf->dma_desc = dma_alloc_coherent(rga->dev,
-+					    rbuf->n_desc * sizeof(*rbuf->dma_desc),
-+					    &rbuf->dma_desc_pa, GFP_KERNEL);
-+	if (!rbuf->dma_desc)
-+		return -ENOMEM;
-+
-+	return 0;
-+}
-+
- static int rga_buf_prepare(struct vb2_buffer *vb)
- {
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
+@@ -92,18 +110,39 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
+ 	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
  	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
  	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
++	ssize_t n_desc = 0;
++	size_t curr_desc = 0;
++	int i;
++	const struct v4l2_format_info *info;
++	unsigned int offsets[VIDEO_MAX_PLANES];
  
-@@ -63,6 +86,9 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
+ 	if (IS_ERR(f))
+ 		return PTR_ERR(f);
  
- 	vb2_set_plane_payload(vb, 0, f->size);
- 
-+	/* Create local MMU table for RGA */
-+	fill_descriptors(rbuf->dma_desc, vb2_dma_sg_plane_desc(vb, 0));
+-	vb2_set_plane_payload(vb, 0, f->size);
++	for (i = 0; i < vb->num_planes; i++) {
++		vb2_set_plane_payload(vb, i, f->pix.plane_fmt[i].sizeimage);
 +
++		/* Create local MMU table for RGA */
++		n_desc = fill_descriptors(&rbuf->dma_desc[curr_desc],
++					  rbuf->n_desc - curr_desc,
++					  vb2_dma_sg_plane_desc(vb, i));
++		if (n_desc < 0) {
++			v4l2_err(&ctx->rga->v4l2_dev,
++				 "Failed to map video buffer to RGA\n");
++			return n_desc;
++		}
++		offsets[i] = curr_desc << PAGE_SHIFT;
++		curr_desc += n_desc;
++	}
+ 
+-	/* Create local MMU table for RGA */
+-	fill_descriptors(rbuf->dma_desc, vb2_dma_sg_plane_desc(vb, 0));
++	/* Fill the remaining planes */
++	info = v4l2_format_info(f->fmt->fourcc);
++	for (i = info->mem_planes; i < info->comp_planes; i++)
++		offsets[i] = get_plane_offset(f, i);
+ 
+-	rbuf->offset.y_off = get_plane_offset(f, 0);
+-	rbuf->offset.u_off = get_plane_offset(f, 1);
+-	rbuf->offset.v_off = get_plane_offset(f, 2);
++	rbuf->offset.y_off = offsets[0];
++	rbuf->offset.u_off = offsets[1];
++	rbuf->offset.v_off = offsets[2];
+ 
  	return 0;
  }
- 
-@@ -74,6 +100,17 @@ static void rga_buf_queue(struct vb2_buffer *vb)
- 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
- }
- 
-+static void rga_buf_cleanup(struct vb2_buffer *vb)
-+{
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
-+	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-+	struct rockchip_rga *rga = ctx->rga;
-+
-+	dma_free_coherent(rga->dev, rbuf->n_desc * sizeof(*rbuf->dma_desc),
-+			  rbuf->dma_desc, rbuf->dma_desc_pa);
-+}
-+
- static void rga_buf_return_buffers(struct vb2_queue *q,
- 				   enum vb2_buffer_state state)
- {
-@@ -117,33 +154,12 @@ static void rga_buf_stop_streaming(struct vb2_queue *q)
- 
- const struct vb2_ops rga_qops = {
- 	.queue_setup = rga_queue_setup,
-+	.buf_init = rga_buf_init,
- 	.buf_prepare = rga_buf_prepare,
- 	.buf_queue = rga_buf_queue,
-+	.buf_cleanup = rga_buf_cleanup,
- 	.wait_prepare = vb2_ops_wait_prepare,
- 	.wait_finish = vb2_ops_wait_finish,
- 	.start_streaming = rga_buf_start_streaming,
- 	.stop_streaming = rga_buf_stop_streaming,
- };
--
--/* RGA MMU is a 1-Level MMU, so it can't be used through the IOMMU API.
-- * We use it more like a scatter-gather list.
-- */
--void rga_buf_map(struct vb2_buffer *vb)
--{
--	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
--	struct rockchip_rga *rga = ctx->rga;
--	struct rga_dma_desc *pages;
--	size_t n_desc = 0;
--
--	if (vb->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
--		pages = rga->src_mmu_pages;
--	else
--		pages = rga->dst_mmu_pages;
--
--	/* Create local MMU table for RGA */
--	n_desc = fill_descriptors(pages, vb2_dma_sg_plane_desc(vb, 0));
--
--	/* sync local MMU table for RGA */
--	dma_sync_single_for_device(rga->dev, virt_to_phys(pages),
--				   n_desc * sizeof(*pages), DMA_BIDIRECTIONAL);
--}
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index aaa96f256356..b391d97d4632 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -119,40 +119,40 @@ static struct rga_addr_offset *rga_lookup_draw_pos(struct
- 	return NULL;
- }
- 
--static void rga_cmd_set_src_addr(struct rga_ctx *ctx, void *mmu_pages)
-+static void rga_cmd_set_src_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
- {
- 	struct rockchip_rga *rga = ctx->rga;
- 	u32 *dest = rga->cmdbuf_virt;
- 	unsigned int reg;
- 
- 	reg = RGA_MMU_SRC_BASE - RGA_MODE_BASE_REG;
--	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-+	dest[reg >> 2] = dma_addr >> 4;
- 
- 	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
- 	dest[reg >> 2] |= 0x7;
- }
- 
--static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, void *mmu_pages)
-+static void rga_cmd_set_src1_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
- {
- 	struct rockchip_rga *rga = ctx->rga;
- 	u32 *dest = rga->cmdbuf_virt;
- 	unsigned int reg;
- 
- 	reg = RGA_MMU_SRC1_BASE - RGA_MODE_BASE_REG;
--	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-+	dest[reg >> 2] = dma_addr >> 4;
- 
- 	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
- 	dest[reg >> 2] |= 0x7 << 4;
- }
- 
--static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, void *mmu_pages)
-+static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
- {
- 	struct rockchip_rga *rga = ctx->rga;
- 	u32 *dest = rga->cmdbuf_virt;
- 	unsigned int reg;
- 
- 	reg = RGA_MMU_DST_BASE - RGA_MODE_BASE_REG;
--	dest[reg >> 2] = virt_to_phys(mmu_pages) >> 4;
-+	dest[reg >> 2] = dma_addr >> 4;
- 
- 	reg = RGA_MMU_CTRL1 - RGA_MODE_BASE_REG;
- 	dest[reg >> 2] |= 0x7 << 8;
-@@ -375,20 +375,21 @@ static void rga_cmd_set_mode(struct rga_ctx *ctx)
- 	dest[(RGA_MODE_CTRL - RGA_MODE_BASE_REG) >> 2] = mode.val;
- }
- 
--static void rga_cmd_set(struct rga_ctx *ctx)
-+static void rga_cmd_set(struct rga_ctx *ctx,
-+			struct rga_vb_buffer *src, struct rga_vb_buffer *dst)
- {
- 	struct rockchip_rga *rga = ctx->rga;
- 
- 	memset(rga->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
- 
--	rga_cmd_set_src_addr(ctx, rga->src_mmu_pages);
-+	rga_cmd_set_src_addr(ctx, src->dma_desc_pa);
- 	/*
- 	 * Due to hardware bug,
- 	 * src1 mmu also should be configured when using alpha blending.
- 	 */
--	rga_cmd_set_src1_addr(ctx, rga->dst_mmu_pages);
-+	rga_cmd_set_src1_addr(ctx, dst->dma_desc_pa);
- 
--	rga_cmd_set_dst_addr(ctx, rga->dst_mmu_pages);
-+	rga_cmd_set_dst_addr(ctx, dst->dma_desc_pa);
- 	rga_cmd_set_mode(ctx);
- 
- 	rga_cmd_set_trans_info(ctx);
-@@ -400,11 +401,12 @@ static void rga_cmd_set(struct rga_ctx *ctx)
- 		PAGE_SIZE, DMA_BIDIRECTIONAL);
- }
- 
--void rga_hw_start(struct rockchip_rga *rga)
-+void rga_hw_start(struct rockchip_rga *rga,
-+		  struct rga_vb_buffer *src, struct rga_vb_buffer *dst)
- {
- 	struct rga_ctx *ctx = rga->curr;
- 
--	rga_cmd_set(ctx);
-+	rga_cmd_set(ctx, src, dst);
- 
- 	rga_write(rga, RGA_SYS_CTRL, 0x00);
- 
 diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 36d7f255af90..f18fccc7b204 100644
+index f549966c3649..57d845c57d7d 100644
 --- a/drivers/media/platform/rockchip/rga/rga.c
 +++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -45,10 +45,7 @@ static void device_run(void *prv)
- 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+@@ -365,6 +365,11 @@ static int rga_open(struct file *file)
+ 	ctx->in = def_frame;
+ 	ctx->out = def_frame;
  
--	rga_buf_map(&src->vb2_buf);
--	rga_buf_map(&dst->vb2_buf);
--
--	rga_hw_start(rga);
-+	rga_hw_start(rga, vb_to_rga(src), vb_to_rga(dst));
++	v4l2_fill_pixfmt_mp(&ctx->in.pix,
++			    ctx->in.fmt->fourcc, ctx->out.width, ctx->out.height);
++	v4l2_fill_pixfmt_mp(&ctx->out.pix,
++			    ctx->out.fmt->fourcc, ctx->out.width, ctx->out.height);
++
+ 	if (mutex_lock_interruptible(&rga->mutex)) {
+ 		kfree(ctx);
+ 		return -ERESTARTSYS;
+@@ -524,6 +529,8 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	frm->crop.width = frm->width;
+ 	frm->crop.height = frm->height;
  
- 	spin_unlock_irqrestore(&rga->ctrl_lock, flags);
- }
-@@ -101,7 +98,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->drv_priv = ctx;
- 	src_vq->ops = &rga_qops;
- 	src_vq->mem_ops = &vb2_dma_sg_memops;
--	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-+	src_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	src_vq->lock = &ctx->rga->mutex;
- 	src_vq->dev = ctx->rga->v4l2_dev.dev;
-@@ -115,7 +112,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->drv_priv = ctx;
- 	dst_vq->ops = &rga_qops;
- 	dst_vq->mem_ops = &vb2_dma_sg_memops;
--	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-+	dst_vq->buf_struct_size = sizeof(struct rga_vb_buffer);
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->rga->mutex;
- 	dst_vq->dev = ctx->rga->v4l2_dev.dev;
-@@ -872,26 +869,13 @@ static int rga_probe(struct platform_device *pdev)
- 		goto rel_m2m;
- 	}
- 
--	rga->src_mmu_pages =
--		(struct rga_dma_desc *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
--	if (!rga->src_mmu_pages) {
--		ret = -ENOMEM;
--		goto free_dma;
--	}
--	rga->dst_mmu_pages =
--		(struct rga_dma_desc *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
--	if (!rga->dst_mmu_pages) {
--		ret = -ENOMEM;
--		goto free_src_pages;
--	}
--
- 	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
- 	def_frame.size = def_frame.stride * def_frame.height;
- 
- 	ret = video_register_device(vfd, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
--		goto free_dst_pages;
-+		goto free_dma;
- 	}
- 
- 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-@@ -899,10 +883,6 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
--free_dst_pages:
--	free_pages((unsigned long)rga->dst_mmu_pages, 3);
--free_src_pages:
--	free_pages((unsigned long)rga->src_mmu_pages, 3);
- free_dma:
- 	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
- 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-@@ -925,9 +905,6 @@ static void rga_remove(struct platform_device *pdev)
- 	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
- 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
- 
--	free_pages((unsigned long)rga->src_mmu_pages, 3);
--	free_pages((unsigned long)rga->dst_mmu_pages, 3);
--
- 	v4l2_info(&rga->v4l2_dev, "Removing\n");
- 
- 	v4l2_m2m_release(rga->m2m_dev);
++	frm->pix = *pix_fmt;
++
+ 	v4l2_dbg(debug, 1, &rga->v4l2_dev,
+ 		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
+ 		  V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
 diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
-index 22f7da28ac51..678f0f627bdd 100644
+index f3953a07d9e7..3502dff6055c 100644
 --- a/drivers/media/platform/rockchip/rga/rga.h
 +++ b/drivers/media/platform/rockchip/rga/rga.h
-@@ -85,15 +85,27 @@ struct rockchip_rga {
- 	struct rga_ctx *curr;
- 	dma_addr_t cmdbuf_phy;
- 	void *cmdbuf_virt;
--	struct rga_dma_desc *src_mmu_pages;
--	struct rga_dma_desc *dst_mmu_pages;
- };
+@@ -34,6 +34,7 @@ struct rga_frame {
  
-+struct rga_vb_buffer {
-+	struct vb2_v4l2_buffer vb_buf;
-+	struct list_head queue;
-+
-+	/* RGA MMU mapping for this buffer */
-+	struct rga_dma_desc *dma_desc;
-+	dma_addr_t dma_desc_pa;
-+	size_t n_desc;
-+};
-+
-+static inline struct rga_vb_buffer *vb_to_rga(struct vb2_v4l2_buffer *vb)
-+{
-+	return container_of(vb, struct rga_vb_buffer, vb_buf);
-+}
-+
- struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_type type);
+ 	/* Image format */
+ 	struct rga_fmt *fmt;
++	struct v4l2_pix_format_mplane pix;
  
- /* RGA Buffers Manage */
- extern const struct vb2_ops rga_qops;
--void rga_buf_map(struct vb2_buffer *vb);
- 
- /* RGA Hardware */
- static inline void rga_write(struct rockchip_rga *rga, u32 reg, u32 value)
-@@ -114,6 +126,7 @@ static inline void rga_mod(struct rockchip_rga *rga, u32 reg, u32 val, u32 mask)
- 	rga_write(rga, reg, temp);
- };
- 
--void rga_hw_start(struct rockchip_rga *rga);
-+void rga_hw_start(struct rockchip_rga *rga,
-+		  struct rga_vb_buffer *src, struct rga_vb_buffer *dst);
- 
- #endif
+ 	/* Variables that can calculated once and reused */
+ 	u32 stride;
 
 -- 
 2.39.2
