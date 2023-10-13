@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AEECDB482
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EEE9CDB485
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/X/U3BJDyT7V96Xj0DTSsiijvvOMVr6zwmc+i7IaC6M=; b=LCe6z5InwKlzhr
-	QfG5Sa9IwOFI0fgSXW98taHnt+84Zx7bCcXrndtXmhwIDJIFvc3Bc/9y/FxAmeWR+2wX/Bg6gLmE9
-	IKnj9nORQF3rKCkloFsChaTCGADs5dK32DIxdLVFE85JBxYUzNA5koRr3PT337UPk/BRDT40RNLHQ
-	KcPHP05O5CrzaKWzCZAZFxFTf6hvRgLnJi6FVnNE5ykt/WaNJoQr8WL5gcRR28he9KcOXNcIkjNSp
-	1S3+66BvRwnrISwaaOL2ROYtVBX7uSoMJb51zJeP/Gn+ce8nqcfKwLYU3IEV15h+YEp5l/u4hpyls
-	LYfc/Sc5wEbNfAWj+Low==;
+	List-Owner; bh=5paJ2VYjsvL7b6aAagYENtWNrqKUS+N4d/znDbgTiFk=; b=XcAvFdWang1l2c
+	Q2pqCkFRrZ/cmGu8hN4u25d9OpIZatzzSSXn8DclrrbiOsmBoRDH0EaFaeA/EsdD/kh/eGYEsxVc8
+	aLdpGs6AXQQ3jMIyon+JOAz6MiojCIeu1YyBPPy676GuD/XWhCUM10xe6sZ3GGbdMyQR4GcszuRN/
+	eOUF55oj67TcyCCy5j9/4WNr3y88dbqvuEba77KJqJ7WeQia8eEKGWpF9iyMUQ1fzuEGZ/4T+dc1b
+	Yy0mmr5C25JV+Ox8ckVQqVCGMNgonNv3f/IVvXYnR0VEZANONVuibezRa51sjvOAjcFhxEF3pc9j/
+	7xBnyOqheeBkU8CI4T8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuo-003Fsa-10;
-	Fri, 13 Oct 2023 11:01:10 +0000
+	id 1qrFup-003FuR-0X;
+	Fri, 13 Oct 2023 11:01:11 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuh-003FlK-2b
+	id 1qrFuh-003FlJ-2i
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 11:01:06 +0000
+	Fri, 13 Oct 2023 11:01:07 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qrFuU-0006xJ-EI; Fri, 13 Oct 2023 13:00:50 +0200
+	id 1qrFuU-0006xJ-CR; Fri, 13 Oct 2023 13:00:50 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 13 Oct 2023 13:00:30 +0200
-Subject: [PATCH v2 09/13] media: rockchip: rga: add local variable for
- pix_format
+Date: Fri, 13 Oct 2023 13:00:29 +0200
+Subject: [PATCH v2 08/13] media: rockchip: rga: use pixelformat to find
+ format
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v2-9-bbfa6abf8bbf@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-8-bbfa6abf8bbf@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -55,8 +55,8 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_040103_860371_6ED70BE6 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20231013_040103_931896_392471D7 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,126 +73,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The local variable allows to simplify the accessed to the format and
-makes it easier to change the type of the format.
+Use the pixelformat instead of the v4l2_format to find the rga_fmt. This
+avoids knowing the structure and type of v4l2_format in rga_fmt_find and
+simplifies the function.
+
+Also cleanup the users of the function. In try_fmt always return the
+found pixel format to make sure that the pixel format is always set.
+Thus, we can be sure that we will find the rga_fmt in s_fmt and can drop
+the check if a given format has been found.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
 Changes in v2: None
 ---
- drivers/media/platform/rockchip/rga/rga.c | 55 ++++++++++++++++++-------------
- 1 file changed, 32 insertions(+), 23 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 8ae68890a8f7..f5d0d87cce22 100644
+index 792084918798..8ae68890a8f7 100644
 --- a/drivers/media/platform/rockchip/rga/rga.c
 +++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -448,6 +448,7 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+@@ -320,12 +320,12 @@ static struct rga_fmt formats[] = {
  
- static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ #define NUM_FORMATS ARRAY_SIZE(formats)
+ 
+-static struct rga_fmt *rga_fmt_find(struct v4l2_format *f)
++static struct rga_fmt *rga_fmt_find(u32 pixelformat)
  {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
- 	struct rga_ctx *ctx = prv;
- 	struct vb2_queue *vq;
- 	struct rga_frame *frm;
-@@ -459,47 +460,49 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	if (IS_ERR(frm))
- 		return PTR_ERR(frm);
+ 	unsigned int i;
  
--	f->fmt.pix.width = frm->width;
--	f->fmt.pix.height = frm->height;
--	f->fmt.pix.field = V4L2_FIELD_NONE;
--	f->fmt.pix.pixelformat = frm->fmt->fourcc;
--	f->fmt.pix.bytesperline = frm->stride;
--	f->fmt.pix.sizeimage = frm->size;
--	f->fmt.pix.colorspace = frm->colorspace;
-+	pix_fmt->width = frm->width;
-+	pix_fmt->height = frm->height;
-+	pix_fmt->field = V4L2_FIELD_NONE;
-+	pix_fmt->pixelformat = frm->fmt->fourcc;
-+	pix_fmt->bytesperline = frm->stride;
-+	pix_fmt->sizeimage = frm->size;
-+	pix_fmt->colorspace = frm->colorspace;
- 
- 	return 0;
- }
- 
- static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	for (i = 0; i < NUM_FORMATS; i++) {
+-		if (formats[i].fourcc == f->fmt.pix.pixelformat)
++		if (formats[i].fourcc == pixelformat)
+ 			return &formats[i];
+ 	}
+ 	return NULL;
+@@ -474,11 +474,11 @@ static int vidioc_try_fmt(struct file *file, void *prv, struct v4l2_format *f)
  {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
  	struct rga_fmt *fmt;
  
- 	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
- 	if (!fmt)
+-	fmt = rga_fmt_find(f);
+-	if (!fmt) {
++	fmt = rga_fmt_find(f->fmt.pix.pixelformat);
++	if (!fmt)
  		fmt = &formats[0];
+-		f->fmt.pix.pixelformat = fmt->fourcc;
+-	}
++
++	f->fmt.pix.pixelformat = fmt->fourcc;
  
--	f->fmt.pix.pixelformat = fmt->fourcc;
-+	pix_fmt->pixelformat = fmt->fourcc;
+ 	f->fmt.pix.field = V4L2_FIELD_NONE;
  
--	f->fmt.pix.field = V4L2_FIELD_NONE;
-+	pix_fmt->field = V4L2_FIELD_NONE;
- 
--	f->fmt.pix.width = clamp(f->fmt.pix.width,
--				 (u32)MIN_WIDTH, (u32)MAX_WIDTH);
--	f->fmt.pix.height = clamp(f->fmt.pix.height,
--				  (u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
-+	pix_fmt->width = clamp(pix_fmt->width,
-+			       (u32)MIN_WIDTH, (u32)MAX_WIDTH);
-+	pix_fmt->height = clamp(pix_fmt->height,
-+				(u32)MIN_HEIGHT, (u32)MAX_HEIGHT);
- 
- 	if (fmt->hw_format >= RGA_COLOR_FMT_YUV422SP)
--		f->fmt.pix.bytesperline = f->fmt.pix.width;
-+		pix_fmt->bytesperline = pix_fmt->width;
- 	else
--		f->fmt.pix.bytesperline = (f->fmt.pix.width * fmt->depth) >> 3;
-+		pix_fmt->bytesperline = (pix_fmt->width * fmt->depth) >> 3;
- 
--	f->fmt.pix.sizeimage =
--		f->fmt.pix.height * (f->fmt.pix.width * fmt->depth) >> 3;
-+	pix_fmt->sizeimage =
-+		pix_fmt->height * (pix_fmt->width * fmt->depth) >> 3;
- 
- 	return 0;
- }
- 
- static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
-+	struct v4l2_pix_format *pix_fmt = &f->fmt.pix;
- 	struct rga_ctx *ctx = prv;
+@@ -504,7 +504,6 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
  	struct rockchip_rga *rga = ctx->rga;
  	struct vb2_queue *vq;
-@@ -520,12 +523,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ 	struct rga_frame *frm;
+-	struct rga_fmt *fmt;
+ 	int ret = 0;
+ 
+ 	/* Adjust all values accordingly to the hardware capabilities
+@@ -521,13 +520,10 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
  	frm = rga_get_frame(ctx, f->type);
  	if (IS_ERR(frm))
  		return PTR_ERR(frm);
--	frm->width = f->fmt.pix.width;
--	frm->height = f->fmt.pix.height;
--	frm->size = f->fmt.pix.sizeimage;
--	frm->fmt = rga_fmt_find(f->fmt.pix.pixelformat);
--	frm->stride = f->fmt.pix.bytesperline;
--	frm->colorspace = f->fmt.pix.colorspace;
-+	frm->width = pix_fmt->width;
-+	frm->height = pix_fmt->height;
-+	frm->size = pix_fmt->sizeimage;
-+	frm->fmt = rga_fmt_find(pix_fmt->pixelformat);
-+	frm->stride = pix_fmt->bytesperline;
-+	frm->colorspace = pix_fmt->colorspace;
- 
- 	/* Reset crop settings */
- 	frm->crop.left = 0;
-@@ -533,6 +536,12 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	frm->crop.width = frm->width;
- 	frm->crop.height = frm->height;
- 
-+	v4l2_dbg(debug, 1, &rga->v4l2_dev,
-+		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
-+		  V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
-+		  &frm->fmt->fourcc, frm->width, frm->height,
-+		  frm->stride, frm->size);
-+
- 	return 0;
- }
+-	fmt = rga_fmt_find(f);
+-	if (!fmt)
+-		return -EINVAL;
+ 	frm->width = f->fmt.pix.width;
+ 	frm->height = f->fmt.pix.height;
+ 	frm->size = f->fmt.pix.sizeimage;
+-	frm->fmt = fmt;
++	frm->fmt = rga_fmt_find(f->fmt.pix.pixelformat);
+ 	frm->stride = f->fmt.pix.bytesperline;
+ 	frm->colorspace = f->fmt.pix.colorspace;
  
 
 -- 
