@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49131CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 12:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 086AFCDB47E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 12:21:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BwRl8lNYRYloRx7annZNqSLp49eB9NzbX38w91oo1zA=; b=sSQyAxkvXCD1eN
-	ngWjxYlRTVTQcw8YDQDRFl1XlNw5JEfoUL/ZktzbPRUWMDNGmV5Z0N3LBQzjxZ4oS2vdPjrklDli8
-	6U5rphskpSAY8FleR6vKKkgUdg1ALZWA9Y6AYe+eVYK738J+58j/9LABfrjUbwsvM8YFl5aQ7Fh2y
-	jtjyQzvmN5IOjAp1ibMWyGvoftxAoECh7HVz2u/HHa2+T8MKfGYRJXFM9+D9hOnd1hChA9AWxZqlX
-	yDTzWl33mYTBaBMumDgaiULcrzKLUnySTVmN7IdEnEBUmHpp5OP/Mx7DS5BKCY+hJeZJG1cCOKFvz
-	0IfjKwZsEOrxThsDaHww==;
+	List-Owner; bh=roDQTz/NIwlWso+c6m50Vr4Mb0/pqlS2ZWJnGzULr7s=; b=uDzyFgj8b3cKBD
+	zCSCRAgmH2bs6G3PRKu1BuMxOUOgfTmrjKrRhgF9shJs40DfbKBos+DrHh/DERT431HRqKCF3cXpD
+	EF4OCf1Oq2/VkaT9VcDBs4xvP7Ovd178yYtT7uSDXHfc7C795TzJeo9Gh4Rpo3RrSXMemAOWWsWm/
+	NRS4H5O+kF3du4C33gB93sBh3WEv96WEb6kVAE1GciNvo/zy19U+Y8F6emmhBBKKvUYGYn/CR+rvW
+	/xpXZtIa3cNJ7GYPKuzB+XeWNltTYE+Ad2hrx8C6tQV9TwllsFP+9zmKq81fE85po3lgj3bXx9rU6
+	qXbv3v8La3NtgC+mM3dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrHA7-003PGn-0S;
-	Fri, 13 Oct 2023 12:21:03 +0000
-Received: from m15.mail.163.com ([45.254.50.220])
+	id 1qrHAF-003PII-2s;
+	Fri, 13 Oct 2023 12:21:11 +0000
+Received: from m12.mail.163.com ([220.181.12.216])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrHA4-003PFg-0h
+	id 1qrHAC-003PH4-0t
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Oct 2023 12:21:02 +0000
+	Fri, 13 Oct 2023 12:21:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=s8yb1
-	2Hf+rhU0ZtbvrV2FJ0jB5SD/SdydsH2waGwU/I=; b=K2ku7Y0oVqh2E+bvtrsUf
-	36tO3qIHimTwDOD+too7b7Y2XQ6n0Wmp1PVNhOTffqYuB+6hnDaymq3rDT5IipwU
-	gkUjI8dUkSkttiocOSB/CpI9y9y0AZrp/BBZW9Np456s7s4FvrY0BCSBaawdpa2t
-	cVRmTqbkhkmpUg3EiYg21M=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=yhEQj
+	W9QxKi+Z9UeIXry2hAaUPbAMdnPcufJwdhVnYo=; b=mkzEbJAYSW5e7+Seot+34
+	lud88N3qjpkP7YZ//djX8VpF0bN7QvnWQDe6FeQCzBz4ynhY74cAbutVGvUKpEGR
+	K25N+L2yqPGsDHeM87HyrNgiCy9ZylC8B/CxGqPavnB8hQR8KmBD/n24ywLLCN7e
+	JLCqUixU0FSL3pRlH0tu5Y=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g2-4 (Coremail) with SMTP id _____wD3X3cWNillrunEAQ--.20789S2;
-	Fri, 13 Oct 2023 20:20:41 +0800 (CST)
+	by zwqz-smtp-mta-g4-0 (Coremail) with SMTP id _____wDnj9YkNill4B2_AQ--.8050S2;
+	Fri, 13 Oct 2023 20:20:55 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
@@ -45,23 +45,23 @@ Cc: s.hauer@pengutronix.de,
 	sebastian.reichel@collabora.com,
 	sjoerd.simons@collabora.com,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 1/4] drm/rockchip: remove unused struct in vop2
-Date: Fri, 13 Oct 2023 20:20:36 +0800
-Message-Id: <20231013122036.1594090-1-andyshrk@163.com>
+Subject: [PATCH v2 2/4] drm/rockchip: remove NR_LAYERS macro on vop2
+Date: Fri, 13 Oct 2023 20:20:51 +0800
+Message-Id: <20231013122051.1594164-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231013122001.1594009-1-andyshrk@163.com>
 References: <20231013122001.1594009-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3X3cWNillrunEAQ--.20789S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7trWUKrW3Kw4fArWDWrWrAFb_yoW8Zr4rpa
-	98A34jvrWxKrWjgr1DJF4Dur4SywnFkay2kFs7G3ZIqFyIgr1DA3W5Kr1rArsxZF129rW7
-	trnrt34UJF429r7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jk9N3UUUUU=
+X-CM-TRANSID: _____wDnj9YkNill4B2_AQ--.8050S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7XF45CryfWw43WryDJw18Krg_yoWkWwcE93
+	W7urnxGr4kWrn5Aw4DCrWfGF97KanF9F18Za10qas8ZF1kJ347t3s2q3y7WFy5AFnrWFnF
+	g3Wqgry3CFn3GjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU058n5UUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiTB4IXmI0bglZGAABs1
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiOwkIXmC5n1jCzAAAs0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_052100_726730_A6F541EE 
-X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-CacheID: sfid-20231013_052108_678974_4453E021 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,61 +81,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-These structs are undefined and un used.
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-
+There are 8 layers on rk3588, so a fix defined macro is
+not appropriate.
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
-
 ---
 
 (no changes since v1)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 --
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 3 ---
- 2 files changed, 5 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 583df4d22f7e..3c524ca23d53 100644
+index 3c524ca23d53..57c05c6b246c 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -160,7 +160,6 @@ struct vop2_video_port {
- 	struct vop2 *vop2;
- 	struct clk *dclk;
- 	unsigned int id;
--	const struct vop2_video_port_regs *regs;
- 	const struct vop2_video_port_data *data;
+@@ -2251,8 +2251,6 @@ static struct vop2_video_port *find_vp_without_primary(struct vop2 *vop2)
+ 	return NULL;
+ }
  
- 	struct completion dsp_hold_completion;
-@@ -2274,7 +2273,6 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 		vp = &vop2->vps[i];
- 		vp->vop2 = vop2;
- 		vp->id = vp_data->id;
--		vp->regs = vp_data->regs;
- 		vp->data = vp_data;
+-#define NR_LAYERS 6
+-
+ static int vop2_create_crtcs(struct vop2 *vop2)
+ {
+ 	const struct vop2_data *vop2_data = vop2->data;
+@@ -2371,7 +2369,7 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 		struct vop2_video_port *vp = &vop2->vps[i];
  
- 		snprintf(dclk_name, sizeof(dclk_name), "dclk_vp%d", vp->id);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index f1234a151130..56fd31e05238 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -134,16 +134,13 @@ struct vop2_video_port_data {
- 	u16 cubic_lut_len;
- 	struct vop_rect max_output;
- 	const u8 pre_scan_max_dly[4];
--	const struct vop2_video_port_regs *regs;
- 	unsigned int offset;
- };
+ 		if (vp->crtc.port)
+-			vp->nlayers = NR_LAYERS / nvps;
++			vp->nlayers = vop2_data->win_size / nvps;
+ 	}
  
- struct vop2_data {
- 	u8 nr_vps;
--	const struct vop2_ctrl *ctrl;
- 	const struct vop2_win_data *win;
- 	const struct vop2_video_port_data *vp;
--	const struct vop_csc_table *csc_table;
- 	struct vop_rect max_input;
- 	struct vop_rect max_output;
- 
+ 	return 0;
 -- 
 2.34.1
 
