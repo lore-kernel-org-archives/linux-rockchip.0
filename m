@@ -4,39 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BCDCDB47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 355EFCDB482
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Oct 2023 11:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2iX1tih/Vrd2VYThyUFGIIiUrMGWfvC9Q/r7eBG/PVY=; b=4mRIsFoTYhonD8
-	wBJc7dJCsD5Cdhbqe8lq+OFuKEP9SZ23IIGg2T8SqS6oEmarBjp5h5fw36S6iOzBBHGzjo9MYH3Ye
-	Sv7hxVGUhXA1e98a3xLMCIG9wcJuFbd75FfRcreTOcD6wKcYbO/MRFX4B/cyjjMWHSUBddYbFgsCV
-	Dsp031LmYbdH4i5umsxBQa0cUvzevrbyo/Riw5MoKtyBNFBfiYKE51cOPPGht6QpSgb8+w6gkgy/K
-	vL1ojgFn0vD8mhRtnMDLEDx4NibM03gzyOXCK5GHiPRmYJxI7KXfkA4+ouPdUxWR5qdfCv0uoLx1s
-	yxY/3x8MV4kXpS8Hz5OA==;
+	List-Owner; bh=I/r4xo8Fy6Ntaocwfcv0R7Xj4xvXG19+pZJXXtnKacg=; b=z8nfYGMz6ZhKaq
+	rPi4lqcfCwCOOz8j0cM73kSN5c+haeUMl5ACHWkjezCWhixKbj0rNRAs0rZAf6SKKC5HQoO1IntXD
+	6jYHZF4URUd05i8/l9x74djf9WXe6vXdn6BQ7nHKOtFwdnGxb5htq2S2JUHt9rP0jG7ugPf8ZDPJv
+	UQZITTbPn2UucmBkcZAYgEKdlITCkGQsIjiXo/i06opW9tpkx9W5EbGlzj/2tCW3Mp92VRCPD4Z6r
+	RxUW7f4/i67bdwgS9D2NYDCp5/LJezhYJKCNSkUYWBt0AhP/3IavTVoJNP9UiJlOxR7FMgegUPFKS
+	SO/gsvZlxbuxnv0N9vVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuq-003FwM-1n;
-	Fri, 13 Oct 2023 11:01:12 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qrFuw-003G1q-1x;
+	Fri, 13 Oct 2023 11:01:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qrFuh-003FlN-2n
+	id 1qrFup-003Fu2-2E
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 13 Oct 2023 11:01:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=3uiUsBTMFA3PHRL1uvkc+WN3z0Y1T4XdD305eEP70GE=; b=okbSrQFfKL9Xuf2QAKuGA0x+K2
+	MWKDLmulOKXevr3MN9GJq23Os7FWHc9PhC1coWo/rfXPe5VUutNUekIs7W9Y0In72XfIWfHCeMATw
+	w4eN/I3zcmHQwpNUtR6GuswJr7VQxechD410KfVUjaLfGzln/1QcOt4SfFj8JUmk2C6gtza/ltjw4
+	FlXYMiRGmuVrZaxamMS+sWhI0mAqshV0NekvFagMRN04N3ejFuCxvWZeEVB1aftXQw3NM9+Z8OKiu
+	aQ97m27tCcYlR/MVwr1/WiG+DYKp2Fx/pp8TkZAEJX/P6X/hvhPow3jovYqz6YwdJ6zmVD9yJR8B1
+	a9Mu+j9Q==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qrFug-002hWH-2h
 	for linux-rockchip@lists.infradead.org;
 	Fri, 13 Oct 2023 11:01:09 +0000
 Received: from dude05.red.stw.pengutronix.de ([2a0a:edc0:0:1101:1d::54])
 	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <m.tretter@pengutronix.de>)
-	id 1qrFuU-0006xJ-KE; Fri, 13 Oct 2023 13:00:50 +0200
+	id 1qrFuU-0006xJ-M2; Fri, 13 Oct 2023 13:00:50 +0200
 From: Michael Tretter <m.tretter@pengutronix.de>
-Date: Fri, 13 Oct 2023 13:00:33 +0200
-Subject: [PATCH v2 12/13] media: rockchip: rga: rework buffer handling for
- multi-planar formats
+Date: Fri, 13 Oct 2023 13:00:34 +0200
+Subject: [PATCH v2 13/13] media: rockchip: rga: add NV12M support
 MIME-Version: 1.0
-Message-Id: <20230914-rockchip-rga-multiplanar-v2-12-bbfa6abf8bbf@pengutronix.de>
+Message-Id: <20230914-rockchip-rga-multiplanar-v2-13-bbfa6abf8bbf@pengutronix.de>
 References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 To: Jacob Chen <jacob-chen@iotwrt.com>, 
@@ -55,8 +69,9 @@ X-SA-Exim-Mail-From: m.tretter@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231013_040103_944913_EB15EFE1 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20231013_120104_792635_F97CFDE8 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,173 +88,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Multi-planar formats may have multiple planes that must be handled and
-correctly mapped into a continuous buffer for the RGA by using the DMA
-descriptors.
-
-The plane offsets in the continuous mapping may now start at page
-boundaries and the previous calculation based on the frame sizes is only
-valid for planar buffers in a single memory. Therefore, the offsets must
-be detected and set while creating the mapping.
+Add support for the multi-planar variants of NV12. The RGA is now able
+to exchange DMABUFs with other devices that only support multi-planar
+NV12, for example the Hantro JPEG encoder.
 
 Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
 ---
-Changes in v2:
-- Add size check for descriptor table when mapping video buffer
+Changes in v2: None
 ---
- drivers/media/platform/rockchip/rga/rga-buf.c | 61 ++++++++++++++++++++++-----
- drivers/media/platform/rockchip/rga/rga.c     |  7 +++
- drivers/media/platform/rockchip/rga/rga.h     |  1 +
- 3 files changed, 58 insertions(+), 11 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index d6774a844d9b..662c81b6d0b5 100644
---- a/drivers/media/platform/rockchip/rga/rga-buf.c
-+++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -7,6 +7,7 @@
- #include <linux/pm_runtime.h>
- #include <linux/scatterlist.h>
- 
-+#include <media/v4l2-common.h>
- #include <media/v4l2-device.h>
- #include <media/v4l2-ioctl.h>
- #include <media/v4l2-mem2mem.h>
-@@ -16,7 +17,8 @@
- #include "rga-hw.h"
- #include "rga.h"
- 
--static size_t fill_descriptors(struct rga_dma_desc *desc, struct sg_table *sgt)
-+static ssize_t fill_descriptors(struct rga_dma_desc *desc, size_t max_desc,
-+				struct sg_table *sgt)
- {
- 	struct sg_dma_page_iter iter;
- 	struct rga_dma_desc *tmp = desc;
-@@ -24,6 +26,8 @@ static size_t fill_descriptors(struct rga_dma_desc *desc, struct sg_table *sgt)
- 	dma_addr_t addr;
- 
- 	for_each_sgtable_dma_page(sgt, &iter, 0) {
-+		if (n_desc > max_desc)
-+			return -EINVAL;
- 		addr = sg_page_iter_dma_address(&iter);
- 		tmp->addr = lower_32_bits(addr);
- 		tmp++;
-@@ -40,15 +44,29 @@ rga_queue_setup(struct vb2_queue *vq,
- {
- 	struct rga_ctx *ctx = vb2_get_drv_priv(vq);
- 	struct rga_frame *f = rga_get_frame(ctx, vq->type);
-+	const struct v4l2_pix_format_mplane *pix_fmt;
-+	int i;
- 
- 	if (IS_ERR(f))
- 		return PTR_ERR(f);
- 
--	if (*nplanes)
--		return sizes[0] < f->size ? -EINVAL : 0;
-+	pix_fmt = &f->pix;
- 
--	sizes[0] = f->size;
--	*nplanes = 1;
-+	if (*nplanes) {
-+		if (*nplanes != pix_fmt->num_planes)
-+			return -EINVAL;
-+
-+		for (i = 0; i < pix_fmt->num_planes; i++)
-+			if (sizes[i] < pix_fmt->plane_fmt[i].sizeimage)
-+				return -EINVAL;
-+
-+		return 0;
-+	}
-+
-+	*nplanes = pix_fmt->num_planes;
-+
-+	for (i = 0; i < pix_fmt->num_planes; i++)
-+		sizes[i] = pix_fmt->plane_fmt[i].sizeimage;
- 
- 	return 0;
- }
-@@ -92,18 +110,39 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
- 	struct rga_vb_buffer *rbuf = vb_to_rga(vbuf);
- 	struct rga_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
- 	struct rga_frame *f = rga_get_frame(ctx, vb->vb2_queue->type);
-+	ssize_t n_desc = 0;
-+	size_t curr_desc = 0;
-+	int i;
-+	const struct v4l2_format_info *info;
-+	unsigned int offsets[VIDEO_MAX_PLANES];
- 
- 	if (IS_ERR(f))
- 		return PTR_ERR(f);
- 
--	vb2_set_plane_payload(vb, 0, f->size);
-+	for (i = 0; i < vb->num_planes; i++) {
-+		vb2_set_plane_payload(vb, i, f->pix.plane_fmt[i].sizeimage);
-+
-+		/* Create local MMU table for RGA */
-+		n_desc = fill_descriptors(&rbuf->dma_desc[curr_desc],
-+					  rbuf->n_desc - curr_desc,
-+					  vb2_dma_sg_plane_desc(vb, i));
-+		if (n_desc < 0) {
-+			v4l2_err(&ctx->rga->v4l2_dev,
-+				 "Failed to map video buffer to RGA\n");
-+			return n_desc;
-+		}
-+		offsets[i] = curr_desc << PAGE_SHIFT;
-+		curr_desc += n_desc;
-+	}
- 
--	/* Create local MMU table for RGA */
--	fill_descriptors(rbuf->dma_desc, vb2_dma_sg_plane_desc(vb, 0));
-+	/* Fill the remaining planes */
-+	info = v4l2_format_info(f->fmt->fourcc);
-+	for (i = info->mem_planes; i < info->comp_planes; i++)
-+		offsets[i] = get_plane_offset(f, i);
- 
--	rbuf->offset.y_off = get_plane_offset(f, 0);
--	rbuf->offset.u_off = get_plane_offset(f, 1);
--	rbuf->offset.v_off = get_plane_offset(f, 2);
-+	rbuf->offset.y_off = offsets[0];
-+	rbuf->offset.u_off = offsets[1];
-+	rbuf->offset.v_off = offsets[2];
- 
- 	return 0;
- }
 diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index f549966c3649..57d845c57d7d 100644
+index 57d845c57d7d..00fdfa9e10bc 100644
 --- a/drivers/media/platform/rockchip/rga/rga.c
 +++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -365,6 +365,11 @@ static int rga_open(struct file *file)
- 	ctx->in = def_frame;
- 	ctx->out = def_frame;
- 
-+	v4l2_fill_pixfmt_mp(&ctx->in.pix,
-+			    ctx->in.fmt->fourcc, ctx->out.width, ctx->out.height);
-+	v4l2_fill_pixfmt_mp(&ctx->out.pix,
-+			    ctx->out.fmt->fourcc, ctx->out.width, ctx->out.height);
-+
- 	if (mutex_lock_interruptible(&rga->mutex)) {
- 		kfree(ctx);
- 		return -ERESTARTSYS;
-@@ -524,6 +529,8 @@ static int vidioc_s_fmt(struct file *file, void *prv, struct v4l2_format *f)
- 	frm->crop.width = frm->width;
- 	frm->crop.height = frm->height;
- 
-+	frm->pix = *pix_fmt;
-+
- 	v4l2_dbg(debug, 1, &rga->v4l2_dev,
- 		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
- 		  V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
-diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
-index f3953a07d9e7..3502dff6055c 100644
---- a/drivers/media/platform/rockchip/rga/rga.h
-+++ b/drivers/media/platform/rockchip/rga/rga.h
-@@ -34,6 +34,7 @@ struct rga_frame {
- 
- 	/* Image format */
- 	struct rga_fmt *fmt;
-+	struct v4l2_pix_format_mplane pix;
- 
- 	/* Variables that can calculated once and reused */
- 	u32 stride;
+@@ -280,6 +280,15 @@ static struct rga_fmt formats[] = {
+ 		.y_div = 2,
+ 		.x_div = 1,
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_NV12M,
++		.color_swap = RGA_COLOR_NONE_SWAP,
++		.hw_format = RGA_COLOR_FMT_YUV420SP,
++		.depth = 12,
++		.uv_factor = 4,
++		.y_div = 2,
++		.x_div = 1,
++	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV16,
+ 		.color_swap = RGA_COLOR_NONE_SWAP,
 
 -- 
 2.39.2
