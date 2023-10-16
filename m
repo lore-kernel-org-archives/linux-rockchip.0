@@ -4,44 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E978CDB465
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 21:28:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F570CDB465
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 21:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dDiooNrOj41K/OJyoz5M1boli3dT9tnO+RF/3Xp8j6g=; b=ryZtFp5NOh3/VC
-	NJsr9KzBrCtMmtwvQJBcZt8hT8S6AaBfLNl6ibvnzvwCjw91pTl71+faBzLsUrfxXdh5/GZ9My53A
-	5wSMH26UVf16THjdmYqsowlEDkM9F0jqnAtlc400qtUxrTghvRJVKYDSQhtJBzrTxUZHV/TJBPmJL
-	/TMG60D+FrvWH2i14Kwill4J+OVXXrXscan3Orq47hk4oj0+rmP0pSMhV77sgLTPJ+bwqKuhRBNuB
-	gN1R0GwFS5Xwxok37XlQllJdmUuCguIT7nChmGKJxix7KHnyhLvScN2iVklcyL6EzJ+nHeZ3/24Jz
-	IdYBahmeW4w7damalsjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=paEsC2/Bs3RQoRJeyTr5CLmXKln4qK5FczxRFtlzS4A=; b=Q12vQzHdgKIb63
+	pcdp5e5nqgWvnxJeBdgmaiAzDIQsJkl213eT7WugLyKaIr9PB2SRWfeVmz1kzSKirHxc0WIoSfRJx
+	usieJ2ZFf5RPVFutL+9LkWD4xMPRHyR3yD5vwWqrZckfDYhJ8Gd6rI/6Y616tNdGUGRmUDd6B2f+R
+	v+wlOxGixtHtmVK0PAdkIkWDA3LLBgYnQxp8U+wsjNAceoyitl6NtAuxGbavQWBXflq3pvBU8i0Q2
+	UsNQpBiXuicztz91NWxTSFyT4hK9eaY3e21Ds/oorhaIwTYrx6tQ1q/0UmLjv+GoWOyIH66wkxPhc
+	RRRO7evi2JVMn/EUYsbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsV8G-00AZv9-1c;
-	Mon, 16 Oct 2023 21:28:12 +0000
+	id 1qsV8x-00Aa14-1a;
+	Mon, 16 Oct 2023 21:28:55 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsV8D-00AZuZ-26;
-	Mon, 16 Oct 2023 21:28:10 +0000
+	id 1qsV8v-00Aa0e-0g;
+	Mon, 16 Oct 2023 21:28:54 +0000
 Received: from [194.95.143.137] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qsV8A-000160-Ez; Mon, 16 Oct 2023 23:28:06 +0200
+	id 1qsV8s-00016V-Vc; Mon, 16 Oct 2023 23:28:51 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts32 changes for 6.7
-Date: Mon, 16 Oct 2023 23:28:05 +0200
-Message-ID: <3709138.MHq7AAxBmi@phil>
+Subject: Re: [GIT PULL] Rockchip dts32 changes for 6.6 #1
+Date: Mon, 16 Oct 2023 23:28:50 +0200
+Message-ID: <1839937.atdPhlSkOF@phil>
+In-Reply-To: <2167992.Mh6RI2rZIc@phil>
+References: <2167992.Mh6RI2rZIc@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_142809_724659_E93318AB 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20231016_142853_253013_864AD6BC 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,46 +60,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 0bb80ecc33a8fb5a682236443c1e740d5c917d1d:
+Am Montag, 16. Oktober 2023, 23:24:15 CEST schrieb Heiko Stuebner:
 
-  Linux 6.6-rc1 (2023-09-10 16:28:41 -0700)
+please ignore this mail. The numbering is wrong and I've send
+a new correct pull request.
 
-are available in the Git repository at:
+Thanks
+Heiko
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.7-rockchip-dts32-1
+> The following changes since commit 0bb80ecc33a8fb5a682236443c1e740d5c917d1d:
+> 
+>   Linux 6.6-rc1 (2023-09-10 16:28:41 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.7-rockchip-dts32-1
+> 
+> for you to fetch changes up to c96b13d7c0e494e1072648301e61e13a2a85a362:
+> 
+>   ARM: dts: rockchip: Switch to operating-points-v2 for RK3128's CPU (2023-10-04 23:27:04 +0200)
+> 
+> ----------------------------------------------------------------
+> Someone resurrected a rk3128 board and provided actual SMP support
+> for it. Of course firmware for that SoC does not come with TF-A so
+> it's the old-style SMP the older arm32 Rockchip SoCs use.
+> 
+> And additionally the rv1126 got pwm support.
+> 
+> ----------------------------------------------------------------
+> Alex Bee (4):
+>       ARM: dts: rockchip: Add SRAM node for RK3128
+>       ARM: dts: rockchip: Add CPU resets for RK3128
+>       ARM: dts: rockchip: Enable SMP bring-up for RK3128
+>       ARM: dts: rockchip: Switch to operating-points-v2 for RK3128's CPU
+> 
+> Jagan Teki (6):
+>       dt-bindings: pwm: rockchip: Document rv1126-pwm
+>       ARM: dts: rockchip: Add pwm2m0 pins to rv1126
+>       ARM: dts: rockchip: Add pwm2 node to rv1126
+>       ARM: dts: rockchip: Add pwm11m0 pins to rv1126
+>       ARM: dts: rockchip: Add pwm11 node to rv1126
+>       ARM: dts: rockchip: Enable pwm fan for edgeble-neu2
+> 
+>  .../devicetree/bindings/pwm/pwm-rockchip.yaml      |  1 +
+>  arch/arm/boot/dts/rockchip/rk3128.dtsi             | 61 ++++++++++++++++++++--
+>  .../boot/dts/rockchip/rv1126-edgeble-neu2-io.dts   |  4 ++
+>  arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     | 16 ++++++
+>  arch/arm/boot/dts/rockchip/rv1126.dtsi             | 22 ++++++++
+>  5 files changed, 100 insertions(+), 4 deletions(-)
+> 
 
-for you to fetch changes up to c96b13d7c0e494e1072648301e61e13a2a85a362:
-
-  ARM: dts: rockchip: Switch to operating-points-v2 for RK3128's CPU (2023-10-04 23:27:04 +0200)
-
-----------------------------------------------------------------
-Someone resurrected a rk3128 board and provided actual SMP support
-for it. Of course firmware for that SoC does not come with TF-A so
-it's the old-style SMP the older arm32 Rockchip SoCs use.
-
-And additionally the rv1126 got pwm support.
-
-----------------------------------------------------------------
-Alex Bee (4):
-      ARM: dts: rockchip: Add SRAM node for RK3128
-      ARM: dts: rockchip: Add CPU resets for RK3128
-      ARM: dts: rockchip: Enable SMP bring-up for RK3128
-      ARM: dts: rockchip: Switch to operating-points-v2 for RK3128's CPU
-
-Jagan Teki (6):
-      dt-bindings: pwm: rockchip: Document rv1126-pwm
-      ARM: dts: rockchip: Add pwm2m0 pins to rv1126
-      ARM: dts: rockchip: Add pwm2 node to rv1126
-      ARM: dts: rockchip: Add pwm11m0 pins to rv1126
-      ARM: dts: rockchip: Add pwm11 node to rv1126
-      ARM: dts: rockchip: Enable pwm fan for edgeble-neu2
-
- .../devicetree/bindings/pwm/pwm-rockchip.yaml      |  1 +
- arch/arm/boot/dts/rockchip/rk3128.dtsi             | 61 ++++++++++++++++++++--
- .../boot/dts/rockchip/rv1126-edgeble-neu2-io.dts   |  4 ++
- arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     | 16 ++++++
- arch/arm/boot/dts/rockchip/rv1126.dtsi             | 22 ++++++++
- 5 files changed, 100 insertions(+), 4 deletions(-)
 
 
 
