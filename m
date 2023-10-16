@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A20F3CDB482
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 11:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A74FCDB482
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 12:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YqczALHeDGJdjjbroLZivT1lH9Ny66UD00ivNb270vk=; b=rGqS/rqpYvCWic
-	CLRotmjOBSaJTxpC2NnkuUMRGEQz9cwnc0LUWBVOArOLOorScZv24fFAdKa4Dg2N7Jam+nWIm7sZ1
-	MNk7Nm/yfA67jOYmtCeC1m8PNCD/UrD3Xl163bte5vsDA28aqYU6PTRhaa9txAbnxNf64kisiyQio
-	PJrgfCIfAx0i0u46y5+xZJxcKXs8V2tjsyMdB41M22ilNGPChi+O0KNUVF54Q/vVrHfOTpviKL4k6
-	Q3kq0SGxvBYXvU9D0RujT4h9Pc+Hpq5zRGehzzi8Yoxvx91c2gic9b90QtD3pmdwta1RDi8F482IM
-	/cxMQjSXK8R6dTMi8tUg==;
+	List-Owner; bh=mGEuDKMgtD6Q02roonLbuFKreuyewyBcWpQiUsQsgYY=; b=CJnFyAKJOTapm9
+	1paHYN2rBgA5MGbtMHaf+NP/vB5HksEatQtIX2mGVgjmkFUR2yoWnjrThpjGmCq/EQHR620pQxqpI
+	1n/SpMjD50zmLTFcGS+KZMpIN2aiLy4/jVnQMqCScsP8E9kpBkN9cHGvvrFttLuewimNgjhxFhNhy
+	Sp11PJmzvo3/N5O80I9622G0yVFdJKtVsdKW4ysYa5+f+dnoyHXs+ZK90FrmevVq7xvnggHCghcXH
+	Maz8z7GRG77ibXWnCTKbRhfkMb+VPhoEdpChHDjqN7PvRQz08DqPQgtopMBoiV/Na5SY1hsU3nIWU
+	uUzpRd9lSWO/hNVe7mzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsLs1-009Ul0-07;
-	Mon, 16 Oct 2023 11:34:49 +0000
+	id 1qsMKD-009YH4-35;
+	Mon, 16 Oct 2023 12:03:57 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsLrx-009UkF-0h
+	id 1qsMKB-009YFe-04
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Oct 2023 11:34:46 +0000
+	Mon, 16 Oct 2023 12:03:56 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qsLrv-0006gp-Oq; Mon, 16 Oct 2023 13:34:43 +0200
+	id 1qsMK9-0004KA-HN; Mon, 16 Oct 2023 14:03:53 +0200
 Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qsLru-0024VF-Ap; Mon, 16 Oct 2023 13:34:42 +0200
+	id 1qsMK7-0024Zf-Fz; Mon, 16 Oct 2023 14:03:51 +0200
 Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qsLru-00EjWY-7l; Mon, 16 Oct 2023 13:34:42 +0200
-Date: Mon, 16 Oct 2023 13:34:42 +0200
+	id 1qsMK7-00EjhX-D1; Mon, 16 Oct 2023 14:03:51 +0200
+Date: Mon, 16 Oct 2023 14:03:51 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: Chanwoo Choi <chanwoo@kernel.org>
 Cc: linux-rockchip@lists.infradead.org,
@@ -57,14 +57,15 @@ Cc: linux-rockchip@lists.infradead.org,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v7 10/26] PM / devfreq: rockchip-dfi: Add RK3568 support
-Message-ID: <20231016113442.GZ3359458@pengutronix.de>
+Subject: Re: [PATCH v7 09/26] PM / devfreq: rockchip-dfi: Clean up DDR type
+ register defines
+Message-ID: <20231016120351.GA3359458@pengutronix.de>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
- <20230704093242.583575-11-s.hauer@pengutronix.de>
- <ac224dfe-ff7d-57c7-89ad-f10939975b4d@kernel.org>
+ <20230704093242.583575-10-s.hauer@pengutronix.de>
+ <1eaa8d5b-af6b-71bb-df7a-d438b483f5bb@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ac224dfe-ff7d-57c7-89ad-f10939975b4d@kernel.org>
+In-Reply-To: <1eaa8d5b-af6b-71bb-df7a-d438b483f5bb@kernel.org>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-Accept-Language: de,en
@@ -75,8 +76,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_043445_280507_437530CB 
-X-CRM114-Status: GOOD (  28.05  )
+X-CRM114-CacheID: sfid-20231016_050355_060420_3755DC9A 
+X-CRM114-Status: GOOD (  33.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,70 +94,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 07, 2023 at 03:17:14AM +0900, Chanwoo Choi wrote:
+On Sat, Oct 07, 2023 at 04:11:22AM +0900, Chanwoo Choi wrote:
 > On 23. 7. 4. 18:32, Sascha Hauer wrote:
-> > This adds RK3568 support to the DFI driver.  Only iniitialization
-> > differs from the currently supported RK3399.
+> > Use the HIWORD_UPDATE() define known from other rockchip drivers to
+> > make the defines look less odd to the readers who've seen other
+> > rockchip drivers.
 > > 
+> > The HIWORD registers have their functional bits in the lower 16 bits
+> > whereas the upper 16 bits contain a mask. Only the functional bits that
+> > have the corresponding mask bit set are modified during a write. Although
+> > the register writes look different, the end result should be the same,
+> > at least there's no functional change intended with this patch.
+> > 
+> > Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > > ---
-> >  drivers/devfreq/event/rockchip-dfi.c | 21 +++++++++++++++++++++
-> >  include/soc/rockchip/rk3568_grf.h    | 12 ++++++++++++
-> >  2 files changed, 33 insertions(+)
-> >  create mode 100644 include/soc/rockchip/rk3568_grf.h
+> >  drivers/devfreq/event/rockchip-dfi.c | 33 ++++++++++++++++++----------
+> >  1 file changed, 21 insertions(+), 12 deletions(-)
 > > 
 > > diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> > index 6b3ef97b3be09..261d112580c9e 100644
+> > index 6bccb6fbcfc0c..6b3ef97b3be09 100644
 > > --- a/drivers/devfreq/event/rockchip-dfi.c
 > > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> > @@ -23,6 +23,7 @@
-> >  
-> >  #include <soc/rockchip/rockchip_grf.h>
-> >  #include <soc/rockchip/rk3399_grf.h>
-> > +#include <soc/rockchip/rk3568_grf.h>
+> > @@ -26,15 +26,19 @@
 > >  
 > >  #define DMC_MAX_CHANNELS	2
 > >  
-> > @@ -209,10 +210,30 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
-> >  	return 0;
-> >  };
+> > +#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+> > +
+> >  /* DDRMON_CTRL */
+> >  #define DDRMON_CTRL	0x04
+> > -#define CLR_DDRMON_CTRL	(0x1f0000 << 0)
+> > -#define LPDDR4_EN	(0x10001 << 4)
+> > -#define HARDWARE_EN	(0x10001 << 3)
+> > -#define LPDDR3_EN	(0x10001 << 2)
+> > -#define SOFTWARE_EN	(0x10001 << 1)
+> > -#define SOFTWARE_DIS	(0x10000 << 1)
+> > -#define TIME_CNT_EN	(0x10001 << 0)
+> > +#define DDRMON_CTRL_DDR4		BIT(5)
+> > +#define DDRMON_CTRL_LPDDR4		BIT(4)
+> > +#define DDRMON_CTRL_HARDWARE_EN		BIT(3)
+> > +#define DDRMON_CTRL_LPDDR23		BIT(2)
+> > +#define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
+> > +#define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
+> > +#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_DDR4 | \
+> > +					 DDRMON_CTRL_LPDDR4 | \
+> > +					 DDRMON_CTRL_LPDDR23)
 > >  
-> > +static int rk3568_dfi_init(struct rockchip_dfi *dfi)
-> > +{
-> > +	struct regmap *regmap_pmu = dfi->regmap_pmu;
-> > +	u32 reg2, reg3;
-> > +
-> > +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG2, &reg2);
-> > +	regmap_read(regmap_pmu, RK3568_PMUGRF_OS_REG3, &reg3);
-> > +
-> > +	dfi->ddr_type = FIELD_GET(RK3568_PMUGRF_OS_REG2_DRAMTYPE_INFO, reg2);
+> >  #define DDRMON_CH0_COUNT_NUM		0x28
+> >  #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
+> > @@ -73,16 +77,20 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+> >  	void __iomem *dfi_regs = dfi->regs;
+> >  
+> >  	/* clear DDRMON_CTRL setting */
+> > -	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
+> > +	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
+> > +		       DDRMON_CTRL_HARDWARE_EN), dfi_regs + DDRMON_CTRL);
+> 
+> You mentioned that there are no behavior changes even if the different value is written.
+> But, it looks strange. Could you please explain more detailed about it?
 
-The ddr_type is 5 bits wide. The lower three bits are here.
+Many registers on Rockchip SoCs are effectively only 16 bits wide. The
+lower 16 bits are the functional bits. The upper 16 bits contain a mask
+value. The lower 16 bits are only modified when the coresponding bit in
+the upper 16bits is set.
 
-> > +
-> > +	if (FIELD_GET(RK3568_PMUGRF_OS_REG3_SYSREG_VERSION, reg3) >= 0x3)
-> > +		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
-
-The upper two bits are here, hence we need to shift the value above the
-lower three bits.
+For example writing 0x0001dead has the same effect as writing
+0x00010001: The lower bit is set, the remaining are unchanged due to the
+mask value being 0.
 
 > 
-> There are no reason of why shifting the '3'.
-> Could you add the comment about '3' or add the constant definition '3'?
-
-I don't think adding a constant makes sense. I'll add a comment making
-it more clear what happens.
-
 > 
-> > +
-> > +	dfi->channel_mask = 1;
-> 
-> nitpick.
-> On other rkXXXX_dfi_init, use GENMASK() to initialize 'dfi->channel_mask'.
-> In order to keep the consistency, it is better to use BIT() macro as following:
-> 	dfi->channel_mask = BIT(0);
+> CLR_DDRMON_CTRL is 0x1f0000
 
-Ok, will do.
+This clears the lower 5 bits.
+
+> vs.
+> HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN) = (0 | (BIT(0)|BIT(1)|BIT(3))<<16) = 0xb0000
+
+This clears BIT(0), BIT(1) and BIT(3), so it clears:
+
+DDRMON_CTRL_TIMER_CNT_EN, DDRMON_CTRL_SOFTWARE_EN and DDRMON_CTRL_HARDWARE_EN.
+
+In fact it doesn't clear DDRMON_CTRL_LPDDR23 and DDRMON_CTRL_LPDDR4 like
+the operation with CLR_DDRMON_CTRL does, but the LPDDR type bits are
+handled below:
+
+> 			
+> >  
+> >  	/* set ddr type to dfi */
+> >  	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
+> > -		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
+> > +		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
+> > +			       dfi_regs + DDRMON_CTRL);
+> 
+> LPDDR3_EN	(0x10001 << 2) = 0x40004
+
+This sets BIT(2) aka DDRMON_CTRL_LPDDR23
+
+> vs.
+> HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK) = (BIT(2) | (BIT(5)|BIT(4)|BIT(2))<<16) = 0x340004
+
+This sets BIT(2) and *clears* BIT(4) (DDRMON_CTRL_LPDDR4) and BIT(5)
+(DDRMON_CTRL_DDR4). So effectively we no longer clear BIT(4) in the
+first register access as we do with CLR_DDRMON_CTRL, but in the second
+register access instead.
+
+This also clears BIT(5) which was untouched previously, but this bit had
+never been set by the driver, so should be 0 anyway.
 
 Sascha
 
