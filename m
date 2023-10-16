@@ -4,55 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2527CDB465
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 08:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA2D0CDB465
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Oct 2023 09:29:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g+oVJl8WXm5U6cliU2jbW0AkAicU4DXU490Y/LQoFoc=; b=AbXN8fpdP8VYvp
-	OeekwATpP2Yupz5bDRtyKi1hBRDvg8l20GpY44rqtHnm7LGDTrU+biTRJDa8Ph6pWaT/zY/ErEEV2
-	3Z3+uIBnPRMyUlDfw7Oc87l1RNofoyxdppP+Lm1r2XfsqOw8xx68eJE7f8HY3n1YMRKUIhNDevitp
-	KD8O5msE+sHV6GC90xjxJQzb7NCeGdK2dK8Q2NbdiDWIqsyB0PDTGadWL3nfENZ6K4WO1+k4AIkbL
-	QpUJU9H1ztcOl6DbWOjLAvPLotYD8WJP7EECZFPGsb9XyweMbUGhygdjjK2tCZhAo8okX14cVzqh8
-	IXSFDLgytfN6jzx/SSWw==;
+	List-Owner; bh=mZH9Vg/r+ZTIsqT4vsdf61fbHzeBqy5m22Fu2qd0oP8=; b=d0VM1HX7UWuzOG
+	ZBLFnazEKg66UcpWLjwALP1TnRStL6eTNWViVoeD6zBPr8txr+FY2OdnJzrqagFzZDWVWJKCyCd8F
+	6cb5nVfccfZwihsQqJft0qjsLHCBN9jS5DjTrc9iJqeim5F2wG6rRuU6W1/CiqJR2RPO8ss2wid+y
+	4zsW4guNX1xYiW0FRQwJDvLkQcEz0NneAek1EIzA+MvxPkGBoZWXJsMVFRtvyP6vJCJPT2E8OpsDk
+	qSg99FA+0JurN0WDnKSHU6eaTqYynHoBENTjkNOb7e60tnJTjN4xQenUVl6KbL4iI7ofCjURcdOSL
+	7PU4PouKctEHdv0LYSqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsJ2M-008qdq-2Y;
-	Mon, 16 Oct 2023 08:33:18 +0000
-Received: from honk.sigxcpu.org ([24.134.29.49])
+	id 1qsJuv-0090tr-2L;
+	Mon, 16 Oct 2023 09:29:41 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsJ2H-008qYd-2d
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Oct 2023 08:33:16 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by honk.sigxcpu.org (Postfix) with ESMTP id 87C85FB0F;
-	Mon, 16 Oct 2023 10:33:06 +0200 (CEST)
-Received: from honk.sigxcpu.org ([127.0.0.1])
-	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4a32YQ3nMSmE; Mon, 16 Oct 2023 10:33:03 +0200 (CEST)
-Date: Mon, 16 Oct 2023 10:33:01 +0200
-From: Guido =?iso-8859-1?Q?G=FCnther?= <guido.gunther@puri.sm>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
-	andyshrk@163.com, jagan@edgeble.ai, daniel@ffwll.ch,
-	airlied@gmail.com, sam@ravnborg.org, neil.armstrong@linaro.org,
-	megous@megous.com, kernel@puri.sm, heiko@sntech.de,
-	conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 3/5] drm/panel: st7703: Add Powkiddy RGB30 Panel Support
-Message-ID: <ZSz1PeHhFp0AHtMl@qwark.sigxcpu.org>
-References: <20231013183918.225666-1-macroalpha82@gmail.com>
- <20231013183918.225666-4-macroalpha82@gmail.com>
+	id 1qsJub-0090fE-0D;
+	Mon, 16 Oct 2023 09:29:31 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 117C224000C;
+	Mon, 16 Oct 2023 09:29:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1697448559;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jzhn3DjNSC33v2hlK3z5m8ef6dw4MhEJceWy7BvoV6U=;
+	b=gQZRvonJzMX6QAVE0fEIHrohBTTG8kozKJatzGb3Ka3isRzFqed2Y+zVFkVyv/6MhZztdD
+	h4oYN2hVTLhddyKydQw8TWSJbcxHNc02HnQYDVJa0U5TVxowg5uT1uDGfbKOLXKOtXxZfi
+	11hzDxUdH/3vtSkW+vrThYfsm6qprxcWIjtLv4+W1yXwSZ4E/HQonQ0pOWooa7kx4Eqzhz
+	oOShHGPRapwd0+jYqeXsFCswsE5zVg2VcXjUXy6/2W0lhC5nVeUF2KikMDcfTSieLkSF+E
+	V56rY1aKk7quCobXEcDYfa2wQtOYF0yPJaq+uBgQKa5DrJnIymNiO8djUIT9Ow==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kees Cook <keescook@chromium.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	linux-mtd@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-hardening@vger.kernel.org,
+	llvm@lists.linux.dev
+Subject: Re: [PATCH] mtd: rawnand: rockchip: Use struct_size()
+Date: Mon, 16 Oct 2023 11:29:16 +0200
+Message-Id: <20231016092916.289194-1-miquel.raynal@bootlin.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <481721c2c7fe570b4027dbe231d523961c953d5a.1696146232.git.christophe.jaillet@wanadoo.fr>
+References: 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231013183918.225666-4-macroalpha82@gmail.com>
+X-linux-mtd-patch-notification: thanks
+X-linux-mtd-patch-commit: b'1cfa2f76afb1fdedfbcbd83973a233e60c3e7add'
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231016_013314_182510_08DFFC07 
-X-CRM114-Status: GOOD (  23.19  )
+X-CRM114-CacheID: sfid-20231016_022921_283264_1015AD69 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,138 +88,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
-On Fri, Oct 13, 2023 at 01:39:16PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Sun, 2023-10-01 at 07:44:04 UTC, Christophe JAILLET wrote:
+> Use struct_size() instead of hand writing it.
+> This is less verbose and more robust.
 > 
-> The Powkiddy RGB30 4 inch panel is a 4 inch 720x720 DSI panel used in
-> the Powkiddy RGB30 handheld gaming device. Add support for it.
+> While at it, prepare for the coming implementation by GCC and Clang of the
+> __counted_by attribute. Flexible array members annotated with __counted_by
+> can have their accesses bounds-checked at run-time checking via
+> CONFIG_UBSAN_BOUNDS (for array indexing) and CONFIG_FORTIFY_SOURCE (for
+> strcpy/memcpy-family functions).
 > 
-> TODO: The panel seems to not resume properly from suspend. I've
-> confirmed on the other ST7703 based devices it works correctly.
+> Also remove a useless comment about the position of a flex-array in a
+> structure.
+> 
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> Reviewed-by: Kees Cook <keescook@chromium.org>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-Regarding drm-misc-next has improvements regarding this prompted by the
-PinePhone. Maybe that fixes suspend for you too?
+Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
 
-Cheers,
- -- Guido
-
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  drivers/gpu/drm/panel/panel-sitronix-st7703.c | 89 +++++++++++++++++++
->  1 file changed, 89 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> index 6a3945639535..a9892a4447fb 100644
-> --- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> +++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> @@ -433,6 +433,94 @@ static const struct st7703_panel_desc rg353v2_desc = {
->  	.init_sequence = rg353v2_init_sequence,
->  };
->  
-> +static int rgb30panel_init_sequence(struct st7703 *ctx)
-> +{
-> +	struct mipi_dsi_device *dsi = to_mipi_dsi_device(ctx->dev);
-> +
-> +	/* Init sequence extracted from Powkiddy RGB30 BSP kernel. */
-> +
-> +	/*
-> +	 * For some reason this specific panel must be taken out of sleep
-> +	 * before the full init sequence, or else it will not display.
-> +	 */
-> +	mipi_dsi_dcs_exit_sleep_mode(dsi);
-> +	msleep(250);
-> +
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETEXTC, 0xf1, 0x12, 0x83);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETMIPI, 0x33, 0x81, 0x05, 0xf9,
-> +			       0x0e, 0x0e, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +			       0x00, 0x00, 0x44, 0x25, 0x00, 0x90, 0x0a, 0x00,
-> +			       0x00, 0x01, 0x4f, 0x01, 0x00, 0x00, 0x37);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPOWER_EXT, 0x25, 0x22, 0xf0,
-> +			       0x63);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_UNKNOWN_BF, 0x02, 0x11, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETRGBIF, 0x10, 0x10, 0x28,
-> +			       0x28, 0x03, 0xff, 0x00, 0x00, 0x00, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETSCR, 0x73, 0x73, 0x50, 0x50,
-> +			       0x00, 0x00, 0x12, 0x70, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETVDC, 0x46);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPANEL, 0x0b);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETCYC, 0x80);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETDISP, 0x3c, 0x12, 0x30);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETEQ, 0x07, 0x07, 0x0b, 0x0b,
-> +			       0x03, 0x0b, 0x00, 0x00, 0x00, 0x00, 0xff, 0x00,
-> +			       0xc0, 0x10);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPOWER, 0x36, 0x00, 0x32,
-> +			       0x32, 0x77, 0xf1, 0xcc, 0xcc, 0x77, 0x77, 0x33,
-> +			       0x33);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETBGP, 0x0a, 0x0a);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETVCOM, 0x88, 0x88);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGIP1, 0xc8, 0x10, 0x0a, 0x10,
-> +			       0x0f, 0xa1, 0x80, 0x12, 0x31, 0x23, 0x47, 0x86,
-> +			       0xa1, 0x80, 0x47, 0x08, 0x00, 0x00, 0x0d, 0x00,
-> +			       0x00, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x00, 0x00,
-> +			       0x48, 0x02, 0x8b, 0xaf, 0x46, 0x02, 0x88, 0x88,
-> +			       0x88, 0x88, 0x88, 0x48, 0x13, 0x8b, 0xaf, 0x57,
-> +			       0x13, 0x88, 0x88, 0x88, 0x88, 0x88, 0x00, 0x00,
-> +			       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +			       0x00, 0x00, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGIP2, 0x96, 0x12, 0x01, 0x01,
-> +			       0x01, 0x78, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +			       0x4f, 0x31, 0x8b, 0xa8, 0x31, 0x75, 0x88, 0x88,
-> +			       0x88, 0x88, 0x88, 0x4f, 0x20, 0x8b, 0xa8, 0x20,
-> +			       0x64, 0x88, 0x88, 0x88, 0x88, 0x88, 0x23, 0x00,
-> +			       0x00, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +			       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +			       0x00, 0x00, 0x40, 0xa1, 0x80, 0x00, 0x00, 0x00,
-> +			       0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGAMMA, 0x00, 0x0a, 0x0f,
-> +			       0x29, 0x3b, 0x3f, 0x42, 0x39, 0x06, 0x0d, 0x10,
-> +			       0x13, 0x15, 0x14, 0x15, 0x10, 0x17, 0x00, 0x0a,
-> +			       0x0f, 0x29, 0x3b, 0x3f, 0x42, 0x39, 0x06, 0x0d,
-> +			       0x10, 0x13, 0x15, 0x14, 0x15, 0x10, 0x17);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct drm_display_mode rgb30panel_mode = {
-> +	.hdisplay	= 720,
-> +	.hsync_start	= 720 + 45,
-> +	.hsync_end	= 720 + 45 + 4,
-> +	.htotal		= 720 + 45 + 4 + 45,
-> +	.vdisplay	= 720,
-> +	.vsync_start	= 720 + 15,
-> +	.vsync_end	= 720 + 15 + 3,
-> +	.vtotal		= 720 + 15 + 3 + 11,
-> +	.clock		= 36570,
-> +	.flags		= DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
-> +	.width_mm	= 76,
-> +	.height_mm	= 76,
-> +};
-> +
-> +static const struct st7703_panel_desc rgb30panel_desc = {
-> +	.mode = &rgb30panel_mode,
-> +	.lanes = 4,
-> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-> +		      MIPI_DSI_MODE_NO_EOT_PACKET | MIPI_DSI_MODE_LPM,
-> +	.format = MIPI_DSI_FMT_RGB888,
-> +	.init_sequence = rgb30panel_init_sequence,
-> +};
-> +
->  static int st7703_enable(struct drm_panel *panel)
->  {
->  	struct st7703 *ctx = panel_to_st7703(panel);
-> @@ -694,6 +782,7 @@ static void st7703_remove(struct mipi_dsi_device *dsi)
->  
->  static const struct of_device_id st7703_of_match[] = {
->  	{ .compatible = "anbernic,rg353v-panel-v2", .data = &rg353v2_desc },
-> +	{ .compatible = "powkiddy,rgb30-panel", .data = &rgb30panel_desc },
->  	{ .compatible = "rocktech,jh057n00900", .data = &jh057n00900_panel_desc },
->  	{ .compatible = "xingbangda,xbd599", .data = &xbd599_desc },
->  	{ /* sentinel */ }
-> -- 
-> 2.34.1
-> 
+Miquel
 
 _______________________________________________
 Linux-rockchip mailing list
