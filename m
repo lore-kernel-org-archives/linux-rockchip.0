@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1714DCDB482
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D489CDB484
 	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:53:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,37 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+g6mFBjgZS8TwrfGg/RPVptrSmRJuS1mVhDaBhkLoi0=; b=jjK+4jLKMzYUdh
-	IQjuYgrxB0li0JzZum3I+yKiNQnPubYPRg5c0+xK7fxXkZEkafD3AYtKC+Bc+lQpAz8Lv+DQ5dxZV
-	i3PP/WGWBpE1nrjC5WGpoeV1+vnORKzb1C5MHvDhTPAc8sxnqdXFg2Aer8lVzWxYjzih4jbCv7ZKH
-	+LZnYNcGoKYsRFdvyUq0ULodkfzF5K5srucSMllZkW/zLxRvojcNF/5sV4pBVZF8LwZvuPsDuakBD
-	oebZakW+bX27OM+ZGVYcODNnduJzIQt518iSh2/u6pcYYEGZNv5BiOPvzyf2lCHqv1L/HMpdHuMTA
-	XKlBJN2WzEheGWkQXdGA==;
+	List-Owner; bh=o8CnicFVquf/GN21nSt5SEUu7D74/sRYfc14gQ70KGA=; b=aUi5bH8pTc9GJd
+	25+3KoRuN5YHRLVZi3vjSllJWoE0sJqmXlgYO6GPRpp2p6Ul/g+vjNkcElTE6+Kr7dh8RcAAoKvOx
+	njlUAvyLalHZKl12PUQK9TGI/pZSXasxxpLz2dZkemLmqL3wFLgozAMfBWPJ9KK5cInO0R0v8PMEq
+	5EKQN/pEYFJ+CY+Dh14N1EVrWvDULFccLPQaWFpRC3rVhqHrzO4AeL7YPOkqjzfwsFjSp0z3c3eMJ
+	RsqlaWIZQK+UlkpNNcKzUthaCGO5NkrJClYZOtdxFqIOQ6j0oCM/ZrT/ZW1nBCM1tG3xjuPuWBec7
+	fp/2csSBV6sLH1/mgaSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslRB-00Cdw0-2B;
-	Tue, 17 Oct 2023 14:52:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qslRD-00Cdxo-03;
+	Tue, 17 Oct 2023 14:52:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN5-00CZLi-0f;
+	id 1qslN9-00CZRY-2X;
 	Tue, 17 Oct 2023 14:48:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=hQaDgVchBvfZHzmenfrSC7XPkayVYBFGO4QaGIVF8jA=; b=Ea4GazSiLXd3h0IYTQ2ITazLdM
+	k/kmIXUUYcYe/9ciTQsHqDnJvFZ1D1pEn+jRK9I3pdg0yyPRLKmwOEjO8L2QM2z8rwX5ZdbHw6Y3u
+	w1OJO/9E/ecI92ibb8xnbF1AsxR87IYRDKfOCzS14ASx4D0f5lfuxhBDI2ZDb5NbI/vo5rpoDFRHO
+	r87Hry65vJdGYjxpPKCM5SU7k9+QjIW+nDWRqejYNa3Y87f+T8cVjV8fWIg0Cg63+OCBpNiupobJ8
+	257XYXHPfOl6xvak403epB6NNMQeXhxfC4jgzGHmeFXFvAZHUNr0LNmgGo5OVv+6CfBX09gDGHOki
+	XxsV2wxA==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qslN0-007A6W-0Q;
+	Tue, 17 Oct 2023 14:48:34 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36B5166073C8;
-	Tue, 17 Oct 2023 15:48:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9169B66073BA;
+	Tue, 17 Oct 2023 15:48:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554112;
-	bh=LkM/7EVzkzeCersLJmzLfirkGugiivs+DlFzZEGNCYQ=;
+	s=mail; t=1697554109;
+	bh=deJM8nlQ4g4jiYxn4KEycstS3ftyfWcamvuNgnfVl08=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Uva93Th8vmizpW2031o+HP0QLJaXxT0IRyn7V0PX0kDGtr3Gn3a9DI5UdlaFPXH11
-	 I6SijsoPY5zeUTjf8GzxmiTDXLsOEUREeOFKKEkn3bizzsctWhIeZG7p4TiJhKCm0D
-	 Eur9jpYuH1z6RsJVza4RPxXgqkebnQPy7ZBjKcB3BHqAMlTjOxEVYuXUiBOR+fPjEU
-	 iUq2rZp+B5eRI8Lp1gdWA/HJWWoQXytK72hr32J15V0JImsSabwQa7JR17VLZJ0Hml
-	 J/HbvQGSUDgNmkAOnbBWqj52HgLilvUrr78HhfS8NwQCLQVtWwV2R6blfTL2yAuPMK
-	 G/osVmxYP8ylQ==
+	b=PBFKrFF+nN51eSSFF+Xf4oC06zGnG/a9oFCxdJMzAjqUwEMuWf5L/1UJc+awVuUdn
+	 GHyb797d1pWl+A1tg4MevxQqogXIk4eC7riWIJJ2PpvZNe2iUjAWclKo7/CvZ4Jnbj
+	 SIkC/6+SY10J6lThE9hotjR4zHdMK3aYrLSf0/V0VQcvlRbKNBo6EeOiuCtl8cLDSL
+	 66GgbPpnyoBxNB++oUcAEZClK8OpM4Sa0EzCf9Dkg/Bz5H3dWYJc78ynsK24mA1P7e
+	 OL738HUPV2NqKv/+0oTViaZSJwCi+8SVGSB5LbO74jS3yRXRgRS5qurTundmvoejVE
+	 XKHH4IrwzQqsw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 55/56] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Tue, 17 Oct 2023 16:47:55 +0200
-Message-Id: <20231017144756.34719-56-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 48/56] media: verisilicon: Store chroma and motion vectors offset
+Date: Tue, 17 Oct 2023 16:47:48 +0200
+Message-Id: <20231017144756.34719-49-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_074835_597395_097477B0 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20231017_154830_862667_06A8134D 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,129 +102,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
+Store computed values of chroma and motion vectors offset because
+they depends on width and height values which change if the resolution
+change.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- .../media/platform/verisilicon/hantro_drv.c   |  1 +
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  2 ++
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 5 files changed, 36 insertions(+)
+ drivers/media/platform/verisilicon/hantro.h            | 2 ++
+ drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 7f5b82eb6649..c8fed313c36f 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -248,6 +248,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->dev->vpu_mutex;
- 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
-+	src_vq->supports_delete_bufs = true;
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0948b04a9f8d..6f5eb975d0e3 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -328,6 +328,8 @@ struct hantro_vp9_decoded_buffer_info {
+ 	/* Info needed when the decoded frame serves as a reference frame. */
+ 	unsigned short width;
+ 	unsigned short height;
++	size_t chroma_offset;
++	size_t mv_offset;
+ 	u32 bit_depth : 4;
+ };
  
- 	return vb2_queue_init(dst_vq);
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 6fc4b555517f..6db1c32fce4d 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -158,9 +158,11 @@ static void config_output(struct hantro_ctx *ctx,
+ 
+ 	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
++	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
+ 
+ 	mv_addr = luma_addr + mv_offset(ctx, dec_params);
+ 	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
++	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
  }
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 27a1e77cca38..0fd1c2fc78c8 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
  
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..17213ce42059 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+ struct hantro_vp9_ref_reg {
+@@ -195,7 +197,7 @@ static void config_ref(struct hantro_ctx *ctx,
+ 	luma_addr = hantro_get_dec_buf_addr(ctx, &buf->base.vb.vb2_buf);
+ 	hantro_write_addr(ctx->dev, ref_reg->y_base, luma_addr);
  
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-@@ -1133,6 +1134,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
- 	dst_vq->mem_ops = &vb2_vmalloc_memops;
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->vb_mutex;
-+	dst_vq->supports_delete_bufs = true;
- 
- 	return vb2_queue_init(dst_vq);
+-	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
++	chroma_addr = luma_addr + buf->vp9.chroma_offset;
+ 	hantro_write_addr(ctx->dev, ref_reg->c_base, chroma_addr);
  }
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
  
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
-+
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
- {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
+@@ -238,7 +240,7 @@ static void config_ref_registers(struct hantro_ctx *ctx,
+ 	config_ref(ctx, dst, &ref_regs[2], dec_params, dec_params->alt_frame_ts);
  
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index d6c8eb2b5201..161f85c42dc8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
+ 	mv_addr = hantro_get_dec_buf_addr(ctx, &mv_ref->base.vb.vb2_buf) +
+-		  mv_offset(ctx, dec_params);
++		  mv_ref->vp9.mv_offset;
+ 	hantro_write_addr(ctx->dev, G2_REF_MV_ADDR(0), mv_addr);
  
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
+ 	hantro_reg_write(ctx->dev, &vp9_last_sign_bias,
 -- 
 2.39.2
 
