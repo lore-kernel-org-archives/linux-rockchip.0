@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A88BCDB474
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FAACDB474
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 16:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KykuWVXAA0C3hdQ3Xx87doV5EMDjgx603jZTqIgWE8s=; b=dA3rBo4R/FT6/7
-	c9zkJqrrkwmEt6XS2Zdzj0E91sOeMaPEZnC5QneM7ljia2wZQs8tPG3Nj8RgEtfxqbVMae/43/Pcx
-	xvk6rTIHIljm9dw4b8udfwdHzc9rWKH+j6Y2DtGRCpM+/Wxd08uBryi+E1f6aN6nmS2YFVJA/yF2r
-	uxPdFu4ImcvGlHGR/WhYGRLj3kZKdvx0rNhfYz0Bj9KzMaD57kZUeAKRVUGdV3jXYPZedZGZ6/o9y
-	V4XD8YfrVpHp2+oY61qZJpQLSvcL/ABffgKczr4TvnFnhEbWfGBId9QWfmoFeoWVwL8lKwOaoCcrf
-	4CdA85dslAmHs8Pt9k6Q==;
+	List-Owner; bh=KQyc4GPzwf6UasmRciPAKuLLy2qgKF+QpuMWh7PhqAc=; b=S6Gg9WY62nDdpb
+	YcHr/AzndP7ebzCruCb9/QMBg8hqTHF8Als5oZqKWNqyq9gVoW8XI9rhEFRN3o630+2kYWm+I23eH
+	HQehVqFrQ0YfWeHhWZT04cj+Lzz+RWW5PFFw2a9vvYvmr+6mm6Q182FYTFMxeCqPgLYnN1gw/RzNS
+	bZzNw8WsVf/PDdTM4grmFHafrOEAjEpEwxTUl+3w62whfNDkYWUNPNU5Si1ynwZJh/sBkvhgCs1oS
+	RKEzbtZayHCHrvUmoTsU781k6RrTmUiKx4Rma3t51Zqw6CLABGpJPpvjxpINYHBwf91ALMDkJHn4s
+	0LJsrwClhZ0Fq0k9C1Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslRE-00Cdzp-0v;
-	Tue, 17 Oct 2023 14:52:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qsmUb-00CnVM-2a;
+	Tue, 17 Oct 2023 16:00:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslNC-00CZTf-0H;
-	Tue, 17 Oct 2023 14:48:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=8KnEGLt0AMpENDHZopGnuiniwmO/jH4JMcldtNo7XsI=; b=P/ZgyHHwExBeGzXku/896AN98q
-	3fmsfOE23YIRVJBmYpE8D4Y3iYh0Tn6LMUCsxrrmqIpUaR8HvPA5kdIZ9qEqZJH4B41qU1GPhemfL
-	yT8Y9s7fuj2HbbTDta4Cyk6qCuOUgLOIAaWt/tAacHBD8IX8r8z+8lpO2g0LL5Mg1csQOr1foQvVP
-	dDE3k8zNTNcaQ2nRgkifxGf3h8/2tW0lSkb2SumuuNb12tBSqs57whW00l7s3kVuqHNByil/0fu7X
-	XoiEy9yC/rq2B6Mi8SVVamRSYI9yD2NTi6C9oPyIOC+H8Y3v4s+ANzItmSRvCYE5921wwRw9Re+cW
-	Hsx8a4YQ==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN4-007A96-0R;
-	Tue, 17 Oct 2023 14:48:40 +0000
+	id 1qslMc-00CYnL-2M;
+	Tue, 17 Oct 2023 14:48:10 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AB1EA66073C4;
-	Tue, 17 Oct 2023 15:48:31 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4396B66072F6;
+	Tue, 17 Oct 2023 15:48:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554112;
-	bh=RTlkrs/U1KV5xhAEpUMICJf8nZRSMua+uwgoTAR0MRA=;
+	s=mail; t=1697554084;
+	bh=7foNNb6amO3+FMMwIl173lEOz6gYhJG/dA79F9jwpAU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NtbelyqGNVlMqVbupbnZY7IR1x+KDeSR1dmQ3E1bDohK8ELIhvvaFA81CzdJrMCzb
-	 +LC1zrvgz9bA6FNtvgVfalEQY67jwT2lZRx0cRY1IEvO5U12Vc8vOY9IFZVQKS9MTv
-	 r7iw+Jclo/7ZpzuzU860+zm2YIwBH+Rzr3boHNBhCktOlXBYBwCjyKZ5efkkCQw+Ec
-	 KEfneqbLxz/pfa8smEs85/eBIpTlkrZBbrDh+E2URmGxfa/Q0+/L7p08hbo4i7u10d
-	 wepLxuOEyWvFwN9w/uldZ+dQcYaolymFlsfTX+oCKVhQ+8bjaCp6Ndmu96WfTFmYnZ
-	 BsF8ht+exQ+Lw==
+	b=DnM+rhD/8S8duXjkkh8w5r/Lh6WgtvuO8T7PkO2j1MSfgB2TDFlKvv99zmEAhCu/v
+	 o0Z7Oi0VHkw1I3uLV8fYzw5JVW5ltgX8D12pZ2Q7x2rxk60kWb7+anXwyMFrYrcPvm
+	 v/oOv/D2Vts8ZUJYm1gVYHL4sDG/hwZVEA6QDUlJM02Xw26B6+O3fXN6UPha6cTuMP
+	 S6toJW93MkTIyqOf59mHw0LNF/1SJXKfSPSjDBuSxIJ1mbn5/uzl0QQ+rcIBvSHVk2
+	 aXmFIvZWyOG+94Tq6/1aFuPSsL1HrkEzpFB3gjnHyS4P9fkcab3VSl/HNBd4yFhzjS
+	 bPXnYd3yOIRkg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 54/56] media: v4l2: Add DELETE_BUFS ioctl
-Date: Tue, 17 Oct 2023 16:47:54 +0200
-Message-Id: <20231017144756.34719-55-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 02/56] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Tue, 17 Oct 2023 16:47:02 +0200
+Message-Id: <20231017144756.34719-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_154838_503259_7C89F552 
-X-CRM114-Status: GOOD (  28.92  )
+X-CRM114-CacheID: sfid-20231017_074807_025629_2AE65F89 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,409 +88,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VIDIOC_DELETE_BUFS ioctl allows to delete buffers from a queue.
-The number of buffers to delete in given by count field of
-struct v4l2_delete_buffers and the range start at the index
-specified in the same structure.
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers.
+The maximum number of buffers depends of PAGE_SHIFT value and can
+go up to 0x7fff when PAGE_SHIFT = 12.
+With this encoding pattern we know the maximum number that a queue
+could store so we can check it at  queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
+Change __find_plane_by_offset() prototype to return the video buffer
+itself rather than it index.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../userspace-api/media/v4l/user-func.rst     |  1 +
- .../media/v4l/vidioc-delete-bufs.rst          | 80 +++++++++++++++++++
- .../media/v4l/vidioc-reqbufs.rst              |  1 +
- .../media/common/videobuf2/videobuf2-core.c   | 30 +++++++
- .../media/common/videobuf2/videobuf2-v4l2.c   | 20 +++++
- drivers/media/v4l2-core/v4l2-dev.c            |  1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          | 17 ++++
- include/media/v4l2-ioctl.h                    |  4 +
- include/media/videobuf2-core.h                | 12 +++
- include/media/videobuf2-v4l2.h                | 13 +++
- include/uapi/linux/videodev2.h                | 17 ++++
- 11 files changed, 196 insertions(+)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+ .../media/common/videobuf2/videobuf2-core.c   | 73 +++++++++----------
+ 1 file changed, 35 insertions(+), 38 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/user-func.rst b/Documentation/userspace-api/media/v4l/user-func.rst
-index 15ff0bf7bbe6..3fd567695477 100644
---- a/Documentation/userspace-api/media/v4l/user-func.rst
-+++ b/Documentation/userspace-api/media/v4l/user-func.rst
-@@ -17,6 +17,7 @@ Function Reference
-     vidioc-dbg-g-chip-info
-     vidioc-dbg-g-register
-     vidioc-decoder-cmd
-+    vidioc-delete-bufs
-     vidioc-dqevent
-     vidioc-dv-timings-cap
-     vidioc-encoder-cmd
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-new file mode 100644
-index 000000000000..4791df1395d6
---- /dev/null
-+++ b/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-@@ -0,0 +1,80 @@
-+.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
-+.. c:namespace:: V4L
-+
-+.. _VIDIOC_DELETE_BUFS:
-+
-+************************
-+ioctl VIDIOC_DELETE_BUFS
-+************************
-+
-+Name
-+====
-+
-+VIDIOC_DELETE_BUFS - Deletes buffers from a queue
-+Drivers using this feature must expose the ``V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS``
-+capability on the queue :c:func:`VIDIOC_REQBUFS` or :c:func:`VIDIOC_CREATE_BUFS`
-+are invoked.
-+
-+Synopsis
-+========
-+
-+.. c:macro:: VIDIOC_DELETE_BUFs
-+
-+``int ioctl(int fd, VIDIOC_DELETE_BUFs, struct v4l2_delete_buffers *argp)``
-+
-+Arguments
-+=========
-+
-+``fd``
-+    File descriptor returned by :c:func:`open()`.
-+
-+``argp``
-+    Pointer to struct :c:type:`v4l2_delete_buffers`.
-+
-+Description
-+===========
-+
-+Applications can optionally call the :ref:`VIDIOC_DELETE_BUFS` ioctl to
-+delete buffers from a queue.
-+
-+.. c:type:: v4l2_delete_buffers
-+
-+.. tabularcolumns:: |p{4.4cm}|p{4.4cm}|p{8.5cm}|
-+
-+.. flat-table:: struct v4l2_delete_buffers
-+    :header-rows:  0
-+    :stub-columns: 0
-+    :widths:       1 1 2
-+
-+    * - __u32
-+      - ``index``
-+      - The starting buffer index to delete.
-+    * - __u32
-+      - ``count``
-+      - The number of buffers to be deleted with indices 'index' until 'index + count - 1'.
-+        All buffers in this range must be valid and in DEQUEUED state.
-+        In error case errno is set to ``EINVAL`` error code and index returns the index of
-+        the invalid buffer.
-+        If count and index are set to 0 :ref:`VIDIOC_DELETE_BUFS` will return 0.
-+    * - __u32
-+      - ``type``
-+      - Type of the stream or buffers, this is the same as the struct
-+	:c:type:`v4l2_format` ``type`` field. See
-+	:c:type:`v4l2_buf_type` for valid values.
-+    * - __u32
-+      - ``reserved``\ [13]
-+      - A place holder for future extensions. Drivers and applications
-+	must set the array to zero.
-+
-+Return Value
-+============
-+
-+On success 0 is returned, on error -1 and the ``errno`` variable is set
-+appropriately. The generic error codes are described at the
-+:ref:`Generic Error Codes <gen-errors>` chapter.
-+
-+EBUSY
-+    File I/O is in progress.
-+
-+EINVAL
-+    The buffer ``index`` doesn't exist in the queue.
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-index 0b3a41a45d05..14d4a49c2945 100644
---- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-+++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-@@ -121,6 +121,7 @@ aborting or finishing any DMA in progress, an implicit
- .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
- .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
- .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
-+.. _V4L2-BUF-CAP-SUPPORTS-DELETE-BUFS:
- 
- .. raw:: latex
- 
 diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 010a8bca0240..7068930a0ba6 100644
+index a5e57affeb30..09be8e026044 100644
 --- a/drivers/media/common/videobuf2/videobuf2-core.c
 +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -1665,6 +1665,36 @@ int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
- }
- EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
+@@ -31,6 +31,11 @@
  
-+int vb2_core_delete_bufs(struct vb2_queue *q, unsigned int start, unsigned int count)
-+{
-+	unsigned int i, ret = 0;
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
++#define PLANE_INDEX_MASK	0x7
++#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
++#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
 +
-+	if (start == 0 && count == 0)
-+		return 0;
-+
-+	mutex_lock(&q->mmap_lock);
-+
-+	for (i = start; i < start + count && i < q->max_num_buffers; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(q, i);
-+
-+		if (!vb) {
-+			ret = -EINVAL;
-+			goto unlock;
-+		}
-+		if (vb->state != VB2_BUF_STATE_DEQUEUED) {
-+			ret = -EINVAL;
-+			goto unlock;
-+		}
-+	}
-+	__vb2_queue_free(q, start, count);
-+	dprintk(q, 2, "buffers deleted\n");
-+
-+unlock:
-+	mutex_unlock(&q->mmap_lock);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(vb2_core_delete_bufs);
-+
- /*
-  * vb2_start_streaming() - Attempt to start streaming.
-  * @q:		videobuf2 queue
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index c28905bd893b..4be811a3fb85 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -695,6 +695,8 @@ static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
- 	if (q->supports_requests)
- 		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
- #endif
-+	if (q->supports_delete_bufs)
-+		*caps |= V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS;
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,21 +363,27 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long offset = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+-		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+-
+-		offset = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * The offset "cookie" value has the following constraints:
++	 * - a buffer can have up to 8 planes.
++	 * - v4l2 mem2mem uses bit 30 to distinguish between
++	 *   OUTPUT (aka "source", bit 30 is 0) and
++	 *   CAPTURE (aka "destination", bit 30 is 1) buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping when PAGE_SHIFT = 12:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there are 15 bits to store the buffer index.
++	 * Depending on PAGE_SHIFT value we can have fewer bits
++	 * to store the buffer index.
++	 */
++	offset = vb->index << PLANE_INDEX_SHIFT;
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = offset;
++		vb->planes[plane].m.offset = offset + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, offset);
+-
+-		offset += vb->planes[plane].length;
+-		offset = PAGE_ALIGN(offset);
+ 	}
  }
  
- static void validate_memory_flags(struct vb2_queue *q,
-@@ -752,6 +754,12 @@ int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
- }
- EXPORT_SYMBOL_GPL(vb2_prepare_buf);
- 
-+int vb2_delete_bufs(struct vb2_queue *q, struct v4l2_delete_buffers *d)
-+{
-+	return vb2_core_delete_bufs(q, d->index, d->count);
-+}
-+EXPORT_SYMBOL_GPL(vb2_delete_bufs);
-+
- int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+@@ -2188,10 +2199,9 @@ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
+  * __find_plane_by_offset() - find plane associated with the given offset
+  */
+ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+-			unsigned int *_buffer, unsigned int *_plane)
++			struct vb2_buffer **vb, unsigned int *plane)
  {
- 	unsigned requested_planes = 1;
-@@ -1012,6 +1020,18 @@ EXPORT_SYMBOL_GPL(vb2_poll);
+-	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int buffer;
  
- /* vb2 ioctl helpers */
- 
-+int vb2_ioctl_delete_bufs(struct file *file, void *priv,
-+			  struct v4l2_delete_buffers *p)
-+{
-+	struct video_device *vdev = video_devdata(file);
-+
-+	if (vb2_queue_is_busy(vdev->queue, file))
-+		return -EBUSY;
-+
-+	return vb2_delete_bufs(vdev->queue, p);
-+}
-+EXPORT_SYMBOL_GPL(vb2_ioctl_delete_bufs);
-+
- int vb2_ioctl_reqbufs(struct file *file, void *priv,
- 			  struct v4l2_requestbuffers *p)
- {
-diff --git a/drivers/media/v4l2-core/v4l2-dev.c b/drivers/media/v4l2-core/v4l2-dev.c
-index f81279492682..215654fd6581 100644
---- a/drivers/media/v4l2-core/v4l2-dev.c
-+++ b/drivers/media/v4l2-core/v4l2-dev.c
-@@ -720,6 +720,7 @@ static void determine_valid_ioctls(struct video_device *vdev)
- 		SET_VALID_IOCTL(ops, VIDIOC_PREPARE_BUF, vidioc_prepare_buf);
- 		SET_VALID_IOCTL(ops, VIDIOC_STREAMON, vidioc_streamon);
- 		SET_VALID_IOCTL(ops, VIDIOC_STREAMOFF, vidioc_streamoff);
-+		SET_VALID_IOCTL(ops, VIDIOC_DELETE_BUFS, vidioc_delete_bufs);
+ 	/*
+ 	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
+@@ -2209,24 +2219,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
+ 		return -EBUSY;
  	}
  
- 	if (is_vid || is_vbi || is_meta) {
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 628b013ca0c4..309632a010d1 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -489,6 +489,13 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
- 	v4l_print_format(&p->format, write_only);
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = q->bufs[buffer];
++	/* Get buffer and plane from the offset */
++	buffer = (offset >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
++	*plane = (offset >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == offset) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
+-	}
++	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
++		return -EINVAL;
+ 
+-	return -EINVAL;
++	*vb = q->bufs[buffer];
++	return 0;
  }
  
-+static void v4l_print_delete_buffers(const void *arg, bool write_only)
-+{
-+	const struct v4l2_delete_buffers *p = arg;
-+
-+	pr_cont("index=%u, count=%u\n", p->index, p->count);
-+}
-+
- static void v4l_print_streamparm(const void *arg, bool write_only)
+ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
+@@ -2306,7 +2307,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
  {
- 	const struct v4l2_streamparm *p = arg;
-@@ -2161,6 +2168,15 @@ static int v4l_prepare_buf(const struct v4l2_ioctl_ops *ops,
- 	return ret ? ret : ops->vidioc_prepare_buf(file, fh, b);
+ 	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer = 0, plane = 0;
++	unsigned int plane = 0;
+ 	int ret;
+ 	unsigned long length;
+ 
+@@ -2335,12 +2336,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	vb = q->bufs[buffer];
+-
+ 	/*
+ 	 * MMAP requires page_aligned buffers.
+ 	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
+@@ -2368,7 +2367,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+ 	if (ret)
+ 		return ret;
+ 
+-	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
++	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
+ 	return 0;
  }
- 
-+static int v4l_delete_bufs(const struct v4l2_ioctl_ops *ops,
-+			   struct file *file, void *fh, void *arg)
-+{
-+	struct v4l2_delete_buffers *delete = arg;
-+	int ret = check_fmt(file, delete->type);
-+
-+	return ret ? ret : ops->vidioc_delete_bufs(file, fh, delete);
-+}
-+
- static int v4l_g_parm(const struct v4l2_ioctl_ops *ops,
- 				struct file *file, void *fh, void *arg)
+ EXPORT_SYMBOL_GPL(vb2_mmap);
+@@ -2382,7 +2381,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
  {
-@@ -2910,6 +2926,7 @@ static const struct v4l2_ioctl_info v4l2_ioctls[] = {
- 	IOCTL_INFO(VIDIOC_ENUM_FREQ_BANDS, v4l_enum_freq_bands, v4l_print_freq_band, 0),
- 	IOCTL_INFO(VIDIOC_DBG_G_CHIP_INFO, v4l_dbg_g_chip_info, v4l_print_dbg_chip_info, INFO_FL_CLEAR(v4l2_dbg_chip_info, match)),
- 	IOCTL_INFO(VIDIOC_QUERY_EXT_CTRL, v4l_query_ext_ctrl, v4l_print_query_ext_ctrl, INFO_FL_CTRL | INFO_FL_CLEAR(v4l2_query_ext_ctrl, id)),
-+	IOCTL_INFO(VIDIOC_DELETE_BUFS, v4l_delete_bufs, v4l_print_delete_buffers, INFO_FL_PRIO | INFO_FL_QUEUE | INFO_FL_CLEAR(v4l2_delete_buffers, type)),
- };
- #define V4L2_IOCTLS ARRAY_SIZE(v4l2_ioctls)
+ 	unsigned long offset = pgoff << PAGE_SHIFT;
+ 	struct vb2_buffer *vb;
+-	unsigned int buffer, plane;
++	unsigned int plane;
+ 	void *vaddr;
+ 	int ret;
  
-diff --git a/include/media/v4l2-ioctl.h b/include/media/v4l2-ioctl.h
-index edb733f21604..55afbde54211 100644
---- a/include/media/v4l2-ioctl.h
-+++ b/include/media/v4l2-ioctl.h
-@@ -163,6 +163,8 @@ struct v4l2_fh;
-  *	:ref:`VIDIOC_CREATE_BUFS <vidioc_create_bufs>` ioctl
-  * @vidioc_prepare_buf: pointer to the function that implements
-  *	:ref:`VIDIOC_PREPARE_BUF <vidioc_prepare_buf>` ioctl
-+ * @vidioc_delete_bufs: pointer to the function that implements
-+ *	:ref:`VIDIOC_DELETE_BUFS <vidioc_delete_bufs>` ioctl
-  * @vidioc_overlay: pointer to the function that implements
-  *	:ref:`VIDIOC_OVERLAY <vidioc_overlay>` ioctl
-  * @vidioc_g_fbuf: pointer to the function that implements
-@@ -422,6 +424,8 @@ struct v4l2_ioctl_ops {
- 				  struct v4l2_create_buffers *b);
- 	int (*vidioc_prepare_buf)(struct file *file, void *fh,
- 				  struct v4l2_buffer *b);
-+	int (*vidioc_delete_bufs)(struct file *file, void *fh,
-+				  struct v4l2_delete_buffers *d);
+@@ -2392,12 +2391,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
+ 	 * Find the plane corresponding to the offset passed by userspace. This
+ 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ 	 */
+-	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
++	ret = __find_plane_by_offset(q, offset, &vb, &plane);
+ 	if (ret)
+ 		goto unlock;
  
- 	int (*vidioc_overlay)(struct file *file, void *fh, unsigned int i);
- 	int (*vidioc_g_fbuf)(struct file *file, void *fh,
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 288477075a0e..db3bd986624e 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -507,6 +507,7 @@ struct vb2_buf_ops {
-  * @supports_requests: this queue supports the Request API.
-  * @requires_requests: this queue requires the Request API. If this is set to 1,
-  *		then supports_requests must be set to 1 as well.
-+ * @supports_delete_bufs: this queue supports DELETE_BUFS ioctl.
-  * @uses_qbuf:	qbuf was used directly for this queue. Set to 1 the first
-  *		time this is called. Set to 0 when the queue is canceled.
-  *		If this is 1, then you cannot queue buffers from a request.
-@@ -595,6 +596,7 @@ struct vb2_queue {
- 	unsigned int		   quirk_poll_must_check_waiting_for_buffers:1;
- 	unsigned int			supports_requests:1;
- 	unsigned int			requires_requests:1;
-+	unsigned int			supports_delete_bufs:1;
- 	unsigned int			uses_qbuf:1;
- 	unsigned int			uses_requests:1;
- 	unsigned int			allow_cache_hints:1;
-@@ -846,6 +848,16 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
-  */
- int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
- 
-+/**
-+ * vb2_core_delete_bufs() -
-+ * @q:		pointer to &struct vb2_queue with videobuf2 queue.
-+ * @start:	first index of the range of buffers to delete.
-+ * @count:	number of buffers to delete.
-+ *
-+ *  Return: returns zero on success; an error code otherwise.
-+ */
-+int vb2_core_delete_bufs(struct vb2_queue *q, unsigned int start, unsigned int count);
-+
- /**
-  * vb2_core_qbuf() - Queue a buffer from userspace
-  *
-diff --git a/include/media/videobuf2-v4l2.h b/include/media/videobuf2-v4l2.h
-index 5a845887850b..79cea8459f52 100644
---- a/include/media/videobuf2-v4l2.h
-+++ b/include/media/videobuf2-v4l2.h
-@@ -118,6 +118,17 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create);
-  */
- int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
- 		    struct v4l2_buffer *b);
-+/**
-+ * vb2_delete_bufs() - Delete buffers from the queue
-+ *
-+ * @q:		pointer to &struct vb2_queue with videobuf2 queue.
-+ * @d:		delete parameter, passed from userspace to
-+ *		&v4l2_ioctl_ops->vidioc_delete_bufs handler in driver
-+ *
-+ * The return values from this function are intended to be directly returned
-+ * from &v4l2_ioctl_ops->vidioc_delete_bufs handler in driver.
-+ */
-+int vb2_delete_bufs(struct vb2_queue *q, struct v4l2_delete_buffers *d);
- 
- /**
-  * vb2_qbuf() - Queue a buffer from userspace
-@@ -334,6 +345,8 @@ int vb2_ioctl_streamon(struct file *file, void *priv, enum v4l2_buf_type i);
- int vb2_ioctl_streamoff(struct file *file, void *priv, enum v4l2_buf_type i);
- int vb2_ioctl_expbuf(struct file *file, void *priv,
- 	struct v4l2_exportbuffer *p);
-+int vb2_ioctl_delete_bufs(struct file *file, void *priv,
-+			  struct v4l2_delete_buffers *p);
- 
- /* struct v4l2_file_operations helpers */
- 
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 13ddb5abf584..96e105149906 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -1036,6 +1036,7 @@ struct v4l2_requestbuffers {
- #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
- #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
- #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
-+#define V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS		(1 << 8)
- 
- /**
-  * struct v4l2_plane - plane info for multi-planar buffers
-@@ -2622,6 +2623,20 @@ struct v4l2_create_buffers {
- 	__u32			reserved[5];
- };
- 
-+/**
-+ * struct v4l2_delete_buffers - VIDIOC_DELETE_BUFS argument
-+ * @index:	the first buffer to be deleted
-+ * @count:	number of buffers to delete
-+ * @type:	enum v4l2_buf_type
-+ * @reserved:	future extensions
-+ */
-+struct v4l2_delete_buffers {
-+	__u32			index;
-+	__u32			count;
-+	__u32			type;
-+	__u32			reserved[13];
-+};
-+
- /*
-  *	I O C T L   C O D E S   F O R   V I D E O   D E V I C E S
-  *
-@@ -2721,6 +2736,8 @@ struct v4l2_create_buffers {
- #define VIDIOC_DBG_G_CHIP_INFO  _IOWR('V', 102, struct v4l2_dbg_chip_info)
- 
- #define VIDIOC_QUERY_EXT_CTRL	_IOWR('V', 103, struct v4l2_query_ext_ctrl)
-+#define VIDIOC_DELETE_BUFS	_IOWR('V', 104, struct v4l2_delete_buffers)
-+
- 
- /* Reminder: when adding new ioctls please add support for them to
-    drivers/media/v4l2-core/v4l2-compat-ioctl32.c as well! */
+-	vb = q->bufs[buffer];
+-
+ 	vaddr = vb2_plane_vaddr(vb, plane);
+ 	mutex_unlock(&q->mmap_lock);
+ 	return vaddr ? (unsigned long)vaddr : -EINVAL;
 -- 
 2.39.2
 
