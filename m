@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810A5CDB483
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABA6CDB474
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ndYSPWgLgz269YYJTkh/ICOK2vbf7uLFViwMJdOEne0=; b=I3G0hq6XJpoR3I
-	mn3rVOPc9/vmSnKr2GLHiSFF9HOm3KkygzjbG+0QBTR+Y99Vog4QdnRhDWtzfX8c42XiEYjqELPX+
-	RgjhKmiYBYOWMng8ecIDbSzEBLcf+NMpXAPf51nFcek6Mf3sNJqUu0D50Q1tC5ePl8fqc0nUUm6Yj
-	MR9N8kgDQLWJ6oX/Uak+YyLyhkrgpZv0ZEVVAmSkHDZPZFRMwaPX3acwVP3dF8JfHtT4arVhoTsVp
-	JeQwFdB8VkenWNQYqJdoJCoF2KlFa2a01ntwByuCCKiptTR5N4tv9Y3l2Hb1NE/33V/XTrve0cbZh
-	qYvNpMw5zSkGeimejzMg==;
+	List-Owner; bh=L/VmVZGlH6O0GgT+2MLfoo+tyVvnu0TlIoYvB93MzuM=; b=qbHBmvIBiPhT59
+	heVjn0SZwPTfKqqkUZy+3hd3HuSsY/A5CihovVWPz8ufEj+9OEJTvaF6V/NIn1vqTOe9I1jdI/HIy
+	GNos9CkLij461CIqaM5OcDZT8sPDm3VFvj/NUbOVl3ueWUNG7yUiwElkvkY+5dhVZ6voYkEn9QFqX
+	gtdG1162OesJb7Sq9yvMamBe+A2AxhzRvuzwO1eYf4Ex1H0p/PvGdAKYJqUFY7fT9fI6RIQ8dOlL8
+	vinXF/AYBSOpBo80KB7eytPA/qNVNqv/qVn+1pmExR2zmdMAL8SU+WZPUUfFd9YVXX9jtttCSerdP
+	3whCXVeXDY5jy0Ybh7KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslNC-00CZVS-3B;
-	Tue, 17 Oct 2023 14:48:42 +0000
+	id 1qslNR-00CZjJ-27;
+	Tue, 17 Oct 2023 14:48:57 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslMf-00CYon-1D;
-	Tue, 17 Oct 2023 14:48:10 +0000
+	id 1qslMg-00CYpy-36;
+	Tue, 17 Oct 2023 14:48:13 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 537C16607314;
-	Tue, 17 Oct 2023 15:48:06 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BFC0B660732A;
+	Tue, 17 Oct 2023 15:48:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554086;
-	bh=u0/tUxGMIK/59pYU6cqm9FB8VhmlcNZDctLEaz6jcAE=;
+	s=mail; t=1697554088;
+	bh=FY7GH0xZdlXO2pRrzaejblo22FLeSWf56n9mo0hrqhY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DVBKAU0qyLGnm0hA1g9vDJuFAS8upw97fIvqg/STLHPX+UHeqfVhp0/IVoljsNowL
-	 Rnjh2Ty7MvGJzJHYRfpAskb3PhnWmPWuuGCkuZ0vwx+MItZsdHa5HhSWDJF6RSF/eg
-	 ctStQKpRk0hlSm/Xhiq9TqVp1D+G08jbqd3tsa+XRwkwrjfmbsoQs/UAjmdT6M9cY1
-	 +9Ol7nxVxjYXKbidQ4AdOsZdtPgeng7c8cNE0J/X4V4NqAlJEIR+DJoS+woVhzQ7cF
-	 6yxXedJ1B0wt1Lc1U7dQQOGCPlSZoF/GXz8/6G+k9chs4LpO+HTsa9iDHvUz7dUIn6
-	 pCR9+hxq3AljA==
+	b=bZUc9Y7SvA5unAnAFhBLlfrD4b/UsnNPqJre51LLMtkk9b/SNUAaiyng2Ih4MEAvt
+	 JeqtJQgI2gtWTu7Z2z3xZnSgJWyQO4gUEq16nJ7V+xGXNajj/3+bHBuvjTWP0brwwN
+	 gEvaL61W0iVQUWiuq7FC/KNzGQYZ+y+Gfc7LLo/9UHA7rMAoKGAlZNsPJK0glD0pkV
+	 5OsZNuhKhU4FmPVKnTZ9SdSTABXjqGTOm5LGwA7w1LUwi6c8p29yFzi5CkcNwaptER
+	 RoifIh0vhWNCaS44PD/7tHKuTPv1hsMzncC3GA6NPoBtv72DdIYQkQUS95qxW4ogFn
+	 jKg/b3zaMoJpA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,18 +61,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 06/56] media: videobuf2: Remove duplicated index vs q->num_buffers check
-Date: Tue, 17 Oct 2023 16:47:06 +0200
-Message-Id: <20231017144756.34719-7-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Zhou Peng <eagle.zhou@nxp.com>
+Subject: [PATCH v12 09/56] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Tue, 17 Oct 2023 16:47:09 +0200
+Message-Id: <20231017144756.34719-10-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_074809_543497_0E156612 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231017_074811_176185_4F2C66FB 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +89,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vb2_get_buffer() already checks if the requested index is valid.
-Stop duplicating this kind of check everywhere.
+Use vb2_get_buffer() instead of direct access to the vb2_queue bufs array.
+This allows us to change the type of the bufs in the future.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Ming Qian <ming.qian@nxp.com>
+CC: Zhou Peng <eagle.zhou@nxp.com>
 ---
- drivers/media/common/videobuf2/videobuf2-v4l2.c | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 2ffb097bf00a..c6ebc8d2c537 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -823,10 +823,6 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
- 		return -EBUSY;
- 	}
+diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
+index 982c2c777484..a462d6fe4ea9 100644
+--- a/drivers/media/platform/amphion/vpu_dbg.c
++++ b/drivers/media/platform/amphion/vpu_dbg.c
+@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
  
--	if (b->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, b->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", b->index);
-@@ -898,10 +894,6 @@ int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
- {
- 	struct vb2_buffer *vb;
+ 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
  
--	if (eb->index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
- 	vb = vb2_get_buffer(q, eb->index);
- 	if (!vb) {
- 		dprintk(q, 1, "can't find the requested buffer %u\n", eb->index);
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
++
++		vbuf = to_vb2_v4l2_buffer(vb);
++
+ 		num = scnprintf(str, sizeof(str),
+ 				"output [%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
+@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+ 
+ 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
+ 
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
++
++		vbuf = to_vb2_v4l2_buffer(vb);
++
+ 		num = scnprintf(str, sizeof(str),
+ 				"capture[%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
 -- 
 2.39.2
 
