@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F2F2CDB474
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C397DCDB482
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lUVyRttnhmPxnLoVVADRujREh3Y940RLiDB/6wrreHk=; b=fV6f9Rt6aUg/Aq
-	KOkqM7hLa9BxZVxJFCjNyE+wvL2jj1j4nwAZ0l6SJtoMg+jO/HlmuAZiO9anWNMhlMlwLZMhhChd9
-	FCkIu56y93gxWHhs7dUX73W7GV9V/UVDfU8989c617NXV/NfWfx/GozY/CNhmgTidAJOAH7WquLtP
-	YP9GrGolkEbXLtXv7d7v9pWKGtdwctcfbXRNK9kUkAUVGuJRsANCyCbs93LBJmD2qlFKljz/OXXdY
-	lOL8JPboYeteWPbMQLdZI5qbC9p7dwLpYGqyWaw1mIcBP9S6xnNYKkJSdiCY9q+XruNoBjXO41+Uh
-	uthpn+PKpQ1mirHhuWdQ==;
+	List-Owner; bh=nqVMadJcg3o4KASaj7eacuWGPTiAScGV7a6xtynMTRM=; b=q0mpHfR/NbHh9G
+	a9nNTLaOfNrakgGIe2bEP6RDfZKpNaJfr79taew4TYWYkWcgAHzlMEkkP/XGI/dIN2HaZejXL+/RV
+	/vpxx2BDoVpPzohs2TxPofk18m3Ga/KuMrycWpl6BqCEpPIACp7GlRL44Zdl8a9zb6BpC5KDbIbwz
+	A3HEPV3/MfpPvRuqzn6Rm+AN6fnsa2JAwyceeQPAgXhqSqyYsATHalDVDrQOkHaLAtegAn6PFtjGE
+	CbazLnHvaHDkPfN9Zz13xLaEJPsDFKA2RUQ6g38m0HaKkVGeQ4K72n+4N5iNYQ05nAdYPYI0e5Jy2
+	bUiNTx/SNovy8ApdxeLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslR1-00Cdi6-3C;
-	Tue, 17 Oct 2023 14:52:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN9-00CZRU-2q;
-	Tue, 17 Oct 2023 14:48:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=eCePPCjQglISWJ8e2J07nT0sMEaACefdvzp9l+FQ9+E=; b=PJUtYhanPpa3MRSUalk2Br1Q+C
-	qz36yrIt/2LFaU590AD5E5zrn4UXoQaq+vvuKLCJ2Z5Tg8Wlsex5IUXwN4fQHwW7qFN+MZ3hQ+ckv
-	zjrw9x6HU8AXKzaydWQOmHqXGEupr+6vD/1C4pp4gu2PYE8c64tKE00+EWRBZKjm4QOHUDczniY7r
-	dWu88nbdo9TSq015FeanxMZWXN9NR3bsUOQRG1nTV2auZpV1qVJyKGOw0qqV8IOFUcGWfE1fq6x5y
-	BJWS3ONdwLXqBnzQT0iowcJt6jZIVZ03cEXBLiuAMAVXo102UVWkltUD4uXsdeuq1jhmI8TT8tQnC
-	/FEuMshA==;
+	id 1qslQz-00Cdfn-2a;
+	Tue, 17 Oct 2023 14:52:37 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN2-007A82-2v;
-	Tue, 17 Oct 2023 14:48:37 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qslMx-00CZBg-0R;
+	Tue, 17 Oct 2023 14:48:32 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6BE26607326;
-	Tue, 17 Oct 2023 15:48:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 73F8B66073A6;
+	Tue, 17 Oct 2023 15:48:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554111;
-	bh=oj1c3lOtNZD9WKVM3HjUaAmnUw1gzcNQvZo6oWpLItQ=;
+	s=mail; t=1697554105;
+	bh=R5HfsLcfPw3e1xcp8H3MPpbUdOMLjhRWrPhiuKICT0k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YOxQctw2f+XUgWYI12zCuHigEG+XlbRHhC8PyjTN5oFoV0tAHRDgdFZTNT4sBuSy/
-	 AnvR8cyaZmQl318QejBiBFHHMjuMudbKUBXaCb0jfLrVC/v5oTORGMu7q+U7FzrPJT
-	 Dg4MKbGdonUtqN1wyolWJ9D+rjg4GWvG8l180VcvebTMp9ESikNLHLed8r1/dkmPA+
-	 RkYvM8lYNnRoksh0Yks85vHLB4yOHBUW7s4ucaUaPA290p5iVf60Stnn+3cV1On5CH
-	 Hi5Yfi2s6LbtYIa7vkWiWvV1wZaXdq+WbchnHwqnQZT0eTUiH48bEWDYpdVpQo1qlS
-	 Puw3i9ma/bi6w==
+	b=nI9BoGaAJlHIdmWnVuOucMI0jMXM6fn5Vu6yoGz9KOlJfleQ6/xBuztSrO1C/2k+Q
+	 yNw7xlQt/7bijzfzCLXvu+GiEzxQZ87Caf3GThCTikIE8wo6jfMMi8ns5/UpUTygS1
+	 Rjo5rP/w6h1EkoR1nLQY5D5l/Jf45gUgaK+s8dlrU7Sl1G1KEyu1yS5pF0RjNr1djH
+	 G6rbleHyw1606urpdZG23neHaDhAkBJyC02hH6nlaWa9uIqxLzarRwbd32xZojgDUv
+	 Wm2KvZ1hKXOW9vPVWjW7apOtCKyV3350kbA4e5mxO4L+2ZfdclPL4NofLNJgAilUIU
+	 iHHzteoT/r20w==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 52/56] media: core: Add bitmap manage bufs array entries
-Date: Tue, 17 Oct 2023 16:47:52 +0200
-Message-Id: <20231017144756.34719-53-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 42/56] media: usb: usbtv: Stop direct calls to queue num_buffers field
+Date: Tue, 17 Oct 2023 16:47:42 +0200
+Message-Id: <20231017144756.34719-43-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_154833_015414_653E9C5E 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20231017_074827_315333_12F6FD53 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,209 +88,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a bitmap field to know which of bufs array entries are
-used or not.
-Remove no more used num_buffers field from queue structure.
-Use bitmap_find_next_zero_area() to find the first possible
-range when creating new buffers to fill the gaps.
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+This allows us to change how the number of buffers is computed in the
+futur.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 42 +++++++++++++++----
- include/media/videobuf2-core.h                | 15 ++++---
- 2 files changed, 42 insertions(+), 15 deletions(-)
+ drivers/media/usb/usbtv/usbtv-video.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 2c8cf479a962..6e88406fcae9 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -416,11 +416,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
+index 1e30e05953dc..62a583040cd4 100644
+--- a/drivers/media/usb/usbtv/usbtv-video.c
++++ b/drivers/media/usb/usbtv/usbtv-video.c
+@@ -726,9 +726,10 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
  {
--	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
-+	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
+ 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
+ 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
- 	q->bufs[index] = vb;
- 	vb->index = index;
- 	vb->vb2_queue = q;
-+	set_bit(index, q->bufs_bitmap);
- }
- 
- /**
-@@ -429,6 +430,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
-  */
- static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
- {
-+	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
- 	vb->vb2_queue->bufs[vb->index] = NULL;
- 	vb->vb2_queue = NULL;
- }
-@@ -450,11 +452,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned long index;
- 	int ret;
- 
--	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-+	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
- 			    q->max_num_buffers - vb2_get_num_buffers(q));
- 
--	index = vb2_get_num_buffers(q);
-+	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-+					   0, num_buffers, 0);
- 
- 	*first_index = index;
- 
-@@ -656,7 +659,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		kfree(vb);
- 	}
- 
--	q->num_buffers -= buffers;
- 	if (!vb2_get_num_buffers(q)) {
- 		q->memory = VB2_MEMORY_UNKNOWN;
- 		INIT_LIST_HEAD(&q->queued_list);
-@@ -874,6 +876,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
- 	if (!q->bufs)
- 		ret = -ENOMEM;
-+
-+	if (!q->bufs_bitmap)
-+		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+	if (!q->bufs_bitmap) {
-+		ret = -ENOMEM;
-+		kfree(q->bufs);
-+		q->bufs = NULL;
-+	}
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
- 	if (ret)
-@@ -943,7 +953,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers = allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -970,6 +979,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	mutex_lock(&q->mmap_lock);
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 	mutex_unlock(&q->mmap_lock);
-+	kfree(q->bufs);
-+	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-@@ -1006,9 +1019,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->memory = memory;
- 		if (!q->bufs)
- 			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--		if (!q->bufs)
-+		if (!q->bufs) {
- 			ret = -ENOMEM;
-+			goto unlock;
-+		}
-+		if (!q->bufs_bitmap)
-+			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+		if (!q->bufs_bitmap) {
-+			ret = -ENOMEM;
-+			kfree(q->bufs);
-+			q->bufs = NULL;
-+		}
- 		mutex_unlock(&q->mmap_lock);
-+unlock:
- 		if (ret)
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
-@@ -1070,7 +1093,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers += allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -2549,7 +2571,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_free(q, q->max_num_buffers);
- 	kfree(q->bufs);
- 	q->bufs = NULL;
--	q->num_buffers = 0;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
-+
- 	mutex_unlock(&q->mmap_lock);
- }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-@@ -2904,7 +2928,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
- 	 * Check if we need to dequeue the buffer.
- 	 */
- 	index = fileio->cur_index;
--	if (index >= q->num_buffers) {
-+	if (!test_bit(index, q->bufs_bitmap)) {
- 		struct vb2_buffer *b;
- 
- 		/*
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 6986ff4b77cd..288477075a0e 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -346,7 +346,7 @@ struct vb2_buffer {
-  *			describes the requested number of planes and sizes\[\]
-  *			contains the requested plane sizes. In this case
-  *			\*num_buffers are being allocated additionally to
-- *			q->num_buffers. If either \*num_planes or the requested
-+ *			queue buffers. If either \*num_planes or the requested
-  *			sizes are invalid callback must return %-EINVAL.
-  * @wait_prepare:	release any locks taken while calling vb2 functions;
-  *			it is called before an ioctl needs to wait for a new
-@@ -557,7 +557,7 @@ struct vb2_buf_ops {
-  * @memory:	current memory type used
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-- * @num_buffers: number of allocated/used buffers
-+ * @bufs_bitmap: bitmap to manage bufs entries.
-  * @max_num_buffers: upper limit of number of allocated/used buffers
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-@@ -621,7 +621,7 @@ struct vb2_queue {
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
- 	struct vb2_buffer		**bufs;
--	unsigned int			num_buffers;
-+	unsigned long			*bufs_bitmap;
- 	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
-@@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
-  */
- static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
- {
--	return q->num_buffers;
-+	if (!q->bufs_bitmap)
-+		return 0;
-+
-+	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
- }
- 
- /**
-@@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
- {
--	if (!q->bufs)
-+	if (!q->bufs_bitmap)
- 		return NULL;
- 
- 	if (index >= q->max_num_buffers)
- 		return NULL;
- 
--	if (index < q->num_buffers)
-+	if (test_bit(index, q->bufs_bitmap))
- 		return q->bufs[index];
- 	return NULL;
- }
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
+ 	*nplanes = 1;
 -- 
 2.39.2
 
