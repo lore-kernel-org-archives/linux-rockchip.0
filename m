@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6834FCDB482
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 08:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44673CDB482
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 08:36:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r2CW4Qvfd+IeWQ25lxLE7NOp9UJLq0Oowqi2VfgEo3A=; b=iIBs5szBc/HH1u
-	IDh/IZ9gjDHlGcI59pJmv+ZAW8m6fK3HYRDJf4m038moP/+pFTNwwGTvVww9jFUE2rznsLbuym/kj
-	xxb91wqcS8+tH4qYKILdQ5vOfGXc0Oleux6vE4hwJajIKzMposFeCot/8SQ+MJTpFxHYnh4Z/UyZn
-	SnK0bJUWuS/m6hnz5QLxkBFS+pO4v9cJS/cI1rMsa5O7Xw2jgfc5Z7ctqwkdU5S9lR2LKafUKFvz0
-	qS6UFVfmY7MF2D9iG3UsnAhmquY6toFm55L4V43nJQVj0FhvXpF/IG6PxPEwgmxCp0eiwAubmYGZ7
-	ZpaIzo71SFmR/1MJmgJA==;
+	List-Owner; bh=XFIpJ2154dT1za+gq8U8dbiUyVrrkLGDvhpDT2NMb3o=; b=nl5bPUnyEUQdrm
+	FMrnavCcDAWtHPaTgWTK9N32K6MHjOjnkNugVcReONY1B4EEG/A3WT+6OR/llAi5Y4OkA2mEE40M+
+	P/k4MhCkeR5YeApzjeJIoXGzyZpzx3kfA+R7c2EtIyxCI/m0ziiTkI+/9+Ni5Y/X828Q4SJA9gJPW
+	nFvg+dbFq3blNCFh0rd/5BnhXpHyV2QK6/dOomctKdYzIkS26x6IWfcVPwXQ3BxWJHvnrPFigcl+s
+	FwTMYHcjlPsHEKj7TBUxFiGrZpuQyHsyhnH40Rwnrlcf65qrbKiSBh/vJNhTMXK1ZNW+PrxagawK4
+	ZCMXu411VHAF+X/Iqz8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsfY8-00BhLG-1V;
-	Tue, 17 Oct 2023 08:35:36 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qsfYf-00BhV8-0v;
+	Tue, 17 Oct 2023 08:36:09 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qsfY3-00BhKI-3D;
-	Tue, 17 Oct 2023 08:35:33 +0000
+	id 1qsfYb-00BhRs-0Z;
+	Tue, 17 Oct 2023 08:36:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id A1097B81CB7;
-	Tue, 17 Oct 2023 08:35:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7BC5C433D9;
-	Tue, 17 Oct 2023 08:35:25 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 8B82DB81CB6;
+	Tue, 17 Oct 2023 08:36:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4ADC4C433CC;
+	Tue, 17 Oct 2023 08:35:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697531730;
-	bh=ZiOLN48Bk/c9orzQtPgN0BVZaur9hS8a8Id4oulCNvw=;
+	s=k20201202; t=1697531762;
+	bh=bxQ82IWwFTe1mvFeMo6rviRKyG0XFF3pKDzAPLI6B2I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hDslOWZ+KNS/vAG7TmV/lTR4mLRzVUAhL81hT+IS0af1TuUxusLgHE5YAU4UtJc48
-	 +zw+tTakCAnZRcS3lVwPHDLc0o+gedzKxyRUKdkeoDzfFIdHPi3F3BckynTYgSknoy
-	 yusVnkrf0MKXHSlLm5jgfayDDn1kVHcKSWOpUQz7WwzObVKZdeP0tS1ljE2IFByQNk
-	 bqLH3X3H/rhKvxXQEwiYhAKqcmvce/BvbnDZCDa22d+DOmtB74fosteTiKULuOxHN5
-	 IR0ePZxuJfqmI6LERvwTRdzM26Fm0Ei01uwcLL4IwQbl0fblz87anbHbcEB9qBZstr
-	 vuDch3lm/K/uA==
-Message-ID: <ff2dd5d9-bf0d-403a-b399-b6ec836ad863@kernel.org>
-Date: Tue, 17 Oct 2023 17:35:25 +0900
+	b=dP8t75ijL7gCWo4Ij5upi9+y6xFi/bvXqcHsVyAFyryOsCnpN/aMRDtfTGNcX1CNf
+	 0Bd1Br7vd/qT0gzTlU4ZSoFkULGhfSy8kGwlBusRJjIrEvv1YiJh8mbLz2bSyNq7eh
+	 c9KI+Q3wu2V+LzQAkBq4bK2/TkWt75avov5+2tuwhf8jY6ZUy1VUpEYKHaP8v/8fyL
+	 aF+zUWnJ5Qi+roCFsiCiT+GlFTY3pBbPdzz8z1eXgCxQd97qAn/YZzdpg7LHDGq0g2
+	 4rcLAmVK2vW/9o1YlhjrPxi6jN5meZUolG4TzGk0oOXs3SfzvQR7Q8xUi+s7Su0WbK
+	 QeescrVeMeImQ==
+Message-ID: <b7bf3dc2-c249-4a5c-9715-de35b77706cd@kernel.org>
+Date: Tue, 17 Oct 2023 17:35:57 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 16/26] PM / devfreq: rockchip-dfi: Add perf support
+Subject: Re: [PATCH v7 18/26] PM / devfreq: rockchip-dfi: account for multiple
+ DDRMON_CTRL registers
 Content-Language: en-US
 To: Sascha Hauer <s.hauer@pengutronix.de>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
@@ -58,16 +59,17 @@ Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
 References: <20230704093242.583575-1-s.hauer@pengutronix.de>
- <20230704093242.583575-17-s.hauer@pengutronix.de>
- <73ed646a-f20b-8050-2a45-c6faa5539193@kernel.org>
- <20231016121631.GB3359458@pengutronix.de>
+ <20230704093242.583575-19-s.hauer@pengutronix.de>
+ <98c448be-8ea8-a0bd-62cc-3bc3a5cf5569@kernel.org>
+ <20231016124903.GC3359458@pengutronix.de>
 From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20231016121631.GB3359458@pengutronix.de>
+In-Reply-To: <20231016124903.GC3359458@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_013532_310028_F0556247 
-X-CRM114-Status: GOOD (  32.85  )
+X-CRM114-CacheID: sfid-20231017_013605_516227_BDE66EBA 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,233 +86,156 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23. 10. 16. 21:16, Sascha Hauer wrote:
-> On Mon, Oct 09, 2023 at 06:48:43AM +0900, Chanwoo Choi wrote:
+On 23. 10. 16. 21:49, Sascha Hauer wrote:
+> On Mon, Oct 09, 2023 at 07:19:04AM +0900, Chanwoo Choi wrote:
 >> On 23. 7. 4. 18:32, Sascha Hauer wrote:
->>> The DFI is a unit which is suitable for measuring DDR utilization, but
->>> so far it could only be used as an event driver for the DDR frequency
->>> scaling driver. This adds perf support to the DFI driver.
+>>> The currently supported RK3399 has a set of registers per channel, but
+>>> it has only a single DDRMON_CTRL register. With upcoming RK3588 this
+>>> will be different, the RK3588 has a DDRMON_CTRL register per channel.
 >>>
->>> Usage with the 'perf' tool can look like:
+>>> Instead of expecting a single DDRMON_CTRL register, loop over the
+>>> channels and write the channel specific DDRMON_CTRL register. Break
+>>> out early out of the loop when there is only a single DDRMON_CTRL
+>>> register like on the RK3399.
 >>>
->>> perf stat -a -e rockchip_ddr/cycles/,\
->>> 		rockchip_ddr/read-bytes/,\
->>> 		rockchip_ddr/write-bytes/,\
->>> 		rockchip_ddr/bytes/ sleep 1
->>>
->>>  Performance counter stats for 'system wide':
->>>
->>>         1582524826      rockchip_ddr/cycles/
->>>            1802.25 MB   rockchip_ddr/read-bytes/
->>>            1793.72 MB   rockchip_ddr/write-bytes/
->>>            3595.90 MB   rockchip_ddr/bytes/
->>>
->>>        1.014369709 seconds time elapsed
->>>
->>> perf support has been tested on a RK3568 and a RK3399, the latter with
->>> dual channel DDR.
->>>
->>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+>>> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 >>> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 >>> ---
->>>
->>> Notes:
->>>     Changes since v5:
->>>     - Add missing initialization of &dfi->last_perf_count
->>>     
->>>     Changes since v4:
->>>     
->>>     - use __stringify to ensure event type definitions and event numbers in sysfs are consistent
->>>     - only use 64bit values in structs holding counters
->>>     - support monitoring individual DDR channels
->>>     - fix return value in rockchip_ddr_perf_event_init(): -EOPNOTSUPP -> -EINVAL
->>>     - check for invalid event->attr.config values
->>>     - start hrtimer to trigger in one second, not immediately
->>>     - use devm_add_action_or_reset()
->>>     - add suppress_bind_attrs
->>>     - enable DDRMON during probe when perf is enabled
->>>     - use a seqlock to protect perf reading the counters from the hrtimer callback modifying them
->>>
->>>  drivers/devfreq/event/rockchip-dfi.c | 442 ++++++++++++++++++++++++++-
->>>  include/soc/rockchip/rk3399_grf.h    |   2 +
->>>  include/soc/rockchip/rk3568_grf.h    |   1 +
->>>  3 files changed, 440 insertions(+), 5 deletions(-)
+>>>  drivers/devfreq/event/rockchip-dfi.c | 72 ++++++++++++++++++----------
+>>>  1 file changed, 48 insertions(+), 24 deletions(-)
 >>>
 >>> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
->>> index 50e497455dc69..969b62f071b83 100644
+>>> index 85ec93fd41858..2362d3953ba40 100644
 >>> --- a/drivers/devfreq/event/rockchip-dfi.c
 >>> +++ b/drivers/devfreq/event/rockchip-dfi.c
->>> @@ -16,10 +16,12 @@
->>>  #include <linux/regmap.h>
->>>  #include <linux/slab.h>
->>>  #include <linux/list.h>
->>> +#include <linux/seqlock.h>
->>>  #include <linux/of.h>
->>>  #include <linux/of_device.h>
->>>  #include <linux/bitfield.h>
->>>  #include <linux/bits.h>
->>> +#include <linux/perf_event.h>
->>>  
->>>  #include <soc/rockchip/rockchip_grf.h>
->>>  #include <soc/rockchip/rk3399_grf.h>
->>> @@ -41,19 +43,39 @@
->>>  					 DDRMON_CTRL_LPDDR4 | \
->>>  					 DDRMON_CTRL_LPDDR23)
->>>  
->>> +#define DDRMON_CH0_WR_NUM		0x20
->>> +#define DDRMON_CH0_RD_NUM		0x24
->>>  #define DDRMON_CH0_COUNT_NUM		0x28
->>>  #define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
->>>  #define DDRMON_CH1_COUNT_NUM		0x3c
->>>  #define DDRMON_CH1_DFI_ACCESS_NUM	0x40
->>>  
->>> +#define PERF_EVENT_CYCLES		0x0
->>> +#define PERF_EVENT_READ_BYTES		0x1
->>> +#define PERF_EVENT_WRITE_BYTES		0x2
->>> +#define PERF_EVENT_READ_BYTES0		0x3
->>> +#define PERF_EVENT_WRITE_BYTES0		0x4
->>> +#define PERF_EVENT_READ_BYTES1		0x5
->>> +#define PERF_EVENT_WRITE_BYTES1		0x6
->>> +#define PERF_EVENT_READ_BYTES2		0x7
->>> +#define PERF_EVENT_WRITE_BYTES2		0x8
->>> +#define PERF_EVENT_READ_BYTES3		0x9
->>> +#define PERF_EVENT_WRITE_BYTES3		0xa
->>> +#define PERF_EVENT_BYTES		0xb
->>> +#define PERF_ACCESS_TYPE_MAX		0xc
->>> +
->>>  /**
->>>   * struct dmc_count_channel - structure to hold counter values from the DDR controller
->>>   * @access:       Number of read and write accesses
->>>   * @clock_cycles: DDR clock cycles
->>> + * @read_access:  number of read accesses
->>> + * @write_acccess: number of write accesses
->>>   */
->>>  struct dmc_count_channel {
->>> -	u32 access;
->>> -	u32 clock_cycles;
->>> +	u64 access;
->>> +	u64 clock_cycles;
->>> +	u64 read_access;
->>> +	u64 write_access;
->>>  };
->>>  
->>>  struct dmc_count {
->>> @@ -69,6 +91,11 @@ struct rockchip_dfi {
->>>  	struct devfreq_event_dev *edev;
->>>  	struct devfreq_event_desc desc;
->>>  	struct dmc_count last_event_count;
->>> +
->>> +	struct dmc_count last_perf_count;
->>> +	struct dmc_count total_count;
->>> +	seqlock_t count_seqlock; /* protects last_perf_count and total_count */
->>> +
->>>  	struct device *dev;
->>>  	void __iomem *regs;
->>>  	struct regmap *regmap_pmu;
->>> @@ -77,6 +104,14 @@ struct rockchip_dfi {
->>>  	struct mutex mutex;
->>>  	u32 ddr_type;
->>>  	unsigned int channel_mask;
->>> +	enum cpuhp_state cpuhp_state;
->>> +	struct hlist_node node;
->>> +	struct pmu pmu;
->>> +	struct hrtimer timer;
->>> +	unsigned int cpu;
->>> +	int active_events;
->>> +	int burst_len;
->>> +	int buswidth[DMC_MAX_CHANNELS];
+>>> @@ -113,12 +113,13 @@ struct rockchip_dfi {
+>>>  	int burst_len;
+>>>  	int buswidth[DMC_MAX_CHANNELS];
+>>>  	int ddrmon_stride;
+>>> +	bool ddrmon_ctrl_single;
 >>>  };
 >>>  
 >>>  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
->>> @@ -145,7 +180,7 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
->>>  	mutex_unlock(&dfi->mutex);
->>>  }
->>>  
->>> -static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *count)
->>> +static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *c)
->>
->> Actually, this change is not related to the patch's role which supports perf.
->> Also, it is better to use 'res' argument name because rockchip_ddr_perf_counters_add()
->> used the 'struct dmc_count *res' argument name.
-> 
-> Indeed the variable rename is not required here and for consistency
-> with rockchip_ddr_perf_counters_add() 'res' would be a better name.
-> 
-> Are you fine with renaming 'c' to 'res' in this patch or do you want me
-> to make a separate patch from the renaming?
-> 
->>
->>
 >>>  {
->>>  	u32 i;
 >>>  	void __iomem *dfi_regs = dfi->regs;
->>> @@ -153,13 +188,36 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
->>>  	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
->>>  		if (!(dfi->channel_mask & BIT(i)))
->>>  			continue;
->>> -		count->c[i].access = readl_relaxed(dfi_regs +
->>> +		c->c[i].read_access = readl_relaxed(dfi_regs +
->>> +				DDRMON_CH0_RD_NUM + i * 20);
->>> +		c->c[i].write_access = readl_relaxed(dfi_regs +
->>> +				DDRMON_CH0_WR_NUM + i * 20);
->>> +		c->c[i].access = readl_relaxed(dfi_regs +
->>>  				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
->>> -		count->c[i].clock_cycles = readl_relaxed(dfi_regs +
->>> +		c->c[i].clock_cycles = readl_relaxed(dfi_regs +
->>>  				DDRMON_CH0_COUNT_NUM + i * 20);
+>>> -	int ret = 0;
+>>> +	int i, ret = 0;
+>>>  
+>>>  	mutex_lock(&dfi->mutex);
+>>>  
+>>> @@ -132,29 +133,41 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+>>>  		goto out;
 >>>  	}
->>>  }
 >>>  
->>> +static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
->>> +					   const struct dmc_count *now,
->>> +					   struct dmc_count *res)
->>> +{
->>> +	const struct dmc_count *last = &dfi->last_perf_count;
->>> +	int i;
->>> +
+>>> -	/* clear DDRMON_CTRL setting */
+>>> -	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
+>>> -		       DDRMON_CTRL_HARDWARE_EN), dfi_regs + DDRMON_CTRL);
 >>> +	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
->>> +		res->c[i].read_access = dfi->total_count.c[i].read_access +
->>> +			(u32)(now->c[i].read_access - last->c[i].read_access);
->>> +		res->c[i].write_access = dfi->total_count.c[i].write_access +
->>> +			(u32)(now->c[i].write_access - last->c[i].write_access);
->>> +		res->c[i].access = dfi->total_count.c[i].access +
->>> +			(u32)(now->c[i].access - last->c[i].access);
->>> +		res->c[i].clock_cycles = dfi->total_count.c[i].clock_cycles +
->>> +			(u32)(now->c[i].clock_cycles - last->c[i].clock_cycles);
->>> +	}
->>> +}
->>> +
->>>  static int rockchip_dfi_event_disable(struct devfreq_event_dev *edev)
->>>  {
->>>  	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->>> @@ -223,6 +281,370 @@ static const struct devfreq_event_ops rockchip_dfi_ops = {
->>>  	.set_event = rockchip_dfi_set_event,
->>>  };
+>>> +		u32 ctrl = 0;
 >>>  
-> 
-> [...]
-> 
->>> +static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
->>> +{
->>> +	struct rockchip_dfi *dfi = container_of(event->pmu, struct rockchip_dfi, pmu);
->>> +	int blen = dfi->burst_len;
->>> +	struct dmc_count total, now;
->>> +	unsigned int seq;
->>> +	u64 c = 0;
+>>> -	/* set ddr type to dfi */
+>>> -	switch (dfi->ddr_type) {
+>>> -	case ROCKCHIP_DDRTYPE_LPDDR2:
+>>> -	case ROCKCHIP_DDRTYPE_LPDDR3:
+>>> -		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
+>>> -			       dfi_regs + DDRMON_CTRL);
+>>> -		break;
+>>> -	case ROCKCHIP_DDRTYPE_LPDDR4:
+>>> -	case ROCKCHIP_DDRTYPE_LPDDR4X:
+>>> -		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
+>>> -			       dfi_regs + DDRMON_CTRL);
+>>> -		break;
+>>> -	default:
+>>> -		break;
+>>> -	}
+>>> +		if (!(dfi->channel_mask & BIT(i)))
+>>> +			continue;
+>>>  
+>>> -	/* enable count, use software mode */
+>>> -	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
+>>> -		       dfi_regs + DDRMON_CTRL);
+>>> +		/* clear DDRMON_CTRL setting */
+>>> +		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN |
+>>> +			       DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN),
+>>> +			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+>>> +
+>>> +		/* set ddr type to dfi */
+>>> +		switch (dfi->ddr_type) {
+>>> +		case ROCKCHIP_DDRTYPE_LPDDR2:
+>>> +		case ROCKCHIP_DDRTYPE_LPDDR3:
+>>> +			ctrl = DDRMON_CTRL_LPDDR23;
+>>> +			break;
+>>> +		case ROCKCHIP_DDRTYPE_LPDDR4:
+>>> +		case ROCKCHIP_DDRTYPE_LPDDR4X:
+>>> +			ctrl = DDRMON_CTRL_LPDDR4;
+>>> +			break;
+>>> +		default:
+>>> +			break;
+>>> +		}
+>>> +
+>>> +		writel_relaxed(HIWORD_UPDATE(ctrl, DDRMON_CTRL_DDR_TYPE_MASK),
+>>> +			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+>>> +
+>>> +		/* enable count, use software mode */
+>>> +		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
+>>> +			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+>>> +
+>>> +		if (dfi->ddrmon_ctrl_single)
+>>> +			break;
+>>> +	}
+>>>  out:
+>>>  	mutex_unlock(&dfi->mutex);
+>>>  
+>>> @@ -164,6 +177,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+>>>  static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+>>>  {
+>>>  	void __iomem *dfi_regs = dfi->regs;
+>>> +	int i;
+>>>  
+>>>  	mutex_lock(&dfi->mutex);
+>>>  
+>>> @@ -174,8 +188,17 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+>>>  	if (dfi->usecount > 0)
+>>>  		goto out;
+>>>  
+>>> -	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+>>> -		       dfi_regs + DDRMON_CTRL);
+>>> +	for (i = 0; i < DMC_MAX_CHANNELS; i++) {
+>>> +		if (!(dfi->channel_mask & BIT(i)))
+>>> +			continue;
+>>> +
+>>> +		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+>>> +			      dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+>>> +
+>>> +		if (dfi->ddrmon_ctrl_single)
+>>> +			break;
+>>> +	}
+>>> +
+>>>  	clk_disable_unprepare(dfi->clk);
+>>>  out:
+>>>  	mutex_unlock(&dfi->mutex);
+>>> @@ -666,6 +689,7 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+>>>  	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
+>>>  
+>>>  	dfi->ddrmon_stride = 0x14;
+>>> +	dfi->ddrmon_ctrl_single = true;
+>>>  
+>>>  	return 0;
+>>>  };
 >>
->> Actually, it is difficult to understand the meaning of 'c' local variable name.
->> Need to use the more clear vairable name instead of 'c'.
+>> Even if rk3568 has the only one channle and don't need to check whether 'dfi->ddrmon_ctrl_single'
+>> is true or not because of 'if (!(dfi->channel_mask & BIT(i)))',
+>> I recommand the add 'dfi->ddrmon_ctrl_single = true;' for rk3568 in order to
+>> provide the number of DDRMON_CTRL reigster of rk3568.
+>>
+>> If rk3568 doesn't have the 'ddrmon_ctrl_single', actually it is not easy
+>> to catch what why are there no initilization for rk3568.
 > 
-> 'c' is short for 'count' as in the function name xxx_get_count(). It is
-> initialized to 0, filled with values throughout the function and
-> returned at the end. Which other name do you suggest?
+> Ok, will change.
+> 
 
-If c indicats the 'count', better to use 'count' name. 
-Actually, 'c' is difficult to catch the meaning from just name.
-
-> 
-> Sascha
-> 
+Thanks.
 
 -- 
 Best Regards,
