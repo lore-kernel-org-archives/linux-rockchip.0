@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30AF5CDB474
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1714DCDB482
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:53:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gjtX855ne2eR4f0YXyu2pCzQa/43Cx6bwpzg626u/v0=; b=A/NfYwC/yWYWSV
-	meb3/niycq4JvzCpdxtzkxyOr23I2fSPv/dpm6/SQR5HSqomPSe8hvojdRwK4LGIFms+MZg4XSJFT
-	GA8MT3qCzRN6JTPWJouLybW21iDZBCHN8N9jg3eBCwKxI7WXZHl4pKtVg3k0VVn8bkl6BeKD6gKsY
-	BNyARcjT0M/ulVFxG04cysvENk+Unh1FEb6Ny7xoQqsP8sQasljqxYrxcRRRVHu55CImeaYagoKVT
-	ku6ccR7RqW7iZPDT6uQdUW8XT5Gq58nGUiEz2fE5lbxRdSCl8GFpzZgOYXTnmUV7EqDO/qKjjgU/J
-	uNWtxHuc0QSn7fYsXacg==;
+	List-Owner; bh=+g6mFBjgZS8TwrfGg/RPVptrSmRJuS1mVhDaBhkLoi0=; b=jjK+4jLKMzYUdh
+	IQjuYgrxB0li0JzZum3I+yKiNQnPubYPRg5c0+xK7fxXkZEkafD3AYtKC+Bc+lQpAz8Lv+DQ5dxZV
+	i3PP/WGWBpE1nrjC5WGpoeV1+vnORKzb1C5MHvDhTPAc8sxnqdXFg2Aer8lVzWxYjzih4jbCv7ZKH
+	+LZnYNcGoKYsRFdvyUq0ULodkfzF5K5srucSMllZkW/zLxRvojcNF/5sV4pBVZF8LwZvuPsDuakBD
+	oebZakW+bX27OM+ZGVYcODNnduJzIQt518iSh2/u6pcYYEGZNv5BiOPvzyf2lCHqv1L/HMpdHuMTA
+	XKlBJN2WzEheGWkQXdGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslR9-00Cdt8-10;
-	Tue, 17 Oct 2023 14:52:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN9-00CZRW-23;
-	Tue, 17 Oct 2023 14:48:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=0VbFSDoUBV2OQmTPRMjGc4JCcFBJeoq3jdxUe58wRUU=; b=Adlxofi8SeYIBFWE6QxS2M9KSh
-	nv2+p4hLw9A9A4boElgcB3k7hBQQz1bP6dVgbqFJ06dSwZzfpG9VjzOGSAJjRjRalrbgA8GUPKdgZ
-	mAxwK5cFNEs1ve+cVTAt+H0HnL/+ZniDMyV1508c0uLG/L55cA60pBK4JVobEH6e2M8YYW73q4oNA
-	K6bB56LxpY49iF8na84jENIhB6cS3AUnRPfPnxgQZ92zz5V9OXxbm52NMjjVi9Wc5JFINTM28/Dcl
-	MiGEdsfM7rI7G/OdhWcQ00A312k1vr2tn+1hJBI1gn4C3HRprNqpTAcFibeamP3Z94LyvTmfiGqb2
-	rCMPmJMg==;
+	id 1qslRB-00Cdw0-2B;
+	Tue, 17 Oct 2023 14:52:49 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslN2-007A7y-1u;
-	Tue, 17 Oct 2023 14:48:37 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qslN5-00CZLi-0f;
+	Tue, 17 Oct 2023 14:48:39 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2CE7D660733E;
-	Tue, 17 Oct 2023 15:48:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36B5166073C8;
+	Tue, 17 Oct 2023 15:48:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554110;
-	bh=CXn4h0IxtDsAWkm4SwlGBeyD+zWA1T36ht/PdPVPBJU=;
+	s=mail; t=1697554112;
+	bh=LkM/7EVzkzeCersLJmzLfirkGugiivs+DlFzZEGNCYQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EqapPuIHyciwwS4QnCuv/Etz1CZjJcWETmbIw9Uo11K4Uut7Iyuzba8cHeLsCntsH
-	 J1ybeIfCb5rUmtfmF6w7hFtBJzCaMDy5+BwE1kCFt7g9Cm275r3bEHOpImhRoBm1Vz
-	 mbnxNz4RdVoSsM9ljq7z05AQp9S5cDXSPOz/H8Qa8NlE2NBQMU4tCNUZ+F2cHNEx5j
-	 klFgr6e6/vtJ/lk0gT6upT3sdETSi3ufGPjZO+MUraEvOJSLZ2OcHKGuh7YphgZfOj
-	 sVrONa8KmhaqpHyqchpPOGtPTuhba2618bMX9QFvY0zApyQ9W9QetDK5oM04oJeaTM
-	 Fm0rTOru6pw3g==
+	b=Uva93Th8vmizpW2031o+HP0QLJaXxT0IRyn7V0PX0kDGtr3Gn3a9DI5UdlaFPXH11
+	 I6SijsoPY5zeUTjf8GzxmiTDXLsOEUREeOFKKEkn3bizzsctWhIeZG7p4TiJhKCm0D
+	 Eur9jpYuH1z6RsJVza4RPxXgqkebnQPy7ZBjKcB3BHqAMlTjOxEVYuXUiBOR+fPjEU
+	 iUq2rZp+B5eRI8Lp1gdWA/HJWWoQXytK72hr32J15V0JImsSabwQa7JR17VLZJ0Hml
+	 J/HbvQGSUDgNmkAOnbBWqj52HgLilvUrr78HhfS8NwQCLQVtWwV2R6blfTL2yAuPMK
+	 G/osVmxYP8ylQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 51/56] media: core: Rework how create_buf index returned value is computed
-Date: Tue, 17 Oct 2023 16:47:51 +0200
-Message-Id: <20231017144756.34719-52-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 55/56] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+Date: Tue, 17 Oct 2023 16:47:55 +0200
+Message-Id: <20231017144756.34719-56-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_154832_810838_6C738FC4 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20231017_074835_597395_097477B0 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,162 +88,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When DELETE_BUFS will be introduced holes could created in bufs array.
-To be able to reuse these unused indices reworking how create->index
-is set is mandatory.
-Let __vb2_queue_alloc() decide which first index is correct and
-forward this to the caller.
+Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 22 ++++++++++++-------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 20 +++++++++++------
- include/media/videobuf2-core.h                |  5 ++++-
- 3 files changed, 31 insertions(+), 16 deletions(-)
+ .../media/platform/verisilicon/hantro_drv.c   |  1 +
+ .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
+ drivers/media/test-drivers/vim2m.c            |  2 ++
+ drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
+ include/media/v4l2-mem2mem.h                  | 12 +++++++++++
+ 5 files changed, 36 insertions(+)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 72ef7179d80a..2c8cf479a962 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -442,16 +442,21 @@ static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
-  */
- static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			     unsigned int num_buffers, unsigned int num_planes,
--			     const unsigned plane_sizes[VB2_MAX_PLANES])
-+			     const unsigned plane_sizes[VB2_MAX_PLANES],
-+			     unsigned int *first_index)
- {
--	unsigned int q_num_buffers = vb2_get_num_buffers(q);
- 	unsigned int buffer, plane;
- 	struct vb2_buffer *vb;
-+	unsigned long index;
- 	int ret;
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 7f5b82eb6649..c8fed313c36f 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -248,6 +248,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->dev->vpu_mutex;
+ 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
++	src_vq->supports_delete_bufs = true;
  
- 	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
--			    q->max_num_buffers - q_num_buffers);
-+			    q->max_num_buffers - vb2_get_num_buffers(q));
-+
-+	index = vb2_get_num_buffers(q);
-+
-+	*first_index = index;
- 
- 	for (buffer = 0; buffer < num_buffers; ++buffer) {
- 		/* Allocate vb2 buffer structures */
-@@ -471,7 +476,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			vb->planes[plane].min_length = plane_sizes[plane];
- 		}
- 
--		vb2_queue_add_buffer(q, vb, q_num_buffers + buffer);
-+		vb2_queue_add_buffer(q, vb, index++);
- 		call_void_bufop(q, init_buffer, vb);
- 
- 		/* Allocate video buffer memory for the MMAP type */
-@@ -812,7 +817,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
--	unsigned int i;
-+	unsigned int i, first_index;
- 	int ret = 0;
- 
- 	if (q->streaming) {
-@@ -898,7 +903,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers =
--		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes);
-+		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes, &first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-@@ -972,7 +977,8 @@ EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[])
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index)
- {
- 	unsigned int num_planes = 0, num_buffers, allocated_buffers;
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
-@@ -1034,7 +1040,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 
- 	/* Finally, allocate buffers and video memory */
- 	allocated_buffers = __vb2_queue_alloc(q, memory, num_buffers,
--				num_planes, plane_sizes);
-+				num_planes, plane_sizes, first_index);
- 	if (allocated_buffers == 0) {
- 		dprintk(q, 1, "memory allocation failed\n");
- 		ret = -ENOMEM;
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 201438ffd13f..c28905bd893b 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -805,11 +805,16 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
- 	for (i = 0; i < requested_planes; i++)
- 		if (requested_sizes[i] == 0)
- 			return -EINVAL;
--	return ret ? ret : vb2_core_create_bufs(q, create->memory,
--						create->flags,
--						&create->count,
--						requested_planes,
--						requested_sizes);
-+	if (ret)
-+		return ret;
-+
-+	ret = vb2_core_create_bufs(q, create->memory,
-+				   create->flags,
-+				   &create->count,
-+				   requested_planes,
-+				   requested_sizes,
-+				   &create->index);
-+	return ret;
+ 	return vb2_queue_init(dst_vq);
  }
- EXPORT_SYMBOL_GPL(vb2_create_bufs);
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 27a1e77cca38..0fd1c2fc78c8 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+ 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
+ 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
++	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
+ 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
  
-@@ -1037,15 +1042,16 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
- 	int res = vb2_verify_memory_type(vdev->queue, p->memory,
- 			p->format.type);
+ 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
+index 3e3b424b4860..17213ce42059 100644
+--- a/drivers/media/test-drivers/vim2m.c
++++ b/drivers/media/test-drivers/vim2m.c
+@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
+ 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
+ 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
++	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
+ 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
  
--	p->index = vdev->queue->num_buffers;
- 	fill_buf_caps(vdev->queue, &p->capabilities);
- 	validate_memory_flags(vdev->queue, p->memory, &p->flags);
- 	/*
- 	 * If count == 0, then just check if memory and type are valid.
- 	 * Any -EBUSY result from vb2_verify_memory_type can be mapped to 0.
- 	 */
--	if (p->count == 0)
-+	if (p->count == 0) {
-+		p->index = vb2_get_num_buffers(vdev->queue);
- 		return res != -EBUSY ? res : 0;
-+	}
- 	if (res)
- 		return res;
- 	if (vb2_queue_is_busy(vdev->queue, file))
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index e77a397195f2..6986ff4b77cd 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -803,6 +803,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
-  * @count: requested buffer count.
-  * @requested_planes: number of planes requested.
-  * @requested_sizes: array with the size of the planes.
-+ * @first_index: index of the first created buffer, all allocated buffers have
-+ *		 indices in the range [first..first+count]
-  *
-  * Videobuf2 core helper to implement VIDIOC_CREATE_BUFS() operation. It is
-  * called internally by VB2 by an API-specific handler, like
-@@ -819,7 +821,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			 unsigned int flags, unsigned int *count,
- 			 unsigned int requested_planes,
--			 const unsigned int requested_sizes[]);
-+			 const unsigned int requested_sizes[],
-+			 unsigned int *first_index);
+ 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+@@ -1133,6 +1134,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->vb_mutex;
++	dst_vq->supports_delete_bufs = true;
  
+ 	return vb2_queue_init(dst_vq);
+ }
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 0cc30397fbad..d1d59943680f 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
+ 
++int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			 struct v4l2_delete_buffers *d)
++{
++	struct vb2_queue *vq;
++
++	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
++
++	return vb2_delete_bufs(vq, d);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
++
+ int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_create_buffers *create)
+ {
+@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
+ }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
+ 
++int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
++			       struct v4l2_delete_buffers *d)
++{
++	struct v4l2_fh *fh = file->private_data;
++
++	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
++
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
+ 				struct v4l2_buffer *buf)
+ {
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index d6c8eb2b5201..161f85c42dc8 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
+ 			 struct v4l2_buffer *buf);
+ 
++/**
++ * v4l2_m2m_delete_bufs() - delete buffers from the queue
++ *
++ * @file: pointer to struct &file
++ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
++ * @d: pointer to struct &v4l2_delete_buffers
++ */
++int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
++			 struct v4l2_delete_buffers *d);
++
  /**
-  * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
+  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
+  * on the type
+@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
+ 				struct v4l2_requestbuffers *rb);
+ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
+ 				struct v4l2_create_buffers *create);
++int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
++			       struct v4l2_delete_buffers *d);
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
+ 				struct v4l2_buffer *buf);
+ int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
 -- 
 2.39.2
 
