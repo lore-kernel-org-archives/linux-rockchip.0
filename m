@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E23CDB482
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1DECDB483
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Oct 2023 14:51:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RkOLYaiLWhhdSsKzmKRIHPja+Yt+/tRMmGvGK4kEXEA=; b=391DdtMCeiM88q
-	P252yb7v9PlAV5j6CgEKvyzat7fhFSYYf5habwl7L7crVKzzqIXEJssQOjj9WhJv7vMxH8bAhGp1I
-	PaOEOpUadgIyKKQwUsYl3RREre0bkr/mn5A/ogwP8MGFjw7/Qwgutz3O6qDq4bC7iZMlH0/Va50fw
-	vya4cwynmWlQ2nruTdSbVEMIohgB9KeydCHNXfRJBF8bEZbW6QO4LWjUiDBC/2m/7oXzpnKUbNFOX
-	F6/AZsPB2LICg/RtSFsu5lPoiQD+k+4iN2DAiAioz07161CoN7GZ3np/rUI1aG/YUVlnxGGADnus4
-	/DRlhmoY8kqh77BJujcA==;
+	List-Owner; bh=wkOnC0vi6Ice1NoHOB2mI+UxBCFL+8lgWgruTxoYcU0=; b=hNIOthrafe6zaL
+	vU47GsG4lcjIYeBqfZNWFRahrrNJ58JUzul6mqnM/XOLrHikVvG9Nm7eXm4VlODSPnQC8nOXuHNzn
+	vMp4onio4LdEyA5xGxeWcPy6YA2p15ZZgSeCV9Qhwq45mhXtByettsQnz5uBmPkjZAkI476ziF9xE
+	D67mn6KEjcT7b/uNlO6Qvlj7sT7noS4pAtYxBEYAZqc5fl2sOKzFCc1Faxt/pYp026EXlpMJPnC9c
+	5Q4pAEqUvVIu7k+YLfZemz+VCU3AyL4UuGsQhnRDRy6fiHgsgm5ELKu8n6XYJJ1w7rFr4Kux6PsCK
+	oWKuv/WIsijUysXmJpTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslPE-00CbVG-0o;
-	Tue, 17 Oct 2023 14:50:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qslPO-00CbiK-2Q;
+	Tue, 17 Oct 2023 14:50:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslMs-00CZ50-0Y;
-	Tue, 17 Oct 2023 14:48:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=6naI9jAgWYBGhWi1qqi3RabSUM4tX/YeV1rNn+0zlZU=; b=IRHRJ5z2lj5Ot+V91BKjSLXly6
-	ZF2phkFGGNcG+OsKpXqZB2ZDdTKTo7vyDqHj6RlVfcr5cftZHQ/qQJO6CWJy1toKy2Kh+l/yD3ENp
-	tpX7EiYKAMQcJslyOGjf4BzMc8lEOLjB1KDEuWgkCR179arDFL9upPcM335Zhylmw1dtiMLzbNvib
-	QR3bCmO6hKm5gidbVCDk0tGzVjrWDY/uAamhcePgAXRNWz7UoZ7CNnPDbg0ooOq+EWSfllxS1iKiR
-	fEMBwAwjx0SNcBoMNI/OdprsBznJ6ZGwkb612eFX5j2P8803W7yf+OkxYSn1EykzPhD93hSqhv1eF
-	e5k+OP0g==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qslMn-0079yW-0z;
-	Tue, 17 Oct 2023 14:48:20 +0000
+	id 1qslMn-00CYzU-1x;
+	Tue, 17 Oct 2023 14:48:23 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:7205:da49:a7e8:59f8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B18FF66072F4;
-	Tue, 17 Oct 2023 15:48:13 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 54E126607375;
+	Tue, 17 Oct 2023 15:48:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697554094;
-	bh=+SrUe883wLqq7v9G8MLuRZrzPHfSobRjkRT5Sxaur58=;
+	s=mail; t=1697554095;
+	bh=XncDOWWMuPZSxD68Y9kDXDjEfVt/yc45C6+oTQD6xKw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FTrfzkYOUFEaypOirJmchtUF+AvoupwvBQrV8f1KDKYHMxDadGxipG60O9gy9GCnf
-	 ozQGGLYmXJXb8lJEt2hyOPV/6PTCt/WdcNrpZTRY8hDOreYXS3xRJBCMmvHnGOKFj9
-	 fG8oY1CRVJngNts00z3d6dOLpbgNJJKAyue9Ub0LtwycDZy+hXI9gAkGO0Z343TFIu
-	 etQ6pS+2yfwiWD53upzlrn1TMULf8oxHiD9rfKL8kquK8slae2FkzZtTL5VzL6RBl8
-	 64Ug6UOByQDoG1JJ4GrMA7ZI3iuwxMUhj+AWmhSJOf1fn/4UseCir+2vGoGEiEIYIc
-	 ifU/87Db9cRMw==
+	b=eugusbxbRhpH6t3IJEtRO10Utlf0w1h9mdOPq3QxSjGG4IQpCzzJ7//dscMwfNzA+
+	 hqC73V8yfPK+JiOrY3cCPS9xG/d69omFGiN0r3ZjPF+Mp2i3+7qhGYzzoUf0CPZL9I
+	 toBF4q5txeaIziTdACljNvBHmTFM6dknaxipMlOoEKG1EL4Ix3wnBotEMmmTFRDMj3
+	 0+/JNrEisC0ml2sF62HT89yQVvC23PIEkYsLfQeoCn7CfiIhXtOzfK2pZblujEBMu0
+	 djACjsvHNL/BTCpWmJGhUA3O2GAMgF2isfyysq9YATncOnO69BmawkJvlCkMEnaQwy
+	 SiHpLPD9ahdOQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +62,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Antti Palosaari <crope@iki.fi>
-Subject: [PATCH v12 20/56] media: dvb-frontends: rtl2832: Stop direct calls to queue num_buffers field
-Date: Tue, 17 Oct 2023 16:47:20 +0200
-Message-Id: <20231017144756.34719-21-benjamin.gaignard@collabora.com>
+	Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>
+Subject: [PATCH v12 23/56] media: pci: cx18: Stop direct calls to queue num_buffers field
+Date: Tue, 17 Oct 2023 16:47:23 +0200
+Message-Id: <20231017144756.34719-24-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 References: <20231017144756.34719-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_154817_564868_C1229528 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20231017_074817_815462_334A525C 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,33 +91,39 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+This allows us to change how the number of buffers is computed in the
+futur.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Antti Palosaari <crope@iki.fi>
+CC: Sergey Kozlov <serjk@netup.ru>
+CC: Abylay Ospan <aospan@netup.ru>
 ---
- drivers/media/dvb-frontends/rtl2832_sdr.c | 5 +++--
+ drivers/media/pci/cx18/cx18-streams.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/dvb-frontends/rtl2832_sdr.c b/drivers/media/dvb-frontends/rtl2832_sdr.c
-index 02c619e51641..023db6e793f8 100644
---- a/drivers/media/dvb-frontends/rtl2832_sdr.c
-+++ b/drivers/media/dvb-frontends/rtl2832_sdr.c
-@@ -439,12 +439,13 @@ static int rtl2832_sdr_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
+index 597472754c4c..cfbc4a907802 100644
+--- a/drivers/media/pci/cx18/cx18-streams.c
++++ b/drivers/media/pci/cx18/cx18-streams.c
+@@ -104,6 +104,7 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 			    unsigned int *nbuffers, unsigned int *nplanes,
+ 			    unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct rtl2832_sdr_dev *dev = vb2_get_drv_priv(vq);
- 	struct platform_device *pdev = dev->pdev;
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	struct cx18_stream *s = vb2_get_drv_priv(vq);
+ 	struct cx18 *cx = s->cx;
+ 	unsigned int szimage;
+@@ -121,8 +122,8 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 	 * Let's request at least three buffers: two for the
+ 	 * DMA engine and one for userspace.
+ 	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
  
- 	dev_dbg(&pdev->dev, "nbuffers=%d\n", *nbuffers);
- 
- 	/* Need at least 8 buffers */
--	if (vq->num_buffers + *nbuffers < 8)
--		*nbuffers = 8 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 8)
-+		*nbuffers = 8 - q_num_bufs;
- 	*nplanes = 1;
- 	sizes[0] = PAGE_ALIGN(dev->buffersize);
- 	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
 -- 
 2.39.2
 
