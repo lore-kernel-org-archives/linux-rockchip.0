@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B70BCDB482
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 07:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A6FACDB47E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 07:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dQXy44vj7FmPyvZb4Al3gwfo6wfngwHu0uULm+5iYWk=; b=bQxaJyNOoxCLtW
-	q6FcTWgm56FsuwZQvXKVS/zALb0ZXPi753YGxljdqdhnzcVcsIM6MCxvJ0LRLIIvgCuO6qHyccP1j
-	OHwUNhOCllFAWV6wF8jEgrsWswwSk7WYZHWW5ytIV+dhH5kGYeBE0C/nKYeqxKCr/G52FxvYwrsiv
-	o2GoeQ4WFjapkDjubDJyWx8S4Iq/+wk+KvJHHaSzq6+TpIFcvCzHJiIeV9qIpayBLU2Iw6bVz3RAZ
-	b2nD+D5agCMGN9ijzMmPLAeDuRLVxJbZMbOzhMEqerwwArad/KyRq1qv7hbH3EDb23hE5elWH73VM
-	X0NoF7t0FLlZCy6tN3Lg==;
+	List-Owner; bh=Z8KDUSYpQV4Pq2Q+ONGAu+e+iYoh1sgXEJ7h0wq+4Jk=; b=l/OR2e71xWkzit
+	olTO5qt2l3EUAizLw4FQYs4GC0XAK2xbWdfWmrFvMOwZXimjn298hsBZEZqP4KYsUrHMZLqLHk5Cy
+	auNZpjZJwqBtJ1tPSJYN9sC5n5LbuqtXGWNCV3HssqGk/qtQFMCaYkJcKZLevu9IAgvCU3VCFHzgy
+	Lcz6G1MMkwje46wi+HdaOe6tyeOUPU8cpTrIFktIZTzWSK2TaWuWIc8UQoZkWu7U90NRA6voMg/qD
+	87NuR2pRVxY2I/cQEIba2c2+UGoPUhCEyB4fkft1agbqbJo+jqmIYYfmjq5tLe54DizHe10qkyBis
+	ewl3QifMP6IHV8zV7UTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt0fs-00E1Cl-0E;
-	Wed, 18 Oct 2023 07:09:00 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qt0hF-00E1KX-27;
+	Wed, 18 Oct 2023 07:10:25 +0000
+Received: from mail-m11867.qiye.163.com ([115.236.118.67])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt0fo-00E1Bb-02
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Oct 2023 07:08:57 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qt0fP-0007OP-SW; Wed, 18 Oct 2023 09:08:31 +0200
-Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qt0fO-002Uki-2j; Wed, 18 Oct 2023 09:08:30 +0200
-Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qt0fN-00F2o1-Vu; Wed, 18 Oct 2023 09:08:30 +0200
-Date: Wed, 18 Oct 2023 09:08:29 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-pm@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
-	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Chanwoo Choi <chanwoo@kernel.org>,
-	Vincent Legoll <vincent.legoll@gmail.com>,
-	Will Deacon <will@kernel.org>, kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v8 08/26] PM / devfreq: rk3399_dmc, dfi: generalize
- DDRTYPE defines
-Message-ID: <20231018070829.GH3359458@pengutronix.de>
-References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
- <20231018061714.3553817-9-s.hauer@pengutronix.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231018061714.3553817-9-s.hauer@pengutronix.de>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+	id 1qt0hB-00E1Ix-3A;
+	Wed, 18 Oct 2023 07:10:23 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=FFn//DdqXY6SCt3H7lpmdNqDA94VR6B1sOx+d5ZlzptwarV3XyY5JF+SI7vdRduIVy5m0xiuNlH6lPWGqBnIykJ6HP6DwH0c1dF7m6NGTut8GvBo7pdDtkzuqlkGkFCrvwnjrkTXEzZo4DOBHftrPWtokUDch1Q7z6lLzU5Zd6o=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=BMhNAqzbDmq8eNBUY2e5UgeE+146u/GGAugoGpYPgqc=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 80BF64002B7;
+	Wed, 18 Oct 2023 15:01:52 +0800 (CST)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	kever.yang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com,
+	andy.yan@rock-chips.com
+Subject: [PATCH v4 2/4] clk: rockchip: add support for gate link
+Date: Wed, 18 Oct 2023 15:01:42 +0800
+Message-Id: <20231018070144.8512-3-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231018070144.8512-1-zhangqing@rock-chips.com>
+References: <20231018070144.8512-1-zhangqing@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkxJS1ZPSxhCT0lNShodGR1VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8b41973e5e2eb3kusn80bf64002b7
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ni46FRw4ATwyTUsrCCoTGkoW
+	SQgwCjZVSlVKTUJMTUpJTkpIT01JVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUNIQ0o3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_000856_051660_5B1D2FCD 
-X-CRM114-Status: GOOD (  32.28  )
+X-CRM114-CacheID: sfid-20231018_001022_176234_94593E69 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,159 +79,239 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Heiko,
+Recent Rockchip SoCs have a new hardware block called Native Interface
+Unit (NIU), which gates clocks to devices behind them. These effectively
+need two parent clocks.
+Use GATE_LINK to handle this.
 
-Could you provide your Ack for this patch?
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/Makefile        |   1 +
+ drivers/clk/rockchip/clk-gate-link.c | 120 +++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk.c           |   7 ++
+ drivers/clk/rockchip/clk.h           |  22 +++++
+ 4 files changed, 150 insertions(+)
+ create mode 100644 drivers/clk/rockchip/clk-gate-link.c
 
-Thanks
- Sascha
-
-On Wed, Oct 18, 2023 at 08:16:56AM +0200, Sascha Hauer wrote:
-> The DDRTYPE defines are named to be RK3399 specific, but they can be
-> used for other Rockchip SoCs as well, so replace the RK3399_PMUGRF_
-> prefix with ROCKCHIP_. They are defined in a SoC specific header
-> file, so when generalizing the prefix also move the new defines to
-> a SoC agnostic header file. While at it use GENMASK to define the
-> DDRTYPE bitfield and give it a name including the full register name.
-> 
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/devfreq/event/rockchip-dfi.c |  9 +++++----
->  drivers/devfreq/rk3399_dmc.c         | 10 +++++-----
->  include/soc/rockchip/rk3399_grf.h    |  7 +------
->  include/soc/rockchip/rockchip_grf.h  | 17 +++++++++++++++++
->  4 files changed, 28 insertions(+), 15 deletions(-)
->  create mode 100644 include/soc/rockchip/rockchip_grf.h
-> 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 28c18bbf6baa5..82d18c60538a5 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -18,8 +18,10 @@
->  #include <linux/list.h>
->  #include <linux/of.h>
->  #include <linux/of_device.h>
-> +#include <linux/bitfield.h>
->  #include <linux/bits.h>
->  
-> +#include <soc/rockchip/rockchip_grf.h>
->  #include <soc/rockchip/rk3399_grf.h>
->  
->  #define DMC_MAX_CHANNELS	2
-> @@ -75,9 +77,9 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
->  	writel_relaxed(CLR_DDRMON_CTRL, dfi_regs + DDRMON_CTRL);
->  
->  	/* set ddr type to dfi */
-> -	if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR3)
-> +	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR3)
->  		writel_relaxed(LPDDR3_EN, dfi_regs + DDRMON_CTRL);
-> -	else if (dfi->ddr_type == RK3399_PMUGRF_DDRTYPE_LPDDR4)
-> +	else if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR4)
->  		writel_relaxed(LPDDR4_EN, dfi_regs + DDRMON_CTRL);
->  
->  	/* enable count, use software mode */
-> @@ -192,8 +194,7 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
->  
->  	/* get ddr type */
->  	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> -	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> -			RK3399_PMUGRF_DDRTYPE_MASK;
-> +	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
->  
->  	dfi->channel_mask = GENMASK(1, 0);
->  	dfi->max_channels = 2;
-> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-> index daff407026157..fd2c5ffedf41e 100644
-> --- a/drivers/devfreq/rk3399_dmc.c
-> +++ b/drivers/devfreq/rk3399_dmc.c
-> @@ -22,6 +22,7 @@
->  #include <linux/suspend.h>
->  
->  #include <soc/rockchip/pm_domains.h>
-> +#include <soc/rockchip/rockchip_grf.h>
->  #include <soc/rockchip/rk3399_grf.h>
->  #include <soc/rockchip/rockchip_sip.h>
->  
-> @@ -381,17 +382,16 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  	}
->  
->  	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> -	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> -		    RK3399_PMUGRF_DDRTYPE_MASK;
-> +	ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
->  
->  	switch (ddr_type) {
-> -	case RK3399_PMUGRF_DDRTYPE_DDR3:
-> +	case ROCKCHIP_DDRTYPE_DDR3:
->  		data->odt_dis_freq = data->ddr3_odt_dis_freq;
->  		break;
-> -	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
-> +	case ROCKCHIP_DDRTYPE_LPDDR3:
->  		data->odt_dis_freq = data->lpddr3_odt_dis_freq;
->  		break;
-> -	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
-> +	case ROCKCHIP_DDRTYPE_LPDDR4:
->  		data->odt_dis_freq = data->lpddr4_odt_dis_freq;
->  		break;
->  	default:
-> diff --git a/include/soc/rockchip/rk3399_grf.h b/include/soc/rockchip/rk3399_grf.h
-> index 3eebabcb28123..775f8444bea8d 100644
-> --- a/include/soc/rockchip/rk3399_grf.h
-> +++ b/include/soc/rockchip/rk3399_grf.h
-> @@ -11,11 +11,6 @@
->  
->  /* PMU GRF Registers */
->  #define RK3399_PMUGRF_OS_REG2		0x308
-> -#define RK3399_PMUGRF_DDRTYPE_SHIFT	13
-> -#define RK3399_PMUGRF_DDRTYPE_MASK	7
-> -#define RK3399_PMUGRF_DDRTYPE_DDR3	3
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR2	5
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR3	6
-> -#define RK3399_PMUGRF_DDRTYPE_LPDDR4	7
-> +#define RK3399_PMUGRF_OS_REG2_DDRTYPE		GENMASK(15, 13)
->  
->  #endif
-> diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
-> new file mode 100644
-> index 0000000000000..dde1a9796ccb5
-> --- /dev/null
-> +++ b/include/soc/rockchip/rockchip_grf.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0+ */
-> +/*
-> + * Rockchip General Register Files definitions
-> + */
-> +
-> +#ifndef __SOC_ROCKCHIP_GRF_H
-> +#define __SOC_ROCKCHIP_GRF_H
-> +
-> +/* Rockchip DDRTYPE defines */
-> +enum {
-> +	ROCKCHIP_DDRTYPE_DDR3	= 3,
-> +	ROCKCHIP_DDRTYPE_LPDDR2	= 5,
-> +	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
-> +	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
-> +};
-> +
-> +#endif /* __SOC_ROCKCHIP_GRF_H */
-> -- 
-> 2.39.2
-> 
-> 
-> 
-
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 36894f6a7022..87cc39d54f72 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -13,6 +13,7 @@ clk-rockchip-y += clk-inverter.o
+ clk-rockchip-y += clk-mmc-phase.o
+ clk-rockchip-y += clk-muxgrf.o
+ clk-rockchip-y += clk-ddr.o
++clk-rockchip-y += clk-gate-link.o
+ clk-rockchip-$(CONFIG_RESET_CONTROLLER) += softrst.o
+ 
+ obj-$(CONFIG_CLK_PX30)          += clk-px30.o
+diff --git a/drivers/clk/rockchip/clk-gate-link.c b/drivers/clk/rockchip/clk-gate-link.c
+new file mode 100644
+index 000000000000..d4bbef4a067b
+--- /dev/null
++++ b/drivers/clk/rockchip/clk-gate-link.c
+@@ -0,0 +1,120 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 Fuzhou Rockchip Electronics Co., Ltd
++ */
++#include <linux/clk.h>
++#include <linux/clk-provider.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++#include <linux/io.h>
++#include <linux/err.h>
++#include <linux/string.h>
++#include "clk.h"
++
++/**
++ * struct clk_gate_link - gating link clock
++ *
++ * @gate: handle clk gate
++ * @link: links clk
++ */
++struct clk_gate_link {
++	struct clk_gate gate;
++	struct clk	*link;
++};
++
++#define to_clk_gate_link(_gate) container_of(_gate, struct clk_gate_link, gate)
++
++static int clk_gate_link_enable(struct clk_hw *hw)
++{
++	struct clk_gate_link *gate = to_clk_gate_link(to_clk_gate(hw));
++
++	clk_gate_endisable(hw, 1);
++	clk_enable(gate->link);
++
++	return 0;
++}
++
++static void clk_gate_link_disable(struct clk_hw *hw)
++{
++	struct clk_gate_link *gate = to_clk_gate_link(to_clk_gate(hw));
++
++	clk_gate_endisable(hw, 0);
++	clk_disable(gate->link);
++}
++
++static int clk_gate_link_is_enabled(struct clk_hw *hw)
++{
++	return clk_gate_is_enabled(hw);
++}
++
++static int clk_gate_link_prepare(struct clk_hw *hw)
++{
++	struct clk_gate_link *gate = to_clk_gate_link(to_clk_gate(hw));
++
++	return clk_prepare(gate->link);
++}
++
++static void clk_gate_link_unprepare(struct clk_hw *hw)
++{
++	struct clk_gate_link *gate = to_clk_gate_link(to_clk_gate(hw));
++
++	clk_unprepare(gate->link);
++}
++
++const struct clk_ops clk_gate_link_ops = {
++	.prepare = clk_gate_link_prepare,
++	.unprepare = clk_gate_link_unprepare,
++	.enable = clk_gate_link_enable,
++	.disable = clk_gate_link_disable,
++	.is_enabled = clk_gate_link_is_enabled,
++};
++
++struct clk *rockchip_clk_register_gate_link(struct rockchip_clk_provider *ctx,
++					    const char *name, const char *parent_name,
++					    unsigned int link_id, u8 flags,
++					    void __iomem *gate_offset, u8 gate_shift,
++					    u8 gate_flags, spinlock_t *lock)
++{
++	struct clk_gate_link *gate_link;
++	struct clk_init_data init = {};
++	struct clk **clks;
++	struct clk *clk_link;
++
++	if (gate_flags & CLK_GATE_HIWORD_MASK) {
++		if (gate_shift > 15) {
++			pr_err("gate bit exceeds LOWORD field\n");
++			return ERR_PTR(-ENOMEM);
++		}
++	}
++
++	/* allocate the gate */
++	gate_link = kzalloc(sizeof(*gate_link), GFP_KERNEL);
++	if (!gate_link)
++		return ERR_PTR(-ENOMEM);
++
++	clks = ctx->clk_data.clks;
++	gate_link->link = clks[link_id];
++
++	init.name = name;
++	init.ops = &clk_gate_link_ops;
++	init.flags = flags;
++	init.parent_names = parent_name ? &parent_name : NULL;
++	init.num_parents = 1;
++
++	/* struct clk_gate assignments */
++	gate_link->gate.reg = gate_offset;
++	gate_link->gate.bit_idx = gate_shift;
++	gate_link->gate.flags = gate_flags;
++	gate_link->gate.lock = lock;
++	gate_link->gate.hw.init = &init;
++
++	clk_link = clk_register(NULL, &gate_link->gate.hw);
++	if (IS_ERR(clk_link)) {
++		kfree(gate_link);
++		pr_err("%s clk_register field\n", name);
++		return ERR_CAST(clk_link);
++	}
++
++	return clk_link;
++}
++EXPORT_SYMBOL_GPL(rockchip_clk_register_gate_link);
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 4059d9365ae6..d981ef6c5487 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -509,6 +509,13 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				ctx->reg_base + list->gate_offset,
+ 				list->gate_shift, list->gate_flags, &ctx->lock);
+ 			break;
++
++		case branch_gate_link:
++			clk = rockchip_clk_register_gate_link(ctx, list->name,
++				list->parent_names[0], list->link_id, flags,
++				ctx->reg_base + list->gate_offset,
++				list->gate_shift, list->gate_flags, &ctx->lock);
++			break;
+ 		case branch_composite:
+ 			clk = rockchip_clk_register_branch(list->name,
+ 				list->parent_names, list->num_parents,
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 758ebaf2236b..b49e3cede33a 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -517,6 +517,7 @@ enum rockchip_clk_branch_type {
+ 	branch_divider,
+ 	branch_fraction_divider,
+ 	branch_gate,
++	branch_gate_link,
+ 	branch_mmc,
+ 	branch_inverter,
+ 	branch_factor,
+@@ -529,6 +530,7 @@ struct rockchip_clk_branch {
+ 	enum rockchip_clk_branch_type	branch_type;
+ 	const char			*name;
+ 	const char			*const *parent_names;
++	unsigned int			link_id;
+ 	u8				num_parents;
+ 	unsigned long			flags;
+ 	int				muxdiv_offset;
+@@ -842,6 +844,20 @@ struct rockchip_clk_branch {
+ 		.gate_flags	= gf,				\
+ 	}
+ 
++#define GATE_LINK(_id, cname, pname, _linkid, f, o, b, gf) \
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_gate_link,		\
++		.name		= cname,			\
++		.parent_names	= (const char *[]){ pname },	\
++		.num_parents	= 1,				\
++		.link_id	= _linkid,			\
++		.flags		= f,				\
++		.gate_offset	= o,				\
++		.gate_shift	= b,				\
++		.gate_flags	= gf,				\
++	}
++
+ #define MMC(_id, cname, pname, offset, shift)			\
+ 	{							\
+ 		.id		= _id,				\
+@@ -1002,6 +1018,12 @@ struct clk *rockchip_clk_register_halfdiv(const char *name,
+ 					  unsigned long flags,
+ 					  spinlock_t *lock);
+ 
++struct clk *rockchip_clk_register_gate_link(struct rockchip_clk_provider *ctx,
++					    const char *name, const char *parent_name,
++					    unsigned int link_id, u8 flags,
++					    void __iomem *gate_offset, u8 gate_shift,
++					    u8 gate_flags, spinlock_t *lock);
++
+ #ifdef CONFIG_RESET_CONTROLLER
+ void rockchip_register_softrst_lut(struct device_node *np,
+ 				   const int *lookup_table,
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
