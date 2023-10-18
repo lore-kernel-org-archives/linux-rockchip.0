@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C2ECDB483
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17FCDCDB47E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:34:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9a+XHEOtQdQBC0l3VjoJOW5pVBKsYGX2mDHKihM75/w=; b=UcYf2jADeilbnT
-	DxU0yhGxyeZ0CxDPbZ64Zu5BgzW8nLkylv/UjRbqtvclNapvroq3g/DMYQfDAs0oabfYC+Di5FG/I
-	jGVRx3/Yqo5zB1JPTdm2Sfdn8JTyX9LCV12z3UVXdk+z8Tpe80Ao6R1zJaIl4w7y5JjLIU/+f60RQ
-	boI++l7h4UIZgcVMEx+mtsi5SMt+VqfvIULwJMqqY4hqmVeAbS192T6gsgf+mS2BuFKTlPTrVggzc
-	+iZGfQYWI0CDmXmZnbuN+DL6BkbWOxQDWYgl/oNOt6ND4lNLwXwYsvnxst84T7vnI6GaggVubNW3k
-	DEgPIO/cmhkmAf0DF4dA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GaG/jDUc2gym+kcJ2ciIjTDiwc/856eAS53Q730MVUc=; b=ewBtqY0TK5rhkl
+	Sl8ZDgqxecAYkaLYbH2YxpVOMJCRo6XxhMqX+hasD7hJZG/6OIJ0o4ArWVbJ7ISWGm+6dg/hYqqss
+	zUp2sP74XCebfIjtCWzUGbyTvChLMnLoNKVyHKGscEipDrOENIH1ljeInoi3vAjhK9QNnLImu+HDW
+	QigEShj9m3Dk3wjxcnDGoADscpZ3Ii8M1B7x4n2b4mqNYGYouX+5J4J9v/3y1n3xo8YJnhHVTNqiX
+	ePiebWwL8YIwt6PpDM07pKUxqcdyDKDt9QQnPM+ZZN9xCX0D8+vA+5xAJhHR2lakArevBomA0k3Bl
+	zTWZ76FO/+3f6oFye0EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Yr-00F3es-25;
-	Wed, 18 Oct 2023 15:34:17 +0000
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	id 1qt8Yw-00F3gA-1q;
+	Wed, 18 Oct 2023 15:34:22 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Yo-00F3eD-2V
+	id 1qt8Yu-00F3fE-1b
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Oct 2023 15:34:16 +0000
-Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-57b5ef5b947so4497375eaf.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 08:34:11 -0700 (PDT)
+	Wed, 18 Oct 2023 15:34:21 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-57babef76deso3854521eaf.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 08:34:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697643251; x=1698248051; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6tQJZrmwh77q4KJG6d4/vwBiNQFUJwablon8OTMlyfA=;
-        b=ZVJ794u6I3OL+IuB/mVSHUd1gc0/1+E+wkEufhssI7mLQzis25Bzs5j2y1Rh/2IzAN
-         SDc54BlisrU89mkNiKywaLloxqH9tB47PSq70JI58TQGjLN2LoGam7lTYTBKFLwgvo5B
-         bGbvV7KHEvGgTzMmVFWvnwpvpRs+ux6KBuq3QcqgYq6nMOJbp7qZEDNYZkCXccAJz23c
-         9dw8zFVeYUdAtsMOAc9SRMQ4XGkPW0BsWqfqu9yE0zOVAJ/YE3TSlLPmeFRIu6udzJwa
-         xdVQXQMuhF1NAht2rLvB3yOwYtVwhmgK0Jo7fYNJ7jpINSlND14i5rQUR51MZ59HWoIt
-         haLw==
+        d=gmail.com; s=20230601; t=1697643259; x=1698248059; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/KzXz3q7UxD8yzrIaZqXLlJtzg+A1VIwmVfWbANSNxk=;
+        b=JKqxv6s+ipXWHEOZmnRpUzip4uR8hVZQxImZ6T9BZ9hO3W2byjSFzfWyr9cTOnRMha
+         nfTdy+0T0S9q1ZtsglkLievfGuYZ3pCVvZQZA5r8uaM9xJCJX9Ix3/jp/CR4EcRGvoVb
+         /lhJR97pQKKH8SWTYVXua1IMZmkOWkJJMzOmfZ1BpINfluNctpljM9UOHVh7Bk8dlusK
+         AAO+wOIxYTbjtWRM87+dVW2JqtSDVxJVipGWTeJIrAJjfLmpzFIqFAr+CeIp44xaUh0/
+         nIvV2YwyL9J89VgBgNqK7MSy9sYeEjtABRDCOe5vlN2Zo8CVqS5OKDkdWaLaBy9KXRcC
+         2T6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697643251; x=1698248051;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6tQJZrmwh77q4KJG6d4/vwBiNQFUJwablon8OTMlyfA=;
-        b=OLtDG1KkWGeieq106JkfIWhHI1R82uFMX8jdi7AoMWGgeqgpTsuAOW9CJVULU1ZUrG
-         9RDWVx0UgIiuS4dVO+q+u4WxCLiL09pag4KxbLJEAI1T95EaUe3+mbb+h/C5/ICFUo2C
-         QefOLRWvcc/LwD7dyVaBR/dgrB86VA3PMIMbMJNkysseiSPLGDde5t1odr0eB4ErLY0g
-         UqHWAULKCGb/aIcj2oMGhsPoCsGHkEdwgRzjGD3N/r6wEdWXdx0PnKzc/IqV56uOT9au
-         A48VfrLoWz3kor+hhGjyWis3asMi6T8Nc+v7fOj0gI1EwCgU0D3CjHXZrivQ1CWmrXS8
-         +Lig==
-X-Gm-Message-State: AOJu0Yz8xAa502rjdMUEcGvQ6bZSKmnz0kYIquXfQGdUB6L6elRY8S7Y
-	d8RtwVZeev788pNadNCadQ095EbMmSA=
-X-Google-Smtp-Source: AGHT+IFTBAebvUI3C/PnjHyGd/EVx2sycdpXqSQObZD9ieoQ4sejU2vINPA6JY+WSFXYippZGc5xDg==
-X-Received: by 2002:a4a:dc8f:0:b0:57b:6ab1:87c9 with SMTP id g15-20020a4adc8f000000b0057b6ab187c9mr5965150oou.0.1697643250979;
-        Wed, 18 Oct 2023 08:34:10 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1697643259; x=1698248059;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/KzXz3q7UxD8yzrIaZqXLlJtzg+A1VIwmVfWbANSNxk=;
+        b=kIcHijaQqEDxgOeOYmaIdirz/nIFS3f6K2zrdJa72QJqTDibEgVKuIJBnGx1raRA/T
+         6covvx9UtV/4v7w82nxPbujHqE/sQuComeMhq9M+RRHlZ+hfMEdBY4X0jBiyDVE7zN9L
+         milAGfu4eIAmeffzodG+skEbcrF+UW1vBhrUkXxtrJyWQ4VYvVcG/fIvfeclNfSqyFpI
+         HCi/9O081AiI3jJ1Bf+LltyHWy1q8zLPQ6JRwjmr6Z87Jd8LtHy/jgJbvRVo0dLZi4y5
+         HS4MW7RLxJtzNTPKuetw2Z9nbgM7Dp7ZT2WxPr42tJKj5/zzCorZ7+bmO9ft9IKaHw5X
+         j2VA==
+X-Gm-Message-State: AOJu0Ywvb1JCbqS52UeqK+ODv7aarmIoYbfl5aA5138Oy0pdKagtmQgg
+	Jt2ygJXNYXMbSJDwLOk1XZyoAT1DHeI=
+X-Google-Smtp-Source: AGHT+IEL1iEm/4noFAPKBHY/aZb1xaW7voyUJp5gaU5xNsKksALHSoYPn96HXOSnmMvff6IagNC7tg==
+X-Received: by 2002:a4a:4304:0:b0:581:3e09:2623 with SMTP id k4-20020a4a4304000000b005813e092623mr5207123ooj.2.1697643259195;
+        Wed, 18 Oct 2023 08:34:19 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id h16-20020a4ad750000000b00581e090fd1fsm523782oot.8.2023.10.18.08.34.06
+        by smtp.gmail.com with ESMTPSA id h16-20020a4ad750000000b00581e090fd1fsm523782oot.8.2023.10.18.08.34.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 08:34:08 -0700 (PDT)
+        Wed, 18 Oct 2023 08:34:17 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-clk@vger.kernel.org,
@@ -72,14 +73,16 @@ Cc: linux-clk@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/3] Fixes for RGB30
-Date: Wed, 18 Oct 2023 10:33:54 -0500
-Message-Id: <20231018153357.343142-1-macroalpha82@gmail.com>
+Subject: [PATCH 2/3] arm64: dts: rockchip: Update VPLL Frequency for RGB30
+Date: Wed, 18 Oct 2023 10:33:56 -0500
+Message-Id: <20231018153357.343142-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231018153357.343142-1-macroalpha82@gmail.com>
+References: <20231018153357.343142-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_083414_840374_F04BB509 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20231018_083420_536877_2C057743 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +101,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-After preliminary testing, a few users requested that I see if I can
-make the panel run at precisely 60hz. As the device is typically used
-for retro gaming, getting the panel to refresh as close to 60hz as
-possible is important.
+Set the VPLL frequency for the RGB30 to 292.5MHz to support running
+the 720x720 display panel at 59.97hz. Without this change, the panel
+runs at 59.08hz.
 
-Additionally, I accidentially left the UART2 enabled, even though this
-device does not have an exposed serial port on the board. Disable the
-UART in the device tree.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This patch series applies on top of the already applied commit here:
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=for-next&id=1e9ac3e8a6a9d4da9efbad2d8e95cc1140e0e23f
-
-Chris Morgan (3):
-  clk: rockchip: rk3568: Add PLL rate for 292.5MHz
-  arm64: dts: rockchip: Update VPLL Frequency for RGB30
-  arm64: dts: rockchip: Remove UART2 from RGB30
-
- .../arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts | 11 ++++++++++-
- drivers/clk/rockchip/clk-rk3568.c                     |  1 +
- 2 files changed, 11 insertions(+), 1 deletion(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+index c7828c99a1bb..3ebc21608213 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+@@ -68,7 +68,7 @@ &cru {
+ 	assigned-clocks = <&pmucru CLK_RTC_32K>, <&cru PLL_GPLL>,
+ 			  <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
+ 	assigned-clock-rates = <32768>, <1200000000>,
+-			       <200000000>, <108000000>;
++			       <200000000>, <292500000>;
+ };
+ 
+ &gpio_keys_control {
 -- 
 2.34.1
 
