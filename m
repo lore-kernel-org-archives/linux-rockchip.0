@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0CECDB47E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C2ECDB483
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zJIEplFrxHLjC4XxXejR+vBKKFmEz3QCJcINDdoyKHo=; b=aIipXqUXxkDJXn
-	ei7/UDFInXdNI1X5lnAUYO7med4aTYLR521V8s9ftF5ZdXwlhBEwqXyFG3NZCQvr9WLf1MDkHk9Vy
-	rmuj7dmEHVEYFcb/25BzL3v2k3D9mWS4cfr+/DeXylIrwhI1t9tANOry2lXYEE9e56k1S0NMkFZO2
-	IPXRTE730fye6BG19pBvZ2kP+hDvvSjQCNX6SN/1RVNn/HiSJJejIpsgpmP+8FfXpjLQQpgDw123d
-	Y660Z7PfLySP+CEz9nf//yS7j1IS2q9OxemajJQ1lpKgBK0UCN0waEQFRuz7G6XE0TNS4qCoSv8IX
-	HorMhxUc7l2xDfJThyBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9a+XHEOtQdQBC0l3VjoJOW5pVBKsYGX2mDHKihM75/w=; b=UcYf2jADeilbnT
+	DxU0yhGxyeZ0CxDPbZ64Zu5BgzW8nLkylv/UjRbqtvclNapvroq3g/DMYQfDAs0oabfYC+Di5FG/I
+	jGVRx3/Yqo5zB1JPTdm2Sfdn8JTyX9LCV12z3UVXdk+z8Tpe80Ao6R1zJaIl4w7y5JjLIU/+f60RQ
+	boI++l7h4UIZgcVMEx+mtsi5SMt+VqfvIULwJMqqY4hqmVeAbS192T6gsgf+mS2BuFKTlPTrVggzc
+	+iZGfQYWI0CDmXmZnbuN+DL6BkbWOxQDWYgl/oNOt6ND4lNLwXwYsvnxst84T7vnI6GaggVubNW3k
+	DEgPIO/cmhkmAf0DF4dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Yt-00F3f9-0I;
-	Wed, 18 Oct 2023 15:34:19 +0000
-Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Yq-00F3eY-1r
-	for linux-rockchip@lists.infradead.org;
+	id 1qt8Yr-00F3es-25;
 	Wed, 18 Oct 2023 15:34:17 +0000
-Received: by mail-oo1-xc35.google.com with SMTP id 006d021491bc7-57de6e502fcso4041117eaf.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 08:34:16 -0700 (PDT)
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qt8Yo-00F3eD-2V
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Oct 2023 15:34:16 +0000
+Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-57b5ef5b947so4497375eaf.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 08:34:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697643255; x=1698248055; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HmlZgOTohheR5Sz3o+FLczWrX2zS7o2K2yAxRk2cDpU=;
-        b=J3lm4qm5oj6BRaEVNmGzvNhWQRk/1nghV/ySFQNK+BpMBc5l6CYao4yD5jSmACNyrB
-         WZpTtPGDnUdtsAl4IJv7SkonEDoV8ssuw7Bb8qCbZo5uAD3ceGbm/hLCJ+HTeLUxPk7q
-         aKkXXfkP7MTS/EpuE4ESwnVbkYy010v2Oje1Ph00+gLF207fKZd5tHKPb8rzZ/VzX9ZC
-         PLVcSbpYeI2AyBwPktAsRVuOaIKqx6147JeSYVjebs8B7kCcIshvslwJ/c/8TzNc6gwd
-         gEwdw9EhnN74yEEDdYmlfOUubO2PXi+z3D3Vn+/DMzUgZFxpm18pR7UBlcc6w2QWjycd
-         W5Dg==
+        d=gmail.com; s=20230601; t=1697643251; x=1698248051; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6tQJZrmwh77q4KJG6d4/vwBiNQFUJwablon8OTMlyfA=;
+        b=ZVJ794u6I3OL+IuB/mVSHUd1gc0/1+E+wkEufhssI7mLQzis25Bzs5j2y1Rh/2IzAN
+         SDc54BlisrU89mkNiKywaLloxqH9tB47PSq70JI58TQGjLN2LoGam7lTYTBKFLwgvo5B
+         bGbvV7KHEvGgTzMmVFWvnwpvpRs+ux6KBuq3QcqgYq6nMOJbp7qZEDNYZkCXccAJz23c
+         9dw8zFVeYUdAtsMOAc9SRMQ4XGkPW0BsWqfqu9yE0zOVAJ/YE3TSlLPmeFRIu6udzJwa
+         xdVQXQMuhF1NAht2rLvB3yOwYtVwhmgK0Jo7fYNJ7jpINSlND14i5rQUR51MZ59HWoIt
+         haLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697643255; x=1698248055;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HmlZgOTohheR5Sz3o+FLczWrX2zS7o2K2yAxRk2cDpU=;
-        b=fkaTSORn8UFdOAYMoUCbOpg1g3pyh2ujmJ0824alUoGeiR8+EHUAcClowHRgodLb6X
-         LMWX7uyGEhKFD8xi1vGbn0FA+GPf4ju1GbdrHbz20JZohEiuk+a8G40ODGiukujfQ+qw
-         4bqguFoKql2hwiJeEfwq623BkgKGTQOGg4e/ByO6m6o293V8v19+UvuTGjxI5YzSuHVb
-         /QvGPCu8ksBUQi4W+dXr6ZAlB42XIOZSoBdQnRpk7odSRfHOQPI3DxxBpYZLJ9HQQAIg
-         JGbodnvfASCZvK1k0oREg8qOVC3r29thwD0j3BTxk5t3OPKlzVTAdfJ62GKdxCFK8TXL
-         TnBw==
-X-Gm-Message-State: AOJu0Yww8LI+03OOsxnm56bAkZX4nncdaYb7e9VhG4baadaIetpdRtoU
-	oMNkwjbGtDBm5oGWG7tXLchrwMfhfVc=
-X-Google-Smtp-Source: AGHT+IEVNbZ56UZRmNC6SHChpVibk8/f3CmobKd/aVSmcbaI5+8ojfX7HdJisupGUtNmr2zqNWv3Ug==
-X-Received: by 2002:a05:6820:200e:b0:571:1fad:ebe0 with SMTP id by14-20020a056820200e00b005711fadebe0mr6705464oob.3.1697643255377;
-        Wed, 18 Oct 2023 08:34:15 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1697643251; x=1698248051;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6tQJZrmwh77q4KJG6d4/vwBiNQFUJwablon8OTMlyfA=;
+        b=OLtDG1KkWGeieq106JkfIWhHI1R82uFMX8jdi7AoMWGgeqgpTsuAOW9CJVULU1ZUrG
+         9RDWVx0UgIiuS4dVO+q+u4WxCLiL09pag4KxbLJEAI1T95EaUe3+mbb+h/C5/ICFUo2C
+         QefOLRWvcc/LwD7dyVaBR/dgrB86VA3PMIMbMJNkysseiSPLGDde5t1odr0eB4ErLY0g
+         UqHWAULKCGb/aIcj2oMGhsPoCsGHkEdwgRzjGD3N/r6wEdWXdx0PnKzc/IqV56uOT9au
+         A48VfrLoWz3kor+hhGjyWis3asMi6T8Nc+v7fOj0gI1EwCgU0D3CjHXZrivQ1CWmrXS8
+         +Lig==
+X-Gm-Message-State: AOJu0Yz8xAa502rjdMUEcGvQ6bZSKmnz0kYIquXfQGdUB6L6elRY8S7Y
+	d8RtwVZeev788pNadNCadQ095EbMmSA=
+X-Google-Smtp-Source: AGHT+IFTBAebvUI3C/PnjHyGd/EVx2sycdpXqSQObZD9ieoQ4sejU2vINPA6JY+WSFXYippZGc5xDg==
+X-Received: by 2002:a4a:dc8f:0:b0:57b:6ab1:87c9 with SMTP id g15-20020a4adc8f000000b0057b6ab187c9mr5965150oou.0.1697643250979;
+        Wed, 18 Oct 2023 08:34:10 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id h16-20020a4ad750000000b00581e090fd1fsm523782oot.8.2023.10.18.08.34.11
+        by smtp.gmail.com with ESMTPSA id h16-20020a4ad750000000b00581e090fd1fsm523782oot.8.2023.10.18.08.34.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 08:34:12 -0700 (PDT)
+        Wed, 18 Oct 2023 08:34:08 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-clk@vger.kernel.org,
@@ -73,17 +72,14 @@ Cc: linux-clk@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/3] clk: rockchip: rk3568: Add PLL rate for 292.5MHz
-Date: Wed, 18 Oct 2023 10:33:55 -0500
-Message-Id: <20231018153357.343142-2-macroalpha82@gmail.com>
+Subject: [PATCH 0/3] Fixes for RGB30
+Date: Wed, 18 Oct 2023 10:33:54 -0500
+Message-Id: <20231018153357.343142-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231018153357.343142-1-macroalpha82@gmail.com>
-References: <20231018153357.343142-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_083416_613251_2CD38638 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231018_083414_840374_F04BB509 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +98,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for a PLL rate of 292.5MHz so that the Powkiddy RGB30 panel
-can run at a requested 60hz (59.96, close enough).
+After preliminary testing, a few users requested that I see if I can
+make the panel run at precisely 60hz. As the device is typically used
+for retro gaming, getting the panel to refresh as close to 60hz as
+possible is important.
 
-I have confirmed this rate fits with all the constraints
-listed in the TRM for the VPLL (as an integer PLL) in Part 1 "Chapter
-2 Clock & Reset Unit (CRU)."
+Additionally, I accidentially left the UART2 enabled, even though this
+device does not have an exposed serial port on the board. Disable the
+UART in the device tree.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/clk/rockchip/clk-rk3568.c | 1 +
- 1 file changed, 1 insertion(+)
+This patch series applies on top of the already applied commit here:
+https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=for-next&id=1e9ac3e8a6a9d4da9efbad2d8e95cc1140e0e23f
 
-diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-index 16dabe2b9c47..db713e1526cd 100644
---- a/drivers/clk/rockchip/clk-rk3568.c
-+++ b/drivers/clk/rockchip/clk-rk3568.c
-@@ -72,6 +72,7 @@ static struct rockchip_pll_rate_table rk3568_pll_rates[] = {
- 	RK3036_PLL_RATE(408000000, 1, 68, 2, 2, 1, 0),
- 	RK3036_PLL_RATE(312000000, 1, 78, 6, 1, 1, 0),
- 	RK3036_PLL_RATE(297000000, 2, 99, 4, 1, 1, 0),
-+	RK3036_PLL_RATE(292500000, 1, 195, 4, 4, 1, 0),
- 	RK3036_PLL_RATE(241500000, 2, 161, 4, 2, 1, 0),
- 	RK3036_PLL_RATE(216000000, 1, 72, 4, 2, 1, 0),
- 	RK3036_PLL_RATE(200000000, 1, 100, 3, 4, 1, 0),
+Chris Morgan (3):
+  clk: rockchip: rk3568: Add PLL rate for 292.5MHz
+  arm64: dts: rockchip: Update VPLL Frequency for RGB30
+  arm64: dts: rockchip: Remove UART2 from RGB30
+
+ .../arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts | 11 ++++++++++-
+ drivers/clk/rockchip/clk-rk3568.c                     |  1 +
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
 -- 
 2.34.1
 
