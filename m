@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96061CDB483
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:11:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF037CDB482
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gJwdZpfVw+HhS6A4pzpohlO/GWhKeuwUQNkM0GBKJXg=; b=r9+bpohgxJbsqr
-	7IVvg1ntBxYCYtzrJEppdRiDZuoz/fqF4SR2veWQHQy1fl2iEe5v0DklHv/c8pawdyvBU+6Y+VxTS
-	qUsmK45c0dKEfSztof4Tb/8K16DzB2x3X7CBiT+GwFD0fqhDDM0nNYyju0csugdopiH6g/K5C/1mc
-	R+AT+3ldtTZkq4EMZBBcC8WS1vEZIcJmcScpezfu455MzOVD6y7U/uOzrh5ni6Sr5MS+n9icy4OoR
-	CPb7XJQIUXNAJLRe1HXiEjAi0gBwpAHgS9bGYv6AINY6dj8Ot1uOlExSfniAEzz3A2IlXoRc7qXV5
-	w0O+x4zyltGlvaBm/4rw==;
+	List-Owner; bh=vnGVri6c/kVmV2BBK9fe5nBQOy2WLxEKgStIeiqSdHg=; b=f2kdXlP7jPe7BE
+	lBM2jRrv245tPF3t8tZxr/UO+0/8FBFO8tnH7EVKZeFaCpflOci3Cnnpv51lh4561hlL5WwMwAHmZ
+	IY9J+i5hvvIgzUuL1wn24RtDj7NsO1neLxXQagv1bo21PaUtNx2IT1YRfnVMYyOtWoA3xGeYXe/W1
+	eZzcuXh0C97q5v6W1kNWVpis/urp207oy7dPNj/iuhg1VCooJDzJdNDgT0y6xDOcpI7VyLrJ3a4Gl
+	NJ1SCTkgYARFGMePdvTxfcR2HPzvb4a1PWk5LWv+RoGZVEnxuY+D0WUAzqy8MNCpPvvr8FwkI8gP0
+	BQTl1OxGTk53no6aXASQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Cn-00F05a-0x;
-	Wed, 18 Oct 2023 15:11:29 +0000
+	id 1qt8Cw-00F08S-07;
+	Wed, 18 Oct 2023 15:11:38 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8Ch-00F03H-2j;
-	Wed, 18 Oct 2023 15:11:26 +0000
+	id 1qt8Cs-00F06W-0B;
+	Wed, 18 Oct 2023 15:11:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0CFC8CE10E3;
-	Wed, 18 Oct 2023 15:11:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFE3BC433C8;
-	Wed, 18 Oct 2023 15:11:16 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 730EACE10E3;
+	Wed, 18 Oct 2023 15:11:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8981C433C8;
+	Wed, 18 Oct 2023 15:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697641881;
-	bh=t4tXL0Adgab+7/6pwQR6SO/7Tzc1LZ1Z+r/uoKttlg4=;
+	s=k20201202; t=1697641891;
+	bh=C7m9fDYT0joXqYIu3u06j8ma6FQv1VuJV51Xu0vTIqY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D9u2P+Ieca9LBIZSIBtAFH34jR/TC+qLjrLOlif7N0M6gMOjLHeXyoojzaOhXIVlg
-	 23W/HrzJ9rC8JV7UEgofYEOr4wy+xuFJ11rOmI6tii2rc+sRpOI8xuXFUYAmAZXKJ4
-	 S3NoseUDTPSvVgNOQRmDuNnNtE0QxlXGL5AXEAW94B5Y0j3XPyENbhDknUOs9S3CFm
-	 c3QuV0clBw19JS5Di2BuANIkNh2238NKCOpo9VoNKkC/D8Qg5hUwNIpqAN/92amsnK
-	 TO8vWliVJJk9CYhhVZKSKWSnLDmEWEipeJgjUQJgyslXeSEApXmEQQ71q5DAOz+O9e
-	 +zgl8+1A7UL5Q==
-Message-ID: <f5ce51a4-d47d-4074-9498-8632b09791e6@kernel.org>
-Date: Thu, 19 Oct 2023 00:11:14 +0900
+	b=Zy6i7MymdvB1KwBvVdO5Z6/e+/Ab0RQlko43oMW4jt2vEfPM6QrFB2utwdbijLHLs
+	 ePtwaweOBz/sUx2zHoB1rLeI9h6Dpq5f8750OluWZbo9QOgMrcB6XNMMpCaU1bVMAQ
+	 pzPeEeLJQsJtI50+KSBkXc0j9P0ofj+g1pPD8qyaXKx6307awuopkLmWTAwamofCz3
+	 ltYx3LNJSkEwDvgV971pfbYfZ65QKLP29n34jCGKZEvHeDo1MIz9Fw1K5VE05oNzcw
+	 n8UcdSvHR/SwlrI8LfzOT0AwLvRvaDhjMo333HhZnFiIJOFCoGuTe+/G1qZwYYL2x6
+	 1tPriTpmeHSvA==
+Message-ID: <b24844da-f82c-448d-91bc-bc2a8d2053b1@kernel.org>
+Date: Thu, 19 Oct 2023 00:11:27 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 16/26] PM / devfreq: rockchip-dfi: Add perf support
+Subject: Re: [PATCH v8 17/26] PM / devfreq: rockchip-dfi: make register stride
+ SoC specific
 Content-Language: en-US
-To: kernel test robot <lkp@intel.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-rockchip@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>,
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
  MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
  Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Robin Murphy <robin.murphy@arm.com>,
  Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20231018061714.3553817-17-s.hauer@pengutronix.de>
- <202310181557.GIXGL21M-lkp@intel.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
+References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
+ <20231018061714.3553817-18-s.hauer@pengutronix.de>
 From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <202310181557.GIXGL21M-lkp@intel.com>
+In-Reply-To: <20231018061714.3553817-18-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_081124_224089_51225DB1 
-X-CRM114-Status: GOOD (  26.72  )
+X-CRM114-CacheID: sfid-20231018_081134_443648_B7CEB611 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,203 +84,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha, 
+On 23. 10. 18. 15:17, Sascha Hauer wrote:
+> The currently supported RK3399 has a stride of 20 between the channel
+> specific registers. Upcoming RK3588 has a different stride, so put
+> the stride into driver data to make it configurable.
+> While at it convert decimal 20 to hex 0x14 for consistency with RK3588
+> which has a register stride 0x4000 and we want to write that in hex
+> as well.
+> 
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+> 
+> Notes:
+>     Changes since v7:
+>      - Initialize ddrmon_stride for RK3568 and explain why it's not needed
+> 
+>  drivers/devfreq/event/rockchip-dfi.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+> index 63977f9fc2693..a3d823ac68ace 100644
+> --- a/drivers/devfreq/event/rockchip-dfi.c
+> +++ b/drivers/devfreq/event/rockchip-dfi.c
+> @@ -113,6 +113,7 @@ struct rockchip_dfi {
+>  	int active_events;
+>  	int burst_len;
+>  	int buswidth[DMC_MAX_CHANNELS];
+> +	int ddrmon_stride;
+>  };
+>  
+>  static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+> @@ -190,13 +191,13 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
+>  		if (!(dfi->channel_mask & BIT(i)))
+>  			continue;
+>  		res->c[i].read_access = readl_relaxed(dfi_regs +
+> -				DDRMON_CH0_RD_NUM + i * 20);
+> +				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
+>  		res->c[i].write_access = readl_relaxed(dfi_regs +
+> -				DDRMON_CH0_WR_NUM + i * 20);
+> +				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
+>  		res->c[i].access = readl_relaxed(dfi_regs +
+> -				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+> +				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
+>  		res->c[i].clock_cycles = readl_relaxed(dfi_regs +
+> -				DDRMON_CH0_COUNT_NUM + i * 20);
+> +				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
+>  	}
+>  }
+>  
+> @@ -664,6 +665,8 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+>  	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
+>  	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
+>  
+> +	dfi->ddrmon_stride = 0x14;
+> +
+>  	return 0;
+>  };
+>  
+> @@ -690,6 +693,8 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+>  
+>  	dfi->buswidth[0] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
+>  
+> +	dfi->ddrmon_stride = 0x0; /* not relevant, we only have a single channel on this SoC */
+> +
+>  	return 0;
+>  };
+>  
 
-Could you plesae fix the following kernel build report?
-
-On 23. 10. 18. 16:58, kernel test robot wrote:
-> Hi Sascha,
-> 
-> kernel test robot noticed the following build warnings:
-> 
-> [auto build test WARNING on linus/master]
-> [also build test WARNING on v6.6-rc6]
-> [cannot apply to next-20231018]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch#_base_tree_information]
-> 
-> url:    https://github.com/intel-lab-lkp/linux/commits/Sascha-Hauer/PM-devfreq-rockchip-dfi-Make-pmu-regmap-mandatory/20231018-142228
-> base:   linus/master
-> patch link:    https://lore.kernel.org/r/20231018061714.3553817-17-s.hauer%40pengutronix.de
-> patch subject: [PATCH v8 16/26] PM / devfreq: rockchip-dfi: Add perf support
-> config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20231018/202310181557.GIXGL21M-lkp@intel.com/config)
-> compiler: m68k-linux-gcc (GCC) 13.2.0
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231018/202310181557.GIXGL21M-lkp@intel.com/reproduce)
-> 
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202310181557.GIXGL21M-lkp@intel.com/
-> 
-> All warnings (new ones prefixed by >>):
-> 
->>> drivers/devfreq/event/rockchip-dfi.c:203:13: warning: 'rockchip_ddr_perf_counters_add' defined but not used [-Wunused-function]
->      203 | static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
->          |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> --
->>> drivers/devfreq/event/rockchip-dfi.c:79: warning: Function parameter or member 'write_access' not described in 'dmc_count_channel'
-> 
-> 
-> vim +/rockchip_ddr_perf_counters_add +203 drivers/devfreq/event/rockchip-dfi.c
-> 
->     66	
->     67	/**
->     68	 * struct dmc_count_channel - structure to hold counter values from the DDR controller
->     69	 * @access:       Number of read and write accesses
->     70	 * @clock_cycles: DDR clock cycles
->     71	 * @read_access:  number of read accesses
->     72	 * @write_acccess: number of write accesses
->     73	 */
->     74	struct dmc_count_channel {
->     75		u64 access;
->     76		u64 clock_cycles;
->     77		u64 read_access;
->     78		u64 write_access;
->   > 79	};
->     80	
->     81	struct dmc_count {
->     82		struct dmc_count_channel c[DMC_MAX_CHANNELS];
->     83	};
->     84	
->     85	/*
->     86	 * The dfi controller can monitor DDR load. It has an upper and lower threshold
->     87	 * for the operating points. Whenever the usage leaves these bounds an event is
->     88	 * generated to indicate the DDR frequency should be changed.
->     89	 */
->     90	struct rockchip_dfi {
->     91		struct devfreq_event_dev *edev;
->     92		struct devfreq_event_desc desc;
->     93		struct dmc_count last_event_count;
->     94	
->     95		struct dmc_count last_perf_count;
->     96		struct dmc_count total_count;
->     97		seqlock_t count_seqlock; /* protects last_perf_count and total_count */
->     98	
->     99		struct device *dev;
->    100		void __iomem *regs;
->    101		struct regmap *regmap_pmu;
->    102		struct clk *clk;
->    103		int usecount;
->    104		struct mutex mutex;
->    105		u32 ddr_type;
->    106		unsigned int channel_mask;
->    107		unsigned int max_channels;
->    108		enum cpuhp_state cpuhp_state;
->    109		struct hlist_node node;
->    110		struct pmu pmu;
->    111		struct hrtimer timer;
->    112		unsigned int cpu;
->    113		int active_events;
->    114		int burst_len;
->    115		int buswidth[DMC_MAX_CHANNELS];
->    116	};
->    117	
->    118	static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
->    119	{
->    120		void __iomem *dfi_regs = dfi->regs;
->    121		int ret = 0;
->    122	
->    123		mutex_lock(&dfi->mutex);
->    124	
->    125		dfi->usecount++;
->    126		if (dfi->usecount > 1)
->    127			goto out;
->    128	
->    129		ret = clk_prepare_enable(dfi->clk);
->    130		if (ret) {
->    131			dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n", ret);
->    132			goto out;
->    133		}
->    134	
->    135		/* clear DDRMON_CTRL setting */
->    136		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
->    137			       DDRMON_CTRL_HARDWARE_EN), dfi_regs + DDRMON_CTRL);
->    138	
->    139		/* set ddr type to dfi */
->    140		switch (dfi->ddr_type) {
->    141		case ROCKCHIP_DDRTYPE_LPDDR2:
->    142		case ROCKCHIP_DDRTYPE_LPDDR3:
->    143			writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
->    144				       dfi_regs + DDRMON_CTRL);
->    145			break;
->    146		case ROCKCHIP_DDRTYPE_LPDDR4:
->    147		case ROCKCHIP_DDRTYPE_LPDDR4X:
->    148			writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
->    149				       dfi_regs + DDRMON_CTRL);
->    150			break;
->    151		default:
->    152			break;
->    153		}
->    154	
->    155		/* enable count, use software mode */
->    156		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
->    157			       dfi_regs + DDRMON_CTRL);
->    158	out:
->    159		mutex_unlock(&dfi->mutex);
->    160	
->    161		return ret;
->    162	}
->    163	
->    164	static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
->    165	{
->    166		void __iomem *dfi_regs = dfi->regs;
->    167	
->    168		mutex_lock(&dfi->mutex);
->    169	
->    170		dfi->usecount--;
->    171	
->    172		WARN_ON_ONCE(dfi->usecount < 0);
->    173	
->    174		if (dfi->usecount > 0)
->    175			goto out;
->    176	
->    177		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
->    178			       dfi_regs + DDRMON_CTRL);
->    179		clk_disable_unprepare(dfi->clk);
->    180	out:
->    181		mutex_unlock(&dfi->mutex);
->    182	}
->    183	
->    184	static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *res)
->    185	{
->    186		u32 i;
->    187		void __iomem *dfi_regs = dfi->regs;
->    188	
->    189		for (i = 0; i < dfi->max_channels; i++) {
->    190			if (!(dfi->channel_mask & BIT(i)))
->    191				continue;
->    192			res->c[i].read_access = readl_relaxed(dfi_regs +
->    193					DDRMON_CH0_RD_NUM + i * 20);
->    194			res->c[i].write_access = readl_relaxed(dfi_regs +
->    195					DDRMON_CH0_WR_NUM + i * 20);
->    196			res->c[i].access = readl_relaxed(dfi_regs +
->    197					DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
->    198			res->c[i].clock_cycles = readl_relaxed(dfi_regs +
->    199					DDRMON_CH0_COUNT_NUM + i * 20);
->    200		}
->    201	}
->    202	
->  > 203	static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
->    204						   const struct dmc_count *now,
->    205						   struct dmc_count *res)
->    206	{
->    207		const struct dmc_count *last = &dfi->last_perf_count;
->    208		int i;
->    209	
->    210		for (i = 0; i < dfi->max_channels; i++) {
->    211			res->c[i].read_access = dfi->total_count.c[i].read_access +
->    212				(u32)(now->c[i].read_access - last->c[i].read_access);
->    213			res->c[i].write_access = dfi->total_count.c[i].write_access +
->    214				(u32)(now->c[i].write_access - last->c[i].write_access);
->    215			res->c[i].access = dfi->total_count.c[i].access +
->    216				(u32)(now->c[i].access - last->c[i].access);
->    217			res->c[i].clock_cycles = dfi->total_count.c[i].clock_cycles +
->    218				(u32)(now->c[i].clock_cycles - last->c[i].clock_cycles);
->    219		}
->    220	}
->    221	
-> 
+Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
 -- 
 Best Regards,
