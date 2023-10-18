@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C37CDB482
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0CECDB47E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VcqFOTMMFFhL7MpyXwRp5MJmB8BWW0XDzprxfvu+V2o=; b=fS8Jt/nvBOGpB1
-	SphMRUhiLUHW3kCoL/FHtTQy8lx1ukgpxoFNvxGiCkOiBnINbBQMd9ezM+nohV2rZDjXZUf5SX6Gb
-	nPPx6N4emTs0Rk7bQrhYtzVUQdYnzsTcWA4d3jpdmQqMbrh1pI94c5fWNTC78qXj/MVzBckPRv81h
-	Oh5gqL5pmsMeW6HY/J3rCD32ocVZAYAqqN8jB1e0QKCUOcLh2wcQJNQN1J8yiH1wrorrAeKbXQk1g
-	cL0DRkShqt0Xifp1ze2uyZft+HHecW8Aa4Idt9vV2AKWxf1ZHoGVR+aCsMMwBOT6sSnuKYah/9J9o
-	iz29UbHd+kyd6ZljzUTA==;
+	List-Owner; bh=zJIEplFrxHLjC4XxXejR+vBKKFmEz3QCJcINDdoyKHo=; b=aIipXqUXxkDJXn
+	ei7/UDFInXdNI1X5lnAUYO7med4aTYLR521V8s9ftF5ZdXwlhBEwqXyFG3NZCQvr9WLf1MDkHk9Vy
+	rmuj7dmEHVEYFcb/25BzL3v2k3D9mWS4cfr+/DeXylIrwhI1t9tANOry2lXYEE9e56k1S0NMkFZO2
+	IPXRTE730fye6BG19pBvZ2kP+hDvvSjQCNX6SN/1RVNn/HiSJJejIpsgpmP+8FfXpjLQQpgDw123d
+	Y660Z7PfLySP+CEz9nf//yS7j1IS2q9OxemajJQ1lpKgBK0UCN0waEQFRuz7G6XE0TNS4qCoSv8IX
+	HorMhxUc7l2xDfJThyBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8MJ-00F1mP-1X;
-	Wed, 18 Oct 2023 15:21:19 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qt8Yt-00F3f9-0I;
+	Wed, 18 Oct 2023 15:34:19 +0000
+Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt8MG-00F1lK-2F;
-	Wed, 18 Oct 2023 15:21:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 3C726B823DD;
-	Wed, 18 Oct 2023 15:21:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECACCC433C8;
-	Wed, 18 Oct 2023 15:21:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697642474;
-	bh=LYagyGRuLOJIx08cI88zPgXWvrkcS7iNbLmlFxrSclU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZLnIhd9wqi3ayfSZPlcIMGhn5cH+ssUY+jlIdiUjagca/1sntsjihy6sAyb8buY9i
-	 t4GDD9OTHBDHbhtx/M5Maf02ICkO51Fdi3uVKmLJBaBpv0pjue7vHK61ZyOnsTIIoC
-	 B12j9Szlhdcd/G5cbrOEGnML4dHSZnOY0wQUf2qbgvz8AIu6QIdCgQugSASxV+vsDv
-	 m14v6Z30satjrlNduGH3eSKZu5N+PorzNuckMElrfGxEw3OEQmkHgmVUCWPqE+eWQE
-	 73tHO5fRAQpY7Su4FJRXizzHo08si1lXn7/jH0hbEB0IGzsLhRQ2ZyrnAUtu/dQsxL
-	 6nY08XHyxiuKA==
-Message-ID: <6e43eb6d-351b-4c32-aba9-65ee5b8fd0ed@kernel.org>
-Date: Thu, 19 Oct 2023 00:21:07 +0900
+	id 1qt8Yq-00F3eY-1r
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Oct 2023 15:34:17 +0000
+Received: by mail-oo1-xc35.google.com with SMTP id 006d021491bc7-57de6e502fcso4041117eaf.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 08:34:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697643255; x=1698248055; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HmlZgOTohheR5Sz3o+FLczWrX2zS7o2K2yAxRk2cDpU=;
+        b=J3lm4qm5oj6BRaEVNmGzvNhWQRk/1nghV/ySFQNK+BpMBc5l6CYao4yD5jSmACNyrB
+         WZpTtPGDnUdtsAl4IJv7SkonEDoV8ssuw7Bb8qCbZo5uAD3ceGbm/hLCJ+HTeLUxPk7q
+         aKkXXfkP7MTS/EpuE4ESwnVbkYy010v2Oje1Ph00+gLF207fKZd5tHKPb8rzZ/VzX9ZC
+         PLVcSbpYeI2AyBwPktAsRVuOaIKqx6147JeSYVjebs8B7kCcIshvslwJ/c/8TzNc6gwd
+         gEwdw9EhnN74yEEDdYmlfOUubO2PXi+z3D3Vn+/DMzUgZFxpm18pR7UBlcc6w2QWjycd
+         W5Dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697643255; x=1698248055;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HmlZgOTohheR5Sz3o+FLczWrX2zS7o2K2yAxRk2cDpU=;
+        b=fkaTSORn8UFdOAYMoUCbOpg1g3pyh2ujmJ0824alUoGeiR8+EHUAcClowHRgodLb6X
+         LMWX7uyGEhKFD8xi1vGbn0FA+GPf4ju1GbdrHbz20JZohEiuk+a8G40ODGiukujfQ+qw
+         4bqguFoKql2hwiJeEfwq623BkgKGTQOGg4e/ByO6m6o293V8v19+UvuTGjxI5YzSuHVb
+         /QvGPCu8ksBUQi4W+dXr6ZAlB42XIOZSoBdQnRpk7odSRfHOQPI3DxxBpYZLJ9HQQAIg
+         JGbodnvfASCZvK1k0oREg8qOVC3r29thwD0j3BTxk5t3OPKlzVTAdfJ62GKdxCFK8TXL
+         TnBw==
+X-Gm-Message-State: AOJu0Yww8LI+03OOsxnm56bAkZX4nncdaYb7e9VhG4baadaIetpdRtoU
+	oMNkwjbGtDBm5oGWG7tXLchrwMfhfVc=
+X-Google-Smtp-Source: AGHT+IEVNbZ56UZRmNC6SHChpVibk8/f3CmobKd/aVSmcbaI5+8ojfX7HdJisupGUtNmr2zqNWv3Ug==
+X-Received: by 2002:a05:6820:200e:b0:571:1fad:ebe0 with SMTP id by14-20020a056820200e00b005711fadebe0mr6705464oob.3.1697643255377;
+        Wed, 18 Oct 2023 08:34:15 -0700 (PDT)
+Received: from localhost.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id h16-20020a4ad750000000b00581e090fd1fsm523782oot.8.2023.10.18.08.34.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Oct 2023 08:34:12 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	sboyd@kernel.org,
+	mturquette@baylibre.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 1/3] clk: rockchip: rk3568: Add PLL rate for 292.5MHz
+Date: Wed, 18 Oct 2023 10:33:55 -0500
+Message-Id: <20231018153357.343142-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231018153357.343142-1-macroalpha82@gmail.com>
+References: <20231018153357.343142-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/26] Add perf support to the rockchip-dfi driver
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>,
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Will Deacon <will@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>, kernel@pengutronix.de,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Robin Murphy <robin.murphy@arm.com>,
- Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
-From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20231018061714.3553817-1-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_082117_040717_8039539D 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20231018_083416_613251_2CD38638 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +100,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha and Heiko,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-I finished the review from  01 ~ 22 patches.
-- 01-05 patches are merged.
-- 06-22 patches with acked tags.
+Add support for a PLL rate of 292.5MHz so that the Powkiddy RGB30 panel
+can run at a requested 60hz (59.96, close enough).
 
+I have confirmed this rate fits with all the constraints
+listed in the TRM for the VPLL (as an integer PLL) in Part 1 "Chapter
+2 Clock & Reset Unit (CRU)."
 
-Some patches modifies the 'include/soc/rockchip/*' files.
-After getting the ack from rockchip maintainer (Heiko Stuebner),
-I'll merge patches from 06 ~ 22 patches to devfreq.git.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/clk/rockchip/clk-rk3568.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Best Regards,
-Chanwoo Choi
-
-On 23. 10. 18. 15:16, Sascha Hauer wrote:
-> This series integrates the recent review feedback from Chanwoo Choi to
-> v7.
-> 
-> Chanwoo, I am sending the full patchset again for people to try this
-> series. You said that you applied 1-5 already, so please start picking
-> from 6/26.
-> 
-> Sascha
-> 
-> Sascha Hauer (26):
->   PM / devfreq: rockchip-dfi: Make pmu regmap mandatory
->   PM / devfreq: rockchip-dfi: Embed desc into private data struct
->   PM / devfreq: rockchip-dfi: use consistent name for private data
->     struct
->   PM / devfreq: rockchip-dfi: Add SoC specific init function
->   PM / devfreq: rockchip-dfi: dfi store raw values in counter struct
->   PM / devfreq: rockchip-dfi: Use free running counter
->   PM / devfreq: rockchip-dfi: introduce channel mask
->   PM / devfreq: rk3399_dmc,dfi: generalize DDRTYPE defines
->   PM / devfreq: rockchip-dfi: Clean up DDR type register defines
->   PM / devfreq: rockchip-dfi: Add RK3568 support
->   PM / devfreq: rockchip-dfi: Handle LPDDR2 correctly
->   PM / devfreq: rockchip-dfi: Handle LPDDR4X
->   PM / devfreq: rockchip-dfi: Pass private data struct to internal
->     functions
->   PM / devfreq: rockchip-dfi: Prepare for multiple users
->   PM / devfreq: rockchip-dfi: give variable a better name
->   PM / devfreq: rockchip-dfi: Add perf support
->   PM / devfreq: rockchip-dfi: make register stride SoC specific
->   PM / devfreq: rockchip-dfi: account for multiple DDRMON_CTRL registers
->   PM / devfreq: rockchip-dfi: add support for RK3588
->   dt-bindings: devfreq: event: convert Rockchip DFI binding to yaml
->   dt-bindings: devfreq: event: rockchip,dfi: Add rk3568 support
->   dt-bindings: devfreq: event: rockchip,dfi: Add rk3588 support
->   dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf
->   arm64: dts: rockchip: rk3399: Enable DFI
->   arm64: dts: rockchip: rk356x: Add DFI
->   arm64: dts: rockchip: rk3588s: Add DFI
-> 
->  .../bindings/devfreq/event/rockchip,dfi.yaml  |  74 ++
->  .../bindings/devfreq/event/rockchip-dfi.txt   |  18 -
->  .../rockchip,rk3399-dmc.yaml                  |   2 +-
->  .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   1 -
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   7 +
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  16 +
->  drivers/devfreq/event/rockchip-dfi.c          | 814 +++++++++++++++---
->  drivers/devfreq/rk3399_dmc.c                  |  10 +-
->  include/soc/rockchip/rk3399_grf.h             |   9 +-
->  include/soc/rockchip/rk3568_grf.h             |  13 +
->  include/soc/rockchip/rk3588_grf.h             |  18 +
->  include/soc/rockchip/rockchip_grf.h           |  18 +
->  13 files changed, 863 insertions(+), 138 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
->  delete mode 100644 Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt
->  create mode 100644 include/soc/rockchip/rk3568_grf.h
->  create mode 100644 include/soc/rockchip/rk3588_grf.h
->  create mode 100644 include/soc/rockchip/rockchip_grf.h
-> 
+diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+index 16dabe2b9c47..db713e1526cd 100644
+--- a/drivers/clk/rockchip/clk-rk3568.c
++++ b/drivers/clk/rockchip/clk-rk3568.c
+@@ -72,6 +72,7 @@ static struct rockchip_pll_rate_table rk3568_pll_rates[] = {
+ 	RK3036_PLL_RATE(408000000, 1, 68, 2, 2, 1, 0),
+ 	RK3036_PLL_RATE(312000000, 1, 78, 6, 1, 1, 0),
+ 	RK3036_PLL_RATE(297000000, 2, 99, 4, 1, 1, 0),
++	RK3036_PLL_RATE(292500000, 1, 195, 4, 4, 1, 0),
+ 	RK3036_PLL_RATE(241500000, 2, 161, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE(216000000, 1, 72, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE(200000000, 1, 100, 3, 4, 1, 0),
+-- 
+2.34.1
 
 
 _______________________________________________
