@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04067CDB483
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 06:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A6BCDB486
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 06:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TK+cOla9BDBAA9JlLnjUdnOed0I202w0NuErfg56KZ4=; b=QtpwfbpdwSBQJo
-	hF1awNCn7dbZUUpba2I+9qF6lwfn7FPCxfA1Yp6EVnmNvxzgpuH7XIjcoGOTzntYqORQt9WkTKX2R
-	asmGV/GpEcn3DFh6HhnrDV2guoBctYbq1erTPR91vPvDLlI4+ukXukxcXhWtLWXjaaLo1zW3qqbvF
-	40FUpgIzESp+jlyYB+TF3MMLrbKynQfcmWwLS5Cwfp/hGCTRGIPG/1WHkBAigKh86FXs/vv119efk
-	i3wbWvQVqOeLp2UMqYCbhOREfs9mb0CjBrzWRHtaY8pFPV1qPN8rSIiPYDCYDOr3OgSQbdGeFjArF
-	jeZCVL9v0Ann2O62m33Q==;
+	List-Owner; bh=Fe+Hg007rnMb8iMugMo+WcGpkzKdGfVS2lRY6MtRkbw=; b=2kM8FlEgStq0bR
+	C+Jrz90iCC746Br2sNPOKLIKUFkWaceaCnPoYbiFiLQnLH40WFoBWA+yn4TK1p3bUNu9PfXa1BRcs
+	5ScBVpJnxZmYFb8nFeVlOYH0eco4GnwLjLtA5hkfYHwBDza/WlzZCHK9uwxD80NgmA4H8IbFJFKfr
+	EF7nzBEuDY7ektVPW8/bP0/jNy2f1zJa9qZtJYJ5lcb7E/1IyifYI4NnSEEQYPJK6migsQY3fC26Z
+	m9YGhWfy3WzR915OcYpVnVM4g27i9JsMTabTrn6HyJJIQbbFjzcA/VJkdlhxt4W8DB3Y6RkFQfBQ3
+	HX2gsMX9WnVvbbFb9Y3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qszrz-00DtCb-1I;
-	Wed, 18 Oct 2023 06:17:27 +0000
+	id 1qszs9-00DtK9-0c;
+	Wed, 18 Oct 2023 06:17:37 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qszrv-00Dt7w-2U
+	id 1qszrv-00Dt83-2u
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Oct 2023 06:17:25 +0000
+	Wed, 18 Oct 2023 06:17:28 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qszrs-0001a6-MK; Wed, 18 Oct 2023 08:17:20 +0200
+	id 1qszru-0001Zu-CO; Wed, 18 Oct 2023 08:17:22 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qszrr-002UYi-E6; Wed, 18 Oct 2023 08:17:19 +0200
+	id 1qszrq-002UYH-W6; Wed, 18 Oct 2023 08:17:19 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.96)
 	(envelope-from <sha@pengutronix.de>)
-	id 1qszrr-00EvjZ-0X;
-	Wed, 18 Oct 2023 08:17:19 +0200
+	id 1qszrq-00Evii-2k;
+	Wed, 18 Oct 2023 08:17:18 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -62,10 +62,11 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v8 23/26] dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf
-Date: Wed, 18 Oct 2023 08:17:11 +0200
-Message-Id: <20231018061714.3553817-24-s.hauer@pengutronix.de>
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>
+Subject: [PATCH v8 12/26] PM / devfreq: rockchip-dfi: Handle LPDDR4X
+Date: Wed, 18 Oct 2023 08:17:00 +0200
+Message-Id: <20231018061714.3553817-13-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231018061714.3553817-1-s.hauer@pengutronix.de>
 References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
@@ -75,9 +76,8 @@ X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231017_231723_887231_B509B9BC 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231017_231724_015981_EAC19163 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,31 +94,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,rk3588-pmugrf compatible string.
+In the DFI driver LPDDR4X can be handled in the same way as LPDDR4. Add
+the missing case.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
+ drivers/devfreq/event/rockchip-dfi.c | 1 +
+ include/soc/rockchip/rockchip_grf.h  | 1 +
+ 2 files changed, 2 insertions(+)
 
-Notes:
-    Changes since v5:
-     - new patch
-
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index e4fa6a07b4fa2..1309bf5ae0cdd 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -233,6 +233,7 @@ allOf:
-               - rockchip,rk3399-grf
-               - rockchip,rk3399-pmugrf
-               - rockchip,rk3568-pmugrf
-+              - rockchip,rk3588-pmugrf
-               - rockchip,rv1108-grf
-               - rockchip,rv1108-pmugrf
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 8ce0191552ef1..bdf421b248df9 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -90,6 +90,7 @@ static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+ 			       dfi_regs + DDRMON_CTRL);
+ 		break;
+ 	case ROCKCHIP_DDRTYPE_LPDDR4:
++	case ROCKCHIP_DDRTYPE_LPDDR4X:
+ 		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
+ 			       dfi_regs + DDRMON_CTRL);
+ 		break;
+diff --git a/include/soc/rockchip/rockchip_grf.h b/include/soc/rockchip/rockchip_grf.h
+index dde1a9796ccb5..e46fd72aea8d1 100644
+--- a/include/soc/rockchip/rockchip_grf.h
++++ b/include/soc/rockchip/rockchip_grf.h
+@@ -12,6 +12,7 @@ enum {
+ 	ROCKCHIP_DDRTYPE_LPDDR2	= 5,
+ 	ROCKCHIP_DDRTYPE_LPDDR3	= 6,
+ 	ROCKCHIP_DDRTYPE_LPDDR4	= 7,
++	ROCKCHIP_DDRTYPE_LPDDR4X = 8,
+ };
  
+ #endif /* __SOC_ROCKCHIP_GRF_H */
 -- 
 2.39.2
 
