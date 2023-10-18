@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63715CDB47E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C6DCDB47E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 15:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bq0fg0xRP4HflyxbzmA0sa2FtUlXBeYM0LsP7reKyKY=; b=s1VmIaeVLQB2PA
-	yRxylIYQY+gKci7rCU1563tiI6j0sKXC1g0kJM2oLu6Do3IzIKt584r4lAtcJuPQtpBtf08n5YveZ
-	9tu91HRJg5jY/9tMTqyjcKDCFB5mEsdhPJ6qzeC2HFBqbJ6d46j82dVOea/+04kjfdRQb1Ca58jAU
-	C8UF9OLOBi5eFZCyW+vKnQWX+5MtAYWnDraKoJfLcb29CRWyBUo9NE7upphnc9g0occTipUu0nBfG
-	RxAKvoAdL/nlqegbQHX8H5Qz164EOWatELiEcHJhUjmXBgyPTk6kGbWTyNj5fjI3fDGDULC6Z/+Id
-	gZtMBcX+XvG/OS22125Q==;
+	List-Owner; bh=c5acPqRaG5UsyBBYwB+/B1CyVXpVda3tKlO7uKRmZ8w=; b=EdeYyvmltEuEM5
+	aeZBQXfeVQdVYuVHLCO53VemVnSfQrgyJ4uqn+eRKTa8ADHCy5Wjv2+lkR7t0Jb03t+41jMBrzu6r
+	HHg9vp9IFyJJSwlCnvenck92y8a8o6byDk9CAjtXQaGxT+wv6aiBTtAL8U+rbzdbqLV0L1qmMTx5O
+	kD1xEUkR8VhxlLfLAvJj19t7PU6b4mGMnhU819RfG01qCPBoj0VQfeqGnMNm3Sl8LsgSwAzbHE5Nb
+	AfOQJcTrftDHHRHyibKZhgRdwRo7i7lsN/cpEGBnGJhhfrVbx+bl/8j4+Ye9uyHYYKtF22rfeqxyJ
+	Lbl16sKdvZELLVUb5zTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt86g-00EzBu-1u;
-	Wed, 18 Oct 2023 15:05:10 +0000
+	id 1qt87B-00EzI4-32;
+	Wed, 18 Oct 2023 15:05:41 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt86d-00EzAx-0W;
-	Wed, 18 Oct 2023 15:05:08 +0000
+	id 1qt877-00EzGl-37;
+	Wed, 18 Oct 2023 15:05:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 49D49617E5;
-	Wed, 18 Oct 2023 15:05:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C630C433C9;
-	Wed, 18 Oct 2023 15:05:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4E77D61804;
+	Wed, 18 Oct 2023 15:05:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AECCC433C7;
+	Wed, 18 Oct 2023 15:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697641505;
-	bh=1QoRzC9jJwTaFmGrM4LiozZejJzJBfoUoG9IBJ/e5TQ=;
+	s=k20201202; t=1697641537;
+	bh=PIiIXKenjlTWbp5gHz845HTrHDmcuL0MzMQD6MsERgo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HryORvhyVhhLAZoAiFy39YrretnQ1CRqMzpISFzRh12yhMMjUTqHaJIbmmzxHiFNe
-	 W3FsgaW4p6gX5s1YES6KAaoc5SUvh7Q9AF9VclNyZkKTbWe9bnPl66zhBXskmPh+vZ
-	 EQqsSEfspbB+9mtMOJrQQBmPyhNugY+GDQHprxWdbweERs7goQGANR7DLeJkuW72lc
-	 uvPYGxRLUZgLWUenIhamhKTvYHB8iBB1MPfZOHiTbe5DwliXMNhkgwoz2ieH+CuLuq
-	 ezCPQXULeFAeGBWGtI4hGGBIQlR2hYNVTa401dWQhuoS3gFTyTVR07lsfJIwSZGJw0
-	 QM1LFRV7lnQqQ==
-Message-ID: <d0fbe394-f038-49d2-8aac-508c7ff23735@kernel.org>
-Date: Thu, 19 Oct 2023 00:05:01 +0900
+	b=U3bPPdQvqZ+XEXd7ak7qMUBqO7WZuOCU4DR5EpGHN4/6IAlxRPknFvV/Gt5TCvGi1
+	 PAk/iRwWaeJlZF1g/G6fqiPIofi0cWU92B1Jj7UtMkuRfbufllIFvkvMCZx7XYmLIA
+	 ZIu9prqmZ1/W/1atPM/q0MAkVmHQHSqZqA9PuS6jzJuiNCkfJ6nN0B/Fe/XjzSX/j+
+	 CCysyr74f+UDVlwSojvutLUU/IMdeGFrN+GttW/MwCrjGC4pgmmyy8lN7I3igncsyO
+	 ezdWEi9s2VcTfz+Mcos0nTaI4MAtil+RetoEulJeVB8m+o0rc3w15q+KjPzADeIqgq
+	 Qow1ONdjj7oUg==
+Message-ID: <99477a81-08d1-4e5d-8b20-22da58921041@kernel.org>
+Date: Thu, 19 Oct 2023 00:05:34 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 05/26] PM / devfreq: rockchip-dfi: dfi store raw values
- in counter struct
+Subject: Re: [PATCH v8 07/26] PM / devfreq: rockchip-dfi: introduce channel
+ mask
 Content-Language: en-US
 To: Sascha Hauer <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -59,15 +59,14 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Vincent Legoll <vincent.legoll@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
- <20231018061714.3553817-6-s.hauer@pengutronix.de>
+ <20231018061714.3553817-8-s.hauer@pengutronix.de>
 From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20231018061714.3553817-6-s.hauer@pengutronix.de>
+In-Reply-To: <20231018061714.3553817-8-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_080507_244732_2811CCC2 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20231018_080538_090423_2AC8F117 
+X-CRM114-Status: GOOD (  22.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,41 +84,97 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 23. 10. 18. 15:16, Sascha Hauer wrote:
-> When adding perf support to the DFI driver the perf part will
-> need the raw counter values, so move the fixed * 4 factor to
-> rockchip_dfi_get_event().
+> Different Rockchip SoC variants have a different number of channels.
+> Introduce a channel mask to make the number of channels configurable
+> from SoC initialization code.
 > 
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> Notes:
+>     Changes since v7:
+>      - Loop only over channels present on a SoC
+> 
+>  drivers/devfreq/event/rockchip-dfi.c | 25 +++++++++++++++++++------
+>  1 file changed, 19 insertions(+), 6 deletions(-)
 > 
 > diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 6b1ef29df7048..680f629da64fc 100644
+> index 126bb744645b6..28c18bbf6baa5 100644
 > --- a/drivers/devfreq/event/rockchip-dfi.c
 > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -97,7 +97,7 @@ static int rockchip_dfi_get_busier_ch(struct devfreq_event_dev *edev)
->  	/* Find out which channel is busier */
->  	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
->  		dfi->ch_usage[i].access = readl_relaxed(dfi_regs +
-> -				DDRMON_CH0_DFI_ACCESS_NUM + i * 20) * 4;
-> +				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
->  		dfi->ch_usage[i].total = readl_relaxed(dfi_regs +
->  				DDRMON_CH0_COUNT_NUM + i * 20);
->  		tmp = dfi->ch_usage[i].access;
-> @@ -149,7 +149,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+> @@ -18,10 +18,11 @@
+>  #include <linux/list.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <linux/bits.h>
 >  
->  	busier_ch = rockchip_dfi_get_busier_ch(edev);
+>  #include <soc/rockchip/rk3399_grf.h>
 >  
-> -	edata->load_count = dfi->ch_usage[busier_ch].access;
-> +	edata->load_count = dfi->ch_usage[busier_ch].access * 4;
->  	edata->total_count = dfi->ch_usage[busier_ch].total;
+> -#define RK3399_DMC_NUM_CH	2
+> +#define DMC_MAX_CHANNELS	2
 >  
+>  /* DDRMON_CTRL */
+>  #define DDRMON_CTRL	0x04
+> @@ -44,7 +45,7 @@ struct dmc_count_channel {
+>  };
+>  
+>  struct dmc_count {
+> -	struct dmc_count_channel c[RK3399_DMC_NUM_CH];
+> +	struct dmc_count_channel c[DMC_MAX_CHANNELS];
+>  };
+>  
+>  /*
+> @@ -61,6 +62,8 @@ struct rockchip_dfi {
+>  	struct regmap *regmap_pmu;
+>  	struct clk *clk;
+>  	u32 ddr_type;
+> +	unsigned int channel_mask;
+> +	unsigned int max_channels;
+>  };
+>  
+>  static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+> @@ -95,7 +98,9 @@ static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev, struct dm
+>  	u32 i;
+>  	void __iomem *dfi_regs = dfi->regs;
+>  
+> -	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
+> +	for (i = 0; i < dfi->max_channels; i++) {
+> +		if (!(dfi->channel_mask & BIT(i)))
+> +			continue;
+>  		count->c[i].access = readl_relaxed(dfi_regs +
+>  				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+>  		count->c[i].total = readl_relaxed(dfi_regs +
+> @@ -145,9 +150,14 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+>  	rockchip_dfi_read_counters(edev, &count);
+>  
+>  	/* We can only report one channel, so find the busiest one */
+> -	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
+> -		u32 a = count.c[i].access - last->c[i].access;
+> -		u32 t = count.c[i].total - last->c[i].total;
+> +	for (i = 0; i < dfi->max_channels; i++) {
+> +		u32 a, t;
+> +
+> +		if (!(dfi->channel_mask & BIT(i)))
+> +			continue;
+> +
+> +		a = count.c[i].access - last->c[i].access;
+> +		t = count.c[i].total - last->c[i].total;
+>  
+>  		if (a > access) {
+>  			access = a;
+> @@ -185,6 +195,9 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+>  	dfi->ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+>  			RK3399_PMUGRF_DDRTYPE_MASK;
+>  
+> +	dfi->channel_mask = GENMASK(1, 0);
+> +	dfi->max_channels = 2;
+> +
 >  	return 0;
+>  };
+>  
 
-Already applied it on v7.
+Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
 -- 
 Best Regards,
