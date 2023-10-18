@@ -4,129 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61A81CDB482
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 07:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B005CCDB47E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Oct 2023 07:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kPLSRAhBwgV1Je/+Rs1OS2tCl2W1M7zwv0YBuErVB/8=; b=vIhM40BPJZQ51S
-	OIA7toQzg2PE1YDl69ZJJsSvQwJU4PRGCQrcacrFFNdx8MKH7EkKfzQw1Qk6ZIWuFqJ2v9kHHQQ8K
-	Up7EkMk0om8ndegD+w+MlqrZNorJ+3fxozRFGBKgi62ZaFwl8Ycn0vCfBT7nd4d+VhDyfBLZFfE+V
-	5favdnaj0sN0eysxhc9gvR6mdFeXZYZ1ULXN5VpsFlYJXQtYMiajqU/eZnT/hAVA0YeXb0pv6Sfyg
-	rS7f9nK/Egf7ChB3Er3K7SOVlCAzjfLYfM4zyegdHZkQZutEMmMzgJTkKAyHFz+WeCAX1xoVORXRM
-	3oYYURQlF6EV0UhTG9aQ==;
+	List-Owner; bh=3bwc7NWICddMhPahU4ew7vzLekghmfVMFx/kl5q2WVU=; b=t+NXgNxg2t6Wif
+	FztL9h53Jisgga6dUH9RnOA2xz+SAaPS3a/Z7tkQNyr65pE/L2XTDf1jW6ud649925rq69sleps2v
+	xjfYUxdAtD8RIGhDajNiqOKZRCU37lbVlGREvLMilOyDZC3bzUjr7lBTTitH7wIdQ5YAeTPAKogNc
+	8UaFFCfV2Ubtmu2uZnbm2s+IqFmTCO2G3XqjiFNhUk+gU2E6n8PkAGbtcfJ5kyfey/+xnvQEYmbde
+	piK+gp6LLl5HVm3TDyXuvdF8gLwSrluv7D++P5X/jh6EjI2j9tiIAUzZg4IGYbLR5iAYqPMPfbkX9
+	gV7j2DyNUCNOhcQA8EIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt0lC-00E2hh-2p;
-	Wed, 18 Oct 2023 07:14:30 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1qt1Rx-00E5F7-0x;
+	Wed, 18 Oct 2023 07:58:41 +0000
+Received: from mgamail.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qt0l9-00E2g6-2s
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Oct 2023 07:14:29 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4083cd3917eso2326775e9.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Oct 2023 00:14:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697613263; x=1698218063; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=B1IInBDsbBk5GPM+QsmE05nXSTJeImB+YIHmL3qSplw=;
-        b=BbcquyC/ncgSmPR7r3G8eRv41IvHlHk89y0xdbAsM7OiryvPoNG85KYZ8BFvOuH8o/
-         Vzp7Ov2fyv1KHM0Y2WRnB7M6XBsg0R+zL6oDkU9a9d87Khd68DxvR4lNnyIFO6QrAyMm
-         osgP6vx9dBgJLpIkSNACD+RDMFUwJb9VBiowIZ78zGDl9HgFsmi/2Rq7D/hnpkPfOHs6
-         fjyyX24Q+GqwArLw6TkqbtPhA51bjZNn2LgiLMxmLMdaDRZSWhbhIX6lrRZ/1jqswkv7
-         tl4ho8LHfSG7Uqoxn6a+y+4fdv4jNTAJ9/z+DIKBsBL3PNgtlhZSYj2lDvtiK7gSWOxh
-         RJUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697613263; x=1698218063;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=B1IInBDsbBk5GPM+QsmE05nXSTJeImB+YIHmL3qSplw=;
-        b=fb93GtpWzZto8wjxciMn1YJZdKUSMFq32p8MAHBGNIC0kX2vIEJQe0jMfuNdouTG7n
-         mrW+zpy5srC4jxVW3ZD8AydQolosYFwehVjYVaxiTctPjkdeN4mYZEnxhvXxJix5Bub5
-         SW/fatOilEqsI5nJc3z2g5XYICLMB2aK1wr4isE3HQDFgkANsi5mfAFo7VXdyQ2iTs5k
-         v4APB71b+ffQF9f9KZg5jntLuSu569W9tn0q4n2t1nV9CywYkOyHpnyhK30DPKXGU7ig
-         KjHkcL9vN2CPdD4/FGTTiuFa0SLuDegHE96tn/vR+hm7fIVU6IM4Hl55e+gJXcGBxjXS
-         vCyQ==
-X-Gm-Message-State: AOJu0YzHgN5aihO/uKNggIW12ZvTN+kVyn5usXX9vievC7e2rc+XBKMv
-	uKdNKqTKVAx2naeDjZgmo55Wtw==
-X-Google-Smtp-Source: AGHT+IFKA133D8TkyPvW9TIPtQJEvPW0+QrYoUrodSm1xQ4XJr38DX3qfM6d6l2ahAvTb3Ens9ZUKQ==
-X-Received: by 2002:a05:600c:a686:b0:3fc:dd9:91fd with SMTP id ip6-20020a05600ca68600b003fc0dd991fdmr3179161wmb.40.1697613263072;
-        Wed, 18 Oct 2023 00:14:23 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.154])
-        by smtp.gmail.com with ESMTPSA id iv7-20020a05600c548700b004064cd71aa8sm869800wmb.34.2023.10.18.00.14.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Oct 2023 00:14:22 -0700 (PDT)
-Message-ID: <7d54a96e-17b0-4055-b546-a670d1536af5@linaro.org>
-Date: Wed, 18 Oct 2023 09:14:20 +0200
+	id 1qt1Ru-00E5Dz-1b;
+	Wed, 18 Oct 2023 07:58:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697615918; x=1729151918;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=7CsCblM7LOsvb1R6ZhggOe011s3+ZIIulQCoil7hgcc=;
+  b=DaE38BO84v5J/taRCsjIPR3Mu4Ilw9tUMXzDOUhtDFrNAPSVjF3utUB+
+   ce05p7NeNhDEcLFyn+sLIvLZf0I1rcwz9RUZjjPwR3NnfV78rgnNCKuQs
+   9nDWJTUpT5Tpm4u6+rphO9kPGVPphaaa/WTO+WDQRDZ9ScevVgRGMObf5
+   jgjP8S7k3ZKuUc35eP2Lt+Y0TocgW39uf9GCFPUniUTidRraVVCSMog5t
+   VwPsGbaLwOeVvaWZXz7tK8Os/ry1wyIw4sLX2BNXmiPx3V5XyE98+WEy+
+   i71voZYaGFc4HkoXz+OUj6tK1NOhixVN+CBWCGCgPCySLiZ6isfwgChF5
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10866"; a="384843679"
+X-IronPort-AV: E=Sophos;i="6.03,234,1694761200"; 
+   d="scan'208";a="384843679"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 00:58:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10866"; a="756467973"
+X-IronPort-AV: E=Sophos;i="6.03,234,1694761200"; 
+   d="scan'208";a="756467973"
+Received: from lkp-server01.sh.intel.com (HELO 8917679a5d3e) ([10.239.97.150])
+  by orsmga002.jf.intel.com with ESMTP; 18 Oct 2023 00:58:23 -0700
+Received: from kbuild by 8917679a5d3e with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qt1Rd-00005c-0M;
+	Wed, 18 Oct 2023 07:58:21 +0000
+Date: Wed, 18 Oct 2023 15:58:04 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>,
+	linux-rockchip@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>, Chanwoo Choi <chanwoo@kernel.org>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Will Deacon <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	kernel@pengutronix.de,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v8 16/26] PM / devfreq: rockchip-dfi: Add perf support
+Message-ID: <202310181557.GIXGL21M-lkp@intel.com>
+References: <20231018061714.3553817-17-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/4] dt-bindings: clock: rk3588: export PCLK_VO1GRF clk
- id
-Content-Language: en-US
-To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
- sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
- andy.yan@rock-chips.com
-References: <20231018070144.8512-1-zhangqing@rock-chips.com>
- <20231018070144.8512-4-zhangqing@rock-chips.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231018070144.8512-4-zhangqing@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20231018061714.3553817-17-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231018_001427_928439_283E2BBD 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20231018_005838_547080_D720990E 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,31 +98,201 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/10/2023 09:01, Elaine Zhang wrote:
-> MBIST_MCLK_PDM1 is not used,
-> Use PCLK_VO1GRF to replace it.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  include/dt-bindings/clock/rockchip,rk3588-cru.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> index 5790b1391201..5816cd71a4e3 100644
-> --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-> @@ -36,7 +36,7 @@
->  #define PCLK_DSU			21
->  #define PCLK_S_DAPLITE			22
->  #define PCLK_M_DAPLITE			23
-> -#define MBIST_MCLK_PDM1			24
-> +#define PCLK_VO1GRF			24
+Hi Sascha,
 
-That's an ABI break without justification.
+kernel test robot noticed the following build warnings:
 
-Best regards,
-Krzysztof
+[auto build test WARNING on linus/master]
+[also build test WARNING on v6.6-rc6]
+[cannot apply to next-20231018]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
+url:    https://github.com/intel-lab-lkp/linux/commits/Sascha-Hauer/PM-devfreq-rockchip-dfi-Make-pmu-regmap-mandatory/20231018-142228
+base:   linus/master
+patch link:    https://lore.kernel.org/r/20231018061714.3553817-17-s.hauer%40pengutronix.de
+patch subject: [PATCH v8 16/26] PM / devfreq: rockchip-dfi: Add perf support
+config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20231018/202310181557.GIXGL21M-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231018/202310181557.GIXGL21M-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202310181557.GIXGL21M-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/devfreq/event/rockchip-dfi.c:203:13: warning: 'rockchip_ddr_perf_counters_add' defined but not used [-Wunused-function]
+     203 | static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--
+>> drivers/devfreq/event/rockchip-dfi.c:79: warning: Function parameter or member 'write_access' not described in 'dmc_count_channel'
+
+
+vim +/rockchip_ddr_perf_counters_add +203 drivers/devfreq/event/rockchip-dfi.c
+
+    66	
+    67	/**
+    68	 * struct dmc_count_channel - structure to hold counter values from the DDR controller
+    69	 * @access:       Number of read and write accesses
+    70	 * @clock_cycles: DDR clock cycles
+    71	 * @read_access:  number of read accesses
+    72	 * @write_acccess: number of write accesses
+    73	 */
+    74	struct dmc_count_channel {
+    75		u64 access;
+    76		u64 clock_cycles;
+    77		u64 read_access;
+    78		u64 write_access;
+  > 79	};
+    80	
+    81	struct dmc_count {
+    82		struct dmc_count_channel c[DMC_MAX_CHANNELS];
+    83	};
+    84	
+    85	/*
+    86	 * The dfi controller can monitor DDR load. It has an upper and lower threshold
+    87	 * for the operating points. Whenever the usage leaves these bounds an event is
+    88	 * generated to indicate the DDR frequency should be changed.
+    89	 */
+    90	struct rockchip_dfi {
+    91		struct devfreq_event_dev *edev;
+    92		struct devfreq_event_desc desc;
+    93		struct dmc_count last_event_count;
+    94	
+    95		struct dmc_count last_perf_count;
+    96		struct dmc_count total_count;
+    97		seqlock_t count_seqlock; /* protects last_perf_count and total_count */
+    98	
+    99		struct device *dev;
+   100		void __iomem *regs;
+   101		struct regmap *regmap_pmu;
+   102		struct clk *clk;
+   103		int usecount;
+   104		struct mutex mutex;
+   105		u32 ddr_type;
+   106		unsigned int channel_mask;
+   107		unsigned int max_channels;
+   108		enum cpuhp_state cpuhp_state;
+   109		struct hlist_node node;
+   110		struct pmu pmu;
+   111		struct hrtimer timer;
+   112		unsigned int cpu;
+   113		int active_events;
+   114		int burst_len;
+   115		int buswidth[DMC_MAX_CHANNELS];
+   116	};
+   117	
+   118	static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+   119	{
+   120		void __iomem *dfi_regs = dfi->regs;
+   121		int ret = 0;
+   122	
+   123		mutex_lock(&dfi->mutex);
+   124	
+   125		dfi->usecount++;
+   126		if (dfi->usecount > 1)
+   127			goto out;
+   128	
+   129		ret = clk_prepare_enable(dfi->clk);
+   130		if (ret) {
+   131			dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n", ret);
+   132			goto out;
+   133		}
+   134	
+   135		/* clear DDRMON_CTRL setting */
+   136		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN | DDRMON_CTRL_SOFTWARE_EN |
+   137			       DDRMON_CTRL_HARDWARE_EN), dfi_regs + DDRMON_CTRL);
+   138	
+   139		/* set ddr type to dfi */
+   140		switch (dfi->ddr_type) {
+   141		case ROCKCHIP_DDRTYPE_LPDDR2:
+   142		case ROCKCHIP_DDRTYPE_LPDDR3:
+   143			writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR23, DDRMON_CTRL_DDR_TYPE_MASK),
+   144				       dfi_regs + DDRMON_CTRL);
+   145			break;
+   146		case ROCKCHIP_DDRTYPE_LPDDR4:
+   147		case ROCKCHIP_DDRTYPE_LPDDR4X:
+   148			writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_LPDDR4, DDRMON_CTRL_DDR_TYPE_MASK),
+   149				       dfi_regs + DDRMON_CTRL);
+   150			break;
+   151		default:
+   152			break;
+   153		}
+   154	
+   155		/* enable count, use software mode */
+   156		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
+   157			       dfi_regs + DDRMON_CTRL);
+   158	out:
+   159		mutex_unlock(&dfi->mutex);
+   160	
+   161		return ret;
+   162	}
+   163	
+   164	static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+   165	{
+   166		void __iomem *dfi_regs = dfi->regs;
+   167	
+   168		mutex_lock(&dfi->mutex);
+   169	
+   170		dfi->usecount--;
+   171	
+   172		WARN_ON_ONCE(dfi->usecount < 0);
+   173	
+   174		if (dfi->usecount > 0)
+   175			goto out;
+   176	
+   177		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+   178			       dfi_regs + DDRMON_CTRL);
+   179		clk_disable_unprepare(dfi->clk);
+   180	out:
+   181		mutex_unlock(&dfi->mutex);
+   182	}
+   183	
+   184	static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_count *res)
+   185	{
+   186		u32 i;
+   187		void __iomem *dfi_regs = dfi->regs;
+   188	
+   189		for (i = 0; i < dfi->max_channels; i++) {
+   190			if (!(dfi->channel_mask & BIT(i)))
+   191				continue;
+   192			res->c[i].read_access = readl_relaxed(dfi_regs +
+   193					DDRMON_CH0_RD_NUM + i * 20);
+   194			res->c[i].write_access = readl_relaxed(dfi_regs +
+   195					DDRMON_CH0_WR_NUM + i * 20);
+   196			res->c[i].access = readl_relaxed(dfi_regs +
+   197					DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
+   198			res->c[i].clock_cycles = readl_relaxed(dfi_regs +
+   199					DDRMON_CH0_COUNT_NUM + i * 20);
+   200		}
+   201	}
+   202	
+ > 203	static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
+   204						   const struct dmc_count *now,
+   205						   struct dmc_count *res)
+   206	{
+   207		const struct dmc_count *last = &dfi->last_perf_count;
+   208		int i;
+   209	
+   210		for (i = 0; i < dfi->max_channels; i++) {
+   211			res->c[i].read_access = dfi->total_count.c[i].read_access +
+   212				(u32)(now->c[i].read_access - last->c[i].read_access);
+   213			res->c[i].write_access = dfi->total_count.c[i].write_access +
+   214				(u32)(now->c[i].write_access - last->c[i].write_access);
+   215			res->c[i].access = dfi->total_count.c[i].access +
+   216				(u32)(now->c[i].access - last->c[i].access);
+   217			res->c[i].clock_cycles = dfi->total_count.c[i].clock_cycles +
+   218				(u32)(now->c[i].clock_cycles - last->c[i].clock_cycles);
+   219		}
+   220	}
+   221	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
