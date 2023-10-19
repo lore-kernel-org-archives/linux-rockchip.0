@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8540FCDB485
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB4FCDB482
 	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 16:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,26 +12,26 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5QdFIjOfjUVK+uIWmoO3HHVkwFNMTyElpB5FyGwljdY=; b=1mNLxOogwwvYo5
-	AvJ7aJrVIsTlmFch+r3JiYXdU0XKLP3tyVhhx/vjXJeK6X/BbyW21fRw136F0uIX0d3AEFLrU1sje
-	LMw6WNCM1hdvOR41ITgMdFB66k9VkgQiKvcxU13lI4rFdW2MfiXcue3RddXNelmOJxl3a7+H3gyZU
-	JjnguI4IVVrBMdT7Spv+xprYGCCbjVeazHTakYCEjSdxDNv9f/aogko/PSKWoGhUSIe4kXgBy1dXa
-	G0w6UrOQLkPi9ZaFCeieeSQRf0MZq22m9zHuQtw4NE7IHJ19JqVTDRhzFHqbWRXb4qlm8ZJ4F76cQ
-	gLoHpsZrIX4e2Y92oNqg==;
+	List-Owner; bh=WwkHr2WovfHrBQwWi1VVDqwI61xfLLCIOY21HLBTyIA=; b=in4b/r5zmwU/XC
+	VX8HiH4+iE7BuZ96Zjk1OFEU9P74Dr2KACAC4Af7gC6XvTcvqjC1d+DcmTgal6bZ/4Gq1GReI/rU3
+	TsXDQFLBI3iCHBktEXszTsGzsM50eNe2X9fpVVApf/keavMmQpTQedVmShrdRhOz36Gbu8ReqA3UV
+	cwCtqDI754Yv8hZ3144ZIv2N2Lp6SVYZQnAlIsuyZPCGIe/tcIC5pFuqxGhpJr6QaH6GlxNXOkgA0
+	MpI3HD9t5yzXAv/PBNFYS2LYKCvXuF0G6O6QoQa3B61RM34yT4D9zmxTrZL1lUbkJT9nyp5waYQRW
+	rMeR7uMQW7DUld0FrVfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtWLN-000Mvw-21;
-	Thu, 19 Oct 2023 16:57:57 +0000
+	id 1qtWLP-000MxV-2j;
+	Thu, 19 Oct 2023 16:57:59 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtWL7-000Mkc-0X;
-	Thu, 19 Oct 2023 16:57:43 +0000
+	id 1qtWL7-000MkZ-0X;
+	Thu, 19 Oct 2023 16:57:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1697734656; bh=Fj8aJKU7DWLRGOAkmo8ksuB3I0hdR2JFWf7TkxgKTuQ=;
+	t=1697734655; bh=L4bDVsBHKN7+RRja9G15OQB01q7fFAPLNARB2e5JiEM=;
 	h=From:To:Cc:Subject:Date:References:From;
-	b=YB65RgKyqjDKlUsn3OmxI+sCijdwMf+Z5XzUdSA02/1I6dRZWqBSW5Oqa234RjJvo
-	 sg3bAliq45Lyt38aO2r6vLX3LLB3Nzo1lhm1IPevcxWU8EGiMO05AlQWJGR2bXBusV
-	 RcCwT4dwj9kXO8Etay+noUvbG5U9sxIbDhk3n0io=
+	b=S/Z1qBaWPanzT6m/mu6sXMK3jBV4hUsI6ZH4fMLpzTgW4WZV81ZObNpmUmWyK6uyT
+	 gVXWPPThGXXkOroDuFJTN54tifrTwyVmgEnFwr3y0YlwxG3gBrI06yjGJCCKOysp7K
+	 h7A4imdONbKMP7GJFtmBGpsu1O/oj/NIisGJPsYw=
 From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -45,15 +45,15 @@ Cc: Ondrej Jirman <megi@xff.cz>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Rob Herring <robh@kernel.org>
-Subject: [RESEND PATCH v3 2/4] dt-bindings: mfd: rk806: Allow system-power-controller property
-Date: Thu, 19 Oct 2023 18:57:24 +0200
-Message-ID: <20231019165732.3818789-3-megi@xff.cz>
+Subject: [RESEND PATCH v3 1/4] dt-bindings: mfd: rk8xx: Deprecate rockchip,system-power-controller
+Date: Thu, 19 Oct 2023 18:57:23 +0200
+Message-ID: <20231019165732.3818789-2-megi@xff.cz>
 In-Reply-To: <20231019165732.3818789-1-megi@xff.cz>
 References: <20231019165732.3818789-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_095741_987566_5FD8E941 
-X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-CacheID: sfid-20231019_095742_015002_AF6597C3 
+X-CRM114-Status: UNSURE (   7.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,28 +73,105 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ondrej Jirman <megi@xff.cz>
 
-Declare support for this property.
+Deprecate support for this property in favor of standard
+system-power-controller one.
 
 Signed-off-by: Ondrej Jirman <megi@xff.cz>
 Reviewed-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml | 3 +++
+ Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml | 3 +++
+ Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 3 +++
+ Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml | 3 +++
+ Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml | 3 +++
+ 5 files changed, 15 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-index cf2500f2e9a0..3c2b06629b75 100644
---- a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-@@ -29,6 +29,8 @@ properties:
-   '#gpio-cells':
-     const: 2
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+index 4992f71b6fc3..ec5e0fadef95 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -42,9 +42,12 @@ properties:
+ 
+   rockchip,system-power-controller:
+     type: boolean
++    deprecated: true
+     description:
+       Telling whether or not this PMIC is controlling the system power.
  
 +  system-power-controller: true
 +
-   vcc1-supply:
+   wakeup-source:
+     type: boolean
      description:
-       The input supply for dcdc-reg1.
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+index f5908fa01a61..f1364c66cd62 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+@@ -37,9 +37,12 @@ properties:
+ 
+   rockchip,system-power-controller:
+     type: boolean
++    deprecated: true
+     description:
+       Telling whether or not this PMIC is controlling the system power.
+ 
++  system-power-controller: true
++
+   wakeup-source:
+     type: boolean
+     description:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+index 7fb849ac74a7..382bb2f87a54 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+@@ -37,9 +37,12 @@ properties:
+ 
+   rockchip,system-power-controller:
+     type: boolean
++    deprecated: true
+     description:
+       Telling whether or not this PMIC is controlling the system power.
+ 
++  system-power-controller: true
++
+   wakeup-source:
+     type: boolean
+     description:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+index 269fb85b2027..92b1592e8942 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+@@ -38,9 +38,12 @@ properties:
+ 
+   rockchip,system-power-controller:
+     type: boolean
++    deprecated: true
+     description:
+       Telling whether or not this PMIC is controlling the system power.
+ 
++  system-power-controller: true
++
+   wakeup-source:
+     type: boolean
+     description:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+index b57c4b005cf4..038804ff708d 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+@@ -37,9 +37,12 @@ properties:
+ 
+   rockchip,system-power-controller:
+     type: boolean
++    deprecated: true
+     description:
+       Telling whether or not this PMIC is controlling the system power.
+ 
++  system-power-controller: true
++
+   wakeup-source:
+     type: boolean
+     description:
 -- 
 2.42.0
 
