@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30B41CDB482
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9411ECDB485
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y1eRWB57zk1HOTD/c44ZX/p7TJZU+Y9o64LsuiokZXg=; b=hPJIzb+pdAXA6A
-	6Ef8fQc7ZPrOCGJGphUPnfUg2pz7FRfIxYrSwS3tl2sbo+jTMX9MwgYUBMTajh67VTRM7sflVVMdx
-	e1G0z/mrSHggJaLjqiR9WKQLZHuyleJK1q6xySdLoKmQB5lvPjyeOUdxhNGjw+xfxpA54fCEuNMc0
-	CgM+Enxasze+YD5Ux2EKKqY5hKRhcFsPTd4g1WEBUKA62cgCn3wiPYdrYKG7F3rbBfe+5H9odNtKg
-	gJ+6Ey0cGXfAU8JmQXQjtBP2+nSoFfTWzF4DB0uqTeSTSh6E8y6mUdv0Gd9KgIPZZlXVzdoT0VNvw
-	wlljvVVaV+80y2qwk3XA==;
+	List-Owner; bh=nv1yBwsJtQ8BHgXALzPfp01ieSmRTLDiI9cXlwGFGtA=; b=0s9C/zJ+ijuybt
+	C5RpgnI2dpmsMf6e01ht8TicltxEdqut6D4UtYG/iV1jaIph38xaopRImhFxH8U75AJzCzA0zc4pY
+	HX4kyDCiyE/HWPcjGKVtX5xvQKl/qttQEFwatxfJzsxjf8ZnzEDg1LPiVlok4argdqhH740NtLSsy
+	S3z8UhJIbzJX90YKTXhr4oXlE43Xpaq3czZ0phZ7W9MV6VZ2l72N6i0TLhx18cUJqVmfXdc5ZX6gd
+	elf8FCuGPkP/PG85yh7wZnCl9M6OhgwdY5cKkZEvIAUNRAKVHihvS7WnA1ZNyhHDLW7vlw8HoMRRQ
+	nZzFws6jwRK4hZbS+Ezg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSaq-00HSRN-15;
-	Thu, 19 Oct 2023 12:57:40 +0000
+	id 1qtSan-00HSOa-2E;
+	Thu, 19 Oct 2023 12:57:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWN-00HNoV-2i;
-	Thu, 19 Oct 2023 12:53:03 +0000
+	id 1qtSWP-00HNqt-2W;
+	Thu, 19 Oct 2023 12:53:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=D+v7ZuNGnQ24B7OnkVwAaKkIQcrJnzwSEWFpsdSWHIU=; b=MxompT/PDvadUnfNwuyczU4so2
-	AwZZwhgAmFSPrZEUJfq6cjNZtc6uNKfOZw0H4yEraPVLqdQwsrRlSMbp9beyXHBBaf013J6zFg+rq
-	CZqrBGBTcn39WVcuYFqo4cBTHdNvgMlx61lYZ6funLrr46TKggbZQllAXVTM9TaDNbCBHHax1B8Tu
-	gA1goZvQhQpUrzkC4m3Bp3cNgy6hlt1wlxOAO7vwEmqXrvovUK5o/+fgKfjPgpgM8ZyvCEnTv9e3p
-	JTbYkFPhbRd+pB5vUCIUtYhgfB7/ey2vmk4tu+4grj8VoRKUYa8tivdymeHzhpr5zyYyEBABUImhr
-	LP2nlYdg==;
+	bh=y6XiV9IcupkbgxABj43VzUXcORfiij1euWrpAY1T0M0=; b=pp49/cySAJfAcwiL3Is4TKZWik
+	/2dD5AkkzIku8Vm2/gREH0MHchHhZPgRGX4fmL7MIow4MTvDRe5rRC1Ufwm0PcSgJeGok0C4X8sSU
+	JfQGT16nHwc9rPoXVaeqg7bXR9Ryu0sRowvBTGJd+8CJBlgzCNXiRtZHvGIB+Tp+1UqGhNYTaXQYE
+	tFP/B40iuVl6agzNnKfoXdGKH+jtBO7ALIW2DQd6hlT9+N9IylOibuKWgtnp1uTJXEfhvCnPjXCNA
+	si9OlPf7BpMVANWlqgWyxndHzkWjK9VwBu9clnFJ45TlSj3X0/ZVaMR9pu3FJr+e0TpswarpaFYeT
+	qxElAkBA==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWF-009rXj-2Z;
-	Thu, 19 Oct 2023 12:53:01 +0000
+	id 1qtSWI-009rYi-1b;
+	Thu, 19 Oct 2023 12:53:02 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 84302660738B;
-	Thu, 19 Oct 2023 13:52:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 124BB6607394;
+	Thu, 19 Oct 2023 13:52:56 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719973;
-	bh=XSDQo9OCo2ZP1hI11u5UCcW4nwnvTW2khdQbpXxmYvM=;
+	s=mail; t=1697719976;
+	bh=rwdI4N/UpNcGmk6GGlucekYnkxJHQ/tXy5HmEK+3+oI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l4mBQmNUu+zfstY6x5b+83LTIR3bVCAJKgd8WpNg/++NwUE3PYhJhD/c4ailVCV+p
-	 hFIdZI8GIBzT745cAwzuT9d3vJj7gkYSdra3gyvquJ6g34h4oJW+/mY1qUzUookojH
-	 zG1cMQqca9um1l2E0xBFc7Fyj4VK0jqcGt3E5NSFfUZaaOgbVMbliK2ThidmGRY+bj
-	 ee9jaDct9riM2Xb5PcW2XrqMVnPzv7HCUMpTtDS8AnyHfD2fTSYtvgrLOUzUY7piGs
-	 kiN6jV0zI9T0eXjbLe5shzRi+sqZ+/GPQYG5Aipv8l7RfpMZKfvw0AjwfY6BvgD8N9
-	 S5O3BgDWV3FxA==
+	b=eea5vYxkxQmNtRJcSGNJLoyZQY5Y/WewHzyHe9IBNA5T39ZY7Ai38nN8jMHuwNjBK
+	 54h5r59Wtv93O+fBSdPynvfhDE5x+WyXTpTngd0scTzza6C6OW6JdEr9HGH8OQQePK
+	 z3teBshSO+iX+/+eWnGkBnl69KDDIlvBEHWP3cY/zey48WTF/vbJw0R0zACKW6chhk
+	 oRoet2B1DOgY3Y0hV934P6evu7lHbFjJ2U95m7ART2kzLfdSmwYfsMQ2Q52Sls2kJ5
+	 ZGzUXeBdwkILvO4BQnUjZMc4u3mHtYzAzH26XenovKgBdwxioN3zg8TSt2M4M7+vUU
+	 M2Ocs8HqhyS9w==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +76,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 44/56] media: core: Report the maximum possible number of buffers for the queue
-Date: Thu, 19 Oct 2023 14:52:10 +0200
-Message-Id: <20231019125222.21370-45-benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 49/56] media: verisilicon: g2: Use common helpers to compute chroma and mv offsets
+Date: Thu, 19 Oct 2023 14:52:15 +0200
+Message-Id: <20231019125222.21370-50-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135256_115011_6F8CA44A 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20231019_135259_095812_DEFB6571 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,113 +102,159 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use one of the struct v4l2_create_buffers reserved bytes to report
-the maximum possible number of buffers for the queue.
-V4l2 framework set V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS flags in queue
-capabilities so userland can know when the field is valid.
+HEVC and VP9 are running on the same hardware and share the same
+chroma and motion vectors offset constraint.
+Create common helpers functions for these computation.
+Source and destination buffer height may not be the same because
+alignment constraint are different so use destination height to
+compute chroma offset because we target this buffer as hardware
+output.
+To be able to use the helpers in both VP9 HEVC code remove dec_params
+and use context->bit_depth instead.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- .../userspace-api/media/v4l/vidioc-create-bufs.rst        | 8 ++++++--
- Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst  | 1 +
- drivers/media/common/videobuf2/videobuf2-v4l2.c           | 2 ++
- drivers/media/v4l2-core/v4l2-ioctl.c                      | 4 ++--
- include/uapi/linux/videodev2.h                            | 7 ++++++-
- 5 files changed, 17 insertions(+), 5 deletions(-)
+ .../media/platform/verisilicon/hantro_g2.c    | 14 ++++++++++
+ .../platform/verisilicon/hantro_g2_hevc_dec.c | 18 ++-----------
+ .../platform/verisilicon/hantro_g2_vp9_dec.c  | 26 +++----------------
+ .../media/platform/verisilicon/hantro_hw.h    |  3 +++
+ 4 files changed, 23 insertions(+), 38 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-index a048a9f6b7b6..49232c9006c2 100644
---- a/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-+++ b/Documentation/userspace-api/media/v4l/vidioc-create-bufs.rst
-@@ -116,9 +116,13 @@ than the number requested.
-       - ``flags``
-       - Specifies additional buffer management attributes.
- 	See :ref:`memory-flags`.
--
-     * - __u32
--      - ``reserved``\ [6]
-+      - ``max_num_buffers``
-+      - If the V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
-+        this field indicates the maximum possible number of buffers
-+        for this queue.
-+    * - __u32
-+      - ``reserved``\ [5]
-       - A place holder for future extensions. Drivers and applications
- 	must set the array to zero.
+diff --git a/drivers/media/platform/verisilicon/hantro_g2.c b/drivers/media/platform/verisilicon/hantro_g2.c
+index ee5f14c5f8f2..b880a6849d58 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2.c
++++ b/drivers/media/platform/verisilicon/hantro_g2.c
+@@ -8,6 +8,8 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
  
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-index 099fa6695167..0b3a41a45d05 100644
---- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-+++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
-@@ -120,6 +120,7 @@ aborting or finishing any DMA in progress, an implicit
- .. _V4L2-BUF-CAP-SUPPORTS-ORPHANED-BUFS:
- .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
- .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
-+.. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
- 
- .. raw:: latex
- 
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index f3cf4b235c1f..bdfc3a253c65 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -762,6 +762,8 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
- 	fill_buf_caps(q, &create->capabilities);
- 	validate_memory_flags(q, create->memory, &create->flags);
- 	create->index = vb2_get_num_buffers(q);
-+	create->max_num_buffers = q->max_num_buffers;
-+	create->capabilities |= V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS;
- 	if (create->count == 0)
- 		return ret != -EBUSY ? ret : 0;
- 
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 9b1de54ce379..628b013ca0c4 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -483,9 +483,9 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
++#define G2_ALIGN	16
++
+ void hantro_g2_check_idle(struct hantro_dev *vpu)
  {
- 	const struct v4l2_create_buffers *p = arg;
+ 	int i;
+@@ -42,3 +44,15 @@ irqreturn_t hantro_g2_irq(int irq, void *dev_id)
  
--	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, ",
-+	pr_cont("index=%d, count=%d, memory=%s, capabilities=0x%08x, max buffers=%u",
- 		p->index, p->count, prt_names(p->memory, v4l2_memory_names),
--		p->capabilities);
-+		p->capabilities, p->max_num_buffers);
- 	v4l_print_format(&p->format, write_only);
+ 	return IRQ_HANDLED;
+ }
++
++size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx)
++{
++	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
++}
++
++size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx)
++{
++	size_t cr_offset = hantro_g2_chroma_offset(ctx);
++
++	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
++}
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+index a9d4ac84a8d8..d3f8c33eb16c 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+@@ -8,20 +8,6 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
+ 
+-#define G2_ALIGN	16
+-
+-static size_t hantro_hevc_chroma_offset(struct hantro_ctx *ctx)
+-{
+-	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
+-}
+-
+-static size_t hantro_hevc_motion_vectors_offset(struct hantro_ctx *ctx)
+-{
+-	size_t cr_offset = hantro_hevc_chroma_offset(ctx);
+-
+-	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+-}
+-
+ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+@@ -384,8 +370,8 @@ static int set_ref(struct hantro_ctx *ctx)
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_dst;
+ 	struct hantro_decoded_buffer *dst;
+-	size_t cr_offset = hantro_hevc_chroma_offset(ctx);
+-	size_t mv_offset = hantro_hevc_motion_vectors_offset(ctx);
++	size_t cr_offset = hantro_g2_chroma_offset(ctx);
++	size_t mv_offset = hantro_g2_motion_vectors_offset(ctx);
+ 	u32 max_ref_frames;
+ 	u16 dpb_longterm_e;
+ 	static const struct hantro_reg cur_poc[] = {
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 6db1c32fce4d..342e543dee4c 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -16,8 +16,6 @@
+ #include "hantro_vp9.h"
+ #include "hantro_g2_regs.h"
+ 
+-#define G2_ALIGN 16
+-
+ enum hantro_ref_frames {
+ 	INTRA_FRAME = 0,
+ 	LAST_FRAME = 1,
+@@ -90,22 +88,6 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
+ 	return 0;
  }
  
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index c3d4e490ce7c..13ddb5abf584 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -1035,6 +1035,7 @@ struct v4l2_requestbuffers {
- #define V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS		(1 << 4)
- #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
- #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
-+#define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+-static size_t chroma_offset(const struct hantro_ctx *ctx,
+-			    const struct v4l2_ctrl_vp9_frame *dec_params)
+-{
+-	int bytes_per_pixel = dec_params->bit_depth == 8 ? 1 : 2;
+-
+-	return ctx->src_fmt.width * ctx->src_fmt.height * bytes_per_pixel;
+-}
+-
+-static size_t mv_offset(const struct hantro_ctx *ctx,
+-			const struct v4l2_ctrl_vp9_frame *dec_params)
+-{
+-	size_t cr_offset = chroma_offset(ctx, dec_params);
+-
+-	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+-}
+-
+ static struct hantro_decoded_buffer *
+ get_ref_buf(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
+ {
+@@ -156,13 +138,13 @@ static void config_output(struct hantro_ctx *ctx,
+ 	luma_addr = hantro_get_dec_buf_addr(ctx, &dst->base.vb.vb2_buf);
+ 	hantro_write_addr(ctx->dev, G2_OUT_LUMA_ADDR, luma_addr);
  
- /**
-  * struct v4l2_plane - plane info for multi-planar buffers
-@@ -2605,6 +2606,9 @@ struct v4l2_dbg_chip_info {
-  * @flags:	additional buffer management attributes (ignored unless the
-  *		queue has V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS capability
-  *		and configured for MMAP streaming I/O).
-+ * @max_num_buffers: if V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS capability flag is set
-+ *		this field indicate the maximum possible number of buffers
-+ *		for this queue.
-  * @reserved:	future extensions
-  */
- struct v4l2_create_buffers {
-@@ -2614,7 +2618,8 @@ struct v4l2_create_buffers {
- 	struct v4l2_format	format;
- 	__u32			capabilities;
- 	__u32			flags;
--	__u32			reserved[6];
-+	__u32			max_num_buffers;
-+	__u32			reserved[5];
- };
+-	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
++	chroma_addr = luma_addr + hantro_g2_chroma_offset(ctx);
+ 	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
+-	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
++	dst->vp9.chroma_offset = hantro_g2_chroma_offset(ctx);
  
- /*
+-	mv_addr = luma_addr + mv_offset(ctx, dec_params);
++	mv_addr = luma_addr + hantro_g2_motion_vectors_offset(ctx);
+ 	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
+-	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
++	dst->vp9.mv_offset = hantro_g2_motion_vectors_offset(ctx);
+ }
+ 
+ struct hantro_vp9_ref_reg {
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 292a76ef643e..9aec8a79acdc 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -521,6 +521,9 @@ hantro_av1_mv_size(unsigned int width, unsigned int height)
+ 	return ALIGN(num_sbs * 384, 16) * 2 + 512;
+ }
+ 
++size_t hantro_g2_chroma_offset(struct hantro_ctx *ctx);
++size_t hantro_g2_motion_vectors_offset(struct hantro_ctx *ctx);
++
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
 -- 
 2.39.2
 
