@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8496CDB483
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CEA3CDB485
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Jl6JXU2j5CMC2BYpnm4j2qD08Xo3NecRXMsQewOa4w=; b=k5suMpv9n4P5TN
-	hYBnDkkyAmyBvugDGm0n9lDcB0Yqv90DWZY3EsUHbf3CQKiDImamXqYjolDKY0+Bz7OkjmXEEAg4F
-	OxvrPnMcLPE+eisLKYDW9nF1DjT0bZM9/kmzg2e0YgFcwVCEqoYsITLVfeaZWLEzlO/DmAfYaSts0
-	zLIzEEQHjQdgu+afLoOMt+nv8JQQKA+S1mkc1K4i8uBmY03s7MsaIVBC6xcsJOka7I7IRvzQubjDE
-	kQLRq75RaF9ntkysy0g8y0wxlWrgjP2C5/O0bq5XZZXpx6LdM8oUw4K5OXq5YskdeJCFYNiX4mD0A
-	4GMRqw9s7Le+KTW3a99A==;
+	List-Owner; bh=8GeC2cM63cUUIwVxwHTkyXpuGC1L3ng0BnD2WpFcTso=; b=aT3mm84Kppx8AQ
+	Mzy+FSoApGhzjbEqxyGBrX4P9BnkoH5jQ37P9ic6JCKAZscKE6g0HbM6wAdUg9rLyQqj9U7spXNr9
+	qIQ14b2jgnpldDcI3p693H6UwQgaJgbwnvJ/gGW6xMgIZRS5wYrHOgYCn/jnW4H4wnURZuOg/lWas
+	ONcUExjQfqHTPplerhMI+o5W3ntoVTkNcIIi3hEVhYW/qXbbapFp82n7+blaTttMeWtYgV4pv4dhZ
+	jGIlGXK0MZFMgz1h7mMEj2qAgXLdXIGULGXc6i6rdvyrr1ZivMwEtkkMEqLc+t3qTWEKs4yRYTPpy
+	5+XAhDMcggQKaBDZlDow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSam-00HSNJ-2k;
+	id 1qtSam-00HSMi-0m;
 	Thu, 19 Oct 2023 12:57:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWM-00HNmP-1w;
-	Thu, 19 Oct 2023 12:53:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=RNH8B9gPylxTtM01bKtOlQf9akbpmUzdDHvgh+kzWPw=; b=j1+2FkvbFhPAciI9TeHERzCAuU
-	Sca8YfW374MvkBvOcNKZY5bW7QxmZF4gh3sVsHesF2GB+1B8/SVqGUtkvBGI57eg8b5wV9Gv4y+ar
-	+HGiUW3xilxAwzhKxncAySp3wQT3h3d5rz/UdUbEZddd2Vdw8+HursX2f2/SQpnXYe1VrrnN8NFev
-	sY4H+vj44h5xITIfHsTXkD7PdL1OQ/zxucsZAxpDDSkSaoYDwBq8R2xr+mgryfLVRxnm/r9HS8jjh
-	AJIYn6DB6NWk69L3cpXtIYHNtOaLp0SsrWkURw1xiD7N49FLj6mbFx845yQwtMA+IHOW85oGgIdYS
-	focwEktg==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWE-009rWb-1z;
-	Thu, 19 Oct 2023 12:53:00 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qtSWL-00HNl3-1k;
+	Thu, 19 Oct 2023 12:53:04 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 014CE6607382;
-	Thu, 19 Oct 2023 13:52:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F33266073A4;
+	Thu, 19 Oct 2023 13:52:59 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719971;
-	bh=KjApYJIBwjQar3zDS5eK/9rcHF3+Kx68u3lDScmGVYg=;
+	s=mail; t=1697719980;
+	bh=bvlqKNzionLKB1VClCmq81RGJBsdZ7hA0RN2y42SWPU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kcvKob/9JBRvVHTLOOOjKxOfUSntTeKcqSHyXPZc/HiO4dW78FIX29uqGvA0KmzQl
-	 LhsQBcSzP7OKzT/4x9Z7+av++aoeAbmheKpbgfKo3Kq20IW5cUED7axibzT94EqRnG
-	 OCwyhpvfpDNkJhKu5VdjBRfVoOIsJJXwaSEWPo+rZqaURnwb0yJrO128kZetbpPPb6
-	 90dUMSdZ7rLE2kTIMjtEKXqyqCz0sQh13lMemFnrQefzrK4ZwUBtFLYso/WDZNKELL
-	 hFTAOOYEJfSEq1p/wThdz8vPKiVggYoZ7af8QOVs/iHHtt5aDndWw3NEHaHdLDPDQ6
-	 YEIirX7J9hpaQ==
+	b=S+twYbANrVJ+kjFi560OlpvROgm4yskA9m74KZaNoNOqqwZDuqk2lxtJueSvP7eSI
+	 SNg2Ux5H/OrSlPFcQMMythq1uzew7TVhUB7TFgkt3UuIpYUalnUV3nuH7PvlJNWLLe
+	 ZtuIXhV0/MPboo4zQLOr7XjDj2j76WDEJB8/9Le4qip9SrINsSKmYkqR/1tQap6LAB
+	 nchR9GtmCGKC6WMFiY//ZQ4VX9E5r4FSipS1trPZWtWjTIbV5FviGQFE/xDVNA08rf
+	 VS//ESVvprpVlJai3bN0OJaNLhxrLKG8wnLlOhjOP22Izkuqrp2ungM1xRwMYM5K9L
+	 eKBs9BkgGRvJw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 39/56] media: usb: airspy: Stop direct calls to queue num_buffers field
-Date: Thu, 19 Oct 2023 14:52:05 +0200
-Message-Id: <20231019125222.21370-40-benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 56/56] media: test-drivers: Use helper for DELETE_BUFS ioctl
+Date: Thu, 19 Oct 2023 14:52:22 +0200
+Message-Id: <20231019125222.21370-57-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135254_927960_250A221C 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20231019_055301_885518_011FDFB3 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +88,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-This allows us to change how the number of buffers is computed in the
-future.
+Allow test drivers to use DELETE_BUFS by adding vb2_ioctl_delete_bufs() helper.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/usb/airspy/airspy.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/media/test-drivers/vicodec/vicodec-core.c |  2 ++
+ drivers/media/test-drivers/vimc/vimc-capture.c    |  2 ++
+ drivers/media/test-drivers/visl/visl-video.c      |  2 ++
+ drivers/media/test-drivers/vivid/vivid-core.c     | 13 ++++++++++---
+ 4 files changed, 16 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/usb/airspy/airspy.c b/drivers/media/usb/airspy/airspy.c
-index 462eb8423506..e24e655fb1db 100644
---- a/drivers/media/usb/airspy/airspy.c
-+++ b/drivers/media/usb/airspy/airspy.c
-@@ -482,12 +482,13 @@ static int airspy_queue_setup(struct vb2_queue *vq,
- 		unsigned int *nplanes, unsigned int sizes[], struct device *alloc_devs[])
- {
- 	struct airspy *s = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+index 69cbe2c094e1..f14a8fd506d0 100644
+--- a/drivers/media/test-drivers/vicodec/vicodec-core.c
++++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+@@ -1339,6 +1339,7 @@ static const struct v4l2_ioctl_ops vicodec_ioctl_ops = {
+ 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
++	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
  
- 	dev_dbg(s->dev, "nbuffers=%d\n", *nbuffers);
+ 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+@@ -1725,6 +1726,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = src_vq->lock;
++	dst_vq->supports_delete_bufs = true;
  
- 	/* Need at least 8 buffers */
--	if (vq->num_buffers + *nbuffers < 8)
--		*nbuffers = 8 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 8)
-+		*nbuffers = 8 - q_num_bufs;
- 	*nplanes = 1;
- 	sizes[0] = PAGE_ALIGN(s->buffersize);
+ 	return vb2_queue_init(dst_vq);
+ }
+diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
+index aa944270e716..fda7ea3a6cb6 100644
+--- a/drivers/media/test-drivers/vimc/vimc-capture.c
++++ b/drivers/media/test-drivers/vimc/vimc-capture.c
+@@ -221,6 +221,7 @@ static const struct v4l2_ioctl_ops vimc_capture_ioctl_ops = {
+ 	.vidioc_expbuf = vb2_ioctl_expbuf,
+ 	.vidioc_streamon = vb2_ioctl_streamon,
+ 	.vidioc_streamoff = vb2_ioctl_streamoff,
++	.vidioc_delete_bufs = vb2_ioctl_delete_bufs,
+ };
  
+ static void vimc_capture_return_all_buffers(struct vimc_capture_device *vcapture,
+@@ -435,6 +436,7 @@ static struct vimc_ent_device *vimc_capture_add(struct vimc_device *vimc,
+ 	q->min_buffers_needed = 2;
+ 	q->lock = &vcapture->lock;
+ 	q->dev = v4l2_dev->dev;
++	q->supports_delete_bufs = true;
+ 
+ 	ret = vb2_queue_init(q);
+ 	if (ret) {
+diff --git a/drivers/media/test-drivers/visl/visl-video.c b/drivers/media/test-drivers/visl/visl-video.c
+index 7cac6a6456eb..bd6c112f7846 100644
+--- a/drivers/media/test-drivers/visl/visl-video.c
++++ b/drivers/media/test-drivers/visl/visl-video.c
+@@ -521,6 +521,7 @@ const struct v4l2_ioctl_ops visl_ioctl_ops = {
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
++	.vidioc_delete_bufs		= v4l2_m2m_ioctl_delete_bufs,
+ 
+ 	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
+@@ -728,6 +729,7 @@ int visl_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->vb_mutex;
++	dst_vq->supports_delete_bufs = true;
+ 
+ 	return vb2_queue_init(dst_vq);
+ }
+diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+index 353f035fcd19..06b18d8e2248 100644
+--- a/drivers/media/test-drivers/vivid/vivid-core.c
++++ b/drivers/media/test-drivers/vivid/vivid-core.c
+@@ -769,6 +769,7 @@ static const struct v4l2_ioctl_ops vivid_ioctl_ops = {
+ 	.vidioc_expbuf			= vb2_ioctl_expbuf,
+ 	.vidioc_streamon		= vb2_ioctl_streamon,
+ 	.vidioc_streamoff		= vb2_ioctl_streamoff,
++	.vidioc_delete_bufs		= vb2_ioctl_delete_bufs,
+ 
+ 	.vidioc_enum_input		= vivid_enum_input,
+ 	.vidioc_g_input			= vivid_g_input,
+@@ -883,12 +884,18 @@ static int vivid_create_queue(struct vivid_dev *dev,
+ 	 * PAGE_SHIFT > 12, but then max_num_buffers will be clamped by
+ 	 * videobuf2-core.c to MAX_BUFFER_INDEX.
+ 	 */
+-	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
++	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+ 		q->max_num_buffers = 64;
+-	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE)
++		q->supports_delete_bufs = true;
++	}
++	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE) {
+ 		q->max_num_buffers = 1024;
+-	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE)
++		q->supports_delete_bufs = true;
++	}
++	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE) {
+ 		q->max_num_buffers = 32768;
++		q->supports_delete_bufs = true;
++	}
+ 
+ 	if (allocators[dev->inst] != 1)
+ 		q->io_modes |= VB2_USERPTR;
 -- 
 2.39.2
 
