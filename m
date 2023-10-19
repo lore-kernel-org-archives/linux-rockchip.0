@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE21DCDB482
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 09:22:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00076CDB465
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 09:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ek3y4twM1Wy7mETE49wKnCy+qDCW1UL1Yg/Zgv/AkUs=; b=wtH2euFf1cAYuX
-	PVcB2BBaKlMXiZsVCGcB9viwdSygXW6uccfuLJCswRgCjfaQmxrlzVsWTtFdE+FZPBcyFgX64Bzvi
-	6hwwKnMri2abQzGplr9tiC0o7DosDLhZbV2QUm6qNfoI9D01T5mS2JycQ//oTEl3Nkbo8B3smQdMr
-	QGcW3csAm2bkup3UP/aBuey6HbwstI7RPAuCPOqeW9IMec3mGS5jVB5zcyV4wtDHfO7B4oP1bMrfX
-	POkp2ISfcQ5kcxPsyUtX7EJ/4jbzEIrXddRDYXZpgRRgSuifOx5kgVzQzIIEaAVjLG2hEF13P6nvE
-	Q8c+Ibq5Kf+34vETWoLg==;
+	List-Owner; bh=ddj1DTpqzYsQkOERq6FQnh++2QYV1e1+M54xiAg8dkM=; b=AaN5j+dHX7jQyi
+	ZD9mlOP6F9+0wkJylco9h3RJvCtzQrgian+awD17mBDUJYaOXqoX/oYT0pYLdVn89tEAvdPRKdU6d
+	OUBYBy4aPN5bbiEJ1zDqlkC04R2z2wmW/Ikq9yHD5VXvfpDEB9FNKLSySq8gzOuJYfGgwbMuMYwTR
+	hmwTsQug2Arwdsg30700JDTgBmgK8j9qnBSqgLL3igipfC/JlAHLVZOx2rNYse6/NWelHtMEKZPM/
+	TW34XL6vnZDtiiENdzV6E61chppLKugK9d37yuJCTaVnTzFdS5KGYkS3m4v8ztQpwcc4eaSoiHHjV
+	DLo2Myp5nDKkDVj5si6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtPEX-00GqMl-0Y;
-	Thu, 19 Oct 2023 09:22:25 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1qtPEg-00GqOh-2Z;
+	Thu, 19 Oct 2023 09:22:34 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtPET-00GqKJ-34
+	id 1qtPEe-00GqMd-1d
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Oct 2023 09:22:23 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-507a98517f3so6050447e87.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Oct 2023 02:21:51 -0700 (PDT)
+	Thu, 19 Oct 2023 09:22:33 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40838915cecso16552045e9.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Oct 2023 02:22:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697707310; x=1698312110; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1697707341; x=1698312141; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=yXjT8p0w2WOajyEpbpgr/2SPJ8/jTEv8hAwGe2hZCqc=;
-        b=WXwGyWkQx55PFL10l3Hp6cJ+LYCEoYyfpWw4aJe7+tc/umwnqKdCMkuSJOE9XNrCyw
-         zIOQHoyOa1+ONmAq1yLvzQuhRPqXQ+DVVOboi6eOJy+4enMqQDnCNtyrjcP0AoiaATrM
-         Lh3uQyecZTxTes22K2Mqo/Wdrrp5TiIT1ICrPXXLUNmoVmkzqvbIxul+6lJ7Vrs2JZqk
-         PCls+wwbigveIcaOmJ8tthLg7vfvLZaBfkS4vtemjuAQ62Rmyiygy23EJxglfVaTVsiC
-         XM0uqKWjvr4oXuEqp1x1RiDEB1jG4BTDvN8fUUxbx795wEyh+OMny0JUVY5Gbl8ncdrl
-         kX1w==
+        bh=ic2g+m7HOOL78ghtdW2686g2sSZe6K2KnAhqlhmzomY=;
+        b=b1bq855xeYKFgLI4T9yavvBwCqVgSTx23VK2oWxpnjPfgInxoi2jpB1M7QPsj05cGT
+         9OCo3zOXnRONpiaTbXM5nyYuzM17LiUHO52KAURhty0+DJIkyJojllaHIvh0Ooa4Jzi/
+         Fjw2VQeXd8KY/inYC1mF6Q5l3rondiJ76qATJ/sLOarZWh179TbeGhCuCKpRx/qgwkNw
+         v7rjCP+coBKnmr9gheXtoUxjPYkhgnqEGmh8DXq7Nxo4eE6j5r54Fq/dCSRqHZhYDPVR
+         9KtQeloAJjwdHWvAE0ESjhI7RAojdrxYLuqGToLH8lEKVelHTK4y58Fcw4hbEVRXDoLM
+         e3VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697707310; x=1698312110;
+        d=1e100.net; s=20230601; t=1697707341; x=1698312141;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yXjT8p0w2WOajyEpbpgr/2SPJ8/jTEv8hAwGe2hZCqc=;
-        b=bmIReCLiaWawASQZN1HBoUfL7mpDEDwATtl2ukn1j2vRkAOjCZG/JOiLmZIicstlw5
-         hZyM2aMNvCdpAsA9chp2Vw3o/BuArWKic+EQePbXDIsd7xB/4kFjDS3zhOJbTBt4uS+k
-         Ka5pgp5ATTYyR1Pj0iHQzoRhKxYJXMVtc0hpE5ynOiz14ts4xvgKIq5Fk7kaXfEa3B4x
-         6NZhJFGkMmzFfJ6quSSxLmArhNWojopUWc2ipJTrZ+uQr3XCajFfG4HXC6THSZvNHGen
-         EXC0LCZfihbdkaDh8Q6czHtCXx8DIRSvlYQCqLcuARZxMl7jEjR9k8cV+rAXyYVU/CeN
-         TIjw==
-X-Gm-Message-State: AOJu0Yx40stm8/B7elDf5i3bwbk/EQ6fsNUgHpD4Ti68Y0lwzXzDBa1v
-	sENWscEfSvp4oHnokiuFEYPLnQ==
-X-Google-Smtp-Source: AGHT+IGuxtMdWdK0zIKfDvAo02KGHVuPKg6EGMQFQPvL+iESuudFCKhTS13DZsoaYuTTcxcl5+uYAQ==
-X-Received: by 2002:a05:6512:604:b0:500:c534:3e4e with SMTP id b4-20020a056512060400b00500c5343e4emr1156636lfe.60.1697707309793;
-        Thu, 19 Oct 2023 02:21:49 -0700 (PDT)
+        bh=ic2g+m7HOOL78ghtdW2686g2sSZe6K2KnAhqlhmzomY=;
+        b=fHwcInQwhsZWiAq33SA+TTTvEH2N3jDjYw3lbIQ2QeiiphzjjloxSGd0uzCO3ewjlo
+         0sNUQAqeAMhLLlLQI/bYqeJGMX+M86M+IG0dcjL8PTeXfRHJA+0WemvARAs/uYgLALzN
+         1tO9hAmRUi7/AaPP2VScHMiFnG08FZYg/yVm7lxBf9sKaUD+Lo21BAf1vlkZ0YjZ3Cme
+         eJyCePmepR1rMZHr+PGGkIQ1oGYNpfMmvTCxJ5OYzbVOOUidOHqY7QEPYYc+DIF4NjWT
+         Y391du7NHigHAS3siAx/AdxFomxv9NyRb3i2OgvrDA9qu2c+6LmLdMoJepUEzZzLOI3r
+         rULg==
+X-Gm-Message-State: AOJu0YzR6HZ6Qxowjp/F0/pvJIs0pAlfFESzXBY1+uhkasSJSz+afH9q
+	6wDfxixKKte6Eq6/xEE3dObr0Q==
+X-Google-Smtp-Source: AGHT+IHNZjUVfg3XmjgHME2EfthcfcD3exzkWraKwyJzB1eQzA5d4Y+aR5ilYQDy0QgEmRZPhgQlGg==
+X-Received: by 2002:a05:600c:4fcb:b0:407:7ea1:e9a4 with SMTP id o11-20020a05600c4fcb00b004077ea1e9a4mr1215758wmq.5.1697707341552;
+        Thu, 19 Oct 2023 02:22:21 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id f13-20020a1c6a0d000000b003fe23b10fdfsm3850668wmc.36.2023.10.19.02.21.48
+        by smtp.gmail.com with ESMTPSA id f13-20020a1c6a0d000000b003fe23b10fdfsm3850668wmc.36.2023.10.19.02.22.20
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Oct 2023 02:21:49 -0700 (PDT)
-Message-ID: <df3c067f-8732-46bf-aa93-852f41e9e4e9@linaro.org>
-Date: Thu, 19 Oct 2023 11:21:47 +0200
+        Thu, 19 Oct 2023 02:22:21 -0700 (PDT)
+Message-ID: <e684983a-9399-4fd7-8fe5-41faeabbfab1@linaro.org>
+Date: Thu, 19 Oct 2023 11:22:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] dt-bindings: arm: rockchip: Add Powkiddy RK2023
+Subject: Re: [PATCH 1/5] dt-bindings: display: panel: Update NewVision NV3051D
+ compatibles
 Content-Language: en-US
 To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
 Cc: linux-clk@vger.kernel.org, dri-devel@lists.freedesktop.org,
@@ -76,7 +77,7 @@ Cc: linux-clk@vger.kernel.org, dri-devel@lists.freedesktop.org,
  heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  robh+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>
 References: <20231018161848.346947-1-macroalpha82@gmail.com>
- <20231018161848.346947-5-macroalpha82@gmail.com>
+ <20231018161848.346947-2-macroalpha82@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -122,10 +123,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231018161848.346947-5-macroalpha82@gmail.com>
+In-Reply-To: <20231018161848.346947-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_022221_992763_00171D6C 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20231019_022232_546783_FC185B9A 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,32 +147,14 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 18/10/2023 18:18, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> The Powkiddy RK2023 is a handheld gaming device made by Powkiddy and
-> powered by the Rockchip RK3566 SoC.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index a349bf4da6bc..a6612185a7ff 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -674,6 +674,11 @@ properties:
->            - const: powkiddy,rgb30
->            - const: rockchip,rk3566
->  
-> +      - description: Powkiddy RK2023
-> +        items:
-> +          - const: powkiddy,rk2023
+> Update the NewVision NV3051D compatible strings by adding a new panel,
+> the powkiddy,rk2023-panel, and removing another entry, the
+> anbernic,rg353v-panel. The rg353v-panel is exactly identical to the
+> rg353p-panel and is not currently in use by any existing device tree.
+> The rk2023-panel is similar to the rg353p-panel but has slightly
+> different timings.
 
-This cuold be just enum in previous entry :/ but I remember we talked
-about this once with Heiko.
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-> +          - const: rockchip,rk3566
+This still does not explain me why do you want to remove old panel.
 
 
 
