@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC76CDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34534CDB484
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dMf7Ydli47R+fdgSEqh/9o+TycnmEHtCZhzbe38wumc=; b=RwOTOeMn+lH5Dl
-	C2v3veApUcIoPjFhpbqbjYXFD6hYBw5m1C+0Yaqg7vW9B0XM7aGW+LobefmL2n2Oq6Lkxxvi3OH9x
-	OMzpd9djM56Fn6ndY3sb6Of8+ZyD/9H23jSo+odWjP3DYDNRjy95ey9SZhh5s7h+tJpsFnGhFKNnq
-	wPWuQcfr8LVgA3oUnwXMPGbB3a+fM3EBdGxOk66/aWiVkvv+UXerODi3Pd11/Sf5iuZeHEtRWT0ap
-	NrAKxnhJ4QqaZKjRCLTUi3FLiWAUOzFtxdB3YesddLdUNCrJYmRNViR4+eUpYtDWZmsNuWIRK2q+w
-	n52rYepLuntTIIIANm3g==;
+	List-Owner; bh=egdLw+G5Y2oJlipZVB/LYUVRZG1XOyho0D/E01eGVp4=; b=Wp01XdOlSUghr/
+	qFpxu3GGzN9vOX5gQO+CnabALbnJIPS9S7BDmssgasy3LHE16F7sLhleaNgiV+zdJD2ib7ln2fCuT
+	iCvCd/4UsnS+eRD30Sel8fOiO2b4ZnsR/BjLOybfWnHi3Kj4p/JpVpQWg0EuAZSuMDE9SblRMPebP
+	oLi+yumMDDcTarjPigmBY+9j4eEDCE/3uGsIlnYyWZYm8dMnBxm6W9SVBhFjmdGtok5ebsEp28Ihy
+	e9aAo385i7fBYhVc9UqcfvxdsYbDTYDK7Si9S+wTpgEGgl0dWA3eee0CUnpsP/2MsQx76e81GwRCW
+	0MUwNPgXyar3iiRZYMpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSXu-00HPRQ-15;
-	Thu, 19 Oct 2023 12:54:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qtSY7-00HPeB-0u;
+	Thu, 19 Oct 2023 12:54:51 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSW6-00HNQw-0c;
-	Thu, 19 Oct 2023 12:52:52 +0000
+	id 1qtSW5-00HNQZ-1q;
+	Thu, 19 Oct 2023 12:52:51 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5B7276607356;
-	Thu, 19 Oct 2023 13:52:39 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C7E36607352;
+	Thu, 19 Oct 2023 13:52:38 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719959;
-	bh=hEdAN5aNNO1/pDSIenHgJGapeD5q9IeR/wL5fN5tnvk=;
+	s=mail; t=1697719958;
+	bh=b1HWvospKm41+ZR+lTHAwjFMrNIUi+qp4QEOx4PbCAQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TlSKxAPko5PHW8AQZyZLF37lazQijX8qrL4wdv7yqcG7ETlAjebi5pc+JZbLY+e87
-	 Qns5e3CLsUj02JYPqhjkXlDdq0LAy9uBYEZ+dVvuJHiNHeB3IhpuIwsaT+HsbeqrTs
-	 4qNobax9zLgLJOLsCn/LJ0Nj1kPp4aDW7+jSfFjeBu+AM4+1d5/psD6lwGNqODZzfB
-	 3Db2r5LZqrXo2SKJklOxwTFt+HWLQeyzo2pAHdq0wEgOrjKsmyyL7qFw4+dKBfpdYF
-	 T5BJoEGX16baEzZmQ+mSAI5a91osD/6o6JbG2bgwhBhYF7WTMlEJZ6iSr/2WK/A+aU
-	 2qLRpoXkERITA==
+	b=JjdLclCPhiIu7h9Loc+gRj84QPiQ0S7q7I6geT+3m/JHqRLoATk6ddtT7afJsn3dV
+	 igvqQ2BXlAzmG8++HlmmvxlYXxv8Monev0Urfau7bmsVa3Lj01Y+4Mz7t3Oi9CnEcc
+	 5saCCcwl2HQjLolj6ZFswqO3se408sBv+T4px2MdkIBkEcjYPUP0pbD0NDcI+2Dfo+
+	 LfgDCRuFR31xt3543oqp3TGuWz5s+09ciPDFjZNfnen5a1AUla7FCDUwcXtCA/4i5i
+	 7Fmz1d0jW2P7KRoOU8q4jv/UHcqvYczu7NA/lMUjOlDATD0fQfEGF+Qh33O18JR51T
+	 C1sDZ/GOt4rkg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,18 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v13 17/56] media: atomisp: Stop direct calls to queue num_buffers field
-Date: Thu, 19 Oct 2023 14:51:43 +0200
-Message-Id: <20231019125222.21370-18-benjamin.gaignard@collabora.com>
+	Daniel Almeida <daniel.almeida@collabora.com>
+Subject: [PATCH v13 15/56] media: visl: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Thu, 19 Oct 2023 14:51:41 +0200
+Message-Id: <20231019125222.21370-16-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_055246_389042_E8DA13D2 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20231019_055245_770693_82444595 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +89,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-This allows us to change how the number of buffers is computed in the
-future.
+Use vb2_get_buffer() instead of direct access to the vb2_queue bufs array.
+This allows us to change the type of the bufs in the future.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Hans de Goede <hdegoede@redhat.com>
-CC: Sakari Ailus <sakari.ailus@linux.intel.com>
+CC: Daniel Almeida <daniel.almeida@collabora.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
- drivers/staging/media/atomisp/pci/atomisp_ioctl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/test-drivers/visl/visl-dec.c | 28 ++++++++++++++++------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-index a8a964b2f1a8..09c0091b920f 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_ioctl.c
-@@ -1028,7 +1028,7 @@ static int atomisp_qbuf_wrapper(struct file *file, void *fh, struct v4l2_buffer
- 	struct atomisp_device *isp = video_get_drvdata(vdev);
- 	struct atomisp_video_pipe *pipe = atomisp_to_video_pipe(vdev);
+diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
+index 318d675e5668..ba20ea998d19 100644
+--- a/drivers/media/test-drivers/visl/visl-dec.c
++++ b/drivers/media/test-drivers/visl/visl-dec.c
+@@ -290,13 +290,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	for (i = 0; i < out_q->num_buffers; i++) {
+ 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
+ 		u32 old_len = len;
+-		char *q_status = visl_get_vb2_state(out_q->bufs[i]->state);
++		struct vb2_buffer *vb2;
++		char *q_status;
++
++		vb2 = vb2_get_buffer(out_q, i);
++		if (!vb2)
++			continue;
++
++		q_status = visl_get_vb2_state(vb2->state);
  
--	if (buf->index >= vdev->queue->num_buffers)
-+	if (buf->index >= vb2_get_num_buffers(vdev->queue))
- 		return -EINVAL;
+ 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+ 				 entry, i, q_status,
+-				 to_vb2_v4l2_buffer(out_q->bufs[i])->request_fd);
++				 to_vb2_v4l2_buffer(vb2)->request_fd);
  
- 	if (buf->reserved2 & ATOMISP_BUFFER_HAS_PER_FRAME_SETTING) {
+-		len += visl_fill_bytesused(to_vb2_v4l2_buffer(out_q->bufs[i]),
++		len += visl_fill_bytesused(to_vb2_v4l2_buffer(vb2),
+ 					   &buf[len],
+ 					   TPG_STR_BUF_SZ - len);
+ 
+@@ -342,13 +349,20 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
+ 	len = 0;
+ 	for (i = 0; i < cap_q->num_buffers; i++) {
+ 		u32 old_len = len;
+-		char *q_status = visl_get_vb2_state(cap_q->bufs[i]->state);
++		struct vb2_buffer *vb2;
++		char *q_status;
++
++		vb2 = vb2_get_buffer(cap_q, i);
++		if (!vb2)
++			continue;
++
++		q_status = visl_get_vb2_state(vb2->state);
+ 
+ 		len += scnprintf(&buf[len], TPG_STR_BUF_SZ - len,
+ 				 "index: %u, status: %s, timestamp: %llu, is_held: %d",
+-				 cap_q->bufs[i]->index, q_status,
+-				 cap_q->bufs[i]->timestamp,
+-				 to_vb2_v4l2_buffer(cap_q->bufs[i])->is_held);
++				 vb2->index, q_status,
++				 vb2->timestamp,
++				 to_vb2_v4l2_buffer(vb2)->is_held);
+ 
+ 		tpg_gen_text(&ctx->tpg, basep, line++ * line_height, 16, &buf[old_len]);
+ 		frame_dprintk(ctx->dev, run->dst->sequence, "%s", &buf[old_len]);
 -- 
 2.39.2
 
