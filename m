@@ -4,44 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10042CDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 11:30:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2806ACDB465
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 11:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dWZbwX4i3ozJ94+GxJD7LBnmbrzK/WZEg10QrMH+oeI=; b=jK+yohqQjhmUPu
-	p4XQOZIsAQ/fFm4nzRAugVTT1JWjySkpaZIEjWevC5G1aRTh0y3pW9SvsgU3AIUuDTxu+exWiWXVT
-	ojtDjQSmayqthonHAqWJPGEhuAEPxOMY+66Hwt6D9mgCpeMS+ZWuGq2KLAjr8jdbB/CwBCZuhtOml
-	7EYyGPzf9JkNAHf3/Etunm/k2UIDrVQTV8TUlIMXmmdFRBNzZ64xhSxR36jCsotqt1SIMP1R2Cjq4
-	KznZGU8k2rgyCX4gkrGVK5BgKoHzL+/2tTUFkltAleaaTTCfYWu8nD7v+/gQ+U9X7ozs3YqGoq5Qe
-	8jeKvmsqNQy59jCtTp+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BEAeaglRD2iYho4yFcS1jGyBdM9vCVc9BineYClMBpQ=; b=BJYuIFGnZR9Wkq
+	HMgk4GcRwH+VfaN/YpAaz4XFp1MmVIji0M9C1zziXTtWLgXl81YPDyd6AvR1dldX42ylQnIGXMIMx
+	Vo/mvoxluxzU/6CrbPhbXlpbrQ47Qh14Ols/xU/ldDRSn+SXIuIJX4Ql3E1MsiCc9EM9UACU7KNT/
+	oUPTV2vj2fD4Hktt3ywsijdeOZk9x/utodtRRnj5KTApJjz5iHj4f93oUDzT8fbbbK4zelyHwfdBv
+	Sut2Nsic5aETZpY9HHyUVbULn/qsRpyeV+Vzg0AI2ZlgF8FYm9ALANMXFyaH9ILZSHAyqFdmkZdZW
+	Kn1d7IEvApeg3Pswvq2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtRE9-00HAKx-1w;
-	Thu, 19 Oct 2023 11:30:09 +0000
+	id 1qtREf-00HAR7-06;
+	Thu, 19 Oct 2023 11:30:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtRE5-00HAK5-2H;
-	Thu, 19 Oct 2023 11:30:07 +0000
+	id 1qtREd-00HAPt-1G;
+	Thu, 19 Oct 2023 11:30:40 +0000
 Received: from i5e861907.versanet.de ([94.134.25.7] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qtRE1-0003Dq-9D; Thu, 19 Oct 2023 13:30:01 +0200
+	id 1qtREZ-0003E9-Ni; Thu, 19 Oct 2023 13:30:35 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL v2] Rockchip driver changes for 6.7
-Date: Thu, 19 Oct 2023 13:30:00 +0200
-Message-ID: <2171043.Icojqenx9y@phil>
+Subject: Re: [GIT PULL] Rockchip driver changes for 6.7
+Date: Thu, 19 Oct 2023 13:30:34 +0200
+Message-ID: <2435081.jE0xQCEvom@phil>
+In-Reply-To: <2578684.Lt9SDvczpP@phil>
+References: <2578684.Lt9SDvczpP@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_043006_569324_CAA65339 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20231019_043039_427746_AF761039 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,48 +60,47 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+Am Montag, 16. Oktober 2023, 23:23:50 CEST schrieb Heiko Stuebner:
+> The following changes since commit 0bb80ecc33a8fb5a682236443c1e740d5c917d=
+1d:
+> =
 
-I still see the driver pull request pending in the soc patchwork,
-so opted to replace the tag with this one.
+>   Linux 6.6-rc1 (2023-09-10 16:28:41 -0700)
+> =
 
-The only difference is the addition of one new compatible for the
-rk3588's pmugrf.
+> are available in the Git repository at:
+> =
 
-Please pull
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git =
+tags/v6.7-rockchip-drivers1
+
+I've updated the tag and sent a v2 pull request separately.
+
 Thanks
 Heiko
 
+> for you to fetch changes up to 20bd1191830478cfdc9be766a735923c5fbe5350:
+> =
 
-The following changes since commit 0bb80ecc33a8fb5a682236443c1e740d5c917d1d:
+>   soc/rockchip: io-domain: Convert to platform remove callback returning =
+void (2023-10-02 00:56:13 +0200)
+> =
 
-  Linux 6.6-rc1 (2023-09-10 16:28:41 -0700)
+> ----------------------------------------------------------------
+> Converting the io-domain driver to the new remove callback.
+> =
 
-are available in the Git repository at:
+> ----------------------------------------------------------------
+> Uwe Kleine-K=F6nig (1):
+>       soc/rockchip: io-domain: Convert to platform remove callback return=
+ing void
+> =
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git ta=
-gs/v6.7-rockchip-drivers1
+>  drivers/soc/rockchip/io-domain.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> =
 
-for you to fetch changes up to 3bd1c0c62bad8ea7f9cc6662e754f77ec8baa46e:
 
-  dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf (2023-10-19 1=
-0:52:13 +0200)
-
-----------------------------------------------------------------
-Converting the io-domain driver to the new remove callback
-and addition of the rk3588 pmugrf compatible to the binding.
-
-----------------------------------------------------------------
-Sascha Hauer (1):
-      dt-bindings: soc: rockchip: grf: add rockchip,rk3588-pmugrf
-
-Uwe Kleine-K=F6nig (1):
-      soc/rockchip: io-domain: Convert to platform remove callback returnin=
-g void
-
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
- drivers/soc/rockchip/io-domain.c                        | 6 ++----
- 2 files changed, 3 insertions(+), 4 deletions(-)
 
 
 
