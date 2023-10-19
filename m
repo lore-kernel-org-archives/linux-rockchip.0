@@ -4,56 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A841FCDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 08:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5EAACDB465
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 08:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x1ny0GzwpeHvCc/fi1qnKBGTM1q/wEDcZ8B4l4mWeDE=; b=cuTvb8M6hjYibx
-	IfhdBV/0Vxa6IHhaw8Qpd4WYAqn/QFcTeNe8LqdTb61tVCDH1Bq7IBhNRSXFx+3tDuXuDs1naz+dO
-	D6s1wMKBFxzWkihNyn+RgfrvHUXPdTPOmZjsafz+O0o73cXPivUm5VFi2EkRmWZ2DL3IwU5A07YCU
-	wtpx3DiENisbS6Zs5L0tz3xzWNj/8re07dj2rsA/aBxt9tJ68SQHkl/9tYvHdHxp2nnn3P30ttwL6
-	KWRT79E4jGzJnA3pvDSq9gcAdIxhZQA3fgTgKlTZsbolhRpQItYUZw3z1CC9cz7IqOvFeTCD1Q6qF
-	XZqN6Ac1Cm87QM63sPkw==;
+	List-Owner; bh=QePhlDV04WA4Var0JqdL7cNdbw/DoMsDhdeWcWsJtAQ=; b=FcVRryufn+EJnA
+	f3IJytEFsQtK988vZpzcfYc7SMx5Ty0ZX8a3rcmRXK2LodBl2vQ7FeGYIVhjqZw497/t1dfqcrkLI
+	6o5xfLt0WCkkyw4csnoFg/QW5utujPKP700UF98p2cSnyPWxCUjLwJ5V7qH5FMaA7/sjhUMDkyCIo
+	t6JgL9KZpaDrAzIR++Y3HI4AIcbfD13+JZKahhPeABb5JYqWUhEHZHCwx+U0B7OBCkOOejY+p14Up
+	xoxgwJ7nSKdgnUiUsztRT8LBWsoRnvJT0BBxi+1YwAWZD9crDP5Sa6JYwFZN5rAA9qk5NNmxoLJw0
+	KbONKe4s+XHj9J1kXe4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtOnb-00GmCE-2T;
-	Thu, 19 Oct 2023 08:54:35 +0000
+	id 1qtOnd-00GmCb-2M;
+	Thu, 19 Oct 2023 08:54:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtOnY-00GmB4-19
+	id 1qtOnY-00GmB6-2Z
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Oct 2023 08:54:33 +0000
+	Thu, 19 Oct 2023 08:54:34 +0000
 Received: from i5e861907.versanet.de ([94.134.25.7] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1qtOnQ-0001vg-JV; Thu, 19 Oct 2023 10:54:24 +0200
+	id 1qtOnR-0001vg-Dr; Thu, 19 Oct 2023 10:54:25 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Chris Morgan <macroalpha82@gmail.com>,
 	linux-rockchip@lists.infradead.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	airlied@gmail.com,
 	robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	mturquette@baylibre.com,
 	Chris Morgan <macromorgan@hotmail.com>,
-	sboyd@kernel.org,
+	neil.armstrong@linaro.org,
+	sebastian.reichel@collabora.com,
+	daniel@ffwll.ch,
 	linux-clk@vger.kernel.org,
+	sboyd@kernel.org,
+	sam@ravnborg.org,
 	conor+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org
-Subject: Re: [PATCH 0/3] Fixes for RGB30
-Date: Thu, 19 Oct 2023 10:54:20 +0200
-Message-Id: <169770556937.1297560.1024214364752104181.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH 0/5] rockchip: Add Powkiddy RK2023
+Date: Thu, 19 Oct 2023 10:54:21 +0200
+Message-Id: <169770556939.1297560.13095304413651630727.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231018153357.343142-1-macroalpha82@gmail.com>
-References: <20231018153357.343142-1-macroalpha82@gmail.com>
+In-Reply-To: <20231018161848.346947-1-macroalpha82@gmail.com>
+References: <20231018161848.346947-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_015432_396782_5E779693 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20231019_015432_830024_F036232E 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,24 +76,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Oct 2023 10:33:54 -0500, Chris Morgan wrote:
+On Wed, 18 Oct 2023 11:18:43 -0500, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> After preliminary testing, a few users requested that I see if I can
-> make the panel run at precisely 60hz. As the device is typically used
-> for retro gaming, getting the panel to refresh as close to 60hz as
-> possible is important.
+> Add support for the Powkiddy RK2023, which is extremely similar to
+> existing devices from Anbernic.
+> 
+> Chris Morgan (5):
+>   dt-bindings: display: panel: Update NewVision NV3051D compatibles
+>   drm/panel: nv3051d: Add Powkiddy RK2023 Panel Support
+>   clk: rockchip: rk3568: Add PLL rate for 115.2MHz
+>   dt-bindings: arm: rockchip: Add Powkiddy RK2023
+>   arm64: dts: rockchip: add Powkiddy RK2023
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] clk: rockchip: rk3568: Add PLL rate for 292.5MHz
-      commit: bb8ab7335bd2f55706fd09f5ce431207a746d99a
-[2/3] arm64: dts: rockchip: Update VPLL Frequency for RGB30
-      commit: 793e0d8988bc0e6bf2ff5c6df7fc81ec8c53a93e
-[3/3] arm64: dts: rockchip: Remove UART2 from RGB30
-      commit: efa1d1c6c8e4f89eedef9035d1f74fe98861eb30
+[3/5] clk: rockchip: rk3568: Add PLL rate for 115.2MHz
+      commit: ccf59682a0287b81015dc1939203fac70b818c6b
+
+I've gone forward and grabbed the PLL rate already, so it
+can go together with the other rate addition from the fixes
+series.
 
 Best regards,
 -- 
