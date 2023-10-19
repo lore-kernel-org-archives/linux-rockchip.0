@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3276CDB484
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 11:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6625DCDB482
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 11:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
 	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j++LqJ8KeD/6iow936zR1bZIhg3/rVHcbxb1FRkwt9s=; b=WsLmmWl3Un3f77
-	Ji2SLBDbH0o//lf/nPkhtuRJ8mVR153Hh0v3gAtigNQGZYKvXrxjep7UAKfxdLG4YaZzMIpRAVn0J
-	3l5WGdIKslVvM/8Pf6Imj27OvAygpZNIUAHIN81xc3cQiXaeQUc4izUI353Q+YZJvIdMZhwFG3gan
-	boN3RbAjI97DShlZPd3bzfIn8XFGTOOh6G+7O29owktTNDSr2aPOWJDFugktoxb4gG03Ahwi6tai7
-	KPHfp1tcPCyrdtMAHZnlPeXppbRG70mboagyl548CoHO0/PUwl1Lj7oplUDsk5XO1PjtLps3ovDx9
-	g4WCL575diHOtjq/WZWA==;
+	List-Owner; bh=Lm8ReH27Ua/XehDPTU98kxswywP52/LR2/Ja1Nxc0bg=; b=JNh7IN8Uiy+uLW
+	x7JBHxBKANks1yU/j6ZZ+855TXBBLZqwjq2aKYO84Zgd1Vh/3R1g8T+SLRzZ0y9U2HAo4tsRoLIAx
+	NXvrpE8eee2pnqBBFT+kyk7C8y7oDwt+ylVvWHADfjRyp7LaBH/kq5k6RU+b39IYP795mzOtXt+GG
+	VadTovQ99GgRIh9+dd8zy+4rOga9vx82fM19KXPO71Qz62pnfgC2AcEYs/zZtgUpIMCXXWJSeTdWf
+	aVekTttrxkBvV3D6+O4juoI3PedCr/zdl7FV1GcMRj3qM14IKHVdinwZ4vjQDDDh4wAysJDEg3Qr7
+	TpFgZ1i+nWP9hRllXfzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtRcn-00HEEz-1Y;
-	Thu, 19 Oct 2023 11:55:37 +0000
+	id 1qtRfi-00HEYJ-0u;
+	Thu, 19 Oct 2023 11:58:38 +0000
 Received: from mailout3.samsung.com ([203.254.224.33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtRck-00HEEM-2b
+	id 1qtRfc-00HEXF-2x
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Oct 2023 11:55:36 +0000
-Received: from epcas1p1.samsung.com (unknown [182.195.41.45])
-	by mailout3.samsung.com (KnoxPortal) with ESMTP id 20231019115532epoutp03f6a207178e56bed4a5c3268447220cf2~PgDEdYb-01999119991epoutp03I
-	for <linux-rockchip@lists.infradead.org>; Thu, 19 Oct 2023 11:55:32 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com 20231019115532epoutp03f6a207178e56bed4a5c3268447220cf2~PgDEdYb-01999119991epoutp03I
+	Thu, 19 Oct 2023 11:58:36 +0000
+Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
+	by mailout3.samsung.com (KnoxPortal) with ESMTP id 20231019115829epoutp0389f2aa3387056a329450982978ee8856~PgFpPzZ0a2177721777epoutp03b
+	for <linux-rockchip@lists.infradead.org>; Thu, 19 Oct 2023 11:58:29 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com 20231019115829epoutp0389f2aa3387056a329450982978ee8856~PgFpPzZ0a2177721777epoutp03b
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1697716533;
-	bh=psy4QftyA5KPXqqnQvROb7WNKzsQxIims/4fEJN+UQI=;
+	s=mail20170921; t=1697716709;
+	bh=ccFnxQ/4QOewwa6GKl0dvdiK5KIe7gLbSAatJOrblZ0=;
 	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
-	b=fMbYulMteJW3LrPneG9t+AwXPKgUnUGgWis9FQUGxvXJmPfBQD4QK6Zaug1PaJUjN
-	 qT01POA1dei+WGjPhNsxhlF6WDIALTrIEfu006CJpzLeq+ljuMUzYo6H2ikuJaYFfD
-	 x2ePTk+3c6GNTl8iPKWVVeOe2V5olgFGkaXfNU3s=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
-	epcas1p2.samsung.com (KnoxPortal) with ESMTP id
-	20231019115531epcas1p2eda8408e7529aa70e32cb86451d97f6f~PgDC7L1xM0430504305epcas1p2D;
-	Thu, 19 Oct 2023 11:55:31 +0000 (GMT)
-Received: from epsmges1p1.samsung.com (unknown [182.195.38.237]) by
-	epsnrtp2.localdomain (Postfix) with ESMTP id 4SB5kp2WnSz4x9Py; Thu, 19 Oct
-	2023 11:55:30 +0000 (GMT)
+	b=SSka+Q4XbsdJ/yu9rxd7BUDoDD5qGYlqZzKzobxdXZQVYcJicJShJ9XoJV2+sNnRO
+	 7SE6fHV6TTTZKMWIDQDN57WofEAALzWZva6UnIzbw9kdzAUWDvF7GP/JMPEYDObu9C
+	 f+LLTrWqYmNji89rctVoNKXpFUFi7ce2UYkheC3s=
+Received: from epsnrtp3.localdomain (unknown [182.195.42.164]) by
+	epcas1p1.samsung.com (KnoxPortal) with ESMTP id
+	20231019115829epcas1p166fa0f293f9d62668a8cd4084c6d2d18~PgFojKGmJ0985509855epcas1p1Z;
+	Thu, 19 Oct 2023 11:58:29 +0000 (GMT)
+Received: from epsmgec1p1-new.samsung.com (unknown [182.195.36.144]) by
+	epsnrtp3.localdomain (Postfix) with ESMTP id 4SB5pD1j7Pz4x9Pp; Thu, 19 Oct
+	2023 11:58:28 +0000 (GMT)
 Received: from epcas1p2.samsung.com ( [182.195.41.46]) by
-	epsmges1p1.samsung.com (Symantec Messaging Gateway) with SMTP id
-	B1.B1.09744.23911356; Thu, 19 Oct 2023 20:55:30 +0900 (KST)
+	epsmgec1p1-new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	FA.0E.19104.4E911356; Thu, 19 Oct 2023 20:58:28 +0900 (KST)
 Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
-	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20231019115529epcas1p2bf7d77ba6a893ea2f37974f98b824232~PgDBQejpf0430504305epcas1p2C;
-	Thu, 19 Oct 2023 11:55:29 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
+	epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
+	20231019115827epcas1p46278913c6a55f8a1181c05d06c6086a1~PgFnFUDFe3097630976epcas1p4g;
+	Thu, 19 Oct 2023 11:58:27 +0000 (GMT)
+Received: from epsmgmc1p1new.samsung.com (unknown [182.195.42.40]) by
 	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20231019115529epsmtrp1359b6b9a93630d8d36f59ad7ce699b6f~PgDBOxaD82014720147epsmtrp1y;
-	Thu, 19 Oct 2023 11:55:29 +0000 (GMT)
-X-AuditID: b6c32a35-107fa70000002610-26-6531193266b9
+	20231019115827epsmtrp1529dda33050218a4af18d1363b5f3402~PgFnEVCkX2182621826epsmtrp1Z;
+	Thu, 19 Oct 2023 11:58:27 +0000 (GMT)
+X-AuditID: b6c32a4c-80dff70000004aa0-38-653119e498a1
 Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
-	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	01.0A.08817.13911356; Thu, 19 Oct 2023 20:55:29 +0900 (KST)
+	epsmgmc1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	AD.E8.07368.3E911356; Thu, 19 Oct 2023 20:58:27 +0900 (KST)
 Received: from cw00choi03 (unknown [10.113.111.106]) by epsmtip2.samsung.com
 	(KnoxPortal) with ESMTPA id
-	20231019115529epsmtip2cb86bfd56724e16c8aefef5f0179a41b~PgDA5E3g90465904659epsmtip2I;
-	Thu, 19 Oct 2023 11:55:29 +0000 (GMT)
+	20231019115827epsmtip292a974f54e7aae558a4406fcef1dd1d5~PgFms9csO0706207062epsmtip2D;
+	Thu, 19 Oct 2023 11:58:27 +0000 (GMT)
 From: "Chanwoo Choi" <cw00.choi@samsung.com>
 To: "'Sascha Hauer'" <s.hauer@pengutronix.de>,
 	<linux-rockchip@lists.infradead.org>
@@ -78,64 +78,64 @@ Cc: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	"'Krzysztof Kozlowski'" <krzysztof.kozlowski+dt@linaro.org>, "'Conor
 	Dooley'" <conor+dt@kernel.org>, <devicetree@vger.kernel.org>, "'Sebastian
 	Reichel'" <sebastian.reichel@collabora.com>
-In-Reply-To: <20231018061714.3553817-14-s.hauer@pengutronix.de>
-Subject: RE: [PATCH v8 13/26] PM / devfreq: rockchip-dfi: Pass private data
- struct to internal functions
-Date: Thu, 19 Oct 2023 20:55:29 +0900
-Message-ID: <001801da0283$27db0f50$77912df0$@samsung.com>
+In-Reply-To: <20231018061714.3553817-15-s.hauer@pengutronix.de>
+Subject: RE: [PATCH v8 14/26] PM / devfreq: rockchip-dfi: Prepare for
+ multiple users
+Date: Thu, 19 Oct 2023 20:58:27 +0900
+Message-ID: <001901da0283$91f90b80$b5eb2280$@samsung.com>
 MIME-Version: 1.0
 X-Mailer: Microsoft Outlook 16.0
 Content-Language: ko
-Thread-Index: AQFYMiMsP3soeW2GlDsie1R9CxInBwC0pjKqAMVQrjmxSNJDsA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Tf1AUZRie73Zvb8+CWQ6iDzS6lmjSkeMWOFwQrClHtmTySPlHM9i5W37E
-	cXfdHpY1U2SKYSlepAPHCVjIFJ0gF8iPIAc8fkQDDmCUCA6CaHAgCAMDmRLHYvHf877zPN/7
-	PO/3fTgie4D542l6M2fSszoS24BevrpZERzqR3HKugKCtvx5HaXtTd0iutjZLaaXR1xiuvxM
-	PUqf+us2QncdmZTQjtF+Md3XYMPouZNOQM8OLyP0hT96RHTz+Rfpm599j9HHmpwSunnmjph+
-	VOtA6SHXW3T7xbsYfXRQ9aoPYy+yA6ZuqBQw9dYhCeMoz8GYwf5GjPmp9FMm95GSOVVdDpja
-	/iKEmXMEMMUPR4H6qf3p0akcq+VMck6vMWjT9Ckx5O69ia8nqiKUVDAVSW8j5Xo2g4shd8ap
-	g3el6VYCkvJDrC5zpaVmeZ4M2RFtMmSaOXmqgTfHkJxRqzOqjAqezeAz9SkKPWeOopTKUNUK
-	MSk9dWK2AjUOyz8s+LEMywJtG08AKQ6JcHhr1IadABtwGVEHYOPdaUQoZgHsvXVtrVgAcOiq
-	TfREktM6g7qxjGgC0HJuj0AaB/Ds1GPxCYDjGLEVliwmuDk+RALM7ahb1SLEghjOLL/hpkiJ
-	V+Di6KoLb+I9ePpipcSNUSIIPu6oQNzYg4iEn1cMrGEv+GvBHVQ45nlYO2VDBDtyuDRWJhb6
-	PrAwJxsRxr4GbWW9q8kgUSiFOWPVa/53wstFXWIBe8OJ9mqJgP3heG62RBDkAdjjciFCUQlg
-	1Q9H18aFwSsX8kTuBAixGVY2hAjtF2D9w3NAcOEJ789/tboHSHjAL7JlAiUQ9g0PrXnwg98d
-	z8FOA9K6Lpt1XTbrujzW/4eVALQc+HJGPiOF4ykj9d9lawwZDrD69reo6oBlakbRAkQ4aAEQ
-	R0gfjyBGyck8tOzhjziTIdGUqeP4FqBa2bYF8X9GY1j5PHpzIhUeqQyPCA0Lp6kIinzWAxk5
-	qZURKayZS+c4I2d6ohPhUv8s0dsJnNeAru/l84eJKyF5uoa+SXXp1vYua43CNuonza/da0+P
-	SbeHxeGbou77imKdvSUProl/izr2tLnGQl5aej/6SEvVjXcCOri0vFLf28ljTeMBWUHDQTXS
-	Ujx/MSzrRqBvd3dSbA2vPiA2j2wqjM5f8P7lW8PwrnjP4qXU5m2F7cG9qEat7vRMGQ/5+9C7
-	Z9nB+NyArxtcrR+MzLUpLHbXQJz05p7dXX6uznHNwL7A5Oo2r33GNy/5HTTs0MvPjFiDudaX
-	Wu1xve0TSfOeS/euU42Oe03Yz2n/9DdMOzd2OpHYye0Lrum8j7/p8azSfpJ8MF7z3PzxA1+W
-	/V7hH7Z/O4nyqSy1BTHx7L+rQRyfhAQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrFIsWRmVeSWpSXmKPExsWy7bCSvK6hpGGqwf254hYTb1xhsViz9xyT
-	xfwj51gt/j96zWqxaupOFou+Fw+ZLc42vWG32PT4GqvF5V1z2Cw+9x5htPj04D+zxdLrF5ks
-	Di5UsbjduILNonXvEXaLgx+esFr83b6JxeLuaz+L42ufsVm03DF1EPFYM28No8eOu0sYPXbO
-	usvusWlVJ5vHnWt72Dw2L6n36P9r4NG3ZRWjx/Zr85g9Pm+S85j/+zFjAHcUl01Kak5mWWqR
-	vl0CV8arT+tYCh4oVMxcvYytgfGYdBcjJ4eEgIlE59EPLF2MXBxCArsZJZ5uOcoKkZCUmHbx
-	KHMXIweQLSxx+HAxRM1zRokN738zgcTZBHQkFvwIBSkXEQiV6D+xgwmkhlmghU1i17LPbBAN
-	hxglZi2+wg7SwClgL/HjMdhiYYEMif4FC5lBbBYBVYl/J9aB2bwClhLN625B2YISJ2c+YQFp
-	ZRbQk2jbyAgSZhaQl9j+dg4zxJkKEj+fLmOFiItIzO5sY4a4x0lizrJLbBMYhWchmTQLYdIs
-	JJNmIelewMiyilEytaA4Nz232LDAKC+1XK84Mbe4NC9dLzk/dxMjOPq1tHYw7ln1Qe8QIxMH
-	I9CHHMxKIryqHgapQrwpiZVVqUX58UWlOanFhxilOViUxHm/ve5NERJITyxJzU5NLUgtgsky
-	cXBKNTBF3Cjmby1Ni83qU2E6MEdXtfk2x2qjzW0/Z6zckiJv++6N4UOZCwVz7x61/uZx/GP9
-	zOdcf9aYWu5R59PmNJhRZ7ih4/uhvaVMyo3JlvwuC9/G/g3I3RPzTldfVsh2U+kcX+ZgNYWT
-	Uml7vra8+u8pPGedBh/D7CrP7akCX/i/Kc5Ost13VVzmCrPF84DaY/cMX4ewLhH4u8TUlJH1
-	ldqm/TcKBf9/rv98d6qYZTVPuKqGrtbihcF8SUKH+kO7yk+XP151Zo1Cg0945RuXuQ1z1ocs
-	VZxQKL/Ca7Ni8brjbAcfnjBslywL/lMqHVP9f8+XlL6XfEqCgiva4wqDBZa9dPz3t8r25beX
-	YclnLZRYijMSDbWYi4oTAYFzOaZtAwAA
-X-CMS-MailID: 20231019115529epcas1p2bf7d77ba6a893ea2f37974f98b824232
+Thread-Index: AQFYMiMsP3soeW2GlDsie1R9CxInBwFFM3QSAUhOkoGxQDa4oA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Tf0xTVxTO7Xt9LRj0rWC8AnH4ABMJP/oEysWBkun0oWQSifvBdNjRJ2VA
+	27RlinOuW+RHCwoMcKOgBSZkIMisOMDJEGQDk8k0juoi3QpWHQNUcCCEsI7ycOO/73znfOec
+	794cISaaJjyFqQotq1ZI0ynCFf/u+sbgIPtamhUP24So+N6vOGrs6OchU08/HzmGR/mooawd
+	R6f+HMLQzc/HBMj8wMJHd65UEuj5yR6AJm0ODNXevc1DXdV+6P5n3xAou6NHgLqe2flovtWM
+	I+vom6i36RGBTgyGx3gwjWcbAdNmPQeYdqNVwJgb9AQzaLlKMJfOfcoUzouZUy0NgGm1nMWY
+	5+Z1jGnuAYhfkZgWJWelMlbtwyqSlbJURUo0tTshaVtSuERMB9GRKILyUUgz2Ghqe1x80I7U
+	9AWDlM9H0vTMBSpeqtFQIVui1MpMLesjV2q00RSrkqWrwlXBGmmGJlOREqxgtZtpsXhT+ELh
+	wTR5Re7vuCo/8Ei54xahA71+BuAihGQYHPv7W2AArkIReRXAvIpSjAsmAdQbbgq4YBrAp1OX
+	iZeSS5aHS5IOAOfyanBnQkSOAPjTmMwAhEKCDIRVM/uctAe5Dxb2tfGcGCOn+fCZI9aJXcit
+	sLPcLHBid/ItWN5RsdgGJ/1hl2NgkXcjI+HErB1w+BV4o9yOc31eha3jlRi3jw+cfVjH53gP
+	WKHPwbi5r0Pb8I1FN5A0ucBbNVM4J9gOL+vvLmF3+Fdvi4DDnnCkMEfACUoAvD06uqRuBvBi
+	/YmlcaGws7aE53SJkRth85UQjl4P2+fOAG6LlfDJVAHfWQJJN5iXI+JKfOEdm5XH4bXw61w9
+	UQQo4zJvxmXejMv8GP8fVgXwBuDJqjQZKWwyraKDFOzh/348WZlhBosHEBDXBl40zwd3A54Q
+	dAMoxCgPN39GzIrcZNKso6xamaTOTGc13SB84cWLMc/VycqFC1Jok+iwSHGYZFNoGKIlNLXG
+	bf9krkxEpki1bBrLqlj1Sx1P6OKp423Tvr2n1S/ixf01O58UjJsOWOVlqdmFY3HBsdXe+gK/
+	upjh87U7DVEDR8HEzJbHh/wTXfvq8eI9Kw9cYEu7LWg2/g/TtZKZaf/s0+djma6igakLF48F
+	bq3P/uVjiWus/YyrjfpKAhMEXzbtemf1e7qsYmtRn/snv801f6Gdvj53r1Rv9sWP58c4BHvX
+	zdqKJCuUbxzerBvKyrHxH1GEtyWi42la0+OxmuINrMlrR9zxH2aq/klc9VrSqkO9lW3H6PqQ
+	8eayXQGD/QnlLkP79x6pDciNPP3zh9FeG97H5BN11XGdjUbf2O/XhxparqXJf9xd94EO1Op8
+	4cjBd0e98728sMx8CtfIpXQAptZI/wXtK4L3iQQAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrNIsWRmVeSWpSXmKPExsWy7bCSvO5jScNUg5sLJS0m3rjCYrFm7zkm
+	i/lHzrFa/H/0mtVi1dSdLBZ9Lx4yW5xtesNusenxNVaLy7vmsFl87j3CaPHpwX9mi6XXLzJZ
+	HFyoYnG7cQWbReveI+wWBz88YbX4u30Ti8Xd134Wx9c+Y7NouWPqIOKxZt4aRo8dd5cweuyc
+	dZfdY9OqTjaPO9f2sHlsXlLv0f/XwKNvyypGj+3X5jF7fN4k5zH/92PGAO4oLpuU1JzMstQi
+	fbsErozZ7fdYCrp1Kmb+v8DWwHhcpYuRk0NCwERi87WnjF2MXBxCArsZJRqetzNCJCQlpl08
+	ytzFyAFkC0scPlwMUfOcUeLcxzPsIHE2AR2JBT9CQcpFBEIl+k/sYAKpYRZoYZPYtewzG0TD
+	IUaJK9f6WUCqOAXsJfbP3MQOYgsLhEhMmfQdLM4ioCpx8P9VsDivgKXEx59PGCFsQYmTM5+w
+	gCxjFtCTaNsIFmYWkJfY/nYOM8SdChI/ny5jhYiLSMzubGOGOMhJ4sGjk8wTGIVnIZk0C2HS
+	LCSTZiHpXsDIsopRMrWgODc9N9mwwDAvtVyvODG3uDQvXS85P3cTIzj+tTR2MN6b/0/vECMT
+	ByPQixzMSiK8qh4GqUK8KYmVValF+fFFpTmpxYcYpTlYlMR5DWfMThESSE8sSc1OTS1ILYLJ
+	MnFwSjUw3fE0TzwqP/nN0yDTs09Pvj5TJndRS1Lpp0jFlhS3ZcYWno+eLnLnY9TcU5tvs0K0
+	Zd7X2Zm77sf5eE+q0OtROvDPyyK8/2ZHyRE1/8lTEyokX0Q83/qm+sWBLz+tb35JXcB4eW1b
+	VGfohsK7jBZrm+5/Y9uT1PpKszXsa33V8a/it/QPBxm2VdjxLF12IkXp7LvMsLWK75V07oke
+	fSnQvCFkSvvsjVPOvy/aayt3TLj1HaNkzMyfAcJ/fCWzFebLRggL3VqwwHz73o/rdn3k16x5
+	r/lwcUiide10V/5XthulLqwRMnyldJXVJ/Vr8odKxtUb7WIN2B7oSz1d8jdqypTWzdzLf6V6
+	P7zEx7btmBJLcUaioRZzUXEiAIPRq3tuAwAA
+X-CMS-MailID: 20231019115827epcas1p46278913c6a55f8a1181c05d06c6086a1
 X-Msg-Generator: CA
 X-Sendblock-Type: SVC_REQ_APPROVE
 CMS-TYPE: 101P
 DLP-Filter: Pass
 X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20231018063753epcas1p45e46817a10b532029db3cc843ce7f6af
+X-CMS-RootMailID: 20231018063817epcas1p46805fa64ee2bba269696390b250bba91
 References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
-	<CGME20231018063753epcas1p45e46817a10b532029db3cc843ce7f6af@epcas1p4.samsung.com>
-	<20231018061714.3553817-14-s.hauer@pengutronix.de>
+	<CGME20231018063817epcas1p46805fa64ee2bba269696390b250bba91@epcas1p4.samsung.com>
+	<20231018061714.3553817-15-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_045535_175037_E772BFA7 
-X-CRM114-Status: GOOD (  26.71  )
+X-CRM114-CacheID: sfid-20231019_045835_238908_BD64EC70 
+X-CRM114-Status: GOOD (  31.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,94 +171,149 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 > <sebastian.reichel@collabora.com>; Sascha Hauer <s.hauer@pengutronix.de>;
 > Jonathan Cameron <Jonathan.Cameron@huawei.com>; Chanwoo Choi
 > <cw00.choi@samsung.com>
-> Subject: [PATCH v8 13/26] PM / devfreq: rockchip-dfi: Pass private data
-> struct to internal functions
+> Subject: [PATCH v8 14/26] PM / devfreq: rockchip-dfi: Prepare for multiple
+> users
 > 
-> The internal functions do not need the struct devfreq_event_dev *, so pass
-> them the struct rockchip_dfi *. This is a preparation for adding perf
-> support later which doesn't have a struct devfreq_event_dev *.
+> When adding perf support later the DFI must be enabled when either of
+> devfreq-event or perf is active. Prepare for that by adding a usage
+> counter for the DFI. Also move enabling and disabling of the clock away
+> from the devfreq-event specific functions to which the perf specific part
+> won't have access.
 > 
 > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
+>  drivers/devfreq/event/rockchip-dfi.c | 57 +++++++++++++++++++---------
+>  1 file changed, 40 insertions(+), 17 deletions(-)
 > 
 > diff --git a/drivers/devfreq/event/rockchip-dfi.c
 > b/drivers/devfreq/event/rockchip-dfi.c
-> index bdf421b248df9..d56a33d03db4c 100644
+> index d56a33d03db4c..7a4f1901314d4 100644
 > --- a/drivers/devfreq/event/rockchip-dfi.c
 > +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -73,9 +73,8 @@ struct rockchip_dfi {
+> @@ -68,14 +68,29 @@ struct rockchip_dfi {
+>  	void __iomem *regs;
+>  	struct regmap *regmap_pmu;
+>  	struct clk *clk;
+> +	int usecount;
+> +	struct mutex mutex;
+>  	u32 ddr_type;
+>  	unsigned int channel_mask;
 >  	unsigned int max_channels;
 >  };
 > 
-> -static void rockchip_dfi_start_hardware_counter(struct devfreq_event_dev
-> *edev)
-> +static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi
-> +*dfi)
+> -static void rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
+> +static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
 >  {
-> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
 >  	void __iomem *dfi_regs = dfi->regs;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&dfi->mutex);
+> +
+> +	dfi->usecount++;
+> +	if (dfi->usecount > 1)
+> +		goto out;
+> +
+> +	ret = clk_prepare_enable(dfi->clk);
+> +	if (ret) {
+> +		dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n",
+> ret);
+> +		goto out;
+> +	}
 > 
 >  	/* clear DDRMON_CTRL setting */
-> @@ -103,18 +102,16 @@ static void
-> rockchip_dfi_start_hardware_counter(struct devfreq_event_dev *edev)
+>  	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN |
+> DDRMON_CTRL_SOFTWARE_EN | @@ -100,14 +115,30 @@ static void
+> rockchip_dfi_start_hardware_counter(struct rockchip_dfi *dfi)
+>  	/* enable count, use software mode */
+>  	writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN,
+> DDRMON_CTRL_SOFTWARE_EN),
 >  		       dfi_regs + DDRMON_CTRL);
+> +out:
+> +	mutex_unlock(&dfi->mutex);
+> +
+> +	return ret;
 >  }
 > 
-> -static void rockchip_dfi_stop_hardware_counter(struct devfreq_event_dev
-> *edev)
-> +static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi
-> +*dfi)
+> -static void rockchip_dfi_stop_hardware_counter(struct rockchip_dfi *dfi)
+> +static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
 >  {
-> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
 >  	void __iomem *dfi_regs = dfi->regs;
 > 
+> +	mutex_lock(&dfi->mutex);
+> +
+> +	dfi->usecount--;
+> +
+> +	WARN_ON_ONCE(dfi->usecount < 0);
+> +
+> +	if (dfi->usecount > 0)
+> +		goto out;
+> +
 >  	writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
 >  		       dfi_regs + DDRMON_CTRL);
+> +	clk_disable_unprepare(dfi->clk);
+> +out:
+> +	mutex_unlock(&dfi->mutex);
 >  }
 > 
-> -static void rockchip_dfi_read_counters(struct devfreq_event_dev *edev,
-> struct dmc_count *count)
-> +static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct
-> +dmc_count *count)
->  {
-> -	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
->  	u32 i;
->  	void __iomem *dfi_regs = dfi->regs;
+>  static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct
+> dmc_count *count) @@ -125,29 +156,20 @@ static void
+> rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
+>  	}
+>  }
 > 
-> @@ -132,7 +129,7 @@ static int rockchip_dfi_disable(struct
-> devfreq_event_dev *edev)  {
+> -static int rockchip_dfi_disable(struct devfreq_event_dev *edev)
+> +static int rockchip_dfi_event_disable(struct devfreq_event_dev *edev)
+>  {
 >  	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
 > 
-> -	rockchip_dfi_stop_hardware_counter(edev);
-> +	rockchip_dfi_stop_hardware_counter(dfi);
->  	clk_disable_unprepare(dfi->clk);
+> -	rockchip_dfi_stop_hardware_counter(dfi);
+> -	clk_disable_unprepare(dfi->clk);
+> +	rockchip_dfi_disable(dfi);
 > 
->  	return 0;
-> @@ -149,7 +146,7 @@ static int rockchip_dfi_enable(struct
-> devfreq_event_dev *edev)
->  		return ret;
->  	}
-> 
-> -	rockchip_dfi_start_hardware_counter(edev);
-> +	rockchip_dfi_start_hardware_counter(dfi);
 >  	return 0;
 >  }
 > 
-> @@ -167,7 +164,7 @@ static int rockchip_dfi_get_event(struct
-> devfreq_event_dev *edev,
->  	u32 access = 0, total = 0;
->  	int i;
+> -static int rockchip_dfi_enable(struct devfreq_event_dev *edev)
+> +static int rockchip_dfi_event_enable(struct devfreq_event_dev *edev)
+>  {
+>  	struct rockchip_dfi *dfi = devfreq_event_get_drvdata(edev);
+> -	int ret;
+> -
+> -	ret = clk_prepare_enable(dfi->clk);
+> -	if (ret) {
+> -		dev_err(&edev->dev, "failed to enable dfi clk: %d\n", ret);
+> -		return ret;
+> -	}
 > 
-> -	rockchip_dfi_read_counters(edev, &count);
-> +	rockchip_dfi_read_counters(dfi, &count);
+> -	rockchip_dfi_start_hardware_counter(dfi);
+> -	return 0;
+> +	return rockchip_dfi_enable(dfi);
+>  }
 > 
->  	/* We can only report one channel, so find the busiest one */
->  	for (i = 0; i < dfi->max_channels; i++) {
+>  static int rockchip_dfi_set_event(struct devfreq_event_dev *edev) @@ -
+> 191,8 +213,8 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev
+> *edev,  }
+> 
+>  static const struct devfreq_event_ops rockchip_dfi_ops = {
+> -	.disable = rockchip_dfi_disable,
+> -	.enable = rockchip_dfi_enable,
+> +	.disable = rockchip_dfi_event_disable,
+> +	.enable = rockchip_dfi_event_enable,
+>  	.get_event = rockchip_dfi_get_event,
+>  	.set_event = rockchip_dfi_set_event,
+>  };
+> @@ -280,6 +302,7 @@ static int rockchip_dfi_probe(struct platform_device
+> *pdev)
+>  		return PTR_ERR(dfi->regmap_pmu);
+> 
+>  	dfi->dev = dev;
+> +	mutex_init(&dfi->mutex);
+> 
+>  	desc = &dfi->desc;
+>  	desc->ops = &rockchip_dfi_ops;
 > --
 > 2.39.2
 
