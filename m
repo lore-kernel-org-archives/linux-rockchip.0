@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48996C41513
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70EFECDB465
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rj4BVoUAwrXyGhxHcf5r5nwj2IXEnpJKn7ZVjoStOgk=; b=H1UbwKFhgaxI8h
-	ad6bNh4pFwa74JjIQ+91iYRmC+CCqeLNGuTMLWA+d4vWkRLRtRHcp6d4QvZ72zz+MJwfHnTTOopKb
-	7+IHWhV2RxoO733xqmX2/fd70Lxqe7lbpFDg3qCATMmGKwGWATlfC7wX3C7Xksc2cLD1eeV3Qx/Fj
-	j0H8RfD8Eavj/TqK1Z6CdoLVX+rLNbokj+vUy39eWY0WJlpRqr73blqPXjALfDWs+tONlXxBZu2GZ
-	mvbtgaT8oTRXya1NqQJQqiKCcd5D6T+vwtFcHN2LQCkrZMjOwK7A4zqyQOMLGKBv7akO1cp100chO
-	zQlfgX2NMaV8HI7xzNHg==;
+	List-Owner; bh=TuQMkAEJWP8Eviz3rzATuJaSsUH21iuTstXcSJPyFuA=; b=S7iyQHuYebGk2u
+	S4rfBw/BH5imO8cER45aJG+810fncWlPyCQIg9MLvS//A4BI4V3BBwWkqTm7ZMbwGkkmlXd6wRbwQ
+	S1vFyojbDV6kL9TUcZo6Mrk23TqSwTFUQ82VLNh8SGB/T80jhyCo/TIFS2LpswHciX0309fL20ZZn
+	UeSTD2cN3MCvWXQkvE+HP8fmv0vrsHFly0c2zDtLsUWR5OD+Ka5eMnPiWHHl8bg6W16BzEiphHUST
+	uCB1I361oM4l0tlFrRXiA1jC6Wqz7wMGrgYOcS4zlORDKMO7Up/NvlQmGlsJW+OKxVzXu2ixv0Lt+
+	zCDL/J0Tv1fSKjBcuBTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSaJ-00HRpI-25;
-	Thu, 19 Oct 2023 12:57:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qtSaQ-00HRwN-0F;
+	Thu, 19 Oct 2023 12:57:14 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWM-00HNmQ-1w;
-	Thu, 19 Oct 2023 12:53:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=cIauNEfyyc8ygY2CYOkqXtpUWGt5kjIwrFn6YVVwin8=; b=Q8RwPE92Z9NaB1Ih2wFryzt/mX
-	lbA2zZTczkZ/6hGE4E02E5yMaEmPY3ZLt+AumSKvp+SbV4Pb8YwvfVpPrSqGOAx2n6p1UD0aLau9i
-	ZSh8WqJ7j0bFhK56vs0mvj143Z5jL2ZN1TmUwpeaQKxcizQ+8VQcZuTwsTwzO56zsrLd3GNlojhya
-	Xq6IDCWuFmhn/AjNZ+gYfXFPHh/2y2w98EJdwWCMeFSP9g6JVBurF0dhERtLc4r514MMeoQJXI2iD
-	NYYh9icmCphdl4G+gQvqimf/8tGiHalSuWKL58jq5QzaMzP7z8ejpcZ3gxccKWHI/DZbpRzIwA+CQ
-	sDKuwHAg==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWF-009rX0-0W;
-	Thu, 19 Oct 2023 12:53:00 +0000
+	id 1qtSWE-00HNbg-1k;
+	Thu, 19 Oct 2023 12:52:59 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 825A66607387;
-	Thu, 19 Oct 2023 13:52:52 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E7F206607334;
+	Thu, 19 Oct 2023 13:52:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719972;
-	bh=KPoxd/SvOk21SjAKuo9XuAAvSFR2sEuxtH4tG5ksUhg=;
+	s=mail; t=1697719970;
+	bh=I24/t0ZqSyeKvdZtsSJpVc7QnzmONAbV5k9WYLKmpuU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WNb2jdJZv+aIVwQ2TG0qLbsO44v0MNz6zFaBmdmv3PzVoLr7OfAB+/Z/+VorUA0J8
-	 LuqF3pyZViUGEsjYYnFMkksprTGNBEvcGEe6z3ghkM6UHN4aIWnH3dBBqHJrl1qOa8
-	 W/pvthI71yevvtGdbyp/VQ7ajxAEEfneNG/tXg/nxE78Ad5AxTi0avalXcklq5wUUQ
-	 AIvhZCygpXVtvcmYQq3OrGwRbheJ1xKGnRrGBHTO1nOh5mm8rVvFPgItNBPvE3JHSC
-	 SPhrDksE+xGaoNjgO5kWOMqV3eoejokQVFSaCIx2pTs3Sw4Bhc/9nYEvcI6mGHbInY
-	 gf+zENHt0M00w==
+	b=IGQZ0uEQO3rs1XmURBUPRvA8nKSH1kdVUbI7Fn1LiGDupmgB1HYcYEpwrmhpvYHO8
+	 UIbFbDr6MvkbhsNvpvqjGhOcA5paO6TVc+tnHjMOX9OrdO1YmIM9d/5IMPznEVYRjL
+	 4fy+dBFLlCXNtARymxvhg0+cZgraUgyoqB/Vkt1x2/hIGLRPGgsnmFoYnMxdZCF1/l
+	 3w4CVUQlSbAGjjANefzNmGWuPDPFeU4E7R/8EEt5RF3PLZv//XVI66Xdrm95YIdMNu
+	 RQiY97kfN+9ZvGU0sGWQkyBp8csYadlaECbKqyJjlLo8efmLH8335ICvO8i4o2d9nX
+	 l6DWtTUE2Pxwg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,17 +61,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 42/56] media: usb: usbtv: Stop direct calls to queue num_buffers field
-Date: Thu, 19 Oct 2023 14:52:08 +0200
-Message-Id: <20231019125222.21370-43-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: [PATCH v13 37/56] media: renesas: Stop direct calls to queue num_buffers field
+Date: Thu, 19 Oct 2023 14:52:03 +0200
+Message-Id: <20231019125222.21370-38-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135255_356158_BFDA079A 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20231019_055254_737714_853F8575 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,27 +94,29 @@ This allows us to change how the number of buffers is computed in the
 future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+CC: Fabrizio Castro <fabrizio.castro.jz@renesas.com>
 ---
- drivers/media/usb/usbtv/usbtv-video.c | 5 +++--
+ drivers/media/platform/renesas/rcar_drif.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
-index 1e30e05953dc..62a583040cd4 100644
---- a/drivers/media/usb/usbtv/usbtv-video.c
-+++ b/drivers/media/usb/usbtv/usbtv-video.c
-@@ -726,9 +726,10 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
+index 292c5bf9e50c..f21d05054341 100644
+--- a/drivers/media/platform/renesas/rcar_drif.c
++++ b/drivers/media/platform/renesas/rcar_drif.c
+@@ -424,10 +424,11 @@ static int rcar_drif_queue_setup(struct vb2_queue *vq,
+ 			unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
- 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
+ 	struct rcar_drif_sdr *sdr = vb2_get_drv_priv(vq);
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 	if (*nplanes)
- 		return sizes[0] < size ? -EINVAL : 0;
- 	*nplanes = 1;
+ 	/* Need at least 16 buffers */
+-	if (vq->num_buffers + *num_buffers < 16)
+-		*num_buffers = 16 - vq->num_buffers;
++	if (q_num_bufs + *num_buffers < 16)
++		*num_buffers = 16 - q_num_bufs;
+ 
+ 	*num_planes = 1;
+ 	sizes[0] = PAGE_ALIGN(sdr->fmt->buffersize);
 -- 
 2.39.2
 
