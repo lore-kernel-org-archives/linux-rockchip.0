@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE0ACDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 14:03:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C3FECDB482
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 14:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KbA0knUPvdM668rC5GrV7v6Ys6tUU8q5rxh35qGEKJU=; b=Z5Lprs3oqFWR9N
-	Pdh2NT0DC0UegClwz9ssRswH1vDL0n4wujaE4huZyUsv5wcuQc0vaUIrMELcUTPFdBsTVYhgHx49h
-	eYBehRXQFeSu0CVhzT82IysdWsqLWmp0qkBgU/HSOLd2NSR0uR4pB/ZnFvlPv/e3I3YPQkatk9K83
-	zmwe5m6eZfCfNmHMRKFdfE2bTV4U78iY/vUeaIywiFfWgO5XczU6nRvTfzJ3ke9adUNqpYtftZ6Ar
-	NQ0k0EyoRm+dnCU0MIAGOfWdbDFbDsbbG6/jsk0QVfhePkQrS2imQIRJUncOz2gLBJyCbxGdoibnK
-	US3bmr1jB12Ljfvsgk3Q==;
+	List-Owner; bh=7MU5BlZoOj81pWFEzy+jsA5zzrxOnF5EhJAT0rx75go=; b=0+So9htdEUAEA6
+	jpp5gC4Vv38ixf/KBttwqzUrGuz3cEAI4foPcFAQj5Gln/hS5FLnqZyGJVoK28471a0CjoSAU15f2
+	KNjkDIjG/0vcvzslXMWkPbF8z7Cf/0slz2b04rsOgjeJ5J6L6nIWwRJuNd3oXjsXHll11DIw9UXq4
+	Ro0q7Yncwk//UAELvKxqw/mb8y1oHUcskClIDVlA5e1EInb8C7UuDsVQ894RRQ6H1YADtkKRAZGmT
+	V2hDWwhYMzCb5BvTIyUdulbzegbP+qv1VPNa3eQScert0QnK0Dsv7bV6AQZ8yxPXF/5ZIxBMI9V9X
+	y1YF5wmm1bd4HEfIHXhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTcI-0000HB-2e;
-	Thu, 19 Oct 2023 14:03:14 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1qtTf2-0001Gv-1h;
+	Thu, 19 Oct 2023 14:06:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtTcE-0000DF-1W;
-	Thu, 19 Oct 2023 14:03:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1697724182; bh=mzygX/Iz4+PfF7qIVuMysQzJMSljB7WHNgZp+lLP3UU=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=R5RN4guTvUB1bj2Wij331KTDYhEJhyRHQ+PQFq+1uYCtbORISApH/hU+LUymEO998
-	 TmTeJYwUmainRCNSkiAX3pfWtJ/Wux0X60gnd9ywZDc1dZ+iCOEggv9aeu9tw+l0AI
-	 HHMULpYM1vwqehs7IWfu08oRLmNYgm3KriDLWiPs=
-Date: Thu, 19 Oct 2023 16:03:02 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Lee Jones <lee@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/4] dt-bindings: mfd: rk8xx: Deprecate
- rockchip,system-power-controller
-Message-ID: <ejqkt2t647sok6q2z2civde54xztopwqc5srksjcmosikstiuv@ci4f643m7hxy>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20231010174138.1888396-1-megi@xff.cz>
- <20231010174138.1888396-2-megi@xff.cz>
- <20231019102945.GA2424087@google.com>
- <a7b6115e-9490-47cf-8054-ac616dea62fd@linaro.org>
- <20231019135032.GD2424087@google.com>
+	id 1qtTez-0001EB-2X;
+	Thu, 19 Oct 2023 14:06:02 +0000
+Received: from i5e861907.versanet.de ([94.134.25.7] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1qtTef-0004bU-GJ; Thu, 19 Oct 2023 16:05:41 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Mark Rutland <mark.rutland@arm.com>,
+	linux-pm@vger.kernel.org,
+	kernel@pengutronix.de,
+	Vincent Legoll <vincent.legoll@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Chanwoo Choi <chanwoo@kernel.org>,
+	devicetree@vger.kernel.org,
+	Robin Murphy <robin.murphy@arm.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Will Deacon <will@kernel.org>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>
+Subject: Re: (subset) [PATCH v8 00/26] Add perf support to the rockchip-dfi driver
+Date: Thu, 19 Oct 2023 16:05:39 +0200
+Message-Id: <169772432936.1425163.10520107144640249546.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231018061714.3553817-1-s.hauer@pengutronix.de>
+References: <20231018061714.3553817-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231019135032.GD2424087@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_070311_269539_F46AA348 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20231019_070601_824948_96FE788F 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,32 +73,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBPY3QgMTksIDIwMjMgYXQgMDI6NTA6MzJQTSArMDEwMCwgTGVlIEpvbmVzIHdyb3Rl
-Ogo+IAo+IE9uIFRodSwgMTkgT2N0IDIwMjMsIEtyenlzenRvZiBLb3psb3dza2kgd3JvdGU6Cj4g
-Cj4gPiBPbiAxOS8xMC8yMDIzIDEyOjI5LCBMZWUgSm9uZXMgd3JvdGU6Cj4gPiA+IE9uIFR1ZSwg
-MTAgT2N0IDIwMjMsIE9uZMWZZWogSmlybWFuIHdyb3RlOgo+ID4gPiAKPiA+ID4+IEZyb206IE9u
-ZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+ID4gPj4KPiA+ID4+IERlcHJlY2F0ZSBzdXBwb3J0
-IGZvciB0aGlzIHByb3BlcnR5IGluIGZhdm9yIG9mIHN0YW5kYXJkCj4gPiA+PiBzeXN0ZW0tcG93
-ZXItY29udHJvbGxlciBvbmUuCj4gPiA+Pgo+ID4gPj4gU2lnbmVkLW9mZi1ieTogT25kcmVqIEpp
-cm1hbiA8bWVnaUB4ZmYuY3o+Cj4gPiA+PiAtLS0KPiA+ID4+ICBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODA1LnlhbWwgfCAzICsrKwo+ID4gPj4gIERv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcm9ja2NoaXAscms4MDgueWFtbCB8
-IDMgKysrCj4gPiA+PiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9yb2Nr
-Y2hpcCxyazgwOS55YW1sIHwgMyArKysKPiA+ID4+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvbWZkL3JvY2tjaGlwLHJrODE3LnlhbWwgfCAzICsrKwo+ID4gPj4gIERvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcm9ja2NoaXAscms4MTgueWFtbCB8IDMgKysr
-Cj4gPiA+PiAgNSBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspCj4gPiA+IAo+ID4gPiBJ
-IGRvbid0IHNlZSBhbnl0aGluZyB3cm9uZyB3aXRoIGl0Lgo+ID4gPiAKPiA+ID4gSXQgd291bGQg
-YmUgbmljZSB0byBoYXZlIGEgRFQgQWNrIHRob3VnaC4KPiA+IAo+ID4gUm9iIGdhdmUgcmV2aWV3
-IG9uIDEydGggT2N0Lgo+IAo+IFRoaXMgbmV3IHZlcnNpb24gd2FzIHN1Ym1pdHRlZCBvbiB0aGUg
-MTB0aCBPY3QuCgpodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzE2OTcxNDA4MTM1My4xNTg3
-NTM2LjI3NjcxNTAyOTgyMDgyNTk5NzYucm9iaEBrZXJuZWwub3JnLwoKPiAtLSAKPiBMZWUgSm9u
-ZXMgW+adjueQvOaWr10KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On Wed, 18 Oct 2023 08:16:48 +0200, Sascha Hauer wrote:
+> This series integrates the recent review feedback from Chanwoo Choi to
+> v7.
+> 
+> Chanwoo, I am sending the full patchset again for people to try this
+> series. You said that you applied 1-5 already, so please start picking
+> from 6/26.
+> 
+> [...]
+
+Applied, thanks!
+
+[24/26] arm64: dts: rockchip: rk3399: Enable DFI
+        commit: f57ef11ec63c17201b27569fbfb58801c227137d
+[25/26] arm64: dts: rockchip: rk356x: Add DFI
+        commit: 085be8875ca8a087e3cc102893f384894962c87e
+[26/26] arm64: dts: rockchip: rk3588s: Add DFI
+        commit: 5a6976b1040a2f99ab84eddbfa7cd072ac5d10fc
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
