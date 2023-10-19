@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2336CDB484
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C68AFCDB487
 	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,51 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VO5nAFXW8FecPflFg9PwiLRym5Lh7XT1qTPXalXYi+4=; b=Dd/EcuL4W9Y5/C
-	yZjrhwWDxQ8iQK23RXc/QuDLgj9S+hMo6hJlimsNcinbIETI0MkhkxqWcWxNf3ZKxMo2uZV5UDN6R
-	Rp9BjQkWsCoi8nqz5cQxZ+H5vEJKHkBRrFa3S96tXO9CFomkZ/g6VgYCcB2zX1vhxm26XcsT+GMXC
-	1QmtudRXwSXsjIVaP7tmUQ1pds19yJgeJIxh/DBFQjhY3fW/Ag1zBXYMHuHmg/o8imKHSfTOf9eXp
-	mLft6rYpln86thRb5mB/CJT5dIw/4ClJPiZhfnbqUVO3g24bCUYlAVF/Rabx0JOY46zM9y2pEemdK
-	oJ6Q0CmSQJnxRAwKfOaA==;
+	List-Owner; bh=Td4QbdH/FYOXcUGMfELPWQ2iF8uCkV0/GM/77syQ//A=; b=K0tyTYUi8WHzFk
+	Hhz2P9xWF4cWR1u6eGRkHSU+omG4hqkTCfodXHJSzapzxRdQ6CjMX/Mm3O3BHxN1Ke7yw8npTT0+9
+	L4yQfvs1wlkuvH4+UQm5MF3ZIlg+lGIHTXmNFz8M6zMZeEZaZdLE09yTkz15flQGF96aAPuWtDRAE
+	Oz6C5tjEeOiR8ViuajQA1VrXL2uyGwfIHoQJGnU7j4PFhdmAKRHy+fOLkQ/X9RU/rWetiDre0xY2d
+	3eD1cfxb5t3EMYK+OivN3mcjApKort85xNw37TAlh5EG/87GrL68jtzxV1Nq3o6cymoIZI/DHDGmE
+	CVhOKqwz/OtxA2drSMgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSaq-00HSS1-2b;
-	Thu, 19 Oct 2023 12:57:40 +0000
+	id 1qtSar-00HSTR-2o;
+	Thu, 19 Oct 2023 12:57:41 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWK-00HNjD-0r;
-	Thu, 19 Oct 2023 12:53:00 +0000
+	id 1qtSWR-00HNuT-2t;
+	Thu, 19 Oct 2023 12:53:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=qi0nDE9bMNN/N9JtsneH7OSkITzRhDazbSs/TwPJl7k=; b=FAj0f4ax44pgjdSYzr0fv4sS9G
-	h0FHPBaGWyloZTjeCPNtao+a0WjWvSZJr/hgiwY8rOAjxP5mAstqb+w7SxPQ1pR4YPIwESTelSVTb
-	34vuH+zjqH+I8c7N+EZZWtvXHRep04PYeRXLwltMW+7N34kGRQwd87YeQncHgsg2jWe0yfDu895Nc
-	4gBwAAbffBGkRPn3iaEWDsaLmPuh0bhcVhsN4KXrDlsEZ1OTpK75RrwqoCZKR/DlsDJMrYsbLjf8h
-	1SV1ikBKI9ghHYTkOb6fbo7OnXj1W1NXtO1494Qrp9wOmaOzMoFNNd4PHZc0c6XCEPnWXIXEWbXbr
-	rO+XAB8A==;
+	bh=nr1KYax36VZZBnabbjIyUGPTkvQFXV8YfPxk2A654tA=; b=fQvp+wFmwIwSnpaVtiX8MJPMJd
+	lsvhZK5m5NMLfOgHrjaU2glDEcVjGdZ3rf5y2C1LlBFAsCCfmUY7PFGZmuRiSZoU7qGFxWJzyiBhN
+	GQBOEhR+60fSJUoYAQAHziZ6bTu2oJ3uIS4dGcQcc0MkffxKjcCURipuvDVrE77Ub31eoPkPgtuD/
+	CmBn78oFaY+FoMZA+975ViQGUUYbFO3oxW9Mk3JCC1sT4bvhSeqcIs6c3fHAoSKNIfQ+NNQAglDF1
+	fdtPTgoYU38PLl/kVDUO2v7eVN6GOYTFKX2OUnZ5dvbmkjKWKb76L2BMeR9Bk57sxOD1Nmkh3PbWb
+	1ZC3fZMg==;
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWC-009rTc-32;
-	Thu, 19 Oct 2023 12:52:58 +0000
+	id 1qtSWJ-009rZr-2Z;
+	Thu, 19 Oct 2023 12:53:05 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3099A660733B;
-	Thu, 19 Oct 2023 13:52:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9264E6607395;
+	Thu, 19 Oct 2023 13:52:56 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719964;
-	bh=QC82AXVc6xizeIJsB4Zdjgq5ICrOlS6NNBj04+AQSGQ=;
+	s=mail; t=1697719976;
+	bh=dg5TyqcXTbK8D5lR679m2t1zA3rG8sR+3z3V0ZimwSc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nzQY/3yHzKSqzUJ/818B/ENYDwEWXb655pNJKShse15WkbIBah45tDltRimhXDOXF
-	 FFioq7uxFmA0d6hPu9kCRES+odyRSa5DYsBqZTgfx9Di8kv9CuQd7GHdDzWfpLv4r1
-	 yBrxjpXxhTBtwv2ADBTWvM/zhsKq14hELbsLn9dQ+G8030syc88oa/huHOH8T3O7Eq
-	 6B9ESm9mdABUvtWaNw0vZoitj56FLQBeR8R/i2JBNFCzOyEKAizyyl/1zNoItuLMEm
-	 aeZf/AIzspP8ZOuxl1UM/8ERHd3GpdpiYxReKsHVsELRgbSTrJty2EGggxtswHr+k3
-	 cUMcw8VBxTscQ==
+	b=LwMxv261skuXKGrk46mty6jtYAGdVkkK9qNt6P7OqH45eUQKmmO2uk5Wjc73Pgui0
+	 KtMOBHfcif1Wf6IKijuaYLVrhnvRLAnbljr3pUJtg9seYdGMFzFOMEME+pyeMPAZPB
+	 fyRIrWH8qV1bfM/GjDsSAJn+RDhqQms7eAjW8jMki1vPoZ4kVqPAQchFiROYLvqClF
+	 aNsO+4qZOPgVUzK/VIW5DUzq/ehn4LFCgdJSLXPJshuD+xD+qvxF5gK1Sr9ov7pKUH
+	 t4/CUVniy1r2fz7tb76mIXV1fLO86kEl5X+OrzV+eznw51/JNAZy+axPxZ6+y8d7Fd
+	 ZS7AzeDiX1ujg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -75,18 +75,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Matt Ranostay <matt.ranostay@konsulko.com>
-Subject: [PATCH v13 26/56] media: i2c: video-i2c: Stop direct calls to queue num_buffers field
-Date: Thu, 19 Oct 2023 14:51:52 +0200
-Message-Id: <20231019125222.21370-27-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 50/56] media: verisilicon: vp9: Allow to change resolution while streaming
+Date: Thu, 19 Oct 2023 14:52:16 +0200
+Message-Id: <20231019125222.21370-51-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135253_463485_473564C7 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20231019_135300_302930_AC955F55 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,33 +102,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-This allows us to change how the number of buffers is computed in the
-future.
+Remove all checks that prohibit to set a new format while streaming.
+This allow to change dynamically the resolution if the pixel format
+remains the same.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Matt Ranostay <matt.ranostay@konsulko.com>
+CC: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Philipp Zabel <p.zabel@pengutronix.de>
 ---
- drivers/media/i2c/video-i2c.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../media/platform/verisilicon/hantro_v4l2.c  | 24 +++----------------
+ 1 file changed, 3 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/media/i2c/video-i2c.c b/drivers/media/i2c/video-i2c.c
-index 178bd06cc2ed..ebf2ac98a068 100644
---- a/drivers/media/i2c/video-i2c.c
-+++ b/drivers/media/i2c/video-i2c.c
-@@ -405,9 +405,10 @@ static int queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index f0d8b165abcd..27a1e77cca38 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -514,25 +514,14 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ 		return ret;
+ 
+ 	if (!ctx->is_encoder) {
+-		struct vb2_queue *peer_vq;
+-
+ 		/*
+ 		 * In order to support dynamic resolution change,
+ 		 * the decoder admits a resolution change, as long
+-		 * as the pixelformat remains. Can't be done if streaming.
+-		 */
+-		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+-		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
+-			return -EBUSY;
+-		/*
+-		 * Since format change on the OUTPUT queue will reset
+-		 * the CAPTURE queue, we can't allow doing so
+-		 * when the CAPTURE queue has buffers allocated.
++		 * as the pixelformat remains.
+ 		 */
+-		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
+-					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+-		if (vb2_is_busy(peer_vq))
++		if (vb2_is_streaming(vq) && pix_mp->pixelformat != ctx->src_fmt.pixelformat) {
+ 			return -EBUSY;
++		}
+ 	} else {
+ 		/*
+ 		 * The encoder doesn't admit a format change if
+@@ -577,15 +566,8 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
+ 			      struct v4l2_pix_format_mplane *pix_mp)
  {
- 	struct video_i2c_data *data = vb2_get_drv_priv(vq);
- 	unsigned int size = data->chip->buffer_size;
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+-	struct vb2_queue *vq;
+ 	int ret;
  
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
+-	/* Change not allowed if queue is busy. */
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
+-			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+-	if (vb2_is_busy(vq))
+-		return -EBUSY;
+-
+ 	if (ctx->is_encoder) {
+ 		struct vb2_queue *peer_vq;
  
- 	if (*nplanes)
- 		return sizes[0] < size ? -EINVAL : 0;
 -- 
 2.39.2
 
