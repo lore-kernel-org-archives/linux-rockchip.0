@@ -4,56 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB60CDB465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 16:58:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DB7BCDB465
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 17:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Px9PU0RE/j6JkcIebYBQqyecthuwjjYDXMYpZu9FEr8=; b=hpIlQhFWhz+xee
-	GhzzhiE1yLYgUuZ2Yh8DJ7pvPrNeM72nQ4iDxWarH6/7uGKrfDxRSCTgFr3ACmuhlQfjdXoVXBoyp
-	/BS/11VoqAIdZnNom895ZuPbSaOdttomL/rSztDcAAOhOR8tCJUfnBYXNxZWVZCuoVMhILuKWB/Tj
-	mjcMPLt9NVOBnLHWS353WXbqW0js6IXQdE3vRoxo79xF3BNAvfeDtz8pSFGYFgI7Isdp5zSyocZIL
-	RZMk2GMkfDN/8jN/nMOQ4TRfenRRl+kgmy0FWBIwFb81HSOvhnVU5z2Mh5AH8f64lSMu9wyNlqzZS
-	mGFxSxO6OZPVSmWfV0/g==;
+	List-Owner; bh=WYfzFAtnbd3aK3krN4KyYylkn5InF75H0Bln410dfAw=; b=Q/aWeMgnueL23B
+	5gp9F5Ir9weMiMFc1YmcR85pEhbhSndOOfFkB4SRgoqmRLulzhpqdrq8NawLlLii7Wh0YNDurmFLu
+	QuJh3j3mlwxnXc402Aj/cjXrP/dejXHQgE8VOWyxL9XzmRD1AUXMirSz44yOHDcZgO70MQ1m1rg3W
+	giUhMM8MPsfUeMJGHdLma63FG1OZt8DNsGZ5spMFzEh/TunbtyWg1rty/hXIg35mHwUWM4ko7SEON
+	6KCdntSklLUnMm5iBmImWrH+KsSLzN4tl/jqlaYNdRNFSwzcGPpYdSWmXstTjsBEBoUKeKYs2Nc9j
+	7w9RcMY58NuLcFjq845Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtWLO-000MwF-0E;
-	Thu, 19 Oct 2023 16:57:58 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1qtWjH-000PR5-2P;
+	Thu, 19 Oct 2023 17:22:39 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtWL7-000Mkk-0X;
-	Thu, 19 Oct 2023 16:57:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1697734656; bh=07aDVsUy5RsQxnmnnN1afCwYsv5zVhLjMtrYunUCVWI=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=XrrzEBxqrJI2NUBKVQBiqsjqdRYhqAG5OeZXouIUqBKS+k565hXPquw7WL+pyGsan
-	 mMtNeSjULHISu2/snIV97Edi63AdqjD6FDWT4C1/BRGkpUF1QmZdVel5k80kHLvBBh
-	 hx6fQWpz9SnzWWn3yq+/Pc2c2BkGPVexbn751Oj8=
-From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
-To: Lee Jones <lee@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Ondrej Jirman <megi@xff.cz>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [RESEND PATCH v3 4/4] mfd: rk8xx: Add support for RK806 power off
-Date: Thu, 19 Oct 2023 18:57:26 +0200
-Message-ID: <20231019165732.3818789-5-megi@xff.cz>
-In-Reply-To: <20231019165732.3818789-1-megi@xff.cz>
-References: <20231019165732.3818789-1-megi@xff.cz>
+	id 1qtWjE-000PQj-2C
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Oct 2023 17:22:38 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39JGOGSH021821;
+	Thu, 19 Oct 2023 17:22:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=IJr8fuPvD0+QxFvkh5JG+nAzSYmbclC8d3lKeP0zjjw=;
+ b=N4oiVpmC+0KfZaDbEA+sXv9N2tD5wjrIbdp9tsZgx8p5rNL5ZZGzgbmdTjt+CzBeMtd0
+ +aCalMR4YsHIdhLFjY402KzDO/JHYqifwrZEfIoSbrpe2yKO3h+aR1sTXn70sHAeEd9s
+ qwWrGzZT7HMin406QqGYQt99asC4JAn4lM93Bvh2qee4SvohjrICxt463RTlunB9BXd0
+ V3bJQeBbN4smuvYHtA0EW8LKDNKGUPGrwMR1J2P5T4rq7I6WNQcFGdbthNyXa1WeD4VP
+ p+Rd7MQauEGECKUWWPjWqKRbD3eKRTAq3V67cKdfccA+NP/gkP9+Evc5otboxcjw75DL JA== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tu1t6s30d-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 19 Oct 2023 17:22:26 +0000
+Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39JHMPBW025162
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 19 Oct 2023 17:22:25 GMT
+Received: from [10.110.13.99] (10.80.80.8) by nasanex01b.na.qualcomm.com
+ (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Thu, 19 Oct
+ 2023 10:22:25 -0700
+Message-ID: <c5e2929c-ef05-4e74-947e-579706f2b4aa@quicinc.com>
+Date: Thu, 19 Oct 2023 10:22:24 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/5] drm/panel: nv3051d: Add Powkiddy RK2023 Panel Support
+Content-Language: en-US
+To: Chris Morgan <macroalpha82@gmail.com>
+CC: <devicetree@vger.kernel.org>, <conor+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <neil.armstrong@linaro.org>,
+        <sboyd@kernel.org>, <sam@ravnborg.org>, <mturquette@baylibre.com>,
+        Chris
+ Morgan <macromorgan@hotmail.com>,
+        <sebastian.reichel@collabora.com>, <dri-devel@lists.freedesktop.org>,
+        <robh+dt@kernel.org>, <linux-clk@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>
+References: <20231018161848.346947-1-macroalpha82@gmail.com>
+ <20231018161848.346947-3-macroalpha82@gmail.com>
+From: Jessica Zhang <quic_jesszhan@quicinc.com>
+In-Reply-To: <20231018161848.346947-3-macroalpha82@gmail.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01b.na.qualcomm.com (10.46.141.250)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: LQd-PePtMDL8B_p0WDQtge_mdZTOIkXn
+X-Proofpoint-ORIG-GUID: LQd-PePtMDL8B_p0WDQtge_mdZTOIkXn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-19_16,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011
+ priorityscore=1501 mlxscore=0 lowpriorityscore=0 suspectscore=0
+ adultscore=0 malwarescore=0 mlxlogscore=999 phishscore=0 spamscore=0
+ impostorscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2309180000 definitions=main-2310190147
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_095742_012998_7ADB965E 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231019_102236_747788_3C49B636 
+X-CRM114-Status: GOOD (  29.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,40 +99,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ondrej Jirman <megi@xff.cz>
 
-Use DEV_OFF bit to power off the RK806 PMIC, when system-power-controller
-is used in DTS.
 
-Signed-off-by: Ondrej Jirman <megi@xff.cz>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/mfd/rk8xx-core.c | 4 ++++
- 1 file changed, 4 insertions(+)
+On 10/18/2023 9:18 AM, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Refactor the driver to add support for the powkiddy,rk2023-panel
+> panel. This panel is extremely similar to the rg353p-panel but
+> requires a smaller vertical back porch and isn't as tolerant of
+> higher speeds.
+> 
+> Tested on my RG351V, RG353P, RG353V, and RK2023.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
-index a50a181b18e9..c47164a3ec1d 100644
---- a/drivers/mfd/rk8xx-core.c
-+++ b/drivers/mfd/rk8xx-core.c
-@@ -525,6 +525,10 @@ static int rk808_power_off(struct sys_off_data *data)
- 		reg = RK805_DEV_CTRL_REG;
- 		bit = DEV_OFF;
- 		break;
-+	case RK806_ID:
-+		reg = RK806_SYS_CFG3;
-+		bit = DEV_OFF;
-+		break;
- 	case RK808_ID:
- 		reg = RK808_DEVCTRL_REG,
- 		bit = DEV_OFF_RST;
--- 
-2.42.0
+Hi Chris,
 
+Thanks for the patch. Just have a minor question below.
+
+> ---
+>   .../gpu/drm/panel/panel-newvision-nv3051d.c   | 56 +++++++++++++++----
+>   1 file changed, 45 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> index 79de6c886292..d24c51503d68 100644
+> --- a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> +++ b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> @@ -28,6 +28,7 @@ struct nv3051d_panel_info {
+>   	unsigned int num_modes;
+>   	u16 width_mm, height_mm;
+>   	u32 bus_flags;
+> +	u32 mode_flags;
+>   };
+>   
+>   struct panel_nv3051d {
+> @@ -385,15 +386,7 @@ static int panel_nv3051d_probe(struct mipi_dsi_device *dsi)
+>   
+>   	dsi->lanes = 4;
+>   	dsi->format = MIPI_DSI_FMT_RGB888;
+> -	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+> -
+> -	/*
+> -	 * The panel in the RG351V is identical to the 353P, except it
+> -	 * requires MIPI_DSI_CLOCK_NON_CONTINUOUS to operate correctly.
+> -	 */
+> -	if (of_device_is_compatible(dev->of_node, "anbernic,rg351v-panel"))
+> -		dsi->mode_flags |= MIPI_DSI_CLOCK_NON_CONTINUOUS;
+> +	dsi->mode_flags = ctx->panel_info->mode_flags;
+>   
+>   	drm_panel_init(&ctx->panel, &dsi->dev, &panel_nv3051d_funcs,
+>   		       DRM_MODE_CONNECTOR_DSI);
+> @@ -481,18 +474,59 @@ static const struct drm_display_mode nv3051d_rgxx3_modes[] = {
+>   	},
+>   };
+>   
+> -static const struct nv3051d_panel_info nv3051d_rgxx3_info = {
+> +static const struct drm_display_mode nv3051d_rk2023_modes[] = {
+> +	{
+> +		.hdisplay       = 640,
+> +		.hsync_start    = 640 + 40,
+> +		.hsync_end      = 640 + 40 + 2,
+> +		.htotal         = 640 + 40 + 2 + 80,
+> +		.vdisplay       = 480,
+> +		.vsync_start    = 480 + 18,
+> +		.vsync_end      = 480 + 18 + 2,
+> +		.vtotal         = 480 + 18 + 2 + 4,
+> +		.clock          = 24150,
+> +		.flags          = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
+> +	},
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rg351v_info = {
+>   	.display_modes = nv3051d_rgxx3_modes,
+>   	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
+>   	.width_mm = 70,
+>   	.height_mm = 57,
+>   	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
+> +		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rg353p_info = {
+> +	.display_modes = nv3051d_rgxx3_modes,
+> +	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
+> +	.width_mm = 70,
+> +	.height_mm = 57,
+
+Will all the panels for this driver be 70x57? If so, would it be better 
+to set display_info.[width_mm|height_mm] directly?
+
+> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rk2023_info = {
+> +	.display_modes = nv3051d_rk2023_modes,
+> +	.num_modes = ARRAY_SIZE(nv3051d_rk2023_modes),
+> +	.width_mm = 70,
+> +	.height_mm = 57,
+> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
+>   };
+>   
+>   static const struct of_device_id newvision_nv3051d_of_match[] = {
+> -	{ .compatible = "newvision,nv3051d", .data = &nv3051d_rgxx3_info },
+> +	{ .compatible = "anbernic,rg351v-panel", .data = &nv3051d_rg351v_info },
+> +	{ .compatible = "anbernic,rg353p-panel", .data = &nv3051d_rg353p_info },
+> +	{ .compatible = "powkiddy,rk2023-panel", .data = &nv3051d_rk2023_info },
+>   	{ /* sentinel */ }
+>   };
+> +
+
+I think you can drop this stray newline.
+
+Thanks,
+
+Jessica Zhang
+
+>   MODULE_DEVICE_TABLE(of, newvision_nv3051d_of_match);
+>   
+>   static struct mipi_dsi_driver newvision_nv3051d_driver = {
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
