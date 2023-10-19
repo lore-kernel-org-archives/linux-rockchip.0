@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F4FCDB483
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADEE2CDB483
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Oct 2023 12:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RQSglypvVVpBH88Nektl36dyFT3UWO6zDaegOIukE5M=; b=4exsZCA3WhpjNS
-	bKnB7xSiOS3afGI+1oV3AZObnaAuFBlKPTNs9jyF3bkFTG/ri2i1wQGuapw8pTeLDyr3tuY/HHwXf
-	vFgz/VVtvIPKZ6c/tM1o8y0qIxLsEw7iA5dxwGWYE3ZGN80AA2Gwi3cTz5DDxcy7muReXGZdg8esY
-	etyl/r5MPcN0X6XuLI/n+BWvRAJJfIxcDdpvkz4yaC5OOdroZ4lyALVHEv6k0olifBr4iTuxYZ8Ml
-	eHAynMMTCXonfFLyqfokivzVikEOBH6H6HOeYbGdizNeR8EHNzJhZH4JoTl5Vox8SUbF2BLIKACFC
-	B4v/loB/W8EpT5oFDYtw==;
+	List-Owner; bh=edMVR9ULvWkoXCHICHTxXS8FSiLWUJy4/aYCbuuE+Uo=; b=mwT24He61a6tMj
+	ofVLTaQUlT3qutXphtU2CfriqerH7yUpx1dV4OE3Zs2/0bNvESFgS3vghygYXKmWCxp7n78C+FixT
+	wL6uRr1zycZSMjUveZRHLGT9K8zfZV2rqR7OaWlOuPjJLsDPbW5DLrI18X6WaLhhnRdaP8RIRjIdf
+	U34EIGulGAM329jW8jS7MUpm0AwCG0pCGaEKg1YA9A7Wx/MrUlSVwKQKZeG1DrdX4R6835idtssHa
+	24dku1d92+SW7Ulj7FirsQ/lY+BAFcafxxMwoOSk7TyiBdftBpZl9Yr+WUtkqb2He3Bj+z4gVZXry
+	EVEH5IOqxZp9AZoqT2Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSa1-00HRWE-2H;
-	Thu, 19 Oct 2023 12:56:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qtSa4-00HRYq-1O;
+	Thu, 19 Oct 2023 12:56:52 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSWF-00HNcu-0O;
-	Thu, 19 Oct 2023 12:52:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=ARXOSBKGUUPDwevHrxoh+LOz0HRWiSJssojf7QO4Re0=; b=Is+vh/If7Pce+LV9h89Bw8sByn
-	HsvrUjpTSn/d8oxS7N0m649dViE2IddhRCuJuQaEH8cagu2Ir9m90bVjNmPXFBlAUL/+wSqWTHSvC
-	1DZsKWl/pYukYzJQAXiF/RM2BjV9qpD4trqLy1EaW/GTbs1xV5ba/XZPZ1EBp13a0VoHa4hxn0ecw
-	XKBKD7lOykdgoDFNSpXbglmL6pGT0C+8cYFtEqLwxu2CsGpXHPP2iDiuQAxnU8vjwBdbwvWPhaa17
-	fbdaex/2UFO++56L7A9Y55vDFflKfxdpT9CVoCeUCEWoQ74UJPVC9P90g3FMa0gL30k57OXcAst2w
-	jNUSmHLQ==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtSW5-009rSX-0N;
-	Thu, 19 Oct 2023 12:52:52 +0000
+	id 1qtSW8-00HNUT-2i;
+	Thu, 19 Oct 2023 12:52:54 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:ccea:1fb5:34eb:239b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C283F6607351;
-	Thu, 19 Oct 2023 13:52:37 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 250866607331;
+	Thu, 19 Oct 2023 13:52:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1697719958;
-	bh=6OByUfiYmown+37pp4jYIRU8BDesYsod95qP0wK3edE=;
+	s=mail; t=1697719963;
+	bh=i3ojvf+oJl6EVNen5vztp4m8lCDNcxv0WJBCUcNAQzI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=a/iBP9tI59PpwPQ9dsu1USfyNb+IVCYoCR90qa9XiqxLyHgD0yUIGidTF5m93xFk+
-	 QwXu68MSX/tZOufr8Ia91h24G1wkP+3l/Xkz9KrFi91jjqOfrcHS83f8+3PC10ft5E
-	 TE++zp/l82sxexjgmNkeYAsRFTbnN4UcNUpbv+Q2BsvhZi6nDlSNPHBG/E3tomc/ag
-	 wzB4rK/+SeVQRrzRkQlE8jvrEHR34uq+6Jz3Wjsh02oJcS+VYc0Sl0GROv2xlyUVS+
-	 9VYfyu6jz7+tF4H2ZIUGxjjSYFwhvITG/517mbqZmaMWIsrH/9/Jzv2sLoMxjIz8s4
-	 D7KWWiQDtfhcQ==
+	b=SQa5Y/Zdj/YGAb1jNO1cGYUkbreddzS949qWHwJVdMlcCMQxrMDKPnq+FFuX2vMhp
+	 EWqyQ3/pEoLJf4qG0tr/RIYMLgV5Pn93uOL4U84OxD0Tplp9Mu2ik0Qp4Mbeiu4LR/
+	 4Dtafv54fYMmUt0GTMHWcE7i7pSsdYWBsxQWVZii5tn2yl0d5uBCZ7+yMoeybB5JvO
+	 U76gb/9bAbUga8bMTUfOXgYd6FMShahw+pxbx/nW2ifRpLCYgVxuwV92IVy2TznTkn
+	 Pp2jkLuSHyWrWGLM5NzQ5fTzx2tMS8eFH5557PzOdlsyVABqFyE9pIcmdKZZ3Y9HHe
+	 +i6CtlmQg6Jzw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -76,17 +62,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>
-Subject: [PATCH v13 14/56] media: sti: hva: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Thu, 19 Oct 2023 14:51:40 +0200
-Message-Id: <20231019125222.21370-15-benjamin.gaignard@collabora.com>
+	Sergey Kozlov <serjk@netup.ru>,
+	Abylay Ospan <aospan@netup.ru>
+Subject: [PATCH v13 24/56] media: pci: netup_unidvb: Stop direct calls to queue num_buffers field
+Date: Thu, 19 Oct 2023 14:51:50 +0200
+Message-Id: <20231019125222.21370-25-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231019_135245_433862_A03A12B5 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20231019_055249_062427_70B22378 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,40 +90,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use vb2_get_buffer() instead of direct access to the vb2_queue bufs array.
-This allows us to change the type of the bufs in the future.
-After each call to vb2_get_buffer() we need to be sure that we get
-a valid pointer so check the return value of all of them.
-Remove index range test since it is done by vb2_get_buffer().
+Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
+This allows us to change how the number of buffers is computed in the
+future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>
+CC: Sergey Kozlov <serjk@netup.ru>
+CC: Abylay Ospan <aospan@netup.ru>
 ---
- drivers/media/platform/st/sti/hva/hva-v4l2.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ drivers/media/pci/netup_unidvb/netup_unidvb_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/st/sti/hva/hva-v4l2.c b/drivers/media/platform/st/sti/hva/hva-v4l2.c
-index 3a848ca32a0e..cfe83e9dc01b 100644
---- a/drivers/media/platform/st/sti/hva/hva-v4l2.c
-+++ b/drivers/media/platform/st/sti/hva/hva-v4l2.c
-@@ -569,14 +569,11 @@ static int hva_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
- 		struct vb2_buffer *vb2_buf;
+diff --git a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
+index d85bfbb77a25..557985ba25db 100644
+--- a/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
++++ b/drivers/media/pci/netup_unidvb/netup_unidvb_core.c
+@@ -293,12 +293,13 @@ static int netup_unidvb_queue_setup(struct vb2_queue *vq,
+ 				    struct device *alloc_devs[])
+ {
+ 	struct netup_dma *dma = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
- 		vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, buf->type);
--
--		if (buf->index >= vq->num_buffers) {
--			dev_dbg(dev, "%s buffer index %d out of range (%d)\n",
--				ctx->name, buf->index, vq->num_buffers);
-+		vb2_buf = vb2_get_buffer(vq, buf->index);
-+		if (!vb2_buf) {
-+			dev_dbg(dev, "%s buffer index %d not found\n", ctx->name, buf->index);
- 			return -EINVAL;
- 		}
--
--		vb2_buf = vb2_get_buffer(vq, buf->index);
- 		stream = to_hva_stream(to_vb2_v4l2_buffer(vb2_buf));
- 		stream->bytesused = buf->bytesused;
- 	}
+ 	dev_dbg(&dma->ndev->pci_dev->dev, "%s()\n", __func__);
+ 
+ 	*nplanes = 1;
+-	if (vq->num_buffers + *nbuffers < VIDEO_MAX_FRAME)
+-		*nbuffers = VIDEO_MAX_FRAME - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < VIDEO_MAX_FRAME)
++		*nbuffers = VIDEO_MAX_FRAME - q_num_bufs;
+ 	sizes[0] = PAGE_ALIGN(NETUP_DMA_PACKETS_COUNT * 188);
+ 	dev_dbg(&dma->ndev->pci_dev->dev, "%s() nbuffers=%d sizes[0]=%d\n",
+ 		__func__, *nbuffers, sizes[0]);
 -- 
 2.39.2
 
