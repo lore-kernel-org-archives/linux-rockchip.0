@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E1BCDB474
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Oct 2023 15:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BFCC001DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Oct 2023 15:00:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=03P45NAiMS8HWJCsA8cbEsR+vDmyNKLNqKd/Qga30h0=; b=DRDnbGgr9EbwF2
-	ApyAQOvm5WdnLoCH0rTsLD2Ad/hnJj7JEUqyYOLsFB3etSd72FGwgAPLl5sMalABnWJ6jo2WV4fp8
-	dKSyuknoetUuxPUP0GSxT5CAkBPb/A7UlRkTvoGPLZGIDkwiaqlxeZOhG0sUGPkAB6Sz0Bs2aqVmb
-	q5IwcQPrUDJ3cHBb9m/Y5k+HjyTrEglC7RS74RK6QsQRjMyv4P3VgJoZIrbvJdeeI6/t/DF93LK/s
-	hHGUGLWQ5iTU3WuwH/oepvg+kfLM92D8TmZ+ARL7TdnAbpGC/qOQ1T1bQ3jHUEiWOccQN/479Aohz
-	kXyf37NEzc2PBDPnoZsQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=akwMvFJCwuMK/1oxOqJpgUKxWJm/bTD64+1NFNsNBDA=; b=ZfvodbWRf/oc51
+	LnTXNKrtlbCmM6b1xL+ORM7BnePMLyXpdIGnqX1dhhsmynqDcOwQA5cSA1W6drqoWsUhqG0zMuYOf
+	PSJPVNfNyz0fzJ/tR7NwMvGQmTF16/M8D6vGgidR2/0G97pnMe3DKzdoWsLfn4F9VwDbqSM4yZ8wd
+	ZcVaKGRNV4UJTOcU1cS45jxV34PsEE1+8zy1VV1Kk+rgQqsxVoa5qmbxvP2oVBz4HGS4503LkWZMM
+	GblRk1yq7hjSaLuN5F7sVBjIOiLNTkwCSUOP7z73Bhx4YUH7GBYQ5cgzvP1hjBt2Q4mZAxLA5IoYd
+	T+rT/vCSEZiRVQafD+6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtqzX-002YAU-0d;
-	Fri, 20 Oct 2023 15:00:47 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qtqzU-002Y9D-1U;
+	Fri, 20 Oct 2023 15:00:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtqzG-002Y0p-0w;
-	Fri, 20 Oct 2023 15:00:33 +0000
+	id 1qtqzG-002Y0i-0g;
+	Fri, 20 Oct 2023 15:00:31 +0000
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F48A660737C;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 560AC660734F;
 	Fri, 20 Oct 2023 16:00:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1697814026;
-	bh=UsIbMdBkB63KIT1K+XLIc1aWT6m/RDcXwqMsI3caB1g=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ejXwArh4/cF8B+jZxqBOI+s00hvnSVZVzvHZTO7k8zbtoazYXuLXDhq0hZ3QKd69u
-	 r+tuIjlzs94qHU7IdUfE8fs8X1JrRrFePfheR3DmKHu/sIM7Vx9nLZvrV7s4mIW8Qq
-	 CfVqnlzaK2XGIt3ULbBXWkcW3HZZsMd82G40+WRaFynP4oQ/rge5Pau+Ly/WAIMuKg
-	 XJ3SYtA8PPASqa8rASCjnFV4d4uWbDhZNUj2h5nk4q3tCjI+xQ9h6rmN9ISLW+Xqpk
-	 1hMNgf1M+GdwTNKcXItPACrQfLzE8McYP8tVBCxgNr8Lp0s+scKR686BjqYYFo4/YU
-	 /bgvAfCZgWnEQ==
+	bh=AwagkB7kAuEMuWURdRVLbW91QS2Ae+qwHCvRYF46Ugg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WEAoYkuL7lFNdZh+IcbZUMdC/mvevTa5/DlHI+shC14FlvvjJWH25iXG41QRmzmwO
+	 iHLIecb8gLhTo2DROa/2q7asIJpqP3SEDjmMSpLyM8u+BPaL9/IFU59r62RrLVcJxg
+	 zYa3YnYnKox2LKJdq/3qOZDgd7GmufDfuEq2dQn1IZlbVZXfE/RFe4nqVyYZ4iHlUH
+	 KSDWeE1iX7ZVKDWUf/de8N+mBVF/dPRxu3eV1mkAS+ZUy6qSVMozMPFMids25Dk3Bc
+	 eQ8XnClzDQ71KFXcjlcfwy59BfywoXMQAAiE4goQjvdDifZjVCnpBjIucyDUjYxa4I
+	 trr2gTlkBC9nw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 0A7E2480105; Fri, 20 Oct 2023 17:00:24 +0200 (CEST)
+	id 04FD74800CB; Fri, 20 Oct 2023 17:00:24 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -59,16 +59,14 @@ Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
 	linux-arm-kernel@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v4 3/3] arm64: dts: rockchip: rk3588s: Add USB3 host controller
-Date: Fri, 20 Oct 2023 16:11:42 +0200
-Message-ID: <20231020150022.48725-4-sebastian.reichel@collabora.com>
+Subject: [PATCH v4 0/3] RK3588 USB3 host controller support
+Date: Fri, 20 Oct 2023 16:11:39 +0200
+Message-ID: <20231020150022.48725-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231020150022.48725-1-sebastian.reichel@collabora.com>
-References: <20231020150022.48725-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_080030_523613_CC1C64DE 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20231020_080030_510292_B26D07CE 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +83,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 has three USB3 controllers. This adds the host-only controller,
-which is using the naneng-combphy shared with PCIe and SATA.
+Hi,
 
-The other two are dual-role and using a different PHY that is not yet
-supported upstream.
+This adds RK3588 USB3 host controller support. The same DT binding
+will be used for the two dual-role controllers, which are also DWC3
+based, but using a different PHY and don't need the extra UTMI/PIPE
+clocks.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+The series has been tested with Radxa Rock 5B, which uses the controller
+for the upper USB3 port. The patch enabling &combphy2_psu and &usbhost3_0
+for this board will be send separately once this series has been merged.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 5544f66c6ff4..8b4c99b49798 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -443,6 +443,27 @@ usb_host1_ohci: usb@fc8c0000 {
- 		status = "disabled";
- 	};
- 
-+	usb_host2_xhci: usb@fcd00000 {
-+		compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
-+		reg = <0x0 0xfcd00000 0x0 0x400000>;
-+		interrupts = <GIC_SPI 222 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru REF_CLK_USB3OTG2>, <&cru SUSPEND_CLK_USB3OTG2>,
-+			 <&cru ACLK_USB3OTG2>, <&cru CLK_UTMI_OTG2>,
-+			 <&cru CLK_PIPEPHY2_PIPE_U3_G>;
-+		clock-names = "ref_clk", "suspend_clk", "bus_clk", "utmi", "pipe";
-+		dr_mode = "host";
-+		phys = <&combphy2_psu PHY_TYPE_USB3>;
-+		phy-names = "usb3-phy";
-+		phy_type = "utmi_wide";
-+		resets = <&cru SRST_A_USB3OTG2>;
-+		snps,dis_enblslpm_quirk;
-+		snps,dis-u2-freeclk-exists-quirk;
-+		snps,dis-del-phy-power-chg-quirk;
-+		snps,dis-tx-ipgap-linecheck-quirk;
-+		snps,dis_rxdet_inp3_quirk;
-+		status = "disabled";
-+	};
-+
- 	sys_grf: syscon@fd58c000 {
- 		compatible = "rockchip,rk3588-sys-grf", "syscon";
- 		reg = <0x0 0xfd58c000 0x0 0x1000>;
+Changes since PATCHv3:
+ * https://lore.kernel.org/all/20231009172129.43568-1-sebastian.reichel@collabora.com/
+ * update binding, simplifying "rockchip,rk3568-dwc3"
+ * update binding, no need to specify min/max items for "rockchip,rk3588-dwc3"
+ * add driver inline comment, that "utmi" and "pipe" are RK3588 specific
+
+Changes since PATCHv2:
+ * https://lore.kernel.org/all/20230720173643.69553-1-sebastian.reichel@collabora.com/
+ * update binding, so that "utmi" and "pipe" clocks may only be used on RK3588;
+   at the same time do not allow "grf_clk" for RK3568, which does not have a GRF
+   clock for USB3.
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20230719174015.68153-1-sebastian.reichel@collabora.com/
+ * use same compatible for USB3 host and drd controllers (Krzysztof Kozlowski)
+ * do not update reset-names (Krzysztof Kozlowski)
+   - note: I dropped reset-names property, since there is only one reset line
+     anyways. Binding could stay the same, since the reset-names property is
+     optional
+ * use "ref_clk", "suspend_clk" and "bus_clk" instead of "ref", "suspend" and "bus",
+   so that they are the same as in RK3568 (Krzysztof Kozlowski)
+ * rename handle name to "usb_host2_xhci" (Michael Riesch)
+ * use RK356x style DWC3 binding instead of DWC3399 style
+   - required adding an extra patch, so that the DWC3 core supports enabling
+     the UTMI/PIPE clocks
+
+-- Sebastian
+
+Sebastian Reichel (3):
+  dt-bindings: usb: add rk3588 compatible to rockchip,dwc3
+  usb: dwc3: add optional PHY interface clocks
+  arm64: dts: rockchip: rk3588s: Add USB3 host controller
+
+ .../bindings/usb/rockchip,dwc3.yaml           | 60 +++++++++++++++++--
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 21 +++++++
+ drivers/usb/dwc3/core.c                       | 28 +++++++++
+ drivers/usb/dwc3/core.h                       |  4 ++
+ 4 files changed, 108 insertions(+), 5 deletions(-)
+
 -- 
 2.42.0
 
