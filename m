@@ -4,46 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AD18CDB474
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Oct 2023 15:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E486CDB474
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Oct 2023 16:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eFFvBdH21q2sXiKnWUb7z+Fct6qqHcxpi6LI4ZqpeVk=; b=SBhda4IA/NdQbQ0NYcggZ24Ebq
-	OFTFvuRAEX6Em+XzevsOyBmG8iW3l0oG8d5bz3Q7qBmO3Os3pzqm9KK6JRWyxnIy70Y36IP+qqh3K
-	ZbgwMHb98+XOQj+frksjWHc7BltitT80I4WDxp+0weoTEhDsRbffaHVLtNN0v8NIvZSMFX3ol7d//
-	R6eWqhByIMzMZN6gbzp851xDv6nGzLWAhGQxFT9vc38pm7EM+S9iO5yQ5P9rfTk3goxzoVDJyj+BN
-	frLwhtwWGV7e0nySjq8y/lH4olPakdeAqzMElQIDBkC+jVC47jQ2H0S1g8pRUmfb3a9tt+Ji3Pxt3
-	lfiryyDQ==;
+	bh=tO4hOQFIM+DirryuVVk+Allh9jfnP8GKsSv4fm2D+OI=; b=h2O+0XaZRZfn7jX+tR0CAAHedm
+	e6trvVbTaAvjHgMbQ7QCkCwJCdl2bxRS6KLwXZGkr2oSazyXpF369DAJudG1wAESPZy4A/pMKjyWa
+	mB1xM5ST643/Shfm8Pfd01CoZjjW1gDEMPldyKP5zlNskTF72DMha8EWGLuKNewRtbq3X6zTiPI6L
+	1SuyLFnQjxtoRv8BdPcqch6Pgk0iqKVTkJwNT8ySmht68/YtE1xFOOJYrd1eJziVT2sOdQnaBYQrP
+	/rVKZAM9EDI5XLhs+01zrmfRe0+qIQDEQf8il4dKWOCI8aRICrWL5zUmmOp80zDeu/x4BWhqtXEn3
+	5D6MiSlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtrY6-002cdd-3B;
-	Fri, 20 Oct 2023 15:36:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qtryM-002fJu-2g;
+	Fri, 20 Oct 2023 16:03:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtrY2-002ccW-2l;
-	Fri, 20 Oct 2023 15:36:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 1C159B82703;
-	Fri, 20 Oct 2023 15:36:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D730CC433C8;
-	Fri, 20 Oct 2023 15:36:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1697816184;
-	bh=s1xV3JBd6JIKm+NQbSAbEH6DMv5wORv7APbuEHALwfw=;
+	id 1qtryI-002fIn-1o;
+	Fri, 20 Oct 2023 16:03:35 +0000
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1B29F660731B;
+	Fri, 20 Oct 2023 17:03:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1697817812;
+	bh=gdDLnZkjmHu+Sk+/2xbwhd6fH/+pG0s/huYMTIz5rp8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pNHvl4mYVct+XX8kx8UXf2TT0nVK+m3RiqBgFauhIyP34BfS24P6w3cN+sNYgh86L
-	 zIefFNd8SChjbE5mt0RcnCDDVnHQI9kiZ34N/Ndcb99gaYfbftUXfVN2jHE+rGi3tm
-	 n1WJoP51Ny99stXZhmuo1Jrobgy4wuqH2wA5OViwEeNmvPtRxtmTZNsEomW/GeuStz
-	 E56SShxBTIycb5PteKMvF+cjGSX68RZRJUltSn2U6mia4caFYA/aHgilLqBlYv75n1
-	 XaB4EfF6m1ZGVqn9pgmCTZdSpN7ahbLcycEwthBAeTyHfVar01kDyclkbMcSWk/O7u
-	 O/Z9xWkCKirLA==
-Date: Fri, 20 Oct 2023 16:36:19 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
+	b=IQFefCmvfeF1DgM1gwp4s6N4cgiJZSOLMPM4KqmFPhcDEqYra/6qGuzOZ8uXfsM1G
+	 dndXiXqb3HzXVk1aMsaSQ0S56EMTjnZjF64NXuuVRQQz8/270jgTiqIxtulr4wGb7c
+	 OPhUDYPn+hXJEAf4rl9wOAcZA/tf/eSSJYQQzh0N/+XupthBNbSDHU/kqHqFhTr5Z6
+	 x0j1cSz2oJoChJT4pr/9Vo3CP/ji3vHYFZ8GgNTQvXtN7ZRdbaJeFsp0+fPOob5UUU
+	 Tu62TlLLx4w2HAGI92a3SiNLOaUFO/rvEo7+sxOqggfemBvjNEz+vG+DrTd/1cZKNv
+	 kvpOyb/vt5z8A==
+Received: by mercury (Postfix, from userid 1000)
+	id 1E11910603FC; Fri, 20 Oct 2023 18:03:29 +0200 (CEST)
+Date: Fri, 20 Oct 2023 18:03:29 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Conor Dooley <conor@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
@@ -55,14 +59,15 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 Subject: Re: [PATCH v4 1/3] dt-bindings: usb: add rk3588 compatible to
  rockchip,dwc3
-Message-ID: <20231020-shudder-tackle-cc98a82f1cd0@spud>
+Message-ID: <20231020160329.uqgjjr6ubfrcqjkj@mercury.elektranox.org>
 References: <20231020150022.48725-1-sebastian.reichel@collabora.com>
  <20231020150022.48725-2-sebastian.reichel@collabora.com>
+ <20231020-shudder-tackle-cc98a82f1cd0@spud>
 MIME-Version: 1.0
-In-Reply-To: <20231020150022.48725-2-sebastian.reichel@collabora.com>
+In-Reply-To: <20231020-shudder-tackle-cc98a82f1cd0@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_083627_221308_F3E36FC4 
-X-CRM114-Status: GOOD (  21.85  )
+X-CRM114-CacheID: sfid-20231020_090334_768749_445FDFC6 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,175 +79,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4051799550966025507=="
+Content-Type: multipart/mixed; boundary="===============7814963520143588543=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============4051799550966025507==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xK1bQfKTFhB0MwbA"
+--===============7814963520143588543==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bdmk4yrcxo3we24y"
 Content-Disposition: inline
 
 
---xK1bQfKTFhB0MwbA
+--bdmk4yrcxo3we24y
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Oct 20, 2023 at 04:11:40PM +0200, Sebastian Reichel wrote:
-> RK3588 has three DWC3 controllers. Two of them are fully functional in
-> host, device and OTG mode including USB2 support. They are connected to
-> dedicated PHYs, that also support USB-C's DisplayPort alternate mode.
->=20
-> The third controller is connected to one of the combphy's shared
-> with PCIe and SATA. It can only be used in host mode and does not
-> support USB2. Compared to the other controllers this one needs
-> some extra clocks.
->=20
-> While adding the extra clocks required by RK3588, I noticed grf_clk
-> is not available on RK3568, so I disallowed it for that platform.
->=20
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/usb/rockchip,dwc3.yaml           | 60 +++++++++++++++++--
->  1 file changed, 55 insertions(+), 5 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/D=
-ocumentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-> index 291844c8f3e1..264c2178d61d 100644
-> --- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-> @@ -20,9 +20,6 @@ description:
->    Type-C PHY
->    Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-> =20
-> -allOf:
-> -  - $ref: snps,dwc3.yaml#
-> -
->  select:
->    properties:
->      compatible:
-> @@ -30,6 +27,7 @@ select:
->          enum:
->            - rockchip,rk3328-dwc3
->            - rockchip,rk3568-dwc3
-> +          - rockchip,rk3588-dwc3
->    required:
->      - compatible
-> =20
-> @@ -39,6 +37,7 @@ properties:
->        - enum:
->            - rockchip,rk3328-dwc3
->            - rockchip,rk3568-dwc3
-> +          - rockchip,rk3588-dwc3
->        - const: snps,dwc3
-> =20
->    reg:
-> @@ -58,7 +57,9 @@ properties:
->            Master/Core clock, must to be >=3D 62.5 MHz for SS
->            operation and >=3D 30MHz for HS operation
->        - description:
-> -          Controller grf clock
-> +          Controller grf clock OR UTMI clock
-> +      - description:
-> +          PIPE clock
-> =20
->    clock-names:
->      minItems: 3
-> @@ -66,7 +67,10 @@ properties:
->        - const: ref_clk
->        - const: suspend_clk
->        - const: bus_clk
-> -      - const: grf_clk
-> +      - enum:
-> +          - grf_clk
-> +          - utmi
-> +      - const: pipe
-> =20
->    power-domains:
->      maxItems: 1
-> @@ -86,6 +90,52 @@ required:
->    - clocks
->    - clock-names
-> =20
-> +allOf:
-> +  - $ref: snps,dwc3.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3328-dwc3
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 3
+Hi Conor,
 
-minItems for clocks and clock-names is already 3, is it not?
+On Fri, Oct 20, 2023 at 04:36:19PM +0100, Conor Dooley wrote:
+> On Fri, Oct 20, 2023 at 04:11:40PM +0200, Sebastian Reichel wrote:
+> > [...]
+> > +allOf:
+> > +  - $ref: snps,dwc3.yaml#
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            const: rockchip,rk3328-dwc3
+> > +    then:
+> > +      properties:
+> > +        clocks:
+> > +          minItems: 3
+> > +          maxItems: 4
+> > +        clock-names:
+> > +          minItems: 3
+> > +          items:
+> > +            - const: ref_clk
+> > +            - const: suspend_clk
+> > +            - const: bus_clk
+> > +            - const: grf_clk
+>=20
+> minItems for clocks and clock-names is already 3, is it not?
 
-Otherwise,
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Yes, but the following 'maxItems: 4' implicitly sets it to 4,
+so I had to set it again. The same is true for clock-names -
+providings new 'items:' effectively drops the "minItems: 3"
+=66rom the generic section.
+
+> Otherwise,
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+>=20
+> Thanks,
+> Conor.
 
 Thanks,
-Conor.
 
-> +          maxItems: 4
-> +        clock-names:
-> +          minItems: 3
-> +          items:
-> +            - const: ref_clk
-> +            - const: suspend_clk
-> +            - const: bus_clk
-> +            - const: grf_clk
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3568-dwc3
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 3
-> +        clock-names:
-> +          maxItems: 3
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3588-dwc3
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          minItems: 3
-> +          items:
-> +            - const: ref_clk
-> +            - const: suspend_clk
-> +            - const: bus_clk
-> +            - const: utmi
-> +            - const: pipe
-> +
->  examples:
->    - |
->      #include <dt-bindings/clock/rk3328-cru.h>
-> --=20
-> 2.42.0
->=20
+-- Sebastian
 
---xK1bQfKTFhB0MwbA
+--bdmk4yrcxo3we24y
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZTKecwAKCRB4tDGHoIJi
-0nobAP9gB+qsHrTFsAFDJu4+fvKBpfSdY02kTL2MPTojpyy3eAD8C3SFcHdhD6T3
-zRXBywGwE+6lPmCkSRVvQByGqxESRAk=
-=vfSY
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmUypMQACgkQ2O7X88g7
++prWug//YTS5WE0ntNTSommlUibet+KcZPc5blw/2DH/Lx7UHSPecqtfjAWpAB/j
+Cg9pHPgOumi0wJSdmqKRkJST7bKaCOkpw4N4HLqnrNBL+PNLG7sQOo9qMwaV2x7B
+3nFbsXLjoxlHuYGrupRoFAUL/LevwpWC1vgnrKdk37p0uJzmhRVyUtMrjE3wqzVU
+FbiI4NgxpflWpRQ8VqtUzZVGA/15RXZVqnFjHgGZ624NhDD/2KsIUYOscvwq5qYa
+1QylGUeTFE3D7EGbmTLd/voxlGKTntEPbYw+hP8JVf/oA7d01zlFRFa3MLmVM4vg
+cRbaTt96A6ugCjBdUdkHYhw0aEROd4u/5hCdRv5whBOqWmz5HJ4jKsc+hrneNE7T
+M9tHr6WpbtHu/s4Gepx+AxScNwOEF/A93pOuQXcy1CYOjF/hvx9zP0PYsQwD7b03
+Qtr6Qnp95rozYYFt/2NforFTdFAwcGxR3XtUmd7qAMkIQYmApzgaQiDzLoJb/Gtv
+1nSAiW0lvgHALq+PefTqKCqPXs28wJXdojJJscTIRk7RbkoLkxScdnaZG85kp+Qj
+xSAtSGrvjE6PLvTdwxP3G+R9Qlh1O5mzze9iydGtwY4UsW6vR+Xybvu6e8V5rC8B
+R/C1la6YhCZoGPgK93jn4tVCqwHxiOX3TMY1NlCj4hn+2WU2AxQ=
+=a1sC
 -----END PGP SIGNATURE-----
 
---xK1bQfKTFhB0MwbA--
+--bdmk4yrcxo3we24y--
 
 
---===============4051799550966025507==
+--===============7814963520143588543==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -253,5 +171,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4051799550966025507==--
+--===============7814963520143588543==--
 
