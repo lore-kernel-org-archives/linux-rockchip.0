@@ -4,172 +4,224 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7171EC001DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Oct 2023 23:59:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E659C0032E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Oct 2023 00:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BXv3qw5JIv0osKwx5prSK6cHfQL7hJE9/YaHaVztAOA=; b=bFdOpds+11+oM1
-	pwH2Sg1OxsGxy+zN/8h+ADosCRP+8ix011X2pWYLimcZNbSYnatOhQb+7ijy34G+0resKsgjZjpxE
-	9xD+wIX9YFRckwYZUkM1wgg1p7oe1SE3Shb40QUnzz/kyG50gBN6SEFdl3xSM1WOlfoG/L26+e4fm
-	60JYSjNFX0lW6PUN3gNLr7sS5adZ8J+ototU6ABD08JzSnwRXsC8+a8E2iy7K2BNWs8Tygmt9Pmq4
-	QWbFIQxoITeA8zTmSwA760AhXnNP1tpln77VrsMuxrTd98evoUzhUjqUL+Ia3luwF36XH/kUYRqEx
-	uUhljCPq8lFUyPY7W24Q==;
+	List-Owner; bh=EkVq64QzFp63FwyJzbslFSuiacbk1etuTROK5LnQm5g=; b=nbzxk7HcItdk7d
+	cGdOW+yK6sElIzpX5wayTCzBlJLMHASIIbpE954XzFKAW2tKpyitlpEQ1ki6A0VEncTIW/KjhkSUw
+	styyNmqYqEVl0rFIUFgIgjpjPoAKJXewdRHhViX5WOCxe83z5rZtpLbeH95Dp4j6iAjK2TRdx60KM
+	G48v03G+7bHyZLu8wlSqazZvOISM7E7Ka4LicZe/TaKz5+BSK8ZQPzXrHh67Gr79zOZOm2+3tUALy
+	BfoIMCS0azqDqYdfW9TduXb/08CMnQb0AFbzhHhPk+SjE6hiMLv9UXGNZhBx8r8exdbjeniFmr6J/
+	5OGwDy4UuQZGlcw9RE8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtzOM-003DVs-0X;
-	Fri, 20 Oct 2023 23:58:58 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1qu02W-003Ghv-2G;
+	Sat, 21 Oct 2023 00:40:28 +0000
+Received: from mx0a-00230701.pphosted.com ([148.163.156.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qtzOG-003DVD-1w;
-	Fri, 20 Oct 2023 23:58:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1697846332; x=1729382332;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-id:content-transfer-encoding:
-   mime-version;
-  bh=quCU6T/2xzCRcLGP0xhZuTk5ZnlUd58Cq+Rz8w9lGcs=;
-  b=pBydkdnctULaykSp7sz51ROhSAcyFkzVZ0ldM3YrfOuq0gWMHde8M7IP
-   pnlFpX+XrqPRbqH5xVez746YbVR7N4VXcDlZRIiDW03O5EO/kdDgo/K0Q
-   AHHmzt3yJcnAFhSBRjFQ2WUid/EadVMZ9UGJ0HfKTav6gxxPr5zVGGzfq
-   C04XRl4LtpTY+FG8DB3+46u9Fwxc/OCsg75w8aT8UE6iJFhwa8+KYcnEE
-   GIs5n4JuddY3CTxfKYoAsMSUt5IIYxcFGnY+P9+wRaVvPpbnqc6egJM9w
-   Jy0mLnJIdKHApN4fw2xwiJZlr/hqudrWsZiT1dtW5Hu84GRsGIVXUgMCE
-   g==;
-X-CSE-ConnectionGUID: MoLu/HFqQrWA8a6SAFKnzg==
-X-CSE-MsgGUID: c57FMxacRFOveHVER9+5dQ==
-X-IronPort-AV: E=Sophos;i="6.03,239,1694707200"; 
-   d="scan'208";a="247053"
-Received: from mail-bn8nam12lp2169.outbound.protection.outlook.com (HELO NAM12-BN8-obe.outbound.protection.outlook.com) ([104.47.55.169])
-  by ob1.hgst.iphmx.com with ESMTP; 21 Oct 2023 07:58:44 +0800
+	id 1qu02Q-003GhM-33;
+	Sat, 21 Oct 2023 00:40:26 +0000
+Received: from pps.filterd (m0297266.ppops.net [127.0.0.1])
+	by mx0a-00230701.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39L0e2Qe020322;
+	Fri, 20 Oct 2023 17:40:10 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com; h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-id : content-transfer-encoding : mime-version; s=pfptdkimsnps;
+ bh=JHnVkIx6Pg3JvVgkceXDpBA2XAA8/2pg9wYa+KeWfOg=;
+ b=a4RxLsbflWeidW3Em1c31Zd9y4fpZBnYhlmctZva/tm4PXZrf1+M6dYThrm/QQrYeJ/g
+ ZWf+3BWw4/QM7CH3BfH6pBvVci/RnqLs3E6Dqqi9O6dPxzUpwY9ibxy457ds5YqurqtC
+ gnMVuSE8aqI5SDDfYONXx8HGPnsMsP+MeNs9Gnbw4u0jXX2bqf9bWeA3WNTXzS+pywrl
+ io1XQKzObpFE5ZuKFSvKXiBj1Iz4LdQpiaWPsZwPZe/zYzD2vrJ8EuDdzpKm8IUlDV+s
+ YPtPXhlSCGJdjSpD/yCyJ0CwmufchM/xZZPy7s4k3UCXOg4rFwX1dmbD+N1AwwFB977i /g== 
+Received: from smtprelay-out1.synopsys.com (smtprelay-out1.synopsys.com [149.117.73.133])
+	by mx0a-00230701.pphosted.com (PPS) with ESMTPS id 3tubw4v1qn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 20 Oct 2023 17:40:09 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synopsys.com; s=mail;
+	t=1697848809; bh=JHnVkIx6Pg3JvVgkceXDpBA2XAA8/2pg9wYa+KeWfOg=;
+	h=From:To:CC:Subject:Date:References:In-Reply-To:From;
+	b=IulSagKjRIhDxZStBx8xKor/T9kOTGqADkadNAGMFmTq4JKA/wP/kOg1Std2wqcql
+	 6JkIlfhyXIstXCoCfosmCsZnHeHVi21Ibhx2O6PNzahLtOFUc8/ldDBYxm9fwOd6yf
+	 UffwcLH6++0UV3rjsXMDr2SMCTnUHatAynyU4Fu7KRcVq1QXX2Ru1hUnIBL28h+yyL
+	 6nqbSmytiFfpQlUZeKJzeSy1XEQGGWn1qWv0ntZBNIUBkWspfE+KGUEthb7UaegOCI
+	 UpG38WN4XfDq5EkOIW1VDoQ90gs0Ge7iJ0X7PUVX7wMR37+vsfl3+Fo35C3oWJ9PTR
+	 kehNjZOxuAhIQ==
+Received: from mailhost.synopsys.com (badc-mailhost1.synopsys.com [10.192.0.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
+	 client-signature RSA-PSS (2048 bits))
+	(Client CN "mailhost.synopsys.com", Issuer "SNPSica2" (verified OK))
+	by smtprelay-out1.synopsys.com (Postfix) with ESMTPS id 2CF96401DC;
+	Sat, 21 Oct 2023 00:40:07 +0000 (UTC)
+Received: from o365relay-in.synopsys.com (sv2-o365relay1.synopsys.com [10.202.1.137])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+	(Client CN "o365relay-in.synopsys.com", Issuer "Entrust Certification Authority - L1K" (verified OK))
+	by mailhost.synopsys.com (Postfix) with ESMTPS id 4F24EA00AE;
+	Sat, 21 Oct 2023 00:40:02 +0000 (UTC)
+Authentication-Results: o365relay-in.synopsys.com; dmarc=pass (p=reject dis=none) header.from=synopsys.com
+Authentication-Results: o365relay-in.synopsys.com; spf=pass smtp.mailfrom=synopsys.com
+Authentication-Results: o365relay-in.synopsys.com;
+	dkim=pass (1024-bit key; unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=selector1 header.b=ofC7Sjli;
+	dkim-atps=neutral
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (mail-bn1nam02lp2041.outbound.protection.outlook.com [104.47.51.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client CN "mail.protection.outlook.com", Issuer "DigiCert Cloud Services CA-1" (verified OK))
+	by o365relay-in.synopsys.com (Postfix) with ESMTPS id A356440121;
+	Sat, 21 Oct 2023 00:39:59 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YlbWaYMhVZF3673idNpaueEOBNZcItbC+EfSJgVlNCrszbqCcZfbGmeyo5Ght5FIZFHill/mm6VzjkXUlQ/AQeXVymqCdIe1UBjPA5xOpJsC6GYPvkt5jkCADWbH6XR5dQj6Q4xRvU2GRBWulLOCgbcTUdimw3COWH1ZQ/Frp8OZMsuORHDcKGuEq7DG8K5TPBI4381bqVPus1NKBQ0NNhUD8Ru0kTea+at16bczvrwPacbf4Ki7JW4jhvbKDWDeX/a8+ZHQYLvRQEm+fx0EF31/g0cq3HCjPj8sL9TSujM0XWjCzMqTkWHDT8KEZXGe2OeULxW6I0tME0wchFN7/g==
+ b=HdS1Wws7AyuC5n2m0Bx2YqEzbubgm196N29fmSfLr21+pwVRlsQ5XliJLKaD+6PYNldU6+Q8baTodmzC+g4ZkLclKyUFFmntZxZATJyJBHjkKLL3oiroqwVL8DNIFWeehQqfKtESvEzNSJJ4jZSzxAnTz4FkNzHdXJQMFJLc8vnIhQIkIC6dUvMAOfOUkpWtWhsiA/guRfR3vqDlSlAJKsoJfTBC6z/nnAb760aF8LMhbIai5SxaO7icp4W/Bg9XGX0EBpShVA61ZYlSdodtnGLZD5M9aBNaLukSPEZnKobLERKS7rbRvGrcEcJCxh509woXvo/gZjtiCmgvSfzHqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OMEzSDJcbux80HHi2PQMShaX7YOBxaCvMBKJnjnOEw4=;
- b=GQEx/wbkMzU3qbqIRoeFiVnc5R+umJgci6V/aqPzUmcI7kQfa2JqIAqbvab7XzHhvU0waklAYMJpwWJ2oXxrcycy6XaeKdwvBPIFMnUh7+2AEXXrrkFwpv7xDctjU/IO0TtyZizbfzaOw8XdMfOdWHqNrPl4wcnhiYE9dHndvzWFQjvMOoZwLJwYJOz/eNmEhaSxb0A0Yx1uQhW2ujIkCBd5CseAX+h2IVA0XHu7iMYX0GVMWZDXJ+goS1Zg4js3giCWJsug+/gCITUNrVxJxMoPg1UKwE19+bFKBtqwLsB1t/5O/UpgbOoH6Xj/eBEH3NWlOzEzTnree1BM/JJh7w==
+ bh=JHnVkIx6Pg3JvVgkceXDpBA2XAA8/2pg9wYa+KeWfOg=;
+ b=Hko88WMaWFPDPQh4hJRghb99QKZrLxlHFZC9eWulyVYVfDkGBFrqMRBEyS36/cdgeFUrhJfn9mSvePcXyTQMpeipzKzxIFBKa5orpxnp9SSmaIIWqE17i7b8XEf0ZstnFxVgziZRjhBOFqG3OjAjvu1loasJe4Xcyn8Plq6n//Z/W7Wnkl2XBAfJWlQqnMGvf326JC2GwxdkfQUtOzUhgbSWTVS/W0MBIc/41VGz6j3JetaiMS4ZbyhjJl1I98hx+Bls5oe422dC+6gOpwk9aVm1qyndS5FXmN+M33riRD/aIQ/S6hjX6CpRRn+R6SgYJBSEXJSmmtnSaAVEZARrRQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ smtp.mailfrom=synopsys.com; dmarc=pass action=none header.from=synopsys.com;
+ dkim=pass header.d=synopsys.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OMEzSDJcbux80HHi2PQMShaX7YOBxaCvMBKJnjnOEw4=;
- b=uCNDkbgMtJV7YEe9J8VJskglCdwSoRF/RWrQa60DDBa1TVy3gjClIegpzbcgeeUP3caGsCVCRZrybJAOjVIVHOlh1Xjjh5Env7GOgwXa3PN2Z1EMpkJztDSNuAXYlqRvDyKoXjnYHT9Lt+vQb+akUIFA4jj65W/udPDQ4ZPnfuc=
-Received: from MN2PR04MB6272.namprd04.prod.outlook.com (2603:10b6:208:e0::27)
- by DM6PR04MB6362.namprd04.prod.outlook.com (2603:10b6:5:1e7::14) with
+ bh=JHnVkIx6Pg3JvVgkceXDpBA2XAA8/2pg9wYa+KeWfOg=;
+ b=ofC7Sjli88wb6d/ZzJQt/fdOm8Mnwpj4tYJ66nvpVnJHPLpyFAVwJpPifjAlL5E0jEe0oy/to/Nx1SnbG4uaGaSwovY6oYoGd1w96ybN7gIVKnp0+VY4xz93UUwWtuzwALmoQQ+qWn69+c9W6q42JKs9/+NVGgAOskCTA+R3Xsc=
+Received: from BYAPR12MB4791.namprd12.prod.outlook.com (2603:10b6:a03:10a::12)
+ by MN2PR12MB4391.namprd12.prod.outlook.com (2603:10b6:208:269::21) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.26; Fri, 20 Oct
- 2023 23:58:41 +0000
-Received: from MN2PR04MB6272.namprd04.prod.outlook.com
- ([fe80::6fb5:ecb:1ea0:3b1d]) by MN2PR04MB6272.namprd04.prod.outlook.com
- ([fe80::6fb5:ecb:1ea0:3b1d%6]) with mapi id 15.20.6907.025; Fri, 20 Oct 2023
- 23:58:41 +0000
-From: Niklas Cassel <Niklas.Cassel@wdc.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.26; Sat, 21 Oct
+ 2023 00:39:56 +0000
+Received: from BYAPR12MB4791.namprd12.prod.outlook.com
+ ([fe80::b63e:67e6:b5fe:a8cb]) by BYAPR12MB4791.namprd12.prod.outlook.com
+ ([fe80::b63e:67e6:b5fe:a8cb%3]) with mapi id 15.20.6907.021; Sat, 21 Oct 2023
+ 00:39:56 +0000
+X-SNPS-Relay: synopsys.com
+From: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
-CC: Niklas Cassel <nks@flawful.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
-	<conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Kever Yang
-	<kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, Damien Le Moal
-	<dlemoal@kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add missing mandatory rk3588 PCIe
- atu property
-Thread-Topic: [PATCH] arm64: dts: rockchip: add missing mandatory rk3588 PCIe
- atu property
-Thread-Index: AQHaA1SCrIufVmkTUUCx9Kz2w2BEYLBTMM+AgAArNwA=
-Date: Fri, 20 Oct 2023 23:58:40 +0000
-Message-ID: <ZTMULogkdGevqMaA@x1-carbon>
-References: <20231020125221.3564951-1-nks@flawful.org>
- <20231020212357.xwyvsncv5y5ib5gz@mercury.elektranox.org>
-In-Reply-To: <20231020212357.xwyvsncv5y5ib5gz@mercury.elektranox.org>
+CC: Heiko Stuebner <heiko@sntech.de>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+        Rob Herring <robh+dt@kernel.org>,
+        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+        "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+        "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+        "kernel@collabora.com" <kernel@collabora.com>
+Subject: Re: [PATCH v4 2/3] usb: dwc3: add optional PHY interface clocks
+Thread-Topic: [PATCH v4 2/3] usb: dwc3: add optional PHY interface clocks
+Thread-Index: AQHaA2YtgpNNExl+60CIagyLoI914LBTZ18A
+Date: Sat, 21 Oct 2023 00:39:55 +0000
+Message-ID: <20231021003944.swkkhveyy4iwtyk5@synopsys.com>
+References: <20231020150022.48725-1-sebastian.reichel@collabora.com>
+ <20231020150022.48725-3-sebastian.reichel@collabora.com>
+In-Reply-To: <20231020150022.48725-3-sebastian.reichel@collabora.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wdc.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MN2PR04MB6272:EE_|DM6PR04MB6362:EE_
-x-ms-office365-filtering-correlation-id: ca5f7623-dd74-4277-bb4b-08dbd1c87bd5
-wdcipoutbound: EOP-TRUE
+x-ms-traffictypediagnostic: BYAPR12MB4791:EE_|MN2PR12MB4391:EE_
+x-ms-office365-filtering-correlation-id: 0f4b82ce-9942-476a-9655-08dbd1ce3f4b
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: HGCTD5DnK3xj+7bq3j9VRFl6EZfVvhCyEb81zpwp5kRjE+a5s3zZZoN03MgFodrxU5jaymf8xzyXlTPUubToYn2CBwVFUZfK3meCrmCNoCEQWWauCAkCzrnrNekmGMcByB8IW5kJ1QBV87V90Eti46dJQMSjr8p3MJpk1SbY4tMHFEyh1x3ijo5FJvI1PRwpGXiwSfxrmRJZW7aP2d84kIVQm8ZM+9wEwq9lNahpJg+XpmtnT/XFlA/UCoUm4aaGVlcZWNRwEDmSaC/k5E0p0mMMdj0iX8POiFvA/qXkTaqnU002GA3IR0ss5+NjqfpkIMYkIswOyH4ujr4RhLc+ka8LIpRZI6lSuW9qFJPUs+jKolaNjRLc5DytXRje3su3872ZVupztSXFXOvbt2RUo8SwQXgF5HLQmI/A4lp5r4tGTFt/v6wtR89nXHND4SYIcATVpsXX27kSHh/GkVdQtxTMvJl1WlS3et9wp5wEjw+Mf7/KCnnVJrH69wXvK2rXZxp5IUIA9OKqA+b/4o33XOBfKmmZ1a40xwJQJDxbUMTZnuCahfS/cTYl3h71ausFf5S1Xko9ZusOR8NvMW8lrs8Ns5aEhgJAiFZemc9NQHiZK1iNl30ixFTKvsIoIb4L0J1yJ18DgB0R8V7LlPh/mQ==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR04MB6272.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(136003)(376002)(366004)(39860400002)(346002)(396003)(230922051799003)(64100799003)(451199024)(1800799009)(186009)(6512007)(6506007)(71200400001)(9686003)(26005)(83380400001)(41300700001)(5660300002)(4326008)(8676002)(7416002)(8936002)(30864003)(2906002)(33716001)(966005)(478600001)(6486002)(66446008)(76116006)(64756008)(66946007)(6916009)(66556008)(91956017)(54906003)(316002)(66476007)(82960400001)(122000001)(86362001)(38100700002)(38070700009);DIR:OUT;SFP:1102;
+x-microsoft-antispam-message-info: SufCq3+oO/ShL2out7MnnmKZTka8WCBJAns5SCk67bkXT3SitxLcGq7khF1DINLtqEZMx9I7E5ZDEEUhXEPSdINWLCF1r3b+M9TJwV+Uyn3v4DRNPiwpQvRa3mV/X5diXxRniFy/wB+namS5QX3X5efpriEP8JTlYdioBXs1O/E7T3MNHtJm4FW3iYekHroYAwaWwONv3J1PHvIXMVbTR5O5bOe0CXCVTaA3f+T32Ak9Csbz3cnIbcTNG2BVhBQRrkCDq2yyxfXJj1P/96NoAOxUnlS5Z3awAUwBFMf+pCN+0tSS702w+mfXbSiegN7Uzr4O/0rxBqoQKu6E6KpGHuozkxwVnqqFen3ZhO/7/hYlVAUgsqpz95V5B4KYNM2TlKIxk3vNsDwE/Bc5IoORIWSIc8NQ4yxw8YeF6XCy6DDgGot5BZeJjxk4wwZ5wLIOndRtDRyRQoZkRgKR4EFXcM4cmlLBwZyJ7WY3Q4qcNDBjp3M5OV+3qdqQ8hSA26grj9mhDoyVpBzPKBCwGdDNGuA3PGdxMRe8bwO6Ruo4BgZEk3rbzeskR4klSUXAIZ2sCtEnvhGj4iZncv652nPIlkzxu7hBCRezppB1RmC04iSHJFlIr1maKIZKYv+x311j
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR12MB4791.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(136003)(376002)(366004)(39860400002)(346002)(230922051799003)(64100799003)(186009)(451199024)(1800799009)(38070700009)(1076003)(38100700002)(2616005)(26005)(71200400001)(122000001)(8676002)(83380400001)(316002)(6916009)(64756008)(6486002)(4326008)(66476007)(66446008)(54906003)(66556008)(66946007)(478600001)(86362001)(36756003)(8936002)(41300700001)(6512007)(6506007)(2906002)(5660300002)(7416002)(76116006);DIR:OUT;SFP:1102;
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?j2iYStSz7TNO2s/lZBB9pzkvT2FZuY85snpQCwQT2bw/UsD2yvVayGvqX6Fj?=
- =?us-ascii?Q?QDk+uVb8UowzoBWTfVMbP2SkkW/+alCV4TKTRhsEfCHIcq7JNNNSmurpCSwc?=
- =?us-ascii?Q?vl8DKcI3cZ8GdKvNmzDYsM43yZvw5wFfeopPYxL4Tpj7effejZQveY5rmTBd?=
- =?us-ascii?Q?W71Bq3pIwlCggfv5enf4D2q2YlozB+gb1c4wk1+rX9sdYpsNjTmeXWfvIEwY?=
- =?us-ascii?Q?5bB1rtcjaMbHWeSyvBJSlJsU2WVr/AtIp3pc65hgf+1E+z/qdDCpyd9nGTOX?=
- =?us-ascii?Q?wSyeap2WPkvVUU9m641lBnB3mrss5Y5iq/SYwUGj7fUEki9yBp5L1rb+uyyx?=
- =?us-ascii?Q?mqGe1A84rQUhkWkI8fBKGcwRPCBXFeCdzx0fmIs9lsLrMExuITw8thv+XLKR?=
- =?us-ascii?Q?C0uOqFmHGxqG4N+OjE1D/mhWTnmOzIaoPaVhdjmhy8uHpCFLt+46PNnJFNTA?=
- =?us-ascii?Q?gFNQNnFRvdmXGIE/QGjcqGDWk11KYSp5o84VqZOIKldPmNQ7A3Vr1ijBBFKx?=
- =?us-ascii?Q?quA0uLiiqMptNcez69f38ZJnBu5bhHWYvEQPWgoK2YeTl85bJ374Mwgt34IN?=
- =?us-ascii?Q?XMdB5mkVr40hTHnPaWjtyX8EWIVpKS1yqHRz8RqQ72zWGoeVJ5KROJFaW6+/?=
- =?us-ascii?Q?yXlQjX15uRqrUjQBlvv3t5WNYKu48vDrUdKiUNmqsGpEVuU2nNsBi3xIPACZ?=
- =?us-ascii?Q?qHLvqrHftcRQhJ5ERfS98IIhcT//l/ec1qQvG26mreZf3aFiKp3LgjIpkwJS?=
- =?us-ascii?Q?3tsXloQIQOkbxYR2b+TOYTSebJ/gCIQWl8bHBCp3CYEPWEMa9neK+KAfGz73?=
- =?us-ascii?Q?7OIKRY8APvz8mpIgEzuOMngERQhtED7zJQrIXosYVpZCzwdgvrnid7OrrZ7p?=
- =?us-ascii?Q?Gytgb8NjKnqVfTByawW37Out3aPjDGlgaX7s4GNIg4yyidP/tQRdt+4IIaP8?=
- =?us-ascii?Q?qXfgXWLkRV0c+AL+wDDya2KgQTjXl8cosYvI9hd0BSAava/65M9SSKd1y9C4?=
- =?us-ascii?Q?KrVCRrGkPkXevbqwZYXNLIpGFPXIbRx3JhVIetAHf2bWm9biQ4Idoeagu4kt?=
- =?us-ascii?Q?CWxVqSM2yU0JhCqFgMejxSx1OdcNYgDwC+WU8wdca2PAX+jM66/csSRT046x?=
- =?us-ascii?Q?fabbrZjgxVvIu4m3rm3l4cnkhy+VPGUU/UQZ7ek73zIB5KKvaU9TT2mp1goS?=
- =?us-ascii?Q?5EWLJxw+qx2g12aMV8zVbl+gM2NMbITrRZPQZgjx8yoRkPAsHyUbzSmcom3b?=
- =?us-ascii?Q?FM6wg5j2vlxNE7BJ3QMIbqN9IY5/2ca8CS31Sb/ToWdJzBzYBKqmE16sn3xC?=
- =?us-ascii?Q?uRwgCfGmi5P86fig/6YAywk36hnf2TfbJ/9KAhpGeA9IQ/+Ck81RxnLzOOtN?=
- =?us-ascii?Q?rz995s1L63SstNgcsZAPWRY3frtNP2WM6CBGmBqkY/DTWTwxP+N/lrddZwap?=
- =?us-ascii?Q?1YhB7oPFxlcftmGP26snqL9zfNkcGG628cC6jZgw/WKKxSblLmr4SbzS3kg/?=
- =?us-ascii?Q?mk4s8SlxwKcaQ35PZ/N0BSDLMvmKtG74erxiN4bBsxqpgEBc4H42vReqE6Qq?=
- =?us-ascii?Q?AzAuTjPnoxeyg5jHb6bLNIyQR5Xuzj0b1dqkb7xMT/wXGG5XitI56D/TpBtA?=
- =?us-ascii?Q?yw=3D=3D?=
-Content-ID: <4D74DC03AD4E664DB3AD67A28DEF5AD2@namprd04.prod.outlook.com>
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dWRLdHpsdWExdWlNK2ZzczRocmtqOE4vMzc2dWw1VFg2blpja3ZrQ2RxNjBx?=
+ =?utf-8?B?M3RLR05kcUlsK1hZdkc4MWFVR0NOOG5TK3pMOHNZRXlLN0hvT0JoQzhTT0JE?=
+ =?utf-8?B?d1lXaUdieTdzYk5JbkM3d2JqOC9DTC9HTXBZeEdLSmN3RlRRUytEbXpPaU9N?=
+ =?utf-8?B?K2tjb0ZSK0FuRitDSnpGMmR1a1BtRTNhemgrNjdWSTdLaS9lQXV2a1NoSDJu?=
+ =?utf-8?B?U2t2bTl0NlRCYnprb3pyQ1liMkRwQmRKWWRxckZHZ21uUUYxMmRCYllQOVJK?=
+ =?utf-8?B?bFF0eUN2RlU1K0dkTGtBZFl5a3hnTkpJQjcwTU91SjZ1VVhvMHloSXRxY2V1?=
+ =?utf-8?B?NXhleUVDbDN6N0Q4TUk0Rjdxa2p6eUp3UFZkTXYyMXpyVnA3RDFWd2dmdTdY?=
+ =?utf-8?B?NkI1b1BjSXJBRENzTWdHRGVFQzhGY3YzNFdWR0lCbXpiNlZUTnB5NG1zbGFj?=
+ =?utf-8?B?dmZYRVJYamFzZVA4TytkbWkxQ0w3cjE2ZnJ1RjlKYmtEYjlDbHRxNlp1ZEUy?=
+ =?utf-8?B?VlU2UktCU1lwZ0dLY2lMQnBTazczU2UraThtUHoxV25CZDRacHV3cHo1ZlBQ?=
+ =?utf-8?B?STh2dzdRTm5SV0p3MXp1ZU9SRGlOREc0ZmZ3bzJjSnZobHp3azcyS3MvTTdv?=
+ =?utf-8?B?VFVOVTM2WG0yYzN4RUZ5UnlWblNOZTIydHVISUIwTUVlRzEySmowV09tZ1VG?=
+ =?utf-8?B?U2g5MjN0b1hXOXVtK2VFSC9uQzc0UzdZVTFrc3lEMXhDdVdFdUVKV2lMNDdm?=
+ =?utf-8?B?RGtPNnlZQlE2c2lILzkwbktzRUxCeFovaUFhdXBkMWgwM3FFOWdIa1lycnFm?=
+ =?utf-8?B?VXBCUUFBYmdUVUtmY0lSbCtqVm5SOXVKWE4xV2lHdXN5WjZyWVdDNitSemtB?=
+ =?utf-8?B?d2hiSXZkTktDTTQxZHYxazBwakZKV1l6QWJocEhVblBIZXA5dDFXTnlsd0Fx?=
+ =?utf-8?B?eHppVFpORGQ2NFl5WWhHZG5LR3N6RHRTVXNhWVVKWWF0WVpHeUVHbUhGK24z?=
+ =?utf-8?B?akVtL0RubGZ5QUtoSldKQkpUZS83ZnU0a1pZcDR0WEVSSTVWeW5iSWcwRm9p?=
+ =?utf-8?B?Z29PWTluSlJHTjI2c0JWQmhNS1JhTjY4Z1ZMNUFvam54UWUwRXIxbXNFZzZF?=
+ =?utf-8?B?QnlneDgwa3AwdjF5VTZ5UC9HQmU3UUN5ZkRzL09meG1MRjdYR2QreU1jS3I3?=
+ =?utf-8?B?ZEdKOHQrY0lUZi9jem5sN1VRdXJNODBMT2dFWUNlQW5aQVJlWHc1bFBMeUoy?=
+ =?utf-8?B?MVA1b3E4bkxTR2lrVTdsN2tjR3RrWDRsVUM0REhHTklKYUUrU2dpWUpXUTdu?=
+ =?utf-8?B?ZFRZQmF5Nmg2dmxDSzRlK2JreS9SRkhURTBiSTVvR1NZRWMvWVBWdzh6WDdi?=
+ =?utf-8?B?Qkg5Ui9tRHdqOW1HNnRTdWlIYXJmK1k1SzJGdjJlVnB3WW8xbU5WVHVSZ3BW?=
+ =?utf-8?B?RTV2blVuT0tuMkVUR0sxVkVKbjdsT2lacmo1R1ZvU2ZWbHBicUU0bnQwYW5z?=
+ =?utf-8?B?MnVnKy9abUtrRFJicDB6WWFyUnozZmt4QnV0eGpYNzJwbm84QjI3MnM4MlJU?=
+ =?utf-8?B?SHQ2b29ENXJFZVhrQXd6bmhURml2VTlJM0djYW5PdWtKSXFqLzdpMENWTTd2?=
+ =?utf-8?B?OXlmcm1NTTg3RnBhNGVqbGdjWDF5NmtCQks3NXMya1ppL2dQQmMxUWtzTlRM?=
+ =?utf-8?B?c1VrU3JLWitCY1lRU0NtYWRDNXpQSE51RlVlUE5KOCtkQ3NWQk1zVDRuNUJr?=
+ =?utf-8?B?RXB5Unp4OVNjQ0NnZkJpNXduTm5CSXVUWXpyWnFrNkwzbkRrMUsvNHMvNTh5?=
+ =?utf-8?B?QmVXMW5IZThOb1FoZWdOMFFERjRTeEd4OVB3SEEyZWViRWxYR2hKeVZnQmsr?=
+ =?utf-8?B?cUs3R1hPV016TDhHaE9wOTBwVXdHTHRKcUJocG5kemp0QndXZ2J4enpwbFZw?=
+ =?utf-8?B?UTgzS2NiN0UzTXZsVmJLOEEzSDFHallGWTFpV2gxV3dFZWdMSGEwVEZ4cU9V?=
+ =?utf-8?B?R2wwRy9vdzJzUWhlNnNscmMrUjZhanNhVEl1dnc2bmplYmpwOThZTVlyc0JE?=
+ =?utf-8?B?K0U4eWNXSUVCQ1NtZE0wbTd6K0hubGpsc24zWlM1SXNuWnUvbkw1d3N3Y2wz?=
+ =?utf-8?B?OWM0a3VocGt4aUpEbWhoTktUSi9lck8rUC93SjFBTVZndUpkbGZOY0t2NVc0?=
+ =?utf-8?B?S2c9PQ==?=
+Content-ID: <A642F42671ACD34DB190EA4276B3E095@namprd12.prod.outlook.com>
 MIME-Version: 1.0
 X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?eUUDU3Cu7paBHleA+6mpDURfr9DzmT6DDPjO92zEY5UcA6wn0Mxf3fW5S+vR?=
- =?us-ascii?Q?zsxHGS2WdT3VfLya4uAp/StlsZd/JpK0pCnpiY/5Cc2ZOqhJ5jaMTLj3MT4y?=
- =?us-ascii?Q?7rh3APgpvlPW2qiwbnp7gY+w2sVooqEyKbfzLXT+/cipdc+IF3k9G6DtzqXZ?=
- =?us-ascii?Q?n0LqPQCeLNb98RfR5wC8PLzwTTf/XwINMopzohoN06xanMUeVgoyfevukKKT?=
- =?us-ascii?Q?FKenn+AoU7fVRXVHArQn0p/q1Xl5I1IJ2nrG7c/LG+WXkY1TA/sS44VGzQbS?=
- =?us-ascii?Q?V/YUsvrhgUhOZISIH+tiqSqFaB4aauR0G3mjDstHncefLuzc02DM21/YGQ2E?=
- =?us-ascii?Q?cJJfVJt7RY/Xz1nZsvhzALAuMqb26OTEx4cWPkILhwu1ZxqZvyWxT+gV1wQj?=
- =?us-ascii?Q?4QRCpehBe3ttmo3NxWG2XPN1rQ8KHVheEF+wMzjcv/v+6hVGy44Rxn57JMKq?=
- =?us-ascii?Q?7w2BkTeBea/lGpoSQeH/iGd60cxXcUOSBdUHVmNi59ty5gfnd33nIXbM956p?=
- =?us-ascii?Q?qirqROal3zkDchPSCUgRicgE6UonfR5OVJc2LJMymnI9UuWLImcaIbEK6+hn?=
- =?us-ascii?Q?jv2FYlyAdV/pXYFtkv/CMsFJfb+RNBt1kPEDjVQOKMgUlSlurv4yTCF5Q2jd?=
- =?us-ascii?Q?L5znIhTN7VX0djqzPH1FyTDGGFmWOLis3Q+SUpM1wvOhngDnOndt2PDxj2yN?=
- =?us-ascii?Q?8ZfUqyISluZdIHRoZuamwxREm6ZtMpIA29nSuOPaGAfia5JmQP0vx0E0KACa?=
- =?us-ascii?Q?2JXp22dEuLF5sik/hD3ZmjsJYDo2elFacsFcR9qlsi7ybL5MtpQORoxqkbbU?=
- =?us-ascii?Q?NaA6SzZOB5EWAN9PJB1m2iGJ98pu4+ghBSfe2ZBl2oTnjeR/eYfsR8wg3P88?=
- =?us-ascii?Q?VZmItpv/tKKEtUCkpY2xpar4mhgOPXBjWZumW+eoFuJtRWx6mTWmU1L7Vjbl?=
- =?us-ascii?Q?qHgmvkbRp3SKvPoIxKUHRJWSXseQn8aEdO6w2Hvd4FDC2JtcTRTSoiPFvQkH?=
- =?us-ascii?Q?v7M3QVI0vgyPMRpLca7sLBWzb/6bAyqhjRHBzpmJdMALEQbri8UUb51FJFpe?=
- =?us-ascii?Q?1VhrNkgF?=
-X-OriginatorOrg: wdc.com
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?utf-8?B?ZTJCS2JJYng4bzJld3YvUXpEa3c0bDJZZGZLZDAxR25LUWhlUHN4UWU0ZUor?=
+ =?utf-8?B?TjRhWFQ4T2kveWtYdHFKOW0zWnNRUll0dmhuQjl4YmsyQnpLL2hkampvaDdr?=
+ =?utf-8?B?c0JMMDlBZHI0WFNJOUJNMFRySXRSbzZ5OThUNFdaTHM5dFdGRVlIaHUrUWs1?=
+ =?utf-8?B?dXZSKzA2ME4xclpUYlJlNGhDMXVHK2VRL0grbVJramtnQUd1S3RhS09KYjRu?=
+ =?utf-8?B?U04rU1gxYXV1cDBFMktJQms0VFZKaVZjR2tyOVVYcFlxU2k3ZW5NMVF5bTlR?=
+ =?utf-8?B?SjZrS0hObG5CVDFUU1RJU2NiRElZK1Yvd281bWlsM0FvN0J1bS9GRkpjWmxk?=
+ =?utf-8?B?MXcwSDg4UW1oZm54VGhmaEk5aGh6Y1kxSW1oWDBaMGNVSWNDUDhvVFhGcjNR?=
+ =?utf-8?B?R2ltelJLb0J1WFAvdzVYVWYvWG12cXAvaU0ydnovdW5nN0U2K0U0MmtKVHJT?=
+ =?utf-8?B?a3ZWUHRzeXNGZEE1bFBtZHFEQzh1K1hObjg1aVVVa21Jdnd2SW9ISWFESVl0?=
+ =?utf-8?B?OWgxRnlIeHNNbEZ4aGFVVElsaFk4U1gxZW81YmNzdnpES2NVL085d2VpdWVm?=
+ =?utf-8?B?MVNaTkxjbnZIWVhjVGlraUViaHBsNDc5RG91SG43MStTS0R2SDkydVlDbGxT?=
+ =?utf-8?B?c0xDNXcrbStwdnNtM01zU0JkekFDbzJ6eTl4NmJYc1ptcGxaZXhlbXNQUVZE?=
+ =?utf-8?B?LzRFekQzTW5zL2FTdk1JOVBONkpHVXM1Y0RUVndpRnBOb3pDSmlwZXh6dUV0?=
+ =?utf-8?B?M3NkS1Q0Zm5VNlFkbWdUSFZZQXRJTkZYTTVrYVVLQnBtRUdQRTczQkkyNElw?=
+ =?utf-8?B?TUpLQWpmaWthU21QbWdtZXNkaXVRNE9JSTY2Q2F2MkV2cXZCR2lwaFo2eVpL?=
+ =?utf-8?B?bG8rUmljNkUxMElpUkpNUkVwSGlIL0U3SnRzdjB4SWR1NGh2T0hEbHJaSHdr?=
+ =?utf-8?B?U3ZEcmZrby9zQ3FQcHNQTisvM3JFbDhCWGxOV3ZDY1B6cStPNlRid1pVWVh6?=
+ =?utf-8?B?Y3kyOWEzdnRPazRiVzZjRUp4U3NxbjhXTWE3MG5HWUxHOUk0T1g2VjZaRU1T?=
+ =?utf-8?B?a3FmamZCeEkwY2JVMXNUTWRGVkltaGRsSmVJVU1ETk84MjNQMjNsTVIra0Nq?=
+ =?utf-8?B?UHdFTUNiQ1orMXRnTUJHS3l2T1RTYzdUOHJZdHZvdmVvNEVCYkEzaEFjby94?=
+ =?utf-8?B?WWNPV09nV3Q0U2IzYUQ4NlRtOVYvQ01Rd2hVZmJKb0JrNGh1MjlPLzJqRVNJ?=
+ =?utf-8?B?a0taTm1rc0d4eG0xMTQ0dE9HeXhnUXVadUc2MlV6YTd6ZldvcGpuTWJtTXM5?=
+ =?utf-8?B?L0toZGxvOEFxWFROSGJjYjVPeGRUMXEyNE8vc21QV1ZiUmVXeDBqQXpXZTQw?=
+ =?utf-8?Q?FEkMemTPrR4hNRS2kquOtNpEAAgews20=3D?=
+X-OriginatorOrg: synopsys.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR04MB6272.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ca5f7623-dd74-4277-bb4b-08dbd1c87bd5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Oct 2023 23:58:40.3845
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB4791.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f4b82ce-9942-476a-9655-08dbd1ce3f4b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Oct 2023 00:39:55.8232
  (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-id: c33c9f88-1eb7-4099-9700-16013fd9e8aa
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5+dc753spRcmooMnpE34mpfbOqN7cAKk5dznqQcyv0Ccl3ynJiDaQRz5jc688OxyYSyDOq375/LAE18y6V+Htg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB6362
+X-MS-Exchange-CrossTenant-userprincipalname: Lw2b5K1bOkDpxe4zhYGuDsSvabQpPp5UvKz5iXgW9YutExLwON7XvT/sQsws1fqX5E8ik1u1tiLrtmqGgO8nwQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4391
+X-Proofpoint-ORIG-GUID: YWb7qRPELdckP9OtWwHLW7zQ4Z2eJ5rk
+X-Proofpoint-GUID: YWb7qRPELdckP9OtWwHLW7zQ4Z2eJ5rk
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_active_cloned_notspam policy=outbound_active_cloned score=0
+ spamscore=0 impostorscore=0 priorityscore=1501 adultscore=0
+ lowpriorityscore=0 mlxlogscore=811 bulkscore=0 malwarescore=0
+ clxscore=1011 mlxscore=0 phishscore=0 suspectscore=0 classifier=spam
+ adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310210002
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231020_165852_911216_FF3780F0 
-X-CRM114-Status: GOOD (  30.59  )
+X-CRM114-CacheID: sfid-20231020_174023_133145_AE169E22 
+X-CRM114-Status: GOOD (  23.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,232 +238,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian,
-
-On Fri, Oct 20, 2023 at 11:23:57PM +0200, Sebastian Reichel wrote:
-> Hello Niklas,
+On Fri, Oct 20, 2023, Sebastian Reichel wrote:
+> On Rockchip RK3588 one of the DWC3 cores is integrated weirdly and
+> requires two extra clocks to be enabled. Without these extra clocks
+> hot-plugging USB devices is broken.
 > 
-> On Fri, Oct 20, 2023 at 02:52:20PM +0200, Niklas Cassel wrote:
-> > From: Niklas Cassel <niklas.cassel@wdc.com>
-> > 
-> > From the snps,dw-pcie.yaml devicetree binding:
-> > "At least DBI reg-space and peripheral devices CFG-space outbound window
-> > are required for the normal controller work. iATU memory IO region is
-> > also required if the space is unrolled (IP-core version >= 4.80a)."
-> > 
-> > All the PCIe controllers in rk3588 are using the iATU unroll feature,
-> > and thus have to supply the atu property in the device tree node.
-> > 
-> > The size of the iATU region equals to:
-> > MAX(num inbound ATU regions, num outbound ATU regions) * 0x200.
-> > 
-> > Where for each 0x200 region, the registers controlling the
-> > IATU_REGION_OUTBOUND starts at offset 0x0, and the registers controlling
-> > IATU_REGION_INBOUND starts at offset 0x100.
-> > 
-> > pcie3x4 and pcie3x2 have 16 ATU inbound regions, 16 ATU outbound regions,
-> > so they have size: max(16, 16) * 0x200 = 0x2000
-> > 
-> > pcie2x1l0, pcie2x1l1, and pcie2x1l2 have 8 ATU inbound regions, 8 ATU
-> > outbound regions, so they have size: max(8, 8) * 0x200 = 0x1000
-> > 
-> > On the rk3588 based rock-5b board:
-> > Before this patch, dw_pcie_iatu_detect() fails to detect all iATUs:
-> > rockchip-dw-pcie a40000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-> > rockchip-dw-pcie a41000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-> > rockchip-dw-pcie a40800000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-> > 
-> > After this patch, dw_pcie_iatu_detect() succeeds to detect all iATUs:
-> > rockchip-dw-pcie a40000000.pcie: iATU: unroll T, 16 ob, 16 ib, align 64K, limit 8G
-> > rockchip-dw-pcie a41000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-> > rockchip-dw-pcie a40800000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-> > 
-> > Fixes: 8d81b77f4c49 ("arm64: dts: rockchip: add rk3588 PCIe2 support")
-> > Fixes: 0acf4fa7f187 ("arm64: dts: rockchip: add PCIe3 support for rk3588")
-> > Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
-> > ---
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/usb/dwc3/core.c | 28 ++++++++++++++++++++++++++++
+>  drivers/usb/dwc3/core.h |  4 ++++
+>  2 files changed, 32 insertions(+)
 > 
-> Thanks for your patch. This looks sensible, but I have two comments:
+> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+> index 343d2570189f..639b768c3386 100644
+> --- a/drivers/usb/dwc3/core.c
+> +++ b/drivers/usb/dwc3/core.c
+> @@ -854,8 +854,20 @@ static int dwc3_clk_enable(struct dwc3 *dwc)
+>  	if (ret)
+>  		goto disable_ref_clk;
+>  
+> +	ret = clk_prepare_enable(dwc->utmi_clk);
+> +	if (ret)
+> +		goto disable_susp_clk;
+> +
+> +	ret = clk_prepare_enable(dwc->pipe_clk);
+> +	if (ret)
+> +		goto disable_utmi_clk;
+> +
+>  	return 0;
+>  
+> +disable_utmi_clk:
+> +	clk_disable_unprepare(dwc->utmi_clk);
+> +disable_susp_clk:
+> +	clk_disable_unprepare(dwc->susp_clk);
+>  disable_ref_clk:
+>  	clk_disable_unprepare(dwc->ref_clk);
+>  disable_bus_clk:
+> @@ -865,6 +877,8 @@ static int dwc3_clk_enable(struct dwc3 *dwc)
+>  
+>  static void dwc3_clk_disable(struct dwc3 *dwc)
+>  {
+> +	clk_disable_unprepare(dwc->pipe_clk);
+> +	clk_disable_unprepare(dwc->utmi_clk);
+>  	clk_disable_unprepare(dwc->susp_clk);
+>  	clk_disable_unprepare(dwc->ref_clk);
+>  	clk_disable_unprepare(dwc->bus_clk);
+> @@ -1785,6 +1799,20 @@ static int dwc3_get_clocks(struct dwc3 *dwc)
+>  		}
+>  	}
+>  
+> +	/* specific to Rockchip RK3588 */
+> +	dwc->utmi_clk = devm_clk_get_optional(dev, "utmi");
+> +	if (IS_ERR(dwc->utmi_clk)) {
+> +		return dev_err_probe(dev, PTR_ERR(dwc->utmi_clk),
+> +				"could not get utmi clock\n");
+> +	}
+> +
+> +	/* specific to Rockchip RK3588 */
+> +	dwc->pipe_clk = devm_clk_get_optional(dev, "pipe");
+> +	if (IS_ERR(dwc->pipe_clk)) {
+> +		return dev_err_probe(dev, PTR_ERR(dwc->pipe_clk),
+> +				"could not get pipe clock\n");
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+> index a69ac67d89fe..f5e6ae6e394e 100644
+> --- a/drivers/usb/dwc3/core.h
+> +++ b/drivers/usb/dwc3/core.h
+> @@ -991,6 +991,8 @@ struct dwc3_scratchpad_array {
+>   * @bus_clk: clock for accessing the registers
+>   * @ref_clk: reference clock
+>   * @susp_clk: clock used when the SS phy is in low power (S3) state
+> + * @utmi_clk: clock used for USB2 PHY communication
+> + * @pipe_clk: clock used for USB3 PHY communication
+>   * @reset: reset control
+>   * @regs: base address for our registers
+>   * @regs_size: address space size
+> @@ -1156,6 +1158,8 @@ struct dwc3 {
+>  	struct clk		*bus_clk;
+>  	struct clk		*ref_clk;
+>  	struct clk		*susp_clk;
+> +	struct clk		*utmi_clk;
+> +	struct clk		*pipe_clk;
+>  
+>  	struct reset_control	*reset;
+>  
+> -- 
+> 2.42.0
 > 
-> 1. You need to update the Rockchip DT binding. It currently enforces that regnames
-> must be "dbi", "apb", "config". Thus 'make CHECK_DTBS=y rockchip/rk3588-rock-5b.dtb'
-> will introduce new errors after this patch is applied.
 
-In the rockchip-dw-pcie.yaml:
+Acked-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
 
-  RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
-  PCIe IP and thus inherits all the common properties defined in
-  snps,dw-pcie.yaml.
-
-allOf:
-  - $ref: /schemas/pci/snps,dw-pcie.yaml#
-
-So it obviously references the snps,dw-pcie.yaml using allOf. snps,dw-pcie.yaml
-is the schema that has the atu property defined. If the validation tooling does
-not support inherited properties, that is a bit disappointing, but not something
-that I think should stop this patch, which solves a real problem, from being
-accepted.
-
-
-> 
-> 2. You calculated the exact ATU size and used that, but the binding specifies,
-> "iATU/eDMA registers common for all device functions. [...] Note iATU is normally
-> mapped to the 0x0 address of this region, while eDMA is available at 0x80000 base
-> address.". So the size should be big enough to include the DMA section. So I would
-> expect it to be 0x100000 for all controllers.
-
-The device tree schema also allows you to specify the eDMA region using a separate
-"dma" property.
-
-This is what I chose to do, see my patch in:
-https://lore.kernel.org/linux-devicetree/20231020224412.3722784-1-nks@flawful.org/T/#u
-
-There are many reasons for this:
-1) Having both "iatu" and "dma" in the same property is just plain confusing...
-There are two separate properties for this in the DT schema, so it feels way
-clearer to specify them explicitly, especially since they are not contiguous.
-
-(There are a bunch of registers that are currently unused in the register space
-between iATU and eDMA registers. How do we know that Synopsys does not decide
-to make use of these unused registers for something else in a newer version of
-the IP core?)
-
-2) The rk3588 SoC has 5 PCIe controllers, but only one of them supports eDMA.
-It feels better to specify the actual size of the iatu region for all, and
-then add the dma region for the 1 controller that actually supports it,
-rather than to specify an iatu region that is larger than it actually is for
-the other 4 controllers.
-
-3) This matches the way the existing device trees are defined:
-$ git grep -B 10 \"atu\" arch/arm64/boot/dts/
-
-I cannot see any device tree that has defined a "atu" region larger than
-0x4000. (Which means that none of them are large enough to encompass the
-dma region.)
-And we know that at least some of these controllers support eDMA:
-https://lore.kernel.org/linux-pci/20230717065459.14138-4-manivannan.sadhasivam@linaro.org/
-
-4) Even if I did specify a really large "atu" region, which is larger
-than the actual atu region, and which is large enough to encompass the
-dma region, the eDMA would still not work.
-In order for the eDMA to work, it also requires the proper irqs defined,
-specified using interrupt-names = "dmaX"... which makes most sense to combine
-with the "dma" property in regs. (Looking at dmaX irq and then reaching the
-conclusion that eDMA is actually part of the "atu" range is not really
-intuitive.)
-
-
-All in all, I think it is way clearer to specify them separately.
-
-Or the driver should have went the other way, to not need to specify
-"atu" at all, since both "atu" and "dma" are by default part of "dbi",
-so the driver should theoretically be able to use default values for
-these if the "dbi" range is defined sufficiently large...
-but that is not how the DT schema or how the driver is currently designed.
-(Since the DT schema says that you MUST specify "atu" if IP-core version
->= 4.80a.)
-
-
-Kind regards,
-Niklas
-
-> 
-> Greetings,
-> 
-> -- Sebastian
-> 
-> >  arch/arm64/boot/dts/rockchip/rk3588.dtsi  | 21 ++++++++++++---------
-> >  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 14 ++++++++------
-> >  2 files changed, 20 insertions(+), 15 deletions(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > index 5519c1430cb7..d7998a9c0c43 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > @@ -119,10 +119,11 @@ pcie3x4: pcie@fe150000 {
-> >  		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
-> >  			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x00e00000>,
-> >  			 <0x03000000 0x0 0x40000000 0x9 0x00000000 0x0 0x40000000>;
-> > -		reg = <0xa 0x40000000 0x0 0x00400000>,
-> > +		reg = <0xa 0x40000000 0x0 0x00300000>,
-> >  		      <0x0 0xfe150000 0x0 0x00010000>,
-> > -		      <0x0 0xf0000000 0x0 0x00100000>;
-> > -		reg-names = "dbi", "apb", "config";
-> > +		      <0x0 0xf0000000 0x0 0x00100000>,
-> > +		      <0xa 0x40300000 0x0 0x00002000>;
-> > +		reg-names = "dbi", "apb", "config", "atu";
-> >  		resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
-> >  		reset-names = "pwr", "pipe";
-> >  		status = "disabled";
-> > @@ -170,10 +171,11 @@ pcie3x2: pcie@fe160000 {
-> >  		ranges = <0x01000000 0x0 0xf1100000 0x0 0xf1100000 0x0 0x00100000>,
-> >  			 <0x02000000 0x0 0xf1200000 0x0 0xf1200000 0x0 0x00e00000>,
-> >  			 <0x03000000 0x0 0x40000000 0x9 0x40000000 0x0 0x40000000>;
-> > -		reg = <0xa 0x40400000 0x0 0x00400000>,
-> > +		reg = <0xa 0x40400000 0x0 0x00300000>,
-> >  		      <0x0 0xfe160000 0x0 0x00010000>,
-> > -		      <0x0 0xf1000000 0x0 0x00100000>;
-> > -		reg-names = "dbi", "apb", "config";
-> > +		      <0x0 0xf1000000 0x0 0x00100000>,
-> > +		      <0xa 0x40700000 0x0 0x00002000>;
-> > +		reg-names = "dbi", "apb", "config", "atu";
-> >  		resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
-> >  		reset-names = "pwr", "pipe";
-> >  		status = "disabled";
-> > @@ -219,10 +221,11 @@ pcie2x1l0: pcie@fe170000 {
-> >  		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
-> >  			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
-> >  			 <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>;
-> > -		reg = <0xa 0x40800000 0x0 0x00400000>,
-> > +		reg = <0xa 0x40800000 0x0 0x00300000>,
-> >  		      <0x0 0xfe170000 0x0 0x00010000>,
-> > -		      <0x0 0xf2000000 0x0 0x00100000>;
-> > -		reg-names = "dbi", "apb", "config";
-> > +		      <0x0 0xf2000000 0x0 0x00100000>,
-> > +		      <0xa 0x40b00000 0x0 0x00001000>;
-> > +		reg-names = "dbi", "apb", "config", "atu";
-> >  		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
-> >  		reset-names = "pwr", "pipe";
-> >  		#address-cells = <3>;
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> > index 5544f66c6ff4..286d7b10b9dd 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> > @@ -1259,10 +1259,11 @@ pcie2x1l1: pcie@fe180000 {
-> >  		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
-> >  			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
-> >  			 <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>;
-> > -		reg = <0xa 0x40c00000 0x0 0x00400000>,
-> > +		reg = <0xa 0x40c00000 0x0 0x00300000>,
-> >  		      <0x0 0xfe180000 0x0 0x00010000>,
-> > -		      <0x0 0xf3000000 0x0 0x00100000>;
-> > -		reg-names = "dbi", "apb", "config";
-> > +		      <0x0 0xf3000000 0x0 0x00100000>,
-> > +		      <0xa 0x40f00000 0x0 0x00001000>;
-> > +		reg-names = "dbi", "apb", "config", "atu";
-> >  		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
-> >  		reset-names = "pwr", "pipe";
-> >  		#address-cells = <3>;
-> > @@ -1310,10 +1311,11 @@ pcie2x1l2: pcie@fe190000 {
-> >  		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
-> >  			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
-> >  			 <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>;
-> > -		reg = <0xa 0x41000000 0x0 0x00400000>,
-> > +		reg = <0xa 0x41000000 0x0 0x00300000>,
-> >  		      <0x0 0xfe190000 0x0 0x00010000>,
-> > -		      <0x0 0xf4000000 0x0 0x00100000>;
-> > -		reg-names = "dbi", "apb", "config";
-> > +		      <0x0 0xf4000000 0x0 0x00100000>,
-> > +		      <0xa 0x41300000 0x0 0x00001000>;
-> > +		reg-names = "dbi", "apb", "config", "atu";
-> >  		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
-> >  		reset-names = "pwr", "pipe";
-> >  		#address-cells = <3>;
-> > -- 
-> > 2.41.0
-> > 
-
-
+BR,
+Thinh
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
