@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89505C25B45
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Oct 2023 17:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83D66C25B46
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Oct 2023 17:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EngW7RhaaRszrk+3g/CHyy7rVB/M1zuoK8LQM3bkMgc=; b=p0wKXfhqdgqrKs
-	blYZp7MqVWfbRwLk4sfxIdIMEj4yxpl64NrJD6zwQNGtuV5mGShiLjrtWPw9KDljBvR7BuSrIaAdH
-	ocsN2+i1c3Ryjldbqm6xXto4YkKkXKRL0YhZJ+rDu7tMDftxEZIBryah7QmeFvouUqzcBCqooRiMd
-	0UMeu8WftjQgjtoexQXfbqkuRS9OEJfBF7KRs5n8kEH9uqZ6s5NMc0jN1zLncEHFAH/bElSBmGEhG
-	g6nyA8YNGRerJHod/xc94wYUQ30fTM35DrYOAdNN12ejmL6M37lOdSdDtmUlJaouFsQFs6wxmm33X
-	xee3lK5VpE2GXgqdZ6kA==;
+	List-Owner; bh=4BTktcl02GaHAGVHsjsHfdWu54eRbGr6cwC8+sfk5yc=; b=i3UKrJJlkc3e6z
+	6zERnuDMAGjKODp4triFRJ4VtB2XXjBcnZ7bJDg6gdzSUG1q3DLFemLKFDsUZqs3pceDk7CFZlAkp
+	3XDoHH0au8e+iSW8/skFy3T+B6kxW+6NPouGT2dcr9BIFNqCNBbEsskIJ9EbhDOZvERNloqMYoVQX
+	jiShicyh2Xd2nuswV4DTMXG+U/yfzFWCZZFEN0GGUNFMKjOMehQ7Jh4e9ApT5orere0WAIkNOVVnv
+	RZJvlGWXKsunPMhR+yW4lUTUsfOtdgyXcd9qZ8wwq3cZT7wiGlpm1G92QhS6W555EzpUtgDbiB4zC
+	kyP4JQY+jovk4NCzIl9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1quysE-007yXW-34;
-	Mon, 23 Oct 2023 17:37:54 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1quz6g-0080zB-1J;
+	Mon, 23 Oct 2023 17:52:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1quysA-007yUI-2g;
-	Mon, 23 Oct 2023 17:37:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1698082653; bh=cjRrh96AZYNkNbpCUEmx8yOwvsiM/6COHGjHu5GOMaM=;
- b=pGVUzjMVKsMS43a+JHWpw7tIsuukndQEIwckfuI1MhdbheovkB3JZrTVS3a3nAo64ysEZ3GiS
- oksMfGiceA4OddDULEsAo66jPkYdr1JB1LzL29zcNIediy1GrnXhvZ6rZwh6+vT5Ba65IRdxNDv
- ozEkPc5fGiPgHZhvTfQPiJrQ7vS+CgtJr9ahDCt6W3lWTgeBu1XMpLXdQ7XZ1HMaJOF+c1MGviG
- 5awLIVqIVhsmElKrjcc758EZySZb5HOC3Z80qkdUnbCbfFiG/97xbvErP+PQIYoshU2Nvf6pnbJ
- oalZEWA+a6f5QPiAbKV5OUUqk57QoZmTwBvtAExNldeQ==
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
-Cc: Christopher Obbard <chris.obbard@collabora.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>
-Subject: [PATCH v5 2/2] drm/rockchip: vop: Add NV15, NV20 and NV30 support
-Date: Mon, 23 Oct 2023 17:37:15 +0000
-Message-ID: <20231023173718.188102-3-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.42.0
+	id 1quz6c-0080xn-16;
+	Mon, 23 Oct 2023 17:52:48 +0000
+Received: from [IPv6:2a00:23c8:b70a:ae01:e088:d5b:55b6:2378] (unknown [IPv6:2a00:23c8:b70a:ae01:e088:d5b:55b6:2378])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: obbardc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1EC896606F65;
+	Mon, 23 Oct 2023 18:52:41 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698083561;
+	bh=7S1ZXUE2FrN5cin1LeMtr31fGeX5/zyTj4hXYDk6dEc=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=lp7pQvrZuCVaydEUTPe9fQmuQEiu0uMOq2IxVWgSkwqqbqI0d3K9Kokox9dL9oWuD
+	 76fTBufx3LAglsPuteWffaZ9o7TkB9DcTIRz6LYFzCw6VF5S0AfiWg5m33EHGGcthX
+	 WywV2cW5GVd1ljLA+4+aHQjIn0xkLbejzWVZxZdgN/R5j28Lb4CpQn09jwoWwTLZNU
+	 +LcoV0kLlWCit/wIvOcqFJ8I888EzQ2sZb3gWfEfGrhnJHScKtUssxG+FRvZk6TFTv
+	 bEVx6yJjJmJNG4qdIvp1N8q0w6QUJUCplTvgyg7XVLgnRZj+G0qMJCzIV30/gHH3IG
+	 vp6Xl4XSWSEew==
+Message-ID: <f28f34b1c58a41856eed020b5d02dc3abf1a8e94.camel@collabora.com>
+Subject: Re: [PATCH v5 0/2] drm/rockchip: vop: Add NV15, NV20 and NV30
+ support
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Sandy
+ Huang <hjc@rock-chips.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, kernel
+	 <kernel@collabora.com>
+Date: Mon, 23 Oct 2023 18:52:38 +0100
 In-Reply-To: <20231023173718.188102-1-jonas@kwiboo.se>
 References: <20231023173718.188102-1-jonas@kwiboo.se>
+Autocrypt: addr=chris.obbard@collabora.com; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.50.0-1 
 MIME-Version: 1.0
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 6536af5b288c5302e78a77f0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_103751_059432_07DAC1A6 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20231023_105246_689249_A20DD315 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,244 +76,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for displaying 10-bit 4:2:0 and 4:2:2 formats produced by
-the Rockchip Video Decoder on RK322X, RK3288, RK3328 and RK3399.
-Also add support for 10-bit 4:4:4 format while at it.
-
-V5: Use drm_format_info_min_pitch() for correct bpp
-    Add missing NV21, NV61 and NV42 formats
-V4: Rework RK3328/RK3399 win0/1 data to not affect RK3368
-V2: Added NV30 support
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Sandy Huang <hjc@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 36 ++++++++---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 66 +++++++++++++++++----
- 3 files changed, 86 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 14320bc73e5b..b3d0b6ae9294 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -272,6 +272,18 @@ static bool has_uv_swapped(uint32_t format)
- 	}
- }
- 
-+static bool is_fmt_10(uint32_t format)
-+{
-+	switch (format) {
-+	case DRM_FORMAT_NV15:
-+	case DRM_FORMAT_NV20:
-+	case DRM_FORMAT_NV30:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- static enum vop_data_format vop_convert_format(uint32_t format)
- {
- 	switch (format) {
-@@ -287,12 +299,15 @@ static enum vop_data_format vop_convert_format(uint32_t format)
- 	case DRM_FORMAT_BGR565:
- 		return VOP_FMT_RGB565;
- 	case DRM_FORMAT_NV12:
-+	case DRM_FORMAT_NV15:
- 	case DRM_FORMAT_NV21:
- 		return VOP_FMT_YUV420SP;
- 	case DRM_FORMAT_NV16:
-+	case DRM_FORMAT_NV20:
- 	case DRM_FORMAT_NV61:
- 		return VOP_FMT_YUV422SP;
- 	case DRM_FORMAT_NV24:
-+	case DRM_FORMAT_NV30:
- 	case DRM_FORMAT_NV42:
- 		return VOP_FMT_YUV444SP;
- 	default:
-@@ -944,7 +959,12 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
- 	dsp_st = dsp_sty << 16 | (dsp_stx & 0xffff);
- 
--	offset = (src->x1 >> 16) * fb->format->cpp[0];
-+	if (fb->format->char_per_block[0])
-+		offset = drm_format_info_min_pitch(fb->format, 0,
-+						   src->x1 >> 16);
-+	else
-+		offset = (src->x1 >> 16) * fb->format->cpp[0];
-+
- 	offset += (src->y1 >> 16) * fb->pitches[0];
- 	dma_addr = rk_obj->dma_addr + offset + fb->offsets[0];
- 
-@@ -970,6 +990,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	}
- 
- 	VOP_WIN_SET(vop, win, format, format);
-+	VOP_WIN_SET(vop, win, fmt_10, is_fmt_10(fb->format->format));
- 	VOP_WIN_SET(vop, win, yrgb_vir, DIV_ROUND_UP(fb->pitches[0], 4));
- 	VOP_WIN_SET(vop, win, yrgb_mst, dma_addr);
- 	VOP_WIN_YUV2YUV_SET(vop, win_yuv2yuv, y2r_en, is_yuv);
-@@ -979,15 +1000,16 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		    (new_state->rotation & DRM_MODE_REFLECT_X) ? 1 : 0);
- 
- 	if (is_yuv) {
--		int hsub = fb->format->hsub;
--		int vsub = fb->format->vsub;
--		int bpp = fb->format->cpp[1];
--
- 		uv_obj = fb->obj[1];
- 		rk_uv_obj = to_rockchip_obj(uv_obj);
- 
--		offset = (src->x1 >> 16) * bpp / hsub;
--		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
-+		if (fb->format->char_per_block[1])
-+			offset = drm_format_info_min_pitch(fb->format, 1,
-+							   src->x1 >> 16);
-+		else
-+			offset = (src->x1 >> 16) * fb->format->cpp[1];
-+		offset /= fb->format->hsub;
-+		offset += (src->y1 >> 16) * fb->pitches[1] / fb->format->vsub;
- 
- 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
- 		VOP_WIN_SET(vop, win, uv_vir, DIV_ROUND_UP(fb->pitches[1], 4));
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 5f56e0597df8..4b2daefeb8c1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -186,6 +186,7 @@ struct vop_win_phy {
- 	struct vop_reg enable;
- 	struct vop_reg gate;
- 	struct vop_reg format;
-+	struct vop_reg fmt_10;
- 	struct vop_reg rb_swap;
- 	struct vop_reg uv_swap;
- 	struct vop_reg act_info;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index 7b2805006776..f8cef0cb7bff 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -53,6 +53,26 @@ static const uint32_t formats_win_full[] = {
- 	DRM_FORMAT_NV42,
- };
- 
-+static const uint32_t formats_win_full_10[] = {
-+	DRM_FORMAT_XRGB8888,
-+	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_ABGR8888,
-+	DRM_FORMAT_RGB888,
-+	DRM_FORMAT_BGR888,
-+	DRM_FORMAT_RGB565,
-+	DRM_FORMAT_BGR565,
-+	DRM_FORMAT_NV12,
-+	DRM_FORMAT_NV21,
-+	DRM_FORMAT_NV16,
-+	DRM_FORMAT_NV61,
-+	DRM_FORMAT_NV24,
-+	DRM_FORMAT_NV42,
-+	DRM_FORMAT_NV15,
-+	DRM_FORMAT_NV20,
-+	DRM_FORMAT_NV30,
-+};
-+
- static const uint64_t format_modifiers_win_full[] = {
- 	DRM_FORMAT_MOD_LINEAR,
- 	DRM_FORMAT_MOD_INVALID,
-@@ -627,11 +647,12 @@ static const struct vop_scl_regs rk3288_win_full_scl = {
- 
- static const struct vop_win_phy rk3288_win01_data = {
- 	.scl = &rk3288_win_full_scl,
--	.data_formats = formats_win_full,
--	.nformats = ARRAY_SIZE(formats_win_full),
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full,
- 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
- 	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
- 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
-@@ -936,13 +957,38 @@ static const struct vop_win_yuv2yuv_data rk3399_vop_big_win_yuv2yuv_data[] = {
- 
- };
- 
--static const struct vop_win_phy rk3399_win01_data = {
-+static const struct vop_win_phy rk3399_win0_data = {
- 	.scl = &rk3288_win_full_scl,
--	.data_formats = formats_win_full,
--	.nformats = ARRAY_SIZE(formats_win_full),
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
- 	.format_modifiers = format_modifiers_win_full_afbc,
- 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
-+	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
-+	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
-+	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
-+	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
-+	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
-+	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
-+	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
-+	.yrgb_mst = VOP_REG(RK3288_WIN0_YRGB_MST, 0xffffffff, 0),
-+	.uv_mst = VOP_REG(RK3288_WIN0_CBR_MST, 0xffffffff, 0),
-+	.yrgb_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 0),
-+	.uv_vir = VOP_REG(RK3288_WIN0_VIR, 0x3fff, 16),
-+	.src_alpha_ctl = VOP_REG(RK3288_WIN0_SRC_ALPHA_CTRL, 0xff, 0),
-+	.dst_alpha_ctl = VOP_REG(RK3288_WIN0_DST_ALPHA_CTRL, 0xff, 0),
-+	.channel = VOP_REG(RK3288_WIN0_CTRL2, 0xff, 0),
-+};
-+
-+static const struct vop_win_phy rk3399_win1_data = {
-+	.scl = &rk3288_win_full_scl,
-+	.data_formats = formats_win_full_10,
-+	.nformats = ARRAY_SIZE(formats_win_full_10),
-+	.format_modifiers = format_modifiers_win_full,
-+	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
-+	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
- 	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
- 	.x_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 21),
-@@ -965,9 +1011,9 @@ static const struct vop_win_phy rk3399_win01_data = {
-  * AFBC on the primary plane.
-  */
- static const struct vop_win_data rk3399_vop_win_data[] = {
--	{ .base = 0x00, .phy = &rk3399_win01_data,
-+	{ .base = 0x00, .phy = &rk3399_win0_data,
- 	  .type = DRM_PLANE_TYPE_PRIMARY },
--	{ .base = 0x40, .phy = &rk3368_win01_data,
-+	{ .base = 0x40, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
- 	{ .base = 0x00, .phy = &rk3368_win23_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
-@@ -1099,11 +1145,11 @@ static const struct vop_intr rk3328_vop_intr = {
- };
- 
- static const struct vop_win_data rk3328_vop_win_data[] = {
--	{ .base = 0xd0, .phy = &rk3368_win01_data,
-+	{ .base = 0xd0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_PRIMARY },
--	{ .base = 0x1d0, .phy = &rk3368_win01_data,
-+	{ .base = 0x1d0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_OVERLAY },
--	{ .base = 0x2d0, .phy = &rk3368_win01_data,
-+	{ .base = 0x2d0, .phy = &rk3399_win1_data,
- 	  .type = DRM_PLANE_TYPE_CURSOR },
- };
- 
--- 
-2.42.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9uYXMsCgpPbiBNb24sIDIwMjMtMTAtMjMgYXQgMTc6MzcgKzAwMDAsIEpvbmFzIEthcmxt
+YW4gd3JvdGU6Cj4gVGhpcyBzZXJpZXMgYWRkIHN1cHBvcnQgZm9yIGRpc3BsYXlpbmcgMTAtYml0
+IDQ6MjowIGFuZCA0OjI6MiBmb3JtYXRzCj4gcHJvZHVjZWQKPiBieSB0aGUgUm9ja2NoaXAgVmlk
+ZW8gRGVjb2RlciBvbiBSSzMyMlgsIFJLMzI4OCwgUkszMzI4LCBSSzMzNjggYW5kIFJLMzM5OS4K
+PiBBbHNvIGluY2x1ZGUgMTAtYml0IDQ6NDo0IHN1cHBvcnQgc2luY2UgVk9QIGNhbiBzdXBwb3J0
+IHRoYXQgYWxzby4KPiAKPiBGaXJzdCBwYXRjaCBhZGRzIG5ldyBmb3VyY2MgMTAtYml0IFlVViBm
+b3JtYXRzIHdpdGggNDoyOjIvNDo0OjQgc3ViLQo+IHNhbXBsaW5nLgo+IFNlY29uZCBwYXRjaCBh
+ZGRzIHN1cHBvcnQgZm9yIGRpc3BsYXlpbmcgdGhlIG5ldyBmb3VyY2MgZm9ybWF0cy4KPiAKPiBU
+aGVzZSBwYXRjaGVzIGhhdmUgYmVlbiBpbiB1c2UgYnkgTGlicmVFTEVDIGFuZCBvdGhlciBkaXN0
+cm9zIGZvciB0aGUKPiBwYXN0IDMrIHllYXJzLCBob3BpbmcgdGhleSBjYW4gYmUgbWVyZ2VkIHRo
+aXMgdGltZSBhcm91bmQuCj4gCj4gQSByb3VnaCBsaWJkcm0vbW9kZXRlc3QgcGF0Y2ggWzJdIGhh
+dmUgYmVlbiB1c2VkIHRvIHZhbGlkYXRlIHVzZSBvZgo+IE5WMTUsIE5WMjAgYW5kIE5WMzAgZm9y
+bWF0cyBvbiBSSzMyODgsIFJLMzMyOCBhbmQgUkszMzk5IGJvYXJkcy4KPiAKPiDCoCBtb2RldGVz
+dCAtcyA8Y29ubmVjdG9yX2lkPkA8Y3J0Y19pZD46PG1vZGU+LTx2cmVmcmVzaD5APGZvcm1hdD4K
+PiAKPiBUaW5rZXIgQm9hcmQgUjIuMCAocmszMjg4dyk6Cj4gwqAgbW9kZXRlc3QgLXMgNTA6MTky
+MHgxMDgwLTYwQE5WMTUKPiAKPiBSb2NrIFBpIDQgKHJrMzM5OSk6Cj4gwqAgbW9kZXRlc3QgLXMg
+NTJANDQ6MTkyMHgxMDgwLTYwQE5WMTUKPiAKPiBSb2NrNjQgKHJrMzMyOCk6Cj4gwqAgbW9kZXRl
+c3QgLXMgNDI6MTkyMHgxMDgwLTYwQE5WMTUKPiAKPiBDaGFuZ2VzIGluIHY1Ogo+IC0gVXNlIGRy
+bV9mb3JtYXRfaW5mb19taW5fcGl0Y2goKSBmb3IgY29ycmVjdCBicHAKPiAtIEFkZCBtaXNzaW5n
+IE5WMjEsIE5WNjEgYW5kIE5WNDIgZm9ybWF0cwo+IAo+IENoYW5nZXMgaW4gdjQ6Cj4gLSBSZXdv
+cmsgUkszMzI4L1JLMzM5OSB3aW4wLzEgZGF0YSB0byBub3QgYWZmZWN0IFJLMzM2OAo+IAo+IENo
+YW5nZXMgaW4gdjM6Cj4gLSBObyBjaGFuZ2VzLCByZWJhc2VkIG9uIG5leHQtMjAyMzA2MTYKPiAt
+IFItQiB0YWdzIHdhcyBjb2xsZWN0ZWQKPiAKPiBDaGFuZ2VzIGluIHYyOgo+IC0gQWRkIE5WMzAg
+Zm9ybWF0Cj4gLSBSLUIgdGFncyB3YXMgbm90IGNvbGxlY3RlZCBkdWUgdG8gTlYzMCBjaGFuZ2Vz
+Cj4gCj4gVGhpcyBzZXJpZXMgaXMgYWxzbyBhdmFpbGFibGUgYXQgWzFdIGFuZCBsaWJkcm0vbW9k
+ZXRlc3QgcGF0Y2ggYXQgWzJdLgo+IAo+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vS3dpYm9vL2xp
+bnV4LXJvY2tjaGlwL2NvbW1pdHMvdjYuNi1yYzctdm9wLW52MTUKPiBbMl0gaHR0cHM6Ly9naXRo
+dWIuY29tL0t3aWJvby9saWJkcm0vY29tbWl0cy9udjE1CgpDb3VsZCB5b3Ugb3BlbiBhIGRyYWZ0
+IG1lcmdlIHJlcXVlc3QgZm9yIGxpYmRybSB1cHN0cmVhbSBhdApodHRwczovL2dpdGxhYi5mcmVl
+ZGVza3RvcC5vcmcvbWVzYS9kcm0gcG9pbnRpbmcgdG8gdGhpcyBzZXJpZXM/IElmIHRoZXJlIGFy
+ZQpzdWJzZXF1ZW50IHJldmlzaW9ucyBvZiB0aGlzIHNlcmllcywgaXQnZCBiZSBncmVhdCB0byBs
+aW5rIHRoYXQgbWVyZ2UgcmVxdWVzdAppbiB0aGUgY292ZXIgbGV0dGVyLgoKCkNoZWVycyEKCkNo
+cmlzCgo+IAo+IEpvbmFzIEthcmxtYW4gKDIpOgo+IMKgIGRybS9mb3VyY2M6IEFkZCBOVjIwIGFu
+ZCBOVjMwIFlVViBmb3JtYXRzCj4gwqAgZHJtL3JvY2tjaGlwOiB2b3A6IEFkZCBOVjE1LCBOVjIw
+IGFuZCBOVjMwIHN1cHBvcnQKPiAKPiDCoGRyaXZlcnMvZ3B1L2RybS9kcm1fZm91cmNjLmPCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDggKysrCj4gwqBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMzYgKysrKysrKystLS0KPiDCoGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfMKgIDEgKwo+IMKgZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8IDY2ICsrKysrKysrKysrKysrKysr
+LS0tLQo+IMKgaW5jbHVkZS91YXBpL2RybS9kcm1fZm91cmNjLmjCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHzCoCAyICsKPiDCoDUgZmlsZXMgY2hhbmdlZCwgOTYgaW5zZXJ0aW9ucygrKSwg
+MTcgZGVsZXRpb25zKC0pCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
