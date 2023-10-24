@@ -4,94 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C620C00A8F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 15:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC8B4C07545
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 15:12:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UxkqPybayAAqF5qK2606bKUr7NLNQ0AeuGdoCM1QoOg=; b=hLC0X8X+NPqOdj
-	k3gdHZnqqvM8jsrOOTKpThCsAnjG6djGLfykuyofvO8mVcsDj+Wibak1Vv1YK2zxjw+R2kWKv/vkL
-	5wBsf/nlqyy81ZKH0KPzxdRFsmUAEBi7m/mgdnMqZqn5yxzeWtRufnVsCx9UixhB+Gg2kxMqN/XaX
-	9PomkAXTRLubziErxD0384cNdvaRuGvfpDI/5T9p89tbE5Uowg/AC9kURkQl1ZWryLLx72VK/ToMA
-	G5ihnJcDyHuhMpBzPaLUu73w2eZ7XX8+MJ5jpgATy+sYyYaoptuc3Rqx1coSwhWzTkqch2xp/v21k
-	FcuNI7pncY9oTfX5XqVA==;
+	List-Owner; bh=OVZGlG3+jVW9X0SoDk9Y+70UoC+0//NOzYxjprzMmaQ=; b=5AE/Fpni8RC36w
+	OElKEKva6WKmHBt7swjB5N6kV29MEUNTeVTPozFTBSLJcsVmg7znlcUOMi91BrEVVX6moVi2fHIB3
+	1vcMuiC4AJ1Shmll2evyQPQuqOLi/4XUZKs4NIbnXXmNCzo2NjRVGMRkSipq+eoeCxlNSX4CeFzlS
+	xDQjFsrtW4HoAX90t2J2xU82dOUhIgpJ79emcu9vq9r4cME4mPAZ9s/Nzxw/ahqe5sB+x/nQV7SKG
+	dthdwELEs0+ZzmfFh4AZkiEzr2g1wxllgctlV4BgQkfu0VNeSpF7rNpNDfLR57eqzHti8j/hveQ60
+	w9IYv60J9xDBAi7kZfNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvJ4j-00ADRR-1o;
-	Tue, 24 Oct 2023 15:12:09 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1qvJ5D-00ADb9-18;
+	Tue, 24 Oct 2023 15:12:39 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvJ4e-00ADOe-2F;
-	Tue, 24 Oct 2023 15:12:06 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2c59a4dcdacso4632731fa.1;
-        Tue, 24 Oct 2023 08:12:00 -0700 (PDT)
+	id 1qvJ58-00ADYy-2F;
+	Tue, 24 Oct 2023 15:12:37 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-507bd19eac8so6732957e87.0;
+        Tue, 24 Oct 2023 08:12:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698160319; x=1698765119;
+        d=1e100.net; s=20230601; t=1698160353; x=1698765153;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ErYDPZxHlGKWRGh1uHyf/gkIgr8quGpEBSe4QaL/8Iw=;
-        b=NxwV9llGRRgtJOwni0UZ5B6MqfbnjGhb4i+C7nZpCUZbVFfU2AbaSBQcb+bDsA2Vxy
-         EdgAFIkcwoj/Oy2Pjf9INqUzI82lVgJAJesAeElBDPP5SAWKE1wJ9zB5NPqzq0Tk0AMT
-         RovBgTMEbbhY6tntZc0M0cwGP00GIWxzhDgZZ8X3/wYRG5X+tqNhdaTyRUCllJsh8D2p
-         PHg60XFVyDFtUrODiFqr5fTE3i583oHdUTFdUFR06F69mFC5vDLn4Qb+HQp14qdtLNdb
-         N6pyqgtCsnV17r+YfAKvGLpVlfospmsb/c0DKduVv6pJWw76rHRxvKnXEflC65iZEWDf
-         JpLw==
-X-Gm-Message-State: AOJu0YyjK3G+RSw8Q/N/hkYW9OsI+yeAeXcarvsWfUT37u73aq7Wq3Cl
-	5qeY09outy+t89su2ru+P1bOXSBK9aKMhA==
-X-Google-Smtp-Source: AGHT+IFN6MIIlxF6ojFKfGGggJIrTn7xmWpxlNWpMM5wUt7QTLEU4nncSA6+MbmW6iphDZD/dvcaGA==
-X-Received: by 2002:a05:651c:2211:b0:2c5:3139:2d04 with SMTP id y17-20020a05651c221100b002c531392d04mr9786686ljq.47.1698160319506;
-        Tue, 24 Oct 2023 08:11:59 -0700 (PDT)
+        bh=9N9/+NUa+wHK0HF99kAFQH1PWNyZJRmq/sRYP/HtkeM=;
+        b=FbzEmBPQF+dBu+KL5pzR7+1h9M6uyF8UwehHGgIrc//Qc+nq0jrC4Vwxa+LC3RhwLV
+         ny5JK7nboizeIne3TvxkxHqrpl+Q2Buv5DaK8E4vyO3VvSqaV+ztpS6Qbq2Tjjnf9cFn
+         LyYuJWE5ATPnrGUAyuWtzJIyEYu5KASGuGYKggrmqNDnLxXDlqdngaet1uVARBGDuz5a
+         GZNA5Po28grJCCH4ExGvZ1ebIzm5QVuP4aoP1yqen+qYXKRwk4FheMMSGNSJOAuVrvaR
+         +/1q6r1ZE6tv6w6VNwpWX4Uyp4JGQeAgrjvL/GtsVkGaBZKqZlk8Xky/2eCqMi0glfDK
+         KucQ==
+X-Gm-Message-State: AOJu0YxzDUp63ME5/tKYBowr3eg3/34A3X+npz2JeYgDBo222KgJSBw3
+	OWOI/76VWQpVXFHEdI9YFiifZSUvpatMZA==
+X-Google-Smtp-Source: AGHT+IGYwB930iBZF8HAUoC/Ga6QrjB3rp/fPGAjLW/IHdCXxVBuKd9aNdkhtk79VChRpA2gJXmVPQ==
+X-Received: by 2002:ac2:5183:0:b0:507:ce49:81ba with SMTP id u3-20020ac25183000000b00507ce4981bamr7510588lfi.67.1698160352754;
+        Tue, 24 Oct 2023 08:12:32 -0700 (PDT)
 Received: from flawful.org (c-f5f0e255.011-101-6d6c6d3.bbcust.telenor.se. [85.226.240.245])
-        by smtp.gmail.com with ESMTPSA id v1-20020a2e9f41000000b002b70a64d4desm2097562ljk.46.2023.10.24.08.11.58
+        by smtp.gmail.com with ESMTPSA id o7-20020a05651205c700b005056ccb222asm2148654lfo.105.2023.10.24.08.12.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Oct 2023 08:11:59 -0700 (PDT)
+        Tue, 24 Oct 2023 08:12:32 -0700 (PDT)
 Received: by flawful.org (Postfix, from userid 112)
-	id 0E3B61645; Tue, 24 Oct 2023 17:11:57 +0200 (CEST)
+	id 86FF91645; Tue, 24 Oct 2023 17:12:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
-	t=1698160318; bh=MJQPrt0WclUUI63J7BXde/G6Km1xt1fTunHs0Soe+Yk=;
+	t=1698160351; bh=nOWykBjoXapYzbbqt/B6vaxHD5OyGUKgl7kHm6hJUts=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fzYLNWT3mkvx4BaQxNBvt0kd9p+zrbVIIZ2kzjgjVfb45e82b5LPvAmrFt+vop4lN
-	 lex7v4a2f6Dn2kY4ZuE0yRebcjmXjx3H3YPh6sqBfnC10nRovY7prsoZE9aye23HGA
-	 XQU7nvpbluYmVdyvMlxuJQx0v5yUTwuv4TJkbO7Q=
+	b=CfqMVtKXdWU4nwYfFVHbHd9bg4JIR981xpUEQ0AEOJcJjjGKbaKWn4SYdsFRNw4W5
+	 ovfAgmi81UefW/sTD7NR9/3uhC0KEK26qJpEvWUyouNUZf4AtXdEbYwUgJW1wECZRB
+	 1fHoIMOyt5dcRRtT2jqNjuC3HxaHMZVqtgkYxG3o=
 Received: from x1-carbon.lan (OpenWrt.lan [192.168.1.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by flawful.org (Postfix) with ESMTPSA id 6B53B14E3;
-	Tue, 24 Oct 2023 17:10:45 +0200 (CEST)
+	by flawful.org (Postfix) with ESMTPSA id 57FF514E7;
+	Tue, 24 Oct 2023 17:10:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
-	t=1698160245; bh=MJQPrt0WclUUI63J7BXde/G6Km1xt1fTunHs0Soe+Yk=;
+	t=1698160246; bh=nOWykBjoXapYzbbqt/B6vaxHD5OyGUKgl7kHm6hJUts=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aqo6fhzQyyWCdA5YuF7vVGUiRtxAL4aDO/jIDL3qJTX9sJhZx+WVDfvQoqfYZxS0r
-	 Unwk9IjPvWkP79Swc89i1BRyhJlFeLSoNB7Y+93PK/6ATRG4Xfv8DTXSGdiTsjkVdM
-	 p1uJ4MiMmqOrFNeNMtjT0A1LYLHuJ+UqpmMqrslA=
+	b=WAnZ5gtPK8mM3eEH4aTkJGHHxRvBNJtNK4kGrk0CYhTG4AEKnQKNIPRPCcuti4T1E
+	 7oJX1wj0eJ132vMInhvaOTYDmRkFXrouTOzfMVtn3QlFbek8AjJWbl+NL8vVFrDoIt
+	 IHHPQpg9jT9kIiC17HA5YFoWQQzPPZ0VnyYB0UAk=
 From: Niklas Cassel <nks@flawful.org>
-To: Rob Herring <robh+dt@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Jagan Teki <jagan@edgeble.ai>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>
 Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Niklas Cassel <niklas.cassel@wdc.com>,
+	linux-pci@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 2/4] arm64: dts: rockchip: add missing mandatory rk3588 PCIe atu property
-Date: Tue, 24 Oct 2023 17:10:09 +0200
-Message-ID: <20231024151014.240695-3-nks@flawful.org>
+Subject: [PATCH v2 3/4] dt-bindings: PCI: dwc: rockchip: Add dma properties
+Date: Tue, 24 Oct 2023 17:10:10 +0200
+Message-ID: <20231024151014.240695-4-nks@flawful.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231024151014.240695-1-nks@flawful.org>
 References: <20231024151014.240695-1-nks@flawful.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_081204_732824_553DA0A7 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20231024_081234_736442_04D3DEEE 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,129 +114,81 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Niklas Cassel <niklas.cassel@wdc.com>
 
-From the snps,dw-pcie.yaml devicetree binding:
-"At least DBI reg-space and peripheral devices CFG-space outbound window
-are required for the normal controller work. iATU memory IO region is
-also required if the space is unrolled (IP-core version >= 4.80a)."
+Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
+using:
 
-All the PCIe controllers in rk3588 are using the iATU unroll feature,
-and thus have to supply the atu property in the device tree node.
+allOf:
+  - $ref: /schemas/pci/snps,dw-pcie.yaml#
 
-The size of the iATU region equals to:
-MAX(num inbound ATU regions, num outbound ATU regions) * 0x200.
+and snps,dw-pcie.yaml does have the dma properties defined, in order to be
+able to use these properties, while still making sure 'make CHECK_DTBS=y'
+pass, we need to add these properties to rockchip-dw-pcie.yaml.
 
-Where for each 0x200 region, the registers controlling the
-IATU_REGION_OUTBOUND starts at offset 0x0, and the registers controlling
-IATU_REGION_INBOUND starts at offset 0x100.
-
-pcie3x4 and pcie3x2 have 16 ATU inbound regions, 16 ATU outbound regions,
-so they have size: max(16, 16) * 0x200 = 0x2000
-
-pcie2x1l0, pcie2x1l1, and pcie2x1l2 have 8 ATU inbound regions, 8 ATU
-outbound regions, so they have size: max(8, 8) * 0x200 = 0x1000
-
-On the rk3588 based rock-5b board:
-Before this patch, dw_pcie_iatu_detect() fails to detect all iATUs:
-rockchip-dw-pcie a40000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-rockchip-dw-pcie a41000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-rockchip-dw-pcie a40800000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-
-After this patch, dw_pcie_iatu_detect() succeeds to detect all iATUs:
-rockchip-dw-pcie a40000000.pcie: iATU: unroll T, 16 ob, 16 ib, align 64K, limit 8G
-rockchip-dw-pcie a41000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-rockchip-dw-pcie a40800000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-
-Fixes: 8d81b77f4c49 ("arm64: dts: rockchip: add rk3588 PCIe2 support")
-Fixes: 0acf4fa7f187 ("arm64: dts: rockchip: add PCIe3 support for rk3588")
 Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588.dtsi  | 21 ++++++++++++---------
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 14 ++++++++------
- 2 files changed, 20 insertions(+), 15 deletions(-)
+ .../bindings/pci/rockchip-dw-pcie.yaml        | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 5519c1430cb7..d7998a9c0c43 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -119,10 +119,11 @@ pcie3x4: pcie@fe150000 {
- 		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x00e00000>,
- 			 <0x03000000 0x0 0x40000000 0x9 0x00000000 0x0 0x40000000>;
--		reg = <0xa 0x40000000 0x0 0x00400000>,
-+		reg = <0xa 0x40000000 0x0 0x00300000>,
- 		      <0x0 0xfe150000 0x0 0x00010000>,
--		      <0x0 0xf0000000 0x0 0x00100000>;
--		reg-names = "dbi", "apb", "config";
-+		      <0x0 0xf0000000 0x0 0x00100000>,
-+		      <0xa 0x40300000 0x0 0x00002000>;
-+		reg-names = "dbi", "apb", "config", "atu";
- 		resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
- 		reset-names = "pwr", "pipe";
- 		status = "disabled";
-@@ -170,10 +171,11 @@ pcie3x2: pcie@fe160000 {
- 		ranges = <0x01000000 0x0 0xf1100000 0x0 0xf1100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf1200000 0x0 0xf1200000 0x0 0x00e00000>,
- 			 <0x03000000 0x0 0x40000000 0x9 0x40000000 0x0 0x40000000>;
--		reg = <0xa 0x40400000 0x0 0x00400000>,
-+		reg = <0xa 0x40400000 0x0 0x00300000>,
- 		      <0x0 0xfe160000 0x0 0x00010000>,
--		      <0x0 0xf1000000 0x0 0x00100000>;
--		reg-names = "dbi", "apb", "config";
-+		      <0x0 0xf1000000 0x0 0x00100000>,
-+		      <0xa 0x40700000 0x0 0x00002000>;
-+		reg-names = "dbi", "apb", "config", "atu";
- 		resets = <&cru SRST_PCIE1_POWER_UP>, <&cru SRST_P_PCIE1>;
- 		reset-names = "pwr", "pipe";
- 		status = "disabled";
-@@ -219,10 +221,11 @@ pcie2x1l0: pcie@fe170000 {
- 		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x00e00000>,
- 			 <0x03000000 0x0 0x40000000 0x9 0x80000000 0x0 0x40000000>;
--		reg = <0xa 0x40800000 0x0 0x00400000>,
-+		reg = <0xa 0x40800000 0x0 0x00300000>,
- 		      <0x0 0xfe170000 0x0 0x00010000>,
--		      <0x0 0xf2000000 0x0 0x00100000>;
--		reg-names = "dbi", "apb", "config";
-+		      <0x0 0xf2000000 0x0 0x00100000>,
-+		      <0xa 0x40b00000 0x0 0x00001000>;
-+		reg-names = "dbi", "apb", "config", "atu";
- 		resets = <&cru SRST_PCIE2_POWER_UP>, <&cru SRST_P_PCIE2>;
- 		reset-names = "pwr", "pipe";
- 		#address-cells = <3>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 5544f66c6ff4..286d7b10b9dd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1259,10 +1259,11 @@ pcie2x1l1: pcie@fe180000 {
- 		ranges = <0x01000000 0x0 0xf3100000 0x0 0xf3100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf3200000 0x0 0xf3200000 0x0 0x00e00000>,
- 			 <0x03000000 0x0 0x40000000 0x9 0xc0000000 0x0 0x40000000>;
--		reg = <0xa 0x40c00000 0x0 0x00400000>,
-+		reg = <0xa 0x40c00000 0x0 0x00300000>,
- 		      <0x0 0xfe180000 0x0 0x00010000>,
--		      <0x0 0xf3000000 0x0 0x00100000>;
--		reg-names = "dbi", "apb", "config";
-+		      <0x0 0xf3000000 0x0 0x00100000>,
-+		      <0xa 0x40f00000 0x0 0x00001000>;
-+		reg-names = "dbi", "apb", "config", "atu";
- 		resets = <&cru SRST_PCIE3_POWER_UP>, <&cru SRST_P_PCIE3>;
- 		reset-names = "pwr", "pipe";
- 		#address-cells = <3>;
-@@ -1310,10 +1311,11 @@ pcie2x1l2: pcie@fe190000 {
- 		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x00e00000>,
- 			 <0x03000000 0x0 0x40000000 0xa 0x00000000 0x0 0x40000000>;
--		reg = <0xa 0x41000000 0x0 0x00400000>,
-+		reg = <0xa 0x41000000 0x0 0x00300000>,
- 		      <0x0 0xfe190000 0x0 0x00010000>,
--		      <0x0 0xf4000000 0x0 0x00100000>;
--		reg-names = "dbi", "apb", "config";
-+		      <0x0 0xf4000000 0x0 0x00100000>,
-+		      <0xa 0x41300000 0x0 0x00001000>;
-+		reg-names = "dbi", "apb", "config", "atu";
- 		resets = <&cru SRST_PCIE4_POWER_UP>, <&cru SRST_P_PCIE4>;
- 		reset-names = "pwr", "pipe";
- 		#address-cells = <3>;
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+index 229f8608c535..633f8e0e884f 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+@@ -35,6 +35,7 @@ properties:
+       - description: Rockchip designed configuration registers
+       - description: Config registers
+       - description: iATU registers
++      - description: eDMA registers
+ 
+   reg-names:
+     minItems: 3
+@@ -43,6 +44,7 @@ properties:
+       - const: apb
+       - const: config
+       - const: atu
++      - const: dma
+ 
+   clocks:
+     minItems: 5
+@@ -65,6 +67,7 @@ properties:
+       - const: pipe
+ 
+   interrupts:
++    minItems: 5
+     items:
+       - description:
+           Combined system interrupt, which is used to signal the following
+@@ -88,14 +91,31 @@ properties:
+           interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
+           tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
+           nf_err_rx, f_err_rx, radm_qoverflow
++      - description:
++          Indicates that the eDMA Tx/Rx transfer is complete or that an
++          error has occurred on the corresponding channel.
++      - description:
++          Indicates that the eDMA Tx/Rx transfer is complete or that an
++          error has occurred on the corresponding channel.
++      - description:
++          Indicates that the eDMA Tx/Rx transfer is complete or that an
++          error has occurred on the corresponding channel.
++      - description:
++          Indicates that the eDMA Tx/Rx transfer is complete or that an
++          error has occurred on the corresponding channel.
+ 
+   interrupt-names:
++    minItems: 5
+     items:
+       - const: sys
+       - const: pmc
+       - const: msg
+       - const: legacy
+       - const: err
++      - const: dma0
++      - const: dma1
++      - const: dma2
++      - const: dma3
+ 
+   legacy-interrupt-controller:
+     description: Interrupt controller node for handling legacy PCI interrupts.
 -- 
 2.41.0
 
