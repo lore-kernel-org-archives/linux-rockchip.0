@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29195C00A8F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 16:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCE7AC07545
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 18:28:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gyssOBZE5SY7EmuZ/elxfedkEOc1SGF0T69sRXRVVVQ=; b=wIPioQIHolXlUR
-	w+tUnnIYlucogVWlwd7bmklGhphu1eALwFipgzYzVIUvnC0WkmOe8RdIQMrvoOsj4x4oj30gFCN8t
-	hdJ1m0n7manfTzYdlqED/0g2APzWo3HBYq23M7880e40RGCXUrUfeoYYakLIfdU+sDhZUSHbV2efy
-	ioUmyY7rWBK7TvoiZPRnIv5/me9hbj6BWp8JCsxnEhAPMaxYHnByaaNi1RrrcfvWwi09zSzumwQMt
-	6Wcw9R+R9KDrIJlz3DWPXBOUU/IqrgG7cM7A0/7OXBmmWo+lzRWw4z1LkYnPexMo9RJ9JNQdtcHQt
-	kcnjP3fyXKqh8tbgHl4w==;
+	List-Owner; bh=IITVL4FKuQi9cHw4DsBESkWXwnv2Yb1dSnTfhCFIWbU=; b=NsCeadhc+VOR+I
+	YWAGSwPij2pP4ZUtiuznfl9j00V8Ip3drnFu8jEi8BHsLI9bio/Jy4VyFzl+nI/X/vDTDy81f8aIJ
+	/Z8rFmkFBaXxLt8lbvnRGGPi0KGdgfAsui6MHUJnM3DsfPhVl6vdN2ek4utTbD+H1mRBbxzupaT83
+	xmd3Yf8f8mUxtTpjLNaCmx0m1VvfjbFuId2pQX8oFjgqNfSEvcF9a7har4NLTbOWXwHif7kvcHIvL
+	EBwarlUcnafcRdpQekZxC+MvAFIQ2CvRQEG4xF8+m+d8E0EVpaDSg95NbChGW5vB7Sk5Aqwd7rO0g
+	gZCttEA2FfMea2IFMxdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvKO4-00AVdf-0M;
-	Tue, 24 Oct 2023 16:36:12 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1qvM8T-00Afes-2E;
+	Tue, 24 Oct 2023 18:28:13 +0000
+Received: from mail-oo1-f43.google.com ([209.85.161.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvKO0-00AVOn-0g;
-	Tue, 24 Oct 2023 16:36:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1698165319;
- bh=k21LPgbaXuVTMNzlRaDriqzC8GcqWDmt35DfR5fv1k8=;
- b=PppQoAI98K+Y9knZLBLg2sCDk8DMKy/Gq8Wk0um0sJX8mO1qW4wNUI5waVqGi0cHq6IAb3vY9
- Cr2jugZLOeULhKD+0rIpNrm8YvKtBYHHgWHCWRizJz6gdinGA1mLUWY9kATKR0QaRtXqIrexRgA
- j1hdkfXoUMllgzxKAUMPrVXzx2yRUughn3xeiZlJcxJkBqJNbjFBUoBpzwnc62mMBPQHqVwlBcv
- NBPPYoTFn3jjTYzageV43X9IsDzqNQhSBraA766mW6SGRGvyrItH8ICDJ8an5l9r7SJAq6uZS+c
- CiNhIL4J33NLDKe1W/frfNRucmxCf1INKMqv2oXb86AQ==
-Message-ID: <fef3c504-aa69-4575-abb0-15e6ded67858@kwiboo.se>
-Date: Tue, 24 Oct 2023 18:35:14 +0200
+	id 1qvM8Q-00Afb8-15
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Oct 2023 18:28:12 +0000
+Received: by mail-oo1-f43.google.com with SMTP id 006d021491bc7-5820299b99cso21789eaf.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Oct 2023 11:27:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698172077; x=1698776877;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZNng016sWlIYuCE41qXO+ZMCuxWjt/SPYUfNc1rT6qY=;
+        b=rxY/tEzi3eqw/0hGuD9o13p8uUOvEAwkbSh/BSxpY/fNc+Yl2fLWDE8+qBDeMUt1Rh
+         V2myFftM5Udjy2JJG79d4ZLOF4b3uLl9k6EtlrAGubajcuak22Xa+ES+P6IJxw7K6Lds
+         A3VFi2PqFuNOZSF5KxaNGUeHnJCatUcbsRj7aC5HTRTofEGVVYShkBJuptM/o2+faA7h
+         HYOXhk47biihWAzxjLNZElp/0USlzcb5mfoX4pzEF9LlGjikhJFVHVnK1RliStl1olQw
+         /deTJAspikEAXWv/hLtu+zwEwTqebnZ/os0OXGt1GZ6XSSCnkx83Q/dGg2MRVpPGTWje
+         f8DA==
+X-Gm-Message-State: AOJu0Yw4N6mO4k7pYvlHRF+VwAn144a3Wi1dz8nKd+VH+dFPE12EZK1g
+	lexZLcm+dJGKlfzrn0KwLQ==
+X-Google-Smtp-Source: AGHT+IF4Mo7SI7+Mkd9TqQMoBcw8WQzBGoqowxfYx/0ojUXzi24Q6N3YSxHT8mMusatDWtCimTP/wg==
+X-Received: by 2002:a05:6870:13c6:b0:1e9:b5d7:4000 with SMTP id 6-20020a05687013c600b001e9b5d74000mr6763342oat.7.1698172077184;
+        Tue, 24 Oct 2023 11:27:57 -0700 (PDT)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id cj19-20020a05687c041300b001c02f12abd0sm2231435oac.38.2023.10.24.11.27.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Oct 2023 11:27:56 -0700 (PDT)
+Received: (nullmailer pid 243306 invoked by uid 1000);
+	Tue, 24 Oct 2023 18:27:55 -0000
+Date: Tue, 24 Oct 2023 13:27:55 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, sboyd@kernel.org, mturquette@baylibre.com, daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Subject: Re: [PATCH 1/5] dt-bindings: display: panel: Update NewVision
+ NV3051D compatibles
+Message-ID: <20231024182755.GA215478-robh@kernel.org>
+References: <20231018161848.346947-1-macroalpha82@gmail.com>
+ <20231018161848.346947-2-macroalpha82@gmail.com>
+ <e684983a-9399-4fd7-8fe5-41faeabbfab1@linaro.org>
+ <SN6PR06MB534271680DB8A3A3F0A1A31CA5D4A@SN6PR06MB5342.namprd06.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/rockchip: vop: Fix color for RGB888/BGR888 format on
- VOP full
-Content-Language: en-US
-To: Andy Yan <andy.yan@rock-chips.com>, Christopher Obbard
- <chris.obbard@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Sandy
- Huang <hjc@rock-chips.com>, David Airlie <airlied@gmail.com>, Daniel
- Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel
- <kernel@collabora.com>
-References: <20231023211158.424489-1-jonas@kwiboo.se>
- <a505d18044ccef9f188df91bc2afe73e6a15635f.camel@collabora.com>
- <107e7a80-ace1-441d-89c9-44e6465fefbd@rock-chips.com>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <107e7a80-ace1-441d-89c9-44e6465fefbd@rock-chips.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 6537f2474f8c8c0dd69aa635
+Content-Disposition: inline
+In-Reply-To: <SN6PR06MB534271680DB8A3A3F0A1A31CA5D4A@SN6PR06MB5342.namprd06.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_093608_865842_BE170359 
-X-CRM114-Status: GOOD (  23.90  )
+X-CRM114-CacheID: sfid-20231024_112810_380386_EACFEC45 
+X-CRM114-Status: GOOD (  32.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,87 +80,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMy0xMC0yNCAxNDo0MSwgQW5keSBZYW4gd3JvdGU6Cj4gSGk6Cj4gCj4gT24gMTAvMjQv
-MjMgMTY6NDksIENocmlzdG9waGVyIE9iYmFyZCB3cm90ZToKPj4gSGkgSm9uYXMsCj4+Cj4+IE9u
-IE1vbiwgMjAyMy0xMC0yMyBhdCAyMToxMSArMDAwMCwgSm9uYXMgS2FybG1hbiB3cm90ZToKPj4+
-IFVzZSBvZiBEUk1fRk9STUFUX1JHQjg4OCBhbmQgRFJNX0ZPUk1BVF9CR1I4ODggb24gZS5nLiBS
-SzMyODgsIFJLMzMyOAo+Pj4gYW5kIFJLMzM5OSByZXN1bHQgaW4gd3JvbmcgY29sb3JzIGJlaW5n
-IGRpc3BsYXllZC4KPj4+Cj4+PiBUaGUgaXNzdWUgY2FuIGJlIG9ic2VydmVkIHVzaW5nIG1vZGV0
-ZXN0Ogo+Pj4KPj4+ICDCoCBtb2RldGVzdCAtcyA8Y29ubmVjdG9yX2lkPkA8Y3J0Y19pZD46MTky
-MHgxMDgwLTYwQFJHMjQKPj4+ICDCoCBtb2RldGVzdCAtcyA8Y29ubmVjdG9yX2lkPkA8Y3J0Y19p
-ZD46MTkyMHgxMDgwLTYwQEJHMjQKPj4+Cj4+PiBWZW5kb3IgNC40IGtlcm5lbCBhcHBseSBhbiBp
-bnZlcnRlZCByYiBzd2FwIGZvciB0aGVzZSBmb3JtYXRzIG9uIFZPUAo+Pj4gZnVsbCAobWFqb3Ig
-PSAzKS4KPj4+Cj4+PiBGaXggY29sb3JzIGJ5IGFwcGx5aW5nIHJiIHN3YXAgc2ltaWxhciB0byB2
-ZW5kb3IgNC40IGtlcm5lbC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxq
-b25hc0Brd2lib28uc2U+Cj4+IEhvdyBhYm91dCBhIGZpeGVzIHRhZz8gU2VlbXMgbGlrZSB0aGlz
-IHdhcyBpbnRyb2R1Y2VkIGluIGNvbW1pdCA4NWEzNTlmMjUzODgKPj4gKCJkcm0vcm9ja2NoaXA6
-IEFkZCBCR1IgZm9ybWF0cyB0byBWT1AiKQoKVGhhdCBjb21taXQgYWRkZWQgQkdSODg4IGZvcm1h
-dCwgdGhlIFJHQjg4OCBmb3JtYXQgZ29lcyBiYWNrIHRvIGZyb20Kd2hlbiBkcml2ZXIgd2FzIGlu
-aXRpYWxseSBhZGRlZC4gVGhpcyBwYXRjaCBkZXBlbmQgb24gYSBtYWNybyB0aGF0IHdhcwppbnRy
-b2R1Y2VkIGxhdGVyLCBpbiBjb21taXQgZWI1Y2I2YWE5YTcyICgiZHJtL3JvY2tjaGlwOiB2b3A6
-IGFkZCBhCnNlcmllcyBvZiB2b3Agc3VwcG9ydCIpLiBTdGlsbCB0aGluayBjb21taXQgODVhMzU5
-ZjI1Mzg4IGlzIGJlc3QgY29tbWl0CnRvIHVzZSBpbiBhIGZpeGVzIHRhZy4KCldpbGwgaW5jbHVk
-ZSBhIGZpeGVzIHRhZyBmb3IgODVhMzU5ZjI1Mzg4IGluIHYyLgoKPj4KPj4+IC0tLQo+Pj4gIMKg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDkgKysrKysrLS0t
-Cj4+PiAgwqAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5jCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
-Pj4+IGluZGV4IGIzZDBiNmFlOTI5NC4uYTFjZTA5YTIyZjgzIDEwMDY0NAo+Pj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4gQEAgLTI0NywxNCArMjQ3
-LDE3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCB2b3BfY2ZnX2RvbmUoc3RydWN0IHZvcCAqdm9wKQo+
-Pj4gIMKgCVZPUF9SRUdfU0VUKHZvcCwgY29tbW9uLCBjZmdfZG9uZSwgMSk7Cj4+PiAgwqB9Cj4+
-PiAgIAo+Pj4gLXN0YXRpYyBib29sIGhhc19yYl9zd2FwcGVkKHVpbnQzMl90IGZvcm1hdCkKPj4+
-ICtzdGF0aWMgYm9vbCBoYXNfcmJfc3dhcHBlZCh1aW50MzJfdCB2ZXJzaW9uLCB1aW50MzJfdCBm
-b3JtYXQpCj4+PiAgwqB7Cj4+PiAgwqAJc3dpdGNoIChmb3JtYXQpIHsKPj4+ICDCoAljYXNlIERS
-TV9GT1JNQVRfWEJHUjg4ODg6Cj4+PiAgwqAJY2FzZSBEUk1fRk9STUFUX0FCR1I4ODg4Ogo+Pj4g
-LQljYXNlIERSTV9GT1JNQVRfQkdSODg4Ogo+Pj4gIMKgCWNhc2UgRFJNX0ZPUk1BVF9CR1I1NjU6
-Cj4+PiAgwqAJCXJldHVybiB0cnVlOwo+Pj4gKwljYXNlIERSTV9GT1JNQVRfUkdCODg4Ogo+Pj4g
-KwkJcmV0dXJuIFZPUF9NQUpPUih2ZXJzaW9uKSA9PSAzOwo+Pj4gKwljYXNlIERSTV9GT1JNQVRf
-QkdSODg4Ogo+Pj4gKwkJcmV0dXJuIFZPUF9NQUpPUih2ZXJzaW9uKSAhPSAzOwo+PiBUaGUgaGFy
-ZGNvZGVkIGJpdHMgYXJlIHF1aXRlIHNjYXJ5IGFzIGl0IGFwcGxpZXMgdG8gYWxsIGhhcmR3YXJl
-IHZhcmlhbnRzIDstKS4KPj4gSXMgaXQgd29ydGggYWRkaW5nIGFuIGlubGluZSBjb21tZW50IHRv
-IGRlc2NyaWJlIHdoYXQgaXMgZ29pbmcgb24gYW5kIGhvdyBpdAo+PiByZWxhdGVzIHRvIFZPUEwg
-YW5kIFZPUEg/IE9yIHdvdWxkIGl0IGJlIGV2ZW4gYmV0dGVyIHRvIGFkZCB0aGlzIGFzIGEgcXVp
-cmsgaW4KPj4gdGhlIHZhcmlvdXMgdm9wX2RhdGEgc3RydWN0cz8KPiAKCkkgd2lsbCBhZGQgYSBj
-b21tZW50IGluIHYyLgoKSXQgd291bGQgYmUgYSBxdWlyayB0aGF0IGFwcGx5IGZvciBhbGwgVk9Q
-IGZ1bGwgZnJhbWV3b3JrLCBJUCB2ZXJzaW9uIDMueCwKU29DcyBzbyBjaGVja2luZyBWT1BfTUFK
-T1Igc2VlbSBsaWtlIGEgZ29vZCBvcHRpb24uCgpTZWUgY29tbWl0IGViNWNiNmFhOWE3MiAoImRy
-bS9yb2NrY2hpcDogdm9wOiBhZGQgYSBzZXJpZXMgb2Ygdm9wIHN1cHBvcnQiKQpmb3IgYSBsaXN0
-IG9mIFNvQ3MgdGhhdCB1c2UgVk9QIGZ1bGwgZnJhbWV3b3JrOgoKICBWb3AgRnVsbCBmcmFtZXdv
-cmsgbm93IGhhcyBmb2xsb3dpbmcgdm9wczoKICBJUCB2ZXJzaW9uICAgIGNoaXBuYW1lCiAgICAz
-LjEgICAgICAgICAgIHJrMzI4OAogICAgMy4yICAgICAgICAgICByazMzNjgKICAgIDMuNCAgICAg
-ICAgICAgcmszMzY2CiAgICAzLjUgICAgICAgICAgIHJrMzM5OSBiaWcKICAgIDMuNiAgICAgICAg
-ICAgcmszMzk5IGxpdAogICAgMy43ICAgICAgICAgICByazMyMjgKICAgIDMuOCAgICAgICAgICAg
-cmszMzI4CgogIG1ham9yIHZlcnNpb246IHVzZWQgZm9yIElQIHN0cnVjdHVyZSwgVm9wIGZ1bGwg
-ZnJhbWV3b3JrIGlzIDMsCiAgICAgICAgICAgICAgICAgdm9wIGxpdHRsZSBmcmFtZXdvcmsgaXMg
-Mi4KClRoZXJlIGFyZSBjdXJyZW50bHkgdGhyZWUgc3RydWN0IHZvcF9kYXRhIHRoYXQgaXMgbWlz
-c2luZyB2ZXJzaW9uIGRlY2xhcmF0aW9uOgoKLSByazMwMzZfdm9wIHNob3VsZCB1c2UgVk9QX1ZF
-UlNJT04oMiwgMikKLSByazMxMjZfdm9wIHNob3VsZCB1c2UgVk9QX1ZFUlNJT04oMiwgNCkKLSBy
-azMxODhfdm9wIGd1ZXNzaW5nIGlzIDIuMC8yLjEgKHNhbWUvc2ltaWxhciBhcyByazMwNjYpCgpT
-aW5jZSBub25lIG9mIHRoZW0gYXJlIDMueCAvIFZPUCBmdWxsIGZyYW1ld29yaywgdGhpcyBwYXRj
-aCBzaG91bGQgb25seQpmaXgvY2hhbmdlIGJlaGF2aW9yIGZvciBhZmZlY3RlZCAzLnggLyBWT1Ag
-ZnVsbCBmcmFtZXdvcmsgU29Dcy4KClJlZ2FyZHMsCkpvbmFzCgo+IAo+IEV2ZXJ5IHZvcCBoYXJk
-d2FyZSBoYXMgYSB2ZXJzaW9uKGluY2x1ZGluZyBWT1BCL1ZPUEwpLCBzbyBJIHRoaW5rIHVzZSAK
-PiBWT1BfTUFKT1IgdG8gZGlzdGluZ3Vpc2ggaXMgb2suIE9mIGNvdXJzZSBpdCdzIGJldHRlcgo+
-IAo+IHRvIGFkZCBzb21lIGNvbW1lbnRzLiBBcyBmb3IgYWRkaW5nIHNvbWUgcXVpcmsgaW4gdm9w
-X2RhdGEsIEkgaGF2ZSB0aGUgCj4gaWRlYSBvZiBhZGRpbmcgYSB0YWJsZSB0byBkZXNjcmliZSB0
-aGUgZHJtIGZvcm1hdCBhbmQgaXQncyAocmIvdXYgc3dhcCwgCj4gYWZiYykKPiAKPiBjYXBhYmls
-aXR5LCBidXQgSSB0aGluayB0aGlzIGlzIGNhbiBiZSBkb25lIGluIHRoZSBmdXR1cmUuCj4gCj4+
-Cj4+Cj4+IENoZWVycyEKPj4KPj4gQ2hyaXMKPj4KPj4+ICDCoAlkZWZhdWx0Ogo+Pj4gIMKgCQly
-ZXR1cm4gZmFsc2U7Cj4+PiAgwqAJfQo+Pj4gQEAgLTEwMzUsNyArMTAzOCw3IEBAIHN0YXRpYyB2
-b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUKPj4+ICpwbGFuZSwK
-Pj4+ICDCoAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZHNwX2luZm8sIGRzcF9pbmZvKTsKPj4+ICDC
-oAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZHNwX3N0LCBkc3Bfc3QpOwo+Pj4gICAKPj4+IC0JcmJf
-c3dhcCA9IGhhc19yYl9zd2FwcGVkKGZiLT5mb3JtYXQtPmZvcm1hdCk7Cj4+PiArCXJiX3N3YXAg
-PSBoYXNfcmJfc3dhcHBlZCh2b3AtPmRhdGEtPnZlcnNpb24sIGZiLT5mb3JtYXQtPmZvcm1hdCk7
-Cj4+PiAgwqAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHJiX3N3YXAsIHJiX3N3YXApOwo+Pj4gICAK
-Pj4+ICDCoAkvKgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Thu, Oct 19, 2023 at 09:50:38AM -0500, Chris Morgan wrote:
+> On Thu, Oct 19, 2023 at 11:22:19AM +0200, Krzysztof Kozlowski wrote:
+> > On 18/10/2023 18:18, Chris Morgan wrote:
+> > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > 
+> > > Update the NewVision NV3051D compatible strings by adding a new panel,
+> > > the powkiddy,rk2023-panel, and removing another entry, the
+> > > anbernic,rg353v-panel. The rg353v-panel is exactly identical to the
+> > > rg353p-panel and is not currently in use by any existing device tree.
+> > > The rk2023-panel is similar to the rg353p-panel but has slightly
+> > > different timings.
+> > 
+> > This still does not explain me why do you want to remove old panel.
+> 
+> When I originally wrote the driver I only had one piece of hardware
+> and I set the compatible string in the driver as newvision,nv3051d.
+> Unfortunately since then I've found 2 more devices in use that are
+> *just* different enough to require the driver to do things a bit
+> differently. In the case of the anbernic,rg351v-panel I need to
+> enable a new DSI flag; in the case of the powkiddy,rk2023-panel I need
+> to decrease the vertical back porch and drop the higher frequency
+> timings.
+> 
+> The best way to accomplish this was to change the strategy from having
+> a single binding in the driver of newvision,nv3051d to a binding for
+> each distinct hardware where the differences apply. 
+
+Exactly why the DT maintainers annoyingly ask for specific compatible 
+strings which may not be used immediately.
+
+> Note that I've
+> looked at querying the DSI panel ID, but for each device the value
+> is identical (so it can't be used to differentiate the hardware sadly).
+> So the driver now has 3 different compatible strings. I could in this
+> case add a 4th compatible string of anbernic,rg353v-panel but it would
+> be identical to anbernic,rg353p-panel. For the moment we are using
+> anbernic,rg353p-panel everywhere (including the rg353v), so it makes
+> sense to drop this unused value while we can, at least to me.
+
+Your reasoning is the compatible string is unused, so remove it. 
+
+If there's some reasoning about how the 2 panels are the same hardware 
+or the rg353v is never going to be used or show up at some point, then 
+that would be a reason to remove.
+
+You could also say the rg353v is just wrong because it should have a 
+fallback compatible to rg353p and rather than fix it, just remove it 
+for now since there are no known users of it.
+
+Rob
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
