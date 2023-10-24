@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 223F5C07545
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 16:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29195C00A8F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 16:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vDn0LPg0MyH0jP6ZWls4YwuHRNEpa6l6J72nto+BVmw=; b=0WnfMAN/5iP0TDayK41jfSno01
-	bX8+Gz97eOVbi60qbPCUUoUD63Qb0MX4IH3KvJF3glGmvVVG5mZAigY9lWhH3Y9guhIBuwICtlQUK
-	vX19JZtCnD5Ytjt4Qr7qCHPufh6i0Td+Nb2HMWxmRAcrKJG+jNVHgaViwfsQDusFz/UoYZ+rTNQi3
-	tfOnC0GQNQbTAbwYYHQdAPE1PmFz3vclgu1r/f8O16nbEorOIbvi96YNprTMhtFAN4OXqBIqnJAkN
-	5dCHAPEL+2lv/9btwZvklyS3CSMou75g/MJjgGNy4g2F6ggizoexAdhTrQSIxIZwCXq+/KL95BhFh
-	j9WPNcdw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gyssOBZE5SY7EmuZ/elxfedkEOc1SGF0T69sRXRVVVQ=; b=wIPioQIHolXlUR
+	w+tUnnIYlucogVWlwd7bmklGhphu1eALwFipgzYzVIUvnC0WkmOe8RdIQMrvoOsj4x4oj30gFCN8t
+	hdJ1m0n7manfTzYdlqED/0g2APzWo3HBYq23M7880e40RGCXUrUfeoYYakLIfdU+sDhZUSHbV2efy
+	ioUmyY7rWBK7TvoiZPRnIv5/me9hbj6BWp8JCsxnEhAPMaxYHnByaaNi1RrrcfvWwi09zSzumwQMt
+	6Wcw9R+R9KDrIJlz3DWPXBOUU/IqrgG7cM7A0/7OXBmmWo+lzRWw4z1LkYnPexMo9RJ9JNQdtcHQt
+	kcnjP3fyXKqh8tbgHl4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvKIa-00AUDw-2N;
-	Tue, 24 Oct 2023 16:30:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qvKO4-00AVdf-0M;
+	Tue, 24 Oct 2023 16:36:12 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvKIW-00AUBX-21;
-	Tue, 24 Oct 2023 16:30:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2118F61040;
-	Tue, 24 Oct 2023 16:30:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D4ABC433C7;
-	Tue, 24 Oct 2023 16:30:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698165027;
-	bh=44omkjt/5HNfGSZPnCmi9G3bNkIwWFJzaa6omHVOCyY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uZQmUam9BmyVNRSqqTzzRweHloTNPmBbbVytfcFzIk6rE0L4viG8VngIqY6QauzM/
-	 nfxPWK+Gv7L6jiXZttxQb8gdF5UYqegtsyVI9cWymh7taCrllPeQpRXePRfRLNfNrV
-	 Psb0tsLwRuB+rTca6vqKe9ItWzH41db1Cy32rwFPt9kZ67a3TsNKUqRliZXn0bBm0T
-	 XCFB7ft8mxf0uYaPS9y5E3KCW94XH7LB43c1TmTGkAQPeq3bMGvXn6biEgwXy/kr9x
-	 FLlFaPEgeQzITQZpGXkoo5BCqnsaC5Vpe9aIk1i8AjVlkfXBxENhnIO6u0uOFvY2yW
-	 pM3jL7LkLuJyg==
-Date: Tue, 24 Oct 2023 17:30:22 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Niklas Cassel <nks@flawful.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Niklas Cassel <niklas.cassel@wdc.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/4] dt-bindings: PCI: dwc: rockchip: Add dma
- properties
-Message-ID: <20231024-glacial-subpar-6eeff54fbb85@spud>
-References: <20231024151014.240695-1-nks@flawful.org>
- <20231024151014.240695-4-nks@flawful.org>
+	id 1qvKO0-00AVOn-0g;
+	Tue, 24 Oct 2023 16:36:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1698165319;
+ bh=k21LPgbaXuVTMNzlRaDriqzC8GcqWDmt35DfR5fv1k8=;
+ b=PppQoAI98K+Y9knZLBLg2sCDk8DMKy/Gq8Wk0um0sJX8mO1qW4wNUI5waVqGi0cHq6IAb3vY9
+ Cr2jugZLOeULhKD+0rIpNrm8YvKtBYHHgWHCWRizJz6gdinGA1mLUWY9kATKR0QaRtXqIrexRgA
+ j1hdkfXoUMllgzxKAUMPrVXzx2yRUughn3xeiZlJcxJkBqJNbjFBUoBpzwnc62mMBPQHqVwlBcv
+ NBPPYoTFn3jjTYzageV43X9IsDzqNQhSBraA766mW6SGRGvyrItH8ICDJ8an5l9r7SJAq6uZS+c
+ CiNhIL4J33NLDKe1W/frfNRucmxCf1INKMqv2oXb86AQ==
+Message-ID: <fef3c504-aa69-4575-abb0-15e6ded67858@kwiboo.se>
+Date: Tue, 24 Oct 2023 18:35:14 +0200
 MIME-Version: 1.0
-In-Reply-To: <20231024151014.240695-4-nks@flawful.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: vop: Fix color for RGB888/BGR888 format on
+ VOP full
+Content-Language: en-US
+To: Andy Yan <andy.yan@rock-chips.com>, Christopher Obbard
+ <chris.obbard@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Sandy
+ Huang <hjc@rock-chips.com>, David Airlie <airlied@gmail.com>, Daniel
+ Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel
+ <kernel@collabora.com>
+References: <20231023211158.424489-1-jonas@kwiboo.se>
+ <a505d18044ccef9f188df91bc2afe73e6a15635f.camel@collabora.com>
+ <107e7a80-ace1-441d-89c9-44e6465fefbd@rock-chips.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <107e7a80-ace1-441d-89c9-44e6465fefbd@rock-chips.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 6537f2474f8c8c0dd69aa635
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_093028_747273_1722D294 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20231024_093608_865842_BE170359 
+X-CRM114-Status: GOOD (  23.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,140 +76,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1522950345070187047=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============1522950345070187047==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="cwtxAAzMBHSoshSf"
-Content-Disposition: inline
-
-
---cwtxAAzMBHSoshSf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Oct 24, 2023 at 05:10:10PM +0200, Niklas Cassel wrote:
-> From: Niklas Cassel <niklas.cassel@wdc.com>
->=20
-> Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
-> using:
->=20
-> allOf:
->   - $ref: /schemas/pci/snps,dw-pcie.yaml#
->=20
-> and snps,dw-pcie.yaml does have the dma properties defined, in order to be
-> able to use these properties, while still making sure 'make CHECK_DTBS=3D=
-y'
-> pass, we need to add these properties to rockchip-dw-pcie.yaml.
->=20
-> Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
-> ---
->  .../bindings/pci/rockchip-dw-pcie.yaml        | 20 +++++++++++++++++++
->  1 file changed, 20 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml =
-b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> index 229f8608c535..633f8e0e884f 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> @@ -35,6 +35,7 @@ properties:
->        - description: Rockchip designed configuration registers
->        - description: Config registers
->        - description: iATU registers
-> +      - description: eDMA registers
-
-Same here, is this just for one of the two supported models, or for
-both?
-
-Cheers,
-Conor.
-
-> =20
->    reg-names:
->      minItems: 3
-> @@ -43,6 +44,7 @@ properties:
->        - const: apb
->        - const: config
->        - const: atu
-> +      - const: dma
-> =20
->    clocks:
->      minItems: 5
-> @@ -65,6 +67,7 @@ properties:
->        - const: pipe
-> =20
->    interrupts:
-> +    minItems: 5
->      items:
->        - description:
->            Combined system interrupt, which is used to signal the followi=
-ng
-> @@ -88,14 +91,31 @@ properties:
->            interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
->            tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err=
-_rx,
->            nf_err_rx, f_err_rx, radm_qoverflow
-> +      - description:
-> +          Indicates that the eDMA Tx/Rx transfer is complete or that an
-> +          error has occurred on the corresponding channel.
-> +      - description:
-> +          Indicates that the eDMA Tx/Rx transfer is complete or that an
-> +          error has occurred on the corresponding channel.
-> +      - description:
-> +          Indicates that the eDMA Tx/Rx transfer is complete or that an
-> +          error has occurred on the corresponding channel.
-> +      - description:
-> +          Indicates that the eDMA Tx/Rx transfer is complete or that an
-> +          error has occurred on the corresponding channel.
-> =20
->    interrupt-names:
-> +    minItems: 5
->      items:
->        - const: sys
->        - const: pmc
->        - const: msg
->        - const: legacy
->        - const: err
-> +      - const: dma0
-> +      - const: dma1
-> +      - const: dma2
-> +      - const: dma3
-> =20
->    legacy-interrupt-controller:
->      description: Interrupt controller node for handling legacy PCI inter=
-rupts.
-> --=20
-> 2.41.0
->=20
-
---cwtxAAzMBHSoshSf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZTfxHgAKCRB4tDGHoIJi
-0gYhAQCUeQpAqRDJJHkX2Mozq/n5AwQ90PwjptSjFc5zEvFedwEAvFRKKAG7jc2M
-qVh0v3uJUsxnOUAfs19cl4mkkTgUnQg=
-=Aa4G
------END PGP SIGNATURE-----
-
---cwtxAAzMBHSoshSf--
-
-
---===============1522950345070187047==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1522950345070187047==--
-
+T24gMjAyMy0xMC0yNCAxNDo0MSwgQW5keSBZYW4gd3JvdGU6Cj4gSGk6Cj4gCj4gT24gMTAvMjQv
+MjMgMTY6NDksIENocmlzdG9waGVyIE9iYmFyZCB3cm90ZToKPj4gSGkgSm9uYXMsCj4+Cj4+IE9u
+IE1vbiwgMjAyMy0xMC0yMyBhdCAyMToxMSArMDAwMCwgSm9uYXMgS2FybG1hbiB3cm90ZToKPj4+
+IFVzZSBvZiBEUk1fRk9STUFUX1JHQjg4OCBhbmQgRFJNX0ZPUk1BVF9CR1I4ODggb24gZS5nLiBS
+SzMyODgsIFJLMzMyOAo+Pj4gYW5kIFJLMzM5OSByZXN1bHQgaW4gd3JvbmcgY29sb3JzIGJlaW5n
+IGRpc3BsYXllZC4KPj4+Cj4+PiBUaGUgaXNzdWUgY2FuIGJlIG9ic2VydmVkIHVzaW5nIG1vZGV0
+ZXN0Ogo+Pj4KPj4+ICDCoCBtb2RldGVzdCAtcyA8Y29ubmVjdG9yX2lkPkA8Y3J0Y19pZD46MTky
+MHgxMDgwLTYwQFJHMjQKPj4+ICDCoCBtb2RldGVzdCAtcyA8Y29ubmVjdG9yX2lkPkA8Y3J0Y19p
+ZD46MTkyMHgxMDgwLTYwQEJHMjQKPj4+Cj4+PiBWZW5kb3IgNC40IGtlcm5lbCBhcHBseSBhbiBp
+bnZlcnRlZCByYiBzd2FwIGZvciB0aGVzZSBmb3JtYXRzIG9uIFZPUAo+Pj4gZnVsbCAobWFqb3Ig
+PSAzKS4KPj4+Cj4+PiBGaXggY29sb3JzIGJ5IGFwcGx5aW5nIHJiIHN3YXAgc2ltaWxhciB0byB2
+ZW5kb3IgNC40IGtlcm5lbC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxq
+b25hc0Brd2lib28uc2U+Cj4+IEhvdyBhYm91dCBhIGZpeGVzIHRhZz8gU2VlbXMgbGlrZSB0aGlz
+IHdhcyBpbnRyb2R1Y2VkIGluIGNvbW1pdCA4NWEzNTlmMjUzODgKPj4gKCJkcm0vcm9ja2NoaXA6
+IEFkZCBCR1IgZm9ybWF0cyB0byBWT1AiKQoKVGhhdCBjb21taXQgYWRkZWQgQkdSODg4IGZvcm1h
+dCwgdGhlIFJHQjg4OCBmb3JtYXQgZ29lcyBiYWNrIHRvIGZyb20Kd2hlbiBkcml2ZXIgd2FzIGlu
+aXRpYWxseSBhZGRlZC4gVGhpcyBwYXRjaCBkZXBlbmQgb24gYSBtYWNybyB0aGF0IHdhcwppbnRy
+b2R1Y2VkIGxhdGVyLCBpbiBjb21taXQgZWI1Y2I2YWE5YTcyICgiZHJtL3JvY2tjaGlwOiB2b3A6
+IGFkZCBhCnNlcmllcyBvZiB2b3Agc3VwcG9ydCIpLiBTdGlsbCB0aGluayBjb21taXQgODVhMzU5
+ZjI1Mzg4IGlzIGJlc3QgY29tbWl0CnRvIHVzZSBpbiBhIGZpeGVzIHRhZy4KCldpbGwgaW5jbHVk
+ZSBhIGZpeGVzIHRhZyBmb3IgODVhMzU5ZjI1Mzg4IGluIHYyLgoKPj4KPj4+IC0tLQo+Pj4gIMKg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDkgKysrKysrLS0t
+Cj4+PiAgwqAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+
+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
+Pj4+IGluZGV4IGIzZDBiNmFlOTI5NC4uYTFjZTA5YTIyZjgzIDEwMDY0NAo+Pj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4gQEAgLTI0NywxNCArMjQ3
+LDE3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCB2b3BfY2ZnX2RvbmUoc3RydWN0IHZvcCAqdm9wKQo+
+Pj4gIMKgCVZPUF9SRUdfU0VUKHZvcCwgY29tbW9uLCBjZmdfZG9uZSwgMSk7Cj4+PiAgwqB9Cj4+
+PiAgIAo+Pj4gLXN0YXRpYyBib29sIGhhc19yYl9zd2FwcGVkKHVpbnQzMl90IGZvcm1hdCkKPj4+
+ICtzdGF0aWMgYm9vbCBoYXNfcmJfc3dhcHBlZCh1aW50MzJfdCB2ZXJzaW9uLCB1aW50MzJfdCBm
+b3JtYXQpCj4+PiAgwqB7Cj4+PiAgwqAJc3dpdGNoIChmb3JtYXQpIHsKPj4+ICDCoAljYXNlIERS
+TV9GT1JNQVRfWEJHUjg4ODg6Cj4+PiAgwqAJY2FzZSBEUk1fRk9STUFUX0FCR1I4ODg4Ogo+Pj4g
+LQljYXNlIERSTV9GT1JNQVRfQkdSODg4Ogo+Pj4gIMKgCWNhc2UgRFJNX0ZPUk1BVF9CR1I1NjU6
+Cj4+PiAgwqAJCXJldHVybiB0cnVlOwo+Pj4gKwljYXNlIERSTV9GT1JNQVRfUkdCODg4Ogo+Pj4g
+KwkJcmV0dXJuIFZPUF9NQUpPUih2ZXJzaW9uKSA9PSAzOwo+Pj4gKwljYXNlIERSTV9GT1JNQVRf
+QkdSODg4Ogo+Pj4gKwkJcmV0dXJuIFZPUF9NQUpPUih2ZXJzaW9uKSAhPSAzOwo+PiBUaGUgaGFy
+ZGNvZGVkIGJpdHMgYXJlIHF1aXRlIHNjYXJ5IGFzIGl0IGFwcGxpZXMgdG8gYWxsIGhhcmR3YXJl
+IHZhcmlhbnRzIDstKS4KPj4gSXMgaXQgd29ydGggYWRkaW5nIGFuIGlubGluZSBjb21tZW50IHRv
+IGRlc2NyaWJlIHdoYXQgaXMgZ29pbmcgb24gYW5kIGhvdyBpdAo+PiByZWxhdGVzIHRvIFZPUEwg
+YW5kIFZPUEg/IE9yIHdvdWxkIGl0IGJlIGV2ZW4gYmV0dGVyIHRvIGFkZCB0aGlzIGFzIGEgcXVp
+cmsgaW4KPj4gdGhlIHZhcmlvdXMgdm9wX2RhdGEgc3RydWN0cz8KPiAKCkkgd2lsbCBhZGQgYSBj
+b21tZW50IGluIHYyLgoKSXQgd291bGQgYmUgYSBxdWlyayB0aGF0IGFwcGx5IGZvciBhbGwgVk9Q
+IGZ1bGwgZnJhbWV3b3JrLCBJUCB2ZXJzaW9uIDMueCwKU29DcyBzbyBjaGVja2luZyBWT1BfTUFK
+T1Igc2VlbSBsaWtlIGEgZ29vZCBvcHRpb24uCgpTZWUgY29tbWl0IGViNWNiNmFhOWE3MiAoImRy
+bS9yb2NrY2hpcDogdm9wOiBhZGQgYSBzZXJpZXMgb2Ygdm9wIHN1cHBvcnQiKQpmb3IgYSBsaXN0
+IG9mIFNvQ3MgdGhhdCB1c2UgVk9QIGZ1bGwgZnJhbWV3b3JrOgoKICBWb3AgRnVsbCBmcmFtZXdv
+cmsgbm93IGhhcyBmb2xsb3dpbmcgdm9wczoKICBJUCB2ZXJzaW9uICAgIGNoaXBuYW1lCiAgICAz
+LjEgICAgICAgICAgIHJrMzI4OAogICAgMy4yICAgICAgICAgICByazMzNjgKICAgIDMuNCAgICAg
+ICAgICAgcmszMzY2CiAgICAzLjUgICAgICAgICAgIHJrMzM5OSBiaWcKICAgIDMuNiAgICAgICAg
+ICAgcmszMzk5IGxpdAogICAgMy43ICAgICAgICAgICByazMyMjgKICAgIDMuOCAgICAgICAgICAg
+cmszMzI4CgogIG1ham9yIHZlcnNpb246IHVzZWQgZm9yIElQIHN0cnVjdHVyZSwgVm9wIGZ1bGwg
+ZnJhbWV3b3JrIGlzIDMsCiAgICAgICAgICAgICAgICAgdm9wIGxpdHRsZSBmcmFtZXdvcmsgaXMg
+Mi4KClRoZXJlIGFyZSBjdXJyZW50bHkgdGhyZWUgc3RydWN0IHZvcF9kYXRhIHRoYXQgaXMgbWlz
+c2luZyB2ZXJzaW9uIGRlY2xhcmF0aW9uOgoKLSByazMwMzZfdm9wIHNob3VsZCB1c2UgVk9QX1ZF
+UlNJT04oMiwgMikKLSByazMxMjZfdm9wIHNob3VsZCB1c2UgVk9QX1ZFUlNJT04oMiwgNCkKLSBy
+azMxODhfdm9wIGd1ZXNzaW5nIGlzIDIuMC8yLjEgKHNhbWUvc2ltaWxhciBhcyByazMwNjYpCgpT
+aW5jZSBub25lIG9mIHRoZW0gYXJlIDMueCAvIFZPUCBmdWxsIGZyYW1ld29yaywgdGhpcyBwYXRj
+aCBzaG91bGQgb25seQpmaXgvY2hhbmdlIGJlaGF2aW9yIGZvciBhZmZlY3RlZCAzLnggLyBWT1Ag
+ZnVsbCBmcmFtZXdvcmsgU29Dcy4KClJlZ2FyZHMsCkpvbmFzCgo+IAo+IEV2ZXJ5IHZvcCBoYXJk
+d2FyZSBoYXMgYSB2ZXJzaW9uKGluY2x1ZGluZyBWT1BCL1ZPUEwpLCBzbyBJIHRoaW5rIHVzZSAK
+PiBWT1BfTUFKT1IgdG8gZGlzdGluZ3Vpc2ggaXMgb2suIE9mIGNvdXJzZSBpdCdzIGJldHRlcgo+
+IAo+IHRvIGFkZCBzb21lIGNvbW1lbnRzLiBBcyBmb3IgYWRkaW5nIHNvbWUgcXVpcmsgaW4gdm9w
+X2RhdGEsIEkgaGF2ZSB0aGUgCj4gaWRlYSBvZiBhZGRpbmcgYSB0YWJsZSB0byBkZXNjcmliZSB0
+aGUgZHJtIGZvcm1hdCBhbmQgaXQncyAocmIvdXYgc3dhcCwgCj4gYWZiYykKPiAKPiBjYXBhYmls
+aXR5LCBidXQgSSB0aGluayB0aGlzIGlzIGNhbiBiZSBkb25lIGluIHRoZSBmdXR1cmUuCj4gCj4+
+Cj4+Cj4+IENoZWVycyEKPj4KPj4gQ2hyaXMKPj4KPj4+ICDCoAlkZWZhdWx0Ogo+Pj4gIMKgCQly
+ZXR1cm4gZmFsc2U7Cj4+PiAgwqAJfQo+Pj4gQEAgLTEwMzUsNyArMTAzOCw3IEBAIHN0YXRpYyB2
+b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUKPj4+ICpwbGFuZSwK
+Pj4+ICDCoAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZHNwX2luZm8sIGRzcF9pbmZvKTsKPj4+ICDC
+oAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZHNwX3N0LCBkc3Bfc3QpOwo+Pj4gICAKPj4+IC0JcmJf
+c3dhcCA9IGhhc19yYl9zd2FwcGVkKGZiLT5mb3JtYXQtPmZvcm1hdCk7Cj4+PiArCXJiX3N3YXAg
+PSBoYXNfcmJfc3dhcHBlZCh2b3AtPmRhdGEtPnZlcnNpb24sIGZiLT5mb3JtYXQtPmZvcm1hdCk7
+Cj4+PiAgwqAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHJiX3N3YXAsIHJiX3N3YXApOwo+Pj4gICAK
+Pj4+ICDCoAkvKgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
