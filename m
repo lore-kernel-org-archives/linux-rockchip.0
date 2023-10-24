@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC02BC25B47
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 09:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E785C07545
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 12:50:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ysWQAYhamjDyFJWjP8fikqG1UrPwx4S2SRQ8g7nw3Dw=; b=TOeZIZeRTlbafA
-	Dif0Wpa0DK4eH4sEBwRVTuB1gxc3W6z6fskc09fJlnjsEs9Jz5v5jN0xCb50U3zuhTtbWqp4Bo1Kt
-	/FitgYfLHsGLugP1+iPkOsXqF6Rdpus9Et74EG1A2JEOnhlKgDgWY8vVtm3t07+OfUqrapplsUzmh
-	5yHhqRnzCdK+3T2x/8CIgzmNlrUq9I2YF5APqAdqriKyIMsVM9k6Y4Z+j6OPsU9MCUqnCmwGcM9nr
-	mvv9YHIzLRprEj/q8M51w4umNZ0baYoERVePSDkfY8BSV1qoLEQRCnDDTYlxgdDUIpcO4yp461m6a
-	86IlvtcJ+65VWUVL2isw==;
+	List-Owner; bh=sA1TLxa+91Wy1L2ywWwRw/PFDVMbGlUT8s+sNbtiNQE=; b=Fo14sd4SmkK6ly
+	1JuE4AIRrqkByJHCbyc8KyKv2R9GuZBZyplCGOch2XA8eVdyeAlkBtG9/PPWuLC3oOHA4///JI6OG
+	AgLu9zrxQRrvWdrPTKkngsrD8e+8UptbbU7qmpysw6I85/LsZn0w8MtSZkssLVwWm6hP/7lFFYxkf
+	JCzHGJgSob4lVBeaDMwEuY1vL+CCd3qRtPBLS3MKvgbmLYwcj6iEw1+RfmPeNBvMhNxB3Kp80S1fP
+	rxcUX3DN7IK7LLHlKs5J6uMdVOrFx/nEA2bKrAuPoPsaEKix/4DnlJUSRwg6G8gzFoFcMfEk2sGQH
+	0AVnI7oqZYbO1g34sD5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvE1q-009MIo-0n;
-	Tue, 24 Oct 2023 09:48:50 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1qvGr7-009nBm-1k;
+	Tue, 24 Oct 2023 12:49:57 +0000
+Received: from mail-m49201.qiye.163.com ([45.254.49.201])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvE1n-009MHy-2e
-	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Oct 2023 09:48:49 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qvE1m-0004r2-97; Tue, 24 Oct 2023 11:48:46 +0200
-Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qvE1i-003ulF-5o; Tue, 24 Oct 2023 11:48:42 +0200
-Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1qvE1i-00G6Og-39; Tue, 24 Oct 2023 11:48:42 +0200
-Date: Tue, 24 Oct 2023 11:48:42 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	heiko@sntech.de, jonas@kwiboo.se, hjc@rock-chips.com,
-	sebastian.reichel@collabora.com, sjoerd.simons@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v3 0/4] Add more format for vop2 driver
-Message-ID: <20231024094842.GW3359458@pengutronix.de>
-References: <20231018094122.2475668-1-andyshrk@163.com>
+	id 1qvGr4-009nA5-01;
+	Tue, 24 Oct 2023 12:49:55 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=UHrTmeSHrqpiHdcOamHgQaAJb2h9+KyyQVQcQn0b7Mx7zc67kwERIw6q4Y2mpseJxNjoieASmXauE3B3S9w8reaBx0TJTIB0TAICu6Jwi0HcfvF5xZJnlUemBFeN9tyY64QXiqdm05KP7jmVV8btJKa/hZB4gNGCqEqQ25rQpAY=;
+	s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=BeGKd1zRDgUMe8T8OLiWdtvhv6/lo9wdPYUqunmKOOM=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 954C878024B;
+	Tue, 24 Oct 2023 20:41:33 +0800 (CST)
+Message-ID: <107e7a80-ace1-441d-89c9-44e6465fefbd@rock-chips.com>
+Date: Tue, 24 Oct 2023 20:41:33 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231018094122.2475668-1-andyshrk@163.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: vop: Fix color for RGB888/BGR888 format on
+ VOP full
+Content-Language: en-US
+To: Christopher Obbard <chris.obbard@collabora.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel <kernel@collabora.com>
+References: <20231023211158.424489-1-jonas@kwiboo.se>
+ <a505d18044ccef9f188df91bc2afe73e6a15635f.camel@collabora.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <a505d18044ccef9f188df91bc2afe73e6a15635f.camel@collabora.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkMfSVZISkMZGEkeQxodTR1VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8b61b4639cb24fkuuu954c878024b
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PT46Kio4CTwwVj0xGBA3IjAe
+	OTpPChJVSlVKTUJDSk5KSUJPT0tKVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0NOQjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_024847_863150_97BB21C6 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20231024_054954_443150_DDB1939A 
+X-CRM114-Status: GOOD (  21.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,47 +75,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 18, 2023 at 05:41:22PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> 
-> This is a preparation for the upcoming support for rk3588 vop.
-> 
-> Patch 1 make the bpp calculation covery more format
-> Patch 2 remove formats that are unsupported by cluster windows
-> Patch 3 add more formats
-> Patch 4 is a format table rename
-> 
-> And I drop two patches that have applied by Heiko[0]
-> [0]https://patchwork.kernel.org/project/linux-rockchip/cover/20231013122001.1594009-1-andyshrk@163.com/
-> 
-> Changes in v3:
-> - add a bpp calculation function
-> - split patch 
-> - add format check and convert
-> 
-> Andy Yan (4):
->   drm/rockchip: fix vop format bpp calculation
->   drm/rockchip: remove the unsupported format of vop2 cluster window
->   drm/rockchip: Add more format supported by vop2
->   drm/rockchip: rename windows format for vop2
-
-Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGk6CgpPbiAxMC8yNC8yMyAxNjo0OSwgQ2hyaXN0b3BoZXIgT2JiYXJkIHdyb3RlOgo+IEhpIEpv
+bmFzLAo+Cj4gT24gTW9uLCAyMDIzLTEwLTIzIGF0IDIxOjExICswMDAwLCBKb25hcyBLYXJsbWFu
+IHdyb3RlOgo+PiBVc2Ugb2YgRFJNX0ZPUk1BVF9SR0I4ODggYW5kIERSTV9GT1JNQVRfQkdSODg4
+IG9uIGUuZy4gUkszMjg4LCBSSzMzMjgKPj4gYW5kIFJLMzM5OSByZXN1bHQgaW4gd3JvbmcgY29s
+b3JzIGJlaW5nIGRpc3BsYXllZC4KPj4KPj4gVGhlIGlzc3VlIGNhbiBiZSBvYnNlcnZlZCB1c2lu
+ZyBtb2RldGVzdDoKPj4KPj4gIMKgIG1vZGV0ZXN0IC1zIDxjb25uZWN0b3JfaWQ+QDxjcnRjX2lk
+PjoxOTIweDEwODAtNjBAUkcyNAo+PiAgwqAgbW9kZXRlc3QgLXMgPGNvbm5lY3Rvcl9pZD5APGNy
+dGNfaWQ+OjE5MjB4MTA4MC02MEBCRzI0Cj4+Cj4+IFZlbmRvciA0LjQga2VybmVsIGFwcGx5IGFu
+IGludmVydGVkIHJiIHN3YXAgZm9yIHRoZXNlIGZvcm1hdHMgb24gVk9QCj4+IGZ1bGwgKG1ham9y
+ID0gMykuCj4+Cj4+IEZpeCBjb2xvcnMgYnkgYXBwbHlpbmcgcmIgc3dhcCBzaW1pbGFyIHRvIHZl
+bmRvciA0LjQga2VybmVsLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxqb25h
+c0Brd2lib28uc2U+Cj4gSG93IGFib3V0IGEgZml4ZXMgdGFnPyBTZWVtcyBsaWtlIHRoaXMgd2Fz
+IGludHJvZHVjZWQgaW4gY29tbWl0IDg1YTM1OWYyNTM4OAo+ICgiZHJtL3JvY2tjaGlwOiBBZGQg
+QkdSIGZvcm1hdHMgdG8gVk9QIikKPgo+PiAtLS0KPj4gIMKgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDkgKysrKysrLS0tCj4+ICDCoDEgZmlsZSBjaGFuZ2Vk
+LCA2IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGIvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiBpbmRleCBiM2QwYjZhZTkyOTQuLmEx
+Y2UwOWEyMmY4MyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jCj4+IEBAIC0yNDcsMTQgKzI0NywxNyBAQCBzdGF0aWMgaW5saW5lIHZvaWQgdm9w
+X2NmZ19kb25lKHN0cnVjdCB2b3AgKnZvcCkKPj4gIMKgCVZPUF9SRUdfU0VUKHZvcCwgY29tbW9u
+LCBjZmdfZG9uZSwgMSk7Cj4+ICDCoH0KPj4gICAKPj4gLXN0YXRpYyBib29sIGhhc19yYl9zd2Fw
+cGVkKHVpbnQzMl90IGZvcm1hdCkKPj4gK3N0YXRpYyBib29sIGhhc19yYl9zd2FwcGVkKHVpbnQz
+Ml90IHZlcnNpb24sIHVpbnQzMl90IGZvcm1hdCkKPj4gIMKgewo+PiAgwqAJc3dpdGNoIChmb3Jt
+YXQpIHsKPj4gIMKgCWNhc2UgRFJNX0ZPUk1BVF9YQkdSODg4ODoKPj4gIMKgCWNhc2UgRFJNX0ZP
+Uk1BVF9BQkdSODg4ODoKPj4gLQljYXNlIERSTV9GT1JNQVRfQkdSODg4Ogo+PiAgwqAJY2FzZSBE
+Uk1fRk9STUFUX0JHUjU2NToKPj4gIMKgCQlyZXR1cm4gdHJ1ZTsKPj4gKwljYXNlIERSTV9GT1JN
+QVRfUkdCODg4Ogo+PiArCQlyZXR1cm4gVk9QX01BSk9SKHZlcnNpb24pID09IDM7Cj4+ICsJY2Fz
+ZSBEUk1fRk9STUFUX0JHUjg4ODoKPj4gKwkJcmV0dXJuIFZPUF9NQUpPUih2ZXJzaW9uKSAhPSAz
+Owo+IFRoZSBoYXJkY29kZWQgYml0cyBhcmUgcXVpdGUgc2NhcnkgYXMgaXQgYXBwbGllcyB0byBh
+bGwgaGFyZHdhcmUgdmFyaWFudHMgOy0pLgo+IElzIGl0IHdvcnRoIGFkZGluZyBhbiBpbmxpbmUg
+Y29tbWVudCB0byBkZXNjcmliZSB3aGF0IGlzIGdvaW5nIG9uIGFuZCBob3cgaXQKPiByZWxhdGVz
+IHRvIFZPUEwgYW5kIFZPUEg/IE9yIHdvdWxkIGl0IGJlIGV2ZW4gYmV0dGVyIHRvIGFkZCB0aGlz
+IGFzIGEgcXVpcmsgaW4KPiB0aGUgdmFyaW91cyB2b3BfZGF0YSBzdHJ1Y3RzPwoKCkV2ZXJ5IHZv
+cCBoYXJkd2FyZSBoYXMgYSB2ZXJzaW9uKGluY2x1ZGluZyBWT1BCL1ZPUEwpLCBzbyBJIHRoaW5r
+IHVzZSAKVk9QX01BSk9SIHRvIGRpc3Rpbmd1aXNoIGlzIG9rLiBPZiBjb3Vyc2UgaXQncyBiZXR0
+ZXIKCnRvIGFkZCBzb21lIGNvbW1lbnRzLiBBcyBmb3IgYWRkaW5nIHNvbWUgcXVpcmsgaW4gdm9w
+X2RhdGEsIEkgaGF2ZSB0aGUgCmlkZWEgb2YgYWRkaW5nIGEgdGFibGUgdG8gZGVzY3JpYmUgdGhl
+IGRybSBmb3JtYXQgYW5kIGl0J3MgKHJiL3V2IHN3YXAsIAphZmJjKQoKY2FwYWJpbGl0eSwgYnV0
+IEkgdGhpbmsgdGhpcyBpcyBjYW4gYmUgZG9uZSBpbiB0aGUgZnV0dXJlLgoKPgo+Cj4gQ2hlZXJz
+IQo+Cj4gQ2hyaXMKPgo+PiAgwqAJZGVmYXVsdDoKPj4gIMKgCQlyZXR1cm4gZmFsc2U7Cj4+ICDC
+oAl9Cj4+IEBAIC0xMDM1LDcgKzEwMzgsNyBAQCBzdGF0aWMgdm9pZCB2b3BfcGxhbmVfYXRvbWlj
+X3VwZGF0ZShzdHJ1Y3QgZHJtX3BsYW5lCj4+ICpwbGFuZSwKPj4gIMKgCVZPUF9XSU5fU0VUKHZv
+cCwgd2luLCBkc3BfaW5mbywgZHNwX2luZm8pOwo+PiAgwqAJVk9QX1dJTl9TRVQodm9wLCB3aW4s
+IGRzcF9zdCwgZHNwX3N0KTsKPj4gICAKPj4gLQlyYl9zd2FwID0gaGFzX3JiX3N3YXBwZWQoZmIt
+PmZvcm1hdC0+Zm9ybWF0KTsKPj4gKwlyYl9zd2FwID0gaGFzX3JiX3N3YXBwZWQodm9wLT5kYXRh
+LT52ZXJzaW9uLCBmYi0+Zm9ybWF0LT5mb3JtYXQpOwo+PiAgwqAJVk9QX1dJTl9TRVQodm9wLCB3
+aW4sIHJiX3N3YXAsIHJiX3N3YXApOwo+PiAgIAo+PiAgwqAJLyoKPiBfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
