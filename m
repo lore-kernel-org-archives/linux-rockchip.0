@@ -4,56 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CCF7C00A8F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 03:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7F9C07545
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 08:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uxhjcqJcY4agf40PjPRHnUJXjWCSGOQF4xPWt/QkkZQ=; b=S2YVWtvxUoenzc
-	wEfoW9zxCEQHVEfH8CbNk925CEesDK82Mtz+kptc5nw19WmxlD8qJ9Kf6HJJ3zD0J4x/YP52oXqyo
-	0GNdcf8HFUlRq5wRXmEa043c0g7UeForAT8CWxvjwnDl2rVzsT+rBkBOsEROXP8LPCOw4X87TWM4t
-	ZuSC/Fqinj1x+ORK/2f7lgD5Q4nnqLHcyY4YXaRbhs4VmGEpXSVz4Kwa2ldjyGFYSfs2ICUC4+Yhw
-	OjOk0Nuxlq4UsDRKM/EKAdk3Z4hEhNcQpkoU8OXNnArrdiOB7U7HnihcNPym5DBaN3HPbjXBRon4l
-	qOOKO4B05ves6HkEVmhA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KqtQwC0Xg53DftDbgXxqol4TmBnYWRRi2M+hq/gwK6w=; b=GS/ZpOW/KeG91p
+	KuMsbzWQRkTkt1M8zMh+diI0K566T9eMqo1SLFc5wRlaLTCoFZAMFOqD+j7jzMeUSVkIDFwKhJWUA
+	3HDW2b1t9g9zZ1/EjyBxMr2qN8k7KK0unJr/yp/0L3rYjTmKLfEWIuvfTpYOoGLwFTZ1OmMJwQK1C
+	myEtk4Zp2RVCT5YtUtUpruAXrXphZqqFlc2jZ5isg3vIhW4ml0kOmk227FUIYt46eo0BGk2nX2oEy
+	tb36PySZQ4Hwpu4PiF0t3F7RDOLZ3J+Ej9A3IoToBeYLC/EWFyblC+0MRJltMOWX5r8z4VFfTnvHr
+	q7e45zF9aAfdeAv3acTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv7u9-008hxM-1C;
-	Tue, 24 Oct 2023 03:16:29 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qvCQa-0098pf-3D;
+	Tue, 24 Oct 2023 08:06:17 +0000
+Received: from mail.citycodes.pl ([158.255.215.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qv7u5-008hwq-0t;
-	Tue, 24 Oct 2023 03:16:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 19EB9CE2AD1;
-	Tue, 24 Oct 2023 03:16:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35D32C433C8;
-	Tue, 24 Oct 2023 03:16:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698117378;
-	bh=p1hhuvIPakueBhPkMTsnJZD7jEV0fRvqzqRBD6XqoAY=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=SE3dOp5CnQIijBCv2/Tuk2N4/tJy1tJRKwkt4QY2fAckQY3nvjFfuOk/rWdfS2hsa
-	 4hYgfVdHEpLBPAL18XB/epo72m//06issvriq+/QVME8U9xbsJIlgDS2Ox/TNUMYYQ
-	 OsTJigJIEFNtPRbfYFCJPIu3fPdVGqvF3ghSKKRZZQ28d3pDzWQFipgl1XzEoI+agd
-	 OF5SGEipUz11F8M4oe/FTq+UHsEqJQzFNHe4edOCzzooKRCzIH9IzTi7TIMv/TBZVy
-	 5DTp3R/X75YtHc6ds4iQixbF8azq9YERs0H6291L0+7ZfHv0al2AMscD9A8zgCp65R
-	 QwRjPV6RdN/OA==
-Message-ID: <d5fb4c972273c5e18662e5d6914b04fe.sboyd@kernel.org>
+	id 1qvCQX-0098oW-3B
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Oct 2023 08:06:15 +0000
+Received: by mail.citycodes.pl (Postfix, from userid 1001)
+	id EBBFF1F62D; Tue, 24 Oct 2023 10:05:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=citycodes.pl; s=mail;
+	t=1698134765; bh=fClkhHu/p6gIm8tbpvFwCqGX3kXIMdqjiuDdSiYGEkk=;
+	h=Date:From:To:Subject:From;
+	b=Nj/QUn2NsgM643O0ubGZLxhDMEYh+hV5Yju75fCdiw/DsaK3Wd4YOSMjcoCkq67gA
+	 4RttRG3Bh0btYqBFoPEzca9Xyfmh6nUwyHobDDWjgD8eG7gt3yCGudKGP76mCcUO7k
+	 jTnKBi10zP58I2y88TZ8J3qS60xGqSR7w5mxFibSUAkekxLPNuZ8gs89Ej6uaUbDpF
+	 2fSkzLtjZhWfSEH6V0D7nNIQjCxRuzzQwmuGRAJdAhr9yC8XSVQ6f+y1TOcp8i0eJR
+	 8SPzNZtypzXnDDLIr8MpWfzOJyaGRznKDCj+szS+iu4nVwXoVD0PADQEPzdbFAIbw1
+	 Kc3dJegkXxmbg==
+Received: by mail.citycodes.pl for <linux-rockchip@lists.infradead.org>; Tue, 24 Oct 2023 08:05:40 GMT
+Message-ID: <20231024084500-0.1.8a.l7sw.0.3nv0jpoz5l@citycodes.pl>
+Date: Tue, 24 Oct 2023 08:05:40 GMT
+From: "Kamil Lasek" <kamil.lasek@citycodes.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Wycena paneli fotowoltaicznych
+X-Mailer: mail.citycodes.pl
 MIME-Version: 1.0
-In-Reply-To: <20231006213959.334439-1-robh@kernel.org>
-References: <20231006213959.334439-1-robh@kernel.org>
-Subject: Re: [PATCH] clk: Use device_get_match_data()
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: patches@opensource.cirrus.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org
-To: Alim Akhtar <alim.akhtar@samsung.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Chanwoo Choi <cw00.choi@samsung.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, David Lechner <david@lechnology.com>, Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Michael Turquette <mturquette@baylibre.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Rob Herring <robh@kernel.org>, Sekhar Nori <nsekhar@ti.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tero Kristo <kristo@kernel.org>, Tomasz Figa <tomasz.figa@gmail.com>
-Date: Mon, 23 Oct 2023 20:16:16 -0700
-User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231023_201625_508973_52CDAA46 
-X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-CacheID: sfid-20231024_010614_179522_A5D3E79E 
+X-CRM114-Status: UNSURE (   0.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,22 +61,16 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Rob Herring (2023-10-06 14:39:58)
-> Use preferred device_get_match_data() instead of of_match_device() to
-> get the driver match data. With this, adjust the includes to explicitly
-> include the correct headers.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-
-Applied to clk-next
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
+hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
+Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
+eWN6bmVqLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5ZmlrYWNqxIUgd3N0
+xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0sCkthbWlsIExhc2VrCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
