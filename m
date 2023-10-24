@@ -4,68 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F78C07545
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 20:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BB3FC25B47
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Oct 2023 21:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fm4OzaPWHHyvCpnlz96XmXv6+UjGA5epdQBQOPoKv4k=; b=HHsbRqr6lt6f8Z
-	YIyX895CninA6eMfs2OIkkitGhVT0p2kdRyGS9K44jHEy2fgzEwSkvsrFlZTbvQw5O6kVAJhQOy8Y
-	173kdH/AX5XYbqYasVuWORWQgrLI7grYMzhVwhvB9pzh7DHRuz3DAO+uw3uQ2lN7lF+3tbRN0jlh0
-	RUJ6VTseLsHIN3qbODmsWJ4ALaDHf31NisG/OhCzgeOyLqSfcsvGOuTg6g5bE3DRHejrs1khxlOFt
-	5PtRKPRmEMZigLOyMvHwgX+ZPMBITR1LSgmG+5dhrXhuK3+1Pjm2qa/L521FpeU/updU7VImFd9nE
-	Tk21omLc2+xAhz4Q/tcw==;
+	List-Owner; bh=J3X9V7RGVs6eYQURp6lvUT7/FEFDpRhYJLQ+A7Ew1AA=; b=Bnym80vgeQYd7c
+	UHs+97qtjtl4QwH/JXl9uzzu4xRDS5114opsspY1DzbBghIctd58WacHiq9GTvovwZVHW/n6a9bOq
+	b3QgKfq/vvUqhwaA/KTUhh49NjDgMiDbACd0MuUNBigQIyXWoxsUkk2e5sX6V9hPrRXfbcrGekjML
+	CiCVqoWci313etVUwszbfchLi1J7C7vp2/7J0zbijL7NYBIN5WyRwxQ5mJm88a1xEXvsv1WQz6OP7
+	LQ4/KfNRKdRdUHweqbgAYYBCT5wnKoTLfctKI8BVQfvMoofJcUBkLdzsPTL/Rs21ztgrOoLwdh1UA
+	hGXSc+5+sGTX1kjTx9CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvNba-00An0b-2D;
-	Tue, 24 Oct 2023 20:02:22 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1qvOYd-00Aquf-35;
+	Tue, 24 Oct 2023 21:03:23 +0000
+Received: from mail-bn1nam02olkn2080e.outbound.protection.outlook.com ([2a01:111:f400:7eb2::80e] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvNbW-00Amzu-28;
-	Tue, 24 Oct 2023 20:02:20 +0000
-Received: by mail-oi1-f169.google.com with SMTP id 5614622812f47-3b2e72fe47fso3299010b6e.1;
-        Tue, 24 Oct 2023 13:02:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698177736; x=1698782536;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=b7LBP+4sNuVtjoSJxOmRVrbomzzhTqa06ogPkpyg6vM=;
-        b=XH4ihzQ1JnANnsGHVklWZAI6aWMB6g84EB8cOs4eS4hjvj7pfZQvjYgYZB+jdCb7Nf
-         Q/QrLDvDjUIG8Qfi1opTAyiRMVF0VYC5k93U+XXKDnlNVUJXsu9cwtyDViEIgz5k1Be2
-         6OHIG01RSXEwFZoRS5zGZ7F6DGtTsvIqo6vGszMYCs+P1O3yPiFOzb/TK7H3nUu45WwS
-         Ku3Pcq1k94eQTk6xE/CgPBrpTQrqkxZOS8DcrFbEC9PSGNbSl7H2EjBYJmQCRUiJgqtE
-         TUdfEeLwj/qX10XmsT2olKuldQtZ55GMY+reQYbjZUVm2aK8hRPPtgCC93AJbbJzqnM1
-         Huhw==
-X-Gm-Message-State: AOJu0YxoHsTz3bFG7umhmsjTEBrE5FKAYCAO4W9OZcAs5dQcTmhQqOAF
-	LWsN6B1KnBHg2HMUZvVdIw==
-X-Google-Smtp-Source: AGHT+IH4hYt3JNOvk2IbMB7aYMfLDffQfXMNQ/OGQJ8ue/Mw0Ee4HGPBn95Yvl/2SYp5Y2S4brH6OA==
-X-Received: by 2002:a05:6808:2005:b0:3ae:b06:2131 with SMTP id q5-20020a056808200500b003ae0b062131mr16665647oiw.0.1698177736277;
-        Tue, 24 Oct 2023 13:02:16 -0700 (PDT)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id b2-20020a056808010200b003b2e4754cc2sm2052808oie.26.2023.10.24.13.02.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Oct 2023 13:02:15 -0700 (PDT)
-Received: (nullmailer pid 471601 invoked by uid 1000);
-	Tue, 24 Oct 2023 20:02:12 -0000
-Date: Tue, 24 Oct 2023 15:02:12 -0500
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Vegard Nossum <vegard.nossum@oracle.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH] dt-bindings: usb: rockchip,dwc3: fix reference to
- nonexistent file
-Message-ID: <20231024200212.GA465811-robh@kernel.org>
-References: <20231022185150.919293-1-vegard.nossum@oracle.com>
- <6ea02e5e-bc95-48b5-d6e3-15338ebd0a4d@gmail.com>
-MIME-Version: 1.0
+	id 1qvOYb-00AquD-0b
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Oct 2023 21:03:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GGujnBWBtAl9td4ghMdigk2SixFQKmeMukPcw14ANkpgPoqFECsl9hJ9pi6IVh5eevaVPFRMAjSAexA6zKmDeTFEAOBOq3tQTA7L5cQG6Y3eWTrg6bdALCoF0mHdmlxhrU7NW/GWCKSuZMKEg94Es0sp5p9S2C0hJ9hT+wW4mVolAzJeHHuYB9VMoa9KOOTbpmLRnii0wiHCzI4DMTwoNfPFtxMFGWTxNmU2w6FyG5iSbNMSjNwR3bSwXonTaqrtw4SD/IIZIbLAKhCxHZUIwPvOdmo3aeqMa5GUlRjTS9jEUHAItDgnuE5ruS/cAI6AcR1uxjtIqAB5O9bFScF0jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=g/CC8eZ10WUhdA2EXZhDI0IFzxIgJDZx2RVdgLZdIRw=;
+ b=h1oyy09kxoayZ5PidPIA8qb2b/i1m9EgVSiR11RCoVPQVAB/ITPjZ39Asi029iweyKVAOqBp3ZXC6b6IP5crQfSwOiP15d13o2/PbI/NnCmxb/VBZMRfWxZFo9GXV3u4PgJT8hmg9a2Yt2g8WvPC3k32JSWtAj2w0rNYaEceg1aC0wY3GtqI5AGBZXPDxUibWZ8Foi20RsjnUVUotZ/qrCjlCBsqJRe9IULPdVwe8iRoNBsvu06zArVIy/C96O2IQFwuwTFXEJotCEjb8toVkVLVmLDa+j2Ych0RqnVhoZN+uS2Vp8R2M+YyYFgCdfn7KbfKore1iQTpSyYWqteqfw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=g/CC8eZ10WUhdA2EXZhDI0IFzxIgJDZx2RVdgLZdIRw=;
+ b=F+VkOaZXSm+iaKV2UeahrPQjoHTBuXVSaKDEeZqqgqs3YRQ6Zj4Kafy0SCOQf0cIJswV9BKcjqmGka2Tyuf2CVRmkr2xpF28Q7MtWjD9ixuF9zTcQiZwDaMaYcVSwj3J2lrVMWT1dVHzHtlwsuTTCzCt9+OYRjsjJNf85Z6Pdlf1mFgR1QfbZi3EaPobO7f60hheAviTPNjn/wMu4BRDMXwnX5TrBu3HQAtAjEywbZ/40tipRiqn9ASfvWsjO/cUT+aedEL4CCI4Wg7g9kGHOdGxBz5Us1EA9HqXRosY3zDrfTFbZjBwAQjYBMJQfLVGUmXssoZfICQH6AhtntAlcQ==
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
+ by SA0PR06MB6761.namprd06.prod.outlook.com (2603:10b6:806:c0::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Tue, 24 Oct
+ 2023 20:47:16 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::c40c:bbc8:b103:459c]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::c40c:bbc8:b103:459c%2]) with mapi id 15.20.6863.032; Tue, 24 Oct 2023
+ 20:47:15 +0000
+Date: Tue, 24 Oct 2023 15:47:11 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com, sboyd@kernel.org,
+	mturquette@baylibre.com, daniel@ffwll.ch, airlied@gmail.com,
+	sam@ravnborg.org, neil.armstrong@linaro.org, heiko@sntech.de,
+	conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Subject: Re: [PATCH 1/5] dt-bindings: display: panel: Update NewVision
+ NV3051D compatibles
+Message-ID: <SN6PR06MB5342DB69A98959C9D5D275E9A5DFA@SN6PR06MB5342.namprd06.prod.outlook.com>
+References: <20231018161848.346947-1-macroalpha82@gmail.com>
+ <20231018161848.346947-2-macroalpha82@gmail.com>
+ <e684983a-9399-4fd7-8fe5-41faeabbfab1@linaro.org>
+ <SN6PR06MB534271680DB8A3A3F0A1A31CA5D4A@SN6PR06MB5342.namprd06.prod.outlook.com>
+ <20231024182755.GA215478-robh@kernel.org>
 Content-Disposition: inline
-In-Reply-To: <6ea02e5e-bc95-48b5-d6e3-15338ebd0a4d@gmail.com>
+In-Reply-To: <20231024182755.GA215478-robh@kernel.org>
+X-TMN: [OFs7ACKd2LOOUegdBZd37n2gO+77QOKH]
+X-ClientProxiedBy: SA1P222CA0162.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:3c3::13) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID: <ZTgtT5NLlQmqA2eP@wintermute.localhost.fail>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|SA0PR06MB6761:EE_
+X-MS-Office365-Filtering-Correlation-Id: b20d3043-bbd8-471e-8db5-08dbd4d26786
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: P23mG/nfm3vBMXmdjuAhx6w2gQB4/DWO2TGGrHh3hYb/qsZac99mkMtiZPsdGwvBC/Dvk9iLEnpv2dt33wAOMdm0ZfyVZPQCzTW5TsT0JB2ArlY00+7Les4cC/Q+hGRreMYskxAh85U1JylB/PKzvD+AsCpaqBuENwfM2Pooh6fVZUSe/awrK86yU6u7qROrCgzXyv+XffzfWIkaWqsBH46ub6lkv6NfoPuLL4LTe+tFBga/hScMek8U41W3VDnVoiwCk/7J07Zlw6fR+UUnnxVitjT3totc9NnzZZt3oEHAZhkeXYG9Vc6bnAgSXIE/+2GG+DHqu/0GIMi5Zo3PwaLXsGEiiEGhIf5SvH98AhsBtibq/FoOJy5usP0bPKUf2Y6gatwS4pGuj2LtMRrLFFo0r82+jF52XHRXeLV8KsHfHZc3QZrKsrYYANquIJIS0P7RTkGo6yaZWEAqwCgfAtYvdiaC68Fk5ZKZbuJyVZGng8dMRN6yiCokZfPoTxKNHXi9GouAe6GH4c3PVkhnZxAJA4mi2vri3erbfHxdcqQHbiqOAT4tDQmvnkAUeQvT
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pWJKjUzxXq8DND91cu/gF6BjjocBGv2s8cAZI43H5OA51OTNEDRMVujLdSiY?=
+ =?us-ascii?Q?bePC8VtC3/LXM5iQ93J1F8cgxcYgyFMaLXPBnjn9cf6TgacpS4glumnVSt50?=
+ =?us-ascii?Q?aX1bY6Xa8zJLHmarhxq0Al98ZqcqJiYWPskq074JIiu3ui3Ze41sOLBGS3tV?=
+ =?us-ascii?Q?bcAq2/RUxVjMK9A8OS2PS4vLtK5em8KuFLHM8uxhgkU2lzkg7QfKckv1Dndb?=
+ =?us-ascii?Q?7gF/i4fp8Vv8yxejPrOWiHB4kj6CwXMlduFodYc51HWmmGMd3BT+5nIF/HUd?=
+ =?us-ascii?Q?q9fewT9Y58Fbx0RDw9Bjsx7Lrujd0DQMTFDWJOTIRF953ewEZKX80sJkd721?=
+ =?us-ascii?Q?VTA8WFV9Lida4tWzY30haOACUV5zxSNrEc0OjdAcDg0ct2ybmpZfft2EpUjC?=
+ =?us-ascii?Q?BrSxLQSqyVApM9W5fhyL7sFsCzUutnl989TTF4H423p8LxxX29VCcwDQSJMn?=
+ =?us-ascii?Q?60fx8x56nvl1O/XEdIYTYqHsbDG2F1dpL7L6rFkpT9J8CscuwDhje42VWa+E?=
+ =?us-ascii?Q?ZxvQb5AjXIDi3Y8GTVeumFP3WsCdLMdXArxU3ikORsDxd7XeHTVkgXq6ffp4?=
+ =?us-ascii?Q?Js97kk+78pZxb4oNbbknPOVSo4QNlbHIxHi6m3/OC/7xgmVkBo06+yLl5+r/?=
+ =?us-ascii?Q?QtALNyS1MLZjps4q9YlEdcnMKPPRGmas5+tvPDpT3pudujypXHbbQjcLsj2Q?=
+ =?us-ascii?Q?xxGpvIK2glT93hXEcseaaR+GpMAyvD3e2Ync31vLaEOPvyiol+YCAbgKXEqQ?=
+ =?us-ascii?Q?u/8trQjPco75FVJrrRVxFkdjy0088ykvgFvyT3C5IE/elDShosusVkug7c+/?=
+ =?us-ascii?Q?8PX7pLBb93CD6QN+yGQho4RVK3ttuJXdPDgwA/06SMzwS1zfSxs15QYRM9+j?=
+ =?us-ascii?Q?n1QZIFqLbdKYoMv8XAhI4M49wj3Iz0ff05arUJtcFmuq828x0+mYtyMJLw8o?=
+ =?us-ascii?Q?u2lo3JkZGFLDuOalfdTGdKZWaXDaZ0OVuGgPSKxz5saBmayxEDMVywvA//Da?=
+ =?us-ascii?Q?qHJnq7fj75WSxb745ApvgPBZquEIxv03ZBHlk1XBdJnHtH+MJOM12ciTjSw+?=
+ =?us-ascii?Q?OC07LRgbPIczUW1p8YzsrsXlitBsGvnIrfjRzJN02dHdKQp2xPzxccH5S29E?=
+ =?us-ascii?Q?59PcjaIa3lXZlH/PF7sbCYBgyJGoBYtePpOa9Y/naP5fjna2q+cDC7ysHTN8?=
+ =?us-ascii?Q?Ty6uoPi3tvx/Uew1fSXWc6Nh83oEqhH6YLHs/XK6ux+M8H0u+A5B5ymyYZ8?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: b20d3043-bbd8-471e-8db5-08dbd4d26786
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Oct 2023 20:47:15.9294
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR06MB6761
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231024_130218_725348_4198E2D6 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20231024_140321_307388_DA528335 
+X-CRM114-Status: GOOD (  42.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +135,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 22, 2023 at 10:44:10PM +0200, Johan Jonker wrote:
-> 
-> 
-> On 10/22/23 20:51, Vegard Nossum wrote:
-> > This file was renamed but left a dangling reference. Fix it.
+On Tue, Oct 24, 2023 at 01:27:55PM -0500, Rob Herring wrote:
+> On Thu, Oct 19, 2023 at 09:50:38AM -0500, Chris Morgan wrote:
+> > On Thu, Oct 19, 2023 at 11:22:19AM +0200, Krzysztof Kozlowski wrote:
+> > > On 18/10/2023 18:18, Chris Morgan wrote:
+> > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > 
+> > > > Update the NewVision NV3051D compatible strings by adding a new panel,
+> > > > the powkiddy,rk2023-panel, and removing another entry, the
+> > > > anbernic,rg353v-panel. The rg353v-panel is exactly identical to the
+> > > > rg353p-panel and is not currently in use by any existing device tree.
+> > > > The rk2023-panel is similar to the rg353p-panel but has slightly
+> > > > different timings.
+> > > 
+> > > This still does not explain me why do you want to remove old panel.
 > > 
-> > Fixes: 0f48b0ed356d ("dt-bindings: phy: rename phy-rockchip-inno-usb2.yaml")
+> > When I originally wrote the driver I only had one piece of hardware
+> > and I set the compatible string in the driver as newvision,nv3051d.
+> > Unfortunately since then I've found 2 more devices in use that are
+> > *just* different enough to require the driver to do things a bit
+> > differently. In the case of the anbernic,rg351v-panel I need to
+> > enable a new DSI flag; in the case of the powkiddy,rk2023-panel I need
+> > to decrease the vertical back porch and drop the higher frequency
+> > timings.
+> > 
+> > The best way to accomplish this was to change the strategy from having
+> > a single binding in the driver of newvision,nv3051d to a binding for
+> > each distinct hardware where the differences apply. 
 > 
-> > Cc: Johan Jonker <jbx6244@gmail.com>
-> 
-> [PATCH v1] dt-bindings: usb: rockchip,dwc3: update inno usb2 phy binding name
-> https://lore.kernel.org/linux-rockchip/f8747552-d23b-c4cd-cb17-5033fb7f8eb6@gmail.com/
-> 
-> Already Acked.
+> Exactly why the DT maintainers annoyingly ask for specific compatible 
+> strings which may not be used immediately.
 
-I was assuming Greg would pick that up. I've applied the linked patch 
-now.
+You're not wrong. Sorry for making this difficult. I should have done
+it this way from the start.
 
-Rob
+> 
+> > Note that I've
+> > looked at querying the DSI panel ID, but for each device the value
+> > is identical (so it can't be used to differentiate the hardware sadly).
+> > So the driver now has 3 different compatible strings. I could in this
+> > case add a 4th compatible string of anbernic,rg353v-panel but it would
+> > be identical to anbernic,rg353p-panel. For the moment we are using
+> > anbernic,rg353p-panel everywhere (including the rg353v), so it makes
+> > sense to drop this unused value while we can, at least to me.
+> 
+> Your reasoning is the compatible string is unused, so remove it. 
+> 
+> If there's some reasoning about how the 2 panels are the same hardware 
+> or the rg353v is never going to be used or show up at some point, then 
+> that would be a reason to remove.
+
+The compatible string of 353v-panel is unused, and the hardware is
+identical to the 353p-panel (so only one string is necessary). Sorry
+if that wasn't clear.
+
+Panel 1 - The original anbernic,rg353p-panel which is also
+anbernic,rg353v-panel.
+
+Panel 2 - anbernic,rg351v-panel. This is almost identical to Panel 1
+except it requires an additional flag.
+
+Panel 3 - powkiddy,rk2023-panel. This is almost identical to Panel 1
+except it requires a change to the VBP timing parameter and isn't
+tolerant of speeds much higher than 60hz.
+
+The issue I had is I originally wrote the driver checking for the
+newvision,nv3051d compatible string which worked fine when there was
+only 1 panel type. When I added support for the 351v-panel I *should*
+have changed how the compatible string was handled, but instead I
+simply added a check in the probe function to look for the secondary
+string of "anbernic,rg351v-panel". When the 3rd panel type of
+"powkiddy,rk2023-panel" was needed I took this time to correct the
+driver and do it the right way by checking for the specific
+compatibles.
+
+Thank you, and sorry for the headaches this caused you.
+Chris
+
+> 
+> You could also say the rg353v is just wrong because it should have a 
+> fallback compatible to rg353p and rather than fix it, just remove it 
+> for now since there are no known users of it.
+> 
+> Rob
 
 _______________________________________________
 Linux-rockchip mailing list
