@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2BFFC0032E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Oct 2023 20:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42228C0032E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Oct 2023 20:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YZqDVyqEUpvdKUnuFpuepatW9lzqCfOn5sfTw3qdLns=; b=iI1MmpYiM7dHbR
-	435tAVT4Zw/c41qn2H7ByW4nNhSZauu/udbLQPbnUt+nTtHJwu5LKKJIjmjs/JEglg3DlPtQD1pW1
-	LlaUWXAlovJujQy4IGHSGnbgUdJ9SIDgjLcuvWfLu6BHWC4fwALC/H4d0U/rXoo7vZ/5zRgs/Td0f
-	wP7PRTROduxN97GTMuk5w0EdUL137a4QQNCzKbCqA/ZgAzzZTeeZ0O1/LAq5aYDrxLp9w6HoqtKBh
-	++VXqsjFiO3d/YgV4IRweJVhbfEsCabJFCUxyqaRZwi/8GCS16kt9Y1MijkfYGE+X83J3THcAABYP
-	Sk6QtFPIqeEnKJcEeMJQ==;
+	List-Owner; bh=JpyagiknqpWPVhLBjU9QZ5RPBCyyB4hRPP1aJdI9JHk=; b=r0CirCsSJQigmw
+	7+ya58M2D+MNCKl/PmHp5m9U4vmlyj482BGD8ECallBR4QKhL5yvoxPLMc2bV1Uhm/Tk+lY7LyyQD
+	+z9FLyQ7KwzrJawhEgGS4T0mzmq8qXpV/JKobe1zA9JmELFdS+xXUGvnLyha2AJzu+iMjR8JxY1y/
+	jb7uyeBFJusxWiEAlbtIcKMY3QdNHQ4e5HZIcuiikj3/uUCkm4v5QY9mbNKe7B4VGhHFtn0R3aTE7
+	Jv3Hxa/0H1BBIEXMRDdxcC1OAoDEWYbUORHOntii/RKw829WVFkzFvT9vkMwnX3oW+dPlQ+jXMAH1
+	Zpv7RKCBwJ9oOM0y00pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvk9p-00D19C-1i;
-	Wed, 25 Oct 2023 20:07:13 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1qvkuw-00D7U2-0o;
+	Wed, 25 Oct 2023 20:55:54 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvk9m-00D188-1E;
-	Wed, 25 Oct 2023 20:07:11 +0000
+	id 1qvkus-00D7Sj-0O;
+	Wed, 25 Oct 2023 20:55:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
   d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1698264430; x=1729800430;
+  t=1698267349; x=1729803349;
   h=from:to:cc:subject:date:message-id:references:
    in-reply-to:content-id:content-transfer-encoding:
    mime-version;
-  bh=3kcO/NhTgLAUDKCVbrsZsrWdOzZ7cKfHNnIFKi2c/Dc=;
-  b=RH7SkaPiB9CWACbDS8JO5T+XFZodRMv3crP2bjRRDGcC2koLqpdcuqKY
-   p2srenFAFOj8Tz6cwX6d9aWc1Uv3O3ad+9vTTIILU3m0qMnBF8aBEXbHc
-   7WCnUmXf3c4AlYqMkWN4ndnjZMCBwONXgwj3B/vyqtN4rwoyk3tI4k/bt
-   KnkzhIedmbn90qBKZKbFb/4Pa2atzThTWo9VstHTz/T8UTrm4vVBoGehZ
-   cjsYBo+Dol3K+5j9Xcj2/ebli6OCrt1T9cRPnq4g8pW9Yce10TdE8Db0Q
-   AnxdGdZwZqBqnwamYdGvRMq9GKde3TERz46vrl19NmOb7dmc9Zh6Lh1xG
-   w==;
-X-CSE-ConnectionGUID: t0+Z+b1XQ7aoA0B62bvP/Q==
-X-CSE-MsgGUID: Yy5g0OYhSTS2V84PVUH9JA==
+  bh=h5VpRTQ4v9aWVWKktbCvyJM8w3cIJoWne+A5GO0q37k=;
+  b=McOC8qJXgsWGAtmN8k1jI9ZpsQ4JDfwN7ifFk2rVf3aZUfOQySfZSc38
+   FG/PRPVgYFnnj/PGcLz/3e4jT2rzyj1rApFz9Yuj1gOtL4vJvGm8iwGbB
+   MfHImOi2G1juYNvokSXZMMZOqeYvmLioc5xTjvaVE+lPLuMw1bAi45PwI
+   22As1xLBYED3byKxsfwu3rVwMEHq8tjp7lK9BGU2pWeuYSWC5uLX0mBaZ
+   IQuK0/3iryW2LD65myFulIQ07CGUjh7WaEMDqoo6oUUCtIjxJnd4m52iw
+   dA/GJGnC1B11WUDle85O4y5I7KfPra+bRom4iutR0E9lWrZQP42ku76mN
+   A==;
+X-CSE-ConnectionGUID: CvDVCayHSeeYIrQLIpXQIQ==
+X-CSE-MsgGUID: 7hzOKzPeQAeIT/p5jMOmgQ==
 X-IronPort-AV: E=Sophos;i="6.03,250,1694707200"; 
-   d="scan'208";a="623592"
-Received: from mail-bn8nam11lp2168.outbound.protection.outlook.com (HELO NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.168])
-  by ob1.hgst.iphmx.com with ESMTP; 26 Oct 2023 04:07:04 +0800
+   d="scan'208";a="633012"
+Received: from mail-bn7nam10lp2100.outbound.protection.outlook.com (HELO NAM10-BN7-obe.outbound.protection.outlook.com) ([104.47.70.100])
+  by ob1.hgst.iphmx.com with ESMTP; 26 Oct 2023 04:55:35 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MxifzgHQEVA1A1ZfxgmSAnPtqjLt187eZhPEc4ilgwoMWHWLy6nDJ2mn6qUCuLSfEYD17bmtBc7613wGafS1kHvveIlEHt8UJ5klMEo3ZOyC/uqGsadFb1B2JoVzj8C0ZszxEJkgoecyHl3H66D5QetDBWGoexN8uN2gBHMbIMk8cNE5wEgNe5DN53ZOq0Yuv9X+TrG3BClkF/Q0s2Fp/ktAbTgWY0U/jxz268PX1I77RqREnwEHvoXBIq3lrXGHt8qjgYg216LQukL33awYDKz9lhvaDdfLkUJ70wtLYaUbF2f96iyVjcV9KHMJJscVVd9anGUomSDtzz8C/ZjVEA==
+ b=eFsgJ51tcmWAT/OzUgWraZBpun67bru/KIaF+6zL+ApnCNMPeG2hC3CgQCNYVLOdVQ+aQCCcc+uqbGeUktOIW8jYcUnTW9OkBFIdGBAopxMjS7Uw6NOqPqO6w8seZjzF4SCcrKnNrYPT1A0EAdoDJeg89+qt2LICyXcFMjME6N6+W0FahVHcK5PEM9He5ylnukMzmSteXSZYpftsKd3qrUuTFihXINXhTaQXHRvDBnCzBX5C6m+MSbCOmcwB3u/5myXLYgGPxFyx6nxNHW7BGq3205bv7KmHt68wxDk3HTb4ipV2fmq7tnfIcdPYdEaVUiT/FA1sH71Z1xQp783AHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qYT0SRoEWVmaJ7xzjQs7GGtWI2KXo2Fsr3HPU247HwI=;
- b=D14Fs6mcqqDiYEtv4MtrNryrefY7e5nxCjflwpRaDFb4vuW6ti9pfKd6658zTbZch5EWyzQXxK6bNdYrH6kEfVjlrBV+LC0Ap28ZrclRrcp5smYskuxxjjIASW0gsELmvzXxEaxhX33ODL9Zu96JiQ6zlsa40ipsFXUUQle/fCKzDyjXH/mqwN5vvNVWcjgX7Miw7VUac8yQfhxzbCbk6mdo0A4aMwNkJ6r+7N9YM5BA4Hn5rSeDXmcYa1X2f7/ZCElDV9Z+/nuT10hheAseV5uxP9uvQyC77M6Sfs++6F0xj/ik2d+N/Qz9JaNAcceHC/+Miwdyr241q8lorddmSw==
+ bh=nyt+ZwAi1nrHBbTm6h3XIRDIq98+3+9CcQ1oBBWU1KI=;
+ b=gWeNGBEprTsTlNJGgR4rMdRvZTrSOpuz2fCZCmiC7bHF83+WGROAuEJGnXsRp+USaIi0Fm81cijDOMT2TW9j0cMH76nTXbNufMGhJ+vKfOZNABEHFK5Ux0lH3sM8jFqdFt9myjYpFc0bZHkprIUN/+X8UvO9ud4rt8LUKFIL2hQia5ILPhhchgIpd3GG2T+2/dBJkuvmd5ckgep1LqVekouruzRUE8CfsgTFA9pTtEcCpp6KfJrfucSU3Qfxgf/rPIv9YXAFnj77av7oiLKBZse2t+dU5VoytZ3CrPfFt810OoMuKzaDHjkYjkWMo5pJ6gkbFJahSCfClyBaXJ3SQA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qYT0SRoEWVmaJ7xzjQs7GGtWI2KXo2Fsr3HPU247HwI=;
- b=GFMD6P9zMNZW9s7Nc1JaSJow0i5Am+jSYEvByre5rAcs5aFrpXvVmZd+o9V0m/eWm9oKua+GwlIRul7Om2DlI6OI2tU75sJyPogKtCBrBDPUiL8ykRww3rxUj9PSY9EGunS7kGoOLtTzdmkkamGTECJbLwrjYVI5RlL/+iTfZcY=
+ bh=nyt+ZwAi1nrHBbTm6h3XIRDIq98+3+9CcQ1oBBWU1KI=;
+ b=QQrTBeB4kw8B+XUPF6iXPvMASarchezQzZmfeepd+ZgehG5Yq79VVOG63OHTArufdKOqfxycv6S3oM4GfKDGHhbVmZekViZFF6uFSg9AXhSkxbT4kzAv1eim4t/uWr2ID3U9R/7CYNrqkO6HASn6jkxm3zlswXmS6xQmo9aYTAs=
 Received: from MN2PR04MB6272.namprd04.prod.outlook.com (2603:10b6:208:e0::27)
- by DM8PR04MB8056.namprd04.prod.outlook.com (2603:10b6:8::11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6933.19; Wed, 25 Oct 2023 20:07:03 +0000
+ by CO6PR04MB7762.namprd04.prod.outlook.com (2603:10b6:5:355::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.19; Wed, 25 Oct
+ 2023 20:55:33 +0000
 Received: from MN2PR04MB6272.namprd04.prod.outlook.com
  ([fe80::47df:9a7c:5674:2ca6]) by MN2PR04MB6272.namprd04.prod.outlook.com
  ([fe80::47df:9a7c:5674:2ca6%4]) with mapi id 15.20.6933.019; Wed, 25 Oct 2023
- 20:07:03 +0000
+ 20:55:33 +0000
 From: Niklas Cassel <Niklas.Cassel@wdc.com>
 To: Conor Dooley <conor@kernel.org>
 CC: Niklas Cassel <nks@flawful.org>, Lorenzo Pieralisi
@@ -87,13 +88,13 @@ Subject: Re: [PATCH v2 3/4] dt-bindings: PCI: dwc: rockchip: Add dma
  properties
 Thread-Topic: [PATCH v2 3/4] dt-bindings: PCI: dwc: rockchip: Add dma
  properties
-Thread-Index: AQHaBoyNd+UCFjyqgU2gBHlMOd/MHbBZIasAgAHO3gA=
-Date: Wed, 25 Oct 2023 20:07:03 +0000
-Message-ID: <ZTl1ZsHvk3DDHWsm@x1-carbon>
+Thread-Index: AQHaBoyNd+UCFjyqgU2gBHlMOd/MHbBZIasAgAHO3gCAAA2NAA==
+Date: Wed, 25 Oct 2023 20:55:33 +0000
+Message-ID: <ZTmAxH0AXpCN1+G+@x1-carbon>
 References: <20231024151014.240695-1-nks@flawful.org>
  <20231024151014.240695-4-nks@flawful.org>
- <20231024-glacial-subpar-6eeff54fbb85@spud>
-In-Reply-To: <20231024-glacial-subpar-6eeff54fbb85@spud>
+ <20231024-glacial-subpar-6eeff54fbb85@spud> <ZTl1ZsHvk3DDHWsm@x1-carbon>
+In-Reply-To: <ZTl1ZsHvk3DDHWsm@x1-carbon>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -101,81 +102,81 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=wdc.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MN2PR04MB6272:EE_|DM8PR04MB8056:EE_
-x-ms-office365-filtering-correlation-id: 0f44cf07-7640-4635-ea3a-08dbd595f46e
+x-ms-traffictypediagnostic: MN2PR04MB6272:EE_|CO6PR04MB7762:EE_
+x-ms-office365-filtering-correlation-id: 38d486e9-5990-423e-b069-08dbd59cbb18
 wdcipoutbound: EOP-TRUE
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: r4zm6XPigxdq8yIQdMr/2T5SQ81Eovmpl26hQe7ux4EGdc8PpX2axZD4qMNkq9ruMoTW9wQKypqalZxm5bTMmZ0+85hevE1SrxjUjcq6NsJssdaSNVembK0/EoDe04U6XQ+uj2x/tEk0nnhaDXz39B5Q5Y/HT2XckSlwPS97DrPpPthzMohOW+d1R3z3cVCEqZ6lbPHSAcXWYoY7QNIMipzEkxtZ6WGF/ECMzXwCNjgIaYVdWfEG53u15d8tylgDNv+PDesTWwJD3bUyM9RoZZb3s3UzcgoqZev5qbEghTnfl52t1V7QWKfKCLJqBc9V6yFwOftT+/xs5O62QsXTbH9OEjxCl6/dNY+iHNGQQKn/vr1Eamn3araiHdnsxk5h6IEFC7tfCY+4zDNYUgbrQh1OccVJg4vUJrXPDPwxZ7hil84ICKjRCT4vVEkp2Red546mXnoCbbLmkLoPFGnc72ZQ/GImt8SGg1ogLCDXGsmqRF1xU6GAssc3IYkM6AJmlk9Krg5nTKBhHwMRfIJAD94RLUKnVvzn/9pXffQ5ff+/Jn3uPNLtlmz4TvKYPwn4hnw+LBrIrlzP+lyUfLn6AH1XK/G/mDhn3m/DRDS5gS/oYBC7rWtWLUKytm8tVGvi
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR04MB6272.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(366004)(39860400002)(376002)(136003)(346002)(396003)(230922051799003)(1800799009)(64100799003)(186009)(451199024)(83380400001)(71200400001)(4326008)(8936002)(122000001)(2906002)(8676002)(7416002)(6486002)(82960400001)(9686003)(5660300002)(41300700001)(6512007)(6506007)(6916009)(316002)(91956017)(478600001)(26005)(38070700009)(86362001)(76116006)(54906003)(66946007)(64756008)(38100700002)(66446008)(66556008)(66476007)(33716001);DIR:OUT;SFP:1102;
+x-microsoft-antispam-message-info: Dgzqo3BO7o6Cs1oLc4iDwazwyG90YeoMzoWbFaNLP1HDbWPEWEUgveWA/lAPtm/TgSESzfRStgEtRwglnB+HKYfiiFHEaN9M9L3oK05kuEc5hEOf/nsrn5k7xTG0B+USmP3uvaUnUtkaUa6PJpbQnRh/ovm9ouJTwQqMMlSSC+DnFwSxyZHOti40sNCOycAEciVEvPvLex4XMVd4hAIQtRIBq1nlbCa5/jGL31ANfvRf//93gIZdfVaF7ecKPbuMGhP4dEfodR/cBLvgni2x2z1XqaF0pF+FQbIjx4JEGNFkLzbKMM6NgcSTPSxARIoW8C5JDODG9784jKWsnSh2UIXwXCIcTpCYXDsGDqAXRmRsQT6BhQ3GCvHh26RTzp7pZ5Xoc+drm7gyqsEVml3u5LWHgLMeqytktSutSwhY9dtgcrAIuJ71jUc9eGi9s2k6c2wFooBzZYaSRjgvVzobKiD0XWXutQ/o/SsqsY+zN3R8kuAenQN0b7TdoPfV1cHeh8EcB1wJX1fAmLK3TdfY0p6ZR+R+GWzP44BrJac/DaDGwiY+4xAzXulKawARJHxQhWGgOe38LlcaD3UgNrMUUDyfd6RhaHrHqgAKjgiyCWg=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR04MB6272.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(136003)(366004)(39860400002)(396003)(346002)(376002)(230922051799003)(451199024)(64100799003)(186009)(1800799009)(6506007)(5660300002)(71200400001)(86362001)(41300700001)(26005)(83380400001)(7416002)(38100700002)(82960400001)(9686003)(33716001)(6512007)(122000001)(2906002)(478600001)(66556008)(91956017)(316002)(66946007)(6916009)(66476007)(76116006)(66446008)(54906003)(966005)(64756008)(6486002)(4326008)(38070700009)(8936002)(8676002);DIR:OUT;SFP:1102;
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?q8A49jL5VQLL77p0MM+TIXb/Voa/t8mi74Mjm3lNxu6oUQANtXhZTCFK76?=
- =?iso-8859-2?Q?baSYWOBB827icmoXqcoq6sVViIeyrUJbT63+xz5gb7qEwUOftmzuJ0OvCt?=
- =?iso-8859-2?Q?ElGNXgPunEqpt9SJlvPgpAApDe4EN2/zvO3E+h0//OOSpy+vuluWqioeeE?=
- =?iso-8859-2?Q?Zu2XmB9ZA9mNDDGIjjdmRUJ6PXgIwNg01LMDtsv6yke9lfGOyOHBNb2eU+?=
- =?iso-8859-2?Q?suIsDNDIlV9E+JvY05RO+VAG9g+BULG+SePBP+SIXgzjOafFZsIn6Dv2ph?=
- =?iso-8859-2?Q?fmvKXq8cgDDYgp2E0baB2MbS3pDq4O2yJ4jq1M9c5zCleiYwTu6TPzW9tT?=
- =?iso-8859-2?Q?g6oitDdJCoYNE7aLNiejtHu/R9gWT2c5/5bcwpqPdqIWpxwCRjWmzdfs47?=
- =?iso-8859-2?Q?QmcQobM4aY48mhP7Hn1qyLTI2TZ4kllwtjtODQtrdpDfwHwdSUM4CFSksv?=
- =?iso-8859-2?Q?1qNx1B2NwdawL+7A6djf0TbwPO4+EsyBD0P4iqPO4Qk9D2TB3Y3hJgBY8q?=
- =?iso-8859-2?Q?xsIllJr2QMh/Gn6RscGRPy7et8wOjA0VTBAbcnvwnQTRFTaUiwNiXdnYrO?=
- =?iso-8859-2?Q?WqTLf/ECAerGMdwNXoTQcS3dM0QGQrluQ6+9JFrozYz8c/rY0ZHudTGttq?=
- =?iso-8859-2?Q?XAkbACQcK0O06jC/dup95I7rC61+8bsrB8vbIfmfuqoQO6+wAVQPZH4z0+?=
- =?iso-8859-2?Q?C170KcF1tNf6su6J2fv45o2igyvgDFgSlJLOJtSFiB8873tuEDwDRFCHhX?=
- =?iso-8859-2?Q?l2u/MjsPE811OjPXSQuYQx/bLMZ0JFCGWcXqTd88+Ol40X8F2MLJ8LGRb2?=
- =?iso-8859-2?Q?L/HLFGnSFE8KAJxLiacE259n5j8wObgVj4dAOMRaycyjDpixau/pVGMj7c?=
- =?iso-8859-2?Q?Cxw2KFzQvO6LFar2tiSYFN66RlQWNzLhmNfK5zBGelLfG34EV4mqdTBx6P?=
- =?iso-8859-2?Q?T6Kwck3ZqJ6VFfDNGhXEErM0y7Z9wTJktqpkbdEtb2iWHmhCWj2Hka1XcG?=
- =?iso-8859-2?Q?VfVf3x8qXco+wLA2kcsAK1lMm1gZsaQbLFtu87YBpy+Q0sMMdxo3otQDTU?=
- =?iso-8859-2?Q?e/8LY7qExo0RholNbAytkuyRLYehVExUCXDpy4CItwgF0xzcGWW0CDkele?=
- =?iso-8859-2?Q?U3ts9tP087N9GOnQPAZpgvbGyNaVEV06cTJIi/zsi+DF+BF+DZN9A3G76b?=
- =?iso-8859-2?Q?feOIr3kWcP6WgF9QXXgQgO1JNFHouYbAtGe5pdFd3Tnh4eYNu4Vm4puJ9o?=
- =?iso-8859-2?Q?zjzwXmuBP643iZS7WtqjF3cISlsLw+f6asyeToj1dTtyo/a40lkEQTeYsc?=
- =?iso-8859-2?Q?iLG1rLZ+RRbpvSgSO8wgHR3p9n8DItSTcP4y82hIcomiOD9xkBjmtTAXZs?=
- =?iso-8859-2?Q?0zugEz+BCt3b5OM8n1q7z8FUQCAC6kI1LbuKSe/9ypBOT1Xc3W4m6goWMs?=
- =?iso-8859-2?Q?+jAWDf22uxvkQ0eoUhGTNhCKk7IHdzLLq/kZ4QXzkBo0GtGiNBYDIv6Hup?=
- =?iso-8859-2?Q?Jan6PsFZdfJKsQbd1NjU2rEUWRYZTgO+0LWbltno4ryPJSurDbyZdvZuyy?=
- =?iso-8859-2?Q?Me0rkjHXB5XhWLw5P3hB0tRamCt0YYYmWdZinuRCnciLFg9TqJnGUnmivu?=
- =?iso-8859-2?Q?6wOqaVM85uzmjsY3h4eiKalTjqfRvhQFJJHSOWkWdtE5rovsDzblprPQ?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?34RkGuTaehCWx8mO/qbielg6gbSFpl4Fau8urYjwnGSPR6drV8FfFDIWHQ?=
+ =?iso-8859-2?Q?RzWjwLDMrmkq5ZoJhe+gVJIdaf6Q1l1MW5+8UHzt3c5s2PqSkCEWqHp0wy?=
+ =?iso-8859-2?Q?v+wGRGkiziZv8sVJCqPH2iQxJxHE2HQgWJVyCNzGmfr5HGGswUAsD6qhcT?=
+ =?iso-8859-2?Q?yeEPH/kSEA+hWxtdcg9XOZQpxXkiKMeMznH9pT60gmzleV4OJ8tPxaP2Yt?=
+ =?iso-8859-2?Q?aIkHSeOfNBQIreldXerw7oeeOELtTrW1eShtxzaSiWL6mWg+uhIUQaV+AY?=
+ =?iso-8859-2?Q?Sxx4m+ITY1zZoWmtdhuXRgfOXRKwRoPBw1rwrNMXfbro++HWZYkG2YtVGT?=
+ =?iso-8859-2?Q?Pu/ofbnqtsPp6/1LOz4/6eqqdYJ/mgfpNuJJGCxPakrlbXm4ERKgek9LUN?=
+ =?iso-8859-2?Q?Qdc5/AC5+StCCLNx9eQm0U9q0iySs9nZT/6jZGqSsDJ9fDkAaS46dBTYLW?=
+ =?iso-8859-2?Q?5nCpqJ90P4RlmHXSNahqrKpQBMxi1lTf4MKnSTCehOLEf21AwxsuG8bv03?=
+ =?iso-8859-2?Q?g8eFusUEX/WVz7Fsq3JUnWE1xgxSZjdKCa0PDw69MdgHiuNjqcf0PtWLR7?=
+ =?iso-8859-2?Q?OmKZNohgEMmQJ4CtrykvI5isb8M4CycZj7PTDKkm8JdnIHtCfd3iGWjspw?=
+ =?iso-8859-2?Q?lFro19xPZbwzN/Kfr00f4stlLQXY/K1ekfXtBveip6IvTOXlDywPKAAk/N?=
+ =?iso-8859-2?Q?i2ybiuiEJMHW2jE6HIXunY/hjBDri14uar3yttTVBwUF98pUR+icoIM6ud?=
+ =?iso-8859-2?Q?AVMmiCvUUrQRZB9e0aBil43TgubaJ1C0npbutTXTAktyDPA7V36g1OBFS9?=
+ =?iso-8859-2?Q?tGFJgjkOF8wN92JrkLxoZ3azSh347+eL33Z/64qIhAADbGXr1Tscri9/Uw?=
+ =?iso-8859-2?Q?4+m6U49imro3513lX8nmKisEQjYP4hkqRY4KfoNkjp/BufY8MWuAatOAEE?=
+ =?iso-8859-2?Q?BriLV37/O7NIj1qI+g0V5flPr8XWOtdjlUv8QBSKXJnlFVdj6tDb3LmUk7?=
+ =?iso-8859-2?Q?5quFsa26hR2N2GNWw61/V/IHjwkgOl+GbehcwjbDmdtgumtWP6Erx9vzVz?=
+ =?iso-8859-2?Q?Y5aOE7BEwvrZF6wNs5xuu4X+tiKNu94BIlwHy+iiPllMfoRkA2crgpNDQq?=
+ =?iso-8859-2?Q?OusS05HJC05hoUtO/whOlEbOvWH4TUlj2PqjWbmuSUdCleRPIvgIvp+AO9?=
+ =?iso-8859-2?Q?gVUB1F5maQSpzVhR+X4DuZr38WZ5mZiPrHZcyD3YSaByIGABrHSVSP/6d6?=
+ =?iso-8859-2?Q?pBswH/0E9+EJ783BkVUz4va/bRUF6ZVkkLtOmvtAPmAuqxHGDcdJ4aWzSZ?=
+ =?iso-8859-2?Q?DOgndNXo4juXSQXThAJDVr2GpC7rIufUKyG6K09Jj+hJ6O9Cx+LvYGsdPJ?=
+ =?iso-8859-2?Q?pRv5oltMpvV+hF417Q+ntpFM/yPAOYjZ9O7CTxzfmcFpN8o5vTOPx2Dr1k?=
+ =?iso-8859-2?Q?hGobCN/RqLDCbwmuWiPFkNEVsvsTqPIGlo85QGlJC9vPDTvOkV/3gFwkG6?=
+ =?iso-8859-2?Q?Ljy6sOdvA+xsq5rYm18YRmu8NQ4SGlyBWsw9Qk3j+mTQXf1c4iUQgI6Q3e?=
+ =?iso-8859-2?Q?0+qtkY9GUiWfX9djW8ZFvyDl9QOxorqonES0JRDCOmHplVBWQjZvqRNnA+?=
+ =?iso-8859-2?Q?Xzf++VlQVeGriyrp8/CukfjMUs6HAMpd7KdrNB6whpQOa9N9RzZGjAog?=
  =?iso-8859-2?Q?=3D=3D?=
-Content-ID: <9E0D7D041433044FB2615C1FBD1BE483@namprd04.prod.outlook.com>
+Content-ID: <785930916D6A1B4FBB9BB7A596C785C9@namprd04.prod.outlook.com>
 MIME-Version: 1.0
 X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?iso-8859-2?Q?3neZKicrfllqMneJyuOkNtLNCAhzVeAAU3aCnOQG+HjrJOoktbZ6FaxOqU?=
- =?iso-8859-2?Q?7yz+a79F6GHJHW9xoLLDoxbR3k7HZ06ODzCE6ZooOJlDmrKmtegiEeRB30?=
- =?iso-8859-2?Q?THCYarhwnDyHiK4U5tkbekkSRnJonXjObmJY6fkk0xeGGuvZeLwjf6evs8?=
- =?iso-8859-2?Q?MT1rpOERxe21of7ArYkCHpD3Ekne/fhYeHTw04wm8bBv0rQswbQUYanqKJ?=
- =?iso-8859-2?Q?JSI+9DQlruRIa0HmklGqMjMjQMTJefhX+TXmRDIYlkl1tSIjj9DUEEcawC?=
- =?iso-8859-2?Q?+uM3AVzh+S8IUAyiIzSMABFRe2YVZi+XhXSTJUbvmYGv/+Izhrkj7MhEkg?=
- =?iso-8859-2?Q?lIkfP54pJTvmqQTvf2QthxcMlUaDlP0LdbMeNVzXhChXpTQSZELyQJZjzh?=
- =?iso-8859-2?Q?XQu+sbuoM1lzFeJK2j+MiX7sEvotD2GmKrX46oCLTx0SjPBtRAEC255H5q?=
- =?iso-8859-2?Q?jI1s4ld8FHKTxrfKhYyEEziWDeHM6GAb4W+hWirYevSbbEo5lQ64RUPa9O?=
- =?iso-8859-2?Q?1UvIsONJLq6HoO3BjaqoXXOjhqyAIvuZ0zhN2BqB94LRuV8a5Ar2/S7uuj?=
- =?iso-8859-2?Q?ExqJm08KpHN7igkA3GDdPagJWGWzByFc3wTtMCWMoObD04O0TNoouDePaf?=
- =?iso-8859-2?Q?4pnNCn7MU8ej0X++2+v8ZcbnugHAWn1/10musF5hE9R5rHagZOtupstQ3O?=
- =?iso-8859-2?Q?CfExMKhaP2JRV1FqC10QgAJ+wkaArhSI2h1zUve3Q0hxHJjgnHFSEDc8sS?=
- =?iso-8859-2?Q?9I9hRnhquUm+/4VroadWm3gZGTaMThzxQDgS7EEnEyG4VWcUTmqAYcTe1J?=
- =?iso-8859-2?Q?Bijm/jr/y14ggy6p7a0/NNRo1+PI+ohOIrJS2cNkH3Ianul/qwk9IQfuDB?=
- =?iso-8859-2?Q?eT//t4CxuianO4IPEJmZsnBrQh72CS1z9+c/VkIrAOOD3OKELwaeLNfGG0?=
- =?iso-8859-2?Q?i4+exRzakAf7CrSo94KcfGArTQ3cWGD869wiI+5HBaSIGU9RP1LGGdA3rA?=
- =?iso-8859-2?Q?/ByQEG61YeBtV5kuwXKuCAclgKLyBxUGpdIhU7639ecXHByxWhRS/7nwZT?=
- =?iso-8859-2?Q?CFFyq6XBJ6lZGv81piOUTEZuesAY8C5kFE7t0dYm9Hc1j3QYhfUcxMjny2?=
- =?iso-8859-2?Q?P76dJdlg=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?iso-8859-2?Q?gcPLKQ9sgSHz9DM20vP7fr/DNTs8YizHxWw7NAG3/VGGy0q5C23Q065VnD?=
+ =?iso-8859-2?Q?Nnq2u+nRRPPkEFbX3NzWvCxl4ASX+vZ6Up/yQM82Z3gpMhGm4Sa85bnQzW?=
+ =?iso-8859-2?Q?21DyT+rdVl7+f3BUiUg1Xd0FuPElXXCEtO3h+f0rsB5hvnp9ZaCYWjGoux?=
+ =?iso-8859-2?Q?go/eqiKTMqOMwdJFBURmg4M7rKeFG7La7S6n5ay17Ipd5g2LV2FMjdVtMZ?=
+ =?iso-8859-2?Q?dBrqUyscywoBEsK+vxUIiisPY01sdjTK7bC5iMZMrWCYsPyF/Oryu3UHfu?=
+ =?iso-8859-2?Q?WxMroJ3T2C1+AYXOaE8YceLI85bC5on8XdbuQM3RhIzfxR4jLu1d5DXSg1?=
+ =?iso-8859-2?Q?teLCgdqw4maDvtx3QbcdCE7Rlz9DHF0AaLpG0cceGF8WSc9EWcDUP+/iuk?=
+ =?iso-8859-2?Q?XbxLnpikVdh+nQFCG3uXW27yOvK33tJ3sKjif+vZ5uWXKw489cHlm2pz0h?=
+ =?iso-8859-2?Q?nSKGLXL+UonbITvPWNkHWED7gR0dJY1g6AKVWzsUOQswmxzhpQe5i54VmQ?=
+ =?iso-8859-2?Q?zc96ohHJPuhyKulkueRjfshZtyqJu57YucVjMKA7VPSgkjcRFBiENAXV/G?=
+ =?iso-8859-2?Q?+cT0MqQOFxnEjKNvbili/7U6pbiJylmdNPm2PcDm8eSfjNn8K4Y1fymrdn?=
+ =?iso-8859-2?Q?gygxK3cOBT12UeXOFBhfgLDzzRBH/4n5uqV01VTjHy8mzCJsB6bZHe+FiD?=
+ =?iso-8859-2?Q?k1n10UXMTsKPv4lWr7QKbI8pgMhPJf+7lNQ+lKhL+YJESGzm2jjjYi55ac?=
+ =?iso-8859-2?Q?GPGmswGXkQlqYfAFLChIxehZLAJvVgzz+lQ8nndSto1SldFtCPeekdz9Hd?=
+ =?iso-8859-2?Q?p/fpNsW33I6QiE6mTmk0vuoRY9e/ivJit39LlKPgeHk3GThXCC4B/rOLmn?=
+ =?iso-8859-2?Q?dJH8Evcsf6qxP9aaAOSd5leGq0x1lXDR00pUt/iR5i7RJ6wiUmQ2qJE5sO?=
+ =?iso-8859-2?Q?viuZmV9VINMGUs9ihVzSiMO5VPVDTC1S8n+3wHBBhn9us4bAZBsaeDkMjL?=
+ =?iso-8859-2?Q?lHzsrm1cZxqytUc0xUA1jYHdYcUs7BtO1bvtZgd6SNGvznvnapDbf5b3di?=
+ =?iso-8859-2?Q?+GPNgKy6XUg0RQdliq+hBt0EWJzvbW8MouBPvubmdRjMeiS4Er76odSoJh?=
+ =?iso-8859-2?Q?AsmItwLg=3D=3D?=
 X-OriginatorOrg: wdc.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: MN2PR04MB6272.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0f44cf07-7640-4635-ea3a-08dbd595f46e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Oct 2023 20:07:03.0743
+X-MS-Exchange-CrossTenant-Network-Message-Id: 38d486e9-5990-423e-b069-08dbd59cbb18
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Oct 2023 20:55:33.3275
  (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: /taf93JJYDg8JwfIyjToWNBeR/y+r/t7ngz0hUXLcD+JWkUrICmKBwsRUk9j157iLSxjCkCSGepH+pQlQjNX+A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR04MB8056
+X-MS-Exchange-CrossTenant-userprincipalname: ccMlBq/bWFVBOmpO+daF0d2jIPZtRWLKOaNKT3frAgXSZUKmYF2sQc235n2vbRl/YHACw/5IIFWwaTkBWFY+4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR04MB7762
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_130710_490269_A08A1542 
-X-CRM114-Status: GOOD (  25.50  )
+X-CRM114-CacheID: sfid-20231025_135550_251097_51849D00 
+X-CRM114-Status: GOOD (  32.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -192,69 +193,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Conor,
-
-On Tue, Oct 24, 2023 at 05:30:22PM +0100, Conor Dooley wrote:
-> On Tue, Oct 24, 2023 at 05:10:10PM +0200, Niklas Cassel wrote:
-> > From: Niklas Cassel <niklas.cassel@wdc.com>
-> > 
-> > Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
-> > using:
-> > 
-> > allOf:
-> >   - $ref: /schemas/pci/snps,dw-pcie.yaml#
-> > 
-> > and snps,dw-pcie.yaml does have the dma properties defined, in order to be
-> > able to use these properties, while still making sure 'make CHECK_DTBS=y'
-> > pass, we need to add these properties to rockchip-dw-pcie.yaml.
-> > 
-> > Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
-> > ---
-> >  .../bindings/pci/rockchip-dw-pcie.yaml        | 20 +++++++++++++++++++
-> >  1 file changed, 20 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > index 229f8608c535..633f8e0e884f 100644
-> > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > @@ -35,6 +35,7 @@ properties:
-> >        - description: Rockchip designed configuration registers
-> >        - description: Config registers
-> >        - description: iATU registers
-> > +      - description: eDMA registers
+On Wed, Oct 25, 2023 at 10:07:02PM +0200, Niklas Cassel wrote:
+> Hello Conor,
 > 
-> Same here, is this just for one of the two supported models, or for
-> both?
+> On Tue, Oct 24, 2023 at 05:30:22PM +0100, Conor Dooley wrote:
+> > On Tue, Oct 24, 2023 at 05:10:10PM +0200, Niklas Cassel wrote:
+> > > From: Niklas Cassel <niklas.cassel@wdc.com>
+> > > 
+> > > Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
+> > > using:
+> > > 
+> > > allOf:
+> > >   - $ref: /schemas/pci/snps,dw-pcie.yaml#
+> > > 
+> > > and snps,dw-pcie.yaml does have the dma properties defined, in order to be
+> > > able to use these properties, while still making sure 'make CHECK_DTBS=y'
+> > > pass, we need to add these properties to rockchip-dw-pcie.yaml.
+> > > 
+> > > Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
+> > > ---
+> > >  .../bindings/pci/rockchip-dw-pcie.yaml        | 20 +++++++++++++++++++
+> > >  1 file changed, 20 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > > index 229f8608c535..633f8e0e884f 100644
+> > > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > > @@ -35,6 +35,7 @@ properties:
+> > >        - description: Rockchip designed configuration registers
+> > >        - description: Config registers
+> > >        - description: iATU registers
+> > > +      - description: eDMA registers
+> > 
+> > Same here, is this just for one of the two supported models, or for
+> > both?
+> 
+> For the 3 controllers found in rk3568, this range exists for all
+> (all of the controllers were synthesized with the eDMA controller).
+> 
+> For the 5 controllers found in rk3588, this range exists for only one of them
+> (only one of the controllers was synthesized with the eDMA controller).
+> 
+> 
+> > >    interrupt-names:
+> > > +    minItems: 5
+> > >      items:
+> > >        - const: sys
+> > >        - const: pmc
+> > >        - const: msg
+> > >        - const: legacy
+> > >        - const: err
+> > > +      - const: dma0
+> > > +      - const: dma1
+> > > +      - const: dma2
+> > > +      - const: dma3
+> 
+> While all the PCIe controllers on the rk3568 have the embedded DMA controller
+> as part of the PCIe controller, they don't have separate IRQs for the eDMA.
+> (They will need to use the combined "sys" irq, so the driver will need to read
+> an additional register to see that it was an eDMA irq.)
+> 
+> For the rk3588, only one of the 5 PCIe controllers have the eDMA, and that
+> controller also has dedicated IRQs for the eDMA.
+> (It should also be able to use the combined "sys" irq, but that would be less
+> efficient, and AFAICT, the driver currently only works with dedicated IRQs.)
 
-For the 3 controllers found in rk3568, this range exists for all
-(all of the controllers were synthesized with the eDMA controller).
+We could go with Sebastian's suggestion to define a 1MB range for "atu", see:
+https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/pci/snps%2Cdw-pcie.yaml#L76-L85
 
-For the 5 controllers found in rk3588, this range exists for only one of them
-(only one of the controllers was synthesized with the eDMA controller).
+Which would allow the driver to probe if the eDMA is there or not
+(even if this is strictly bigger than the real ATU_CAP size, the size is still
+within the PCIe core's register map).
 
+That would solve the problem that some pcie controllers, with the exact same
+compatible, has a "dma" range while others do not.
+(All controllers would have a 1MB atu range, and none of them would have the
+dma range specified.)
 
-> >    interrupt-names:
-> > +    minItems: 5
-> >      items:
-> >        - const: sys
-> >        - const: pmc
-> >        - const: msg
-> >        - const: legacy
-> >        - const: err
-> > +      - const: dma0
-> > +      - const: dma1
-> > +      - const: dma2
-> > +      - const: dma3
+However, we would still have the problem that for the exact same compatible,
+some controllers have eDMA irqs specified in interrupts, and some do not...
 
-While all the PCIe controllers on the rk3568 have the embedded DMA controller
-as part of the PCIe controller, they don't have separate IRQs for the eDMA.
-(They will need to use the combined "sys" irq, so the driver will need to read
-an additional register to see that it was an eDMA irq.)
-
-For the rk3588, only one of the 5 PCIe controllers have the eDMA, and that
-controller also has dedicated IRQs for the eDMA.
-(It should also be able to use the combined "sys" irq, but that would be less
-efficient, and AFAICT, the driver currently only works with dedicated IRQs.)
+But perhaps having mandatory atu range (and no dma range) + optional dma irqs
+is better than mandatory atu range + optional dma range + optional dma irqs?
+(At least from a DT schema maintainability PoV.)
 
 
 Kind regards,
