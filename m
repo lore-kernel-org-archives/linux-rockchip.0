@@ -4,66 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13C6C0032E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Oct 2023 19:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5A9C0032E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Oct 2023 20:02:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZPvflK+8a9M5551p43Q7GykZeb85t15cNtX3py+Qzis=; b=F58s2pwikhaxEzuGlKqSAQ3tB9
-	hXIBTUPKcLz9c1n7nX7PN8YsE4KG02ht4YUBJmbOWFkbTerlOyK+Srm1HABwWw0K5EwhFZOxIotBn
-	2T4lOq87vGY0k2bv7z16P3P6j0NfQme0QznMIyYOuqMedeY9n6xSXu8deA/NeN9XXZxWWxxryy6L8
-	ZyfgDROjVizYxNtHIf9UHHBjsSZkqG2LwWeq9srPy/MeJAmDXMn3v50E5utHGlQCHGKKSGjo1PP7F
-	lqaYZDCytgJp4yX9Y9mBF+tJKmg8/hrZ8UQNWO6KmuwvT8ZH+nr/YmNWes5xIF6xedba99JwQMzOa
-	YuMM35ig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PCTJgmzjuETxIeL05ehlXcKUJK09jVqcEdii/Gq+dZ4=; b=YGvUomNjhbS9T9
+	wTaiPIO63g5Ok/a+zOKJSzaM+JOILF7H16vGBRJl/3xIL/dHVtOHlzvkl0Aop4V0V5WKvCMMq8f9p
+	Fhx+cn0IwVXWr8nVQqHdnFxTYbn1geL0ENpK8ljJJy/mHan4iozktcZeJGbdcPvBsNQKzAD+Z6L3j
+	8QexGteQmGaDXkAbt056hnH7svVILjs67QavD2rWr9KAM7D8/XIs3y7Sq8VMB2zVrmlnxh57bvEMf
+	Wz9ghxRkmln0DlKwK0dIhkCwyUyGAzl6jHVc9kTPKreXDDxL0zFidf1P3lXwWHfKnlIY9mu2/pkL3
+	KAyI0V4NJ6sfEGyvsDMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvjsC-00Cz4R-2J;
-	Wed, 25 Oct 2023 19:49:00 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qvk5V-00D0Zp-2f;
+	Wed, 25 Oct 2023 20:02:45 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvjs9-00Cz2J-09;
-	Wed, 25 Oct 2023 19:48:58 +0000
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A76D66607331;
-	Wed, 25 Oct 2023 20:48:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698263331;
-	bh=4C0knIOWZSCqz/j853cFCQSGyZP8bkVC+6liKLv+oVM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U0dTNgmUY1CMPIH0+Dt8SUXHELGlSctli8R80RvqsaGhDMVMMWOzUM1L6F6I8mzoN
-	 E8Z7ZZ1itNj0j0VKV203EA2p7LcdTmiPA2vZQgokyOfPnoRKMOjDhUmddTYSLuYsqn
-	 ADzrAb9j8ACihiX5dCdAIm5Ccp/bOZ3dBWaw31v1N4dED8dHGe8NxtQ+tshcJO/QS5
-	 Y49iA4cp+Km7CBQA4LKjgVNlE7HdZcflH3x2/o7tfODgdtGZ3sghAuDoZCoqteL3nZ
-	 hIk871DhA3ySDmONlW9Rf9j2fPVi/DYw6KpM6haJlN5ihzF4x/vqcCzafhIA20iYA4
-	 BDf0GGY4hGLeg==
-Received: by mercury (Postfix, from userid 1000)
-	id 23927106057B; Wed, 25 Oct 2023 21:48:49 +0200 (CEST)
-Date: Wed, 25 Oct 2023 21:48:49 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: conor+dt@kernel.org, heiko@sntech.de, kever.yang@rock-chips.com,
-	krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
-	robh+dt@kernel.org, zhangqing@rock-chips.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
-	andy.yan@rock-chips.com
-Subject: Re: [PATCH v4 0/4] rockchip: add GATE_LINK
-Message-ID: <20231025194849.4esjw4w2trgalp55@mercury.elektranox.org>
-References: <20231018070144.8512-1-zhangqing@rock-chips.com>
- <b0af9e04bafb07e8a73e8f242a4ff556.sboyd@kernel.org>
+	id 1qvk5S-00D0Q1-2D;
+	Wed, 25 Oct 2023 20:02:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1698264162; x=1729800162;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-id:content-transfer-encoding:
+   mime-version;
+  bh=wtPpaLhxvAhcdXvXXkbDHUis5DOzOKJTdPn4HCRkqNA=;
+  b=U53yAeWN3ERk6UDo5CMA+XyFbWh2xWNCjlzxlnZMBHwCQlDGflDqaH7Q
+   17GmrDT51QOOuG3QXismLCUUKmrNbpdT25qs9S6JdPk5Si7Wsq0UOvhu1
+   w9XMssuCOltMLpUkur74s3YACczhZq8MyIDWU8Aq0ClNf7wjxAXvRN94E
+   obAT9SnxEhCpKmmOPI6Yh2p3n9/v6q0YffwLAvSJCRSL4issF2rkoovuZ
+   RUo2UNFrKYgBMuBo4dF9aJs5/IK4EXnsdk51KhW9rbTD+97wiR09Oqa53
+   ix+tJdu02xWVe9FnVzeQzBPOdgb/qF551TBKg674frZrGDDFVbnLLw6EE
+   g==;
+X-CSE-ConnectionGUID: lTdDOzPaSA+OhnIxGryl6w==
+X-CSE-MsgGUID: LoVQihXFQdS14eDH81VgMQ==
+X-IronPort-AV: E=Sophos;i="6.03,250,1694707200"; 
+   d="scan'208";a="597560"
+Received: from mail-dm6nam10lp2100.outbound.protection.outlook.com (HELO NAM10-DM6-obe.outbound.protection.outlook.com) ([104.47.58.100])
+  by ob1.hgst.iphmx.com with ESMTP; 26 Oct 2023 04:02:35 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=n5PwxJyJQiYzvX/dULNmYQey/OBZsVSsKezHm/xaVTbX/7rnnGCee8w9QmsTqS1j+/huB2ry8ePq1031x8YAz4TKpyKAxDmPZ6RSv2QJpQ5aVmKKrMFV71ddBcN6svPoIVlwHVvOsr8SPYK7j7KgSbSJ6NVkUuOGtdvo+G/F+2kBSZHuyY0BOSNvyigCBG4axSrckptZLO0EaqBJ/jLMTPW3YRRlx4WcPPmN/r1wgmZD/LDeP9WTyH+qObW8muxe+0/cgSym2wLBvN3pussoCf3hp4OBXrXuw49JnjcuUCiIiZeF7P/PCvXP800Plg/UO22DKskwtUb8xTU6v1Mz9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lJTvOUfAzL8EYQj44B3GOAi92EKlw9L3KWIiCqb9irg=;
+ b=JKO5VCEaQmoyqv4iMugxBRfz6hchJ/Jr4aRia8SiAWN8qmmuYjIw1UkHWcvYgJEjLPoQGqTSi8qYTuU18bePwNUJfDE4EdicpK8kzXU1LQDbiRrYqThySilpuwTf1eCbOyh7ofxLj+So5ilm1mnvdEJ0kgoX1aiXFzSXXWjpuiZuJc6Y0IAp07RWI+Y5W2I2ll4e3UdPzSQsqR7jJ9HhaknIk/hIE3BB5Y3GcEqI6Te3pgEEU+hNJQbz+0+D3reo6a7WfKI/gQsUQUEipLj7vvFxIry8p00kx6pKV5pmlJ5Gg/K74y4GWt9mQJpLfZSaBXDsA+q918GcA7kocxqnhg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lJTvOUfAzL8EYQj44B3GOAi92EKlw9L3KWIiCqb9irg=;
+ b=HXK/0tsz2DZH6AsJrftR5uDNPRoL4JhWOYXA/URdzITFTv/0VSIFqKovACRm8pgjs0ToJ7IMdT1Khcfk3BrRob2YxRAobP2jyTajRYEx0tcoySGdL2tSKkHnOr9JSvvfwglqX+c8+iQeHm1kGOBGgpMm+cWSw3mr4gt9OJdPim8=
+Received: from MN2PR04MB6272.namprd04.prod.outlook.com (2603:10b6:208:e0::27)
+ by SJ0PR04MB7647.namprd04.prod.outlook.com (2603:10b6:a03:32f::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Wed, 25 Oct
+ 2023 20:02:32 +0000
+Received: from MN2PR04MB6272.namprd04.prod.outlook.com
+ ([fe80::47df:9a7c:5674:2ca6]) by MN2PR04MB6272.namprd04.prod.outlook.com
+ ([fe80::47df:9a7c:5674:2ca6%4]) with mapi id 15.20.6933.019; Wed, 25 Oct 2023
+ 20:02:32 +0000
+From: Niklas Cassel <Niklas.Cassel@wdc.com>
+To: Conor Dooley <conor@kernel.org>
+CC: Niklas Cassel <nks@flawful.org>, Lorenzo Pieralisi
+	<lpieralisi@kernel.org>, =?iso-8859-2?Q?Krzysztof_Wilczy=F1ski?=
+	<kw@linux.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+	<bhelgaas@google.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Simon
+ Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, Sebastian
+ Reichel <sebastian.reichel@collabora.com>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: PCI: dwc: rockchip: Add atu property
+Thread-Topic: [PATCH v2 1/4] dt-bindings: PCI: dwc: rockchip: Add atu property
+Thread-Index: AQHaBoxoQTs0JHhg8kWC9n402P+JBrBZIWsAgAHN24A=
+Date: Wed, 25 Oct 2023 20:02:32 +0000
+Message-ID: <ZTl0VwdFYt9kqxtp@x1-carbon>
+References: <20231024151014.240695-1-nks@flawful.org>
+ <20231024151014.240695-2-nks@flawful.org>
+ <20231024-zoology-preteen-5627e1125ae0@spud>
+In-Reply-To: <20231024-zoology-preteen-5627e1125ae0@spud>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wdc.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN2PR04MB6272:EE_|SJ0PR04MB7647:EE_
+x-ms-office365-filtering-correlation-id: 80e71944-3017-4b81-4c81-08dbd5955331
+wdcipoutbound: EOP-TRUE
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Q+EGmi4csEzR1OZ9hSrNXh9Vbq8DyAlLd3Z5podNN4UAKP8nFwKku1S8UfUQup9cDD+y/JHrQhcgnyVcly9XYLRpBPB4gyV/MV6aKTMb06+Lv6xDwxQzdJu9H7qyChruqjWs1MjEV0jcWXWagIAP+jZECS//ZJJIV6FpT4U8mD8Sv580FRZafdpUUd9PGZCTPCB3YDprEwcwLDcJ22JzziKz0Ylq6j6K4h7QikMPxPVN7axrwSJSby1PcNmz0luB0pWYc2hW+0/DH3xsEnoX0+DCoQq+bY5DwnG9inqMN0zsEvl+nji4XdRLAZbyaar73ku0GbC7hCyGB8W8V8mZXlmrXxdqNp7ERig5RTG3ybFFR7CnaPUS9fQD/nTvyFgwvAs2YWYsJsiRc+N3hC4JiZBSp/bLb9zQube2daqyl2gJ32+YVKc3KWyX5uS3sOr8OPgxPRzug8ss+c81JjNfA3yRKUtEJDhnaopVBc32tIFLk52pBNZFG8trE5V4Cb06RV34947rYceEpmwYbyVdsUC29fdsiIX3bCFIvbbnNt67lgZR+jKh/wD+yDFEwoT4FsXkpQGEVTntsAU7R3l2uhINWuvEA3pOTsPrfXRcfMI=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR04MB6272.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(366004)(136003)(396003)(376002)(346002)(39860400002)(230922051799003)(186009)(451199024)(64100799003)(1800799009)(26005)(38070700009)(33716001)(38100700002)(2906002)(41300700001)(5660300002)(86362001)(8936002)(8676002)(7416002)(4326008)(6916009)(54906003)(71200400001)(6506007)(66446008)(478600001)(76116006)(64756008)(82960400001)(122000001)(91956017)(66946007)(316002)(66556008)(66476007)(6486002)(83380400001)(9686003)(966005)(6512007);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?70KH8GFbYe9ledh6PTsaCW4IW5X7YzIrVa/ybPe/xFIvizgpqwYpBSxoH1?=
+ =?iso-8859-2?Q?xFFm71Lq6CtP5aXtFJ1xLlNLCm/tYSR3IG9AgZVxDDu9Y3RJ+iUfckvzzi?=
+ =?iso-8859-2?Q?Af7qB3ui/PdJpfe/XCWGB6KVqVQa0iOwxKAU0JiP67f3mCPbF6t2nRiBtc?=
+ =?iso-8859-2?Q?hDGQuviI2/pKo4XmM0wMw2CXkkNo7ieeTym2JsIzfjCSZVu2UHERFqoAjc?=
+ =?iso-8859-2?Q?WLi6UGGV8ODhMHwFZOvKx7soCyMTuzGslzOxEAHTSQcJEjj3K4gG3+F/tC?=
+ =?iso-8859-2?Q?+VR07oZm2hxNO/Qch/gofKiT1/ewidmIta0NePgBdLml6uGdFb/e8jcn5u?=
+ =?iso-8859-2?Q?jNFT6CdQdQ4GwN7GL3T0AY6HjSh1k5FLmhj/2hqQwO0zTo1yyVMkH8l5Ev?=
+ =?iso-8859-2?Q?TLhrCOgbNoSSLk0XgXL+rip6W6W9u91TKgSp7pmVZqmyQlQbdM21XaJHq1?=
+ =?iso-8859-2?Q?oNOo7P721EtOfHc9IbXjTjnyH2IENPE1aFIEGfQnFb/ly6qJRQv/NmwH9c?=
+ =?iso-8859-2?Q?HpyAuaqxFst8Wi5T2xMkSCJWHdOT6rbK2TSXMbVcTLWc4H9iWfW1dDTWOd?=
+ =?iso-8859-2?Q?HxK7obWuiQvdUtdxNJucw6FoyQ6fRLwNplzNjH00kegLZ1cVCLcTO4u8UN?=
+ =?iso-8859-2?Q?tUhEwmVX4igFWe4vttuYax1ENnEu5HzfF7Ux9OE12+x1rtUZzmzmpiwavv?=
+ =?iso-8859-2?Q?Jf80DsXrnfKaZ0fowQL2LMCHwWa8ciDQQ6rFeF6yPfNTNWhxMlxnvu9UvT?=
+ =?iso-8859-2?Q?bZbI59xAGyZiVgXZDzVRjCshczlMLhNDu44ohgXLqQ1I2Y7/4urlZlC5de?=
+ =?iso-8859-2?Q?eX1ndxu0xbK3O9BcXfOeLXN3YIvNzN0wvgnMw3RDdiQP61gRHObAJV8HSF?=
+ =?iso-8859-2?Q?mBp2SCi7y26miHi6qVow2F6Np84sDjw+j0t4MlQUQRCDhcO+KDXqnn0VmS?=
+ =?iso-8859-2?Q?xMBZVT1DzkoeB06VGPQu8HOlRkkrWaJiKo1QK/Uc7blZoaCuI0lNer7bB5?=
+ =?iso-8859-2?Q?wrgcwNle07iuijuR4p/xI0R0Bmzg6D+Guw/boTsR58id+ZoE6WmdBizOUk?=
+ =?iso-8859-2?Q?6yHVJljFR4az3zZGRRQsTZNaTeM91zlftPg1D1nJDtmmEIZwgK/lgRvlA9?=
+ =?iso-8859-2?Q?BmSpi7wOwhM4V+tylmFbionBp0su6F0WeNYEfDDpBjOj6e7OW0166nH0G0?=
+ =?iso-8859-2?Q?u/8ekLLyrUbjdSF7MeVwWXGW4QDZ9FVZTPHuHm8shlpI1uVSh1fLEXlf6w?=
+ =?iso-8859-2?Q?l6GDRuBZ/c8Bysz7dh6UEtD3tbPRa5Ca/h2ibC1BIazOe0MsePsFfu/hA+?=
+ =?iso-8859-2?Q?1T5dcqFWXf9srIn2uPzGwc3wUTyE0NaCvRspvC725x7pk411SGcn9OKVds?=
+ =?iso-8859-2?Q?QpHg/jkp6Ag363HFLpC9WvfMQ54NcLsfejAjbXfcQEwlQV0kWmJMwT6pAS?=
+ =?iso-8859-2?Q?y1RUHFsQ9GiILfDrQuheG4NgP0BmKEqhRkJ75uJuvS0CasUlTIYPE3M3CK?=
+ =?iso-8859-2?Q?Ew11rIAUammiyDPEtfQ98TDq0q1HzHELFmGDghOW7CcQKyvn05Yv/18zSp?=
+ =?iso-8859-2?Q?pida4/7kxy/I9LPfJXKGbedRaDiIVowli7HeOKZP4bLfqXoEEB1T+2u9HN?=
+ =?iso-8859-2?Q?O4Vx19dLGUWh4ArL0jksDHtkyyG7N9j4U2I9mAvTCYhTVlCrznv3Pk5w?=
+ =?iso-8859-2?Q?=3D=3D?=
+Content-ID: <C8414AA5996C42488B193E89ED0393CD@namprd04.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <b0af9e04bafb07e8a73e8f242a4ff556.sboyd@kernel.org>
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?iso-8859-2?Q?b1MdL3u4i02xVREDhZWVQUf5qphB52LINnb8bYjw9y/3Jox0qYOoNIzJWR?=
+ =?iso-8859-2?Q?L+kMKKkFlD3803WFM1ACjuz2kA35ZRaCJUIszCkzF5AZVoyMSnIh0loyPG?=
+ =?iso-8859-2?Q?Kuy0toOfv1hdcgFNnFptszSnBZlR8ipGm+XQzIHRvBYLX0NFYpviuTawwl?=
+ =?iso-8859-2?Q?8246bjRZGjWxyydahEM9Nj3tDhMlkXGTf4xcimmlryIq2x6dmi6kBw6Y0W?=
+ =?iso-8859-2?Q?Rupvmf3VQAer2mSQq3SQNuPie7vki3F9vJrSAGPnrAzmDFbXUrks8vBp91?=
+ =?iso-8859-2?Q?DFoBzALcbrnblWeWhH+hu7vixf7jbmM0tGVYLFSN2S3dL1asoeV+qExoP1?=
+ =?iso-8859-2?Q?6QUiLqK6nfIv5fwookRYAuErXzTzY1bkWCGy0Spq+jhnc8uiv2e1t8p7Ld?=
+ =?iso-8859-2?Q?BpgcVvZlgn47zRgpLKZwpV5yJRZCI5Rb2KkXQ7Mp/Z6IRJ7CzWLFdKrG5g?=
+ =?iso-8859-2?Q?iVnTf66uwpSGZVz/CpFMdek6c/6e2l7OeIurxJvwt28IWoEAVPKLA7Fn1X?=
+ =?iso-8859-2?Q?yqeouHxYgU/zKAj0co4nJGAuWDMaBh8M+fUHSfbw9uSMvNIPqybRnbmikh?=
+ =?iso-8859-2?Q?T7snt1b4ARxWTp6TjsgLEVCk40C9sRku7eHjIMnxXL1nx9aLEgIO7zVCgH?=
+ =?iso-8859-2?Q?/qWBlxfBPf6uldCn8Of0ZQjGSQe8TuFOXjCmFTAEqiJ74Jgi8F07AlMePU?=
+ =?iso-8859-2?Q?am88M7TXbpOD5LdGDENn8Jg8YnVLVzQG01Tag5VOPup/0BgfIeY1sjvzV1?=
+ =?iso-8859-2?Q?itXAcCjht+6gJw/E+Cyaex3jgt4Qqupqm/o5b+Ciny7r7nZfsnUqGTygmF?=
+ =?iso-8859-2?Q?7N8aHarSKraqlT6cPU9F1Ph6bny/MdHlZmXWyOhE1F5Crwrsup7qNRR8X+?=
+ =?iso-8859-2?Q?JgD5bV2TBwo4/Ad4bIuXP8xK7JRUEDZ14Yw/dgAnXjyaG8+6xOF9nWXYlg?=
+ =?iso-8859-2?Q?Mvd4NAhDD1oR09CjYujW82rw1ntCPUfBFGs8vZhMp1HeTGuKx3ieBkaNwK?=
+ =?iso-8859-2?Q?YUjVYfFuwAGQ8Su260K5gz8S2TbeUh6C79VjHvPrEEEGBbeTpE275Powzt?=
+ =?iso-8859-2?Q?g8PrQc2gopmlHTJesKVUjBNwO6BWrwN3v92z1NPL5wZ0SPS/RVJGgJ1NVC?=
+ =?iso-8859-2?Q?piUCXK2g=3D=3D?=
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR04MB6272.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 80e71944-3017-4b81-4c81-08dbd5955331
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Oct 2023 20:02:32.5619
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: vfoWsYVB8WOcfqk2gAeKehdd9TqXdsF0SyUPLA85RaCdaF1w6WZaXaVqld3i1VoBgQS7O161ofqjRYcDAPXpPg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR04MB7647
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_124857_310566_0E414EBF 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20231025_130242_791861_D033A78C 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,84 +186,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7931229301218874591=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello Conor,
 
---===============7931229301218874591==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tqfdiz36ofh6j432"
-Content-Disposition: inline
+On Tue, Oct 24, 2023 at 05:29:28PM +0100, Conor Dooley wrote:
+> On Tue, Oct 24, 2023 at 05:10:08PM +0200, Niklas Cassel wrote:
+> > From: Niklas Cassel <niklas.cassel@wdc.com>
+> > 
+> > Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
+> > using:
+> > 
+> > allOf:
+> >   - $ref: /schemas/pci/snps,dw-pcie.yaml#
+> > 
+> > and snps,dw-pcie.yaml does have the atu property defined, in order to be
+> > able to use this property, while still making sure 'make CHECK_DTBS=y'
+> > pass, we need to add this property to rockchip-dw-pcie.yaml.
+> > 
+> > Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
+> > ---
+> >  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > index 1ae8dcfa072c..229f8608c535 100644
+> > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > @@ -29,16 +29,20 @@ properties:
+> >            - const: rockchip,rk3568-pcie
+> >  
+> >    reg:
+> > +    minItems: 3
+> >      items:
+> >        - description: Data Bus Interface (DBI) registers
+> >        - description: Rockchip designed configuration registers
+> >        - description: Config registers
+> > +      - description: iATU registers
+> 
+> Is this extra register only for the ..88 or for the ..68 and for the
+> ..88 models?
 
+Looking at the rk3568 Technical Reference Manual (TRM):
+https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part2%20V1.1-20210301.pdf
 
---tqfdiz36ofh6j432
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The iATU register register range exists for all 3 PCIe controllers
+found on the rk3568.
 
-Hello Stephen,
+This register range is currently not defined in the rk3568.dtsi, so the driver
+will currently use the default register offset (which is correct), but with
+the driver fallback register size that is only big enough to cover 8 inbound
+and 8 outbound iATUs (internal Address Translation Units).
 
-On Mon, Oct 23, 2023 at 06:47:17PM -0700, Stephen Boyd wrote:
-> Quoting Elaine Zhang (2023-10-18 00:01:40)
-> > Recent Rockchip SoCs have a new hardware block called Native Interface
-> > Unit (NIU), which gates clocks to devices behind them. These effectively
-> > need two parent clocks.
-> > Use GATE_LINK to handle this.
->=20
-> Why can't pm clks be used here? The qcom clk driver has been doing that
-> for some time now.=20
->=20
->  $ git grep pm_clk_add -- drivers/clk/qcom/
+According to the TRM, all three PCIe controllers found on the rk3568 have
+16 inbound iATUs and 16 outbound iATUs, so if someone wants to be able to
+make use of all the iATUs on the rk3568, they will need to add "atu" to
+rk3568.dtsi.
 
-Maybe I'm mistaken, but as far as I can tell this is adding the
-dependency on controller level and only works because Qualcomm
-has multiple separate clock controllers. In the Rockchip design
-there is only one platform device.
-
-Note, that the original downstream code from Rockchip actually used
-pm_clk infrastructure by moving these clocks to separate platform
-devices. I changed this when upstreaming the code, since that leaks
-into DT and from DT point of view there should be only one clock
-controller.
-
-Greetings,
-
--- Sebastian
-
---tqfdiz36ofh6j432
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmU5cR0ACgkQ2O7X88g7
-+poZyA/+KGnTXYS/rnZLCMXb/+17hHTvzcgSIdn/BeQmRnEBHE9sjPFzD1KQ8Wy3
-304qrkQt4azButXo31zUjB0creBEH1ZvhDV6tX8s7Gy+8mT2LmvvArVIWinZFnDj
-YskCNEgiDFFDitOEh19nofsINcZO3YaHiVU1qUksXmvj9l350AD4vxsX6L+3f/lj
-tF9RS81EzPZjyHci6j1LRttHnr8N8UBxGMZiSctcehrCcZPAYlrIfZh9NX1W5zRg
-Rz2lhpPw22eh8Y07NHmiaDYvSWQTLQhBf4cAvBvNf/flzQ1V4U/Epaz3PJ7dob8h
-xNZqNDn1/gEFUJeUtgsyXsZdnMnU3gnauiHlMU6jvAWo2fmh0MUJckysF/clUfBm
-o05It58JOT1pjpHfIo7QRfK+NtW9z0Oi/YcsbxxzF0E9i7fuWd+tXgYK7ct0tGT2
-dZo6eMm/RWQ7iUGgqvFoWhznuibG3vTyyJJ0n8hRySNtcrdUT6xsC7dnk7uzGyJn
-U2afY2D+URGaEVX5h0xIL5dbPn0T2gnUmQoKeSdQgJHlCjoDUcOCkM7RTFr63x/6
-k7ehuFax9yDUFfa83vK9TL1VsTPsiJoj9CFAjZEIL2HXlR2Iq2XbBCpweWIaA3Zz
-gecnzHef2NW/Pi5znStuOQEcy0/HZAZq25N58364hewLcxFtrDE=
-=xiVS
------END PGP SIGNATURE-----
-
---tqfdiz36ofh6j432--
+I don't have the board, so I can't test, but I could add a patch that adds
+the "atu" range for the controllers in rk3568, if that makes things easier.
 
 
---===============7931229301218874591==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Kind regards,
+Niklas
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7931229301218874591==--
-
