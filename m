@@ -4,56 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF299C25B6B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Oct 2023 21:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB83C25B47
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Oct 2023 02:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:References:
-	In-Reply-To:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tmdcprDo2jTDPY/JiWYlRkfr3vZGgdFQ/giTCW4vCUE=; b=vDE5KuNEGBglw/
-	n42ToQnIK6kJyV2vEFJK/zGuOkw4lYv0GkEDZocgMAsp66YGPPQExFrc+7Vvm6sHErPhUcU539bfB
-	M0dLzv8tznn+61cCZmmBZu6kx03EXjJ9jmWy0wSTac0YsKFBijgxnT4ZpLIf75x42ve6vlYqM3JZu
-	OejLaYcmm8VprXnheICf7Z8HdSIYtOX9npVOt1/hOs4e7Qlb+2Mv01jGrH0s6fAp7nXLi5Kk9Y+8F
-	eXR88PbmcBGAE/uKH7zaLx1KYQY8cbv3sQGAXvvPjvG1NTScbq5NcAAwbnSUvOA27920GVH2JLODz
-	uQB8k4W/9AzmTylKNN4w==;
+	List-Owner; bh=1Fatf4R0FTHctNLO8U8apWGw5aJUa5M9dQUaSzBevjo=; b=QLOWIWoOikn8rn
+	A5eknrqcKH93z/aZrjKTt8IQN6bIXWMaWH9QTOIopcBl2fpnJdYXzpAF2ljtKNUKeKPXRTHwppSWj
+	TGkuvvbLce6rItUuW2Hov0Se9nuoGgW/H5BiTSkZjfovm2+ORaoX40uo6SeCyC0FCHeizDkItdXou
+	UMVrNHM7dZCpun6i+Z5Plmd8GIEUc/LVlkBkBNTUWmXhkDjHnSnxAYXFLBEZQguU65ZXtUjhMokd8
+	APW736SHjzZ0tAGnM3Ywi2tlvCpyA1bfRWuBI9VE5J4K4yTMDJX2iLf8cGVUjfgIrMvyciFMplTnv
+	7ZP8jDqIhpufJQudAsaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvlcI-00DBiF-14;
-	Wed, 25 Oct 2023 21:40:42 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qvqBo-00DW9Z-03;
+	Thu, 26 Oct 2023 02:33:40 +0000
+Received: from mail-m6038.netease.com ([210.79.60.38])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qvlcE-00DBh3-2b;
-	Wed, 25 Oct 2023 21:40:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 54BF6B81C52;
-	Wed, 25 Oct 2023 21:40:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F36DC433C7;
-	Wed, 25 Oct 2023 21:40:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698270032;
-	bh=ObgKYH0fS2mj/mvGmpx0d95XPn9BwP7C8YrKDWzCovk=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=OeJhxYPboBK9ff7+ZjAslTD2fIqdeh0FrTxfSIPime7vzUJU/fooEUtZSFrjba7m1
-	 2kV+6SB9OXWRiwWJId/Ufw8gFs7dSeo4T9a8IoB/FKWTv4f7r8V3Pf/q+ggoD6l7xG
-	 /lDRH8qUW7a0/9ALY0UYkKK/mCqCrgO5wfYuETCef92QYbtd9pSjUWOYDUEAncfSrd
-	 yraO/WFH1lJC1TYbeasVWZrfjTKy5bYbOHoc1NwRNwnRjgbftW9WB9iUwDX9/0ZEsh
-	 4fb+bFJrq4WNZZmiD8meyc90OC1TPxTaxt355RZH+l7+sZnzGaNiVXkNR8ZpWViiPT
-	 IFFTM3zuxWGlA==
-Message-ID: <dc96dc36c6df1d3bfa3006298e353f39.sboyd@kernel.org>
+	id 1qvqBl-00DW8j-1j;
+	Thu, 26 Oct 2023 02:33:39 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=LDFgxL3uu9G/FyUl/0miNPqflqyM0ZlDnNuHW7JJ0KHDYC56vzg6bPuzmZlrzPRdyZGb2FQVAmaXpKstunFzb3+bh2gRjmwubk0huhElTpyhB0WaZYoEnrMrw6M4ujLfmoxlLX9RVnx8YnNdoecscNW+uH2FE6yy2iwBNgexfsk=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=IjUvs9coTf3rg5T0PqaL4rQY2t3YG56G7QS6+2h0y0c=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.49] (unknown [58.22.7.114])
+	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 4EB68400227;
+	Thu, 26 Oct 2023 10:25:44 +0800 (CST)
+Message-ID: <ac6f04ef-97b1-3dd9-a086-772a10f0a66b@rock-chips.com>
+Date: Thu, 26 Oct 2023 10:25:43 +0800
 MIME-Version: 1.0
-In-Reply-To: <20231025194849.4esjw4w2trgalp55@mercury.elektranox.org>
-References: <20231018070144.8512-1-zhangqing@rock-chips.com> <b0af9e04bafb07e8a73e8f242a4ff556.sboyd@kernel.org> <20231025194849.4esjw4w2trgalp55@mercury.elektranox.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
 Subject: Re: [PATCH v4 0/4] rockchip: add GATE_LINK
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: conor+dt@kernel.org, heiko@sntech.de, kever.yang@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com, robh+dt@kernel.org, zhangqing@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, andy.yan@rock-chips.com
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Wed, 25 Oct 2023 14:40:30 -0700
-User-Agent: alot/0.10
+To: Stephen Boyd <sboyd@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: conor+dt@kernel.org, heiko@sntech.de, kever.yang@rock-chips.com,
+ krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
+ robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ huangtao@rock-chips.com, andy.yan@rock-chips.com
+References: <20231018070144.8512-1-zhangqing@rock-chips.com>
+ <b0af9e04bafb07e8a73e8f242a4ff556.sboyd@kernel.org>
+ <20231025194849.4esjw4w2trgalp55@mercury.elektranox.org>
+ <dc96dc36c6df1d3bfa3006298e353f39.sboyd@kernel.org>
+From: zhangqing <zhangqing@rock-chips.com>
+In-Reply-To: <dc96dc36c6df1d3bfa3006298e353f39.sboyd@kernel.org>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUNKQlZDHR1CTkMdQ0sYTk1VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8b69cd4f412eb3kusn4eb68400227
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NCo6Aww6NDw5AzEpK0IXVk0*
+	Kg4aCy9VSlVKTUJDSUNMSk9OSEJIVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUxLTE03Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231025_144039_027121_801AF238 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20231025_193337_786331_5BD08581 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,43 +77,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Sebastian Reichel (2023-10-25 12:48:49)
-> Hello Stephen,
-> 
-> On Mon, Oct 23, 2023 at 06:47:17PM -0700, Stephen Boyd wrote:
-> > Quoting Elaine Zhang (2023-10-18 00:01:40)
-> > > Recent Rockchip SoCs have a new hardware block called Native Interface
-> > > Unit (NIU), which gates clocks to devices behind them. These effectively
-> > > need two parent clocks.
-> > > Use GATE_LINK to handle this.
-> > 
-> > Why can't pm clks be used here? The qcom clk driver has been doing that
-> > for some time now. 
-> > 
-> >  $ git grep pm_clk_add -- drivers/clk/qcom/
-> 
-> Maybe I'm mistaken, but as far as I can tell this is adding the
-> dependency on controller level and only works because Qualcomm
-> has multiple separate clock controllers. In the Rockchip design
-> there is only one platform device.
-> 
-> Note, that the original downstream code from Rockchip actually used
-> pm_clk infrastructure by moving these clocks to separate platform
-> devices. I changed this when upstreaming the code, since that leaks
-> into DT and from DT point of view there should be only one clock
-> controller.
-> 
-
-Why can't the rockchip driver bind to a single device node and make
-sub-devices for each clk domain and register clks for those? Maybe it
-can use the auxiliary driver infrastructure to do that?
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CuWcqCAyMDIzLzEwLzI2IDU6NDAsIFN0ZXBoZW4gQm95ZCDlhpnpgZM6Cj4gUXVvdGluZyBTZWJh
+c3RpYW4gUmVpY2hlbCAoMjAyMy0xMC0yNSAxMjo0ODo0OSkKPj4gSGVsbG8gU3RlcGhlbiwKPj4K
+Pj4gT24gTW9uLCBPY3QgMjMsIDIwMjMgYXQgMDY6NDc6MTdQTSAtMDcwMCwgU3RlcGhlbiBCb3lk
+IHdyb3RlOgo+Pj4gUXVvdGluZyBFbGFpbmUgWmhhbmcgKDIwMjMtMTAtMTggMDA6MDE6NDApCj4+
+Pj4gUmVjZW50IFJvY2tjaGlwIFNvQ3MgaGF2ZSBhIG5ldyBoYXJkd2FyZSBibG9jayBjYWxsZWQg
+TmF0aXZlIEludGVyZmFjZQo+Pj4+IFVuaXQgKE5JVSksIHdoaWNoIGdhdGVzIGNsb2NrcyB0byBk
+ZXZpY2VzIGJlaGluZCB0aGVtLiBUaGVzZSBlZmZlY3RpdmVseQo+Pj4+IG5lZWQgdHdvIHBhcmVu
+dCBjbG9ja3MuCj4+Pj4gVXNlIEdBVEVfTElOSyB0byBoYW5kbGUgdGhpcy4KPj4+IFdoeSBjYW4n
+dCBwbSBjbGtzIGJlIHVzZWQgaGVyZT8gVGhlIHFjb20gY2xrIGRyaXZlciBoYXMgYmVlbiBkb2lu
+ZyB0aGF0Cj4+PiBmb3Igc29tZSB0aW1lIG5vdy4KPj4+Cj4+PiAgICQgZ2l0IGdyZXAgcG1fY2xr
+X2FkZCAtLSBkcml2ZXJzL2Nsay9xY29tLwo+PiBNYXliZSBJJ20gbWlzdGFrZW4sIGJ1dCBhcyBm
+YXIgYXMgSSBjYW4gdGVsbCB0aGlzIGlzIGFkZGluZyB0aGUKPj4gZGVwZW5kZW5jeSBvbiBjb250
+cm9sbGVyIGxldmVsIGFuZCBvbmx5IHdvcmtzIGJlY2F1c2UgUXVhbGNvbW0KPj4gaGFzIG11bHRp
+cGxlIHNlcGFyYXRlIGNsb2NrIGNvbnRyb2xsZXJzLiBJbiB0aGUgUm9ja2NoaXAgZGVzaWduCj4+
+IHRoZXJlIGlzIG9ubHkgb25lIHBsYXRmb3JtIGRldmljZS4KPj4KPj4gTm90ZSwgdGhhdCB0aGUg
+b3JpZ2luYWwgZG93bnN0cmVhbSBjb2RlIGZyb20gUm9ja2NoaXAgYWN0dWFsbHkgdXNlZAo+PiBw
+bV9jbGsgaW5mcmFzdHJ1Y3R1cmUgYnkgbW92aW5nIHRoZXNlIGNsb2NrcyB0byBzZXBhcmF0ZSBw
+bGF0Zm9ybQo+PiBkZXZpY2VzLiBJIGNoYW5nZWQgdGhpcyB3aGVuIHVwc3RyZWFtaW5nIHRoZSBj
+b2RlLCBzaW5jZSB0aGF0IGxlYWtzCj4+IGludG8gRFQgYW5kIGZyb20gRFQgcG9pbnQgb2Ygdmll
+dyB0aGVyZSBzaG91bGQgYmUgb25seSBvbmUgY2xvY2sKPj4gY29udHJvbGxlci4KPj4KPiBXaHkg
+Y2FuJ3QgdGhlIHJvY2tjaGlwIGRyaXZlciBiaW5kIHRvIGEgc2luZ2xlIGRldmljZSBub2RlIGFu
+ZCBtYWtlCj4gc3ViLWRldmljZXMgZm9yIGVhY2ggY2xrIGRvbWFpbiBhbmQgcmVnaXN0ZXIgY2xr
+cyBmb3IgdGhvc2U/IE1heWJlIGl0Cj4gY2FuIHVzZSB0aGUgYXV4aWxpYXJ5IGRyaXZlciBpbmZy
+YXN0cnVjdHVyZSB0byBkbyB0aGF0PwoKT3B0aW9uIDE6CgpVc2UgdGhlIGN1cnJlbnQgcGF0Y2gg
+dG8gYWRhcHQgdGhlIEdBVEVfTElOSyB0eXBlIHVwc3RyZWFtLgoKVGhlIHJlYWwgZnVuY3Rpb24g
+b2YgR0FURV9MSU5LIGlzIGltcGxlbWVudGVk44CCCgpKdXN0IHRvIGltcHJvdmUgYW5kIGFkYXB0
+IHRoZSBleGlzdGluZyBmZWF0dXJlcyBvbiB1cHN0cmVhbS4KCgpPcHRpb24gMjoKCldoYXQgd2Ug
+dXNlIG9uIG91ciBpbnRlcm5hbCBicmFuY2hlcyBhcmU6Cgpkcml2ZXJzL2Nsay9yb2NrY2hpcC9j
+bGstbGluay5jCgpzdGF0aWMgaW50IHJvY2tjaGlwX2Nsa19saW5rX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYpCnsKIMKgwqAgwqBzdHJ1Y3Qgcm9ja2NoaXBfbGlua19jbGsgKnBy
+aXY7CiDCoMKgIMKgc3RydWN0IGRldmljZV9ub2RlICpub2RlID0gcGRldi0+ZGV2Lm9mX25vZGU7
+CiDCoMKgIMKgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqbWF0Y2g7CiDCoMKgIMKgY29uc3Qg
+Y2hhciAqY2xrX25hbWU7CiDCoMKgIMKgY29uc3Qgc3RydWN0IHJvY2tjaGlwX2xpbmtfaW5mbyAq
+bGlua19pbmZvOwogwqDCoCDCoGludCByZXQ7CgogwqDCoCDCoG1hdGNoID0gb2ZfbWF0Y2hfbm9k
+ZShyb2NrY2hpcF9jbGtfbGlua19vZl9tYXRjaCwgbm9kZSk7CiDCoMKgIMKgaWYgKCFtYXRjaCkK
+IMKgwqAgwqDCoMKgIMKgcmV0dXJuIC1FTlhJTzsKCiDCoMKgIMKgcHJpdiA9IGRldm1fa3phbGxv
+YygmcGRldi0+ZGV2LCBzaXplb2Yoc3RydWN0IHJvY2tjaGlwX2xpbmtfY2xrKSwKIMKgwqAgwqDC
+oMKgIMKgwqDCoCDCoMKgwqDCoCBHRlBfS0VSTkVMKTsKIMKgwqAgwqBpZiAoIXByaXYpCiDCoMKg
+IMKgwqDCoCDCoHJldHVybiAtRU5PTUVNOwoKIMKgwqAgwqBwcml2LT5saW5rID0gbWF0Y2gtPmRh
+dGE7CgogwqDCoCDCoHNwaW5fbG9ja19pbml0KCZwcml2LT5sb2NrKTsKIMKgwqAgwqBwbGF0Zm9y
+bV9zZXRfZHJ2ZGF0YShwZGV2LCBwcml2KTsKCiDCoMKgIMKgcHJpdi0+YmFzZSA9IG9mX2lvbWFw
+KG5vZGUsIDApOwogwqDCoCDCoGlmIChJU19FUlIocHJpdi0+YmFzZSkpCiDCoMKgIMKgwqDCoCDC
+oHJldHVybiBQVFJfRVJSKHByaXYtPmJhc2UpOwoKIMKgwqAgwqBpZiAob2ZfcHJvcGVydHlfcmVh
+ZF9zdHJpbmcobm9kZSwgImNsb2NrLW91dHB1dC1uYW1lcyIsICZjbGtfbmFtZSkpCiDCoMKgIMKg
+wqDCoCDCoHByaXYtPm5hbWUgPSBub2RlLT5uYW1lOwogwqDCoCDCoGVsc2UKIMKgwqAgwqDCoMKg
+IMKgcHJpdi0+bmFtZSA9IGNsa19uYW1lOwoKIMKgwqAgwqBsaW5rX2luZm8gPSByb2NrY2hpcF9n
+ZXRfbGlua19pbmZvcyhwcml2LT5saW5rLCBwcml2LT5uYW1lKTsKIMKgwqAgwqBwcml2LT5zaGlm
+dCA9IGxpbmtfaW5mby0+c2hpZnQ7CiDCoMKgIMKgcHJpdi0+cG5hbWUgPSBsaW5rX2luZm8tPnBu
+YW1lOwoKIMKgwqAgwqBwbV9ydW50aW1lX2VuYWJsZSgmcGRldi0+ZGV2KTsKIMKgwqAgwqByZXQg
+PSBwbV9jbGtfY3JlYXRlKCZwZGV2LT5kZXYpOwogwqDCoCDCoGlmIChyZXQpCiDCoMKgIMKgwqDC
+oCDCoGdvdG8gZGlzYWJsZV9wbV9ydW50aW1lOwoKIMKgwqAgwqByZXQgPSBwbV9jbGtfYWRkKCZw
+ZGV2LT5kZXYsICJsaW5rIik7CgogwqDCoCDCoGlmIChyZXQpCiDCoMKgIMKgwqDCoCDCoGdvdG8g
+ZGVzdHJveV9wbV9jbGs7CgogwqDCoCDCoHJldCA9IHJlZ2lzdGVyX2Nsb2Nrcyhwcml2LCAmcGRl
+di0+ZGV2KTsKIMKgwqAgwqBpZiAocmV0KQogwqDCoCDCoMKgwqAgwqBnb3RvIGRlc3Ryb3lfcG1f
+Y2xrOwoKIMKgwqAgwqByZXR1cm4gMDsKCmRlc3Ryb3lfcG1fY2xrOgogwqDCoCDCoHBtX2Nsa19k
+ZXN0cm95KCZwZGV2LT5kZXYpOwpkaXNhYmxlX3BtX3J1bnRpbWU6CiDCoMKgIMKgcG1fcnVudGlt
+ZV9kaXNhYmxlKCZwZGV2LT5kZXYpOwoKIMKgwqAgwqByZXR1cm4gcmV0Owp9CgoKQm90aCBvZiB0
+aGVzZSBtZXRob2RzIGFyZSBPSy4gV2hpY2hldmVyIG9uZSBVcHN0cmVhbSBwcmVmZXJzLCBJIGNh
+biAKc3VibWl0IGl0IGFzIHJlcXVpcmVkLgoKLS0gCuW8oOaZtArnkZ7oiq/lvq7nlLXlrZDogqHk
+u73mnInpmZDlhazlj7gKUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLEx0ZArlnLDlnYDvvJrnpo/l
+u7rnnIHnpo/lt57luILpk5znm5jot6/ova/ku7blpKfpgZM4OeWPt+i9r+S7tuWbrUHljLoyMeWP
+t+alvApBZGQ6Tm8uMjEgQnVpbGRpbmcsIEEgRGlzdHJpY3QsIE5vLjg5IFNvZnR3YXJlIEJvdWxl
+dmFyZCBGdXpob3UsIEZ1amlhbiAzNTAwMDMsIFAuUi5DaGluYQpUZWw6Kzg2LTA1OTEtODM5OTE5
+MDYtODYwMQrpgq7nvJbvvJozNTAwMDMKRS1tYWlsOmVsYWluZS56aGFuZ0Byb2NrLWNoaXBzLmNv
+bQoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqCuS/neWvhuaPkOekuu+8muacrOmCruS7tuWPiuWFtumZhOS7
+tuWQq+acieacuuWvhuS/oeaBr++8jOS7heWPkemAgee7meacrOmCruS7tuaJgOaMh+eJueWumuaU
+tuS7tuS6uuOAguiLpemdnuivpeeJueWumuaUtuS7tuS6uu+8jOivt+WLv+WkjeWItuOAgeS9v+eU
+qOaIluaKq+mcsuacrOmCruS7tueahOS7u+S9leWGheWuueOAguiLpeivr+aUtuacrOmCruS7tu+8
+jOivt+S7juezu+e7n+S4reawuOS5heaAp+WIoOmZpOacrOmCruS7tuWPiuaJgOaciemZhOS7tu+8
+jOW5tuS7peWbnuWkjemCruS7tuaIluWFtuS7luaWueW8j+WNs+WIu+WRiuefpeWPkeS7tuS6uuOA
+guemj+W3nueRnuiKr+W+rueUteWtkOaciemZkOWFrOWPuOaLpeacieacrOmCruS7tuS/oeaBr+ea
+hOiRl+S9nOadg+WPiuino+mHiuadg++8jOemgeatouS7u+S9leacque7j+aOiOadg+iuuOWPr+ea
+hOS+teadg+ihjOS4uuOAggoKSU1QT1JUQU5UIE5PVElDRTogVGhpcyBlbWFpbCBpcyBmcm9tIEZ1
+emhvdSBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZCAuVGhlIGNvbnRlbnRzIG9mIHRoaXMg
+ZW1haWwgYW5kIGFueSBhdHRhY2htZW50cyBtYXkgY29udGFpbiBpbmZvcm1hdGlvbiB0aGF0IGlz
+IHByaXZpbGVnZWQsIGNvbmZpZGVudGlhbCBhbmQvb3IgZXhlbXB0IGZyb20gZGlzY2xvc3VyZSB1
+bmRlciBhcHBsaWNhYmxlIGxhdyBhbmQgcmVsZXZhbnQgTkRBLiBJZiB5b3UgYXJlIG5vdCB0aGUg
+aW50ZW5kZWQgcmVjaXBpZW50LCB5b3UgYXJlIGhlcmVieSBub3RpZmllZCB0aGF0IGFueSBkaXNj
+bG9zdXJlLCBjb3B5aW5nLCBkaXN0cmlidXRpb24sIG9yIHVzZSBvZiB0aGUgaW5mb3JtYXRpb24g
+aXMgU1RSSUNUTFkgUFJPSElCSVRFRC4gUGxlYXNlIGltbWVkaWF0ZWx5IGNvbnRhY3QgdGhlIHNl
+bmRlciBhcyBzb29uIGFzIHBvc3NpYmxlIGFuZCBkZXN0cm95IHRoZSBtYXRlcmlhbCBpbiBpdHMg
+ZW50aXJldHkgaW4gYW55IGZvcm1hdC4gVGhhbmsgeW91LgoKKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
