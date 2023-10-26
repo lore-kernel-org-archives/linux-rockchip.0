@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C99C25B6B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Oct 2023 19:15:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46889C25B48
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Oct 2023 19:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xDQtYuc98h0Ib63M3ZMG7tn1O8T4dbYoKjvCFTcFXyg=; b=Yxvl5CnhEbIe2E
-	PwzthxJBHjmUQEe9CdSu0efswjofqaiRGXjNZQWyfkO58vK3FVfytiwxlEOZNUys7JD3ncsWFIPab
-	s+dzPkNuEf7EjysW3PY0TIQ3laQS8YNWYbobIeLgrttQcPnMPKE0FwWmpAPBiwkUcJ9xo1qdwqD+l
-	OhKiYNEte6Cf53pgxQaNvFedkgyATTTJinrpdfGdq5g+PenR3DEPtM+sBeCltZGaumkNvrjFhVbfx
-	NbsTVjEsEVm188E5kBrzQKE9kdIepJrhtdYJf4zuSevYxGGMep/VPLIHITJPMFgbCcw4GsPYd2XJr
-	a0Ns8q14IBMDoDzG+ekA==;
+	List-Owner; bh=66k9nMg4o/Fip2I4oYsQKrhAI+32JzIcQwDeTrmcr2o=; b=pHBB+kRpWwDbyU
+	Kg3wLauRh9w79+NN3lH/ifUrYmXsPFWXYkiIPQ+M4sk4X1QnpZFhcEmzOvhfpurDIXmVuKVjPmOAi
+	ABSFXLiMt+XLY0aY90L+og17GIUn4QL7Px1bXDc2PxxoL40MliUkkJwi+pjaZG2aC52XrDFXixOCg
+	CUDaPwRoSgH5ow0hsVSmjaObA3AOs5/ab4Pw5rDfWviT0OqC6hFwoMcbMMpxl7Q4nNV1mCffD3ven
+	ysMVfVoeaegai+nNL4dpx8l1rL4XRrN4BydbAK1EKFnxg6a7wftpsnlrIVv85LuMyisYosvMmfeEB
+	p2HcCyjm4K5q0V0yWKTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5pR-00F2mo-0G;
-	Thu, 26 Oct 2023 19:15:37 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1qw6S0-00F58V-1t;
+	Thu, 26 Oct 2023 19:55:28 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5pN-00F2kE-05;
-	Thu, 26 Oct 2023 19:15:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1698347709;
- bh=H5xROb9Mq7jaJ0zsDNHjRXkPAmzwRa/v5qsxfjL/qww=;
- b=JugZH+SXup/DsE/dVZgeHKhyg4eX7mPMlLki3IZih3gTapClZ4jt77etp4Si5UEH/A3BqpENj
- OidNxRWO5888fxv9dQVt3lHoMoHkicjnP3+WarXPkrvMGqPDbfijDNjjCuwUG+jH3Gtp5LzsdiB
- HtAi807oEu4GkGZLVanKWqmQW3XJdGhpy2Fsz7xLJxyt1ZyHGZttesqIk3zr8EzJtICJZdMXiH0
- LMtg5CtpYFhhnEdSwe9pesBSvcnNpY5UHbbJcw4H+dyrdKjLyTH6ys5t/QkRa8k8hyUtkfA5O9J
- 8jZKfwKBY+4y+/n7DHEA2wfVrWFd//nQEX5X0AvJC3Rg==
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Tomasz
- Figa <tfiga@chromium.org>
-Cc: Christopher Obbard <chris.obbard@collabora.com>, Andy Yan
- <andy.yan@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] drm/rockchip: vop: Fix color for RGB888/BGR888 format on VOP full
-Date: Thu, 26 Oct 2023 19:14:58 +0000
-Message-ID: <20231026191500.2994225-1-jonas@kwiboo.se>
+	id 1qw6Rx-00F56v-1L;
+	Thu, 26 Oct 2023 19:55:26 +0000
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-6cd09f51fe0so716408a34.1;
+        Thu, 26 Oct 2023 12:55:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698350120; x=1698954920;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P9SEmh3Ti6BweKuBsiI0z3j9kO6wl5de7iuUaFpsagQ=;
+        b=jJwuNrRAhJlNYUe66KvJ6pIJhU6YnTP0GlCJjitM/fP3z2dwvdwXnIjTQLVxv8kd5X
+         8pzKGevXD1+vA+sVf6FiC6BIOtpJU6fkuBHyonuUKYDqWaJFKBKmDlbaoNsSeGb56gOg
+         tGwpad1vl/OTChYbo6H2W0GtrTg+kPd9CCjwYq+u8s+bUqTst7FQ0ABuK8+TENUZ/4sw
+         qjDjDSpWioUGO6Dk+TZ+eeb2yLYznvkDtxa4SaEEkYdMBx5YLOSbS0UwzGPLO+1LXsIK
+         cGR9xazRq9RwPmR4MJ1lE3mu8ondQhhNPYGkwsl9OEeXSxGLntMe97wA0Yp1p1+Poi6/
+         Msbg==
+X-Gm-Message-State: AOJu0Yxzjh1XYuHq5u99qpoUPvU4fUHsf02jR1ntEHFExj5pC31gIKkE
+	g6D0cYqpLcLHdKyWHSlLa6eDKSrHJg==
+X-Google-Smtp-Source: AGHT+IGFKWUSjFLRB5b0vYmkzpMNPEPkC3HBf+pN5hkdBt1cX6fzmcK5kAGnnfuiZjJO1Sorv/ZI+Q==
+X-Received: by 2002:a05:6830:314c:b0:6b8:9a3a:ea12 with SMTP id c12-20020a056830314c00b006b89a3aea12mr545041ots.12.1698350119860;
+        Thu, 26 Oct 2023 12:55:19 -0700 (PDT)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id d64-20020a4a5243000000b005737ca61829sm5503oob.13.2023.10.26.12.55.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Oct 2023 12:55:19 -0700 (PDT)
+Received: (nullmailer pid 69534 invoked by uid 1000);
+	Thu, 26 Oct 2023 19:55:18 -0000
+From: Rob Herring <robh@kernel.org>
+To: Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH v2] pwm: Use device_get_match_data()
+Date: Thu, 26 Oct 2023 14:54:17 -0500
+Message-ID: <20231026195417.68090-2-robh@kernel.org>
 X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 653ababbbb49096ed18860ca
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_121533_996779_D2FBF66A 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20231026_125525_456456_AC1AD75E 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,68 +78,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use of DRM_FORMAT_RGB888 and DRM_FORMAT_BGR888 on e.g. RK3288, RK3328
-and RK3399 result in wrong colors being displayed.
+Use preferred device_get_match_data() instead of of_match_device() to
+get the driver match data. With this, adjust the includes to explicitly
+include the correct headers.
 
-The issue can be observed using modetest:
+As these drivers only do DT based matching, of_match_device() will never
+return NULL if we've gotten to probe(). Therefore, the NULL check and
+error returns can be dropped.
 
-  modetest -s <connector_id>@<crtc_id>:1920x1080-60@RG24
-  modetest -s <connector_id>@<crtc_id>:1920x1080-60@BG24
-
-Vendor 4.4 kernel apply an inverted rb swap for these formats on VOP
-full framework (IP version 3.x) compared to VOP little framework (2.x).
-
-Fix colors by applying different rb swap for VOP full framework (3.x)
-and VOP little framework (2.x) similar to vendor 4.4 kernel.
-
-Fixes: 85a359f25388 ("drm/rockchip: Add BGR formats to VOP")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-Changes in v2:
-- Add comment about different rb swap for IP version 3.x and 2.x
-- Add fixes tag
+v2:
+ - Add to commit message about of_match_device() error checking
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ drivers/pwm/pwm-img.c      | 8 ++------
+ drivers/pwm/pwm-rockchip.c | 9 ++-------
+ 2 files changed, 4 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index b3d0b6ae9294..ed2ed25959a2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -247,14 +247,22 @@ static inline void vop_cfg_done(struct vop *vop)
- 	VOP_REG_SET(vop, common, cfg_done, 1);
- }
+diff --git a/drivers/pwm/pwm-img.c b/drivers/pwm/pwm-img.c
+index 116fa060e302..0d218c0b690e 100644
+--- a/drivers/pwm/pwm-img.c
++++ b/drivers/pwm/pwm-img.c
+@@ -13,9 +13,9 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ #include <linux/pwm.h>
+ #include <linux/regmap.h>
+ #include <linux/slab.h>
+@@ -260,7 +260,6 @@ static int img_pwm_probe(struct platform_device *pdev)
+ 	u64 val;
+ 	unsigned long clk_rate;
+ 	struct img_pwm_chip *imgchip;
+-	const struct of_device_id *of_dev_id;
  
--static bool has_rb_swapped(uint32_t format)
-+static bool has_rb_swapped(uint32_t version, uint32_t format)
+ 	imgchip = devm_kzalloc(&pdev->dev, sizeof(*imgchip), GFP_KERNEL);
+ 	if (!imgchip)
+@@ -272,10 +271,7 @@ static int img_pwm_probe(struct platform_device *pdev)
+ 	if (IS_ERR(imgchip->base))
+ 		return PTR_ERR(imgchip->base);
+ 
+-	of_dev_id = of_match_device(img_pwm_of_match, &pdev->dev);
+-	if (!of_dev_id)
+-		return -ENODEV;
+-	imgchip->data = of_dev_id->data;
++	imgchip->data = device_get_match_data(&pdev->dev);
+ 
+ 	imgchip->periph_regs = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
+ 							       "img,cr-periph");
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index cce4381e188a..a7c647e37837 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -10,8 +10,8 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ #include <linux/pwm.h>
+ #include <linux/time.h>
+ 
+@@ -296,16 +296,11 @@ MODULE_DEVICE_TABLE(of, rockchip_pwm_dt_ids);
+ 
+ static int rockchip_pwm_probe(struct platform_device *pdev)
  {
- 	switch (format) {
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
--	case DRM_FORMAT_BGR888:
- 	case DRM_FORMAT_BGR565:
- 		return true;
-+	/*
-+	 * full framework (IP version 3.x) only need rb swapped for RGB888 and
-+	 * little framework (IP version 2.x) only need rb swapped for BGR888,
-+	 * check for 3.x to also only rb swap BGR888 for unknown vop version
-+	 */
-+	case DRM_FORMAT_RGB888:
-+		return VOP_MAJOR(version) == 3;
-+	case DRM_FORMAT_BGR888:
-+		return VOP_MAJOR(version) != 3;
- 	default:
- 		return false;
- 	}
-@@ -1035,7 +1043,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	VOP_WIN_SET(vop, win, dsp_info, dsp_info);
- 	VOP_WIN_SET(vop, win, dsp_st, dsp_st);
+-	const struct of_device_id *id;
+ 	struct rockchip_pwm_chip *pc;
+ 	u32 enable_conf, ctrl;
+ 	bool enabled;
+ 	int ret, count;
  
--	rb_swap = has_rb_swapped(fb->format->format);
-+	rb_swap = has_rb_swapped(vop->data->version, fb->format->format);
- 	VOP_WIN_SET(vop, win, rb_swap, rb_swap);
+-	id = of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
+-	if (!id)
+-		return -EINVAL;
+-
+ 	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
+ 	if (!pc)
+ 		return -ENOMEM;
+@@ -344,7 +339,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
  
- 	/*
+ 	platform_set_drvdata(pdev, pc);
+ 
+-	pc->data = id->data;
++	pc->data = device_get_match_data(&pdev->dev);
+ 	pc->chip.dev = &pdev->dev;
+ 	pc->chip.ops = &rockchip_pwm_ops;
+ 	pc->chip.npwm = 1;
 -- 
 2.42.0
 
