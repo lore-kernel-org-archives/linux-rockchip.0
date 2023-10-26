@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8589DC25B48
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Oct 2023 18:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C99C25B6B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Oct 2023 19:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lmgh7tL2Vza2BB7bPA1OjSBHoEz+HnJ4jNJAPc6vv3M=; b=nTL2Fy4Cbgj6xW
-	QLkecs0Ln68vffYuLleMCrJVqI/KPbO/m8wDRWW98p51EQCoYXdRYLjwRrg82E8o2804HogALVmFm
-	A/t45QU02dB6/BzexRq3RAnEJ+g0tYVrvWAILaKDKYnJ3HG5+pqlcJpXkXMa3p9w6ozA7rqTJs9ce
-	G+Ovug7352g5YwQaCmQ5BSAimRwHUtp9IxwMos70O1Jk+CCy3lcgAlU2q1hAs/Jzo//w/uweWaxUT
-	iCuLgWP9QulwKnTd/MkkqsLAlomFDorb/pCbV4mwPBgjmF8y2CVc7OPEK6kOFiWpKmQZp4hRP/j7Y
-	NOA9Lka7U/l9Akc+LMuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xDQtYuc98h0Ib63M3ZMG7tn1O8T4dbYoKjvCFTcFXyg=; b=Yxvl5CnhEbIe2E
+	PwzthxJBHjmUQEe9CdSu0efswjofqaiRGXjNZQWyfkO58vK3FVfytiwxlEOZNUys7JD3ncsWFIPab
+	s+dzPkNuEf7EjysW3PY0TIQ3laQS8YNWYbobIeLgrttQcPnMPKE0FwWmpAPBiwkUcJ9xo1qdwqD+l
+	OhKiYNEte6Cf53pgxQaNvFedkgyATTTJinrpdfGdq5g+PenR3DEPtM+sBeCltZGaumkNvrjFhVbfx
+	NbsTVjEsEVm188E5kBrzQKE9kdIepJrhtdYJf4zuSevYxGGMep/VPLIHITJPMFgbCcw4GsPYd2XJr
+	a0Ns8q14IBMDoDzG+ekA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5CG-00EzpV-0P;
-	Thu, 26 Oct 2023 18:35:08 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1qw5pR-00F2mo-0G;
+	Thu, 26 Oct 2023 19:15:37 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qw5CC-00Ezoh-2q;
-	Thu, 26 Oct 2023 18:35:06 +0000
-Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-6cd09663b1cso662826a34.3;
-        Thu, 26 Oct 2023 11:35:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698345303; x=1698950103;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lJ5d2hJDyEPiZfzXMV+6c/eLpjUEHH1CIiOk9L8U4nQ=;
-        b=k8UMmn+9xTdgKIJATUiNVn5bijZQZAG2n3pHp++Ou3jRfmqnuTSapVp1Y6MEGaKB4w
-         m3+BlIGMaLif9pxDB/6Jc3pvLMamP07RSweHBTrYPEvGSGOtGoBAGJT3cQS298vLCFpu
-         LnE6KKqPjivuKbySFl4gf90OVV+ne+bYZWtmLTcvXyXWLZIkCGxcgPWyXKfEyxqXDv1V
-         8k3c1qasl/TWveze5Q5NyedVRZiIJTpDNEnbsgl1sIVbax/0OsA64zMlqDX9JvXgx5K1
-         b7MF/Iw0O4OF5KPeRLbkHVmfLXxSNKBr0LBLjyAYXXhMfmBBzlev3+LR/u631WeCN+hD
-         8YvA==
-X-Gm-Message-State: AOJu0YwXlnyvs24HaEcJe6Y7H9eC9ScV2KMdzbtTI2jlp4VG8Nc9301v
-	1L1AenR0W9O99tM0DaByaQ==
-X-Google-Smtp-Source: AGHT+IHUq+P2QKP2fK2MoJoveneBRt5qk3HCQylAhpNlbJSEDvZ7ZU+kZLkStB9OmmUewoPfot46MQ==
-X-Received: by 2002:a05:6830:12c1:b0:6bc:de95:a639 with SMTP id a1-20020a05683012c100b006bcde95a639mr276977otq.16.1698345303599;
-        Thu, 26 Oct 2023 11:35:03 -0700 (PDT)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id c23-20020a9d6c97000000b006c619f17669sm2733614otr.74.2023.10.26.11.35.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 11:35:02 -0700 (PDT)
-Received: (nullmailer pid 4157785 invoked by uid 1000);
-	Thu, 26 Oct 2023 18:35:01 -0000
-Date: Thu, 26 Oct 2023 13:35:01 -0500
-From: Rob Herring <robh@kernel.org>
-To: Niklas Cassel <Niklas.Cassel@wdc.com>
-Cc: Conor Dooley <conor@kernel.org>, Niklas Cassel <nks@flawful.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: PCI: dwc: rockchip: Add atu property
-Message-ID: <20231026183501.GB4122054-robh@kernel.org>
-References: <20231024151014.240695-1-nks@flawful.org>
- <20231024151014.240695-2-nks@flawful.org>
- <20231024-zoology-preteen-5627e1125ae0@spud>
- <ZTl0VwdFYt9kqxtp@x1-carbon>
+	id 1qw5pN-00F2kE-05;
+	Thu, 26 Oct 2023 19:15:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1698347709;
+ bh=H5xROb9Mq7jaJ0zsDNHjRXkPAmzwRa/v5qsxfjL/qww=;
+ b=JugZH+SXup/DsE/dVZgeHKhyg4eX7mPMlLki3IZih3gTapClZ4jt77etp4Si5UEH/A3BqpENj
+ OidNxRWO5888fxv9dQVt3lHoMoHkicjnP3+WarXPkrvMGqPDbfijDNjjCuwUG+jH3Gtp5LzsdiB
+ HtAi807oEu4GkGZLVanKWqmQW3XJdGhpy2Fsz7xLJxyt1ZyHGZttesqIk3zr8EzJtICJZdMXiH0
+ LMtg5CtpYFhhnEdSwe9pesBSvcnNpY5UHbbJcw4H+dyrdKjLyTH6ys5t/QkRa8k8hyUtkfA5O9J
+ 8jZKfwKBY+4y+/n7DHEA2wfVrWFd//nQEX5X0AvJC3Rg==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Tomasz
+ Figa <tfiga@chromium.org>
+Cc: Christopher Obbard <chris.obbard@collabora.com>, Andy Yan
+ <andy.yan@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] drm/rockchip: vop: Fix color for RGB888/BGR888 format on VOP full
+Date: Thu, 26 Oct 2023 19:14:58 +0000
+Message-ID: <20231026191500.2994225-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZTl0VwdFYt9kqxtp@x1-carbon>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 653ababbbb49096ed18860ca
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231026_113504_918199_C5AB9B99 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20231026_121533_996779_D2FBF66A 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,70 +74,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 25, 2023 at 08:02:32PM +0000, Niklas Cassel wrote:
-> Hello Conor,
-> 
-> On Tue, Oct 24, 2023 at 05:29:28PM +0100, Conor Dooley wrote:
-> > On Tue, Oct 24, 2023 at 05:10:08PM +0200, Niklas Cassel wrote:
-> > > From: Niklas Cassel <niklas.cassel@wdc.com>
-> > > 
-> > > Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
-> > > using:
-> > > 
-> > > allOf:
-> > >   - $ref: /schemas/pci/snps,dw-pcie.yaml#
-> > > 
-> > > and snps,dw-pcie.yaml does have the atu property defined, in order to be
-> > > able to use this property, while still making sure 'make CHECK_DTBS=y'
-> > > pass, we need to add this property to rockchip-dw-pcie.yaml.
-> > > 
-> > > Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
-> > > ---
-> > >  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 4 ++++
-> > >  1 file changed, 4 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > > index 1ae8dcfa072c..229f8608c535 100644
-> > > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > > @@ -29,16 +29,20 @@ properties:
-> > >            - const: rockchip,rk3568-pcie
-> > >  
-> > >    reg:
-> > > +    minItems: 3
-> > >      items:
-> > >        - description: Data Bus Interface (DBI) registers
-> > >        - description: Rockchip designed configuration registers
-> > >        - description: Config registers
-> > > +      - description: iATU registers
-> > 
-> > Is this extra register only for the ..88 or for the ..68 and for the
-> > ..88 models?
-> 
-> Looking at the rk3568 Technical Reference Manual (TRM):
-> https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part2%20V1.1-20210301.pdf
-> 
-> The iATU register register range exists for all 3 PCIe controllers
-> found on the rk3568.
-> 
-> This register range is currently not defined in the rk3568.dtsi, so the driver
-> will currently use the default register offset (which is correct), but with
-> the driver fallback register size that is only big enough to cover 8 inbound
-> and 8 outbound iATUs (internal Address Translation Units).
+Use of DRM_FORMAT_RGB888 and DRM_FORMAT_BGR888 on e.g. RK3288, RK3328
+and RK3399 result in wrong colors being displayed.
 
-We should probably make the driver smarter instead or in addition. We 
-have the DBI size, Just make atu_size = dbi_size - DEFAULT_DBI_ATU_OFFSET.
+The issue can be observed using modetest:
 
-> According to the TRM, all three PCIe controllers found on the rk3568 have
-> 16 inbound iATUs and 16 outbound iATUs, so if someone wants to be able to
-> make use of all the iATUs on the rk3568, they will need to add "atu" to
-> rk3568.dtsi.
+  modetest -s <connector_id>@<crtc_id>:1920x1080-60@RG24
+  modetest -s <connector_id>@<crtc_id>:1920x1080-60@BG24
 
-At least for host side, the number of regions used is based on ranges. 
-You'd be hard pressed to need more than 8. That or no h/w with 16 is 
-probably why I said 8 was enough at the time.
+Vendor 4.4 kernel apply an inverted rb swap for these formats on VOP
+full framework (IP version 3.x) compared to VOP little framework (2.x).
 
-Rob
+Fix colors by applying different rb swap for VOP full framework (3.x)
+and VOP little framework (2.x) similar to vendor 4.4 kernel.
+
+Fixes: 85a359f25388 ("drm/rockchip: Add BGR formats to VOP")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+Changes in v2:
+- Add comment about different rb swap for IP version 3.x and 2.x
+- Add fixes tag
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index b3d0b6ae9294..ed2ed25959a2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -247,14 +247,22 @@ static inline void vop_cfg_done(struct vop *vop)
+ 	VOP_REG_SET(vop, common, cfg_done, 1);
+ }
+ 
+-static bool has_rb_swapped(uint32_t format)
++static bool has_rb_swapped(uint32_t version, uint32_t format)
+ {
+ 	switch (format) {
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+-	case DRM_FORMAT_BGR888:
+ 	case DRM_FORMAT_BGR565:
+ 		return true;
++	/*
++	 * full framework (IP version 3.x) only need rb swapped for RGB888 and
++	 * little framework (IP version 2.x) only need rb swapped for BGR888,
++	 * check for 3.x to also only rb swap BGR888 for unknown vop version
++	 */
++	case DRM_FORMAT_RGB888:
++		return VOP_MAJOR(version) == 3;
++	case DRM_FORMAT_BGR888:
++		return VOP_MAJOR(version) != 3;
+ 	default:
+ 		return false;
+ 	}
+@@ -1035,7 +1043,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	VOP_WIN_SET(vop, win, dsp_info, dsp_info);
+ 	VOP_WIN_SET(vop, win, dsp_st, dsp_st);
+ 
+-	rb_swap = has_rb_swapped(fb->format->format);
++	rb_swap = has_rb_swapped(vop->data->version, fb->format->format);
+ 	VOP_WIN_SET(vop, win, rb_swap, rb_swap);
+ 
+ 	/*
+-- 
+2.42.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
