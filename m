@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E265C4167D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Oct 2023 02:30:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245A0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Oct 2023 18:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=muJcCuWFNPru84z/IUKCnm7k+YATpz09Ieghwyh9VEs=; b=P1cJ6MN038sO3O
-	U0q26kSYRRUc2PWpVzAne3T5WYtxqKF8xniiYHQJHEBPfeorfbNiyuhLEt8HcZhfRYtS0nmPizIw5
-	SFu+sXkAYBu5CzRMW+DIKGOLFLWKM6NvkI0IUbQYoddBN0j+VBMRijZLTjz+KGIgQb1hA4z/4tcZE
-	JkqvZkTwnFiUED/CAWI1+tMDW6uJmkuuK2Fx4q0mLG3wEWIF9VX5EbJnMK2SMACuwsiYRmUJLQLaj
-	vtjv6ZSs5ffGa+TPlC3YGSAHOMM3yMH53OvhMYZpAXuoXas/ce05WLDKu7CS0CHZS6w72SRLic2eO
-	XmIIijY9Ycox5OgeqrPg==;
+	List-Owner; bh=oYJQXNsuXYszZPjZOtAV9yd/qVXJQtm2bOMKNoUbMqo=; b=RgsROpNeQjuyQf
+	LzQKYSJrHnVTvkS9nbsajlK5eQmFrEeSZELrXvlXxesoSznJYY0vTQdXnXxgP2qH/7lS0LrsXaRTN
+	HIiddg1Jr4XQfEeKhfTzkfG496AHIXJRo1d75bnblkzzFPqAxIMa4DF6HvfoYb5tfW7aM6LxqoS8r
+	GMWhYE5MS9drzTF5Ud8fX+lBH3fUAWY9Gt8brHbS2w8jbFOpoaBoJ/RZu/Z18Y5xx3pMG55K+JLwU
+	zKnZBlerG4bVtAfRCcAwevGfw4fWfKAwT7+MpW/Gl1fDcM6EpI2EX+KEtdn4NDRjviesqt7TcZiWS
+	MVEbikDkaug8UDm+i0JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwvYZ-0013u4-2K;
-	Sun, 29 Oct 2023 02:29:39 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1qxAck-0020Rd-0p;
+	Sun, 29 Oct 2023 18:34:58 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qwvYV-0013tK-1j;
-	Sun, 29 Oct 2023 02:29:36 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-41cb9419975so21575761cf.2;
-        Sat, 28 Oct 2023 19:29:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698546573; x=1699151373; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8gWNO3l8fpnpIPgxgpu5uSSqh1fHCKLMt8L2nodlFyk=;
-        b=lxOjJ2De9sTAlKBz2h5lcrcIrW/BPTXqMTkDceyIL2EtYaOM+VgbMlQWkTdb6zO1tn
-         KfOBUuSo808j1rIvH8UXxHmLYCvhylAh1nWKlJYv1NIiW+FyaELyPfUcrCoeIHmLLbRS
-         i2r9nAVI8mrmKsyRVQX1h0MYP6DnaO1ITrEDuCRYRIyBEC1YXBekEs1NJAZnE11Xubvj
-         t6DTun2Zz3Fe3ps5NnPypF0FaFEshrXdFR4zfL5zE5kT/tgwC6tGm9XdH6u2MRbapZ85
-         mFxKA6y8wWBZwWZAjvj5PSLDRk8cc94hXAp38oYEDQu7qk1jVKYZotcEhdMIYDsqgE67
-         wL1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698546573; x=1699151373;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8gWNO3l8fpnpIPgxgpu5uSSqh1fHCKLMt8L2nodlFyk=;
-        b=fUZ9OhuTgOnsaR9fxd0ulsQQLhf2updxaQFJMJUCUv479AX0mpcB2HMeFYgJ7tFqNi
-         BZ0gPzxz/s1VR87okh/RL5YxeAQ7Xb+c3somUpL9f61Ulaa6dobIJ5yA+mLHeWunbzvu
-         K7XvEK3Tw4qe/IQHFJ8pttNnaNoK0J0jhnnN0b4XaKbAdqpoJ+Lh9ObefveQQ/E1Ot3u
-         kezlu3jCQ3qx/rTKVPgv4VkvOlsSr3xoXp0lsz20NJEC2APPsBfU93gXbStZ6kkULw1I
-         8CN7MrvSlFemwWCAyf76oECjqzO+DWUdXmVpAFLt0EKIYLLTYehOTxYRWokGR00qmkxw
-         2g9g==
-X-Gm-Message-State: AOJu0YwebTloWVmOOnQdwcp+IEhAaU15AjvHL9gemPb6S9kkmDrEOLGt
-	+4VnMToGO9wGhpuGwv1yTHI=
-X-Google-Smtp-Source: AGHT+IErpMIDGlNs7xe4F7SkYsIWBgQIXur/8MlOHteENWqs1PiDVQ5rzCKOA9AAhWycHof+33p9rA==
-X-Received: by 2002:ac8:5c96:0:b0:41b:806e:81c7 with SMTP id r22-20020ac85c96000000b0041b806e81c7mr7553608qta.32.1698546572867;
-        Sat, 28 Oct 2023 19:29:32 -0700 (PDT)
-Received: from google.com ([205.220.129.30])
-        by smtp.gmail.com with ESMTPSA id d5-20020a056a0010c500b006bfb903599esm3549848pfu.139.2023.10.28.19.29.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Oct 2023 19:29:31 -0700 (PDT)
-Date: Sun, 29 Oct 2023 02:29:02 +0000
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
-	ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl, nicolas.dufresne@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com, Henrik Rydberg <rydberg@bitmath.org>
-Subject: Re: [PATCH v13 33/56] touchscreen: sur40: Stop direct calls to queue
- num_buffers field
-Message-ID: <ZT3DbkmurIzBp7_p@google.com>
-References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
- <20231019125222.21370-34-benjamin.gaignard@collabora.com>
+	id 1qxAce-0020PI-1S
+	for linux-rockchip@lists.infradead.org;
+	Sun, 29 Oct 2023 18:34:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1698604485; bh=TjALA8+JUykYZHDpAwjPY9nVwije8ffpqMNBtSLkpsI=;
+ b=GLqK5fpOOGkVJuoKgzr2RTjhuMY7zcU6z/MA2FtUL2CggbwROrGmuwfU1CXk9jbfy5Y7I65Y3
+ J9x/MKbjfA+Hxa18NQVN6ymwmaMsePe5aF7i9JRoLVyeWozWLSdAZR9XVyu1iu7ykh5oJu0NzFP
+ xTFDGjrlx1T6cvD919m1pmC7o31TFEEi9jYqVBIqLfUBSsFCvlrSW6CMGVeJ13UWjszhA1Oy6Yu
+ Py4XLYOzC3jx1vb4uKOi39j/CQyCK6TCEyAGQoc6USLP/32YrUHQoGp+cHuqUxUzBBpNPqeRtGT
+ zUpPvctOId6oPi36knRBGe9acLWGUrn1CM5pQKcb/F3g==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, Christopher Obbard
+ <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 03/10] media: rkvdec: h264: Use bytesperline and buffer height as virstride
+Date: Sun, 29 Oct 2023 18:34:10 +0000
+Message-ID: <20231029183427.1781554-4-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231029183427.1781554-1-jonas@kwiboo.se>
+References: <20231029183427.1781554-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231019125222.21370-34-benjamin.gaignard@collabora.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 653ea5c58fe0ffca230b0f2f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231028_192935_599158_9F7EA8EE 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20231029_113452_529009_097E0359 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,23 +80,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 19, 2023 at 02:51:59PM +0200, Benjamin Gaignard wrote:
-> Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
-> This allows us to change how the number of buffers is computed in the
-> future.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> CC: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> CC: Henrik Rydberg <rydberg@bitmath.org>
+Use bytesperline and buffer height to calculate the strides configured.
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+This does not really change anything other than ensuring the
+bytesperline that is signaled to userspace matches what is configured
+in HW.
 
-Feel free to merge with the rest of the series.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v3:
+- Remove unnecessary yuv_virstride +=
 
-Thanks.
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 4fc167b42cf0..7a1e76d423df 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 	dma_addr_t rlc_addr;
+ 	dma_addr_t refer_addr;
+ 	u32 rlc_len;
+-	u32 hor_virstride = 0;
+-	u32 ver_virstride = 0;
+-	u32 y_virstride = 0;
++	u32 hor_virstride;
++	u32 ver_virstride;
++	u32 y_virstride;
+ 	u32 yuv_virstride = 0;
+ 	u32 offset;
+ 	dma_addr_t dst_addr;
+@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 
+ 	f = &ctx->decoded_fmt;
+ 	dst_fmt = &f->fmt.pix_mp;
+-	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
+-	ver_virstride = round_up(dst_fmt->height, 16);
++	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
++	ver_virstride = dst_fmt->height;
+ 	y_virstride = hor_virstride * ver_virstride;
+ 
+ 	if (sps->chroma_format_idc == 0)
+ 		yuv_virstride = y_virstride;
+ 	else if (sps->chroma_format_idc == 1)
+-		yuv_virstride += y_virstride + y_virstride / 2;
++		yuv_virstride = y_virstride + y_virstride / 2;
+ 	else if (sps->chroma_format_idc == 2)
+-		yuv_virstride += 2 * y_virstride;
++		yuv_virstride = 2 * y_virstride;
+ 
+ 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
+ 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
 -- 
-Dmitry
+2.42.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
