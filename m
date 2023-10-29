@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9957CC4167D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Oct 2023 18:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCC4C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Oct 2023 18:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H/UyQxTPVPP2x5OK4gYG78UzKdmwhmMbBeN8SsPiGSs=; b=J2vOmLr6LnfBM9
-	8Vl5GkArkcxzX9AdMCmzSo4dO3clmsYuRWJDnrGURzVNsxAgWuxHY6pTz2DzPsxfKM3w+N8RaiHl+
-	xWbYr5BBKkavv+Ipd+6EYJFjAqUFWrISgiHchCJuN+g0+OzikKIoJYRmGrS+tkSQApWmQH+oKfXE1
-	JMQZdeXYTxH9KvYxwKW/gfMKQrR3HQp59k4A5yF+VC2z0Arh0VltCGv2n2Yg3x2V2GadyA3d/UAMN
-	PtPNU0BSpflKj6q5AIAxK+zzs0/x0/SzAD1R17ehxq28MzRMKM5keeohgj9NP/rjiL+ttky3aBd8K
-	h4rcjpf6qee5X31ePpuQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IkXO8E103GmajEfqku4frq974TX1bvqXHbfd+um6Ack=; b=ib2i2DXcdQvyrg
+	8Ptu5gbhhSVbnwqoRFimDC7Rnh6MVD9gHPx7qw2VgQHZSxNqaoq1NrAqqaNDpoyFPctW5TrLNMEgp
+	iZdtgGoFEXjSMusla1R17b0/OmGthp7Yl1ankJlWdGJA6NvD2lkmVYVQ8rDzKBBjGXayt+4jLLOGO
+	R2cB4yZsrRaGl9wOUTDA4Lib60izl/jkviRaH06LaGWwaQJMuFyQdKlAK8mPhVkFT2K9QEAfax5u8
+	JJ/qjd9uW2RqLbNB1QGKzAiyCtmFfCixK3+eZZdlh4d9j63kxBnVysUjbnwxLQWcJES1LD9fkDBpF
+	YkMMhzSUFZ/PDHFZk+Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxAcl-0020S3-0Q;
-	Sun, 29 Oct 2023 18:34:59 +0000
+	id 1qxAch-0020QS-05;
+	Sun, 29 Oct 2023 18:34:55 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxAch-0020QY-2f
+	id 1qxAcc-0020PC-29
 	for linux-rockchip@lists.infradead.org;
-	Sun, 29 Oct 2023 18:34:57 +0000
+	Sun, 29 Oct 2023 18:34:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1698604490; bh=as9AeGM+ifzsnqtyzSQemv/snnZnIqMpieeTV1wu21Q=;
- b=KXwfSA9tMCEjoZx2WitFUvo5PA2fADttnLfpuYkx3Z1TDr0nFFdvS5+OIzg+OW/JcA8mkDnH0
- lofA9NI3Gc5Yq4azjvhiYKLBDDyHQ0AYmwyRa0nV6mbNUNEcNPCqr9NvpNSy+v4tgaQ4/xHEK0U
- AH6JGSvxrI9Wm4Gxlo+S6LksIG7i+S9aNgTtugB7pUFZCIuxOk0OU3gh0IR32DrgquCCinSPzHp
- NCRdtFqImznIEQCNUjMgU5Vwz3+D3ssJNq6Ip6l7Rk7ntsBCFomSrjWQcb14Tk0M5YVtnun95Bv
- 7SruN/wSroQrst4P+9oblFqD3H8gUpJP1vz5qMx2X9aA==
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1698604474;
+ bh=gogipZf0R0iOWdYyr1sBKjhOfpGlLqwJaMpBSjca5Mk=;
+ b=TbQmrQdmtv1diVsFNqCCHz/dK4L8XysokVXa3VRVqEHKN0jKY2T1aCPm4zVmMNgSd2ppviQTz
+ VbvoRj92vystgxWqqrhgTqrSNL9nzb7UIYy0iYV4OLFq3aeHHFjJZrm2CB8TohBLaohMxK5aMk9
+ lda15CofaROq4Ct/NZDQs0h3sEsuENkypj/SjoDFBuqbx9vwDKEZoFHTvQ39s0qt+ZnqXpYZGuB
+ CourrMgUiAuk+hJIYFHXmKyAFZ7SQl7Z+odzNp0av+4Mxj1PDSqAVE+8JsZHK0gFJC2HHqBZCS1
+ 8MPDOV9B0jxU5A2kagSBf5MKPKK5W4/YBLnlVlLT7W0g==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+ <mchehab@kernel.org>
 Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <nicolas.dufresne@collabora.com>, Benjamin Gaignard
  <benjamin.gaignard@collabora.com>, Sebastian Fricke
@@ -46,12 +46,10 @@ Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 04/10] media: rkvdec: h264: Don't hardcode SPS/PPS parameters
-Date: Sun, 29 Oct 2023 18:34:11 +0000
-Message-ID: <20231029183427.1781554-5-jonas@kwiboo.se>
+Subject: [PATCH v3 00/10] media: rkvdec: Add H.264 High 10 and 4:2:2 profile support
+Date: Sun, 29 Oct 2023 18:34:07 +0000
+Message-ID: <20231029183427.1781554-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231029183427.1781554-1-jonas@kwiboo.se>
-References: <20231029183427.1781554-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
@@ -59,11 +57,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 653ea5c98fe0ffca230b0f3c
+X-ForwardEmail-ID: 653ea5b98fe0ffca230b0f08
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231029_113455_908168_4BD9F9F3 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231029_113451_357500_9B76B063 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,58 +77,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Alex Bee <knaerzche@gmail.com>
+This is a revival of a 3 year old series [1] now that NV15/NV20/NV30 support
+for display driver have landed in drm-misc tree.
 
-Some SPS/PPS parameters are currently hardcoded in the driver even
-though they exist in the stable uapi controls.
+This series adds H.264 High 10 and 4:2:2 profile support to the Rockchip
+Video Decoder driver.
 
-Use values from SPS/PPS controls instead of hardcoding them.
+Patch 1 adds helpers for calculating plane bytesperline and sizeimage.
+Patch 2 adds two new pixelformats for semi-planer 10-bit 4:2:0/4:2:2 YUV.
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
-[jonas@kwiboo.se: constraint_set_flags condition, commit message]
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v3:
-- New patch
+Patch 3 change to use bytesperline and buffer height to configure strides.
+Patch 4 change to use values from SPS/PPS control to configure the HW.
+Patch 5 remove an unnecessary call to validate sps at streaming start.
 
- drivers/staging/media/rkvdec/rkvdec-h264.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+Patch 6-9 refactor code to support validation and filtering of CAPUTRE
+formats based on codec ops.
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 7a1e76d423df..8bce8902b8dd 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -655,13 +655,14 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
- 
- #define WRITE_PPS(value, field) set_ps_field(hw_ps->info, field, value)
- 	/* write sps */
--	WRITE_PPS(0xf, SEQ_PARAMETER_SET_ID);
--	WRITE_PPS(0xff, PROFILE_IDC);
--	WRITE_PPS(1, CONSTRAINT_SET3_FLAG);
-+	WRITE_PPS(sps->seq_parameter_set_id, SEQ_PARAMETER_SET_ID);
-+	WRITE_PPS(sps->profile_idc, PROFILE_IDC);
-+	WRITE_PPS(!!(sps->constraint_set_flags & (1 << 3)), CONSTRAINT_SET3_FLAG);
- 	WRITE_PPS(sps->chroma_format_idc, CHROMA_FORMAT_IDC);
- 	WRITE_PPS(sps->bit_depth_luma_minus8, BIT_DEPTH_LUMA);
- 	WRITE_PPS(sps->bit_depth_chroma_minus8, BIT_DEPTH_CHROMA);
--	WRITE_PPS(0, QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
-+	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_QPPRIME_Y_ZERO_TRANSFORM_BYPASS),
-+		  QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
- 	WRITE_PPS(sps->log2_max_frame_num_minus4, LOG2_MAX_FRAME_NUM_MINUS4);
- 	WRITE_PPS(sps->max_num_ref_frames, MAX_NUM_REF_FRAMES);
- 	WRITE_PPS(sps->pic_order_cnt_type, PIC_ORDER_CNT_TYPE);
-@@ -688,8 +689,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
- 		  DIRECT_8X8_INFERENCE_FLAG);
- 
- 	/* write pps */
--	WRITE_PPS(0xff, PIC_PARAMETER_SET_ID);
--	WRITE_PPS(0x1f, PPS_SEQ_PARAMETER_SET_ID);
-+	WRITE_PPS(pps->pic_parameter_set_id, PIC_PARAMETER_SET_ID);
-+	WRITE_PPS(pps->seq_parameter_set_id, PPS_SEQ_PARAMETER_SET_ID);
- 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE),
- 		  ENTROPY_CODING_MODE_FLAG);
- 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_BOTTOM_FIELD_PIC_ORDER_IN_FRAME_PRESENT),
--- 
+Patch 10 adds final bits to support H.264 High 10 and 4:2:2 profiles.
+
+Changes in v3:
+- Drop merged patches
+- Use bpp and bpp_div instead of prior misuse of block_w/block_h
+- New patch to use values from SPS/PPS control to configure the HW
+- New patch to remove an unnecessary call to validate sps at streaming start
+- Reworked pixel format validation
+
+Changes in v2:
+- Collect r-b tags
+- SPS pic width and height in mbs validation moved to rkvdec_try_ctrl
+- New patch to not override output buffer sizeimage
+- Reworked pixel format validation
+- Only align decoded buffer instead of changing frmsize step_width
+
+Following drm-misc commits adds support for NV15/NV20/NV30 to VOP driver:
+728c15b4b5f3 ("drm/fourcc: Add NV20 and NV30 YUV formats")
+d4b384228562 ("drm/rockchip: vop: Add NV15, NV20 and NV30 support")
+
+To fully runtime test this series you may need above drm commits and ffmpeg
+patches from [2], this series and drm patches is also available at [3].
+
+[1] https://lore.kernel.org/linux-media/20200706215430.22859-1-jonas@kwiboo.se/
+[2] https://github.com/jernejsk/FFmpeg/commits/v4l2-request-n6.0/
+[3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v3/
+
+Regards,
+Jonas
+
+Alex Bee (1):
+  media: rkvdec: h264: Don't hardcode SPS/PPS parameters
+
+Jonas Karlman (9):
+  media: v4l2-common: Add helpers to calculate bytesperline and
+    sizeimage
+  media: v4l2: Add NV15 and NV20 pixel formats
+  media: rkvdec: h264: Use bytesperline and buffer height as virstride
+  media: rkvdec: h264: Remove SPS validation at streaming start
+  media: rkvdec: Extract rkvdec_fill_decoded_pixfmt helper method
+  media: rkvdec: Move rkvdec_reset_decoded_fmt() function
+  media: rkvdec: Prepare for adding format validation ops
+  media: rkvdec: Add get_fmt_opaque and valid_fmt ops
+  media: rkvdec: h264: Support High 10 and 4:2:2 profiles
+
+ .../media/v4l/pixfmt-yuv-planar.rst           | 128 ++++++++++++
+ drivers/media/v4l2-core/v4l2-common.c         |  80 ++++----
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
+ drivers/staging/media/rkvdec/rkvdec-h264.c    |  91 ++++----
+ drivers/staging/media/rkvdec/rkvdec.c         | 194 +++++++++++++-----
+ drivers/staging/media/rkvdec/rkvdec.h         |   3 +
+ include/uapi/linux/videodev2.h                |   2 +
+ 7 files changed, 367 insertions(+), 133 deletions(-)
+
+--
 2.42.0
 
 
