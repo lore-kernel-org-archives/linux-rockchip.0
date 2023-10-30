@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD7DC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Oct 2023 17:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD12CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Oct 2023 19:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sYE8mDPu7rdaTNjyJPUHSWRIT1yIS8YlCS8kR/lkhO8=; b=K6QxIxcI3D/+jf
-	jjqXO8dL4PSV2xMgGlG4rM6TbOpAh5GKXHLbnUcZ/YUZcx9OxcIEGOgQPjwozvLjO228mdnbA9EzI
-	p7Ctu01o5EHlsyZl/fya4l+SJmdSRVfuXv/GDUs0QuQuHAdHVxMZHaUw+/I5UhicaeSsq88bildGq
-	ICIfr708ORoEM6/aQho0aVXJRLWr1iFouWgZXSRHwc/9xob7fS76VBV66Tx6NiQLxOiT0XSaMCoG1
-	ZTxaxABQI2Q0qPYRNu+ybumYDGKWeqH3p5H9ElHgbnvkPJ7QReb29t5YIy2sbmVMyMOAVne8SXQO1
-	v2jIPMGc8fOOqsz6Akhg==;
+	List-Owner; bh=6hdSyzgPJcP4ne+okwwNkjZEXEy/JNDASD+PYTNksxI=; b=S+bZVv+GqWYoPh
+	hOHvAtKxSPjKAI9SSA8Y3FWQMlbJFF7i/QVcIpbYltWF7qCy5nz2QdkTfCRQlt27pRR5IH2KwiowT
+	Q7yBPVllmFWTryjLvbxCK/DKPbN73/DRHOtTia9ZzGNgt/9QI/tgmNyx6c4dzXjNg1FV4pL/sPpZ3
+	2l5euL44+YjbLLbQfUDsrswqj3RBfF4M3YCsJKiiO1QNA2tFup89RkSvUObJ+vPZe1WMyhRpABHGS
+	31vIN5N2fi0JLEgWtXOpLYbPREisF3J9hBfkGCiey/WmqSn+mA6Tyxdk+/VMZScsYEOfm3hj4Qxic
+	VpBgEMgf0q9B07j16wHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxWFQ-003mna-16;
-	Mon, 30 Oct 2023 17:40:20 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	id 1qxXoY-003ujr-08;
+	Mon, 30 Oct 2023 19:20:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxWFM-003mmW-2P;
-	Mon, 30 Oct 2023 17:40:18 +0000
-Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-6cd0963c61cso2785404a34.0;
-        Mon, 30 Oct 2023 10:40:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698687614; x=1699292414;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2+u4tebm6nXGAEfm0k7+Viez2ebHLsDXcjiQ9FdQg8w=;
-        b=g+RjI23KvEGB0HoiHpGp63w3qYcjHOrRUath+Xn+1y8kJp6ezhYt6ImDlOoqbJgQt7
-         D5KUophJgJQZVLph60cQAKr2aXI1mmAlzA9WcPk1eSlUWxntAWa6OTelIkclMw5GGJuV
-         Fafkp391i8HDiU5VKW+ip6BFH6bEX61LPm8TZr1vE+ESO2H9VCz5f26LnihHU+rs7Xlf
-         H2QvGd9046rZnAvgdNFyiI6vyYV8wWU0ypA3QM1JF3oTa1z2ElpdPA9fa2wegOWRRyzY
-         GVM5Bv2Y1vKjIikq1hIdFkXhMvzae3ukVb2FpSiPPKsIgBZ5+G5eIxfObMJLOSS2Z5bm
-         Cs2g==
-X-Gm-Message-State: AOJu0Yxt8Ma4kCqG3YRhAjyDku2l7XJdAQRsB1QI/YPydvtn7YVYtiCa
-	eF2XRRApuEEMbIOdFgNMYg==
-X-Google-Smtp-Source: AGHT+IEg9yMvFNsDRTpR+Wsj9VVwm+fyrLBK4gTm+3/JpU6q7gH/e4XhpQiqhlM0nvHpGcl8T0bKZA==
-X-Received: by 2002:a05:6830:4ac:b0:6ce:25a2:67cf with SMTP id l12-20020a05683004ac00b006ce25a267cfmr8966609otd.26.1698687614564;
-        Mon, 30 Oct 2023 10:40:14 -0700 (PDT)
-Received: from herring.priv ([2607:fb91:e6c7:c3eb:a6fd:69b4:aba3:6929])
-        by smtp.gmail.com with ESMTPSA id w20-20020a056830411400b006b8c87551e8sm1481131ott.35.2023.10.30.10.40.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Oct 2023 10:40:13 -0700 (PDT)
-Received: (nullmailer pid 1560135 invoked by uid 1000);
-	Mon, 30 Oct 2023 17:40:12 -0000
-Date: Mon, 30 Oct 2023 12:40:12 -0500
-From: Rob Herring <robh@kernel.org>
-To: Niklas Cassel <nks@flawful.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, Damien Le Moal <dlemoal@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Niklas Cassel <niklas.cassel@wdc.com>, Simon Xue <xxm@rock-chips.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Serge Semin <fancer.lancer@gmail.com>, Conor Dooley <conor+dt@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3 2/6] dt-bindings: PCI: dwc: rockchip: Add optional dma
- interrupts
-Message-ID: <169868761168.1560075.5521220750018058491.robh@kernel.org>
-References: <20231027145422.40265-1-nks@flawful.org>
- <20231027145422.40265-3-nks@flawful.org>
+	id 1qxXoU-003uhy-1n;
+	Mon, 30 Oct 2023 19:20:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 735B1603F1;
+	Mon, 30 Oct 2023 19:20:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 928E7C433C8;
+	Mon, 30 Oct 2023 19:20:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1698693633;
+	bh=hvnFWiwDyeUV5ubEK9oHUg2sWcW5EpgpZngLeQIpoMY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=EJzgFNmYO53E10LQkruS2JsXQZtLvvKbm9vj7nl/74BTKiDlxt0soP8CJX9uB060J
+	 tOMtLpXUyM8O3fIowI/N34vI8ucBg4vcI/2tznGIUHvECCTN9kqVA/1Vkf9+M4V5jo
+	 yAYV2jA60EBQzZJv35lejkGjN3jcnaHb+ZbVODCOZok34TYymzvVPM/RUbT5iFjPmv
+	 fwLgubHrrQ5LuE1jIrkz+oFFq50M3mxyaHaAA0bdwajqz4oP7fPNMFoLuypgpqtwKR
+	 /aSMJNaDF505q5+Yc6P7RUHcw5b/jZeECUlw4Wz7enpXLdUlxVXnUZmjRBQLWCh0RY
+	 7hx91YEjzQJtA==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Rob Herring <robh@kernel.org>
+Cc: kernel test robot <lkp@intel.com>, linux-rockchip@lists.infradead.org, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20231030142337.814907-2-robh@kernel.org>
+References: <20231030142337.814907-2-robh@kernel.org>
+Subject: Re: [RESEND PATCH] ASoC: rockchip: Fix unused
+ rockchip_i2s_tdm_match warning for !CONFIG_OF
+Message-Id: <169869362917.44249.630029762300338773.b4-ty@kernel.org>
+Date: Mon, 30 Oct 2023 19:20:29 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231027145422.40265-3-nks@flawful.org>
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_104016_786781_553A8BD3 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20231030_122038_639556_4A66DD33 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,32 +76,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, 30 Oct 2023 09:23:38 -0500, Rob Herring wrote:
+> Commit 9958d85968ed ("ASoC: Use device_get_match_data()") dropped the
+> unconditional use of rockchip_i2s_tdm_match resulting in this warning:
+> 
+> sound/soc/rockchip/rockchip_i2s_tdm.c:1315:34: warning: 'rockchip_i2s_tdm_match' defined but not used [-Wunused-const-variable=]
+> 
+> The fix is to drop of_match_ptr() which is not necessary because DT is
+> always used for this driver.
+> 
+> [...]
 
-On Fri, 27 Oct 2023 16:54:14 +0200, Niklas Cassel wrote:
-> From: Niklas Cassel <niklas.cassel@wdc.com>
-> 
-> Even though rockchip-dw-pcie.yaml inherits snps,dw-pcie.yaml
-> using:
-> 
-> allOf:
->   - $ref: /schemas/pci/snps,dw-pcie.yaml#
-> 
-> and snps,dw-pcie.yaml does have the dma interrupts defined, in order to be
-> able to use these interrupts, while still making sure 'make CHECK_DTBS=y'
-> pass, we need to add these interrupts to rockchip-dw-pcie.yaml.
-> 
-> These dedicated interrupts for the eDMA are not always wired to all the
-> PCIe controllers on the same SoC. In other words, even for a specific
-> compatible, e.g. rockchip,rk3588-pcie, these dedicated eDMA interrupts
-> may or may not be wired.
-> 
-> Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
-> ---
->  .../bindings/pci/rockchip-dw-pcie.yaml         | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
+Applied to
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: rockchip: Fix unused rockchip_i2s_tdm_match warning for !CONFIG_OF
+      commit: 04f8c76de983a5c1e8913e442e791a9e8d0e0dfd
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
