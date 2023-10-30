@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F2B5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Oct 2023 18:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B9AC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Oct 2023 14:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ITSjfp2nmuOyvJr1R/2MoHVAMx85D/Cav29DfiHX7QI=; b=jJrBbs0vSdDCzs
-	+yR0gvqLAGt8sQZOLBPJeKuXEa85uYekOOmGmCMJBGJM//Pe868nzPV5tQTinj3d9B7IqjimZH8Ri
-	VN3161yjmqTjhP3EHHOuFrjTcTrzPvmh1kgtJ+IhU2nB7a3pahN1WyGAe2qjnd0zY/jZLruQwWBj8
-	ut6Z0RVEWaMZ1ZiSeAYrCUEFG0DUr/aOJCeBuQQtroMAIZwsI5KyQXxYV7vyl6yB28+8oGUpdTQ3d
-	Qj06sM888TR6YgKpeFIawK01CpUyvtaNcc45415ve5rvq//IXG5tpnH19td32kEiSckTAzhDUFUCS
-	JEYFZNdew6LeeM3AbEww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=68/qWAf8Hd9AE3umROTXH+4Jv3kcWSLoxi0JTaz7Vkg=; b=Fu/jUtNzVP8pTk
+	4/xKBfF5HkLjYvzbqKOC4uJIpfhNCgYXJNv4duj9t42gDki67tG/ArlzJRbWa/gZaXt09kR1101jP
+	deQlwEoChrD/CV1irDST/m7pKn8gtgVv5IZdHfXWKIEQijae7qGnk7hjWlXaY2WYXkKz8MJintNRZ
+	n8Q1zfSa8ESdAtgISyyOMxliaNftO794oOPjpeyXSds9C9Uil9DzVMwRhuGfoMlWBqIVxB8hZhj9J
+	b05gTt5sqDiqC2n7DcKw2nuT153F5X7dy9a+w4rwFJkbHnJ1U4bfFhfFvHY9Zi7PdV8qRyH7jqy/r
+	fb9RkXm/JPMqY1v6iX4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxAd5-0020eS-13;
-	Sun, 29 Oct 2023 18:35:19 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1qxTCE-003Tev-28;
+	Mon, 30 Oct 2023 14:24:50 +0000
+Received: from mail-oa1-f45.google.com ([209.85.160.45])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxAd2-0020cT-0y
-	for linux-rockchip@lists.infradead.org;
-	Sun, 29 Oct 2023 18:35:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1698604512; bh=CDI7CU66wEs270/rnVxpiW23n/7qKyJzphHa0D78l20=;
- b=ucn+Ob+AwvH+/w7YlsL4bBW+eJ3oue3QIbJnB2GeleH/x/s/N7p2pgQrDTx2ZRQsEYUaNk15s
- NbObabypeNTt4ZgWfpmspUawA3tYRWiQ9XJloCKNVl5HDUvFv7NZxP0/Drc5ZSF+fJphmQcmKkc
- iDo5DvlGSGGWccgTi35phen1SCRoFZFpnE3K9X+aauBf2ec9uS9hQVpkFvDHl2ABROIlCdr5KLI
- mvmjDISxaRatkm2fp/UOMc7zLWj4mo2InYp8RtKDZbu8ac4+HJCNXYNdnZ2gpQyv45DC1foILCd
- R1uR4boTzVDYOua2nuEu87RTYQv6yChnBZMcsF/Za54w==
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
- <nicolas.dufresne@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Sebastian Fricke
- <sebastian.fricke@collabora.com>, Christopher Obbard
- <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 10/10] media: rkvdec: h264: Support High 10 and 4:2:2 profiles
-Date: Sun, 29 Oct 2023 18:34:17 +0000
-Message-ID: <20231029183427.1781554-11-jonas@kwiboo.se>
+	id 1qxTCB-003TeZ-0e;
+	Mon, 30 Oct 2023 14:24:48 +0000
+Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-1e9ac336589so3082694fac.1;
+        Mon, 30 Oct 2023 07:24:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698675885; x=1699280685;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KURySP8CPvB4/y1EF5BKpqCgD6RX//UEPazzHu4/yag=;
+        b=cuZHRCGAmvZs41wPLLkMyCGCBUIip0iBbuXUPAoqTftG9w59dsiwyJ9qriPCBiMLR0
+         1LlHQbBOtDPMrvFPehL3YYPChizgMBRGCjlZFBVIG0fiGvm25kZYR85xPQbcsm8iEx9q
+         fBBg+6L1c7Y4GWKuEu+qG1lD77DsCR3j12e1RMj6lFnBV2BtkmWeL4JXPTk0UlL160JN
+         +Cg1+sjygucMjPi6Fhh0tO3M2/94yc8FoAIokU7fK3C1HfDYzSB9Mx4y98R2zUJno+GW
+         /7vquzPtahmtJfbg9jv/3cMD1NIeWrJHodQzw3AOBPX4yGOQmV29dn+Ys2cz/OElssTb
+         YQaA==
+X-Gm-Message-State: AOJu0YwmizbSgUZDDb4/ftALX/mOKjCgrYOPE0lHpUfJIRH7fKLn7t6C
+	ZrJfrsGX6ESHGCoTGB038w==
+X-Google-Smtp-Source: AGHT+IG976VSsNVNGrcLtXF9kn5Tt4rIHb5nwu/RGtnSoO1PHC/WESbhx3GE6OQSIrDTedgOFiLmLA==
+X-Received: by 2002:a05:6870:1382:b0:1e9:f09d:3736 with SMTP id 2-20020a056870138200b001e9f09d3736mr9855710oas.45.1698675884893;
+        Mon, 30 Oct 2023 07:24:44 -0700 (PDT)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id s16-20020a05683004d000b006b8af3a2599sm1413313otd.73.2023.10.30.07.24.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Oct 2023 07:24:44 -0700 (PDT)
+Received: (nullmailer pid 816585 invoked by uid 1000);
+	Mon, 30 Oct 2023 14:24:42 -0000
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel test robot <lkp@intel.com>, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RESEND PATCH] ASoC: rockchip: Fix unused rockchip_i2s_tdm_match warning for !CONFIG_OF
+Date: Mon, 30 Oct 2023 09:23:38 -0500
+Message-ID: <20231030142337.814907-2-robh@kernel.org>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231029183427.1781554-1-jonas@kwiboo.se>
-References: <20231029183427.1781554-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 653ea5df8fe0ffca230b0f8a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231029_113516_378077_39722463 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20231030_072447_236326_1B56C6E9 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,165 +78,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support and enable decoding of H264 High 10 and 4:2:2 profiles.
+Commit 9958d85968ed ("ASoC: Use device_get_match_data()") dropped the
+unconditional use of rockchip_i2s_tdm_match resulting in this warning:
 
-Decoded CAPTURE buffer width is aligned to 64 pixels to accommodate HW
-requirement of 10-bit format buffers.
+sound/soc/rockchip/rockchip_i2s_tdm.c:1315:34: warning: 'rockchip_i2s_tdm_match' defined but not used [-Wunused-const-variable=]
 
-The get_fmt_opaque and valid_fmt ops is implemented to select a CAPTURE
-format suited for the provided SPS control.
+The fix is to drop of_match_ptr() which is not necessary because DT is
+always used for this driver.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Fixes: 9958d85968ed ("ASoC: Use device_get_match_data()")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202310121802.CDAGVdF2-lkp@intel.com/
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-v3:
-- Add get_fmt_opaque ops, the expected pixelformat is used as opaque
-- Add new valid_fmt ops that validate pixelformat matches opaque
-- Update H264_PROFILE control max value
+Mark, another one that probably didn't get sent to you...
 
- drivers/staging/media/rkvdec/rkvdec-h264.c | 45 +++++++++++++++++-----
- drivers/staging/media/rkvdec/rkvdec.c      | 21 ++++++----
- 2 files changed, 50 insertions(+), 16 deletions(-)
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 815d5359ddd5..f773a3f5ecb7 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -1027,24 +1027,49 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
- 	return 0;
- }
- 
-+static u32 rkvdec_h264_get_fmt_opaque(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
-+{
-+	const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
-+
-+	if (ctrl->id != V4L2_CID_STATELESS_H264_SPS)
-+		return 0;
-+
-+	if (sps->bit_depth_luma_minus8 == 0) {
-+		if (sps->chroma_format_idc == 2)
-+			return V4L2_PIX_FMT_NV16;
-+		else
-+			return V4L2_PIX_FMT_NV12;
-+	} else if (sps->bit_depth_luma_minus8 == 2) {
-+		if (sps->chroma_format_idc == 2)
-+			return V4L2_PIX_FMT_NV20;
-+		else
-+			return V4L2_PIX_FMT_NV15;
-+	}
-+
-+	return 0;
-+}
-+
-+static bool rkvdec_h264_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc, u32 opaque)
-+{
-+	if (!opaque)
-+		return true;
-+
-+	return fourcc == opaque;
-+}
-+
- static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx,
- 				    const struct v4l2_ctrl_h264_sps *sps)
- {
- 	unsigned int width, height;
- 
--	/*
--	 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
--	 * but it's currently broken in the driver.
--	 * Reject them for now, until it's fixed.
--	 */
--	if (sps->chroma_format_idc > 1)
--		/* Only 4:0:0 and 4:2:0 are supported */
-+	if (sps->chroma_format_idc > 2)
-+		/* Only 4:0:0, 4:2:0 and 4:2:2 are supported */
- 		return -EINVAL;
- 	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
- 		/* Luma and chroma bit depth mismatch */
- 		return -EINVAL;
--	if (sps->bit_depth_luma_minus8 != 0)
--		/* Only 8-bit is supported */
-+	if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
-+		/* Only 8-bit and 10-bit is supported */
- 		return -EINVAL;
- 
- 	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
-@@ -1171,6 +1196,8 @@ static int rkvdec_h264_try_ctrl(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
- 
- const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
- 	.adjust_fmt = rkvdec_h264_adjust_fmt,
-+	.get_fmt_opaque = rkvdec_h264_get_fmt_opaque,
-+	.valid_fmt = rkvdec_h264_valid_fmt,
- 	.start = rkvdec_h264_start,
- 	.stop = rkvdec_h264_stop,
- 	.run = rkvdec_h264_run,
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 5c7e1b91e908..fce5cba343a3 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -50,7 +50,7 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
- 				       struct v4l2_pix_format_mplane *pix_mp)
- {
- 	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
--			    pix_mp->width, pix_mp->height);
-+			    ALIGN(pix_mp->width, 64), pix_mp->height);
- 	pix_mp->plane_fmt[0].sizeimage += 128 *
- 		DIV_ROUND_UP(pix_mp->width, 16) *
- 		DIV_ROUND_UP(pix_mp->height, 16);
-@@ -169,7 +169,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
- 	{
- 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
- 		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
--		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
-+		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422,
- 		.cfg.menu_skip_mask =
- 			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
- 		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
-@@ -186,8 +186,11 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
- };
- 
--static const u32 rkvdec_h264_vp9_decoded_fmts[] = {
-+static const u32 rkvdec_h264_decoded_fmts[] = {
- 	V4L2_PIX_FMT_NV12,
-+	V4L2_PIX_FMT_NV15,
-+	V4L2_PIX_FMT_NV16,
-+	V4L2_PIX_FMT_NV20,
- };
- 
- static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
-@@ -210,6 +213,10 @@ static const struct rkvdec_ctrls rkvdec_vp9_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_vp9_ctrl_descs),
- };
- 
-+static const u32 rkvdec_vp9_decoded_fmts[] = {
-+	V4L2_PIX_FMT_NV12,
-+};
-+
- static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-@@ -223,8 +230,8 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		},
- 		.ctrls = &rkvdec_h264_ctrls,
- 		.ops = &rkvdec_h264_fmt_ops,
--		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
--		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-+		.decoded_fmts = rkvdec_h264_decoded_fmts,
- 		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 5c51dbef6e86..860e66ec85e8 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -1757,7 +1757,7 @@ static struct platform_driver rockchip_i2s_tdm_driver = {
+ 	.remove_new = rockchip_i2s_tdm_remove,
+ 	.driver = {
+ 		.name = DRV_NAME,
+-		.of_match_table = of_match_ptr(rockchip_i2s_tdm_match),
++		.of_match_table = rockchip_i2s_tdm_match,
+ 		.pm = &rockchip_i2s_tdm_pm_ops,
  	},
- 	{
-@@ -239,8 +246,8 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		},
- 		.ctrls = &rkvdec_vp9_ctrls,
- 		.ops = &rkvdec_vp9_fmt_ops,
--		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
--		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
-+		.decoded_fmts = rkvdec_vp9_decoded_fmts,
- 	}
  };
- 
 -- 
 2.42.0
 
