@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C01C00142
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057A8C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QiYAbQv2ECr51YGWqHUVZOTkcRmyfLk8skLpGIGmXNk=; b=XtM9DcQ19S/hoN
-	YGRUbjuSpf2SAD/8ikQzt1UxbtzYgmUKrVm/xkKuP3yglRrEdXYV+IjKXp7Y5DyyQ9+kY7OlXhAA+
-	AHrgWvJlAv/c+ly9Cvw8KNQZaCPaTDrV99HAF7Be09L1R9FURjZ+JzXyC9YjPi0QEn/A3JrjpSKNb
-	iZFAvOCpYKgy7do/iFi9FYh4/WGwbWikh9tFJW2vEkuJ2rSTRwqwXZMCwM2JYMKYb33slPYIE+hcQ
-	yMIh/XFoc/JWjze5Ux2ZGox/2h4ycCr13yXkCvFiRBlo0JdshRBvjxkPEWUDvZjh42mEpkJAhu8m5
-	TKSb8A/rAOU2xY4R0W3Q==;
+	List-Owner; bh=NSB3QEb4KkbGaqXqoD4DYcMdkjIqWREY7zYqyFG1IJc=; b=HySFAUnr9ngy57
+	tVVy9Xx/cTFZVwmTc+fe+lGsYKssI2Wb+y7l42l4sGRCVPUOT4WvgOYXvZFkbVH5St3ewgOvVMTOa
+	B31F3sOyrZFA1FPBk1pStXQyCEyejR5U8HrDRfawLjTpJ9bW3NMyx/OgRx5Lik2XH4y4dbfmjwZlc
+	wq+cdWJc3+JfyFjnDld9gIxMZ3ivkButjPXWejRN4yiq1ZxrKyj0+PWLvpWwylKhxWUueRzMCEEKH
+	Kb5TsJDacTpncnuq8HTCQBMR8b/tku5RX500ROV/tbp+c++cA9X6jqTF2DjG0CRj3uOLGPEsCxeyb
+	MDKujFf7svnW1ksEBfQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxryb-005m0n-1m;
-	Tue, 31 Oct 2023 16:52:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qxrye-005m4s-28;
+	Tue, 31 Oct 2023 16:52:28 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrwE-005kKc-18;
-	Tue, 31 Oct 2023 16:50:01 +0000
+	id 1qxrwK-005kQJ-1g;
+	Tue, 31 Oct 2023 16:50:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D0D4361043;
-	Tue, 31 Oct 2023 16:49:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9CD9C433CA;
-	Tue, 31 Oct 2023 16:49:56 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTP id 28E6AB80E91;
+	Tue, 31 Oct 2023 16:50:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F238C433C7;
+	Tue, 31 Oct 2023 16:50:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698770997;
-	bh=j0kuHfqXTtY8F7hrGO9Pbcf8nYj5w/LWDfi3cdsMJFw=;
+	s=k20201202; t=1698771002;
+	bh=cUa4ZlT2wSGqeoteiiVi9GhpPWDTIxakVCkbOrAWqhE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nSePuuJ7pKpbnQM088odLzOJALTEwMndAMSpMI/yAgaAV6SPnW7UXiHDDHz3tpCnn
-	 f9Njo1BLgympq8GVoux1g27ZvjorCv7MAe8z6NVTc7guddnbcL6CLhuQkEeQBAFO/x
-	 1pRal4ICjNBFSxI/IzHseVX+B5MvZDSu1j1PVGH0o9PLzd/CD5inD4K/5v4JPVeMMr
-	 jVAkb+lN/GraHwWZ0EcZ4rVAfcKwCB56TztX8Copagsxmcp8VJbB1U4m2aPkqz52h5
-	 nwqVEmJkf6QyLumhLz9868CjMgS1KmhjiQYu9s0FiNmTvA8IXLz3KFcwH1tUt4SJUo
-	 ziu/crrPHDdiw==
+	b=NDHu8I3e6Hg5NvAC1YdHdSg5nPfkzEHk0OwWTpizUn6LGUvIInjWC92gwafav0d30
+	 yenTJ8JYIvgaRV57zULJn6bkengJlY2YUqMLgpVPXfr5skSZuzgud7sDtGrtYb1P1B
+	 qxuakoc19SKz7HvjMrmGKmR8X+a8lVOa0c6aQOH5zGdABG78BNZxF/xJf9BbckM9Am
+	 bPrZiuadu7CBrh+u8MYSSmp+QHJCbz/PKEtQzyByEQ9pJxq8yyHMbP1ATDYLzuxtw3
+	 bAXCOCLa9GG273hFe3FQuFFEpepGsSVXyVVzNtiEtUSHM0lkghlcpGQ60hgz+xrAxO
+	 +FL1mVlp9L0bQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 31 Oct 2023 17:48:42 +0100
-Subject: [PATCH RFC v3 29/37] drm/rockchip: inno_hdmi: Create mask
- retrieval functions
+Date: Tue, 31 Oct 2023 17:48:44 +0100
+Subject: [PATCH RFC v3 31/37] drm/rockchip: inno_hdmi: Remove unused drm
+ device pointer
 MIME-Version: 1.0
-Message-Id: <20231031-kms-hdmi-connector-state-v3-29-328b0fae43a7@kernel.org>
+Message-Id: <20231031-kms-hdmi-connector-state-v3-31-328b0fae43a7@kernel.org>
 References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
 In-Reply-To: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,17 +62,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4130; i=mripard@kernel.org;
- h=from:subject:message-id; bh=j0kuHfqXTtY8F7hrGO9Pbcf8nYj5w/LWDfi3cdsMJFw=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmO+venb7pnF7/346NTer1r9xZtLepnX75j/Z39s0PVH
- T76hYgrdpSyMIhxMciKKbLECJsviTs163UnG988mDmsTCBDGLg4BWAiLayMDJ9K1/MFbHZXSzzE
- tzjpu/pU07mGys6JrMeY21/8ue7b3MLwP//FiVWbRZ69sw7JOlxp/9x+HuuNDWH2LWmNdyvOMj0
- LYAUA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=911; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=cUa4ZlT2wSGqeoteiiVi9GhpPWDTIxakVCkbOrAWqhE=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmO+vdnCexYdnzywSK7W6qnH3i/61ApOyCR1TBZYPG5l
+ KDlBYonO0pZGMS4GGTFFFlihM2XxJ2a9bqTjW8ezBxWJpAhDFycAjCRA72MDLttbjUZKj+L+tK+
+ dI3E7tcWRatm125WZF1+ad/pi1vvubIzMlyXOf/LbqcTj8MJX3kvnhob27oZjSJXrlkuTnK5MKl
+ rIQMA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_094958_534946_C0903EF6 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20231031_095004_738060_B4F49AD9 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,138 +89,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The register mask and bits to enable or disable a given infoframe
-depends on its type.
-
-This is currently passed as an argument to the function that writes an
-infoframe, but let's create a helper function to retrieve them based on
-the type to make further reworks easier.
+The drm_dev field in the inno_hdmi struct stores a pointer to the DRM
+device but is never used anywhere in the driver. Let's remove it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 75 ++++++++++++++++++++++++++++++------
- 1 file changed, 63 insertions(+), 12 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index e3a421d98dd4..bc7fb1278cb2 100644
+index ed1d10efbef4..d0b463d166fb 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -156,10 +156,62 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
- 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
- }
+@@ -39,7 +39,6 @@ struct inno_hdmi_i2c {
  
--static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
--				    u32 frame_index,
--				    u32 mask, u32 disable)
-+static u32 inno_hdmi_get_frame_mask(struct inno_hdmi *hdmi,
-+				    u32 frame_index)
- {
-+	struct drm_device *drm = hdmi->connector.dev;
-+
-+	switch (frame_index) {
-+	case INFOFRAME_VSI:
-+		return m_PACKET_VSI_EN;
-+	case INFOFRAME_AVI:
-+		return 0;
-+	default:
-+		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+	}
-+
-+	return 0;
-+}
-+
-+static u32 inno_hdmi_get_frame_disable(struct inno_hdmi *hdmi,
-+				       u32 frame_index)
-+{
-+	struct drm_device *drm = hdmi->connector.dev;
-+
-+	switch (frame_index) {
-+	case INFOFRAME_VSI:
-+		return v_PACKET_VSI_EN(0);
-+	case INFOFRAME_AVI:
-+		return 0;
-+	default:
-+		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+	}
-+
-+	return 0;
-+}
-+
-+static u32 inno_hdmi_get_frame_enable(struct inno_hdmi *hdmi,
-+				      u32 frame_index)
-+{
-+	struct drm_device *drm = hdmi->connector.dev;
-+
-+	switch (frame_index) {
-+	case INFOFRAME_VSI:
-+		return v_PACKET_VSI_EN(1);
-+	case INFOFRAME_AVI:
-+		return 0;
-+	default:
-+		drm_err(drm, "Unknown infoframe type: %u\n", frame_index);
-+	}
-+
-+	return 0;
-+}
-+
-+static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi, u32 frame_index)
-+{
-+	u32 disable = inno_hdmi_get_frame_disable(hdmi, frame_index);
-+	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
-+
- 	if (mask)
- 		hdmi_modb(hdmi, HDMI_PACKET_SEND_AUTO, mask, disable);
+ struct inno_hdmi {
+ 	struct device *dev;
+-	struct drm_device *drm_dev;
  
-@@ -167,13 +219,14 @@ static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
- }
+ 	int irq;
+ 	struct clk *pclk;
+@@ -732,7 +731,6 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 		return -ENOMEM;
  
- static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
--				  union hdmi_infoframe *frame, u32 frame_index,
--				  u32 mask, u32 disable, u32 enable)
-+				  union hdmi_infoframe *frame, u32 frame_index)
- {
-+	u32 enable = inno_hdmi_get_frame_enable(hdmi, frame_index);
-+	u32 mask = inno_hdmi_get_frame_mask(hdmi, frame_index);
- 	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
- 	ssize_t rc, i;
+ 	hdmi->dev = dev;
+-	hdmi->drm_dev = drm;
  
--	inno_hdmi_disable_frame(hdmi, frame_index, mask, disable);
-+	inno_hdmi_disable_frame(hdmi, frame_index);
- 
- 	rc = hdmi_infoframe_pack(frame, packed_frame,
- 				 sizeof(packed_frame));
-@@ -200,13 +253,11 @@ static int inno_hdmi_config_video_vsi(struct inno_hdmi *hdmi,
- 							 &hdmi->connector,
- 							 mode);
- 	if (rc) {
--		inno_hdmi_disable_frame(hdmi, INFOFRAME_VSI,
--					m_PACKET_VSI_EN, v_PACKET_VSI_EN(0));
-+		inno_hdmi_disable_frame(hdmi, INFOFRAME_VSI);
- 		return rc;
- 	}
- 
--	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_VSI,
--		m_PACKET_VSI_EN, v_PACKET_VSI_EN(0), v_PACKET_VSI_EN(1));
-+	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_VSI);
- }
- 
- static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
-@@ -219,13 +270,13 @@ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
- 						      &hdmi->connector,
- 						      mode);
- 	if (rc) {
--		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI, 0, 0);
-+		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI);
- 		return rc;
- 	}
- 
- 	frame.avi.colorspace = HDMI_COLORSPACE_RGB;
- 
--	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI, 0, 0, 0);
-+	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI);
- }
- 
- static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
+ 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(hdmi->regs))
 
 -- 
 2.41.0
