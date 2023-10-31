@@ -4,82 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F27E7C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 01:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7722FC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 09:05:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aXMNz+uWq479NQW2Zox853IXPKJxjiogDs26PLTnfDs=; b=XXDh7j71V+Gofp
-	RwPum+BxPcjQd+d5pHFtyx+NtbdLAcbxllLnDxGzRrPQZmNi70eBAYJgwmTSRvwO/3vIfXOY80U6c
-	ymy2tebb84mXkQ/giql7y8xRSGzN7MR9GRtw5gzosS83TQi1n+HjI3RRM/r9nXvih3wPUyDahrpvH
-	DqB/cBxsQS7o9dEdBoxq4MSkh7X6tK9FHiluFumqt5KBXC01v9KrNgmnQH9upgyaQ8IG4vrAcJ6yw
-	F0Ve2VbM+wRnSdiPKWOspOCMV8apKlSOtQdwVo0t9GlcLUeN6fCkxf2sHguO+Slqioaz2AQkG+lca
-	CXemDwSJ09LW/8R6/L3Q==;
+	List-Owner; bh=mlbzmEhHiVPHg95Bablikt1mlV967Ejp0M0wbC0oL2g=; b=2sIBuEEYf3ctOK
+	F2BVQs4i9Kg6YZysIuuw34EERsnP2o9nShyMWuxmxNEAt/HziZBP4fvgTWYm/XztjPnWVU8Fk3sc3
+	UZSLvE3qJON7O8C4hbm55N2YSxzMjZJC/XuhCO7jrrRoGBZ58Tvg0qQC+shz7gR3C5Een2yFRNa5g
+	MFhYmlA/tFB19pdwqbQFNVEq1SKkVcc7OTft1mAxf6BdOCg6T9sG4/MhgVOSZhNlr03csSSOZsv0D
+	bQMGnZi6LpyVloNLueE8ekrgaJnWFBYNNoc4sRHO3V1yxtllKTYnN8UasdGmjeJ4JJUFAxJnNGR5S
+	jP6LHOkOjTPQ5Itpa1yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxdKf-004Lsk-2s;
-	Tue, 31 Oct 2023 01:14:13 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1qxkgN-004qAm-0c;
+	Tue, 31 Oct 2023 09:05:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxdKc-004Ls0-2W;
-	Tue, 31 Oct 2023 01:14:12 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-507b96095abso7373728e87.3;
-        Mon, 30 Oct 2023 18:14:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698714846; x=1699319646; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cxTuWUKQ01ITaCaBUI74BXoQMSnfewI7Dt7CkZW+b34=;
-        b=OUSbtxx9xE5RMzhaVZY9od92SNMKtrSWRoM04m1hO6hAxCq17firNIAIfa+VHLqFI5
-         ERXYplXaUkHJ4uZCgkpgYuCKS0Cy5PBujKCMaFPRlIu6Dw7DMdsOcwwBP8c36ptfzudm
-         pe+B8grDPLy/3Mj/KqWGTe4/9jFUxQSBgDob9SO3JfO/7JUkJffrPFfZmX2IWJWWuIp0
-         aGLZScHZbSoa40YQiCIqpyIJnhZFkzCoy6Vejfd4FaPiNgppeKC/+QOiCGg/Ie1HH/iu
-         q3b+fNQ4zJoXjwMmobB+jAinXClD57vMoKShyXH1sAG675npbddgDS/yUEA/D3Vy1fv2
-         K0bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698714846; x=1699319646;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cxTuWUKQ01ITaCaBUI74BXoQMSnfewI7Dt7CkZW+b34=;
-        b=eIM7OJYa/ec0hUjXv1PR80QaaUvJBBtAPdKhGw656UBmgjMI9Ve2AHa6sf1ST5MYEg
-         hepyqvSN9f+wieQod9GdLsvugHrZuWfSuy2LUZXw2mg8R0DY46Zg9un93DWa7NFmn/CN
-         6z6T8+HnDTL1St9NVlWEkBH5JrDkozmoECIQkxh8laexq5kyNOoVa1v0geU1GS6NaJ97
-         S8oV8jfAjR0tA0BPTHbX1xKsgiLYlY5tVjtbWn2zrPyRIKpxpFfxkO6efCrmfaYtS4UW
-         pc14G3HVVxPd5lAJCUtfI4pcZznjDWyS0tU6Rja2UBGpi6O6uy/u2qpmYEKqKQZtdxYF
-         H8ag==
-X-Gm-Message-State: AOJu0YxVht9aieeLGTsxHCpD608eslm+Oi9z7YoYeBS72exoKnGF4e68
-	UGf8hF30FlcMt5FudknZWP0=
-X-Google-Smtp-Source: AGHT+IEpZ7/rH9Rysj9ot+65R0xB8zqfoheAqe7hlH1l1fpzbsGiuGiPb1kHOqUNV+JYx58J5CuzxA==
-X-Received: by 2002:a19:f007:0:b0:504:7ff8:3430 with SMTP id p7-20020a19f007000000b005047ff83430mr7714253lfc.10.1698714846341;
-        Mon, 30 Oct 2023 18:14:06 -0700 (PDT)
-Received: from mobilestation ([89.113.151.243])
-        by smtp.gmail.com with ESMTPSA id d16-20020ac25450000000b005041b7735dbsm26187lfn.53.2023.10.30.18.14.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Oct 2023 18:14:05 -0700 (PDT)
-Date: Tue, 31 Oct 2023 04:14:02 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Niklas Cassel <nks@flawful.org>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Damien Le Moal <dlemoal@kernel.org>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Niklas Cassel <niklas.cassel@wdc.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] arm64: dts: rockchip: drop unused properties
- num-{ib,ob}-windows
-Message-ID: <e62ymopao3gwwohzt75ehowqbxatmjtvenljutzzh7yeku3kep@smafdc5l5kq5>
-References: <20231027145422.40265-1-nks@flawful.org>
- <20231027145422.40265-4-nks@flawful.org>
+	id 1qxkgI-004q83-3C;
+	Tue, 31 Oct 2023 09:05:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 4F96EB80EF8;
+	Tue, 31 Oct 2023 09:04:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2102C433C7;
+	Tue, 31 Oct 2023 09:04:55 +0000 (UTC)
+Message-ID: <ab9fa763-2329-4696-8903-2dd28bcbea0e@xs4all.nl>
+Date: Tue, 31 Oct 2023 10:04:53 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231027145422.40265-4-nks@flawful.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v13 00/56] Add DELETE_BUF ioctl
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20231019125222.21370-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231030_181410_821795_2457E124 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20231031_020503_298910_0CC8DDFC 
+X-CRM114-Status: GOOD (  29.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,79 +67,234 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 27, 2023 at 04:54:15PM +0200, Niklas Cassel wrote:
-> From: Niklas Cassel <niklas.cassel@wdc.com>
-> 
-> The properties num-ib-windows and num-ob-windows have been deprecated for
-> a long time, and since commit 281f1f99cf3a ("PCI: dwc: Detect number of
-> iATU windows"), these properties are no longer used by the driver.
-> 
-> The correct number of inbound and outbound iATUs are now detected at
-> runtime. Thus, drop these unused properties.
-> 
-> Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
+Hi Benjamin,
 
-Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
-
--Serge(y)
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 2 --
->  arch/arm64/boot/dts/rockchip/rk3568.dtsi           | 4 ----
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi           | 2 --
->  3 files changed, 8 deletions(-)
+On 19/10/2023 14:51, Benjamin Gaignard wrote:
+> Unlike when resolution change on keyframes, dynamic resolution change
+> on inter frames doesn't allow to do a stream off/on sequence because
+> it is need to keep all previous references alive to decode inter frames.
+> This constraint have two main problems:
+> - more memory consumption.
+> - more buffers in use.
+> To solve these issue this series introduce DELETE_BUFS ioctl and remove
+> the 32 buffers limit per queue.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-> index b6ad8328c7eb..da4927a35142 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
-> @@ -102,8 +102,6 @@ &pcie3x1 {
+> VP9 conformance tests using fluster give a score of 210/305.
+> The 20 resize inter tests (vp90-2-21-resize_inter_* files) are ok
+> but require to use postprocessor.
+> 
+> Kernel branch is available here:
+> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v13
+> 
+> GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
+> change is here:
+> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
+> 
+
+I'll just write the comments here since I never received patch 44 in my mailbox.
+The messages are sent too quickly and my provider just throws some away if that
+happens for a long series like this, very annoying. You can configure git to
+slow down sending emails, if you can look into that, then that would be great.
+It seems to happen whenever more than approx. 30-35 patches are sent off very
+quickly.
+
+In any case, a v14 is needed: when testing with -virtme and the patched v4l2-compliance
+it fails the 32 bit test. You need to add max_num_buffers support to
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c.
+
+And since a v14 is needed because of that it would be nice if you can also
+make two small changes to patch 44/56:
+
+The commit log still refers to V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS (the old
+name). And in v4l_print_create_buffers() you log the value as "max buffers",
+just make that "max num buffers" for consistency.
+
+Regards,
+
+	Hans
+
+> changes in version 13:
+> - Fix typo and wording in commits messages.
+> - Only apply V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS on createbufs ioctl
+> - Fix queue setup test in test-drivers
+> 
+> changes in version 12:
+> - Change flag name to V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS.
+> - Rework some commits message.
+> - Change vb2_queue_or_prepare_buf() prototype.
+> - Rework patches where 'min_buffers_needed' was badly used.
+> 
+> changes in version 11:
+> - Patches ordering:
+>   1 to 3: clean up
+>   3 to 42: use vb2_get_buffer() and vb2_get_num_buffers()
+>   43 to 46: allow to use more than 32 buffers per queue
+>   47 to 50: allow verisilicon driver to do VP9 dynamic resolution change
+>             (which was the main purpose of this work)
+>   51 to 56: prepare and introduce delete buffers feature.
+> - Add a patch to rename 'off' to offset.
+> - Add maintainers CC to drivers patches
+> 
+> changes in version 10:
+> - Make BUFFER_INDEX_MASK definition more readable
+> - Rebase on media_stage/master branch and add a patch for nuvoton
+>   driver.
+> - Fix issue on patch 13
+> 
+> changes in version 9:
+> - BUFFER_INDEX_MASK now depends on PAGE_SHIFT value to match
+>   architectures requirements.
+> - Correctly initialize max_num_buffers in vb2_core_queue_init()
+> - run 'test-media -kmemleak mc' on top of the series and on patches 1 to 47 without failures.
+> - fix compilation issue in patch 50
+> 
+> 
+> 
 >  
->  &pcie3x2 {
->  	num-lanes = <1>;
-> -	num-ib-windows = <8>;
-> -	num-ob-windows = <8>;
->  	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply = <&vcc3v3_pcie>;
->  	status = "okay";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> index f1be76a54ceb..4487754065b7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> @@ -84,8 +84,6 @@ pcie3x1: pcie@fe270000 {
->  				<0 0 0 3 &pcie3x1_intc 2>,
->  				<0 0 0 4 &pcie3x1_intc 3>;
->  		linux,pci-domain = <1>;
-> -		num-ib-windows = <6>;
-> -		num-ob-windows = <2>;
->  		max-link-speed = <3>;
->  		msi-map = <0x0 &gic 0x1000 0x1000>;
->  		num-lanes = <1>;
-> @@ -137,8 +135,6 @@ pcie3x2: pcie@fe280000 {
->  				<0 0 0 3 &pcie3x2_intc 2>,
->  				<0 0 0 4 &pcie3x2_intc 3>;
->  		linux,pci-domain = <2>;
-> -		num-ib-windows = <6>;
-> -		num-ob-windows = <2>;
->  		max-link-speed = <3>;
->  		msi-map = <0x0 &gic 0x2000 0x1000>;
->  		num-lanes = <2>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index abee88911982..e2d99613109b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -985,8 +985,6 @@ pcie2x1: pcie@fe260000 {
->  				<0 0 0 3 &pcie_intc 2>,
->  				<0 0 0 4 &pcie_intc 3>;
->  		linux,pci-domain = <0>;
-> -		num-ib-windows = <6>;
-> -		num-ob-windows = <2>;
->  		max-link-speed = <2>;
->  		msi-map = <0x0 &gic 0x0 0x1000>;
->  		num-lanes = <1>;
-> -- 
-> 2.41.0
+> Benjamin Gaignard (56):
+>   media: videobuf2: Rename offset parameter
+>   media: videobuf2: Rework offset 'cookie' encoding pattern
+>   media: videobuf2: Stop spamming kernel log with all queue counter
+>   media: videobuf2: Use vb2_buffer instead of index
+>   media: videobuf2: Access vb2_queue bufs array through helper functions
+>   media: videobuf2: Remove duplicated index vs q->num_buffers check
+>   media: videobuf2: Add helper to get queue number of buffers
+>   media: videobuf2: Use vb2_get_num_buffers() helper
+>   media: amphion: Use vb2_get_buffer() instead of directly access to
+>     buffers array
+>   media: amphion: Stop direct calls to queue num_buffers field
+>   media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
+>     to buffers array
+>   media: mediatek: vdec: Remove useless loop
+>   media: mediatek: vcodec: Stop direct calls to queue num_buffers field
+>   media: sti: hva: Use vb2_get_buffer() instead of directly access to
+>     buffers array
+>   media: visl: Use vb2_get_buffer() instead of directly access to
+>     buffers array
+>   media: atomisp: Use vb2_get_buffer() instead of directly access to
+>     buffers array
+>   media: atomisp: Stop direct calls to queue num_buffers field
+>   media: dvb-core: Use vb2_get_buffer() instead of directly access to
+>     buffers array
+>   media: dvb-core: Do not initialize twice queue num_buffer field
+>   media: dvb-frontends: rtl2832: Stop direct calls to queue num_buffers
+>     field
+>   media: pci: dt3155: Remove useless check
+>   media: pci: tw686x: Stop direct calls to queue num_buffers field
+>   media: pci: cx18: Stop direct calls to queue num_buffers field
+>   media: pci: netup_unidvb: Stop direct calls to queue num_buffers field
+>   media: pci: tw68: Stop direct calls to queue num_buffers field
+>   media: i2c: video-i2c: Stop direct calls to queue num_buffers field
+>   media: coda: Stop direct calls to queue num_buffers field
+>   media: nxp: Stop direct calls to queue num_buffers field
+>   media: verisilicon: Stop direct calls to queue num_buffers field
+>   media: test-drivers: Stop direct calls to queue num_buffers field
+>   media: imx: Stop direct calls to queue num_buffers field
+>   media: meson: vdec: Stop direct calls to queue num_buffers field
+>   touchscreen: sur40: Stop direct calls to queue num_buffers field
+>   sample: v4l: Stop direct calls to queue num_buffers field
+>   media: cedrus: Stop direct calls to queue num_buffers field
+>   media: nuvoton: Stop direct calls to queue num_buffers field
+>   media: renesas: Stop direct calls to queue num_buffers field
+>   media: ti: Stop direct calls to queue num_buffers field
+>   media: usb: airspy: Stop direct calls to queue num_buffers field
+>   media: usb: cx231xx: Stop direct calls to queue num_buffers field
+>   media: usb: hackrf: Stop direct calls to queue num_buffers field
+>   media: usb: usbtv: Stop direct calls to queue num_buffers field
+>   media: videobuf2: Be more flexible on the number of queue stored
+>     buffers
+>   media: core: Report the maximum possible number of buffers for the
+>     queue
+>   media: test-drivers: vivid: Increase max supported buffers for capture
+>     queues
+>   media: test-drivers: vicodec: Increase max supported capture queue
+>     buffers
+>   media: verisilicon: Refactor postprocessor to store more buffers
+>   media: verisilicon: Store chroma and motion vectors offset
+>   media: verisilicon: g2: Use common helpers to compute chroma and mv
+>     offsets
+>   media: verisilicon: vp9: Allow to change resolution while streaming
+>   media: core: Rework how create_buf index returned value is computed
+>   media: core: Add bitmap manage bufs array entries
+>   media: core: Free range of buffers
+>   media: v4l2: Add DELETE_BUFS ioctl
+>   media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+>   media: test-drivers: Use helper for DELETE_BUFS ioctl
 > 
+>  .../userspace-api/media/v4l/user-func.rst     |   1 +
+>  .../media/v4l/vidioc-create-bufs.rst          |   8 +-
+>  .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
+>  .../media/v4l/vidioc-reqbufs.rst              |   2 +
+>  drivers/input/touchscreen/sur40.c             |   5 +-
+>  .../media/common/videobuf2/videobuf2-core.c   | 569 +++++++++++-------
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 125 ++--
+>  drivers/media/dvb-core/dvb_vb2.c              |  17 +-
+>  drivers/media/dvb-frontends/rtl2832_sdr.c     |   5 +-
+>  drivers/media/i2c/video-i2c.c                 |   5 +-
+>  drivers/media/pci/cx18/cx18-streams.c         |   5 +-
+>  drivers/media/pci/dt3155/dt3155.c             |   2 -
+>  .../pci/netup_unidvb/netup_unidvb_core.c      |   5 +-
+>  drivers/media/pci/tw68/tw68-video.c           |   4 +-
+>  drivers/media/pci/tw686x/tw686x-video.c       |   5 +-
+>  drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
+>  drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
+>  .../media/platform/chips-media/coda-common.c  |   2 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
+>  .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
+>  .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
+>  drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
+>  drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
+>  drivers/media/platform/renesas/rcar_drif.c    |   5 +-
+>  drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
+>  .../media/platform/ti/am437x/am437x-vpfe.c    |   5 +-
+>  drivers/media/platform/ti/cal/cal-video.c     |   5 +-
+>  .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
+>  .../media/platform/ti/davinci/vpif_display.c  |   5 +-
+>  drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
+>  drivers/media/platform/verisilicon/hantro.h   |   9 +-
+>  .../media/platform/verisilicon/hantro_drv.c   |   5 +-
+>  .../media/platform/verisilicon/hantro_g2.c    |  14 +
+>  .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
+>  .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
+>  .../media/platform/verisilicon/hantro_hw.h    |   7 +-
+>  .../platform/verisilicon/hantro_postproc.c    |  93 ++-
+>  .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
+>  .../media/test-drivers/vicodec/vicodec-core.c |   3 +
+>  drivers/media/test-drivers/vim2m.c            |   2 +
+>  .../media/test-drivers/vimc/vimc-capture.c    |   2 +
+>  drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
+>  drivers/media/test-drivers/visl/visl-video.c  |   2 +
+>  drivers/media/test-drivers/vivid/vivid-core.c |  21 +
+>  .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
+>  .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
+>  .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
+>  .../media/test-drivers/vivid/vivid-vbi-cap.c  |   3 -
+>  .../media/test-drivers/vivid/vivid-vbi-out.c  |   3 -
+>  .../media/test-drivers/vivid/vivid-vid-cap.c  |   3 -
+>  .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
+>  drivers/media/usb/airspy/airspy.c             |   5 +-
+>  drivers/media/usb/cx231xx/cx231xx-417.c       |   5 +-
+>  drivers/media/usb/cx231xx/cx231xx-video.c     |   5 +-
+>  drivers/media/usb/hackrf/hackrf.c             |   5 +-
+>  drivers/media/usb/usbtv/usbtv-video.c         |   5 +-
+>  drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
+>  drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
+>  .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
+>  drivers/staging/media/imx/imx-media-capture.c |   7 +-
+>  drivers/staging/media/meson/vdec/vdec.c       |  13 +-
+>  .../staging/media/sunxi/cedrus/cedrus_h264.c  |   9 +-
+>  .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
+>  include/media/v4l2-ioctl.h                    |   4 +
+>  include/media/v4l2-mem2mem.h                  |  12 +
+>  include/media/videobuf2-core.h                |  65 +-
+>  include/media/videobuf2-v4l2.h                |  13 +
+>  include/uapi/linux/videodev2.h                |  24 +-
+>  samples/v4l/v4l2-pci-skeleton.c               |   5 +-
+>  70 files changed, 990 insertions(+), 472 deletions(-)
+>  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
