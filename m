@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BBCC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8323C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nX1/8Epn4UD6cHjJV+tM6BdGRaE5l/pgCyeLlrjnO3w=; b=oi606wc96pmO+e
-	FI5/hJnkEMzT4CxfUaLQlFaUgng3FVM/tFbeXIb8MQvWOO8xz9lulUiQHDvIV2P/WLE9eThd5NyfK
-	zvYU1XcHUrvSRsnN+U3Q0hp111rh5Yv+wWOcUD05gbYYzNx12NTnlb55GvsI0eFSQ/XgLfNnqEZCu
-	VT0sS9ShVcVPa4OgzjVHWWd+a/b0NAiCpjeP0rQbCJRDHwvA9+unsxgCVQ50i/xrz63iO5TPHj8Zr
-	BqHTT7UWI8QoGbSda+iDI0mYpzv/3WnIhWu41unnvvyS4hfoGz1RWgCUYJyS5qVc7rB3ZamIkvMFl
-	w04ROFK021P8I42uRVpg==;
+	List-Owner; bh=I6f0Ioii/RneFillWLJOQZGrC8RgGZ2e33xR0sI+Fw4=; b=cEsADTDFaHcZ8P
+	GAFZ6ruz7ZMsA/eCRi5CxwS+nYSIcnyOVzgokJsCt7RFMp83kb7jIM/b+DWxFTAAZ/gxLoMeTKV4g
+	5/oe6uRwPhug8zQRiSUs/4Q+8zSpxvXr+6uciLFPwFwsdSap6pik/xOb003G6PZO12k2jlnVVvqnM
+	kdRh0brLtbHD4tHWz3OWlhiVEZ2NCAgNkWfhRpN+eLjLxq0sH7WDE1jzHXT2Cyk3a/1PQSP0mNeeZ
+	fmRc2C+HOn5IAwJAC2HP+YYZvLY4o7LL4GHs+JD+pl4zqP903rKV2tUzPLoSs3FLHmKFYaRu+ck6R
+	QT6jf+2NQ/PNeZ6bDcLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrjy-005faT-2z;
-	Tue, 31 Oct 2023 16:37:18 +0000
+	id 1qxrkA-005fh8-1f;
+	Tue, 31 Oct 2023 16:37:30 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrey-005cSD-1g;
-	Tue, 31 Oct 2023 16:32:10 +0000
+	id 1qxrf8-005caQ-1p;
+	Tue, 31 Oct 2023 16:32:20 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D37BE66073D2;
-	Tue, 31 Oct 2023 16:32:06 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F311666073B6;
+	Tue, 31 Oct 2023 16:32:16 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698769927;
-	bh=qQNeAhJBC9caR9+SHO5bRaHlsjRbtaBcnQ4MqubG9oU=;
+	s=mail; t=1698769937;
+	bh=Cxne9UW1Rdv3DqE7yxtW6lkbxfpON9tV+mkocfttCkg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KGDwsSyex4h//bF3xFiL7LsGvZnB2p5AQvTDn/EOKZq5TV+PEafSVzMB8vvMM5HMK
-	 I5Q09T4zvnj5Y6eMgh3Q1rDi7sDv6ManTDoQtW9hk1c9eh5gShBR+evkATdPYaHHsk
-	 aWFftRCqYabB+M+sino4qs3ojBc6b+x4jsScac/vXnVxOpq9SXBKC/0xQXe/6JN7xP
-	 1WBKYkKWyRcTRg3lDpNv92DbjcZsmQiAZVpUDVZ6F2xbaF3UPuNCKi1Wb7TyxAM2ms
-	 aLZ1vEHUZxRwOKX2fbqX7S+6kcvLIdfGyJq+3DdhQ0LfpB9JOaz9xT9+I2jLEMOvVK
-	 ktKuPL3T6vPUg==
+	b=ibBGN8Bae+pP6U4s2NEEt1GhmGXLPJHYZds8+XgsYyuh+B+/RNXZpHcKH35eWZ+mW
+	 9FPGubhRKV5J7DawvFR16fVUG2k5ZIGhRwg4liZIrpcDDb7cEJFpt6qF+m3kcrFsoB
+	 jsUbmu1HtPwZONE/xdGQKTzaJLs5M1/E3+VgdTfrbT+7Cy0emGwEJ499C8N5btXj7q
+	 nyd3ruy3L9NjkE4tKB7yqXCJbwnMKrjqeoHnfsDCvSIyDervf/Hts5r8sJ1g5IZGJ6
+	 yM9fqCihqm4Mw7k+V4VEy7RZdI71Ze8z1QcY4ingdkl7+Rp6JTtAWYa4Jp36xiZjwE
+	 TlvPtSrMa4qfw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -61,18 +61,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: [PATCH v14 33/56] touchscreen: sur40: Stop direct calls to queue num_buffers field
-Date: Tue, 31 Oct 2023 17:30:41 +0100
-Message-Id: <20231031163104.112469-34-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v14 34/56] sample: v4l: Stop direct calls to queue num_buffers field
+Date: Tue, 31 Oct 2023 17:30:42 +0100
+Message-Id: <20231031163104.112469-35-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_093208_717434_4EA9EC9B 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20231031_093218_741417_2E04FF62 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +93,33 @@ This allows us to change how the number of buffers is computed in the
 future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 ---
- drivers/input/touchscreen/sur40.c | 5 +++--
+ samples/v4l/v4l2-pci-skeleton.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/input/touchscreen/sur40.c b/drivers/input/touchscreen/sur40.c
-index 8ddb3f7d307a..e7d2a52169a0 100644
---- a/drivers/input/touchscreen/sur40.c
-+++ b/drivers/input/touchscreen/sur40.c
-@@ -847,9 +847,10 @@ static int sur40_queue_setup(struct vb2_queue *q,
+diff --git a/samples/v4l/v4l2-pci-skeleton.c b/samples/v4l/v4l2-pci-skeleton.c
+index a61f94db18d9..a65aa9d1e9da 100644
+--- a/samples/v4l/v4l2-pci-skeleton.c
++++ b/samples/v4l/v4l2-pci-skeleton.c
+@@ -155,6 +155,7 @@ static int queue_setup(struct vb2_queue *vq,
  		       unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct sur40_state *sur40 = vb2_get_drv_priv(q);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	struct skeleton *skel = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
--	if (q->num_buffers + *nbuffers < 3)
--		*nbuffers = 3 - q->num_buffers;
+ 	skel->field = skel->format.field;
+ 	if (skel->field == V4L2_FIELD_ALTERNATE) {
+@@ -167,8 +168,8 @@ static int queue_setup(struct vb2_queue *vq,
+ 		skel->field = V4L2_FIELD_TOP;
+ 	}
+ 
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
 +	if (q_num_bufs + *nbuffers < 3)
 +		*nbuffers = 3 - q_num_bufs;
  
  	if (*nplanes)
- 		return sizes[0] < sur40->pix_fmt.sizeimage ? -EINVAL : 0;
+ 		return sizes[0] < skel->format.sizeimage ? -EINVAL : 0;
 -- 
 2.39.2
 
