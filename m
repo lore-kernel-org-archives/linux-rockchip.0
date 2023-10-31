@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD0EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA070C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eNWWuUIdJ8jB50Q8d3CsB+I/Y708PWSe0chZSfITFV4=; b=y3O47Fkr6vATGq
-	GIvTF7Re6KKf9zPiwLyJD0hwL8UYbzYtkV/LCdystWhbs++fw7Qfge16Rvqw6s4SvSQ2bItgJySiY
-	GZISTgMV4A2+O2H4bjKdpKjuuHn2jcpc//fG7CLYd96Hq6FrMq8zZ7iYGrlh48h+BF9SJQuExZ/rY
-	FC/1yaMLySvZDKaf0ZQXFgX0J7WFDvWBImt0zdBFnetGKUGQyrLjBoh4gv786si4bcpe9sbJdk/Bo
-	6xNLy+a/AmapxXlNan8duv0LT2SyS15hDWmIxI8S2QfxlON7D5wgkcJ5n4GPfd4/70khJiXLoyvNS
-	iCwuW0TST98zmWGLaVbw==;
+	List-Owner; bh=TuQMkAEJWP8Eviz3rzATuJaSsUH21iuTstXcSJPyFuA=; b=XfOROuxdOkYUkl
+	rAli7AoIDrl0d/Cp2fXMKq+yy8sTb7e6Cxf8dE8G7nn78a/7b28eSUIY3hTcJhvGp5PN0XTw9ZYag
+	UZHIqeDzFeSUdLzIvXckUkxwURRna7Gbu1w5T84nhdRCcT8YsMhUE0rLzKH3c61T4hRPH0XlCbON+
+	d7GzdvlR3K15q617qRCZ9K6gjboPoeqKe0kC/EqPPW4D2Cv6bNxP9Yj1XGqDcq07Kw9jiTaw59dNU
+	h9OpC0BrUcod5+uXZyntIFMZLN/q9KWSWXSTXCK/SlzQbUjPwWyoxuh1mpsT68BbDy7IqyLSzaBZy
+	vUWrW9qxg23nvgleDUpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrkW-005ftE-39;
-	Tue, 31 Oct 2023 16:37:53 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qxrkh-005fyC-2E;
+	Tue, 31 Oct 2023 16:38:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrfB-005cd7-2d;
-	Tue, 31 Oct 2023 16:32:23 +0000
+	id 1qxrfD-005cex-2B;
+	Tue, 31 Oct 2023 16:32:26 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3AE7166073AE;
-	Tue, 31 Oct 2023 16:32:20 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E364466073B1;
+	Tue, 31 Oct 2023 16:32:21 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1698769940;
-	bh=fYtTvMYEVMZXzGkL+XEutCpKu5WEAYjMxFbMl5P4bZM=;
+	s=mail; t=1698769942;
+	bh=I24/t0ZqSyeKvdZtsSJpVc7QnzmONAbV5k9WYLKmpuU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lFCmLpRiYgMpZ/lUQDMwGOBd21H0FaPLf+SEBHkOYd55YsUF1dWoOt1enQIUb+0dr
-	 eNnRq490N88kZO9gehP9aKeGb6BkUdwPf9iqNH8CVy2HIsiwM4gC1mWuPwo5pBVB5M
-	 dwU93ns+54i7p6Onn8KHNEw6D4gtolbF7eB+TUVGccp90EQwgWvsw27XdRUSdQtSJ+
-	 CWcEY0z6fZxxSNQQdLpXjuzz6/bhtgczXNlRw/zra1LfnGhjlsyW1jU8DKzaJ9NJQT
-	 rggc12NPKQ+zMG3hRfeIU0P54j8kDjRUXS+pG9PuxqtRLtJfTqldNJFyRMlYqWVJJk
-	 qQkL3u9T3B11g==
+	b=AP4OBUFvnP886Z6HaoFYtgB0CHHMDFL/TLsU3QaEg9ADHUWMN526rTnUSD4ToZPOv
+	 Wx18D/gHbJMVRXMfnA2cRU/Qp8bwGVejYrflKSfkj8xoHN88vzq1OsTf0pRwmww81s
+	 3aqBTrBM6jVkcKL2Fmpi98AWuwgQnSzwu6UqZ/ra/A6GoUzM7cylEi+NwzkgtrUkV6
+	 hhqbTr3sKml6e0CeA2ZyfRpbgWAKP4QU7IWrOpUfiN2GjG0e6DuIP+lEGY0s6rlxpa
+	 vDZAhsh0zQKrKmBU/AD7QoTMn7oq5STRYM8/J2s6fQxbE9IcAJZvANgAWtKHCKi97b
+	 MxZYQcMh7fm9g==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,18 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Joseph Liu <kwliu@nuvoton.com>,
-	Marvin Lin <kflin@nuvoton.com>
-Subject: [PATCH v14 36/56] media: nuvoton: Stop direct calls to queue num_buffers field
-Date: Tue, 31 Oct 2023 17:30:44 +0100
-Message-Id: <20231031163104.112469-37-benjamin.gaignard@collabora.com>
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>
+Subject: [PATCH v14 37/56] media: renesas: Stop direct calls to queue num_buffers field
+Date: Tue, 31 Oct 2023 17:30:45 +0100
+Message-Id: <20231031163104.112469-38-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_093221_992709_646CA568 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20231031_093223_870336_7C71A1C2 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,25 +94,29 @@ This allows us to change how the number of buffers is computed in the
 future.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Joseph Liu <kwliu@nuvoton.com>
-CC: Marvin Lin <kflin@nuvoton.com>
+CC: Fabrizio Castro <fabrizio.castro.jz@renesas.com>
 ---
- drivers/media/platform/nuvoton/npcm-video.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/renesas/rcar_drif.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/nuvoton/npcm-video.c b/drivers/media/platform/nuvoton/npcm-video.c
-index b9e6782f59b4..f9b4e36a5175 100644
---- a/drivers/media/platform/nuvoton/npcm-video.c
-+++ b/drivers/media/platform/nuvoton/npcm-video.c
-@@ -393,7 +393,7 @@ static void npcm_video_free_diff_table(struct npcm_video *video)
- 	struct rect_list *tmp;
- 	unsigned int i;
+diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
+index 292c5bf9e50c..f21d05054341 100644
+--- a/drivers/media/platform/renesas/rcar_drif.c
++++ b/drivers/media/platform/renesas/rcar_drif.c
+@@ -424,10 +424,11 @@ static int rcar_drif_queue_setup(struct vb2_queue *vq,
+ 			unsigned int sizes[], struct device *alloc_devs[])
+ {
+ 	struct rcar_drif_sdr *sdr = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
--	for (i = 0; i < video->queue.num_buffers; i++) {
-+	for (i = 0; i < vb2_get_num_buffers(&video->queue); i++) {
- 		head = &video->list[i];
- 		list_for_each_safe(pos, nx, head) {
- 			tmp = list_entry(pos, struct rect_list, list);
+ 	/* Need at least 16 buffers */
+-	if (vq->num_buffers + *num_buffers < 16)
+-		*num_buffers = 16 - vq->num_buffers;
++	if (q_num_bufs + *num_buffers < 16)
++		*num_buffers = 16 - q_num_bufs;
+ 
+ 	*num_planes = 1;
+ 	sizes[0] = PAGE_ALIGN(sdr->fmt->buffersize);
 -- 
 2.39.2
 
