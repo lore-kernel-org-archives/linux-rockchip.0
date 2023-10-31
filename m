@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97A18C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CAC3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zjPMaBzazFLTnT1TIi/Wv3TUC3dXuCfdzKYC1YoQzFY=; b=lOPYKUYPeVZi0X
-	wFY6wcgSrTwQNwJ0yuVtcT1kZnliDnoNFoE9ieljIAYuwIKtjzGRWeONdpcVdNxWNozAeHqXy2buC
-	MdH5G5u5wUqWprl2yOkfqmzDRWYHM94hNswo43cD8IHCMcZt/5nvm0N8mFcDIx3qIQLssthu3jkAp
-	NbtK3v3kPjk9zwPuvTzbm1eWGCNIZnX3t/NBEfOwFhpHKuAPBy0s3PfNb5f8vRg2zLQhK4W1Q2gPG
-	OCwsZyHks/sQzBRumpFQWfN3usHJbltt74OZJMy08VunuLllO5d2DpER7Nqjfjs8YkrBO0nfDP11y
-	uqd0RXPvTaNrohoMNdIQ==;
+	List-Owner; bh=tAtZaU/ak7I6/hMQGaY2jg0TttGyI2RayLrZgNhauVA=; b=TMML2SY+LVlwW6
+	qAPezzGZVxC27qqZy/FwHQ+pncuHXLHmrUExiERmVojxMda/HtVInDvVKq8WDcGZI9bg4yilhME5X
+	hTZOuUcz1VkQvVFR52Nj307JfLnRrge4ur6RZBGmGvKQl/GmbyLe2Sn2CBz/qcdc+YhtUF7s28KJg
+	nplD6besWbk/7CuLSEyyW4QsphnMe8u8poFg6pklH2bNkir5kmg3HRrHuR7fuX1rH5s2X0ESVzxQO
+	JLAAVsxvclEIPlXKtqyP41gh6P8gTDg0HlcOnu2sTKGyPKjiGNBikvnMAsO9oAZa04F7PFjUh3Ge4
+	kLqbzZoSAh62HOFeyK9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxryK-005lkU-3A;
-	Tue, 31 Oct 2023 16:52:08 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qxryT-005lsj-15;
+	Tue, 31 Oct 2023 16:52:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxrvy-005k1w-1m;
-	Tue, 31 Oct 2023 16:49:44 +0000
+	id 1qxrw8-005kFK-1O;
+	Tue, 31 Oct 2023 16:49:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 2E49AB811C0;
-	Tue, 31 Oct 2023 16:49:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26C6AC433CD;
-	Tue, 31 Oct 2023 16:49:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C9E086104A;
+	Tue, 31 Oct 2023 16:49:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40D85C43397;
+	Tue, 31 Oct 2023 16:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698770980;
-	bh=XYcftkSLjd/7MG53JZE43R8v3MnE5w+0sf3V4jSByaM=;
+	s=k20201202; t=1698770991;
+	bh=Tsq7e3D9EFCrDXU+KVxek7WzLF5tJh+8D3LvlOttulE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KD+AXvsk0QshFyqroOK7RsyJyc9TMfP7L947Z7U/+5fuLwiesqIBoZuSRVFEX54kk
-	 nS9u5oXo71UAA707S09L1ZI0zF8KEVgx2NTDHKFcxVXmSkkCkWBGkqQo0e1OFgFXuV
-	 Mf8LmOy80MS75OzmsBZarlT2EAlK10qluVvMmfpD3iDZGcOmWT/gAkBKlMH/OJud+3
-	 FdwPKdc+2Ump6gg90u30aPstrsWMVdWvwi1eH1bdmxtmSzo3RfqE4Nn13oaRkuPqo4
-	 Uj70J1irLGjy9qSy65wfuf6ucHnUqvsIBb/r9ARsMj+lNoAwDTEp5asnWtkqP7NOPc
-	 cPjNPFEj0CT1Q==
+	b=IxXhL6eH2LAQzA/N/x/N6TE2lgCorCtf5Py61yhu+4VG/kJACZkmXrayoERA/wy8Q
+	 abxLk8GBruE4A7oJKt5m8Etjs2Z4wsQVMARrTvhWco+dh3YO/Xgl0KROWRk5d+xZzF
+	 PMpLvC6eAkgL3olvobTRqfZIHmzQHUb5DC5GrOhgltDhsE36f8wkCJkz+v7SJTx1Ol
+	 jCyXQSmRa3I2l2acgfilue6KeASbQ/a1EdhluIffllOkKW+kJ4tlgk1977i2JfxLws
+	 BUF6cuGqFrExjqIV08qsz4Bdn8yv//fMnhU/ML5BshHuXPLEzQPmH3ZwGavdbnljNK
+	 Nnz4aoohcL8SA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 31 Oct 2023 17:48:36 +0100
-Subject: [PATCH RFC v3 23/37] drm/rockchip: inno_hdmi: Remove useless
- colorimetry
+Date: Tue, 31 Oct 2023 17:48:40 +0100
+Subject: [PATCH RFC v3 27/37] drm/rockchip: inno_hdmi: Remove useless
+ mode_valid
 MIME-Version: 1.0
-Message-Id: <20231031-kms-hdmi-connector-state-v3-23-328b0fae43a7@kernel.org>
+Message-Id: <20231031-kms-hdmi-connector-state-v3-27-328b0fae43a7@kernel.org>
 References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
 In-Reply-To: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,17 +62,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1542; i=mripard@kernel.org;
- h=from:subject:message-id; bh=XYcftkSLjd/7MG53JZE43R8v3MnE5w+0sf3V4jSByaM=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmO+vc8bpzMtT3tY1NqcT1W8nLggjupdypWPu4U2pIzR
- aJLzCaxo5SFQYyLQVZMkSVG2HxJ3KlZrzvZ+ObBzGFlAhnCwMUpABNp4mFkODLDefddjyuntliF
- KvA/XbwzpOepmvG74DUR2aLfZwdYvWNkuL16eWy4WeeqRX+r/29oquUvdgrf1ew626sl+mZsbdI
- vFgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1311; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=Tsq7e3D9EFCrDXU+KVxek7WzLF5tJh+8D3LvlOttulE=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmO+venxxocvujLPqNFSmtmTd/Jg/qL7ETcJ+b1a7js2
+ xz8/gxnRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACYyyY7hn73Ay2gXgZZ+UfMz
+ 3pHX3Hqk/Be1JGedf62rtamtWchoOSPDlPr9NWbTZ1a/mrnNvrPts2uejZHmuWWfmthstyy/1Ob
+ CBgA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_094942_968342_03B784C3 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20231031_094952_541502_40DD47F0 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,55 +89,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The colorimetry field of hdmi_data_info is not used anywhere so we can
-get rid of it. This was the last field left in that structure so we can
-get rid of it too.
+The inno_hdmi mode_valid implementation always return MODE_OK which is
+what the core assumes when we don't have an implementation.
+
+Let's get rid of it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 15 ---------------
- 1 file changed, 15 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 0c6c550e0ce7..c342bc8b3a23 100644
+index e4fe02b79a98..59b2b676b7b8 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -27,10 +27,6 @@
+@@ -400,13 +400,6 @@ static int inno_hdmi_connector_get_modes(struct drm_connector *connector)
+ 	return ret;
+ }
  
- #include "inno_hdmi.h"
- 
--struct hdmi_data_info {
--	unsigned int colorimetry;
--};
+-static enum drm_mode_status
+-inno_hdmi_connector_mode_valid(struct drm_connector *connector,
+-			       struct drm_display_mode *mode)
+-{
+-	return MODE_OK;
+-}
 -
- struct inno_hdmi_i2c {
- 	struct i2c_adapter adap;
+ static int
+ inno_hdmi_probe_single_connector_modes(struct drm_connector *connector,
+ 				       uint32_t maxX, uint32_t maxY)
+@@ -431,7 +424,6 @@ static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
  
-@@ -56,8 +52,6 @@ struct inno_hdmi {
- 	struct i2c_adapter *ddc;
- 
- 	unsigned int tmds_rate;
--
--	struct hdmi_data_info	hdmi_data;
+ static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
+ 	.get_modes = inno_hdmi_connector_get_modes,
+-	.mode_valid = inno_hdmi_connector_mode_valid,
  };
  
- static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
-@@ -380,15 +374,6 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 			   struct drm_display_mode *mode)
- {
- 	struct drm_display_info *display = &hdmi->connector.display_info;
--	u8 vic = drm_match_cea_mode(mode);
--
--	if ((vic == 6) || (vic == 7) ||
--	    (vic == 21) || (vic == 22) ||
--	    (vic == 2) || (vic == 3) ||
--	    (vic == 17) || (vic == 18))
--		hdmi->hdmi_data.colorimetry = HDMI_COLORIMETRY_ITU_601;
--	else
--		hdmi->hdmi_data.colorimetry = HDMI_COLORIMETRY_ITU_709;
- 
- 	/* Mute video and audio output */
- 	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
+ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
 
 -- 
 2.41.0
