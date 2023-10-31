@@ -4,179 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32248C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 15:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C776C00142
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Oct 2023 16:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uA7s8ZFQcQUb4Ln4ehKywldfjHkRoGqMdy9QQhBUNE4=; b=vGz2tZikTIW0pN
-	McEIpBemOG1VATeNH56UVVKrUrqRUGfsgPmOHSfPQA2+K3r0awId6Rtme+rnBk/9snl02Ww0co4ZH
-	A10E1UjM+nmVhJkSIR245c0ga165f4LUOz/wJ7QgpSJ4z7BmzdGmuUHQd3goYfFKRd0miR8K2QQpb
-	v4i+E+TegiedG31uTXUoayHBZg/tjInCkn+V5tmCE11gJYBnX2DadHnLpcA6r2j0BWCARbddQkv/f
-	s3mAVoHI0qPwJTgV/0teOp6V6oZEW5k2hK/3OCKHf2mc/qaSaa6SYLqc8vQDSgd1MMinCFcpFknuQ
-	tgMZeuTqMGFFVl9LAvOA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ges4vwZOXRQ5Po7or6Lk7+WXguuvGvPNy03WHVkL2C0=; b=gBI9C/GZU9ilhi
+	bTllg+dld7peON/FWDtjxdaFNG0TtOC5xh6VXfOvfyNmr83+wSewSHA0KoBgdUFUjfEJ7M8Yl/Q8g
+	O0syuvveX/IuTbWiqQVeaZvbQA0AzRVJEfYkk47JjAI/xjUwN3sfVElY8HdRJ/Gv2GdMEXetOEn97
+	/gb0eAa8qIDayAJZM2YBw6CX+ISAWOM6tCt5hYc5OmxbVn9/H1/Qg+QdWz81yuU/g24RxN5N1dPMh
+	yLOSlVcMJjRrPfVeP5UYfoKZMknUmzcTIRhNcRHz00me84KehvFvhN0n8KZsvucEef5faKg0xCBcL
+	uWRqOkSrJX/hnm/Mf92Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxr1U-005YU9-2a;
-	Tue, 31 Oct 2023 15:51:20 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1qxreE-005bkI-07;
+	Tue, 31 Oct 2023 16:31:22 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qxr1R-005YSg-1A;
-	Tue, 31 Oct 2023 15:51:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-  t=1698767477; x=1730303477;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-id:content-transfer-encoding:
-   mime-version;
-  bh=DPJHABdy7AD1bzpkj3/T4x7I9/Th9YICGyWQEA8wcwY=;
-  b=MHjFZ9H0nMpGJqpFA4ZBX7A5gaJRJ5ZvRl488ok6cWaPomnVDi6XRYEP
-   9Tr+icQ/3PX7XuObcgctZ0sfcJZAp5R23xA1xfzEPr3wMZZMxpBVIXfDn
-   5ueTS3Hc4Ww0t8JKKHaI3Rog5hkvrhvjJ5VD6IUtAGym0Re/tUtW5hQA/
-   zglCz7x5cdk6fS6Yp9jZc4D872zXd+P9mqs2D3ZkxsUEr+vMLdrXGyHHN
-   Tb0IdpTVTqvDOSBg/slMm44Fo3A0L3cgl079lY/hsSVyx7t0gmCKnPXwe
-   atgk84HPkrpxdbVbHBBEVp2+nNaTV8ISb3SOKsMFGfsXYSCA1pMlkJLB8
-   Q==;
-X-CSE-ConnectionGUID: jcOnT0F0T2OjwvhCCLV+aw==
-X-CSE-MsgGUID: N6hHAwuvS72evYRnI+8H+w==
-X-IronPort-AV: E=Sophos;i="6.03,265,1694707200"; 
-   d="scan'208";a="1049929"
-Received: from mail-dm6nam12lp2169.outbound.protection.outlook.com (HELO NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.169])
-  by ob1.hgst.iphmx.com with ESMTP; 31 Oct 2023 23:51:05 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ggVPgywu++/IzMh5kuX+8CcWSSg76ayblEukJ0kP1x+fWgbmJEtb1JwAQDdmajmya5McujGAxtWrgw8Ev+yhawgMlyHo63I+swwHrP1PtVKKn+4Qd+W6S/0K7geC+nyiadZTKgXTrTCQ8edSFsgATWCCgrKXz2AfZTTy+uM6Q3DnfZNpUDWGj0hkeios2/cc32uv2wGJeGi9tLI6LxpghdBzaBMKYmW6MFFrqIgRMbofBTi74w44qLuUne3Xu3mQqgGvW4PhIQ/fXtD36u3tQsVxHOEMRjshD0jf4Cf9cIT6LfO64lNSKICDgmwYnMbw3gpXhUaaNWHwa0vAFo+fTA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OacOOX2Nsm1kCBr0yR8V81vWM41vHx0aE4S2n51KTQw=;
- b=OWUR0jCZseeSIwnTti5Q+GgQGeqjRg5itAtwxuIoG4Fz5Bg5EE5sBMBvegRoIXnDZBqGBBsWC3gm+X8gLuoxnrT+Ub2Tcu4uxn3sHR346Jx82G1Qjzwi8UYVSVi9GaYkBNbNJZw9UhCDs+ZLebpsgMZr/QDiPC9/cE1lpjBoNsjIWdZtUVTl8j8iRm9oE+QFgWAeQ7bVDUEXZyBir4kIw4lsh/5hoYnTnDBGLzPnXQNNEgwbkSukog53w5d3WplUWH3hAH1iRZe052b6omh/hWwfealMz5iD1U28XP3VLAwhNQFvvNTrfVxbB8QFJ5t0C20vCimVVyLbWSWpQH97ZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OacOOX2Nsm1kCBr0yR8V81vWM41vHx0aE4S2n51KTQw=;
- b=HzlNiMRwzTp6d0kDrFxH/+JLpuA15cuT21I+66K0khY6aegC83lPEkittSkCcXZAOgh9HiTzxuNhnvkMlM3MRFP9Q8W9W5gc9tjXQh6MM9iTFe5n/InaWH/G5DN0qAP9IQT7peiai0dceJhzl6XHksOpPBJtTugpzQ7Fj13+tVs=
-Received: from MN2PR04MB6272.namprd04.prod.outlook.com (2603:10b6:208:e0::27)
- by CH0PR04MB7905.namprd04.prod.outlook.com (2603:10b6:610:fa::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.24; Tue, 31 Oct
- 2023 15:51:03 +0000
-Received: from MN2PR04MB6272.namprd04.prod.outlook.com
- ([fe80::47df:9a7c:5674:2ca6]) by MN2PR04MB6272.namprd04.prod.outlook.com
- ([fe80::47df:9a7c:5674:2ca6%4]) with mapi id 15.20.6933.026; Tue, 31 Oct 2023
- 15:51:03 +0000
-From: Niklas Cassel <Niklas.Cassel@wdc.com>
-To: Serge Semin <fancer.lancer@gmail.com>
-CC: Niklas Cassel <nks@flawful.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?iso-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kw@linux.com>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Shawn
- Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, Damien Le
- Moal <dlemoal@kernel.org>, Sebastian Reichel
-	<sebastian.reichel@collabora.com>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v3 2/6] dt-bindings: PCI: dwc: rockchip: Add optional dma
- interrupts
-Thread-Topic: [PATCH v3 2/6] dt-bindings: PCI: dwc: rockchip: Add optional dma
- interrupts
-Thread-Index: AQHaCOXD5lFnH3cp6kCcuWNGHBAs/rBjHDmAgAD2EIA=
-Date: Tue, 31 Oct 2023 15:51:03 +0000
-Message-ID: <ZUEiY5i7DUWThhNX@x1-carbon>
-References: <20231027145422.40265-1-nks@flawful.org>
- <20231027145422.40265-3-nks@flawful.org>
- <jxsrtqplojsab4a64erm7ojjdm3kq5ohb5l7vf3lf7gzvx3q3d@ilyu4vg2xeze>
-In-Reply-To: <jxsrtqplojsab4a64erm7ojjdm3kq5ohb5l7vf3lf7gzvx3q3d@ilyu4vg2xeze>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wdc.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MN2PR04MB6272:EE_|CH0PR04MB7905:EE_
-x-ms-office365-filtering-correlation-id: 45360982-d290-444f-9d25-08dbda292fcc
-wdcipoutbound: EOP-TRUE
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FN1UKJHPun81f70+ZEiitt+HULyekcJyLj/2NcM0esepXITV517Z3moh2IV+QMvob1vhGYHTaWN/aHE1E0zs5I86uFUhCrpNk+G2q38W82WRxq/idgdi7mXM29NOsTth1JOIpQI/B8b/k01jWaBbKmhYn2MZK/nFM3m6KINxHuPLF0eWkb/+g63Z4sGcsBPv8MgQaF4aDDvS3wHwzksrmT31dllaMHH2OyDb7Gb8FT6Jx5hoJnfrKZKHzWOk8mZSUsPkb/PwfMtOMQFyd1K0CmlliitFCOEy16ud1BUNIOpt9lkhhSlBav8THbRiQlaVTvRbDBBmiH4SxafpoUACJP5TUTMn6ulAunHyo3ktqUbs9NLm204PMcasLiMhJ2EaOvGZjvmUY0LA7YyR/epNsUunDX3PIHPDyX6QgcakV8B9Jpx4mrL0dEtp6zX04keJ3T1Ex1wuJ9LtiCeBZQkScEx1UVQ23W/qQeM5yOYfrPadA/iUM/kCUJA4y4UaookMWHaRLCt4RL/4KmpGd/c06Os7TRBJMSDDtiMela4q+zodcSPTySLiiMdD5VabmxzQF/APCyuUFFHu0IYltDJtRQwJgJRciC8vE67tJiuuXoz7aPO+OrWDPOd3croeyEW8
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR04MB6272.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(7916004)(39860400002)(366004)(396003)(136003)(346002)(376002)(230922051799003)(451199024)(64100799003)(1800799009)(186009)(6512007)(9686003)(26005)(38070700009)(38100700002)(86362001)(122000001)(82960400001)(316002)(2906002)(6486002)(6506007)(4744005)(8936002)(5660300002)(71200400001)(478600001)(7416002)(33716001)(4326008)(6916009)(54906003)(41300700001)(8676002)(66556008)(66476007)(66446008)(76116006)(64756008)(91956017)(66946007);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?qNNkXPUF2zHP3vyd5oXPqA/wZ8fTxPzijEwkxTnCpkOof8XZJNkGKiN0KA?=
- =?iso-8859-2?Q?W1IEnt+2/ijzbOfErRQux64By6EFbPSC38GUmUuYRSnE7OwQWfqrC1Frcu?=
- =?iso-8859-2?Q?cWM2rO505p+GCU7fzWXsLLGZHQw8iQykeRtfAlgp6LSl/QkIxeorkfoPNq?=
- =?iso-8859-2?Q?GWjRe0vQCjizY8iohHhFkm5KiqfDWmyglAwaMmZB9sJGWWijZk8xxOhwee?=
- =?iso-8859-2?Q?WnEpxpq+ZM6RuiMcLbqvHqKCyYSCYuyrZ7+EyfTrwl+x7IcbktUiRmZpFD?=
- =?iso-8859-2?Q?+0UhMo6CCdzJAUEZogyu8UF1mn0vvSJ3hmAhVLl+VOwb9NzWPuc0ZtOZB4?=
- =?iso-8859-2?Q?L3hQyztylr9xUNSymZ93s03QTQO4sBLSlZDAh3ZZi0nwwSjaVqukkQ+H3K?=
- =?iso-8859-2?Q?YnKK5ofU2eXAwcyB3UDs9g2RX688QEoRZSQw6HkVLun1coTnkn49NYfyVj?=
- =?iso-8859-2?Q?Ljyd89ckClblX6LF9LsEIgmWimn/BjhnMsX1NktvnF2nQ72aA6EKepVz6q?=
- =?iso-8859-2?Q?1EtFTpHnkgRZQ52ZKZkby7D3UFU0gD79mF8AwEhI7mxce5Tp4kkrx2mVcD?=
- =?iso-8859-2?Q?YYSSo3BedFcm2dXWNTauIiBotHuIeKY1g3VOd20r6cxUd7Y2vdGKaMB3S+?=
- =?iso-8859-2?Q?OrGHcDlLhDx/V4j8c3etR6coAkNvnDE/IkhnC3aY/7ZyaXmRjRN72Oa7rj?=
- =?iso-8859-2?Q?OMTYAQbI3GkN163WJyv7NiyJrPAeCw/jMDfjYIMwNHN4cY6VWaCRdmPmiz?=
- =?iso-8859-2?Q?EmT2aXZfv9NsCUo/h7UjkSqE/iaqYz4ZEw2Ex9lJ4Jw+n/FOsRJ4knntQA?=
- =?iso-8859-2?Q?heQ5xAxJfBMll3MuHKBPs65sOXrZZX6HB6HdkMTWyLPEdlQg2yRONexYfs?=
- =?iso-8859-2?Q?uzllKLN9muoXjcksQ96B3i6dUBTjuw96igoMxP6u/lnBj8fmWt/DFmoejm?=
- =?iso-8859-2?Q?Ks4wRXXCo974F3p/3BX3GQ/xQCAd+vl/c4u2F5Q1uVUWIznlkxLx2hODqn?=
- =?iso-8859-2?Q?KjhrmoLFo5fyZevGP4/Ww5MgwYlXpwZB3MD84/a2YhnIjJCIyXO+qmKb5b?=
- =?iso-8859-2?Q?nqQ+vmbO2+6epm2MBi7EfbBi8sbytlIr1g41/Xuxarh/vzwOFASCXsnFHK?=
- =?iso-8859-2?Q?HMzpzZRsoHDWTfoG7W8l+KcXRlDU5ntFme7Pl6FxE3B5iGrc/3CuSw5+P0?=
- =?iso-8859-2?Q?IEui8pj5nTnkImBcJerObOLEfhUs1oyZiDqSRwTVn9jPbT2Cu4VIxxryga?=
- =?iso-8859-2?Q?4SidNfA0/myToH1cpi1h9oOzwBqJ1PD5LzY3L9MshG7+DJm93WIhIINNE6?=
- =?iso-8859-2?Q?+UH3J4htFPi+eXHKWQqWyefHzc6AVteSQ/mfEbU5tTGQj1vudMyC3rz+hi?=
- =?iso-8859-2?Q?aWC9QF13kJieUMXMjF5i35omFYQqJ3SCLfYovt3hcBP0dlJ9FXroKFj8fH?=
- =?iso-8859-2?Q?cOiVnBLnzhvQQZViUFglT67W3nhuc7aj1nGmB/afsMoDv5LR4OMTGuBIz7?=
- =?iso-8859-2?Q?LsbleiqAhFTIbHyTxUM3h/nfzWcsFA2iHLr+NxTxYzAjxzdo6/RODmL4zn?=
- =?iso-8859-2?Q?Z5a2YH8WP0fXOpNzih3npHRq1MqDjNcC0crWbYNqgXso1ZOcuTXGdugTdM?=
- =?iso-8859-2?Q?v4GHTrq2WZNXTHKivmDbFjApi6JNF/hnaeQhwKmEZnTByOJZ+S10Kbsw?=
- =?iso-8859-2?Q?=3D=3D?=
-Content-ID: <47DD8025DCB0D648B335631D566A264A@namprd04.prod.outlook.com>
+	id 1qxre9-005bgj-0k;
+	Tue, 31 Oct 2023 16:31:19 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c562:2ef4:80c0:92f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 473C66607326;
+	Tue, 31 Oct 2023 16:31:12 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1698769872;
+	bh=kP9uwiPo3RfpuFdvtUM95GSE9NX5OYIkBs61eXFwbS4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LZ+1Q2zP6PrbdGx2PFDNSvHIHj4ui6I11PX0RVtBwIIIvC5x/gz1c2Tk29d9UlDJX
+	 IaLSnvO67dEHUyjWpQFkDvawlmI4H7VZ8Zigge4yU9W14F0aBBUS/dQMM6E3l4PG7U
+	 XWXRAWlU8PFzkzIwY+r3+hnJC3v9kgnZPbQZKjjXqrxUvkEvXkjzwq9zgSI3/s+jKF
+	 tok6w97B8GTKDNgLyCg1+0GeyTAcqu9xlvrWlbft+CtPHuBdy778ceMYGl14oWBKnd
+	 bB1LRAcTP6qDNXt2BFpyHNi/xIWhU0pZ9Ax1t2NZrfiyf/COnM26ldTCBuWhvHJg+H
+	 SVT6/nTHzzzgA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v14 00/56] Add DELETE_BUF ioctl
+Date: Tue, 31 Oct 2023 17:30:08 +0100
+Message-Id: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?iso-8859-2?Q?7NukG0vvPRqzqPCFQLPHwdBEMkv/tTCMpL8Aa900n6ekXCgAo+Y+kObFER?=
- =?iso-8859-2?Q?GNInfvEzZ9BQHGhySwCtOSA5aPP+sD5UIcFKlLiK5hGIGBawOaew1kXGN7?=
- =?iso-8859-2?Q?me2g1+sRvuziFu/eGRihn805ZuUPq3MCpj1iULgd0qEtRl0Aq6G9Re9diD?=
- =?iso-8859-2?Q?8j07n+OLjb2mLAGGd1PO58x7ebQkQYnSgCpjBHJArvzYmqqpXUoBAkDopX?=
- =?iso-8859-2?Q?opaXlSfEFX7tvyfRWuIeyYmbZjWIt3fcYzNnqls3RU43FVBL8dHaKFALQQ?=
- =?iso-8859-2?Q?xEDKG+HznlBEmdzXbpa9Qig9eLSezRnaIIWxXph+WsjCqwuaTk+2SFYOxS?=
- =?iso-8859-2?Q?Jsno4gKAZYx4mIT7CNo54SzmWfHoH3R9hwX3by/+xeXnNCO24IloZvDwx0?=
- =?iso-8859-2?Q?jvN3IHKX+Lfu+NXZghEKjITgUBZ0Zn5HOOA70uYQPVaSlAT8mPm6erqLtF?=
- =?iso-8859-2?Q?rmuhxcOOAB+rf5FIk6PAMKLv8awnuCZp3lGsWLr3TqFMHOk951F7b9MPGf?=
- =?iso-8859-2?Q?jv8vejYOIEUMw5K84DHe7yZhU7+cfeqr+jaT+NdQ8OwPhgXDixTHElEdbP?=
- =?iso-8859-2?Q?GkyfVgAApZIibKp5PpdTGsWUlwtQeWwFINOPxq3Qif70WKwWUK8Z6PNKOp?=
- =?iso-8859-2?Q?N1ugJNT4OztKqS8TFdT5EjaGG6bfEqZF2B8TG3EopYhSLWtQKWK8OQJ4rO?=
- =?iso-8859-2?Q?6swelxyMsdhMI8/5DP1vT04rcV8xApI2WrdPZ9U4p4q27mMGZGlvaZhJEO?=
- =?iso-8859-2?Q?Z9OUJJbzkRQlOQdgHDMBz+zEyHJ0SmGvnI9jX0IafjnxarWTZQHvSiepEa?=
- =?iso-8859-2?Q?W9hItqdNjV7h71zltdcijEF1zSnVRZOJeCbNnPKNLbVetgeFodZQ+TGvpJ?=
- =?iso-8859-2?Q?AIOXdlgSNDhTmt3V3E4ur4D5sfpAm/IyQq4gvpnorUflz1I56A1vrL9C6J?=
- =?iso-8859-2?Q?OQpTR4qCKrAGsiqgs1ikh5wMShkP74xw6k40fPOq16mXOrdyHCv50cEt6n?=
- =?iso-8859-2?Q?rfiNLL95bfOEe0Fgv496yQHg6m+AYxzqfJPhvmU1fOBRkppUHCeMboSwmv?=
- =?iso-8859-2?Q?KxOLtr0OseZC9k3GgVeanRO5IPkgwDE/VMVhxH7Lax/oA3rJAGDRkVNx9q?=
- =?iso-8859-2?Q?hYCJ2sFytOoiFMyNT7YTLo1A66Ias=3D?=
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR04MB6272.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 45360982-d290-444f-9d25-08dbda292fcc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2023 15:51:03.3267
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 251/ho9k/9ecrXiyOiqP7P1dqE2co7Ve+repA95DOOXRft+EeBuIY4M8Y098zdAzreTv/RHHu2DZVmsaPtQdoA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR04MB7905
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231031_085117_463768_A551C74D 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20231031_093117_584430_A29A9B6B 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,30 +86,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 04:10:17AM +0300, Serge Semin wrote:
-> On Fri, Oct 27, 2023 at 05:51:14PM +0200, Niklas Cassel wrote:
-> > However, e.g. rk3568 only has one channel for reads and one for writes.
-> > (Now this SoC doesn't have dedicated IRQs for the eDMA, but let's pretend
-> > that it did.)
-> > 
-> > So for rk3568, it would then instead be:
-> > dma0: wr0
-> > dma1: rd0
-> > dma2: <unused>
-> > dma3: <unused>
-> 
-> rk3568 doesn't have IRQs supplied in a normal way, as separate
-> signals.  Instead they are combined in the 'sys' IRQ. So you should
-> define the IRQs constraint being device-specific by using for example
-> the "allOf: if-else" pattern.
+Unlike when resolution change on keyframes, dynamic resolution change
+on inter frames doesn't allow to do a stream off/on sequence because
+it is need to keep all previous references alive to decode inter frames.
+This constraint have two main problems:
+- more memory consumption.
+- more buffers in use.
+To solve these issue this series introduce DELETE_BUFS ioctl and remove
+the 32 buffers limit per queue.
 
-Thank you for your review comment.
+VP9 conformance tests using fluster give a score of 210/305.
+The 20 resize inter tests (vp90-2-21-resize_inter_* files) are ok
+but require to use postprocessor.
 
-I agree. Will fix this in next version.
+Kernel branch is available here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v14
+
+GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
+change is here:
+https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
+
+changes in version 14:
+- Add max_num_buffers fields in v4l2_create_buffers32 structure and copy
+  it from/to user data.
+- Fix patch 44 commit header.
+- Fix v4l_print_create_buffers() log.
+
+changes in version 13:
+- Fix typo and wording in commits messages.
+- Only apply V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS on createbufs ioctl
+- Fix queue setup test in test-drivers
+
+changes in version 12:
+- Change flag name to V4L2_BUF_CAP_SUPPORTS_SET_MAX_BUFS.
+- Rework some commits message.
+- Change vb2_queue_or_prepare_buf() prototype.
+- Rework patches where 'min_buffers_needed' was badly used.
+
+Benjamin Gaignard (56):
+  media: videobuf2: Rename offset parameter
+  media: videobuf2: Rework offset 'cookie' encoding pattern
+  media: videobuf2: Stop spamming kernel log with all queue counter
+  media: videobuf2: Use vb2_buffer instead of index
+  media: videobuf2: Access vb2_queue bufs array through helper functions
+  media: videobuf2: Remove duplicated index vs q->num_buffers check
+  media: videobuf2: Add helper to get queue number of buffers
+  media: videobuf2: Use vb2_get_num_buffers() helper
+  media: amphion: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: amphion: Stop direct calls to queue num_buffers field
+  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
+    to buffers array
+  media: mediatek: vdec: Remove useless loop
+  media: mediatek: vcodec: Stop direct calls to queue num_buffers field
+  media: sti: hva: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: visl: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: atomisp: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: atomisp: Stop direct calls to queue num_buffers field
+  media: dvb-core: Use vb2_get_buffer() instead of directly access to
+    buffers array
+  media: dvb-core: Do not initialize twice queue num_buffer field
+  media: dvb-frontends: rtl2832: Stop direct calls to queue num_buffers
+    field
+  media: pci: dt3155: Remove useless check
+  media: pci: tw686x: Stop direct calls to queue num_buffers field
+  media: pci: cx18: Stop direct calls to queue num_buffers field
+  media: pci: netup_unidvb: Stop direct calls to queue num_buffers field
+  media: pci: tw68: Stop direct calls to queue num_buffers field
+  media: i2c: video-i2c: Stop direct calls to queue num_buffers field
+  media: coda: Stop direct calls to queue num_buffers field
+  media: nxp: Stop direct calls to queue num_buffers field
+  media: verisilicon: Stop direct calls to queue num_buffers field
+  media: test-drivers: Stop direct calls to queue num_buffers field
+  media: imx: Stop direct calls to queue num_buffers field
+  media: meson: vdec: Stop direct calls to queue num_buffers field
+  touchscreen: sur40: Stop direct calls to queue num_buffers field
+  sample: v4l: Stop direct calls to queue num_buffers field
+  media: cedrus: Stop direct calls to queue num_buffers field
+  media: nuvoton: Stop direct calls to queue num_buffers field
+  media: renesas: Stop direct calls to queue num_buffers field
+  media: ti: Stop direct calls to queue num_buffers field
+  media: usb: airspy: Stop direct calls to queue num_buffers field
+  media: usb: cx231xx: Stop direct calls to queue num_buffers field
+  media: usb: hackrf: Stop direct calls to queue num_buffers field
+  media: usb: usbtv: Stop direct calls to queue num_buffers field
+  media: videobuf2: Be more flexible on the number of queue stored
+    buffers
+  media: core: Report the maximum possible number of buffers for the
+    queue
+  media: test-drivers: vivid: Increase max supported buffers for capture
+    queues
+  media: test-drivers: vicodec: Increase max supported capture queue
+    buffers
+  media: verisilicon: Refactor postprocessor to store more buffers
+  media: verisilicon: Store chroma and motion vectors offset
+  media: verisilicon: g2: Use common helpers to compute chroma and mv
+    offsets
+  media: verisilicon: vp9: Allow to change resolution while streaming
+  media: core: Rework how create_buf index returned value is computed
+  media: core: Add bitmap manage bufs array entries
+  media: core: Free range of buffers
+  media: v4l2: Add DELETE_BUFS ioctl
+  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+  media: test-drivers: Use helper for DELETE_BUFS ioctl
+
+ .../userspace-api/media/v4l/user-func.rst     |   1 +
+ .../media/v4l/vidioc-create-bufs.rst          |   8 +-
+ .../media/v4l/vidioc-delete-bufs.rst          |  80 +++
+ .../media/v4l/vidioc-reqbufs.rst              |   2 +
+ drivers/input/touchscreen/sur40.c             |   5 +-
+ .../media/common/videobuf2/videobuf2-core.c   | 569 +++++++++++-------
+ .../media/common/videobuf2/videobuf2-v4l2.c   | 125 ++--
+ drivers/media/dvb-core/dvb_vb2.c              |  17 +-
+ drivers/media/dvb-frontends/rtl2832_sdr.c     |   5 +-
+ drivers/media/i2c/video-i2c.c                 |   5 +-
+ drivers/media/pci/cx18/cx18-streams.c         |   5 +-
+ drivers/media/pci/dt3155/dt3155.c             |   2 -
+ .../pci/netup_unidvb/netup_unidvb_core.c      |   5 +-
+ drivers/media/pci/tw68/tw68-video.c           |   4 +-
+ drivers/media/pci/tw686x/tw686x-video.c       |   5 +-
+ drivers/media/platform/amphion/vpu_dbg.c      |  30 +-
+ drivers/media/platform/amphion/vpu_v4l2.c     |   4 +-
+ .../media/platform/chips-media/coda-common.c  |   2 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   7 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   9 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   2 +-
+ drivers/media/platform/nuvoton/npcm-video.c   |   2 +-
+ drivers/media/platform/nxp/imx7-media-csi.c   |   7 +-
+ drivers/media/platform/renesas/rcar_drif.c    |   5 +-
+ drivers/media/platform/st/sti/hva/hva-v4l2.c  |   9 +-
+ .../media/platform/ti/am437x/am437x-vpfe.c    |   5 +-
+ drivers/media/platform/ti/cal/cal-video.c     |   5 +-
+ .../media/platform/ti/davinci/vpif_capture.c  |   5 +-
+ .../media/platform/ti/davinci/vpif_display.c  |   5 +-
+ drivers/media/platform/ti/omap/omap_vout.c    |   5 +-
+ drivers/media/platform/verisilicon/hantro.h   |   9 +-
+ .../media/platform/verisilicon/hantro_drv.c   |   5 +-
+ .../media/platform/verisilicon/hantro_g2.c    |  14 +
+ .../platform/verisilicon/hantro_g2_hevc_dec.c |  18 +-
+ .../platform/verisilicon/hantro_g2_vp9_dec.c  |  28 +-
+ .../media/platform/verisilicon/hantro_hw.h    |   7 +-
+ .../platform/verisilicon/hantro_postproc.c    |  93 ++-
+ .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
+ .../media/test-drivers/vicodec/vicodec-core.c |   3 +
+ drivers/media/test-drivers/vim2m.c            |   2 +
+ .../media/test-drivers/vimc/vimc-capture.c    |   2 +
+ drivers/media/test-drivers/visl/visl-dec.c    |  32 +-
+ drivers/media/test-drivers/visl/visl-video.c  |   2 +
+ drivers/media/test-drivers/vivid/vivid-core.c |  21 +
+ .../media/test-drivers/vivid/vivid-meta-cap.c |   3 -
+ .../media/test-drivers/vivid/vivid-meta-out.c |   5 +-
+ .../test-drivers/vivid/vivid-touch-cap.c      |   5 +-
+ .../media/test-drivers/vivid/vivid-vbi-cap.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vbi-out.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vid-cap.c  |   3 -
+ .../media/test-drivers/vivid/vivid-vid-out.c  |   5 +-
+ drivers/media/usb/airspy/airspy.c             |   5 +-
+ drivers/media/usb/cx231xx/cx231xx-417.c       |   5 +-
+ drivers/media/usb/cx231xx/cx231xx-video.c     |   5 +-
+ drivers/media/usb/hackrf/hackrf.c             |   5 +-
+ drivers/media/usb/usbtv/usbtv-video.c         |   5 +-
+ drivers/media/v4l2-core/v4l2-compat-ioctl32.c |   9 +-
+ drivers/media/v4l2-core/v4l2-dev.c            |   1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  21 +-
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
+ .../staging/media/atomisp/pci/atomisp_ioctl.c |   4 +-
+ drivers/staging/media/imx/imx-media-capture.c |   7 +-
+ drivers/staging/media/meson/vdec/vdec.c       |  13 +-
+ .../staging/media/sunxi/cedrus/cedrus_h264.c  |   9 +-
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |   9 +-
+ include/media/v4l2-ioctl.h                    |   4 +
+ include/media/v4l2-mem2mem.h                  |  12 +
+ include/media/videobuf2-core.h                |  65 +-
+ include/media/videobuf2-v4l2.h                |  13 +
+ include/uapi/linux/videodev2.h                |  24 +-
+ samples/v4l/v4l2-pci-skeleton.c               |   5 +-
+ 71 files changed, 998 insertions(+), 473 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+
+-- 
+2.39.2
 
 
-Kind regards,
-Niklas
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
