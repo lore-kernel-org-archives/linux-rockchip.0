@@ -4,81 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36981C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Nov 2023 13:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01DEC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Nov 2023 09:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yBrtYbqvFnXXK6y3NvfCKnmugR8Xz9WF6BxtnsOo2XA=; b=limuwn36OCiPaW
-	J3jYVX5P4wo/S1MbCWRdb42Aq6tP5Vy6oDEG1Ae4u3mm7aHctyOHmVeCPaaxkJHDSoZPnSJEu1S8E
-	do6j4RM4Pn4sWc8K/15ddkfFgYub/JJEg/KAbO9nso6MOyaU/0BC0/WOv+79QWEXgWgpgBrbRdAGw
-	S4GNHYRsVhajLUHr/19jkcdu/u7FNAjBq+DG0ZenfnG/hv0PHylVo7GD4gZfWItsPa8/tAgvN3mG9
-	rIK+DqtSr6+VQip2g73uWPpy6CUXERXZnpNfRO7GUfLcjKhsTU0X0Qxa6UXO+yMXJ/FXyH7K1iuvM
-	XvO7na4uj2/JRPpEQ5rQ==;
+	List-Owner; bh=f5zeSqyGiVVD3sjhiVfn9KAeaeo5TFF7jdi1su7V+L0=; b=zNS/WmNT3t7hU0
+	EX2uG0fROkBOVHz7l4q2runjp0WM2df0pnuL4z+F85skElUZodqXSFDESWGCPFC81S5pFd2raXzlI
+	5dnNevCrBolRlfD5MWZR9xt82dnL6sbf2Ws1agkxR9kz6n2FL2CDa5fyHTNHV56wZ/HsCqEXAhtRG
+	BXNTEx06eL4bCe/GTqg0MEBTxbPSeAH4sDDH0mPmfhqdoTKDbf3l88HO8WHGjGjWCqU3pvu8NUt9H
+	/8F52GnUBoeov4nCvl8oQgjNfh1oyQpMwQRTN4WZDKx/BOaBiB0Hd13Z8dGdPGwUgS48fpG/cSGUc
+	GXqOI9yqhR0CxxyuAbVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyXy4-009Yc6-11;
-	Thu, 02 Nov 2023 13:42:40 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1qyq7P-00B1mE-31;
+	Fri, 03 Nov 2023 09:05:31 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyXy0-009Ya8-1V;
-	Thu, 02 Nov 2023 13:42:37 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-53e2dc8fa02so1559650a12.2;
-        Thu, 02 Nov 2023 06:42:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698932554; x=1699537354; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=mtT6nxgsYYS4sdsaY7t86FYZfBLOlduBaZpsVAIl6mA=;
-        b=GK4SHirQJ3UKo0/2yQZ5WWvfFpcpdnTL3xPIGtd1fOgmCf0YbtI7zY7bfMzc5DCw3v
-         Lu5efuRoy7xjpOGhgErGMBXdbLAnntoO08vDdHaQaMCz+dectIaLE0AzRFTA0PHNUw8r
-         7RdVZtudJaxYSowyim7Eqga9cLbAQXQk53gZ13LUYsLRwC3HlREAFfV0Nhj2y6A05iOi
-         EKuTqJFdm0uxMvnmwkAgmPoQV+G4tH+Nqbw9dq8gw79QXaqUNIe/zW/SSoezz7FJjnVS
-         8B3wNGi0f3onJzZZ5IZSl8a1lQRunICNzYfHsopHT68Hp5KKZPmeteKuXeb5NS8LPNpv
-         0m6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698932554; x=1699537354;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mtT6nxgsYYS4sdsaY7t86FYZfBLOlduBaZpsVAIl6mA=;
-        b=rl6qoghZ0VuIZBVIbLxGcn+1utsLe1Q1EUgAzvkxi8QjXCwieAahKlXjFEFURvy7Hj
-         AOCVW7OrGAqa2xTCAKNY+hurZfUXcecZgpxeNI0pETpkefO/yM1zgiBAJbScjAA1yE+e
-         Y0ZOk97B0tvARpW96MwJL9/Gew0pSCd9ahh0WGVXuKCt1t2CGHsj6IfIcc3yfYZX4CkP
-         TBs0hyCCDVrRUhzegbrPNaG3eYs4gQriXNbunrqal+t0/VGZPJvPknrnilolfk08A0PZ
-         dUOkZWUW7zb0Ms1nM997QwS2TDFyg/cpB1hQstfEV0PI1uzNMy3NNbKYVEfpEDuL4/Gy
-         XsqQ==
-X-Gm-Message-State: AOJu0YwZ3NCzUxODZZ+2gtMruPYBTygkDUhhBCC7n3nyiZ9V1LRanlZk
-	w6l2+k7xgStb6LV72toeQLk=
-X-Google-Smtp-Source: AGHT+IGhrHVKX8Mcwu1ULzEU38/CACnkgTDqYLqxetznwQ5sVClFv+wxqUtm2VH+CqBwnOqPQHgfDw==
-X-Received: by 2002:a05:6402:2029:b0:53d:a7d9:5149 with SMTP id ay9-20020a056402202900b0053da7d95149mr14483614edb.6.1698932554131;
-        Thu, 02 Nov 2023 06:42:34 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id v3-20020a50d583000000b0053e89721d4esm2378618edi.68.2023.11.02.06.42.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Nov 2023 06:42:33 -0700 (PDT)
-Message-ID: <813a0e30-a61d-7fc9-9ca6-11bf9c6fbe52@gmail.com>
-Date: Thu, 2 Nov 2023 14:42:32 +0100
+	id 1qyq7L-00B1kl-1a;
+	Fri, 03 Nov 2023 09:05:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 7B599B81E93;
+	Fri,  3 Nov 2023 09:05:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3347C433C7;
+	Fri,  3 Nov 2023 09:05:20 +0000 (UTC)
+Message-ID: <806f2ad3-c80b-41e5-9388-f1af7bace8e3@xs4all.nl>
+Date: Fri, 3 Nov 2023 10:05:18 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 4/4] drm/rockchip: rk3066_hdmi: Remove unused drm device
- pointer
-To: hjc@rock-chips.com, heiko@sntech.de
-Cc: airlied@gmail.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <cda574be-4f33-b66d-eb14-92c2b31d241e@gmail.com>
-Content-Language: en-US
-In-Reply-To: <cda574be-4f33-b66d-eb14-92c2b31d241e@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v3 12/37] drm/connector: hdmi: Create Infoframe
+ DebugFS entries
+Content-Language: en-US, nl
+To: Maxime Ripard <mripard@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>,
+ Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
+ <20231031-kms-hdmi-connector-state-v3-12-328b0fae43a7@kernel.org>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Autocrypt: addr=hverkuil@xs4all.nl; keydata=
+ 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
+In-Reply-To: <20231031-kms-hdmi-connector-state-v3-12-328b0fae43a7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231102_064236_505194_5A6ADCE0 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20231103_020527_817629_39D3678A 
+X-CRM114-Status: GOOD (  31.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,36 +116,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The drm_dev field in the rk3066_hdmi struct stores a pointer to the DRM
-device but is never used anywhere in the driver. Let's remove it.
+Hi Maxime,
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 --
- 1 file changed, 2 deletions(-)
+Thank you for posting v3, this time it runs fine on my RPi 4, thank you for
+fixing that.
 
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index f2b1b2faa096..c51520ec58d2 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -38,7 +38,6 @@ struct rk3066_hdmi_i2c {
+I'll start working on a conformity checker for this.
 
- struct rk3066_hdmi {
- 	struct device *dev;
--	struct drm_device *drm_dev;
- 	struct regmap *grf_regmap;
- 	int irq;
- 	struct clk *hclk;
-@@ -734,7 +733,6 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
- 		return -ENOMEM;
+I have a few remarks:
 
- 	hdmi->dev = dev;
--	hdmi->drm_dev = drm;
- 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(hdmi->regs))
- 		return PTR_ERR(hdmi->regs);
---
-2.39.2
+On 31/10/2023 17:48, Maxime Ripard wrote:
+> There has been some discussions recently about the infoframes sent by
+> drivers and if they were properly generated.
+> 
+> In parallel, there's been some interest in creating an infoframe-decode
+> tool similar to edid-decode.
+> 
+> Both would be much easier if we were to expose the infoframes programmed
+> in the hardware. It won't be perfect since we have no guarantee that
+> it's actually what goes through the wire, but it's the best we can do.
+> 
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/drm_debugfs.c | 110 ++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 110 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
+> index 2de43ff3ce0a..3c65b1d3f926 100644
+> --- a/drivers/gpu/drm/drm_debugfs.c
+> +++ b/drivers/gpu/drm/drm_debugfs.c
+> @@ -538,6 +538,114 @@ static const struct file_operations drm_connector_fops = {
+>  	.write = connector_write
+>  };
+>  
+> +struct debugfs_wrapper {
+> +	struct drm_connector *connector;
+> +	struct drm_connector_hdmi_infoframe *frame;
+> +};
+> +
+> +#define HDMI_MAX_INFOFRAME_SIZE		29
+> +
+> +static ssize_t
+> +infoframe_read(struct file *filp, char __user *ubuf, size_t count, loff_t *ppos)
+> +{
+> +	const struct debugfs_wrapper *wrapper = filp->private_data;
+> +	struct drm_connector *connector = wrapper->connector;
+> +	struct drm_connector_hdmi_infoframe *infoframe = wrapper->frame;
+> +	union hdmi_infoframe *frame = &infoframe->data;
+> +	u8 buf[HDMI_MAX_INFOFRAME_SIZE];
+> +	ssize_t len = 0;
+> +
+> +	mutex_lock(&connector->hdmi.infoframes.lock);
+> +
+> +	if (!infoframe->set)
+> +		goto out;
+> +
+> +	len = hdmi_infoframe_pack(frame, buf, sizeof(buf));
+> +	if (len < 0)
+> +		goto out;
+> +
+> +	len = simple_read_from_buffer(ubuf, count, ppos, buf, len);
+> +
+> +out:
+> +	mutex_unlock(&connector->hdmi.infoframes.lock);
+> +	return len;
+> +}
+> +
+> +static const struct file_operations infoframe_fops = {
+> +	.owner   = THIS_MODULE,
+> +	.open    = simple_open,
+> +	.read    = infoframe_read,
+> +};
+> +
+> +static int create_hdmi_infoframe_file(struct drm_connector *connector,
+> +				      struct dentry *parent,
+> +				      const char *filename,
+> +				      struct drm_connector_hdmi_infoframe *frame)
+> +{
+> +	struct drm_device *dev = connector->dev;
+> +	struct debugfs_wrapper *wrapper;
+> +	struct dentry *file;
+> +
+> +	wrapper = drmm_kzalloc(dev, sizeof(*wrapper), GFP_KERNEL);
+> +	if (!wrapper)
+> +		return -ENOMEM;
+> +
+> +	wrapper->connector = connector;
+> +	wrapper->frame = frame;
+> +
+> +	file = debugfs_create_file(filename, 0400, parent, wrapper, &infoframe_fops);
+> +	if (IS_ERR(file))
+> +		return PTR_ERR(file);
+> +
+> +	return 0;
+> +}
+> +
+> +#define CREATE_HDMI_INFOFRAME_FILE(c, p, i)		\
+> +	create_hdmi_infoframe_file(c, p, #i, &(c)->hdmi.infoframes.i)
+> +
+> +static int create_hdmi_infoframe_files(struct drm_connector *connector,
+> +				       struct dentry *parent)
+> +{
+> +	int ret;
+> +
+> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, audio);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, avi);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, drm);
+
+Hmm, I had to look into the code to figure out that 'drm' stands for
+Dynamic Range and Mastering InfoFrame. While entirely correct, it is
+also very confusing in the context of the 'drm' subsystem.
+
+I am not quite certain what the best approach is here.
+
+Internally in the drm code it is talking about 'hdr' or 'hdr metadata',
+but that's a bit confusing as well since there is also an HDR Dynamic
+Metadata Extended InfoFrame defined in CTA-861, even though support for
+that is not (yet) implemented in drm.
+
+At minimum there should be a comment in the code explaining what drm
+stands for in this context.
+
+One option to consider is renaming this file to hdr_drm, thus indicating
+that this is HDR related.
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, spd);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, vendor);
+
+There may be multiple vendor specific InfoFrames in the future, so how
+would that be handled? Perhaps add a comment here that currently only one
+vendor specific InfoFrame is supported, but suggest how to handle multiple
+VSIFs in the future.
+
+What would actually be nice (although probably not that easy to fix) is if
+the name of the file would be "vendor-XXXXXX' where 'XXXXXX' is the IEEE OUI
+number.
+
+Regards,
+
+	Hans
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static void hdmi_debugfs_add(struct drm_connector *connector)
+> +{
+> +	struct dentry *dir;
+> +
+> +	if (!(connector->connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+> +	      connector->connector_type == DRM_MODE_CONNECTOR_HDMIB))
+> +		return;
+> +
+> +	dir = debugfs_create_dir("infoframes", connector->debugfs_entry);
+> +	if (IS_ERR(dir))
+> +		return;
+> +
+> +	create_hdmi_infoframe_files(connector, dir);
+> +}
+> +
+>  void drm_debugfs_connector_add(struct drm_connector *connector)
+>  {
+>  	struct drm_minor *minor = connector->dev->primary;
+> @@ -565,6 +673,8 @@ void drm_debugfs_connector_add(struct drm_connector *connector)
+>  	debugfs_create_file("output_bpc", 0444, root, connector,
+>  			    &output_bpc_fops);
+>  
+> +	hdmi_debugfs_add(connector);
+> +
+>  	if (connector->funcs->debugfs_init)
+>  		connector->funcs->debugfs_init(connector, root);
+>  }
+> 
 
 
 _______________________________________________
