@@ -4,102 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01DEC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Nov 2023 09:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3132AC4167D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Nov 2023 16:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f5zeSqyGiVVD3sjhiVfn9KAeaeo5TFF7jdi1su7V+L0=; b=zNS/WmNT3t7hU0
-	EX2uG0fROkBOVHz7l4q2runjp0WM2df0pnuL4z+F85skElUZodqXSFDESWGCPFC81S5pFd2raXzlI
-	5dnNevCrBolRlfD5MWZR9xt82dnL6sbf2Ws1agkxR9kz6n2FL2CDa5fyHTNHV56wZ/HsCqEXAhtRG
-	BXNTEx06eL4bCe/GTqg0MEBTxbPSeAH4sDDH0mPmfhqdoTKDbf3l88HO8WHGjGjWCqU3pvu8NUt9H
-	/8F52GnUBoeov4nCvl8oQgjNfh1oyQpMwQRTN4WZDKx/BOaBiB0Hd13Z8dGdPGwUgS48fpG/cSGUc
-	GXqOI9yqhR0CxxyuAbVA==;
+	List-Owner; bh=4kDv4g7lLbfk6Jc/xyHU/j505BbEV7rkhA4K5xOHMBE=; b=oq6BnJnvI3oJ//
+	NcGeLr3GTWtiu0KoKMSB6jFSiWrvZk4YfscBByC7fDe5o5dPgC3ui+2/iGqRoqfI3DkeMNuwJVEjY
+	hoCfnkgb+nwTQoLeBrc5S+rlGSt6KQf51nrlEjFrlu+A9H0woI2uXZfquUvQm5XvPDpC4caET2SUW
+	gDqjNJtOXAlLmG3l9s64I+4uC9IN/PL7JsOC16MXgRUSxPJaMMEUfyI1DTnvLRgkGZt00RxTNlV8I
+	2RGz3NRokDGqjLtJOAz/LY2HpBUmDhuPBJpVNHp/M1+hSyYmTXcWY49io2odF+wAN2nHUQhmK1qZL
+	fGbBm/mZajabO/RADyZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyq7P-00B1mE-31;
-	Fri, 03 Nov 2023 09:05:31 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qzgPo-00FJ9Q-2Z;
+	Sun, 05 Nov 2023 16:56:00 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qyq7L-00B1kl-1a;
-	Fri, 03 Nov 2023 09:05:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 7B599B81E93;
-	Fri,  3 Nov 2023 09:05:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3347C433C7;
-	Fri,  3 Nov 2023 09:05:20 +0000 (UTC)
-Message-ID: <806f2ad3-c80b-41e5-9388-f1af7bace8e3@xs4all.nl>
-Date: Fri, 3 Nov 2023 10:05:18 +0100
+	id 1qzgPl-00FJ7j-2o
+	for linux-rockchip@lists.infradead.org;
+	Sun, 05 Nov 2023 16:55:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1699203340; bh=+OFG4YG5FDD0E7pqkDYNn/y86VqErWzPoJTEkQmn5bo=;
+ b=StlZA6dajX8qKmnknsBdHP3Zb/+n/5VM9fvjRarx8NdJAOE9c0/LroE7FCRJMTpAd2QeYPqEk
+ GlBJF8Tkoce8+on3TMDoVVVcDVoe64X9F3I8sky3f3QMVM0hRMfESCloGAfBmgJMQOlFbiYJoF8
+ jyas+Ej+T3Hdf7GpbMvKscpxZWPdkAR/L0TcjRZ1ecrJCV3tjQb3B0AgNn16RUNk8xal98zksRH
+ 8AZIkScpnmidofdFs4XzySMSGmQZ8Xm9d2rtbdBZJBhV0izwzGuXM74kGbD1Sfn/PSJvoc1NwTP
+ YspiFhJeP4kTyJBikzZ2FU7MJpZRGMnjGYIWOf8kdEQA==
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>
+Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, Christopher Obbard
+ <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v4 03/11] media: rkvdec: h264: Use bytesperline and buffer height as virstride
+Date: Sun,  5 Nov 2023 16:55:02 +0000
+Message-ID: <20231105165521.3592037-4-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231105165521.3592037-1-jonas@kwiboo.se>
+References: <20231105165521.3592037-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 12/37] drm/connector: hdmi: Create Infoframe
- DebugFS entries
-Content-Language: en-US, nl
-To: Maxime Ripard <mripard@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>,
- Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
- <20231031-kms-hdmi-connector-state-v3-12-328b0fae43a7@kernel.org>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Autocrypt: addr=hverkuil@xs4all.nl; keydata=
- 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
-In-Reply-To: <20231031-kms-hdmi-connector-state-v3-12-328b0fae43a7@kernel.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 6547c90b42ad2f8d15246901
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231103_020527_817629_39D3678A 
-X-CRM114-Status: GOOD (  31.83  )
+X-CRM114-CacheID: sfid-20231105_085558_370846_3E7B4784 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,192 +81,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Use bytesperline and buffer height to calculate the strides configured.
 
-Thank you for posting v3, this time it runs fine on my RPi 4, thank you for
-fixing that.
+This does not really change anything other than ensuring the
+bytesperline that is signaled to userspace matches what is configured
+in HW.
 
-I'll start working on a conformity checker for this.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v4:
+- No change
 
-I have a few remarks:
+v3:
+- Remove unnecessary yuv_virstride +=
 
-On 31/10/2023 17:48, Maxime Ripard wrote:
-> There has been some discussions recently about the infoframes sent by
-> drivers and if they were properly generated.
-> 
-> In parallel, there's been some interest in creating an infoframe-decode
-> tool similar to edid-decode.
-> 
-> Both would be much easier if we were to expose the infoframes programmed
-> in the hardware. It won't be perfect since we have no guarantee that
-> it's actually what goes through the wire, but it's the best we can do.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/drm_debugfs.c | 110 ++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 110 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
-> index 2de43ff3ce0a..3c65b1d3f926 100644
-> --- a/drivers/gpu/drm/drm_debugfs.c
-> +++ b/drivers/gpu/drm/drm_debugfs.c
-> @@ -538,6 +538,114 @@ static const struct file_operations drm_connector_fops = {
->  	.write = connector_write
->  };
->  
-> +struct debugfs_wrapper {
-> +	struct drm_connector *connector;
-> +	struct drm_connector_hdmi_infoframe *frame;
-> +};
-> +
-> +#define HDMI_MAX_INFOFRAME_SIZE		29
-> +
-> +static ssize_t
-> +infoframe_read(struct file *filp, char __user *ubuf, size_t count, loff_t *ppos)
-> +{
-> +	const struct debugfs_wrapper *wrapper = filp->private_data;
-> +	struct drm_connector *connector = wrapper->connector;
-> +	struct drm_connector_hdmi_infoframe *infoframe = wrapper->frame;
-> +	union hdmi_infoframe *frame = &infoframe->data;
-> +	u8 buf[HDMI_MAX_INFOFRAME_SIZE];
-> +	ssize_t len = 0;
-> +
-> +	mutex_lock(&connector->hdmi.infoframes.lock);
-> +
-> +	if (!infoframe->set)
-> +		goto out;
-> +
-> +	len = hdmi_infoframe_pack(frame, buf, sizeof(buf));
-> +	if (len < 0)
-> +		goto out;
-> +
-> +	len = simple_read_from_buffer(ubuf, count, ppos, buf, len);
-> +
-> +out:
-> +	mutex_unlock(&connector->hdmi.infoframes.lock);
-> +	return len;
-> +}
-> +
-> +static const struct file_operations infoframe_fops = {
-> +	.owner   = THIS_MODULE,
-> +	.open    = simple_open,
-> +	.read    = infoframe_read,
-> +};
-> +
-> +static int create_hdmi_infoframe_file(struct drm_connector *connector,
-> +				      struct dentry *parent,
-> +				      const char *filename,
-> +				      struct drm_connector_hdmi_infoframe *frame)
-> +{
-> +	struct drm_device *dev = connector->dev;
-> +	struct debugfs_wrapper *wrapper;
-> +	struct dentry *file;
-> +
-> +	wrapper = drmm_kzalloc(dev, sizeof(*wrapper), GFP_KERNEL);
-> +	if (!wrapper)
-> +		return -ENOMEM;
-> +
-> +	wrapper->connector = connector;
-> +	wrapper->frame = frame;
-> +
-> +	file = debugfs_create_file(filename, 0400, parent, wrapper, &infoframe_fops);
-> +	if (IS_ERR(file))
-> +		return PTR_ERR(file);
-> +
-> +	return 0;
-> +}
-> +
-> +#define CREATE_HDMI_INFOFRAME_FILE(c, p, i)		\
-> +	create_hdmi_infoframe_file(c, p, #i, &(c)->hdmi.infoframes.i)
-> +
-> +static int create_hdmi_infoframe_files(struct drm_connector *connector,
-> +				       struct dentry *parent)
-> +{
-> +	int ret;
-> +
-> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, audio);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, avi);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, drm);
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Hmm, I had to look into the code to figure out that 'drm' stands for
-Dynamic Range and Mastering InfoFrame. While entirely correct, it is
-also very confusing in the context of the 'drm' subsystem.
-
-I am not quite certain what the best approach is here.
-
-Internally in the drm code it is talking about 'hdr' or 'hdr metadata',
-but that's a bit confusing as well since there is also an HDR Dynamic
-Metadata Extended InfoFrame defined in CTA-861, even though support for
-that is not (yet) implemented in drm.
-
-At minimum there should be a comment in the code explaining what drm
-stands for in this context.
-
-One option to consider is renaming this file to hdr_drm, thus indicating
-that this is HDR related.
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, spd);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, vendor);
-
-There may be multiple vendor specific InfoFrames in the future, so how
-would that be handled? Perhaps add a comment here that currently only one
-vendor specific InfoFrame is supported, but suggest how to handle multiple
-VSIFs in the future.
-
-What would actually be nice (although probably not that easy to fix) is if
-the name of the file would be "vendor-XXXXXX' where 'XXXXXX' is the IEEE OUI
-number.
-
-Regards,
-
-	Hans
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static void hdmi_debugfs_add(struct drm_connector *connector)
-> +{
-> +	struct dentry *dir;
-> +
-> +	if (!(connector->connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-> +	      connector->connector_type == DRM_MODE_CONNECTOR_HDMIB))
-> +		return;
-> +
-> +	dir = debugfs_create_dir("infoframes", connector->debugfs_entry);
-> +	if (IS_ERR(dir))
-> +		return;
-> +
-> +	create_hdmi_infoframe_files(connector, dir);
-> +}
-> +
->  void drm_debugfs_connector_add(struct drm_connector *connector)
->  {
->  	struct drm_minor *minor = connector->dev->primary;
-> @@ -565,6 +673,8 @@ void drm_debugfs_connector_add(struct drm_connector *connector)
->  	debugfs_create_file("output_bpc", 0444, root, connector,
->  			    &output_bpc_fops);
->  
-> +	hdmi_debugfs_add(connector);
-> +
->  	if (connector->funcs->debugfs_init)
->  		connector->funcs->debugfs_init(connector, root);
->  }
-> 
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 4fc167b42cf0..7a1e76d423df 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 	dma_addr_t rlc_addr;
+ 	dma_addr_t refer_addr;
+ 	u32 rlc_len;
+-	u32 hor_virstride = 0;
+-	u32 ver_virstride = 0;
+-	u32 y_virstride = 0;
++	u32 hor_virstride;
++	u32 ver_virstride;
++	u32 y_virstride;
+ 	u32 yuv_virstride = 0;
+ 	u32 offset;
+ 	dma_addr_t dst_addr;
+@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
+ 
+ 	f = &ctx->decoded_fmt;
+ 	dst_fmt = &f->fmt.pix_mp;
+-	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
+-	ver_virstride = round_up(dst_fmt->height, 16);
++	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
++	ver_virstride = dst_fmt->height;
+ 	y_virstride = hor_virstride * ver_virstride;
+ 
+ 	if (sps->chroma_format_idc == 0)
+ 		yuv_virstride = y_virstride;
+ 	else if (sps->chroma_format_idc == 1)
+-		yuv_virstride += y_virstride + y_virstride / 2;
++		yuv_virstride = y_virstride + y_virstride / 2;
+ 	else if (sps->chroma_format_idc == 2)
+-		yuv_virstride += 2 * y_virstride;
++		yuv_virstride = 2 * y_virstride;
+ 
+ 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
+ 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
+-- 
+2.42.0
 
 
 _______________________________________________
