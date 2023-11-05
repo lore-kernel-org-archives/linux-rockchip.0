@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4B2C4167D
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Nov 2023 16:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C83B4C4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Nov 2023 16:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RLVBZktjx5WSVDDa+yrXinr56AH+svjfJ23VG2TDW4w=; b=E7+2Ce/oqFPx3V
-	nQxngUEK6slG3AXB1B9osbdUeUPsR028xQIXDcq83H4l+xWcyESm3+OELLPheuJ8wPR9fnZ0TV3xV
-	CxItUNofBEjEDoyJ5WEO8sWxObhrHzhtpidaiHpjcv8Ev9Dy+5tFoAQtVUi/kmvKWyB7A+HFIiRZr
-	oR8rL26VaRA5uuf8hbe5JJ5Y0j39hn1aMFaHRX8OPse5ACwDeh47jFkqOfTSPhkx+PLwx64R3wCQ5
-	8FA5p6TJB0a/jw/al2BCviqzthFKnZzJwSDsNnIvuoK2dH3xiFkMq1phkmMhm0WTpI1tn6zqwcNQ+
-	+okhlsoizJLJ72NF+QrA==;
+	List-Owner; bh=zg7/ix6lO5ppSM51TPMEpeEaFGrpgbpCVVyu4B7QKMw=; b=MlSHf56OPHJAZN
+	L0CeaAnSdzAMM9Xk588K80XLCfrRdh9czd5XhsTZ1M+SezkffDV0bqbB1iAX8BJ/34J3FxXj16d9d
+	mnVRMIWjJAHSDgqxnCuSHWinPoPMkDyrPS5uQZ9Q7bVwPp/KiDzZ0e/SSpbwQLOHwKCv80AkTz7nf
+	4nzI2+PJMDAFY9AgGBcg5FkaeFdky+C+j9kC6tH0qqZfYR6UcvL7nzXVMuVR7lOQFMFrxhzLPANNS
+	5CTBMncV8YKOvXp1S+nkqH2NsQ9fe5+IrWNSD/yMmPYsmroJyFIE+aZgIICHozRyYXNlT7yWI8qmI
+	IIEeow76Gu014V6+9fVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzgQ4-00FJHQ-1v;
-	Sun, 05 Nov 2023 16:56:16 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1qzgQA-00FJKl-0N;
+	Sun, 05 Nov 2023 16:56:22 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzgQ1-00FJFD-2w
+	id 1qzgQ6-00FJHh-1v
 	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Nov 2023 16:56:15 +0000
+	Sun, 05 Nov 2023 16:56:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1699203367; bh=lpnBJaNiSOXF2fbVkARa+33opskrlpRAhdbPZ7vR6lI=;
- b=VM49k8elFZ6RRgB1nf7LwO33PFuV3oU0yPReic/VjHWVuJIWjF1BAAqQeJ/kSNr4WviBYt7wc
- yoAzmSrMaXchniGD9+P+AClnI10zGhD6Ms5PVd5D3+60btZDafhrPK3z58o1orIkwbQorItpCN7
- C9SwGc78iqWSqt00jt/1LXXtxIPZmJidD6Hl8dszXb/mSxHFCy02zpZeMCQSZ1t0WPI2jokH9c8
- SI4a8ajRdYOEWjyKSv9R54v8NGjE99w9sBKIJDgTSNbokoEgRzO2xFaBXHTHmM3jEMIvJDFRn04
- LvpAtA46NwI+N4+6y/C2XtBij8WOvmhPWH3EmiP1bMHQ==
+ t=1699203359; bh=xMWdTI2tUEFKp2F1sr+htYd15e9XusEq/UI6wwQ23Zo=;
+ b=EL7gpHkCC4P9a5cpI7af2Lm6jpCwtu4fkRmxIaB7qlqNlonJVl4+7HoNHp0k1ah553tj2JyXT
+ NrLK1mWOBQAAaMnIuk+1pSgana5VteVJBONrtSw78rYDeuu+iOQT1lJ30SDil4wsRr1/2YQTzVG
+ fFJ9OSG2rvzX/EX9w/v9OvXNv9qOlOPAcvpcGa79KTFf9PA9bTfO82rROiAzztuFuNYVkQkNImp
+ UovAl96ShzF8YcmnuEsG/uErGqLKhE4lPbPKpGHhqZc41Os2ncziUIrxlw/uRJcrGGa3p9vjAdw
+ 9/JfXGTLvXa497TbdemN9UV005baj5HQuq26tqDcoLBQ==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Greg
@@ -47,9 +47,9 @@ Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v4 10/11] media: rkvdec: Add get_image_fmt ops
-Date: Sun,  5 Nov 2023 16:55:09 +0000
-Message-ID: <20231105165521.3592037-11-jonas@kwiboo.se>
+Subject: [PATCH v4 08/11] media: rkvdec: Extract decoded format enumeration into helper
+Date: Sun,  5 Nov 2023 16:55:07 +0000
+Message-ID: <20231105165521.3592037-9-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231105165521.3592037-1-jonas@kwiboo.se>
 References: <20231105165521.3592037-1-jonas@kwiboo.se>
@@ -59,11 +59,11 @@ X-Report-Abuse: abuse@forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 6547c92642ad2f8d1524695c
+ 167.172.40.54
+X-ForwardEmail-ID: 6547c91e42ad2f8d15246942
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231105_085613_986787_B2CC0791 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20231105_085619_003299_DAD07975 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,105 +80,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for a get_image_fmt() ops that return the required image
-format.
+Add a rkvdec_is_valid_fmt() helper that check if a fourcc is a supported
+CAPTURE format, and a rkvdec_enum_decoded_fmt() helper that enumerate
+valid formats.
 
-The CAPTURE format is reset when required image format changes and the
-buffer queue is not busy.
+This move current code into helper functions in preparation for adding
+CAPTURE format filtering and validation in next patch.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v4:
-- Change fmt_opaque into an image format
-- Split patch into two
+- Rename rkvdec_decoded_fmts() to rkvdec_enum_decoded_fmt()
+- Rename rkvdec_valid_fmt() to rkvdec_is_valid_fmt()
 
 v3:
 - New patch
 
- drivers/staging/media/rkvdec/rkvdec.c | 49 +++++++++++++++++++++++++--
- drivers/staging/media/rkvdec/rkvdec.h |  2 ++
- 2 files changed, 49 insertions(+), 2 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 49 +++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 5949d59d4cf9..225aa1f0ac48 100644
+index 7a79840470e1..c3aede94c872 100644
 --- a/drivers/staging/media/rkvdec/rkvdec.c
 +++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -108,15 +108,60 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
- {
- 	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
- 	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-+	struct v4l2_pix_format_mplane *pix_mp = &ctx->decoded_fmt.fmt.pix_mp;
-+	enum rkvdec_image_fmt image_fmt;
-+	struct vb2_queue *vq;
-+	int ret;
-+
-+	if (desc->ops->try_ctrl) {
-+		ret = desc->ops->try_ctrl(ctx, ctrl);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (!desc->ops->get_image_fmt)
-+		return 0;
+@@ -27,6 +27,32 @@
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
  
--	if (desc->ops->try_ctrl)
--		return desc->ops->try_ctrl(ctx, ctrl);
-+	image_fmt = desc->ops->get_image_fmt(ctx, ctrl);
-+	if (ctx->image_fmt == image_fmt)
++static u32 rkvdec_enum_decoded_fmt(struct rkvdec_ctx *ctx, int index)
++{
++	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
++
++	if (WARN_ON(!desc))
 +		return 0;
 +
-+	if (rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat, image_fmt))
++	if (index >= desc->num_decoded_fmts)
 +		return 0;
 +
-+	/* format change not allowed when queue is busy */
-+	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-+			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-+	if (vb2_is_busy(vq))
-+		return -EINVAL;
-+
-+	return 0;
++	return desc->decoded_fmts[index];
 +}
 +
-+static int rkvdec_s_ctrl(struct v4l2_ctrl *ctrl)
++static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ctx, u32 fourcc)
 +{
-+	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
 +	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-+	struct v4l2_pix_format_mplane *pix_mp = &ctx->decoded_fmt.fmt.pix_mp;
-+	enum rkvdec_image_fmt image_fmt;
++	unsigned int i;
 +
-+	if (!desc->ops->get_image_fmt)
-+		return 0;
++	for (i = 0; i < desc->num_decoded_fmts; i++) {
++		if (desc->decoded_fmts[i] == fourcc)
++			return true;
++	}
 +
-+	image_fmt = desc->ops->get_image_fmt(ctx, ctrl);
-+	if (ctx->image_fmt == image_fmt)
-+		return 0;
++	return false;
++}
 +
-+	ctx->image_fmt = image_fmt;
-+	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat, ctx->image_fmt))
-+		rkvdec_reset_decoded_fmt(ctx);
+ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
+ 				       struct v4l2_pix_format_mplane *pix_mp)
+ {
+@@ -52,8 +78,10 @@ static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
+ static void rkvdec_reset_decoded_fmt(struct rkvdec_ctx *ctx)
+ {
+ 	struct v4l2_format *f = &ctx->decoded_fmt;
++	u32 fourcc;
  
+-	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->decoded_fmts[0]);
++	fourcc = rkvdec_enum_decoded_fmt(ctx, 0);
++	rkvdec_reset_fmt(ctx, f, fourcc);
+ 	f->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	f->fmt.pix_mp.width = ctx->coded_fmt.fmt.pix_mp.width;
+ 	f->fmt.pix_mp.height = ctx->coded_fmt.fmt.pix_mp.height;
+@@ -244,7 +272,6 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
+ 	const struct rkvdec_coded_fmt_desc *coded_desc;
+-	unsigned int i;
+ 
+ 	/*
+ 	 * The codec context should point to a coded format desc, if the format
+@@ -255,13 +282,8 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	if (WARN_ON(!coded_desc))
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+-		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+-			break;
+-	}
+-
+-	if (i == coded_desc->num_decoded_fmts)
+-		pix_mp->pixelformat = coded_desc->decoded_fmts[0];
++	if (!rkvdec_is_valid_fmt(ctx, pix_mp->pixelformat))
++		pix_mp->pixelformat = rkvdec_enum_decoded_fmt(ctx, 0);
+ 
+ 	/* Always apply the frmsize constraint of the coded end. */
+ 	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
+@@ -425,14 +447,13 @@ static int rkvdec_enum_capture_fmt(struct file *file, void *priv,
+ 				   struct v4l2_fmtdesc *f)
+ {
+ 	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
++	u32 fourcc;
+ 
+-	if (WARN_ON(!ctx->coded_fmt_desc))
+-		return -EINVAL;
+-
+-	if (f->index >= ctx->coded_fmt_desc->num_decoded_fmts)
++	fourcc = rkvdec_enum_decoded_fmt(ctx, f->index);
++	if (!fourcc)
+ 		return -EINVAL;
+ 
+-	f->pixelformat = ctx->coded_fmt_desc->decoded_fmts[f->index];
++	f->pixelformat = fourcc;
  	return 0;
  }
  
- static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
- 	.try_ctrl = rkvdec_try_ctrl,
-+	.s_ctrl = rkvdec_s_ctrl,
- };
- 
- static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
-diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-index 6f8cf50c5d99..e466a2753ccf 100644
---- a/drivers/staging/media/rkvdec/rkvdec.h
-+++ b/drivers/staging/media/rkvdec/rkvdec.h
-@@ -73,6 +73,8 @@ struct rkvdec_coded_fmt_ops {
- 		     struct vb2_v4l2_buffer *dst_buf,
- 		     enum vb2_buffer_state result);
- 	int (*try_ctrl)(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl);
-+	enum rkvdec_image_fmt (*get_image_fmt)(struct rkvdec_ctx *ctx,
-+					       struct v4l2_ctrl *ctrl);
- };
- 
- enum rkvdec_image_fmt {
 -- 
 2.42.0
 
