@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B35CC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Nov 2023 23:37:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C359EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Nov 2023 23:37:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=01GxSYjMCI6GlcTFeYgQcBSSEgrOzHfz2htk72sbrpE=; b=RcUA/h5Bcp3Jrr
-	96GaW/yx4XKu/w0TmBkz5h6nOR/6+hasK+q1dXCUU+HKfitqtBrw+zIOFzW2dLMqnNqu6Szmoxivv
-	8+zSAsW8BR5pX3Qwq6dHqx2RKAQXLY4AjYG0IQanpqmolodT7FMQYwdgybRl9Ad03pbAsnL6FTj7i
-	3ZPjpumC4PZm9vWyKIQzkzRV5JmBkXvP6skFCM+LwYzefsbcFuizhJX/ABO4RsvSErxrSvF6f75FL
-	O4bld9sz7oXn24VvVbAJMiXGAHRJQZet9HS1lViXd/1HLSo2iPinRpDGQuZEni7Y9r8hdcsIxglhl
-	a7xJIP6zmR0G/o3s3MaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SeSieeEqnAUUv8iS4ceX3VQl85adiyr/N0BDhjsBi80=; b=xZydCA8lApe1Oi
+	6SzDWgonqvwMV/1+ibbXARaS6LYyFUg/2BUdNBoYAEUKbaZVrlpTFkBgI0VXqh/HjUgixFNLF4XFI
+	GpjhHIWlfGUKBquqOggdV94dqWHLGXsgCHar1kGCZaBF5EVprcQInxeVdxZMIIC49gru3G8RLopFG
+	iNaryYxelljyrbFcX3aIYjIwIVI0eFjaoh8GLT4a9gKYW/bkYIEsmYoGdr80YQ2uBcgI02iEkNbTU
+	5a+zezD2c0zSCVubUU3j5RNnmOW+qV6NE1MNxM9+szr/cgDR8rew03OQc4xk5BzaACHJs+AHUssc7
+	+nO7McS5TnqPeBB5DaVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzmfp-00Fd9r-1e;
-	Sun, 05 Nov 2023 23:36:57 +0000
+	id 1qzmfz-00FdBd-1x;
+	Sun, 05 Nov 2023 23:37:07 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qzmfk-00Fd9B-2w
+	id 1qzmfw-00FdAR-0X
 	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Nov 2023 23:36:55 +0000
+	Sun, 05 Nov 2023 23:37:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1699227398;
- bh=KYZWsqQ58F74SNXGzCDG6oHgc2JUvYanuGDg+aUTAPk=;
- b=l4EeyDHkSIbDTQ/c3MhDVHW9FJW09jN18RSqBKkGQ22H/zasMBzLBhSBLz4zkqMxdvo2oorO2
- FvfnV5yFsY2GM5jPKBYftbtNAhGkHsLJsHVwyqdlL5cXPr5uvsZ1wVpMe90Y9D3khZax3dHjaG0
- 0AAdGQvPJPS14M/YzWOyiRNempp5EIKC8q9JlroOfJ304QDkwAQBKQO3yxEaPsxIfnV0Zu7DbH4
- QHdNMt09HW2C8PEBB9cYJvOPNItW+glHzw14fxje5fYatpyPYM3fOWVgYr2LU1HUjIYwFMFX29N
- 38IqhWa4IHHGZzI0raV/bfWXMWUF8EW/TtJjRxK9SmDw==
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1699227419; bh=Vh7xRkatPe36vScGEBJ3DJCsjTy4cqzyIECw5yN0YeU=;
+ b=vpl/H/TfrCfzPiO9QbCFtpjQQfxFwxTdLciqSHWbrOZlRxeXXryn4aZpLiuBlyfl8YP63l5RH
+ SeviPXuaUjPzmyIVn9RyX2uqaulgnjEHkkH/d0sNB+cuHBdOh90dzrzIwAgP1x+GS7PQSS/dNIs
+ jmdA1jrTqHE78cB3xxxKo/LTbmdHqy03KGZKjjCnon6MUscgcuBiq60NeG4JBkRhZUbjY30KdK0
+ Qq/pzotlDrgOQZIiAQLdBQurwxX1FS2qxN+vbfPtesYjpZ7VU6OopdplOaPwrFHFyhzzwW18gMQ
+ yyzrIkUIv0H8gbsLU0CXngDSLj5JvH/n3Da2IKtS8RGw==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>
 Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <nicolas.dufresne@collabora.com>, Sebastian Fricke
  <sebastian.fricke@collabora.com>, Benjamin Gaignard
@@ -46,10 +47,12 @@ Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
  <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 0/9] media: rkvdec: Add HEVC backend
-Date: Sun,  5 Nov 2023 23:36:07 +0000
-Message-ID: <20231105233630.3927502-1-jonas@kwiboo.se>
+Subject: [PATCH 4/9] media: rkvdec: Add RK3288 variant
+Date: Sun,  5 Nov 2023 23:36:11 +0000
+Message-ID: <20231105233630.3927502-5-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231105233630.3927502-1-jonas@kwiboo.se>
+References: <20231105233630.3927502-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-Report-Abuse-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
@@ -57,10 +60,11 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 654827061b004d4cddbe0c4c
+X-ForwardEmail-ID: 6548271a1b004d4cddbe0c80
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231105_153654_180974_A90C3593 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20231105_153704_243090_4BB8372F 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,107 +81,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series add a HEVC backend to the Rockchip Video Decoder driver.
+From: Alex Bee <knaerzche@gmail.com>
 
-A version of this HEVC backend has been in use by the LibreELEC distro
-for the past 3+ years [1]. It was initially created based on a copy of
-the H264 backend, unstable HEVC uAPI controls and a cabac table + scaling
-matrix functions shamelessly copied 1:1 from the Rockchip mpp library.
+Add a RK3288 variant, a version of the Rockchip VDEC IP that only
+support HEVC decoding.
 
-It has since then been extended to use the stable HEVC uAPI controls and
-improved opon e.g. to include support for rk3288 and fix decoding issues
-by Alex Bee and Nicolas Dufresne.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-The version submitted in this series is based on the code currently used
-by the LibreELEC distro, excluding hard/soft reset, and with cabac table
-and scaling matrix functions picked from Sebastian Fricke prior series
-to add a HEVC backend [2].
-
-Big thanks to Alex Bee, Nicolas Dufresne and Sebastian Fricke for making
-this series possible!
-
-Patch 1 add the new HEVC backend.
-Patch 2-3 add variants support to the driver.
-Patch 4 add support for a rk3288 variant.
-Patch 5 add a rk3328 variant to work around hw quirks.
-Patch 6-7 add device tree node for rk3288.
-Patch 8-9 extend vdec node reg size to include cache/perf registers.
-
-This was tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
-
-  v4l2-compliance 1.24.1, 64 bits, 64-bit time_t
-  ...
-  Total for rkvdec device /dev/video1: 46, Succeeded: 46, Failed: 0, Warnings: 0
-
-  Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-V4L2-request
-  ...
-  Ran 135/147 tests successfully
-
-  Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-V4L2-request
-  ...
-  Ran 9/9 tests successfully
-
-And on a TinkerBoard (RK3288):
-
-  v4l2-compliance 1.24.1, 32 bits, 32-bit time_t
-  ...
-  Total for rkvdec device /dev/video3: 47, Succeeded: 47, Failed: 0, Warnings: 0
-
-  Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-V4L2-request
-  ...
-  Ran 137/147 tests successfully
-
-  Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-V4L2-request
-  ...
-  Ran 9/9 tests successfully
-
-This series depend on the following series:
-- media: rkvdec: Add H.264 High 10 and 4:2:2 profile support [3]
-
-To fully runtime test this series you need above series and ffmpeg
-patches from [4], this series and its depends is also available at [5].
-
-Full summary of fluster run can be found at [6].
-
-[1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/projects/Rockchip/patches/linux/default/linux-2000-v4l2-wip-rkvdec-hevc.patch
-[2] https://lore.kernel.org/linux-media/20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com/
-[3] https://lore.kernel.org/linux-media/20231105165521.3592037-1-jonas@kwiboo.se/
-[4] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-n6.1-dev/
-[5] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-hevc-v1/
-[6] https://gist.github.com/Kwiboo/4c0ed87774dede44ce6838451a1ec93d
-
-Regards,
-Jonas
-
-Alex Bee (5):
-  media: rkvdec: Add variants support
-  media: rkvdec: Add RK3288 variant
-  media: rkvdec: Disable QoS for HEVC and VP9 on RK3328
-  ARM: dts: rockchip: Add vdec node for RK3288
-  arm64: dts: rockchip: Expand reg size of vdec node for RK3399
-
-Jonas Karlman (4):
-  media: rkvdec: Add HEVC backend
-  media: rkvdec: Implement capability filtering
-  media: dt-bindings: rockchip,vdec: Add RK3288 compatible
-  arm64: dts: rockchip: Expand reg size of vdec node for RK3328
-
- .../bindings/media/rockchip,vdec.yaml         |    4 +-
- arch/arm/boot/dts/rockchip/rk3288.dtsi        |   17 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi      |    2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |    6 +-
- drivers/staging/media/rkvdec/Makefile         |    2 +-
- drivers/staging/media/rkvdec/TODO             |    7 -
- .../staging/media/rkvdec/rkvdec-hevc-data.c   | 1848 +++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec-hevc.c    |  823 ++++++++
- drivers/staging/media/rkvdec/rkvdec-regs.h    |    3 +
- drivers/staging/media/rkvdec/rkvdec-vp9.c     |   10 +
- drivers/staging/media/rkvdec/rkvdec.c         |  180 +-
- drivers/staging/media/rkvdec/rkvdec.h         |   15 +
- 12 files changed, 2886 insertions(+), 31 deletions(-)
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc-data.c
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc.c
-
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 9cf7b63c1371..aa017ad40270 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -1200,6 +1200,10 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+ 	}
+ }
+ 
++static const struct rkvdec_variant rk3288_rkvdec_variant = {
++	.capabilities = RKVDEC_CAPABILITY_HEVC,
++};
++
+ static const struct rkvdec_variant rk3399_rkvdec_variant = {
+ 	.capabilities = RKVDEC_CAPABILITY_HEVC |
+ 			RKVDEC_CAPABILITY_H264 |
+@@ -1207,6 +1211,10 @@ static const struct rkvdec_variant rk3399_rkvdec_variant = {
+ };
+ 
+ static const struct of_device_id of_rkvdec_match[] = {
++	{
++		.compatible = "rockchip,rk3288-vdec",
++		.data = &rk3288_rkvdec_variant,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3399-vdec",
+ 		.data = &rk3399_rkvdec_variant,
 -- 
 2.42.0
 
