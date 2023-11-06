@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B41DC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Nov 2023 14:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F3AC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Nov 2023 14:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9nL0I6VetVwCNOXQORBpHHWjDtgKgApU57Jiylz/q28=; b=bzJp3k1y8vkbd3
-	mvDdaDriqyGq+nEmTcWPvULaBEUYR6z82H8yHkvgU/+TeAeNurbmVOzoQCmDdMG7AMn2hQXlGGBpz
-	Cu4679+/5meHGmJa6RiVOMTg8XyI/icdLdlGuESd321s42+ySI+xuUmOnKGom6KaF0JcHfEmIGdwY
-	bQl0wGNkV3yoQlM8y6xsoEU2QIt7dS0rwdtLbudnOpNg/aVv8mS8N8Fpc3jAUfZP+H2JbV3M15xwG
-	ksK7dxlGXu+L1IDGDiSWVbPpglUmBNNvyZSQtBw6W64Q5hdHrzdS3wFHNbLRGw2iy7roBtS2GdF2N
-	WMnxVRuhMtyuf595ty0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AAX92zkTu/lKqvFoyb5KBeabLyVFGffvRpx/nIUwalM=; b=qUbwWhGpZ0XshWbI8HkN314NXO
+	yow2vXsyE9U8X07xvOct2YNRcE6nuURMlekNe9NNVukbECVeyB34vqRyoy82+qUTrWR7F+qQt+JO/
+	6ViAkTRz2FYXfyfefFRiYr6wllqZYan0ISnitQ7whCUAX2CpaOH/Lbt0x+OUCPd47cKE3tpymoQCJ
+	KArQ5idipev8Rp14klJvnOqCColRZJMsGRxloXR3ZaCmpXl/DnZMZevKXUjlyvjtp7ohbOvOry3uj
+	AaNcWmh4zBVn4Sc3B4vEwCR1nxcaLiOoXw1QeUsteD6KCw0OOQ4S5JRsGGnJ7Zdu6Z+YPvtsVW858
+	Aie2OsRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r00nk-00Gsr5-0u;
-	Mon, 06 Nov 2023 14:42:04 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r00qQ-00GtQy-1M;
+	Mon, 06 Nov 2023 14:44:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r00ng-00Gsni-2f;
-	Mon, 06 Nov 2023 14:42:02 +0000
-Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2945B660746B;
-	Mon,  6 Nov 2023 14:41:54 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699281715;
-	bh=3MJuKgnFwDc4oyDCfIOoqn6QQ2rR7zTCGPA6lb7rbJg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=l3dMLdqJcV7oUOWO9gCIQTEJM850BwSHLm37ou4Gz51ART/UuIxsn1fwYEHEf5FMB
-	 Yva70Kxxg7gJEVSsXnJt6mEXwwS+lqZXmh40lM5PVvdc50UOttHtJlc2DMOk28eUbN
-	 t13z2geRwI/E92XI0X7sIlnrFDslo3oWr46yvGegZCoVmZZgFinGIV1m8o8BEi+4lG
-	 JCoohrotvXpVOyOy+f71kjxgA3QVKj7Cm2S+TFxpHEa/Uvz/NCzMvJ/O67tOrFRDil
-	 gQtBlD/ZMzvu45PRStqg90bMuFqsgdoXSuFR2c1gSaw1A/K3qevgN9ap4+1acmy6zS
-	 9n7Up2Kt+x9Zw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v14.1] media: videobuf2: Be more flexible on the number of queue stored buffers
-Date: Mon,  6 Nov 2023 15:39:40 +0100
-Message-Id: <20231106143940.324020-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
+	id 1r00qN-00GtPL-1N;
+	Mon, 06 Nov 2023 14:44:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1970D60F89;
+	Mon,  6 Nov 2023 14:44:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ED10C433C9;
+	Mon,  6 Nov 2023 14:44:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699281885;
+	bh=7L3lZ+M6F/MppCLKLJ3iMRw+h1ZtHpfsvkLcJii+LsA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IjUNNP4Gt06LniIuHdfYaXlzq3i4Mb37385CLH7PiVnaf2MlUqv+G6hRGDzHdKoz+
+	 3yg6gp2iA0AFuSRNn7q8XfR7NmNdW/QdgR0a5nuJIlsG8NMxHBKwUfKIZAudcsf3kb
+	 Phvbgfu25RYjdyIO0n9+MTPoVRiorHVNHmBax6VRf/xevRbD8jbaN0BVMpsd9uB24z
+	 GHHcG5Aic/vRwhRKGO5V8r/w6fQGW/H8tThg5HmEbU3y6gJXeHyuyk6OpW3UjZqOPx
+	 +bHa05Lpel4pt+oBEc8YJ+XFxEqUWFaxmTty2qkUhjb83HSh6MPYjA7S4XMgqmrFiC
+	 +zaoNzXbBLahQ==
+Date: Mon, 6 Nov 2023 15:44:43 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH RFC v3 12/37] drm/connector: hdmi: Create Infoframe
+ DebugFS entries
+Message-ID: <fks4th6oyzpvq2hljbpt4kac5yph6lgsevslpcxrukqcxynugu@nje5bxbqxi26>
+References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
+ <20231031-kms-hdmi-connector-state-v3-12-328b0fae43a7@kernel.org>
+ <806f2ad3-c80b-41e5-9388-f1af7bace8e3@xs4all.nl>
 MIME-Version: 1.0
+In-Reply-To: <806f2ad3-c80b-41e5-9388-f1af7bace8e3@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231106_064201_130702_6755F37E 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20231106_064447_563267_B6B30AD4 
+X-CRM114-Status: GOOD (  29.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,224 +74,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7415406158440404060=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add 'max_num_buffers' field in vb2_queue struct to let drivers decide
-how many buffers could be stored in a queue.
-This require 'bufs' array to be allocated at queue init time and freed
-when releasing the queue.
-By default VB2_MAX_FRAME remains the limit.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
----
-version 14.1:
-- Do not change the number of freed buffers in vb2_core_queue_release().
+--===============7415406158440404060==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iqczjmp6rdkak4lg"
+Content-Disposition: inline
 
- .../media/common/videobuf2/videobuf2-core.c   | 39 +++++++++++++++----
- .../media/common/videobuf2/videobuf2-v4l2.c   |  6 +--
- include/media/videobuf2-core.h                | 10 ++++-
- 3 files changed, 43 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index c5c5ae4d213d..5711c6a130fd 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -416,7 +416,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
- {
--	WARN_ON(index >= VB2_MAX_FRAME || q->bufs[index]);
-+	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
- 
- 	q->bufs[index] = vb;
- 	vb->index = index;
-@@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	struct vb2_buffer *vb;
- 	int ret;
- 
--	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-+	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
- 	num_buffers = min_t(unsigned int, num_buffers,
--			    VB2_MAX_FRAME - q_num_buffers);
-+			    q->max_num_buffers - q_num_buffers);
- 
- 	for (buffer = 0; buffer < num_buffers; ++buffer) {
- 		/* Allocate vb2 buffer structures */
-@@ -813,7 +813,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
- 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
- 	unsigned int i;
--	int ret;
-+	int ret = 0;
- 
- 	if (q->streaming) {
- 		dprintk(q, 1, "streaming active\n");
-@@ -857,17 +857,22 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	/*
- 	 * Make sure the requested values and current defaults are sane.
- 	 */
--	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
- 	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
--	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-+	num_buffers = min_t(unsigned int, num_buffers, q->max_num_buffers);
- 	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
- 	/*
- 	 * Set this now to ensure that drivers see the correct q->memory value
- 	 * in the queue_setup op.
- 	 */
- 	mutex_lock(&q->mmap_lock);
-+	if (!q->bufs)
-+		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-+	if (!q->bufs)
-+		ret = -ENOMEM;
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
-+	if (ret)
-+		return ret;
- 	set_queue_coherency(q, non_coherent_mem);
- 
- 	/*
-@@ -976,7 +981,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	bool no_previous_buffers = !q_num_bufs;
- 	int ret = 0;
- 
--	if (q_num_bufs == VB2_MAX_FRAME) {
-+	if (q->num_buffers == q->max_num_buffers) {
- 		dprintk(q, 1, "maximum number of buffers already allocated\n");
- 		return -ENOBUFS;
- 	}
-@@ -993,7 +998,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 */
- 		mutex_lock(&q->mmap_lock);
- 		q->memory = memory;
-+		if (!q->bufs)
-+			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-+		if (!q->bufs)
-+			ret = -ENOMEM;
- 		mutex_unlock(&q->mmap_lock);
-+		if (ret)
-+			return ret;
- 		q->waiting_for_buffers = !q->is_output;
- 		set_queue_coherency(q, non_coherent_mem);
- 	} else {
-@@ -1005,7 +1016,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 			return -EINVAL;
- 	}
- 
--	num_buffers = min(*count, VB2_MAX_FRAME - q_num_bufs);
-+	num_buffers = min(*count, q->max_num_buffers - q_num_bufs);
- 
- 	if (requested_planes && requested_sizes) {
- 		num_planes = requested_planes;
-@@ -2465,6 +2476,12 @@ int vb2_core_queue_init(struct vb2_queue *q)
- 	/*
- 	 * Sanity check
- 	 */
-+	if (!q->max_num_buffers)
-+		q->max_num_buffers = VB2_MAX_FRAME;
-+
-+	/* The maximum is limited by offset cookie encoding pattern */
-+	q->max_num_buffers = min_t(unsigned int, q->max_num_buffers, MAX_BUFFER_INDEX);
-+
- 	if (WARN_ON(!q)			  ||
- 	    WARN_ON(!q->ops)		  ||
- 	    WARN_ON(!q->mem_ops)	  ||
-@@ -2474,6 +2491,10 @@ int vb2_core_queue_init(struct vb2_queue *q)
- 	    WARN_ON(!q->ops->buf_queue))
- 		return -EINVAL;
- 
-+	if (WARN_ON(q->max_num_buffers > MAX_BUFFER_INDEX) ||
-+	    WARN_ON(q->min_buffers_needed > q->max_num_buffers))
-+		return -EINVAL;
-+
- 	if (WARN_ON(q->requires_requests && !q->supports_requests))
- 		return -EINVAL;
- 
-@@ -2520,6 +2541,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_cancel(q);
- 	mutex_lock(&q->mmap_lock);
- 	__vb2_queue_free(q, vb2_get_num_buffers(q));
-+	kfree(q->bufs);
-+	q->bufs = NULL;
- 	q->num_buffers = 0;
- 	mutex_unlock(&q->mmap_lock);
- }
-diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index 7d798fb15c0b..f3cf4b235c1f 100644
---- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-+++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -627,7 +627,7 @@ struct vb2_buffer *vb2_find_buffer(struct vb2_queue *q, u64 timestamp)
- 	 * This loop doesn't scale if there is a really large number of buffers.
- 	 * Maybe something more efficient will be needed in this case.
- 	 */
--	for (i = 0; i < vb2_get_num_buffers(q); i++) {
-+	for (i = 0; i < q->max_num_buffers; i++) {
- 		vb2 = vb2_get_buffer(q, i);
- 
- 		if (!vb2)
-@@ -1142,7 +1142,7 @@ int _vb2_fop_release(struct file *file, struct mutex *lock)
- 
- 	if (lock)
- 		mutex_lock(lock);
--	if (file->private_data == vdev->queue->owner) {
-+	if (!vdev->queue->owner || file->private_data == vdev->queue->owner) {
- 		vb2_queue_release(vdev->queue);
- 		vdev->queue->owner = NULL;
- 	}
-@@ -1270,7 +1270,7 @@ void vb2_video_unregister_device(struct video_device *vdev)
- 	 */
- 	get_device(&vdev->dev);
- 	video_unregister_device(vdev);
--	if (vdev->queue && vdev->queue->owner) {
-+	if (vdev->queue) {
- 		struct mutex *lock = vdev->queue->lock ?
- 			vdev->queue->lock : vdev->lock;
- 
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 8f9d9e4af5b1..e77a397195f2 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -558,6 +558,7 @@ struct vb2_buf_ops {
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-  * @num_buffers: number of allocated/used buffers
-+ * @max_num_buffers: upper limit of number of allocated/used buffers
-  * @queued_list: list of buffers currently queued from userspace
-  * @queued_count: number of buffers queued and ready for streaming.
-  * @owned_by_drv_count: number of buffers owned by the driver
-@@ -619,8 +620,9 @@ struct vb2_queue {
- 	struct mutex			mmap_lock;
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
--	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-+	struct vb2_buffer		**bufs;
- 	unsigned int			num_buffers;
-+	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
- 	unsigned int			queued_count;
-@@ -1248,6 +1250,12 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
- {
-+	if (!q->bufs)
-+		return NULL;
-+
-+	if (index >= q->max_num_buffers)
-+		return NULL;
-+
- 	if (index < q->num_buffers)
- 		return q->bufs[index];
- 	return NULL;
--- 
-2.39.2
+--iqczjmp6rdkak4lg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+Hi Hans,
+
+On Fri, Nov 03, 2023 at 10:05:18AM +0100, Hans Verkuil wrote:
+> Hi Maxime,
+>=20
+> Thank you for posting v3, this time it runs fine on my RPi 4, thank you f=
+or
+> fixing that.
+>=20
+> I'll start working on a conformity checker for this.
+
+Awesome :)
+
+> > +static int create_hdmi_infoframe_files(struct drm_connector *connector,
+> > +				       struct dentry *parent)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret =3D CREATE_HDMI_INFOFRAME_FILE(connector, parent, audio);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret =3D CREATE_HDMI_INFOFRAME_FILE(connector, parent, avi);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret =3D CREATE_HDMI_INFOFRAME_FILE(connector, parent, drm);
+>=20
+> Hmm, I had to look into the code to figure out that 'drm' stands for
+> Dynamic Range and Mastering InfoFrame. While entirely correct, it is
+> also very confusing in the context of the 'drm' subsystem.
+>=20
+> I am not quite certain what the best approach is here.
+>=20
+> Internally in the drm code it is talking about 'hdr' or 'hdr metadata',
+> but that's a bit confusing as well since there is also an HDR Dynamic
+> Metadata Extended InfoFrame defined in CTA-861, even though support for
+> that is not (yet) implemented in drm.
+>=20
+> At minimum there should be a comment in the code explaining what drm
+> stands for in this context.
+>=20
+> One option to consider is renaming this file to hdr_drm, thus indicating
+> that this is HDR related.
+
+I ended up doing both, thanks for the suggestion
+
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret =3D CREATE_HDMI_INFOFRAME_FILE(connector, parent, spd);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret =3D CREATE_HDMI_INFOFRAME_FILE(connector, parent, vendor);
+>=20
+> There may be multiple vendor specific InfoFrames in the future, so how
+> would that be handled? Perhaps add a comment here that currently only one
+> vendor specific InfoFrame is supported, but suggest how to handle multiple
+> VSIFs in the future.
+>=20
+> What would actually be nice (although probably not that easy to fix) is if
+> the name of the file would be "vendor-XXXXXX' where 'XXXXXX' is the IEEE =
+OUI
+> number.
+
+I guess it's not entirely clear to me what that would look like. In
+order for the framework to create the debugfs files, we would need some
+enumeration mechanism (probably through a callback?), and then the
+driver would generate the entire content of that file.
+
+Which makes me question whether the framework should be initialised at
+all? Maybe the simpler would be to just have drivers maintain their own
+debugfs files and storing the content in their own, private, structure.
+
+Maxime
+
+--iqczjmp6rdkak4lg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZUj72wAKCRDj7w1vZxhR
+xfojAP95jr0AZ4P/3Y/Vc2+1qdxUbHRPfB06V4FUfB1vOsUxEQD+IT5SF4zDLWqj
+FlE+HCqFEp49j6+Zd9e2tvMQ73psaAw=
+=G/8d
+-----END PGP SIGNATURE-----
+
+--iqczjmp6rdkak4lg--
+
+
+--===============7415406158440404060==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7415406158440404060==--
+
