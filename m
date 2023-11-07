@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E1EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Nov 2023 16:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01904C4167D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Nov 2023 16:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7bWt+JpsncfkDuy62PL+tD8/wIz58ZGg4yNOEcSZJzY=; b=Wdza7lBqJOK3Ed
-	vQ1BpXrLBBYVxBV+83CQMT1zztE+SuQBdYxs6Z6sajBA/ioVo1wZhG1BSaWzP4zDirwCYakUG1WtJ
-	DhfYSuLreZB1Tz79IHF3A2+zNoIhaTLFfRyqHtfINJXfs+rMTr+DJohvQLV7uGUIeOVA56X2SKE6T
-	4KpPrjtFcDE6i2P4eWMIcnZ0OfZ/57kS2dHLIW09DXmezjOMgl9JkzAUW26g6nPWZUDz9tRyFBRNw
-	32T4cy6izoVZwgCX2SVbwz1CS/wp5qYcV3JmH5TzWq8fOULXI2rdO49rGDzUMu6oDsV8NNHUCsPsE
-	Fhl+CBr8DDwUpjye0rhQ==;
+	List-Owner; bh=Yu/aeDY1Y/cdnadTdmFO+FnrlOKtxo9v0FxqnUMIh9w=; b=mDNenFgVwbw/zA
+	qgZRpZ2kfJ5zVhulQHddyI7859igYiMn5pUNDAucWFbSjzilkf6s3shWFKJ1asE0z2SEHGW/8xZRC
+	0hQJsfRv7zN+/jDDkB0LtImD5Mle6j8ee8t5crBHoNyRhZHcB34mvlyJkEtpxV6fM7eFus+wu9BlV
+	28wi7K15E9ZfRIlnvwSGyfsnkbEXuuP5gudzjhAA1KWYmT4RSCmL7Sf1lSaXkv+CsRaeGHw0yDC6S
+	hSAO+pvLwZEdlUOhyrX3/i6TR9+SA6w6hu+HFtLNgAtCZfRL8FY47cjXroFEMfw2XZfwFY3+efVoI
+	6Hj/8MeVdbKAOt8od4Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0P9Z-0021mX-0j;
-	Tue, 07 Nov 2023 16:42:13 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1r0PNK-0022xp-0X;
+	Tue, 07 Nov 2023 16:56:26 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0P9W-0021lo-1N
+	id 1r0PNG-0022vi-1y
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Nov 2023 16:42:11 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4083f61312eso44598675e9.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Nov 2023 08:42:10 -0800 (PST)
+	Tue, 07 Nov 2023 16:56:24 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2c5629fdbf8so73538911fa.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Nov 2023 08:56:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699375329; x=1699980129; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1699376178; x=1699980978; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
          :from:content-language:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=aAG3sacWPBXSFUKSzpLXVeo1JwNyPZim0mcCKaII7ao=;
-        b=pmsrN4EwS6OUHyIfA8SUo/vNV1+Fh9czi/xrtkX6wSuhrCF3lanHTsNzpdHgrlRcPL
-         B8HYqvnJuOS0L5hsuRPZqOlw3O/itfhAagcgH73DLGYeBfak75fIqzkzdQ+aay2z4GP5
-         YJRJK3lFQo/BBs/mpCQG4esjWlosMK/mvERD91zZZ04FSn+gxDvUgXRIPyXcly8/wziU
-         f6gh8LrpmK3l0N2IZoI2m6rYUbW0mOaY+RW6ND6tTpVeM1FEqiHPkqbGhTw2JYs4XEx5
-         1pNtgRlfhCHcRiOkRHy3/slA1Vt3JDiiUxW9ogQL+xVUp5mDlVKDJ/jJZYxJFbu7YH3m
-         a1VQ==
+        bh=kbJ6S/o2GoaTYn/BOJScRNRrTIl3Xt5INY64Fvpcd0w=;
+        b=L0nFNh0U07815XitbjIl93VV7ynDwN6QMv/2Ij18sHMfx3GKyhix+epgpgpERy8uPt
+         Md7eozwtvUUqA21g+jq6MhwLOiV+L5KNtSmDsSviONZ/kI5vpJHES4FYHdZOJdwWIulP
+         oZw8luo6O102cSOa0C32vBGZQsolHrgmz6OJPHqI7pnSUwdLQADNCSR/gGKnAF/rKFQW
+         401E2wJ+vF4+5pS6u9tRv3AVpVywrgH/Peyxg12JxXi7lVIEz6/OFlzwQknI2IOLFSPb
+         dFA6JCVRZ5KA7OxK3cJpRMNY+37XXQje2Ya+RuKVMNBk529fLu0i6iVZVX7oIDN/qbd1
+         wDrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699375329; x=1699980129;
+        d=1e100.net; s=20230601; t=1699376178; x=1699980978;
         h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
          :from:content-language:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=aAG3sacWPBXSFUKSzpLXVeo1JwNyPZim0mcCKaII7ao=;
-        b=KqwNRFlTJAeBi6EEhWUIcs7F+YDtexDNr14RODD6cWnhdV6ZWVpg8SyzjBKfOsUSKe
-         Lf6AT/ihFOPSKG56rAGTIFN8y/bEdKKTdT2UFFCPSYOmdLBQIv4eDbv+Ipmumrtqj5H+
-         K2FkDs8x4/qOx0pg1LquZZm+MxDIhp9wzOhEjvoJd24BCEd8EWo+P+82OsA3/Kb7zgzW
-         zxlW3u40Y4i4RNPwu4Tkp/ktnF+e7G3UgMalqLzhCe1rJonwJTh8pt3ZlN3rQ5A1cXjl
-         CSHvpAwfJMuK+GzcDKedsshW6cTDTQ05RHTad86MkaTJ8CJsFK/xtXMMf6Aj1iJLJdh0
-         Fd8A==
-X-Gm-Message-State: AOJu0Yy/U2IrpVCffxGeIr2UbUpIs79rBqlHrbyrEj/pItDf/PSbP4Hs
-	rkPbKs7STLqsY+AbfTcWZr89VA==
-X-Google-Smtp-Source: AGHT+IGtV8OXtohdPAz3Te0I370Z73N5I/MwJUUSOLej4VBNI6ZYLhl9YpdbBnIh49F+ckhoVho50g==
-X-Received: by 2002:a05:600c:6023:b0:409:718b:33e0 with SMTP id az35-20020a05600c602300b00409718b33e0mr2932919wmb.16.1699375329097;
-        Tue, 07 Nov 2023 08:42:09 -0800 (PST)
+        bh=kbJ6S/o2GoaTYn/BOJScRNRrTIl3Xt5INY64Fvpcd0w=;
+        b=SdttwJxpcBHkTNxxJ+CQiQ+26k0Tv2yd9yMQLoSq8LZf0eluQNAopTuO7XLm5np0bS
+         CB2AGtnw5pVBC7LE3kdW9pqBWS4hTj8Rkgbh9KYi7TAVXkHSm5VDOd2uOZW6Ql5uwXmv
+         jSw7jf3ndKhX1FWLsXEmsfzoBQ32vlPCiG3Ok7pJd1yp5yLd1qVcA2zYEdD+hNSZK4KG
+         2ZMzXqAtHfC3vMEv/cEJ/q1Zvo1bMQqqWMSxn8MFDX06rU/VlCRX+S+H0znOEkdgw2X1
+         kHMf6+2ZmKVs+LQp6tFxQawMDHmtxcG2BdxHd03vUNnxtZaKRw7TdOxrQ5R/W1OkOTfi
+         ni5w==
+X-Gm-Message-State: AOJu0YwP7NluLqzWXtFdkC1MmzO+4AtGbMKQgPsPFUmVYxv6b+ynlnSA
+	8o8jAX8T3KB9UCNAnk5iqLE5zw==
+X-Google-Smtp-Source: AGHT+IGT4HKeVgMKEcNh4lB9vVupAt3j8/OufFftas5vKACJLEXbG9PIZo6ZyGLgzdDSPdcDTm91iA==
+X-Received: by 2002:a2e:a789:0:b0:2c5:18ed:180a with SMTP id c9-20020a2ea789000000b002c518ed180amr33150222ljf.33.1699376177720;
+        Tue, 07 Nov 2023 08:56:17 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id ay8-20020a05600c1e0800b0040772138bb7sm16560031wmb.2.2023.11.07.08.42.07
+        by smtp.gmail.com with ESMTPSA id ba15-20020a0560001c0f00b0032326908972sm2869551wrb.17.2023.11.07.08.56.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Nov 2023 08:42:08 -0800 (PST)
-Message-ID: <a683c2b1-5caa-4014-b8bb-9caed303adb2@linaro.org>
-Date: Tue, 7 Nov 2023 17:42:07 +0100
+        Tue, 07 Nov 2023 08:56:17 -0800 (PST)
+Message-ID: <6210c44e-fd1c-4a60-83d4-d97704f47739@linaro.org>
+Date: Tue, 7 Nov 2023 17:56:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 6/6] crypto: rockchip: add rk3588 driver
@@ -81,6 +81,7 @@ Cc: ricardo@pardini.net, devicetree@vger.kernel.org,
 References: <20231107155532.3747113-1-clabbe@baylibre.com>
  <20231107155532.3747113-7-clabbe@baylibre.com>
  <07bbb8c3-b6c0-4e5e-8fe9-2fcbb71b7dbc@linaro.org>
+ <a683c2b1-5caa-4014-b8bb-9caed303adb2@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -125,10 +126,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <07bbb8c3-b6c0-4e5e-8fe9-2fcbb71b7dbc@linaro.org>
+In-Reply-To: <a683c2b1-5caa-4014-b8bb-9caed303adb2@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_084210_470587_12F7E999 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20231107_085622_652254_3421ECC4 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,108 +146,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/11/2023 17:35, Krzysztof Kozlowski wrote:
-> On 07/11/2023 16:55, Corentin Labbe wrote:
->> RK3588 have a new crypto IP, this patch adds basic support for it.
->> Only hashes and cipher are handled for the moment.
+On 07/11/2023 17:42, Krzysztof Kozlowski wrote:
+> On 07/11/2023 17:35, Krzysztof Kozlowski wrote:
+>> On 07/11/2023 16:55, Corentin Labbe wrote:
+>>> RK3588 have a new crypto IP, this patch adds basic support for it.
+>>> Only hashes and cipher are handled for the moment.
+>>>
+>>> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+>>> ---
+>>>  drivers/crypto/Kconfig                        |  29 +
+>>>  drivers/crypto/rockchip/Makefile              |   5 +
+>>>  drivers/crypto/rockchip/rk2_crypto.c          | 739 ++++++++++++++++++
+>>>  drivers/crypto/rockchip/rk2_crypto.h          | 246 ++++++
+>>>  drivers/crypto/rockchip/rk2_crypto_ahash.c    | 344 ++++++++
+>>>  drivers/crypto/rockchip/rk2_crypto_skcipher.c | 576 ++++++++++++++
+>>>  6 files changed, 1939 insertions(+)
+>>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.c
+>>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.h
+>>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_ahash.c
+>>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_skcipher.c
+>>>
+>>> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+>>> index 79c3bb9c99c3..b6a2027b1f9a 100644
+>>> --- a/drivers/crypto/Kconfig
+>>> +++ b/drivers/crypto/Kconfig
+>>> @@ -660,6 +660,35 @@ config CRYPTO_DEV_ROCKCHIP_DEBUG
+>>>  	  the number of requests per algorithm and other internal stats.
+>>>  
+>>>  
+>>> +config CRYPTO_DEV_ROCKCHIP2
+>>> +	tristate "Rockchip's cryptographic offloader V2"
+>>> +	depends on OF && ARCH_ROCKCHIP
+>>> +	depends on PM
+>>> +	select CRYPTO_ECB
+>>> +	select CRYPTO_CBC
+>>> +	select CRYPTO_AES
+>>> +	select CRYPTO_MD5
+>>> +	select CRYPTO_SHA1
+>>> +	select CRYPTO_SHA256
+>>> +	select CRYPTO_SHA512
+>>> +	select CRYPTO_SM3_GENERIC
+>>> +	select CRYPTO_HASH
+>>> +	select CRYPTO_SKCIPHER
+>>> +	select CRYPTO_ENGINE
+>>> +
+>>> +	help
+>>> +	  This driver interfaces with the hardware crypto offloader present
+>>> +	  on RK3566, RK3568 and RK3588.
+>>> +
+>>> +config CRYPTO_DEV_ROCKCHIP2_DEBUG
+>>> +	bool "Enable Rockchip V2 crypto stats"
+>>> +	depends on CRYPTO_DEV_ROCKCHIP2
+>>> +	depends on DEBUG_FS
+>>> +	help
+>>> +	  Say y to enable Rockchip crypto debug stats.
+>>> +	  This will create /sys/kernel/debug/rk3588_crypto/stats for displaying
+>>> +	  the number of requests per algorithm and other internal stats.
+>>> +
+>>>  config CRYPTO_DEV_ZYNQMP_AES
+>>>  	tristate "Support for Xilinx ZynqMP AES hw accelerator"
+>>>  	depends on ZYNQMP_FIRMWARE || COMPILE_TEST
+>>> diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockchip/Makefile
+>>> index 785277aca71e..452a12ff6538 100644
+>>> --- a/drivers/crypto/rockchip/Makefile
+>>> +++ b/drivers/crypto/rockchip/Makefile
+>>> @@ -3,3 +3,8 @@ obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP) += rk_crypto.o
+>>>  rk_crypto-objs := rk3288_crypto.o \
+>>>  		  rk3288_crypto_skcipher.o \
+>>>  		  rk3288_crypto_ahash.o
+>>> +
+>>> +obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP2) += rk_crypto2.o
+>>> +rk_crypto2-objs := rk2_crypto.o \
+>>> +		  rk2_crypto_skcipher.o \
+>>> +		  rk2_crypto_ahash.o
+>>> diff --git a/drivers/crypto/rockchip/rk2_crypto.c b/drivers/crypto/rockchip/rk2_crypto.c
+>>> new file mode 100644
+>>> index 000000000000..f3b8d27924da
+>>> --- /dev/null
+>>> +++ b/drivers/crypto/rockchip/rk2_crypto.c
+>>> @@ -0,0 +1,739 @@
+>>> +// SPDX-License-Identifier: GPL-2.0
+>>> +/*
+>>> + * hardware cryptographic offloader for RK3568/RK3588 SoC
+>>> + *
+>>> + * Copyright (c) 2022-2023, Corentin Labbe <clabbe@baylibre.com>
+>>> + */
+>>> +
+>>> +#include "rk2_crypto.h"
+>>> +#include <linux/clk.h>
+>>> +#include <linux/crypto.h>
+>>> +#include <linux/dma-mapping.h>
+>>> +#include <linux/module.h>
+>>> +#include <linux/platform_device.h>
+>>> +#include <linux/of.h>
+>>> +#include <linux/of_device.h>
+>>> +#include <linux/reset.h>
+>>> +
+>>> +static struct rockchip_ip rocklist = {
+>>> +	.dev_list = LIST_HEAD_INIT(rocklist.dev_list),
+>>> +	.lock = __SPIN_LOCK_UNLOCKED(rocklist.lock),
 >>
->> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
->> ---
->>  drivers/crypto/Kconfig                        |  29 +
->>  drivers/crypto/rockchip/Makefile              |   5 +
->>  drivers/crypto/rockchip/rk2_crypto.c          | 739 ++++++++++++++++++
->>  drivers/crypto/rockchip/rk2_crypto.h          | 246 ++++++
->>  drivers/crypto/rockchip/rk2_crypto_ahash.c    | 344 ++++++++
->>  drivers/crypto/rockchip/rk2_crypto_skcipher.c | 576 ++++++++++++++
->>  6 files changed, 1939 insertions(+)
->>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.c
->>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.h
->>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_ahash.c
->>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_skcipher.c
->>
->> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
->> index 79c3bb9c99c3..b6a2027b1f9a 100644
->> --- a/drivers/crypto/Kconfig
->> +++ b/drivers/crypto/Kconfig
->> @@ -660,6 +660,35 @@ config CRYPTO_DEV_ROCKCHIP_DEBUG
->>  	  the number of requests per algorithm and other internal stats.
->>  
->>  
->> +config CRYPTO_DEV_ROCKCHIP2
->> +	tristate "Rockchip's cryptographic offloader V2"
->> +	depends on OF && ARCH_ROCKCHIP
->> +	depends on PM
->> +	select CRYPTO_ECB
->> +	select CRYPTO_CBC
->> +	select CRYPTO_AES
->> +	select CRYPTO_MD5
->> +	select CRYPTO_SHA1
->> +	select CRYPTO_SHA256
->> +	select CRYPTO_SHA512
->> +	select CRYPTO_SM3_GENERIC
->> +	select CRYPTO_HASH
->> +	select CRYPTO_SKCIPHER
->> +	select CRYPTO_ENGINE
->> +
->> +	help
->> +	  This driver interfaces with the hardware crypto offloader present
->> +	  on RK3566, RK3568 and RK3588.
->> +
->> +config CRYPTO_DEV_ROCKCHIP2_DEBUG
->> +	bool "Enable Rockchip V2 crypto stats"
->> +	depends on CRYPTO_DEV_ROCKCHIP2
->> +	depends on DEBUG_FS
->> +	help
->> +	  Say y to enable Rockchip crypto debug stats.
->> +	  This will create /sys/kernel/debug/rk3588_crypto/stats for displaying
->> +	  the number of requests per algorithm and other internal stats.
->> +
->>  config CRYPTO_DEV_ZYNQMP_AES
->>  	tristate "Support for Xilinx ZynqMP AES hw accelerator"
->>  	depends on ZYNQMP_FIRMWARE || COMPILE_TEST
->> diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockchip/Makefile
->> index 785277aca71e..452a12ff6538 100644
->> --- a/drivers/crypto/rockchip/Makefile
->> +++ b/drivers/crypto/rockchip/Makefile
->> @@ -3,3 +3,8 @@ obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP) += rk_crypto.o
->>  rk_crypto-objs := rk3288_crypto.o \
->>  		  rk3288_crypto_skcipher.o \
->>  		  rk3288_crypto_ahash.o
->> +
->> +obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP2) += rk_crypto2.o
->> +rk_crypto2-objs := rk2_crypto.o \
->> +		  rk2_crypto_skcipher.o \
->> +		  rk2_crypto_ahash.o
->> diff --git a/drivers/crypto/rockchip/rk2_crypto.c b/drivers/crypto/rockchip/rk2_crypto.c
->> new file mode 100644
->> index 000000000000..f3b8d27924da
->> --- /dev/null
->> +++ b/drivers/crypto/rockchip/rk2_crypto.c
->> @@ -0,0 +1,739 @@
->> +// SPDX-License-Identifier: GPL-2.0
->> +/*
->> + * hardware cryptographic offloader for RK3568/RK3588 SoC
->> + *
->> + * Copyright (c) 2022-2023, Corentin Labbe <clabbe@baylibre.com>
->> + */
->> +
->> +#include "rk2_crypto.h"
->> +#include <linux/clk.h>
->> +#include <linux/crypto.h>
->> +#include <linux/dma-mapping.h>
->> +#include <linux/module.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/of.h>
->> +#include <linux/of_device.h>
->> +#include <linux/reset.h>
->> +
->> +static struct rockchip_ip rocklist = {
->> +	.dev_list = LIST_HEAD_INIT(rocklist.dev_list),
->> +	.lock = __SPIN_LOCK_UNLOCKED(rocklist.lock),
+>> Drop it, not needed.
 > 
-> Drop it, not needed.
+> To clarify: I mean entire structure.
 
-To clarify: I mean entire structure.
+... and I think I was wrong - skcipher_engine_alg and other parts still
+do not handle device context, so indeed you might need global list.
 
 Best regards,
 Krzysztof
