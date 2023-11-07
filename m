@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DDBC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Nov 2023 16:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E1EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Nov 2023 16:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=775iUqzwvtKu6W5IXI4C86hqefMN4noMVdyVvGXVjGg=; b=HXOV/2POM4qc0M
-	3/5B9xN4P9zy8vw8KzgCnpijGuFG61fZVz7WiNxVebaNr0fpX8SWc9GtsE20XO046BsmssvO2DCNz
-	cwYSSgx7+c0ljixNU+m6i0w2i6ZRrb1kptpONuOlv5lFolEHPSQCtkzWwcpwsMaIyR7lIZESgvFds
-	35vEWDXHuzxgfkpF260ERwDZd1bdj4bemlYsAt5MlCIEpd09/fQjeVIa38jpUvhmWg5l29xN+uS42
-	QYUVCS4MA6sOOPwm61fIgEiXv3vId5fem/9SLVC7LcCOhGFGB2PJg5YlpNoYXjmfEB6MQONW+ZKCD
-	2VHXZMWQttnZVTN5qJlA==;
+	List-Owner; bh=7bWt+JpsncfkDuy62PL+tD8/wIz58ZGg4yNOEcSZJzY=; b=Wdza7lBqJOK3Ed
+	vQ1BpXrLBBYVxBV+83CQMT1zztE+SuQBdYxs6Z6sajBA/ioVo1wZhG1BSaWzP4zDirwCYakUG1WtJ
+	DhfYSuLreZB1Tz79IHF3A2+zNoIhaTLFfRyqHtfINJXfs+rMTr+DJohvQLV7uGUIeOVA56X2SKE6T
+	4KpPrjtFcDE6i2P4eWMIcnZ0OfZ/57kS2dHLIW09DXmezjOMgl9JkzAUW26g6nPWZUDz9tRyFBRNw
+	32T4cy6izoVZwgCX2SVbwz1CS/wp5qYcV3JmH5TzWq8fOULXI2rdO49rGDzUMu6oDsV8NNHUCsPsE
+	Fhl+CBr8DDwUpjye0rhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0P7z-0021b8-0v;
-	Tue, 07 Nov 2023 16:40:35 +0000
+	id 1r0P9Z-0021mX-0j;
+	Tue, 07 Nov 2023 16:42:13 +0000
 Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0P7v-0021Zw-2F
+	id 1r0P9W-0021lo-1N
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Nov 2023 16:40:33 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40837ebba42so36990035e9.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Nov 2023 08:40:29 -0800 (PST)
+	Tue, 07 Nov 2023 16:42:11 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4083f61312eso44598675e9.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Nov 2023 08:42:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699375228; x=1699980028; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bG5teDoMIWZEcMWM7WJvlB8DFst5lIgACt5uFYgl748=;
-        b=Vb+4t2VR8chDHo1LoA19okTyfqqUcAqENoriKkFsw5phfAN+fIrFYf/Ckx8yXB5LI0
-         xNemPO0CaVG4FhjCFH8nJUx+ews6YbfAJe7DoFWYppR9rlcNGb7X4UaSxGl48tnFhio5
-         4/LF4t724NI5RMct4tPwPXyEUek+KLglhcSfuP2Rwf6b2D7hKLFjJEizSfuXOcYRv0zb
-         JLEcXi9mWNTaJu82AtBZpCXRFtVqBhRpq7bdP2YJl+0Lix/jZcys0PX9qfndyQ5XnLj9
-         5Kj8KTe4pvxL3nJblTstk4DMZLbtPyBwF1kyvyoY1xhD6pwTOOAaSj3Jgz7UoxMb/KI3
-         PEHg==
+        d=linaro.org; s=google; t=1699375329; x=1699980129; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=aAG3sacWPBXSFUKSzpLXVeo1JwNyPZim0mcCKaII7ao=;
+        b=pmsrN4EwS6OUHyIfA8SUo/vNV1+Fh9czi/xrtkX6wSuhrCF3lanHTsNzpdHgrlRcPL
+         B8HYqvnJuOS0L5hsuRPZqOlw3O/itfhAagcgH73DLGYeBfak75fIqzkzdQ+aay2z4GP5
+         YJRJK3lFQo/BBs/mpCQG4esjWlosMK/mvERD91zZZ04FSn+gxDvUgXRIPyXcly8/wziU
+         f6gh8LrpmK3l0N2IZoI2m6rYUbW0mOaY+RW6ND6tTpVeM1FEqiHPkqbGhTw2JYs4XEx5
+         1pNtgRlfhCHcRiOkRHy3/slA1Vt3JDiiUxW9ogQL+xVUp5mDlVKDJ/jJZYxJFbu7YH3m
+         a1VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699375228; x=1699980028;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bG5teDoMIWZEcMWM7WJvlB8DFst5lIgACt5uFYgl748=;
-        b=NZiHJcfaj2vvszjZmz9LtV7VEm2V/nSbQQz6QayMmPx3LZVji7CFdO2Mz3PcC5GtV1
-         rEIRM7uY1ZnL+0kP2VbBqFsjF1E//ExShZU0CO8JDjU5u8Wee3k6PDfsm3nB+yTQeTOw
-         hijQ5ofdopibvXpp6EkLM9+mC36AgmZPlZ1jB9T+H01J6AHNQ0yufGVHh4dFfAYL0kBW
-         go4C1PGX+ImWZLNgfFx6ydJFX0CYpWouW4cpFrdPBUznmr2pc3+YJg4KAussMRQEDxyN
-         0Nw9/Nzx4Hdef5eR5w2rdUAZCueIZd1LFHwqmmu53XNLndzwzFORBUlDe3HnfgCnPCnF
-         G+mA==
-X-Gm-Message-State: AOJu0Ywg5dnnKwG9SYx9A6mrPGjNvn6tnxOs7D4Ssi93Q55JdaWBdKM9
-	mt203uXWlGFYZGRK9AvpnSQMpw==
-X-Google-Smtp-Source: AGHT+IERQ39mfz81xK6TupD6lTbERubU2eecqEgDvKphyDqxxJ+tvVdXiWkmZuRczqJaEPyqFh4G9A==
-X-Received: by 2002:a05:600c:181b:b0:408:53d6:10b3 with SMTP id n27-20020a05600c181b00b0040853d610b3mr2932701wmp.22.1699375227473;
-        Tue, 07 Nov 2023 08:40:27 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699375329; x=1699980129;
+        h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+         :from:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aAG3sacWPBXSFUKSzpLXVeo1JwNyPZim0mcCKaII7ao=;
+        b=KqwNRFlTJAeBi6EEhWUIcs7F+YDtexDNr14RODD6cWnhdV6ZWVpg8SyzjBKfOsUSKe
+         Lf6AT/ihFOPSKG56rAGTIFN8y/bEdKKTdT2UFFCPSYOmdLBQIv4eDbv+Ipmumrtqj5H+
+         K2FkDs8x4/qOx0pg1LquZZm+MxDIhp9wzOhEjvoJd24BCEd8EWo+P+82OsA3/Kb7zgzW
+         zxlW3u40Y4i4RNPwu4Tkp/ktnF+e7G3UgMalqLzhCe1rJonwJTh8pt3ZlN3rQ5A1cXjl
+         CSHvpAwfJMuK+GzcDKedsshW6cTDTQ05RHTad86MkaTJ8CJsFK/xtXMMf6Aj1iJLJdh0
+         Fd8A==
+X-Gm-Message-State: AOJu0Yy/U2IrpVCffxGeIr2UbUpIs79rBqlHrbyrEj/pItDf/PSbP4Hs
+	rkPbKs7STLqsY+AbfTcWZr89VA==
+X-Google-Smtp-Source: AGHT+IGtV8OXtohdPAz3Te0I370Z73N5I/MwJUUSOLej4VBNI6ZYLhl9YpdbBnIh49F+ckhoVho50g==
+X-Received: by 2002:a05:600c:6023:b0:409:718b:33e0 with SMTP id az35-20020a05600c602300b00409718b33e0mr2932919wmb.16.1699375329097;
+        Tue, 07 Nov 2023 08:42:09 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id ay8-20020a05600c1e0800b0040772138bb7sm16560031wmb.2.2023.11.07.08.40.25
+        by smtp.gmail.com with ESMTPSA id ay8-20020a05600c1e0800b0040772138bb7sm16560031wmb.2.2023.11.07.08.42.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Nov 2023 08:40:26 -0800 (PST)
-Message-ID: <97ae9fa0-0a6c-41d2-8a6c-1706b920d7ea@linaro.org>
-Date: Tue, 7 Nov 2023 17:40:24 +0100
+        Tue, 07 Nov 2023 08:42:08 -0800 (PST)
+Message-ID: <a683c2b1-5caa-4014-b8bb-9caed303adb2@linaro.org>
+Date: Tue, 7 Nov 2023 17:42:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] dt-bindings: crypto: add support for
- rockchip,crypto-rk3588
+Subject: Re: [PATCH 6/6] crypto: rockchip: add rk3588 driver
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Corentin Labbe <clabbe@baylibre.com>, davem@davemloft.net,
  heiko@sntech.de, herbert@gondor.apana.org.au,
  krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
@@ -78,8 +79,8 @@ Cc: ricardo@pardini.net, devicetree@vger.kernel.org,
  linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20231107155532.3747113-1-clabbe@baylibre.com>
- <20231107155532.3747113-2-clabbe@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ <20231107155532.3747113-7-clabbe@baylibre.com>
+ <07bbb8c3-b6c0-4e5e-8fe9-2fcbb71b7dbc@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -124,10 +125,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231107155532.3747113-2-clabbe@baylibre.com>
+In-Reply-To: <07bbb8c3-b6c0-4e5e-8fe9-2fcbb71b7dbc@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_084031_763844_897DC482 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20231107_084210_470587_12F7E999 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,85 +145,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/11/2023 16:55, Corentin Labbe wrote:
-> Add device tree binding documentation for the Rockchip cryptographic
-> offloader V2.
+On 07/11/2023 17:35, Krzysztof Kozlowski wrote:
+> On 07/11/2023 16:55, Corentin Labbe wrote:
+>> RK3588 have a new crypto IP, this patch adds basic support for it.
+>> Only hashes and cipher are handled for the moment.
+>>
+>> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+>> ---
+>>  drivers/crypto/Kconfig                        |  29 +
+>>  drivers/crypto/rockchip/Makefile              |   5 +
+>>  drivers/crypto/rockchip/rk2_crypto.c          | 739 ++++++++++++++++++
+>>  drivers/crypto/rockchip/rk2_crypto.h          | 246 ++++++
+>>  drivers/crypto/rockchip/rk2_crypto_ahash.c    | 344 ++++++++
+>>  drivers/crypto/rockchip/rk2_crypto_skcipher.c | 576 ++++++++++++++
+>>  6 files changed, 1939 insertions(+)
+>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.c
+>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto.h
+>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_ahash.c
+>>  create mode 100644 drivers/crypto/rockchip/rk2_crypto_skcipher.c
+>>
+>> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+>> index 79c3bb9c99c3..b6a2027b1f9a 100644
+>> --- a/drivers/crypto/Kconfig
+>> +++ b/drivers/crypto/Kconfig
+>> @@ -660,6 +660,35 @@ config CRYPTO_DEV_ROCKCHIP_DEBUG
+>>  	  the number of requests per algorithm and other internal stats.
+>>  
+>>  
+>> +config CRYPTO_DEV_ROCKCHIP2
+>> +	tristate "Rockchip's cryptographic offloader V2"
+>> +	depends on OF && ARCH_ROCKCHIP
+>> +	depends on PM
+>> +	select CRYPTO_ECB
+>> +	select CRYPTO_CBC
+>> +	select CRYPTO_AES
+>> +	select CRYPTO_MD5
+>> +	select CRYPTO_SHA1
+>> +	select CRYPTO_SHA256
+>> +	select CRYPTO_SHA512
+>> +	select CRYPTO_SM3_GENERIC
+>> +	select CRYPTO_HASH
+>> +	select CRYPTO_SKCIPHER
+>> +	select CRYPTO_ENGINE
+>> +
+>> +	help
+>> +	  This driver interfaces with the hardware crypto offloader present
+>> +	  on RK3566, RK3568 and RK3588.
+>> +
+>> +config CRYPTO_DEV_ROCKCHIP2_DEBUG
+>> +	bool "Enable Rockchip V2 crypto stats"
+>> +	depends on CRYPTO_DEV_ROCKCHIP2
+>> +	depends on DEBUG_FS
+>> +	help
+>> +	  Say y to enable Rockchip crypto debug stats.
+>> +	  This will create /sys/kernel/debug/rk3588_crypto/stats for displaying
+>> +	  the number of requests per algorithm and other internal stats.
+>> +
+>>  config CRYPTO_DEV_ZYNQMP_AES
+>>  	tristate "Support for Xilinx ZynqMP AES hw accelerator"
+>>  	depends on ZYNQMP_FIRMWARE || COMPILE_TEST
+>> diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockchip/Makefile
+>> index 785277aca71e..452a12ff6538 100644
+>> --- a/drivers/crypto/rockchip/Makefile
+>> +++ b/drivers/crypto/rockchip/Makefile
+>> @@ -3,3 +3,8 @@ obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP) += rk_crypto.o
+>>  rk_crypto-objs := rk3288_crypto.o \
+>>  		  rk3288_crypto_skcipher.o \
+>>  		  rk3288_crypto_ahash.o
+>> +
+>> +obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP2) += rk_crypto2.o
+>> +rk_crypto2-objs := rk2_crypto.o \
+>> +		  rk2_crypto_skcipher.o \
+>> +		  rk2_crypto_ahash.o
+>> diff --git a/drivers/crypto/rockchip/rk2_crypto.c b/drivers/crypto/rockchip/rk2_crypto.c
+>> new file mode 100644
+>> index 000000000000..f3b8d27924da
+>> --- /dev/null
+>> +++ b/drivers/crypto/rockchip/rk2_crypto.c
+>> @@ -0,0 +1,739 @@
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * hardware cryptographic offloader for RK3568/RK3588 SoC
+>> + *
+>> + * Copyright (c) 2022-2023, Corentin Labbe <clabbe@baylibre.com>
+>> + */
+>> +
+>> +#include "rk2_crypto.h"
+>> +#include <linux/clk.h>
+>> +#include <linux/crypto.h>
+>> +#include <linux/dma-mapping.h>
+>> +#include <linux/module.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_device.h>
+>> +#include <linux/reset.h>
+>> +
+>> +static struct rockchip_ip rocklist = {
+>> +	.dev_list = LIST_HEAD_INIT(rocklist.dev_list),
+>> +	.lock = __SPIN_LOCK_UNLOCKED(rocklist.lock),
 > 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> ---
->  .../crypto/rockchip,rk3588-crypto.yaml        | 65 +++++++++++++++++++
->  1 file changed, 65 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
-> new file mode 100644
-> index 000000000000..07024cf4fb0e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
-> @@ -0,0 +1,65 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/crypto/rockchip,rk3588-crypto.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip cryptographic offloader V2
+> Drop it, not needed.
 
-v2? Where is any documentation of this versioning? From where does it
-come from?
-
-> +
-> +maintainers:
-> +  - Corentin Labbe <clabbe@baylibre.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3568-crypto
-> +      - rockchip,rk3588-crypto
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 3
-
-You also must describe the items instead.
-
-Where do you see any binding using minItems alone?
-
-> +
-> +  clock-names:
-> +    items:
-> +      - const: core
-> +      - const: a
-> +      - const: h
-> +
-> +  resets:
-> +    minItems: 1
-
-No, maxItems.
-
-> +
-> +  reset-names:
-> +    items:
-> +      - const: core
-
-Drop reset-names, not really needed and not useful.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - resets
-> +  - reset-names
-
+To clarify: I mean entire structure.
 
 Best regards,
 Krzysztof
