@@ -4,82 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F3BC4167D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 10:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 074D9C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 12:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r/kyB4d8QiJJGbOKcscUZu4QnT8jdwwRvm0WRYSzfiA=; b=v0OBpG/GI5WfGL
-	rY5dj+wzEQTbn4lp/du5g4xaHNqeAVajzpldIY5yynTTBrs/JwVIJ2nt4DQDOZEb2numbS9h5HekT
-	h59ITd936o2J1xQEFSvq+R2EQmObpV5sf8CDeHYB4UQyb2drfRWO48imzO4Fg1/2KbI2eq5pBbMHh
-	aTEe7rtjoYLNZtWMNXOdrou5A6ZIS1/4JBBUIBcKuN+Y4YRA9XFDBPKEofGTKl6xJY87w2+zLFIHV
-	D9Ieh0p8LRqMPMgDuKzTHB88DXz9kKvTbEQ9PyZxejdcVJapBGpn/ksu2hf/oL/OgQlJX+VdYexqQ
-	Ie+SdE9uq54suOQ6ClKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l87SPCDOWbvNJHP1Wxm/IdA5OquGk93WGyVyJu1YfT4=; b=KQu/WbEZfWRmDGofPYdXILWI0Z
+	/p/sxN/awEQs/XILxpAHjFxFTj9Kb//m3bDlccOuptUXd2hfZjmws8lvMNXItitW0ib8RH+lq47up
+	qT3K1ZDU6/L3iDykDj8hJO7X3xDecdRbc1n1Jy57Iw0zce5bvpaTaYTYfk2InTxgTDsKtiDJxdAzt
+	o34334Y5tTJ5ys5xDrPOb/0F39vwqqOgCjvWNXZMmB/Hk4UBeFzEydkY6rEswrv3iI5ya5psbJS+y
+	KEmiIpjjPVoMjW1GE2QbXv7WKXHlyXAhpqeSqt2jKUWHLipOs98K+iNgFRKZZEoh8/y0iFebK2bSW
+	HJKr3wlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0g3H-003TnM-20;
-	Wed, 08 Nov 2023 10:44:51 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1r0hFw-003jtt-1O;
+	Wed, 08 Nov 2023 12:02:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0g3B-003Tfd-1c
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Nov 2023 10:44:48 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-6b89ab5ddb7so6936882b3a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Nov 2023 02:44:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699440284; x=1700045084; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
-        b=ZT0WlVQC6Z0Pkv/j8D6ZSY6mw7630QOB2n+HO0aKZ4Q743x5602Z/6kyZahE/3+Isa
-         BjJp0eH8CUUbFwOzdsEyBkqrlFrtmAucCR9fHvNAv1xzMMsVMaF9ljAEFB2WGzXoaKTw
-         mNhCBc/rH/lBTQTYUgBxoHbz9qrNK4Tpq2lpo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699440284; x=1700045084;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
-        b=bYeBjMHfihjWWq4qVn6y+SkfB4ift1yWaTO/MvWvhLxvt5sY7kBP0nngH1Vcp1gcwC
-         s8QK0mfLd7omOFoV1M1wg52AXZzgG+upBbN1qvdC1KdTimjWhmX1Enkb+BpiTbx0uK9J
-         qzQZudTL8HIUBLbUC0VMkSgGvjKKA13zaNpZ5uD3W5fPQ9FO4GGhCWp6Ws4ykTnInw0u
-         NQMz0asYp1bTQ7fcBE5+uK+HYhXev15M1as4NLo0daRe7l3zHHtcgQru1iQMnGsGs5J7
-         i5tU+vYL2ieOmVBbtVxAnP0coz+1YkCE8l4xfE6mZqrQkAmLFx3Hu324eJbPi25rCdVX
-         8Kiw==
-X-Gm-Message-State: AOJu0Yzq541GLzgw2HlnYklU4nCj/bnCULtbey9lsUP2BoFXWwoQBuQe
-	P4WMdAapa9cCu4JPocqjfY5OUw==
-X-Google-Smtp-Source: AGHT+IEzqy1BibD2RC0l4kCSPsKsVPKvQCQxco2ue8t7SCmmOXz1P0lkP95g4IaHmCfbUqjrwn7xKw==
-X-Received: by 2002:a05:6a20:7f97:b0:14c:daa9:5e22 with SMTP id d23-20020a056a207f9700b0014cdaa95e22mr1989536pzj.45.1699440283822;
-        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id w12-20020a170902e88c00b001bb3beb2bc6sm1450272plg.65.2023.11.08.02.44.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
-Date: Wed, 8 Nov 2023 10:44:39 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v14 52/56] media: core: Add bitmap manage bufs array
- entries
-Message-ID: <20231108104439.oxpbbd2yro7u57t4@chromium.org>
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-53-benjamin.gaignard@collabora.com>
+	id 1r0hFt-003jtL-1V;
+	Wed, 08 Nov 2023 12:01:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BDC1361074;
+	Wed,  8 Nov 2023 12:01:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E3C1C433C7;
+	Wed,  8 Nov 2023 12:01:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699444916;
+	bh=kutHs17/gbiKysQ/W1InFavUEoGmwsEhseHr6fk22qQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FsWY3mQRJ//puz3e1Jo4bv+2xsysMMdkCggHX8mUQ/8RD88aMWeocjGRnLbTw2sg2
+	 gS7IMEa6Gbl8M62fvq7nZpelfVky5GKL6AIgtYFYjdlp5majhoG8+5q5hSYw+nz4Un
+	 PTX4A0sW0kE0ARqhLbo/jt0KOni6CB5bpEIU6PMeOWLhEIxkzTlkTqZyUHZpcNsdsH
+	 vsq+gFptzmBxathMBXguyFSq8hav8hPEgl9e1rlVOXhjcH0XslAAMYNrrWWzqVbSab
+	 1zl+NxgwQRqxgyH1ghE4CRGwosUgX7Yq+q8631ryj+PFxvAhp8tWeS2CShK2pgTB7L
+	 v2BkLCMphNZ9A==
+Date: Wed, 8 Nov 2023 12:01:51 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, kever.yang@rock-chips.com,
+	heiko@sntech.de, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
+	andy.yan@rock-chips.com
+Subject: Re: [PATCH v5 3/4] dt-bindings: clock: rk3588: export PCLK_VO1GRF
+ clk id
+Message-ID: <20231108-donation-uncertain-c4d0f560c420@spud>
+References: <20231108061822.4871-1-zhangqing@rock-chips.com>
+ <20231108061822.4871-4-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231031163104.112469-53-benjamin.gaignard@collabora.com>
+In-Reply-To: <20231108061822.4871-4-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_024445_569106_417DF0ED 
-X-CRM114-Status: GOOD (  34.28  )
+X-CRM114-CacheID: sfid-20231108_040157_548218_EC740142 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,251 +72,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7695571185221776114=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 05:31:00PM +0100, Benjamin Gaignard wrote:
-> Add a bitmap field to know which of bufs array entries are
-> used or not.
-> Remove no more used num_buffers field from queue structure.
-> Use bitmap_find_next_zero_area() to find the first possible
-> range when creating new buffers to fill the gaps.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+
+--===============7695571185221776114==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="iMx7EvP7YSPnohIE"
+Content-Disposition: inline
+
+
+--iMx7EvP7YSPnohIE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Nov 08, 2023 at 02:18:21PM +0800, Elaine Zhang wrote:
+> export PCLK_VO1GRF for DT.
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
->  .../media/common/videobuf2/videobuf2-core.c   | 42 +++++++++++++++----
->  include/media/videobuf2-core.h                | 15 ++++---
->  2 files changed, 42 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 2c8cf479a962..6e88406fcae9 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -416,11 +416,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->  {
-> -	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
-> +	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
->  
->  	q->bufs[index] = vb;
->  	vb->index = index;
->  	vb->vb2_queue = q;
-> +	set_bit(index, q->bufs_bitmap);
->  }
->  
->  /**
-> @@ -429,6 +430,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->   */
->  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
->  {
-> +	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
->  	vb->vb2_queue->bufs[vb->index] = NULL;
->  	vb->vb2_queue = NULL;
->  }
-> @@ -450,11 +452,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	unsigned long index;
->  	int ret;
->  
-> -	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
-> +	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
->  	num_buffers = min_t(unsigned int, num_buffers,
->  			    q->max_num_buffers - vb2_get_num_buffers(q));
->  
-> -	index = vb2_get_num_buffers(q);
-> +	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-> +					   0, num_buffers, 0);
->  
->  	*first_index = index;
->  
-> @@ -656,7 +659,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
->  		kfree(vb);
->  	}
->  
-> -	q->num_buffers -= buffers;
->  	if (!vb2_get_num_buffers(q)) {
->  		q->memory = VB2_MEMORY_UNKNOWN;
->  		INIT_LIST_HEAD(&q->queued_list);
-> @@ -874,6 +876,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
->  	if (!q->bufs)
->  		ret = -ENOMEM;
-> +
-> +	if (!q->bufs_bitmap)
-> +		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-> +	if (!q->bufs_bitmap) {
-> +		ret = -ENOMEM;
-> +		kfree(q->bufs);
-> +		q->bufs = NULL;
-> +	}
->  	q->memory = memory;
->  	mutex_unlock(&q->mmap_lock);
->  	if (ret)
-> @@ -943,7 +953,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	}
->  
->  	mutex_lock(&q->mmap_lock);
-> -	q->num_buffers = allocated_buffers;
->  
->  	if (ret < 0) {
->  		/*
-> @@ -970,6 +979,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	mutex_lock(&q->mmap_lock);
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  	mutex_unlock(&q->mmap_lock);
-> +	kfree(q->bufs);
-> +	q->bufs = NULL;
-> +	bitmap_free(q->bufs_bitmap);
-> +	q->bufs_bitmap = NULL;
->  	return ret;
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-> @@ -1006,9 +1019,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  		q->memory = memory;
->  		if (!q->bufs)
->  			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> -		if (!q->bufs)
-> +		if (!q->bufs) {
->  			ret = -ENOMEM;
-> +			goto unlock;
-> +		}
-> +		if (!q->bufs_bitmap)
-> +			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
+>  include/dt-bindings/clock/rockchip,rk3588-cru.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt=
+-bindings/clock/rockchip,rk3588-cru.h
+> index 5790b1391201..50ba72980190 100644
+> --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> @@ -733,8 +733,9 @@
+>  #define ACLK_AV1_PRE			718
+>  #define PCLK_AV1_PRE			719
+>  #define HCLK_SDIO_PRE			720
+> +#define PCLK_VO1GRF			721
+> =20
 
-Same as with the kcalloc(). Why not just allocate this in the core code,
-e.g. vb2_core_queue_init()?
+> -#define CLK_NR_CLKS			(HCLK_SDIO_PRE + 1)
+> +#define CLK_NR_CLKS			(PCLK_VO1GRF + 1)
 
-Actually, is it because we want to avoid allocating
-resources early, before the need to actually use the vb2 queue?
-If so, could this go to some other core function that runs later, e.g. __vb2_queue_alloc()?
+This definition is part of the ABI, if it is safe to change it, then it
+is safe to delete it.
 
-> +		if (!q->bufs_bitmap) {
-> +			ret = -ENOMEM;
-> +			kfree(q->bufs);
-> +			q->bufs = NULL;
-> +		}
->  		mutex_unlock(&q->mmap_lock);
-> +unlock:
->  		if (ret)
->  			return ret;
->  		q->waiting_for_buffers = !q->is_output;
-> @@ -1070,7 +1093,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	}
->  
->  	mutex_lock(&q->mmap_lock);
-> -	q->num_buffers += allocated_buffers;
->  
->  	if (ret < 0) {
->  		/*
-> @@ -2549,7 +2571,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_free(q, q->max_num_buffers);
->  	kfree(q->bufs);
->  	q->bufs = NULL;
-> -	q->num_buffers = 0;
-> +	bitmap_free(q->bufs_bitmap);
-> +	q->bufs_bitmap = NULL;
-> +
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> @@ -2904,7 +2928,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
->  	 * Check if we need to dequeue the buffer.
->  	 */
->  	index = fileio->cur_index;
-> -	if (index >= q->num_buffers) {
-> +	if (!test_bit(index, q->bufs_bitmap)) {
+> =20
+>  /* scmi-clocks indices */
+> =20
+> --=20
+> 2.17.1
+>=20
+>=20
 
-I don't like this low level manipulation of queue internals here (after all
-the work other patches did to use helpers). Why not just keep
-vb2_get_num_buffers() here?
+--iMx7EvP7YSPnohIE
+Content-Type: application/pgp-signature; name="signature.asc"
 
->  		struct vb2_buffer *b;
->  
->  		/*
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 6986ff4b77cd..288477075a0e 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -346,7 +346,7 @@ struct vb2_buffer {
->   *			describes the requested number of planes and sizes\[\]
->   *			contains the requested plane sizes. In this case
->   *			\*num_buffers are being allocated additionally to
-> - *			q->num_buffers. If either \*num_planes or the requested
-> + *			queue buffers. If either \*num_planes or the requested
+-----BEGIN PGP SIGNATURE-----
 
-Perhaps "the buffers already in the queue"?
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZUt4rwAKCRB4tDGHoIJi
+0qX4AQCiaZUvu8Hjo9g0xzPpB6/puP40C/jatJp8HVIooO70JgD+NnBufAYVlNOR
+UzY9jxnud216SsWfIFVq8L7Lq+cjEQA=
+=rTEt
+-----END PGP SIGNATURE-----
 
->   *			sizes are invalid callback must return %-EINVAL.
->   * @wait_prepare:	release any locks taken while calling vb2 functions;
->   *			it is called before an ioctl needs to wait for a new
-> @@ -557,7 +557,7 @@ struct vb2_buf_ops {
->   * @memory:	current memory type used
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
-> - * @num_buffers: number of allocated/used buffers
-> + * @bufs_bitmap: bitmap to manage bufs entries.
+--iMx7EvP7YSPnohIE--
 
-Perhaps "bitmap tracking whether each bufs[] entry is used"?
 
->   * @max_num_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
-> @@ -621,7 +621,7 @@ struct vb2_queue {
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
->  	struct vb2_buffer		**bufs;
-> -	unsigned int			num_buffers;
-> +	unsigned long			*bufs_bitmap;
->  	unsigned int			max_num_buffers;
->  
->  	struct list_head		queued_list;
-> @@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
->   */
->  static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
->  {
-> -	return q->num_buffers;
-> +	if (!q->bufs_bitmap)
-> +		return 0;
-> +
-> +	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
-
-Hmm, could we just cache the number of buffers we have, so that we don't
-have to go over the entire bitmap every time? (Basically just keep the
-code that we had for handling q->num_buffers before this patch.)
-
->  }
->  
->  /**
-> @@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
->  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
->  						unsigned int index)
->  {
-> -	if (!q->bufs)
-> +	if (!q->bufs_bitmap)
->  		return NULL;
->  
->  	if (index >= q->max_num_buffers)
->  		return NULL;
->  
-> -	if (index < q->num_buffers)
-> +	if (test_bit(index, q->bufs_bitmap))
-
-Aha, I see why we need the extra condition above now. Perhaps it should've
-been added in this patch instead?
-
->  		return q->bufs[index];
->  	return NULL;
->  }
-> -- 
-> 2.39.2
-> 
-
-Best regards,
-Tomasz
+--===============7695571185221776114==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7695571185221776114==--
+
