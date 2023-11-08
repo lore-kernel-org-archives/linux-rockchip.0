@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF107C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 06:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B1DC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 06:28:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xXwDsYp7IhOsxnkyS6BdXkigLMqcPlSAivS5l6nz7YM=; b=o4BNmtaPvLJ6TM
-	lSyk2j/snVCe9iQZs+Ne8GlsxGy6U1GGrKPkPjeGa+JpT4yAgewwiRN644AjY1jOuIayPeyk8cvTa
-	xvw+DQR1CHElOecuGulMH09v/jfckxBRKjcSbyGh8OxS27Gfqgc9Z7IG4ubwd1hir5zil42xJqYT1
-	KcQjJSbasuO5ZsfmVWS4JUZf0Bxb7C5azb4TDUGNduXccOdPq7nEz4UIjTF6+NlRPe+ZmBb4PfGJq
-	bnbGu7/nb1ltFZlUHoU6By/9OOyu5UYfJR08Yez9hdvdRpcikkR2+hPITox/BPBkUMeanf7Kik7Yd
-	RYsUZOufyapcBokQdDgA==;
+	List-Owner; bh=QdeACeba13jyCYYB07RYwrlKV3z7ZBrUfWGu6k6q2A4=; b=ywNykdqXE+vK+k
+	DkWJ02gM9fMuvYzrRGD5i45GvxhztD6FzAMK1GalkeGGJAkgKu0IWP/Ua4ed3pQIxye4aAvmpqVcA
+	nJqcJ5Bg+0Bc3/erYoU3+kQyK33Lib5arqreBkYV+AxGpUu6VqXtgeYCLQUIr6TkgpLXBPKwywb2K
+	dUF5DqSBNGKPr/cVgVuEFrj6rj/Qb5QaF0dXV/7aWignnzzj/ppzEQNqTOxPK35htY3ZDwMVLs6OH
+	PTB4koPjRzYyXpSGMSso9N4PBc7U0PbwmwsYP1CZBNWJI7MJo8wghL5gP8WSaG+pSg8WMZvx9iHg2
+	WZV1cfVldQgr19EGPkRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0byP-0034Nb-0f;
-	Wed, 08 Nov 2023 06:23:33 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1r0c2j-0034xw-1W;
+	Wed, 08 Nov 2023 06:28:01 +0000
+Received: from mail-m6010.netease.com ([210.79.60.10])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0byK-0034LU-2L
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Nov 2023 06:23:31 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-6c396ef9a3dso3538767b3a.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Nov 2023 22:23:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699424607; x=1700029407; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=q9PXT7WtNc9war0QIYrSKiH8o0H7yV2HB6Vr4SCPxz8=;
-        b=OHzmfZXOzOi9ERk2DrEd8H+M1MWex679ikHKkvVhlgCgRznL+1xTNhvG/n7eyI0tWo
-         Re/17Bs4/0Npf/JCvS3jWueJp35cU73AioyrmwXrg6EEl5kl8QjxEE3Q6FBrW+oai9Ml
-         xcOkXrF6YyE8cwUtq7vIouG6a6YIlGnt5qCJ8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699424607; x=1700029407;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q9PXT7WtNc9war0QIYrSKiH8o0H7yV2HB6Vr4SCPxz8=;
-        b=paOIcJOlbxHrrdoS21a7wRQcHOsXCBaHWsThkhzrrNqu9qMPm7PzutTP3hN56bcj64
-         3WqZ1J16xoVHzV62pUH8M9MP9Y8xmxG/nAvQaFZIMIR4asE4t2F7Gu7tOltF87luQ9Y3
-         Ep40eIU/yg7XWufqMLkrd7QkG7EAl/i8jbQh7KAOzNL96bN0muntSrrD+6MvK/1i+TqM
-         jnKI83lDb8vOHdtCTYhFr89XtWxHOCEYaqWgO7cWWAjr2kHeohnJcXh/3V4zNFrmvW6+
-         wZhIvCBal+Iw7y/QajAhdB5lTT/ljaDBNwZXA3nh2gmNMxjDUufYZZJdsJN4hYxap8AU
-         MrvQ==
-X-Gm-Message-State: AOJu0YzLIpdMbnJ8e2tu3u0AAHSoUpJ4A86ETWv/mG6O4427XPdr9BHe
-	XIB+lPkNJf8hJoVN+uYFyWrATw==
-X-Google-Smtp-Source: AGHT+IEE1CcP9XDcoi36X9nEdzrJoWVV/Ohs+mfJ3KeghFslU25c0yPM0dXQu3eD4ho1jOb9TiTM7Q==
-X-Received: by 2002:a05:6a21:7185:b0:181:1cfa:4106 with SMTP id wq5-20020a056a21718500b001811cfa4106mr1507162pzb.62.1699424606696;
-        Tue, 07 Nov 2023 22:23:26 -0800 (PST)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id b21-20020a170902b61500b001c9c97beb9csm879787pls.71.2023.11.07.22.23.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Nov 2023 22:23:26 -0800 (PST)
-Date: Wed, 8 Nov 2023 06:23:22 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v14 02/56] media: videobuf2: Rework offset 'cookie'
- encoding pattern
-Message-ID: <20231108062322.l2k2n2jlpoaa4tws@chromium.org>
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-3-benjamin.gaignard@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231031163104.112469-3-benjamin.gaignard@collabora.com>
+	id 1r0c2g-0034x5-0C;
+	Wed, 08 Nov 2023 06:27:59 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=JQ9YS+K2TeSv6VPrUp5ha/ZcZV5v0ebwyKo9b/+UYL584zoPILrwFLnFfZNDdFK9bHQ7nSIK5Xmgf4YXFnhNznROO1RyfX7KnIjBIn3BJdPhVVDb/tjQcjOSGiBJxt/gIT1Yb2nWS85ndD/Y1gbefde8k00Z8TJpyGovby0PGFg=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=ZNeB2wozA8E90INwwcWUSVp2xe4Q7ySaQgoaY7gbCkY=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 5B78B40030F;
+	Wed,  8 Nov 2023 14:18:28 +0800 (CST)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	kever.yang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com,
+	andy.yan@rock-chips.com
+Subject: [PATCH v5 1/4] clk: gate: export clk_gate_endisable
+Date: Wed,  8 Nov 2023 14:18:19 +0800
+Message-Id: <20231108061822.4871-2-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231108061822.4871-1-zhangqing@rock-chips.com>
+References: <20231108061822.4871-1-zhangqing@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhlLT1ZNSkIdSUpOSB1PTRlVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8bad950dcc2eb3kusn5b78b40030f
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mz46IRw4DTw3MQoqPChCSE03
+	DTEKCT1VSlVKTUJCT0lPSEtCSElIVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhLSUw3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_222328_784065_CE99AC87 
-X-CRM114-Status: GOOD (  36.45  )
+X-CRM114-CacheID: sfid-20231107_222758_279751_644E40CB 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,212 +79,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+make clk_gate_endisable not static, export API for other use.
 
-On Tue, Oct 31, 2023 at 05:30:10PM +0100, Benjamin Gaignard wrote:
-> Change how offset 'cookie' field value is computed to make possible
-> to use more buffers.
-> The maximum number of buffers depends of PAGE_SHIFT value and can
-> go up to 0x7fff when PAGE_SHIFT = 12.
-> With this encoding pattern we know the maximum number that a queue
-> could store so we can check it at  queue init time.
-> It also make easier and faster to find buffer and plane from using
-> the offset field.
-> Change __find_plane_by_offset() prototype to return the video buffer
-> itself rather than it index.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 73 +++++++++----------
->  1 file changed, 35 insertions(+), 38 deletions(-)
-> 
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/clk-gate.c       | 3 ++-
+ include/linux/clk-provider.h | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-Thanks a lot for working on this series. Just one comment inline.
+diff --git a/drivers/clk/clk-gate.c b/drivers/clk/clk-gate.c
+index 68e585a02fd9..531bb84a5b3e 100644
+--- a/drivers/clk/clk-gate.c
++++ b/drivers/clk/clk-gate.c
+@@ -53,7 +53,7 @@ static inline void clk_gate_writel(struct clk_gate *gate, u32 val)
+  *
+  * So, result is always: enable xor set2dis.
+  */
+-static void clk_gate_endisable(struct clk_hw *hw, int enable)
++void clk_gate_endisable(struct clk_hw *hw, int enable)
+ {
+ 	struct clk_gate *gate = to_clk_gate(hw);
+ 	int set = gate->flags & CLK_GATE_SET_TO_DISABLE ? 1 : 0;
+@@ -87,6 +87,7 @@ static void clk_gate_endisable(struct clk_hw *hw, int enable)
+ 	else
+ 		__release(gate->lock);
+ }
++EXPORT_SYMBOL_GPL(clk_gate_endisable);
+ 
+ static int clk_gate_enable(struct clk_hw *hw)
+ {
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index ace3a4ce2fc9..76b050d73feb 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -630,6 +630,7 @@ struct clk *clk_register_gate(struct device *dev, const char *name,
+ void clk_unregister_gate(struct clk *clk);
+ void clk_hw_unregister_gate(struct clk_hw *hw);
+ int clk_gate_is_enabled(struct clk_hw *hw);
++void clk_gate_endisable(struct clk_hw *hw, int enable);
+ 
+ struct clk_div_table {
+ 	unsigned int	val;
+-- 
+2.17.1
 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index a5e57affeb30..09be8e026044 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -31,6 +31,11 @@
->  
->  #include <trace/events/vb2.h>
->  
-> +#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
-> +#define PLANE_INDEX_MASK	0x7
-
-Could we somehow ensure that it indeed matches VIDEO_MAX_PLANES?
-
-One thing that comes to my mind would be
-
-#define PLANE_INDEX_BITS	3
-#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + PLANE_INDEX_BITS)
-#define PLANE_INDEX_MASK	BIT_MASK(PLANE_INDEX_BITS)
-
-BUILD_BUG_ON(BIT(PLANE_INDEX_BITS) != VIDEO_MAX_PLANES);
-
-Alternatively we could change the videodev2.h, so that we have
-
-#define VIDEO_MAX_PLANES_BITS	3
-#define VIDEO_MAX_PLANES	(1U < VIDEO_MAX_PLANES_BITS)
-
-and then we can just VIDEO_MAX_PLANES_BITS in our definitions in this file
-and no checks would be necessary.
-
-Best regards,
-Tomasz
-
-> +#define MAX_BUFFER_INDEX	BIT_MASK(30 - PLANE_INDEX_SHIFT)
-> +#define BUFFER_INDEX_MASK	(MAX_BUFFER_INDEX - 1)
-> +
->  static int debug;
->  module_param(debug, int, 0644);
->  
-> @@ -358,21 +363,27 @@ static void __setup_offsets(struct vb2_buffer *vb)
->  	unsigned int plane;
->  	unsigned long offset = 0;
->  
-> -	if (vb->index) {
-> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
-> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
-> -
-> -		offset = PAGE_ALIGN(p->m.offset + p->length);
-> -	}
-> +	/*
-> +	 * The offset "cookie" value has the following constraints:
-> +	 * - a buffer can have up to 8 planes.
-> +	 * - v4l2 mem2mem uses bit 30 to distinguish between
-> +	 *   OUTPUT (aka "source", bit 30 is 0) and
-> +	 *   CAPTURE (aka "destination", bit 30 is 1) buffers.
-> +	 * - must be page aligned
-> +	 * That led to this bit mapping when PAGE_SHIFT = 12:
-> +	 * |30                |29        15|14       12|11 0|
-> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
-> +	 * where there are 15 bits to store the buffer index.
-> +	 * Depending on PAGE_SHIFT value we can have fewer bits
-> +	 * to store the buffer index.
-> +	 */
-> +	offset = vb->index << PLANE_INDEX_SHIFT;
->  
->  	for (plane = 0; plane < vb->num_planes; ++plane) {
-> -		vb->planes[plane].m.offset = offset;
-> +		vb->planes[plane].m.offset = offset + (plane << PAGE_SHIFT);
->  
->  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
->  				vb->index, plane, offset);
-> -
-> -		offset += vb->planes[plane].length;
-> -		offset = PAGE_ALIGN(offset);
->  	}
->  }
->  
-> @@ -2188,10 +2199,9 @@ EXPORT_SYMBOL_GPL(vb2_core_streamoff);
->   * __find_plane_by_offset() - find plane associated with the given offset
->   */
->  static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
-> -			unsigned int *_buffer, unsigned int *_plane)
-> +			struct vb2_buffer **vb, unsigned int *plane)
->  {
-> -	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int buffer;
->  
->  	/*
->  	 * Sanity checks to ensure the lock is held, MEMORY_MMAP is
-> @@ -2209,24 +2219,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
->  		return -EBUSY;
->  	}
->  
-> -	/*
-> -	 * Go over all buffers and their planes, comparing the given offset
-> -	 * with an offset assigned to each plane. If a match is found,
-> -	 * return its buffer and plane numbers.
-> -	 */
-> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
-> -		vb = q->bufs[buffer];
-> +	/* Get buffer and plane from the offset */
-> +	buffer = (offset >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
-> +	*plane = (offset >> PAGE_SHIFT) & PLANE_INDEX_MASK;
->  
-> -		for (plane = 0; plane < vb->num_planes; ++plane) {
-> -			if (vb->planes[plane].m.offset == offset) {
-> -				*_buffer = buffer;
-> -				*_plane = plane;
-> -				return 0;
-> -			}
-> -		}
-> -	}
-> +	if (buffer >= q->num_buffers || *plane >= q->bufs[buffer]->num_planes)
-> +		return -EINVAL;
->  
-> -	return -EINVAL;
-> +	*vb = q->bufs[buffer];
-> +	return 0;
->  }
->  
->  int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
-> @@ -2306,7 +2307,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  {
->  	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer = 0, plane = 0;
-> +	unsigned int plane = 0;
->  	int ret;
->  	unsigned long length;
->  
-> @@ -2335,12 +2336,10 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, offset, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	/*
->  	 * MMAP requires page_aligned buffers.
->  	 * The buffer length was page_aligned at __vb2_buf_mem_alloc(),
-> @@ -2368,7 +2367,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
->  	if (ret)
->  		return ret;
->  
-> -	dprintk(q, 3, "buffer %d, plane %d successfully mapped\n", buffer, plane);
-> +	dprintk(q, 3, "buffer %u, plane %d successfully mapped\n", vb->index, plane);
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(vb2_mmap);
-> @@ -2382,7 +2381,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  {
->  	unsigned long offset = pgoff << PAGE_SHIFT;
->  	struct vb2_buffer *vb;
-> -	unsigned int buffer, plane;
-> +	unsigned int plane;
->  	void *vaddr;
->  	int ret;
->  
-> @@ -2392,12 +2391,10 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
->  	 * Find the plane corresponding to the offset passed by userspace. This
->  	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
->  	 */
-> -	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
-> +	ret = __find_plane_by_offset(q, offset, &vb, &plane);
->  	if (ret)
->  		goto unlock;
->  
-> -	vb = q->bufs[buffer];
-> -
->  	vaddr = vb2_plane_vaddr(vb, plane);
->  	mutex_unlock(&q->mmap_lock);
->  	return vaddr ? (unsigned long)vaddr : -EINVAL;
-> -- 
-> 2.39.2
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
