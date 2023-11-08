@@ -4,58 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32CAC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 10:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F3BC4167D
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 10:45:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9KIKJlXx2ddlzVcfMQ1kc9Ei3WsvuI33Rr4RCzm1s2M=; b=ximzVfN9zPxvEX
-	hpzgZNCYLUXaGBqCFIxzCt0s/pgrYgiex0YpqjMqs8C2j7SrkpS8/f05tkY4zCHEDCJPE5NkrFJyu
-	zMzUargYBmxAIUX7Y2oZBP+DncBiZyPLkF2HuR9/TblB6jM7qBllNx/1mYcdVHybsKCApyTMtvAdC
-	4WgyFaXgnvb0eiMyHNreTEziPI4h+aSNNgWVASgSCDQPL6jQicR4YlWZh6H0bHTww5pRaZPiL9KjB
-	Y2ps8s058e0AtLYHyD4BY+fR19sJ1y188D7MYOIIYsc6d5aDptxvOl+wWzJxRT1j1iMUi96wEtJ7U
-	Dex3cYiCg2ZqqnUNQz/A==;
+	List-Owner; bh=r/kyB4d8QiJJGbOKcscUZu4QnT8jdwwRvm0WRYSzfiA=; b=v0OBpG/GI5WfGL
+	rY5dj+wzEQTbn4lp/du5g4xaHNqeAVajzpldIY5yynTTBrs/JwVIJ2nt4DQDOZEb2numbS9h5HekT
+	h59ITd936o2J1xQEFSvq+R2EQmObpV5sf8CDeHYB4UQyb2drfRWO48imzO4Fg1/2KbI2eq5pBbMHh
+	aTEe7rtjoYLNZtWMNXOdrou5A6ZIS1/4JBBUIBcKuN+Y4YRA9XFDBPKEofGTKl6xJY87w2+zLFIHV
+	D9Ieh0p8LRqMPMgDuKzTHB88DXz9kKvTbEQ9PyZxejdcVJapBGpn/ksu2hf/oL/OgQlJX+VdYexqQ
+	Ie+SdE9uq54suOQ6ClKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0fqP-003S4T-1H;
-	Wed, 08 Nov 2023 10:31:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1r0g3H-003TnM-20;
+	Wed, 08 Nov 2023 10:44:51 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0fqL-003S2y-1X;
-	Wed, 08 Nov 2023 10:31:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5F52B614ED;
-	Wed,  8 Nov 2023 10:31:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEBC3C433C8;
-	Wed,  8 Nov 2023 10:31:24 +0000 (UTC)
-Message-ID: <38382016-4769-411d-b0bf-35ce05753abd@xs4all.nl>
-Date: Wed, 8 Nov 2023 11:31:22 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 02/56] media: videobuf2: Rework offset 'cookie'
- encoding pattern
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tomasz Figa <tfiga@chromium.org>
+	id 1r0g3B-003Tfd-1c
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Nov 2023 10:44:48 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-6b89ab5ddb7so6936882b3a.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 08 Nov 2023 02:44:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699440284; x=1700045084; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
+        b=ZT0WlVQC6Z0Pkv/j8D6ZSY6mw7630QOB2n+HO0aKZ4Q743x5602Z/6kyZahE/3+Isa
+         BjJp0eH8CUUbFwOzdsEyBkqrlFrtmAucCR9fHvNAv1xzMMsVMaF9ljAEFB2WGzXoaKTw
+         mNhCBc/rH/lBTQTYUgBxoHbz9qrNK4Tpq2lpo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699440284; x=1700045084;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gKTyWokpX5cgue49QDtZFQPjUpwVAu8TbIboU5lRKS0=;
+        b=bYeBjMHfihjWWq4qVn6y+SkfB4ift1yWaTO/MvWvhLxvt5sY7kBP0nngH1Vcp1gcwC
+         s8QK0mfLd7omOFoV1M1wg52AXZzgG+upBbN1qvdC1KdTimjWhmX1Enkb+BpiTbx0uK9J
+         qzQZudTL8HIUBLbUC0VMkSgGvjKKA13zaNpZ5uD3W5fPQ9FO4GGhCWp6Ws4ykTnInw0u
+         NQMz0asYp1bTQ7fcBE5+uK+HYhXev15M1as4NLo0daRe7l3zHHtcgQru1iQMnGsGs5J7
+         i5tU+vYL2ieOmVBbtVxAnP0coz+1YkCE8l4xfE6mZqrQkAmLFx3Hu324eJbPi25rCdVX
+         8Kiw==
+X-Gm-Message-State: AOJu0Yzq541GLzgw2HlnYklU4nCj/bnCULtbey9lsUP2BoFXWwoQBuQe
+	P4WMdAapa9cCu4JPocqjfY5OUw==
+X-Google-Smtp-Source: AGHT+IEzqy1BibD2RC0l4kCSPsKsVPKvQCQxco2ue8t7SCmmOXz1P0lkP95g4IaHmCfbUqjrwn7xKw==
+X-Received: by 2002:a05:6a20:7f97:b0:14c:daa9:5e22 with SMTP id d23-20020a056a207f9700b0014cdaa95e22mr1989536pzj.45.1699440283822;
+        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id w12-20020a170902e88c00b001bb3beb2bc6sm1450272plg.65.2023.11.08.02.44.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Nov 2023 02:44:43 -0800 (PST)
+Date: Wed, 8 Nov 2023 10:44:39 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v14 52/56] media: core: Add bitmap manage bufs array
+ entries
+Message-ID: <20231108104439.oxpbbd2yro7u57t4@chromium.org>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-3-benjamin.gaignard@collabora.com>
- <20231108062322.l2k2n2jlpoaa4tws@chromium.org>
- <ce33854a-f547-411a-a747-2d32d442b15e@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <ce33854a-f547-411a-a747-2d32d442b15e@collabora.com>
+ <20231031163104.112469-53-benjamin.gaignard@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231031163104.112469-53-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_023129_618075_F13240C1 
-X-CRM114-Status: GOOD (  27.11  )
+X-CRM114-CacheID: sfid-20231108_024445_569106_417DF0ED 
+X-CRM114-Status: GOOD (  34.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,165 +91,251 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDgvMTEvMjAyMyAxMToxNCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gCj4gTGUgMDgv
-MTEvMjAyMyDDoCAwNzoyMywgVG9tYXN6IEZpZ2EgYSDDqWNyaXTCoDoKPj4gSGkgQmVuamFtaW4s
-Cj4+Cj4+IE9uIFR1ZSwgT2N0IDMxLCAyMDIzIGF0IDA1OjMwOjEwUE0gKzAxMDAsIEJlbmphbWlu
-IEdhaWduYXJkIHdyb3RlOgo+Pj4gQ2hhbmdlIGhvdyBvZmZzZXQgJ2Nvb2tpZScgZmllbGQgdmFs
-dWUgaXMgY29tcHV0ZWQgdG8gbWFrZSBwb3NzaWJsZQo+Pj4gdG8gdXNlIG1vcmUgYnVmZmVycy4K
-Pj4+IFRoZSBtYXhpbXVtIG51bWJlciBvZiBidWZmZXJzIGRlcGVuZHMgb2YgUEFHRV9TSElGVCB2
-YWx1ZSBhbmQgY2FuCj4+PiBnbyB1cCB0byAweDdmZmYgd2hlbiBQQUdFX1NISUZUID0gMTIuCj4+
-PiBXaXRoIHRoaXMgZW5jb2RpbmcgcGF0dGVybiB3ZSBrbm93IHRoZSBtYXhpbXVtIG51bWJlciB0
-aGF0IGEgcXVldWUKPj4+IGNvdWxkIHN0b3JlIHNvIHdlIGNhbiBjaGVjayBpdCBhdMKgIHF1ZXVl
-IGluaXQgdGltZS4KPj4+IEl0IGFsc28gbWFrZSBlYXNpZXIgYW5kIGZhc3RlciB0byBmaW5kIGJ1
-ZmZlciBhbmQgcGxhbmUgZnJvbSB1c2luZwo+Pj4gdGhlIG9mZnNldCBmaWVsZC4KPj4+IENoYW5n
-ZSBfX2ZpbmRfcGxhbmVfYnlfb2Zmc2V0KCkgcHJvdG90eXBlIHRvIHJldHVybiB0aGUgdmlkZW8g
-YnVmZmVyCj4+PiBpdHNlbGYgcmF0aGVyIHRoYW4gaXQgaW5kZXguCj4+Pgo+Pj4gU2lnbmVkLW9m
-Zi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+
-Cj4+PiAtLS0KPj4+IMKgIC4uLi9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3Jl
-LmPCoMKgIHwgNzMgKysrKysrKysrLS0tLS0tLS0tLQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDM1
-IGluc2VydGlvbnMoKyksIDM4IGRlbGV0aW9ucygtKQo+Pj4KPj4gVGhhbmtzIGEgbG90IGZvciB3
-b3JraW5nIG9uIHRoaXMgc2VyaWVzLiBKdXN0IG9uZSBjb21tZW50IGlubGluZS4KPj4KPj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUu
-YyBiL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jCj4+PiBp
-bmRleCBhNWU1N2FmZmViMzAuLjA5YmU4ZTAyNjA0NCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMv
-bWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jCj4+PiArKysgYi9kcml2ZXJz
-L21lZGlhL2NvbW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+Pj4gQEAgLTMxLDYgKzMx
-LDExIEBACj4+PiDCoCDCoCAjaW5jbHVkZSA8dHJhY2UvZXZlbnRzL3ZiMi5oPgo+Pj4gwqAgKyNk
-ZWZpbmUgUExBTkVfSU5ERVhfU0hJRlTCoMKgwqAgKFBBR0VfU0hJRlQgKyAzKQo+Pj4gKyNkZWZp
-bmUgUExBTkVfSU5ERVhfTUFTS8KgwqDCoCAweDcKPj4gQ291bGQgd2Ugc29tZWhvdyBlbnN1cmUg
-dGhhdCBpdCBpbmRlZWQgbWF0Y2hlcyBWSURFT19NQVhfUExBTkVTPwo+Pgo+PiBPbmUgdGhpbmcg
-dGhhdCBjb21lcyB0byBteSBtaW5kIHdvdWxkIGJlCj4+Cj4+ICNkZWZpbmUgUExBTkVfSU5ERVhf
-QklUU8KgwqDCoCAzCj4+ICNkZWZpbmUgUExBTkVfSU5ERVhfU0hJRlTCoMKgwqAgKFBBR0VfU0hJ
-RlQgKyBQTEFORV9JTkRFWF9CSVRTKQo+PiAjZGVmaW5lIFBMQU5FX0lOREVYX01BU0vCoMKgwqAg
-QklUX01BU0soUExBTkVfSU5ERVhfQklUUykKPj4KPj4gQlVJTERfQlVHX09OKEJJVChQTEFORV9J
-TkRFWF9CSVRTKSAhPSBWSURFT19NQVhfUExBTkVTKTsKPj4KPj4gQWx0ZXJuYXRpdmVseSB3ZSBj
-b3VsZCBjaGFuZ2UgdGhlIHZpZGVvZGV2Mi5oLCBzbyB0aGF0IHdlIGhhdmUKPj4KPj4gI2RlZmlu
-ZSBWSURFT19NQVhfUExBTkVTX0JJVFPCoMKgwqAgMwo+PiAjZGVmaW5lIFZJREVPX01BWF9QTEFO
-RVPCoMKgwqAgKDFVIDwgVklERU9fTUFYX1BMQU5FU19CSVRTKQo+Pgo+PiBhbmQgdGhlbiB3ZSBj
-YW4ganVzdCBWSURFT19NQVhfUExBTkVTX0JJVFMgaW4gb3VyIGRlZmluaXRpb25zIGluIHRoaXMg
-ZmlsZQo+PiBhbmQgbm8gY2hlY2tzIHdvdWxkIGJlIG5lY2Vzc2FyeS4KPiAKPiBJIHdvdWxkIHBy
-ZWZlciB0aGlzIHNvbHV0aW9uLgo+IEhhbnMgc2hvdWxkIEkgZG8gdGhhdCBpbiBhbiBvdGhlciBw
-YXRjaCA/CgpJIHByZWZlciB0byBub3QgbWFrZSBjaGFuZ2VzIGluIHZpZGVvZGV2Mi5oLCB0byBi
-ZSBob25lc3QuIEkgdGhpbmsgaXQgaXMgZmluZSB0bwpqdXN0IGFkZCBhIGNoZWNrIGluIHZpZGVv
-YnVmMi1jb3JlLmMuCgpSZWdhcmRzLAoKCUhhbnMKCj4gCj4gUmVnYXJkcywKPiBCZW5qYW1pbgo+
-IAo+Pgo+PiBCZXN0IHJlZ2FyZHMsCj4+IFRvbWFzego+Pgo+Pj4gKyNkZWZpbmUgTUFYX0JVRkZF
-Ul9JTkRFWMKgwqDCoCBCSVRfTUFTSygzMCAtIFBMQU5FX0lOREVYX1NISUZUKQo+Pj4gKyNkZWZp
-bmUgQlVGRkVSX0lOREVYX01BU0vCoMKgwqAgKE1BWF9CVUZGRVJfSU5ERVggLSAxKQo+Pj4gKwo+
-Pj4gwqAgc3RhdGljIGludCBkZWJ1ZzsKPj4+IMKgIG1vZHVsZV9wYXJhbShkZWJ1ZywgaW50LCAw
-NjQ0KTsKPj4+IMKgIEBAIC0zNTgsMjEgKzM2MywyNyBAQCBzdGF0aWMgdm9pZCBfX3NldHVwX29m
-ZnNldHMoc3RydWN0IHZiMl9idWZmZXIgKnZiKQo+Pj4gwqDCoMKgwqDCoCB1bnNpZ25lZCBpbnQg
-cGxhbmU7Cj4+PiDCoMKgwqDCoMKgIHVuc2lnbmVkIGxvbmcgb2Zmc2V0ID0gMDsKPj4+IMKgIC3C
-oMKgwqAgaWYgKHZiLT5pbmRleCkgewo+Pj4gLcKgwqDCoMKgwqDCoMKgIHN0cnVjdCB2YjJfYnVm
-ZmVyICpwcmV2ID0gcS0+YnVmc1t2Yi0+aW5kZXggLSAxXTsKPj4+IC3CoMKgwqDCoMKgwqDCoCBz
-dHJ1Y3QgdmIyX3BsYW5lICpwID0gJnByZXYtPnBsYW5lc1twcmV2LT5udW1fcGxhbmVzIC0gMV07
-Cj4+PiAtCj4+PiAtwqDCoMKgwqDCoMKgwqAgb2Zmc2V0ID0gUEFHRV9BTElHTihwLT5tLm9mZnNl
-dCArIHAtPmxlbmd0aCk7Cj4+PiAtwqDCoMKgIH0KPj4+ICvCoMKgwqAgLyoKPj4+ICvCoMKgwqDC
-oCAqIFRoZSBvZmZzZXQgImNvb2tpZSIgdmFsdWUgaGFzIHRoZSBmb2xsb3dpbmcgY29uc3RyYWlu
-dHM6Cj4+PiArwqDCoMKgwqAgKiAtIGEgYnVmZmVyIGNhbiBoYXZlIHVwIHRvIDggcGxhbmVzLgo+
-Pj4gK8KgwqDCoMKgICogLSB2NGwyIG1lbTJtZW0gdXNlcyBiaXQgMzAgdG8gZGlzdGluZ3Vpc2gg
-YmV0d2Vlbgo+Pj4gK8KgwqDCoMKgICrCoMKgIE9VVFBVVCAoYWthICJzb3VyY2UiLCBiaXQgMzAg
-aXMgMCkgYW5kCj4+PiArwqDCoMKgwqAgKsKgwqAgQ0FQVFVSRSAoYWthICJkZXN0aW5hdGlvbiIs
-IGJpdCAzMCBpcyAxKSBidWZmZXJzLgo+Pj4gK8KgwqDCoMKgICogLSBtdXN0IGJlIHBhZ2UgYWxp
-Z25lZAo+Pj4gK8KgwqDCoMKgICogVGhhdCBsZWQgdG8gdGhpcyBiaXQgbWFwcGluZyB3aGVuIFBB
-R0VfU0hJRlQgPSAxMjoKPj4+ICvCoMKgwqDCoCAqIHwzMMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8MjnCoMKgwqDCoMKgwqDCoCAxNXwxNMKgwqDCoMKgwqDCoCAxMnwxMSAwfAo+Pj4g
-K8KgwqDCoMKgICogfERTVF9RVUVVRV9PRkZfQkFTRXxidWZmZXIgaW5kZXh8cGxhbmUgaW5kZXh8
-IDDCoCB8Cj4+PiArwqDCoMKgwqAgKiB3aGVyZSB0aGVyZSBhcmUgMTUgYml0cyB0byBzdG9yZSB0
-aGUgYnVmZmVyIGluZGV4Lgo+Pj4gK8KgwqDCoMKgICogRGVwZW5kaW5nIG9uIFBBR0VfU0hJRlQg
-dmFsdWUgd2UgY2FuIGhhdmUgZmV3ZXIgYml0cwo+Pj4gK8KgwqDCoMKgICogdG8gc3RvcmUgdGhl
-IGJ1ZmZlciBpbmRleC4KPj4+ICvCoMKgwqDCoCAqLwo+Pj4gK8KgwqDCoCBvZmZzZXQgPSB2Yi0+
-aW5kZXggPDwgUExBTkVfSU5ERVhfU0hJRlQ7Cj4+PiDCoCDCoMKgwqDCoMKgIGZvciAocGxhbmUg
-PSAwOyBwbGFuZSA8IHZiLT5udW1fcGxhbmVzOyArK3BsYW5lKSB7Cj4+PiAtwqDCoMKgwqDCoMKg
-wqAgdmItPnBsYW5lc1twbGFuZV0ubS5vZmZzZXQgPSBvZmZzZXQ7Cj4+PiArwqDCoMKgwqDCoMKg
-wqAgdmItPnBsYW5lc1twbGFuZV0ubS5vZmZzZXQgPSBvZmZzZXQgKyAocGxhbmUgPDwgUEFHRV9T
-SElGVCk7Cj4+PiDCoCDCoMKgwqDCoMKgwqDCoMKgwqAgZHByaW50ayhxLCAzLCAiYnVmZmVyICVk
-LCBwbGFuZSAlZCBvZmZzZXQgMHglMDhseFxuIiwKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgdmItPmluZGV4LCBwbGFuZSwgb2Zmc2V0KTsKPj4+IC0KPj4+IC3CoMKgwqDC
-oMKgwqDCoCBvZmZzZXQgKz0gdmItPnBsYW5lc1twbGFuZV0ubGVuZ3RoOwo+Pj4gLcKgwqDCoMKg
-wqDCoMKgIG9mZnNldCA9IFBBR0VfQUxJR04ob2Zmc2V0KTsKPj4+IMKgwqDCoMKgwqAgfQo+Pj4g
-wqAgfQo+Pj4gwqAgQEAgLTIxODgsMTAgKzIxOTksOSBAQCBFWFBPUlRfU1lNQk9MX0dQTCh2YjJf
-Y29yZV9zdHJlYW1vZmYpOwo+Pj4gwqDCoCAqIF9fZmluZF9wbGFuZV9ieV9vZmZzZXQoKSAtIGZp
-bmQgcGxhbmUgYXNzb2NpYXRlZCB3aXRoIHRoZSBnaXZlbiBvZmZzZXQKPj4+IMKgwqAgKi8KPj4+
-IMKgIHN0YXRpYyBpbnQgX19maW5kX3BsYW5lX2J5X29mZnNldChzdHJ1Y3QgdmIyX3F1ZXVlICpx
-LCB1bnNpZ25lZCBsb25nIG9mZnNldCwKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHVuc2ln
-bmVkIGludCAqX2J1ZmZlciwgdW5zaWduZWQgaW50ICpfcGxhbmUpCj4+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBzdHJ1Y3QgdmIyX2J1ZmZlciAqKnZiLCB1bnNpZ25lZCBpbnQgKnBsYW5lKQo+
-Pj4gwqAgewo+Pj4gLcKgwqDCoCBzdHJ1Y3QgdmIyX2J1ZmZlciAqdmI7Cj4+PiAtwqDCoMKgIHVu
-c2lnbmVkIGludCBidWZmZXIsIHBsYW5lOwo+Pj4gK8KgwqDCoCB1bnNpZ25lZCBpbnQgYnVmZmVy
-Owo+Pj4gwqAgwqDCoMKgwqDCoCAvKgo+Pj4gwqDCoMKgwqDCoMKgICogU2FuaXR5IGNoZWNrcyB0
-byBlbnN1cmUgdGhlIGxvY2sgaXMgaGVsZCwgTUVNT1JZX01NQVAgaXMKPj4+IEBAIC0yMjA5LDI0
-ICsyMjE5LDE1IEBAIHN0YXRpYyBpbnQgX19maW5kX3BsYW5lX2J5X29mZnNldChzdHJ1Y3QgdmIy
-X3F1ZXVlICpxLCB1bnNpZ25lZCBsb25nIG9mZnNldCwKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBy
-ZXR1cm4gLUVCVVNZOwo+Pj4gwqDCoMKgwqDCoCB9Cj4+PiDCoCAtwqDCoMKgIC8qCj4+PiAtwqDC
-oMKgwqAgKiBHbyBvdmVyIGFsbCBidWZmZXJzIGFuZCB0aGVpciBwbGFuZXMsIGNvbXBhcmluZyB0
-aGUgZ2l2ZW4gb2Zmc2V0Cj4+PiAtwqDCoMKgwqAgKiB3aXRoIGFuIG9mZnNldCBhc3NpZ25lZCB0
-byBlYWNoIHBsYW5lLiBJZiBhIG1hdGNoIGlzIGZvdW5kLAo+Pj4gLcKgwqDCoMKgICogcmV0dXJu
-IGl0cyBidWZmZXIgYW5kIHBsYW5lIG51bWJlcnMuCj4+PiAtwqDCoMKgwqAgKi8KPj4+IC3CoMKg
-wqAgZm9yIChidWZmZXIgPSAwOyBidWZmZXIgPCBxLT5udW1fYnVmZmVyczsgKytidWZmZXIpIHsK
-Pj4+IC3CoMKgwqDCoMKgwqDCoCB2YiA9IHEtPmJ1ZnNbYnVmZmVyXTsKPj4+ICvCoMKgwqAgLyog
-R2V0IGJ1ZmZlciBhbmQgcGxhbmUgZnJvbSB0aGUgb2Zmc2V0ICovCj4+PiArwqDCoMKgIGJ1ZmZl
-ciA9IChvZmZzZXQgPj4gUExBTkVfSU5ERVhfU0hJRlQpICYgQlVGRkVSX0lOREVYX01BU0s7Cj4+
-PiArwqDCoMKgICpwbGFuZSA9IChvZmZzZXQgPj4gUEFHRV9TSElGVCkgJiBQTEFORV9JTkRFWF9N
-QVNLOwo+Pj4gwqAgLcKgwqDCoMKgwqDCoMKgIGZvciAocGxhbmUgPSAwOyBwbGFuZSA8IHZiLT5u
-dW1fcGxhbmVzOyArK3BsYW5lKSB7Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAodmIt
-PnBsYW5lc1twbGFuZV0ubS5vZmZzZXQgPT0gb2Zmc2V0KSB7Cj4+PiAtwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgICpfYnVmZmVyID0gYnVmZmVyOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCAqX3BsYW5lID0gcGxhbmU7Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHJldHVybiAwOwo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+Pj4gLcKg
-wqDCoMKgwqDCoMKgIH0KPj4+IC3CoMKgwqAgfQo+Pj4gK8KgwqDCoCBpZiAoYnVmZmVyID49IHEt
-Pm51bV9idWZmZXJzIHx8ICpwbGFuZSA+PSBxLT5idWZzW2J1ZmZlcl0tPm51bV9wbGFuZXMpCj4+
-PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FSU5WQUw7Cj4+PiDCoCAtwqDCoMKgIHJldHVybiAt
-RUlOVkFMOwo+Pj4gK8KgwqDCoCAqdmIgPSBxLT5idWZzW2J1ZmZlcl07Cj4+PiArwqDCoMKgIHJl
-dHVybiAwOwo+Pj4gwqAgfQo+Pj4gwqAgwqAgaW50IHZiMl9jb3JlX2V4cGJ1ZihzdHJ1Y3QgdmIy
-X3F1ZXVlICpxLCBpbnQgKmZkLCB1bnNpZ25lZCBpbnQgdHlwZSwKPj4+IEBAIC0yMzA2LDcgKzIz
-MDcsNyBAQCBpbnQgdmIyX21tYXAoc3RydWN0IHZiMl9xdWV1ZSAqcSwgc3RydWN0IHZtX2FyZWFf
-c3RydWN0ICp2bWEpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKgIHVuc2lnbmVkIGxvbmcgb2Zmc2V0
-ID0gdm1hLT52bV9wZ29mZiA8PCBQQUdFX1NISUZUOwo+Pj4gwqDCoMKgwqDCoCBzdHJ1Y3QgdmIy
-X2J1ZmZlciAqdmI7Cj4+PiAtwqDCoMKgIHVuc2lnbmVkIGludCBidWZmZXIgPSAwLCBwbGFuZSA9
-IDA7Cj4+PiArwqDCoMKgIHVuc2lnbmVkIGludCBwbGFuZSA9IDA7Cj4+PiDCoMKgwqDCoMKgIGlu
-dCByZXQ7Cj4+PiDCoMKgwqDCoMKgIHVuc2lnbmVkIGxvbmcgbGVuZ3RoOwo+Pj4gwqAgQEAgLTIz
-MzUsMTIgKzIzMzYsMTAgQEAgaW50IHZiMl9tbWFwKHN0cnVjdCB2YjJfcXVldWUgKnEsIHN0cnVj
-dCB2bV9hcmVhX3N0cnVjdCAqdm1hKQo+Pj4gwqDCoMKgwqDCoMKgICogRmluZCB0aGUgcGxhbmUg
-Y29ycmVzcG9uZGluZyB0byB0aGUgb2Zmc2V0IHBhc3NlZCBieSB1c2Vyc3BhY2UuIFRoaXMKPj4+
-IMKgwqDCoMKgwqDCoCAqIHdpbGwgcmV0dXJuIGFuIGVycm9yIGlmIG5vdCBNRU1PUllfTU1BUCBv
-ciBmaWxlIEkvTyBpcyBpbiBwcm9ncmVzcy4KPj4+IMKgwqDCoMKgwqDCoCAqLwo+Pj4gLcKgwqDC
-oCByZXQgPSBfX2ZpbmRfcGxhbmVfYnlfb2Zmc2V0KHEsIG9mZnNldCwgJmJ1ZmZlciwgJnBsYW5l
-KTsKPj4+ICvCoMKgwqAgcmV0ID0gX19maW5kX3BsYW5lX2J5X29mZnNldChxLCBvZmZzZXQsICZ2
-YiwgJnBsYW5lKTsKPj4+IMKgwqDCoMKgwqAgaWYgKHJldCkKPj4+IMKgwqDCoMKgwqDCoMKgwqDC
-oCBnb3RvIHVubG9jazsKPj4+IMKgIC3CoMKgwqAgdmIgPSBxLT5idWZzW2J1ZmZlcl07Cj4+PiAt
-Cj4+PiDCoMKgwqDCoMKgIC8qCj4+PiDCoMKgwqDCoMKgwqAgKiBNTUFQIHJlcXVpcmVzIHBhZ2Vf
-YWxpZ25lZCBidWZmZXJzLgo+Pj4gwqDCoMKgwqDCoMKgICogVGhlIGJ1ZmZlciBsZW5ndGggd2Fz
-IHBhZ2VfYWxpZ25lZCBhdCBfX3ZiMl9idWZfbWVtX2FsbG9jKCksCj4+PiBAQCAtMjM2OCw3ICsy
-MzY3LDcgQEAgaW50IHZiMl9tbWFwKHN0cnVjdCB2YjJfcXVldWUgKnEsIHN0cnVjdCB2bV9hcmVh
-X3N0cnVjdCAqdm1hKQo+Pj4gwqDCoMKgwqDCoCBpZiAocmV0KQo+Pj4gwqDCoMKgwqDCoMKgwqDC
-oMKgIHJldHVybiByZXQ7Cj4+PiDCoCAtwqDCoMKgIGRwcmludGsocSwgMywgImJ1ZmZlciAlZCwg
-cGxhbmUgJWQgc3VjY2Vzc2Z1bGx5IG1hcHBlZFxuIiwgYnVmZmVyLCBwbGFuZSk7Cj4+PiArwqDC
-oMKgIGRwcmludGsocSwgMywgImJ1ZmZlciAldSwgcGxhbmUgJWQgc3VjY2Vzc2Z1bGx5IG1hcHBl
-ZFxuIiwgdmItPmluZGV4LCBwbGFuZSk7Cj4+PiDCoMKgwqDCoMKgIHJldHVybiAwOwo+Pj4gwqAg
-fQo+Pj4gwqAgRVhQT1JUX1NZTUJPTF9HUEwodmIyX21tYXApOwo+Pj4gQEAgLTIzODIsNyArMjM4
-MSw3IEBAIHVuc2lnbmVkIGxvbmcgdmIyX2dldF91bm1hcHBlZF9hcmVhKHN0cnVjdCB2YjJfcXVl
-dWUgKnEsCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKgIHVuc2lnbmVkIGxvbmcgb2Zmc2V0ID0gcGdv
-ZmYgPDwgUEFHRV9TSElGVDsKPj4+IMKgwqDCoMKgwqAgc3RydWN0IHZiMl9idWZmZXIgKnZiOwo+
-Pj4gLcKgwqDCoCB1bnNpZ25lZCBpbnQgYnVmZmVyLCBwbGFuZTsKPj4+ICvCoMKgwqAgdW5zaWdu
-ZWQgaW50IHBsYW5lOwo+Pj4gwqDCoMKgwqDCoCB2b2lkICp2YWRkcjsKPj4+IMKgwqDCoMKgwqAg
-aW50IHJldDsKPj4+IMKgIEBAIC0yMzkyLDEyICsyMzkxLDEwIEBAIHVuc2lnbmVkIGxvbmcgdmIy
-X2dldF91bm1hcHBlZF9hcmVhKHN0cnVjdCB2YjJfcXVldWUgKnEsCj4+PiDCoMKgwqDCoMKgwqAg
-KiBGaW5kIHRoZSBwbGFuZSBjb3JyZXNwb25kaW5nIHRvIHRoZSBvZmZzZXQgcGFzc2VkIGJ5IHVz
-ZXJzcGFjZS4gVGhpcwo+Pj4gwqDCoMKgwqDCoMKgICogd2lsbCByZXR1cm4gYW4gZXJyb3IgaWYg
-bm90IE1FTU9SWV9NTUFQIG9yIGZpbGUgSS9PIGlzIGluIHByb2dyZXNzLgo+Pj4gwqDCoMKgwqDC
-oMKgICovCj4+PiAtwqDCoMKgIHJldCA9IF9fZmluZF9wbGFuZV9ieV9vZmZzZXQocSwgb2Zmc2V0
-LCAmYnVmZmVyLCAmcGxhbmUpOwo+Pj4gK8KgwqDCoCByZXQgPSBfX2ZpbmRfcGxhbmVfYnlfb2Zm
-c2V0KHEsIG9mZnNldCwgJnZiLCAmcGxhbmUpOwo+Pj4gwqDCoMKgwqDCoCBpZiAocmV0KQo+Pj4g
-wqDCoMKgwqDCoMKgwqDCoMKgIGdvdG8gdW5sb2NrOwo+Pj4gwqAgLcKgwqDCoCB2YiA9IHEtPmJ1
-ZnNbYnVmZmVyXTsKPj4+IC0KPj4+IMKgwqDCoMKgwqAgdmFkZHIgPSB2YjJfcGxhbmVfdmFkZHIo
-dmIsIHBsYW5lKTsKPj4+IMKgwqDCoMKgwqAgbXV0ZXhfdW5sb2NrKCZxLT5tbWFwX2xvY2spOwo+
-Pj4gwqDCoMKgwqDCoCByZXR1cm4gdmFkZHIgPyAodW5zaWduZWQgbG9uZyl2YWRkciA6IC1FSU5W
-QUw7Cj4+PiAtLcKgCj4+PiAyLjM5LjIKPj4+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Oct 31, 2023 at 05:31:00PM +0100, Benjamin Gaignard wrote:
+> Add a bitmap field to know which of bufs array entries are
+> used or not.
+> Remove no more used num_buffers field from queue structure.
+> Use bitmap_find_next_zero_area() to find the first possible
+> range when creating new buffers to fill the gaps.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/common/videobuf2/videobuf2-core.c   | 42 +++++++++++++++----
+>  include/media/videobuf2-core.h                | 15 ++++---
+>  2 files changed, 42 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 2c8cf479a962..6e88406fcae9 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -416,11 +416,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+>   */
+>  static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
+>  {
+> -	WARN_ON(index >= q->max_num_buffers || q->bufs[index]);
+> +	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap));
+>  
+>  	q->bufs[index] = vb;
+>  	vb->index = index;
+>  	vb->vb2_queue = q;
+> +	set_bit(index, q->bufs_bitmap);
+>  }
+>  
+>  /**
+> @@ -429,6 +430,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
+>   */
+>  static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
+>  {
+> +	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
+>  	vb->vb2_queue->bufs[vb->index] = NULL;
+>  	vb->vb2_queue = NULL;
+>  }
+> @@ -450,11 +452,12 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+>  	unsigned long index;
+>  	int ret;
+>  
+> -	/* Ensure that the number of already queue + num_buffers is below q->max_num_buffers */
+> +	/* Ensure that vb2_get_num_buffers(q) + num_buffers is no more than q->max_num_buffers */
+>  	num_buffers = min_t(unsigned int, num_buffers,
+>  			    q->max_num_buffers - vb2_get_num_buffers(q));
+>  
+> -	index = vb2_get_num_buffers(q);
+> +	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
+> +					   0, num_buffers, 0);
+>  
+>  	*first_index = index;
+>  
+> @@ -656,7 +659,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+>  		kfree(vb);
+>  	}
+>  
+> -	q->num_buffers -= buffers;
+>  	if (!vb2_get_num_buffers(q)) {
+>  		q->memory = VB2_MEMORY_UNKNOWN;
+>  		INIT_LIST_HEAD(&q->queued_list);
+> @@ -874,6 +876,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
+>  	if (!q->bufs)
+>  		ret = -ENOMEM;
+> +
+> +	if (!q->bufs_bitmap)
+> +		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
+> +	if (!q->bufs_bitmap) {
+> +		ret = -ENOMEM;
+> +		kfree(q->bufs);
+> +		q->bufs = NULL;
+> +	}
+>  	q->memory = memory;
+>  	mutex_unlock(&q->mmap_lock);
+>  	if (ret)
+> @@ -943,7 +953,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	}
+>  
+>  	mutex_lock(&q->mmap_lock);
+> -	q->num_buffers = allocated_buffers;
+>  
+>  	if (ret < 0) {
+>  		/*
+> @@ -970,6 +979,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	mutex_lock(&q->mmap_lock);
+>  	q->memory = VB2_MEMORY_UNKNOWN;
+>  	mutex_unlock(&q->mmap_lock);
+> +	kfree(q->bufs);
+> +	q->bufs = NULL;
+> +	bitmap_free(q->bufs_bitmap);
+> +	q->bufs_bitmap = NULL;
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
+> @@ -1006,9 +1019,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  		q->memory = memory;
+>  		if (!q->bufs)
+>  			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
+> -		if (!q->bufs)
+> +		if (!q->bufs) {
+>  			ret = -ENOMEM;
+> +			goto unlock;
+> +		}
+> +		if (!q->bufs_bitmap)
+> +			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
+
+Same as with the kcalloc(). Why not just allocate this in the core code,
+e.g. vb2_core_queue_init()?
+
+Actually, is it because we want to avoid allocating
+resources early, before the need to actually use the vb2 queue?
+If so, could this go to some other core function that runs later, e.g. __vb2_queue_alloc()?
+
+> +		if (!q->bufs_bitmap) {
+> +			ret = -ENOMEM;
+> +			kfree(q->bufs);
+> +			q->bufs = NULL;
+> +		}
+>  		mutex_unlock(&q->mmap_lock);
+> +unlock:
+>  		if (ret)
+>  			return ret;
+>  		q->waiting_for_buffers = !q->is_output;
+> @@ -1070,7 +1093,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>  	}
+>  
+>  	mutex_lock(&q->mmap_lock);
+> -	q->num_buffers += allocated_buffers;
+>  
+>  	if (ret < 0) {
+>  		/*
+> @@ -2549,7 +2571,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
+>  	__vb2_queue_free(q, q->max_num_buffers);
+>  	kfree(q->bufs);
+>  	q->bufs = NULL;
+> -	q->num_buffers = 0;
+> +	bitmap_free(q->bufs_bitmap);
+> +	q->bufs_bitmap = NULL;
+> +
+>  	mutex_unlock(&q->mmap_lock);
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+> @@ -2904,7 +2928,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
+>  	 * Check if we need to dequeue the buffer.
+>  	 */
+>  	index = fileio->cur_index;
+> -	if (index >= q->num_buffers) {
+> +	if (!test_bit(index, q->bufs_bitmap)) {
+
+I don't like this low level manipulation of queue internals here (after all
+the work other patches did to use helpers). Why not just keep
+vb2_get_num_buffers() here?
+
+>  		struct vb2_buffer *b;
+>  
+>  		/*
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 6986ff4b77cd..288477075a0e 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -346,7 +346,7 @@ struct vb2_buffer {
+>   *			describes the requested number of planes and sizes\[\]
+>   *			contains the requested plane sizes. In this case
+>   *			\*num_buffers are being allocated additionally to
+> - *			q->num_buffers. If either \*num_planes or the requested
+> + *			queue buffers. If either \*num_planes or the requested
+
+Perhaps "the buffers already in the queue"?
+
+>   *			sizes are invalid callback must return %-EINVAL.
+>   * @wait_prepare:	release any locks taken while calling vb2 functions;
+>   *			it is called before an ioctl needs to wait for a new
+> @@ -557,7 +557,7 @@ struct vb2_buf_ops {
+>   * @memory:	current memory type used
+>   * @dma_dir:	DMA mapping direction.
+>   * @bufs:	videobuf2 buffer structures
+> - * @num_buffers: number of allocated/used buffers
+> + * @bufs_bitmap: bitmap to manage bufs entries.
+
+Perhaps "bitmap tracking whether each bufs[] entry is used"?
+
+>   * @max_num_buffers: upper limit of number of allocated/used buffers
+>   * @queued_list: list of buffers currently queued from userspace
+>   * @queued_count: number of buffers queued and ready for streaming.
+> @@ -621,7 +621,7 @@ struct vb2_queue {
+>  	unsigned int			memory;
+>  	enum dma_data_direction		dma_dir;
+>  	struct vb2_buffer		**bufs;
+> -	unsigned int			num_buffers;
+> +	unsigned long			*bufs_bitmap;
+>  	unsigned int			max_num_buffers;
+>  
+>  	struct list_head		queued_list;
+> @@ -1150,7 +1150,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
+>   */
+>  static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
+>  {
+> -	return q->num_buffers;
+> +	if (!q->bufs_bitmap)
+> +		return 0;
+> +
+> +	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
+
+Hmm, could we just cache the number of buffers we have, so that we don't
+have to go over the entire bitmap every time? (Basically just keep the
+code that we had for handling q->num_buffers before this patch.)
+
+>  }
+>  
+>  /**
+> @@ -1253,13 +1256,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
+>  static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
+>  						unsigned int index)
+>  {
+> -	if (!q->bufs)
+> +	if (!q->bufs_bitmap)
+>  		return NULL;
+>  
+>  	if (index >= q->max_num_buffers)
+>  		return NULL;
+>  
+> -	if (index < q->num_buffers)
+> +	if (test_bit(index, q->bufs_bitmap))
+
+Aha, I see why we need the extra condition above now. Perhaps it should've
+been added in this patch instead?
+
+>  		return q->bufs[index];
+>  	return NULL;
+>  }
+> -- 
+> 2.39.2
+> 
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
