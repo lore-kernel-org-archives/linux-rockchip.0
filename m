@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43BB1C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 09:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21170C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 10:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I1cXWTix2JYZF8FobMRTCYrrH5SqQU+3PSIMKUlZSc0=; b=zs2J8qoHWN2gDY
-	BGI3PRE1kOJxMBUrSD7EPNnrfirg3cb+0t6sArw+vTFRCsNyw58mzSLZmSD/FZ/rJSFTykjFuYSAU
-	c2fJESk2amOZanbnd8PoKbllovlUC2c+JDU4x8qyDYFJeDiUHuW4MQNY7K5kxbP4j+LDKRxF9Tm6Q
-	fGdwHJoSj6ql6tGWJd+QkKpSPbcjFm8MWdBzPaMGUAEhmt7v5PsOYhocXc3L/8nmGziUwgV7eLLrP
-	ceEb0dGwFUJ6Dr5g+8V7FjJfcsAWYGuL7caQNlaFw5BQXknNwBEWLDoSYyV3JspzyyBfyLV8hq/KU
-	jjzf3UMP4DWgnlhe15Ng==;
+	List-Owner; bh=DPj5grk0qIZvOoF5pu65VuyiLV3GxXOzmP83Bl0GBZE=; b=imBGMp1jbv8l2E
+	g99Wmvx7AjKkarfwjF3nuvG5zoKWWmRG7aoJS17B9k7Y+zJYnKTqN7ZGpOh2jVa3uTTBABWkuiFQA
+	pJwMtIU/Uprql7iNfne29lJO2+zZ6kC/p+x5q6bzTpIEIEb7m8aPBRFVGiRWhx65emIV6SY4Fkkm2
+	aZZIDE9H44kQZBghs2N1BmNTc5mm1UbyEqcB7TkVvzXGnzA233Z+TYi37hIQgSk+TDlUNRr3MQ8BE
+	eX1eBdtNQxJEI/5KXXI5wJJqZkQyaqclKKQN8N1tw0GTkCWTOaoTqrif1i+XMvlf9CD040yi4UPdb
+	AtVfkbhhQOE7WCa0J3zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0f51-003NdR-25;
-	Wed, 08 Nov 2023 09:42:35 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1r0fa7-003QNc-0u;
+	Wed, 08 Nov 2023 10:14:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0f4y-003NbE-1l
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Nov 2023 09:42:34 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1cc5b6d6228so45536395ad.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Nov 2023 01:42:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699436548; x=1700041348; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=aDXaY//8y/74BvKRPuAKyEkdsaFq1PaWBhrY8xQYRKA=;
-        b=SDz/kIK9rEgyfGvliU/ILqcXCOynsoADpobucC3wwMQUVcFho45/iNah9txVo8pJlf
-         husPr6cA4h3ubNUonKe6/iZsRVw4bPBhOzPMiPlZrYQMe6m0SJYbY3P4boYT2OtJfWdW
-         8bX4SWvuZa6k08lF1SwIAKDNNWUMi2TQoXle8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699436548; x=1700041348;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aDXaY//8y/74BvKRPuAKyEkdsaFq1PaWBhrY8xQYRKA=;
-        b=MwmyvvNiUg8fkcPevfAJS7HHIW0lhA1qPtidHxxxt5RII32/CR6QpURlT3FIjFjq0c
-         RSwagPP7FWLY8N7gSctBQEWBS6Yo+zU/7hysSHZKyHkdRN+mLRMmjpCsD1a6uOEwxXFP
-         Ud5MEpRwX+wrgX2hIIasPhZ0E42l8+UdUW4ZJ9iAOhB7eVcOwMlRnygXV0Y2ri0JuX/y
-         9DvyQ+NlZuKbDLzRArCqjKHn3+VJWW3tPAvrOec9htkxRlhomXsdo0oRWIBD3itKxaOg
-         /Q1jIrFKi0eKjEfvHoYim20ihXBUA2obWAvLf2r98m09Y6YsJRvXhX2du72X+CtS3HaF
-         tT0g==
-X-Gm-Message-State: AOJu0Yyo2Zbc2UEmDyf+7lKN699JIRHuv6L8g4wQik4gIw+7yUPCqrVf
-	Jzn8pM/Rnoo8z3qOeyUJMwbbNg==
-X-Google-Smtp-Source: AGHT+IEku/YTV/xT1M0nzk1MJ4RhSHCuriXRqjCX16X/FZowan9lL/VgocqkpYuEJFJ0gwLpNy3ZMw==
-X-Received: by 2002:a17:902:e9c6:b0:1cc:3598:4ba0 with SMTP id 6-20020a170902e9c600b001cc35984ba0mr1216149plk.68.1699436548216;
-        Wed, 08 Nov 2023 01:42:28 -0800 (PST)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id q9-20020a170902dac900b001cc32f46757sm1314380plx.107.2023.11.08.01.42.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Nov 2023 01:42:27 -0800 (PST)
-Date: Wed, 8 Nov 2023 09:42:23 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v14 08/56] media: videobuf2: Use vb2_get_num_buffers()
- helper
-Message-ID: <20231108094223.rprskkeee47vaezy@chromium.org>
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-9-benjamin.gaignard@collabora.com>
+	id 1r0fa2-003QM7-1O;
+	Wed, 08 Nov 2023 10:14:40 +0000
+Received: from [100.98.136.55] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6CAC6601F0B;
+	Wed,  8 Nov 2023 10:14:34 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699438475;
+	bh=Ilw8GxRpfkU8nyO7ThH/MgVP6lonMiPetYieJPU0Cow=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hHjoK8FPqHSHyBhzaFy6eW7GzVotn5vdvoEioMcANArq7J2J1ytkv4eCc4fTT5t0X
+	 OlCq1uce0ltMYMgTNOASWoAVRC1qjEy3iCmmdpo/9cIKLTluL1dfBAdbLpHIdsiOgY
+	 CJvbGJ37rBjjrT6PWd4FH0DWvEF32FuWY+0BUkX7l4ie98OYRZv5NLnLsbEB7qe8YS
+	 LGQotB/uscM5F8dIMURWokA7i4k/eVrIQcmMLoZDIRefe6RPXYngQt8CTf7C6Fnxaz
+	 4JsOBmJJ3oFP88T+cl2l/zFCwYEiHL/lMPCKPNbvocAI5f/RgPnhMrloEOPkbI7NVy
+	 1mwwognoYyNrQ==
+Message-ID: <ce33854a-f547-411a-a747-2d32d442b15e@collabora.com>
+Date: Wed, 8 Nov 2023 11:14:32 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231031163104.112469-9-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v14 02/56] media: videobuf2: Rework offset 'cookie'
+ encoding pattern
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ kernel@collabora.com
+References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-3-benjamin.gaignard@collabora.com>
+ <20231108062322.l2k2n2jlpoaa4tws@chromium.org>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20231108062322.l2k2n2jlpoaa4tws@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_014232_590580_5FD4838F 
-X-CRM114-Status: GOOD (  48.46  )
+X-CRM114-CacheID: sfid-20231108_021438_748549_579BF081 
+X-CRM114-Status: GOOD (  31.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,200 +78,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 31, 2023 at 05:30:16PM +0100, Benjamin Gaignard wrote:
-> Stop using queue num_buffers field directly, instead use
-> vb2_get_num_buffers().
-> This prepares for the future 'delete buffers' feature where there are
-> holes in the buffer indices.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 92 +++++++++++--------
->  .../media/common/videobuf2/videobuf2-v4l2.c   |  4 +-
->  2 files changed, 54 insertions(+), 42 deletions(-)
-> 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index b406a30a9b35..c5c5ae4d213d 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -444,13 +444,14 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  			     unsigned int num_buffers, unsigned int num_planes,
->  			     const unsigned plane_sizes[VB2_MAX_PLANES])
->  {
-> +	unsigned int q_num_buffers = vb2_get_num_buffers(q);
->  	unsigned int buffer, plane;
->  	struct vb2_buffer *vb;
->  	int ret;
->  
->  	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
->  	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q->num_buffers);
-> +			    VB2_MAX_FRAME - q_num_buffers);
-
-I guess it's safe in this specific situation, but was there any reason
-behind not just calling vb2_get_num_buffers() directly here?
-
->  
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
-> @@ -470,7 +471,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  			vb->planes[plane].min_length = plane_sizes[plane];
->  		}
->  
-> -		vb2_queue_add_buffer(q, vb, q->num_buffers + buffer);
-> +		vb2_queue_add_buffer(q, vb, q_num_buffers + buffer);
-
-In this case it should also be fine, but actually now this is a loop and if
-somone doesn't know what the other code in the loop does, one could be
-concerned that the num buffers actually could have changed, but we still
-use the cached one that we got at the beginning of the function.
-
-(Ideally I'd imagine vb2_queue_add_buffer() to append the buffer
-at the end of the queue and increment the num_buffers internally, but it
-doesn't have to happen now, as this series is already quite complex...)
-
->  		call_void_bufop(q, init_buffer, vb);
->  
->  		/* Allocate video buffer memory for the MMAP type */
-[snip]
-> @@ -2513,7 +2519,8 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_cleanup_fileio(q);
->  	__vb2_queue_cancel(q);
->  	mutex_lock(&q->mmap_lock);
-> -	__vb2_queue_free(q, q->num_buffers);
-> +	__vb2_queue_free(q, vb2_get_num_buffers(q));
-> +	q->num_buffers = 0;
-
-Unrelated change?
-
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> @@ -2542,7 +2549,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
->  	/*
->  	 * Start file I/O emulator only if streaming API has not been used yet.
->  	 */
-> -	if (q->num_buffers == 0 && !vb2_fileio_is_active(q)) {
-> +	if (vb2_get_num_buffers(q) == 0 && !vb2_fileio_is_active(q)) {
->  		if (!q->is_output && (q->io_modes & VB2_READ) &&
->  				(req_events & (EPOLLIN | EPOLLRDNORM))) {
->  			if (__vb2_init_fileio(q, 1))
-> @@ -2580,7 +2587,7 @@ __poll_t vb2_core_poll(struct vb2_queue *q, struct file *file,
->  	 * For output streams you can call write() as long as there are fewer
->  	 * buffers queued than there are buffers available.
->  	 */
-> -	if (q->is_output && q->fileio && q->queued_count < q->num_buffers)
-> +	if (q->is_output && q->fileio && q->queued_count < vb2_get_num_buffers(q))
->  		return EPOLLOUT | EPOLLWRNORM;
->  
->  	if (list_empty(&q->done_list)) {
-> @@ -2629,8 +2636,8 @@ struct vb2_fileio_buf {
->   * struct vb2_fileio_data - queue context used by file io emulator
->   *
->   * @cur_index:	the index of the buffer currently being read from or
-> - *		written to. If equal to q->num_buffers then a new buffer
-> - *		must be dequeued.
-> + *		written to. If equal to number of already queued buffers
-> + *		then a new buffer must be dequeued.
-
-Hmm, that's a significant meaning change compared to the original text. Is
-it indended?
-
->   * @initial_index: in the read() case all buffers are queued up immediately
->   *		in __vb2_init_fileio() and __vb2_perform_fileio() just cycles
->   *		buffers. However, in the write() case no buffers are initially
-> @@ -2640,7 +2647,7 @@ struct vb2_fileio_buf {
->   *		buffers. This means that initially __vb2_perform_fileio()
->   *		needs to know what buffer index to use when it is queuing up
->   *		the buffers for the first time. That initial index is stored
-> - *		in this field. Once it is equal to q->num_buffers all
-> + *		in this field. Once it is equal to num_buffers all
-
-It's not clear what num_buffers means here. Would it make sense to instead
-say "number of buffers in the vb2_queue"?
-
->   *		available buffers have been queued and __vb2_perform_fileio()
->   *		should start the normal dequeue/queue cycle.
->   *
-> @@ -2690,7 +2697,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  	/*
->  	 * Check if streaming api has not been already activated.
->  	 */
-> -	if (q->streaming || q->num_buffers > 0)
-> +	if (q->streaming || vb2_get_num_buffers(q) > 0)
->  		return -EBUSY;
->  
->  	/*
-> @@ -2740,7 +2747,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  	/*
->  	 * Get kernel address of each buffer.
->  	 */
-> -	for (i = 0; i < q->num_buffers; i++) {
-> +	for (i = 0; i < vb2_get_num_buffers(q); i++) {
->  		/* vb can never be NULL when using fileio. */
->  		vb = vb2_get_buffer(q, i);
->  
-> @@ -2759,18 +2766,23 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
->  		/*
->  		 * Queue all buffers.
->  		 */
-> -		for (i = 0; i < q->num_buffers; i++) {
-> -			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
-> +		for (i = 0; i < vb2_get_num_buffers(q); i++) {
-> +			struct vb2_buffer *vb2 = vb2_get_buffer(q, i);
-> +
-> +			if (!vb2)
-> +				continue;
-> +
-> +			ret = vb2_core_qbuf(q, vb2, NULL, NULL);
->  			if (ret)
->  				goto err_reqbufs;
->  			fileio->bufs[i].queued = 1;
->  		}
-
-Doesn't this part belong to the previous patch that changes q->bufs[x] to
-vb2_get_buffer()?
-
->  		/*
->  		 * All buffers have been queued, so mark that by setting
-> -		 * initial_index to q->num_buffers
-> +		 * initial_index to num_buffers
-
-What num_buffers?
-
->  		 */
-> -		fileio->initial_index = q->num_buffers;
-> -		fileio->cur_index = q->num_buffers;
-> +		fileio->initial_index = vb2_get_num_buffers(q);
-> +		fileio->cur_index = fileio->initial_index;
->  	}
->  
->  	/*
-> @@ -2964,12 +2976,12 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
->  		 * If we are queuing up buffers for the first time, then
->  		 * increase initial_index by one.
->  		 */
-> -		if (fileio->initial_index < q->num_buffers)
-> +		if (fileio->initial_index < vb2_get_num_buffers(q))
->  			fileio->initial_index++;
->  		/*
->  		 * The next buffer to use is either a buffer that's going to be
-> -		 * queued for the first time (initial_index < q->num_buffers)
-> -		 * or it is equal to q->num_buffers, meaning that the next
-> +		 * queued for the first time (initial_index < num_buffers)
-> +		 * or it is equal to num_buffers, meaning that the next
-
-What num_buffers?
-
-Best regards,
-Tomasz
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA4LzExLzIwMjMgw6AgMDc6MjMsIFRvbWFzeiBGaWdhIGEgw6ljcml0wqA6Cj4gSGkgQmVu
+amFtaW4sCj4KPiBPbiBUdWUsIE9jdCAzMSwgMjAyMyBhdCAwNTozMDoxMFBNICswMTAwLCBCZW5q
+YW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gQ2hhbmdlIGhvdyBvZmZzZXQgJ2Nvb2tpZScgZmllbGQg
+dmFsdWUgaXMgY29tcHV0ZWQgdG8gbWFrZSBwb3NzaWJsZQo+PiB0byB1c2UgbW9yZSBidWZmZXJz
+Lgo+PiBUaGUgbWF4aW11bSBudW1iZXIgb2YgYnVmZmVycyBkZXBlbmRzIG9mIFBBR0VfU0hJRlQg
+dmFsdWUgYW5kIGNhbgo+PiBnbyB1cCB0byAweDdmZmYgd2hlbiBQQUdFX1NISUZUID0gMTIuCj4+
+IFdpdGggdGhpcyBlbmNvZGluZyBwYXR0ZXJuIHdlIGtub3cgdGhlIG1heGltdW0gbnVtYmVyIHRo
+YXQgYSBxdWV1ZQo+PiBjb3VsZCBzdG9yZSBzbyB3ZSBjYW4gY2hlY2sgaXQgYXQgIHF1ZXVlIGlu
+aXQgdGltZS4KPj4gSXQgYWxzbyBtYWtlIGVhc2llciBhbmQgZmFzdGVyIHRvIGZpbmQgYnVmZmVy
+IGFuZCBwbGFuZSBmcm9tIHVzaW5nCj4+IHRoZSBvZmZzZXQgZmllbGQuCj4+IENoYW5nZSBfX2Zp
+bmRfcGxhbmVfYnlfb2Zmc2V0KCkgcHJvdG90eXBlIHRvIHJldHVybiB0aGUgdmlkZW8gYnVmZmVy
+Cj4+IGl0c2VsZiByYXRoZXIgdGhhbiBpdCBpbmRleC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogQmVu
+amFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4+IC0tLQo+
+PiAgIC4uLi9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMgICB8IDczICsr
+KysrKysrKy0tLS0tLS0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMzUgaW5zZXJ0aW9ucygrKSwg
+MzggZGVsZXRpb25zKC0pCj4+Cj4gVGhhbmtzIGEgbG90IGZvciB3b3JraW5nIG9uIHRoaXMgc2Vy
+aWVzLiBKdXN0IG9uZSBjb21tZW50IGlubGluZS4KPgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
+ZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMgYi9kcml2ZXJzL21lZGlhL2Nv
+bW1vbi92aWRlb2J1ZjIvdmlkZW9idWYyLWNvcmUuYwo+PiBpbmRleCBhNWU1N2FmZmViMzAuLjA5
+YmU4ZTAyNjA0NCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYy
+L3ZpZGVvYnVmMi1jb3JlLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYy
+L3ZpZGVvYnVmMi1jb3JlLmMKPj4gQEAgLTMxLDYgKzMxLDExIEBACj4+ICAgCj4+ICAgI2luY2x1
+ZGUgPHRyYWNlL2V2ZW50cy92YjIuaD4KPj4gICAKPj4gKyNkZWZpbmUgUExBTkVfSU5ERVhfU0hJ
+RlQJKFBBR0VfU0hJRlQgKyAzKQo+PiArI2RlZmluZSBQTEFORV9JTkRFWF9NQVNLCTB4Nwo+IENv
+dWxkIHdlIHNvbWVob3cgZW5zdXJlIHRoYXQgaXQgaW5kZWVkIG1hdGNoZXMgVklERU9fTUFYX1BM
+QU5FUz8KPgo+IE9uZSB0aGluZyB0aGF0IGNvbWVzIHRvIG15IG1pbmQgd291bGQgYmUKPgo+ICNk
+ZWZpbmUgUExBTkVfSU5ERVhfQklUUwkzCj4gI2RlZmluZSBQTEFORV9JTkRFWF9TSElGVAkoUEFH
+RV9TSElGVCArIFBMQU5FX0lOREVYX0JJVFMpCj4gI2RlZmluZSBQTEFORV9JTkRFWF9NQVNLCUJJ
+VF9NQVNLKFBMQU5FX0lOREVYX0JJVFMpCj4KPiBCVUlMRF9CVUdfT04oQklUKFBMQU5FX0lOREVY
+X0JJVFMpICE9IFZJREVPX01BWF9QTEFORVMpOwo+Cj4gQWx0ZXJuYXRpdmVseSB3ZSBjb3VsZCBj
+aGFuZ2UgdGhlIHZpZGVvZGV2Mi5oLCBzbyB0aGF0IHdlIGhhdmUKPgo+ICNkZWZpbmUgVklERU9f
+TUFYX1BMQU5FU19CSVRTCTMKPiAjZGVmaW5lIFZJREVPX01BWF9QTEFORVMJKDFVIDwgVklERU9f
+TUFYX1BMQU5FU19CSVRTKQo+Cj4gYW5kIHRoZW4gd2UgY2FuIGp1c3QgVklERU9fTUFYX1BMQU5F
+U19CSVRTIGluIG91ciBkZWZpbml0aW9ucyBpbiB0aGlzIGZpbGUKPiBhbmQgbm8gY2hlY2tzIHdv
+dWxkIGJlIG5lY2Vzc2FyeS4KCkkgd291bGQgcHJlZmVyIHRoaXMgc29sdXRpb24uCkhhbnMgc2hv
+dWxkIEkgZG8gdGhhdCBpbiBhbiBvdGhlciBwYXRjaCA/CgpSZWdhcmRzLApCZW5qYW1pbgoKPgo+
+IEJlc3QgcmVnYXJkcywKPiBUb21hc3oKPgo+PiArI2RlZmluZSBNQVhfQlVGRkVSX0lOREVYCUJJ
+VF9NQVNLKDMwIC0gUExBTkVfSU5ERVhfU0hJRlQpCj4+ICsjZGVmaW5lIEJVRkZFUl9JTkRFWF9N
+QVNLCShNQVhfQlVGRkVSX0lOREVYIC0gMSkKPj4gKwo+PiAgIHN0YXRpYyBpbnQgZGVidWc7Cj4+
+ICAgbW9kdWxlX3BhcmFtKGRlYnVnLCBpbnQsIDA2NDQpOwo+PiAgIAo+PiBAQCAtMzU4LDIxICsz
+NjMsMjcgQEAgc3RhdGljIHZvaWQgX19zZXR1cF9vZmZzZXRzKHN0cnVjdCB2YjJfYnVmZmVyICp2
+YikKPj4gICAJdW5zaWduZWQgaW50IHBsYW5lOwo+PiAgIAl1bnNpZ25lZCBsb25nIG9mZnNldCA9
+IDA7Cj4+ICAgCj4+IC0JaWYgKHZiLT5pbmRleCkgewo+PiAtCQlzdHJ1Y3QgdmIyX2J1ZmZlciAq
+cHJldiA9IHEtPmJ1ZnNbdmItPmluZGV4IC0gMV07Cj4+IC0JCXN0cnVjdCB2YjJfcGxhbmUgKnAg
+PSAmcHJldi0+cGxhbmVzW3ByZXYtPm51bV9wbGFuZXMgLSAxXTsKPj4gLQo+PiAtCQlvZmZzZXQg
+PSBQQUdFX0FMSUdOKHAtPm0ub2Zmc2V0ICsgcC0+bGVuZ3RoKTsKPj4gLQl9Cj4+ICsJLyoKPj4g
+KwkgKiBUaGUgb2Zmc2V0ICJjb29raWUiIHZhbHVlIGhhcyB0aGUgZm9sbG93aW5nIGNvbnN0cmFp
+bnRzOgo+PiArCSAqIC0gYSBidWZmZXIgY2FuIGhhdmUgdXAgdG8gOCBwbGFuZXMuCj4+ICsJICog
+LSB2NGwyIG1lbTJtZW0gdXNlcyBiaXQgMzAgdG8gZGlzdGluZ3Vpc2ggYmV0d2Vlbgo+PiArCSAq
+ICAgT1VUUFVUIChha2EgInNvdXJjZSIsIGJpdCAzMCBpcyAwKSBhbmQKPj4gKwkgKiAgIENBUFRV
+UkUgKGFrYSAiZGVzdGluYXRpb24iLCBiaXQgMzAgaXMgMSkgYnVmZmVycy4KPj4gKwkgKiAtIG11
+c3QgYmUgcGFnZSBhbGlnbmVkCj4+ICsJICogVGhhdCBsZWQgdG8gdGhpcyBiaXQgbWFwcGluZyB3
+aGVuIFBBR0VfU0hJRlQgPSAxMjoKPj4gKwkgKiB8MzAgICAgICAgICAgICAgICAgfDI5ICAgICAg
+ICAxNXwxNCAgICAgICAxMnwxMSAwfAo+PiArCSAqIHxEU1RfUVVFVUVfT0ZGX0JBU0V8YnVmZmVy
+IGluZGV4fHBsYW5lIGluZGV4fCAwICB8Cj4+ICsJICogd2hlcmUgdGhlcmUgYXJlIDE1IGJpdHMg
+dG8gc3RvcmUgdGhlIGJ1ZmZlciBpbmRleC4KPj4gKwkgKiBEZXBlbmRpbmcgb24gUEFHRV9TSElG
+VCB2YWx1ZSB3ZSBjYW4gaGF2ZSBmZXdlciBiaXRzCj4+ICsJICogdG8gc3RvcmUgdGhlIGJ1ZmZl
+ciBpbmRleC4KPj4gKwkgKi8KPj4gKwlvZmZzZXQgPSB2Yi0+aW5kZXggPDwgUExBTkVfSU5ERVhf
+U0hJRlQ7Cj4+ICAgCj4+ICAgCWZvciAocGxhbmUgPSAwOyBwbGFuZSA8IHZiLT5udW1fcGxhbmVz
+OyArK3BsYW5lKSB7Cj4+IC0JCXZiLT5wbGFuZXNbcGxhbmVdLm0ub2Zmc2V0ID0gb2Zmc2V0Owo+
+PiArCQl2Yi0+cGxhbmVzW3BsYW5lXS5tLm9mZnNldCA9IG9mZnNldCArIChwbGFuZSA8PCBQQUdF
+X1NISUZUKTsKPj4gICAKPj4gICAJCWRwcmludGsocSwgMywgImJ1ZmZlciAlZCwgcGxhbmUgJWQg
+b2Zmc2V0IDB4JTA4bHhcbiIsCj4+ICAgCQkJCXZiLT5pbmRleCwgcGxhbmUsIG9mZnNldCk7Cj4+
+IC0KPj4gLQkJb2Zmc2V0ICs9IHZiLT5wbGFuZXNbcGxhbmVdLmxlbmd0aDsKPj4gLQkJb2Zmc2V0
+ID0gUEFHRV9BTElHTihvZmZzZXQpOwo+PiAgIAl9Cj4+ICAgfQo+PiAgIAo+PiBAQCAtMjE4OCwx
+MCArMjE5OSw5IEBAIEVYUE9SVF9TWU1CT0xfR1BMKHZiMl9jb3JlX3N0cmVhbW9mZik7Cj4+ICAg
+ICogX19maW5kX3BsYW5lX2J5X29mZnNldCgpIC0gZmluZCBwbGFuZSBhc3NvY2lhdGVkIHdpdGgg
+dGhlIGdpdmVuIG9mZnNldAo+PiAgICAqLwo+PiAgIHN0YXRpYyBpbnQgX19maW5kX3BsYW5lX2J5
+X29mZnNldChzdHJ1Y3QgdmIyX3F1ZXVlICpxLCB1bnNpZ25lZCBsb25nIG9mZnNldCwKPj4gLQkJ
+CXVuc2lnbmVkIGludCAqX2J1ZmZlciwgdW5zaWduZWQgaW50ICpfcGxhbmUpCj4+ICsJCQlzdHJ1
+Y3QgdmIyX2J1ZmZlciAqKnZiLCB1bnNpZ25lZCBpbnQgKnBsYW5lKQo+PiAgIHsKPj4gLQlzdHJ1
+Y3QgdmIyX2J1ZmZlciAqdmI7Cj4+IC0JdW5zaWduZWQgaW50IGJ1ZmZlciwgcGxhbmU7Cj4+ICsJ
+dW5zaWduZWQgaW50IGJ1ZmZlcjsKPj4gICAKPj4gICAJLyoKPj4gICAJICogU2FuaXR5IGNoZWNr
+cyB0byBlbnN1cmUgdGhlIGxvY2sgaXMgaGVsZCwgTUVNT1JZX01NQVAgaXMKPj4gQEAgLTIyMDks
+MjQgKzIyMTksMTUgQEAgc3RhdGljIGludCBfX2ZpbmRfcGxhbmVfYnlfb2Zmc2V0KHN0cnVjdCB2
+YjJfcXVldWUgKnEsIHVuc2lnbmVkIGxvbmcgb2Zmc2V0LAo+PiAgIAkJcmV0dXJuIC1FQlVTWTsK
+Pj4gICAJfQo+PiAgIAo+PiAtCS8qCj4+IC0JICogR28gb3ZlciBhbGwgYnVmZmVycyBhbmQgdGhl
+aXIgcGxhbmVzLCBjb21wYXJpbmcgdGhlIGdpdmVuIG9mZnNldAo+PiAtCSAqIHdpdGggYW4gb2Zm
+c2V0IGFzc2lnbmVkIHRvIGVhY2ggcGxhbmUuIElmIGEgbWF0Y2ggaXMgZm91bmQsCj4+IC0JICog
+cmV0dXJuIGl0cyBidWZmZXIgYW5kIHBsYW5lIG51bWJlcnMuCj4+IC0JICovCj4+IC0JZm9yIChi
+dWZmZXIgPSAwOyBidWZmZXIgPCBxLT5udW1fYnVmZmVyczsgKytidWZmZXIpIHsKPj4gLQkJdmIg
+PSBxLT5idWZzW2J1ZmZlcl07Cj4+ICsJLyogR2V0IGJ1ZmZlciBhbmQgcGxhbmUgZnJvbSB0aGUg
+b2Zmc2V0ICovCj4+ICsJYnVmZmVyID0gKG9mZnNldCA+PiBQTEFORV9JTkRFWF9TSElGVCkgJiBC
+VUZGRVJfSU5ERVhfTUFTSzsKPj4gKwkqcGxhbmUgPSAob2Zmc2V0ID4+IFBBR0VfU0hJRlQpICYg
+UExBTkVfSU5ERVhfTUFTSzsKPj4gICAKPj4gLQkJZm9yIChwbGFuZSA9IDA7IHBsYW5lIDwgdmIt
+Pm51bV9wbGFuZXM7ICsrcGxhbmUpIHsKPj4gLQkJCWlmICh2Yi0+cGxhbmVzW3BsYW5lXS5tLm9m
+ZnNldCA9PSBvZmZzZXQpIHsKPj4gLQkJCQkqX2J1ZmZlciA9IGJ1ZmZlcjsKPj4gLQkJCQkqX3Bs
+YW5lID0gcGxhbmU7Cj4+IC0JCQkJcmV0dXJuIDA7Cj4+IC0JCQl9Cj4+IC0JCX0KPj4gLQl9Cj4+
+ICsJaWYgKGJ1ZmZlciA+PSBxLT5udW1fYnVmZmVycyB8fCAqcGxhbmUgPj0gcS0+YnVmc1tidWZm
+ZXJdLT5udW1fcGxhbmVzKQo+PiArCQlyZXR1cm4gLUVJTlZBTDsKPj4gICAKPj4gLQlyZXR1cm4g
+LUVJTlZBTDsKPj4gKwkqdmIgPSBxLT5idWZzW2J1ZmZlcl07Cj4+ICsJcmV0dXJuIDA7Cj4+ICAg
+fQo+PiAgIAo+PiAgIGludCB2YjJfY29yZV9leHBidWYoc3RydWN0IHZiMl9xdWV1ZSAqcSwgaW50
+ICpmZCwgdW5zaWduZWQgaW50IHR5cGUsCj4+IEBAIC0yMzA2LDcgKzIzMDcsNyBAQCBpbnQgdmIy
+X21tYXAoc3RydWN0IHZiMl9xdWV1ZSAqcSwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4+
+ICAgewo+PiAgIAl1bnNpZ25lZCBsb25nIG9mZnNldCA9IHZtYS0+dm1fcGdvZmYgPDwgUEFHRV9T
+SElGVDsKPj4gICAJc3RydWN0IHZiMl9idWZmZXIgKnZiOwo+PiAtCXVuc2lnbmVkIGludCBidWZm
+ZXIgPSAwLCBwbGFuZSA9IDA7Cj4+ICsJdW5zaWduZWQgaW50IHBsYW5lID0gMDsKPj4gICAJaW50
+IHJldDsKPj4gICAJdW5zaWduZWQgbG9uZyBsZW5ndGg7Cj4+ICAgCj4+IEBAIC0yMzM1LDEyICsy
+MzM2LDEwIEBAIGludCB2YjJfbW1hcChzdHJ1Y3QgdmIyX3F1ZXVlICpxLCBzdHJ1Y3Qgdm1fYXJl
+YV9zdHJ1Y3QgKnZtYSkKPj4gICAJICogRmluZCB0aGUgcGxhbmUgY29ycmVzcG9uZGluZyB0byB0
+aGUgb2Zmc2V0IHBhc3NlZCBieSB1c2Vyc3BhY2UuIFRoaXMKPj4gICAJICogd2lsbCByZXR1cm4g
+YW4gZXJyb3IgaWYgbm90IE1FTU9SWV9NTUFQIG9yIGZpbGUgSS9PIGlzIGluIHByb2dyZXNzLgo+
+PiAgIAkgKi8KPj4gLQlyZXQgPSBfX2ZpbmRfcGxhbmVfYnlfb2Zmc2V0KHEsIG9mZnNldCwgJmJ1
+ZmZlciwgJnBsYW5lKTsKPj4gKwlyZXQgPSBfX2ZpbmRfcGxhbmVfYnlfb2Zmc2V0KHEsIG9mZnNl
+dCwgJnZiLCAmcGxhbmUpOwo+PiAgIAlpZiAocmV0KQo+PiAgIAkJZ290byB1bmxvY2s7Cj4+ICAg
+Cj4+IC0JdmIgPSBxLT5idWZzW2J1ZmZlcl07Cj4+IC0KPj4gICAJLyoKPj4gICAJICogTU1BUCBy
+ZXF1aXJlcyBwYWdlX2FsaWduZWQgYnVmZmVycy4KPj4gICAJICogVGhlIGJ1ZmZlciBsZW5ndGgg
+d2FzIHBhZ2VfYWxpZ25lZCBhdCBfX3ZiMl9idWZfbWVtX2FsbG9jKCksCj4+IEBAIC0yMzY4LDcg
+KzIzNjcsNyBAQCBpbnQgdmIyX21tYXAoc3RydWN0IHZiMl9xdWV1ZSAqcSwgc3RydWN0IHZtX2Fy
+ZWFfc3RydWN0ICp2bWEpCj4+ICAgCWlmIChyZXQpCj4+ICAgCQlyZXR1cm4gcmV0Owo+PiAgIAo+
+PiAtCWRwcmludGsocSwgMywgImJ1ZmZlciAlZCwgcGxhbmUgJWQgc3VjY2Vzc2Z1bGx5IG1hcHBl
+ZFxuIiwgYnVmZmVyLCBwbGFuZSk7Cj4+ICsJZHByaW50ayhxLCAzLCAiYnVmZmVyICV1LCBwbGFu
+ZSAlZCBzdWNjZXNzZnVsbHkgbWFwcGVkXG4iLCB2Yi0+aW5kZXgsIHBsYW5lKTsKPj4gICAJcmV0
+dXJuIDA7Cj4+ICAgfQo+PiAgIEVYUE9SVF9TWU1CT0xfR1BMKHZiMl9tbWFwKTsKPj4gQEAgLTIz
+ODIsNyArMjM4MSw3IEBAIHVuc2lnbmVkIGxvbmcgdmIyX2dldF91bm1hcHBlZF9hcmVhKHN0cnVj
+dCB2YjJfcXVldWUgKnEsCj4+ICAgewo+PiAgIAl1bnNpZ25lZCBsb25nIG9mZnNldCA9IHBnb2Zm
+IDw8IFBBR0VfU0hJRlQ7Cj4+ICAgCXN0cnVjdCB2YjJfYnVmZmVyICp2YjsKPj4gLQl1bnNpZ25l
+ZCBpbnQgYnVmZmVyLCBwbGFuZTsKPj4gKwl1bnNpZ25lZCBpbnQgcGxhbmU7Cj4+ICAgCXZvaWQg
+KnZhZGRyOwo+PiAgIAlpbnQgcmV0Owo+PiAgIAo+PiBAQCAtMjM5MiwxMiArMjM5MSwxMCBAQCB1
+bnNpZ25lZCBsb25nIHZiMl9nZXRfdW5tYXBwZWRfYXJlYShzdHJ1Y3QgdmIyX3F1ZXVlICpxLAo+
+PiAgIAkgKiBGaW5kIHRoZSBwbGFuZSBjb3JyZXNwb25kaW5nIHRvIHRoZSBvZmZzZXQgcGFzc2Vk
+IGJ5IHVzZXJzcGFjZS4gVGhpcwo+PiAgIAkgKiB3aWxsIHJldHVybiBhbiBlcnJvciBpZiBub3Qg
+TUVNT1JZX01NQVAgb3IgZmlsZSBJL08gaXMgaW4gcHJvZ3Jlc3MuCj4+ICAgCSAqLwo+PiAtCXJl
+dCA9IF9fZmluZF9wbGFuZV9ieV9vZmZzZXQocSwgb2Zmc2V0LCAmYnVmZmVyLCAmcGxhbmUpOwo+
+PiArCXJldCA9IF9fZmluZF9wbGFuZV9ieV9vZmZzZXQocSwgb2Zmc2V0LCAmdmIsICZwbGFuZSk7
+Cj4+ICAgCWlmIChyZXQpCj4+ICAgCQlnb3RvIHVubG9jazsKPj4gICAKPj4gLQl2YiA9IHEtPmJ1
+ZnNbYnVmZmVyXTsKPj4gLQo+PiAgIAl2YWRkciA9IHZiMl9wbGFuZV92YWRkcih2YiwgcGxhbmUp
+Owo+PiAgIAltdXRleF91bmxvY2soJnEtPm1tYXBfbG9jayk7Cj4+ICAgCXJldHVybiB2YWRkciA/
+ICh1bnNpZ25lZCBsb25nKXZhZGRyIDogLUVJTlZBTDsKPj4gLS0gCj4+IDIuMzkuMgo+PgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
