@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F34AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 02:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48273C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Nov 2023 06:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UkvedQPB7Llz0HXxwrrytVdlYxhZPbWiAftCVIX8R5I=; b=MjNrP2ctgXcrmv
-	+AQPUHJp+vaLcT03HMF5aVRXntx8oL2xhV6zhEXfHjXsJmY9EFpf067kxuesBkd/WWnWe2XZ6YKUk
-	vyguZ17VGJAZ+zd6XQdVkyMrnKnqoiI7aVxay2lM288mi0kHj16Ve6ArqjZk90/Eq0rWAd035oq6e
-	dEAmubTeZF2t27PXf7m3y0+Ojn3X+pd3DEbpERpZytuq/DOiOBDCPyDEsBZGtwBrHLHwGCWGS9K3p
-	9XSJjWIpHAiC7ac/t09OhYm/HJGiv8d3TIgOcPrWft0v2qwqc/8+RxCth7cG4Qm27TQwSQo1OY5w5
-	DCsLBJVl+Ie3xAj5JoIg==;
+	List-Owner; bh=SqrvH+JSjd2f8zqO77yJ4LTjFv6XP8HBypadwlkJubY=; b=nAcUz7OtoP0jEk
+	h04gN+EW4rmKptMcdnY8OQvkd8YUgiXMw7m1rQtZ6kfpoXgVPPFTFeVqMMMLxSM5U2QKb+1T4BBDH
+	oFDACUPI+BNKnYyjDCl72o2dC3qus6f7xzFZIBCSb6VJcKnvKCgkibeZYOmV3iVq4jPbqfv0+MtYX
+	GDPp7cIWwJdcd7TV4LWiTUUwpCiNfdAjiKzP9muqPXT8JfJL6JdOJYL3vbdBElTwTA5SEJOgdxxHd
+	LfIz0xPTSuwoSXhSAXXQSm/yTYbllRNMrdxlFrkQBPgIBi+EvTkye+4Xj9KxUWw7wJO+qglMYzqsg
+	y1Nj0mJEI2y5uLr6CohA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0YgJ-002q1j-12;
-	Wed, 08 Nov 2023 02:52:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r0bu9-0033ge-2c;
+	Wed, 08 Nov 2023 06:19:09 +0000
+Received: from mail-m92242.xmail.ntesmail.com ([103.126.92.242])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0YgF-002q0a-0N
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Nov 2023 02:52:37 +0000
-Received: from [100.84.166.245] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 17A3D66074E4;
-	Wed,  8 Nov 2023 02:52:28 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699411951;
-	bh=56x84uN8wKaIHVowpKm8cQCDQhNz4exGtHGEiO8IHms=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ZkhKj5ouAjRec30yzst59NFli0BWmsYJEC6io+koTAQFWiJzhrnkY6IB/tB+sYJuh
-	 N166FX59AFsi3gEdJI99mgukIJ92T3sAlIXH5FjLZDOCeO6aoc4UAp1YdZ+G0XCjmL
-	 SmcBzKs5PVUFQJ9xycV2xJ5sdpjTOspcIjeAzDbVzzXPX5DWo1EY9hA4NuORuW742v
-	 5zFnjqoJNAU0w2ke3UTdsWSGW8+WtZP4f8nrBrW2XR83iFDA9ptmkQ7ufSynD1ef8l
-	 4I9BTrnlaPylS1VhOb/67mE3Pk7Ut2HkcFTuvBDX0V9sGIEIp0qMx83F7LDR1dmmqg
-	 th/pO02Ws9B/w==
-Message-ID: <e12bffd61450fde2512632e205be5473e450a4e0.camel@collabora.com>
-Subject: Re: [PATCH v4 02/11] media: v4l2: Add NV15 and NV20 pixel formats
-From: Nicolas  Dufresne <nicolas.dufresne@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Alex Bee <knaerzche@gmail.com>, Benjamin Gaignard
-	 <benjamin.gaignard@collabora.com>, Sebastian Fricke
-	 <sebastian.fricke@collabora.com>, Christopher Obbard
-	 <chris.obbard@collabora.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Date: Tue, 07 Nov 2023 21:52:18 -0500
-In-Reply-To: <20231105165521.3592037-3-jonas@kwiboo.se>
-References: <20231105165521.3592037-1-jonas@kwiboo.se>
-	 <20231105165521.3592037-3-jonas@kwiboo.se>
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
-MIME-Version: 1.0
+	id 1r0bu3-0033cp-2Z;
+	Wed, 08 Nov 2023 06:19:07 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=DEJFrhQeNYu/Fjs3Ra2KwwBpG5RYQekcQo+CSiHjbvAL8wxW5wLu9ldlnXtfdFTvv38mg8DBU19b3Wea0dgBJVaNlPyUAzUQqXSsvq1pfvhGqk5nmbOUedx6ej5WF57MmJw2vDz4XKnO08muMr1782CGgVx46dNvHdQjaqYLQeg=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=n6VPuO680wxPCco2i+SUrSBekN9TrTNjUMhnSF/EmHw=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 71AEA40026E;
+	Wed,  8 Nov 2023 14:18:31 +0800 (CST)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	kever.yang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com,
+	andy.yan@rock-chips.com
+Subject: [PATCH v5 4/4] clk: rockchip: rk3588: Adjust the GATE_LINK parameter
+Date: Wed,  8 Nov 2023 14:18:22 +0800
+Message-Id: <20231108061822.4871-5-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231108061822.4871-1-zhangqing@rock-chips.com>
+References: <20231108061822.4871-1-zhangqing@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkMfSVYZGBpJGRhKTB9DHkpVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8bad951a0d2eb3kusn71aea40026e
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PU06NAw*Dzw*TAoNFiw9TyId
+	VhZPFDNVSlVKTUJCT0lPSEpJTklLVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpIQ01ONwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231107_185235_469679_BFEB41B1 
-X-CRM114-Status: GOOD (  22.63  )
+X-CRM114-CacheID: sfid-20231107_221904_033424_56AF068E 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,207 +79,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpMZSBkaW1hbmNoZSAwNSBub3ZlbWJyZSAyMDIzIMOgIDE2OjU1ICswMDAwLCBKb25hcyBL
-YXJsbWFuIGEgw6ljcml0wqA6Cj4gQWRkIE5WMTUgYW5kIE5WMjAgcGl4ZWwgZm9ybWF0cyB1c2Vk
-IGJ5IHRoZSBSb2NrY2hpcCBWaWRlbyBEZWNvZGVyIGZvcgo+IDEwLWJpdCBidWZmZXJzLgo+IAo+
-IE5WMTUgYW5kIE5WMjAgaXMgMTAtYml0IDQ6MjowLzQ6MjoyIHNlbWktcGxhbmFyIFlVViBmb3Jt
-YXRzIHNpbWlsYXIgdG8KPiBOVjEyIGFuZCBOVjE2LCB1c2luZyAxMC1iaXQgY29tcG9uZW50cyB3
-aXRoIG5vIHBhZGRpbmcgYmV0d2VlbiBlYWNoCj4gY29tcG9uZW50LiBJbnN0ZWFkLCBhIGdyb3Vw
-IG9mIDQgbHVtaW5hbmNlL2Nocm9taW5hbmNlIHNhbXBsZXMgYXJlCj4gc3RvcmVkIG92ZXIgNSBi
-eXRlcyBpbiBsaXR0bGUgZW5kaWFuIG9yZGVyOgo+IAo+IFlZWVkgPSBVVlVWID0gNCAqIDEwIGJp
-dHMgPSA0MCBiaXRzID0gNSBieXRlcwo+IAo+IFRoZSAnMTUnIGFuZCAnMjAnIHN1ZmZpeCByZWZl
-cnMgdG8gdGhlIG9wdGltdW0gZWZmZWN0aXZlIGJpdHMgcGVyIHBpeGVsCj4gd2hpY2ggaXMgYWNo
-aWV2ZWQgd2hlbiB0aGUgdG90YWwgbnVtYmVyIG9mIGx1bWluYW5jZSBzYW1wbGVzIGlzIGEKPiBt
-dWx0aXBsZSBvZiA4IGZvciBOVjE1IGFuZCA0IGZvciBOVjIwLgoKSSBoYWQgdGhpcyBtb3N0bHkg
-ZG9jdW1lbnRlZCBhbHJlYWR5IGluIFNlcHRlbWJlcjoKCmh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4
-dHYub3JnL3Byb2plY3QvbGludXgtbWVkaWEvcGF0Y2gvMjAyMzA5MTQxNTA2NTEuMzExNDEzNC0z
-LW5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbS8KaHR0cHM6Ly9wYXRjaHdvcmsubGludXh0
-di5vcmcvcHJvamVjdC9saW51eC1tZWRpYS9wYXRjaC8yMDIzMDkxNDE1MDY1MS4zMTE0MTM0LTQt
-bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tLwoKSSB0aGluayBJIHdhcyBpbXByb3Zpbmcg
-YSBiaXQgdGhlIGRvY3VtZW50YXRpb24gYXZvaWRpbmcgdG8gcmVwZWF0IHdoYXQKTlYxNSAobGl0
-dGxlIGFuZCBiaWcgZW5kaWFuKSBpcyBvdmVyIGFuZCBvdmVyLiBJJ3ZlIGhhZCBubyBmZWVkYmFj
-ayBvbgpWMiwgc28gYXNzdW1lZCBpdCBnb2luZyB0byBiZSBwaWNrZWQsIGJ1dCB0aGVuIGl0IHdp
-bGwgY2VydGFpbmx5CmNvbmZsaWN0IHdpdGggdGhpcyBjaGFuZ2UuCgo+IAo+IFNpZ25lZC1vZmYt
-Ynk6IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPiAtLS0KPiB2NDoKPiAtIE5vIGNo
-YW5nZQo+IAo+IHYzOgo+IC0gVXNlIGJwcCBhbmQgYnBwX2RpdiBpbnN0ZWFkIG9mIHRoZSBtaXN1
-c2Ugb2YgYmxvY2tfdy9ibG9ja19oCj4gLSBVcGRhdGUgZG9jdW1lbnRhdGlvbiwgZXhwYW5kIHRv
-IHVzZSBmdWxsIDR4NCBzYW1wbGUgaW1hZ2UKPiAKPiAgLi4uL21lZGlhL3Y0bC9waXhmbXQteXV2
-LXBsYW5hci5yc3QgICAgICAgICAgIHwgMTI4ICsrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJz
-L21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jICAgICAgICAgfCAgIDIgKwo+ICBkcml2ZXJz
-L21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMgICAgICAgICAgfCAgIDIgKwo+ICBpbmNsdWRl
-L3VhcGkvbGludXgvdmlkZW9kZXYyLmggICAgICAgICAgICAgICAgfCAgIDIgKwo+ICA0IGZpbGVz
-IGNoYW5nZWQsIDEzNCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRp
-b24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvcGl4Zm10LXl1di1wbGFuYXIucnN0IGIvRG9jdW1l
-bnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QKPiBp
-bmRleCAxODQwMjI0ZmFhNDEuLjQzNjZjZGNiOTcwZSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0
-aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3BpeGZtdC15dXYtcGxhbmFyLnJzdAo+ICsrKyBi
-L0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvcGl4Zm10LXl1di1wbGFuYXIu
-cnN0Cj4gQEAgLTc5LDYgKzc5LDEzIEBAIEFsbCBjb21wb25lbnRzIGFyZSBzdG9yZWQgd2l0aCB0
-aGUgc2FtZSBudW1iZXIgb2YgYml0cyBwZXIgY29tcG9uZW50Lgo+ICAgICAgICAtIENyLCBDYgo+
-ICAgICAgICAtIFllcwo+ICAgICAgICAtIExpbmVhcgo+ICsgICAgKiAtIFY0TDJfUElYX0ZNVF9O
-VjE1Cj4gKyAgICAgIC0gJ05WMTUnCj4gKyAgICAgIC0gMTAKPiArICAgICAgLSA0OjI6MAo+ICsg
-ICAgICAtIENiLCBDcgo+ICsgICAgICAtIFllcwo+ICsgICAgICAtIExpbmVhcgoKSSdkIGxpa2Ug
-dG8gc2VlIDggYW5kIDEwYml0IGZvcm1hdHMgZ3JvdXBlZCBhbmQgbm90IG1peGVkLgoKPiAgICAg
-ICogLSBWNEwyX1BJWF9GTVRfTlYxMk0KPiAgICAgICAgLSAnTk0xMicKPiAgICAgICAgLSA4Cj4g
-QEAgLTE1OCw2ICsxNjUsMTMgQEAgQWxsIGNvbXBvbmVudHMgYXJlIHN0b3JlZCB3aXRoIHRoZSBz
-YW1lIG51bWJlciBvZiBiaXRzIHBlciBjb21wb25lbnQuCj4gICAgICAgIC0gQ3IsIENiCj4gICAg
-ICAgIC0gWWVzCj4gICAgICAgIC0gTGluZWFyCj4gKyAgICAqIC0gVjRMMl9QSVhfRk1UX05WMjAK
-PiArICAgICAgLSAnTlYyMCcKPiArICAgICAgLSAxMAo+ICsgICAgICAtIDQ6MjoyCj4gKyAgICAg
-IC0gQ2IsIENyCj4gKyAgICAgIC0gWWVzCj4gKyAgICAgIC0gTGluZWFyCj4gICAgICAqIC0gVjRM
-Ml9QSVhfRk1UX05WMTZNCj4gICAgICAgIC0gJ05NMTYnCj4gICAgICAgIC0gOAo+IEBAIC0yODgs
-NiArMzAyLDU3IEBAIG9mIHRoZSBsdW1hIHBsYW5lLgo+ICAgICAgICAtIENyXCA6c3ViOmAxMWAK
-PiAgCj4gIAo+ICsuLiBfVjRMMi1QSVgtRk1ULU5WMTU6Cj4gKwo+ICtOVjE1Cj4gKy0tLS0KPiAr
-Cj4gK1NlbWktcGxhbmFyIDEwLWJpdCBZVVYgNDoyOjAgZm9ybWF0IHNpbWlsYXIgdG8gTlYxMiwg
-dXNpbmcgMTAtYml0IGNvbXBvbmVudHMKPiArd2l0aCBubyBwYWRkaW5nIGJldHdlZW4gZWFjaCBj
-b21wb25lbnQuIEEgZ3JvdXAgb2YgNCBjb21wb25lbnRzIGFyZSBzdG9yZWQgb3Zlcgo+ICs1IGJ5
-dGVzIGluIGxpdHRsZSBlbmRpYW4gb3JkZXIuCj4gKwo+ICsuLiBmbGF0LXRhYmxlOjogU2FtcGxl
-IDR4NCBOVjE1IEltYWdlICgxIGJ5dGUgcGVyIGNlbGwpCj4gKyAgICA6aGVhZGVyLXJvd3M6ICAw
-Cj4gKyAgICA6c3R1Yi1jb2x1bW5zOiAwCj4gKwo+ICsgICAgKiAtIHN0YXJ0ICsgMDoKPiArICAg
-ICAgLSBZJ1wgOnN1YjpgMDBbNzowXWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMDFbNTowXWBcIFkn
-XCA6c3ViOmAwMFs5OjhdYAo+ICsgICAgICAtIFknXCA6c3ViOmAwMlszOjBdYFwgWSdcIDpzdWI6
-YDAxWzk6Nl1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDAzWzE6MF1gXCBZJ1wgOnN1YjpgMDJbOTo0
-XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMDNbOToyXWAKPiArICAgICogLSBzdGFydCArIDU6Cj4g
-KyAgICAgIC0gWSdcIDpzdWI6YDEwWzc6MF1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDExWzU6MF1g
-XCBZJ1wgOnN1YjpgMTBbOTo4XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMTJbMzowXWBcIFknXCA6
-c3ViOmAxMVs5OjZdYAo+ICsgICAgICAtIFknXCA6c3ViOmAxM1sxOjBdYFwgWSdcIDpzdWI6YDEy
-Wzk6NF1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDEzWzk6Ml1gCj4gKyAgICAqIC0gc3RhcnQgKyAx
-MDoKPiArICAgICAgLSBZJ1wgOnN1YjpgMjBbNzowXWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMjFb
-NTowXWBcIFknXCA6c3ViOmAyMFs5OjhdYAo+ICsgICAgICAtIFknXCA6c3ViOmAyMlszOjBdYFwg
-WSdcIDpzdWI6YDIxWzk6Nl1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDIzWzE6MF1gXCBZJ1wgOnN1
-YjpgMjJbOTo0XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMjNbOToyXWAKPiArICAgICogLSBzdGFy
-dCArIDE1Ogo+ICsgICAgICAtIFknXCA6c3ViOmAzMFs3OjBdYAo+ICsgICAgICAtIFknXCA6c3Vi
-OmAzMVs1OjBdYFwgWSdcIDpzdWI6YDMwWzk6OF1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDMyWzM6
-MF1gXCBZJ1wgOnN1YjpgMzFbOTo2XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMzNbMTowXWBcIFkn
-XCA6c3ViOmAzMls5OjRdYAo+ICsgICAgICAtIFknXCA6c3ViOmAzM1s5OjJdYAo+ICsgICAgKiAt
-IHN0YXJ0ICsgMjA6Cj4gKyAgICAgIC0gQ2JcIDpzdWI6YDAwWzc6MF1gCj4gKyAgICAgIC0gQ3Jc
-IDpzdWI6YDAwWzU6MF1gXCBDYlwgOnN1YjpgMDBbOTo4XWAKPiArICAgICAgLSBDYlwgOnN1Yjpg
-MDFbMzowXWBcIENyXCA6c3ViOmAwMFs5OjZdYAo+ICsgICAgICAtIENyXCA6c3ViOmAwMVsxOjBd
-YFwgQ2JcIDpzdWI6YDAxWzk6NF1gCj4gKyAgICAgIC0gQ3JcIDpzdWI6YDAxWzk6Ml1gCj4gKyAg
-ICAqIC0gc3RhcnQgKyAyNToKPiArICAgICAgLSBDYlwgOnN1YjpgMTBbNzowXWAKPiArICAgICAg
-LSBDclwgOnN1YjpgMTBbNTowXWBcIENiXCA6c3ViOmAxMFs5OjhdYAo+ICsgICAgICAtIENiXCA6
-c3ViOmAxMVszOjBdYFwgQ3JcIDpzdWI6YDEwWzk6Nl1gCj4gKyAgICAgIC0gQ3JcIDpzdWI6YDEx
-WzE6MF1gXCBDYlwgOnN1YjpgMTFbOTo0XWAKPiArICAgICAgLSBDclwgOnN1YjpgMTFbOToyXWAK
-PiArCj4gKwo+ICAuLiBfVjRMMi1QSVgtRk1ULU5WMTJNVDoKPiAgLi4gX1Y0TDItUElYLUZNVC1O
-VjEyTVQtMTZYMTY6Cj4gIC4uIF9WNEwyLVBJWC1GTVQtTlYxMi00TDQ6Cj4gQEAgLTUwMCw2ICs1
-NjUsNjkgQEAgbnVtYmVyIG9mIGxpbmVzIGFzIHRoZSBsdW1hIHBsYW5lLgo+ICAgICAgICAtIENy
-XCA6c3ViOmAzMmAKPiAgCj4gIAo+ICsuLiBfVjRMMi1QSVgtRk1ULU5WMjA6Cj4gKwo+ICtOVjIw
-Cj4gKy0tLS0KPiArCj4gK1NlbWktcGxhbmFyIDEwLWJpdCBZVVYgNDoyOjIgZm9ybWF0IHNpbWls
-YXIgdG8gTlYxNiwgdXNpbmcgMTAtYml0IGNvbXBvbmVudHMKPiArd2l0aCBubyBwYWRkaW5nIGJl
-dHdlZW4gZWFjaCBjb21wb25lbnQuIEEgZ3JvdXAgb2YgNCBjb21wb25lbnRzIGFyZSBzdG9yZWQg
-b3Zlcgo+ICs1IGJ5dGVzIGluIGxpdHRsZSBlbmRpYW4gb3JkZXIuCj4gKwo+ICsuLiBmbGF0LXRh
-YmxlOjogU2FtcGxlIDR4NCBOVjIwIEltYWdlICgxIGJ5dGUgcGVyIGNlbGwpCj4gKyAgICA6aGVh
-ZGVyLXJvd3M6ICAwCj4gKyAgICA6c3R1Yi1jb2x1bW5zOiAwCj4gKwo+ICsgICAgKiAtIHN0YXJ0
-ICsgMDoKPiArICAgICAgLSBZJ1wgOnN1YjpgMDBbNzowXWAKPiArICAgICAgLSBZJ1wgOnN1Yjpg
-MDFbNTowXWBcIFknXCA6c3ViOmAwMFs5OjhdYAo+ICsgICAgICAtIFknXCA6c3ViOmAwMlszOjBd
-YFwgWSdcIDpzdWI6YDAxWzk6Nl1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDAzWzE6MF1gXCBZJ1wg
-OnN1YjpgMDJbOTo0XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMDNbOToyXWAKPiArICAgICogLSBz
-dGFydCArIDU6Cj4gKyAgICAgIC0gWSdcIDpzdWI6YDEwWzc6MF1gCj4gKyAgICAgIC0gWSdcIDpz
-dWI6YDExWzU6MF1gXCBZJ1wgOnN1YjpgMTBbOTo4XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMTJb
-MzowXWBcIFknXCA6c3ViOmAxMVs5OjZdYAo+ICsgICAgICAtIFknXCA6c3ViOmAxM1sxOjBdYFwg
-WSdcIDpzdWI6YDEyWzk6NF1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDEzWzk6Ml1gCj4gKyAgICAq
-IC0gc3RhcnQgKyAxMDoKPiArICAgICAgLSBZJ1wgOnN1YjpgMjBbNzowXWAKPiArICAgICAgLSBZ
-J1wgOnN1YjpgMjFbNTowXWBcIFknXCA6c3ViOmAyMFs5OjhdYAo+ICsgICAgICAtIFknXCA6c3Vi
-OmAyMlszOjBdYFwgWSdcIDpzdWI6YDIxWzk6Nl1gCj4gKyAgICAgIC0gWSdcIDpzdWI6YDIzWzE6
-MF1gXCBZJ1wgOnN1YjpgMjJbOTo0XWAKPiArICAgICAgLSBZJ1wgOnN1YjpgMjNbOToyXWAKPiAr
-ICAgICogLSBzdGFydCArIDE1Ogo+ICsgICAgICAtIFknXCA6c3ViOmAzMFs3OjBdYAo+ICsgICAg
-ICAtIFknXCA6c3ViOmAzMVs1OjBdYFwgWSdcIDpzdWI6YDMwWzk6OF1gCj4gKyAgICAgIC0gWSdc
-IDpzdWI6YDMyWzM6MF1gXCBZJ1wgOnN1YjpgMzFbOTo2XWAKPiArICAgICAgLSBZJ1wgOnN1Yjpg
-MzNbMTowXWBcIFknXCA6c3ViOmAzMls5OjRdYAo+ICsgICAgICAtIFknXCA6c3ViOmAzM1s5OjJd
-YAo+ICsgICAgKiAtIHN0YXJ0ICsgMjA6Cj4gKyAgICAgIC0gQ2JcIDpzdWI6YDAwWzc6MF1gCj4g
-KyAgICAgIC0gQ3JcIDpzdWI6YDAwWzU6MF1gXCBDYlwgOnN1YjpgMDBbOTo4XWAKPiArICAgICAg
-LSBDYlwgOnN1YjpgMDFbMzowXWBcIENyXCA6c3ViOmAwMFs5OjZdYAo+ICsgICAgICAtIENyXCA6
-c3ViOmAwMVsxOjBdYFwgQ2JcIDpzdWI6YDAxWzk6NF1gCj4gKyAgICAgIC0gQ3JcIDpzdWI6YDAx
-Wzk6Ml1gCj4gKyAgICAqIC0gc3RhcnQgKyAyNToKPiArICAgICAgLSBDYlwgOnN1YjpgMTBbNzow
-XWAKPiArICAgICAgLSBDclwgOnN1YjpgMTBbNTowXWBcIENiXCA6c3ViOmAxMFs5OjhdYAo+ICsg
-ICAgICAtIENiXCA6c3ViOmAxMVszOjBdYFwgQ3JcIDpzdWI6YDEwWzk6Nl1gCj4gKyAgICAgIC0g
-Q3JcIDpzdWI6YDExWzE6MF1gXCBDYlwgOnN1YjpgMTFbOTo0XWAKPiArICAgICAgLSBDclwgOnN1
-YjpgMTFbOToyXWAKPiArICAgICogLSBzdGFydCArIDMwOgo+ICsgICAgICAtIENiXCA6c3ViOmAy
-MFs3OjBdYAo+ICsgICAgICAtIENyXCA6c3ViOmAyMFs1OjBdYFwgQ2JcIDpzdWI6YDIwWzk6OF1g
-Cj4gKyAgICAgIC0gQ2JcIDpzdWI6YDIxWzM6MF1gXCBDclwgOnN1YjpgMjBbOTo2XWAKPiArICAg
-ICAgLSBDclwgOnN1YjpgMjFbMTowXWBcIENiXCA6c3ViOmAyMVs5OjRdYAo+ICsgICAgICAtIENy
-XCA6c3ViOmAyMVs5OjJdYAo+ICsgICAgKiAtIHN0YXJ0ICsgMzU6Cj4gKyAgICAgIC0gQ2JcIDpz
-dWI6YDMwWzc6MF1gCj4gKyAgICAgIC0gQ3JcIDpzdWI6YDMwWzU6MF1gXCBDYlwgOnN1YjpgMzBb
-OTo4XWAKPiArICAgICAgLSBDYlwgOnN1YjpgMzFbMzowXWBcIENyXCA6c3ViOmAzMFs5OjZdYAo+
-ICsgICAgICAtIENyXCA6c3ViOmAzMVsxOjBdYFwgQ2JcIDpzdWI6YDMxWzk6NF1gCj4gKyAgICAg
-IC0gQ3JcIDpzdWI6YDMxWzk6Ml1gCj4gKwo+ICsKPiAgLi4gX1Y0TDItUElYLUZNVC1OVjI0Ogo+
-ICAuLiBfVjRMMi1QSVgtRk1ULU5WNDI6Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlh
-L3Y0bDItY29yZS92NGwyLWNvbW1vbi5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1j
-b21tb24uYwo+IGluZGV4IDgzNGI0MjZkYThiMS4uYzY1ZmZhYjU4MDBhIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMKPiArKysgYi9kcml2ZXJzL21l
-ZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jCj4gQEAgLTI3MCw4ICsyNzAsMTAgQEAgY29uc3Qg
-c3RydWN0IHY0bDJfZm9ybWF0X2luZm8gKnY0bDJfZm9ybWF0X2luZm8odTMyIGZvcm1hdCkKPiAg
-CQkvKiBZVVYgcGxhbmFyIGZvcm1hdHMgKi8KPiAgCQl7IC5mb3JtYXQgPSBWNEwyX1BJWF9GTVRf
-TlYxMiwgICAgLnBpeGVsX2VuYyA9IFY0TDJfUElYRUxfRU5DX1lVViwgLm1lbV9wbGFuZXMgPSAx
-LCAuY29tcF9wbGFuZXMgPSAyLCAuYnBwID0geyAxLCAyLCAwLCAwIH0sIC5icHBfZGl2ID0geyAx
-LCAxLCAxLCAxIH0sIC5oZGl2ID0gMiwgLnZkaXYgPSAyIH0sCj4gIAkJeyAuZm9ybWF0ID0gVjRM
-Ml9QSVhfRk1UX05WMjEsICAgIC5waXhlbF9lbmMgPSBWNEwyX1BJWEVMX0VOQ19ZVVYsIC5tZW1f
-cGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9IHsgMSwgMiwgMCwgMCB9LCAuYnBw
-X2RpdiA9IHsgMSwgMSwgMSwgMSB9LCAuaGRpdiA9IDIsIC52ZGl2ID0gMiB9LAo+ICsJCXsgLmZv
-cm1hdCA9IFY0TDJfUElYX0ZNVF9OVjE1LCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNf
-WVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDUsIDEwLCAw
-LCAwIH0sIC5icHBfZGl2ID0geyA0LCA0LCAxLCAxIH0sIC5oZGl2ID0gMiwgLnZkaXYgPSAyIH0s
-Cj4gIAkJeyAuZm9ybWF0ID0gVjRMMl9QSVhfRk1UX05WMTYsICAgIC5waXhlbF9lbmMgPSBWNEwy
-X1BJWEVMX0VOQ19ZVVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9
-IHsgMSwgMiwgMCwgMCB9LCAuYnBwX2RpdiA9IHsgMSwgMSwgMSwgMSB9LCAuaGRpdiA9IDIsIC52
-ZGl2ID0gMSB9LAo+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZNVF9OVjYxLCAgICAucGl4ZWxf
-ZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9
-IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmJwcF9kaXYgPSB7IDEsIDEsIDEsIDEgfSwgLmhk
-aXYgPSAyLCAudmRpdiA9IDEgfSwKPiArCQl7IC5mb3JtYXQgPSBWNEwyX1BJWF9GTVRfTlYyMCwg
-ICAgLnBpeGVsX2VuYyA9IFY0TDJfUElYRUxfRU5DX1lVViwgLm1lbV9wbGFuZXMgPSAxLCAuY29t
-cF9wbGFuZXMgPSAyLCAuYnBwID0geyA1LCAxMCwgMCwgMCB9LCAuYnBwX2RpdiA9IHsgNCwgNCwg
-MSwgMSB9LCAuaGRpdiA9IDIsIC52ZGl2ID0gMSB9LAo+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElY
-X0ZNVF9OVjI0LCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5l
-cyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmJwcF9kaXYg
-PSB7IDEsIDEsIDEsIDEgfSwgLmhkaXYgPSAxLCAudmRpdiA9IDEgfSwKPiAgCQl7IC5mb3JtYXQg
-PSBWNEwyX1BJWF9GTVRfTlY0MiwgICAgLnBpeGVsX2VuYyA9IFY0TDJfUElYRUxfRU5DX1lVViwg
-Lm1lbV9wbGFuZXMgPSAxLCAuY29tcF9wbGFuZXMgPSAyLCAuYnBwID0geyAxLCAyLCAwLCAwIH0s
-IC5icHBfZGl2ID0geyAxLCAxLCAxLCAxIH0sIC5oZGl2ID0gMSwgLnZkaXYgPSAxIH0sCj4gIAkJ
-eyAuZm9ybWF0ID0gVjRMMl9QSVhfRk1UX1AwMTAsICAgIC5waXhlbF9lbmMgPSBWNEwyX1BJWEVM
-X0VOQ19ZVVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9IHsgMiwg
-MiwgMCwgMCB9LCAuYnBwX2RpdiA9IHsgMSwgMSwgMSwgMSB9LCAuaGRpdiA9IDIsIC52ZGl2ID0g
-MSB9LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMg
-Yi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPiBpbmRleCA5YjFkZTU0Y2Uz
-NzkuLjkzNzQzNGU1ZjJjMSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
-NGwyLWlvY3RsLmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMK
-PiBAQCAtMTM0Nyw4ICsxMzQ3LDEwIEBAIHN0YXRpYyB2b2lkIHY0bF9maWxsX2ZtdGRlc2Moc3Ry
-dWN0IHY0bDJfZm10ZGVzYyAqZm10KQo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfWVVWNDhfMTI6CWRl
-c2NyID0gIjEyLWJpdCBZVVYgNDo0OjQgUGFja2VkIjsgYnJlYWs7Cj4gIAljYXNlIFY0TDJfUElY
-X0ZNVF9OVjEyOgkJZGVzY3IgPSAiWS9VViA0OjI6MCI7IGJyZWFrOwo+ICAJY2FzZSBWNEwyX1BJ
-WF9GTVRfTlYyMToJCWRlc2NyID0gIlkvVlUgNDoyOjAiOyBicmVhazsKPiArCWNhc2UgVjRMMl9Q
-SVhfRk1UX05WMTU6CQlkZXNjciA9ICIxMC1iaXQgWS9VViA0OjI6MCAoUGFja2VkKSI7IGJyZWFr
-Owo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfTlYxNjoJCWRlc2NyID0gIlkvVVYgNDoyOjIiOyBicmVh
-azsKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX05WNjE6CQlkZXNjciA9ICJZL1ZVIDQ6MjoyIjsgYnJl
-YWs7Cj4gKwljYXNlIFY0TDJfUElYX0ZNVF9OVjIwOgkJZGVzY3IgPSAiMTAtYml0IFkvVVYgNDoy
-OjIgKFBhY2tlZCkiOyBicmVhazsKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX05WMjQ6CQlkZXNjciA9
-ICJZL1VWIDQ6NDo0IjsgYnJlYWs7Cj4gIAljYXNlIFY0TDJfUElYX0ZNVF9OVjQyOgkJZGVzY3Ig
-PSAiWS9WVSA0OjQ6NCI7IGJyZWFrOwo+ICAJY2FzZSBWNEwyX1BJWF9GTVRfUDAxMDoJCWRlc2Ny
-ID0gIjEwLWJpdCBZL1VWIDQ6MjowIjsgYnJlYWs7Cj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFw
-aS9saW51eC92aWRlb2RldjIuaCBiL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+IGlu
-ZGV4IGMzZDRlNDkwY2U3Yy4uNjE3MzQwYzQzZTQwIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvdWFw
-aS9saW51eC92aWRlb2RldjIuaAo+ICsrKyBiL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIu
-aAo+IEBAIC02MzgsOCArNjM4LDEwIEBAIHN0cnVjdCB2NGwyX3BpeF9mb3JtYXQgewo+ICAvKiB0
-d28gcGxhbmVzIC0tIG9uZSBZLCBvbmUgQ3IgKyBDYiBpbnRlcmxlYXZlZCAgKi8KPiAgI2RlZmlu
-ZSBWNEwyX1BJWF9GTVRfTlYxMiAgICB2NGwyX2ZvdXJjYygnTicsICdWJywgJzEnLCAnMicpIC8q
-IDEyICBZL0NiQ3IgNDoyOjAgICovCj4gICNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMjEgICAgdjRs
-Ml9mb3VyY2MoJ04nLCAnVicsICcyJywgJzEnKSAvKiAxMiAgWS9DckNiIDQ6MjowICAqLwo+ICsj
-ZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjE1ICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnMScsICc1
-JykgLyogMTUgIFkvQ2JDciA0OjI6MCAxMC1iaXQgcGFja2VkICovCj4gICNkZWZpbmUgVjRMMl9Q
-SVhfRk1UX05WMTYgICAgdjRsMl9mb3VyY2MoJ04nLCAnVicsICcxJywgJzYnKSAvKiAxNiAgWS9D
-YkNyIDQ6MjoyICAqLwo+ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjYxICAgIHY0bDJfZm91cmNj
-KCdOJywgJ1YnLCAnNicsICcxJykgLyogMTYgIFkvQ3JDYiA0OjI6MiAgKi8KPiArI2RlZmluZSBW
-NEwyX1BJWF9GTVRfTlYyMCAgICB2NGwyX2ZvdXJjYygnTicsICdWJywgJzInLCAnMCcpIC8qIDIw
-ICBZL0NiQ3IgNDoyOjIgMTAtYml0IHBhY2tlZCAqLwoKV291bGQgbWFrZSBzZW5zZSB0byBncm91
-cCBhbGwgc2VtaSBwbGFuYXIgMTBiaXQgdG9nZXRoZXIuCgo+ICAjZGVmaW5lIFY0TDJfUElYX0ZN
-VF9OVjI0ICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnMicsICc0JykgLyogMjQgIFkvQ2JDciA0
-OjQ6NCAgKi8KPiAgI2RlZmluZSBWNEwyX1BJWF9GTVRfTlY0MiAgICB2NGwyX2ZvdXJjYygnTics
-ICdWJywgJzQnLCAnMicpIC8qIDI0ICBZL0NyQ2IgNDo0OjQgICovCj4gICNkZWZpbmUgVjRMMl9Q
-SVhfRk1UX1AwMTAgICAgdjRsMl9mb3VyY2MoJ1AnLCAnMCcsICcxJywgJzAnKSAvKiAyNCAgWS9D
-YkNyIDQ6MjowIDEwLWJpdCBwZXIgY29tcG9uZW50ICovCgpyZWdhcmRzLApOaWNvbGFzCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Export PCLK_VO1GRF clk id.
+Using Id instead of name, if use name needs to use __clk_lookup().
+But __clk_lookup() is not exported and is not friendly for GKI.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3588.c | 114 ++++++++++++++++--------------
+ 1 file changed, 59 insertions(+), 55 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 6994165e0395..1e0aec8c7f63 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -12,28 +12,6 @@
+ #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+ #include "clk.h"
+ 
+-/*
+- * Recent Rockchip SoCs have a new hardware block called Native Interface
+- * Unit (NIU), which gates clocks to devices behind them. These effectively
+- * need two parent clocks.
+- *
+- * Downstream enables the linked clock via runtime PM whenever the gate is
+- * enabled. This implementation uses separate clock nodes for each of the
+- * linked gate clocks, which leaks parts of the clock tree into DT.
+- *
+- * The GATE_LINK macro instead takes the second parent via 'linkname', but
+- * ignores the information. Once the clock framework is ready to handle it, the
+- * information should be passed on here. But since these clocks are required to
+- * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
+- * clocks critical until a better solution is available. This will waste some
+- * power, but avoids leaking implementation details into DT or hanging the
+- * system.
+- */
+-#define GATE_LINK(_id, cname, pname, linkname, f, o, b, gf) \
+-	GATE(_id, cname, pname, f, o, b, gf)
+-#define RK3588_LINKED_CLK		CLK_IS_CRITICAL
+-
+-
+ #define RK3588_GRF_SOC_STATUS0		0x600
+ #define RK3588_PHYREF_ALT_GATE		0xc38
+ 
+@@ -1456,7 +1434,7 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE_NODIV(HCLK_NVM_ROOT,  "hclk_nvm_root", mux_200m_100m_50m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(77), 0, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(31), 0, GFLAGS),
+-	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, RK3588_LINKED_CLK,
++	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, 0,
+ 			RK3588_CLKSEL_CON(77), 7, 1, MFLAGS, 2, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(31), 1, GFLAGS),
+ 	GATE(ACLK_EMMC, "aclk_emmc", "aclk_nvm_root", 0,
+@@ -1685,13 +1663,13 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(42), 9, GFLAGS),
+ 
+ 	/* vdpu */
+-	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, RK3588_LINKED_CLK,
++	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(98), 5, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(44), 0, GFLAGS),
+ 	COMPOSITE_NODIV(ACLK_VDPU_LOW_ROOT, "aclk_vdpu_low_root", mux_400m_200m_100m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(98), 7, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(44), 1, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
++	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(98), 9, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(44), 2, GFLAGS),
+ 	COMPOSITE(ACLK_JPEG_DECODER_ROOT, "aclk_jpeg_decoder_root", gpll_cpll_aupll_spll_p, 0,
+@@ -1742,9 +1720,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE(ACLK_RKVENC0_ROOT, "aclk_rkvenc0_root", gpll_cpll_npll_p, 0,
+ 			RK3588_CLKSEL_CON(102), 7, 2, MFLAGS, 2, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(47), 1, GFLAGS),
+-	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", RK3588_LINKED_CLK,
++	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", 0,
+ 			RK3588_CLKGATE_CON(47), 4, GFLAGS),
+-	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", RK3588_LINKED_CLK,
++	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", 0,
+ 			RK3588_CLKGATE_CON(47), 5, GFLAGS),
+ 	COMPOSITE(CLK_RKVENC0_CORE, "clk_rkvenc0_core", gpll_cpll_aupll_npll_p, 0,
+ 			RK3588_CLKSEL_CON(102), 14, 2, MFLAGS, 9, 5, DFLAGS,
+@@ -1754,10 +1732,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(48), 6, GFLAGS),
+ 
+ 	/* vi */
+-	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, RK3588_LINKED_CLK,
++	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, 0,
+ 			RK3588_CLKSEL_CON(106), 5, 3, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(49), 0, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
++	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(106), 8, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(49), 1, GFLAGS),
+ 	COMPOSITE_NODIV(PCLK_VI_ROOT, "pclk_vi_root", mux_100m_50m_24m_p, 0,
+@@ -1851,8 +1829,6 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(56), 0, GFLAGS),
+ 	GATE(PCLK_TRNG0, "pclk_trng0", "pclk_vo0_root", 0,
+ 			RK3588_CLKGATE_CON(56), 1, GFLAGS),
+-	GATE(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", CLK_IGNORE_UNUSED,
+-			RK3588_CLKGATE_CON(55), 10, GFLAGS),
+ 	COMPOSITE(CLK_I2S4_8CH_TX_SRC, "clk_i2s4_8ch_tx_src", gpll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(118), 5, 1, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(56), 11, GFLAGS),
+@@ -1929,10 +1905,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	COMPOSITE(ACLK_VOP_ROOT, "aclk_vop_root", gpll_cpll_dmyaupll_npll_spll_p, 0,
+ 			RK3588_CLKSEL_CON(110), 5, 3, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(52), 0, GFLAGS),
+-	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, RK3588_LINKED_CLK,
++	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(110), 8, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(52), 1, GFLAGS),
+-	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
++	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, 0,
+ 			RK3588_CLKSEL_CON(110), 10, 2, MFLAGS,
+ 			RK3588_CLKGATE_CON(52), 2, GFLAGS),
+ 	COMPOSITE_NODIV(PCLK_VOP_ROOT, "pclk_vop_root", mux_100m_50m_24m_p, 0,
+@@ -1998,8 +1974,6 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(60), 9, GFLAGS),
+ 	GATE(PCLK_TRNG1, "pclk_trng1", "pclk_vo1_root", 0,
+ 			RK3588_CLKGATE_CON(60), 10, GFLAGS),
+-	GATE(0, "pclk_vo1grf", "pclk_vo1_root", CLK_IGNORE_UNUSED,
+-			RK3588_CLKGATE_CON(59), 12, GFLAGS),
+ 	GATE(PCLK_S_EDP0, "pclk_s_edp0", "pclk_vo1_s_root", 0,
+ 			RK3588_CLKGATE_CON(59), 14, GFLAGS),
+ 	GATE(PCLK_S_EDP1, "pclk_s_edp1", "pclk_vo1_s_root", 0,
+@@ -2433,26 +2407,56 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	GATE(ACLK_AV1, "aclk_av1", "aclk_av1_pre", 0,
+ 			RK3588_CLKGATE_CON(68), 2, GFLAGS),
+ 
+-	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", "aclk_vi_root", 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
+-	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", "hclk_vi_root", 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
+-	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", "aclk_nvm_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
+-	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
+-	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", "hclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
+-	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
+-	GATE_LINK(ACLK_VDPU_LOW_PRE, "aclk_vdpu_low_pre", "aclk_vdpu_low_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(44), 5, GFLAGS),
+-	GATE_LINK(ACLK_RKVENC1_PRE, "aclk_rkvenc1_pre", "aclk_rkvenc1_root", "aclk_rkvenc0", 0, RK3588_CLKGATE_CON(48), 3, GFLAGS),
+-	GATE_LINK(HCLK_RKVENC1_PRE, "hclk_rkvenc1_pre", "hclk_rkvenc1_root", "hclk_rkvenc0", 0, RK3588_CLKGATE_CON(48), 2, GFLAGS),
+-	GATE_LINK(HCLK_RKVDEC0_PRE, "hclk_rkvdec0_pre", "hclk_rkvdec0_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(40), 5, GFLAGS),
+-	GATE_LINK(ACLK_RKVDEC0_PRE, "aclk_rkvdec0_pre", "aclk_rkvdec0_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(40), 6, GFLAGS),
+-	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
+-	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
+-	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", "aclk_vop_low_root", 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
+-	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", "hclk_vop_root", 0, RK3588_CLKGATE_CON(55), 5, GFLAGS),
+-	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
+-	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", "hclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(59), 9, GFLAGS),
+-	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
+-	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
+-	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", "hclk_nvm", 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
++	/*
++	 * Recent Rockchip SoCs have a new hardware block called Native Interface
++	 * Unit (NIU), which gates clocks to devices behind them. These effectively
++	 * need two parent clocks.
++	 */
++	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", ACLK_VI_ROOT, 0,
++			RK3588_CLKGATE_CON(26), 6, GFLAGS),
++	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", HCLK_VI_ROOT, 0,
++			RK3588_CLKGATE_CON(26), 8, GFLAGS),
++	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, 0,
++			RK3588_CLKGATE_CON(31), 2, GFLAGS),
++	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", ACLK_VO1USB_TOP_ROOT, 0,
++			RK3588_CLKGATE_CON(42), 2, GFLAGS),
++	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", HCLK_VO1USB_TOP_ROOT, 0,
++			RK3588_CLKGATE_CON(42), 3, GFLAGS),
++	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root",
++			ACLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(44), 7, GFLAGS),
++	GATE_LINK(ACLK_VDPU_LOW_PRE, "aclk_vdpu_low_pre", "aclk_vdpu_low_root", ACLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(44), 5, GFLAGS),
++	GATE_LINK(ACLK_RKVENC1_PRE, "aclk_rkvenc1_pre", "aclk_rkvenc1_root", ACLK_RKVENC0, 0,
++			RK3588_CLKGATE_CON(48), 3, GFLAGS),
++	GATE_LINK(HCLK_RKVENC1_PRE, "hclk_rkvenc1_pre", "hclk_rkvenc1_root", HCLK_RKVENC0, 0,
++			RK3588_CLKGATE_CON(48), 2, GFLAGS),
++	GATE_LINK(HCLK_RKVDEC0_PRE, "hclk_rkvdec0_pre", "hclk_rkvdec0_root", HCLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(40), 5, GFLAGS),
++	GATE_LINK(ACLK_RKVDEC0_PRE, "aclk_rkvdec0_pre", "aclk_rkvdec0_root", ACLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(40), 6, GFLAGS),
++	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", HCLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(41), 4, GFLAGS),
++	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", ACLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(41), 5, GFLAGS),
++	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", ACLK_VOP_LOW_ROOT, 0,
++			RK3588_CLKGATE_CON(55), 9, GFLAGS),
++	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, 0,
++			RK3588_CLKGATE_CON(55), 5, GFLAGS),
++	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", ACLK_VO1USB_TOP_ROOT, 0,
++			RK3588_CLKGATE_CON(59), 6, GFLAGS),
++	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, 0,
++			RK3588_CLKGATE_CON(59), 9, GFLAGS),
++	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", ACLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(68), 1, GFLAGS),
++	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", HCLK_VDPU_ROOT, 0,
++			RK3588_CLKGATE_CON(68), 4, GFLAGS),
++	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", HCLK_NVM, 0,
++			RK3588_CLKGATE_CON(75), 1, GFLAGS),
++	GATE_LINK(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", HCLK_VO0, 0,
++			RK3588_CLKGATE_CON(55), 10, GFLAGS),
++	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", HCLK_VO1, 0,
++			RK3588_CLKGATE_CON(59), 12, GFLAGS),
+ };
+ 
+ static void __init rk3588_clk_init(struct device_node *np)
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
