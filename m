@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A576C4167D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 15:54:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66AA4C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SR2Lfj2N5pGFs8RhClyBVgdWJBZA/6ZDD4UigPTfcGw=; b=doC5+nfGWKXdmc
-	ruar4zNZxO7BW8T/x+Hvh8dSfdM9z+JEXy+VnFBqjBmaiG0WBVv3wmilsxdwyUyYHqBRr9xYhddDo
-	POc/NJosGZeY2R0eC/c4wgcsnbAe7qV1JBzi9QBR3LmNAGXooXFvOllesMya+OAkP7wN9FyoiZKwd
-	pZ9q9r4vQGXooiyMB5wBW/VTQmP6n1IYnaY2wQxalR5Vj3m+eKRTI2e9IUQqasbfZ0zpApTr/IQQN
-	4MoRM+JFc0LNtdC4mWCIjK9YG0zSK0N7r6UBfwV7aJS3b3aXv8uC88885FE4mTEZvKnOjjh3sVd7u
-	mqqpXn/YzBKaElQUW34w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8umiE9qAV3FeAGXt8iC27YfDRvFIby5eaRRS1dNsImY=; b=Tx+LBavRV9Ylz3t2z6OBZOfnbr
+	qgP86GqQnRWQVN7cu/r0B5VFL/OfEVom7Y2x1FFTTDfXF4NvPTJoIsTZlrnHf49Ga2xRHcbOMs76J
+	LChuBqeUI7eB/BJkNFrvgT3AXfTkANglEP4fbrcmN4CggylyKiBvLEe/ssEzvUwGIVt3BZOdSbJgJ
+	wAPimvJI4WW+qR4AIKNLxFaF141R94rFV12TYpDdQd6EPjf1WVbov2In5+WWcR3kaemIDveztovuT
+	0czPmAAuvzxiDAXDO+Ktq37PZ7yVExszaU81bwHX3KFJXe9BEWaq9H9O5ZQl2keIwm5KORGsLzHGx
+	goch9VvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17MV-006f4V-1S;
-	Thu, 09 Nov 2023 15:54:31 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r17uo-006inb-0i;
+	Thu, 09 Nov 2023 16:29:58 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17MR-006f3T-17;
-	Thu, 09 Nov 2023 15:54:29 +0000
-Received: from [100.98.136.55] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6B90C66074E4;
-	Thu,  9 Nov 2023 15:54:22 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699545263;
-	bh=3WWL6wQEComAANvAj1qEV/UYxsJ1yDBfQ3tP5uX/YLk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D/dUZwI3iQpedaY/GdQjHQS1scxyhcN7jhgn6D47iDVOWAXLkJYI6JlliE4PqmW/F
-	 dMEOOPkxJ8ZlzQybUFvpUZmlGi79eHqyaJx0Yxup3HJ5Yd6Ze+dQnNfdhHKlpO8PSd
-	 xeXAr05Z1tf0hQAm4iDfRDXdrOnBv1+GpDuUaeyED4Kd+IQ8QxcOkJsa+goDTcXPQg
-	 cs+yV0VQgJo5pHMGahaM5nsibUwKDyBxIKWaWQhTwPBpbwc4vz7xxBxDOLmmP5aVKf
-	 1weo50VNmE7smJkaFraV1l9OxfnyeJPl9QQ7xCmBW2qThbML61PtQ3rgYO5gVG8+gT
-	 dko5b02V9ORdA==
-Message-ID: <22f2aee0-aea7-465d-b7f3-b1add1bf7bd7@collabora.com>
-Date: Thu, 9 Nov 2023 16:54:19 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1r17uj-006ilp-0Q;
+	Thu, 09 Nov 2023 16:29:55 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 7ED0940007;
+	Thu,  9 Nov 2023 16:29:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1699547388;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tm0cylrAcXnm7eKQqx0GuLW4XzLpyFuEodiMDdb36zQ=;
+	b=bjE0gXRqPUI+3iKxTnJ/SrbxJ3XAuLErHSXzEMhr63ULaCQmtsa856MdkklxROQZiTCx/A
+	lGm25zja9uZE7Tb2grdBfeSHULqztzES3qLih4oNCyqcYzwRunOY+dV1ek5nG2ftobLMSM
+	NV00MPsAgqAuXWz+IlL3Vig+kmE3JmJ49GVhNK8WJqiBjmIy2y6DztgLnqifmgFqc444lf
+	pcPVt/DKFNDEys+KEZ/4gIMJ0Y7wyMLuBLLytTIN3YABD00xpg3ywuk8PbWWSexmi3Vbg5
+	qnQxqm1kH7hFYOV0ICVUE+G7xFGmh2jxxk4H8Vrtih0LIW/vfGwQ4icnknGW0w==
+Date: Thu, 9 Nov 2023 17:29:44 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com, Maxime Ripard <mripard@kernel.org>
 Subject: Re: [PATCH v14 35/56] media: cedrus: Stop direct calls to queue
  num_buffers field
-Content-Language: en-US
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: mchehab@kernel.org, tfiga@chromium.org, m.szyprowski@samsung.com,
- ming.qian@nxp.com, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- kernel@collabora.com, Maxime Ripard <mripard@kernel.org>
+Message-ID: <ZU0I-C32UFjnUKH3@aptenodytes>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
  <20231031163104.112469-36-benjamin.gaignard@collabora.com>
  <083e43d9-452a-4b11-b7f1-f75992bc795e@collabora.com>
  <ZUzpSXDbO60uGr0t@aptenodytes>
  <618d5b67-ba46-4c33-ae7f-990f4b522ba8@collabora.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <618d5b67-ba46-4c33-ae7f-990f4b522ba8@collabora.com>
+ <22f2aee0-aea7-465d-b7f3-b1add1bf7bd7@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <22f2aee0-aea7-465d-b7f3-b1add1bf7bd7@collabora.com>
+X-GND-Sasl: paul.kocialkowski@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_075427_650008_9175733D 
-X-CRM114-Status: GOOD (  22.00  )
+X-CRM114-CacheID: sfid-20231109_082953_444363_4C6BC4E6 
+X-CRM114-Status: GOOD (  37.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,85 +77,213 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8945465355379396422=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA5LzExLzIwMjMgw6AgMTY6NDgsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiBhIMOpY3JpdMKg
-Ogo+IEhpIFBhdWwsCj4KPiBXIGRuaXUgOS4xMS4yMDIzIG/CoDE1OjE0LCBQYXVsIEtvY2lhbGtv
-d3NraSBwaXN6ZToKPj4gSGkgQW5kcnplaiwKPj4KPj4gT24gVGh1IDA5IE5vdiAyMywgMTI6Mjcs
-IEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPj4+IEhpIFBhdWwsCj4+Pgo+Pj4gVyBkbml1
-IDMxLjEwLjIwMjMgb8KgMTc6MzAsIEJlbmphbWluIEdhaWduYXJkIHBpc3plOgo+Pj4+IFVzZSB2
-YjJfZ2V0X251bV9idWZmZXJzKCkgdG8gYXZvaWQgdXNpbmcgcXVldWUgbnVtX2J1ZmZlcnMgZmll
-bGQgCj4+Pj4gZGlyZWN0bHkuCj4+Pj4gVGhpcyBhbGxvd3MgdXMgdG8gY2hhbmdlIGhvdyB0aGUg
-bnVtYmVyIG9mIGJ1ZmZlcnMgaXMgY29tcHV0ZWQgaW4gdGhlCj4+Pj4gZnV0dXJlLgo+Pj4+Cj4+
-Pj4gU2lnbmVkLW9mZi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNv
-bGxhYm9yYS5jb20+Cj4+Pj4gQWNrZWQtYnk6IFBhdWwgS29jaWFsa293c2tpIDxwYXVsLmtvY2lh
-bGtvd3NraUBib290bGluLmNvbT4KPj4+Cj4+PiBHaXZlbiB5b3UndmUgYWxhcmVkeSBBLWIsIHdv
-dWxkIHlvdSBiZSBvayB3aXRoIGFkZGluZyB0aGlzIHNlbnRlbmNlOgo+Pj4KPj4+ICJXaGlsZSBh
-dCBpdCwgY2hlY2sgdGhlIHJldHVybiB2YWx1ZSBvZiB2YjJfZ2V0X2J1ZmZlcigpLiIKPj4+Cj4+
-PiB0byB0aGUgY29tbWl0IG1lc3NhZ2UgYm9keT8KPj4KPj4gTm90IG9ubHkgZG8gSSBhZ3JlZSwg
-YnV0IGJlY2F1c2UgdGhpcyBpcyBkb25lIGluIGEgZnVuY3Rpb24gcmV0dXJuaW5nIAo+PiB2b2lk
-LAo+PiB5b3UgY291bGQgZXZlbjoKPj4KPj4gaWYgKFdBUk5fT04oIXZiKSkKPj4gwqDCoMKgwqBj
-b250aW51ZTsKPj4KPj4gc28gdGhhdCBpdCBkb2Vzbid0IGdvIGNvbXBsZXRlbHkgdW5ub3RpY2Vk
-Lgo+Pgo+PiBXaGF0IGRvIHlvdSB0aGluaz8KPj4KPgo+IEknZCBhc2sgQmVuamFtaW4uCj4KPiBC
-dXQgbXkgdGFrZSBvbiB0aGUgZGlyZWN0aW9uIG9mIGNoYW5nZXMgaXMgdGhhdCB1bHRpbWF0ZWx5
-Cj4gdGhlcmUgd2lsbCBiZSAiaG9sZXMiIGluIHRoZSBhcnJheSBvZiBhbGxvY2F0ZWQgYnVmZmVy
-cyAoaGVuY2UgdGhlCj4gYml0bWFwIHRvIHRyYWNrIHdoaWNoIHNsb3RzIGFyZSB1c2VkIGFuZCB3
-aGljaCBhcmUgbm90KS4gSW4gb3RoZXIgd29yZHMsCj4gZ2V0dGluZyBhIE5VTEwgc29tZXRpbWVz
-IHdpbGwgYmUgYW4gZXhwZWN0ZWQgc2l0dWF0aW9uLCBhbmQgYSBXQVJOKCkgd2lsbAo+IG5vdCBi
-ZSBhcHByb3ByaWF0ZSBmb3IgYW4gZXhwZWN0ZWQgc2l0dWF0aW9uLgo+Cj4gQEJlbmphbWluPwoK
-VGhhdCBzaG91bGQgbmV2ZXIgaGFwcGVucyB1bmxlc3MgeW91IGFkZCBkZWxldGUgYnVmZmVycyBj
-YXBhYmlsaXR5IHRvIHRoZSBkcml2ZXIKYW5kIGluIHRoaXMgY2FzZSBpdCBpcyBub3JtYWwgdG8g
-aGF2ZSBob2xlcy4KT3RoZXIgZHJpdmVycyBkbyBub3QgdXNlIFdBUk5fT04oKSBzbyBJIHdpbGwg
-bm90IGRvIGl0IGZvciB0aGlzIG9uZS4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gUmVnYXJkcywK
-Pgo+IEFuZHJ6ZWoKPgo+PiBDaGVlcnMsCj4+Cj4+IFBhdWwKPj4KPj4+IEBCZW5qYW1pbjoKPj4+
-Cj4+PiBXaXRoIHRoaXMgY2hhbmdlLCB5b3UgY2FuIGFkZCBteQo+Pj4KPj4+IFJldmlld2VkLWJ5
-OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+Pj4KPj4+
-PiBDQzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+Pj4+IC0tLQo+Pj4+IMKg
-wqAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jIHwgOSAr
-KysrKysrLS0KPj4+PiDCoMKgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2Vk
-cnVzX2gyNjUuYyB8IDkgKysrKysrKy0tCj4+Pj4gwqDCoCAyIGZpbGVzIGNoYW5nZWQsIDE0IGlu
-c2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jIAo+Pj4+IGIvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jCj4+Pj4gaW5kZXggZGZi
-NDAxZGYxMzhhLi4zZTI4NDNlZjZjY2UgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jCj4+Pj4gKysrIGIvZHJpdmVycy9zdGFn
-aW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NC5jCj4+Pj4gQEAgLTY1Myw4ICs2NTMs
-MTMgQEAgc3RhdGljIHZvaWQgY2VkcnVzX2gyNjRfc3RvcChzdHJ1Y3QgY2VkcnVzX2N0eCAKPj4+
-PiAqY3R4KQo+Pj4+IMKgwqDCoMKgwqDCoCB2cSA9IHY0bDJfbTJtX2dldF92cShjdHgtPmZoLm0y
-bV9jdHgsIAo+Pj4+IFY0TDJfQlVGX1RZUEVfVklERU9fQ0FQVFVSRSk7Cj4+Pj4gLcKgwqDCoCBm
-b3IgKGkgPSAwOyBpIDwgdnEtPm51bV9idWZmZXJzOyBpKyspIHsKPj4+PiAtwqDCoMKgwqDCoMKg
-wqAgYnVmID0gdmIyX3RvX2NlZHJ1c19idWZmZXIodmIyX2dldF9idWZmZXIodnEsIGkpKTsKPj4+
-PiArwqDCoMKgIGZvciAoaSA9IDA7IGkgPCB2YjJfZ2V0X251bV9idWZmZXJzKHZxKTsgaSsrKSB7
-Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHN0cnVjdCB2YjJfYnVmZmVyICp2YiA9IHZiMl9nZXRfYnVm
-ZmVyKHZxLCBpKTsKPj4+PiArCj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGlmICghdmIpCj4+Pj4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGludWU7Cj4+Pj4gKwo+Pj4+ICvCoMKgwqDCoMKgwqDC
-oCBidWYgPSB2YjJfdG9fY2VkcnVzX2J1ZmZlcih2Yik7Cj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgaWYgKGJ1Zi0+Y29kZWMuaDI2NC5tdl9jb2xfYnVmX3NpemUgPiAwKSB7Cj4+Pj4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkbWFfZnJlZV9hdHRycyhkZXYtPmRldiwKPj4+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5j
-IAo+Pj4+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5j
-Cj4+Pj4gaW5kZXggZmM5Mjk3MjMyNDU2Li41MmU5NGM4ZjJmMDEgMTAwNjQ0Cj4+Pj4gLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5jCj4+Pj4gKysr
-IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5jCj4+Pj4g
-QEAgLTg2OSw4ICs4NjksMTMgQEAgc3RhdGljIHZvaWQgY2VkcnVzX2gyNjVfc3RvcChzdHJ1Y3Qg
-Y2VkcnVzX2N0eCAKPj4+PiAqY3R4KQo+Pj4+IMKgwqDCoMKgwqDCoCB2cSA9IHY0bDJfbTJtX2dl
-dF92cShjdHgtPmZoLm0ybV9jdHgsIAo+Pj4+IFY0TDJfQlVGX1RZUEVfVklERU9fQ0FQVFVSRSk7
-Cj4+Pj4gLcKgwqDCoCBmb3IgKGkgPSAwOyBpIDwgdnEtPm51bV9idWZmZXJzOyBpKyspIHsKPj4+
-PiAtwqDCoMKgwqDCoMKgwqAgYnVmID0gdmIyX3RvX2NlZHJ1c19idWZmZXIodmIyX2dldF9idWZm
-ZXIodnEsIGkpKTsKPj4+PiArwqDCoMKgIGZvciAoaSA9IDA7IGkgPCB2YjJfZ2V0X251bV9idWZm
-ZXJzKHZxKTsgaSsrKSB7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHN0cnVjdCB2YjJfYnVmZmVyICp2
-YiA9IHZiMl9nZXRfYnVmZmVyKHZxLCBpKTsKPj4+PiArCj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGlm
-ICghdmIpCj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGludWU7Cj4+Pj4gKwo+Pj4+
-ICvCoMKgwqDCoMKgwqDCoCBidWYgPSB2YjJfdG9fY2VkcnVzX2J1ZmZlcih2Yik7Cj4+Pj4gwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgaWYgKGJ1Zi0+Y29kZWMuaDI2NS5tdl9jb2xfYnVmX3NpemUgPiAw
-KSB7Cj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkbWFfZnJlZV9hdHRycyhkZXYt
-PmRldiwKPj4+Cj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCj4+IEtlcm5lbCBtYWlsaW5nIGxpc3QgLS0ga2VybmVsQG1haWxtYW4uY29sbGFi
-b3JhLmNvbQo+PiBUbyB1bnN1YnNjcmliZSBzZW5kIGFuIGVtYWlsIHRvIGtlcm5lbC1sZWF2ZUBt
-YWlsbWFuLmNvbGxhYm9yYS5jb20KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============8945465355379396422==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="VMLU1zaFnAru3tBV"
+Content-Disposition: inline
+
+
+--VMLU1zaFnAru3tBV
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Thu 09 Nov 23, 16:54, Benjamin Gaignard wrote:
+>=20
+> Le 09/11/2023 =C3=A0 16:48, Andrzej Pietrasiewicz a =C3=A9crit=C2=A0:
+> > Hi Paul,
+> >=20
+> > W dniu 9.11.2023 o=C2=A015:14, Paul Kocialkowski pisze:
+> > > Hi Andrzej,
+> > >=20
+> > > On Thu 09 Nov 23, 12:27, Andrzej Pietrasiewicz wrote:
+> > > > Hi Paul,
+> > > >=20
+> > > > W dniu 31.10.2023 o=C2=A017:30, Benjamin Gaignard pisze:
+> > > > > Use vb2_get_num_buffers() to avoid using queue num_buffers
+> > > > > field directly.
+> > > > > This allows us to change how the number of buffers is computed in=
+ the
+> > > > > future.
+> > > > >=20
+> > > > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > > > Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > > >=20
+> > > > Given you've alaredy A-b, would you be ok with adding this sentence:
+> > > >=20
+> > > > "While at it, check the return value of vb2_get_buffer()."
+> > > >=20
+> > > > to the commit message body?
+> > >=20
+> > > Not only do I agree, but because this is done in a function
+> > > returning void,
+> > > you could even:
+> > >=20
+> > > if (WARN_ON(!vb))
+> > > =C2=A0=C2=A0=C2=A0=C2=A0continue;
+> > >=20
+> > > so that it doesn't go completely unnoticed.
+> > >=20
+> > > What do you think?
+> > >=20
+> >=20
+> > I'd ask Benjamin.
+> >=20
+> > But my take on the direction of changes is that ultimately
+> > there will be "holes" in the array of allocated buffers (hence the
+> > bitmap to track which slots are used and which are not). In other words,
+> > getting a NULL sometimes will be an expected situation, and a WARN() wi=
+ll
+> > not be appropriate for an expected situation.
+> >=20
+> > @Benjamin?
+>=20
+> That should never happens unless you add delete buffers capability to the=
+ driver
+> and in this case it is normal to have holes.
+> Other drivers do not use WARN_ON() so I will not do it for this one.
+
+Yeah I also don't expect that buffers can just disappear on us before
+introducing the delete buffers capability.
+
+But okay it's fine with me to not use WARN_ON.
+
+Cheers,
+
+Paul
+
+> Regards,
+> Benjamin
+>=20
+> >=20
+> > Regards,
+> >=20
+> > Andrzej
+> >=20
+> > > Cheers,
+> > >=20
+> > > Paul
+> > >=20
+> > > > @Benjamin:
+> > > >=20
+> > > > With this change, you can add my
+> > > >=20
+> > > > Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> > > >=20
+> > > > > CC: Maxime Ripard <mripard@kernel.org>
+> > > > > ---
+> > > > > =C2=A0=C2=A0 drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 9=
+ +++++++--
+> > > > > =C2=A0=C2=A0 drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9=
+ +++++++--
+> > > > > =C2=A0=C2=A0 2 files changed, 14 insertions(+), 4 deletions(-)
+> > > > >=20
+> > > > > diff --git
+> > > > > a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > > > > b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > > > > index dfb401df138a..3e2843ef6cce 100644
+> > > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > > > > @@ -653,8 +653,13 @@ static void cedrus_h264_stop(struct
+> > > > > cedrus_ctx *ctx)
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vq =3D v4l2_m2m_get_vq(ctx->=
+fh.m2m_ctx,
+> > > > > V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> > > > > -=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < vq->num_buffers; i++) {
+> > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 buf =3D vb2_to_cedrus=
+_buffer(vb2_get_buffer(vq, i));
+> > > > > +=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < vb2_get_num_buffers(vq); i+=
++) {
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct vb2_buffer *vb=
+ =3D vb2_get_buffer(vq, i);
+> > > > > +
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!vb)
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 continue;
+> > > > > +
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 buf =3D vb2_to_cedrus=
+_buffer(vb);
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
+buf->codec.h264.mv_col_buf_size > 0) {
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 dma_free_attrs(dev->dev,
+> > > > > diff --git
+> > > > > a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > > > > b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > > > > index fc9297232456..52e94c8f2f01 100644
+> > > > > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > > > > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > > > > @@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct
+> > > > > cedrus_ctx *ctx)
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vq =3D v4l2_m2m_get_vq(ctx->=
+fh.m2m_ctx,
+> > > > > V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> > > > > -=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < vq->num_buffers; i++) {
+> > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 buf =3D vb2_to_cedrus=
+_buffer(vb2_get_buffer(vq, i));
+> > > > > +=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < vb2_get_num_buffers(vq); i+=
++) {
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct vb2_buffer *vb=
+ =3D vb2_get_buffer(vq, i);
+> > > > > +
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!vb)
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 continue;
+> > > > > +
+> > > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 buf =3D vb2_to_cedrus=
+_buffer(vb);
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (=
+buf->codec.h265.mv_col_buf_size > 0) {
+> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 dma_free_attrs(dev->dev,
+> > > >=20
+> > >=20
+> > >=20
+> > > _______________________________________________
+> > > Kernel mailing list -- kernel@mailman.collabora.com
+> > > To unsubscribe send an email to kernel-leave@mailman.collabora.com
+> >=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--VMLU1zaFnAru3tBV
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmVNCPgACgkQ3cLmz3+f
+v9G2FAf+JwNjULMzQx6CKeSkePWWPspnd6zwQv1uSrppPM2oi2YoXgd7uMsJyImP
+OOfrkPpY4m0jOp7e2t4oKOvKrDcc9tXTv7UbzPQ3S/RvCQ3pJ9MIRNAFOrM/x4kL
+uG2rhiHl/wdw+czGOSb4tip1HXjn04nfyZb6U9YCXNNbvRyJQ4ocwcfyCTvmELja
++bJMussPvxY8c9GhxzodzFow8BoauqdutKO89bJs1DH9iKWTTe7IClz2Ypp5yY5m
+c1C4SQomlS8sa92uwYG1S/v5174Ufs3hqwr5I0CPMm3rlaGyO+ykwKu3TnnR7Fif
+05epwjlNlSg1Mg+HmVYihbArAlJ0UQ==
+=dkuV
+-----END PGP SIGNATURE-----
+
+--VMLU1zaFnAru3tBV--
+
+
+--===============8945465355379396422==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8945465355379396422==--
+
