@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC34C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 18:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F1BEC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 18:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DUfwE7PmL3/dgYBe9WYqN6HkYNoKV5qoz7/cSEthfVY=; b=jnFUEA0XKKmtxO
-	9UAxzTVoBvGGKjgwDQhzbUsNxUm7Xi1HWGflQ4NPek5lB/upeme0VxeXAEKjVTULVGjbXeriLcs8i
-	9L7h0earMjuKjY3r8lM5rp32VxwQbwZ8X9bEnxsMggP2ASdHf7BFwbPg/V3daGGKu4ZfDj7qcuHcr
-	u83Q0Gel+mhGemODxjNzBrZzxHek3MhgIK3pM3DQ92Asnc5CJQYVX3K4qtgXbqs7XiJg6tTGh+5W3
-	8q03whxRiMo4iTohfoUE7y597niKxKYZdZZsw7dFreOt7yr+qurYhyEONILT1HjdJSc1/CakSwRgn
-	29oHzETTC+yc3gotDEPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eW4I2QQ3y7VqfkJZRz5Ry3a3uCkeDMhXvwMKyp/SzPU=; b=2uJV3nbLU7U+qQ
+	0wGpqHyzyuOA6ckvEG5S7LZcV3whDXf7LlvI4e/wuUfOAsEfdzscwQTnBNdvX4dbbj/5br3y4lgSG
+	DDSv+wpvcasmHNKgAxH1ML7Q3ry0wD0ZpKyFPbjd/LgYoERvWEbveLU1DcjcYnylCvJADpnT8Bv6j
+	yJlhHMj6GRET84600J3pp1fMYVyKqxv9iclXWRPIFrRb1a0j0epQgwnFfculJRJhi2NYJGLZfYD2n
+	Ka4+kzkdicmdlwuS+zgzk2QLLEq+VCVLMiNNOjU0/iI1Ivr5+d6G/xk1nAq1LJXIQHwRuJ4xcQwTK
+	gpi+GNRPIcfo65InMauw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r19ib-0071hZ-2I;
-	Thu, 09 Nov 2023 18:25:29 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1r1A1X-0073EP-2G;
+	Thu, 09 Nov 2023 18:45:03 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r19iY-0071h6-2u
+	id 1r1A1T-0073CH-1W
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Nov 2023 18:25:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1699554306;
- bh=REf0fnXMpg4PsdF4s5vHOGAS2ALbXsSawZYVFeBAIWw=;
- b=L3yHgEoPHvb+UC0Twvtp1BFX0wjRRyeb8nc1F5cMGHdA0rNNC2yMqn6ZrcMCeaxcxjs6bIqJn
- 2cElCDXxeMVfIT4OlKBwiOoR2Du9rHm0Qa1sOEaGzwXQgNGYnzFIg+P2HoU0E4X7Mu9zWdtF3ol
- KH2RWDCvCgF9NT1Teqx3TemnbusP3aDwXJd3hUx4HzjKPHdlcb0I0qUl4F3MDWGnjM6coqmYfo3
- eYVKNRPWLMak0YrfosPdPNjmZThcLkTsRcgAYtGbcihZNPpx/qILcbVUT0eegjzu/s5uwUg+43A
- Z4bUUd0PflfQVZd0WQr0MY2EP6fSMQTMHTdOMgzhLGEA==
-Message-ID: <cf43fbef-ba37-4ca5-a45c-36d657b11141@kwiboo.se>
-Date: Thu, 9 Nov 2023 19:25:00 +0100
+	Thu, 09 Nov 2023 18:45:01 +0000
+Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8BBEF660740F;
+	Thu,  9 Nov 2023 18:44:56 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1699555496;
+	bh=WPjYwcBCmS+prQOc/wOVgZLSo1macXZkqnIBkZkHKlg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ynx+Wrd3fG7H0sFPwgbTm3LBIbPURppIDjkinci6RaxKwYL/kG+jxsdQobYdFMQFn
+	 Wwbl5aAbFmfwDrhIuyQmNGjqolQQDEaScZVM/YxcM/2HA1zVLmPj+vJho1huh6IHBv
+	 /f5V+6g9qROeNqIduZVOEb8jfC09S0+StL6RzdbIXgj/QBYoVK1uVaQFmKi6hhzjG1
+	 7/UR+X+C8dgfcKrJMWq5Du1YPIdoBQTSet9sb8MuEIyvRDhl0OT6g1XpRgRlp0ljaf
+	 H0/PTuE89Vi6gXdZGYjkoq3iYP1GztJyv7F+NVh3A2dO+4XgwDUdlAqQzkfAXHx1eh
+	 mimr4LEXVARCw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 0B0004800CE; Thu,  9 Nov 2023 19:44:54 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Mark Brown <broonie@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v1 1/2] dt-bindings: es8328: convert to DT schema format
+Date: Thu,  9 Nov 2023 19:44:43 +0100
+Message-ID: <20231109184453.108676-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 11/11] media: rkvdec: h264: Support High 10 and 4:2:2
- profiles
-Content-Language: en-US
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-Cc: Alex Bee <knaerzche@gmail.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Sebastian Fricke
- <sebastian.fricke@collabora.com>, Christopher Obbard
- <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20231105165521.3592037-1-jonas@kwiboo.se>
- <20231105165521.3592037-12-jonas@kwiboo.se>
- <cef435872095e95e132eb9902040fa5af22c685f.camel@collabora.com>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <cef435872095e95e132eb9902040fa5af22c685f.camel@collabora.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 654d2401b32fff32884ed570
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_102527_249540_7837A708 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20231109_104459_833268_CBC8D63C 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,163 +76,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMy0xMS0wOCAwMzoyMCwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBMZSBkaW1hbmNo
-ZSAwNSBub3ZlbWJyZSAyMDIzIMOgIDE2OjU1ICswMDAwLCBKb25hcyBLYXJsbWFuIGEgw6ljcml0
-wqA6Cj4+IEFkZCBzdXBwb3J0IGFuZCBlbmFibGUgZGVjb2Rpbmcgb2YgSDI2NCBIaWdoIDEwIGFu
-ZCA0OjI6MiBwcm9maWxlcy4KPj4KPj4gRGVjb2RlZCBDQVBUVVJFIGJ1ZmZlciB3aWR0aCBpcyBh
-bGlnbmVkIHRvIDY0IHBpeGVscyB0byBhY2NvbW1vZGF0ZSBIVwo+PiByZXF1aXJlbWVudCBvZiAx
-MC1iaXQgZm9ybWF0IGJ1ZmZlcnMsIGZpeGVzIGRlY29kaW5nIG9mOgo+Pgo+PiAtIEhpNDIyRlIx
-M19TT05ZX0EKPj4gLSBIaTQyMkZSMTRfU09OWV9BCj4+IC0gSGk0MjJGUjE1X1NPTllfQQo+PiAt
-IEhpNDIyRlI2X1NPTllfQQo+PiAtIEhpNDIyRlI3X1NPTllfQQo+PiAtIEhpNDIyRlI4X1NPTllf
-QQo+PiAtIEhpNDIyRlI5X1NPTllfQQo+PiAtIEhpNDIyRlJFWFQxOF9TT05ZX0EKPj4KPj4gVGhl
-IGdldF9pbWFnZV9mbXQoKSBvcHMgaXMgaW1wbGVtZW50ZWQgdG8gc2VsZWN0IGFuIGltYWdlIGZv
-cm1hdAo+PiByZXF1aXJlZCBmb3IgdGhlIHByb3ZpZGVkIFNQUyBjb250cm9sLgo+Pgo+PiBTaWdu
-ZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+Cj4+IC0tLQo+PiB2NDoK
-Pj4gLSBDaGFuZ2UgdG8gdXNlIGdldF9pbWFnZV9mbXQoKSBvcHMKPj4KPj4gdjM6Cj4+IC0gQWRk
-IGdldF9mbXRfb3BhcXVlIG9wcywgdGhlIGV4cGVjdGVkIHBpeGVsZm9ybWF0IGlzIHVzZWQgYXMg
-b3BhcXVlCj4+IC0gQWRkIG5ldyB2YWxpZF9mbXQgb3BzIHRoYXQgdmFsaWRhdGUgcGl4ZWxmb3Jt
-YXQgbWF0Y2hlcyBvcGFxdWUKPj4gLSBVcGRhdGUgSDI2NF9QUk9GSUxFIGNvbnRyb2wgbWF4IHZh
-bHVlCj4+Cj4+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0LmMgfCAz
-NyArKysrKysrKysrKysrKysrLS0tLS0tCj4+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVj
-L3JrdmRlYy5jICAgICAgfCAzMyArKysrKysrKysrKysrKystLS0tCj4+ICBkcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy5oICAgICAgfCAgMyArKwo+PiAgMyBmaWxlcyBjaGFuZ2Vk
-LCA1NyBpbnNlcnRpb25zKCspLCAxNiBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYyBiL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYwo+PiBpbmRleCA4MTVkNTM1OWRkZDUuLmJhYWM2
-ZDAxMmRkZCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3Zk
-ZWMtaDI2NC5jCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgy
-NjQuYwo+PiBAQCAtMTAyNywyNCArMTAyNyw0MiBAQCBzdGF0aWMgaW50IHJrdmRlY19oMjY0X2Fk
-anVzdF9mbXQoc3RydWN0IHJrdmRlY19jdHggKmN0eCwKPj4gIAlyZXR1cm4gMDsKPj4gIH0KPj4g
-IAo+PiArc3RhdGljIGVudW0gcmt2ZGVjX2ltYWdlX2ZtdCBya3ZkZWNfaDI2NF9nZXRfaW1hZ2Vf
-Zm10KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4+ICsJCQkJCQkgICAgICAgc3RydWN0IHY0bDJf
-Y3RybCAqY3RybCkKPj4gK3sKPj4gKwljb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2gyNjRfc3BzICpz
-cHMgPSBjdHJsLT5wX25ldy5wX2gyNjRfc3BzOwo+PiArCj4+ICsJaWYgKGN0cmwtPmlkICE9IFY0
-TDJfQ0lEX1NUQVRFTEVTU19IMjY0X1NQUykKPj4gKwkJcmV0dXJuIFJLVkRFQ19JTUdfRk1UX0FO
-WTsKPj4gKwo+PiArCWlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCA9PSAwKSB7Cj4+ICsJ
-CWlmIChzcHMtPmNocm9tYV9mb3JtYXRfaWRjID09IDIpCj4+ICsJCQlyZXR1cm4gUktWREVDX0lN
-R19GTVRfNDIyXzhCSVQ7Cj4+ICsJCWVsc2UKPj4gKwkJCXJldHVybiBSS1ZERUNfSU1HX0ZNVF80
-MjBfOEJJVDsKPj4gKwl9IGVsc2UgaWYgKHNwcy0+Yml0X2RlcHRoX2x1bWFfbWludXM4ID09IDIp
-IHsKPj4gKwkJaWYgKHNwcy0+Y2hyb21hX2Zvcm1hdF9pZGMgPT0gMikKPj4gKwkJCXJldHVybiBS
-S1ZERUNfSU1HX0ZNVF80MjJfMTBCSVQ7Cj4+ICsJCWVsc2UKPj4gKwkJCXJldHVybiBSS1ZERUNf
-SU1HX0ZNVF80MjBfMTBCSVQ7Cj4+ICsJfQo+PiArCj4+ICsJcmV0dXJuIFJLVkRFQ19JTUdfRk1U
-X0FOWTsKPj4gK30KPj4gKwo+PiAgc3RhdGljIGludCBya3ZkZWNfaDI2NF92YWxpZGF0ZV9zcHMo
-c3RydWN0IHJrdmRlY19jdHggKmN0eCwKPj4gIAkJCQkgICAgY29uc3Qgc3RydWN0IHY0bDJfY3Ry
-bF9oMjY0X3NwcyAqc3BzKQo+PiAgewo+PiAgCXVuc2lnbmVkIGludCB3aWR0aCwgaGVpZ2h0Owo+
-PiAgCj4+IC0JLyoKPj4gLQkgKiBUT0RPOiBUaGUgaGFyZHdhcmUgc3VwcG9ydHMgMTAtYml0IGFu
-ZCA0OjI6MiBwcm9maWxlcywKPj4gLQkgKiBidXQgaXQncyBjdXJyZW50bHkgYnJva2VuIGluIHRo
-ZSBkcml2ZXIuCj4+IC0JICogUmVqZWN0IHRoZW0gZm9yIG5vdywgdW50aWwgaXQncyBmaXhlZC4K
-Pj4gLQkgKi8KPj4gLQlpZiAoc3BzLT5jaHJvbWFfZm9ybWF0X2lkYyA+IDEpCj4+IC0JCS8qIE9u
-bHkgNDowOjAgYW5kIDQ6MjowIGFyZSBzdXBwb3J0ZWQgKi8KPj4gKwlpZiAoc3BzLT5jaHJvbWFf
-Zm9ybWF0X2lkYyA+IDIpCj4+ICsJCS8qIE9ubHkgNDowOjAsIDQ6MjowIGFuZCA0OjI6MiBhcmUg
-c3VwcG9ydGVkICovCj4+ICAJCXJldHVybiAtRUlOVkFMOwo+PiAgCWlmIChzcHMtPmJpdF9kZXB0
-aF9sdW1hX21pbnVzOCAhPSBzcHMtPmJpdF9kZXB0aF9jaHJvbWFfbWludXM4KQo+PiAgCQkvKiBM
-dW1hIGFuZCBjaHJvbWEgYml0IGRlcHRoIG1pc21hdGNoICovCj4+ICAJCXJldHVybiAtRUlOVkFM
-Owo+PiAtCWlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCAhPSAwKQo+PiAtCQkvKiBPbmx5
-IDgtYml0IGlzIHN1cHBvcnRlZCAqLwo+PiArCWlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVz
-OCAhPSAwICYmIHNwcy0+Yml0X2RlcHRoX2x1bWFfbWludXM4ICE9IDIpCj4+ICsJCS8qIE9ubHkg
-OC1iaXQgYW5kIDEwLWJpdCBpcyBzdXBwb3J0ZWQgKi8KPj4gIAkJcmV0dXJuIC1FSU5WQUw7Cj4+
-ICAKPj4gIAl3aWR0aCA9IChzcHMtPnBpY193aWR0aF9pbl9tYnNfbWludXMxICsgMSkgKiAxNjsK
-Pj4gQEAgLTExNzUsNCArMTE5Myw1IEBAIGNvbnN0IHN0cnVjdCBya3ZkZWNfY29kZWRfZm10X29w
-cyBya3ZkZWNfaDI2NF9mbXRfb3BzID0gewo+PiAgCS5zdG9wID0gcmt2ZGVjX2gyNjRfc3RvcCwK
-Pj4gIAkucnVuID0gcmt2ZGVjX2gyNjRfcnVuLAo+PiAgCS50cnlfY3RybCA9IHJrdmRlY19oMjY0
-X3RyeV9jdHJsLAo+PiArCS5nZXRfaW1hZ2VfZm10ID0gcmt2ZGVjX2gyNjRfZ2V0X2ltYWdlX2Zt
-dCwKPj4gIH07Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3Jr
-dmRlYy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+PiBpbmRleCAy
-MjVhYTFmMGFjNDguLmViNTk2MDVjY2YyOCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL3JrdmRlYy9ya3ZkZWMuYwo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2
-ZGVjL3JrdmRlYy5jCj4+IEBAIC03Myw3ICs3Myw3IEBAIHN0YXRpYyB2b2lkIHJrdmRlY19maWxs
-X2RlY29kZWRfcGl4Zm10KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4+ICAJCQkJICAgICAgIHN0
-cnVjdCB2NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpwaXhfbXApCj4+ICB7Cj4+ICAJdjRsMl9maWxs
-X3BpeGZtdF9tcChwaXhfbXAsIHBpeF9tcC0+cGl4ZWxmb3JtYXQsCj4+IC0JCQkgICAgcGl4X21w
-LT53aWR0aCwgcGl4X21wLT5oZWlnaHQpOwo+PiArCQkJICAgIEFMSUdOKHBpeF9tcC0+d2lkdGgs
-IDY0KSwgcGl4X21wLT5oZWlnaHQpOwo+IAo+IElmIHlvdSBhbGlnbiByZWdhcmRsZXNzIGlmIGl0
-cyA4LzEwYml0ICh3aGljaCBJIGRvbid0IHJlYWxseSBtaW5kLCBpdAo+IGRvZXMgbm90IGNvc3Qg
-bXVjaCBhbmQgaGVscHMgaWYgeW91IGhhdmUgYSBNYWxpIEdQVSksIHBsZWFzZSBkbyBpbiAKPiBy
-a3ZkZWNfY29kZWRfZm10c1tdLmZybXNpemUuc3RlcF93aWR0aC4KPiAKPiBPdGhlcndpc2UgeW91
-J2xsIGVuZHVwIGNyZWF0aW5nIGEgY29uZmlnIHBlciBiaXQgZGVwdGgsIGFuZCBwcm9iYWJseQo+
-IHdvbid0IG5lZWQgYW55IG9mIHRoZSByayBmb3JtYXQgc3R1ZmYsIHNpbmNlIHlvdSBjb3VsZCBq
-dXN0IHVwZGF0ZSB0aGUKPiBjb25maWcsIGFuZCBlbnVtZXJhdGUgZnJvbSB0aGVyZS4gSSBkb24n
-dCBtaW5kIHlvdXIgbWV0aG9kIHRob3VnaCwgYnV0Cj4gbGV0cyBub3QgaGFyZGNvZGUgYWxpZ25t
-ZW50IHdoZXJlIGl0IHNob3VsZG4ndCBiZS4KCkFncmVlLCB3aWxsIGNoYW5nZSB0byB1c2Ugc3Rl
-cF93aWR0aC9taW5fd2lkdGggPSA2NCBpbiB2NSwgbm90IHN1cmUgd2h5CkkgY2hhbmdlZCBmcm9t
-IHVzaW5nIHN0ZXBfd2lkdGggaW4gdjIgdG8gYmVnaW4gd2l0aDoKCiIKQ2hhbmdlcyBpbiB2MjoK
-LSBPbmx5IGFsaWduIGRlY29kZWQgYnVmZmVyIGluc3RlYWQgb2YgdXNpbmcgZnJtc2l6ZSBzdGVw
-X3dpZHRoCiIKCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIwMjAwNzA2MjE1
-NDMwLjIyODU5LTEyLWpvbmFzQGt3aWJvby5zZS8KCj4gCj4+ICAJcGl4X21wLT5wbGFuZV9mbXRb
-MF0uc2l6ZWltYWdlICs9IDEyOCAqCj4+ICAJCURJVl9ST1VORF9VUChwaXhfbXAtPndpZHRoLCAx
-NikgKgo+PiAgCQlESVZfUk9VTkRfVVAocGl4X21wLT5oZWlnaHQsIDE2KTsKPj4gQEAgLTE5Myw3
-ICsxOTMsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jdHJsX2Rlc2Mgcmt2ZGVjX2gy
-NjRfY3RybF9kZXNjc1tdID0gewo+PiAgCXsKPj4gIAkJLmNmZy5pZCA9IFY0TDJfQ0lEX01QRUdf
-VklERU9fSDI2NF9QUk9GSUxFLAo+PiAgCQkuY2ZnLm1pbiA9IFY0TDJfTVBFR19WSURFT19IMjY0
-X1BST0ZJTEVfQkFTRUxJTkUsCj4gCj4gRG8gd2Ugd2FudCB0byBrZWVwIHRoaXMgc21hbGwgbGll
-ID8gQmFzZWxpbmUgaXMgbm90IHN1cHBvcnRlZCBhcyB3ZQo+IGRvbid0IHN1cHBvcnQgRk1PIGFu
-ZCBBU08uIFRoYXQgYmVpbmcgc2FpZCwgaW4gZnJhbWV3b3JrIGxpa2UKPiBHU3RyZWFtZXIsIHdl
-IHRyeSB0byBkZWNvZGUgYW55d2F5LCBjYXVzZSB3ZSBrbm93IHdlIGRvbid0IGhhdmUgYQo+IHNv
-ZnR3YXJlIGZhbGxiYWNrIGFueXdheS4KCkZvdW5kIGEgbm90ZSB0byBjaGFuZ2UgdGhpcyB0byBI
-MjY0X1BST0ZJTEVfQ09OU1RSQUlORURfQkFTRUxJTkUgZnJvbQp0aGUgb2xkIHYyIHNlcmllcy4g
-V2lsbCBpbmNsdWRlIHN1Y2ggY2hhbmdlIGluIHY1LgoKaHR0cHM6Ly9wYXRjaHdvcmsubGludXh0
-di5vcmcvcHJvamVjdC9saW51eC1tZWRpYS9wYXRjaC8yMDIwMDcwNjIxNTQzMC4yMjg1OS0xMy1q
-b25hc0Brd2lib28uc2UvIzExOTQwNgoKPiAKPj4gLQkJLmNmZy5tYXggPSBWNEwyX01QRUdfVklE
-RU9fSDI2NF9QUk9GSUxFX0hJR0gsCj4+ICsJCS5jZmcubWF4ID0gVjRMMl9NUEVHX1ZJREVPX0gy
-NjRfUFJPRklMRV9ISUdIXzQyMiwKPiAKPiBTaG91bGQgaW5jbHVkZSBWNEwyX01QRUdfVklERU9f
-SDI2NF9QUk9GSUxFX0hJR0hfMTBfSU5UUkEgYW5kCj4gVjRMMl9NUEVHX1ZJREVPX0gyNjRfUFJP
-RklMRV9ISUdIXzQyMl9JTlRSQSB0b28gLi4uLgo+IAo+PiAgCQkuY2ZnLm1lbnVfc2tpcF9tYXNr
-ID0KPj4gIAkJCUJJVChWNEwyX01QRUdfVklERU9fSDI2NF9QUk9GSUxFX0VYVEVOREVEKSwKPiAK
-PiBXaGljaCByZXF1aXJlcyBzdWJzdHJhY3RpbmcKPiBWNEwyX01QRUdfVklERU9fSDI2NF9QUk9G
-SUxFX0hJR0hfNDQ0X1BSRURJQ1RJVkUgdG9vLgoKV2lsbCB1cGRhdGUgaW4gdjUsIHRoYW5rcy4K
-ClJlZ2FyZHMsCkpvbmFzCgo+IAo+PiAgCQkuY2ZnLmRlZiA9IFY0TDJfTVBFR19WSURFT19IMjY0
-X1BST0ZJTEVfTUFJTiwKPj4gQEAgLTIxMCwxMSArMjEwLDIzIEBAIHN0YXRpYyBjb25zdCBzdHJ1
-Y3Qgcmt2ZGVjX2N0cmxzIHJrdmRlY19oMjY0X2N0cmxzID0gewo+PiAgCS5udW1fY3RybHMgPSBB
-UlJBWV9TSVpFKHJrdmRlY19oMjY0X2N0cmxfZGVzY3MpLAo+PiAgfTsKPj4gIAo+PiAtc3RhdGlj
-IGNvbnN0IHN0cnVjdCBya3ZkZWNfZGVjb2RlZF9mbXRfZGVzYyBya3ZkZWNfaDI2NF92cDlfZGVj
-b2RlZF9mbXRzW10gPSB7Cj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19kZWNvZGVkX2Zt
-dF9kZXNjIHJrdmRlY19oMjY0X2RlY29kZWRfZm10c1tdID0gewo+PiAgCXsKPj4gIAkJLmZvdXJj
-YyA9IFY0TDJfUElYX0ZNVF9OVjEyLAo+PiAgCQkuaW1hZ2VfZm10ID0gUktWREVDX0lNR19GTVRf
-NDIwXzhCSVQsCj4+ICAJfSwKPj4gKwl7Cj4+ICsJCS5mb3VyY2MgPSBWNEwyX1BJWF9GTVRfTlYx
-NSwKPj4gKwkJLmltYWdlX2ZtdCA9IFJLVkRFQ19JTUdfRk1UXzQyMF8xMEJJVCwKPj4gKwl9LAo+
-PiArCXsKPj4gKwkJLmZvdXJjYyA9IFY0TDJfUElYX0ZNVF9OVjE2LAo+PiArCQkuaW1hZ2VfZm10
-ID0gUktWREVDX0lNR19GTVRfNDIyXzhCSVQsCj4+ICsJfSwKPj4gKwl7Cj4+ICsJCS5mb3VyY2Mg
-PSBWNEwyX1BJWF9GTVRfTlYyMCwKPj4gKwkJLmltYWdlX2ZtdCA9IFJLVkRFQ19JTUdfRk1UXzQy
-Ml8xMEJJVCwKPj4gKwl9LAo+PiAgfTsKPj4gIAo+PiAgc3RhdGljIGNvbnN0IHN0cnVjdCBya3Zk
-ZWNfY3RybF9kZXNjIHJrdmRlY192cDlfY3RybF9kZXNjc1tdID0gewo+PiBAQCAtMjM3LDYgKzI0
-OSwxMyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jdHJscyBya3ZkZWNfdnA5X2N0cmxz
-ID0gewo+PiAgCS5udW1fY3RybHMgPSBBUlJBWV9TSVpFKHJrdmRlY192cDlfY3RybF9kZXNjcyks
-Cj4+ICB9Owo+PiAgCj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19kZWNvZGVkX2ZtdF9k
-ZXNjIHJrdmRlY192cDlfZGVjb2RlZF9mbXRzW10gPSB7Cj4+ICsJewo+PiArCQkuZm91cmNjID0g
-VjRMMl9QSVhfRk1UX05WMTIsCj4+ICsJCS5pbWFnZV9mbXQgPSBSS1ZERUNfSU1HX0ZNVF80MjBf
-OEJJVCwKPj4gKwl9LAo+PiArfTsKPj4gKwo+PiAgc3RhdGljIGNvbnN0IHN0cnVjdCBya3ZkZWNf
-Y29kZWRfZm10X2Rlc2Mgcmt2ZGVjX2NvZGVkX2ZtdHNbXSA9IHsKPj4gIAl7Cj4+ICAJCS5mb3Vy
-Y2MgPSBWNEwyX1BJWF9GTVRfSDI2NF9TTElDRSwKPj4gQEAgLTI1MCw4ICsyNjksOCBAQCBzdGF0
-aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jb2RlZF9mbXRfZGVzYyBya3ZkZWNfY29kZWRfZm10c1td
-ID0gewo+PiAgCQl9LAo+PiAgCQkuY3RybHMgPSAmcmt2ZGVjX2gyNjRfY3RybHMsCj4+ICAJCS5v
-cHMgPSAmcmt2ZGVjX2gyNjRfZm10X29wcywKPj4gLQkJLm51bV9kZWNvZGVkX2ZtdHMgPSBBUlJB
-WV9TSVpFKHJrdmRlY19oMjY0X3ZwOV9kZWNvZGVkX2ZtdHMpLAo+PiAtCQkuZGVjb2RlZF9mbXRz
-ID0gcmt2ZGVjX2gyNjRfdnA5X2RlY29kZWRfZm10cywKPj4gKwkJLm51bV9kZWNvZGVkX2ZtdHMg
-PSBBUlJBWV9TSVpFKHJrdmRlY19oMjY0X2RlY29kZWRfZm10cyksCj4+ICsJCS5kZWNvZGVkX2Zt
-dHMgPSBya3ZkZWNfaDI2NF9kZWNvZGVkX2ZtdHMsCj4+ICAJCS5zdWJzeXN0ZW1fZmxhZ3MgPSBW
-QjJfVjRMMl9GTF9TVVBQT1JUU19NMk1fSE9MRF9DQVBUVVJFX0JVRiwKPj4gIAl9LAo+PiAgCXsK
-Pj4gQEAgLTI2Niw4ICsyODUsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJrdmRlY19jb2RlZF9m
-bXRfZGVzYyBya3ZkZWNfY29kZWRfZm10c1tdID0gewo+PiAgCQl9LAo+PiAgCQkuY3RybHMgPSAm
-cmt2ZGVjX3ZwOV9jdHJscywKPj4gIAkJLm9wcyA9ICZya3ZkZWNfdnA5X2ZtdF9vcHMsCj4+IC0J
-CS5udW1fZGVjb2RlZF9mbXRzID0gQVJSQVlfU0laRShya3ZkZWNfaDI2NF92cDlfZGVjb2RlZF9m
-bXRzKSwKPj4gLQkJLmRlY29kZWRfZm10cyA9IHJrdmRlY19oMjY0X3ZwOV9kZWNvZGVkX2ZtdHMs
-Cj4+ICsJCS5udW1fZGVjb2RlZF9mbXRzID0gQVJSQVlfU0laRShya3ZkZWNfdnA5X2RlY29kZWRf
-Zm10cyksCj4+ICsJCS5kZWNvZGVkX2ZtdHMgPSBya3ZkZWNfdnA5X2RlY29kZWRfZm10cywKPj4g
-IAl9Cj4+ICB9Owo+PiAgCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2
-ZGVjL3JrdmRlYy5oIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaAo+PiBp
-bmRleCBlNDY2YTI3NTNjY2YuLjlhOWY0ZmNlZDdhMSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9z
-dGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaAo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvcmt2ZGVjL3JrdmRlYy5oCj4+IEBAIC04MCw2ICs4MCw5IEBAIHN0cnVjdCBya3ZkZWNfY29k
-ZWRfZm10X29wcyB7Cj4+ICBlbnVtIHJrdmRlY19pbWFnZV9mbXQgewo+PiAgCVJLVkRFQ19JTUdf
-Rk1UX0FOWSA9IDAsCj4+ICAJUktWREVDX0lNR19GTVRfNDIwXzhCSVQsCj4+ICsJUktWREVDX0lN
-R19GTVRfNDIwXzEwQklULAo+PiArCVJLVkRFQ19JTUdfRk1UXzQyMl84QklULAo+PiArCVJLVkRF
-Q19JTUdfRk1UXzQyMl8xMEJJVCwKPj4gIH07Cj4+ICAKPj4gIHN0cnVjdCBya3ZkZWNfZGVjb2Rl
-ZF9mbXRfZGVzYyB7Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Convert the binding to DT schema format. Note, that "IPVDD-supply"
+got fixed to be "HPVDD-supply" during the conversion. This was
+obviously a typo in the old binding. The old binding example, DT
+files, chip datasheet and Linux driver use HPVDD.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../devicetree/bindings/sound/es8328.txt      | 38 ---------
+ .../bindings/sound/everest,es8328.yaml        | 77 +++++++++++++++++++
+ 2 files changed, 77 insertions(+), 38 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sound/es8328.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/everest,es8328.yaml
+
+diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
+deleted file mode 100644
+index 33fbf058c997..000000000000
+--- a/Documentation/devicetree/bindings/sound/es8328.txt
++++ /dev/null
+@@ -1,38 +0,0 @@
+-Everest ES8328 audio CODEC
+-
+-This device supports both I2C and SPI.
+-
+-Required properties:
+-
+-  - compatible  : Should be "everest,es8328" or "everest,es8388"
+-  - DVDD-supply : Regulator providing digital core supply voltage 1.8 - 3.6V
+-  - AVDD-supply : Regulator providing analog supply voltage 3.3V
+-  - PVDD-supply : Regulator providing digital IO supply voltage 1.8 - 3.6V
+-  - IPVDD-supply : Regulator providing analog output voltage 3.3V
+-  - clocks : A 22.5792 or 11.2896 MHz clock
+-  - reg : the I2C address of the device for I2C, the chip select number for SPI
+-
+-Pins on the device (for linking into audio routes):
+-
+-  * LOUT1
+-  * LOUT2
+-  * ROUT1
+-  * ROUT2
+-  * LINPUT1
+-  * RINPUT1
+-  * LINPUT2
+-  * RINPUT2
+-  * Mic Bias
+-
+-
+-Example:
+-
+-codec: es8328@11 {
+-	compatible = "everest,es8328";
+-	DVDD-supply = <&reg_3p3v>;
+-	AVDD-supply = <&reg_3p3v>;
+-	PVDD-supply = <&reg_3p3v>;
+-	HPVDD-supply = <&reg_3p3v>;
+-	clocks = <&clks 169>;
+-	reg = <0x11>;
+-};
+diff --git a/Documentation/devicetree/bindings/sound/everest,es8328.yaml b/Documentation/devicetree/bindings/sound/everest,es8328.yaml
+new file mode 100644
+index 000000000000..a0f4670fa38c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/everest,es8328.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/everest,es8328.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Everest ES8328 audio CODEC
++
++description:
++  Everest Audio Codec, which can be connected via I2C or SPI.
++  Pins on the device (for linking into audio routes) are
++  * LOUT1
++  * LOUT2
++  * ROUT1
++  * ROUT2
++  * LINPUT1
++  * RINPUT1
++  * LINPUT2
++  * RINPUT2
++  * Mic Bias
++
++maintainers:
++  - David Yang <yangxiaohua@everest-semi.com>
++
++properties:
++  compatible:
++    enum:
++      - everest,es8328
++      - everest,es8388
++
++  reg:
++    maxItems: 1
++
++  "#sound-dai-cells":
++    const: 0
++
++  clocks:
++    items:
++      - description: A 22.5792 or 11.2896 MHz clock
++
++  DVDD-supply:
++    description: Regulator providing digital core supply voltage 1.8 - 3.6V
++
++  AVDD-supply:
++    description: Regulator providing analog supply voltage 3.3V
++
++  PVDD-supply:
++    description: Regulator providing digital IO supply voltage 1.8 - 3.6V
++
++  HPVDD-supply:
++    description: Regulator providing analog output voltage 3.3V
++
++required:
++  - compatible
++  - clocks
++  - DVDD-supply
++  - AVDD-supply
++  - PVDD-supply
++  - HPVDD-supply
++
++additionalProperties: false
++
++examples:
++  - |
++    i2c {
++      #address-cells = <1>;
++      #size-cells = <0>;
++      es8328: codec@11 {
++        compatible = "everest,es8328";
++        reg = <0x11>;
++        AVDD-supply = <&reg_3p3v>;
++        DVDD-supply = <&reg_3p3v>;
++        HPVDD-supply = <&reg_3p3v>;
++        PVDD-supply = <&reg_3p3v>;
++        clocks = <&clks 169>;
++      };
++    };
+-- 
+2.42.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
