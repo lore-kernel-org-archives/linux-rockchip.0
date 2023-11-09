@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8DAC001B2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93914C04E85
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:40:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dnawxnoNL8mJYOqRImQfu2bLNh4DlMdJ3u6WJhzqp7o=; b=BdE1xGISrPRyqe
-	WDMFdU6bYJGke9ubm7NBQ3lehfaKGzlylFjjoTzYEHwGUtBAzucNq2+XhuM97Egy1LUF93XoW9U8/
-	zee84dl1iD8YUBAEGMjhMjOTfYaVD2xCy5+fOgV54ku92Lhk2rW+g82qqcSul7z1XsEqKIvRwdlP4
-	To18I7EDVJ+tlz9QRx+YEayQ+OC+SWR7Gjp4qg7v1AYcrVVy4xaqII6zVMleWSg/K8gq59evYbmKY
-	the2OHnBAjJ+/riHIl5xHC3KoCvwEbq47FpAZL6yNKtSs6cpQ/AIcDdmZwpvh+NCS8hMh+vV13VDC
-	ll/94KJNTF2iYrhVNDcg==;
+	List-Owner; bh=eSLBr63ij19kahiuucv4178AfcWgymkpVMlspNQFEoA=; b=Wqo1qwm8AYp7GF
+	LHORuXBiKHEw39EfGAcCVDjCweYKb1Hl3qmNSNlfzFDuSoN3/8BwL6ZpVEPGCG6g7xLfw/3peJVVu
+	J/KyFcrZOgwxmU/QsBbNFnQqQIQVjPSjU/pT8rOfOT7GnUKQ5/o9/me8rCX+f093wShIgQX1sB4LJ
+	k5RGgltm+2mqL4rP0ubLTUcyIsd117iobEyki4bFTmXIC/wBV7TpCwU4CPFTcqGeE0xyKRe8IPJcM
+	HsaUJDrHt61xpeeAPG9xre4MSumPEIUDdw0taJBN0KHEPfaVPwByEnoQzPGUSJIqbZJ9AK6UF27mv
+	kfnA0MI7L1vjY46IOUPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r184e-006nfq-2u;
-	Thu, 09 Nov 2023 16:40:08 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r184o-006ntY-0H;
+	Thu, 09 Nov 2023 16:40:18 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1830-006loZ-2W;
-	Thu, 09 Nov 2023 16:38:29 +0000
+	id 1r1834-006lsa-0W;
+	Thu, 09 Nov 2023 16:38:32 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8DA9B6607421;
-	Thu,  9 Nov 2023 16:38:24 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DD35366076B7;
+	Thu,  9 Nov 2023 16:38:27 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547905;
-	bh=aF5IbNMnW5bzQpY31akTbqKQeSuvyqM5DVbbfQGqSG8=;
+	s=mail; t=1699547908;
+	bh=lPwuFDyaawZGgIItBgoTtp763n9vIxRGrl//OpxBMaY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NXR8B386aaUFbWGbiZLt/MV4badGkLThiUspY89i2hDwgJXKwm9bbwBQXT031S8gT
-	 qdj4ZVbirRaVXYbgYvv8HzuFT0QR4xJLlBJFnFmJeFkGy2hwWH21EhWuFPPj8UeaMu
-	 CGZxutsWPVKMSmV9mTlJ6lYJAWAhwuKMeEwDGSkj/iQfACDUl/POdLwfTG3Zad4YwO
-	 erVthdcOn4MS+SjbHUIrOZSeujiuZa9F13/WvjX7Q5UoMUQfzgQUG84bQYgKqKfn8V
-	 nYWtl8eFOAWbpmvmdw1/CxdRwTUm+naWMxOufpjkp9VtWsX1Nm5BH7/8aJRO6geS9x
-	 S5Zf2qMZQNuAw==
+	b=Yu2COCISg93puHtY+icdltIz/uQQUjO71Plwtwsf1pSI2+DmwBeCv4eifWM9j8mYa
+	 GkzK8UfQSOheEzG1fA8Zdc2tWPa14b83j2dKzX3Q0U6wi/WKYCIClXbzW4s6G6HTA8
+	 jIcNqNOtkyrUTdG1turmJgtKqAV8B4iaL4w9arcHk1YifgGSstd7/zngObGqVTJbBu
+	 OkOpDZpXrW4XuNKLkhVYqDzkYUOnEttVC03bVEBCEyJJ1tJWE8IAUqAxUxuTpJh6T7
+	 Gm9ZzOh2DsLhDGREWS9w4j7lYgkTYRKXIgyDw0yDcclK31Z31Sx1UaBlqoD4hYlHSe
+	 7NAYeFgjNQ6KA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -63,16 +63,16 @@ Cc: linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v15 40/56] media: usb: cx231xx: Stop direct calls to queue num_buffers field
-Date: Thu,  9 Nov 2023 17:34:56 +0100
-Message-Id: <20231109163512.179524-41-benjamin.gaignard@collabora.com>
+Subject: [PATCH v15 42/56] media: usb: usbtv: Stop direct calls to queue num_buffers field
+Date: Thu,  9 Nov 2023 17:34:58 +0100
+Message-Id: <20231109163512.179524-43-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083826_979060_83B5FE34 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20231109_083830_338714_3CCB6CA6 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,49 +96,26 @@ future.
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/media/usb/cx231xx/cx231xx-417.c   | 5 +++--
- drivers/media/usb/cx231xx/cx231xx-video.c | 5 +++--
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ drivers/media/usb/usbtv/usbtv-video.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/usb/cx231xx/cx231xx-417.c b/drivers/media/usb/cx231xx/cx231xx-417.c
-index fe4410a5e128..45973fe690b2 100644
---- a/drivers/media/usb/cx231xx/cx231xx-417.c
-+++ b/drivers/media/usb/cx231xx/cx231xx-417.c
-@@ -1218,12 +1218,13 @@ static int queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/usb/usbtv/usbtv-video.c b/drivers/media/usb/usbtv/usbtv-video.c
+index 1e30e05953dc..62a583040cd4 100644
+--- a/drivers/media/usb/usbtv/usbtv-video.c
++++ b/drivers/media/usb/usbtv/usbtv-video.c
+@@ -726,9 +726,10 @@ static int usbtv_queue_setup(struct vb2_queue *vq,
  {
- 	struct cx231xx *dev = vb2_get_drv_priv(vq);
- 	unsigned int size = mpeglinesize * mpeglines;
+ 	struct usbtv *usbtv = vb2_get_drv_priv(vq);
+ 	unsigned size = USBTV_CHUNK * usbtv->n_chunks * 2 * sizeof(u32);
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
- 	dev->ts1.ts_packet_size  = mpeglinesize;
- 	dev->ts1.ts_packet_count = mpeglines;
- 
--	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
--		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < CX231XX_MIN_BUF)
-+		*nbuffers = CX231XX_MIN_BUF - q_num_bufs;
- 
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
  	if (*nplanes)
  		return sizes[0] < size ? -EINVAL : 0;
-diff --git a/drivers/media/usb/cx231xx/cx231xx-video.c b/drivers/media/usb/cx231xx/cx231xx-video.c
-index e23b8ccd79d4..c8eb4222319d 100644
---- a/drivers/media/usb/cx231xx/cx231xx-video.c
-+++ b/drivers/media/usb/cx231xx/cx231xx-video.c
-@@ -714,11 +714,12 @@ static int queue_setup(struct vb2_queue *vq,
- 		       unsigned int sizes[], struct device *alloc_devs[])
- {
- 	struct cx231xx *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 
- 	dev->size = (dev->width * dev->height * dev->format->depth + 7) >> 3;
- 
--	if (vq->num_buffers + *nbuffers < CX231XX_MIN_BUF)
--		*nbuffers = CX231XX_MIN_BUF - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < CX231XX_MIN_BUF)
-+		*nbuffers = CX231XX_MIN_BUF - q_num_bufs;
- 
- 	if (*nplanes)
- 		return sizes[0] < dev->size ? -EINVAL : 0;
+ 	*nplanes = 1;
 -- 
 2.39.2
 
