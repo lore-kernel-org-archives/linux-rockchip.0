@@ -4,89 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9022FC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 07:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F11C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 07:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zvtVRYZEhhqpOggdWmhdn/gN8TL1pPDKa/Seo5A5gYc=; b=VHbBBYSwHX2rIK
-	WbKHhtGSVi5MA4CIKRbHYR+mRshh1yBgEOGtbYrEN9Ep+N3Pa8h5Y4Jt0f8bM8Wy8GgE8k6ifqofv
-	JdNco7ZRzlNk8YIV8h4CmS9HdL6BteY5zO0CD9WsSDJ5hYUdS2yUQlbt4edTwKn1/dC6M9jx+k0Je
-	wEoQ2iilxWsnDVWWD1XncGnFK25DfWdHAAtTihyR0P2HyJhbABXUuv4LNc30zvyZOikpUkzj7MuQ2
-	JcgbENOgixI9z6WwO/NuP7lxpVn2UhlHnoO+5cvr2gc6oo0nW49ASVBxZnta4JC9vl/hfwuM/N50c
-	dtAOncsu1fMBQ+I4SX2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:CC:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hko7GFZZAFkcVgqgPHLNLtiMentRozVGz6hsgEMQ8EI=; b=HxrcNqA9SWju+Cm8Cg/TSFrfLc
+	Nox+ropXIHxZb+fiWLF2B8k+CSu6BPh7q3aeUKm3QWIIhz4KED1FcvKioz0ij6nH1WTp6nIoijixn
+	Msjp98ZDwabw2OnTD+BmJOnENjfWYB/BNINPqZQz9fk2tNynr6XAAGhgVdzYf+77nYudfquex0AbV
+	4AG8JH9r37OYLlpC0pV167HjnSfKedal5pmH+VwG+NO+KR454T67wr/3houzUvN4R+9lgSfw2iViw
+	Xvhxzx4o1+0nYB699Wn7hGTD7DVpaZZaEC2C0hoBgYi8SwVHzr6p9OOAJsAe+AWMSZZIQj6FLY6XD
+	i3d0KKDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0zT8-005VGd-1q;
-	Thu, 09 Nov 2023 07:28:50 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1r0zUV-005VTX-2J;
+	Thu, 09 Nov 2023 07:30:15 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r0zT5-005VEj-1b
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Nov 2023 07:28:48 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9d0b4dfd60dso83071666b.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Nov 2023 23:28:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1699514921; x=1700119721; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1ZGyCYYTcq3tfAOSXtV2/dw7L3jydVZ3P+lrWN5MQ7s=;
-        b=hMMvP1C0RwlAf+3uPvX7T1DeZ/LsulaL7rSos9xXmzSAO9WE+gzegu8UWefsD9kg+e
-         s1N4ka3De9N5RcGvWZaoIdIZH6KqcYlkfXWcoY87Vd3WM40BDYZIzrDdn6TKSksX9QBT
-         KYl8K/AwU/2NZOq+MjgnkzjGQpK2I7sqxH7cY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699514921; x=1700119721;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1ZGyCYYTcq3tfAOSXtV2/dw7L3jydVZ3P+lrWN5MQ7s=;
-        b=dBdvIU/QOYceTqByD6XJFWY2PeGXoQqvHYa9ZZ3LoI8rnjgkEFWkh7uI2ZTUBZkVgM
-         mtmix1enhSNa71yaIukvWCJ4hoz8QdL2MiyQ7Z1OF4AEXoUOQL7J5ydj7znUfilyO+n2
-         mJA/bsZdnUDYdLiQ6oFsgiN8n1m1+K9bjYOO3rJBCFln8HWCIGYqvRipelIzPFHOfl2d
-         mJfvZUZWzFn0G6dfbLKZtOMbhSP4XxV1IvMpegfhSWIPmXT5lpg1cgXvu4AvpEWGFQ3N
-         rRy1uu+U0UZhqzxN37rql1SibP3KUvVdet0dzPS7cM0H8qrl+sIJitSA5C4h2h/oN+Ec
-         JZXw==
-X-Gm-Message-State: AOJu0YwbZoGlHWE1LdNsfkew765ezSVvtMBdJRITIueXBCdGuX8Cawij
-	9a2HFp5jkImAeHlLCKu0dATJDs0e+mmDPTc0hbNeeJ5G
-X-Google-Smtp-Source: AGHT+IHL666ggjNl1sHnas8ICXdSWdd+52yHtc3FEN1U6FelCKzOpDx77j19/XA5HhbPrT8F/5uV/g==
-X-Received: by 2002:a17:907:7206:b0:9b2:7b89:8199 with SMTP id dr6-20020a170907720600b009b27b898199mr3360120ejc.53.1699514921463;
-        Wed, 08 Nov 2023 23:28:41 -0800 (PST)
-Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com. [209.85.128.48])
-        by smtp.gmail.com with ESMTPSA id v9-20020a17090606c900b009ae05f9eab3sm2163825ejb.65.2023.11.08.23.28.40
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Nov 2023 23:28:40 -0800 (PST)
-Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-40839652b97so3199365e9.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Nov 2023 23:28:40 -0800 (PST)
-X-Received: by 2002:adf:e311:0:b0:32c:ea14:89e5 with SMTP id
- b17-20020adfe311000000b0032cea1489e5mr3220105wrj.39.1699514920620; Wed, 08
- Nov 2023 23:28:40 -0800 (PST)
+	id 1r0zUS-005VS8-1i;
+	Thu, 09 Nov 2023 07:30:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1699515012; x=1731051012;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Dx8D95WyzuX2IuOEFmqgA8EyOzcTDNbo1MHb8a8iwMc=;
+  b=1djwPdSwHtPxBOO1+0L+nEXwP9L4nd8IM4xV0uagZ6eAuPgFkdjLw/wF
+   qam8vwHAxsrOqHQXVcSFZu5VFALGBlh9MNFErl7QGLDZuYMuB6dg83bex
+   RoBAqJ5pGZC+GRvTjazqF3H70qVmm2xvmQXehEVAU9quCwaJ2eCygyMC8
+   E90Z4IPtYiXGETkAIro9hzHOtOSo8ijS7WO2lK1G9GKP/gveAkk7Qaa1H
+   aURrOwJoBzwbxANs4X2320bvBcPu50jSpXDK8aQEGHbMGlI4tnAKBlKO0
+   16nMTrOV2ZsfKFaIg22eK91GiUd5q59RtXorbf8uRZmXlHSiKUNKapqMi
+   Q==;
+X-CSE-ConnectionGUID: AOkFoS2YSbmlI+bSBTzDlQ==
+X-CSE-MsgGUID: HdNvzHRpRXCIEC/6FVIMRg==
+X-ThreatScanner-Verdict: Negative
+X-IronPort-AV: E=Sophos;i="6.03,288,1694761200"; 
+   d="asc'?scan'208";a="11381001"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa4.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 09 Nov 2023 00:30:05 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Thu, 9 Nov 2023 00:29:42 -0700
+Received: from wendy (10.10.85.11) by chn-vm-ex03.mchp-main.com (10.10.85.151)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21 via Frontend
+ Transport; Thu, 9 Nov 2023 00:29:39 -0700
+Date: Thu, 9 Nov 2023 07:29:13 +0000
+From: Conor Dooley <conor.dooley@microchip.com>
+To: zhangqing <zhangqing@rock-chips.com>
+CC: Conor Dooley <conor@kernel.org>, <mturquette@baylibre.com>,
+	<sboyd@kernel.org>, <kever.yang@rock-chips.com>, <heiko@sntech.de>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<huangtao@rock-chips.com>, <andy.yan@rock-chips.com>, Sebastian Reichel
+	<sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v5 3/4] dt-bindings: clock: rk3588: export PCLK_VO1GRF
+ clk id
+Message-ID: <20231109-send-pushchair-45b37551102a@wendy>
+References: <20231108061822.4871-1-zhangqing@rock-chips.com>
+ <20231108061822.4871-4-zhangqing@rock-chips.com>
+ <20231108-donation-uncertain-c4d0f560c420@spud>
+ <2e520a06-0ff1-76ef-2a72-ab6663738b45@rock-chips.com>
 MIME-Version: 1.0
-References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-53-benjamin.gaignard@collabora.com>
- <20231108104439.oxpbbd2yro7u57t4@chromium.org> <e9eeac63-b4d5-4710-bb85-b0997dce55cc@collabora.com>
-In-Reply-To: <e9eeac63-b4d5-4710-bb85-b0997dce55cc@collabora.com>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 9 Nov 2023 16:28:20 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5AH6x461-a2=2JmzUhW2pWacgwj1w3SZH1kfMBbsmaZ3A@mail.gmail.com>
-Message-ID: <CAAFQd5AH6x461-a2=2JmzUhW2pWacgwj1w3SZH1kfMBbsmaZ3A@mail.gmail.com>
-Subject: Re: [PATCH v14 52/56] media: core: Add bitmap manage bufs array entries
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com, 
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl, 
-	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	kernel@collabora.com
+In-Reply-To: <2e520a06-0ff1-76ef-2a72-ab6663738b45@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231108_232847_535613_7E271FC6 
-X-CRM114-Status: GOOD (  22.46  )
+X-CRM114-CacheID: sfid-20231108_233012_658367_6210A9C2 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,48 +90,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0133591533675943627=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBOb3YgOSwgMjAyMyBhdCAxMjozMOKAr0FNIEJlbmphbWluIEdhaWduYXJkCjxiZW5q
-YW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPgo+Cj4gTGUgMDgvMTEvMjAyMyDD
-oCAxMTo0NCwgVG9tYXN6IEZpZ2EgYSDDqWNyaXQgOgo+ID4gT24gVHVlLCBPY3QgMzEsIDIwMjMg
-YXQgMDU6MzE6MDBQTSArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6CltzbmlwXQo+ID4+
-IEBAIC0xMTUwLDcgKzExNTAsMTAgQEAgc3RhdGljIGlubGluZSBib29sIHZiMl9maWxlaW9faXNf
-YWN0aXZlKHN0cnVjdCB2YjJfcXVldWUgKnEpCj4gPj4gICAgKi8KPiA+PiAgIHN0YXRpYyBpbmxp
-bmUgdW5zaWduZWQgaW50IHZiMl9nZXRfbnVtX2J1ZmZlcnMoc3RydWN0IHZiMl9xdWV1ZSAqcSkK
-PiA+PiAgIHsKPiA+PiAtICAgIHJldHVybiBxLT5udW1fYnVmZmVyczsKPiA+PiArICAgIGlmICgh
-cS0+YnVmc19iaXRtYXApCj4gPj4gKyAgICAgICAgICAgIHJldHVybiAwOwo+ID4+ICsKPiA+PiAr
-ICAgIHJldHVybiBiaXRtYXBfd2VpZ2h0KHEtPmJ1ZnNfYml0bWFwLCBxLT5tYXhfbnVtX2J1ZmZl
-cnMpOwo+ID4gSG1tLCBjb3VsZCB3ZSBqdXN0IGNhY2hlIHRoZSBudW1iZXIgb2YgYnVmZmVycyB3
-ZSBoYXZlLCBzbyB0aGF0IHdlIGRvbid0Cj4gPiBoYXZlIHRvIGdvIG92ZXIgdGhlIGVudGlyZSBi
-aXRtYXAgZXZlcnkgdGltZT8gKEJhc2ljYWxseSBqdXN0IGtlZXAgdGhlCj4gPiBjb2RlIHRoYXQg
-d2UgaGFkIGZvciBoYW5kbGluZyBxLT5udW1fYnVmZmVycyBiZWZvcmUgdGhpcyBwYXRjaC4pCj4K
-PiBJIHdvdWxkIHByZWZlciBubyBkdXBsaWNhdGUgaG93IHRoZSBudW1iZXIgb2YgYnVmZmVycyBp
-biBhIHF1ZXVlIGlzIGNvbXB1dGVkCj4gYW5kIGJpdG1hcCBvZmZlciBoZWxwZXJzIGZvciB0aGF0
-LiBXaHkgbm90IHVzZSBpdCA/Cj4KCmJpdG1hcF93ZWlnaHQoKSBjYW4gYmVjb21lIGNvc3RseSB3
-aGVuIHRoZSBudW1iZXIgb2YgYnVmZmVycyBncm93cy4KU2luY2UgaXQncyBlYXN5IHRvIHRyYWNr
-IGhvdyBtYW55IGJ1ZmZlcnMgd2UgYWRkIGFuZCByZW1vdmUsIHdlIGNvdWxkCmp1c3QgY2FjaGUg
-dGhhdCBudW1iZXIgYW5kIHRoZW4gYW55IGNvZGUgY291bGQgY2FsbAp2YjJfZ2V0X251bV9idWZm
-ZXJzKCkgd2hlbmV2ZXIgaXQgbmVlZHMgdGhlIGJ1ZmZlciBjb3VudCB3aXRob3V0CmNhcmluZyBo
-b3cgY29zdGx5IGl0IGlzLgoKPiA+Cj4gPj4gICB9Cj4gPj4KPiA+PiAgIC8qKgo+ID4+IEBAIC0x
-MjUzLDEzICsxMjU2LDEzIEBAIHN0YXRpYyBpbmxpbmUgdm9pZCB2YjJfY2xlYXJfbGFzdF9idWZm
-ZXJfZGVxdWV1ZWQoc3RydWN0IHZiMl9xdWV1ZSAqcSkKPiA+PiAgIHN0YXRpYyBpbmxpbmUgc3Ry
-dWN0IHZiMl9idWZmZXIgKnZiMl9nZXRfYnVmZmVyKHN0cnVjdCB2YjJfcXVldWUgKnEsCj4gPj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5zaWduZWQgaW50
-IGluZGV4KQo+ID4+ICAgewo+ID4+IC0gICAgaWYgKCFxLT5idWZzKQo+ID4+ICsgICAgaWYgKCFx
-LT5idWZzX2JpdG1hcCkKPiA+PiAgICAgICAgICAgICAgcmV0dXJuIE5VTEw7Cj4gPj4KPiA+PiAg
-ICAgIGlmIChpbmRleCA+PSBxLT5tYXhfbnVtX2J1ZmZlcnMpCj4gPj4gICAgICAgICAgICAgIHJl
-dHVybiBOVUxMOwo+ID4+Cj4gPj4gLSAgICBpZiAoaW5kZXggPCBxLT5udW1fYnVmZmVycykKPiA+
-PiArICAgIGlmICh0ZXN0X2JpdChpbmRleCwgcS0+YnVmc19iaXRtYXApKQo+ID4gQWhhLCBJIHNl
-ZSB3aHkgd2UgbmVlZCB0aGUgZXh0cmEgY29uZGl0aW9uIGFib3ZlIG5vdy4gUGVyaGFwcyBpdCBz
-aG91bGQndmUKPiA+IGJlZW4gYWRkZWQgaW4gdGhpcyBwYXRjaCBpbnN0ZWFkPwo+Cj4gRm9yIG1l
-IGl0IHdhcyBtb3JlIGV4cGxpY2l0IGRvIGludHJvZHVjZSBpdCBhdCB0aGUgc2FtZSB0aW1lIHRo
-YXQKPiBtYXhfbnVtX2J1ZmZlcnMgZmllbGQuCgpPa2F5LiBJIGRvbid0IGhhdmUgYSBzdHJvbmcg
-b3BpbmlvbiwgZXNwZWNpYWxseSBzaW5jZSBpdCB3YXMganVzdCBhbgppbnRlcm1lZGlhdGUgcGF0
-Y2guCgpCZXN0IHJlZ2FyZHMsClRvbWFzegoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+--===============0133591533675943627==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EOi6T8MEgEuAZcpd"
+Content-Disposition: inline
+
+--EOi6T8MEgEuAZcpd
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Nov 09, 2023 at 02:27:38PM +0800, zhangqing wrote:
+> Hi:
+>=20
+> =E5=9C=A8 2023/11/8 20:01, Conor Dooley =E5=86=99=E9=81=93:
+> > On Wed, Nov 08, 2023 at 02:18:21PM +0800, Elaine Zhang wrote:
+> > > export PCLK_VO1GRF for DT.
+> > >=20
+> > > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > > ---
+> > >   include/dt-bindings/clock/rockchip,rk3588-cru.h | 3 ++-
+> > >   1 file changed, 2 insertions(+), 1 deletion(-)
+> > >=20
+> > > diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/includ=
+e/dt-bindings/clock/rockchip,rk3588-cru.h
+> > > index 5790b1391201..50ba72980190 100644
+> > > --- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> > > +++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+> > > @@ -733,8 +733,9 @@
+> > >   #define ACLK_AV1_PRE			718
+> > >   #define PCLK_AV1_PRE			719
+> > >   #define HCLK_SDIO_PRE			720
+> > > +#define PCLK_VO1GRF			721
+> > > -#define CLK_NR_CLKS			(HCLK_SDIO_PRE + 1)
+> > > +#define CLK_NR_CLKS			(PCLK_VO1GRF + 1)
+> > This definition is part of the ABI, if it is safe to change it, then it
+> > is safe to delete it.
+> The new ID is to solve the niu clock dependency problem(Used in PATCH V5
+> 4/4).This new ID will also be used in DTS in the future.
+>=20
+> CLK_NR_CLKS represents the number of clocks used by the
+> drivers/clk/rockchip/clk-rkxxx.c. It is safe to modify it, but cannot del=
+ete
+> it.
+
+Then delete it from the header and move it to clk-rkxxx.c
+
+--EOi6T8MEgEuAZcpd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZUyKRQAKCRB4tDGHoIJi
+0jvaAP9Mak6fvi3NGoWSCdxsuveQthMLhtNXZWoTZA3zgzYeKwD/Vopz5b98730K
+4iZE1gFvKMmD5TaOp1tn1q9khTZRVA4=
+=KvXP
+-----END PGP SIGNATURE-----
+
+--EOi6T8MEgEuAZcpd--
+
+
+--===============0133591533675943627==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0133591533675943627==--
+
