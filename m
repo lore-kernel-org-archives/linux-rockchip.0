@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 160DBC05021
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF53C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:32:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HELkov78U21Ryh5e4koO0hwcHbnRFwduEiRQV1K7MaI=; b=MDir7vXZtFHw/i
-	yKSr6AGEsGoFrC7w/GA2/pf3xEF25NYYQkd+qVRvkAV0Qw11T9qEqG77C0eg9nC2g5axSdQdcU83I
-	l15bA6G8Z4AFvRKG02s3EFF8OicTj1iVIo80lYXLpSfGYWQVnKgRAza8gOuCBN1eezzccydW0xnYT
-	9mzsF1ww//nNuVE6yk4OWu+2uPKATrqDF5LFX6uv9p5HI/cNop16R/jnKxmVYS4Baslad+2yruvVj
-	xam6UxbbuX6uw/ihy7RsJL0TECi56bb0kpR4Gr6UeBSGeAz+VQgtPjzS4P46xUe+zchUnXeEvUE5b
-	C3OukVKpLkz9izLkx7uQ==;
+	List-Owner; bh=Kg43FONyLadphy95mNofCavLATfozqXUy0tUeeS8sR4=; b=2SU2c4ly4qz8h8
+	bp1Y0demnVuOU9B5u8hp+s7W4scccdcNsqIZVrX9avSF1CQATPn73Opwx06xGAvIhN1wSvJ+ie/TR
+	go9J/ak3yNLoqA20GIzHIEkpIJOWz9M4B9VsXjP3+HFp1mdPEPL2CreE7lP6JR5Oba7BsRUqVrpyU
+	BGIeKZanzgGBgkh04E1vYrhHbvD5U+iwXeNN/EGzfeSlO49iB1V1+2/g3j5xheD0uhk6WC8SG3Sbx
+	ElCGmhslqAHoHB9Cxwpfy9lxAmnBqZrVtHBp/lBfU7fV+IMenyHasLecmkFkPU8X8vwkBA7iRo+ry
+	KE+pZ11I1U1Pk8exKjQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17xI-006jIo-0n;
-	Thu, 09 Nov 2023 16:32:32 +0000
+	id 1r17xN-006jNy-1v;
+	Thu, 09 Nov 2023 16:32:37 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r17xB-006jCC-16;
-	Thu, 09 Nov 2023 16:32:29 +0000
+	id 1r17xF-006jG1-0T;
+	Thu, 09 Nov 2023 16:32:31 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BA9FD660740E;
-	Thu,  9 Nov 2023 16:32:20 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 026306607421;
+	Thu,  9 Nov 2023 16:32:26 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547541;
-	bh=QtxHfL0BQ7O0Rg3+MEqedQuzB2OKbyifYJESSd1Oirg=;
+	s=mail; t=1699547548;
+	bh=rhUkYFk+VvLmxfiAps4JtG+uZEhzCV4A0U/lurUMSB0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FU3HMmbcFXkQmBGHqr8VC4eM4ucYUSSu21QW19iVg+LvR5HWU2MwjELCE6KFK3yk+
-	 /3wPbwJuwvToxRfA8d1ojkWGbvIiFhSR/3O0gsrFC5Uw2M66RUZ3Y8HFYiRT+chsGc
-	 zmSXdESEbihywP8Hi0kbuwn8ja9YOeHupl/GQUWyxDS3X1kXFprDmjnIZO63M2BG7d
-	 F1r3veepsHw04LpsL0D/86lIpO3NUeV6QuVQIc4KkXKJiAQY+GOMWtJr161M8qkRS6
-	 bPFsf1G/4XF74xCX947hvug7xl3iCEAdYeU+3Iau4RWc0uI9cEkF0ya1I9BE9AhzF3
-	 p7FpltmH57dvg==
+	b=KxlgNAXqMhJDD+CDFjXORNkk/AMcOLaBftomO7DHHTElE74WSln9yF4WbiAcm3/PU
+	 3va2pVAyfvB8lZZaxXl01mnAHGmyHnc0hl6RrjwngZKQKI0CE2WRhgwA8J+Jj5lxli
+	 uJ9U8GyuOCoLArhEG/zzTfwBmm22T0DAaQDLOQcGo7OrMrifBNxaUQzFEUu/DIPXzt
+	 pokzp+wolvzdFDQtW+qHRtnIXwY2EOJ677FjuVzSe2oQ6DPQPpyAVwa5AqNdTPvW0F
+	 9P5PV/o2Hb3DJS1yqL1KviRBA9ORXuqQbJOdFYmG232f8k5dFnE6O8YXQWC6INdJAd
+	 onR/yGLsnwLOQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -63,16 +63,16 @@ Cc: linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v15 01/56] media: videobuf2: Rename offset parameter
-Date: Thu,  9 Nov 2023 17:29:13 +0100
-Message-Id: <20231109163008.179152-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v15 03/56] media: videobuf2: Stop spamming kernel log with all queue counter
+Date: Thu,  9 Nov 2023 17:29:15 +0100
+Message-Id: <20231109163008.179152-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163008.179152-1-benjamin.gaignard@collabora.com>
 References: <20231109163008.179152-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083225_668952_B310722B 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20231109_083229_441472_C9FC5B93 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,107 +89,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename 'off' parameter to 'offset' to clarify the code.
+Only report unbalanced queue counters do avoid spamming kernel log
+with useless information.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 28 +++++++++----------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ .../media/common/videobuf2/videobuf2-core.c   | 79 +++++++++++--------
+ 1 file changed, 44 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 27aee92f3eea..e5fd7ff0dae6 100644
+index 0b7c6b297d12..009ae53dbe3b 100644
 --- a/drivers/media/common/videobuf2/videobuf2-core.c
 +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -356,23 +356,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
- {
- 	struct vb2_queue *q = vb->vb2_queue;
- 	unsigned int plane;
--	unsigned long off = 0;
-+	unsigned long offset = 0;
+@@ -538,25 +538,26 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
  
- 	if (vb->index) {
- 		struct vb2_buffer *prev = q->bufs[vb->index - 1];
- 		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
- 
--		off = PAGE_ALIGN(p->m.offset + p->length);
-+		offset = PAGE_ALIGN(p->m.offset + p->length);
- 	}
- 
- 	for (plane = 0; plane < vb->num_planes; ++plane) {
--		vb->planes[plane].m.offset = off;
-+		vb->planes[plane].m.offset = offset;
- 
- 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
--				vb->index, plane, off);
-+				vb->index, plane, offset);
- 
--		off += vb->planes[plane].length;
--		off = PAGE_ALIGN(off);
-+		offset += vb->planes[plane].length;
-+		offset = PAGE_ALIGN(offset);
- 	}
- }
- 
-@@ -2185,10 +2185,10 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type)
- EXPORT_SYMBOL_GPL(vb2_core_streamoff);
- 
- /*
-- * __find_plane_by_offset() - find plane associated with the given offset off
-+ * __find_plane_by_offset() - find plane associated with the given offset
-  */
--static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
--			unsigned int *_buffer, unsigned int *_plane)
-+static int __find_plane_by_offset(struct vb2_queue *q, unsigned long offset,
-+				  unsigned int *_buffer, unsigned int *_plane)
- {
- 	struct vb2_buffer *vb;
- 	unsigned int buffer, plane;
-@@ -2218,7 +2218,7 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
- 		vb = q->bufs[buffer];
- 
- 		for (plane = 0; plane < vb->num_planes; ++plane) {
--			if (vb->planes[plane].m.offset == off) {
-+			if (vb->planes[plane].m.offset == offset) {
- 				*_buffer = buffer;
- 				*_plane = plane;
- 				return 0;
-@@ -2304,7 +2304,7 @@ EXPORT_SYMBOL_GPL(vb2_core_expbuf);
- 
- int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
- {
--	unsigned long off = vma->vm_pgoff << PAGE_SHIFT;
-+	unsigned long offset = vma->vm_pgoff << PAGE_SHIFT;
- 	struct vb2_buffer *vb;
- 	unsigned int buffer = 0, plane = 0;
- 	int ret;
-@@ -2335,7 +2335,7 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
- 	 * Find the plane corresponding to the offset passed by userspace. This
- 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
+ #ifdef CONFIG_VIDEO_ADV_DEBUG
+ 	/*
+-	 * Check that all the calls were balances during the life-time of this
+-	 * queue. If not (or if the debug level is 1 or up), then dump the
+-	 * counters to the kernel log.
++	 * Check that all the calls were balanced during the life-time of this
++	 * queue. If not then dump the counters to the kernel log.
  	 */
--	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-+	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
- 	if (ret)
- 		goto unlock;
+ 	if (q->num_buffers) {
+ 		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
+ 				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
+ 				  q->cnt_wait_prepare != q->cnt_wait_finish;
  
-@@ -2380,7 +2380,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
- 				    unsigned long pgoff,
- 				    unsigned long flags)
- {
--	unsigned long off = pgoff << PAGE_SHIFT;
-+	unsigned long offset = pgoff << PAGE_SHIFT;
- 	struct vb2_buffer *vb;
- 	unsigned int buffer, plane;
- 	void *vaddr;
-@@ -2392,7 +2392,7 @@ unsigned long vb2_get_unmapped_area(struct vb2_queue *q,
- 	 * Find the plane corresponding to the offset passed by userspace. This
- 	 * will return an error if not MEMORY_MMAP or file I/O is in progress.
- 	 */
--	ret = __find_plane_by_offset(q, off, &buffer, &plane);
-+	ret = __find_plane_by_offset(q, offset, &buffer, &plane);
- 	if (ret)
- 		goto unlock;
+-		if (unbalanced || debug) {
+-			pr_info("counters for queue %p:%s\n", q,
+-				unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
+-				q->cnt_queue_setup, q->cnt_start_streaming,
+-				q->cnt_stop_streaming);
+-			pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
+-				q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
+-			pr_info("     wait_prepare: %u wait_finish: %u\n",
+-				q->cnt_wait_prepare, q->cnt_wait_finish);
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p:\n", q);
++			if (q->cnt_start_streaming != q->cnt_stop_streaming)
++				pr_info("     setup: %u start_streaming: %u stop_streaming: %u\n",
++					q->cnt_queue_setup, q->cnt_start_streaming,
++					q->cnt_stop_streaming);
++			if (q->cnt_prepare_streaming != q->cnt_unprepare_streaming)
++				pr_info("     prepare_streaming: %u unprepare_streaming: %u\n",
++					q->cnt_prepare_streaming, q->cnt_unprepare_streaming);
++			if (q->cnt_wait_prepare != q->cnt_wait_finish)
++				pr_info("     wait_prepare: %u wait_finish: %u\n",
++					q->cnt_wait_prepare, q->cnt_wait_finish);
+ 		}
+ 		q->cnt_queue_setup = 0;
+ 		q->cnt_wait_prepare = 0;
+@@ -577,29 +578,37 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
+ 				  vb->cnt_buf_prepare != vb->cnt_buf_finish ||
+ 				  vb->cnt_buf_init != vb->cnt_buf_cleanup;
  
+-		if (unbalanced || debug) {
+-			pr_info("   counters for queue %p, buffer %d:%s\n",
+-				q, buffer, unbalanced ? " UNBALANCED!" : "");
+-			pr_info("     buf_init: %u buf_cleanup: %u buf_prepare: %u buf_finish: %u\n",
+-				vb->cnt_buf_init, vb->cnt_buf_cleanup,
+-				vb->cnt_buf_prepare, vb->cnt_buf_finish);
+-			pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
+-				vb->cnt_buf_out_validate, vb->cnt_buf_queue,
+-				vb->cnt_buf_done, vb->cnt_buf_request_complete);
+-			pr_info("     alloc: %u put: %u prepare: %u finish: %u mmap: %u\n",
+-				vb->cnt_mem_alloc, vb->cnt_mem_put,
+-				vb->cnt_mem_prepare, vb->cnt_mem_finish,
+-				vb->cnt_mem_mmap);
+-			pr_info("     get_userptr: %u put_userptr: %u\n",
+-				vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
+-			pr_info("     attach_dmabuf: %u detach_dmabuf: %u map_dmabuf: %u unmap_dmabuf: %u\n",
+-				vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf,
+-				vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
+-			pr_info("     get_dmabuf: %u num_users: %u vaddr: %u cookie: %u\n",
++		if (unbalanced) {
++			pr_info("unbalanced counters for queue %p, buffer %d:\n",
++				q, buffer);
++			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
++				pr_info("     buf_init: %u buf_cleanup: %u\n",
++					vb->cnt_buf_init, vb->cnt_buf_cleanup);
++			if (vb->cnt_buf_prepare != vb->cnt_buf_finish)
++				pr_info("     buf_prepare: %u buf_finish: %u\n",
++					vb->cnt_buf_prepare, vb->cnt_buf_finish);
++			if (vb->cnt_buf_queue != vb->cnt_buf_done)
++				pr_info("     buf_out_validate: %u buf_queue: %u buf_done: %u buf_request_complete: %u\n",
++					vb->cnt_buf_out_validate, vb->cnt_buf_queue,
++					vb->cnt_buf_done, vb->cnt_buf_request_complete);
++			if (vb->cnt_mem_alloc != vb->cnt_mem_put)
++				pr_info("     alloc: %u put: %u\n",
++					vb->cnt_mem_alloc, vb->cnt_mem_put);
++			if (vb->cnt_mem_prepare != vb->cnt_mem_finish)
++				pr_info("     prepare: %u finish: %u\n",
++					vb->cnt_mem_prepare, vb->cnt_mem_finish);
++			if (vb->cnt_mem_get_userptr != vb->cnt_mem_put_userptr)
++				pr_info("     get_userptr: %u put_userptr: %u\n",
++					vb->cnt_mem_get_userptr, vb->cnt_mem_put_userptr);
++			if (vb->cnt_mem_attach_dmabuf != vb->cnt_mem_detach_dmabuf)
++				pr_info("     attach_dmabuf: %u detach_dmabuf: %u\n",
++					vb->cnt_mem_attach_dmabuf, vb->cnt_mem_detach_dmabuf);
++			if (vb->cnt_mem_map_dmabuf != vb->cnt_mem_unmap_dmabuf)
++				pr_info("     map_dmabuf: %u unmap_dmabuf: %u\n",
++					vb->cnt_mem_map_dmabuf, vb->cnt_mem_unmap_dmabuf);
++			pr_info("     get_dmabuf: %u num_users: %u\n",
+ 				vb->cnt_mem_get_dmabuf,
+-				vb->cnt_mem_num_users,
+-				vb->cnt_mem_vaddr,
+-				vb->cnt_mem_cookie);
++				vb->cnt_mem_num_users);
+ 		}
+ 	}
+ #endif
 -- 
 2.39.2
 
