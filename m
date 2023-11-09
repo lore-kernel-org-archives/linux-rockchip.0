@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A538FC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 09:38:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97716C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 09:43:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4TmvPKcpkZyJ92mgfDZRazDazGP+vH2iVPtVuhk3iBI=; b=pjH9MWndBQbsDL
-	1ynLpW1XRWvq6kwvUEc81GFgWITIi9a+zH2yRW4G8GuPd6cZi5ENplZyWHc1LK9M3Oktlx0AkEuEE
-	53h3bivV6pr5yj7lwry40IzUmbGA+Y+TYIeVp9fvDSq59xb4Qov2rifKQH7iSd4lljif6mxAJuPJ4
-	VI2iQ1i8xJWlU+EDLktXlXcxqkNQS2kzhlAZvo2kaOJVMEHMuJ8hKwTBEFZyDKTU2R50NRhJtsqPz
-	oYKoz2TZWWM/xpS60KK0BZgs397jkxcEgP4m39RJWcovHACE08aCf/+iS4x3JkpZnX+Rg0voFfY7L
-	y6ahrRylZ2MOn/aXma6g==;
+	List-Owner; bh=XegPU8wi3tctK0r+uylmWYliSUDd0kZf0lvsw+iVrMM=; b=xwipfG3Asws588
+	95VlN7c3q/b9TaBHrJoZ3AqdgDumf7qOB1Kjtw3m2uHq9y+W6Nk0LpalCjJ4+kNBnjva1/vF6f4u8
+	3RvxzAS5kDsiKaYUPSlsAQKktzorJB+uyd5U04Nt5jT//l+Vi54QbvNtBR0wM0gIUHVtMf3gQfFYf
+	12R4FSvyDR+JQCvGbk3YLLAxaP7M6Xn/5MelP62fi2/diudwd3HIUk6WCTQmNnfsifb25HENNinAJ
+	VyQDcFOEqMIi8zSw+jrynQsQhPoY0aknCSnSAsV+ZxvLkqpKX6JfYIJ8nzEHATA//sc6xb7bgQKrN
+	pbwLXFbsw5xsuYAo67Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11Ue-005nxX-2X;
-	Thu, 09 Nov 2023 09:38:32 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r11ZJ-005oQ9-0e;
+	Thu, 09 Nov 2023 09:43:21 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11Ua-005nw9-37;
-	Thu, 09 Nov 2023 09:38:30 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BC86F6607412;
-	Thu,  9 Nov 2023 09:38:25 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699522707;
-	bh=F5eCvJZp5ZHGYJ0Dg13WChawV85jAIVEdBjM+7DBShE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=h4x0LuYOIAo1skdu7fwYrmP1EsAl9jR5pHuC5CcWQpO+v/63t7EkfqoA2gudh/Yjj
-	 S4tR4kKJFm7JRr7UHiuvBE87TNfl2fRXQunZrLnuQr37bLIRn4MZziVHGYQ6Ku1tzc
-	 gPGykHkUX2YwpeDjllD73G6KszY5cOMwgmtOMKKItNacwHlljXwzspmnOOnL45nu3/
-	 zTCSab62P7WQD6F687rgUKZCmo4HdOOonhCr/GRtefEBgsZ7VBvOJnzYi2xVWsrq7k
-	 Y0d46UD2AWp+hNaPQtsBkjOcuthgIcEgj0MhBf1cy9+earEuxW4fIJnjL3aGlxI8PB
-	 GydHiHn8gkRAg==
-Message-ID: <b812aae8-a600-433e-81ba-d330f40dce21@collabora.com>
-Date: Thu, 9 Nov 2023 10:38:22 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 15/56] media: visl: Use vb2_get_buffer() instead of
- directly access to buffers array
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Daniel Almeida <daniel.almeida@collabora.com>
+	id 1r11ZE-005oNg-2X
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Nov 2023 09:43:19 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-27ff7fe7fbcso601091a91.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Nov 2023 01:43:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699522995; x=1700127795; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jCWyDTFOKGrYpot7V/hX2yRpK+Z5vWvoNFrsFbdVsv0=;
+        b=k4F1IMdHiEM01M72lGa9kjRq1/BELOFl3T1Jn+dNpvIkiMqazDs07wTloot88CI468
+         I2vP1RMu5StFxcTvAi6T9wt1x/szrTQXSajhkUE/rhMUNrfBP1hob2hNJtf0W4ld1d7V
+         B6IJevnkE5bfQwjIYzqCoIh8nLuBpyUInREu0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699522995; x=1700127795;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jCWyDTFOKGrYpot7V/hX2yRpK+Z5vWvoNFrsFbdVsv0=;
+        b=tQuWeBi6qQW9pFCJM3EuWTGxnji7doxDOB2B2m/vc5mcKHLL2lYtYj9qmfPjKk94p/
+         XoFT8xRRiWcj3SPsifLB1wUL8UqoUX3krMPDe4g1qMGPBMfBefjCQvooVEaen96D13yB
+         ClJy9HUaVPW0J06uZ6eEetUJ1+sOp54RGHuSekqdDl5cqWgugnORbSALmd6OdNYoRYkz
+         28UIFQPiFjce5gzjf2VptgE035YTINL9fSvknGczpcqTOxhqYhIDIAPZd688Qn06/05F
+         n7pyPNLFtWXAtcSu63bocv6bY26r/Ek/WkFVK1S+N4NZY7yAexs5K0hHZtqQFAY6Yd2w
+         uTfQ==
+X-Gm-Message-State: AOJu0YyTETRACWqZDrhKOdWxvUgDt6cWuH2uVMrgiRXREDFmwf1EFx/f
+	Y6mJot62pB6V/EAT1M4kVBop7Q==
+X-Google-Smtp-Source: AGHT+IHYEn5vCWOVKWVvobQ08zsd30PXF4KGgrclxpMN4A+BTWHHxdRtGwc4VhxQDlQqRAmCiOe3vQ==
+X-Received: by 2002:a17:90b:4b4f:b0:280:a27d:e897 with SMTP id mi15-20020a17090b4b4f00b00280a27de897mr1185437pjb.8.1699522995680;
+        Thu, 09 Nov 2023 01:43:15 -0800 (PST)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id 21-20020a17090a01d500b0027d0adf653bsm986244pjd.7.2023.11.09.01.43.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Nov 2023 01:43:15 -0800 (PST)
+Date: Thu, 9 Nov 2023 09:43:11 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v14 56/56] media: test-drivers: Use helper for
+ DELETE_BUFS ioctl
+Message-ID: <20231109094311.yzmmn4vvskmrk4tk@chromium.org>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-16-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-16-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-57-benjamin.gaignard@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231031163104.112469-57-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_013829_169519_3F3F2814 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20231109_014316_850263_983F4058 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +91,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VyBkbml1IDMxLjEwLjIwMjMgb8KgMTc6MzAsIEJlbmphbWluIEdhaWduYXJkIHBpc3plOgo+IFVz
-ZSB2YjJfZ2V0X2J1ZmZlcigpIGluc3RlYWQgb2YgZGlyZWN0IGFjY2VzcyB0byB0aGUgdmIyX3F1
-ZXVlIGJ1ZnMgYXJyYXkuCj4gVGhpcyBhbGxvd3MgdXMgdG8gY2hhbmdlIHRoZSB0eXBlIG9mIHRo
-ZSBidWZzIGluIHRoZSBmdXR1cmUuCj4gQWZ0ZXIgZWFjaCBjYWxsIHRvIHZiMl9nZXRfYnVmZmVy
-KCkgd2UgbmVlZCB0byBiZSBzdXJlIHRoYXQgd2UgZ2V0Cj4gYSB2YWxpZCBwb2ludGVyIHNvIGNo
-ZWNrIHRoZSByZXR1cm4gdmFsdWUgb2YgYWxsIG9mIHRoZW0uCj4gCj4gU2lnbmVkLW9mZi1ieTog
-QmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+CgpSZXZp
-ZXdlZC1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVqLnBAY29sbGFib3JhLmNvbT4K
-Cj4gQ0M6IERhbmllbCBBbG1laWRhIDxkYW5pZWwuYWxtZWlkYUBjb2xsYWJvcmEuY29tPgo+IEND
-OiBNYXVybyBDYXJ2YWxobyBDaGVoYWIgPG1jaGVoYWJAa2VybmVsLm9yZz4KPiAtLS0KPiAgIGRy
-aXZlcnMvbWVkaWEvdGVzdC1kcml2ZXJzL3Zpc2wvdmlzbC1kZWMuYyB8IDI4ICsrKysrKysrKysr
-KysrKystLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspLCA3IGRlbGV0
-aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Rlc3QtZHJpdmVycy92aXNs
-L3Zpc2wtZGVjLmMgYi9kcml2ZXJzL21lZGlhL3Rlc3QtZHJpdmVycy92aXNsL3Zpc2wtZGVjLmMK
-PiBpbmRleCAzMThkNjc1ZTU2NjguLmJhMjBlYTk5OGQxOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L21lZGlhL3Rlc3QtZHJpdmVycy92aXNsL3Zpc2wtZGVjLmMKPiArKysgYi9kcml2ZXJzL21lZGlh
-L3Rlc3QtZHJpdmVycy92aXNsL3Zpc2wtZGVjLmMKPiBAQCAtMjkwLDEzICsyOTAsMjAgQEAgc3Rh
-dGljIHZvaWQgdmlzbF90cGdfZmlsbChzdHJ1Y3QgdmlzbF9jdHggKmN0eCwgc3RydWN0IHZpc2xf
-cnVuICpydW4pCj4gICAJZm9yIChpID0gMDsgaSA8IG91dF9xLT5udW1fYnVmZmVyczsgaSsrKSB7
-Cj4gICAJCWNoYXIgZW50cnlbXSA9ICJpbmRleDogJXUsIHN0YXRlOiAlcywgcmVxdWVzdF9mZDog
-JWQsICI7Cj4gICAJCXUzMiBvbGRfbGVuID0gbGVuOwo+IC0JCWNoYXIgKnFfc3RhdHVzID0gdmlz
-bF9nZXRfdmIyX3N0YXRlKG91dF9xLT5idWZzW2ldLT5zdGF0ZSk7Cj4gKwkJc3RydWN0IHZiMl9i
-dWZmZXIgKnZiMjsKPiArCQljaGFyICpxX3N0YXR1czsKPiArCj4gKwkJdmIyID0gdmIyX2dldF9i
-dWZmZXIob3V0X3EsIGkpOwo+ICsJCWlmICghdmIyKQo+ICsJCQljb250aW51ZTsKPiArCj4gKwkJ
-cV9zdGF0dXMgPSB2aXNsX2dldF92YjJfc3RhdGUodmIyLT5zdGF0ZSk7Cj4gICAKPiAgIAkJbGVu
-ICs9IHNjbnByaW50ZigmYnVmW2xlbl0sIFRQR19TVFJfQlVGX1NaIC0gbGVuLAo+ICAgCQkJCSBl
-bnRyeSwgaSwgcV9zdGF0dXMsCj4gLQkJCQkgdG9fdmIyX3Y0bDJfYnVmZmVyKG91dF9xLT5idWZz
-W2ldKS0+cmVxdWVzdF9mZCk7Cj4gKwkJCQkgdG9fdmIyX3Y0bDJfYnVmZmVyKHZiMiktPnJlcXVl
-c3RfZmQpOwo+ICAgCj4gLQkJbGVuICs9IHZpc2xfZmlsbF9ieXRlc3VzZWQodG9fdmIyX3Y0bDJf
-YnVmZmVyKG91dF9xLT5idWZzW2ldKSwKPiArCQlsZW4gKz0gdmlzbF9maWxsX2J5dGVzdXNlZCh0
-b192YjJfdjRsMl9idWZmZXIodmIyKSwKPiAgIAkJCQkJICAgJmJ1ZltsZW5dLAo+ICAgCQkJCQkg
-ICBUUEdfU1RSX0JVRl9TWiAtIGxlbik7Cj4gICAKPiBAQCAtMzQyLDEzICszNDksMjAgQEAgc3Rh
-dGljIHZvaWQgdmlzbF90cGdfZmlsbChzdHJ1Y3QgdmlzbF9jdHggKmN0eCwgc3RydWN0IHZpc2xf
-cnVuICpydW4pCj4gICAJbGVuID0gMDsKPiAgIAlmb3IgKGkgPSAwOyBpIDwgY2FwX3EtPm51bV9i
-dWZmZXJzOyBpKyspIHsKPiAgIAkJdTMyIG9sZF9sZW4gPSBsZW47Cj4gLQkJY2hhciAqcV9zdGF0
-dXMgPSB2aXNsX2dldF92YjJfc3RhdGUoY2FwX3EtPmJ1ZnNbaV0tPnN0YXRlKTsKPiArCQlzdHJ1
-Y3QgdmIyX2J1ZmZlciAqdmIyOwo+ICsJCWNoYXIgKnFfc3RhdHVzOwo+ICsKPiArCQl2YjIgPSB2
-YjJfZ2V0X2J1ZmZlcihjYXBfcSwgaSk7Cj4gKwkJaWYgKCF2YjIpCj4gKwkJCWNvbnRpbnVlOwo+
-ICsKPiArCQlxX3N0YXR1cyA9IHZpc2xfZ2V0X3ZiMl9zdGF0ZSh2YjItPnN0YXRlKTsKPiAgIAo+
-ICAgCQlsZW4gKz0gc2NucHJpbnRmKCZidWZbbGVuXSwgVFBHX1NUUl9CVUZfU1ogLSBsZW4sCj4g
-ICAJCQkJICJpbmRleDogJXUsIHN0YXR1czogJXMsIHRpbWVzdGFtcDogJWxsdSwgaXNfaGVsZDog
-JWQiLAo+IC0JCQkJIGNhcF9xLT5idWZzW2ldLT5pbmRleCwgcV9zdGF0dXMsCj4gLQkJCQkgY2Fw
-X3EtPmJ1ZnNbaV0tPnRpbWVzdGFtcCwKPiAtCQkJCSB0b192YjJfdjRsMl9idWZmZXIoY2FwX3Et
-PmJ1ZnNbaV0pLT5pc19oZWxkKTsKPiArCQkJCSB2YjItPmluZGV4LCBxX3N0YXR1cywKPiArCQkJ
-CSB2YjItPnRpbWVzdGFtcCwKPiArCQkJCSB0b192YjJfdjRsMl9idWZmZXIodmIyKS0+aXNfaGVs
-ZCk7Cj4gICAKPiAgIAkJdHBnX2dlbl90ZXh0KCZjdHgtPnRwZywgYmFzZXAsIGxpbmUrKyAqIGxp
-bmVfaGVpZ2h0LCAxNiwgJmJ1ZltvbGRfbGVuXSk7Cj4gICAJCWZyYW1lX2RwcmludGsoY3R4LT5k
-ZXYsIHJ1bi0+ZHN0LT5zZXF1ZW5jZSwgIiVzIiwgJmJ1ZltvbGRfbGVuXSk7CgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Oct 31, 2023 at 05:31:04PM +0100, Benjamin Gaignard wrote:
+> Allow test drivers to use DELETE_BUFS by adding vb2_ioctl_delete_bufs() helper.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/media/test-drivers/vicodec/vicodec-core.c |  2 ++
+>  drivers/media/test-drivers/vimc/vimc-capture.c    |  2 ++
+>  drivers/media/test-drivers/visl/visl-video.c      |  2 ++
+>  drivers/media/test-drivers/vivid/vivid-core.c     | 13 ++++++++++---
+>  4 files changed, 16 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+> index 69cbe2c094e1..f14a8fd506d0 100644
+> --- a/drivers/media/test-drivers/vicodec/vicodec-core.c
+> +++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+> @@ -1339,6 +1339,7 @@ static const struct v4l2_ioctl_ops vicodec_ioctl_ops = {
+>  	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+>  	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+>  	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+> +	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
+>  
+>  	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+>  	.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+> @@ -1725,6 +1726,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+>  	dst_vq->mem_ops = &vb2_vmalloc_memops;
+>  	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+>  	dst_vq->lock = src_vq->lock;
+> +	dst_vq->supports_delete_bufs = true;
+
+Since we have to explicitly provide the vidioc_delete_bufs callback anyway,
+is there any value in having a separate supports_delete_bufs flag? Or we
+envision that some drivers would support deleting buffers only for some
+queues?
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
