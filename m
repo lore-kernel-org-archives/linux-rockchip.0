@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F910C4167D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:41:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD40C04E85
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:41:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MjtieTkmmpHo8atKwCYVDK5ousOsCbT3NEjod8ZtYHA=; b=fZBzHcMh4Dj7MW
-	E8tqf4PRMYTGpmlUUpr8+f8+EPbXlfjNRoEA8iHv83Vihd270FX0FmUoZPFrgbHukMZV4vF+fw+UR
-	lqk5LXZm26oScLYpWTRgrOEk/bVKuNch3oQciPqSRcRHq81Q+zMUvEtbnMfEnJ4T+9YCW7u1TIn6+
-	wCQo5XPUdFSgA+d7moh7ZZX33Oig7rCOO52D4xxyqDLQo4eW8t68HSLD+SPG5swzzhbjVkMbA33Xd
-	zPMFgstORhdpWPkQTynIucs/L1HQn7kt7t4ujzKqfp11BWOYFm1zTaTjMJVA0lxWdmAQ6jiwqjIXd
-	0pGLM2aotsvx+jI4YaNg==;
+	List-Owner; bh=8GeC2cM63cUUIwVxwHTkyXpuGC1L3ng0BnD2WpFcTso=; b=3paALHf17/sB2n
+	yL4Tsheei2hyMX0wyMn8OYqSjuKW9CmiSBMCfRRXRniW37uVm6dvqn5kQVAeiR2CfsekORIiJ3imJ
+	3fzq89Q8JY6TiAj8YDVLP2z5WEtjmr5oIqi5ubQZAx+TfIlM2GDYOkon1Hv7sATK2GioPrUlN1ySv
+	8INUp0oh05R0Rrhu51VyGkL9zE1bk7pZAoaw+ufbGGVPRmADXL1M2p4Awv6n6pwcQlyZD4ZRmFB/R
+	hIsgr2pz6wT+1h82Qq/1BLGoat+ISQvRrZrDs5DWj6Wu7NDkkro5RaW4X6pbPEOVuD0OfoDu+7Vg+
+	r9p/C79Pkb6LWI32rh4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r185k-006p6o-2X;
-	Thu, 09 Nov 2023 16:41:16 +0000
+	id 1r185l-006p7N-0r;
+	Thu, 09 Nov 2023 16:41:17 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r183K-006m9c-2I;
-	Thu, 09 Nov 2023 16:38:53 +0000
+	id 1r183Q-006mGF-2v;
+	Thu, 09 Nov 2023 16:38:58 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4610866076CF;
-	Thu,  9 Nov 2023 16:38:44 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9A64F66076C6;
+	Thu,  9 Nov 2023 16:38:50 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547925;
-	bh=Fs1yIM5aqJeLZKK2JR5oqxEZHM7LyZyOagWgKK5gxZo=;
+	s=mail; t=1699547931;
+	bh=bvlqKNzionLKB1VClCmq81RGJBsdZ7hA0RN2y42SWPU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PByZ/gam02LGu9huHHbYVjQXFxLDE7LDBAgeWyEfddoaSadg4mxAVpPyZ25hw6Z1v
-	 aT4s85hLBuwuj/Qehln27OJhSVgLxv4owLO61K6CZE86wceW/ZjcisBLWxoOjgnKhS
-	 bw+p/J4CNDapXf0kHywuXhh4eSVVsRXkPvCmTbqkBLxIppNPNFqHlHxTcaSqinYk1V
-	 2BuEd/eK0ohqulnbsdwxS7HgBiYDWzmwKCGPt5gO2ewutmA9x9qF8DWHxdn4w/5P6d
-	 q01Yp7ugekYEKg8vAUjVtwhkuyICVPQBmrUi05u4X6R72+4T/ookVR31ia/OSY6UtD
-	 26p/q0yd39axA==
+	b=fc2WzoNDS2m1hz/n1f42qI9ffKez539ARoZnee+qBfYwlgA3C6Vmtu5po9B+Gu3AP
+	 EnLXCGEa13MJ/QC2XIiu65qw1AkIwh1hK5uSnKeY2AqiGh63UI9/kKoLuEpoAAWRtQ
+	 dZbtYvgQzHfQeE4dcs0tPj/b7EnifqhldJNvauuMBs6kwaiMNGhxcdJQU+Uc7TyJ4A
+	 2LwScdNY0nB6bmuIovQV36Km4jfYRUzT40iyqpFKI5gDOF+Lw/TfOLBAHJEucA3KQX
+	 9OBQfB3b7k0FHIObieZWXuBH1kkgbsrxtalRWetGRSuUyCd9yOuVTFuOL8o4700wnD
+	 vvzbR91wpIOWQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v15 52/56] media: core: Add bitmap manage bufs array entries
-Date: Thu,  9 Nov 2023 17:35:08 +0100
-Message-Id: <20231109163512.179524-53-benjamin.gaignard@collabora.com>
+Subject: [PATCH v15 56/56] media: test-drivers: Use helper for DELETE_BUFS ioctl
+Date: Thu,  9 Nov 2023 17:35:12 +0100
+Message-Id: <20231109163512.179524-57-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083847_061729_25CB3725 
-X-CRM114-Status: GOOD (  19.56  )
+X-CRM114-CacheID: sfid-20231109_083853_225767_B9D4E9E6 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,196 +88,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a bitmap field to know which of bufs array entries are
-used or not.
-Remove no more used num_buffers field from queue structure.
-Use bitmap_find_next_zero_area() to find the first possible
-range when creating new buffers to fill the gaps.
+Allow test drivers to use DELETE_BUFS by adding vb2_ioctl_delete_bufs() helper.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 37 ++++++++++++++++---
- include/media/videobuf2-core.h                | 17 +++++----
- 2 files changed, 41 insertions(+), 13 deletions(-)
+ drivers/media/test-drivers/vicodec/vicodec-core.c |  2 ++
+ drivers/media/test-drivers/vimc/vimc-capture.c    |  2 ++
+ drivers/media/test-drivers/visl/visl-video.c      |  2 ++
+ drivers/media/test-drivers/vivid/vivid-core.c     | 13 ++++++++++---
+ 4 files changed, 16 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 6379f8171405..df31cda323a2 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -421,11 +421,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
- {
--	WARN_ON(index >= q->max_num_buffers || q->bufs[index] || vb->vb2_queue);
-+	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap) || vb->vb2_queue);
+diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+index 69cbe2c094e1..f14a8fd506d0 100644
+--- a/drivers/media/test-drivers/vicodec/vicodec-core.c
++++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+@@ -1339,6 +1339,7 @@ static const struct v4l2_ioctl_ops vicodec_ioctl_ops = {
+ 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
++	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
  
- 	q->bufs[index] = vb;
- 	vb->index = index;
- 	vb->vb2_queue = q;
-+	set_bit(index, q->bufs_bitmap);
+ 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+@@ -1725,6 +1726,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = src_vq->lock;
++	dst_vq->supports_delete_bufs = true;
+ 
+ 	return vb2_queue_init(dst_vq);
  }
+diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
+index aa944270e716..fda7ea3a6cb6 100644
+--- a/drivers/media/test-drivers/vimc/vimc-capture.c
++++ b/drivers/media/test-drivers/vimc/vimc-capture.c
+@@ -221,6 +221,7 @@ static const struct v4l2_ioctl_ops vimc_capture_ioctl_ops = {
+ 	.vidioc_expbuf = vb2_ioctl_expbuf,
+ 	.vidioc_streamon = vb2_ioctl_streamon,
+ 	.vidioc_streamoff = vb2_ioctl_streamoff,
++	.vidioc_delete_bufs = vb2_ioctl_delete_bufs,
+ };
  
- /**
-@@ -434,6 +435,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
-  */
- static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
- {
-+	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
- 	vb->vb2_queue->bufs[vb->index] = NULL;
- 	vb->vb2_queue = NULL;
+ static void vimc_capture_return_all_buffers(struct vimc_capture_device *vcapture,
+@@ -435,6 +436,7 @@ static struct vimc_ent_device *vimc_capture_add(struct vimc_device *vimc,
+ 	q->min_buffers_needed = 2;
+ 	q->lock = &vcapture->lock;
+ 	q->dev = v4l2_dev->dev;
++	q->supports_delete_bufs = true;
+ 
+ 	ret = vb2_queue_init(q);
+ 	if (ret) {
+diff --git a/drivers/media/test-drivers/visl/visl-video.c b/drivers/media/test-drivers/visl/visl-video.c
+index 7cac6a6456eb..bd6c112f7846 100644
+--- a/drivers/media/test-drivers/visl/visl-video.c
++++ b/drivers/media/test-drivers/visl/visl-video.c
+@@ -521,6 +521,7 @@ const struct v4l2_ioctl_ops visl_ioctl_ops = {
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
++	.vidioc_delete_bufs		= v4l2_m2m_ioctl_delete_bufs,
+ 
+ 	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
+@@ -728,6 +729,7 @@ int visl_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->mem_ops = &vb2_vmalloc_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->vb_mutex;
++	dst_vq->supports_delete_bufs = true;
+ 
+ 	return vb2_queue_init(dst_vq);
  }
-@@ -462,7 +464,8 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	num_buffers = min_t(unsigned int, num_buffers,
- 			    q->max_num_buffers - vb2_get_num_buffers(q));
+diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+index 353f035fcd19..06b18d8e2248 100644
+--- a/drivers/media/test-drivers/vivid/vivid-core.c
++++ b/drivers/media/test-drivers/vivid/vivid-core.c
+@@ -769,6 +769,7 @@ static const struct v4l2_ioctl_ops vivid_ioctl_ops = {
+ 	.vidioc_expbuf			= vb2_ioctl_expbuf,
+ 	.vidioc_streamon		= vb2_ioctl_streamon,
+ 	.vidioc_streamoff		= vb2_ioctl_streamoff,
++	.vidioc_delete_bufs		= vb2_ioctl_delete_bufs,
  
--	index = vb2_get_num_buffers(q);
-+	index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-+					   0, num_buffers, 0);
- 
- 	*first_index = index;
- 
-@@ -664,7 +667,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		kfree(vb);
- 	}
- 
--	q->num_buffers -= buffers;
- 	if (!vb2_get_num_buffers(q)) {
- 		q->memory = VB2_MEMORY_UNKNOWN;
- 		INIT_LIST_HEAD(&q->queued_list);
-@@ -882,6 +884,14 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
- 	if (!q->bufs)
- 		ret = -ENOMEM;
-+
-+	if (!q->bufs_bitmap)
-+		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+	if (!q->bufs_bitmap) {
-+		ret = -ENOMEM;
-+		kfree(q->bufs);
-+		q->bufs = NULL;
+ 	.vidioc_enum_input		= vivid_enum_input,
+ 	.vidioc_g_input			= vivid_g_input,
+@@ -883,12 +884,18 @@ static int vivid_create_queue(struct vivid_dev *dev,
+ 	 * PAGE_SHIFT > 12, but then max_num_buffers will be clamped by
+ 	 * videobuf2-core.c to MAX_BUFFER_INDEX.
+ 	 */
+-	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
++	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE) {
+ 		q->max_num_buffers = 64;
+-	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE)
++		q->supports_delete_bufs = true;
 +	}
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
- 	if (ret)
-@@ -951,7 +961,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
++	if (buf_type == V4L2_BUF_TYPE_SDR_CAPTURE) {
+ 		q->max_num_buffers = 1024;
+-	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE)
++		q->supports_delete_bufs = true;
++	}
++	if (buf_type == V4L2_BUF_TYPE_VBI_CAPTURE) {
+ 		q->max_num_buffers = 32768;
++		q->supports_delete_bufs = true;
++	}
  
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers = allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -978,6 +987,10 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	mutex_lock(&q->mmap_lock);
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 	mutex_unlock(&q->mmap_lock);
-+	kfree(q->bufs);
-+	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-@@ -1014,9 +1027,19 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		q->memory = memory;
- 		if (!q->bufs)
- 			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--		if (!q->bufs)
-+		if (!q->bufs) {
- 			ret = -ENOMEM;
-+			goto unlock;
-+		}
-+		if (!q->bufs_bitmap)
-+			q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+		if (!q->bufs_bitmap) {
-+			ret = -ENOMEM;
-+			kfree(q->bufs);
-+			q->bufs = NULL;
-+		}
- 		mutex_unlock(&q->mmap_lock);
-+unlock:
- 		if (ret)
- 			return ret;
- 		q->waiting_for_buffers = !q->is_output;
-@@ -1078,7 +1101,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers += allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -2561,6 +2583,9 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_free(q, vb2_get_num_buffers(q));
- 	kfree(q->bufs);
- 	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
-+
- 	mutex_unlock(&q->mmap_lock);
- }
- EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index dbcdfcc4dc31..12e3dc4ca32c 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -346,8 +346,8 @@ struct vb2_buffer {
-  *			describes the requested number of planes and sizes\[\]
-  *			contains the requested plane sizes. In this case
-  *			\*num_buffers are being allocated additionally to
-- *			q->num_buffers. If either \*num_planes or the requested
-- *			sizes are invalid callback must return %-EINVAL.
-+ *			the buffers already in the queue. If either \*num_planes
-+ *			or the requested sizes are invalid callback must return %-EINVAL.
-  * @wait_prepare:	release any locks taken while calling vb2 functions;
-  *			it is called before an ioctl needs to wait for a new
-  *			buffer to arrive; required to avoid a deadlock in
-@@ -557,7 +557,7 @@ struct vb2_buf_ops {
-  * @memory:	current memory type used
-  * @dma_dir:	DMA mapping direction.
-  * @bufs:	videobuf2 buffer structures
-- * @num_buffers: number of allocated/used buffers
-+ * @bufs_bitmap: bitmap tracking whether each bufs[] entry is used
-  * @max_num_buffers: upper limit of number of allocated/used buffers.
-  *		     If set to 0 v4l2 core will change it VB2_MAX_FRAME
-  *		     for backward compatibility.
-@@ -623,7 +623,7 @@ struct vb2_queue {
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
- 	struct vb2_buffer		**bufs;
--	unsigned int			num_buffers;
-+	unsigned long			*bufs_bitmap;
- 	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
-@@ -1152,7 +1152,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
-  */
- static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
- {
--	return q->num_buffers;
-+	if (!q->bufs_bitmap)
-+		return 0;
-+
-+	return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
- }
- 
- /**
-@@ -1255,13 +1258,13 @@ static inline void vb2_clear_last_buffer_dequeued(struct vb2_queue *q)
- static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 						unsigned int index)
- {
--	if (!q->bufs)
-+	if (!q->bufs_bitmap)
- 		return NULL;
- 
- 	if (index >= q->max_num_buffers)
- 		return NULL;
- 
--	if (index < q->num_buffers)
-+	if (test_bit(index, q->bufs_bitmap))
- 		return q->bufs[index];
- 	return NULL;
- }
+ 	if (allocators[dev->inst] != 1)
+ 		q->io_modes |= VB2_USERPTR;
 -- 
 2.39.2
 
