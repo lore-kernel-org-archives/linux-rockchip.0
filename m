@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297B0C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 14:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194F0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 14:14:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7jJsFRHNtlGxdOd1AfoDmfZNCZTUwiiFzdmizsj45D4=; b=NHawY4gZw97JNj
-	ZTA1gQ1VA38cEvpGQ9/HkHwXLSj4LUeVEW17IpFr0UFKVHkkYD97Y8CHfBderja3DUfX5Vgu0oMny
-	HchuKlMERLWesn/I4O/Hxf+ma+bg+JYCVxO9fhU299+yKo+kcrC18KKVxjVPuWz6IcjB6jnIEVnrF
-	CmTnrZwamoiS/q/MiQKB1dblJQmJaasOLnjrBu2l+M0F1Ci8+By1/8YoTAX8anyx7YEHMfm/Q/sqA
-	skerq6C53sCGd4jLG5BXnNqqSRITNAs9knc6wu/Ge/Bj1GQZTXqOWirPCQwl0sSXhIH4YXKypOtcf
-	g7k5SaXfdXCTq2CaaS5A==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UtkiPEzJbKi3MyatyIkTpmWfogQPg3tcB1dK2bunNiE=; b=YD642EWFOe7Em/VYjW6VV4tCtI
+	2kAicl6c/PhoCTrCWPJ3Oau3LjyayJ578cNkxbmS+NDduYAAhZ5g3pgQ+iYcCLN3HkNCzXbdRAhn4
+	TMHV0GgrYDqfyh5NR4q+b3M3c1ztqvtR0/mqGE3e+2UV+QJWXJE9B1JSFFKk0O1PLRHZ3u34Nk6gz
+	O9B8DObuDncfCY0hB6d0jtZX0B4YSRbwCYYiCzuJs2U3qu2QH/XFLGAUh5CkNrPtBc/6LPREDolOa
+	4Bv6j/yRDXpFAYlCIn+qjbEvzmW2ABPaEoVfjxE8HlOXZq13o4/x+S/YmsRDf6VLGClcN3xMlX834
+	T6eIbF2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r15lx-006T2Y-2a;
-	Thu, 09 Nov 2023 14:12:41 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r15nz-006TNP-38;
+	Thu, 09 Nov 2023 14:14:47 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r15lt-006T0w-25;
-	Thu, 09 Nov 2023 14:12:39 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A7236660739D;
-	Thu,  9 Nov 2023 14:12:34 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699539156;
-	bh=bHsPXcPq+RCxN5m6no2vYCXtGthGOFXffIvEuss0WaA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NLuvksTyGejXV9sdJMh5tC3X3EILGdZx7JOLHtkjqzvKQ3PL4BSf6mYdIJ7FKI30m
-	 rMh4dIyDlhnunSIkJ8s6NjI4lfqp/zXcSG28zGAuDeaTLFZPzE40mcEAWUASYHATBa
-	 QbRzO5gBq0o/kbUh0knpprCOQbTygboTYfIvHGmxhtXd6F6s3FhngHg7en/XzWeJTc
-	 aQYUVjVNJLT4k7J25i+aaWNgjsKMtcBmEHtLCKaNdFFHxKPC97grku+QB19Tw0N1Yc
-	 Dy7666VhwjTj4anJuDh1NtIg7zZvVjI5Xz8jN1tn4wDjBKwsEYJtoXGCdhLNQwKPTe
-	 lcwYPysIvoRSQ==
-Message-ID: <9f0edfe5-0bde-43ca-9238-2c84897c56a8@collabora.com>
-Date: Thu, 9 Nov 2023 15:12:26 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 48/56] media: verisilicon: Store chroma and motion
- vectors offset
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
+	id 1r15nv-006TK3-0S;
+	Thu, 09 Nov 2023 14:14:45 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 7EDA8FF811;
+	Thu,  9 Nov 2023 14:14:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1699539275;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=APCi42wGghFpV470GSiQEdNcIDMvIEDMF3+RieFFueo=;
+	b=c595DB66E2eB1WRaQWp9gL2zGk8J6AwF8ELwcjlLYU9+hBlcxVu3DhpikAF9df4p3OS4LL
+	CxPv6uUs1ZCxAJs9vZium5/ng83PiWLkJRTR2p+0daDKs/Kr6NN7ARKAnXXv6/iBoVoEdb
+	kcAsIorCol0hHqz3dS8PXhAWu/th6IijYdjO0+iYqaGQF8qYK32EgzOPC5ZkBpleLxnyUQ
+	qqsecvK9at+HETjeeKfwWyG22uW8AQAng/EBsCVTqLI8sC1nt9TR7yTPuSVQXosqmuuIrb
+	yfQBy7Phmn+miNfPf1I33rxnJJ1sFgXntEF9U75z4rxvsZNF2ZIz6SnGn+WsJw==
+Date: Thu, 9 Nov 2023 15:14:33 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com, Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v14 35/56] media: cedrus: Stop direct calls to queue
+ num_buffers field
+Message-ID: <ZUzpSXDbO60uGr0t@aptenodytes>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-49-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-49-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-36-benjamin.gaignard@collabora.com>
+ <083e43d9-452a-4b11-b7f1-f75992bc795e@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <083e43d9-452a-4b11-b7f1-f75992bc795e@collabora.com>
+X-GND-Sasl: paul.kocialkowski@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_061237_883616_5CD5F044 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20231109_061443_482965_4A4C058E 
+X-CRM114-Status: GOOD (  21.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +74,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============0245131941378278947=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VyBkbml1IDMxLjEwLjIwMjMgb8KgMTc6MzAsIEJlbmphbWluIEdhaWduYXJkIHBpc3plOgo+IFN0
-b3JlIGNvbXB1dGVkIHZhbHVlcyBvZiBjaHJvbWEgYW5kIG1vdGlvbiB2ZWN0b3JzIG9mZnNldCBi
-ZWNhdXNlCj4gdGhleSBkZXBlbmRzIG9uIHdpZHRoIGFuZCBoZWlnaHQgdmFsdWVzIHdoaWNoIGNo
-YW5nZSBpZiB0aGUgcmVzb2x1dGlvbgo+IGNoYW5nZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBCZW5q
-YW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KClJldmlld2Vk
-LWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgoKPiBD
-QzogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEB2YW5ndWFyZGlhc3VyLmNvbS5hcj4KPiBDQzog
-UGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KPiAtLS0KPiAgIGRyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvLmggICAgICAgICAgICB8IDIgKysKPiAg
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2cyX3ZwOV9kZWMuYyB8
-IDYgKysrKy0tCj4gICAyIGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
-bi9oYW50cm8uaCBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvLmgK
-PiBpbmRleCAwOTQ4YjA0YTlmOGQuLjZmNWViOTc1ZDBlMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyby5oCj4gKysrIGIvZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm8uaAo+IEBAIC0zMjgsNiArMzI4LDggQEAgc3Ry
-dWN0IGhhbnRyb192cDlfZGVjb2RlZF9idWZmZXJfaW5mbyB7Cj4gICAJLyogSW5mbyBuZWVkZWQg
-d2hlbiB0aGUgZGVjb2RlZCBmcmFtZSBzZXJ2ZXMgYXMgYSByZWZlcmVuY2UgZnJhbWUuICovCj4g
-ICAJdW5zaWduZWQgc2hvcnQgd2lkdGg7Cj4gICAJdW5zaWduZWQgc2hvcnQgaGVpZ2h0Owo+ICsJ
-c2l6ZV90IGNocm9tYV9vZmZzZXQ7Cj4gKwlzaXplX3QgbXZfb2Zmc2V0Owo+ICAgCXUzMiBiaXRf
-ZGVwdGggOiA0Owo+ICAgfTsKPiAgIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRm
-b3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRm
-b3JtL3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPiBpbmRleCA2ZmM0YjU1NTUxN2Yu
-LjZkYjFjMzJmY2U0ZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3Zlcmlz
-aWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L3ZlcmlzaWxpY29uL2hhbnRyb19nMl92cDlfZGVjLmMKPiBAQCAtMTU4LDkgKzE1OCwxMSBAQCBz
-dGF0aWMgdm9pZCBjb25maWdfb3V0cHV0KHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4gICAKPiAg
-IAljaHJvbWFfYWRkciA9IGx1bWFfYWRkciArIGNocm9tYV9vZmZzZXQoY3R4LCBkZWNfcGFyYW1z
-KTsKPiAgIAloYW50cm9fd3JpdGVfYWRkcihjdHgtPmRldiwgRzJfT1VUX0NIUk9NQV9BRERSLCBj
-aHJvbWFfYWRkcik7Cj4gKwlkc3QtPnZwOS5jaHJvbWFfb2Zmc2V0ID0gY2hyb21hX29mZnNldChj
-dHgsIGRlY19wYXJhbXMpOwo+ICAgCj4gICAJbXZfYWRkciA9IGx1bWFfYWRkciArIG12X29mZnNl
-dChjdHgsIGRlY19wYXJhbXMpOwo+ICAgCWhhbnRyb193cml0ZV9hZGRyKGN0eC0+ZGV2LCBHMl9P
-VVRfTVZfQUREUiwgbXZfYWRkcik7Cj4gKwlkc3QtPnZwOS5tdl9vZmZzZXQgPSBtdl9vZmZzZXQo
-Y3R4LCBkZWNfcGFyYW1zKTsKPiAgIH0KPiAgIAo+ICAgc3RydWN0IGhhbnRyb192cDlfcmVmX3Jl
-ZyB7Cj4gQEAgLTE5NSw3ICsxOTcsNyBAQCBzdGF0aWMgdm9pZCBjb25maWdfcmVmKHN0cnVjdCBo
-YW50cm9fY3R4ICpjdHgsCj4gICAJbHVtYV9hZGRyID0gaGFudHJvX2dldF9kZWNfYnVmX2FkZHIo
-Y3R4LCAmYnVmLT5iYXNlLnZiLnZiMl9idWYpOwo+ICAgCWhhbnRyb193cml0ZV9hZGRyKGN0eC0+
-ZGV2LCByZWZfcmVnLT55X2Jhc2UsIGx1bWFfYWRkcik7Cj4gICAKPiAtCWNocm9tYV9hZGRyID0g
-bHVtYV9hZGRyICsgY2hyb21hX29mZnNldChjdHgsIGRlY19wYXJhbXMpOwo+ICsJY2hyb21hX2Fk
-ZHIgPSBsdW1hX2FkZHIgKyBidWYtPnZwOS5jaHJvbWFfb2Zmc2V0Owo+ICAgCWhhbnRyb193cml0
-ZV9hZGRyKGN0eC0+ZGV2LCByZWZfcmVnLT5jX2Jhc2UsIGNocm9tYV9hZGRyKTsKPiAgIH0KPiAg
-IAo+IEBAIC0yMzgsNyArMjQwLDcgQEAgc3RhdGljIHZvaWQgY29uZmlnX3JlZl9yZWdpc3RlcnMo
-c3RydWN0IGhhbnRyb19jdHggKmN0eCwKPiAgIAljb25maWdfcmVmKGN0eCwgZHN0LCAmcmVmX3Jl
-Z3NbMl0sIGRlY19wYXJhbXMsIGRlY19wYXJhbXMtPmFsdF9mcmFtZV90cyk7Cj4gICAKPiAgIAlt
-dl9hZGRyID0gaGFudHJvX2dldF9kZWNfYnVmX2FkZHIoY3R4LCAmbXZfcmVmLT5iYXNlLnZiLnZi
-Ml9idWYpICsKPiAtCQkgIG12X29mZnNldChjdHgsIGRlY19wYXJhbXMpOwo+ICsJCSAgbXZfcmVm
-LT52cDkubXZfb2Zmc2V0Owo+ICAgCWhhbnRyb193cml0ZV9hZGRyKGN0eC0+ZGV2LCBHMl9SRUZf
-TVZfQUREUigwKSwgbXZfYWRkcik7Cj4gICAKPiAgIAloYW50cm9fcmVnX3dyaXRlKGN0eC0+ZGV2
-LCAmdnA5X2xhc3Rfc2lnbl9iaWFzLAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============0245131941378278947==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="7c+nUYvD/peQ8Q55"
+Content-Disposition: inline
+
+
+--7c+nUYvD/peQ8Q55
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Andrej,
+
+On Thu 09 Nov 23, 12:27, Andrzej Pietrasiewicz wrote:
+> Hi Paul,
+>=20
+> W dniu 31.10.2023 o=C2=A017:30, Benjamin Gaignard pisze:
+> > Use vb2_get_num_buffers() to avoid using queue num_buffers field direct=
+ly.
+> > This allows us to change how the number of buffers is computed in the
+> > future.
+> >=20
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > Acked-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+>=20
+> Given you've alaredy A-b, would you be ok with adding this sentence:
+>=20
+> "While at it, check the return value of vb2_get_buffer()."
+>=20
+> to the commit message body?
+
+Not only do I agree, but because this is done in a function returning void,
+you could even:
+
+if (WARN_ON(!vb))
+	continue;
+
+so that it doesn't go completely unnoticed.
+
+What do you think?
+
+Cheers,
+
+Paul
+
+> @Benjamin:
+>=20
+> With this change, you can add my
+>=20
+> Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+>=20
+> > CC: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >   drivers/staging/media/sunxi/cedrus/cedrus_h264.c | 9 +++++++--
+> >   drivers/staging/media/sunxi/cedrus/cedrus_h265.c | 9 +++++++--
+> >   2 files changed, 14 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c b/drivers=
+/staging/media/sunxi/cedrus/cedrus_h264.c
+> > index dfb401df138a..3e2843ef6cce 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h264.c
+> > @@ -653,8 +653,13 @@ static void cedrus_h264_stop(struct cedrus_ctx *ct=
+x)
+> >   	vq =3D v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> > -	for (i =3D 0; i < vq->num_buffers; i++) {
+> > -		buf =3D vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+> > +	for (i =3D 0; i < vb2_get_num_buffers(vq); i++) {
+> > +		struct vb2_buffer *vb =3D vb2_get_buffer(vq, i);
+> > +
+> > +		if (!vb)
+> > +			continue;
+> > +
+> > +		buf =3D vb2_to_cedrus_buffer(vb);
+> >   		if (buf->codec.h264.mv_col_buf_size > 0) {
+> >   			dma_free_attrs(dev->dev,
+> > diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers=
+/staging/media/sunxi/cedrus/cedrus_h265.c
+> > index fc9297232456..52e94c8f2f01 100644
+> > --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> > @@ -869,8 +869,13 @@ static void cedrus_h265_stop(struct cedrus_ctx *ct=
+x)
+> >   	vq =3D v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> > -	for (i =3D 0; i < vq->num_buffers; i++) {
+> > -		buf =3D vb2_to_cedrus_buffer(vb2_get_buffer(vq, i));
+> > +	for (i =3D 0; i < vb2_get_num_buffers(vq); i++) {
+> > +		struct vb2_buffer *vb =3D vb2_get_buffer(vq, i);
+> > +
+> > +		if (!vb)
+> > +			continue;
+> > +
+> > +		buf =3D vb2_to_cedrus_buffer(vb);
+> >   		if (buf->codec.h265.mv_col_buf_size > 0) {
+> >   			dma_free_attrs(dev->dev,
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--7c+nUYvD/peQ8Q55
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmVM6UkACgkQ3cLmz3+f
+v9G8eQf/fxDOw/McA6p0ag9INEakes8Ua0qEao7YS/kLZ/JwI5ygYQwNQ+/Ic/Xc
+pCbIbSa/Q1tRq5/L2rQfypMR1SX0tCBbZIpRQV+TRGxHi9/0+aGTpS4WAncwQ97T
+E4u21UW6o0+jl3blbrMPF01cFDFaIEacz3QBCb7gL7ibnhSWqHd6PHXj/9j5NLLa
+IzI2YNE0M6rykJFqCJrCqHdHr9S32FTuysaLqTiDT5b8V7hp/tEHfjsroUZ8TeNM
+8wF24X8gdH1MjL0qMcjJsTHuqcgpeO7q689zgpRBJEjr4VdxKrYIamMYQPTxftJ3
+dVOth8P5P0jxAJdjz8aiMiI7aYoNcw==
+=ZLrQ
+-----END PGP SIGNATURE-----
+
+--7c+nUYvD/peQ8Q55--
+
+
+--===============0245131941378278947==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0245131941378278947==--
+
