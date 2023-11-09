@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5720EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 09:30:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F04C4167D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 09:31:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aGW7BiL5xtAGuNRBXNfjIb9YwEwxAfaBT+NRE5hPVQI=; b=OVFKOQpUOlAcUd
-	xHFiTb5DjzcwG6m3xWEL0J+oEtkfj123Qrmkmgc4Na5rPX0W7JwFj/qTbDnvutIaTDd4IiZc0N9nM
-	4SPgEzTfUq5SzyarM4M5alYlo0ufOk7ktN4V3GswRKxT9t20EYDyipkf3VgwugzsBoJn04Av+Sriz
-	PKR3pWGM15ziaR7DdC+eOE8xHirMPIBbnFpVyG5pzQ0kjJlek9eln+M67/ZKvqnCpw+PDtIDbpWpn
-	whw7glK7WIykb3i/u39orAwzKOlt5D8nxs+K6GogXdtyQuO2ys6Dj63v9MNPVZ5gtKeocjgDUpAK0
-	Rq70fUGMwaPhcdZfmKcg==;
+	List-Owner; bh=mDavBIMnOL4n4yR1rObhzwe/eP3n05tGSmEnhXREm30=; b=uuHlQ+Jvrc+Q12
+	o1oaHl2R/TDr5Zyb+K7+Y+QAVTZhUOT4DTsQaFkGVjL1GErv3EZm01XGsNpgFE+tg454hzwA36bXq
+	Qq6uEh4IQ+ZHyMrD4/jbCKok+28AbGWOzhaR6+jet3rgmimwnR15/OdVJBoyhbqv2Iu9JaX4uU+NF
+	sMjwudfHq59n7u6CMaG++F8L0Sa51ujcdbMWG5ARMVETpPwjYABQUPTy8PTb6KkPmjfEqHSbuXQZs
+	HgR2t3Ja2YtKRGWNH5cBUv0qgeH5lfwllR+nHdLSiJf08wAVdGgXtUHr2rdvnOy2HojJ6y0s+OqRA
+	nSht6cjUMshBYx6063rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11MX-005mkS-13;
-	Thu, 09 Nov 2023 09:30:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r11NN-005mtq-0x;
+	Thu, 09 Nov 2023 09:31:01 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r11MT-005miy-2Z;
-	Thu, 09 Nov 2023 09:30:07 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D57B6607410;
-	Thu,  9 Nov 2023 09:30:01 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699522203;
-	bh=9DyG7QadW/ZB77/AoaK7eHY4Fj3oy5z9XOUorXxwg9M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=S4rtDO/y59Vlxzgq+9apsVQ+c0wLEonjrqKtts9FP/zBEeFqFUQ3t/yUeGkMA1NBl
-	 mMGxINOPTbW55hhfHMMdk04M7yfVHd8dBtvbF+ExamdW7pYgsqohm+OyICXc7e1qRN
-	 F75S7r/aXl7CECgk2bH2+sOPnQ+ik3eZdmKzxTAQtoYr7ZV81MSVYPfPunWB4jBEvS
-	 MyNgISo6khl5tK1iS4f4Q4sIQqynZJKFH0YTq2CZTmlU1jyrfI6EvzHgcAqeinL8kI
-	 xjxbqc3pGRoLPg3AhuajlyvcQmTmhO2CZjKcc+koKP1JXPV9v8OYqOPHAHgZ2ZSvDc
-	 bKujPujjg4Gjw==
-Message-ID: <1d9c20f8-9735-4957-b718-7e0835ba7096@collabora.com>
-Date: Thu, 9 Nov 2023 10:29:59 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 14/56] media: sti: hva: Use vb2_get_buffer() instead
- of directly access to buffers array
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com,
- Jean-Christophe Trotin <jean-christophe.trotin@foss.st.com>
+	id 1r11NG-005mqD-0X
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Nov 2023 09:30:59 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1cc921a4632so5904955ad.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Nov 2023 01:30:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1699522250; x=1700127050; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=X0ChVvWw7IWl2QHAJ8/kWj/M+1YtTBjChud7Yov1RwQ=;
+        b=ClHiNzaxhQjlyErTAsH2kn4FI9CDjltazC0tYpJBHj+H6yQQxVYZnDUGJJj2JOr5Sr
+         S6y1G9y1hkPQf5hpOAJutYv17GsnLr6pv3WLFVXKr30OxlFf3M3IYwineUqWYAiUmPpY
+         CIrc+G7DkYDtISZyEE3mYZoWe9Q2MvEdUjhFY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699522250; x=1700127050;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=X0ChVvWw7IWl2QHAJ8/kWj/M+1YtTBjChud7Yov1RwQ=;
+        b=lgmuf+qDd3LueBzKgO4JCsAqZ+e69Sac094zA77ygwn8HbhGhL0FdKBSADdH1Y3iRA
+         xN78/bpzB3vVqcjuiiFGFomQoC5YUX+FxZxGVx0lm5kq2npft2HiN5t55ao7Ac5KpoDF
+         vDiHqTvX7CI4ru/q2svKnrW8HhvSW5WXhBB29pl86yVKdN65mEqg28dFz4I2du4Hto+e
+         3Nc8vrvGlvD7IGuoKtxfD+3gNwA6JteJ+ThzWY5oGAGCl0L9wdkRQRun5jx88hipS7uM
+         L+STIw9lnOkjcq7IRJseIipRGbNLhm8hCvGUlI4m/LNV4/SOfDxNhe0/cIQpGY57o81W
+         mFpw==
+X-Gm-Message-State: AOJu0YwDPkt+mBzK5b/Ci8RCoqLQTL/3HvR1ZtMepk2A0edGRA9SiXHg
+	ljbAJWKaZRTyobT6nDotl8J4RQ==
+X-Google-Smtp-Source: AGHT+IGWQY2sIhw18QEX3xoSSCNJF2rSR5CC7g8qqtm5QjFGJpynb/odSeZGbwZGKTed7d5ipP7HEA==
+X-Received: by 2002:a17:902:f807:b0:1c9:b2c1:139c with SMTP id ix7-20020a170902f80700b001c9b2c1139cmr4122596plb.62.1699522250184;
+        Thu, 09 Nov 2023 01:30:50 -0800 (PST)
+Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id z18-20020a170903019200b001bbc8d65de0sm3078507plg.67.2023.11.09.01.30.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Nov 2023 01:30:49 -0800 (PST)
+Date: Thu, 9 Nov 2023 09:30:45 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v14 54/56] media: v4l2: Add DELETE_BUFS ioctl
+Message-ID: <20231109093045.ucitckitlgjj3kyw@chromium.org>
 References: <20231031163104.112469-1-benjamin.gaignard@collabora.com>
- <20231031163104.112469-15-benjamin.gaignard@collabora.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <20231031163104.112469-15-benjamin.gaignard@collabora.com>
+ <20231031163104.112469-55-benjamin.gaignard@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231031163104.112469-55-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_013005_989847_78D37CE5 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20231109_013054_216004_9BC9F52D 
+X-CRM114-Status: GOOD (  41.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +90,441 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmVuamFtaW4sCgpXIGRuaXUgMzEuMTAuMjAyMyBvwqAxNzozMCwgQmVuamFtaW4gR2FpZ25h
-cmQgcGlzemU6Cj4gVXNlIHZiMl9nZXRfYnVmZmVyKCkgaW5zdGVhZCBvZiBkaXJlY3QgYWNjZXNz
-IHRvIHRoZSB2YjJfcXVldWUgYnVmcyBhcnJheS4KPiBUaGlzIGFsbG93cyB1cyB0byBjaGFuZ2Ug
-dGhlIHR5cGUgb2YgdGhlIGJ1ZnMgaW4gdGhlIGZ1dHVyZS4KPiBBZnRlciBlYWNoIGNhbGwgdG8g
-dmIyX2dldF9idWZmZXIoKSB3ZSBuZWVkIHRvIGJlIHN1cmUgdGhhdCB3ZSBnZXQKPiBhIHZhbGlk
-IHBvaW50ZXIgc28gY2hlY2sgdGhlIHJldHVybiB2YWx1ZSBvZiBhbGwgb2YgdGhlbS4KPiBSZW1v
-dmUgaW5kZXggcmFuZ2UgdGVzdCBzaW5jZSBpdCBpcyBkb25lIGJ5IHZiMl9nZXRfYnVmZmVyKCku
-CgpBY3R1YWxseSwgdGhlIHBhdGNoIHVzZXMgdmIyX2dldF9idWZmZXIoKSBpbnN0ZWFkIG9mIHVz
-aW5nIHZiMl9nZXRfYnVmZmVyKCkuCklPVyB2YjJfZ2V0X2J1ZmZlcigpIGNvbnRpbnVlcyB0byBi
-ZSB1c2VkIGJlZm9yZSBhbmQgYWZ0ZXIgdGhpcyBwYXRjaCBpcyBhcHBsaWVkLgoKSSdkIHJhdGhl
-ciByZWZvcm11bGF0ZSB0aGUgY29tbWl0IG1lc3NhZ2UgYm9keSB0byBzYXkgdGhhdCB3ZSByZW1v
-dmUKaW5kZXggY2hlY2sgYmVjYXVzZSBpdCBpcyBhbHJlYWR5IHBlcmZvcm1lZCBieSB2YjJfZ2V0
-X2J1ZmZlcigpLCBidXQKaW50cm9kdWNlIGEgY2hlY2sgZm9yIGEgTlVMTCByZXN1bHQuCgpSZWdh
-cmRzLAoKQW5kcnplagoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVu
-amFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPiBDQzogSmVhbi1DaHJpc3RvcGhlIFRyb3Rp
-biA8amVhbi1jaHJpc3RvcGhlLnRyb3RpbkBmb3NzLnN0LmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vc3Qvc3RpL2h2YS9odmEtdjRsMi5jIHwgOSArKystLS0tLS0KPiAgIDEg
-ZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3Qvc3RpL2h2YS9odmEtdjRsMi5jIGIvZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS9zdC9zdGkvaHZhL2h2YS12NGwyLmMKPiBpbmRleCAzYTg0OGNh
-MzJhMGUuLmNmZTgzZTlkYzAxYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L3N0L3N0aS9odmEvaHZhLXY0bDIuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3Qv
-c3RpL2h2YS9odmEtdjRsMi5jCj4gQEAgLTU2OSwxNCArNTY5LDExIEBAIHN0YXRpYyBpbnQgaHZh
-X3FidWYoc3RydWN0IGZpbGUgKmZpbGUsIHZvaWQgKnByaXYsIHN0cnVjdCB2NGwyX2J1ZmZlciAq
-YnVmKQo+ICAgCQlzdHJ1Y3QgdmIyX2J1ZmZlciAqdmIyX2J1ZjsKPiAgIAo+ICAgCQl2cSA9IHY0
-bDJfbTJtX2dldF92cShjdHgtPmZoLm0ybV9jdHgsIGJ1Zi0+dHlwZSk7Cj4gLQo+IC0JCWlmIChi
-dWYtPmluZGV4ID49IHZxLT5udW1fYnVmZmVycykgewo+IC0JCQlkZXZfZGJnKGRldiwgIiVzIGJ1
-ZmZlciBpbmRleCAlZCBvdXQgb2YgcmFuZ2UgKCVkKVxuIiwKPiAtCQkJCWN0eC0+bmFtZSwgYnVm
-LT5pbmRleCwgdnEtPm51bV9idWZmZXJzKTsKPiArCQl2YjJfYnVmID0gdmIyX2dldF9idWZmZXIo
-dnEsIGJ1Zi0+aW5kZXgpOwo+ICsJCWlmICghdmIyX2J1Zikgewo+ICsJCQlkZXZfZGJnKGRldiwg
-IiVzIGJ1ZmZlciBpbmRleCAlZCBub3QgZm91bmRcbiIsIGN0eC0+bmFtZSwgYnVmLT5pbmRleCk7
-Cj4gICAJCQlyZXR1cm4gLUVJTlZBTDsKPiAgIAkJfQo+IC0KPiAtCQl2YjJfYnVmID0gdmIyX2dl
-dF9idWZmZXIodnEsIGJ1Zi0+aW5kZXgpOwo+ICAgCQlzdHJlYW0gPSB0b19odmFfc3RyZWFtKHRv
-X3ZiMl92NGwyX2J1ZmZlcih2YjJfYnVmKSk7Cj4gICAJCXN0cmVhbS0+Ynl0ZXN1c2VkID0gYnVm
-LT5ieXRlc3VzZWQ7Cj4gICAJfQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Oct 31, 2023 at 05:31:02PM +0100, Benjamin Gaignard wrote:
+> VIDIOC_DELETE_BUFS ioctl allows to delete buffers from a queue.
+> The number of buffers to delete in given by count field of
+> struct v4l2_delete_buffers and the range start at the index
+> specified in the same structure.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../userspace-api/media/v4l/user-func.rst     |  1 +
+>  .../media/v4l/vidioc-delete-bufs.rst          | 80 +++++++++++++++++++
+>  .../media/v4l/vidioc-reqbufs.rst              |  1 +
+>  .../media/common/videobuf2/videobuf2-core.c   | 30 +++++++
+>  .../media/common/videobuf2/videobuf2-v4l2.c   | 20 +++++
+>  drivers/media/v4l2-core/v4l2-dev.c            |  1 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          | 17 ++++
+>  include/media/v4l2-ioctl.h                    |  4 +
+>  include/media/videobuf2-core.h                | 12 +++
+>  include/media/videobuf2-v4l2.h                | 13 +++
+>  include/uapi/linux/videodev2.h                | 17 ++++
+>  11 files changed, 196 insertions(+)
+>  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/user-func.rst b/Documentation/userspace-api/media/v4l/user-func.rst
+> index 15ff0bf7bbe6..3fd567695477 100644
+> --- a/Documentation/userspace-api/media/v4l/user-func.rst
+> +++ b/Documentation/userspace-api/media/v4l/user-func.rst
+> @@ -17,6 +17,7 @@ Function Reference
+>      vidioc-dbg-g-chip-info
+>      vidioc-dbg-g-register
+>      vidioc-decoder-cmd
+> +    vidioc-delete-bufs
+>      vidioc-dqevent
+>      vidioc-dv-timings-cap
+>      vidioc-encoder-cmd
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+> new file mode 100644
+> index 000000000000..4791df1395d6
+> --- /dev/null
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
+> @@ -0,0 +1,80 @@
+> +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
+> +.. c:namespace:: V4L
+> +
+> +.. _VIDIOC_DELETE_BUFS:
+> +
+> +************************
+> +ioctl VIDIOC_DELETE_BUFS
+> +************************
+> +
+> +Name
+> +====
+> +
+> +VIDIOC_DELETE_BUFS - Deletes buffers from a queue
+> +Drivers using this feature must expose the ``V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS``
+> +capability on the queue :c:func:`VIDIOC_REQBUFS` or :c:func:`VIDIOC_CREATE_BUFS`
+> +are invoked.
+> +
+> +Synopsis
+> +========
+> +
+> +.. c:macro:: VIDIOC_DELETE_BUFs
+> +
+> +``int ioctl(int fd, VIDIOC_DELETE_BUFs, struct v4l2_delete_buffers *argp)``
+> +
+> +Arguments
+> +=========
+> +
+> +``fd``
+> +    File descriptor returned by :c:func:`open()`.
+> +
+> +``argp``
+> +    Pointer to struct :c:type:`v4l2_delete_buffers`.
+> +
+> +Description
+> +===========
+> +
+> +Applications can optionally call the :ref:`VIDIOC_DELETE_BUFS` ioctl to
+> +delete buffers from a queue.
+> +
+> +.. c:type:: v4l2_delete_buffers
+> +
+> +.. tabularcolumns:: |p{4.4cm}|p{4.4cm}|p{8.5cm}|
+> +
+> +.. flat-table:: struct v4l2_delete_buffers
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +    :widths:       1 1 2
+> +
+> +    * - __u32
+> +      - ``index``
+> +      - The starting buffer index to delete.
+> +    * - __u32
+> +      - ``count``
+> +      - The number of buffers to be deleted with indices 'index' until 'index + count - 1'.
+> +        All buffers in this range must be valid and in DEQUEUED state.
+
+I wonder if this wouldn't be an inconvenience for the userspace. Would
+there be anything wrong with allowing ranges with holes?
+(Agreed about the DEQUEUED part of course.)
+
+> +        In error case errno is set to ``EINVAL`` error code and index returns the index of
+> +        the invalid buffer.
+> +        If count and index are set to 0 :ref:`VIDIOC_DELETE_BUFS` will return 0.
+
+Hmm, do we care about index if count is zero?
+
+> +    * - __u32
+> +      - ``type``
+> +      - Type of the stream or buffers, this is the same as the struct
+> +	:c:type:`v4l2_format` ``type`` field. See
+> +	:c:type:`v4l2_buf_type` for valid values.
+> +    * - __u32
+> +      - ``reserved``\ [13]
+> +      - A place holder for future extensions. Drivers and applications
+> +	must set the array to zero.
+> +
+> +Return Value
+> +============
+> +
+> +On success 0 is returned, on error -1 and the ``errno`` variable is set
+> +appropriately. The generic error codes are described at the
+> +:ref:`Generic Error Codes <gen-errors>` chapter.
+> +
+> +EBUSY
+> +    File I/O is in progress.
+> +
+> +EINVAL
+> +    The buffer ``index`` doesn't exist in the queue.
+> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> index 0b3a41a45d05..14d4a49c2945 100644
+> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+> @@ -121,6 +121,7 @@ aborting or finishing any DMA in progress, an implicit
+>  .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
+>  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+>  .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
+> +.. _V4L2-BUF-CAP-SUPPORTS-DELETE-BUFS:
+>  
+>  .. raw:: latex
+>  
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index 010a8bca0240..7068930a0ba6 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -1665,6 +1665,36 @@ int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
+>  
+> +int vb2_core_delete_bufs(struct vb2_queue *q, unsigned int start, unsigned int count)
+> +{
+> +	unsigned int i, ret = 0;
+> +
+> +	if (start == 0 && count == 0)
+
+I guess related to the earlier comment, but why do we care about start
+being zero?
+
+> +		return 0;
+> +
+> +	mutex_lock(&q->mmap_lock);
+> +
+> +	for (i = start; i < start + count && i < q->max_num_buffers; i++) {
+> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+> +
+> +		if (!vb) {
+> +			ret = -EINVAL;
+> +			goto unlock;
+> +		}
+> +		if (vb->state != VB2_BUF_STATE_DEQUEUED) {
+> +			ret = -EINVAL;
+> +			goto unlock;
+> +		}
+> +	}
+> +	__vb2_queue_free(q, start, count);
+> +	dprintk(q, 2, "buffers deleted\n");
+> +
+> +unlock:
+> +	mutex_unlock(&q->mmap_lock);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(vb2_core_delete_bufs);
+> +
+>  /*
+>   * vb2_start_streaming() - Attempt to start streaming.
+>   * @q:		videobuf2 queue
+> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> index 56daf3b5b2ba..f003618efbc1 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+> @@ -694,6 +694,8 @@ static void fill_buf_caps(struct vb2_queue *q, u32 *caps)
+>  	if (q->supports_requests)
+>  		*caps |= V4L2_BUF_CAP_SUPPORTS_REQUESTS;
+>  #endif
+> +	if (q->supports_delete_bufs)
+> +		*caps |= V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS;
+>  }
+>  
+>  static void validate_memory_flags(struct vb2_queue *q,
+> @@ -751,6 +753,12 @@ int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  }
+>  EXPORT_SYMBOL_GPL(vb2_prepare_buf);
+>  
+> +int vb2_delete_bufs(struct vb2_queue *q, struct v4l2_delete_buffers *d)
+> +{
+> +	return vb2_core_delete_bufs(q, d->index, d->count);
+> +}
+> +EXPORT_SYMBOL_GPL(vb2_delete_bufs);
+> +
+>  int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+>  {
+>  	unsigned requested_planes = 1;
+> @@ -1012,6 +1020,18 @@ EXPORT_SYMBOL_GPL(vb2_poll);
+>  
+>  /* vb2 ioctl helpers */
+>  
+> +int vb2_ioctl_delete_bufs(struct file *file, void *priv,
+> +			  struct v4l2_delete_buffers *p)
+> +{
+> +	struct video_device *vdev = video_devdata(file);
+> +
+> +	if (vb2_queue_is_busy(vdev->queue, file))
+> +		return -EBUSY;
+> +
+> +	return vb2_delete_bufs(vdev->queue, p);
+> +}
+> +EXPORT_SYMBOL_GPL(vb2_ioctl_delete_bufs);
+> +
+>  int vb2_ioctl_reqbufs(struct file *file, void *priv,
+>  			  struct v4l2_requestbuffers *p)
+>  {
+> diff --git a/drivers/media/v4l2-core/v4l2-dev.c b/drivers/media/v4l2-core/v4l2-dev.c
+> index f81279492682..215654fd6581 100644
+> --- a/drivers/media/v4l2-core/v4l2-dev.c
+> +++ b/drivers/media/v4l2-core/v4l2-dev.c
+> @@ -720,6 +720,7 @@ static void determine_valid_ioctls(struct video_device *vdev)
+>  		SET_VALID_IOCTL(ops, VIDIOC_PREPARE_BUF, vidioc_prepare_buf);
+>  		SET_VALID_IOCTL(ops, VIDIOC_STREAMON, vidioc_streamon);
+>  		SET_VALID_IOCTL(ops, VIDIOC_STREAMOFF, vidioc_streamoff);
+> +		SET_VALID_IOCTL(ops, VIDIOC_DELETE_BUFS, vidioc_delete_bufs);
+>  	}
+>  
+>  	if (is_vid || is_vbi || is_meta) {
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index 4d90424cbfc4..e9dcf439f9f3 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -489,6 +489,13 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
+>  	v4l_print_format(&p->format, write_only);
+>  }
+>  
+> +static void v4l_print_delete_buffers(const void *arg, bool write_only)
+> +{
+> +	const struct v4l2_delete_buffers *p = arg;
+> +
+> +	pr_cont("index=%u, count=%u\n", p->index, p->count);
+> +}
+> +
+>  static void v4l_print_streamparm(const void *arg, bool write_only)
+>  {
+>  	const struct v4l2_streamparm *p = arg;
+> @@ -2161,6 +2168,15 @@ static int v4l_prepare_buf(const struct v4l2_ioctl_ops *ops,
+>  	return ret ? ret : ops->vidioc_prepare_buf(file, fh, b);
+>  }
+>  
+> +static int v4l_delete_bufs(const struct v4l2_ioctl_ops *ops,
+> +			   struct file *file, void *fh, void *arg)
+> +{
+> +	struct v4l2_delete_buffers *delete = arg;
+> +	int ret = check_fmt(file, delete->type);
+
+Should we also have
+
+	memset_after(delete, 0, type);
+
+here similar to how other ioctl handlers clear the reserved fields?
+
+> +
+> +	return ret ? ret : ops->vidioc_delete_bufs(file, fh, delete);
+> +}
+> +
+>  static int v4l_g_parm(const struct v4l2_ioctl_ops *ops,
+>  				struct file *file, void *fh, void *arg)
+>  {
+> @@ -2910,6 +2926,7 @@ static const struct v4l2_ioctl_info v4l2_ioctls[] = {
+>  	IOCTL_INFO(VIDIOC_ENUM_FREQ_BANDS, v4l_enum_freq_bands, v4l_print_freq_band, 0),
+>  	IOCTL_INFO(VIDIOC_DBG_G_CHIP_INFO, v4l_dbg_g_chip_info, v4l_print_dbg_chip_info, INFO_FL_CLEAR(v4l2_dbg_chip_info, match)),
+>  	IOCTL_INFO(VIDIOC_QUERY_EXT_CTRL, v4l_query_ext_ctrl, v4l_print_query_ext_ctrl, INFO_FL_CTRL | INFO_FL_CLEAR(v4l2_query_ext_ctrl, id)),
+> +	IOCTL_INFO(VIDIOC_DELETE_BUFS, v4l_delete_bufs, v4l_print_delete_buffers, INFO_FL_PRIO | INFO_FL_QUEUE | INFO_FL_CLEAR(v4l2_delete_buffers, type)),
+>  };
+>  #define V4L2_IOCTLS ARRAY_SIZE(v4l2_ioctls)
+>  
+> diff --git a/include/media/v4l2-ioctl.h b/include/media/v4l2-ioctl.h
+> index edb733f21604..55afbde54211 100644
+> --- a/include/media/v4l2-ioctl.h
+> +++ b/include/media/v4l2-ioctl.h
+> @@ -163,6 +163,8 @@ struct v4l2_fh;
+>   *	:ref:`VIDIOC_CREATE_BUFS <vidioc_create_bufs>` ioctl
+>   * @vidioc_prepare_buf: pointer to the function that implements
+>   *	:ref:`VIDIOC_PREPARE_BUF <vidioc_prepare_buf>` ioctl
+> + * @vidioc_delete_bufs: pointer to the function that implements
+> + *	:ref:`VIDIOC_DELETE_BUFS <vidioc_delete_bufs>` ioctl
+>   * @vidioc_overlay: pointer to the function that implements
+>   *	:ref:`VIDIOC_OVERLAY <vidioc_overlay>` ioctl
+>   * @vidioc_g_fbuf: pointer to the function that implements
+> @@ -422,6 +424,8 @@ struct v4l2_ioctl_ops {
+>  				  struct v4l2_create_buffers *b);
+>  	int (*vidioc_prepare_buf)(struct file *file, void *fh,
+>  				  struct v4l2_buffer *b);
+> +	int (*vidioc_delete_bufs)(struct file *file, void *fh,
+> +				  struct v4l2_delete_buffers *d);
+>  
+>  	int (*vidioc_overlay)(struct file *file, void *fh, unsigned int i);
+>  	int (*vidioc_g_fbuf)(struct file *file, void *fh,
+> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+> index 288477075a0e..db3bd986624e 100644
+> --- a/include/media/videobuf2-core.h
+> +++ b/include/media/videobuf2-core.h
+> @@ -507,6 +507,7 @@ struct vb2_buf_ops {
+>   * @supports_requests: this queue supports the Request API.
+>   * @requires_requests: this queue requires the Request API. If this is set to 1,
+>   *		then supports_requests must be set to 1 as well.
+> + * @supports_delete_bufs: this queue supports DELETE_BUFS ioctl.
+>   * @uses_qbuf:	qbuf was used directly for this queue. Set to 1 the first
+>   *		time this is called. Set to 0 when the queue is canceled.
+>   *		If this is 1, then you cannot queue buffers from a request.
+> @@ -595,6 +596,7 @@ struct vb2_queue {
+>  	unsigned int		   quirk_poll_must_check_waiting_for_buffers:1;
+>  	unsigned int			supports_requests:1;
+>  	unsigned int			requires_requests:1;
+> +	unsigned int			supports_delete_bufs:1;
+>  	unsigned int			uses_qbuf:1;
+>  	unsigned int			uses_requests:1;
+>  	unsigned int			allow_cache_hints:1;
+> @@ -846,6 +848,16 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>   */
+>  int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>  
+> +/**
+> + * vb2_core_delete_bufs() -
+> + * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> + * @start:	first index of the range of buffers to delete.
+> + * @count:	number of buffers to delete.
+> + *
+> + *  Return: returns zero on success; an error code otherwise.
+> + */
+> +int vb2_core_delete_bufs(struct vb2_queue *q, unsigned int start, unsigned int count);
+> +
+>  /**
+>   * vb2_core_qbuf() - Queue a buffer from userspace
+>   *
+> diff --git a/include/media/videobuf2-v4l2.h b/include/media/videobuf2-v4l2.h
+> index 5a845887850b..79cea8459f52 100644
+> --- a/include/media/videobuf2-v4l2.h
+> +++ b/include/media/videobuf2-v4l2.h
+> @@ -118,6 +118,17 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create);
+>   */
+>  int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
+>  		    struct v4l2_buffer *b);
+> +/**
+> + * vb2_delete_bufs() - Delete buffers from the queue
+> + *
+> + * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+> + * @d:		delete parameter, passed from userspace to
+> + *		&v4l2_ioctl_ops->vidioc_delete_bufs handler in driver
+> + *
+> + * The return values from this function are intended to be directly returned
+> + * from &v4l2_ioctl_ops->vidioc_delete_bufs handler in driver.
+> + */
+> +int vb2_delete_bufs(struct vb2_queue *q, struct v4l2_delete_buffers *d);
+>  
+>  /**
+>   * vb2_qbuf() - Queue a buffer from userspace
+> @@ -334,6 +345,8 @@ int vb2_ioctl_streamon(struct file *file, void *priv, enum v4l2_buf_type i);
+>  int vb2_ioctl_streamoff(struct file *file, void *priv, enum v4l2_buf_type i);
+>  int vb2_ioctl_expbuf(struct file *file, void *priv,
+>  	struct v4l2_exportbuffer *p);
+> +int vb2_ioctl_delete_bufs(struct file *file, void *priv,
+> +			  struct v4l2_delete_buffers *p);
+>  
+>  /* struct v4l2_file_operations helpers */
+>  
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 13ddb5abf584..96e105149906 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -1036,6 +1036,7 @@ struct v4l2_requestbuffers {
+>  #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+>  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+>  #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+> +#define V4L2_BUF_CAP_SUPPORTS_DELETE_BUFS		(1 << 8)
+>  
+>  /**
+>   * struct v4l2_plane - plane info for multi-planar buffers
+> @@ -2622,6 +2623,20 @@ struct v4l2_create_buffers {
+>  	__u32			reserved[5];
+>  };
+>  
+> +/**
+> + * struct v4l2_delete_buffers - VIDIOC_DELETE_BUFS argument
+> + * @index:	the first buffer to be deleted
+> + * @count:	number of buffers to delete
+> + * @type:	enum v4l2_buf_type
+> + * @reserved:	future extensions
+> + */
+> +struct v4l2_delete_buffers {
+> +	__u32			index;
+> +	__u32			count;
+> +	__u32			type;
+> +	__u32			reserved[13];
+> +};
+> +
+>  /*
+>   *	I O C T L   C O D E S   F O R   V I D E O   D E V I C E S
+>   *
+> @@ -2721,6 +2736,8 @@ struct v4l2_create_buffers {
+>  #define VIDIOC_DBG_G_CHIP_INFO  _IOWR('V', 102, struct v4l2_dbg_chip_info)
+>  
+>  #define VIDIOC_QUERY_EXT_CTRL	_IOWR('V', 103, struct v4l2_query_ext_ctrl)
+> +#define VIDIOC_DELETE_BUFS	_IOWR('V', 104, struct v4l2_delete_buffers)
+> +
+>  
+>  /* Reminder: when adding new ioctls please add support for them to
+>     drivers/media/v4l2-core/v4l2-compat-ioctl32.c as well! */
+
+Do we also need to add support for the new ioctl in there?
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
