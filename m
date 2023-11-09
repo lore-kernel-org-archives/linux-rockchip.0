@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F3BC001B2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17DFC4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+g6mFBjgZS8TwrfGg/RPVptrSmRJuS1mVhDaBhkLoi0=; b=cNXModm8QtxZY5
-	1cGNn40lounXIU3VbHg8jdhLNT814Hus9A1c+GApYIIDaFEIyMO8grYNNyO0p+b4Db+Rt9pYj3LDL
-	HLtnKIWklqqSPBk7HHqGpBnDr3brFASa+dhXUjUzdL5ndCBb4MTL/1nYrKIN5S5BSUAHUczHnW1U0
-	lRTOGm6tYpVZFEuht2762Uq11E4MyWk8FGAdavVElurTOCw3+NBJkdl8VTVOA0BRvZcqLzG4iU0E9
-	NAWiDrYI7TRxO8A00seVR+vs6vmYA8Oowa6CW7Jk7G1tp70/E0FM22A1CXEYiIbgXfZuRP97D0iAD
-	XQ2ix44xTRdib4ruTUag==;
+	List-Owner; bh=imDs07HZXQ5SS98Hh80bDl+pd9npX/SpVX0mMe9qwJU=; b=L6JEjEq2PgbU8q
+	zARatKP7WLPKMhLw4jgvkv5K8QBko7Ml3icEXvWuqfebDTaFVLPDf7qa/SQB69/kdslD0gF8y8P/L
+	6kce90BqgLQvyMv9wl+WylMxQ67joq+qSxAT3S74BNC1B90tb9wKahyvXnbZuEpjJ8HJy9IqQcaeF
+	y0ag7tpABryb5tYtoi8nxJR0U1PEu594m0lv6OvHpR/LCzpk18/iOaykoqOVx9rx3DU2dWsw8YpJz
+	qLi2Lao1jLBuR3VgSmxmvbpzaQyRFDawju1KkOUMgQ9xT7QktPf23W9Qxk68sWetdOdtGrHmfbaeP
+	TbkXPvpBJcpA7qTd4hcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r185h-006p28-2c;
-	Thu, 09 Nov 2023 16:41:13 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1r18Ja-006qpn-0r;
+	Thu, 09 Nov 2023 16:55:34 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r183P-006mEY-18;
-	Thu, 09 Nov 2023 16:38:57 +0000
-Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id F39A266076D1;
-	Thu,  9 Nov 2023 16:38:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547929;
-	bh=LkM/7EVzkzeCersLJmzLfirkGugiivs+DlFzZEGNCYQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PkTAScZs3rPNDo8MF3ixleICipRvMHCdLb54ZlLXQhfB2SNeWM0LhlwENVgaRGwTX
-	 TFv0U9Xyl2c8W77vYl8InMh5XlyD4qNlivyUxts3DD7q+k784FU1UBH0mPv/F4iCnI
-	 6hCchFfX8dxegpSYViYukBgV5ls7KL8KxRQ/4fXU+ix3j3g7TScfWVScEjrbrPbRez
-	 5ZXv9FWwLhFeLatf0VtIUXYFS7DmMA1sDGIvz9dhYDWEupFI9ClP4gZIwpHrOJZKKS
-	 ivHkAMgOr2K8WAW/ctA+D7yqJuOv9YrCkvwtoO2x+Tg4nvoCfouk2SP30oKlMVYkBR
-	 tDZspFl9yTstw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v15 55/56] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Thu,  9 Nov 2023 17:35:11 +0100
-Message-Id: <20231109163512.179524-56-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
-References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
+	id 1r18JX-006qoQ-1C
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Nov 2023 16:55:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1699548920;
+ bh=oiGpLQFfupX4dQTf/iHqDMCKO+1QmogvFTKLT/9VDbU=;
+ b=gxuByy2LJVUxrjyvbPXS1dDoZu/RcUyj2V9+6cq9e3mbjhYdk4fKJFsn5fO3t2CqVj7LE3y6R
+ QifTXKPrdGofdaCZun4RLXTqmTQWeIw10Kaie4ss3aFz6/jpWpTwlbUjpRsHn7a1oFQmsvA0cPM
+ ekuTI0U/wxY6POytiJBIG5SSUgyAcVmtJ4v9HDfl1hLAOrAsqq3df02ZymlB8UcD9yLGB5DxbQ+
+ LZLy0YHPUhylhiKDotRLHoVSRyuchYveLMhDvuAwV6tafzABOR13l/mnDjzanq0AOkgBPtC+WNv
+ yRXg8IyVmrSIgxngZGAWRSNbddJdSOzaHQ/oz3aFyOeg==
+Message-ID: <b4cc5a65-ccae-41c0-af9c-04001116938a@kwiboo.se>
+Date: Thu, 9 Nov 2023 17:55:14 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/9] media: rkvdec: Add HEVC backend
+Content-Language: en-US
+To: "=?UTF-8?Q?Heiko_St=C3=BCbner?=" <heiko@sntech.de>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ linux-rockchip@lists.infradead.org
+Cc: Alex Bee <knaerzche@gmail.com>, Nicolas Dufresne
+ <nicolas.dufresne@collabora.com>, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Christopher Obbard
+ <chris.obbard@collabora.com>, linux-media@vger.kernel.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20231105233630.3927502-1-jonas@kwiboo.se>
+ <5347734.aeNJFYEL58@diego>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <5347734.aeNJFYEL58@diego>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 654d0ef8a16ddfebde306c21
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083851_651992_8AD8EC92 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20231109_085531_472314_16E19A78 
+X-CRM114-Status: GOOD (  21.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,139 +78,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_drv.c   |  1 +
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  2 ++
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 5 files changed, 36 insertions(+)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 7f5b82eb6649..c8fed313c36f 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -248,6 +248,7 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->dev->vpu_mutex;
- 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
-+	src_vq->supports_delete_bufs = true;
- 
- 	return vb2_queue_init(dst_vq);
- }
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 27a1e77cca38..0fd1c2fc78c8 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..17213ce42059 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-@@ -1133,6 +1134,7 @@ static int queue_init(void *priv, struct vb2_queue *src_vq,
- 	dst_vq->mem_ops = &vb2_vmalloc_memops;
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	dst_vq->lock = &ctx->vb_mutex;
-+	dst_vq->supports_delete_bufs = true;
- 
- 	return vb2_queue_init(dst_vq);
- }
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
- 
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
-+
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
- {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
- 
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index d6c8eb2b5201..161f85c42dc8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
- 
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
--- 
-2.39.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGVpa28sCgpPbiAyMDIzLTExLTA2IDEwOjIyLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBI
+aSBKb25hcywKPiAKPiBBbSBNb250YWcsIDYuIE5vdmVtYmVyIDIwMjMsIDAwOjM2OjA3IENFVCBz
+Y2hyaWViIEpvbmFzIEthcmxtYW46Cj4+IFRoaXMgc2VyaWVzIGFkZCBhIEhFVkMgYmFja2VuZCB0
+byB0aGUgUm9ja2NoaXAgVmlkZW8gRGVjb2RlciBkcml2ZXIuCj4+Cj4+IEEgdmVyc2lvbiBvZiB0
+aGlzIEhFVkMgYmFja2VuZCBoYXMgYmVlbiBpbiB1c2UgYnkgdGhlIExpYnJlRUxFQyBkaXN0cm8K
+Pj4gZm9yIHRoZSBwYXN0IDMrIHllYXJzIFsxXS4gSXQgd2FzIGluaXRpYWxseSBjcmVhdGVkIGJh
+c2VkIG9uIGEgY29weSBvZgo+PiB0aGUgSDI2NCBiYWNrZW5kLCB1bnN0YWJsZSBIRVZDIHVBUEkg
+Y29udHJvbHMgYW5kIGEgY2FiYWMgdGFibGUgKyBzY2FsaW5nCj4+IG1hdHJpeCBmdW5jdGlvbnMg
+c2hhbWVsZXNzbHkgY29waWVkIDE6MSBmcm9tIHRoZSBSb2NrY2hpcCBtcHAgbGlicmFyeS4KPj4K
+Pj4gSXQgaGFzIHNpbmNlIHRoZW4gYmVlbiBleHRlbmRlZCB0byB1c2UgdGhlIHN0YWJsZSBIRVZD
+IHVBUEkgY29udHJvbHMgYW5kCj4+IGltcHJvdmVkIG9wb24gZS5nLiB0byBpbmNsdWRlIHN1cHBv
+cnQgZm9yIHJrMzI4OCBhbmQgZml4IGRlY29kaW5nIGlzc3Vlcwo+PiBieSBBbGV4IEJlZSBhbmQg
+Tmljb2xhcyBEdWZyZXNuZS4KPj4KPj4gVGhlIHZlcnNpb24gc3VibWl0dGVkIGluIHRoaXMgc2Vy
+aWVzIGlzIGJhc2VkIG9uIHRoZSBjb2RlIGN1cnJlbnRseSB1c2VkCj4+IGJ5IHRoZSBMaWJyZUVM
+RUMgZGlzdHJvLCBleGNsdWRpbmcgaGFyZC9zb2Z0IHJlc2V0LCBhbmQgd2l0aCBjYWJhYyB0YWJs
+ZQo+PiBhbmQgc2NhbGluZyBtYXRyaXggZnVuY3Rpb25zIHBpY2tlZCBmcm9tIFNlYmFzdGlhbiBG
+cmlja2UgcHJpb3Igc2VyaWVzCj4+IHRvIGFkZCBhIEhFVkMgYmFja2VuZCBbMl0uCj4+Cj4+IEJp
+ZyB0aGFua3MgdG8gQWxleCBCZWUsIE5pY29sYXMgRHVmcmVzbmUgYW5kIFNlYmFzdGlhbiBGcmlj
+a2UgZm9yIG1ha2luZwo+PiB0aGlzIHNlcmllcyBwb3NzaWJsZSEKPj4KPj4gUGF0Y2ggMSBhZGQg
+dGhlIG5ldyBIRVZDIGJhY2tlbmQuCj4+IFBhdGNoIDItMyBhZGQgdmFyaWFudHMgc3VwcG9ydCB0
+byB0aGUgZHJpdmVyLgo+PiBQYXRjaCA0IGFkZCBzdXBwb3J0IGZvciBhIHJrMzI4OCB2YXJpYW50
+Lgo+PiBQYXRjaCA1IGFkZCBhIHJrMzMyOCB2YXJpYW50IHRvIHdvcmsgYXJvdW5kIGh3IHF1aXJr
+cy4KPj4gUGF0Y2ggNi03IGFkZCBkZXZpY2UgdHJlZSBub2RlIGZvciByazMyODguCj4+IFBhdGNo
+IDgtOSBleHRlbmQgdmRlYyBub2RlIHJlZyBzaXplIHRvIGluY2x1ZGUgY2FjaGUvcGVyZiByZWdp
+c3RlcnMuCj4gCj4gdGhhbmtzIGEgbG90IGZvciB3b3JraW5nIG9uIHRoaXMuCj4gCj4gTG9va2lu
+ZyBhdCB0aGUgcmt2ZGVjIFRPRE8gZmlsZSwgaXNuJ3QgdGhlIGh2ZWMgc3VwcG9ydCB0aGUgb25s
+eSB0aGluZwo+IGtlZXBpbmcgdGhlIGRyaXZlciBpbiBzdGFnaW5nPyBTbyB3aXRoIHRoaXMgc3Vw
+cG9ydCB1c2luZyBzdGFibGUgaGV2Ywo+IHVhcGksIHNob3VsZG4ndCB0aGUgZHJpdmVyIHRoZW4g
+YWxzbyBtb3ZlIG91dCBvZiBzdGFnaW5nIGFmdGVyIHRoaXMKPiBzZXJpZXMgaXMgYXBwbGllZD8K
+ClllcywgSSBhZ3JlZSwgdGhpcyBkcml2ZXIgc2hvdWxkIGJlIG1vdmVkIG91dCBvZiBzdGFnaW5n
+IG5vdyB0aGF0IHVhcGkKaXMgc3RhYmxlLiBTb21ldGhpbmcgZm9yIGEgZm9sbG93LXVwIHNlcmll
+cyA6LSkKClJlZ2FyZHMsCkpvbmFzCgo+IAo+IEhlaWtvCj4gCj4gCj4+IFRoaXMgd2FzIHRlc3Rl
+ZCBvbiBhIFJPQ0sgUGkgNCAoUkszMzk5KSBhbmQgUm9jazY0IChSSzMzMjgpOgo+Pgo+PiAgIHY0
+bDItY29tcGxpYW5jZSAxLjI0LjEsIDY0IGJpdHMsIDY0LWJpdCB0aW1lX3QKPj4gICAuLi4KPj4g
+ICBUb3RhbCBmb3Igcmt2ZGVjIGRldmljZSAvZGV2L3ZpZGVvMTogNDYsIFN1Y2NlZWRlZDogNDYs
+IEZhaWxlZDogMCwgV2FybmluZ3M6IDAKPj4KPj4gICBSdW5uaW5nIHRlc3Qgc3VpdGUgSkNULVZD
+LUhFVkNfVjEgd2l0aCBkZWNvZGVyIEZGbXBlZy1ILjI2NS1WNEwyLXJlcXVlc3QKPj4gICAuLi4K
+Pj4gICBSYW4gMTM1LzE0NyB0ZXN0cyBzdWNjZXNzZnVsbHkKPj4KPj4gICBSdW5uaW5nIHRlc3Qg
+c3VpdGUgSkNULVZDLU1WLUhFVkMgd2l0aCBkZWNvZGVyIEZGbXBlZy1ILjI2NS1WNEwyLXJlcXVl
+c3QKPj4gICAuLi4KPj4gICBSYW4gOS85IHRlc3RzIHN1Y2Nlc3NmdWxseQo+Pgo+PiBBbmQgb24g
+YSBUaW5rZXJCb2FyZCAoUkszMjg4KToKPj4KPj4gICB2NGwyLWNvbXBsaWFuY2UgMS4yNC4xLCAz
+MiBiaXRzLCAzMi1iaXQgdGltZV90Cj4+ICAgLi4uCj4+ICAgVG90YWwgZm9yIHJrdmRlYyBkZXZp
+Y2UgL2Rldi92aWRlbzM6IDQ3LCBTdWNjZWVkZWQ6IDQ3LCBGYWlsZWQ6IDAsIFdhcm5pbmdzOiAw
+Cj4+Cj4+ICAgUnVubmluZyB0ZXN0IHN1aXRlIEpDVC1WQy1IRVZDX1YxIHdpdGggZGVjb2RlciBG
+Rm1wZWctSC4yNjUtVjRMMi1yZXF1ZXN0Cj4+ICAgLi4uCj4+ICAgUmFuIDEzNy8xNDcgdGVzdHMg
+c3VjY2Vzc2Z1bGx5Cj4+Cj4+ICAgUnVubmluZyB0ZXN0IHN1aXRlIEpDVC1WQy1NVi1IRVZDIHdp
+dGggZGVjb2RlciBGRm1wZWctSC4yNjUtVjRMMi1yZXF1ZXN0Cj4+ICAgLi4uCj4+ICAgUmFuIDkv
+OSB0ZXN0cyBzdWNjZXNzZnVsbHkKPj4KPj4gVGhpcyBzZXJpZXMgZGVwZW5kIG9uIHRoZSBmb2xs
+b3dpbmcgc2VyaWVzOgo+PiAtIG1lZGlhOiBya3ZkZWM6IEFkZCBILjI2NCBIaWdoIDEwIGFuZCA0
+OjI6MiBwcm9maWxlIHN1cHBvcnQgWzNdCj4+Cj4+IFRvIGZ1bGx5IHJ1bnRpbWUgdGVzdCB0aGlz
+IHNlcmllcyB5b3UgbmVlZCBhYm92ZSBzZXJpZXMgYW5kIGZmbXBlZwo+PiBwYXRjaGVzIGZyb20g
+WzRdLCB0aGlzIHNlcmllcyBhbmQgaXRzIGRlcGVuZHMgaXMgYWxzbyBhdmFpbGFibGUgYXQgWzVd
+Lgo+Pgo+PiBGdWxsIHN1bW1hcnkgb2YgZmx1c3RlciBydW4gY2FuIGJlIGZvdW5kIGF0IFs2XS4K
+Pj4KPj4gWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9MaWJyZUVMRUMvTGlicmVFTEVDLnR2L2Jsb2Iv
+bWFzdGVyL3Byb2plY3RzL1JvY2tjaGlwL3BhdGNoZXMvbGludXgvZGVmYXVsdC9saW51eC0yMDAw
+LXY0bDItd2lwLXJrdmRlYy1oZXZjLnBhdGNoCj4+IFsyXSBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9saW51eC1tZWRpYS8yMDIzMDEwMS1wYXRjaC1zZXJpZXMtdjItNi0yLXJjMS12Mi0wLWZhMTg5
+N2VmYWMxNEBjb2xsYWJvcmEuY29tLwo+PiBbM10gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGlu
+dXgtbWVkaWEvMjAyMzExMDUxNjU1MjEuMzU5MjAzNy0xLWpvbmFzQGt3aWJvby5zZS8KPj4gWzRd
+IGh0dHBzOi8vZ2l0aHViLmNvbS9Ld2lib28vRkZtcGVnL2NvbW1pdHMvdjRsMi1yZXF1ZXN0LW42
+LjEtZGV2Lwo+PiBbNV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hpcC9j
+b21taXRzL2xpbnV4dHYtcmt2ZGVjLWhldmMtdjEvCj4+IFs2XSBodHRwczovL2dpc3QuZ2l0aHVi
+LmNvbS9Ld2lib28vNGMwZWQ4Nzc3NGRlZGU0NGNlNjgzODQ1MWExZWM5M2QKPj4KPj4gUmVnYXJk
+cywKPj4gSm9uYXMKPj4KPj4gQWxleCBCZWUgKDUpOgo+PiAgIG1lZGlhOiBya3ZkZWM6IEFkZCB2
+YXJpYW50cyBzdXBwb3J0Cj4+ICAgbWVkaWE6IHJrdmRlYzogQWRkIFJLMzI4OCB2YXJpYW50Cj4+
+ICAgbWVkaWE6IHJrdmRlYzogRGlzYWJsZSBRb1MgZm9yIEhFVkMgYW5kIFZQOSBvbiBSSzMzMjgK
+Pj4gICBBUk06IGR0czogcm9ja2NoaXA6IEFkZCB2ZGVjIG5vZGUgZm9yIFJLMzI4OAo+PiAgIGFy
+bTY0OiBkdHM6IHJvY2tjaGlwOiBFeHBhbmQgcmVnIHNpemUgb2YgdmRlYyBub2RlIGZvciBSSzMz
+OTkKPj4KPj4gSm9uYXMgS2FybG1hbiAoNCk6Cj4+ICAgbWVkaWE6IHJrdmRlYzogQWRkIEhFVkMg
+YmFja2VuZAo+PiAgIG1lZGlhOiBya3ZkZWM6IEltcGxlbWVudCBjYXBhYmlsaXR5IGZpbHRlcmlu
+Zwo+PiAgIG1lZGlhOiBkdC1iaW5kaW5nczogcm9ja2NoaXAsdmRlYzogQWRkIFJLMzI4OCBjb21w
+YXRpYmxlCj4+ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEV4cGFuZCByZWcgc2l6ZSBvZiB2ZGVj
+IG5vZGUgZm9yIFJLMzMyOAo+Pgo+PiAgLi4uL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLHZkZWMu
+eWFtbCAgICAgICAgIHwgICAgNCArLQo+PiAgYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+Mjg4LmR0c2kgICAgICAgIHwgICAxNyArLQo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazMzMjguZHRzaSAgICAgIHwgICAgMiArLQo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTkuZHRzaSAgICAgIHwgICAgNiArLQo+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlh
+L3JrdmRlYy9NYWtlZmlsZSAgICAgICAgIHwgICAgMiArLQo+PiAgZHJpdmVycy9zdGFnaW5nL21l
+ZGlhL3JrdmRlYy9UT0RPICAgICAgICAgICAgIHwgICAgNyAtCj4+ICAuLi4vc3RhZ2luZy9tZWRp
+YS9ya3ZkZWMvcmt2ZGVjLWhldmMtZGF0YS5jICAgfCAxODQ4ICsrKysrKysrKysrKysrKysrCj4+
+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oZXZjLmMgICAgfCAgODIzICsr
+KysrKysrCj4+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1yZWdzLmggICAg
+fCAgICAzICsKPj4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLXZwOS5jICAg
+ICB8ICAgMTAgKwo+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuYyAgICAg
+ICAgIHwgIDE4MCArLQo+PiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMuaCAg
+ICAgICAgIHwgICAxNSArCj4+ICAxMiBmaWxlcyBjaGFuZ2VkLCAyODg2IGluc2VydGlvbnMoKyks
+IDMxIGRlbGV0aW9ucygtKQo+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9t
+ZWRpYS9ya3ZkZWMvcmt2ZGVjLWhldmMtZGF0YS5jCj4+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtaGV2Yy5jCj4+Cj4+Cj4gCj4gCj4gCj4g
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
