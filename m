@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD0DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 21:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CF69C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 21:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y5ScuvXj5cP1iMLeGGkwggC5CnMBJNVnydeL+xH/y2w=; b=GkcXBP8aIAIA0L
-	bi7NCDXggHdwsywsiCwGtbHZjFLvqLleE6TZxwsljUqRwCzOTS665srOFOb5pF/eIjAB29Q6R7ESN
-	rw24xpcnTbIv7l3TqYgJU1wcGOvUXQzoby+xUBx95/Xtp95x/tCxa1oziW4hAZeuVVqWbaymid24+
-	D6GeOBRhRzLNsXDzR48T7ThpMxnBUSE2/P/dx+LGk4FQva/Q9b98Ea61S8nFi1pwCbHlD3piHkds/
-	AEPsXost3vAkNnZwHR5ejxFrCpEB37iATJA/bMU45FSm8s/H+rocijcCBKgF4H3UkcepT5yEqjvZf
-	D8GrjNB6j6adu1ESOrpQ==;
+	List-Owner; bh=2IDl2FkjZEBPwQ5pHswXc8ubhUpS4UE95Fg6g0YhE5E=; b=jD0VE9QM8G8pXI
+	41IhOGI92G7dQySFwgidK76idoj9qXdJkub2rafGTTuI06FBrtdKxCTSfiv/YfiQE6woulv0XN1Rl
+	0aKfZsonYnVu3lIUjGKhVLV1AJDMz1wWpxPrDCJgcZb+iFCe75CTWIFFXI22Ptbk38mGqi1PPXxtB
+	RfSZCz1Mxv5rE884o+I5OCEu8CtfdlOzHaB3B1TlsHUogNdLRt77500q/sLg6FpLn9dUi7NJauJjT
+	JHpfIUpVpTSXNS1Zzp9M8O8Cew4i7tWmo2+nh9BsRzf6gu08vEu28EnqCttrhMdvEL4oHRxEEoBpZ
+	XkDh41PS/GNEbXRbHMhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Cus-007I3d-2Q;
+	id 1r1Cus-007I3P-15;
 	Thu, 09 Nov 2023 21:50:22 +0000
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
+Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Cuo-007I1X-0X
+	id 1r1Cuo-007I1y-0H
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Nov 2023 21:50:20 +0000
-Received: by mail-oo1-xc34.google.com with SMTP id 006d021491bc7-581e5a9413bso727174eaf.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Nov 2023 13:50:16 -0800 (PST)
+	Thu, 09 Nov 2023 21:50:19 +0000
+Received: by mail-oo1-xc2e.google.com with SMTP id 006d021491bc7-5844bc378feso740173eaf.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Nov 2023 13:50:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1699566616; x=1700171416; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JZXYYoZ9YXR8OaFb0rqU8J6WjFq3wVUlkQ9dvWsztWg=;
-        b=eAM0As/cEDcDgmg7mpvqS9ZyjJvkyDwKtqkQioe2l5RD6nGJIUrWE3YzFcvtClP+cD
-         nuC+T5DrzOll3WxzWk4mH7RoatM/mPzuU+rBei1vnnO6dl0d+H4ABAL5kKTGccPGT7L1
-         s41vH6VH5n4HpwCnDwYUPbLpwVQeVe2NIf6BtoojVbn/GcbhMIT0jZLb97wiaTfF46Wz
-         szM++os49oUbGITLhz2u/ZXjJzPFyOrdooa5iWG2jSL3mKAvoTKSWNohlZrskcABlNGW
-         AcrdYhbL0rphGy4Q8WofX9pJPHQSI69AL8IjdhbzKNYjXi/ijv/CECgyQWAu2nBbezLC
-         jK2g==
+        bh=qOIInztUelC8mrrk/uWmLptClIvVfVoKK3NnyJG316E=;
+        b=J+3UbNRm88LmpMva6sEmnK4rQimi9ux2KZ8s8hzD2b67EyDhXlJEnUdbl1dw855f5T
+         jj2YXmzYX/NlJ873MIpHbcSL36kzdySGXWTXLMqKoMANrb3aJTqJgC/jsRyECOKZlEfa
+         8aXzVq5RE23shkiHCFvqfP8+eLtAAlL0JrzZgIesOZJV5lGyaakD54/RBqKdCC4lXLEb
+         3+u/PpS5kjeqwBMKu7/1ZsaP0br6wEcoWckgR0s8TeCjgkEyjE4X4S+CtRxt7bp4EbiA
+         Pt5LVROXHSjFJMEfvMOUzXUvT7tKb7WEHrjOmOxCfueXgKo+Vu/t0wH6O7EcBYgrxeqq
+         444A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1699566616; x=1700171416;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JZXYYoZ9YXR8OaFb0rqU8J6WjFq3wVUlkQ9dvWsztWg=;
-        b=B5/MF2hxlV1LSj+1ADu0FknTbhelF/vFsw0gY533z317X9VuwwZdhXB115txDol1CK
-         0bwd53O4fr+2DM61xD+eL5xpXZ4RZBWZvn05OhMbuyneob5pVphYr7HGzsmE6ij4FTCp
-         ae29BveTJ3GhSd5bxj8NeCQFaG4VyQmn0YMc0XRgUChuIt1zCG1ganSQG3pfFIkX5wOJ
-         5zp+6zrHCNTQGJayFHbNcYnyP5qoczqKlVE2hgr3Brbg77HZGy50GP2x3Qhk+nV1gLHN
-         u3suPQatQhRbp2Ez+ElCD6A0f5ZjsWGCOuzRANcuEjNMiQpsC70aGB4odbTrqHBz/jZG
-         37Zg==
-X-Gm-Message-State: AOJu0YwAyVEoYhtTepEtD9fIW9s9qIfXJLpwQhYt0UaYzb23Ny4HAUPO
-	jCuPg48lyTHKXk+CoTIXzNtVsIFLmyo=
-X-Google-Smtp-Source: AGHT+IEtAOh2Ri8u8l/d3qukxgFDNHa7aYcFKcebfV58wRHC8Ih0NADj5oYrY2SJCPHCMy77yPkxmQ==
-X-Received: by 2002:a05:6870:9193:b0:1ea:4338:209d with SMTP id b19-20020a056870919300b001ea4338209dmr6168405oaf.31.1699566616026;
+        bh=qOIInztUelC8mrrk/uWmLptClIvVfVoKK3NnyJG316E=;
+        b=c7fCAbhCYttoFMxk13DLHAXnxJGQGBjomfJ0etdsry37IaObmvsXI4A6cWq7YmBND2
+         r/QDQOKN6AVfRrGToSh02fuVuFjg1ueJVY0+Hg8APAnlGf6JheD37wqUo00IKc/5l2dE
+         MPrk+GO61Wm5R6wzPZ8FwbvDB497ksZxnbTbc+7bPehC3D10ZS2hz2G7hFSPBF7hnZnx
+         Jy8FfVTrVrSjh12QrHpooFCW1ghhaE8NuYF/eMH10bDIX/6YAbQhFgX+I4+j1ZZ1SQsT
+         Q7u4lLDDORYuFQVR6L9M6+KTLK10e+wWHDBKHlEcb6pmqz2Kipeqlj0nP58xaELVs4Bs
+         1Pig==
+X-Gm-Message-State: AOJu0Yzw3anQs/fEVWNXoWMVLjd/RXWd5lXxLc0fp4qQUK6veSYKDmHq
+	QRHfWBe0jD5jlc1WKThx2wogbONOar8=
+X-Google-Smtp-Source: AGHT+IHkwhRJa6UQv0a+N/kr01xqCaRwiUsLDnT12DrqEx72ojhNPbns7tXYrlhU6YlgyYlLVsA/qQ==
+X-Received: by 2002:a05:6870:72d1:b0:1e9:bd5c:ae38 with SMTP id o17-20020a05687072d100b001e9bd5cae38mr6871083oak.2.1699566616706;
         Thu, 09 Nov 2023 13:50:16 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id tp22-20020a0568718b9600b001d4d8efa7f9sm864003oab.4.2023.11.09.13.50.15
+        by smtp.gmail.com with ESMTPSA id tp22-20020a0568718b9600b001d4d8efa7f9sm864003oab.4.2023.11.09.13.50.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Nov 2023 13:50:15 -0800 (PST)
+        Thu, 09 Nov 2023 13:50:16 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -76,16 +76,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 2/4] nv3051d: Add Powkiddy RK2023 Panel Support
-Date: Thu,  9 Nov 2023 15:50:05 -0600
-Message-Id: <20231109215007.66826-3-macroalpha82@gmail.com>
+Subject: [PATCH V2 3/4] dt-bindings: arm: rockchip: Add Powkiddy RK2023
+Date: Thu,  9 Nov 2023 15:50:06 -0600
+Message-Id: <20231109215007.66826-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231109215007.66826-1-macroalpha82@gmail.com>
 References: <20231109215007.66826-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_135018_199329_E1564D35 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20231109_135018_123909_C7996397 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,116 +105,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Refactor the driver to add support for the powkiddy,rk2023-panel
-panel. This panel is extremely similar to the rg353p-panel but
-requires a smaller vertical back porch and isn't as tolerant of
-higher speeds. Note that while all of these panels are identical in
-size (70x57) it is possible future panels may not be.
-
-Tested on my RG351V, RG353P, RG353V, and RK2023.
+The Powkiddy RK2023 is a handheld gaming device made by Powkiddy and
+powered by the Rockchip RK3566 SoC. Group the Powkiddy RK3566 based
+devices together as they are both extremely similar.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../gpu/drm/panel/panel-newvision-nv3051d.c   | 57 +++++++++++++++----
- 1 file changed, 46 insertions(+), 11 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-index 79de6c886292..94d89ffd596b 100644
---- a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-+++ b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-@@ -28,6 +28,7 @@ struct nv3051d_panel_info {
- 	unsigned int num_modes;
- 	u16 width_mm, height_mm;
- 	u32 bus_flags;
-+	u32 mode_flags;
- };
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5f7c6c4aad8f..5b015c4ed775 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -674,9 +674,11 @@ properties:
+           - const: pine64,soquartz
+           - const: rockchip,rk3566
  
- struct panel_nv3051d {
-@@ -261,6 +262,8 @@ static int panel_nv3051d_unprepare(struct drm_panel *panel)
+-      - description: Powkiddy RGB30
++      - description: Powkiddy RK3566 Handheld Gaming Console
+         items:
+-          - const: powkiddy,rgb30
++          - enum:
++              - powkiddy,rgb30
++              - powkiddy,rk2023
+           - const: rockchip,rk3566
  
- 	usleep_range(10000, 15000);
- 
-+	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
-+
- 	regulator_disable(ctx->vdd);
- 
- 	return 0;
-@@ -385,15 +388,7 @@ static int panel_nv3051d_probe(struct mipi_dsi_device *dsi)
- 
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
--	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
--
--	/*
--	 * The panel in the RG351V is identical to the 353P, except it
--	 * requires MIPI_DSI_CLOCK_NON_CONTINUOUS to operate correctly.
--	 */
--	if (of_device_is_compatible(dev->of_node, "anbernic,rg351v-panel"))
--		dsi->mode_flags |= MIPI_DSI_CLOCK_NON_CONTINUOUS;
-+	dsi->mode_flags = ctx->panel_info->mode_flags;
- 
- 	drm_panel_init(&ctx->panel, &dsi->dev, &panel_nv3051d_funcs,
- 		       DRM_MODE_CONNECTOR_DSI);
-@@ -481,16 +476,56 @@ static const struct drm_display_mode nv3051d_rgxx3_modes[] = {
- 	},
- };
- 
--static const struct nv3051d_panel_info nv3051d_rgxx3_info = {
-+static const struct drm_display_mode nv3051d_rk2023_modes[] = {
-+	{
-+		.hdisplay       = 640,
-+		.hsync_start    = 640 + 40,
-+		.hsync_end      = 640 + 40 + 2,
-+		.htotal         = 640 + 40 + 2 + 80,
-+		.vdisplay       = 480,
-+		.vsync_start    = 480 + 18,
-+		.vsync_end      = 480 + 18 + 2,
-+		.vtotal         = 480 + 18 + 2 + 4,
-+		.clock          = 24150,
-+		.flags          = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
-+	},
-+};
-+
-+static const struct nv3051d_panel_info nv3051d_rg351v_info = {
- 	.display_modes = nv3051d_rgxx3_modes,
- 	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
- 	.width_mm = 70,
- 	.height_mm = 57,
- 	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-+		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
-+		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
-+};
-+
-+static const struct nv3051d_panel_info nv3051d_rg353p_info = {
-+	.display_modes = nv3051d_rgxx3_modes,
-+	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
-+	.width_mm = 70,
-+	.height_mm = 57,
-+	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-+		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
-+};
-+
-+static const struct nv3051d_panel_info nv3051d_rk2023_info = {
-+	.display_modes = nv3051d_rk2023_modes,
-+	.num_modes = ARRAY_SIZE(nv3051d_rk2023_modes),
-+	.width_mm = 70,
-+	.height_mm = 57,
-+	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-+		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
- };
- 
- static const struct of_device_id newvision_nv3051d_of_match[] = {
--	{ .compatible = "newvision,nv3051d", .data = &nv3051d_rgxx3_info },
-+	{ .compatible = "anbernic,rg351v-panel", .data = &nv3051d_rg351v_info },
-+	{ .compatible = "anbernic,rg353p-panel", .data = &nv3051d_rg353p_info },
-+	{ .compatible = "powkiddy,rk2023-panel", .data = &nv3051d_rk2023_info },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, newvision_nv3051d_of_match);
+       - description: Radxa Compute Module 3(CM3)
 -- 
 2.34.1
 
