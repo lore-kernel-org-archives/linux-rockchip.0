@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D83FC04E88
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55A6C4167D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Nov 2023 16:39:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z+JamNRvoDR4/pPahsu1Nh3knSQqljxt63AK6dkp4wQ=; b=jSrs+3nxSlTdfy
-	+Bpa+Apjcgi5qVm4ZJ5UWkgnZG1ag7CUSzVXMNUrcpnGOQkv1/xgveIFmukfDSFhqpicoiIyn+ltV
-	nC/TVXNTSCqfkOVKirKQz0nYm8vCgcFZbkrEUpdCE+QVSMWeB7FCKu+B2yXl4x/hQV4voRyVZHqPZ
-	Wf92t1U+KnNHQhjlVIjYjJNjs9u8AsKxJS9iujpI3w+qNknJ4xnVtNvtIO9t4X+Nh96QHGODlwKPF
-	IDITfJxYuW6uUyjtrkPD3qjnePa3Zep9zaq8vD+N8kvWU/li3fdRCIMmLG5vpVBaYGQH2maXvxWVn
-	MyXpoGRlwSlXMyZZVpiw==;
+	List-Owner; bh=6rsHLvNdjnP9/G5N/i1VUNsll0z44Th/fajy9Ajgp3E=; b=eYVWfVscpt/YWs
+	KbDRYeCOez91wQE2TSj5N27dVA3mmBPC1p2PWGgk4gBO2/g306PTRrDBczJ7THoS6W84Dhnj/dwo9
+	tFh20TasqSbw7hBSNuiyJuyobQFYJVxSDJMmeG4LokGjCbTMkaQ36aEn51OHtBUWEos9goSYCIh5J
+	zBZRRK0SMpPk3enGlxsoKtTsakSK9/7dQP8BaQ0nBUpmbeNmfmtf4Gy0/BcHZ3IZhrA9vObCWmHCe
+	vrbHP9BCdSiGb9XIBy5wjdyQjT5BHyEMm72KxwMhd/WVmpI8NMBO147CGvf5azv6CWKS8CngEHIvx
+	dTZEP0laeyTYI5CDVf4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r183g-006mVW-1Z;
-	Thu, 09 Nov 2023 16:39:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r183n-006meA-1i;
+	Thu, 09 Nov 2023 16:39:15 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r182d-006lLm-2c;
-	Thu, 09 Nov 2023 16:38:05 +0000
+	id 1r182b-006lK0-2v;
+	Thu, 09 Nov 2023 16:38:03 +0000
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6464F66076A9;
-	Thu,  9 Nov 2023 16:38:01 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B06E9660740E;
+	Thu,  9 Nov 2023 16:37:59 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1699547882;
-	bh=PqahRgMbKZ6nKhhhFOL42EbYbzODXom24RYDHww9X2Y=;
+	s=mail; t=1699547880;
+	bh=U1yXDNk7EDltAc7ujIBPx5Id4Pnzi9DFGv3btwrQ75o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YSvyJrJBvpacWgTAfqjHItn58l+/ToKTC+WxAq3tUbxdxiiRlSgH2QGm2POvbNWmy
-	 9r56IyfTZD17giY+3NUnS37RF4JMF4lNxAWSSdPSnXv2zKQp0dqt9D6Es8vympuw3n
-	 xdju0f9Hk6MeJiSlbROvTmlbts4FfalqvHnH8NeBX4f+V2dbzWijNeHzCNx2ebixHJ
-	 kNbN2q3e85A6qTv/CYdUtisczI/fbHT5T8Khe4tOSYFPH2zxE8MKR/oIYGmZuhjtEp
-	 CLsVElm1xxlYiYxGVRyenhHd1Tn4jc2d+Fv1gkauUPFh+vPPzdCk7a5m+QK2AEa0ju
-	 7UxAb9aoIUAng==
+	b=kGCyS5dgMfwq/IjrQdpOVgWr+gd+odSozOhTYVbDwedj0NpvjWG4FUf//X7mDizGd
+	 M2+CBjRZSX4W/R7VMo9uyovrEBukbxev5N9r7ovZgqdIgLLqaLysQG5BkPfLBB+vRT
+	 l2TEa5xJFvDdfnqeGrV6N6Zh/3fMC640uoD0tvl/MTy4fzNNiVjeM7uQGuYmJ7L42B
+	 mY/fOyWDFSPWKkNwe1tgkCgmtNFj6mzOKCVdhyXEISt0OttFouoy38arcuh4smHWy9
+	 zC/LHfhjMkVvag7IC3pf3HiEK2Iq+vRQEGwwpHbNKqRjrpG39ehHKfSWiO1WkT0v7D
+	 a/RqPi5No2H4g==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v15 27/56] media: coda: Stop direct calls to queue num_buffers field
-Date: Thu,  9 Nov 2023 17:34:43 +0100
-Message-Id: <20231109163512.179524-28-benjamin.gaignard@collabora.com>
+	Matt Ranostay <matt.ranostay@konsulko.com>
+Subject: [PATCH v15 26/56] media: i2c: video-i2c: Stop direct calls to queue num_buffers field
+Date: Thu,  9 Nov 2023 17:34:42 +0100
+Message-Id: <20231109163512.179524-27-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 References: <20231109163512.179524-14-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_083803_991620_0BFEA45F 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20231109_083802_080526_2AE18D88 
+X-CRM114-Status: GOOD (  11.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +92,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Use vb2_get_num_buffers() to avoid using queue num_buffers field directly.
 This allows us to change how the number of buffers is computed in the
 future.
+Fix the number of buffers computation at the same time.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-CC: Philipp Zabel <p.zabel@pengutronix.de>
+CC: Matt Ranostay <matt.ranostay@konsulko.com>
 ---
- drivers/media/platform/chips-media/coda-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/i2c/video-i2c.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/chips-media/coda-common.c b/drivers/media/platform/chips-media/coda-common.c
-index cc4892129aaf..f1d85758f6dd 100644
---- a/drivers/media/platform/chips-media/coda-common.c
-+++ b/drivers/media/platform/chips-media/coda-common.c
-@@ -794,7 +794,7 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+diff --git a/drivers/media/i2c/video-i2c.c b/drivers/media/i2c/video-i2c.c
+index 178bd06cc2ed..ebf2ac98a068 100644
+--- a/drivers/media/i2c/video-i2c.c
++++ b/drivers/media/i2c/video-i2c.c
+@@ -405,9 +405,10 @@ static int queue_setup(struct vb2_queue *vq,
+ {
+ 	struct video_i2c_data *data = vb2_get_drv_priv(vq);
+ 	unsigned int size = data->chip->buffer_size;
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
  
- 	if (vb2_is_busy(vq)) {
- 		v4l2_err(&ctx->dev->v4l2_dev, "%s: %s queue busy: %d\n",
--			 __func__, v4l2_type_names[f->type], vq->num_buffers);
-+			 __func__, v4l2_type_names[f->type], vb2_get_num_buffers(vq));
- 		return -EBUSY;
- 	}
+-	if (vq->num_buffers + *nbuffers < 2)
+-		*nbuffers = 2;
++	if (q_num_bufs + *nbuffers < 2)
++		*nbuffers = 2 - q_num_bufs;
  
+ 	if (*nplanes)
+ 		return sizes[0] < size ? -EINVAL : 0;
 -- 
 2.39.2
 
