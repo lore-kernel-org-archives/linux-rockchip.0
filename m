@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7214EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 08:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AE34C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 08:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rAmV+zP8xtFw1pw0C6mvDgus5ts3vxye6uQh9iyHZ40=; b=T2hG1X8EV47jap
-	cw6RrC0RbiFPl2Sm+ct1Bz6SdhHpgDk3TyH5syMAJlR1nyFZXH4fhvM5yy2zRU0EBfNnN2QrNNKAu
-	piX/8fP4/daYVBwi9ryluaY25vZ4kFH31GQ7xcNrivkI100F1//WhbA8eHDmzbNwWsNNqvP4fG+hk
-	xrRJ31xPqhQgr9LJ/iD5dqS1kEEgB9W7g6/8tfH/ATFqCUpRPyuQOA51Eb9iOxbezNYewLE1iFBoP
-	GdVcYOl5YfhSuVCcmIZr4wSJ7s/Sd6ekfQwaTvUH8JYRG6XFqav03cGNU51WE7DIyD6EG9SCmGXud
-	t83LaC2Jknv7u0h3QxRQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tD0/k0lyHCswCfbWeh6fg0kz8RNQaeAcPvJJHc3XByA=; b=bCyf8AaqMS9D5J2iGmUPCI6cXw
+	inF1ffX59eAPGZLqbZ+Zh9ojHe/J+rdFomTGCNcmHXJYk9QkZIdEhl3+OkvJOMHh+1GDmSvaSZJrI
+	g2/u56ZekK3e3LsYJgvxtcrRXNwY4i4Mq9CIX/iUir3jkWmY3enWmgFFKG3E4t2ReORxWddz0wV/g
+	d0y+Wil4EynBpdTvHQvolcaJO2Dbc/WmlqmgUJtN6z04iQ1JtRS6o4UaSEejmRaQ3Q3L+AjsK9yG7
+	YnCzmmfOMlacwBYpINn/AKRhHiqFl7pUUFNqoERvTCYwjXDwglI0nWgvs5v2My8VhqcTtrima9C50
+	hqd6GbTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1MuC-0085rM-2O;
-	Fri, 10 Nov 2023 08:30:20 +0000
-Received: from mail-m11866.qiye.163.com ([115.236.118.66])
+	id 1r1MxT-0086Ex-0Z;
+	Fri, 10 Nov 2023 08:33:43 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Mu7-0085po-2e;
-	Fri, 10 Nov 2023 08:30:18 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=XiqeolchP3njZmt+f79epZWTdAxsmqLbScSw8AQO4RUgwBBXf+74Ueu0wP02Efa2A9iHxM/ISi7pO+dSUve2pewsyyCdKSJDudwTjzFYJ8OQzxeDftCU/zmSx3PalWGuNWg09g70Sjg54LORI0RikiCZLPhc6PlfQoA+UzZSkys=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=c8gwyP0bjpv+fHqfLFg4bZJyzgVrMfpkxHsJ3EbC6LY=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.49] (unknown [58.22.7.114])
-	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id E1F2F400389;
-	Fri, 10 Nov 2023 16:29:35 +0800 (CST)
-Message-ID: <01d2844e-8a9f-d529-c523-c846760bc31b@rock-chips.com>
-Date: Fri, 10 Nov 2023 16:29:35 +0800
+	id 1r1MxQ-0086EA-0I
+	for linux-rockchip@lists.infradead.org;
+	Fri, 10 Nov 2023 08:33:42 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id ECCC7FF816;
+	Fri, 10 Nov 2023 08:33:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1699605215;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gB43CUZmJbt1uK77TzguVku9sEfalDL3rG9/cdJIn2s=;
+	b=mIP+a2PTDV/8iO84GywCAxWKSOAkV4Tz75EPrMTwnlyaXLCJYGq6wwTCzMfE0De3jpru4+
+	SDdBoEdhZf0y3H5qhE55wxVmj7oT15D8MklPT8f9UQ38BFsbnaGPRxKPCEH23WKxIGZ6j7
+	kAWx1QrpPFF6FUaJoSTTFYLSN/k8t9PIAKgaWdojBX4U16/csE2Qa3OiKPWjqa4G7eASbV
+	QBaYcnJAnwNnruhSAuDzfiIdt/oB0Co4QCZyk0xCw7E5+ZLbilbNQ02liNpfVoFCCdw2xI
+	BCVs6rvkT4viovqOK7Kcq6HS0wTYqpNCzWlXC44PBNL6VrfRfdZxgOsMy4JkqQ==
+Date: Fri, 10 Nov 2023 09:33:31 +0100
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Subject: Re: [PATCH 3/4] media: verisilicon: Hook the (TRY_)DECODER_CMD
+ stateless ioctls
+Message-ID: <ZU3q2y_QA6Pznvtf@aptenodytes>
+References: <20231109201640.340556-1-paul.kocialkowski@bootlin.com>
+ <20231109201640.340556-3-paul.kocialkowski@bootlin.com>
+ <fd9ca918dcbc892169b9f0dae7d0de537f4035ed.camel@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v6 3/3] clk: rockchip: rk3588: Adjust the GATE_LINK
- parameter
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- mturquette@baylibre.com, sboyd@kernel.org, kever.yang@rock-chips.com,
- heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
- andy.yan@rock-chips.com
-References: <20231110020358.12840-1-zhangqing@rock-chips.com>
- <20231110020358.12840-4-zhangqing@rock-chips.com>
- <d36d4f7e-03be-4018-be5d-0898f2ae6a15@linaro.org>
-From: zhangqing <zhangqing@rock-chips.com>
-In-Reply-To: <d36d4f7e-03be-4018-be5d-0898f2ae6a15@linaro.org>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhNH1ZOS0MeTx9ISh9NHR9VEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8bb859d2e72eb3kusne1f2f400389
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OlE6PDo*ODw4MQweIR1MTgJP
-	CVEKCS5VSlVKTUJCTUtPQkxMSUhCVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhDQ0M3Bg++
+In-Reply-To: <fd9ca918dcbc892169b9f0dae7d0de537f4035ed.camel@collabora.com>
+X-GND-Sasl: paul.kocialkowski@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_003016_337906_F390D843 
-X-CRM114-Status: UNSURE (   5.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231110_003340_551483_1693AE9D 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +76,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2798938766129389365=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CuWcqCAyMDIzLzExLzEwIDE1OjQ2LCBLcnp5c3p0b2YgS296bG93c2tpIOWGmemBkzoKPiBPbiAx
-MC8xMS8yMDIzIDAzOjAzLCBFbGFpbmUgWmhhbmcgd3JvdGU6Cj4+IEV4cG9ydCBQQ0xLX1ZPMUdS
-RiBjbGsgaWQuCj4gSWYgdGhlIGNsb2NrIGlzIGV4cG9ydGVkLCBob3cgZG8geW91IGdldCBpdHMg
-cmVmZXJlbmNlPwpUaGUgZXhwb3J0IG9mIHRoZSBjbG9jayBoYXMgYmVlbiBhYmFuZG9uZWQsIGFu
-ZCBtYXJrIHRoZSBwY2xrX3ZvMWdyZiBhcyAKQ0xLX0lTX0NSSVRJQ0FMLgpGaXggVGhlIGNvbW1p
-dCBtZXNzYWdlIGxhdGVyLgo+Cj4gQmVzdCByZWdhcmRzLAo+IEtyenlzenRvZgo+Ci0tIArlvKDm
-mbQK55Ge6Iqv5b6u55S15a2Q6IKh5Lu95pyJ6ZmQ5YWs5Y+4ClJvY2tjaGlwIEVsZWN0cm9uaWNz
-IENvLixMdGQK5Zyw5Z2A77ya56aP5bu655yB56aP5bee5biC6ZOc55uY6Lev6L2v5Lu25aSn6YGT
-ODnlj7fova/ku7blm61B5Yy6MjHlj7fmpbwKQWRkOk5vLjIxIEJ1aWxkaW5nLCBBIERpc3RyaWN0
-LCBOby44OSBTb2Z0d2FyZSBCb3VsZXZhcmQgRnV6aG91LCBGdWppYW4gMzUwMDAzLCBQLlIuQ2hp
-bmEKVGVsOis4Ni0wNTkxLTgzOTkxOTA2LTg2MDEK6YKu57yW77yaMzUwMDAzCkUtbWFpbDplbGFp
-bmUuemhhbmdAcm9jay1jaGlwcy5jb20KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgrkv53lr4bmj5DnpLrv
-vJrmnKzpgq7ku7blj4rlhbbpmYTku7blkKvmnInmnLrlr4bkv6Hmga/vvIzku4Xlj5HpgIHnu5nm
-nKzpgq7ku7bmiYDmjIfnibnlrprmlLbku7bkurrjgILoi6XpnZ7or6XnibnlrprmlLbku7bkurrv
-vIzor7fli7/lpI3liLbjgIHkvb/nlKjmiJbmiqvpnLLmnKzpgq7ku7bnmoTku7vkvZXlhoXlrrnj
-gILoi6Xor6/mlLbmnKzpgq7ku7bvvIzor7fku47ns7vnu5/kuK3msLjkuYXmgKfliKDpmaTmnKzp
-gq7ku7blj4rmiYDmnInpmYTku7bvvIzlubbku6Xlm57lpI3pgq7ku7bmiJblhbbku5bmlrnlvI/l
-jbPliLvlkYrnn6Xlj5Hku7bkurrjgILnpo/lt57nkZ7oiq/lvq7nlLXlrZDmnInpmZDlhazlj7jm
-i6XmnInmnKzpgq7ku7bkv6Hmga/nmoTokZfkvZzmnYPlj4rop6Pph4rmnYPvvIznpoHmraLku7vk
-vZXmnKrnu4/mjojmnYPorrjlj6/nmoTkvrXmnYPooYzkuLrjgIIKCklNUE9SVEFOVCBOT1RJQ0U6
-IFRoaXMgZW1haWwgaXMgZnJvbSBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQg
-LlRoZSBjb250ZW50cyBvZiB0aGlzIGVtYWlsIGFuZCBhbnkgYXR0YWNobWVudHMgbWF5IGNvbnRh
-aW4gaW5mb3JtYXRpb24gdGhhdCBpcyBwcml2aWxlZ2VkLCBjb25maWRlbnRpYWwgYW5kL29yIGV4
-ZW1wdCBmcm9tIGRpc2Nsb3N1cmUgdW5kZXIgYXBwbGljYWJsZSBsYXcgYW5kIHJlbGV2YW50IE5E
-QS4gSWYgeW91IGFyZSBub3QgdGhlIGludGVuZGVkIHJlY2lwaWVudCwgeW91IGFyZSBoZXJlYnkg
-bm90aWZpZWQgdGhhdCBhbnkgZGlzY2xvc3VyZSwgY29weWluZywgZGlzdHJpYnV0aW9uLCBvciB1
-c2Ugb2YgdGhlIGluZm9ybWF0aW9uIGlzIFNUUklDVExZIFBST0hJQklURUQuIFBsZWFzZSBpbW1l
-ZGlhdGVseSBjb250YWN0IHRoZSBzZW5kZXIgYXMgc29vbiBhcyBwb3NzaWJsZSBhbmQgZGVzdHJv
-eSB0aGUgbWF0ZXJpYWwgaW4gaXRzIGVudGlyZXR5IGluIGFueSBmb3JtYXQuIFRoYW5rIHlvdS4K
-CioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============2798938766129389365==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="3MXm4gGfTLjHj6aB"
+Content-Disposition: inline
+
+
+--3MXm4gGfTLjHj6aB
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi Nicolas,
+
+On Thu 09 Nov 23, 16:38, Nicolas Dufresne wrote:
+> Le jeudi 09 novembre 2023 =C3=A0 21:16 +0100, Paul Kocialkowski a =C3=A9c=
+rit=C2=A0:
+> > The (TRY_)DECODER_CMD ioctls are used to support flushing when holding =
+capture
+> > buffers is supported. This is the case of this driver but the ioctls we=
+re never
+> > hooked to the ioctl ops.
+> >=20
+> > Add them to correctly support flushing.
+>=20
+> While this CMD looks useful on paper, we have had no use for it in any
+> open source user space. So with this in mind, shall we really enable it
+> ? How can we be sure that its actually working as intended ?
+
+Well I think it's part of the spec that it needs to be supportd.
+
+I must admit I have never used it in a real use case either, but it can be =
+fixed
+later (without changing the uAPI) if the implementation turns out to be
+malfunctioning.
+
+Cheers,
+
+Paul
+
+> > Fixes: 340ce50f75a6 ("media: hantro: Enable HOLD_CAPTURE_BUF for H.264")
+> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > ---
+> >  drivers/media/platform/verisilicon/hantro_drv.c  | 2 ++
+> >  drivers/media/platform/verisilicon/hantro_v4l2.c | 3 +++
+> >  2 files changed, 5 insertions(+)
+> >=20
+> > diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/=
+media/platform/verisilicon/hantro_drv.c
+> > index a9fa05ac56a9..3a2a0f28cbfe 100644
+> > --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> > +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> > @@ -905,6 +905,8 @@ static int hantro_add_func(struct hantro_dev *vpu, =
+unsigned int funcid)
+> > =20
+> >  	if (funcid =3D=3D MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
+> >  		vpu->encoder =3D func;
+> > +		v4l2_disable_ioctl(vfd, VIDIOC_TRY_DECODER_CMD);
+> > +		v4l2_disable_ioctl(vfd, VIDIOC_DECODER_CMD);
+> >  	} else {
+> >  		vpu->decoder =3D func;
+> >  		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
+> > diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers=
+/media/platform/verisilicon/hantro_v4l2.c
+> > index b3ae037a50f6..db145519fc5d 100644
+> > --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> > +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> > @@ -785,6 +785,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops =3D {
+> >  	.vidioc_g_selection =3D vidioc_g_selection,
+> >  	.vidioc_s_selection =3D vidioc_s_selection,
+> > =20
+> > +	.vidioc_decoder_cmd =3D v4l2_m2m_ioctl_stateless_decoder_cmd,
+> > +	.vidioc_try_decoder_cmd =3D v4l2_m2m_ioctl_stateless_try_decoder_cmd,
+> > +
+> >  	.vidioc_try_encoder_cmd =3D v4l2_m2m_ioctl_try_encoder_cmd,
+> >  	.vidioc_encoder_cmd =3D vidioc_encoder_cmd,
+> >  };
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--3MXm4gGfTLjHj6aB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAmVN6tsACgkQ3cLmz3+f
+v9GVsgf8DMLAlPBim8kfNcpPsxElmqMySid66bm7l6rB8E0DGEkIhTw6taMy9Ymh
+5auzxmmd70FN07tX+OIUj6Pmal3Cj89meSTs51d08lSFQYJfhoQYbEQW1dt1sV+F
+T5CUni7z0F0oiWcCYDAwYcWoeB2FvUdzONn5eI++jJCwr4JQjnc1N1QoAFnhCjUe
+sx0VbiGR0kzbzAkMzn58RsignlPo4ogTCdUhabzlsc89nKWHxKdQZFlRvgqWC2Zy
+A1oHds2fjTEtUklvB9f8QwEaTTXqS1QtocDVXsCKe3Y6ye0atsjNCLpnPRNmP2ZP
+qbC23m0lvg48Zm78iBtBZK5KTgZD2A==
+=st8d
+-----END PGP SIGNATURE-----
+
+--3MXm4gGfTLjHj6aB--
+
+
+--===============2798938766129389365==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2798938766129389365==--
+
