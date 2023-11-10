@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7352AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 13:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AA5C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 13:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0IKaFie/Ec1Q7/JN5w45VEFA5e/oNpzLCFZ5GTqTD8A=; b=szd4Zehuas8ghj
-	RpiRTgMcZTqOicrzzQc++CHX7L/jI5VdCOBESPsEVLyo0Vcyv7TwxP6GWpUl2FCv3ok6mtJjvTBCV
-	kkvtaxgFwsfS8/1M+TbbAQ327bii0v2aHeFv9QhgB9cQtzPzgIduy+P6MCr3f2OqBLVlr63W9PvFL
-	QVlP050leJSERAy2AvqFIAm9wWeopUO+Y5756Y0HjN6fppsa+WbpVo56hvFfu40WZdL7ivbakQPTO
-	9/JBMmw/lEBvwF736T9Y4jWzITXfvSBNZpo8LzQLJd2oj3sUnYGMkpwWt9EIb+kYU5e+a9GPF1OLv
-	TmPjhkhBC+IabRTPyB1Q==;
+	List-Owner; bh=irddCasjxQl24G2GGG+ZGKdT7iDM8MwavQdXpETDh1w=; b=KdFp2lN3/wVRdv
+	QzwNsnXNiLuW/HoQSfIaIfk+Jc4Ps7KNFdBPNAFRnPTRv/2QmYRnMRtD+v2X8ERXm19PE5O30QVO0
+	XOsxeclGigKNLkLGeMo6KkqDy4YsIDKo0HGTAZbbRLS2/v+Ua8LIMgK3YM4r/BZyC2pS9kn3ekrhb
+	PdXyVC/I6lBx7ZsRMxg54A73qUw+XHx0f7Kk1odYs8VZK3z0jdTEPBeNXT4vEFYIytrXkOI2GeIJL
+	xU/wTh/wQsBBOFVglRmOd38yOv33kyRTyqyOGAWGVeBo4vBvtC/VCqubmmmTNkHNdWFwniPUEMynU
+	TRYFHmMT2a9Nih6knMLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1RIw-008oWo-2F;
-	Fri, 10 Nov 2023 13:12:10 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1r1RJl-008oi1-0a;
+	Fri, 10 Nov 2023 13:13:01 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1RIu-008oVW-0M
+	id 1r1RJi-008ofP-11
 	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Nov 2023 13:12:09 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-9c53e8b7cf4so336110466b.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 10 Nov 2023 05:12:01 -0800 (PST)
+	Fri, 10 Nov 2023 13:12:59 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-53f9af41444so3486099a12.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Nov 2023 05:12:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699621921; x=1700226721; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1699621973; x=1700226773; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=oOOIgBuLD76SRMXtscbLmnBWjjTZy61Y8xnxf0Pthzg=;
-        b=Tqf9hl2UaBqqcUMBZ0BVFXFqTaiWvrUo7kvyQd3LlEWr1C5GhgM1+R9MsdX6q8rtwJ
-         uOC8uf+HPx9ENMl2+ysAT5fGCAgKuB86mhoWgPmN1y363m92cQXPjfwynwSvQKRIJC8e
-         4aIfTWQ/FgOcSRQvqQcfQ7me3a22GffGkcG3uJDeGGp7WzexJJT+ElsJF2A//fzY1cSm
-         hapNaKemoRT2LCaWFvz2tUu/eev94OcDiyXMRV4JBa2xDyQeoz1XX2MbguCnqY1LBYk8
-         3Qrv7Eg4L2+qGUT1NTFxyRqWF4J1pUf0VVWAx3NlNChk9+cozWogO+B8GQcMV0tjozbK
-         gLPw==
+        bh=6isbZ9uLtfZ8lUq1v9mDUjAKFznjzf9WjfJ4yDiUmqU=;
+        b=fvtyQBB6nU/nR4gVcR/sfTMhICKjcVkjx5CEp4lf24axIxvSTnTGFaHIMNRAHYnSmK
+         Aru0dqxTLPKJixZAWlud9LcYhDcf1WWqv44plCIZrYD59fhrKXlmvc2fNGSAUzbc1Oh/
+         4QtJrs89jBBMV1VcB5Rpu8LcDyfKStPuX7iT4bhMJK4bu2fhwnHmIX/mKxVJI4ra4A7O
+         PqQCrubzsxp0C6DJNy3bkPRF8/0Td6VYl6JUnojhuyloo2zdX60n8AVb3EJGla3IZlQW
+         sgZoh6g83aCX8gR/6ubJ30qbQUUvipC1Vi097tgut4/Bd2vQ+lz6T1f/PLEyjj/UZBIP
+         dlCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699621921; x=1700226721;
+        d=1e100.net; s=20230601; t=1699621973; x=1700226773;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oOOIgBuLD76SRMXtscbLmnBWjjTZy61Y8xnxf0Pthzg=;
-        b=M+jUm0ZeVbi2dO7AIvh3Dzd73cy88Z7TndP2FGzBpzSP3G4LJ1Yu++OIF4hj4U6F6C
-         J+z4gwqxiAWVhVvPKqMn3BwfYd3rebwV3cCk2Bi0vSnh0S27o2m0KT+FKSdvxZKuiII3
-         dr8ANu7RuqWmWcIspT+OtQH0qGJ1dHf7BkYlBYgv1z7FZ7HM1b7ZGiNQhTTIdv/0LjBy
-         WdTUli9Uo/s79mppNTvrjronPCUAa68+hcXmQR19M5wLF5m3tYjAIC5ptM2cHODDHtxn
-         MtlFzYzA3cqHn7uUHf9GiOEhjbaWCQWJYvQfzcxb/3/Kux6xIsKsutwgjQj37y8LPS3A
-         3vaA==
-X-Gm-Message-State: AOJu0YwNTUnAwgalLVnAcuBIgG+TZwg2oBrexpfh8hd0VN+1DdzQoDVX
-	C2oN4lzyr1J3/BAnmohT/fUxMyxec8J68enzcRI=
-X-Google-Smtp-Source: AGHT+IEEIi+ieS8L2KzBKeL0uO7ZQVAsj01ruKfHUinIc9RCASRJCRjWriWUSNdeLpp2AWnOGM6TWQ==
-X-Received: by 2002:a17:907:3e81:b0:9c3:1d7e:f5b5 with SMTP id hs1-20020a1709073e8100b009c31d7ef5b5mr6652693ejc.20.1699621920783;
-        Fri, 10 Nov 2023 05:12:00 -0800 (PST)
+        bh=6isbZ9uLtfZ8lUq1v9mDUjAKFznjzf9WjfJ4yDiUmqU=;
+        b=NhD8n0X/S2KsjcdizjxKHLuoYs63B5OPtiekH8rvo8rQzE53jM7fUKnGs2iIPeIpcz
+         p+glcPMvP4Ltr703QZCdRhg1s5hdURnQ9cZA5pJJNP4L41f8xrTxisH+h5D++xtjN9IG
+         WzemZBbyo0zDZYG0VJw9OMIAr4NJmIsbIwm6TkXlQVxbJA3++mwoyt3IxK62Q2Buba0U
+         nzv6QHcrYfPN3iDKS+C5eBXiXDJT28OOpXrROndzf+kYil7SM4QbcBMm8d6uBOG4969X
+         3fpkYKbuxGhy6xwdjzCtNWkaP8egcseqdrwcGxYJKaDrqqTzBhyWUbrG4XYCwuAsWr8F
+         v0rQ==
+X-Gm-Message-State: AOJu0YwO4JwuuqN2Y51PPcdcUcF5qnsGcjYDfuNbGvMlhjNcJz/6eRti
+	3vPICQ/fA4dACfF/N3/ga3/H9A==
+X-Google-Smtp-Source: AGHT+IEt2Z20CLasgfjy8piP5p7z8ht3ceHn+xxKIK+JakEK6gmyJ0AHVbbJcPPUqVPzXZgvm5W4uA==
+X-Received: by 2002:a17:907:7f28:b0:9bd:e017:370e with SMTP id qf40-20020a1709077f2800b009bde017370emr7276341ejc.54.1699621972924;
+        Fri, 10 Nov 2023 05:12:52 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.126])
-        by smtp.gmail.com with ESMTPSA id n22-20020a170906841600b009b27d4153c0sm3938708ejx.178.2023.11.10.05.11.59
+        by smtp.gmail.com with ESMTPSA id n22-20020a170906841600b009b27d4153c0sm3938708ejx.178.2023.11.10.05.12.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Nov 2023 05:12:00 -0800 (PST)
-Message-ID: <c012c0b3-d6ca-4291-aa0c-05a192f30dcb@linaro.org>
-Date: Fri, 10 Nov 2023 14:11:58 +0100
+        Fri, 10 Nov 2023 05:12:52 -0800 (PST)
+Message-ID: <9b108026-0550-4b74-b87f-87f737b5d1d2@linaro.org>
+Date: Fri, 10 Nov 2023 14:12:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 1/4] dt-bindings: display: panel: Update NewVision
- NV3051D compatibles
+Subject: Re: [PATCH V2 3/4] dt-bindings: arm: rockchip: Add Powkiddy RK2023
 Content-Language: en-US
 To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
@@ -76,7 +75,7 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
 References: <20231109215007.66826-1-macroalpha82@gmail.com>
- <20231109215007.66826-2-macroalpha82@gmail.com>
+ <20231109215007.66826-4-macroalpha82@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -122,10 +121,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231109215007.66826-2-macroalpha82@gmail.com>
+In-Reply-To: <20231109215007.66826-4-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_051208_155097_D3AAC6CC 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20231110_051258_352981_14491D1F 
+X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,26 +145,14 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 09/11/2023 22:50, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Update the NewVision NV3051D compatible strings by adding a new panel,
-> the powkiddy,rk2023-panel, and removing another entry, the
-> anbernic,rg353v-panel. The rg353v-panel is exactly identical to the
-> rg353p-panel and is not currently in use by any existing device tree.
-> The rk2023-panel is similar to the rg353p-panel but has slightly
-> different timings.
+> The Powkiddy RK2023 is a handheld gaming device made by Powkiddy and
+> powered by the Rockchip RK3566 SoC. Group the Powkiddy RK3566 based
+> devices together as they are both extremely similar.
 > 
-> I originally wrote the driver checking for the newvision,nv3051d
-> compatible string which worked fine when there was only 1 panel type.
-> When I added support for the 351v-panel I *should* have changed how the
-> compatible string was handled, but instead I simply added a check in the
-> probe function to look for the secondary string of
-> "anbernic,rg351v-panel". Now that I am adding the 3rd panel type of
-> "powkiddy,rk2023-panel" I am correcting the driver to do it the right
-> way by checking for the specific compatibles.
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
 
-I don't understand how any of this driver behavior is a reason to drop
-rg353v. You wrote two paragraphs to justify this removal, but I feel the
-only reason is that rg353v is just not needed, because it is duplicating
-rg353p? Is this right? You actually did not write it explicitly...
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
