@@ -4,74 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99D90C4167D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 18:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C39FC4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 21:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4mwGQLxDi4AcLligDxixEbMbAMmJMiELPbl5GJ+1lVk=; b=Enb/5zyPVup+KQSiZvFK1FXQou
-	nn1WTFsLebwn7Af5kB0QIPMcMa4p9aZfGOiKQ/VTZfgTH93PYM8pyHxCoB0IHLnvlQLP23XBq7Bbu
-	Rl1AfddqK68RL9xoxFLRn9NOy4PP2bJ/XravzSI1IFw918UUb2DvxAZnn6qKv6uDNm1OFC+1E2Svd
-	WgaFp9OSKwAzZXo9Ut6IxHsSMt5IbTzs4M5FvBSf2oTjoBDL1pFRuOHEvNX2HdVD+GElIFRklg1Az
-	pRmhtGCCkvS46DfaNojKwbFzLMjT/xEf5iKqbaFpCCw1kyV6S+6k8eDIuTSWIcGufs0qqjj8JaNEE
-	iJ8EbWng==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=aFN9mr4TXurUaFDQDeWp1YnM3UHLuZIS4cMdL4R4KSY=; b=OPtDWQAJXGv5kj
+	eOln3Ziw19g//JcV6t4p7togfSgnmD5xyXSVLCCMF10GsZpLQA5VLo0HD2sUFtHP2Mlidf5DJrlbw
+	4DGCopPr1qv8YNxu2Lk60cX2yun4nj2aTVuat/RMJVbO612kuRkcDLLKwEgyqq8eXd6PC+Zfj4oVm
+	JKZP1uxV1FiiULScSFA8B95S0Pob/DeQctL4oqWuAy0j8zUug+fyxmRTW8nirTJw3QlUhUufbtxa2
+	nslO7nor3TQzMLaEEBVp7edxDudsVaLd/QPlng/0OPYLlZOs4XtVpvWXZEA515BeLTIcN+Afuege1
+	1bTNSCdbezDLrCD2vwrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1VvE-009CBx-1O;
-	Fri, 10 Nov 2023 18:08:00 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1r1Yhr-009Rzu-3C;
+	Fri, 10 Nov 2023 21:06:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1VvA-009CBG-2B;
-	Fri, 10 Nov 2023 18:07:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 70085B82407;
-	Fri, 10 Nov 2023 18:07:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30E96C433CC;
-	Fri, 10 Nov 2023 18:07:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1699639673;
-	bh=PwI1HMfc9Px11Tdj+NXcNTpHBZq5il3Ma/LVyONVjRg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=osp9DsibB3jQ/+hYBLD4x+ZLmbK8DShmrosXu7V3XLTAGt+CCQppRvCqC0RUuKl76
-	 w+CtqyYCmBaJlUgB84RCCk8Wx6moRO/0qZAqlIHhRi/8FL9v7rgECe/KF9P+Hq9V6N
-	 L63Pdb+dHcgunih2OyOLPMMpqStmliLveJTVKL36gLi8ekdXeZj6q/oJiEQJGfWqYy
-	 mk/oLWpJiPnGAHL1/0xDn9xsP9YSnuCwEGpy37HAur5gk0zsVoUbhkkrcHaehDFwfp
-	 78HdhQk/WLs2vdMbT30r4AxXWnro9q5opjz+Try3Uen9Y785IjeRibT+QpcXkfS2GZ
-	 eNwKVTfKdx82Q==
-Date: Fri, 10 Nov 2023 18:07:43 +0000
-From: Conor Dooley <conor@kernel.org>
-To: zhangqing <zhangqing@rock-chips.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Conor Dooley <conor.dooley@microchip.com>, mturquette@baylibre.com,
-	sboyd@kernel.org, kever.yang@rock-chips.com, heiko@sntech.de,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	huangtao@rock-chips.com, andy.yan@rock-chips.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v5 3/4] dt-bindings: clock: rk3588: export PCLK_VO1GRF
- clk id
-Message-ID: <20231110-dreamt-revival-5b360472febd@roley>
-References: <20231108061822.4871-1-zhangqing@rock-chips.com>
- <20231108061822.4871-4-zhangqing@rock-chips.com>
- <20231108-donation-uncertain-c4d0f560c420@spud>
- <2e520a06-0ff1-76ef-2a72-ab6663738b45@rock-chips.com>
- <20231109-send-pushchair-45b37551102a@wendy>
- <a11c847c-4f95-ea7b-3497-6ada0586c486@rock-chips.com>
- <dee8031f-d739-442c-988c-3df61d92c0d3@linaro.org>
- <f013df81-670e-37c4-c1a7-e1302352ca20@rock-chips.com>
- <f58c8f3f-7b34-47e7-a33a-bddb6106fec7@linaro.org>
- <53059eca-5c55-6dde-6246-40ed9f2dca91@rock-chips.com>
+	id 1r1Yho-009Ry9-2L
+	for linux-rockchip@lists.infradead.org;
+	Fri, 10 Nov 2023 21:06:22 +0000
+Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1c:f269::1])
+	by madras.collabora.co.uk (Postfix) with ESMTP id F295666073EF;
+	Fri, 10 Nov 2023 21:06:15 +0000 (GMT)
+From: "Daniel Almeida" <daniel.almeida@collabora.com>
+In-Reply-To: <20231109201640.340556-1-paul.kocialkowski@bootlin.com>
+X-Forward: 127.0.0.1
+Date: Fri, 10 Nov 2023 21:06:15 +0000
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Mauro Carvalho Chehab" <mchehab@kernel.org>, "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Nicolas Dufresne" <nicolas.dufresne@collabora.com>, "Sebastian Fricke" <sebastian.fricke@collabora.com>, "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>
+To: "Paul Kocialkowski" <paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
-In-Reply-To: <53059eca-5c55-6dde-6246-40ed9f2dca91@rock-chips.com>
+Message-ID: <667d-654e9b80-1-40e97880@22375103>
+Subject: =?utf-8?q?Re=3A?= [PATCH 1/4] =?utf-8?q?media=3A?==?utf-8?q?_vicodec=3A?= 
+ Disable =?utf-8?q?(TRY=5F)DECODER=5FCMD?= for the stateless case
+User-Agent: SOGoMail 5.8.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_100757_044095_2FC72648 
-X-CRM114-Status: UNSURE (   5.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231110_130620_912722_411EDF84 
+X-CRM114-Status: GOOD (  19.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,100 +55,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8717238647523381900=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Paul,
 
---===============8717238647523381900==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OExvhfaQ444Ef20I"
-Content-Disposition: inline
+On Thursday, November 09, 2023 17:16 -03, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
 
+> The (TRY_)DECODER_CMD ioctls are only useful for stateful decoders and for
+> stateless decoders that support holding capture buffers (which is not the case
+> for this driver).
+> 
+> Disable them when registering the stateless decoder.
+> 
+> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> ---
+>  .../media/test-drivers/vicodec/vicodec-core.c | 19 +++++++++++++------
+>  1 file changed, 13 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+> index 6f0e20df74e9..8f7a2b153ee9 100644
+> --- a/drivers/media/test-drivers/vicodec/vicodec-core.c
+> +++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+> @@ -1240,6 +1240,12 @@ static int vicodec_decoder_cmd(struct file *file, void *fh,
+>  	struct vicodec_ctx *ctx = file2ctx(file);
+>  	int ret;
+>  
+> +	/*
+> +	 * This ioctl should not be used with a stateless codec that doesn't
+> +	 * support holding buffers and the associated flush command.
+> +	 */
+> +	WARN_ON(ctx->is_stateless);
+> +
+>  	ret = v4l2_m2m_ioctl_try_decoder_cmd(file, fh, dc);
+>  	if (ret < 0)
+>  		return ret;
+> @@ -2025,7 +2031,7 @@ static const struct v4l2_m2m_ops m2m_ops = {
+>  
+>  static int register_instance(struct vicodec_dev *dev,
+>  			     struct vicodec_dev_instance *dev_instance,
+> -			     const char *name, bool is_enc)
+> +			     const char *name, bool is_enc, bool is_stateless)
+>  {
+>  	struct video_device *vfd;
+>  	int ret;
+> @@ -2045,10 +2051,11 @@ static int register_instance(struct vicodec_dev *dev,
+>  	strscpy(vfd->name, name, sizeof(vfd->name));
+>  	vfd->device_caps = V4L2_CAP_STREAMING |
+>  		(multiplanar ? V4L2_CAP_VIDEO_M2M_MPLANE : V4L2_CAP_VIDEO_M2M);
+> -	if (is_enc) {
+> +	if (is_enc || is_stateless) {
+>  		v4l2_disable_ioctl(vfd, VIDIOC_DECODER_CMD);
+>  		v4l2_disable_ioctl(vfd, VIDIOC_TRY_DECODER_CMD);
+> -	} else {
+> +	}
+> +	if (!is_enc) {
+>  		v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
+>  		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
+>  	}
+> @@ -2107,17 +2114,17 @@ static int vicodec_probe(struct platform_device *pdev)
+>  	platform_set_drvdata(pdev, dev);
+>  
+>  	ret = register_instance(dev, &dev->stateful_enc, "stateful-encoder",
+> -				true);
+> +				true, false);
+>  	if (ret)
+>  		goto unreg_dev;
+>  
+>  	ret = register_instance(dev, &dev->stateful_dec, "stateful-decoder",
+> -				false);
+> +				false, false);
+>  	if (ret)
+>  		goto unreg_sf_enc;
+>  
+>  	ret = register_instance(dev, &dev->stateless_dec, "stateless-decoder",
+> -				false);
+> +				false, true);
+>  	if (ret)
+>  		goto unreg_sf_dec;
+>  
+> -- 
+> 2.42.1
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---OExvhfaQ444Ef20I
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Daniel Almeida <daniel.almeida@collabora.com>
 
-> Ok , I'll drop this change in PATCH V6.
-
-> =E5=BC=A0=E6=99=B4
-> =E7=91=9E=E8=8A=AF=E5=BE=AE=E7=94=B5=E5=AD=90=E8=82=A1=E4=BB=BD=E6=9C=89=
-=E9=99=90=E5=85=AC=E5=8F=B8
-> Rockchip Electronics Co.,Ltd
-> =E5=9C=B0=E5=9D=80=EF=BC=9A=E7=A6=8F=E5=BB=BA=E7=9C=81=E7=A6=8F=E5=B7=9E=
-=E5=B8=82=E9=93=9C=E7=9B=98=E8=B7=AF=E8=BD=AF=E4=BB=B6=E5=A4=A7=E9=81=9389=
-=E5=8F=B7=E8=BD=AF=E4=BB=B6=E5=9B=ADA=E5=8C=BA21=E5=8F=B7=E6=A5=BC
-> Add:No.21 Building, A District, No.89 Software Boulevard Fuzhou, Fujian 3=
-50003, P.R.China
-> Tel:+86-0591-83991906-8601
-> =E9=82=AE=E7=BC=96=EF=BC=9A350003
-> E-mail:elaine.zhang@rock-chips.com
-> *************************************************************************=
-***
-> =E4=BF=9D=E5=AF=86=E6=8F=90=E7=A4=BA=EF=BC=9A=E6=9C=AC=E9=82=AE=E4=BB=B6=
-=E5=8F=8A=E5=85=B6=E9=99=84=E4=BB=B6=E5=90=AB=E6=9C=89=E6=9C=BA=E5=AF=86=E4=
-=BF=A1=E6=81=AF=EF=BC=8C=E4=BB=85=E5=8F=91=E9=80=81=E7=BB=99=E6=9C=AC=E9=82=
-=AE=E4=BB=B6=E6=89=80=E6=8C=87=E7=89=B9=E5=AE=9A=E6=94=B6=E4=BB=B6=E4=BA=BA=
-=E3=80=82=E8=8B=A5=E9=9D=9E=E8=AF=A5=E7=89=B9=E5=AE=9A=E6=94=B6=E4=BB=B6=E4=
-=BA=BA=EF=BC=8C=E8=AF=B7=E5=8B=BF=E5=A4=8D=E5=88=B6=E3=80=81=E4=BD=BF=E7=94=
-=A8=E6=88=96=E6=8A=AB=E9=9C=B2=E6=9C=AC=E9=82=AE=E4=BB=B6=E7=9A=84=E4=BB=BB=
-=E4=BD=95=E5=86=85=E5=AE=B9=E3=80=82=E8=8B=A5=E8=AF=AF=E6=94=B6=E6=9C=AC=E9=
-=82=AE=E4=BB=B6=EF=BC=8C=E8=AF=B7=E4=BB=8E=E7=B3=BB=E7=BB=9F=E4=B8=AD=E6=B0=
-=B8=E4=B9=85=E6=80=A7=E5=88=A0=E9=99=A4=E6=9C=AC=E9=82=AE=E4=BB=B6=E5=8F=8A=
-=E6=89=80=E6=9C=89=E9=99=84=E4=BB=B6=EF=BC=8C=E5=B9=B6=E4=BB=A5=E5=9B=9E=E5=
-=A4=8D=E9=82=AE=E4=BB=B6=E6=88=96=E5=85=B6=E4=BB=96=E6=96=B9=E5=BC=8F=E5=8D=
-=B3=E5=88=BB=E5=91=8A=E7=9F=A5=E5=8F=91=E4=BB=B6=E4=BA=BA=E3=80=82=E7=A6=8F=
-=E5=B7=9E=E7=91=9E=E8=8A=AF=E5=BE=AE=E7=94=B5=E5=AD=90=E6=9C=89=E9=99=90=E5=
-=85=AC=E5=8F=B8=E6=8B=A5=E6=9C=89=E6=9C=AC=E9=82=AE=E4=BB=B6=E4=BF=A1=E6=81=
-=AF=E7=9A=84=E8=91=97=E4=BD=9C=E6=9D=83=E5=8F=8A=E8=A7=A3=E9=87=8A=E6=9D=83=
-=EF=BC=8C=E7=A6=81=E6=AD=A2=E4=BB=BB=E4=BD=95=E6=9C=AA=E7=BB=8F=E6=8E=88=E6=
-=9D=83=E8=AE=B8=E5=8F=AF=E7=9A=84=E4=BE=B5=E6=9D=83=E8=A1=8C=E4=B8=BA=E3=80=
-=82
->=20
-> IMPORTANT NOTICE: This email is from Fuzhou Rockchip Electronics Co., Ltd=
- .The contents of this email and any attachments may contain information th=
-at is privileged, confidential and/or exempt from disclosure under applicab=
-le law and relevant NDA. If you are not the intended recipient, you are her=
-eby notified that any disclosure, copying, distribution, or use of the info=
-rmation is STRICTLY PROHIBITED. Please immediately contact the sender as so=
-on as possible and destroy the material in its entirety in any format. Than=
-k you.
->=20
-> *************************************************************************=
-***
->=20
-
-Please also drop this legal footers.
-
-Thanks,
-Conor.
-
---OExvhfaQ444Ef20I
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZU5xagAKCRB4tDGHoIJi
-0mRqAP4yZmW1RPmA4GZetYj3jVRckaKN7UW79TtmSrKLKPJ7xwD9FbIVjxmE/4yT
-Wbc/0ZnYDI9ffUVgJa9bqOCLpHMNGwk=
-=z8Ye
------END PGP SIGNATURE-----
-
---OExvhfaQ444Ef20I--
-
-
---===============8717238647523381900==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8717238647523381900==--
-
