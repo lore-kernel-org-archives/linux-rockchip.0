@@ -4,116 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F35C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 14:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B876CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 14:52:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QuU1HNn0/XghixSOEByeW308OH5Z03/WyIBnbsU2UOo=; b=sRHz/tRN8iwXHH
-	ynSC9wwjVMPzDzQQp5awA6N9GbBEs9DEtyHezeJ/rCULbiKpkZig/YDEY+HH+bDpZLTDbf7zIjqpl
-	lztumBdjfMc5wwzqlfAI+ESJnciBfJURS3ZWhf3sSp3WRPKAqbJe8DjHj1EJPcoD5VKIocDMHfZ74
-	CoYWfzCv9kJ5xrqcF9pp31iq61hNC2AdXU4CrmVTXag/bAFu0YDRfuqFaBLvNr+toVOCBGXNybiva
-	Em26lHYHIC0HhHuxTUZG0bmzcvZQH8OwftOn59HPeaEEg80VKcZkEJw3YkP6CuGVkTWpzEaKdKB75
-	mFwsh00X98JIaQTdpKIw==;
+	List-Owner; bh=J5yXvfqVS49h1p7HPdZ9xJ7oc81FYyARDlCf2YMtLcE=; b=IG/6M+2vb0wmsN
+	pzcMWT1FdUBkOvVJhGSAktPdFZVfYghtoVEAlmyKD8oYqjtRsbg0Rsu1M4/mBxDyvB6NLed1n8lmM
+	3a9hqlV31Xj8ntpw1jxVt69RmoqlJvUL38T7ooFC7wWQh0u47Wqt4u3h8vgSewDj9lXWzUtQUZFuA
+	KKmjtaXVhr6jtv/XgXaKYoqMj2moWLFoPkvIcCAm8LBJmgLXRlmxZfB4d2UroLCTgbOGSGbhNZ7bk
+	bTrdWMqice1qUOYYaAYLwuanfVAcG/YtlG5vO8+dkw7VKbnYcscl2UZJHdz8KkGgXbyzAuRZRZtcB
+	IJKB+63MXKx6g4gs820A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1SmX-008wsK-26;
-	Fri, 10 Nov 2023 14:46:49 +0000
-Received: from mail-co1nam11olkn20811.outbound.protection.outlook.com ([2a01:111:f400:7eab::811] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1r1Ss5-008xNS-1G;
+	Fri, 10 Nov 2023 14:52:33 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1SmU-008wrV-0n
+	id 1r1Ss2-008xLk-2E
 	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Nov 2023 14:46:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WISkBCNHuFbUEV7ObOii4NtpEmEaDox+kqWw51IhfQEEexYbn/DYi9D/7eawiKneBpTOAXyyJUWRtHB0K9hjeuCRToiZDCKXxCbJ2qn142QcW5keZOsPQHKcrBhWWPGYQDPjh7k81XSF24uP0BWlYqcBWfmaBhKcZA831ITDmedN/58iop3IqC9za6I0bUhYV/RvH+qNvVqETe5B1dbianGg3BCWoqxJCkgrIPE1670ql4cWI9L+yOJdEqPSTLZtUAjmYGAOd69TdIZoqX1VhIghICgZBsfifAyHUQSr9Lf5H94aE9rvL7LOHKOOTnknZMoZm0PdF0kKRaJea8diSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ddoa+CdxgRsB4CVxwjnslLnzWpN1S1sTf0mEL8RV/EY=;
- b=MHTyNooPL7VdVh9K4E/m3GmPBU88j1vDABJ9deK9Ny8UAQh/8E6EYzLyPRaRf+Uay0jtF+9eu9LAVOME1Cimn0gE/20Z+pA46cjsjhanZljfBr7vqXtPO/+IRsLcipZAFyVC740fAz03xdtl+8UqR7+3cDjb4U0KPZ0LNWMvTgadXlhDpneqB0EqOfd9bsYFptjz0BBtnxfBywnvXmJ7MRLysDOjiq0J0gHH7yQmgbGOqdPtBuyW987sOR24ZqxZr73mDNoOMVzneup0lrYRZkLREwXqz5/Fyh1Pvk0ddR6Myasz00XRZFhb87A1gMVReyPArVIvxWiY9BR6tnDzqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ddoa+CdxgRsB4CVxwjnslLnzWpN1S1sTf0mEL8RV/EY=;
- b=sur81naqWUep2Ym/gnsUzTC6+X2VjN7u3/CHXEi++09StPDsSG2LgbA1QlhEEK1htnyS/YpHlyrmNF6LdEe6Z5aQeunf+AXa6B+ZZyMhIVWbcyXmhFpi6DTNnUOArCqpoRCVYOZo1bsuIatsZNoA365nlOgVtY77Wk+QYEPdpBLCYaq4trEhB6dqOTlY9nqpRxtqoF86fWY/ZA2dtCLFEvV9B9BCTfSZp28it4i0w+TeTNB3TXF50UDxWwX3HH8gojBG7mB9CxMga8Mq2yGDH66aiKO0BnTJ0yWTms+VZM8epwrKjo6vqz5KA+21sI2AiRnszpafxLvKidRAsXobew==
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
- by PH7PR06MB9485.namprd06.prod.outlook.com (2603:10b6:510:2e8::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.28; Fri, 10 Nov
- 2023 14:30:42 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::3fca:a39b:c9d2:c834]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::3fca:a39b:c9d2:c834%2]) with mapi id 15.20.6954.025; Fri, 10 Nov 2023
- 14:30:42 +0000
-Date: Fri, 10 Nov 2023 08:30:39 -0600
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
-	daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
-	neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
-Subject: Re: [PATCH V2 4/4] arm64: dts: rockchip: add Powkiddy RK2023
-Message-ID: <SN6PR06MB5342CA386D24487297783A17A5AEA@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20231109215007.66826-1-macroalpha82@gmail.com>
- <20231109215007.66826-5-macroalpha82@gmail.com>
- <15be209c-753d-469b-a7c4-7403c7745a9f@linaro.org>
-Content-Disposition: inline
-In-Reply-To: <15be209c-753d-469b-a7c4-7403c7745a9f@linaro.org>
-X-TMN: [zph1UVW1RyQjnrG2VSAGGQVnPkbcLa4W]
-X-ClientProxiedBy: DM5PR07CA0090.namprd07.prod.outlook.com
- (2603:10b6:4:ae::19) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <ZU4+j+fn2TLQtUhX@wintermute.localhost.fail>
+	Fri, 10 Nov 2023 14:52:32 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-40a4859b231so2617825e9.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Nov 2023 06:52:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699627942; x=1700232742; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1gS1wyuI8aGNfo6PKmYKdIjYheQswElfmN9q70KQxSA=;
+        b=z8Va5uNEwlebDSccLUyMB+Wijs+zg8iTmW3lJDDhEU30f3S3IW+1BRMl+ZRwKczN+D
+         tDEWMTkTNPSlw1fDfSpqAMrxVbRSISRXbOZkuwF2f+rnwrEM6I52u4xHB/H3UepGS4kg
+         aSaK/2FT2GIye+XWcT1ypMROxQXGPpb9Qe7R2nwmFucUuLtTHzFZnAZjQUJnSH7BPexT
+         DjVeUfFrruhkgEH1JdMshpNEGT0VuwnVfTGdfJpaxDcDPEZbayBVruXK4R/HLS+00zkP
+         TzXJkZCNgbrcNxSo3+xvXPJBsBi9zvnsM74s+cYjpsGJ2OerOvBrHoDLQDsbnZkfDiGX
+         LSvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699627942; x=1700232742;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1gS1wyuI8aGNfo6PKmYKdIjYheQswElfmN9q70KQxSA=;
+        b=IxhbhNkBdn4aCjlFwTXln+2dKmIM+ekrxNg0M90pzoQLWHKHIgXh+TKJWVzfBEftYX
+         ukBg6PQn2TX/x7fOE6mJeOHve69lY/ZEzb+jfIj22o3Nxrw8Rh1Wanmo7wvu6lTSAYDJ
+         E8fI+b0negC/3xEDCXBELinolsNg/LclbtFDPg6G+QLJqyEInoNsTKmvZhXe/5wWYcIP
+         aZfJlQSQAD6LQOJa8H2YPLonQ/SJrHxEU0vVOkpwX24c2WiHxpKwJvOoUL1/IvSNYrbm
+         0+BIB0IssEdphtV1nPPydhg0szHIIg6PpaZpBuEhWd86wslumhazhptdfkDSpV8BoTzr
+         od4w==
+X-Gm-Message-State: AOJu0YzzoDjppnIWUUntpY5DAmRKfyNIRzL6h3S1IVLMi0RWcodkVSeK
+	qNYFtU5wBwUAf1Qmr3dw8japGA==
+X-Google-Smtp-Source: AGHT+IF1IA3tdVq3xOJBj+v0ShieNBu/cCS8yER/wl8D4FRkmn+rmYKDDekN1L4VcG7NbJ+8/1LIDA==
+X-Received: by 2002:a05:600c:4446:b0:408:4120:bad2 with SMTP id v6-20020a05600c444600b004084120bad2mr6775783wmn.9.1699627942103;
+        Fri, 10 Nov 2023 06:52:22 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.126])
+        by smtp.gmail.com with ESMTPSA id h10-20020a05600c350a00b004097881d5f0sm5412328wmq.29.2023.11.10.06.52.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Nov 2023 06:52:21 -0800 (PST)
+Message-ID: <ad64aa78-1874-4a92-8a79-6f45bb19dbe2@linaro.org>
+Date: Fri, 10 Nov 2023 15:52:19 +0100
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|PH7PR06MB9485:EE_
-X-MS-Office365-Filtering-Correlation-Id: 18484da4-245c-45f3-7d67-08dbe1f99e08
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QOijKvGal9CgIIVBX4SZWNHK6jKy2gHqz33p6gUI2iTEDEkVkTBPMnU4nnV6uvECaVUni8HY9ivYGEAPWhqbhzus5pvPVavGXdCmbHH6/ki1tPkOA0jDW/cV9v/YY6yqdOa+6KMPQgxhRUEKwBbaJBlqRbJ4geYs8d3xt5HJyE3dKoJ6zy50ZdaUO8thJ8VkzONd3KAFrYAj5cJPVRmZlNeTWqU2jnEVrqQcWk2UsXPINsh2NPmOuVmWKv6cxjbVCegIFP/OYixIxmTCGaGjW6+5uFCACdkoCjFxB5MPLj5pmqATDm7udUHzimLZPKkocMJIWqwLKzOV1/seFp1cLhCEFQLlzGtQ/Dte7+zXlTA5M2l5qkqxQ4dMpvUejpOl1ZhRZIT3uuueorP9D0v2Py+A2jPZ1Mr4Uaw41NEDHKbBCieoJsF09x75J1Pzp8sfRxummpr80GU+KZlcCFCoI0aoz2NiCOqtQcdwxaAxnI9VAviWKoOYGKeyHIBIwFbKHkGxlQ03a0wDVIEcnPejqdwLxIiTiAqh9XTp4Dy58EQPvnURiDXN7yHioKvBKNB2
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5QI4htUHThtTYViIedcot3BY2LPgONgl3VhWjQJI9GiX8gejP6vJJihbL27+?=
- =?us-ascii?Q?07zKkx8MoAgucvWsMSNH2jViIvooO/tuAZMkMSq4JHJK8V8fVnzwTqr+orKY?=
- =?us-ascii?Q?7B/yWWLDEydKLLbmSMLDiUnjgCaUZmYtby9nT5YDofu7VDgbAi7rEryC50yC?=
- =?us-ascii?Q?hs45HLkpcf4XCgt0sztffq51h8yHo99pGb3/UrMmPyjrd0FuID0/LwrQcbhM?=
- =?us-ascii?Q?oMxygnDl7WcJ46kWA0e8a09E2yZipIFW1H8flTB2BUIXC1P1pvOk3wLAkdV2?=
- =?us-ascii?Q?qjHdtx4m2noCN3LbcjdQPCt8cj+TOB+Vz0h5+bY06aoOLi+qNSjfIDyvK8H0?=
- =?us-ascii?Q?LPFHOb4tWDYA5G7y/rp1KWHbGca1WD1DPTN9Q0in6xbxzJEIT0ZswCZxAKEt?=
- =?us-ascii?Q?YHG5gOmO4l/b2RUNE9btTL9Ev3d8jWlUQHyORk2mXUWMh0pwpgztYzEs9UGr?=
- =?us-ascii?Q?qDY2Ph5vBIL8Kh/xUsHjIFAZ1Ph1+evsSU2v0CLxeWAF24PdCrUfEcAO7LHz?=
- =?us-ascii?Q?OXLC9a8hIDDQPBx5Vb4yb+I1ay2nCuXbkcEpOVLQKOLAcrrPxq62rS9Bjwz7?=
- =?us-ascii?Q?Le+pOxEYpiSo1jwGR94YNb5o5YbAaCTcgFYimGDN+sighLO0d9HDlEqTGs7a?=
- =?us-ascii?Q?AnCcPX+sP9OT2t5ELi6YGh+MAPQjjD0iCt0PcIcJEz7QvkHhVRBV/ByY3pIM?=
- =?us-ascii?Q?tLkZ7hlKg34R/Jsb/wJFuHXN7G7+wyeUf1gg/+sDmLpLHibXyYJJVTnc4BwW?=
- =?us-ascii?Q?DL2UspjBx28/BUZHPG2SVfaodUTeIvZ3/poriCHBuQYCmcvTfOZ22ZiM9wdo?=
- =?us-ascii?Q?I3fDGpGKYAC0aJvBV3+UC0rZ/CtOQWmajBVpoZaEt8FLan/e6x9EIQlLX2dy?=
- =?us-ascii?Q?GMokywR73LzZ/IvxajzpbNogS3961qYYoDziAQjnihl3Y8rl+XElVd/L/KDX?=
- =?us-ascii?Q?k3VJKCu7O6q1A/xcDVw2KpEaCv0F5k2MyFV4dkTHQRRrzLYpb5mfAqJQq9eF?=
- =?us-ascii?Q?aoACqvdnE4MERvy1s6JzxEfMtMmCCCF22hmML2wMICsLEPc1ApBLVCbKq1Bp?=
- =?us-ascii?Q?4JPJi3o4T7RMfMoBrsXMMp2rNZva7VmDGstogoaSFbOhFCFWLj0nDeOpgHBY?=
- =?us-ascii?Q?y0nYYn9Ejlu0JU4uk6+UgfVTMoFlGB2oyEWFahDwNcNdOL0o5f8+Oqu4qIFD?=
- =?us-ascii?Q?FFtQOZpvsG4KnIcwQY+jrrkW0MQDksXEa5OrdridBnYU8TPQ1W3sW526bWE?=
- =?us-ascii?Q?=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 18484da4-245c-45f3-7d67-08dbe1f99e08
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2023 14:30:42.3838
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR06MB9485
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2 1/4] dt-bindings: display: panel: Update NewVision
+ NV3051D compatibles
+Content-Language: en-US
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
+ neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
+References: <20231109215007.66826-1-macroalpha82@gmail.com>
+ <20231109215007.66826-2-macroalpha82@gmail.com>
+ <c012c0b3-d6ca-4291-aa0c-05a192f30dcb@linaro.org>
+ <SN6PR06MB5342A696F25065F9C253154CA5AEA@SN6PR06MB5342.namprd06.prod.outlook.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
+ m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
+ HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
+ XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
+ mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
+ v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
+ cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
+ rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
+ qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
+ aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
+ gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
+ dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
+ NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
+ hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
+ oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
+ H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
+ yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
+ 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
+ 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
+ +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
+ FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
+ 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
+ DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
+ oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
+ 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
+ Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
+ qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
+ /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
+ qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
+ EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
+ KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
+ fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <SN6PR06MB5342A696F25065F9C253154CA5AEA@SN6PR06MB5342.namprd06.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231110_064646_290713_E87A5E27 
-X-CRM114-Status: GOOD (  26.35  )
+X-CRM114-CacheID: sfid-20231110_065230_731093_A68F6757 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,131 +145,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 10, 2023 at 02:14:23PM +0100, Krzysztof Kozlowski wrote:
-> On 09/11/2023 22:50, Chris Morgan wrote:
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> > 
-> > Add support for the Powkiddy RK2023. The Powkiddy RK2023 is a handheld
-> > gaming device with a 3.5 inch screen powered by the Rockchip RK3566
-> > SoC. The device is almost identical to the Anbernic RG353P except it
-> > lacks eMMC, a function button, a touch screen, no UART headers on the
-> > board, and the panel has slightly different timings.
-> > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> >  .../dts/rockchip/rk3566-powkiddy-rk2023.dts   | 161 ++++++++++++++++++
-> >  2 files changed, 162 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> > index a18f33bf0c0e..f969618da352 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -78,6 +78,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.2.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-powkiddy-rgb30.dtb
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-powkiddy-rk2023.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-radxa-cm3-io.dtb
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts
-> > new file mode 100644
-> > index 000000000000..5740412f6b2b
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts
-> > @@ -0,0 +1,161 @@
-> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> > +
-> > +/dts-v1/;
-> > +
-> > +#include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/input/linux-event-codes.h>
-> > +#include <dt-bindings/pinctrl/rockchip.h>
-> > +#include "rk3566-anbernic-rg353x.dtsi"
-> > +
-> > +/ {
-> > +	model = "RK2023";
-> > +	compatible = "powkiddy,rk2023", "rockchip,rk3566";
-> > +
-> > +	aliases {
-> > +		mmc1 = &sdmmc0;
-> > +		mmc2 = &sdmmc1;
-> > +		mmc3 = &sdmmc2;
-> > +	};
-> > +
-> > +	battery: battery {
-> > +		compatible = "simple-battery";
-> > +		charge-full-design-microamp-hours = <3151000>;
-> > +		charge-term-current-microamp = <300000>;
-> > +		constant-charge-current-max-microamp = <2000000>;
-> > +		constant-charge-voltage-max-microvolt = <4250000>;
-> > +		factory-internal-resistance-micro-ohms = <117000>;
-> > +		voltage-max-design-microvolt = <4172000>;
-> > +		voltage-min-design-microvolt = <3400000>;
-> > +
-> > +		ocv-capacity-celsius = <20>;
-> > +		ocv-capacity-table-0 =  <4172000 100>, <4092000 95>, <4035000 90>, <3990000 85>,
-> > +					<3939000 80>, <3895000 75>, <3852000 70>, <3807000 65>,
-> > +					<3762000 60>, <3713000 55>, <3672000 50>, <3647000 45>,
-> > +					<3629000 40>, <3613000 35>, <3598000 30>, <3578000 25>,
-> > +					<3550000 20>, <3519000 15>, <3479000 10>, <3438000 5>,
-> > +					<3400000 0>;
-> > +	};
-> > +
-> > +	/* Channels reversed for headphones. */
-> > +	sound {
-> > +		compatible = "simple-audio-card";
-> > +		simple-audio-card,name = "rk817_int";
-> > +		simple-audio-card,format = "i2s";
-> > +		simple-audio-card,hp-det-gpio = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-> > +		simple-audio-card,mclk-fs = <256>;
-> > +		simple-audio-card,widgets =
-> > +			"Microphone", "Mic Jack",
-> > +			"Headphone", "Headphones",
-> > +			"Speaker", "Internal Speakers";
-> > +		simple-audio-card,routing =
-> > +			"MICL", "Mic Jack",
-> > +			"Headphones", "HPOL",
-> > +			"Headphones", "HPOR",
-> > +			"Internal Speakers", "SPKO";
-> > +
-> > +		simple-audio-card,codec {
-> > +			sound-dai = <&rk817>;
-> > +		};
-> > +
-> > +		simple-audio-card,cpu {
-> > +			sound-dai = <&i2s1_8ch>;
-> > +		};
-> > +	};
-> > +
-> > +};
-> > +
-> > +/delete-node/ &adc_keys;
-> > +
-> > +&chosen {
-> > +	/delete-property/ stdout-path;
-> > +};
+On 10/11/2023 15:28, Chris Morgan wrote:
+> On Fri, Nov 10, 2023 at 02:11:58PM +0100, Krzysztof Kozlowski wrote:
+>> On 09/11/2023 22:50, Chris Morgan wrote:
+>>> From: Chris Morgan <macromorgan@hotmail.com>
+>>>
+>>> Update the NewVision NV3051D compatible strings by adding a new panel,
+>>> the powkiddy,rk2023-panel, and removing another entry, the
+>>> anbernic,rg353v-panel. The rg353v-panel is exactly identical to the
+>>> rg353p-panel and is not currently in use by any existing device tree.
+>>> The rk2023-panel is similar to the rg353p-panel but has slightly
+>>> different timings.
+>>>
+>>> I originally wrote the driver checking for the newvision,nv3051d
+>>> compatible string which worked fine when there was only 1 panel type.
+>>> When I added support for the 351v-panel I *should* have changed how the
+>>> compatible string was handled, but instead I simply added a check in the
+>>> probe function to look for the secondary string of
+>>> "anbernic,rg351v-panel". Now that I am adding the 3rd panel type of
+>>> "powkiddy,rk2023-panel" I am correcting the driver to do it the right
+>>> way by checking for the specific compatibles.
+>>
+>> I don't understand how any of this driver behavior is a reason to drop
+>> rg353v. You wrote two paragraphs to justify this removal, but I feel the
+>> only reason is that rg353v is just not needed, because it is duplicating
+>> rg353p? Is this right? You actually did not write it explicitly...
 > 
-> If you have to delete so many nodes and properties, this means your
-> common DTSI is not that common.
-> 
-> Common DTSI means there is shared hardware. If you take shared hardware
-> and put it into another board, pieces of the shared hardware do not
-> disappear.
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+> Sorry if I wasn't clear, I did note that the rg353p-panel is exactly
+> identical to the rg353v-panel. Should I add additional details beyond
+> that to clarify?
 
-I can redo this with a different top-level dtsi so I won't have to
-delete so much if that helps. I'll redo both the RGB30 and RK2023
-so that they use a common dtsi and no longer rely on the Anberic
-one. I'll do that and submit a V3.
+The entire paragraph about driver feels redundant. Your first paragraph
+should still say why you remove it.
 
-Thank you.
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
