@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8D4C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 02:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A0FC4167D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Nov 2023 02:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=d432D2Xj+Z4vS/ZxJgTzHbSOdU07s6jm83sDXdM8eyw=; b=flQeaTUzQ9jIVL
-	D6EI8qOf6s4284tueOnyG2ftZIAgNsxJiSjmhOwOvUkhCKJl1HVxZ1t+PTJ+R57qamh1Odulf7YrD
-	ffCF3uQozXe4ovZ/vKjjW/1t4gM0SYMlXwGqVDHI31tvSw2m9GtEqe02WYF82oTZzO3AQG61Qm7Sp
-	c4vSu6syy19TNk6Wf//EZKaM3UhNpl4dFWj98jdwuYgPlAlqGrzzXwefWjH1PwABijH5+attg7joa
-	qCzOI4Jya6iDDk9F6WZOCqXi1pczC5CJFdkGUDJE4bzaRSP9+TwCjvwyJnYMEljNYBIRHYxOZe/C7
-	a/xsMRscrebXnb+LFX7Q==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QdeACeba13jyCYYB07RYwrlKV3z7ZBrUfWGu6k6q2A4=; b=WX+KDv0M8vSh4I
+	Rkt5GbGw6HgoYOhp57FIIv/OELXrh47C7/P5oduEKryE6vRJKq42Fkrnq59bcxtXpZS8pGN7j+xml
+	NX/e5hhIHtHerr7/a9viEh3IRqPOAu1E3VLQt1ywBaU2rlsvrUTq9VE+PLMaM0gq8PFTeCxE+bOkh
+	aQmAzftS4tJ3V9TL0cjLcha7vp9QXS5nQyR3EgwZbyFc+fTP/t7ukilBEyDaae+0ME4E0b3nPLsp0
+	mY1s5d3hf2Y+KSBx2Reiw40+axrww9azQ8V42+jzxBaAIFDH/5RFuDQF7dIVJ8+Qdx1kpqitPsNgV
+	9vk0LMMW7Fl+Dh3JZkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Gyq-007dwt-2a;
-	Fri, 10 Nov 2023 02:10:44 +0000
-Received: from mail-m12810.netease.com ([103.209.128.10])
+	id 1r1Gyp-007dwE-12;
+	Fri, 10 Nov 2023 02:10:43 +0000
+Received: from mail-m25493.xmail.ntesmail.com ([103.129.254.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r1Gym-007dvX-2B;
-	Fri, 10 Nov 2023 02:10:42 +0000
+	id 1r1Gyl-007dvR-1d;
+	Fri, 10 Nov 2023 02:10:40 +0000
 DKIM-Signature: a=rsa-sha256;
-	b=Io/4z+16nR3bnukEf7bedLDrK5HLBAVIkoX8Y5HSm5Tx/326/puCiIaAtKFOio3CQ1/sOUamDP/thc6dd5XNlWdm7X2WUYVmTG1aO9wXOJbRNFWvXUXFrKII4JiAMg6Q4Q1N0THvE323ncyp/EhRJG23lMCLQH/pXJLPCTP0QVE=;
+	b=M2g0i8us0rU/y+6DX1WHLr5lTpOhWCA/jXxM5M6s1EKTfDPHVX+GoPA7qD0nrS+/mhn2SQMqHtW23i4mLhLV8JENyD7j2D+Txr69Ni4lPfxe9bKFBKgqx3oOUYFJGft1PAZSvOrBRrB2AOhh9TtBealfMHN9zM3+BNIdDOTdARc=;
 	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=+Cl5UViqOmCSXcarAvoc84bGt8RHhzr6CMWCNBI2ATc=;
+	bh=ZNeB2wozA8E90INwwcWUSVp2xe4Q7ySaQgoaY7gbCkY=;
 	h=date:mime-version:subject:message-id:from;
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id E4E4E4001FC;
-	Fri, 10 Nov 2023 10:04:02 +0800 (CST)
+	by mail-m11877.qiye.163.com (Hmail) with ESMTPA id E374440016C;
+	Fri, 10 Nov 2023 10:04:03 +0800 (CST)
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org,
@@ -50,23 +50,24 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	huangtao@rock-chips.com,
 	andy.yan@rock-chips.com
-Subject: [PATCH v6 0/3] rockchip: add GATE_LINK
-Date: Fri, 10 Nov 2023 10:03:55 +0800
-Message-Id: <20231110020358.12840-1-zhangqing@rock-chips.com>
+Subject: [PATCH v6 1/3] clk: gate: export clk_gate_endisable
+Date: Fri, 10 Nov 2023 10:03:56 +0800
+Message-Id: <20231110020358.12840-2-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231110020358.12840-1-zhangqing@rock-chips.com>
+References: <20231110020358.12840-1-zhangqing@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRpDQlZLT09DHUlIS0seSh1VEwETFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUhPHlYeH0kaHk9JQ0wfSk1VEwETFh
 	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
 	kG
-X-HM-Tid: 0a8bb6f8d7452eb3kusne4e4e4001fc
+X-HM-Tid: 0a8bb6f8db0a2eb3kusne374440016c
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ODY6MRw*Fzw5Ew0MEBEMPTIp
-	OhFPCi1VSlVKTUJCTkNKQ09IQ0NKVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQU1JQkM3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PT46Ihw6Qzw2TA0vURwPPTUt
+	LzcwCQlVSlVKTUJCTkNKQ09PQ0xLVTMWGhIXVQETGhUcChIVHDsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhLSEg3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231109_181040_896550_259C3174 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231109_181039_746116_EBA0B970 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,96 +85,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recent Rockchip SoCs have a new hardware block called Native Interface
-Unit (NIU), which gates clocks to devices behind them. These effectively
-need two parent clocks.
-Use GATE_LINK to handle this.
+make clk_gate_endisable not static, export API for other use.
 
-change in v6:
-Droped the [PATCH v5 3/4]
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/clk-gate.c       | 3 ++-
+ include/linux/clk-provider.h | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-change in v5:
-[PATCH v5 1/4]: No change
-[PATCH v5 2/4]: Fix the:
-Oct 20 18:25:04 rk3588-evb1 kernel: clk: Disabling unused clocks
-Oct 20 18:25:04 rk3588-evb1 kernel: ------------[ cut here ]------------
-Oct 20 18:25:04 rk3588-evb1 kernel: hclk_rkvenc0 already disabled
-Oct 20 18:25:04 rk3588-evb1 kernel: WARNING: CPU: 4 PID: 1 at drivers/clk/clk.c:1090 clk_core_disable+0x1b0/0x1e0
-Oct 20 18:25:04 rk3588-evb1 kernel: Modules linked in:
-Oct 20 18:25:04 rk3588-evb1 kernel: CPU: 4 PID: 1 Comm: swapper/0 Not tainted 6.6.0-rc6-00044-g31c3dbd16ca1 #1120
-Oct 20 18:25:04 rk3588-evb1 kernel: Hardware name: Rockchip RK3588 EVB1 V10 Board (DT)
-Oct 20 18:25:04 rk3588-evb1 kernel: pstate: 604000c9 (nZCv daIF +PAN-UAO -TCO -DIT -SSBS BTYPE=--)
-Oct 20 18:25:04 rk3588-evb1 kernel: pc : clk_core_disable+0x1b0/0x1e0
-Oct 20 18:25:04 rk3588-evb1 kernel: lr : clk_core_disable+0x1b0/0x1e0
-Oct 20 18:25:04 rk3588-evb1 kernel: sp : ffff8000846fbbf0
-Oct 20 18:25:04 rk3588-evb1 kernel: x29: ffff8000846fbbf0 x28:ffff8000833a0008 x27: ffff8000830e0130
-Oct 20 18:25:04 rk3588-evb1 kernel: x26: ffff800082ffcff0 x25:ffff8000830b9be8 x24: ffff800083236100
-Oct 20 18:25:04 rk3588-evb1 kernel: x23: 000000000000104a x22:0000000000000000 x21: ffff800084669000
-Oct 20 18:25:04 rk3588-evb1 kernel: x20: ffff00040087ca00 x19:ffff00040087ca00 x18: ffffffffffffffff
-Oct 20 18:25:04 rk3588-evb1 kernel: x17: ffff80008435d050 x16:ffff80008435cfe0 x15: 0720072007200720
-Oct 20 18:25:04 rk3588-evb1 kernel: x14: 0720072007200720 x13:0720072007200720 x12: 0720072007200720
-Oct 20 18:25:04 rk3588-evb1 kernel: x11: 0720072007200720 x10:ffff800084079890 x9 : ffff800080128a78
-Oct 20 18:25:04 rk3588-evb1 kernel: x8 : 00000000ffffefff x7 :ffff800084079890 x6 : 80000000fffff000
-Oct 20 18:25:04 rk3588-evb1 kernel: x5 : 0000000000000000 x4 :0000000000000000 x3 : 0000000000000000
-Oct 20 18:25:04 rk3588-evb1 kernel: x2 : 0000000000000000 x1 :0000000000000000 x0 : ffff000400a08000
-Oct 20 18:25:04 rk3588-evb1 kernel: Call trace:
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_core_disable+0x1b0/0x1e0
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable+0x38/0x60
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_gate_link_disable+0x2c/0x48
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x104/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x34/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x34/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x34/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x34/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused_subtree+0x34/0x270
-Oct 20 18:25:04 rk3588-evb1 kernel:  clk_disable_unused+0x54/0x148
-Oct 20 18:25:04 rk3588-evb1 kernel:  do_one_initcall+0x48/0x2a8
-Oct 20 18:25:04 rk3588-evb1 kernel:  kernel_init_freeable+0x1ec/0x3d8
-Oct 20 18:25:04 rk3588-evb1 kernel:  kernel_init+0x2c/0x1f8
-Oct 20 18:25:04 rk3588-evb1 kernel:  ret_from_fork+0x10/0x20
-Oct 20 18:25:04 rk3588-evb1 kernel: ---[ end trace 0000000000000000 ]---
-Oct 20 18:25:04 rk3588-evb1 kernel: ------------[ cut here ]------------
-
-[PATCH v5 3/4]: Rollback to pacth v3.
-[PATCH v5 4/4]: Fix the:
-Oct 20 19:22:37 rk3588-evb1 kernel: pclk_vo0grf clk_register field
-Oct 20 19:22:37 rk3588-evb1 kernel: rockchip_clk_register_branches:failed to register clock pclk_vo0grf: -17
-Oct 20 19:22:37 rk3588-evb1 kernel: pclk_vo1grf clk_register field
-Oct 20 19:22:37 rk3588-evb1 kernel: rockchip_clk_register_branches:failed to register clock pclk_vo1grf: -17
-
-change in v4:
-[PATCH v4 1/4]: No change
-[PATCH v4 2/4]: No change
-[PATCH v4 3/4]: dropping CLK_NR_CLKS,reword commit message
-[PATCH v4 4/4]: No change
-
-change in V3:
-[PATCH v3 1/4]: new, export clk_gate_endisable for PATCH2.
-[PATCH v3 2/4]: reuse clk_gate_endisable and clk_gate_is_enabled.
-                add prepare and unprepare ops.
-[PATCH v3 3/4]: No change
-[PATCH v3 4/4]: reword commit message
-
-change in V2:
-[PATCH v2 1/3]: fix reported warnings
-[PATCH v2 2/3]: Bindings submit independent patches
-[PATCH v2 3/3]: fix reported warnings
-
-Elaine Zhang (3):
-  clk: gate: export clk_gate_endisable
-  clk: rockchip: add support for gate link
-  clk: rockchip: rk3588: Adjust the GATE_LINK parameter
-
- drivers/clk/clk-gate.c               |   3 +-
- drivers/clk/rockchip/Makefile        |   1 +
- drivers/clk/rockchip/clk-gate-link.c | 120 +++++++++++++++++++++++++++
- drivers/clk/rockchip/clk-rk3588.c    | 114 +++++++++++++------------
- drivers/clk/rockchip/clk.c           |   7 ++
- drivers/clk/rockchip/clk.h           |  22 +++++
- include/linux/clk-provider.h         |   1 +
- 7 files changed, 212 insertions(+), 56 deletions(-)
- create mode 100644 drivers/clk/rockchip/clk-gate-link.c
-
+diff --git a/drivers/clk/clk-gate.c b/drivers/clk/clk-gate.c
+index 68e585a02fd9..531bb84a5b3e 100644
+--- a/drivers/clk/clk-gate.c
++++ b/drivers/clk/clk-gate.c
+@@ -53,7 +53,7 @@ static inline void clk_gate_writel(struct clk_gate *gate, u32 val)
+  *
+  * So, result is always: enable xor set2dis.
+  */
+-static void clk_gate_endisable(struct clk_hw *hw, int enable)
++void clk_gate_endisable(struct clk_hw *hw, int enable)
+ {
+ 	struct clk_gate *gate = to_clk_gate(hw);
+ 	int set = gate->flags & CLK_GATE_SET_TO_DISABLE ? 1 : 0;
+@@ -87,6 +87,7 @@ static void clk_gate_endisable(struct clk_hw *hw, int enable)
+ 	else
+ 		__release(gate->lock);
+ }
++EXPORT_SYMBOL_GPL(clk_gate_endisable);
+ 
+ static int clk_gate_enable(struct clk_hw *hw)
+ {
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index ace3a4ce2fc9..76b050d73feb 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -630,6 +630,7 @@ struct clk *clk_register_gate(struct device *dev, const char *name,
+ void clk_unregister_gate(struct clk *clk);
+ void clk_hw_unregister_gate(struct clk_hw *hw);
+ int clk_gate_is_enabled(struct clk_hw *hw);
++void clk_gate_endisable(struct clk_hw *hw, int enable);
+ 
+ struct clk_div_table {
+ 	unsigned int	val;
 -- 
 2.17.1
 
