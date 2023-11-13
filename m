@@ -4,98 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB0CC4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 12:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A7A1C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 14:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NUQI7PMSPAAQfghLik7iztfTZmz3hHP76U+VrhM7MoA=; b=S++FUWvGy9xH7o
-	hRd16zEPzn1bnm3O/y1Vsyk93nE/Y/Jy3+/A068EsVR2vPzKurPQ4aoJfigDvw/coNtlDbNJAVGOb
-	D8SEhHmmVgp6Mt4cJx6PTkI1xiQT1wsm4V6I6oWwQ5kWL6mQPFnfLjoQ9Adab/Ac+qxXdcvu3+bEn
-	PSI57AMKZOXNr2HwNFsQ3L47PjTV1juKEVRHlIJ72pQHbExg0CjGTzpQbcFn3MzNUAzj4lTFiaQyb
-	3vEVvDI9YZYeYuXRhALHN5YyTIoe97u/U/VYLroekpS9YFT89tiz1FBoUPs7QBrbGU56NaKUYf6gy
-	WmcvfipA9w037J0AphqA==;
+	List-Owner; bh=3SRUKM3VHWVQT+tr5blW3JNgHVoRs4KVddX+baz5nw8=; b=LnA2RfYyYI2PW2
+	HTInsrL+BF+ktC51D95FNEv5foJhM3EcqqrJNRvWn5ovSbr3JtgAzowglG9rEvRHOPYegnzQ49Uc/
+	/qmuR28Vqz3YzW9ImVQBsHbG+xqyQ1hI7FG53P19NyF0dXdXh4Us4ItMNrfCip7AowhA0UpbI01jX
+	Ys6adkwmSztYfmiTPECG7AGHV/2TBBjX5y5MgAiRxpyTl1Ru9C+bmBYSSb2NNjqU94BhvWOtFAMoD
+	tcoYPBeo4CGPC1X0UR2JNgwAu9UMTYpi2CvnxDBJXLknfd6eLYyw9amTPmC6nwlxyDxbMHbufMXQe
+	gQo2X/InscCtHpuxZZnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2VkC-00DvQD-1k;
-	Mon, 13 Nov 2023 12:08:44 +0000
-Received: from out4-smtp.messagingengine.com ([66.111.4.28])
+	id 1r2XZU-00E6cT-32;
+	Mon, 13 Nov 2023 14:05:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2Vk9-00DvOH-0l;
-	Mon, 13 Nov 2023 12:08:42 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.nyi.internal (Postfix) with ESMTP id 8FEB85C00D1;
-	Mon, 13 Nov 2023 07:08:40 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute1.internal (MEProxy); Mon, 13 Nov 2023 07:08:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm2; t=1699877320; x=
-	1699963720; bh=1r++sqtO8eU7O0W8F5x1LffRTcyqoZo9MnQcYdmnV0I=; b=E
-	eUb1WjYXxVqnSkLoMfPsEocMaF+Bm+mKPJPXPHA5fY3fjB669+iPzLWqo9Muejv1
-	vYXj7deAfJcaFIJl/P0GQfWu4qHql1r51xnBnnew8Xec3R7qc75QhX/fgWaVyLrc
-	dOud6EH7p1tnRC6bMJsXDcmuVfGdfHtK+BXvcKZ6OwPMpmPf7qAmGlg0671aq//B
-	f7UvFsaJ3/3fsynLqwhekGInMBvWgkrAi7tHjWR7Wovl2iWO5SYosHvftT3lilUu
-	VlDtXC4bHw9QjdTBZk4keu5XQK2fsMv+RdPt6ZJ+6ZRQl1grw7eBlahHjLcp3Kxg
-	xVDq2Wp/cAXl8Yn3995IQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1699877320; x=
-	1699963720; bh=1r++sqtO8eU7O0W8F5x1LffRTcyqoZo9MnQcYdmnV0I=; b=O
-	sCq7f0aqQElY4Vny6y3Zpt2UPpZtRQY9gfY1SgPgc3tYlCaX7dksC+lJM35QefCY
-	8bfzefdDd1AoCcEbh7w9zP/phU0bSA8gZqGpF/xPxZBIQzBoPybtgCNxDc1o6aY2
-	LX/Io84QxU9P3bvtWDIy8ogLRu+ZrQP5xvdYECOS827nJi/M7N5Qz41fsidiVDtP
-	0W+Lvi3KcMqMEFtRS2bpGFbq7Ryilsb6boNHMcaVoFXeA5R1VelCuxoVOyz2aWec
-	AL6kaiB1Cewsx/fgxhXBENkbeLtlMIlHxnUAmlZQgSoEOapuR23YhQjRjDfXT9Fk
-	/r8F5yBIi7GkZDAzT9Arg==
-X-ME-Sender: <xms:yBFSZWYg2wkzqYmAg1d7jAqvwglV-qeYj_EZ1efGneQ802vS7W9j1Q>
-    <xme:yBFSZZaLZqtRLCVbByW3s3GfyOZTdfPPTJ-ZMnPJSUQy9Z97uMHODzQV3fpsS-AqX
-    gH52Y-2qQ>
-X-ME-Received: <xmr:yBFSZQ-LutV2SbDfqQhWSzBcYs5Og7TXGWeBU9ijOWfeQ4t9ug64rB3AG9UlDzKx-_fL2CoEcXGXuu62PIMCkfFN4Dhls-YzAZk>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudeftddgfeegucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhimhcu
-    nfhunhhnuceothhimhesfhgvrghthhgvrhhtohhprdhorhhgqeenucggtffrrghtthgvrh
-    hnpeefffeuhfetgeeikeejvefgtdefteehgfdvhfetfeeuffeuhffhfeekgfekgeehieen
-    ucevlhhushhtvghrufhiiigvpeefnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmse
-    hfvggrthhhvghrthhophdrohhrgh
-X-ME-Proxy: <xmx:yBFSZYobFBLHx3qgMoZeS8Q98zlGTzKhCWbbwJAkZzABcxn9vJy9Lw>
-    <xmx:yBFSZRp6yQ7Dkb3aFhh7xC_ws15Ycxl2VUoJaVaSwHICVt40rffmmA>
-    <xmx:yBFSZWT1WuySYDXMoVLiUbhIMxn1pixMnNhZB2G4Os6VCPH9ZTnCcw>
-    <xmx:yBFSZVIngsQZHQ-jCZ8NHXaG4Idu5kRc1aA4RCHzBc9CmlgWA6jcfw>
-Feedback-ID: i1f8241ce:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 13 Nov 2023 07:08:36 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Mon, 13 Nov 2023 23:08:33 +1100
-From: Tim Lunn <tim@feathertop.org>
-To: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Cc: Jagan Teki <jagan@edgeble.ai>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Tim Lunn <tim@feathertop.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH 8/8] dt-bindings: arm: rockchip: Add Sonoff iHost
-Date: Mon, 13 Nov 2023 23:07:05 +1100
-Message-Id: <20231113120705.1647498-9-tim@feathertop.org>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231113120705.1647498-1-tim@feathertop.org>
-References: <20231113120705.1647498-1-tim@feathertop.org>
+	id 1r2XZR-00E6bI-1n
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Nov 2023 14:05:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6063760F1E;
+	Mon, 13 Nov 2023 14:05:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CDFCC433C9;
+	Mon, 13 Nov 2023 14:05:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1699884341;
+	bh=fpD4M1H4xdOEFU6K/qJY74VJY3p9W9YVZi0wodwrOH8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=pZ5Hjnrl3pN/k4Juvngh8mWdgeGpjMFY+wEdEupsbPmuSLoG+DRTWI80902qbg4IU
+	 ok7TAWxTYLfx3nRoXuOlfMr8Hvx6686y9CVNAjdYmEcZXz8E7vJVZPjBFXERfRQOFf
+	 UWIOOvZzqgrIhVEh6r2WFNLhkinLb+SipHsFxUtf01D/Qypc7G6lUH2pg6cM0+6W9z
+	 ZgDqQUsz86TO2W/q7v1ZbnFFaGExe8aAOqKLr1uNRG6N85JT2AO+xqn/lK/q8fHiqJ
+	 bg4opLzuDjNTXjMPfopNvZLxwj7HHWxYaXuOolePuZ9r4VZ+8iy7aBy09oX42xWhr3
+	 YCIq12WoUpRVA==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org, 
+ linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ kernel@collabora.com
+In-Reply-To: <20231109184453.108676-1-sebastian.reichel@collabora.com>
+References: <20231109184453.108676-1-sebastian.reichel@collabora.com>
+Subject: Re: (subset) [PATCH v1 1/2] dt-bindings: es8328: convert to DT
+ schema format
+Message-Id: <169988433843.3280890.13854028136239519600.b4-ty@kernel.org>
+Date: Mon, 13 Nov 2023 14:05:38 +0000
 MIME-Version: 1.0
+X-Mailer: b4 0.13-dev-0438c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_040841_341622_5B2CFF45 
-X-CRM114-Status: UNSURE (   8.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231113_060545_654505_99F5192D 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,36 +77,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Sonoff iHost is a smart home hub with built in radios for wifi/bt
-and Zigbee. It is based off the Rockchip RV1126 (or RV1109) SoC.
+On Thu, 09 Nov 2023 19:44:43 +0100, Sebastian Reichel wrote:
+> Convert the binding to DT schema format. Note, that "IPVDD-supply"
+> got fixed to be "HPVDD-supply" during the conversion. This was
+> obviously a typo in the old binding. The old binding example, DT
+> files, chip datasheet and Linux driver use HPVDD.
+> 
+> 
 
-Signed-off-by: Tim Lunn <tim@feathertop.org>
+Applied to
 
----
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+Thanks!
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 5f7c6c4aad8f..a26bbcd00deb 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -922,6 +922,13 @@ properties:
-           - const: rockchip,rk3568-bpi-r2pro
-           - const: rockchip,rk3568
- 
-+      - description: Sonoff iHost Smart Home Hub
-+        items:
-+          - const: itead,sonoff-ihost
-+          - enum:
-+              - rockchip,rv1126
-+              - rockchip,rv1109
-+
- additionalProperties: true
- 
- ...
--- 
-2.40.1
+[1/2] dt-bindings: es8328: convert to DT schema format
+      commit: c479f4989486b79cb92f0ee3b2ffcfc77fc3e443
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
