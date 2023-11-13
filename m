@@ -4,88 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DBAC04E83
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 11:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E49C05021
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 11:24:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jHpNc61C0/sFt51qny7s1oxTe6XZSzUtRu2Ke2yK//A=; b=w3g2e379Sh5VWf
-	d6u4TVWjQQ/GIB/TBkbBQowmiHpwtMg8Hkq1oao+CBU7tl6De/0gmQXQM/LYgs7CLzXCE8CwGXj8E
-	K5iGUQEr4DfJRXNzl4C/IbYywfAT0k1rqvV6i+g219IhndtNsLOrqeZ1XCy2B7GxHYppoH22HDuG6
-	oJ5i+k6UeFbh7coK2HiGMyYl9FR3jq9nMtC4VE9TbFRWPEH0eUQUyBm+2OXBblBy8agwqvL1ew3j3
-	8HNssy4GVLULtOgszMhYqo0TcyyGvgtFkWwXFVq1p2MI2cteyx3ai3fxt3RFkwVAWDySlHUnlwU3B
-	/rgp/TdDIrKoD8GURyyQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yProCFfAK69OIz7/deFxooutHIKzgP3NG1J82IFnXJ0=; b=XPq23VdnCjE62o
+	H9ZrsmD2cbe8EQSqY/01PAiAIpFwWVih3uK/lJh9dEbYPmtUVbxa5i0e6VrVifYyyzqTt0AZ2g2Pj
+	njgEsWmLL+BG6bobpYk0NY1+QHUTBKzfdQKD4Toc3/Uw8xlVwZ4qN3ikVGXIJggrDvW2ytbgU4x0x
+	mQB0JY0gPCgvHxCwvu2jO5FWynCRmnKmbnbn8tWTB976bWTX/SgQlinMR6ElxNld2t6FWMcmRkx2m
+	D9sMMN65t4imMYlE8v1qptBzi+fmCtr4DBaevCv5sdjqmHXaoRRJONlUpwmHYUGe1fSpKrsTH1DM4
+	mTZ3Ui3fXPyPWu/RR+ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V35-00DitP-0b;
-	Mon, 13 Nov 2023 11:24:11 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V2z-00Diq3-08;
+	id 1r2V30-00Diqv-2c;
 	Mon, 13 Nov 2023 11:24:06 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-50a71aac023so3818806e87.3;
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r2V2x-00Diq2-2Q;
+	Mon, 13 Nov 2023 11:24:05 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4083f61322fso33326895e9.1;
         Mon, 13 Nov 2023 03:24:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1699874641; x=1700479441; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Opo2n1kgRGyqTe3TRkg8x+CZ1bdNAAuwb0HOdaOfFW0=;
-        b=gLgh+paN2i2avjiQJ2Lq5qUa1zNQH1F98Ys3i+hkr5C8838/6rNj16reAWOnYz8sjR
-         r/Vx27uL0VGs2haktLeMEUvKSdhYbyGgaoj7P/MH6QQ13NR6qwRj1xXdKEyYFU9Gk3+5
-         3xSYnmBMQaplJuNtd+DL/VRhVOTu1eafVhwjsTevpMDMh1gvjxgUQ1yTQkAOK7p3UZ6p
-         Ar4tlEP8568IDDLCVc8hk47CXnp8Kb9+1pwNyHMlRPtSvV8tAKqyBWmWv2X2Zo5EzMok
-         EHz84NnH/UPjx6YXAy2dNwLWrhL8Pw2m4xGYvC1HWWBTq7IS56FbPCUWr2sSNJP1Ukyd
-         wScA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=ZtcTSEYNpVz62SqB8w3R3UYFxhGtg83n5TqyHlvKZKWT/H5BNuKvPWJExDDXP0Twlz
+         lDYCtMeOhHUUUs9+mkqTMIn2sbbbQifGS33Mv76pqebe1yROttf0GAZvplIjN5GNb6Xx
+         gbKTr6Mg5XV0hGMCiz46i0yCpC/lJXM6dF3oGLkcOwtc1AtvMfe5XnS5tTgg3WeWdtuG
+         C7z4BJgAdwfl+22UeigtJ+7Rxg6D/Zp82aTtk3Ho5XtyEt1CuiqFgdAE3lFpvqBFIJYH
+         gYBEIZpUURoqMtA8W24mtg2pwMMcInZFjTKStESMeIYb1kqwkPEVVRi1PLBTg2Ye42EX
+         Wsgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1699874641; x=1700479441;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Opo2n1kgRGyqTe3TRkg8x+CZ1bdNAAuwb0HOdaOfFW0=;
-        b=KIr+5iqux8qAdxO/3h+8WPFQRVdUTDoE7u2mB67xCTmruGuiaV5DHGGCS8FNj2rTsA
-         gTN/gfjimw9TlNxzM99/g/Xzqucqsoh+RnYdKUP5AlhgTNv+Yq3YcP4aj7JvovQsAqvp
-         CzkqG1NYGhF9ShjUz69A/HXRlQkf88VJeYt6eT9K/qBKR7fSoqEUpy2If0yCVI3emMN6
-         b+NUgXXwzg/+cn5z/LW7MswyLcIkkSEiwjSB0FD8yYrfY1A5qaorQOru5PaJ6zEFthSy
-         1fXnBjxCvW/dFjGFXxp9vGZ53S1JRKZgKc7TUFU3gG+Nai5/tKpugcPNmvaxDtecCfBc
-         tbcQ==
-X-Gm-Message-State: AOJu0YwHF00W1R/8NycSRCm/qWbBbJNQZ9s1lZOumwtcdByuvjn2dpCS
-	HK8AnZ0y1AAwWmd/bvZmUaE=
-X-Google-Smtp-Source: AGHT+IEC4bNxMxVLe61hoEBoRm/P4z68EeACSaOaY2P2h8vmjgRJS7MeWj+M0EXY9PL6tHaJ0DbGAg==
-X-Received: by 2002:a05:6512:3e0f:b0:507:9628:afb with SMTP id i15-20020a0565123e0f00b0050796280afbmr5515817lfv.68.1699874641249;
-        Mon, 13 Nov 2023 03:24:01 -0800 (PST)
-Received: from zotac.lan. (dynamic-2a01-0c22-6e16-fe00-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:6e16:fe00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id l19-20020a05600c4f1300b0040772138bb7sm13565787wmq.2.2023.11.13.03.24.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=cwjvTDQGO9Vlp133FkVia5PIV7HdCE5FCv0T0bX/jUYCeqP+fMPGuOMf7f2j/UQ4WC
+         3njrITEYcRKzOJwdA6TNMY4Vm3tMO2nJsZp9aOAoihAaD2rM3+sMK6aiHLCgVNnGptrE
+         a+uhILPI8FiVvsNBYUFPWb0MKXHeNnSk0WLqDic0oUiQfx72RwDLOvbCCSdeGlXfPx2+
+         8CUfwDqpQ9pQaiyosYYe+x1OGl+QjzQ+qZGfNv02Rc3PFWXXGnsuzmhyRDILVsrdzShC
+         T75SFMX0uTHj9RSubJzlhB/F6sNOhv8vgYla2omc6aVqNJdBz6QvDdHV7o13+GbVCwVs
+         Vtfw==
+X-Gm-Message-State: AOJu0YzRqNsinQ3LcWKLDJLffAG1OISQsPGIGOvSjl+nau5zoxtuhh3H
+	bWWa4cttSaZvqJp4lXpwUbiERI360W0=
+X-Google-Smtp-Source: AGHT+IHeSfxulnBJhsxmWDCBwohx10bO7bTu1BHjhSiyjqQiFY1QaU+JjC7xoDkTmTAquVkbrdJhaA==
+X-Received: by 2002:a05:600c:4fd2:b0:404:7670:90b8 with SMTP id o18-20020a05600c4fd200b00404767090b8mr5004204wmq.27.1699874640270;
         Mon, 13 Nov 2023 03:24:00 -0800 (PST)
+Received: from zotac.lan. (dynamic-2a01-0c22-6e16-fe00-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:6e16:fe00:2223:8ff:fe18:310])
+        by smtp.gmail.com with ESMTPSA id l19-20020a05600c4f1300b0040772138bb7sm13565787wmq.2.2023.11.13.03.23.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Nov 2023 03:23:59 -0800 (PST)
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Wolfram Sang <wsa@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>
+	intel-gfx@lists.freedesktop.org
 Cc: linux-i2c@vger.kernel.org,
 	Heiner Kallweit <hkallweit1@gmail.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org,
+	amd-gfx@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 01/20] drivers/gpu/drm/rockchip: remove I2C_CLASS_DDC support
-Date: Mon, 13 Nov 2023 12:23:25 +0100
-Message-ID: <20231113112344.719-2-hkallweit1@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>,
+	linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
+Date: Mon, 13 Nov 2023 12:23:24 +0100
+Message-ID: <20231113112344.719-1-hkallweit1@gmail.com>
 X-Mailer: git-send-email 2.42.1
-In-Reply-To: <20231113112344.719-1-hkallweit1@gmail.com>
-References: <20231113112344.719-1-hkallweit1@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_032405_080439_682287BF 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20231113_032404_081333_076FD6EF 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,35 +121,39 @@ Preferably this series should be applied via the i2c tree.
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c   |    1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c |    1 -
- 2 files changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 6e5b922a1..a7739b27c 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -793,7 +793,6 @@ static struct i2c_adapter *inno_hdmi_i2c_adapter(struct inno_hdmi *hdmi)
- 	init_completion(&i2c->cmp);
- 
- 	adap = &i2c->adap;
--	adap->class = I2C_CLASS_DDC;
- 	adap->owner = THIS_MODULE;
- 	adap->dev.parent = hdmi->dev;
- 	adap->dev.of_node = hdmi->dev->of_node;
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index fa6e592e0..7a3f71aa2 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -725,7 +725,6 @@ static struct i2c_adapter *rk3066_hdmi_i2c_adapter(struct rk3066_hdmi *hdmi)
- 	init_completion(&i2c->cmpltn);
- 
- 	adap = &i2c->adap;
--	adap->class = I2C_CLASS_DDC;
- 	adap->owner = THIS_MODULE;
- 	adap->dev.parent = hdmi->dev;
- 	adap->dev.of_node = hdmi->dev->of_node;
-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
+ drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
+ drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
+ drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
+ drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
+ drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
+ drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
+ drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
+ drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
+ drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
+ drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
+ drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
+ drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
+ drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
+ drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
+ drivers/video/fbdev/core/fb_ddc.c                 |    1 -
+ drivers/video/fbdev/cyber2000fb.c                 |    1 -
+ drivers/video/fbdev/i740fb.c                      |    1 -
+ drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
+ drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
+ drivers/video/fbdev/s3fb.c                        |    1 -
+ drivers/video/fbdev/tdfxfb.c                      |    1 -
+ drivers/video/fbdev/tridentfb.c                   |    1 -
+ drivers/video/fbdev/via/via_i2c.c                 |    1 -
+ include/linux/i2c.h                               |    1 -
+ 31 files changed, 9 insertions(+), 47 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
