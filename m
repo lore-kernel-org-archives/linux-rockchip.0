@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E49C05021
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 11:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6559FC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Nov 2023 12:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yProCFfAK69OIz7/deFxooutHIKzgP3NG1J82IFnXJ0=; b=XPq23VdnCjE62o
-	H9ZrsmD2cbe8EQSqY/01PAiAIpFwWVih3uK/lJh9dEbYPmtUVbxa5i0e6VrVifYyyzqTt0AZ2g2Pj
-	njgEsWmLL+BG6bobpYk0NY1+QHUTBKzfdQKD4Toc3/Uw8xlVwZ4qN3ikVGXIJggrDvW2ytbgU4x0x
-	mQB0JY0gPCgvHxCwvu2jO5FWynCRmnKmbnbn8tWTB976bWTX/SgQlinMR6ElxNld2t6FWMcmRkx2m
-	D9sMMN65t4imMYlE8v1qptBzi+fmCtr4DBaevCv5sdjqmHXaoRRJONlUpwmHYUGe1fSpKrsTH1DM4
-	mTZ3Ui3fXPyPWu/RR+ZA==;
+	List-Owner; bh=KgAuUt5OswTqfZLhZOTpOkqUhkzFsYj7z/hBjvZR7oM=; b=xIiPCn4s7aR4Bc
+	tGzeWGCYF07Bej23KmgWExSZq3PsCGr8/oWbbkveXcjZGnjGgzgKE8YYMVCPdKbE4PUZ9Y9ibWPal
+	hgp9b+028k6Zlsc4Mlb/w9OV2B4+97or7NnJqCj9NWGvQVGrfTvt3IxJn4H6EwB0bD5HUUdohpsWI
+	UEugG/3oGG9k2KGTF9QK3jx8hUL7mI1U91jwe4qwk7024kyUKVrJF8TYDcsfTnj5se3PNmO66of7o
+	H+7gWlwBU8tXt691QDtO3c1W2vDljluPZKufcxCNVwrWyYUA4eF9KQ9SuDRu/CpAbW0Fr7iRfpVhq
+	SUiKkl5QgjtZRghQewdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V30-00Diqv-2c;
-	Mon, 13 Nov 2023 11:24:06 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1r2Viz-00Duss-1M;
+	Mon, 13 Nov 2023 12:07:29 +0000
+Received: from out4-smtp.messagingengine.com ([66.111.4.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2V2x-00Diq2-2Q;
-	Mon, 13 Nov 2023 11:24:05 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4083f61322fso33326895e9.1;
-        Mon, 13 Nov 2023 03:24:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1699874641; x=1700479441; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=ZtcTSEYNpVz62SqB8w3R3UYFxhGtg83n5TqyHlvKZKWT/H5BNuKvPWJExDDXP0Twlz
-         lDYCtMeOhHUUUs9+mkqTMIn2sbbbQifGS33Mv76pqebe1yROttf0GAZvplIjN5GNb6Xx
-         gbKTr6Mg5XV0hGMCiz46i0yCpC/lJXM6dF3oGLkcOwtc1AtvMfe5XnS5tTgg3WeWdtuG
-         C7z4BJgAdwfl+22UeigtJ+7Rxg6D/Zp82aTtk3Ho5XtyEt1CuiqFgdAE3lFpvqBFIJYH
-         gYBEIZpUURoqMtA8W24mtg2pwMMcInZFjTKStESMeIYb1kqwkPEVVRi1PLBTg2Ye42EX
-         Wsgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699874641; x=1700479441;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=cwjvTDQGO9Vlp133FkVia5PIV7HdCE5FCv0T0bX/jUYCeqP+fMPGuOMf7f2j/UQ4WC
-         3njrITEYcRKzOJwdA6TNMY4Vm3tMO2nJsZp9aOAoihAaD2rM3+sMK6aiHLCgVNnGptrE
-         a+uhILPI8FiVvsNBYUFPWb0MKXHeNnSk0WLqDic0oUiQfx72RwDLOvbCCSdeGlXfPx2+
-         8CUfwDqpQ9pQaiyosYYe+x1OGl+QjzQ+qZGfNv02Rc3PFWXXGnsuzmhyRDILVsrdzShC
-         T75SFMX0uTHj9RSubJzlhB/F6sNOhv8vgYla2omc6aVqNJdBz6QvDdHV7o13+GbVCwVs
-         Vtfw==
-X-Gm-Message-State: AOJu0YzRqNsinQ3LcWKLDJLffAG1OISQsPGIGOvSjl+nau5zoxtuhh3H
-	bWWa4cttSaZvqJp4lXpwUbiERI360W0=
-X-Google-Smtp-Source: AGHT+IHeSfxulnBJhsxmWDCBwohx10bO7bTu1BHjhSiyjqQiFY1QaU+JjC7xoDkTmTAquVkbrdJhaA==
-X-Received: by 2002:a05:600c:4fd2:b0:404:7670:90b8 with SMTP id o18-20020a05600c4fd200b00404767090b8mr5004204wmq.27.1699874640270;
-        Mon, 13 Nov 2023 03:24:00 -0800 (PST)
-Received: from zotac.lan. (dynamic-2a01-0c22-6e16-fe00-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:6e16:fe00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id l19-20020a05600c4f1300b0040772138bb7sm13565787wmq.2.2023.11.13.03.23.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 03:23:59 -0800 (PST)
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: Wolfram Sang <wsa@kernel.org>,
-	intel-gfx@lists.freedesktop.org
-Cc: linux-i2c@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	linux-fbdev@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+	id 1r2Viv-00Dus8-1h;
+	Mon, 13 Nov 2023 12:07:27 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailout.nyi.internal (Postfix) with ESMTP id 8F9285C0115;
+	Mon, 13 Nov 2023 07:07:18 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute6.internal (MEProxy); Mon, 13 Nov 2023 07:07:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:sender
+	:subject:subject:to:to; s=fm2; t=1699877238; x=1699963638; bh=Y5
+	Gf1TE2G849jaf03zsNJMtCuWMkzZcXooRu7tYzxlQ=; b=v7jv5J94rs6ciPeif+
+	dZMjzFxKlcgymjaa94blRo3nmx1zq7ZdEAFFyL7z9y7TnKD9O0AHYGzoLyYNP7Vk
+	SmXakCLXtFRytafACy7H/LJIs6UjylnK6Qwt3kEAvWgjY82UiwtTykaYtC34QLOU
+	xSiZxzc3n7xpby5XO09ZFbO95nXfLb853N699M5okzJn+S8r1wnBl8P9rzE36Uwf
+	mP5rd1vmb58lA/1OQK8Xu+Gc5hxNpuob5cR/6MA8pBjJvtl/I9h8n4U7BttB6jXj
+	ooEHRH1ALubjcwgte4bWYat4QKjFKCNNeUh4dIn840xWKT023R6YWbfd6A4MUQlZ
+	+CPw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; t=1699877238; x=1699963638; bh=Y5Gf1TE2G849j
+	af03zsNJMtCuWMkzZcXooRu7tYzxlQ=; b=CmlTM7CAGb8TcudAmYLNDBa4xo9fr
+	oZd3mtK1sdu7CIhdxfFuaelQsqadO2mVVNJdjV+jiEwr38EMPxUYYudfzEbDYpn6
+	Que4ezD9xnwSkRkyPXPvmL9j5f0eE9XRyCwCvQG3SPzKcdY49CN3qiv3cEGchXUt
+	yno87LKsMVTS/0BIGDBVhLMxMrZYNb5xGSDygmoBis1AuGK3SLmXpAvAsfZrt9j9
+	argoTwLAmzEShPJn6P72kxqFIUzvn1x8nQXZcY3q6Rh8fcCrRRvIpukr7M4/njLQ
+	KyWokAf3ZIWefa4wMhXNhK0CujGRiut8jJt6hyxyQLJXAwns1S7HaJANA==
+X-ME-Sender: <xms:dRFSZSUIHl0Nvd0Ul2hwAsM6LAVBt95ITbDn9wi8oLSNaV8Tj-qKYQ>
+    <xme:dRFSZenRLIF1-KWbTu7HMRHxAnXdgj6jicd8Z7vhpHbGkVuhCEdqVcE-AMnUSRMxw
+    jsuI9Ok4g>
+X-ME-Received: <xmr:dRFSZWYO2cygtqZh5oN9JXx7T58RB_QP73bkytSD8SDf5BDJ7rglbKP1Pc6MckEQB7shoZ9_rqjPBU9a0aaHwyvrim8JzJ-tV5M>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudeftddgfeegucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhephffvvefufffkofgggfestdekredtredttdenucfhrhhomhepvfhimhcunfhu
+    nhhnuceothhimhesfhgvrghthhgvrhhtohhprdhorhhgqeenucggtffrrghtthgvrhhnpe
+    duhfdtveeujeejjeffieevgfdtudegfeffvedugfetteehudevteehtefgieeitdenucev
+    lhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmsehfvg
+    grthhhvghrthhophdrohhrgh
+X-ME-Proxy: <xmx:dRFSZZUxRjrtnYHOm8zYZrKfYiMtsV4XyVlWW4EheVzOVe0hcwOMlw>
+    <xmx:dRFSZcm-DgiILmRj5QLxnvKQ6czOnHjzwiqVuBbjiXJctDmmCuk6dg>
+    <xmx:dRFSZedt4l0b2fqTrQNCUTxt6NQyw1CcNwGChj8qbo6KNc7lTKe3zw>
+    <xmx:dhFSZZjhzszfsqdvrUhPsWBGnfQKesMMjAmWegUFqZx6IOetXSXM4g>
+Feedback-ID: i1f8241ce:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 13 Nov 2023 07:07:12 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Mon, 13 Nov 2023 23:07:09 +1100
+From: Tim Lunn <tim@feathertop.org>
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: Jagan Teki <jagan@edgeble.ai>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Tim Lunn <tim@feathertop.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jocelyn Falempe <jfalempe@redhat.com>,
-	linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
-Date: Mon, 13 Nov 2023 12:23:24 +0100
-Message-ID: <20231113112344.719-1-hkallweit1@gmail.com>
-X-Mailer: git-send-email 2.42.1
+	Conor Dooley <conor+dt@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH 0/8] Add support for Sonoff iHost RV1126 Smart Home Gateway
+Date: Mon, 13 Nov 2023 23:06:57 +1100
+Message-Id: <20231113120705.1647498-1-tim@feathertop.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231113_032404_081333_076FD6EF 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231113_040726_133445_DC37B65D 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,49 +110,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
-olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
-Class-based device auto-detection is a legacy mechanism and shouldn't
-be used in new code. So we can remove this class completely now.
 
-Preferably this series should be applied via the i2c tree.
+Sonoff iHost is gateway device designed to provide a Smart Home Hub,
+it notably includes builtin radios for Wifi, BT and Zigbee, which
+make it suitable SBC for use with many of the open home automation
+platforms. It is availabe in two versions, first is based on
+Rockchip RV1126 and 4GB DDR4 RAM. There is a second version with
+based off the RV1109 dual core SoC and 2GB RAM.
 
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+Features:
+- Rockchip RV1126 (or RV1109)
+- 4GB DDR4
+- 8GB eMMC
+- microSD slot
+- RMII Ethernet PHY
+- 1x USB 2.0 Host
+- 1x USB 2.0 OTG
+- Realtek RTL8723DS WiFi/BT
+- EFR32MG21 Silabs Zigbee radio
+- Speaker/Microphone
 
----
+This patch series adds the various device tree nodes required to
+support this device. It also adds the initial dts for this device,
+This work was largely based off the device trees for mainline
+Edgeble Neu2 and downstream Rockchip rv1126-evb-v13 configs.
+It has been adapted with relevant peripherals and GPIO pins for the
+iHost.
 
- drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
- drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
- drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
- drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
- drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
- drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
- drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
- drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
- drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
- drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
- drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
- drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
- drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
- drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
- drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
- drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
- drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
- drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
- drivers/video/fbdev/core/fb_ddc.c                 |    1 -
- drivers/video/fbdev/cyber2000fb.c                 |    1 -
- drivers/video/fbdev/i740fb.c                      |    1 -
- drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
- drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
- drivers/video/fbdev/s3fb.c                        |    1 -
- drivers/video/fbdev/tdfxfb.c                      |    1 -
- drivers/video/fbdev/tridentfb.c                   |    1 -
- drivers/video/fbdev/via/via_i2c.c                 |    1 -
- include/linux/i2c.h                               |    1 -
- 31 files changed, 9 insertions(+), 47 deletions(-)
+Implemented in this series are most of the core periperhals including
+Ethernet, Wifi, BT, Zigbee and RTC. Sound and USB will be added in a
+later series.
+
+
+Tim Lunn (8):
+  ARM: dts: rockchip: rv1126: Add alternate UART pins
+  ARM: dts: rockchip: rv1126: Serial aliases
+  i2c: rk3x: Adjust grf offset for i2c2 on rv1126
+  ARM: dts: rockchip: rv1126: Add i2c2 nodes
+  ARM: dts: rockchip: rv1126: Split up rgmii1 pinctrl
+  ARM: dts: rockchip: rv1126: Add ethernet alias
+  ARM: dts: Add Sonoff iHost Smart Home Hub
+  dt-bindings: arm: rockchip: Add Sonoff iHost
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +
+ arch/arm/boot/dts/rockchip/Makefile           |   2 +
+ .../boot/dts/rockchip/rv1109-sonoff-ihost.dts |  13 +
+ arch/arm/boot/dts/rockchip/rv1109.dtsi        |  23 +
+ .../dts/rockchip/rv1126-edgeble-neu2-io.dts   |   2 +-
+ .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi |  72 ++-
+ .../boot/dts/rockchip/rv1126-sonoff-ihost.dts |  13 +
+ .../dts/rockchip/rv1126-sonoff-ihost.dtsi     | 409 ++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1126.dtsi        |  21 +
+ drivers/i2c/busses/i2c-rk3x.c                 |   8 +-
+ 10 files changed, 554 insertions(+), 16 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+
+-- 
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
