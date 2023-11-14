@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10D6C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Nov 2023 11:28:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC16BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Nov 2023 11:28:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k0IubkKEqkuIEIsSaPi7zyfubn0W1jYceP+FfvioMzY=; b=XBX3Cuq0L3XOR8
-	Cs1VSwfWTKyzizq29zUbPpgdmQ+eu24cj29D0wXvGMHpAKt+8IWFi0R8gR0PPPEsaK4qJCqACFzNX
-	E8E9KoFchr60+2on/df1xPB9M31FfVIpKiZ8tN/0LJ9W2ppqp1664zkBuX2mUnEdx+ok5UNv9+H1C
-	1BMv8xQhqx4FMO/If3TahtThN1IrvuGxN3W9Ky87ixh10y2WDEWElXx4wHTW6HwT1FlMRGLgNYpWY
-	oUwT9b6V6Vidn2PMwOTiOFMLpKg6ObJ/7ThyhvRqZHmmeh87mBbqORGOrPX+wmfaj2jflidsEJ2z6
-	IJrqD9ezL3t3Pk3FVwbg==;
+	List-Owner; bh=/ncnNKVWMmKCebxwoVQeCF+YHbkds+AtuJqSkASWIjs=; b=SSavBxjW7ZJp9X
+	8GCuVBIBdpgRyoIOx9Ppb3VUu78waVf1CeQXvVyv2W5FYn74Slq4pcYyjrZMlZqnv2AvrYU3WHoNh
+	e7Z1GXwmoHpMB6Zqnr8WL4iavDp4B1RPYuI8fSE7eHjWPcL1x4qUEsaJwgogO5eeBJszRFEN298tQ
+	+rCP1/JCHNB5+TB9FyQdFw8HsNaMJXWg7nvI2IfmJQ25AQwZyqd0xfKjPMbJiiLETc8FyXi+72/lL
+	SujND6ZkUTvciMlLWXStUGB+EU1TgVlqebPxQDKC3QWe8+Uc175wnQ8ET2GPSeN+VAaubdIwbQ78S
+	Y42aRojMDA2zUZgmfXig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2raF-00FfY0-37;
-	Tue, 14 Nov 2023 11:27:55 +0000
-Received: from m12.mail.163.com ([220.181.12.199])
+	id 1r2raK-00FfaJ-1W;
+	Tue, 14 Nov 2023 11:28:00 +0000
+Received: from m12.mail.163.com ([220.181.12.217])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2raC-00FfUX-1N
+	id 1r2raG-00FfXp-2O
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Nov 2023 11:27:54 +0000
+	Tue, 14 Nov 2023 11:27:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=VW004
-	fs9krB0xUqb9Kn2MqwFgbP05cWUp+pPV/LjEPw=; b=KkClv1y7jxd38nclKxzCa
-	QtPhanmOjkIaOZVtM0f3JQSN12y3CBNbV2vGpXsmFHAm7zkAbnjRhABt0ew6puXT
-	aKSWoBuwdVnxwOyRaYPo9kMuVKicde6USBPi0mvoggVOaviPlWAX7DM1hO7I9Owa
-	0ZdoafS8PyfTBg5vUdpdh8=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=pLzXI
+	2slUOYfzkpdlZfDQQ/XzOt7ReXHj5ulSz8OfE0=; b=P5G590wFR9GkHIva3nO6t
+	980lQbsSKV2TMOvgybOw7/3ktZE0BuddTd1srqo9Vkl8n+RCZZQJrE4AVPpnVhE1
+	P69TjEOTdEB5GvGLI+S62YfKcz7B9+tAs3aCHoYSQNPgOIc4jyVOZ4lySrDljUte
+	6sN4LjQGkyQNZpMwZ06en4=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g3-0 (Coremail) with SMTP id _____wA3nruVWVNlhUdEDA--.55205S2;
-	Tue, 14 Nov 2023 19:27:20 +0800 (CST)
+	by zwqz-smtp-mta-g4-1 (Coremail) with SMTP id _____wDn7_6iWVNlDXBpDA--.55740S2;
+	Tue, 14 Nov 2023 19:27:34 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -50,23 +50,23 @@ Cc: hjc@rock-chips.com,
 	chris.obbard@collabora.com,
 	s.hauer@pengutronix.de,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 02/11] Revert "drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume"
-Date: Tue, 14 Nov 2023 19:27:16 +0800
-Message-Id: <20231114112716.1770940-1-andyshrk@163.com>
+Subject: [PATCH 03/11] drm/rockchip: vop2: set half_block_en bit in all mode
+Date: Tue, 14 Nov 2023 19:27:29 +0800
+Message-Id: <20231114112729.1770998-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231114112534.1770731-1-andyshrk@163.com>
 References: <20231114112534.1770731-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wA3nruVWVNlhUdEDA--.55205S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Cw1rGr1xXF4xCFy7tr45trb_yoW8CryxpF
-	W7AryYqr4IgFWjqw1kAF4UAFyYyrnFyay3Crn7K3WfZr13Krn2yrn8GF1UZF98Ar1xur42
-	yFs7ta47CFW7uFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jo4E_UUUUU=
+X-CM-TRANSID: _____wDn7_6iWVNlDXBpDA--.55740S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxXF47tw47Cr4xJFW5ZrW5Wrg_yoW5ZrWrpr
+	47ArWDKr4Ut3WjgFZ7JrZ8ZF4akws7Ka17XrZxKwnaqrWak3yDW3WkKF9rArZ8tryfuFW8
+	ZFn3CrW7urWIyF7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSwZ7UUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnA0oXlghlUycewABsh
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnAsoXlghlUye3AAAsD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_032752_809966_552F783B 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20231114_032758_057579_4223F8FB 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +85,81 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This reverts commit b63a553e8f5aa6574eeb535a551817a93c426d8c.
-
-regcache_sync will try to reload the configuration in regcache to
-hardware, but the registers of 4 Cluster windows and Esmart1/2/3 on
-the upcoming rk3588 can not be set successfully before internal PD
-power on.
-
-Also it's better to keep the hardware register as it is before we really
-enable it.
-
-So let's revert this version, and keep the first version:
-commit afa965a45e01 ("drm/rockchip: vop2: fix suspend/resume")
+At first we thought the half_block_en bit in AFBCD_CTRL register
+only work in afbc mode. But the fact is that it control the line
+buffer in all mode(afbc/tile/line), so we need configure it in
+all case.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 25 ++++++++++++++------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 6862fb146ace..4d7d5032d96b 100644
+index 4d7d5032d96b..0f7b68c5fdf2 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -217,6 +217,8 @@ struct vop2 {
- 	struct vop2_win win[];
- };
- 
-+static const struct regmap_config vop2_regmap_config;
-+
- static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
- {
- 	return container_of(crtc, struct vop2_video_port, crtc);
-@@ -878,7 +880,11 @@ static void vop2_enable(struct vop2 *vop2)
- 		return;
- 	}
- 
--	regcache_sync(vop2->map);
-+	ret = regmap_reinit_cache(vop2->map, &vop2_regmap_config);
-+	if (ret) {
-+		drm_err(vop2->drm, "failed to reinit cache: %d\n", ret);
-+		return;
-+	}
- 
- 	if (vop2->data->soc_id == 3566)
- 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
-@@ -908,8 +914,6 @@ static void vop2_disable(struct vop2 *vop2)
- 
- 	pm_runtime_put_sync(vop2->dev);
- 
--	regcache_mark_dirty(vop2->map);
--
- 	clk_disable_unprepare(vop2->aclk);
- 	clk_disable_unprepare(vop2->hclk);
+@@ -516,6 +516,18 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 	return vop2_convert_afbc_format(format) >= 0;
  }
+ 
++/*
++ * 0: Full mode, 16 lines for one tail
++ * 1: half block mode, 8 lines one tail
++ */
++static bool vop2_half_block_enable(struct drm_plane_state *pstate)
++{
++	if (pstate->rotation & (DRM_MODE_ROTATE_270 | DRM_MODE_ROTATE_90))
++		return false;
++	else
++		return true;
++}
++
+ static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
+ 				      bool afbc_half_block_en)
+ {
+@@ -1139,6 +1151,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	bool rotate_90 = pstate->rotation & DRM_MODE_ROTATE_90;
+ 	struct rockchip_gem_object *rk_obj;
+ 	unsigned long offset;
++	bool half_block_en;
+ 	bool afbc_en;
+ 	dma_addr_t yrgb_mst;
+ 	dma_addr_t uv_mst;
+@@ -1231,6 +1244,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
+ 
+ 	format = vop2_convert_format(fb->format->format);
++	half_block_en = vop2_half_block_enable(pstate);
+ 
+ 	drm_dbg(vop2->drm, "vp%d update %s[%dx%d->%dx%d@%dx%d] fmt[%p4cc_%s] addr[%pad]\n",
+ 		vp->id, win->data->name, actual_w, actual_h, dsp_w, dsp_h,
+@@ -1238,6 +1252,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		&fb->format->format,
+ 		afbc_en ? "AFBC" : "", &yrgb_mst);
+ 
++	if (vop2_cluster_window(win))
++		vop2_win_write(win, VOP2_WIN_AFBC_HALF_BLOCK_EN, half_block_en);
++
+ 	if (afbc_en) {
+ 		u32 stride;
+ 
+@@ -1278,13 +1295,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		vop2_win_write(win, VOP2_WIN_AFBC_UV_SWAP, uv_swap);
+ 		vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+ 		vop2_win_write(win, VOP2_WIN_AFBC_BLOCK_SPLIT_EN, 0);
+-		if (pstate->rotation & (DRM_MODE_ROTATE_270 | DRM_MODE_ROTATE_90)) {
+-			vop2_win_write(win, VOP2_WIN_AFBC_HALF_BLOCK_EN, 0);
+-			transform_offset = vop2_afbc_transform_offset(pstate, false);
+-		} else {
+-			vop2_win_write(win, VOP2_WIN_AFBC_HALF_BLOCK_EN, 1);
+-			transform_offset = vop2_afbc_transform_offset(pstate, true);
+-		}
++		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
+ 		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
+ 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
+ 		vop2_win_write(win, VOP2_WIN_AFBC_TRANSFORM_OFFSET, transform_offset);
 -- 
 2.34.1
 
