@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D936C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Nov 2023 11:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC93C4167D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Nov 2023 11:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YgkcdFFBq3pEnaYVCm/vx5iQSY/Y7CoM1Vwxa+reUv0=; b=LEKzNfbVvQZMJk
-	L8ri6dNW+gKlu5lt/tw986V5kjUT28ehypEx7FvJG86oUVvzXRmUVh16QlmI0HqKIsbX8JUSd1tMB
-	X9JDCzqqianT9VNnj8by9I06XweZ5Hu7/FzJmquF+ZA+HNlhmcFPXl13r+GkGnvK8P18H6hajnU8n
-	P2vODafVluc2VddM1vVjcyAC1iawz30Sb1Qp2xDJ7Zxv1pFgRYtIgG5bjDZpkCYwcZ8siprbMqdaF
-	JQYHvSQG5eAikRHaTApk+unbtefLslrLT/FtUlbdpIQ/0zHdpBCW8fDMtdhZ0vMMHNf2V33yen+yK
-	EtnD0djGsbXuA/u6sq2Q==;
+	List-Owner; bh=wara4+P1UQmL4f3LbmHkooJKUciUT7CQc4mtjFJNswo=; b=TqfXB3Fsllu85y
+	Q6xIbUP5Hniw3j//T3fokfQZWZlo4MuP5gsy8Ew6Wu2ze68Mi9LoEWqlQN148O6TJqQM13Q07s/RJ
+	1NZc2l19k5Mt4JyMyFiGr+KRjE3uX7M5Ko3W7bq3WxQSEVoGHLq0CCGgqvyqmOrnE77y0oMKtASIN
+	Aq8hO0ghfkr1SUBIyqQ8V7gwt3dY/hP31bQrY/aylAVyHnuSXq4ec+vlxfT0+LecYB6SMOY0H+piT
+	3VSagGjM82N3F4qnHWT9TFX3lcda36xXs1RTGkb2n9YhmPj3i6+a0re4ivJblQr+i0yyG9rtMIdeV
+	k55nFnk9dtIhqASwPatQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2rb0-00FfwX-0B;
-	Tue, 14 Nov 2023 11:28:42 +0000
-Received: from m12.mail.163.com ([220.181.12.197])
+	id 1r2rb9-00Fg1F-0Y;
+	Tue, 14 Nov 2023 11:28:51 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2raw-00FfrI-0B
+	id 1r2rb6-00Ffz7-0r
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Nov 2023 11:28:39 +0000
+	Tue, 14 Nov 2023 11:28:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=wrf5H
-	Cey6EIgz0LFVHsXeuTZR6G1wxWF6vZLsoAd0yY=; b=cpgwYojxVX6r5JRIL2hFn
-	dXw5zs1XyzemLtT7krytqC9+XypwZ6+W93R7rtJoA7V1ybLYC/2G0fVsyDjb2Ub5
-	5u50bp2KNZijdFLWluh2KQGoIkoIDPGbdCQtCEUPwntanPMJ/uibI8ROfjNCWSQh
-	cXUBmnHTcqs5BmT80qhXGw=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=+qJQz
+	SNuwveCVk6IeGOImzTHjvxdDU1zu6KXYVYxyLc=; b=cmKt0NUUEPaBE2jgl05B+
+	tvPDMgJFGKT7lSHB+MBQryPs+Uoc/tWpnOvOHAOAsep1dGyzXG/4tr7F3vHA6K1n
+	PXq65iW+bCbO+Pa0kl2wHCeJaP5AV2WoktPYXLadv4bZJ7MsUpCANTWJJjnQKrWu
+	gN6i4Bztc3l2OuF6B0NtVg=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g3-2 (Coremail) with SMTP id _____wD3n4LIWVNlHihjDA--.55772S2;
-	Tue, 14 Nov 2023 19:28:11 +0800 (CST)
+	by zwqz-smtp-mta-g0-2 (Coremail) with SMTP id _____wD3X_PVWVNldxVuBQ--.54859S2;
+	Tue, 14 Nov 2023 19:28:24 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -50,23 +50,24 @@ Cc: hjc@rock-chips.com,
 	chris.obbard@collabora.com,
 	s.hauer@pengutronix.de,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 06/11] drm/rockchip: vop2: rename grf to sys_grf
-Date: Tue, 14 Nov 2023 19:28:07 +0800
-Message-Id: <20231114112807.1771180-1-andyshrk@163.com>
+Subject: [PATCH 07/11] dt-bindings: soc: rockchip: add rk3588 vop/vo syscon
+Date: Tue, 14 Nov 2023 19:28:20 +0800
+Message-Id: <20231114112820.1771240-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231114112534.1770731-1-andyshrk@163.com>
 References: <20231114112534.1770731-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3n4LIWVNlHihjDA--.55772S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7AFW7tFy3Ww1DKw4DurW5trb_yoW8CF15pa
-	sxAFWjgr47GrZFq3WvkFs8uFW3Kwn7CayIk3WIk3Za934xtryDKFs8W3W5JrW3trnruF4a
-	y3yqyry3CFW7Jr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSOJnUUUUU=
+X-CM-TRANSID: _____wD3X_PVWVNldxVuBQ--.54859S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7GrWkAF4UAr4rZrWUtF1xAFb_yoWfJrgE9a
+	4xZ3WUuFW8GryFgw1qyayIk3Z8A3Z2kF1kCa1jyF4kCaykZrZ8KF95Jw1avr15uF4fuw1f
+	uF1kWrWUCFnxGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8iSdPUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiTBAoXmI0cP19aAAAsk
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnAEoXlghlUyjWgAAsy
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231114_032838_451694_3D4566AB 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20231114_032848_655279_2DF31E00 
+X-CRM114-Status: UNSURE (   6.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,51 +86,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The vop2 need to reference more grf(system grf, vop grf, vo0/1 grf,etc)
-in the upcoming rk3588.
-
-So we rename the current system grf to sys_grf.
+Add VOP and VO GRF syscon compatibles for RK3588
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 33743e21cafe..0d7dc543bef3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -190,7 +190,7 @@ struct vop2 {
- 	void __iomem *regs;
- 	struct regmap *map;
- 
--	struct regmap *grf;
-+	struct regmap *sys_grf;
- 
- 	/* physical map length of vop2 register */
- 	u32 len;
-@@ -1498,9 +1498,9 @@ static void rk3568_set_intf_mux(struct vop2_video_port *vp, int id,
- 		dip &= ~RK3568_DSP_IF_POL__RGB_LVDS_PIN_POL;
- 		dip |= FIELD_PREP(RK3568_DSP_IF_POL__RGB_LVDS_PIN_POL, polflags);
- 		if (polflags & POLFLAG_DCLK_INV)
--			regmap_write(vop2->grf, RK3568_GRF_VO_CON1, BIT(3 + 16) | BIT(3));
-+			regmap_write(vop2->sys_grf, RK3568_GRF_VO_CON1, BIT(3 + 16) | BIT(3));
- 		else
--			regmap_write(vop2->grf, RK3568_GRF_VO_CON1, BIT(3 + 16));
-+			regmap_write(vop2->sys_grf, RK3568_GRF_VO_CON1, BIT(3 + 16));
- 		break;
- 	case ROCKCHIP_VOP2_EP_HDMI0:
- 		die &= ~RK3568_SYS_DSP_INFACE_EN_HDMI_MUX;
-@@ -2759,7 +2759,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
- 			return PTR_ERR(vop2->lut_regs);
- 	}
- 
--	vop2->grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
-+	vop2->sys_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
- 
- 	vop2->hclk = devm_clk_get(vop2->dev, "hclk");
- 	if (IS_ERR(vop2->hclk)) {
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index e4fa6a07b4fa..26db4f48ff62 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -28,6 +28,8 @@ properties:
+               - rockchip,rk3588-sys-grf
+               - rockchip,rk3588-pcie3-phy-grf
+               - rockchip,rk3588-pcie3-pipe-grf
++              - rockchip,rk3588-vo-grf
++              - rockchip,rk3588-vop-grf
+               - rockchip,rv1108-usbgrf
+           - const: syscon
+       - items:
 -- 
 2.34.1
 
