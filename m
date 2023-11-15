@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE65EC072A2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Nov 2023 21:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A23C5ACB2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Nov 2023 22:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=amEvRmnpHRxg5acoILh4BAN3UwdBdzQ3kQ52wdTh/vM=; b=E8HXdKu5627V10B4dzZc++bQah
-	szOfFJInXwVQj78XtzHz1KyZyn98v9Pqa6T3GcMV6J9yuuFO2UASVj4cXhtl6u3sbaM/wrKF3su8B
-	q2GMFI+mIfHaov/4z6g23GPOJtVAUVjlsBCqTKZ2rEGt2BJ3LNUeIB7JnnODbCwmHIXdRHKSr5It1
-	+XL7l4qWwGobjNffz8OrhRBUyhAQLZ65xtw0l8z26Ik3ClhjL6/sgtnCRvCDxX8LYBIr1ZczYPh7d
-	zMFKg9sprOvHwPcCl17my/altTlhrInXBB26Z56cok+oTmbdsDESHfduo+NIpTF/h+XAijs/rCeD8
-	KuWyBCjg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N+jz+9Bu0A/koXx9bYPMwLDpiGowYDggLN4mEa5WzrE=; b=f4ZSj+Ui4Ep+xC
+	wXfwWXLAjA552fAdU+BmkXRaajIOuzYzz+5P3XQuGn/8XZUeRXbbxucQCEuOeVH/SD6wDSA+87rQl
+	XPdz1NUw69IF97Rfnp8SdsZQOfavkabzdZuHTliXf/qr4+FpJaeaiczwTl9OrF6vJRc/95vHZMJRX
+	LNLRDl83lZ5TSKJadlvfWNeDKlnC0WIQwoEvuJFl2oMmqKf3v1VhmhgFLdl/1Ye9+G2uLGNxyfqbH
+	3lKYI2VyIIbWl5bwkKVRtYfpcHyq8ibcF/d6eaVsnDMI/L59dJvZgFxCEOWgu6N5lC1MeGk/aWogX
+	gQslcBf32jCchvWGWLcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3Nsw-001oLa-08;
-	Wed, 15 Nov 2023 21:57:22 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r3OWN-001skU-1Y;
+	Wed, 15 Nov 2023 22:38:07 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3Nss-001oKt-19;
-	Wed, 15 Nov 2023 21:57:19 +0000
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91A3C66072F7;
-	Wed, 15 Nov 2023 21:57:15 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700085435;
-	bh=8BTs9yx4JAS070rqw8IXxHKIzy22Gc1HzQDYLoQjwWo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WDkwmptRFdAft+Nlah2v3hD4hnSPJS4Qfx7kSjHBHoKYXvYjayWsegPL0q4Ee23xZ
-	 k9DdRdZ3YJXxypOtp9xgBm+igu3EplvUMdpO9BP4ELu1GneELZe9CFncC22sS4TGRP
-	 XHII9PMIGdPgJbfX1vq+cCWSyGy8orLCNsidTFjtUKp6xyVlnFD/37/5+jHfqMbscK
-	 XmWcH6zq706PZY2AUgEJfdIF68Yb57fUsFf9nZUIOpzu51s0lZlh6LrlUOeIp8dpHC
-	 +hIFM/Be3weRwcKV2ne+J4safTYqDyNr8Bf59FNqKRivHNAVtmQk5pKWrMZAvqgFz5
-	 x+hx6lKSC1Tkw==
-Received: by mercury (Postfix, from userid 1000)
-	id 94D1F1062B52; Wed, 15 Nov 2023 22:57:12 +0100 (CET)
-Date: Wed, 15 Nov 2023 22:57:12 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk356x pcie msg interrupt name
-Message-ID: <20231115215712.ha6asalk6iiakfsr@mercury.elektranox.org>
-References: <20231114153834.934978-1-heiko@sntech.de>
+	id 1r3OWK-001sjv-1i
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Nov 2023 22:38:06 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AFMQQY1001223;
+	Wed, 15 Nov 2023 22:37:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=8yJ3jUtvfZRMkPvd6/c+IJsp1DWolkFYgDCcy0ZvmYY=;
+ b=ahCSVlMCvAuDXm+81w6iLy31Q3B56t1zFciELyWCdDqqoiXzKBLjG2YzN6N93oYreX1L
+ zZbuyCKcbrubMg50OFct7xUL3qoJPSDRNp1Ezd5bnZJV/7A9Ow3xhaWrdl9FE+ZOUA1g
+ 5HBxTZyyF161s7gm//0QwF38qUMFCNsd0f9AYUcVRZMngqxNsnevxuG+94ls9pyUc3JI
+ /tW3JSf1QmNh2fxlJXQqVLXytfpux8dioM3hciwZLM13YzhTeeEFy6IJZjf/chxgxhsl
+ EMaMCmQyKqETefljtrSib8eak3rtFulaExl8Y7TA6c4EPQJxlypnXHbYf8oCEIbYWOQV PQ== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ucuac1r3j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 15 Nov 2023 22:37:49 +0000
+Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3AFMbmR8031514
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 15 Nov 2023 22:37:48 GMT
+Received: from [10.110.75.112] (10.80.80.8) by nasanex01b.na.qualcomm.com
+ (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Wed, 15 Nov
+ 2023 14:37:48 -0800
+Message-ID: <c74f5da7-fb88-42a9-9c91-0786d298a130@quicinc.com>
+Date: Wed, 15 Nov 2023 14:37:47 -0800
 MIME-Version: 1.0
-In-Reply-To: <20231114153834.934978-1-heiko@sntech.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2 2/4] nv3051d: Add Powkiddy RK2023 Panel Support
+Content-Language: en-US
+To: Chris Morgan <macroalpha82@gmail.com>,
+        <linux-rockchip@lists.infradead.org>
+CC: <devicetree@vger.kernel.org>, <conor+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <neil.armstrong@linaro.org>,
+        <sam@ravnborg.org>, Chris Morgan <macromorgan@hotmail.com>,
+        <sebastian.reichel@collabora.com>, <dri-devel@lists.freedesktop.org>,
+        <robh+dt@kernel.org>
+References: <20231109215007.66826-1-macroalpha82@gmail.com>
+ <20231109215007.66826-3-macroalpha82@gmail.com>
+From: Jessica Zhang <quic_jesszhan@quicinc.com>
+In-Reply-To: <20231109215007.66826-3-macroalpha82@gmail.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01b.na.qualcomm.com (10.46.141.250)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: 0ybCaKpqDI73nrVdVvnoZwLjBI3ILpZx
+X-Proofpoint-GUID: 0ybCaKpqDI73nrVdVvnoZwLjBI3ILpZx
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-15_20,2023-11-15_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxlogscore=999
+ spamscore=0 malwarescore=0 mlxscore=0 bulkscore=0 clxscore=1011
+ adultscore=0 lowpriorityscore=0 impostorscore=0 priorityscore=1501
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311150178
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_135718_572850_96B72260 
-X-CRM114-Status: GOOD (  18.81  )
+X-CRM114-CacheID: sfid-20231115_143804_594379_7BDB06A9 
+X-CRM114-Status: GOOD (  28.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,90 +97,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0982693790949786135=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0982693790949786135==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qnoje2wmiy5nuuru"
-Content-Disposition: inline
 
-
---qnoje2wmiy5nuuru
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue, Nov 14, 2023 at 04:38:34PM +0100, Heiko Stuebner wrote:
-> The expected name by the binding at this position is "msg" and the SoC's
-> manual also calls the interrupt in question "msg", so fix the rk356x dtsi
-> to use the correct name.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
+On 11/9/2023 1:50 PM, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Refactor the driver to add support for the powkiddy,rk2023-panel
+> panel. This panel is extremely similar to the rg353p-panel but
+> requires a smaller vertical back porch and isn't as tolerant of
+> higher speeds. Note that while all of these panels are identical in
+> size (70x57) it is possible future panels may not be.
+> 
+> Tested on my RG351V, RG353P, RG353V, and RK2023.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/d=
-ts/rockchip/rk356x.dtsi
-> index 0964761e3ce9..c19c0f1b3778 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -977,7 +977,7 @@ pcie2x1: pcie@fe260000 {
->  			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
->  			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
->  			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
-> -		interrupt-names =3D "sys", "pmc", "msi", "legacy", "err";
-> +		interrupt-names =3D "sys", "pmc", "msg", "legacy", "err";
->  		bus-range =3D <0x0 0xf>;
->  		clocks =3D <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
->  			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
-> --=20
-> 2.39.2
->=20
+>   .../gpu/drm/panel/panel-newvision-nv3051d.c   | 57 +++++++++++++++----
+>   1 file changed, 46 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> index 79de6c886292..94d89ffd596b 100644
+> --- a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> +++ b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
+> @@ -28,6 +28,7 @@ struct nv3051d_panel_info {
+>   	unsigned int num_modes;
+>   	u16 width_mm, height_mm;
+>   	u32 bus_flags;
+> +	u32 mode_flags;
+>   };
+>   
+>   struct panel_nv3051d {
+> @@ -261,6 +262,8 @@ static int panel_nv3051d_unprepare(struct drm_panel *panel)
+>   
+>   	usleep_range(10000, 15000);
+>   
+> +	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
+> +
 
---qnoje2wmiy5nuuru
-Content-Type: application/pgp-signature; name="signature.asc"
+Hi Chris,
 
------BEGIN PGP SIGNATURE-----
+Is this to address a suspend/resume issue similar to what was done here [1]?
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmVVPqsACgkQ2O7X88g7
-+ppTIA//YaQ/isC2OXwvph8tPd3dtAScGgFrUUFmG+p89QSblLWHkB9GVKhzUWbO
-poiajuCHtNY/ggiCeuP1kXgAHfGFSAamqezz6d28Anm8bS9kj4o/kp5Yz60THyPG
-XVVj4oIqX2z9aTyguQRw03Cn882uRf8kG1VqXgcPR6D/oXg6W8KdIY0T3qtvfX4g
-XN9cfQDq+qEMVdFZ9XAUSAJCLRSdg4JfVVA3gb8WlSxb32zUMUQ9smqAcfppoF9H
-0xqRKRJOJgkiGjzLBF8mPSfl/dXRYgK7dIpgoXeMO3qw6EloQggczxOV6XN59ACb
-tJfXNJ6IXPc+Zbenp0/LVnvgL4H/XIzeJOvHqIWJ3I7h0y6+OnDx2sLgfvJ7OZJX
-vP5kNRAp3D7GjG/PtIvMPulafkcd080CASQMh4DhosHnIplQSmpdAEZB826mRKLf
-63mpzMvbRB9z0bIrEWGI+jInde3etqsoNYVugte/I7/BD6a9AINk3ZonCpTcjgKW
-GyUNWe6EOT95JGwhxyhvLk39xSuj2Il27zwgveenbZTGJVgUuZXZg1L5nIuZC+jz
-a9R8vOVVZn/uECJr4Nx80QyD8UfecY83V8pEVvGd3XwUJ8prLYy8cUtBkdWg1XBf
-Bm1F79rg7zTcWXa8C5T2trGYJ6/W6B6mdxBkLjhShXWv7YYb724=
-=zvfq
------END PGP SIGNATURE-----
+If so, I think maybe this can go as a separate Fixes patch.
 
---qnoje2wmiy5nuuru--
+Thanks,
 
+Jessica Zhang
 
---===============0982693790949786135==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+[1] https://patchwork.freedesktop.org/patch/567670/?series=126479&rev=1
+
+>   	regulator_disable(ctx->vdd);
+>   
+>   	return 0;
+> @@ -385,15 +388,7 @@ static int panel_nv3051d_probe(struct mipi_dsi_device *dsi)
+>   
+>   	dsi->lanes = 4;
+>   	dsi->format = MIPI_DSI_FMT_RGB888;
+> -	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> -			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
+> -
+> -	/*
+> -	 * The panel in the RG351V is identical to the 353P, except it
+> -	 * requires MIPI_DSI_CLOCK_NON_CONTINUOUS to operate correctly.
+> -	 */
+> -	if (of_device_is_compatible(dev->of_node, "anbernic,rg351v-panel"))
+> -		dsi->mode_flags |= MIPI_DSI_CLOCK_NON_CONTINUOUS;
+> +	dsi->mode_flags = ctx->panel_info->mode_flags;
+>   
+>   	drm_panel_init(&ctx->panel, &dsi->dev, &panel_nv3051d_funcs,
+>   		       DRM_MODE_CONNECTOR_DSI);
+> @@ -481,16 +476,56 @@ static const struct drm_display_mode nv3051d_rgxx3_modes[] = {
+>   	},
+>   };
+>   
+> -static const struct nv3051d_panel_info nv3051d_rgxx3_info = {
+> +static const struct drm_display_mode nv3051d_rk2023_modes[] = {
+> +	{
+> +		.hdisplay       = 640,
+> +		.hsync_start    = 640 + 40,
+> +		.hsync_end      = 640 + 40 + 2,
+> +		.htotal         = 640 + 40 + 2 + 80,
+> +		.vdisplay       = 480,
+> +		.vsync_start    = 480 + 18,
+> +		.vsync_end      = 480 + 18 + 2,
+> +		.vtotal         = 480 + 18 + 2 + 4,
+> +		.clock          = 24150,
+> +		.flags          = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
+> +	},
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rg351v_info = {
+>   	.display_modes = nv3051d_rgxx3_modes,
+>   	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
+>   	.width_mm = 70,
+>   	.height_mm = 57,
+>   	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
+> +		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rg353p_info = {
+> +	.display_modes = nv3051d_rgxx3_modes,
+> +	.num_modes = ARRAY_SIZE(nv3051d_rgxx3_modes),
+> +	.width_mm = 70,
+> +	.height_mm = 57,
+> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
+> +};
+> +
+> +static const struct nv3051d_panel_info nv3051d_rk2023_info = {
+> +	.display_modes = nv3051d_rk2023_modes,
+> +	.num_modes = ARRAY_SIZE(nv3051d_rk2023_modes),
+> +	.width_mm = 70,
+> +	.height_mm = 57,
+> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
+>   };
+>   
+>   static const struct of_device_id newvision_nv3051d_of_match[] = {
+> -	{ .compatible = "newvision,nv3051d", .data = &nv3051d_rgxx3_info },
+> +	{ .compatible = "anbernic,rg351v-panel", .data = &nv3051d_rg351v_info },
+> +	{ .compatible = "anbernic,rg353p-panel", .data = &nv3051d_rg353p_info },
+> +	{ .compatible = "powkiddy,rk2023-panel", .data = &nv3051d_rk2023_info },
+>   	{ /* sentinel */ }
+>   };
+>   MODULE_DEVICE_TABLE(of, newvision_nv3051d_of_match);
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0982693790949786135==--
-
