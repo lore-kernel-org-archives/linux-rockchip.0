@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23BF8C072A2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Nov 2023 21:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE65EC072A2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Nov 2023 21:57:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1MfYLsn2ObEn3ERYuOJfJj+j4kwDm1SP3kLIwVU2FXM=; b=inr9Hig+vW9tMtv5s1RMeGxpJ9
-	wZjeitDjpdxVamaJ8+Z86WZcsdjo5E3QHcVfVkbjNZhP9ekotPK0CkIK2fosRkxkODYqqVKAN7WPu
-	7cNegI6cSvsV3ZYsDLm4cRR2CGvl+iMBXVD/7KwCC/nAYyJlcBmwMEyby/G9YRLeE7w+fCXzIszuq
-	2D9AEleJAeTDunOICGPTUk6FYl7XTXzJIusatEodQXMDsOFdMh7ErvqRWjEjIeGvYmEd5kZxHo0YH
-	ksK/ENv9K5Zp++HcVSKPNzNYrd5TzMyCp4QyB/btBNbillLFLYq9uFxoMmI5r+jRoWzH6GYvCrWGW
-	U3zdNuFg==;
+	bh=amEvRmnpHRxg5acoILh4BAN3UwdBdzQ3kQ52wdTh/vM=; b=E8HXdKu5627V10B4dzZc++bQah
+	szOfFJInXwVQj78XtzHz1KyZyn98v9Pqa6T3GcMV6J9yuuFO2UASVj4cXhtl6u3sbaM/wrKF3su8B
+	q2GMFI+mIfHaov/4z6g23GPOJtVAUVjlsBCqTKZ2rEGt2BJ3LNUeIB7JnnODbCwmHIXdRHKSr5It1
+	+XL7l4qWwGobjNffz8OrhRBUyhAQLZ65xtw0l8z26Ik3ClhjL6/sgtnCRvCDxX8LYBIr1ZczYPh7d
+	zMFKg9sprOvHwPcCl17my/altTlhrInXBB26Z56cok+oTmbdsDESHfduo+NIpTF/h+XAijs/rCeD8
+	KuWyBCjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3NXK-001mc1-2G;
-	Wed, 15 Nov 2023 21:35:02 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1r3Nsw-001oLa-08;
+	Wed, 15 Nov 2023 21:57:22 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3NXH-001mai-23
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Nov 2023 21:35:01 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r3NXA-0004XD-Ec; Wed, 15 Nov 2023 22:34:52 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r3NX9-009JIF-R8; Wed, 15 Nov 2023 22:34:51 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1r3NX9-002Dev-Ht; Wed, 15 Nov 2023 22:34:51 +0100
-Date: Wed, 15 Nov 2023 22:34:51 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Rob Herring <robh@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [RESEND PATCH] pwm: Use device_get_match_data()
-Message-ID: <20231115213451.cvrmuzdbtfrpysth@pengutronix.de>
-References: <20231115210121.3738487-1-robh@kernel.org>
+	id 1r3Nss-001oKt-19;
+	Wed, 15 Nov 2023 21:57:19 +0000
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91A3C66072F7;
+	Wed, 15 Nov 2023 21:57:15 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700085435;
+	bh=8BTs9yx4JAS070rqw8IXxHKIzy22Gc1HzQDYLoQjwWo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WDkwmptRFdAft+Nlah2v3hD4hnSPJS4Qfx7kSjHBHoKYXvYjayWsegPL0q4Ee23xZ
+	 k9DdRdZ3YJXxypOtp9xgBm+igu3EplvUMdpO9BP4ELu1GneELZe9CFncC22sS4TGRP
+	 XHII9PMIGdPgJbfX1vq+cCWSyGy8orLCNsidTFjtUKp6xyVlnFD/37/5+jHfqMbscK
+	 XmWcH6zq706PZY2AUgEJfdIF68Yb57fUsFf9nZUIOpzu51s0lZlh6LrlUOeIp8dpHC
+	 +hIFM/Be3weRwcKV2ne+J4safTYqDyNr8Bf59FNqKRivHNAVtmQk5pKWrMZAvqgFz5
+	 x+hx6lKSC1Tkw==
+Received: by mercury (Postfix, from userid 1000)
+	id 94D1F1062B52; Wed, 15 Nov 2023 22:57:12 +0100 (CET)
+Date: Wed, 15 Nov 2023 22:57:12 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: fix rk356x pcie msg interrupt name
+Message-ID: <20231115215712.ha6asalk6iiakfsr@mercury.elektranox.org>
+References: <20231114153834.934978-1-heiko@sntech.de>
 MIME-Version: 1.0
-In-Reply-To: <20231115210121.3738487-1-robh@kernel.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <20231114153834.934978-1-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231115_133459_671734_8B42F1E9 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20231115_135718_572850_96B72260 
+X-CRM114-Status: GOOD (  18.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,68 +69,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7209439226907158852=="
+Content-Type: multipart/mixed; boundary="===============0982693790949786135=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7209439226907158852==
+--===============0982693790949786135==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jc2xrudroiknumgj"
+	protocol="application/pgp-signature"; boundary="qnoje2wmiy5nuuru"
 Content-Disposition: inline
 
 
---jc2xrudroiknumgj
-Content-Type: text/plain; charset=iso-8859-1
+--qnoje2wmiy5nuuru
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hello Rob,
+Hi,
 
-this is a resend of v2, I'd say. Would have been helpful to indicate
-that in the Subject line.
-
-On Wed, Nov 15, 2023 at 03:01:20PM -0600, Rob Herring wrote:
-> Use preferred device_get_match_data() instead of of_match_device() to
-> get the driver match data. With this, adjust the includes to explicitly
-> include the correct headers.
+On Tue, Nov 14, 2023 at 04:38:34PM +0100, Heiko Stuebner wrote:
+> The expected name by the binding at this position is "msg" and the SoC's
+> manual also calls the interrupt in question "msg", so fix the rk356x dtsi
+> to use the correct name.
 >=20
-> As these drivers only do DT based matching, of_match_device() will never
-> return NULL if we've gotten to probe(). Therefore, the NULL check and
-> error returns can be dropped.
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk356x.dtsi
+> index 0964761e3ce9..c19c0f1b3778 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -977,7 +977,7 @@ pcie2x1: pcie@fe260000 {
+>  			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
+>  			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
+>  			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+> -		interrupt-names =3D "sys", "pmc", "msi", "legacy", "err";
+> +		interrupt-names =3D "sys", "pmc", "msg", "legacy", "err";
+>  		bus-range =3D <0x0 0xf>;
+>  		clocks =3D <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
+>  			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
+> --=20
+> 2.39.2
+>=20
 
-I send a Reviewed-by tag in reply to (original) v2 that wasn't added
-here. As v2 is still "new" in the pwm patchwork, I'll mark this resend
-as non-actionable.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---jc2xrudroiknumgj
+--qnoje2wmiy5nuuru
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmVVOXoACgkQj4D7WH0S
-/k7kpAf/bl4KKfAUBzghYI6z/50HL7esIThFBaGzzgnzJERN+uCxApkuHsLFN9kn
-/he+aasBSn8kXa1A3DELf0byviI8xBJRn+OFXJbWkVMk0VIc8BQavnm0iE/NaxuH
-KnyOdFDwc4Rcmip0Yus5iP8U3kaj6ikdMNYla9NFMuQ61AaWZHnQX/SQ+bTVJmeX
-p3JF7ZJPvC9YNHXAFJwbPRWhWn6dLYRSOWoV6ulHWhuQg8/zJKUxW5s97eLPNHL5
-X1pqlVJr+KUCaxNfAgjrQCweQs5y5hyUj7aarrhTBKtZtw1YYdcpgiRszp4qD0Qu
-0CJwfOp3awhDbcSIav0CxkeTQZQDrQ==
-=DR7L
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmVVPqsACgkQ2O7X88g7
++ppTIA//YaQ/isC2OXwvph8tPd3dtAScGgFrUUFmG+p89QSblLWHkB9GVKhzUWbO
+poiajuCHtNY/ggiCeuP1kXgAHfGFSAamqezz6d28Anm8bS9kj4o/kp5Yz60THyPG
+XVVj4oIqX2z9aTyguQRw03Cn882uRf8kG1VqXgcPR6D/oXg6W8KdIY0T3qtvfX4g
+XN9cfQDq+qEMVdFZ9XAUSAJCLRSdg4JfVVA3gb8WlSxb32zUMUQ9smqAcfppoF9H
+0xqRKRJOJgkiGjzLBF8mPSfl/dXRYgK7dIpgoXeMO3qw6EloQggczxOV6XN59ACb
+tJfXNJ6IXPc+Zbenp0/LVnvgL4H/XIzeJOvHqIWJ3I7h0y6+OnDx2sLgfvJ7OZJX
+vP5kNRAp3D7GjG/PtIvMPulafkcd080CASQMh4DhosHnIplQSmpdAEZB826mRKLf
+63mpzMvbRB9z0bIrEWGI+jInde3etqsoNYVugte/I7/BD6a9AINk3ZonCpTcjgKW
+GyUNWe6EOT95JGwhxyhvLk39xSuj2Il27zwgveenbZTGJVgUuZXZg1L5nIuZC+jz
+a9R8vOVVZn/uECJr4Nx80QyD8UfecY83V8pEVvGd3XwUJ8prLYy8cUtBkdWg1XBf
+Bm1F79rg7zTcWXa8C5T2trGYJ6/W6B6mdxBkLjhShXWv7YYb724=
+=zvfq
 -----END PGP SIGNATURE-----
 
---jc2xrudroiknumgj--
+--qnoje2wmiy5nuuru--
 
 
---===============7209439226907158852==
+--===============0982693790949786135==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -142,5 +154,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7209439226907158852==--
+--===============0982693790949786135==--
 
