@@ -4,84 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8267C197A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Nov 2023 19:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78903C197A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Nov 2023 20:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hzfeonjfuDI+jjSaqhZvK4KtMQhwaHUpx90QNOBihsw=; b=Jnhjnd5CK/sfc9
-	5GnJoohQRV7935Cb3AaxmmSmld0HQbHULiwod4gfexhDxvkbuEE9Y/1lLoinKeJRowOYf7QZO/by1
-	Q7OXCE/5Rpyt4+YZkHVemeI6X4EdrOczjLm3em9uRgl17IuX4O0CER34mI25G4oQrpazjoKOjZjIT
-	Mr3c/iSPWUOD4Ne7StAbhAAzPTljxXcMSZOItF0NEBxnGtjyCzUwxHHhu7D61/JTazcH1fu0PyNo/
-	Lq+mjJ01Gr9Fb/JNezTBys5rW5f8M2COZsFotJSqQKWHYD+CR5k/8IRlz5MqiIkz0SMcSUbC5vXyb
-	vt0v+VKoKfFVJK1mAuzg==;
+	List-Owner; bh=j+9sCMrSPMZSxOOwBcEIKjJ5OWNgnFCA7Jbu9IeNw1M=; b=DnyQK8vySF1dCg
+	xD3V7n164f/Qo7aT1P4ek/UQCCCrW9J01fe0jfWjhXm+Pxt8dpHBd4DfNE6kyKrKTfKCdqg39fQv1
+	z6lAo1NVCPSXbNsdLke677KMTaOadJ6bYMOW2F+a6dPPhWfIL5PykEYjQ7ZQ6DFAO34H4bdbrQUvx
+	Gpd4bo8zOiotZMkxHonPPb3BmuFv63VsHWcf+eQAETzBrYolzAKOBiERdC5CdA2OwaGhVWwcQqAaz
+	osS8JZDyPc7K9eDIhKfaLu7fLGPfA4Zqtyl55JbYzm6LgBudqhQ3dLMRfwhIwhHqemfeId+PcpX8E
+	Q/eNgfN6foEyDoWwa5Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3i0S-004Vv9-0p;
-	Thu, 16 Nov 2023 19:26:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1r3ivS-004ixj-1W;
+	Thu, 16 Nov 2023 20:25:22 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3i0R-004Vug-0x
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 16 Nov 2023 19:26:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=NcZwCjQ4JrwVYAwfxeJR9lgNCrE0p4rX4/iJLdX3krg=; b=q/vCHUlixVbvpYn90EccjNkhiO
-	6rYEn4mpOkvoB0JXNHCfZDAgz+UA2oWjX5SwAWVaDc/wVpajaAKgnO5msKH3jQ7vLm7MULj0QMx/E
-	VNxORrsI38VzFCcZ1iGW/EM2PpJ+JBNqhq712yVWaL4zmMlT6ooHZRo/P0kTZiukUhQWj/t1PPZoA
-	VLvItqYAGreg3za0wibhuB5APxjS8ka7GFTFogrNdvXPyj+6xlTnal3bOVola/tplxZO8906HUvRa
-	KMK4pdbgpj2UTV6IwgamvGn93mlu8Xl22XTgryxgZ5ovyODAlHGJfWhCOHlhDJcNyc93wthwp+InP
-	9DY27Neg==;
-Received: from mail-oo1-f42.google.com ([209.85.161.42])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3i0N-005mxf-27
+	id 1r3ivP-004iw4-0V
 	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Nov 2023 19:26:25 +0000
-Received: by mail-oo1-f42.google.com with SMTP id 006d021491bc7-58a0ac41154so607995eaf.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 16 Nov 2023 11:26:21 -0800 (PST)
+	Thu, 16 Nov 2023 20:25:20 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3b2e44c7941so732131b6e.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Nov 2023 12:25:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700166316; x=1700771116; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UcNBnGJB40dtZqLIC5fFsXSJbvtWbqeXkPg9KjlNVlg=;
+        b=S+Ss4pRlgEvVTRZ6wEQZ8m0GS2+u8QnLkL+6uS08WcRPDk/lYLT2UMBtF6G8DxEHws
+         mgKuJN8bXk8/ARS4MvjV776u/Nfgi2sxd0WMITpjKwzmM1AjLLjdM5HWFJm8BB6jKaYv
+         pFzaDUV80JrXUFbNcEJpbGmiSAU8ln636LKm1mZzZoUHZBG1WxcmY0EEpIaS1GA2lYJC
+         cZ6EvKSbWVXTYJidVwMFu5MO6yBimKfSknpYxdlFtkx5cYoM4L9lsL81KESEVGYSWRtE
+         cquFo8uMLtzzRXvZPu1amue4B2rFB9byT2+n71fU3Fqhb7hNwPR4CE0CYnh1a6+FV4jO
+         JUWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700162779; x=1700767579;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NcZwCjQ4JrwVYAwfxeJR9lgNCrE0p4rX4/iJLdX3krg=;
-        b=cgLhBq3ufd3Cn+QKz3rcNNxrFXrNr8t36WnXaM+zNmBgpdmNNvqiG8gt3KnHEUs/xE
-         1jrrjIJalUrLjdZzJTE8zfOHsfd01BSP7WGy8BxBxJy8FL0lLzv9WlYOW+i62psn500H
-         dkZN1loE+1lGTnJyPo0DHVp67SYQDoEmZ7uHFVeqhzdc1kQvIjM0ZUl1XnkWpmy53VDH
-         ZFssTUVm0dCFRFXUfksEkBFZmnuf/eUS/MeiexqVa5OX98M71IpI/bE+12kHqMVwWuWv
-         TLs8e7i8yxYuNzkXPbhOPWltEAI8xbP/y0hlWafMlu+LhlnA7s9adRQ2fuDTRb9sjOdA
-         uHyg==
-X-Gm-Message-State: AOJu0Yw/UR8lRplk8qa4jngDFdMsKT2afh+vLjB5Vi1Gkxai4YgLC2tB
-	u6f0KwHTZY7wJoy9p6nPmw==
-X-Google-Smtp-Source: AGHT+IGSTth+hP2mmYGFO8yjKtjUWI7ZiE2Wb5+MqaNsG99C+yIPf6hkTRBp8Wbxr+QbyVOYwjXPNQ==
-X-Received: by 2002:a4a:9181:0:b0:589:d6c7:8573 with SMTP id d1-20020a4a9181000000b00589d6c78573mr16344725ooh.3.1700162778694;
-        Thu, 16 Nov 2023 11:26:18 -0800 (PST)
-Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id a2-20020a4a9882000000b0057b74352e3asm12380ooj.25.2023.11.16.11.26.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Nov 2023 11:26:18 -0800 (PST)
-Received: (nullmailer pid 3049422 invoked by uid 1000);
-	Thu, 16 Nov 2023 19:26:16 -0000
-Date: Thu, 16 Nov 2023 13:26:16 -0600
-From: Rob Herring <robh@kernel.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: robh+dt@kernel.org, sebastian.reichel@collabora.com, Andy Yan <andy.yan@rock-chips.com>, hjc@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, chris.obbard@collabora.com, s.hauer@pengutronix.de, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, kever.yang@rock-chips.com
-Subject: Re: [PATCH 07/11] dt-bindings: soc: rockchip: add rk3588 vop/vo
- syscon
-Message-ID: <170016277633.3049138.9769922490771899888.robh@kernel.org>
-References: <20231114112534.1770731-1-andyshrk@163.com>
- <20231114112820.1771240-1-andyshrk@163.com>
+        d=1e100.net; s=20230601; t=1700166316; x=1700771116;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=UcNBnGJB40dtZqLIC5fFsXSJbvtWbqeXkPg9KjlNVlg=;
+        b=s5BdlSUbjlcZ64jUN2k6kzcYOZ3IHgU1sefu4uOMe30DSsn4Vp6EYBQSHFYLDd5LSX
+         5+7IumXwG8p91vW8mAp5mcYrmHjxl33EJejTBId/fw5Xg9HDTJjaVzRXwDKWGhPbEj4t
+         QIF5JdBoEKseBeoKbb6JBWaBvJUqsFTBUIaMOvd2GK5Gt0bKt3b28JOngxkni5fQRb4r
+         9lIHHb3n1SHCzfDiaGlGdzlBtJEXRAjelLUaXoNJoCDmUFbmfEUFzOdmMzOlgrfOjQIm
+         vj89+GV+6TfnZNP2QUBsTc9bU0fjz3t7D091P929Ge/bWqoceVmH2STrndw+WCF/fwz7
+         8qIw==
+X-Gm-Message-State: AOJu0YxrUiq65fZ/duajpX+Z31WF2uk0JSJ7YqirddA423VVe27LUDek
+	/4m+i9OcJiZYM4pv5Ea3NdZObQ==
+X-Google-Smtp-Source: AGHT+IEptDLuiRXsLaoS1Vu8ochSLgZ8DrOKC7ayAfv2GChtvhM5v9hxn9HWjiDN3DvwjstMGfgyKA==
+X-Received: by 2002:a05:6358:6f82:b0:16b:c58a:ce8 with SMTP id s2-20020a0563586f8200b0016bc58a0ce8mr11823560rwn.10.1700166316603;
+        Thu, 16 Nov 2023 12:25:16 -0800 (PST)
+Received: from [10.44.189.251] ([12.161.6.169])
+        by smtp.gmail.com with ESMTPSA id ee11-20020a0562140a4b00b0065d051fc445sm51695qvb.55.2023.11.16.12.25.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Nov 2023 12:25:16 -0800 (PST)
+Message-ID: <fdd84042-4140-407c-9dc5-d5a56d3d3292@linaro.org>
+Date: Thu, 16 Nov 2023 21:25:15 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231114112820.1771240-1-andyshrk@163.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V3 1/6] dt-bindings: display: panel: Update NewVision
+ NV3051D compatibles
+Content-Language: en-US
+To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ sebastian.reichel@collabora.com, daniel@ffwll.ch, airlied@gmail.com,
+ sam@ravnborg.org, neil.armstrong@linaro.org, heiko@sntech.de,
+ conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20231116001742.2340646-1-macroalpha82@gmail.com>
+ <20231116001742.2340646-2-macroalpha82@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231116001742.2340646-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_192623_945458_3B4DD1DD 
-X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-CacheID: sfid-20231116_122519_216452_47D93AC4 
+X-CRM114-Status: UNSURE (   9.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,20 +143,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 16/11/2023 01:17, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Update the NewVision NV3051D compatible strings by adding a new panel,
+> the powkiddy,rk2023-panel, and removing another entry, the
+> anbernic,rg353v-panel.
+> 
+> The rk2023-panel is similar to the rg353p-panel but has slightly
+> different timings so it needs a new string.
+> 
+> The rg353v-panel is duplicate to the rg353p-panel, so remove it. No
+> current devices use it and changes to the driver mean it is no longer
+> valid as a compatible string.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-On Tue, 14 Nov 2023 19:28:20 +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> Add VOP and VO GRF syscon compatibles for RK3588
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-> 
->  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Acked-by: Rob Herring <robh@kernel.org>
+Best regards,
+Krzysztof
 
 
 _______________________________________________
