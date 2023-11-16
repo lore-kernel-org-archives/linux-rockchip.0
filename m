@@ -4,117 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A1F9C47071
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Nov 2023 08:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC0FC54FB9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Nov 2023 10:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kp9OWMZZmbvwlvPpWiCWxT/HfZepPPEiEPkwOuwCzRc=; b=VVi25vQqtyxhkDhsWmSo1HSrh8
-	xxyXdSxWnRmILVGOo4PIRBFLLQbTMW1rHOGHhe0fyJ6YdmCPNNAmzQMPakm9huhqXsNSWw3MdOqb5
-	KO/Eg0UvKXPJJgb76Hu8FFk384i8MUs0nyuEVeE/HumvD69M/Ahcf0WzqNyPbVuxeM8QX/HkdyOIx
-	2v0FD0mN6hbIoQfak5O7LAM02eR+sV6mB3NTMmpXrNuDIlcb3SBFcYSUrK6hI9xvufJHLMiUnf+wi
-	YVP1GrkFGCaljSJAUVhj9/jnPMj0TBK2ECMphbJo0vs4Yb75wnErPDeCB89FcmDaO4vSyJbxWfidr
-	1oLI1Q3A==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=p64bin+9EHle3R4+K0aPeZZshfT6BHzUhXPtyJhoBwc=; b=eL6v4tE+SuLKaB
+	KKeXxcu4HgMJiGKyHbGV85oRdKOG22reZR6T7hkyhbaHHKM+hucp+oCnMa8b2H0t7GBg9OiA4BCnC
+	s3EVI+v5D/DxrIXpQlsm5ToJlg4qv+Jpp5jGW5RbRezvcB84lapcPAND7ZRp0enKzQ/3uxIBDvmZl
+	IqZ7wgoa0h+AV9LcwU4zQTcY66Fl6PuYsdHt6R9gA1ByxjzwFQI1hKvfhlQuerio8h+w+sBjhKeqR
+	mz+FhxtqjEHlqU9g5SnujtukhEu5sm1Tye0PV/rKVAE7Nd4iuauu4HEnWh6eRj/6r40nY1lGUbjNu
+	El6sqm4xofglDAq4B+fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3Xvx-002tEZ-2n;
-	Thu, 16 Nov 2023 08:41:09 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1r3Zn9-0036cM-0j;
+	Thu, 16 Nov 2023 10:40:11 +0000
+Received: from mail-m15592.qiye.163.com ([101.71.155.92])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3Xvv-002tEA-2L
+	id 1r3Zn3-0036ap-2Y
 	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Nov 2023 08:41:09 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4084de32db5so4667005e9.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 16 Nov 2023 00:41:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700124065; x=1700728865; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :references:cc:to:content-language:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5hniODu6j01bbuESP6Z8fITScn6cg4zb+KdTZ5eQC+A=;
-        b=q2AAvhATBMJHwEEjBxd0sOv2stxn6GsRroIrNRnoHlQCea2eF3RYXCAdzrSC6K8RFD
-         Io5LeLSlxrFR0cTdgvRkFBaO1HHm5uUmr8n2mRhT8JIJW+7DCbGN4jI3nCJ6kWCHDFte
-         9UzKhECwrFMZV3KksTDdNpRSoIswk9Y5RKjHhSJv+mChozrwzxrLq6x1QBc1dl+39FqO
-         RXHNSKbogcCt1bYcGTiiOegHJaYZSS6gncht9e24SMoQ3C/0A/WjJ7Uxh0cwyVD7+ihu
-         hWGZj72g5YAzNAzHK0PLBr5UXBfAl3NrqHJ/vtv87l00M3Dq+DTar3I/POFoVg6iWaVG
-         xJEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700124065; x=1700728865;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :references:cc:to:content-language:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=5hniODu6j01bbuESP6Z8fITScn6cg4zb+KdTZ5eQC+A=;
-        b=swSqOJByCByhyu1t4vOHlj3XW9npbLORoj0KPfhU1rTXrlpN5vCbHHbFXD0kTAKKza
-         YubRUEnbaE8hZAE1BlEPUWHkGZrW8uBvm5f56GyQ0vCRGFejavOaWX3wL4ziLym3M6+i
-         inUaWxNE3uyZq1MTh4hFSEu8YR9jQlD7TOYE5LhrJ8NgTe8g0vGZdfCBiJOpHWNfGY/F
-         ktrD22fnHkRpopgQI5E/WTXUCtr19IfjRsDMVTzNTWfKL1bqjOurW2ot6A3Yqe/IDJZS
-         adLjWJBdMhqDEJ191REtBoU2T9JV+zo5n27VmhUGHSewLbefwjw8yXgQAaBFlq+hdilZ
-         z7gA==
-X-Gm-Message-State: AOJu0YyzRQRzwDwYHmYmCDWOOuHIKIvdTIVT+tz+tEWihxyHOv/DcV0W
-	yYZow6LxW8SHKdfDqRVt3fZBng==
-X-Google-Smtp-Source: AGHT+IEbqKjc9pBdKDJPIAE2x0mP6MrzoeK8GDVpuk7vcRIpt529YfQbm64Em7Utuj56L3deAnstTg==
-X-Received: by 2002:a05:600c:202:b0:404:4b6f:d705 with SMTP id 2-20020a05600c020200b004044b6fd705mr12740802wmi.17.1700124065303;
-        Thu, 16 Nov 2023 00:41:05 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:982:cbb0:eaed:bc6a:fc25:5159? ([2a01:e0a:982:cbb0:eaed:bc6a:fc25:5159])
-        by smtp.gmail.com with ESMTPSA id n7-20020a05600c4f8700b0040588d85b3asm2617051wmq.15.2023.11.16.00.41.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Nov 2023 00:41:04 -0800 (PST)
-Message-ID: <0ba99820-ada8-4a42-af99-3b57f585bec8@linaro.org>
-Date: Thu, 16 Nov 2023 09:41:03 +0100
+	Thu, 16 Nov 2023 10:40:10 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=KppILfBKlvmZTxAqX+rgbfzr+mIQCRFz4gIjpD7tSNqkGzTq1YwsB3R5VW/AFY1RiUgSpwkfAwnPLlofsJ3Gbdx27BFXnlAdTf8Buc4+sjpCG+31Y+4XcqkMDwGoSQNuQ8/QgvjOJKaWZ+/BBmrsGri2zdGgiFOtvN7N4gM7A0A=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=wjCKB+qv3Zz9mVAawkCx8gKIh8UEGuAJWgHy4foWgP0=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id C85CB7801BA;
+	Thu, 16 Nov 2023 18:39:40 +0800 (CST)
+Message-ID: <8f2ebc81-51c5-44d5-b27b-633a6cc85d0d@rock-chips.com>
+Date: Thu, 16 Nov 2023 18:39:40 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v8 08/14] mfd: rk8xx: add rk806 support
-Content-Language: en-US, fr
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Lee Jones <lee@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alessandro Zummo <a.zummo@towertech.it>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Diederik de Haas <didi.debian@cknow.org>,
- Vincent Legoll <vincent.legoll@gmail.com>
-References: <20230504173618.142075-1-sebastian.reichel@collabora.com>
- <20230504173618.142075-9-sebastian.reichel@collabora.com>
- <e612cef3-3bb6-46b7-a2c9-53fffc20c819@linaro.org>
- <20231115180050.5r5xukttz27vviyi@mercury.elektranox.org>
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro Developer Services
-In-Reply-To: <20231115180050.5r5xukttz27vviyi@mercury.elektranox.org>
+Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com
+References: <20231114112534.1770731-1-andyshrk@163.com>
+ <20231114112855.1771372-1-andyshrk@163.com>
+ <20231115090823.GY3359458@pengutronix.de>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20231115090823.GY3359458@pengutronix.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0pJSlYYGUhPT00aGEweTB9VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8bd7b71242b24fkuuuc85cb7801ba
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NQg6CDo4Vjw4Hjo0AxwtFh4W
+	Ij8wCilVSlVKTEtLSkhKSkNKQ01OVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSExOSEw3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_004107_793454_8F445450 
-X-CRM114-Status: GOOD (  29.63  )
+X-CRM114-CacheID: sfid-20231116_024006_565987_902EAC8E 
+X-CRM114-Status: GOOD (  35.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,137 +75,962 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: neil.armstrong@linaro.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Sascha:
 
-On 15/11/2023 19:00, Sebastian Reichel wrote:
-> Hi Neil,
-> 
-> On Wed, Nov 15, 2023 at 06:17:50PM +0100, Neil Armstrong wrote:
->> Hi Sebastian,
+Please check my response for the rest comments inline.
+
+On 11/15/23 17:08, Sascha Hauer wrote:
+> Hi Andy,
+>
+> Thanks for your patches, some remarks inline.
+>
+> On Tue, Nov 14, 2023 at 07:28:55PM +0800, Andy Yan wrote:
+>> From: Andy Yan <andy.yan@rock-chips.com>
 >>
->> On 04/05/2023 19:36, Sebastian Reichel wrote:
->>> Add support for SPI connected rk806, which is used by the RK3588
->>> evaluation boards. The PMIC is advertised to support I2C and SPI,
->>> but the evaluation boards all use SPI. Thus only SPI support is
->>> added here.
->>>
->>> Acked-for-MFD-by: Lee Jones <lee@kernel.org>
->>> Tested-by: Diederik de Haas <didi.debian@cknow.org> # Rock64, Quartz64 Model A + B
->>> Tested-by: Vincent Legoll <vincent.legoll@gmail.com> # Pine64 QuartzPro64
->>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
->>> ---
->>>    drivers/mfd/Kconfig       |  14 ++
->>>    drivers/mfd/Makefile      |   1 +
->>>    drivers/mfd/rk8xx-core.c  |  69 ++++++-
->>>    drivers/mfd/rk8xx-spi.c   | 124 ++++++++++++
->>>    include/linux/mfd/rk808.h | 409 ++++++++++++++++++++++++++++++++++++++
->>>    5 files changed, 614 insertions(+), 3 deletions(-)
->>>    create mode 100644 drivers/mfd/rk8xx-spi.c
->>>
+>> VOP2 on rk3588:
 >>
->> <snip>
+>> Four video ports:
+>> VP0 Max 4096x2160
+>> VP1 Max 4096x2160
+>> VP2 Max 4096x2160
+>> VP3 Max 2048x1080
 >>
->>> -	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
->>> -			      cells, nr_cells, NULL, 0,
->>> +	ret = devm_mfd_add_devices(dev, 0, cells, nr_cells, NULL, 0,
->>>    			      regmap_irq_get_domain(rk808->irq_data));
+>> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+>> 4 4K Esmart windows with line RGB/YUV support
 >>
->> It seems you replaced PLATFORM_DEVID_NONE by 0, triggering again the bug preventing
->> having multiples RK pmics on the same system I fixed earlier at [1].
-> 
-> All cells have PLATFORM_DEVID_NONE specified and thus are registered
-> without an ID. I changed this bit to avoid overriding the
-> information, since I did not want to have PLATFORM_DEVID_NONE for
-> rk806.
-> 
->> This gives (again):
->> <4>[ 0.664107] sysfs: cannot create duplicate filename '/bus/platform/devices/rk808-clkout'
-> 
-> Which means, you do not want PLATFORM_DEVID_NONE (-1), but
-> PLATFORM_DEVID_AUTO (-2). The above path is the expected path
-> for PLATFORM_DEVID_NONE.
-> 
->> <4>[ 0.664120] CPU: 3 PID: 97 Comm: kworker/u12:2 Not tainted 6.6.1 #1
->> <4>[ 0.664131] Hardware name: Hardkernel ODROID-GO-Ultra (DT)
->> <4>[ 0.664139] Workqueue: events_unbound deferred_probe_work_func
->> <4>[ 0.664160] Call trace:
->> <4>[ 0.664165] dump_backtrace+0x9c/0x11c
->> <4>[ 0.664181] show_stack+0x18/0x24
->> <4>[ 0.664193] dump_stack_lvl+0x78/0xc4
->> <4>[ 0.664205] dump_stack+0x18/0x24
->> <4>[ 0.664215] sysfs_warn_dup+0x64/0x80
->> <4>[ 0.664227] sysfs_do_create_link_sd+0xf0/0xf8
->> <4>[ 0.664239] sysfs_create_link+0x20/0x40
->> <4>[ 0.664250] bus_add_device+0x114/0x160
->> <4>[ 0.664259] device_add+0x3f0/0x7cc
->> <4>[ 0.664267] platform_device_add+0x180/0x270
->> <4>[ 0.664278] mfd_add_device+0x390/0x4a8
->> <4>[ 0.664290] devm_mfd_add_devices+0xb0/0x150
->> <4>[ 0.664301] rk8xx_probe+0x26c/0x410
->> <4>[ 0.664312] rk8xx_i2c_probe+0x64/0x98
->> <4>[ 0.664323] i2c_device_probe+0x104/0x2e8
->> <4>[ 0.664333] really_probe+0x184/0x3c8
->> <4>[ 0.664342] __driver_probe_device+0x7c/0x16c
->> <4>[ 0.664351] driver_probe_device+0x3c/0x10c
->> <4>[ 0.664360] __device_attach_driver+0xbc/0x158
->> <4>[ 0.664369] bus_for_each_drv+0x80/0xdc
->> <4>[ 0.664377] __device_attach+0x9c/0x1ac
->> <4>[ 0.664386] device_initial_probe+0x14/0x20
->> <4>[ 0.664395] bus_probe_device+0xac/0xb0
->> <4>[ 0.664403] deferred_probe_work_func+0xa0/0xf4
->> <4>[ 0.664412] process_one_work+0x1bc/0x378
->> <4>[ 0.664421] worker_thread+0x1dc/0x3d4
->> <4>[ 0.664429] kthread+0x104/0x118
->> <4>[ 0.664440] ret_from_fork+0x10/0x20
->> <3>[ 0.664494] rk8xx-i2c 0-001c: error -EEXIST: failed to add MFD devices
->> <4>[ 0.666769] rk8xx-i2c: probe of 0-001c failed with error -17
-> 
-> I didn't notice when working on rk806, but after analyzing it now:
-> 
-> Your patch effectively set the cells to PLATFORM_DEVID_AUTO, because
-> you set all cells to PLATFORM_DEVID_NONE (-1) and additionally used
-> PLATFORM_DEVID_NONE (-1) for the devm_mfd_add_devices() call. But
-> that uses the sum of both IDs. Adding -1 to -1 is -2 and thus
-> PLATFORM_DEVID_AUTO. This is of course very confusing and just
-> worked by chance. There are two options:
-> 
-> 1. Modify all cells to use PLATFORM_DEVID_AUTO instead of
-> PLATFORM_DEVID_NONE
-> 2. Drop the .id from all cells and use PLATFORM_DEVID_AUTO in the
-> call to devm_mfd_add_devices()
-> 
-> Note, that switching from PLATFORM_DEVID_NONE to PLATFORM_DEVID_AUTO
-> modifies sysfs paths and thus might break people's scripts; that's why
-> I tried not to modify any existing platform. I will let you deal
-> with that, since I cannot even test any !rk806 platform supported by
-> this driver :)
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>> ---
+>>
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 324 ++++++++++++++++++-
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  57 ++++
+>>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 215 ++++++++++++
+>>   include/dt-bindings/soc/rockchip,vop2.h      |   4 +
+>>   4 files changed, 593 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> index 0d7dc543bef3..ba61c0233937 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> @@ -191,6 +191,9 @@ struct vop2 {
+>>   	struct regmap *map;
+>>   
+>>   	struct regmap *sys_grf;
+>> +	struct regmap *vop_grf;
+>> +	struct regmap *vo1_grf;
+>> +	struct regmap *sys_pmu;
+>>   
+>>   	/* physical map length of vop2 register */
+>>   	u32 len;
+>> @@ -209,6 +212,7 @@ struct vop2 {
+>>   	unsigned int enable_count;
+>>   	struct clk *hclk;
+>>   	struct clk *aclk;
+>> +	struct clk *pclk;
+>>   
+>>   	/* optional internal rgb encoder */
+>>   	struct rockchip_rgb *rgb;
+>> @@ -217,6 +221,13 @@ struct vop2 {
+>>   	struct vop2_win win[];
+>>   };
+>>   
+>> +#define vop2_output_if_is_hdmi(x)	(x == ROCKCHIP_VOP2_EP_HDMI0 || x == ROCKCHIP_VOP2_EP_HDMI1)
+>> +#define vop2_output_if_is_dp(x)		(x == ROCKCHIP_VOP2_EP_DP0 || x == ROCKCHIP_VOP2_EP_DP1)
+>> +#define vop2_output_if_is_edp(x)	(x == ROCKCHIP_VOP2_EP_EDP0 || x == ROCKCHIP_VOP2_EP_EDP1)
+>> +#define vop2_output_if_is_mipi(x)	(x == ROCKCHIP_VOP2_EP_MIPI0 || x == ROCKCHIP_VOP2_EP_MIPI1)
+>> +#define vop2_output_if_is_lvds(x)	(x == ROCKCHIP_VOP2_EP_LVDS0 || x == ROCKCHIP_VOP2_EP_LVDS1)
+>> +#define vop2_output_if_is_dpi(x)	(x == ROCKCHIP_VOP2_EP_RGB0)
+>> +
+>>   static const struct regmap_config vop2_regmap_config;
+>>   
+>>   static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
+>> @@ -271,9 +282,12 @@ static bool vop2_cluster_window(const struct vop2_win *win)
+>>   static void vop2_cfg_done(struct vop2_video_port *vp)
+>>   {
+>>   	struct vop2 *vop2 = vp->vop2;
+>> +	u32 val;
+>>   
+>> -	regmap_set_bits(vop2->map, RK3568_REG_CFG_DONE,
+>> -			BIT(vp->id) | RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
+>> +	val = BIT(vp->id) | (BIT(vp->id) << 16) |
+>> +		RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN;
+>> +
+>> +	regmap_set_bits(vop2->map, RK3568_REG_CFG_DONE, val);
+>>   }
+>>   
+>>   static void vop2_win_disable(struct vop2_win *win)
+>> @@ -863,13 +877,32 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
+>>   		goto err;
+>>   	}
+>>   
+>> +	ret = clk_prepare_enable(vop2->pclk);
+>> +	if (ret < 0) {
+>> +		drm_err(vop2->drm, "failed to enable pclk - %d\n", ret);
+>> +		goto err1;
+>> +	}
+>> +
+>>   	return 0;
+>> +err1:
+>> +	clk_disable_unprepare(vop2->aclk);
+>>   err:
+>>   	clk_disable_unprepare(vop2->hclk);
+>>   
+>>   	return ret;
+>>   }
+>>   
+>> +static void vop2_power_domain_all_on(struct vop2 *vop2)
+> The function name sounds like it would return the current status rather
+> than enabling them. Better vop2_power_domain_enable_all(). Also a
+> rk3588_ prefix would be nice.
 
-Yes it will modify sysfs path, but it's a regression since this before this patch
-everything was registered with PLATFORM_DEVID_AUTO anyway,
-so I'll provide a fix adding back PLATFORM_DEVID_NONE to devm_mfd_add_devices
-in a first time...
 
-> 
-> Also mfd_add_device should probably get special handling for
-> PLATFORM_DEVID_NONE, just like it already has special handling
-> for PLATFORM_DEVID_AUTO.
+Okay, will do.
 
-... and yes thanks for the great analysis I'll provide a change cleaning the mess.
+>> +{
+>> +	u32 pd;
+>> +
+>> +	pd = vop2_readl(vop2, RK3588_SYS_PD_CTRL);
+>> +	pd &= ~(VOP2_PD_CLUSTER0 | VOP2_PD_CLUSTER1 | VOP2_PD_CLUSTER2 |
+>> +		VOP2_PD_CLUSTER3 | VOP2_PD_ESMART);
+>> +
+>> +	vop2_writel(vop2, RK3588_SYS_PD_CTRL, pd);
+>> +}
+>> +
+>>   static void vop2_enable(struct vop2 *vop2)
+>>   {
+>>   	int ret;
+>> @@ -901,6 +934,9 @@ static void vop2_enable(struct vop2 *vop2)
+>>   	if (vop2->data->soc_id == 3566)
+>>   		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+>>   
+>> +	if (vop2->data->soc_id == 3588)
+>> +		vop2_power_domain_all_on(vop2);
+>> +
+>>   	vop2_writel(vop2, RK3568_REG_CFG_DONE, RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN);
+>>   
+>>   	/*
+>> @@ -926,6 +962,7 @@ static void vop2_disable(struct vop2 *vop2)
+>>   
+>>   	pm_runtime_put_sync(vop2->dev);
+>>   
+>> +	clk_disable_unprepare(vop2->pclk);
+>>   	clk_disable_unprepare(vop2->aclk);
+>>   	clk_disable_unprepare(vop2->hclk);
+>>   }
+>> @@ -1293,7 +1330,11 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+>>   			vop2_win_write(win, VOP2_WIN_AFBC_ENABLE, 1);
+>>   		vop2_win_write(win, VOP2_WIN_AFBC_FORMAT, afbc_format);
+>>   		vop2_win_write(win, VOP2_WIN_AFBC_UV_SWAP, uv_swap);
+>> -		vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+>> +		if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
+>> +			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 0);
+>> +		else
+>> +			vop2_win_write(win, VOP2_WIN_AFBC_AUTO_GATING_EN, 1);
+>> +
+>>   		vop2_win_write(win, VOP2_WIN_AFBC_BLOCK_SPLIT_EN, 0);
+>>   		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
+>>   		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
+>> @@ -1481,10 +1522,10 @@ static void vop2_post_config(struct drm_crtc *crtc)
+>>   	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
+>>   }
+>>   
+>> -static void rk3568_set_intf_mux(struct vop2_video_port *vp, int id,
+>> -				u32 polflags)
+>> +static unsigned long rk3568_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
+>>   {
+>>   	struct vop2 *vop2 = vp->vop2;
+>> +	struct drm_crtc *crtc = &vp->crtc;
+>>   	u32 die, dip;
+>>   
+>>   	die = vop2_readl(vop2, RK3568_DSP_IF_EN);
+>> @@ -1546,13 +1587,257 @@ static void rk3568_set_intf_mux(struct vop2_video_port *vp, int id,
+>>   		break;
+>>   	default:
+>>   		drm_err(vop2->drm, "Invalid interface id %d on vp%d\n", id, vp->id);
+>> -		return;
+>> +		return 0;
+>> +	}
+>> +
+>> +	dip |= RK3568_DSP_IF_POL__CFG_DONE_IMD;
+>> +
+>> +	vop2_writel(vop2, RK3568_DSP_IF_EN, die);
+>> +	vop2_writel(vop2, RK3568_DSP_IF_POL, dip);
+>> +
+>> +	return crtc->state->adjusted_mode.crtc_clock  * 1000LL;
+>> +}
+>> +
+>> +/*
+>> + * calc the dclk on rk3588
+>> + * the available div of dclk is 1, 2, 4
+>> + */
+>> +static unsigned long vop2_calc_dclk(unsigned long child_clk, unsigned long max_dclk)
+>> +{
+>> +	if (child_clk * 4 <= max_dclk)
+>> +		return child_clk * 4;
+>> +	else if (child_clk * 2 <= max_dclk)
+>> +		return child_clk * 2;
+>> +	else if (child_clk <= max_dclk)
+>> +		return child_clk;
+>> +	else
+>> +		return 0;
+>> +}
+>> +
+>> +/*
+>> + * 4 pixclk/cycle on rk3588
+>> + * RGB/eDP/HDMI: if_pixclk >= dclk_core
+>> + * DP: dp_pixclk = dclk_out <= dclk_core
+>> + * DSI: mipi_pixclk <= dclk_out <= dclk_core
+>> + */
+>> +static unsigned long vop2_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>> +				       int *dclk_core_div, int *dclk_out_div,
+>> +				       int *if_pixclk_div, int *if_dclk_div)
+> Please add a rk3588_ prefix to all functions that are rk3588 only.
 
-Thanks,
-Neil
 
-> 
-> Greetings,
-> 
-> -- Sebastian
+Will do.
 
+>
+>> +{
+>> +	struct vop2 *vop2 = vp->vop2;
+>> +	struct drm_crtc *crtc = &vp->crtc;
+>> +	struct drm_display_mode *adjusted_mode = &crtc->state->adjusted_mode;
+>> +	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
+>> +	int output_mode = vcstate->output_mode;
+>> +	unsigned long v_pixclk = adjusted_mode->crtc_clock * 1000LL; /* video timing pixclk */
+>> +	unsigned long dclk_core_rate = v_pixclk >> 2;
+>> +	unsigned long dclk_rate = v_pixclk;
+>> +	unsigned long dclk_out_rate;
+>> +	unsigned long if_dclk_rate;
+>> +	unsigned long if_pixclk_rate;
+>> +	int K = 1;
+>> +
+>> +	if (vop2_output_if_is_hdmi(id)) {
+> The vop2_output_if_is_* defines are used only once. Maybe a big:
+>
+> switch (id) {
+> 	case ROCKCHIP_VOP2_EP_HDMI0:
+> 	case ROCKCHIP_VOP2_EP_HDMI1:
+> 		...
+> }
+>
+> would look a bit better overall.
+
+
+actually the output_if check will be used in more place, such as a RB_SWAP for DP and hdmi
+
+at YUV444 output mode(I lost in this version, I will add it in next).
+
+So I would like keep it.
+
+>
+>> +		/*
+>> +		 * K = 2: dclk_core = if_pixclk_rate > if_dclk_rate
+>> +		 * K = 1: dclk_core = hdmie_edp_dclk > if_pixclk_rate
+>> +		 */
+>> +		if (output_mode == ROCKCHIP_OUT_MODE_YUV420) {
+>> +			dclk_rate = dclk_rate >> 1;
+>> +			K = 2;
+>> +		}
+>> +
+>> +		if_pixclk_rate = (dclk_core_rate << 1) / K;
+>> +		if_dclk_rate = dclk_core_rate / K;
+>> +
+>> +		*if_pixclk_div = dclk_rate / if_pixclk_rate;
+>> +		*if_dclk_div = dclk_rate / if_dclk_rate;
+> Not sure if this will change with future extensions, but currently
+> *if_pixclk_div will always be 2 and *if_dclk_div will alway be 4,
+> so maybe better write it like this
+>
+>
+>> +		*dclk_core_div = dclk_rate / dclk_core_rate;
+> *dclk_core_div is calculated the same way for all cases. You could pull
+> this out of the if/else.
+>
+>> +	} else if (vop2_output_if_is_edp(id)) {
+>> +		/* edp_pixclk = edp_dclk > dclk_core */
+>> +		if_pixclk_rate = v_pixclk / K;
+>> +		if_dclk_rate = v_pixclk / K;
+> if_dclk_rate is unused here.
+It will be removed in next version.
+>
+>> +		dclk_rate = if_pixclk_rate * K;
+>> +		*dclk_core_div = dclk_rate / dclk_core_rate;
+>> +		*if_pixclk_div = dclk_rate / if_pixclk_rate;
+>> +		*if_dclk_div = *if_pixclk_div;
+> Both *if_pixclk_div and *if_dclk_div will always be 1.
+>
+>> +	} else if (vop2_output_if_is_dp(id)) {
+>> +		if (output_mode == ROCKCHIP_OUT_MODE_YUV420)
+>> +			dclk_out_rate = v_pixclk >> 3;
+>> +		else
+>> +			dclk_out_rate = v_pixclk >> 2;
+>> +
+>> +		dclk_rate = vop2_calc_dclk(dclk_out_rate, 600000);
+>> +		if (!dclk_rate) {
+>> +			drm_err(vop2->drm, "DP dclk_out_rate out of range, dclk_out_rate: %ld KHZ\n",
+>> +				dclk_out_rate);
+>> +			return -EINVAL;
+> This function has return type unsigned long. Also this error is never
+> checked for by the caller.
+
+
+I think I should return 0 here, and add check for the caller.
+
+>> +		}
+>> +		*dclk_out_div = dclk_rate / dclk_out_rate;
+>> +		*dclk_core_div = dclk_rate / dclk_core_rate;
+>> +	} else if (vop2_output_if_is_mipi(id)) {
+>> +		if_pixclk_rate = dclk_core_rate / K;
+>> +		/* dclk_core = dclk_out * K = if_pixclk * K = v_pixclk / 4 */
+>> +		dclk_out_rate = if_pixclk_rate;
+>> +		/* dclk_rate = N * dclk_core_rate N = (1,2,4 ), we get a little factor here */
+>> +		dclk_rate = vop2_calc_dclk(dclk_out_rate, 600000);
+>> +		if (!dclk_rate) {
+>> +			drm_err(vop2->drm, "MIPI dclk out of range, dclk_out_rate: %ld KHZ\n",
+>> +				dclk_out_rate);
+>> +			return -EINVAL;
+>> +		}
+>> +		*dclk_out_div = dclk_rate / dclk_out_rate;
+>> +		*dclk_core_div = dclk_rate / dclk_core_rate;
+>> +		*if_pixclk_div = 1;       /*mipi pixclk == dclk_out*/
+>> +	} else if (vop2_output_if_is_dpi(id)) {
+>> +		dclk_rate = v_pixclk;
+>> +		*dclk_core_div = dclk_rate / dclk_core_rate;
+>> +	}
+>> +
+>> +	*if_pixclk_div = ilog2(*if_pixclk_div);
+>> +	*if_dclk_div = ilog2(*if_dclk_div);
+>> +	*dclk_core_div = ilog2(*dclk_core_div);
+>> +	*dclk_out_div = ilog2(*dclk_out_div);
+>> +
+>> +	drm_dbg(vop2->drm, "dclk:%ld, pixclk_div;%d,dclk_div:%d\n",
+> Replace ';' with ':' in the format string, some whitespaces are missing.
+
+
+Thank you for catching it, will fix in next version.
+
+>> +		dclk_rate, *if_pixclk_div, *if_dclk_div);
+>> +
+>> +	return dclk_rate;
+>> +}
+>> +
+>> +/*
+>> + * MIPI port mux on rk3588:
+>> + * 0: Video Port2
+>> + * 1: Video Port3
+>> + * 3: Video Port 1(MIPI1 only)
+>> + */
+>> +static u32 rk3588_get_mipi_port_mux(int vp_id)
+>> +{
+>> +	if (vp_id == 1)
+>> +		return 3;
+>> +	else if (vp_id == 3)
+>> +		return 1;
+>> +	else
+>> +		return 0;
+>> +}
+>> +
+>> +static u32 rk3588_get_hdmi_pol(u32 flags)
+>> +{
+>> +	u32 val;
+>> +
+>> +	val = (flags & DRM_MODE_FLAG_NHSYNC) ? BIT(HSYNC_POSITIVE) : 0;
+>> +	val |= (flags & DRM_MODE_FLAG_NVSYNC) ? BIT(VSYNC_POSITIVE) : 0;
+>> +
+>> +	return val;
+>> +}
+>> +
+>> +static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
+>> +{
+>> +	struct vop2 *vop2 = vp->vop2;
+>> +	int dclk_core_div, dclk_out_div, if_pixclk_div, if_dclk_div;
+>> +	unsigned long clock;
+>> +	u32 die, dip, div, vp_clk_div, val;
+>> +
+>> +	clock = vop2_calc_cru_cfg(vp, id, &dclk_core_div, &dclk_out_div,
+>> +				  &if_pixclk_div, &if_dclk_div);
+>> +
+>> +	vp_clk_div = FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_CORE_DIV, dclk_core_div);
+>> +	vp_clk_div |= FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_OUT_DIV, dclk_out_div);
+>> +
+>> +	die = vop2_readl(vop2, RK3568_DSP_IF_EN);
+>> +	dip = vop2_readl(vop2, RK3568_DSP_IF_POL);
+>> +	div = vop2_readl(vop2, RK3568_DSP_IF_CTRL);
+>> +
+>> +	switch (id) {
+>> +	case ROCKCHIP_VOP2_EP_HDMI0:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV, if_dclk_div);
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_HDMI0 |
+>> +			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+>> +		val = rk3588_get_hdmi_pol(polflags);
+>> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 1, 1));
+>> +		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 6, 5));
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_HDMI1:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV, if_dclk_div);
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI1_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_HDMI1 |
+>> +			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX, vp->id);
+>> +		val = rk3588_get_hdmi_pol(polflags);
+>> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 4, 4));
+>> +		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 8, 7));
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_EDP0:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV, if_dclk_div);
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_EDP0 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+>> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 0, 0));
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_EDP1:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV, if_dclk_div);
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_EDP1 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX, vp->id);
+>> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 3, 3));
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_MIPI0:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_MIPI0_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_MIPI0_MUX;
+>> +		val = rk3588_get_mipi_port_mux(vp->id);
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_MIPI0 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_MIPI0_MUX, !!val);
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_MIPI1:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_MIPI1_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX;
+>> +		val = rk3588_get_mipi_port_mux(vp->id);
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_MIPI1 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX, val);
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_DP0:
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_DP0_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_DP0 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_DP0_MUX, vp->id);
+>> +		dip &= ~RK3588_DSP_IF_POL__DP0_PIN_POL;
+>> +		dip |= FIELD_PREP(RK3588_DSP_IF_POL__DP0_PIN_POL, polflags);
+>> +		break;
+>> +	case ROCKCHIP_VOP2_EP_DP1:
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_MIPI1 |
+>> +			   FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX, vp->id);
+>> +		dip &= ~RK3588_DSP_IF_POL__DP1_PIN_POL;
+>> +		dip |= FIELD_PREP(RK3588_DSP_IF_POL__DP1_PIN_POL, polflags);
+>> +		break;
+>> +	default:
+>> +		drm_err(vop2->drm, "Invalid interface id %d on vp%d\n", id, vp->id);
+>> +		return 0;
+>>   	}
+>>   
+>>   	dip |= RK3568_DSP_IF_POL__CFG_DONE_IMD;
+>>   
+>> +	vop2_vp_write(vp, RK3588_VP_CLK_CTRL, vp_clk_div);
+>>   	vop2_writel(vop2, RK3568_DSP_IF_EN, die);
+>> +	vop2_writel(vop2, RK3568_DSP_IF_CTRL, div);
+>>   	vop2_writel(vop2, RK3568_DSP_IF_POL, dip);
+>> +
+>> +	return clock;
+>> +}
+>> +
+>> +static unsigned long vop2_set_intf_mux(struct vop2_video_port *vp, int ep_id, u32 polflags)
+>> +{
+>> +	struct vop2 *vop2 = vp->vop2;
+>> +
+>> +	if (vop2->data->soc_id == 3566 || vop2->data->soc_id == 3568)
+>> +		return rk3568_set_intf_mux(vp, ep_id, polflags);
+>> +	else if (vop2->data->soc_id == 3588)
+>> +		return rk3588_set_intf_mux(vp, ep_id, polflags);
+>> +	else
+>> +		return 0;
+>>   }
+>>   
+>>   static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+>> @@ -1622,7 +1907,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+>>   	drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encoder_mask) {
+>>   		struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
+>>   
+>> -		rk3568_set_intf_mux(vp, rkencoder->crtc_endpoint_id, polflags);
+>> +		clock = vop2_set_intf_mux(vp, rkencoder->crtc_endpoint_id, polflags);
+> clock is set to potentially different values in this loop and the last
+> value is taken. Without a further description or check this looks wrong.
+
+If we attach more encoder/connector on one vp, the clock will calculate more than once
+
+but with a same result.
+
+I will add comment in next version.
+
+>
+>>   	}
+>>   
+>>   	if (vcstate->output_mode == ROCKCHIP_OUT_MODE_AAAA &&
+>> @@ -2011,6 +2296,14 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
+>>   			port_sel &= ~RK3568_OVL_PORT_SEL__CLUSTER1;
+>>   			port_sel |= FIELD_PREP(RK3568_OVL_PORT_SEL__CLUSTER1, vp->id);
+>>   			break;
+>> +		case ROCKCHIP_VOP2_CLUSTER2:
+>> +			port_sel &= ~RK3588_OVL_PORT_SEL__CLUSTER2;
+>> +			port_sel |= FIELD_PREP(RK3588_OVL_PORT_SEL__CLUSTER2, vp->id);
+>> +			break;
+>> +		case ROCKCHIP_VOP2_CLUSTER3:
+>> +			port_sel &= ~RK3588_OVL_PORT_SEL__CLUSTER3;
+>> +			port_sel |= FIELD_PREP(RK3588_OVL_PORT_SEL__CLUSTER3, vp->id);
+>> +			break;
+>>   		case ROCKCHIP_VOP2_ESMART0:
+>>   			port_sel &= ~RK3568_OVL_PORT_SEL__ESMART0;
+>>   			port_sel |= FIELD_PREP(RK3568_OVL_PORT_SEL__ESMART0, vp->id);
+>> @@ -2019,6 +2312,14 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
+>>   			port_sel &= ~RK3568_OVL_PORT_SEL__ESMART1;
+>>   			port_sel |= FIELD_PREP(RK3568_OVL_PORT_SEL__ESMART1, vp->id);
+>>   			break;
+>> +		case ROCKCHIP_VOP2_ESMART2:
+>> +			port_sel &= ~RK3588_OVL_PORT_SEL__ESMART2;
+>> +			port_sel |= FIELD_PREP(RK3588_OVL_PORT_SEL__ESMART2, vp->id);
+>> +			break;
+>> +		case ROCKCHIP_VOP2_ESMART3:
+>> +			port_sel &= ~RK3588_OVL_PORT_SEL__ESMART3;
+>> +			port_sel |= FIELD_PREP(RK3588_OVL_PORT_SEL__ESMART3, vp->id);
+>> +			break;
+>>   		case ROCKCHIP_VOP2_SMART0:
+>>   			port_sel &= ~RK3568_OVL_PORT_SEL__SMART0;
+>>   			port_sel |= FIELD_PREP(RK3568_OVL_PORT_SEL__SMART0, vp->id);
+>> @@ -2760,6 +3061,9 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+>>   	}
+>>   
+>>   	vop2->sys_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
+> This already lacks an error check, shame on me...
+>
+>> +	vop2->vop_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vop-grf");
+>> +	vop2->vo1_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vo1-grf");
+>> +	vop2->sys_pmu = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pmu");
+> ... but please don't duplicate that.
+
+It a little difficult to find a proper way to do the check, as not every soc need all these phandles.
+
+Do i need check it per soc?
+
+>
+>>   
+>>   	vop2->hclk = devm_clk_get(vop2->dev, "hclk");
+>>   	if (IS_ERR(vop2->hclk)) {
+>> @@ -2773,6 +3077,12 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+>>   		return PTR_ERR(vop2->aclk);
+>>   	}
+>>   
+>> +	vop2->pclk = devm_clk_get_optional(vop2->dev, "pclk_vop");
+>> +	if (IS_ERR(vop2->pclk)) {
+>> +		drm_err(vop2->drm, "failed to get pclk source\n");
+>> +		return PTR_ERR(vop2->pclk);
+>> +	}
+>> +
+>>   	vop2->irq = platform_get_irq(pdev, 0);
+>>   	if (vop2->irq < 0) {
+>>   		drm_err(vop2->drm, "cannot find irq for vop2\n");
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> index 7175f46a2014..2fffe580b215 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> @@ -16,6 +16,7 @@
+>>   #define WIN_FEATURE_AFBDC		BIT(0)
+>>   #define WIN_FEATURE_CLUSTER		BIT(1)
+>>   
+>> +#define HIWORD_UPDATE(v, h, l)  ((GENMASK(h, l) << 16) | ((v) << (l)))
+>>   /*
+>>    *  the delay number of a window in different mode.
+>>    */
+>> @@ -38,6 +39,18 @@ enum vop2_scale_down_mode {
+>>   	VOP2_SCALE_DOWN_AVG,
+>>   };
+>>   
+>> +/*
+>> + * vop2 internal power domain id,
+>> + * should be all none zero, 0 will be treat as invalid;
+>> + */
+>> +#define VOP2_PD_CLUSTER0	BIT(0)
+>> +#define VOP2_PD_CLUSTER1	BIT(1)
+>> +#define VOP2_PD_CLUSTER2	BIT(2)
+>> +#define VOP2_PD_CLUSTER3	BIT(3)
+>> +#define VOP2_PD_DSC_8K		BIT(5)
+>> +#define VOP2_PD_DSC_4K		BIT(6)
+>> +#define VOP2_PD_ESMART		BIT(7)
+>> +
+>>   enum vop2_win_regs {
+>>   	VOP2_WIN_ENABLE,
+>>   	VOP2_WIN_FORMAT,
+>> @@ -192,6 +205,11 @@ enum dst_factor_mode {
+>>   };
+>>   
+>>   #define RK3568_GRF_VO_CON1			0x0364
+>> +
+>> +#define RK3588_GRF_SOC_CON1			0x0304
+>> +#define RK3588_GRF_VOP_CON2			0x08
+>> +#define RK3588_GRF_VO1_CON0			0x00
+>> +
+>>   /* System registers definition */
+>>   #define RK3568_REG_CFG_DONE			0x000
+>>   #define RK3568_VERSION_INFO			0x004
+>> @@ -200,6 +218,7 @@ enum dst_factor_mode {
+>>   #define RK3568_DSP_IF_EN			0x028
+>>   #define RK3568_DSP_IF_CTRL			0x02c
+>>   #define RK3568_DSP_IF_POL			0x030
+>> +#define RK3588_SYS_PD_CTRL			0x034
+>>   #define RK3568_WB_CTRL				0x40
+>>   #define RK3568_WB_XSCAL_FACTOR			0x44
+>>   #define RK3568_WB_YRGB_MST			0x48
+>> @@ -223,6 +242,7 @@ enum dst_factor_mode {
+>>   #define RK3568_VP_DSP_CTRL			0x00
+>>   #define RK3568_VP_MIPI_CTRL			0x04
+>>   #define RK3568_VP_COLOR_BAR_CTRL		0x08
+>> +#define RK3588_VP_CLK_CTRL			0x0C
+>>   #define RK3568_VP_3D_LUT_CTRL			0x10
+>>   #define RK3568_VP_3D_LUT_MST			0x20
+>>   #define RK3568_VP_DSP_BG			0x2C
+>> @@ -364,6 +384,9 @@ enum dst_factor_mode {
+>>   #define RK3568_VP_DSP_CTRL__CORE_DCLK_DIV		BIT(4)
+>>   #define RK3568_VP_DSP_CTRL__OUT_MODE			GENMASK(3, 0)
+>>   
+>> +#define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
+>> +#define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
+>> +
+>>   #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
+>>   #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
+>>   
+>> @@ -382,11 +405,37 @@ enum dst_factor_mode {
+>>   #define RK3568_SYS_DSP_INFACE_EN_HDMI			BIT(1)
+>>   #define RK3568_SYS_DSP_INFACE_EN_RGB			BIT(0)
+>>   
+>> +#define RK3588_SYS_DSP_INFACE_EN_MIPI1_MUX		GENMASK(22, 21)
+>> +#define RK3588_SYS_DSP_INFACE_EN_MIPI0_MUX		GENMASK(20, 20)
+>> +#define RK3588_SYS_DSP_INFACE_EN_EDP_HDMI1_MUX		GENMASK(19, 18)
+>> +#define RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX		GENMASK(17, 16)
+>> +#define RK3588_SYS_DSP_INFACE_EN_DP1_MUX		GENMASK(15, 14)
+>> +#define RK3588_SYS_DSP_INFACE_EN_DP0_MUX		GENMASK(13, 12)
+>> +#define RK3588_SYS_DSP_INFACE_EN_DPI			GENMASK(9, 8)
+>> +#define RK3588_SYS_DSP_INFACE_EN_MIPI1			BIT(7)
+>> +#define RK3588_SYS_DSP_INFACE_EN_MIPI0			BIT(6)
+>> +#define RK3588_SYS_DSP_INFACE_EN_HDMI1			BIT(5)
+>> +#define RK3588_SYS_DSP_INFACE_EN_EDP1			BIT(4)
+>> +#define RK3588_SYS_DSP_INFACE_EN_HDMI0			BIT(3)
+>> +#define RK3588_SYS_DSP_INFACE_EN_EDP0			BIT(2)
+>> +#define RK3588_SYS_DSP_INFACE_EN_DP1			BIT(1)
+>> +#define RK3588_SYS_DSP_INFACE_EN_DP0			BIT(0)
+>> +
+>> +#define RK3588_DSP_IF_MIPI1_PCLK_DIV			GENMASK(27, 26)
+>> +#define RK3588_DSP_IF_MIPI0_PCLK_DIV			GENMASK(25, 24)
+>> +#define RK3588_DSP_IF_EDP_HDMI1_PCLK_DIV		GENMASK(22, 22)
+>> +#define RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV		GENMASK(21, 20)
+>> +#define RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV		GENMASK(18, 18)
+>> +#define RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV		GENMASK(17, 16)
+>> +
+>>   #define RK3568_DSP_IF_POL__MIPI_PIN_POL			GENMASK(19, 16)
+>>   #define RK3568_DSP_IF_POL__EDP_PIN_POL			GENMASK(15, 12)
+>>   #define RK3568_DSP_IF_POL__HDMI_PIN_POL			GENMASK(7, 4)
+>>   #define RK3568_DSP_IF_POL__RGB_LVDS_PIN_POL		GENMASK(3, 0)
+>>   
+>> +#define RK3588_DSP_IF_POL__DP1_PIN_POL			GENMASK(14, 12)
+>> +#define RK3588_DSP_IF_POL__DP0_PIN_POL			GENMASK(10, 8)
+>> +
+>>   #define RK3568_VP0_MIPI_CTRL__DCLK_DIV2_PHASE_LOCK	BIT(5)
+>>   #define RK3568_VP0_MIPI_CTRL__DCLK_DIV2			BIT(4)
+>>   
+>> @@ -407,8 +456,12 @@ enum dst_factor_mode {
+>>   #define RK3568_OVL_PORT_SEL__SEL_PORT			GENMASK(31, 16)
+>>   #define RK3568_OVL_PORT_SEL__SMART1			GENMASK(31, 30)
+>>   #define RK3568_OVL_PORT_SEL__SMART0			GENMASK(29, 28)
+>> +#define RK3588_OVL_PORT_SEL__ESMART3			GENMASK(31, 30)
+>> +#define RK3588_OVL_PORT_SEL__ESMART2			GENMASK(29, 28)
+>>   #define RK3568_OVL_PORT_SEL__ESMART1			GENMASK(27, 26)
+>>   #define RK3568_OVL_PORT_SEL__ESMART0			GENMASK(25, 24)
+>> +#define RK3588_OVL_PORT_SEL__CLUSTER3			GENMASK(23, 22)
+>> +#define RK3588_OVL_PORT_SEL__CLUSTER2			GENMASK(21, 20)
+>>   #define RK3568_OVL_PORT_SEL__CLUSTER1			GENMASK(19, 18)
+>>   #define RK3568_OVL_PORT_SEL__CLUSTER0			GENMASK(17, 16)
+>>   #define RK3568_OVL_PORT_SET__PORT2_MUX			GENMASK(11, 8)
+>> @@ -421,6 +474,10 @@ enum dst_factor_mode {
+>>   #define RK3568_CLUSTER_DLY_NUM__CLUSTER0_1		GENMASK(15, 8)
+>>   #define RK3568_CLUSTER_DLY_NUM__CLUSTER0_0		GENMASK(7, 0)
+>>   
+>> +#define RK3568_CLUSTER_WIN_CTRL0__WIN0_EN		BIT(0)
+>> +
+>> +#define RK3568_SMART_REGION0_CTRL__WIN0_EN		BIT(0)
+>> +
+>>   #define RK3568_SMART_DLY_NUM__SMART1			GENMASK(31, 24)
+>>   #define RK3568_SMART_DLY_NUM__SMART0			GENMASK(23, 16)
+>>   #define RK3568_SMART_DLY_NUM__ESMART1			GENMASK(15, 8)
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> index 22288ad7f326..4745a9260cf8 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> @@ -34,6 +34,28 @@ static const uint32_t formats_cluster[] = {
+>>   	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
+>>   };
+>>   
+>> +static const uint32_t formats_esmart[] = {
+>> +	DRM_FORMAT_XRGB8888,
+>> +	DRM_FORMAT_ARGB8888,
+>> +	DRM_FORMAT_XBGR8888,
+>> +	DRM_FORMAT_ABGR8888,
+>> +	DRM_FORMAT_RGB888,
+>> +	DRM_FORMAT_BGR888,
+>> +	DRM_FORMAT_RGB565,
+>> +	DRM_FORMAT_BGR565,
+>> +	DRM_FORMAT_NV12, /* yuv420_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV21, /* yvu420_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV16, /* yuv422_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV61, /* yvu422_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV24, /* yuv444_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV42, /* yvu444_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV15, /* yuv420_10bit linear mode, 2 plane, no padding */
+>> +	DRM_FORMAT_YVYU, /* yuv422_8bit[YVYU] linear mode */
+>> +	DRM_FORMAT_VYUY, /* yuv422_8bit[VYUY] linear mode */
+>> +	DRM_FORMAT_YUYV, /* yuv422_8bit[YUYV] linear mode */
+>> +	DRM_FORMAT_UYVY, /* yuv422_8bit[UYVY] linear mode */
+>> +};
+>> +
+>>   static const uint32_t formats_rk356x_esmart[] = {
+>>   	DRM_FORMAT_XRGB8888,
+>>   	DRM_FORMAT_ARGB8888,
+>> @@ -234,6 +256,186 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+>>   	},
+>>   };
+>>   
+>> +static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
+>> +	{
+>> +		.id = 0,
+>> +		.feature = VOP_FEATURE_OUTPUT_10BIT,
+>> +		.gamma_lut_len = 1024,
+>> +		.cubic_lut_len = 9 * 9 * 9, /* 9x9x9 */
+>> +		.max_output = { 4096, 2304 },
+>> +		/* hdr2sdr sdr2hdr hdr2hdr sdr2sdr */
+>> +		.pre_scan_max_dly = { 76, 65, 65, 54 },
+>> +		.offset = 0xc00,
+>> +	}, {
+>> +		.id = 1,
+>> +		.feature = VOP_FEATURE_OUTPUT_10BIT,
+>> +		.gamma_lut_len = 1024,
+>> +		.cubic_lut_len = 729, /* 9x9x9 */
+>> +		.max_output = { 4096, 2304 },
+>> +		.pre_scan_max_dly = { 76, 65, 65, 54 },
+>> +		.offset = 0xd00,
+>> +	}, {
+>> +		.id = 2,
+>> +		.feature = VOP_FEATURE_OUTPUT_10BIT,
+>> +		.gamma_lut_len = 1024,
+>> +		.cubic_lut_len = 17 * 17 * 17, /* 17x17x17 */
+>> +		.max_output = { 4096, 2304 },
+>> +		.pre_scan_max_dly = { 52, 52, 52, 52 },
+>> +		.offset = 0xe00,
+>> +	}, {
+>> +		.id = 3,
+>> +		.gamma_lut_len = 1024,
+>> +		.max_output = { 2048, 1536 },
+>> +		.pre_scan_max_dly = { 52, 52, 52, 52 },
+>> +		.offset = 0xf00,
+>> +	},
+>> +};
+>> +
+>> +/*
+>> + * rk3588 vop with 4 cluster, 4 esmart win.
+>> + * Every cluster can work as 4K win or split into two win.
+>> + * All win in cluster support AFBCD.
+>> + *
+>> + * Every esmart win and smart win support 4 Multi-region.
+>> + *
+>> + * Scale filter mode:
+>> + *
+>> + * * Cluster:  bicubic for horizontal scale up, others use bilinear
+>> + * * ESmart:
+>> + *    * nearest-neighbor/bilinear/bicubic for scale up
+>> + *    * nearest-neighbor/bilinear/average for scale down
+>> + *
+>> + * AXI Read ID assignment:
+>> + * Two AXI bus:
+>> + * AXI0 is a read/write bus with a higher performance.
+>> + * AXI1 is a read only bus.
+>> + *
+>> + * Every window on a AXI bus must assigned two unique
+>> + * read id(yrgb_id/uv_id, valid id are 0x1~0xe).
+>> + *
+>> + * AXI0:
+>> + * Cluster0/1, Esmart0/1, WriteBack
+>> + *
+>> + * AXI 1:
+>> + * Cluster2/3, Esmart2/3
+>> + *
+>> + */
+>> +static const struct vop2_win_data rk3588_vop_win_data[] = {
+>> +	{
+>> +		.name = "Cluster0-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_CLUSTER0,
+>> +		.base = 0x1000,
+>> +		.formats = formats_cluster,
+>> +		.nformats = ARRAY_SIZE(formats_cluster),
+>> +		.format_modifiers = format_modifiers_afbc,
+>> +		.layer_sel_id = 0,
+>> +		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+>> +				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>> +		.max_upscale_factor = 4,
+>> +		.max_downscale_factor = 4,
+>> +		.dly = { 4, 26, 29 },
+>> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>> +		.feature = WIN_FEATURE_AFBDC | WIN_FEATURE_CLUSTER,
+>> +	}, {
+>> +		.name = "Cluster1-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_CLUSTER1,
+>> +		.base = 0x1200,
+>> +		.formats = formats_cluster,
+>> +		.nformats = ARRAY_SIZE(formats_cluster),
+>> +		.format_modifiers = format_modifiers_afbc,
+>> +		.layer_sel_id = 1,
+>> +		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+>> +				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>> +		.max_upscale_factor = 4,
+>> +		.max_downscale_factor = 4,
+>> +		.dly = { 4, 26, 29 },
+>> +		.feature = WIN_FEATURE_AFBDC | WIN_FEATURE_CLUSTER,
+>> +	}, {
+>> +		.name = "Cluster2-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_CLUSTER2,
+>> +		.base = 0x1400,
+>> +		.formats = formats_cluster,
+>> +		.nformats = ARRAY_SIZE(formats_cluster),
+>> +		.format_modifiers = format_modifiers_afbc,
+>> +		.layer_sel_id = 4,
+>> +		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+>> +				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>> +		.max_upscale_factor = 4,
+>> +		.max_downscale_factor = 4,
+>> +		.dly = { 4, 26, 29 },
+>> +		.feature = WIN_FEATURE_AFBDC | WIN_FEATURE_CLUSTER,
+>> +	}, {
+>> +		.name = "Cluster3-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_CLUSTER3,
+>> +		.base = 0x1600,
+>> +		.formats = formats_cluster,
+>> +		.nformats = ARRAY_SIZE(formats_cluster),
+>> +		.format_modifiers = format_modifiers_afbc,
+>> +		.layer_sel_id = 5,
+>> +		.supported_rotations = DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270 |
+>> +				       DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>> +		.max_upscale_factor = 4,
+>> +		.max_downscale_factor = 4,
+>> +		.dly = { 4, 26, 29 },
+>> +		.feature = WIN_FEATURE_AFBDC | WIN_FEATURE_CLUSTER,
+>> +	}, {
+>> +		.name = "Esmart0-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_ESMART0,
+>> +		.formats = formats_esmart,
+>> +		.nformats = ARRAY_SIZE(formats_esmart),
+>> +		.format_modifiers = format_modifiers,
+>> +		.base = 0x1800,
+>> +		.layer_sel_id = 2,
+>> +		.supported_rotations = DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_OVERLAY,
+>> +		.max_upscale_factor = 8,
+>> +		.max_downscale_factor = 8,
+>> +		.dly = { 23, 45, 48 },
+>> +	}, {
+>> +		.name = "Esmart1-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_ESMART1,
+>> +		.formats = formats_esmart,
+>> +		.nformats = ARRAY_SIZE(formats_esmart),
+>> +		.format_modifiers = format_modifiers,
+>> +		.base = 0x1a00,
+>> +		.layer_sel_id = 3,
+>> +		.supported_rotations = DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_OVERLAY,
+>> +		.max_upscale_factor = 8,
+>> +		.max_downscale_factor = 8,
+>> +		.dly = { 23, 45, 48 },
+>> +	}, {
+>> +		.name = "Esmart2-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_ESMART2,
+>> +		.base = 0x1c00,
+>> +		.formats = formats_esmart,
+>> +		.nformats = ARRAY_SIZE(formats_esmart),
+>> +		.format_modifiers = format_modifiers,
+>> +		.layer_sel_id = 6,
+>> +		.supported_rotations = DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_OVERLAY,
+>> +		.max_upscale_factor = 8,
+>> +		.max_downscale_factor = 8,
+>> +		.dly = { 23, 45, 48 },
+>> +	}, {
+>> +		.name = "Esmart3-win0",
+>> +		.phys_id = ROCKCHIP_VOP2_ESMART3,
+>> +		.formats = formats_esmart,
+>> +		.nformats = ARRAY_SIZE(formats_esmart),
+>> +		.format_modifiers = format_modifiers,
+>> +		.base = 0x1e00,
+>> +		.layer_sel_id = 7,
+>> +		.supported_rotations = DRM_MODE_REFLECT_Y,
+>> +		.type = DRM_PLANE_TYPE_OVERLAY,
+>> +		.max_upscale_factor = 8,
+>> +		.max_downscale_factor = 8,
+>> +		.dly = { 23, 45, 48 },
+>> +	},
+>> +};
+>> +
+>>   static const struct vop2_data rk3566_vop = {
+>>   	.nr_vps = 3,
+>>   	.max_input = { 4096, 2304 },
+>> @@ -254,6 +456,16 @@ static const struct vop2_data rk3568_vop = {
+>>   	.soc_id = 3568,
+>>   };
+>>   
+>> +static const struct vop2_data rk3588_vop = {
+>> +	.nr_vps = 4,
+>> +	.max_input = { 4096, 4320 },
+>> +	.max_output = { 4096, 4320 },
+>> +	.vp = rk3588_vop_video_ports,
+>> +	.win = rk3588_vop_win_data,
+>> +	.win_size = ARRAY_SIZE(rk3588_vop_win_data),
+>> +	.soc_id = 3588,
+>> +};
+>> +
+>>   static const struct of_device_id vop2_dt_match[] = {
+>>   	{
+>>   		.compatible = "rockchip,rk3566-vop",
+>> @@ -261,6 +473,9 @@ static const struct of_device_id vop2_dt_match[] = {
+>>   	}, {
+>>   		.compatible = "rockchip,rk3568-vop",
+>>   		.data = &rk3568_vop,
+>> +	}, {
+>> +		.compatible = "rockchip,rk3588-vop",
+>> +		.data = &rk3588_vop
+>>   	}, {
+>>   	},
+>>   };
+>> diff --git a/include/dt-bindings/soc/rockchip,vop2.h b/include/dt-bindings/soc/rockchip,vop2.h
+>> index 6e66a802b96a..668f199df9f0 100644
+>> --- a/include/dt-bindings/soc/rockchip,vop2.h
+>> +++ b/include/dt-bindings/soc/rockchip,vop2.h
+>> @@ -10,5 +10,9 @@
+>>   #define ROCKCHIP_VOP2_EP_LVDS0	5
+>>   #define ROCKCHIP_VOP2_EP_MIPI1	6
+>>   #define ROCKCHIP_VOP2_EP_LVDS1	7
+>> +#define ROCKCHIP_VOP2_EP_HDMI1	8
+>> +#define ROCKCHIP_VOP2_EP_EDP1	9
+>> +#define ROCKCHIP_VOP2_EP_DP0	10
+>> +#define ROCKCHIP_VOP2_EP_DP1	11
+>>   
+>>   #endif /* __DT_BINDINGS_ROCKCHIP_VOP2_H */
+>> -- 
+>> 2.34.1
+>>
+>>
 
 _______________________________________________
 Linux-rockchip mailing list
