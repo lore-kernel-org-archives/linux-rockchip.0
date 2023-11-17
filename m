@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7E8C197A0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 07:07:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D02DC072A2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 08:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dX/jOKrmXa49O8XoZj1kj4QRn2iMEHSxerLH0zU9nZw=; b=qqd5CZn0eyPfAL
-	dZ16/G7cFaUV5VX6nE9J1V4C9wXxM8BvkU/GV221yKUgNesowQdoX39Qurj/u8UcsoNS/tj/QxFLn
-	qV5zWVCMcV1J6riWerSArQH9t2Thks/ZERbeGMCSVo4T8CTvyCplchmpAGqlehCFLl9H81dSKrmqr
-	KH2PO5e0mSt82ixhVJ3tx7p6/QIw8D3ZxHe/gbSlFkBbyXddhWMxsWVIneryJFtBZNuBpl2wcADMz
-	5ZE77TsnkGdAJFXRMv+/Ei61MC6O8GczON1uUKFqvpLpouKgsFO63YyWao6zWHkGtJHEqsxKScxLk
-	bYmB67KkmqluPAYfMySw==;
+	List-Owner; bh=h0Kl+Lcf+wfYKH/js6AbDMfFe2qjwIlZ1YpTHynrgDU=; b=RJoFeTDpuz6tah
+	pFepQxyUzVYz6l5/SJj6SYVBK/WUF/psz8gsR3AdYXk1pX9LNEHVYSrZhJ9PYYBg+E3Vj1FGmm1Zw
+	yS6+ayBgHJS6q9OvrGvAzvd7jhemtnNqYMgmBOZQ3byfq3vT+Y8q9bSKdgZctLJfAoiZsnVGTSSqP
+	zqTTPzHPaFlycfKuFPXxLmcuk5d86m3NKvwRXdSPr6ABiJ/HMOqKe716XTuLBGXnzPwZeiFn+6ivG
+	UHCVpA3mKUiOIi50u8F7sHm0yOF3/C4QLbQh0Ujv4Bncx6t3IJEUU9WaXa1I+Yl3QiZgdHjB5KEvG
+	PoILD6hSoAhiW3nWFvnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3swo-005nWV-0q;
-	Fri, 17 Nov 2023 07:07:26 +0000
-Received: from mail-m12763.qiye.163.com ([115.236.127.63])
+	id 1r3uSh-005yDZ-08;
+	Fri, 17 Nov 2023 08:44:27 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3swk-005nW3-2S
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Nov 2023 07:07:24 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=Nu292DN2E6gfuHIj233Rh8Mdr+z5CJlMWHO8NWBfbI4ao9MCcWWM5VLf2BnX2BVH9c92Fx09CxiX4W8gRKqXwKDxiAREUGNt1I7x/DpyeAWDV6rYxLJjP9k4eRtbglzyPG0EIa1YuA5UhPKtrAj8LITcaYyVn1FdDw0padxAVRs=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=at1ne/rWq7oflyNTr5NsoIEOTljtkrgIcuWxm4pqXDc=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 6C5477804C6;
-	Fri, 17 Nov 2023 15:06:35 +0800 (CST)
-Message-ID: <3e011d52-017e-4360-86b4-781535ef61ad@rock-chips.com>
-Date: Fri, 17 Nov 2023 15:06:35 +0800
+	id 1r3uSd-005yB5-0I;
+	Fri, 17 Nov 2023 08:44:24 +0000
+Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: andrzej.p)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 723766607383;
+	Fri, 17 Nov 2023 08:44:18 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1700210659;
+	bh=7oMl9w52a+QB6ng2YsEmlurqeNPbyrAq7NcFSX0AaGg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=blqnPVJVM1ijAH1uLvVQcHlzHxsHtMNYmWcqpT4FYUVTCMhB+8mQ7aSTo/s6hwU9y
+	 +W9ySZMfe9yjZ180w1K6qeUc745ZefIqs82y166DEAnurQNlUQ/UHh59ROEd0nud2L
+	 0RsNbbhSk45lqbEQdI0EQ53sIrrPLXQHVjiox+XjdTbmWoDnfvRXzo3khK9Drjb5++
+	 Oscg/TfaSknQavekv3bl01hR3PQVgxYshQgll9ykmFItRbGvt7PQDwkaZ00N59biZv
+	 neoMSaReFr5HhpbRP4g+WwT8prAmQVYQCO5AlRW3fXOBfpzbinncMuK3L980tOaPRV
+	 H6sSEgOiJiZzA==
+Message-ID: <0b16a22f-9d23-41d4-a106-a5a20b3f52c5@collabora.com>
+Date: Fri, 17 Nov 2023 09:44:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
+Subject: Re: [RFC 3/6] media: verisilicon: Improve constant's name
 Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andyshrk@163.com>,
- heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, kever.yang@rock-chips.com,
- chris.obbard@collabora.com
-References: <20231114112534.1770731-1-andyshrk@163.com>
- <20231114112855.1771372-1-andyshrk@163.com>
- <20231115090823.GY3359458@pengutronix.de>
- <8f2ebc81-51c5-44d5-b27b-633a6cc85d0d@rock-chips.com>
- <20231116134757.zu7axb6cvriqjm6y@mercury.elektranox.org>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20231116134757.zu7axb6cvriqjm6y@mercury.elektranox.org>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR5DGFYZTU8fSEIfSk5LHh1VEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8bdc1a5771b24fkuuu6c5477804c6
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NxA6Dgw6KDw5MDhKPzJKLA0o
-	DyIwFCFVSlVKTEtLSUtPTEJNSU5PVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSE5ISzcG
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, kernel@collabora.com
+References: <20231116154816.70959-1-andrzej.p@collabora.com>
+ <20231116154816.70959-4-andrzej.p@collabora.com>
+ <CAGXv+5GhaF94ZRwrZ_CWg3j6bVYyEqZru9LM7ABDB29-cPhqSQ@mail.gmail.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <CAGXv+5GhaF94ZRwrZ_CWg3j6bVYyEqZru9LM7ABDB29-cPhqSQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231116_230722_996241_E81887C4 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20231117_004423_295192_DAC0131D 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +82,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian:
-
-On 11/16/23 21:47, Sebastian Reichel wrote:
-> Hi,
->
-> On Thu, Nov 16, 2023 at 06:39:40PM +0800, Andy Yan wrote:
->>>>    	vop2->sys_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
->>> This already lacks an error check, shame on me...
->>>
->>>> +	vop2->vop_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vop-grf");
->>>> +	vop2->vo1_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vo1-grf");
->>>> +	vop2->sys_pmu = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pmu");
->>> ... but please don't duplicate that.
->> It a little difficult to find a proper way to do the check, as not every soc need all these phandles.
->>
->> Do i need check it per soc?
-> I suggest adding a u32 flags to struct vop2_data and then have
-> something like this:
->
-> if (vop2_data->flags & VOP2_HAS_VOP_GRF) {
->      vop2->vop_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vop-grf");
->      if (IS_ERR(vop2->vop_grf))
->          return dev_err_probe(dev, PTR_ERR(vop2->vop_grf) "cannot get vop-grf");
-> }
->
-> if (vop2_data->flags & VOP2_HAS_VO1_GRF) {
->      vop2->vo1_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vo1-grf");
->      if (IS_ERR(vop2->vo1_grf))
->          return dev_err_probe(dev, PTR_ERR(vop2->vo1_grf) "cannot get vo1-grf");
-> }
->
-> ...
-
-
-I can do it like this if Sascha is also happy with it.
-
->
-> Greetings,
->
-> -- Sebastian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpUaGFua3MgZm9yIGxvb2tpbmcgYXQgaXQuCgpXIGRuaXUgMTcuMTEuMjAyMyBvwqAwNzox
+MSwgQ2hlbi1ZdSBUc2FpIHBpc3plOgo+IE9uIFRodSwgTm92IDE2LCAyMDIzIGF0IDExOjQ44oCv
+UE0gQW5kcnplaiBQaWV0cmFzaWV3aWN6Cj4gPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPiB3cm90
+ZToKPj4KPj4gRm9yIFZQOCBCSVQoMTgpIG9mIHRoaXMgcmVnaXN0ZXIgaXMgZm9yIGVuYWJsaW5n
+IHRoZSBib29sZWFuIGVuY29kZXIuCj4gCj4gWWVzLCBidXQgZm9yIEguMjY0IGl0IHNlbGVjdHMg
+dGhlIGVudHJvcHkgY29kaW5nIG1vZGUsIDAgZm9yIENBVkxDCj4gYW5kIDEgZm9yIENBQkFDLiBZ
+b3UgZXZlbiBhZGQgaXQgYmFjayBpbiB0aGUgbGFzdCBwYXRjaC4gSSdkIGRvIGl0Cj4gaGVyZSwg
+c28geW91IGRpc2FtYmlndWF0ZSB0aGUgZGVmaW5pdGlvbiB3aXRoaW4gb25lIHBhdGNoLgo+IAoK
+VGhlIHJhdGlvbmFsZSBiZWhpbmQgZG9pbmcgd2hhdCBJIGRpZCBpcyB0aGlzOgoKQXQgdGhpcyBt
+b21lbnQgdGhlIEgxIEguMjY0IGVuY29kZXIgaXMgbm9uLWV4aXN0ZW50IGluIHRoZSBrZXJuZWws
+CnNvIHdoeSB3b3VsZCB3ZSBrZWVwIEguMjY0LXJlbGF0ZWQgZGVmaW5pdGlvbnM/IEkgcmUtaW50
+cm9kdWNlIGl0CndoZW4gdGhlIGVuY29kZXIgYXBwZWFycy4KClRoYXQgc2FpZCwgb3RoZXIgSC4y
+NjQtc3BlY2lmaWMgY29uc3RhbnRzIGRvIGV4aXN0IGF0IHRoaXMgbW9tZW50IGFueXdheS4KU28g
+SSdtIGZpbmUgd2l0aCBlaXRoZXIgYXBwcm9hY2guCgpBbmRyemVqCgo+IENoZW5ZdQo+IAo+IAo+
+PiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJv
+cmEuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hh
+bnRyb19oMV9yZWdzLmggICAgfCAyICstCj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJp
+c2lsaWNvbi9oYW50cm9faDFfdnA4X2VuYy5jIHwgMiArLQo+PiAgIDIgZmlsZXMgY2hhbmdlZCwg
+MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faDFfcmVncy5oIGIvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faDFfcmVncy5oCj4+IGluZGV4IDc3NTJk
+MTI5MWMwZS4uYzFjNjZjOTM0YTI0IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRm
+b3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oMV9yZWdzLmgKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faDFfcmVncy5oCj4+IEBAIC03MCw3ICs3MCw3IEBA
+Cj4+ICAgI2RlZmluZSAgICBIMV9SRUdfRU5DX0NUUkwyX0RJU0FCTEVfUVVBUlRFUl9QSVhNViAg
+ICAgIEJJVCgyMikKPj4gICAjZGVmaW5lICAgIEgxX1JFR19FTkNfQ1RSTDJfVFJBTlM4WDhfTU9E
+RV9FTiAgICAgICAgICAgQklUKDIxKQo+PiAgICNkZWZpbmUgICAgSDFfUkVHX0VOQ19DVFJMMl9D
+QUJBQ19JTklUX0lEQyh4KSAgICAgICAgICAoKHgpIDw8IDE5KQo+PiAtI2RlZmluZSAgICBIMV9S
+RUdfRU5DX0NUUkwyX0VOVFJPUFlfQ09ESU5HX01PREUgICAgICAgICAgICAgICAgQklUKDE4KQo+
+PiArI2RlZmluZSAgICBIMV9SRUdfRU5DX0NUUkwyX1ZQOF9CT09MRU5DX0VOQUJMRSAgICAgICAg
+IEJJVCgxOCkKPj4gICAjZGVmaW5lICAgIEgxX1JFR19FTkNfQ1RSTDJfSDI2NF9JTlRFUjRYNF9N
+T0RFICAgICAgICAgQklUKDE3KQo+PiAgICNkZWZpbmUgICAgSDFfUkVHX0VOQ19DVFJMMl9IMjY0
+X1NUUkVBTV9NT0RFICAgICAgICAgICBCSVQoMTYpCj4+ICAgI2RlZmluZSAgICBIMV9SRUdfRU5D
+X0NUUkwyX0lOVFJBMTZYMTZfTU9ERSh4KSAgICAgICAgICgoeCkpCj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oMV92cDhfZW5jLmMgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oMV92cDhfZW5jLmMKPj4g
+aW5kZXggMDVhYTBkZDljMDljLi4wOGM1MDc5ZmJmZDAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2gxX3ZwOF9lbmMuYwo+PiArKysgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oMV92cDhfZW5jLmMKPj4g
+QEAgLTEyMjYsNyArMTIyNiw3IEBAIHN0YXRpYyB2b2lkIGhhbnRyb19oMV92cDhfZW5jX3NldF9w
+YXJhbXMoc3RydWN0IGhhbnRyb19kZXYgKnZwdSwgc3RydWN0IGhhbnRyb19jCj4+ICAgICAgICAg
+IHJlZyA9IDA7Cj4+ICAgICAgICAgIGlmIChtYl93aWR0aCAqIG1iX2hlaWdodCA+IE1BWF9NQl9D
+T1VOVF9UT19ESVNBQkxFX1FVQVJURVJfUElYRUxfTVYpCj4+ICAgICAgICAgICAgICAgICAgcmVn
+ID0gSDFfUkVHX0VOQ19DVFJMMl9ESVNBQkxFX1FVQVJURVJfUElYTVY7Cj4+IC0gICAgICAgcmVn
+IHw9IEgxX1JFR19FTkNfQ1RSTDJfRU5UUk9QWV9DT0RJTkdfTU9ERTsKPj4gKyAgICAgICByZWcg
+fD0gSDFfUkVHX0VOQ19DVFJMMl9WUDhfQk9PTEVOQ19FTkFCTEU7Cj4+Cj4+ICAgICAgICAgIGlu
+dGVyX2Zhdm9yID0gMTI4IC0gY3R4LT52cDhfZW5jLnByb2JfaW50cmE7Cj4+ICAgICAgICAgIGlm
+IChpbnRlcl9mYXZvciA+PSAwKQo+PiAtLQo+PiAyLjI1LjEKPj4KPj4KPiBfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IEtlcm5lbCBtYWlsaW5nIGxpc3Qg
+LS0ga2VybmVsQG1haWxtYW4uY29sbGFib3JhLmNvbQo+IFRvIHVuc3Vic2NyaWJlIHNlbmQgYW4g
+ZW1haWwgdG8ga2VybmVsLWxlYXZlQG1haWxtYW4uY29sbGFib3JhLmNvbQoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
