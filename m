@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111F2C5ACB3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 20:26:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9361C47071
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 23:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tOcPzfYWu8OyGtbQY+bd/qwQw2ukKrABpjGWbG5Fitc=; b=LftHFUy98CZK+z
-	D3xemYcLOgUdpdJpL6x1rTLrP7P5sYRF8y/AJlcBkw6IjfgTCPK6G3B0sLGL0eBU7FvJ7gv2aFPRI
-	6vM9+F/xlLKXa7NLvAusahiZxvAgwts8gH59XhZMSPYalKR/fNMMiaJ5CvKv+JsLF2vzx98pTsCui
-	bnTyzXM4ROyQQPoW6vZs7Yl7aHWGIMToiOTU8uX3nucy/EdJCuXkNb+LLBuVMOUgoh+RuIDeGnXHi
-	8yrMkGVd7ZKaE346BkJyfgQuU3vE/x+vH4d0Zg5dZByzMkZuZa0qJl6/HdCFMwF8jwb7yzkCYgjMu
-	6UHn/hyFLHLqHfDGaMsA==;
+	List-Owner; bh=ZUCjKoRyEdq6nSy+yKFKFWHRtg4zEM0H8vZdLd0slro=; b=HDXU8C9yqMcLSB
+	Y9T3mtu1fWMeiEJ+9/NGYzNxCx/BsRDaaUrb9dkBpybH6dJisjyTtSalCRJoKjSc6YVFHJ50+momc
+	HErAywu07GgOriE+MSGutWAstoWcscqVoHpF98KeuPHIzx+I8CgXZQZOWXh3fAY5initKSdBsDwMw
+	BpOGWhhYjzX4gTAOfLOePDETNByMk5zHdg0C9CUWToOF1Thw9vNtRZ2YYQdBsPb07BBlJThEYc1BC
+	IS7s5dEoLIqr8VkEZhc4w6bmx89094byal7uRgooBLUyuoZ4yMDMxJWKPMhhLhpAJsP6cePi96HfH
+	5HR2KcubqZI+rfiR/4tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r45PS-007Elq-1T;
-	Fri, 17 Nov 2023 20:25:50 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1r48Y0-007ZIq-30;
+	Fri, 17 Nov 2023 23:46:52 +0000
+Received: from smtp.forwardemail.net ([167.172.40.54])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r45PN-007Eil-1K
+	id 1r48Xx-007ZI8-13
 	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Nov 2023 20:25:48 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-1e9c9d181d6so1333234fac.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Nov 2023 12:25:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700252742; x=1700857542; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8YEgY9ZT7EiPnB9BBj7vVf8RmyWGZIlUy6iEpY8nmGA=;
-        b=gWTfmjIjdj9a/WYXqhA4NH5iPtRPpfcFyCrN5EC6yYTgkChFKlto7DUbywuQcWFR+w
-         oeVPbHszDDkpUkTHLFWp9l/Pi4GQvFdikHP1j3wL5KyQNrbrWMbYR6IAlaXHb4CJ1xq2
-         Cu4Qa+AW0WNMw+56/U9bIMS8fTTfKlKBHLJEfFykxXJYFVv6CP35qiypxmou4Cks/h7F
-         tIQIiD2Hj785lfF19DE2VCkQsdD79xwIr8kNe34uDhXaQlNLFOOFZ+vLNAdm6bPZLcXC
-         m10bg0SEww4g1nZzeQKs3Hhm5MTRm5OaQCob/ElWh7tbOz0fxpaIInXvK4C9H6kFdFRB
-         Yd5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700252742; x=1700857542;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8YEgY9ZT7EiPnB9BBj7vVf8RmyWGZIlUy6iEpY8nmGA=;
-        b=wMhEwd4ZnMFbaatkGkOiNjzvBoyYzEwLdrFEG2O4CavFsSKwWdrEPKeIPjBnXoDAOC
-         zGdX5Z5OGxeVowoa8UXUZV+mX8ON4VkxNevWWawTf4r/gEAkCeWGGc/Os2AH+FEP2p6g
-         XgIMzU3o6zPsF0uWLYqpheE7dZUif+R25+/dCNELuhb9azLVCImAuchT5/hKERdghgDI
-         OzstPAmYXGZyK3An0fY3ExnuuBkEabmG9c+9KO/UdOzDXzkhALMlgDlrWx3cBioWyxpn
-         YoI4fLmJFkC+/gJZq3zxFLlll4xW4k2GegC/1pz7kM34vTUJ0WUNQ6Q+fRpC1k383Qnq
-         OLRg==
-X-Gm-Message-State: AOJu0YzfVuQo8XCg096vn/hAXFOyu4VZGDL5SAzI0SDiTImeK7MIywkZ
-	qH010IQBMHn4MlpO1HN3ja0HDEebcjc=
-X-Google-Smtp-Source: AGHT+IFjVKENFjedAKB0p8uRVXHf+/TVB7NzTGb0+zWfV0zF0I1hQzrNkznJ2oiwFcLijAaN87J0IQ==
-X-Received: by 2002:a05:6870:9a8d:b0:1ea:3e52:b66e with SMTP id hp13-20020a0568709a8d00b001ea3e52b66emr325407oab.41.1700252742284;
-        Fri, 17 Nov 2023 12:25:42 -0800 (PST)
-Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id zf15-20020a0568716a8f00b001f224cbbde1sm390543oab.41.2023.11.17.12.25.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Nov 2023 12:25:42 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	sebastian.reichel@collabora.com,
-	daniel@ffwll.ch,
-	airlied@gmail.com,
-	sam@ravnborg.org,
-	neil.armstrong@linaro.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Jessica Zhang <quic_jesszhan@quicinc.com>
-Subject: [PATCH V4 2/6] drm/panel: nv3051d: Hold panel in reset for unprepare
-Date: Fri, 17 Nov 2023 14:25:32 -0600
-Message-Id: <20231117202536.1387815-3-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231117202536.1387815-1-macroalpha82@gmail.com>
-References: <20231117202536.1387815-1-macroalpha82@gmail.com>
+	Fri, 17 Nov 2023 23:46:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1700264775;
+ bh=Akxh1pCwlwZ2/Alq/eq4OWlp6spZ3DqWnVV7jZPqbRo=;
+ b=m6VnJnDcpIzUPyJ3DuXzmdm6LzVyd9asyXRnvcks5GYv+f7YCZ6WTcvP1XPU/3GXa+61u6h+D
+ 7MBdKwHr8V5g8J0U4tOne3XuPV/TC0GrKFK9WGrSi0CMUUCae6Eym1vWCRVEEpv33eGcZxafB4A
+ kYdNFEX8sHoiJnuacvzbNY/eiijjtHO8pm6t83+7oRSeWXCYa8ZXgpc0ZYEev0UAdY+7snqXpnV
+ ujupojpoYFSo38CZreG/hosJMjHNZTNIkfhP5qxAMA3MTT0lLXg+ccdjsQwlSHyeqgYjZ/JpoP8
+ B88r5H1qZbgpfkrUayIIGVqP80wCYGK1vvXiC53n8ogw==
+Message-ID: <37348be2-c7c4-4eb6-8dd0-e6b18923a88e@kwiboo.se>
+Date: Sat, 18 Nov 2023 00:46:09 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
+Content-Language: en-US
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
+Cc: devicetree@vger.kernel.org, s.hauer@pengutronix.de,
+ chris.obbard@collabora.com, hjc@rock-chips.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, Andy Yan
+ <andy.yan@rock-chips.com>, sebastian.reichel@collabora.com
+References: <20231114112534.1770731-1-andyshrk@163.com>
+ <20231114112855.1771372-1-andyshrk@163.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20231114112855.1771372-1-andyshrk@163.com>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 167.172.40.54
+X-ForwardEmail-ID: 6557fb469b02fe711135f205
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_122545_447759_92456B06 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231117_154649_693100_1FA40483 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,34 +80,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On 2023-11-14 12:28, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> VOP2 on rk3588:
+> 
+> Four video ports:
+> VP0 Max 4096x2160
+> VP1 Max 4096x2160
+> VP2 Max 4096x2160
+> VP3 Max 2048x1080
+> 
+> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+> 4 4K Esmart windows with line RGB/YUV support
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 324 ++++++++++++++++++-
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  57 ++++
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 215 ++++++++++++
+>  include/dt-bindings/soc/rockchip,vop2.h      |   4 +
+>  4 files changed, 593 insertions(+), 7 deletions(-)
+> 
 
-Improve the panel's ability to restore from suspend by holding the
-panel in suspend after unprepare.
+[...]
 
-Fixes: b1d39f0f4264 ("drm/panel: Add NewVision NV3051D MIPI-DSI LCD panel")
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Reviewed-by: Jessica Zhang <quic_jesszhan@quicinc.com>
----
- drivers/gpu/drm/panel/panel-newvision-nv3051d.c | 2 ++
- 1 file changed, 2 insertions(+)
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index 22288ad7f326..4745a9260cf8 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -34,6 +34,28 @@ static const uint32_t formats_cluster[] = {
+>  	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
+>  };
+>  
+> +static const uint32_t formats_esmart[] = {
+> +	DRM_FORMAT_XRGB8888,
+> +	DRM_FORMAT_ARGB8888,
+> +	DRM_FORMAT_XBGR8888,
+> +	DRM_FORMAT_ABGR8888,
+> +	DRM_FORMAT_RGB888,
+> +	DRM_FORMAT_BGR888,
+> +	DRM_FORMAT_RGB565,
+> +	DRM_FORMAT_BGR565,
+> +	DRM_FORMAT_NV12, /* yuv420_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV21, /* yvu420_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV16, /* yuv422_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV61, /* yvu422_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV24, /* yuv444_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV42, /* yvu444_8bit linear mode, 2 plane */
+> +	DRM_FORMAT_NV15, /* yuv420_10bit linear mode, 2 plane, no padding */
 
-diff --git a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-index 79de6c886292..c44c6945662f 100644
---- a/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-+++ b/drivers/gpu/drm/panel/panel-newvision-nv3051d.c
-@@ -261,6 +261,8 @@ static int panel_nv3051d_unprepare(struct drm_panel *panel)
- 
- 	usleep_range(10000, 15000);
- 
-+	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
-+
- 	regulator_disable(ctx->vdd);
- 
- 	return 0;
--- 
-2.34.1
+NV20 and NV30 drm format have now been merged into mainline linux,
+please add these missing formats. The patch below adds support for them
+to rk356x part of vop2 driver.
 
+drm/rockchip: vop2: Add NV20 and NV30 support
+https://lore.kernel.org/linux-rockchip/20231025213248.2641962-1-jonas@kwiboo.se/
+
+NV15/NV20/NV30 formats can be tested using modetest from latest main
+of libdrm.
+
+modetest: add support for DRM_FORMAT_NV{15,20,30}
+https://gitlab.freedesktop.org/mesa/drm/-/merge_requests/329
+
+Regards,
+Jonas
+
+> +	DRM_FORMAT_YVYU, /* yuv422_8bit[YVYU] linear mode */
+> +	DRM_FORMAT_VYUY, /* yuv422_8bit[VYUY] linear mode */
+> +	DRM_FORMAT_YUYV, /* yuv422_8bit[YUYV] linear mode */
+> +	DRM_FORMAT_UYVY, /* yuv422_8bit[UYVY] linear mode */
+> +};
+> +
+>  static const uint32_t formats_rk356x_esmart[] = {
+>  	DRM_FORMAT_XRGB8888,
+>  	DRM_FORMAT_ARGB8888,
+
+[...]
 
 _______________________________________________
 Linux-rockchip mailing list
