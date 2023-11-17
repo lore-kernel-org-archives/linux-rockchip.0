@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 195C5C072A2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 08:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60DA9C197A0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 09:40:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pj/EaarLy9uYNKbK9rBREPMVJI5/Mt6yR2IsjTZoh7Q=; b=4BEJqPbsT7BHM8
-	vVOsT+rNoOeEGMpEO8rWSMROJZE1EhumqnGRCtrn0EU2bJQFbgvaOlRZxf3bkRvfoI3gS3Q2Iq2es
-	vvMk7fx2NUoncPYYYGPch3oA1U6Jbu+qrHDzlDqEcWMK4ijGuLyEPUVqczXwgV56PLlPkgHI0DIX/
-	DMWj5mvY2DheVkg1vHyubyrBnR6apYLg7UfbegN2gk4ZF7dsbNMvK/kzPROL9NHMO3WudzqpTL5L/
-	tqUYa1FjTK11N75UWnMbOsBWG6KLqTTxweOtLBTtzXJznetqzl97/e1AzoQt89cjoZKUcZRPeK84m
-	+xor1ZkZlS+WksTgg44g==;
+	List-Owner; bh=dwtAjPPwcKSvZKHYgr6JhDCkgCfvSQW6+F0eFjCOcDc=; b=4EVIwWrg9wBE+n
+	lj1QGzIwOTrlj5KROWHOl9PZfrVRiGM1M/zls6bPoHETvMooH9+OdFsbr49btfRRLW951b1nlb26Z
+	C0Oetl2q68fXT6pOu9P5TS9jwGSsNQBOmMOcjElRYUnN7nEbFzf59qeWLC7xO2C6OKQK5RhG9qgs+
+	3PtiFzpt9gegFE3u2YzQnUbbUcANksf9OBu5fg1zoo3Ay9rxupU+QO2XDlGGBmgBEcmxG9iy0ogRi
+	72+6vVN4dUOCm1vnn5zoLavEzXOu0jgWeKFOHb74lhyNQSybgY/YkxMZuwnU4v+zsXYJiIP78xV9Y
+	reZi95bbITlo23AFjr1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3uV4-005yaR-1O;
-	Fri, 17 Nov 2023 08:46:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r3vKL-0066Zz-1x;
+	Fri, 17 Nov 2023 09:39:53 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3uV1-005yYq-2J;
-	Fri, 17 Nov 2023 08:46:53 +0000
-Received: from [100.116.125.19] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: andrzej.p)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DCCC6607386;
-	Fri, 17 Nov 2023 08:46:48 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1700210809;
-	bh=5caSPJBGYhsQEF1EZDAOJRHFGV6votwg14qOswGuAnM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RNfFtqCQlAxG520Rpz0DzWapTBIvMSYJVEMLa9P+3imrUbG5T6IEgTh0c7WR+yVlT
-	 jMmDJwR430lCXjdUf7xwPdpZsn1DGBNoCbWAvAs6eOHLe8pAMgRNiALxUNreMKrhyO
-	 lkftocCUlYCYLZxOkPExx4mBIJ4cB0T0YpeEBN/wq9tIhBhnlyEkFzmlr1trxHyssP
-	 DZS7cBco4JPxjucmgukDQX/XiuTZlnN28bMPPv7X1xUf6Ds9mtE+MdkYo8/FZEezh9
-	 yZtGW3RL6QQm54nLDK3b5WAQCCzAOXWKDIqcDZpxuAulhWG4P2jZTlG3LAeCYxBrnV
-	 IVFyutX4/BCBw==
-Message-ID: <aea36e0b-216a-44a1-ac64-ca45b0ce0f85@collabora.com>
-Date: Fri, 17 Nov 2023 09:46:45 +0100
+	id 1r3vKI-0066YW-1G
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Nov 2023 09:39:51 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r3vKD-0004VP-Ol; Fri, 17 Nov 2023 10:39:45 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r3vK8-009eBl-Hj; Fri, 17 Nov 2023 10:39:40 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r3vK8-002UUH-EB; Fri, 17 Nov 2023 10:39:40 +0100
+Date: Fri, 17 Nov 2023 10:39:40 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andyshrk@163.com>, heiko@sntech.de, hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org, devicetree@vger.kernel.org,
+	kever.yang@rock-chips.com, chris.obbard@collabora.com
+Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
+Message-ID: <20231117093940.GJ3359458@pengutronix.de>
+References: <20231114112534.1770731-1-andyshrk@163.com>
+ <20231114112855.1771372-1-andyshrk@163.com>
+ <20231115090823.GY3359458@pengutronix.de>
+ <8f2ebc81-51c5-44d5-b27b-633a6cc85d0d@rock-chips.com>
+ <20231116134757.zu7axb6cvriqjm6y@mercury.elektranox.org>
+ <3e011d52-017e-4360-86b4-781535ef61ad@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 4/6] media: verisilicon: Update H1 register definitions
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Hugues Fruchet <hugues.fruchet@foss.st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Almeida <daniel.almeida@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, kernel@collabora.com
-References: <20231116154816.70959-1-andrzej.p@collabora.com>
- <20231116154816.70959-5-andrzej.p@collabora.com>
- <CAGXv+5Hag=-JqYAKOgNUyFSjuwBu6ij1Rsv1cp==duGjY8w42A@mail.gmail.com>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-In-Reply-To: <CAGXv+5Hag=-JqYAKOgNUyFSjuwBu6ij1Rsv1cp==duGjY8w42A@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <3e011d52-017e-4360-86b4-781535ef61ad@rock-chips.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_004651_889543_856FD15D 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20231117_013950_428050_52187B31 
+X-CRM114-Status: GOOD (  23.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +83,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpXIGRuaXUgMTcuMTEuMjAyMyBvwqAwNzo1NiwgQ2hlbi1ZdSBUc2FpIHBpc3plOgo+IE9u
-IFRodSwgTm92IDE2LCAyMDIzIGF0IDExOjQ44oCvUE0gQW5kcnplaiBQaWV0cmFzaWV3aWN6Cj4g
-PGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPj4KPj4gQWRkIGRlZmluaXRpb24gb2Yg
-cmVnaXN0ZXIgYXQgb2Zmc2V0IDB4MDBjLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBp
-ZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJz
-L21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19oMV9yZWdzLmggfCA5ICsrKysrKysr
-Kwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2gxX3JlZ3MuaCBiL2Ry
-aXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2gxX3JlZ3MuaAo+PiBpbmRl
-eCBjMWM2NmM5MzRhMjQuLmVmYjQ2ZGEyM2VhYiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faDFfcmVncy5oCj4+ICsrKyBiL2RyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2gxX3JlZ3MuaAo+PiBAQCAtMjMsNiAr
-MjMsMTUgQEAKPj4gICAjZGVmaW5lICAgICBIMV9SRUdfQVhJX0NUUkxfSU5QVVRfU1dBUDMyICAg
-ICAgICAgICAgICAgQklUKDIpCj4+ICAgI2RlZmluZSAgICAgSDFfUkVHX0FYSV9DVFJMX09VVFBV
-VF9TV0FQOCAgICAgICAgICAgICAgIEJJVCgxKQo+PiAgICNkZWZpbmUgICAgIEgxX1JFR19BWElf
-Q1RSTF9JTlBVVF9TV0FQOCAgICAgICAgICAgICAgICAgICAgICAgIEJJVCgwKQo+PiArI2RlZmlu
-ZSBIMV9SRUdfREVWSUNFX0NUUkwgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4MDBjCj4+
-ICsjZGVmaW5lICAgICBIMV9SRUdfREVWSUNFX0NUUkxfU0NBTEVfT1VUUFVUX1NXQVA4ICAgICAg
-QklUKDI3KQo+PiArI2RlZmluZSAgICAgSDFfUkVHX0RFVklDRV9DVFJMX1NDQUxFX09VVFBVVF9T
-V0FQMTYgICAgIEJJVCgyNikKPj4gKyNkZWZpbmUgICAgIEgxX1JFR19ERVZJQ0VfQ1RSTF9TQ0FM
-RV9PVVRQVVRfU1dBUDMyICAgICBCSVQoMjUpCj4+ICsjZGVmaW5lICAgICBIMV9SRUdfREVWSUNF
-X0NUUkxfTVZfT1VUUFVUX1NXQVA4ICAgICAgICAgQklUKDI0KQo+PiArI2RlZmluZSAgICAgSDFf
-UkVHX0RFVklDRV9DVFJMX01WX09VVFBVVF9TV0FQMTYgICAgICAgICAgICAgICAgQklUKDIzKQo+
-PiArI2RlZmluZSAgICAgSDFfUkVHX0RFVklDRV9DVFJMX01WX09VVFBVVF9TV0FQMzIgICAgICAg
-ICAgICAgICAgQklUKDIyKQo+PiArI2RlZmluZSAgICAgSDFfUkVHX0RFVklDRV9DVFJMX0lOUFVU
-X1JFQURfMU1CICAgICAgICAgIEJJVCgyMSkKPj4gKyNkZWZpbmUgICAgIEgxX1JFR19ERVZJQ0Vf
-Q1RSTF9BWElfRFVBTF9DSEFOTkVMICAgICAgICAgICAgICAgIEJJVCgyMCkKPiAKPiBBY2NvcmRp
-bmcgdG8gdGhlIGkuTVg4TSBNaW5pIHJlZmVyZW5jZSBtYW51YWwsIHRoaXMgYml0IGlzIGEgImRp
-c2FibGUiCj4gY29udHJvbCwgaS5lLiBzZXR0aW5nIHRoaXMgYml0IGRpc2FibGVzIGR1YWwgY2hh
-bm5lbCBBWEkuIEkgdGhpbmsgdGhlCj4gbWFjcm8gc2hvdWxkIGV4cGxpY2l0bHkgc3RhdGUgdGhp
-cyBpbiB0aGUgbmFtaW5nLCBzbyBzb21ldGhpbmcgbGlrZQo+IEgxX1JFR19ERVZJQ0VfQ1RSTF9E
-SVNBQkxFX0FYSV9EVUFMX0NIKEFOTkVMKS4KCkdvb2QgcG9pbnQsIHRoYW5rcy4KCkFuZHJ6ZWoK
-Cj4gCj4gT3RoZXIgYml0cyBtYXRjaGVzIHRoZSByZWZlcmVuY2UgbWFudWFsLgo+IAo+PiAgICNk
-ZWZpbmUgSDFfUkVHX0FERFJfT1VUUFVUX1NUUkVBTSAgICAgICAgICAgICAgICAgICAgICAweDAx
-NAo+PiAgICNkZWZpbmUgSDFfUkVHX0FERFJfT1VUUFVUX0NUUkwgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIDB4MDE4Cj4+ICAgI2RlZmluZSBIMV9SRUdfQUREUl9SRUZfTFVNQSAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIDB4MDFjCj4+IC0tCj4+IDIuMjUuMQo+Pgo+Pgo+IF9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gS2VybmVsIG1haWxp
-bmcgbGlzdCAtLSBrZXJuZWxAbWFpbG1hbi5jb2xsYWJvcmEuY29tCj4gVG8gdW5zdWJzY3JpYmUg
-c2VuZCBhbiBlbWFpbCB0byBrZXJuZWwtbGVhdmVAbWFpbG1hbi5jb2xsYWJvcmEuY29tCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Nov 17, 2023 at 03:06:35PM +0800, Andy Yan wrote:
+> Hi Sebastian:
+> 
+> On 11/16/23 21:47, Sebastian Reichel wrote:
+> > Hi,
+> > 
+> > On Thu, Nov 16, 2023 at 06:39:40PM +0800, Andy Yan wrote:
+> > > > >    	vop2->sys_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
+> > > > This already lacks an error check, shame on me...
+> > > > 
+> > > > > +	vop2->vop_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vop-grf");
+> > > > > +	vop2->vo1_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vo1-grf");
+> > > > > +	vop2->sys_pmu = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,pmu");
+> > > > ... but please don't duplicate that.
+> > > It a little difficult to find a proper way to do the check, as not every soc need all these phandles.
+> > > 
+> > > Do i need check it per soc?
+> > I suggest adding a u32 flags to struct vop2_data and then have
+> > something like this:
+> > 
+> > if (vop2_data->flags & VOP2_HAS_VOP_GRF) {
+> >      vop2->vop_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vop-grf");
+> >      if (IS_ERR(vop2->vop_grf))
+> >          return dev_err_probe(dev, PTR_ERR(vop2->vop_grf) "cannot get vop-grf");
+> > }
+> > 
+> > if (vop2_data->flags & VOP2_HAS_VO1_GRF) {
+> >      vop2->vo1_grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,vo1-grf");
+> >      if (IS_ERR(vop2->vo1_grf))
+> >          return dev_err_probe(dev, PTR_ERR(vop2->vo1_grf) "cannot get vo1-grf");
+> > }
+> > 
+> > ...
+> 
+> 
+> I can do it like this if Sascha is also happy with it.
+
+Yes, I am.
+
+Sascha
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
