@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1373C5AE4A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCFBC197A0
 	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Nov 2023 09:51:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rRDr5fYzuKoaaEmQrLIjpVRpQhOe9ta3ZsbulFFSqhc=; b=wVbPTwl39SSWUP
-	/gfhzhcTDOpLuitnCGsfJX7sg0YiEj5OmIW+g5LZVtpOrC/NQglXteyqhPWH3ZurekllcPR4cpM1n
-	RlVOFmlOJ7TlTqE3PcJdhjOdObeY1Fohs/RzUo8PGta2vAe+HQRtw4tyDFvJ//h/frWxYN03ElRzC
-	sUQ17ApjnXIpqV4Iv9/9w+0rnr0xjqXpDipkqpf0obO8ZCgMzoCGXfH3V0VXd6mugO2r99wvEUR0B
-	g+kSATLVlhn0W7GKpHnYJeFpllkZ7N28QaQvsm/LqwCtTH2vjWmwXWoI+xB/z9SVlOaeehNGMpiL7
-	T1VXMBjivjEFZ3h6/OsA==;
+	List-Owner; bh=9NcTlA+GLK7rlcF1pF5hjjOpo7re5VxWyNFNcT+u1XU=; b=Yss+qo65fzCxhc
+	jVE+AhnW03CI/7aD2E/5Cg8LS5LdPyZsdyK4ubCDyzqfgm6AfapaakGsCs4HAkhz7/6ykCjQwQtyF
+	/E2dmG84s0MO7fR4Z9xVoTtu0faKK4qiXrbuVQ1rjb17aif6AGTt8y8/Euc5NC7ecUdKXDfc5c1di
+	8SidNNBHWC1CbooqWYvDLtbTLYGrfn+900tQkfhJyi3DL5mkv50oPjiPxbG7Hq9JGnB80EC9SYkF/
+	b57Om+gzSUs6DxoJRyNiJFaGUQkjbzU8H0t7iIILIQoUo+z476SQRrGdgj+kl1lY4vC6ZLSPh7BoK
+	cWB3RtInWK43WS5ZdvBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3vUy-00695q-1s;
-	Fri, 17 Nov 2023 09:50:52 +0000
+	id 1r3vUx-00695Y-0s;
+	Fri, 17 Nov 2023 09:50:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r3vUv-00694y-28;
-	Fri, 17 Nov 2023 09:50:50 +0000
+	id 1r3vUt-00694S-2y
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Nov 2023 09:50:49 +0000
 Received: from i5e861935.versanet.de ([94.134.25.53] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1r3vUp-0003ER-CA; Fri, 17 Nov 2023 10:50:43 +0100
+	id 1r3vUq-0003ER-7U; Fri, 17 Nov 2023 10:50:44 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com,
-	Weihao Li <cn.liweihao@gmail.com>,
-	sboyd@kernel.org
+To: Mark Brown <broonie@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	kernel@collabora.com,
+	Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] clk: rockchip: rk3128: Fix HCLK_OTG gate register
-Date: Fri, 17 Nov 2023 10:50:33 +0100
-Message-Id: <170021461022.1221251.9951712126746337546.b4-ty@sntech.de>
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v1 1/2] dt-bindings: es8328: convert to DT schema format
+Date: Fri, 17 Nov 2023 10:50:35 +0100
+Message-Id: <170021461021.1221251.790740434324924821.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231031111816.8777-1-cn.liweihao@gmail.com>
-References: <20231031111816.8777-1-cn.liweihao@gmail.com>
+In-Reply-To: <20231109184453.108676-1-sebastian.reichel@collabora.com>
+References: <20231109184453.108676-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_015049_698506_7CBE4437 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231117_015047_955634_2BDABEB6 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,15 +69,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 31 Oct 2023 19:18:16 +0800, Weihao Li wrote:
-> The HCLK_OTG gate control is in CRU_CLKGATE5_CON, not CRU_CLKGATE3_CON.
+On Thu, 9 Nov 2023 19:44:43 +0100, Sebastian Reichel wrote:
+> Convert the binding to DT schema format. Note, that "IPVDD-supply"
+> got fixed to be "HPVDD-supply" during the conversion. This was
+> obviously a typo in the old binding. The old binding example, DT
+> files, chip datasheet and Linux driver use HPVDD.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] clk: rockchip: rk3128: Fix HCLK_OTG gate register
-      commit: c6c5a5580dcb6631aa6369dabe12ef3ce784d1d2
+[2/2] arm64: dts: rockchip: add analog audio to RK3588 EVB1
+      commit: 97c39c7a0965b3eba87baa2b7d51443a46e21b8f
 
 Best regards,
 -- 
