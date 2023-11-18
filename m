@@ -4,50 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CE23C54FB9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 12:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7875C5AD4C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 17:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=irELTplz6UBgUFNlFaB//bnLzy5BkQ0pQhuhbpuMKQE=; b=o33T402FDkYVcl
-	grqrWOdPZTqXEpHiVPQXbZ5K/iHEFiucNiynUobbKIsuQVrG5O/l3x/K0+sQQ6hQoV6YKgkLFDCI5
-	x2JjWiuR+feyLbBkBOxupPI53e+o/KbUeCmFzm1ipmQfxbfnwrJB57R+WbX5GtLeI8Sob8sjBd3Lp
-	Uuxt4V94OtSA0jAWxnO9VC9+Y79gqSV7jq5sTDZaUyoIbMRjR95wlMPTjJhs7rw4HOyWit6e2mdhG
-	TJEwVOc7iNWjmzJuf+HW+wp1rX8bBv660hGyfJ8t5fXJIgkGPUfAb10HwVm2sUGl92KM50oW1AJDL
-	hJRlST+L9g6p+pd05jsw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yProCFfAK69OIz7/deFxooutHIKzgP3NG1J82IFnXJ0=; b=hPrDKwcjYMsdeb
+	7l98gqLIo/9dKJVnfY9YMnVNQ7XCzk8wxAGi0rbM3fqPmwIbLXyOmSQ8werhsnpnmm2tfH4rodyog
+	aKRn7YYy1LLgWKiWiwF20567WYb8cLKwsr9F1+sdAAVP5vh9sbuz/MDYu7APdU4QlQx2wr3qML2er
+	EzuzUyB/NQKoZNjO+MHx6R7bCzcm4M5IR3U4AfJoa4589Y2JuETX9ZOoK5gXM05SK8nyjUSN3kJTw
+	xV+DlRswBy7F9tJU5wGE5plqwmUz4/pDbF3xuGRBz9goNjFLusvlRPFoM/AzmGmHVx38q7bWSzIgY
+	F3G3cx+w11jxSuiIcMAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4K8W-008QRO-0v;
-	Sat, 18 Nov 2023 12:09:20 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r4PL5-008uyS-2U;
+	Sat, 18 Nov 2023 17:42:39 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4K8T-008QQk-1j;
-	Sat, 18 Nov 2023 12:09:18 +0000
-Received: from i5e861935.versanet.de ([94.134.25.53] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r4K8I-0000ix-Ta; Sat, 18 Nov 2023 13:09:06 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Tim Lunn <tim@feathertop.org>
-Cc: Jagan Teki <jagan@edgeble.ai>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Tim Lunn <tim@feathertop.org>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 7/8] ARM: dts: Add Sonoff iHost Smart Home Hub
-Date: Sat, 18 Nov 2023 13:09:05 +0100
-Message-ID: <4921575.Y6S9NjorxK@diego>
-In-Reply-To: <20231113120705.1647498-8-tim@feathertop.org>
-References: <20231113120705.1647498-1-tim@feathertop.org>
- <20231113120705.1647498-8-tim@feathertop.org>
+	id 1r4PL2-008uuk-1u;
+	Sat, 18 Nov 2023 17:42:37 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-408425c7c10so4783105e9.0;
+        Sat, 18 Nov 2023 09:42:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700329346; x=1700934146; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=DN5UmldqaMuG5Ee3rcNMtzxKZ3mpL7Lsl03CUThzlL83bETwixKWosR8Ez7GCCJy9j
+         uAJqxOqXwvcqHBeOk+3Qllt9h/ypUlkff3tQ8co7d31FH0Hdb+jdLFyWOPs73SivkkCq
+         6s8N1ww8CKqNZHC7PtI5aQiY6EH9Z+OEtr25wzZJOZrwv1jsxNd1ROQPietglTwXRcZd
+         3uXHCzJ69bZif0BhoQecF3ccphbFE3OpRDqSpn1c8dNsVoEJEAOXAIbYUQA/D5vb7DNI
+         gpDGFw2CwVTilBAiON68UnHfWsnJKhN9PzK38lLttnxEk3GkdjaLHbAGS1ZV7gYYeFQI
+         Y1CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700329346; x=1700934146;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
+        b=xM73FkR7p4Wnpm25c8ZNvAcLzU9LTGhdXeCtQylkXVDagNykkHPhhzfpKjBuWurGPp
+         kRMjhvnXwZPQXo5kwH4v6fOUZkJ3ZmU9ecAt0aAu7GJm9QtKJrHPrY5bcQ4KXyPwV5jJ
+         35ic5afiMdgoMNrB/OWFCUmcdJZK2wQ6QeYhjgpxy3bnI1CU400RWcte2HVejxewMWrz
+         VCSp+8UtvfexIA63z9CbfA6Vi7wHXcD0STY+jcmlESoezQxM/KDWGtcDVh0CnAphVmnD
+         QIvN+KW5rOXfLxWOmX5vV2OeLcbsPSftFR+F8GSGg08tQlbDsVVuITZyGEURsM2I+2bK
+         l2pQ==
+X-Gm-Message-State: AOJu0Yx5LPJebLwpQrvw82+FUzCz/XiejVhVvcDbxglefftMbNJsR4wV
+	wjNnd5Rg/yrG2HLLY+IfBEQ=
+X-Google-Smtp-Source: AGHT+IGJBMJGBtOSgxjPC+wTqBOjKUX0OkeFIG96ALnW2TXBuODjpDTjYiE8IirfVuZmHsPbu37kWw==
+X-Received: by 2002:a05:600c:46cd:b0:407:7ea1:e9a4 with SMTP id q13-20020a05600c46cd00b004077ea1e9a4mr2170232wmo.5.1700329345971;
+        Sat, 18 Nov 2023 09:42:25 -0800 (PST)
+Received: from zotac.lan. (dynamic-2a01-0c22-77bf-8300-2223-08ff-fe18-0310.c22.pool.telefonica.de. [2a01:c22:77bf:8300:2223:8ff:fe18:310])
+        by smtp.gmail.com with ESMTPSA id y10-20020a05600c340a00b004068de50c64sm6964211wmp.46.2023.11.18.09.42.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Nov 2023 09:42:25 -0800 (PST)
+From: Heiner Kallweit <hkallweit1@gmail.com>
+To: Wolfram Sang <wsa@kernel.org>,
+	intel-gfx@lists.freedesktop.org
+Cc: linux-i2c@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>,
+	linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
+Date: Sat, 18 Nov 2023 18:42:00 +0100
+Message-ID: <20231118174221.851-1-hkallweit1@gmail.com>
+X-Mailer: git-send-email 2.42.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231118_040917_579803_6EBC8B8B 
-X-CRM114-Status: GOOD (  22.66  )
+X-CRM114-CacheID: sfid-20231118_094236_628726_BDB0D01B 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,96 +111,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tim,
+After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
+olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
+Class-based device auto-detection is a legacy mechanism and shouldn't
+be used in new code. So we can remove this class completely now.
 
-Am Montag, 13. November 2023, 13:07:04 CET schrieb Tim Lunn:
-> Sonoff iHost is gateway device designed to provide a Smart Home Hub,
-> it is based on Rockchip RV1126. There is also a version with 2GB RAM
-> based off the RV1109 dual core SoC.
-> 
-> Features:
-> - Rockchip RV1126
-> - 4GB DDR4
-> - 8GB eMMC
-> - microSD slot
-> - RMII Ethernet PHY
-> - 1x USB 2.0 Host
-> - 1x USB 2.0 OTG
-> - Realtek RTL8723DS WiFi/BT
-> - EFR32MG21 Silabs Zigbee radio
-> - Speaker/Microphone
-> 
-> This patch adds the initial device tree for this device, it is largely
-> based off the device trees for mainline Edgeble Neu2 and downstream
-> Rockchip rv1126-evb-v13 configs. It has been adapted with relevant
-> peripheral and GPIO pins for the iHost.
-> 
-> Signed-off-by: Tim Lunn <tim@feathertop.org>
+Preferably this series should be applied via the i2c tree.
 
+Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 
-> diff --git a/arch/arm/boot/dts/rockchip/rv1109.dtsi b/arch/arm/boot/dts/rockchip/rv1109.dtsi
-> new file mode 100644
-> index 000000000000..9cbaa08ab1b8
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rockchip/rv1109.dtsi
-> @@ -0,0 +1,23 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "rv1126.dtsi"
-> +
-> +/ {
-> +	compatible = "rockchip,rv1109";
-> +
-> +	cpus {
-> +		/delete-node/ cpu@f02;
-> +		/delete-node/ cpu@f03;
-> +	};
-> +
-> +	arm-pmu {
-> +		interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-affinity = <&cpu0>, <&cpu1>;
-> +	};
-> +};
+---
 
-this definitly wants to be its own patch ;-) .
-
-I.e. you add support for the rv1109, which seems to be the same as rv1126, just
-with 2 instead of 4 cpu cores.
-
-
-
-
-> +&sdio {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	keep-power-in-suspend;
-> +	max-frequency = <100000000>;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc1_clk &sdmmc1_cmd &sdmmc1_bus4>;
-> +	rockchip,default-sample-phase = <90>;
-> +	sd-uhs-sdr104;
-> +	vmmc-supply = <&vcc3v3_sys>;
-> +	vqmmc-supply = <&vcc_1v8>;
-> +	status = "okay";
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-
-I don't think the *-cells are needed here
-
-
-Thanks
-Heiko
-
-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
+ drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
+ drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
+ drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
+ drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
+ drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
+ drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
+ drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
+ drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
+ drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
+ drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
+ drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
+ drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
+ drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
+ drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
+ drivers/video/fbdev/core/fb_ddc.c                 |    1 -
+ drivers/video/fbdev/cyber2000fb.c                 |    1 -
+ drivers/video/fbdev/i740fb.c                      |    1 -
+ drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
+ drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
+ drivers/video/fbdev/s3fb.c                        |    1 -
+ drivers/video/fbdev/tdfxfb.c                      |    1 -
+ drivers/video/fbdev/tridentfb.c                   |    1 -
+ drivers/video/fbdev/via/via_i2c.c                 |    1 -
+ include/linux/i2c.h                               |    1 -
+ 31 files changed, 9 insertions(+), 47 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
