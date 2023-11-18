@@ -4,68 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1FEC072A2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 00:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CE23C54FB9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 12:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zJE6c3DGxYo//sSl9byzMAAoLFNTWZBpdCjyBAWdQjY=; b=VidVT3FxVdnjlH
-	6VHQqR1TGwzGcVw6vGSvTah3N9losI1Y8Bn4xRPsLdTjDVGdu8r8js+/hbBxkw5uJTj7OJhScTzL8
-	vTeGBCuynsu7Y6aBbPQj0l49wk0xtrx4gMjy6jqdOIJORuv5fPr1l9wsCrSSa5quEzE/F5Fdmu7gF
-	m+8oEePVf+G+aY20bKFtmwPkOdvfmhbgNzG3ObxuO5j8oqGSt0m+6LuZJqRFwxdmJonbxQtHoX3GC
-	j3LzB41ggyRG4xYm71o5V3c4OAorKfEwG7OQqdiO7aaZ+gpEx20CuVUMMYx//BkPE2wOPr6NcfKez
-	DhwW84ybItpcSXnhFShA==;
+	List-Owner; bh=irELTplz6UBgUFNlFaB//bnLzy5BkQ0pQhuhbpuMKQE=; b=o33T402FDkYVcl
+	grqrWOdPZTqXEpHiVPQXbZ5K/iHEFiucNiynUobbKIsuQVrG5O/l3x/K0+sQQ6hQoV6YKgkLFDCI5
+	x2JjWiuR+feyLbBkBOxupPI53e+o/KbUeCmFzm1ipmQfxbfnwrJB57R+WbX5GtLeI8Sob8sjBd3Lp
+	Uuxt4V94OtSA0jAWxnO9VC9+Y79gqSV7jq5sTDZaUyoIbMRjR95wlMPTjJhs7rw4HOyWit6e2mdhG
+	TJEwVOc7iNWjmzJuf+HW+wp1rX8bBv660hGyfJ8t5fXJIgkGPUfAb10HwVm2sUGl92KM50oW1AJDL
+	hJRlST+L9g6p+pd05jsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r49GE-007cOZ-1E;
-	Sat, 18 Nov 2023 00:32:34 +0000
-Received: from mail-m17244.xmail.ntesmail.com ([45.195.17.244])
+	id 1r4K8W-008QRO-0v;
+	Sat, 18 Nov 2023 12:09:20 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r49GB-007cNN-0o
-	for linux-rockchip@lists.infradead.org;
-	Sat, 18 Nov 2023 00:32:33 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=IRHlWxk+YneotbWXXipjwIhyejvLSujGGzUjmaoSQDOlf8sxOUu7/H/unSobR+t0UoPdIhsE4NOqh9cXW/u3o2gYb+AiPFjoHhNtBRmQjrLGvCXaw+2eyO0+wTUhOln1Ussjm0scwf9wV7tVMBSnNbpL8pYsHlhTJ81HS2VSaXw=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=2FUg8H3N8HYkU7jgnGugtAhzTBDLaBY11h61I6hIUnQ=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 2A2BC780751;
-	Sat, 18 Nov 2023 08:31:56 +0800 (CST)
-Message-ID: <3cfcb1a3-bd47-49c4-9f3a-f34d8381ce51@rock-chips.com>
-Date: Sat, 18 Nov 2023 08:31:55 +0800
+	id 1r4K8T-008QQk-1j;
+	Sat, 18 Nov 2023 12:09:18 +0000
+Received: from i5e861935.versanet.de ([94.134.25.53] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r4K8I-0000ix-Ta; Sat, 18 Nov 2023 13:09:06 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Tim Lunn <tim@feathertop.org>
+Cc: Jagan Teki <jagan@edgeble.ai>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Tim Lunn <tim@feathertop.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH 7/8] ARM: dts: Add Sonoff iHost Smart Home Hub
+Date: Sat, 18 Nov 2023 13:09:05 +0100
+Message-ID: <4921575.Y6S9NjorxK@diego>
+In-Reply-To: <20231113120705.1647498-8-tim@feathertop.org>
+References: <20231113120705.1647498-1-tim@feathertop.org>
+ <20231113120705.1647498-8-tim@feathertop.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
-Content-Language: en-US
-To: Jonas Karlman <jonas@kwiboo.se>, Andy Yan <andyshrk@163.com>,
- heiko@sntech.de
-Cc: devicetree@vger.kernel.org, s.hauer@pengutronix.de,
- chris.obbard@collabora.com, hjc@rock-chips.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- sebastian.reichel@collabora.com
-References: <20231114112534.1770731-1-andyshrk@163.com>
- <20231114112855.1771372-1-andyshrk@163.com>
- <37348be2-c7c4-4eb6-8dd0-e6b18923a88e@kwiboo.se>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <37348be2-c7c4-4eb6-8dd0-e6b18923a88e@kwiboo.se>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxgaHlZISEJMSkoZQxlOGktVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8bdfd7625bb24fkuuu2a2bc780751
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kww6KSo4EDw8Dj8NThkRTEs*
-	Fz4KChBVSlVKTEtLSU1MTkpMS0JCVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0NKSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_163231_787952_F2994DF2 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20231118_040917_579803_6EBC8B8B 
+X-CRM114-Status: GOOD (  22.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,95 +59,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas:
+Hi Tim,
 
-On 11/18/23 07:46, Jonas Karlman wrote:
-> On 2023-11-14 12:28, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->> VOP2 on rk3588:
->>
->> Four video ports:
->> VP0 Max 4096x2160
->> VP1 Max 4096x2160
->> VP2 Max 4096x2160
->> VP3 Max 2048x1080
->>
->> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
->> 4 4K Esmart windows with line RGB/YUV support
->>
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> ---
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 324 ++++++++++++++++++-
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  57 ++++
->>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 215 ++++++++++++
->>   include/dt-bindings/soc/rockchip,vop2.h      |   4 +
->>   4 files changed, 593 insertions(+), 7 deletions(-)
->>
-> [...]
->
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
->> index 22288ad7f326..4745a9260cf8 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
->> @@ -34,6 +34,28 @@ static const uint32_t formats_cluster[] = {
->>   	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
->>   };
->>   
->> +static const uint32_t formats_esmart[] = {
->> +	DRM_FORMAT_XRGB8888,
->> +	DRM_FORMAT_ARGB8888,
->> +	DRM_FORMAT_XBGR8888,
->> +	DRM_FORMAT_ABGR8888,
->> +	DRM_FORMAT_RGB888,
->> +	DRM_FORMAT_BGR888,
->> +	DRM_FORMAT_RGB565,
->> +	DRM_FORMAT_BGR565,
->> +	DRM_FORMAT_NV12, /* yuv420_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV21, /* yvu420_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV16, /* yuv422_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV61, /* yvu422_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV24, /* yuv444_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV42, /* yvu444_8bit linear mode, 2 plane */
->> +	DRM_FORMAT_NV15, /* yuv420_10bit linear mode, 2 plane, no padding */
-> NV20 and NV30 drm format have now been merged into mainline linux,
-> please add these missing formats. The patch below adds support for them
-> to rk356x part of vop2 driver.
+Am Montag, 13. November 2023, 13:07:04 CET schrieb Tim Lunn:
+> Sonoff iHost is gateway device designed to provide a Smart Home Hub,
+> it is based on Rockchip RV1126. There is also a version with 2GB RAM
+> based off the RV1109 dual core SoC.
+> 
+> Features:
+> - Rockchip RV1126
+> - 4GB DDR4
+> - 8GB eMMC
+> - microSD slot
+> - RMII Ethernet PHY
+> - 1x USB 2.0 Host
+> - 1x USB 2.0 OTG
+> - Realtek RTL8723DS WiFi/BT
+> - EFR32MG21 Silabs Zigbee radio
+> - Speaker/Microphone
+> 
+> This patch adds the initial device tree for this device, it is largely
+> based off the device trees for mainline Edgeble Neu2 and downstream
+> Rockchip rv1126-evb-v13 configs. It has been adapted with relevant
+> peripheral and GPIO pins for the iHost.
+> 
+> Signed-off-by: Tim Lunn <tim@feathertop.org>
 
 
-Thanks for your reminder and your efforts to make these formats land
+> diff --git a/arch/arm/boot/dts/rockchip/rv1109.dtsi b/arch/arm/boot/dts/rockchip/rv1109.dtsi
+> new file mode 100644
+> index 000000000000..9cbaa08ab1b8
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1109.dtsi
+> @@ -0,0 +1,23 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include "rv1126.dtsi"
+> +
+> +/ {
+> +	compatible = "rockchip,rv1109";
+> +
+> +	cpus {
+> +		/delete-node/ cpu@f02;
+> +		/delete-node/ cpu@f03;
+> +	};
+> +
+> +	arm-pmu {
+> +		interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-affinity = <&cpu0>, <&cpu1>;
+> +	};
+> +};
 
-mainline. I will add it in the next version.
+this definitly wants to be its own patch ;-) .
 
->
-> drm/rockchip: vop2: Add NV20 and NV30 support
-> https://lore.kernel.org/linux-rockchip/20231025213248.2641962-1-jonas@kwiboo.se/
->
-> NV15/NV20/NV30 formats can be tested using modetest from latest main
-> of libdrm.
->
-> modetest: add support for DRM_FORMAT_NV{15,20,30}
-> https://gitlab.freedesktop.org/mesa/drm/-/merge_requests/329
->
-> Regards,
-> Jonas
->
->> +	DRM_FORMAT_YVYU, /* yuv422_8bit[YVYU] linear mode */
->> +	DRM_FORMAT_VYUY, /* yuv422_8bit[VYUY] linear mode */
->> +	DRM_FORMAT_YUYV, /* yuv422_8bit[YUYV] linear mode */
->> +	DRM_FORMAT_UYVY, /* yuv422_8bit[UYVY] linear mode */
->> +};
->> +
->>   static const uint32_t formats_rk356x_esmart[] = {
->>   	DRM_FORMAT_XRGB8888,
->>   	DRM_FORMAT_ARGB8888,
-> [...]
+I.e. you add support for the rv1109, which seems to be the same as rv1126, just
+with 2 instead of 4 cpu cores.
+
+
+
+
+> +&sdio {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	keep-power-in-suspend;
+> +	max-frequency = <100000000>;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc1_clk &sdmmc1_cmd &sdmmc1_bus4>;
+> +	rockchip,default-sample-phase = <90>;
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc3v3_sys>;
+> +	vqmmc-supply = <&vcc_1v8>;
+> +	status = "okay";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+
+I don't think the *-cells are needed here
+
+
+Thanks
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
