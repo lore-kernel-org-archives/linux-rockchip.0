@@ -4,96 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46F37C47071
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 00:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1FEC072A2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Nov 2023 00:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L5F0iinMkwU3GwBQEgZXlWp6wb1I7TBfMw4yxrjZr1Q=; b=0HUocQxBo80yWo
-	tQm+ITzVLnHLrgSCem1c60qqn3dY6pnhLwh/1daSFY/Psby7ePRuuINl/ZfYVTFQlWWbS+sTyhCjK
-	3hG1cVIErKMTd/3TMA1AQ/30Sl2T0GSHOoXI5fXVCcusX70CyrG13/RL+3z+8YVKZ8TuaRIGXP5zQ
-	Xwu1JDNfvuLsKCyQsEr0nI/vDdhoeCNm1ZWN2D1AsKWnHlutuOuoHJheMeGJ2wBUO4NBUll4pomYU
-	YkSL8rgv7oxcVhloplIikhvHSLgPOeevtWmw9w+pHU2baPM7aA+eA11cdukQAkU/WH2MkdnOkZbOa
-	VXQtV7Nio7jB8kn22uBA==;
+	List-Owner; bh=zJE6c3DGxYo//sSl9byzMAAoLFNTWZBpdCjyBAWdQjY=; b=VidVT3FxVdnjlH
+	6VHQqR1TGwzGcVw6vGSvTah3N9losI1Y8Bn4xRPsLdTjDVGdu8r8js+/hbBxkw5uJTj7OJhScTzL8
+	vTeGBCuynsu7Y6aBbPQj0l49wk0xtrx4gMjy6jqdOIJORuv5fPr1l9wsCrSSa5quEzE/F5Fdmu7gF
+	m+8oEePVf+G+aY20bKFtmwPkOdvfmhbgNzG3ObxuO5j8oqGSt0m+6LuZJqRFwxdmJonbxQtHoX3GC
+	j3LzB41ggyRG4xYm71o5V3c4OAorKfEwG7OQqdiO7aaZ+gpEx20CuVUMMYx//BkPE2wOPr6NcfKez
+	DhwW84ybItpcSXnhFShA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r49FV-007cIY-2j;
-	Sat, 18 Nov 2023 00:31:49 +0000
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+	id 1r49GE-007cOZ-1E;
+	Sat, 18 Nov 2023 00:32:34 +0000
+Received: from mail-m17244.xmail.ntesmail.com ([45.195.17.244])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r49FR-007cHu-0y;
-	Sat, 18 Nov 2023 00:31:47 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.nyi.internal (Postfix) with ESMTP id 3E5FE5C00C6;
-	Fri, 17 Nov 2023 19:31:37 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute1.internal (MEProxy); Fri, 17 Nov 2023 19:31:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to;
-	 s=fm3; t=1700267497; x=1700353897; bh=/fgtpcHgSxhcVDgEhVXlZfO4k
-	mpZ8rHgP4Q8kKZbK4M=; b=e6ivXeFTXs5gXSZGLuPHQSxnsnd6VdT0Z7xa1YFFP
-	9bQVQiGEtlKamwaC6NW3sQyDpuRgrQEAYUcfQvmYbTCJefqghurV6VghLHu1GUb4
-	1w8WJep1aQ29DBUb03nIFNKaJ5VVv7JaQmryfYejtiBZjSBWZGYMSrMbb88huuQx
-	hAkc5/xL+uS20k1rmawPYPs+7L4y1mpQc1R0Sbx0VNbo9s0w1WJ+7GPBuKOwzMHm
-	cQQrU+DES/ugkMbXHjdTaEaKLZ6kGa0vRogV7p42MZlKlV07hav7ll+Lf9z9v4kh
-	w70LwBceXs6HUDO7+tYn1TddI4uqL6nCEkFRLoP6sPp2Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:sender:subject:subject:to:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
-	1700267497; x=1700353897; bh=/fgtpcHgSxhcVDgEhVXlZfO4kmpZ8rHgP4Q
-	8kKZbK4M=; b=tcgV+BHIAFVsPOQiKqiUTt7uiAwP0SDmi8yxdPnnq9RsyLrU2ZI
-	u1hRvxGx4snh6K1ZQri6wT05TWJ7bXErs+5+AEydJcoyJCfL7LRmAWZYv2ft5RHM
-	XR968j3O/NgYKW+ZLIO2WhjWUIvkO3X1avWJPTneYH+Rjlqp99FhaUxUFAQTGieD
-	JThnZH/z6zPWo3v73je1CJ4ADmq/kN+nHfuILO80kkWOCBQsDBN5//o5jA0P4Zz/
-	abivR8fc4GraGy8inpvuPmfT8tSZCyWcnIbxy23ufUUtnmA4LIrMu7X3MijV0+6t
-	i7Xeq6/Q1SHN1HIW0pvgoPJY/RBSRro8+bg==
-X-ME-Sender: <xms:5wVYZZW84nky9C-XfBq4BqgzVZ9uk249k7Tr5jXf9jyXo_Gbctyv0g>
-    <xme:5wVYZZlFSvKgFwzU7uQOiFALjOcEwZCMk36rW4d7ERwV4XneFhuIF8yv_1QAeJGas
-    X3iZl7eqg>
-X-ME-Received: <xmr:5wVYZVZwk7K_2mzydasM1YRR-eacjdWlzIIGW2nJcN9kvhoCRY2nK-ywxABqeNyWRE-MRJw4Smadq66_tmC2yUUqR6XGdqFDzlnFmg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudeguddgudelucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepkfffgggfuffvvehfhfgjtgfgsehtjeertddtvdejnecuhfhrohhmpefvihhm
-    ucfnuhhnnhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvg
-    hrnhepheehgfelhfffgeefkefgjeelkeduleefvefhgfekgfetfeetvdeigeekjedvffeh
-    necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimh
-    esfhgvrghthhgvrhhtohhprdhorhhg
-X-ME-Proxy: <xmx:5wVYZcWE3-eI4J2rxdiu_cnBn08MbWGWmietTU6dUgHUA8y71C-lpQ>
-    <xmx:5wVYZTlKVAMMpO47ZuMQD538iYBo8SgH-PfI8I4rgvP68a7wh7mSkQ>
-    <xmx:5wVYZZdsBYEjrbX4ArUrtgpGM6H6FReVtCdEjN2b6ylD9xgLpF7rUQ>
-    <xmx:6QVYZV4a99zVCYA47QtxzuN2_pXV-4u2Eje8H0BgK7czo3gRFddQXA>
-Feedback-ID: i1f8241ce:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 17 Nov 2023 19:31:31 -0500 (EST)
-Message-ID: <d552f438-157a-4682-8d74-6e05ce5a2c91@feathertop.org>
-Date: Sat, 18 Nov 2023 11:31:26 +1100
+	id 1r49GB-007cNN-0o
+	for linux-rockchip@lists.infradead.org;
+	Sat, 18 Nov 2023 00:32:33 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=IRHlWxk+YneotbWXXipjwIhyejvLSujGGzUjmaoSQDOlf8sxOUu7/H/unSobR+t0UoPdIhsE4NOqh9cXW/u3o2gYb+AiPFjoHhNtBRmQjrLGvCXaw+2eyO0+wTUhOln1Ussjm0scwf9wV7tVMBSnNbpL8pYsHlhTJ81HS2VSaXw=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=2FUg8H3N8HYkU7jgnGugtAhzTBDLaBY11h61I6hIUnQ=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 2A2BC780751;
+	Sat, 18 Nov 2023 08:31:56 +0800 (CST)
+Message-ID: <3cfcb1a3-bd47-49c4-9f3a-f34d8381ce51@rock-chips.com>
+Date: Sat, 18 Nov 2023 08:31:55 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/8] i2c: rk3x: Adjust grf offset for i2c2 on rv1126
+Subject: Re: [PATCH 09/11] drm/rockchip: vop2: Add support for rk3588
 Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-Cc: Jagan Teki <jagan@edgeble.ai>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Conor Dooley <conor+dt@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
- linux-i2c@vger.kernel.org
-References: <20231113120705.1647498-1-tim@feathertop.org>
- <20231113120705.1647498-4-tim@feathertop.org> <4846724.GXAFRqVoOG@phil>
-From: Tim Lunn <tim@feathertop.org>
-In-Reply-To: <4846724.GXAFRqVoOG@phil>
+To: Jonas Karlman <jonas@kwiboo.se>, Andy Yan <andyshrk@163.com>,
+ heiko@sntech.de
+Cc: devicetree@vger.kernel.org, s.hauer@pengutronix.de,
+ chris.obbard@collabora.com, hjc@rock-chips.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ sebastian.reichel@collabora.com
+References: <20231114112534.1770731-1-andyshrk@163.com>
+ <20231114112855.1771372-1-andyshrk@163.com>
+ <37348be2-c7c4-4eb6-8dd0-e6b18923a88e@kwiboo.se>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <37348be2-c7c4-4eb6-8dd0-e6b18923a88e@kwiboo.se>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxgaHlZISEJMSkoZQxlOGktVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8bdfd7625bb24fkuuu2a2bc780751
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kww6KSo4EDw8Dj8NThkRTEs*
+	Fz4KChBVSlVKTEtLSU1MTkpMS0JCVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0NKSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231117_163145_852506_E48F740E 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20231117_163231_787952_F2994DF2 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,61 +82,90 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Hi Jonas:
 
-On 11/17/23 06:54, Heiko Stuebner wrote:
-> Hi,
->
-> Am Montag, 13. November 2023, 13:07:00 CET schrieb Tim Lunn:
->> Rockchip RV1126 has a special case grf offset/mask for i2c2
-> This sounds misleading. When looking at the soc-data, the grf offset
-> seems to be the same for all busses of the rv1126, only the offset
-> seems to be different for i2c2.
->
-> Sadly I don't have (and didn't find any) rv1126 TRM, so couldn't verify.
->
-> Change itself looks nice. As it's only this one bus of one soc so far,
-> we likely won't need a more involved solution just now.
->
-Thanks for your comments. I agree it sounds a bit misleading, I will clarify
-  the commit message and comments in v2 of this series.
-
-Unfortunately I dont have access to the TRM either, however I have validated
-  that this fixes i2c2 on actual hardware.
-
->
->> Signed-off-by: Tim Lunn <tim@feathertop.org>
+On 11/18/23 07:46, Jonas Karlman wrote:
+> On 2023-11-14 12:28, Andy Yan wrote:
+>> From: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> VOP2 on rk3588:
+>>
+>> Four video ports:
+>> VP0 Max 4096x2160
+>> VP1 Max 4096x2160
+>> VP2 Max 4096x2160
+>> VP3 Max 2048x1080
+>>
+>> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+>> 4 4K Esmart windows with line RGB/YUV support
+>>
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 >> ---
 >>
->>   drivers/i2c/busses/i2c-rk3x.c | 8 ++++++--
->>   1 file changed, 6 insertions(+), 2 deletions(-)
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 324 ++++++++++++++++++-
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  57 ++++
+>>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 215 ++++++++++++
+>>   include/dt-bindings/soc/rockchip,vop2.h      |   4 +
+>>   4 files changed, 593 insertions(+), 7 deletions(-)
 >>
->> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
->> index a044ca0c35a1..83b7bf7b48a7 100644
->> --- a/drivers/i2c/busses/i2c-rk3x.c
->> +++ b/drivers/i2c/busses/i2c-rk3x.c
->> @@ -1288,8 +1288,12 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
->>   			return -EINVAL;
->>   		}
+> [...]
+>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> index 22288ad7f326..4745a9260cf8 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> @@ -34,6 +34,28 @@ static const uint32_t formats_cluster[] = {
+>>   	DRM_FORMAT_Y210, /* yuv422_10bit non-Linear mode only */
+>>   };
 >>   
->> -		/* 27+i: write mask, 11+i: value */
->> -		value = BIT(27 + bus_nr) | BIT(11 + bus_nr);
->> +		if (i2c->soc_data == &rv1126_soc_data && bus_nr == 2)
->> +			/* rv1126 i2c2 set pmugrf offset-0x118, bit-4 */
-> same here, comment could drop the offset reference I guess.
+>> +static const uint32_t formats_esmart[] = {
+>> +	DRM_FORMAT_XRGB8888,
+>> +	DRM_FORMAT_ARGB8888,
+>> +	DRM_FORMAT_XBGR8888,
+>> +	DRM_FORMAT_ABGR8888,
+>> +	DRM_FORMAT_RGB888,
+>> +	DRM_FORMAT_BGR888,
+>> +	DRM_FORMAT_RGB565,
+>> +	DRM_FORMAT_BGR565,
+>> +	DRM_FORMAT_NV12, /* yuv420_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV21, /* yvu420_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV16, /* yuv422_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV61, /* yvu422_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV24, /* yuv444_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV42, /* yvu444_8bit linear mode, 2 plane */
+>> +	DRM_FORMAT_NV15, /* yuv420_10bit linear mode, 2 plane, no padding */
+> NV20 and NV30 drm format have now been merged into mainline linux,
+> please add these missing formats. The patch below adds support for them
+> to rk356x part of vop2 driver.
+
+
+Thanks for your reminder and your efforts to make these formats land
+
+mainline. I will add it in the next version.
+
 >
->> +			value = BIT(20) | BIT(4);
->> +		else
->> +			/* 27+i: write mask, 11+i: value */
->> +			value = BIT(27 + bus_nr) | BIT(11 + bus_nr);
->>   
->>   		ret = regmap_write(grf, i2c->soc_data->grf_offset, value);
->>   		if (ret != 0) {
->>
+> drm/rockchip: vop2: Add NV20 and NV30 support
+> https://lore.kernel.org/linux-rockchip/20231025213248.2641962-1-jonas@kwiboo.se/
 >
-> Heiko
+> NV15/NV20/NV30 formats can be tested using modetest from latest main
+> of libdrm.
 >
+> modetest: add support for DRM_FORMAT_NV{15,20,30}
+> https://gitlab.freedesktop.org/mesa/drm/-/merge_requests/329
 >
+> Regards,
+> Jonas
+>
+>> +	DRM_FORMAT_YVYU, /* yuv422_8bit[YVYU] linear mode */
+>> +	DRM_FORMAT_VYUY, /* yuv422_8bit[VYUY] linear mode */
+>> +	DRM_FORMAT_YUYV, /* yuv422_8bit[YUYV] linear mode */
+>> +	DRM_FORMAT_UYVY, /* yuv422_8bit[UYVY] linear mode */
+>> +};
+>> +
+>>   static const uint32_t formats_rk356x_esmart[] = {
+>>   	DRM_FORMAT_XRGB8888,
+>>   	DRM_FORMAT_ARGB8888,
+> [...]
 
 _______________________________________________
 Linux-rockchip mailing list
