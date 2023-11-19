@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA1AC5ACB3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Nov 2023 10:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED8BC5ACB3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Nov 2023 11:28:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yProCFfAK69OIz7/deFxooutHIKzgP3NG1J82IFnXJ0=; b=Q3pR2pb++yEHMA
-	mb9hdjCuWFBic57ilO+lz25sX041NYGWf1rJpuxXsXq97pTFZeVUdPWzeMAPd9CQa0oi2CxCp4F4n
-	DBQaTgXlMYNHBlKJfE3OfA1lU78RW92dzs+hX6Oe3LTPgF7aIOALQunL39OI58hcdaTJ+c9SYTx+/
-	7uJNdJJwb1llqOzKsjcYWY3UNCh9chTHGzbVnYyhSutUv2SKxiYTw8ohM5ZMX/XC/f726CaYPtW56
-	vSOJGEYWHa3fEvEz4pYFCBGTWL7IeJf5XdYXmLq1PMjz+ViNRV+puO5Pzst+hkFFeEf7NRm7W4sP9
-	RrbG5N9ybHJBXLYcLX0w==;
+	List-Owner; bh=HJBQdl13/cj+j3lka0UPKb3p0G4E3dANUAdzWZG4QEA=; b=rfAFc+RuMyBrOL
+	XCWQ6WWWwJP3/SqtZBDgurmf4prV4GhJqs8eK14PDcz42wlS2uCZqV3KFDC7iXHxzDS8wD+YyZg13
+	WBS4m0RqHD2XFsturdmSEroNCsWCOyhuDsQjOYe01zLXEXloh+M2QwjPnZHd+8NGZ0HFEeSPCOmOs
+	d7P4nMRBYTli7BeHgS/8ov9dEifsBzx871vybbYErGLoIMfT9BzG3ouXvAs/Rf03KqL5oJoaXdxHR
+	xbKcp2uHxKDqf4zEZf9ic/HTou57ruDLG3/j86KdaTDm6v4XXab8KNF42ryPRHbZkAkSvx2I1xkfs
+	z4oSvXkLsaHLzKsaCj3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4epP-009pJR-38;
-	Sun, 19 Nov 2023 10:15:00 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1r4fyc-00A3yq-1P;
+	Sun, 19 Nov 2023 11:28:34 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r4epK-009pHZ-2p;
-	Sun, 19 Nov 2023 10:14:57 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-53e751aeb3cso4834878a12.2;
-        Sun, 19 Nov 2023 02:14:51 -0800 (PST)
+	id 1r4fyZ-00A3w1-1g;
+	Sun, 19 Nov 2023 11:28:33 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-9ae2cc4d17eso477844366b.1;
+        Sun, 19 Nov 2023 03:28:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700388890; x=1700993690; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1700393309; x=1700998109; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=Cp6wOKaGOtnQfFGpnYWh1boo5USASX2P8WgpMHcqiw0qrunOR/fOTMozCvXvtYQTPr
-         wUHn+21kt0zIgG3r7tIHFlABH/06TqjzCjkXZdC7NXJJ27AwFHIUNjivGpst1isgFC0p
-         wFbSSYC8A7/bJUKMn+R9ue3DvSUPYhONOjVUKHBG/JALGvL9gcsTJgs0MTEPBAv06fAm
-         SNW3JVqqgvX7sr3pMss8ILcVk2vFcgJbqkdA/zElM7pF9De4zhMhw30B1rbKGQ9OngCd
-         XegsSNFQC7KAu3b/y5K/FWMq3HyFYeGs6zoJ0i1eKmdsv5Dlpas/wwOigK8/g31qglFn
-         yY9A==
+        bh=4zsSf4ZkDNs2IGAtcWQSvygdvnaeiSuxsGnh/E5aZTQ=;
+        b=EmvWjeS8b3O8TliJz0m7wVEkCrSQVKu9pJfsg/EWFEGaaf3yrnKyuOVgEvdawM2Bqf
+         3OwsHDaPQW4abZCCplXs1K5LfSH7tP5uO9ITmE/giGkPmPaanLhjPA8Ym6mx4m+E56KT
+         Um56ZHRocM4LnG1vK/zD0YIcxwpaXBdEXrjBKcBgzIIrbyIsJta99mYNU4JUTldIIPVd
+         AvvzI7k1PSAP7e1qQxAIli0haF4Qu3OTBbsVGO2K29BTk0f16QRO9C/ircBBVh2SnSUj
+         8UhrYT15jpGdQwUmLkY+B1/Ut0holo0IyjNR+Knj+BchnFb3YxizXYg6fHOLHc5sRBRV
+         R50w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700388890; x=1700993690;
+        d=1e100.net; s=20230601; t=1700393309; x=1700998109;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4/UMvWLGwbB65y4MgNgbTrhLeriroJNqxOaU5RBpd/A=;
-        b=qjMhJyaAEij0K2sYC/QvfVS0fYq51Rm1gRVOmhu3QCK7HnrBhDPdllqg5gYta+iiye
-         txAeErjzHpbQD6U8CZIvIjBWtjhsU5e2tZ3iebp1XQgXj7ElqqfYTKdAgUskCYm4my9D
-         h3zKnprSKdALEGiMSl2V6r+fwXW1ilYkdnjAAeQ6VBDgYzHhZwrc0DfX+NXrO9ljjYvn
-         DnUUbj4rupZZ7MbahUzYxvopPhzryPhSAOJTAnm+ZGSBI75HBZbueC/8EOPB1v0B3h41
-         B4gFoicJRu4ewMR04ubf5TaOFbIu4LCgmXwXKMFvTwuMOfUZzLOe5u2Myt5B8vKPThN3
-         m6hA==
-X-Gm-Message-State: AOJu0YwDEJvMNuOVEs4iZXeED9uaG2iIK/loBRjmwXID67Jf6NMQwE8K
-	yQlP06eXnhCQl6Kh6SQ8Go8=
-X-Google-Smtp-Source: AGHT+IHOF+5hNhpCmZw786pHF3YEeb1uoXP2y9dXXmqI2pn0mNpGlk9gn3AwL3Ck7UOdLXgeibJ+dg==
-X-Received: by 2002:a17:906:ae51:b0:9bf:63b2:b6e2 with SMTP id lf17-20020a170906ae5100b009bf63b2b6e2mr3041311ejb.26.1700388889532;
-        Sun, 19 Nov 2023 02:14:49 -0800 (PST)
+        bh=4zsSf4ZkDNs2IGAtcWQSvygdvnaeiSuxsGnh/E5aZTQ=;
+        b=RPk04a+BIve1Uio4E1Ajo0PWab5uj3u+T3juDOX8XamMFpecVseY7j0hvVUqx/Ign+
+         6zGPzNaGUYqcRPbnq7eoqbJWsGRAwaspj/ZE/wG6tlkNwCQCaX1RKtLJlb72UCkyGVcP
+         BopD8/pcZAGKye4kwhDqdgdY0tO2SuNKUBC37hmNum23beb4H2sYWC9LgJVFOCUZ39WW
+         n03y241oXw17I/u1R8qkrLY9p6ZC3uxANISjL9T+qAWjmIVRRWtbB/4u5kyDm5g2Crb+
+         N9jpALeZ3tlirlVlfur6nbbSZqieugzInesjRj5NN479hdkNXK+UTBISRGEceQNKIndK
+         OwCQ==
+X-Gm-Message-State: AOJu0YzKgVAVXRc3YrFbu00sFYunrcNbQ6tT6Vpq/SM03RCh9jioaJF5
+	CM0EaECMCPj38uQqw9NSf3g=
+X-Google-Smtp-Source: AGHT+IE5uGBUmol5ov0XxZ5Dqkm6UF3fXf9Nab5r2AlC03wH+Qnp4IS3AGLhaN/CFXgIHkYcW7HMmw==
+X-Received: by 2002:a17:906:2b56:b0:9d3:8d1e:cf0 with SMTP id b22-20020a1709062b5600b009d38d1e0cf0mr2841220ejg.54.1700393309393;
+        Sun, 19 Nov 2023 03:28:29 -0800 (PST)
 Received: from zotac.lan. (dynamic-2a01-0c23-bde4-3e00-2223-08ff-fe18-0310.c23.pool.telefonica.de. [2a01:c23:bde4:3e00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id p20-20020a17090628d400b009928b4e3b9fsm2743581ejd.114.2023.11.19.02.14.48
+        by smtp.gmail.com with ESMTPSA id k22-20020a1709063fd600b009f8af454d0dsm2420378ejj.112.2023.11.19.03.28.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Nov 2023 02:14:49 -0800 (PST)
+        Sun, 19 Nov 2023 03:28:29 -0800 (PST)
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: Wolfram Sang <wsa@kernel.org>,
 	intel-gfx@lists.freedesktop.org
@@ -86,15 +86,14 @@ Cc: linux-i2c@vger.kernel.org,
 	Sumit Semwal <sumit.semwal@linaro.org>,
 	Yongqin Liu <yongqin.liu@linaro.org>,
 	John Stultz <jstultz@google.com>
-Subject: [PATCH 00/20] remove I2C_CLASS_DDC support
-Date: Sun, 19 Nov 2023 11:14:25 +0100
-Message-ID: <20231119101445.4737-1-hkallweit1@gmail.com>
+Subject: [PATCH v3 RESEND 00/20] remove I2C_CLASS_DDC support
+Date: Sun, 19 Nov 2023 12:28:05 +0100
+Message-ID: <20231119112826.5115-1-hkallweit1@gmail.com>
 X-Mailer: git-send-email 2.42.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231119_021454_975875_3EB710D7 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231119_032831_597684_D224F304 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,6 +116,12 @@ Class-based device auto-detection is a legacy mechanism and shouldn't
 be used in new code. So we can remove this class completely now.
 
 Preferably this series should be applied via the i2c tree.
+
+v2:
+- change tag in commit subject of patch 03
+- add ack tags
+v3:
+- fix a compile error in patch 5
 
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 
