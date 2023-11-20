@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C90C9C5AE5B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 17:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0245C197A0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 17:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MgIcpMMimfGJCbcCwxMuH2zvrPPcJBncC5cIsUC2rIM=; b=xuscLrIthj9CLU
-	4MWNxYCx06e3jdgoZnv0FeTHcgIyI+MJS8KBK1hS3VWiG7VH1Zps6hXKIf4o6mtjUgzrR1pwPQdhG
-	ch2xfuRd/sg48kvF0ezbxLII8KL2trk6X5pd2/Ar1u7SvzDxYSctFTKtRn0G01fh6gBBOKwDWI8N3
-	0lyIpIgVVsyP9F5ew012HCzGf5T56VGpbjV6Tsfn1Pf/LgH9BZjTU2QmFjL1MDVpNFwE3hW0GX4n4
-	IJWrvq0gxG7GdtqnY8TvKT1gwh55FHia5Y+5/swQiVfpyDXu5w2xDQDqjz8gJMGqy++jCOF8ral1S
-	H1X93pONhTptYGaiTOew==;
+	List-Owner; bh=Zm6925U/Z35lEyLbtleodqkQEy+7rj6mX1cXWDaaxpA=; b=g2C+Z3bkLyAGVK
+	k/9mywctmVUFVH5opfWoGrcm/p6RUbyRW2csXW2zpjqIRkXHxjXEEikYg8d28ULttobwwabR3heox
+	NayafRFDbC9VvoCLsGy2V6Hb1m6zQavfUF5n12wUWQxyBfsozWMLW2P2maixGoRwnv1CI342rNW3d
+	P9vUvWQRAraRadU+Hzr2JC77kOsMOavAoLAx4WsocjqGus3eDiP88N8A9J5vsZYD83FQtrxIageb3
+	p0qOmmKt8/Hk6wbANacolIqJUqVkKUCF40kMPWPJ/0BTetXGcQg9AAZp/Sj6UEw+nYFCj+wlPGDge
+	n0Ub6N31XYO1yWt6Ca6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57fQ-00DY3I-2p;
+	id 1r57fQ-00DY2y-12;
 	Mon, 20 Nov 2023 17:02:36 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r57fM-00DXza-2Y;
+	id 1r57fM-00DXzI-22;
 	Mon, 20 Nov 2023 17:02:33 +0000
 Received: from [194.95.143.137] (helo=phil.sntech)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1r57fI-0000jr-Uf; Mon, 20 Nov 2023 18:02:28 +0100
+	id 1r57fJ-0000jr-95; Mon, 20 Nov 2023 18:02:29 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>,
-	hjc@rock-chips.com
+To: Sandy Huang <hjc@rock-chips.com>,
+	David Airlie <airlied@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Daniel Vetter <daniel@ffwll.ch>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
-	airlied@gmail.com,
 	linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
-	daniel@ffwll.ch,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
 	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH v1 0/4] Rockchip rk3066_hdmi update
-Date: Mon, 20 Nov 2023 18:02:18 +0100
-Message-Id: <170049972584.1779880.13529778706599017239.b4-ty@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: vop2: Add NV20 and NV30 support
+Date: Mon, 20 Nov 2023 18:02:19 +0100
+Message-Id: <170049972584.1779880.3039151921455735557.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cda574be-4f33-b66d-eb14-92c2b31d241e@gmail.com>
-References: <cda574be-4f33-b66d-eb14-92c2b31d241e@gmail.com>
+In-Reply-To: <20231025213248.2641962-1-jonas@kwiboo.se>
+References: <20231025213248.2641962-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_090232_830251_F49B7FF5 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20231120_090232_669423_49E9F8B6 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,24 +69,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2 Nov 2023 14:40:13 +0100, Johan Jonker wrote:
-> Update the Rockchip rk3066_hdmi driver in a somewhat similar way
-> to what is proposed for the inno_hdmi driver.
+On Wed, 25 Oct 2023 21:32:46 +0000, Jonas Karlman wrote:
+> Add support for the 10-bit 4:2:2 and 4:4:4 formats NV20 and NV30.
 > 
-> Johan Jonker (4):
->   drm/rockchip: rk3066_hdmi: Remove useless mode_fixup
->   drm/rockchip: rk3066_hdmi: Switch encoder hooks to atomic
->   drm/rockchip: rk3066_hdmi: Remove useless output format
->   drm/rockchip: rk3066_hdmi: Remove unused drm device pointer
+> These formats can be tested using modetest [1]:
+> 
+>   modetest -P <plane_id>@<crtc_id>:1920x1080@<format>
+> 
+> e.g. on a ROCK 3 Model A (rk3568):
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] drm/rockchip: rk3066_hdmi: Remove useless mode_fixup
-      commit: 1044f4a31734eef000f42cdaaf35bb2f76286be5
-[2/4] drm/rockchip: rk3066_hdmi: Switch encoder hooks to atomic
-      commit: ae3436a5e7c2ef4f92938133bd99f92fc47ea34e
+[1/1] drm/rockchip: vop2: Add NV20 and NV30 support
+      commit: 5fc6aa7db080fd90ef00846aac04e8a211088132
 
 Best regards,
 -- 
