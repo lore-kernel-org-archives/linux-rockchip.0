@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A147FC2BB3F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 16:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14472C2BB3F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 16:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=viII7RLIwih4fyymcVKB1eUXi30v5UmkjWvmE5FFCag=; b=rcGWSxib6oK8ug
-	Ff+fUXeTiPcruZOihjTMtGyE4m4tLF2tSCrUkBgVEuVIreNlTbREz/mYRrABmHuqlQS2bdwoSP7H9
-	QkKB0v6X1RN3jpFga3Gv9Pw4kwuuQhoYompjmZLzW2041EjQ5Asn6P7hLxnIia0c8OTuydaV+/35d
-	sd897EjOxkGyLxQlv8WlrbuUGu5Wy3VbbfGCTYiRaIrBUF9eTScpDFYsvVHFEyu5z4g1KkQQH88/r
-	mkJrlHRhxRdEtrdsfVW3vtEx6hMG/mJiaCp2xVI+fLNnLX1AioFdMOr4y14Nv5itFdND3mCt3rxiT
-	qN1qPYouZIpRAQDqtQyw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=whD+Nhm9T9t9loomMv1b/YL+pjS+yP1rn11akh4LP/0=; b=351unnde4xv2GY
+	mzGCwxtpCkttLjrwgDsIkOTNAs17dttuNIXLip2khs12/qsAjc6AaTre8GCfS75MRchSSWjB37bvb
+	ErPmZWy8kDrsrWRwxxdo6p0o5J4zf+qIV4B8DwJ+S0fQ91u2UT5fQT/5T3ZYNnmqs4ArHzthm3zso
+	rXBuMERCMjChYEjlL7jDw/HFTucBnxlJQ3W/JP7jvNlEBX6/I5+oGHZii+mavr8Bm9nHHz3zIEq5F
+	7+rtL42OBeFKIeMr9/+ZSe9zkXgPJTNKMKgM3h0cM8WgYtsuLwnaFzziuRWTQ7uiP/dabTd0v+L82
+	CEtcfiZKCTcsjZ/OPF0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r56uE-00D5tg-0Q;
-	Mon, 20 Nov 2023 16:13:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r5734-00DBDN-0F;
+	Mon, 20 Nov 2023 16:22:58 +0000
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r56uA-00D5oz-2i;
-	Mon, 20 Nov 2023 16:13:47 +0000
-Received: from [194.95.143.137] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r56ty-0000O8-VB; Mon, 20 Nov 2023 17:13:35 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jonas Karlman <jonas@kwiboo.se>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Tomasz Figa <tfiga@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2] drm/rockchip: vop: Fix color for RGB888/BGR888 format on VOP full
-Date: Mon, 20 Nov 2023 17:13:26 +0100
-Message-Id: <170049679718.1726490.18211882317992551010.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231026191500.2994225-1-jonas@kwiboo.se>
-References: <20231026191500.2994225-1-jonas@kwiboo.se>
+	id 1r572w-00DB8S-1S;
+	Mon, 20 Nov 2023 16:22:55 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-6ce2d4567caso2714978a34.2;
+        Mon, 20 Nov 2023 08:22:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700497368; x=1701102168; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=KX9CLwN26iToqKb73jn+BjvpZIdQqDvo/75oK/Q93bw=;
+        b=iEveCOK5l2xk1pmYWuzKPWSOvwT7hJlpPDCmqdgSOqTxSwepM5s4i+6o4tEaCuqeob
+         008fQhBiq91aT3iD+9VUDGES4cFdndvFXt2nNTj1gqQ2fpF0CMboqqAWwl1q5Up4qmQr
+         iTeEzFztxmfe4lVGSr86oDFAsFxceuvZsLk+51PWFWvst5CUkjWvogPm2fi0uBiQkGBt
+         DwytmYg+A/s2wxp4HMiy2JU17564PHnvqW1qYmnrLGiwraDt7i312ecauvsD9t4YFlbR
+         Q1w3BM46WVuAFS9z8SDrga4a3Gg5K70IjsILqe0GbyBCgOAPgZGOcwKZsN+M0LjYickC
+         lYYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700497368; x=1701102168;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KX9CLwN26iToqKb73jn+BjvpZIdQqDvo/75oK/Q93bw=;
+        b=aoSBx+bbd6Ky4FO08zlL6y8iLPA7VyvOU+5p0b+AUKKAqdG9RJGms/yXLXIEcCjs/f
+         VZ2WMBJJ9Gf5aJ113fMvBdV2Zijom1drG3k7buA3jiQgbgWpVNKU9A7O1IizQH1frDW+
+         B9AaeYNHwzF81JaDYajXsSdJfhHy9Hf6Nw/vUhhjLh5K0ZNMiiYNnBVibtDIuWew0KTi
+         3a0S5xK70OQn1/u8vSSa8Trf0CFMJMrEVfeQ2Dj7eHBU2znF/gh5QC42rwHbxWll05AV
+         HS/X8zKezAbSnQhtp+uzTvXyc/poj1Micki+vWiLCubPsN6xS9uvOp1r5yOyJC9GM63k
+         JSHA==
+X-Gm-Message-State: AOJu0YyIQ2W6DcNrzZhKHTKFndvqO/1S20Yw/UvMRH3dxvaVyZHj6A0Q
+	aNzFw7uAF0QoJ2GDe/GZkEZABI7XVK8=
+X-Google-Smtp-Source: AGHT+IH/2OyWscjqAAksdhRQNOC4OIoyyN9RuP98a7Vj+dPJakNfOV1ajfMkDjXARNt4yZcnpyz/5Q==
+X-Received: by 2002:a05:6830:14c2:b0:6d6:53fe:2181 with SMTP id t2-20020a05683014c200b006d653fe2181mr8180371otq.26.1700497367786;
+        Mon, 20 Nov 2023 08:22:47 -0800 (PST)
+Received: from localhost.localdomain (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
+        by smtp.gmail.com with ESMTPSA id z13-20020a0cfc0d000000b00677fb605c8csm2549561qvo.55.2023.11.20.08.22.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 08:22:46 -0800 (PST)
+From: Trevor Woerner <twoerner@gmail.com>
+To: linux-kernel@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: rockchip: dts: rk3308-rock-pi-s add gpio-line-names
+Date: Mon, 20 Nov 2023 11:22:32 -0500
+Message-ID: <20231120162232.27653-1-twoerner@gmail.com>
+X-Mailer: git-send-email 2.41.0.327.gaa9166bcc0ba
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_081346_881072_F218D0D3 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231120_082253_553540_5E794971 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,25 +93,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 26 Oct 2023 19:14:58 +0000, Jonas Karlman wrote:
-> Use of DRM_FORMAT_RGB888 and DRM_FORMAT_BGR888 on e.g. RK3288, RK3328
-> and RK3399 result in wrong colors being displayed.
-> 
-> The issue can be observed using modetest:
-> 
->   modetest -s <connector_id>@<crtc_id>:1920x1080-60@RG24
->   modetest -s <connector_id>@<crtc_id>:1920x1080-60@BG24
-> 
-> [...]
+Add names to the pins of the general-purpose expansion header as given in the
+Radxa GPIO page[1] following the conventions in the kernel documentation[2] to
+make it easier for users to correlate the pins with functions when using
+utilities such as gpioinfo.
 
-Applied, thanks!
+[1] https://wiki.radxa.com/RockpiS/hardware/gpio
+[2] Documentation/devicetree/bindings/gpio/gpio.txt
 
-[1/1] drm/rockchip: vop: Fix color for RGB888/BGR888 format on VOP full
-      commit: bb0a05acd6121ff0e810b44fdc24dbdfaa46b642
+Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+---
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 58 +++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+index e9810d2f0407..f2d7251de298 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -250,3 +250,61 @@ &usb20_otg {
+ &wdt {
+ 	status = "okay";
+ };
++
++&gpio0 {
++	gpio-line-names =
++	/* GPIO0_A0 - A7 */
++	"", "", "", "", "", "", "", "",
++	/* GPIO0_B0 - B7 */
++	"", "", "", "header1-pin3 [GPIO0_B3]", "header1-pin5 [GPIO0_B4]",
++	"", "", "header1-pin11 [GPIO0_B7]",
++	/* GPIO0_C0 - C7 */
++	"header1-pin13 [GPIO0_C0]", "header1-pin15 [GPIO0_C1]", "", "", "",
++	"", "", "",
++	/* GPIO0_D0 - D8 */
++	"", "", "", "", "", "", "", "";
++};
++
++&gpio1 {
++	gpio-line-names =
++	/* GPIO1_A0 - A7 */
++	"", "", "", "", "", "", "", "",
++	/* GPIO1_B0 - B7 */
++	"", "", "", "", "", "", "", "",
++	/* GPIO1_C0 - C7 */
++	"", "", "", "", "", "", "header1-pin21 [GPIO1_C6]",
++	"header1-pin19 [GPIO1_C7]",
++	/* GPIO1_D0 - D8 */
++	"header1-pin23 [GPIO1_D0]", "header1-pin24 [GPIO1_D1]", "", "", "",
++	"", "", "";
++};
++
++&gpio2 {
++	gpio-line-names =
++	/* GPIO2_A0 - A7 */
++	"header1-pin10 [GPIO2_A0]", "header1-pin8 [GPIO2_A1]", "", "",
++	"header1-pin7 [GPIO2_A4]", "header1-pin12 [GPIO2_A5]",
++	"header2-pin46 [GPIO2_A6]", "header1-pin22 [GPIO1_A7]",
++	/* GPIO2_B0 - B7 */
++	"header2-pin45 [GPIO2_B0]", "header1-pin18 [GPIO2_B1]",
++	"header1-pin16 [GPIO2_B2]", "header2-pin44 [GPIO2_B3]",
++	"header2-pin43 [GPIO2_B4]", "header2-pin28 [GPIO2_B5]",
++	"header2-pin30 [GPIO2_B6]", "header2-pin32 [GPIO2_B7]",
++	/* GPIO2_C0 - C7 */
++	"header2-pin34 [GPIO2_C0]", "", "", "", "", "", "", "",
++	/* GPIO2_D0 - D8 */
++	"", "", "", "", "", "", "", "";
++};
++
++&gpio3 {
++	gpio-line-names =
++	/* GPIO3_A0 - A7 */
++	"", "", "", "", "", "", "", "",
++	/* GPIO3_B0 - B7 */
++	"", "", "header2-pin42 [GPIO3_B2]", "header2-pin41 [GPIO3_B3]",
++	"header2-pin40 [GPIO3_B4]", "header2-pin39 [GPIO3_B5]", "", "",
++	/* GPIO3_C0 - C7 */
++	"", "", "", "", "", "", "", "",
++	/* GPIO3_D0 - D8 */
++	"", "", "", "", "", "", "", "";
++};
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.41.0.327.gaa9166bcc0ba
+
 
 _______________________________________________
 Linux-rockchip mailing list
