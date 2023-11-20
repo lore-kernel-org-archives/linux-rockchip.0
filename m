@@ -4,100 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D1DC54E76
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 12:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FB2C54E76
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 12:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3gJsbKbdjB33K0aUPnMtqexIQOPuabcRNIchL0t4cEU=; b=JM12HKyevA7o1L
-	8gzkBKJSWObpbTdba0gHXkif1dW1jIir87nbWyRpXE1AZndnIVKiUCcJ5xtJH2Z43Ufp1qLMyn4oT
-	noyUAAwnwvaxNx8ejdXNE6m/rRJqTRhkdeMWB3dHH6V3lrqPowOjzQm4J6HuJWC2S58bZK7dZER4R
-	2iFsU20FLn1lAxF27wDlP68DC8eMrabyOuot1UUeTxd+ycmtq3BXkMUHAOKhOkfzwo/5BGdCtO5Yt
-	jjm9xt4W5eL/YRKAscKxFlCCLcGkKCJKL57vZg+Vt1kFnKrUz0WJj27xGBAYKajQBqrNnKXhmOZ/i
-	3dM8+VW9PcpnjA4nND8A==;
+	List-Owner; bh=QKdbHN10xepj7zwrqiz0r6ISuoeOpajlBhYWMXfns5g=; b=LFVP4cBsG4ycm+
+	AP8qxslT+gRX1mRbute6h8/cj/KNAOworVQczPysQEthKp7VyJFTuGeN+0veSYU87XE6IzSvVmWHP
+	uWJWmIwqEtJ7m9XOL5SfffP2rbP3/hLEjC3ORL3bF1ywW/GqTmKG4LGYayz+S07e++w+v3IiLL4gw
+	NOa3Y8bDPe5ERZb8eaxEYaY4KCrpETd3ep/trHRdsURr1cwLzKu4ubVHNIHmLklP3yNCKVBaWMmEl
+	Cw+Q2e/G4zbrrOC2ZXGltwINBnw33IrAIJ8aXzH/z1ERrLu8c7Bt9YBxe9nheg9IvQM7VI+wwXs31
+	oTwdydMWQCzc3k0KxQ5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r53ZG-00C1Yp-38;
-	Mon, 20 Nov 2023 12:40:00 +0000
+	id 1r53ZF-00C1Xi-0z;
+	Mon, 20 Nov 2023 12:39:58 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r53Xw-00C19h-1M
+	id 1r53XL-00C136-1f
 	for linux-rockchip@bombadil.infradead.org;
-	Mon, 20 Nov 2023 12:38:36 +0000
+	Mon, 20 Nov 2023 12:39:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=9MtZgtFfOW9dCjelkNp5f9hbzEUUDFSn3SDGb/3syhU=; b=JgxpZYSOmoLQ+vRXqfiSOrMrMq
-	pV0DQwlnocneSmn1TwlqSVBuNlwe071dCvfohcm9ayG20oaP7cFBwzJSdOC+5HhG7Z2khuMUvB2fu
-	i4T3jU6mbIjhusKpWME3bkhlYbXG+ipBG0nN9U4eCoMjUU/TBjrne0CdqfrKFsQf19B2wRdpLpes3
-	kjHW9cOXdxkJCIGHRHGbLkuCrGix9ImQgBvwfIdTZpDk+gtK4zVLVD3LIUuze3uq3jwZFqyEhZlo1
-	s1OcJZF3yxEfpCULxiOgnHVmZI842TsSa6eFjxxA2K+wwfRKEYyqJXMrKEPZJ4dToleVRuvbY63aJ
-	ujpBmC/Q==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	bh=4atkjwStmvZxjHp5SDNM/cbMwICPzQFU+wT6vfftIs8=; b=hdcAdH/+prUDtKawipUkkTYJZn
+	71j5lihcaEgJoOXMxFhJgY+7u76/nfdY3BMe9SFn3Vh27Q6Eu5SNAzXY0k2d2fYcagKUC7fQpOLxh
+	2f7pZuvwUfAZfk9Vu6neO7Jv2qNUjG0IMFBWFe0i4QHhitHeo9eBHwJoG+pcbD0CQoJ0iiUYRTwzT
+	ATy/Ru2C4ZUZsGqVvvbcHp0lm9sOz/12LSb4RxjvNXc/Mg72b+oYvF41yZd6CnhZvHUK0NruYIAoD
+	mpdogq81Ee5im6+4QKt5vsPdkGjtcVwCrXV+UlT2XveL1HNI4z1qQRrGZ9QjC0HjTlxyzsPmfgvKx
+	m4GXLXMA==;
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r53Xo-00AxOY-07
+	id 1r53XG-00AxJk-04
 	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Nov 2023 12:38:32 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-32d895584f1so3093586f8f.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 20 Nov 2023 04:38:27 -0800 (PST)
+	Mon, 20 Nov 2023 12:37:58 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-40a4d04af5cso12819205e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Nov 2023 04:37:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1700483906; x=1701088706; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1700483870; x=1701088670; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=9MtZgtFfOW9dCjelkNp5f9hbzEUUDFSn3SDGb/3syhU=;
-        b=0+lEMNwtbpOd1g2uz4lNZ1IoM5urShe4PVd8a3toGtgCRaPNe0X+P/gJ/r4MqMnyFJ
-         MXnbEWLtrkra89jR8rocVuYTusGity6TLmePxaQew5+ZyNK7gCMPun29b9cm6tc2yXzy
-         L6/Vdwyaz0L9z0LdKBWZKzMmrP4QD4AUC8MvBCmAdIpKYNrSFZs/bBgFZBf93cAFs7ch
-         RoZA979vx4OMjGOkuawRQQDbPvIgIO1bkTZhtU8mBg1ZzTPFC92VU2hY9nDykJBDHxPQ
-         LrOXR4kOlwUYP87prvU3W/+/nv5C/QF0GaTJ+jVjmjLf0aMBFVLu0eSsdmI5o0/0O596
-         o+FA==
+        bh=4atkjwStmvZxjHp5SDNM/cbMwICPzQFU+wT6vfftIs8=;
+        b=qZ/xZ2GQ0JlhNOlFERJhoCodo1Rl1RBYAJ4+xUnClS6xYYWlAy4ONE7I7PPixIwkhQ
+         7uVrZm7dzSW3pnQ2zutTyMPUSq41GSlRQBizkQYujxQmcjFmTjxnvQTdqgndEKtCvO07
+         QlrujNl1EQOf1eDnwmhyE+LpS1g82WVt4eXEG3HRB+ciougFvigFfWEFdtp/q3nukmCL
+         ub8FI48PiaVAzoRciBBiMRgyIqq+iCQueKmHB7jptitowyP9kfS9PNy3BcOBy65yI2nY
+         ++r8TMmOYNne2QzVJqcwAEtIQsVL0n4RXrxMyzRxng6Oqng5yykq+ryG48OPZrGMHbMF
+         KPyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700483906; x=1701088706;
+        d=1e100.net; s=20230601; t=1700483870; x=1701088670;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9MtZgtFfOW9dCjelkNp5f9hbzEUUDFSn3SDGb/3syhU=;
-        b=ElGM3pj+eSv+x7pIHU+YqnR2v3D/j9lMWYBrDvPlcE8ud+HHnjLsdOOpTsAimobL3x
-         XUYFwsVYDVanwvRsdZ0HySXnO/LSTIg0tZCpJxCn8ENWcAApwYeSWSIlfz8OJrCfUklu
-         fhyrIsJXIhsQAJ0KSlhvzD4k9WmSdC+nGmsV6FCXlNapCjfFW8za84Zj+zGDHkXON43T
-         gMQeUuNgi4gKWENQLOLiZM2MGdd7vmx4iC/Peez11yJw7W/j9V2PPbwjHHUlWLkeM/US
-         gGvUqnUUKBOVbL5Okk6fljeKkxrjxUheNin3n/DkyBHyOG7Nr921xg7dQbmuSRyHNBxo
-         aDkw==
-X-Gm-Message-State: AOJu0YxRVSNl3wh/MPXn3BL457e1V+8N4JSM50r8w2onF1TPLxhKlx+a
-	kBm+RrMqYuiBWNXmaUXNaAaP0A==
-X-Google-Smtp-Source: AGHT+IFBvsTa2GSHGKkTsseOa/qkg4gJuMlmlQOUdsnpNZgSMmS2I++Q4cVF9eZfL01E5phYNEjRpw==
-X-Received: by 2002:a05:6000:1acc:b0:331:762e:6b0c with SMTP id i12-20020a0560001acc00b00331762e6b0cmr4534497wry.19.1700483905834;
-        Mon, 20 Nov 2023 04:38:25 -0800 (PST)
+        bh=4atkjwStmvZxjHp5SDNM/cbMwICPzQFU+wT6vfftIs8=;
+        b=CM0odgM/XsGy9ycCIaMsOrLJQGwDibiieQy7dhdDHm2Z1eBYs6xWB7gcN0Kjl5j8Nw
+         nu6+3EGpKsYfw9Yih28Jn8YLQpRf72ceuUmAH+pQj5m5JbGgCGqFCnrzpKhwbJZd6oX8
+         Rm2BpRw6hpLawlWVTHSBt1Owqk4eqL/f2LNSjE4JLKjcfo+rJaYVctHS5wONfGItgGyJ
+         ZIL01yZ4YgcvKzRhRQQd8uwEiui/PXbvKnNzekHEQbXoQNyANSxhp7uakhgh/TmTjsf0
+         1UYWkoAZhR/zNHs5PAq2r6WQ3rz+RGxdMrcvf4BE3xgc7iLSerUPuw5O4N7/1p2J48FJ
+         +wpA==
+X-Gm-Message-State: AOJu0Yx2cGo6Av1ci83puPIB8Y3NiZfRcP/BIn5i4vR0LMMCld62b0KH
+	J7Ix9iWZxyXAzSsJESCoi1lXsQ==
+X-Google-Smtp-Source: AGHT+IEs5lAuavrkwKGpRZ5AkeCSKymW/RWPSADLBndhDv2LJ9rELvqHNmj4T3wJSogI6J0K/0ehDA==
+X-Received: by 2002:a5d:47ab:0:b0:332:c514:641f with SMTP id 11-20020a5d47ab000000b00332c514641fmr2915054wrb.13.1700483870457;
+        Mon, 20 Nov 2023 04:37:50 -0800 (PST)
 Received: from Red ([2a01:cb1d:3d5:a100:4a02:2aff:fe07:1efc])
-        by smtp.googlemail.com with ESMTPSA id g23-20020adfa497000000b0032fb7b4f191sm11289700wrb.91.2023.11.20.04.38.23
+        by smtp.googlemail.com with ESMTPSA id q15-20020adff94f000000b0033169676e83sm11203792wrr.13.2023.11.20.04.37.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 04:38:24 -0800 (PST)
-Date: Mon, 20 Nov 2023 13:38:21 +0100
+        Mon, 20 Nov 2023 04:37:49 -0800 (PST)
+Date: Mon, 20 Nov 2023 13:37:48 +0100
 From: Corentin LABBE <clabbe@baylibre.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: davem@davemloft.net, herbert@gondor.apana.org.au,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: davem@davemloft.net, heiko@sntech.de, herbert@gondor.apana.org.au,
 	krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
 	p.zabel@pengutronix.de, robh+dt@kernel.org, sboyd@kernel.org,
 	ricardo@pardini.net, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
 	linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/6] ARM64: dts: rk3588: add crypto node
-Message-ID: <ZVtTPUoOtiiS2CuO@Red>
+Subject: Re: [PATCH 2/6] MAINTAINERS: add new dt-binding doc to the right
+ entry
+Message-ID: <ZVtTHEr-zVZFuvHT@Red>
 References: <20231107155532.3747113-1-clabbe@baylibre.com>
- <20231107155532.3747113-4-clabbe@baylibre.com>
- <10382065.T7Z3S40VBb@diego>
+ <20231107155532.3747113-3-clabbe@baylibre.com>
+ <6ba4585a-b7a1-46f9-ba89-a1e605cbdda3@linaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <10382065.T7Z3S40VBb@diego>
+In-Reply-To: <6ba4585a-b7a1-46f9-ba89-a1e605cbdda3@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_123828_414795_7B53C5A6 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20231120_123754_257395_5A4B0D3D 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,29 +115,25 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Tue, Nov 07, 2023 at 04:59:42PM +0100, Heiko St=FCbner a =E9crit :
-> Hi,
-> =
-
-> Am Dienstag, 7. November 2023, 16:55:29 CET schrieb Corentin Labbe:
-> > The rk3588 has a crypto IP handled by the rk3588 crypto driver so adds a
-> > node for it.
-> =
-
-> please follow other commits in the subject line, i.e.:
-> =
-
-> "arm64: dts: rockchip: add rk3588 crypto node"
-> =
+Le Tue, Nov 07, 2023 at 05:20:46PM +0100, Krzysztof Kozlowski a =E9crit :
+> On 07/11/2023 16:55, Corentin Labbe wrote:
+> > Rockchip crypto driver have a new file to be added.
+> > =
 
 > =
 
-> Thanks
-> Heiko
+> It does not have sense patch to be separate commit. It's not like you
+> add new entry. New file is introduced in a patch? Then this patch
+> touches maintainers.
 > =
+
+> Best regards,
+> Krzysztof
+> =
+
 
 I will do it
-Thanks.
+Regards
 
 _______________________________________________
 Linux-rockchip mailing list
