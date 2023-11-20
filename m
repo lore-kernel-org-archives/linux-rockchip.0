@@ -4,96 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B08C54E76
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 21:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D70DC197A0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Nov 2023 23:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Nb/w2LAPoycTjSbfOIH+1gL6tktzzzQR2W3vNliyEoE=; b=Ixut8r/Kwoljd8
-	6VQdFy9VHJLr/RnU1sWNXde0baKev79v33bDlm89WWkXma3LbUT1Sqhv/mnj/9W7QfAbmqyYMyk/c
-	xzA4PdAsRsGuwDeuh05e7iIFIokTC3lHXJaLl8rpPyNK8Gw5UK86L906hm8t/i7Xcu30j+uVtepFU
-	BzdhuxQYA1Omp/iuaCHw3opcA4cni6XVC49IwokrnqfX4NhSae9Ke48sCZCOAQRYmeU4eyCgyVmfp
-	XCmWkaBYf5U1dZx1Y9sL3nQmnllYEPjeEJiG6AEOXlAMxdRc7vdWFCFR3T2CmcnL1ObC3i9f+qGf9
-	H/O2aEMC7mYlQUUwmKrw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=omIeX2GXl3YzqWPvEWdhBXrWlD8kB4t4Pik0aFtG80c=; b=d0sw4ItOIOqfB+
+	oD/i/9waFmM1lqxbDec3i9QRi0ggGxDvXU+4O2vVrJBKs+FivWGSKy6/tH9qnvGxBkp7eAa7+2KXE
+	RTxJK1l+fVtl9UPSeooYOtaTeChYknD6FHAMj0lxnTJyzeS3Pj08fYXKV+gnXIctkCSpsOIXPogZp
+	S4isbEB5J4WSxF1+SMdB9NoojRQJRWATOZjAHNc4/gil1P40Ts6b2zpn5bg2IMBQPN7LgZY71Qkyo
+	q4b4TF/RSD8yS3DAVkZrg8Ph7Kll1cY4EeTtx9VwPgLw/LdgvXOIV5VNqxp0Z/8T9D+3dT7oWOkDQ
+	mTKkDDi87z1JBVeFJyMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5C6C-00EuFD-1j;
-	Mon, 20 Nov 2023 21:46:32 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1r5DGz-00F1jL-34;
+	Mon, 20 Nov 2023 23:01:46 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5C6A-00EuEX-03;
-	Mon, 20 Nov 2023 21:46:31 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-32f8441dfb5so3793525f8f.0;
-        Mon, 20 Nov 2023 13:46:29 -0800 (PST)
+	id 1r5DGv-00F1hh-1N
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Nov 2023 23:01:42 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-5869914484fso2844545eaf.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Nov 2023 15:01:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700516788; x=1701121588; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ifrjBfgOSiyuCFRkxJCsnT3OdDkva6hhJuoAwARmBUY=;
-        b=JXPTdGZNXNOovbq8GuLYjq3nHYVIOyluA3WfwHPrCGOpwACBtkoNAY+SpPhVgRgLjD
-         eidXvdZathYackb/IcFLaQX5+Q4Xgq4rljqmXUCzhMqh/5eXNxnY26SkdVnfYZLHh6P0
-         LYvSDJNtEPz3JJOzr6+bkrVEA3ETF3C+BPyDPQjHGDDpFT+3b7LZNFdeQTYlaSMLtk0N
-         sW2WW8mXoMgK0506rn/FOomY12fT8e2Jpn49V6PRfdPdhPq+zIlzShQNGDERJcyBGQEr
-         fo4Gt5gWyfGonK9nID36hgzk4xyDa7CT5AKilZsIHvW5AXkVdBzGuuK3Qw3jLxAoDpbU
-         XGOQ==
+        d=gmail.com; s=20230601; t=1700521299; x=1701126099; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3UZ2BzLEBr4XMnl4GQ3wvndvKgsZ+xuw+7Bt9mxs0HE=;
+        b=ZpmFbkV48pS1OXY19aJzmiXH0rew/vKdzw2aUS1OY1vJrrSiptbAir2JDxMXDpoNLJ
+         08z93jGW/VakgQeUpXCChzx8lFjWsqww7ADqROS36s0ofcNXlbbr5HeqM6aqasuy6C0V
+         ++MNPU+WQATgDE8dmLp85ylsghRlu5kq/UjS6HJFcn5aLD7ZF94h0UM/oO5kiKM5AUzT
+         KkEHpegw8mJE8BlOKCO43rXxwkS0JZ1zEuvNItvUm1vXKmHGWPWCHNBireyh1+eHNSYJ
+         h/ZEhwLbgLvAffGFLE204KpT8KNO3MIgWW5qlhb+Q9ZjT2W0jXy4BXTE1U1tW22sJo0d
+         Rc+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700516788; x=1701121588;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ifrjBfgOSiyuCFRkxJCsnT3OdDkva6hhJuoAwARmBUY=;
-        b=ZVS2oAG7QdKthp+zYslUVUkzrOjQL509n16OIxl4NtyR7mRzboOzBSlj5HIQwuzBaH
-         mT+lIJf58sm3DgjDKjTYFuLtAU0SAWTo0LjU+X8aTNPsVzTafQQKXnQ2qXrDqc16a75s
-         Pvngwh3RdQNVJ0uxY0Y1uwh5W0wSGc9Vfrh4bWA39GozzOp3Zp1XHq6nnL6pnq8OZqAF
-         rITkbgYYeXDp0TfPpBf3BGMIbEudA242iwB5Vz6MBuz08kIRrC010Zhg2cD0HqxoLRRn
-         x7Ck5EiGz8srz/thyahdmqZGDuSA4Fb6p1Z42G3UUbKrhwIVZs1mJeVcEnceNSiQXK2K
-         lkZQ==
-X-Gm-Message-State: AOJu0YxVgN43vQr9KLoCnuUwXwpjIbncH2zK6WaB5T7vYwE8DPAT0I2l
-	/P63uuugU6C8bVWTv2JUyNk=
-X-Google-Smtp-Source: AGHT+IHp3LoF2DOrCwbBP5ZAP28MyKKAznq0CT/uy4NViD6EoST7Z+71CXBfeYQKBX9yVV00pAiniQ==
-X-Received: by 2002:adf:e9cb:0:b0:32d:9d3a:d8c0 with SMTP id l11-20020adfe9cb000000b0032d9d3ad8c0mr5215561wrn.60.1700516787764;
-        Mon, 20 Nov 2023 13:46:27 -0800 (PST)
-Received: from zotac.lan. (dynamic-2a02-3100-9030-5a00-2223-08ff-fe18-0310.310.pool.telefonica.de. [2a02:3100:9030:5a00:2223:8ff:fe18:310])
-        by smtp.gmail.com with ESMTPSA id i13-20020a5d584d000000b00332cb0937f4sm2667052wrf.33.2023.11.20.13.46.26
+        d=1e100.net; s=20230601; t=1700521299; x=1701126099;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3UZ2BzLEBr4XMnl4GQ3wvndvKgsZ+xuw+7Bt9mxs0HE=;
+        b=d3MSWvowLjJwVOr/5s6/u1/ulTC7cLAVCHhXTPcA7FGnSKwzq6/GHx9gkqGa0kvuhw
+         SMB4oOeuMavF/9q7VAmI6HwHL7f+IbMF0myEgk51zUnNBsya3jfDfPD/fV1litchPqob
+         HF4kPgHv6T/bOd3FgL0AlripVL03whwzuHvxSdzKfVvfwEA3BfY/XHqxG4ahaMA2OJCP
+         iGtuKpZrkAd8iQXFiB6w03gaQb24oE3FDe1QJdw+WIDZTVUJ6Y8WFQU1nHObH51aiNJh
+         /eaQnlHj7+ug2o4OjEf94Z5xxxSie7iS+wE80ixVG2Cn95lFhiPRx0Ps1K+qrvbzBY7k
+         FJjg==
+X-Gm-Message-State: AOJu0YzBRAuzhS7YarBwTy3Jl+A52ncYDhrnt3hqKUjLt0QEgWDgLd/2
+	xpBWsy4TS5N+2MxN14Qkmaw=
+X-Google-Smtp-Source: AGHT+IGGBSauwh38pSiGG2+LljhqtfZuwtpVXX5eCCddIt444/FxQnmfcrUz2xYTi+OLo2TjvFXINQ==
+X-Received: by 2002:a05:6820:613:b0:587:992d:48a with SMTP id e19-20020a056820061300b00587992d048amr9796217oow.1.1700521299289;
+        Mon, 20 Nov 2023 15:01:39 -0800 (PST)
+Received: from localhost.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id g10-20020a4ab04a000000b00587aaf6add7sm1545117oon.9.2023.11.20.15.01.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 13:46:27 -0800 (PST)
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: Wolfram Sang <wsa@kernel.org>,
-	intel-gfx@lists.freedesktop.org
-Cc: linux-i2c@vger.kernel.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	linux-fbdev@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jocelyn Falempe <jfalempe@redhat.com>,
-	linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>
-Subject: [PATCH v4 00/20] remove I2C_CLASS_DDC support
-Date: Mon, 20 Nov 2023 22:46:03 +0100
-Message-ID: <20231120214624.9378-1-hkallweit1@gmail.com>
-X-Mailer: git-send-email 2.42.1
+        Mon, 20 Nov 2023 15:01:39 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	maccraft123mc@gmail.com,
+	sebastian.reichel@collabora.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add Anbernic RG351V
+Date: Mon, 20 Nov 2023 17:01:31 -0600
+Message-Id: <20231120230131.57705-4-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231120230131.57705-1-macroalpha82@gmail.com>
+References: <20231120230131.57705-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231120_134630_079839_079F3BE2 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20231120_150141_496372_6CFCE9C9 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,57 +98,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
-olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
-Class-based device auto-detection is a legacy mechanism and shouldn't
-be used in new code. So we can remove this class completely now.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Preferably this series should be applied via the i2c tree.
+Add support for the Anbernic RG351V, which is a handheld gaming console
+from Anbernic with an RK3326 SoC, a 640x480 LCD display, a single
+analog joystick with several face buttons, two USB C ports, and
+internal WiFi over USB. All hardware has been tested as working
+except for the battery, which will require further modification to the
+mainline rk817 battery driver before it can be used (the device was
+built without a shunt resistor, and as such the battery cannot
+measure current; only voltage).
 
-v2:
-- change tag in commit subject of patch 03
-- add ack tags
-v3:
-- fix a compile error in patch 5
-v4:
-- more ack and review tags
-
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3326-anbernic-rg351v.dts   | 44 +++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts
 
- drivers/gpu/drm/amd/amdgpu/amdgpu_i2c.c           |    1 -
- drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |    1 -
- drivers/gpu/drm/ast/ast_i2c.c                     |    1 -
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c         |    1 -
- drivers/gpu/drm/display/drm_dp_helper.c           |    1 -
- drivers/gpu/drm/display/drm_dp_mst_topology.c     |    1 -
- drivers/gpu/drm/gma500/cdv_intel_dp.c             |    1 -
- drivers/gpu/drm/gma500/intel_gmbus.c              |    1 -
- drivers/gpu/drm/gma500/oaktrail_hdmi_i2c.c        |    1 -
- drivers/gpu/drm/gma500/psb_intel_sdvo.c           |    1 -
- drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_i2c.c   |    1 -
- drivers/gpu/drm/i915/display/intel_gmbus.c        |    1 -
- drivers/gpu/drm/i915/display/intel_sdvo.c         |    1 -
- drivers/gpu/drm/loongson/lsdc_i2c.c               |    1 -
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c           |    1 -
- drivers/gpu/drm/mgag200/mgag200_i2c.c             |    1 -
- drivers/gpu/drm/msm/hdmi/hdmi_i2c.c               |    1 -
- drivers/gpu/drm/radeon/radeon_i2c.c               |    1 -
- drivers/gpu/drm/rockchip/inno_hdmi.c              |    1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c            |    1 -
- drivers/gpu/drm/sun4i/sun4i_hdmi_i2c.c            |    1 -
- drivers/video/fbdev/core/fb_ddc.c                 |    1 -
- drivers/video/fbdev/cyber2000fb.c                 |    1 -
- drivers/video/fbdev/i740fb.c                      |    1 -
- drivers/video/fbdev/intelfb/intelfb_i2c.c         |   15 +++++----------
- drivers/video/fbdev/matrox/i2c-matroxfb.c         |   12 ++++--------
- drivers/video/fbdev/s3fb.c                        |    1 -
- drivers/video/fbdev/tdfxfb.c                      |    1 -
- drivers/video/fbdev/tridentfb.c                   |    1 -
- drivers/video/fbdev/via/via_i2c.c                 |    1 -
- include/linux/i2c.h                               |    1 -
- 31 files changed, 9 insertions(+), 47 deletions(-)
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index a18f33bf0c0e..0ac27cf782d7 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -9,6 +9,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351m.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351v.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts
+new file mode 100644
+index 000000000000..c2f9b56ca5f9
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts
+@@ -0,0 +1,44 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++#include "rk3326-anbernic-rg351m.dtsi"
++
++/ {
++	model = "Anbernic RG351V";
++	compatible = "anbernic,rg351v", "rockchip,rk3326";
++
++	gpio_keys_vol: gpio-keys-vol {
++		compatible = "gpio-keys";
++		autorepeat;
++
++		button-vol-down {
++			label = "VOLUMEDOWN";
++			linux,code = <KEY_VOLUMEDOWN>;
++			gpios = <&gpio2 RK_PA1 GPIO_ACTIVE_LOW>;
++		};
++
++		button-vol-up {
++			label = "VOLUMEUP";
++			linux,code = <KEY_VOLUMEUP>;
++			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
++		};
++	};
++};
++
++&internal_display {
++	compatible = "anbernic,rg351v-panel", "newvision,nv3051d";
++	vdd-supply = <&vcc_lcd>;
++};
++
++&io_domains {
++	vccio1-supply = <&vccio_sd>;
++};
++
++&vcc_sd {
++	regulator-max-microvolt = <3000000>;
++	regulator-min-microvolt = <1800000>;
++};
++
++&vccio_sd {
++	regulator-max-microvolt = <1800000>;
++};
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
