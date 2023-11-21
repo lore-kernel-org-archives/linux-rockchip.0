@@ -4,82 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD10C61D85
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Nov 2023 16:04:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2BA6C61D85
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Nov 2023 21:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wjwfwAtsNX1kbBOHTEFwEBmMz2NDu6ZEVliuitkWsEY=; b=BZRszAM1fNRtch
-	uTVdfAVAJXWG9x+VHj2fcziktAUaRTpk+L6ao9dp/edm0ePoY4K6eqqYGDl24q1VfXDT1uy+Qp3he
-	WEv26RsxvqCiXr5ymZwWCXahhDjKXbeVMvo+ICDKLhOsozQm/HWCull+3Z2s2sWom719R5Rn12RSE
-	zl+Wo0iKyOuumYbF8QH438TsgIdhcY1N/8Nff2D5QZc1jhxKK3TbW6fQozA+vN+e4EY1ML9UvtyvH
-	Gcv32KdidF/9pWiGc/t/3LO+H52DxUP0IvYbHzQGPvP20lx7YywK5hSuCoEOF8S9A7t+QYGG6J1Pw
-	Ktjqjih07hlWbNn15MjA==;
+	List-Owner; bh=z8z0W2P9VRNKu28uu6fFMcjzicuauklxTpJZdhuQGsg=; b=EaolmzbegEJPly
+	tNyhKMN7q1t8bcvMMa+gw1thoFuiNR/HWFkaafZfC/4i9rwImHhttU6uu1+eX46ehJ+pA16ek/bS3
+	DsxgNKPMsHLijRF/d1Kgqo++SGSgDCvAS28JrDdC2pZQGtqSjIRYxiUJJ1wfCYDcRiYWZ98+c3Jxb
+	kPJ7xK1Du0wnEhnph6RxoRCwyQHkvYoXgg4UAo1tATqS/366lnTbJFD6E25k8EhRQ4xtOFHh6oOwi
+	ZMk5QotXwKZpT7aanPVcZ+hia65S68XUVZRbAs7wA1khOl4EvYAOcn7An5mHX461BByE8pTFXkE3l
+	6/5mCgghRicKu0WTx6ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5TEu-00HEfZ-3B;
-	Tue, 21 Nov 2023 16:04:40 +0000
-Received: from mail-oo1-f46.google.com ([209.85.161.46])
+	id 1r5YJx-00079E-1b;
+	Tue, 21 Nov 2023 21:30:13 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5TEq-00HEeM-0o;
-	Tue, 21 Nov 2023 16:04:38 +0000
-Received: by mail-oo1-f46.google.com with SMTP id 006d021491bc7-587b1231dbeso3222251eaf.3;
-        Tue, 21 Nov 2023 08:04:33 -0800 (PST)
+	id 1r5YJu-00077W-1S;
+	Tue, 21 Nov 2023 21:30:11 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1cf59c07faeso19413425ad.2;
+        Tue, 21 Nov 2023 13:30:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700602207; x=1701207007; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LYftztaNvPp9AiycXxFsDD/pusJZO5VD4GKLxnNaenc=;
+        b=SiHxQzr/fKP8Ak8ggd+SNcwnAghaPKXjJUmwg4kghuhzocpVjd8gyIrw19d7dMt2dG
+         w7ibExZ+/X/U+iy7W5zGamoZzmBvK1PVvY+QFpaPWK3vqR1eFHExBM1VIiAuBHZeMWX1
+         0ZaZGAsrdj3xpxjU0ebUrZyj7OQyEsWL15Cz4O+T3/ka6UwxUl4OgX+DcShOpyXjXDg5
+         hhn7fX+OvAB1OiPdI5DcsuMSSP99RgOTjvXoCAVaYVkBV586l5IsA/QgCqe+fhXB7OGC
+         SJpn0w4ctp/0kgDbhaK0uJg1qvIHLy15jLziBAccVa+pPG3SWmDDFogKSQrig4S5td9D
+         a+ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700582672; x=1701187472;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1700602207; x=1701207007;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gHWSZ/KZJKkzc0j50L+hOmQiyYp8HOj7xmv0toivCHY=;
-        b=WTE6kbBd9QHq72kF1fXBDfcfxZqz0C7lVFOCGSMviUd0n1bPwr9I4nLfDT0B92kr11
-         YgI530+PEXLBBwDV33yxrDYVl8V8NJpru/NR8OO1QqnXtmBvXVYwBNWn3rQwIdietoUU
-         Z/h4XCs3KQXp7Jd3gjH4B9U7MDPp1CTXKnX8gV3g2WwwHrcNNAJ61raYbGkbeWN3Ebiq
-         TvR+I02QeSbOWboJzEhkePyjFyxqhSjq9xZW6ksqIZ6UykTbn0lcjVdX4+g2dOXSk5dD
-         85rObvCMEYmOZK4Xa+s1S7hi5ebE05ZrmaJ2S+qcXO55oh8kuz6kqooEqCWSm509Huna
-         Jy5g==
-X-Gm-Message-State: AOJu0YzBuGH2iLKe9vV4uUR5QXhRhNW4Rq43YilPb1RQCWhPZy+LP46d
-	nM1vC/3p3NG32O0g/HbmgbTTPmCXNIhBirke
-X-Google-Smtp-Source: AGHT+IF8DvVML4ww18gqgnlm2/fDoBd8MP62HzkkBXaekUGsRV+kQaRiaCz/nw3HanGkmILiO3Clxg==
-X-Received: by 2002:a05:6820:823:b0:582:1477:8362 with SMTP id bg35-20020a056820082300b0058214778362mr11580104oob.4.1700582672342;
-        Tue, 21 Nov 2023 08:04:32 -0800 (PST)
-Received: from mail-oi1-f177.google.com (mail-oi1-f177.google.com. [209.85.167.177])
-        by smtp.gmail.com with ESMTPSA id f138-20020a4a5890000000b00584017f57a9sm1901099oob.30.2023.11.21.08.04.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Nov 2023 08:04:26 -0800 (PST)
-Received: by mail-oi1-f177.google.com with SMTP id 5614622812f47-3b6d80daae8so3755750b6e.2;
-        Tue, 21 Nov 2023 08:04:25 -0800 (PST)
-X-Received: by 2002:a05:6808:1201:b0:3b2:ee79:c0fd with SMTP id
- a1-20020a056808120100b003b2ee79c0fdmr14276293oil.1.1700582665655; Tue, 21 Nov
- 2023 08:04:25 -0800 (PST)
+        bh=LYftztaNvPp9AiycXxFsDD/pusJZO5VD4GKLxnNaenc=;
+        b=fjfKTlz5X6Rx7Kzs9FGX7qQJmYkebPzasj6LmogHHYwfZDxZD1qtuGcFMRk55v75cm
+         bDiHz8ygDe0j8viQy7zwkKmELg/7KcioyEFGGLL9PAklLgLANSDJswA/GJVLpFyCb1zQ
+         i+dpNTUSlnV/UT4THTmfY5d4aqnFlEc7aTeIvIVgkOHWLnOckHD0J/n8qFAz4pu+su3l
+         u2a8E2gMLRtF+GnnQu12GzZ3ESUw9wExrDDY9UYEhkmOOrI/SyyE0Mx2ShkpZ5wQlRwD
+         rxh0UEo1oMmVSBQJDiwuCDWxJEz+KJicSpkg6CKsq31okqccCJZynB6AZXm9Ha+gE/Nt
+         Qr0Q==
+X-Gm-Message-State: AOJu0YwAg3uktrbipN0qNGF8PMYcr0jc66SxDXZkO4NA9HGAdntGg+2u
+	SK/04UZRPRwovDKS6DXiLa8=
+X-Google-Smtp-Source: AGHT+IG0k767577DEtl9DqETp58uM/MD4C4W6mI4eHWwOiQmbjfCmcbOeVYtVXSVgRTFvKchqFGWeQ==
+X-Received: by 2002:a17:902:ecc6:b0:1cf:6bb1:fcce with SMTP id a6-20020a170902ecc600b001cf6bb1fccemr437108plh.46.1700602207395;
+        Tue, 21 Nov 2023 13:30:07 -0800 (PST)
+Received: from localhost.localdomain (static-198-54-134-172.cust.tzulo.com. [198.54.134.172])
+        by smtp.gmail.com with ESMTPSA id w20-20020a170902d71400b001c726147a45sm8355317ply.190.2023.11.21.13.30.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Nov 2023 13:30:06 -0800 (PST)
+From: Sam Edwards <cfsworks@gmail.com>
+X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
+	Sven Rademakers <sven.rademakers@gmail.com>,
+	Lokesh Poovaragan <loki@gimmeapis.com>,
+	Sam Edwards <CFSworks@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Fix eMMC Data Strobe PD
+Date: Tue, 21 Nov 2023 13:29:41 -0800
+Message-ID: <20231121212941.53873-2-CFSworks@gmail.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231121212941.53873-1-CFSworks@gmail.com>
+References: <20231121212941.53873-1-CFSworks@gmail.com>
 MIME-Version: 1.0
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
- <19358871-009d-4498-9c13-90d5338b1e9f@amd.com> <76fa8f61-fe31-4040-a38d-cc05be3f4f17@linaro.org>
- <6c80a285-27fc-4d61-9eef-af4744a9decc@amd.com> <cc57dcf1-3c32-426e-920c-6f0741027797@linaro.org>
-In-Reply-To: <cc57dcf1-3c32-426e-920c-6f0741027797@linaro.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 21 Nov 2023 17:04:10 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdVGyXizPw9Rggj8fQeNdbx3udRcsHFhz_sqYZzjN1CnZQ@mail.gmail.com>
-Message-ID: <CAMuHMdVGyXizPw9Rggj8fQeNdbx3udRcsHFhz_sqYZzjN1CnZQ@mail.gmail.com>
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Michal Simek <michal.simek@amd.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, 
-	Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Konrad Dybcio <konrad.dybcio@linaro.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_080436_287590_8E568C7A 
-X-CRM114-Status: GOOD (  25.20  )
+X-CRM114-CacheID: sfid-20231121_133010_490305_CE9A95AD 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +94,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKT24gVHVlLCBOb3YgMjEsIDIwMjMgYXQgMTozNuKAr1BNIEtyenlzenRv
-ZiBLb3psb3dza2kKPGtyenlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4gd3JvdGU6Cj4gT24g
-MjEvMTEvMjAyMyAxMjo1NSwgTWljaGFsIFNpbWVrIHdyb3RlOgo+ID4+PiBkZXZpY2UtdHJlZSBz
-cGVjaWZpY2F0aW9uIHYwLjQuIENoYXB0ZXIgMi4yLjEvVGFibGUgMi4xIGlzIGRlc2NyaWJpbmcg
-bXVjaCBtb3JlCj4gPj4+IHZhbGlkIGNoYXJhY3RlcnMgZm9yIG5vZGUgbmFtZXMuCj4gPj4+IEl0
-IG1lYW5zIGFib3ZlIGRlc2NyaXB0aW9uIGlzIG5vdCBhY2N1cmF0ZSBvciBEVCBzcGVjIHNob3Vs
-ZCBiZSB1cGRhdGVkLgo+ID4+Cj4gPj4gU3BlYyBhbGxvd3Mgd2F5IHRvIG11Y2guIGR0YyBkb2Vz
-bid0Lgo+ID4+IE9uZSB0aGluZyBpcyB0aGUgc3BlYywgc2Vjb25kCj4gPj4gdGhpbmcgaXMgY29k
-aW5nIHN0eWxlLgo+ID4KPiA+ICBGcm9tIG15IHBvaW50IG9mIHZpZXcgc3BlYyBpcyBwcmltYXJ5
-IHNvdXJjZSBvZiB0cnV0aC4gSWYgc3BlYyBpcyBzYXlpbmcgbmFtZQo+ID4gY2FuIHVzZSB1cHBl
-ciBjYXNlIHRoZW4gSSBjYW4gdXNlIGl0LiBJZiB1cHBlciBjYXNlIGlzIG5vdAo+ID4gcmVjb21t
-ZW5kZWQvZGVwcmVjYXRlZCBiZWNhdXNlIG9mIHdoYXRldmVyIHJlYXNvbiBzcGVjIHNob3VsZCBi
-ZSB1cGRhdGVkIHRvCj4gPiByZWZsZWN0IGl0Lgo+ID4gSSBrbm93IHRoYXQgRFRDIGlzIHJlcG9y
-dGluZyBvdGhlciBpc3N1ZXMgYnV0IGlzbid0IGl0IHRoZSByaWdodCB3YXkgdG8gcmVmbGVjdAo+
-ID4gaXQgYmFjayB0byB0aGUgc3BlYz8KPgo+IFRoZW4gd2h5IGFyZW4ndCB5b3UgcHV0dGluZyBM
-aW51eCBDb2RpbmcgU3R5bGUgaW50byBDIHNwZWM/IEkgZG8gbm90IHNlZQo+IGFueSByZWxhdGlv
-biBiZXR3ZWVuIHNwZWNpZmljYXRpb24gb2YgdGhlIGxhbmd1YWdlIGFuZCB0aGUgY29kaW5nIHN0
-eWxlCj4gY2hvc2VuIGZvciBnaXZlbiBwcm9qZWN0Lgo+Cj4gWmVwaHlyIGNhbiBnbyB3aXRoIHVw
-cGVyLWNhc2UuIFdoeSBpdCBzaG91bGQgYmUgZGlzYWxsb3dlZCBieSB0aGUgc3BlYz8KCkkgdGhv
-dWdodCB0aGVyZSB3YXMgb25seSBPbmUgRFQgdG8gYmluZCB0aGVtIGFsbD8KSU1ITyBpdCB3b3Vs
-ZCBiZSBiZXR0ZXIgdG8gYWxpZ24gRFQgdXNhZ2Ugb2YgWmVwaHlyIGFuZCBMaW51eCAoYW5kCmFu
-eXRoaW5nIGVsc2UpLgoKCkdye29ldGplLGVldGluZ31zLAoKICAgICAgICAgICAgICAgICAgICAg
-ICAgR2VlcnQKCi0tCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBUaGVyZSdzIGxvdHMgb2YgTGludXgg
-YmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcKCkluIHBlcnNvbmFsIGNvbnZlcnNh
-dGlvbnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwgbXlzZWxmIGEgaGFja2VyLiBCdXQK
-d2hlbiBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1c3Qgc2F5ICJwcm9ncmFtbWVyIiBv
-ciBzb21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0t
-IExpbnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+JEDEC standard JESD84-B51 defines the eMMC Data Strobe line, which is
+currently used only in HS400 mode, as a device->host clock signal that
+"is used only in read operation. The Data Strobe is always High-Z (not
+driven by the device and pulled down by RDS) or Driven Low in write
+operation, except during CRC status response." RDS is a pull-down
+resistor specified in the 10K-100K ohm range. Thus per the standard, the
+Data Strobe is always pulled to ground (by the eMMC and/or RDS) during
+write operations.
+
+Evidently, the eMMC host controller in the RK3588 considers an active
+voltage on the eMMC-DS line during a write to be an error.
+
+The default (i.e. hardware reset, and Rockchip BSP) behavior for the
+RK3588 is to activate the eMMC-DS pin's builtin pull-down. As a result,
+many RK3588 board designers do not bother adding a dedicated RDS
+resistor, instead relying on the RK3588's internal bias. The current
+devicetree, however, disables this bias (`pcfg_pull_none`), breaking
+HS400-mode writes for boards without a dedicated RDS, but with an eMMC
+chip that chooses to High-Z (instead of drive-low) the eMMC-DS line.
+(The Turing RK1 is one such board.)
+
+Fix this by changing the bias in the (common) emmc_data_strobe case to
+reflect the expected hardware/BSP behavior. This is unlikely to cause
+regressions elsewhere: the pull-down is only relevant for High-Z eMMCs,
+and if this is redundant with a (dedicated) RDS resistor, the effective
+result is only a lower resistance to ground -- where the range of
+tolerance is quite high. If it does, it's better fixed in the specific
+devicetrees.
+
+Fixes: d85f8a5c798d5 ("arm64: dts: rockchip: Add rk3588 pinctrl data")
+Signed-off-by: Sam Edwards <CFSworks@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+index 63151d9d2377..30db12c4fc82 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+@@ -369,7 +369,7 @@ emmc_cmd: emmc-cmd {
+ 		emmc_data_strobe: emmc-data-strobe {
+ 			rockchip,pins =
+ 				/* emmc_data_strobe */
+-				<2 RK_PA2 1 &pcfg_pull_none>;
++				<2 RK_PA2 1 &pcfg_pull_down>;
+ 		};
+ 	};
+ 
+-- 
+2.41.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
