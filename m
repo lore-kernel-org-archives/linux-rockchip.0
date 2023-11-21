@@ -4,92 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E00D7C61D97
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Nov 2023 13:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A705C61D94
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Nov 2023 13:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DmkNoGuzbxMFqiG+hunRNOfD5kM/aMHw1aYuTeii5qE=; b=WYJPfJO9OGEQw8
-	7wKCRe2dDUJSWKQQ70s1m1dFWRpyeJkqSy1HcgFjfEVKvzhO5xGcnojeBEgTu9OquWM3rf+kBFhTQ
-	/gFLyMqGB76uykuqwKuBuTDf/wTwQcDRSTP+jH0BniNtYKwEhaqZVFLEwwSdxXAMBqCzYt2oze6MH
-	dzYGvP200HiHouRG8ZXW9qWNP35OC34u8Oj8zJ8m7SfRP6pfQtSMwis/SXtQt+P8fLOMRiG8/qtq+
-	+9aeu+5fpA1roLhuLIbFTVZX00BkNB79yGhDE67qc7beLnA0mZt/ADJenZ2Qs2ZWlJoMJ63kPf4Yl
-	bffqpPHUV/WT4DX/sZ2A==;
+	List-Owner; bh=w8SPKxqv/qBMA8PiydlrNYk45n7ZE4n/JNjYFixK9KI=; b=SNHFQMs6aKBdmc
+	iDPJIasZsJUwN0ICH/k8tYyHqgBtIOWdJBBex1Kv2ZdkaeKqUg87AOfdFaWXbXqXqF73K94NZkdwx
+	zi8sDWNEnPvPjmdyinOFtyLp39qwYR93v9yKA2iQo8Oogw9qAos0E9eeiF9ne1WA0EkcHHoWtkfXh
+	0zf1a+GKiupApmMDK6mcthzFIfC5JhRRrVgLZ3gh9h0FBi7U2hpEvtvFdfpG9CKng7K3l1JO1G8SO
+	EcDCJQwRHabFJCblzVvLvGXWYDYlMOx90mqv1iOT9wbp1TcbDzNBsp7DDtzROYWQSfFvSi8Ile0xE
+	d/FPyPKjHU0P+OMY8KVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5R9D-00Gtx5-0F;
-	Tue, 21 Nov 2023 13:50:39 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1r5RCR-00GwKg-2s;
+	Tue, 21 Nov 2023 13:53:59 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5R95-00GtuV-14;
-	Tue, 21 Nov 2023 13:50:35 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-507962561adso8126812e87.0;
-        Tue, 21 Nov 2023 05:50:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700574628; x=1701179428; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zsSZ4xmQ15S9yMS17JAsRW4h2Rkx74lE9OsNIPFxOkQ=;
-        b=UHB5OcqckxY/47aDPnsNsLQz3L9lukxBu/qKtmQLH8P2XRxGzZBnv2HJg9yVOXlJRI
-         krxjip/0Bp1pZ9kJO7OQ7HtwhTQ/mPAWkdAceWSFTnL5POdwzqCVQl0Clyzhbx+OJRgL
-         vITb2CkqK+vtBbstrDH25ZBxke9GOQoUGzpama7fKJRPQ+aemLtSlE7emF8eBRP4YS8e
-         aB4bY8lK3QvaEJX3Nk8uZXgwymRI7xccxlmVUlW3YJ2JX1xnEJAzqe1u9tYWxeNe4X9e
-         boi5qfSV7gGJqpFsmKLhMW+mFoZMvV6MfOyjYsbZ834+nVoD6DablU+zkBOGEdEZSHDe
-         s3WA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700574628; x=1701179428;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zsSZ4xmQ15S9yMS17JAsRW4h2Rkx74lE9OsNIPFxOkQ=;
-        b=bo6QtWIKePCv++pTA+VugRFxYH2fLToLfoShJrSDvQQhdgxvmkcHzFh783Pjpc6Rwm
-         7AAhRuspfQ9jGTDiMsZyrde8wRI97n7cTXtwD8TAVwtXyB9qf2lRGiiA6eO7ilghw66Z
-         8piRHcXA1eExG556DOQPqa9PlRyhthgw4HdmuhIW91h+SkWuYmwwFCo2D1bic/x4JmMa
-         nuxYPkaYhh7bchYuazUhpH0uXeV/lBf6aCdAzIJxsv9TOp5zh1UHSR7EmnX6MSbRM6Tl
-         MHtPeFpKqoResfI6KjY8BuKbeazWb9DtHj4n3gqG8yk04C0+LDb5c0akbHOrsGiAlmVE
-         actQ==
-X-Gm-Message-State: AOJu0Yxy/LIimVqy3wwQWcqAUOd7xxO3BLDEHaY1WwH7SftNKy09eJQy
-	eDXQLONPfHe9sy/W1YSJOKQ=
-X-Google-Smtp-Source: AGHT+IEkTjbfcTVtQDhRxyOicMVLyNrkuXAz4VFKYhfMhGGhtOFUGeva748aJGx+4+x/mNNiugtNJw==
-X-Received: by 2002:a05:6512:41e:b0:50a:6fc5:e95c with SMTP id u30-20020a056512041e00b0050a6fc5e95cmr6763271lfk.60.1700574628173;
-        Tue, 21 Nov 2023 05:50:28 -0800 (PST)
-Received: from [192.168.26.149] (031011218106.poznan.vectranet.pl. [31.11.218.106])
-        by smtp.googlemail.com with ESMTPSA id w26-20020a05651204da00b00509471d41besm1520588lfq.211.2023.11.21.05.50.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Nov 2023 05:50:27 -0800 (PST)
-Message-ID: <6b288a2e-d147-4bd3-b1d4-daf56295d939@gmail.com>
-Date: Tue, 21 Nov 2023 14:50:25 +0100
+	id 1r5RAg-00GuSL-1f
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Nov 2023 13:52:16 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1r5RAZ-0006D3-Pm; Tue, 21 Nov 2023 14:52:03 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1r5RAX-00Ab1M-CX; Tue, 21 Nov 2023 14:52:01 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1r5RAX-004xgB-3I; Tue, 21 Nov 2023 14:52:01 +0100
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@pengutronix.de
+Subject: [PATCH v3 080/108] pwm: rockchip: Make use of devm_pwmchip_alloc() function
+Date: Tue, 21 Nov 2023 14:50:22 +0100
+Message-ID: <20231121134901.208535-81-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.42.0.586.gbc5204569f7d.dirty
+In-Reply-To: <20231121134901.208535-1-u.kleine-koenig@pengutronix.de>
+References: <20231121134901.208535-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs: dt-bindings: add DTS Coding Style document
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Andrew Davis <afd@ti.com>, Arnd Bergmann <arnd@arndb.de>,
- Bjorn Andersson <andersson@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Michal Simek <michal.simek@amd.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
- Olof Johansson <olof@lixom.net>, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org
-References: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20231120084044.23838-1-krzysztof.kozlowski@linaro.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2775; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=p7C89rf0vbSpPBn3dJa5rjkaW4brA6YJX6706l1o+po=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlXLWk3snkBxLfhqkuD47vkpKvOUm0i6jRp6MO7 hHg89dZvPaJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZVy1pAAKCRCPgPtYfRL+ TqnqB/4qQJfDzXjETrbQIiy1ywk7gLVAzCtU/Yl60Hd4pmRRmxcM1Y7Sqr56b8Qe7vXLj05UUC8 Sqc74+ExoHhX/GLU7hUGvoydJ4nQlMbbFW8YIjpKeiIQMjMgjl0EKSABmkODc+gdXTZmd14OJOC UlLoLjStkzBSHaG/NnJ9WXcgmG+doJFFj2IbQawBo8PR7uGVVKgy+LkXAnzaG0uP3ZXxjoXf0em +OMHcEhI/7xPWCy4K9yO+bOUZpRkHI/aSe0FinSElf6YLx91FbNagGq2KeDSUkPp14JauC/aAP8 ns9wkRHZ1ubJKDsL7C0PFj5bx9DhFfViPvVQrxRnYebT9qrK
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231121_055031_370303_62DDAD5B 
-X-CRM114-Status: GOOD (  34.77  )
+X-CRM114-CacheID: sfid-20231121_055210_592667_58E16783 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,266 +74,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 20.11.2023 09:40, Krzysztof Kozlowski wrote:
-> Document preferred coding style for Devicetree sources (DTS and DTSI),
-> to bring consistency among all (sub)architectures and ease in reviews.
-
-I really like the overall idea. Thanks for coming up with that!
-
-Two questions inline.
-
-
-> Cc: Andrew Davis <afd@ti.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>
-> Cc: Bjorn Andersson <andersson@kernel.org>
-> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Konrad Dybcio <konrad.dybcio@linaro.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Michal Simek <michal.simek@amd.com>
-> Cc: Neil Armstrong <neil.armstrong@linaro.org>
-> Cc: Nishanth Menon <nm@ti.com>
-> Cc: Olof Johansson <olof@lixom.net>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Merging idea: Rob/DT bindings
-> 
-> Changes in v2
-> =============
-> 1. Hopefully incorporate entire feedback from comments:
-> a. Fix \ { => / { (Rob)
-> b. Name: dts-coding-style (Rob)
-> c. Exceptions for ordering nodes by name for Renesas and pinctrl (Geert,
->     Konrad)
-> d. Ordering properties by common/vendor (Rob)
-> e. Array entries in <> (Rob)
-> 
-> 2. New chapter: Organizing DTSI and DTS
-> 
-> 3. Several grammar fixes (missing articles)
-> 
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-samsung-soc@vger.kernel.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-arm-msm@vger.kernel.org
-> ---
->   .../devicetree/bindings/dts-coding-style.rst  | 163 ++++++++++++++++++
->   Documentation/devicetree/bindings/index.rst   |   1 +
->   2 files changed, 164 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/dts-coding-style.rst
-> 
-> diff --git a/Documentation/devicetree/bindings/dts-coding-style.rst b/Documentation/devicetree/bindings/dts-coding-style.rst
-> new file mode 100644
-> index 000000000000..cc7e3b4d1b92
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dts-coding-style.rst
-> @@ -0,0 +1,163 @@
-> +.. SPDX-License-Identifier: GPL-2.0
-> +.. _dtscodingstyle:
-> +
-> +=====================================
-> +Devicetree Sources (DTS) Coding Style
-> +=====================================
-> +
-> +When writing Devicetree Sources (DTS) please observe below guidelines.  They
-> +should be considered complementary to any rules expressed already in Devicetree
-> +Specification and dtc compiler (including W=1 and W=2 builds).
-> +
-> +Individual architectures and sub-architectures can add additional rules, making
-> +the style stricter.
-> +
-> +Naming and Valid Characters
-> +---------------------------
-> +
-> +1. Node and property names are allowed to use only:
-> +
-> +   * lowercase characters: [a-z]
-> +   * digits: [0-9]
-> +   * dash: -
-> +
-> +2. Labels are allowed to use only:
-> +
-> +   * lowercase characters: [a-z]
-> +   * digits: [0-9]
-> +   * underscore: _
-> +
-> +3. Unit addresses should use lowercase hex, without leading zeros (padding).
-> +
-> +4. Hex values in properties, e.g. "reg", should use lowercase hex.  The address
-> +   part can be padded with leading zeros.
-> +
-> +Example::
-> +
-> +	gpi_dma2: dma-controller@800000 {
-> +		compatible = "qcom,sm8550-gpi-dma", "qcom,sm6350-gpi-dma";
-> +		reg = <0x0 0x00800000 0x0 0x60000>;
-> +	}
-> +
-> +Order of Nodes
-> +--------------
-> +
-> +1. Nodes within any bus, thus using unit addresses for children, shall be
-> +   ordered incrementally by unit address.
-> +   Alternatively for some sub-architectures, nodes of the same type can be
-> +   grouped together (e.g. all I2C controllers one after another even if this
-> +   breaks unit address ordering).
-> +
-> +2. Nodes without unit addresses should be ordered alpha-numerically by the node
-> +   name.  For a few types of nodes, they can be ordered by the main property
-> +   (e.g. pin configuration states ordered by value of "pins" property).
-> +
-> +3. When extending nodes in the board DTS via &label, the entries should be
-> +   ordered alpha-numerically.
-
-Just an idea. Would that make (more) sense to make &label-like entries
-match order of nodes in included .dts(i)?
-
-Adventages:
-1. We keep unit address incremental order that is unlikely to change
-
-Disadventages:
-1. More difficult to verify
-
-
-> +Example::
-> +
-> +	// SoC DTSI
-> +
-> +	/ {
-> +		cpus {
-> +			// ...
-> +		};
-> +
-> +		psci {
-> +			// ...
-> +		};
-> +
-> +		soc@ {
-> +			dma: dma-controller@10000 {
-> +				// ...
-> +			};
-> +
-> +			clk: clock-controller@80000 {
-> +				// ...
-> +			};
-> +		};
-> +	};
-> +
-> +	// Board DTS
-> +
-> +	&clk {
-> +		// ...
-> +	};
-> +
-> +	&dma {
-> +		// ...
-> +	};
-> +
-> +
-> +Order of Properties in Device Node
-> +----------------------------------
-> +
-> +Following order of properties in device nodes is preferred:
-> +
-> +1. compatible
-> +2. reg
-> +3. ranges
-> +4. Standard/common properties (defined by common bindings, e.g. without
-> +   vendor-prefixes)
-> +5. Vendor-specific properties
-> +6. status (if applicable)
-> +7. Child nodes, where each node is preceded with a blank line
-> +
-> +The "status" property is by default "okay", thus it can be omitted.
-
-I think it would really help to include position of #address-cells and
-#size-cells here. In some files I saw them above "compatible" that seems
-unintuitive. Some prefer putting them at end which I think makes sense
-as they affect children nodes.
-
-Whatever you choose it'd be just nice to have things consistent.
-
-
-> +Example::
-> +
-> +	// SoC DTSI
-> +
-> +	usb_1_hsphy: phy@88e3000 {
-> +		compatible = "qcom,sm8550-snps-eusb2-phy";
-> +		reg = <0x0 0x088e3000 0x0 0x154>;
-> +		#phy-cells = <0>;
-> +		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
-> +		status = "disabled";
-> +	};
-> +
-> +	// Board DTS
-> +
-> +	&usb_1_hsphy {
-> +		clocks = <&tcsr TCSR_USB2_CLKREF_EN>;
-> +		clock-names = "ref";
-> +		status = "okay";
-> +	};
-> +
-> +
-> +Indentation
-> +-----------
-> +
-> +1. Use indentation according to :ref:`codingstyle`.
-> +2. For arrays spanning across lines, it is preferred to align the continued
-> +   entries with opening < from the first line.
-> +3. Each entry in arrays with multiple cells (e.g. "reg" with two IO addresses)
-> +   should be enclosed in <>.
-> +
-> +Example::
-> +
-> +	thermal-sensor@c271000 {
-> +		compatible = "qcom,sm8550-tsens", "qcom,tsens-v2";
-> +		reg = <0x0 0x0c271000 0x0 0x1000>,
-> +		      <0x0 0x0c222000 0x0 0x1000>;
-> +	};
-> +
-> +Organizing DTSI and DTS
-> +-----------------------
-> +
-> +The DTSI and DTS files should be organized in a way representing the common
-> +(and re-usable) parts of the hardware.  Typically this means organizing DTSI
-> +and DTS files into several files:
-> +
-> +1. DTSI with contents of the entire SoC (without nodes for hardware not present
-> +   on the SoC).
-> +2. If applicable: DTSI with common or re-usable parts of the hardware (e.g.
-> +   entire System-on-Module).
-> +3. DTS representing the board.
-> +
-> +Hardware components which are present on the board should be placed in the
-> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a common
-> +external reference SoC-input clock, which could be coded as a fixed-clock in
-> +the SoC DTSI with its frequency provided by each board DTS.
-> diff --git a/Documentation/devicetree/bindings/index.rst b/Documentation/devicetree/bindings/index.rst
-> index d9002a3a0abb..cc1fbdc05657 100644
-> --- a/Documentation/devicetree/bindings/index.rst
-> +++ b/Documentation/devicetree/bindings/index.rst
-> @@ -4,6 +4,7 @@
->      :maxdepth: 1
->   
->      ABI
-> +   dts-coding-style
->      writing-bindings
->      writing-schema
->      submitting-patches
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBwcmVwYXJlcyB0aGUgcHdtLXJvY2tjaGlwIGRyaXZlciB0byBmdXJ0aGVyIGNoYW5nZXMg
+b2YgdGhlIHB3bSBjb3JlCm91dGxpbmVkIGluIHRoZSBjb21taXQgaW50cm9kdWNpbmcgZGV2bV9w
+d21jaGlwX2FsbG9jKCkuIFRoZXJlIGlzIG5vCmludGVuZGVkIHNlbWFudGljYWwgY2hhbmdlIGFu
+ZCB0aGUgZHJpdmVyIHNob3VsZCBiZWhhdmUgYXMgYmVmb3JlLgoKU2lnbmVkLW9mZi1ieTogVXdl
+IEtsZWluZS1Lw7ZuaWcgPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2
+ZXJzL3B3bS9wd20tcm9ja2NoaXAuYyB8IDI0ICsrKysrKysrKysrKy0tLS0tLS0tLS0tLQogMSBm
+aWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jIGIvZHJpdmVycy9wd20vcHdtLXJvY2tjaGlw
+LmMKaW5kZXggYTdjNjQ3ZTM3ODM3Li41ZjhkZWM0YTJjNTYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
+cHdtL3B3bS1yb2NrY2hpcC5jCisrKyBiL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jCkBAIC0z
+MCw3ICszMCw2IEBACiAjZGVmaW5lIFBXTV9MUF9ESVNBQkxFCQkoMCA8PCA4KQogCiBzdHJ1Y3Qg
+cm9ja2NoaXBfcHdtX2NoaXAgewotCXN0cnVjdCBwd21fY2hpcCBjaGlwOwogCXN0cnVjdCBjbGsg
+KmNsazsKIAlzdHJ1Y3QgY2xrICpwY2xrOwogCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9wd21fZGF0
+YSAqZGF0YTsKQEAgLTU0LDcgKzUzLDcgQEAgc3RydWN0IHJvY2tjaGlwX3B3bV9kYXRhIHsKIAog
+c3RhdGljIGlubGluZSBzdHJ1Y3Qgcm9ja2NoaXBfcHdtX2NoaXAgKnRvX3JvY2tjaGlwX3B3bV9j
+aGlwKHN0cnVjdCBwd21fY2hpcCAqY2hpcCkKIHsKLQlyZXR1cm4gY29udGFpbmVyX29mKGNoaXAs
+IHN0cnVjdCByb2NrY2hpcF9wd21fY2hpcCwgY2hpcCk7CisJcmV0dXJuIHB3bWNoaXBfcHJpdihj
+aGlwKTsKIH0KIAogc3RhdGljIGludCByb2NrY2hpcF9wd21fZ2V0X3N0YXRlKHN0cnVjdCBwd21f
+Y2hpcCAqY2hpcCwKQEAgLTI5NiwxNCArMjk1LDE2IEBAIE1PRFVMRV9ERVZJQ0VfVEFCTEUob2Ys
+IHJvY2tjaGlwX3B3bV9kdF9pZHMpOwogCiBzdGF0aWMgaW50IHJvY2tjaGlwX3B3bV9wcm9iZShz
+dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogeworCXN0cnVjdCBwd21fY2hpcCAqY2hpcDsK
+IAlzdHJ1Y3Qgcm9ja2NoaXBfcHdtX2NoaXAgKnBjOwogCXUzMiBlbmFibGVfY29uZiwgY3RybDsK
+IAlib29sIGVuYWJsZWQ7CiAJaW50IHJldCwgY291bnQ7CiAKLQlwYyA9IGRldm1fa3phbGxvYygm
+cGRldi0+ZGV2LCBzaXplb2YoKnBjKSwgR0ZQX0tFUk5FTCk7Ci0JaWYgKCFwYykKLQkJcmV0dXJu
+IC1FTk9NRU07CisJY2hpcCA9IGRldm1fcHdtY2hpcF9hbGxvYygmcGRldi0+ZGV2LCAxLCBzaXpl
+b2YoKnBjKSk7CisJaWYgKElTX0VSUihjaGlwKSkKKwkJcmV0dXJuIFBUUl9FUlIoY2hpcCk7CisJ
+cGMgPSB0b19yb2NrY2hpcF9wd21fY2hpcChjaGlwKTsKIAogCXBjLT5iYXNlID0gZGV2bV9wbGF0
+Zm9ybV9pb3JlbWFwX3Jlc291cmNlKHBkZXYsIDApOwogCWlmIChJU19FUlIocGMtPmJhc2UpKQpA
+QCAtMzM3LDE4ICszMzgsMTYgQEAgc3RhdGljIGludCByb2NrY2hpcF9wd21fcHJvYmUoc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJZ290byBlcnJfY2xrOwogCX0KIAotCXBsYXRmb3Jt
+X3NldF9kcnZkYXRhKHBkZXYsIHBjKTsKKwlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBjaGlw
+KTsKIAogCXBjLT5kYXRhID0gZGV2aWNlX2dldF9tYXRjaF9kYXRhKCZwZGV2LT5kZXYpOwotCXBj
+LT5jaGlwLmRldiA9ICZwZGV2LT5kZXY7Ci0JcGMtPmNoaXAub3BzID0gJnJvY2tjaGlwX3B3bV9v
+cHM7Ci0JcGMtPmNoaXAubnB3bSA9IDE7CisJY2hpcC0+b3BzID0gJnJvY2tjaGlwX3B3bV9vcHM7
+CiAKIAllbmFibGVfY29uZiA9IHBjLT5kYXRhLT5lbmFibGVfY29uZjsKIAljdHJsID0gcmVhZGxf
+cmVsYXhlZChwYy0+YmFzZSArIHBjLT5kYXRhLT5yZWdzLmN0cmwpOwogCWVuYWJsZWQgPSAoY3Ry
+bCAmIGVuYWJsZV9jb25mKSA9PSBlbmFibGVfY29uZjsKIAotCXJldCA9IHB3bWNoaXBfYWRkKCZw
+Yy0+Y2hpcCk7CisJcmV0ID0gcHdtY2hpcF9hZGQoY2hpcCk7CiAJaWYgKHJldCA8IDApIHsKIAkJ
+ZGV2X2Vycl9wcm9iZSgmcGRldi0+ZGV2LCByZXQsICJwd21jaGlwX2FkZCgpIGZhaWxlZFxuIik7
+CiAJCWdvdG8gZXJyX3BjbGs7CkBAIC0zNzIsOSArMzcxLDEwIEBAIHN0YXRpYyBpbnQgcm9ja2No
+aXBfcHdtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAKIHN0YXRpYyB2b2lk
+IHJvY2tjaGlwX3B3bV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIHsKLQlz
+dHJ1Y3Qgcm9ja2NoaXBfcHdtX2NoaXAgKnBjID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7
+CisJc3RydWN0IHB3bV9jaGlwICpjaGlwID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7CisJ
+c3RydWN0IHJvY2tjaGlwX3B3bV9jaGlwICpwYyA9IHRvX3JvY2tjaGlwX3B3bV9jaGlwKGNoaXAp
+OwogCi0JcHdtY2hpcF9yZW1vdmUoJnBjLT5jaGlwKTsKKwlwd21jaGlwX3JlbW92ZShjaGlwKTsK
+IAogCWNsa191bnByZXBhcmUocGMtPnBjbGspOwogCWNsa191bnByZXBhcmUocGMtPmNsayk7Ci0t
+IAoyLjQyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
