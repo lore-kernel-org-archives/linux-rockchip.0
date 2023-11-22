@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6089C61D9C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10EEC61D97
 	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 12:23:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dPyjIyTslZxEgfHRMGn+bmSVDGvuE8L+JoU6sPy8Dxw=; b=LvhA/fK++TePOr
-	eBGKFxG1D0x69IYLNp6eX6P5kJ9qdrY5lVQyAk2VCZy9ey+uUkroMvKFQko+jO99f/4vhFkGmW/Bu
-	QMSLhWbGyMl61muN4ZCMVOOjndgKVE6lwhH7F+5eq4kNIWz+m3un2OWaq74lv8Vl9Mtj45YRghMu8
-	YjWng0Ei9Tc9V9kHvYw6xFFgZ8retwb1kMfEvuNeC6MNSXQorXOQFDOxhI2/1YQc9claBp99LdjaA
-	D0VJICe6OqOrm88Zhifqm5Okipa8hb80liXbP0XzqG9a6ih4fLZUWiuOomj2zXButR9IGya+ouI7b
-	UBgA7avrqE31G2F2IZ6Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0pdHCWjNwC/HcXQzWOxSbDW/ZIPSScLobrkxPXJJ2aQ=; b=HhXlj0W+PVwH8O
+	YA3pHSJOqb1oqp0941bsAkZEOxW9Zpa0VkRx4DJjTx+FvmS/36i003mlTPMUWaFDKkMp6i/2lgWPT
+	ULEZXCR1x+yZI2UsuZuBwVpBays0fD53t27bsjzSWs4Spkj5nI2nToeNcDRbuJFIJtqYgtnmmlQ8s
+	+5N6OP8VgiPh4RNHMkvZF4S9xr4jkuSU+Sux/EHJHrEEJcKvhRmvPJOWKm58HyW7uttJgkOHZ3tPe
+	RN4M17PG3jW3JWTdA8SAEp/SrbYmPZzSDBcM/f5sIpHipCHrV1+UY7dCPslIolFsXrlsKcVGa/juE
+	JErk6R+1O7YMiUONhLLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5mGI-001meh-2W;
-	Wed, 22 Nov 2023 12:23:22 +0000
+	id 1r5mGC-001mb6-2e;
+	Wed, 22 Nov 2023 12:23:16 +0000
 Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5mG9-001mZw-0a;
-	Wed, 22 Nov 2023 12:23:14 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.west.internal (Postfix) with ESMTP id E02DE3200B14;
-	Wed, 22 Nov 2023 07:23:11 -0500 (EST)
+	id 1r5mFx-001mUy-2z;
+	Wed, 22 Nov 2023 12:23:03 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+	by mailout.west.internal (Postfix) with ESMTP id AE20E3200A29;
+	Wed, 22 Nov 2023 07:22:51 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Wed, 22 Nov 2023 07:23:12 -0500
+  by compute7.internal (MEProxy); Wed, 22 Nov 2023 07:22:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm3; t=1700655791; x=
-	1700742191; bh=xDEc2S3rh9u3+sEg4TO4Fmhibog/ANoj1AKC9FhD9go=; b=D
-	xRaKprdObUAArGmRcBe4YJ+VoBn785Cm1/4j9TzubN/GYBg/hbdXjE0BGehCXmAV
-	Ec4YCa7sR3FVT8nBvymDICY2dQ4yz2ILOvr365eBqoGTzhCtXZNsOcefVsYR2+B/
-	ZmZxpjtcQjheSr7/oUpHt7IxGzzYdpXp/ZErs4+hiWM66WuoR9ADZmUSu9vjMa8c
-	h23O3KZ/w+4+6sFhrJlpSUlzmBLlQLl5UKQM2kMJV5+8qFi0EgFbCOs7ie6/9Qk0
-	PWo85jxmydVDIrVssNolygdbBT9TfDbs11sL127anslfynP5UoX4mwowy+/yR4Wf
-	9+bQ1NHn92quph6Dm5aUw==
+	:from:in-reply-to:message-id:mime-version:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1700655771; x=1700742171; bh=3N
+	sL+Rw070Fga47xp+yQ7KIQQBlv195a72ndPj4rq4M=; b=eYqrvmHV+C56AOeU2D
+	rae5pAnM7s7QReKqFmYVk+ab0f4eJAh3BCRbVFTc7v4nJGPwtppGlf0tdArjd1ZO
+	RpFrZAR7tlVR7qB4kDwFZF2EC2U/6N2IxB/Ecx1274D/JyMfoWUTYbMd3yDtCD/z
+	ErYANHMVPbmUTziCMXrV3iyu7vS+rtZIDOlDljhq/j8L8e5UW2VUPTbgsKgNVJuK
+	4JUsRnjKdFaKbHbEqKI212ToAtfCDzRYrvxxH7DSFFVgP8OeXrNq+7IL3KcZYcQw
+	NW33peNNTVNEfGgfuY0FG5bffZyes93C3MpRsfo16BZbNgAgDzAkeDWIty5DO2V4
+	tLYA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1700655791; x=
-	1700742191; bh=xDEc2S3rh9u3+sEg4TO4Fmhibog/ANoj1AKC9FhD9go=; b=h
-	UWixADNPUM7dhTU888WZu7fhMse9f4l69fguZ1u6Hk6v8IsT+hVHK7GpzLFXQJiM
-	OhDZLoMiWtdaayvHuVh14HRpl+bwk7WDZpKFLu9R4tCHrihEk0C2Uau32znv48Co
-	fV7hs+NUtkO/Z4IFzTRAxumJ0pxNWvdi1/3Cu4GttvCig9lQzTg9xpuCRY+3O7Hp
-	4vCiDfXuiIkhOsY4UbmZCNgz+W4RCAN9qbsRbmuCCyN2g1NorHsZtkd8+8thsVf+
-	PgbtyeE4/SZDCFM0+D72YF2WC4NzED5JnEuoeawouUJtohZc10pYvl0mVdb3t7Jx
-	x19eVTDlfKA2WgekyFjog==
-X-ME-Sender: <xms:r_JdZbUda7dozIFBENLyHJxZkDHOZmdu4-AOMLkazQ4TsiLFW6EU3w>
-    <xme:r_JdZTlgHvb5IGAaGXAswCHeUZmtcjNwLFTUHJPT835UonSTPFjkfzC413eAVhYzx
-    Pb3wErohQ>
-X-ME-Received: <xmr:r_JdZXaGTi-Q9mu9LbrseKiKSodDebL0zYVmfugWqxhG0YGjdrIeeu-_A7oPlZ1l7JhK4gsHiqrlrOo4BTtX0P3gBAO-7W3mTOg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudehuddgfeekucetufdoteggodetrfdotf
+	:in-reply-to:message-id:mime-version:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm1; t=1700655771; x=1700742171; bh=3NsL+Rw070Fga
+	47xp+yQ7KIQQBlv195a72ndPj4rq4M=; b=UPw+yUH6wQMfdNRXRIgPEXS0TJ+oc
+	eQQOrDH0NjxLbgZbidJyPeF2aRpXk8bmjIVYlI+65vdanrh/cVhOn3BsQHg414w0
+	xt9yGmMGYGzb4F/qx6cYtKx5hYcg9B9em/eOgoFneeUFPgNYw5dyl1+nT2RGqSrG
+	hgqi/uCEU4wHNI9WNFWmhsjVm8Z5S7EWcxAMYoFqcv4QNvz6xUNzK7aSpILTTTVr
+	DtQt28UTd43CZnNOYTtfELqFEVr6RrIkC3ljweCRaFsGV2oTWrnCxFYG2MPfdpyQ
+	TsON7/N+sNW+gsZSsM+/AcA1i6SgCvqfaIGSNmb0XP19ch4HKKZoMxTIQ==
+X-ME-Sender: <xms:mvJdZS7e9M9NsGY9SZOKvE4SRk1L02xeqd_4fc0dq0YxhMzQ1-vjTg>
+    <xme:mvJdZb4JPolK_ah1Zl5ozdZncZoGG9GF2gdgwq5BOSwp-IVxhUUuM72McP9fc2dzP
+    pFo4b3NAg>
+X-ME-Received: <xmr:mvJdZRcys-L1di2MsmmUwE1XRc6w_qLF9xfIYcjUrP7LW-_lzWtDJgiCSB0V7wJyh211iyJ5gf0_TjLTRHwkPcBWjt46u9s0Lfo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudehuddgfeelucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhimhcu
-    nfhunhhnuceothhimhesfhgvrghthhgvrhhtohhprdhorhhgqeenucggtffrrghtthgvrh
-    hnpeefffeuhfetgeeikeejvefgtdefteehgfdvhfetfeeuffeuhffhfeekgfekgeehieen
-    ucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmse
-    hfvggrthhhvghrthhophdrohhrgh
-X-ME-Proxy: <xmx:r_JdZWWw6D4g8RXVMktrFfxeOE-ifPXJYZrLTjpccZ9Z3NnNc_wfjg>
-    <xmx:r_JdZVmd7UbJsd57ag6U-1douPosbyoeg1RnSdNidJ47Nfe2fw8U4Q>
-    <xmx:r_JdZTeRfGuQFcZ7lHImUMthiXsS2yXJpUCoy5IPTpzkZzdHodQ4yQ>
-    <xmx:r_JdZbVqtKYoFyWZDoureQ7kvJiICbLCei8GBeKXYiJ-_nvgB8WCbA>
+    cujfgurhephffvvefufffkofgggfestdekredtredttdenucfhrhhomhepvfhimhcunfhu
+    nhhnuceothhimhesfhgvrghthhgvrhhtohhprdhorhhgqeenucggtffrrghtthgvrhhnpe
+    duhfdtveeujeejjeffieevgfdtudegfeffvedugfetteehudevteehtefgieeitdenucev
+    lhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmsehfvg
+    grthhhvghrthhophdrohhrgh
+X-ME-Proxy: <xmx:mvJdZfJpZOk9KGbvXSCRQeUC0YApHFEQWMIG1ucHb7f1bYVeOGahUw>
+    <xmx:mvJdZWJMTFqpGFcYlltYzMFFaH971Nz71Jza5OYNhc3rCjbwhlPW_A>
+    <xmx:mvJdZQwuW-aJdpcfBtdHPvtIEZNBzctigXpivm0LpZITEnZRFDgRyQ>
+    <xmx:m_JdZTXrD-qJ5dXWL-Xa9kFqhJCIoR6_IExfmo2JlwgMTLJroLV7jg>
 Feedback-ID: i1f8241ce:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 22 Nov 2023 07:23:06 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Wed, 22 Nov 2023 23:23:03 +1100
+ 22 Nov 2023 07:22:45 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Wed, 22 Nov 2023 23:22:41 +1100
 From: Tim Lunn <tim@feathertop.org>
 To: linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
@@ -84,18 +83,17 @@ Cc: Tim Lunn <tim@feathertop.org>,
 	linux-arm-kernel@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: [PATCH v2 2/9] ARM: dts: rockchip: rv1126: Serial aliases
-Date: Wed, 22 Nov 2023 23:22:25 +1100
-Message-Id: <20231122122232.952696-3-tim@feathertop.org>
+	Conor Dooley <conor+dt@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH v2 0/9] Add support for Sonoff iHost RV1126 Smart Home Gateway
+Date: Wed, 22 Nov 2023 23:22:23 +1100
+Message-Id: <20231122122232.952696-1-tim@feathertop.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231122122232.952696-1-tim@feathertop.org>
-References: <20231122122232.952696-1-tim@feathertop.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_042313_245400_26F2CDFA 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231122_042302_142661_42B1B6A3 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,32 +110,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add serial aliases for uart nodes so that serial devices are created
 
-Signed-off-by: Tim Lunn <tim@feathertop.org>
----
+Sonoff iHost is gateway device designed to provide a Smart Home Hub,
+most notably it includes builtin radios for Wifi, BT and Zigbee, which
+make it suitable SBC for use with many of the open home automation
+platforms. It is availabe in two versions, first is based on
+Rockchip RV1126 and 4GB DDR4 RAM. There is a second version based off
+the RV1109 dual core SoC and 2GB RAM.
 
-(no changes since v1)
+Features:
+- Rockchip RV1126 (or RV1109)
+- 4GB DDR4
+- 8GB eMMC
+- microSD slot
+- RMII Ethernet PHY
+- 1x USB 2.0 Host
+- 1x USB 2.0 OTG
+- Realtek RTL8723DS WiFi/BT
+- EFR32MG21 Silabs Zigbee radio
+- Speaker/Microphone
 
- arch/arm/boot/dts/rockchip/rv1126.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+This patch series adds the various device tree nodes required to
+support this device. It also adds the initial dts for this device,
+This work was largely based off the device trees for mainline
+Edgeble Neu2 and downstream Rockchip rv1126-evb-v13 configs.
+It has been adapted with relevant peripherals and GPIO pins for the
+iHost.
 
-diff --git a/arch/arm/boot/dts/rockchip/rv1126.dtsi b/arch/arm/boot/dts/rockchip/rv1126.dtsi
-index 9ccd1bad6229..6c5c928f06c7 100644
---- a/arch/arm/boot/dts/rockchip/rv1126.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rv1126.dtsi
-@@ -21,6 +21,11 @@ / {
- 
- 	aliases {
- 		i2c0 = &i2c0;
-+		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
-+		serial3 = &uart3;
-+		serial4 = &uart4;
- 	};
- 
- 	cpus {
+Implemented in this series are most of the core periperhals including
+Ethernet, Wifi, BT, Zigbee and RTC. Sound and USB will be added in a
+later series.
+
+Changes in v2:
+- i2c: clarify commit message
+- Address review comments from Heiko
+- Split out rv1109.dtsi to new patch
+- Collect Robh Ack for dt-bindings patch
+
+Tim Lunn (9):
+  ARM: dts: rockchip: rv1126: Add alternate UART pins
+  ARM: dts: rockchip: rv1126: Serial aliases
+  i2c: rk3x: Adjust offset for i2c2 on rv1126
+  ARM: dts: rockchip: rv1126: Add i2c2 nodes
+  ARM: dts: rockchip: rv1126: Split up rgmii1 pinctrl
+  ARM: dts: rockchip: rv1126: Add ethernet alias
+  ARM: dts: rockchip: Add rv1109 SoC
+  ARM: dts: Add Sonoff iHost Smart Home Hub
+  dt-bindings: arm: rockchip: Add Sonoff iHost
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +
+ arch/arm/boot/dts/rockchip/Makefile           |   2 +
+ .../boot/dts/rockchip/rv1109-sonoff-ihost.dts |  13 +
+ arch/arm/boot/dts/rockchip/rv1109.dtsi        |  23 +
+ .../dts/rockchip/rv1126-edgeble-neu2-io.dts   |   2 +-
+ .../arm/boot/dts/rockchip/rv1126-pinctrl.dtsi |  72 +++-
+ .../boot/dts/rockchip/rv1126-sonoff-ihost.dts |  13 +
+ .../dts/rockchip/rv1126-sonoff-ihost.dtsi     | 407 ++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1126.dtsi        |  21 +
+ drivers/i2c/busses/i2c-rk3x.c                 |   7 +-
+ 10 files changed, 551 insertions(+), 16 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+
 -- 
 2.40.1
 
