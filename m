@@ -4,84 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D98B2C61D99
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 15:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C74C61D97
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 19:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gIEOM1SWWmw2yRcvPInRjugYatZu2dnKst8Z19lhMWU=; b=bAin8dhPJ00y6X
-	ZIGR/oE0wQ2mNc8JYch3MfD/axvtXZYUZ4a6Pe8DQNb/b8elHnkUehlVnFA4YM2Y6wh58bxsRJk5M
-	1KqjqBPipr7brwbwsoz88rIe37okuut8HYR0LeQ8DEOR3z68puE4m0IroTQigzAgmYi0fQCEqN/1b
-	/U2kg6eckVoO1raLZ6izHQeinaiBh1KaazbEHkR3hgP/oPUqL8Zqo4z8r2rRfZ6odMNn52z93yHEA
-	rLJP57htXls+5jY1bsRRCUnxf8kSYEwmwVVMEtEL2pLuVoAIHprHW/cftK6jBZKDf3gRBQKpVeSv4
-	5e/UEZZDd6cJwe3GZ+Sg==;
+	List-Owner; bh=ovmgzmVvKwUt4CT/mcdE3jWUr/Uh4MT45JCNQHR0128=; b=zGaLXQQkm4cEFj
+	Dg0yeLB5L+F5MGhxhxwfAIB7rcxzkL2UxE7Kj0bKAnIszFjDeAoa7tjaFVHaop6lOWtA+hUQgl/sk
+	G2EK3kQ5teurdEsbTD3n7ReM/PZbOfXritmCvE2rpJNeppb9bBJO+ejVRKGO5dq+H40jvbxDkjMRm
+	26WKJE8RHGKbOH65GFJYOSNdGHV0QWUZaAd8o6iFId5lr+xXPiLhOUCMYHVxh5w8d4zIaAYEVh9IP
+	6NpCX3QiPCxTLxkkpRHlk3tqHQ/0EfxkOjHdRR0GPqTFYIE9ad/6JvtJZEcooo7fg136AmzgTa9+A
+	coE4Vi+Cubz4CpSrkI7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5pUt-002LPE-1i;
-	Wed, 22 Nov 2023 15:50:39 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1r5sZy-002ttf-0E;
+	Wed, 22 Nov 2023 19:08:06 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5pUm-002LLK-1H;
-	Wed, 22 Nov 2023 15:50:33 +0000
-Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C84F2641;
-	Wed, 22 Nov 2023 16:49:58 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1700668199;
-	bh=GWSvmigvhbqxxKwsO8s1wxYTODF1EHzXekCVLlbZGxI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hwzEUySDhdg7+rV4lAQv1SLbaMq4f5LP3XGp0v8sHnCVXjnUyl0SO7+KttWy3qd2V
-	 ONCgstHK1hey+zQcUHwkd7jQB80umbQ68bN4Z1oIfOBPCFBF3Fb1GgBwHFHmMTjTby
-	 0u85d2oWQM5WqA6W6rSwkwJa2jMvx9VPIjAT6N+I=
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Date: Wed, 22 Nov 2023 17:50:08 +0200
-Subject: [PATCH v2 2/2] media: rkisp1: Fix memory leaks in
- rkisp1_isp_unregister()
+	id 1r5sZv-002tsn-0y
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Nov 2023 19:08:04 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40b2a8c7ca9so602575e9.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 22 Nov 2023 11:08:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700680080; x=1701284880; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ERkw8rzZcH5VQ4+E8lzR+R0WUOy2UMqbI/rVKSdow1Q=;
+        b=aifKWNdo6ugnvrMzRIrzsbUrXoOn0Szs+A75TSHweLX7OSFHXddM5/jGojqs1sazxb
+         vTOtJH91Q7Kl+3FNtg6WlOOLy7YgEhuJgXBjKb9dqdalEUW96uYRDOdGGfJUZgLl3KMQ
+         OKG7kvu3A4pHNpatzE8JQQ3RZdQPaJOqt7KTjP3pguJsusa+Ch85EZL0jKwrctC/Jg+/
+         ikfyMkDwjsY9ovuCIQ+7GAUGwSc5yjZOqTVnjmxVoxr7a2/GxJcVAnqjh20rjJfbsl7A
+         Sb1TLj3z6nMIO5fs5r3rJK8aJgZlpRotqOugTXxb3dRCveEWci4akKkEBbyN7vVkK4pm
+         sQ1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700680080; x=1701284880;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ERkw8rzZcH5VQ4+E8lzR+R0WUOy2UMqbI/rVKSdow1Q=;
+        b=OgtM+jzkB7oVB3MYwGs4OobuA8ySqQNdZIdpaGxXjglnj/C7YhDckrkB67w1PSuD4W
+         xTQELZzgEsERoYx27ZwouFMZ2UZgNjt1h+2cToIYAi3wfhYs4EKTJBPBamKyqr18k1Vj
+         bVhrUcgJU51c1PncYBTgaQnewkvh2SaztzEL754IBFxkohcLw3Te8qBAS8yfCt6jOg4q
+         yGUOHA56o02/mVO3rrWK5GsT/uhu8LYMEcVnvdHQIoNbfkjIF1Q5cxViPDla5HdOFOud
+         nL+0/2GhR7H4PGKeC1L1TX1kLsfTcHLU2Nx8yZQ6QO53A2E3yhxlDzlqYPkY5D//yo1I
+         DJ3g==
+X-Gm-Message-State: AOJu0YzsjxwYVD2+lVm0B8/VvLVhrArq/bS0nCumkJHgZGV0fE8GpLrl
+	YTGWxwu/xVLtDa/hWBaMptWE5g==
+X-Google-Smtp-Source: AGHT+IEYlaAUBJTYI4hE847qYf7C5VGEpYaECsCw4fzirfKY27NLvf7xnvij66qHu9oiuERgWUnGlg==
+X-Received: by 2002:a05:600c:511a:b0:40b:2b86:c88a with SMTP id o26-20020a05600c511a00b0040b2b86c88amr1065729wms.2.1700680079847;
+        Wed, 22 Nov 2023 11:07:59 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.100])
+        by smtp.gmail.com with ESMTPSA id hg15-20020a05600c538f00b0040849ce7116sm320957wmb.43.2023.11.22.11.07.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Nov 2023 11:07:59 -0800 (PST)
+Message-ID: <e7693e9d-a46a-4dc2-9aee-36a2bbf74ade@linaro.org>
+Date: Wed, 22 Nov 2023 20:07:56 +0100
 MIME-Version: 1.0
-Message-Id: <20231122-rkisp-fixes-v2-2-78bfb63cdcf8@ideasonboard.com>
-References: <20231122-rkisp-fixes-v2-0-78bfb63cdcf8@ideasonboard.com>
-In-Reply-To: <20231122-rkisp-fixes-v2-0-78bfb63cdcf8@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Jacob Chen <jacob2.chen@rock-chips.com>, 
- Yichong Zhong <zyc@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, 
- Paul Elder <paul.elder@ideasonboard.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Eddie Cai <eddie.cai.linux@gmail.com>, 
- Allon Huang <allon.huang@rock-chips.com>, 
- Jeffy Chen <jeffy.chen@rock-chips.com>, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Tommaso Merciai <tomm.merciai@gmail.com>
-X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=940;
- i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
- bh=GWSvmigvhbqxxKwsO8s1wxYTODF1EHzXekCVLlbZGxI=;
- b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlXiNCOLg/ZNZkH5JNt4+lP3cqdiX2JgWJ0yFPo
- ckl7sgXzkyJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZV4jQgAKCRD6PaqMvJYe
- 9fWRD/9StEmHs8CUsFrm3u/UhmQD6eVyKBwAImdgigY4oTPn41xWao/S59SXpr3e88F9bXGxcMZ
- 6rnSXhmN7BDKXLKnWttYjjKhkYpLSaxegHh55Z4xtfr3u0wXzdWcC3NEH6HS94P48DjKHuHzzBU
- Gr04pONVTSW+ns9cdVhJynYL2qzL4V2BFb7hQYKS1rAazEYhCVoUaC1EfEs0xm6wt5nk2HQGlP0
- tIpbqw+/2Jld19VUWran31Omv5uB+Z0RjRLRodX4vu0505piKnTt78v4Kly6xUU73WgIlh7YCp+
- 9rknI0dcamE4ZCdv+dlCjENspgLNgfP1/09L2urGYQTcd6ggOttdO2Qg0KBfzcDTbrBVp64qQMn
- qFF6wovam1VktcLAFtH9crxOKWo+ZP8OU53xXj9IqpVQDO0mKZ5kYhKBzjU6t6tzXu2Z2d5uWgk
- TuSwTAfKKFRgjBn23rCbc3xzX53yKDURqxeNH6ZbTmA54ulm0vAlKwKb8uXgk1axttXuXaNMkoe
- Qp0vaz6pijRptgcMSEjMpeKY0xgjMsz8cCWG377otml93uq9BKemmP0IAZMNLb5d4KBs40Vz725
- y81xyOlm4aUtZfRvZvRNkx8Y22HHL2YhtupQjAel9hxFF1W3kcuGso4wuqky0GaAz9Qqf0zHZEj
- 5JAOoWZlF2PmAFw==
-X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
- fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 08/12] dt-bindings: display: vop2: Add rk3588 support
+Content-Language: en-US
+To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
+Cc: hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com,
+ s.hauer@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>
+References: <20231122125316.3454268-1-andyshrk@163.com>
+ <20231122125518.3454796-1-andyshrk@163.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231122125518.3454796-1-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_075032_579312_83AFFABD 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231122_110803_347131_30AAB31B 
+X-CRM114-Status: GOOD (  18.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,31 +142,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing call to v4l2_subdev_cleanup() to fix memory leak.
+On 22/11/2023 13:55, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> The vop2 on rk3588 is similar to which on rk356x
+> but with 4 video ports and need to reference
+> more grf modules.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - fix errors when running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> 
+>  .../display/rockchip/rockchip-vop2.yaml       | 27 +++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> index b60b90472d42..24148d9b3b14 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> @@ -20,6 +20,7 @@ properties:
+>      enum:
+>        - rockchip,rk3566-vop
+>        - rockchip,rk3568-vop
+> +      - rockchip,rk3588-vop
+>  
+>    reg:
+>      items:
+> @@ -42,26 +43,47 @@ properties:
+>        frame start (VSYNC), line flag and other status interrupts.
+>  
+>    clocks:
+> +    minItems: 3
+>      items:
+>        - description: Clock for ddr buffer transfer.
+>        - description: Clock for the ahb bus to R/W the phy regs.
+>        - description: Pixel clock for video port 0.
+>        - description: Pixel clock for video port 1.
+>        - description: Pixel clock for video port 2.
+> +      - description: Pixel clock for video port 4.
+> +      - description: Peripheral clock for vop on rk3588.
+>  
+>    clock-names:
+> +    minItems: 3
 
-Fixes: 2cce0a369dbd ("media: rkisp1: isp: Use V4L2 subdev active state")
-Reviewed-by: Tommaso Merciai <tomm.merciai@gmail.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 1 +
- 1 file changed, 1 insertion(+)
+You relax requirements for all existing variants here which is not
+explained in commit msg. I assume this was not intentional, so you need
+to re-constrain them in allOf:if:then.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 88ca8b2283b7..45d1ab96fc6e 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -933,6 +933,7 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
- 		return;
- 
- 	v4l2_device_unregister_subdev(&isp->sd);
-+	v4l2_subdev_cleanup(&isp->sd);
- 	media_entity_cleanup(&isp->sd.entity);
- }
- 
+See for example:
+https://elixir.bootlin.com/linux/v5.19-rc6/source/Documentation/devicetree/bindings/clock/samsung,exynos7-clock.yaml#L57
+for some ideas.
 
--- 
-2.34.1
+>      items:
+>        - const: aclk
+>        - const: hclk
+>        - const: dclk_vp0
+>        - const: dclk_vp1
+>        - const: dclk_vp2
+> +      - const: dclk_vp3
+> +      - const: pclk_vop
+>  
+>    rockchip,grf:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description:
+>        Phandle to GRF regs used for misc control
+>  
+> +  rockchip,vo-grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to VO GRF regs used for misc control, required for rk3588
+
+Drop last sentence, instead add it to required in allOf:if:then.
+
+Is this valid for other variants? If not, should be disallowed in
+allOf:if:then: for them.
+
+> +
+> +  rockchip,vop-grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to VOP GRF regs used for misc control, required for rk3588
+> +
+> +  rockchip,pmu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to PMU regs used for misc control, required for rk3588
+
+For all these three: what is "misc control"? Way too vague. Everything
+is a misc and everything can be control. You must be here specific and
+much more descriptive.
+
+> +
+>    ports:
+>      $ref: /schemas/graph.yaml#/properties/ports
+>  
+> @@ -81,6 +103,11 @@ properties:
+>          description:
+>            Output endpoint of VP2
+>  
+> +      port@3:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          Output endpoint of VP3
+
+Valid for other variants?
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
