@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC35C61D99
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 15:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D98B2C61D99
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 15:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=inEqEo/HyJVbRwLPtxIK114p6PjUzcR88xAt+OOZ1iE=; b=BjHeTARNgyZsXR
-	AEG/9s2+tqHG8mqAY6/paoRAcQQQczGagvdh50w0NigjSloJzjYqLkaeCj5JJvLmreSS7+nCU1O5c
-	SLpyIF3osasRycTM8DyVnzSizd7qUHbCkwzYXhJSzn2kBAFC+gZcarBWZpixT7hhAl8g88nCW+wMh
-	TKXcHlMiaH3GERF34bSLfAU/iJo5VBfhclGhOYmUcYH3TPtqSXY7eSpZEpwP9UKHbEEzMPUA9Zjkl
-	t40aGzQXlk57BgeKmpatgiSNs+qIbENUCbC3wO3Osn2oVnFwhO7wXzI3bMtA3pz2Q5HFAPqTomVnC
-	B5JBfGmAoIhhXlw/PZOA==;
+	List-Owner; bh=gIEOM1SWWmw2yRcvPInRjugYatZu2dnKst8Z19lhMWU=; b=bAin8dhPJ00y6X
+	ZIGR/oE0wQ2mNc8JYch3MfD/axvtXZYUZ4a6Pe8DQNb/b8elHnkUehlVnFA4YM2Y6wh58bxsRJk5M
+	1KqjqBPipr7brwbwsoz88rIe37okuut8HYR0LeQ8DEOR3z68puE4m0IroTQigzAgmYi0fQCEqN/1b
+	/U2kg6eckVoO1raLZ6izHQeinaiBh1KaazbEHkR3hgP/oPUqL8Zqo4z8r2rRfZ6odMNn52z93yHEA
+	rLJP57htXls+5jY1bsRRCUnxf8kSYEwmwVVMEtEL2pLuVoAIHprHW/cftK6jBZKDf3gRBQKpVeSv4
+	5e/UEZZDd6cJwe3GZ+Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5pUs-002LOT-1u;
-	Wed, 22 Nov 2023 15:50:38 +0000
+	id 1r5pUt-002LPE-1i;
+	Wed, 22 Nov 2023 15:50:39 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5pUl-002LKp-0R;
-	Wed, 22 Nov 2023 15:50:32 +0000
+	id 1r5pUm-002LLK-1H;
+	Wed, 22 Nov 2023 15:50:33 +0000
 Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9789B29A;
-	Wed, 22 Nov 2023 16:49:57 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C84F2641;
+	Wed, 22 Nov 2023 16:49:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1700668198;
-	bh=u1nisTy6lw7HXt2aKNr+FUe0wDrA0s3HuQr4p3ZdaGM=;
+	s=mail; t=1700668199;
+	bh=GWSvmigvhbqxxKwsO8s1wxYTODF1EHzXekCVLlbZGxI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aRXmXmYTEkWFcC1ogtFroAntPMVyK3vncwqShJhK0UOwVNtgmc60ohECc7/RfsO4R
-	 CrFManNjmqDjxTvLHdqDvnbT3zblBujpCD6FKX8kxDzFaPNUgPS/ydsnFYaIrk9T7C
-	 Xs9FkajPO0Buh4SdjgOvTcVs7oyCZG3y0tTqINt0=
+	b=hwzEUySDhdg7+rV4lAQv1SLbaMq4f5LP3XGp0v8sHnCVXjnUyl0SO7+KttWy3qd2V
+	 ONCgstHK1hey+zQcUHwkd7jQB80umbQ68bN4Z1oIfOBPCFBF3Fb1GgBwHFHmMTjTby
+	 0u85d2oWQM5WqA6W6rSwkwJa2jMvx9VPIjAT6N+I=
 From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Date: Wed, 22 Nov 2023 17:50:07 +0200
-Subject: [PATCH v2 1/2] media: rkisp1: Fix media device memory leak
+Date: Wed, 22 Nov 2023 17:50:08 +0200
+Subject: [PATCH v2 2/2] media: rkisp1: Fix memory leaks in
+ rkisp1_isp_unregister()
 MIME-Version: 1.0
-Message-Id: <20231122-rkisp-fixes-v2-1-78bfb63cdcf8@ideasonboard.com>
+Message-Id: <20231122-rkisp-fixes-v2-2-78bfb63cdcf8@ideasonboard.com>
 References: <20231122-rkisp-fixes-v2-0-78bfb63cdcf8@ideasonboard.com>
 In-Reply-To: <20231122-rkisp-fixes-v2-0-78bfb63cdcf8@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
@@ -60,26 +61,27 @@ Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
  Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
  Tommaso Merciai <tomm.merciai@gmail.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1636;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=940;
  i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
- bh=u1nisTy6lw7HXt2aKNr+FUe0wDrA0s3HuQr4p3ZdaGM=;
- b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlXiNCG8tyCSxKN3kyVGSnoK8GAQjKKgxHRo/sI
- Np+AchtdlqJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZV4jQgAKCRD6PaqMvJYe
- 9dqFEACSftGXAoVevIBDnb3q0rTlPZny91bXjdXDxnV9fVeZSi4YjSd4M269UlGDO5i+ixpsa6Y
- 4GK/dI8d/oc5ocdLH+XM/6QqXmK2EhkZ/cJZ+teRHe+Mmc1p33f/mPgO2Fl1j5vksBF1y75bQzh
- wbxEnPdVF04szYRoz3E2UZ3i5DPdb1YXHPryCgcjpx6U8bJvyGnskYtfUIY+Je8f12h8O2urV6i
- LCMphQMCO8kNGuLOdLpLjMwJIcjgMwdqhYGN46G5d137Xb6PFXbSREDoRPh8ewH5V1xoJENa1JI
- gUc1bZevj56dvoN2HG9yBs5x6GXuK1pnVL44ByKTeJKnY3R8oadV98xQjTBR8rGdbXVz/b5QqLj
- tTq8bocqAMc7Dno+DMwRuL8tZi4mvQFMSo2ApyfbyRbjAAPrWOGMeUQIzyT4RJZNRpK/aXWKVIv
- rXWwCeij9caoOFmeAQbGMv3jSTuWMI2MChbdzJ0VsScBpNS6eENKIWay1rbxpMIB1SbWrh14/kR
- 6SoT7Kd5+8tc18lATCWrVV6ckXFMdDUEne30zG4PthOOU+f0YfBarw2cMbsXdd7kjllYogFoJ00
- 3qLinFquurDAno7UTC2phhfx+CSXYfMSl991Im27Bz/WB8Q3cGNDsjJyIZn3tICxDUB0ukEbmmU
- Sq5b+kzGzk7/lfg==
+ bh=GWSvmigvhbqxxKwsO8s1wxYTODF1EHzXekCVLlbZGxI=;
+ b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlXiNCOLg/ZNZkH5JNt4+lP3cqdiX2JgWJ0yFPo
+ ckl7sgXzkyJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZV4jQgAKCRD6PaqMvJYe
+ 9fWRD/9StEmHs8CUsFrm3u/UhmQD6eVyKBwAImdgigY4oTPn41xWao/S59SXpr3e88F9bXGxcMZ
+ 6rnSXhmN7BDKXLKnWttYjjKhkYpLSaxegHh55Z4xtfr3u0wXzdWcC3NEH6HS94P48DjKHuHzzBU
+ Gr04pONVTSW+ns9cdVhJynYL2qzL4V2BFb7hQYKS1rAazEYhCVoUaC1EfEs0xm6wt5nk2HQGlP0
+ tIpbqw+/2Jld19VUWran31Omv5uB+Z0RjRLRodX4vu0505piKnTt78v4Kly6xUU73WgIlh7YCp+
+ 9rknI0dcamE4ZCdv+dlCjENspgLNgfP1/09L2urGYQTcd6ggOttdO2Qg0KBfzcDTbrBVp64qQMn
+ qFF6wovam1VktcLAFtH9crxOKWo+ZP8OU53xXj9IqpVQDO0mKZ5kYhKBzjU6t6tzXu2Z2d5uWgk
+ TuSwTAfKKFRgjBn23rCbc3xzX53yKDURqxeNH6ZbTmA54ulm0vAlKwKb8uXgk1axttXuXaNMkoe
+ Qp0vaz6pijRptgcMSEjMpeKY0xgjMsz8cCWG377otml93uq9BKemmP0IAZMNLb5d4KBs40Vz725
+ y81xyOlm4aUtZfRvZvRNkx8Y22HHL2YhtupQjAel9hxFF1W3kcuGso4wuqky0GaAz9Qqf0zHZEj
+ 5JAOoWZlF2PmAFw==
 X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
  fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_075031_315593_616FA9DD 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20231122_075032_579312_83AFFABD 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,45 +98,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing calls to media_device_cleanup() to fix memory leak.
+Add missing call to v4l2_subdev_cleanup() to fix memory leak.
 
-Fixes: d65dd85281fb ("media: staging: rkisp1: add Rockchip ISP1 base driver")
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Fixes: 2cce0a369dbd ("media: rkisp1: isp: Use V4L2 subdev active state")
 Reviewed-by: Tommaso Merciai <tomm.merciai@gmail.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index c41abd2833f1..894d5afaff4e 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -582,7 +582,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 88ca8b2283b7..45d1ab96fc6e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -933,6 +933,7 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+ 		return;
  
- 	ret = v4l2_device_register(rkisp1->dev, &rkisp1->v4l2_dev);
- 	if (ret)
--		goto err_pm_runtime_disable;
-+		goto err_media_dev_cleanup;
- 
- 	ret = media_device_register(&rkisp1->media_dev);
- 	if (ret) {
-@@ -617,6 +617,8 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	media_device_unregister(&rkisp1->media_dev);
- err_unreg_v4l2_dev:
- 	v4l2_device_unregister(&rkisp1->v4l2_dev);
-+err_media_dev_cleanup:
-+	media_device_cleanup(&rkisp1->media_dev);
- err_pm_runtime_disable:
- 	pm_runtime_disable(&pdev->dev);
- 	return ret;
-@@ -637,6 +639,8 @@ static void rkisp1_remove(struct platform_device *pdev)
- 	media_device_unregister(&rkisp1->media_dev);
- 	v4l2_device_unregister(&rkisp1->v4l2_dev);
- 
-+	media_device_cleanup(&rkisp1->media_dev);
-+
- 	pm_runtime_disable(&pdev->dev);
+ 	v4l2_device_unregister_subdev(&isp->sd);
++	v4l2_subdev_cleanup(&isp->sd);
+ 	media_entity_cleanup(&isp->sd.entity);
  }
  
 
