@@ -4,92 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68D93C61D97
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 15:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BED6C61D97
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 15:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nXsiRMIyjVqEuaJjiB5rJxapMduTKpXdg6eVAWdNwI4=; b=N8neegqdZNFR9d
-	qFyiH5A2G6ESzrlwj4n9bNws+LEOa7kkdTVjirwsDsZyOapNttFpP8UjlHsR6pV/oABe1lZ+gmhuN
-	JRQIJEK8sXyb8gQixfXZUO/6dFS+4cjcEWvuzTahXnpXrka9S1rTXo7urdxuAdVvQxtr/7YMPz/RP
-	aLP/zUfTU7mIYkEf4JtlNnjs3cxoX1FGQvGvckfZKl3gn+yWMGdVd5sOup3+bc6gdtqRvjWVEQtkh
-	VsYFfQZPdr2TPaSiX/Ewu+XiOPdquZF0BgdzrJYXt1ze8Un9ASojLY8EPiu4Z9XSpCU1iyNek/kSJ
-	ZBBc5B0//JKSSdmwMIaw==;
+	List-Owner; bh=KPeTM6gsnZamfvc1fP93I/FuZOwrgzY3OouBr1WXqws=; b=HtgnBeZlwV1lL8
+	mecoos/YmeQGDlUVsXdGtABUrhaBdAIniZl9LWsS8f4sHqqBQeZj4ZUvwqOkL7wJLecdflIEwPq72
+	gw0UXONIebyH4qgeW9ge2eO5bJFPiymBguXwBs8nBurmkXYO6CJFAf5B+rAo0YNDROwoD2Mi6tVWs
+	h+4sJ+tkcOXaRhyvz1jke3v/K1KowVBNlCEXX59nL/AmG/OGMtC8NZb1df7RL/pJmRQWzh4oleo5V
+	IKX9GjdiFrtJ93IBhzEdy0FvXE5B+y8eteS299zFj/kr4QBDVWmUUinNtKApmxrex9wx9wqqGeUzr
+	tCIKaqwJW3wgwq5Gl7fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5ox2-002Ddq-1B;
-	Wed, 22 Nov 2023 15:15:40 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1r5p4a-002EwZ-0e;
+	Wed, 22 Nov 2023 15:23:28 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5owz-002Dae-0n;
-	Wed, 22 Nov 2023 15:15:39 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-544455a4b56so9522956a12.1;
-        Wed, 22 Nov 2023 07:15:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1700666124; x=1701270924; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=SyHVCCe1TwoPClBnsSLHf4EvNUXQ/W3rjCvpOp2oD5E=;
-        b=EkzQMQ/wuHTWV2u6JK7m2kc9lWUIw0gXSdgnEsFW968WwDagWZ/Lee1huY5WFUXXZe
-         KGMP8Z+5gOhrLp9bE+GQc38k+oa5Mgcc+NrskzXhzRaw0Rn1LWhTwHtQKqoDqxcGT7q6
-         xhuBmeEq6KQ9vWN8MnKhP7AqxOSiGplEAIf5cSTdVMAGkJd6+jsybvj3tE4WobwYIjXE
-         O/cG/D1+k0QjWlIXZt0cINyWxIhl/W9K8y9XRtYtymnH6H1C8l1KiKV6cFs8XvGsFf7r
-         e8jwevJGxDlo5QezGNlyXP4Ov4EOgign5uZwzvmlzE9WDVBmEJOKeOzRzHhvRlw8KDKC
-         FLMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700666124; x=1701270924;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SyHVCCe1TwoPClBnsSLHf4EvNUXQ/W3rjCvpOp2oD5E=;
-        b=BGPmVHXdCrAHmYdIaFnV8oh3qOwi5GUMo4rMV5YGSsb2UCr7KXYOU+9jin/UeeXNbP
-         CzP24Z45i2sEPG0qeGyzVozVEvnr56syYGm+aFP6LVEHIl6mRlKKRm5gSGoScCC8N3Sd
-         5l/tGyBtU+I5i3aSjniCO/s9Sq0AnXy01f1AwepynhEdF5wsEu33VPts8cywkeY6gP8y
-         nyHtJv2I7e55zV77yWvNwEPi5vLgcJ4a6nFlIoFGVPIWcq22g3Sny0NhTTV2kIIgY0Jy
-         k7MLvrmfF8oqNRVC1r0CqbXK7bYgjrq6YcfoxyWg6kh+MH6TGIzvnxm3XHy1WFDV/BsM
-         EOPg==
-X-Gm-Message-State: AOJu0YxpxIsiSFhSzGcOxe7GLdxeumU/nZ8bI/gR2ghxp+54HsFUOuvt
-	pnUmIl2+EQ/Wo8r2nc/xlZI=
-X-Google-Smtp-Source: AGHT+IHrw/Tts09VHKQ1692wNMYNCsWYYSRyyPml9Dx39zEbtepEmn480zIyu1XaqdkFM2CIrp5zqg==
-X-Received: by 2002:a05:6402:100e:b0:54a:97c4:b03c with SMTP id c14-20020a056402100e00b0054a97c4b03cmr83170edu.2.1700666124240;
-        Wed, 22 Nov 2023 07:15:24 -0800 (PST)
-Received: from tom-HP-ZBook-Fury-15-G7-Mobile-Workstation (net-2-39-142-131.cust.vodafonedsl.it. [2.39.142.131])
-        by smtp.gmail.com with ESMTPSA id r5-20020a056402018500b0053dec545c8fsm6191706edv.3.2023.11.22.07.15.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Nov 2023 07:15:23 -0800 (PST)
-Date: Wed, 22 Nov 2023 16:15:21 +0100
-From: Tommaso Merciai <tomm.merciai@gmail.com>
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jacob Chen <jacob2.chen@rock-chips.com>,
-	Yichong Zhong <zyc@rock-chips.com>,
-	Shunqian Zheng <zhengsq@rock-chips.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Eddie Cai <eddie.cai.linux@gmail.com>,
-	Allon Huang <allon.huang@rock-chips.com>,
-	Jeffy Chen <jeffy.chen@rock-chips.com>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] media: rkisp1: Fix memory leaks in
- rkisp1_isp_unregister()
-Message-ID: <ZV4bCdo6vUvaeUE4@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
-References: <20231122-rkisp-fixes-v1-0-1958af371e39@ideasonboard.com>
- <20231122-rkisp-fixes-v1-2-1958af371e39@ideasonboard.com>
+	id 1r5p4W-002EvQ-1s
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Nov 2023 15:23:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 4A01CB82818;
+	Wed, 22 Nov 2023 15:23:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E07ADC433C8;
+	Wed, 22 Nov 2023 15:23:18 +0000 (UTC)
+Message-ID: <82f81f63-3dfa-42fe-8744-63f36d73bb77@xs4all.nl>
+Date: Wed, 22 Nov 2023 16:23:17 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231122-rkisp-fixes-v1-2-1958af371e39@ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/9] media: rkvdec: Add HEVC backend
+Content-Language: en-US, nl
+To: Jonas Karlman <jonas@kwiboo.se>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Christopher Obbard <chris.obbard@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20231105233630.3927502-1-jonas@kwiboo.se>
+ <39d991e9-6afd-4207-ad09-e342a6c02485@xs4all.nl>
+ <c35c91be-a931-47e8-b5e8-5a4a83c841da@kwiboo.se>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <c35c91be-a931-47e8-b5e8-5a4a83c841da@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231122_071537_281781_7B553A15 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20231122_072324_885174_D7376326 
+X-CRM114-Status: GOOD (  31.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,39 +72,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomi,
+On 09/11/2023 18:44, Jonas Karlman wrote:
+> Hi Hans,
+> 
+> On 2023-11-07 14:49, Hans Verkuil wrote:
+>> Hi Jonas,
+>>
+>> On 06/11/2023 00:36, Jonas Karlman wrote:
+>>> This series add a HEVC backend to the Rockchip Video Decoder driver.
+>>>
+>>> A version of this HEVC backend has been in use by the LibreELEC distro
+>>> for the past 3+ years [1]. It was initially created based on a copy of
+>>> the H264 backend, unstable HEVC uAPI controls and a cabac table + scaling
+>>> matrix functions shamelessly copied 1:1 from the Rockchip mpp library.
+>>>
+>>> It has since then been extended to use the stable HEVC uAPI controls and
+>>> improved opon e.g. to include support for rk3288 and fix decoding issues
+>>> by Alex Bee and Nicolas Dufresne.
+>>>
+>>> The version submitted in this series is based on the code currently used
+>>> by the LibreELEC distro, excluding hard/soft reset, and with cabac table
+>>> and scaling matrix functions picked from Sebastian Fricke prior series
+>>> to add a HEVC backend [2].
+>>>
+>>> Big thanks to Alex Bee, Nicolas Dufresne and Sebastian Fricke for making
+>>> this series possible!
+>>
+>> I ran this series through smatch and found these two issues:
+>>
+>> drivers/staging/media/rkvdec/rkvdec-hevc.c: In function 'transpose_and_flatten_matrices':
+>> drivers/staging/media/rkvdec/rkvdec-hevc.c:429:83: warning: variable 'new_value' set but not used [-Wunused-but-set-variable]
+>>   429 |         int i, j, row, x_offset, matrix_offset, rot_index, y_offset, matrix_size, new_value;
+>>       |                                                                                   ^~~~~~~~~
+>> drivers/staging/media/rkvdec/rkvdec-hevc.c:756 rkvdec_hevc_run_preamble() error: we previously assumed 'ctrl' could be null (see line 755)
+> 
+> Thanks, will fix in v2.
+> 
+>>
+>> Also, this series drops the HEVC part from the TODO file, but
+>> I wonder if the last remaining item is still valid:
+>>
+>> * Evaluate introducing a helper to consolidate duplicated
+>>   code in rkvdec_request_validate and cedrus_request_validate.
+>>   The helper needs to the driver private data associated with
+>>   the videobuf2 queue, from a media request.
+>>
+>> It doesn't look like there is much duplicate code at all. It is certainly not
+>> something that prevents this driver from moving out of staging.
+> 
+> I agree, if this is still valid it is not something that should prevent
+> this driver from moving out of staging.
+> 
+> There is however one remaining feature/issue that is not listed in TODO.
+> 
+> In certain situations the hw block may need a reset after there has been
+> a decoding error, especially after a hevc decoding error. Decoding can
+> typically be re-started with successful result after a short pm
+> autosuspend timeout.
+> 
+> We do have a soft/hard reset implementation in LibreELEC-distro,
+> excluded it from this series because reset is typically not needed, and
+> I think the reset code need some rework to be upstream ready.
+> 
+> Would missing hard reset support be a reason for keeping this driver
+> in staging?
 
-On Wed, Nov 22, 2023 at 04:42:23PM +0200, Tomi Valkeinen wrote:
-> Add missing call to v4l2_subdev_cleanup() to fix memory leak.
+I think Nicolas would be better placed to comment on that. If it is not
+considered a blocker, shouldn't there at least be a patch adding comments
+at the relevant place describing this issue? That way it is at least
+documented as a known issue.
+
+Regards,
+
+	Hans
+
 > 
-> Fixes: 2cce0a369dbd ("media: rkisp1: isp: Use V4L2 subdev active state")
-> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 1 +
->  1 file changed, 1 insertion(+)
+> Regards,
+> Jonas
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 88ca8b2283b7..45d1ab96fc6e 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -933,6 +933,7 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
->  		return;
->  
->  	v4l2_device_unregister_subdev(&isp->sd);
-> +	v4l2_subdev_cleanup(&isp->sd);
->  	media_entity_cleanup(&isp->sd.entity);
->  }
->  
-> 
-> -- 
-> 2.34.1
-> 
+>>
+>> Regards,
+>>
+>> 	Hans
+>>
+>>>
+>>> Patch 1 add the new HEVC backend.
+>>> Patch 2-3 add variants support to the driver.
+>>> Patch 4 add support for a rk3288 variant.
+>>> Patch 5 add a rk3328 variant to work around hw quirks.
+>>> Patch 6-7 add device tree node for rk3288.
+>>> Patch 8-9 extend vdec node reg size to include cache/perf registers.
+>>>
+>>> This was tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
+>>>
+>>>   v4l2-compliance 1.24.1, 64 bits, 64-bit time_t
+>>>   ...
+>>>   Total for rkvdec device /dev/video1: 46, Succeeded: 46, Failed: 0, Warnings: 0
+>>>
+>>>   Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-V4L2-request
+>>>   ...
+>>>   Ran 135/147 tests successfully
+>>>
+>>>   Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-V4L2-request
+>>>   ...
+>>>   Ran 9/9 tests successfully
+>>>
+>>> And on a TinkerBoard (RK3288):
+>>>
+>>>   v4l2-compliance 1.24.1, 32 bits, 32-bit time_t
+>>>   ...
+>>>   Total for rkvdec device /dev/video3: 47, Succeeded: 47, Failed: 0, Warnings: 0
+>>>
+>>>   Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-V4L2-request
+>>>   ...
+>>>   Ran 137/147 tests successfully
+>>>
+>>>   Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-V4L2-request
+>>>   ...
+>>>   Ran 9/9 tests successfully
+>>>
+>>> This series depend on the following series:
+>>> - media: rkvdec: Add H.264 High 10 and 4:2:2 profile support [3]
+>>>
+>>> To fully runtime test this series you need above series and ffmpeg
+>>> patches from [4], this series and its depends is also available at [5].
+>>>
+>>> Full summary of fluster run can be found at [6].
+>>>
+>>> [1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/projects/Rockchip/patches/linux/default/linux-2000-v4l2-wip-rkvdec-hevc.patch
+>>> [2] https://lore.kernel.org/linux-media/20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com/
+>>> [3] https://lore.kernel.org/linux-media/20231105165521.3592037-1-jonas@kwiboo.se/
+>>> [4] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-n6.1-dev/
+>>> [5] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-hevc-v1/
+>>> [6] https://gist.github.com/Kwiboo/4c0ed87774dede44ce6838451a1ec93d
+>>>
+>>> Regards,
+>>> Jonas
+>>>
+>>> Alex Bee (5):
+>>>   media: rkvdec: Add variants support
+>>>   media: rkvdec: Add RK3288 variant
+>>>   media: rkvdec: Disable QoS for HEVC and VP9 on RK3328
+>>>   ARM: dts: rockchip: Add vdec node for RK3288
+>>>   arm64: dts: rockchip: Expand reg size of vdec node for RK3399
+>>>
+>>> Jonas Karlman (4):
+>>>   media: rkvdec: Add HEVC backend
+>>>   media: rkvdec: Implement capability filtering
+>>>   media: dt-bindings: rockchip,vdec: Add RK3288 compatible
+>>>   arm64: dts: rockchip: Expand reg size of vdec node for RK3328
+>>>
+>>>  .../bindings/media/rockchip,vdec.yaml         |    4 +-
+>>>  arch/arm/boot/dts/rockchip/rk3288.dtsi        |   17 +-
+>>>  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |    2 +-
+>>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |    6 +-
+>>>  drivers/staging/media/rkvdec/Makefile         |    2 +-
+>>>  drivers/staging/media/rkvdec/TODO             |    7 -
+>>>  .../staging/media/rkvdec/rkvdec-hevc-data.c   | 1848 +++++++++++++++++
+>>>  drivers/staging/media/rkvdec/rkvdec-hevc.c    |  823 ++++++++
+>>>  drivers/staging/media/rkvdec/rkvdec-regs.h    |    3 +
+>>>  drivers/staging/media/rkvdec/rkvdec-vp9.c     |   10 +
+>>>  drivers/staging/media/rkvdec/rkvdec.c         |  180 +-
+>>>  drivers/staging/media/rkvdec/rkvdec.h         |   15 +
+>>>  12 files changed, 2886 insertions(+), 31 deletions(-)
+>>>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc-data.c
+>>>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc.c
+>>>
+>>
 > 
 
-Reviewed-by: Tommaso Merciai <tomm.merciai@gmail.com>
-
-Thanks & Regards,
-Tommaso
 
 _______________________________________________
 Linux-rockchip mailing list
