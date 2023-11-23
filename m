@@ -4,144 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4814BC5AD4C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Nov 2023 19:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3915AC61D85
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Nov 2023 21:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=tawvdFIYv8Hapd3x9wrIq2rF1XXirj3eYnf/OEt9FaE=; b=LtqlOlXwhU9bEIFT6p7Iw2tCVQ
-	M8Rxe5sbeq3uStzjUFubEfgS3kMoVADfu40tqd2OI4iPXp7cA934z0uC5aAd59EjHizLAYfN4pnpA
-	wosjILs72RUvvAetJJPTEPlFgMkTzwpwTgaiCSEvVXjUsgB5O+aEWRME4Fq+MHX4lO4sxG0EKfPPr
-	ebHMJOeNmuSPc3oq7ehJ12p9ISlo7sjVuluRTqfkr6b8Bsh2LY5b0ZaVairHSlYExCsMJpt6CwoOO
-	Gu8WQcC2VN7wKHPx8LTwTamPnwQHRYKXHdW44rAJjr5nWsBaDsDQrb1hY9kcQUHiYc4w3gGYhNuWC
-	LFvqK5UQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tAzjIayu7lmrwcbZbls+vKd51WZwd7vGMpoMQKbZh4M=; b=Flgu5m4BomFbbDSNLBoaVSf9YP
+	Wmr/PJ+UI476KRz4/XC9jkQmG6kifmeSA7A8ZAYUH0stcmNAN06DXVAJLWMXDxNacw4pgOdZv6Lap
+	KG16gLNHlptnLRyRqXhh9bAO7IplBUBi8V/sl/8Sy2R0asAsQLb5tJV6e+anYbwjWEPqs0s7vHgZ2
+	rhHCBH7udckR6yoseJD378igA85hB5CX/IF2iiUhAPNPSpZYVdFNSJw1vEYRvooeCIiqVoTZzaNxv
+	QRFgb3/+IlB1B/Yss4aIzsL9QsL33fmLl49bvaLBbc66j9vgVJYd/1YvT4Rav5IKIMcKWJ8WOZ+9F
+	79Y170mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FUy-005dHA-32;
-	Thu, 23 Nov 2023 19:36:28 +0000
-Received: from mail-am6eur05on20630.outbound.protection.outlook.com ([2a01:111:f400:7e1b::630] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1r6HKY-005juH-0a;
+	Thu, 23 Nov 2023 21:33:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6FUv-005dDp-26;
-	Thu, 23 Nov 2023 19:36:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M1Xhs1/1X3PFM1gBgvI6g8pYVenlzkvfUDYhxr+/b9tivgH0hMXiC80heSzNC9a07ztLNwDhgvxZK/ih8e0bt42LczUclqPAAf6p1sXjptleIo/8wreCiIDR7thDGedI2jlfNrbcWpZokqhvP05FLxi88a0At03J2qGSImGEdJBKKu04MJEsTaEWW6eHaDE/4aftvcpmNvijt9VejPKovSu3Lm4U/z8SSfEuLnPnLYBLAa5DfRoNxiZeIB3zSCEXtEh5Q0N2YphSCo1TRy9oupuxzuU7J/g0bzF2mW9jzfnMJCIxnRvJZXorIxwQxAw3WkDEwxUMRXLLfBhWq1Q67g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iUFemMy0jq1PZnvmiVYxjR8QqLsKUIrdgo/AIXFP1MU=;
- b=G0LiGdevnHeqVQx4vtjYuWE6OpqojIPGn2ul7eKyGkid9MhibRL5JkVYyfadyB8EGKYJWoRyc7C9WVt5/K4AnwV3G+vojKcit4a1od2T5Nzv3C1lxDmpb7yWuI/IFVhzy2Ypsb04Q5tBu7L0raSFmHcjeE+HQKOx5l1LJ+YGe4ueRNOcB05q+/o2AJlTbnAa0h0jvrV8U4wi4FG31GdQ7yhPlkmc6ijyrFWOUsx6odtOX+Qt+/yhJZ19t/IrpkUQyKTCtfGP6FrJvKUgyAK/qRLXJ4IaG4LIl0DzN/DodzpSaEApOCZF/9pDngpRugtg6Tt7vXqUhWYEuN4+s8E7EA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iUFemMy0jq1PZnvmiVYxjR8QqLsKUIrdgo/AIXFP1MU=;
- b=2TNfr99hFN9YhNBhtEjbigyiNr4eWBkmZx/owVRBAZR0kArFVJ2ujrzu8VvkGnMAAkOZtaKR1RAYOi79Kpq4VdxgyAPRGZ7IGg1Sl6zRWLpjwP1NOE1TyUYeLK6N6X3fwbUy1LN1dNv5wFf8ZrmspzPrXhBZUM7nVDl7yBUGSQ0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from VE1PR08MB4974.eurprd08.prod.outlook.com (2603:10a6:803:111::15)
- by GV2PR08MB9422.eurprd08.prod.outlook.com (2603:10a6:150:dd::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.18; Thu, 23 Nov
- 2023 19:36:16 +0000
-Received: from VE1PR08MB4974.eurprd08.prod.outlook.com
- ([fe80::6b40:1e6f:7c94:71dc]) by VE1PR08MB4974.eurprd08.prod.outlook.com
- ([fe80::6b40:1e6f:7c94:71dc%4]) with mapi id 15.20.7025.020; Thu, 23 Nov 2023
- 19:36:16 +0000
-Message-ID: <73080fc7-d655-48f2-bd59-a5e171d12e19@wolfvision.net>
-Date: Thu, 23 Nov 2023 20:36:12 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC WIP 1/2] dt-bindings: net: rockchip-dwmac: add
- rockchip,phy-wol property
-Content-Language: en-US
-To: Conor Dooley <conor@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- David Wu <david.wu@rock-chips.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-References: <20231123-dwmac-rk_phy_wol-v1-0-bf4e718081b9@wolfvision.net>
- <20231123-dwmac-rk_phy_wol-v1-1-bf4e718081b9@wolfvision.net>
- <20231123-operable-frustrate-6c71ab0dafbf@spud>
-From: Javier Carrasco <javier.carrasco@wolfvision.net>
-In-Reply-To: <20231123-operable-frustrate-6c71ab0dafbf@spud>
-X-ClientProxiedBy: FR3P281CA0095.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a1::7) To VE1PR08MB4974.eurprd08.prod.outlook.com
- (2603:10a6:803:111::15)
+	id 1r6HKT-005jtf-2f;
+	Thu, 23 Nov 2023 21:33:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A2BB36172F;
+	Thu, 23 Nov 2023 21:33:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BADBCC433C7;
+	Thu, 23 Nov 2023 21:33:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1700775224;
+	bh=nmgRXoCC/6bVdvvn+DsQpOtnPLlwkOcJBQD/gcvPILU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QX5gnL6JXj8vwBd2hjrgTWmiQNvpaIU3ub8DZJit9Gh0ljsPaGJPx49AWqTyKl4EA
+	 MxLsTmaI0J08GfBbNmZjOMk5kO/qqeDp4cbPt3UIxlPrCxNX9Ybbo8D/5zN6YIT/c5
+	 Hnj6bfqt1z0klQSfKgjf1u2TKv2FBCx5URjphkB83BntI5fFoPmHmoZCLyARPTWK6O
+	 tphuxc8VElCdY2DqFnyhtojL941RLPd+x7YqE3ObFsb0vpG92ljXG0z8CMOuNRgrow
+	 rasw3VtSw505b5SaknZkPzLjb2F1Etfd4VuPA9L3fLwdIadEeib6E5YIE9YSMXlWfX
+	 3WbVK/7XEz8bA==
+Date: Thu, 23 Nov 2023 22:33:41 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+Subject: Re: [PATCH v5 00/20] remove I2C_CLASS_DDC support
+Message-ID: <ZV/FNWfw0jdXSglr@ninjato>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	intel-gfx@lists.freedesktop.org, linux-i2c@vger.kernel.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	linux-fbdev@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jocelyn Falempe <jfalempe@redhat.com>, linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>
+References: <20231123094040.592-1-hkallweit1@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: VE1PR08MB4974:EE_|GV2PR08MB9422:EE_
-X-MS-Office365-Filtering-Correlation-Id: 56da3080-315b-403d-300f-08dbec5b7589
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 4Snpto0yvacscpiPNwGdZ3uRjOzwJ/UEuywh6z3UcbfvzIA780ZQJPeDEYzEcqXCiaVdYd3EeoCGx240P6N5JAn6+jcf/KDVdu2CgGai7kYDU/A42TGP/2IsABAH7uBz3MQ2C06n667GlbmHEPiclPoG1gUqd/8NfBN1Mq+qXkfykcz2nO7eCWblH3VbEU/8e8IAb5EnJBl9YMjNlEvyDwDOfgC5PumSE6ponexX9Zbk/8ywpxQoRlVDeaCaREyalF9/O3PmSY7UfcQixM6rrwb3GOW8Q9WVdqTBmsnidqGJaOB3TFX7xSh6BvcxmQxK3FXpzBKrZ8FPK/9AXszGJjtsOdHP4vKMpsFgJe4qKiYBvgfvhuHhHmwEjAKQZqE8pEWoonwyvbtzi+qDbSG4YKeE4O44jp42Yod8XROYe/naJowHzXG3EZdoej4z7LXRzJMUwtfoVro7ACwz+bl+C93JuRjZxLfVkxozABbnXON32fLGqktIYRIjWZjcZeXz/I3HTm8aYAoImviiP8ki9PZK3/ja5p9CFJouTwfvCjwRONJjnrBa1GMBw2BbmR7WUv9lkgFJsj9E/snGvvwvqTMwWpcXh94BE5ELHtaCmpnlmS1o1bpQtuDvswa64ToHftx7958NRnbcN413D6uZFg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR08MB4974.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(346002)(366004)(376002)(136003)(396003)(39850400004)(230922051799003)(451199024)(1800799012)(64100799003)(186009)(38100700002)(478600001)(5660300002)(7416002)(31696002)(36756003)(86362001)(6486002)(2906002)(6666004)(4326008)(8676002)(2616005)(6512007)(8936002)(6506007)(53546011)(31686004)(316002)(6916009)(66476007)(66556008)(66946007)(54906003)(83380400001)(44832011)(41300700001)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MmFPemxrRzYycFNwS0pETDQ0a1dJOGxEY1Q2b3FHeGRPNURSR0d4RXJ0VUNJ?=
- =?utf-8?B?U05IbnMwYWk4Mkduc0xJYXB5TjBKaDVYN3VMa29DZ0oyS0owbzY5MkFNNDBC?=
- =?utf-8?B?bDZtMVdyYXYrM2dtNHJ5TkFGUUtjM2ZDbVFIVGYxS1Q4OVVoTnlDdG8xQnFF?=
- =?utf-8?B?VkRubWYyRXNGQkhRNkhiUU8vYjZCbjlmOXVoWm0wOUpzQnl5aUFQajRGek9x?=
- =?utf-8?B?WlFpa2g2RU96Y1dXeDA4SHB1ayt1ZnM5YUFEcEluQUFFOHVrdS9JMm5qWkxp?=
- =?utf-8?B?VDU5dnJ5dFlicUNpQzQ1T2UzUGYzVnBseWFuSysrTWlaSkRIdlMzdXRJWkVK?=
- =?utf-8?B?NWZjODg5SHNZVW1aOWt1U0RFQ3pBR3JpME5yUzhLMkpzOHF4TzEzdXlhRmov?=
- =?utf-8?B?eGtXc3dIRnRObXFPNkpCVmNNRWFJQzNpL1VhMDVIemEyQzVURENxTExLMkxF?=
- =?utf-8?B?UmZCelAxcDJWM0pYOFR0bGdOdUtwMEFMa01ZQ0pKNTFqaFc3RUR6ekU5Nlg4?=
- =?utf-8?B?NzJ2cVhHa2IzWmRqcmJKZ1l3cC9tcUZZSFo0eGhDUmFmTW5nc2NQN2MwSDRj?=
- =?utf-8?B?dVhaOC80ZjJ1d3JmbVczYVZuZGliR3YzQ29VUVpFYjVYdEl5aTNRYnVNZUVF?=
- =?utf-8?B?UHBMNHpLaGNEZGtXZ01DYzU5Ymt1V3czT2o2a0U3MThQM3EzVXFCbWRMTEtF?=
- =?utf-8?B?YzAydHErWUJwSlgwcWNsdXdDMno0UmFBbEVMVDBlYU03cHQxNlhodWgrbnRy?=
- =?utf-8?B?bmtEV2lRTlo0K3YweHE2cnd2TkNXZThhRkpja08vRzEwQVpVWlpOcDk3REt1?=
- =?utf-8?B?SWhBSEFXcDN0cWVrQjVwTDBERDZENXlGSGpZdmhacVdZTjhuaXhuRnNLcTE1?=
- =?utf-8?B?cHNTTmUxT2ZrSkRyaTdVZ25kSWZMNS9ONTNLNTREWE1YZXppTHhnaktCK0Yr?=
- =?utf-8?B?MWpHT2tBY0tiRHkrVFNYVVI1VDQvZFRYR25wdTFhay9wT1hWOEZaQVlYK21G?=
- =?utf-8?B?eDY5dkN2Ui9jZWdBcXVZdzgyU3JVa2VmWmRPTU1Hd0I2Vk8vVGk3ZS9jNGZL?=
- =?utf-8?B?SVM5Wnd4cytnOURsTEROQkNqamozaVNWckJmT0ttUFBETG1oUStGTTFOd1Jt?=
- =?utf-8?B?SEVhc2VmRDlEcEZqaVlVZVNjRGNmYWpXSlJjWE50WDFic05oUGVYQXpQMVJT?=
- =?utf-8?B?RzRqdDN2VERLZmtueGZFKzhHL0R1L2NRZUhDNitMekdlVGZ2c0FTNmlGVG9n?=
- =?utf-8?B?NHdJaFdaVVVyd3lDNjdKSnRGcVRCeDBscWpoYk50a05qckp0ckRhakVnbWI5?=
- =?utf-8?B?RXc2OG4vc01qVU9wS0dRTlJKb204SHVoTFJWYlpZdFdyM1F2M1dkcXpvZEk1?=
- =?utf-8?B?eE5jeEpjYTNseE05emdmTVQrZDkyQXhSdEl6M3VkYmZhUVJIU1NUb3NsekFU?=
- =?utf-8?B?YytNelZsV1d1YkhXY0szY3kvUG5UaVVXeFBWTzBnYTlsMFVaZjFCeG1BRHp4?=
- =?utf-8?B?a1V0ZGNsZ1E3cFBnUGpxR0pqQ0lvSTBpRlRpSENVVmdlWXBZRVNuN0dzNEFJ?=
- =?utf-8?B?TFF2ZnBjUnFqclJSZXhtRUIwcmwyODlkQTBsZllxVFFUVE1Mb1FjK0p4ZFJk?=
- =?utf-8?B?Q1JYZnZpZzN6bjl6eW5Ua3lwS1k3a0g3R2gyTkFYV2xXaS90MEpKTDN2STVH?=
- =?utf-8?B?TmF0QXJJRUp4KytVQ2RhUTZJUkVzbmx2TCtxa0lVUWtpdXhQamg5dUU3U1JB?=
- =?utf-8?B?cFJDdVk4YlRVcG1rRExveXBneXVESlYwU2ZjQzBJcXIwSGJlenpSK2sySzhF?=
- =?utf-8?B?bTVVZHRzSEdwNDBJVmJOMmdCL2NRbzdMTGlxSkFPcHE2QTU4QWdwZkNLbVE3?=
- =?utf-8?B?NHcyVWc3dGhHTUc4ZTBFbHUraU5MSUt6K0VLME1oemhQMEVZWDdYQXlsKzVB?=
- =?utf-8?B?TXF3L0trcjVWanNlbk9wRFhBS0xZODlkT0FBY2ozQ29aTk5keXFwV0ErRnlY?=
- =?utf-8?B?QVdSOTBueDI1akRCcFRLZzFWVk9tbTBCQThjNCtvWG9tcFAvWkliQi9tVmtw?=
- =?utf-8?B?ZHlyelBwY2M1WU8wYmtNNjdRNGM2aHJyWkJwSDBZcjhmTjA3eUwrY3ZVZWl0?=
- =?utf-8?B?MjE4d3U4Ny94TTB4MXZScC9BcGlXTmZCQnY3dlFNYUcxQlljbDBmNG1lY3Nq?=
- =?utf-8?B?N3hxNm9GT3ZtNVF1TTJkc3dMQjlmdGZ3T1RwdHhRMEtsZzZzMk5yQUpBc3Vx?=
- =?utf-8?Q?IJQyPP2GFMNhBKzmEEIS/x83Af4w1+Z1jqn67SI+RA=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 56da3080-315b-403d-300f-08dbec5b7589
-X-MS-Exchange-CrossTenant-AuthSource: VE1PR08MB4974.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Nov 2023 19:36:16.2540
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: UyJBuijMjf2h01cpPM3Arf6PHbf9pdf0GsQXfo8Qa73ViZCO6JEUnQOJFZEtoa5toSNTUV/ZhGf5RUJIawwBmqYZVzKpYrYeirynvqDebws=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR08MB9422
+In-Reply-To: <20231123094040.592-1-hkallweit1@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231123_113625_706852_67BCD4F7 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20231123_133345_958978_169C2D62 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,52 +99,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5768361883187494402=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23.11.23 18:20, Conor Dooley wrote:
-> On Thu, Nov 23, 2023 at 01:14:13PM +0100, Javier Carrasco wrote:
->> This property defines if PHY WOL is preferred. If it is not defined, MAC
->> WOL will be preferred instead.
->>
->> Signed-off-by: Javier Carrasco <javier.carrasco@wolfvision.net>
->> ---
->>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 6 ++++++
->>  1 file changed, 6 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
->> index 70bbc4220e2a..fc4b02a5a375 100644
->> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
->> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
->> @@ -91,6 +91,12 @@ properties:
->>        The phandle of the syscon node for the peripheral general register file.
->>      $ref: /schemas/types.yaml#/definitions/phandle
->>  
->> +  rockchip,phy-wol:
->> +    type: boolean
->> +    description:
->> +      If present, indicates that PHY WOL is preferred. MAC WOL is preferred
->> +      otherwise.
-> 
-> Although I suspect this isn't, it sounds like software policy. What
-> attribute of the hardware determines which is preferred?
 
-Maybe the word "preferred" set off a red flag. The description is taken
-from the mediatek,mac-wol, which is used to set the same flag with
-inverted logic (I could invert my logic to call mine rockchip,mac-wol
-and use a description without "preferences").
+--===============5768361883187494402==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xLjxEuZaeN8xgDN1"
+Content-Disposition: inline
 
-This property is used to enable the PHY WOL in case the MAC is powered
-off in suspend mode, so it cannot provide WOL. This is done by a PMIC as
-defined in the device tree and that should not be something the software
-could tweak.
 
-Best regards,
-Javier Carrasco
+--xLjxEuZaeN8xgDN1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Nov 23, 2023 at 10:40:20AM +0100, Heiner Kallweit wrote:
+> After removal of the legacy EEPROM driver and I2C_CLASS_DDC support in
+> olpc_dcon there's no i2c client driver left supporting I2C_CLASS_DDC.
+> Class-based device auto-detection is a legacy mechanism and shouldn't
+> be used in new code. So we can remove this class completely now.
+>=20
+> Preferably this series should be applied via the i2c tree.
+>=20
+> v2:
+> - change tag in commit subject of patch 03
+> - add ack tags
+> v3:
+> - fix a compile error in patch 5
+> v4:
+> - more ack and review tags
+> v5:
+> - more acks
+>=20
+> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+
+I created an immutable branch for this which the buildbots will
+hopefully check over night. I will reply with comments tomorrow when I
+got the buildbot results.
+
+
+--xLjxEuZaeN8xgDN1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmVfxTEACgkQFA3kzBSg
+KbarPBAAkN43LMGC9b1vpMsl5y6W1jnEMTjSF+7tzpFga/xsqL+jL9B/h0bO4NQ4
+ATDYno+0o6BwCEUeBSgYEs7/gNJHlWCq2SisLmhVXXOTzWZ09VRSPaXU49gXviog
+LZbTffK3ABbQSCBbzAhx6/Aog9BH2md1QBdbrCmkf/+i8OOhDUzPiyz6txmIimC2
+6YRBRpLdY1cnme1uvNPJv8GI8UYUgdrYeFQQd4qbPsz5WIzl5/MbMeev4jtUzXC0
+exE4jjPds5scEDyf7QdoeOsHRxZ5pGEu6/luiIhN+SFolyYWzX3Yun37Ac1WWmnR
+Wo97HN7iUlhAQVQ6phTbiVCp8HISNGiWkh/Z0/NoMPO21Vr4WV1/p4TX+5shPicc
+OhBT1NydXft0pPSmT0adOalbsEv4x4P3Oa0I6A+HQCea7Acsz5Ya1+AxY2LehDKz
+lyYnz7L0pcF+k3II/wqSeiK8CidamPnVPamCG+Df3F/NDBXEih9jaI23Hkjyp8xM
+7AO5GH/0ihgont0oYMIl6bAeK9BGrKOt0AM+fF0dC+byFDGxffRvFwYnPIqJfxCr
+6NKvDBM37nY4pHxbDu1b9iamk8WN3tpdrC/XZ8BxqKaciOF+w52ac/v4+znNeo2X
+J9U48VknVCyH0l1Fpph+/ukvqwpdWMVtk4GI2wgR7mdFp8c44Z8=
+=oQZk
+-----END PGP SIGNATURE-----
+
+--xLjxEuZaeN8xgDN1--
+
+
+--===============5768361883187494402==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5768361883187494402==--
+
