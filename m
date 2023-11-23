@@ -4,49 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D70DAC61D9C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Nov 2023 22:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DC2C27C40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Nov 2023 01:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UbSTwPCluVsSekDozoFYtZ6DwYx6X5S+wzTZnneub1c=; b=2DL2K9TEhnKhHm
-	/rrQT+j+/B7vlMMw0cwB5urIoXN5YZIkisZcw/MGwP6R/fExZSRbLCndW2yIM4a0gPFtZKOU7LT9w
-	OGQpR6r/m7UCXfW/q32CqHrQ3fPmQAYKNISOR5hYiRQHvwhDG9Xz+Gsx4Sm0E5YdzjeP1FDxZb5NF
-	+qxn2mTnQRmR0VuPLFwvxUHlSOyrZqH5A0oq9U2FAFzW7domhcuDPyN452IJSqsZuAd6sHmG02qIy
-	vK4T44ZuxviQT2NRAQgYngh3tuRrTOoEklsVN5uzeHhz8OEnerwlj1gXZmVSjn4IvnjTRdNMJRBhV
-	ZSUP8GisNzqq9nBbVv0g==;
+	List-Owner; bh=ho8lP20GxnjAVj4F2/PqPd4pNn3lTJdr1hNhZqP/X1c=; b=iywyiUythobQNe
+	uAbWJSNVqKlguw1jaq9bFcS4G0ApsNXXlbUliA3Fls7XyJeLatjvLn7O4ejh9ZLg6KsIBMoPNEpNL
+	Myo7qtAM0MhBNw4mU5n+Q5q+dqBihmpjiMZX/AvA6LdC0rvpIoEOm4aubzZ9WLqHzIBua17MThYrT
+	6xmRlKVF2hFo8BDjFFW2/QWX69Lsp+vLHOoRv4+9V40NaZGf9/c04BITCYiE1TeUhgK8/+9tfFRLG
+	nOgJTuI6HwwShfKjXYi/p4kErrteCXh02MQPdy95cpf1WwBeClaU8lsE8Y64pKTiX/7/3HiLKKVl0
+	qjUbfMBVhWATqBThGyeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5vkG-003D6s-21;
-	Wed, 22 Nov 2023 22:30:56 +0000
-Received: from [50.53.46.231] (helo=[192.168.254.15])
-	by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1r5vkD-003D6K-34;
-	Wed, 22 Nov 2023 22:30:53 +0000
-Message-ID: <a194eb9e-c11e-4bc2-a1b3-d43122973368@infradead.org>
-Date: Wed, 22 Nov 2023 14:30:53 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1r5yW4-003VLY-22;
+	Thu, 23 Nov 2023 01:28:28 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r5yW1-003VJY-1S;
+	Thu, 23 Nov 2023 01:28:26 +0000
+Received: from i5e86192d.versanet.de ([94.134.25.45] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r5yVb-0005Lp-5S; Thu, 23 Nov 2023 02:27:59 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Arnd Bergmann <arnd@kernel.org>,
+	Maxime Ripard <mripard@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Johan Jonker <jbx6244@gmail.com>,
+	David Airlie <airlied@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	Azeem Shaikh <azeemshaikh38@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Douglas Anderson <dianders@chromium.org>,
+	linux-kernel@vger.kernel.org,
+	Kees Cook <keescook@chromium.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH] drm/rockchip: rk3066_hdmi: include drm/drm_atomic.h
-Content-Language: en-US
-To: Arnd Bergmann <arnd@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Johan Jonker <jbx6244@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Kees Cook <keescook@chromium.org>,
- Douglas Anderson <dianders@chromium.org>,
- Azeem Shaikh <azeemshaikh38@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20231122221838.3164349-1-arnd@kernel.org>
-From: Randy Dunlap <rdunlap@infradead.org>
+Date: Thu, 23 Nov 2023 02:27:57 +0100
+Message-Id: <170070269347.1892155.2069947154071292981.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231122221838.3164349-1-arnd@kernel.org>
+References: <20231122221838.3164349-1-arnd@kernel.org>
+MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20231122_172825_488374_5C23031E 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,9 +76,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 11/22/23 14:18, Arnd Bergmann wrote:
+On Wed, 22 Nov 2023 23:18:29 +0100, Arnd Bergmann wrote:
 > From: Arnd Bergmann <arnd@arndb.de>
 > 
 > Without this header, the newly added code fails to build:
@@ -86,33 +97,24 @@ On 11/22/23 14:18, Arnd Bergmann wrote:
 >   401 |         crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
 >       |                    ^
 > 
-> Fixes: ae3436a5e7c2 ("drm/rockchip: rk3066_hdmi: Switch encoder hooks to atomic")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> [...]
 
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
-Tested-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
+Applied, thanks!
 
-Thanks.
+[1/1] drm/rockchip: rk3066_hdmi: include drm/drm_atomic.h
+      commit: f4814c20d14ca168382e8887c768f290e4a2a861
 
-> ---
->  drivers/gpu/drm/rockchip/rk3066_hdmi.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> index 0e7aae341960..7d561c5a650f 100644
-> --- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> @@ -4,6 +4,7 @@
->   *    Zheng Yang <zhengyang@rock-chips.com>
->   */
->  
-> +#include <drm/drm_atomic.h>
->  #include <drm/drm_edid.h>
->  #include <drm/drm_of.h>
->  #include <drm/drm_probe_helper.h>
+Very puzzling, I did testbuild with the atomic conversion in place
+and also re-did it again to before applying this patch and didn't get
+the mentioned error - not sure what I might have done differently to
+create a dufferent reszkt,
 
+In any case, I applied the fix.
+
+
+Best regards,
 -- 
-~Randy
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
