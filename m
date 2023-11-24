@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6AA7C624B4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Nov 2023 15:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50EAFC61D97
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Nov 2023 15:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wgw9+39O9gBtbAOmwRi8ZKOYfXrsSnohlhsvw5rAXZc=; b=QQUv/+VOCnbbCJ
-	fd9U6ZkA1GOnmfuJjg1rvS2tBmJ475uThUTNovWMHvzu1jeA+wQS2Dzmsxgb8A8UlYNe337xVCLMj
-	Cm20bE6UJiIRuXu7BrMB67HeItsW07aSeCL92DdkaIi0fcxCaiJrfBJbEJQVCO0nDv1YWWjuwivq0
-	Ip6L6ojPSmINr1D1IYb+yDzE3Ght7RYCCQ5Zmp39bqpMlxW+bHuP5s+YKbH1zAb7uRFNlDG2i9umA
-	8xbYjz8NXZPeqDiRNo5zuB64VUZm2EA0w5ovRvLNgSQheawxWiwd4YojY/pEqwY3p15PAEKKUCZav
-	LuSy0WMgr0Jfey6PGnDA==;
+	List-Owner; bh=XiWdvDAekjFy00evDmy5w7O3fpBaG7ebyl+veUK2BAI=; b=P0uSg69RuGaAgt
+	O9r84tO3/xRnuB6B4BmC7W0iBV1J/2r8Wk89xD4QnmAEaPDPLZ40xX8Lkx8hMD8FAwVCYJqigWiMi
+	ajL9MVWeJpyhzIVVJgxVBEXOrTAU3H83sfKbeuQ/3Am2Yx0NyPfMJoddMCwWVj1uuxByDfzlDMT2e
+	qEdPyESUY0sVXgRe83uI2O4Qxb+i/Brc5oIPWEs0cj6p3ImWaP6zTp8rv8XkgkZw62efIIhD48dbM
+	qSEqutUkpBG9w8kf025jk+4RISRM9Iyjv/AL4a56GSjLtQDv+S9DXAZ2pAnL/FdKCPmO6rYnGFuxO
+	E8sAjx/H3fzsKW4cFu5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6XkJ-007Upd-1E;
-	Fri, 24 Nov 2023 15:05:31 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1r6Y9n-007YNE-1U;
+	Fri, 24 Nov 2023 15:31:51 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6XkD-007Un2-1i;
-	Fri, 24 Nov 2023 15:05:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
-	s=s31663417; t=1700838301; x=1701443101; i=frank-w@public-files.de;
-	bh=Ix7kpbSVl/E0T/0d1Pht1rYCZKqw3dVgDyb07vLVcGc=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:
-	 References;
-	b=PvbSTSIB4lffJljSG4x3vZo9axQe2k91WFc0HvK06Uksi2okqG7+tSkyoV+MGlHi
-	 qB+NxwOL5rjz/C1NKlxPEBU4JtSY+l6QEUeNAiFun+qWx+A/C6a8HpCi9Yve0BCkW
-	 FRd62tCPZrx93DokOlSHqhy5/ghscbSYDPq/uvmJC0jc5BRS15u4KvDi/Q2drr1kk
-	 qvgomya4GLFbA+omT80QTN7MyzCXaa5gH4g7zjoGEDnBn8qgzpwXV6+j5/wjRHqDN
-	 PHZDE/aS5AcUn7qvi7qsL/5CNZ1vlzAGWFMCx9aDGUmRaQTKTU7GgDTztTGjpnvG/
-	 BR/ekAfiQ+xol7YibA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.79.113] ([80.245.79.113]) by web-mail.gmx.net
- (3c-app-gmx-bs48.server.lan [172.19.170.101]) (via HTTP); Fri, 24 Nov 2023
- 16:05:01 +0100
+	id 1r6Y9k-007YLt-0H
+	for linux-rockchip@lists.infradead.org;
+	Fri, 24 Nov 2023 15:31:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1r6Y9R-0006J7-B4; Fri, 24 Nov 2023 16:31:29 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1r6Y9J-00BIVB-UV; Fri, 24 Nov 2023 16:31:21 +0100
+Received: from mtr by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <mtr@pengutronix.de>)
+	id 1r6Y9J-003eTy-Qk; Fri, 24 Nov 2023 16:31:21 +0100
+Date: Fri, 24 Nov 2023 16:31:21 +0100
+From: Michael Tretter <m.tretter@pengutronix.de>
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+Subject: Re: [PATCH v2 00/13] media: rockchip: rga: add support for
+ multi-planar formats
+Message-ID: <20231124153121.GL592330@pengutronix.de>
+Mail-Followup-To: Michael Tretter <m.tretter@pengutronix.de>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
+ <b851e2e8-ebcb-40a9-934b-dddcb28a45c9@xs4all.nl>
 MIME-Version: 1.0
-Message-ID: <trinity-a9a71294-1396-43e4-9ed5-9ee2914ef093-1700838301802@3c-app-gmx-bs48>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Corentin LABBE <clabbe@baylibre.com>
-Cc: davem@davemloft.net, heiko@sntech.de, herbert@gondor.apana.org.au,
- krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
- p.zabel@pengutronix.de, robh+dt@kernel.org, sboyd@kernel.org,
- ricardo@pardini.net, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Aw: Re:  [PATCH 6/6] crypto: rockchip: add rk3588 driver
-Date: Fri, 24 Nov 2023 16:05:01 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <ZVtVkACNHTcCjqGp@Red>
-References: <20231107155532.3747113-1-clabbe@baylibre.com>
- <20231107155532.3747113-7-clabbe@baylibre.com>
- <trinity-a0ee3146-f23d-4f6c-b29c-5fe446c4d4ad-1699797868421@3c-app-gmx-bs50>
- <ZVtVkACNHTcCjqGp@Red>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:KZY66OmMPVZRMlmi74pw8ADByftw6rLqB4krhDPt1n6lm6PqszSx4cKvc4cZjMaxiCH9q
- 9l76vJDnRyCKy+eXbolThC+wwdw4dv1bdU4iTgErQSSMfaGhXdFf9Hw8m2d54Obzs6CpDsrq/18q
- TEe0LEFYkOe/u47SsG/Cz/fazr5GJSKcscqOCYKIKUI5ZS4Qz2H5T/mWYX/BAwcWhjtWXQ3IyITK
- gWvtkulcLy4Ksr8Efpa7xkFttn5SYux8Z7cGFDgcF33skBoacgmIdOyvNt6ysMKaEToS9LDLnTZO
- zw=
-UI-OutboundReport: notjunk:1;M01:P0:nU8MkRQpVF4=;cW5EMDZ6CBFw9FyqPe6KBZB/V18
- K6E987HH1iAQnNOcy5ZBHGefyE25N6rxX+3pirLkOnU/zCkzodgk9FOxD9Cr1RQOJ9kCBB5OU
- jUboXEL0DRyXxqDsfqi+UATzF3N2/tp/G4gWip+pFqinf6NKT2XWejdO50yHxVXgc0Af3J+F1
- Yyz8h5CY0RZKPd0b5Gd23VSlmq+/Widrj5RK8DDKMX3Ak3oAFl2MGRuaFGFbPG+eE8UB3exU/
- J5W38CPcFE84FhhfxqzfTTr0LrEezSrHh5LDp93NU1UK4ECk6y0qJ+f0iaBMTkv3kIHI+Ohhf
- XoOWmrQcoaXHHv8IDCUz5B2NhyK1EiUtuK4DEHcksp3BynkMeM2/ymRpEIKNY0ulRuyzJRPm3
- +orjVtzoZWjdd2CkjhJfF2ah+uPoDp2pd1Z16SvQwmR5SfJMcvgt53OVp+jtSBC8rD314ggIe
- 902t/NJ/xbV+W/bATfBPqX7Cx6WRmBvHwOng3dgR5Rv0TwPBwhGVzR57K9ZiGspS0M4liI+Q6
- QSIIBMjJBkamkRUnn3O+G06PooaSgO+99XkvoWNuE6Jv8W/tggIVAanoHtTD8Xy7G9M4ha71F
- sLwihv1Y8dsoJNQNwXtvU5jsUM4GpCu5fJCT6sGXsVdiVlD/bpKhgyViHDS0jQQmgqklkrrp0
- 5lRwUv//M/OuJEbtmb5K01CzVlpVt/ik0vohNwuLlOfjMtRiU+Yd5AP5tLXBnrHcWy35cO6yb
- ItPBMt4lQN8fZGopD7NmXSoIQbY0GHqO8OzCdo6IPY5G1Q0n9QR7v9LEVt6g3JsDKOL/yg8qQ
- cQQlCI0IDm0t3wNCSzVHhNIA==
+Content-Disposition: inline
+In-Reply-To: <b851e2e8-ebcb-40a9-934b-dddcb28a45c9@xs4all.nl>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mtr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_070525_947126_BA15F5E1 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231124_073148_124503_89D3ADF1 
+X-CRM114-Status: GOOD (  41.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,18 +101,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+Hi Hans,
 
-> Gesendet: Montag, 20. November 2023 um 13:48 Uhr
-> Von: "Corentin LABBE" <clabbe@baylibre.com>
+On Fri, 24 Nov 2023 14:39:37 +0100, Hans Verkuil wrote:
+> On 13/10/2023 13:00, Michael Tretter wrote:
+> > This is v2 of the series that adds support for the V4L2 multi-planar API
+> > to the Rockchip RGA driver. Once the RGA driver supports the
+> > multi-planar API, it is easier to share buffers with other V4L2 drivers
+> > that also support the multi-planar API and may not expose planar formats
+> > with contiguous planes.
+> > 
+> > v2 fixes the smatch warnings and compile errors of v1. Furthermore, now
+> > the DMA mask is set to 32 bits for coherent, too, and the gfp_flags are
+> > configured to ensure that buffers are allocated in the lower 4GB area.
+> > 
+> > With non-contiguous planes, the U and V planes may not start at the same
+> > offset as with the continuous planes. Therefore, the RGA driver cannot
+> > rely on its calculation of the plane offsets based on the format and
+> > frame size anymore, but must remember the offsets when it created the
+> > mapping. Therefore, I also reworked how the DMA mapping is handled.
+> > 
+> > As a bonus, the RGA driver should now work correctly on devices with
+> > more than 4 GB of memory. Video buffers should now be allocated within
+> > the 4 GB boundary and an import of buffers that have higher addresses
+> > into the driver should fail.
+> > 
+> > Patch 1 fixes the swizzling of RGA formats. While testing all formats of
+> > the driver on rk3568, I discovered that the color channels of the RGB
+> > formats are wrong when converting to NV12. I didn't test this on other
+> > SoCs with an RGA and I am not sure, if they behave differently regarding
+> > the color channels. Please report, if this breaks the color conversion
+> > on other SoCs, and I will make this SoC-specific.
+> > 
+> > Patches 2 to 6 are the rework the DMA descriptor handling for the RGA
+> > MMU. The patches clean up, how the driver uses the DMA API, and make the
+> > creation of the descriptor list more explicit. Furthermore, the driver
+> > is changed to keep the mapping per video buffer instead of using a
+> > single mapping that is updated with every buffer.
+> > 
+> > Patches 7 to 11 prepare the driver for the multi-planar API including a
+> > cleanup of the format handling in the buffer, and finally switch to the
+> > multi-planar API.
+> 
+> Switching over to the multi-planar API is always a bit scary. How did you
+> test this? Using gstreamer? Other apps?
 
-> You are using kcapi-rng but the driver do not support RNG yet. (and probably never if I continue to fail having good results with it).
-> So it is normal values does not change.
+I tested with GStreamer. My use case is using the RGA to convert RGB Buffers
+to NV12 to feed them to a Hantro JPEG encoder. I also tried to separate the
+preparatory work, the switch to the multi-planar API, and the addition of
+actually multi-planar formats into separate patches.
 
-which functions does the driver support atm? or how can i test correctly
-(and which kernel options i need for this)?
+Is there anything that I should take special care of or explicitly test, when
+switching the driver to the multi-planar API?
 
-regards Frank
+Michael
+
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> > 
+> > Patch 12 updates the code that creates the DMA-descriptor mapping to
+> > correctly handle buffers with multiple planes. The driver has to iterate
+> > all planes and make them the continuous for the RGA.
+> > 
+> > Patch 13 enables the NV12M format, which is the multi-planar variant of
+> > the NV12 format.
+> > 
+> > Michael
+> > 
+> > Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+> > ---
+> > Changes in v2:
+> > - Fix smatch warnings
+> > - Fix cast to dst_mmu_pages/src_mmu_pages to fix compile error in Patch 2
+> > - Remove check for upper_32_bits when filling the DMA descriptor table
+> > - Remove useless dma_sync_single_for_device()
+> > - Set DMA mask for DMA coherent
+> > - Set gfp_flags to __GFP_DMA32
+> > - Link to v1: https://lore.kernel.org/r/20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de
+> > 
+> > ---
+> > Michael Tretter (13):
+> >       media: rockchip: rga: fix swizzling for RGB formats
+> >       media: rockchip: rga: extract helper to fill descriptors
+> >       media: rockchip: rga: allocate DMA descriptors per buffer
+> >       media: rockchip: rga: split src and dst buffer setup
+> >       media: rockchip: rga: pre-calculate plane offsets
+> >       media: rockchip: rga: set dma mask to 32 bits
+> >       media: rockchip: rga: use clamp() to clamp size to limits
+> >       media: rockchip: rga: use pixelformat to find format
+> >       media: rockchip: rga: add local variable for pix_format
+> >       media: rockchip: rga: use macros for testing buffer type
+> >       media: rockchip: rga: switch to multi-planar API
+> >       media: rockchip: rga: rework buffer handling for multi-planar formats
+> >       media: rockchip: rga: add NV12M support
+> > 
+> >  drivers/media/platform/rockchip/rga/rga-buf.c | 162 ++++++++++++++++------
+> >  drivers/media/platform/rockchip/rga/rga-hw.c  | 146 ++++++++++++--------
+> >  drivers/media/platform/rockchip/rga/rga.c     | 189 ++++++++++++--------------
+> >  drivers/media/platform/rockchip/rga/rga.h     |  35 ++++-
+> >  4 files changed, 328 insertions(+), 204 deletions(-)
+> > ---
+> > base-commit: 2c1bae27df787c9535e48cc27bbd11c3c3e0a235
+> > change-id: 20230914-rockchip-rga-multiplanar-0d7c79b1ba93
+> > 
+> > Best regards,
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
