@@ -4,84 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19DF0C61DF4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Nov 2023 09:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C4FFC624B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Nov 2023 13:40:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9VnPbECYMmynCX7G6nWehSAW2sNqcTfYw482cD8ljkM=; b=PfBHpxOujNFSSV
-	+dY8oDAl/JT34mtEp0s+uEQaZyyti6B9cFChLp3XxkGk8ruAFj/Ne1CkyUbajMa634pyC7VoPwkMp
-	O4kTNBBKEukTjNy9e/DNjQkEoj+ZmukDBx57Tedr1+FlVteFEBb1Xe194uFw2aGa2zTol/IcxhuU6
-	JJaToOyhg/4rQhEJjtlagMSaIHXKtzelCJLsDtjqOkZA2M5ksGPGBzScZR2kccxKEwqO615Mo4eiI
-	REsD02HBYGarXonM2QNKNMRE2VV3gt64927Ki4JVurhYjqEwC7fcB84lSQLncdhlYroFk8l84g0a7
-	Ot4kCPWie076eLv56e1Q==;
+	List-Owner; bh=B8FExfxjXwGSOIxOf0UL2qSCVnJN/t7Zmgp59KofuGc=; b=V9W2Q3wfgExk+F
+	cxhM8kPlE5MoqiS8NOsFhhldYB60qsESDiGb43icaMmZM0PZWIpaTzAdRnQjCgAffIja1QsGWKDgY
+	/WsqnprQpLw1snfb/0OHL/1adXDLz59vZfYEyKC7mavAsIS43qMbb6bQ7j8ADlhMNO6TYdxrbGyZp
+	WEDi1f8VKL9ZgXCAWImzeuhKDTLFMHLSyEGArt98lFxoI4EzR04GGB7KBXsqGDAUXXh/P8pzx8nUr
+	yzoj1PQv2XtwXBqyGdlMMPhkxmsqNWsd1k94m4hJ79kgfSY1CBhnPABIEQUQZjGfwXefBOrTX6XEM
+	Idm+0DVjgJoBCAWJQykQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Spj-006jk8-2C;
-	Fri, 24 Nov 2023 09:50:47 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1r6WPM-007L6b-2x;
+	Fri, 24 Nov 2023 13:39:48 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6Spf-006jgB-36
-	for linux-rockchip@lists.infradead.org;
-	Fri, 24 Nov 2023 09:50:45 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-54af61f2a40so499123a12.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 24 Nov 2023 01:50:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700819442; x=1701424242; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qor/r0zOqiLhFxmNXSJ8SXz2GN8hXhjmuYRNu5/p5mA=;
-        b=ArNJzG3JVKdFbvctKRRUVWMTZNbbucn+LD6uksRFPZUIcAkFeajXfiAfwbnoIEpqwd
-         OK/tSkZ9t2xUrymer50UahicChYXZPU8t4gmccqO+M+/ow6Utt1BrhFUZqiPBXsAI7wM
-         xSegSJ1K7ZnYoVithnikq3hPIAC2OFIZ4Jtsj86VBf6dA2r6/MxKUfqk1MTcrZSoXXJD
-         kYG0bz1f9q+SvdERyD2tAH13N9p/2B/EEWyGOeRDoIOBH2gAvcowH4x1lPDdHuHCvPoi
-         xyhUljuGgiWTRoz+6JB/ffmbHp5+wFa6xv3AjcO3OWURgKTx9evy3JCZVepI3JR17/xa
-         FbqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700819442; x=1701424242;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Qor/r0zOqiLhFxmNXSJ8SXz2GN8hXhjmuYRNu5/p5mA=;
-        b=BozixBVYBA1D8UGGe8QhFeyGrPavIS94bbKFbWRp+7CKLisIO7WlgWdM3rtEhrgbjt
-         0JoG8b3miwoz1wg4MxiKwNZAaSKsfFSnBG2glktNfFj42uvsknBBN3Kw9JCyiDK/P1IL
-         OXntWF8INUvojZt73vWyWVFSwC7lXqpZT9avbnx+I+TKL5kQiXsS/uRKvRbQm63Xf4zR
-         k6Os+nSvirab2xXBIsnGIDzskC8APzGOSsC/aEEc8/iYpDtqkkP6zCFoQE9vwjNax2as
-         zbOOH2nILvptG2DvBjqXVyA+SlKFd7cZVGSMRoGI9qAvHQYggOq13dJLh1wNfCMez9kd
-         vjiw==
-X-Gm-Message-State: AOJu0YygvizAHxaIPl2Ze/itUQlZCMgRCp9TeYZ+zcwBVuLmdUNjv/8u
-	WzCSmTM8JBPDNvpQG7nOtXq8dw==
-X-Google-Smtp-Source: AGHT+IF1Omq/eaQPmVm8llzgDUE6BlQzXBZgCbk9ZF2AfikHHCfYcfIe725SN2hIJuRRWO0w5v03Xw==
-X-Received: by 2002:a05:6402:1744:b0:54a:fcfd:224 with SMTP id v4-20020a056402174400b0054afcfd0224mr698023edx.17.1700819441954;
-        Fri, 24 Nov 2023 01:50:41 -0800 (PST)
-Received: from krzk-bin.. ([178.197.218.100])
-        by smtp.gmail.com with ESMTPSA id g20-20020a50ee14000000b00548af940701sm1612755eds.53.2023.11.24.01.50.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 01:50:41 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: minor whitespace cleanup around '='
-Date: Fri, 24 Nov 2023 10:50:31 +0100
-Message-Id: <20231124095031.58555-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231124095031.58555-1-krzysztof.kozlowski@linaro.org>
-References: <20231124095031.58555-1-krzysztof.kozlowski@linaro.org>
+	id 1r6WPJ-007L52-0Q;
+	Fri, 24 Nov 2023 13:39:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id EB17DB8309A;
+	Fri, 24 Nov 2023 13:39:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75782C433C7;
+	Fri, 24 Nov 2023 13:39:39 +0000 (UTC)
+Message-ID: <b851e2e8-ebcb-40a9-934b-dddcb28a45c9@xs4all.nl>
+Date: Fri, 24 Nov 2023 14:39:37 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/13] media: rockchip: rga: add support for
+ multi-planar formats
+Content-Language: en-US, nl
+To: Michael Tretter <m.tretter@pengutronix.de>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, Diederik de Haas
+ <didi.debian@cknow.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
+References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Autocrypt: addr=hverkuil@xs4all.nl; keydata=
+ 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
+In-Reply-To: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231124_015043_996110_AA481A13 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20231124_053945_490573_E763239A 
+X-CRM114-Status: GOOD (  33.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +113,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DTS code coding style expects exactly one space before and after '='
-sign.
+Hi Michael,
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+On 13/10/2023 13:00, Michael Tretter wrote:
+> This is v2 of the series that adds support for the V4L2 multi-planar API
+> to the Rockchip RGA driver. Once the RGA driver supports the
+> multi-planar API, it is easier to share buffers with other V4L2 drivers
+> that also support the multi-planar API and may not expose planar formats
+> with contiguous planes.
+> 
+> v2 fixes the smatch warnings and compile errors of v1. Furthermore, now
+> the DMA mask is set to 32 bits for coherent, too, and the gfp_flags are
+> configured to ensure that buffers are allocated in the lower 4GB area.
+> 
+> With non-contiguous planes, the U and V planes may not start at the same
+> offset as with the continuous planes. Therefore, the RGA driver cannot
+> rely on its calculation of the plane offsets based on the format and
+> frame size anymore, but must remember the offsets when it created the
+> mapping. Therefore, I also reworked how the DMA mapping is handled.
+> 
+> As a bonus, the RGA driver should now work correctly on devices with
+> more than 4 GB of memory. Video buffers should now be allocated within
+> the 4 GB boundary and an import of buffers that have higher addresses
+> into the driver should fail.
+> 
+> Patch 1 fixes the swizzling of RGA formats. While testing all formats of
+> the driver on rk3568, I discovered that the color channels of the RGB
+> formats are wrong when converting to NV12. I didn't test this on other
+> SoCs with an RGA and I am not sure, if they behave differently regarding
+> the color channels. Please report, if this breaks the color conversion
+> on other SoCs, and I will make this SoC-specific.
+> 
+> Patches 2 to 6 are the rework the DMA descriptor handling for the RGA
+> MMU. The patches clean up, how the driver uses the DMA API, and make the
+> creation of the descriptor list more explicit. Furthermore, the driver
+> is changed to keep the mapping per video buffer instead of using a
+> single mapping that is updated with every buffer.
+> 
+> Patches 7 to 11 prepare the driver for the multi-planar API including a
+> cleanup of the format handling in the buffer, and finally switch to the
+> multi-planar API.
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
-index de0a1f2af983..7d4c5324c61b 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
-@@ -86,7 +86,7 @@ simple-audio-card,cpu {
- 	sgtl5000_clk: sgtl5000-oscillator {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
--		clock-frequency  = <24576000>;
-+		clock-frequency = <24576000>;
- 	};
- 
- 	dc_12v: dc-12v-regulator {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-index 8f399c4317bd..e3a839a12dc6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-@@ -38,7 +38,7 @@ button-recovery {
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 =<&leds_gpio>;
-+		pinctrl-0 = <&leds_gpio>;
- 
- 		led-1 {
- 			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
--- 
-2.34.1
+Switching over to the multi-planar API is always a bit scary. How did you
+test this? Using gstreamer? Other apps?
+
+Regards,
+
+	Hans
+
+> 
+> Patch 12 updates the code that creates the DMA-descriptor mapping to
+> correctly handle buffers with multiple planes. The driver has to iterate
+> all planes and make them the continuous for the RGA.
+> 
+> Patch 13 enables the NV12M format, which is the multi-planar variant of
+> the NV12 format.
+> 
+> Michael
+> 
+> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+> ---
+> Changes in v2:
+> - Fix smatch warnings
+> - Fix cast to dst_mmu_pages/src_mmu_pages to fix compile error in Patch 2
+> - Remove check for upper_32_bits when filling the DMA descriptor table
+> - Remove useless dma_sync_single_for_device()
+> - Set DMA mask for DMA coherent
+> - Set gfp_flags to __GFP_DMA32
+> - Link to v1: https://lore.kernel.org/r/20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de
+> 
+> ---
+> Michael Tretter (13):
+>       media: rockchip: rga: fix swizzling for RGB formats
+>       media: rockchip: rga: extract helper to fill descriptors
+>       media: rockchip: rga: allocate DMA descriptors per buffer
+>       media: rockchip: rga: split src and dst buffer setup
+>       media: rockchip: rga: pre-calculate plane offsets
+>       media: rockchip: rga: set dma mask to 32 bits
+>       media: rockchip: rga: use clamp() to clamp size to limits
+>       media: rockchip: rga: use pixelformat to find format
+>       media: rockchip: rga: add local variable for pix_format
+>       media: rockchip: rga: use macros for testing buffer type
+>       media: rockchip: rga: switch to multi-planar API
+>       media: rockchip: rga: rework buffer handling for multi-planar formats
+>       media: rockchip: rga: add NV12M support
+> 
+>  drivers/media/platform/rockchip/rga/rga-buf.c | 162 ++++++++++++++++------
+>  drivers/media/platform/rockchip/rga/rga-hw.c  | 146 ++++++++++++--------
+>  drivers/media/platform/rockchip/rga/rga.c     | 189 ++++++++++++--------------
+>  drivers/media/platform/rockchip/rga/rga.h     |  35 ++++-
+>  4 files changed, 328 insertions(+), 204 deletions(-)
+> ---
+> base-commit: 2c1bae27df787c9535e48cc27bbd11c3c3e0a235
+> change-id: 20230914-rockchip-rga-multiplanar-0d7c79b1ba93
+> 
+> Best regards,
 
 
 _______________________________________________
