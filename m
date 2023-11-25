@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07C2AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 19:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3ADC07D59
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 19:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kcKZ2dt8qsJzHQrm+Oi05RwZv75SSLwXWcH0LqSiYfY=; b=XTJoDOVbj2y50d
-	2Aaj6mZpAAmkoNpmUiul/il02hc7t0/I8xg357nbh7xwNEy0L5Zklk8jOOw8MHCtEsn/cPkvaqz+j
-	j9U8PhP+R0YHiPObrydSvFGInmeoNPSbNS9yBMaAXdl2QWUkkVoAWmKy8hCVGrDX+8ehH15pWLm9F
-	+xb0/DDw835B4clqjx62KbHu+cU2Gq75OFwohMFdixXke1DRj7Wu3Mtk0iNgd5mmeQUHJ48S9+CnI
-	+cHbM76whI8Rhw6HhcNcDDi1LDFQXR5eNE/EuTU6ruE/heH/yp715HB3KiTHswarx3PZwbDK1SDJF
-	qkjelHrjBz4blYFQ9Wtw==;
+	List-Owner; bh=zl5i7CaHOEhglfBGx43cCAd0GuFfzxw4hPYsMIClDag=; b=IA4ltpxYLGTlLk
+	rCCqiuGWnE82O59bUXvtgxgLmIYM8eaS/qul2ZYTfzIjzXHxcrvfGwBDWkEK1n3y+IAPicPqMruiU
+	HrITGwgWpS/8r7AmpFHdY0nixcJZuzjRS0yZz+v5W0+ZPShGTBTcDULd/0snQUgamzRKSaRp/RLzl
+	gqoh97gc7/bu3CVi2+NBLfvl3zRu6mHrNK4nGYpnIQQaKk9ktYZfrLpONl3naf6HvxaYzAWg98gMJ
+	GQfIRQKXk6w7hIqYxj8f15P3/JHAp7C4jUgIX9KmEde31A4vqm9UYuN7urHwjsCxed54ps8zUWbID
+	X4uat4HpL2JHebrnVGmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xyR-009fc2-2N;
-	Sat, 25 Nov 2023 19:05:51 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1r6xya-009fi7-1w;
+	Sat, 25 Nov 2023 19:06:00 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xyJ-009fTd-2I
+	id 1r6xyK-009fVN-2q
 	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Nov 2023 19:05:45 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-6bd0e1b1890so2352041b3a.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 11:05:40 -0800 (PST)
+	Sat, 25 Nov 2023 19:05:46 +0000
+Received: by mail-il1-x130.google.com with SMTP id e9e14a558f8ab-35930447ae9so9922215ab.2
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 11:05:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700939140; x=1701543940; darn=lists.infradead.org;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700939143; x=1701543943; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MdVkvthdIVkScPCk6uaNxp5t0aMH4kHMdH7v/R/c8rw=;
-        b=gQS1IgynT51UIWXZH0jDD5mObuVxG5NOSG5DeUQny6jZefcgkSYVQS4bLAFOTkL28A
-         Qz9P6YuQ6iuD5Dc7UDYNH2hoD2DkP70baqAQeU05OBQHEJhzpRGuYvYsQItVSrHy9sLA
-         09c24eE748ALEfT7J/9bqC1CsyaLOQ5QRxr5dSQ6ZifrYbbpGIHJbEJqA8BQI8U71T8o
-         CLgbp2b6PJFl7aHzWhH0Lo0bgQv2x4TFC0PpetWU2srlDsPvzGZUzan5es8AnU/iivl3
-         gMIloF/sw32MjsllcFRDnELPD/wiHwm5xWGClQ2HY9ByCtYIVNcI1312uILEHjLHBoRX
-         5eig==
+        bh=DvuwrCeF04BFFkMvqZ1QiR2hthL4MoPo0rmlb95gpko=;
+        b=pAJ8ZaXfrHstaiby8GHTAp/XT/dayK4NN1mGWaJM5Y76FOddfJq3Rf8CG6zhk6tkvF
+         B4cXR8rXefZygbcFLEmBAmvxpDoKEmjOd/s0qXpUd2XfIzW177/REFVPbJK7tUi0p8R+
+         QAjE8t1LE6sIBnPRk12vvaj1BPUlqM8/Y9nTtcVTlh5/aIBeteZ+Zg87sHh+zdQlA1w1
+         YjA4rtuYBsO5klbP9E3rQvw/Yfc1efMv/7tdLRCKt6i+FAAX8J9EcT0RJZk+lf9k7p7E
+         SesLJWcyl7shDe7Bi2FLYEZ1VM9gRm5f5PLBHu8w/IkzdaDSE8SAsl8B+0OtblcUtkTx
+         Sm7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700939140; x=1701543940;
+        d=1e100.net; s=20230601; t=1700939143; x=1701543943;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MdVkvthdIVkScPCk6uaNxp5t0aMH4kHMdH7v/R/c8rw=;
-        b=vTAPj4oT2L/SlGMcOyvI8twXLlLvJvj4V4+AzIO770tuoN1CPHAu/zWnaqCwbjuDCl
-         8NfWQ7ZKwDN6BrEJbtWQHbSMBY6ypKz+lwZWjxW+7J/BO48JGEa/BVmJqogjuOgCObiE
-         RjiKrcu2o8clk3er1XptGTFVzR9+BfWRx73AJX/nhSt7LsZBqkpPcIeOlzCg/75XTnHy
-         IRWwIDu49zVWfZxS7Ukn7pHIbHOTv5O5yJA+/vQC2O6dNYVyE5QjJQuWKgzAuVT3UGpT
-         g+kcgprhFNCjlAPJbj85MlQeFbr10F7saaSs17V0qm69v+0ZV+HjNHkXRDaP3YXlJD9w
-         0cVg==
-X-Gm-Message-State: AOJu0YxZLZDEAIof4ojXrpDhgQU57qNySDirAvzsbzId3Y2CrNMw0N+s
-	dXZwI9kHh5PehRNJrb+KFI1PSg==
-X-Google-Smtp-Source: AGHT+IEqmebTveiQ1F0ELuQfY6eKJuPtFrs3P14fMstb/KKBUIKc3rD/orZfkNMBCLPcqRpv/P1JEQ==
-X-Received: by 2002:a05:6a00:2196:b0:6c6:9b11:f718 with SMTP id h22-20020a056a00219600b006c69b11f718mr7138624pfi.4.1700939138428;
-        Sat, 25 Nov 2023 11:05:38 -0800 (PST)
+        bh=DvuwrCeF04BFFkMvqZ1QiR2hthL4MoPo0rmlb95gpko=;
+        b=K/+O8K0TRosldUFTP7WQlWwubHnxM6PC4eoJ+8qpBBZmStydcibX0kC3TtDBw90oTe
+         EXYowlI6toIncBszmkt6VMJcxW/XRp/b/YUB3acKuUGGrCaTOoBwOR513cBanmCXb7cv
+         Fyb3QCTyCXisokoxhi0iaLjo+ZN7kzlVbgiXarGbE/37P4Dy4EXAn25kqpHl7B1+Mcxy
+         EsYW0HZpqAejfF+wZs/ofsYAjG9cqg7gladvKiY8mGhn7gz6fVjs76r12VESGqzwWfc4
+         QoS8PxeUUTSfDjwltnhJHeGmiCZ2ImQz1Hne95lmrXjwcHgs3dkdN3K2YFTP/zT49Ct+
+         dklA==
+X-Gm-Message-State: AOJu0YypMdUP8nXIZDz0NxVjgsn+cO63nssMA0vU6QWL+KY7O7cnVovL
+	YWo/wqjepTM9wj2e91gxHYxRuA==
+X-Google-Smtp-Source: AGHT+IH471zsp9ZCfqzQCm6FnhQAVF2Z8L8x/RKYC5P0dSeO1A/wBrLIAQr4jlQsEm/JhKbjuhAzYQ==
+X-Received: by 2002:a92:cdab:0:b0:35b:112e:60d2 with SMTP id g11-20020a92cdab000000b0035b112e60d2mr10185882ild.22.1700939141463;
+        Sat, 25 Nov 2023 11:05:41 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a208:d471:6d33:4b36:d85])
-        by smtp.gmail.com with ESMTPSA id j26-20020a62b61a000000b006cbb7e27091sm4810529pff.175.2023.11.25.11.05.36
+        by smtp.gmail.com with ESMTPSA id j26-20020a62b61a000000b006cbb7e27091sm4810529pff.175.2023.11.25.11.05.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Nov 2023 11:05:38 -0800 (PST)
+        Sat, 25 Nov 2023 11:05:40 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v2 03/10] arm64: dts: rockchip: Add common DT for edgeble-neu6b-io
-Date: Sun, 26 Nov 2023 00:35:15 +0530
-Message-Id: <20231125190522.87607-4-jagan@edgeble.ai>
+Subject: [PATCH v2 04/10] arm64: dts: rockchip: Add Edgeble NCM6A WiFi6 Overlay
+Date: Sun, 26 Nov 2023 00:35:16 +0530
+Message-Id: <20231125190522.87607-5-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231125190522.87607-1-jagan@edgeble.ai>
 References: <20231125190522.87607-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_110543_747442_9BA39DD5 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20231125_110544_930881_8BC0B4A1 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,234 +97,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edgeble Neu6a and Neu6b are compatible with common IO board.
+Edgeble NCM6A SOM has on-module M.2 1216-compatible WiFi modules.
 
-So, maintain the IO board in rk3588-edgeble-neu6a-io.dtsi.
+Currently, AW-XM548NF WiFi6 and Intel 8260D2W WiFi5 modules are supported.
+
+WiFi modules are fixed on SoM, not pluggable M.2 slots, so different SoM's
+for each type of WiFi module.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v2:
 - none
 
- .../dts/rockchip/rk3588-edgeble-neu6a-io.dts  | 14 +--
- .../dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 85 +++++++++++++++++++
- .../dts/rockchip/rk3588-edgeble-neu6b-io.dts  | 80 +----------------
- 3 files changed, 87 insertions(+), 92 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../rockchip/rk3588-edgeble-neu6a-wifi.dtso   | 56 +++++++++++++++++++
+ 2 files changed, 57 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-index b51543892078..46d5e21d4d27 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-@@ -6,22 +6,10 @@
- /dts-v1/;
- #include "rk3588.dtsi"
- #include "rk3588-edgeble-neu6a.dtsi"
-+#include "rk3588-edgeble-neu6a-io.dtsi"
- 
- / {
- 	model = "Edgeble Neu6A IO Board";
- 	compatible = "edgeble,neural-compute-module-6a-io",
- 		     "edgeble,neural-compute-module-6a", "rockchip,rk3588";
--
--	aliases {
--		serial2 = &uart2;
--	};
--
--	chosen {
--		stdout-path = "serial2:1500000n8";
--	};
--};
--
--&uart2 {
--	pinctrl-0 = <&uart2m0_xfer>;
--	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index f969618da352..543a2f68b654 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
 new file mode 100644
-index 000000000000..845f90c302ca
+index 000000000000..e9a3855e8752
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-@@ -0,0 +1,85 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
+@@ -0,0 +1,56 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
++ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
++ *
++ * DT-overlay for Edgeble On-SoM WiFi6/BT M.2 1216 modules,
++ * - AW-XM548NF
++ * - Intel 8260D2W
 + */
 +
-+/ {
-+	aliases {
-+		serial2 = &uart2;
-+	};
++/dts-v1/;
++/plugin/;
 +
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+};
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
 +
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
-+&i2c6 {
-+	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <0>;
-+		clock-output-names = "hym8563";
++&{/} {
++	vcc3v3_pcie2x1l1: vcc3v3-pcie2x1l1-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>; /* WIFI_3V3_EN */
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		wakeup-source;
++		pinctrl-0 = <&pcie2_1_vcc3v3_en>;
++		regulator-name = "vcc3v3_pcie2x1l1";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		startup-delay-us = <50000>;
++		vin-supply = <&vcc5v0_sys>;
 +	};
++};
++
++&combphy2_psu {
++	status = "okay";
++};
++
++/* WiFi6 */
++&pcie2x1l1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_1_rst>;
++	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>; /* PCIE20_2_WIFI_PERSTn */
++	vpcie3v3-supply = <&vcc3v3_pcie2x1l1>;
++	status = "okay";
 +};
 +
 +&pinctrl {
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++	pcie2 {
++		pcie2_1_rst: pcie2-1-rst {
++			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie2_1_vcc3v3_en: pcie2-1-vcc-en {
++			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +};
-+
-+/* FAN */
-+&pwm2 {
-+	pinctrl-0 = <&pwm2m1_pins>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&sata0 {
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	no-sdio;
-+	no-mmc;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_3v3_s3>;
-+	vqmmc-supply = <&vccio_sd_s0>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
-+
-+/* RS232 */
-+&uart6 {
-+	pinctrl-0 = <&uart6m0_xfer>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+/* RS485 */
-+&uart7 {
-+	pinctrl-0 = <&uart7m2_xfer>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-index 861067b5d707..0d6f1be69ac8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-@@ -6,88 +6,10 @@
- /dts-v1/;
- #include "rk3588j.dtsi"
- #include "rk3588-edgeble-neu6b.dtsi"
-+#include "rk3588-edgeble-neu6a-io.dtsi"
- 
- / {
- 	model = "Edgeble Neu6B IO Board";
- 	compatible = "edgeble,neural-compute-module-6a-io",
- 		     "edgeble,neural-compute-module-6b", "rockchip,rk3588";
--
--	aliases {
--		serial2 = &uart2;
--	};
--
--	chosen {
--		stdout-path = "serial2:1500000n8";
--	};
--};
--
--&combphy0_ps {
--	status = "okay";
--};
--
--&i2c6 {
--	status = "okay";
--
--	hym8563: rtc@51 {
--		compatible = "haoyu,hym8563";
--		reg = <0x51>;
--		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
--		#clock-cells = <0>;
--		clock-output-names = "hym8563";
--		pinctrl-names = "default";
--		pinctrl-0 = <&hym8563_int>;
--		wakeup-source;
--	};
--};
--
--&pinctrl {
--	hym8563 {
--		hym8563_int: hym8563-int {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--};
--
--/* FAN */
--&pwm2 {
--	pinctrl-0 = <&pwm2m1_pins>;
--	pinctrl-names = "default";
--	status = "okay";
--};
--
--&sata0 {
--	status = "okay";
--};
--
--&sdmmc {
--	bus-width = <4>;
--	cap-mmc-highspeed;
--	cap-sd-highspeed;
--	disable-wp;
--	no-sdio;
--	no-mmc;
--	sd-uhs-sdr104;
--	vmmc-supply = <&vcc_3v3_s3>;
--	vqmmc-supply = <&vccio_sd_s0>;
--	status = "okay";
--};
--
--&uart2 {
--	pinctrl-0 = <&uart2m0_xfer>;
--	status = "okay";
--};
--
--/* RS232 */
--&uart6 {
--	pinctrl-0 = <&uart6m0_xfer>;
--	pinctrl-names = "default";
--	status = "okay";
--};
--
--/* RS485 */
--&uart7 {
--	pinctrl-0 = <&uart7m2_xfer>;
--	pinctrl-names = "default";
--	status = "okay";
- };
 -- 
 2.25.1
 
