@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71D2C46CA3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 14:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 676AFC4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 14:40:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iQ/cWjboPIM9mJhqQZ0Rhq5fFNngeut3pQ/veG1p1zI=; b=2As9kRk/W5wFAB
-	r4k6joC/Sdwmxb8VP4Eq/95LLRrlmcO8M5L2K8xCuqPl0YR3ZGzsjdujvcLjmjhoVEGW2CF0M7EqX
-	sNIm5Y1MakkJiVxyy2ccbosyXQ2oS6EdLIt79EzlqobZo4T6/9QqCwsDxH1pzYjWy5/Y4CPLjR6zI
-	w2lXo16Xf8rBbpZtBwoO0hNgPZ7d0er10gukEjdZed4ddeLGH49usgASLR9OFMg0icmNRmph7IB9R
-	e9WzpGaV5r+NPh1AYOLe0dhohzMNuQYVysvxOxAV+IqXVWXi4Z4MME/s8LKxJIhr2MejhcYoRqUaj
-	mWMAe3QCFqkOul4bTeNg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=76zPVMNorcxe74vQfEXxSC69tTHD7ASeEYVeUu2TJ7s=; b=cRN33Nunszs33x
+	y1us4LJrPeeiZTF6sPKCOXMpBU4lZLJKGz7pBVVnH4DOZbXOvEr+uWrrJVWeSByXmJC2b+keYTVVH
+	jwsumpHV/GwDyjaiQ/lHSGH01NEOj0fgUgkdydfNrvMuTojJ453AoWwGLK+KQnnDpnp8bV8ohHpsI
+	Z3wu0zxhwRy8SwluMTLGn/TMcPklKPJxTKyawr82kwGs63DUysySRetUQ/QAy5DDxFIIvEdF8gIWn
+	kBNaQ0Y2qHxOEcrHHq0d3930DREPN20fZbiyVWWdvt5MEZkPmUb/IOdHGoq0XvwHXw7FEt6Iyjw0a
+	z/c8+9c7EHQY0z9J0hAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6tfU-009Ljj-1X;
-	Sat, 25 Nov 2023 14:30:00 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1r6tpn-009MUI-2B;
+	Sat, 25 Nov 2023 14:40:39 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6tfP-009Lhb-2N
+	id 1r6tpi-009MPq-0v
 	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Nov 2023 14:29:58 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1cfc1512df1so292375ad.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 06:29:51 -0800 (PST)
+	Sat, 25 Nov 2023 14:40:36 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-28594582e44so892737a91.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 06:40:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700922590; x=1701527390; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=soP+RRaN3MUQWLVu63uoZr/A2jxljbkXd36iggWLWsk=;
-        b=sRfKe1n0rEt7tC/4Swk/Af+W4QuoPIcX9TIZ08D9gA6vbJqSB6+AYkMODesmuclDqV
-         aHc7TGy40DvqE7+o6uR3FxgSZTQpZjWvgvwZBbY7TiuKbkkf95nRmGfSrgz1Wx9yThn4
-         wIkydl0q+H+ab8YkX3Wl5r9H6m3ZACBen7xnWfDiLBx97QKQpcx+axzg3oT3/A3DJ45s
-         BCSRQbI2XhPDQKnevT3se4vObEZV0ScJbvbxXQR5F3NC3BjAtCHDmb27YCJFx8TG/uwv
-         hqjMdS3uAZ4K/28gVOF98RNJ+e91i+f/mW0wLThR+M+ZEPer+IyM8/CdZuEzar2yW2RR
-         PzmA==
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700923227; x=1701528027; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0Juvqd6ZcRYFg/BlkA1E3mVJgKUv6X4BvFTJ0d6+v0s=;
+        b=u3Hmr9snyd7lm2iUOJzRgVESYEjVGdHd3Bbn0Esk0MCed3/cz7qV5kJ407kh+LPJv/
+         EeAFKtbic88zIdJqPehOvBDuYpGIfGqN06fkzoXYC5tBeOVYdvuQlGa6PujobgaMMrxS
+         1WjmIwAVz34uVyU4s2bNMTm+cdkrYJZMdR+4AgjMuw7NVwhuAF1BqM/k5EB9tgnZYzM9
+         Cteid8OjpDqqM6GaqJ3uLF0QWpgUIlb2DhcwmcpyShqEhBJxPMAP4CEqjIyWYbenJa/U
+         UO+LfZ5u15kTY0xkbykwXMCFmzSf3C9rGoxQ8rgHrkNgmHJy1Nbc7bgT7CjlPB9IHTPk
+         b+3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700922590; x=1701527390;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=soP+RRaN3MUQWLVu63uoZr/A2jxljbkXd36iggWLWsk=;
-        b=qF41i1bpa+67BnCycSvlBtCnCLmpnGUdUwr+h4KXLjFfy8N/5hM4tnCAhBRJ7qnzWB
-         n8X5JBUFEs7MHm+O9U1HgLxOvY3DPqMmJy9kUZnu5QGG5Hp3QEtemCovpB6nudvLKf/Q
-         Yy14hOOvozYyJCLlif+X1QQSG661x7GSW7tLbWXes3CFEKiDADC+Cbi/d/Xy5Ud+VGE5
-         c6F2O5Wwfz6e8owlTs87MkmlHKVjBUSWYmeZ9V8NqMw58knsgAujFAU0xIPXXKk0NM2v
-         3hLE0FdfukRdZZIELw/OkvwZoW3uPKTXmDMa8eubTPxt9tmmRsMECtxCm0n+zJoSmZpd
-         XoEw==
-X-Gm-Message-State: AOJu0YywcUkGZyhYeS2rONqMYDxtKcH0qhGudkPU/hut+wWgqgmT/IMH
-	zu0vpR8ajOZEG3u9OZwBREw/QQ==
-X-Google-Smtp-Source: AGHT+IGdRIJrwm6empRgqvj7NO2/h+LJkSkBwYKFMy7QT2+FKypIqAWRXGUD+CFth6DY4lrBsLOk6A==
-X-Received: by 2002:a17:902:82c3:b0:1cf:a512:34c6 with SMTP id u3-20020a17090282c300b001cfa51234c6mr4764387plz.13.1700922590492;
-        Sat, 25 Nov 2023 06:29:50 -0800 (PST)
+        d=1e100.net; s=20230601; t=1700923227; x=1701528027;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0Juvqd6ZcRYFg/BlkA1E3mVJgKUv6X4BvFTJ0d6+v0s=;
+        b=jizteuQOxvRgXloUwavoQs07rXWklD9NQsVsnTEAhgf8yxYZT0lIKbeKYu+9E3v9Dc
+         1Fqm14/qFa0DEK3EaR2yz2xPC5vKiTQf6GDSH1sHHZkmxuG2q/9jrylnyV6rl0yCwjWC
+         UPwsT4kXpnMsVsmP2YZNfNyN5zv5dGROIo00IpvzD2+18ypcsaz9I1WP/k0R012aigTA
+         nmLCGPnLCHAUiXc36y1fslxuwzmNK0bwKvqO2zwz2BVpeZEkpzmM6ChAch8EG08+tZJL
+         Vr5jfFatWuzH9+N42ZBcNBxuCGZzmBi2+XHzxHpdSWreP/bdL9ck4QJkKdmF1CPrAiwS
+         /Tow==
+X-Gm-Message-State: AOJu0YwcWQH2EWzXQ5Sjmb9F1gcuQmdGcn8DLq+MdQYhZQxpppTQZnh2
+	+BWbuc2qCKjReEVpHH08G+EeZQ==
+X-Google-Smtp-Source: AGHT+IGAqnkYBlSwc4PsYmoJPEG6SAYCAY5X+lOhLWcNl/kLojOfYL4epoaH5icpHzHKfAu6fXmPww==
+X-Received: by 2002:a17:90a:de8e:b0:27d:dc9:c67d with SMTP id n14-20020a17090ade8e00b0027d0dc9c67dmr5672421pjv.36.1700923227396;
+        Sat, 25 Nov 2023 06:40:27 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a208:d471:6d33:4b36:d85])
-        by smtp.gmail.com with ESMTPSA id t15-20020a1709027fcf00b001cc6afede3csm5106311plb.7.2023.11.25.06.29.47
+        by smtp.gmail.com with ESMTPSA id h15-20020a17090aea8f00b002802d264240sm4817998pjz.29.2023.11.25.06.40.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Nov 2023 06:29:50 -0800 (PST)
+        Sat, 25 Nov 2023 06:40:27 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
-To: Rob Herring <robh+dt@kernel.org>,
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
+	Conor Dooley <conor+dt@kernel.org>
 Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Update edgeble-neu6 bindings
-Date: Sat, 25 Nov 2023 19:59:13 +0530
-Message-Id: <20231125142914.57459-1-jagan@edgeble.ai>
+Subject: [PATCH 01/10] arm64: dts: rockchip: Drop edgeble-neu6b dcdc-reg4 regulator-init-microvolt
+Date: Sat, 25 Nov 2023 20:10:03 +0530
+Message-Id: <20231125144012.58668-2-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231125144012.58668-1-jagan@edgeble.ai>
+References: <20231125144012.58668-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_062956_005856_AA8CA02B 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231125_064034_326036_A1447840 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,54 +97,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current binding has following compatible combination for SoM, IO board
-- NCM6A: edgeble,neural-compute-module-6a,
-	 edgeble,neural-compute-module-6a-io
-- NCM6B: edgeble,neural-compute-module-6b,
-	 edgeble,neural-compute-module-6b-io
+The 'regulator-init-microvolt' property is not currently supported by
+any driver, it was simply carried on from downstream kernels.
 
-This board topology now changes in final revisions, so a common
-compatible IO board, NCM6A-IO, is made available for both variants
-of SoM: NCM6A and NCM6B, produced by Edgeble AI.
+rk3588-edgeble-neu6b-io.dtb: pmic@0: regulators:dcdc-reg4: Unevaluated properties are not allowed ('regulator-init-microvolt' was unexpected)
 
-With this change, 6b-io is not as available and 6a; 6b SoM's have the
-same compatible IO board as 6a-io. This change is due to the common
-optimised design of the IO board made available now in final revisions,
-which was not the case in initial revisions.
-
-Update the dt-bindings with this new change.
+Remove the invalid property.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
- .../devicetree/bindings/arm/rockchip.yaml          | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 9f6155e4deed..75f23d1d42ae 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -101,16 +101,12 @@ properties:
-           - const: edgeble,neural-compute-module-2      # Edgeble Neural Compute Module 2 SoM
-           - const: rockchip,rv1126
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
+index 017559bba37f..4797260a8a78 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi
+@@ -165,7 +165,6 @@ vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <950000>;
+-				regulator-init-microvolt = <750000>;
+ 				regulator-ramp-delay = <12500>;
  
--      - description: Edgeble Neural Compute Module 6(Neu6) Model A SoM based boards
-+      - description: Edgeble Neural Compute Module 6(Neu6) SoM based boards
-         items:
--          - const: edgeble,neural-compute-module-6a-io  # Edgeble Neural Compute Module 6A IO Board
--          - const: edgeble,neural-compute-module-6a     # Edgeble Neural Compute Module 6A SoM
--          - const: rockchip,rk3588
--
--      - description: Edgeble Neural Compute Module 6(Neu6) Model B SoM based boards
--        items:
--          - const: edgeble,neural-compute-module-6b-io  # Edgeble Neural Compute Module 6B IO Board
--          - const: edgeble,neural-compute-module-6b     # Edgeble Neural Compute Module 6B SoM
-+          - const: edgeble,neural-compute-module-6a-io  # Edgeble NCM6A-IO Board
-+          - enum:
-+              - edgeble,neural-compute-module-6a        # Edgeble Neural Compute Module 6A SoM
-+              - edgeble,neural-compute-module-6b        # Edgeble Neural Compute Module 6B SoM
-           - const: rockchip,rk3588
- 
-       - description: Elgin RV1108 R1
+ 				regulator-state-mem {
 -- 
 2.25.1
 
