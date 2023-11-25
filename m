@@ -4,101 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E429C624B4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 08:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90949C61D9D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 10:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nqlZuTinCx4sJC0Cr4k1ze2QQEO3VeylZ6+ETLNza4Q=; b=a2DnarJB8jvp8I
-	5tB83+220f+wUSXcASbhk0Apt4JnzVvEzxVzWbql2FoAm8WyPUsGJsjr2JwrBwIDyCP5gTfiPkL9W
-	iFomOwYpplN/E78Vb6zXO+ftHPpPzQiqOLH2reGZia3hb/Xmj2JzJONcY3F35garwVCJlHkFN5jez
-	8mdUZPtkFsmb9OgNQ/q4fvYrOJIN7koCeaRwvz8nA0mvHEizGDSJd8a4kyIAZA0TtQS5DYy9gXh0t
-	dNRZ7w2gs7wSf5+oK7sR8sGaRo0eS6vPCe2jkT+8naRfFPXwfm82Fjcwzg4Jk3EzAZEdKXoSXonRT
-	mWu1Sq1gy73UbdiFd6vQ==;
+	List-Owner; bh=BjZOoeFUSdpc215166B6WQDpqLToIHnzoGHTVIdudVM=; b=LvHMarvJDoRXUP
+	WCdzFhj9adfbE+gppR7LRm2ki9MfQK+xVNaZkS0EMeZsGBYpRu2jH1/wssjha6l5x5VfxMoTy0mnI
+	yTehYG9IV6EgjEX2rvde7/Ha0qB8O3iNpWZwrBSYpPlZJUs96VcsAmeXLos2WoglvnBLe1PNSNL54
+	pvPE/AJhiRoKbR5TUSe0kN2SvrpmucsbDxqmVkt5gXufwcsTV5MqacOyXinkJ9LtrsZ/v/pTACbvw
+	XMm3Yk2Ia15HZQ8uNXCU+cW+BPffCYl/J5ASDgbyH+R0MPoVSBpNjYTzvGQA19XcB09MfJbUAhpiO
+	j7Czt2JgRl0Ii6GrAljA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6nwI-008pkc-09;
-	Sat, 25 Nov 2023 08:22:58 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r6pTM-008ysW-1Q;
+	Sat, 25 Nov 2023 10:01:12 +0000
+Received: from forward501b.mail.yandex.net ([178.154.239.145])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6nwB-008pis-1c;
-	Sat, 25 Nov 2023 08:22:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 33FFECE0FD6;
-	Sat, 25 Nov 2023 08:22:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5398C433C8;
-	Sat, 25 Nov 2023 08:22:44 +0000 (UTC)
-Message-ID: <1e9ec452-7870-4f60-a9b4-9fe022707264@xs4all.nl>
-Date: Sat, 25 Nov 2023 09:22:42 +0100
+	id 1r6pTG-008yqv-2u;
+	Sat, 25 Nov 2023 10:01:09 +0000
+Received: from mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net [IPv6:2a02:6b8:c14:6e01:0:640:627f:0])
+	by forward501b.mail.yandex.net (Yandex) with ESMTP id DB35C60FAE;
+	Sat, 25 Nov 2023 13:00:58 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id q0Owa29FViE0-sB5ZypyC;
+	Sat, 25 Nov 2023 13:00:57 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1700906457; bh=3CNf1YUwxPcXKoagyMGFPDxulGH1Yq2+32NGw4WJ5MU=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=DHHfCL7iGm5GVPbUq82yaVHggXkMmPsxE/T3itgPUjMM9Qc8MuvqC5nawCxZdSsw1
+	 yRwAAYQAaPfRihZvyhcAXNT57r2XEHlYFvgsbbFmkV4/IxHE5jZUKmIppWvxnMABNz
+	 94DFUYxjCcq10vL19DtPAJ6AV3anLqh4JDOEICLA=
+Authentication-Results: mail-nwsmtp-smtp-production-main-63.sas.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <52b232e4-7ffa-1d01-efa6-a0af84729483@yandex.com>
+Date: Sat, 25 Nov 2023 11:00:52 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/13] media: rockchip: rga: add support for
- multi-planar formats
-To: Michael Tretter <m.tretter@pengutronix.de>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Shengyu Qu <wiagn233@outlook.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Diederik de Haas
- <didi.debian@cknow.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de
-References: <20230914-rockchip-rga-multiplanar-v2-0-bbfa6abf8bbf@pengutronix.de>
- <b851e2e8-ebcb-40a9-934b-dddcb28a45c9@xs4all.nl>
- <20231124153121.GL592330@pengutronix.de>
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Autocrypt: addr=hverkuil@xs4all.nl; keydata=
- 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
-In-Reply-To: <20231124153121.GL592330@pengutronix.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH RFC v3 22/37] drm/rockchip: inno_hdmi: Remove useless
+ output format
+To: Maxime Ripard <mripard@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>,
+ Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
+ <20231031-kms-hdmi-connector-state-v3-22-328b0fae43a7@kernel.org>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <20231031-kms-hdmi-connector-state-v3-22-328b0fae43a7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_002251_920567_503B4081 
-X-CRM114-Status: GOOD (  31.41  )
+X-CRM114-CacheID: sfid-20231125_020107_484482_D23F0725 
+X-CRM114-Status: GOOD (  22.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,132 +77,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/11/2023 16:31, Michael Tretter wrote:
-> Hi Hans,
-> 
-> On Fri, 24 Nov 2023 14:39:37 +0100, Hans Verkuil wrote:
->> On 13/10/2023 13:00, Michael Tretter wrote:
->>> This is v2 of the series that adds support for the V4L2 multi-planar API
->>> to the Rockchip RGA driver. Once the RGA driver supports the
->>> multi-planar API, it is easier to share buffers with other V4L2 drivers
->>> that also support the multi-planar API and may not expose planar formats
->>> with contiguous planes.
->>>
->>> v2 fixes the smatch warnings and compile errors of v1. Furthermore, now
->>> the DMA mask is set to 32 bits for coherent, too, and the gfp_flags are
->>> configured to ensure that buffers are allocated in the lower 4GB area.
->>>
->>> With non-contiguous planes, the U and V planes may not start at the same
->>> offset as with the continuous planes. Therefore, the RGA driver cannot
->>> rely on its calculation of the plane offsets based on the format and
->>> frame size anymore, but must remember the offsets when it created the
->>> mapping. Therefore, I also reworked how the DMA mapping is handled.
->>>
->>> As a bonus, the RGA driver should now work correctly on devices with
->>> more than 4 GB of memory. Video buffers should now be allocated within
->>> the 4 GB boundary and an import of buffers that have higher addresses
->>> into the driver should fail.
->>>
->>> Patch 1 fixes the swizzling of RGA formats. While testing all formats of
->>> the driver on rk3568, I discovered that the color channels of the RGB
->>> formats are wrong when converting to NV12. I didn't test this on other
->>> SoCs with an RGA and I am not sure, if they behave differently regarding
->>> the color channels. Please report, if this breaks the color conversion
->>> on other SoCs, and I will make this SoC-specific.
->>>
->>> Patches 2 to 6 are the rework the DMA descriptor handling for the RGA
->>> MMU. The patches clean up, how the driver uses the DMA API, and make the
->>> creation of the descriptor list more explicit. Furthermore, the driver
->>> is changed to keep the mapping per video buffer instead of using a
->>> single mapping that is updated with every buffer.
->>>
->>> Patches 7 to 11 prepare the driver for the multi-planar API including a
->>> cleanup of the format handling in the buffer, and finally switch to the
->>> multi-planar API.
->>
->> Switching over to the multi-planar API is always a bit scary. How did you
->> test this? Using gstreamer? Other apps?
-> 
-> I tested with GStreamer. My use case is using the RGA to convert RGB Buffers
-> to NV12 to feed them to a Hantro JPEG encoder. I also tried to separate the
-> preparatory work, the switch to the multi-planar API, and the addition of
-> actually multi-planar formats into separate patches.
-> 
-> Is there anything that I should take special care of or explicitly test, when
-> switching the driver to the multi-planar API?
-
-No, I just wanted to have a better overview of how this driver is used and
-how you tested it.
-
-Regards,
-
-	Hans
-
-> 
-> Michael
-> 
->>
->> Regards,
->>
->> 	Hans
->>
->>>
->>> Patch 12 updates the code that creates the DMA-descriptor mapping to
->>> correctly handle buffers with multiple planes. The driver has to iterate
->>> all planes and make them the continuous for the RGA.
->>>
->>> Patch 13 enables the NV12M format, which is the multi-planar variant of
->>> the NV12 format.
->>>
->>> Michael
->>>
->>> Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
->>> ---
->>> Changes in v2:
->>> - Fix smatch warnings
->>> - Fix cast to dst_mmu_pages/src_mmu_pages to fix compile error in Patch 2
->>> - Remove check for upper_32_bits when filling the DMA descriptor table
->>> - Remove useless dma_sync_single_for_device()
->>> - Set DMA mask for DMA coherent
->>> - Set gfp_flags to __GFP_DMA32
->>> - Link to v1: https://lore.kernel.org/r/20230914-rockchip-rga-multiplanar-v1-0-abfd77260ae3@pengutronix.de
->>>
->>> ---
->>> Michael Tretter (13):
->>>       media: rockchip: rga: fix swizzling for RGB formats
->>>       media: rockchip: rga: extract helper to fill descriptors
->>>       media: rockchip: rga: allocate DMA descriptors per buffer
->>>       media: rockchip: rga: split src and dst buffer setup
->>>       media: rockchip: rga: pre-calculate plane offsets
->>>       media: rockchip: rga: set dma mask to 32 bits
->>>       media: rockchip: rga: use clamp() to clamp size to limits
->>>       media: rockchip: rga: use pixelformat to find format
->>>       media: rockchip: rga: add local variable for pix_format
->>>       media: rockchip: rga: use macros for testing buffer type
->>>       media: rockchip: rga: switch to multi-planar API
->>>       media: rockchip: rga: rework buffer handling for multi-planar formats
->>>       media: rockchip: rga: add NV12M support
->>>
->>>  drivers/media/platform/rockchip/rga/rga-buf.c | 162 ++++++++++++++++------
->>>  drivers/media/platform/rockchip/rga/rga-hw.c  | 146 ++++++++++++--------
->>>  drivers/media/platform/rockchip/rga/rga.c     | 189 ++++++++++++--------------
->>>  drivers/media/platform/rockchip/rga/rga.h     |  35 ++++-
->>>  4 files changed, 328 insertions(+), 204 deletions(-)
->>> ---
->>> base-commit: 2c1bae27df787c9535e48cc27bbd11c3c3e0a235
->>> change-id: 20230914-rockchip-rga-multiplanar-0d7c79b1ba93
->>>
->>> Best regards,
->>
->>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWF4aW1lLAoKSW4gc3RlYWQgb2YgZnVydGhlciBjcmlwcGxpbmdSb2NrY2hpcCBIRE1JIGRy
+aXZlcnMgb25lIGNvdWxkIGFsc28gbWFrZSBpdCBmdW5jdGlvbmFsIGJhc2VkwqAgb24gRURJRCBp
+bmZvLgoKVG8gc3RhcnQgd2l0aCB0aGUgb3V0cHV0IGNvdWxkIHlvdSB0dXJuIFJHQjg4OCBpbnB1
+dCBhbmQgc3dpdGNoIGJldHdlZW4KClJHQjQ0NCwgWUNCQ1I0NDQgYW5kIFlDQkNSNDIyIG91dHB1
+dC4KCkpvaGFuCgpPbiAxMC8zMS8yMyAxNzo0OCwgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiBTaW1p
+bGFybHkgdG8gdGhlIGlucHV0IGZvcm1hdCwgdGhlIGRyaXZlciBoYXMgYSBsb3Qgb2YgY29kZSB0
+byBkZWFsIHdpdGgKPiB2YXJpb3VzIG91dHB1dCBmb3JtYXQsIGJ1dCB0aGUgZHJpdmVyIGhhcmRj
+b2RlcyBpdCB0byBSR0IgYWx3YXlzLgo+Cj4gTGV0J3MgZ2V0IHJpZCBvZiB0aGUgZGVhZCBjb2Rl
+Lgo+Cj4gU2lnbmVkLW9mZi1ieTogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+
+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgfCA1NyArKysrLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0
+aW9ucygrKSwgNTEgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2lubm9faGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRt
+aS5jCj4gaW5kZXggZTA2OTZhYjE2ZGEzLi4wYzZjNTUwZTBjZTcgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2lubm9faGRtaS5jCj4gQEAgLTI4LDcgKzI4LDYgQEAKPiAgI2luY2x1ZGUgImlu
+bm9faGRtaS5oIgo+ICAKPiAgc3RydWN0IGhkbWlfZGF0YV9pbmZvIHsKPiAtCXVuc2lnbmVkIGlu
+dCBlbmNfb3V0X2Zvcm1hdDsKPiAgCXVuc2lnbmVkIGludCBjb2xvcmltZXRyeTsKPiAgfTsKPiAg
+Cj4gQEAgLTI5NiwyNiArMjk1LDE0IEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX2NvbmZpZ192aWRl
+b19hdmkoc3RydWN0IGlubm9faGRtaSAqaGRtaSwKPiAgCXJjID0gZHJtX2hkbWlfYXZpX2luZm9m
+cmFtZV9mcm9tX2Rpc3BsYXlfbW9kZSgmZnJhbWUuYXZpLAo+ICAJCQkJCQkgICAgICAmaGRtaS0+
+Y29ubmVjdG9yLAo+ICAJCQkJCQkgICAgICBtb2RlKTsKPiAtCj4gLQlpZiAoaGRtaS0+aGRtaV9k
+YXRhLmVuY19vdXRfZm9ybWF0ID09IEhETUlfQ09MT1JTUEFDRV9ZVVY0NDQpCj4gLQkJZnJhbWUu
+YXZpLmNvbG9yc3BhY2UgPSBIRE1JX0NPTE9SU1BBQ0VfWVVWNDQ0Owo+IC0JZWxzZSBpZiAoaGRt
+aS0+aGRtaV9kYXRhLmVuY19vdXRfZm9ybWF0ID09IEhETUlfQ09MT1JTUEFDRV9ZVVY0MjIpCj4g
+LQkJZnJhbWUuYXZpLmNvbG9yc3BhY2UgPSBIRE1JX0NPTE9SU1BBQ0VfWVVWNDIyOwo+IC0JZWxz
+ZQo+IC0JCWZyYW1lLmF2aS5jb2xvcnNwYWNlID0gSERNSV9DT0xPUlNQQUNFX1JHQjsKPiArCWZy
+YW1lLmF2aS5jb2xvcnNwYWNlID0gSERNSV9DT0xPUlNQQUNFX1JHQjsKPiAgCj4gIAlyZXR1cm4g
+aW5ub19oZG1pX3VwbG9hZF9mcmFtZShoZG1pLCByYywgJmZyYW1lLCBJTkZPRlJBTUVfQVZJLCAw
+LCAwLCAwKTsKPiAgfQo+ICAKPiAgc3RhdGljIGludCBpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2Nz
+YyhzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICB7Cj4gLQlzdHJ1Y3QgaGRtaV9kYXRhX2luZm8g
+KmRhdGEgPSAmaGRtaS0+aGRtaV9kYXRhOwo+IC0JaW50IGMwX2MyX2NoYW5nZSA9IDA7Cj4gLQlp
+bnQgY3NjX2VuYWJsZSA9IDA7Cj4gLQlpbnQgY3NjX21vZGUgPSAwOwo+IC0JaW50IGF1dG9fY3Nj
+ID0gMDsKPiAgCWludCB2YWx1ZTsKPiAtCWludCBpOwo+ICAKPiAgCS8qIElucHV0IHZpZGVvIG1v
+ZGUgaXMgU0RSIFJHQjI0Yml0LCBkYXRhIGVuYWJsZSBzaWduYWwgZnJvbSBleHRlcm5hbCAqLwo+
+ICAJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9WSURFT19DT05UUkwxLCB2X0RFX0VYVEVSTkFMIHwK
+PiBAQCAtMzI3LDQzICszMTQsMTMgQEAgc3RhdGljIGludCBpbm5vX2hkbWlfY29uZmlnX3ZpZGVv
+X2NzYyhzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICAJCXZfVklERU9fSU5QVVRfQ1NQKDApOwo+
+ICAJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9WSURFT19DT05UUkwyLCB2YWx1ZSk7Cj4gIAo+IC0J
+aWYgKEhETUlfQ09MT1JTUEFDRV9SR0IgPT0gZGF0YS0+ZW5jX291dF9mb3JtYXQpIHsKPiAtCQl2
+YWx1ZSA9IHZfU09GX0RJU0FCTEUgfCB2X0NPTE9SX0RFUFRIX05PVF9JTkRJQ0FURUQoMSk7Cj4g
+LQkJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9WSURFT19DT05UUkwzLCB2YWx1ZSk7Cj4gLQo+IC0J
+CWhkbWlfbW9kYihoZG1pLCBIRE1JX1ZJREVPX0NPTlRSTCwKPiAtCQkJICBtX1ZJREVPX0FVVE9f
+Q1NDIHwgbV9WSURFT19DMF9DMl9TV0FQLAo+IC0JCQkgIHZfVklERU9fQVVUT19DU0MoQVVUT19D
+U0NfRElTQUJMRSkgfAo+IC0JCQkgIHZfVklERU9fQzBfQzJfU1dBUChDMF9DMl9DSEFOR0VfRElT
+QUJMRSkpOwo+IC0JCXJldHVybiAwOwo+IC0JfQo+IC0KPiAtCWlmIChkYXRhLT5jb2xvcmltZXRy
+eSA9PSBIRE1JX0NPTE9SSU1FVFJZX0lUVV82MDEpIHsKPiAtCQlpZiAoZGF0YS0+ZW5jX291dF9m
+b3JtYXQgPT0gSERNSV9DT0xPUlNQQUNFX1lVVjQ0NCkgewo+IC0JCQljc2NfbW9kZSA9IENTQ19S
+R0JfMF8yNTVfVE9fSVRVNjAxXzE2XzIzNV84QklUOwo+IC0JCQlhdXRvX2NzYyA9IEFVVE9fQ1ND
+X0RJU0FCTEU7Cj4gLQkJCWMwX2MyX2NoYW5nZSA9IEMwX0MyX0NIQU5HRV9ESVNBQkxFOwo+IC0J
+CQljc2NfZW5hYmxlID0gdl9DU0NfRU5BQkxFOwo+IC0JCX0KPiAtCX0gZWxzZSB7Cj4gLQkJaWYg
+KGRhdGEtPmVuY19vdXRfZm9ybWF0ID09IEhETUlfQ09MT1JTUEFDRV9ZVVY0NDQpIHsKPiAtCQkJ
+Y3NjX21vZGUgPSBDU0NfUkdCXzBfMjU1X1RPX0lUVTcwOV8xNl8yMzVfOEJJVDsKPiAtCQkJYXV0
+b19jc2MgPSBBVVRPX0NTQ19ESVNBQkxFOwo+IC0JCQljMF9jMl9jaGFuZ2UgPSBDMF9DMl9DSEFO
+R0VfRElTQUJMRTsKPiAtCQkJY3NjX2VuYWJsZSA9IHZfQ1NDX0VOQUJMRTsKPiAtCQl9Cj4gLQl9
+Cj4gLQo+IC0JZm9yIChpID0gMDsgaSA8IDI0OyBpKyspCj4gLQkJaGRtaV93cml0ZWIoaGRtaSwg
+SERNSV9WSURFT19DU0NfQ09FRiArIGksCj4gLQkJCSAgICBjb2VmZl9jc2NbY3NjX21vZGVdW2ld
+KTsKPiAtCj4gLQl2YWx1ZSA9IHZfU09GX0RJU0FCTEUgfCBjc2NfZW5hYmxlIHwgdl9DT0xPUl9E
+RVBUSF9OT1RfSU5ESUNBVEVEKDEpOwo+ICsJdmFsdWUgPSB2X1NPRl9ESVNBQkxFIHwgdl9DT0xP
+Ul9ERVBUSF9OT1RfSU5ESUNBVEVEKDEpOwo+ICAJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9WSURF
+T19DT05UUkwzLCB2YWx1ZSk7Cj4gLQloZG1pX21vZGIoaGRtaSwgSERNSV9WSURFT19DT05UUkws
+IG1fVklERU9fQVVUT19DU0MgfAo+IC0JCSAgbV9WSURFT19DMF9DMl9TV0FQLCB2X1ZJREVPX0FV
+VE9fQ1NDKGF1dG9fY3NjKSB8Cj4gLQkJICB2X1ZJREVPX0MwX0MyX1NXQVAoYzBfYzJfY2hhbmdl
+KSk7Cj4gIAo+ICsJaGRtaV9tb2RiKGhkbWksIEhETUlfVklERU9fQ09OVFJMLAo+ICsJCSAgbV9W
+SURFT19BVVRPX0NTQyB8IG1fVklERU9fQzBfQzJfU1dBUCwKPiArCQkgIHZfVklERU9fQVVUT19D
+U0MoQVVUT19DU0NfRElTQUJMRSkgfAo+ICsJCSAgdl9WSURFT19DMF9DMl9TV0FQKEMwX0MyX0NI
+QU5HRV9ESVNBQkxFKSk7Cj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiBAQCAtNDI1LDggKzM4Miw2
+IEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX3NldHVwKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWksCj4g
+IAlzdHJ1Y3QgZHJtX2Rpc3BsYXlfaW5mbyAqZGlzcGxheSA9ICZoZG1pLT5jb25uZWN0b3IuZGlz
+cGxheV9pbmZvOwo+ICAJdTggdmljID0gZHJtX21hdGNoX2NlYV9tb2RlKG1vZGUpOwo+ICAKPiAt
+CWhkbWktPmhkbWlfZGF0YS5lbmNfb3V0X2Zvcm1hdCA9IEhETUlfQ09MT1JTUEFDRV9SR0I7Cj4g
+LQo+ICAJaWYgKCh2aWMgPT0gNikgfHwgKHZpYyA9PSA3KSB8fAo+ICAJICAgICh2aWMgPT0gMjEp
+IHx8ICh2aWMgPT0gMjIpIHx8Cj4gIAkgICAgKHZpYyA9PSAyKSB8fCAodmljID09IDMpIHx8Cj4K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
