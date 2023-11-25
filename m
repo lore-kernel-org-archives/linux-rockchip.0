@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0387AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 18:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB63C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 18:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sTH8YqJBqQLwz7an/fdVKZND02qxwn/G7zzTFPvJhKU=; b=m0nmCz2QDy8wmV
-	A95TjajN+1LhwKkgvZTAoDFuq2Zy+lyekiDYFR8YZ3txlN+xOr+Og1NrGRI1+erJAD6I1v3+9nrFr
-	rN2fMlsR+Gn9vwqPIJpllnKmnCydVcKFHLzH5DEXyzYn5P2XrFOIg0/ysJLzi5WiqxDM9+Vx3+PDZ
-	G4FjNyWnvV4+DbKp7IBixk1QeuEKZ3HJgBr2ozmW3rb3dULYaFTzs2pN+89sUSsNR8pk6hgHVm/KX
-	QQCedHXQp+9j74N/EMtlBzkDalCwgvsfwAsBAESOsH2I1xKNt1PFG/XM7HhS/TnmUVDwPPLoysP0V
-	xyAmeKiNL6mTRXbt8Qrg==;
+	List-Owner; bh=79x7fq8og0qzWM1iQJ4/5z7qwBcjiBqOs9UrXbex6DI=; b=MsqZvUkbNr0ypS
+	1BhHTnIoESnGyWD8/MxwojW470LfD5iBuRdl5Xbtyco+w1mnNZ8C7eWlVcN+SI7ThqJzD8Pt82I59
+	Zp4lXU/ph0hagIuqqenywBcTlSEj3MJo/GaHeXOoPG/qxLnt/h+57T43Npc22JBCkjBsfOHFlWYLF
+	Edi+dTGynBly3h5oIIw5YDQXYd8VqaJUUImL92HMHVbqUys0q9T8goVWFv3XAKxkUD/KayAD7LXQ7
+	ZkhAIhyiDMBTxBgTo/MKCq/DfRhN+cywhrQImEewEFj4CIHD/hYiXzbOLzCq3wVr97I5rdIIhlS3u
+	M3CuktRUZxStY4qQQtOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6x6d-009baJ-1n;
-	Sat, 25 Nov 2023 18:10:15 +0000
+	id 1r6x6Z-009bZR-1i;
+	Sat, 25 Nov 2023 18:10:11 +0000
 Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6x6b-009bZd-1i
+	id 1r6x6X-009bYj-0D
 	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Nov 2023 18:10:14 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a0bdf4eeb46so62497866b.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 10:10:13 -0800 (PST)
+	Sat, 25 Nov 2023 18:10:10 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a02d91ab195so400400666b.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 10:10:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700935812; x=1701540612; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=o4slUddOEsdIU8ZrompM5mO37k27t3zC9MuWLP8vUw4=;
-        b=xl/lfej5/ay1emhQfbI0Tb1l2cpOmJv0YIlb1pCTCcZrxMWOLAPeL682oSZjih/RFP
-         P18nUVEBiwVrliEC3kbVRELVC2A7Kl4SDZ+uICbkeKa9DNSFg00tRM2lJ6hS9lNKOqoh
-         iQXTfr6gIv1oH/28LpyhmhOEnlpKb+PWhMN5dMNUD4U5qVkmdTVL09B5DgVbzYCWHiAC
-         9EaXfqiEY6Rn46Zzpoc0QRi9kXLQx7wXp+dSnnG4DTAxt4XBfm4TWlOV7oB9y6FELIfJ
-         +/PiXnyStuADrqUxuJfigFU+lcnjl2FktjAOQV7SiqpO8i2Cv9nHvrhISubLyyGYJOOl
-         KgoA==
+        d=linaro.org; s=google; t=1700935804; x=1701540604; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=fCBIJ5U7MscM2oaes+QSv/GTFeBB6PjYulOIUFZtxjM=;
+        b=SIubEaSnuo21hnDxeTsFnEQOsAJohFOjWA1VwQoxFjDxaNHYlspKi9cli2K41B72h2
+         5bXuwFovZJ8EwOYxWIaQywibcg7TUENfU5FDahNDNem23JFSMLzy4ecqd5Y9R/OZP8xL
+         y5C0BUphcmg2eszX2VHjMX/3Vxt1O+5b6wAbc6U2UF3VIu09H8UcthKUc/U5xT4CryKE
+         4dS1eQChthrhDFu2JKodkUloSq4zPxBTRiFenO7XUwHNgPyTNVN15hiNWiuE614QbYgA
+         qf8dhohZoFSRSKczL89i/bgMjRRYvUyO8H56amy4idtrkY4JM/zrWxtO4Xp1/086nZpS
+         IyOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700935812; x=1701540612;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=o4slUddOEsdIU8ZrompM5mO37k27t3zC9MuWLP8vUw4=;
-        b=TdGVA1KyPboDNsQBB2J3Kniz2eXXbdtScmv2u3nymVuZ9ECnXVPSLOGTaZealc3ABH
-         02YWXbRXZjyukMQrVcySspkcUuO0jrAKnrsyr4R+BxTCtnuT2BDj/4YO/PA4lYdmNU11
-         cajqGLFGpa40Y1lYZ2aQQCMVa0M994aEir+w8hy8/hKtkW93r0lhmqSMgySoFUEZpUTx
-         kTYPQQdaFuy/SrjD6Npiv63JNad5ZsT+cW4S2cOZV5vAOxtWlbgnHqDImDysDmUoyVGB
-         KIv+kAlH4D3fCRnhwgH7cczFnIF8EPiJahYitNvsXm3n2Yaz2GWKxigwfkfB+sYSHjkf
-         jtPQ==
-X-Gm-Message-State: AOJu0YzZPem/UGThqqS4kqhhs0l8do118ToeJOSIt9Hki4WHU8cJaVII
-	/RbiTXxl84pIB2Quu67Q27HG5A==
-X-Google-Smtp-Source: AGHT+IEUFBGskA++M5xhTQ9ST8Y6c3fSiMcaFaYOMGSJZRJBKpckiyKY/iDZpvL4qF3pT49eOWZxgQ==
-X-Received: by 2002:a17:906:4a4b:b0:a01:96c2:67cc with SMTP id a11-20020a1709064a4b00b00a0196c267ccmr5100877ejv.50.1700935812303;
-        Sat, 25 Nov 2023 10:10:12 -0800 (PST)
+        d=1e100.net; s=20230601; t=1700935804; x=1701540604;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fCBIJ5U7MscM2oaes+QSv/GTFeBB6PjYulOIUFZtxjM=;
+        b=tsIhSdGboSGz7HA7LVxqR8po0m+TpEr0IdZJwWdCVxmpfcX0+uCCz+zWgarFstYocv
+         9aJmV1s5wv38leeL+qbBdE9YhxkwbslxB6u2nDn3Q3QD1iOGmnygAHQqHQRV0p2sf4QD
+         POm0iO6+HX7EePtQnSrnTJ0XJpn8ajNckyYIsxwi3yqDni0Rd1pP4jFGh0KGW2F3mEnI
+         cete+zi8kTN3LJW5gzG88j7nwMuHXaIcRA54z0Ha8OJmnGlzzm5SqnvOBN4545WgvCxo
+         L/IJn13Pcv7FBz3CBbZEMHy18IZHvDBLd7LjN7jVu7y30pOqY9sjDsSpy2IR3lBKkbcw
+         TvvQ==
+X-Gm-Message-State: AOJu0YzEJXn8Rht0MJyhYyX7GBgrJHIteajJKdFZ6ZeQSoCcJrne1bnI
+	dXs3MJH04RjM+odW/DbAEAfNLw==
+X-Google-Smtp-Source: AGHT+IF6ifCIOsPdjH/f/ZZJTQOMESqLlRcOXMqvpuXDjffsmtQ9MR8tIMd5XgfgbhQ8nKw1Zjwa0g==
+X-Received: by 2002:a17:907:1315:b0:a04:ce3c:937e with SMTP id vj21-20020a170907131500b00a04ce3c937emr4257516ejb.45.1700935803968;
+        Sat, 25 Nov 2023 10:10:03 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id p8-20020a170906b20800b00a0cd9d89a00sm499486ejz.151.2023.11.25.10.10.11
+        by smtp.gmail.com with ESMTPSA id p8-20020a170906b20800b00a0cd9d89a00sm499486ejz.151.2023.11.25.10.10.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 25 Nov 2023 10:10:11 -0800 (PST)
-Message-ID: <4808901c-9b8d-4e65-b2b7-51401d03314d@linaro.org>
-Date: Sat, 25 Nov 2023 19:10:11 +0100
+        Sat, 25 Nov 2023 10:10:03 -0800 (PST)
+Message-ID: <13396ed1-36db-4bf5-91d4-d36aa8414212@linaro.org>
+Date: Sat, 25 Nov 2023 19:10:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Use NCM6A-IO board for
- edgeble-neu6b
-Content-Language: en-US
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Update edgeble-neu6
+ bindings
 To: Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20231125142914.57459-1-jagan@edgeble.ai>
- <20231125142914.57459-2-jagan@edgeble.ai>
+Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -121,11 +121,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231125142914.57459-2-jagan@edgeble.ai>
+In-Reply-To: <20231125142914.57459-1-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_101013_569376_0E1398E6 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231125_101009_177367_0AF6A124 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,16 +142,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 25/11/2023 15:29, Jagan Teki wrote:
-> Edgeble AI 6TOPS board topology is now changed in final revisions
-> as a compatible IO board, NCM6A-IO, is made available for both
-> variants of SoM: NCM6A and NCM6B.
+> Current binding has following compatible combination for SoM, IO board
+> - NCM6A: edgeble,neural-compute-module-6a,
+> 	 edgeble,neural-compute-module-6a-io
+> - NCM6B: edgeble,neural-compute-module-6b,
+> 	 edgeble,neural-compute-module-6b-io
 > 
-> With this change, 6b-io is not as available and 6a; 6b SoM's have
-> the same compatible IO board as 6a-io. This change is due to the
-> common optimised design of the IO board made available now in
-> final revisions, which was not the case in initial revisions.
+> This board topology now changes in final revisions, so a common
+> compatible IO board, NCM6A-IO, is made available for both variants
+> of SoM: NCM6A and NCM6B, produced by Edgeble AI.
+> 
+> With this change, 6b-io is not as available and 6a; 6b SoM's have the
+> same compatible IO board as 6a-io. This change is due to the common
+> optimised design of the IO board made available now in final revisions,
+> which was not the case in initial revisions.
+> 
+> Update the dt-bindings with this new change.
+> 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
