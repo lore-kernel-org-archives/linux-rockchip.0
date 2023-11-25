@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA81EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 14:41:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28DEC4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 14:41:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ObXnOoIV+OprNwsqlu1dyXwCOLkrJniTFQtB/SNpipA=; b=aZXbYxoAad/+9V
-	5WdznCOfh5snARyUDr7Mb6tTabHdkyIy0HavsNua2ymt3w1W69RQRLStCfW9kQWwrOf+4oKxua3QM
-	efffeKInCCWniBbw6pSdSv9Xz8qRPtwyj/zcpAG9Gfrvp0o4pvNssUXqF92Qv/mhorRzb2GcAJArc
-	PjnjAEUNV6kC6nCDv79xfyTkRkIcgiGaY5huDnrxCg9NVnDN6FoLTentWSm7//kTxZW9wddt73q29
-	GJJIjYtSOIXa5WSDEatR4jIIA0yZdXewDgaOxGzQ9Q+fnEtLINVQ3okzlDhk3YaHCUkITidOmHpmw
-	9qZUpSUnq87LDpxmSldg==;
+	List-Owner; bh=IO51Oh+mfqlxUG+Zz6N0IBymywalz7EkKzN2knJEk3E=; b=4bRam95sky00NJ
+	CqMsQhB3C54GyHyFx7Yvj9q6hoRKE5LJ9eu03l60aiq0/fMnvKGyxVp5kuVl5HVZxWNxyfEDdWiK8
+	FKICMdIs38C/hKErVFjK6hSYkIrq3hAiVK2Z3Dn9qdpa4XcE+3PVevLVhVxc6O0ugPB21xMsLSb8M
+	UhyQWVdQ7VuWUZaCgIuh4i+U9G8QU2XAUMrKag9dSilRNH8g8xiH2Ec2XEphFzWRoNyj97OvGNT8G
+	Sun4/YFrb9/vX46GZXh64Rc+5wJMaeofVcDYQYiPrvT2thjy6RAmhDEPp++g5KGkSQnd6MQzaRnli
+	Phmrn6fQnBfVOfgTE0Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6tq6-009MfE-01;
-	Sat, 25 Nov 2023 14:40:58 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1r6tqD-009Mkv-2Y;
+	Sat, 25 Nov 2023 14:41:05 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6tpn-009MTg-1i
+	id 1r6tpp-009MV8-0s
 	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Nov 2023 14:40:41 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-5bd5809f63aso1693815a12.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 06:40:38 -0800 (PST)
+	Sat, 25 Nov 2023 14:40:43 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-285b3a14b12so99905a91.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 06:40:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700923237; x=1701528037; darn=lists.infradead.org;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700923241; x=1701528041; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NzlBnLufD7oVNcRvY6JWcDhMriiui9QvM7K18mFiWxk=;
-        b=iK0mvEDCvv31mzdNjjTLQcKC3Rq1ztmIbMoBq5T4r+Qm1msj7MMym7GBur5vLBf/EH
-         tLo71oeAoj0tsf82BeWGxDWqoZRo1KTZRkRAipbBQq9XjmDl9+I2SITMGJ1ZRdcqmhSl
-         q2I5DDPSTPUH7jjiHVGjEV/9Rv8ZIB2XZhVqkadwElzrnWbPKkpFDwVIKd/M46JTqYqW
-         Fb22Zfwavo5NrqbrcxPpxcH/XoGTuR4vYATNRG8EEe+mzd3SjjltnabsWtSxU4yqKTFS
-         7HjHqyVVztsfzbeOA9jUVNViaYDnNZ2GO+nj8jhPVjFHmfsUmejBvR9y/JwEZrCIX5lR
-         19Ig==
+        bh=h4Qu2/iPJ+8lfLODFdOmLYjV+vpXk5th/WNCXHsVH98=;
+        b=XlY+t8nbBK243y5aMkAYC50N9gpAE0trep/hMToDAJjmFlPxQ4Oijhp7we0NcAr3eK
+         SoHeFoLOeXVSXm+1LUSh6lmFzbhUXrvPBAOlGydVDV4fpNyPKKJBlrcSb3yVkJ0MyXxV
+         8vOfWcSp3zbGnWsE1yYJNYlxaAG4FSZmGrBM3PKCmRAiZ78C1M7I8fuwRi7r92ZoGYOm
+         lRUp/F2bgF6oejAGYG3eNYJCzymtkhFjvPOYjcQMyae38iNQOezuS9z7rxP0zIGIuM2K
+         UxRvruVMvzgthEPcqEpg7vXkjqfvDjx7BM8Lzw7mN0hAIgaOH3IZFqDingOAlTdOK3ja
+         ldXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700923237; x=1701528037;
+        d=1e100.net; s=20230601; t=1700923241; x=1701528041;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NzlBnLufD7oVNcRvY6JWcDhMriiui9QvM7K18mFiWxk=;
-        b=j3h3pP/PmIttTurRfcl3h7ZawaLnikI7ApWIsrFDGb+QxGRtJjWY8xEmVXu6wZowLq
-         8pF0WA/6IToPTTHXHtmzjZlrZUTNGWCEzdtsbv+slT4nBLVVE/xQTylpgiytF/OPNA1e
-         HNeTbhujBNygOtCZK+aVo8FXFLGzzMsitASUANTwaZhOp+morwI8w6UD9K6uIKRfl7S1
-         /3PAV9WifoOEWaVKYBcNSkWOzd7BN66xP89n5vkjvQdAiuP2tHVBY8uQvwYO+t1ZH+7E
-         +QqGvdy9Gb91Ilx//1rsweEjzxvsmVAciF0OgjVIjxTUzlh6gFUON08/eHhIWjSyrhWT
-         QW4A==
-X-Gm-Message-State: AOJu0YxOQ97b9eylpJE7hwOpuTBCklebjVnwhsoyi9pV+TgYwQCTTi/P
-	tB2LN1IA4Qmpa9x/9CWtHqILqQ==
-X-Google-Smtp-Source: AGHT+IGUpx2dWwwIti3/hitS3s5W0kZRx0FGyaL5LsZeccvgh+YQXkgHvKMCz7C8b4W9uHNPBzOZJg==
-X-Received: by 2002:a17:90b:3c2:b0:285:772b:91a3 with SMTP id go2-20020a17090b03c200b00285772b91a3mr6280913pjb.27.1700923237448;
-        Sat, 25 Nov 2023 06:40:37 -0800 (PST)
+        bh=h4Qu2/iPJ+8lfLODFdOmLYjV+vpXk5th/WNCXHsVH98=;
+        b=Bzoy00/wK8R6sJ1Os9cVxvpkERuA5M8mDg7GiGfw3ccGUQ0jH08HsIyc11LNAYQEoA
+         YrI60dmzKuPvBi13WLMBdW5LD+EH1h75PN6LOsh7yQOZpBnAXHHZiFI4ToyeF2kAPeCm
+         d8fQmNSlGvYTlLDmXGukfvbQxCkuK7OxHxuFbiX3e6oeHpjBoKlyv/N1/Fk+h1E56un5
+         NTmJurbUjJM88ItnwwoozxEroaLyhPn6ou6WGSEh4ZXQH6tkW7KiDHaudofT5J6cYwfg
+         e0LzYCXIXHFb1CX7JGoIepJevVj5hB9NRXYosPp2/vlbn30wA/Hc0hkCCgE1PCCQcAB2
+         3Nng==
+X-Gm-Message-State: AOJu0YxdHSlWBInaHR8X8YaBXmhNIfX0UjnJMmSLik8/YaK+LmRU4cs/
+	2A9/0YesG0oI68moG+blo2MyS6mf7RGztL8NZ0/7rA==
+X-Google-Smtp-Source: AGHT+IHgCv3Ti2Skt84I/b4RLyueqebP8Z4X1powl6WqwvVIRiu6b7BIQfPUQNpzNFSpz+zfLmv4JQ==
+X-Received: by 2002:a17:90b:3b92:b0:285:a72f:966f with SMTP id pc18-20020a17090b3b9200b00285a72f966fmr1282966pjb.46.1700923240772;
+        Sat, 25 Nov 2023 06:40:40 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a208:d471:6d33:4b36:d85])
-        by smtp.gmail.com with ESMTPSA id h15-20020a17090aea8f00b002802d264240sm4817998pjz.29.2023.11.25.06.40.34
+        by smtp.gmail.com with ESMTPSA id h15-20020a17090aea8f00b002802d264240sm4817998pjz.29.2023.11.25.06.40.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Nov 2023 06:40:37 -0800 (PST)
+        Sat, 25 Nov 2023 06:40:40 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 04/10] arm64: dts: rockchip: Add Edgeble NCM6A WiFi6 Overlay
-Date: Sat, 25 Nov 2023 20:10:06 +0530
-Message-Id: <20231125144012.58668-5-jagan@edgeble.ai>
+Subject: [PATCH 05/10] arm64: dts: rockchip: Add vdd_cpu_big reg to rk3588-edgeble-ncm6
+Date: Sat, 25 Nov 2023 20:10:07 +0530
+Message-Id: <20231125144012.58668-6-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231125144012.58668-1-jagan@edgeble.ai>
 References: <20231125144012.58668-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_064039_595526_73FBA198 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20231125_064041_336508_BFE9DF1F 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,94 +97,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edgeble NCM6A SOM has on-module M.2 1216-compatible WiFi modules.
+The RK8602 and RK8603 voltage regulators on the Rock 5B board provide
+the power lines vdd_cpu_big0 and vdd_cpu_big1, respectively.
 
-Currently, AW-XM548NF WiFi6 and Intel 8260D2W WiFi5 modules are supported.
-
-WiFi modules are fixed on SoM, not pluggable M.2 slots, so different SoM's
-for each type of WiFi module.
+Add the necessary device tree nodes and bind them to the corresponding
+CPU big core nodes.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../rockchip/rk3588-edgeble-neu6a-wifi.dtso   | 56 +++++++++++++++++++
- 2 files changed, 57 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
+ .../rockchip/rk3588-edgeble-neu6a-common.dtsi | 56 +++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index f969618da352..543a2f68b654 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
-new file mode 100644
-index 000000000000..e9a3855e8752
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
-@@ -0,0 +1,56 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
-+ *
-+ * DT-overlay for Edgeble On-SoM WiFi6/BT M.2 1216 modules,
-+ * - AW-XM548NF
-+ * - Intel 8260D2W
-+ */
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
+index e141dc84654a..961a80014686 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
+@@ -38,6 +38,22 @@ vcc_1v1_nldo_s3: vcc-1v1-nldo-s3-regulator {
+ 	};
+ };
+ 
++&cpu_b0 {
++	cpu-supply = <&vdd_cpu_big0_s0>;
++};
 +
-+/dts-v1/;
-+/plugin/;
++&cpu_b1 {
++	cpu-supply = <&vdd_cpu_big0_s0>;
++};
 +
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
++&cpu_b2 {
++	cpu-supply = <&vdd_cpu_big1_s0>;
++};
 +
-+&{/} {
-+	vcc3v3_pcie2x1l1: vcc3v3-pcie2x1l1-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>; /* WIFI_3V3_EN */
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie2_1_vcc3v3_en>;
-+		regulator-name = "vcc3v3_pcie2x1l1";
++&cpu_b3 {
++	cpu-supply = <&vdd_cpu_big1_s0>;
++};
++
+ &cpu_l0 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+@@ -54,6 +70,46 @@ &cpu_l3 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+ 
++&i2c0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c0m2_xfer>;
++	status = "okay";
++
++	vdd_cpu_big0_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		reg = <0x42>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_cpu_big0_s0";
 +		regulator-always-on;
 +		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <50000>;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <1050000>;
++		regulator-ramp-delay = <2300>;
 +		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
 +
-+&combphy2_psu {
-+	status = "okay";
-+};
-+
-+/* WiFi6 */
-+&pcie2x1l1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie2_1_rst>;
-+	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>; /* PCIE20_2_WIFI_PERSTn */
-+	vpcie3v3-supply = <&vcc3v3_pcie2x1l1>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	pcie2 {
-+		pcie2_1_rst: pcie2-1-rst {
-+			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		regulator-state-mem {
++			regulator-off-in-suspend;
 +		};
++	};
 +
-+		pcie2_1_vcc3v3_en: pcie2-1-vcc-en {
-+			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++	vdd_cpu_big1_s0: regulator@43 {
++		compatible = "rockchip,rk8603", "rockchip,rk8602";
++		reg = <0x43>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_cpu_big1_s0";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <1050000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
 +		};
 +	};
 +};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	no-sdio;
 -- 
 2.25.1
 
