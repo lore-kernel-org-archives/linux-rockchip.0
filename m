@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B0EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 19:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41CAFC07D59
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Nov 2023 19:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8EYsPV7mJH2OO2zW4nU9HaxIrTnr7REHa1DIsYm4o6M=; b=E9vvFlEpF98e8H
-	XfpCc3UI6UQZ6XWz+lWYP60WJgzpXqw3+FgI5eZHn75vX43tawVgEXLUOvbloezfcoxBxSFgE0DGR
-	8SXlCx/AZURn060LLsk6ipW4hKM6uDHdIg/JsIWOrBcp3rFDla/stoya75eVifgO8BGJ9H5VNSnLi
-	4hVcsQcLdUElp6wFF34VcKKs8gDXn3bZsUQ8OOczFJAYBuSdbiQgmIRPum6h/zkxD8dljEX48st+p
-	ZWcCsyqChQIRyFu8BMLbENfrz05km4ryYq3ZKEoFDeaqxOJydkqfFTL/4CXQy68gPIX+rGlq6e+aC
-	wofbiahLzNkUa/oGja8Q==;
+	List-Owner; bh=+YCchdRT0oetAo/e7EDKSzFdKTdo10O+d7zRajnod0Q=; b=nsfHXM8myL8Kkw
+	jjrefEps/Axad1GM6JUiIZYp6Dw2cP4KjZRALmiQjfuNiDQzZNGK806jsb0JGXnC/FOUPq6wWstFA
+	GlyxkfD9B0dmxcY1NKnnXnItE+iWfQOEskhUlDZ+GrFxXCLHGELNm5bBTTm8r6tvRgXA/KXR4uWKY
+	7FxCHb5KpoyixfjP/eOcK8P2UjQRU40P6a3lVr30CbheJ1KeboO0hfl/x3P5vlvOMbeYH15uP8/Ya
+	9CQ5pCq2NY6xq6p/f91ZOx46QJajuNlwkHpZpNHnlRUoIzfP7xk9tgMNBXx3ri/o4Cm65UEL+7evr
+	js1sgq8cTme4fQw3S4rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xz0-009fzA-1A;
-	Sat, 25 Nov 2023 19:06:26 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1r6xyz-009fyb-2A;
+	Sat, 25 Nov 2023 19:06:25 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r6xyZ-009fhJ-2e
+	id 1r6xyZ-009fey-0X
 	for linux-rockchip@lists.infradead.org;
 	Sat, 25 Nov 2023 19:06:01 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6bd32d1a040so2839610b3a.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 11:05:59 -0800 (PST)
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-6cc02e77a9cso692854b3a.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Nov 2023 11:05:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700939159; x=1701543959; darn=lists.infradead.org;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1700939156; x=1701543956; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DcjLpxBgTLpZy7bjkIUQIc+N1SeHj/wmMY9+mRqYfUg=;
-        b=J3A8S+ThdD0aZ08XPK78QMKXKQTK3pNzxY1ez/+ofdlDHtFij4LmOHgFz7GyTs8wRa
-         g9BKRGiMQ+MvmbhfEYMR7bivKgewp1uEDyT6jttnq2/AO/s3ZQh0EpCPqJzQrBQzzwon
-         j91TZ5JZS3z6xBsiIFuFfPM0nmonTwSc3vyAT174WKdRflS70izUYhZ8/vDBi7ucakn+
-         JbPaAeXaQgr+OdjdslDNOd3k5S2ZXXPZRSDOiqgBrKCQQJ4UCQGR6sqUYGLfHfiXcKR2
-         A++b+DvAqr4RMG8WO9TgonU0VL8/Ueg4opxBDDjrFmZu8enfYNgOAID9UJFNSfAGT3Rv
-         dFGg==
+        bh=6w7lwrxipdbBXTgXfmHYMOucEsWQFdIlzMEbWicO0MY=;
+        b=QtjwpjG+mQoBBTrOpKeDgnSzezykAZMVqsxT+un7k4yeqDtcTZFkeSUwveIIPKUpos
+         Y7kEt5m3cRtEFKIRp3+zeeh2dc+DSlgGVp+T+gDoV/y+rv76Uzwer+BudfR1LqBE6jaG
+         TNguE04yFXxdco3wt+bnL/74obOOwhlWwT2gXz5wPRKbdD7CeC5s3gXvhNIIHpMwne2p
+         OAEuBvCEZujDbTw81rddtweyvNYJTj86ylDvKPHy3OCgUfbLoA5nUa0+K0UPmT5VkQdA
+         R1KtiRdxDmg2dx36tDQss5pI5Br7pWnIGIOZlCv1oEZTXeXMaHLsqgHMK/oVIn5oJDe3
+         N4wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700939159; x=1701543959;
+        d=1e100.net; s=20230601; t=1700939156; x=1701543956;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DcjLpxBgTLpZy7bjkIUQIc+N1SeHj/wmMY9+mRqYfUg=;
-        b=ed2Dn4h09aMda5aE7JnlquT6czwx9Rf26wheIL1fLHrqEoMTM88GxZEREkXedmdu1R
-         qp4oXjAi+U6QfIbmoPjEjP53rug1d0S32mr2LsFLLtNA0MpmZnsQfR0C7E7uASlUNxSD
-         6m7DFDHEU04K9Chw5DvmZoQxZOAcu7wTmh6UC4d9m9WXf5jVTMr9gb1ECjwCEqTaLIoY
-         6mytjGBtj2H5N29M89Monvx5NQNl/oAPo8h2sD9HOjctEI28OFLQw690aNi0wJzUfC55
-         rdPwKDbqf+NMiQvVjTDDe3Lxg0izWZ4jQjtdOIl7S4mNhGCyjv7+yJ1t+ijgmsL0X8Dv
-         QWWw==
-X-Gm-Message-State: AOJu0YxNVizJLjKqUjZk9Udijn3hrLESEpnlNQRSar2fksEczDrf4CYl
-	q5qCRMMvppvwbuEdi1Tp5UkUAA==
-X-Google-Smtp-Source: AGHT+IFm8P0G/zZxdYDbQKNcjuNb8oNZsCNX36D6fENZW7p0r4jCQKNYuLwmZGNAgPbY1dZfrhkFvw==
-X-Received: by 2002:a05:6a00:e0f:b0:6cb:d2cb:5234 with SMTP id bq15-20020a056a000e0f00b006cbd2cb5234mr7997241pfb.32.1700939159304;
-        Sat, 25 Nov 2023 11:05:59 -0800 (PST)
+        bh=6w7lwrxipdbBXTgXfmHYMOucEsWQFdIlzMEbWicO0MY=;
+        b=iVLY6zBu3Htx6ec2rExsDLKaqLKAu1ntu4KlAKlAFBjqCIF3w2A5lYER2IkbJvmLa/
+         UHd00XAVYEVQM7rx/I9RMxubJ4mVchzPsAVhxr1/AK4yZbXGdqqJBieKyalkAvsJtLNh
+         Y2HPlfasankQ4D7hbJ2hG+bFWsHEUbis97/X0tyCVg9FUxYn4FDCslC4Z2SRpiHVi/9Q
+         W7o7AoX9dAAiSJmDTjXtk31P/yMqJ1BQMHGwyuGc5WgJZw2PYNUYHAJr8oQdGwvUk0cL
+         QRFKmvhXa/Vs3HwFbugDgvcIs/qBnVFNljFz0FcNRWrk8FSBXWytJrYkcRzDs7HzeLFf
+         Bs9Q==
+X-Gm-Message-State: AOJu0Ywuuc5vlUPKw4CBkySQyJaglh4aelFcFkPZ6DCGgzFLbIJ4tfor
+	Sm0IIUChJJtp+B4JWQEe6GzvQQ==
+X-Google-Smtp-Source: AGHT+IFXANUwsO0N1TGJHIizoM760Fo7St06cVgpGkSRim2Zr04Cso03M/nLAvq6AD382uBTqELPHA==
+X-Received: by 2002:a05:6a00:2e1e:b0:6cb:a93c:dfd1 with SMTP id fc30-20020a056a002e1e00b006cba93cdfd1mr9850107pfb.14.1700939156140;
+        Sat, 25 Nov 2023 11:05:56 -0800 (PST)
 Received: from localhost.localdomain ([2405:201:c00a:a208:d471:6d33:4b36:d85])
-        by smtp.gmail.com with ESMTPSA id j26-20020a62b61a000000b006cbb7e27091sm4810529pff.175.2023.11.25.11.05.56
+        by smtp.gmail.com with ESMTPSA id j26-20020a62b61a000000b006cbb7e27091sm4810529pff.175.2023.11.25.11.05.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Nov 2023 11:05:59 -0800 (PST)
+        Sat, 25 Nov 2023 11:05:55 -0800 (PST)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v2 10/10] arm64: dts: rockchip: Add LED_GREEN for edgeble-neu6a
-Date: Sun, 26 Nov 2023 00:35:22 +0530
-Message-Id: <20231125190522.87607-11-jagan@edgeble.ai>
+Subject: [PATCH v2 09/10] arm64: dts: rockchip: Add Edgeble NCM6A-IO USB2
+Date: Sun, 26 Nov 2023 00:35:21 +0530
+Message-Id: <20231125190522.87607-10-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231125190522.87607-1-jagan@edgeble.ai>
 References: <20231125190522.87607-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231125_110559_865496_509BA566 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20231125_110559_229032_DE8E8FE5 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,65 +97,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edgeble NCM6A, NCM6B SoM has Green LED on the module.
+Edgeble NCM6A-IO board has 2 port USB2.0 Host and USB2.0 on E-Key.
 
-Enable them with heartbeat function.
+Add support for it.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v2:
 - none
 
- .../rockchip/rk3588-edgeble-neu6a-common.dtsi | 24 +++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ .../dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 55 +++++++++++++++++++
+ 1 file changed, 55 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-index 961a80014686..003887fbf996 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
-@@ -3,11 +3,27 @@
-  * Copyright (c) 2023 Edgeble AI Technologies Pvt. Ltd.
-  */
- 
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+
- / {
- 	aliases {
- 		mmc0 = &sdhci;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
+index 130b240e0da8..9b65df3398c3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
+@@ -48,6 +48,20 @@ vcc3v3_pcie3x4: vcc3v3-pcie3x4-regulator {
+ 		startup-delay-us = <5000>;
+ 		vin-supply = <&vcc5v0_sys>;
  	};
- 
-+	gpio-leds {
-+		compatible = "gpio-leds";
 +
-+		led_user: led-0 {
-+			gpios = <&gpio0 RK_PC2 GPIO_ACTIVE_HIGH>;
-+			function = LED_FUNCTION_HEARTBEAT;
-+			color = <LED_COLOR_ID_GREEN>;
-+			linux,default-trigger = "heartbeat";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&led_user_en>;
-+		};
++	vcc5v0_host: vcc5v0-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio3 RK_PC7 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_host_en>;
++		regulator-name = "vcc5v0_host";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-boot-on;
++		regulator-always-on;
++		vin-supply = <&vcc5v0_sys>;
 +	};
-+
- 	vcc12v_dcin: vcc12v-dcin-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc12v_dcin";
-@@ -110,6 +126,14 @@ regulator-state-mem {
- 	};
  };
  
-+&pinctrl {
-+	leds {
-+		led_user_en: led_user_en {
-+			rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+ &combphy0_ps {
+@@ -135,6 +149,12 @@ hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	usb {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins = <3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
+ };
+ 
+ /* FAN */
+@@ -179,3 +199,38 @@ &uart7 {
+ 	pinctrl-names = "default";
+ 	status = "okay";
+ };
++
++&u2phy2 {
++	status = "okay";
 +};
 +
- &sdhci {
- 	bus-width = <8>;
- 	no-sdio;
++&u2phy2_host {
++	/* connected to USB hub, which is powered by vcc5v0_sys */
++	phy-supply = <&vcc5v0_sys>;
++	status = "okay";
++};
++
++&u2phy3 {
++	status = "okay";
++};
++
++&u2phy3_host {
++	phy-supply = <&vcc5v0_host>;
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
 -- 
 2.25.1
 
