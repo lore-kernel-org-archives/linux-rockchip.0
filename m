@@ -4,76 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE05C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Nov 2023 20:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DA31C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Nov 2023 23:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SCUFCNjdQfzrr6t4huFZyf+Lij7r+/gIbB6J3IuwMJ0=; b=5Dku0pgbRw/dCe
-	s2a6vd5QzkjI5ZbRLsTmnwos2Ib50mJpwNKeCAI8Y3VP6bO9Y5Telo5adwFkayJX2lqhDZpvzaVt9
-	jDrUS9qSa6jmfvzcF7hkNV9CLKhrZkfwFeIaQVLsrcmUiGuR/7ZF10+GpNwg89GeOIKj6B7O9MPxH
-	mF7/Yoix44ZwhUdKmu9n88kd4+dQSvk4mWY5aOMWn1qDJnJArhE/Lzonpv12/2bPmE77Wme1RrpJe
-	Me9zcs9gwR0VWBjRvfRY84wkiQJ6CJFiW7I1DOS20UgmHYDFEbHvqCivk6AxxuUCeqdOCh012z0/o
-	jfAqF4kfKRt6fgbBzoGA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2v9UnX99zvmr92gQqK6OcljircwGG2/Y98s2+6IrUhU=; b=FdHWdQiVjUVJkg
+	UXkmDBkQD2qd2q2Fx8RtI2M4mpXq2U9691OjbBeZyb8CWzbNTaGGUEWuOsvzR+QjU4wuUOg+zAMI8
+	wFVk+fJ2REVSxGGIxN6yWqThjOGLOw8eKM+aqlFGZiCb/IF9q9m5b9BpRYmh4LW/mHgKeOPu74tEu
+	B+QMvZWX7XryXBscvbdoT2mWC8tjBeHrkmlLQbjwZaaRfiAc9yqfJYoWSlG8jzduE3EAtycyUSI27
+	R0CHMXGUQ/Nkw1yBSgLvVrQ+Q8/ocJfyGZT8BjfqPpDatovyjhHipvS09Lj8aQZDDPWTBomBKmVBJ
+	kQT8TYTkK0zTqK68Y0VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7LRZ-00Epan-1c;
-	Sun, 26 Nov 2023 20:09:29 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+	id 1r7OCk-00GU0N-3D;
+	Sun, 26 Nov 2023 23:06:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7LRW-00EpXz-1x;
-	Sun, 26 Nov 2023 20:09:27 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-1fa0885e1c2so1243094fac.0;
-        Sun, 26 Nov 2023 12:09:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701029364; x=1701634164; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZjTDHAG+/ucBAaiBKRQp0/cj17Ja10+E8K4nWxa0Ui0=;
-        b=FPTESBCc5ArUwiZr0BrmPRuE3cXp9GhGv60521FN1mLUQrT7IFp18/D799PeDTr+5x
-         NHK10LIoLHuk0GPh7DLOkc1bhfFwWlhinNckCqtS3K3Fqz4zyxtwzsTY+Ar2IxBwM+wg
-         UHqSXCetIEQ7ttBR/+yuDYTTWetgYJ0wLuyhL7mfdln92W9AJMa7iziF6xk7vYZ74DIo
-         pJE3MyMmCrvADIOLHpZcQSm2LL3Olq/L2zkZOPAYKUBj1SAeLd1VFpH8NzlqgOE9orQ/
-         4cipJvndzFtASl7n6W9FhW3r6TGaGNP5uKujQDdqe6SU/8zDYiHH5BT5g5AgsY5CTO8L
-         TFlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701029364; x=1701634164;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZjTDHAG+/ucBAaiBKRQp0/cj17Ja10+E8K4nWxa0Ui0=;
-        b=Jax2VH+qn0HU7WKNhOrHSR6TblowU+yd6k2wSov+GpTK56cpaJ3SUkTfzGZrtTKv+Y
-         T+qCMWx0Mqdb9TygiR0Lu6i6a97wYZoh2EmLLvPOX0coGHkRdJffbchGnv7oFAiKV32A
-         GEWlaJgfxxraxUXpo9B1mhO+SrOm73SBt+PalHVBt8sJA+nZMjLKpnqXT59cQoAhB7zM
-         /25NG0RC4lGYHWUmSbpKQTvs0lEE5ftRpAorDp62y/K8LaKpmBdocfJqfykjFQGS6d8g
-         gPfJEU0Sc+c8rxcXmCi75djf1B8iqAYqooGkKDVMKkVkOazlz6/mJ+v6onK65G6q640k
-         mV7g==
-X-Gm-Message-State: AOJu0YyMsdhTNiew62cSL/thWdvTp/vOq238Dvqwr8/VdEUnKyuGEFsR
-	NvU9I387blYRLcEbGqfyRB4=
-X-Google-Smtp-Source: AGHT+IGHLkEjZWxbXCL2+1Yt3Y8r3KJPpiOh4dMmsrXvSby0PbB4ZTPAwmeqz38pj6OrD/33/Ct3qg==
-X-Received: by 2002:a05:6871:780e:b0:1fa:1634:e47 with SMTP id oy14-20020a056871780e00b001fa16340e47mr8035701oac.51.1701029364215;
-        Sun, 26 Nov 2023 12:09:24 -0800 (PST)
-Received: from tower.cjhon.com (2603-8081-ad40-0011-02c6-2c57-6215-8c5e.res6.spectrum.com. [2603:8081:ad40:11:2c6:2c57:6215:8c5e])
-        by smtp.gmail.com with ESMTPSA id b6-20020a9d7546000000b006ce4612fef0sm1140230otl.16.2023.11.26.12.09.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Nov 2023 12:09:23 -0800 (PST)
-From: Jimmy Hon <honyuenkwun@gmail.com>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jimmy Hon <honyuenkwun@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: rk3588s-orangepi-5: add USB3 host
-Date: Sun, 26 Nov 2023 14:08:45 -0600
-Message-ID: <20231126200845.1192-1-honyuenkwun@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1r7OCh-00GTue-17;
+	Sun, 26 Nov 2023 23:06:21 +0000
+Received: from i53875bf8.versanet.de ([83.135.91.248] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r7OCW-0002sV-3l; Mon, 27 Nov 2023 00:06:08 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v2 4/9] ARM: dts: rockchip: rv1126: Add i2c2 nodes
+Date: Mon, 27 Nov 2023 00:06:06 +0100
+Message-ID: <4762834.KRxA6XjA2N@diego>
+In-Reply-To: <813224c2-398d-4c2d-8909-1839ce63be60@linaro.org>
+References: <20231122122232.952696-1-tim@feathertop.org>
+ <20231122122232.952696-5-tim@feathertop.org>
+ <813224c2-398d-4c2d-8909-1839ce63be60@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_120926_668917_B2437ACD 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231126_150619_637350_7B41417E 
+X-CRM114-Status: GOOD (  20.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,27 +66,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable USB3 host controller for the Orange Pi 5.
+Hi Krzysztof,
 
-Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+Am Mittwoch, 22. November 2023, 13:29:47 CET schrieb Krzysztof Kozlowski:
+> On 22/11/2023 13:22, Tim Lunn wrote:
+> > Add i2c2 node and i2c2_xfer pinctrl for Rockchip RV1126
+> > 
+> > Signed-off-by: Tim Lunn <tim@feathertop.org>
+> > ---
+> > 
+> > (no changes since v1)
+> > 
+> >  arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 10 ++++++++++
+> >  arch/arm/boot/dts/rockchip/rv1126.dtsi         | 15 +++++++++++++++
+> >  2 files changed, 25 insertions(+)
+> > 
+> > diff --git a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> > index 4f85b7b3fc4c..167a48afa3a4 100644
+> > --- a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> > +++ b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> > @@ -87,6 +87,16 @@ i2c0_xfer: i2c0-xfer {
+> >  				<0 RK_PB5 1 &pcfg_pull_none_drv_level_0_smt>;
+> >  		};
+> >  	};
+> > +	i2c2 {
+> > +		/omit-if-no-ref/
+> > +		i2c2_xfer: i2c2-xfer {
+> > +			rockchip,pins =
+> > +				/* i2c2_scl */
+> > +				<0 RK_PC2 1 &pcfg_pull_none_drv_level_0_smt>,
+> > +				/* i2c2_sda */
+> > +				<0 RK_PC3 1 &pcfg_pull_none_drv_level_0_smt>;
+> > +		};
+> > +	};
+> >  	pwm2 {
+> >  		/omit-if-no-ref/
+> >  		pwm2m0_pins: pwm2m0-pins {
+> > diff --git a/arch/arm/boot/dts/rockchip/rv1126.dtsi b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+> > index 6c5c928f06c7..cf1df75df418 100644
+> > --- a/arch/arm/boot/dts/rockchip/rv1126.dtsi
+> > +++ b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+> > @@ -21,6 +21,7 @@ / {
+> >  
+> >  	aliases {
+> >  		i2c0 = &i2c0;
+> > +		i2c2 = &i2c2;
+> 
+> No, this should be per-board to match board labeling/schematics.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-index 8f399c4317bd..f7a6132d8205 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-@@ -660,3 +660,7 @@ &usb_host1_ehci {
- &usb_host1_ohci {
- 	status = "okay";
- };
-+
-+&usb_host2_xhci {
-+	status = "okay";
-+};
--- 
-2.43.0
+At least for i2c, uarts and i.e. spi ... Rockchip manuals, pin namings
+and also all board schematics I've seen so far are very consistent for
+these ... i2c2 for example is labled i2c2 both in the pins in the socs
+and also in the board-schematics using them.
+
+So while I can agree that things like mmc-aliases might be board-specific,
+I do think aliases for the core busses should be able to live in the soc dtsi
+as for all Rockchip SoCs so far?
+
+
+Heiko
+
 
 
 _______________________________________________
