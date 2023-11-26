@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0DA6C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Nov 2023 19:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE05C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Nov 2023 20:09:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=raYbLkHKPzkYod/mpa5A8+GhU+mO9v9SbH5KwNT8Dy4=; b=P7s++fuMX4z8Sb
-	EDSBnrP67sBNwKuPHwEtvnNZHogSyYOkk4b1Te2vG3BYx7ofo84810SMfzcsJjI2QlSU0bMG7NgIw
-	eRuTF8HToDbPODmnfRaQdsBCaZjR78qBozuyeXWpMWCyhxSmcUTiNaxKmJiI/Rnu9I6QUg96dDA66
-	a78OUb5/m5w1/C1MxDfeFPooqnoql+Tf3VrlG4j72Ajj9XIrdkrQnpkEApzU5rZqYbO7dEKgrK9hf
-	e435g1AF0IeQvQvoxsJBvSpOJqRxMnadhBQZ1czodTjpda4OErrENB35C8tB84eVrbBQu2nvwMt3H
-	0EPtOzsEoe+2/UDQjf1g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SCUFCNjdQfzrr6t4huFZyf+Lij7r+/gIbB6J3IuwMJ0=; b=5Dku0pgbRw/dCe
+	s2a6vd5QzkjI5ZbRLsTmnwos2Ib50mJpwNKeCAI8Y3VP6bO9Y5Telo5adwFkayJX2lqhDZpvzaVt9
+	jDrUS9qSa6jmfvzcF7hkNV9CLKhrZkfwFeIaQVLsrcmUiGuR/7ZF10+GpNwg89GeOIKj6B7O9MPxH
+	mF7/Yoix44ZwhUdKmu9n88kd4+dQSvk4mWY5aOMWn1qDJnJArhE/Lzonpv12/2bPmE77Wme1RrpJe
+	Me9zcs9gwR0VWBjRvfRY84wkiQJ6CJFiW7I1DOS20UgmHYDFEbHvqCivk6AxxuUCeqdOCh012z0/o
+	jfAqF4kfKRt6fgbBzoGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7L2J-00EbQ1-2v;
-	Sun, 26 Nov 2023 19:43:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r7LRZ-00Epan-1c;
+	Sun, 26 Nov 2023 20:09:29 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7L2G-00EbLz-1K;
-	Sun, 26 Nov 2023 19:43:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BF90A60DDA;
-	Sun, 26 Nov 2023 19:43:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABF77C433C7;
-	Sun, 26 Nov 2023 19:43:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701027796;
-	bh=MfPWdhI66tGlSElbZFqrJ4lp9k4RWE3b0eJdiDiyLj8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UKeJOUwY97ffDjyVICQgaX2Wb8q6WilSKUPvkWm5tQ32pK8ViitXaPlaQDNR5XqTY
-	 9AUAq8pm6KDmGj+9fSgOguHC1B11Tdh63ToL0rcDLq8mNRH4EGCuZT6a1oSdmeWHII
-	 UH02ScCplG1irqAmbHxdsth04jTMO+3aqYl1CLbC7mqb/zWAZtlDtmyM8uZsgotvo8
-	 hDz4hoVV8n3uWrdkVNB70iTq4VD9r7jPOA/4blIOdAcV8ZUG6k+bPvRPJqrmaqmmAR
-	 vr0oOEN5PMsfaJVOmcqVjWW+/kPJLrG/DS6D7ii3lZBolWWuaEqqMs8IEqO9ZQ2j1B
-	 DMd6HsND1+p5Q==
-Date: Sun, 26 Nov 2023 20:43:11 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Tim Lunn <tim@feathertop.org>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh+dt@kernel.org>,
+	id 1r7LRW-00EpXz-1x;
+	Sun, 26 Nov 2023 20:09:27 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-1fa0885e1c2so1243094fac.0;
+        Sun, 26 Nov 2023 12:09:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701029364; x=1701634164; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZjTDHAG+/ucBAaiBKRQp0/cj17Ja10+E8K4nWxa0Ui0=;
+        b=FPTESBCc5ArUwiZr0BrmPRuE3cXp9GhGv60521FN1mLUQrT7IFp18/D799PeDTr+5x
+         NHK10LIoLHuk0GPh7DLOkc1bhfFwWlhinNckCqtS3K3Fqz4zyxtwzsTY+Ar2IxBwM+wg
+         UHqSXCetIEQ7ttBR/+yuDYTTWetgYJ0wLuyhL7mfdln92W9AJMa7iziF6xk7vYZ74DIo
+         pJE3MyMmCrvADIOLHpZcQSm2LL3Olq/L2zkZOPAYKUBj1SAeLd1VFpH8NzlqgOE9orQ/
+         4cipJvndzFtASl7n6W9FhW3r6TGaGNP5uKujQDdqe6SU/8zDYiHH5BT5g5AgsY5CTO8L
+         TFlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701029364; x=1701634164;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZjTDHAG+/ucBAaiBKRQp0/cj17Ja10+E8K4nWxa0Ui0=;
+        b=Jax2VH+qn0HU7WKNhOrHSR6TblowU+yd6k2wSov+GpTK56cpaJ3SUkTfzGZrtTKv+Y
+         T+qCMWx0Mqdb9TygiR0Lu6i6a97wYZoh2EmLLvPOX0coGHkRdJffbchGnv7oFAiKV32A
+         GEWlaJgfxxraxUXpo9B1mhO+SrOm73SBt+PalHVBt8sJA+nZMjLKpnqXT59cQoAhB7zM
+         /25NG0RC4lGYHWUmSbpKQTvs0lEE5ftRpAorDp62y/K8LaKpmBdocfJqfykjFQGS6d8g
+         gPfJEU0Sc+c8rxcXmCi75djf1B8iqAYqooGkKDVMKkVkOazlz6/mJ+v6onK65G6q640k
+         mV7g==
+X-Gm-Message-State: AOJu0YyMsdhTNiew62cSL/thWdvTp/vOq238Dvqwr8/VdEUnKyuGEFsR
+	NvU9I387blYRLcEbGqfyRB4=
+X-Google-Smtp-Source: AGHT+IGHLkEjZWxbXCL2+1Yt3Y8r3KJPpiOh4dMmsrXvSby0PbB4ZTPAwmeqz38pj6OrD/33/Ct3qg==
+X-Received: by 2002:a05:6871:780e:b0:1fa:1634:e47 with SMTP id oy14-20020a056871780e00b001fa16340e47mr8035701oac.51.1701029364215;
+        Sun, 26 Nov 2023 12:09:24 -0800 (PST)
+Received: from tower.cjhon.com (2603-8081-ad40-0011-02c6-2c57-6215-8c5e.res6.spectrum.com. [2603:8081:ad40:11:2c6:2c57:6215:8c5e])
+        by smtp.gmail.com with ESMTPSA id b6-20020a9d7546000000b006ce4612fef0sm1140230otl.16.2023.11.26.12.09.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 26 Nov 2023 12:09:23 -0800 (PST)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v2 3/9] i2c: rk3x: Adjust offset for i2c2 on rv1126
-Message-ID: <20231126194311.jxkvz3kqgsbzfgek@zenone.zhora.eu>
-References: <20231122122232.952696-1-tim@feathertop.org>
- <20231122122232.952696-4-tim@feathertop.org>
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: rk3588s-orangepi-5: add USB3 host
+Date: Sun, 26 Nov 2023 14:08:45 -0600
+Message-ID: <20231126200845.1192-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231122122232.952696-4-tim@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231126_114320_514222_CB813866 
-X-CRM114-Status: GOOD (  20.78  )
+X-CRM114-CacheID: sfid-20231126_120926_668917_B2437ACD 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,58 +90,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tim,
+Enable USB3 host controller for the Orange Pi 5.
 
-On Wed, Nov 22, 2023 at 11:22:26PM +1100, Tim Lunn wrote:
-> Rockchip RV1126 has special case mask bits for i2c2.
-> 
-> i2c2 wasnt previously enabled in rv1126.dtsi, adding DT node alone
-> is not sufficient to enable i2c2. This patch fixes the i2c2 bus.
+Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-If I don't have sufficient information about the hardware this
-description is completely meaningless to me.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+index 8f399c4317bd..f7a6132d8205 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+@@ -660,3 +660,7 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&usb_host2_xhci {
++	status = "okay";
++};
+-- 
+2.43.0
 
-> Signed-off-by: Tim Lunn <tim@feathertop.org>
-> ---
-> 
-> Changes in v2:
-> - i2c: clarify commit message
-> 
->  drivers/i2c/busses/i2c-rk3x.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index a044ca0c35a1..151927466d1d 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -1288,8 +1288,11 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
->  			return -EINVAL;
->  		}
->  
-> -		/* 27+i: write mask, 11+i: value */
-> -		value = BIT(27 + bus_nr) | BIT(11 + bus_nr);
-> +		if (i2c->soc_data == &rv1126_soc_data && bus_nr == 2)
-> +			value = BIT(20) | BIT(4);
-
-Any chance to put a comment here as it is in the other
-assignment?
-
-Are the two assignment mutually exclusive?
-
-Heiko, any chance to take a look here?
-
-Thanks,
-Andi
-
-> +		else
-> +			/* 27+i: write mask, 11+i: value */
-> +			value = BIT(27 + bus_nr) | BIT(11 + bus_nr);
->  
->  		ret = regmap_write(grf, i2c->soc_data->grf_offset, value);
->  		if (ret != 0) {
-> -- 
-> 2.40.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
