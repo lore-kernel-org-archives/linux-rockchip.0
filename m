@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D997BC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 13:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B06C07CB1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 14:04:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eofcG6o830Z8p7CfxqfN8MjRbJbusbTSk+CLXSnUqao=; b=ViHJYzto0lTez4
-	/8+6XnbrYDz2ZkAlCGTr864wLbJoxrDxlcBQf8XlsTBKVZdHotf8OaX4UKUqrZQkh96dJ49wyQ7UT
-	bK+ruszk0dlTjOB2W9RauMrBbcW2wBaFZkAechcQzIMZ0DARWfnZAYCgKNlNt4/2K5L9nf3VJSIVP
-	ICd3BxxXMKeKHv3RplFbkVdBnh19XRDoCU7htU+juh7I41YXdzl3xM1laDIMhXgkDTIrj0REAHEo9
-	VCrnxnqKijPrJUOt3tZK+J+6vd6UwmCcBwtIWJohiPxB7mNb563qTbcbdGgBHeGEPQ4of9F1n+rbf
-	/RG02mRm5FnQYB4BXf/w==;
+	List-Owner; bh=PLL1AVpWF57poDWhHkQ5G2WD3TC4PD44TdAT0/DkvEg=; b=SPIa476Etpd6Br
+	6mWUrUw/BjX4PnZKyJKvUxxcffnH+55YZKCenDWdVNTX48hWL2HAgDEx/MV/y5H04iD44rhhuLNuX
+	avJo9L9Sp6llDa+/11Vh4NWUQpdwqYjJLRzb/dj4w6Xa8LpY01FKQHn3qPgF5FFGTe/1hzbE75TZr
+	YwMMTtinSpM8TS1pScZnYOZ7hVsjr0muEsHH+8cEv20loT72HnMeClmH5/b2Rbava+gg5WDehwJk2
+	YWP5wO8Vou3iZLEF8Ulf8wVrZ92yI9fZyyokL8v3WUGbp8ZC95lg6G7Qv9cQo2QHgqLGhj9rclFXe
+	OFTli+JWpebwkmADSt0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bZp-002Yjt-0p;
-	Mon, 27 Nov 2023 13:23:05 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r7cDW-002eDI-0k;
+	Mon, 27 Nov 2023 14:04:06 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7bZh-002Yfs-2D;
-	Mon, 27 Nov 2023 13:22:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F30D660FC5;
-	Mon, 27 Nov 2023 13:22:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C29BC43395;
-	Mon, 27 Nov 2023 13:22:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701091376;
-	bh=QwSBdJ/YKv2G0wND49Ay9xZy3Z92H53HIWkYc1/ISxQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=BGvd5vcG9H8ZCuQOfQzYPFnWcZqkc/t3oZVgxdS48Unv8LLEsChHioLVaXoJaV3le
-	 zsWTbQKCaGOAEWldbJ1GoBq680KZ3ws/DIu5/sReU1yHOG4pK5JisVHsSAxp6ootNc
-	 Bt2sCu01dxBxhnpwc7vE4uz7KdwF9A46rgItnp0HYWGj3CgWIhwsR9Ivv6DQXs/uO6
-	 HMlCF4WAp57KsxI4jwOKa9/pjnitSW8HAkSys8jB9m6aXMVlhPs+7eYC6dEFW1Y+aS
-	 IBmCjRhBGd6Mjoopstmdadc4zbizpY9qsjdciMcVN7LflH1ejujnGHbszfGlBvxikQ
-	 6KWokK75hW4Zg==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, Alex Bee <knaerzche@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-phy@lists.infradead.org
-In-Reply-To: <20231119121340.109025-1-knaerzche@gmail.com>
-References: <20231119121340.109025-1-knaerzche@gmail.com>
-Subject: Re: (subset) [PATCH v3 0/5] Add USB support for RK3128
-Message-Id: <170109137310.42627.13364867198507933834.b4-ty@kernel.org>
-Date: Mon, 27 Nov 2023 18:52:53 +0530
+	id 1r7cDR-002eBy-2u
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Nov 2023 14:04:04 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7cDO-0006Sz-1w; Mon, 27 Nov 2023 15:03:58 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7cDI-00BxOD-4D; Mon, 27 Nov 2023 15:03:52 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7cDI-0046vi-1G; Mon, 27 Nov 2023 15:03:52 +0100
+Date: Mon, 27 Nov 2023 15:03:52 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+	kever.yang@rock-chips.com, chris.obbard@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 01/12] drm/rockchip: move output interface related
+ definition to rockchip_drm_drv.h
+Message-ID: <20231127140352.GB977968@pengutronix.de>
+References: <20231122125316.3454268-1-andyshrk@163.com>
+ <20231122125349.3454369-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.12.3
+Content-Disposition: inline
+In-Reply-To: <20231122125349.3454369-1-andyshrk@163.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_052257_895469_CDBA20EF 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231127_060402_098946_0474B5DD 
+X-CRM114-Status: GOOD (  24.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,29 +85,231 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sun, 19 Nov 2023 13:13:35 +0100, Alex Bee wrote:
-> While interestingly the DT-binding for the Innosilicon usb phy found in
-> RK3128 SoC exists already and it is exposed in the SoC DT, it has never
-> been added to the driver.
-> This patch-set adds support for this early version of the phy and does
-> some DT-fixups in order to make the 2-port host/otg phy and the respective
-> controllers work.
+On Wed, Nov 22, 2023 at 08:53:49PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> [...]
+> The output interface related definition can shared between
+> vop and vop2, move them to rockchip_drm_drv.h can avoid duplicated
+> definition.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-Applied, thanks!
+Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-[1/5] phy: rockchip-inno-usb2: Split ID interrupt phy registers
-      commit: 2fda59099462ee700e424ba3ac928d13ad6389a8
-[2/5] phy: phy-rockchip-inno-usb2: Add RK3128 support
-      commit: 62ff41017e147472b07de6125c3be82ce02a8dd7
+Sascha
 
-Best regards,
+> 
+> ---
+> 
+> (no changes since v1)
+> 
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  1 -
+>  drivers/gpu/drm/rockchip/cdn-dp-core.c          |  1 -
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c |  1 -
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  1 -
+>  drivers/gpu/drm/rockchip/inno_hdmi.c            |  1 -
+>  drivers/gpu/drm/rockchip/rk3066_hdmi.c          |  1 -
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h     | 17 +++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.h     | 12 +-----------
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h    | 16 +---------------
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c        |  1 -
+>  drivers/gpu/drm/rockchip/rockchip_rgb.c         |  1 -
+>  11 files changed, 19 insertions(+), 34 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index 84aa811ca1e9..bd08d57486fe 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -30,7 +30,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  #define RK3288_GRF_SOC_CON6		0x25c
+>  #define RK3288_EDP_LCDC_SEL		BIT(5)
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> index 21254e4e107a..a855c45ae7f3 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> @@ -24,7 +24,6 @@
+>  
+>  #include "cdn-dp-core.h"
+>  #include "cdn-dp-reg.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  static inline struct cdn_dp_device *connector_to_dp(struct drm_connector *connector)
+>  {
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index 6396f9324dab..4cc8ed8f4fbd 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -26,7 +26,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  #define DSI_PHY_RSTZ			0xa0
+>  #define PHY_DISFORCEPLL			0
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index 341550199111..fe33092abbe7 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -18,7 +18,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  #define RK3228_GRF_SOC_CON2		0x0408
+>  #define RK3228_HDMI_SDAIN_MSK		BIT(14)
+> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+> index 6e5b922a121e..f6d819803c0e 100644
+> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
+> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+> @@ -23,7 +23,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  #include "inno_hdmi.h"
+>  
+> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> index fa6e592e0276..78136d0c5a65 100644
+> --- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> @@ -17,7 +17,6 @@
+>  #include "rk3066_hdmi.h"
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  
+>  #define DEFAULT_PLLA_RATE 30000000
+>  
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> index aeb03a57240f..3d8ab2defa1b 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+> @@ -20,6 +20,23 @@
+>  #define ROCKCHIP_MAX_CONNECTOR	2
+>  #define ROCKCHIP_MAX_CRTC	4
+>  
+> +/*
+> + * display output interface supported by rockchip lcdc
+> + */
+> +#define ROCKCHIP_OUT_MODE_P888		0
+> +#define ROCKCHIP_OUT_MODE_BT1120	0
+> +#define ROCKCHIP_OUT_MODE_P666		1
+> +#define ROCKCHIP_OUT_MODE_P565		2
+> +#define ROCKCHIP_OUT_MODE_BT656		5
+> +#define ROCKCHIP_OUT_MODE_S888		8
+> +#define ROCKCHIP_OUT_MODE_S888_DUMMY	12
+> +#define ROCKCHIP_OUT_MODE_YUV420	14
+> +/* for use special outface */
+> +#define ROCKCHIP_OUT_MODE_AAAA		15
+> +
+> +/* output flags */
+> +#define ROCKCHIP_OUTPUT_DSI_DUAL	BIT(0)
+> +
+>  struct drm_device;
+>  struct drm_connector;
+>  struct iommu_domain;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> index 4b2daefeb8c1..43d9c9191b7a 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> @@ -277,17 +277,7 @@ struct vop_data {
+>  /* dst alpha ctrl define */
+>  #define DST_FACTOR_M0(x)		(((x) & 0x7) << 6)
+>  
+> -/*
+> - * display output interface supported by rockchip lcdc
+> - */
+> -#define ROCKCHIP_OUT_MODE_P888	0
+> -#define ROCKCHIP_OUT_MODE_P666	1
+> -#define ROCKCHIP_OUT_MODE_P565	2
+> -/* for use special outface */
+> -#define ROCKCHIP_OUT_MODE_AAAA	15
+> -
+> -/* output flags */
+> -#define ROCKCHIP_OUTPUT_DSI_DUAL	BIT(0)
+> +
+>  
+>  enum alpha_mode {
+>  	ALPHA_STRAIGHT,
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> index 56fd31e05238..7175f46a2014 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -7,10 +7,9 @@
+>  #ifndef _ROCKCHIP_DRM_VOP2_H
+>  #define _ROCKCHIP_DRM_VOP2_H
+>  
+> -#include "rockchip_drm_vop.h"
+> -
+>  #include <linux/regmap.h>
+>  #include <drm/drm_modes.h>
+> +#include "rockchip_drm_vop.h"
+>  
+>  #define VOP_FEATURE_OUTPUT_10BIT        BIT(0)
+>  
+> @@ -166,19 +165,6 @@ struct vop2_data {
+>  #define WB_YRGB_FIFO_FULL_INTR		BIT(18)
+>  #define WB_COMPLETE_INTR		BIT(19)
+>  
+> -/*
+> - * display output interface supported by rockchip lcdc
+> - */
+> -#define ROCKCHIP_OUT_MODE_P888		0
+> -#define ROCKCHIP_OUT_MODE_BT1120	0
+> -#define ROCKCHIP_OUT_MODE_P666		1
+> -#define ROCKCHIP_OUT_MODE_P565		2
+> -#define ROCKCHIP_OUT_MODE_BT656		5
+> -#define ROCKCHIP_OUT_MODE_S888		8
+> -#define ROCKCHIP_OUT_MODE_S888_DUMMY	12
+> -#define ROCKCHIP_OUT_MODE_YUV420	14
+> -/* for use special outface */
+> -#define ROCKCHIP_OUT_MODE_AAAA		15
+>  
+>  enum vop_csc_format {
+>  	CSC_BT601L,
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index f0f47e9abf5a..59341654ec32 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -27,7 +27,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  #include "rockchip_lvds.h"
+>  
+>  #define DISPLAY_OUTPUT_RGB		0
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+> index c677b71ae516..dbfbde24698e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+> @@ -19,7 +19,6 @@
+>  #include <drm/drm_simple_kms_helper.h>
+>  
+>  #include "rockchip_drm_drv.h"
+> -#include "rockchip_drm_vop.h"
+>  #include "rockchip_rgb.h"
+>  
+>  struct rockchip_rgb {
+> -- 
+> 2.34.1
+> 
+> 
+> 
+
 -- 
-~Vinod
-
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
