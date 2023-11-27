@@ -4,48 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A34C7C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 11:26:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1AFEC0755A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 11:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0s8/O8wvOwtjOtWRnJgr+xHvTKJL73l1CwZIKPwKCeY=; b=gRqWFH9xOyTd5y
-	gUsP4AMB9D09sXpv/mMlXoEuQKLL/l6LNXqihgsl4qMObyCO+fV+paiLNyzDhXCQjUe/FnhZeIydM
-	AEGWlefPiqbandr+iDBxCB8PDE7k+yByu9Zo7setQjKH4zLTXpPqUKtYJjxFgDFX10h4EaHeV2RL7
-	Q/0XM1OKhZuZ6sR5F3Sd0Ra/UtJjNp5F7nET4DcE50bcDgZc2vBdUPRANMAa6xqDC7NKV3eCy+QnG
-	vLAoBNNS7cKQRaIc7+Z72wFhTakvN9cgRPXvFDmm7iKf9yO9aYXt3FZV0Lp+wljUh4WNEsD8pmEYS
-	nO80zDwOio4YxL68XYqQ==;
+	List-Owner; bh=YI8hlR+z1dr+64d6hUf19tLlx1vfcg1y93at7Qwg6gc=; b=bAB5q4UkR4jy66
+	LZyUeiz6tvETfSspvYQeabFovxzCNWHda7TWniJPlWOj1D1Ql8xNvRbPuMGj+HvvzpqzAlGVTnYU/
+	gzZDfXaSBMvHLc+uJ0Hse47a4BV5FwK9U5kCM2q2g17xPpJPiV4YBgSh6K2cfH9GHrXfTrGIS2x3/
+	3uQew8II/Y5qhX323J6pPkIVz6zS3X3zWpmLFpCHf65HQ9c88Yj2378DZ7YuXfQD+Bc5PruUr6qJF
+	XUGvR9UXEsAxoAGPy46J3d5wG0P4XO9dnnFaw3isvcPsAf1CxCCi80UZkdOtKrpinJo9ef1YML/H+
+	8k2wOtr3JvXWL58QhCqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Zke-002DAd-1d;
-	Mon, 27 Nov 2023 11:26:08 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r7a58-002JC2-1w;
+	Mon, 27 Nov 2023 11:47:18 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7ZkZ-002D9n-2k;
-	Mon, 27 Nov 2023 11:26:05 +0000
-Received: from i53875bf8.versanet.de ([83.135.91.248] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r7ZkO-000139-1p; Mon, 27 Nov 2023 12:25:52 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: hjc@rock-chips.com, Johan Jonker <jbx6244@gmail.com>
-Cc: airlied@gmail.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 3/4] drm/rockchip: rk3066_hdmi: Remove useless output format
-Date: Mon, 27 Nov 2023 12:25:51 +0100
-Message-ID: <8082175.UjTJXf6HLC@diego>
-In-Reply-To: <bff69815-1185-c74f-82ab-5b8f7faccfac@gmail.com>
-References: <cda574be-4f33-b66d-eb14-92c2b31d241e@gmail.com> <4308014.ejJDZkT8p0@phil>
- <bff69815-1185-c74f-82ab-5b8f7faccfac@gmail.com>
+	id 1r7a54-002IyW-2B
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Nov 2023 11:47:16 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40b34563987so22965115e9.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Nov 2023 03:47:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1701085623; x=1701690423; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=3tA3boN6EG4yS9sARU9W7D9LN4ahR4KmDV0zSEVrFb0=;
+        b=rc6y1MKlhBkj33PKLJM5kVOhZrxpW2JuqXG6PdO4EXcfkBA51PvfCNJIi+gK3HhGZy
+         D7Zl377n+nOuwmIyhWaXJY0kMrUcgb2olcq9gw802HeYHd7Msqg74Bs00AmYQVWJUzZ5
+         zMyXRMqmcR/SMZnVdyP1+rxFxmckjgFiktPZaXdhkrmebz+q0usyoWNbpiytGOXXiXUH
+         pXH2PFK/H2kgm88r6NDs9i7PjONy5Q3wwa1HlpH6Q+wGmN4n1oAyS13PwyYO/oMr7Qom
+         YIfxu2JrwBu+tvnkZqdk2D4t7RS/bqdzt2Ys4SQpbxA5D/R4XiS1ddOjFyTo6fdUOK96
+         IANw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701085623; x=1701690423;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3tA3boN6EG4yS9sARU9W7D9LN4ahR4KmDV0zSEVrFb0=;
+        b=T1+2zl/loWWGgNyHBFVLzuJVOv04Jowf3j4cZgLUIOQNeNYdNEn0aL67TR3jfu7oZp
+         C+E4yxiIr5XGvHvHjpnXoH+1QBuzt+nNBSWwjWkmDmJq8Yxx54bBM0N7wAOZzt60GQVH
+         xP1LFnsV3SSuCjxRMmzETTDZO85ecO5OWgMudvz4tJUaV2NfGWWY3hzknnKgpW6mh2O3
+         nGTOE7YGVhqhshzZp1jHQawyNsbZNgOYKuMurj0byOyovSkprgx33vxJFhmKbg6s9JUC
+         wN0Y6NYraG+GiQo5xGF7phX3ytyfPNVfbcnjMf+QuQFd+KHWZLzWIwQ06bVGmCYXFiqT
+         KqEg==
+X-Gm-Message-State: AOJu0YwEcJRVG/nKkM6ACMMIFAvOoowlM3CEoR+lrInZxupGVQg5zejf
+	Irm/CCFk6mdUNyYKlO9IX4BvcA==
+X-Google-Smtp-Source: AGHT+IHFHh5s3DrJkF+ahST3zPitBaks2yNwrnyWDMDsu2R3tzZh+/mmIzmyi63lGqBAWzE/QyPjfw==
+X-Received: by 2002:a05:600c:6d3:b0:408:37aa:774a with SMTP id b19-20020a05600c06d300b0040837aa774amr12532754wmn.17.1701085623387;
+        Mon, 27 Nov 2023 03:47:03 -0800 (PST)
+Received: from Red ([2a01:cb1d:3d5:a100:4a02:2aff:fe07:1efc])
+        by smtp.googlemail.com with ESMTPSA id s8-20020a7bc388000000b0040b4562ee20sm1681859wmj.0.2023.11.27.03.47.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Nov 2023 03:47:03 -0800 (PST)
+Date: Mon, 27 Nov 2023 12:47:01 +0100
+From: Corentin LABBE <clabbe@baylibre.com>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: davem@davemloft.net, heiko@sntech.de, herbert@gondor.apana.org.au,
+	krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com,
+	p.zabel@pengutronix.de, robh+dt@kernel.org, sboyd@kernel.org,
+	ricardo@pardini.net, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: Aw: Re:  [PATCH 6/6] crypto: rockchip: add rk3588 driver
+Message-ID: <ZWSBtZAwn_58UtcD@Red>
+References: <20231107155532.3747113-1-clabbe@baylibre.com>
+ <20231107155532.3747113-7-clabbe@baylibre.com>
+ <trinity-a0ee3146-f23d-4f6c-b29c-5fe446c4d4ad-1699797868421@3c-app-gmx-bs50>
+ <ZVtVkACNHTcCjqGp@Red>
+ <trinity-a9a71294-1396-43e4-9ed5-9ee2914ef093-1700838301802@3c-app-gmx-bs48>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <trinity-a9a71294-1396-43e4-9ed5-9ee2914ef093-1700838301802@3c-app-gmx-bs48>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_032603_906629_A633B77D 
-X-CRM114-Status: GOOD (  39.05  )
+X-CRM114-CacheID: sfid-20231127_034714_722508_AF54F2E8 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,160 +96,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan,
+Le Fri, Nov 24, 2023 at 04:05:01PM +0100, Frank Wunderlich a =E9crit :
+> Hi
+> =
 
-Am Donnerstag, 23. November 2023, 13:54:28 CET schrieb Johan Jonker:
-> 
-> On 11/20/23 18:06, Heiko Stuebner wrote:
-> > Hi Johan,
-> > 
-> > Am Donnerstag, 2. November 2023, 14:42:19 CET schrieb Johan Jonker:
-> >> The Rk3066 hdmi output format is hard coded to RGB. Remove
-> >> all useless code related to colorimetry and enc_out_format.
-> >>
-> >> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > 
-> 
-> > I guess my first question is, is the hardcoding happening just because
-> > of missing functionality in the driver, or does the hardware only
-> > support RGB?
-> 
-> This driver can do so much more..., but is crippled by various causes.
-> If in need for a full functional rk3066 driver a little bit help/advise/action from other people is needed.
+> > Gesendet: Montag, 20. November 2023 um 13:48 Uhr
+> > Von: "Corentin LABBE" <clabbe@baylibre.com>
+> =
 
-Part of me wants to have fully working drivers, but on the other hand,
-both the rk3066-hdmi and also the inno-hdmi drivers are sort of one-off
-drivers used by rk3066 and rk3036 (inno-hdmi) and most likely won't see
-new SoCs using them in the future.
+> > You are using kcapi-rng but the driver do not support RNG yet. (and pro=
+bably never if I continue to fail having good results with it).
+> > So it is normal values does not change.
+> =
 
+> which functions does the driver support atm? or how can i test correctly
+> (and which kernel options i need for this)?
+> =
 
-So I guess after thinking more about this, I should probably just apply
-your patch to simplify the code and if by some magical happenings in
-future someone really wants to spend time on either one of these drivers
-they can always use "git revert" to bring back the old code?
+> regards Frank
 
+Hello
 
-Heiko
+The driver handle AES(ECB CBC XTS) and hashes (MD5 SHAxxx and SM3)
+For testing you need:
+CONFIG_CRYPTO_MANAGER_DISABLES_TESTS is not set
+CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=3Dy
 
+Note that I have already got several report of random hashes tests failling=
+, but I am near to have a reproducer.
 
-> 1:
-> Missing rk3066 TRM HDMI register info.
-> Could Rockchip (= Sandy Huang) disclose this info to the open source community?
-> 
-> As a way around we can look at older driver code and port to mainline.
-> More info gives better results.
-> rk30_hdmi_config_csc() function:
-> https://github.com/RockchipOpensourceCommunity/px2-android-kernel-3.0/blob/master/drivers/video/rockchip/hdmi/chips/rkpx2/rkpx2_hdmi_hw.c#L315
-> 
-> 2:
-> Could DRM people show us examples for:
-> - How to advertise to the VOP driver what data formats (RGB, YCBCR) it can send to the HDMI driver or any other Rockchip DRM sub driver other then RGB.
-> - Advertise EDID data monitor modes RGB444, YCBCR444 and YCBCR422 to the HDMI driver.
-> 
-> https://github.com/RockchipOpensourceCommunity/px2-android-kernel-3.0/blob/master/drivers/video/rockchip/hdmi/rk_hdmi_edid.c#L217C1-L218C41
-> 
-> 3:
-> Advise when what Infoframe is needed for only RGB vs. the rest according to the specification.
-> https://engineering.purdue.edu/ece477/Archive/2012/Spring/S12-Grp10/Datasheets/CEC_HDMI_Specification.pdf
-> 
-> rk3066 currently only sends avi info. Does it need vsi as well? Can anyone give some clarity here?
-> inno_hdime sends avi and vsi info.
-> 
-> 4:
-> rk3066_hdmi and inno_hdmi are HDMI 1.4a drivers for DVI and HDMI.
-> Validated by drm_match_cea_mode() this function only gives us both HDMI + HDMI2 focus, but nothing for old DVI monitors.
-> How to improve?
-> 
-> 5:
-> Sound support was submitted:
-> Re: [PATCH v6 2/5] drm: rockchip: add sound support to rk3066 hdmi driver
-> https://lore.kernel.org/linux-rockchip/48dbe9b7-0aa0-f459-301f-f380e2b7f2f8@gmail.com/
-> 
-> No reply was given (by Heiko or others) on why it wasn't applied or what needs to be improved.
-> 
-> Without reply no improvement.
-> 
-> Johan
-> 
-> 
-> > 
-> > 
-> >> ---
-> >>  drivers/gpu/drm/rockchip/rk3066_hdmi.c | 20 +-------------------
-> >>  1 file changed, 1 insertion(+), 19 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> >> index 0e7aae341960..f2b1b2faa096 100644
-> >> --- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> >> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> >> @@ -23,8 +23,6 @@
-> >>
-> >>  struct hdmi_data_info {
-> >>  	int vic; /* The CEA Video ID (VIC) of the current drm display mode. */
-> >> -	unsigned int enc_out_format;
-> >> -	unsigned int colorimetry;
-> >>  };
-> >>
-> >>  struct rk3066_hdmi_i2c {
-> >> @@ -200,14 +198,7 @@ static int rk3066_hdmi_config_avi(struct rk3066_hdmi *hdmi,
-> >>  	rc = drm_hdmi_avi_infoframe_from_display_mode(&frame.avi,
-> >>  						      &hdmi->connector, mode);
-> >>
-> >> -	if (hdmi->hdmi_data.enc_out_format == HDMI_COLORSPACE_YUV444)
-> >> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV444;
-> >> -	else if (hdmi->hdmi_data.enc_out_format == HDMI_COLORSPACE_YUV422)
-> >> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV422;
-> >> -	else
-> >> -		frame.avi.colorspace = HDMI_COLORSPACE_RGB;
-> >> -
-> >> -	frame.avi.colorimetry = hdmi->hdmi_data.colorimetry;
-> >> +	frame.avi.colorspace = HDMI_COLORSPACE_RGB;
-> >>  	frame.avi.scan_mode = HDMI_SCAN_MODE_NONE;
-> >>
-> >>  	return rk3066_hdmi_upload_frame(hdmi, rc, &frame,
-> >> @@ -329,15 +320,6 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
-> >>  	struct drm_display_info *display = &hdmi->connector.display_info;
-> >>
-> >>  	hdmi->hdmi_data.vic = drm_match_cea_mode(mode);
-> >> -	hdmi->hdmi_data.enc_out_format = HDMI_COLORSPACE_RGB;
-> >> -
-> >> -	if (hdmi->hdmi_data.vic == 6 || hdmi->hdmi_data.vic == 7 ||
-> >> -	    hdmi->hdmi_data.vic == 21 || hdmi->hdmi_data.vic == 22 ||
-> >> -	    hdmi->hdmi_data.vic == 2 || hdmi->hdmi_data.vic == 3 ||
-> >> -	    hdmi->hdmi_data.vic == 17 || hdmi->hdmi_data.vic == 18)
-> >> -		hdmi->hdmi_data.colorimetry = HDMI_COLORIMETRY_ITU_601;
-> >> -	else
-> >> -		hdmi->hdmi_data.colorimetry = HDMI_COLORIMETRY_ITU_709;
-> > 
-> 
-> > while I can understand the RGB output format, why does the colorimetry
-> > also get removed? This looks like it is dependent on the mode itself
-> > and not the output format?
-> 
-> From the old driver these conditions apply whether csc is needed.
-> https://github.com/RockchipOpensourceCommunity/px2-android-kernel-3.0/blob/master/drivers/video/rockchip/hdmi/chips/rkpx2/rkpx2_hdmi_hw.c#L320C1-L324C3
-> 
-> 	if( ((vpara->input_color == VIDEO_INPUT_COLOR_RGB) && (vpara->output_color == VIDEO_OUTPUT_RGB444)) ||
-> 		((vpara->input_color == VIDEO_INPUT_COLOR_YCBCR) && (vpara->output_color != VIDEO_OUTPUT_RGB444) ))
-> 	{
-> 		return;
-> 	}
-> 
-> > 
-> > Thanks
-> > Heiko
-> > 
-> > 
-> 
-
-
-
-
+Regards
 
 _______________________________________________
 Linux-rockchip mailing list
