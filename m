@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83926C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 18:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C3AC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 18:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QUJOu/Q0xtMlVb3qNFBwre/iUJFIzIttOnd0WT6btio=; b=dtWx2cEp5ZphZl
-	NcqNZhbIoKTVoOefowMsBf1gkTzRz/an+b8kvn+Row4ixMst2uy/s0af8G0exsqkhvSevM6xSnuc2
-	CNEZU+WiddeYQ2OwC7gTGzbrI3dZQHvK4HSKlS0Lo9lYbuxDiS0Y7JDiIV88jO3XVdbiijnm89/GA
-	D4XqGfQ71H1Pm6C9lMmFOVv55EDX8Z1JEMyZtmZCh8AQW69V3FFLab/LCYxouCG9Zj+c+fbRY8qYF
-	LQtnHVJxKE/hsSCTK6sgOEpbpo1DgkypCg67r2ZZTXFanbMWhrnneYdNG6UEGPqhH2JysKPCqyQyp
-	g0KbR+e1dI/aSyEj9Ezw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T5o58XsxCq+w73theIS681YZtx+OGfHMXHaLBpNnBmA=; b=C3r4qSzTl1ToOr
+	gHZTUxTxfqwjIrlooTKL1Zz75DCXhi43fQjeJyxmUFh9Xmv3wlNjqEDOzRp6P36el90y4zHC7F3KG
+	YcUmLR8F8ZPUIUfaGZ7K3iZ0oCuGPdSxmKkfHkp7JSIvGZkfeVUWF/AyO7ocpHqa8avDu2a8t03Rm
+	8M2oP38fbRejfuFD4usGO7Lxe4fsuttzeWcGwQtT/hBk3/h/UNqnDwHPx1WlLcHsgrjKXTck+5Qup
+	EWIkVPqNyFmOftdxtg2xwUpsCS3c3wwo+NCyYsiz+jD9dstuqnosso2XYRgr4AExQtRDzRKKqcdIj
+	L8Y50NxdfKcu2bbyBzlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7g8W-003CdF-2K;
-	Mon, 27 Nov 2023 18:15:12 +0000
+	id 1r7gdx-003FtO-2f;
+	Mon, 27 Nov 2023 18:47:41 +0000
 Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7g8T-003Cbe-0Z;
-	Mon, 27 Nov 2023 18:15:10 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a02ba1f500fso657198166b.0;
-        Mon, 27 Nov 2023 10:15:08 -0800 (PST)
+	id 1r7gdt-003Fst-1f;
+	Mon, 27 Nov 2023 18:47:39 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a011e9bf336so635287366b.3;
+        Mon, 27 Nov 2023 10:47:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701108907; x=1701713707; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=x6EbGi5KYgfVG1CdJuzlcMAvljT6psfhah5arWG3Clc=;
-        b=Pp3Npel2tjXnHHS4kJ37fd1eodJn9TCbNfZplKh7wQsfuv1g/qJ4muA8FrmQaQqbmc
-         m/gZD/rTk9b18aGI/unzRfOTO16tzDpzYvAeE73OizNWOMgjFjbAFBGnPzYCKa3WF9eQ
-         fXMVuoXx9aqof80gF23xdygn4OSJMItPGpa3dBWIcxeX2bcrgg5HTpkIpPV84sAWM23q
-         CK0wvQoDxtMfALHkZkLJVtCPgHGY9eiK9z5qUAqSbIWQm/c2XX8oROnNJ2IGXK4yJJ+S
-         ioQ1m7HpY7wxoniO5dojoWnKhQ/l0g51ca/7CJLWPXp+3e6cTo0QgSFYtHShgfEFQzNB
-         E6xg==
+        d=gmail.com; s=20230601; t=1701110856; x=1701715656; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=feoucnNh3cnG002IsGWyER4iW7pfsWcNc8v7OfR+1cU=;
+        b=bRRn6pOc36HXHbLUTbE0g9buog45a5mWEZd6w004/w/QjYWuQRROjdHMD0zxp4wRAL
+         0NHTzdg28zJKrALUFEPyJiIaOhz1/EIclaOA9wQf+YHe10qiJ/Ehmfo1hBQ/hCoqip/y
+         SNSajxS2om7dehE11tu3gZ7T6kjbmmORgQNPqZonm0G6Z6n1wWX+tI2FM4/f1hzV6n6v
+         hDyox502p/VMxWe9K+aV56nT4OlVvAgpo8QykKUuKHUL+37y1Nin96oWXAIhxcxUrBJ2
+         zR0k98TrsxNs5Ro1oFtyTAIFf0TIk2KxhkeY9LCLgC2o2C41H1G0wqjgKwRCs1gXyjC1
+         T8PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701108907; x=1701713707;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x6EbGi5KYgfVG1CdJuzlcMAvljT6psfhah5arWG3Clc=;
-        b=TgtPErBwxdgarXIozFzxTk+xajt0gu3hiiqQamC9SHlfQEoMcwSwkWnfJifW+9R9NE
-         3cy+s3Tz3mgVGYCc7R0a+h177B855O6gpjMfCIndndYATa9bMfZyFzzY96bF16dmLqrb
-         OPGtJyKyLlxOCIYdnkBxfq2cGZ+QMDd2F4HSl0ILTAj8FHuX9Qttl3zM/ODdsIwXP/RO
-         HSJII9dB5TEXMSCBLe0EKVIkSsqMfdzbfCcgWsMd9DRSkRRlDubCqCSwfBtLOD3xOwAy
-         PwPbP8J5x+TlahRjQEQcMr6ZLexGFlJiDqTjYTVOHvq6MSBXY6QJCoTjJ4fkgMp5glwu
-         61cw==
-X-Gm-Message-State: AOJu0YxlsDsRPqpEo7zOFyNldPMwYyVXkkYsNGZw3ua7YUCw9LxVXfwS
-	7E3tVmaIE1+YnIoTQxx18Q==
-X-Google-Smtp-Source: AGHT+IFDKpCYOvpyu5bhY+/rib0MinbIHsR2HWXwLD7BBCXHji0tHHN2u1zt2jvfC/UPg9cKtem6Bg==
-X-Received: by 2002:a17:906:d28e:b0:9e5:cef:6ff with SMTP id ay14-20020a170906d28e00b009e50cef06ffmr10355980ejb.33.1701108906794;
-        Mon, 27 Nov 2023 10:15:06 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701110856; x=1701715656;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=feoucnNh3cnG002IsGWyER4iW7pfsWcNc8v7OfR+1cU=;
+        b=XJfW1CX3U8l91gfLBr00kdpXVqhpcC9H7kQPmabBQyBaHlbFG7tTuIHjA08IoaMTJk
+         x5HY0kr6jR8CIJDwdA8MIIgP6xXdOZT7jvw/H41dNcfE5g/ONSS9k8JOxFDsEQkmbmVj
+         tk1esphTEvXS8vN8LXIdvq+KFTWbOjC8+m+nWJGtUFxAMuymyzfrtp3ft/PMSMRbN2Zu
+         6v/c6QrUa6/okmuMhmn01J5FpiSyXfEM+Wb2CiJZ6vu8BO9x01n02tl8pbcDZfPe0vhc
+         oliUDm7cnQi2Ul84PZvNY3k5TxRpBDPGvn0d3Q5uU/6iUA0pQYh+W4Nhst4fCidmME/n
+         FvWw==
+X-Gm-Message-State: AOJu0YzjGIap3QjuC3UH7uYQVIewq+5od3BXqeYaiccai11FY5rdf45B
+	ITldNipenG8Dikr+gXoQYQ==
+X-Google-Smtp-Source: AGHT+IGNIXVWpAF/Vtmt0THD1hdYjxHh9x8U6OL7SM2ONORvUymzeJ5XQxWTJ/AmZWmVtFH1/xe/cg==
+X-Received: by 2002:a17:907:a092:b0:9fd:ab4:5859 with SMTP id hu18-20020a170907a09200b009fd0ab45859mr10100668ejc.66.1701110855697;
+        Mon, 27 Nov 2023 10:47:35 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:370c:d8f:2dce:7367])
-        by smtp.gmail.com with ESMTPSA id dv19-20020a170906b81300b009a9fbeb15f2sm5952271ejb.62.2023.11.27.10.15.06
+        by smtp.gmail.com with ESMTPSA id 26-20020a170906009a00b009b9aa8fffdasm5907725ejc.131.2023.11.27.10.47.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Nov 2023 10:15:06 -0800 (PST)
+        Mon, 27 Nov 2023 10:47:35 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>,
-	linux-clk@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 2/2] clk: rockchip: rk3128: Fix SCLK_SDMMC's clock name
-Date: Mon, 27 Nov 2023 19:14:18 +0100
-Message-ID: <20231127181415.11735-6-knaerzche@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: Fix sdmmc_pwren's pinmux setting for RK3128
+Date: Mon, 27 Nov 2023 19:46:44 +0100
+Message-ID: <20231127184643.13314-2-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231127181415.11735-2-knaerzche@gmail.com>
-References: <20231127181415.11735-2-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_101509_212750_4A63B50E 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20231127_104738_185723_A74AF665 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,32 +94,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SCLK_SDMMC is the parent for SCLK_SDMMC_DRV and SCLK_SDMMC_SAMPLE, but
-used with the (more) correct name sclk_sdmmc. SD card tuning does currently
-fail as the parent can't be found under that name.
-There is no need to suffix the name with '0' since RK312x SoCs do have a
-single sdmmc controller - so rename it to the name which is already used
-by it's children.
+RK3128's reference design uses sdmmc_pwren pincontrol as GPIO - see [0].
 
-Fixes: f6022e88faca ("clk: rockchip: add clock controller for rk3128")
+Let's change it in the SoC DT as well.
+
+[0] https://github.com/rockchip-linux/kernel/commit/8c62deaf6025
+
+Fixes: a0201bff6259 ("ARM: dts: rockchip: add rk3128 soc dtsi")
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/clk/rockchip/clk-rk3128.c | 2 +-
+This should have been part of my XPI-3128 board submission - it uses this
+pin as GPIO and adapts the reference design in this regard.
+Originally I had this as an override in the board DT, but later noticed
+this relatively new commit in vendor's kernel. I simply forgot to add 
+that commit.
+
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index fcacfe758829..22e752236030 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -310,7 +310,7 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	GATE(SCLK_MIPI_24M, "clk_mipi_24m", "xin24m", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(2), 15, GFLAGS),
+diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+index 4e8b38604ecd..b16786e81c08 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+@@ -859,7 +859,7 @@ sdmmc_wp: sdmmc-wp {
+ 			};
  
--	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc0", mux_mmc_src_p, 0,
-+	COMPOSITE(SCLK_SDMMC, "sclk_sdmmc", mux_mmc_src_p, 0,
- 			RK2928_CLKSEL_CON(11), 6, 2, MFLAGS, 0, 6, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
+ 			sdmmc_pwren: sdmmc-pwren {
+-				rockchip,pins = <1 RK_PB6 1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_default>;
+ 			};
  
+ 			sdmmc_bus4: sdmmc-bus4 {
 -- 
 2.43.0
 
