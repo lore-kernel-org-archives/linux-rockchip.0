@@ -4,66 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF5EAC07D5A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 09:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA34C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 09:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yI0jkl3oZIJiWlCIsMH7Z2VZztegWiCAEHYp4GN2AlQ=; b=fTWJqmoCPKGW6CXD6K1Bh5YNDY
-	JN2/H7Fld6yylALZSKZkmGjlqltz9joKdjXNQHG/xx2OURf8jXfc0E50Sm6+BLvfTZfNbY99gvI7V
-	rMJNIJ/HC//iaJPScN9pHJOQZVwQzaQcDRkhQ5Xp2Ud6sI559uoykhqxEEKTQerRKI0B0sk3i48pN
-	GOArxJji2Sfj5lv5m4FYVpYMcnaP8M4J9CT+0r14k0BCoswc0PIokeBAObdnwInDWYumzg24DiD3S
-	qv3Gd/xxVI/nhZQ241nb3tOviRP4HOQ6cNOpbwwmLpGxraIgrJGwSFWYnObMKIFYt4+RDzak8VHgF
-	HflUFQCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GHIw4xrFTN2LSBeKUm0q/Wp3u0x5PLIp2AzEBGke63I=; b=0pwJLeV4UkBeRX
+	rOa1qo7kgDMFNXh9vsqp7MndXgKWwu3q3Twb/e5hCmkl4P07SNsCTPvewZZYGqrVC0QSiEr5jwA5G
+	qdZa06i74y6DDfpbk6Y5LvQ7xfXLHK+Zs1B1rkltYFug6w5s7G9MKf0B2Y86Wh45r+h/V3lohWNhp
+	4YFZfOf4WDoGNhzcQFFmGnN3JKtddxRq4hSypf81Lmw+98J+wKzH7izQ0paSfVuviPT2eokviTyp9
+	tCVKdNC4WTHjDOKrzVAAexj6RwfdbxGFlUETXGo3jnDvASruICYOyjxCtP/P5MU1Pr2RiFCxZtFQD
+	TWuiiMCHsfIJY1wUOH2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Y75-001zh4-0m;
-	Mon, 27 Nov 2023 09:41:11 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1r7Y82-001znk-17;
+	Mon, 27 Nov 2023 09:42:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Y6y-001zfC-07;
-	Mon, 27 Nov 2023 09:41:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id D917CCE107F;
-	Mon, 27 Nov 2023 09:41:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31DAAC433C9;
-	Mon, 27 Nov 2023 09:41:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701078060;
-	bh=VAe16eg7y6ayTkfAT9VTCj+Q3FFIy+QqJ0XsEAFzdqo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ie6DAQKQwth6/jsj75eLcKctEZhUSo3DB0NwQ2dpsFGO1StB90BsXbeaHN0mAAp5r
-	 eBTOZ0KH8MvrhVT6ZSAnGs89nyE+jIjaFTVBfoRB5NI1Lx2Cch6ycLeW5aA1RB8nR1
-	 5Mrnhw6eBJEzPlKSL6d++7ZRL0QcMchZ30C/YoEic6QG3a+aEdIAWmzFtJFP3sLZAb
-	 4O2z7iEkjaCO8KpJx9qFQH2UviDu92Ydl/azM+Wc7SAkwxNbnb1cRGkcCrU4TRNM+b
-	 hmM91Th0AzdPz8u7IuiA4GPFBr4oJJ9Do4FmdDr4hCfNvLT4Y2j38vpWSBxUO0i+CW
-	 9jqQWwJk6rFyA==
-Date: Mon, 27 Nov 2023 10:40:57 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Johan Jonker <jbx6244@yandex.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH RFC v3 22/37] drm/rockchip: inno_hdmi: Remove useless
- output format
-Message-ID: <pxj5yv3f5ukobsqfokd5ojh2is5za5wdv3imfqrlcu3smoib76@5lw5bwl77uvg>
-References: <20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org>
- <20231031-kms-hdmi-connector-state-v3-22-328b0fae43a7@kernel.org>
- <52b232e4-7ffa-1d01-efa6-a0af84729483@yandex.com>
+	id 1r7Y7z-001zn0-0V;
+	Mon, 27 Nov 2023 09:42:08 +0000
+Received: from i53875bf8.versanet.de ([83.135.91.248] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r7Y7u-0008ND-Sp; Mon, 27 Nov 2023 10:42:02 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Lukasz Luba <lukasz.luba@arm.com>
+Cc: lukasz.luba@arm.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ daniel.lezcano@linaro.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add dynamic-power-coefficient to rk3399 GPU
+Date: Mon, 27 Nov 2023 10:42:02 +0100
+Message-ID: <14787054.VsHLxoZxqI@diego>
+In-Reply-To: <20231127081511.1911706-1-lukasz.luba@arm.com>
+References: <20231127081511.1911706-1-lukasz.luba@arm.com>
 MIME-Version: 1.0
-In-Reply-To: <52b232e4-7ffa-1d01-efa6-a0af84729483@yandex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_014107_238155_83BB80A8 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20231127_014207_298081_33F20C38 
+X-CRM114-Status: GOOD (  19.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,62 +58,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6108408245160103116=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Lukasz,
 
---===============6108408245160103116==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fgomrsf3hj7iwzkr"
-Content-Disposition: inline
+Am Montag, 27. November 2023, 09:15:11 CET schrieb Lukasz Luba:
+> Add dynamic-power-coefficient to the GPU node. That will create Energy
+> Model for the GPU based on the coefficient and OPP table information.
+> It will enable mechanism such as DTMP or IPA to work with the GPU DVFS.
+> In similar way the Energy Model for CPUs in rk3399 is created, so both
+> are aligned in power scale. The maximum power used from this coefficient
+> is 1.5W at 600MHz.
 
-
---fgomrsf3hj7iwzkr
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Sat, Nov 25, 2023 at 11:00:52AM +0100, Johan Jonker wrote:
-> In stead of further cripplingRockchip HDMI drivers one could also make
-> it functional based=A0 on EDID info.
-
-I'm not crippling it, it was dead code. This has no functional impact
-whatsoever.
-
-> To start with the output could you turn RGB888 input and switch between
-> RGB444, YCBCR444 and YCBCR422 output.
-
-I don't have any hardware to test that out
-
-Maxime
-
---fgomrsf3hj7iwzkr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZWRkKQAKCRDj7w1vZxhR
-xRUcAP9CI1PcttTNikiIZjxjYzvcKVQK/UCxKc5meY4XBGQ5OgD+LSZ4/nwHLH0l
-7NofWH+K9NjPixshRfY99cdGrd+x+wc=
-=/lNp
------END PGP SIGNATURE-----
-
---fgomrsf3hj7iwzkr--
+2640 is a pretty arbitary value, so it would be really helpful to describe
+in the commit message, how you arrived with that specific value.
 
 
---===============6108408245160103116==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks
+Heiko
+
+
+> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 9da0b6d77c8d..87cfdf570b19 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -2113,6 +2113,7 @@ gpu: gpu@ff9a0000 {
+>  		interrupt-names = "job", "mmu", "gpu";
+>  		clocks = <&cru ACLK_GPU>;
+>  		#cooling-cells = <2>;
+> +		dynamic-power-coefficient = <2640>;
+>  		power-domains = <&power RK3399_PD_GPU>;
+>  		status = "disabled";
+>  	};
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6108408245160103116==--
-
