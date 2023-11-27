@@ -4,53 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFF9C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 08:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F23C07D5A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 09:07:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4BC5M5h5Lf9G+bHxFrBPlHb7+55bZqzyUXj0DZStDOc=; b=uhU252Jc5G1qZH
-	ev74nMW3Egv2zVQHam7KTLOBeJ+6lMgonWKCEJAklEPIEI+ZmbV73HbHZmMZutQu6Ap+KVdNuQvW4
-	xhc1mQiPCYQ9ILYz0WD+peiHMeDps/2U8MnXBR6TDnzak7JWbgk5YPMkMo44I+FZqf8Bovslx+IAu
-	li6RbcPdmnDr4PgS7c+YE9V8fVxLw2Q1+ZvrktKBcJqBZEkvqGu9UYJp/meel1rahNenM/T0zDWlN
-	GnT8djsIACOgHH65MbgIocZvnubxtAfk3Kt7EfnjbQ5OT6RM50O/vVX2+qgMGgE0soGI6WFtHw7V+
-	qiukRU7EykocvPJG00FA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3z9bFfhEE/PAfJpnp3mzELCqpEKY+Zi/VfY2gwp/l5s=; b=t/ZcNH4tqtoXi1
+	OFtmUHjkd4X9arrv4CVnO9zmfJRvk4gh9/Djsv3w4H97x5vBeYNiFxfsG/PWU91wg4ZrKPzyLk0ob
+	vuCFPu62q04v+NSUz29x+t5QcNyc4a10LFOBLddvR/D43sollrZ1+MoRxtps4ZvFJdV0Ve3WR2Dbg
+	hUtNXW6a5Gaatr7PgH/xEQDf4bI7Hr7AOdcjnFgHXzBt2L65q1aLGJDE0QM/PWWZe1sFPpz+PKgdg
+	A4MDIFc0D9sTJ4JNhVcIKF2gkG6G4Puvi9OZk9zkCCdiQe1OhYWKnyy/Z0ZGV7+YLL0JUdaowIz7p
+	FY6OCrblcKqjAa9xDKSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Wl9-001nxh-24;
-	Mon, 27 Nov 2023 08:14:27 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Wl6-001nwB-2T;
-	Mon, 27 Nov 2023 08:14:26 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 43C592F4;
-	Mon, 27 Nov 2023 00:15:08 -0800 (PST)
-Received: from e129166.arm.com (unknown [10.57.4.90])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id E7FBF3F6C4;
-	Mon, 27 Nov 2023 00:14:18 -0800 (PST)
-From: Lukasz Luba <lukasz.luba@arm.com>
-To: linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: lukasz.luba@arm.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	daniel.lezcano@linaro.org
-Subject: [PATCH] arm64: dts: rockchip: Add dynamic-power-coefficient to rk3399 GPU
-Date: Mon, 27 Nov 2023 08:15:11 +0000
-Message-Id: <20231127081511.1911706-1-lukasz.luba@arm.com>
-X-Mailer: git-send-email 2.25.1
+	id 1r7Xa4-001vJV-0C;
+	Mon, 27 Nov 2023 09:07:04 +0000
+Received: from mail.thrivehub.pl ([164.132.48.43])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r7Xa0-001vHc-1p
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Nov 2023 09:07:01 +0000
+Received: by mail.thrivehub.pl (Postfix, from userid 1002)
+	id F121D24F0A; Mon, 27 Nov 2023 09:05:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=thrivehub.pl; s=mail;
+	t=1701075969; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
+	h=Date:From:To:Subject:From;
+	b=LBY2vmU/64Bmcy6+3sjmHPrnBlkiDp6n035H0jn67SJEh8jLb8uG1AxwHTYQ02BfK
+	 XysIscOko1fOBXZhW7flm7bBfH9VbtV//zs/swJE+HqgXak/GJTVgYYeVaTKnmvcy7
+	 IfKcGtDvkV+BLAb6NMfNCaf/K7XyzoCvVJxXj2mzKVI9oAef5r9QpOFHcdU4rsDfky
+	 a2ptC2gEupzQCouxtSRoQ2bqxSs3OcXo5BZ9VFSVd4rGkXXG1PHsDZ2wSZoSao1EYL
+	 pCo67Mzz32w9BoySP7/C7EWLA4xrrE9JhIrB29brvQJnHMiShnv3Oj7ON3LNbW4GLo
+	 CT60Vx7EjMqog==
+Received: by mail.thrivehub.pl for <linux-rockchip@lists.infradead.org>; Mon, 27 Nov 2023 09:05:02 GMT
+Message-ID: <20231127074500-0.1.35.1bpml.0.5gmj5x0rh5@thrivehub.pl>
+Date: Mon, 27 Nov 2023 09:05:02 GMT
+From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Zapytanie ofertowe 
+X-Mailer: mail.thrivehub.pl
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_001424_902567_1C2C839C 
-X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-CacheID: sfid-20231127_010700_748652_661A2AA9 
+X-CRM114-Status: UNSURE (   1.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,40 +61,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add dynamic-power-coefficient to the GPU node. That will create Energy
-Model for the GPU based on the coefficient and OPP table information.
-It will enable mechanism such as DTMP or IPA to work with the GPU DVFS.
-In similar way the Energy Model for CPUs in rk3399 is created, so both
-are aligned in power scale. The maximum power used from this coefficient
-is 1.5W at 600MHz.
-
-Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 9da0b6d77c8d..87cfdf570b19 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2113,6 +2113,7 @@ gpu: gpu@ff9a0000 {
- 		interrupt-names = "job", "mmu", "gpu";
- 		clocks = <&cru ACLK_GPU>;
- 		#cooling-cells = <2>;
-+		dynamic-power-coefficient = <2640>;
- 		power-domains = <&power RK3399_PD_GPU>;
- 		status = "disabled";
- 	};
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
+c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
+IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
+ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
+ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
+b24gSmFua293c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
