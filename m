@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C124AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 23:26:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86DF2C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 23:26:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6BcHymPrb65RczQ9pVS8hH2ip+2WEFLyzJG6dv6wXis=; b=S1P4mHRBBcrmz6
-	AEmq2gQ/niKyenG1It5Kr0+odGgsk2/VIAD24zaIe2IuX2V5KH2RxKmGhVAYh2lGOLVdnHbpokyvP
-	4fNIyKvbGfJ0mjJ5g1S9Nd4Bskn/VXab8CV2r4+Fqxs6+SWzskh9bqFwzn7XCihyAk/zDKS4tIF2B
-	GFvj42EeD6/zFh+i27UrZAhxuiN7Hb1T8E9+y+MEctbHIbRv8ZijngQ7/jzUdCXlgfqdxqmvDku+6
-	yclMI27TQVaLmRFOvlLuZs6gzlrjnuaxoRX7vGrglQyi54fQwfy3xfWAlZgAJNF3I9xu5ei7ofjES
-	XUgvZyElebpuQpWxS3zw==;
+	List-Owner; bh=3C/1yiRxLJmxQZU3+Na1d64B4J/iDaSWBwWiyeLzQgI=; b=JPjZ2e8J0jbzeP
+	CS/PgxmqpW4YQ+bamsp1o/5JSIMAB9iE8Xf/0gG8Sql233jmz3lmVLuP+rVVRoYszm1Q4sitOBb5N
+	vpiYk16ENodw9LBBhGDLG0QlMq176owmE6I+wGLlc+YTpzuXJJQSZ0Vs0wZ+8JCU4xFcsw++qo4Xi
+	KjlW2xk1cq4hpwV/A9aS+b9BMCsQIvscTyJIdDoDR8tIcqC4ce2vEZ6FhqUX05nu5km65gS7vzGIy
+	b7rLZAbkFjSTP2nqr6Ibqfu9xgiCMAb+oSJxsEMGjh5e4fSX06T6XoDDafJhFqW8zS7zkSzCF2tUp
+	hBo521lqRwGNcHfSU7Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7kzW-003f0o-1v;
-	Mon, 27 Nov 2023 23:26:14 +0000
+	id 1r7kzV-003f08-0c;
+	Mon, 27 Nov 2023 23:26:13 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7kzS-003ez7-0i;
+	id 1r7kzS-003ez2-0k;
 	Mon, 27 Nov 2023 23:26:11 +0000
 Received: from i53875bf8.versanet.de ([83.135.91.248] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1r7kzO-0007MW-Dp; Tue, 28 Nov 2023 00:26:06 +0100
+	id 1r7kzO-0007MW-TD; Tue, 28 Nov 2023 00:26:06 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Update edgeble-neu6 bindings
-Date: Tue, 28 Nov 2023 00:26:03 +0100
-Message-Id: <170112754115.2134471.134877295882135358.b4-ty@sntech.de>
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: minor whitespace cleanup around '='
+Date: Tue, 28 Nov 2023 00:26:04 +0100
+Message-Id: <170112754116.2134471.12967348156965684216.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231125142914.57459-1-jagan@edgeble.ai>
-References: <20231125142914.57459-1-jagan@edgeble.ai>
+In-Reply-To: <20231124095031.58555-1-krzysztof.kozlowski@linaro.org>
+References: <20231124095031.58555-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_152610_258051_93F307D9 
-X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-CacheID: sfid-20231127_152610_264829_43BC6978 
+X-CRM114-Status: UNSURE (   8.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,25 +68,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 25 Nov 2023 19:59:13 +0530, Jagan Teki wrote:
-> Current binding has following compatible combination for SoM, IO board
-> - NCM6A: edgeble,neural-compute-module-6a,
-> 	 edgeble,neural-compute-module-6a-io
-> - NCM6B: edgeble,neural-compute-module-6b,
-> 	 edgeble,neural-compute-module-6b-io
+On Fri, 24 Nov 2023 10:50:30 +0100, Krzysztof Kozlowski wrote:
+> The DTS code coding style expects exactly one space before and after '='
+> sign.
 > 
-> This board topology now changes in final revisions, so a common
-> compatible IO board, NCM6A-IO, is made available for both variants
-> of SoM: NCM6A and NCM6B, produced by Edgeble AI.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Update edgeble-neu6 bindings
-      commit: 02dbe73da5c4f6a8dc7c381b21c181006a06fb90
-[2/2] arm64: dts: rockchip: Use NCM6A-IO board for edgeble-neu6b
-      commit: ec31f0f98433f0edf456e2074301b76bdace5f3d
+[1/2] ARM: dts: rockchip: minor whitespace cleanup around '='
+      commit: 076a948f5ad0da8a4438fdb3ec1b4a473084b40a
+[2/2] arm64: dts: rockchip: minor whitespace cleanup around '='
+      commit: 93dc6cd15f207be502739072ad122fa5ac812908
 
 Best regards,
 -- 
