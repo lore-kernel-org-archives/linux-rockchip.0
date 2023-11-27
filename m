@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C3AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 18:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A47C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 21:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=T5o58XsxCq+w73theIS681YZtx+OGfHMXHaLBpNnBmA=; b=C3r4qSzTl1ToOr
-	gHZTUxTxfqwjIrlooTKL1Zz75DCXhi43fQjeJyxmUFh9Xmv3wlNjqEDOzRp6P36el90y4zHC7F3KG
-	YcUmLR8F8ZPUIUfaGZ7K3iZ0oCuGPdSxmKkfHkp7JSIvGZkfeVUWF/AyO7ocpHqa8avDu2a8t03Rm
-	8M2oP38fbRejfuFD4usGO7Lxe4fsuttzeWcGwQtT/hBk3/h/UNqnDwHPx1WlLcHsgrjKXTck+5Qup
-	EWIkVPqNyFmOftdxtg2xwUpsCS3c3wwo+NCyYsiz+jD9dstuqnosso2XYRgr4AExQtRDzRKKqcdIj
-	L8Y50NxdfKcu2bbyBzlw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=O08K7NOfM9pW7lWkHySyC+I/qFjXoAlGt0p06cWd1DA=; b=GZxfKC3/ueggGw
+	rLfmNKThZ4mwXIwx6jibc9hVcTMomvTILc1BfxrAZ6S1xfPltK1ooXpSorC8htfyP399SrMfRD+B0
+	eCOqwEBVaB8N1e8Brp9GMXizkXTH4qBGRtZ/LnAakXq3lypwNija72bZlnOufME3eUxbWxUNkQviz
+	Lu9Em1oKaftp6iN4785NuOOhrBtAFVhvNcPjKVIyIiXkNFBqJ/5XdE0lKg7HDPphYOntf+2yp47i6
+	n/MwFYwPGaJxnbgv1XJEkbVberoqU0nsY0c9tCThh+gPLYgMYkxiMEwAafmS+85KrTAAa9KsnVAlf
+	Ru4lLaUwGIP2ShbmpTKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7gdx-003FtO-2f;
-	Mon, 27 Nov 2023 18:47:41 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1r7jZw-003XkR-2I;
+	Mon, 27 Nov 2023 21:55:46 +0000
+Received: from mail-oa1-f43.google.com ([209.85.160.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7gdt-003Fst-1f;
-	Mon, 27 Nov 2023 18:47:39 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a011e9bf336so635287366b.3;
-        Mon, 27 Nov 2023 10:47:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701110856; x=1701715656; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=feoucnNh3cnG002IsGWyER4iW7pfsWcNc8v7OfR+1cU=;
-        b=bRRn6pOc36HXHbLUTbE0g9buog45a5mWEZd6w004/w/QjYWuQRROjdHMD0zxp4wRAL
-         0NHTzdg28zJKrALUFEPyJiIaOhz1/EIclaOA9wQf+YHe10qiJ/Ehmfo1hBQ/hCoqip/y
-         SNSajxS2om7dehE11tu3gZ7T6kjbmmORgQNPqZonm0G6Z6n1wWX+tI2FM4/f1hzV6n6v
-         hDyox502p/VMxWe9K+aV56nT4OlVvAgpo8QykKUuKHUL+37y1Nin96oWXAIhxcxUrBJ2
-         zR0k98TrsxNs5Ro1oFtyTAIFf0TIk2KxhkeY9LCLgC2o2C41H1G0wqjgKwRCs1gXyjC1
-         T8PQ==
+	id 1r7jZn-003Xgu-1s;
+	Mon, 27 Nov 2023 21:55:37 +0000
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-1fa26074783so1456131fac.1;
+        Mon, 27 Nov 2023 13:55:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701110856; x=1701715656;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=feoucnNh3cnG002IsGWyER4iW7pfsWcNc8v7OfR+1cU=;
-        b=XJfW1CX3U8l91gfLBr00kdpXVqhpcC9H7kQPmabBQyBaHlbFG7tTuIHjA08IoaMTJk
-         x5HY0kr6jR8CIJDwdA8MIIgP6xXdOZT7jvw/H41dNcfE5g/ONSS9k8JOxFDsEQkmbmVj
-         tk1esphTEvXS8vN8LXIdvq+KFTWbOjC8+m+nWJGtUFxAMuymyzfrtp3ft/PMSMRbN2Zu
-         6v/c6QrUa6/okmuMhmn01J5FpiSyXfEM+Wb2CiJZ6vu8BO9x01n02tl8pbcDZfPe0vhc
-         oliUDm7cnQi2Ul84PZvNY3k5TxRpBDPGvn0d3Q5uU/6iUA0pQYh+W4Nhst4fCidmME/n
-         FvWw==
-X-Gm-Message-State: AOJu0YzjGIap3QjuC3UH7uYQVIewq+5od3BXqeYaiccai11FY5rdf45B
-	ITldNipenG8Dikr+gXoQYQ==
-X-Google-Smtp-Source: AGHT+IGNIXVWpAF/Vtmt0THD1hdYjxHh9x8U6OL7SM2ONORvUymzeJ5XQxWTJ/AmZWmVtFH1/xe/cg==
-X-Received: by 2002:a17:907:a092:b0:9fd:ab4:5859 with SMTP id hu18-20020a170907a09200b009fd0ab45859mr10100668ejc.66.1701110855697;
-        Mon, 27 Nov 2023 10:47:35 -0800 (PST)
-Received: from U4.lan ([2a02:810b:f40:4300:370c:d8f:2dce:7367])
-        by smtp.gmail.com with ESMTPSA id 26-20020a170906009a00b009b9aa8fffdasm5907725ejc.131.2023.11.27.10.47.35
+        d=1e100.net; s=20230601; t=1701122134; x=1701726934;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Q+Cbf4Z4xMq9dOhY2lkOSlIg0Yv9C+GaGVRwFcKdaa4=;
+        b=AvwE9QUrDyICmOD1GgDVU/lJDWUkgyGTjec/qmjPpSBPQlaOVq4sLOyHXyFW3CmHv8
+         aiVywIuzuLaLVH9iTXL2mg8knEqBvhSqIJQ1yc/A8uSrOxWEiw33X4U8k45RSKnUQAS4
+         JJq9ZMPXx7p8FfEOQGxyN2/u2kYV58nvhs+3OxH5d1+dn4CCPxmY7XPE0NrUdsz7BodS
+         Rrz9HbS19Vpa6pTUb02HZaCilVAVyD/Bdp48ZoX1X89LNs07pJ5bqWbBozoXWOh0WrVQ
+         PUleNXdcNoIo4aOsjzlEy/SOR9ju7ljG2h2kCw7w9FutGt9NanLROdcVfsRA8cdMMJoj
+         V3kQ==
+X-Gm-Message-State: AOJu0Yx7wEK8KuhNxc6Sitf567qFszFeHBimZ1Z5wmJn/eWTLQH/giwK
+	pIq+v1JMChdCP3u2E1mAfw==
+X-Google-Smtp-Source: AGHT+IHE/25NEUwlRx2TOFVPP+SptbOdKM4BzwgEQJDXuam12+MKf64pu6FFsol8jZ2RdnKGcptx6g==
+X-Received: by 2002:a05:6870:5d93:b0:1f0:656b:5b99 with SMTP id fu19-20020a0568705d9300b001f0656b5b99mr19942781oab.11.1701122134393;
+        Mon, 27 Nov 2023 13:55:34 -0800 (PST)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id lu4-20020a056871314400b001fa54ae35e0sm681401oac.12.2023.11.27.13.55.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Nov 2023 10:47:35 -0800 (PST)
-From: Alex Bee <knaerzche@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: Fix sdmmc_pwren's pinmux setting for RK3128
-Date: Mon, 27 Nov 2023 19:46:44 +0100
-Message-ID: <20231127184643.13314-2-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        Mon, 27 Nov 2023 13:55:33 -0800 (PST)
+Received: (nullmailer pid 3942464 invoked by uid 1000);
+	Mon, 27 Nov 2023 21:55:32 -0000
+Date: Mon, 27 Nov 2023 15:55:32 -0600
+From: Rob Herring <robh@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, 
+	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>, 
+	Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
+	Jonathan Corbet <corbet@lwn.net>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Michal Simek <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	workflows@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+Message-ID: <20231127215532.GA3822595-robh@kernel.org>
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+ <20231125193737.GD7486@pendragon.ideasonboard.com>
+ <26f095ab-c47d-4bcb-9830-4493b1c0cc75@linaro.org>
+ <20231126145340.GA19999@pendragon.ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231126145340.GA19999@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_104738_185723_A74AF665 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20231127_135535_888904_3C0989C4 
+X-CRM114-Status: GOOD (  27.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +97,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3128's reference design uses sdmmc_pwren pincontrol as GPIO - see [0].
+On Sun, Nov 26, 2023 at 04:53:40PM +0200, Laurent Pinchart wrote:
+> Hi Krzysztof,
+> 
+> On Sun, Nov 26, 2023 at 11:32:17AM +0100, Krzysztof Kozlowski wrote:
+> > On 25/11/2023 20:37, Laurent Pinchart wrote:
+> > > On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
+> > >> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> > >> to bring consistency among all (sub)architectures and ease in reviews.
 
-Let's change it in the SoC DT as well.
 
-[0] https://github.com/rockchip-linux/kernel/commit/8c62deaf6025
+> > >> +
+> > >> +Naming and Valid Characters
+> > >> +---------------------------
+> > >> +
+> > >> +Devicetree specification allows broader range of characters in node and
+> > > 
+> > > s/Devicetree specification/The Devicetree specification/
+> > > s/broader range/a broad range/
+> > 
+> > Ack, but I really expect people finish with grammar and style fixes at
+> > v3. Please point the language things now or just let it go.
+> 
+> v3 is the first version that ended up in my inbox. I haven't noticed any
+> other spelling or grammar error in this patch, but I can't guarantee I
+> won't see any in new text that gets introduced in a future version :-)
+> 
+> > >> +property names, but for code readability the choice shall be narrowed.
+> > >> +
+> > >> +1. Node and property names are allowed to use only:
+> > >> +
+> > >> +   * lowercase characters: [a-z]
+> > >> +   * digits: [0-9]
+> > >> +   * dash: -
+> > >> +
+> > >> +2. Labels are allowed to use only:
+> > >> +
+> > >> +   * lowercase characters: [a-z]
+> > >> +   * digits: [0-9]
+> > >> +   * underscore: _
+> > >> +
+> > >> +3. Unit addresses shall use lowercase hex, without leading zeros (padding).
 
-Fixes: a0201bff6259 ("ARM: dts: rockchip: add rk3128 soc dtsi")
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
-This should have been part of my XPI-3128 board submission - it uses this
-pin as GPIO and adapts the reference design in this regard.
-Originally I had this as an override in the board DT, but later noticed
-this relatively new commit in vendor's kernel. I simply forgot to add 
-that commit.
+Unless a bus defines differently, unit addresses shall ...
 
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> > > 
+> > > I'm curious, what's the reason for this ? I think it makes the sources
+> > > less readable. If the rule is "just" because that's how DT sources are
+> > > written today and it would be too complicated to change that, that's
+> > > fine with me.
+> > 
+> > Warning (unit_address_format): /cpus/cpu@0100: unit name should not have
+> > leading 0s
+> > 
+> > And we fixed all or most of DTS some time ago.
+> 
+> It's the current practice in DT sources and I understand it won't get
+> changed, but I was more curious about the rationale behind that.
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 4e8b38604ecd..b16786e81c08 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -859,7 +859,7 @@ sdmmc_wp: sdmmc-wp {
- 			};
- 
- 			sdmmc_pwren: sdmmc-pwren {
--				rockchip,pins = <1 RK_PB6 1 &pcfg_pull_default>;
-+				rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_default>;
- 			};
- 
- 			sdmmc_bus4: sdmmc-bus4 {
--- 
-2.43.0
+I put the dtc check in, but the rational predates me. The OF PCI bus 
+supplement from the 1990s defines that. My only rationale to check it 
+was to be consistent. We don't check "the unit-address is lowercase hex"
+because technically the bus defines the format. Leading 0s was as much 
+as I could get David G to agree to check without regard to bus type.
 
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
