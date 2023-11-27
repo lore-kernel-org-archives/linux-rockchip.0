@@ -4,52 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F23C07D5A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 09:07:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CD7C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 09:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3z9bFfhEE/PAfJpnp3mzELCqpEKY+Zi/VfY2gwp/l5s=; b=t/ZcNH4tqtoXi1
-	OFtmUHjkd4X9arrv4CVnO9zmfJRvk4gh9/Djsv3w4H97x5vBeYNiFxfsG/PWU91wg4ZrKPzyLk0ob
-	vuCFPu62q04v+NSUz29x+t5QcNyc4a10LFOBLddvR/D43sollrZ1+MoRxtps4ZvFJdV0Ve3WR2Dbg
-	hUtNXW6a5Gaatr7PgH/xEQDf4bI7Hr7AOdcjnFgHXzBt2L65q1aLGJDE0QM/PWWZe1sFPpz+PKgdg
-	A4MDIFc0D9sTJ4JNhVcIKF2gkG6G4Puvi9OZk9zkCCdiQe1OhYWKnyy/Z0ZGV7+YLL0JUdaowIz7p
-	FY6OCrblcKqjAa9xDKSA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ax8bRYJhf+4+IIEfphDD00tdfuBOiSpHBpkDmS9vqsA=; b=uhogji8fsdBKs39CmQt5lsgqlZ
+	ZvfRJP5goDldbSUd34uZxhT93Pbp/4LkW0b/qpgIqh2fTXCCxj4lF4YQv1+9Xy3YFXA8peTNegkkz
+	pahV5WVyF4QjjS27cCe6FqacRIhs2SDa+NCv+yHwukZTgBH2BG/O12zHU2oKRa06rnY9U/E6dESjH
+	CPllZfYRG3vtP4dqjodU75o9oC07IzXon3aUVpgWEdcAYkNqehr0LIRSz64WcviBxek3ZNIDVdcVR
+	c3ZVPeWLMSZKXJhnn9B0YswUmNWkrUo7Lh/zpiPnXzMbyCkz86AlSkwiPFG5JGDiLLWE763wYHBnn
+	OTvsJj0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Xa4-001vJV-0C;
-	Mon, 27 Nov 2023 09:07:04 +0000
-Received: from mail.thrivehub.pl ([164.132.48.43])
+	id 1r7Xdc-001w8c-2v;
+	Mon, 27 Nov 2023 09:10:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Xa0-001vHc-1p
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Nov 2023 09:07:01 +0000
-Received: by mail.thrivehub.pl (Postfix, from userid 1002)
-	id F121D24F0A; Mon, 27 Nov 2023 09:05:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=thrivehub.pl; s=mail;
-	t=1701075969; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
-	h=Date:From:To:Subject:From;
-	b=LBY2vmU/64Bmcy6+3sjmHPrnBlkiDp6n035H0jn67SJEh8jLb8uG1AxwHTYQ02BfK
-	 XysIscOko1fOBXZhW7flm7bBfH9VbtV//zs/swJE+HqgXak/GJTVgYYeVaTKnmvcy7
-	 IfKcGtDvkV+BLAb6NMfNCaf/K7XyzoCvVJxXj2mzKVI9oAef5r9QpOFHcdU4rsDfky
-	 a2ptC2gEupzQCouxtSRoQ2bqxSs3OcXo5BZ9VFSVd4rGkXXG1PHsDZ2wSZoSao1EYL
-	 pCo67Mzz32w9BoySP7/C7EWLA4xrrE9JhIrB29brvQJnHMiShnv3Oj7ON3LNbW4GLo
-	 CT60Vx7EjMqog==
-Received: by mail.thrivehub.pl for <linux-rockchip@lists.infradead.org>; Mon, 27 Nov 2023 09:05:02 GMT
-Message-ID: <20231127074500-0.1.35.1bpml.0.5gmj5x0rh5@thrivehub.pl>
-Date: Mon, 27 Nov 2023 09:05:02 GMT
-From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.thrivehub.pl
+	id 1r7XdZ-001w6g-07;
+	Mon, 27 Nov 2023 09:10:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C436C61119;
+	Mon, 27 Nov 2023 09:10:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2178FC433C9;
+	Mon, 27 Nov 2023 09:10:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701076239;
+	bh=Ps+Fa/dulVUd1PDAHALRfrfI3qw3k68n8ZSw/yf2lAQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Y2iXI9YoFZ19dm4dhfILyvtYzs8ky9ggc84g/7AIdC9fNR4yv1YB5h7FDVPlgyvy8
+	 zgKol8BCqqiLfVBkJEJCAQcOVCgSdusaqMHjXbJ9t7an5MPLbWcRpM1ZrJxScYtA55
+	 k+o9CdZOuSQMrNLT5ksGcomOa9h2S3WvfVOdSlBO1A3T5WrCwj7NBKXNT4VqMU1Pej
+	 pYbV7C51SNvO5k6Nn3KF0oDGPAd8fPjXSG606L7Y+8k4QFTseEQboFCMThgdTINi09
+	 hjwS8+c6R0UOCuuKv0O1XGunT+m/iIB7I1Lbmm6CFB3oSB50WTQTMdJBdJo0vzxyr8
+	 /+qCaV560su+Q==
+Date: Mon, 27 Nov 2023 10:10:36 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: hjc@rock-chips.com, heiko@sntech.de, airlied@gmail.com, 
+	daniel@ffwll.ch, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 0/3] Rockchip inno_hdmi update
+Message-ID: <ehbpa5qzq5aednqerhlb4xi652dd6rxslsjrurkkt5eruxssvv@2dcl2765fjix>
+References: <2601b669-c570-f39d-8cf9-bff56c939912@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <2601b669-c570-f39d-8cf9-bff56c939912@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_010700_748652_661A2AA9 
-X-CRM114-Status: UNSURE (   1.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231127_011041_200237_8EAA4B31 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,17 +66,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5582196127956702375=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
-c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
-IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
-ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
-ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
-b24gSmFua293c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+
+--===============5582196127956702375==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="w7qeozagnw3krs5v"
+Content-Disposition: inline
+
+
+--w7qeozagnw3krs5v
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Hi Johan,
+
+On Sun, Nov 26, 2023 at 11:55:03AM +0100, Johan Jonker wrote:
+> Combined update for the Rockchip inno_hdmi driver in a
+> somewhat similar way to what is proposed for the
+> "Create HDMI Connector infrastructure patch serie".
+> Keeping the inno_hdmi and rk3066_hdmi driver functions
+> comparable makes maintanance easier.
+
+It's not clear to me what your intent is exactly, these are my exact
+patches that you just sent again?
+
+Maxime
+
+--w7qeozagnw3krs5v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZWRdDAAKCRDj7w1vZxhR
+xVKcAQClmlIR0bc7c19KWzUwSe/UDRDPcWIBHtu8Uoaf+2t79gD+IDyn3OKNIt6D
+P7XtYjRgJXnPgNggszjP7+iEpGgicwI=
+=sHaM
+-----END PGP SIGNATURE-----
+
+--w7qeozagnw3krs5v--
+
+
+--===============5582196127956702375==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5582196127956702375==--
+
