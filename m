@@ -4,53 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF70C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 10:17:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D8B8C07D5A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 10:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=brOyTPVyUkPX2ndBb+vml8bloqicvdPYH1PioBhDPFo=; b=T8gI4aILwLcVn3
-	QBxRx66gL08zkjHku3J5xgVfYutTR0foUNn3Pu+D5qpCKnbtzLAEDVixM7gWl83Aaz4zjYx+OoiMS
-	PZcxyh9V0VZq+VvJmcy8WUmgSOLkJS/4pNVgMhpnJdydIf6jYXmBdFBsj9nyVvBSlcq+Q6eu9SgIe
-	mgryOwNqLejxkOrsDZA7sddD7wDVU8Yduf3GkMAINvL90znu6gALI9nHdWFQh+oqc9CIXzQi7L3mu
-	LydMkPx5FwSZZ6dGItnft448bMuIoBfI80qsvqpwzA27/t3bjgoOWqTWmQBq7hfrjmqXh2u9mADeH
-	h8wAdMkyjSrVL7+uI/qQ==;
+	List-Owner; bh=ayfEYbT3FH25uOh5mBlRXrv9w51cX484xX642Fft14A=; b=owL0hUK1u4fXCp
+	bVqxfzNkxB1bqXYFa803NOwZ0bGIwqu3bFbql+GhgCUrf7L9IyUDsrTi/CcY75ieMMI1fhyMGBAIC
+	lajvyDpnO5HfEcEivHldXwj2AOAXRxbcxXe9Onmcd16V9v0zArYocuw7+Sgu9sZxZ30n2aCLvMkXS
+	uFzqP7/yI+ncetFeDM56A89rEsBz6yaoNJzRNdtiLwNFpyJdb2EFzvAyDPY7Hanhl9+tqZdn5DgM9
+	7Rmzopp05Xzsxk3vlnC4/Qw5eOtjAiPzmrYSlzPOIiC7Y3noN/2bG8YthZSrhMpF3DRwEypCEeq5i
+	14augrcRihWjURubBCYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Yfx-0023Sw-12;
-	Mon, 27 Nov 2023 10:17:13 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7Yft-0023QH-1Q;
-	Mon, 27 Nov 2023 10:17:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DD4422F4;
-	Mon, 27 Nov 2023 02:17:39 -0800 (PST)
-Received: from [10.57.4.90] (unknown [10.57.4.90])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B068D3F73F;
-	Mon, 27 Nov 2023 02:16:50 -0800 (PST)
-Message-ID: <573ec775-c1f0-4a09-afe4-83793fb11f3c@arm.com>
-Date: Mon, 27 Nov 2023 10:17:51 +0000
+	id 1r7Ys6-0025L0-0Z;
+	Mon, 27 Nov 2023 10:29:46 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r7Ys3-0025Ja-0g;
+	Mon, 27 Nov 2023 10:29:44 +0000
+Received: from i53875bf8.versanet.de ([83.135.91.248] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r7Yry-0000TM-Or; Mon, 27 Nov 2023 11:29:38 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Tim Lunn <tim@feathertop.org>
+Cc: Jagan Teki <jagan@edgeble.ai>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v2 4/9] ARM: dts: rockchip: rv1126: Add i2c2 nodes
+Date: Mon, 27 Nov 2023 11:29:37 +0100
+Message-ID: <4065853.CrzyxZ31qj@diego>
+In-Reply-To: <99db2b8a-631b-40df-a33a-c2baeb44c940@feathertop.org>
+References: <20231122122232.952696-1-tim@feathertop.org> <50694679.MN2xkq1pzW@diego>
+ <99db2b8a-631b-40df-a33a-c2baeb44c940@feathertop.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Add dynamic-power-coefficient to
- rk3399 GPU
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- conor+dt@kernel.org, daniel.lezcano@linaro.org
-References: <20231127081511.1911706-1-lukasz.luba@arm.com>
- <CAGXv+5EgDk2B_FYo9hNiLVogq+mww1j140W4hsDhywExzgpf2g@mail.gmail.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <CAGXv+5EgDk2B_FYo9hNiLVogq+mww1j140W4hsDhywExzgpf2g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_021709_574161_BD86C234 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20231127_022943_258784_FA81B67A 
+X-CRM114-Status: GOOD (  33.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,52 +60,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxMS8yNy8yMyAxMDowMiwgQ2hlbi1ZdSBUc2FpIHdyb3RlOgo+IE9uIE1vbiwgTm92IDI3
-LCAyMDIzIGF0IDQ6MTTigK9QTSBMdWthc3ogTHViYSA8bHVrYXN6Lmx1YmFAYXJtLmNvbT4gd3Jv
-dGU6Cj4+Cj4+IEFkZCBkeW5hbWljLXBvd2VyLWNvZWZmaWNpZW50IHRvIHRoZSBHUFUgbm9kZS4g
-VGhhdCB3aWxsIGNyZWF0ZSBFbmVyZ3kKPj4gTW9kZWwgZm9yIHRoZSBHUFUgYmFzZWQgb24gdGhl
-IGNvZWZmaWNpZW50IGFuZCBPUFAgdGFibGUgaW5mb3JtYXRpb24uCj4+IEl0IHdpbGwgZW5hYmxl
-IG1lY2hhbmlzbSBzdWNoIGFzIERUTVAgb3IgSVBBIHRvIHdvcmsgd2l0aCB0aGUgR1BVIERWRlMu
-Cj4+IEluIHNpbWlsYXIgd2F5IHRoZSBFbmVyZ3kgTW9kZWwgZm9yIENQVXMgaW4gcmszMzk5IGlz
-IGNyZWF0ZWQsIHNvIGJvdGgKPj4gYXJlIGFsaWduZWQgaW4gcG93ZXIgc2NhbGUuIFRoZSBtYXhp
-bXVtIHBvd2VyIHVzZWQgZnJvbSB0aGlzIGNvZWZmaWNpZW50Cj4+IGlzIDEuNVcgYXQgNjAwTUh6
-Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBMdWthc3ogTHViYSA8bHVrYXN6Lmx1YmFAYXJtLmNvbT4K
-Pj4gLS0tCj4+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSB8IDEg
-Kwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSBiL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gaW5kZXggOWRhMGI2ZDc3YzhkLi44N2NmZGY1
-NzBiMTkgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
-PiBAQCAtMjExMyw2ICsyMTEzLDcgQEAgZ3B1OiBncHVAZmY5YTAwMDAgewo+PiAgICAgICAgICAg
-ICAgICAgIGludGVycnVwdC1uYW1lcyA9ICJqb2IiLCAibW11IiwgImdwdSI7Cj4+ICAgICAgICAg
-ICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19HUFU+Owo+PiAgICAgICAgICAgICAgICAgICNj
-b29saW5nLWNlbGxzID0gPDI+Owo+PiArICAgICAgICAgICAgICAgZHluYW1pYy1wb3dlci1jb2Vm
-ZmljaWVudCA9IDwyNjQwPjsKPiAKPiBGb3IgcmVmZXJlbmNlLCBpbiB0aGUgQ2hyb21lT1MgZG93
-bnN0cmVhbiB2NS4xMCBrZXJuZWwgd2UgaGF2ZToKPiAKPiBncHVfcG93ZXJfbW9kZWw6IHBvd2Vy
-X21vZGVsIHsKPiAgICAgICAgICBjb21wYXRpYmxlID0gImFybSxtYWxpLXNpbXBsZS1wb3dlci1t
-b2RlbCI7Cj4gICAgICAgICAgc3RhdGljLWNvZWZmaWNpZW50ID0gPDQxMTUyMj47Cj4gICAgICAg
-ICAgZHluYW1pYy1jb2VmZmljaWVudCA9IDw5Nzc+Owo+ICAgICAgICAgIHRzID0gPDMyMDAwIDQ3
-MDAgKC04MCkgMj47Cj4gICAgICAgICAgdGhlcm1hbC16b25lID0gImdwdSI7Cj4gfTsKPiAKPiBU
-aGlzIGlzIGZvciB0aGUgTWFsaSBrYmFzZS4KClRoYXQncyBkb3duc3RyZWFtIGRyaXZlciBmb3Ig
-ZG93bnN0cmVhbSBJUEEgdGhlcm1hbCBnb3Zlcm5vciwgd2hpY2ggaXMKZGlmZmVyZW50LiBBcyB5
-b3UgY2FuIHNlZSB0aGVyZSwgdGhlcmUgaXMgYSBzcGxpdCBvZiB0aGUgdG90YWwgcG93ZXIKdG8g
-J3N0YXRpYyBwb3dlcicgYW5kICdkeW5hbWljIHBvd2VyJyBhbmQgdGh1cyB0aG9zZSAyIGNvZWZm
-aWNpZW50czoKJ3N0YXRpYy1jb2VmZmljaWVudCcgYW5kICdkeW5hbWljLWNvZWZmaWNpZW50Jy4g
-VGhlcmUgaXMgYWxzbwpwb2x5bm9taWFsIGZvciB0aGUgZXhwb25lbnRpYWwgY3VydmUgYXBwcm94
-aW1hdGluZyB0ZW1wZXJhdHVyZSBpbXBhY3QKdG8gdGhlIGluY3JlYXNpbmcgbGVha2FnZSAoc3Rh
-dGljIHBvd2VyKS4KClRoaXMgaXMgdG90YWxseSBub3QgdXBzdHJlYW0gY29kZSBhbmQgcXVpdGUg
-Y29tcGxleCB0byBkZXJpdmUgdGh1cwpmbHkgdXBzdHJlYW0uIFRoZXJlZm9yZSwgaW4gdXBzdHJl
-YW0gd2UgaGF2ZSB2ZXJ5IHNpbXBsZSBwb3dlcgptb2RlbCByaWdodCBub3csIGJ1dCBpdCB3aWxs
-IGJlIHBvc3NpYmxlIHRvIHVwZGF0ZSBpdCBhdCBydW50aW1lCndoZW4gdGhlIGxlYWthZ2UgaXMg
-aW5jcmVhc2VkLiBJIGhvcGUgdGhlIG5ldyB2NSB2ZXJzaW9uIHRoYXQKSSdtIGdvaW5nIHRvIHNl
-bmQsIHdpbGwgZ2V0IGludG8gbWFpbmxpbmUgc29vbiBbMV0uCgpSZWdhcmRzLApMdWthc3oKClsx
-XSAKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDIzMDkyNTA4MTEzOS4xMzA1NzY2LTEt
-bHVrYXN6Lmx1YmFAYXJtLmNvbS8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Am Montag, 27. November 2023, 10:58:43 CET schrieb Tim Lunn:
+> =
+
+> On 11/27/23 20:45, Heiko St=FCbner wrote:
+> > Am Montag, 27. November 2023, 10:27:41 CET schrieb Krzysztof Kozlowski:
+> >> On 27/11/2023 10:23, Tim Lunn wrote:
+> >>> Hi
+> >>>
+> >>> On 11/27/23 17:52, Krzysztof Kozlowski wrote:
+> >>>> On 27/11/2023 00:06, Heiko St=FCbner wrote:
+> >>>>> Hi Krzysztof,
+> >>>>>
+> >>>>> Am Mittwoch, 22. November 2023, 13:29:47 CET schrieb Krzysztof Kozl=
+owski:
+> >>>>>> On 22/11/2023 13:22, Tim Lunn wrote:
+> >>>>>>> Add i2c2 node and i2c2_xfer pinctrl for Rockchip RV1126
+> >>>>>>>
+> >>>>>>> Signed-off-by: Tim Lunn <tim@feathertop.org>
+> >>>>>>> ---
+> >>>>>>>
+> >>>>>>> (no changes since v1)
+> >>>>>>>
+> >>>>>>>    arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi | 10 ++++++++++
+> >>>>>>>    arch/arm/boot/dts/rockchip/rv1126.dtsi         | 15 ++++++++++=
++++++
+> >>>>>>>    2 files changed, 25 insertions(+)
+> >>>>>>>
+> >>>>>>> diff --git a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi b/arc=
+h/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> >>>>>>> index 4f85b7b3fc4c..167a48afa3a4 100644
+> >>>>>>> --- a/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> >>>>>>> +++ b/arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi
+> >>>>>>> @@ -87,6 +87,16 @@ i2c0_xfer: i2c0-xfer {
+> >>>>>>>    				<0 RK_PB5 1 &pcfg_pull_none_drv_level_0_smt>;
+> >>>>>>>    		};
+> >>>>>>>    	};
+> >>>>>>> +	i2c2 {
+> >>>>>>> +		/omit-if-no-ref/
+> >>>>>>> +		i2c2_xfer: i2c2-xfer {
+> >>>>>>> +			rockchip,pins =3D
+> >>>>>>> +				/* i2c2_scl */
+> >>>>>>> +				<0 RK_PC2 1 &pcfg_pull_none_drv_level_0_smt>,
+> >>>>>>> +				/* i2c2_sda */
+> >>>>>>> +				<0 RK_PC3 1 &pcfg_pull_none_drv_level_0_smt>;
+> >>>>>>> +		};
+> >>>>>>> +	};
+> >>>>>>>    	pwm2 {
+> >>>>>>>    		/omit-if-no-ref/
+> >>>>>>>    		pwm2m0_pins: pwm2m0-pins {
+> >>>>>>> diff --git a/arch/arm/boot/dts/rockchip/rv1126.dtsi b/arch/arm/bo=
+ot/dts/rockchip/rv1126.dtsi
+> >>>>>>> index 6c5c928f06c7..cf1df75df418 100644
+> >>>>>>> --- a/arch/arm/boot/dts/rockchip/rv1126.dtsi
+> >>>>>>> +++ b/arch/arm/boot/dts/rockchip/rv1126.dtsi
+> >>>>>>> @@ -21,6 +21,7 @@ / {
+> >>>>>>>    =
+
+> >>>>>>>    	aliases {
+> >>>>>>>    		i2c0 =3D &i2c0;
+> >>>>>>> +		i2c2 =3D &i2c2;
+> >>>>>> No, this should be per-board to match board labeling/schematics.
+> >>>>> At least for i2c, uarts and i.e. spi ... Rockchip manuals, pin nami=
+ngs
+> >>>>> and also all board schematics I've seen so far are very consistent =
+for
+> >>>>> these ... i2c2 for example is labled i2c2 both in the pins in the s=
+ocs
+> >>>>> and also in the board-schematics using them.
+> >>>>>
+> >>>>> So while I can agree that things like mmc-aliases might be board-sp=
+ecific,
+> >>>>> I do think aliases for the core busses should be able to live in th=
+e soc dtsi
+> >>>>> as for all Rockchip SoCs so far?
+> >>>> If you do not list here all aliases, it is already board-specific, i=
+sn't it?
+> >>>>
+> >>>> https://lore.kernel.org/linux-rockchip/CAK8P3a25iYksubCnQb1-e5yj=3Dc=
+rEsK37RB9Hn4ZGZMwcVVrG7g@mail.gmail.com/
+> >>> I had only added aliases for nodes that are implemented. RV1126 has 6
+> >>> i2c busses but so far not all these exist in the soc.dtsi.
+> >>>
+> >> OK, that would explain why you have only two. Anyway, it is just gener=
+ic
+> >> guideline, so up to Heiko what to do with it.
+> > People see "uart2-tx" on their pin-header description and then of course
+> > want to use ttyS2 ... same with reading i2c2-sda on the pin-header and =
+then
+> > running i2cdetect on said i2c2 dev node.
+> >
+> > And even if i2c1 is not populated (would even be very rare), then people
+> > would still expect i2c2 to be named that way.
+> >
+> > As this is the same for _every_ board, it doesn't really make sense to
+> > duplicate it every time. Which I guess is similar to what I wrote in re=
+ply
+> > to the mail you linked above :-) .
+> So I will leave the i2c and serial aliases as they are in rv1126.dtsi the=
+n?
+
+correct
+
+
+> > It's different for mmc, where this naming scheme isn't normally used,
+> > so we (mostly?) migrated to them being in the board-specific alias sect=
+ion.
+> =
+
+> What about the ethernet alias,   the MAC is part of the SoC, should this =
+
+> stay as it is
+> in patch 6 from this series, or move to board dtsi?
+
+I think judging from everything above (and the other modern boards
+like all rk3588 ones) the ethernet0 alias should move to the board dts(i).
+
+The gmac generally does not have this numbering scheme like i2c or uarts.
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
