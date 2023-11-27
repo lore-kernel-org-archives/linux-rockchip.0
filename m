@@ -4,51 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E36C0755A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 11:10:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE90EC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Nov 2023 11:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E7iXm+cCQ+zEbaZi+b77+NsrUC5RW3KlbzZWsXh8ubY=; b=Bxm4fit1PeLbyR
-	wwOCX0GBBjclzGM+BiO8gbDCXxYkRSOLLJdI0vdTywgIhyTN1/H+fREr65C/tkOw6YYmecd0WAbxf
-	v7/re+w5meUc4pztyaOMA+ZVWDeAUTVEQdSkZ0hsi4JvVkhTaNNwR4n1HjrSsoz1ppyya2IaYhr04
-	wJdY81Qk7IrXVrxAgGjMal6GhnNatif+Lh3bl6ylWIJ+wHpgI+S1pdX4ToShisdicbgTUSlSaFfqq
-	3RzLCm6CQi3pjMuByCS9uf5muSb3r9alTRUYnqFd0OIBiBHF2r0Q4B8/wcqRlM/psJmntbZufdTes
-	JWOvb+B0OfGsnU06KEMg==;
+	List-Owner; bh=2KsgTRyntyNpB+XErspojjo3ioVfAqqEpFQgCtSacD0=; b=Pi43KQiKrKNxG0
+	dyyuDnJP1AV2e9iXCN3GcEUA/jkssRXd5s2B7ph6W9q9WzS2NOCgdN+ecFlbxNjWHioAJq1Nb+SDl
+	tsm+1LVcvll0VyzRpdYM8qzd+WdjlzKnGRQdH/EuFe/Xk9eSHkqyf1W0QR6Fy7vWQPchFALZDYEgg
+	Fjr+5mCK8/sPE6Ijgj7NnI91BdklqHaaBVtf58o6HEo3dZNzoXoKMDUTKi6Iq7xMUkNxZ1F1E43CO
+	D4fY6igWd+SyLFH7h9cw4v1kN1Uzu89lGNIfZKCPw6TmXbcGWF8qMq345KoNhpqXf1XGJ7GE/oI4R
+	JluGXR3z0tx6IJ958qkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7ZVK-002Aq0-0b;
-	Mon, 27 Nov 2023 11:10:18 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r7ZeU-002CW6-20;
+	Mon, 27 Nov 2023 11:19:46 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7ZVH-002ApX-2R;
-	Mon, 27 Nov 2023 11:10:16 +0000
-Received: from i53875bf8.versanet.de ([83.135.91.248] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1r7ZeS-002CV2-0j
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Nov 2023 11:19:45 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7ZeO-0000ed-Kg; Mon, 27 Nov 2023 12:19:40 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r7ZVC-0000tQ-Cc; Mon, 27 Nov 2023 12:10:10 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Tim Lunn <tim@feathertop.org>, Jagan Teki <jagan@edgeble.ai>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH v2 4/9] ARM: dts: rockchip: rv1126: Add i2c2 nodes
-Date: Mon, 27 Nov 2023 12:10:09 +0100
-Message-ID: <5119280.687JKscXgg@diego>
-In-Reply-To: <8fec049c0b72727086c707dfd9de6dda@manjaro.org>
-References: <20231122122232.952696-1-tim@feathertop.org> <4234862.3Lj2Plt8kZ@diego>
- <8fec049c0b72727086c707dfd9de6dda@manjaro.org>
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7ZeL-00BvgR-89; Mon, 27 Nov 2023 12:19:37 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1r7ZeL-00459o-52; Mon, 27 Nov 2023 12:19:37 +0100
+Date: Mon, 27 Nov 2023 12:19:37 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+	kever.yang@rock-chips.com, chris.obbard@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 10/12] drm/rockchip: vop2: Add support for rk3588
+Message-ID: <20231127111937.GW3359458@pengutronix.de>
+References: <20231122125316.3454268-1-andyshrk@163.com>
+ <20231122125544.3454918-1-andyshrk@163.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231122125544.3454918-1-andyshrk@163.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231127_031015_798682_B6E0F009 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20231127_031944_265836_31C44D37 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,69 +79,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 27. November 2023, 11:55:21 CET schrieb Dragan Simic:
-> On 2023-11-27 11:50, Heiko St=FCbner wrote:
-> > Am Montag, 27. November 2023, 11:43:05 CET schrieb Dragan Simic:
-> >> On 2023-11-27 11:29, Heiko St=FCbner wrote:
-> >> > Am Montag, 27. November 2023, 10:58:43 CET schrieb Tim Lunn:
-> >> >> On 11/27/23 20:45, Heiko St=FCbner wrote:
-> >> >>> It's different for mmc, where this naming scheme isn't normally us=
-ed,
-> >> >>> so we (mostly?) migrated to them being in the board-specific alias
-> >> >>> section.
-> >> >>
-> >> >> What about the ethernet alias, the MAC is part of the SoC, should t=
-his
-> >> >> stay as it is in patch 6 from this series, or move to board dtsi?
-> >> >
-> >> > I think judging from everything above (and the other modern boards
-> >> > like all rk3588 ones) the ethernet0 alias should move to the board
-> >> > dts(i).
-> >> >
-> >> > The gmac generally does not have this numbering scheme like i2c or
-> >> > uarts.
-> >> =
+Hi Andy,
 
-> >> Please note there's already an Ethernet alias defined in rk3399.dtsi,
-> >> even despite not all RK3399-based devices using the GMAC, for example
-> >> the Pinebook Pro.  Perhaps that's something to be fixed as well.
-> > =
+Looks good overall, two small things inside.
 
-> > possibly :-)
-> > =
+On Wed, Nov 22, 2023 at 08:55:44PM +0800, Andy Yan wrote:
+>  
+> +#define vop2_output_if_is_hdmi(x)	(x == ROCKCHIP_VOP2_EP_HDMI0 || x == ROCKCHIP_VOP2_EP_HDMI1)
+> +#define vop2_output_if_is_dp(x)		(x == ROCKCHIP_VOP2_EP_DP0 || x == ROCKCHIP_VOP2_EP_DP1)
+> +#define vop2_output_if_is_edp(x)	(x == ROCKCHIP_VOP2_EP_EDP0 || x == ROCKCHIP_VOP2_EP_EDP1)
+> +#define vop2_output_if_is_mipi(x)	(x == ROCKCHIP_VOP2_EP_MIPI0 || x == ROCKCHIP_VOP2_EP_MIPI1)
+> +#define vop2_output_if_is_lvds(x)	(x == ROCKCHIP_VOP2_EP_LVDS0 || x == ROCKCHIP_VOP2_EP_LVDS1)
+> +#define vop2_output_if_is_dpi(x)	(x == ROCKCHIP_VOP2_EP_RGB0)
 
-> > I guess for starters we shouldn't introduce new instances for it.
-> =
+Not that it matters in practice here, but you should add braces around
+the x argument in the macros usage, i.e. ((x) == ROCKCHIP_VOP2_EP_RGB0)
 
-> Totally agreed.
-> =
+> +static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
+> +{
+> +	struct vop2 *vop2 = vp->vop2;
+> +	int dclk_core_div, dclk_out_div, if_pixclk_div, if_dclk_div;
+> +	unsigned long clock;
+> +	u32 die, dip, div, vp_clk_div, val;
+> +
+> +	clock = rk3588_calc_cru_cfg(vp, id, &dclk_core_div, &dclk_out_div,
+> +				    &if_pixclk_div, &if_dclk_div);
+> +	if (!clock)
+> +		return 0;
+> +
+> +	vp_clk_div = FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_CORE_DIV, dclk_core_div);
+> +	vp_clk_div |= FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_OUT_DIV, dclk_out_div);
+> +
+> +	die = vop2_readl(vop2, RK3568_DSP_IF_EN);
+> +	dip = vop2_readl(vop2, RK3568_DSP_IF_POL);
+> +	div = vop2_readl(vop2, RK3568_DSP_IF_CTRL);
+> +
+> +	switch (id) {
+> +	case ROCKCHIP_VOP2_EP_HDMI0:
+> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV, if_dclk_div);
 
-> > All the newer SoCs already have their ethernet alias in the board dts
-> > (rk356x, rk3568) which came after we also moved the mmc aliases.
-> =
+you should clear the bits of a mask before setting them again. The same
+goes for several other bits modified in this switch/case.
 
-> The base rk3399.dtsi file and the RK3399-based board/device dts(i) files =
+> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV, if_pixclk_div);
+> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX;
+> +		die |= RK3588_SYS_DSP_INFACE_EN_HDMI0 |
+> +			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+> +		val = rk3588_get_hdmi_pol(polflags);
+> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 1, 1));
+> +		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 6, 5));
+> +		break;
 
-> are fine when it comes to the mmc aliases.  I can move forward and clean =
+Sascha
 
-> up the Ethernet alias as well, if you agree?
-
-Yep, we moved mmc aliases a while ago.
-
-So moving the ethernet sounds like the right way forward. So if you have
-the time for it, then I'd be quite happy to take patches for that change.
-
-
-Thanks
-Heiko
-
-
-
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
