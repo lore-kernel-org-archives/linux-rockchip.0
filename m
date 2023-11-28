@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51EDEC07CA9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91683C46CA7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ev0ssokg3ttYGUaenPLAGKUUcM0cStNrKEbryorRoxo=; b=W0ytaVep1J/k/T
-	8CKEg91AhRViJi60iVqS2vZk5lSXHDcf+ad3DcwlfJ4hs2ouCZOdoMyJrG+zGZmlIuKPPMv8Zju5l
-	rYtdBXINBSGlpc9QhHvA5gCDFyZogKoBKCsqs/F6jLQH+5NHw6flyBZ3o/kAwffJgQrovKSIDE+8W
-	aP+/9hGho21FcAHRqamOELh+uEh561KmraxPtwVBomi39NcLtRS0G4KxmFnYxh9aercn2DJvv5VkU
-	mAWVY85x74xI3Z9txasic+NSAojku3iK2VPRPzIk+AZHndvcKNX1eG0F1DiCHeAvw3JZhqEtAoehG
-	mTzOUSw7Fe1UurcSeqEw==;
+	List-Owner; bh=BzmezFqSqixKjq1WK6hcKhFoM9gjZkfDuLeP9FiAKm0=; b=izZI2pHyqPpvU6
+	oSohmIyLCf/L06rNa1y9kphO0Tp9caxpvKFwBrbrjShppBX2qXegmS1VLRztf5u5CwGTdi484fOiZ
+	e6oRtD0thwgJpFMnImakourgiNeiKp1VIVPwUnQEb5TI3/njzyYqP4TeTGIEz7GL5ZQWuIwJvVKRP
+	0/DFMNaGb3QSZ3Mwr8vAf7AKrO9sBJxG2+3Ud8oaXrle8KbZ+wmaZPukQ1rvAsjK2yaSAu0+65f1z
+	H7OMJ+/I2el1uue78S3zM97IoA1fe2tELuLwhjDsC6PixGRzeWlWVgRZBsgssAsVsewp81uyN8ucU
+	PycCv0yRhd3p3CW2gIyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vIa-004tHx-2C;
-	Tue, 28 Nov 2023 10:26:36 +0000
+	id 1r7vIk-004tTX-01;
+	Tue, 28 Nov 2023 10:26:46 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vHq-004sV5-1C;
-	Tue, 28 Nov 2023 10:25:50 +0000
+	id 1r7vHx-004sbZ-2X;
+	Tue, 28 Nov 2023 10:25:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=bQCZFQNf/lWJlKzbJ4pjPrOz8Lf/tHgVgnhJg3rCJJ8=; b=Q8uC45tfTPf1KwYop/kSPeCkNw
-	KcEC78ohj4zdRa5l9ffi690x0QP3wC4FWrRYPrLn1+2HgRKD0qIybQG3XrUpuOZW0wp5IHakRrL7K
-	mc0btUlyBPIsBO0rAS3GYT20j+/UzKvH+JJiZWYvTDIEjmfw61qn7P5lhpTAAQE0kp3jwUvAfl9VW
-	vDQ1nYTpt1zFrOuBrKcqcuKAS8tkCDaommXZwLT/6Oaa8TFgjBeeRggRjoSUJ35A1PwRWMBTJHArb
-	sK1KNmUwnuPptSZuu7awS/WG8iHmrmiiqwvEWsWWbCXNkmsDIqWZeRjdTd3cw41y+TVP32kR+9J+n
-	At63dtyA==;
-Received: from sin.source.kernel.org ([145.40.73.55])
+	bh=SHszXKo0mgBRQ0YVhtYuGbJKPPx55qKDGToiyBfx+wk=; b=nGLmGUIPq6ce8hWVYJra2norTn
+	+cSE2sdBJXYx99JgdcWnwAkdIj9k6uHCgK9ROyd2HPXoDBAp4cZ2hxTx4IPuVWmUp38Wd4NHQrOB5
+	9tgTtKCBUA5g6p9y/ps+8b6QwW4lIpyjy+a3TY0EyuxfJoHDo4thAebPFMEXyAb/5/uO/mRtMyUQK
+	P9zsbCS/5JkqpgYc440vb6S/pnWEYRfl5kN8KOjTklR4wZKg8Gb6Z+QuEb4JakEFlRtm3V2HoaLhd
+	imiWkvOaTL8G7HU6yFekhE4a7rKH5B6knUJ6wu0R0T/uy3w585fn1WIRlOlWzzTVxKkLRUipyRT3r
+	33j//INg==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vHk-00GaIA-0T;
-	Tue, 28 Nov 2023 10:25:48 +0000
+	id 1r7vHm-00GaKC-2t;
+	Tue, 28 Nov 2023 10:25:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 127D8CE1AC3;
-	Tue, 28 Nov 2023 10:25:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8FC2C433D9;
-	Tue, 28 Nov 2023 10:25:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 69208616D2;
+	Tue, 28 Nov 2023 10:25:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DEC4C433C9;
+	Tue, 28 Nov 2023 10:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701167137;
-	bh=NPcmog8rmIBDaqZDT4O0fzD3K2AFLpEEWCR2cLRhvQQ=;
+	s=k20201202; t=1701167142;
+	bh=612NFeh5NOImp0JEmAQppe78uklCbIwDoN+fmJSIsz0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RPU+1I5o3q9VbgxNkmj+Om7S3OtsQA/1Rz+blYtkXjXnWGlVHukRf4I+I+x0W+DML
-	 86pMvw81vUksHB7eP0c4KsVu86EAmyJNybHcfi9qmOlx7jaNm3wphsbZ/sbGl4e0vu
-	 nSHkjUbAFkQ/8RMWrBSdx8iJAD3GFrByLvUpnxyyr9Eyh+LhDXoipX+dqsXccnbg+R
-	 J3KbOhbQM8jod3vcBgS6wiaHdTe7VMXLVGHW87yDLk5YqYd0g5aK4JwZJ2K6ymC4vH
-	 Kgo/34ErtKwVUDL/UPgiG64znYwyZiHuvMMZ/ia+zN9ViLcdAUyXz8rHecC1s1ab6H
-	 EXIB7Q1Ekfs6w==
+	b=AXCbVrahNOyYPaCP7KvVfnt/lQ+45UqHlD/+LNjqAOQUSUfvLSuiw4TjyF07eU2Ed
+	 4gyLkJVh2cLzA7nIJ13kPGaM6OZ/0EnpqPP3aSnYLIWd/0jkWfB58uDIuUfTaDzLzQ
+	 G6MDk31XIs3t47aCNy7whCaeTvzSrASGVWqQcrNZlfnGnnu/6VWhWkZ3i1RqnlYdAh
+	 S7ZtjNKRDhfdsMq+4tBnLj/7A+WdGa+Gi3YJC9GK4PWEK0vCkrMcjgj6R/64gLVGoZ
+	 954YgYGJmwnpi9Jt10KQBUzBKD0UMNjFfJJdprzUNoOYCgHOudtlBv3DI8eIkcsh49
+	 ViXHYRibXL0eQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 28 Nov 2023 11:24:37 +0100
-Subject: [PATCH v4 26/45] drm/rockchip: inno_hdmi: Get rid of mode_set
+Date: Tue, 28 Nov 2023 11:24:39 +0100
+Subject: [PATCH v4 28/45] drm/rockchip: inno_hdmi: Remove unneeded has
+ audio flag
 MIME-Version: 1.0
-Message-Id: <20231128-kms-hdmi-connector-state-v4-26-c7602158306e@kernel.org>
+Message-Id: <20231128-kms-hdmi-connector-state-v4-28-c7602158306e@kernel.org>
 References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 In-Reply-To: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -75,17 +76,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1884; i=mripard@kernel.org;
- h=from:subject:message-id; bh=NPcmog8rmIBDaqZDT4O0fzD3K2AFLpEEWCR2cLRhvQQ=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y85H33u9HRW2ssDW8ttBSKPfvec0bZ7wX2HcEH/Z
- dU/fNvnd5SwMIhxMciKKbLECJsviTs163UnG988mDmsTCBDGLg4BWAikiaMDFOtWN/WtMksKpQ0
- sl/+qfYF8x/era13xPdvesP0RTziBhvD9/rHTzPrn16RWevgU/N99oT4Dy6cL8XNGybnC6v+OK/
- HDAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1051; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=612NFeh5NOImp0JEmAQppe78uklCbIwDoN+fmJSIsz0=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y/1HmmwYJ3OvvSsUKBFpVXstaQ1UnKLJQ0Oan49a
+ f/psnBeRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACaiMJeRoSX/ld6ND45pIcWn
+ WyMO55yOX6BzI6Nhmfx57/U5UU1hKYwM3a+8NDkiLjh5zZFNy1u76tGdyvyZouy6IqdeOJfM3Gj
+ ABwA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_102547_227825_4798BF18 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20231128_102551_880292_D9C7CF02 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,59 +103,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We're not doing anything special in atomic_mode_set so we can simply
-merge it into atomic_enable.
+The sink_has_audio flag is not used anywhere in the driver so let's get
+rid of it. It's redundant with drm_display_info.has_audio anyway.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index cc86d273ca4a..4db18195246e 100644
+index 294f0d442c0c..3908dc09d85f 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -490,21 +490,22 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 	return 0;
- }
+@@ -28,7 +28,6 @@
+ #include "inno_hdmi.h"
  
--static void inno_hdmi_encoder_mode_set(struct drm_encoder *encoder,
--				       struct drm_crtc_state *crtc_state,
--				       struct drm_connector_state *conn_state)
--{
--	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
--	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
--
--	inno_hdmi_setup(hdmi, adj_mode);
--}
--
- static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
- 				     struct drm_atomic_state *state)
- {
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
-+	struct drm_connector_state *conn_state;
-+	struct drm_crtc_state *crtc_state;
+ struct hdmi_data_info {
+-	bool sink_has_audio;
+ 	unsigned int enc_in_format;
+ 	unsigned int enc_out_format;
+ 	unsigned int colorimetry;
+@@ -554,7 +553,6 @@ static int inno_hdmi_connector_get_modes(struct drm_connector *connector)
  
-+	conn_state = drm_atomic_get_new_connector_state(state, &hdmi->connector);
-+	if (WARN_ON(!conn_state))
-+		return;
-+
-+	crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
-+	if (WARN_ON(!crtc_state))
-+		return;
-+
-+	inno_hdmi_setup(hdmi, &crtc_state->adjusted_mode);
- 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
- }
- 
-@@ -533,7 +534,6 @@ static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
- 	.atomic_check	= inno_hdmi_encoder_atomic_check,
- 	.atomic_enable	= inno_hdmi_encoder_enable,
- 	.atomic_disable	= inno_hdmi_encoder_disable,
--	.atomic_mode_set	= inno_hdmi_encoder_mode_set,
- };
- 
- static enum drm_connector_status
+ 	edid = drm_get_edid(connector, hdmi->ddc);
+ 	if (edid) {
+-		hdmi->hdmi_data.sink_has_audio = drm_detect_monitor_audio(edid);
+ 		drm_connector_update_edid_property(connector, edid);
+ 		ret = drm_add_edid_modes(connector, edid);
+ 		kfree(edid);
 
 -- 
 2.41.0
