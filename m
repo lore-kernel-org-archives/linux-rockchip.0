@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C3EBC07E98
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 20:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1449EC07E98
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 20:50:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vJmvZc8Xw8lb7Hk4tKlPed7QSHEm1uONmQPSmCZ0ZmQ=; b=j15ChEJmyTB5h1
-	rELzOIcxf7nqzW5m3ukLSOI1VjKGxdzZQFjrDcNr6I6MXtNkVybZ+BYhkZYxU25vGTr7UyLPlhOzX
-	SodZss0iN9DYmWrNDdumla40xdcuT7KJca4KuXuoHeoo7UA/EVDMGm5UiEZFplMPFWyby/faywqmA
-	STWQc5/31G5UJa3WIUyfolwX2F/xZUztHNUMOXQNmDJe4giIt7YWwuHkKB6TDeMwKPxpJ/F41cSib
-	/RM6+UT31H0nPwIQ9bidmr/CrjnIt/9F4/hw502H4dWy6Xyq4aFGiwM1Tken54bJT4weZocIn/Yjd
-	TbxuJJgNk8a5Nf69A/xQ==;
+	List-Owner; bh=Shtc3NholxBFBzes/Wl+wGxHMVk/0nVmW903j243rKs=; b=2xPk1pYbduwPG4
+	CBFMfedeTaBhUqbvlz/yUtQDViBy1SGS1WNazpaeRvIMpxmdQr6k4voTGDP9ply/es/p2tvLBxBB6
+	qdzQXx+F2jloitf6AKdTEaWIEYOAWDME43nfztQOdUIAS+h4RetBoPPHz5ufyNYbNGtboHUxEgf0L
+	tgLqKbPWgqhrBfVOrMvbzopCg8j99WHG7zBnBi8jXZzlU7cevi1PP0oDiPEThc7ELaTBoycRgHB6E
+	bIywXwtfNPkqtAA2Ws5SucPPOzCfzsy6adZTe8xZXs9tCN8CeMSHPsBsvd7LYNMsorMM05F2B/pGz
+	nbCwh+7uEG2A3MJHp0Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8528-006ILd-2W;
-	Tue, 28 Nov 2023 20:50:16 +0000
+	id 1r852E-006IPx-0H;
+	Tue, 28 Nov 2023 20:50:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r851v-006I7Z-0E
+	id 1r851w-006I9E-0N
 	for linux-rockchip@bombadil.infradead.org;
-	Tue, 28 Nov 2023 20:50:03 +0000
+	Tue, 28 Nov 2023 20:50:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
 	Content-Type:Content-ID:Content-Description;
-	bh=4JJWGGhifJfmWwzsRRAotq/YxAL9K3n4NSfU3ou+3rE=; b=NqEk1C12ZGqU53yzvPMxfXGzRY
-	6yS4IttgjNsa0ZwgxQYjyVDpaxMEgtULGMvYCdWpKSG0xK3YbzQ9tOLF1Q+tPbv+ISWRPh+FG7H3N
-	ueA/PQQlVwmDUqqEcj0lY9U/FTbHYlmcM0p2UM+R5xeV7wtH3t/teTXcZlflpWy7dn1z6lCkT1bje
-	i4fnQGzEURySpNPKNaiJr48T+KYa/vtcUBuTkEgQxL9RxSmKGC1MqKiwRenh2M99pM16+/Ltgilyn
-	nZbEHhKmWiQtZN/wsjnpO52qlk1Jjo2Ga8MGGzOBfWST08AQpAh3gMIo/RLZ0IszUNmKGdQZC1828
-	jlvkefaA==;
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	bh=ETdhPmFEsQhEIbzNxRgoLUCae/wd+Ix3V20Xa0Oz0Bc=; b=QY58w6SnJmZl5iq/6he8sGtbnJ
+	tJIlfkuJRH58iniAe7cTFOjTPL2o2jGG/0ZvHDt3pyDEMubzb9/YRYnpHZfip7yyoH3+EVZDWMWj/
+	E1lAq51uzeuB9lIl07U3ENPxOTapiLxN6iSwSsA4AgA2HQYoabbM9mNSyG5ECOT3gHlVQK8q7fkVR
+	D+3+kuQB+YjPeo+dZ9pGsBZJTqfN9CcWx37uZFa2xmupjKptZ030ov4NK3tojNE+TzL6W5J/FRoYK
+	uT7PW0x9Pg9ViAAMIaMBefE06/cRi5iREtHnhMvnkRZAwiyV/GuBd8nVtThRqeDpmrgT81Yv6usmL
+	tUOnMxog==;
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r851l-00Girn-2R
+	id 1r851l-00Gis7-35
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Nov 2023 20:50:01 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-67a3e0fb11aso16258356d6.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 12:49:46 -0800 (PST)
+	Tue, 28 Nov 2023 20:50:02 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-67a34fbaf12so18842886d6.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 12:49:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1701204585; x=1701809385; darn=lists.infradead.org;
+        d=soleen.com; s=google; t=1701204590; x=1701809390; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4JJWGGhifJfmWwzsRRAotq/YxAL9K3n4NSfU3ou+3rE=;
-        b=QCg5SvdKunDNSi0ZAaHIojPn0yWg07e7rnzKPtiMyE5GP7siB29oTgEdNooXhr3JAH
-         Z4f+fC2uicnCKxBad6IEN7JId3g2lRSqzQb8k8SmkGJhlMpGBJtZevTbmsn2ZPyEetnt
-         6VvOpAaE8qFsF4posTbsVY/ivqIX1lBwjUws/Ei6bY5IGe8Wp0PDXYl/doNTB9mUAgq9
-         cZVx8HwDglCGKZGBBA2JmPFjikpCA4zSWUc7rza1AoZTLjNxL38tLR93t/CqARtDd2/D
-         9sXAtcZ8tTPmLKTYaREEIVp/jQq0ocix+CbtFbzHfXQELLsfgF7uy90yf4ZiE3/uQFk4
-         m3FA==
+        bh=ETdhPmFEsQhEIbzNxRgoLUCae/wd+Ix3V20Xa0Oz0Bc=;
+        b=OpbGa707nUNMVLXwGhUeMRTn7/jU6gwmIZJd1ukkHdoMTq3C87ISfWuVFMtvHlirgU
+         KUk1Cz1Tv4vNgCUU93oqJkf7B1SoNIXew27yYToMpyiu6fweHTUzX85Z/iK/gR+94x3k
+         byBPa1vYRJd1DfSiC8lostvJLcvnAI1Sw2gY7OF0xkfxzDRgCQHLfD5/yLyFrAUMCVN4
+         87aGg+4OlhLKTsAWowTI7MjiRjAUtJc2AnaNvGPMvZPOH7NshfIVw8SnZDufrraUKPws
+         VtaDF5BILq6dP5ZkmYPqQsWMZdr2fu5F0LeL4PImfhKo8ZyUXbHVe2MdngWVzvT6rSC+
+         SwBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701204585; x=1701809385;
+        d=1e100.net; s=20230601; t=1701204590; x=1701809390;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4JJWGGhifJfmWwzsRRAotq/YxAL9K3n4NSfU3ou+3rE=;
-        b=Y1j5PaR1a6Kfi/ozL83JM0/sak7MuJmGmVGNt5E/5J1T8IAASX8lG0S6YC4meBA3ot
-         KGaTfG65AbGRG9q1ghBT8qXK2yqdCmY+5Qovj+dJcNfpoXauq/Ehc5ebPEEdHgJ/l20Z
-         8tZ5QAQebGenKoLDzMfGOqM/dFXXQoNRQ5+0M/B25EpLXf3fGZ7Snf/HUcBxddz6XGke
-         I/duQCJ01PCwXn2AMhBcRXf2MIeBQ7sv83Cv6qc0+KuvEYpoqVcciNAI/8Cr5g9E2CxO
-         VxFvoXoBjs8Ll2/v0fbUKBmvn8YApUXEB5nU9wKvXqcNly7FLpNpIUhsXKjHTDDeqBNE
-         DJYA==
-X-Gm-Message-State: AOJu0Yz7VwiWnXLy61smKTi99SMvqvMm71woQ4BZMvaoV67LE6h/t2z+
-	ue3ds1T2YAjVZgSFtzjaGGLOag==
-X-Google-Smtp-Source: AGHT+IEDZ/ij59NC+/N0WE8v2site2Dd8U3b4CDvl6tiF76N0ZJEMNbYN0ZJKJUKEFAmf3sLjyNRCw==
-X-Received: by 2002:ad4:5499:0:b0:67a:5744:264c with SMTP id pv25-20020ad45499000000b0067a5744264cmr3635072qvb.55.1701204585073;
-        Tue, 28 Nov 2023 12:49:45 -0800 (PST)
+        bh=ETdhPmFEsQhEIbzNxRgoLUCae/wd+Ix3V20Xa0Oz0Bc=;
+        b=fw2CgdYWYIhUNox8kCe2dkdD27zjZJM/JNLYGOOU/P2HLaa5TES5+V5IGwzXH08d3D
+         g+PVH9KlHvPSha/b8PE4ydQPcfBgjY39OPqnuafZ3t2cGB0IHrn181qR2xOsvrVTUV7G
+         D0oOrH/qpBkx/q643v3YPWGLIVItHR0y3fVaKDNiTs/6n7vhwnaJgTcXNuEqnGu3uudg
+         /IQKlx814ROXkPy5iF5M6v72ZV6SeSBxIa4ahTDciLnufxfYFjhY6BtYdfAIQJe3V9vg
+         9hY5dYz7L9shutU1FyH54icTM9MoKOFoJ4hNFK4zCwUNKQ8LsqvGvFn+Lrf8p2Ver9ue
+         nquw==
+X-Gm-Message-State: AOJu0YxtV+ta7jYo1YItXhPADMDzT3VD9omVDukJ4Xr2mAo+LpLGBpLZ
+	6NsgtWcH2HzPG4OJbvtjAMfSHQ==
+X-Google-Smtp-Source: AGHT+IF20t0VWjgac0dRIZCA1JkcXVtwNJBGTcAuMHzFzEm0RhGR7NzU38i0clAtj6I8+ULrxoVFmw==
+X-Received: by 2002:a0c:ebc3:0:b0:67a:2129:c05a with SMTP id k3-20020a0cebc3000000b0067a2129c05amr14629363qvq.53.1701204590697;
+        Tue, 28 Nov 2023 12:49:50 -0800 (PST)
 Received: from soleen.c.googlers.com.com (55.87.194.35.bc.googleusercontent.com. [35.194.87.55])
-        by smtp.gmail.com with ESMTPSA id d11-20020a0cfe8b000000b0067a56b6adfesm1056863qvs.71.2023.11.28.12.49.44
+        by smtp.gmail.com with ESMTPSA id d11-20020a0cfe8b000000b0067a56b6adfesm1056863qvs.71.2023.11.28.12.49.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 12:49:44 -0800 (PST)
+        Tue, 28 Nov 2023 12:49:50 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alex.williamson@redhat.com,
@@ -130,16 +130,16 @@ To: akpm@linux-foundation.org,
 	wens@csie.org,
 	will@kernel.org,
 	yu-cheng.yu@intel.com
-Subject: [PATCH 04/16] iommu/io-pgtable-dart: use page allocation function provided by iommu-pages.h
-Date: Tue, 28 Nov 2023 20:49:26 +0000
-Message-ID: <20231128204938.1453583-5-pasha.tatashin@soleen.com>
+Subject: [PATCH 10/16] iommu/rockchip: use page allocation function provided by iommu-pages.h
+Date: Tue, 28 Nov 2023 20:49:32 +0000
+Message-ID: <20231128204938.1453583-11-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.43.0.rc2.451.g8631bc7472-goog
 In-Reply-To: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
 References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_204954_266977_A3FEABAC 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20231128_204954_524385_892929CB 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,114 +156,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/io-pgtable-dart.c to use the new page allocation functions
+Convert iommu/rockchip-iommu.c to use the new page allocation functions
 provided in iommu-pages.h.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 ---
- drivers/iommu/io-pgtable-dart.c | 37 +++++++++++++--------------------
- 1 file changed, 14 insertions(+), 23 deletions(-)
+ drivers/iommu/iommufd/iova_bitmap.c |  2 ++
+ drivers/iommu/rockchip-iommu.c      | 14 ++++++++------
+ 2 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
-index 74b1ef2b96be..ad28031e1e93 100644
---- a/drivers/iommu/io-pgtable-dart.c
-+++ b/drivers/iommu/io-pgtable-dart.c
-@@ -23,6 +23,7 @@
- #include <linux/types.h>
+diff --git a/drivers/iommu/iommufd/iova_bitmap.c b/drivers/iommu/iommufd/iova_bitmap.c
+index 6b8575b93f17..4d5d1be807fe 100644
+--- a/drivers/iommu/iommufd/iova_bitmap.c
++++ b/drivers/iommu/iommufd/iova_bitmap.c
+@@ -8,6 +8,8 @@
+ #include <linux/slab.h>
+ #include <linux/highmem.h>
  
- #include <asm/barrier.h>
++#include "../iommu-pages.h"
++
+ #define BITS_PER_PAGE (PAGE_SIZE * BITS_PER_BYTE)
+ 
+ /*
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 2685861c0a12..e04f22d481d0 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -26,6 +26,8 @@
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ 
 +#include "iommu-pages.h"
++
+ /** MMU register offsets */
+ #define RK_MMU_DTE_ADDR		0x00	/* Directory table address */
+ #define RK_MMU_STATUS		0x04
+@@ -727,14 +729,14 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+ 	if (rk_dte_is_pt_valid(dte))
+ 		goto done;
  
- #define DART1_MAX_ADDR_BITS	36
+-	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | rk_ops->gfp_flags);
++	page_table = iommu_alloc_page(GFP_ATOMIC | rk_ops->gfp_flags);
+ 	if (!page_table)
+ 		return ERR_PTR(-ENOMEM);
  
-@@ -106,18 +107,12 @@ static phys_addr_t iopte_to_paddr(dart_iopte pte,
- 	return paddr;
- }
- 
--static void *__dart_alloc_pages(size_t size, gfp_t gfp,
--				    struct io_pgtable_cfg *cfg)
-+static void *__dart_alloc_pages(size_t size, gfp_t gfp)
- {
- 	int order = get_order(size);
--	struct page *p;
- 
- 	VM_BUG_ON((gfp & __GFP_HIGHMEM));
--	p = alloc_pages(gfp | __GFP_ZERO, order);
--	if (!p)
--		return NULL;
--
--	return page_address(p);
-+	return iommu_alloc_pages(gfp, order);
- }
- 
- static int dart_init_pte(struct dart_io_pgtable *data,
-@@ -262,13 +257,13 @@ static int dart_map_pages(struct io_pgtable_ops *ops, unsigned long iova,
- 
- 	/* no L2 table present */
- 	if (!pte) {
--		cptep = __dart_alloc_pages(tblsz, gfp, cfg);
-+		cptep = __dart_alloc_pages(tblsz, gfp);
- 		if (!cptep)
- 			return -ENOMEM;
- 
- 		pte = dart_install_table(cptep, ptep, 0, data);
- 		if (pte)
--			free_pages((unsigned long)cptep, get_order(tblsz));
-+			iommu_free_pages(cptep, get_order(tblsz));
- 
- 		/* L2 table is present (now) */
- 		pte = READ_ONCE(*ptep);
-@@ -419,8 +414,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- 	cfg->apple_dart_cfg.n_ttbrs = 1 << data->tbl_bits;
- 
- 	for (i = 0; i < cfg->apple_dart_cfg.n_ttbrs; ++i) {
--		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL,
--					   cfg);
-+		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL);
- 		if (!data->pgd[i])
- 			goto out_free_data;
- 		cfg->apple_dart_cfg.ttbr[i] = virt_to_phys(data->pgd[i]);
-@@ -429,9 +423,10 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- 	return &data->iop;
- 
- out_free_data:
--	while (--i >= 0)
--		free_pages((unsigned long)data->pgd[i],
--			   get_order(DART_GRANULE(data)));
-+	while (--i >= 0) {
-+		iommu_free_pages(data->pgd[i],
-+				 get_order(DART_GRANULE(data)));
-+	}
- 	kfree(data);
- 	return NULL;
- }
-@@ -439,6 +434,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- static void apple_dart_free_pgtable(struct io_pgtable *iop)
- {
- 	struct dart_io_pgtable *data = io_pgtable_to_data(iop);
-+	int order = get_order(DART_GRANULE(data));
- 	dart_iopte *ptep, *end;
- 	int i;
- 
-@@ -449,15 +445,10 @@ static void apple_dart_free_pgtable(struct io_pgtable *iop)
- 		while (ptep != end) {
- 			dart_iopte pte = *ptep++;
- 
--			if (pte) {
--				unsigned long page =
--					(unsigned long)iopte_deref(pte, data);
--
--				free_pages(page, get_order(DART_GRANULE(data)));
--			}
-+			if (pte)
-+				iommu_free_pages(iopte_deref(pte, data), order);
- 		}
--		free_pages((unsigned long)data->pgd[i],
--			   get_order(DART_GRANULE(data)));
-+		iommu_free_pages(data->pgd[i], order);
+ 	pt_dma = dma_map_single(dma_dev, page_table, SPAGE_SIZE, DMA_TO_DEVICE);
+ 	if (dma_mapping_error(dma_dev, pt_dma)) {
+ 		dev_err(dma_dev, "DMA mapping error while allocating page table\n");
+-		free_page((unsigned long)page_table);
++		iommu_free_page(page_table);
+ 		return ERR_PTR(-ENOMEM);
  	}
  
- 	kfree(data);
+@@ -1061,7 +1063,7 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+ 	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
+ 	 * Allocate one 4 KiB page for each table.
+ 	 */
+-	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | rk_ops->gfp_flags);
++	rk_domain->dt = iommu_alloc_page(GFP_KERNEL | rk_ops->gfp_flags);
+ 	if (!rk_domain->dt)
+ 		goto err_free_domain;
+ 
+@@ -1083,7 +1085,7 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+ 	return &rk_domain->domain;
+ 
+ err_free_dt:
+-	free_page((unsigned long)rk_domain->dt);
++	iommu_free_page(rk_domain->dt);
+ err_free_domain:
+ 	kfree(rk_domain);
+ 
+@@ -1104,13 +1106,13 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 			u32 *page_table = phys_to_virt(pt_phys);
+ 			dma_unmap_single(dma_dev, pt_phys,
+ 					 SPAGE_SIZE, DMA_TO_DEVICE);
+-			free_page((unsigned long)page_table);
++			iommu_free_page(page_table);
+ 		}
+ 	}
+ 
+ 	dma_unmap_single(dma_dev, rk_domain->dt_dma,
+ 			 SPAGE_SIZE, DMA_TO_DEVICE);
+-	free_page((unsigned long)rk_domain->dt);
++	iommu_free_page(rk_domain->dt);
+ 
+ 	kfree(rk_domain);
+ }
 -- 
 2.43.0.rc2.451.g8631bc7472-goog
 
