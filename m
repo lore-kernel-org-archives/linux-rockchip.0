@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC5C5C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 11:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 792F3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 11:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6WmdXDpkOaI2yxXi9Trdg+TnSnepSwRw0ebb7Uq7bi8=; b=HIA2OzBjF5UcLs
-	s/b0iOcgSsYrwwT0NzLO/3bQi1kf8y0QnQ4fyGmR4YFtRxIcRAaoc77PVkakS4+hspkLm3yG5spub
-	5rB+9cnm+dnMDnjmk9D3rB73EDAFdCbpcn4ilXUq84VjwjBB2MC/wTEBIIYWGBo7Xo/XrC7aD9LZV
-	AmgLUP5XOWg6TmlZedFTBtlAxjIymbT18PH4wGlqYcV1ZsedZJRkpHmYPdzDjSR76X9wt+DkreCF7
-	rXvyTb2G9c7sOvwD1p+HbjZ9/e2YN8vKn9RiA/f31zjAYlCkYcxL53XbipGoRQdsOfN3Ysww8FRFc
-	C0OR8J5qVWaa4jB3bK8g==;
+	List-Owner; bh=+54KvHa8EGVNUTLpBDLCFW657vOoI12FDksGtfnj4IU=; b=GNf+TEyQyy+Xtj
+	QQpYaP7f3BElTCofnY9XG0t7OVKGskBDXoHhVCxj4QwI97d1bb8j+zn+BwqWlOMCGvy0v9y9ezRZX
+	+KtreHiBTIJeKYt1qHlIPaLPlYUGV/+wIg/gj2+lYlomxRBF5e3GikXyOohO4jFOxNr28ZMpbn00U
+	R5X8/psnAHhbmuZ8bNsBRJnvCHT8oRQGf3PY1Klg1mMYvqG77vXatVmJdMG0smmySQnl9SdZuj7Pn
+	uCo35xfdv37DgpC0NUAp/zopURzRvB/nNi4xUyF3VU2Zkvd3v4sbfEzV8Hmt+ujR9Xif5qUfKA/aT
+	HLaf5p/3HcocW9k2MmpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7wJF-0054py-0U;
-	Tue, 28 Nov 2023 11:31:21 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1r7wJM-0054z0-26;
+	Tue, 28 Nov 2023 11:31:28 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vHJ-004rzu-2r;
-	Tue, 28 Nov 2023 10:25:27 +0000
+	id 1r7vHT-004s8n-06;
+	Tue, 28 Nov 2023 10:25:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 16053B83A00;
-	Tue, 28 Nov 2023 10:25:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D74F0C43395;
-	Tue, 28 Nov 2023 10:25:13 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 67C25CE1ACB;
+	Tue, 28 Nov 2023 10:25:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97452C43391;
+	Tue, 28 Nov 2023 10:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701167114;
-	bh=OGo7Z7CQrMjDdXBesBvi73JZcvWD//fEJf0VUCHsCAg=;
+	s=k20201202; t=1701167123;
+	bh=D4BPROK9mHKg2SOBmNbMJbX24ynWespGqsn/dV5n270=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kS/CCa+MWKyYrgfkD9/xrxRtC47wMnlHyeoDK7p107NRlNrhA0+H4x3wT+7DtlWWo
-	 gnXq/5YgAqHyIdrI+aH6NjLimLZQruhdu+W+lgOTwQCEdih372cDFhpt5zzzLd0cIy
-	 kE5pcH4nXSJvqnlcBq4OJfjnYHyMvUicL1lDWMO8PtZsLIlftza0EG4R3JoqkrXFwZ
-	 HKM3Y4MPqP9gAVd/AO6DN78qycxnXDdVa2FqZGqqqHrRoms+mnMO7LTzsJM2/15P6+
-	 TiEP2fknfl1Oi+udrv7SDtN3DoMVZLRwhtvRDQIXE1z3jt2kuT62eN9+8HEg6KKxC7
-	 XMz56o2t0mdzQ==
+	b=nnbjrnTUyNuTRzF4BF2/drlI7BY+fUoAv7deH48V5iA58AKwSu4MofN4kSh2ZWHE9
+	 LiI9T1QXVB0MmdQLgK1Lvm7tZJItqEhen1b+6M+SWOjWUdPn78+nW7vK8LjJ0CP9MY
+	 Syqxax8OzKI2w5xztMoJAPDMargttWQIamWjZ6u5U0kmuc1f3AiVvkapAyDwjs83mC
+	 llhzbE/Q/ypUlxflfd3OPXtF4Vim6OIERHJjTmyCh69pUqtOCpr22loYOHT7t8QgEn
+	 4vszaATylGPQqy5uRCpYxLhto+ywnmFoYH9sfhXHA7RlDwMf12LGpziuD04UK3z+WC
+	 oPYFNf7vY33Xg==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 28 Nov 2023 11:24:29 +0100
-Subject: [PATCH v4 18/45] drm/connector: hdmi: Create Infoframe DebugFS
- entries
+Date: Tue, 28 Nov 2023 11:24:32 +0100
+Subject: [PATCH v4 21/45] drm/vc4: tests: Remove vc4_dummy_plane structure
 MIME-Version: 1.0
-Message-Id: <20231128-kms-hdmi-connector-state-v4-18-c7602158306e@kernel.org>
+Message-Id: <20231128-kms-hdmi-connector-state-v4-21-c7602158306e@kernel.org>
 References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 In-Reply-To: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,17 +61,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4158; i=mripard@kernel.org;
- h=from:subject:message-id; bh=OGo7Z7CQrMjDdXBesBvi73JZcvWD//fEJf0VUCHsCAg=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y9uupzK/65bSK3zsdsj1yz+45MWNWhEfZzLo+rpu
- 3fTfvGDHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZjITQ9Ght17L/ziYJ3dkL7a
- /dR5gUvVgaYciot+9fP3mkSlZNnJeTIydBayiTJNZf1c1ValKZTAJBaT/y3l4POYjfPapB+sn67
- EBQA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3334; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=D4BPROK9mHKg2SOBmNbMJbX24ynWespGqsn/dV5n270=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y+9W9adc0nE0a4r//OGHMd9ew/JtxTYmVaI3JcJi
+ ub7d2ZnRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACaytYvhv591tsyH6L0PPs2p
+ K07UPTn/V+bt/nJHoQcKTp+WXLVbz87w37Gp8EFBu+GT+AyTYIvQlseGSx5rnjE+vHDmTLf2Mgt
+ uVgA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_022518_285624_39B1FECF 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20231128_022527_525428_553944A1 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,148 +88,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There has been some discussions recently about the infoframes sent by
-drivers and if they were properly generated.
-
-In parallel, there's been some interest in creating an infoframe-decode
-tool similar to edid-decode.
-
-Both would be much easier if we were to expose the infoframes programmed
-in the hardware. It won't be perfect since we have no guarantee that
-it's actually what goes through the wire, but it's the best we can do.
+The vc4_dummy_plane structure is an exact equivalent to vc4_plane, so we
+don't need it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/drm_debugfs.c | 110 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 110 insertions(+)
+ drivers/gpu/drm/vc4/tests/vc4_mock.c       |  6 ++----
+ drivers/gpu/drm/vc4/tests/vc4_mock.h       |  9 ++-------
+ drivers/gpu/drm/vc4/tests/vc4_mock_plane.c | 14 +++++---------
+ 3 files changed, 9 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
-index f291fb4b359f..59bf4dd0cbd6 100644
---- a/drivers/gpu/drm/drm_debugfs.c
-+++ b/drivers/gpu/drm/drm_debugfs.c
-@@ -524,6 +524,114 @@ static const struct file_operations drm_connector_fops = {
- 	.write = connector_write
+diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock.c b/drivers/gpu/drm/vc4/tests/vc4_mock.c
+index 63ca46f4cb35..1c1be39141ba 100644
+--- a/drivers/gpu/drm/vc4/tests/vc4_mock.c
++++ b/drivers/gpu/drm/vc4/tests/vc4_mock.c
+@@ -109,16 +109,14 @@ static const struct vc4_mock_desc vc5_mock =
+ static int __build_one_pipe(struct kunit *test, struct drm_device *drm,
+ 			    const struct vc4_mock_pipe_desc *pipe)
+ {
+-	struct vc4_dummy_plane *dummy_plane;
+ 	struct drm_plane *plane;
+ 	struct vc4_dummy_crtc *dummy_crtc;
+ 	struct drm_crtc *crtc;
+ 	unsigned int i;
+ 
+-	dummy_plane = vc4_dummy_plane(test, drm, DRM_PLANE_TYPE_PRIMARY);
+-	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_plane);
++	plane = vc4_dummy_plane(test, drm, DRM_PLANE_TYPE_PRIMARY);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
+ 
+-	plane = &dummy_plane->plane.base;
+ 	dummy_crtc = vc4_mock_pv(test, drm, plane, pipe->data);
+ 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_crtc);
+ 
+diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock.h b/drivers/gpu/drm/vc4/tests/vc4_mock.h
+index 2d0b339bd9f3..002b6218960c 100644
+--- a/drivers/gpu/drm/vc4/tests/vc4_mock.h
++++ b/drivers/gpu/drm/vc4/tests/vc4_mock.h
+@@ -21,13 +21,8 @@ struct drm_crtc *vc4_find_crtc_for_encoder(struct kunit *test,
+ 	return NULL;
+ }
+ 
+-struct vc4_dummy_plane {
+-	struct vc4_plane plane;
+-};
+-
+-struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
+-					struct drm_device *drm,
+-					enum drm_plane_type type);
++struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
++				  enum drm_plane_type type);
+ 
+ struct vc4_dummy_crtc {
+ 	struct vc4_crtc crtc;
+diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+index 62b18f5f41db..973f5f929097 100644
+--- a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
++++ b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+@@ -22,15 +22,12 @@ static const uint32_t vc4_dummy_plane_formats[] = {
+ 	DRM_FORMAT_XRGB8888,
  };
  
-+struct debugfs_wrapper {
-+	struct drm_connector *connector;
-+	struct drm_connector_hdmi_infoframe *frame;
-+};
-+
-+#define HDMI_MAX_INFOFRAME_SIZE		29
-+
-+static ssize_t
-+infoframe_read(struct file *filp, char __user *ubuf, size_t count, loff_t *ppos)
-+{
-+	const struct debugfs_wrapper *wrapper = filp->private_data;
-+	struct drm_connector *connector = wrapper->connector;
-+	struct drm_connector_hdmi_infoframe *infoframe = wrapper->frame;
-+	union hdmi_infoframe *frame = &infoframe->data;
-+	u8 buf[HDMI_MAX_INFOFRAME_SIZE];
-+	ssize_t len = 0;
-+
-+	mutex_lock(&connector->hdmi.infoframes.lock);
-+
-+	if (!infoframe->set)
-+		goto out;
-+
-+	len = hdmi_infoframe_pack(frame, buf, sizeof(buf));
-+	if (len < 0)
-+		goto out;
-+
-+	len = simple_read_from_buffer(ubuf, count, ppos, buf, len);
-+
-+out:
-+	mutex_unlock(&connector->hdmi.infoframes.lock);
-+	return len;
-+}
-+
-+static const struct file_operations infoframe_fops = {
-+	.owner   = THIS_MODULE,
-+	.open    = simple_open,
-+	.read    = infoframe_read,
-+};
-+
-+static int create_hdmi_infoframe_file(struct drm_connector *connector,
-+				      struct dentry *parent,
-+				      const char *filename,
-+				      struct drm_connector_hdmi_infoframe *frame)
-+{
-+	struct drm_device *dev = connector->dev;
-+	struct debugfs_wrapper *wrapper;
-+	struct dentry *file;
-+
-+	wrapper = drmm_kzalloc(dev, sizeof(*wrapper), GFP_KERNEL);
-+	if (!wrapper)
-+		return -ENOMEM;
-+
-+	wrapper->connector = connector;
-+	wrapper->frame = frame;
-+
-+	file = debugfs_create_file(filename, 0400, parent, wrapper, &infoframe_fops);
-+	if (IS_ERR(file))
-+		return PTR_ERR(file);
-+
-+	return 0;
-+}
-+
-+#define CREATE_HDMI_INFOFRAME_FILE(c, p, i)		\
-+	create_hdmi_infoframe_file(c, p, #i, &(c)->hdmi.infoframes.i)
-+
-+static int create_hdmi_infoframe_files(struct drm_connector *connector,
-+				       struct dentry *parent)
-+{
-+	int ret;
-+
-+	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, audio);
-+	if (ret)
-+		return ret;
-+
-+	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, avi);
-+	if (ret)
-+		return ret;
-+
-+	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, hdr_drm);
-+	if (ret)
-+		return ret;
-+
-+	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, spd);
-+	if (ret)
-+		return ret;
-+
-+	ret = CREATE_HDMI_INFOFRAME_FILE(connector, parent, hdmi);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static void hdmi_debugfs_add(struct drm_connector *connector)
-+{
-+	struct dentry *dir;
-+
-+	if (!(connector->connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-+	      connector->connector_type == DRM_MODE_CONNECTOR_HDMIB))
-+		return;
-+
-+	dir = debugfs_create_dir("infoframes", connector->debugfs_entry);
-+	if (IS_ERR(dir))
-+		return;
-+
-+	create_hdmi_infoframe_files(connector, dir);
-+}
-+
- void drm_debugfs_connector_add(struct drm_connector *connector)
+-struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
+-					struct drm_device *drm,
+-					enum drm_plane_type type)
++struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
++				  enum drm_plane_type type)
  {
- 	struct drm_device *dev = connector->dev;
-@@ -551,6 +659,8 @@ void drm_debugfs_connector_add(struct drm_connector *connector)
- 	debugfs_create_file("output_bpc", 0444, root, connector,
- 			    &output_bpc_fops);
+-	struct vc4_dummy_plane *dummy_plane;
+ 	struct drm_plane *plane;
  
-+	hdmi_debugfs_add(connector);
-+
- 	if (connector->funcs->debugfs_init)
- 		connector->funcs->debugfs_init(connector, root);
+-	dummy_plane = drmm_universal_plane_alloc(drm,
+-						 struct vc4_dummy_plane, plane.base,
++	plane = __drmm_universal_plane_alloc(drm, sizeof(struct drm_plane), 0,
+ 						 0,
+ 						 &vc4_dummy_plane_funcs,
+ 						 vc4_dummy_plane_formats,
+@@ -38,10 +35,9 @@ struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
+ 						 NULL,
+ 						 DRM_PLANE_TYPE_PRIMARY,
+ 						 NULL);
+-	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_plane);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
+ 
+-	plane = &dummy_plane->plane.base;
+ 	drm_plane_helper_add(plane, &vc4_dummy_plane_helper_funcs);
+ 
+-	return dummy_plane;
++	return plane;
  }
 
 -- 
