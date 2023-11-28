@@ -4,71 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBDC8C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 23:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339BEC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 23:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/TWC7xACdOD38HrRQEYvYWPzRNcTyvLdLn8f2xp1DIA=; b=DFlt//VpPSiRHW
-	04ID47Dz6QVyVHoueuBULOlQd77nCUJ0HjDNjhIJmYMJOfzm+6XBzCGLefnI4h/dsUCZ3rF7u3/uS
-	IlFQBQ7epX5XOHd0lXHND8zv7opOdCXGka7Pop2O3WkvvtDhkdPydqxaf8AMPxNsJg2J2dpGVIu5R
-	LIzingM1UIVHUPRsBTh0ebnwSDJPkXOXmSO+6lgVNB8rxyafQ53BFeBQHUp0VfJmMm/Q/f8LPbF0s
-	HSvrYGSW12rQqLQ0iDgRbHxqHs5yAQIUPf5Z0m3DXayhVh5+pLrlN9Q4mxFf/2jBDqFY+gES/vJcC
-	UScL1SW7F8kJE2KYoqkQ==;
+	List-Owner; bh=kvUip8qywGrg4MTNCDXYhI2eWiW+hVqZGBisLBwq5TU=; b=ZI7A17dmoNAb9r
+	3d0R07voVz6ZIn2kRb5y1aYOgn1GuMnRLT6yOdM9xJFyT1WGGLVue2byX0ghTWU0ThDuelJ6EO9Th
+	Fc/jOpM4naB8uuAxcysUYIkS3CReOTgftwuriRBFths1+NG4wPm0VBIvVRL6O7kob/SwTu63cRu63
+	C8n4PTMkYZUsZCku+pPz72cnigC3VuTREm3qrXltkwDUDk5oB/NFwqFoTk5TMJCtFsmAjfL6p+8AW
+	RF6iR+MREiGvpuon10ihzkBNuG0E33X7sDnkVj/GxCPyp7h81HhOZ6OJDt7yvydLzsvSRmLSSWiI9
+	vHDy2JcZpZkU3a4tIUhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r87BY-006Yfd-27;
-	Tue, 28 Nov 2023 23:08:08 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r87BU-006Ydc-0k;
-	Tue, 28 Nov 2023 23:08:05 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4E29F2F4;
-	Tue, 28 Nov 2023 15:08:49 -0800 (PST)
-Received: from [10.57.71.132] (unknown [10.57.71.132])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 205E23F6C4;
-	Tue, 28 Nov 2023 15:07:53 -0800 (PST)
-Message-ID: <6f9ff0aa-7713-4de1-869e-4725828942e4@arm.com>
-Date: Tue, 28 Nov 2023 23:07:52 +0000
+	id 1r87CH-006YpI-0a;
+	Tue, 28 Nov 2023 23:08:53 +0000
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r87CE-006YnF-0L
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Nov 2023 23:08:51 +0000
+Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-41c157bbd30so32728391cf.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 15:08:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=soleen.com; s=google; t=1701212928; x=1701817728; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZwfH1boRaqUSm7vYG/zdQBuuZhpN21nmfcJNTWlLUDE=;
+        b=b2CncReKzheK/M0vQsrQd32tCXs/ach6HrOm/XaPDa4KiIcqt2zTZxbtL1HM1e/bHX
+         5WPnU4ujilHyuhHn1tyNRWcRRkWDye0CIkncOPnv36hdKKnHnTr5r1QgfQP0Msy0Se4k
+         DUQPyrItAEAPibClIyFp0am+V41gXORfN+k1Glc0emE6WCJrVZnqyQZ79ivxv83mfPEE
+         Ivky3KRzmkjbls2GPOEjBRCwJx+2ydyanh5LXUmCBeO541qS1diqSw58zNkCjA3Dbm2S
+         Hp62ugMtVTeo+O6OvvylIWCH0iImhaGnAHoOhXif6fCiYrDpU4TeFMhj82VWh/yKzqHl
+         ofoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701212928; x=1701817728;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZwfH1boRaqUSm7vYG/zdQBuuZhpN21nmfcJNTWlLUDE=;
+        b=EN44IgVqFAag9wpjZrD7dp98+Y6mRcz7JHihQt8bgmJUN5gijCHuVTRP5VX6swLhby
+         +ho1IoBcB/3wjFupRiZklncbvuM7dkO7/YjXAB47u91PE3gBvkJ+3+sJc57JOQLnMdJB
+         OVfob+qfmBd21rRG+UTZFT3Dc0ROy38ycfxa5QYtohs3POIIf2JlDPZhpLzHqBIPG4mV
+         gGwIP8usyzZ1APaE4QBBXXmG5dEBkhrnBEdQydRBRYJ0TxwPfh9NgMmjx64dlxaNGtbl
+         XJI4wv0jKTlY5UkrJQGIUv8ffjVWkOQiIErO8RC2jEooWcE+FXAaHjuaM3ekFOahuDUx
+         q8sw==
+X-Gm-Message-State: AOJu0YyYeOk1glJaWNFRL3XEgAobHfyMzppz/n/3/XUFKhaGosgpFwtf
+	iqzC2Z9VgGIR7Tnc7cLxdS44ViCXLqhxutzeZ6Jjhg==
+X-Google-Smtp-Source: AGHT+IH+DSzeg4H32kbSmeDdX42LwmFTBbiExz1cQ9Spo9pVMTh9OFSxf1oX9/Sr0tuUo1qYELK4l02okd8aqJLSMys=
+X-Received: by 2002:a05:622a:d2:b0:423:7f91:3a17 with SMTP id
+ p18-20020a05622a00d200b004237f913a17mr22124861qtw.21.1701212928489; Tue, 28
+ Nov 2023 15:08:48 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/16] iommu/io-pgtable-arm-v7s: use page allocation
- function provided by iommu-pages.h
-Content-Language: en-GB
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alex.williamson@redhat.com,
- alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev,
- baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org,
- corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
- heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com,
- jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com,
- joro@8bytes.org, kevin.tian@intel.com, krzysztof.kozlowski@linaro.org,
- kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org,
- mst@redhat.com, m.szyprowski@samsung.com, netdev@vger.kernel.org,
- paulmck@kernel.org, rdunlap@infradead.org, samuel@sholland.org,
- suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com,
- tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com,
- virtualization@lists.linux.dev, wens@csie.org, will@kernel.org,
- yu-cheng.yu@intel.com
 References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-6-pasha.tatashin@soleen.com>
- <8e1961c9-0359-4450-82d8-2b2fcb2c5557@arm.com>
- <CA+CK2bDFAi1+397fd4cYetUgmHxqE2hUG4fa2m9Fi3weykQdpA@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <CA+CK2bDFAi1+397fd4cYetUgmHxqE2hUG4fa2m9Fi3weykQdpA@mail.gmail.com>
+ <20231128204938.1453583-7-pasha.tatashin@soleen.com> <d99e0d4a-94a9-482b-b5b5-833cba518b86@arm.com>
+ <CA+CK2bDswtrqiOMt3+0LBb0+7nJY9aBpzZdsmrWRzy9WxBqKEg@mail.gmail.com> <79c397ee-b71b-470e-9184-401b4b96a0d2@arm.com>
+In-Reply-To: <79c397ee-b71b-470e-9184-401b4b96a0d2@arm.com>
+From: Pasha Tatashin <pasha.tatashin@soleen.com>
+Date: Tue, 28 Nov 2023 18:08:11 -0500
+Message-ID: <CA+CK2bDZUHSLWB=ec6Jdjbi+y6fD8=j96bK-kPHYKc1uiVLZWw@mail.gmail.com>
+Subject: Re: [PATCH 06/16] iommu/dma: use page allocation function provided by iommu-pages.h
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: akpm@linux-foundation.org, alex.williamson@redhat.com, 
+	alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev, 
+	baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org, 
+	corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org, 
+	heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com, 
+	jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com, joro@8bytes.org, 
+	kevin.tian@intel.com, krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
+	mhiramat@kernel.org, mst@redhat.com, m.szyprowski@samsung.com, 
+	netdev@vger.kernel.org, paulmck@kernel.org, rdunlap@infradead.org, 
+	samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev, 
+	thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com, 
+	vdumpa@nvidia.com, virtualization@lists.linux.dev, wens@csie.org, 
+	will@kernel.org, yu-cheng.yu@intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_150804_630934_3A8BB3E7 
-X-CRM114-Status: UNSURE (   6.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231128_150850_143491_8256CF69 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +100,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-11-28 10:55 pm, Pasha Tatashin wrote:
->>>                kmem_cache_free(data->l2_tables, table);
-> 
-> We only account page allocations, not subpages, however, this is
-> something I was surprised about this particular architecture of why do
-> we allocate l2 using kmem ? Are the second level tables on arm v7s
-> really sub-page in size?
+> > This is true, however, we want to account and observe the pages
+> > allocated by IOMMU subsystem for DMA buffers, as they are essentially
+> > unmovable locked pages. Should we separate IOMMU memory from KVM
+> > memory all together and add another field to /proc/meminfo, something
+> > like "iommu -> iommu pagetable and dma memory", or do we want to
+> > export DMA memory separately from IOMMU page tables?
+>
+> These are not allocated by "the IOMMU subsystem", they are allocated by
+> the DMA API. Even if you want to claim that a driver pinning memory via
+> iommu_dma_ops is somehow different from the same driver pinning the same
+> amount of memory via dma-direct when iommu.passthrough=1, it's still
+> nonsense because you're failing to account the pages which iommu_dma_ops
+> gets from CMA, dma_common_alloc_pages(), dynamic SWIOTLB, the various
+> pools, and so on.
 
-Yes, L2 tables are 1KB, so the kmem_cache could still quite easily end 
-up consuming significantly more memory than the L1 table, which is 
-usually 16KB (but could potentially be smaller depending on the config, 
-or up to 64KB with the Mediatek hacks).
+I see, IOMMU variants are used only for discontiguous allocations, and
+the common ones are defined outside of driver/iommu. Alright, I can
+remove all the changes for all no-page table related IOMMU
+allocations.
 
-Thanks,
-Robin.
+Pasha
 
 _______________________________________________
 Linux-rockchip mailing list
