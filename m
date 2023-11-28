@@ -4,48 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B17C07CA9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1037DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eGGZCOwD939UK/nbOl8Pdn9dyWNVNPOLhbvU6bKlg08=; b=F9S7j1+bWOlIok
-	J6ck3k+meYEuoHuPFTWIx6ieNLKHfF2WDkNeYg2NaUlj7LLukNNH5VnsrmB5OKVglN+rysDGjktNc
-	l6gwv/33rtMl+6pV4jOIrd0BUncVAzPq0QqHWXf6fnwJqhmWpdAvXQ0gItPdwToiKK6mWRqdydKR3
-	hotOWFv0fWbfo6WigVB1SZLZuESG/bdD2ztJbAEzTAuSqBzlBqfNEra6j/pcLxLIiYwQrGKuo2Cy+
-	6/IK5srH/QjNXnzUJ7yZw07eJ63779PfN67axddq1ssc3LS1KAoJcOo3VOaJlQVsqBcc9Z2y6OLtg
-	naILRtSxChS9p95PTECw==;
+	List-Owner; bh=RgLsM2oNjfZ3ZL3I58xwyq2Tf/+F2pJ8J/c7PeGGEvY=; b=RS634nwmmQUG8h
+	gncmkX7vpUcvmrQSkhVcL17GdvVS060XLv63vfJ0qHT3shXztySxhhHY8bETIcoN1TMEo3kb4Pl1D
+	0FhJL/v/7h2WsYgxLnbBQZ9nIOWEPTHTsUvInYtIdXpTwlcPM6mTH56CaIrn1SUT6sTsvsuby2M3m
+	RA9f9h2aFcS6I3b8IpHSUZLBOhpltgmn+KDlUQj8KYG2ZZ/GLSZrOyLlvVmwR4wJ6PMZBlYTh3Ps/
+	06JyLEjoNO7I1HvdLvJ8HJh80tUh0rYDBWzpyGjZQ0o7xiuPuL8d99u4DtOGS6kNBJ+w+hwhGYeMl
+	2Ee2lf07QrNvW0m8raeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vHC-004rse-0F;
-	Tue, 28 Nov 2023 10:25:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1r7vIF-004svZ-0R;
+	Tue, 28 Nov 2023 10:26:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vGo-004rWa-0B;
-	Tue, 28 Nov 2023 10:24:48 +0000
+	id 1r7vHc-004sID-0h;
+	Tue, 28 Nov 2023 10:25:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=PH6gvDQ430aaiQUMncrVPosuV9oj8DpHCA7u4ohN0fM=; b=Go2LIWQM1TMrCFwtxusRmtrRCs
+	MkjsNab7gqXVVaxD9EAlH13q+0RpnN7t1UwOCAz9y6DHeu2l/Qg07n5dEyXgM4X8aWkHXUS4XF1xC
+	B8cOtmtFx+3wkbkLTxBD6FHDhWC/4MQUn4TPgpi9dLirrDg1/pfvvtmRiVMOK45MBCDrIlE9mLT7V
+	QPFrhQx3i7l1CTak6whK9Ml57kNMovla86Ez/0cEmHbaVmIwYVPNZz4Md2Bmg8lS03LACMaCVQwee
+	hUUwfMgREw6PL4YFAQwWdrWvSqqfO9cWn5RZL1c9OJdSToZAEr9vop2LUWWmi3fHc8VkhQ/3n6hjF
+	klgLkyOA==;
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r7vHW-00GaEB-2G;
+	Tue, 28 Nov 2023 10:25:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 81D6A616D6;
-	Tue, 28 Nov 2023 10:24:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3DF1C433C8;
-	Tue, 28 Nov 2023 10:24:44 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 00EBBCE1ABE;
+	Tue, 28 Nov 2023 10:25:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB250C433B7;
+	Tue, 28 Nov 2023 10:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701167085;
-	bh=Cb7+GtJECRpbHHDENegVTVsqnU8i6YNms4Q3cRVoKVQ=;
+	s=k20201202; t=1701167126;
+	bh=T7BGbpPZ3AlM96tkJBI+UFTFXx2WsbuihikI0ttB014=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OPva/WilChgoM+VSzLFIT5MFl6xqdhKFbFvFw4H0HLkeqbbA1YOhIBIKSA3AdDp2k
-	 u/jJCPLv+YHFVCmZhVx8jJXy4b2MN0AJMJHZfuM/JADMy7HrI4+uNCbdbwTYIgWOiy
-	 15BGlSBpS2ddKRfKehpENZ1GA+diVt/EiyFlgputDxmNq/H2JCicUfp401g06V/Bkq
-	 dqtcQUdMr2D191B+aq0lxBoYMSB1lT764wW5uJWZemfKNB9jY0h9Wlcv85GDP5Ric2
-	 FiahcIA9tY/NeMLUVSjL8djYO3sZwqyjzowfOMhFtviUg1dwn4yXNAVl9cSXRvkNLx
-	 s2LwP2UnqFvjQ==
+	b=f/Bpu358TNzYIPG5mpFwKYmtNrkcMtijeR/lWbQf23dFAxrkGAY6QUZr6Oju6+603
+	 +pgJFt8oUqVt7m+zeVuvqKhXooUoZRm7QeBzshDJAqwvJjwwq+nNGeaAF8gNZsGCn0
+	 NUz5wuozBrE09q4FXj/TJGaniH925vhwVhimQaTsg3fyAFxBjXSVhGbSChbKRztjeD
+	 7VP129ivYXCeS5tO8/tKf3C6BxL+B29NrQ4R3rgO8DmhVIOq0siqqsMJpLuv9IqiEo
+	 txzV/R2rUjWEB2rX+YPybp78LczMd08j2/aGpf/PckoIMH1xtyUJYeH1Uwzu2nXqXo
+	 3oky2fjdPLB3g==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 28 Nov 2023 11:24:19 +0100
-Subject: [PATCH v4 08/45] drm/connector: hdmi: Create an HDMI sub-state
+Date: Tue, 28 Nov 2023 11:24:33 +0100
+Subject: [PATCH v4 22/45] drm/vc4: tests: Convert to plane creation helper
 MIME-Version: 1.0
-Message-Id: <20231128-kms-hdmi-connector-state-v4-8-c7602158306e@kernel.org>
+Message-Id: <20231128-kms-hdmi-connector-state-v4-22-c7602158306e@kernel.org>
 References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 In-Reply-To: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -61,17 +75,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4194; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Cb7+GtJECRpbHHDENegVTVsqnU8i6YNms4Q3cRVoKVQ=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y9qLeBzmdg/T0VqTcbm18xaQtO4zkxReCOh+TVSr
- sX5lM+qjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzk1GRGhn9cUzdq7Est65y0
- s/2p6btz3Dp3frluu7joV3xuq9Qa03iGf4p6O4K2sL4WUJ98KpNhttNXbqWdMrrbZvf7i7Tesl6
- RyQ8A
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2025; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=T7BGbpPZ3AlM96tkJBI+UFTFXx2WsbuihikI0ttB014=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y+xmf458dT/1RwJHv2u3WfWfF/O8vviLRbXR0kZY
+ n7akjfrO0pZGMS4GGTFFFlihM2XxJ2a9bqTjW8ezBxWJpAhDFycAjAR7nBGhnfajw78nOJ3c2Pt
+ 4mkHeiveGlioz126dtnJ3Tw9a7TXLpNn+MXUMWNuxeSDq1I7s8o0lgpOD/u5ZKto0cPTN+LKpj8
+ 3FmcBAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_022446_198320_573CA037 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20231128_102531_360589_69238F87 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,107 +102,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The next features we will need to share across drivers will need to
-store some parameters for drivers to use, such as the selected output
-format.
-
-Let's create a new connector sub-state dedicated to HDMI controllers,
-that will eventually store everything we need.
+Now that we have a plane create helper for kunit mocked drivers, let's
+convert to it in vc4.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/drm_atomic_state_helper.c | 35 +++++++++++++++++++++++++++++++
- include/drm/drm_atomic_state_helper.h     |  4 ++++
- include/drm/drm_connector.h               |  7 +++++++
- 3 files changed, 46 insertions(+)
+ drivers/gpu/drm/vc4/tests/vc4_mock_plane.c | 34 +++++++-----------------------
+ 1 file changed, 8 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_atomic_state_helper.c b/drivers/gpu/drm/drm_atomic_state_helper.c
-index 784e63d70a42..29cb64e9cf28 100644
---- a/drivers/gpu/drm/drm_atomic_state_helper.c
-+++ b/drivers/gpu/drm/drm_atomic_state_helper.c
-@@ -556,6 +556,22 @@ void drm_atomic_helper_connector_tv_reset(struct drm_connector *connector)
+diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+index 973f5f929097..14357db82238 100644
+--- a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
++++ b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+@@ -1,43 +1,25 @@
+ // SPDX-License-Identifier: GPL-2.0
+ 
+-#include <drm/drm_atomic_state_helper.h>
+-#include <drm/drm_fourcc.h>
+-#include <drm/drm_modeset_helper_vtables.h>
++#include <drm/drm_kunit_helpers.h>
+ #include <drm/drm_plane.h>
+ 
+ #include <kunit/test.h>
+ 
+ #include "vc4_mock.h"
+ 
+-static const struct drm_plane_helper_funcs vc4_dummy_plane_helper_funcs = {
+-};
+-
+-static const struct drm_plane_funcs vc4_dummy_plane_funcs = {
+-	.atomic_destroy_state	= drm_atomic_helper_plane_destroy_state,
+-	.atomic_duplicate_state	= drm_atomic_helper_plane_duplicate_state,
+-	.reset			= drm_atomic_helper_plane_reset,
+-};
+-
+-static const uint32_t vc4_dummy_plane_formats[] = {
+-	DRM_FORMAT_XRGB8888,
+-};
+-
+ struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
+ 				  enum drm_plane_type type)
+ {
+ 	struct drm_plane *plane;
+ 
+-	plane = __drmm_universal_plane_alloc(drm, sizeof(struct drm_plane), 0,
+-						 0,
+-						 &vc4_dummy_plane_funcs,
+-						 vc4_dummy_plane_formats,
+-						 ARRAY_SIZE(vc4_dummy_plane_formats),
+-						 NULL,
+-						 DRM_PLANE_TYPE_PRIMARY,
+-						 NULL);
++	KUNIT_ASSERT_EQ(test, type, DRM_PLANE_TYPE_PRIMARY);
++
++	plane = drm_kunit_helper_create_primary_plane(test, drm,
++						      NULL,
++						      NULL,
++						      NULL, 0,
++						      NULL);
+ 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
+ 
+-	drm_plane_helper_add(plane, &vc4_dummy_plane_helper_funcs);
+-
+ 	return plane;
  }
- EXPORT_SYMBOL(drm_atomic_helper_connector_tv_reset);
- 
-+/**
-+ * __drm_atomic_helper_connector_hdmi_reset() - Initializes all HDMI @drm_connector_state resources
-+ * @connector: DRM connector
-+ * @new_state: connector state to reset
-+ *
-+ * Initializes all HDMI resources from a @drm_connector_state without
-+ * actually allocating it. This is useful for HDMI drivers, in
-+ * combination with __drm_atomic_helper_connector_reset() or
-+ * drm_atomic_helper_connector_reset().
-+ */
-+void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
-+					      struct drm_connector_state *new_state)
-+{
-+}
-+EXPORT_SYMBOL(__drm_atomic_helper_connector_hdmi_reset);
-+
- /**
-  * drm_atomic_helper_connector_tv_check - Validate an analog TV connector state
-  * @connector: DRM Connector
-@@ -605,6 +621,25 @@ int drm_atomic_helper_connector_tv_check(struct drm_connector *connector,
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_tv_check);
- 
-+/**
-+ * drm_atomic_helper_connector_hdmi_check() - Helper to check HDMI connector atomic state
-+ * @connector: DRM Connector
-+ * @state: the DRM State object
-+ *
-+ * Provides a default connector state check handler for HDMI connectors.
-+ * Checks that a desired connector update is valid, and updates various
-+ * fields of derived state.
-+ *
-+ * RETURNS:
-+ * Zero on success, or an errno code otherwise.
-+ */
-+int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
-+					   struct drm_atomic_state *state)
-+{
-+	return 0;
-+}
-+EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_check);
-+
- /**
-  * __drm_atomic_helper_connector_duplicate_state - copy atomic connector state
-  * @connector: connector object
-diff --git a/include/drm/drm_atomic_state_helper.h b/include/drm/drm_atomic_state_helper.h
-index b9740edb2658..d59d2b3aef9a 100644
---- a/include/drm/drm_atomic_state_helper.h
-+++ b/include/drm/drm_atomic_state_helper.h
-@@ -71,7 +71,11 @@ void __drm_atomic_helper_connector_state_reset(struct drm_connector_state *conn_
- void __drm_atomic_helper_connector_reset(struct drm_connector *connector,
- 					 struct drm_connector_state *conn_state);
- void drm_atomic_helper_connector_reset(struct drm_connector *connector);
-+void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *connector,
-+					      struct drm_connector_state *new_state);
- void drm_atomic_helper_connector_tv_reset(struct drm_connector *connector);
-+int drm_atomic_helper_connector_hdmi_check(struct drm_connector *connector,
-+					   struct drm_atomic_state *state);
- int drm_atomic_helper_connector_tv_check(struct drm_connector *connector,
- 					 struct drm_atomic_state *state);
- void drm_atomic_helper_connector_tv_margins_reset(struct drm_connector *connector);
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 4491c4c2fb6e..000a2a156619 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -1031,6 +1031,13 @@ struct drm_connector_state {
- 	 * DRM blob property for HDR output metadata
- 	 */
- 	struct drm_property_blob *hdr_output_metadata;
-+
-+	/**
-+	 * @hdmi: HDMI-related variable and properties. Filled by
-+	 * @drm_atomic_helper_connector_hdmi_check().
-+	 */
-+	struct {
-+	} hdmi;
- };
- 
- /**
 
 -- 
 2.41.0
