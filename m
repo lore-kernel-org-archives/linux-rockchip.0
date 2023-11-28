@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78EEFC07E97
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 20:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 062F8C10DC2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 20:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h9LF7HjNRtohEl7spvIo3vUbqXvmTd3I/oeccqmGRFo=; b=sEGT2VsAncZJWs
-	4vcHlgcA5w+jPuYx6ZVIjCN4rAlQyAIphT38McxB7S0JuOZqNZymayDLTFiYIeCseKUA7aIFa47em
-	kxLbAf85O9svnsDUkiuTXbt2RfUL515j25hTqGcnq1MFeokTnZ9L3p+Q9tkwD+LoqfGA2q1wGtT5c
-	96wrmdiX+oU16E+9EK76BmxKUUF/FeqObM9RBjr2WCNAOPwpA/W5LgxeM/lcqLXeS7yi8oIuEwh47
-	jRIpP1MUWLP6UlzYqAxBNmOe7eeCcSc4XR4RB+Qgi7hAny/OF+rmgdZjuDw3QF+so+HYzQ2qAIsgb
-	c7nIgM9RqKZguYxgS/Zg==;
+	List-Owner; bh=rfEwdLO8ShTwRgmzNuybOunLPmZECIbibfZAYE18uNM=; b=WmJJDPIKEXp7Lg
+	i9hEykxNWfOS/Cwmz8k0znSAzn781Cd2b4JO+zWyY8ANBh7UY1NI2cQXryK0tZufSQKQ8EyzZ0luo
+	Vr0bqhwz61jV54hU2bTMj+Zf0NOUA6UaEZtNZzjjtp1nNfXF+IpvhTK+GRLjdlzaveU5JoB5HBMRV
+	ASU07XBoO+6BXansuL5RTsN2hfkyuBNcfVeGNrjgI3Gz0OMkDJWbMbDRFmCDSSCi8iY5L0d5pvDM6
+	FQagjZSlfuwLtb7ksffM0CQWwCNT5BYsHQ1IKgTpbkf22UztoRIsbWy4qSsbx83LgAuLRxlxjs+gd
+	beyq3E7JcAcl+aOfXARA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r851z-006IDA-0V;
-	Tue, 28 Nov 2023 20:50:07 +0000
-Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
+	id 1r851w-006I9x-0A;
+	Tue, 28 Nov 2023 20:50:04 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r851o-006I0P-14
+	id 1r851j-006HvZ-36
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Nov 2023 20:49:59 +0000
-Received: by mail-qv1-xf34.google.com with SMTP id 6a1803df08f44-67a44ee7ab3so16623776d6.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 12:49:56 -0800 (PST)
+	Tue, 28 Nov 2023 20:49:57 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-67a51ad638eso1806236d6.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 12:49:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1701204595; x=1701809395; darn=lists.infradead.org;
+        d=soleen.com; s=google; t=1701204589; x=1701809389; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=iygGvNb1KE298FiVkmeH8gdBVxeTTuJw4eGKIF/nIuM=;
-        b=Wo4ukq/sj7brKNPfNwkTy2zI3m/dIWYaf8kSWBNHK/izLGTEG3iFNNT3qcfbie4TbS
-         hrtiKp4re5e5nC9twaaNqNt4i/pgrdAmg+WI0MwYOL/a4MYgVp7Ey8nizahuDAJVoelg
-         hwSJrb/fX5uSMOpx8J+AedA2xru9Pu2nHW9xisZYOJXQNrjujEe1IIKqvveOADhXeNhK
-         tPZqf4v9HV7zJDqmAscTYs5n/R76rusje8BXE9FglYWWujRlsQMYVjKTcfmvY6pRX6UP
-         623E0zVI6dgOTqXzkYNQstfKu3udRie9RSGLZxva1hFIqhPDdSa8jJwBkhDsRLRffGSH
-         sbew==
+        bh=GuhRNW8EraGxCVOazJoq98oeC/940DRf0iOPJkOnyXY=;
+        b=m3iWfw+QWWKzVq3wv4P4IvSFyX14P5awiJ2DLf97QSscDfNQNJNQccRoLb3xLGNEjD
+         uZdLC6sOhzb+kzC/B781+LjusO8xetaQ+IcOviKisC0uZ+IA4hZOhUFULANiPJj0vMDJ
+         VNFkuXQdqmKEklByBBmHz8UtGguwirTU2UfOF8n9M8J3VSkCalUpp8Mi0VqPAL3oYGFF
+         fR5K5/JdYq0mCn6+inzopqQzEET3a4+tL0cH54h3z5lUNZk76DydfbFIf/1TKmLL8TyC
+         wUqKV6wJNeTTOaL5yj7WQ64HdGY/pOa84F9/+7KOBMdDhwY7/iJwLOHqyuf8xJ+9+9M5
+         c3bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701204595; x=1701809395;
+        d=1e100.net; s=20230601; t=1701204589; x=1701809389;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=iygGvNb1KE298FiVkmeH8gdBVxeTTuJw4eGKIF/nIuM=;
-        b=mT8TDRXyjmAipQuTF3W/BYiBOVHwcjvzd5TxFs2FLGRZVsg7RjWEhQvWn1lOuwnhNb
-         5xh7K43Huez60cEOAC29fWOuzhXxdfa0SSk0uKzwa6Rq6Q5HHeP5zuxwuRlH+R9Scxnq
-         y6dOL3COgvFfJzZ2EFGOvwt1aET7FFoKApasYgx3YhWKTkVeycd0oZ1vu42PG3XuF8dY
-         Q/v3UEoYAVZj61JTbxJQmTFSxjg8xPFIIEKV7uIXDF61+Suz8RU2ozXlfZFNybmKTJAe
-         U6s9RN5K9P5RUNxCEVxhL3Ok9SooeuYzKxRKKZlfGiiwT7cnoP6oovNOykpa3t9jaJXd
-         xB6A==
-X-Gm-Message-State: AOJu0Yx80EdPmc/H4CDWIb5UBMIV4RkvJyJw0+Qwe4nIJVfUx0321gnz
-	N0qw5uixH1fFZuSiHEOjyD8B8Q==
-X-Google-Smtp-Source: AGHT+IE0Jl3QLEggdMt0xv2T8AyvhzkahJgD3VRGmfbhI7sqHJ8Aa/AdHKiYq6E8wbv77IBFZbLYmg==
-X-Received: by 2002:ad4:5dc6:0:b0:67a:21aa:6513 with SMTP id m6-20020ad45dc6000000b0067a21aa6513mr18119809qvh.17.1701204595440;
-        Tue, 28 Nov 2023 12:49:55 -0800 (PST)
+        bh=GuhRNW8EraGxCVOazJoq98oeC/940DRf0iOPJkOnyXY=;
+        b=jJrYdZrmKG3dce7FdRJyDeu6nYiSF+HwKR0hnxxwCRmFYE8gV4wy/yeYOn/sb6fFV5
+         X/6nf8bJB3AofS04mtWvnb4ZiZdw+LftZEa6u4Twdt8o+1+h1IaP/rml/fMndZvn9cl6
+         XqH5r5oE7CsTMU/2OZ8vIBr87GdHOv0GHhHVA3bv3jDl8lsHLa8U7waP/ZYQIzw8wpMV
+         4fO3KDnnVbGfE8vr+682tMWScL3ULe61BTKGjaYcmDJo4Qo0tvtBUj6odJnH5HiyIYgd
+         tWenF/Z4AfwxQ1fR5dEHXGkvyvNQL1i1xDptvu2fp0i32WYSHkRm/QKxJgJaPc+qmkvn
+         AIOA==
+X-Gm-Message-State: AOJu0Yw3GjJafV0kwEjG4jcXLZOeyN4z+KtLQZTzdNNhKvMP8tS7l/2r
+	5pIdK6kQNeiWarP7KFXbbySXTQ==
+X-Google-Smtp-Source: AGHT+IGPu3upFAdCP6yNYmrLD/qlosIlP36YcCIt0RdR7fCBV7LNnnJ4icXgqHOsHyLuFzh/n11wOA==
+X-Received: by 2002:a05:6214:1c0b:b0:67a:4546:9895 with SMTP id u11-20020a0562141c0b00b0067a45469895mr14672496qvc.12.1701204589666;
+        Tue, 28 Nov 2023 12:49:49 -0800 (PST)
 Received: from soleen.c.googlers.com.com (55.87.194.35.bc.googleusercontent.com. [35.194.87.55])
-        by smtp.gmail.com with ESMTPSA id d11-20020a0cfe8b000000b0067a56b6adfesm1056863qvs.71.2023.11.28.12.49.54
+        by smtp.gmail.com with ESMTPSA id d11-20020a0cfe8b000000b0067a56b6adfesm1056863qvs.71.2023.11.28.12.49.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 12:49:54 -0800 (PST)
+        Tue, 28 Nov 2023 12:49:49 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alex.williamson@redhat.com,
@@ -115,17 +115,16 @@ To: akpm@linux-foundation.org,
 	wens@csie.org,
 	will@kernel.org,
 	yu-cheng.yu@intel.com
-Subject: [PATCH 15/16] vhost-vdpa: account iommu allocations
-Date: Tue, 28 Nov 2023 20:49:37 +0000
-Message-ID: <20231128204938.1453583-16-pasha.tatashin@soleen.com>
+Subject: [PATCH 09/16] iommu/iommufd: use page allocation function provided by iommu-pages.h
+Date: Tue, 28 Nov 2023 20:49:31 +0000
+Message-ID: <20231128204938.1453583-10-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.43.0.rc2.451.g8631bc7472-goog
 In-Reply-To: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
 References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_124956_404306_524C3CD7 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231128_124952_047182_0287791F 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,28 +141,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-iommu allocations should be accounted in order to allow admins to
-monitor and limit the amount of iommu memory.
+Convert iommu/iommufd/* files to use the new page allocation functions
+provided in iommu-pages.h.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 ---
- drivers/vhost/vdpa.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/iommu/iommufd/iova_bitmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/vhost/vdpa.c b/drivers/vhost/vdpa.c
-index da7ec77cdaff..a51c69c078d9 100644
---- a/drivers/vhost/vdpa.c
-+++ b/drivers/vhost/vdpa.c
-@@ -968,7 +968,8 @@ static int vhost_vdpa_map(struct vhost_vdpa *v, struct vhost_iotlb *iotlb,
- 			r = ops->set_map(vdpa, asid, iotlb);
- 	} else {
- 		r = iommu_map(v->domain, iova, pa, size,
--			      perm_to_iommu_flags(perm), GFP_KERNEL);
-+			      perm_to_iommu_flags(perm),
-+			      GFP_KERNEL_ACCOUNT);
+diff --git a/drivers/iommu/iommufd/iova_bitmap.c b/drivers/iommu/iommufd/iova_bitmap.c
+index 0a92c9eeaf7f..6b8575b93f17 100644
+--- a/drivers/iommu/iommufd/iova_bitmap.c
++++ b/drivers/iommu/iommufd/iova_bitmap.c
+@@ -253,7 +253,7 @@ struct iova_bitmap *iova_bitmap_alloc(unsigned long iova, size_t length,
+ 	bitmap->iova = iova;
+ 	bitmap->length = length;
+ 	mapped->iova = iova;
+-	mapped->pages = (struct page **)__get_free_page(GFP_KERNEL);
++	mapped->pages = iommu_alloc_page(GFP_KERNEL);
+ 	if (!mapped->pages) {
+ 		rc = -ENOMEM;
+ 		goto err;
+@@ -284,7 +284,7 @@ void iova_bitmap_free(struct iova_bitmap *bitmap)
+ 	iova_bitmap_put(bitmap);
+ 
+ 	if (mapped->pages) {
+-		free_page((unsigned long)mapped->pages);
++		iommu_free_page(mapped->pages);
+ 		mapped->pages = NULL;
  	}
- 	if (r) {
- 		vhost_iotlb_del_range(iotlb, iova, iova + size - 1);
+ 
 -- 
 2.43.0.rc2.451.g8631bc7472-goog
 
