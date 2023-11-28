@@ -4,40 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859EFC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 22:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB40C07CA9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 22:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=at8PAYlsqGHEbAhk7ffHwaxwqmx2blyLx9ogfCjmdo8=; b=udOEKE8Yrnt8vXpSpn5X3s5NWU
-	1EKAXnSVAFYx1Ejoda8KiTa9QT2shhg5E4pO1NakJ6EFQ7Nxsj+MMCIqnUsuRtmFdm6cMiHKmFR9A
-	o+9b00oCCfxp4eKF8vgcA/OToPUg37/nm1x24MXjN8YoUEYXsLrZ1k2rzGY0e8OLUjGa+ARSdWclj
-	0g7+Aw419DKE8+IzzFFPKuc8JRS7ONsi/hKG0MDawI5gY58Z7QGMWQF491BM+Un+RnCLv67fUSxrX
-	cLxIK4bzbi+hzoEgozCtVnkV1NxwfNukDUbmq7RtKOXZYhvWnTHinHDvtX1vikYMJ6c0SzPgBG75P
-	kCx8IoBg==;
+	bh=lKTzgWUXcvdtTjv1EGVZiBSDV9pT5xbRsFd8/P8b3Rs=; b=L/02Nye35v5rymosukGVqgs01z
+	ENim/lRPlrnPrt2XUnGDYVlwZ6NAGeJnowH1cTACe4/fowP4s1EnPwh43oTkoICT0if2yw/aEWplq
+	+p3GCAobblzamhnexKoNfgkqcFJVcCCigOpwNJeuVXvEcSBrAUiMx1sGu6Vd9IcCOA7+fxglhofoI
+	uQ78UzOxuvWTdXkX9ndU4m0EbrYbMab1pOkPKvfUExnflkCg0NbMokfKJoKksP+DmkLc/oS9TJ5JC
+	DLy6mLiazMRk5t+5kSSxJ8pm0f3qjnOgRNrfgfy4Wr3YIF1M5sBOwlfRhFpmiwl0Q64TYMOTdxerJ
+	iRi8ASKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r86eh-006VFR-2J;
-	Tue, 28 Nov 2023 22:34:11 +0000
+	id 1r86rK-006WFj-1l;
+	Tue, 28 Nov 2023 22:47:14 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r86ed-006VCW-2s;
-	Tue, 28 Nov 2023 22:34:09 +0000
+	id 1r86rH-006WEe-1c;
+	Tue, 28 Nov 2023 22:47:12 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B808B1FB;
-	Tue, 28 Nov 2023 14:34:48 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1C1F11FB;
+	Tue, 28 Nov 2023 14:47:56 -0800 (PST)
 Received: from [10.57.71.132] (unknown [10.57.71.132])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E2B473F6C4;
-	Tue, 28 Nov 2023 14:33:44 -0800 (PST)
-Message-ID: <d99e0d4a-94a9-482b-b5b5-833cba518b86@arm.com>
-Date: Tue, 28 Nov 2023 22:33:42 +0000
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C40BF3F6C4;
+	Tue, 28 Nov 2023 14:47:00 -0800 (PST)
+Message-ID: <8e1961c9-0359-4450-82d8-2b2fcb2c5557@arm.com>
+Date: Tue, 28 Nov 2023 22:46:59 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/16] iommu/dma: use page allocation function provided by
- iommu-pages.h
+Subject: Re: [PATCH 05/16] iommu/io-pgtable-arm-v7s: use page allocation
+ function provided by iommu-pages.h
+Content-Language: en-GB
 To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
  alex.williamson@redhat.com, alim.akhtar@samsung.com, alyssa@rosenzweig.io,
  asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com,
@@ -58,13 +59,12 @@ To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
  vdumpa@nvidia.com, virtualization@lists.linux.dev, wens@csie.org,
  will@kernel.org, yu-cheng.yu@intel.com
 References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-7-pasha.tatashin@soleen.com>
-Content-Language: en-GB
+ <20231128204938.1453583-6-pasha.tatashin@soleen.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20231128204938.1453583-7-pasha.tatashin@soleen.com>
+In-Reply-To: <20231128204938.1453583-6-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_143408_041607_5F25F163 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20231128_144711_632063_FBE4EFBB 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,60 +82,70 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 2023-11-28 8:49 pm, Pasha Tatashin wrote:
-> Convert iommu/dma-iommu.c to use the new page allocation functions
+> Convert iommu/io-pgtable-arm-v7s.c to use the new page allocation functions
 > provided in iommu-pages.h.
+> 
+> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
+> ---
+>   drivers/iommu/io-pgtable-arm-v7s.c | 9 ++++++---
+>   1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+> index 75f244a3e12d..3d494ca1f671 100644
+> --- a/drivers/iommu/io-pgtable-arm-v7s.c
+> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
+> @@ -34,6 +34,7 @@
+>   #include <linux/types.h>
+>   
+>   #include <asm/barrier.h>
+> +#include "iommu-pages.h"
+>   
+>   /* Struct accessors */
+>   #define io_pgtable_to_data(x)						\
+> @@ -255,7 +256,7 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>   		 GFP_KERNEL : ARM_V7S_TABLE_GFP_DMA;
+>   
+>   	if (lvl == 1)
+> -		table = (void *)__get_free_pages(gfp_l1 | __GFP_ZERO, get_order(size));
+> +		table = iommu_alloc_pages(gfp_l1, get_order(size));
+>   	else if (lvl == 2)
+>   		table = kmem_cache_zalloc(data->l2_tables, gfp);
 
-These have nothing to do with IOMMU pagetables, they are DMA buffers and 
-they belong to whoever called the corresponding dma_alloc_* function.
+Is it really meaningful to account the L1 table which is always 
+allocated upon initial creation, yet not the L2 tables which are 
+allocated in use?
 
 Thanks,
 Robin.
 
-> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-> ---
->   drivers/iommu/dma-iommu.c | 8 +++++---
->   1 file changed, 5 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 85163a83df2f..822adad464c2 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -31,6 +31,7 @@
->   #include <linux/vmalloc.h>
+> @@ -283,6 +284,7 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>   	}
+>   	if (lvl == 2)
+>   		kmemleak_ignore(table);
+> +
+>   	return table;
 >   
->   #include "dma-iommu.h"
-> +#include "iommu-pages.h"
->   
->   struct iommu_dma_msi_page {
->   	struct list_head	list;
-> @@ -874,7 +875,7 @@ static dma_addr_t __iommu_dma_map(struct device *dev, phys_addr_t phys,
->   static void __iommu_dma_free_pages(struct page **pages, int count)
->   {
->   	while (count--)
-> -		__free_page(pages[count]);
-> +		__iommu_free_page(pages[count]);
->   	kvfree(pages);
+>   out_unmap:
+> @@ -290,7 +292,7 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>   	dma_unmap_single(dev, dma, size, DMA_TO_DEVICE);
+>   out_free:
+>   	if (lvl == 1)
+> -		free_pages((unsigned long)table, get_order(size));
+> +		iommu_free_pages(table, get_order(size));
+>   	else
+>   		kmem_cache_free(data->l2_tables, table);
+>   	return NULL;
+> @@ -306,8 +308,9 @@ static void __arm_v7s_free_table(void *table, int lvl,
+>   	if (!cfg->coherent_walk)
+>   		dma_unmap_single(dev, __arm_v7s_dma_addr(table), size,
+>   				 DMA_TO_DEVICE);
+> +
+>   	if (lvl == 1)
+> -		free_pages((unsigned long)table, get_order(size));
+> +		iommu_free_pages(table, get_order(size));
+>   	else
+>   		kmem_cache_free(data->l2_tables, table);
 >   }
->   
-> @@ -912,7 +913,8 @@ static struct page **__iommu_dma_alloc_pages(struct device *dev,
->   			order_size = 1U << order;
->   			if (order_mask > order_size)
->   				alloc_flags |= __GFP_NORETRY;
-> -			page = alloc_pages_node(nid, alloc_flags, order);
-> +			page = __iommu_alloc_pages_node(nid, alloc_flags,
-> +							order);
->   			if (!page)
->   				continue;
->   			if (order)
-> @@ -1572,7 +1574,7 @@ static void *iommu_dma_alloc_pages(struct device *dev, size_t size,
->   
->   	page = dma_alloc_contiguous(dev, alloc_size, gfp);
->   	if (!page)
-> -		page = alloc_pages_node(node, gfp, get_order(alloc_size));
-> +		page = __iommu_alloc_pages_node(node, gfp, get_order(alloc_size));
->   	if (!page)
->   		return NULL;
->   
 
 _______________________________________________
 Linux-rockchip mailing list
