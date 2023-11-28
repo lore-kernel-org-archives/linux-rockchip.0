@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9525C10DC2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:25:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCF5C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 10:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tzP4qTkbCwNPfCDmVncLCgsTpFpBdeJeZFSfjBoFDPY=; b=2hSiruBIR+/GbA
-	1Fg5htXvcIivErTm8bPa6yH4KNXU4r6bIBoARdvteGlAhjVzgmHCWeeUydLy1ggkQReHhxkQUz83t
-	9qbwOqimGVGmjE+4/efI6+i1ZtmT6Fci4lUU8OD1oodcmwFrWKFP8zmzvqQjbwYqFase1MUc0bX84
-	UL1t5OEl2dJSAns6LsZ+2UfcvAzr2SWpisN0ICzGK629lAnb6QVECA2Vtjt7nEE3ena7EfF2IMiti
-	2CAD8gqqweGauvFv+wraiddBdTf8BycFXq5zfKszfGJgfsA97tqfmJezdj/iG4jIB2RbJyVWgUXpX
-	lj9uKzUo+n8KTH2h6/UA==;
+	List-Owner; bh=L3K18ng2x4hdWcbZHtGq+TAv0nLJ5fiADBfEKOVxCVw=; b=sjCoqhP6k8cVqi
+	Wp+atWoI0iuHJgDoQQS+w+W+C5k7Pihg0HXpCVd+m+W3hs+8wzhZyUVXRMZtcr9IIsXkt2qzTEpuw
+	FeigtI6tW87lHp31s2VnT72nHopudtzSP3MfMaWq9xapRD2qakq14P8mU/zpmZtWQMZBPP8bvmZkB
+	A3Q8BB5+2PwWiyvAOuWMjz8UCtbnRwTO9whRPpcmHYk/Q3w/VFvZQKleBVFgm7IfDnctIcDcHZld7
+	YrPNbjd7VV0GuVZYNpq7rXe99xZbmNIElxbXXOWo5VLJv6TUZrXRP7vKWilMNIkI5IJbQvMvxSgwm
+	E98pur2pk5WXp6GDpzJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vGt-004rbt-1K;
-	Tue, 28 Nov 2023 10:24:51 +0000
+	id 1r7vH7-004rp0-1e;
+	Tue, 28 Nov 2023 10:25:05 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7vGZ-004rJM-25;
-	Tue, 28 Nov 2023 10:24:33 +0000
+	id 1r7vGi-004rRL-1K;
+	Tue, 28 Nov 2023 10:24:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DCEE9616D4;
-	Tue, 28 Nov 2023 10:24:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BB85C433C8;
-	Tue, 28 Nov 2023 10:24:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D191D616CD;
+	Tue, 28 Nov 2023 10:24:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E2EAC433C7;
+	Tue, 28 Nov 2023 10:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701167070;
-	bh=GttmzrDWIK/GfBZPgJoa7M3MmKe5Xdi8JByTyUrEs+k=;
+	s=k20201202; t=1701167079;
+	bh=3X0my8D9PYgi7EcRYdh/ciCZnSzC7V4KrXKwBufu/RU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=u9JYllTCMX3DyNqCdnT8eP5XiONz5FvM7ibbDBtk7gwBCR26iV5lzZFwn3wl5Dvjs
-	 Hq2CojmuizBIEf0LSVn+2346rG98vuzoSyJoZVaCeyUEhlBh20dLZ92CWHfcAUfT6s
-	 64ghGCqlHT5hlbEZreY5gqjbMVFa65780h/Z1ZHg91dBHlYxoeqqutmJOUAeE1wnsW
-	 b0C/n8mfX9W8xW7IWT/9BUCxcsafOpjcpcsJgg2Bk4A0EWnCv5VZFJ6fM2TE207R06
-	 6pLOz32DpTkhPmbAez6F5l6DlgoFGf1egcgFAvEpuZ1zRe+sdfiwiJR4vRpNB0ZjoN
-	 gbQMimOhnmcFQ==
+	b=fdMh5m/wf1os2Twf7x9R3y/oESAVctil6OOi0TD8uMJqzgm2ucDNofyTTaqSkHupD
+	 YSnLuC2ECniJbZZHj7YtntwJ2DpmWicxvNFJo+/wtvXTX2T79ww9PHWPxfxGfyg01i
+	 pXoVueYoFt/fAFWChl6J3s0Q4lypDwqlEB4MM11ZqTPN2RXqXUGGfgvCy9/j0DQVMN
+	 ks9PX2Y5xpD2q+kS3Hty/oqBr2woV5uVyyVQk4CtdoZlaC4guFJ7l5qwV+SiEZlA3q
+	 ZuDItQ77sFqTI35wn96NlL1uKkwOkRoOxs0nAvVWKUQBzwsGvoEGJBFdazdxwPwjPQ
+	 FGzLhLfH8FPHA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 28 Nov 2023 11:24:14 +0100
-Subject: [PATCH v4 03/45] drm/tests: Add helper to create mock plane
+Date: Tue, 28 Nov 2023 11:24:17 +0100
+Subject: [PATCH v4 06/45] drm/tests: connector: Add tests for
+ drmm_connector_init
 MIME-Version: 1.0
-Message-Id: <20231128-kms-hdmi-connector-state-v4-3-c7602158306e@kernel.org>
+Message-Id: <20231128-kms-hdmi-connector-state-v4-6-c7602158306e@kernel.org>
 References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 In-Reply-To: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -61,17 +62,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
  Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4850; i=mripard@kernel.org;
- h=from:subject:message-id; bh=GttmzrDWIK/GfBZPgJoa7M3MmKe5Xdi8JByTyUrEs+k=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y/ud68R0A+5t9qt6qhWR2na6p9711pfzlzRo5uwZ
- 3Hf+fivHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZhI8XWGX8yaWY84PvM+2bVT
- bVPFrvn2U79k5710ljzPNvF8wLmQxWWMDFszn0oVCz4wDlz5+PvcJSx63zrCjUv8/kcVPohMfrq
- 1iwMA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7273; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=3X0my8D9PYgi7EcRYdh/ciCZnSzC7V4KrXKwBufu/RU=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmp+y+WV9joJ/mFc+6fInpil2zk3YA9xl3yXgukNSNrW
+ i/rpi3uKGVhEONikBVTZIkRNl8Sd2rW6042vnkwc1iZQIYwcHEKwESEtjIy/GN3fJF6asbkBW0/
+ t/98+WJ14YKDT/R6nbIrrvQlXf5zZinDP4XH06U/6K0tnNn9wsf8vabUV2/xS2nMKYrnU+9/7BS
+ YyAoA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_022431_777183_4CC022CC 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20231128_022440_539466_60AF853E 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,148 +89,255 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We're going to need a full-blown, functional, KMS device to test more
-components of the atomic modesetting infrastructure.
-
-Let's add a new helper to create a dumb, mocked, primary plane. By
-default, it will create a linear XRGB8888 plane, using the default
-helpers.
+drmm_connector_init is the preferred function to initialize a
+drm_connector structure. Let's add a bunch of unit tests for it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/tests/drm_kunit_helpers.c | 85 +++++++++++++++++++++++++++++++
- include/drm/drm_kunit_helpers.h           | 11 ++++
- 2 files changed, 96 insertions(+)
+ drivers/gpu/drm/tests/drm_connector_test.c | 219 ++++++++++++++++++++++++++++-
+ 1 file changed, 218 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/tests/drm_kunit_helpers.c b/drivers/gpu/drm/tests/drm_kunit_helpers.c
-index 272a3ba46d60..4a1559424396 100644
---- a/drivers/gpu/drm/tests/drm_kunit_helpers.c
-+++ b/drivers/gpu/drm/tests/drm_kunit_helpers.c
-@@ -3,6 +3,7 @@
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_fourcc.h>
- #include <drm/drm_kunit_helpers.h>
- #include <drm/drm_managed.h>
+diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
+index c66aa2dc8d9d..4951b5b121a2 100644
+--- a/drivers/gpu/drm/tests/drm_connector_test.c
++++ b/drivers/gpu/drm/tests/drm_connector_test.c
+@@ -3,10 +3,224 @@
+  * Kunit test for drm_modes functions
+  */
  
-@@ -236,5 +237,89 @@ drm_kunit_helper_atomic_state_alloc(struct kunit *test,
- }
- EXPORT_SYMBOL_GPL(drm_kunit_helper_atomic_state_alloc);
++#include <linux/i2c.h>
++
++#include <drm/drm_atomic_state_helper.h>
+ #include <drm/drm_connector.h>
++#include <drm/drm_drv.h>
++#include <drm/drm_kunit_helpers.h>
  
-+static const uint32_t default_plane_formats[] = {
-+	DRM_FORMAT_XRGB8888,
-+};
-+
-+static const uint64_t default_plane_modifiers[] = {
-+	DRM_FORMAT_MOD_LINEAR,
-+	DRM_FORMAT_MOD_INVALID
-+};
-+
-+static const struct drm_plane_helper_funcs default_plane_helper_funcs = {
-+};
-+
-+static const struct drm_plane_funcs default_plane_funcs = {
-+	.atomic_destroy_state	= drm_atomic_helper_plane_destroy_state,
-+	.atomic_duplicate_state	= drm_atomic_helper_plane_duplicate_state,
-+	.reset			= drm_atomic_helper_plane_reset,
-+};
-+
-+/**
-+ * drm_kunit_helper_create_primary_plane - Creates a mock primary plane for a KUnit test
-+ * @test: The test context object
-+ * @drm: The device to alloc the plane for
-+ * @funcs: Callbacks for the new plane. Optional.
-+ * @helper_funcs: Helpers callbacks for the new plane. Optional.
-+ * @formats: array of supported formats (DRM_FORMAT\_\*). Optional.
-+ * @format_count: number of elements in @formats
-+ * @modifiers: array of struct drm_format modifiers terminated by
-+ *             DRM_FORMAT_MOD_INVALID. Optional.
-+ *
-+ * This allocates and initializes a mock struct &drm_plane meant to be
-+ * part of a mock device for a KUnit test.
-+ *
-+ * Resources will be cleaned up automatically.
-+ *
-+ * @funcs will default to the default helpers implementations.
-+ * @helper_funcs will default to an empty implementation. @formats will
-+ * default to XRGB8888 only. @modifiers will default to a linear
-+ * modifier only.
-+ *
-+ * Returns:
-+ * A pointer to the new plane, or an ERR_PTR() otherwise.
-+ */
-+struct drm_plane *
-+drm_kunit_helper_create_primary_plane(struct kunit *test,
-+				      struct drm_device *drm,
-+				      const struct drm_plane_funcs *funcs,
-+				      const struct drm_plane_helper_funcs *helper_funcs,
-+				      const uint32_t *formats,
-+				      unsigned int num_formats,
-+				      const uint64_t *modifiers)
-+{
-+	struct drm_plane *plane;
-+
-+	if (!funcs)
-+		funcs = &default_plane_funcs;
-+
-+	if (!helper_funcs)
-+		helper_funcs = &default_plane_helper_funcs;
-+
-+	if (!formats || !num_formats) {
-+		formats = default_plane_formats;
-+		num_formats = ARRAY_SIZE(default_plane_formats);
-+	}
-+
-+	if (!modifiers)
-+		modifiers = default_plane_modifiers;
-+
-+	plane = __drmm_universal_plane_alloc(drm,
-+					     sizeof(struct drm_plane), 0,
-+					     0,
-+					     funcs,
-+					     formats,
-+					     num_formats,
-+					     default_plane_modifiers,
-+					     DRM_PLANE_TYPE_PRIMARY,
-+					     NULL);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
-+
-+	drm_plane_helper_add(plane, helper_funcs);
-+
-+	return plane;
-+}
-+EXPORT_SYMBOL_GPL(drm_kunit_helper_create_primary_plane);
-+
- MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
- MODULE_LICENSE("GPL");
-diff --git a/include/drm/drm_kunit_helpers.h b/include/drm/drm_kunit_helpers.h
-index 3ae19892229d..38667d624aa8 100644
---- a/include/drm/drm_kunit_helpers.h
-+++ b/include/drm/drm_kunit_helpers.h
-@@ -10,6 +10,8 @@
  #include <kunit/test.h>
  
- struct drm_device;
-+struct drm_plane_funcs;
-+struct drm_plane_helper_funcs;
- struct kunit;
- 
- struct device *drm_kunit_helper_alloc_device(struct kunit *test);
-@@ -99,4 +101,13 @@ drm_kunit_helper_atomic_state_alloc(struct kunit *test,
- 				    struct drm_device *drm,
- 				    struct drm_modeset_acquire_ctx *ctx);
- 
-+struct drm_plane *
-+drm_kunit_helper_create_primary_plane(struct kunit *test,
-+				      struct drm_device *drm,
-+				      const struct drm_plane_funcs *funcs,
-+				      const struct drm_plane_helper_funcs *helper_funcs,
-+				      const uint32_t *formats,
-+				      unsigned int num_formats,
-+				      const uint64_t *modifiers);
++struct drm_connector_init_priv {
++	struct drm_device drm;
++	struct drm_connector connector;
++	struct i2c_adapter ddc;
++};
 +
- #endif // DRM_KUNIT_HELPERS_H_
++static const struct drm_connector_funcs dummy_funcs = {
++	.atomic_destroy_state	= drm_atomic_helper_connector_destroy_state,
++	.atomic_duplicate_state	= drm_atomic_helper_connector_duplicate_state,
++	.reset			= drm_atomic_helper_connector_reset,
++};
++
++static int dummy_ddc_xfer(struct i2c_adapter *adapter,
++			  struct i2c_msg *msgs, int num)
++{
++	return num;
++}
++
++static u32 dummy_ddc_func(struct i2c_adapter *adapter)
++{
++	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
++}
++
++static const struct i2c_algorithm dummy_ddc_algorithm = {
++	.master_xfer = dummy_ddc_xfer,
++	.functionality = dummy_ddc_func,
++};
++
++static void i2c_del_adapter_wrapper(void *ptr)
++{
++	struct i2c_adapter *adap = ptr;
++
++	i2c_del_adapter(adap);
++}
++
++static int drm_test_connector_init(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv;
++	struct device *dev;
++	int ret;
++
++	dev = drm_kunit_helper_alloc_device(test);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dev);
++
++	priv = drm_kunit_helper_alloc_drm_device(test, dev,
++						 struct drm_connector_init_priv, drm,
++						 DRIVER_MODESET | DRIVER_ATOMIC);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, priv);
++
++	strscpy(priv->ddc.name, "dummy-connector-ddc", sizeof(priv->ddc.name));
++	priv->ddc.owner = THIS_MODULE;
++	priv->ddc.algo = &dummy_ddc_algorithm;
++	priv->ddc.dev.parent = dev;
++
++	ret = i2c_add_adapter(&priv->ddc);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	ret = kunit_add_action_or_reset(test, i2c_del_adapter_wrapper, &priv->ddc);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	test->priv = priv;
++	return 0;
++}
++
++/*
++ * Test that the registration of a bog standard connector works as
++ * expected and doesn't report any error.
++ */
++static void drm_test_drmm_connector_init(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, &priv->connector,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_EXPECT_EQ(test, ret, 0);
++}
++
++/*
++ * Test that the registration of a connector without a DDC adapter
++ * doesn't report any error.
++ */
++static void drm_test_drmm_connector_init_null_ddc(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, &priv->connector,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  NULL);
++	KUNIT_EXPECT_EQ(test, ret, 0);
++}
++
++/*
++ * Test that the registration of a connector without a DRM device fails.
++ */
++static void drm_test_drmm_connector_init_null_device(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_init(NULL, &priv->connector,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_EXPECT_LT(test, ret, 0);
++}
++
++/*
++ * Test that the registration of a NULL connector fails.
++ */
++static void drm_test_drmm_connector_init_null_connector(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, NULL,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_EXPECT_LT(test, ret, 0);
++}
++
++/*
++ * Test that the registration of a connector without any callbacks
++ * fails.
++ */
++static void drm_test_drmm_connector_init_null_funcs(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, &priv->connector,
++				  NULL,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_EXPECT_LT(test, ret, 0);
++}
++
++/*
++ * Test that the registration of a connector succeeds for all possible
++ * connector types.
++ */
++static void drm_test_drmm_connector_init_type_valid(struct kunit *test)
++{
++       struct drm_connector_init_priv *priv = test->priv;
++       unsigned int connector_type = *(unsigned int *)test->param_value;
++       int ret;
++
++       ret = drmm_connector_init(&priv->drm, &priv->connector,
++				 &dummy_funcs,
++				 connector_type,
++				 &priv->ddc);
++       KUNIT_EXPECT_EQ(test, ret, 0);
++}
++
++static const unsigned int drm_connector_init_type_valid_tests[] = {
++	DRM_MODE_CONNECTOR_Unknown,
++	DRM_MODE_CONNECTOR_VGA,
++	DRM_MODE_CONNECTOR_DVII,
++	DRM_MODE_CONNECTOR_DVID,
++	DRM_MODE_CONNECTOR_DVIA,
++	DRM_MODE_CONNECTOR_Composite,
++	DRM_MODE_CONNECTOR_SVIDEO,
++	DRM_MODE_CONNECTOR_LVDS,
++	DRM_MODE_CONNECTOR_Component,
++	DRM_MODE_CONNECTOR_9PinDIN,
++	DRM_MODE_CONNECTOR_DisplayPort,
++	DRM_MODE_CONNECTOR_HDMIA,
++	DRM_MODE_CONNECTOR_HDMIB,
++	DRM_MODE_CONNECTOR_TV,
++	DRM_MODE_CONNECTOR_eDP,
++	DRM_MODE_CONNECTOR_VIRTUAL,
++	DRM_MODE_CONNECTOR_DSI,
++	DRM_MODE_CONNECTOR_DPI,
++	DRM_MODE_CONNECTOR_WRITEBACK,
++	DRM_MODE_CONNECTOR_SPI,
++	DRM_MODE_CONNECTOR_USB,
++};
++
++static void drm_connector_init_type_desc(const unsigned int *type, char *desc)
++{
++	sprintf(desc, "%s", drm_get_connector_type_name(*type));
++}
++
++KUNIT_ARRAY_PARAM(drm_connector_init_type_valid,
++		  drm_connector_init_type_valid_tests,
++		  drm_connector_init_type_desc);
++
++static struct kunit_case drmm_connector_init_tests[] = {
++	KUNIT_CASE(drm_test_drmm_connector_init),
++	KUNIT_CASE(drm_test_drmm_connector_init_null_connector),
++	KUNIT_CASE(drm_test_drmm_connector_init_null_ddc),
++	KUNIT_CASE(drm_test_drmm_connector_init_null_device),
++	KUNIT_CASE(drm_test_drmm_connector_init_null_funcs),
++	KUNIT_CASE_PARAM(drm_test_drmm_connector_init_type_valid,
++			 drm_connector_init_type_valid_gen_params),
++	{ }
++};
++
++static struct kunit_suite drmm_connector_init_test_suite = {
++	.name = "drmm_connector_init",
++	.init = drm_test_connector_init,
++	.test_cases = drmm_connector_init_tests,
++};
++
+ struct drm_get_tv_mode_from_name_test {
+ 	const char *name;
+ 	enum drm_connector_tv_mode expected_mode;
+@@ -70,7 +284,10 @@ static struct kunit_suite drm_get_tv_mode_from_name_test_suite = {
+ 	.test_cases = drm_get_tv_mode_from_name_tests,
+ };
+ 
+-kunit_test_suite(drm_get_tv_mode_from_name_test_suite);
++kunit_test_suites(
++	&drmm_connector_init_test_suite,
++	&drm_get_tv_mode_from_name_test_suite
++);
+ 
+ MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
+ MODULE_LICENSE("GPL");
 
 -- 
 2.41.0
