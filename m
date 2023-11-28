@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 081A6C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 14:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B022BC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Nov 2023 17:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7TKoqEwfRP17O7rzrerdpdn5/5U0ZO453N+iOXoaPPs=; b=n9ypm4nsoyI1FF
-	5tYYqdvNakczigj2mcFi/C+5Y87bzNDVe3SsYUkM4Oxx/XS8OirgRwTCKs+tPwJe9O2tz7hXmYwMZ
-	HdIM0Uvtd7U+ZQ7mgvoa44RZ3VMaOIRj2UJXTS9NRgZoIEMO7OehiaZBYTzsvuqrj5Qn+3NodUtN2
-	lBhXmMFG+o9IIR/FBn+O/+EfRZHGTTm0t9jh2IrA7RdVEiIzGqCKH73PlR2cc+CU6TAWuDq6HsgiL
-	8pFMP5wzWLpCb8/Xh/OQm+Hg0WFAHXieKjUOQn79ZqnN4N0frV0uJZ4cnjoXTqGhVF7exTTG/zE12
-	LYnLOcpBK40OZF/8/DGw==;
+	List-Owner; bh=CfFYHU7WuCtu6aSFttKa6cYG+Aa29ZGtnOmS7Nj6Tsw=; b=wOzrfTBquOide5
+	Hgz2DjJHL2ZEM+6xB8vDem4CnTTQBGDeDIVbAbPjM9WpFAupr68LKnYcLtAfTmJ1xlTC3uT3oC8ee
+	qNZl78fZZXKWhNhc4l1HNSGYg862qSppHVQHANVBGuqCgIuHv0xBx8Ll/frvU4aDuf6nsv6PgZBMh
+	vg4MS73aFVvmi5k1qhcEhLYPNHnNisfVaUiSzdPHKWjpw0iLru3hdTuMToiHViOWOCzulEIigm/8B
+	h5rw0sdeTrJ+A8ER7ZdWFlNOOmn0mFwFhI+9ICG/NRqE1XyBZQqwLgUVxhitjLJ2zHjh4dlLmqsJS
+	719I49FE1hUjped3MOyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7zYB-005bhT-2M;
-	Tue, 28 Nov 2023 14:58:59 +0000
-Received: from mgamail.intel.com ([134.134.136.100])
+	id 1r81Rd-005sOb-1b;
+	Tue, 28 Nov 2023 17:00:21 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r7zY7-005bgo-3D;
-	Tue, 28 Nov 2023 14:58:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701183535; x=1732719535;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=MmtHq2AXw3e0z60hXa4rJ0joKeClbwyrFO4/JVmK7So=;
-  b=den1FrdvHvwJ1TmR4oA8E/48cIcrozJlqjewdrru04uweIIkljWdZn9m
-   YsaxSs4PnzvMPH7HfprbqxTPMVyjhqSMlmRMwQCvsxVqWs1avM/+/eJNW
-   jsjUCc58mlbwNiIsJtzAcnS6EZHXcdO0BIuNbYVP/mujo7OImevdAqQSh
-   ff3aCHTenIiXAppeRW+z0eSe8+YCL5LKww5dDjEQ3MzFPQ45ViKHRcjg7
-   NTaPrc62Gi8DwwJ6ssMhIwD3POS5dqWN7u+aOSziAh9Zpdh0+TOYoc6iK
-   8m80dmGbM8gzerlodiDQtYpHtKhjgPiSrxvLWThsK+tQIeeIm03TNX01R
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="459442639"
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="459442639"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Nov 2023 06:58:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; 
-   d="scan'208";a="9971128"
-Received: from lkp-server01.sh.intel.com (HELO d584ee6ebdcc) ([10.239.97.150])
-  by orviesa002.jf.intel.com with ESMTP; 28 Nov 2023 06:58:48 -0800
-Received: from kbuild by d584ee6ebdcc with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r7zXy-0007eq-14;
-	Tue, 28 Nov 2023 14:58:46 +0000
-Date: Tue, 28 Nov 2023 22:57:51 +0800
-From: kernel test robot <lkp@intel.com>
-To: Maxime Ripard <mripard@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v4 03/45] drm/tests: Add helper to create mock plane
-Message-ID: <202311282223.mefGp1S5-lkp@intel.com>
-References: <20231128-kms-hdmi-connector-state-v4-3-c7602158306e@kernel.org>
+	id 1r81Ra-005sNp-0P;
+	Tue, 28 Nov 2023 17:00:19 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40b479b9c35so16789175e9.1;
+        Tue, 28 Nov 2023 09:00:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701190810; x=1701795610; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ELFRihX3CtF7RhjnQusbjB/B/hfaZV0Nbj4a0FnBTOw=;
+        b=Iax6SrD/W6jxB82pBBQefW6pAb9bbwBwSwivimf6zBSnKyqSeimCbNoEb0gDihLkc2
+         1aRrUnF3sOw9wjOfF+RrwdIxLJei5vvyFrylbqRftF7K8B60KxT+qB9eJpSvvpSKwqlM
+         MckYBcln36zAZh2qRCE/8Ug3pCBZ3n8+oyhOPE8ALpSSXJmJqHDo7vxriakV9f+T5BLd
+         lWfYP98LHLZBTF3rSpMzvqfOOC5oggLneX8xkGnNe3RWLJnpf0VANFuyqy3PLsRBhHBX
+         Yjiw4kegslbwsmf1bnoACIPgtQm54TUDp0nkwDhGq3q6ERKJ4KfDvPMKEVGnLJoRgCM0
+         jZvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701190810; x=1701795610;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ELFRihX3CtF7RhjnQusbjB/B/hfaZV0Nbj4a0FnBTOw=;
+        b=AX4a5DaBYDPhGarSsUP2dFJwR+0NB8yGqhiSEtXaxTmmch8JgwQMv4jga3GppWHC8j
+         HRNJ+bnR50DZLSwOBiMD7gsAjz9xENC4vP+EetFjFErTUdGgztKWoFKwMoBLR50+hT7F
+         qPjsuU4dOFtCLWitqZ9Gp7wn72bSiT8S4Pg5bwJcP5EcNTMCh7saKuPhEeYy0EpjUYUU
+         6OAWJgJxJTi7RU7tWaU8AnjkSHcjSbAVebVuIEQWZ7XdkuIAVMbMJYmAJYg6I2kuh1Yw
+         92kxSDIO3QI32EU0PXl+muRjJ2LCNUbxwxDAemSO71t9t4cYE80wHs3CJ6EPDFDuGVDf
+         u0UQ==
+X-Gm-Message-State: AOJu0Yw4ozGpXV2ROw1U9p3Pqlm62caMSJ9Pjc8UNKztAWUNHjWO7XQy
+	GQLnP+QomAJ87lZp/E3qRBCw91cdZL8=
+X-Google-Smtp-Source: AGHT+IGgm/D1KmtQMgeCyY/5kKBhGpQJ2TpH2E/ZvVJuY46OvL1ykEusYln54WAR+F0TPMHS5lkZzQ==
+X-Received: by 2002:a05:600c:3b83:b0:40b:2a53:7913 with SMTP id n3-20020a05600c3b8300b0040b2a537913mr11464033wms.13.1701190810132;
+        Tue, 28 Nov 2023 09:00:10 -0800 (PST)
+Received: from localhost (p200300e41f0fa600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f0f:a600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id z12-20020a5d640c000000b00332cc7c3aaasm15618353wru.21.2023.11.28.09.00.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Nov 2023 09:00:05 -0800 (PST)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>
+Cc: linux-pwm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] pwm: Use device_get_match_data()
+Date: Tue, 28 Nov 2023 17:59:55 +0100
+Message-ID: <170119076371.215216.199281430371759022.b4-ty@gmail.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231026195417.68090-2-robh@kernel.org>
+References: <20231026195417.68090-2-robh@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231128-kms-hdmi-connector-state-v4-3-c7602158306e@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_065856_095073_C56759DC 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20231128_090018_168238_F8415885 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,108 +96,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-kernel test robot noticed the following build warnings:
+On Thu, 26 Oct 2023 14:54:17 -0500, Rob Herring wrote:
+> Use preferred device_get_match_data() instead of of_match_device() to
+> get the driver match data. With this, adjust the includes to explicitly
+> include the correct headers.
+> 
+> As these drivers only do DT based matching, of_match_device() will never
+> return NULL if we've gotten to probe(). Therefore, the NULL check and
+> error returns can be dropped.
+> 
+> [...]
 
-[auto build test WARNING on drm-misc/drm-misc-next]
-[also build test WARNING on sunxi/sunxi/for-next drm/drm-next linus/master v6.7-rc3 next-20231128]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Applied, thanks!
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Maxime-Ripard/drm-tests-helpers-Add-atomic-helpers/20231128-193409
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20231128-kms-hdmi-connector-state-v4-3-c7602158306e%40kernel.org
-patch subject: [PATCH v4 03/45] drm/tests: Add helper to create mock plane
-config: i386-buildonly-randconfig-002-20231128 (https://download.01.org/0day-ci/archive/20231128/202311282223.mefGp1S5-lkp@intel.com/config)
-compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231128/202311282223.mefGp1S5-lkp@intel.com/reproduce)
+[1/1] pwm: Use device_get_match_data()
+      commit: cf5a1a8c8e8875b3fe38835942b393cc1577da55
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311282223.mefGp1S5-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/gpu/drm/tests/drm_kunit_helpers.c:290: warning: Function parameter or member 'num_formats' not described in 'drm_kunit_helper_create_primary_plane'
->> drivers/gpu/drm/tests/drm_kunit_helpers.c:290: warning: Excess function parameter 'format_count' description in 'drm_kunit_helper_create_primary_plane'
-
-
-vim +290 drivers/gpu/drm/tests/drm_kunit_helpers.c
-
-   257	
-   258	/**
-   259	 * drm_kunit_helper_create_primary_plane - Creates a mock primary plane for a KUnit test
-   260	 * @test: The test context object
-   261	 * @drm: The device to alloc the plane for
-   262	 * @funcs: Callbacks for the new plane. Optional.
-   263	 * @helper_funcs: Helpers callbacks for the new plane. Optional.
-   264	 * @formats: array of supported formats (DRM_FORMAT\_\*). Optional.
-   265	 * @format_count: number of elements in @formats
-   266	 * @modifiers: array of struct drm_format modifiers terminated by
-   267	 *             DRM_FORMAT_MOD_INVALID. Optional.
-   268	 *
-   269	 * This allocates and initializes a mock struct &drm_plane meant to be
-   270	 * part of a mock device for a KUnit test.
-   271	 *
-   272	 * Resources will be cleaned up automatically.
-   273	 *
-   274	 * @funcs will default to the default helpers implementations.
-   275	 * @helper_funcs will default to an empty implementation. @formats will
-   276	 * default to XRGB8888 only. @modifiers will default to a linear
-   277	 * modifier only.
-   278	 *
-   279	 * Returns:
-   280	 * A pointer to the new plane, or an ERR_PTR() otherwise.
-   281	 */
-   282	struct drm_plane *
-   283	drm_kunit_helper_create_primary_plane(struct kunit *test,
-   284					      struct drm_device *drm,
-   285					      const struct drm_plane_funcs *funcs,
-   286					      const struct drm_plane_helper_funcs *helper_funcs,
-   287					      const uint32_t *formats,
-   288					      unsigned int num_formats,
-   289					      const uint64_t *modifiers)
- > 290	{
-   291		struct drm_plane *plane;
-   292	
-   293		if (!funcs)
-   294			funcs = &default_plane_funcs;
-   295	
-   296		if (!helper_funcs)
-   297			helper_funcs = &default_plane_helper_funcs;
-   298	
-   299		if (!formats || !num_formats) {
-   300			formats = default_plane_formats;
-   301			num_formats = ARRAY_SIZE(default_plane_formats);
-   302		}
-   303	
-   304		if (!modifiers)
-   305			modifiers = default_plane_modifiers;
-   306	
-   307		plane = __drmm_universal_plane_alloc(drm,
-   308						     sizeof(struct drm_plane), 0,
-   309						     0,
-   310						     funcs,
-   311						     formats,
-   312						     num_formats,
-   313						     default_plane_modifiers,
-   314						     DRM_PLANE_TYPE_PRIMARY,
-   315						     NULL);
-   316		KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
-   317	
-   318		drm_plane_helper_add(plane, helper_funcs);
-   319	
-   320		return plane;
-   321	}
-   322	EXPORT_SYMBOL_GPL(drm_kunit_helper_create_primary_plane);
-   323	
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thierry Reding <thierry.reding@gmail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
