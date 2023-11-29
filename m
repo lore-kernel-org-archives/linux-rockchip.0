@@ -4,112 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 741F0C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 07:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19DBCC07CB1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 08:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:To:From:Date:References:
-	In-Reply-To:Message-Id:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=CqYfFvt1j8ktLMIZardcJ2d6omp/aytDV0J0KAgLWW0=; b=zUIyJ/Feiq2OxTQlE9ZLWOHENa
-	araPCbblL4fBarioPsy34V67/2a3E8JqJk9jjvByotY1l4nfQlfTmfdLDba6R3JhEOjccS8xfx2MY
-	5GnAQcYvDYy9AqUyp1OsUjEKnvuDqXtiH9RCMYv6zURBWndiv4jnphdGn7+4xk+NiOhs249HWNSeB
-	xhiPEpetfcDdMcfSqzIWmkbI4ypp9ilm50bkRRJRKclGIGjILlJrsHSVLTwsQVPjNrM767Dj1TMIt
-	d6n8Qp8oFRByQsZZy9XzDANpW2l4ZOsc1jocQZozVayOwIOLuSx8PFq5mqfdXc9wzdO9dob4BwjDi
-	7rElvGAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hiaiu7wv0jM4iiHlLgkJKF1es7LXvTDLKd9OAUBLYZ4=; b=Ue9fBtW4DaMMFF
+	TJ3/N26BNxq2PNBkldLZYZi7tXyHxTd38narPBLzmsjQ6ZgkIpYdaJ9RTasRVHEH1zbJSojMY7a5a
+	auMYtE+ziGaKlQYG466XTAfkqXorqrXv5ILuFquirUKEMlBSc9GEH02sheWO6ZrR4Y9NDbSmyDSe8
+	IQbmgIoioz09SUZsClP0rlGHQxHk5yeMMlu5X8iyfat77uUjfI1e7zfK7UJ88Ca53ptmMdZ6xXCce
+	A0hkcn5yKwZQGDML/8qMTq8R+maWvj/SsDYxGxh+ArvFSWi70lZZwbe2jdfh8RdzDaJqd1Utv+qD6
+	IpjGoJOgVEXzPUPU/N5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8FKa-007Ocq-2V;
-	Wed, 29 Nov 2023 07:50:00 +0000
-Received: from new1-smtp.messagingengine.com ([66.111.4.221])
+	id 1r8Fw8-007T3M-2T;
+	Wed, 29 Nov 2023 08:28:48 +0000
+Received: from mail-m17207.xmail.ntesmail.com ([45.195.17.207])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8FKW-007Oba-2g;
-	Wed, 29 Nov 2023 07:49:58 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 9064C580A2F;
-	Wed, 29 Nov 2023 02:49:50 -0500 (EST)
-Received: from imap53 ([10.202.2.103])
-  by compute1.internal (MEProxy); Wed, 29 Nov 2023 02:49:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jannau.net; h=cc
-	:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm3; t=1701244190; x=1701251390; bh=ww
-	kE8lsdD1lmCvJ6vHeRL3ETi3+Yj2miubjiEiAIJqc=; b=WS0m9G0nx6dD9iEji/
-	fBqlaAFY/rMIvdHqXU7tZxzaCT6/WaZqN24lhBSrCWbph5RWVn8OG0wIE3vLDiA7
-	dOWPtjwm4K1LXbVSgViqbhQnGAqsI7zVo/p5C5Cc2lkcP6BvkMMbJJPRLlk6Obqn
-	AHfiWue+I4lT9KO4M5IqOwcDkJ9k3rIoOQzzkgfdeVW+FPwIkWR8otEXHsC4vN5M
-	YRFUR7qjaXjm+/zVf+gwWpzm9l6TfNicjYV48mg69Jf51d7lmUwmWy0QDMagwX+h
-	my8WMJddQ84zOCl6wx49JlxbWBkrLfSX8dsYvVyefTTM6PDNHjgdqGvgdPI98pTh
-	CeVQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm1; t=1701244190; x=1701251390; bh=wwkE8lsdD1lmC
-	vJ6vHeRL3ETi3+Yj2miubjiEiAIJqc=; b=rQPYt4rH1AA0LiTAAnJGE//YvqNCw
-	0qwLht7gsUZGiRgP8vOuUojrK3gXdkIqqQy8kh1RU6M48Z+Q1F0tnQhr+VVyl2w5
-	NmyzspDEFgY404mNlejNyplFYnmca/DQjbd3xvYN1Ln64vKHdITrMssLqBon8Ujn
-	P7Qb4qPDUzh92GrFKk6+AzOXk04amTS8z6iqjc442y/87PjOdgE3r4Ts0YSlpbOW
-	dquGLaB3VxWfcHpWrswAQY2/Rw9xn8Jq2WVIEzpZjj1/JtoUjjzbJm94BlKfxFeu
-	aDZFAe2s9qDxCwDO/RDxvPYqUWrMro5Rq5vNlH5XTTV2LcBscKUpE50kw==
-X-ME-Sender: <xms:HO1mZWwi-0PHwgZ7UGdDg2Nfu1cPQBmbtYZcjowlgAyQ0BQky2hXjA>
-    <xme:HO1mZSTMYD4qqQdTonZ8IGVDTRfv30PWEOnWS8uEzYlouq8tMUIbuyDbZitdKhK-h
-    lPnAf3-fMz25n81ToA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudeigedguddutdcutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedflfgr
-    nhhnvgcuifhruhhnrghufdcuoehjsehjrghnnhgruhdrnhgvtheqnecuggftrfgrthhtvg
-    hrnhepteeugeeltdelffetleetudejgfejieegudekleekleeifffffefgfefgfeeukeef
-    necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepjhesjh
-    grnhhnrghurdhnvght
-X-ME-Proxy: <xmx:HO1mZYWbL-dzWpMIvCrcF_hkcPxVblMr6At8rrdkDOd5QKecybyP8A>
-    <xmx:HO1mZcghfi5RLWq0pFjhso2VXNF7V40Fof9Xj8XlOYXvC_owwh5wlQ>
-    <xmx:HO1mZYDWse66_RKIUSsZ-t0CzxR6dHcZEVv_0jTO_L-qPjoGwVzSYQ>
-    <xmx:Hu1mZerEKP658mX4LK_6tKFnkmAWe_WKTSc7PfS_s-S-h8Msb1Q_lw>
-Feedback-ID: i47b949f6:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 5DF0E3640069; Wed, 29 Nov 2023 02:49:48 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-1234-gac66594aae-fm-20231122.001-gac66594a
+	id 1r8Fw4-007T0U-1u
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 Nov 2023 08:28:47 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=Qq6K9775/nBsiVQJ4BXZyTcD+50uTadoc3TZZYEurfENxFZWeUb6lsMbFlNQp19V2GWZYA4CR7hxCQq3OvlIcAU0vPsd4ja89GOqSDcbXGJKP4X37H5560HXSOmA0wNL7k8Zx7j62d7Jjn8f/YsuEsW8GUfnrtAFFvW5iYDHnQY=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=aGpoJTy0YujP1OdkZ9q++euEDnLzMZVFRb/6ZJxkj40=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 934D97801C2;
+	Wed, 29 Nov 2023 16:28:19 +0800 (CST)
+Message-ID: <40b9e4cf-620c-4c7c-8e70-8959dec755c8@rock-chips.com>
+Date: Wed, 29 Nov 2023 16:28:19 +0800
 MIME-Version: 1.0
-Message-Id: <ca7a025d-8154-4509-b8ab-2a17e53ccbef@app.fastmail.com>
-In-Reply-To: <20231128204938.1453583-5-pasha.tatashin@soleen.com>
-References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-5-pasha.tatashin@soleen.com>
-Date: Wed, 29 Nov 2023 08:49:18 +0100
-From: "Janne Grunau" <j@jannau.net>
-To: "Pasha Tatashin" <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
- alex.williamson@redhat.com, alim.akhtar@samsung.com,
- "Alyssa Rosenzweig" <alyssa@rosenzweig.io>, asahi@lists.linux.dev,
- "Lu Baolu" <baolu.lu@linux.intel.com>, bhelgaas@google.com,
- cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
- "David Woodhouse" <dwmw2@infradead.org>, hannes@cmpxchg.org,
- heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com,
- jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com,
- "Joerg Roedel" <joro@8bytes.org>, "Kevin Tian" <kevin.tian@intel.com>,
- krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
- "Hector Martin" <marcan@marcan.st>, mhiramat@kernel.org, mst@redhat.com,
- m.szyprowski@samsung.com, netdev@vger.kernel.org, paulmck@kernel.org,
- rdunlap@infradead.org, "Robin Murphy" <robin.murphy@arm.com>,
- samuel@sholland.org, suravee.suthikulpanit@amd.com,
- "Sven Peter" <sven@svenpeter.dev>, thierry.reding@gmail.com,
- tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com,
- virtualization@lists.linux.dev, wens@csie.org,
- "Will Deacon" <will@kernel.org>, yu-cheng.yu@intel.com
-Subject: Re: [PATCH 04/16] iommu/io-pgtable-dart: use page allocation function provided
- by iommu-pages.h
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 10/12] drm/rockchip: vop2: Add support for rk3588
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com
+References: <20231122125316.3454268-1-andyshrk@163.com>
+ <20231122125544.3454918-1-andyshrk@163.com>
+ <20231127111937.GW3359458@pengutronix.de>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20231127111937.GW3359458@pengutronix.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0waS1YYHRhOSR1IQkxLH0xVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8c1a317c5cb24fkuuu934d97801c2
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mxg6SAw5Pzw#LBNRVhRPUTEw
+	Sz4wCyxVSlVKTEtKSU9NTktLTktDVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0lNSjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_234956_960223_D2A58CF3 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20231129_002845_154480_AFDF960B 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,131 +75,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hej,
+Hi Sascha,
 
-On Tue, Nov 28, 2023, at 21:49, Pasha Tatashin wrote:
-> Convert iommu/io-pgtable-dart.c to use the new page allocation functions
-> provided in iommu-pages.h.
+On 11/27/23 19:19, Sascha Hauer wrote:
+> Hi Andy,
 >
-> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-> ---
->  drivers/iommu/io-pgtable-dart.c | 37 +++++++++++++--------------------
->  1 file changed, 14 insertions(+), 23 deletions(-)
+> Looks good overall, two small things inside.
 >
-> diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
-> index 74b1ef2b96be..ad28031e1e93 100644
-> --- a/drivers/iommu/io-pgtable-dart.c
-> +++ b/drivers/iommu/io-pgtable-dart.c
-> @@ -23,6 +23,7 @@
->  #include <linux/types.h>
-> 
->  #include <asm/barrier.h>
-> +#include "iommu-pages.h"
-> 
->  #define DART1_MAX_ADDR_BITS	36
-> 
-> @@ -106,18 +107,12 @@ static phys_addr_t iopte_to_paddr(dart_iopte pte,
->  	return paddr;
->  }
-> 
-> -static void *__dart_alloc_pages(size_t size, gfp_t gfp,
-> -				    struct io_pgtable_cfg *cfg)
-> +static void *__dart_alloc_pages(size_t size, gfp_t gfp)
->  {
->  	int order = get_order(size);
-> -	struct page *p;
-> 
->  	VM_BUG_ON((gfp & __GFP_HIGHMEM));
-> -	p = alloc_pages(gfp | __GFP_ZERO, order);
-> -	if (!p)
-> -		return NULL;
-> -
-> -	return page_address(p);
-> +	return iommu_alloc_pages(gfp, order);
->  }
-> 
->  static int dart_init_pte(struct dart_io_pgtable *data,
-> @@ -262,13 +257,13 @@ static int dart_map_pages(struct io_pgtable_ops 
-> *ops, unsigned long iova,
-> 
->  	/* no L2 table present */
->  	if (!pte) {
-> -		cptep = __dart_alloc_pages(tblsz, gfp, cfg);
-> +		cptep = __dart_alloc_pages(tblsz, gfp);
->  		if (!cptep)
->  			return -ENOMEM;
-> 
->  		pte = dart_install_table(cptep, ptep, 0, data);
->  		if (pte)
-> -			free_pages((unsigned long)cptep, get_order(tblsz));
-> +			iommu_free_pages(cptep, get_order(tblsz));
-> 
->  		/* L2 table is present (now) */
->  		pte = READ_ONCE(*ptep);
-> @@ -419,8 +414,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
-> *cfg, void *cookie)
->  	cfg->apple_dart_cfg.n_ttbrs = 1 << data->tbl_bits;
-> 
->  	for (i = 0; i < cfg->apple_dart_cfg.n_ttbrs; ++i) {
-> -		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL,
-> -					   cfg);
-> +		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL);
->  		if (!data->pgd[i])
->  			goto out_free_data;
->  		cfg->apple_dart_cfg.ttbr[i] = virt_to_phys(data->pgd[i]);
-> @@ -429,9 +423,10 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
-> *cfg, void *cookie)
->  	return &data->iop;
-> 
->  out_free_data:
-> -	while (--i >= 0)
-> -		free_pages((unsigned long)data->pgd[i],
-> -			   get_order(DART_GRANULE(data)));
-> +	while (--i >= 0) {
-> +		iommu_free_pages(data->pgd[i],
-> +				 get_order(DART_GRANULE(data)));
-> +	}
->  	kfree(data);
->  	return NULL;
->  }
-> @@ -439,6 +434,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
-> *cfg, void *cookie)
->  static void apple_dart_free_pgtable(struct io_pgtable *iop)
->  {
->  	struct dart_io_pgtable *data = io_pgtable_to_data(iop);
-> +	int order = get_order(DART_GRANULE(data));
->  	dart_iopte *ptep, *end;
->  	int i;
-> 
-> @@ -449,15 +445,10 @@ static void apple_dart_free_pgtable(struct 
-> io_pgtable *iop)
->  		while (ptep != end) {
->  			dart_iopte pte = *ptep++;
-> 
-> -			if (pte) {
-> -				unsigned long page =
-> -					(unsigned long)iopte_deref(pte, data);
-> -
-> -				free_pages(page, get_order(DART_GRANULE(data)));
-> -			}
-> +			if (pte)
-> +				iommu_free_pages(iopte_deref(pte, data), order);
->  		}
-> -		free_pages((unsigned long)data->pgd[i],
-> -			   get_order(DART_GRANULE(data)));
-> +		iommu_free_pages(data->pgd[i], order);
->  	}
-> 
->  	kfree(data);
+> On Wed, Nov 22, 2023 at 08:55:44PM +0800, Andy Yan wrote:
+>>   
+>> +#define vop2_output_if_is_hdmi(x)	(x == ROCKCHIP_VOP2_EP_HDMI0 || x == ROCKCHIP_VOP2_EP_HDMI1)
+>> +#define vop2_output_if_is_dp(x)		(x == ROCKCHIP_VOP2_EP_DP0 || x == ROCKCHIP_VOP2_EP_DP1)
+>> +#define vop2_output_if_is_edp(x)	(x == ROCKCHIP_VOP2_EP_EDP0 || x == ROCKCHIP_VOP2_EP_EDP1)
+>> +#define vop2_output_if_is_mipi(x)	(x == ROCKCHIP_VOP2_EP_MIPI0 || x == ROCKCHIP_VOP2_EP_MIPI1)
+>> +#define vop2_output_if_is_lvds(x)	(x == ROCKCHIP_VOP2_EP_LVDS0 || x == ROCKCHIP_VOP2_EP_LVDS1)
+>> +#define vop2_output_if_is_dpi(x)	(x == ROCKCHIP_VOP2_EP_RGB0)
+> Not that it matters in practice here, but you should add braces around
+> the x argument in the macros usage, i.e. ((x) == ROCKCHIP_VOP2_EP_RGB0)
+Okay , will do.
+>> +static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
+>> +{
+>> +	struct vop2 *vop2 = vp->vop2;
+>> +	int dclk_core_div, dclk_out_div, if_pixclk_div, if_dclk_div;
+>> +	unsigned long clock;
+>> +	u32 die, dip, div, vp_clk_div, val;
+>> +
+>> +	clock = rk3588_calc_cru_cfg(vp, id, &dclk_core_div, &dclk_out_div,
+>> +				    &if_pixclk_div, &if_dclk_div);
+>> +	if (!clock)
+>> +		return 0;
+>> +
+>> +	vp_clk_div = FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_CORE_DIV, dclk_core_div);
+>> +	vp_clk_div |= FIELD_PREP(RK3588_VP_CLK_CTRL__DCLK_OUT_DIV, dclk_out_div);
+>> +
+>> +	die = vop2_readl(vop2, RK3568_DSP_IF_EN);
+>> +	dip = vop2_readl(vop2, RK3568_DSP_IF_POL);
+>> +	div = vop2_readl(vop2, RK3568_DSP_IF_CTRL);
+>> +
+>> +	switch (id) {
+>> +	case ROCKCHIP_VOP2_EP_HDMI0:
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV, if_dclk_div);
+> you should clear the bits of a mask before setting them again. The same
+> goes for several other bits modified in this switch/case.
 
-Reviewed-by: Janne Grunau <j@jannau.net>
 
-Janne
+Thanks for catching this, will fixed in next version.
+
+>
+>> +		div |= FIELD_PREP(RK3588_DSP_IF_EDP_HDMI0_PCLK_DIV, if_pixclk_div);
+>> +		die &= ~RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX;
+>> +		die |= RK3588_SYS_DSP_INFACE_EN_HDMI0 |
+>> +			    FIELD_PREP(RK3588_SYS_DSP_INFACE_EN_EDP_HDMI0_MUX, vp->id);
+>> +		val = rk3588_get_hdmi_pol(polflags);
+>> +		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, HIWORD_UPDATE(1, 1, 1));
+>> +		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0, HIWORD_UPDATE(val, 6, 5));
+>> +		break;
+> Sascha
+>
 
 _______________________________________________
 Linux-rockchip mailing list
