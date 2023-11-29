@@ -4,110 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5FBDC46CA3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 00:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9EE3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 06:53:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HT69WyQUUhKM706ADMs+2BaPdiqyTltlrc4Ju8SE2f8=; b=ayo9WAJdKsomUZ
-	2TbysKqeuaJkRjU5oMisN7HeeXpywltQ34G2U9g9Os4QUsMuYWuqf9NZehT3GwG05kqEykmKcbEB5
-	p3HVC+B+v/ywEHI/qIJE2MD/cQO/ePMdhNrC6fmst+NQZQmKW4mi3ONd/LUeCPYnTSQYUGjrZq2PH
-	y39o25A00vxZxUBqWjWPTnBWMhT4WJMYCpFHUOe+7dsRvvbRLNCSivQFKTDJC/cRRtbBYEDlccSwv
-	zvuiGlRmpXoBvQA1Dm0fdGAyTQ2+JmiWZLtySuIF2LiAF3zpca1srfUBIa6UODDnroSQ9hT7QuR1x
-	IEoaBbAz5+qci1bXRhAQ==;
+	List-Owner; bh=M0pFmQSyK3/UNvnsn37209elFyYy+5FzmBNxay9hA2k=; b=xo6PwYO/qMN/Wc
+	yj3NRgdKbuxkI4af0b9CPWUdcXfkaASFq5eSPblz4NVeSRpCbgzLhmM0GGDwm+O5iedV+5tmbk3eO
+	fuq6lLrI9ETUixXrLiS8wzuXDaSe+M8rQ7do8QDHKRmV7tfZLR8NlN1t9Uz864DfPJcpN+UFAvlIx
+	v3fVMfo+G+E3wN6Ny5E7pP9cUQ6pqHRXYJNJTIoYHHoAkN6kNiCv0ZvbX3SEIAYpcL+KEy33vRtZr
+	/FvEXJVx2JgRYUocEkf+obzHgqQvxEQzSDLbX2oVrWzrVGK6X4h8JChp2WXRW+RAHgapkd54QIC6X
+	LH8iP2m+XCdFgjYYmkBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r88qv-006jgH-2A;
-	Wed, 29 Nov 2023 00:54:57 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+	id 1r8ES9-007HP1-0w;
+	Wed, 29 Nov 2023 06:53:45 +0000
+Received: from mail-m118111.qiye.163.com ([115.236.118.111])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r88qr-006jeR-2z
+	id 1r8ES6-007HLZ-1d
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Nov 2023 00:54:56 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-1fa289a3b6aso2221002fac.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Nov 2023 16:54:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1701219291; x=1701824091; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=KD7A1Mi78WcdpTbacYeqydWRhhJC6MIZ9wADFHK3ceE=;
-        b=dVhn48ashxOwhheNv1aXui6jrslEhZRIeJaYbDW7oxTdGY/WesB1z171DWKJLW4X7N
-         0jlHRrpOQpLqC8eeUMtghKciAPmMJ96e3jS0jHq0aOvX04sffP6dzZdSui/xp3Q2HYC8
-         QIH19N938gma0cTAJh/nPyDbJvPglJMN0i0Y0q/b6B4HOD1+ZK9iybGUcvby0kFqg+Uh
-         Lw6K2wRLw+xkAu9H4C7DGuwRRIR59c9Elvv4PTkcBimXdCiJz3xd0uUsehFAyqDkKUf2
-         9Vmdamucf5K6Rsv1spOz9iKrZgKOobZpZZK2PHJcu4olXMLmdjbCwkmDB7R0Fln9b3Tc
-         Ug5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701219291; x=1701824091;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=KD7A1Mi78WcdpTbacYeqydWRhhJC6MIZ9wADFHK3ceE=;
-        b=tyRvIy/79vN/x6toHxfnjNlRSVNeIAJ1aLiYsjROS+PO4dGdGbvKYyL/aFIGH0Vg34
-         AvPYY4OgTn0+Y34mtJzohE1RUiuiTmWSWxL4MZJRtcljw4i7TKisVtjRfhE7S/zkctoN
-         2ZhC9KLOhMp2BCVNLCXqTu8fY6hdPjkzpw2Vm+XY+9Gus7Hc4ALVUI6U1LMxB2zDDqcT
-         J6Ehd7UevmrgRP+1HBm2zDto48KuQQfDdfK4Ih0jcgOX9OVSTfWWzm4IdbueogLfxBDH
-         OO9C96W+33z3pfVvZrCkstVGaHtBPpIPsPcQ4uLjzqc/8Rb0CTVVoOgNzArd971FEUIT
-         U2Ew==
-X-Gm-Message-State: AOJu0YzsIDOSBM1UzGTHFxX8Ird44rJuwWEkX3n+doSBDH0Gf/FQW874
-	2C16GYuAkux8x2uUKIhbtVSgKA==
-X-Google-Smtp-Source: AGHT+IGKiwEuykqxh29J1y1VqvKSA4pC1uEUHtE7SoQBvdHo0iXpRqPiFg8DX/ZmKtSwphh/2Jx77g==
-X-Received: by 2002:a05:6870:c690:b0:1fa:2f8:c734 with SMTP id cv16-20020a056870c69000b001fa02f8c734mr16951479oab.5.1701219291679;
-        Tue, 28 Nov 2023 16:54:51 -0800 (PST)
-Received: from ziepe.ca (hlfxns017vw-142-134-23-187.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.134.23.187])
-        by smtp.gmail.com with ESMTPSA id b1-20020a056830344100b006d81e704023sm945291otu.2.2023.11.28.16.54.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 16:54:51 -0800 (PST)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1r88qo-005kIY-2m;
-	Tue, 28 Nov 2023 20:54:50 -0400
-Date: Tue, 28 Nov 2023 20:54:50 -0400
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Yosry Ahmed <yosryahmed@google.com>
-Cc: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
-	alex.williamson@redhat.com, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jasowang@redhat.com,
-	jernej.skrabec@gmail.com, jonathanh@nvidia.com, joro@8bytes.org,
-	kevin.tian@intel.com, krzysztof.kozlowski@linaro.org,
-	kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, mst@redhat.com,
-	m.szyprowski@samsung.com, netdev@vger.kernel.org,
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
-	samuel@sholland.org, suravee.suthikulpanit@amd.com,
-	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com,
-	virtualization@lists.linux.dev, wens@csie.org, will@kernel.org,
-	yu-cheng.yu@intel.com
-Subject: Re: [PATCH 00/16] IOMMU memory observability
-Message-ID: <20231129005450.GH1312390@ziepe.ca>
-References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <CAJD7tkb1FqTqwONrp2nphBDkEamQtPCOFm0208H3tp0Gq2OLMQ@mail.gmail.com>
- <CA+CK2bB3nHfu1Z6_6fqN3YTAzKXMiJ12MOWpbs8JY7rQo4Fq0g@mail.gmail.com>
- <CAJD7tkZZNhf4KGV+7N+z8NFpJrvyeNudXU-WdVeE8Rm9pobfgQ@mail.gmail.com>
- <20231128235214.GD1312390@ziepe.ca>
- <CAJD7tkbbq6bHtPn7yE3wSS693OSthh1eBDvF-_MWZfDMXDYPKw@mail.gmail.com>
- <20231129002826.GG1312390@ziepe.ca>
- <CAJD7tkbxhK7XFcf7h+XE2poNuOsFBQFrxZyeFr=9DoEG_acssA@mail.gmail.com>
+	Wed, 29 Nov 2023 06:53:44 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=BGYVZATQB6lTahhv420xh9G/Uxq5CQrrNTWhRt7vbpKAoczsUpZwYQ2N3vDEJfKqV+pdvlC4UKyIcyrtTnmPT+It97feALmocPJgXkwViY181JJaSyFTMPC0hsdWUkvPucVkNtKCK5HnVeGe2DiByNVJDQ7dl3NAXjCfcOBeYdM=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Kp7KhheW6iIZn3I5ex3GwoD360GOF4bAbDlX84aX464=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 0F87B780201;
+	Wed, 29 Nov 2023 14:52:56 +0800 (CST)
+Message-ID: <9cdedbb6-67c0-4c43-9f82-629504aae933@rock-chips.com>
+Date: Wed, 29 Nov 2023 14:52:55 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJD7tkbxhK7XFcf7h+XE2poNuOsFBQFrxZyeFr=9DoEG_acssA@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 05/12] drm/rockchip: vop2: Set YUV/RGB overlay mode
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com
+References: <20231122125316.3454268-1-andyshrk@163.com>
+ <20231122125438.3454608-1-andyshrk@163.com>
+ <20231127141632.GF977968@pengutronix.de>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20231127141632.GF977968@pengutronix.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkYQlZLHU5KTENDTR8ZShhVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8c19da26c7b24fkuuu0f87b780201
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ME06PDo4CDwxSxw8HRcKODoL
+	HQgaCjxVSlVKTEtKSU9LTExNQkJOVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBTUpOQzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_165453_964761_112AE8FE 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20231128_225342_719443_30B2F818 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,43 +75,137 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBOb3YgMjgsIDIwMjMgYXQgMDQ6MzA6MjdQTSAtMDgwMCwgWW9zcnkgQWhtZWQgd3Jv
-dGU6Cj4gT24gVHVlLCBOb3YgMjgsIDIwMjMgYXQgNDoyOOKAr1BNIEphc29uIEd1bnRob3JwZSA8
-amdnQHppZXBlLmNhPiB3cm90ZToKPiA+Cj4gPiBPbiBUdWUsIE5vdiAyOCwgMjAyMyBhdCAwNDoy
-NTowM1BNIC0wODAwLCBZb3NyeSBBaG1lZCB3cm90ZToKPiA+Cj4gPiA+ID4gPiBSaWdodCwgYnV0
-IGFzIEkgbWVudGlvbiBhYm92ZSwgaWYgdXNlcnNwYWNlIHN0YXJ0cyBkZXBlbmRpbmcgb24gdGhp
-cwo+ID4gPiA+ID4gZXF1YXRpb24sIHdlIHdvbid0IGJlIGFibGUgdG8gYWRkIGFueSBtb3JlIGNs
-YXNzZXMgb2YgInNlY29uZGFyeSIgcGFnZQo+ID4gPiA+ID4gdGFibGVzIHRvIFNlY1BhZ2VUYWJs
-ZXMuIEknZCBsaWtlIHRvIGF2b2lkIHRoYXQgaWYgcG9zc2libGUuIFdlIGNhbiBkbwo+ID4gPiA+
-ID4gdGhlIHN1YnRyYWN0aW9uIGluIHRoZSBrZXJuZWwuCj4gPiA+ID4KPiA+ID4gPiBXaGF0IFNl
-YW4gaGFkIHN1Z2dlc3RlZCB3YXMgdGhhdCBTZWNQYWdlVGFibGVzIHdhcyBhbHdheXMgaW50ZW5k
-ZWQgdG8KPiA+ID4gPiBhY2NvdW50IGFsbCB0aGUgbm9uLXByaW1hcnkgbW11IG1lbW9yeSB1c2Vk
-IGJ5IHBhZ2UgdGFibGVzLiBJZiB0aGlzIGlzCj4gPiA+ID4gdGhlIGNhc2Ugd2Ugc2hvdWxkbid0
-IGJlIHRyeWluZyB0byBicmVhayBpdCBhcGFydCBpbnRvIGZpbmVyCj4gPiA+ID4gY291bnRlcnMu
-IFRoZXNlIGFyZSBiaWcgcGljdHVyZSBjb3VudGVycywgbm90IGRldGFpbGVkIGFsbG9jYXRpb24g
-YnkKPiA+ID4gPiBvd25lciBjb3VudGVycy4KPiA+ID4KPiA+ID4gUmlnaHQsIEkgYWdyZWUgd2l0
-aCB0aGF0LCBidXQgaWYgU2VjUGFnZVRhYmxlcyBpbmNsdWRlcyBwYWdlIHRhYmxlcwo+ID4gPiBm
-cm9tIG11bHRpcGxlIHNvdXJjZXMsIGFuZCBpdCBpcyBvYnNlcnZlZCB0byBiZSBzdXNwaWNpb3Vz
-bHkgaGlnaCwgdGhlCj4gPiA+IGxvZ2ljYWwgbmV4dCBzdGVwIGlzIHRvIHRyeSB0byBmaW5kIHRo
-ZSBjdWxwcml0LCByaWdodD8KPiA+Cj4gPiBZb3UgY2FuIG1ha2UgdGhhdCBjYXNlIGFscmVhZHks
-IGlmIGl0IGlzIGhpZ2ggd291bGRuJ3QgeW91IHdhbnQgdG8KPiA+IGZpbmQgdGhlIGV4YWN0IFZN
-TSBwcm9jZXNzIHRoYXQgd2FzIG1ha2luZyBpdCBoaWdoPwo+ID4KPiA+IEl0IGlzIGEgc2lnbiBv
-ZiBmaXJlLCBub3QgYSBkZXRhaWxlZCBkZWJ1ZyB0b29sLgo+IAo+IEZhaXIgZW5vdWdoLiBXZSBj
-YW4gYWx3YXlzIGFkZCBzZXBhcmF0ZSBjb3VudGVycyBsYXRlciBpZiBuZWVkZWQsCj4gcG90ZW50
-aWFsbHkgdW5kZXIgS1ZNIHN0YXRzIHRvIGdldCBtb3JlIGZpbmUtZ3JhaW5lZCBkZXRhaWxzIGFz
-IHlvdQo+IG1lbnRpb25lZC4KPiAKPiBJIGFtIG9ubHkgd29ycmllZCBhYm91dCB1c2VycyBzdWJ0
-cmFjdGluZyB0aGUgaW9tbXUtb25seSBjb3VudGVyIHRvCj4gZ2V0IGEgS1ZNIGNvdW50ZXIuIFdl
-IHNob3VsZCBhdCBsZWFzdCBkb2N1bWVudCB0aGF0ICBTZWNQYWdlVGFibGVzIG1heQo+IGJlIGV4
-cGFuZGVkIHRvIGluY2x1ZGUgb3RoZXIgc291cmNlcyBsYXRlciB0byBhdm9pZCB0aGF0LgoKV2Vs
-bCwgd2UganVzdCBicm9rZSBpdCBhbHJlYWR5LCBhbnlvbmUgdGhpbmtpbmcgaXQgd2FzIG9ubHkg
-a3ZtCmNvdW50ZXJzIGlzIGdvaW5nIHRvIGJlIHNhZCBub3cgOikgQXMgSSB1bmRlcnN0YW5kIGl0
-IHdhcyBhbHJlYWR5CmRlc2NyaWJlZCB0byBiZSBtb3JlIGdlbmVyYWwgdGhhdCBrdm0gc28gcHJv
-YmFibHkgbm90aGluZyB0byBkbyByZWFsbHkKCkphc29uCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Sasha:
+
+On 11/27/23 22:16, Sascha Hauer wrote:
+> On Wed, Nov 22, 2023 at 08:54:38PM +0800, Andy Yan wrote:
+>> From: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> Set overlay mode register according to the
+>> output mode is yuv or rgb.
+>>
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>> ---
+>>
+>> (no changes since v1)
+>>
+>>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |  1 +
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 19 ++++++++++++++++---
+>>   2 files changed, 17 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+>> index 3d8ab2defa1b..7a58c5c9d4ec 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+>> @@ -51,6 +51,7 @@ struct rockchip_crtc_state {
+>>   	u32 bus_format;
+>>   	u32 bus_flags;
+>>   	int color_space;
+>> +	bool yuv_overlay;
+> This struct already contains a bool type variable. Please add this one
+> next to it to keep the struct size smaller.
+
+
+Okay, will do.
+
+>
+>>   };
+>>   #define to_rockchip_crtc_state(s) \
+>>   		container_of(s, struct rockchip_crtc_state, base)
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> index a019cc9bbd54..b32a291c5caa 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>> @@ -1612,6 +1612,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+>>   
+>>   	vop2->enable_count++;
+>>   
+>> +	vcstate->yuv_overlay = is_yuv_output(vcstate->bus_format);
+>> +
+>>   	vop2_crtc_enable_irq(vp, VP_INT_POST_BUF_EMPTY);
+>>   
+>>   	polflags = 0;
+>> @@ -1639,7 +1641,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+>>   	if (vop2_output_uv_swap(vcstate->bus_format, vcstate->output_mode))
+>>   		dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_RB_SWAP;
+>>   
+>> -	if (is_yuv_output(vcstate->bus_format))
+>> +	if (vcstate->yuv_overlay)
+>>   		dsp_ctrl |= RK3568_VP_DSP_CTRL__POST_DSP_OUT_R2Y;
+>>   
+>>   	vop2_dither_setup(crtc, &dsp_ctrl);
+>> @@ -1948,10 +1950,12 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
+>>   	u16 hdisplay;
+>>   	u32 bg_dly;
+>>   	u32 pre_scan_dly;
+>> +	u32 ovl_ctrl;
+>>   	int i;
+>>   	struct vop2_video_port *vp0 = &vop2->vps[0];
+>>   	struct vop2_video_port *vp1 = &vop2->vps[1];
+>>   	struct vop2_video_port *vp2 = &vop2->vps[2];
+>> +	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(vp->crtc.state);
+>>   
+>>   	adjusted_mode = &vp->crtc.state->adjusted_mode;
+>>   	hsync_len = adjusted_mode->crtc_hsync_end - adjusted_mode->crtc_hsync_start;
+>> @@ -1964,7 +1968,14 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
+>>   	pre_scan_dly = ((bg_dly + (hdisplay >> 1) - 1) << 16) | hsync_len;
+>>   	vop2_vp_write(vp, RK3568_VP_PRE_SCAN_HTIMING, pre_scan_dly);
+>>   
+>> -	vop2_writel(vop2, RK3568_OVL_CTRL, 0);
+>> +	ovl_ctrl = vop2_readl(vop2, RK3568_OVL_CTRL);
+>> +	if (vcstate->yuv_overlay)
+>> +		ovl_ctrl |= BIT(vp->id);
+>> +	else
+>> +		ovl_ctrl &= ~BIT(vp->id);
+> Some
+>
+> #define RK3568_OVL_CTRL__YUV_MODE(vp)	BIT(vp)
+>
+> Would be nice.
+
+
+Okay, will do.
+
+>> +
+>> +	vop2_writel(vop2, RK3568_OVL_CTRL, ovl_ctrl);
+> Is it necessary to write this register twice?
+
+I don't think so. Just follow the original code write it here.
+
+Anyway, I will just write once in next version.
+
+
+And would you please check my response about debugfs patch[0] when it is convenient for you?
+
+I want to know what you think, and prepare the next version.
+
+
+[0]https://patchwork.kernel.org/project/dri-devel/patch/20231122125601.3455031-1-andyshrk@163.com/
+
+>
+>> +
+>>   	port_sel = vop2_readl(vop2, RK3568_OVL_PORT_SEL);
+>>   	port_sel &= RK3568_OVL_PORT_SEL__SEL_PORT;
+>>   
+>> @@ -2036,9 +2047,11 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
+>>   		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(nlayer + ofs, 5);
+>>   	}
+>>   
+>> +	ovl_ctrl |= RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD;
+>> +
+>>   	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
+>>   	vop2_writel(vop2, RK3568_OVL_PORT_SEL, port_sel);
+>> -	vop2_writel(vop2, RK3568_OVL_CTRL, RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD);
+>> +	vop2_writel(vop2, RK3568_OVL_CTRL, ovl_ctrl);
+> Sascha
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
