@@ -4,63 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF85AC07E97
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 09:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B424AC4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 09:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cJLJQy/u64VOFvXm6iYk7EVB1EhwGfdIXGiw1Qayzx0=; b=I/vrI0LHKLw41s
-	s0Fr+ZazVQ2QbzCHxG/bYnuUnCjAJdDhLGuoUN1EedqBz9zmcKsyC+yp/bwtTCaUv+CzSXncrVjI7
-	iej1Wa+kPWAdZ2rzvkwFpM2ig7pXB1bSYY8UnD8sluxm3A7ST76sBFjx/5lvnVlGLbESzObcy3o92
-	xNhJzQ1INsevXEda6i9kl53CseGg2mdHK7oEcbqAR9UDmTMFDCYIMKVkFeuDtCnAlTFOKV39J1B4y
-	ig4nW0CPE5R195abqZ8QLH1ZEUu3DAadVKpqKNLxdLxIAl0lNGoYwpMsdkjAF9rDxBj4G48XHOvMv
-	26ust2sH1huUXGRDKObg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wstTUJ//2LnDWmDNufU/z4TfeX//oF4v4m4ERzuPVgw=; b=JJqsPzdqGow7TJ
+	ZVvoHRTpjpdcRrTfGrsu3juYHkilfsOel2E/vuQKutjxhqQ52BwU82c96FhMDmLfOAtdOwUkQyKwt
+	bGz8zhr7pch+lKTii3p8T0Lqp9oSUEqKB/E7+zi2bRFW40GzKd+Msg5CN6wOE2cgq8FmK5cV7XM02
+	Aszih8zAdDsUXzvd6JSdIsCiYVtOPkGpDVPLyM1hF4Nc0KXF/82R53VT5Ujeo5Y2zyH/YFFNJ/6zE
+	79v4HWPXmA1BwhHIIOnnY1NV/E+92zDVKSJdCvYka6TbVHqcNFdxSIIpIYdG25A7FwDuWEn4M2SRV
+	7I0uk93UmV4JUHRz7Qaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8GtL-007f7y-2Y;
-	Wed, 29 Nov 2023 09:29:59 +0000
+	id 1r8Gtf-007fPv-0m;
+	Wed, 29 Nov 2023 09:30:19 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Gsh-007ea7-32;
-	Wed, 29 Nov 2023 09:29:25 +0000
+	id 1r8GtX-007fGs-0g
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 Nov 2023 09:30:13 +0000
 Received: from pyrite.hamster-moth.ts.net (h175-177-049-135.catv02.itscom.jp [175.177.49.135])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2FE9F89D;
-	Wed, 29 Nov 2023 10:28:37 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F1F992B6;
+	Wed, 29 Nov 2023 10:29:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701250123;
-	bh=hMDTsYVpENkOb/goyZczC7N4lOaLGYZGWPzUfGG6bSw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=guI2PODGUgIfKM7luOV9n/G7uIIWwci26E+jIQaEwgx4O3phqlwFHkpILCRN+iBx6
-	 5K0s2oaUFZondTKw6XM+uVe/pc+Oc/kJH320UQjFjkD3kAuessb2Yi7+oLcestA/0a
-	 M/B5kaCi6JXVskN4OoPdOFvtXGrz7HutE39Q5psA=
+	s=mail; t=1701250174;
+	bh=nqrEqQSOhAYlctX57th3QWKSG0vRwgH0APQhoICNfyw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IOha4XHTmYtNB8c3y3F5DeulKEGuCSkmkxazasAoy344UW4ZFfecosnIVzoAlesHV
+	 uLeVVRe6aDPM+kTeizkMBDBZjZ3jx2eHKuLGGXen256NtXpR8ZQlaipFvuILsilbYQ
+	 0yzWjwRRwgzeRC2fmaGwb7pN7nHyKs3bOgm/qf2A=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
+	linux-rockchip@lists.infradead.org
 Cc: kieran.bingham@ideasonboard.com,
 	tomi.valkeinen@ideasonboard.com,
 	umang.jain@ideasonboard.com,
-	aford173@gmail.com,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v4 11/11] media: rkisp1: Add UYVY as an output format
-Date: Wed, 29 Nov 2023 18:27:59 +0900
-Message-Id: <20231129092759.242641-12-paul.elder@ideasonboard.com>
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: [PATCH 0/3] media: rkisp1: Misc fixes and debug
+Date: Wed, 29 Nov 2023 18:29:53 +0900
+Message-Id: <20231129092956.250129-1-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231129092759.242641-1-paul.elder@ideasonboard.com>
-References: <20231129092759.242641-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_012920_193529_4FFA214F 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20231129_013011_461393_82AF86DB 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,92 +69,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for UYVY as an output format. The uv_swap bit in the
-MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
-work for packed YUV formats. Thus, UYVY support is implemented via
-byte-swapping. This method clearly does not work for implementing
-support for YVYU and VYUY.
+This series adds a small cleanup of the register definitions, as well as
+some additions to the debug for the rkisp1 driver.
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+Paul Elder (3):
+  media: rkisp1: regs: Consolidate MI interrupt wrap fields
+  media: rkisp1: debug: Add register dump for IS
+  media: rkisp1: debug: Count completed frame interrupts
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index a352893308b6..b50b044d22af 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -231,6 +237,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -464,6 +477,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-@@ -507,6 +534,20 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+ .../platform/rockchip/rkisp1/rkisp1-debug.c   | 20 +++++++++++++++++++
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     |  2 ++
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    |  9 +++------
+ 4 files changed, 26 insertions(+), 6 deletions(-)
+
 -- 
 2.39.2
 
