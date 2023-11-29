@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CCB3C07E97
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 09:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04038C07E97
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 09:28:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CHYm+ZgFVLfYijAGknwu2XoRdNdoo0vvEKg1E9U814g=; b=CcZMGTKTwHZjs7
-	4t0Xi8xwhzvwXjCZquFFZlsbH60pIjQwd/WvLUvR5fheDyvFjaW2C/ZF22hPs/KKLmC4QBZqHIiZd
-	4ZP/rDB+Wv+f5QE+wph56HwXx/rTgl5bxnE9qm+5B8WOJYPhoPU/irlFIYCcDmmaJhjo5SSRIwxuC
-	kkuoT+qEnkOx9z31pSQ156ko3dRSM683MaOTIKEViWX1YOko1trDn1fe06V9HoFeNG/TINt2HIhcT
-	6OegpsyUpWESwKY26D0iOmkc8KBOuLqVhbnAxehe6T8E0DcIGPf40BzpnPLk4O5BnHVCBwhvl5CxZ
-	V1oPF1DohMOvpR2Vt3Kg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m6y7ZKdPlH61uh15jpPhytbp9wCsq90GQdytU6OfLS4=; b=pz2fUY3TJvJMKG
+	ZXhAdhx5AP+at5C7gTLHbGLlqnqGzMQZQgooEIPerAO0A02DovChEm4hOzvP+dGGgOOWbC6CsVzAh
+	IvxGb3l18//QeE51Ll5pLIMxqUxXbrU7Md3PsBwAUjdUfJ7Q+0u8+pKKT2dsOl4eVVOMY4tqs0F74
+	JX/ovwaIEq3xGAl3i1MKeKMU5ADkFcJmdNt28W81DCbDa4Ip/BAh2LVlGnBzd5laLjQuMCDmJIrB9
+	UEglltEiw64op90MUTDSVOugaU5VxKh5ecMlGt+rVhJYNB/zpEw9B0gPbx8EotuzDmyM7J2mAJGu0
+	SV2o9WlRrpdgZyOzJ44A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Grs-007dnz-1K;
-	Wed, 29 Nov 2023 09:28:28 +0000
+	id 1r8Gru-007dpQ-2h;
+	Wed, 29 Nov 2023 09:28:30 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Grk-007dg4-2k
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Nov 2023 09:28:22 +0000
+	id 1r8Grl-007diI-1b;
+	Wed, 29 Nov 2023 09:28:23 +0000
 Received: from pyrite.hamster-moth.ts.net (h175-177-049-135.catv02.itscom.jp [175.177.49.135])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 99D122B6;
-	Wed, 29 Nov 2023 10:27:35 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 85838842;
+	Wed, 29 Nov 2023 10:27:39 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701250058;
-	bh=TEIBgpUjK6NYJRiaGUhsgKnE4DjYmC8agG6/GUA9vAM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=cdIKcKefkWjwzhIvpuWrxnGyyHUS9fT9pqK9a/uCs+7BYq+w5lWzHI5A3SEFv6/xp
-	 1tShxd13EgaI4oarWFRcC6RYkS1wDdgNy6qwmh6bJqiYbX3XUvdRhAW9tHGfdWSpVB
-	 QcKFGgqtKLDDbqgWn7eJ9VnJYHWdkex0l8ZgribY=
+	s=mail; t=1701250064;
+	bh=SjKWGUjzBOSKDAkaKb/3kcfoD2ymulmTRPrrsHFvNhE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mWAGRWl65QM9cFSf91puVzKkUK+VF6E0BI3ACjbryr69dmxjB5qLS4bDAquezPsTg
+	 1aaVdwbrrTdb+BL/W8jwzuJjt0w8cy+qxodW+GCiHcRgBHe8vUHB2leNnzC2CWtKVE
+	 2695IXvO9lKy5O7oiloQ+2kbR4AAQ5PSPDJjWoM8=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
@@ -45,15 +44,23 @@ Cc: kieran.bingham@ideasonboard.com,
 	tomi.valkeinen@ideasonboard.com,
 	umang.jain@ideasonboard.com,
 	aford173@gmail.com,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v4 00/11] media: rkisp1: Add support for i.MX8MP
-Date: Wed, 29 Nov 2023 18:27:48 +0900
-Message-Id: <20231129092759.242641-1-paul.elder@ideasonboard.com>
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH v4 01/11] media: rkisp1: Add and use rkisp1_has_feature() macro
+Date: Wed, 29 Nov 2023 18:27:49 +0900
+Message-Id: <20231129092759.242641-2-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231129092759.242641-1-paul.elder@ideasonboard.com>
+References: <20231129092759.242641-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_012821_032073_BE36A992 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20231129_012821_678524_C093AA46 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,48 +77,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series extends the rkisp1 driver to support the ISP found in the
-NXP i.MX8MP SoC.
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-and in the NXP i.MX8MP have the same origin, and have slightly diverged
-over time as they are now independently developed (afaik) by Rockchip
-and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-and is close enough to the RK3399 ISP that it can easily be supported by
-the same driver.
+Simplify feature tests with a macro that shortens lines.
 
-The last two patches add support for UYVY output format, which can be
-implemented on the ISP version in the i.MX8MP but not in the one in the
-RK3399.
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+---
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
+ 2 files changed, 10 insertions(+), 7 deletions(-)
 
-This version of the series specifically has been tested on a Polyhex
-Debix model A with an imx219 (Raspberry Pi cam v2).
-
-Laurent Pinchart (2):
-  media: rkisp1: Add and use rkisp1_has_feature() macro
-  media: rkisp1: Configure gasket on i.MX8MP
-
-Paul Elder (9):
-  media: rkisp1: Support setting memory stride for main path
-  media: rkisp1: Support devices lacking self path
-  media: rkisp1: Support devices lacking dual crop
-  media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-  dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-  media: rkisp1: Add match data for i.MX8MP ISP
-  media: rkisp1: Shift DMA buffer addresses on i.MX8MP
-  media: rkisp1: Add YC swap capability
-  media: rkisp1: Add UYVY as an output format
-
- .../bindings/media/rockchip-isp1.yaml         |  37 ++++-
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 128 ++++++++++++-----
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  35 ++++-
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  66 +++++++--
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 +++++++++++++++++-
- .../platform/rockchip/rkisp1/rkisp1-regs.h    |  32 +++++
- .../platform/rockchip/rkisp1/rkisp1-resizer.c |  27 ++--
- include/uapi/linux/rkisp1-config.h            |   2 +
- 8 files changed, 398 insertions(+), 60 deletions(-)
-
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index be69173958a4..24adcd2d99a3 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -111,6 +111,9 @@ enum rkisp1_feature {
+ 	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
+ };
+ 
++#define rkisp1_has_feature(rkisp1, feature) \
++	((rkisp1)->info->features & RKISP1_FEATURE_##feature)
++
+ /*
+  * struct rkisp1_info - Model-specific ISP Information
+  *
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index c41abd2833f1..c1985243b42e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 		switch (reg) {
+ 		case 0:
+ 			/* MIPI CSI-2 port */
+-			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
++			if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 				dev_err(rkisp1->dev,
+ 					"internal CSI must be available for port 0\n");
+ 				ret = -EINVAL;
+@@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 	unsigned int i;
+ 	int ret;
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		/* Link the CSI receiver to the ISP. */
+ 		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
+ 					    RKISP1_CSI_PAD_SRC,
+@@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 
+ static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
+ {
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_unregister(rkisp1);
+ 	rkisp1_params_unregister(rkisp1);
+ 	rkisp1_stats_unregister(rkisp1);
+@@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 	if (ret)
+ 		goto error;
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		ret = rkisp1_csi_register(rkisp1);
+ 		if (ret)
+ 			goto error;
+@@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		goto err_unreg_v4l2_dev;
+ 	}
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		ret = rkisp1_csi_init(rkisp1);
+ 		if (ret)
+ 			goto err_unreg_media_dev;
+@@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ err_unreg_entities:
+ 	rkisp1_entities_unregister(rkisp1);
+ err_cleanup_csi:
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_cleanup(rkisp1);
+ err_unreg_media_dev:
+ 	media_device_unregister(&rkisp1->media_dev);
+@@ -630,7 +630,7 @@ static void rkisp1_remove(struct platform_device *pdev)
+ 	v4l2_async_nf_cleanup(&rkisp1->notifier);
+ 
+ 	rkisp1_entities_unregister(rkisp1);
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_cleanup(rkisp1);
+ 	rkisp1_debug_cleanup(rkisp1);
+ 
 -- 
 2.39.2
 
