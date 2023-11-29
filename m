@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9EE3C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 06:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A293EC4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 07:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M0pFmQSyK3/UNvnsn37209elFyYy+5FzmBNxay9hA2k=; b=xo6PwYO/qMN/Wc
-	yj3NRgdKbuxkI4af0b9CPWUdcXfkaASFq5eSPblz4NVeSRpCbgzLhmM0GGDwm+O5iedV+5tmbk3eO
-	fuq6lLrI9ETUixXrLiS8wzuXDaSe+M8rQ7do8QDHKRmV7tfZLR8NlN1t9Uz864DfPJcpN+UFAvlIx
-	v3fVMfo+G+E3wN6Ny5E7pP9cUQ6pqHRXYJNJTIoYHHoAkN6kNiCv0ZvbX3SEIAYpcL+KEy33vRtZr
-	/FvEXJVx2JgRYUocEkf+obzHgqQvxEQzSDLbX2oVrWzrVGK6X4h8JChp2WXRW+RAHgapkd54QIC6X
-	LH8iP2m+XCdFgjYYmkBw==;
+	List-Owner; bh=qnFMAmHRMRcJZUk4jgDxW7X5RWj+/k3MnRVqoQzTzEg=; b=x+Qx9Ak7X6xNjn
+	R0B7sRgxCy7ghT6X/Tx3GfBMikoYiXv775nnw6esXjjZkiPaSJoTFHYDiCioTxUmCZKrfsOJPMd+g
+	9q95Wplua3P1wXG/ImSi4sdwyDKgX/JlOKWfAhj/4qeEBwkVrIfGevJ2wZlCHsq7I8KD78JjCTJZf
+	vOvc4rZ+vi+nv5IE+8R9bzNruBUIvr4/qJUID833btI3W0bTObZSpHPY888B/icjD7RoZh2wYOEdD
+	mBU0QiOhyhX3uNnqyJ9VEtQdWZJwzaHkK/PpaX0igN4luENPJV1KXrooDSU8rFNwYZDkMqAE9BPiP
+	mYCDYjAJ97rBCbyL4n/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8ES9-007HP1-0w;
-	Wed, 29 Nov 2023 06:53:45 +0000
-Received: from mail-m118111.qiye.163.com ([115.236.118.111])
+	id 1r8F16-007M8L-1H;
+	Wed, 29 Nov 2023 07:29:52 +0000
+Received: from mail11.truemail.it ([217.194.8.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8ES6-007HLZ-1d
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Nov 2023 06:53:44 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=BGYVZATQB6lTahhv420xh9G/Uxq5CQrrNTWhRt7vbpKAoczsUpZwYQ2N3vDEJfKqV+pdvlC4UKyIcyrtTnmPT+It97feALmocPJgXkwViY181JJaSyFTMPC0hsdWUkvPucVkNtKCK5HnVeGe2DiByNVJDQ7dl3NAXjCfcOBeYdM=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Kp7KhheW6iIZn3I5ex3GwoD360GOF4bAbDlX84aX464=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 0F87B780201;
-	Wed, 29 Nov 2023 14:52:56 +0800 (CST)
-Message-ID: <9cdedbb6-67c0-4c43-9f82-629504aae933@rock-chips.com>
-Date: Wed, 29 Nov 2023 14:52:55 +0800
+	id 1r8F10-007M4o-02;
+	Wed, 29 Nov 2023 07:29:49 +0000
+Received: from francesco-nb.int.toradex.com (31-10-206-125.static.upc.ch [31.10.206.125])
+	by mail11.truemail.it (Postfix) with ESMTPA id 3023420395;
+	Wed, 29 Nov 2023 08:29:36 +0100 (CET)
+Date: Wed, 29 Nov 2023 08:29:30 +0100
+From: Francesco Dolcini <francesco@dolcini.it>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>,
+	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	workflows@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+Message-ID: <ZWboWqELHbIrblnz@francesco-nb.int.toradex.com>
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/12] drm/rockchip: vop2: Set YUV/RGB overlay mode
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com
-References: <20231122125316.3454268-1-andyshrk@163.com>
- <20231122125438.3454608-1-andyshrk@163.com>
- <20231127141632.GF977968@pengutronix.de>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20231127141632.GF977968@pengutronix.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkYQlZLHU5KTENDTR8ZShhVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8c19da26c7b24fkuuu0f87b780201
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6ME06PDo4CDwxSxw8HRcKODoL
-	HQgaCjxVSlVKTEtKSU9LTExNQkJOVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBTUpOQzcG
+Content-Disposition: inline
+In-Reply-To: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_225342_719443_30B2F818 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20231128_232946_234248_138131BD 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,135 +75,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sasha:
+On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
+> Document preferred coding style for Devicetree sources (DTS and DTSI),
+> to bring consistency among all (sub)architectures and ease in reviews.
 
-On 11/27/23 22:16, Sascha Hauer wrote:
-> On Wed, Nov 22, 2023 at 08:54:38PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->> Set overlay mode register according to the
->> output mode is yuv or rgb.
->>
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> ---
->>
->> (no changes since v1)
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |  1 +
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 19 ++++++++++++++++---
->>   2 files changed, 17 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> index 3d8ab2defa1b..7a58c5c9d4ec 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
->> @@ -51,6 +51,7 @@ struct rockchip_crtc_state {
->>   	u32 bus_format;
->>   	u32 bus_flags;
->>   	int color_space;
->> +	bool yuv_overlay;
-> This struct already contains a bool type variable. Please add this one
-> next to it to keep the struct size smaller.
+Thank Krzysztof, we had most of this collected as BKM in some internal
+documents and it's great to see the effort to consolidate this and add
+it to the kernel documentation.
 
+> ---
+> +Following order of properties in device nodes is preferred:
+> +
+> +1. compatible
+> +2. reg
+> +3. ranges
+> +4. Standard/common properties (defined by common bindings, e.g. without
+> +   vendor-prefixes)
+> +5. Vendor-specific properties
+> +6. status (if applicable)
+> +7. Child nodes, where each node is preceded with a blank line
 
-Okay, will do.
+On point 4, do you have a more explicit way to define what is an actual
+standard/common property? You mention the vendor-prefixes as an example,
+is this just an example or this is the whole definition?
 
->
->>   };
->>   #define to_rockchip_crtc_state(s) \
->>   		container_of(s, struct rockchip_crtc_state, base)
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> index a019cc9bbd54..b32a291c5caa 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> @@ -1612,6 +1612,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->>   
->>   	vop2->enable_count++;
->>   
->> +	vcstate->yuv_overlay = is_yuv_output(vcstate->bus_format);
->> +
->>   	vop2_crtc_enable_irq(vp, VP_INT_POST_BUF_EMPTY);
->>   
->>   	polflags = 0;
->> @@ -1639,7 +1641,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->>   	if (vop2_output_uv_swap(vcstate->bus_format, vcstate->output_mode))
->>   		dsp_ctrl |= RK3568_VP_DSP_CTRL__DSP_RB_SWAP;
->>   
->> -	if (is_yuv_output(vcstate->bus_format))
->> +	if (vcstate->yuv_overlay)
->>   		dsp_ctrl |= RK3568_VP_DSP_CTRL__POST_DSP_OUT_R2Y;
->>   
->>   	vop2_dither_setup(crtc, &dsp_ctrl);
->> @@ -1948,10 +1950,12 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
->>   	u16 hdisplay;
->>   	u32 bg_dly;
->>   	u32 pre_scan_dly;
->> +	u32 ovl_ctrl;
->>   	int i;
->>   	struct vop2_video_port *vp0 = &vop2->vps[0];
->>   	struct vop2_video_port *vp1 = &vop2->vps[1];
->>   	struct vop2_video_port *vp2 = &vop2->vps[2];
->> +	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(vp->crtc.state);
->>   
->>   	adjusted_mode = &vp->crtc.state->adjusted_mode;
->>   	hsync_len = adjusted_mode->crtc_hsync_end - adjusted_mode->crtc_hsync_start;
->> @@ -1964,7 +1968,14 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
->>   	pre_scan_dly = ((bg_dly + (hdisplay >> 1) - 1) << 16) | hsync_len;
->>   	vop2_vp_write(vp, RK3568_VP_PRE_SCAN_HTIMING, pre_scan_dly);
->>   
->> -	vop2_writel(vop2, RK3568_OVL_CTRL, 0);
->> +	ovl_ctrl = vop2_readl(vop2, RK3568_OVL_CTRL);
->> +	if (vcstate->yuv_overlay)
->> +		ovl_ctrl |= BIT(vp->id);
->> +	else
->> +		ovl_ctrl &= ~BIT(vp->id);
-> Some
->
-> #define RK3568_OVL_CTRL__YUV_MODE(vp)	BIT(vp)
->
-> Would be nice.
+What would be the order for this for example (from an existing DTS file)?
 
+	reg_sdhc1_vmmc: regulator-sdhci1 {
+		compatible = "regulator-fixed";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_sd1_pwr_en>;
+		enable-active-high;
+		gpio = <&main_gpio0 29 GPIO_ACTIVE_HIGH>;
+		off-on-delay-us = <100000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-min-microvolt = <3300000>;
+		regulator-name = "+V3.3_SD";
+		startup-delay-us = <2000>;
+	};
 
-Okay, will do.
+I guess the point that is not obvious to me here is where do we want
+pinctrl. I like it at position between 3 and 4, the rationale is that is
+a very frequent property and this way it will be in a similar place for
+every node.
 
->> +
->> +	vop2_writel(vop2, RK3568_OVL_CTRL, ovl_ctrl);
-> Is it necessary to write this register twice?
+Francesco
 
-I don't think so. Just follow the original code write it here.
-
-Anyway, I will just write once in next version.
-
-
-And would you please check my response about debugfs patch[0] when it is convenient for you?
-
-I want to know what you think, and prepare the next version.
-
-
-[0]https://patchwork.kernel.org/project/dri-devel/patch/20231122125601.3455031-1-andyshrk@163.com/
-
->
->> +
->>   	port_sel = vop2_readl(vop2, RK3568_OVL_PORT_SEL);
->>   	port_sel &= RK3568_OVL_PORT_SEL__SEL_PORT;
->>   
->> @@ -2036,9 +2047,11 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
->>   		layer_sel |= RK3568_OVL_LAYER_SEL__LAYER(nlayer + ofs, 5);
->>   	}
->>   
->> +	ovl_ctrl |= RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD;
->> +
->>   	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
->>   	vop2_writel(vop2, RK3568_OVL_PORT_SEL, port_sel);
->> -	vop2_writel(vop2, RK3568_OVL_CTRL, RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD);
->> +	vop2_writel(vop2, RK3568_OVL_CTRL, ovl_ctrl);
-> Sascha
->
 
 _______________________________________________
 Linux-rockchip mailing list
