@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0859C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17681C07CB1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E6lEFtxHMQXtN23AkVpixMhm8877PiYpXbKkfKRBPF0=; b=D6FGOn6P0xtUsJ
-	i/scDSdPrvwBFe9S4bCiA04jcPVsENRAK5uRLSb8ngvtfg7slS786EqE19h/wcXiLgkEXqi0bJW3V
-	BtGtRA+95q8yhv4JBfOVIjHNdq/9W6ProjPFjzfi8eBPr7dz+9q6h5K5zlgw8NnQw3kdr0aAJOAaT
-	YasOSWlCbXBxlDrVl1mVsXdzlyZMpQibelCTUWqxTXMisRg1yYb95q1MVNGQsoqVaZBa7QsBdbvuT
-	nZB7KHCOh4qEmhEHz7whsEa9zQS79RDdZsALIgxrzqockbR9URDJ7Ecwl+QBZqeY5MlrWmadfSTqc
-	n3MlorN1GdnG6bSD3/7g==;
+	List-Owner; bh=kLoRqSyy7wu9vfqsjZZcOMyuZrKqZ3O4MiZPggmtFKU=; b=m9Ecl3PRxGDn54
+	KEg9pA0OdgMiVAEpsPDPpCXi1lC83VhTKUaLlo3bXzWcINMb9LW/m1TfzcArHRE+ChJ3pn0AWbJoA
+	exIht2U5YgSGS9M5Mh6XyfudBdBiG0GejnImSzWSGDoCcWXiXj7xD1N5tRezHYYyrxqJlcLbeXqq1
+	bbXttLjIpOvgfkPkqBCkThbpGc3PreHSkgzvhTiICuHEA9lTOKsPoJe9p/SBBeXGHgsFQIldI7Ig3
+	nXb4B3IuL4aFhKHsYfkW58YdGYGtJAg7HBhk9Rfbi6MubQ4gapa94GP0kWRNnoZBW3AV+gTCOcA5i
+	OcYTeMFOb3BpJvPtvGRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXW-008HlQ-2U;
-	Wed, 29 Nov 2023 12:19:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r8JXf-008HrQ-0w;
+	Wed, 29 Nov 2023 12:19:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JXT-008Hip-0C;
-	Wed, 29 Nov 2023 12:19:37 +0000
+	id 1r8JXd-008Hox-0v;
+	Wed, 29 Nov 2023 12:19:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=4ID1zdoJK08jI0+ney0GGZgpZp/Ze4ASBpaugIzPl/M=; b=ACx1O47qmYjOZq1QBrkSrE9h4G
+	KV4jdzULAF3/7qAbqSuo7FVr79LawFN5jHPbrZ3BuNV0y78lKn3I7fUTkRC1wZTmfTVqTOb6mxlWS
+	qZWEc6n438FKVIL7RrCeSOI+OZWAvY5kDG2YzEDBVhFUUr0/hCzGO+TwuEV+mSU19KfcD8+i7BT8M
+	nSHCx6EJhS6Oidxb5xDTuXMfj124HlOR+mq/x9N6oQuQUHLFx+M8kfIYQ+jzWHggstvk6uRvvDvjo
+	DfgufX/6TOgZqQnG1cGl8SQeViKqWuOkB2kVRqDIb9Srz9VWw8jbuBpMM++dKThNii5+2SuQ3mrkC
+	2H59OMFQ==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r8JXP-000LS6-2P;
+	Wed, 29 Nov 2023 12:19:39 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9992D6607349;
-	Wed, 29 Nov 2023 12:19:30 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D7655660732A;
+	Wed, 29 Nov 2023 12:19:22 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701260373;
-	bh=/+sdprsWkKCN5CJr21VSx0uUyY/KGPHXt0II8sDgBEU=;
+	s=mail; t=1701260366;
+	bh=drt9Nf1tdYoCGDZuOe/qO8JK0dZNg1Oz/Fl7Gto/UZI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=c6fI4hK3s/zcF8LNqjM8q71cX/vCgNayrKVEDVc28lLt+JkDhIeID/Qrcf9L4pJIE
-	 SxY7jqPRAiDmCR7x1zZEnwtzOjd077mWKFC/qn2iBJXRnUueh4STX4YLvIC8tfPjO3
-	 E2NxEiqZtvB87ewg3j9MmoYW1LRMD1zpkCNi9BgCvERNiz6xtfqX5/4iZvajgIX0QP
-	 AdnMwQF9cez2OfUPQjLQoQzLWi1MbqXXvul40RNIoc+YBvWn2BU6DHIzFWjppl+TPu
-	 xyDoWj/agKP+wbP8Lw3v1auhnxjz6iIwlwoKh5nbMmf4xwlthJ6GAbsjefxj/aYG7E
-	 yRCMMVnB5J7rA==
+	b=Ri4WVuOtDg/bxRqtZJK8ogTvFXmvqnAP/JkoBlpF7lpuxfbIcwi9JLLzT7/HsFcPi
+	 vSiObrgMAuKWp18v1JfnlkIRp1SFiIeH0RfeR3Oqn6A7XPLfMYcgCancb59Sl48mO7
+	 3iUWHc2aTCo6SkG7TLpoZA+HeK3Sdeycrbahud1QkfmNVJCOf+hStJjI3JCOW5O5vB
+	 L/AmHhz7RjKzXRXHLwd1TExZG7Wsv28bU6a6AJgLxWjgLfz00z1evdPtI+zcUl/RER
+	 SmbMTcWhhWSo1Ju8VFc7PDloT3RjUltMAr7NuO9ws4UzWbahB/37Udy7UVh+A0EEAn
+	 2ycI9vcIHP+3g==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,17 +74,16 @@ Cc: david.heidelberg@collabora.com,
 	virtualization@lists.linux-foundation.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v6 10/10] drm: ci: Update xfails
-Date: Wed, 29 Nov 2023 17:48:41 +0530
-Message-Id: <20231129121841.253223-11-vignesh.raman@collabora.com>
+Subject: [PATCH v6 08/10] drm: ci: uprev IGT
+Date: Wed, 29 Nov 2023 17:48:39 +0530
+Message-Id: <20231129121841.253223-9-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231129121841.253223-1-vignesh.raman@collabora.com>
 References: <20231129121841.253223-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_041935_367046_4AB5D4D1 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231129_121933_560587_CA42AA60 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,165 +95,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update msm-apq8016-fails, mediatek-mt8173-fails and
-virtio_gpu-none-fails to include the tests which fail.
-
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
-
-v2:
-  - No changes
-
-v3:
-  - No changes
-
-v4:
-  - No changes
-
-v5:
-  - Generate fails and flakes file with the updated xfails script - https://www.spinics.net/lists/kernel/msg4959630.html
-
-v6:
-  - Generate fails file with drm-misc-next
-
----
- .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 13 ++++--
- .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  5 ++
- .../drm/ci/xfails/virtio_gpu-none-fails.txt   | 46 +++++++++++++++++++
- 3 files changed, 61 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-index 671916067dba..ef0cb7c3698c 100644
---- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
-@@ -1,5 +1,4 @@
- kms_3d,Fail
--kms_addfb_basic@addfb25-bad-modifier,Fail
- kms_bw@linear-tiling-1-displays-1920x1080p,Fail
- kms_bw@linear-tiling-1-displays-2560x1440p,Fail
- kms_bw@linear-tiling-1-displays-3840x2160p,Fail
-@@ -9,13 +8,19 @@ kms_bw@linear-tiling-2-displays-3840x2160p,Fail
- kms_bw@linear-tiling-3-displays-1920x1080p,Fail
- kms_bw@linear-tiling-3-displays-2560x1440p,Fail
- kms_bw@linear-tiling-3-displays-3840x2160p,Fail
-+kms_color@invalid-gamma-lut-sizes,Fail
- kms_color@pipe-A-invalid-gamma-lut-sizes,Fail
- kms_color@pipe-B-invalid-gamma-lut-sizes,Fail
--kms_force_connector_basic@force-connector-state,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@flip-vs-suspend,Fail
-+kms_flip@flip-vs-suspend-interruptible,Fail
- kms_force_connector_basic@force-edid,Fail
- kms_force_connector_basic@force-load-detect,Fail
- kms_force_connector_basic@prune-stale-modes,Fail
--kms_invalid_mode@int-max-clock,Fail
-+kms_hdmi_inject@inject-4k,Fail
- kms_plane_scaling@planes-upscale-20x20,Fail
- kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-25,Fail
- kms_plane_scaling@planes-upscale-20x20-downscale-factor-0-5,Fail
-@@ -27,3 +32,5 @@ kms_properties@get_properties-sanity-atomic,Fail
- kms_properties@plane-properties-atomic,Fail
- kms_properties@plane-properties-legacy,Fail
- kms_rmfb@close-fd,Fail
-+kms_selftest@drm_format,Timeout
-+kms_selftest@drm_format_helper,Timeout
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-index 9981682feab2..d39d254c935e 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-@@ -6,10 +6,15 @@ kms_cursor_legacy@all-pipes-single-bo,Fail
- kms_cursor_legacy@all-pipes-single-move,Fail
- kms_cursor_legacy@all-pipes-torture-bo,Fail
- kms_cursor_legacy@all-pipes-torture-move,Fail
-+kms_cursor_legacy@forked-bo,Fail
-+kms_cursor_legacy@forked-move,Fail
- kms_cursor_legacy@pipe-A-forked-bo,Fail
- kms_cursor_legacy@pipe-A-forked-move,Fail
- kms_cursor_legacy@pipe-A-single-bo,Fail
- kms_cursor_legacy@pipe-A-single-move,Fail
- kms_cursor_legacy@pipe-A-torture-bo,Fail
- kms_cursor_legacy@pipe-A-torture-move,Fail
-+kms_force_connector_basic@force-edid,Fail
- kms_hdmi_inject@inject-4k,Fail
-+kms_selftest@drm_format,Timeout
-+kms_selftest@drm_format_helper,Timeout
-diff --git a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
-index 9586b2339f6f..007f21e56d89 100644
---- a/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/virtio_gpu-none-fails.txt
-@@ -10,6 +10,49 @@ kms_bw@linear-tiling-1-displays-3840x2160p,Fail
- kms_bw@linear-tiling-2-displays-1920x1080p,Fail
- kms_bw@linear-tiling-2-displays-2560x1440p,Fail
- kms_bw@linear-tiling-2-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-3-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-3-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-3-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-4-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-4-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-4-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-5-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-5-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-5-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-6-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-6-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-6-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-7-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-7-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-7-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-8-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-8-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-8-displays-3840x2160p,Fail
-+kms_flip@absolute-wf_vblank,Fail
-+kms_flip@absolute-wf_vblank-interruptible,Fail
-+kms_flip@basic-flip-vs-wf_vblank,Fail
-+kms_flip@blocking-absolute-wf_vblank,Fail
-+kms_flip@blocking-absolute-wf_vblank-interruptible,Fail
-+kms_flip@blocking-wf_vblank,Fail
-+kms_flip@busy-flip,Fail
-+kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@dpms-vs-vblank-race-interruptible,Fail
-+kms_flip@flip-vs-absolute-wf_vblank,Fail
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-expired-vblank,Fail
-+kms_flip@flip-vs-expired-vblank-interruptible,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@flip-vs-wf_vblank-interruptible,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@modeset-vs-vblank-race-interruptible,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_flip@wf_vblank-ts-check,Fail
-+kms_flip@wf_vblank-ts-check-interruptible,Fail
- kms_invalid_mode@int-max-clock,Fail
- kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
- kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
-@@ -22,6 +65,9 @@ kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
- kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
- kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
- kms_plane_scaling@upscale-with-rotation-20x20,Fail
-+kms_selftest@drm_format,Timeout
-+kms_selftest@drm_format_helper,Timeout
-+kms_setmode@basic,Fail
- kms_vblank@crtc-id,Fail
- kms_vblank@invalid,Fail
- kms_vblank@pipe-A-accuracy-idle,Fail
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+dmlydGlvLWdwdSBrZXJuZWwgZHJpdmVyIHJlcG9ydHMgMTYgZm9yIGNvdW50X2NydGNzCndoaWNo
+IGV4Y2VlZHMgSUdUX01BWF9QSVBFUyBzZXQgdG8gOCBpbiBpZ3QtZ3B1LXRvb2xzLgpUaGlzIHJl
+c3VsdHMgaW4gYmVsb3cgbWVtb3J5IGNvcnJ1cHRpb24sCgrCoG1hbGxvYygpOiBjb3JydXB0ZWQg
+dG9wIHNpemUKwqBSZWNlaXZlZCBzaWduYWwgU0lHQUJSVC4KwqBTdGFjayB0cmFjZToKwqAgIzAg
+W2ZhdGFsX3NpZ19oYW5kbGVyKzB4MTdiXQrCoCAjMSBbX19zaWdhY3Rpb24rMHg0MF0KwqAgIzIg
+W3B0aHJlYWRfa2V5X2RlbGV0ZSsweDE0Y10KwqAgIzMgW2dzaWduYWwrMHgxMl0KwqAgIzQgW2Fi
+b3J0KzB4ZDNdCsKgICM1IFtfX2ZzZXRsb2NraW5nKzB4MjkwXQrCoCAjNiBbdGltZXJfc2V0dGlt
+ZSsweDM3YV0KwqAgIzcgW19fZGVmYXVsdF9tb3JlY29yZSsweDFmMWJdCsKgICM4IFtfX2xpYmNf
+Y2FsbG9jKzB4MTYxXQrCoCAjOSBbZHJtTW9kZUdldFBsYW5lUmVzb3VyY2VzKzB4NDRdCsKgICMx
+MCBbaWd0X2Rpc3BsYXlfcmVxdWlyZSsweDE5NF0KwqAgIzExIFtfX2lndF91bmlxdWVfX19fcmVh
+bF9tYWluMTM1NisweDkzY10KwqAgIzEyIFttYWluKzB4M2ZdCsKgICMxMyBbX19saWJjX2luaXRf
+Zmlyc3QrMHg4YV0KwqAgIzE0IFtfX2xpYmNfc3RhcnRfbWFpbisweDg1XQrCoCAjMTUgW19zdGFy
+dCsweDIxXQrCoApUaGlzIGlzIGZpeGVkIGluIGlndC1ncHUtdG9vbHMgYnkgaW5jcmVhc2luZyBJ
+R1RfTUFYX1BJUEVTIHRvIDE2LiDCoApodHRwczovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcv
+c2VyaWVzLzEyNjMyNy8KwqAKVXByZXYgSUdUIHRvIGluY2x1ZGUgdGhlIHBhdGNoZXMgd2hpY2gg
+Zml4ZXMgdGhpcyBpc3N1ZS4KClNpZ25lZC1vZmYtYnk6IFZpZ25lc2ggUmFtYW4gPHZpZ25lc2gu
+cmFtYW5AY29sbGFib3JhLmNvbT4KLS0tCgp2NjoKICAtIEFkZGVkIGEgbmV3IHBhdGNoIGluIHRo
+ZSBzZXJpZXMgdG8gdXByZXYgSUdUIHRvIGZpeCBtZW1vcnkgY29ycnVwdGlvbgoKLS0tCiBkcml2
+ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbCB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9j
+aS9naXRsYWItY2kueW1sIGIvZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwKaW5kZXgg
+YWViOWJhYjFiMDY5Li5kYWM5MmNjMjc3N2MgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9j
+aS9naXRsYWItY2kueW1sCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS9naXRsYWItY2kueW1sCkBA
+IC01LDcgKzUsNyBAQCB2YXJpYWJsZXM6CiAgIFVQU1RSRUFNX1JFUE86IGdpdDovL2Fub25naXQu
+ZnJlZWRlc2t0b3Aub3JnL2RybS9kcm0KICAgVEFSR0VUX0JSQU5DSDogZHJtLW5leHQKIAotICBJ
+R1RfVkVSU0lPTjogZDFkYjczMzNkOWM1ZmJiYjA1ZTUwYjA4MDQxMjM5NTBkOWRjMWM0NgorICBJ
+R1RfVkVSU0lPTjogZDJhZjEzZDlmNWJlNWNlMjNkOTk2ZTRhZmQzZTQ1OTkwZjVhYjk3NwogCiAg
+IERFUVBfUlVOTkVSX0dJVF9VUkw6IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9hbmhv
+bHQvZGVxcC1ydW5uZXIuZ2l0CiAgIERFUVBfUlVOTkVSX0dJVF9UQUc6IHYwLjE1LjAKLS0gCjIu
+NDAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
