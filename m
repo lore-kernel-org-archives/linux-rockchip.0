@@ -4,66 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A293EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 07:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 741F0C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 07:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qnFMAmHRMRcJZUk4jgDxW7X5RWj+/k3MnRVqoQzTzEg=; b=x+Qx9Ak7X6xNjn
-	R0B7sRgxCy7ghT6X/Tx3GfBMikoYiXv775nnw6esXjjZkiPaSJoTFHYDiCioTxUmCZKrfsOJPMd+g
-	9q95Wplua3P1wXG/ImSi4sdwyDKgX/JlOKWfAhj/4qeEBwkVrIfGevJ2wZlCHsq7I8KD78JjCTJZf
-	vOvc4rZ+vi+nv5IE+8R9bzNruBUIvr4/qJUID833btI3W0bTObZSpHPY888B/icjD7RoZh2wYOEdD
-	mBU0QiOhyhX3uNnqyJ9VEtQdWZJwzaHkK/PpaX0igN4luENPJV1KXrooDSU8rFNwYZDkMqAE9BPiP
-	mYCDYjAJ97rBCbyL4n/A==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:To:From:Date:References:
+	In-Reply-To:Message-Id:MIME-Version:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=CqYfFvt1j8ktLMIZardcJ2d6omp/aytDV0J0KAgLWW0=; b=zUIyJ/Feiq2OxTQlE9ZLWOHENa
+	araPCbblL4fBarioPsy34V67/2a3E8JqJk9jjvByotY1l4nfQlfTmfdLDba6R3JhEOjccS8xfx2MY
+	5GnAQcYvDYy9AqUyp1OsUjEKnvuDqXtiH9RCMYv6zURBWndiv4jnphdGn7+4xk+NiOhs249HWNSeB
+	xhiPEpetfcDdMcfSqzIWmkbI4ypp9ilm50bkRRJRKclGIGjILlJrsHSVLTwsQVPjNrM767Dj1TMIt
+	d6n8Qp8oFRByQsZZy9XzDANpW2l4ZOsc1jocQZozVayOwIOLuSx8PFq5mqfdXc9wzdO9dob4BwjDi
+	7rElvGAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8F16-007M8L-1H;
-	Wed, 29 Nov 2023 07:29:52 +0000
-Received: from mail11.truemail.it ([217.194.8.81])
+	id 1r8FKa-007Ocq-2V;
+	Wed, 29 Nov 2023 07:50:00 +0000
+Received: from new1-smtp.messagingengine.com ([66.111.4.221])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8F10-007M4o-02;
-	Wed, 29 Nov 2023 07:29:49 +0000
-Received: from francesco-nb.int.toradex.com (31-10-206-125.static.upc.ch [31.10.206.125])
-	by mail11.truemail.it (Postfix) with ESMTPA id 3023420395;
-	Wed, 29 Nov 2023 08:29:36 +0100 (CET)
-Date: Wed, 29 Nov 2023 08:29:30 +0100
-From: Francesco Dolcini <francesco@dolcini.it>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>,
-	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	workflows@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
-Message-ID: <ZWboWqELHbIrblnz@francesco-nb.int.toradex.com>
-References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+	id 1r8FKW-007Oba-2g;
+	Wed, 29 Nov 2023 07:49:58 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 9064C580A2F;
+	Wed, 29 Nov 2023 02:49:50 -0500 (EST)
+Received: from imap53 ([10.202.2.103])
+  by compute1.internal (MEProxy); Wed, 29 Nov 2023 02:49:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jannau.net; h=cc
+	:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1701244190; x=1701251390; bh=ww
+	kE8lsdD1lmCvJ6vHeRL3ETi3+Yj2miubjiEiAIJqc=; b=WS0m9G0nx6dD9iEji/
+	fBqlaAFY/rMIvdHqXU7tZxzaCT6/WaZqN24lhBSrCWbph5RWVn8OG0wIE3vLDiA7
+	dOWPtjwm4K1LXbVSgViqbhQnGAqsI7zVo/p5C5Cc2lkcP6BvkMMbJJPRLlk6Obqn
+	AHfiWue+I4lT9KO4M5IqOwcDkJ9k3rIoOQzzkgfdeVW+FPwIkWR8otEXHsC4vN5M
+	YRFUR7qjaXjm+/zVf+gwWpzm9l6TfNicjYV48mg69Jf51d7lmUwmWy0QDMagwX+h
+	my8WMJddQ84zOCl6wx49JlxbWBkrLfSX8dsYvVyefTTM6PDNHjgdqGvgdPI98pTh
+	CeVQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm1; t=1701244190; x=1701251390; bh=wwkE8lsdD1lmC
+	vJ6vHeRL3ETi3+Yj2miubjiEiAIJqc=; b=rQPYt4rH1AA0LiTAAnJGE//YvqNCw
+	0qwLht7gsUZGiRgP8vOuUojrK3gXdkIqqQy8kh1RU6M48Z+Q1F0tnQhr+VVyl2w5
+	NmyzspDEFgY404mNlejNyplFYnmca/DQjbd3xvYN1Ln64vKHdITrMssLqBon8Ujn
+	P7Qb4qPDUzh92GrFKk6+AzOXk04amTS8z6iqjc442y/87PjOdgE3r4Ts0YSlpbOW
+	dquGLaB3VxWfcHpWrswAQY2/Rw9xn8Jq2WVIEzpZjj1/JtoUjjzbJm94BlKfxFeu
+	aDZFAe2s9qDxCwDO/RDxvPYqUWrMro5Rq5vNlH5XTTV2LcBscKUpE50kw==
+X-ME-Sender: <xms:HO1mZWwi-0PHwgZ7UGdDg2Nfu1cPQBmbtYZcjowlgAyQ0BQky2hXjA>
+    <xme:HO1mZSTMYD4qqQdTonZ8IGVDTRfv30PWEOnWS8uEzYlouq8tMUIbuyDbZitdKhK-h
+    lPnAf3-fMz25n81ToA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrudeigedguddutdcutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedflfgr
+    nhhnvgcuifhruhhnrghufdcuoehjsehjrghnnhgruhdrnhgvtheqnecuggftrfgrthhtvg
+    hrnhepteeugeeltdelffetleetudejgfejieegudekleekleeifffffefgfefgfeeukeef
+    necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepjhesjh
+    grnhhnrghurdhnvght
+X-ME-Proxy: <xmx:HO1mZYWbL-dzWpMIvCrcF_hkcPxVblMr6At8rrdkDOd5QKecybyP8A>
+    <xmx:HO1mZcghfi5RLWq0pFjhso2VXNF7V40Fof9Xj8XlOYXvC_owwh5wlQ>
+    <xmx:HO1mZYDWse66_RKIUSsZ-t0CzxR6dHcZEVv_0jTO_L-qPjoGwVzSYQ>
+    <xmx:Hu1mZerEKP658mX4LK_6tKFnkmAWe_WKTSc7PfS_s-S-h8Msb1Q_lw>
+Feedback-ID: i47b949f6:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 5DF0E3640069; Wed, 29 Nov 2023 02:49:48 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-1234-gac66594aae-fm-20231122.001-gac66594a
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+Message-Id: <ca7a025d-8154-4509-b8ab-2a17e53ccbef@app.fastmail.com>
+In-Reply-To: <20231128204938.1453583-5-pasha.tatashin@soleen.com>
+References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
+ <20231128204938.1453583-5-pasha.tatashin@soleen.com>
+Date: Wed, 29 Nov 2023 08:49:18 +0100
+From: "Janne Grunau" <j@jannau.net>
+To: "Pasha Tatashin" <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
+ alex.williamson@redhat.com, alim.akhtar@samsung.com,
+ "Alyssa Rosenzweig" <alyssa@rosenzweig.io>, asahi@lists.linux.dev,
+ "Lu Baolu" <baolu.lu@linux.intel.com>, bhelgaas@google.com,
+ cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
+ "David Woodhouse" <dwmw2@infradead.org>, hannes@cmpxchg.org,
+ heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com,
+ jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com,
+ "Joerg Roedel" <joro@8bytes.org>, "Kevin Tian" <kevin.tian@intel.com>,
+ krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
+ "Hector Martin" <marcan@marcan.st>, mhiramat@kernel.org, mst@redhat.com,
+ m.szyprowski@samsung.com, netdev@vger.kernel.org, paulmck@kernel.org,
+ rdunlap@infradead.org, "Robin Murphy" <robin.murphy@arm.com>,
+ samuel@sholland.org, suravee.suthikulpanit@amd.com,
+ "Sven Peter" <sven@svenpeter.dev>, thierry.reding@gmail.com,
+ tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com,
+ virtualization@lists.linux.dev, wens@csie.org,
+ "Will Deacon" <will@kernel.org>, yu-cheng.yu@intel.com
+Subject: Re: [PATCH 04/16] iommu/io-pgtable-dart: use page allocation function provided
+ by iommu-pages.h
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231128_232946_234248_138131BD 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20231128_234956_960223_D2A58CF3 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +126,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
-> Document preferred coding style for Devicetree sources (DTS and DTSI),
-> to bring consistency among all (sub)architectures and ease in reviews.
+Hej,
 
-Thank Krzysztof, we had most of this collected as BKM in some internal
-documents and it's great to see the effort to consolidate this and add
-it to the kernel documentation.
-
+On Tue, Nov 28, 2023, at 21:49, Pasha Tatashin wrote:
+> Convert iommu/io-pgtable-dart.c to use the new page allocation functions
+> provided in iommu-pages.h.
+>
+> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 > ---
-> +Following order of properties in device nodes is preferred:
-> +
-> +1. compatible
-> +2. reg
-> +3. ranges
-> +4. Standard/common properties (defined by common bindings, e.g. without
-> +   vendor-prefixes)
-> +5. Vendor-specific properties
-> +6. status (if applicable)
-> +7. Child nodes, where each node is preceded with a blank line
+>  drivers/iommu/io-pgtable-dart.c | 37 +++++++++++++--------------------
+>  1 file changed, 14 insertions(+), 23 deletions(-)
+>
+> diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
+> index 74b1ef2b96be..ad28031e1e93 100644
+> --- a/drivers/iommu/io-pgtable-dart.c
+> +++ b/drivers/iommu/io-pgtable-dart.c
+> @@ -23,6 +23,7 @@
+>  #include <linux/types.h>
+> 
+>  #include <asm/barrier.h>
+> +#include "iommu-pages.h"
+> 
+>  #define DART1_MAX_ADDR_BITS	36
+> 
+> @@ -106,18 +107,12 @@ static phys_addr_t iopte_to_paddr(dart_iopte pte,
+>  	return paddr;
+>  }
+> 
+> -static void *__dart_alloc_pages(size_t size, gfp_t gfp,
+> -				    struct io_pgtable_cfg *cfg)
+> +static void *__dart_alloc_pages(size_t size, gfp_t gfp)
+>  {
+>  	int order = get_order(size);
+> -	struct page *p;
+> 
+>  	VM_BUG_ON((gfp & __GFP_HIGHMEM));
+> -	p = alloc_pages(gfp | __GFP_ZERO, order);
+> -	if (!p)
+> -		return NULL;
+> -
+> -	return page_address(p);
+> +	return iommu_alloc_pages(gfp, order);
+>  }
+> 
+>  static int dart_init_pte(struct dart_io_pgtable *data,
+> @@ -262,13 +257,13 @@ static int dart_map_pages(struct io_pgtable_ops 
+> *ops, unsigned long iova,
+> 
+>  	/* no L2 table present */
+>  	if (!pte) {
+> -		cptep = __dart_alloc_pages(tblsz, gfp, cfg);
+> +		cptep = __dart_alloc_pages(tblsz, gfp);
+>  		if (!cptep)
+>  			return -ENOMEM;
+> 
+>  		pte = dart_install_table(cptep, ptep, 0, data);
+>  		if (pte)
+> -			free_pages((unsigned long)cptep, get_order(tblsz));
+> +			iommu_free_pages(cptep, get_order(tblsz));
+> 
+>  		/* L2 table is present (now) */
+>  		pte = READ_ONCE(*ptep);
+> @@ -419,8 +414,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
+> *cfg, void *cookie)
+>  	cfg->apple_dart_cfg.n_ttbrs = 1 << data->tbl_bits;
+> 
+>  	for (i = 0; i < cfg->apple_dart_cfg.n_ttbrs; ++i) {
+> -		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL,
+> -					   cfg);
+> +		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL);
+>  		if (!data->pgd[i])
+>  			goto out_free_data;
+>  		cfg->apple_dart_cfg.ttbr[i] = virt_to_phys(data->pgd[i]);
+> @@ -429,9 +423,10 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
+> *cfg, void *cookie)
+>  	return &data->iop;
+> 
+>  out_free_data:
+> -	while (--i >= 0)
+> -		free_pages((unsigned long)data->pgd[i],
+> -			   get_order(DART_GRANULE(data)));
+> +	while (--i >= 0) {
+> +		iommu_free_pages(data->pgd[i],
+> +				 get_order(DART_GRANULE(data)));
+> +	}
+>  	kfree(data);
+>  	return NULL;
+>  }
+> @@ -439,6 +434,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg 
+> *cfg, void *cookie)
+>  static void apple_dart_free_pgtable(struct io_pgtable *iop)
+>  {
+>  	struct dart_io_pgtable *data = io_pgtable_to_data(iop);
+> +	int order = get_order(DART_GRANULE(data));
+>  	dart_iopte *ptep, *end;
+>  	int i;
+> 
+> @@ -449,15 +445,10 @@ static void apple_dart_free_pgtable(struct 
+> io_pgtable *iop)
+>  		while (ptep != end) {
+>  			dart_iopte pte = *ptep++;
+> 
+> -			if (pte) {
+> -				unsigned long page =
+> -					(unsigned long)iopte_deref(pte, data);
+> -
+> -				free_pages(page, get_order(DART_GRANULE(data)));
+> -			}
+> +			if (pte)
+> +				iommu_free_pages(iopte_deref(pte, data), order);
+>  		}
+> -		free_pages((unsigned long)data->pgd[i],
+> -			   get_order(DART_GRANULE(data)));
+> +		iommu_free_pages(data->pgd[i], order);
+>  	}
+> 
+>  	kfree(data);
 
-On point 4, do you have a more explicit way to define what is an actual
-standard/common property? You mention the vendor-prefixes as an example,
-is this just an example or this is the whole definition?
+Reviewed-by: Janne Grunau <j@jannau.net>
 
-What would be the order for this for example (from an existing DTS file)?
-
-	reg_sdhc1_vmmc: regulator-sdhci1 {
-		compatible = "regulator-fixed";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_sd1_pwr_en>;
-		enable-active-high;
-		gpio = <&main_gpio0 29 GPIO_ACTIVE_HIGH>;
-		off-on-delay-us = <100000>;
-		regulator-max-microvolt = <3300000>;
-		regulator-min-microvolt = <3300000>;
-		regulator-name = "+V3.3_SD";
-		startup-delay-us = <2000>;
-	};
-
-I guess the point that is not obvious to me here is where do we want
-pinctrl. I like it at position between 3 and 4, the rationale is that is
-a very frequent property and this way it will be in a similar place for
-every node.
-
-Francesco
-
+Janne
 
 _______________________________________________
 Linux-rockchip mailing list
