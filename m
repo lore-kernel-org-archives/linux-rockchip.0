@@ -4,108 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA1AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 20:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3467C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 20:03:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iBKpBkBne2bZCiUfF+JQ9cHyrr2WeTWM4mEHpAsxH0I=; b=onjIjrKthpH1Un
-	Mcrw0y7yPX+Q/c7V2/kHWlKIw/sjvH7QG4X3pR+kF3zLVMgNYgFX0olwaGKx0RDQtBho7d0TS+5XI
-	tvfFqFy3PFxCq3jq9Nn5Gw9QQH0yU3Xz04RzqIU8NTMVcDivJqJhJVbj98flm8tnZoFrmYvEzpxqL
-	1fS080ws44342S/aYI0j5KUZBUTrCkKAt563JdsPtYLYkWYocCT9KHBRh7t5vJA2PHDhjwM1/5XQg
-	pBCMRP3LC4XA6EF8TPeEt6cuO0sS32cmbnOyb4RKrueS+CeP77MIIX9cBB7pc3AJdvXO58Rai+9Ux
-	EepNa/Hv3ARQZ3sQB3+g==;
+	List-Owner; bh=gYkqzulNtWW3F1T1hNB4pqCwJOHEPXkxs9sKpHrPnjE=; b=Yq7ExkEqMSYKjs
+	/Ks6seOHbFnRnMiJLBa429r2Fai8XnzCzbN77VAm8YAgTUYeeMeT3Oj7tEhKQICmXHAyaPr2cbjtr
+	pgMBEcjuuNhjZhiO0s/BAJDKG77ivt3a46Ap2h/aKwMW2f03f1mq2O9IMMMF1BmbTnZdzR5e1/pYe
+	bIbjbsS6EOeuPlNcGs9YHkUdJyr4DXXW6sMSZBgAm0XiZ3+v9ILrAiyDcqgzb/PkQoYGNqVHofgyJ
+	bkGxklsyOKDVhr/8funEXfp1VgploxyCWdienDq97bLxjBhEZtDmEsj5moLZ5OzqyHSfT//NenJ3F
+	jGyHvw/p9bbzkEMH7OIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8QmA-009DKY-1Y;
-	Wed, 29 Nov 2023 20:03:14 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1r8Qma-009DTF-2t;
+	Wed, 29 Nov 2023 20:03:40 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8Qm6-009DID-28
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Nov 2023 20:03:13 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-1f03d9ad89fso45684fac.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Nov 2023 12:03:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1701288187; x=1701892987; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=oFOuz3/DxdhVTy2MXC00IZ5cc+fO6ZXycOtXt73BBek=;
-        b=J3yiGwqPoyijkBDVVW+u0i5RZUYyOLSPQXKl5ybnsIWmH/CeNSWgDQRDz6wQ5otyCJ
-         jlW7a4RiMz6T6JQ7dfi/ak3y4T4imGTq1gMggVTqm9E0J63WW6/ndd7bcdPid1xUqc3A
-         YnjcTjVtm6MQl4czowf/OfRnI+8ogJoySDDkXlCQZsp9tbiqH5EXXNwnDCNXJ8Kt8CxK
-         IHJMKyBRXE7dLga+rJM0wQziuJcoPy9aQjJMD8NE9VSiiYR+TtTBmqUoxAI+GM5rpv8z
-         C+MC3xupXJ+Zo3Kw6yd3aRj3W7FYOT1xwZ0GZueP8KJFIi1L4vrFsUZ9G9Sx5EAkgeuw
-         L0Rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701288187; x=1701892987;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oFOuz3/DxdhVTy2MXC00IZ5cc+fO6ZXycOtXt73BBek=;
-        b=bhUJPuAbfMCPNGNXpF863YiSmU0XXmRVQMLb8qoD+JpFGdbzVWEyqDmxiw/2BHD1F5
-         l4PynRUHp5o4zVwzdljlP/2pbHPwGEA/akJdMLkwUfUj8XgEPCQ3vh8I/W6c5wrZ3bow
-         vpquRaZqKChLtq4KnWglshHi+UbtZkYrqBxBAEfo4KTyID8kNXDX95hrIAatqZRBfoyx
-         wN51rvBkxh3nSongOckb6hp9j8sICYg2mKlNgtXhFppCzvodB4/u7Pm24l5fLJ/BZwOa
-         c422CurM8ksnxz4ZBpfcrlfao3Uubw/nKrqIcJnZida9BjTpeMouD/dmCs9RJZaFGE/7
-         aB2g==
-X-Gm-Message-State: AOJu0YyBEN5rio1sZpkpmKW9QcxuKEJiyz7GOmxgTON4nh0eKVwmOAuy
-	6BgTfz9A2dJ2S50F0T26Z1ZKdw==
-X-Google-Smtp-Source: AGHT+IHhptM9jGiKnASdRwicfnuRd8rDMhOAWz7BQW7PJi3eFPiHvWovE7BfQ4zpeMeNVsilXqTyVQ==
-X-Received: by 2002:a05:6870:6c0b:b0:1f9:571e:f80f with SMTP id na11-20020a0568706c0b00b001f9571ef80fmr27454829oab.13.1701288187396;
-        Wed, 29 Nov 2023 12:03:07 -0800 (PST)
-Received: from ziepe.ca (hlfxns017vw-142-134-23-187.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.134.23.187])
-        by smtp.gmail.com with ESMTPSA id s12-20020a056830438c00b006ce2f0818d3sm2098526otv.22.2023.11.29.12.03.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 12:03:06 -0800 (PST)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1r8Qm1-005pNS-Mg;
-	Wed, 29 Nov 2023 16:03:05 -0400
-Date: Wed, 29 Nov 2023 16:03:05 -0400
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, akpm@linux-foundation.org,
-	alex.williamson@redhat.com, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jasowang@redhat.com,
-	jernej.skrabec@gmail.com, jonathanh@nvidia.com, joro@8bytes.org,
-	kevin.tian@intel.com, krzysztof.kozlowski@linaro.org,
-	kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, mst@redhat.com,
-	m.szyprowski@samsung.com, netdev@vger.kernel.org,
-	paulmck@kernel.org, rdunlap@infradead.org, samuel@sholland.org,
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
-	thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
-	vdumpa@nvidia.com, virtualization@lists.linux.dev, wens@csie.org,
-	will@kernel.org, yu-cheng.yu@intel.com
-Subject: Re: [PATCH 08/16] iommu/fsl: use page allocation function provided
- by iommu-pages.h
-Message-ID: <20231129200305.GI1312390@ziepe.ca>
-References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-9-pasha.tatashin@soleen.com>
- <1c6156de-c6c7-43a7-8c34-8239abee3978@arm.com>
- <CA+CK2bCOtwZxTUS60PHOQ3szXdCzau7OpopgFEbbC6a9Frxafg@mail.gmail.com>
- <20231128235037.GC1312390@ziepe.ca>
- <52de3aca-41b1-471e-8f87-1a77de547510@arm.com>
- <CA+CK2bCcfS1Fo8RvTeGXj_ejPRX9--sh5Jz8nzhkZnut4juDmg@mail.gmail.com>
+	id 1r8QmX-009DQA-1Q;
+	Wed, 29 Nov 2023 20:03:38 +0000
+Received: from pendragon.ideasonboard.com (aztw-30-b2-v4wan-166917-cust845.vm26.cable.virginm.net [82.37.23.78])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CA9FC6F0;
+	Wed, 29 Nov 2023 21:02:54 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1701288174;
+	bh=ePtEL68l/h8jIKMdH/KdbK5MnwM4St0aZoEyLqeClPQ=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=DBnLzbUD+TsO+e3WV22AFZk957r5YVwhcXY4dY1FPHQKsbsJxpQb7dU/if/A/QVYJ
+	 zhnTmz94ShZBArJ++gjeUqyOOQPUo4nBZDTaWZxRUa9X/4qzjZYWBH+Lh9uEhhrWhA
+	 ONb1jj397BuL+UjLpNFxlX/RPjvX8cXbLn+xHBSI=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+CK2bCcfS1Fo8RvTeGXj_ejPRX9--sh5Jz8nzhkZnut4juDmg@mail.gmail.com>
+In-Reply-To: <20231129092956.250129-2-paul.elder@ideasonboard.com>
+References: <20231129092956.250129-1-paul.elder@ideasonboard.com> <20231129092956.250129-2-paul.elder@ideasonboard.com>
+Subject: Re: [PATCH 1/3] media: rkisp1: regs: Consolidate MI interrupt wrap fields
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com, Paul Elder <paul.elder@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Date: Wed, 29 Nov 2023 20:03:27 +0000
+Message-ID: <170128820728.3048548.3243837159240802893@ping.linuxembedded.co.uk>
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_120310_719960_7BDF7425 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20231129_120337_632496_B06A18C6 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,32 +65,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 29, 2023 at 02:45:03PM -0500, Pasha Tatashin wrote:
-
-> > same kind of big systems where IOMMU pagetables would be of any concern.
-> > I believe some of the some of the "serious" NICs can easily run up
-> > hundreds of megabytes if not gigabytes worth of queues, SKB pools, etc.
-> > - would you propose accounting those too?
+Quoting Paul Elder (2023-11-29 09:29:54)
+> Consolidate the wraparound fields in the memory interface interrupt
+> status registers, so that it can be more succinctly expressed by taking
+> the stream ID (main or self) as a parameter.
 > 
-> Yes. Any kind of kernel memory that is proportional to the workload
-> should be accountable. Someone is using those resources compared to
-> the idling system, and that someone should be charged.
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 
-There is a difference between charged and accounted
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 
-You should be running around adding GFP_KERNEL_ACCOUNT, yes. I already
-did a bunch of that work. Split that out from this series and send it
-to the right maintainers.
-
-Adding a counter for allocations and showing in procfs is a very
-different question. IMHO that should not be done in micro, the
-threshold to add a new counter should be high.
-
-There is definately room for a generic debugging feature to break down
-GFP_KERNEL_ACCOUNT by owernship somehow. Maybe it can already be done
-with BPF. IDK
-
-Jason
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> index 350f452e676f..bea69a0d766a 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> @@ -172,12 +172,9 @@
+>  #define RKISP1_CIF_MI_FRAME(stream)                    BIT((stream)->id)
+>  #define RKISP1_CIF_MI_MBLK_LINE                                BIT(2)
+>  #define RKISP1_CIF_MI_FILL_MP_Y                                BIT(3)
+> -#define RKISP1_CIF_MI_WRAP_MP_Y                                BIT(4)
+> -#define RKISP1_CIF_MI_WRAP_MP_CB                       BIT(5)
+> -#define RKISP1_CIF_MI_WRAP_MP_CR                       BIT(6)
+> -#define RKISP1_CIF_MI_WRAP_SP_Y                                BIT(7)
+> -#define RKISP1_CIF_MI_WRAP_SP_CB                       BIT(8)
+> -#define RKISP1_CIF_MI_WRAP_SP_CR                       BIT(9)
+> +#define RKISP1_CIF_MI_WRAP_Y(stream)                   BIT(4 + (stream)->id * 3)
+> +#define RKISP1_CIF_MI_WRAP_CB(stream)                  BIT(5 + (stream)->id * 3)
+> +#define RKISP1_CIF_MI_WRAP_CR(stream)                  BIT(6 + (stream)->id * 3)
+>  #define RKISP1_CIF_MI_DMA_READY                                BIT(11)
+>  
+>  /* MI_STATUS */
+> -- 
+> 2.39.2
+>
 
 _______________________________________________
 Linux-rockchip mailing list
