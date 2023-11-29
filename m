@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46918C07E97
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2356DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Nov 2023 12:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WBzP92dSvjTb2pLNnyypLJRW4V8NcLqTcbH/fzyeNXk=; b=PVPilJ3ajIIzZM
-	SmO3GjBUJB/6yyB1J3MMO+ErbljrMLTmsK79y3bQ7opnx2ll8yDqiKSkLVRNSbSCULvkmpQ2IQKxy
-	2zGkbHoIFEE4xGk0QOgJDkkdXJxXZa+loYH0Be3avOQQRDtk1AF5e2EIvMaF18oHzWLgviMo1VW+0
-	gNTVIDnc/hEJQG5R/4IBVee28YNuwZLQBdVW70N6Du7mWPhiqfVXTpiMAiaozYT5N5sycshJ43/OZ
-	gdT9hS9fYW1unT32D5vbJRRLOG2IOmob9EiauZZdNw93W27Bj22UIdPrgRi9u6+wsZ4vCuYHt+xIY
-	8BTvtFIRQfFRFRFJgz6g==;
+	List-Owner; bh=7mlxT31VlZ4ygCCbXQUOZ/5yCGc0xsORAnLzl/S5KpU=; b=puZZPCtVf2yE3y
+	gmRkxHduna8FhSrNRcsPKki2PVHQG9gVakjVDAd8gp3ntc5OpsvmynVfES5QMxozfl3VVfyeimfJ1
+	7MohN8qbx0vPFwKaseNnit/77qA8n7MEWXJV/kWTk/OF9/+QJ2gSfs7qrWYWESi+CMrf+RJTC5cP7
+	C9aoqfDaNGOyby2YjPIdSrGvK5R8xeE/sFSddCohhzwfDrlljkwRdoi0xhPOQ9GpzTeBEK8qlqplR
+	HL8ou6+R/QqVtcW7ngmP0znYcI92snxWV/jj07pDdy7+HwEU4YGb75lgHl0IqkJUnUm3HfRhignU9
+	bHO9gXWXgERURy8TYDSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JX3-008HQf-3B;
-	Wed, 29 Nov 2023 12:19:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r8JX7-008HTn-2n;
+	Wed, 29 Nov 2023 12:19:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8JWx-008HLb-2b;
-	Wed, 29 Nov 2023 12:19:05 +0000
+	id 1r8JX1-008HO7-39;
+	Wed, 29 Nov 2023 12:19:09 +0000
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0A61D6606F5E;
-	Wed, 29 Nov 2023 12:18:58 +0000 (GMT)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 22BC86602F24;
+	Wed, 29 Nov 2023 12:19:02 +0000 (GMT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701260342;
-	bh=iVQlnoApz3+5OFOGw6ohoOfrRDJ0cvAnaV8c4J5qgY8=;
+	s=mail; t=1701260346;
+	bh=jtOx/7NoZzqOMAnpBtB9GJItxRHHHlEm6yj66jXJL6A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GbaZwbYA8Uq6ZKv/xn14sY/5aCVd+Bk7z0foT2YA3d/cGCarIEiIlpdvRUZo9LfC5
-	 8bjjLQUmWm8TRVz1+hsFRqFDlhinXT+oyVi9rOdIXfvpgjR1hAwnq3cIVBkNrjJksr
-	 9zweSoMc/A5QapF7Ghr+6nbDpWSkYaDBF6L4O/sYXGeXdn3pGGUaQRNc+X2I0w/2o+
-	 fsO6myRDSzmeP7x7QP9RqiAXTk9vw8DEVKgElGCXQWKXg/Q6tuCF1VpRrf6csQV5+q
-	 vwdHNlMHFCeYVrO9nNRQJ+GqXM/3tU4XlkaZdIC+TXq+JAix50jdJIS45tb5FLb1BS
-	 K/bMeIy3WmTKA==
+	b=cESTV4V42mPAKCChVMQlOKBvZnr5RUqPtiSeZcNslr5Eq+AxJMuxPERH+C7xtlPnW
+	 dPVqExtF+ejvtER9rbMHr3G4rNwNAg21bw8xK8dFddqpduHkonsvjfMFOownugQodp
+	 8L37fo5S9JOvGp8l5oqEi+RzHHaj1fWegtX3dlgGYj+mfVFz6uGfFhLRV+9mBtTYYG
+	 JyMD0KI9DSeYL4g2/ZqheCJIBDdx9Og9rjaDSxHd3wl4JE8LfvLASY62b9TbmH0ar8
+	 XbL06cPJP1rO7IHo2+Q12XMGHe6bN+/b/tSSCS2Cad6bB3EEFL7kyL4ZGrvYcIC20j
+	 y/FTJ7V5AP5IQ==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -60,16 +60,17 @@ Cc: david.heidelberg@collabora.com,
 	virtualization@lists.linux-foundation.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org
-Subject: [PATCH v6 02/10] drm: ci: Force db410c to host mode
-Date: Wed, 29 Nov 2023 17:48:33 +0530
-Message-Id: <20231129121841.253223-3-vignesh.raman@collabora.com>
+Subject: [PATCH v6 03/10] drm: ci: arm64.config: Enable DA9211 regulator
+Date: Wed, 29 Nov 2023 17:48:34 +0530
+Message-Id: <20231129121841.253223-4-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231129121841.253223-1-vignesh.raman@collabora.com>
 References: <20231129121841.253223-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_041903_979776_AB1F70C9 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20231129_041908_142703_334ABA21 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,64 +87,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Force db410c to host mode to fix network issue which results in failure
-to mount root fs via NFS.
-See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
-
-Use apq8016-sbc-usb-host.dtb which allows the USB controllers
-to work in host mode.
+Mediatek mt8173 board fails to boot with DA9211 regulator disabled.
+Enable CONFIG_REGULATOR_DA9211=y in arm64.config to fix mt8173 boot
+issue.
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
 
 v2:
-  - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+  - No changes
 
 v3:
-  - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
+  - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
 
 v4:
-  - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
-    This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
+  - No changes
 
 v5:
   - No changes
 
 v6:
-  - No changes
+  - Updated commit message
 
 ---
- drivers/gpu/drm/ci/build.sh | 2 +-
- drivers/gpu/drm/ci/test.yml | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/ci/arm64.config | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-index e5c5dcedd108..e2260b4a1c67 100644
---- a/drivers/gpu/drm/ci/build.sh
-+++ b/drivers/gpu/drm/ci/build.sh
-@@ -19,7 +19,7 @@ if [[ "$KERNEL_ARCH" = "arm64" ]]; then
-     DEVICE_TREES+=" arch/arm64/boot/dts/amlogic/meson-gxl-s805x-libretech-ac.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/allwinner/sun50i-h6-pine-h64.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dtb"
--    DEVICE_TREES+=" arch/arm64/boot/dts/qcom/apq8016-sbc.dtb"
-+    DEVICE_TREES+=" arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/qcom/apq8096-db820c.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb"
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index f285ed67eb3d..4af10f0ff82d 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -102,7 +102,7 @@ msm:apq8016:
-   stage: msm
-   variables:
-     DRIVER_NAME: msm
--    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/apq8016-sbc.dtb
-+    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/apq8016-sbc-usb-host.dtb
-     GPU_VERSION: apq8016
-     BM_CMDLINE: "ip=dhcp console=ttyMSM0,115200n8 $BM_KERNEL_EXTRA_ARGS root=/dev/nfs rw nfsrootdebug nfsroot=,tcp,nfsvers=4.2 init=/init $BM_KERNELARGS"
-     RUNNER_TAG: google-freedreno-db410c
+diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
+index b4f653417883..8dbce9919a57 100644
+--- a/drivers/gpu/drm/ci/arm64.config
++++ b/drivers/gpu/drm/ci/arm64.config
+@@ -186,6 +186,7 @@ CONFIG_HW_RANDOM_MTK=y
+ CONFIG_MTK_DEVAPC=y
+ CONFIG_PWM_MTK_DISP=y
+ CONFIG_MTK_CMDQ=y
++CONFIG_REGULATOR_DA9211=y
+ 
+ # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
+ CONFIG_ARCH_TEGRA=y
 -- 
 2.40.1
 
