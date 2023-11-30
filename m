@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C168EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 11:34:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB6B9C10DC3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 12:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lZbpZ/LUGuRkGnyF+DexWlpkJ+dWinzYoO7hES21HV4=; b=10aJAy6iq2gL89
-	P3RsnfAalpztR81ie+74R0n63Njfvz4xQRpXB6T5u1Jbc1vAOUmyWGZB8pjsmKj9AMDn52npylR/S
-	9IYiScktGlu+VkulxdkzX5x9isRcIsreTalPE5EDxnu/6E5zG2Py8jEc2CGDoDwHzYJRZFNhJQ2PZ
-	3b/hybIldFd9hEKZP7HvsVs0HWcOaNbk/efSGBMHW5wa2lSYth79abzNz0W7blknF16inmmqX4PgD
-	VqUj3RKEZc+mWK8Q+rCDLT8Wk6/jEJ36FGjZ0tohT78h0TsYXdfmEF0cAWrTlISoDIouCKCZFTqMY
-	o+hTXtV3Dj4T0wNbis4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QyDwvPyZwcbG3n6USKe+jyPY9L4CL1/ldnyIeNsaIGA=; b=KaPmRVzjhSxJkA
+	CRR60tBsN2y+YNxtfyb0+ypLoPdES7WJPeq2cG+o0EVcQus/0QvPA1F+5wdjfEdFTAcogANcpBbqq
+	kHxqAdBsUA2nZkW4u6eL+fa2vOt+1O3y5q7zIuXPMGWz3fQZNXl6hy/sL1noAvHqis+9ULHdQZOxJ
+	sVWKMBwi5cTk2Q7odrYL6m0i8kVKVCodpNezMFS/iqUzA9isL5OqYXo5vs0q8psZ1vMiCVqx0FI2q
+	WkeoVGFwqOKanjcii+Mqdo04C+CM90ae+KQbScu2P5zUeofchGEHsqU6nm+ZBhBPx/vTsXTmLsAjn
+	1Fi93gAshHwhwiS2NlkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8fJ4-00Aabo-2g;
-	Thu, 30 Nov 2023 11:34:10 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8fJ1-00AaaW-26;
-	Thu, 30 Nov 2023 11:34:09 +0000
-Received: from pyrite.rasen.tech (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 16425276;
-	Thu, 30 Nov 2023 12:33:22 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701344007;
-	bh=dUdQo/NnsNM0ahRbgo/sOvGeBK2fSa+ow0mpMw2kxiM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ufA17wQ07OWsddNEeEKk0rpmFotp+SrjId4NeAj9f0nM69ANSnBI6AEOrAtqDsNEq
-	 NKXuDyvRnP7mJhrclRVYpchhgfyc8qhev4w3uA8yvJjWKEfRWvCj0VDewkdz8SeWBk
-	 BtLIO5D62xclXqLIGt9Mv8CGzVkIii01BMPsn2eA=
-Date: Thu, 30 Nov 2023 20:33:53 +0900
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: Alexander Stein <alexander.stein@ew.tq-group.com>
-Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/3] media: rkisp1: debug: Add register dump for IS
-Message-ID: <ZWhzIeW0VlDRztmS@pyrite.rasen.tech>
-References: <20231129092956.250129-1-paul.elder@ideasonboard.com>
- <170128834260.3048548.11979514587961676400@ping.linuxembedded.co.uk>
- <ZWhaFL48cgdHsOPN@pyrite.rasen.tech>
- <4881112.31r3eYUQgx@steina-w>
+	id 1r8g2B-00ApVi-15;
+	Thu, 30 Nov 2023 12:20:47 +0000
+Received: from m15.mail.163.com ([45.254.50.219])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1r8g28-00ApSb-0H
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Nov 2023 12:20:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=62A33
+	cf5Af2cRWDLxsHpxRpMh1AsaOXYK73nIWVv3Jc=; b=jN2Msd0ypXsyxZfwnIQ78
+	BVr1StiSjinLOGpr16iu0Cwe84MmB2B5n07nCO1GDV3RovIf+LYgXuD0vwVMYbX5
+	p/zg3UH/TEiISMo8hcE/XhTpysK0kHaDDpw7Aq2BVt+EtHP6BW021Vn07q8h3GxG
+	8eO/J63j79rLZj8qrSAq2Q=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by zwqz-smtp-mta-g1-0 (Coremail) with SMTP id _____wDXn9LyfWhl2DkWBg--.29823S2;
+	Thu, 30 Nov 2023 20:20:07 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com,
+	kever.yang@rock-chips.com,
+	chris.obbard@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v3 00/14] Add VOP2 support on rk3588
+Date: Thu, 30 Nov 2023 20:20:01 +0800
+Message-Id: <20231130122001.12474-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4881112.31r3eYUQgx@steina-w>
+X-CM-TRANSID: _____wDXn9LyfWhl2DkWBg--.29823S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCrW7tr4UAr4UXF48Wr4fuFg_yoWrGF4fp3
+	95CryYqrWxCFW2qrs3tw1rCrWftan7Aay3K393JanIv3W3KFyUKwnIg3Z5Zr9xWr1xZFy2
+	kF45J347Wr42vr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jrcTPUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEBQ4XmVOAqtRyAABs4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_033407_826403_3412A717 
-X-CRM114-Status: GOOD (  28.49  )
+X-CRM114-CacheID: sfid-20231130_042044_496027_701AF93B 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,140 +75,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 30, 2023 at 10:54:46AM +0100, Alexander Stein wrote:
-> Hi Paul,
-> =
+From: Andy Yan <andy.yan@rock-chips.com>
 
-> Am Donnerstag, 30. November 2023, 10:47:00 CET schrieb Paul Elder:
-> > On Wed, Nov 29, 2023 at 08:05:42PM +0000, Kieran Bingham wrote:
-> > > Quoting Paul Elder (2023-11-29 09:29:55)
-> > > =
+This patch sets aims at enable the VOP2 support on rk3588.
 
-> > > > Add register dump for the image stabilizer module to debugfs.
-> > > =
+Main feature of VOP2 on rk3588:
+Four video ports:
+VP0 Max 4096x2160
+VP1 Max 4096x2160
+VP2 Max 4096x2160
+VP3 Max 2048x1080
 
-> > > Is the Image Stabilizer on all variants of the ISP?
-> > > =
+4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+4 4K Esmart windows with line RGB/YUV support
 
-> > > I.e. is it valid register space on the RK3399 implementation?
-> > =
+The current version support all the 8 windows with all the suppported
+plane format.
 
-> > Yes, it is.
-> =
+And we don't have a upstreamed encoder/connector(HDMI/DP) for rk3588
+yet, Cristian from collabora is working on adding upstream support for
+HDMI on rk3588.
 
-> Is there some public documentation available how this ISP works? For RK33=
-99 or =
+My current test(1080P/4KP60) is runing with a HDMI driver pick from
+downstream bsp kernel.
 
-> i.MX8MP.
+A branch based on linux-6.7 rc3 containing all the series and
+HDMI driver(not compatible with mainline rk3568 hdmi) picked
+from downstream bsp kernel is available [0].
 
-Not that I'm aware of. I've been told there's some leaked documentation
-in the RK3288 (without registers), and another one for the RK3399 (with
-registers)?
+[0]https://github.com/andyshrk/linux/tree/rk3588-vop2-hdmi-upstream-linux-6.7-rc3-2023-11-30
 
+Changes in v3:
+- split confg one patch from the vop2 driver patch
+- put bool variable yuv_overlay next to other bool variable
+- define macro for RK3568_OVL_CTRL__YUV_MODE
+- just write RK3568_OVL_CTRL register once in function
+  vop2_setup_layer_mixer
+- constrain properties in allOf:if:then
+- some description updates
+- change the subject as Krzysztof suggested, and add his ACK
+- add braces for x in macro vop2_output_if_is_yyy(x)
+- clear the bits of a mask before setting it in rk3588_set_intf_mux
+- add more comments.
+- put regs dump info in vop2_data
 
-Paul
+Changes in v2:
+- fix errors when running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+- split form vop driver patch
+- add rk3588_ prefix for functions which are rk3588 only
+- make some calculation as fixed value and keep calculation formula as
+  comment
+- check return value for some cru calculation functions.
+- check return value for syscon_regmap_lookup_by_phandle
+- add NV20/NV30 for esmart plane
 
-> =
+Andy Yan (14):
+  drm/rockchip: move output interface related definition to
+    rockchip_drm_drv.h
+  Revert "drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume"
+  drm/rockchip: vop2: set half_block_en bit in all mode
+  drm/rockchip: vop2: clear afbc en and transform bit for cluster window
+    at linear mode
+  drm/rockchip: vop2: Add write mask for VP config done
+  drm/rockchip: vop2: Set YUV/RGB overlay mode
+  drm/rockchip: vop2: rename grf to sys_grf
+  dt-bindings: soc: rockchip: add rk3588 vop/vo syscon
+  dt-bindings: display: vop2: Add rk3588 support
+  dt-bindings: rockchip,vop2: Add more endpoint definition
+  drm/rockchip: vop2: Add support for rk3588
+  drm/rockchip: vop2: Add debugfs support
+  dt-bindings: iommu: rockchip: Add Rockchip RK3588
+  arm64: dts: rockchip: Add vop on rk3588
 
-> > =
+ .../display/rockchip/rockchip-vop2.yaml       | 118 ++-
+ .../bindings/iommu/rockchip,iommu.yaml        |   1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   2 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  96 +++
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |   1 -
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        |   1 -
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   1 -
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |   1 -
+ drivers/gpu/drm/rockchip/inno_hdmi.c          |   1 -
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c        |   1 -
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |  18 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |  12 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 749 +++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  | 109 ++-
+ drivers/gpu/drm/rockchip/rockchip_lvds.c      |   1 -
+ drivers/gpu/drm/rockchip/rockchip_rgb.c       |   1 -
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 412 ++++++++++
+ include/dt-bindings/soc/rockchip,vop2.h       |   4 +
+ 18 files changed, 1452 insertions(+), 77 deletions(-)
 
-> > > If so then:
-> > > Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-> > > =
-
-> > > > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > > > ---
-> > > > =
-
-> > > >  .../platform/rockchip/rkisp1/rkisp1-debug.c    | 18 ++++++++++++++=
-++++
-> > > >  1 file changed, 18 insertions(+)
-> > > > =
-
-> > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > > > b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c index
-> > > > 71df3dc95e6f..f66b9754472e 100644
-> > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > > > @@ -139,6 +139,21 @@ static int rkisp1_debug_dump_mi_mp_show(struct
-> > > > seq_file *m, void *p)> > =
-
-> > > >  }
-> > > >  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp);
-> > > > =
-
-> > > > +static int rkisp1_debug_dump_is_show(struct seq_file *m, void *p)
-> > > > +{
-> > > > +       static const struct rkisp1_debug_register registers[] =3D {
-> > > > +               RKISP1_DEBUG_SHD_REG(ISP_IS_H_OFFS),
-> > > > +               RKISP1_DEBUG_SHD_REG(ISP_IS_V_OFFS),
-> > > > +               RKISP1_DEBUG_SHD_REG(ISP_IS_H_SIZE),
-> > > > +               RKISP1_DEBUG_SHD_REG(ISP_IS_V_SIZE),
-> > > =
-
-> > > I expect so as you haven't added the register macros in this series so
-> > > they must already be there ...
-> > =
-
-> > Yep :)
-> > =
-
-> > =
-
-> > Paul
-> > =
-
-> > > > +               { /* Sentinel */ },
-> > > > +       };
-> > > > +       struct rkisp1_device *rkisp1 =3D m->private;
-> > > > +
-> > > > +       return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
-> > > > +}
-> > > > +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_is);
-> > > > +
-> > > > =
-
-> > > >  #define RKISP1_DEBUG_DATA_COUNT_BINS   32
-> > > >  #define RKISP1_DEBUG_DATA_COUNT_STEP   (4096 /
-> > > >  RKISP1_DEBUG_DATA_COUNT_BINS)> > =
-
-> > > > @@ -235,6 +250,9 @@ void rkisp1_debug_init(struct rkisp1_device *rk=
-isp1)
-> > > > =
-
-> > > >         debugfs_create_file("mi_mp", 0444, regs_dir, rkisp1,
-> > > >         =
-
-> > > >                             &rkisp1_debug_dump_mi_mp_fops);
-> > > > =
-
-> > > > +
-> > > > +       debugfs_create_file("is", 0444, regs_dir, rkisp1,
-> > > > +                           &rkisp1_debug_dump_is_fops);
-> > > > =
-
-> > > >  }
-> > > >  =
-
-> > > >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-> =
-
-> =
-
-> -- =
-
-> TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-> Amtsgericht M=FCnchen, HRB 105018
-> Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-> http://www.tq-group.com/
-> =
-
-> =
+-- 
+2.34.1
 
 
 _______________________________________________
