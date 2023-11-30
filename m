@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42D2DC07CA9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 15:56:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C37C10DC3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 15:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4DKoGPmz0FRhsmfkJjV5kfs95Gg5ayD6vTPI42FcHUs=; b=srGj8J3VfcsqHS
-	b20PaKIgdlVbl9Tu5ALqLxoV3zYZy4jySOBN9jNAn65n0iNgqVMLXG6NuZ39rAhzdL9hH0uHf0gE6
-	icJSlfnZ8VTVqqjO6II3KVUMwehDkOo1D5xpyK6zWitNalQazU30EcZjVLZEenxLNVKpx4QWwP9p1
-	z2JZdR965Ufvh0go9sp+pbyo1p2vJYfX1YZzkiNncLhO6egY7+LiBt5h+WKCnJ4hSGXRYJ6WfZj6W
-	ePycgQIBvhqwJux90I2GKlCDMc24IuTlL5ssmM/Q6xmzvpyA/tVm3WriufcGFPLRlQFPBkeQjNYJb
-	J2ceRlbrcQL2n7juPCzw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ubLjEmhl+3fw+2iSC44+d0+RJQL5PvwRxnOmLpwmnKM=; b=WlegeBIUioH/Lo
+	eTmV2OtJPY0WkAXoB1TZHxM1gJUNP8uY0w/94U+R9ZzkHKt0E49xLLXDpYcJchV8CKp2osDmyHs4w
+	TkHBV8R1YQXNnsbeQ1iMbO/IVYoGAICPrua2u0OWzMgwWSSRJrdnpg2jc2dgNJWWaIU/I8qjFJkrt
+	Rq59RdGe3w3Zl2YPcdVobhDSOyOb6QZpRMSNq188Lc7HjdQzrHlTy0jqX6xRw06ybQlBRSzagmr8h
+	VQ03ew8uTOWQ/2t/p2sFy76EUnLSD0/s/HRz6IcrsetOaDV9ihguN9+vzdg8ZetHQSkWyXZ3X70UW
+	10KKyFbuBYZGKG7ypk0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8jP7-00BGkz-1X;
-	Thu, 30 Nov 2023 15:56:41 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1r8jPE-00BGq6-0r;
+	Thu, 30 Nov 2023 15:56:48 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8jP4-00BGju-2L
+	id 1r8jP8-00BGkS-2H
 	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Nov 2023 15:56:39 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6cd0963c61cso692044a34.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Nov 2023 07:56:36 -0800 (PST)
+	Thu, 30 Nov 2023 15:56:44 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id 46e09a7af769-6d80245b6easo647521a34.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Nov 2023 07:56:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701359796; x=1701964596; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=TvmqJO0ppzl3rJXfbHdcHrgR5dQ8u3NxPpJslKQqqYw=;
-        b=a0pfNQrdp8KHi1m4Vv6iziLPM5kG8ld0r2ymp62IMyagDYEQsIVxNT0u3EkSeifE1p
-         q2ZaceeEen/XAbkSBnsPVzEP0YLzw/gtgplmgd/ANSXZkn6V4vLHYBjVoDxXQRp9/5AZ
-         5V9koQsZeoi1Xol5tA4P0ixTwNjJrOrcQU1TPhIBNDCPu9BKMOOug41imaHLPvKNJk01
-         tZhQaZyiVF62UweFOxG4JRpJKK9jzvKoqKvRm9i/se+mYiSjMhTn7nuYwNyX24QpMS1x
-         RRVSA4Qvp7VqQiePDyTvvneUyiR2kc7O4EGPdtD81el3V6bBjB9PU7eXVfUt8qljM3O2
-         Eq/w==
+        d=gmail.com; s=20230601; t=1701359799; x=1701964599; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cqG2snvAFFOieKorYhuNC1Brzfr2ap7NECEbi10aNlw=;
+        b=KI5iK3D6XdTbbI0ZUWdNS29mseD5YSGe6isqnteXgv1Gg+Z27jm7dpiUgl+MocRgB7
+         IyJiePrGWLzpVu00jZU5amZ4SnWm9gcUiWWlDWojmfCANOkNZH7GR6wh62njmNOK2BGY
+         DOcwUPoyB1SvEAFs2wJ8vs0N6TEbbUJLt9DF8KUd/pTyqKaSYbLo7Qtun5l/ega41QS3
+         obGp5OQ52Yqo2LuRrylRExi27gVLHBLQpx4oqZU/L18e/J2w3FvDxE/iD39lik4yZqty
+         yv0xgoLpSxZBYGUXqMr9+GMt5Vd0pmi1MmbxI3hsge/c+f/bwdz0xVsD80T0GgHZqnRG
+         Ef4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701359796; x=1701964596;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=TvmqJO0ppzl3rJXfbHdcHrgR5dQ8u3NxPpJslKQqqYw=;
-        b=u6Zxo8eXK+24erhkYBWxLCe5WsmLrsE2R+ccXhAUsHgAkOguFs22ziwxvX7T4+M0KL
-         idtZqyn/9D8R9SdFGhpTK43C/gIHWNF7yD04tlZsSXTLFh5MXdN4StXde4sbYylTTii0
-         Iw7LnaFWf0WNq4cMzwr2IcfKSH0R2Nroy8rrs/MvLApmRA51yTmZg54TEXwDFBg/qWvs
-         XYGtYB3JDcMDPo/Q0hdSydA12pZqKx6+x271v61tUYB6DhyPY/pvb1qhcoh5+53wtWk2
-         UDiuBGZiFSEWxN+JCcjrooKUi2fRrfxAVJAEWhItytqev4j/Ls4pQrKghjf9LQAPeIdW
-         yq4Q==
-X-Gm-Message-State: AOJu0YwnQQUftXD/ffaGxW77TxKnhDP00JcIpKPbks06JLVcQ7B5HebI
-	llNKbJ8wB7u8mS7bq1/8qHP1gMxnDx0=
-X-Google-Smtp-Source: AGHT+IGETl/gTp4AkG0pVc3uLa1QNZZM4WQtChA8x1bd0u1DJ9TEu3j4YaOt3w6rwoz7iauW3gsExw==
-X-Received: by 2002:a9d:7416:0:b0:6d8:17ea:e48e with SMTP id n22-20020a9d7416000000b006d817eae48emr16937254otk.30.1701359795998;
-        Thu, 30 Nov 2023 07:56:35 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701359799; x=1701964599;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cqG2snvAFFOieKorYhuNC1Brzfr2ap7NECEbi10aNlw=;
+        b=w2MLvC88UOU3LrllYIRs95btAEjSwrLyORgKUubSWOpTXA0o42UQwMncXbWuCjBFYs
+         0hELSl1QOw6G9pIsOXx2tnu/IrJz4h2AR+tpA7WQ56ZdF7oTBmz80BJocjHVKmvYeFp5
+         kOadSFy+/2Auv/IwMIlnNWngF/3wn+TnnvK7vnQRqaT9/4h42kAPYPl7B3WYjxOG0MUy
+         GUJZGyb7RjgpYDCX0+WGYtKtfasGxt/Pngd63VfIztuBaCwCRAyAmuynCklXfEYUkDBu
+         VNkv/9UNPVhIXtaWWEnCAXIh2uV7Zr2Ud7sF4m/gFm6ZBYZFMikjHyGNHeSL8TVQVPLY
+         Jn6A==
+X-Gm-Message-State: AOJu0YxO2uTEFnJ1s85dlow2Fz2gCeX9586L6EzkxLmj/PAIlkRgUitb
+	Thpol9gvJv66MN4wC6Edya+9w62c01I=
+X-Google-Smtp-Source: AGHT+IF5jM0pqDMvI16N6bFujnbVlKLkC7G5DaqBhEmXPRDkOyCV7zG2glIlQbuFemOOUGzoI3p2mQ==
+X-Received: by 2002:a9d:6b18:0:b0:6d8:2883:cb5a with SMTP id g24-20020a9d6b18000000b006d82883cb5amr14210032otp.24.1701359798769;
+        Thu, 30 Nov 2023 07:56:38 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id n25-20020a9d6f19000000b006d7ff27a47esm187852otq.77.2023.11.30.07.56.35
+        by smtp.gmail.com with ESMTPSA id n25-20020a9d6f19000000b006d7ff27a47esm187852otq.77.2023.11.30.07.56.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 07:56:35 -0800 (PST)
+        Thu, 30 Nov 2023 07:56:38 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -82,15 +83,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/9] rockchip: Add Powkiddy X55
-Date: Thu, 30 Nov 2023 09:56:15 -0600
-Message-Id: <20231130155624.405575-1-macroalpha82@gmail.com>
+Subject: [PATCH 4/9] drm/panel: himax-hx8394: Add Panel Rotation Support
+Date: Thu, 30 Nov 2023 09:56:19 -0600
+Message-Id: <20231130155624.405575-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231130155624.405575-1-macroalpha82@gmail.com>
+References: <20231130155624.405575-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_075638_786845_192F90D0 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231130_075642_743562_A3D9495E 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,29 +111,60 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
-console.
+Add support for setting the rotation property for the Himax HX8394
+panel.
 
-Chris Morgan (9):
-  drm/panel: himax-hx8394: Drop prepare/unprepare tracking
-  drm/panel: himax-hx8394: Drop shutdown logic
-  dt-bindings: display: Document Himax HX8394 panel rotation
-  drm/panel: himax-hx8394: Add Panel Rotation Support
-  dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
-  drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
-  clk: rockchip: Mark pclk_usb as critical on rk3568
-  dt-bindings: arm: rockchip: Add Powkiddy X55
-  arm64: dts: rockchip: Add Powkiddy X55
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/gpu/drm/panel/panel-himax-hx8394.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
- .../devicetree/bindings/arm/rockchip.yaml     |   1 +
- .../bindings/display/panel/himax,hx8394.yaml  |   3 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3566-powkiddy-x55.dts | 926 ++++++++++++++++++
- drivers/clk/rockchip/clk-rk3568.c             |   1 +
- drivers/gpu/drm/panel/panel-himax-hx8394.c    | 180 +++-
- 6 files changed, 1084 insertions(+), 28 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
-
+diff --git a/drivers/gpu/drm/panel/panel-himax-hx8394.c b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+index d8e590d5e1da..b68ea09f4725 100644
+--- a/drivers/gpu/drm/panel/panel-himax-hx8394.c
++++ b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+@@ -68,6 +68,7 @@ struct hx8394 {
+ 	struct gpio_desc *reset_gpio;
+ 	struct regulator *vcc;
+ 	struct regulator *iovcc;
++	enum drm_panel_orientation orientation;
+ 
+ 	const struct hx8394_panel_desc *desc;
+ };
+@@ -324,12 +325,20 @@ static int hx8394_get_modes(struct drm_panel *panel,
+ 	return 1;
+ }
+ 
++static enum drm_panel_orientation hx8394_get_orientation(struct drm_panel *panel)
++{
++	struct hx8394 *ctx = panel_to_hx8394(panel);
++
++	return ctx->orientation;
++}
++
+ static const struct drm_panel_funcs hx8394_drm_funcs = {
+ 	.disable   = hx8394_disable,
+ 	.unprepare = hx8394_unprepare,
+ 	.prepare   = hx8394_prepare,
+ 	.enable	   = hx8394_enable,
+ 	.get_modes = hx8394_get_modes,
++	.get_orientation = hx8394_get_orientation,
+ };
+ 
+ static int hx8394_probe(struct mipi_dsi_device *dsi)
+@@ -347,6 +356,12 @@ static int hx8394_probe(struct mipi_dsi_device *dsi)
+ 		return dev_err_probe(dev, PTR_ERR(ctx->reset_gpio),
+ 				     "Failed to get reset gpio\n");
+ 
++	ret = of_drm_get_panel_orientation(dev->of_node, &ctx->orientation);
++	if (ret < 0) {
++		dev_err(dev, "%pOF: failed to get orientation %d\n", dev->of_node, ret);
++		return ret;
++	}
++
+ 	mipi_dsi_set_drvdata(dsi, ctx);
+ 
+ 	ctx->dev = dev;
 -- 
 2.34.1
 
