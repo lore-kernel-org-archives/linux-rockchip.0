@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D39C46CA3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 13:51:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20985C4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 13:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NQqxQI/mpkOkOHwcadb7PC1F0szle/CZuQvk8Z3Lllk=; b=p24pQevG/7skKU
-	e7VADVBzmulDGaCVo+/bOkf+CxMJiGeeTfP9cri6sy33kWBTyl1cHOMBMn+Q49CNe4tC8W2q/AVIX
-	1SA1iDhNElxt3LorOx6gt/d9kq4CYzZ0cXg83zJaOwAegFNrCrle90c8RKQClVZh968nxtrdoPPCB
-	v2WrC2DxETmunTctcJMLdNAZqp+rh0bjnrCENukfPEUB+4y931lMpnN07vGzsq5B22HktoiGSWP7p
-	NLjvC3DsjhdXxgSCBgj44XQe5GTu2rkOB/PCHWV780/Q97xGr1pR3BBAVuOT8JBWBTkGsli2cAkOC
-	Tm0NXLJc09gLnLcWs0mQ==;
+	List-Owner; bh=ADQF4jiC5uNe6Y+BqcIHD+/ghLMBLIYRKjcJR0irYgg=; b=ph1rTyDdrPmNYP
+	tRBmwGOOOlRvy0uu3fBQGrypE1w4+Yl5zLAsBfdcwBWFaH0J3zX4N3jABE52EsNbFUhO/HHG5necR
+	IPObr3dtSCK/4xuOYm4IX/41Jlye2VfbecWNtBPFcE4q16G7lZgJclbf8eJkx8W5GWEI3XiGvA4UK
+	lOPyHXSZYEs4P+KExfD4OnLxAYn1rvbXO3VMbKMmrZOEW4xCLZoHazHxfUCgqCwL1gEUnJmHg59Md
+	fE9PhPwUfAYHYJkTcxtS3kfZ6IdxcLCrTJaphOLGG9RNFFqh0rwz6L6qGryKHL1FHSgwbeAYP9l9u
+	Ld545cFQCZvOJ57grDRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8hRZ-00B1Mj-2r;
-	Thu, 30 Nov 2023 13:51:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1r8hUO-00B1ow-1m;
+	Thu, 30 Nov 2023 13:54:00 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8hRW-00B1MA-0g;
-	Thu, 30 Nov 2023 13:51:04 +0000
-Received: from [100.124.219.30] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 037796607345;
-	Thu, 30 Nov 2023 13:50:54 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701352258;
-	bh=HGnD8bUQWOaK+6RFgKTsVFZmO6HTrfFGIJlJrDox4v8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H58wh8CHNeyKhFKLgOKBi4cHe/A5GWRrfro7BiyeAt4Jr5iSpHtao56/5Xpa0WFNt
-	 iL9p94K8uIyTXndAwxXyrdNoIHY9sXoa5oBmnefTqKNP3R0jrZm8Swjg7huYA2KQi2
-	 qA2dhqdwQ0MRA5G3Od4dScyaTjrYKG0aYkBzU0D3kIBfKadg5E9uG5RT6kHtSoFYVf
-	 4V0V4odklj4B0h1o/kAGP/l1KaQWj1PwW92dO9KW8DxzbwFbO/+nUqH7C+XFTFeJ/d
-	 058/Sgc7SGQkJBFyU3cqme3tnGtkMBUFdWLM7lBBh92rCW62iY4m/GSvtgeOyxYAOI
-	 yAE7gIc4P+R8w==
-Message-ID: <893192db-0431-4d1f-7281-952da9979345@collabora.com>
-Date: Thu, 30 Nov 2023 19:20:50 +0530
+	id 1r8hUL-00B1mD-0V;
+	Thu, 30 Nov 2023 13:53:58 +0000
+Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D8F1655;
+	Thu, 30 Nov 2023 14:53:18 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1701352399;
+	bh=nXRXZ31BrZI5b7Gjgomlhj9LuAT4oxERvzq3b7IxzSQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a1JPu9C++7p6NBJwdtkrlWuFIwEjLdlNBjpWG4hqe0iC1jhjX1kPFxeQFEjZr2BxD
+	 2/9ST/OvNvSTtZVbQOtH5AYI4KPl19tBojU6MXDP6mxBbBzvIUI30o+Vqa4we0/Jbb
+	 66RtDNjNoTaFLWsont/wFY76SjEfQn7CM+axDRDI=
+Date: Thu, 30 Nov 2023 15:54:01 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	kieran.bingham@ideasonboard.com, tomi.valkeinen@ideasonboard.com,
+	umang.jain@ideasonboard.com, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 3/3] media: rkisp1: debug: Count completed frame
+ interrupts
+Message-ID: <20231130135401.GO8402@pendragon.ideasonboard.com>
+References: <20231129092956.250129-1-paul.elder@ideasonboard.com>
+ <20231129092956.250129-4-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v6 06/10] drm: ci: mediatek: Set IGT_FORCE_DRIVER for
- mt8173
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- daniels@collabora.com, emma@anholt.net, gustavo.padovan@collabora.com,
- linux-arm-msm@vger.kernel.org, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- david.heidelberg@collabora.com, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20231129121841.253223-1-vignesh.raman@collabora.com>
- <20231129121841.253223-7-vignesh.raman@collabora.com>
- <CAPj87rPKywWa8KxTCeJQz4vvgTwhPzL+y4aCX9zxZDkkfrvsoQ@mail.gmail.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rPKywWa8KxTCeJQz4vvgTwhPzL+y4aCX9zxZDkkfrvsoQ@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20231129092956.250129-4-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_055102_431681_2406749B 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20231130_055357_343885_4716CE33 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +68,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+Hi Paul,
 
-On 29/11/23 18:52, Daniel Stone wrote:
-> Hi Vignesh,
+Thank you for the patch.
+
+On Wed, Nov 29, 2023 at 06:29:56PM +0900, Paul Elder wrote:
+> Add a counter to debugfs to count the number of frame-end interrupts.
 > 
-> On Wed, 29 Nov 2023 at 12:19, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> Expected driver for mt8173 is "mediatek" and for mt8183
->> it is "panfrost". Set IGT_FORCE_DRIVER to 'mediatek' as
->> the expected driver for mt8173.
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 +
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c  | 2 ++
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c    | 2 ++
+>  3 files changed, 5 insertions(+)
 > 
-> Actually, for mt8183 it's both. And for mt8173 it will probably be
-> mediatek+pvr pretty soon. Each of these SoCs (like most Arm devices)
-> have a separate display controller and GPU, with different drivers for
-> each. They'll run different tests with different xfails. So we should
-> figure out a way to support igt running for both devices on the one
-> system.
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index 1e7cea1bea5e..be69173958a4 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -417,6 +417,7 @@ struct rkisp1_debug {
+>  	unsigned long stats_error;
+>  	unsigned long stop_timeout[2];
+>  	unsigned long frame_drop[2];
+> +	unsigned long complete_frames;
+>  };
+>  
+>  /*
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> index f66b9754472e..1b1edfd3ab6c 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> @@ -232,6 +232,8 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  			     &debug->frame_drop[RKISP1_MAINPATH]);
+>  	debugfs_create_ulong("sp_frame_drop", 0444, debug->debugfs_dir,
+>  			     &debug->frame_drop[RKISP1_SELFPATH]);
+> +	debugfs_create_ulong("complete_frames", 0444, debug->debugfs_dir,
+> +			     &debug->complete_frames);
 
-Agree. Will work on separate patch to test both the drivers for these 
-devices.
+I think tt would be nice to consolidate all counters in a single file.
 
+I also wonder if we should reset the counters when we start streaming,
+that would make it easier to interpret the values in userspace.
+
+None of these are new issues so they can be addressed on top. Would you
+be able to write a few short patches ?
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+>  	debugfs_create_file("input_status", 0444, debug->debugfs_dir, rkisp1,
+>  			    &rkisp1_debug_input_status_fops);
+>  
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index 64a956b9f2d0..06cdb4edf19c 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -991,6 +991,8 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+>  	if (status & RKISP1_CIF_ISP_FRAME) {
+>  		u32 isp_ris;
+>  
+> +		rkisp1->debug.complete_frames++;
+> +
+>  		/* New frame from the sensor received */
+>  		isp_ris = rkisp1_read(rkisp1, RKISP1_CIF_ISP_RIS);
+>  		if (isp_ris & RKISP1_STATS_MEAS_MASK)
+
+-- 
 Regards,
-Vignesh
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
