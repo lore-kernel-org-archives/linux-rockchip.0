@@ -4,68 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22B8C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 10:19:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C168EC4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 11:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T0qz/dRFqijGz/7gh+25/0OuWk0whgglmcA0to8Yy6Q=; b=cxPkcYAdq8YjaD
-	rfqsziWuIPKT7PjFGTgUmlY5q8M5Hwq7x3T5Brhc4zePfsHBqcCKc4y2SHJCh76FgsWxDuSFFjZJV
-	j0Q/8p2HCwghkhoDBiSIv1Suh8xU16CNhwF+I8kNQJpObZvhXX6o5eWYoxzJxUnnCZnieOyIIiroB
-	5ClT2w2yz3yWiVivitbHpOVksJRc35jUPbdw4Pisno1joI+ILasG0p19nkWikGYc6ulmoPfs7uXbE
-	nxGp8XSmf+jpquI3XNOhQnOJAVA6EUS67FmK8t2i1ew3O3Qz7e7VogPcbNxl6MpWXQCBiy7Ozurb+
-	E6UI3gvi8xcsRYTjfuGA==;
+	List-Owner; bh=lZbpZ/LUGuRkGnyF+DexWlpkJ+dWinzYoO7hES21HV4=; b=10aJAy6iq2gL89
+	P3RsnfAalpztR81ie+74R0n63Njfvz4xQRpXB6T5u1Jbc1vAOUmyWGZB8pjsmKj9AMDn52npylR/S
+	9IYiScktGlu+VkulxdkzX5x9isRcIsreTalPE5EDxnu/6E5zG2Py8jEc2CGDoDwHzYJRZFNhJQ2PZ
+	3b/hybIldFd9hEKZP7HvsVs0HWcOaNbk/efSGBMHW5wa2lSYth79abzNz0W7blknF16inmmqX4PgD
+	VqUj3RKEZc+mWK8Q+rCDLT8Wk6/jEJ36FGjZ0tohT78h0TsYXdfmEF0cAWrTlISoDIouCKCZFTqMY
+	o+hTXtV3Dj4T0wNbis4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8e8A-00AQLr-1O;
-	Thu, 30 Nov 2023 10:18:50 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1r8fJ4-00Aabo-2g;
+	Thu, 30 Nov 2023 11:34:10 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8e86-00AQKl-30;
-	Thu, 30 Nov 2023 10:18:48 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2c9afe6e21fso10395101fa.0;
-        Thu, 30 Nov 2023 02:18:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701339524; x=1701944324; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=c5FGYC1au+a2xY09Qm1hrPpvUGudmGYI587sIOf2nQU=;
-        b=JPgT/S/ENTi/dPrHFwY5hbMRXfZbkXFGlZuEDNAzCk6uTw+rj45wYByf19OdM7eUh+
-         Qv08qe0rAQ08OhtDbk+NRT1rrz4156ZG4l5sIt4yDHDs56hDvgLzianztqQDJeAnnk4z
-         lWUXJj3ULsSJ1b/FJQzUDjZbXn+DlQVihkIalQPqgwoEXo8oWJ/RwmAt/dU3l+Xs7Exb
-         F2cLmceBoPr22P9h/J7mHxUrK/KiNd9k2No+MN3SSjQ0MZS6NQ42uIy0AfNfNEQ16h6v
-         9lgx7ovhxJ+/+I6dl7ZBjQvVRkzdbiQCd74iqc9WGlRTKkWWUngff/BQEhy0WvG2iSED
-         KbZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701339524; x=1701944324;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c5FGYC1au+a2xY09Qm1hrPpvUGudmGYI587sIOf2nQU=;
-        b=ZvlzeDYqDV4dR53G/RldtuVlnqH/TeqkYjqG4HQIQz8jHKTsA8C5ToukSRKHPqXO1W
-         BYdyJI37c/yd46hvjoDzd4duTiYd9uxG+KmNtKUCI4qvEiTiBllnlNsGKs8jAe277glA
-         z628P0DLmhAC+B/RHzq6xs6pRDtu1k+VYDnpr4J/0qRxRhg5nsOfzZ0lne/W/J2/Bdo3
-         dn295Vd4PiRPY1pe3xQrx2qKrybt5zbE1k1gMRHtwhH+3llfjZBSacvII2OrmQDyW/oU
-         zgVB8xpi0CddfCp5k+JGwy1wxKxPyv4O95hxNnph+owD35xMFmDsHBsqJwJSVA4b9HYe
-         hkPA==
-X-Gm-Message-State: AOJu0Yymtv6qR4vwsfUL7GFo9pQtce8+oXWw7J33SEvtS06yx7cETbxb
-	2NM8RX/GmquyGY/bwVN2LMD1vxBxH6Q=
-X-Google-Smtp-Source: AGHT+IEZ+H12n904PcCJ7l4olz+SFWc7iywSBqp3Ai7Zj9ZXEYMer4AAaHhzG9aSVrfDt+Sq3y9b3Q==
-X-Received: by 2002:ac2:504f:0:b0:50b:bf06:ea0b with SMTP id a15-20020ac2504f000000b0050bbf06ea0bmr4812487lfm.53.1701339524296;
-        Thu, 30 Nov 2023 02:18:44 -0800 (PST)
-Received: from tom-HP-ZBook-Fury-15-G7-Mobile-Workstation (net-2-39-143-167.cust.vodafonedsl.it. [2.39.143.167])
-        by smtp.gmail.com with ESMTPSA id hg10-20020a05600c538a00b0040b398f0585sm1566915wmb.9.2023.11.30.02.18.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 02:18:43 -0800 (PST)
-Date: Thu, 30 Nov 2023 11:18:41 +0100
-From: Tommaso Merciai <tomm.merciai@gmail.com>
+	id 1r8fJ1-00AaaW-26;
+	Thu, 30 Nov 2023 11:34:09 +0000
+Received: from pyrite.rasen.tech (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 16425276;
+	Thu, 30 Nov 2023 12:33:22 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1701344007;
+	bh=dUdQo/NnsNM0ahRbgo/sOvGeBK2fSa+ow0mpMw2kxiM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ufA17wQ07OWsddNEeEKk0rpmFotp+SrjId4NeAj9f0nM69ANSnBI6AEOrAtqDsNEq
+	 NKXuDyvRnP7mJhrclRVYpchhgfyc8qhev4w3uA8yvJjWKEfRWvCj0VDewkdz8SeWBk
+	 BtLIO5D62xclXqLIGt9Mv8CGzVkIii01BMPsn2eA=
+Date: Thu, 30 Nov 2023 20:33:53 +0900
+From: Paul Elder <paul.elder@ideasonboard.com>
 To: Alexander Stein <alexander.stein@ew.tq-group.com>
 Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com,
 	Dafna Hirschfeld <dafna@fastmail.com>,
@@ -74,7 +48,7 @@ Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/3] media: rkisp1: debug: Add register dump for IS
-Message-ID: <ZWhhgQPSgKkkK/ma@tom-HP-ZBook-Fury-15-G7-Mobile-Workstation>
+Message-ID: <ZWhzIeW0VlDRztmS@pyrite.rasen.tech>
 References: <20231129092956.250129-1-paul.elder@ideasonboard.com>
  <170128834260.3048548.11979514587961676400@ping.linuxembedded.co.uk>
  <ZWhaFL48cgdHsOPN@pyrite.rasen.tech>
@@ -83,8 +57,8 @@ MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <4881112.31r3eYUQgx@steina-w>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_021846_970944_40E61E2C 
-X-CRM114-Status: GOOD (  30.13  )
+X-CRM114-CacheID: sfid-20231130_033407_826403_3412A717 
+X-CRM114-Status: GOOD (  28.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,8 +74,6 @@ Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
-
-Hi Alexander,
 
 On Thu, Nov 30, 2023 at 10:54:46AM +0100, Alexander Stein wrote:
 > Hi Paul,
@@ -129,29 +101,13 @@ On Thu, Nov 30, 2023 at 10:54:46AM +0100, Alexander Stein wrote:
 
 > i.MX8MP.
 
-For the ISP there is some public docs into imx8mp reference manual at page =
-5895
-chapter:
+Not that I'm aware of. I've been told there's some leaked documentation
+in the RK3288 (without registers), and another one for the RK3399 (with
+registers)?
 
-13.14 Image Signal Processor (ISP)
 
-https://www.nxp.com/webapp/Download?colCode=3DIMX8MPRM
-https://www.nxp.com/design/development-boards/i-mx-evaluation-and-developme=
-nt-boards/evaluation-kit-for-the-i-mx-8m-plus-applications-processor:8MPLUS=
-LPD4-EVK
+Paul
 
-This is not the full docs I think but cover some part of the ISP
-functionality.
-
-Hope this help.
-
-Regards,
-Tommaso
-
-> =
-
-> Best regards,
-> Alexander
 > =
 
 > > =
@@ -245,8 +201,6 @@ isp1)
 > Amtsgericht M=FCnchen, HRB 105018
 > Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
 > http://www.tq-group.com/
-> =
-
 > =
 
 > =
