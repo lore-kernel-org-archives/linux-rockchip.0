@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610A9C10DC2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 15:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42D2DC07CA9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 15:56:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OreLjUdmFwL4BEPx/P7svj17GY12JD2lpiP5KluUqaE=; b=CKh0pzAdt+Ol/w
-	lb5IXvnjXos3NBb3CGQ3JbMG55dLHyl5a5RMOqhcydHandJvFYrDYhnQxxEdSFNTtz1kRKtQQoaYk
-	UvTLP4GhLxYXnEdwYCGGdeOUr0i/JWLN2uurtd2mN+oDqrDAi5soHkllb3l+cC6TdvfUMsuElKWgK
-	rYNmHlJx3bEORTACna2juALq2U909GOWF0jGgBK2FUae8dbpVKossAQqIrLUkLMOyNqeAmgRfglhz
-	boKISM7FlIhH8gUmEMPEZxTyzcq9e+/cyrgtUBQ91as/fEjQLnY7L5JGBC5Xv6/b03RVx4MSh4tfw
-	RchBJ9bii4YAdhKifzMw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4DKoGPmz0FRhsmfkJjV5kfs95Gg5ayD6vTPI42FcHUs=; b=srGj8J3VfcsqHS
+	b20PaKIgdlVbl9Tu5ALqLxoV3zYZy4jySOBN9jNAn65n0iNgqVMLXG6NuZ39rAhzdL9hH0uHf0gE6
+	icJSlfnZ8VTVqqjO6II3KVUMwehDkOo1D5xpyK6zWitNalQazU30EcZjVLZEenxLNVKpx4QWwP9p1
+	z2JZdR965Ufvh0go9sp+pbyo1p2vJYfX1YZzkiNncLhO6egY7+LiBt5h+WKCnJ4hSGXRYJ6WfZj6W
+	ePycgQIBvhqwJux90I2GKlCDMc24IuTlL5ssmM/Q6xmzvpyA/tVm3WriufcGFPLRlQFPBkeQjNYJb
+	J2ceRlbrcQL2n7juPCzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8jPA-00BGnI-1U;
-	Thu, 30 Nov 2023 15:56:44 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8jP6-00BGkb-0J
-	for linux-rockchip@lists.infradead.org;
+	id 1r8jP7-00BGkz-1X;
 	Thu, 30 Nov 2023 15:56:41 +0000
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6d7eca548ccso615016a34.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Nov 2023 07:56:40 -0800 (PST)
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1r8jP4-00BGju-2L
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Nov 2023 15:56:39 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6cd0963c61cso692044a34.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Nov 2023 07:56:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701359799; x=1701964599; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PaHm7z9yY7JhEbhzyWmBl6MrUO4DRuFVOID91e7Rsas=;
-        b=S8tDcy882+sG98XQRajq8Oh4dSlBU0UpSNuJ4E1emq9wBxrR8Y1VppdPBXYBFFmEz7
-         nZuukmg1bqRsyzxV4NmEIJ2JIF7rpY6Kjxfn1nfGkmjGbxHAdHi6wRlBRijFB3gpxyJi
-         xZOXTr+W4M7DseMPRpDqVb0VHtUcUF0/51fe7DLUvam1nzxQ5/+knPWoz49GcQIk5/xe
-         PiNQfq7+B03jPKOshRH2frhqEkucPV9aBbwJMyiRwdZpqck4p6lpXsIHfUg4d3o4/D/o
-         vjjLI0+C1hrKKnQNoYsfrh449pmDHbE41znL3BFfkbEtATJvY23dYfxrMaDyy9IcDAlA
-         yXNQ==
+        d=gmail.com; s=20230601; t=1701359796; x=1701964596; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=TvmqJO0ppzl3rJXfbHdcHrgR5dQ8u3NxPpJslKQqqYw=;
+        b=a0pfNQrdp8KHi1m4Vv6iziLPM5kG8ld0r2ymp62IMyagDYEQsIVxNT0u3EkSeifE1p
+         q2ZaceeEen/XAbkSBnsPVzEP0YLzw/gtgplmgd/ANSXZkn6V4vLHYBjVoDxXQRp9/5AZ
+         5V9koQsZeoi1Xol5tA4P0ixTwNjJrOrcQU1TPhIBNDCPu9BKMOOug41imaHLPvKNJk01
+         tZhQaZyiVF62UweFOxG4JRpJKK9jzvKoqKvRm9i/se+mYiSjMhTn7nuYwNyX24QpMS1x
+         RRVSA4Qvp7VqQiePDyTvvneUyiR2kc7O4EGPdtD81el3V6bBjB9PU7eXVfUt8qljM3O2
+         Eq/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701359799; x=1701964599;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PaHm7z9yY7JhEbhzyWmBl6MrUO4DRuFVOID91e7Rsas=;
-        b=d3yTa9X+jBmFdwT0rbyyQGmX/vG5yxV9ka7t4esVs2qlEq2nPThDHD3AyzO4h9lwh7
-         fk+jsfq7wK+H5Vgwy9wj9ODevPmmHfF/eCU0H089L/k/djyu4NtQTe7iSixrM3oYf0bk
-         bvkpwT/dvTb93MS228eTf0Z4+HUudvwlTUW2zf6DmzviqVXZBiyK/qM86U/+vqyex0F9
-         Wf8BA0oeRKh4SCrqQETLKNm5oDnWweRif7IPQrsb7b+VZBAcUDWA/Ok8YeAm3T5c9Wnj
-         oUD44FV+fSNsvIj/43iPs3KS/VYHJ5Ez4ASsM7teaQoVGtJn9XC5D6VaXRzUIUF55gC1
-         W/KQ==
-X-Gm-Message-State: AOJu0YwZmcOhUoSeBmR18WduWFjV0kQaVUdsGvsNylSufgIfs0IPfU3y
-	4F7ReisjxMvx3yjxZ7sww5C/U3NoG1U=
-X-Google-Smtp-Source: AGHT+IHRrQ9qQNsi6yG3nqPiEdlso2YvHwKneV/qHu4W+YUFgHARSucqfgOTC/owBcTkL1lolpTTlA==
-X-Received: by 2002:a9d:7c91:0:b0:6d8:5a35:ee16 with SMTP id q17-20020a9d7c91000000b006d85a35ee16mr3439943otn.27.1701359799460;
-        Thu, 30 Nov 2023 07:56:39 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701359796; x=1701964596;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TvmqJO0ppzl3rJXfbHdcHrgR5dQ8u3NxPpJslKQqqYw=;
+        b=u6Zxo8eXK+24erhkYBWxLCe5WsmLrsE2R+ccXhAUsHgAkOguFs22ziwxvX7T4+M0KL
+         idtZqyn/9D8R9SdFGhpTK43C/gIHWNF7yD04tlZsSXTLFh5MXdN4StXde4sbYylTTii0
+         Iw7LnaFWf0WNq4cMzwr2IcfKSH0R2Nroy8rrs/MvLApmRA51yTmZg54TEXwDFBg/qWvs
+         XYGtYB3JDcMDPo/Q0hdSydA12pZqKx6+x271v61tUYB6DhyPY/pvb1qhcoh5+53wtWk2
+         UDiuBGZiFSEWxN+JCcjrooKUi2fRrfxAVJAEWhItytqev4j/Ls4pQrKghjf9LQAPeIdW
+         yq4Q==
+X-Gm-Message-State: AOJu0YwnQQUftXD/ffaGxW77TxKnhDP00JcIpKPbks06JLVcQ7B5HebI
+	llNKbJ8wB7u8mS7bq1/8qHP1gMxnDx0=
+X-Google-Smtp-Source: AGHT+IGETl/gTp4AkG0pVc3uLa1QNZZM4WQtChA8x1bd0u1DJ9TEu3j4YaOt3w6rwoz7iauW3gsExw==
+X-Received: by 2002:a9d:7416:0:b0:6d8:17ea:e48e with SMTP id n22-20020a9d7416000000b006d817eae48emr16937254otk.30.1701359795998;
+        Thu, 30 Nov 2023 07:56:35 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id n25-20020a9d6f19000000b006d7ff27a47esm187852otq.77.2023.11.30.07.56.38
+        by smtp.gmail.com with ESMTPSA id n25-20020a9d6f19000000b006d7ff27a47esm187852otq.77.2023.11.30.07.56.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 07:56:39 -0800 (PST)
+        Thu, 30 Nov 2023 07:56:35 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -83,16 +82,14 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 5/9] dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
-Date: Thu, 30 Nov 2023 09:56:20 -0600
-Message-Id: <20231130155624.405575-6-macroalpha82@gmail.com>
+Subject: [PATCH 0/9] rockchip: Add Powkiddy X55
+Date: Thu, 30 Nov 2023 09:56:15 -0600
+Message-Id: <20231130155624.405575-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231130155624.405575-1-macroalpha82@gmail.com>
-References: <20231130155624.405575-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_075640_139456_015FED64 
-X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-CacheID: sfid-20231130_075638_786845_192F90D0 
+X-CRM114-Status: UNSURE (   8.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,25 +109,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add compatible string for the Powkiddy X55 panel.
+Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
+console.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../devicetree/bindings/display/panel/himax,hx8394.yaml          | 1 +
- 1 file changed, 1 insertion(+)
+Chris Morgan (9):
+  drm/panel: himax-hx8394: Drop prepare/unprepare tracking
+  drm/panel: himax-hx8394: Drop shutdown logic
+  dt-bindings: display: Document Himax HX8394 panel rotation
+  drm/panel: himax-hx8394: Add Panel Rotation Support
+  dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
+  drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
+  clk: rockchip: Mark pclk_usb as critical on rk3568
+  dt-bindings: arm: rockchip: Add Powkiddy X55
+  arm64: dts: rockchip: Add Powkiddy X55
 
-diff --git a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
-index 3096debca55c..916bb7f94206 100644
---- a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
-+++ b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
-@@ -23,6 +23,7 @@ properties:
-     items:
-       - enum:
-           - hannstar,hsd060bhw4
-+          - powkiddy,x55-panel
-       - const: himax,hx8394
- 
-   reg: true
+ .../devicetree/bindings/arm/rockchip.yaml     |   1 +
+ .../bindings/display/panel/himax,hx8394.yaml  |   3 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3566-powkiddy-x55.dts | 926 ++++++++++++++++++
+ drivers/clk/rockchip/clk-rk3568.c             |   1 +
+ drivers/gpu/drm/panel/panel-himax-hx8394.c    | 180 +++-
+ 6 files changed, 1084 insertions(+), 28 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
+
 -- 
 2.34.1
 
