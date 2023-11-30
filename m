@@ -4,82 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613CDC4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 14:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610A9C10DC2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 15:56:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3VQOHv7bLuIzyAQsr5RIKDKINp8co7NNPzw8bl1ZwjQ=; b=rvzeA7nmGIgUWS
-	nSlkDsvB61C7PYI66fJP29iFqLIuinAFQev8BoO/2Hzh3cukAVW/eZjflgJNO/koN/odiO9BEosla
-	NZXf3M3X7+Xgih0flpnYEEP+s8yTf0D84c759391/7nUqMB+BYHB6fChRnEjEEyzsJJyqyZDwS9YD
-	gakoWGBNh2HLD8xRbjvPCHbE5AiSeEoP5qbrSmp8xK4Z8lC3HDlg2kqY+fD2/qhl7RVufQYLoWPd4
-	8RDqaVF30yWEGkqsGJmS9wV56uI+6JCCWtVPI6Sm5LlVzKJncQTRcOVHE1JzW/JqK0Ik0UeRxeqMd
-	RORk0bKJ+qsxQX+wP7iA==;
+	List-Owner; bh=OreLjUdmFwL4BEPx/P7svj17GY12JD2lpiP5KluUqaE=; b=CKh0pzAdt+Ol/w
+	lb5IXvnjXos3NBb3CGQ3JbMG55dLHyl5a5RMOqhcydHandJvFYrDYhnQxxEdSFNTtz1kRKtQQoaYk
+	UvTLP4GhLxYXnEdwYCGGdeOUr0i/JWLN2uurtd2mN+oDqrDAi5soHkllb3l+cC6TdvfUMsuElKWgK
+	rYNmHlJx3bEORTACna2juALq2U909GOWF0jGgBK2FUae8dbpVKossAQqIrLUkLMOyNqeAmgRfglhz
+	boKISM7FlIhH8gUmEMPEZxTyzcq9e+/cyrgtUBQ91as/fEjQLnY7L5JGBC5Xv6/b03RVx4MSh4tfw
+	RchBJ9bii4YAdhKifzMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8hf9-00B3Cc-1b;
-	Thu, 30 Nov 2023 14:05:07 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1r8jPA-00BGnI-1U;
+	Thu, 30 Nov 2023 15:56:44 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8hf2-00B39U-2M;
-	Thu, 30 Nov 2023 14:05:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701353101; x=1732889101;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=xqtTZvY053veljR4ETMpWFPpHyKU0+OBKnIK2FZ1Hl0=;
-  b=mNzKJph0ssFWfQZN8/DF2bx3cWmvQNnlLiBnIDBFYH39lgSoiWrDBxnR
-   cg5FzEnvzq6/9dpSOHz/EIhXelwk0SM6Imj0rwWvJdJSQ6gCQ38pNfVo3
-   hG8qr60dxPa+g8i/svq4Nu1mkGrFaR+gKW2kgem0brB/TmhQhA2j9q2xF
-   VJ3FH/V9p5Xpn9WmKuuXRrsRQwtq7XMfjxOa9R4a9zycLNyIilp12K76l
-   nLaksPH6H4SPi+f8jUyoCo4oaooNrmP+SL8/Q13qmnkCcLV2ulYVp6Z8S
-   HRcYVVjKgUExwMRbuKSwz2jT63gpCiPQ0JdJNjvGV3RyNYNCcUJDV38Sg
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="226598"
-X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="226598"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:04:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="1016636131"
-X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="1016636131"
-Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
-  by fmsmga006.fm.intel.com with ESMTP; 30 Nov 2023 06:03:57 -0800
-Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1r8hdz-00025l-1H;
-	Thu, 30 Nov 2023 14:03:55 +0000
-Date: Thu, 30 Nov 2023 22:03:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
-	alex.williamson@redhat.com, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jasowang@redhat.com,
-	jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com,
-	joro@8bytes.org, kevin.tian@intel.com,
-	krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev
-Cc: oe-kbuild-all@lists.linux.dev
-Subject: Re: [PATCH 13/16] iommu: observability of the IOMMU allocations
-Message-ID: <202311302108.WERv9oSO-lkp@intel.com>
-References: <20231128204938.1453583-14-pasha.tatashin@soleen.com>
+	id 1r8jP6-00BGkb-0J
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Nov 2023 15:56:41 +0000
+Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6d7eca548ccso615016a34.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Nov 2023 07:56:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701359799; x=1701964599; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PaHm7z9yY7JhEbhzyWmBl6MrUO4DRuFVOID91e7Rsas=;
+        b=S8tDcy882+sG98XQRajq8Oh4dSlBU0UpSNuJ4E1emq9wBxrR8Y1VppdPBXYBFFmEz7
+         nZuukmg1bqRsyzxV4NmEIJ2JIF7rpY6Kjxfn1nfGkmjGbxHAdHi6wRlBRijFB3gpxyJi
+         xZOXTr+W4M7DseMPRpDqVb0VHtUcUF0/51fe7DLUvam1nzxQ5/+knPWoz49GcQIk5/xe
+         PiNQfq7+B03jPKOshRH2frhqEkucPV9aBbwJMyiRwdZpqck4p6lpXsIHfUg4d3o4/D/o
+         vjjLI0+C1hrKKnQNoYsfrh449pmDHbE41znL3BFfkbEtATJvY23dYfxrMaDyy9IcDAlA
+         yXNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701359799; x=1701964599;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PaHm7z9yY7JhEbhzyWmBl6MrUO4DRuFVOID91e7Rsas=;
+        b=d3yTa9X+jBmFdwT0rbyyQGmX/vG5yxV9ka7t4esVs2qlEq2nPThDHD3AyzO4h9lwh7
+         fk+jsfq7wK+H5Vgwy9wj9ODevPmmHfF/eCU0H089L/k/djyu4NtQTe7iSixrM3oYf0bk
+         bvkpwT/dvTb93MS228eTf0Z4+HUudvwlTUW2zf6DmzviqVXZBiyK/qM86U/+vqyex0F9
+         Wf8BA0oeRKh4SCrqQETLKNm5oDnWweRif7IPQrsb7b+VZBAcUDWA/Ok8YeAm3T5c9Wnj
+         oUD44FV+fSNsvIj/43iPs3KS/VYHJ5Ez4ASsM7teaQoVGtJn9XC5D6VaXRzUIUF55gC1
+         W/KQ==
+X-Gm-Message-State: AOJu0YwZmcOhUoSeBmR18WduWFjV0kQaVUdsGvsNylSufgIfs0IPfU3y
+	4F7ReisjxMvx3yjxZ7sww5C/U3NoG1U=
+X-Google-Smtp-Source: AGHT+IHRrQ9qQNsi6yG3nqPiEdlso2YvHwKneV/qHu4W+YUFgHARSucqfgOTC/owBcTkL1lolpTTlA==
+X-Received: by 2002:a9d:7c91:0:b0:6d8:5a35:ee16 with SMTP id q17-20020a9d7c91000000b006d85a35ee16mr3439943otn.27.1701359799460;
+        Thu, 30 Nov 2023 07:56:39 -0800 (PST)
+Received: from localhost.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id n25-20020a9d6f19000000b006d7ff27a47esm187852otq.77.2023.11.30.07.56.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Nov 2023 07:56:39 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: dri-devel@lists.freedesktop.org,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	sboyd@kernel.org,
+	mturquette@baylibre.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	daniel@ffwll.ch,
+	airlied@gmail.com,
+	sam@ravnborg.org,
+	quic_jesszhan@quicinc.com,
+	neil.armstrong@linaro.org,
+	javierm@redhat.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 5/9] dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
+Date: Thu, 30 Nov 2023 09:56:20 -0600
+Message-Id: <20231130155624.405575-6-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231130155624.405575-1-macroalpha82@gmail.com>
+References: <20231130155624.405575-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231128204938.1453583-14-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_060500_795332_F1BA8ECB 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20231130_075640_139456_015FED64 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,69 +110,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Pasha,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-kernel test robot noticed the following build errors:
+Add compatible string for the Powkiddy X55 panel.
 
-[auto build test ERROR on akpm-mm/mm-everything]
-[also build test ERROR on awilliam-vfio/for-linus linus/master v6.7-rc3]
-[cannot apply to joro-iommu/next awilliam-vfio/next next-20231130]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../devicetree/bindings/display/panel/himax,hx8394.yaml          | 1 +
+ 1 file changed, 1 insertion(+)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Pasha-Tatashin/iommu-vt-d-add-wrapper-functions-for-page-allocations/20231129-054908
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/akpm/mm.git mm-everything
-patch link:    https://lore.kernel.org/r/20231128204938.1453583-14-pasha.tatashin%40soleen.com
-patch subject: [PATCH 13/16] iommu: observability of the IOMMU allocations
-config: sparc64-randconfig-r054-20231130 (https://download.01.org/0day-ci/archive/20231130/202311302108.WERv9oSO-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231130/202311302108.WERv9oSO-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311302108.WERv9oSO-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/iommu/iommufd/iova_bitmap.c:11:
-   drivers/iommu/iommufd/../iommu-pages.h: In function '__iommu_alloc_account':
->> drivers/iommu/iommufd/../iommu-pages.h:29:48: error: 'NR_IOMMU_PAGES' undeclared (first use in this function)
-      29 |         mod_node_page_state(page_pgdat(pages), NR_IOMMU_PAGES, pgcnt);
-         |                                                ^~~~~~~~~~~~~~
-   drivers/iommu/iommufd/../iommu-pages.h:29:48: note: each undeclared identifier is reported only once for each function it appears in
-   drivers/iommu/iommufd/../iommu-pages.h: In function '__iommu_free_account':
-   drivers/iommu/iommufd/../iommu-pages.h:41:48: error: 'NR_IOMMU_PAGES' undeclared (first use in this function)
-      41 |         mod_node_page_state(page_pgdat(pages), NR_IOMMU_PAGES, -pgcnt);
-         |                                                ^~~~~~~~~~~~~~
-
-
-vim +/NR_IOMMU_PAGES +29 drivers/iommu/iommufd/../iommu-pages.h
-
-    13	
-    14	/*
-    15	 * All page allocation that are performed in the IOMMU subsystem must use one of
-    16	 * the functions below.  This is necessary for the proper accounting as IOMMU
-    17	 * state can be rather large, i.e. multiple gigabytes in size.
-    18	 */
-    19	
-    20	/**
-    21	 * __iommu_alloc_account - account for newly allocated page.
-    22	 * @pages: head struct page of the page.
-    23	 * @order: order of the page
-    24	 */
-    25	static inline void __iommu_alloc_account(struct page *pages, int order)
-    26	{
-    27		const long pgcnt = 1l << order;
-    28	
-  > 29		mod_node_page_state(page_pgdat(pages), NR_IOMMU_PAGES, pgcnt);
-    30	}
-    31	
-
+diff --git a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
+index 3096debca55c..916bb7f94206 100644
+--- a/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
++++ b/Documentation/devicetree/bindings/display/panel/himax,hx8394.yaml
+@@ -23,6 +23,7 @@ properties:
+     items:
+       - enum:
+           - hannstar,hsd060bhw4
++          - powkiddy,x55-panel
+       - const: himax,hx8394
+ 
+   reg: true
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
