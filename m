@@ -4,55 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93177C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 09:46:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E2DCC4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 09:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u0D+wTDTOjJG4eNx0wNHvaxoHchL0BFvdtX0g711BAk=; b=H/POCkmxtasXOC
-	ySgU/Fv4sNybRtUVBZ+23Fwmfe+MWqAI+rojtKxoX/GPDVya880sLroKkeo69UExC+ZXzuy+pJMUs
-	wNzC8lFV+zudVTVq9fiJOwopSrGhwfzxCBTwgZ1adJq4Rv4vXjU+2jFkULDZikTnC+2Wy6CxWzC4h
-	BpcS2/gqpzv5QiOTN2y5h7oS04mNYaPKB0Oc9MjWO9wRWhseeBJzymYXAcBcx0S1geqGs+ZP6p1SS
-	ds+8Z96iGXBDaA6XThEnRpn8MeLW3qpc0ngU70mIeUvbf0NRNhya3ZsmWoyUK+Ehcja6gQ4adNJDZ
-	j93dcWz9kEIy9QKZRsug==;
+	List-Owner; bh=bV9B5tqLA8lHG2/viiAP7Gb9v9GvwhCkDCdiaMqNcfs=; b=bWeQNtyt0H6bzc
+	hKJFYNl7772npo4uzxT6AzNzKFRk9cwvdbi68lcELxquQeyMPWRIGoVxZG1OA2mPLjJ6zkV7ZfSpA
+	s0EpbYC7bXYMX6kC8sCHkCaF1rDlXCYHvJlO49y3tnwYovdiBV/uTmw3crprxX84lyKLC98qH6KX2
+	j9tH+XVIbdUj4b/rTKbSy5fi3JYxnqEK4EHhKo/3tg9z7OvmSjFdh7hSo0nV8vS5OgApBClfoF0xF
+	eAYR+cJv+NNSDNRWXn/7Ec1K1diyloCo7Fz4PAPdINS1JOCYadFWbONXixonqwtE+t7MRY0fPM0I+
+	n9AaS2VXJzRjC1r4iw9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8dca-00ALux-2L;
-	Thu, 30 Nov 2023 09:46:12 +0000
+	id 1r8ddb-00AM3m-0u;
+	Thu, 30 Nov 2023 09:47:15 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8dcV-00ALuE-1h
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Nov 2023 09:46:11 +0000
+	id 1r8ddY-00AM3B-0c;
+	Thu, 30 Nov 2023 09:47:13 +0000
 Received: from pyrite.rasen.tech (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4C8FA8C1;
-	Thu, 30 Nov 2023 10:45:20 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 38D768C1;
+	Thu, 30 Nov 2023 10:46:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701337523;
-	bh=WV7upD+FFFLTGLLvYXanKOUa5AfZ/hueHZz/fvxdFs4=;
+	s=mail; t=1701337593;
+	bh=A+ZecSE4hjPnaI3Hh8yXuuX/lFO1rYZCXT1nhjdZtw8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r0Uj9+5qe67C6Pydq2UHI1hU/Hen3vw9eP2fegrtiiJHGHALBlTm9iQfnAvJSiw4t
-	 9iwswI/vIKzyTdqRk3QdkY/bbmflEs6SSb4KmmqmoXtjGVvLbq5+oWeFgWTWq/sant
-	 D4jRguRlCRe4weLwctTbLoDc81RjbkuwG4A7b2u4=
-Date: Thu, 30 Nov 2023 18:45:48 +0900
+	b=SwfEEZ7SpVU/OdE+/rfMspmM71hg225W3lQ8u4HuQL39vM0NYE9zqAUquXppYJ1be
+	 NY+hif7gIyqf+RhFCLYNnztvFeWmifdDfk4e/FH1t+ghvgkntskwB56Ce1ahGV9PxW
+	 heNlfR1N9ctz0WpO6qAZoYifdZJgc1k87IxCr3QI=
+Date: Thu, 30 Nov 2023 18:47:00 +0900
 From: Paul Elder <paul.elder@ideasonboard.com>
-To: Adam Ford <aford173@gmail.com>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, kieran.bingham@ideasonboard.com,
-	tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com
-Subject: Re: [PATCH v4 00/11] media: rkisp1: Add support for i.MX8MP
-Message-ID: <ZWhZzNQ6VWcfvWZy@pyrite.rasen.tech>
-References: <20231129092759.242641-1-paul.elder@ideasonboard.com>
- <CAHCN7xLgypy8YMhxM1g27DWU7hY3nwAYLYRSMMDtODeGdd_CQg@mail.gmail.com>
+	tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/3] media: rkisp1: debug: Add register dump for IS
+Message-ID: <ZWhaFL48cgdHsOPN@pyrite.rasen.tech>
+References: <20231129092956.250129-1-paul.elder@ideasonboard.com>
+ <20231129092956.250129-3-paul.elder@ideasonboard.com>
+ <170128834260.3048548.11979514587961676400@ping.linuxembedded.co.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAHCN7xLgypy8YMhxM1g27DWU7hY3nwAYLYRSMMDtODeGdd_CQg@mail.gmail.com>
+In-Reply-To: <170128834260.3048548.11979514587961676400@ping.linuxembedded.co.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231130_014608_431179_F458C4CA 
-X-CRM114-Status: GOOD (  26.63  )
+X-CRM114-CacheID: sfid-20231130_014712_374436_09C46D5C 
+X-CRM114-Status: GOOD (  21.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,56 +68,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBOb3YgMjksIDIwMjMgYXQgMDU6MzY6MjVBTSAtMDYwMCwgQWRhbSBGb3JkIHdyb3Rl
-Ogo+IE9uIFdlZCwgTm92IDI5LCAyMDIzIGF0IDM6MjjigK9BTSBQYXVsIEVsZGVyIDxwYXVsLmVs
-ZGVyQGlkZWFzb25ib2FyZC5jb20+IHdyb3RlOgo+ID4KPiA+IFRoaXMgc2VyaWVzIGV4dGVuZHMg
-dGhlIHJraXNwMSBkcml2ZXIgdG8gc3VwcG9ydCB0aGUgSVNQIGZvdW5kIGluIHRoZQo+ID4gTlhQ
-IGkuTVg4TVAgU29DLgo+ID4KPiA+IFRoZSBJU1AgSVAgY29yZXMgaW4gdGhlIFJvY2tjaGlwIFJL
-MzM5OSAoa25vd24gYXMgdGhlICJSb2NrY2hpcCBJU1AxIikKPiA+IGFuZCBpbiB0aGUgTlhQIGku
-TVg4TVAgaGF2ZSB0aGUgc2FtZSBvcmlnaW4sIGFuZCBoYXZlIHNsaWdodGx5IGRpdmVyZ2VkCj4g
-PiBvdmVyIHRpbWUgYXMgdGhleSBhcmUgbm93IGluZGVwZW5kZW50bHkgZGV2ZWxvcGVkIChhZmFp
-aykgYnkgUm9ja2NoaXAKPiA+IGFuZCBWZXJpU2lsaWNvbi4gVGhlIGxhdHRlciBpcyBtYXJrZXRl
-ZCB1bmRlciB0aGUgbmFtZSAiSVNQODAwME5hbm8iLAo+ID4gYW5kIGlzIGNsb3NlIGVub3VnaCB0
-byB0aGUgUkszMzk5IElTUCB0aGF0IGl0IGNhbiBlYXNpbHkgYmUgc3VwcG9ydGVkIGJ5Cj4gPiB0
-aGUgc2FtZSBkcml2ZXIuCj4gPgo+ID4gVGhlIGxhc3QgdHdvIHBhdGNoZXMgYWRkIHN1cHBvcnQg
-Zm9yIFVZVlkgb3V0cHV0IGZvcm1hdCwgd2hpY2ggY2FuIGJlCj4gPiBpbXBsZW1lbnRlZCBvbiB0
-aGUgSVNQIHZlcnNpb24gaW4gdGhlIGkuTVg4TVAgYnV0IG5vdCBpbiB0aGUgb25lIGluIHRoZQo+
-ID4gUkszMzk5Lgo+ID4KPiA+IFRoaXMgdmVyc2lvbiBvZiB0aGUgc2VyaWVzIHNwZWNpZmljYWxs
-eSBoYXMgYmVlbiB0ZXN0ZWQgb24gYSBQb2x5aGV4Cj4gPiBEZWJpeCBtb2RlbCBBIHdpdGggYW4g
-aW14MjE5IChSYXNwYmVycnkgUGkgY2FtIHYyKS4KPiAKPiBJIGhhdmUgdGVzdGVkIHByZXZpb3Vz
-IHZlcnNpb25zIHdpdGggYSBpbXgyMTkgY2FtZXJhIHJ1bm5pbmcgaW4gNC1sYW5lCj4gbW9kZSB3
-aXRoIGdyZWF0IHN1Y2Nlc3MuICBTaG91bGQgSSBhcHBseSB0aGlzIHNlcmllcyBhZ2FpbnN0Cj4g
-bGludXgtbmV4dCwgb3IgZG8gSSBuZWVkIHRvIGFwcGx5IGl0IGFnYWluc3Qgc29tZXRoaW5nIGlu
-IHRoZSBtZWRpYQo+IHRyZWUgdG8gdGVzdD8gIEkgaG9wZSB0byB0ZXN0IGl0IHRvbmlnaHQgb3Ig
-dG9tb3Jyb3cuCgpJIGhhdmUgaXQgYXBwbGllZCBvbiA2LjctcmMxLgoKClRoYW5rcywKClBhdWwK
-Cj4gPgo+ID4gTGF1cmVudCBQaW5jaGFydCAoMik6Cj4gPiAgIG1lZGlhOiBya2lzcDE6IEFkZCBh
-bmQgdXNlIHJraXNwMV9oYXNfZmVhdHVyZSgpIG1hY3JvCj4gPiAgIG1lZGlhOiBya2lzcDE6IENv
-bmZpZ3VyZSBnYXNrZXQgb24gaS5NWDhNUAo+ID4KPiA+IFBhdWwgRWxkZXIgKDkpOgo+ID4gICBt
-ZWRpYTogcmtpc3AxOiBTdXBwb3J0IHNldHRpbmcgbWVtb3J5IHN0cmlkZSBmb3IgbWFpbiBwYXRo
-Cj4gPiAgIG1lZGlhOiBya2lzcDE6IFN1cHBvcnQgZGV2aWNlcyBsYWNraW5nIHNlbGYgcGF0aAo+
-ID4gICBtZWRpYTogcmtpc3AxOiBTdXBwb3J0IGRldmljZXMgbGFja2luZyBkdWFsIGNyb3AKPiA+
-ICAgbWVkaWE6IHJraXNwMTogRml4IFJTWl9DVFJMIGJpdHMgZm9yIGkuTVg4TVAKPiA+ICAgZHQt
-YmluZGluZ3M6IG1lZGlhOiBya2lzcDE6IEFkZCBpLk1YOE1QIElTUCB0byBjb21wYXRpYmxlCj4g
-PiAgIG1lZGlhOiBya2lzcDE6IEFkZCBtYXRjaCBkYXRhIGZvciBpLk1YOE1QIElTUAo+ID4gICBt
-ZWRpYTogcmtpc3AxOiBTaGlmdCBETUEgYnVmZmVyIGFkZHJlc3NlcyBvbiBpLk1YOE1QCj4gPiAg
-IG1lZGlhOiBya2lzcDE6IEFkZCBZQyBzd2FwIGNhcGFiaWxpdHkKPiA+ICAgbWVkaWE6IHJraXNw
-MTogQWRkIFVZVlkgYXMgYW4gb3V0cHV0IGZvcm1hdAo+ID4KPiA+ICAuLi4vYmluZGluZ3MvbWVk
-aWEvcm9ja2NoaXAtaXNwMS55YW1sICAgICAgICAgfCAgMzcgKysrKy0KPiA+ICAuLi4vcGxhdGZv
-cm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jYXB0dXJlLmMgfCAxMjggKysrKysrKysrKysrLS0t
-LS0KPiA+ICAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jb21tb24uaCAgfCAg
-MzUgKysrKy0KPiA+ICAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYyAg
-ICAgfCAgNjYgKysrKysrKy0tCj4gPiAgLi4uL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lz
-cDEtaXNwLmMgICAgIHwgMTMxICsrKysrKysrKysrKysrKysrLQo+ID4gIC4uLi9wbGF0Zm9ybS9y
-b2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlZ3MuaCAgICB8ICAzMiArKysrKwo+ID4gIC4uLi9wbGF0
-Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlc2l6ZXIuYyB8ICAyNyArKy0tCj4gPiAgaW5j
-bHVkZS91YXBpL2xpbnV4L3JraXNwMS1jb25maWcuaCAgICAgICAgICAgIHwgICAyICsKPiA+ICA4
-IGZpbGVzIGNoYW5nZWQsIDM5OCBpbnNlcnRpb25zKCspLCA2MCBkZWxldGlvbnMoLSkKPiA+Cj4g
-PiAtLQo+ID4gMi4zOS4yCj4gPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wed, Nov 29, 2023 at 08:05:42PM +0000, Kieran Bingham wrote:
+> Quoting Paul Elder (2023-11-29 09:29:55)
+> > Add register dump for the image stabilizer module to debugfs.
+> > 
+> 
+> Is the Image Stabilizer on all variants of the ISP?
+> 
+> I.e. is it valid register space on the RK3399 implementation?
+
+Yes, it is.
+
+> 
+> If so then:
+> Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+> 
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-debug.c    | 18 ++++++++++++++++++
+> >  1 file changed, 18 insertions(+)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > index 71df3dc95e6f..f66b9754472e 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > @@ -139,6 +139,21 @@ static int rkisp1_debug_dump_mi_mp_show(struct seq_file *m, void *p)
+> >  }
+> >  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp);
+> >  
+> > +static int rkisp1_debug_dump_is_show(struct seq_file *m, void *p)
+> > +{
+> > +       static const struct rkisp1_debug_register registers[] = {
+> > +               RKISP1_DEBUG_SHD_REG(ISP_IS_H_OFFS),
+> > +               RKISP1_DEBUG_SHD_REG(ISP_IS_V_OFFS),
+> > +               RKISP1_DEBUG_SHD_REG(ISP_IS_H_SIZE),
+> > +               RKISP1_DEBUG_SHD_REG(ISP_IS_V_SIZE),
+> 
+> I expect so as you haven't added the register macros in this series so
+> they must already be there ...
+
+Yep :)
+
+
+Paul
+
+> 
+> 
+> > +               { /* Sentinel */ },
+> > +       };
+> > +       struct rkisp1_device *rkisp1 = m->private;
+> > +
+> > +       return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
+> > +}
+> > +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_is);
+> > +
+> >  #define RKISP1_DEBUG_DATA_COUNT_BINS   32
+> >  #define RKISP1_DEBUG_DATA_COUNT_STEP   (4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
+> >  
+> > @@ -235,6 +250,9 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> >  
+> >         debugfs_create_file("mi_mp", 0444, regs_dir, rkisp1,
+> >                             &rkisp1_debug_dump_mi_mp_fops);
+> > +
+> > +       debugfs_create_file("is", 0444, regs_dir, rkisp1,
+> > +                           &rkisp1_debug_dump_is_fops);
+> >  }
+> >  
+> >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+> > -- 
+> > 2.39.2
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
