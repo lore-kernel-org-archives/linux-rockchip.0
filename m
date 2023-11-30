@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263BBC46CA3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 01:11:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 624D3C10DAA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Nov 2023 01:11:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xL8IoYLX5ye63iuLe//WOOJtZp9Foq8ya5ySxFWhF2U=; b=c0uvhoV9t2MxDq
-	SHhImrFEkYVOYnBkjHbHEtA9KGqqFY1q28a+gB3xaq8lfK9pWss2g5Ehd3OND5blaOfegVWr5lTd4
-	SHNvb2+XyifK+CJIfxA/wiOQDy+FENf+f7Wuja3AG6ihHOqpKvtUlVhbdHZ61aq71mKf6vj7Vwq9Q
-	oeJEoMkBHGjVLfgDTT/lIFdIdr6dfVbC4IjCLfZ+jZbZr3P7ZsqijuaEXwjJXswmoeneFnZNbQdkM
-	Uc0OFYysA1qzD02ZhivkcSkVG5W8nmOf32SniWAdIPrx1LNO5MRcGbek5XlnxllMAGRdqYCshC42n
-	dW3pOeUehCDB7AFYBqWA==;
+	List-Owner; bh=eLF/uU79sRevOad9lFyu+hItAPbI2F5nIhQP6MtL5Z4=; b=N9j4K/EBFJiKBQ
+	/+gXZqKsN5koHCSbkc86kBbwV5VnfFESjXJk4d+S/Qv4HEVUVb/2NQxBCdOG5ZSkc048mA/SfAT7N
+	LOo3/waLZYQBHadhbSGx6wdnXLFRHTXjc9R9iDu6PAHZRmgIA8QpCi0H5Lx1/sum4fYRMhmmUf7CR
+	78pyl/qBB2PcShi290xvHGaEoFvk0WKRtVa+S0nhip5XmUdSL6DXxSVEeIw4l5nm6FYreeZLuuCXR
+	1/2oaaoHu7JXJu1u3NX+I4I74vhXBgGK9pj+nC84uVyyDt9+PXzgeC+1xcN1oIGzbB5BfBpDXkurO
+	bNArtFkobvb3La1wyfzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8VaN-009cjm-11;
-	Thu, 30 Nov 2023 01:11:23 +0000
+	id 1r8VaU-009cqQ-0a;
+	Thu, 30 Nov 2023 01:11:30 +0000
 Received: from mail-bn8nam04on20621.outbound.protection.outlook.com ([2a01:111:f400:7e8d::621] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8VZv-009cJa-0g;
-	Thu, 30 Nov 2023 01:10:57 +0000
+	id 1r8VZy-009cJa-0U;
+	Thu, 30 Nov 2023 01:11:00 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LEOSp8LojpsztFQ8MpYwW1O2ZIAzxkf4yNWGaAHXOP3wtasQGMdqQIgQOwIn75VVsPxrC50hZIav58EgbboU7u3p2yy17WNg66fUqW4ya6IAfIK/SzFCQQ+alGIpySdIviym/D5LjAuB6/IRml9+I9bW+ELetDpfrzVnOPU0NBMvET7dzsyrN/GaPsvGw/2uMPzefJ3ArzCf5K5miJZIZN1eHibC5i5rqc6jKDoq/bkFf2G5uWnP8xHhyiUyBflkEquteOzK91GB+x4bRWFbkYXIEKMXW69qi3b5DOBRtGzWdjgxJaf4UEmCv8V3wEN1KNjs4MJzEMk33dho0dq6rw==
+ b=hmKwT6bexloyKBzeBinohdFYv0WwZUO9rnEZLicr75WLrlczS3hQeMqCbSiFw3ShpEhZ7PXv0nb2qDJVqo4/u1iawKSV8LAVK1nYEb0J0ebSiWoqp9dfZR9z6NVl3bzFLRYD3THvaiTixgZKqLc0YUyq/gYJskVfYwj3pRuN/F9vmlIB4gLmmxW1Eoyyq9/rW6N83l6sm0rTXA3ouKYadJsudqxTVdTymvSBuwCfNHkmgkhgzXXYRmV7Sa+kp7P+JRQOWfayOk4F4B1bvAwn1g3SFIW9e8mH27L2mkr81GZU7gq40YEGFahgJxG7hbVRoAVnFuX5Yx7joST9Q3RfQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gjJdDHI+AITYfSvxiqF0GgwRht7dfBc7a3uv3e45GaI=;
- b=GKLgIPTMxJQ7NkYjBKcLmz51v0Cys/F/zSlUN2ttpMgFJQ8RZuQLVpirZUB7J7uevu3d7SZ+OmW43RYnrBiLChSCx/TnvwHJJ+rEr7oY1xxKfoUajs2LK2ZymxQucQl+cixGXFQLt01DmM4BwpCqsx88sKfj4XAlUUZSEbndwmK1EWYV/BBPgLm6QRg3FKzYTpv3f7sq+BTUBUT21ule5K8L60DMSgJkMdVmv6B1BGxZacRCP3cjXsT4nfkpM1EuhjMsgHgLtwYag401qwMO2Up16wq7y3sjjzRh3aAjY5EnCvK49turPnnksVoq3/DfyJRkPYLRqGoEUZC93lzaPg==
+ bh=n7aJKu7BohUpFcYIdwpDeid+Mzh23OW02rRcztcHd+0=;
+ b=fcXLs3QALOfSwmxljqVm2JObO59htJiL0MrAcI2p8xb0lFsY8T6Fh4al49GD++RA3rRO4WkzN+75h4cWt9dMCymB+kaHtO5Moz0hnpYgLFMDMs1Yq55cEh5cJhfIJBxJnZxw1QsX9e+s28l0xGrKt8KTCjJ2mwsXe70QCps8fDYRcwg9rptArc4KRbxqzrdA53YNpCI0VfGpqWsDOf4KSWKhi64SsvF9Re0+taEpSYE6iiSUVvddhKjZBIT2s7zwo59M2+jCxtDmP/aCHaNSQk7lKcSpUk9SfbDz7G3UJgfXP77U95WU64j1sja7Gtw41e+3MvtYZfjguJ69XDqXQw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gjJdDHI+AITYfSvxiqF0GgwRht7dfBc7a3uv3e45GaI=;
- b=CFU4n2BFkMtpGDmXngCQHuDXXqTcKhUIr1Fq4tJ7qnavTr79R6AefH0F8r/rN76tlm6OhOtfiM8t/i+B2Os6faeQ7vDe8LmIbp0b2x75f2/ypOhEef+21WrroxQPpV0XP6jSc8G1J9+18bV6/aexU9rl36nwOqsSHD4b+ykq7dGCBRkx3c5oK3tLyYmJNyLIZs0BLq9xNp37fX5ZUG+RaY+Nt3Pfdfc/Asi9hidM+IWKMGrH/3RyyDA7IIgvkfX01DIOl71EDOTjonuz+zdcltMG6tJvY0CVsh1tqRavKct4/b+Oh2E+n5dEPb8j4SdouM8t7DMyCjXOO4xP03euQg==
+ bh=n7aJKu7BohUpFcYIdwpDeid+Mzh23OW02rRcztcHd+0=;
+ b=oTWOZQwIRW+sRoJKgscUvtc8f2NmgRZbSzUE4lwGfogXcueSQPihSV+yNIkgGtgLGhTYWFPgCGqjLaQi8kTcTMr4Ay9ADyfKMLLzvZ320Ix4FTYMHwE/kehbAq60SwunwoTODfWNgbYgT5HIl+picAnGxU6I+7+AQHrIC5iwdL3wVszT8M5Ygw8j/iGI6QHn3hs50Jau5bEuCCbvdSxCGQxMpCM9u0d8oWp45gtCO67eUrXmiaOG5fqjRHVJpPAa7F+fk+IGE4Xoj0IBVsTR1idugCRFKtyipchb9giYcpDRZ5U9jP8NoRrRdmAtKJ+a4Vlv2vrgaQJI2/ZmlBuWdw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
  by DS0PR12MB7607.namprd12.prod.outlook.com (2603:10b6:8:13f::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.22; Thu, 30 Nov
- 2023 01:10:42 +0000
+ 2023 01:10:43 +0000
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93]) by LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::60d4:c1e3:e1aa:8f93%4]) with mapi id 15.20.7046.015; Thu, 30 Nov 2023
- 01:10:42 +0000
+ 01:10:43 +0000
 From: Jason Gunthorpe <jgg@nvidia.com>
 To: acpica-devel@lists.linux.dev,
 	Andy Gross <agross@kernel.org>,
@@ -106,65 +106,65 @@ To: acpica-devel@lists.linux.dev,
 	Chunyan Zhang <zhang.lyra@gmail.com>
 Cc: =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>,
 	patches@lists.linux.dev
-Subject: [PATCH 20/30] iommu/ipmmu-vmsa: Move to iommu_fw_alloc_per_device_ids()
-Date: Wed, 29 Nov 2023 21:10:27 -0400
-Message-ID: <20-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
+Subject: [PATCH 24/30] iommu/virtio: Move to iommu_fw_alloc_per_device_ids()
+Date: Wed, 29 Nov 2023 21:10:31 -0400
+Message-ID: <24-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 In-Reply-To: <0-v1-f82a05539a64+5042-iommu_fwspec_p2_jgg@nvidia.com>
 References: 
-X-ClientProxiedBy: SN6PR16CA0047.namprd16.prod.outlook.com
- (2603:10b6:805:ca::24) To LV2PR12MB5869.namprd12.prod.outlook.com
+X-ClientProxiedBy: SN7P222CA0017.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:124::15) To LV2PR12MB5869.namprd12.prod.outlook.com
  (2603:10b6:408:176::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB7607:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8e29a214-41ce-4329-91e6-08dbf1412a6b
+X-MS-Office365-Filtering-Correlation-Id: f184cbfa-52b3-4d89-5ed6-08dbf1412a6b
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /RJ2KekhIZ/9FvZTbwgp3tGsaW2gq7WODqPGvmzeDxCk+0v0u/c+Y89nkoST/WWkvPvCw7SkEPScltSJiufLl47hdBiukrGJY2Z1yDudK8eAL0LJyiPad3WxmLLzrcOubvSAK1c1MuVqPcVWGIqSRJ0kiIabj32gv+7TlGvPFElgqC7JOaHXTvlWqUxcARkiQS0z6serUy2ChPT5HNJZWeyRhAw2mXwnw0uzGy5Cw4DYZJMbIhOeZHUE8oDMo9nKwRnPcuhYSogcdGq9xMoWNuX1qCOorYwlRZB0atcD3xytrcHGBNi+GVvBKWkaPYnHTzM33B1Vm/GMqeERd4N6inrSJzeIJkR/aEgsUHrQny0z/1SFYdZwfUnqWdIqyuNaTcDvx6cjyToqnKF9zIfNMaDawLV3rWzPCc4YMsQn3qGBW21RakgZlXjlyKcswcJYJsozWZh3n1gvN8r03yg8Px4+svQ39E9dnlYUhozPpLZh3ZC4ONIQyn6/GJQtlMIKv7rWgDg466eD/7pSmO45S5ra9tdb4dh2aroXjSfOXrLZ1PEUYnelXd+7MEHNK5u2jMgmuy7b8QxptGJEchwu2fSus+ZNFSj5kK/83+eClCfKH3nRjafLNSmj+Aya97MntnoQMSkwKhdvVDAyTFCOXQ==
+X-Microsoft-Antispam-Message-Info: LGVZ66x0Z/c4A6yfd8vLDEdf+b6sgChnN84rSZ7LBwHl2BtRXlBVm+2WpXBl5Lkgt3fvU9Y1jumfYyLXJwVsnSFmOeTPAuBHcQDCgsdIdbAPylZktkseaBYMxfcarg8nttCn/+57uar/E2l1KQB/VJWY9cA+j8Y3mvgbsDbFIa9pp9m991KxuSayertSROc3nPNAz51GFOUAe2rHa9DOrbyDMKntkOq92h+axz5GMHkTRVWdoZdNDpMMl9i6/YGtbvRS6eCqkt022p8DRfU3hoXgunNUV7EgTapOcWYY53teGi+TQoCViuNRCLerPKEKh1ETHIHmW21/uEqIsHCdQQUJnTpHffTwP3Gk8tXacvS3FqFSFc/FMNiAC2it8rjjbfsF1krkCJUfkUJaeBmSV8vOifI0dT6gZfKt0dbN3VQnwDogqEL3voeyWIIaQ/mn8TyHU2gNhhicbFjBJmRK9Ry0te6+5aw9mFHFSJwINCHBl7E6rQbUdzR1hUWbHP4in+htuzLmpRngudq7rkQ4bvcgHBH4gTeu/HwCZUpN60oPIz+0OPu7flsHG5DMHRHgRIQXuwjMFc4H+iKvhhBn7TWz8nARPFxV3Vj5Ug/lbRDB1hF/TzlsGlMMVErzoNN54o4jAv/2JE1X2R/zz8kc1A==
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(39860400002)(346002)(136003)(366004)(376002)(230922051799003)(186009)(451199024)(64100799003)(1800799012)(38100700002)(202311291699003)(83380400001)(1191002)(5660300002)(110136005)(2906002)(86362001)(4326008)(8676002)(8936002)(66556008)(7366002)(7406005)(7416002)(66476007)(66946007)(6486002)(478600001)(6666004)(316002)(36756003)(6506007)(41300700001)(6512007)(921008)(26005)(2616005);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mbImv2xeatnCFPsd9Do35WSABEP6L5JyzhkK9KNTExS80+lNlERWh60T46o0?=
- =?us-ascii?Q?8+1tBoKrM/maC37DnacXdjqL//8bPhH19ucd82MKskkSGgjoSDxjg3AfuDtu?=
- =?us-ascii?Q?FCM0Q0/7+h9UGVjexvBp1MVrxS1N+xVVQRnMwximw6LuswtoTDxCcP4McOhn?=
- =?us-ascii?Q?2OeufuizSoO7lnmvZ2E9GOUNcGTQEkXDdWO3zv4DPMQ1ZDFMidS9qVL31DKd?=
- =?us-ascii?Q?V/EgKgC22fYRW5Nhw74BhuCuE4W0ODM/LgupUzmsgBm2+cmnDvvkd7FKV7vD?=
- =?us-ascii?Q?BYJ6RonLsrR20nm2NW4tH6W9OiOgy3wC25/7Xba7jaHnT7DhhVu/TThZbiyy?=
- =?us-ascii?Q?5DYIQIpyIme2EQKVf2CMH4bF6ypVshgUSh9bEc8Ku32zZ4IRGXLR8sCu+P3q?=
- =?us-ascii?Q?7tJbBc2Q6aEE0+Y2pHRiHMzvtZt+tM48s7KKVUyMzdio2lBHWeKdLY1TOm9P?=
- =?us-ascii?Q?JDhVOXhJ3eGHN2M2XGtqr+HneC3mo1nJDOfLk97OrtVL+bbffZ7w3BX22P25?=
- =?us-ascii?Q?+DM9ePBSb02PeuNLEe94why6eP13hpjXz7AoFd7rCDGKAGcVxmwHL5JneTe3?=
- =?us-ascii?Q?dO7Dkd5Qw0YP3Ddb/7tNRWAfgR9GgGAIvIDOG6kjFnZMhzntzwy5+wukj2ty?=
- =?us-ascii?Q?X2ELazEGa+Kd8aMqL9RLOAV4a1c0c70jJawRWOxlBrbRf7eQyns2yxn1VCHa?=
- =?us-ascii?Q?3XpS6EUUYsvM0nrChxiXVL52xCGleUamUon6dsyUO9xAxzLVj4Uz94fq9Ezj?=
- =?us-ascii?Q?7OMzdQvupPhrfWz+TOP56A+YWgEJbKSg2SxNri032dje8VBrhsLYi3eXZO+o?=
- =?us-ascii?Q?evJld/uNwT7/Q6QZl0A7AFjpeBxHn7uuwN70s8xIfYds9Oytbh8myqwT4nk1?=
- =?us-ascii?Q?rXhciM4rXn1m28pFYwXNsv4wN/UjEMhb5+YAT3fPukQfBs05ZAsZ5n16Qs2+?=
- =?us-ascii?Q?+Bzif8RFG/QlxF71rYLGh5FZq/D1+uD2q7rdvEQECx1242W0BR4SD9skg7V5?=
- =?us-ascii?Q?6t4A76rEgf5diPUro21F6+GaTNmrUhSoSPaYFddcTxUi0y4dmdkHSSNIpY+N?=
- =?us-ascii?Q?1JCpEXFwPuLKnn/UbRp1K4Knxl//dTXGDgCA9Gq76Nw232FCy+fcXA2YUmVp?=
- =?us-ascii?Q?PLoMXUNxt+Hka/slaumbCk64R+G6St7OpLptWdByI8ux2iXAi0CKJK5meEJ0?=
- =?us-ascii?Q?pJGHB3uQR1rPYpQy66HVyN1iCoSLD9skLca3PPWlJTW/HcnWOfpMCfbYuXP9?=
- =?us-ascii?Q?fqP+CIY+IwKJ07V99f6YyTLNDJBEvoed8KWBZxQBhr8r5+q3Hy64R4XyuPDA?=
- =?us-ascii?Q?p9atbM+aGceMBhPsWNZNSOrhJr2gPvkMoWLcmDskiCSZ6DdIy5hb35lnwvm5?=
- =?us-ascii?Q?kjx3pFVCInuBxdfcsQM7REmRVeS6pmE8VsBEx/h7cjw5qw9yuZIf0PQN5hYV?=
- =?us-ascii?Q?zI75RP7k7xiZNmZTdW9ElxXSRBXVW/6OV6wbl70fk2bquV3dSOXGoI/IMjEp?=
- =?us-ascii?Q?BcRzYYfaHL4y8nfvzBwMIkcBWaXcwj2m3b2DjR1c+5Y3WBNnuySl9NkumIRR?=
- =?us-ascii?Q?Br1UN5+J2vcDahmj34GFZeiQQPjeYzG0IOSRgBR9?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Nwh4P5igKZINuWBNkgxmbvQVTx47VsyJlltLwDktBJ5Sfp+zWmHQRpNfPorx?=
+ =?us-ascii?Q?4iyl/Hgvhh1/FEeVyBF5Zq6fZ+2eyUE5WCbGEENQVCQPOwqldo36I2pczKDd?=
+ =?us-ascii?Q?V+eJ8nL0hCElkytr7kOfsogkKAV5pW5CD91YfwGzNL9eaX9C7/qO/l3e1zZU?=
+ =?us-ascii?Q?C4n4PaBymBeYddMrCztcXPyYl7P0iWtG5BA6K56QnJaLNcag9o+CbNGC+xFz?=
+ =?us-ascii?Q?JOREmljn/ZBaTzekHRAtiL/dYVB8ahqkg5ATjqWO+GoeObHVJ226nME2nEPI?=
+ =?us-ascii?Q?kZlS3Bd84gVE4AO/WNv11kXn5i45BoeLjdAi5U/cokM+QZYgLNepxmBaR1f7?=
+ =?us-ascii?Q?pMT3mwyfzNKF4jobw40tRv0LrcuUS3zIwhCnEMBKuo3G8fLapkZdyAZEVjfl?=
+ =?us-ascii?Q?6DVgov90plihm222NmdccwdRZFkrL7TI9dZwc6moWNNFPYwY+WLwDZQxitzR?=
+ =?us-ascii?Q?WQ/QjNcLiHRQPkncotfYaAbRHoNxu/GDxwvi0bRtKMMHMm8coHdM0MwGDWth?=
+ =?us-ascii?Q?9m12fNr2jfD+T9dLbuBzDQxgtxSHY0sSrJHPwYH76Jf5+Rcctt/o7vcc0Nbn?=
+ =?us-ascii?Q?8dYGs0FU1E/Q7EFdJDiLC3/hVAMfFW7xSkBWxGUpzSce4wKc/VpKg5NdJ9wy?=
+ =?us-ascii?Q?yPBItYvh+PG6dHk31G7BUwZ07mmPSX1kB5zisliy+8Qoj9vZh1PKlyjxVgQw?=
+ =?us-ascii?Q?W3ygv+MQ2KWlMn2MtxPDCvcxrKw1ngCSVMsgMV9GJUVWRSdUfxiCfF3r9MXq?=
+ =?us-ascii?Q?s1UA9ttjsz8173lGm0pI6Z+saOjrid9zq+fFjk1rkxn0Hh+bSnZbIBZ761+3?=
+ =?us-ascii?Q?jo5tvjXV3FvnfNx6MZIMnxl7/vGrNyxPDUck+d6l5FkyMs+XOoNLuwE54XUv?=
+ =?us-ascii?Q?oOvRlKlx84Tgxis7ttjSB+gqjrGGRqcdAEE9PqyyCgGkuzmB771Xyc/pcnsx?=
+ =?us-ascii?Q?Yw3QCS9nQxEp1vztCE/+fcTz/nyaPpvfVdJMyVyDf7KbwZ2c92TAOXEhZykK?=
+ =?us-ascii?Q?l6qdXeppjvdL46Ctb2Qpcq5AmP6/x+gQqWM8CXH2sG4LZhcSBjJtrJHpYBs2?=
+ =?us-ascii?Q?MJbb8FUuF10DjM1hW3cVwm21wdp+VV1ZEjkKBOqRebIRzp6TpxZNr5zhgl5+?=
+ =?us-ascii?Q?Z89NRMG+U5LIDJx3nrveJCfPi/x7GoRMQHsCBx8ZEqBXpBlk8hLdGc8xDQiz?=
+ =?us-ascii?Q?KMlQhoKN3t9Vdr+yRgyLqBnxZJhGWl+yhIfdn9qR+l0hnuMt+kfAXcxaS9Hr?=
+ =?us-ascii?Q?OfL8TlYf93+7AFXXOt3sZTozi+zH+wkCGvp+hV2mgcV07gtlkVL8wtnDqgvc?=
+ =?us-ascii?Q?fTF5PB8xLsxnO2O/8O7WP6fB+3sjijOwEPiRTknInkW8KApty5bMTfglfpsL?=
+ =?us-ascii?Q?Xa7eINg9E17IYIJxSn9kQOVk8nRnKTHIKKaaldEG+gFcKPJAJH40I5NEsbdu?=
+ =?us-ascii?Q?02UOtY86j9Vv6ttgh/yDZM0X6jl+UnvjA/X921+yeXFPEKlQzJLICs509GYn?=
+ =?us-ascii?Q?wWQG/7V4oY/8gV/svW0abeQxthJGvNGt+YWN0/PHHnXxDimEbTQfaLcso3On?=
+ =?us-ascii?Q?s4SGokaZcshVdezW+tK1s33bzXmp51Mo0XVv7s+N?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e29a214-41ce-4329-91e6-08dbf1412a6b
+X-MS-Exchange-CrossTenant-Network-Message-Id: f184cbfa-52b3-4d89-5ed6-08dbf1412a6b
 X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:39.1998
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2023 01:10:39.2211
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xPEmXM+q46raBIV/5oEHOHBYtvZgcViHkkaCMolPMmkVRH+fJO7gv4pqjqkrRr/x
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6f71zxWNLJgkgz6I6UQT2udJEyUgiiFHt2tncVABgwqBz9pvFR9sJ/GUov3TVaZL
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7607
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231129_171055_345607_CE617C88 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20231129_171058_233118_272B414E 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,236 +181,186 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ipmmmu-vmsa supports a single instance with multiple ids. It has a special
-check if the device is permitted, move that to the top of probe. Use
-iommu_of_get_single_iommu() to check and obtain the iommu device.
+virtio supports a single iommu instance with multiple ids.
 
-Introduce a per-device data to store the iommu and ids list. Allocate and
-initialize it with iommu_fw_alloc_per_device_ids(). Remove
-ipmmu_of_xlate(), ipmmu_init_platform_device(), and to_ipmmu().
+It has a combined ACPI (via the VIOT table) and OF probe path, add
+iommu_viot_get_single_iommu() to respresent this.
+
+It already has a per-instance structure, extend it with the ids[]
+array and use iommu_fw_alloc_per_device_ids() to populate it.
 
 Convert the rest of the funcs from calling dev_iommu_fwspec_get() to using
-the per-device data and remove all use of fwspec.
-
-Convert the places using dev_iommu_priv_get() to use the per-device data
-not the iommu.
+he per-device data and remove all use of fwspec.
 
 Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 ---
- drivers/iommu/ipmmu-vmsa.c | 96 +++++++++++++++++---------------------
- 1 file changed, 42 insertions(+), 54 deletions(-)
+ drivers/iommu/virtio-iommu.c | 67 +++++++++++++-----------------------
+ 1 file changed, 23 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-index ace1fc4bd34b0f..ba984017065f98 100644
---- a/drivers/iommu/ipmmu-vmsa.c
-+++ b/drivers/iommu/ipmmu-vmsa.c
-@@ -17,6 +17,7 @@
- #include <linux/iopoll.h>
- #include <linux/io-pgtable.h>
- #include <linux/iommu.h>
-+#include <linux/iommu-driver.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/pci.h>
-@@ -38,6 +39,8 @@
- 
- #define IPMMU_UTLB_MAX		64U
- 
-+static const struct iommu_ops ipmmu_ops;
-+
- struct ipmmu_features {
- 	bool use_ns_alias_offset;
- 	bool has_cache_leaf_nodes;
-@@ -67,6 +70,12 @@ struct ipmmu_vmsa_device {
- 	struct dma_iommu_mapping *mapping;
+diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+index b1a7b14a6c7a2f..767919bf848999 100644
+--- a/drivers/iommu/virtio-iommu.c
++++ b/drivers/iommu/virtio-iommu.c
+@@ -77,6 +77,8 @@ struct viommu_endpoint {
+ 	struct viommu_dev		*viommu;
+ 	struct viommu_domain		*vdomain;
+ 	struct list_head		resv_regions;
++	unsigned int			num_ids;
++	u32				ids[] __counted_by(num_ids);
  };
  
-+struct ipmmu_vmsa_master {
-+	struct ipmmu_vmsa_device *iommu;
-+	unsigned int num_ids;
-+	u32 ids[] __counted_by(num_ids);
-+};
-+
- struct ipmmu_vmsa_domain {
- 	struct ipmmu_vmsa_device *mmu;
- 	struct iommu_domain io_domain;
-@@ -83,11 +92,6 @@ static struct ipmmu_vmsa_domain *to_vmsa_domain(struct iommu_domain *dom)
- 	return container_of(dom, struct ipmmu_vmsa_domain, io_domain);
- }
- 
--static struct ipmmu_vmsa_device *to_ipmmu(struct device *dev)
--{
--	return dev_iommu_priv_get(dev);
--}
--
- #define TLB_LOOP_TIMEOUT		100	/* 100us */
- 
- /* -----------------------------------------------------------------------------
-@@ -591,9 +595,9 @@ static void ipmmu_domain_free(struct iommu_domain *io_domain)
- static int ipmmu_attach_device(struct iommu_domain *io_domain,
- 			       struct device *dev)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
-+	struct ipmmu_vmsa_master *master = dev_iommu_priv_get(dev);
- 	struct ipmmu_vmsa_domain *domain = to_vmsa_domain(io_domain);
-+	struct ipmmu_vmsa_device *mmu = master->iommu;
- 	unsigned int i;
- 	int ret = 0;
- 
-@@ -629,8 +633,8 @@ static int ipmmu_attach_device(struct iommu_domain *io_domain,
- 	if (ret < 0)
- 		return ret;
- 
--	for (i = 0; i < fwspec->num_ids; ++i)
--		ipmmu_utlb_enable(domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; ++i)
-+		ipmmu_utlb_enable(domain, master->ids[i]);
- 
+ struct viommu_request {
+@@ -510,19 +512,16 @@ static int viommu_add_resv_mem(struct viommu_endpoint *vdev,
  	return 0;
  }
-@@ -639,7 +643,7 @@ static int ipmmu_iommu_identity_attach(struct iommu_domain *identity_domain,
- 				       struct device *dev)
+ 
+-static int viommu_probe_endpoint(struct viommu_dev *viommu, struct device *dev)
++static int viommu_probe_endpoint(struct viommu_endpoint *vdev)
  {
- 	struct iommu_domain *io_domain = iommu_get_domain_for_dev(dev);
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct ipmmu_vmsa_master *master = dev_iommu_priv_get(dev);
- 	struct ipmmu_vmsa_domain *domain;
- 	unsigned int i;
- 
-@@ -647,8 +651,8 @@ static int ipmmu_iommu_identity_attach(struct iommu_domain *identity_domain,
- 		return 0;
- 
- 	domain = to_vmsa_domain(io_domain);
--	for (i = 0; i < fwspec->num_ids; ++i)
--		ipmmu_utlb_disable(domain, fwspec->ids[i]);
-+	for (i = 0; i < master->num_ids; ++i)
-+		ipmmu_utlb_disable(domain, master->ids[i]);
- 
- 	/*
- 	 * TODO: Optimize by disabling the context when no device is attached.
-@@ -708,20 +712,6 @@ static phys_addr_t ipmmu_iova_to_phys(struct iommu_domain *io_domain,
- 	return domain->iop->iova_to_phys(domain->iop, iova);
- }
- 
--static int ipmmu_init_platform_device(struct device *dev,
--				      struct of_phandle_args *args)
--{
--	struct platform_device *ipmmu_pdev;
--
--	ipmmu_pdev = of_find_device_by_node(args->np);
--	if (!ipmmu_pdev)
--		return -ENODEV;
--
--	dev_iommu_priv_set(dev, platform_get_drvdata(ipmmu_pdev));
--
--	return 0;
--}
--
- static const struct soc_device_attribute soc_needs_opt_in[] = {
- 	{ .family = "R-Car Gen3", },
- 	{ .family = "R-Car Gen4", },
-@@ -772,24 +762,10 @@ static bool ipmmu_device_is_allowed(struct device *dev)
- 	return false;
- }
- 
--static int ipmmu_of_xlate(struct device *dev,
--			  struct of_phandle_args *spec)
--{
--	if (!ipmmu_device_is_allowed(dev))
--		return -ENODEV;
--
--	iommu_fwspec_add_ids(dev, spec->args, 1);
--
--	/* Initialize once - xlate() will call multiple times */
--	if (to_ipmmu(dev))
--		return 0;
--
--	return ipmmu_init_platform_device(dev, spec);
--}
--
- static int ipmmu_init_arm_mapping(struct device *dev)
- {
--	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
-+	struct ipmmu_vmsa_master *master = dev_iommu_priv_get(dev);
-+	struct ipmmu_vmsa_device *mmu = master->iommu;
  	int ret;
- 
- 	/*
-@@ -831,16 +807,27 @@ static int ipmmu_init_arm_mapping(struct device *dev)
- 	return ret;
- }
- 
--static struct iommu_device *ipmmu_probe_device(struct device *dev)
-+static struct iommu_device *ipmmu_probe_device(struct iommu_probe_info *pinf)
- {
--	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
-+	struct device *dev = pinf->dev;
-+	struct ipmmu_vmsa_master *master;
-+	struct ipmmu_vmsa_device *mmu;
- 
--	/*
--	 * Only let through devices that have been verified in xlate()
--	 */
--	if (!mmu)
-+	if (!ipmmu_device_is_allowed(dev))
- 		return ERR_PTR(-ENODEV);
- 
-+	mmu = iommu_of_get_single_iommu(pinf, &ipmmu_ops, -1,
-+					struct ipmmu_vmsa_device, iommu);
-+	if (IS_ERR(mmu))
-+		return ERR_CAST(mmu);
-+
-+	master = iommu_fw_alloc_per_device_ids(pinf, master);
-+	if (IS_ERR(master))
-+		return ERR_CAST(master);
-+	master->iommu = mmu;
-+
-+	dev_iommu_priv_set(dev, master);
-+
- 	return &mmu->iommu;
- }
- 
-@@ -857,24 +844,25 @@ static void ipmmu_probe_finalize(struct device *dev)
- 
- static void ipmmu_release_device(struct device *dev)
- {
+ 	u16 type, len;
+ 	size_t cur = 0;
+ 	size_t probe_len;
++	struct device *dev = vdev->dev;
+ 	struct virtio_iommu_req_probe *probe;
+ 	struct virtio_iommu_probe_property *prop;
 -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
-+	struct ipmmu_vmsa_master *master = dev_iommu_priv_get(dev);
-+	struct ipmmu_vmsa_device *mmu = master->iommu;
- 	unsigned int i;
+-	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
+-
+-	if (!fwspec->num_ids)
+-		return -EINVAL;
++	struct viommu_dev *viommu = vdev->viommu;
  
--	for (i = 0; i < fwspec->num_ids; ++i) {
--		unsigned int utlb = fwspec->ids[i];
-+	for (i = 0; i < master->num_ids; ++i) {
-+		unsigned int utlb = master->ids[i];
+ 	probe_len = sizeof(*probe) + viommu->probe_size +
+ 		    sizeof(struct virtio_iommu_req_tail);
+@@ -535,7 +534,7 @@ static int viommu_probe_endpoint(struct viommu_dev *viommu, struct device *dev)
+ 	 * For now, assume that properties of an endpoint that outputs multiple
+ 	 * IDs are consistent. Only probe the first one.
+ 	 */
+-	probe->endpoint = cpu_to_le32(fwspec->ids[0]);
++	probe->endpoint = cpu_to_le32(vdev->ids[0]);
  
- 		ipmmu_imuctr_write(mmu, utlb, 0);
- 		mmu->utlb_ctx[utlb] = IPMMU_CTX_INVALID;
+ 	ret = viommu_send_req_sync(viommu, probe, probe_len);
+ 	if (ret)
+@@ -721,7 +720,6 @@ static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	int i;
+ 	int ret = 0;
+ 	struct virtio_iommu_req_attach req;
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
+ 	struct viommu_domain *vdomain = to_viommu_domain(domain);
+ 
+@@ -763,8 +761,8 @@ static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	if (vdomain->bypass)
+ 		req.flags |= cpu_to_le32(VIRTIO_IOMMU_ATTACH_F_BYPASS);
+ 
+-	for (i = 0; i < fwspec->num_ids; i++) {
+-		req.endpoint = cpu_to_le32(fwspec->ids[i]);
++	for (i = 0; i < vdev->num_ids; i++) {
++		req.endpoint = cpu_to_le32(vdev->ids[i]);
+ 
+ 		ret = viommu_send_req_sync(vdomain->viommu, &req, sizeof(req));
+ 		if (ret)
+@@ -792,7 +790,6 @@ static void viommu_detach_dev(struct viommu_endpoint *vdev)
+ 	int i;
+ 	struct virtio_iommu_req_detach req;
+ 	struct viommu_domain *vdomain = vdev->vdomain;
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(vdev->dev);
+ 
+ 	if (!vdomain)
+ 		return;
+@@ -802,8 +799,8 @@ static void viommu_detach_dev(struct viommu_endpoint *vdev)
+ 		.domain		= cpu_to_le32(vdomain->id),
+ 	};
+ 
+-	for (i = 0; i < fwspec->num_ids; i++) {
+-		req.endpoint = cpu_to_le32(fwspec->ids[i]);
++	for (i = 0; i < vdev->num_ids; i++) {
++		req.endpoint = cpu_to_le32(vdev->ids[i]);
+ 		WARN_ON(viommu_send_req_sync(vdev->viommu, &req, sizeof(req)));
  	}
+ 	vdomain->nr_endpoints--;
+@@ -974,34 +971,21 @@ static void viommu_get_resv_regions(struct device *dev, struct list_head *head)
+ static struct iommu_ops viommu_ops;
+ static struct virtio_driver virtio_iommu_drv;
  
- 	arm_iommu_release_mapping(mmu->mapping);
-+	kfree(master);
+-static int viommu_match_node(struct device *dev, const void *data)
+-{
+-	return device_match_fwnode(dev->parent, data);
+-}
+-
+-static struct viommu_dev *viommu_get_by_fwnode(struct fwnode_handle *fwnode)
+-{
+-	struct device *dev = driver_find_device(&virtio_iommu_drv.driver, NULL,
+-						fwnode, viommu_match_node);
+-	put_device(dev);
+-
+-	return dev ? dev_to_virtio(dev)->priv : NULL;
+-}
+-
+-static struct iommu_device *viommu_probe_device(struct device *dev)
++static struct iommu_device *viommu_probe_device(struct iommu_probe_info *pinf)
+ {
+ 	int ret;
++	struct viommu_dev *viommu;
+ 	struct viommu_endpoint *vdev;
+-	struct viommu_dev *viommu = NULL;
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	struct device *dev = pinf->dev;
+ 
+-	viommu = viommu_get_by_fwnode(fwspec->iommu_fwnode);
+-	if (!viommu)
+-		return ERR_PTR(-ENODEV);
++	viommu = iommu_viot_get_single_iommu(pinf, &viommu_ops,
++					     struct viommu_dev, iommu);
++	if (IS_ERR(viommu))
++		return ERR_CAST(viommu);
+ 
+-	vdev = kzalloc(sizeof(*vdev), GFP_KERNEL);
+-	if (!vdev)
+-		return ERR_PTR(-ENOMEM);
++	vdev = iommu_fw_alloc_per_device_ids(pinf, vdev);
++	if (IS_ERR(vdev))
++		return ERR_CAST(vdev);
+ 
+ 	vdev->dev = dev;
+ 	vdev->viommu = viommu;
+@@ -1010,7 +994,7 @@ static struct iommu_device *viommu_probe_device(struct device *dev)
+ 
+ 	if (viommu->probe_size) {
+ 		/* Get additional information for this endpoint */
+-		ret = viommu_probe_endpoint(viommu, dev);
++		ret = viommu_probe_endpoint(vdev);
+ 		if (ret)
+ 			goto err_free_dev;
+ 	}
+@@ -1050,11 +1034,6 @@ static struct iommu_group *viommu_device_group(struct device *dev)
+ 		return generic_device_group(dev);
  }
  
- static const struct iommu_ops ipmmu_ops = {
- 	.identity_domain = &ipmmu_iommu_identity_domain,
- 	.domain_alloc_paging = ipmmu_domain_alloc_paging,
--	.probe_device = ipmmu_probe_device,
-+	.probe_device_pinf = ipmmu_probe_device,
- 	.release_device = ipmmu_release_device,
- 	.probe_finalize = ipmmu_probe_finalize,
- 	/*
-@@ -884,7 +872,7 @@ static const struct iommu_ops ipmmu_ops = {
- 	.device_group = IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)
- 			? generic_device_group : generic_single_device_group,
- 	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
--	.of_xlate = ipmmu_of_xlate,
-+	.of_xlate = iommu_dummy_of_xlate,
+-static int viommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+-{
+-	return iommu_fwspec_add_ids(dev, args->args, 1);
+-}
+-
+ static bool viommu_capable(struct device *dev, enum iommu_cap cap)
+ {
+ 	switch (cap) {
+@@ -1070,12 +1049,12 @@ static bool viommu_capable(struct device *dev, enum iommu_cap cap)
+ static struct iommu_ops viommu_ops = {
+ 	.capable		= viommu_capable,
+ 	.domain_alloc		= viommu_domain_alloc,
+-	.probe_device		= viommu_probe_device,
++	.probe_device_pinf	= viommu_probe_device,
+ 	.probe_finalize		= viommu_probe_finalize,
+ 	.release_device		= viommu_release_device,
+ 	.device_group		= viommu_device_group,
+ 	.get_resv_regions	= viommu_get_resv_regions,
+-	.of_xlate		= viommu_of_xlate,
++	.of_xlate		= iommu_dummy_of_xlate,
+ 	.owner			= THIS_MODULE,
  	.default_domain_ops = &(const struct iommu_domain_ops) {
- 		.attach_dev	= ipmmu_attach_device,
- 		.map_pages	= ipmmu_map,
+ 		.attach_dev		= viommu_attach_dev,
 -- 
 2.42.0
 
