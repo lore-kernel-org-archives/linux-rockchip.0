@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3C6C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 08:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DEE5C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 08:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IlIqxlYvQE5owtJrVikTZl3khg48Tw++ToYGOY63pgI=; b=PTp90mokI+/y9d
-	FcKe5Dh5UtZae9WztfXPAXpOPyQwiuGRsxk22grncEmKSrVsPQ0r+zrnQJDQ8ufwpzmuqQsxo1bCt
-	3dAXmHCPE7qkrQapj4EUf14//O+7WsopEM8X4YD/e2bK9D4xGwnAxLzTDO+GZVESjP0i4/Yt7lhMA
-	EXKY3WcaKkPrXqIgFvDUU8T3uS3gNcqcUQzJJqU38EOxTLZOmzi9WVC4jyzH7b/LTT+buL8NfqDZw
-	zbGsoBO4cKCEJIkYI9/aTpfscs9b8vTfY2bkqboWodcHA0/mlvxEg2IZe7krCzS77fKHmjpHAm1+c
-	/TkZJmurrXaIjJi66QRw==;
+	List-Owner; bh=1UMSgjvzx6Td0muyMyb+WNeBGPHfJieRiRX0v+6CSd8=; b=Ji6uoYsjhM8qTF
+	uNol7/HtH/2Zzkp7lXCmpAuNikZVQEXWnflSAjxrdawyHT8FVLDni2PBQn7ea9Sxko4Fmd9IZgXzt
+	oFvuQ4TAXI1pohujZsx8BBAIdf4gnsi66TR9ozk9nfn3+CviEaSU3J3zrH5xj41Z/cUzWTnni1VgR
+	IU1G9OJoA4GqwY981IIj3kvB9NAX+1EaWNQnz+otkoeFd9Jxtd4bCrpfY2El2K2QklfGyG09oGe1J
+	Zab7AMPPfgEuO4AZbp+6LoHQUCn0PQaq03SKcO0ZSr7E7kCbBTaEV/NysDhtu2x6WjBCbszoo7ndJ
+	LJKXMSl87knU7h0LDDzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8yiC-00Cwfc-1i;
-	Fri, 01 Dec 2023 08:17:24 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1r8z4N-00Czn0-2D;
+	Fri, 01 Dec 2023 08:40:19 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8yi9-00Cwev-2E
+	id 1r8z4K-00CzmN-2A
 	for linux-rockchip@lists.infradead.org;
-	Fri, 01 Dec 2023 08:17:23 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-54c64316a22so144431a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Dec 2023 00:17:20 -0800 (PST)
+	Fri, 01 Dec 2023 08:40:18 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-54bfd4546fbso2094166a12.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 01 Dec 2023 00:40:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701418639; x=1702023439; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701420012; x=1702024812; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2at+u9BAAnC93hDhQveZtXqm8MWvwIreF3d/CcuLOJk=;
-        b=aZZBLalhUeHmltdqLDRdtHYN3sQPTu7tln6hMHtwn+Un7X1upVfYM5RyG34R/luQOs
-         YUX3j1YrHkZiZgedLimKlkFg70+ee8InC/M+Q43QQ2Khpo7NWF3n0aQSn7g0K7JxNOpw
-         xmUSE5NfwEeTpnFm44uiQgJoOeX9LvdteaLXWS/GXWcEidypDZPDe/Ir1JdYWc0QEOtv
-         VJwo8Kiye4ecVE5QC0A4ohWy+ugFEMBoYdZKzLS8DbKclZ8KNRUrkZK/PIil73SBwFf/
-         5fL/3i2xSotp4tzWsIfo0yr73Yj9EcUpVzRa6KrapIMHL3mV+UHU3KhjTCzTkslEipEx
-         56mg==
+        bh=cXvE7uk6PyU7Rxu1RaVxP8Z6ufZ2yG7HxnXPbBZglvs=;
+        b=PDeYSBZz7wwDBICayxN/oFxl4qAUMg2OWbX2bd0DJqxFpR7eaZN/t03soAXMfw8iCY
+         28AtjbvBMY77wc2PPyZprJGTzZhLZJptt5fPV4ulnkpxW9tmZ/4UOZdlWTsG2Pkfz1ox
+         D3+oeUy2IOI2vAtCKWDNFJYxJyfTzsBbkiqCWWtHWBt8Oj/xfgQHx3IPTjlq7cw2czyH
+         BKSVx6FablZmmmTJQ3CO7mcOypU6S/8EYdV3Fhr6MuqHRUm6MP5b+CdtMokU49gJ5otI
+         T9MtX9s6gJsTQ5GzPlOOqRmR1cKJiwaqxz6o1fMFSiFeR5bLtIvmvqmoA1238FicyM0w
+         5d5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701418639; x=1702023439;
+        d=1e100.net; s=20230601; t=1701420012; x=1702024812;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2at+u9BAAnC93hDhQveZtXqm8MWvwIreF3d/CcuLOJk=;
-        b=fmqqM8uNn5HEe6C56p4LVSQjq+GR2lZ+d1vb5k2kL+M1xROKmj4sWUmmbIDhHpGjQW
-         M6Y+5LTMhe2pWdrEqQhzt2nri5K6chk25RVTBgHbB9VTkm1ovbjxPD8BPjBR9E+Zoq3A
-         a6mkvZpGg0nokYSP85DywgRbe9OOodhO2656s4oSMEpE4DDgtnfpgxwvQOBYhAVaXb8o
-         ieq96qnNAb9rM03UnI97rZNlpBGZC7joWVE+rXbMNSVnNM0Be4jNA0A6IQJs0YpOgcmV
-         OUkK4hMB3HBwML60A2aLSF17h/fvE6+xz183Hy4WV68MuN7+Rj0UiZNtK33mFzpp/gqw
-         DWig==
-X-Gm-Message-State: AOJu0YzrYQQNoCM3o1RUDcfnh0Ig1e/uwld7E1F1/CbCmEiyMaI5BYMH
-	to+Yls9TIzoMP8Asmw/N8qxdwA==
-X-Google-Smtp-Source: AGHT+IGX/fwDC4N2bAIRHHjUurvcHO3hIL6CGYyL9GI1Im4abLy+epKnhAepuNp06RXRmANbLagRFQ==
-X-Received: by 2002:a17:906:3f5e:b0:a19:a19a:eaa7 with SMTP id f30-20020a1709063f5e00b00a19a19aeaa7mr474384ejj.96.1701418639541;
-        Fri, 01 Dec 2023 00:17:19 -0800 (PST)
+        bh=cXvE7uk6PyU7Rxu1RaVxP8Z6ufZ2yG7HxnXPbBZglvs=;
+        b=aNsPdHiL++vRmDynr/7vN6T4C7C5Q0QAO/keO44Kzrrxqrb7V/ob5SakfeulSm+XNx
+         laRkJ6FYrxvHB2PzeeVh3MDg+o2SYUjj82O2lyxeJgKEi6nBMDoWgSSiyK8EnW11k98G
+         3+J/zvGU3gZjIzzrry2ZwwA8i2y5U3RUUjoveokV48pB/20nqNYS8ytG13Sc2/NvWQcE
+         YsXZgh2Uh2aTWmnaoCTEVOJO82orufKExMbm73Jyvt1V89GIqh3bCFZmMmg3GSt2itYz
+         mzaqInpAGucFuHK1fQGgqLwClwwjDrmc2bGp5C0sBRwsqqy2qgfBB6EM0J24p7Ej42sm
+         i1Cw==
+X-Gm-Message-State: AOJu0Yzfb3BMhrsc1sCX2/I+9SQuqr7f83FQIUVslbqElbUIiNYRUxu0
+	xBCVJWLhBg4FkZOtfh30Cb8sEg==
+X-Google-Smtp-Source: AGHT+IEjRKf4OuFEqvFgEnFt+G/eH1ajatw4aKBgJzm1Sx9eQ+OjrBuTKnVsZo/BubzaCjwkkF1zTw==
+X-Received: by 2002:a50:950c:0:b0:54c:4837:8b82 with SMTP id u12-20020a50950c000000b0054c48378b82mr499279eda.80.1701420012641;
+        Fri, 01 Dec 2023 00:40:12 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id qb18-20020a1709077e9200b009f8af454d0dsm1601120ejc.112.2023.12.01.00.17.16
+        by smtp.gmail.com with ESMTPSA id bt15-20020a0564020a4f00b0054c63ebfa15sm135663edb.83.2023.12.01.00.40.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Dec 2023 00:17:18 -0800 (PST)
-Message-ID: <741a7b27-47ae-441c-9a34-52a6695adfe7@linaro.org>
-Date: Fri, 1 Dec 2023 09:17:15 +0100
+        Fri, 01 Dec 2023 00:40:12 -0800 (PST)
+Message-ID: <0c7c4868-4302-4d03-9a9b-3dbb4b98eb9f@linaro.org>
+Date: Fri, 1 Dec 2023 09:40:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/14] dt-bindings: display: vop2: Add rk3588 support
+Subject: Re: [PATCH 3/9] dt-bindings: display: Document Himax HX8394 panel
+ rotation
 Content-Language: en-US
-To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
-Cc: hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com,
- Andy Yan <andy.yan@rock-chips.com>
-References: <20231130122001.12474-1-andyshrk@163.com>
- <20231130122418.13258-1-andyshrk@163.com>
+To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com,
+ tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
+ quic_jesszhan@quicinc.com, neil.armstrong@linaro.org, javierm@redhat.com,
+ heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ robh+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+References: <20231130155624.405575-1-macroalpha82@gmail.com>
+ <20231130155624.405575-4-macroalpha82@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -122,10 +124,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231130122418.13258-1-andyshrk@163.com>
+In-Reply-To: <20231130155624.405575-4-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_001721_749410_B7217EFC 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20231201_004016_730395_750CE88A 
+X-CRM114-Status: UNSURE (   4.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,142 +145,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 30/11/2023 13:24, Andy Yan wrote:
->    clock-names:
-> +    minItems: 5
->      items:
->        - const: aclk
->        - const: hclk
->        - const: dclk_vp0
->        - const: dclk_vp1
->        - const: dclk_vp2
-> +      - const: dclk_vp3
-> +      - const: pclk_vop
->  
->    rockchip,grf:
->      $ref: /schemas/types.yaml#/definitions/phandle
->      description:
-> -      Phandle to GRF regs used for misc control
-> +      Phandle to GRF regs used for control the polarity of dclk/hsync/vsync of DPI,
-> +      also used for query vop memory bisr enable status, etc.
-> +
-> +  rockchip,vo1-grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to VO GRF regs used for control the polarity of dclk/hsync/vsync of hdmi
-> +      on rk3588
-> +
-> +  rockchip,vop-grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to VOP GRF regs used for control data path between vopr and hdmi/edp.
-> +
-> +  rockchip,pmu:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to PMU GRF used for query vop memory bisr status on rk3588
+On 30/11/2023 16:56, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Document panel rotation for Himax HX8394 display panel.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
 
-Some of your above descriptions end with full stop, some not. Keep one
-style.
-
->  
->    ports:
->      $ref: /schemas/graph.yaml#/properties/ports
-> -
-> -    properties:
-> -      port@0:
-> +    description: |
-> +      The connections to the output video ports are modeled using the OF
-> +      graph bindings specified in Documentation/devicetree/bindings/graph.txt.
-> +      The number of ports and their assignment are model-dependent. Each port
-> +      shall have a single endpoint.
-
-The description is redundant, drop.
-
-> +
-> +    patternProperties:
-> +      "^port@[0-3]$":
->          $ref: /schemas/graph.yaml#/properties/port
-> -        description:
-> -          Output endpoint of VP0
-> +        description: Output endpoint of VP0/1/2/3
-> +        unevaluatedProperties: false
-
-Why did you add this line? It should not be needed, if I read diff
-correctly.
-
->  
-> -      port@1:
-> -        $ref: /schemas/graph.yaml#/properties/port
-> -        description:
-> -          Output endpoint of VP1
-> +    required:
-> +      - port@0
->  
-> -      port@2:
-> -        $ref: /schemas/graph.yaml#/properties/port
-> -        description:
-> -          Output endpoint of VP2
-> +    unevaluatedProperties: false
->  
->    iommus:
->      maxItems: 1
-> @@ -96,6 +121,61 @@ required:
->    - clock-names
->    - ports
->  
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3588-vop
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 7
-> +        clock-names:
-> +          items:
-> +            - const: aclk
-> +            - const: hclk
-> +            - const: dclk_vp0
-> +            - const: dclk_vp1
-> +            - const: dclk_vp2
-> +            - const: dclk_vp3
-> +            - const: pclk_vop
-
-These look the same as in top-level, so just minItems: 7
-
-> +
-> +        ports:
-> +          required:
-> +            - port@0
-> +            - port@1
-> +            - port@2
-> +            - port@3
-> +
-> +      required:
-> +        - rockchip,grf
-> +        - rockchip,vo1-grf
-> +        - rockchip,vop-grf
-> +        - rockchip,pmu
-> +
-> +    else:
-> +      properties:
-> +        rockchip,vo1-grf: false
-> +        rockchip,vop-grf: false
-> +        rockchip,pmu: false
-> +
-> +        clocks:
-> +          minItems: 5
-
-maxItems instead
-
-> +        clock-names:
-
-maxItems
-
-
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
