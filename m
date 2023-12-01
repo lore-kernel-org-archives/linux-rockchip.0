@@ -4,128 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2441C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 14:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE6DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 15:15:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4cktCu17E9GkCIheL2zjYeAsyZxoAHmkIjQUO3hj8Ro=; b=AiU2QxQLUpCJ3/
-	7giYOspd8vFnfqkBHT348w1RiZhZvUysR5Ff7n10NGa1CX1HwaTLFaeHikGT8JMn1wDhOs4tiTtkR
-	k5LPYzlkG0IePZO+bLRxd7RDg+k3GJbvoTvdCAdPyIXJlO/Etm0B+Ukm7G50EscWcT4C96DqWpaaG
-	ZBAvPam3nzcLDCgkYKvF33JxwWHhx2WtGsMHeBAkMulVQ19sEJkeqFQkCrWfc24UE3EIAfWbRMl4H
-	pgZTzM/vZgShib7MT6s3/C4sODfnOvC42h9BKUJRQg/XQ7JwIGk0cM96y9rzkWojAvMLOqCFYWNEE
-	cyZSB4HzKaykEorl7oMw==;
+	List-Owner; bh=GHJOb+yXscI7qslkr41UFrVqSWNfctN58R2JeuHiq0c=; b=f4u9BTJDzxTU0Z
+	YmtcsvAYOvCRk1kp7w+zrQWYU0MUafs4dQXj2SIwO5YMqui0SMj93ajrmG/Mbp5e1iYjzTGnsUdur
+	7JeC5ltQzl1KxusA0AF6R1/o3v8+VBBjM+bafEjVSWAc2WUSba2PcnCkKCp2Dfp2Y+6SU3lVALqSk
+	wgrIbtEmUqn6TY6Vdv1yUEIrn3xUUs374pgh5ivvTL7+JzcAxCvz+4ggZaBRyys9t1TWw8COh9NQr
+	P7k7BgWMWt/PXvpB9MZJvOEVl6vkwf2awKMzUULj9L0XbYe3UAg36jYmbYaVU1AF8EIbLvSd05zh5
+	K2faJXRFCMO5xY8nsgug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r94LV-00DugL-2v;
-	Fri, 01 Dec 2023 14:18:21 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1r95F1-00E1Un-0n;
+	Fri, 01 Dec 2023 15:15:43 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r94LS-00DufU-2B
-	for linux-rockchip@lists.infradead.org;
-	Fri, 01 Dec 2023 14:18:20 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40b4a8db314so21627995e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Dec 2023 06:18:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701440296; x=1702045096; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=FS+WjqQpYUDQECaBhbz1tAeOxXG5jK78RjkjXlhAMRk=;
-        b=lz6n2lloHOzgx3tEV5Z96susmHPPK0xe2ghA6bDziD6qhPr+vHecDhmJAVT9enrjCT
-         ztk0GrFhCQ9Qpc+GHjrbDEGmaVvKj3W0ce3ooUEAUMwuTqvLjgfPoXx/CA7NICCL1GLI
-         XZvy8Jxnk6bOgBhI+SQYPfvL9BrWzltUPwWQunyp1QKeKgyPoSl2j/8nSQC7HgtMfo2b
-         TN94rFme1bT3D1jQBArtoTX5DVthjLxX1FU+X3KxSRdbqkbOrF/JiU0W4axzOb4MQ0fp
-         W9gbJXhQzCJkpYKF4+W9SXDCHlHdBXQPk6aPbJYJllPkRau1in3d8/AU1xEnACkkfCzY
-         jbZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701440296; x=1702045096;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FS+WjqQpYUDQECaBhbz1tAeOxXG5jK78RjkjXlhAMRk=;
-        b=GcpCUZ9qs2Ma+tMvIn0mo/kfp7KbkvZiixXbkELr6JrHmPU5l/g6ORVA9uVHuSkyrm
-         DP4OU3cykhq4YCAIYcQ1NLtjiEBGWybe87VexAg/gtUrwmEylJ6asUYGYgIkz1pqkdth
-         Xermt+/9eXhGFtASAoEuw170b8DzdqQH358ZWq7E7ndPXHAz/MmiiOiLq1+BW6ZIQwLs
-         E0rb2SJN5a1yGABbnAtd5I1CrjyHjMtv6zVSymhjPn3HrgBbDZqN9ruejrBaaJw+5JaM
-         iLlVHY4OhFp6GzDk3pxTXLfOsfIVGPIBIRWhrEM66gInFNRsF02V/a4kBNlx0b43kOHM
-         mYNA==
-X-Gm-Message-State: AOJu0YwV0n+V5rgIi+neGOT4H+AjPH0CkhUIVfGIfCdjDjnhefEjzpxj
-	eazrne0p4dDxGQ6MMd1IpFsbLA==
-X-Google-Smtp-Source: AGHT+IH4G4jvMoTfsYemUsqfpRa7LrCc+tz4U3Kcd+4VZVVP8T79d20autpaZeSOlzbLhu5s/esa9g==
-X-Received: by 2002:a05:600c:3309:b0:40b:5f03:b3ff with SMTP id q9-20020a05600c330900b0040b5f03b3ffmr179162wmp.289.1701440296256;
-        Fri, 01 Dec 2023 06:18:16 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id g18-20020a05600c311200b0040b42df75fcsm5551309wmo.39.2023.12.01.06.18.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Dec 2023 06:18:15 -0800 (PST)
-Message-ID: <ad9a107c-4545-4e9c-8f98-53c3ee0ab567@linaro.org>
-Date: Fri, 1 Dec 2023 15:18:14 +0100
+	id 1r95Ey-00E1Ti-2b;
+	Fri, 01 Dec 2023 15:15:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1701443740; x=1732979740;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=tWb4VPgidAHQe+HcKW5PIOVqtBQKyGJANuwYhvqD8Tg=;
+  b=NgBhyeelC1swKK5kV7pU94TPWZS0zb4/79AzqxyO2UA7UV9nrYSFDwGH
+   QlzW6juuSkw4FqjTS2Rr5TNO0tIsYEuCT3YhLddFepoLIFkNDG2m80XDo
+   Q0VDyJBet1MEc+/jUaxuiwz290r9zaGOeNBUPk7VAzV9aNIklqD2yX2VA
+   9IdXrJ9UIoTCXdDzRj8etlcUfnXawVkATajFmuGyuPgYiNpW7OVSFW6AQ
+   JJGmR14apBzTR2JxbAVMILhuRoUCy9Oh+a2iHkyR9CRZezDVDkXx0/q6R
+   NIdMPoFBqHBTEIM85e6SAKlRIttIyIq+gIRKkSoCWeZIKngWPRzcSPNfg
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10911"; a="362390"
+X-IronPort-AV: E=Sophos;i="6.04,241,1695711600"; 
+   d="scan'208";a="362390"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2023 07:15:32 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10911"; a="763176400"
+X-IronPort-AV: E=Sophos;i="6.04,241,1695711600"; 
+   d="scan'208";a="763176400"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
+  by orsmga007.jf.intel.com with SMTP; 01 Dec 2023 07:15:26 -0800
+Received: by stinkbox (sSMTP sendmail emulation); Fri, 01 Dec 2023 17:15:25 +0200
+Date: Fri, 1 Dec 2023 17:15:25 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
+	linux-kernel@vger.kernel.org, Samuel Holland <samuel@sholland.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	linux-doc@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>,
+	linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
+	dri-devel@lists.freedesktop.org, linux-media@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 05/45] drm/connector: Check drm_connector_init
+ pointers arguments
+Message-ID: <ZWn4jUsVgjubVPvB@intel.com>
+References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
+ <20231128-kms-hdmi-connector-state-v4-5-c7602158306e@kernel.org>
+ <87h6l66nth.fsf@intel.com>
+ <v3hplco5fdedv6bnc6mwx2zhhw4xxdiekha26ykhc5cmy7ol77@2irk3w4hmabw>
+ <ZWXv1Oi_sH0BRWao@intel.com>
+ <2mnodqvu2oo674vspiy4gxhglu3it5cq47acx5itnbwevgc4cf@c7h2bvnx3m2n>
+ <ZWcB4Ak8QnwkhObR@intel.com>
+ <2lbs5dkpusow72koxknoautcfb6e2ygq5wledim4i572ya5xlc@stc4koneykhm>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: gpio: rockchip: add a pattern for gpio hogs
-Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
-Cc: linus.walleij@linaro.org, brgl@bgdev.pl, andy@kernel.org,
- linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- quentin.schulz@theobroma-systems.com,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20231201140840.323762-1-heiko@sntech.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231201140840.323762-1-heiko@sntech.de>
+Content-Disposition: inline
+In-Reply-To: <2lbs5dkpusow72koxknoautcfb6e2ygq5wledim4i572ya5xlc@stc4koneykhm>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_061818_734679_2BB8DEA5 
-X-CRM114-Status: UNSURE (   5.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231201_071540_856274_BCB71C64 
+X-CRM114-Status: GOOD (  45.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,24 +93,176 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2023 15:08, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> Allow validating gpio-hogs defined inside the gpio controller node.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
+On Fri, Dec 01, 2023 at 10:01:49AM +0100, Maxime Ripard wrote:
+> On Wed, Nov 29, 2023 at 11:18:24AM +0200, Ville Syrj=E4l=E4 wrote:
+> > On Wed, Nov 29, 2023 at 10:11:26AM +0100, Maxime Ripard wrote:
+> > > Hi Ville,
+> > > =
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > > On Tue, Nov 28, 2023 at 03:49:08PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > On Tue, Nov 28, 2023 at 02:29:40PM +0100, Maxime Ripard wrote:
+> > > > > On Tue, Nov 28, 2023 at 02:54:02PM +0200, Jani Nikula wrote:
+> > > > > > On Tue, 28 Nov 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> > > > > > > All the drm_connector_init variants take at least a pointer t=
+o the
+> > > > > > > device, connector and hooks implementation.
+> > > > > > >
+> > > > > > > However, none of them check their value before dereferencing =
+those
+> > > > > > > pointers which can lead to a NULL-pointer dereference if the =
+author
+> > > > > > > isn't careful.
+> > > > > > =
 
-Best regards,
-Krzysztof
+> > > > > > Arguably oopsing on the spot is preferrable when this can't be =
+caused by
+> > > > > > user input. It's always a mistake that should be caught early d=
+uring
+> > > > > > development.
+> > > > > > =
 
+> > > > > > Not everyone checks the return value of drm_connector_init and =
+friends,
+> > > > > > so those cases will lead to more mysterious bugs later. And pro=
+bably
+> > > > > > oopses as well.
+> > > > > =
+
+> > > > > So maybe we can do both then, with something like
+> > > > > =
+
+> > > > > if (WARN_ON(!dev))
+> > > > >    return -EINVAL
+> > > > > =
+
+> > > > > if (drm_WARN_ON(dev, !connector || !funcs))
+> > > > >    return -EINVAL;
+> > > > > =
+
+> > > > > I'd still like to check for this, so we can have proper testing, =
+and we
+> > > > > already check for those pointers in some places (like funcs in
+> > > > > drm_connector_init), so if we don't cover everything we're incons=
+istent.
+> > > > =
+
+> > > > People will invariably cargo-cult this kind of stuff absolutely
+> > > > everywhere and then all your functions will have tons of dead
+> > > > code to check their arguments.
+> > > =
+
+> > > And that's a bad thing because... ?
+> > > =
+
+> > > Also, are you really saying that checking that your arguments make se=
+nse
+> > > is cargo-cult?
+> > > =
+
+> > > We're already doing it in some parts of KMS, so we have to be
+> > > consistent, and the answer to "most drivers don't check the error"
+> > > cannot be "let's just give on error checking then".
+> > > =
+
+> > > > I'd prefer not to go there usually.
+> > > > =
+
+> > > > Should we perhaps start to use the (arguably hideous)
+> > > >  - void f(struct foo *bar)
+> > > >  + void f(struct foo bar[static 1])
+> > > > syntax to tell the compiler we don't accept NULL pointers?
+> > > > =
+
+> > > > Hmm. Apparently that has the same problem as using any
+> > > > other kind of array syntax in the prototype. That is,
+> > > > the compiler demands to know the definition of 'struct foo'
+> > > > even though we're passing in effectively a pointer. Sigh.
+> > > =
+
+> > > Honestly, I don't care as long as it's something we can unit-test to
+> > > make sure we make it consistent. We can't unit test a complete kernel
+> > > crash.
+> > =
+
+> > Why do you want to put utterly broken code into a unit test?
+> =
+
+> Utterly broken code happens. It probably shouldn't, but here we are.
+> =
+
+> Anyway, you mostly missed the consistent part.
+> =
+
+> The current state with it is:
+> =
+
+>   - planes:
+>     - drm_universal_plane_init warns if funcs->destroy NULL
+>     - drm_universal_plane_alloc errors out if funcs is NULL
+>     - drmm_universal_plane_alloc warns and errors out if funcs or funcs->=
+destroy are NULL
+> =
+
+>   - CRTC:
+>     - drm_crtc_init_with_planes warns if funcs->destroy NULL
+>     - drmm_crtc_init_with_planes warns if funcs or funcs->destroy are NULL
+>     - drmm_crtc_alloc_with_planes warns and errors out if funcs or funcs-=
+>destroy are NULL
+> =
+
+>   - encoder:
+>     - drm_encoder_init warns if funcs->destroy NULL
+>     - drmm_encoder_init warns and errors out if funcs or funcs->destroy a=
+re NULL
+>     - drmm_encoder_alloc warns and errors out if funcs or funcs->destroy =
+are NULL
+> =
+
+>   - connectors:
+>     - drm_connector_init warns and errors out if funcs or funcs->destroy =
+are NULL
+>     - drm_connector_init_with_ddc warns and errors out if funcs or funcs-=
+>destroy are NULL
+>     - drmm_connector_init warns and errors out if funcs or funcs->destroy=
+ are NULL
+
+Those are perhaps fine, as things may not oops immediately if you get
+that wrong. But NULL checking things that will anyway oops immediately,
+(and there's not chance the thing will do anything useful if you prevent
+the oops with a NULL check) doesn't make any sense to me. It just makes
+you doubt the entire universe when you see code like that.
+
+> =
+
+> I think that just proves that your opinion is just not as clear cut as
+> you'd like it to be, and it's far from being the policy you claim it is.
+> =
+
+> Plus, we're not even remotely consistent there, and we're not
+> documenting that anywhere.
+> =
+
+> And we have plenty of other examples of static stuff being checked
+> because it just makes sense. All variants of drm_crtc_init_with_planes
+> will for example check that the correct plane type is associated to the
+> primary and cursor planes.
+> =
+
+> We should fix that.
+
+Ideally the compiler should catch all of this. But given we are
+implementing this in C (and even C23 constexpr was neutered beyond
+uselessness) that's not really possible in any nice way :(
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
