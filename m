@@ -4,49 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAFBC07E97
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 16:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EF9BC10F04
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 17:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hmASKuNZR+nUkj97GXK0G46HwESfbHaB71pZVU4LlN4=; b=r7m/Pe5BVsAUYz
-	kDv+nc/9CmYgWIo+4SxdYlJwr7ppg92xbf6ThjaL4dukSmruOQ6mcYRxf9+4ruYI8IreaRwEcR+P2
-	wZKBDZRwfUE1uyeOE5wSSmGwYUp7TkEPbftF8UNpkBjdzyOP4mI6mFBQOhvsznq9Kz2XmOnBNajQq
-	9ahDD0ucJXJLq4mcku8b0qnFyurf4tW94MzWayy/kAsEeyMFrEi8Kw/i2sYZ9zdL2AtHh8Lv8Uge6
-	nGe5nKGlBA0G/3Um3FxPF6OoXYzKyb/5LDq86PunK278UjLE9sgw9dgt7T229t5gewqx6Ep3exISM
-	CJWX/aMthlBWQw7MnSxQ==;
+	List-Owner; bh=fux6NVChSN19dHYe+XmEEOEi+/4XF9vA506km3LJj8Y=; b=eABXK+V2iKSi1v
+	MYc/XqjFmHchhnk7fvixgqm7w48BX0851I2JpYelmsTQAaZJJvgbLBYwrLfN0vl6NwOlIUN2CqyBS
+	QzFbN5mYcWN3FTwvFlsVPmkiFrAs4R9snns59/8ayrqqS2FPrPhgXpniVUfFq5hkwz5WaktiPhU9W
+	eqNBQHxuWLIQo1IBh95/RYbUskf83NafaHPAs0R/Q/X8GKplNpLiXBCZMjqByob3ls5hv8ujtsDI8
+	Z+uvzEKU2nJglHb1uaadsGNoMZLELbkbXjFeiAWTaubLg8GUgMaxx+DqI6vPx864/W79FmdvDZxR8
+	yrA76FqsANNcO2ymlsIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r96qJ-00EGQs-0Y;
-	Fri, 01 Dec 2023 16:58:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r979w-00EJL7-0e;
+	Fri, 01 Dec 2023 17:18:36 +0000
+Received: from mail-bn7nam10olkn20818.outbound.protection.outlook.com ([2a01:111:f400:7e8a::818] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r96qF-00EGO9-2w;
-	Fri, 01 Dec 2023 16:58:17 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r96qC-0001Os-R9; Fri, 01 Dec 2023 17:58:12 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	quentin.schulz@theobroma-systems.com,
-	heiko@sntech.de,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/4] arm64: dts: rockchip: move rk3588 serial aliases to soc dtsi
-Date: Fri,  1 Dec 2023 17:58:07 +0100
-Message-Id: <20231201165810.334212-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231201165810.334212-1-heiko@sntech.de>
-References: <20231201165810.334212-1-heiko@sntech.de>
+	id 1r979s-00EJKQ-1d
+	for linux-rockchip@lists.infradead.org;
+	Fri, 01 Dec 2023 17:18:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e3biYDSTXSn2VZ158+BGTTZA5khuVj1kh0GPUnAxQNvfyZMm90loD4dp70LLg8zQweO0z8pe0SdJDCMTQR6/ScPe/do0QDVNYGgfH+OFBurGgwJTqex/EQ/9TJ82xhTAadh3IJRpZAohinFp3MAC2wTfZIJrILRwQhyjVRYQUPYEX3wScT+FrRDDu82+j66Qj4zNTZUu/mTLfIdUzgNwa+Ny/dzA5wBmem8NfSrScVc7AKYxYUowXaJ7TKUZE/L/0iki45zjlgGOS/S5AyBrH78hqxXCxsnJ5tTUhhfetp4VMy05Kmvu2ba4VREx1Sxi8gLcbxwElGjY32UdrMAo2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=t9HQacYxeSMBYpsGk3lAZDejcu8xr9ZdiZbH7KTMJyE=;
+ b=L1mmEU5yXmJMbPSYyJHg/IZ4e1FXkbkTEjayA2xLhwtIi/sx/44iAwbWqh6D1w0Y4+ahPJr5ntlkTzQR5Bn47ALGsCC8exWoA1+rb7SqBMvShV0xOQF6dYmUDXFQQvTTRnSSNzanohDkd/ZjJljK/7op3STlv0lXJjRd1zx50iTYYsmSyTkjS5OdAOL5orj88u617uO3Ewfn7Rgu9L1O6rgN7YQUF7RVWCDAThAF4/uObfDZ/ZWCeWUZcrEpaA/bsutb/knw68ISkaj7ga0MEIre2xACM5jVoL11oxnIRRYya799jWyGhCpryZxNq9vo5ElGpc2G2bvnPrx9VLZTuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=t9HQacYxeSMBYpsGk3lAZDejcu8xr9ZdiZbH7KTMJyE=;
+ b=HSmOVFBi8QgBOh2cZLRz6LRGlZoaQPsLju949xvMmdqN8ktR1ubjfuF5xRIS7e90jIcegxs9ecD0tfVRRpWRpZbaRPtgRXfSG/IJK0uWIWDKpwyzmPaD9nKLQQ66Br9a227oyf5FovKX7Xbr02C7+bMgnqn90XVwCT29GaJnbp4RLD00U4GB8xcT7/go/yxq7ampo0LHVaQBwebaK7YRB8SY8ikNEQn9AiYQZLQAjnOg7X+04nGRmlQjrpvt5zhZDrLBGdFilGn6ZDruXqWZ/1FCPd0PV6iVU+7WsbaBfhcKCfDW6NdbYJIqgipYacA0Dr8s22BBduPawPBjJ+cQzQ==
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
+ by MW5PR06MB8906.namprd06.prod.outlook.com (2603:10b6:303:1c3::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.27; Fri, 1 Dec
+ 2023 17:18:23 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::3fca:a39b:c9d2:c834]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::3fca:a39b:c9d2:c834%2]) with mapi id 15.20.7046.024; Fri, 1 Dec 2023
+ 17:18:22 +0000
+Date: Fri, 1 Dec 2023 11:18:18 -0600
+From: Chris Morgan <macromorgan@hotmail.com>
+To: 20231130155624.405575-7-macroalpha82@gmail.com
+Cc: macroalpha82@gmail.com, airlied@gmail.com, conor+dt@kernel.org,
+	daniel@ffwll.ch, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, heiko@sntech.de,
+	javierm@redhat.com, krzysztof.kozlowski+dt@linaro.org,
+	linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	mturquette@baylibre.com, neil.armstrong@linaro.org,
+	quic_jesszhan@quicinc.com, robh+dt@kernel.org, sam@ravnborg.org,
+	sboyd@kernel.org, tzimmermann@suse.de
+Subject: Re: [PATCH 6/9] drm/panel: himax-hx8394: Add Support for Powkiddy
+ X55 panel
+Message-ID: <SN6PR06MB53428549B09E09187E5057DFA581A@SN6PR06MB5342.namprd06.prod.outlook.com>
+References: <20231130155624.405575-7-macroalpha82@gmail.com>
+ <f8ae78a0-f329-457a-8a53-b1725f9e2e20@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <f8ae78a0-f329-457a-8a53-b1725f9e2e20@gmail.com>
+X-TMN: [RAA/6pYnbj9BcmAxAvaSnPZMzlIHEK7Q]
+X-ClientProxiedBy: SN7PR04CA0189.namprd04.prod.outlook.com
+ (2603:10b6:806:126::14) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID: <ZWoVWpL3U1q/1ZtP@wintermute.localhost.fail>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|MW5PR06MB8906:EE_
+X-MS-Office365-Filtering-Correlation-Id: 651b9758-de59-4a8f-7f4a-08dbf29184b2
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 8vRhSCbTRSpz/Le+26UC9MywPUHTWumvVsIfJfRFdI3PerESjI2gl8WR+0EiOLyORlABdgMnjZa5boWeIOKKX+TRqHnPG9AL48aGZ5DDr90+oBM4tYql5ySWM9ndoecTA3UkoHSe4yeqlUN7QaGM3wKcv9f8sceQznSx6dwbc3bI765/x6m7DC2NeN+9lurRCdOaLxGFoB0LoVvujXV1eGI2uHdLaVahA7vTI8Ft3DsQvIeQrko6DFN/e677iDx3k/sKotS5gy5SstbP8ADaA9X86USKswGSJ9mdFRLUOXMHByzPdSTIxFHVpiwdUGjQZFYgDKba+d0ztSS4R+3uxXEk+N+X69eoWCAzKB7YpIirksMJAAM3qpnqWoZImalpSTpaO7ru9odzFXIyHYKxqswQSgEL07VLNXp7AXaAGUHTe33JeHsfp5q4EUtI/hDvSwo9/f5MIQqSzyVOPPIEzhgyTjQXLNHflG4bHIQ6fZYq5aSdkJp7tmtq8b6VZW2e/PvJ63fkyFon707j+R5IP3i5QAEy+FhgSAcNbmEJtMtgZaXzlrq3nF16neKGdActSBMHxhkH7ROf+VHFnmjfOzNti5Z8IG/pDRPa4VHCVPE=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?ypbBZBrjaPxTCDJjUfByoD3G/2HnaQLtykKBu6Ynl0HxqpI5kHMcrJMrf1?=
+ =?iso-8859-1?Q?Ho+TDuVNtyXv4RYMBQtwAW7aFHjqiGMenVKEyQFpK1lQp+zeFMlptls4/l?=
+ =?iso-8859-1?Q?VgmiC6K5URFNEma6/y3OlQB0vnqjRhFYP1FV5JvL0cLJ5V76fbOK+xDvKu?=
+ =?iso-8859-1?Q?rl3DPXjc2RfL70+tu2+SKKoq4DJcBKzsaqolL4rkpAE1tKbwCOqUlmx2GQ?=
+ =?iso-8859-1?Q?bI6Z0vvvRz/7IxI4U0aWW76quoDIFTmyCqD/82NdYY2Aw4W+ddHFIaZG0H?=
+ =?iso-8859-1?Q?YGOdto4fz9L6vxJxW92SP6PovVrDdi80Y5aFq5Y6+l2tlfgAXRqCoQ04lb?=
+ =?iso-8859-1?Q?mgdtjZmMBgphFYPn0pCgQEmaqorXKxsWKv6n4gcftrNVegFL+cRWpmlldp?=
+ =?iso-8859-1?Q?8sTEMf+pO+KUC2o/RGU+fssnuc353S109gcFhf0KDgKNsZeMGpbP5XESXm?=
+ =?iso-8859-1?Q?e3t0P/hnXgXPog//f8Z5RAITCtQ4qJd20D63IZpynSa8V1BYcHoqNujUp8?=
+ =?iso-8859-1?Q?K9QtXk5zWkaChpgPla8onmxapF92OC4zPguHcGmqQJHV3whgm2FBRJa5PO?=
+ =?iso-8859-1?Q?6UwHaecDtJ0r8CJrrRT0MbpS9ws5uVIdk9kxY8P5VyGWbItOuivfRe8nmP?=
+ =?iso-8859-1?Q?m9ALCmvsjOvlIlQs3AZfRgHbQXCCH0OUqi8zxHwjjaNbqS8W7I5NQH13MQ?=
+ =?iso-8859-1?Q?ghvdPuMF/TxT6eGccbKllQGgMSloj2lYMn2ibdwMEbqUAWvZpXr0fV2ll7?=
+ =?iso-8859-1?Q?6f870N2Lfb3fIzi5pLM1OOGyFZBqAJbzv0KWQ8pYj6CwyXO+zdd5GBB2ae?=
+ =?iso-8859-1?Q?1r9TH6ICDE6ZenbXmQD/GBXt6NhRsmXWxP2XrZ/Qf6kN7xL+k27Wld7SNC?=
+ =?iso-8859-1?Q?I76yfvBJmsxIaDoejgDCBQmJL/rMgAUCcwJowtUnTrcEk4Rb2/2njACgRb?=
+ =?iso-8859-1?Q?rcpez58NC4mOJxv3hCJY75Lr30rZlQZvh5vl105PdmVDg3+vQ7uwLvULMD?=
+ =?iso-8859-1?Q?X4pFs13svVvrsd3eSGZmarZI3rSD+jJrAAyXyLxKqeDr2WZ51c1erAyTx5?=
+ =?iso-8859-1?Q?rmcWRk3vaFLcZONhVWS6GT08KprnaYFz4LtUvXCUQPbSnVOHA+jst1+qJE?=
+ =?iso-8859-1?Q?J5DsKLgYyy0+2aBhzQXzgsZItgKPaF0GzdkyclLe3++SO8qV78fFx9wSq6?=
+ =?iso-8859-1?Q?s+q/QraoomsiON0eWoKsQkr+fNk5rphMO6Fne6l7lI5RvfmGZF2hOPpeat?=
+ =?iso-8859-1?Q?ZOds6bXr4vBvy7me1gtCQJAwgdOPygqt4e5a2eynE=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 651b9758-de59-4a8f-7f4a-08dbf29184b2
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Dec 2023 17:18:22.7572
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR06MB8906
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_085815_964427_EACB870C 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20231201_091832_638757_27AF05A0 
+X-CRM114-Status: GOOD (  25.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,215 +128,280 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On Thu, Nov 30, 2023 at 09:19:40PM -0600, Kendrick Curry wrote:
+> On Thu, Nov 30, 2023 at 09:56:21AM -0600, Chris Morgan wrote:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> >
+> > Add support for the Powkiddy X55 panel as used on the Powkiddy X55
+> > handheld gaming console. This panel uses a Himax HX8394 display
+> > controller and requires a vendor provided init sequence. The display
+> > resolution is 720x1280 and is 67mm by 121mm as measured with calipers.
+> >
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > ---
+> >=A0 drivers/gpu/drm/panel/panel-himax-hx8394.c | 137 +++++++++++++++++++=
+++
+> >=A0 1 file changed, 137 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/panel/panel-himax-hx8394.c
+> b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+> > index b68ea09f4725..4807ab1c10fe 100644
+> > --- a/drivers/gpu/drm/panel/panel-himax-hx8394.c
+> > +++ b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+> > @@ -38,6 +38,7 @@
+> >=A0 #define HX8394_CMD_SETMIPI=A0=A0=A0 =A0 0xba
+> >=A0 #define HX8394_CMD_SETOTP=A0=A0=A0 =A0 0xbb
+> >=A0 #define HX8394_CMD_SETREGBANK=A0=A0=A0 =A0 0xbd
+> > +#define HX8394_CMD_UNKNOWN5=A0=A0=A0 =A0 0xbf
+> >=A0 #define HX8394_CMD_UNKNOWN1=A0=A0=A0 =A0 0xc0
+> >=A0 #define HX8394_CMD_SETDGCLUT=A0=A0=A0 =A0 0xc1
+> >=A0 #define HX8394_CMD_SETID=A0=A0=A0 =A0 0xc3
+> > @@ -52,6 +53,7 @@
+> >=A0 #define HX8394_CMD_SETGIP1=A0=A0=A0 =A0 0xd5
+> >=A0 #define HX8394_CMD_SETGIP2=A0=A0=A0 =A0 0xd6
+> >=A0 #define HX8394_CMD_SETGPO=A0=A0=A0 =A0 0xd6
+> > +#define HX8394_CMD_UNKNOWN4=A0=A0=A0 =A0 0xd8
+> >=A0 #define HX8394_CMD_SETSCALING=A0=A0=A0 =A0 0xdd
+> >=A0 #define HX8394_CMD_SETIDLE=A0=A0=A0 =A0 0xdf
+> >=A0 #define HX8394_CMD_SETGAMMA=A0=A0=A0 =A0 0xe0
+> > @@ -203,6 +205,140 @@ static const struct hx8394_panel_desc
+> hsd060bhw4_desc =3D {
+> > =A0=A0=A0=A0 .init_sequence =3D hsd060bhw4_init_sequence,
+> >=A0 };
+> >
+> > +static int powkiddy_x55_init_sequence(struct hx8394 *ctx)
+> > +{
+> > +=A0=A0=A0 struct mipi_dsi_device *dsi =3D to_mipi_dsi_device(ctx->dev);
+> > +
+> > +=A0=A0=A0 /* 5.19.8 SETEXTC: Set extension command (B9h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETEXTC,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0xff, 0x83, 0x94);
+> > +
+> > +=A0=A0=A0 /* 5.19.9 SETMIPI: Set MIPI control (BAh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETMIPI,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x63, 0x03, 0x68, 0x6=
+b, 0xb2, 0xc0);
+> > +
+> > +=A0=A0=A0 /* 5.19.2 SETPOWER: Set power (B1h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPOWER,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x48, 0x12, 0x72, 0x0=
+9, 0x32, 0x54, 0x71, 0x71, 0x57,
+> 0x47);
+> > +
+> > +=A0=A0=A0 /* 5.19.3 SETDISP: Set display related register (B2h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETDISP,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00, 0x80, 0x64, 0x0=
+c, 0x0d, 0x2f);
+> > +
+> > +=A0=A0=A0 /* 5.19.4 SETCYC: Set display waveform cycles (B4h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETCYC,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x73, 0x74, 0x73, 0x7=
+4, 0x73, 0x74, 0x01, 0x0c, 0x86,
+> 0x75,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00, 0x3f, 0x73, 0x7=
+4, 0x73, 0x74, 0x73, 0x74, 0x01,
+> 0x0c,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x86);
+> > +
+> > +=A0=A0=A0 /* 5.19.5 SETVCOM: Set VCOM voltage (B6h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETVCOM,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x6e, 0x6e);
+> > +
+> > +=A0=A0=A0 /* 5.19.19 SETGIP0: Set GIP Option0 (D3h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP0,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00, 0x00, 0x07, 0x0=
+7, 0x40, 0x07, 0x0c, 0x00, 0x08,
+> 0x10,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x08, 0x00, 0x08, 0x5=
+4, 0x15, 0x0a, 0x05, 0x0a, 0x02,
+> 0x15,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x06, 0x05, 0x06, 0x4=
+7, 0x44, 0x0a, 0x0a, 0x4b, 0x10,
+> 0x07,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x07, 0x0c, 0x40);
+> > +
+> > +=A0=A0=A0 /* 5.19.20 Set GIP Option1 (D5h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP1,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x1c, 0x1c, 0x1d, 0x1=
+d, 0x00, 0x01, 0x02, 0x03, 0x04,
+> 0x05,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x06, 0x07, 0x08, 0x0=
+9, 0x0a, 0x0b, 0x24, 0x25, 0x18,
+> 0x18,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x26, 0x27, 0x18, 0x1=
+8, 0x18, 0x18, 0x18, 0x18, 0x18,
+> 0x18,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x18, 0x18, 0x18, 0x1=
+8, 0x18, 0x18, 0x18, 0x18, 0x20,
+> 0x21,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x18, 0x18, 0x18, 0x1=
+8);
+> > +
+> > +=A0=A0=A0 /* 5.19.21 Set GIP Option2 (D6h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP2,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x1c, 0x1c, 0x1d, 0x1=
+d, 0x07, 0x06, 0x05, 0x04, 0x03,
+> 0x02,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x01, 0x00, 0x0b, 0x0=
+a, 0x09, 0x08, 0x21, 0x20, 0x18,
+> 0x18,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x27, 0x26, 0x18, 0x1=
+8, 0x18, 0x18, 0x18, 0x18, 0x18,
+> 0x18,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x18, 0x18, 0x18, 0x1=
+8, 0x18, 0x18, 0x18, 0x18, 0x25,
+> 0x24,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x18, 0x18, 0x18, 0x1=
+8);
+> > +
+> > +=A0=A0=A0 /* 5.19.25 SETGAMMA: Set gamma curve related setting (E0h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGAMMA,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00, 0x0a, 0x15, 0x1=
+b, 0x1e, 0x21, 0x24, 0x22, 0x47,
+> 0x56,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x65, 0x66, 0x6e, 0x8=
+2, 0x88, 0x8b, 0x9a, 0x9d, 0x98,
+> 0xa8,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0xb9, 0x5d, 0x5c, 0x6=
+1, 0x66, 0x6a, 0x6f, 0x7f, 0x7f,
+> 0x00,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x0a, 0x15, 0x1b, 0x1=
+e, 0x21, 0x24, 0x22, 0x47, 0x56,
+> 0x65,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x65, 0x6e, 0x81, 0x8=
+7, 0x8b, 0x98, 0x9d, 0x99, 0xa8,
+> 0xba,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x5d, 0x5d, 0x62, 0x6=
+7, 0x6b, 0x72, 0x7f, 0x7f);
+> > +
+> > +=A0=A0=A0 /* Unknown command, not listed in the HX8394-F datasheet */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN1,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x1f, 0x31);
+> > +
+> > +=A0=A0=A0 /* 5.19.17 SETPANEL (CCh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPANEL,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x0b);
+> > +
+> > +=A0=A0=A0 /* Unknown command, not listed in the HX8394-F datasheet */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN3,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x02);
+> > +
+> > +=A0=A0=A0 /* 5.19.11 Set register bank (BDh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x02);
+> > +
+> > +=A0=A0=A0 /* Unknown command, not listed in the HX8394-F datasheet */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN4,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0xff, 0xff, 0xff, 0xf=
+f, 0xff, 0xff, 0xff, 0xff, 0xff,
+> 0xff,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0xff, 0xff);
+> > +
+> > +=A0=A0=A0 /* 5.19.11 Set register bank (BDh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00);
+> > +
+> > +=A0=A0=A0 /* 5.19.11 Set register bank (BDh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x01);
+> > +
+> > +=A0=A0=A0 /* 5.19.2 SETPOWER: Set power (B1h) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPOWER,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00);
+> > +
+> > +=A0=A0=A0 /* 5.19.11 Set register bank (BDh) */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x00);
+> > +
+> > +=A0=A0=A0 /* Unknown command, not listed in the HX8394-F datasheet */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN5,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0x40, 0x81, 0x50, 0x0=
+0, 0x1a, 0xfc, 0x01);
+> > +
+> > +=A0=A0=A0 /* Unknown command, not listed in the HX8394-F datasheet */
+> > +=A0=A0=A0 mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN2,
+> > +=A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0 0xed);
+> > +
+> > +=A0=A0=A0 return 0;
+> > +}
+> > +
+> > +static const struct drm_display_mode powkiddy_x55_mode =3D {
+> > +=A0=A0=A0 .hdisplay=A0=A0=A0 =3D 720,
+> > +=A0=A0=A0 .hsync_start=A0=A0=A0 =3D 720 + 24,
+> > +=A0=A0=A0 .hsync_end=A0=A0=A0 =3D 720 + 24 + 4,
+> > +=A0=A0=A0 .htotal=A0=A0=A0 =A0=A0=A0 =3D 720 + 24 + 4 + 20,
+> > +=A0=A0=A0 .vdisplay=A0=A0=A0 =3D 1280,
+> > +=A0=A0=A0 .vsync_start=A0=A0=A0 =3D 1280 + 8,
+> > +=A0=A0=A0 .vsync_end=A0=A0=A0 =3D 1280 + 8 + 4,
+> > +=A0=A0=A0 .vtotal=A0=A0=A0 =A0=A0=A0 =3D 1280 + 8 + 4 + 8,
+> > +=A0=A0=A0 .clock=A0=A0=A0 =A0=A0=A0 =3D 59904,
+> > +=A0=A0=A0 .flags=A0=A0=A0 =A0=A0=A0 =3D DRM_MODE_FLAG_NHSYNC | DRM_MOD=
+E_FLAG_NVSYNC,
+> > +=A0=A0=A0 .width_mm=A0=A0=A0 =3D 67,
+> > +=A0=A0=A0 .height_mm=A0=A0=A0 =3D 121,
+> > +};
+> > +
+> > +static const struct hx8394_panel_desc powkiddy_x55_desc =3D {
+> > +=A0=A0=A0 .mode =3D &powkiddy_x55_mode,
+> > +=A0=A0=A0 .lanes =3D 4,
+> > +=A0=A0=A0 .mode_flags =3D MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BU=
+RST |
+> =
 
-The serial ports on rk3588 are named uart0 - uart9. Board schematics
-also use these exact numbers and we want those names to also reflect
-in the OS devices because everything else would just cause confusion.
+> > + =A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0 =A0=A0=A0 MIPI_DSI_MODE_VIDEO=
+ | MIPI_DSI_MODE_NO_EOT_PACKET,
+> =
 
-So instead of having each board repeating their list of serial aliases
-move them to the soc dtsi, as all previous Rockchip soc do already.
+> =
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts   |  4 ----
- .../boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts   |  4 ----
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts    |  1 -
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts   |  1 -
- .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts    |  1 -
- arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |  1 -
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts     |  1 -
- arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |  2 --
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts   |  1 -
- .../boot/dts/rockchip/rk3588s-khadas-edge2.dts      |  1 -
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |  1 -
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts    |  1 -
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi           | 13 +++++++++++++
- 13 files changed, 13 insertions(+), 19 deletions(-)
+> It looks like a mode flag is set twice. The line above should be this bel=
+ow:
+> =
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-index b51543892078..be6a4f4f90f6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts
-@@ -12,10 +12,6 @@ / {
- 	compatible = "edgeble,neural-compute-module-6a-io",
- 		     "edgeble,neural-compute-module-6a", "rockchip,rk3588";
- 
--	aliases {
--		serial2 = &uart2;
--	};
--
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-index 9933765e4097..96a18077f26f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts
-@@ -12,10 +12,6 @@ / {
- 	compatible = "edgeble,neural-compute-module-6b-io",
- 		     "edgeble,neural-compute-module-6b", "rockchip,rk3588";
- 
--	aliases {
--		serial2 = &uart2;
--	};
--
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index b9d789d57862..a36d4fcd9b1d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-@@ -17,7 +17,6 @@ / {
- 
- 	aliases {
- 		mmc0 = &sdhci;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-index 97af4f912828..612107615e66 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-@@ -19,7 +19,6 @@ / {
- 	aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-index 298c183d6f4f..3e660ff6cd5f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-@@ -19,7 +19,6 @@ / {
- 	aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-index 5c59f9571dce..c7cd57609bc2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-@@ -19,7 +19,6 @@ / {
- 	aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 741f631db345..e302eeb6ce5a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -14,7 +14,6 @@ aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 		mmc2 = &sdio;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 9570b34aca2e..25a0ca73a8f7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -19,8 +19,6 @@ / {
- 	aliases {
- 		ethernet0 = &gmac1;
- 		mmc0 = &sdhci;
--		serial2 = &uart2;
--		serial9 = &uart9;
- 	};
- 
- 	fan: pwm-fan {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 60f00ceb630e..dc677f29a9c7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -44,7 +44,6 @@ aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 		mmc2 = &sdio;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-index 82478a452533..f53e993c785e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -12,7 +12,6 @@ / {
- 
- 	aliases {
- 		mmc0 = &sdhci;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-index 8f399c4317bd..52ec9cb38f57 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-@@ -14,7 +14,6 @@ / {
- 
- 	aliases {
- 		mmc0 = &sdmmc;
--		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 8347adcbd003..73cf97062a09 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -14,7 +14,6 @@ / {
- 	aliases {
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
--		serial2 = &uart2;
- 	};
- 
- 	analog-sound {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 8aa0499f9b03..d854536a44b8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -18,6 +18,19 @@ / {
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 
-+	aliases {
-+		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
-+		serial3 = &uart3;
-+		serial4 = &uart4;
-+		serial5 = &uart5;
-+		serial6 = &uart6;
-+		serial7 = &uart7;
-+		serial8 = &uart8;
-+		serial9 = &uart9;
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
--- 
-2.39.2
+> =A0=A0 =A0=A0=A0 =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =A0=A0=A0 MIPI_D=
+SI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
 
+Thank you, you are correct. I've since fixed this and it caused the
+image on the panel to shift slightly, so I've had to adjust the
+timings somewhat. I'll fix this with the V2 (I'll also have to add
+a new clock frequency for the PLL_VPLL so we can run this panel
+at 60hz).
+
+> =
+
+> =
+
+> > +=A0=A0=A0 .format =3D MIPI_DSI_FMT_RGB888,
+> > +=A0=A0=A0 .init_sequence =3D powkiddy_x55_init_sequence,
+> > +};
+> > +
+> >=A0 static int hx8394_enable(struct drm_panel *panel)
+> >=A0 {
+> > =A0=A0=A0=A0 struct hx8394 *ctx =3D panel_to_hx8394(panel);
+> > @@ -419,6 +555,7 @@ static void hx8394_remove(struct mipi_dsi_device *d=
+si)
+> >
+> >=A0 static const struct of_device_id hx8394_of_match[] =3D {
+> > =A0=A0=A0=A0 { .compatible =3D "hannstar,hsd060bhw4", .data =3D &hsd060=
+bhw4_desc },
+> > +=A0=A0=A0 { .compatible =3D "powkiddy,x55-panel", .data =3D &powkiddy_=
+x55_desc },
+> > =A0=A0=A0=A0 { /* sentinel */ }
+> >=A0 };
+> >=A0 MODULE_DEVICE_TABLE(of, hx8394_of_match);
+> > --
+> > 2.34.1
+> >
+> >
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
