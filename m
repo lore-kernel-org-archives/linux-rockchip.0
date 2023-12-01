@@ -4,130 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E3EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 08:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDB0C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 09:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iq2V8x+/pKcj7aG6tEwUMn2AfiVRAEFrga3W8I6o6JU=; b=yWFqNEVFUwYbar
-	1qX4r8a5hVHoiOjLoLa3mnVBtJhq+/zd5WuCq9qPky4QQYtQLZzooIaxNVBzlalVgkyyAvN5eScP5
-	0apjMIBa5MaPeHEKDet08rAoz5AxN9OxZsgDwDDh98nqqufex2imBQP8f2JXXW5GwEOZ6yAIVgzO7
-	oIujNL6/pojEvTSoyPiR2mBdKKiiob2uj6wWOmo6J+FZ1+lTuFuJcIgVQJYEwXyNZyTNGnG0tyY8G
-	sotVLpl43Y9yYrDrMXSBpO61HdN2Y4kGxSzCH6TnneZgW1KWxZP6WxtfrAl9XZkwW2mMxBC0YG4xX
-	crSy11ugHes0gVY6KQyQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PKWY6YRlGnqnHjyRGGJDL/zxpxLam0bK3cyefmn/cK0=; b=X9Y/bufstmRcPHo34Fj4BXhbPe
+	mxT6mYB2VPuPNkzaacg3QOwZI151fk6bG9sjNwBjlnJhN9ftao2hxl+jb5Cgkcg/Bm+QkiNtJqFeO
+	0a0QxsoeMnlL7dfNorPvTNKwoL4VuXE7HUM7YWZYzrjjv1zAvPAoWb2U1PfxfLqq83Z4Nd19xO4LD
+	YAiiye3rReeABaeJalV1wFbJrXvmYsRnOiXvkmiD+A3D4+nCLjab0Nr3kTH1O+LB6Gbki8PClPrNj
+	TFH6OCSbl6+onDj3x5PdgwYoE3eHuR1yEgGis1kKxQ+PCdnA1GaUR5c3RoopzS80s0+vcIw3Leg1E
+	3rG9XbUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8z4c-00CzqD-0s;
-	Fri, 01 Dec 2023 08:40:34 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1r8zPI-00D2ho-0w;
+	Fri, 01 Dec 2023 09:01:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r8z4Z-00CzpN-1w
-	for linux-rockchip@lists.infradead.org;
-	Fri, 01 Dec 2023 08:40:32 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-54c4433e98bso939729a12.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Dec 2023 00:40:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701420030; x=1702024830; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TDM8sDhTiaHA63ASEGwhYXp+tCwWvrbT3ygP/u36qAU=;
-        b=N0rQRPslXkS7Q3HmKGk4HD1mg9ShFaVZAW/FMOo/xPYBePDdbHbLeYGUZVX+/flLVi
-         LBfFaVPexJjNFQwQYZMCGx8VrAO+PMJ14LKRAp3fI42W+/86L4ngcIdWkIXfvmzbnyI7
-         x7uim7toI68fBXd6LfvI03JsGWpt7HkobvdGXABI3/u17r81j9PxF6x2N9RqwKtL56Sj
-         rLnxw8cV2VSDDsFYi9aVcRhNUP4/bi5StzAyvRKgpuOiemTvXfAvqYzjoCGXxXX0XaA0
-         01Z8x/K2zz+olWpv9aHzFvUXfpVNeHz3+/TlK0/w9hpWunZmVXnIy7WMg64myTo1w4MB
-         7VMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701420030; x=1702024830;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TDM8sDhTiaHA63ASEGwhYXp+tCwWvrbT3ygP/u36qAU=;
-        b=wHux/76VyvvxSkfrZoDInuLktQ9c3n3PcyLK3j9TvKdpZ48irBv73zO0GpXrwt3KSb
-         m2xQwVFektjou5SD8J2e+ipI0Cy4NF60e+HDoJLdAGK6xIYc6ZbHkks30QipeCdI7r2E
-         4hlC1AdRhDoklYvGGrvGVImYkIcvMrnepxF/YIOEqW3bUzMA1AzgGDrMVnxKNYC/85II
-         J6OY8yLzxjfq5vId2488H6xW/FRV+ZOlQo2pUYXz5H1SC1YCF39n5frRVODoMWfwMde6
-         52xOsFWDhhju96zG4ieq6zNHtfVqelxBSG3pl0ET7lTqLCekg04IxNim2W+brOl0URCu
-         cscA==
-X-Gm-Message-State: AOJu0YwFqa0HFxznBNjuWewgJcpPmMnoxuJXg4lspN8wrPlFNcMmXgGD
-	fkM7OIrBJDJQM5L/yraZVm1muw==
-X-Google-Smtp-Source: AGHT+IFQTAQ4NMd2KNfn0D17oDHj3Qv8g5KLjZJFOmU2SZdfLRl+UsNiFLOjMfrmZt5UJ0Z4uG8Y9g==
-X-Received: by 2002:a50:d78c:0:b0:54c:4fec:e5 with SMTP id w12-20020a50d78c000000b0054c4fec00e5mr214191edi.116.1701420030062;
-        Fri, 01 Dec 2023 00:40:30 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id bt15-20020a0564020a4f00b0054c63ebfa15sm135663edb.83.2023.12.01.00.40.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Dec 2023 00:40:29 -0800 (PST)
-Message-ID: <9558699d-93e4-4de3-b4d5-d38c9e52c0cf@linaro.org>
-Date: Fri, 1 Dec 2023 09:40:27 +0100
+	id 1r8zPF-00D2gu-0s;
+	Fri, 01 Dec 2023 09:01:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8FB96620BC;
+	Fri,  1 Dec 2023 09:01:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E84D5C433CB;
+	Fri,  1 Dec 2023 09:01:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701421312;
+	bh=jpNDrmMrt5w7Ke72ajK5/RQFYq5ylOTlCAwPhtPoynA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ggA8gW8sp8r/5b8OcNKpRIpi/aHo6y7Gx7XM0z/DWpANEsntMNr8XDP1IXBDyphjL
+	 ZmD+ysTYeql+rVkA+Q3sVYpEFTowbiFwuOlgZZfUIm+4J2zEjwVhukuCkB1HOgmu1X
+	 QUJbwWPXKUIWgD7ZN4Y1fxSraGKwTBcPU9tla+6/wdckg/uyKS8hnE3RX2SC3KT1lr
+	 N9vXt6dTTpSiyUEDVph0tPHF/PLQAhPQf708HRDCTghCT+/QHHZI2H9JxJWvmKD8cf
+	 ReHwK4FtGxJ4z58tDkjm75Eyx7cbudeA0SWVDj0plYJWh/p+BHxBXtTj0K8c2ixaRA
+	 QwyBl5TKyJ0Ug==
+Date: Fri, 1 Dec 2023 10:01:49 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
+	linux-kernel@vger.kernel.org, Samuel Holland <samuel@sholland.org>, 
+	Sandy Huang <hjc@rock-chips.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	linux-doc@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, 
+	linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, dri-devel@lists.freedesktop.org, 
+	linux-media@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 05/45] drm/connector: Check drm_connector_init
+ pointers arguments
+Message-ID: <2lbs5dkpusow72koxknoautcfb6e2ygq5wledim4i572ya5xlc@stc4koneykhm>
+References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
+ <20231128-kms-hdmi-connector-state-v4-5-c7602158306e@kernel.org>
+ <87h6l66nth.fsf@intel.com>
+ <v3hplco5fdedv6bnc6mwx2zhhw4xxdiekha26ykhc5cmy7ol77@2irk3w4hmabw>
+ <ZWXv1Oi_sH0BRWao@intel.com>
+ <2mnodqvu2oo674vspiy4gxhglu3it5cq47acx5itnbwevgc4cf@c7h2bvnx3m2n>
+ <ZWcB4Ak8QnwkhObR@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] dt-bindings: arm: rockchip: Add Powkiddy X55
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
-Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com,
- tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
- quic_jesszhan@quicinc.com, neil.armstrong@linaro.org, javierm@redhat.com,
- heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- robh+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-References: <20231130155624.405575-1-macroalpha82@gmail.com>
- <20231130155624.405575-9-macroalpha82@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231130155624.405575-9-macroalpha82@gmail.com>
+In-Reply-To: <ZWcB4Ak8QnwkhObR@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_004031_639330_07B096DF 
-X-CRM114-Status: UNSURE (   6.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231201_010153_392063_D404C148 
+X-CRM114-Status: GOOD (  39.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,28 +78,169 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6933775319817765117=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 30/11/2023 16:56, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> The Powkiddy RK2023 is a handheld gaming device made by Powkiddy and
-> powered by the Rockchip RK3566 SoC. This device is somewhat similar
-> to the existing Powkiddy RK3566 devices, which have been grouped
-> together with a previous commit[1].
-> 
+
+--===============6933775319817765117==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rtx5vtwdur3wvxx2"
+Content-Disposition: inline
 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--rtx5vtwdur3wvxx2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
-Krzysztof
+On Wed, Nov 29, 2023 at 11:18:24AM +0200, Ville Syrj=E4l=E4 wrote:
+> On Wed, Nov 29, 2023 at 10:11:26AM +0100, Maxime Ripard wrote:
+> > Hi Ville,
+> >=20
+> > On Tue, Nov 28, 2023 at 03:49:08PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > On Tue, Nov 28, 2023 at 02:29:40PM +0100, Maxime Ripard wrote:
+> > > > On Tue, Nov 28, 2023 at 02:54:02PM +0200, Jani Nikula wrote:
+> > > > > On Tue, 28 Nov 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> > > > > > All the drm_connector_init variants take at least a pointer to =
+the
+> > > > > > device, connector and hooks implementation.
+> > > > > >
+> > > > > > However, none of them check their value before dereferencing th=
+ose
+> > > > > > pointers which can lead to a NULL-pointer dereference if the au=
+thor
+> > > > > > isn't careful.
+> > > > >=20
+> > > > > Arguably oopsing on the spot is preferrable when this can't be ca=
+used by
+> > > > > user input. It's always a mistake that should be caught early dur=
+ing
+> > > > > development.
+> > > > >=20
+> > > > > Not everyone checks the return value of drm_connector_init and fr=
+iends,
+> > > > > so those cases will lead to more mysterious bugs later. And proba=
+bly
+> > > > > oopses as well.
+> > > >=20
+> > > > So maybe we can do both then, with something like
+> > > >=20
+> > > > if (WARN_ON(!dev))
+> > > >    return -EINVAL
+> > > >=20
+> > > > if (drm_WARN_ON(dev, !connector || !funcs))
+> > > >    return -EINVAL;
+> > > >=20
+> > > > I'd still like to check for this, so we can have proper testing, an=
+d we
+> > > > already check for those pointers in some places (like funcs in
+> > > > drm_connector_init), so if we don't cover everything we're inconsis=
+tent.
+> > >=20
+> > > People will invariably cargo-cult this kind of stuff absolutely
+> > > everywhere and then all your functions will have tons of dead
+> > > code to check their arguments.
+> >=20
+> > And that's a bad thing because... ?
+> >=20
+> > Also, are you really saying that checking that your arguments make sense
+> > is cargo-cult?
+> >=20
+> > We're already doing it in some parts of KMS, so we have to be
+> > consistent, and the answer to "most drivers don't check the error"
+> > cannot be "let's just give on error checking then".
+> >=20
+> > > I'd prefer not to go there usually.
+> > >=20
+> > > Should we perhaps start to use the (arguably hideous)
+> > >  - void f(struct foo *bar)
+> > >  + void f(struct foo bar[static 1])
+> > > syntax to tell the compiler we don't accept NULL pointers?
+> > >=20
+> > > Hmm. Apparently that has the same problem as using any
+> > > other kind of array syntax in the prototype. That is,
+> > > the compiler demands to know the definition of 'struct foo'
+> > > even though we're passing in effectively a pointer. Sigh.
+> >=20
+> > Honestly, I don't care as long as it's something we can unit-test to
+> > make sure we make it consistent. We can't unit test a complete kernel
+> > crash.
+>=20
+> Why do you want to put utterly broken code into a unit test?
 
+Utterly broken code happens. It probably shouldn't, but here we are.
+
+Anyway, you mostly missed the consistent part.
+
+The current state with it is:
+
+  - planes:
+    - drm_universal_plane_init warns if funcs->destroy NULL
+    - drm_universal_plane_alloc errors out if funcs is NULL
+    - drmm_universal_plane_alloc warns and errors out if funcs or funcs->de=
+stroy are NULL
+
+  - CRTC:
+    - drm_crtc_init_with_planes warns if funcs->destroy NULL
+    - drmm_crtc_init_with_planes warns if funcs or funcs->destroy are NULL
+    - drmm_crtc_alloc_with_planes warns and errors out if funcs or funcs->d=
+estroy are NULL
+
+  - encoder:
+    - drm_encoder_init warns if funcs->destroy NULL
+    - drmm_encoder_init warns and errors out if funcs or funcs->destroy are=
+ NULL
+    - drmm_encoder_alloc warns and errors out if funcs or funcs->destroy ar=
+e NULL
+
+  - connectors:
+    - drm_connector_init warns and errors out if funcs or funcs->destroy ar=
+e NULL
+    - drm_connector_init_with_ddc warns and errors out if funcs or funcs->d=
+estroy are NULL
+    - drmm_connector_init warns and errors out if funcs or funcs->destroy a=
+re NULL
+
+I think that just proves that your opinion is just not as clear cut as
+you'd like it to be, and it's far from being the policy you claim it is.
+
+Plus, we're not even remotely consistent there, and we're not
+documenting that anywhere.
+
+And we have plenty of other examples of static stuff being checked
+because it just makes sense. All variants of drm_crtc_init_with_planes
+will for example check that the correct plane type is associated to the
+primary and cursor planes.
+
+We should fix that.
+
+Maxime
+
+--rtx5vtwdur3wvxx2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZWmg/QAKCRDj7w1vZxhR
+xXKqAQC1+hzRgBMOmcGyZ0qOZTQ2mgc2fhZmVU8e00/0/EtSkQD+MHB9/8fFCfDG
+eCgsvdCLnrNjgI5MoqGzUdsYnzOTKgI=
+=bxPp
+-----END PGP SIGNATURE-----
+
+--rtx5vtwdur3wvxx2--
+
+
+--===============6933775319817765117==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6933775319817765117==--
+
