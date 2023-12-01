@@ -4,84 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A733FC4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 15:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B3FC4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 15:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sc09WL3gRgGFAbuN2FprpPa+ixPLTEVXw8fgDQCdi0g=; b=uxvnsidNA4JLcR
-	rB6Tg9uwkCSbG4QUi3KO8ZjFAFGJqfZhKOKlXbRvbLPE0FHYvduEYjzi0XN0rTYjsQyYVi1XmGvEY
-	Th/GkpUMhTgyWWmnrPa4rbQyPXcwwLtaiQCYSILgS15EzheNw9Z6vL9fbABvj34te85GtpuBgZgCz
-	080xIMirgJSJ8radi77LoDhjelUSXa0eocZ8rHUCy6d2Z+9csgSGgqZcNTRvDrljxdtq9L3kqMnrn
-	ofac3xCVfVZgut9Blni+N4Hbtbfknvwtwg0bK3cJuvr5hv4Euv6nBasDlRGfeQbsbDS6Asgn0wRKS
-	cXGcb/9iYTLcPdRnnTtQ==;
+	List-Owner; bh=L01UsdG2a8jMeD40uGaTL8xIPXXWusVvt1uXDIRlNso=; b=M/nqk+nuAiHZoh
+	QikIiT0zlV8D+Exx0tyuxdgbYYc2l/DqDG3ltemC99rxqKXTt8XjaFAuS1/32OXxlAEnrQKMcHJNc
+	MFJtGKvz/c53mGrlIQEmbGTW9vuTNrA3RrLjpT2xyZyEDUqD4emBPD9htmHPLuu2uIedUq9clEb1Q
+	atRFHhLZt4qI5yvJd8u87oGEO8iq5LxausWWRvN/MPyvlGt8Dd0pG6KRSjrWakP8pgqX7dSJOc6t0
+	bl/FYKRxnptZyMpC56NbZHGhzzNGzxxkEdmv0yeiJajtweQ7oI4jyMHfBP2YLbBUVx8lBE1gdKw6T
+	XSladcJAAPlMdlX5rrZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r95Gy-00E1ld-2W;
-	Fri, 01 Dec 2023 15:17:44 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1r95Ti-00E31A-18;
+	Fri, 01 Dec 2023 15:30:54 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r95Gw-00E1lF-1I;
-	Fri, 01 Dec 2023 15:17:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701443862; x=1732979862;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=wYPSx9+wbY4jC6jNQkQIxE7XoYAMfQUsgyw8T5lmYsg=;
-  b=BSk1eTp8KH6vv/xHR/hqBvxjsmTmsyXdzRXG1Wo/L7e7G5SfwQylPMG+
-   YkXtbigEZsO5w1S2iweiDGXZE3iSHwiy2hGcke9MzRQ/Wf7+7RbPJQ0yB
-   d5mUl2JYLwlSiJrwkHCENgayWrszw5EjLyyMilpOztM5ZkiPV97WaZgEB
-   gc1xMQicCyPCHH5B7GT7jFQ5weEzDjCf6ukWsA9WbX9GbpQp1Sn42gvk5
-   4GkvCDs2urtN9tMD9T1hSlgCLTLIcZiQkznmc4o0i9HFLq0MGqG2C3/Kv
-   uxzckUkozpf2PnDJddt/I/gU8IcgbWVvio6fga4qiMB/dCuJZVeDyDUHJ
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10911"; a="362672"
-X-IronPort-AV: E=Sophos;i="6.04,241,1695711600"; 
-   d="scan'208";a="362672"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2023 07:17:41 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10911"; a="763178004"
-X-IronPort-AV: E=Sophos;i="6.04,241,1695711600"; 
-   d="scan'208";a="763178004"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
-  by orsmga007.jf.intel.com with SMTP; 01 Dec 2023 07:17:36 -0800
-Received: by stinkbox (sSMTP sendmail emulation); Fri, 01 Dec 2023 17:17:35 +0200
-Date: Fri, 1 Dec 2023 17:17:35 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Pekka Paalanen <ppaalanen@gmail.com>
-Cc: Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
-	dri-devel@lists.freedesktop.org,
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-media@vger.kernel.org
-Subject: Re: [PATCH v4 05/45] drm/connector: Check drm_connector_init
- pointers arguments
-Message-ID: <ZWn5D387DYmsh1sa@intel.com>
-References: <20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org>
- <20231128-kms-hdmi-connector-state-v4-5-c7602158306e@kernel.org>
- <87h6l66nth.fsf@intel.com>
- <v3hplco5fdedv6bnc6mwx2zhhw4xxdiekha26ykhc5cmy7ol77@2irk3w4hmabw>
- <ZWXv1Oi_sH0BRWao@intel.com>
- <20231129121259.47746996@eldfell>
- <ZWcRoTJ9VgOqZ3ts@intel.com>
+	id 1r95Te-00E2zn-32;
+	Fri, 01 Dec 2023 15:30:52 +0000
+Received: from pendragon.ideasonboard.com (aztw-30-b2-v4wan-166917-cust845.vm26.cable.virginm.net [82.37.23.78])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E6ACBD52;
+	Fri,  1 Dec 2023 16:30:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1701444608;
+	bh=FTr9jD8Lm2XwjtyGHb2zex8kSear/RyYVG6QAL8cQOw=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=Reysu4UkUxuLjHQtxGH/l4zxCZSpvfkhmjL2HESDiSHqLzcLZtAw7inb/beM659MB
+	 ZD57gii2iVjKADR+1Y+Qn5+vprQnp+vwEu1BcvPu6dkyQhNe4FD4XMcPxZAGISJXoD
+	 08BfENw0V0oq+uXIkUbjCe9xBAAHO31+2cLp2aqY=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZWcRoTJ9VgOqZ3ts@intel.com>
-X-Patchwork-Hint: comment
+In-Reply-To: <20231201140433.2126011-5-paul.elder@ideasonboard.com>
+References: <20231201140433.2126011-1-paul.elder@ideasonboard.com> <20231201140433.2126011-5-paul.elder@ideasonboard.com>
+Subject: Re: [PATCH v2 4/4] media: rkisp1: debug: Consolidate counter debugfs files
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: laurent.pinchart@ideasonboard.com, tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com, Paul Elder <paul.elder@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Date: Fri, 01 Dec 2023 15:30:42 +0000
+Message-ID: <170144464218.1400840.7647651809740627975@ping.linuxembedded.co.uk>
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_071742_446746_567B309D 
-X-CRM114-Status: GOOD (  21.41  )
+X-CRM114-CacheID: sfid-20231201_073051_140042_764B256E 
+X-CRM114-Status: GOOD (  22.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,63 +60,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 29, 2023 at 12:25:37PM +0200, Ville Syrj=E4l=E4 wrote:
-> On Wed, Nov 29, 2023 at 12:12:59PM +0200, Pekka Paalanen wrote:
-> > On Tue, 28 Nov 2023 15:49:08 +0200
-> > Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com> wrote:
-> > =
+Quoting Paul Elder (2023-12-01 14:04:33)
+> Consolidate all the debugfs files that were each a single counter into a
+> single "counters" file.
+> 
+> While at it, reset the counters at stream on time to make it easier for
+> to interpret the values in userspace.
 
-> > > Should we perhaps start to use the (arguably hideous)
-> > >  - void f(struct foo *bar)
-> > >  + void f(struct foo bar[static 1])
-> > > syntax to tell the compiler we don't accept NULL pointers?
-> > > =
+That gives a better atomicity here I think so that's good. I guess the
+debug struct could have a lock around it sometime - but I don't think
+that matters in this context.
 
-> > > Hmm. Apparently that has the same problem as using any
-> > > other kind of array syntax in the prototype. That is,
-> > > the compiler demands to know the definition of 'struct foo'
-> > > even though we're passing in effectively a pointer. Sigh.
-> > =
+Resetting at stream on looks to make sense so:
 
-> > =
 
-> > __attribute__((nonnull)) ?
-> =
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 
-> I guess that would work, though the syntax is horrible when
-> you need to flag specific arguments.
-
-I played around with this a bit (blindly cocci'd tons of
-drm and i915 function declarations with the nonnull attribute)
-and it's somewhat underwhelming unfortunately.
-
-It will trip only if the compiler is 100% sure you're passing
-in a NULL. There is no way to eg. tell the compiler that a
-function can return a NULL and thus anything coming from it
-should be checked by the caller before passing it on to
-something with the nonnull attribute. And I suppose error
-pointers would also screw that idea over anyway.
-
-Additionally the NULL device checks being being done in =
-
-the drm_err/dbg macros trip this up left right and center.
-And hiding that check inside a function (instead of having
-it in the macro) is also ruined by the fact that we apparently
-pass different types of pointers to these macros :( Generics
-could be used to sort out that type mess I suppose, or the
-code that passes the wrong type (DSI code at least) should
-just be changed to not do that. But not sure if there's enough
-benefit to warrant the work.
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
+> 
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> 
+> ---
+> New in v2
+> 
+>  .../platform/rockchip/rkisp1/rkisp1-capture.c |  2 +
+>  .../platform/rockchip/rkisp1/rkisp1-common.h  |  4 ++
+>  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 69 ++++++++++++-------
+>  3 files changed, 50 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index c6d7e01c8949..67b2e94dfd67 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -1030,6 +1030,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+>         struct media_entity *entity = &cap->vnode.vdev.entity;
+>         int ret;
+>  
+> +       rkisp1_debug_reset_counters(cap->rkisp1);
+> +
+>         mutex_lock(&cap->rkisp1->stream_lock);
+>  
+>         ret = video_device_pipeline_start(&cap->vnode.vdev, &cap->rkisp1->pipe);
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index be69173958a4..789259fb304a 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -599,9 +599,13 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1);
+>  void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
+>  
+>  #if IS_ENABLED(CONFIG_DEBUG_FS)
+> +void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1);
+>  void rkisp1_debug_init(struct rkisp1_device *rkisp1);
+>  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
+>  #else
+> +static inline void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1)
+> +{
+> +}
+>  static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  {
+>  }
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> index 79cda589d935..4358ed1367ed 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> @@ -25,6 +25,11 @@ struct rkisp1_debug_register {
+>         const char * const name;
+>  };
+>  
+> +struct rkisp1_debug_counter {
+> +       const char * const name;
+> +       unsigned long *value;
+> +};
+> +
+>  #define RKISP1_DEBUG_REG(name)         { RKISP1_CIF_##name, 0, #name }
+>  #define RKISP1_DEBUG_SHD_REG(name) { \
+>         RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name \
+> @@ -191,6 +196,43 @@ static int rkisp1_debug_input_status_show(struct seq_file *m, void *p)
+>  }
+>  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_input_status);
+>  
+> +static int rkisp1_debug_counters_show(struct seq_file *m, void *p)
+> +{
+> +       struct rkisp1_device *rkisp1 = m->private;
+> +       struct rkisp1_debug *debug = &rkisp1->debug;
+> +
+> +       const struct rkisp1_debug_counter counters[] = {
+> +               { "data_loss", &debug->data_loss },
+> +               { "outform_size_err", &debug->outform_size_error },
+> +               { "img_stabilization_size_error", &debug->img_stabilization_size_error },
+> +               { "inform_size_error", &debug->inform_size_error },
+> +               { "irq_delay", &debug->irq_delay },
+> +               { "mipi_error", &debug->mipi_error },
+> +               { "stats_error", &debug->stats_error },
+> +               { "mp_stop_timeout", &debug->stop_timeout[RKISP1_MAINPATH] },
+> +               { "sp_stop_timeout", &debug->stop_timeout[RKISP1_SELFPATH] },
+> +               { "mp_frame_drop", &debug->frame_drop[RKISP1_MAINPATH] },
+> +               { "sp_frame_drop", &debug->frame_drop[RKISP1_SELFPATH] },
+> +               { "complete_frames", &debug->complete_frames },
+> +               { /* Sentinel */ },
+> +       };
+> +
+> +       const struct rkisp1_debug_counter *counter = counters;
+> +
+> +       for (; counter->name; ++counter)
+> +               seq_printf(m, "%s: %lu\n", counter->name, *counter->value);
+> +
+> +       return 0;
+> +}
+> +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_counters);
+> +
+> +void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1)
+> +{
+> +       struct dentry *debugfs_dir = rkisp1->debug.debugfs_dir;
+> +       memset(&rkisp1->debug, 0, sizeof(rkisp1->debug));
+> +       rkisp1->debug.debugfs_dir = debugfs_dir;
+> +}
+> +
+>  void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  {
+>         struct rkisp1_debug *debug = &rkisp1->debug;
+> @@ -198,31 +240,8 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  
+>         debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
+>  
+> -       debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
+> -                            &debug->data_loss);
+> -       debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
+> -                            &debug->outform_size_error);
+> -       debugfs_create_ulong("img_stabilization_size_error", 0444,
+> -                            debug->debugfs_dir,
+> -                            &debug->img_stabilization_size_error);
+> -       debugfs_create_ulong("inform_size_error", 0444,  debug->debugfs_dir,
+> -                            &debug->inform_size_error);
+> -       debugfs_create_ulong("irq_delay", 0444,  debug->debugfs_dir,
+> -                            &debug->irq_delay);
+> -       debugfs_create_ulong("mipi_error", 0444, debug->debugfs_dir,
+> -                            &debug->mipi_error);
+> -       debugfs_create_ulong("stats_error", 0444, debug->debugfs_dir,
+> -                            &debug->stats_error);
+> -       debugfs_create_ulong("mp_stop_timeout", 0444, debug->debugfs_dir,
+> -                            &debug->stop_timeout[RKISP1_MAINPATH]);
+> -       debugfs_create_ulong("sp_stop_timeout", 0444, debug->debugfs_dir,
+> -                            &debug->stop_timeout[RKISP1_SELFPATH]);
+> -       debugfs_create_ulong("mp_frame_drop", 0444, debug->debugfs_dir,
+> -                            &debug->frame_drop[RKISP1_MAINPATH]);
+> -       debugfs_create_ulong("sp_frame_drop", 0444, debug->debugfs_dir,
+> -                            &debug->frame_drop[RKISP1_SELFPATH]);
+> -       debugfs_create_ulong("complete_frames", 0444, debug->debugfs_dir,
+> -                            &debug->complete_frames);
+> +       debugfs_create_file("counters", 0444, debug->debugfs_dir, rkisp1,
+> +                           &rkisp1_debug_counters_fops);
+>         debugfs_create_file("input_status", 0444, debug->debugfs_dir, rkisp1,
+>                             &rkisp1_debug_input_status_fops);
+>  
+> -- 
+> 2.39.2
+>
 
 _______________________________________________
 Linux-rockchip mailing list
