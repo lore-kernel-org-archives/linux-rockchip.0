@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAD9C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 20:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB10C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 21:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8lmB4aUGZU4y4kDKx8CJNBKNwV1VhY6kRN5As9y1FNA=; b=k0FF3hIMOJWKqO
-	vSjjqPRWhlwDiFAaJ+6oH/WLf2MpkjcLa8TJUlQQq49pohxkttiWHb7OF5sGmgXUr3wEltV2lQcsU
-	jctyWbGrNb3kyOX/CAZ2lOTDQxVk3q1WXzvNX4llOwnKpnzCMDXT+p9brK0j7xQs3nGDc2LRkUvVy
-	VEWRhejT9IJ8Mhj/biJC7OrmABH5M6F/gLIwR7Gz7PXpxVGuA2sYMAv+YIAMePYHqaGSjM0tVZawR
-	DdOsmvlN5YF+3EMW6EYiG43mX7AoSTDThLfVcV0nzYcB32dXfG760Z8tmysCQ+o1LoHsRLNEjCtBF
-	99Alabe+jpykp32JwQHg==;
+	List-Owner; bh=4olqmhRV742n1DroNTC19NT27cRfKJ6hbrpaq7zqEOw=; b=4HKmqFRw2qrO42
+	pA0NUfoZUM/dcIx2VDbpIHU0JFNXFMJsHZ3kpE124BVZ5pBKyiNyiQAtM1+iM1doc3juKn31pvcxc
+	D2NAOpdlRKYDdG9YjjFZzZZxsbmsfa7Eb9YRsirZuFHigmh3aH9atr0GgoKhRcQAzJPukG+8FjC4c
+	HjS7WtlofeU+z/g/KrsVJ2BU67IuXjuvGKljWiW+wjf0cspx4zgoqZn25JiRNnA9Ostao4d1GVs4G
+	Vjdvil/7xhycuaZTFDeLt833W/gBETbqyn3LzVbykoVvJS7wvNVbYzkwwqfZLjbyWptGMhJDme8BN
+	5CfjsU1rVeunehbaVpRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9AYt-00EdLU-3A;
-	Fri, 01 Dec 2023 20:56:35 +0000
+	id 1r9AfL-00Ediu-0u;
+	Fri, 01 Dec 2023 21:03:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9AYq-00EdKn-30;
-	Fri, 01 Dec 2023 20:56:34 +0000
+	id 1r9AfI-00EdiO-0w;
+	Fri, 01 Dec 2023 21:03:13 +0000
 Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1r9AYm-0002zg-6h; Fri, 01 Dec 2023 21:56:28 +0100
+	id 1r9AfE-00031l-UN; Fri, 01 Dec 2023 22:03:08 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Florian Fainelli <f.fainelli@gmail.com>,
  Francesco Dolcini <francesco@dolcini.it>
@@ -39,16 +39,15 @@ Cc: linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, quentin.schulz@theobroma-systems.com,
  Heiko Stuebner <heiko.stuebner@cherry.de>
 Subject: Re: [PATCH] arm64: defconfig: Increase SERIAL_8250_NR_UARTS to 10
-Date: Fri, 01 Dec 2023 21:56:27 +0100
-Message-ID: <4075500.2IRrRt1zHL@diego>
-In-Reply-To: <ZWo9ecC45DZaqVJJ@livingston.pivistrello.it>
+Date: Fri, 01 Dec 2023 22:03:07 +0100
+Message-ID: <3923943.BzM5BlMlMQ@diego>
+In-Reply-To: <4075500.2IRrRt1zHL@diego>
 References: <20231201191228.343230-1-heiko@sntech.de>
- <bf5c7806-7405-4728-bb10-7913368f62a0@gmail.com>
- <ZWo9ecC45DZaqVJJ@livingston.pivistrello.it>
+ <ZWo9ecC45DZaqVJJ@livingston.pivistrello.it> <4075500.2IRrRt1zHL@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_125632_973013_706E5546 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20231201_130312_326132_5EAC0BD2 
+X-CRM114-Status: GOOD (  34.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,79 +59,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Am Freitag, 1. Dezember 2023, 21:56:27 CET schrieb Heiko St=FCbner:
+> Hi,
+> =
 
-Am Freitag, 1. Dezember 2023, 21:09:29 CET schrieb Francesco Dolcini:
-> On Fri, Dec 01, 2023 at 11:57:53AM -0800, Florian Fainelli wrote:
-> > +Francesco,
-> > 
-> > On 12/1/23 11:12, Heiko Stuebner wrote:
-> > > From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> > > 
-> > > Boards using socs like the rk3588 can use up to 10 uarts, so the default
-> > > of 4 is way too low. Therefore increase the maximum number to 10.
-> Do you have an actual need of 10, e.g. an existing board with 10 uarts
-> enabled supported by the mainline kernel? Just thinking at the last arm64 SoC I
-> am working with it should be 12 if we use this as a metric.
+> Am Freitag, 1. Dezember 2023, 21:09:29 CET schrieb Francesco Dolcini:
+> > On Fri, Dec 01, 2023 at 11:57:53AM -0800, Florian Fainelli wrote:
+> > > +Francesco,
+> > > =
 
-The rk3588 can do 10 (0-9), the board I'm working on is using up to uart7 (aka 8 uarts).
-Reasoning below in the 3rd paragraph.
+> > > On 12/1/23 11:12, Heiko Stuebner wrote:
+> > > > From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> > > > =
 
+> > > > Boards using socs like the rk3588 can use up to 10 uarts, so the de=
+fault
+> > > > of 4 is way too low. Therefore increase the maximum number to 10.
+> > Do you have an actual need of 10, e.g. an existing board with 10 uarts
+> > enabled supported by the mainline kernel? Just thinking at the last arm=
+64 SoC I
+> > am working with it should be 12 if we use this as a metric.
+> =
 
-> > > SERIAL_8250_RUNTIME_UARTS on the other hand describes the number of uart
-> > > data structures to prepare before registering them. This option can stay
-> > > at its default value of 4 since for one it can be changed via a boot
-> > > parameter 8250.nr_uarts but also since
-> > > commit 9d86719f8769 ("serial: 8250: Allow using ports higher than SERIAL_8250_RUNTIME_UARTS")
-> > > 
-> > > the kernel can register uarts dynamically that are above the
-> > > SERIAL_8250_RUNTIME_UARTS threshold.
-> > > 
-> > > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> > 
-> > There is a competing patch set from Francesco being submitted as well:
-> > https://lore.kernel.org/all/20231201171544.1901-1-francesco@dolcini.it/
-> >
-> > looks like some coordination is necessary.
+> The rk3588 can do 10 (0-9), the board I'm working on is using up to uart7=
+ (aka 8 uarts).
+> Reasoning below in the 3rd paragraph.
+> =
 
-Thanks Florian for catching this coincidence.
+> =
 
+> > > > SERIAL_8250_RUNTIME_UARTS on the other hand describes the number of=
+ uart
+> > > > data structures to prepare before registering them. This option can=
+ stay
+> > > > at its default value of 4 since for one it can be changed via a boot
+> > > > parameter 8250.nr_uarts but also since
+> > > > commit 9d86719f8769 ("serial: 8250: Allow using ports higher than S=
+ERIAL_8250_RUNTIME_UARTS")
+> > > > =
 
-> Yep, thanks Florian.
-> 
-> Heiko: should I include your needs in my patch? It looks like these are the
-> days of the 8250 uart, I sent my patch just one day before yours.
+> > > > the kernel can register uarts dynamically that are above the
+> > > > SERIAL_8250_RUNTIME_UARTS threshold.
+> > > > =
 
-yeah, I was surprised by the time overlap as well.
+> > > > Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> > > =
 
-After reading up on NR_UARTS and NR_RUNTIME_UARTS I opted for going with
-the maximum possible.
+> > > There is a competing patch set from Francesco being submitted as well:
+> > > https://lore.kernel.org/all/20231201171544.1901-1-francesco@dolcini.i=
+t/
+> > >
+> > > looks like some coordination is necessary.
+> =
 
-From what I understood, increasing the runtime-uart-number would incur
-overhead in terms of prepared data structures. But the core NR_UARTS
-only seems to limit the actual maximum number of uarts in the system.
+> Thanks Florian for catching this coincidence.
+> =
 
-With the somewhat recent patch named above, even those can still be
-registered without bad effects, so I opted with increasing the NR_UARTS
-to the maximum to expect at some point, least the next board then needs
-yet another patch.
-But left the runtime number alone to not create overhead.
+> =
 
+> > Yep, thanks Florian.
+> > =
 
-So TL;DR:
-I could live with the 8 from your original patch, but I guess would prefer
-going with a safer value, so the 10 or your 12 from above.
+> > Heiko: should I include your needs in my patch? It looks like these are=
+ the
+> > days of the 8250 uart, I sent my patch just one day before yours.
+> =
 
-Because I guess if a controller is present, someone will use it
-eventually ;-).
+> yeah, I was surprised by the time overlap as well.
+> =
 
+> After reading up on NR_UARTS and NR_RUNTIME_UARTS I opted for going with
+> the maximum possible.
+> =
 
-Heiko
+> From what I understood, increasing the runtime-uart-number would incur
+> overhead in terms of prepared data structures. But the core NR_UARTS
+> only seems to limit the actual maximum number of uarts in the system.
+> =
+
+> With the somewhat recent patch named above, even those can still be
+> registered without bad effects, so I opted with increasing the NR_UARTS
+> to the maximum to expect at some point, least the next board then needs
+> yet another patch.
+> But left the runtime number alone to not create overhead.
+> =
+
+> =
+
+> So TL;DR:
+> I could live with the 8 from your original patch, but I guess would prefer
+> going with a safer value, so the 10 or your 12 from above.
+> =
+
+> Because I guess if a controller is present, someone will use it
+> eventually ;-).
+
+and looking at other rk3588 boards the indiedroid-nova actually
+uses the uart9 (aka the 10th uart) ;-)
+
+Also the turing-rk1 and orangepi-5-plus as well.
+
 
 
 
