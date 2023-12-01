@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8880DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 14:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 401B6C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Dec 2023 14:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GKAf0598g6EGYaPNdEP4lP8DyiW/I9VivsyTz5ccRsA=; b=U3qBaY4eUKWOsn
-	rTwGKifjhDiQ7j1ccGWk4+cZOLnwba0NXoVkErQsWM4my1L6QRygAjDJ1QoVXo1A43xC0xxub3MBq
-	ZXpyS92j9y63mF37ZHU+XwYD9Clivy1WW9KxnyVF7GvhQpI5bDpR5YsJDDmPlzLp22xfA6VGZqUBD
-	C7LmvDZmuczDobuk9kuKRLyIT/H6i0M5qhJzQz5tZBCTnOeSrU6W35eSuNsYKf1XT2GySBRWApuqw
-	AW00bmHQyT/q43gxcPkW0fj+qKmt5vlTULvJyrOW+XgEwX+jgrP3AIVZThLItmaASCqQVW/MAVFvD
-	2cRDet/T0o6mMmWnypFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SdCAa66IZ2W9IPdtQeCplXMQlRL5zK1auxG09VBmdrY=; b=UBb6tBVqQMoE5H
+	Grwqq8s8YZZBqbXug4Qs+2Tg0wKskzJbCSatTAEBUcxTmPqk4HaITs+fyG5aY00ausNPTL6e79IwX
+	AdSf0UrwAo9837PdmbooZxxtfJNEjb3XuL1ITHQF0vRZipY8xJ6xMANl3YL2BOuhAJIkyY/Pa5s3j
+	6/RbIcUxZiKEnNCO7UDVxWCky5KjOzY9DrAu8mkFElSGGnfYEnl/Dj8l2bOAvCIG3vfexYPTJF8cn
+	qapVA45dmPmSYfTbPVNWa55NyOda5GWjlbxnPctEFV5B2IoIE8FN0A+ckvQMR4HrIYqnIQa8OcUDG
+	rpqVyLVypvXc9Sz31cIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r948n-00DtLe-2J;
-	Fri, 01 Dec 2023 14:05:13 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1r94CI-00DtxV-2P;
+	Fri, 01 Dec 2023 14:08:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r948k-00DtIx-1Z;
-	Fri, 01 Dec 2023 14:05:12 +0000
-Received: from pyrite.hamster-moth.ts.net (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 177711AC0;
-	Fri,  1 Dec 2023 15:04:27 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701439472;
-	bh=ZafNoeEiTkEMR2Mskz+/jeQsiJ1/6DAgbgEgbXTgowE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qbcU8xmdrlGoFSKZSapRmFb5mN6wxgBgyBtw3jGhhvjuWlMyiSa3xr/86Uw8GAyc3
-	 jIgWdDs+AnUSdDqrBDx5zx+kJJbVg37eWM/B0SEUXZCpvuJIzKJAp3bW01smF0ezfB
-	 X4PgbnegCsiBOt1IpV5NOnpwqyloJ4o4C13LJLlM=
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Cc: laurent.pinchart@ideasonboard.com,
-	kieran.bingham@ideasonboard.com,
-	tomi.valkeinen@ideasonboard.com,
-	umang.jain@ideasonboard.com,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v2 4/4] media: rkisp1: debug: Consolidate counter debugfs files
-Date: Fri,  1 Dec 2023 23:04:33 +0900
-Message-Id: <20231201140433.2126011-5-paul.elder@ideasonboard.com>
+	id 1r94CF-00Dtx7-31
+	for linux-rockchip@lists.infradead.org;
+	Fri, 01 Dec 2023 14:08:49 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r94CD-0000J8-HJ; Fri, 01 Dec 2023 15:08:45 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: linus.walleij@linaro.org,
+	brgl@bgdev.pl,
+	andy@kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	quentin.schulz@theobroma-systems.com,
+	heiko@sntech.de,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH] dt-bindings: gpio: rockchip: add a pattern for gpio hogs
+Date: Fri,  1 Dec 2023 15:08:40 +0100
+Message-Id: <20231201140840.323762-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
-References: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231201_060510_661440_58C163C7 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20231201_060847_978901_1B1F8482 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,147 +71,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Consolidate all the debugfs files that were each a single counter into a
-single "counters" file.
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-While at it, reset the counters at stream on time to make it easier for
-to interpret the values in userspace.
+Allow validating gpio-hogs defined inside the gpio controller node.
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
-New in v2
+ .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml       | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
- .../platform/rockchip/rkisp1/rkisp1-capture.c |  2 +
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  4 ++
- .../platform/rockchip/rkisp1/rkisp1-debug.c   | 69 ++++++++++++-------
- 3 files changed, 50 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index c6d7e01c8949..67b2e94dfd67 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1030,6 +1030,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	struct media_entity *entity = &cap->vnode.vdev.entity;
- 	int ret;
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index affd823c881d..d76987ce8e50 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -41,6 +41,13 @@ properties:
+   "#interrupt-cells":
+     const: 2
  
-+	rkisp1_debug_reset_counters(cap->rkisp1);
++patternProperties:
++  "^.+-hog(-[0-9]+)?$":
++    type: object
 +
- 	mutex_lock(&cap->rkisp1->stream_lock);
- 
- 	ret = video_device_pipeline_start(&cap->vnode.vdev, &cap->rkisp1->pipe);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index be69173958a4..789259fb304a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -599,9 +599,13 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1);
- void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
- 
- #if IS_ENABLED(CONFIG_DEBUG_FS)
-+void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1);
- void rkisp1_debug_init(struct rkisp1_device *rkisp1);
- void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
- #else
-+static inline void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1)
-+{
-+}
- static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- {
- }
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-index 79cda589d935..4358ed1367ed 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-@@ -25,6 +25,11 @@ struct rkisp1_debug_register {
- 	const char * const name;
- };
- 
-+struct rkisp1_debug_counter {
-+	const char * const name;
-+	unsigned long *value;
-+};
++    required:
++      - gpio-hog
 +
- #define RKISP1_DEBUG_REG(name)		{ RKISP1_CIF_##name, 0, #name }
- #define RKISP1_DEBUG_SHD_REG(name) { \
- 	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name \
-@@ -191,6 +196,43 @@ static int rkisp1_debug_input_status_show(struct seq_file *m, void *p)
- }
- DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_input_status);
- 
-+static int rkisp1_debug_counters_show(struct seq_file *m, void *p)
-+{
-+	struct rkisp1_device *rkisp1 = m->private;
-+	struct rkisp1_debug *debug = &rkisp1->debug;
-+
-+	const struct rkisp1_debug_counter counters[] = {
-+		{ "data_loss", &debug->data_loss },
-+		{ "outform_size_err", &debug->outform_size_error },
-+		{ "img_stabilization_size_error", &debug->img_stabilization_size_error },
-+		{ "inform_size_error", &debug->inform_size_error },
-+		{ "irq_delay", &debug->irq_delay },
-+		{ "mipi_error", &debug->mipi_error },
-+		{ "stats_error", &debug->stats_error },
-+		{ "mp_stop_timeout", &debug->stop_timeout[RKISP1_MAINPATH] },
-+		{ "sp_stop_timeout", &debug->stop_timeout[RKISP1_SELFPATH] },
-+		{ "mp_frame_drop", &debug->frame_drop[RKISP1_MAINPATH] },
-+		{ "sp_frame_drop", &debug->frame_drop[RKISP1_SELFPATH] },
-+		{ "complete_frames", &debug->complete_frames },
-+		{ /* Sentinel */ },
-+	};
-+
-+	const struct rkisp1_debug_counter *counter = counters;
-+
-+	for (; counter->name; ++counter)
-+		seq_printf(m, "%s: %lu\n", counter->name, *counter->value);
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_counters);
-+
-+void rkisp1_debug_reset_counters(struct rkisp1_device *rkisp1)
-+{
-+	struct dentry *debugfs_dir = rkisp1->debug.debugfs_dir;
-+	memset(&rkisp1->debug, 0, sizeof(rkisp1->debug));
-+	rkisp1->debug.debugfs_dir = debugfs_dir;
-+}
-+
- void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- {
- 	struct rkisp1_debug *debug = &rkisp1->debug;
-@@ -198,31 +240,8 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- 
- 	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
- 
--	debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
--			     &debug->data_loss);
--	debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
--			     &debug->outform_size_error);
--	debugfs_create_ulong("img_stabilization_size_error", 0444,
--			     debug->debugfs_dir,
--			     &debug->img_stabilization_size_error);
--	debugfs_create_ulong("inform_size_error", 0444,  debug->debugfs_dir,
--			     &debug->inform_size_error);
--	debugfs_create_ulong("irq_delay", 0444,  debug->debugfs_dir,
--			     &debug->irq_delay);
--	debugfs_create_ulong("mipi_error", 0444, debug->debugfs_dir,
--			     &debug->mipi_error);
--	debugfs_create_ulong("stats_error", 0444, debug->debugfs_dir,
--			     &debug->stats_error);
--	debugfs_create_ulong("mp_stop_timeout", 0444, debug->debugfs_dir,
--			     &debug->stop_timeout[RKISP1_MAINPATH]);
--	debugfs_create_ulong("sp_stop_timeout", 0444, debug->debugfs_dir,
--			     &debug->stop_timeout[RKISP1_SELFPATH]);
--	debugfs_create_ulong("mp_frame_drop", 0444, debug->debugfs_dir,
--			     &debug->frame_drop[RKISP1_MAINPATH]);
--	debugfs_create_ulong("sp_frame_drop", 0444, debug->debugfs_dir,
--			     &debug->frame_drop[RKISP1_SELFPATH]);
--	debugfs_create_ulong("complete_frames", 0444, debug->debugfs_dir,
--			     &debug->complete_frames);
-+	debugfs_create_file("counters", 0444, debug->debugfs_dir, rkisp1,
-+			    &rkisp1_debug_counters_fops);
- 	debugfs_create_file("input_status", 0444, debug->debugfs_dir, rkisp1,
- 			    &rkisp1_debug_input_status_fops);
- 
+ required:
+   - compatible
+   - reg
 -- 
 2.39.2
 
