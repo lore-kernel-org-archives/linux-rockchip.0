@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDC8C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 13:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E87C10F04
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 13:05:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=om4ngTlUOk9WjeSVz1e/pb2IsYVwLgfP+nn9ecfDkAM=; b=nVYIOhUMwKGFv3
-	izvVFIcmuUGCi9h61cH4O/EWN2bdelIB2yI2++/IlGDDd3z1YzJvrJHbgBQBrJlbUjxYNoQULMH91
-	UHj07/qlLSvz5aU+MYZ7AhjmFIrCc2UI8aE+ssPt/reT7iWc7kkAuMoIEHpk2DFbPnPb5zjTNYU8i
-	o/+Tl6Juy4VYo2TlxSMkXCq09XCQxfay/6vSPCm6zdh3rjxX0PPZrE1WogNcjQ/cIOGc8rg6nlpPd
-	8FPOS6TJc6mqd69NbfNunEBuJ4VXHI4sMEI2Nkt+4xq6iiOYc+97fdSTfdVsgbrv2vRMigVm8SoCK
-	OGJln9OVqcMi7/gg0aHw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NlLhixUEl2cUe9HRNd4xIAS5nHAGrJ5McEDQyKdVk7k=; b=v5EfQ4BMMw8O6b
+	pQ3tKUDArCTadgHm8exUSntMw5jv2AOqPGFIdVVPhvxtUTjnGR86NPJ6R93Qc0/v7f8yoz4XSx6Lc
+	LO3Mll7asAQM7nv+cwTeCR0soFIL/EMtUZQOyiiO4DXUTzMC+fk5a//fftMFrpPp9GhSwVLlEF9zm
+	9esg56JKJwDkAou5KVJQMSTeBQhDfHPnEZ5CrSh3brXw+HsNoOlZMEw6Epd+YzliOKm8fEMorW4nv
+	UnwlznYa3MNZM94yYF5eQFXanv9AdLYZY5YxyL8N0mJbwwdZjAarjGZ+FQ3X2jlpDEDier+6kH9aN
+	u+LpCsyTTE8mDukyOqzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PgY-00FjB7-2C;
+	id 1r9PgY-00FjAg-08;
 	Sat, 02 Dec 2023 13:05:30 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PgR-00Fj4u-0h;
+	id 1r9PgQ-00Fj4l-0O;
 	Sat, 02 Dec 2023 13:05:24 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a00cbb83c80so441682866b.0;
-        Sat, 02 Dec 2023 05:05:19 -0800 (PST)
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a19067009d2so358643566b.3;
+        Sat, 02 Dec 2023 05:05:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701522318; x=1702127118; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BXnPXvkgEdAqlxa28rDWBIXJg5QYtD+xYZlakCzCIA0=;
-        b=GhpdE61o6Xwp3IHyvdIL8w9cDHP2/1Bpl3unr/lTd8oWOr9OdjWt1KJ1ZCoqUqFCiK
-         c5uiFijEJHimKpn9JIYSitGLsCigNzLYKAo0Kz8bT1tPNq1h0ewP5PkhLW7BrJm6xSsV
-         /0XAimapM2oPNqHVQchAepfr3lv9ifv+BqUQKSw6Stf7LbfuEGPsYBMkX+jEDTI4rXd0
-         bi1V2g+ZJM12X6cZFMZWq+EBEeVuDjWtye9pIxQeITzXupd9zTnFgALv5rRmQPVrKSWu
-         1qtHu3gpyVl+9zLMe5r59MYRhXrkWmrHY/449mhFbnMnmuvQFFCCASxAOfteDxUMXw8u
-         bCQw==
+        d=gmail.com; s=20230601; t=1701522317; x=1702127117; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YlmbJveqqWu3UwBC8vwfKHQE4Oarn94AjuSP1HWUeBI=;
+        b=WRPza9WI9GmRvVd4sbb4JcaV+C+mQjRzeysbNpc2Nlw+5hsNhFausHDnFtEBYeAKFt
+         deVamvp4lnSXdgpHrpIIiqRoZEEfKNtCcpjqbmv5xGXiqda0d1+Nurq/0k9jMenEFQY5
+         fNEEWgS2KdRCu0j2p8n4vnPYrUZ1QuOB9CPrP1OOWIJDsyFRgx//gpkRS+CgJdgtYwlv
+         vFPGle7mzET9PCAFGIixHeMAona0bVoYfC5hWViynPhZvQPq/Mzd72KjV/V0YglkXYVt
+         vptZXKZlOzrx6oo9ML40iPuoO1yHdDzVWkjrZGmhVbT8LTooFXpqy8NcORvfCZu5FwY8
+         Vclw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701522318; x=1702127118;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BXnPXvkgEdAqlxa28rDWBIXJg5QYtD+xYZlakCzCIA0=;
-        b=C1So+Gr63n3StHbaQw4bygG0on1UMBJB8xbb1vXVna5kbLuW1PNDgJ3tgqgU/GKGlf
-         Oaveio1q6pFDJHLFemYzQP+CYTgQtVYK7IjQxvAJy7pbrUjYda5yoxDFPK1y9ogkFvir
-         wu5pNuv2bf1vTc3ET6vKrWDIuEnw59bC5WzBqdfSWAxh4RZLMwBE9s9sHH7kkpf6CBG9
-         gfq4ZOmlLb8qdasfkVXbfOiRwRKGXo1eas8Fgg3xEXX5IC6hJ8dNpid/HzqGB/jXzpC7
-         njDFaT1Y7Qqg/rMRFK+wVbowtr7Wj5QCxUW+aysqlLixMgx3fh9LdUakDwhk8qO8iCdY
-         558A==
-X-Gm-Message-State: AOJu0YwdXJPoddvgahav+SFLjZHFne6sHD86Jvce3Cu7oAfE6WuTPxce
-	Cpvpp3AHTc/HPiKOruuC9A==
-X-Google-Smtp-Source: AGHT+IGoxNPqrzQnvQpxf09ljrKJcuFDtZ22xCNQN1xzBMU7KhiOpt13wtWf8ZZHmxNTvvRlv9Nqew==
-X-Received: by 2002:a17:906:28d:b0:a19:a19a:eaa1 with SMTP id 13-20020a170906028d00b00a19a19aeaa1mr1635582ejf.90.1701522318738;
-        Sat, 02 Dec 2023 05:05:18 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701522317; x=1702127117;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YlmbJveqqWu3UwBC8vwfKHQE4Oarn94AjuSP1HWUeBI=;
+        b=bUchbnkqMPXBJna2oa6EQQv8ftqHU5mSNBF/iRoLTzwJAPmXMY0nBJNULCGacCyVDy
+         9YuBOPjYu3PYk+GAeeHjkBIzrg2cJdnqQF2pAUZcD84cFsYBqsgWlhexpRJ05U+9KjE9
+         NR8+b7XX/so2Xkg2mQXbfYzL2cv8oD8mQo5d7EzswymwEYDkwj0MFzPMQc57RcMcEUL1
+         eKb2kFMSxIREYWyFDOD1VN1pjVIDZXqNCYwSCe7UJBiqZxd8lHq+gsvTObjlVt7Vvssu
+         yrZlt5Uzn3bljcc9Hx8GuHXchBggqNccJU4rnntAI3Z0QucR9eYe7lLl3K4h3UteqgR5
+         wlMA==
+X-Gm-Message-State: AOJu0Yyw+gFuO7PyXBFUjwqt4E/8hEPytTwmkffX/LYXKqlw2RDKLz6Z
+	0fo68Vxjo9w6FX2bhqcnQA==
+X-Google-Smtp-Source: AGHT+IGRIGvQmJDiHFsyOFQZOb1u+p7x4RTsXeU6k5ENkIv33g9kDxunLOZ+qogZLatt7t1wYNfveA==
+X-Received: by 2002:a17:907:11db:b0:9fe:43a0:4ac0 with SMTP id va27-20020a17090711db00b009fe43a04ac0mr2075416ejb.24.1701522317371;
+        Sat, 02 Dec 2023 05:05:17 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:908e:b829:354b:f8ee])
-        by smtp.gmail.com with ESMTPSA id bs5-20020a170906d1c500b00a0bf09c9483sm3045324ejb.35.2023.12.02.05.05.18
+        by smtp.gmail.com with ESMTPSA id bs5-20020a170906d1c500b00a0bf09c9483sm3045324ejb.35.2023.12.02.05.05.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Dec 2023 05:05:18 -0800 (PST)
+        Sat, 02 Dec 2023 05:05:17 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +70,15 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 2/3] ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
-Date: Sat,  2 Dec 2023 14:05:06 +0100
-Message-ID: <20231202130506.66738-4-knaerzche@gmail.com>
+Subject: [PATCH 0/3] Move core bus and gpio aliases to SoC dtsi for RK3128
+Date: Sat,  2 Dec 2023 14:05:04 +0100
+Message-ID: <20231202130506.66738-2-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231202130506.66738-2-knaerzche@gmail.com>
-References: <20231202130506.66738-2-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_050523_256052_465B9EEA 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20231202_050522_156643_8F3E9309 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,45 +95,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SoC TRM, SoC datasheet and board schematics always refer to the
-same i2c numbers - even if not all are used for a specific board.
-In order to not have to re-define them for every board move the
-aliases to SoC dtsi for RK3128 like it's being done for all other
-Rockchip ARM SoCs.
+Following up the recent discussion [0] about where aliases can be/should be
+placed this series moves gpio, i2c and uart aliases to SoC dtsi for RK3128.
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- arch/arm/boot/dts/rockchip/rk3128-evb.dts | 1 -
- arch/arm/boot/dts/rockchip/rk3128.dtsi    | 4 ++++
- 2 files changed, 4 insertions(+), 1 deletion(-)
+Note: This patches are based on maintainter's repo.
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128-evb.dts b/arch/arm/boot/dts/rockchip/rk3128-evb.dts
-index 776a483cc26b..c7ab7fcdb436 100644
---- a/arch/arm/boot/dts/rockchip/rk3128-evb.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3128-evb.dts
-@@ -12,7 +12,6 @@ / {
- 	compatible = "rockchip,rk3128-evb", "rockchip,rk3128";
- 
- 	aliases {
--		i2c1 = &i2c1;
- 		mmc0 = &emmc;
- 	};
- 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 5b751284d6ca..dc149d98cf9e 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -20,6 +20,10 @@ aliases {
- 		gpio1 = &gpio1;
- 		gpio2 = &gpio2;
- 		gpio3 = &gpio3;
-+		i2c0 = &i2c0;
-+		i2c1 = &i2c1;
-+		i2c2 = &i2c2;
-+		i2c3 = &i2c3;
- 	};
- 
- 	arm-pmu {
+[0] https://lore.kernel.org/all/b0c637f5-5abf-420b-8b02-839eba68799e@linaro.org/T/#m94aebb23a29b015d94b250a70b675febdaa902ea
+
+Alex Bee (3):
+  ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
+  ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
+  ARM: dts: rockchip: Move uart aliases to SoC dtsi for RK3128
+
+ arch/arm/boot/dts/rockchip/rk3128-evb.dts      |  5 -----
+ arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts |  7 +------
+ arch/arm/boot/dts/rockchip/rk3128.dtsi         | 14 ++++++++++++++
+ 3 files changed, 15 insertions(+), 11 deletions(-)
+
+
+base-commit: fd610e604837936440ef7c64ab6998b004631647
 -- 
 2.43.0
 
