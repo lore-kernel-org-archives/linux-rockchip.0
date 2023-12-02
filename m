@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1FEBC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 15:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27159C10DCE
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 15:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ncVnGAtZ0cbRFVi4TEtERaVHhGwzzrpcNvvGZIKg9yA=; b=dUJ7YrNJYgoka5
-	DHJjMARrWZke1JK83ucN3r9VhY1NgnTyhSHjeZdIfrHrwpnxszgyokNM/zPhFWoi8PT9n01qOR2mW
-	eNmVuJ/dvCfA+IirFLxsZbvoeHQj2o9jXzsDhMWvP2BYAokFCDrYL4D2qfA23zV0egegfc5LC3wPz
-	ILOvBgOa26nUhsYijDit2v2/629klK2cRDdAH6uD15dYFOMCGsReJe1iPoqgtnxGRmNShlBJKMnwc
-	HHXvR2Wec1FuFSL0XjPJQsFgG77FBUbQjPCuo8miyKd7t3uaV3SEpOWU46GrwzQFrcnPZO9kjd911
-	Flyeh4LZiip6Zq6syFxg==;
+	List-Owner; bh=TbjPAI1XqsPxgV3C9yFJp5JpPTWOOMw8yLtAzKa57Zo=; b=pJ5J0TZkSGrSMW
+	sEAUlzWd3Ne7XA+ImoyaDsVVInKPT7Oq6mvrstEOzRr9T/iu3aDaQOOSOIXySLf9uJafgLTeWgXEl
+	09UqYaXMISL5Y736527bNjnlekM+fpZu628o8Q2QBqKkzxUPBUoSiBJFyfjJWOKT4dABkFISKby4p
+	7bRXewtuWDNRqWCOAl88lYr7dZedKnxsIFfRW1vIK2hBQdoN2JLzukN85onAkOK0fYdmk5NGsQUVB
+	n4Z53vgmjaTjVo+cCUBxdj0ZTzytnWl7sxB//e2DQwTprJWh5HKhlI9LEvob7bgDXADhBY98UEEX0
+	3k+vbHL6BPS7Ku94UnAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9SI0-00Fs22-1z;
-	Sat, 02 Dec 2023 15:52:20 +0000
+	id 1r9SMy-00FsIK-06;
+	Sat, 02 Dec 2023 15:57:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9SHx-00Frzg-0B;
-	Sat, 02 Dec 2023 15:52:18 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
+	id 1r9SMv-00FsHv-1O;
+	Sat, 02 Dec 2023 15:57:26 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1r9SHd-0002AT-MB; Sat, 02 Dec 2023 16:51:57 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Alex Bee <knaerzche@gmail.com>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Maxime Ripard <mripard@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
- Alex Bee <knaerzche@gmail.com>
-Subject: Re: [PATCH v2 2/5] ARM: dts: rockchip: Add power-controller for RK3128
-Date: Sat, 02 Dec 2023 16:51:56 +0100
-Message-ID: <6926340.F8r316W7xa@diego>
-In-Reply-To: <20231202125144.66052-3-knaerzche@gmail.com>
+	id 1r9SMq-0002DL-9W; Sat, 02 Dec 2023 16:57:20 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alex Bee <knaerzche@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Maxime Ripard <mripard@kernel.org>,
+	David Airlie <airlied@gmail.com>,
+	linux-pm@vger.kernel.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	devicetree@vger.kernel.org,
+	Daniel Vetter <daniel@ffwll.ch>,
+	linux-kernel@vger.kernel.org
+Subject: Re: (subset) [PATCH v2 0/5] Add power-controller and gpu for RK3128
+Date: Sat,  2 Dec 2023 16:57:18 +0100
+Message-Id: <170153263025.376455.12737085983971621612.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231202125144.66052-1-knaerzche@gmail.com>
 References: <20231202125144.66052-1-knaerzche@gmail.com>
- <20231202125144.66052-3-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_075217_090965_6F82D045 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20231202_075725_490683_EA7B24C3 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,159 +74,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
-
-Am Samstag, 2. Dezember 2023, 13:51:41 CET schrieb Alex Bee:
-> Add power controller and qos nodes for RK3128 in order to use
-> them as powerdomains.
-
-does the power-domain controller work with the incomplete set of
-pm-domains too?
-
-What I have in mind is
-- adding the power-controller node with the existing set of power-domains
-- the gpu pm-domain is in there
-- adding the gpu parts
-
-
-And a second series with
-- patch1 from here
-- a dts patch adding the additional pm-domains to rk3128.dtsi
-- I guess patch1 also should be split into a patch adding the binding-ids
-  and a separate patch for the code addition.
-
-
-Heiko
-
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> ---
->  arch/arm/boot/dts/rockchip/rk3128.dtsi | 101 +++++++++++++++++++++++++
->  1 file changed, 101 insertions(+)
+On Sat, 2 Dec 2023 13:51:39 +0100, Alex Bee wrote:
+> The first patch in this series fixes the pm-domain driver and adds
+> power-domains which are currently missing. This touches the ABI which is
+> not and was never used until now. Not all of them are used yet, but when
+> the power-controller is added to the DT in patch 2 the ABI should not
+> be changed again.
+> Patch 3-5 are adding the the gpu compatible to dt-bindings, adding the gpu
+> node and the respective operating points to SoC DT and finally enabling it
+> for XPI-3128 board.
 > 
-> diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-> index 4e8b38604ecd..b72905db04f7 100644
-> --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-> +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-> @@ -8,6 +8,7 @@
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/power/rk3128-power.h>
->  
->  / {
->  	compatible = "rockchip,rk3128";
-> @@ -133,6 +134,106 @@ smp-sram@0 {
->  	pmu: syscon@100a0000 {
->  		compatible = "rockchip,rk3128-pmu", "syscon", "simple-mfd";
->  		reg = <0x100a0000 0x1000>;
-> +
-> +		power: power-controller {
-> +			compatible = "rockchip,rk3128-power-controller";
-> +			#power-domain-cells = <1>;
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			power-domain@RK3128_PD_VIO {
-> +				reg = <RK3128_PD_VIO>;
-> +				clocks = <&cru ACLK_CIF>,
-> +					 <&cru HCLK_CIF>,
-> +					 <&cru DCLK_EBC>,
-> +					 <&cru HCLK_EBC>,
-> +					 <&cru ACLK_IEP>,
-> +					 <&cru HCLK_IEP>,
-> +					 <&cru ACLK_LCDC0>,
-> +					 <&cru HCLK_LCDC0>,
-> +					 <&cru PCLK_MIPI>,
-> +					 <&cru ACLK_RGA>,
-> +					 <&cru HCLK_RGA>,
-> +					 <&cru ACLK_VIO0>,
-> +					 <&cru ACLK_VIO1>,
-> +					 <&cru HCLK_VIO>,
-> +					 <&cru HCLK_VIO_H2P>,
-> +					 <&cru DCLK_VOP>,
-> +					 <&cru SCLK_VOP>;
-> +				pm_qos = <&qos_ebc>,
-> +					 <&qos_iep>,
-> +					 <&qos_lcdc>,
-> +					 <&qos_rga>,
-> +					 <&qos_vip>;
-> +				#power-domain-cells = <0>;
-> +			};
-> +
-> +			power-domain@RK3128_PD_VIDEO {
-> +				reg = <RK3128_PD_VIDEO>;
-> +				clocks = <&cru ACLK_VDPU>,
-> +					 <&cru HCLK_VDPU>,
-> +					 <&cru ACLK_VEPU>,
-> +					 <&cru HCLK_VEPU>,
-> +					 <&cru SCLK_HEVC_CORE>;
-> +				pm_qos = <&qos_vpu>;
-> +				#power-domain-cells = <0>;
-> +			};
-> +
-> +			power-domain@RK3128_PD_GPU {
-> +				reg = <RK3128_PD_GPU>;
-> +				clocks = <&cru ACLK_GPU>;
-> +				pm_qos = <&qos_gpu>;
-> +				#power-domain-cells = <0>;
-> +			};
-> +
-> +			power-domain@RK3128_PD_CRYPTO {
-> +				reg = <RK3128_PD_CRYPTO>;
-> +				clocks = <&cru HCLK_CRYPTO>,
-> +					 <&cru SCLK_CRYPTO>;
-> +				pm_qos = <&qos_crypto>;
-> +				#power-domain-cells = <0>;
-> +			};
-> +		};
-> +	};
-> +
-> +	qos_crypto: qos@10128080 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x10128080 0x20>;
-> +	};
-> +
-> +	qos_gpu: qos@1012d000 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012d000 0x20>;
-> +	};
-> +
-> +	qos_vpu: qos@1012e000 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012e000 0x20>;
-> +	};
-> +
-> +	qos_rga: qos@1012f000 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012f000 0x20>;
-> +	};
-> +
-> +	qos_ebc: qos@1012f080 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012f080 0x20>;
-> +	};
-> +
-> +	qos_iep: qos@1012f100 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012f100 0x20>;
-> +	};
-> +
-> +	qos_lcdc: qos@1012f180 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012f180 0x20>;
-> +	};
-> +
-> +	qos_vip: qos@1012f200 {
-> +		compatible = "rockchip,rk3128-qos", "syscon";
-> +		reg = <0x1012f200 0x20>;
->  	};
->  
->  	gic: interrupt-controller@10139000 {
-> 
+> [...]
 
+Applied, thanks!
 
+[3/5] dt-bindings: gpu: mali-utgard: Add Rockchip RK3128 compatible
+      commit: 5d86c15c3171c3ecebd84d53e30d9812b5591c84
 
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
