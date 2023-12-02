@@ -4,90 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B4D7C10F05
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 12:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55914C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 13:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BspVObJtVDTpVvFtQZbdnoQvUjHoGvwB2k9Kc/xI2kA=; b=QXYX81I7KJBoM+
-	Wzlut+K2cXVGVxteL31buJGMEVhVpoSrFcdFtF4NVZzmz+503Y0cT02PaiUmR5PNDoTGv5vA9TjPc
-	3c/BSglyFKd28xtLunKsiQJwkKrljtqn9NjxS6DM6yu2FVGMlT4dFwEXcK/gO7ZV3IXzfUgyyP6wx
-	q3J79QtELw7+C9ACFQohBQW/4Tj3HHlvp/bzqdYeFF6l4o77QJrVeGlW4JOwNf4l87z6RwgTDm5iE
-	3FSOLkwP+NmLAcozN3Rp4i4fI/GcLd3gyu4aSKUo0UFrsEZ98PyN7pk6cIooV7YpRxcd35fSOzbOD
-	n+C8SoXLl+t69AIcJU3w==;
+	List-Owner; bh=3/mVaBL/kcQBKQbP8rWbChuqRg10QvePlB13XKeTvac=; b=EKR/4cbiglFwBx
+	TIHXjpHUkbmFtUEG2mVfoUHBI4Pk7JWqeHBptFOnra/pzfJ6Hn+/1nOp1wSJWHZxa5fueI5DSZZOG
+	dCG/eYE+mEFT4Pzs/+lYgpxpKTHYc1BEdPNiNKS6AOYnf5i9S9MG4xumBBTW0c49amUlk0o5PjKEX
+	vuktMGW9lBaDFv2XSW4huWyDBecqmQ+3ZD59gxUEZwox6XX2vavLtOKbg3sG0evSgaPzAU2Fo2aVX
+	2BgVCL1MuJHQWvDU7txxJYmzuNNlhdRom4eMEff0jnqvFdsISd3hGSnxgrHVatwAEnhPs8icX70F9
+	vKgqsEsfqc3f2ehVec5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PTf-00FhzN-2P;
-	Sat, 02 Dec 2023 12:52:11 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1r9Pfp-00FiwL-29;
+	Sat, 02 Dec 2023 13:04:45 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PTZ-00FhtY-2F;
-	Sat, 02 Dec 2023 12:52:07 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a195e0145acso302866266b.2;
-        Sat, 02 Dec 2023 04:52:02 -0800 (PST)
+	id 1r9Pfk-00Fiug-1u
+	for linux-rockchip@lists.infradead.org;
+	Sat, 02 Dec 2023 13:04:43 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-332c46d5988so2076385f8f.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 02 Dec 2023 05:04:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701521521; x=1702126321; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vGS3uiiSRjNFmcXcLobVydkfz1z0YWeEIsOnLuIOTtk=;
-        b=BmrVkal6Ofz1CPI+Su9D093IZDSCLpSxiVKuZ6woxIRFSc/elrZC3+4d/M2yTsM75C
-         0olCzQp7AMv4tAs768TpBA4Okn3Q/BmxLhzc5A8ohj9Y7lI6A87BWa0Z7WeDB5gnIgZH
-         FRC0CVhQmtMoqhv4pOxk34gTMKuNX9zqvVwNEid3RLQjaOsdeF4rL2ydduXIaegZI2Yw
-         4RkFNevghqHNzcmsPkXUDVWxkCcrMcatUO2A0lXjvgxXT0M0AjgIc9HWW1aE13oyQCEZ
-         03aDOg/hmRPZIh/ZF+8+Km31ij3c8mk8dfIRtLrVRGv/JAUw3KfPyIRBeg974yJyoEXT
-         yvKg==
+        d=linaro.org; s=google; t=1701522277; x=1702127077; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=5MwJfzzcYu8whL7SkYku9YrYz+BKMaZCOtwmhhq14kI=;
+        b=YzjTlVs8uNDsnhLowesH9zbO8ohO4z/mBywjjxwSCsm7RBLojzXDN4RUdINuXRGM4I
+         aoNYvvs4Oo0v0SPZpTqOW5rFSFrf0rN6/haInFPV3KVQjd3jUyDQQi476UA0QKN5S6Qr
+         0i5yqVIofUvrPrrO/KfHtiuIUEcBEnaHmDYK6a81U7edQxWv4ZuFWSgGEcL7FpgEH3f/
+         5UPaUxmGwxdQXIYgSSLu6EtYUnfJB/NuRaei5Yxu9UVvJ4uG6srRwocRtW++fmxKeCaz
+         rgJnnuJH28T7Ur4Z9MY2CAgUqM2mpu0aMhLcv18dSXML7V4eMP0qOiUUgMJbXK4awFki
+         vK+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701521521; x=1702126321;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vGS3uiiSRjNFmcXcLobVydkfz1z0YWeEIsOnLuIOTtk=;
-        b=XYw5i2QcDRQwCRDds1IU/NoysBWIO4rsOTQwFbymDEvlkV1ix/V4Md2r38lMPvgEEo
-         olg5xOQfE8VnL1/1d0gq9n+XUyL0tq5+kM/8i4V9c0PFE2GAWhICRW5VMmZ2YNfRDWf4
-         OkR/DPRPSYBCq1QwRHheSDZosKYpjasaG8eW2q/B+xjoQNYY2a6YP7LGMflFsMlH/2OX
-         YV7hcKssGghRblcYU8RPid+N4mI+5FlZuft9M0LtmxuIS4WwOdaTu+e3BXGIfvsW6QQn
-         9uCfUJA0VNFTVF7o8/9BE+XflG4Y8jYpBzQ75/0CVT2/D3YfMuQ2VDWtpkLJ3kE/FG3A
-         TD8Q==
-X-Gm-Message-State: AOJu0Yx1oabc3mnsevLMrz6ltMnW3kJ03NBHue0xwd3Jgxh/NyOd23Hw
-	60Z3yk/Afq3ZtclmAwkMQQ==
-X-Google-Smtp-Source: AGHT+IFQCssdJ19Dhg4av1bEqGzWCJHnq4HF6friZV69W7kUuaniNiFQHWBT6X9GqTCcTQpVcwkvXw==
-X-Received: by 2002:a17:907:a18f:b0:a19:9b79:8b47 with SMTP id om15-20020a170907a18f00b00a199b798b47mr814246ejc.88.1701521521158;
-        Sat, 02 Dec 2023 04:52:01 -0800 (PST)
-Received: from U4.lan ([2a02:810b:f40:4300:908e:b829:354b:f8ee])
-        by smtp.gmail.com with ESMTPSA id g5-20020a170906198500b009c5c5c2c5a4sm3018161ejd.219.2023.12.02.04.52.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Dec 2023 04:52:00 -0800 (PST)
-From: Alex Bee <knaerzche@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: Daniel Vetter <daniel@ffwll.ch>,
-	David Airlie <airlied@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Maxime Ripard <mripard@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 2/5] ARM: dts: rockchip: Add power-controller for RK3128
-Date: Sat,  2 Dec 2023 13:51:41 +0100
-Message-ID: <20231202125144.66052-3-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231202125144.66052-1-knaerzche@gmail.com>
-References: <20231202125144.66052-1-knaerzche@gmail.com>
+        d=1e100.net; s=20230601; t=1701522277; x=1702127077;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5MwJfzzcYu8whL7SkYku9YrYz+BKMaZCOtwmhhq14kI=;
+        b=MsKl91Uj6yxsaw7kNuRqb2miHMFlsXpu6Nq5UOXRLpL2sY5f/+bBmijTg4dOE+I7PC
+         iIzu9XEjh7NoZ/WNMYIOOCBrPQCCh0Y0AEuXX0oal4Awaj/EkmthI+ih9br40BIqYep9
+         WFDlhjJomgmp2r+hxwOwfvjyEh6e9vrHdgGfGG9H3YQLS5H4fTm72B6QSdqwxvco5W87
+         mGs7XkQ715zLP5RBbAiaiRtveSOFPsBeInXBPTVxm1jjBTeP7YOjKRzYMU5/2ZegU0Eh
+         U8PrfCPIYf1MkgVUgKoAu9A2sG92pDEzSeNQJjzFNV3WKD3AAqT7zOWUvMo+icEFkqks
+         nGGQ==
+X-Gm-Message-State: AOJu0Yyvpgh889wJfCcP0iTonk8u2df3ySphesYuA3uJ1MtCWz5VP3gw
+	asTSpO+2NH9540hdCgrBDmgYSg==
+X-Google-Smtp-Source: AGHT+IHlFnK8sTgxK+l5q18QnQD3ZgV35E8ImVT03PumeBHQl7xWXIsd70+914v19fF4PgYqzpbtbg==
+X-Received: by 2002:a05:600c:84cf:b0:40b:5e21:dd22 with SMTP id er15-20020a05600c84cf00b0040b5e21dd22mr1032022wmb.80.1701522276749;
+        Sat, 02 Dec 2023 05:04:36 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.223.109])
+        by smtp.gmail.com with ESMTPSA id 9-20020a170906100900b009ddaf5ebb6fsm3056569ejm.177.2023.12.02.05.04.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 02 Dec 2023 05:04:36 -0800 (PST)
+Message-ID: <695b4402-5e0f-4b4b-9848-16d8f8956cf4@linaro.org>
+Date: Sat, 2 Dec 2023 14:04:32 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+Content-Language: en-US
+To: Conor Dooley <conor@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
+ <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+ <20231201-thrive-gully-5260ab07b352@spud>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231201-thrive-gully-5260ab07b352@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_045205_771076_FE8AAB80 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20231202_050440_732938_FCA6D93C 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,135 +156,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add power controller and qos nodes for RK3128 in order to use
-them as powerdomains.
+On 01/12/2023 17:46, Conor Dooley wrote:
+> On Sat, Nov 25, 2023 at 07:44:22PM +0100, Krzysztof Kozlowski wrote:
+>> +Indentation
+>> +-----------
+>> +
+>> +1. Use indentation according to :ref:`codingstyle`.
+> 
+> One thing Jonathan mentioned before to me was to drop this :ref: stuff.
+> | > +:ref:`devicetree-abi` more information on the ABI.
+> | 
+> | ...can just be written as "Please see
+> | Documentation/devicetree/bindings/ABI.rst".  The cross-reference link
+> | will be generated as expected, and readers of the plain-text docs don't
+> | have to go grepping to find the reference.
+> https://lore.kernel.org/all/87bki23rbx.fsf@meer.lwn.net/
+> 
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 101 +++++++++++++++++++++++++
- 1 file changed, 101 insertions(+)
+Sure, indeed it's better for plain-text readers.
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 4e8b38604ecd..b72905db04f7 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/power/rk3128-power.h>
- 
- / {
- 	compatible = "rockchip,rk3128";
-@@ -133,6 +134,106 @@ smp-sram@0 {
- 	pmu: syscon@100a0000 {
- 		compatible = "rockchip,rk3128-pmu", "syscon", "simple-mfd";
- 		reg = <0x100a0000 0x1000>;
-+
-+		power: power-controller {
-+			compatible = "rockchip,rk3128-power-controller";
-+			#power-domain-cells = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			power-domain@RK3128_PD_VIO {
-+				reg = <RK3128_PD_VIO>;
-+				clocks = <&cru ACLK_CIF>,
-+					 <&cru HCLK_CIF>,
-+					 <&cru DCLK_EBC>,
-+					 <&cru HCLK_EBC>,
-+					 <&cru ACLK_IEP>,
-+					 <&cru HCLK_IEP>,
-+					 <&cru ACLK_LCDC0>,
-+					 <&cru HCLK_LCDC0>,
-+					 <&cru PCLK_MIPI>,
-+					 <&cru ACLK_RGA>,
-+					 <&cru HCLK_RGA>,
-+					 <&cru ACLK_VIO0>,
-+					 <&cru ACLK_VIO1>,
-+					 <&cru HCLK_VIO>,
-+					 <&cru HCLK_VIO_H2P>,
-+					 <&cru DCLK_VOP>,
-+					 <&cru SCLK_VOP>;
-+				pm_qos = <&qos_ebc>,
-+					 <&qos_iep>,
-+					 <&qos_lcdc>,
-+					 <&qos_rga>,
-+					 <&qos_vip>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3128_PD_VIDEO {
-+				reg = <RK3128_PD_VIDEO>;
-+				clocks = <&cru ACLK_VDPU>,
-+					 <&cru HCLK_VDPU>,
-+					 <&cru ACLK_VEPU>,
-+					 <&cru HCLK_VEPU>,
-+					 <&cru SCLK_HEVC_CORE>;
-+				pm_qos = <&qos_vpu>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3128_PD_GPU {
-+				reg = <RK3128_PD_GPU>;
-+				clocks = <&cru ACLK_GPU>;
-+				pm_qos = <&qos_gpu>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3128_PD_CRYPTO {
-+				reg = <RK3128_PD_CRYPTO>;
-+				clocks = <&cru HCLK_CRYPTO>,
-+					 <&cru SCLK_CRYPTO>;
-+				pm_qos = <&qos_crypto>;
-+				#power-domain-cells = <0>;
-+			};
-+		};
-+	};
-+
-+	qos_crypto: qos@10128080 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x10128080 0x20>;
-+	};
-+
-+	qos_gpu: qos@1012d000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012d000 0x20>;
-+	};
-+
-+	qos_vpu: qos@1012e000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012e000 0x20>;
-+	};
-+
-+	qos_rga: qos@1012f000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f000 0x20>;
-+	};
-+
-+	qos_ebc: qos@1012f080 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f080 0x20>;
-+	};
-+
-+	qos_iep: qos@1012f100 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f100 0x20>;
-+	};
-+
-+	qos_lcdc: qos@1012f180 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f180 0x20>;
-+	};
-+
-+	qos_vip: qos@1012f200 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f200 0x20>;
- 	};
- 
- 	gic: interrupt-controller@10139000 {
--- 
-2.43.0
+Best regards,
+Krzysztof
 
 
 _______________________________________________
