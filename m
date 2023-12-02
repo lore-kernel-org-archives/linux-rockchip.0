@@ -4,81 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E87C10F04
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 13:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1FEBC4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 15:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NlLhixUEl2cUe9HRNd4xIAS5nHAGrJ5McEDQyKdVk7k=; b=v5EfQ4BMMw8O6b
-	pQ3tKUDArCTadgHm8exUSntMw5jv2AOqPGFIdVVPhvxtUTjnGR86NPJ6R93Qc0/v7f8yoz4XSx6Lc
-	LO3Mll7asAQM7nv+cwTeCR0soFIL/EMtUZQOyiiO4DXUTzMC+fk5a//fftMFrpPp9GhSwVLlEF9zm
-	9esg56JKJwDkAou5KVJQMSTeBQhDfHPnEZ5CrSh3brXw+HsNoOlZMEw6Epd+YzliOKm8fEMorW4nv
-	UnwlznYa3MNZM94yYF5eQFXanv9AdLYZY5YxyL8N0mJbwwdZjAarjGZ+FQ3X2jlpDEDier+6kH9aN
-	u+LpCsyTTE8mDukyOqzw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ncVnGAtZ0cbRFVi4TEtERaVHhGwzzrpcNvvGZIKg9yA=; b=dUJ7YrNJYgoka5
+	DHJjMARrWZke1JK83ucN3r9VhY1NgnTyhSHjeZdIfrHrwpnxszgyokNM/zPhFWoi8PT9n01qOR2mW
+	eNmVuJ/dvCfA+IirFLxsZbvoeHQj2o9jXzsDhMWvP2BYAokFCDrYL4D2qfA23zV0egegfc5LC3wPz
+	ILOvBgOa26nUhsYijDit2v2/629klK2cRDdAH6uD15dYFOMCGsReJe1iPoqgtnxGRmNShlBJKMnwc
+	HHXvR2Wec1FuFSL0XjPJQsFgG77FBUbQjPCuo8miyKd7t3uaV3SEpOWU46GrwzQFrcnPZO9kjd911
+	Flyeh4LZiip6Zq6syFxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PgY-00FjAg-08;
-	Sat, 02 Dec 2023 13:05:30 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1r9SI0-00Fs22-1z;
+	Sat, 02 Dec 2023 15:52:20 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9PgQ-00Fj4l-0O;
-	Sat, 02 Dec 2023 13:05:24 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a19067009d2so358643566b.3;
-        Sat, 02 Dec 2023 05:05:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701522317; x=1702127117; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YlmbJveqqWu3UwBC8vwfKHQE4Oarn94AjuSP1HWUeBI=;
-        b=WRPza9WI9GmRvVd4sbb4JcaV+C+mQjRzeysbNpc2Nlw+5hsNhFausHDnFtEBYeAKFt
-         deVamvp4lnSXdgpHrpIIiqRoZEEfKNtCcpjqbmv5xGXiqda0d1+Nurq/0k9jMenEFQY5
-         fNEEWgS2KdRCu0j2p8n4vnPYrUZ1QuOB9CPrP1OOWIJDsyFRgx//gpkRS+CgJdgtYwlv
-         vFPGle7mzET9PCAFGIixHeMAona0bVoYfC5hWViynPhZvQPq/Mzd72KjV/V0YglkXYVt
-         vptZXKZlOzrx6oo9ML40iPuoO1yHdDzVWkjrZGmhVbT8LTooFXpqy8NcORvfCZu5FwY8
-         Vclw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701522317; x=1702127117;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YlmbJveqqWu3UwBC8vwfKHQE4Oarn94AjuSP1HWUeBI=;
-        b=bUchbnkqMPXBJna2oa6EQQv8ftqHU5mSNBF/iRoLTzwJAPmXMY0nBJNULCGacCyVDy
-         9YuBOPjYu3PYk+GAeeHjkBIzrg2cJdnqQF2pAUZcD84cFsYBqsgWlhexpRJ05U+9KjE9
-         NR8+b7XX/so2Xkg2mQXbfYzL2cv8oD8mQo5d7EzswymwEYDkwj0MFzPMQc57RcMcEUL1
-         eKb2kFMSxIREYWyFDOD1VN1pjVIDZXqNCYwSCe7UJBiqZxd8lHq+gsvTObjlVt7Vvssu
-         yrZlt5Uzn3bljcc9Hx8GuHXchBggqNccJU4rnntAI3Z0QucR9eYe7lLl3K4h3UteqgR5
-         wlMA==
-X-Gm-Message-State: AOJu0Yyw+gFuO7PyXBFUjwqt4E/8hEPytTwmkffX/LYXKqlw2RDKLz6Z
-	0fo68Vxjo9w6FX2bhqcnQA==
-X-Google-Smtp-Source: AGHT+IGRIGvQmJDiHFsyOFQZOb1u+p7x4RTsXeU6k5ENkIv33g9kDxunLOZ+qogZLatt7t1wYNfveA==
-X-Received: by 2002:a17:907:11db:b0:9fe:43a0:4ac0 with SMTP id va27-20020a17090711db00b009fe43a04ac0mr2075416ejb.24.1701522317371;
-        Sat, 02 Dec 2023 05:05:17 -0800 (PST)
-Received: from U4.lan ([2a02:810b:f40:4300:908e:b829:354b:f8ee])
-        by smtp.gmail.com with ESMTPSA id bs5-20020a170906d1c500b00a0bf09c9483sm3045324ejb.35.2023.12.02.05.05.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Dec 2023 05:05:17 -0800 (PST)
-From: Alex Bee <knaerzche@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 0/3] Move core bus and gpio aliases to SoC dtsi for RK3128
-Date: Sat,  2 Dec 2023 14:05:04 +0100
-Message-ID: <20231202130506.66738-2-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1r9SHx-00Frzg-0B;
+	Sat, 02 Dec 2023 15:52:18 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1r9SHd-0002AT-MB; Sat, 02 Dec 2023 16:51:57 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Alex Bee <knaerzche@gmail.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, Maxime Ripard <mripard@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+ Alex Bee <knaerzche@gmail.com>
+Subject: Re: [PATCH v2 2/5] ARM: dts: rockchip: Add power-controller for RK3128
+Date: Sat, 02 Dec 2023 16:51:56 +0100
+Message-ID: <6926340.F8r316W7xa@diego>
+In-Reply-To: <20231202125144.66052-3-knaerzche@gmail.com>
+References: <20231202125144.66052-1-knaerzche@gmail.com>
+ <20231202125144.66052-3-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_050522_156643_8F3E9309 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231202_075217_090965_6F82D045 
+X-CRM114-Status: GOOD (  20.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +68,158 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Following up the recent discussion [0] about where aliases can be/should be
-placed this series moves gpio, i2c and uart aliases to SoC dtsi for RK3128.
+Hi Alex,
 
-Note: This patches are based on maintainter's repo.
+Am Samstag, 2. Dezember 2023, 13:51:41 CET schrieb Alex Bee:
+> Add power controller and qos nodes for RK3128 in order to use
+> them as powerdomains.
 
-[0] https://lore.kernel.org/all/b0c637f5-5abf-420b-8b02-839eba68799e@linaro.org/T/#m94aebb23a29b015d94b250a70b675febdaa902ea
+does the power-domain controller work with the incomplete set of
+pm-domains too?
 
-Alex Bee (3):
-  ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
-  ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
-  ARM: dts: rockchip: Move uart aliases to SoC dtsi for RK3128
-
- arch/arm/boot/dts/rockchip/rk3128-evb.dts      |  5 -----
- arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts |  7 +------
- arch/arm/boot/dts/rockchip/rk3128.dtsi         | 14 ++++++++++++++
- 3 files changed, 15 insertions(+), 11 deletions(-)
+What I have in mind is
+- adding the power-controller node with the existing set of power-domains
+- the gpu pm-domain is in there
+- adding the gpu parts
 
 
-base-commit: fd610e604837936440ef7c64ab6998b004631647
--- 
-2.43.0
+And a second series with
+- patch1 from here
+- a dts patch adding the additional pm-domains to rk3128.dtsi
+- I guess patch1 also should be split into a patch adding the binding-ids
+  and a separate patch for the code addition.
+
+
+Heiko
+
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> ---
+>  arch/arm/boot/dts/rockchip/rk3128.dtsi | 101 +++++++++++++++++++++++++
+>  1 file changed, 101 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+> index 4e8b38604ecd..b72905db04f7 100644
+> --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+> @@ -8,6 +8,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/power/rk3128-power.h>
+>  
+>  / {
+>  	compatible = "rockchip,rk3128";
+> @@ -133,6 +134,106 @@ smp-sram@0 {
+>  	pmu: syscon@100a0000 {
+>  		compatible = "rockchip,rk3128-pmu", "syscon", "simple-mfd";
+>  		reg = <0x100a0000 0x1000>;
+> +
+> +		power: power-controller {
+> +			compatible = "rockchip,rk3128-power-controller";
+> +			#power-domain-cells = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			power-domain@RK3128_PD_VIO {
+> +				reg = <RK3128_PD_VIO>;
+> +				clocks = <&cru ACLK_CIF>,
+> +					 <&cru HCLK_CIF>,
+> +					 <&cru DCLK_EBC>,
+> +					 <&cru HCLK_EBC>,
+> +					 <&cru ACLK_IEP>,
+> +					 <&cru HCLK_IEP>,
+> +					 <&cru ACLK_LCDC0>,
+> +					 <&cru HCLK_LCDC0>,
+> +					 <&cru PCLK_MIPI>,
+> +					 <&cru ACLK_RGA>,
+> +					 <&cru HCLK_RGA>,
+> +					 <&cru ACLK_VIO0>,
+> +					 <&cru ACLK_VIO1>,
+> +					 <&cru HCLK_VIO>,
+> +					 <&cru HCLK_VIO_H2P>,
+> +					 <&cru DCLK_VOP>,
+> +					 <&cru SCLK_VOP>;
+> +				pm_qos = <&qos_ebc>,
+> +					 <&qos_iep>,
+> +					 <&qos_lcdc>,
+> +					 <&qos_rga>,
+> +					 <&qos_vip>;
+> +				#power-domain-cells = <0>;
+> +			};
+> +
+> +			power-domain@RK3128_PD_VIDEO {
+> +				reg = <RK3128_PD_VIDEO>;
+> +				clocks = <&cru ACLK_VDPU>,
+> +					 <&cru HCLK_VDPU>,
+> +					 <&cru ACLK_VEPU>,
+> +					 <&cru HCLK_VEPU>,
+> +					 <&cru SCLK_HEVC_CORE>;
+> +				pm_qos = <&qos_vpu>;
+> +				#power-domain-cells = <0>;
+> +			};
+> +
+> +			power-domain@RK3128_PD_GPU {
+> +				reg = <RK3128_PD_GPU>;
+> +				clocks = <&cru ACLK_GPU>;
+> +				pm_qos = <&qos_gpu>;
+> +				#power-domain-cells = <0>;
+> +			};
+> +
+> +			power-domain@RK3128_PD_CRYPTO {
+> +				reg = <RK3128_PD_CRYPTO>;
+> +				clocks = <&cru HCLK_CRYPTO>,
+> +					 <&cru SCLK_CRYPTO>;
+> +				pm_qos = <&qos_crypto>;
+> +				#power-domain-cells = <0>;
+> +			};
+> +		};
+> +	};
+> +
+> +	qos_crypto: qos@10128080 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x10128080 0x20>;
+> +	};
+> +
+> +	qos_gpu: qos@1012d000 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012d000 0x20>;
+> +	};
+> +
+> +	qos_vpu: qos@1012e000 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012e000 0x20>;
+> +	};
+> +
+> +	qos_rga: qos@1012f000 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012f000 0x20>;
+> +	};
+> +
+> +	qos_ebc: qos@1012f080 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012f080 0x20>;
+> +	};
+> +
+> +	qos_iep: qos@1012f100 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012f100 0x20>;
+> +	};
+> +
+> +	qos_lcdc: qos@1012f180 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012f180 0x20>;
+> +	};
+> +
+> +	qos_vip: qos@1012f200 {
+> +		compatible = "rockchip,rk3128-qos", "syscon";
+> +		reg = <0x1012f200 0x20>;
+>  	};
+>  
+>  	gic: interrupt-controller@10139000 {
+> 
+
+
+
 
 
 _______________________________________________
