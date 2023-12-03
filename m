@@ -4,51 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F027DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Dec 2023 19:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7545C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Dec 2023 20:12:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E77oN2fksrwQdQLdgA1GoXaFyXHuczeW76RciDTf8sM=; b=pc34v0ctvAeo28
-	txop3MNffWb8nIvVB5tKCKTJe/JWflOFHeuDSmVvFuLF5sgrkKJS83qELMlIUV5j9GnRP4g7FQE9e
-	cBBnC/4MGsqYWb9bGVZh3LIVU+ypgOKFPEq3qxmxoW2t+hEiWJnSLFYbotbB0LH2hYUj8SlWDETvC
-	0GEGcvJ4gMsLArL+5XPVy5vklLnkFi9hqfUauY8kPaYkurSNrUbbuT+3rYulzeoeUT+RILaIVTU8/
-	DaF4ZNwdzj5vWdG7Ik6uMGl/gYYThN8aQY/oRSrq/DzWhJAED08DMNa3cCxbzqgm9lkgqGDr1mU72
-	FpGpIjDDh+LrJByFKkWw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CpmGTZVnvyGryK4QBnck2qfNfDvuu90DffYGZmjftZ4=; b=obdOVNEu4QS66dKZ6InYKb+Fxp
+	a6OEDWLD4Q6Z0G/SOMinoocIklqy0v0NU+RXbgkHDh1QAb/2pM2a154Z3gYdzEidTqUZydunCSiMX
+	HJhcaYZ39CCAq/14iBOmm8ofB604hwfjUvqEcoukAblFu/xa6kzuHEXDWq7UIL5TCQN+9vwb+vCWZ
+	9knAQAMIlmSM5KjemCr7c7dTKa1DkSakNf5BoIeoPPMBrVnP4AJZkf39g0UJsuN/M2eH/sSDokhkI
+	LvU3I64BXlQsGv11R3tx69DsEfCXCcu8uYOOP1J/O0iYBb7HFH8xxO1t2BwnVSaPMzbkUlefFoHV4
+	I+8mTYEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9sSU-002XHz-3A;
-	Sun, 03 Dec 2023 19:48:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1r9spc-002YKU-2w;
+	Sun, 03 Dec 2023 20:12:49 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9sSR-002XHa-2L;
-	Sun, 03 Dec 2023 19:48:53 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1r9sSK-00062s-Af; Sun, 03 Dec 2023 20:48:44 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Tim Lunn <tim@feathertop.org>, Andi Shyti <andi.shyti@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Jagan Teki <jagan@edgeble.ai>, Conor Dooley <conor+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v3 3/8] i2c: rk3x: Adjust mask/value offset for i2c2 on rv1126
-Date: Sun, 03 Dec 2023 20:48:43 +0100
-Message-ID: <4413905.22IY78Rhhi@diego>
-In-Reply-To: <20231203190620.26of3xrcoosnpicb@zenone.zhora.eu>
-References: <20231203124004.2676174-1-tim@feathertop.org>
- <20231203124004.2676174-4-tim@feathertop.org>
- <20231203190620.26of3xrcoosnpicb@zenone.zhora.eu>
+	id 1r9spT-002YGk-0q;
+	Sun, 03 Dec 2023 20:12:43 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1701634342;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iNJjh+X6J9Z2/8EV0arL00UpbZzQdKWDMWVJrQFp4PA=;
+	b=ljIX4selP/ND8AJ6It0KkxBLOqBtyjfUs3s0T0C6UA8PdapcWO8fuZos8pLiUl3M7doWqt
+	/V3Gz0oO6Ih2UIXol5JsGXO8vk003riVjOyRrAN+PVlz0hp0BlO4Ft9fddsrzin2+bA4t7
+	xMp6H6/iz5K4jOThAsmVxrHzXL5ONg7OCm0clj6JmtpBJA8yEj0437Bc6a9uc+kyfyvbDM
+	mRMHYfdiVuJz63EWuVpppTT0RNTqL/nA+M4FL35JgJDjKrEgZGb7LhhZsGm8mIvchOplBw
+	yWchPPfzmaYRYzwb+xnNetndCxJqr4s8r1Kz+uNFwx8t7FkfAwXdJLYqk9NgAA==
+Date: Sun, 03 Dec 2023 21:12:17 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>, Andrew Lunn
+ <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson
+ <andersson@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Dmitry Baryshkov
+ <dmitry.baryshkov@linaro.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>, Konrad
+ Dybcio <konrad.dybcio@linaro.org>, Michal Simek <michal.simek@amd.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>, Olof
+ Johansson <olof@lixom.net>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <zajec5@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, workflows@vger.kernel.org,
+ linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+In-Reply-To: <83b413441a953e8f2bc56adf09511a80@manjaro.org>
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+ <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
+ <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
+ <83b413441a953e8f2bc56adf09511a80@manjaro.org>
+Message-ID: <7021717e2e747b9c119b7c5091b60bdf@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231203_114851_914505_FCC2D1A3 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20231203_121240_513769_505A6271 
+X-CRM114-Status: GOOD (  27.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,39 +83,161 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andi,
+Just a brief reminder about my suggestions below, which seemingly didn't 
+find their way into the v4.  At least the first one, which improves the 
+opening sentence, is worth including, IMHO.
 
-Am Sonntag, 3. Dezember 2023, 20:06:20 CET schrieb Andi Shyti:
-> Hi Tim,
+
+On 2023-11-29 12:37, Dragan Simic wrote:
+> On 2023-11-29 11:43, Krzysztof Kozlowski wrote:
+>> On 28/11/2023 21:00, Dragan Simic wrote:
+>>> 
+>>> I went through the language of the entire patch, after the notice 
+>>> that
+>>> the v4 would no longer accept language improvements.  My wording- and
+>>> grammar-related suggestions are available inline below.
+>> 
+>> Thanks. I want to finish this at some point and it might not happen if
+>> grammar fixes will be coming every patch revision. Then after we 
+>> finish
+>> review, new feedback will appear about using British or American
+>> spelling (which reminds me old quote/email about which variant of
+>> English is most popular in Linux kernel: the incorrect one).
 > 
-> On Sun, Dec 03, 2023 at 11:39:59PM +1100, Tim Lunn wrote:
-> > Rockchip RV1126 is using old style i2c controller, the i2c2
-> > bus uses a non-sequential offset in the grf register for the
-> > mask/value bits for this bus.
-> > 
-> > This patch fixes i2c2 bus on rv1126 SoCs.
-> > 
-> > Signed-off-by: Tim Lunn <tim@feathertop.org>
-> > Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Ah, that's a good one. :)  Basically, both English variants should be
+> fine, but a single document should obviously use only one variant.
 > 
-> Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
-
-you're listed as the maintainer for the i2c busses,
-are you going to pick this one patch yourself?
-Or do you expect a different handling?
-
-I.e. it doesn't really tie into the dts patches and everything will come
-together nicely in linux-next and during the next merge-window.
-
-Thanks
-Heiko
-
-
+>>>> +=====================================
+>>>> +Devicetree Sources (DTS) Coding Style
+>>>> +=====================================
+>>>> +
+>>>> +When writing Devicetree Sources (DTS) please observe below 
+>>>> guidelines.
+>>>>  They
+>>> 
+>>> The sentence above should be replaced with: "The following guidelines
+>>> are to be followed when writing Devicetree Source (DTS) files."
+>> 
+>> Are you sure? It's passive and I was taught it is discouraged for
+>> writing. See for example:
+>> https://www.hamilton.edu/academics/centers/writing/seven-sins-of-writing/1
+> 
+> Hmm, you're right, passive voice is usually not the best choice.
+> Here's my take two for the suggested replacement sentence, which is
+> actually a simplified version:
+> 
+> "This document contains the guidelines for writing Devicetree Source
+> (DTS) files."
+> 
+>>>> +should be considered complementary to any rules expressed already 
+>>>> in
+>>>> Devicetree
+>>>> +Specification and dtc compiler (including W=1 and W=2 builds).
+>>> 
+>>> A definite article ("the") should be added before "Devicetree
+>> 
+>> ack
+>> 
+>>> Specification" and "dtc".  Also, "Specification" in "Devicetree
+>>> Specification" should be capitalized.
+>> 
+>> It was.
+> 
+> Oh, sorry, I see now.  IIRC, it wasn't capitalized in some places, so
+> I made a mistake here.
+> 
+>>>> +
+>>>> +Individual architectures and sub-architectures can add additional
+>>>> rules, making
+>>>> +the style stricter.
+>>> 
+>>> "Sub-architectures" should be replaced with "subarchitectures".  "Can
+>> 
+>> A hint, you can write such review feedback as:
+>> s/sub-architectures/subarchitectures/
+> 
+> Sure, but I specifically wanted to be less terse, as a way to be 
+> respectful.
+> 
+>> BTW, my language spelling points "subarchitectures" as mistake, but
+>> sure, ack.
+> 
+> Using hyphens or not is almost always debatable, but modern English in
+> general leans toward not using them.
+> 
+>>>> +3. Unit addresses shall use lowercase hex, without leading zeros
+>>>> (padding).
+>>> 
+>>> "Lowercase hex" should be replaced with "lowercase hexadecimal 
+>>> digits".
+>>> 
+>>>> +
+>>>> +4. Hex values in properties, e.g. "reg", shall use lowercase hex.  
+>>>> The
+>>>> address
+>>>> +   part can be padded with leading zeros.
+>>> 
+>>> "Hex values" should be replaced with "Hexadecimal values".  
+>>> "Lowercase
+>>> hex" should be replaced with "lowercase hexadecimal digits".
+>> 
+>> ack, but that's quite picky. We are (software) engineers so we are
+>> supposed to know the slang.
+> 
+> Sure, but this document is of a bit formal nature, so using slightly
+> more formal language can only be helpful.
+> 
+>>>> +2. Nodes without unit addresses shall be ordered alpha-numerically 
+>>>> by
+>>>> the node
+>>>> +   name.  For a few types of nodes, they can be ordered by the main
+>>>> property
+>>>> +   (e.g. pin configuration states ordered by value of "pins"
+>>>> property).
+>>> 
+>>> "Alpha-numerically" should be replaced with "alphabetically".
+>> 
+>> Are you sure? Does alphabetical order include numbers?
+> 
+> That's a good question, which also crossed my mind while writing the
+> suggestions down.  A more correct word would be "lexicographically",
+> with something like ", with the already defined valid characters
+> making the symbol set and the ACSII character set defining the
+> ordering, " serving as an additional explanation.
+> 
+> This would be a rather formal, but also very precise definition of the
+> applied ordering.
+> 
+>>>> +3. When extending nodes in the board DTS via &label, the entries 
+>>>> shall
+>>>> be
+>>>> +   ordered either alpha-numerically or by keeping the order from 
+>>>> DTSI
+>>>> (choice
+>>>> +   depending on sub-architecture).
+>>> 
+>>> "Alpha-numerically" should be replaced with "alphabetically".
+>> 
+>> Similar concern
+> 
+> I agree.  We could use "lexicographically" instead, with the precise
+> definition already established earlier in the document.
+> 
+>>>> +board DTS, not in the SoC or SoM DTSI.  A partial exception is a
+>>>> common
+>>>> +external reference SoC-input clock, which could be coded as a
+>>>> fixed-clock in
+>>> 
+>>> "SoC-input" should be replaced with "SoC input".
+>> 
+>> ack, thanks!
+> 
+> Thank you once again for working on this document!
 
 _______________________________________________
 Linux-rockchip mailing list
