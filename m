@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596F1C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Dec 2023 22:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B956C10DCE
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Dec 2023 11:27:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CuRTQW5oFwnzTyY0g/xNbb54hl2x04tzq1mq1aheVV0=; b=2yOThxxFRqUT5X
-	AT1d/isa4/pAn+AlEmkkzdyFldLYxVHCznAahB/+Buh52C3kw3ybdQDusG9LWDOMi8BUamcJxKUQw
-	/ERwJLSh34h9FfFeqQhGkbOKjrh8CRByidIMizhkTnGNGAOg9pEtRfP+e3jZOSEbpz2uDnw0AFybG
-	SiCUJs1P/jP2YHHZbLxqZHoEwemmb4rEVM6c/kjws8jGjf+ZqELOi7aXmCnEE1Ohb/HhVkRTmNsT+
-	VL0qMl8d1tlVS7IyVqasxx7A8eGqyN0W7kZ9XmK7P0zQq7BLx3IeO3O+z6CrWg7NNf2j1mzMXjtM1
-	VU/CN4WTidPbIlcnf11A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aMEYqCJztwxhiyEjw4nqqw159rGAE0XXtTGkehPwm6Y=; b=r6A9xRQ6fMN2MWNxm2uxttdz1A
+	gxqUfcc6un11JQ36NDL/vX01xU4sdDpCLtbKti8TZaSl/MW2tkCi9IEW0G5NB+QznxRkBiCgv7W7n
+	7Gl/Tt/v5HQm0ZbJt4um6HwxLH439k3A/shYuXAeAesmAxknr+0DLHwA1WwedbOtN1d+xO7UFkEu0
+	5MSQJJ8Lp0Wpfdh/d+oWLR4+B07HhiSJTycBVmYHg+ZpobZVl869K/mEnKdiPbZpxrmSMPFLc3xT2
+	WnGSTwyvC41So3oDja7RF5ZXOSTvXEER6D3bkzNtMb0UGpFQ1Idf9oH+F9JDsbT+F79n3m1XxLMqu
+	8fZ64xQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9YVA-00GAXO-0H;
-	Sat, 02 Dec 2023 22:30:20 +0000
-Received: from ip-89-177-23-149.bb.vodafone.cz ([89.177.23.149] helo=ixit.cz)
+	id 1r9kcp-00Gh0a-1A;
+	Sun, 03 Dec 2023 11:27:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1r9YV6-00GAWa-2S;
-	Sat, 02 Dec 2023 22:30:18 +0000
-Received: from newone.lan (unknown [10.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 32C401612A4;
-	Sat,  2 Dec 2023 23:30:15 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1701556215;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/0H6bwtLy8JPhPVHInIhXdE8jtxG6LhIg62kFR5k+5I=;
-	b=X0h1uPrf3r7C6DG25AuSYwdrFNnrV43PR8jJ03fHp1plIBbSkQlTpL0nUc2nE6aAT2DGc+
-	DLltGofGejgoWohn4VDXtxsVELCTuhfrnVES4qW/ZT/tfujPiFZvpeyRVsUR4p17EhO9Go
-	4MW3iT2OBsNf4CMJZgaI8cGiA1HtZV4=
-From: David Heidelberg <david@ixit.cz>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	David Heidelberg <david@ixit.cz>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 3/5] arm64: dts: rockchip: make dts use gpio-fan matrix instead of array
-Date: Sat,  2 Dec 2023 23:29:02 +0100
-Message-ID: <20231202222934.137191-3-david@ixit.cz>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231202222934.137191-1-david@ixit.cz>
-References: <20231202222934.137191-1-david@ixit.cz>
+	id 1r9kck-00GgwP-1S;
+	Sun, 03 Dec 2023 11:26:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 440B4CE0C2F;
+	Sun,  3 Dec 2023 11:26:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AE2CC433C9;
+	Sun,  3 Dec 2023 11:26:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701602815;
+	bh=4v8ZRwT+lzUcVB1vmrVnhhMyxt4ufRUD0/bRFWzgiD0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hNOd/yjxS57o9lnIHHXjC0xFEdq9nOW9z7wtCs9i/VfEtPv8FCW9XlTpHDbGZ82p7
+	 MGem1KhdkA/nENDGmwfGxzckfcT+ifrALkStACWDy480XeGcLOgdQXjEeGgf5XN0yZ
+	 Rbdo8qfFWwXgoDsUM/LuJpdA9YLWzDpwF+kS7xZR7Nxhef3gQRjYwBCF7qm0aR0GL1
+	 qkIHbuSF9ZFUwb8VUCLsLjZUbnLCmz4TpOhoPv9U7ECQuwi2i7oOUkK8h/In57Buzp
+	 4XejgHXmJtfhF9YD9ZelucpD4iNjpIqDw0NRfjs8KiO3hfKsvL4DTGdN8ANDYQvWBA
+	 X7elFvEf+WIuQ==
+Date: Sun, 3 Dec 2023 11:26:50 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	quentin.schulz@theobroma-systems.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Theobroma-Systems
+ Jaguar SBC
+Message-ID: <20231203-landlady-capped-2d2b0f6c26b8@spud>
+References: <20231201191103.343097-1-heiko@sntech.de>
+ <20231201191103.343097-2-heiko@sntech.de>
 MIME-Version: 1.0
+In-Reply-To: <20231201191103.343097-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231202_143016_955809_C8BC22A9 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20231203_032658_741076_380011F4 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,57 +70,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4931005286714150541=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-No functional changes.
 
-Adjust to comply with dt-schema requirements
-and make possible to validate values.
+--===============4931005286714150541==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="r6/yndUbqCbeVuIg"
+Content-Disposition: inline
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: David Heidelberg <david@ixit.cz>
----
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 5 +++--
- 2 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index e6ac292ce645..69dd3568b84e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -44,7 +44,7 @@ dc_12v: dc-12v {
- 	fan0: gpio-fan {
- 		#cooling-cells = <2>;
- 		compatible = "gpio-fan";
--		gpio-fan,speed-map = <0 0 3000 1>;
-+		gpio-fan,speed-map = <0 0>, <3000 1>;
- 		gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
- 		status = "okay";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 854d02b46e6f..59843a7a199c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -31,8 +31,9 @@ gmac1_clkin: external-gmac1-clock {
- 	fan: gpio_fan {
- 		compatible = "gpio-fan";
- 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
--		gpio-fan,speed-map = <0    0
--				      4500 1>;
-+		gpio-fan,speed-map =
-+				<   0 0>,
-+				<4500 1>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&fan_en_h>;
- 		#cooling-cells = <2>;
--- 
-2.42.0
+--r6/yndUbqCbeVuIg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Fri, Dec 01, 2023 at 08:11:02PM +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+>=20
+> Add the binding for the Jaguar board from Theobroma-Systems.
+>=20
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+
+GL chief :)
+Conor.
+
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
+ntation/devicetree/bindings/arm/rockchip.yaml
+> index 5f7c6c4aad8f..44181a36c5d5 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -875,6 +875,11 @@ properties:
+>            - const: tsd,rk3399-puma-haikou
+>            - const: rockchip,rk3399
+> =20
+> +      - description: Theobroma Systems RK3588-SBC Jaguar
+> +        items:
+> +          - const: tsd,rk3588-jaguar
+> +          - const: rockchip,rk3588
+> +
+>        - description: Tronsmart Orion R68 Meta
+>          items:
+>            - const: tronsmart,orion-r68-meta
+> --=20
+> 2.39.2
+>=20
+
+--r6/yndUbqCbeVuIg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZWxl+gAKCRB4tDGHoIJi
+0gRnAQCv+UlVzTntpykJfSQfbxDLQSWZsGnzJQxt6WXfMtzvCwEA1hWDzOsSNRiC
+4hW0Ue3qQE6BA4TrgynQR/+kQRxNhAM=
+=bpH3
+-----END PGP SIGNATURE-----
+
+--r6/yndUbqCbeVuIg--
+
+
+--===============4931005286714150541==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4931005286714150541==--
+
