@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB219C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 17:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BEB4C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 17:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fe/tpGJOVuNtzusVUdKM9Whd0IKukK+/qtopioQn5Lo=; b=HLk3+rkDSSiYyEiiji+jOavd38
-	BHrWJ3x+Ej+G/cU96A+AAPkJOXyDA91ZXZzmoK9gSyyEdMjoAPj+2M5DvgyFA1phIJjdNfo0Hv9z9
-	x+2prsAPrqyc1rG/yruonanx8M8cv/0+7tYdjA05hlSi6BCBMVNt0yEfAF2IIrv9Ev63Koi/P5vcS
-	sPdNXoppSIzxYm+ndAED6wT66EjZQe8NpjhS093Z1Xq2LZWHPn5oMYGPrC4756Yf8Qo+48eZdN9bN
-	pdHefEaeZdKmeBFg7fLnPdQXy7FfQTnseEEo9/FSUO881J3NYfIKJ+1Zq1D/43/MI2D2W/OBlG1qp
-	4+dY+bNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=h/Gk3+0bdO/DlP8m2XFCHsxZY+ezvVg3zecwqIWh6qA=; b=ly43vXrEXexgzM
+	awhMvsN+CkX5eNN/uZKFl5Z7MCFSvr795293a1r+i5KzGxqmhscqU3jo60Nv4HXXy0l/CzvFCahyG
+	fd1JxBf+VCb3ttpX7kJhoTXvhLmz7y7dFaXAm/tAtVND226lFwYTEvj7F0vfk2sece+shOgOv/oyc
+	omkPeZCT+x8u3yCYYJIM6qIGggGe7VNkfNyiduOO1yJ9w19vlpYcmC9dALvnxnVCwpdqkdsKLhpVA
+	vamj0yALwjeK1iGpKBoQINY6qsYLUthtBLcdV5pysR1LubM9H68vKMCVfKUqI08Fdab2o1v+G0SbX
+	EPqcpFvj4rhPG40Vlwfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rACpC-005Cfe-1q;
-	Mon, 04 Dec 2023 17:33:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rACuV-005DOq-39;
+	Mon, 04 Dec 2023 17:39:11 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rACp6-005Cbm-1k;
-	Mon, 04 Dec 2023 17:33:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 961B061295;
-	Mon,  4 Dec 2023 17:33:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F1E1C43391;
-	Mon,  4 Dec 2023 17:33:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1701711215;
-	bh=pqR5Pu1vfX8Tzb7oABBG5dDwHFoYt6PPvTFmyYLcOos=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=M+ipHTBhZNzq3PIkeoJnv1jX3zSD4kJ0NCAcc2Gt7OsXABhjElEba84C21u0h5v01
-	 KingCMNjsYCFZBg3Uaspz+xPl8mupbs7O+q+T7BE0fUaUd10QGwozJP5wxaXXCJujJ
-	 cIlo9c9felXEI7/VsyiUGYny+qAapBmJYYPdsihfxBiJCtoSXiFPclT2GuOPKUk1ru
-	 XZbewudY/x5oyNryAvQQL9GVMT7tQykspabY/F1kPq16jP9rMz2qdW4xXSQlOjGu3i
-	 XC7kvUPAi3GeG4V0VDRRvu9RoAspqrI+mBG/UKiXOV8e0bqgp1A8YoGXrScCrdJefn
-	 0HvJMXkXdIz9Q==
-Date: Mon, 4 Dec 2023 17:33:26 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Andrew Davis <afd@ti.com>,
-	Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Michal Simek <michal.simek@amd.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	workflows@vger.kernel.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
-Message-ID: <20231204-ladder-walnut-795fedf363d1@spud>
-References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+	id 1rACuR-005DNu-25;
+	Mon, 04 Dec 2023 17:39:09 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a1b7b6bf098so189220266b.1;
+        Mon, 04 Dec 2023 09:39:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701711545; x=1702316345; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RDbV8KEqo360AWt22zz09PqUE/cssUErxHrowGLoINk=;
+        b=Bb8/IWqGOF63PhurZcYPLMbWd0/1vig1l1ShMmlsEC+RKU9E6DLa48X4T6qp20bSFP
+         0MPC8PvrxzH0dSg6CXA3o+yB1NlsI11EMnfVTykdngzv7StVFlgn3kmX/enn7mVSbZGE
+         aowPUS1CXWM5NZVqbAiFsc7KyTy/4BsoIbyn/pQEzVgplsaTGVtI5sis5PwUKag14sU0
+         6TEHRseqbuBCRfcbE7kq8kbB39bQ7kbYVzwinofuVEy8JCBvkARLVVAB4stoDeHrS0lh
+         zCe4XmFx16FFzawUtI5GbZvEEia7X+xlqRerLmQ08g4fHVow37iRE6c5EyrILHqGNQdy
+         klsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701711545; x=1702316345;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=RDbV8KEqo360AWt22zz09PqUE/cssUErxHrowGLoINk=;
+        b=GnLT38N44ejqgqF4nGlUbb1nmIA69QzT9s5i++7d/d+ONsZclyopgwtcRutjaZV/cc
+         k+oVcjLv3ngRcpP3lH4ByYZNwUhtRx3V8Z1s31Ura5ecOvRAAaWgn6T9REynuCqucaIA
+         vd/DM29tkpP/DHlDi+bj+Bb4xSsDtnDDJy37V3laSki3pD2zHx2K4KfI5OWotiVgT59n
+         rtuHtIe7kwl7Suk0x7BoTn40lcgbmE7BSDNKOeXQnzGzA5ciqubIrHuTowbPW+Vhwj2+
+         GlUYIk471cVxEy9n6tBvMmQaj2p20M5eH2lpa5Ci9c65U8/+nS+eqZbuLviSq9kO0i3L
+         DUJw==
+X-Gm-Message-State: AOJu0YxSAYnzBsVQcJEIMsVyD8WCrnDvXmxIWRfBqJIjAWzyhZObN7X3
+	hs8tT0UqvZ6pkAjWqtadXA8=
+X-Google-Smtp-Source: AGHT+IFY1TkeVeRGWBrgWf2i0O9q9pzjrUYsznblS+VoCoNd0mGuLFzQmCXoRFFl4jZvbkNMocSkjA==
+X-Received: by 2002:a17:906:1d4:b0:a1b:774f:df5c with SMTP id 20-20020a17090601d400b00a1b774fdf5cmr1686472ejj.14.1701711545198;
+        Mon, 04 Dec 2023 09:39:05 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id mj9-20020a170906af8900b00a1907e36244sm5128328ejb.118.2023.12.04.09.39.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Dec 2023 09:39:04 -0800 (PST)
+Message-ID: <49c6afec-022f-02de-99a0-d409b64da198@gmail.com>
+Date: Mon, 4 Dec 2023 18:39:03 +0100
 MIME-Version: 1.0
-In-Reply-To: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1 1/3] dt-bindings: drm: rockchip: convert
+ inno_hdmi-rockchip.txt to yaml
+To: heiko@sntech.de, hjc@rock-chips.com
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_093336_664391_767ABA22 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20231204_093907_728432_D0BFE3FA 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,79 +91,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2900641099121310700=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Convert inno_hdmi-rockchip.txt to yaml.
 
---===============2900641099121310700==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="l/ugqpDYRk1oTs3I"
-Content-Disposition: inline
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
+Note for rob+dt:
+  Used enum to "soon" be able to add "rockchip,rk3128-inno-hdmi"
 
---l/ugqpDYRk1oTs3I
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Changed V1:
+  Rename file to more common layout
+  Add/fix hdmi_out port example
+---
+ .../display/rockchip/inno_hdmi-rockchip.txt   |  49 ---------
+ .../display/rockchip/rockchip,inno-hdmi.yaml  | 103 ++++++++++++++++++
+ 2 files changed, 103 insertions(+), 49 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchip.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
 
-On Sun, Dec 03, 2023 at 06:46:22PM +0100, Krzysztof Kozlowski wrote:
-> Document preferred coding style for Devicetree sources (DTS and DTSI),
-> to bring consistency among all (sub)architectures and ease in reviews.
->=20
-> Cc: Andrew Davis <afd@ti.com>
-> cc: Andrew Lunn <andrew@lunn.ch>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>
-> Cc: Bjorn Andersson <andersson@kernel.org>
-> Cc: Chen-Yu Tsai <wens@kernel.org>
-> Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> Cc: Jonathan Corbet <corbet@lwn.net>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Michal Simek <michal.simek@amd.com>
-> Cc: Neil Armstrong <neil.armstrong@linaro.org>
-> Cc: Nishanth Menon <nm@ti.com>
-> Cc: Olof Johansson <olof@lixom.net>
-> Cc: Rafa=C5=82 Mi=C5=82ecki <zajec5@gmail.com>
-> Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
-> Acked-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Acked-by: Konrad Dybcio <konradybcio@kernel.org>
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+diff --git a/Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchip.txt
+deleted file mode 100644
+index cec21714f0e0..000000000000
+--- a/Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchip.txt
++++ /dev/null
+@@ -1,49 +0,0 @@
+-Rockchip specific extensions to the Innosilicon HDMI
+-================================
+-
+-Required properties:
+-- compatible:
+-	"rockchip,rk3036-inno-hdmi";
+-- reg:
+-	Physical base address and length of the controller's registers.
+-- clocks, clock-names:
+-	Phandle to hdmi controller clock, name should be "pclk"
+-- interrupts:
+-	HDMI interrupt number
+-- ports:
+-	Contain one port node with endpoint definitions as defined in
+-	Documentation/devicetree/bindings/graph.txt.
+-- pinctrl-0, pinctrl-name:
+-	Switch the iomux of HPD/CEC pins to HDMI function.
+-
+-Example:
+-hdmi: hdmi@20034000 {
+-	compatible = "rockchip,rk3036-inno-hdmi";
+-	reg = <0x20034000 0x4000>;
+-	interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+-	clocks = <&cru  PCLK_HDMI>;
+-	clock-names = "pclk";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&hdmi_ctl>;
+-
+-	hdmi_in: port {
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-		hdmi_in_lcdc: endpoint@0 {
+-			reg = <0>;
+-			remote-endpoint = <&lcdc_out_hdmi>;
+-		};
+-	};
+-};
+-
+-&pinctrl {
+-	hdmi {
+-		hdmi_ctl: hdmi-ctl {
+-			rockchip,pins = <1 8  RK_FUNC_1 &pcfg_pull_none>,
+-					<1 9  RK_FUNC_1 &pcfg_pull_none>,
+-					<1 10 RK_FUNC_1 &pcfg_pull_none>,
+-					<1 11 RK_FUNC_1 &pcfg_pull_none>;
+-		};
+-	};
+-
+-};
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+new file mode 100644
+index 000000000000..96889c86849a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+@@ -0,0 +1,103 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip,inno-hdmi.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Innosilicon HDMI controller
++
++maintainers:
++  - Sandy Huang <hjc@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3036-inno-hdmi
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: pclk
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Port node with one endpoint connected to a vop node.
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Port node with one endpoint connected to a hdmi-connector node.
++
++    required:
++      - port@0
++      - port@1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - pinctrl-0
++  - pinctrl-names
++  - ports
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3036-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/pinctrl/rockchip.h>
++    hdmi: hdmi@20034000 {
++      compatible = "rockchip,rk3036-inno-hdmi";
++      reg = <0x20034000 0x4000>;
++      interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru  PCLK_HDMI>;
++      clock-names = "pclk";
++      pinctrl-names = "default";
++      pinctrl-0 = <&hdmi_ctl>;
++
++      ports {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        hdmi_in: port@0 {
++          reg = <0>;
++          hdmi_in_vop: endpoint {
++            remote-endpoint = <&vop_out_hdmi>;
++          };
++        };
++
++        hdmi_out: port@1 {
++          reg = <1>;
++          hdmi_out_con: endpoint {
++            remote-endpoint = <&hdmi_con_in>;
++          };
++        };
++      };
++    };
++
++    pinctrl {
++      hdmi {
++        hdmi_ctl: hdmi-ctl {
++          rockchip,pins = <1 RK_PB0 1 &pcfg_pull_none>,
++                          <1 RK_PB1 1 &pcfg_pull_none>,
++                          <1 RK_PB2 1 &pcfg_pull_none>,
++                          <1 RK_PB3 1 &pcfg_pull_none>;
++        };
++      };
++    };
+--
+2.39.2
 
-The advice here seems pretty reasonable, and it is nice to have
-something written. Thanks for working on it.
-
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
---l/ugqpDYRk1oTs3I
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZW4NZgAKCRB4tDGHoIJi
-0hplAP4/bWQVjb7IgU8BmI66aGxhgllxfGZ+i/pqPIywcayRXAEAw27WdWDY1IxZ
-uTKhjEBZBea8K/Y7CKAXSIgVBdJqAAw=
-=6IFD
------END PGP SIGNATURE-----
-
---l/ugqpDYRk1oTs3I--
-
-
---===============2900641099121310700==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2900641099121310700==--
-
