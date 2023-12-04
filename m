@@ -4,51 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC83C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 11:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5D6C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 12:13:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LmigNHkUiKs+9EQ/gPnToeth097j1FfGLoz8hEQliJs=; b=q5tEnzN+Gh9byA
-	hqyGm8EtlsyMBleJ3Hj1+f/EcpJ3jKnabGptpMFc2pCTcv2nk4euhTGE7EA6DwPUa4WT2ygOq8jCJ
-	mZuLat4zQl+qL3vEHA6Jj6OS5Qnk3VxAxP7pUNacXQZitJg69Aiyef3R04BMfe5TDwoiiSXDqSNCC
-	ESSOhfsPKmhHle3kIitLT9BGXdhYd4lCyNKTucYdMsvpmKVEp5DYSv81LpitE+50pYhTQVMe4T0vM
-	ZwcYENGhAsb/II3ldx08pTQKiT89bbZJGrv1EKg8IZKreCTGjv8R5Rw4JpsTKM1Ghyx41Dxs/0qQs
-	1KVoofU3g/UrSfVs+P/w==;
+	List-Owner; bh=dGNVaVRkB9PaiLuI7wGUEBerdZI9l+EqPyZo07TbtfI=; b=HneHZqqx/lDRgb
+	nVlpQ+1D/iCbWyhfoW63xM8zybLDmBWe9T7s/2VEKUt4+s3hVbyaUcxx1gpmS6+ze3EGalLeVM9Ci
+	AQK9QD/aPPA6XI1A1R6dgeC3GJOeIunKQOzOo3MyaKUzOyzJjHFuraIe6Eyyc/goXF37rvpXoZ+10
+	uUoeS2wFvSIWwRDFkQzIh7SfdGc4krA3qrv8jQAh5Oz6ejgfAgUATQ/Fa//1lYX13a668hEcXcNAv
+	9IsFlo1ne8KZE6BsQZpJdZn/XDNDLpSoIEppMQR1WjhyULaxehE9fm4wX7PDu31hIeJXSQnYgrmCQ
+	+qVZDL9QtEsUvO5CZFuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA7Fv-003epI-27;
-	Mon, 04 Dec 2023 11:36:55 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rA7p5-003qts-1a;
+	Mon, 04 Dec 2023 12:13:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA7Fo-003eoF-2s;
-	Mon, 04 Dec 2023 11:36:54 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rA7Fk-0004Ac-MV; Mon, 04 Dec 2023 12:36:44 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Wolfram Sang <wsa@kernel.org>, Andi Shyti <andi.shyti@kernel.org>
-Cc: Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>,
- Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+	id 1rA7p0-003qpF-1w;
+	Mon, 04 Dec 2023 12:13:12 +0000
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C0E1766022D1;
+	Mon,  4 Dec 2023 12:13:06 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1701691988;
+	bh=tYd+006RlkhE3PTruMujBJkOUxyMROXE4vAkt2e6WD4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=An6NqerwwhgGfO8PGeiYcMYDkkuGon45hnJi/L5mKU/QUdg8fXvHweDyu5ouS377l
+	 MKZ6u1N7V2WC5ff3OfmXddClu7wle9xb4uwQ0yBIGJ/TuJs2rZBRt5Vs3yvhbwLVll
+	 K6x+zpiw3JjZkGiFIt82WgE3fbPpLsR2oN+Wzna4S+YOr805gK0P8Ky6C8jdfl3x9n
+	 r+oyS8WKSetKFh7uLlkoA2V/I8OEmpjA1T7RDXZiNd+khnQDR43UO15PtIPpI4f9hy
+	 7d2YQy5e/pSWd35k0m8RC2l2iw2xccJQkAGzfcDK9oNhacXJFDNCfkDdvvd3ZiSj8D
+	 RDMhW/jizj9EA==
+Message-ID: <d03bf5b8-d4d7-4080-9af4-17b31ef6c72b@collabora.com>
+Date: Mon, 4 Dec 2023 13:13:04 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v3 3/8] i2c: rk3x: Adjust mask/value offset for i2c2 on rv1126
-Date: Mon, 04 Dec 2023 12:36:43 +0100
-Message-ID: <4850448.MsWZr2WtbB@diego>
-In-Reply-To: <20231203215530.mewjd7n7ltaeed3w@zenone.zhora.eu>
-References: <20231203124004.2676174-1-tim@feathertop.org> <4413905.22IY78Rhhi@diego>
- <20231203215530.mewjd7n7ltaeed3w@zenone.zhora.eu>
-MIME-Version: 1.0
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Michal Simek <michal.simek@amd.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <zajec5@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_033648_954580_3563850B 
-X-CRM114-Status: GOOD (  18.92  )
+X-CRM114-CacheID: sfid-20231204_041310_844130_41ED4346 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,58 +88,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 3. Dezember 2023, 22:55:30 CET schrieb Andi Shyti:
-> Hi,
-> =
-
-> On Sun, Dec 03, 2023 at 08:48:43PM +0100, Heiko St=FCbner wrote:
-> > Hi Andi,
-> > =
-
-> > Am Sonntag, 3. Dezember 2023, 20:06:20 CET schrieb Andi Shyti:
-> > > Hi Tim,
-> > > =
-
-> > > On Sun, Dec 03, 2023 at 11:39:59PM +1100, Tim Lunn wrote:
-> > > > Rockchip RV1126 is using old style i2c controller, the i2c2
-> > > > bus uses a non-sequential offset in the grf register for the
-> > > > mask/value bits for this bus.
-> > > > =
-
-> > > > This patch fixes i2c2 bus on rv1126 SoCs.
-> > > > =
-
-> > > > Signed-off-by: Tim Lunn <tim@feathertop.org>
-> > > > Acked-by: Heiko Stuebner <heiko@sntech.de>
-> > > =
-
-> > > Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
-> > =
-
-> > you're listed as the maintainer for the i2c busses,
-> > are you going to pick this one patch yourself?
-> > Or do you expect a different handling?
-> > =
-
-> > I.e. it doesn't really tie into the dts patches and everything will come
-> > together nicely in linux-next and during the next merge-window.
-> =
-
-> Wolfram are you going to take this?
-
-I was going by get_maintainer.pl showing
-Andi Shyti <andi.shyti@kernel.org> (maintainer:I2C SUBSYSTEM HOST DRIVERS)
-
-hence the question :-)
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SWwgMDMvMTIvMjMgMTg6NDYsIEtyenlzenRvZiBLb3psb3dza2kgaGEgc2NyaXR0bzoKPiBEb2N1
+bWVudCBwcmVmZXJyZWQgY29kaW5nIHN0eWxlIGZvciBEZXZpY2V0cmVlIHNvdXJjZXMgKERUUyBh
+bmQgRFRTSSksCj4gdG8gYnJpbmcgY29uc2lzdGVuY3kgYW1vbmcgYWxsIChzdWIpYXJjaGl0ZWN0
+dXJlcyBhbmQgZWFzZSBpbiByZXZpZXdzLgo+IAo+IENjOiBBbmRyZXcgRGF2aXMgPGFmZEB0aS5j
+b20+Cj4gY2M6IEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4KPiBDYzogQW5nZWxvR2lvYWNj
+aGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4K
+PiBDYzogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KPiBDYzogQmpvcm4gQW5kZXJzc29u
+IDxhbmRlcnNzb25Aa2VybmVsLm9yZz4KPiBDYzogQ2hlbi1ZdSBUc2FpIDx3ZW5zQGtlcm5lbC5v
+cmc+Cj4gQ2M6IERtaXRyeSBCYXJ5c2hrb3YgPGRtaXRyeS5iYXJ5c2hrb3ZAbGluYXJvLm9yZz4K
+PiBDYzogSm9uYXRoYW4gQ29yYmV0IDxjb3JiZXRAbHduLm5ldD4KPiBDYzogTWF0dGhpYXMgQnJ1
+Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KPiBDYzogTWljaGFsIFNpbWVrIDxtaWNoYWwu
+c2ltZWtAYW1kLmNvbT4KPiBDYzogTmVpbCBBcm1zdHJvbmcgPG5laWwuYXJtc3Ryb25nQGxpbmFy
+by5vcmc+Cj4gQ2M6IE5pc2hhbnRoIE1lbm9uIDxubUB0aS5jb20+Cj4gQ2M6IE9sb2YgSm9oYW5z
+c29uIDxvbG9mQGxpeG9tLm5ldD4KPiBDYzogUmFmYcWCIE1pxYJlY2tpIDx6YWplYzVAZ21haWwu
+Y29tPgo+IEFja2VkLWJ5OiBOZWlsIEFybXN0cm9uZyA8bmVpbC5hcm1zdHJvbmdAbGluYXJvLm9y
+Zz4KPiBBY2tlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBSZXZpZXdl
+ZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29t
+Pgo+IEFja2VkLWJ5OiBLb25yYWQgRHliY2lvIDxrb25yYWR5YmNpb0BrZXJuZWwub3JnPgo+IFJl
+dmlld2VkLWJ5OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0K3JlbmVzYXNAZ2xpZGVyLmJlPgo+
+IFNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lA
+bGluYXJvLm9yZz4KPiAKClJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8
+YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgoKVGh1bWJzIHVwIQoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
