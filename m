@@ -4,70 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 827FAC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 13:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61C8C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 15:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UZJOeTYZz8XkLO6kZomXXH5VUzVTFQ9ihJwH8TheYUg=; b=qfc/tuiW6jOzO4
-	+/B547i3GzYMPiQYu7lhDswCh0Hrc5812tN9Mu/uc8eS+n8oTbq9CSzPMBswnZOCS1wOu5fIjl8kc
-	WxVxqAS9ad0lqacqJ0Qfs34zTiO0jgKZfLXgZNWxPu+aDeeVmlpykGROp1Gp6jb+ubA4wmeHUzq49
-	PG0orR8jvP0CQ90lqTHrRUeq8/7sBWHH5e5ldlYopqCu5XeHwYoRab/VU37PO2IazYmTAbjwPl2Ut
-	9w704TbsuT++p8IBaVeL6V9P26vipCuJ7deSYbIWmGTO5UFp1Sbw9pVzauMtLUO4mhlCO4YOanUFV
-	0sWo5w2ez6VqiVGFcBSA==;
+	List-Owner; bh=8kly2bY6Sdd5afNClPM2mMV3lXRWZgUxAcq399mGhEY=; b=DXdW8CgST4Wfbk
+	OQ/NO/kcr1jXZuiPaSgLghxrnHDH4YmKbw8/ZfpkjwY33XmLc4uhQHhxLpgPb5HjelWtDWQT5vL2U
+	Jaev9zacoTqahuoLyyw8FzOHVpuWiqJQlWDhc7FM5b81lYZlxdS+wvSJju5jh6l1qJW/PLSVi5+q1
+	wZTGXpCB2DSGfQfqgi3Muz965xL6WTqxeorrlaMRA6eH2mrTMvQ1SYpY6dqWSNg5P1Ouu/iDAMJrs
+	fJblv4X3H+7G5KjjnuGKyZY/4ti0WzPeg8HYNu5YbccGTkrOmF/nZaUxkrQtntgx++r5otGPSC+wN
+	TgYbUK8mBOF1vZt53pIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA8vu-004ZIv-2S;
-	Mon, 04 Dec 2023 13:24:23 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1rAAc9-004uld-1b;
+	Mon, 04 Dec 2023 15:12:05 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rA8vr-004ZCz-2I
+	id 1rAAc7-004ui6-0h
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Dec 2023 13:24:21 +0000
-Received: from benjamin-XPS-13-9310.. (ec2-34-240-57-77.eu-west-1.compute.amazonaws.com [34.240.57.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9CA70660711D;
-	Mon,  4 Dec 2023 13:24:15 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1701696256;
-	bh=TyWnSNSrmM8e46vPb9QIHFcmc4e6SFgOyK7FFQxtbXw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LXMQ8D4U/gijOA+nUY9rm3gjiwOc0G6dc8hMd3HlJtRWwSaCNyLJ+aJM3LN4QrieH
-	 dRtj3lkOPuToKcN3biJUAeBcxH40CwA7vdpXA8arNS5MDdQAfOnlZfDTW45RWrHDC4
-	 74ZeWIiRTkviXGAT+G1Pk3q3hHsxYizqv/TOX9T7KjUeywIRMzex3TTvlNe48J2cJY
-	 sO3NE/qODXyrU88wuAu6vlwJyfjujx5M/UDRQL4/f6hPwVH5LWhq4Z2QaXaKRIbZ84
-	 UyOzZvkdTRTuN4lAAHwEMPWe8/eGNvGptxbKKjBiy/3sUwnDkRpW2WQ/BNP2RpHLNa
-	 EJdQuawBQH2QA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: hverkuil@xs4all.nl,
-	mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	matt.ranostay@konsulko.com
-Cc: linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 24/36] media: rockchip: rkisp1: Fix misuse of min_buffers_needed field
-Date: Mon,  4 Dec 2023 14:23:11 +0100
-Message-Id: <20231204132323.22811-25-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231204132323.22811-1-benjamin.gaignard@collabora.com>
-References: <20231204132323.22811-1-benjamin.gaignard@collabora.com>
+	Mon, 04 Dec 2023 15:12:04 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-548ce39b101so5752111a12.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 07:11:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701702712; x=1702307512; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fj/U4Ee0ha9ecM/kqN/WX+JrPkr7sXcgsAEI1J8oel0=;
+        b=JVfd1VKO5ooKTt0HiYm80gHsUH4t5vJY3Gyz0e3VRFvlpwxIx8BRSY+g/w8MpTJR5T
+         Sqof+4Swsk15hutjp364Un2+65xblOXA70FHPw4UNhKaGSf93NS6T39BvpyGSl8GVHx2
+         tZuwKdF0puCG3xIj19a5gJd3u3BIAJTA9uLsKcSwROl+KC0Oc0odxZPQgnlCLxrrXOtk
+         jCu10Y4B0sUJt4Qw7lm2kxKwEdeORY13Wt0vpI0a+1L4JjDMR90MisjbZQt6qCfiU5vW
+         VhHqh326nQxOjOs6oahyLHCgUoFFCTMLaS9KJFhXv0PdfPa916TdefmdgFiTAdiqIKeI
+         0jWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701702712; x=1702307512;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fj/U4Ee0ha9ecM/kqN/WX+JrPkr7sXcgsAEI1J8oel0=;
+        b=jVkNoXkGzvBTQX7cItqqhyrC/XUnQr+isnzjkfIuS9o2zieHs8Z9SW4MUcYI7P4q/c
+         ck06bBIdx6wvRAqltA4eglpARwn1mkDJAyeD3Fmkd1EE5a8NoR7Fbia1fbMRmcbmUPXJ
+         UcQTq5fYovoyA5RCX48t4OK4/CA/pp2FtCGXjs53V7Zz4vNALB46w1TmWbvNbZ9eQhRY
+         fZwyKJIEWdEn9W30/MFU/KigkVoa+knZMzKEsM5Rgz7wIH8JyBOiMgs/zYYPChjp606E
+         2GD8TGdJfwLtI6SUYEbcBXTuGZDLjibrvJpR/JXERjW/gNIxsDwioo7W9Ua0xiE/NN4o
+         uhXw==
+X-Gm-Message-State: AOJu0Yxq6PrGaMxCA1NUqzF+DE6puYR/h/fw5N6OWV2rKI/V/yqxut+I
+	1QUNRxqJdjabaJxLLpIxfdZOlQ==
+X-Google-Smtp-Source: AGHT+IG9tDU+DoWVcDSJYLOuodBKau8uHbBBOz4h+aKQItRJRFZhSbFk7u6d1TczaHUrvUBGXMcFCg==
+X-Received: by 2002:a50:99c3:0:b0:54c:4837:7d31 with SMTP id n3-20020a5099c3000000b0054c48377d31mr2776178edb.112.1701702712247;
+        Mon, 04 Dec 2023 07:11:52 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.223.109])
+        by smtp.gmail.com with ESMTPSA id ck5-20020a0564021c0500b0054c715008f5sm3249776edb.6.2023.12.04.07.11.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Dec 2023 07:11:51 -0800 (PST)
+Message-ID: <95bb3618-496d-4b55-a2f7-1b4200cbe420@linaro.org>
+Date: Mon, 4 Dec 2023 16:11:48 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+Content-Language: en-US
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Andrew Davis <afd@ti.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
+ <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ workflows@vger.kernel.org, linux-doc@vger.kernel.org
+References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
+ <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
+ <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
+ <83b413441a953e8f2bc56adf09511a80@manjaro.org>
+ <7021717e2e747b9c119b7c5091b60bdf@manjaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <7021717e2e747b9c119b7c5091b60bdf@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_052419_996286_D04ECAE4 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20231204_071203_283428_08624CE7 
+X-CRM114-Status: UNSURE (   7.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +160,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-'min_buffers_needed' is suppose to be used to indicate the number
-of buffers needed by DMA engine to start streaming.
-rkisp1 driver doesn't use DMA engine and just want to specify
-the minimum number of buffers to allocate when calling VIDIOC_REQBUFS.
-That 'min_reqbufs_allocation' field purpose so use it.
+On 03/12/2023 21:12, Dragan Simic wrote:
+> Just a brief reminder about my suggestions below, which seemingly didn't 
+> find their way into the v4.  At least the first one, which improves the 
+> opening sentence, is worth including, IMHO.
+> 
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-CC: Dafna Hirschfeld <dafna@fastmail.com> (maintainer:ROCKCHIP ISP V1 DRIVER)
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com> (maintainer:ROCKCHIP ISP V1 DRIVER)
-CC: linux-rockchip@lists.infradead.org (open list:ROCKCHIP ISP V1 DRIVER)
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I applied almost all your suggestions, except few which I disagreed with
+in my replies.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index c6d7e01c8949..de3d89b1fac7 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1431,7 +1431,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
- 	q->ops = &rkisp1_vb2_ops;
- 	q->mem_ops = &vb2_dma_contig_memops;
- 	q->buf_struct_size = sizeof(struct rkisp1_buffer);
--	q->min_buffers_needed = RKISP1_MIN_BUFFERS_NEEDED;
-+	q->min_reqbufs_allocation = RKISP1_MIN_BUFFERS_NEEDED;
- 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
- 	q->lock = &node->vlock;
- 	q->dev = cap->rkisp1->dev;
--- 
-2.39.2
+Best regards,
+Krzysztof
 
 
 _______________________________________________
