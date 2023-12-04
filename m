@@ -4,83 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45567C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 19:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 588B7C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 20:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=biezSm+E3kb/EOupaH0+LmT0voPgJx4WGsYzQb3CmIg=; b=e5FNxwz1EWpxLf
-	DkVWp+XIl87RQ/1kEBRz0CXw8nstxNwnfCvIrDFPNYRNFJpoIcmMSB2VN0HcqlqoB4LOd+/urxQ8A
-	I2LGAynEpXYwh2/sl65sWbI/E2sz6oLUaL4SOdySVVyIkiBp4UUrGNKrsRgosUai98I6+5YOtQfxk
-	NouSpA6QjW1ktM75Kuhv6jdU/NFcJeE9Xrp0rd5BywW7yngF9oowB7urrKIary2XNz3nUd/d9PACF
-	hrvjPbnNCgUf/SvKCjexA0xdeG9/IN+g/UZZGxb4+Q2AijrTXsHP6TrjMR7fbVa7NFuDyMkcsrNyB
-	VMIfNiibpr2GNUyRdghg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2syPwxbYPUyHXzsWXm4VliPMl8G3xl21oOZgUV2f+Zg=; b=hxOkYJv0JS05TsLmRF0WPQaP7x
+	5AXmV7aX2e8RxEHjQ8V39Ym3uQ46sSLUxQ4soWt0ZdXqxRxmaCab7LQ/+WomlEg338wWDC8K1IYl9
+	XYLIYYGODc9X0aYY1uNjDjvakYsg+JiS9QZcHIwks61JiauTe7JNMc7DVa0v6jMh613VttZL4Gqo/
+	R+UZR3eGCrTsuWkKnfg/ZSyJCho4lY5jeQQ5F71tF3u7Vmiz/hAdSe6oR7OcTnw+TC8a7+E3lipGs
+	Dd7Jzmhayog6VzpiEohDDN3TL2NTMNaBWC8fnsszAFhWIY1jxRJhmOkhfLFKy6h05rhHmv1fpzHDU
+	P3Dr54Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAExv-005UMJ-0d;
-	Mon, 04 Dec 2023 19:50:51 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rAFGr-005WQs-1u;
+	Mon, 04 Dec 2023 20:10:25 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAExr-005ULj-2B;
-	Mon, 04 Dec 2023 19:50:49 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-54c77e0835bso3146414a12.2;
-        Mon, 04 Dec 2023 11:50:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701719445; x=1702324245; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+qdbcC7yRoXStA6//Sf0ppzUiv9xW5yZR+OVcJWO5pA=;
-        b=HbnLxmskCz1ZFI4pi6aL1vGivfvHR3xkxJgyG5fThWUpk14RbAjFLvreAgvPelXKwS
-         kBNF6gK/xAxBaIpxkirhv9l4BoR+eYXks4wIU31L1s9i+6BXCGG+jQw0rggGQQf33v3Y
-         O+s2F13jxotZoQdDQKhXx362NeGv68DcLHfwoC7j5EfU9hdUu9wzLmnSJcIM8A17POcQ
-         cNEG52SK7P9m+Xf4SJVc2bjz93R6SbqZzJj32GJIIGGnhFK2kekYvKXz9OEPPNN5ETNl
-         j5+fMFGcSm4KZ+RCc5l/o0TxTwTimXEwFCaMbWabV12MvZOAx0qhbeUmyQnpiLIgC69h
-         2RpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701719445; x=1702324245;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+qdbcC7yRoXStA6//Sf0ppzUiv9xW5yZR+OVcJWO5pA=;
-        b=e8W3KnJRgqhDvWDR8+xSVmeiHAqTGs3Gblfeipx9kwP1FEsMJADVqmfNf4mY10Xgdf
-         aH2qLnasoWcZGNLypMg42nnhSIA3JVjW5WCGArUKDepkxbuCZhm/v0nwytNmzPRFxuN+
-         1nkVT1gPsg+gQiTcH9Bz+xjVBbn5L4Gynbs/OEkaRBIMqcpVhoceerQ2q7vp6bxKkImU
-         h0btIWs/9MlrPF6MCa7Rul/ueGiJbiIhEbE0fCT6Da49Rp9bp7S2RYoQDpWlB00NKOK2
-         4Bm7jDE4qExwQgd1ni3NhAUSsw61o2ELCl45jIo23XtzptH0QtaI05QQbt2AWSV4dhld
-         deqA==
-X-Gm-Message-State: AOJu0YzfL7FLkaOVDhuiyf87KIO8Gug++ZY/yk75D2aKh5OsX53+e8eH
-	kwsId1yyT+2THFtq6gA/RF4=
-X-Google-Smtp-Source: AGHT+IFd3H78EZLb2ntO++WfIolEE0unvWxnYVDbs3/x9OA5b4eIfwNO07EUvodwpvsxw1kYt9ELqQ==
-X-Received: by 2002:a17:906:7159:b0:a19:a19b:78a1 with SMTP id z25-20020a170906715900b00a19a19b78a1mr3701905ejj.100.1701719445371;
-        Mon, 04 Dec 2023 11:50:45 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id lj16-20020a170906f9d000b00a0c9024828asm5605562ejb.68.2023.12.04.11.50.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Dec 2023 11:50:45 -0800 (PST)
-Message-ID: <3b436dfe-832a-3c63-cf03-2ddc7aa969c3@gmail.com>
-Date: Mon, 4 Dec 2023 20:50:43 +0100
+	id 1rAFGm-005WOA-1b;
+	Mon, 04 Dec 2023 20:10:23 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: add gpio alias for gpio dt
- nodes
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1701720614;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GPWhJUYk0ESW19LBMCm1nhIdTuA7Ta7q5+UkwQrVXRM=;
+	b=WbIOjvF1u40bccMbkb9nsw74YrYjBq9Llpoi82xLrpCrhRsYCpohF4Ym0CmHiuws7ggald
+	6qmk9T41rs2Pd5vn5fHQRsR9r0Q5eBeGHT/hNHd/yV3uKKi0O8nSyHWKBls+ZNp/sgCKTW
+	RY3tr6qYaoid8kTX4zH2UQFjdpwh9ulAwp7OEpBe435XG4Thg46woseiE1mt/SaX/xpcMy
+	6UDm1n4kc5oQQxw5ODM3tQ8hysqslRQp4fE/YYE0icfH9JtyWfWobPQ2wXpW7q3tndnyHG
+	twR8fSsBksELFKNMbE6uomavA0EilXZy5KzKapw522s2vOXmKFZSo5d4GyQF4w==
+Date: Mon, 04 Dec 2023 21:10:14 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  conor+dt@kernel.org, jay.xu@rock-chips.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: add gpio alias for gpio dt
+ nodes
+In-Reply-To: <89f2a229-9f14-d43f-c53d-5d4688e70456@gmail.com>
 References: <89f2a229-9f14-d43f-c53d-5d4688e70456@gmail.com>
- <62868103.matp6XCIr4@diego>
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <62868103.matp6XCIr4@diego>
+Message-ID: <8787c5328e4ce368d35c8aa376c528d0@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_115047_739009_D19B4038 
-X-CRM114-Status: GOOD (  20.93  )
+X-CRM114-CacheID: sfid-20231204_121021_185594_75681A4E 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,79 +68,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxMi80LzIzIDIwOjM1LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBIaSBKb2hhbiwKPiAK
-PiBBbSBTYW1zdGFnLCAyLiBEZXplbWJlciAyMDIzLCAxOToyMjowMSBDRVQgc2NocmllYiBKb2hh
-biBKb25rZXI6Cj4+IFJvY2tjaGlwIFNvQyBUUk0sIFNvQyBkYXRhc2hlZXQgYW5kIGJvYXJkIHNj
-aGVtYXRpY3MgYWx3YXlzIHJlZmVyIHRvCj4+IHRoZSBzYW1lIGdwaW8gbnVtYmVycyAtIGV2ZW4g
-aWYgbm90IGFsbCBhcmUgdXNlZCBmb3IgYSBzcGVjaWZpYyBib2FyZC4KPj4gSW4gb3JkZXIgdG8g
-bm90IGhhdmUgdG8gcmUtZGVmaW5lIHRoZW0gZm9yIGV2ZXJ5IGJvYXJkIGFkZCB0aGUKPj4gYWxp
-YXNlcyB0byBTb0MgZHRzaSBmaWxlcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogSmlhbnF1biBYdSA8
-amF5Lnh1QHJvY2stY2hpcHMuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBKb2hhbiBKb25rZXIgPGpi
-eDYyNDRAZ21haWwuY29tPgo+IAoKPiBwYXRjaCBpdHNlbGYgbG9va3MgZ29vZCwgYnV0IEkgZG9u
-J3QgdW5kZXJzdGFuZCB0aGUgYXV0aG9yc2hpcCBzaXR1YXRpb24uCj4gQXMgdGhlc2UgdHdvIHNp
-Z25lZC1vZmYtYnlzIGFyZSBub3cgaXQgd291bGQgc3VnZ2VzdCB0aGF0IHlvdSBwaWNrZWQgdXAK
-PiBKaWFucXVuIFh1J3MgcGF0Y2gsIGJ1dCB0aGVuIHRoZSBhdXRob3Igd291bGQgbmVlZCB0byBi
-ZSBkaWZmZXJlbnQuCj4gCj4gT3IgZG8geW91IHdhbnQgdG8gZGVjbGFyZSB0aGlzIHZpYSBhCj4g
-Q28tRGV2ZWxvcGVkLWJ5OiBKaWFucXVuIFh1IDxqYXkueHVAcm9jay1jaGlwcy5jb20+CgpUaGUg
-bmV3ZXIgdGFnIHVzZSBvZiBDby1EZXZlbG9wZWQtYnkgaXMgbW9yZSBjb25mdXNpbmcgY29tcGFy
-ZWQgdG8gaW4gdGhlIG9sZCBkYXlzLi4uCgpQYXRjaCBkZXJpdmVkIGZyb206Cmh0dHBzOi8vbG9y
-ZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjIwOTA5MDkwNTU4LjM2MDkxOTAtMi1qYXku
-eHVAcm9jay1jaGlwcy5jb20vCgpDb3VsZCB5b3UgYWRkL2ZpeCB3aGF0IGlzIG5lZWRlZCB3aXRo
-b3V0IHJlc3VibWl0dGluZy4KCkpvaGFuCgo+IAo+IAo+IFRoYW5rcwo+IEhlaWtvCj4gCj4+IC0t
-LQo+Pgo+PiBDaGFuZ2VkIFYxOgo+PiAgIHJlYmFzZQo+PiAgIHJlbW92ZSByazMwNjYgZ3BpbzUg
-YWxpYXMKPj4gLS0tCj4+ICBhcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazMwMzYuZHRzaSAg
-fCAzICsrKwo+PiAgYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcmszMDY2YS5kdHNpIHwgNSAr
-KysrKwo+PiAgYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcmszMjJ4LmR0c2kgIHwgNCArKysr
-Cj4+ICBhcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazMyODguZHRzaSAgfCA5ICsrKysrKysr
-Kwo+PiAgYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcmszeHh4LmR0c2kgIHwgNCArKysrCj4+
-ICA1IGZpbGVzIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2Fy
-Y2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzAzNi5kdHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMDM2LmR0c2kKPj4gaW5kZXggNzg2ODZmYzcyY2U2Li44YWEyZTA4NjRmZWQg
-MTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzAzNi5kdHNpCj4+
-ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzAzNi5kdHNpCj4+IEBAIC0xNyw2
-ICsxNyw5IEBAIC8gewo+PiAgCWludGVycnVwdC1wYXJlbnQgPSA8JmdpYz47Cj4+Cj4+ICAJYWxp
-YXNlcyB7Cj4+ICsJCWdwaW8wID0gJmdwaW8wOwo+PiArCQlncGlvMSA9ICZncGlvMTsKPj4gKwkJ
-Z3BpbzIgPSAmZ3BpbzI7Cj4+ICAJCWkyYzAgPSAmaTJjMDsKPj4gIAkJaTJjMSA9ICZpMmMxOwo+
-PiAgCQlpMmMyID0gJmkyYzI7Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMwNjZhLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazMwNjZhLmR0
-c2kKPj4gaW5kZXggZGU5OTE1ZDk0NmY3Li4zMDEzOWYyMWRlNjQgMTAwNjQ0Cj4+IC0tLSBhL2Fy
-Y2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzA2NmEuZHRzaQo+PiArKysgYi9hcmNoL2FybS9i
-b290L2R0cy9yb2NrY2hpcC9yazMwNjZhLmR0c2kKPj4gQEAgLTEzLDYgKzEzLDExIEBACj4+ICAv
-IHsKPj4gIAljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzA2NmEiOwo+Pgo+PiArCWFsaWFzZXMg
-ewo+PiArCQlncGlvNCA9ICZncGlvNDsKPj4gKwkJZ3BpbzYgPSAmZ3BpbzY7Cj4+ICsJfTsKPj4g
-Kwo+PiAgCWNwdXMgewo+PiAgCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4gIAkJI3NpemUtY2Vs
-bHMgPSA8MD47Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazMy
-MnguZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzIyeC5kdHNpCj4+IGluZGV4
-IGE3MjE3NDRjYmZkMS4uODMxNTYxZmMxODE0IDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybS9ib290
-L2R0cy9yb2NrY2hpcC9yazMyMnguZHRzaQo+PiArKysgYi9hcmNoL2FybS9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMyMnguZHRzaQo+PiBAQCAtMTUsNiArMTUsMTAgQEAgLyB7Cj4+ICAJaW50ZXJydXB0
-LXBhcmVudCA9IDwmZ2ljPjsKPj4KPj4gIAlhbGlhc2VzIHsKPj4gKwkJZ3BpbzAgPSAmZ3BpbzA7
-Cj4+ICsJCWdwaW8xID0gJmdwaW8xOwo+PiArCQlncGlvMiA9ICZncGlvMjsKPj4gKwkJZ3BpbzMg
-PSAmZ3BpbzM7Cj4+ICAJCXNlcmlhbDAgPSAmdWFydDA7Cj4+ICAJCXNlcmlhbDEgPSAmdWFydDE7
-Cj4+ICAJCXNlcmlhbDIgPSAmdWFydDI7Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0
-cy9yb2NrY2hpcC9yazMyODguZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzI4
-OC5kdHNpCj4+IGluZGV4IGNiOWNkYWRkZmZkNC4uZWFkMzQzZGMzZGYxIDEwMDY0NAo+PiAtLS0g
-YS9hcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazMyODguZHRzaQo+PiArKysgYi9hcmNoL2Fy
-bS9ib290L2R0cy9yb2NrY2hpcC9yazMyODguZHRzaQo+PiBAQCAtMTksNiArMTksMTUgQEAgLyB7
-Cj4+Cj4+ICAJYWxpYXNlcyB7Cj4+ICAJCWV0aGVybmV0MCA9ICZnbWFjOwo+PiArCQlncGlvMCA9
-ICZncGlvMDsKPj4gKwkJZ3BpbzEgPSAmZ3BpbzE7Cj4+ICsJCWdwaW8yID0gJmdwaW8yOwo+PiAr
-CQlncGlvMyA9ICZncGlvMzsKPj4gKwkJZ3BpbzQgPSAmZ3BpbzQ7Cj4+ICsJCWdwaW81ID0gJmdw
-aW81Owo+PiArCQlncGlvNiA9ICZncGlvNjsKPj4gKwkJZ3BpbzcgPSAmZ3Bpbzc7Cj4+ICsJCWdw
-aW84ID0gJmdwaW84Owo+PiAgCQlpMmMwID0gJmkyYzA7Cj4+ICAJCWkyYzEgPSAmaTJjMTsKPj4g
-IAkJaTJjMiA9ICZpMmMyOwo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2No
-aXAvcmszeHh4LmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9yazN4eHguZHRzaQo+
-PiBpbmRleCBjYjRlNDJlZGU1NmEuLmYzNzEzN2YyOThkNSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
-cm0vYm9vdC9kdHMvcm9ja2NoaXAvcmszeHh4LmR0c2kKPj4gKysrIGIvYXJjaC9hcm0vYm9vdC9k
-dHMvcm9ja2NoaXAvcmszeHh4LmR0c2kKPj4gQEAgLTE2LDYgKzE2LDEwIEBAIC8gewo+Pgo+PiAg
-CWFsaWFzZXMgewo+PiAgCQlldGhlcm5ldDAgPSAmZW1hYzsKPj4gKwkJZ3BpbzAgPSAmZ3BpbzA7
-Cj4+ICsJCWdwaW8xID0gJmdwaW8xOwo+PiArCQlncGlvMiA9ICZncGlvMjsKPj4gKwkJZ3BpbzMg
-PSAmZ3BpbzM7Cj4+ICAJCWkyYzAgPSAmaTJjMDsKPj4gIAkJaTJjMSA9ICZpMmMxOwo+PiAgCQlp
-MmMyID0gJmkyYzI7Cj4+IC0tCj4+IDIuMzkuMgo+Pgo+Pgo+IAo+IAo+IAo+IAoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 2023-12-02 19:22, Johan Jonker wrote:
+> Rockchip SoC TRM, SoC datasheet and board schematics always refer to
+> the same gpio numbers - even if not all are used for a specific board.
+> In order to not have to re-define them for every board add the
+> aliases to SoC dtsi files.
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+> ---
+> 
+> Changed V1:
+>   rebase
+>   remove rk3066 gpio5 alias
+> ---
+>  arch/arm/boot/dts/rockchip/rk3036.dtsi  | 3 +++
+>  arch/arm/boot/dts/rockchip/rk3066a.dtsi | 5 +++++
+>  arch/arm/boot/dts/rockchip/rk322x.dtsi  | 4 ++++
+>  arch/arm/boot/dts/rockchip/rk3288.dtsi  | 9 +++++++++
+>  arch/arm/boot/dts/rockchip/rk3xxx.dtsi  | 4 ++++
+>  5 files changed, 25 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi
+> b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+> index 78686fc72ce6..8aa2e0864fed 100644
+> --- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+> @@ -17,6 +17,9 @@ / {
+>  	interrupt-parent = <&gic>;
+> 
+>  	aliases {
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+>  		i2c0 = &i2c0;
+>  		i2c1 = &i2c1;
+>  		i2c2 = &i2c2;
+> diff --git a/arch/arm/boot/dts/rockchip/rk3066a.dtsi
+> b/arch/arm/boot/dts/rockchip/rk3066a.dtsi
+> index de9915d946f7..30139f21de64 100644
+> --- a/arch/arm/boot/dts/rockchip/rk3066a.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk3066a.dtsi
+> @@ -13,6 +13,11 @@
+>  / {
+>  	compatible = "rockchip,rk3066a";
+> 
+> +	aliases {
+> +		gpio4 = &gpio4;
+> +		gpio6 = &gpio6;
+> +	};
+> +
+>  	cpus {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> diff --git a/arch/arm/boot/dts/rockchip/rk322x.dtsi
+> b/arch/arm/boot/dts/rockchip/rk322x.dtsi
+> index a721744cbfd1..831561fc1814 100644
+> --- a/arch/arm/boot/dts/rockchip/rk322x.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk322x.dtsi
+> @@ -15,6 +15,10 @@ / {
+>  	interrupt-parent = <&gic>;
+> 
+>  	aliases {
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+> +		gpio3 = &gpio3;
+>  		serial0 = &uart0;
+>  		serial1 = &uart1;
+>  		serial2 = &uart2;
+> diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi
+> b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+> index cb9cdaddffd4..ead343dc3df1 100644
+> --- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+> @@ -19,6 +19,15 @@ / {
+> 
+>  	aliases {
+>  		ethernet0 = &gmac;
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+> +		gpio3 = &gpio3;
+> +		gpio4 = &gpio4;
+> +		gpio5 = &gpio5;
+> +		gpio6 = &gpio6;
+> +		gpio7 = &gpio7;
+> +		gpio8 = &gpio8;
+>  		i2c0 = &i2c0;
+>  		i2c1 = &i2c1;
+>  		i2c2 = &i2c2;
+> diff --git a/arch/arm/boot/dts/rockchip/rk3xxx.dtsi
+> b/arch/arm/boot/dts/rockchip/rk3xxx.dtsi
+> index cb4e42ede56a..f37137f298d5 100644
+> --- a/arch/arm/boot/dts/rockchip/rk3xxx.dtsi
+> +++ b/arch/arm/boot/dts/rockchip/rk3xxx.dtsi
+> @@ -16,6 +16,10 @@ / {
+> 
+>  	aliases {
+>  		ethernet0 = &emac;
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+> +		gpio3 = &gpio3;
+>  		i2c0 = &i2c0;
+>  		i2c1 = &i2c1;
+>  		i2c2 = &i2c2;
+> --
+> 2.39.2
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
