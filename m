@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C60C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 18:57:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2FDAC10DC3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 18:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1h21/2KMjnvkkDGyFST0HR2U0dXeWL9+YSjWgbwHvno=; b=DWXSF9QID7N6pg
-	hSBTOn/72moMsu/WWxkdZeqvv6bNjQ52/WTTVWDs+nwOlB4X/aERujknuhUi+M1jqxxBHu6B//V3V
-	ITOizk1Kg6KAaSrZyeYVBU7CwXAyUNGjdrs4OYLLTgmUu9DWGiLuQh239GNabBkFNESmMoqjToWVa
-	bry8b/TlEzSU7MfRv2pJiv18oZz1tjGrdUpas+ugw9gYe9Km0Fkt20NqRZfWlZGJlk2OtnOWfWnA4
-	bjob7SESuqx1+1bxmOLXhd33jcaGsigUL18gqNP7PV3V5ll5cSUbhoOqvXRtt2UIQrQrFH0jiT3eX
-	EnKtyZTmWaJ7q/mvghIA==;
+	List-Owner; bh=ubLjEmhl+3fw+2iSC44+d0+RJQL5PvwRxnOmLpwmnKM=; b=CQ9YfACyhuu6h8
+	S+BXmof3KlgJWnQLvVOQZ1OXV6OyOe8eWVCHHxBFJpTHJ89eGha6Obbk2Xwq3FxerMfVG1rSIWNV4
+	aFlGBtzEy9MK7Al4pZ7L/LbolGNCGlugZoELZ1yZCrVGUE2a2byaU17tfbtxY/1NVrk/AXuPxPcQo
+	X4/al5XBbru8FUYbJPbUCsJKWQgtGpKB0mfwOfoojBzEzDuoiU0qD/NJl4vM9um9COR8FzHR6LEka
+	1s5FVuX7URJv67xDtrNFJmgA6H76f5/vAI4zW7axRrA2jC46pnE5k3yNdf8z0e80cpI2ElCtOiInw
+	igoCGq8yzGbVb35kb1JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAE8N-005Nrd-23;
-	Mon, 04 Dec 2023 18:57:35 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1rAE8P-005NtI-18;
+	Mon, 04 Dec 2023 18:57:37 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAE8G-005Nm4-1a
+	id 1rAE8I-005Nn3-1r
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Dec 2023 18:57:30 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-6d8ba6c9b4bso1218749a34.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 10:57:28 -0800 (PST)
+	Mon, 04 Dec 2023 18:57:32 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6d858670630so2560328a34.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 10:57:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701716247; x=1702321047; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1701716249; x=1702321049; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pRNLoGhO2BMO9ciLNfM1W1rhqOoDcDjvlbAJTebh+yo=;
-        b=VjZDIJWCvMc7rW2RuiI98BLNm9MoN4h6sp3jBKxZUydgLU3NamE/UXuhM7BRbxnmsK
-         rAm/hUdZq5lhczufoM3FyCbjkxyzAROFKR25wWO+Db+vmQXpQCL5VF1kkwUnSj4hb8SP
-         /pGdDI7ZsptRsSxX8XBRQLajo+adbj5EdWlfHf5a0MMTYbUCJF+1ZxQVjJvx5foD7vF4
-         HHpASNXtrvYgdEWfQR/54H+8oQ4my+csROPFhKpJdQ2ls4DjwiuJDcArcqeoD9NNNPda
-         sCxdfAT/TbHx9Zs4LW+fFi0FHI/IbYiCBZeUCuqIqtAKPXqhIveTPh08es8FwF4T8qx9
-         rIfQ==
+        bh=cqG2snvAFFOieKorYhuNC1Brzfr2ap7NECEbi10aNlw=;
+        b=VzVDomN1D8BbJ1+w3G3q3u1BbqVHFsF3tfO54SMeItAdZdGPZROGScaSlbBCVogRSG
+         hKRR3jbYv94iAju8G9877SuH0bqy8HpFrdgufYrH7fxlw03+yXZz35IRX5LSp/XUocRd
+         rfJy/i8Zdzv1bvgUvhUfkamn1V81Hxuhe+96SZR3bRndyHGDx2d+e8rv0kK61QD6y4n9
+         kD6+XDf7/SnOc/3jWFu0b9IFB0RdEHkxudkLSA/3IfNU+IrSI92QTAA8qnWZUgKGWnn8
+         A6JAnC17Jnqq/GH2lLOF4oS/VT8L3u7OO1tZLpsDVXD82PQw8g0TzODi0ifLi0h9uzZa
+         oLQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701716247; x=1702321047;
+        d=1e100.net; s=20230601; t=1701716249; x=1702321049;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pRNLoGhO2BMO9ciLNfM1W1rhqOoDcDjvlbAJTebh+yo=;
-        b=ILMWZwNueJ1xZwSSR4pqO0e0m9lsd+Mnbs/C6cPORuF2v3bBMYVbIWro8al2FcNcFQ
-         2RUaHKX5ay4kVrw36jHpBKcN86eV2fOkc/s+uV8wGkVyZ2hC+RZ3DqXt5Ls7mt4mrdjI
-         jCogu2WM3UfLMkCRJk1qBZZMu3oCu4hFMaVIcVY5573QSPM5Qal/oZn5RIopJ+avq3PU
-         U2Op5CqR6pLgDGPXD4jajd8JnlHKMZceFCqQp8kUjdlRFKh+qACZ4edaIFXFOgIaLV/A
-         x09IuXuHTvMwxbigmSumm4MKShFQ8vwhcPeXDZ2y6mOmKdKHogGCj895RR30DbcSe5hT
-         9zFA==
-X-Gm-Message-State: AOJu0Yzoqz0kaW4ky6EfmiFVQ1K2qsnOXjNyCk5HJMtbVOjDDCWego5u
-	Tv5nSV/dmekI/q2HX2Kn17LzXkMyqJI=
-X-Google-Smtp-Source: AGHT+IHcWm1h1Em1kIkk/o+9cIGFYSuJffLp9RQVhcgIZgRMRwVf1HJ4lBuXR12rytbhyYdoJFAN0w==
-X-Received: by 2002:a05:6830:1283:b0:6d8:7eb4:ca7d with SMTP id z3-20020a056830128300b006d87eb4ca7dmr2963949otp.54.1701716247207;
-        Mon, 04 Dec 2023 10:57:27 -0800 (PST)
+        bh=cqG2snvAFFOieKorYhuNC1Brzfr2ap7NECEbi10aNlw=;
+        b=YlMbp8deJA1DJFwnIh903BInMMM0220x+oh0l6l6UZKYpslL1S/zabQ5r8Zrqd0JOM
+         1+Cr/IOdR5f7wQyQ0CCcaJmejj5JhO7T8RQPoBMeTw/DvZrm2U32KHg8Dl+vKccGSoXo
+         zDnX5Fk4FO/BbO/mvtqXWcn34OtFQys0UM99/HRhRmQnh9W3/SBcYWTKVsFKAm5TEROP
+         Phjxbuk3JvWJbzpiF23PTAEgU3IIG9sv3BoBcdwGltQ9ji9CeuXnYZoIDzBWGIQL+4Ji
+         ELv/EwzhT/y4PDyvmtT1S1LB0AvgtgqJ22RGWjTXDOBc/9p0reyzmgdirQA8vfoswwtP
+         fvJg==
+X-Gm-Message-State: AOJu0Yx92DsIi4PDRtZXLvx3HlgszdfZfmf8LLsjL74385/pqO1SzjpZ
+	ea86N7PutOlJJ+lgtn8VUd3N1bD/bUQ=
+X-Google-Smtp-Source: AGHT+IFzW6+z7C8Ml2LbohiIxnhnkOFSqVt0Hu8XhACQOMYCMXYHj43Tp5sgAxVYwW+HAwtsrHue1g==
+X-Received: by 2002:a05:6830:3b84:b0:6d8:8077:8017 with SMTP id dm4-20020a0568303b8400b006d880778017mr4050327otb.4.1701716249072;
+        Mon, 04 Dec 2023 10:57:29 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id y25-20020a4a2d19000000b00581fc1af0a7sm2073303ooy.28.2023.12.04.10.57.26
+        by smtp.gmail.com with ESMTPSA id y25-20020a4a2d19000000b00581fc1af0a7sm2073303ooy.28.2023.12.04.10.57.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Dec 2023 10:57:27 -0800 (PST)
+        Mon, 04 Dec 2023 10:57:28 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -83,16 +83,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 02/10] drm/panel: himax-hx8394: Drop shutdown logic
-Date: Mon,  4 Dec 2023 12:57:11 -0600
-Message-Id: <20231204185719.569021-3-macroalpha82@gmail.com>
+Subject: [PATCH V2 04/10] drm/panel: himax-hx8394: Add Panel Rotation Support
+Date: Mon,  4 Dec 2023 12:57:13 -0600
+Message-Id: <20231204185719.569021-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204185719.569021-1-macroalpha82@gmail.com>
 References: <20231204185719.569021-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_105728_822614_E2273E00 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20231204_105731_004465_3B0E3730 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,55 +111,60 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-The driver shutdown is duplicate as it calls drm_unprepare and
-drm_disable which are called anyway when associated drivers are
-shutdown/removed.
+Add support for setting the rotation property for the Himax HX8394
+panel.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- drivers/gpu/drm/panel/panel-himax-hx8394.c | 17 -----------------
- 1 file changed, 17 deletions(-)
+ drivers/gpu/drm/panel/panel-himax-hx8394.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/drivers/gpu/drm/panel/panel-himax-hx8394.c b/drivers/gpu/drm/panel/panel-himax-hx8394.c
-index 3823ff388b96..d8e590d5e1da 100644
+index d8e590d5e1da..b68ea09f4725 100644
 --- a/drivers/gpu/drm/panel/panel-himax-hx8394.c
 +++ b/drivers/gpu/drm/panel/panel-himax-hx8394.c
-@@ -390,27 +390,11 @@ static int hx8394_probe(struct mipi_dsi_device *dsi)
- 	return 0;
+@@ -68,6 +68,7 @@ struct hx8394 {
+ 	struct gpio_desc *reset_gpio;
+ 	struct regulator *vcc;
+ 	struct regulator *iovcc;
++	enum drm_panel_orientation orientation;
+ 
+ 	const struct hx8394_panel_desc *desc;
+ };
+@@ -324,12 +325,20 @@ static int hx8394_get_modes(struct drm_panel *panel,
+ 	return 1;
  }
  
--static void hx8394_shutdown(struct mipi_dsi_device *dsi)
--{
--	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
--	int ret;
--
--	ret = drm_panel_disable(&ctx->panel);
--	if (ret < 0)
--		dev_err(&dsi->dev, "Failed to disable panel: %d\n", ret);
--
--	ret = drm_panel_unprepare(&ctx->panel);
--	if (ret < 0)
--		dev_err(&dsi->dev, "Failed to unprepare panel: %d\n", ret);
--}
--
- static void hx8394_remove(struct mipi_dsi_device *dsi)
- {
- 	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
- 	int ret;
++static enum drm_panel_orientation hx8394_get_orientation(struct drm_panel *panel)
++{
++	struct hx8394 *ctx = panel_to_hx8394(panel);
++
++	return ctx->orientation;
++}
++
+ static const struct drm_panel_funcs hx8394_drm_funcs = {
+ 	.disable   = hx8394_disable,
+ 	.unprepare = hx8394_unprepare,
+ 	.prepare   = hx8394_prepare,
+ 	.enable	   = hx8394_enable,
+ 	.get_modes = hx8394_get_modes,
++	.get_orientation = hx8394_get_orientation,
+ };
  
--	hx8394_shutdown(dsi);
--
- 	ret = mipi_dsi_detach(dsi);
- 	if (ret < 0)
- 		dev_err(&dsi->dev, "Failed to detach from DSI host: %d\n", ret);
-@@ -427,7 +411,6 @@ MODULE_DEVICE_TABLE(of, hx8394_of_match);
- static struct mipi_dsi_driver hx8394_driver = {
- 	.probe	= hx8394_probe,
- 	.remove = hx8394_remove,
--	.shutdown = hx8394_shutdown,
- 	.driver = {
- 		.name = DRV_NAME,
- 		.of_match_table = hx8394_of_match,
+ static int hx8394_probe(struct mipi_dsi_device *dsi)
+@@ -347,6 +356,12 @@ static int hx8394_probe(struct mipi_dsi_device *dsi)
+ 		return dev_err_probe(dev, PTR_ERR(ctx->reset_gpio),
+ 				     "Failed to get reset gpio\n");
+ 
++	ret = of_drm_get_panel_orientation(dev->of_node, &ctx->orientation);
++	if (ret < 0) {
++		dev_err(dev, "%pOF: failed to get orientation %d\n", dev->of_node, ret);
++		return ret;
++	}
++
+ 	mipi_dsi_set_drvdata(dsi, ctx);
+ 
+ 	ctx->dev = dev;
 -- 
 2.34.1
 
