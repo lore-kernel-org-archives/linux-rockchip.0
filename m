@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FB5C10DC1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 15:36:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DEDC10F05
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 15:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IXxXkPjWNQs/qpqrem73CbZofxlBBDNPZvjGfoJuk7E=; b=R6NJsHGlwkbU/O
-	es6dOQkOEq8Ewv4jbs7WKM0k3Mbod2KSocErgvwVBUcmVJcSRIo5Z3TrH9j4tw+IU7ejru5TqDG0M
-	qenKARXqbm7p66NDGBBQW2uIxS75p1GBRu+LhZ3UCz01AeDi+17+59uMGXj43wwU1u2y6OmL4YVbN
-	MRRDD8QL8o4m04sDRiSwbB9u6qwFb9GETpOZBY/Tw5/79guewuvPSoH1X+nGnIkQ9e/3c5ZkpKXPW
-	8X95Ep2kmdOrkcse2re1Symu4llWG0oZnW2YZ6mxXuyWkf3dLfJmWQ6exhKUZf+UzSPdXzUfJkSgg
-	TbSfn+eO4sqT6VQO1Jvw==;
+	List-Owner; bh=5m3GMeWD40M23570ivkeZZzwfsEkMN+YRgEeu9t4G2s=; b=FunBJIglRI5sqx
+	FZEhhJB15U8hFvMdu1Dm50JBgXARqaQrVzDZ0xMDgjiwXkEKzIOAkXe6MpuMG6KberBS757Dh3zrS
+	HdJtZLnSwt6oyNGu52mp6m6vReYLwTwFyZD4sJYF7sLHpBivfHxrbbxQSOuXP3XTc7rJAToR01V6J
+	EepwADrV2vORbHqOQXTbZEvLQ4yBqA0MQQgK4nkWDc83MKLMA1jsaDDGI3mE4B85P9/uGZ1wulg9V
+	Va2uzJ8c2W24duCwY+grNBAvpydb907jMALK8rEdKSNRb1wKxBWLjCZtvZRwbr/J/o6Y+rfHc4HmB
+	QhlDWwe3OTtXZU/VTa7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAzM-004yQX-1k;
-	Mon, 04 Dec 2023 15:36:04 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1rAAzO-004yRr-3B;
+	Mon, 04 Dec 2023 15:36:06 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAzG-004yNr-22;
-	Mon, 04 Dec 2023 15:36:00 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-50be4f03b06so2283260e87.0;
-        Mon, 04 Dec 2023 07:35:57 -0800 (PST)
+	id 1rAAzI-004yNx-2c;
+	Mon, 04 Dec 2023 15:36:02 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-50bf898c43cso985283e87.1;
+        Mon, 04 Dec 2023 07:35:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701704156; x=1702308956; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1701704157; x=1702308957; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/JoGo3S5F18Eq5w0w9lKp48csF80CvWfgslipmXEQ2c=;
-        b=ZDcVJOhTaVzEvBqZMTieEEOD6VXwwKuBao4dlFB4dFh7jz8DNDEp/pfFEWSMDWisSZ
-         XmtC9xIRiY7l8i/PX+c1gR/Klwoh8xDEfpXqOQrogDhQFDsM/Uz9AmXeDRDHQ347AS/g
-         OV0PSKBXhLzHaUKVYjQLY3FlD8VyM8qsHYEgKoQw7GrvJoLMfuToiSdUoHmTHcrjgWlH
-         O0CLWsSm+TkL+s/MeThEAG9t+dhfAwxsroKE9+Q4BCqCT4h3tPHLvbTGfm6oew6QR87d
-         +YgEJAFBuOupzx4d/0GLeiNNEy5IOnPTZ4Y6vU4Ly502eR21rjmvi8vwPl6qm6f1QEj9
-         Mj0A==
+        bh=Q0MUcVwcu9FCifO7HjzlwPMDhi7mDLRFD1pK6+mohtM=;
+        b=kdDgwWaY/pEzarfmjlimOLWqSaPIuJXpJXVNq+0GoOmL4yMjyxdpfJZR7PJUGS5PjN
+         oXE6aOTxaSDXEHmEO1VnR4D3UYCHUdYnxL7KZiw2U38OJyT5GeHCD6kKb3PEHX/Uwn5Q
+         0VCY5aXQ/sXrKW/VryNWV5wdutNqehrqgSIKPdEYvv9w3E3BFgMgbFAcGUvOLShpvMPP
+         QJcbCA0lnxIZRd3WaZ4/VsPrCvkkP33//Yj6b8jzjmLdpQ1by+Ka3T3xIp34XtHmCGfM
+         lqebk9O1emAuXmUOhB6RBwTbamSWkGCXlPwIl9vEHP7NDDrsC5Ud2EegzkLnhcIKOEzs
+         esFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701704156; x=1702308956;
+        d=1e100.net; s=20230601; t=1701704157; x=1702308957;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/JoGo3S5F18Eq5w0w9lKp48csF80CvWfgslipmXEQ2c=;
-        b=Tp1HK1y6lOV3J+8SoMqW4bKqBzLZ/cxDDZZTV46u/SRuRioD1Zh5grvtuJMAgXOPLn
-         FUm+v5br63YEA48pwB/eeMpM3Q3QmzKZnvXqjL1d4jICKJDF2G3ND7Kl7eTYmVbHNWzZ
-         7nTJyMrQHf+JREW7QNjx7e0s7L/xhyak0r38dYmYvOLr0pisYtELA6OPr9IwmwVQcBap
-         D/rcjA0XYb/ixziy9WtgIi82uUeVql9+azECJoWSKMyEXv8U8sU87CPRj/y8CnpS5B8y
-         9B/aiIymbvKmpp2fTIoHymx/0t5wwHcJ0r9kUyGaEBi2D7Pt5eA0jfTeDgIWPwy8NFhu
-         24Zg==
-X-Gm-Message-State: AOJu0YxcpjQ9NOuqsDSLqqC/RRGF3wKBy858Mgj2TBUfzNxW8RwG+gp6
-	FqFvOB6KEsdV4rWK5yWcbA==
-X-Google-Smtp-Source: AGHT+IFeR1c6fEMTNf73omsuIShEqHPdSRkJR+GEECA6voE9/MXpZsqiF0j631q2/HOWTWd/oPU3kQ==
-X-Received: by 2002:ac2:546d:0:b0:50b:c977:106a with SMTP id e13-20020ac2546d000000b0050bc977106amr1765730lfn.51.1701704155343;
-        Mon, 04 Dec 2023 07:35:55 -0800 (PST)
+        bh=Q0MUcVwcu9FCifO7HjzlwPMDhi7mDLRFD1pK6+mohtM=;
+        b=NbHccim4qAJLxL4OTpxEsGczVcwTn7A7+eZIQY1yiTTVhfRZtlRXQ2EIGlCsmD6lgS
+         XS11jFGRQ0LWuiT/AgmZsIK3SHphMJyLRa1AqU3+i7E92OnE0HW2cYqwipZEwO12WiHD
+         wpiG31V46BeVEle8kXFsW4DmfZl+YbovWsZ930FIqrulutNfl0nGrzDJN2qg20TRBufM
+         P2ZPDWQjjNzAST6yG1W4x8e+N8pubS3EzLZiI9l5/5iDFP28+wqPg4cvnobj5cx2BhL8
+         6GdO0NKkGOUguDcnDtxBuFFMOHR8CxqGrPacL7lyBQKmhSIq0HYhIf7d3Gm03+kfH2UI
+         IDsg==
+X-Gm-Message-State: AOJu0YwWm+KxeOna1UrDuMgFlQYpTyrmCQUTjrZ6WoQApfPY0pqplKyJ
+	IhLPBspyUUhT2C1p/CfXvg==
+X-Google-Smtp-Source: AGHT+IF3udiFN47bfrHu8XfBAJHpEV9pshrnM6X3NzNLynr7EilRiSdLH07zmbztsogo8QQSppXbUg==
+X-Received: by 2002:a05:6512:281c:b0:50b:f9b2:d00 with SMTP id cf28-20020a056512281c00b0050bf9b20d00mr480709lfb.22.1701704156886;
+        Mon, 04 Dec 2023 07:35:56 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:55ff:210b:5393:c9d7])
-        by smtp.gmail.com with ESMTPSA id h20-20020a05640250d400b0054c77ac01f4sm693194edb.51.2023.12.04.07.35.54
+        by smtp.gmail.com with ESMTPSA id h20-20020a05640250d400b0054c77ac01f4sm693194edb.51.2023.12.04.07.35.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Dec 2023 07:35:55 -0800 (PST)
+        Mon, 04 Dec 2023 07:35:56 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -71,16 +71,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 1/3] ARM: dts: rockchip: Add power-controller for RK3128
-Date: Mon,  4 Dec 2023 16:35:45 +0100
-Message-ID: <20231204153547.97877-2-knaerzche@gmail.com>
+Subject: [PATCH v3 3/3] ARM: dts: rockchip: Enable GPU for XPI-3128
+Date: Mon,  4 Dec 2023 16:35:47 +0100
+Message-ID: <20231204153547.97877-4-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231204153547.97877-1-knaerzche@gmail.com>
 References: <20231204153547.97877-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_073558_690551_CE79B2C0 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20231204_073600_845713_C2BA44C2 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,120 +97,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add power controller and qos nodes for RK3128 in order to use
-them as powerdomains.
+Add the supply and enable gpu node for XPI-3128 board.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 88 ++++++++++++++++++++++++++
- 1 file changed, 88 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index c0c9f0eaffa3..0676d8b22a1e 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/power/rk3128-power.h>
+diff --git a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+index e979425f11a0..de497f6e9456 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
++++ b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+@@ -328,6 +328,11 @@ &gpio3 {
+ 			  "", "", "", "";
+ };
  
- / {
- 	compatible = "rockchip,rk3128";
-@@ -133,6 +134,93 @@ smp-sram@0 {
- 	pmu: syscon@100a0000 {
- 		compatible = "rockchip,rk3128-pmu", "syscon", "simple-mfd";
- 		reg = <0x100a0000 0x1000>;
++&gpu {
++	mali-supply = <&vdd_log>;
++	status = "okay";
++};
 +
-+		power: power-controller {
-+			compatible = "rockchip,rk3128-power-controller";
-+			#power-domain-cells = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			power-domain@RK3128_PD_VIO {
-+				reg = <RK3128_PD_VIO>;
-+				clocks = <&cru ACLK_CIF>,
-+					 <&cru HCLK_CIF>,
-+					 <&cru DCLK_EBC>,
-+					 <&cru HCLK_EBC>,
-+					 <&cru ACLK_IEP>,
-+					 <&cru HCLK_IEP>,
-+					 <&cru ACLK_LCDC0>,
-+					 <&cru HCLK_LCDC0>,
-+					 <&cru PCLK_MIPI>,
-+					 <&cru ACLK_RGA>,
-+					 <&cru HCLK_RGA>,
-+					 <&cru ACLK_VIO0>,
-+					 <&cru ACLK_VIO1>,
-+					 <&cru HCLK_VIO>,
-+					 <&cru HCLK_VIO_H2P>,
-+					 <&cru DCLK_VOP>,
-+					 <&cru SCLK_VOP>;
-+				pm_qos = <&qos_ebc>,
-+					 <&qos_iep>,
-+					 <&qos_lcdc>,
-+					 <&qos_rga>,
-+					 <&qos_vip>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3128_PD_VIDEO {
-+				reg = <RK3128_PD_VIDEO>;
-+				clocks = <&cru ACLK_VDPU>,
-+					 <&cru HCLK_VDPU>,
-+					 <&cru ACLK_VEPU>,
-+					 <&cru HCLK_VEPU>,
-+					 <&cru SCLK_HEVC_CORE>;
-+				pm_qos = <&qos_vpu>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3128_PD_GPU {
-+				reg = <RK3128_PD_GPU>;
-+				clocks = <&cru ACLK_GPU>;
-+				pm_qos = <&qos_gpu>;
-+				#power-domain-cells = <0>;
-+			};
-+		};
-+	};
-+
-+	qos_gpu: qos@1012d000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012d000 0x20>;
-+	};
-+
-+	qos_vpu: qos@1012e000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012e000 0x20>;
-+	};
-+
-+	qos_rga: qos@1012f000 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f000 0x20>;
-+	};
-+
-+	qos_ebc: qos@1012f080 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f080 0x20>;
-+	};
-+
-+	qos_iep: qos@1012f100 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f100 0x20>;
-+	};
-+
-+	qos_lcdc: qos@1012f180 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f180 0x20>;
-+	};
-+
-+	qos_vip: qos@1012f200 {
-+		compatible = "rockchip,rk3128-qos", "syscon";
-+		reg = <0x1012f200 0x20>;
- 	};
- 
- 	gic: interrupt-controller@10139000 {
+ &mdio {
+ 	phy0: ethernet-phy@1 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
 2.43.0
 
