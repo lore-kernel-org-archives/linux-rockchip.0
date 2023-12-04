@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEFA2C46CA3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 18:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C60C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 18:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9vRjsKY3wEs2kQ70Q84Rm2HZdBX0gJJqoHN8KOB1aG4=; b=nIsJjLh20XaLOM
-	PEkt1rUbbcug+Vx3Uzb7NHZKcU+l3Fj82gu/9Qy0XByEl/N9kp8JE+d8dQV8uUBrem3zYwC88qs7u
-	GefWlHkB7ACCHtJqDGCVWU0Y1E64BgqKC15XpV30JFBcDKkWJUm8GReVYnsndiWvw7OVmcljdu+im
-	P8U3WFpoVHBeyg2rRbRnxnrEoKYRkmaj40GDZRVY+y2/1/wv3w2AZZ156VHGJht+uT9cSD25ax7WH
-	sn41fjYp8WJZrN8PzK0uc5CfsW+/de1Kt7Vg4jWr/mtSKBf5W7M3eTOJaZR4KMRGlUbvnk3N3sRZw
-	JHAbQBIq1QuaAbqJ4V4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1h21/2KMjnvkkDGyFST0HR2U0dXeWL9+YSjWgbwHvno=; b=DWXSF9QID7N6pg
+	hSBTOn/72moMsu/WWxkdZeqvv6bNjQ52/WTTVWDs+nwOlB4X/aERujknuhUi+M1jqxxBHu6B//V3V
+	ITOizk1Kg6KAaSrZyeYVBU7CwXAyUNGjdrs4OYLLTgmUu9DWGiLuQh239GNabBkFNESmMoqjToWVa
+	bry8b/TlEzSU7MfRv2pJiv18oZz1tjGrdUpas+ugw9gYe9Km0Fkt20NqRZfWlZGJlk2OtnOWfWnA4
+	bjob7SESuqx1+1bxmOLXhd33jcaGsigUL18gqNP7PV3V5ll5cSUbhoOqvXRtt2UIQrQrFH0jiT3eX
+	EnKtyZTmWaJ7q/mvghIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAE8I-005NnQ-2f;
-	Mon, 04 Dec 2023 18:57:30 +0000
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
+	id 1rAE8N-005Nrd-23;
+	Mon, 04 Dec 2023 18:57:35 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAE8E-005NlO-2o
+	id 1rAE8G-005Nm4-1a
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Dec 2023 18:57:28 +0000
-Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-58cf894544cso3215483eaf.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 10:57:26 -0800 (PST)
+	Mon, 04 Dec 2023 18:57:30 +0000
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-6d8ba6c9b4bso1218749a34.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 10:57:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701716245; x=1702321045; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=m3EZHczOx7koya72sYXSi8rdiO9yIL2IVq+1IfTnxCg=;
-        b=c6TFefS1Clf0vvDEhsRq69rzzupDbdSm4lLrBVs2lGQqQO80A/KVx07Q14Lgn8n6P9
-         M0sBRP9+WGMUhs+PrrXlDySXeNRwUHkBN+XhHl/r/pGynZPR0mYZgpBk8wKOfW4rK5vE
-         HIlwo66OtVsIClJRaP3wVzbxu8IKy7f65P1V9t7+Et34yVxcpVDkn8TpoYqLwUhJ7fK7
-         pNZOXESCwuPlOW3wApirabSzh1lqsT6u4CLr1h6qZrHFfdKuz7tfcr6Awv9uQk3FvVUm
-         ZZ+Ax+WsGllmrWxT7kXDBv3CqeLk2G4jpamCg5bv9xma/O9wpSUj8sPN4OJciqhl3cWS
-         Uoaw==
+        d=gmail.com; s=20230601; t=1701716247; x=1702321047; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pRNLoGhO2BMO9ciLNfM1W1rhqOoDcDjvlbAJTebh+yo=;
+        b=VjZDIJWCvMc7rW2RuiI98BLNm9MoN4h6sp3jBKxZUydgLU3NamE/UXuhM7BRbxnmsK
+         rAm/hUdZq5lhczufoM3FyCbjkxyzAROFKR25wWO+Db+vmQXpQCL5VF1kkwUnSj4hb8SP
+         /pGdDI7ZsptRsSxX8XBRQLajo+adbj5EdWlfHf5a0MMTYbUCJF+1ZxQVjJvx5foD7vF4
+         HHpASNXtrvYgdEWfQR/54H+8oQ4my+csROPFhKpJdQ2ls4DjwiuJDcArcqeoD9NNNPda
+         sCxdfAT/TbHx9Zs4LW+fFi0FHI/IbYiCBZeUCuqIqtAKPXqhIveTPh08es8FwF4T8qx9
+         rIfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701716245; x=1702321045;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=m3EZHczOx7koya72sYXSi8rdiO9yIL2IVq+1IfTnxCg=;
-        b=TKqgoiDYTnbRJ4K7FdV4BbJHXiRmf3KKz04BNdv6NUYgRYSl4KBVtoUzMxkEzJJAxm
-         2QGzbW10UOeEBO8JqOML2fZwRWfBr/pdQpmbsAOz9Wnv4OKrF7i0Psyg26asYR4jv1G+
-         ymY3qJANU9PFAuTNXLVQhIc4vCLhK4dKt7NhnOzUr8OlHrmxO85obx0MYyHGiEzyZazc
-         vv+NDriCgpeN9KydOPAlygUC7UU2rPcfie4B3t+c7b7mG+xkCXCRDhl1WiBiegWEScre
-         RQQh88lOIdeF3jX6bUm1KQn2z0haGSUbpJ6HE3p5nbjGNNMH9YEPmW2HnD1iPVxYfid3
-         IGyw==
-X-Gm-Message-State: AOJu0YwqckRPFHaPprDvsaHZaxHkHJuOxorc7hBW+5VO7IVJ042gcgiQ
-	qg2gApJTwzmzKbz9bok0I08OVtCv5lM=
-X-Google-Smtp-Source: AGHT+IGsVHwRrAfqq4xLIPsN5oERcixtArTe5wxe1Vzbkpi/n7S980Z81B1TUUr2Z5wVehMBXeBH3Q==
-X-Received: by 2002:a05:6820:2c03:b0:58e:1c47:76c7 with SMTP id dw3-20020a0568202c0300b0058e1c4776c7mr3120244oob.19.1701716245016;
-        Mon, 04 Dec 2023 10:57:25 -0800 (PST)
+        d=1e100.net; s=20230601; t=1701716247; x=1702321047;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pRNLoGhO2BMO9ciLNfM1W1rhqOoDcDjvlbAJTebh+yo=;
+        b=ILMWZwNueJ1xZwSSR4pqO0e0m9lsd+Mnbs/C6cPORuF2v3bBMYVbIWro8al2FcNcFQ
+         2RUaHKX5ay4kVrw36jHpBKcN86eV2fOkc/s+uV8wGkVyZ2hC+RZ3DqXt5Ls7mt4mrdjI
+         jCogu2WM3UfLMkCRJk1qBZZMu3oCu4hFMaVIcVY5573QSPM5Qal/oZn5RIopJ+avq3PU
+         U2Op5CqR6pLgDGPXD4jajd8JnlHKMZceFCqQp8kUjdlRFKh+qACZ4edaIFXFOgIaLV/A
+         x09IuXuHTvMwxbigmSumm4MKShFQ8vwhcPeXDZ2y6mOmKdKHogGCj895RR30DbcSe5hT
+         9zFA==
+X-Gm-Message-State: AOJu0Yzoqz0kaW4ky6EfmiFVQ1K2qsnOXjNyCk5HJMtbVOjDDCWego5u
+	Tv5nSV/dmekI/q2HX2Kn17LzXkMyqJI=
+X-Google-Smtp-Source: AGHT+IHcWm1h1Em1kIkk/o+9cIGFYSuJffLp9RQVhcgIZgRMRwVf1HJ4lBuXR12rytbhyYdoJFAN0w==
+X-Received: by 2002:a05:6830:1283:b0:6d8:7eb4:ca7d with SMTP id z3-20020a056830128300b006d87eb4ca7dmr2963949otp.54.1701716247207;
+        Mon, 04 Dec 2023 10:57:27 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id y25-20020a4a2d19000000b00581fc1af0a7sm2073303ooy.28.2023.12.04.10.57.24
+        by smtp.gmail.com with ESMTPSA id y25-20020a4a2d19000000b00581fc1af0a7sm2073303ooy.28.2023.12.04.10.57.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Dec 2023 10:57:24 -0800 (PST)
+        Mon, 04 Dec 2023 10:57:27 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -82,15 +83,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 00/10] rockchip: Add Powkiddy X55
-Date: Mon,  4 Dec 2023 12:57:09 -0600
-Message-Id: <20231204185719.569021-1-macroalpha82@gmail.com>
+Subject: [PATCH V2 02/10] drm/panel: himax-hx8394: Drop shutdown logic
+Date: Mon,  4 Dec 2023 12:57:11 -0600
+Message-Id: <20231204185719.569021-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231204185719.569021-1-macroalpha82@gmail.com>
+References: <20231204185719.569021-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_105726_906852_9EDFB850 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231204_105728_822614_E2273E00 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,37 +111,55 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
-console.
+The driver shutdown is duplicate as it calls drm_unprepare and
+drm_disable which are called anyway when associated drivers are
+shutdown/removed.
 
-Changes since V1:
- - Corrected a bug with the DRM mode flags for the video driver.
- - Adjusted panel front and back porch and pixel clock to fix
-   issues with display that occurred after correcting DRM mode
-   flag bug.
- - Add a new clk frequency for PLL_VPLL to get panel to run at ~60hz.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/gpu/drm/panel/panel-himax-hx8394.c | 17 -----------------
+ 1 file changed, 17 deletions(-)
 
-Chris Morgan (10):
-  drm/panel: himax-hx8394: Drop prepare/unprepare tracking
-  drm/panel: himax-hx8394: Drop shutdown logic
-  dt-bindings: display: Document Himax HX8394 panel rotation
-  drm/panel: himax-hx8394: Add Panel Rotation Support
-  dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
-  drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
-  clk: rockchip: Mark pclk_usb as critical on rk3568
-  clk: rockchip: rk3568: Add PLL rate for 126.4MHz
-  dt-bindings: arm: rockchip: Add Powkiddy X55
-  arm64: dts: rockchip: Add Powkiddy X55
-
- .../devicetree/bindings/arm/rockchip.yaml     |   1 +
- .../bindings/display/panel/himax,hx8394.yaml  |   3 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3566-powkiddy-x55.dts | 926 ++++++++++++++++++
- drivers/clk/rockchip/clk-rk3568.c             |   2 +
- drivers/gpu/drm/panel/panel-himax-hx8394.c    | 180 +++-
- 6 files changed, 1085 insertions(+), 28 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
-
+diff --git a/drivers/gpu/drm/panel/panel-himax-hx8394.c b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+index 3823ff388b96..d8e590d5e1da 100644
+--- a/drivers/gpu/drm/panel/panel-himax-hx8394.c
++++ b/drivers/gpu/drm/panel/panel-himax-hx8394.c
+@@ -390,27 +390,11 @@ static int hx8394_probe(struct mipi_dsi_device *dsi)
+ 	return 0;
+ }
+ 
+-static void hx8394_shutdown(struct mipi_dsi_device *dsi)
+-{
+-	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
+-	int ret;
+-
+-	ret = drm_panel_disable(&ctx->panel);
+-	if (ret < 0)
+-		dev_err(&dsi->dev, "Failed to disable panel: %d\n", ret);
+-
+-	ret = drm_panel_unprepare(&ctx->panel);
+-	if (ret < 0)
+-		dev_err(&dsi->dev, "Failed to unprepare panel: %d\n", ret);
+-}
+-
+ static void hx8394_remove(struct mipi_dsi_device *dsi)
+ {
+ 	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
+ 	int ret;
+ 
+-	hx8394_shutdown(dsi);
+-
+ 	ret = mipi_dsi_detach(dsi);
+ 	if (ret < 0)
+ 		dev_err(&dsi->dev, "Failed to detach from DSI host: %d\n", ret);
+@@ -427,7 +411,6 @@ MODULE_DEVICE_TABLE(of, hx8394_of_match);
+ static struct mipi_dsi_driver hx8394_driver = {
+ 	.probe	= hx8394_probe,
+ 	.remove = hx8394_remove,
+-	.shutdown = hx8394_shutdown,
+ 	.driver = {
+ 		.name = DRV_NAME,
+ 		.of_match_table = hx8394_of_match,
 -- 
 2.34.1
 
