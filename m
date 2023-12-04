@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61C8C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 15:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ADA3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Dec 2023 15:16:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8kly2bY6Sdd5afNClPM2mMV3lXRWZgUxAcq399mGhEY=; b=DXdW8CgST4Wfbk
-	OQ/NO/kcr1jXZuiPaSgLghxrnHDH4YmKbw8/ZfpkjwY33XmLc4uhQHhxLpgPb5HjelWtDWQT5vL2U
-	Jaev9zacoTqahuoLyyw8FzOHVpuWiqJQlWDhc7FM5b81lYZlxdS+wvSJju5jh6l1qJW/PLSVi5+q1
-	wZTGXpCB2DSGfQfqgi3Muz965xL6WTqxeorrlaMRA6eH2mrTMvQ1SYpY6dqWSNg5P1Ouu/iDAMJrs
-	fJblv4X3H+7G5KjjnuGKyZY/4ti0WzPeg8HYNu5YbccGTkrOmF/nZaUxkrQtntgx++r5otGPSC+wN
-	TgYbUK8mBOF1vZt53pIg==;
+	List-Owner; bh=M8HGt2HuJjK3ne1h/nWlo0jCwOnhqqTqf8AKKussPqU=; b=VB/5UzqXmiLNqC
+	m1mpCB3jIIwh0xC+2H27yM9ShM1rfNbTk6AaYHviTRqbAnuBegJr/nkg/6k4lpVfyi2e438Sd+bXb
+	cpTpCQlJMSOh1a55n9BYCizGCZoxnFU3djoLAKVbqIKJCIUjUlbmas3nkTNFJMW9+lshCY+lLSKQd
+	r8wYJK/Uo8589jpkEreT5GS3izM5x9q0mWUunY0oo+UQYQJ94VE8zL9rVZ4EDzpsHEa90JguuDNY1
+	GO71mOmufOHSv63fOXXIKvc5mhdxDjwzVEk+CEfG5Vpe1GVT+lmXhZD3MQekdGYAjOA68RP2t/z+I
+	kKAOURAAYw5WwKb5IkjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAc9-004uld-1b;
-	Mon, 04 Dec 2023 15:12:05 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1rAAg2-004vJC-2R;
+	Mon, 04 Dec 2023 15:16:06 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAAc7-004ui6-0h
+	id 1rAAg0-004vHl-0I
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Dec 2023 15:12:04 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-548ce39b101so5752111a12.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 07:11:53 -0800 (PST)
+	Mon, 04 Dec 2023 15:16:05 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-5482df11e73so5888467a12.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 07:16:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701702712; x=1702307512; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701702961; x=1702307761; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=fj/U4Ee0ha9ecM/kqN/WX+JrPkr7sXcgsAEI1J8oel0=;
-        b=JVfd1VKO5ooKTt0HiYm80gHsUH4t5vJY3Gyz0e3VRFvlpwxIx8BRSY+g/w8MpTJR5T
-         Sqof+4Swsk15hutjp364Un2+65xblOXA70FHPw4UNhKaGSf93NS6T39BvpyGSl8GVHx2
-         tZuwKdF0puCG3xIj19a5gJd3u3BIAJTA9uLsKcSwROl+KC0Oc0odxZPQgnlCLxrrXOtk
-         jCu10Y4B0sUJt4Qw7lm2kxKwEdeORY13Wt0vpI0a+1L4JjDMR90MisjbZQt6qCfiU5vW
-         VhHqh326nQxOjOs6oahyLHCgUoFFCTMLaS9KJFhXv0PdfPa916TdefmdgFiTAdiqIKeI
-         0jWw==
+        bh=MjrwjOw3+Tvjb8hNRyq77ryL3bFdg6Z++NUlWXD9Q9o=;
+        b=jCJ14AUeDKOjBTMrfgWo3UKpfQGCXZkcoaLS9Mix+zsxO9HqFR/vnkfdYfIVDgt72N
+         YEmv9j0eI1CcU5j9qMAD8yUNQecOpcgo1vhZmdYMWcWXmTQOcR1tWGjeNssZxLLN/T2t
+         lOpUCzCpM5i0WAj9ThC1O5NFU4c0sEHfLxz8FF6Tox8lCv7hFuq2jRWEtx4d0iOKMf3B
+         Rg1HlvOp0e0zGksPrgfjUlLe149bOO+QwQ10JQibM4hRVBY7P2H9dFB5wL6j77GM+uLX
+         aso+NxC5elb/3SxPZHhV2avCSGNjXuoQxwI+TvjX9Q9YjC8n0Jsxc5A322JyULxe28ip
+         nxuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701702712; x=1702307512;
+        d=1e100.net; s=20230601; t=1701702961; x=1702307761;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fj/U4Ee0ha9ecM/kqN/WX+JrPkr7sXcgsAEI1J8oel0=;
-        b=jVkNoXkGzvBTQX7cItqqhyrC/XUnQr+isnzjkfIuS9o2zieHs8Z9SW4MUcYI7P4q/c
-         ck06bBIdx6wvRAqltA4eglpARwn1mkDJAyeD3Fmkd1EE5a8NoR7Fbia1fbMRmcbmUPXJ
-         UcQTq5fYovoyA5RCX48t4OK4/CA/pp2FtCGXjs53V7Zz4vNALB46w1TmWbvNbZ9eQhRY
-         fZwyKJIEWdEn9W30/MFU/KigkVoa+knZMzKEsM5Rgz7wIH8JyBOiMgs/zYYPChjp606E
-         2GD8TGdJfwLtI6SUYEbcBXTuGZDLjibrvJpR/JXERjW/gNIxsDwioo7W9Ua0xiE/NN4o
-         uhXw==
-X-Gm-Message-State: AOJu0Yxq6PrGaMxCA1NUqzF+DE6puYR/h/fw5N6OWV2rKI/V/yqxut+I
-	1QUNRxqJdjabaJxLLpIxfdZOlQ==
-X-Google-Smtp-Source: AGHT+IG9tDU+DoWVcDSJYLOuodBKau8uHbBBOz4h+aKQItRJRFZhSbFk7u6d1TczaHUrvUBGXMcFCg==
-X-Received: by 2002:a50:99c3:0:b0:54c:4837:7d31 with SMTP id n3-20020a5099c3000000b0054c48377d31mr2776178edb.112.1701702712247;
-        Mon, 04 Dec 2023 07:11:52 -0800 (PST)
+        bh=MjrwjOw3+Tvjb8hNRyq77ryL3bFdg6Z++NUlWXD9Q9o=;
+        b=OR5lVLRNtB2IGXZp2ko/xDPGFgOssV625SCWEztGX15f1IMkeziAiL1KZ5PSL0cPVK
+         MoNhAVkxIirjbZ+ReY5OKR8I8l0uEunaYrVNLpt+GeR852DpzYxwX+jFF9iWt13kUwZg
+         3T/xaCHfTWUxr7xitLxA21XGiQYq4gaAKPVKFtW1th3ulKkxVj0BnQOOIM0/R+e1E+t8
+         5LKqaH4ItoNyJ7U7fePFZqiDxxodoFWPhjg2DxYKyDPhisu+bXEE7ts45FFBMbvfBB67
+         O42zeqyUWKe9QttLYiUVijNgpUle/thNEXriQfzm06ubuq5G0LmYWDbU/MRQFekke1/d
+         MdYw==
+X-Gm-Message-State: AOJu0YygPIR79Te1aO+o3m1xmVB6ajkbcOFrmvz/NjRdw89VW10qtppW
+	brPSDEwCGQSap4aUJUL4ffoqfA==
+X-Google-Smtp-Source: AGHT+IEKRsJzXfpna9qE8QVoubJOp+KbUZIo2KcojfZLAPpx5dd/lIUPv+MfGPNt+r7FzntZ1soLsQ==
+X-Received: by 2002:a17:907:508d:b0:a16:4edf:d5da with SMTP id fv13-20020a170907508d00b00a164edfd5damr2465422ejc.10.1701702960943;
+        Mon, 04 Dec 2023 07:16:00 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.109])
-        by smtp.gmail.com with ESMTPSA id ck5-20020a0564021c0500b0054c715008f5sm3249776edb.6.2023.12.04.07.11.49
+        by smtp.gmail.com with ESMTPSA id u23-20020a17090626d700b00a017da998bdsm5390585ejc.32.2023.12.04.07.15.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Dec 2023 07:11:51 -0800 (PST)
-Message-ID: <95bb3618-496d-4b55-a2f7-1b4200cbe420@linaro.org>
-Date: Mon, 4 Dec 2023 16:11:48 +0100
+        Mon, 04 Dec 2023 07:16:00 -0800 (PST)
+Message-ID: <1d6625f0-1c69-46ea-86d1-c4adabfeefad@linaro.org>
+Date: Mon, 4 Dec 2023 16:15:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] docs: dt-bindings: add DTS Coding Style document
+Subject: Re: [PATCH v4] docs: dt-bindings: add DTS Coding Style document
 Content-Language: en-US
 To: Dragan Simic <dsimic@manjaro.org>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -80,20 +80,18 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  Arnd Bergmann <arnd@arndb.de>, Bjorn Andersson <andersson@kernel.org>,
  Chen-Yu Tsai <wens@kernel.org>,
  Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>, Michal Simek <michal.simek@amd.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Nishanth Menon <nm@ti.com>,
+ Olof Johansson <olof@lixom.net>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <zajec5@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Konrad Dybcio <konradybcio@kernel.org>,
  Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
- <michal.simek@amd.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Nishanth Menon <nm@ti.com>, Olof Johansson <olof@lixom.net>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
  linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
  linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
  workflows@vger.kernel.org, linux-doc@vger.kernel.org
-References: <20231125184422.12315-1-krzysztof.kozlowski@linaro.org>
- <63ec18b2758a9e385f446fb00b60ee69@manjaro.org>
- <0bcc0679-b883-4435-8843-cc830122c0e1@linaro.org>
- <83b413441a953e8f2bc56adf09511a80@manjaro.org>
- <7021717e2e747b9c119b7c5091b60bdf@manjaro.org>
+References: <20231203174622.18402-1-krzysztof.kozlowski@linaro.org>
+ <2223b302fc43959a61578aae9cc3a15a@manjaro.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -139,11 +137,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <7021717e2e747b9c119b7c5091b60bdf@manjaro.org>
+In-Reply-To: <2223b302fc43959a61578aae9cc3a15a@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_071203_283428_08624CE7 
-X-CRM114-Status: UNSURE (   7.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231204_071604_134046_0F23B44C 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,14 +157,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 03/12/2023 21:12, Dragan Simic wrote:
-> Just a brief reminder about my suggestions below, which seemingly didn't 
-> find their way into the v4.  At least the first one, which improves the 
-> opening sentence, is worth including, IMHO.
+On 03/12/2023 21:25, Dragan Simic wrote:
+>> +Order of Properties in Device Node
+>> +----------------------------------
+>> +
+>> +The following order of properties in device nodes is preferred:
+>> +
+>> +1. compatible
+>> +2. reg
+>> +3. ranges
+>> +4. Standard/common properties (defined by common bindings, e.g. 
+>> without
+>> +   vendor-prefixes)
+>> +5. Vendor-specific properties
+>> +6. status (if applicable)
+>> +7. Child nodes, where each node is preceded with a blank line
 > 
+> Another small suggestion...  It would be good to put the property names 
+> found in the list items, such as "compatible" and "status", into 
+> quotation marks, to make it obvious what they are.  That way, the list 
+> would also be more consistent with the property names mentioned in the 
+> sentence right below.
 
-I applied almost all your suggestions, except few which I disagreed with
-in my replies.
+If there is going to be new version, I'll implement it. Otherwise it is
+pickiness over style, not content essence.
 
 Best regards,
 Krzysztof
