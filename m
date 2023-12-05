@@ -4,98 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FFAC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 08:23:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D523C10DC3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 08:27:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hHvcyAtlaGgxIF3LX4+Qrc+6w4heBXD+DvN1APrJjb0=; b=LlUSrfW7W5yL/X
-	lFI2AnwtYIpOH06mVomJBiBPAtYpGNwBJy8qTBm34j4jgZil1RHm/ZB+gWGrBIaA+3tlQ/mVIWqfe
-	ZIb4YdVkF9qYAE9eOk+z3Ac62T72nKBE8hg2yWRQvluKLCA4sugbotzKM3mPkPw0hj5WVTTfq31Y1
-	fyUXocB5cWStAMldqaq8HOBY2y4BggdD+dXk50Z9Hjk1HSFb90mlRMuXrzQsUj5KU0f6q24/H7aZn
-	WFrBb1/V5UmGvz5UjfzplyVtK5Z7tRkuo72RDDPErlQh467lybMlqUXtsFdCup7EEW2Eg7ENJcReJ
-	tv8qCMT2VWnr4dnhqg3w==;
+	List-Owner; bh=TX3pKT8n7sp9xXUn1iBC93rU7NqzVzYXBtsFEAaCtkk=; b=PfzZF1pG6SLifF
+	WyM0CGIHWUwezRezonxjUuezm+t7W4tB4rlJXpAZjZwyWNFvhfrMWGMuilwkG4hRugTbQFBsdbGgt
+	GxppRJnVBGbg9KrvmmUOqUHNESF/0IISq/1AhjIYf2Zv4Fw7xyzVgV25mJDNMQXF21o8Od9Bi0UXy
+	hXeMJbfsAhGr3PrB3iNnI77Z5w5/L940gfn7rsYQSxhpo/ICH1JJZYpgRwkMUlbKzaZ/k0ijxCe2k
+	8NxlsD8nLCzerP+HvHFJD4xZCCbkyOQTv/hvdYVWXAnv1qaxTd+k8fqFQ5Xa9GcMv0RC8FP0CEqUu
+	Er7lx5EVcQ0KZCFQaC7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQiB-006dgj-2B;
-	Tue, 05 Dec 2023 08:23:23 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rAQle-006e5a-2i;
+	Tue, 05 Dec 2023 08:26:58 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQi8-006dfu-1z
+	id 1rAQlb-006e51-1F
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 Dec 2023 08:23:22 +0000
-Received: from [192.168.88.20] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 77AF24DB;
-	Tue,  5 Dec 2023 09:22:39 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701764559;
-	bh=FNbGzntzDKA7canzaLCKBMd4BTg3n6zwsprqA4n4nG4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XWcbQacfZb73EdlZKbix6cWwp4d7veLqKeI0ADfaq8TZI16SG1RMnyYyCyvgqr/za
-	 +vIKOcQE+9yX/6V3cImj8DzMCUXH03XMxyxSb6NjGfhkUOQ2xtZdyIZb+7GHxt8uTV
-	 TnY0BnyaM6+yCUgzmdiDYS7bwY1RBIfiQ2EMbjAM=
-Message-ID: <161c5802-29c1-4907-a736-9cca955c49ad@ideasonboard.com>
-Date: Tue, 5 Dec 2023 10:23:18 +0200
+	Tue, 05 Dec 2023 08:26:57 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40c08af319cso26240795e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 05 Dec 2023 00:26:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701764813; x=1702369613; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2xo+/EwDShXw+0ErTm/Pk49sbvWBMtU3LMyMVMefHxA=;
+        b=exH/LODzPZdqUNT8Sxl9WENVBTDKb8GMsBHIlbwmyzBs27lfVesyc/vi7VXXHokFsJ
+         olRa8oFSMFhwCfI2U7j+lhtzeNl7KIVJTosgqwdMOALNlBuL6fhCoRJnVYkvLMbj+RBs
+         xronhPv5C0fWclUG5WeGseZ3/0iO7dAbxzlZLNmFBDKa1v50ALYpRn/lE6U9m8KPQTz1
+         rYMhdvldW910zYQfAXDVq1hP/ZlpsjvImFE70KKsbd46SJaPCLPgGKs/ctGvgetodWlL
+         bsELezFquX7m/FvgBeurS2INk1GcgS+N2l7PvO/71VtvXdQd7e+Ur4WokhgiW6cXL1os
+         WWMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701764813; x=1702369613;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2xo+/EwDShXw+0ErTm/Pk49sbvWBMtU3LMyMVMefHxA=;
+        b=eWLYDTsBfOrcfyuJ0JCXp7e+g8f3bB+vc3Aikx7tkA2FUehuLTlCedEyTplFvgxoxn
+         z3B8BauNTcZZPx1vgUZfNHpFQoV/clAvPQujeSoU85gKzwmud/hmV3Eq9/bylneRkL7T
+         86rTS3G3FRFWIbFyLAMQkQzaXdPG1nzP8hWJK9mcTvQsRKonRJRuxlBDkZSNh6Y/klGK
+         cxoY22RuoFyKMvrixNlOfPwDwrHmEU5KkuccQjZQLpp4fQGjFv0b3idDMCiYcNKL2ln2
+         8wTfK5MgmZj3ehK+DFXKYl4dBxt28wF6JTNtYELTExK5aNLqTNNDLYHNFGrvkHtt3klU
+         PLvw==
+X-Gm-Message-State: AOJu0YzN0TXjFrD984AZXiAI5rEkD+8BK5gYycmj/rRV2MNOBvWU/UEl
+	fG/CCxl6m5RvS7bEc7aaDC07IQ==
+X-Google-Smtp-Source: AGHT+IHm8d3BCfIGqE69y8jUoy6J3Kzb+QtEPPQ+oGlTFuH/rWCx6J2gokcJ9ngcoHN+c1BW732iPw==
+X-Received: by 2002:a05:600c:4655:b0:40b:5e1c:5c1f with SMTP id n21-20020a05600c465500b0040b5e1c5c1fmr234872wmo.52.1701764813586;
+        Tue, 05 Dec 2023 00:26:53 -0800 (PST)
+Received: from arrakeen.starnux.net ([2a01:e0a:982:cbb0:52eb:f6ff:feb3:451a])
+        by smtp.gmail.com with ESMTPSA id d4-20020a05600c3ac400b0040b538047b4sm21329282wms.3.2023.12.05.00.26.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Dec 2023 00:26:53 -0800 (PST)
+From: Neil Armstrong <neil.armstrong@linaro.org>
+To: linux-rockchip@lists.infradead.org, 
+ Chris Morgan <macroalpha82@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com, 
+ tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com, 
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, 
+ quic_jesszhan@quicinc.com, javierm@redhat.com, heiko@sntech.de, 
+ conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, 
+ Chris Morgan <macromorgan@hotmail.com>
+In-Reply-To: <20231204185719.569021-1-macroalpha82@gmail.com>
+References: <20231204185719.569021-1-macroalpha82@gmail.com>
+Subject: Re: [PATCH V2 00/10] rockchip: Add Powkiddy X55
+Message-Id: <170176481258.4073725.14793788958228896320.b4-ty@linaro.org>
+Date: Tue, 05 Dec 2023 09:26:52 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] media: rkisp1: Misc fixes and debug
-Content-Language: en-US
-To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Cc: laurent.pinchart@ideasonboard.com, kieran.bingham@ideasonboard.com,
- umang.jain@ideasonboard.com
-References: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
- 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
-In-Reply-To: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_002320_795029_47493459 
-X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-CacheID: sfid-20231205_002655_430203_8C82664A 
+X-CRM114-Status: UNSURE (   8.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,34 +94,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2023 16:04, Paul Elder wrote:
-> This series adds a small cleanup of the register definitions, as well as
-> some additions to the debug for the rkisp1 driver.
-> 
-> Paul Elder (4):
->    media: rkisp1: regs: Consolidate MI interrupt wrap fields
->    media: rkisp1: debug: Add register dump for IS
->    media: rkisp1: debug: Count completed frame interrupts
->    media: rkisp1: debug: Consolidate counter debugfs files
-> 
->   .../platform/rockchip/rkisp1/rkisp1-capture.c |  2 +
->   .../platform/rockchip/rkisp1/rkisp1-common.h  |  5 ++
->   .../platform/rockchip/rkisp1/rkisp1-debug.c   | 71 +++++++++++++------
->   .../platform/rockchip/rkisp1/rkisp1-isp.c     |  2 +
->   .../platform/rockchip/rkisp1/rkisp1-regs.h    |  9 +--
->   5 files changed, 60 insertions(+), 29 deletions(-)
-> 
+Hi,
 
-For the series, with or without the change I proposed for patch 4:
+On Mon, 04 Dec 2023 12:57:09 -0600, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
+> console.
+> 
+> Changes since V1:
+>  - Corrected a bug with the DRM mode flags for the video driver.
+>  - Adjusted panel front and back porch and pixel clock to fix
+>    issues with display that occurred after correcting DRM mode
+>    flag bug.
+>  - Add a new clk frequency for PLL_VPLL to get panel to run at ~60hz.
+> 
+> [...]
 
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Thanks, Applied to https://anongit.freedesktop.org/git/drm/drm-misc.git (drm-misc-next)
 
-  Tomi
+[01/10] drm/panel: himax-hx8394: Drop prepare/unprepare tracking
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=8c2c5d1d33f0725b7995f44f87a81311d13a441d
+[02/10] drm/panel: himax-hx8394: Drop shutdown logic
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=e4f53a4d921eba6187a2599cf184a3beeb604fe2
+[03/10] dt-bindings: display: Document Himax HX8394 panel rotation
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=be478bc7ab08127473ce9ed893378cc2a8762611
+[04/10] drm/panel: himax-hx8394: Add Panel Rotation Support
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=a695a5009c8fd239a98d98209489997ff5397d2b
+[05/10] dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=00830a0d8f0d820335e7beb26e251069d90f2574
+[06/10] drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
+        https://cgit.freedesktop.org/drm/drm-misc/commit/?id=38db985966d2f0f89f7e1891253489a16936fc5e
+[07/10] clk: rockchip: Mark pclk_usb as critical on rk3568
+        (no commit info)
+[08/10] clk: rockchip: rk3568: Add PLL rate for 126.4MHz
+        (no commit info)
+[09/10] dt-bindings: arm: rockchip: Add Powkiddy X55
+        (no commit info)
+[10/10] arm64: dts: rockchip: Add Powkiddy X55
+        (no commit info)
+
+-- 
+Neil
 
 
 _______________________________________________
