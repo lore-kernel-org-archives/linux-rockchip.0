@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF54C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 00:06:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000FCC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 00:06:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q8dH9Iib16upIf4rGkNyA41c+MwV6AMPZq8q6u9WJso=; b=i+Ac7Zl4OSq3bQ
-	CywaY0XzGBDtIYktEkqwS+lyxmzqjtVlLT5qN1M+rADAgeW3DwqbWSZ+EnGb5dCLAFB7LIYpGmD8G
-	wQUovxnXWtBM+mRys7AV7Xy41rGkc5CArDs7Ghbkh2vodulX+SpLsxMmNQlbskzlm+qFMC8krwA+z
-	J5jaIfh7GVAVXFdG/9bXA0i/blJXisLCAqKLfnsCh2KCJpLmAJ+/MNbnssl/G5qfm5/ZbH9WoCh9V
-	+QRPwp3bO1pJy6NizVw8r9p6XdSHCdT0zxcAOJhhJMvhZrg5nIteonTZ0TXcefOr4jSGIUB037Xly
-	Kjd09qVZgtZICwQIal4A==;
+	List-Owner; bh=QC7SHCQZVMpu63hMuoiYzW6JmQL3A38MkcKp91eOY0c=; b=qxhT627415DbXp
+	O4X2JkhhJSGivnqQFLLpqEY7J3I1yeEGGiwBtxcgNarl+PvggGakHZOZrpe+iYZgVvdsSp6dRJDP3
+	IW4OUyajl1NEyhuRBUfq7uK8UDyJGyNtlcSZOEiCpvqLXT0Z9ySbzsnBn7rLj3eRP2sc0m8j0GfqL
+	ktIo9zWVXQtryZWifaoVAACSAnhDaGMacicyw2h54IGxPs3YXCzqjnJARRjG87QpUOzL4iqX9wzc0
+	vqexve0Ll4K8fxT5TVsgMteRtVE0aWikSzg6t3i7yxuQCCcmh6m7QJOentc7IeRC+uS+E730QNbgY
+	3U4yAwsg2ANiUsJeMU3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAIx3-005qZU-0s;
-	Tue, 05 Dec 2023 00:06:13 +0000
+	id 1rAIx7-005qbL-2h;
+	Tue, 05 Dec 2023 00:06:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAIww-005qWy-28;
-	Tue, 05 Dec 2023 00:06:08 +0000
+	id 1rAIww-005qX0-28;
+	Tue, 05 Dec 2023 00:06:09 +0000
 Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rAIws-0001qb-Vk; Tue, 05 Dec 2023 01:06:03 +0100
+	id 1rAIwu-0001qb-BG; Tue, 05 Dec 2023 01:06:04 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Alex Bee <knaerzche@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+To: Tim Lunn <tim@feathertop.org>,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH 0/3] Move core bus and gpio aliases to SoC dtsi for RK3128
-Date: Tue,  5 Dec 2023 01:05:58 +0100
-Message-Id: <170173468934.501889.12474504620278418598.b4-ty@sntech.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-i2c@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: (subset) [PATCH v3 0/8] Add support for Sonoff iHost RV1126 Smart Home Gateway
+Date: Tue,  5 Dec 2023 01:06:01 +0100
+Message-Id: <170173468934.501889.1733383840975468730.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231202130506.66738-2-knaerzche@gmail.com>
-References: <20231202130506.66738-2-knaerzche@gmail.com>
+In-Reply-To: <20231203124004.2676174-1-tim@feathertop.org>
+References: <20231203124004.2676174-1-tim@feathertop.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_160606_921664_05ABFAD9 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20231204_160606_924141_F0F4CADC 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,26 +69,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2 Dec 2023 14:05:04 +0100, Alex Bee wrote:
-> Following up the recent discussion [0] about where aliases can be/should be
-> placed this series moves gpio, i2c and uart aliases to SoC dtsi for RK3128.
-> 
-> Note: This patches are based on maintainter's repo.
-> 
-> [0] https://lore.kernel.org/all/b0c637f5-5abf-420b-8b02-839eba68799e@linaro.org/T/#m94aebb23a29b015d94b250a70b675febdaa902ea
+On Sun, 3 Dec 2023 23:39:56 +1100, Tim Lunn wrote:
+> Sonoff iHost is gateway device designed to provide a Smart Home Hub,
+> most notably it includes builtin radios for Wifi, BT and Zigbee, which
+> make it suitable SBC for use with many of the open home automation
+> platforms. It is availabe in two versions, first is based on
+> Rockchip RV1126 and 4GB DDR4 RAM. There is a second version based off
+> the RV1109 dual core SoC and 2GB RAM.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
-      commit: 3b0422a4ce59d8afb84bd7516bf71a3c1caa7925
-[2/3] ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
-      commit: 39732a49803cf271454416341549df09c4a2fd2f
-
-I also applied patch 3 ... though had to pick it manually from the list
-as the subject was a bit garbled (missing 3/3), so b4 did not pick it up.
-
+[1/8] ARM: dts: rockchip: rv1126: Add alternate UART pins
+      commit: 86fd29b0329c95d4136a5dcef555287a0be8a038
+[2/8] ARM: dts: rockchip: rv1126: Serial aliases
+      commit: 30250a587bddb5265bceb9f8397c459f5cc04e0c
+[4/8] ARM: dts: rockchip: rv1126: Add i2c2 nodes
+      commit: 655ff5d45dc9de5e67c839af4baf47eaffed348f
+[5/8] ARM: dts: rockchip: rv1126: Split up rgmii1 pinctrl
+      commit: d3bab19c83c7ce24e89d9f08f09e596c39b14658
+[6/8] ARM: dts: rockchip: Add rv1109 SoC
+      commit: bd6f1b13b972caebf54be1fb3bc2eb9f47de9d63
+[7/8] ARM: dts: Add Sonoff iHost Smart Home Hub
+      commit: 0f385eea8157bcb36d30d9f96105251465bc6684
+[8/8] dt-bindings: arm: rockchip: Add Sonoff iHost
+      commit: 98feed126e7dcae617af3b0e76f50160806e3233
 
 Best regards,
 -- 
