@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A03DC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 20:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC2DC10F05
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 20:29:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zG5hUQLgyLbgZhP5rDtOGqNQKRdc5VqnHw/1ZO12xRw=; b=gzllyyYTOzpZ55
-	jfaeFotus+ewEPUoctR2gVw7/E9S56odVjXYWsgfBN6Z3StZMHzpI9CacftPYfv3axJNz0apuIcZ/
-	pbFx/RWCwgt3R9MUOu0byZNjE5trVxPvg+ffWQCjjU920IY4izs4F7mE4CcJEwkpptQp/YMWfZUhI
-	Qm1rBfgLJ9t30sC1WtDXoLoiaaanYQklStps4uyqFiqL7wl0QmHJn7io02LP5a6xGgA2wg3VZGrNY
-	FEJLbNdMgqzgX49udgiXvHhwzjfNulxlkamukyGIJEHHqGOcJT/rD8QU2yKdb4Ts+8TIYpVbyv4j+
-	vvV8zlrETUQrE5Gkl2JA==;
+	List-Owner; bh=z8z0W2P9VRNKu28uu6fFMcjzicuauklxTpJZdhuQGsg=; b=l5Ysil28lLp4RY
+	dvkTFVf3jTbnQebmIR4p6lTfVDlfGYsx53YfiPXXKazVm/C15OerOAvlt18Sfu/i9zOzxCTBbsbEw
+	vcpUjXQtF5M5dvdkaj5JAbHbMFYr+5I89lo6zhVFTlEhojhMga3b1ti+D6Gm2K8ezOQFn7dwnPnh/
+	Bas6bCC7LI6lAPwnY0ppF1V3pWpxLePx1SFuL/2MtS5GkPCU5lhScDGS6RFP2vI0gUuTRg7U/8MDw
+	WXdCoRJ7FYXwFlSu4JBKc6lboafS7UGTjb5s1cMOxdSYk6z8P+l2AMJxT8OKPUr7JZw29Q4NqRRLw
+	81s7dmB5r12R3uCzgayQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAc2i-008MzQ-2M;
-	Tue, 05 Dec 2023 20:29:20 +0000
-Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
+	id 1rAc2k-008Mzq-2F;
+	Tue, 05 Dec 2023 20:29:22 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAc2f-008My3-2G;
+	id 1rAc2g-008My4-1p;
 	Tue, 05 Dec 2023 20:29:19 +0000
-Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-35aa6107e9fso25319485ab.0;
-        Tue, 05 Dec 2023 12:29:13 -0800 (PST)
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-7b395a9b893so5418939f.0;
+        Tue, 05 Dec 2023 12:29:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701808153; x=1702412953; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1701808154; x=1702412954; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7MBM4ZA5oNd9/yj6ChXURBgLtdL7sP8s8g23+U8L60Y=;
-        b=UCR1982XNoBYaQxjHZM0RDGwRDGVZYnZvbQ1LKTTPjUrTtniz1/Evz1Jq6gmbwjUdU
-         Q6+G0SZjM3SLpPNGE19N3rOhGeqxGex6zm8I9epCZgeXpcRc/kfRWaf7r5LsOdQ0+/ZC
-         QEOuJs58u1GcCmAMRbEENq6QKYahTsJOb00g6d74Wy8gtQJFQwQikbvL68ByskYcMkRo
-         2unDHXg6gJqzRO8ZRTQSd4HJYOsAIzgnEqza4uRP/AqSfCjBVKX+9do0Jlg9QFfTGTXf
-         Zv9Z1naaTzYp5VF/iP6g7fbNdosxO0hI6iWZTvNCO0E5PJIS7WyvmHtdEApQ0Fu4CqkK
-         npOg==
+        bh=LYftztaNvPp9AiycXxFsDD/pusJZO5VD4GKLxnNaenc=;
+        b=Ww6qbe9P6PkasvavmIC6yO4KJ9c0TOI//30xMzfoPza4t/ymFEwTkKhih2N2zei4wi
+         a1EHTN3h2nVgLcIldI1JwbqyHzJND2UL31MGH+12g+j6tF4p9HxhuVTg1PsgagI2ZwoV
+         YH/ILPK9qlyeJwIHm/W9MtVVZWXu7ncgDff7kNAC9sUV+b5MYUn0DhIwR3YNipUzbIPV
+         d6bCj5vl90J8+QeiaGLFoT08BJoXQpKMyk6V8jvBA+jE3uuI3Qxnw+W0H+hI/U2871+9
+         xsZ9O3WhHfT8DZMcgMctIL9v+ZaUVcpaSzIGdQz8ym2FkHofPzX0aSDngUrmQtc+j93c
+         Cs8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701808153; x=1702412953;
+        d=1e100.net; s=20230601; t=1701808154; x=1702412954;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=7MBM4ZA5oNd9/yj6ChXURBgLtdL7sP8s8g23+U8L60Y=;
-        b=fhfG+i1HMHxtaPJZhu05JlR0uWby8soZn0F/wDAnio42PD3VjZ2/RqptefMUfb4ePg
-         zz6FtdaQ511+OUqmxwaLS2mMEfeR8Jwt/YMPN1CagzlIersMpnHrWVsG+sGC+svaM/dD
-         VTfDM+0YQnVFI2HYSnymOkkqDuPfk2dkleMsnRiZbMKWs7A7cSsPWO2RXMCb3phy0Sqn
-         NEJjsIn+EZJGvdRXYj+Xip3OwFfIl1JpCd+Wg6Tg9jHmnpY1ewc/bXRXxomVmDxoUXhe
-         lNhM3710uXlhB9HEQCYDKxEcrAGtCxs7JkRZppcGalUxg1UBjBtD9BtzfCULnF/UYqV8
-         zVSA==
-X-Gm-Message-State: AOJu0YyCLxp1986UV5Y7XGXVfH5IsaKfZqz5HRzD2KAY4Zg+/xq3M5zj
-	ciomirjc7G9SdtV3oWW9ny3DydbUCk0nSX+4
-X-Google-Smtp-Source: AGHT+IFSuXyE46UX/3konTQtWRnivgvUzbNkI7eysY6+/pVHYGf+RIpa/OB7avY+BS52+PvkyBGOcw==
-X-Received: by 2002:a05:6e02:1d12:b0:35c:f2f6:7b1b with SMTP id i18-20020a056e021d1200b0035cf2f67b1bmr7324672ila.26.1701808152987;
-        Tue, 05 Dec 2023 12:29:12 -0800 (PST)
+        bh=LYftztaNvPp9AiycXxFsDD/pusJZO5VD4GKLxnNaenc=;
+        b=Hr3AO/bnyYvXCpxL2MvJMsDE8omgyARHYrmOUXCcu3JUadZTbEqS9Nihu6gUfxNThN
+         r8LHDnEZGr70OiViRjWtzX1059LugT8UgPzVIivHn90+cLxuvqySxtMTR83L7a4kKNAj
+         8NF3vzTbP5tutg1AcFSADlEccsIIhNliMAxemVlqvXuqkImhJr4LZrP+oC4qtMPnCo0z
+         89oUZEQ4L/qeULKaXjyn7yLBwMbIcNeu/j8fiuNGG0YnuGL/GoRIZ/73wU83qhrJSa69
+         uvoY7Pt82z0KgIP3SgMv87jxBryoBJPHrGaJPk8dy6w324yhS7SMosI/S+CVquQLsTi4
+         WF9Q==
+X-Gm-Message-State: AOJu0YwtYtnKbhERgTsIKY0nLYEcIOPV/jjTpQa1z9GG9eBfFPjOXMw3
+	+fng1olfCFxHsw5Gr+wyGis=
+X-Google-Smtp-Source: AGHT+IEzCeN5Z1xrmFs3STXAJXiEKae3F1umsDm8OLaSSwygjahA5YJOSV+Flo2toG/hRrjDYvLSdg==
+X-Received: by 2002:a5d:8716:0:b0:7b3:9de6:695c with SMTP id u22-20020a5d8716000000b007b39de6695cmr1889441iom.7.1701808154136;
+        Tue, 05 Dec 2023 12:29:14 -0800 (PST)
 Received: from celestia.nettie.lan ([2001:470:42c4:101:3fb7:1e39:b284:286f])
-        by smtp.gmail.com with ESMTPSA id cw2-20020a05663849c200b004302370a169sm3296320jab.157.2023.12.05.12.29.12
+        by smtp.gmail.com with ESMTPSA id cw2-20020a05663849c200b004302370a169sm3296320jab.157.2023.12.05.12.29.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Dec 2023 12:29:12 -0800 (PST)
+        Tue, 05 Dec 2023 12:29:13 -0800 (PST)
 From: Sam Edwards <cfsworks@gmail.com>
 X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
@@ -72,14 +72,14 @@ Cc: linux-rockchip@lists.infradead.org,
 	Sven Rademakers <sven.rademakers@gmail.com>,
 	Joshua Riek <jjriek@verizon.net>,
 	Sam Edwards <CFSworks@gmail.com>
-Subject: [RESEND PATCH] arm64: dts: rockchip: Add PCIe pinctrls to Turing RK1
-Date: Tue,  5 Dec 2023 12:28:59 -0800
-Message-ID: <20231205202900.4617-1-CFSworks@gmail.com>
+Subject: [RESEND PATCH] arm64: dts: rockchip: Fix eMMC Data Strobe PD
+Date: Tue,  5 Dec 2023 12:29:00 -0800
+Message-ID: <20231205202900.4617-2-CFSworks@gmail.com>
 X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_122917_738776_32DD0678 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20231205_122918_603197_EC2ADEE8 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,68 +96,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 PCIe 3.0 controller seems to have unpredictable behavior when
-no CLKREQ/PERST/WAKE pins are configured in the pinmux. In particular, it
-will sometimes (varying between specific RK3588 chips, not over time) shut
-off the DBI block, and reads to this range will instead stall
-indefinitely.
+JEDEC standard JESD84-B51 defines the eMMC Data Strobe line, which is
+currently used only in HS400 mode, as a device->host clock signal that
+"is used only in read operation. The Data Strobe is always High-Z (not
+driven by the device and pulled down by RDS) or Driven Low in write
+operation, except during CRC status response." RDS is a pull-down
+resistor specified in the 10K-100K ohm range. Thus per the standard, the
+Data Strobe is always pulled to ground (by the eMMC and/or RDS) during
+write operations.
 
-When this happens, it will prevent Linux from booting altogether. The
-PCIe driver will stall the CPU core once it attempts to read the version
-information from the DBI range.
+Evidently, the eMMC host controller in the RK3588 considers an active
+voltage on the eMMC-DS line during a write to be an error.
 
-Fix this boot hang by adding the correct pinctrl configuration to the
-PCIe 3.0 device node, which is the proper thing to do anyway. While
-we're at it, also add the necessary configuration to the PCIe 2.0 node,
-which may or may not fix the equivalent problem over there -- but is the
-proper thing to do anyway. :)
+The default (i.e. hardware reset, and Rockchip BSP) behavior for the
+RK3588 is to activate the eMMC-DS pin's builtin pull-down. As a result,
+many RK3588 board designers do not bother adding a dedicated RDS
+resistor, instead relying on the RK3588's internal bias. The current
+devicetree, however, disables this bias (`pcfg_pull_none`), breaking
+HS400-mode writes for boards without a dedicated RDS, but with an eMMC
+chip that chooses to High-Z (instead of drive-low) the eMMC-DS line.
+(The Turing RK1 is one such board.)
 
-Fixes: 2806a69f3fef6 ("arm64: dts: rockchip: Add Turing RK1 SoM support")
+Fix this by changing the bias in the (common) emmc_data_strobe case to
+reflect the expected hardware/BSP behavior. This is unlikely to cause
+regressions elsewhere: the pull-down is only relevant for High-Z eMMCs,
+and if this is redundant with a (dedicated) RDS resistor, the effective
+result is only a lower resistance to ground -- where the range of
+tolerance is quite high. If it does, it's better fixed in the specific
+devicetrees.
+
+Fixes: d85f8a5c798d5 ("arm64: dts: rockchip: Add rk3588 pinctrl data")
 Signed-off-by: Sam Edwards <CFSworks@gmail.com>
 ---
- .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 9570b34aca2e..129f14dbd42f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -214,7 +214,7 @@ rgmii_phy: ethernet-phy@1 {
- &pcie2x1l1 {
- 	linux,pci-domain = <1>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie2_reset>;
-+	pinctrl-0 = <&pcie30x1m1_pins>;
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	status = "okay";
- };
-@@ -226,7 +226,7 @@ &pcie30phy {
- &pcie3x4 {
- 	linux,pci-domain = <0>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3_reset>;
-+	pinctrl-0 = <&pcie30x4m1_pins>;
- 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
-@@ -245,17 +245,7 @@ hym8563_int: hym8563-int {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+index 63151d9d2377..30db12c4fc82 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+@@ -369,7 +369,7 @@ emmc_cmd: emmc-cmd {
+ 		emmc_data_strobe: emmc-data-strobe {
+ 			rockchip,pins =
+ 				/* emmc_data_strobe */
+-				<2 RK_PA2 1 &pcfg_pull_none>;
++				<2 RK_PA2 1 &pcfg_pull_down>;
  		};
  	};
  
--	pcie2 {
--		pcie2_reset: pcie2-reset {
--			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--
- 	pcie3 {
--		pcie3_reset: pcie3-reset {
--			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--
- 		vcc3v3_pcie30_en: pcie3-reg {
- 			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
 -- 
 2.41.0
 
