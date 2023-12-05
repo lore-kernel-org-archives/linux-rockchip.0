@@ -4,112 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09EA2C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 08:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAAE3C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 09:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sdPosalwrskSPOUjz3gVXyfWi7dGj6211YDCR2CSY9Y=; b=W4LIfxKjsIQAq/
-	XPDHjbB5EqN9+tSxRR/h7MMeqKTe2r/4Y5uoRmohTgR7E4iy9e4zzUTHhCEbKG36IUfjKjgi03Zf+
-	b6nsJaAhtwV++MxD3N3Y3LyFrghpVDN1AL+8c6/mfcm3n2STAx3EHa1n95zXM/32n2l/8+mJTpCcF
-	G9m0m7AjTfWh5BsZLYtjW6DMEoTzzwguOv0kpdY3BtDGHeE1rTLx8U0Ij6ahWwNNkBMdHhjXEgDSN
-	dDuOta4qMKwn3i9gixZLbNd6OfjSN1ZHV9m+F1VA0gwWE+u1fWut6ntg/VP0l893/dshqUoIkXxZs
-	qbuPiR+NtYwJgZSCl2zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:From:In-Reply-To:MIME-Version:
+	References:Message-ID:Subject:Cc:To:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=0oSU54gI1+0+n54UVNs6dSFCRAsWgphw9nwmYWX4r44=; b=E5bo8d0Y0N/uj5bSidT5w6NiKL
+	zYwqPWydx+lWW9ZHUCTUkYuo4k4xhtYjsFzp2SVh19vWgv0eOYWGtsovTf7HjFeiC35IsH0QLjJle
+	4pfS7zkW2R4Va9ddBRMgRNtWSlB9ZJLqJGZQ8TuYYhemz+P9aeId8w/hNVVPyORFRg20ahrxsxVuT
+	oMbCvBUqG19hUWlfB9hwaBBxm3efdBcsa5KLXfBsRkjq97KGLCGRt9firs5r175/AbcaiHP29p6ha
+	+HmykPkErZ7T83iaozuc7LFK8ELAhYP3I8r6PDsSeBCZphuKHKAjfY5MdxA0WyOddGJqeUO8U+96q
+	9TKlsSPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQn8-006eOl-2I;
-	Tue, 05 Dec 2023 08:28:30 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rARX1-006lCE-2z;
+	Tue, 05 Dec 2023 09:15:55 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQn5-006eNi-1Y
+	id 1rARWx-006lBb-23
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 Dec 2023 08:28:29 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40bda47c489so34587385e9.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 05 Dec 2023 00:28:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701764906; x=1702369706; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :references:cc:to:from:content-language:subject:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NFKSpKSrRWoXFYENkiq8+HWQ5Z6F7TKJoFhiU9QOe50=;
-        b=g3edbW76MstXto23eFVR0/dJSB5UnEhE5Z+BKL7g+nn2+bgt7SOSKR5LrIOmgRb0TG
-         Aid0eCworci8kQ4if1Sn90SdK4yvlhirOTsWiXhdUcrg135aAXW1r9PMDgmhyUB1Lx04
-         MV6Vw3gLbrGR9gV0PdPl9MuC1hynuyCsTy9Xx9vUyKUcaHADeQridud1DnTbZ6Y3EeBm
-         mxncBoCebCbxhjHOZ0l8+AnYmHAMjJPXW2G0TGhWJ5fe4Qd3uak480H7PHhpht6lW+Sm
-         9VNWf0sNUbnKDv/WlN3DTOT0OC/Rd4lxe+JQ+Fdt6M8Z7LSOqgw1G8nAeZdZutDGBQvj
-         MCaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701764906; x=1702369706;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :references:cc:to:from:content-language:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=NFKSpKSrRWoXFYENkiq8+HWQ5Z6F7TKJoFhiU9QOe50=;
-        b=Z7ruzW2GqFwOKciO3GRmF6/1bj1aINyuu9LwSZXLiM0u4I4mVK7eMFpZBaXsZnPhk2
-         H8OsSaadGlDRlZzyEwCGPs2RntmosEKBYkWr9dCQ5xXdBNUW/+Ua/w9OFPOuCYZCFoxy
-         olAjbWzVylMI3n4IasCUHP6MSQ9MsqPVBAC82mqzflWAXSQCj2X1tzgM6nwgKmFDSgjQ
-         BPmwVleTjfnNusAsPbFxPDIMwFACybZnG23pgNWz00FgjlgxSYXMZIt7qmz0f5K6h2l6
-         upzDsT5a2X9z2D1K2e31y+rKtJAoerML898x/KSrkrHo+0dfvkjqRnEdG2+TgE51EmUE
-         jLJQ==
-X-Gm-Message-State: AOJu0Yz1bud6/qwnrkcnmdQCyHh8UQoQE0qQwXDIUXg6carZMiRyMWKw
-	Pu+7M6rjUQnvvE1bMJs8+sZWW0liR5IY5xYX1s+tfY9R
-X-Google-Smtp-Source: AGHT+IHYiYh03gF0HR7CFXPhKVhJzy9KsD1yiXJ0hCAKQRDxLuSaDr/vOiQCjfOHYK/99proMO0sbQ==
-X-Received: by 2002:a1c:7315:0:b0:40b:5e21:d341 with SMTP id d21-20020a1c7315000000b0040b5e21d341mr254803wmb.74.1701764905895;
-        Tue, 05 Dec 2023 00:28:25 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:982:cbb0:4518:5e57:ff13:b4bb? ([2a01:e0a:982:cbb0:4518:5e57:ff13:b4bb])
-        by smtp.gmail.com with ESMTPSA id p7-20020a05600c358700b0040849ce7116sm21619517wmq.43.2023.12.05.00.28.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Dec 2023 00:28:25 -0800 (PST)
-Message-ID: <f93acb2c-0871-469e-9744-60e52f4b9918@linaro.org>
-Date: Tue, 5 Dec 2023 09:28:24 +0100
+	Tue, 05 Dec 2023 09:15:53 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rARWu-0006sK-EZ; Tue, 05 Dec 2023 10:15:48 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rARWo-00Di8X-2b; Tue, 05 Dec 2023 10:15:42 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rARWn-005MNo-Vw; Tue, 05 Dec 2023 10:15:42 +0100
+Date: Tue, 5 Dec 2023 10:15:41 +0100
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+	kever.yang@rock-chips.com, chris.obbard@collabora.com,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v3 12/14] drm/rockchip: vop2: Add debugfs support
+Message-ID: <20231205091541.GV1057032@pengutronix.de>
+References: <20231130122001.12474-1-andyshrk@163.com>
+ <20231130122449.13432-1-andyshrk@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V2 00/10] rockchip: Add Powkiddy X55
-Content-Language: en-US, fr
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com,
- tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
- quic_jesszhan@quicinc.com, javierm@redhat.com, heiko@sntech.de,
- conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20231204185719.569021-1-macroalpha82@gmail.com>
- <170176481258.4073725.14793788958228896320.b4-ty@linaro.org>
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro Developer Services
-In-Reply-To: <170176481258.4073725.14793788958228896320.b4-ty@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20231130122449.13432-1-andyshrk@163.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+From: Sascha Hauer <sha@pengutronix.de>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_002827_529005_A0A2D855 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20231205_011551_828262_FFF6DE09 
+X-CRM114-Status: GOOD (  34.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,57 +80,329 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/12/2023 09:26, Neil Armstrong wrote:
-> Hi,
+On Thu, Nov 30, 2023 at 08:24:49PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> On Mon, 04 Dec 2023 12:57:09 -0600, Chris Morgan wrote:
->> From: Chris Morgan <macromorgan@hotmail.com>
->>
->> Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
->> console.
->>
->> Changes since V1:
->>   - Corrected a bug with the DRM mode flags for the video driver.
->>   - Adjusted panel front and back porch and pixel clock to fix
->>     issues with display that occurred after correcting DRM mode
->>     flag bug.
->>   - Add a new clk frequency for PLL_VPLL to get panel to run at ~60hz.
->>
->> [...]
+> /sys/kernel/debug/dri/vop2/summary:  dump vop display state
+> /sys/kernel/debug/dri/vop2/regs: dump whole vop registers
+> /sys/kernel/debug/dri/vop2/active_regs: only dump the registers of
+> activated modules
 > 
-> Thanks, Applied to https://anongit.freedesktop.org/git/drm/drm-misc.git (drm-misc-next)
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > 
-> [01/10] drm/panel: himax-hx8394: Drop prepare/unprepare tracking
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=8c2c5d1d33f0725b7995f44f87a81311d13a441d
-> [02/10] drm/panel: himax-hx8394: Drop shutdown logic
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=e4f53a4d921eba6187a2599cf184a3beeb604fe2
-> [03/10] dt-bindings: display: Document Himax HX8394 panel rotation
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=be478bc7ab08127473ce9ed893378cc2a8762611
-> [04/10] drm/panel: himax-hx8394: Add Panel Rotation Support
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=a695a5009c8fd239a98d98209489997ff5397d2b
-> [05/10] dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=00830a0d8f0d820335e7beb26e251069d90f2574
-> [06/10] drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
->          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=38db985966d2f0f89f7e1891253489a16936fc5e
-> [07/10] clk: rockchip: Mark pclk_usb as critical on rk3568
->          (no commit info)
-> [08/10] clk: rockchip: rk3568: Add PLL rate for 126.4MHz
->          (no commit info)
-> [09/10] dt-bindings: arm: rockchip: Add Powkiddy X55
->          (no commit info)
-> [10/10] arm64: dts: rockchip: Add Powkiddy X55
->          (no commit info)
+> ---
 > 
+> Changes in v3:
+> - put regs dump info in vop2_data
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 268 +++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  11 +
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 191 +++++++++++++
+>  3 files changed, 470 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 6f17cc56501e..56a165c0b130 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -27,6 +27,7 @@
+>  #include <drm/drm_debugfs.h>
+>  #include <drm/drm_flip_work.h>
+>  #include <drm/drm_framebuffer.h>
+> +#include <drm/drm_gem_framebuffer_helper.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_vblank.h>
+>  
+> @@ -187,6 +188,7 @@ struct vop2 {
+>  	 */
+>  	u32 registered_num_wins;
+>  
+> +	struct resource *res;
+>  	void __iomem *regs;
+>  	struct regmap *map;
+>  
+> @@ -238,6 +240,37 @@ struct vop2 {
+>  
+>  #define vop2_output_if_is_dpi(x)	((x) == ROCKCHIP_VOP2_EP_RGB0)
+>  
+> +
+> +/*
+> + * bus-format types.
+> + */
+> +struct drm_bus_format_enum_list {
+> +	int type;
+> +	const char *name;
+> +};
+> +
+> +static const struct drm_bus_format_enum_list drm_bus_format_enum_list[] = {
+> +	{ DRM_MODE_CONNECTOR_Unknown, "Unknown" },
+> +	{ MEDIA_BUS_FMT_RGB565_1X16, "RGB565_1X16" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X18, "RGB666_1X18" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X24_CPADHI, "RGB666_1X24_CPADHI" },
+> +	{ MEDIA_BUS_FMT_RGB666_1X7X3_SPWG, "RGB666_1X7X3_SPWG" },
+> +	{ MEDIA_BUS_FMT_YUV8_1X24, "YUV8_1X24" },
+> +	{ MEDIA_BUS_FMT_UYYVYY8_0_5X24, "UYYVYY8_0_5X24" },
+> +	{ MEDIA_BUS_FMT_YUV10_1X30, "YUV10_1X30" },
+> +	{ MEDIA_BUS_FMT_UYYVYY10_0_5X30, "UYYVYY10_0_5X30" },
+> +	{ MEDIA_BUS_FMT_RGB888_3X8, "RGB888_3X8" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X24, "RGB888_1X24" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_SPWG, "RGB888_1X7X4_SPWG" },
+> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA, "RGB888_1X7X4_JEIDA" },
+> +	{ MEDIA_BUS_FMT_UYVY8_2X8, "UYVY8_2X8" },
+> +	{ MEDIA_BUS_FMT_YUYV8_1X16, "YUYV8_1X16" },
+> +	{ MEDIA_BUS_FMT_UYVY8_1X16, "UYVY8_1X16" },
+> +	{ MEDIA_BUS_FMT_RGB101010_1X30, "RGB101010_1X30" },
+> +	{ MEDIA_BUS_FMT_YUYV10_1X20, "YUYV10_1X20" },
+> +};
+> +static DRM_ENUM_NAME_FN(drm_get_bus_format_name, drm_bus_format_enum_list)
+> +
+>  static const struct regmap_config vop2_regmap_config;
+>  
+>  static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
+> @@ -2522,6 +2555,239 @@ static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs = {
+>  	.atomic_disable = vop2_crtc_atomic_disable,
+>  };
+>  
+> +static void vop2_dump_connector_on_crtc(struct drm_crtc *crtc, struct seq_file *s)
+> +{
+> +	struct drm_connector_list_iter conn_iter;
+> +	struct drm_connector *connector;
+> +
+> +	drm_connector_list_iter_begin(crtc->dev, &conn_iter);
+> +	drm_for_each_connector_iter(connector, &conn_iter) {
+> +		if (crtc->state->connector_mask & drm_connector_mask(connector))
+> +			seq_printf(s, "    Connector: %s\n", connector->name);
+> +
+> +	}
+> +	drm_connector_list_iter_end(&conn_iter);
+> +}
+> +
+> +static int vop2_plane_state_dump(struct seq_file *s, struct drm_plane *plane)
+> +{
+> +	struct vop2_win *win = to_vop2_win(plane);
+> +	struct drm_plane_state *pstate = plane->state;
+> +	struct drm_rect *src, *dst;
+> +	struct drm_framebuffer *fb;
+> +	struct drm_gem_object *obj;
+> +	struct rockchip_gem_object *rk_obj;
+> +	bool xmirror;
+> +	bool ymirror;
+> +	bool rotate_270;
+> +	bool rotate_90;
+> +	dma_addr_t fb_addr;
+> +	int i;
+> +
+> +	seq_printf(s, "    %s: %s\n", win->data->name, pstate->crtc ? "ACTIVE" : "DISABLED");
+> +	if (!pstate || !pstate->fb)
+> +		return 0;
 
-To clarify, only patches 1 to 6 were applied to drm-misc-next,
+'pstate' is dereferenced before its checked being non NULL. Either the
+check is unnecessary or should be before the seq_printf() call.
 
-Thanks,
-Neil
+> +
+> +	fb = pstate->fb;
+> +	src = &pstate->src;
+> +	dst = &pstate->dst;
+> +	xmirror = pstate->rotation & DRM_MODE_REFLECT_X ? true : false;
+> +	ymirror = pstate->rotation & DRM_MODE_REFLECT_Y ? true : false;
+> +	rotate_270 = pstate->rotation & DRM_MODE_ROTATE_270;
+> +	rotate_90 = pstate->rotation & DRM_MODE_ROTATE_90;
+> +
+> +	seq_printf(s, "\twin_id: %d\n", win->win_id);
+> +
+> +	seq_printf(s, "\tformat: %p4cc%s glb_alpha[0x%x]\n",
+> +		   &fb->format->format,
+> +		   drm_is_afbc(fb->modifier) ? "[AFBC]" : "",
+> +		   pstate->alpha >> 8);
+> +	seq_printf(s, "\trotate: xmirror: %d ymirror: %d rotate_90: %d rotate_270: %d\n",
+> +		   xmirror, ymirror, rotate_90, rotate_270);
+> +	seq_printf(s, "\tzpos: %d\n", pstate->normalized_zpos);
+> +	seq_printf(s, "\tsrc: pos[%d, %d] rect[%d x %d]\n", src->x1 >> 16,
+> +		   src->y1 >> 16, drm_rect_width(src) >> 16,
+> +		   drm_rect_height(src) >> 16);
+> +	seq_printf(s, "\tdst: pos[%d, %d] rect[%d x %d]\n", dst->x1, dst->y1,
+> +		   drm_rect_width(dst), drm_rect_height(dst));
+> +
+> +	for (i = 0; i < fb->format->num_planes; i++) {
+> +		obj = fb->obj[0];
+> +		rk_obj = to_rockchip_obj(obj);
+> +		fb_addr = rk_obj->dma_addr + fb->offsets[0];
+
+Did you really intend to use array index [0] here or should this rather be [i]?
+If you intended to use [0] then you could move the initialization out of
+the loop.
+
+> +
+> +		seq_printf(s, "\tbuf[%d]: addr: %pad pitch: %d offset: %d\n",
+> +			   i, &fb_addr, fb->pitches[i], fb->offsets[i]);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
+> +{
+> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +	struct drm_crtc_state *cstate = crtc->state;
+> +	struct rockchip_crtc_state *vcstate;
+> +	struct drm_display_mode *mode;
+> +	struct drm_plane *plane;
+> +	bool interlaced;
+> +
+> +	seq_printf(s, "Video Port%d: %s\n", vp->id, !cstate ?
+> +		   "DISABLED" : cstate->active ? "ACTIVE" : "DISABLED");
+> +
+> +	if (!cstate || !cstate->active)
+> +		return 0;
+> +
+> +	mode = &crtc->state->adjusted_mode;
+> +	vcstate = to_rockchip_crtc_state(cstate);
+> +	interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
+> +
+> +	vop2_dump_connector_on_crtc(crtc, s);
+> +	seq_printf(s, "\tbus_format[%x]: %s\n", vcstate->bus_format,
+> +		    drm_get_bus_format_name(vcstate->bus_format));
+> +	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
+> +	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
+> +	seq_printf(s, "    Display mode: %dx%d%s%d\n",
+> +		    mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
+> +		    drm_mode_vrefresh(mode));
+> +	seq_printf(s, "\tclk[%d] real_clk[%d] type[%x] flag[%x]\n",
+> +		    mode->clock, mode->crtc_clock, mode->type, mode->flags);
+> +	seq_printf(s, "\tH: %d %d %d %d\n", mode->hdisplay, mode->hsync_start,
+> +		    mode->hsync_end, mode->htotal);
+> +	seq_printf(s, "\tV: %d %d %d %d\n", mode->vdisplay, mode->vsync_start,
+> +		    mode->vsync_end, mode->vtotal);
+> +
+> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
+> +		vop2_plane_state_dump(s, plane);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_summary_show(struct seq_file *s, void *data)
+> +{
+> +	struct drm_info_node *node = s->private;
+> +	struct drm_minor *minor = node->minor;
+> +	struct drm_device *drm_dev = minor->dev;
+> +	struct drm_crtc *crtc;
+> +
+> +	drm_modeset_lock_all(drm_dev);
+> +	drm_for_each_crtc(crtc, drm_dev) {
+> +		vop2_crtc_state_dump(crtc, s);
+> +	}
+> +	drm_modeset_unlock_all(drm_dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static void vop2_regs_print(struct vop2 *vop2, struct seq_file *s,
+> +			    const struct vop2_regs_dump *dump, bool active_only)
+> +{
+> +	resource_size_t start;
+> +	const int reg_num = 0x110 / 4;
+
+You added the number of registers to struct vop2_regs_dump, no need to
+hardcode this anymore.
+
+> +	u32 val;
+> +	int i;
+> +
+> +	if (dump->en_mask && active_only) {
+> +		val = vop2_readl(vop2, dump->base + dump->en_reg);
+> +		if ((val & dump->en_mask) != dump->en_val)
+> +			return;
+> +	}
+> +	seq_printf(s, "\n%s:\n", dump->name);
+> +
+> +	start = vop2->res->start + dump->base;
+> +	for (i = 0; i < reg_num;) {
+> +		seq_printf(s, "%08x:  %08x %08x %08x %08x\n", (u32)start + i * 4,
+> +			   vop2_readl(vop2, dump->base + (4 * i)),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 1))),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 2))),
+> +			   vop2_readl(vop2, dump->base + (4 * (i + 3))));
+> +		i += 4;
+> +	}
+> +}
+> +
+> +static int vop2_regs_show(struct seq_file *s, void *arg)
+> +{
+> +	struct drm_info_node *node = s->private;
+> +	struct vop2 *vop2 = (struct vop2 *)node->info_ent->data;
+
+node->info_ent->data is a void pointer, no need to cast explicitly.
+
+> +	struct drm_minor *minor = node->minor;
+> +	struct drm_device *drm_dev = minor->dev;
+> +	const struct vop2_regs_dump *dump;
+> +	unsigned int n = vop2->data->regs_dump_size;
+
+'n' is used only once, it might be clearer just to use the value where
+needed and drop the extra variable.
+
+> +	unsigned int i;
+> +
+> +	drm_modeset_lock_all(drm_dev);
+> +
+> +	if (vop2->enable_count) {
+> +		for (i = 0; i < n; i++) {
+> +			dump = &vop2->data->regs_dump[i];
+> +			vop2_regs_print(vop2, s, dump, false);
+> +		}
+> +	} else {
+> +		seq_printf(s, "VOP disabled:\n");
+
+There's nothing following after the ':', right? Then this should be
+"VOP: disabled\n" or without the colon at all.
+
+> +	}
+> +	drm_modeset_unlock_all(drm_dev);
+
+This code is repeated in vop2_active_regs_show() below. Maybe factor
+this out to a common function?
+
+> +
+> +	return 0;
+> +}
+> +
+> +static int vop2_active_regs_show(struct seq_file *s, void *data)
+> +{
+> +	struct drm_info_node *node = s->private;
+> +	struct vop2 *vop2 = (struct vop2 *)node->info_ent->data;
+> +	struct drm_minor *minor = node->minor;
+> +	struct drm_device *drm_dev = minor->dev;
+> +	const struct vop2_regs_dump *dump;
+> +	unsigned int n = vop2->data->regs_dump_size;
+> +	unsigned int i;
+> +
+> +	drm_modeset_lock_all(drm_dev);
+> +	if (vop2->enable_count) {
+> +		for (i = 0; i < n; i++) {
+> +			dump = &vop2->data->regs_dump[i];
+> +			vop2_regs_print(vop2, s, dump, true);
+> +		}
+> +	} else {
+> +		seq_printf(s, "VOP disabled:\n");
+> +	}
+> +	drm_modeset_unlock_all(drm_dev);
+> +
+> +	return 0;
+> +}
+> +
+
+Sascha
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
