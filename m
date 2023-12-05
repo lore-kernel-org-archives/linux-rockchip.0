@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BE1C07E97
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 09:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D684CC10DCE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 09:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VY36kh1K6b27LW5oHk8/TYHvdNKwbDgFxRNlyIqfK8Y=; b=Zl2rm3DrQbhykv
-	yp/EQzZuHiAL505qFkizbO2JqZJMq/SJJuKVaECdH0P6TtQOcPypyFYw2kb2GLnMR12ImmJzXPV9B
-	WDjjQ7zUGNowAmlOgfGXqab8K9uG+S+tXwZa+lubPoEnfrVkTsg3hXVHYz39S5VHGbTTubu5UX7i/
-	J/cO8JUhfqAhzgu7czx+4Ck41yvabqqF9AaCBnabFaTodMcbEOrj7Cu2UsqAUyBaUFKQ8YKjsnyaa
-	YrogUict5lQ4k5kNlsXWscdzd/Wdyj49vLqIUylvcvW0GkpJ7iNL0BmBmmwJ/HWjtwNmqcbI+x0fV
-	cbKSpDUvvC3KlSLz3iXQ==;
+	List-Owner; bh=Swmhwey4JMYwCGVBeDy2JLwoGqROBDlSLf2nJacJP4s=; b=18OuGsnZSOvnFe
+	DAr00tCikyNYA3hJvLI38fYBKhcRINS76eGWIQpKA8jg9SAITLR91aVpDPJhXuVnlpgjlmAA+s68L
+	qBFOVA2BvBaZc84I053I/m3RuViMTf8Wp3fQyrPF6TZE3LAyHvZ1WDo9bdcxywG5I4kNJ0LCP/XND
+	cbw5KOQ0B2eb2B6T2GQ2jEfAvDOlKuYZ+t9TAz+A1R1QkFITXbauCk6CyUZGslJ+6FCq7m5W68ohD
+	P9ma4TdjsCLL36BYW+5/VCVbzdLCaN1JlTzqBY41Bi860MGwvaGrP2BnDpGnORlz0DbxLonet7EGG
+	TuU2f/Kk9aS0317E6+Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rARyw-006rrK-1w;
-	Tue, 05 Dec 2023 09:44:46 +0000
-Received: from mail-m12783.qiye.163.com ([115.236.127.83])
+	id 1rAS2m-006sdW-1k;
+	Tue, 05 Dec 2023 09:48:44 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rARyt-006roA-36
+	id 1rAS2j-006sck-2T
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 Dec 2023 09:44:45 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=dGZ4BWZty1d0oIWgBZ6X8FBIyGDPCj743XxLuAfNp+xa34p6BSXVPPWnrai2cFtu/MHaXQF1gs5x6htnfVWl192MLEzMqyi5frolErK8Uhb06vt8nQrgBdjNV6XOr4AZV9ICA09I88dZL2kgtm/Es/DqW6YWSYfL+Qc52ZB/YV8=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Qwe7/iDLwPEEdgYbXXnkzwx2HO9asx5VCXEH67b0F/w=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 59D887801C1;
-	Tue,  5 Dec 2023 17:44:03 +0800 (CST)
-Message-ID: <87831dc3-2554-4b53-a9f8-6b61cf67732e@rock-chips.com>
-Date: Tue, 5 Dec 2023 17:44:03 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	Tue, 05 Dec 2023 09:48:43 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rAS2g-0004Kk-Us; Tue, 05 Dec 2023 10:48:38 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rAS2e-00DiEw-H2; Tue, 05 Dec 2023 10:48:36 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rAS2e-005MaM-EC; Tue, 05 Dec 2023 10:48:36 +0100
+Date: Tue, 5 Dec 2023 10:48:36 +0100
+From: Sascha Hauer <sha@pengutronix.de>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Andy Yan <andyshrk@163.com>, heiko@sntech.de, hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org, devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com, kever.yang@rock-chips.com,
+	chris.obbard@collabora.com
 Subject: Re: [PATCH v3 11/14] drm/rockchip: vop2: Add support for rk3588
-Content-Language: en-US
-To: Sascha Hauer <sha@pengutronix.de>, Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com
+Message-ID: <20231205094836.GZ1057032@pengutronix.de>
 References: <20231130122001.12474-1-andyshrk@163.com>
  <20231130122439.13374-1-andyshrk@163.com>
  <20231205092936.GW1057032@pengutronix.de>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20231205092936.GW1057032@pengutronix.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU1DS1ZMGkpCGUoZGEgZTkxVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8c395cf962b24fkuuu59d887801c1
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRQ6PQw6PDw0FgMVDBpKIykY
-	GQxPCRZVSlVKTEtKTE1CT09PSUJIVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSElNTjcG
+ <87831dc3-2554-4b53-a9f8-6b61cf67732e@rock-chips.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87831dc3-2554-4b53-a9f8-6b61cf67732e@rock-chips.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_014444_147252_DDCBFBF0 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20231205_014841_801944_75BF53F5 
+X-CRM114-Status: GOOD (  25.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,62 +81,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha:
+On Tue, Dec 05, 2023 at 05:44:03PM +0800, Andy Yan wrote:
+> Hi Sascha:
+> 
+> On 12/5/23 17:29, Sascha Hauer wrote:
+> > On Thu, Nov 30, 2023 at 08:24:39PM +0800, Andy Yan wrote:
+> > > From: Andy Yan <andy.yan@rock-chips.com>
+> > > 
+> > > VOP2 on rk3588:
+> > > 
+> > > Four video ports:
+> > > VP0 Max 4096x2160
+> > > VP1 Max 4096x2160
+> > > VP2 Max 4096x2160
+> > > VP3 Max 2048x1080
+> > > 
+> > > 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+> > > 4 4K Esmart windows with line RGB/YUV support
+> > > 
+> > > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > With the two nits below feel free to add my:
+> > 
+> > Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > 
+> > Thanks for working on this.
+> > 
+> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> > > index 8d7ff52523fb..8b16031eda52 100644
+> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> > > @@ -13,9 +13,16 @@
+> > >   #define VOP_FEATURE_OUTPUT_10BIT        BIT(0)
+> > 
+> > You could rename this to include "VP" for Video Port so it's not so
+> > easily mixed up with the defines below.
+> 
+> Yes, I have the same idea, maybe it's better to do the rename in a separate ?
 
-On 12/5/23 17:29, Sascha Hauer wrote:
-> On Thu, Nov 30, 2023 at 08:24:39PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->> VOP2 on rk3588:
->>
->> Four video ports:
->> VP0 Max 4096x2160
->> VP1 Max 4096x2160
->> VP2 Max 4096x2160
->> VP3 Max 2048x1080
->>
->> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
->> 4 4K Esmart windows with line RGB/YUV support
->>
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> 
-> With the two nits below feel free to add my:
-> 
-> Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
-> 
-> Thanks for working on this.
-> 
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->> index 8d7ff52523fb..8b16031eda52 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->> @@ -13,9 +13,16 @@
->>   
->>   #define VOP_FEATURE_OUTPUT_10BIT        BIT(0)
-> 
-> You could rename this to include "VP" for Video Port so it's not so
-> easily mixed up with the defines below.
+Ah Yes, I didn't realize this is just a context line. I thought you
+had added it.
 
-Yes, I have the same idea, maybe it's better to do the rename in a separate ?
-> 
->>   
->> +#define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
->> +#define VOP2_FEATURE_HAS_VO0_GRF	BIT(1)
->> +#define VOP2_FEATURE_HAS_VO1_GRF	BIT(2)
->> +#define VOP2_FEATURE_HAS_VOP_GRF	BIT(3)
->> +#define VOP2_FEATURE_HAS_SYS_PMU	BIT(5)
-> 
-> Should be BIT(4)
+Sascha
 
-Thanks for catching this, will fix in next version.
-> 
-> Sascha
-> 
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
