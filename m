@@ -4,55 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A510C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 09:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BE1C07E97
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 09:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0mSXpJrw21//wbUHIYkRY2+fWB1e5mFi+G9he/EIIxw=; b=vXtsYlg174HPCn
-	qVqcDIXkDlBzsC1KYnVqVnozR1m6wqUQ2yf1i4yzvEprCTKMMkVynss95Flm5893hljn+gUrqDYDE
-	E+PJq0z3WKNQkw+MJX3HEZGn01FEJywQoj4fY6r1lFF+vxw84ifJIM6R4Dl9X2EHpj9O2SwHTsmIl
-	Y79kkclFsvwvXOpgCkdRVJPF0+gqbzaGyVBd/3dr8FmmgOsn8Sm7KLSNk/2pMQEgnXoekbyfBMLBl
-	Sz7rMhqh/Lo/lWFhHjYZiqRvWY8Nv3/SIaIARyI7Z17wsP/l6FhPhNMuZY8sJxMk8L8l4Y7BCz59l
-	hZtqcsME8AgkDrvKC7Fg==;
+	List-Owner; bh=VY36kh1K6b27LW5oHk8/TYHvdNKwbDgFxRNlyIqfK8Y=; b=Zl2rm3DrQbhykv
+	yp/EQzZuHiAL505qFkizbO2JqZJMq/SJJuKVaECdH0P6TtQOcPypyFYw2kb2GLnMR12ImmJzXPV9B
+	WDjjQ7zUGNowAmlOgfGXqab8K9uG+S+tXwZa+lubPoEnfrVkTsg3hXVHYz39S5VHGbTTubu5UX7i/
+	J/cO8JUhfqAhzgu7czx+4Ck41yvabqqF9AaCBnabFaTodMcbEOrj7Cu2UsqAUyBaUFKQ8YKjsnyaa
+	YrogUict5lQ4k5kNlsXWscdzd/Wdyj49vLqIUylvcvW0GkpJ7iNL0BmBmmwJ/HWjtwNmqcbI+x0fV
+	cbKSpDUvvC3KlSLz3iXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rARwH-006rFJ-0q;
-	Tue, 05 Dec 2023 09:42:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rARyw-006rrK-1w;
+	Tue, 05 Dec 2023 09:44:46 +0000
+Received: from mail-m12783.qiye.163.com ([115.236.127.83])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rARwE-006rDJ-1N
+	id 1rARyt-006roA-36
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 Dec 2023 09:41:59 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rARw7-0006PT-4Y; Tue, 05 Dec 2023 10:41:51 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com,
- tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
- quic_jesszhan@quicinc.com, javierm@redhat.com, conor+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V2 00/10] rockchip: Add Powkiddy X55
-Date: Tue, 05 Dec 2023 10:41:49 +0100
-Message-ID: <3863273.7aRn1RRit1@diego>
-In-Reply-To: <f93acb2c-0871-469e-9744-60e52f4b9918@linaro.org>
-References: <20231204185719.569021-1-macroalpha82@gmail.com>
- <170176481258.4073725.14793788958228896320.b4-ty@linaro.org>
- <f93acb2c-0871-469e-9744-60e52f4b9918@linaro.org>
+	Tue, 05 Dec 2023 09:44:45 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=dGZ4BWZty1d0oIWgBZ6X8FBIyGDPCj743XxLuAfNp+xa34p6BSXVPPWnrai2cFtu/MHaXQF1gs5x6htnfVWl192MLEzMqyi5frolErK8Uhb06vt8nQrgBdjNV6XOr4AZV9ICA09I88dZL2kgtm/Es/DqW6YWSYfL+Qc52ZB/YV8=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Qwe7/iDLwPEEdgYbXXnkzwx2HO9asx5VCXEH67b0F/w=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 59D887801C1;
+	Tue,  5 Dec 2023 17:44:03 +0800 (CST)
+Message-ID: <87831dc3-2554-4b53-a9f8-6b61cf67732e@rock-chips.com>
+Date: Tue, 5 Dec 2023 17:44:03 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 11/14] drm/rockchip: vop2: Add support for rk3588
+Content-Language: en-US
+To: Sascha Hauer <sha@pengutronix.de>, Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
+ kever.yang@rock-chips.com, chris.obbard@collabora.com
+References: <20231130122001.12474-1-andyshrk@163.com>
+ <20231130122439.13374-1-andyshrk@163.com>
+ <20231205092936.GW1057032@pengutronix.de>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20231205092936.GW1057032@pengutronix.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU1DS1ZMGkpCGUoZGEgZTkxVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8c395cf962b24fkuuu59d887801c1
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRQ6PQw6PDw0FgMVDBpKIykY
+	GQxPCRZVSlVKTEtKTE1CT09PSUJIVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSElNTjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_014158_461950_B44B0B3F 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20231205_014444_147252_DDCBFBF0 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,61 +75,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 5. Dezember 2023, 09:28:24 CET schrieb Neil Armstrong:
-> On 05/12/2023 09:26, Neil Armstrong wrote:
-> > Hi,
-> > 
-> > On Mon, 04 Dec 2023 12:57:09 -0600, Chris Morgan wrote:
-> >> From: Chris Morgan <macromorgan@hotmail.com>
-> >>
-> >> Add support for the Rockchip RK3566 based Powkiddy X55 handheld gaming
-> >> console.
-> >>
-> >> Changes since V1:
-> >>   - Corrected a bug with the DRM mode flags for the video driver.
-> >>   - Adjusted panel front and back porch and pixel clock to fix
-> >>     issues with display that occurred after correcting DRM mode
-> >>     flag bug.
-> >>   - Add a new clk frequency for PLL_VPLL to get panel to run at ~60hz.
-> >>
-> >> [...]
-> > 
-> > Thanks, Applied to https://anongit.freedesktop.org/git/drm/drm-misc.git (drm-misc-next)
-> > 
-> > [01/10] drm/panel: himax-hx8394: Drop prepare/unprepare tracking
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=8c2c5d1d33f0725b7995f44f87a81311d13a441d
-> > [02/10] drm/panel: himax-hx8394: Drop shutdown logic
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=e4f53a4d921eba6187a2599cf184a3beeb604fe2
-> > [03/10] dt-bindings: display: Document Himax HX8394 panel rotation
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=be478bc7ab08127473ce9ed893378cc2a8762611
-> > [04/10] drm/panel: himax-hx8394: Add Panel Rotation Support
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=a695a5009c8fd239a98d98209489997ff5397d2b
-> > [05/10] dt-bindings: display: himax-hx8394: Add Powkiddy X55 panel
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=00830a0d8f0d820335e7beb26e251069d90f2574
-> > [06/10] drm/panel: himax-hx8394: Add Support for Powkiddy X55 panel
-> >          https://cgit.freedesktop.org/drm/drm-misc/commit/?id=38db985966d2f0f89f7e1891253489a16936fc5e
-> > [07/10] clk: rockchip: Mark pclk_usb as critical on rk3568
-> >          (no commit info)
-> > [08/10] clk: rockchip: rk3568: Add PLL rate for 126.4MHz
-> >          (no commit info)
-> > [09/10] dt-bindings: arm: rockchip: Add Powkiddy X55
-> >          (no commit info)
-> > [10/10] arm64: dts: rockchip: Add Powkiddy X55
-> >          (no commit info)
-> > 
+Hi Sascha:
+
+On 12/5/23 17:29, Sascha Hauer wrote:
+> On Thu, Nov 30, 2023 at 08:24:39PM +0800, Andy Yan wrote:
+>> From: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> VOP2 on rk3588:
+>>
+>> Four video ports:
+>> VP0 Max 4096x2160
+>> VP1 Max 4096x2160
+>> VP2 Max 4096x2160
+>> VP3 Max 2048x1080
+>>
+>> 4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
+>> 4 4K Esmart windows with line RGB/YUV support
+>>
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 > 
-> To clarify, only patches 1 to 6 were applied to drm-misc-next,
+> With the two nits below feel free to add my:
+> 
+> Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
+> 
+> Thanks for working on this.
+> 
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> index 8d7ff52523fb..8b16031eda52 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>> @@ -13,9 +13,16 @@
+>>   
+>>   #define VOP_FEATURE_OUTPUT_10BIT        BIT(0)
+> 
+> You could rename this to include "VP" for Video Port so it's not so
+> easily mixed up with the defines below.
 
-thanks for the clarification (and applying the patches already)
+Yes, I have the same idea, maybe it's better to do the rename in a separate ?
+> 
+>>   
+>> +#define VOP2_FEATURE_HAS_SYS_GRF	BIT(0)
+>> +#define VOP2_FEATURE_HAS_VO0_GRF	BIT(1)
+>> +#define VOP2_FEATURE_HAS_VO1_GRF	BIT(2)
+>> +#define VOP2_FEATURE_HAS_VOP_GRF	BIT(3)
+>> +#define VOP2_FEATURE_HAS_SYS_PMU	BIT(5)
+> 
+> Should be BIT(4)
 
-Heiko
-
-
+Thanks for catching this, will fix in next version.
+> 
+> Sascha
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
