@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B236C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 12:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5305AC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 12:14:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JHTALwCeoijuLC2y3Y1WbIa4z93apNvONWBBD5ZXorc=; b=TmVpIrKpp+Oxde
-	wVu2BpzvZs3hxhGp9hBw1SCr3Iq2tv6Fm/kkJqUOvfwlCVb10PXR3UAKhaxONUk4zCuoxOPpUtbiy
-	V9KU+7atQP4NWl8Es2a5Ad+oron4a2LaOOsb8wc3sDEat0C+mWrOWzRtjjTS9sRBBqXy+bdF15L1A
-	jdeFwhGAx7sGRpRKlLD70n10o7+LwLHzEP7TJ/6O+knUoG84bZSvxzqxbBkIvb6e83k2M1+VBOlM6
-	xGY991KkrbKp/AGHlluRjTSq1/BWzD+Yqc2sPVVh1qOtKbbYcGGoxHaVk7LRt0oKN7rLcMQ+qKaAI
-	yzgtdeW1Th9qGAKDgB5A==;
+	List-Owner; bh=g+0rP3ns1fRIs4CnQwfVUYfU2bxiIxgZIbKCVFJHiEQ=; b=ZkHj1lJJOvKXhb
+	NfypfAwtUu6eV8FBjOvGpHZWu8RtlvOC9O9Qa66L4gH2y0CsKuvgukuCVG9Bhbngrg4oVWAqcEmze
+	cn63e+J9usf9R3UAoC0kMqusoyw1j1hISjX71hLARXDr7lOCYnBxlqXXtZ1Pe6TBp0Sk71DATvgyQ
+	sv6KPpOyLOzwgWZlX0/5sobhF9vg8rYpeCD+nWISJZKY7YHKKXuIW3bs2h77e72kH2kgnyNKAAzq8
+	tuu+JuFnamWpY8YFNp/eChPS9Sm2gZdB9v28/g+cLve3sDUBkGP+kT36M7at1S8/CF1Bou6sveqhM
+	X4EKeYZ7fmFCzNZA+6ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAUAJ-007LMi-2u;
-	Tue, 05 Dec 2023 12:04:39 +0000
+	id 1rAUJF-007M1X-1X;
+	Tue, 05 Dec 2023 12:13:53 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAUAG-007LL1-02;
-	Tue, 05 Dec 2023 12:04:37 +0000
+	id 1rAUJB-007M04-2f;
+	Tue, 05 Dec 2023 12:13:51 +0000
 Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id DDE96844;
-	Tue,  5 Dec 2023 13:03:53 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 619B6844;
+	Tue,  5 Dec 2023 13:13:08 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701777834;
-	bh=rxY8uJX52+CDwxpiKj8J/NBwZBTNLXNQ86G0OAH3DTQ=;
+	s=mail; t=1701778388;
+	bh=0ZLr3kFQ/SRckdRD/WtVOMYCg8x0SdcGPUxWJlxbTSQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JS1atgLuEi85qXwn7oAOOgu2q9O9ukqrUnmRGCbx8oav/6bJVIkhmdOa/YP6rtvvd
-	 9eowlDRZhGm1zSzp9nM9Cp0O+qi8/sRP2Z2YYLejKlL+c2d+AHRcTv+T4aEfasAt8O
-	 YLUb2HJWkmv7oEtavg2YBECM6wDa6cosGKH0eF+I=
-Date: Tue, 5 Dec 2023 14:04:41 +0200
+	b=Q6OEmb5m+LGJD4zSLWKgY92Ie7m6mdi0BK0wkagE6rqjc15tEFpTp2Alyi8NZdMc/
+	 IVN84yY+f6rc2thMg75CK6Mh5IXgqRxFn6emZA2ubX4vWZgu70mWDQw38aBHKcntxp
+	 mgTMuGzaeP9wD78HMIR1Zzmf8dhnZ2LhI6sYITNI=
+Date: Tue, 5 Dec 2023 14:13:55 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 Cc: Dafna Hirschfeld <dafna@fastmail.com>,
@@ -48,16 +48,16 @@ Cc: Dafna Hirschfeld <dafna@fastmail.com>,
 	aford173@gmail.com, linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/4] media: rkisp1: Fix IRQ handler return values
-Message-ID: <20231205120441.GD17394@pendragon.ideasonboard.com>
+Subject: Re: [PATCH 4/4] media: rkisp1: Fix IRQ disable race issue
+Message-ID: <20231205121355.GE17394@pendragon.ideasonboard.com>
 References: <20231205-rkisp-irq-fix-v1-0-f4045c74ba45@ideasonboard.com>
- <20231205-rkisp-irq-fix-v1-2-f4045c74ba45@ideasonboard.com>
+ <20231205-rkisp-irq-fix-v1-4-f4045c74ba45@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231205-rkisp-irq-fix-v1-2-f4045c74ba45@ideasonboard.com>
+In-Reply-To: <20231205-rkisp-irq-fix-v1-4-f4045c74ba45@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_040436_193257_39E92ABE 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20231205_041350_005970_509A7401 
+X-CRM114-Status: GOOD (  25.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,63 +78,96 @@ Hi Tomi,
 
 Thank you for the patch.
 
-On Tue, Dec 05, 2023 at 10:09:33AM +0200, Tomi Valkeinen wrote:
-> The IRQ handler rkisp1_isr() calls sub-handlers, all of which returns an
-> irqreturn_t value, but rkisp1_isr() ignores those values and always
-> returns IRQ_HANDLED.
+On Tue, Dec 05, 2023 at 10:09:35AM +0200, Tomi Valkeinen wrote:
+> In rkisp1_isp_stop() and rkisp1_csi_disable() the driver masks the
+> interrupts and then apparently assumes that the interrupt handler won't
+> be running, and proceeds in the stop procedure. This is not the case, as
+> the interrupt handler can already be running, which would lead to the
+> ISP being disabled while the interrupt handler handling a captured
+> frame.
 > 
-> Fix this by collecting the return values, and returning IRQ_HANDLED or
-> IRQ_NONE as appropriate.
-> 
+> It is not clear to me if this problem causes a real issue, but shutting
+> down the ISP while an interrupt handler is running sounds rather bad.
+
+Agreed.
+
 > Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 > ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 18 ++++++++++++++----
->  1 file changed, 14 insertions(+), 4 deletions(-)
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 14 +++++++++++++-
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 20 +++++++++++++++++---
+>  2 files changed, 30 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index 76f93614b4cf..1d60f4b8bd09 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -445,17 +445,27 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+> index f6b54654b435..f0cef766fc0c 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+> @@ -125,8 +125,20 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
+>  	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>  	u32 val;
 >  
->  static irqreturn_t rkisp1_isr(int irq, void *ctx)
->  {
-> +	irqreturn_t ret;
-
-	irqreturn_t ret = IRQ_NONE;
-
+> -	/* Mask and clear interrupts. */
+> +	/* Mask MIPI interrupts. */
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
 > +
->  	/*
->  	 * Call rkisp1_capture_isr() first to handle the frame that
->  	 * potentially completed using the current frame_sequence number before
->  	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
->  	 * sync.
+> +	/* Flush posted writes */
+> +	rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+> +
+> +	/*
+> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
+> +	 * even after this, but it will return immediately as the MIPI
+> +	 * interrupts have been masked.
+> +	 */
+
+This comment will need to be updated if patch 3/4 gets replaced by a
+patch that drops IRQF_SHARED.
+
+> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MIPI]);
+> +
+> +	/* Clear MIPI interrupt status */
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+>  
+>  	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index d6b8786661ad..a6dd497c884c 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -364,11 +364,25 @@ static void rkisp1_isp_stop(struct rkisp1_isp *isp)
+>  	 * ISP(mi) stop in mi frame end -> Stop ISP(mipi) ->
+>  	 * Stop ISP(isp) ->wait for ISP isp off
 >  	 */
-> -	rkisp1_capture_isr(irq, ctx);
-> -	rkisp1_isp_isr(irq, ctx);
-> -	rkisp1_csi_isr(irq, ctx);
+> -	/* stop and clear MI and ISP interrupts */
+> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
+> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
 >  
-> -	return IRQ_HANDLED;
-> +	ret = IRQ_NONE;
+> +	/* Mask MI and ISP interrupts */
+> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
+> +
+> +	/* Flush posted writes */
+> +	rkisp1_read(rkisp1, RKISP1_CIF_MI_IMSC);
+> +
+> +	/*
+> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
+> +	 * even after this, but it will return immediately as the MI and ISP
+> +	 * interrupts have been masked.
+> +	 */
 
-And drop this.
+Same here.
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_ISP]);
+> +	if (rkisp1->irqs[RKISP1_IRQ_ISP] != rkisp1->irqs[RKISP1_IRQ_MI])
+> +		synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MI]);
+
+It would be nice if we could avoid the double synchronize_irq() for
+platforms where RKISP1_IRQ_MIPI and RKISP1_IRQ_ISP are identical, but I
+understand that would be difficult.
 
 > +
-> +	if (rkisp1_capture_isr(irq, ctx) == IRQ_HANDLED)
-> +		ret = IRQ_HANDLED;
-> +
-> +	if (rkisp1_isp_isr(irq, ctx) == IRQ_HANDLED)
-> +		ret = IRQ_HANDLED;
-> +
-> +	if (rkisp1_csi_isr(irq, ctx) == IRQ_HANDLED)
-> +		ret = IRQ_HANDLED;
-> +
-> +	return ret;
->  }
+> +	/* Clear MI and ISP interrupt status */
+> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
 >  
->  static const char * const px30_isp_clks[] = {
+>  	/* stop ISP */
 
 -- 
 Regards,
