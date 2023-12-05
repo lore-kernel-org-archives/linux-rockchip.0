@@ -4,60 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5305AC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 12:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC78DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 12:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g+0rP3ns1fRIs4CnQwfVUYfU2bxiIxgZIbKCVFJHiEQ=; b=ZkHj1lJJOvKXhb
-	NfypfAwtUu6eV8FBjOvGpHZWu8RtlvOC9O9Qa66L4gH2y0CsKuvgukuCVG9Bhbngrg4oVWAqcEmze
-	cn63e+J9usf9R3UAoC0kMqusoyw1j1hISjX71hLARXDr7lOCYnBxlqXXtZ1Pe6TBp0Sk71DATvgyQ
-	sv6KPpOyLOzwgWZlX0/5sobhF9vg8rYpeCD+nWISJZKY7YHKKXuIW3bs2h77e72kH2kgnyNKAAzq8
-	tuu+JuFnamWpY8YFNp/eChPS9Sm2gZdB9v28/g+cLve3sDUBkGP+kT36M7at1S8/CF1Bou6sveqhM
-	X4EKeYZ7fmFCzNZA+6ww==;
+	List-Owner; bh=yPY0tVWYLPrBjg5PsxUxvLufaZII2wpV2KCvw3WBdTQ=; b=QsnVAk43cblIDI
+	Zx/RPiSbnDYCGoJLGb+LelMziB3KYJPbAenBuLZzSHIPFBoH2OzKyerodpdPY16azOFNPzkI5Xr49
+	Re3xMJzUPunw9sR7fpNidylC7NeouBTMDYs226Brr2OJ1XmrvB4ZXAESRtFDvvxoIEu40NW76m9La
+	WuQ93hl2GU96IR/Yf+WKj3Dpw4geGhCdKvtNgdKmDVWbBkkZhklEH2Mm6jDOrxGg3eK0VkApfrCTo
+	L5GBNztxFnhrxGna8giMmgEuDObfBEwWDmUu0h3pJJCHxsIU61y1cjanUt6EPT9/EoAHG9P2Z0dnt
+	ZTcF9U0Dh1nTbnTOnO8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAUJF-007M1X-1X;
-	Tue, 05 Dec 2023 12:13:53 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rAUe3-007OA5-1M;
+	Tue, 05 Dec 2023 12:35:23 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAUJB-007M04-2f;
-	Tue, 05 Dec 2023 12:13:51 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 619B6844;
-	Tue,  5 Dec 2023 13:13:08 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701778388;
-	bh=0ZLr3kFQ/SRckdRD/WtVOMYCg8x0SdcGPUxWJlxbTSQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q6OEmb5m+LGJD4zSLWKgY92Ie7m6mdi0BK0wkagE6rqjc15tEFpTp2Alyi8NZdMc/
-	 IVN84yY+f6rc2thMg75CK6Mh5IXgqRxFn6emZA2ubX4vWZgu70mWDQw38aBHKcntxp
-	 mgTMuGzaeP9wD78HMIR1Zzmf8dhnZ2LhI6sYITNI=
-Date: Tue, 5 Dec 2023 14:13:55 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com,
-	aford173@gmail.com, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 4/4] media: rkisp1: Fix IRQ disable race issue
-Message-ID: <20231205121355.GE17394@pendragon.ideasonboard.com>
-References: <20231205-rkisp-irq-fix-v1-0-f4045c74ba45@ideasonboard.com>
- <20231205-rkisp-irq-fix-v1-4-f4045c74ba45@ideasonboard.com>
+	id 1rAUe1-007O8u-0l;
+	Tue, 05 Dec 2023 12:35:22 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-286ceba3f3eso1217087a91.0;
+        Tue, 05 Dec 2023 04:35:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701779720; x=1702384520; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FCPNXIipBFO4e3fU1ItwsDrZJmF1i1S9KCyToMsJuPI=;
+        b=QNIwF79UczsyuqwZiHADx9kSnTuZ6gnM9qroSXHINT40vkTKkPO+kNERCgEl5mBvHb
+         UzzQiJ3fTYrK3DPQsDo4eCCrTcNx9zgFyWBx88K1bxYBjK3rBmGERdI5aBl5TbWNAoja
+         Od99z6eybdDBIqNI+loPJDN6dTlCiEJ1UwzD2crOYO3wNTn1+kKXz6CDBZEEJzppUg8g
+         U1x+/tZs0agYrqn22zqcfIRjoTJfk+ce90vCXKWp1g2RTHb6tnjlof6EQwrPhDdi7lLM
+         RI0cMmCLGSW/+Kar0YBBnOBkjCEz30/WWOVRKwi/gUIr96CNNIcb5E+tzyH/shpKupMy
+         JoKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701779720; x=1702384520;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FCPNXIipBFO4e3fU1ItwsDrZJmF1i1S9KCyToMsJuPI=;
+        b=nVQ7DNzvrxm+pn7c2v6HetVmlHHL9zdsY8lbmyYXCiSHscdF8eUlWjDsknoDZxAj2G
+         e+0gFE3vL+xVlD1z4XfMPwHeryS4gJcpM9Ulfq16o2I1bECEo6HyOV/jypJIirbfIbRc
+         oaHJ9R+3s5h+vQsmKwjcriZxM5M3lla67TEYqcFHJCcD6Ue1K5UiY07SUTewcAAEP+/x
+         YNbn7i9tou5E9PrDfOw80LBz7e2aiKkoyTVH6DsZ7q8qx5GaLVB2e/Qu4iik4PB5wLIp
+         9KmmTandAXa+h7lIRapawRfIZN+rxWbxCdVa9sLwFjPRHeCd1ZP8WKTuqbum+3FHMCOI
+         cttw==
+X-Gm-Message-State: AOJu0Yx0Lz8gFt8dPJHgCGlTKMHYE3oCeJGPHKNjAmaS8cnTtuOPuH6o
+	3/b2qruKu7rTAhDUzIlHnPPiU9dteDej2fcLEg8=
+X-Google-Smtp-Source: AGHT+IFccT82pIRM0QptS9G8/lfCF+MOYdAcHvVMFLnXZwCn/Vr7J72FAJHJKrcIDWm1thma/YCqb9IrWr5PPXfnoWQ=
+X-Received: by 2002:a17:90b:3b8b:b0:286:d464:686e with SMTP id
+ pc11-20020a17090b3b8b00b00286d464686emr1048259pjb.20.1701779720100; Tue, 05
+ Dec 2023 04:35:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231205-rkisp-irq-fix-v1-4-f4045c74ba45@ideasonboard.com>
+References: <20231205-rkisp-irq-fix-v1-0-f4045c74ba45@ideasonboard.com>
+ <20231205-rkisp-irq-fix-v1-2-f4045c74ba45@ideasonboard.com>
+ <CAHCN7xJqw-hSD7rWfxFq5NWnF+=RrpCWR+js9358jAL0_WzVFw@mail.gmail.com> <b61d7adb-5b45-4366-a98c-d0de91d409c8@ideasonboard.com>
+In-Reply-To: <b61d7adb-5b45-4366-a98c-d0de91d409c8@ideasonboard.com>
+From: Adam Ford <aford173@gmail.com>
+Date: Tue, 5 Dec 2023 06:35:08 -0600
+Message-ID: <CAHCN7xJcYACscBHExh6n-kAKofrk=E2VTncm8Y_ZmWjcj_yzPA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] media: rkisp1: Fix IRQ handler return values
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Paul Elder <paul.elder@ideasonboard.com>, 
+	Alexander Stein <alexander.stein@ew.tq-group.com>, kieran.bingham@ideasonboard.com, 
+	umang.jain@ideasonboard.com, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_041350_005970_509A7401 
-X-CRM114-Status: GOOD (  25.51  )
+X-CRM114-CacheID: sfid-20231205_043521_278694_847CDEFA 
+X-CRM114-Status: GOOD (  28.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,112 +90,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomi,
-
-Thank you for the patch.
-
-On Tue, Dec 05, 2023 at 10:09:35AM +0200, Tomi Valkeinen wrote:
-> In rkisp1_isp_stop() and rkisp1_csi_disable() the driver masks the
-> interrupts and then apparently assumes that the interrupt handler won't
-> be running, and proceeds in the stop procedure. This is not the case, as
-> the interrupt handler can already be running, which would lead to the
-> ISP being disabled while the interrupt handler handling a captured
-> frame.
-> 
-> It is not clear to me if this problem causes a real issue, but shutting
-> down the ISP while an interrupt handler is running sounds rather bad.
-
-Agreed.
-
-> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 14 +++++++++++++-
->  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 20 +++++++++++++++++---
->  2 files changed, 30 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> index f6b54654b435..f0cef766fc0c 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> @@ -125,8 +125,20 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
->  	struct rkisp1_device *rkisp1 = csi->rkisp1;
->  	u32 val;
->  
-> -	/* Mask and clear interrupts. */
-> +	/* Mask MIPI interrupts. */
->  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
-> +
-> +	/* Flush posted writes */
-> +	rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
-> +
-> +	/*
-> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
-> +	 * even after this, but it will return immediately as the MIPI
-> +	 * interrupts have been masked.
-> +	 */
-
-This comment will need to be updated if patch 3/4 gets replaced by a
-patch that drops IRQF_SHARED.
-
-> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MIPI]);
-> +
-> +	/* Clear MIPI interrupt status */
->  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
->  
->  	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index d6b8786661ad..a6dd497c884c 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -364,11 +364,25 @@ static void rkisp1_isp_stop(struct rkisp1_isp *isp)
->  	 * ISP(mi) stop in mi frame end -> Stop ISP(mipi) ->
->  	 * Stop ISP(isp) ->wait for ISP isp off
->  	 */
-> -	/* stop and clear MI and ISP interrupts */
-> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
-> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
->  
-> +	/* Mask MI and ISP interrupts */
-> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
->  	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
-> +
-> +	/* Flush posted writes */
-> +	rkisp1_read(rkisp1, RKISP1_CIF_MI_IMSC);
-> +
-> +	/*
-> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
-> +	 * even after this, but it will return immediately as the MI and ISP
-> +	 * interrupts have been masked.
-> +	 */
-
-Same here.
-
-> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_ISP]);
-> +	if (rkisp1->irqs[RKISP1_IRQ_ISP] != rkisp1->irqs[RKISP1_IRQ_MI])
-> +		synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MI]);
-
-It would be nice if we could avoid the double synchronize_irq() for
-platforms where RKISP1_IRQ_MIPI and RKISP1_IRQ_ISP are identical, but I
-understand that would be difficult.
-
-> +
-> +	/* Clear MI and ISP interrupt status */
-> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
->  	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
->  
->  	/* stop ISP */
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBEZWMgNSwgMjAyMyBhdCA2OjAy4oCvQU0gVG9taSBWYWxrZWluZW4KPHRvbWkudmFs
+a2VpbmVuQGlkZWFzb25ib2FyZC5jb20+IHdyb3RlOgo+Cj4gT24gMDUvMTIvMjAyMyAxMzo1Nywg
+QWRhbSBGb3JkIHdyb3RlOgo+ID4gT24gVHVlLCBEZWMgNSwgMjAyMyBhdCAyOjEw4oCvQU0gVG9t
+aSBWYWxrZWluZW4KPiA+IDx0b21pLnZhbGtlaW5lbkBpZGVhc29uYm9hcmQuY29tPiB3cm90ZToK
+PiA+Pgo+ID4+IFRoZSBJUlEgaGFuZGxlciBya2lzcDFfaXNyKCkgY2FsbHMgc3ViLWhhbmRsZXJz
+LCBhbGwgb2Ygd2hpY2ggcmV0dXJucyBhbgo+ID4+IGlycXJldHVybl90IHZhbHVlLCBidXQgcmtp
+c3AxX2lzcigpIGlnbm9yZXMgdGhvc2UgdmFsdWVzIGFuZCBhbHdheXMKPiA+PiByZXR1cm5zIElS
+UV9IQU5ETEVELgo+ID4+Cj4gPj4gRml4IHRoaXMgYnkgY29sbGVjdGluZyB0aGUgcmV0dXJuIHZh
+bHVlcywgYW5kIHJldHVybmluZyBJUlFfSEFORExFRCBvcgo+ID4+IElSUV9OT05FIGFzIGFwcHJv
+cHJpYXRlLgo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogVG9taSBWYWxrZWluZW4gPHRvbWkudmFs
+a2VpbmVuQGlkZWFzb25ib2FyZC5jb20+Cj4gPj4gLS0tCj4gPj4gICBkcml2ZXJzL21lZGlhL3Bs
+YXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2LmMgfCAxOCArKysrKysrKysrKysrKy0t
+LS0KPiA+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygt
+KQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAv
+cmtpc3AxL3JraXNwMS1kZXYuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtp
+c3AxL3JraXNwMS1kZXYuYwo+ID4+IGluZGV4IDc2ZjkzNjE0YjRjZi4uMWQ2MGY0YjhiZDA5IDEw
+MDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3Jr
+aXNwMS1kZXYuYwo+ID4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtp
+c3AxL3JraXNwMS1kZXYuYwo+ID4+IEBAIC00NDUsMTcgKzQ0NSwyNyBAQCBzdGF0aWMgaW50IHJr
+aXNwMV9lbnRpdGllc19yZWdpc3RlcihzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxKQo+ID4+
+Cj4gPj4gICBzdGF0aWMgaXJxcmV0dXJuX3Qgcmtpc3AxX2lzcihpbnQgaXJxLCB2b2lkICpjdHgp
+Cj4gPj4gICB7Cj4gPj4gKyAgICAgICBpcnFyZXR1cm5fdCByZXQ7Cj4gPj4gKwo+ID4+ICAgICAg
+ICAgIC8qCj4gPj4gICAgICAgICAgICogQ2FsbCBya2lzcDFfY2FwdHVyZV9pc3IoKSBmaXJzdCB0
+byBoYW5kbGUgdGhlIGZyYW1lIHRoYXQKPiA+PiAgICAgICAgICAgKiBwb3RlbnRpYWxseSBjb21w
+bGV0ZWQgdXNpbmcgdGhlIGN1cnJlbnQgZnJhbWVfc2VxdWVuY2UgbnVtYmVyIGJlZm9yZQo+ID4+
+ICAgICAgICAgICAqIGl0IGlzIHBvdGVudGlhbGx5IGluY3JlbWVudGVkIGJ5IHJraXNwMV9pc3Bf
+aXNyKCkgaW4gdGhlIHZlcnRpY2FsCj4gPj4gICAgICAgICAgICogc3luYy4KPiA+PiAgICAgICAg
+ICAgKi8KPiA+PiAtICAgICAgIHJraXNwMV9jYXB0dXJlX2lzcihpcnEsIGN0eCk7Cj4gPj4gLSAg
+ICAgICBya2lzcDFfaXNwX2lzcihpcnEsIGN0eCk7Cj4gPj4gLSAgICAgICBya2lzcDFfY3NpX2lz
+cihpcnEsIGN0eCk7Cj4gPj4KPiA+PiAtICAgICAgIHJldHVybiBJUlFfSEFORExFRDsKPiA+PiAr
+ICAgICAgIHJldCA9IElSUV9OT05FOwo+ID4+ICsKPiA+PiArICAgICAgIGlmIChya2lzcDFfY2Fw
+dHVyZV9pc3IoaXJxLCBjdHgpID09IElSUV9IQU5ETEVEKQo+ID4+ICsgICAgICAgICAgICAgICBy
+ZXQgPSBJUlFfSEFORExFRDsKPiA+PiArCj4gPj4gKyAgICAgICBpZiAocmtpc3AxX2lzcF9pc3Io
+aXJxLCBjdHgpID09IElSUV9IQU5ETEVEKQo+ID4+ICsgICAgICAgICAgICAgICByZXQgPSBJUlFf
+SEFORExFRDsKPiA+PiArCj4gPj4gKyAgICAgICBpZiAocmtpc3AxX2NzaV9pc3IoaXJxLCBjdHgp
+ID09IElSUV9IQU5ETEVEKQo+ID4+ICsgICAgICAgICAgICAgICByZXQgPSBJUlFfSEFORExFRDsK
+PiA+PiArCj4gPgo+ID4gSXQgc2VlbXMgbGlrZSB3ZSdyZSB0aHJvd2luZyBhd2F5IHRoZSB2YWx1
+ZSBvZiByZXQgZWFjaCB0aW1lIHRoZQo+ID4gc3Vic2VxdWVudCBpZiBzdGF0ZW1lbnQgaXMgZXZh
+bHVhdGVkLiAgV2hldGhlciBvciBub3QgdGhleSByZXR1cm4KPiA+IGRpZG4ndCBtYXR0ZXIgYmVm
+b3JlLCBhbmQgdGhlIG9ubHkgb25lIHRoYXQgc2VlbXMgdXNpbmcgdGhlIHJldHVybgo+ID4gY29k
+ZSBpcyB0aGUgbGFzdCBvbmUuCj4gPgo+ID4gV291bGRuJ3QgaXQgYmUgc2ltcGxlciB0byB1c2Ug
+cmV0ID0gcmtpc3AxX2NhcHR1cmVfaXNyKGlycSwgY3R4KSwgcmV0Cj4gPiA9IHJraXNwMV9pc3Bf
+aXNyKGlycSwgY3R4KSBhbmQgcmV0ID0gcmtpc3AxX2NzaV9pc3IoaXJxLCBjdHgpIGlmIHdlCj4g
+PiBjYXJlIGFib3V0IHRoZSByZXR1cm4gY29kZT8KPiA+Cj4gPiBIb3cgZG8geW91IGV4cGVjdCB0
+aGlzIHRvIHJldHVybiBpZiBvbmUgb2YgdGhlIGZpcnN0IHR3byBkb24ndCByZXR1cm4KPiA+IElS
+UV9IQU5ETEVEPwo+Cj4gSSdtIHNvcnJ5LCBJIGRvbid0IHF1aXRlIGZvbGxvdyB3aGF0IHlvdSBt
+ZWFuLiBDYW4geW91IGVsYWJvcmF0ZSBhIGJpdD8KPgo+IFdlIHdhbnQgdGhlIHJraXNwMV9pc3Io
+KSB0byByZXR1cm4gSVJRX05PTkUgaWYgbm9uZSBvZiB0aGUgc3ViLWhhbmRsZXJzCj4gaGFuZGxl
+ZCB0aGUgaW50ZXJydXB0LiBPdGhlcndpc2UsIGlmIGFueSBvZiB0aGUgc3ViLWhhbmRsZXJzIHJl
+dHVybgo+IElSUV9IQU5ETEVELCBya2lzcDFfaXNyKCkgcmV0dXJucyBJUlFfSEFORExFRC4KCk9L
+LiAgSSB1bmRlcnN0YW5kIHlvdXIgZXhwbGFuYXRpb24uICBJIHJldHJhY3QgbXkgY29tbWVudC4g
+IEknbGwgdHJ5CnRvIHRlc3QgdGhpcyBzZXJpZXMgdG9uaWdodCBvbiBteSBpbXg4bXAKCmFkYW0K
+Cgo+Cj4gICBUb21pCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
