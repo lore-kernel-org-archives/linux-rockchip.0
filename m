@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1622C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 07:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89FE5C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 07:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DCYXHBcRdTrpdfLDnOyLkYiTVXScjygo3Qcn7pXOaag=; b=mOcYvDnOIVJBvEOZMiyWBsD0jy
-	xDa7mRZploMvV4bBEp2cnYBgUqpMMI+jbkA7c0/bSC4trUTyBXCgLPw1eKfdtmSJZQ05E+c6m/lYa
-	q/D3g3bSO7xTbtj//sB+lFWhJdDOi8Q9mX4RHD9VW7g+wY7/RW6GmsB/Yq995d9KA+ncXQ+Q/ta4n
-	AmC2kT615ZzZZvtLEzl1vhSfAePdIulIF9oUPWzMJMefZWpZvWqoEO7OyP1tSzmaAHHpqZuNjFVo6
-	gTCjxHnxxHcAlnIe0Wx0GLAqHk5usFZzNZ8A7iykeg/mklvtO5AMu3ospXUSYKKO2wwmqDbGlMae+
-	Y8qfftyA==;
+	bh=8zKCssy2OPlLbjr+h/ojgU8Et5OELB4YRJ2fZsMCZn4=; b=tEuBOHu5iylOLfqUFDXe4ETO09
+	1ivFfBQi8+LVyeHMha0Bl4j7bR8TnzV5avKB8cFQP+MAZDQ2kPNbQ95kDFmfxuDx8o6dpCH9XYppc
+	vXiD+CQXJhYuWLiDhtllGZO6OF3M6f6PxUovxINDss8eNtr2t74l28KCoa3LQzLPn8LZAeQghuTg+
+	lJ1QnZUdmXwDB52a/l5aICxi+G13Jy2m2Xi6WNmp6d8sM4QTif0rEagCCt82Bsl6ZnWl3KtU6rB8K
+	sMYkO9H/uuWzbdC2Oqiezou59pu59MyJwLfX3FXJtBWxKLtvI/UZY1sDz6m68EM/MZCAr//0XSHWC
+	jeSSBjxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQJZ-006Z7O-09;
-	Tue, 05 Dec 2023 07:57:57 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1rAQJf-006Z9r-33;
+	Tue, 05 Dec 2023 07:58:04 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAQJV-006Z5G-2l
+	id 1rAQJc-006Z88-2F
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 Dec 2023 07:57:55 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c09fcfa9fso22954905e9.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 23:57:50 -0800 (PST)
+	Tue, 05 Dec 2023 07:58:02 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40bd5ea84d6so16841555e9.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 04 Dec 2023 23:57:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701763069; x=1702367869; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1701763077; x=1702367877; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :references:cc:to:content-language:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=jZlO0xnPStZEinTm0f24UdEVnn+OIeG1LB9VFhjMDn0=;
-        b=luBOTve5gpibFiEA7M8DuxZtPkfA8MKPEexgh5m0QFfi31uyiRGOEOo6qnZS4znP3C
-         pa41Zp9m2tjVlRLIz3auO2mvT0Js42Mp1ckNmAZ3ZtM8ywOlP/e25DfETN8UusAHaJM9
-         ZfZal2Ps8d2AmPjTV7CzJQ9qAjcveiT4+SndU2Q5plH3JdfRGPrgjODuEOkWCHgrTOOS
-         Fto2MU7m1YVU5Vvkt3y/XGwXhBdbfweoBDAhPhQs9Shz33fSuZG8skfZzfFnprrLwyAc
-         xqIzgL//HqrhLv2rYNCNNCKSioC8TekHnrQ9cCOEYDAq+u2UNbXVPoR3cQU9Q92lBa07
-         8QiQ==
+        bh=6yZ/VcoVbuPE7IS/Acx3sYefHrc8lhnBqcqEkq1L8A0=;
+        b=Nr+2oX8IRgw5VN41y4m//Nx3ycZ4vun8FODb9nu3lI+NGqPXyUjnWdCJmbF8QdLdof
+         ko2o+BCYXx7kTnugVgLXxBjoKqAOHsQcwwoRIYytsoekox1cwoeRciurQuki2NWXE0Rv
+         8A/cCE1C+CBdCVU7DLSPhtuXKR7WmSyztP1w5vOkfKQGHRJAKW+NSgrqpTDZpsyXz6tc
+         FeHV26f7RFnsoQTmY4drlluhDkbYYJL6fLU5+A2n1ybLQyqLp5EdEnGTaD1Iwc296yN8
+         MHQlbqA3rB2+1AY82o73QAAmQTVm90Hqj9sffj/tfpZsow8Eu4kenYQP6vJf2LJTnHEM
+         q4fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701763069; x=1702367869;
+        d=1e100.net; s=20230601; t=1701763077; x=1702367877;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :references:cc:to:content-language:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=jZlO0xnPStZEinTm0f24UdEVnn+OIeG1LB9VFhjMDn0=;
-        b=mIeh/PH15/eec0RhNtNaa8easM7t094Sg+1SA/ntcU6eS4At9ylc7cXcsXEWPikF6O
-         M2Cq30D+8OUaIAbI1KygDuZDroX9zWkscYhOyv0bm/KGD+uJQKt69EYVwd0JNNhyP62J
-         chQvzJ60IL48xQKerphznIA0STfhGglkn9fHBtnNkBX+ZRY2wKQaEBl2rvulJxLYFTtZ
-         PStwOZCyYW4TeqLySmnApFAqsjxgIFFLxFPTMCSlX2+xsx1cKyzTo2IKjuS8IcT6jwru
-         wRCmTaVwJcp2QNInqunOy4cNTMUJfFgtcjUgUArPwVVs0uIS84TJ2gdZcaQtB/WwKKxH
-         Uigg==
-X-Gm-Message-State: AOJu0YwlSZJjJQcHDHYZDu8bSjjcdLtGjK3AVF9+BI/4hOACmmQPuGn8
-	ge5iHUhjQImoQHYk1bw0bYv0BQ==
-X-Google-Smtp-Source: AGHT+IHwJd6xvx8EbrbeJxGrNjoH7z2uA3YKkwv9zem5lbOJtRKYg/eC+/mlMS/Y1Dl6kwyTL/swVw==
-X-Received: by 2002:a05:600c:188a:b0:40c:eb7:d62d with SMTP id x10-20020a05600c188a00b0040c0eb7d62dmr436955wmp.64.1701763069001;
-        Mon, 04 Dec 2023 23:57:49 -0800 (PST)
+        bh=6yZ/VcoVbuPE7IS/Acx3sYefHrc8lhnBqcqEkq1L8A0=;
+        b=a9bAu4dSom87fOu5IQzhqkNIRtdu52KoMVO8sV7I2pjGoGM9Ei4R13/ia0FixvSzK7
+         kKtb25voEkoK/1EblZGCsBcE/UN2RHitAW8UZk/sZfovPDlglPcxS8wSlFRA/mb8WalB
+         iT2BDy8kEKCL+ZpY+PMpMi25aEZFqMn68zJsr+DFCb7c2xqZUBbe0aW6mb02dwwE0+rS
+         yQpzyWs9AEroRibH3ACQ+UjOLmXmPZkDyLdRILGmMa4MXaI9ikZuNUMg1idJcYOg5d7Q
+         HDsvNfFxUzN8bXJJMGLPgj5oQE40n1EYV8rfxXa8XpnApOxbv99JtYt1ENt31UCOEYtv
+         XGgQ==
+X-Gm-Message-State: AOJu0YzKNHsB+3fRMTbOtAOuQTqR6i8SEztrJBQrlhTD7oo5sFYXcwEF
+	JkZ0IdHB4SI+qjgMXaBlP8vbHQ==
+X-Google-Smtp-Source: AGHT+IGMUPO9d6IrvhXxXUIgi62nJFBXjjWYh5z/w4DQ0n2j8KHJb9zPfh20zYGiTu/FmyDUv0/+Xw==
+X-Received: by 2002:a05:600c:2e51:b0:40b:5e4a:2351 with SMTP id q17-20020a05600c2e5100b0040b5e4a2351mr264525wmf.83.1701763077338;
+        Mon, 04 Dec 2023 23:57:57 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:982:cbb0:4518:5e57:ff13:b4bb? ([2a01:e0a:982:cbb0:4518:5e57:ff13:b4bb])
-        by smtp.gmail.com with ESMTPSA id fm19-20020a05600c0c1300b004060f0a0fd5sm17803498wmb.13.2023.12.04.23.57.47
+        by smtp.gmail.com with ESMTPSA id fm19-20020a05600c0c1300b004060f0a0fd5sm17803498wmb.13.2023.12.04.23.57.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Dec 2023 23:57:48 -0800 (PST)
-Message-ID: <f38df966-5c82-47be-8ea4-b7df8ebc173a@linaro.org>
-Date: Tue, 5 Dec 2023 08:57:48 +0100
+        Mon, 04 Dec 2023 23:57:56 -0800 (PST)
+Message-ID: <8f0f5965-2c41-414e-84ba-95da76082234@linaro.org>
+Date: Tue, 5 Dec 2023 08:57:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: neil.armstrong@linaro.org
-Subject: Re: [PATCH V2 06/10] drm/panel: himax-hx8394: Add Support for
- Powkiddy X55 panel
+Subject: Re: [PATCH V2 02/10] drm/panel: himax-hx8394: Drop shutdown logic
 Content-Language: en-US, fr
 To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
@@ -81,7 +80,7 @@ Cc: dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org,
  conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
 References: <20231204185719.569021-1-macroalpha82@gmail.com>
- <20231204185719.569021-7-macroalpha82@gmail.com>
+ <20231204185719.569021-3-macroalpha82@gmail.com>
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
  GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
@@ -107,10 +106,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro Developer Services
-In-Reply-To: <20231204185719.569021-7-macroalpha82@gmail.com>
+In-Reply-To: <20231204185719.569021-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231204_235753_894650_E4CC7107 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20231204_235800_735527_88E850A8 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,185 +130,55 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 04/12/2023 19:57, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add support for the Powkiddy X55 panel as used on the Powkiddy X55
-> handheld gaming console. This panel uses a Himax HX8394 display
-> controller and requires a vendor provided init sequence. The display
-> resolution is 720x1280 and is 67mm by 121mm as measured with calipers.
+> The driver shutdown is duplicate as it calls drm_unprepare and
+> drm_disable which are called anyway when associated drivers are
+> shutdown/removed.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->   drivers/gpu/drm/panel/panel-himax-hx8394.c | 137 +++++++++++++++++++++
->   1 file changed, 137 insertions(+)
+>   drivers/gpu/drm/panel/panel-himax-hx8394.c | 17 -----------------
+>   1 file changed, 17 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/panel/panel-himax-hx8394.c b/drivers/gpu/drm/panel/panel-himax-hx8394.c
-> index b68ea09f4725..ff0dc08b9829 100644
+> index 3823ff388b96..d8e590d5e1da 100644
 > --- a/drivers/gpu/drm/panel/panel-himax-hx8394.c
 > +++ b/drivers/gpu/drm/panel/panel-himax-hx8394.c
-> @@ -38,6 +38,7 @@
->   #define HX8394_CMD_SETMIPI	  0xba
->   #define HX8394_CMD_SETOTP	  0xbb
->   #define HX8394_CMD_SETREGBANK	  0xbd
-> +#define HX8394_CMD_UNKNOWN5	  0xbf
->   #define HX8394_CMD_UNKNOWN1	  0xc0
->   #define HX8394_CMD_SETDGCLUT	  0xc1
->   #define HX8394_CMD_SETID	  0xc3
-> @@ -52,6 +53,7 @@
->   #define HX8394_CMD_SETGIP1	  0xd5
->   #define HX8394_CMD_SETGIP2	  0xd6
->   #define HX8394_CMD_SETGPO	  0xd6
-> +#define HX8394_CMD_UNKNOWN4	  0xd8
->   #define HX8394_CMD_SETSCALING	  0xdd
->   #define HX8394_CMD_SETIDLE	  0xdf
->   #define HX8394_CMD_SETGAMMA	  0xe0
-> @@ -203,6 +205,140 @@ static const struct hx8394_panel_desc hsd060bhw4_desc = {
->   	.init_sequence = hsd060bhw4_init_sequence,
->   };
+> @@ -390,27 +390,11 @@ static int hx8394_probe(struct mipi_dsi_device *dsi)
+>   	return 0;
+>   }
 >   
-> +static int powkiddy_x55_init_sequence(struct hx8394 *ctx)
-> +{
-> +	struct mipi_dsi_device *dsi = to_mipi_dsi_device(ctx->dev);
-> +
-> +	/* 5.19.8 SETEXTC: Set extension command (B9h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETEXTC,
-> +			       0xff, 0x83, 0x94);
-> +
-> +	/* 5.19.9 SETMIPI: Set MIPI control (BAh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETMIPI,
-> +			       0x63, 0x03, 0x68, 0x6b, 0xb2, 0xc0);
-> +
-> +	/* 5.19.2 SETPOWER: Set power (B1h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPOWER,
-> +			       0x48, 0x12, 0x72, 0x09, 0x32, 0x54, 0x71, 0x71, 0x57, 0x47);
-> +
-> +	/* 5.19.3 SETDISP: Set display related register (B2h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETDISP,
-> +			       0x00, 0x80, 0x64, 0x2c, 0x16, 0x2f);
-> +
-> +	/* 5.19.4 SETCYC: Set display waveform cycles (B4h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETCYC,
-> +			       0x73, 0x74, 0x73, 0x74, 0x73, 0x74, 0x01, 0x0c, 0x86, 0x75,
-> +			       0x00, 0x3f, 0x73, 0x74, 0x73, 0x74, 0x73, 0x74, 0x01, 0x0c,
-> +			       0x86);
-> +
-> +	/* 5.19.5 SETVCOM: Set VCOM voltage (B6h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETVCOM,
-> +			       0x6e, 0x6e);
-> +
-> +	/* 5.19.19 SETGIP0: Set GIP Option0 (D3h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP0,
-> +			       0x00, 0x00, 0x07, 0x07, 0x40, 0x07, 0x0c, 0x00, 0x08, 0x10,
-> +			       0x08, 0x00, 0x08, 0x54, 0x15, 0x0a, 0x05, 0x0a, 0x02, 0x15,
-> +			       0x06, 0x05, 0x06, 0x47, 0x44, 0x0a, 0x0a, 0x4b, 0x10, 0x07,
-> +			       0x07, 0x0c, 0x40);
-> +
-> +	/* 5.19.20 Set GIP Option1 (D5h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP1,
-> +			       0x1c, 0x1c, 0x1d, 0x1d, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05,
-> +			       0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x24, 0x25, 0x18, 0x18,
-> +			       0x26, 0x27, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18,
-> +			       0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x20, 0x21,
-> +			       0x18, 0x18, 0x18, 0x18);
-> +
-> +	/* 5.19.21 Set GIP Option2 (D6h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGIP2,
-> +			       0x1c, 0x1c, 0x1d, 0x1d, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02,
-> +			       0x01, 0x00, 0x0b, 0x0a, 0x09, 0x08, 0x21, 0x20, 0x18, 0x18,
-> +			       0x27, 0x26, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18,
-> +			       0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x25, 0x24,
-> +			       0x18, 0x18, 0x18, 0x18);
-> +
-> +	/* 5.19.25 SETGAMMA: Set gamma curve related setting (E0h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETGAMMA,
-> +			       0x00, 0x0a, 0x15, 0x1b, 0x1e, 0x21, 0x24, 0x22, 0x47, 0x56,
-> +			       0x65, 0x66, 0x6e, 0x82, 0x88, 0x8b, 0x9a, 0x9d, 0x98, 0xa8,
-> +			       0xb9, 0x5d, 0x5c, 0x61, 0x66, 0x6a, 0x6f, 0x7f, 0x7f, 0x00,
-> +			       0x0a, 0x15, 0x1b, 0x1e, 0x21, 0x24, 0x22, 0x47, 0x56, 0x65,
-> +			       0x65, 0x6e, 0x81, 0x87, 0x8b, 0x98, 0x9d, 0x99, 0xa8, 0xba,
-> +			       0x5d, 0x5d, 0x62, 0x67, 0x6b, 0x72, 0x7f, 0x7f);
-> +
-> +	/* Unknown command, not listed in the HX8394-F datasheet */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN1,
-> +			       0x1f, 0x31);
-> +
-> +	/* 5.19.17 SETPANEL (CCh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPANEL,
-> +			       0x0b);
-> +
-> +	/* Unknown command, not listed in the HX8394-F datasheet */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN3,
-> +			       0x02);
-> +
-> +	/* 5.19.11 Set register bank (BDh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
-> +			       0x02);
-> +
-> +	/* Unknown command, not listed in the HX8394-F datasheet */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN4,
-> +			       0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +			       0xff, 0xff);
-> +
-> +	/* 5.19.11 Set register bank (BDh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
-> +			       0x00);
-> +
-> +	/* 5.19.11 Set register bank (BDh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
-> +			       0x01);
-> +
-> +	/* 5.19.2 SETPOWER: Set power (B1h) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETPOWER,
-> +			       0x00);
-> +
-> +	/* 5.19.11 Set register bank (BDh) */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_SETREGBANK,
-> +			       0x00);
-> +
-> +	/* Unknown command, not listed in the HX8394-F datasheet */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN5,
-> +			       0x40, 0x81, 0x50, 0x00, 0x1a, 0xfc, 0x01);
-> +
-> +	/* Unknown command, not listed in the HX8394-F datasheet */
-> +	mipi_dsi_dcs_write_seq(dsi, HX8394_CMD_UNKNOWN2,
-> +			       0xed);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct drm_display_mode powkiddy_x55_mode = {
-> +	.hdisplay	= 720,
-> +	.hsync_start	= 720 + 44,
-> +	.hsync_end	= 720 + 44 + 20,
-> +	.htotal		= 720 + 44 + 20 + 20,
-> +	.vdisplay	= 1280,
-> +	.vsync_start	= 1280 + 12,
-> +	.vsync_end	= 1280 + 12 + 10,
-> +	.vtotal		= 1280 + 12 + 10 + 10,
-> +	.clock		= 63290,
-> +	.flags		= DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
-> +	.width_mm	= 67,
-> +	.height_mm	= 121,
-> +};
-> +
-> +static const struct hx8394_panel_desc powkiddy_x55_desc = {
-> +	.mode = &powkiddy_x55_mode,
-> +	.lanes = 4,
-> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
-> +	.format = MIPI_DSI_FMT_RGB888,
-> +	.init_sequence = powkiddy_x55_init_sequence,
-> +};
-> +
->   static int hx8394_enable(struct drm_panel *panel)
+> -static void hx8394_shutdown(struct mipi_dsi_device *dsi)
+> -{
+> -	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
+> -	int ret;
+> -
+> -	ret = drm_panel_disable(&ctx->panel);
+> -	if (ret < 0)
+> -		dev_err(&dsi->dev, "Failed to disable panel: %d\n", ret);
+> -
+> -	ret = drm_panel_unprepare(&ctx->panel);
+> -	if (ret < 0)
+> -		dev_err(&dsi->dev, "Failed to unprepare panel: %d\n", ret);
+> -}
+> -
+>   static void hx8394_remove(struct mipi_dsi_device *dsi)
 >   {
->   	struct hx8394 *ctx = panel_to_hx8394(panel);
-> @@ -419,6 +555,7 @@ static void hx8394_remove(struct mipi_dsi_device *dsi)
+>   	struct hx8394 *ctx = mipi_dsi_get_drvdata(dsi);
+>   	int ret;
 >   
->   static const struct of_device_id hx8394_of_match[] = {
->   	{ .compatible = "hannstar,hsd060bhw4", .data = &hsd060bhw4_desc },
-> +	{ .compatible = "powkiddy,x55-panel", .data = &powkiddy_x55_desc },
->   	{ /* sentinel */ }
->   };
->   MODULE_DEVICE_TABLE(of, hx8394_of_match);
+> -	hx8394_shutdown(dsi);
+> -
+>   	ret = mipi_dsi_detach(dsi);
+>   	if (ret < 0)
+>   		dev_err(&dsi->dev, "Failed to detach from DSI host: %d\n", ret);
+> @@ -427,7 +411,6 @@ MODULE_DEVICE_TABLE(of, hx8394_of_match);
+>   static struct mipi_dsi_driver hx8394_driver = {
+>   	.probe	= hx8394_probe,
+>   	.remove = hx8394_remove,
+> -	.shutdown = hx8394_shutdown,
+>   	.driver = {
+>   		.name = DRV_NAME,
+>   		.of_match_table = hx8394_of_match,
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
