@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66825C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 13:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E8F1C10DC3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Dec 2023 16:49:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gh/CK+zvbrHqfr46jk3/uOSvGOPzcdpH4FFb+Es+RUs=; b=ckRr1MBvELHfI7
-	sxHmkJVgmwzAMOHUcvVa7oISNdUSpJ+l56eOfmtkk3lBskRLWBkQ0cZzEVz3fpJ53mzvKz/t9YSp3
-	yWsVVuTWl1/4UnLfz/tDcgCLLN0XBdu8MnmR7Zaxc7dQ4IGBtfDgVd7H3//QsLSRI/ohUZvuVt6XE
-	gaByvWpYzXUTlv9ZRrISLysU8mACvCizJygjj4Gr9t18AJgm0rAObVVQATCMMCK4uSsnq9haS7K8d
-	2B3/8+fHdzQnya1p50N8AiZ3lTxZ1l4eaMACZyYU2H0ScW7SW+QQncIAvlSWUOAqe527xu4trPbhf
-	9iyOnkRHeJL9esiPtu/g==;
+	List-Owner; bh=wAJoRX+vEut4DqL02ssER7pggEJpHO8pl66X167DqFs=; b=g+1f1ruzrPvfJT
+	HVK1pwafLNh/QwLMx/ak3iZC1p/pn+0s5uBjXRhOkzXdYU50QFO0NisiLc29JUQk8miZ+CioVKFYb
+	vBwHNHd0ekITSmQwotqhw0/raPyN9MSFOdaVmOJvmgl6KqIL7erbRoBV+z5BhJfe1vpxlIAp8/68m
+	g5ST1tFkwQO3cejNH9p041MjVe/FoReCe0jsbF4e4+aKeZZcbRd0Esy9U4qLX9KluL9nvQouhQ69Y
+	vhR70CHUw4IWoyqyl5uMXnRngNLaiB4zLdQA6NrOjNU+HLbJhwKaGIoUa3BSgoQ8b/jKQQkJ1LW3s
+	VeD7zLTO+vPhz2SkMaZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAVXy-007W18-14;
-	Tue, 05 Dec 2023 13:33:10 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rAYbQ-007uh3-1E;
+	Tue, 05 Dec 2023 16:48:56 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAVXu-007W0C-0c;
-	Tue, 05 Dec 2023 13:33:07 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40bd5eaa66cso45111405e9.2;
-        Tue, 05 Dec 2023 05:33:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701783183; x=1702387983; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bzyRrGgr1xyIRTuSlVez/WAzJTF9ClcbFo3elgDY4gM=;
-        b=AGh6efLDP+tpga+jOsi1iIfrM++TMxMU/PK8UaUf+QjYqWctJl6Zz8yPHni56HjdSp
-         J6o3D7KV+sHl/dtcJFCVYzW/rdYSkzzDPakJ03yDk11w0vS4+ZLnksr9ZvDTwhrePLGl
-         W+uKArM5O+dR1QgaN9NdFjqKx3pHDLMlvyEB7b9SxYchi7dS9DlVUVhZkQov2MNL0iFt
-         fXQgNqkS36vS4TNpmDUNO9KZ11NFv8TyLMm2XWk4M/N39UOf2fA+vV1Lh041SkD+RXTe
-         /0Hriorv8RoSY06KkXdk4WwJORFpvV7eVW8Ij4zJXcBbq3HXDo2YXaIky8frbaR9etkq
-         uDXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701783183; x=1702387983;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bzyRrGgr1xyIRTuSlVez/WAzJTF9ClcbFo3elgDY4gM=;
-        b=WUd7fd8KGqRb4nk+e8H8rSzP7n6xeCmAtVg2aAIi3nG5fwwjushGPKUiNp1msaQ5DM
-         7Zt1JB1WOfTI6jDHQeb3/uuKNjSfpoxJ9e1PisqBGHvKvJXxr9CcsF9qcjIHeaIQZ+MZ
-         w4KCdaCLeKORiWj1+PTB+E09kXtHYM4twciqFOWJQyW2WDDjIIvLIEpR43abNHDsxHY0
-         NwBAi6AAN6a6pbJIFwMZFoXj0LRxS+wM1FCL0tXPpdKgdvh/InR/jZ1PCN0XPRDKHvgl
-         gui6H0Onw15BKvRca7x/7bYP4tYTFKUBcQYv50cR8Tdx9R02cbmeE+QejpTEQMYcbf2u
-         S9Ow==
-X-Gm-Message-State: AOJu0YyjK+gtEZDVclhfcgwXcRBBBQLgsUJFUItoytftmntOyvlphNwC
-	+ebNdnGeZyxe6Pc13kzZCZLp5MneJA==
-X-Google-Smtp-Source: AGHT+IFy0DaIbKCeHYeWS6jUVuiNuwPqwgmtFOSPV4fT2Ct/kGDs1iBXqYgPiOiyj8ufYthmHzVEyA==
-X-Received: by 2002:a05:600c:1f0c:b0:40b:5e59:ccaf with SMTP id bd12-20020a05600c1f0c00b0040b5e59ccafmr555401wmb.144.1701783183295;
-        Tue, 05 Dec 2023 05:33:03 -0800 (PST)
-Received: from ?IPV6:2a02:810b:f40:4300:4583:8031:1ebd:143b? ([2a02:810b:f40:4300:4583:8031:1ebd:143b])
-        by smtp.gmail.com with ESMTPSA id g14-20020a05600c310e00b0040b481222e3sm22564748wmo.41.2023.12.05.05.33.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Dec 2023 05:33:02 -0800 (PST)
-Message-ID: <7bc1ba43-98cc-47ce-8d58-b4f4081c84b7@gmail.com>
-Date: Tue, 5 Dec 2023 14:33:01 +0100
+	id 1rAYbN-007ufl-1U;
+	Tue, 05 Dec 2023 16:48:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=D6/9YDuwS+ygiZa4oJ4bI48VxrGLKCxHT3TEx2RiyEQ=; b=Yl1G3VjyI1fX8zK5lidsgAijIu
+	O0PimdZaapaazfJAjDoUhCuo457vdb9OhSD5kRuEfBW3/RpQ7hFJOUwO3Rqfx7QeDRC7lyX4t+ykl
+	mEfqqayB9j66OGC82jRWGBDCwL1hTmTivVcJDrLTuwuIA/ZQFTMEv0EQB9wG8sKSQSfITprxBiLRu
+	VRYYwmzWmsuwOwrBTEL3+fhZs/ZRilbF4aJDsPvzFdsuGKCpJV2qXlwzLUCLbeALEle4801mAR9J3
+	7Sci2fI9FMJplUM5D1Nt1N8ul7V5dH5xOLdMSbQ3S9Bb2zD/4VY5n1d5UxMdqeb7IeaNe2m/vgvpU
+	4JIHBsLA==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rAYbI-004oHb-0K;
+	Tue, 05 Dec 2023 16:48:52 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rAYbF-00014D-CB; Tue, 05 Dec 2023 17:48:45 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	quentin.schulz@theobroma-systems.com,
+	heiko@sntech.de,
+	dsimic@manjaro.org,
+	didi.debian@cknow.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v2 3/4] arm64: dts: rockchip: add rk3588 gpio aliases to soc dtsi
+Date: Tue,  5 Dec 2023 17:48:41 +0100
+Message-Id: <20231205164842.556684-4-heiko@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231205164842.556684-1-heiko@sntech.de>
+References: <20231205164842.556684-1-heiko@sntech.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] Move core bus and gpio aliases to SoC dtsi for RK3128
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20231202130506.66738-2-knaerzche@gmail.com>
- <170173468934.501889.12474504620278418598.b4-ty@sntech.de>
-Content-Language: en-US
-From: Alex Bee <knaerzche@gmail.com>
-In-Reply-To: <170173468934.501889.12474504620278418598.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231205_053306_549414_AF64CC8E 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20231205_164848_341280_0A5C2945 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +74,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Am 05.12.23 um 01:05 schrieb Heiko Stuebner:
-> On Sat, 2 Dec 2023 14:05:04 +0100, Alex Bee wrote:
->> Following up the recent discussion [0] about where aliases can be/should be
->> placed this series moves gpio, i2c and uart aliases to SoC dtsi for RK3128.
->>
->> Note: This patches are based on maintainter's repo.
->>
->> [0] https://lore.kernel.org/all/b0c637f5-5abf-420b-8b02-839eba68799e@linaro.org/T/#m94aebb23a29b015d94b250a70b675febdaa902ea
->>
->> [...]
-> Applied, thanks!
->
-> [1/3] ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
->        commit: 3b0422a4ce59d8afb84bd7516bf71a3c1caa7925
-> [2/3] ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
->        commit: 39732a49803cf271454416341549df09c4a2fd2f
->
-> I also applied patch 3 ... though had to pick it manually from the list
-> as the subject was a bit garbled (missing 3/3), so b4 did not pick it up.
+The gpio controllers on rk3588 are named gpio0 - gpio4. Board schematics
+also use these exact numbers and we want those names to also reflect
+in the OS devices because everything else would just cause confusion.
+Userspace gpio access is a thing afterall.
 
-Thanks and sorry for the mess.
+To prevent each board repeating their list of gpio aliases, define them
+in the soc dtsi, as previous Rockchip soc like the rk356x do already.
 
-Not sure how I managed to get this done :) Will double check next time 
-before submitting.
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Alex
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 47512c39e55a..a59407466746 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -19,6 +19,11 @@ / {
+ 	#size-cells = <2>;
+ 
+ 	aliases {
++		gpio0 = &gpio0;
++		gpio1 = &gpio1;
++		gpio2 = &gpio2;
++		gpio3 = &gpio3;
++		gpio4 = &gpio4;
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+-- 
+2.39.2
 
->
-> Best regards,
 
 _______________________________________________
 Linux-rockchip mailing list
