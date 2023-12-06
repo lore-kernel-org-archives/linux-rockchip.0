@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D000C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 10:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5595FC4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 10:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kTxwE5eitROE3mzugxmd6LARtUUupwnPSjxISXsbqS4=; b=ktXMuB4crgEk7y
-	QUT/EvdXA1En2O9CP7+Ld1JvrbFUEiWKI6y+6DCwlGgJK1N5e5TjpIH8fk1rjSNtVNvIBUBCoBpsW
-	jY65kylhrHyGT/gFgvlMzSsLdPf8cvBL2UD/M6/vjN8jTOA2upaTflef+VSJLzNAcf//JgYdWX9sm
-	koQ6/zBz1ZYlOnZyTtDks4aLD4mx8ago3bWBzTNsBt6i2K2Rb+j9woTZlcDnsx6Hz1t4lyeiJNKeY
-	4BTOvjxp8CD5dvn42wDzUPCevxGIM1lJnwfWzJ6TmffS7yd6QYvp6PqT7njdzZFluXFQPaZyvOUrb
-	ZdKbVckMIFaZP7laZy4g==;
+	List-Owner; bh=p7mITd9ijXOwE+uybCpoBDfHddc5W3fLS3Kgv8OrSR4=; b=X/G+eqIEaUXzM+
+	Zj17ErnKegNj921c0vqHye2TfxQwN6Wi9Mtkwk21MUJwIT1zhd/GHG5IgB8S+Lu506dpy1VMyAuSP
+	80+REJjjJF4dFJWR7yg0qSiM5NKabEsvRDP/blE2vYqZU/kvWgK+UIU543R2gy07imemxa+mDGIgE
+	y8iRb/4bRygxtMRHNzpfiHzBdFevDpBjCwxWY5N4yI79sHgbpvzK03yBktuneRUt8w2ScVcG0dXVo
+	fOlTA3P5K25RoxhRgv9S0hlti040WDgojo/2DLlYtqdP6ZYbk60UXheLq/RE7Hz8J+yYctc/nWFcw
+	p3qWf/Z5lt9kBgA+Hrmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAp24-009iiA-1E;
-	Wed, 06 Dec 2023 10:21:32 +0000
-Received: from mail-m49221.qiye.163.com ([45.254.49.221])
+	id 1rAp2G-009imj-2Q;
+	Wed, 06 Dec 2023 10:21:44 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAp20-009if7-0G
-	for linux-rockchip@lists.infradead.org;
-	Wed, 06 Dec 2023 10:21:30 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=GHBs36RmzsdWM7RSL7gWfBTsazGEYrC9Q80YmcAipjDkuooCQoxlLxLhMm48SHx+iIJABAymX1aO187PSbYbKfcvz10g+Dd3FONhDjjovf8nnkRl3Cw4YQjgmbZ8x6ku+dHW/PiVGK2d2TlJAfN7kurhx3A/VKAIlMGKoa8t43E=;
-	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=9xlM+ah3xEiWDG8+tX0nu4c8K6ADTJwqHeOuHcfSFA8=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 1937678022C;
-	Wed,  6 Dec 2023 18:20:59 +0800 (CST)
-Message-ID: <593f1092-3f5b-42ab-bc6e-dbd0fc8fb8ba@rock-chips.com>
-Date: Wed, 6 Dec 2023 18:20:58 +0800
+	id 1rAp2D-009ikn-1W;
+	Wed, 06 Dec 2023 10:21:42 +0000
+Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D3FFB14DC;
+	Wed,  6 Dec 2023 11:12:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1701857531;
+	bh=FsHDUhUOSdmxO1qno4l01PDWe1nNLgupoeHmIzcStq0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=LwVWe7fYRMeptio1qhiK7QyUSytVlcl8HZexC+03MTX0Ai/LY/NOYTIgzk4IKyDCF
+	 W7ZO/hV36GBLi7DOq4B09njNrCAS8B4U+YWNJTTixxl9lakF1PDaLopc0ycamnzhUg
+	 nvvPYthYsZEirxkRwvlYA1LW5091IxL7VHuTIQQk=
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Date: Wed, 06 Dec 2023 12:12:28 +0200
+Subject: [PATCH v2 1/4] media: rkisp1: Drop IRQF_SHARED
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 12/14] drm/rockchip: vop2: Add debugfs support
-Content-Language: en-US
-To: Sascha Hauer <sha@pengutronix.de>, Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com
-References: <20231130122001.12474-1-andyshrk@163.com>
- <20231130122449.13432-1-andyshrk@163.com>
- <20231205091541.GV1057032@pengutronix.de>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20231205091541.GV1057032@pengutronix.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh5NGVZJTh1IGEkdH0pMTB5VEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5JVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8c3ea52492b24fkuuu1937678022c
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MAw6Dgw5Lzw#FlEtERcQAxY3
-	KFEwC09VSlVKTEtKQ05DS01LS09KVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSkhJSEw3Bg++
+Message-Id: <20231206-rkisp-irq-fix-v2-1-6ba4185eeb1f@ideasonboard.com>
+References: <20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com>
+In-Reply-To: <20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>, 
+ kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com, 
+ aford173@gmail.com, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+X-Mailer: b4 0.12.4
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1223;
+ i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
+ bh=FsHDUhUOSdmxO1qno4l01PDWe1nNLgupoeHmIzcStq0=;
+ b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcEkg4oQWDIpxgRjng5riAxA98dypRcWlQusOt
+ gHRf/zsXYaJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXBJIAAKCRD6PaqMvJYe
+ 9Qt2D/9VM6a4+9d6s6OGE5LzaUWHgDu2WoXfUkyZ+cD9Zb65uEiK6uQxQJRa7OEfRqn7Us0XlG9
+ O56i09/y211GvZiwC4Q/CJlN7slXeGor51/DQsMvaEjmdeTwupE8XJ4Kp5Xb8IfkigKd8DcD6Ok
+ oH/GFRJ6YA95YwQDnd7s3fVxawUE9t/z6jYCtF56e7cRJ9Tpzf/dXM5ebb8Ymiku0K4RCZpjuUr
+ K8mTjmTacegvUqPofVSc6DJyoaqUucYfEpbTdYAilz7fqpLaLL0djdjytER7y4RGkv7CiuB46Dx
+ lZdu9KXd1YHMrYJ02un7ETntsbO6Y9lg1lf4tFsyw2rU+lGtZlqBjeEFUbfFn1KkcXKkn3ubv5A
+ 7SCe1udyuRXV3tinIZ+oAGG9p1hLrBn1OwwHNLhxvYx0eDcKLMrwleRG7EhWe9WL1TNe6V/Ir9V
+ iaJkQv919QYja1YKjjM7gnIZUZXM8qclZYVAb7P7XFfvPKOUTU8NH1Pa7Z0cahSvXmKdx3ZoK/A
+ 2WU0EK8+c4IVeJskD0I/oFzL/BUJMEl8LmyH4UpItj15RKAFzX5kjALNkC4fEm8bnskkmpVojT7
+ J6zMWDC8ZpYY23v8iqK3Qv6JpJY8z89dKvPDVGpSA+aIyOqUZfm8AJMPLZYujbVVAombu0D4zQl
+ qFV4XmjbLpJIIoQ==
+X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
+ fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_022128_285893_79581176 
-X-CRM114-Status: GOOD (  28.19  )
+X-CRM114-CacheID: sfid-20231206_022141_648272_B7BD1BEF 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,348 +85,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha:
+In all known platforms the ISP has dedicated IRQ lines, but for some
+reason the driver uses IRQF_SHARED.
 
-On 12/5/23 17:15, Sascha Hauer wrote:
-> On Thu, Nov 30, 2023 at 08:24:49PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->> /sys/kernel/debug/dri/vop2/summary:  dump vop display state
->> /sys/kernel/debug/dri/vop2/regs: dump whole vop registers
->> /sys/kernel/debug/dri/vop2/active_regs: only dump the registers of
->> activated modules
->>
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->>
->> ---
->>
->> Changes in v3:
->> - put regs dump info in vop2_data
->>
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 268 +++++++++++++++++++
->>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  11 +
->>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 191 +++++++++++++
->>   3 files changed, 470 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> index 6f17cc56501e..56a165c0b130 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> @@ -27,6 +27,7 @@
->>   #include <drm/drm_debugfs.h>
->>   #include <drm/drm_flip_work.h>
->>   #include <drm/drm_framebuffer.h>
->> +#include <drm/drm_gem_framebuffer_helper.h>
->>   #include <drm/drm_probe_helper.h>
->>   #include <drm/drm_vblank.h>
->>   
->> @@ -187,6 +188,7 @@ struct vop2 {
->>   	 */
->>   	u32 registered_num_wins;
->>   
->> +	struct resource *res;
->>   	void __iomem *regs;
->>   	struct regmap *map;
->>   
->> @@ -238,6 +240,37 @@ struct vop2 {
->>   
->>   #define vop2_output_if_is_dpi(x)	((x) == ROCKCHIP_VOP2_EP_RGB0)
->>   
->> +
->> +/*
->> + * bus-format types.
->> + */
->> +struct drm_bus_format_enum_list {
->> +	int type;
->> +	const char *name;
->> +};
->> +
->> +static const struct drm_bus_format_enum_list drm_bus_format_enum_list[] = {
->> +	{ DRM_MODE_CONNECTOR_Unknown, "Unknown" },
->> +	{ MEDIA_BUS_FMT_RGB565_1X16, "RGB565_1X16" },
->> +	{ MEDIA_BUS_FMT_RGB666_1X18, "RGB666_1X18" },
->> +	{ MEDIA_BUS_FMT_RGB666_1X24_CPADHI, "RGB666_1X24_CPADHI" },
->> +	{ MEDIA_BUS_FMT_RGB666_1X7X3_SPWG, "RGB666_1X7X3_SPWG" },
->> +	{ MEDIA_BUS_FMT_YUV8_1X24, "YUV8_1X24" },
->> +	{ MEDIA_BUS_FMT_UYYVYY8_0_5X24, "UYYVYY8_0_5X24" },
->> +	{ MEDIA_BUS_FMT_YUV10_1X30, "YUV10_1X30" },
->> +	{ MEDIA_BUS_FMT_UYYVYY10_0_5X30, "UYYVYY10_0_5X30" },
->> +	{ MEDIA_BUS_FMT_RGB888_3X8, "RGB888_3X8" },
->> +	{ MEDIA_BUS_FMT_RGB888_1X24, "RGB888_1X24" },
->> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_SPWG, "RGB888_1X7X4_SPWG" },
->> +	{ MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA, "RGB888_1X7X4_JEIDA" },
->> +	{ MEDIA_BUS_FMT_UYVY8_2X8, "UYVY8_2X8" },
->> +	{ MEDIA_BUS_FMT_YUYV8_1X16, "YUYV8_1X16" },
->> +	{ MEDIA_BUS_FMT_UYVY8_1X16, "UYVY8_1X16" },
->> +	{ MEDIA_BUS_FMT_RGB101010_1X30, "RGB101010_1X30" },
->> +	{ MEDIA_BUS_FMT_YUYV10_1X20, "YUYV10_1X20" },
->> +};
->> +static DRM_ENUM_NAME_FN(drm_get_bus_format_name, drm_bus_format_enum_list)
->> +
->>   static const struct regmap_config vop2_regmap_config;
->>   
->>   static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
->> @@ -2522,6 +2555,239 @@ static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs = {
->>   	.atomic_disable = vop2_crtc_atomic_disable,
->>   };
->>   
->> +static void vop2_dump_connector_on_crtc(struct drm_crtc *crtc, struct seq_file *s)
->> +{
->> +	struct drm_connector_list_iter conn_iter;
->> +	struct drm_connector *connector;
->> +
->> +	drm_connector_list_iter_begin(crtc->dev, &conn_iter);
->> +	drm_for_each_connector_iter(connector, &conn_iter) {
->> +		if (crtc->state->connector_mask & drm_connector_mask(connector))
->> +			seq_printf(s, "    Connector: %s\n", connector->name);
->> +
->> +	}
->> +	drm_connector_list_iter_end(&conn_iter);
->> +}
->> +
->> +static int vop2_plane_state_dump(struct seq_file *s, struct drm_plane *plane)
->> +{
->> +	struct vop2_win *win = to_vop2_win(plane);
->> +	struct drm_plane_state *pstate = plane->state;
->> +	struct drm_rect *src, *dst;
->> +	struct drm_framebuffer *fb;
->> +	struct drm_gem_object *obj;
->> +	struct rockchip_gem_object *rk_obj;
->> +	bool xmirror;
->> +	bool ymirror;
->> +	bool rotate_270;
->> +	bool rotate_90;
->> +	dma_addr_t fb_addr;
->> +	int i;
->> +
->> +	seq_printf(s, "    %s: %s\n", win->data->name, pstate->crtc ? "ACTIVE" : "DISABLED");
->> +	if (!pstate || !pstate->fb)
->> +		return 0;
-> 
-> 'pstate' is dereferenced before its checked being non NULL. Either the
-> check is unnecessary or should be before the seq_printf() call.
+Supporting IRQF_SHARED properly requires handling interrupts even when
+our device is disabled, and the driver does not handle this. To avoid
+adding such code, and to be sure the driver won't accidentally be used
+in a platform with shared interrupts, let's drop the IRQF_SHARED flag.
 
-I will move it before seq_printf.
+Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
->> +
->> +	fb = pstate->fb;
->> +	src = &pstate->src;
->> +	dst = &pstate->dst;
->> +	xmirror = pstate->rotation & DRM_MODE_REFLECT_X ? true : false;
->> +	ymirror = pstate->rotation & DRM_MODE_REFLECT_Y ? true : false;
->> +	rotate_270 = pstate->rotation & DRM_MODE_ROTATE_270;
->> +	rotate_90 = pstate->rotation & DRM_MODE_ROTATE_90;
->> +
->> +	seq_printf(s, "\twin_id: %d\n", win->win_id);
->> +
->> +	seq_printf(s, "\tformat: %p4cc%s glb_alpha[0x%x]\n",
->> +		   &fb->format->format,
->> +		   drm_is_afbc(fb->modifier) ? "[AFBC]" : "",
->> +		   pstate->alpha >> 8);
->> +	seq_printf(s, "\trotate: xmirror: %d ymirror: %d rotate_90: %d rotate_270: %d\n",
->> +		   xmirror, ymirror, rotate_90, rotate_270);
->> +	seq_printf(s, "\tzpos: %d\n", pstate->normalized_zpos);
->> +	seq_printf(s, "\tsrc: pos[%d, %d] rect[%d x %d]\n", src->x1 >> 16,
->> +		   src->y1 >> 16, drm_rect_width(src) >> 16,
->> +		   drm_rect_height(src) >> 16);
->> +	seq_printf(s, "\tdst: pos[%d, %d] rect[%d x %d]\n", dst->x1, dst->y1,
->> +		   drm_rect_width(dst), drm_rect_height(dst));
->> +
->> +	for (i = 0; i < fb->format->num_planes; i++) {
->> +		obj = fb->obj[0];
->> +		rk_obj = to_rockchip_obj(obj);
->> +		fb_addr = rk_obj->dma_addr + fb->offsets[0];
-> 
-> Did you really intend to use array index [0] here or should this rather be [i]?
-> If you intended to use [0] then you could move the initialization out of
-> the loop.
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 2b9886fd0800..d4950294b7b9 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -573,7 +573,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		if (irq < 0)
+ 			return irq;
+ 
+-		ret = devm_request_irq(dev, irq, info->isrs[i].isr, IRQF_SHARED,
++		ret = devm_request_irq(dev, irq, info->isrs[i].isr, 0,
+ 				       dev_driver_string(dev), dev);
+ 		if (ret) {
+ 			dev_err(dev, "request irq failed: %d\n", ret);
 
-It's should use index[i]. thanks for catching this.
+-- 
+2.34.1
 
-> 
->> +
->> +		seq_printf(s, "\tbuf[%d]: addr: %pad pitch: %d offset: %d\n",
->> +			   i, &fb_addr, fb->pitches[i], fb->offsets[i]);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
->> +{
->> +	struct vop2_video_port *vp = to_vop2_video_port(crtc);
->> +	struct drm_crtc_state *cstate = crtc->state;
->> +	struct rockchip_crtc_state *vcstate;
->> +	struct drm_display_mode *mode;
->> +	struct drm_plane *plane;
->> +	bool interlaced;
->> +
->> +	seq_printf(s, "Video Port%d: %s\n", vp->id, !cstate ?
->> +		   "DISABLED" : cstate->active ? "ACTIVE" : "DISABLED");
->> +
->> +	if (!cstate || !cstate->active)
->> +		return 0;
->> +
->> +	mode = &crtc->state->adjusted_mode;
->> +	vcstate = to_rockchip_crtc_state(cstate);
->> +	interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
->> +
->> +	vop2_dump_connector_on_crtc(crtc, s);
->> +	seq_printf(s, "\tbus_format[%x]: %s\n", vcstate->bus_format,
->> +		    drm_get_bus_format_name(vcstate->bus_format));
->> +	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
->> +	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
->> +	seq_printf(s, "    Display mode: %dx%d%s%d\n",
->> +		    mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
->> +		    drm_mode_vrefresh(mode));
->> +	seq_printf(s, "\tclk[%d] real_clk[%d] type[%x] flag[%x]\n",
->> +		    mode->clock, mode->crtc_clock, mode->type, mode->flags);
->> +	seq_printf(s, "\tH: %d %d %d %d\n", mode->hdisplay, mode->hsync_start,
->> +		    mode->hsync_end, mode->htotal);
->> +	seq_printf(s, "\tV: %d %d %d %d\n", mode->vdisplay, mode->vsync_start,
->> +		    mode->vsync_end, mode->vtotal);
->> +
->> +	drm_atomic_crtc_for_each_plane(plane, crtc) {
->> +		vop2_plane_state_dump(s, plane);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int vop2_summary_show(struct seq_file *s, void *data)
->> +{
->> +	struct drm_info_node *node = s->private;
->> +	struct drm_minor *minor = node->minor;
->> +	struct drm_device *drm_dev = minor->dev;
->> +	struct drm_crtc *crtc;
->> +
->> +	drm_modeset_lock_all(drm_dev);
->> +	drm_for_each_crtc(crtc, drm_dev) {
->> +		vop2_crtc_state_dump(crtc, s);
->> +	}
->> +	drm_modeset_unlock_all(drm_dev);
->> +
->> +	return 0;
->> +}
->> +
->> +static void vop2_regs_print(struct vop2 *vop2, struct seq_file *s,
->> +			    const struct vop2_regs_dump *dump, bool active_only)
->> +{
->> +	resource_size_t start;
->> +	const int reg_num = 0x110 / 4;
-> 
-> You added the number of registers to struct vop2_regs_dump, no need to
-> hardcode this anymore.
-
-
-Thanks for catching this ,will removed in next version.
-> 
->> +	u32 val;
->> +	int i;
->> +
->> +	if (dump->en_mask && active_only) {
->> +		val = vop2_readl(vop2, dump->base + dump->en_reg);
->> +		if ((val & dump->en_mask) != dump->en_val)
->> +			return;
->> +	}
->> +	seq_printf(s, "\n%s:\n", dump->name);
->> +
->> +	start = vop2->res->start + dump->base;
->> +	for (i = 0; i < reg_num;) {
->> +		seq_printf(s, "%08x:  %08x %08x %08x %08x\n", (u32)start + i * 4,
->> +			   vop2_readl(vop2, dump->base + (4 * i)),
->> +			   vop2_readl(vop2, dump->base + (4 * (i + 1))),
->> +			   vop2_readl(vop2, dump->base + (4 * (i + 2))),
->> +			   vop2_readl(vop2, dump->base + (4 * (i + 3))));
->> +		i += 4;
->> +	}
->> +}
->> +
->> +static int vop2_regs_show(struct seq_file *s, void *arg)
->> +{
->> +	struct drm_info_node *node = s->private;
->> +	struct vop2 *vop2 = (struct vop2 *)node->info_ent->data;
-> 
-> node->info_ent->data is a void pointer, no need to cast explicitly.
-
-
-Thanks for pointing out, will drop the cast in next version.
-
-> 
->> +	struct drm_minor *minor = node->minor;
->> +	struct drm_device *drm_dev = minor->dev;
->> +	const struct vop2_regs_dump *dump;
->> +	unsigned int n = vop2->data->regs_dump_size;
-> 
-> 'n' is used only once, it might be clearer just to use the value where
-> needed and drop the extra variable.
-
-Okay, will do.
-> 
->> +	unsigned int i;
->> +
->> +	drm_modeset_lock_all(drm_dev);
->> +
->> +	if (vop2->enable_count) {
->> +		for (i = 0; i < n; i++) {
->> +			dump = &vop2->data->regs_dump[i];
->> +			vop2_regs_print(vop2, s, dump, false);
->> +		}
->> +	} else {
->> +		seq_printf(s, "VOP disabled:\n");
-> 
-> There's nothing following after the ':', right? Then this should be
-> "VOP: disabled\n" or without the colon at all.
-
-the colon will be droped in next versin.
-
-> 
->> +	}
->> +	drm_modeset_unlock_all(drm_dev);
-> 
-> This code is repeated in vop2_active_regs_show() below. Maybe factor
-> this out to a common function?
-> 
-
-
-Do you mean all the code between drm_modeset_lock_all and drm_modeset_unlock_all ?
->> +
->> +	return 0;
->> +}
->> +
->> +static int vop2_active_regs_show(struct seq_file *s, void *data)
->> +{
->> +	struct drm_info_node *node = s->private;
->> +	struct vop2 *vop2 = (struct vop2 *)node->info_ent->data;
->> +	struct drm_minor *minor = node->minor;
->> +	struct drm_device *drm_dev = minor->dev;
->> +	const struct vop2_regs_dump *dump;
->> +	unsigned int n = vop2->data->regs_dump_size;
->> +	unsigned int i;
->> +
->> +	drm_modeset_lock_all(drm_dev);
->> +	if (vop2->enable_count) {
->> +		for (i = 0; i < n; i++) {
->> +			dump = &vop2->data->regs_dump[i];
->> +			vop2_regs_print(vop2, s, dump, true);
->> +		}
->> +	} else {
->> +		seq_printf(s, "VOP disabled:\n");
->> +	}
->> +	drm_modeset_unlock_all(drm_dev);
->> +
->> +	return 0;
->> +}
->> +
-> 
-> Sascha
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
