@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB8D0C10DC1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 10:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA7DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 10:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xNiHwdIForMfnFvh3xz0w2qXOrnQqAYQ8k0atu1QDt0=; b=3gSSY5SA3cF2Ek
-	u1wjC4rCYo1ORcVmdZVFfic2BcRjkVHRY4OTN4CLhV7aPfIebDGPQJ6gwkTAK4ABA0LeEXV6nKEg8
-	pT7WOjyp4P4ZmBsVYryUTbnwsoOpA+We/aT19x+hnHtpZWct9fVuQCzevOcxQ3/pyKv/9znaO7OX9
-	a4lOKzUbDUgC5xd3zN9SIizptg8Jz1+5J6IJBzrVsfKjrLu9ilga9rDmrO8RlcMSPqaN6mRag8UtR
-	fs0GbAC2PCcHoQdXU6pYDh3mqL+vgGdiWjQ6P/KhQan1GvYKg18Z8MzR3xgKX1ojwCyP5tHFmPUmS
-	ibrq8kiK4N+T4h/p7CxA==;
+	List-Owner; bh=ZGlYwg+4xgPH45QOZxeVgVacLa80eKsk8LDsMPwKrDA=; b=iZdgG5u/Uo4moX
+	92p8CJnBS497EeWwPp56CoLs6ZyOEq2Y37v549shu74K7UAyWBOp6vMiaVYueSWHn9re14nG6YZ2C
+	g6Jga+q3gwROaEZXp74t0hxUPPwegxeQrIGQNhKCUQxVRa0tUC9WMcISDk6NIsHOgxQtUhb3VfADp
+	eHef16lyBooLxz6oWTwGR+aosJuipDZW8CQ/0yyloxVnetDfzXXim+gING5ofYmwI+91kF+g8JtZm
+	ozTwEFg9Za4SeYqBWuxyDfg3zOoOMlWHWLid43kJKKd3RmtUnQrvWRPsX5sss2WOzOoEXgz6XGNrv
+	zrCcyRLqIIwCS7fFR1ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAotz-009gS1-2r;
-	Wed, 06 Dec 2023 10:13:11 +0000
+	id 1rAou1-009gTE-0G;
+	Wed, 06 Dec 2023 10:13:13 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAotj-009gE9-1r;
-	Wed, 06 Dec 2023 10:13:02 +0000
+	id 1rAotk-009gF2-0f;
+	Wed, 06 Dec 2023 10:13:03 +0000
 Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A42DA20EA;
-	Wed,  6 Dec 2023 11:12:12 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8EA622B09;
+	Wed,  6 Dec 2023 11:12:13 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701857533;
-	bh=VviOwphn+4RrO5iGwi9wzijWsSEuvXaefVURZe6+FbI=;
+	s=mail; t=1701857534;
+	bh=PKUcBdc8Qj6XeTMDCk4F0nRr2AQygA1lnSwR9BIZ64A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HEoiK+OCfToUQ64whKk44P2r0aabAUh7ob8T9Xy2/IgS89hQXw3AiyUW4bzf+pxPR
-	 NmPGAiTJutCi38fNSoGTAeQKDAoZ8GBY/1lGj936FruYpnDZnMP7WnGp6cyHGdcMPc
-	 wp2w1hBjt9iq9b8fNorJ/01mdEigFwdZy6yPGQuo=
+	b=mlZdKuCICZ5xqmYpghtsHBC1xpLI76Ws+DZsoYvWi8URIodqTSDt9hGX+aot1nvHW
+	 C9gdyHqwHmp09usqo56v9453JXWr3org8nQ9xwPX54CN1RXnilaS1EasyJKBLFCxSe
+	 /KhuS6lrDaxHWLYIpJpq4Jg4LfbyItKa0/eQnoBk=
 From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Date: Wed, 06 Dec 2023 12:12:30 +0200
-Subject: [PATCH v2 3/4] media: rkisp1: Store IRQ lines
+Date: Wed, 06 Dec 2023 12:12:31 +0200
+Subject: [PATCH v2 4/4] media: rkisp1: Fix IRQ disable race issue
 MIME-Version: 1.0
-Message-Id: <20231206-rkisp-irq-fix-v2-3-6ba4185eeb1f@ideasonboard.com>
+Message-Id: <20231206-rkisp-irq-fix-v2-4-6ba4185eeb1f@ideasonboard.com>
 References: <20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com>
 In-Reply-To: <20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
@@ -54,26 +54,26 @@ Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
  linux-kernel@vger.kernel.org, 
  Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4211;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3439;
  i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
- bh=VviOwphn+4RrO5iGwi9wzijWsSEuvXaefVURZe6+FbI=;
- b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcEkhINtZt/jrHcvd8PyxoqiGU8w5A9HQZ0mOF
- +aiJUoPTEWJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXBJIQAKCRD6PaqMvJYe
- 9Ts5EACkSyWCPkI9IGqrr3Fxt4RlHxqx5t3XNKBKgBit8k0HzhBoILndDUENez6ZxzgCrOKPCq4
- n1w8oNKMxJ5kEouMU8sJUk3qZ/rewbb8E1JvisK4FdFWnrARFa1dv9LywMB9dwr1GklObpn6S9v
- /FGcdy0pG5J3ww2dMIQ7HEX1tZYSH0r1q7RhMEnFu2PZNxhjlt048pJq4YdqOuT+eGJxeiDHSwv
- 3dBmSul27T5iRlOUSPd3r8+edm8N7s25AmpWuNxOcu8r6xwb9QvLACxcqQKOr5B+dbVZY1Eh/LL
- h/PxYAd8pEz6fbLo9OsTZikwLN0H9JD3nPKxZnPB/8qa+TU8ePAqMTzDISEIys9/s6qI3mn576Y
- n84vMqc5yOJ6+gBCwaN49yPaXR2iAzshb4lw9LFhnU1TEe+8w6aUfwqFXmGWUR5portRnbKM7dB
- zNvBYdXmzESUX6a9SPPCPpiMclWQ7GmcVv/tIExWm+m2l0QXlyzbV8oT/VpjBePsWtjWxYxHaEO
- 43OYp2qQkj6NBxBtpDs+LeukBNCCgJGpWc7l1vU/tkJFb8wK7P+LR05OfpWsJ8yQM9MY04dAGdX
- 5eeu77I9M0T1yhroWUBcHjTg7cnCYaUhK4LqXFCjQY8SPLCJNguYZWM+HwNQg6h9i3ulb+RiBEV
- Gqo1EBMeMEIt3NQ==
+ bh=PKUcBdc8Qj6XeTMDCk4F0nRr2AQygA1lnSwR9BIZ64A=;
+ b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcEkhuPu8R/u0zTPQ1W//B0yzANJaz5h46O91S
+ MX9rZ0rGhKJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXBJIQAKCRD6PaqMvJYe
+ 9SQ1D/0WNlBX1kQYLY1htxMCKTBE6WutW9vj9EDMkljHP4bFOTt76UdikAxDBt1ozRlskCeF6cE
+ PNe0r5Ck2WlI7E+Ucfu1SmRgsqZf80Or7Lz3sqGYscuwl5RF1QUYnzmULiaNOSmkkJHc/ZIIemb
+ p+G7vvjytJrpg1MGF/qJmhVlGCVZJhLn+r8oAHx80cCgzvnf9apfFuz0soMDZLzC60zk1TK9+/F
+ mjhOSBnU8njOvS7TdFQJsxhr5fCWsZYXahNF41pY+luL+ZgS7KNpbkqprCw1k63yeO6XABJ9pAh
+ Cyx7CtSaKsrLGO7GhnKZpcrO7cdQROBDpG4ymbwxFVMKnED45uChqhg9y663qTHBahXIVUhuyBX
+ QwKPpwY7wFCORjm0WtGPW7dfE8Mgam1vqPHnzfi7s/JDZQMKNZvr1jlG3wgbHgF6/U7ngoDiR4E
+ 2U1qi4jqTB/V2vAKvSfqkJ1Zc4DcssxYYOcmO3iQVPkNCiBHwdXzttxza0KTWktARVZ5lyIaEXE
+ hxTlkWxglasejh0NocZF5jfIeOPfHV5JhHFOmJ/6iaLAo1IEgFRRe5QGsm267E6IW3Obuk9+DZ1
+ 4rNodgTAdPKsYrQNbUDie5BXKjTjOwZUJ/uvb0/aKOm0G/15ajtHheOslDXihbxjSBiiX1RlVSW
+ Ckl3LxDwT6v/JPA==
 X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
  fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_021255_781074_21E8C8B6 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20231206_021256_403349_A9967778 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,123 +90,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Store the IRQ lines used by the driver for easy access. These are needed
-in future patches which fix IRQ race issues.
+In rkisp1_isp_stop() and rkisp1_csi_disable() the driver masks the
+interrupts and then apparently assumes that the interrupt handler won't
+be running, and proceeds in the stop procedure. This is not the case, as
+the interrupt handler can already be running, which would lead to the
+ISP being disabled while the interrupt handler handling a captured
+frame.
+
+This brings up two issues: 1) the ISP could be powered off while the
+interrupt handler is still running and accessing registers, leading to
+board lockup, and 2) the interrupt handler code and the code that
+disables the streaming might do things that conflict.
+
+It is not clear to me if 2) causes a real issue, but 1) can be seen with
+a suitable delay (or printk in my case) in the interrupt handler,
+leading to board lockup.
 
 Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-common.h    | 11 ++++++++++-
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c   | 19 ++++++++++++++-----
- 2 files changed, 24 insertions(+), 6 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 14 +++++++++++++-
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 20 +++++++++++++++++---
+ 2 files changed, 30 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 960ab89c659b..ec28907d978e 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -62,6 +62,14 @@ struct regmap;
- 						 RKISP1_CIF_ISP_EXP_END |	\
- 						 RKISP1_CIF_ISP_HIST_MEASURE_RDY)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 47f4353a1784..0bab3303f2e4 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -125,8 +125,20 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
+ 	struct rkisp1_device *rkisp1 = csi->rkisp1;
+ 	u32 val;
  
-+/* IRQ lines */
-+enum rkisp1_irq_line {
-+	RKISP1_IRQ_ISP = 0,
-+	RKISP1_IRQ_MI,
-+	RKISP1_IRQ_MIPI,
-+	RKISP1_NUM_IRQS,
-+};
+-	/* Mask and clear interrupts. */
++	/* Mask MIPI interrupts. */
+ 	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
 +
- /* enum for the resizer pads */
- enum rkisp1_rsz_pad {
- 	RKISP1_RSZ_PAD_SINK,
-@@ -437,7 +445,6 @@ struct rkisp1_debug {
-  * struct rkisp1_device - ISP platform device
-  *
-  * @base_addr:	   base register address
-- * @irq:	   the irq number
-  * @dev:	   a pointer to the struct device
-  * @clk_size:	   number of clocks
-  * @clks:	   array of clocks
-@@ -457,6 +464,7 @@ struct rkisp1_debug {
-  * @stream_lock:   serializes {start/stop}_streaming callbacks between the capture devices.
-  * @debug:	   debug params to be exposed on debugfs
-  * @info:	   version-specific ISP information
-+ * @irqs:          IRQ line numbers
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
-@@ -479,6 +487,7 @@ struct rkisp1_device {
- 	struct mutex stream_lock; /* serialize {start/stop}_streaming cb between capture devices */
- 	struct rkisp1_debug debug;
- 	const struct rkisp1_info *info;
-+	int irqs[RKISP1_NUM_IRQS];
- };
- 
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 030eb8c79546..492ff5e6770d 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -115,6 +115,7 @@
- struct rkisp1_isr_data {
- 	const char *name;
- 	irqreturn_t (*isr)(int irq, void *ctx);
-+	u32 line_mask;
- };
- 
- /* ----------------------------------------------------------------------------
-@@ -473,9 +474,9 @@ static const char * const px30_isp_clks[] = {
- };
- 
- static const struct rkisp1_isr_data px30_isp_isrs[] = {
--	{ "isp", rkisp1_isp_isr },
--	{ "mi", rkisp1_capture_isr },
--	{ "mipi", rkisp1_csi_isr },
-+	{ "isp", rkisp1_isp_isr, BIT(RKISP1_IRQ_ISP) },
-+	{ "mi", rkisp1_capture_isr, BIT(RKISP1_IRQ_MI) },
-+	{ "mipi", rkisp1_csi_isr, BIT(RKISP1_IRQ_MIPI) },
- };
- 
- static const struct rkisp1_info px30_isp_info = {
-@@ -496,7 +497,7 @@ static const char * const rk3399_isp_clks[] = {
- };
- 
- static const struct rkisp1_isr_data rk3399_isp_isrs[] = {
--	{ NULL, rkisp1_isr },
-+	{ NULL, rkisp1_isr, BIT(RKISP1_IRQ_ISP) | BIT(RKISP1_IRQ_MI) | BIT(RKISP1_IRQ_MIPI) },
- };
- 
- static const struct rkisp1_info rk3399_isp_info = {
-@@ -517,7 +518,7 @@ static const char * const imx8mp_isp_clks[] = {
- };
- 
- static const struct rkisp1_isr_data imx8mp_isp_isrs[] = {
--	{ NULL, rkisp1_isr },
-+	{ NULL, rkisp1_isr, BIT(RKISP1_IRQ_ISP) | BIT(RKISP1_IRQ_MI) | BIT(RKISP1_IRQ_MIPI) },
- };
- 
- static const struct rkisp1_info imx8mp_isp_info = {
-@@ -574,6 +575,9 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	if (IS_ERR(rkisp1->base_addr))
- 		return PTR_ERR(rkisp1->base_addr);
- 
-+	for (unsigned int il = 0; il < RKISP1_NUM_IRQS; ++il)
-+		rkisp1->irqs[il] = -1;
++	/* Flush posted writes */
++	rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
 +
- 	for (i = 0; i < info->isr_size; i++) {
- 		irq = info->isrs[i].name
- 		    ? platform_get_irq_byname(pdev, info->isrs[i].name)
-@@ -581,6 +585,11 @@ static int rkisp1_probe(struct platform_device *pdev)
- 		if (irq < 0)
- 			return irq;
- 
-+		for (unsigned int il = 0; il < RKISP1_NUM_IRQS; ++il) {
-+			if (info->isrs[i].line_mask & BIT(il))
-+				rkisp1->irqs[il] = irq;
-+		}
++	/*
++	 * Wait until the IRQ handler has ended. The IRQ handler may get called
++	 * even after this, but it will return immediately as the MIPI
++	 * interrupts have been masked.
++	 */
++	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MIPI]);
 +
- 		ret = devm_request_irq(dev, irq, info->isrs[i].isr, 0,
- 				       dev_driver_string(dev), dev);
- 		if (ret) {
++	/* Clear MIPI interrupt status */
+ 	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+ 
+ 	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index dafbfd230542..33b5a714d117 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -364,11 +364,25 @@ static void rkisp1_isp_stop(struct rkisp1_isp *isp)
+ 	 * ISP(mi) stop in mi frame end -> Stop ISP(mipi) ->
+ 	 * Stop ISP(isp) ->wait for ISP isp off
+ 	 */
+-	/* stop and clear MI and ISP interrupts */
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
+ 
++	/* Mask MI and ISP interrupts */
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
+ 	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
++
++	/* Flush posted writes */
++	rkisp1_read(rkisp1, RKISP1_CIF_MI_IMSC);
++
++	/*
++	 * Wait until the IRQ handler has ended. The IRQ handler may get called
++	 * even after this, but it will return immediately as the MI and ISP
++	 * interrupts have been masked.
++	 */
++	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_ISP]);
++	if (rkisp1->irqs[RKISP1_IRQ_ISP] != rkisp1->irqs[RKISP1_IRQ_MI])
++		synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MI]);
++
++	/* Clear MI and ISP interrupt status */
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
+ 	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
+ 
+ 	/* stop ISP */
 
 -- 
 2.34.1
