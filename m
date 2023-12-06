@@ -4,56 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98BABC10F05
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 14:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F142C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 14:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4o57jrGa17/EMrjzmW/O0SFNWEX9sLoel/xalzzAV7A=; b=oGiQi5bK+qLAvK
-	fLDVusxJn/Bxmc/7zyQrELihz+4DT4iEEDi3Nqx5ouEQq/5zmkXNzcKjQUnrF+df1zfD0u/b33Smq
-	uax/Ao9G63yHpkpla90No+lmiUIm6QH3GiLI2lPsjRQIPeatScHzhW/Xdzixo0N5GpfH6dE8fl2e/
-	ltU2NdEwjAEeZeRfPZWMwCbrJpDUEqu+G/VDcDqK6SME19KxthHKEfw0KP3taHWio09Zk45tMR1I3
-	csgfnuYToZiYPGhfKl79oX20z6ZH1c8OXxBo2e+okzbmcvHwsUK9aUbL0gdV2+5d59RUttOHLvx+K
-	WfZVO1UoafeR0qPjf/qw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w6ydGg6UeEx6hAfF48S/0zVmztnJeap+PWaK3HJE9c0=; b=li62auNzfaNPBK
+	NM18t+SGQ5TmIR8Q35Qn3U0qC7yXBpOsRiJcF+Y2Dyq4rfGj+/jLUVk+DIvBWuJXOOog2RWnL3pZd
+	YX1zP0+7AH3dBF2Pc3O9gyve1zmC5XIB8XCJOZShlTFzD8tDbLKAuP0LWBN+3+lqDnVkvUwupMM+T
+	teeMiqXgNtg7lBMkN6S30uVIRuPKmL5Mr0Hgoe5mj2ZDJFk60gEVk9MQS+TX3Q/belphAhoSoix5A
+	K58aHUrNvcI9/6zZVIzLFEPUPE8EL6n7qeyMbslWZnvqdVFpPcWrxCjc+k0wNxB9+0jXtuqJrfgIX
+	qlX8h2GQee5EjRP1Ew+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAtEl-00AYcV-2s;
-	Wed, 06 Dec 2023 14:50:55 +0000
+	id 1rAtJd-00AZGJ-0x;
+	Wed, 06 Dec 2023 14:55:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAtEi-00AYbM-27;
-	Wed, 06 Dec 2023 14:50:53 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
+	id 1rAtJa-00AZFH-2x;
+	Wed, 06 Dec 2023 14:55:56 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rAtEe-0002nV-3l; Wed, 06 Dec 2023 15:50:48 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: lpieralisi@kernel.org,
-	kw@linux.com,
-	bhelgaas@google.com
-Cc: robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	quentin.schulz@theobroma-systems.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH] dt-bindings: PCI: dwc: rockchip: document optional pcie reference clock input
-Date: Wed,  6 Dec 2023 15:50:41 +0100
-Message-Id: <20231206145041.667900-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
+	id 1rAtJZ-0002pK-BA; Wed, 06 Dec 2023 15:55:53 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Sam Edwards <cfsworks@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Daniel =?utf-8?B?S3VraWXFgmE=?= <daniel@kukiela.pl>,
+ Sven Rademakers <sven.rademakers@gmail.com>,
+ Joshua Riek <jjriek@verizon.net>, Sam Edwards <CFSworks@gmail.com>
+Subject: Re: [RESEND PATCH] arm64: dts: rockchip: Add PCIe pinctrls to Turing RK1
+Date: Wed, 06 Dec 2023 15:55:52 +0100
+Message-ID: <3331042.e9J7NaK4W3@diego>
+In-Reply-To: <20231205202900.4617-1-CFSworks@gmail.com>
+References: <20231205202900.4617-1-CFSworks@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_065052_689639_53EAD3F8 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20231206_065554_959570_B8DF2673 
+X-CRM114-Status: GOOD (  22.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,40 +63,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+Am Dienstag, 5. Dezember 2023, 21:28:59 CET schrieb Sam Edwards:
+> The RK3588 PCIe 3.0 controller seems to have unpredictable behavior when
+> no CLKREQ/PERST/WAKE pins are configured in the pinmux. In particular, it
+> will sometimes (varying between specific RK3588 chips, not over time) shut
+> off the DBI block, and reads to this range will instead stall
+> indefinitely.
+> 
+> When this happens, it will prevent Linux from booting altogether. The
+> PCIe driver will stall the CPU core once it attempts to read the version
+> information from the DBI range.
+> 
+> Fix this boot hang by adding the correct pinctrl configuration to the
+> PCIe 3.0 device node, which is the proper thing to do anyway. While
+> we're at it, also add the necessary configuration to the PCIe 2.0 node,
+> which may or may not fix the equivalent problem over there -- but is the
+> proper thing to do anyway. :)
+> 
+> Fixes: 2806a69f3fef6 ("arm64: dts: rockchip: Add Turing RK1 SoM support")
+> Signed-off-by: Sam Edwards <CFSworks@gmail.com>
+> ---
+>  .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 14 ++------------
+>  1 file changed, 2 insertions(+), 12 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> index 9570b34aca2e..129f14dbd42f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> @@ -214,7 +214,7 @@ rgmii_phy: ethernet-phy@1 {
+>  &pcie2x1l1 {
+>  	linux,pci-domain = <1>;
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie2_reset>;
+> +	pinctrl-0 = <&pcie30x1m1_pins>;
+>  	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+>  	status = "okay";
+>  };
+> @@ -226,7 +226,7 @@ &pcie30phy {
+>  &pcie3x4 {
+>  	linux,pci-domain = <0>;
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie3_reset>;
+> +	pinctrl-0 = <&pcie30x4m1_pins>;
 
-On some boards the 100MHz PCIe reference clock to both controller and
-devices is controllable. Add that clock to the list of clocks.
+also, why are you throwing out the pinctrl for the reset pin.
+That seems not related to the regular pins and you could instead just do
 
-The clock is optional, so the minItems stays the same.
++	pinctrl-0 = <&pcie30x4m1_pins>, <&pcie3_reset>;
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Thanks
+Heiko
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 1ae8dcfa072c..5f719218c472 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -49,6 +49,7 @@ properties:
-       - description: APB clock for PCIe
-       - description: Auxiliary clock for PCIe
-       - description: PIPE clock
-+      - description: Reference clock for PCIe
- 
-   clock-names:
-     minItems: 5
-@@ -59,6 +60,7 @@ properties:
-       - const: pclk
-       - const: aux
-       - const: pipe
-+      - const: ref
- 
-   interrupts:
-     items:
--- 
-2.39.2
+>  	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie30>;
+>  	status = "okay";
+> @@ -245,17 +245,7 @@ hym8563_int: hym8563-int {
+>  		};
+>  	};
+>  
+> -	pcie2 {
+> -		pcie2_reset: pcie2-reset {
+> -			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -	};
+> -
+>  	pcie3 {
+> -		pcie3_reset: pcie3-reset {
+> -			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -
+>  		vcc3v3_pcie30_en: pcie3-reg {
+>  			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+> 
+
+
+
 
 
 _______________________________________________
