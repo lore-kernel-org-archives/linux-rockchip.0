@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8CC0C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 09:30:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F43C4167B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 09:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JFiEto3H/AryMJFXlGx3fRYCcvBWrXwzryQGGwGr/P8=; b=3WidWpz9hf2kzp
-	YJb2Vb6y8INazTLk17odp8M1EI005gt2fGuvTWWL79dJoZZaRI/kbUw46qyOIRv8gpKnnjydQLGpl
-	jcYwc7iB5I8EbW9liF5J/TtOI3B5RLx31/DP/rIy9UOAN85o/n2iA1ght09GSCnCuF0/K+S9R6wFf
-	z+o+c1LNrl3D4QbOdFQhqyPmO4B2BkYbzXbw1g7K4STmzUl3GfEhUWrDgpZZbQnwUSW7sP7jJGs6A
-	y/y6yXtRlkkzG2xQfnLKw91jCHpoMiEaqv5Tr7EjtI1cWIUbyfFx2Nu2XKkwDl6N6NSC8AwtyLx1H
-	XP5bXE/RWTQ0p5E3TpuQ==;
+	List-Owner; bh=c3Ns0xg8LKXjXA2f7sBnreX1FVOjXVmxefdUBVubkgY=; b=uvG2J4aY1mxGEK
+	9pEPUOnkGE9GHfzx9JXiX7+eJ6+XyupN4LG4Ikzhom/SzC7HH8mQtV5ygO+XHyoxGbNqgapqqKi3T
+	mX6QJ97VD0I9NcaaNkG1sQumYThA5nWy5NB1vvAB1m8p/J35Y/CMY5zJTxhZhuDVfE7QS+ch3QvrT
+	G8C8YmYR9NG51kFNq1UpZBKsdlXsJ7z+DbmdhVW914R4LS5l3Zrz7HqI2mb8PGRRtE60rPow/6Ru/
+	pJKOS/U4f5m+t4XsdAKt5zLLi4yQpvP4Q1hADxkYV2WsYAwzI+GrDIMd+QqbN3fqbi2whIPQmmsNX
+	s5HcUCgPOc9HlaTtSYmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAoEC-009YcA-2a;
-	Wed, 06 Dec 2023 09:30:00 +0000
+	id 1rAoJt-009Zfa-2C;
+	Wed, 06 Dec 2023 09:35:53 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rAoE9-009Yb9-0s;
-	Wed, 06 Dec 2023 09:29:58 +0000
+	id 1rAoJr-009Zf9-22;
+	Wed, 06 Dec 2023 09:35:52 +0000
 Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rAoE4-0008Mk-HT; Wed, 06 Dec 2023 10:29:52 +0100
+	id 1rAoJp-0008S0-Tl; Wed, 06 Dec 2023 10:35:49 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andi Shyti <andi.shyti@kernel.org>,
- Jensen Huang <jensenhuang@friendlyarm.com>
-Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] i2c: rk3x: fix potential spinlock recursion on poll
-Date: Wed, 06 Dec 2023 10:29:51 +0100
-Message-ID: <5298230.31r3eYUQgx@diego>
-In-Reply-To: <20231206090641.18849-1-jensenhuang@friendlyarm.com>
-References: <20231206090641.18849-1-jensenhuang@friendlyarm.com>
+To: Rob Herring <robh+dt@kernel.org>, Sam Edwards <cfsworks@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Daniel =?utf-8?B?S3VraWXFgmE=?= <daniel@kukiela.pl>,
+ Sven Rademakers <sven.rademakers@gmail.com>,
+ Joshua Riek <jjriek@verizon.net>, Sam Edwards <CFSworks@gmail.com>
+Subject: Re: [RESEND PATCH] arm64: dts: rockchip: Add PCIe pinctrls to Turing RK1
+Date: Wed, 06 Dec 2023 10:35:48 +0100
+Message-ID: <2724771.ElGaqSPkdT@diego>
+In-Reply-To: <20231205202900.4617-1-CFSworks@gmail.com>
+References: <20231205202900.4617-1-CFSworks@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_012957_312061_2559585F 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20231206_013551_669831_90054821 
+X-CRM114-Status: GOOD (  22.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,71 +63,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 6. Dezember 2023, 10:06:40 CET schrieb Jensen Huang:
-> Possible deadlock scenario (on reboot):
-> rk3x_i2c_xfer_common(polling)
->     -> rk3x_i2c_wait_xfer_poll()
->         -> rk3x_i2c_irq(0, i2c);
->             --> spin_lock(&i2c->lock);
->             ...
->         <rk3x i2c interrupt>
->         -> rk3x_i2c_irq(0, i2c);
->             --> spin_lock(&i2c->lock); (deadlock here)
->
-> Store the IRQ number and disable/enable it around the polling transfer.
-> This patch has been tested on NanoPC-T4.
+Am Dienstag, 5. Dezember 2023, 21:28:59 CET schrieb Sam Edwards:
+> The RK3588 PCIe 3.0 controller seems to have unpredictable behavior when
+> no CLKREQ/PERST/WAKE pins are configured in the pinmux. In particular, it
+> will sometimes (varying between specific RK3588 chips, not over time) shut
+> off the DBI block, and reads to this range will instead stall
+> indefinitely.
 > 
-> Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
+> When this happens, it will prevent Linux from booting altogether. The
+> PCIe driver will stall the CPU core once it attempts to read the version
+> information from the DBI range.
+> 
+> Fix this boot hang by adding the correct pinctrl configuration to the
+> PCIe 3.0 device node, which is the proper thing to do anyway. While
+> we're at it, also add the necessary configuration to the PCIe 2.0 node,
+> which may or may not fix the equivalent problem over there -- but is the
+> proper thing to do anyway. :)
+> 
+> Fixes: 2806a69f3fef6 ("arm64: dts: rockchip: Add Turing RK1 SoM support")
+> Signed-off-by: Sam Edwards <CFSworks@gmail.com>
 > ---
->  drivers/i2c/busses/i2c-rk3x.c | 12 ++++++++++--
->  1 file changed, 10 insertions(+), 2 deletions(-)
+>  .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 14 ++------------
+>  1 file changed, 2 insertions(+), 12 deletions(-)
 > 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index a044ca0c35a1..94514637c3bd 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -200,6 +200,7 @@ struct rk3x_i2c {
->  	struct clk *clk;
->  	struct clk *pclk;
->  	struct notifier_block clk_rate_nb;
-> +	int irq;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> index 9570b34aca2e..129f14dbd42f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> @@ -214,7 +214,7 @@ rgmii_phy: ethernet-phy@1 {
+>  &pcie2x1l1 {
+>  	linux,pci-domain = <1>;
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie2_reset>;
+> +	pinctrl-0 = <&pcie30x1m1_pins>;
+
+This really throws me for a loop here - in the original submission too
+already. Because somehow those pins are named pcie30x1... for the
+pcie2 controller ;-) .
+
+
+>  	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+>  	status = "okay";
+>  };
+> @@ -226,7 +226,7 @@ &pcie30phy {
+>  &pcie3x4 {
+>  	linux,pci-domain = <0>;
+>  	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie3_reset>;
+> +	pinctrl-0 = <&pcie30x4m1_pins>;
+>  	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie30>;
+>  	status = "okay";
+> @@ -245,17 +245,7 @@ hym8563_int: hym8563-int {
+>  		};
+>  	};
 >  
->  	/* Settings */
->  	struct i2c_timings t;
-> @@ -1087,13 +1088,18 @@ static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
->  
->  		spin_unlock_irqrestore(&i2c->lock, flags);
->  
-> -		rk3x_i2c_start(i2c);
+> -	pcie2 {
+> -		pcie2_reset: pcie2-reset {
+> -			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -	};
 > -
->  		if (!polling) {
-> +			rk3x_i2c_start(i2c);
-> +
->  			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
->  						     msecs_to_jiffies(WAIT_TIMEOUT));
->  		} else {
-> +			disable_irq(i2c->irq);
-> +			rk3x_i2c_start(i2c);
-> +
->  			timeout = rk3x_i2c_wait_xfer_poll(i2c);
-> +
-> +			enable_irq(i2c->irq);
->  		}
->  
->  		spin_lock_irqsave(&i2c->lock, flags);
-> @@ -1310,6 +1316,8 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	i2c->irq = irq;
-> +
->  	platform_set_drvdata(pdev, i2c);
->  
->  	if (i2c->soc_data->calc_timings == rk3x_i2c_v0_calc_timings) {
+>  	pcie3 {
+> -		pcie3_reset: pcie3-reset {
+> -			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -
+>  		vcc3v3_pcie30_en: pcie3-reg {
+>  			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
 > 
 
 
