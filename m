@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA05C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 11:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA563C4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 11:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1WhPf6NoaK75ndCZ+vMZE9/WWvLJ26ZxKLLvH0jVrOc=; b=TXBUZmRtjtlmgW
-	EcAoX2ckCnptcXy4ABIwarG9U23D1yYhNVMaKO3vSOxTIO1MnWXYsLT0ANpJ7dizbWasWnU1DkzF7
-	KuUWck17obOJHm5SW8J0fI3EV1sAs6FuCMpB3Y2Ivzsa75dmLrvWUj7QBKkeSmQhwuwuf1IgTEyWt
-	gcaaOqmLf24C0cDi1dgNI16MH9dgyI+UDHI0JvQmlWTof+03pwCKNUtNqfq1BuSDC2wyaopcUV0Um
-	3zqakgC0IasNn8IF5qkRqPeTK5TyBKnQOng07qnjPIDX0lKgsawxD/2fJdSO1pVqRbv8awjt3FfPu
-	VG1AU4nhh0sgzUYMW4NA==;
+	List-Owner; bh=IsseiuPg1+D+t/vdAf78V4tSw3Flx3uQAV0Aukp/VBs=; b=knECjdxtzwqGQk
+	acNukI+F2Fyt7VEV20Hw3oAdtdtJprwcepxAG8QifQhbA0eUfY01nUhVVdkvXEkvQQmGlBuCJZN/e
+	VkZP8max5mXx7frPj7l45eFI0GWzBPqcOMuyyTEBq8zbucXo/87OGStI7Cmtnqb7cmjAjZvLXX7Co
+	9N/Um4vp3SmDMdPjVVsitloE17viS6aOkRb0OZE/WgDFSFImQkg8KYj51InHWIsdxg4VBGs8qZNXv
+	6on/XaRQERL49DhmSHypGcTOA6NmzAmp/dNiQBE3ipZR0P6d7x0xrdKl7LMUxI6TUVz51a/eF/q23
+	gluLEYaf7XVzBP05zwrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCDk-00CWyx-2j;
-	Thu, 07 Dec 2023 11:07:08 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBCDg-00CWxi-2j;
-	Thu, 07 Dec 2023 11:07:06 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 05C0A12FC;
-	Thu,  7 Dec 2023 03:07:45 -0800 (PST)
-Received: from [10.57.6.119] (unknown [10.57.6.119])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7FB0A3F762;
-	Thu,  7 Dec 2023 03:06:57 -0800 (PST)
-Message-ID: <c5c6f169-e021-43c5-a478-21bfbdada554@arm.com>
-Date: Thu, 7 Dec 2023 11:07:58 +0000
+	id 1rBCkg-00Ci2k-2A;
+	Thu, 07 Dec 2023 11:41:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rBCka-00Ci1v-2W;
+	Thu, 07 Dec 2023 11:41:08 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rBCkW-000248-Ve; Thu, 07 Dec 2023 12:41:01 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Sam Edwards <cfsworks@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Daniel =?utf-8?B?S3VraWXFgmE=?= <daniel@kukiela.pl>,
+ Sven Rademakers <sven.rademakers@gmail.com>, Joshua Riek <jjriek@verizon.net>
+Subject: Re: [RESEND PATCH] arm64: dts: rockchip: Add PCIe pinctrls to Turing RK1
+Date: Thu, 07 Dec 2023 12:41:00 +0100
+Message-ID: <2369165.PYKUYFuaPT@diego>
+In-Reply-To: <d38540c5-79a8-0582-87b9-0e99bf3044d5@gmail.com>
+References: <20231205202900.4617-1-CFSworks@gmail.com> <3331042.e9J7NaK4W3@diego>
+ <d38540c5-79a8-0582-87b9-0e99bf3044d5@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Add dynamic-power-coefficient to
- rk3399 GPU
-To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- conor+dt@kernel.org, daniel.lezcano@linaro.org
-References: <20231127081511.1911706-1-lukasz.luba@arm.com>
-Content-Language: en-US
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20231127081511.1911706-1-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_030704_955847_35706F65 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231207_034104_839462_5BE88E27 
+X-CRM114-Status: GOOD (  31.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,29 +58,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Mittwoch, 6. Dezember 2023, 19:26:40 CET schrieb Sam Edwards:
+> =
+
+> On 12/6/23 07:55, Heiko St=FCbner wrote:
+> > Am Dienstag, 5. Dezember 2023, 21:28:59 CET schrieb Sam Edwards:
+> >> The RK3588 PCIe 3.0 controller seems to have unpredictable behavior wh=
+en
+> >> no CLKREQ/PERST/WAKE pins are configured in the pinmux. In particular,=
+ it
+> >> will sometimes (varying between specific RK3588 chips, not over time) =
+shut
+> >> off the DBI block, and reads to this range will instead stall
+> >> indefinitely.
+> >>
+> >> When this happens, it will prevent Linux from booting altogether. The
+> >> PCIe driver will stall the CPU core once it attempts to read the versi=
+on
+> >> information from the DBI range.
+> >>
+> >> Fix this boot hang by adding the correct pinctrl configuration to the
+> >> PCIe 3.0 device node, which is the proper thing to do anyway. While
+> >> we're at it, also add the necessary configuration to the PCIe 2.0 node,
+> >> which may or may not fix the equivalent problem over there -- but is t=
+he
+> >> proper thing to do anyway. :)
+> >>
+> >> Fixes: 2806a69f3fef6 ("arm64: dts: rockchip: Add Turing RK1 SoM suppor=
+t")
+> >> Signed-off-by: Sam Edwards <CFSworks@gmail.com>
+> >> ---
+> >>   .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 14 ++----------=
+--
+> >>   1 file changed, 2 insertions(+), 12 deletions(-)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arc=
+h/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> >> index 9570b34aca2e..129f14dbd42f 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+> >> @@ -214,7 +214,7 @@ rgmii_phy: ethernet-phy@1 {
+> >>   &pcie2x1l1 {
+> >>   	linux,pci-domain =3D <1>;
+> >>   	pinctrl-names =3D "default";
+> >> -	pinctrl-0 =3D <&pcie2_reset>;
+> >> +	pinctrl-0 =3D <&pcie30x1m1_pins>;
+> >>   	reset-gpios =3D <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+> >>   	status =3D "okay";
+> >>   };
+> >> @@ -226,7 +226,7 @@ &pcie30phy {
+> >>   &pcie3x4 {
+> >>   	linux,pci-domain =3D <0>;
+> >>   	pinctrl-names =3D "default";
+> >> -	pinctrl-0 =3D <&pcie3_reset>;
+> >> +	pinctrl-0 =3D <&pcie30x4m1_pins>;
+> =
+
+> Hi Heiko,
+> =
+
+> > =
+
+> > also, why are you throwing out the pinctrl for the reset pin.
+> > That seems not related to the regular pins and you could instead just do
+> > =
+
+> > +	pinctrl-0 =3D <&pcie30x4m1_pins>, <&pcie3_reset>;
+> =
+
+> The pcie30x4m1_pins def does include pinmuxing `4 RK_PB6` to the DW =
+
+> controller already. The v2 patch should probably instead remove the =
+
+> reset-gpios property, since an out-of-band GPIO reset is not needed when =
+
+> the controller can do it.
+
+yep, also because of the reset-gpios the pinctrl/gpio driver will mux the
+pin to gpio function even though the pinctrl would've set if the pcie-
+function before that.
+
+So I'm really in favor of not mixing the two concepts :-)
+When setting the pins, the reset-gpio should be gone and vice-versa.
+
+> I'm still looking into the story with the PCIe 2.0 pins, since 2.0x1's =
+
+> PERST# is definitely 4A2. I'll ask around and try to find out where the =
+
+> corresponding CLKREQ# is going.
+
+Yeah, I tried reading up in the TRM but it was really hard following
+which pin-group actually goes to which controller and the naming
+definitly does not help :-) .
 
 
-On 11/27/23 08:15, Lukasz Luba wrote:
-> Add dynamic-power-coefficient to the GPU node. That will create Energy
-> Model for the GPU based on the coefficient and OPP table information.
-> It will enable mechanism such as DTMP or IPA to work with the GPU DVFS.
-> In similar way the Energy Model for CPUs in rk3399 is created, so both
-> are aligned in power scale. The maximum power used from this coefficient
-> is 1.5W at 600MHz.
-> 
-> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-> 
+Heiko
 
 
-Gentle ping. What's the status of this?
+
+> >>   	reset-gpios =3D <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+> >>   	vpcie3v3-supply =3D <&vcc3v3_pcie30>;
+> >>   	status =3D "okay";
+> >> @@ -245,17 +245,7 @@ hym8563_int: hym8563-int {
+> >>   		};
+> >>   	};
+> >>   =
+
+> >> -	pcie2 {
+> >> -		pcie2_reset: pcie2-reset {
+> >> -			rockchip,pins =3D <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> >> -		};
+> >> -	};
+> >> -
+> >>   	pcie3 {
+> >> -		pcie3_reset: pcie3-reset {
+> >> -			rockchip,pins =3D <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+> >> -		};
+> >> -
+> >>   		vcc3v3_pcie30_en: pcie3-reg {
+> >>   			rockchip,pins =3D <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+> >>   		};
+> >>
+> > =
+
+> > =
+
+> > =
+
+> > =
+
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
