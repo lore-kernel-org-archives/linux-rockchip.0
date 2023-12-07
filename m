@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05077C4167B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Dec 2023 22:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADDD8C10DCE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 07:58:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+9EsRsTJOwNgqdv0G/zjyU2QpM6e7o21OD1uIBc1hkM=; b=wRXbh64bx0yQzD
-	62qgtckag0jCTjk03CPLo2S4f5b5EgHi/iTNjt0KW2btu6oZzimSnsnKxK9wJ4H8URv4hZPnO/zaZ
-	l7gZd66wRmmfVjjp3JRLzc7zorkC2Bfjqi3hBQO7/nEPyE6ee8dzdpNM50cGy/gfroGdi4S0QyF90
-	CJjHi3eNedfIUyCsFLOcVxqShsAqfmtWVT571pex+O40CV5ZT1Qum371hp6YgQNqGWzgT4biPHKlV
-	8skhS50RYl7OYrPG0p2/CiG+4dRV2GeGwMrKipBfxcpcUAo23b87XgLjA3bpDYKl65ymSK0maS6IW
-	1gQm2sv4JUMSNeqwdUWg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rUwz6npQbWyf7Etr4Mm3SSuuo+TycWwhkJgFbDm/AbI=; b=S4tdPMWpCV+/EK
+	f8LBMmwMSdCxVyE4JM9RTluZSs6tVu8J/qQJ7nFl+gpHy6unMjlTFQAhq+d8qZD46uKllJmrEp0eZ
+	p+byTqMOKFVpRENeU54DF35Ld0Yq9F7xEldXhQWdRV6/RuDm2Yq1Dgs8D95/PHRhPrb5NczY6OoTC
+	bCb4NrAZLS29/qjHkEwGoKfYKS5JwlFnX6A9bWLJ/IjbkOZvHVmYLxZkLYzFkUoYt9yk4UCTGT9Kz
+	BJhsbr+kuWKfqqnSy4ATpMidlxJXLxfuy+Qid555O+W0YqO8dByJsawKZ8zBS6W0aS/ZblkvJTThl
+	RqjObpciaszl/2xktBBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB08i-00BO2F-2c;
-	Wed, 06 Dec 2023 22:13:08 +0000
+	id 1rB9Gz-00C82w-0N;
+	Thu, 07 Dec 2023 07:58:17 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB08e-00BO1o-1r;
-	Wed, 06 Dec 2023 22:13:06 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F1441556;
-	Wed,  6 Dec 2023 23:12:21 +0100 (CET)
+	id 1rB9Gu-00C7zk-0E;
+	Thu, 07 Dec 2023 07:58:13 +0000
+Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 834742E7;
+	Thu,  7 Dec 2023 08:57:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701900742;
-	bh=MyiZ0c9R7mhTEt9Q8JKoeIvrzUNTttSdhrpWfhqCogE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mMp2vAP7F/Z8TOEz4aQAFWxGxRVpyCWPin+FZNaj8aiBvsICy14SbeuqEFb3c2LrR
-	 aZettZBcgw6+h7/serhV0khPIeOsV21Xg0EICis0YA7YuKnsvNHW5ZgH1UhQ3q71h5
-	 gK9A8sBWNSjy5ZXtE833/BI3GLT+3AiwdOhSSc6w=
-Date: Thu, 7 Dec 2023 00:13:09 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com,
-	aford173@gmail.com, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 4/4] media: rkisp1: Fix IRQ disable race issue
-Message-ID: <20231206221309.GD29417@pendragon.ideasonboard.com>
-References: <20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com>
- <20231206-rkisp-irq-fix-v2-4-6ba4185eeb1f@ideasonboard.com>
+	s=mail; t=1701935847;
+	bh=Gz+d4XTPa6WxDzttGkhP1M41s02i069EomKAGKmGwe4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=vfStgC4eK8Gm/J2obad28XiBPPFRClHPuJEeCUj9MNVNI/XUUXHj+8LYvq3SnOHSx
+	 xcaOfP3PXeAF55t0RIMm6EJwxf0azFXFwTWrFBsTTIUv8yH/9GGDWtUM8Kigjs74Oy
+	 ps9SYkwCS6Ov74wE8xU2Y9+9Np+IsuxDTN2u8mgI=
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Subject: [PATCH v3 0/4] media: rkisp1: Fix IRQ related issues
+Date: Thu, 07 Dec 2023 09:57:44 +0200
+Message-Id: <20231207-rkisp-irq-fix-v3-0-358a2c871a3c@ideasonboard.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231206-rkisp-irq-fix-v2-4-6ba4185eeb1f@ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIAPl6cWUC/3XMSwrCMBSF4a2UjI3k2RZH7kMcpOmNvYhNTSQop
+ Xv3tiMRHf4HzjezDAkhs0M1swQFM8aRQu8q5gc3XoBjT82UUFoqYXm6Yp44pjsP+OQglXatqxu
+ tAqPPlIDmzTudqQfMj5heG1/kuv6TiuSCByOM9Y3pnLFH7MHlOHbRpX7v442tYFGfSP2NKEJqe
+ svWAnQy/ECWZXkDch7T1PYAAAA=
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>, 
+ kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com, 
+ aford173@gmail.com, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+X-Mailer: b4 0.12.4
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1787;
+ i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
+ bh=Gz+d4XTPa6WxDzttGkhP1M41s02i069EomKAGKmGwe4=;
+ b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcXsKsVt/tvMkaFuFsuncMAQpquAtRHte5O1mO
+ ixMa4XM2E6JAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXF7CgAKCRD6PaqMvJYe
+ 9XF9D/9Tt8+wsi8FEADuVy85DDxhuIvFp9tbfxE3PN1Dl8NpmiR1YVCeWaKuG3t1V3/Aao2ZQi8
+ 1MSDRL0240/kxelyG5BFG7Jyldqa3pg0CBFH85SCehE2rbabL/mY9g9lxHn4LRTOKR7jEpGkW76
+ iT9DokvMU7Hoc7Zm5KglAIbE9kIocoYhAMkYFX7NQHS9CRIME/tkpwFyKMqqHAAl1oGX4lXYDlA
+ IHlgQYEfrjSvAaBAoI49839uezGFfbt9eA9TH7bOAthTFTTGExaSauTab+FIylry07IMVmpT+9p
+ TRTzwgqnUbWep202LMnwvZbWPciR7/GV4kCHDC2djFXvkVSDrv9SPqQ4VYZGFa8dR2LqR2W88iU
+ iat68gsB0+NXVPThRIhcGC2dPBwdDg3ORdVVMgwo3m2Jtzt4GV2i/IWq4AkyKbYR6LdsO+KctGq
+ qKhNUCgZ6aXxmDZUPdCULb05jax418q13ml415tx4sn48J2KQZJ09BbVUh8ul/8GFwFgi3WqXRd
+ sYruHPrun81djESAtTwgM6/5pYrCwm8Kd/M+yArW3e5yjzKf+uE2WSwfg3EcWUJrvsvWGsZso13
+ DyclUhGPJgUxivOfduNaslKrH9ovSPZ89UGuJLwOWzvYYoP9+Y3qomYNkUco+iuhB69KWw79Kg5
+ e6Uqque49BymQkA==
+X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
+ fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_141304_775486_39C53035 
-X-CRM114-Status: GOOD (  24.20  )
+X-CRM114-CacheID: sfid-20231206_235812_296579_F68BD211 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,100 +93,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomi,
+These fix a few IRQ related issues I noticed when testing i.MX8MP. This
+series, as of v3, is based on linux-media-stage, and does not include
+i.MX8MP support, as that is not in upstream yet.
 
-Thank you for the patch.
+Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+---
+Changes in v3:
+- Rebase on linux-media-stage
+- Drop i.MX8MP support (which is a one line change) so that this can be
+  based on upstream. I have still kept Adam's tested-by for
+  imx8mp-beacon, as dropping the i.MX8MP support doesn't really affect the
+  changes.
+- Use ARRAY_SIZE() in patch 3
+- Link to v2: https://lore.kernel.org/r/20231206-rkisp-irq-fix-v2-0-6ba4185eeb1f@ideasonboard.com
 
-On Wed, Dec 06, 2023 at 12:12:31PM +0200, Tomi Valkeinen wrote:
-> In rkisp1_isp_stop() and rkisp1_csi_disable() the driver masks the
-> interrupts and then apparently assumes that the interrupt handler won't
-> be running, and proceeds in the stop procedure. This is not the case, as
-> the interrupt handler can already be running, which would lead to the
-> ISP being disabled while the interrupt handler handling a captured
-> frame.
-> 
-> This brings up two issues: 1) the ISP could be powered off while the
-> interrupt handler is still running and accessing registers, leading to
-> board lockup, and 2) the interrupt handler code and the code that
-> disables the streaming might do things that conflict.
-> 
-> It is not clear to me if 2) causes a real issue, but 1) can be seen with
-> a suitable delay (or printk in my case) in the interrupt handler,
-> leading to board lockup.
-> 
-> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Changes in v2:
+- New patch: "media: rkisp1: Drop IRQF_SHARED"
+- Update "media: rkisp1: Fix IRQ handler return values" according to
+  Laurent's comment.
+- Drop "media: rkisp1: Fix IRQ handling due to shared interrupts"
+- Update description for "media: rkisp1: Fix IRQ disable race issue"
+- Link to v1: https://lore.kernel.org/r/20231205-rkisp-irq-fix-v1-0-f4045c74ba45@ideasonboard.com
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+Tomi Valkeinen (4):
+      media: rkisp1: Drop IRQF_SHARED
+      media: rkisp1: Fix IRQ handler return values
+      media: rkisp1: Store IRQ lines
+      media: rkisp1: Fix IRQ disable race issue
 
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 14 +++++++++++++-
->  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 20 +++++++++++++++++---
->  2 files changed, 30 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> index 47f4353a1784..0bab3303f2e4 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> @@ -125,8 +125,20 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
->  	struct rkisp1_device *rkisp1 = csi->rkisp1;
->  	u32 val;
->  
-> -	/* Mask and clear interrupts. */
-> +	/* Mask MIPI interrupts. */
->  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
-> +
-> +	/* Flush posted writes */
-> +	rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
-> +
-> +	/*
-> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
-> +	 * even after this, but it will return immediately as the MIPI
-> +	 * interrupts have been masked.
-> +	 */
-> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MIPI]);
-> +
-> +	/* Clear MIPI interrupt status */
->  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
->  
->  	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index dafbfd230542..33b5a714d117 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -364,11 +364,25 @@ static void rkisp1_isp_stop(struct rkisp1_isp *isp)
->  	 * ISP(mi) stop in mi frame end -> Stop ISP(mipi) ->
->  	 * Stop ISP(isp) ->wait for ISP isp off
->  	 */
-> -	/* stop and clear MI and ISP interrupts */
-> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
-> -	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
->  
-> +	/* Mask MI and ISP interrupts */
-> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
->  	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
-> +
-> +	/* Flush posted writes */
-> +	rkisp1_read(rkisp1, RKISP1_CIF_MI_IMSC);
-> +
-> +	/*
-> +	 * Wait until the IRQ handler has ended. The IRQ handler may get called
-> +	 * even after this, but it will return immediately as the MI and ISP
-> +	 * interrupts have been masked.
-> +	 */
-> +	synchronize_irq(rkisp1->irqs[RKISP1_IRQ_ISP]);
-> +	if (rkisp1->irqs[RKISP1_IRQ_ISP] != rkisp1->irqs[RKISP1_IRQ_MI])
-> +		synchronize_irq(rkisp1->irqs[RKISP1_IRQ_MI]);
-> +
-> +	/* Clear MI and ISP interrupt status */
-> +	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
->  	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
->  
->  	/* stop ISP */
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h | 11 ++++++-
+ .../media/platform/rockchip/rkisp1/rkisp1-csi.c    | 14 ++++++++-
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 35 ++++++++++++++++------
+ .../media/platform/rockchip/rkisp1/rkisp1-isp.c    | 20 +++++++++++--
+ 4 files changed, 66 insertions(+), 14 deletions(-)
+---
+base-commit: 8016943b5947cd485078e23899945c51e818aa63
+change-id: 20231205-rkisp-irq-fix-e123a8a6732f
 
+Best regards,
 -- 
-Regards,
+Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
