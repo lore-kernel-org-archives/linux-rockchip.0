@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F46C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 08:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C7CC10DCE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 08:00:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gYtSkdPwtcUVkUPL/4FnPjRPshsmq0n0dmWwdJdZCz4=; b=QdjMUXu++SpWq/
-	tJsFpvo9JxJnMdbpomH9gPuh+k6DXvsQSqIlSKtJzmFIjOa9hHhZ9NMs54TGYsnT/Wpn6prRX+6ya
-	9/BCcLDStH68LzJjjk5gWRaMoaqLZOCOoPzF3HB6vBDjYJ82iBbeGRk65CAINrHguXKmSuMa/zmPF
-	QMIS025BfZ1Kt2oNXQ3JRVd/FUsJ5U5WXD3Ac6IdjjS0svAwmjMDXcYq8FiRsv+B5HFg1ZDCfKwMe
-	HJScNPFznJP5B3pMRVgXB6BUpq0wcYRGX0YJZ/5YmII58t4kPM6RBYUjNKIq5vfOU4Ab46yhDTS5A
-	YzauYLYHAtwaCvqDJr9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=R1UTEhV08JiSEpwH/wrbhVhdvV8L+EUBrETQr9uSDo0=; b=LbMBeT2tp3hHJf
+	//6vUCms3Y6a/yvkLNnPuYXVZb9jZGjt0HdwLC97Fu+Q1bpIuCfayU3wOZoNAz62faIBuCEkbOaLw
+	SrgrdsTsL2TyHQPN1E/Xva9jwPlPWQiHjuWDO9lXjQcdSMDJmn5hlyNfIXZQud8SYygoXIpD4SXot
+	hh42TyDkV+oVAgmpqMse6yX6UAQLyBYKKYFPJGPmuY8ePmpAgU5MtF/tUyuyEJz9xMjjSSFAjaDmd
+	pQfpif1E1hd6L+P5bQqhgd39ziB0uVjABrLXwcYF9Ouaj1G7AdtO5yFTnValpj90nXUW4tQYx2/46
+	Hy9CkUSvYjaHOSx9of/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9Ij-00C8Zi-26;
-	Thu, 07 Dec 2023 08:00:05 +0000
-Received: from m12.mail.163.com ([220.181.12.217])
+	id 1rB9JM-00C8gf-0U;
+	Thu, 07 Dec 2023 08:00:44 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9If-00C8YF-34
+	id 1rB9JI-00C8fe-3C
 	for linux-rockchip@lists.infradead.org;
-	Thu, 07 Dec 2023 08:00:04 +0000
+	Thu, 07 Dec 2023 08:00:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=PU5zt
-	QGenpctCMZfYqfAf9LCbmtxHDSN+kd7IKKdbdQ=; b=JmmOp7v+BMo8r0exoD/AC
-	KgfvTeIuO375D+UjCcwfPL+arfEtWXK6iZVQl9AF3YxXfnSnnT6JCb/kKbBUXaPN
-	Ff2Zpnw0/OWltsIH7J4GPnTgo00GH+9KagwJbInaArsWElDdDPyUe0xiiSmJwzAj
-	+aXjRiVD5abBsmfN6BMUgs=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=pekM+
+	FGyDCtPmb0jWNTPyTz93vTz66hJl88mKNFM3+k=; b=J8JRw9ln8ws6z8vKQ/tx0
+	JtIFggwwsjn6fZSlESWSWk8jh3H/8AOQhZ0OLNInm/KTcvB4y++3u1nswgDrTsDj
+	2ylbuPbD91EQcBImI/NgUkJSLYZKHWc8x1R3yGDOt6yWbTfG4fVu0cr/Mnly6VdB
+	ieV+C+5mgFbtjSH4u8zjqM=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g5-4 (Coremail) with SMTP id _____wDnDypMe3FlBlEFCg--.42141S2;
-	Thu, 07 Dec 2023 15:59:12 +0800 (CST)
+	by zwqz-smtp-mta-g0-2 (Coremail) with SMTP id _____wDX_1p4e3FlH_C_DA--.43713S2;
+	Thu, 07 Dec 2023 15:59:55 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -48,22 +48,25 @@ Cc: hjc@rock-chips.com,
 	sebastian.reichel@collabora.com,
 	kever.yang@rock-chips.com,
 	chris.obbard@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v4 00/17] Add VOP2 support on rk3588
-Date: Thu,  7 Dec 2023 15:59:06 +0800
-Message-Id: <20231207075906.651771-1-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v4 02/17] Revert "drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume"
+Date: Thu,  7 Dec 2023 15:59:50 +0800
+Message-Id: <20231207075950.651931-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231207075906.651771-1-andyshrk@163.com>
+References: <20231207075906.651771-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnDypMe3FlBlEFCg--.42141S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCrW7tr4UAr4UWry5KFW5GFg_yoWrCw47p3
-	95Cry5XrWxCFW2qrs3tw1rCrWftanrAay7Gws3G3ZIv3W3KF1UKwnIg3Z5Zr9rWr1xZFy2
-	kF4UJ347Wr42vr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jrcTPUUUUU=
+X-CM-TRANSID: _____wDX_1p4e3FlH_C_DA--.43713S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Cw1rGr1xXF4xCFy7tr45trb_yoW8Cw4UpF
+	W7AryYqr4IgFWjqw1kJFWUZFWYyrsFyayfCrn7G3WS9rnxKrnakrn8GF15ZFn8Ar1xur42
+	yFn7ta47CFW7uFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jo4E_UUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgs-XmVOA0WqfQACsA
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEB0-XmVOA0Wh6AAAsI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_000002_405847_060F2977 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20231207_000041_408406_7744AC59 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,109 +85,63 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This patch sets aims at enable the VOP2 support on rk3588.
+This reverts commit b63a553e8f5aa6574eeb535a551817a93c426d8c.
 
-Main feature of VOP2 on rk3588:
-Four video ports:
-VP0 Max 4096x2160
-VP1 Max 4096x2160
-VP2 Max 4096x2160
-VP3 Max 2048x1080
+regcache_sync will try to reload the configuration in regcache to
+hardware, but the registers of 4 Cluster windows and Esmart1/2/3 on
+the upcoming rk3588 can not be set successfully before internal PD
+power on.
 
-4 4K Cluster windows with AFBC/line RGB and AFBC-only YUV support
-4 4K Esmart windows with line RGB/YUV support
+Also it's better to keep the hardware register as it is before we really
+enable it.
 
-The current version support all the 8 windows with all the suppported
-plane format.
+So let's revert this version, and keep the first version:
+commit afa965a45e01 ("drm/rockchip: vop2: fix suspend/resume")
 
-And we don't have a upstreamed encoder/connector(HDMI/DP) for rk3588
-yet, Cristian from collabora is working on adding upstream support for
-HDMI on rk3588.
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
 
-My current test(1080P/4KP60) is runing with a HDMI driver pick from
-downstream bsp kernel.
+(no changes since v1)
 
-A branch based on linux-6.7 rc4 containing all the series and
-HDMI driver(not compatible with mainline rk3568 hdmi) picked
-from downstream bsp kernel is available [0].
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-[0]https://github.com/andyshrk/linux/commits/rk3588-vop2-upstream-linux-6.7-rc4-2023-12-07
-
-Changes in v4:
-- fix the POST_BUF_EMPTY irq when set mode
-- use full stop at all the description's end.
-- address Krzysztof's review about dt-binding in v3
-- keep all VOP2_FEATURE_HAS_xxx macros increase in order.
-- address Sascha's review about debugfs
-- Add const for rockchip,rk3588-iommu compatible
-
-Changes in v3:
-- split from the vop2 driver patch
-- put bool variable yuv_overlay next to other bool variable
-- define macro for RK3568_OVL_CTRL__YUV_MODE
-- just write RK3568_OVL_CTRL register once in function
-  vop2_setup_layer_mixer
-- constrain properties in allOf:if:then
-- some description updates
-- change the subject as Krzysztof suggested, and add his ACK
-- add braces for x in macro vop2_output_if_is_yyy(x)
-- clear the bits of a mask before setting it in rk3588_set_intf_mux
-- add more comments.
-- put regs dump info in vop2_data
-
-Changes in v2:
-- fix errors when running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-- split form vop driver patch
-- add rk3588_ prefix for functions which are rk3588 only
-- make some calculation as fixed value and keep calculation formula as
-  comment
-- check return value for some cru calculation functions.
-- check return value for syscon_regmap_lookup_by_phandle
-- add NV20/NV30 for esmart plane
-
-Andy Yan (17):
-  drm/rockchip: move output interface related definition to
-    rockchip_drm_drv.h
-  Revert "drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume"
-  drm/rockchip: vop2: set half_block_en bit in all mode
-  drm/rockchip: vop2: clear afbc en and transform bit for cluster window
-    at linear mode
-  drm/rockchip: vop2: Add write mask for VP config done
-  drm/rockchip: vop2: Set YUV/RGB overlay mode
-  drm/rockchip: vop2: set bg dly and prescan dly at vop2_post_config
-  drm/rockchip: vop2: rename grf to sys_grf
-  dt-bindings: soc: rockchip: add rk3588 vop/vo syscon
-  dt-bindings: display: vop2: Add rk3588 support
-  dt-bindings: rockchip,vop2: Add more endpoint definition
-  drm/rockchip: vop2: Add support for rk3588
-  drm/rockchip: vop2: rename VOP_FEATURE_OUTPUT_10BIT to
-    VOP2_VP_FEATURE_OUTPUT_10BIT
-  drm/rockchip: vop2: Add debugfs support
-  dt-bindings: iommu: rockchip: Add Rockchip RK3588
-  arm64: dts: rockchip: Add vop on rk3588
-  MAINTAINERS: Add myself as a reviewer for rockchip drm
-
- .../display/rockchip/rockchip-vop2.yaml       | 100 ++-
- .../bindings/iommu/rockchip,iommu.yaml        |  11 +-
- .../devicetree/bindings/soc/rockchip/grf.yaml |   2 +
- MAINTAINERS                                   |   1 +
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  96 +++
- .../gpu/drm/rockchip/analogix_dp-rockchip.c   |   1 -
- drivers/gpu/drm/rockchip/cdn-dp-core.c        |   1 -
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   1 -
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |   1 -
- drivers/gpu/drm/rockchip/inno_hdmi.c          |   1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c        |   1 -
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |  18 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |  12 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 761 +++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  | 111 ++-
- drivers/gpu/drm/rockchip/rockchip_lvds.c      |   1 -
- drivers/gpu/drm/rockchip/rockchip_rgb.c       |   1 -
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  | 414 +++++++++-
- include/dt-bindings/soc/rockchip,vop2.h       |   4 +
- 19 files changed, 1441 insertions(+), 97 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 312da5783362..57784d0a22a6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -217,6 +217,8 @@ struct vop2 {
+ 	struct vop2_win win[];
+ };
+ 
++static const struct regmap_config vop2_regmap_config;
++
+ static struct vop2_video_port *to_vop2_video_port(struct drm_crtc *crtc)
+ {
+ 	return container_of(crtc, struct vop2_video_port, crtc);
+@@ -883,7 +885,11 @@ static void vop2_enable(struct vop2 *vop2)
+ 		return;
+ 	}
+ 
+-	regcache_sync(vop2->map);
++	ret = regmap_reinit_cache(vop2->map, &vop2_regmap_config);
++	if (ret) {
++		drm_err(vop2->drm, "failed to reinit cache: %d\n", ret);
++		return;
++	}
+ 
+ 	if (vop2->data->soc_id == 3566)
+ 		vop2_writel(vop2, RK3568_OTP_WIN_EN, 1);
+@@ -913,8 +919,6 @@ static void vop2_disable(struct vop2 *vop2)
+ 
+ 	pm_runtime_put_sync(vop2->dev);
+ 
+-	regcache_mark_dirty(vop2->map);
+-
+ 	clk_disable_unprepare(vop2->aclk);
+ 	clk_disable_unprepare(vop2->hclk);
+ }
 -- 
 2.34.1
 
