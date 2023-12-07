@@ -4,54 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D248C10DC3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 14:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C009DC4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 15:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jdU6sdjGi4QfYUMO7HF/4GXY8KwSg/gNQs3tADeFOdI=; b=Hg8wB/R0zFlvD6
-	G00522K4BPYS52KrSmEyWFwkaJJx6otS9oP73V9ilK4s/85t6sBRKBCfPlYzSyG7Wo+jCJW4fQy2N
-	lYcp8ctWrrKpxEPkpIzfF60V4gPenp0fhFHT6YEqH8EbOC8o5mVJRmMS+ieznlzNGAbyMX8BQY+uE
-	aD+LpBilRbovyTugaVjWi7/yEnujot9TwTbWDtDQM5in+8XuCOJe4Fx9H1hA9B8dCd6LRz76rSfU/
-	M3DLMD31J1lSSTGdYaMkNPRsBw/PmoMxJ4JBpb6pimeEKIaUR0g5vGf+GGsSGXHCJ0elqFZdpHhKF
-	YKvUpWKvKRlag9JeC0aQ==;
+	List-Owner; bh=DnritkIY6RNdqe5s6aUtpvUYPn8b7Oaa8lY2Mk27T2g=; b=X+J6EX52ubDxaR
+	JGGi8aZBSNkgxt1SmsCMJCLhvrUnHqO/Njw+rYJ6HAyUQnl3FBiVRQFREvj4DCNlslVYxJwmL2Jr0
+	g/SgDqNHUedWN8iPAaYti8sqmOX8c5Ra69Ye4pth7ByJiUraehzUWkEuMZ/C+LZrin/+77+RpL/+1
+	kKnXzbkN2Zzz4CQ6bVQHMvCTQRDRJHrHyOjItKgfIIIeBcCVZZ0odVtJAi8QzZ0UM9C7/IpbPeCmh
+	Zf/F7sTidg8/EH8FYgosZo0ChdJSJaikppg5nzECb5nHmIUzvLhsJ2fZzGghPr8qzBvGj0TvMqqD0
+	+PTS6HUuUcGVJNzXMaBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBFim-00D4cg-2u;
-	Thu, 07 Dec 2023 14:51:24 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rBGd8-00DFzM-0r;
+	Thu, 07 Dec 2023 15:49:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBFik-00D4b4-0b
-	for linux-rockchip@lists.infradead.org;
-	Thu, 07 Dec 2023 14:51:23 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 930ED669;
-	Thu,  7 Dec 2023 15:50:39 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701960639;
-	bh=mmIkfVQc68N7JNAoTaRx+5k1CZ6tmq9+BC7ujGbLecQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aCgRpH77mR7UtKnvDAQOpecUIDW09gbrBDTIQtXK9MY9OJjDm2ew2SPq3rDh947tJ
-	 TEUCZhbLOzewpl/rHEVyZXV9t8hlauqH2BMe7IkXa5hvBk1LByS/GPOX1tir8DGE4z
-	 kWQW3vhdyrL87BbLtFQYANHNgLkPTj68n/woZvJw=
-Date: Thu, 7 Dec 2023 16:51:27 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	kieran.bingham@ideasonboard.com, tomi.valkeinen@ideasonboard.com,
-	umang.jain@ideasonboard.com
-Subject: Re: [PATCH v2 0/4] media: rkisp1: Misc fixes and debug
-Message-ID: <20231207145127.GB17373@pendragon.ideasonboard.com>
-References: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
+	id 1rBGd4-00DFwM-0y;
+	Thu, 07 Dec 2023 15:49:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C08EB61F71;
+	Thu,  7 Dec 2023 15:49:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8991C433C7;
+	Thu,  7 Dec 2023 15:49:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1701964173;
+	bh=81lEe31K2YU0V4EnFq3xxesUJy/t9LyYJwWTzno5+Rg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ODlGU75K8yKtjUopqTiU4wsNotWNVWiC25d6aWYxaxOvFMqQVxZZGkEhMSpN2Snms
+	 cpy+aLoHA7sAdr5zqVat4bgL3nPTRSKoY/2m61W5XZs9mxPG0VkkTNoNimV37pEOmJ
+	 u6PxyIcDeGCsp/CEWN29NMW/Z43t17GNM/5xtp0yMuxheMBCBwpwkUZYB8yAk/XtGT
+	 KMEfjo6M5JUjVzSBmqpE6mOvv0anLYhgrhYQMOawvIfHFtAB/xFDNe+6uT63n7y47C
+	 kgxjIz4TEjOVSC0RLPbAf/aRseJcchgJaguN+kPFjiwDsiObO8UMGnLamSAhO55+YS
+	 qfNLz4dX2Z8tg==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Thu, 07 Dec 2023 16:49:24 +0100
+Subject: [PATCH v5 01/44] drm/tests: helpers: Include missing drm_drv
+ header
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231201140433.2126011-1-paul.elder@ideasonboard.com>
+Message-Id: <20231207-kms-hdmi-connector-state-v5-1-6538e19d634d@kernel.org>
+References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+In-Reply-To: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, 
+ Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+ Maxime Ripard <mripard@kernel.org>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=857; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=81lEe31K2YU0V4EnFq3xxesUJy/t9LyYJwWTzno5+Rg=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmFL1sefDpxVV7F8ANfMWcRC3v5Y5/ZYiHhd3wD9yWG2
+ 1hVP9zbUcrCIMbFICumyBIjbL4k7tSs151sfPNg5rAygQxh4OIUgIn8FmdkWG16u67kAofX8UNu
+ wkfucbosWZ/LwHWiWP3Gvq5Wy5fK3xgZ9jBeF/B56fZy7bpQkeq9P/R3dRXqNH97sptN0GjPz6W
+ v2QA=
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_065122_386669_38996055 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20231207_074934_385538_3EFCE6F2 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,34 +90,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+We have a few functions declared in our kunit helpers header, some of
+them dereferencing the struct drm_driver.
 
-Thank you for the patches.
+However, we don't include the drm_drv.h header file defining that
+structure, leading to compilation errors if we don't include both
+headers.
 
-On Fri, Dec 01, 2023 at 11:04:29PM +0900, Paul Elder wrote:
-> This series adds a small cleanup of the register definitions, as well as
-> some additions to the debug for the rkisp1 driver.
-> 
-> Paul Elder (4):
->   media: rkisp1: regs: Consolidate MI interrupt wrap fields
->   media: rkisp1: debug: Add register dump for IS
->   media: rkisp1: debug: Count completed frame interrupts
->   media: rkisp1: debug: Consolidate counter debugfs files
+Fixes: d98780310719 ("drm/tests: helpers: Allow to pass a custom drm_driver")
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ include/drm/drm_kunit_helpers.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I'll take patch 1/4 to 3/4 in my tree already, while the discussion on
-4/4 continues. Please let me know if you would rather have me wait.
-
->  .../platform/rockchip/rkisp1/rkisp1-capture.c |  2 +
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  5 ++
->  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 71 +++++++++++++------
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     |  2 +
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  9 +--
->  5 files changed, 60 insertions(+), 29 deletions(-)
+diff --git a/include/drm/drm_kunit_helpers.h b/include/drm/drm_kunit_helpers.h
+index ba483c87f0e7..3ae19892229d 100644
+--- a/include/drm/drm_kunit_helpers.h
++++ b/include/drm/drm_kunit_helpers.h
+@@ -3,6 +3,8 @@
+ #ifndef DRM_KUNIT_HELPERS_H_
+ #define DRM_KUNIT_HELPERS_H_
+ 
++#include <drm/drm_drv.h>
++
+ #include <linux/device.h>
+ 
+ #include <kunit/test.h>
 
 -- 
-Regards,
+2.43.0
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
