@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BCB1C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 08:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3CFAC4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 09:26:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mmMDrC8wt7AtwpouZJMaBxDwvebN3ilwUe9647AfLAY=; b=aaGgmKtE9HBXgUZT0RB0nFpL74
-	sHfGjRFA/lmfPwmbWAcgSmRkF4Oiq91IF3Aws59hf7Z8WJR/TbFLwTp9yCDRz2EgTXfUrSiUS+qkq
-	ZdvCZHGzaCG0EU2YzVsDrxCptLkbZ0kAZyYt+QN7LahXhgbS3mNqRaCyvM0D5DUC42MhioR3xXJbp
-	sOSa5/TDsg6jxOGGMYej1PLcsnmQZSu5hymsVb58GHTteYNpEjBDfFxM8wnmnyBb24zN6m6bWspy7
-	5sCNRECOdt39BgVDV5ojnxBdFSHQNZ2fVgs3dBj1oBWWquqdbGQmIIJspTceaLtzm5I+P7MVIZquS
-	aJD2d5Xg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iT2DF+A/RZvcQXoinZ5pDExBYCmghIun3AK4nXdsJYE=; b=h5k3t5KUDGLxit
+	MKpms5QqU0MAWa+YGkaDOwPtGRoYuc/wv2opCNCrvdzJ5LCvcUf7pukRx5MegFXxJvHYeE+Zcc1hB
+	D2Jl+DlWZkXwpoQ1k4W97QZlQN54mb1DBPgSTh/quNG5vFZ52X61vNuWOAqUuS0X6lMqHwElNaAr8
+	vq6cUfU5RgeGmYAj7FulkSCbVuM0njR/brTBZUHQ1bSDu9GbkbFfrT5txNeant3AXraD5r1aRZ0D0
+	AaCLjaKsXReVE/r7wWsQ6vVnxmRNL5Jlx5ujiBGO0akzkAPqLSPVXviBcxO9GMPofF4zGSm3iegTD
+	p89rNqxgUuJHBvvKjXXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9sh-00CExm-02;
-	Thu, 07 Dec 2023 08:37:15 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1rBAdv-00CLeE-1A;
+	Thu, 07 Dec 2023 09:26:03 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9sb-00CEvg-2o;
-	Thu, 07 Dec 2023 08:37:12 +0000
+	id 1rBAds-00CLcd-0D
+	for linux-rockchip@lists.infradead.org;
+	Thu, 07 Dec 2023 09:26:01 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-54c77e0835bso890692a12.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 07 Dec 2023 01:25:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=friendlyarm-com.20230601.gappssmtp.com; s=20230601; t=1701941156; x=1702545956; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=56T1M3RkgkEvFsKEJLHWcohTkirOLnD7I3rdsoTC1yI=;
+        b=aJZLkIUhsQd5vqfjNaBT3JERQr+5cVJ8m0JfHe6qoQBQ8bCsSnIIFy31qJoVjafL/p
+         AXBFUHrQrkqycGYxw7i8Naj9yA6GlndoyJ+h5HNLXj1ok6oD/ce8dT0vrOnyQzsWYczS
+         /izAY8rogs1Xsrgkk+B/C+a8jU4LVJGu3VT0Dco/P/cMcJG6oezBAS9I7lA9AmQKp5IO
+         40j014gt4EORNO5Qrg4G1BFG7+8SU/1332L306E9aNSO67Eligk0CUsaj1ECXCwJZp7f
+         BKqNDQiHTbHEuuIE7/b8RCVKN6EQgBaY1QNy7i0aZMXwMGi73XdGcdl5Agh9+oSdHKak
+         MAjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701941156; x=1702545956;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=56T1M3RkgkEvFsKEJLHWcohTkirOLnD7I3rdsoTC1yI=;
+        b=KExv8BQEjnIYd8a0YamM+j60DMvxkHWsCNXcPvaLfY8pefRpfQFwGxjaZfny4KN+j1
+         5XNVHJ7SRnZLFb2zZZcDw+RA9NRYgaPWhFp/J2eRnVvlweez2mh6EWroYNZcDKhIyJEK
+         IKGLwaN82AVzN6TyvLDKBXz91uisJyO+cNemqcN3RR4A86d+HEqrDbIn7UE4ybwi6fY6
+         5IagfVsyvWfnF6wr+ZHuNxwg00kmvqSKz2xbdrX316iBWAOZLaYJdACaU0vVh55wN9xp
+         IeLWhOBcxDIs7FT8iFY0LMe9nEAeevihS5+XHrSb+xKECONXOcFihm6FnE3d431qYY/A
+         X3qw==
+X-Gm-Message-State: AOJu0YyQ7ueLGjOV2QF9GTeTCtkrCYXwbaQ2cCBBf5914YqPB1Xeo48v
+	xjyaVtkV9WjsS2NlDzXKIdodeRg0hp2AAtb1P55Rjg==
+X-Google-Smtp-Source: AGHT+IFtB80x1RKWaoiFQnsZTz44KpZp+e8iynF5WtfXkFTzjLVGH8RiUrf6aQvX2/TyBvWbzs9E6CfhsZ3FrmAGZcc=
+X-Received: by 2002:a50:8a97:0:b0:54c:d8f6:3f with SMTP id j23-20020a508a97000000b0054cd8f6003fmr1476412edj.56.1701941155885;
+ Thu, 07 Dec 2023 01:25:55 -0800 (PST)
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1701938223;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ItJvp86mvKeMDbvON2mlBeaPlnTZSQtaPqu7Y3Wk7gc=;
-	b=apBinFhY27PhsJ07Cw8uCjWrCpuBCPMK6GzUR0aOWW5xTxRSCNgeP0H8ZpHndVXiHzIJek
-	7RBgE81Zb1CJwIL3wY5aosDGgdKxnSCQL5vTOreX624afVuqQDQ6tQVfxxXbOh86cFOicD
-	mX4yi4bmZl+dyplE/4A5Vkjf7xYmPYHUdU1NDWR2+kOREsEL56pH8VOWOUv9QYMmAVLqLV
-	rSgE6Mv+wUVyrvmjiJP09lpSFoXmNCnRl+OTWuJWn2ER71IT4bAY+epz3HDR1/717pbC/j
-	SKXXbzGYOGXwlqw3VEY4TUQW5bRcl4q9vzzRYHKWkGoiTwHvJ67/He09CzU9sw==
-Date: Thu, 07 Dec 2023 09:37:03 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Jensen Huang <jensenhuang@friendlyarm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, Dmitry Osipenko
- <dmitry.osipenko@collabora.com>, Chris Morgan <macroalpha82@gmail.com>,
- Benjamin Bara <bbara93@gmail.com>
+References: <20231207082200.16388-1-jensenhuang@friendlyarm.com> <ebf6cf8ec3b5befd673d295061fa2738@manjaro.org>
+In-Reply-To: <ebf6cf8ec3b5befd673d295061fa2738@manjaro.org>
+From: Jensen Huang <jensenhuang@friendlyarm.com>
+Date: Thu, 7 Dec 2023 17:25:44 +0800
+Message-ID: <CAMpZ1qHUnTDQ78gdrQF9Sx_-XfLM-B+H-0bL1-+twKsno+JOvg@mail.gmail.com>
 Subject: Re: [PATCH v2] i2c: rk3x: fix potential spinlock recursion on poll
-In-Reply-To: <20231207082200.16388-1-jensenhuang@friendlyarm.com>
-References: <20231207082200.16388-1-jensenhuang@friendlyarm.com>
-Message-ID: <ebf6cf8ec3b5befd673d295061fa2738@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>, Chris Morgan <macroalpha82@gmail.com>, 
+	Benjamin Bara <bbara93@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_003710_548575_998AF9B9 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20231207_012600_307206_04A25C22 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,97 +85,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2023-12-07 09:21, Jensen Huang wrote:
-> Possible deadlock scenario (on reboot):
-> rk3x_i2c_xfer_common(polling)
->     -> rk3x_i2c_wait_xfer_poll()
->         -> rk3x_i2c_irq(0, i2c);
->             --> spin_lock(&i2c->lock);
->             ...
->         <rk3x i2c interrupt>
->         -> rk3x_i2c_irq(0, i2c);
->             --> spin_lock(&i2c->lock); (deadlock here)
-> 
-> Store the IRQ number and disable/enable it around the polling transfer.
-> This patch has been tested on NanoPC-T4.
-
-In case you haven't already seen the related discussion linked below, 
-please have a look.  I also added more people to the list of recipients, 
-in an attempt to make everyone aware of the different approaches to 
-solving this issue.
-
-https://lore.kernel.org/all/655177f4.050a0220.d85c9.3ba0@mx.google.com/T/#m6fc9c214452fec6681843e7f455978c35c6f6c8b
-
-> Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
-> ---
-> Changes in v2:
->  - Add description for member 'irq' to fix build warning
-> 
->  drivers/i2c/busses/i2c-rk3x.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c 
-> b/drivers/i2c/busses/i2c-rk3x.c
-> index a044ca0c35a1..4362db7c5789 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -178,6 +178,7 @@ struct rk3x_i2c_soc_data {
->   * @clk: function clk for rk3399 or function & Bus clks for others
->   * @pclk: Bus clk for rk3399
->   * @clk_rate_nb: i2c clk rate change notify
-> + * @irq: irq number
->   * @t: I2C known timing information
->   * @lock: spinlock for the i2c bus
->   * @wait: the waitqueue to wait for i2c transfer
-> @@ -200,6 +201,7 @@ struct rk3x_i2c {
->  	struct clk *clk;
->  	struct clk *pclk;
->  	struct notifier_block clk_rate_nb;
-> +	int irq;
-> 
->  	/* Settings */
->  	struct i2c_timings t;
-> @@ -1087,13 +1089,18 @@ static int rk3x_i2c_xfer_common(struct
-> i2c_adapter *adap,
-> 
->  		spin_unlock_irqrestore(&i2c->lock, flags);
-> 
-> -		rk3x_i2c_start(i2c);
-> -
->  		if (!polling) {
-> +			rk3x_i2c_start(i2c);
-> +
->  			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
->  						     msecs_to_jiffies(WAIT_TIMEOUT));
->  		} else {
-> +			disable_irq(i2c->irq);
-> +			rk3x_i2c_start(i2c);
-> +
->  			timeout = rk3x_i2c_wait_xfer_poll(i2c);
-> +
-> +			enable_irq(i2c->irq);
->  		}
-> 
->  		spin_lock_irqsave(&i2c->lock, flags);
-> @@ -1310,6 +1317,8 @@ static int rk3x_i2c_probe(struct platform_device 
-> *pdev)
->  		return ret;
->  	}
-> 
-> +	i2c->irq = irq;
-> +
->  	platform_set_drvdata(pdev, i2c);
-> 
->  	if (i2c->soc_data->calc_timings == rk3x_i2c_v0_calc_timings) {
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBEZWMgNywgMjAyMyBhdCA0OjM34oCvUE0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFu
+amFyby5vcmc+IHdyb3RlOgo+Cj4gT24gMjAyMy0xMi0wNyAwOToyMSwgSmVuc2VuIEh1YW5nIHdy
+b3RlOgo+ID4gUG9zc2libGUgZGVhZGxvY2sgc2NlbmFyaW8gKG9uIHJlYm9vdCk6Cj4gPiByazN4
+X2kyY194ZmVyX2NvbW1vbihwb2xsaW5nKQo+ID4gICAgIC0+IHJrM3hfaTJjX3dhaXRfeGZlcl9w
+b2xsKCkKPiA+ICAgICAgICAgLT4gcmszeF9pMmNfaXJxKDAsIGkyYyk7Cj4gPiAgICAgICAgICAg
+ICAtLT4gc3Bpbl9sb2NrKCZpMmMtPmxvY2spOwo+ID4gICAgICAgICAgICAgLi4uCj4gPiAgICAg
+ICAgIDxyazN4IGkyYyBpbnRlcnJ1cHQ+Cj4gPiAgICAgICAgIC0+IHJrM3hfaTJjX2lycSgwLCBp
+MmMpOwo+ID4gICAgICAgICAgICAgLS0+IHNwaW5fbG9jaygmaTJjLT5sb2NrKTsgKGRlYWRsb2Nr
+IGhlcmUpCj4gPgo+ID4gU3RvcmUgdGhlIElSUSBudW1iZXIgYW5kIGRpc2FibGUvZW5hYmxlIGl0
+IGFyb3VuZCB0aGUgcG9sbGluZyB0cmFuc2Zlci4KPiA+IFRoaXMgcGF0Y2ggaGFzIGJlZW4gdGVz
+dGVkIG9uIE5hbm9QQy1UNC4KPgo+IEluIGNhc2UgeW91IGhhdmVuJ3QgYWxyZWFkeSBzZWVuIHRo
+ZSByZWxhdGVkIGRpc2N1c3Npb24gbGlua2VkIGJlbG93LAo+IHBsZWFzZSBoYXZlIGEgbG9vay4g
+IEkgYWxzbyBhZGRlZCBtb3JlIHBlb3BsZSB0byB0aGUgbGlzdCBvZiByZWNpcGllbnRzLAo+IGlu
+IGFuIGF0dGVtcHQgdG8gbWFrZSBldmVyeW9uZSBhd2FyZSBvZiB0aGUgZGlmZmVyZW50IGFwcHJv
+YWNoZXMgdG8KPiBzb2x2aW5nIHRoaXMgaXNzdWUuCj4KPiBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9hbGwvNjU1MTc3ZjQuMDUwYTAyMjAuZDg1YzkuM2JhMEBteC5nb29nbGUuY29tL1QvI202ZmM5
+YzIxNDQ1MmZlYzY2ODE4NDNlN2Y0NTU5NzhjMzVjNmY2YzhiCgpUaGFuayB5b3UgZm9yIHByb3Zp
+ZGluZyB0aGUgaW5mb3JtYXRpb24uIEkgaGFkbid0IHNlZW4gdGhpcyBsaW5rIGJlZm9yZS4KQWZ0
+ZXIgY2FyZWZ1bGx5IGxvb2tpbmcgaW50byB0aGUgcmVsYXRlZCBkaXNjdXNzaW9uLCBpdCBhcHBl
+YXJzIHRoYXQKRG1pdHJ5IE9zaXBlbmtvIGlzIGFscmVhZHkgd29ya2luZyBvbiBhIHN1aXRhYmxl
+IHBhdGNoLiBUbyBhdm9pZCBkdXBsaWNhdGlvbgpvciBjb25mbGljdHMsIG15IHBhdGNoIGNhbiBi
+ZSBkaXNjYXJkZWQuCgotLQpCZXN0IHJlZ2FyZHMsCkplbnNlbgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
