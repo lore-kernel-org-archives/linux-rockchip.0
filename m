@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97181C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 07:58:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FACBC10DCE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Dec 2023 07:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+YJLiphvZwVbJmCg3FV4wv8dFLBdrNnutlkfAB4bzxY=; b=pQwrG1rn0RKDU6
-	HrK32IXjKNQqnRZOU9Vu36+M/egAm+ExFXzG5Dlc+3BNLITaj1BWsb4242HpGU9w1hSJbijxLYYmi
-	Izc6Ik3cRwewCWTgw61eqBzAG4jYGCPzi+eNkQw+FWLoqoOsvZUWyQWLSfUtlKHnNjVa5hrwmMvQV
-	DOOSjCjp/Ds+GTAyvZw6PsIP9gKVN9b4alKO43PyhypRKmWiHFyFDvDUQ3pT2dBPoe6NIZalxPuqm
-	h/yujYMHVh53YvS+yWICbdA/rDhp4+3LiWSQJmc5BkvAvdS3g8hBkX0O5TefVk8Rs8dGipiJ30nvJ
-	HqIff/u2bVe1khRGdcDQ==;
+	List-Owner; bh=bzwARny9aY7oSiEr8ajdxddMB4cdSMwXW+Il1nLs7WA=; b=NWM1KL/HM47LFl
+	cV0vmlwUCNhheqDyAEqCgzHbCjIdNjvUIpve+nlXpcmzmp22f42UT0/bmCzRmVqxXQm9NK9sfKbOA
+	e62iuqlKVbTEJ3GMPQLogeDQg8TkhqPkmVrq7wnaGBPC7FREfUuYGncahZEWCjfhNcEownkqdIgZp
+	7HTQgBJiEx8WtpaEOOwOuLOwtI1m9SaRUoYeAvWECTlHXXDir7cCuxSOAAoUTDkfLBIibyjuHD85L
+	JaISi6gwO6km+3CxOwT0yVbb9jyemfe7+ca0bg4LaVLm7i98pE6JeVOtwfI1xvnnbDTpMY07WBixD
+	ZqLM0g/Us50jRw59qODQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9Gy-00C81z-04;
-	Thu, 07 Dec 2023 07:58:16 +0000
+	id 1rB9H3-00C84x-12;
+	Thu, 07 Dec 2023 07:58:21 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rB9Gu-00C7zr-0E;
-	Thu, 07 Dec 2023 07:58:13 +0000
+	id 1rB9Gu-00C7zo-0E;
+	Thu, 07 Dec 2023 07:58:14 +0000
 Received: from [127.0.1.1] (91-158-149-209.elisa-laajakaista.fi [91.158.149.209])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 58E39B90;
-	Thu,  7 Dec 2023 08:57:28 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6F4A0552;
+	Thu,  7 Dec 2023 08:57:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1701935849;
-	bh=bGiI3ohQXukgHLEaHJG8c1OieVXiQ00QG2sxjKW40bM=;
+	s=mail; t=1701935848;
+	bh=9cT3QykxbLD1RZuf2nNkMCEwJrLc3YlDClLIwsiNFTs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SDPB+ePJxt97r3PBmz6a1aEDg0KDvpBpWpl30pD+NrSDV5yVd+fp5Q/3+WZxuz4ke
-	 AXyMrH6sK+31o73OWydiv0CtmMCupuWMzGmEQ4ZhQBi8/N9EobcRBsXLXqtXTtVEfP
-	 MMG4L6CmPXOpEosI80JIX7Xyi4BULBu/9JKCi73E=
+	b=j3GkNDvnDs4SE1QMwdf9ygZitOHgt5Rx/8QsYtt5hLwIdfrwjORM9DWOsPwKwq/Oa
+	 iKtEwPxFZ2CKYIt1XhU8cnifEolOcqGZ2YkDG5zLz97pwjcEy5dD6Au6daIpGnhUsy
+	 cXTp6zqwXGmqe2xxNcIWos+Ft2Cj9WFkwTMHcZqM=
 From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Date: Thu, 07 Dec 2023 09:57:46 +0200
-Subject: [PATCH v3 2/4] media: rkisp1: Fix IRQ handler return values
+Date: Thu, 07 Dec 2023 09:57:45 +0200
+Subject: [PATCH v3 1/4] media: rkisp1: Drop IRQF_SHARED
 MIME-Version: 1.0
-Message-Id: <20231207-rkisp-irq-fix-v3-2-358a2c871a3c@ideasonboard.com>
+Message-Id: <20231207-rkisp-irq-fix-v3-1-358a2c871a3c@ideasonboard.com>
 References: <20231207-rkisp-irq-fix-v3-0-358a2c871a3c@ideasonboard.com>
 In-Reply-To: <20231207-rkisp-irq-fix-v3-0-358a2c871a3c@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
@@ -54,26 +54,26 @@ Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
  linux-kernel@vger.kernel.org, 
  Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1716;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1349;
  i=tomi.valkeinen@ideasonboard.com; h=from:subject:message-id;
- bh=bGiI3ohQXukgHLEaHJG8c1OieVXiQ00QG2sxjKW40bM=;
- b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcXsOKgEcZaHHloIBNCieuxBeeKoqHOKwE/9m0
- PUGT9kmPEiJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXF7DgAKCRD6PaqMvJYe
- 9U3YD/9tsbBKzMKy+XePs7loo/BXgqs03sIny/UoyRHH6spbrIZdOawKUOr98MvUPH3AP5pJPC4
- y74ntV+wR24XZdAXb82sYmqkKEm4nIUTaL8dc0Kk2mvgAwvZVSN08DRxFF8zYxMExKFD8rmLAn0
- kEGNPTbmmqMpwpDhQODFGpJPDnQ+Y/uTtYDDt5MfHVqQ28Ene2hD1i4idBa+s50sugtT93yf2lZ
- z3jGrBAABYFQS6TQoT4W2QtDS2WCLiHNMA8pMAawD5z2NTPoDns3OUiRWvVW+wcmyhcQ0/M5l3r
- PRpO13NFtbMTzsVE6NxCqHVlS764Y4dJyh7tY7HW/Mn+rL/0LzpT7SZMIuHz7/5J4a0W9biATlX
- dJocbkpAM5Cu9atIJLLgn/8kBQpuEAkl9rv+HNQ7eUd30diYpXPBuQfAVWyvzCF8HgGTc3Jv2XV
- BGZkcXwWpaOoQ+/zVhvb5DnvjdWfDEtvrnD2YoUBrwQZXNeQQMmARweHSGmfVb+02AWn1MJADCV
- 5Lg6x+MXx0PkIyxu2unWE4rXXI2GBTF6/qr5tRbLOsDkgAgp9u6cSXbzGkDfOsYZEZSDeIzWKj2
- 6g+6RSHSVCwRBiS36UORj46S2iZHLWhuPOmh+i5IVczYKsvvfgWz45TwlgB9aeG5WoovqIWzcvJ
- ZxW4aUjmogsRkcQ==
+ bh=9cT3QykxbLD1RZuf2nNkMCEwJrLc3YlDClLIwsiNFTs=;
+ b=owEBbQKS/ZANAwAIAfo9qoy8lh71AcsmYgBlcXsN831kbcdE+KzyUv6idKjXKrqIhnG6TNS1D
+ OTpfHssHDmJAjMEAAEIAB0WIQTEOAw+ll79gQef86f6PaqMvJYe9QUCZXF7DQAKCRD6PaqMvJYe
+ 9RJCD/0ehqDlNFFaELNarL2vM7x+1JDvPK940PRigpoqjF2QKjOYRqtQE2+KtuyqkTzMYh6dh6x
+ 73/UNRxj4VTTUZWMttanlO9OkrF2Bi7tfxMCnvhovRpfjUtt4t8bgS9H6TW/qVUB1qgy0PIvD8a
+ DYWpz2riAHiTZwIw0dZNxh0VEs/PeW84E9dClamt4Zkf6ZD3Oaw96XcUEujE34bg6aLAmvqmRPl
+ 4+NYGRZX+/cYJoqBhhCky7OVRCnsL7nIEGIfvwC0bcKatPHe9xzsJ+W0OGXTOxfcTAADt4dqxGL
+ oe/eHs3Y725841gfpaUPSc4G9R44FvACgUFOawiYFHbX5cbvoaQt7uwc1EvkDCqb83e4PzyKQvV
+ eyu5IsSbpEKsneN9mHqUawBnPh6fF4oQ5hW91/2qMHcRR84VUZ1Ykmcn+4pI3LAQ3ZSkg0S9t1D
+ RGhLRy12mDNnAZ/gGq9bxQYq2RPC6VpQIvKpAvyc/UXb0A+poiQvE5RHqCZbmfNbgIf2ZTk/WH9
+ k+o3dYfDBDpt5C7mFRk8dnIu5k0oYeBf5xxkhoxEhYZP9UbU0pblq54+qXqXLGYmekuqc0KZ0v/
+ r4gWwLZ4gje1giJTB6Ch7nOWfaCxMPWsDB9HivLxrYwNN3ZXhzbZ5KhEuEepwY5xfBSX6977/fn
+ 5bq3I8XDLdOXqxw==
 X-Developer-Key: i=tomi.valkeinen@ideasonboard.com; a=openpgp;
  fpr=C4380C3E965EFD81079FF3A7FA3DAA8CBC961EF5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231206_235812_298106_538D6154 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20231206_235812_297862_BDDC4B2C 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,54 +90,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The IRQ handler rkisp1_isr() calls sub-handlers, all of which returns an
-irqreturn_t value, but rkisp1_isr() ignores those values and always
-returns IRQ_HANDLED.
+In all known platforms the ISP has dedicated IRQ lines, but for some
+reason the driver uses IRQF_SHARED.
 
-Fix this by collecting the return values, and returning IRQ_HANDLED or
-IRQ_NONE as appropriate.
+Supporting IRQF_SHARED properly requires handling interrupts even when
+our device is disabled, and the driver does not handle this. To avoid
+adding such code, and to be sure the driver won't accidentally be used
+in a platform with shared interrupts, let's drop the IRQF_SHARED flag.
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Tested-by: Adam Ford <aford173@gmail.com>  #imx8mp-beacon
 Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 4c4514e20673..22b2ae0e89c4 100644
+index c41abd2833f1..4c4514e20673 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -442,17 +442,25 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+@@ -542,7 +542,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		if (irq < 0)
+ 			return irq;
  
- static irqreturn_t rkisp1_isr(int irq, void *ctx)
- {
-+	irqreturn_t ret = IRQ_NONE;
-+
- 	/*
- 	 * Call rkisp1_capture_isr() first to handle the frame that
- 	 * potentially completed using the current frame_sequence number before
- 	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
- 	 * sync.
- 	 */
--	rkisp1_capture_isr(irq, ctx);
--	rkisp1_isp_isr(irq, ctx);
--	rkisp1_csi_isr(irq, ctx);
- 
--	return IRQ_HANDLED;
-+	if (rkisp1_capture_isr(irq, ctx) == IRQ_HANDLED)
-+		ret = IRQ_HANDLED;
-+
-+	if (rkisp1_isp_isr(irq, ctx) == IRQ_HANDLED)
-+		ret = IRQ_HANDLED;
-+
-+	if (rkisp1_csi_isr(irq, ctx) == IRQ_HANDLED)
-+		ret = IRQ_HANDLED;
-+
-+	return ret;
- }
- 
- static const char * const px30_isp_clks[] = {
+-		ret = devm_request_irq(dev, irq, info->isrs[i].isr, IRQF_SHARED,
++		ret = devm_request_irq(dev, irq, info->isrs[i].isr, 0,
+ 				       dev_driver_string(dev), dev);
+ 		if (ret) {
+ 			dev_err(dev, "request irq failed: %d\n", ret);
 
 -- 
 2.34.1
