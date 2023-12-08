@@ -4,52 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96BC3C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Dec 2023 16:29:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF72C4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Dec 2023 16:45:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jVbwpouZSuryxD74OsvQ3S8zNWLBRIQeUvgqfOZdcCo=; b=NmPc/2bzDH/yZl
-	hOgtXHR2m7xdx5KYvGBrezR2h/KxwToM2KQ3gDRQIuj7kbeMxFuD8/QJKX4o6Ka+oG27wTrG7nu58
-	FyGC/JQE22JBCN0DcJ1AgKPkGHEdjWe06W0DnvhGfaN0Nj7RuZ0wzSYQpJhRKbz4VTp3yefRNoMzn
-	I4oFWmwSgo4Fq1ZnCysjQkidIhpy2zQ8Q4wZHDjmLvr5qckxwG+SbCIcbji5N2nJwsD5IcmMmmXrB
-	BT9X8MPLsREZRJfhuLZ+GSizFvbTE6ixrgZpx2eH7NxGGH0klOOAhUAsc4vVJXxadpqLIJuMV6QFd
-	jTpfojrYPOVZrorCWz6A==;
+	List-Owner; bh=M/rfbC6DbHwDPkIFPOWtfkIRX2osChy8TsgsDbD2Npc=; b=y4gfZvdb7ifodo
+	fv+YlANG9uaWh6ZfBk5jgKMozKceGEUnRX1NIsf8KCNC+oqHEajWZIWwaGrP5j2ZvRVj0X0I4+lVm
+	fOyBSgtDGzrQZy52S28tjnDC6nM3J0Awlf0Z6jVei1Kb4RZHRnePhv9EhRUygEJtiXSex851jA564
+	ZvKEwb3uLscd+sK/H2FFDiINB1fLzvJmFY/b5xjyxptJihJ2F0elUs2vezZmMs4CTwlTkEFdRy6aH
+	t1fAGV7C6fp8muWoM4L8g2TmSLYC25tu3NXqnW0M/6awWCp1jsPEsJbBN/9CCxo1fWYToru8U2Vb3
+	ocqITYn54fHWH6C/B6LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBdj6-00G1dW-1W;
-	Fri, 08 Dec 2023 16:29:20 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rBdy3-00G4VM-2P;
+	Fri, 08 Dec 2023 16:44:47 +0000
+Received: from mail-ot1-f50.google.com ([209.85.210.50])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBdj3-00G1d3-0I
-	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Dec 2023 16:29:18 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rBdiz-0000NT-9S; Fri, 08 Dec 2023 17:29:13 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- kever.yang@rock-chips.com, chris.obbard@collabora.com,
- Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v4 15/17] dt-bindings: iommu: rockchip: Add Rockchip RK3588
-Date: Fri, 08 Dec 2023 17:29:12 +0100
-Message-ID: <4012684.R56niFO833@diego>
-In-Reply-To: <20231207080235.652719-1-andyshrk@163.com>
-References: <20231207075906.651771-1-andyshrk@163.com>
- <20231207080235.652719-1-andyshrk@163.com>
+	id 1rBdy0-00G4Ue-2n;
+	Fri, 08 Dec 2023 16:44:46 +0000
+Received: by mail-ot1-f50.google.com with SMTP id 46e09a7af769-6d9f069e9b0so395230a34.3;
+        Fri, 08 Dec 2023 08:44:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702053884; x=1702658684;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MQNz+xvqRdVvhqlnaesIupD2ZldVHm05D8bBXCEt6fE=;
+        b=j+vY79ZQ69zeFfmrizUbgcV8SAxwgtOyv2uleSNENAaNZsowskz5DH8eQwHRFGAy0s
+         vMeWClCXNGKPOaDKMhLLdmS6ysUsHPTQ4DT2S0FTCdqAPDWPOakXuitLhYBFZt2uvvMM
+         1/gDJTZYqe5wfySDsIucq4hEzdAvNsMiiDPxnfSqGmEkfhmey5DSsUb1AeES+GF5drGL
+         LYB314oeQEgfHg5XO/tu+yWFmc38SBygvGtzunVx0vtqxxKiqjC0Aq3yeisKE2JQ5/iC
+         LyuNX9KZyksSt03TB//YmACY9Aqc6KdO28mki+gbJXMdd9PqDlUJ3tuCghwD0ufX12gz
+         m6wg==
+X-Gm-Message-State: AOJu0YxbaYJQiK3/kvZNdvHfh+TD7ZlUVW7AmcpH3nJaFbRs5H1uMYzl
+	FxjmL0pYwzu3ofqyMGGaUQ==
+X-Google-Smtp-Source: AGHT+IEElGzMDgsf5XKgsEJBooUGCELsszhJ/I7kKbKCN+yZO/mIQ5M8oB94icul6SeFg7QJKz8wzw==
+X-Received: by 2002:a9d:6a4a:0:b0:6d9:a5ef:a2c7 with SMTP id h10-20020a9d6a4a000000b006d9a5efa2c7mr372426otn.9.1702053883797;
+        Fri, 08 Dec 2023 08:44:43 -0800 (PST)
+Received: from herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id w26-20020a056830061a00b006ce28044207sm349258oti.58.2023.12.08.08.44.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Dec 2023 08:44:43 -0800 (PST)
+Received: (nullmailer pid 1748007 invoked by uid 1000);
+	Fri, 08 Dec 2023 16:44:41 -0000
+Date: Fri, 8 Dec 2023 10:44:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: maarten.lankhorst@linux.intel.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, tzimmermann@suse.de, conor+dt@kernel.org, airlied@gmail.com, hjc@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, daniel@ffwll.ch, linux-arm-kernel@lists.infradead.org, mripard@kernel.org
+Subject: Re: [PATCH v1 1/3] dt-bindings: drm: rockchip: convert
+ inno_hdmi-rockchip.txt to yaml
+Message-ID: <170205385847.1747356.13765108616438619401.robh@kernel.org>
+References: <49c6afec-022f-02de-99a0-d409b64da198@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <49c6afec-022f-02de-99a0-d409b64da198@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_082917_133041_BD7FAAF1 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20231208_084444_903542_BB979C47 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,26 +81,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 7. Dezember 2023, 09:02:35 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+
+On Mon, 04 Dec 2023 18:39:03 +0100, Johan Jonker wrote:
+> Convert inno_hdmi-rockchip.txt to yaml.
 > 
-> Add a Rockchip RK3588 compatible
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Note for rob+dt:
+>   Used enum to "soon" be able to add "rockchip,rk3128-inno-hdmi"
+> 
+> Changed V1:
+>   Rename file to more common layout
+>   Add/fix hdmi_out port example
+> ---
+>  .../display/rockchip/inno_hdmi-rockchip.txt   |  49 ---------
+>  .../display/rockchip/rockchip,inno-hdmi.yaml  | 103 ++++++++++++++++++
+>  2 files changed, 103 insertions(+), 49 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchip.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,inno-hdmi.yaml
+> 
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-In the next iteration, please split this out into a separate patch and send
-it to the iommu+dt maintainers.
-
-Supporting the iommus on rk3588 can be realized separately and the
-patch needs to go through a separate tree anyway.
-
-
-Thanks
-Heiko
-
-
+Applied, thanks!
 
 
 _______________________________________________
