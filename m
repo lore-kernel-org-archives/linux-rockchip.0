@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CD8C4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Dec 2023 06:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1251CC4167B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Dec 2023 07:46:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pCePlo0/6At54bT8Z+SaDmitYWCJEM50ur8HTDMK/V8=; b=wz7ZU1iI4EVZvK
-	QZz2oOY58qTWwvxBCs2sh5b1dZK4bA5Csa1gB0oMTLIyuLt4mfQXFy+9yI1aFpZv6bpC9z3kVCQTQ
-	rPgXbMdvSNUAzHFeI2KYZUgSjiOu8CviIftDQsDNccRqOgFxZ60jHz+r9Svr2Lv9eAREMSuklA64t
-	1WejRanmaHro6vv/wAXUl/Ax99gZ9GskzFahA/VFOm65r3RsQGmYfuBMsU5U6PowfqcM6OLV3rsqp
-	Q2rWfq8yLixmMprxk6XTymKzK+IQ/M1Uukk4O9pPewcTAmRDgE0Eo0KlPQSc+J8DJf0nyPXAstkYb
-	vqOGqit54hvT2+uI9fYg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ewq1JtS2y/aBvci1Oa39I+UIbdCOzfnjacoAjoCABfI=; b=xeGf6e3LTUx6cG
+	68Ir6pEM6opIV+7IouyyKDWThf92ccD1DbBhi+FDaPrWuerYgrt9DWVRTSCvLfFU5noV3ucEVzLzx
+	scNBCaNnitPqqkKS1lRml8ARxhST1ThfIdz9kteTR95hxBwfFUEzJH0RXzB0ztDb9kqbLRVs3D+59
+	W048vm91vxXdUbqoNsHyHC49V9IvdGK0zSFN0bb1eBpWziBpkaiSDvwpbzPCSCjskou7e/X04jVHR
+	241eW7MWFq48jGYci61XyBiCqUnCnMiiYDdIX7BTu6K4YBBHr5berkt/ci6qoR6ksx7eEnmq5g7R2
+	dEhePiVmNk7eM2QSaf8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBUIi-00Erd0-1z;
-	Fri, 08 Dec 2023 06:25:28 +0000
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+	id 1rBVY8-00EzOz-2m;
+	Fri, 08 Dec 2023 07:45:28 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBUIf-00ErcO-2M;
-	Fri, 08 Dec 2023 06:25:27 +0000
-Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-7b6f19f3af9so55193039f.3;
-        Thu, 07 Dec 2023 22:25:24 -0800 (PST)
+	id 1rBVY6-00EzOe-0x
+	for linux-rockchip@lists.infradead.org;
+	Fri, 08 Dec 2023 07:45:27 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-5d05ff42db0so16019937b3.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 07 Dec 2023 23:45:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702016723; x=1702621523; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zFpM3a3kO+H6eKxWi2Fxy+Ey6betIA4rnEu4oUHt5AI=;
-        b=I3F/opB49wNnK8NfihJqr5SUwYBLuNI8kdo+dFL/BorEuP4pS8twRmHedbakDpIP/L
-         GaYukkJd8CPZwCQNebL8ZHY7R+wwFQYh+85Qef0hXReoyPDc+L+nKLrbDtV3HRS0AHKV
-         frDYh389mYBo+d7GcNTBWzdfSbMiKawuUZUIHzfSpPLsz/IxVFUPe57lf5KxCgaRtJ3b
-         p2aK+sQeB5qT22+8v6uwrKYs3mG5eJDFoPQBudfilfyGAPITKBlxxwPE78D/1fW6BVTh
-         NkEvM5b9lL59HYW4Ksy5ZXNKe7r0VewJe2lfSkqfv2MBj3+Jl6bhSxaUX0NPZ3wx5igS
-         2eTw==
+        d=amarulasolutions.com; s=google; t=1702021522; x=1702626322; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ghq7wW4uMw2oLv50wEkEd05rhjsG93gT8bRQi/KK5aE=;
+        b=j47qnTPmzcnDK//Y4lGwFwv9Bqa0IeWbroruO2mKHj7DQmO4oY3P/epcbW716Hw0+P
+         5IbhoMSTkoHkvJNwLZESWN4ahGzt5U6NUP0UNAMsipDZLomMGixUyr7bIroi0Cxhojjt
+         wBmJVzPdtF7Fuq0EoJk5QOLz6255VrLOExdic=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702016723; x=1702621523;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zFpM3a3kO+H6eKxWi2Fxy+Ey6betIA4rnEu4oUHt5AI=;
-        b=srflu3nhSukzgkNB3+7sNEuk4CIJI2S8EKTRdMBEzuJowoNf3YU1k+zZPUQCjF4EQm
-         0l8vMVbeQb4eTy472UI6lX0ssxowQDPVxBl15wr2xpurt16tpRUM25RLC8z/cPVmbrPE
-         O70fvLKkIhGM8tF7tUZeQMj31jom8DCmMdIMpDJZPWOCqkmxoEZiDoM7Aj+v5cZdZICq
-         aGtiBtkuMd6+pzrqIR2a2NrRq/1/sEWWFtliN2war9yjr8Et/EEgPjeWi3qRk820BeJS
-         shyBgdOsxapiX0ytnWkIpRZzDdfSF92zj/YcPfAXg7CVDd7HpHZkxrQrqYsv5Oi1pPBy
-         ZXZw==
-X-Gm-Message-State: AOJu0YzInqWwXY4hFzwSctYl4WFvIGqK5EWMKSRv8irOVY+Red2Xl20o
-	lepE9hjYDw2AVUaJK04+448=
-X-Google-Smtp-Source: AGHT+IHD/PmHnKSx9OZ0b73k8RkKfdGrpVKH95h+DLSuZ8wr3y94tZA8ushXUOt0kbv5NYsMvhtXPA==
-X-Received: by 2002:a6b:6a14:0:b0:7b4:28f8:d8 with SMTP id x20-20020a6b6a14000000b007b428f800d8mr4136516iog.33.1702016723587;
-        Thu, 07 Dec 2023 22:25:23 -0800 (PST)
-Received: from celestia.nettie.lan ([2001:470:42c4:101:de4c:e3ab:ccaa:1887])
-        by smtp.gmail.com with ESMTPSA id h25-20020a02cd39000000b0042acf934cbasm301894jaq.72.2023.12.07.22.25.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Dec 2023 22:25:23 -0800 (PST)
-From: Sam Edwards <cfsworks@gmail.com>
-X-Google-Original-From: Sam Edwards <CFSworks@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	=?UTF-8?q?Daniel=20Kukie=C5=82a?= <daniel@kukiela.pl>,
-	Sven Rademakers <sven.rademakers@gmail.com>,
-	Joshua Riek <jjriek@verizon.net>,
-	Sam Edwards <CFSworks@gmail.com>
-Subject: [PATCH v2] arm64: dts: rockchip: Add PCIe pinctrls to Turing RK1
-Date: Thu,  7 Dec 2023 23:25:10 -0700
-Message-ID: <20231208062510.893392-1-CFSworks@gmail.com>
-X-Mailer: git-send-email 2.41.0
+        d=1e100.net; s=20230601; t=1702021522; x=1702626322;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ghq7wW4uMw2oLv50wEkEd05rhjsG93gT8bRQi/KK5aE=;
+        b=aUm2xxhnkfBuyJEbc7+bmWJs+lu6PbqDZcMTbjfuDu2IxrcXYCYn2IPmTr2bfjhO4s
+         S69hwKs9wYjD+mQCh+VXzHUsf9xgUUDnz6LzWvMHBu7EoF+4DHb7b3Bd6mh8n4iTuXU4
+         Bdvs3pgH6WBJfVzfBxANbYJEOBqr2+tY+s6wvae9i7l0ieIn6qt4eeWrZcwpytHyXZyu
+         ZtpHRTPLzh7ALaJFIWcT6dgHsVJyJvtSaQoo86HUTYgL3+yD9nOC2BrfmnZA7j1PEoU+
+         JlgFwRLsVrKy3LSFRsUtIVmmHXvgnkczKhK2BabZBrPUyxdrnNrIzdTTT5LE0O+Mk/46
+         +xPw==
+X-Gm-Message-State: AOJu0YzZAQm3E8K/wZqcEb9EMESXhbxspuLHpO+VHar8m3k63CZx3UO/
+	ijjeO/SoceLNxgPi6kwv/3rUpGDcVypXK1iZBNS2nQ==
+X-Google-Smtp-Source: AGHT+IGFgHQdGnYLSc/srs4GW6YhQmfDNX04o78BWbSx1Xe4s/0m6gqMoEHcZk7G9Gk+JbT/6WoMzyfozNJiiaGZg68=
+X-Received: by 2002:a81:af26:0:b0:5c9:9815:b8ef with SMTP id
+ n38-20020a81af26000000b005c99815b8efmr3570988ywh.49.1702021522603; Thu, 07
+ Dec 2023 23:45:22 -0800 (PST)
 MIME-Version: 1.0
+References: <CAHc5_t0N7tDDKvWvviBXTKK_0UAEtKLxuvMYi8qZ6hp_f6LNew@mail.gmail.com>
+In-Reply-To: <CAHc5_t0N7tDDKvWvviBXTKK_0UAEtKLxuvMYi8qZ6hp_f6LNew@mail.gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Date: Fri, 8 Dec 2023 13:15:10 +0530
+Message-ID: <CAMty3ZDXxNZomicTtMm88SUc9MKmmaKK+GsnnKsOcZqp65ACZw@mail.gmail.com>
+Subject: Re: Rk3399 - Typec - Extcon
+To: Shantur Rathore <i@shantur.com>, Suniel Mahesh <sunil@amarulasolutions.com>
+Cc: cw00.choi@samsung.com, tom@radxa.com, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231207_222525_785484_7A25827D 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20231207_234526_371325_B9AA6F49 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,97 +79,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 PCIe 3.0 controller seems to have unpredictable behavior when
-no CLKREQ/PERST/WAKE pins are configured in the pinmux. In particular, it
-will sometimes (varying between specific RK3588 chips, not over time) shut
-off the DBI block, and reads to this range will instead stall
-indefinitely.
-
-When this happens, it will prevent Linux from booting altogether. The
-PCIe driver will stall the CPU core once it attempts to read the version
-information from the DBI range.
-
-Fix this boot hang by adding the correct pinctrl configuration to the
-PCIe 3.0 device node, which is the proper thing to do anyway. While
-we're at it, also add the necessary configuration to the PCIe 2.0 node,
-which may or may not fix the equivalent problem over there -- but is the
-proper thing to do anyway. :)
-
-Fixes: 2806a69f3fef6 ("arm64: dts: rockchip: Add Turing RK1 SoM support")
-Signed-off-by: Sam Edwards <CFSworks@gmail.com>
----
-
-Hi list,
-
-Compared to v1, v2 removes the `reset-gpios` properties as well -- this should
-give control of the PCIe resets exclusively to the PCIe cores. (And even if the
-`reset-gpios` props had no effect in v1, it'd be confusing to have them there.)
-
-Note that it is OK for the pcie2x1l1 node to refer to pcie30x1m1_pins. The
-pcie2x1l1 device is *in fact* a PCIe 3.0 controller, and the pcie30x1m1_pins
-pinmux setting is so-named to reflect this. The pcie2x1l1 node is so-named
-because Linux does not (currently) support routing it to a PCIe 3.0 PHY; so in
-practice it is effectively a PCIe 2.0 controller, for the time being.
-
-Cheers and thank you for your time,
-Sam
-
----
- .../boot/dts/rockchip/rk3588-turing-rk1.dtsi     | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-index 9570b34aca2e..875446fdb67e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
-@@ -214,8 +214,7 @@ rgmii_phy: ethernet-phy@1 {
- &pcie2x1l1 {
- 	linux,pci-domain = <1>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie2_reset>;
--	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
-+	pinctrl-0 = <&pcie30x1m1_pins>;
- 	status = "okay";
- };
- 
-@@ -226,8 +225,7 @@ &pcie30phy {
- &pcie3x4 {
- 	linux,pci-domain = <0>;
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie3_reset>;
--	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+	pinctrl-0 = <&pcie30x4m1_pins>;
- 	vpcie3v3-supply = <&vcc3v3_pcie30>;
- 	status = "okay";
- };
-@@ -245,17 +243,7 @@ hym8563_int: hym8563-int {
- 		};
- 	};
- 
--	pcie2 {
--		pcie2_reset: pcie2-reset {
--			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--
- 	pcie3 {
--		pcie3_reset: pcie3-reset {
--			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--
- 		vcc3v3_pcie30_en: pcie3-reg {
- 			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
--- 
-2.41.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2hhbnR1ciwKCk9uIEZyaSwgRGVjIDgsIDIwMjMgYXQgMjo0MuKAr0FNIFNoYW50dXIgUmF0
+aG9yZSA8aUBzaGFudHVyLmNvbT4gd3JvdGU6Cj4KPiBIaSBKYWdhbiwKPgo+IFdoaWxlIHRyeWlu
+ZyB0byBmaWd1cmUgb3V0IGlzc3VlcyB3aXRoIFR5cGVjIEFsdE1vZGUgKyBTdXBlclNwZWVkIG9u
+Cj4gbWFpbmxpbmUgZm9yIFJrMzM5OSBiYXNlZCBSb2NrUHJvNjQsIEkgY2FtZSBhY3Jvc3MgeW91
+ciBwcm9wb3NlZCBwYXRjaAo+IGZvciBUeXBlQyBWaXJ0dWFsIFBEIERyaXZlciBbMF0uCj4KPiBX
+b3VsZCB5b3Uga25vdyBpZiB0aGVyZSdzIGJlZW4gYW55IG90aGVyIGRldmVsb3BtZW50IG9uIHN1
+cHBvcnRpbmcKPiBSb2NrY2hpcC1UeXBlQy1QaHkgd2l0aCBGVVNCMzAyIGJvYXJkcyBsaWtlIFJv
+Y2tQcm82NCBvciBQaW5lQm9vayBQcm8uCj4KPiBbMF0gLSBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9sa21sLzIwMjAwOTA0MTkxODMwLjM4NzI5Ni0zLWphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29t
+L1QvI203YjVkNjc0NzY0Mzc5MjUzNTY4YTQ5MTVmMmY5OTg4ZDc0Yzg2NTkzCgoxLiBQaHlzaWNh
+bCBUeXBlLUMgRlVTQjMwMjogUk9DLVJLMzM5OS1QQyAoUEMsIEFsdG1vZGUpCgpUaGlzIHN1cHBv
+cnQgUEQsIGFuZCBBbHRtb2RlLgoKLSBQRCBwcm9jZXNzIChpbmNsdWRpbmcgbmVnb3RpYXRpb24p
+IGlzIGluY29uc2lzdGVudCBpbiBtYWlubGluZSB0Y3BtLgpJZiB3ZSBjb25uZWN0IFBEIHN1cHBs
+eSBib2FyZCB3aWxsIChoYXJkIHJlc2V0KSByZWJvb3QgYW5kIG5lZ290aWF0aW9uCndvbid0IGhh
+cHBlbiBwcm9wZXJseS4KCjIuIFZpcnR1YWwgUEQgKE5vdCByZWxhdGVkIHRvIHRoZSB0eXBlLWMg
+Y29ubmVjdG9yIGFuZCBGVVNCMzAyKTogUk9DSwo0IEJvYXJkcyAoQWx0bW9kZSkKClRoaXMgaGFz
+IHRvIGJlIHN1cHBvcnRlZCB2aWEgc29tZSBmYWtlIGNvbm5lY3RvciB3aXRoIGFsdC1tb2RlIHN1
+cHBvcnQKdGhhdCBsaW5rcyB0byBEUCBhcyBleHRjb24gaXMgbm90IHRoZSB3YXkgdG8gZ28uIFFD
+IFVTQiBoYXMgc29tZQpzb2x1dGlvbnMgZm9yIGl0IGJ1dCBuZWVkIHRvIGZpbmQgdGhlIHByb3Bl
+ciBvbmVzLgoKRGEgaGFzIDYuMSBXaGljaCBmaXhlcyBzdGVwIDEgYnV0IGl0IGJlY29tZXMgbm90
+IHN0YWJsZSBpbiBMVFMgNi4xIGFuZApNYWlubGluZS4gU3VuaWVsIGhhcyBwcm9ncmVzc2VkIHNv
+bWV0aGluZyBvbiB0aGlzIGluIExUUyA2LjEgYW5kCnRyeWluZyB0byBmaXggVENQTSAtbmV4dC4g
+IE1heSBiZSBoZSB3aWxsIHB1c2ggc29tZSBwYXRjaGVzIHNvb24gb24KdGhlIG1haWxpbmcgbGlz
+dC4KClRoYW5rcywKSmFnYW4uCgotLQpKYWdhbiBUZWtpLApBbWFydWxhIFNvbHV0aW9ucyBJbmRp
+YSBQdnQuIEx0ZC4KQ28tRm91bmRlciAmIEVtYmVkZGVkIExpbnV4IEFyY2hpdGVjdAo0MDUvRS1C
+bG9jaywgU3JpIExha3NobWkgU2h1YmhhbSBBcmNhZGUsIENoYW5kYW5hZ2FyLCBIeWRlcmFiYWQg
+LSA1MDAwNTAsIEluZGlhCk0uICgrOTEpIDkxMCAwMDkgMDk1OQpbYGFzXSBodHRwOi8vd3d3LmFt
+YXJ1bGFzb2x1dGlvbnMuY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
