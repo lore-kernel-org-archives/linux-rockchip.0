@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0EDAC4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 01:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E64B1C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 10:37:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=X7OVZYLBZFKMNHQUGjsdLv2VSytFxaN7m44yhJRxJEo=; b=YH7GVGtIpjr4On
-	D6Y5N7Cl5RTyeMVIvuIEoVOtjAWDhueKzLAR98uNBu2cIDlb4rAIW8hOhRoo1qsEzYsN4EeogFiuV
-	Iu/ZbSX7miHKhTOAxw4d0BPQONcGazNByNzzEJCQjBbcwBrc/2FiYEBPH67Sba6Uy1YbW3SdG7yRy
-	HnYIZkKqBjn498AHTOxHY/ke11ooG0L8o+biwipcpaqOF4d34ZZe53cRscBsRcfhrn0sivQlvvCFg
-	CZ9425BwcBkUaAlBWvx3jjdVbxC7FfvO+hLeg2PRO6HjBCQvmlgm3LFPpsr+CuwP2koaKY1mQvWw9
-	UjQbmTJMD6wI29KSwReQ==;
+	List-Owner; bh=Z9NspyerL4nuoLfrP+gvM+kAC0P87KdFOTxh01/Lbm4=; b=Vbmerp/n0RCxYg
+	KssdrCFbewTHKEd993UwOSDBa/V7TSd0brOvHANSwJd25Yy2YCMhFUcNXw6Gd23AxTTmv5MZ3VH7P
+	bCRobHbDA6czMUUqFUZZ2rW4tge8ycMpQ4oQ33R87Ycy9JpOLpJGUQMUDqVwSXx4Guwzkord8H5w1
+	9Sgis8UiRfrIoUVmdMHiDSfwdAwYBFjmO5Q2AT43/mFhBaOGKeMbjwA4tgxc0MBYsoMP/Eo8iUvMq
+	eAyTs6W7CbwYpEN8W20A+Y1Iqs3My+zMIbNk2JKYfahkV9CsG0zmrNumyyu9NuiKhRIxDQ5AIXsoX
+	AJgKlptGeVYmM4f/h2Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBmVO-00Gvmq-1o;
-	Sat, 09 Dec 2023 01:51:46 +0000
-Received: from m12.mail.163.com ([220.181.12.196])
+	id 1rBuhh-00HRMs-2o;
+	Sat, 09 Dec 2023 10:37:01 +0000
+Received: from m15.mail.163.com ([45.254.50.219])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBmVK-00Gvli-0y;
-	Sat, 09 Dec 2023 01:51:44 +0000
+	id 1rBuhf-00HRM2-03;
+	Sat, 09 Dec 2023 10:37:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=hDOWo
-	ySA4CZNBE7lDkM9JvLOpbEJ+zrh02ycvkDH8j8=; b=YHbdN3p44zuvEHiPDNNxd
-	8rnOhUySjsWhqV8PWkh60ad0I5el+QC0jzmNBF3uLH56/c70hO+SqEqwQTX+kwAU
-	llELJdBt+tD5AqILXfcJi9cIgyj5BaF5/+WUukv+fybAxchFu9WvbYul7F0VOM3U
-	uzW+4nk+u3EvACfxwOP+YI=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=nxvyC
+	PtBJqxL4mpNye7FAQBb1F7oftR/O+wCgJF/VlQ=; b=criHcOo2SC/p1+6OQQ5jD
+	Yyj46C4pUyOlSmKTprldB0jbfr+QPzYAZU8rEOy0rZtvqJTXHTfVPgLFrs1doLVS
+	kLKQyIQ2xRaihdx9DdR/MhDpW/AqINqyXytd/ku6ZzpBgKsJRB0HVoQPet13GwJK
+	Yg+F5FyXnw9TmhXpNI+Z3w=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g3-1 (Coremail) with SMTP id _____wBXn4Dwx3NlPIyWFA--.59698S2;
-	Sat, 09 Dec 2023 09:50:43 +0800 (CST)
+	by zwqz-smtp-mta-g2-4 (Coremail) with SMTP id _____wDXD4AoQ3RlNopIFA--.47691S2;
+	Sat, 09 Dec 2023 18:36:28 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
-To: conor+dt@kernel.org,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
+To: heiko@sntech.de
+Cc: krzysztof.kozlowski+dt@linaro.org,
 	robh+dt@kernel.org,
-	robin.murphy@arm.com,
 	devicetree@vger.kernel.org,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Cc: Andy Yan <andy.yan@rock-chips.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] dt-bindings: iommu: rockchip: Add Rockchip RK3588
-Date: Sat,  9 Dec 2023 09:50:38 +0800
-Message-Id: <20231209015038.1457967-1-andyshrk@163.com>
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH 0/5] Add 2 rk3588 based boards from Cool Pi
+Date: Sat,  9 Dec 2023 18:36:22 +0800
+Message-Id: <20231209103622.1568289-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-CM-TRANSID: _____wBXn4Dwx3NlPIyWFA--.59698S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JF17JF4DJF4rurW7KFWrAFb_yoWkKFX_C3
-	WxXw15XF48tFWFv3WDA3yxGryDGw12krn5XF9YkF1kCw1qvry8J393Jw15Aw18Wr47uFyS
-	93WxWry2gF9xGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8GYLDUUUUU==
+X-CM-TRANSID: _____wDXD4AoQ3RlNopIFA--.47691S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrKFWkCw15Jw1UKw4xGFy7GFg_yoWfCrX_Ka
+	yxWryDZa18ZF1Ygas8tw4xGrZrJ3y29rs3Ka45ZF1vqFyDJw1xJayrta4aq3W8AF17uw1x
+	Jr48XF1kJw15CjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRWSoJUUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBdBXmVOA2VgAwAAsO
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnBBBXlghl5vO6gAAsC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231208_175142_740942_623EDDE9 
-X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-CacheID: sfid-20231209_023659_439368_7D3EB487 
+X-CRM114-Status: UNSURE (   7.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,45 +76,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
 
-Add a Rockchip RK3588 compatible
+This series add support for rk3588s based SBC Cool Pi 4B
+and rk3588 based board Cool Pi CM5 EVB
 
-I split it from the vop2 patch series as suggested by Heiko[0]
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Andy Yan (5):
+  dt-bindings: vendor-prefixes: Add Cool Pi
+  dt-bindings: arm: rockchip: Add Cool Pi 4B
+  arm64: dts: rockchip: Add support for rk3588s based board CoolPi 4B
+  dt-bindings: arm: rockchip: Add Cool Pi CM5 EVB
+  arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5
+    EVB
 
-[0]https://patchwork.kernel.org/project/dri-devel/patch/20231207080235.652719-1-andyshrk@163.com/
+ .../devicetree/bindings/arm/rockchip.yaml     |  10 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 887 ++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 850 +++++++++++++++++
+ 5 files changed, 1751 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
 
----
-
- .../devicetree/bindings/iommu/rockchip,iommu.yaml     | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-index ba9124f721f1..621dde0e45d8 100644
---- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-@@ -19,9 +19,14 @@ description: |+
- 
- properties:
-   compatible:
--    enum:
--      - rockchip,iommu
--      - rockchip,rk3568-iommu
-+    oneOf:
-+      - enum:
-+          - rockchip,iommu
-+          - rockchip,rk3568-iommu
-+      - items:
-+          - enum:
-+              - rockchip,rk3588-iommu
-+          - const: rockchip,rk3568-iommu
- 
-   reg:
-     items:
 -- 
 2.34.1
 
