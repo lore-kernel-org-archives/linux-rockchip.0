@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE7B3C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 23:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A561C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 23:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lh1lvYFryGv3cRcaGE/Bio4IP8VZHcgPhCImwjqRVCs=; b=q9JkoksPwKsJ8L
-	W85vsV8b5pEIroOdCiAQA9j5mUhkaKin55zSTRGUc/TcE6M2EvGJEFmh+PA39PfrV6APpl7hzR/wZ
-	4/L/B4GalEKaRlzQ0m/hMucFUyk1jni1pbJvVEj9i2Pf3Yp56rADzXGGnSvcBH6B5VHwhaqbbOoQY
-	cs+82CxljSNhtvEFFClO/bVDB4g6pUve3IAjrLg4g05j5tB2pQ8+Ok4xPsPToDjxR8RkJvk5X9QrX
-	LBFsgjScL6CxQYMUowWFJv+x2XtLkSS70/E9FLtXoZ30h2GyiGseXZ9bSuvlH8t0REzl+YAszPmbg
-	Yu5GWpz9HB7FdRI35WGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ELEa2Xiuba+Til3VGRhWyp4/IrTj2uR/sZludn88OC0=; b=jqgGK8zDxgxOCa
+	XiB1cW8cSKYc3CeakgxEuroZGGpOAzI4th8ZVDvf+xZoGb0crTGrIP/AUa1M/f6R1+XK1In8ZmLBl
+	H8EdRQvnOcWfu532pI1B7R2JfpWAwC6tT3kXihqMMsWQt0pCEQTxp8gmueG0HRuZ0Zh1rxQs8acmk
+	dWg+2yfyTgI7mL94TVI8aJhQ7JTyBhtnfQM8/n+voHTWhnK+WNK6D8HpGr5LVLcioWuT4Ps5uaUzr
+	KjMPslKiZUGV6uvNItC5ZFv2FVwKD0SkQ3nmmcPMFQVNUmMFqDdj+C2Zr9MwMeh/zkwU9mEbvP+5v
+	jSusbS+O974NR1tb/ufw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rC6eY-000gSJ-23;
-	Sat, 09 Dec 2023 23:22:34 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1rC6sU-000iYi-0V;
+	Sat, 09 Dec 2023 23:36:58 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rC6eV-000gRE-2B
+	id 1rC6sP-000iY7-2v
 	for linux-rockchip@lists.infradead.org;
-	Sat, 09 Dec 2023 23:22:33 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3331752d2b9so2323252f8f.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 09 Dec 2023 15:22:29 -0800 (PST)
+	Sat, 09 Dec 2023 23:36:55 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40c3f68b649so8257875e9.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 09 Dec 2023 15:36:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=shantur-com.20230601.gappssmtp.com; s=20230601; t=1702164148; x=1702768948; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=n62IauQpUWIlNcCw3G8Fszbjug1LgBhpQTowo9eXHl4=;
-        b=e4WJNWYzFXbMYOG23yk0rQ9wKL95lLrF01mMz9rLuCz9U8n4JDCKsxDtIVUq8Hmj8H
-         COJV8y2EArA1o7zXO61x0pKfl9g2TKgwYgdzj2CTQp9OD3nF+saXXg8RkrwYC1fj8fkA
-         drb8RkEqcxU5n2AVCCZBfhX3+C/g8K3Z0omnXyrawKNd3/PBZBz3XNHgbBYYU3eiVoFe
-         HJVxChrEH3MpXh90nIyk/ZseeS9eR+MqOSPnvW3wD/4+dxnl9j4R4vcwL8uRZQSeclz2
-         JB4+UFfM2DJWmz1URo0jJAdyD0iMQtjef4lv8swlL5+gRvXf+sHJI8+fyh0p40ubLpbs
-         r4lg==
+        d=shantur-com.20230601.gappssmtp.com; s=20230601; t=1702165011; x=1702769811; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AYYU1x78IPUuzbhoiwMxDZ66s1bw3Uj1uSYC3CI9Ffc=;
+        b=uRoOe6ecNgukVm6dZgPkxoUIL+nMPuwwjynkUbuUTjXH1ew+Wx0roJu+4T2wKCbx7J
+         sAHTUWszR4R2EPu4RZnxoMy30Nx2ZLeeyXIAEJTqejYfJ4a7fMD2T6XxsxL5KmxP+Myg
+         7Kib50WZ3EQJnCetlrBdfwivlsAbsbG3TDBiO9XRAH0gsYtTF/M9u2HYe4/72JcTzxFz
+         2ZwQEA1N8fwc5vfrG2HrFL8sX34MkmYepRs4fO0WrTXIqwdOIvGeNOdKSqHgo3YPs7ZE
+         NUGAHnzFQl6ftwqAznI/VZr7HG+PFpgPJhEPsRGRZ/dvRsiA5wEzl6r4pUjevphH3sxD
+         PtvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702164148; x=1702768948;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=n62IauQpUWIlNcCw3G8Fszbjug1LgBhpQTowo9eXHl4=;
-        b=gkYlqoaXmTK8zl7qC7ZdEBrwdv4LgkZDLGTL+cwMJDVHdCt13g1Ehfm+nlv2th19dE
-         87CyT4HTDsqa3dlBYx1OMDnzoL1RTEzojndxbdyw3tHM97gKSSgl1Xa1/kWyQFDyp+mB
-         SW+5LEl0NKsksPdo8du30Gvx8uldX4TkpzyDu7jmKSt1OH7pWygra1WKdjZfiok4syjS
-         lWx6U52nB1AoA8kqurkt4XiI2ZsnXUYPDoKVzqRnr61caAzEft4KaOrhlPvyAIHUN9c4
-         sToyJmEzbudWaZWHvSKbJJmEGXlp3YPcPJvju28i/jDeP1xK70/wGitKb7kEvdnStxIk
-         cYQw==
-X-Gm-Message-State: AOJu0Yz4vpxTlZ4UM3qV7big/c/MoFGPheu+FmJ+nG3+A+bjIjEvu2LJ
-	Src8XoPNKsXeKFRKJOzukQb8FU+5PRDqSs5NLVV05g==
-X-Google-Smtp-Source: AGHT+IFuoeNtokjD1IiK55berShCI0hX1y6+ptGPJxALp/5eGfoqGgmT3UgS0nC2HE/x97JrCa9nYg==
-X-Received: by 2002:a5d:457b:0:b0:335:4f4a:acca with SMTP id a27-20020a5d457b000000b003354f4aaccamr1054783wrc.24.1702164147956;
-        Sat, 09 Dec 2023 15:22:27 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702165011; x=1702769811;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=AYYU1x78IPUuzbhoiwMxDZ66s1bw3Uj1uSYC3CI9Ffc=;
+        b=hbUa/hc+FKYTlIcpaOLDz8VvDih3Z8LWAEuNG/yJGm5w5YQcwIUpd0HSoaGKdMCWso
+         +zGckRTOYBTvYu/pq35z567eciMJGCEd7IQ9TBwyGK5ujG1bUBfVBDl9i52CkvXg4hWF
+         hVBnaUR0+pffQelFzfKBChrEwSN5nyieH1RPYA/CwdfiuF7D3o1AhM3jQ+tzPybNU3zj
+         E37vhmw7wrJcSvl6V6M3tDjKmwRT9hcod10vGdSowg90EzXi9HTI1sXAd6biZ72om4V1
+         ErfI5SHV2Cyb+G89b0CJ+oqqhElyOByR5uq9BxFtPmWV3Tfke1mjPV0B2Ovj8+voc8xl
+         jsCA==
+X-Gm-Message-State: AOJu0Yxz9NpHwYPkEj6f73DAynYlfZXhWBVWx3aTrTs1lNDzcTiDw1ju
+	l3jWn3sE2tdZpI/2bAYp6MSwpIxppmtqAOFVmuU2/w==
+X-Google-Smtp-Source: AGHT+IGVNoiaYBfiOk+d/jQsCSMpewzgt4JgqKjme9LAspqITcJHUASRoLP5rkaIwYaUpaI4GJBL+g==
+X-Received: by 2002:a05:600c:188f:b0:40c:2e1c:8f8e with SMTP id x15-20020a05600c188f00b0040c2e1c8f8emr735719wmp.219.1702165011564;
+        Sat, 09 Dec 2023 15:36:51 -0800 (PST)
 Received: from localhost.localdomain (host-212-159-138-247.static.as13285.net. [212.159.138.247])
-        by smtp.gmail.com with ESMTPSA id w13-20020a5d608d000000b00333357a77c4sm5185038wrt.34.2023.12.09.15.22.27
+        by smtp.gmail.com with ESMTPSA id fc7-20020a05600c524700b0040c44cb251dsm139854wmb.46.2023.12.09.15.36.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 Dec 2023 15:22:27 -0800 (PST)
+        Sat, 09 Dec 2023 15:36:51 -0800 (PST)
 From: Shantur Rathore <i@shantur.com>
-To: linux-rockchip@lists.infradead.org
+To: 
 Cc: heiko@sntech.de,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	Shantur Rathore <i@shantur.com>
 Subject: [PATCH v1] dts: rockpro64: Remove usb regulator-always-on
-Date: Sat,  9 Dec 2023 23:21:09 +0000
-Message-Id: <20231209232109.348999-1-i@shantur.com>
+Date: Sat,  9 Dec 2023 23:35:36 +0000
+Message-Id: <20231209233536.350876-1-i@shantur.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231209232109.348999-1-i@shantur.com>
+References: <20231209232109.348999-1-i@shantur.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231209_152231_919487_CE7FF338 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20231209_153653_968581_4FA34982 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,6 +104,7 @@ so the PHYs are able to turn power to type-c port.
 
 Signed-off-by: Shantur Rathore <i@shantur.com>
 ---
++ devicetree
 
 After this patch the ports were confirmed to power up and down
 in u-boot when doing usb start and usb stop.
