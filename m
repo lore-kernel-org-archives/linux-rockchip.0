@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D74C4167B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 14:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D859C4167B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Dec 2023 14:00:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wxJzPkPBnMSPu8BgVJ2G9XjSdDMdQRVZ7GQn0DKtNEg=; b=TJ5RmhbkwhEdJB
-	LlGp9WLNxGcKBlKH9XlDooa3qHxjT7Ol6VrNHud00LZk91ax01AC5qfoqLuAhWUUYgrRkAg9akCp8
-	By2BPS8FqcX0Sr4lHn3KumYbLWs5kTL2Hp0L0NHY1+sSdvBjbm4YfBgIIpTq3F1VdoItNoBW7NQj4
-	i+atQdJC5KtGrcN2HhFKSJxeDVZKzuv1N1Vr5hx4f3+PLd25O1boMIBvxqljCw27MRMIH1QYSypG+
-	cIPxeD8RC3O+jZ/j94noE5XNJLdNyUQpeLqQnwuj/b1QY7oRi8+pZIWoFbJgb2A2BPqmg2RhzCpKw
-	Vr79SvFSyET0iQ2vOc5g==;
+	List-Owner; bh=vsvU1RGbZTkMk2UdPgIBQJDVnQrg1sUFJgOkQsRYu1Q=; b=t0MYXuovhoXT7p
+	lY3RYUCni83y6K1RrRM3nsMLzdvvBn0XBxslEx/vhsv6HC6GvN9YAh0WZHr83iujUi8L/GbsMABr6
+	Ni4qsicHjkMDXTb7mk9XRTVZVyFpfhRsr9IZ4U0EqDzZ2T9whxMHBTIhyTnmoD3mmiH0dSRvukCd6
+	GW5mxx8jHDxsxEevjG7hduSD5wk/Ud5qktOLE2ZJYqVmF8S8k8IsPkA2dyeFJcWDv6/aNPV0R2G8D
+	mZ7XqqgPJLVPUlUr7nWpJC82G5oiZBCueXK0jcSifekd3zDCgfWG1XLSN3p8pYo5sNdfiO0SUFWhw
+	owYOxuTu0ZMQgTkoEC2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBxsP-000AQw-1Y;
-	Sat, 09 Dec 2023 14:00:17 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1rBxsn-000AUh-1c;
+	Sat, 09 Dec 2023 14:00:41 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rBxsL-000APQ-2Q
+	id 1rBxsk-000AT5-09
 	for linux-rockchip@lists.infradead.org;
-	Sat, 09 Dec 2023 14:00:15 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40c1e3ea2f2so31814675e9.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 09 Dec 2023 06:00:12 -0800 (PST)
+	Sat, 09 Dec 2023 14:00:39 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-33339d843b9so3258280f8f.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 09 Dec 2023 06:00:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702130411; x=1702735211; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1702130433; x=1702735233; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=gQwsJ8l2VlvWo7H+w9hc5ZUpbl6j+jBpzd4pR7NxVpg=;
-        b=RLeWuEBBRw2QHeV5d4WqQYR9BL/FQvzNbRSeGK+5jA1N/Q3SeoB9KQmWHFc508cAJG
-         g37IybAHEcdN0c0AaNrUKJ81dDWecVIdxGMu6drLyY/q1Fs0jvgxspynOvp3yZrslGLm
-         NR5Sd0QadMSbokebqHeWw+rrdHtzvofJbHnsmFuMyXNbqot+XwORsAUBZLEQIiM7gRYw
-         DFcUZX1vsaCtKuaMsT6gMuMqgojbvK4Vn2hR31r/9TLkRasmrrwyCT91pRjGtx/0J7cB
-         wfVZH/J+4+bpkvLhjcf/GzT3TNv87Re29ltvWjRdb3yPE2+ymDF96fBjrqsBsqql5X/4
-         5CDw==
+        bh=D3GtznvVFjrfEg3ZqD2evdapm395oXEZns5BNmeCr/k=;
+        b=km1qSNw4+yQ3GnsGgHAnxu3hjKdSZJcwLCGloW/o3iqJqJ74sabu/ymOAzWLRzpvLK
+         3pZ1erMNAh//R5dsKTexYz8h0kUjd8ZkIMZeMYjO4O91vldYDCgzhvocfkiRyXkSNbgE
+         MQfHiVpkWW+6FQOFmT/fQhjGbFEsn8iMd/yCDTJYqvW61Dcr4cL0rS8F+Vo9JzREscEf
+         aNRKc48J6ltnbuccHVqyklG3TBD+RQvFMnDVlQeCnhPfFwXblgePTtzCeoGErzkfYeUL
+         2dmALcAPa84yOluuqqd2mthydz9K7HA/JbHyfxsNKnhE/SgE+nmQ0pYQZ59qI7fh22HX
+         gMAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702130411; x=1702735211;
+        d=1e100.net; s=20230601; t=1702130433; x=1702735233;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gQwsJ8l2VlvWo7H+w9hc5ZUpbl6j+jBpzd4pR7NxVpg=;
-        b=v4N2P9qrSxcA4PjWi9XnnZdF5bV6gZeXpH9LTMCSbE8qydinNDWsQLfTQok5hbcRW1
-         u1wBrh5peNOyheX/I542houOIs5uZJvi6mYNqCCBAG7//5i6s5LWTfWCZd1/S4gRPcvQ
-         +QHwva2iLLrxpzWPhDh1saGP2/45RI4pGv1wip2L+GHmcVnRud2hNHMfALJCbmQX7kYK
-         f3GWLYweYIh+0eJV1CxIGjEt5lACjviGijebqzRkAluyQZW6BGMX2Gcr/iDFUA/SkA85
-         sYXwbL+JH1zwetq5OayLzlB+qc6N+dDuuj4XQ6sJfdTOGixG+AUT1It/pG9v6EjdCaaB
-         BPOA==
-X-Gm-Message-State: AOJu0Yy+KMYIeFTNyFClOOWAHnet2AAltQ1IjvpiXCG6pf99/iWppZ7I
-	bM43OZiY3wpqLXjyRgtDToYCnA==
-X-Google-Smtp-Source: AGHT+IGT50LtT0pA6gWgO9rY5MKYnS/Lhu3xlIClGL+8FIocAJ533JvhL12bQOF3qMZFMxGc2n4OCw==
-X-Received: by 2002:a05:600c:3507:b0:40c:3e94:b420 with SMTP id h7-20020a05600c350700b0040c3e94b420mr577022wmq.37.1702130411493;
-        Sat, 09 Dec 2023 06:00:11 -0800 (PST)
+        bh=D3GtznvVFjrfEg3ZqD2evdapm395oXEZns5BNmeCr/k=;
+        b=Jhl46no/WHS83p0o2OiHcTYT6OOwbdYufaP71VVmf4cOUxTfGpGfwK1cYW/rrH8vln
+         Ld2UBJqvHo0jBB4bM6XdHQYOxLExgIftOcGbWZfD0GMGjj3STZBJjEnL8nSTGsZ9cOSB
+         RF/bhFQZtr2zW/MhYNS++HPWMdSz65Q+Ymw/Dz7zoirAMdKyXT4YYmcw9oV8dF/SoaTs
+         0dVLgQAAZlFH0DsYn4z/nVLgSLUWXiV+VbDjhKAdrBmmS/Rq6Qtcs/tDf4NTjrclpfzf
+         Pw3F+pD5wmnFJnJreBiRUFeLMvWcXWdJBCoHRU38+Hr96VeNwkxm0GQ3vP92tRWeWsgo
+         RtgQ==
+X-Gm-Message-State: AOJu0Ywpv/JQ7bxN4w+VRU5qO1Zynbq/0WrTPMFRCsWHMm97xLcAkfTp
+	GJm4JYHQJOdt3GyzN8DYtFQFxQ==
+X-Google-Smtp-Source: AGHT+IHGYEdW/CZGPFWSkzSZjlkIsr50uftwcz1APtd7jTSdnwyhFfg0DVdZwZ67dExg2oS71mhDmg==
+X-Received: by 2002:a5d:670b:0:b0:334:b2fa:16c0 with SMTP id o11-20020a5d670b000000b00334b2fa16c0mr950017wru.47.1702130432818;
+        Sat, 09 Dec 2023 06:00:32 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id z4-20020adff1c4000000b003333af25cb2sm4399146wro.66.2023.12.09.06.00.10
+        by smtp.gmail.com with ESMTPSA id z4-20020adff1c4000000b003333af25cb2sm4399146wro.66.2023.12.09.06.00.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 09 Dec 2023 06:00:11 -0800 (PST)
-Message-ID: <bd62fe7b-3d66-4ade-9aaf-37af449b08c2@linaro.org>
-Date: Sat, 9 Dec 2023 15:00:09 +0100
+        Sat, 09 Dec 2023 06:00:32 -0800 (PST)
+Message-ID: <da62df23-797c-40d6-8cb8-1c99855a3a81@linaro.org>
+Date: Sat, 9 Dec 2023 15:00:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] dt-bindings: arm: rockchip: Add Cool Pi 4B
+Subject: Re: [PATCH 1/5] dt-bindings: vendor-prefixes: Add Cool Pi
 Content-Language: en-US
 To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
 Cc: krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 References: <20231209103622.1568289-1-andyshrk@163.com>
- <20231209103748.1568462-1-andyshrk@163.com>
+ <20231209103707.1568381-1-andyshrk@163.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -119,10 +119,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231209103748.1568462-1-andyshrk@163.com>
+In-Reply-To: <20231209103707.1568381-1-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231209_060013_837150_E57F66E7 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20231209_060038_089143_040D0027 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,27 +141,30 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 09/12/2023 11:37, Andy Yan wrote:
-> Add Cool Pi 4B, a SBC powered by RK3588S
+> Add vendor prefix for Cool Pi(https://cool-pi.com/)
 > 
 > Signed-off-by: Andy Yan <andyshrk@163.com>
+> 
 > ---
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 5deb66a5c7d9..5de9f3090be1 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -95,6 +95,11 @@ properties:
->            - const: chipspark,rayeager-px2
->            - const: rockchip,rk3066a
->  
-> +      - description: Cool Pi 4 Model B
-> +        items:
-> +          - const: CoolPi 4 Model B
 
-That's not a correct compatible.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+---
+
+This is an automated instruction, just in case, because many review tags
+are being ignored. If you know the process, you can skip it (please do
+not feel offended by me posting it here - no bad intentions intended).
+If you do not know the process, here is a short explanation:
+
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions, under or above your Signed-off-by tag. Tag is "received", when
+provided in a message replied to you on the mailing list. Tools like b4
+can help here. However, there's no need to repost patches *only* to add
+the tags. The upstream maintainer will do that for tags received on the
+version they apply.
+
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
 
 Best regards,
 Krzysztof
