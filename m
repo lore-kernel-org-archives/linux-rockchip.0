@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A99C10DCE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Dec 2023 07:19:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D92FC4167B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Dec 2023 08:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SjP3wZYnFr0EriqXQvI7QX9Ydo8hjWuYN3NEsH0nUPk=; b=nvHBDUahyrnjKf
-	5O/KPWv4sZPUhKaBrDH4GHb8EWGofVyXHlgIIjWbRc63+IWu6IShBlRjxP+ebDvCnnKnM6FF6FsGA
-	29kyoVYyZcnDy1cn0IDNDW34Po/To49BPA/LAS1JDFVqy7gRq3ols/igLdJ/KfCdizPmi/KMEGiem
-	qUdD4jew2JHPdWbFfeTUCMj7Ufj3rAByOg5Y0bG6j2eDzqJAdA0E0CDo4h7qpHqcrVu/KDXN8di8r
-	SK1mi/BrqJkWLOudALNE8HvavgMQpY588yDrNdDBFFzLbs8uWDjVquh5q558lUvQiB02gU0lrytHE
-	WUmHkQ12xhbZq3xz/cvA==;
+	List-Owner; bh=h5+9biPeorlqsTYFWDDCu5I+4fWsO64a5VkY0PDyhu0=; b=YT0Iy0YGA+fvXM
+	NPe9bjNVTMWpeFQ4Dh/XNM7XhA99oDyt/Co4e3duzbbfLA28uY2c7O8H7zUOzC6/wIpX+Zop3Md6E
+	Q5yfPfzxcaYKN7RadNxBIXDEf0Ex1LqwG/fhYRQNjXAsbD+Y22JFZ499zwr8JLe23aXTUxZmHmtqS
+	nkHUPevr+vKsqc26rLjJbHN8CdkuMmXYpksY0kuT3P0y/Csne830htIEatCGihVd61CIFP84CKo8+
+	jmvw8JcbceNcykvzUEKjGw3JwDh77EuQDkowVWyXzraElKOl9noBGArCMrCQyDvpqr1JwYjdSM3Wj
+	Op54WcKC1ZNJ/voiwQsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCE5M-0015H7-1Z;
-	Sun, 10 Dec 2023 07:18:44 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCE5I-0015GB-32;
-	Sun, 10 Dec 2023 07:18:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1702192722; x=1733728722;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=XEDe53FhnKOoAuCE2jD8tTR9AUPAF2wP57RC8AH32QQ=;
-  b=F+IDqJqBPHak7SqiOhILyx13U/cNmJvfp1bDtf+wU7FxD3d2yTQb/nlc
-   YPoBDAEUEoUbb561KAGJn4YzOAXHh3ZZ7J1w7Ymf++2Fndfe+kmRXg4H5
-   1d5JX38Ao3TwmGd1Gsna5+UKv3IYhAh6qW8CvMNSD1C2ZtaLaFGVZujpE
-   zdJxcZ2crjTAy45/0NlBcQ6XdzxcYPdQUde6qeE4S8vaYG+VIo2GIRDsb
-   c2Y07NhDslRDH+LF+2HE/UlCcagT8upL4p7D8mGCTDU9bTE1Wn2V7wGzu
-   12n+t/e9crG0XjzQJ9Dslgt5y9dQjZPwBt5knkZR7SAkMcmvlFVLEwj5L
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10919"; a="13236066"
-X-IronPort-AV: E=Sophos;i="6.04,265,1695711600"; 
-   d="scan'208";a="13236066"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Dec 2023 23:18:37 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10919"; a="776266363"
-X-IronPort-AV: E=Sophos;i="6.04,265,1695711600"; 
-   d="scan'208";a="776266363"
-Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
-  by fmsmga007.fm.intel.com with ESMTP; 09 Dec 2023 23:18:33 -0800
-Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1rCE59-000GWT-1h;
-	Sun, 10 Dec 2023 07:18:31 +0000
-Date: Sun, 10 Dec 2023 15:18:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andy Yan <andyshrk@163.com>, heiko@sntech.de
-Cc: oe-kbuild-all@lists.linux.dev, krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH 3/5] arm64: dts: rockchip: Add support for rk3588s based
- board CoolPi 4B
-Message-ID: <202312101526.ApwoImlf-lkp@intel.com>
-References: <20231209103802.1568552-1-andyshrk@163.com>
+	id 1rCEnW-0019Bt-0I;
+	Sun, 10 Dec 2023 08:04:22 +0000
+Received: from m15.mail.163.com ([45.254.50.219])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1rCEnQ-001991-1p;
+	Sun, 10 Dec 2023 08:04:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=nNmAy
+	t5R/FqSzYRKUKMJgqk+9Njbt4i+66funeH8Iu4=; b=EtwC/wOo3g4Kbx45XPgXE
+	Xusic8o/MFyugcESvAJHLC4dA6f8fR47r2SvVsmN8ir5E4J3cpfwP/auXeiWSLN/
+	tMUQba1yT9m5qG1mmlCRb7Xw0zF2Yk5V/jzi6jkGkXMJo067ccQSeXhFN7/M2Khv
+	BUbrWc0UEmP10z9hxRX7t4=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by zwqz-smtp-mta-g1-0 (Coremail) with SMTP id _____wDnL0zjcHVlYuF4Aw--.22945S2;
+	Sun, 10 Dec 2023 16:03:50 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/5] dt-bindings: vendor-prefixes: Add Cool Pi
+Date: Sun, 10 Dec 2023 16:03:45 +0800
+Message-Id: <20231210080345.1667161-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231210080313.1667013-1-andyshrk@163.com>
+References: <20231210080313.1667013-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231209103802.1568552-1-andyshrk@163.com>
+X-CM-TRANSID: _____wDnL0zjcHVlYuF4Aw--.22945S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JF13Jr1Uuw4UWr1rWF15Jwb_yoWfArb_Xa
+	1xAw1DZF43JF4Fgw4vyF4xG345Aw12kr9ru3WrtayDCF12yrZrGa97t345Zw1xCF43uas8
+	Crs3GrWDGrnrGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRA4SrUUUUUU==
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEA9CXmVOA3chbAADsS
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231209_231841_126384_E9328D50 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20231210_000417_031607_58DCA43C 
+X-CRM114-Status: UNSURE (   6.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,37 +79,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Add vendor prefix for Cool Pi(https://cool-pi.com/)
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Andy Yan <andyshrk@163.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on robh/for-next linus/master v6.7-rc4 next-20231208]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+---
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Yan/dt-bindings-vendor-prefixes-Add-Cool-Pi/20231209-184214
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20231209103802.1568552-1-andyshrk%40163.com
-patch subject: [PATCH 3/5] arm64: dts: rockchip: Add support for rk3588s based board CoolPi 4B
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20231210/202312101526.ApwoImlf-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231210/202312101526.ApwoImlf-lkp@intel.com/reproduce)
+(no changes since v1)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202312101526.ApwoImlf-lkp@intel.com/
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-All errors (new ones prefixed by >>):
-
->> Error: arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts:696.1-7 Label or path hdmi0 not found
-   FATAL ERROR: Syntax error parsing input tree
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 309b94c328c8..ddbba46fcbad 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -294,6 +294,8 @@ patternProperties:
+     description: CompuLab Ltd.
+   "^congatec,.*":
+     description: congatec GmbH
++  "^coolpi,.*":
++    description: cool-pi.com
+   "^coreriver,.*":
+     description: CORERIVER Semiconductor Co.,Ltd.
+   "^corpro,.*":
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
