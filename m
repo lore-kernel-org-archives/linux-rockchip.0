@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434CBC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 07:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77697C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 09:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ye7orNxnirqUhSLonky1MnwandWzOqtJAC5xNbGGiFo=; b=4x0vcgLbWfbRtt
-	3hWBI1L7IuNdmGMhY9ThYXwQSSxbOopkfUiSTpQEbKsB02VLYwYSuJVWpJLBVLX2BsZzFCiGYReM+
-	IceGGQo3+MhBWSpKS3UF5KRjTB8nNs3Q3m1d4L3lE0xxRJ4cMxJxVlc0ZPzwvh1qhqxZVOhq28TZ0
-	Ato86IR1is/PrUBGfevB9DV2qmrvUPGKTcckO9QJJiPaNrW9IXy2wgIGgFJXLzJElIrAoP3pVOknA
-	F697bnhpHvvlFEg3jlddRFGGyjsMU8JB2Z0+Q1pIPtk/FqnrEDnZhllPQKdsfSO6uZzmC5PhUurFo
-	mEJ7zfUzl042xDSy6tgA==;
+	List-Owner; bh=A9qHsWVH4XJ9iTOBQ/ZUZYbJkGzYH2B0rkq9senVCuE=; b=0zuxr7g4p5zgzp
+	4i/bC7/fSxflu9F1G47lDp3X8KgaTTvIe9/OwJ9bx/8s/07gvh+ib8dYPTFvbmfoeIXa7FMIJHXhs
+	q6RYLR7wGlfgkE9qwkTY6Pwue1u380bajRywDUOFuAA7GVQJ/aQfPavAwvPIN7VheEDL+enIykWSq
+	ahDVaXzqPEBEMTj2MFMXwzhuk0I9OP8zoJkMNsdQEhO5qoQfFr/Pvg0lMGrmwsdj5pqf2uwL4XKNM
+	aQrW9woA559X6j2gNZLb4BGf8bK0ftB6v4Q8mOwnQzWK8rV8S3SpQX1w8qaDueQvnV77ckfaW6CAj
+	qy2Vsc50k/W5MTAICIPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCb2s-004HWb-0K;
-	Mon, 11 Dec 2023 07:49:42 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCb2o-004HVq-2o
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Dec 2023 07:49:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1702280978; x=1733816978;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=nfzaV3vxtQAyCNR+jzMcM2jLOcbWTkwcukLDVw5CIyg=;
-  b=UzdF6SFC9XcupHRB37Wrrv15+vvAKjottFnjG+khlGft8Ivi+bUbRrFj
-   JZBYTW8senU0nBXUrHILyaukX3/TzqQ/xShX2qykbVohrf2fj/k41K+Zp
-   JTBgX7NgkjS7KuzHuTIOsxscFE5/oLhCmccMCmUJMssHHDzLZwBYvCJJf
-   wOeDt+6Xl+RGrjqtQyplWSjcjSm9en4SGskk3rHuxOmqQZ850B2cnYZYi
-   45mlD5tby3J9SgKXA2d4YiIngQZA1AWxCmvj/HOc2Q8pdY5D22zgoTBV9
-   fZUD4I0DbqW8n7irXiF4tRwPBN7iguHmIHAxJ21Tbdy69bI+xxbbJqABj
-   w==;
-X-IronPort-AV: E=Sophos;i="6.04,267,1695679200"; 
-   d="scan'208";a="34423846"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 11 Dec 2023 08:49:36 +0100
-Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.18])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 88432280075;
-	Mon, 11 Dec 2023 08:49:36 +0100 (CET)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>
-Cc: kieran.bingham@ideasonboard.com, tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com, aford173@gmail.com, Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v4 00/11] media: rkisp1: Add support for i.MX8MP
-Date: Mon, 11 Dec 2023 08:49:37 +0100
-Message-ID: <5998504.lOV4Wx5bFT@steina-w>
-Organization: TQ-Systems GmbH
-In-Reply-To: <5184188.e9J7NaK4W3@steina-w>
-References: <20231129092759.242641-1-paul.elder@ideasonboard.com> <5184188.e9J7NaK4W3@steina-w>
+	id 1rCcva-004W8V-0e;
+	Mon, 11 Dec 2023 09:50:18 +0000
+Received: from m1345.mail.163.com ([220.181.13.45])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1rCcvU-004W7A-19;
+	Mon, 11 Dec 2023 09:50:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=Le9S3rlswY7wsWpZpFPJ1/zOzeuR21eJrjPWtQDnFmw=; b=R
+	BWlbPA99UveIgqwBMNsovL7c9E9Qjxlt7FC/oDBdkpzkh2wknCpH9RQu8bIPbiq1
+	7AJILkrhd+a07N6G9vDSylwE+q56fk/K48Vx1K2LNDYPQT0xSi+sEPYADuvWymDJ
+	1L8QIDVu/8l+8vxJY1TT0q9PZS4pHQagY9tpI5UBI8=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by ajax-webmail-wmsvr45
+ (Coremail) ; Mon, 11 Dec 2023 17:49:58 +0800 (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Mon, 11 Dec 2023 17:49:58 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
+Cc: heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re:Re: [PATCH v2 5/5] arm64: dts: rockchip: Add support for rk3588
+ based board Cool Pi CM5 EVB
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
+ Copyright (c) 2002-2023 www.mailtech.cn 163com
+In-Reply-To: <2b58450a-1bde-424b-ab69-a3834914522c@linaro.org>
+References: <20231210080313.1667013-1-andyshrk@163.com>
+ <20231210080629.1667589-1-andyshrk@163.com>
+ <2b58450a-1bde-424b-ab69-a3834914522c@linaro.org>
+X-NTES-SC: AL_Qu2bAP6Tt0ki7iabbOkXn0kXhec2W8Czvvgg34JRP5k0hynnwAEvc0JFOEPk/d2MNhKrjSWXaid/wONHUYtdeq32EJv2by2Fsmbt0bCXqxA3
 MIME-Version: 1.0
+Message-ID: <14ab4c8c.4fa1.18c58488bf2.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: LcGowADH_mtG23ZleJAsAA--.19192W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqApDXmVOA4wwdAACsd
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231210_234939_302235_056BE025 
-X-CRM114-Status: GOOD (  24.82  )
+X-CRM114-CacheID: sfid-20231211_015012_771054_AAD1DFB9 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,95 +72,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Mittwoch, 29. November 2023, 11:58:39 CET schrieb Alexander Stein:
-> Hi Paul,
-> =
-
-> thanks for the series.
-> =
-
-> Am Mittwoch, 29. November 2023, 10:27:48 CET schrieb Paul Elder:
-> > This series extends the rkisp1 driver to support the ISP found in the
-> > NXP i.MX8MP SoC.
-> > =
-
-> > The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> > and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> > over time as they are now independently developed (afaik) by Rockchip
-> > and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> > and is close enough to the RK3399 ISP that it can easily be supported by
-> > the same driver.
-> > =
-
-> > The last two patches add support for UYVY output format, which can be
-> > implemented on the ISP version in the i.MX8MP but not in the one in the
-> > RK3399.
-> > =
-
-> > This version of the series specifically has been tested on a Polyhex
-> > Debix model A with an imx219 (Raspberry Pi cam v2).
-> =
-
-> I've created a setup on TQMa8MPxL/MBa8MPxL and a Sony IMX327 sensor for a
-> while now. I can stream 1080p video at 45 FPS to HDMI output without any
-> special configuration.
-
-Just for the records. the 45 FPS limit is introduced by (HDMI) output. Usin=
-g a =
-
-gstreamer testsink "outpu", I can run at 60 FPS.
-
-Best regards,
-Alexander
-
-> Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> =
-
-> > Laurent Pinchart (2):
-> >   media: rkisp1: Add and use rkisp1_has_feature() macro
-> >   media: rkisp1: Configure gasket on i.MX8MP
-> > =
-
-> > Paul Elder (9):
-> >   media: rkisp1: Support setting memory stride for main path
-> >   media: rkisp1: Support devices lacking self path
-> >   media: rkisp1: Support devices lacking dual crop
-> >   media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-> >   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-> >   media: rkisp1: Add match data for i.MX8MP ISP
-> >   media: rkisp1: Shift DMA buffer addresses on i.MX8MP
-> >   media: rkisp1: Add YC swap capability
-> >   media: rkisp1: Add UYVY as an output format
-> >  =
-
-> >  .../bindings/media/rockchip-isp1.yaml         |  37 ++++-
-> >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 128 ++++++++++++-----
-> >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  35 ++++-
-> >  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  66 +++++++--
-> >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 +++++++++++++++++-
-> >  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  32 +++++
-> >  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  27 ++--
-> >  include/uapi/linux/rkisp1-config.h            |   2 +
-> >  8 files changed, 398 insertions(+), 60 deletions(-)
-
-
--- =
-
-TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-Amtsgericht M=FCnchen, HRB 105018
-Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-http://www.tq-group.com/
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIEtyenlzenRvZu+8mgoKQXQgMjAyMy0xMi0xMCAxOToxMjoxNSwgIktyenlzenRvZiBLb3ps
+b3dza2kiIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+IHdyb3RlOgo+T24gMTAvMTIv
+MjAyMyAwOTowNiwgQW5keSBZYW4gd3JvdGU6Cj4+IENvb2wgUGkgQ001IEVWQiBpcyBhIGJvYXJk
+IGJhc2VkIG9uIHJrMzU4OC4KPj4gCj4+IFNwZWNpZmljYXRpb246Cj4+IC0gUm9ja2NoaXAgUksz
+NTg4Cj4+IC0gTFBERFI0IDIvNC84LzE2IEdCCj4+IC0gVEYgc2NhcmQgc2xvdAo+PiAtIGVNTUMg
+OC8zMi82NC8xMjggR0IgbW9kdWxlCj4+IC0gR2lnYWJpdCBldGhlcm5ldCB4IDEgd2l0aCBQSFkg
+WVQ4NTMxCj4+IC0gR2lnYWJpdCBldGhlcm5ldCB4IDEgZHJpdmVkIGJ5IFBDSUUgd2l0aCBZVDY4
+MDFTCj4+IC0gSERNSSBUeXBlIEEgb3V0IHggMgo+PiAtIEhETUkgVHlwZSBEIGluIHggMQo+PiAt
+IFVTQiAyLjAgSG9zdCB4IDIKPj4gLSBVU0IgMy4wIE9URyB4IDEKPj4gLSBVU0IgMy4wIEhvc3Qg
+eCAxCj4+IC0gUENJRSBNLjIgRSBLZXkgZm9yIFdpcmVsZXNzIGNvbm5lY3Rpb24KPj4gLSBQQ0lF
+IE0uMiBNIEtleSBmb3IgTlZNRSBjb25uZWN0aW9uCj4+IC0gNDAgcGluIGhlYWRlcgo+Cj4KPj4g
+Kwo+PiArCWJhY2tsaWdodDogYmFja2xpZ2h0IHsKPj4gKwkJY29tcGF0aWJsZSA9ICJwd20tYmFj
+a2xpZ2h0IjsKPj4gKwkJcG93ZXItc3VwcGx5ID0gPCZ2Y2MxMnZfZGNpbj47Cj4+ICsJCXB3bXMg
+PSA8JnB3bTIgMCAyNTAwMCAwPjsKPj4gKwkJZW5hYmxlLWdwaW9zID0gPCZncGlvNCBSS19QQTMg
+R1BJT19BQ1RJVkVfSElHSD47Cj4+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICsJ
+CXBpbmN0cmwtMCA9IDwmYmxfZW4+Owo+PiArCQlzdGF0dXMgPSAib2theSI7Cj4KPlRoaXMgaXMg
+YSBmcmllbmRseSByZW1pbmRlciBkdXJpbmcgdGhlIHJldmlldyBwcm9jZXNzLgo+Cj5JdCBzZWVt
+cyBteSBvciBvdGhlciByZXZpZXdlcidzIHByZXZpb3VzIGNvbW1lbnRzIHdlcmUgbm90IGZ1bGx5
+Cj5hZGRyZXNzZWQuIE1heWJlIHRoZSBmZWVkYmFjayBnb3QgbG9zdCBiZXR3ZWVuIHRoZSBxdW90
+ZXMsIG1heWJlIHlvdQo+anVzdCBmb3Jnb3QgdG8gYXBwbHkgaXQuIFBsZWFzZSBnbyBiYWNrIHRv
+IHRoZSBwcmV2aW91cyBkaXNjdXNzaW9uIGFuZAo+ZWl0aGVyIGltcGxlbWVudCBhbGwgcmVxdWVz
+dGVkIGNoYW5nZXMgb3Iga2VlcCBkaXNjdXNzaW5nIHRoZW0uCgpZZXPvvIwgaXQgc2VlbXMgdGhh
+dCB0aGUgY29tbWVudHMgd2VyZSBsb3N077yMIEkgZGlkbid0IGdldCBhbnkgY29tbWVudHMgYWJv
+dXQgUEFUQ0ggNSBpbiBteSBWMS4KQW55d2F5LCBJIHdpbGwgY2hlY2sgdGhpcyBwYXRjaCBhZ2Fp
+biwgYW5kIGZpeCB0aGUgaXNzdWUgSSBmaW5kIGJ5IG15c2VsZi4KPgo+VGhhbmsgeW91Lgo+Cj5C
+ZXN0IHJlZ2FyZHMsCj5Lcnp5c3p0b2YKPgo+Cj5fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwo+bGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKPmxpbnV4
+LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
