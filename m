@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CD8C10F07
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 11:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84015C10F07
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 11:59:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XGH19IQRfRwtrBKAX8HcHtHj06o1PM/odkf+5D/02xY=; b=TNKpC9zr7F51PK
-	6fA5cBO5pYHt6SecY/ffTO+J7fa03ejLCAOYurSw7bfup66V/N10Niw8I8KypZCCRECGbzdEnK7Le
-	ICtMG/ypcUKXeHggcQ5U2iYr7sWmH0VfO8z5+wqOnyh6PYhoICEW6StyjrTMs+spSKSYOLVFDSuHM
-	EJfjDRaV0zA5/Z36DQ2lF8RvzDtVpneBZOoltYitm9nK6oNiwjaEB0WaBb2mvtLC1fbTb3sE/WPj1
-	qAsjkw0XqsypkDFdP2mZ3ut+tvOiNNea2ZhOgZkL2ifzQwMRJzPI8G6pXzhU2dVwNavsNWHFChu0q
-	j7UZQxth+7LIVNeF5iEA==;
+	List-Owner; bh=kk5YhPKfmz+u+caY6vz93D15TjovBmanc06s2CBUp/w=; b=ySorEc1iTmOUv7
+	zQjgLJHfZOKbUZpOPcRFYOxBaZR+Z47upswHcL9wptw7J2hd43ILzUudV7yPw6vOwAdN8C9x11mHy
+	xG7w0B6kicGpn05UP5kBLyyQwDIKfNAiLY/MsNzTv7spaLBHiNQF0QNkjpnraEeiGhXylLlaVnYMg
+	DHMEhI0wTgWHYJAhhcgOvWT4LtAtYRL+VVwzhF3J/FoXHTAhzVJMy8/r60dgakuX9s5aCAjpheGkp
+	dO3K8ff21CczRvLOpeFGtjHWC+zfXZGULB7CoNKoHn8QfaYjaGJVqF1k4QcmyXLa3jbbPMS3fKOuD
+	MGu5kzyQf/nlpoMyzYaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCewU-004mEu-2v;
-	Mon, 11 Dec 2023 11:59:23 +0000
-Received: from m12.mail.163.com ([220.181.12.199])
+	id 1rCeww-004mN1-2V;
+	Mon, 11 Dec 2023 11:59:51 +0000
+Received: from m12.mail.163.com ([220.181.12.197])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCevt-004m66-0a
+	id 1rCewT-004mDz-1S
 	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Dec 2023 11:59:20 +0000
+	Mon, 11 Dec 2023 11:59:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=VvpYT
-	W40NZ46U/uC3kxp5psTC7U46RpXFvNEExH8M2A=; b=ST917H6sunqf2y6NnCz6K
-	XvAbAMXofT9a6GGmmtjaYxodl+EqyBmUfhErUFpzdkfo23HYE9334Rhm0t3TWuXP
-	OyXRd7d9cPrWh9mHI8+zMsDmR36GoCzHSMPo9QNO6nHNLd5L/B6/WvoT1tM3q7vS
-	I96Anf5QvBSHsvH+JhJfhQ=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=RAY85
+	vW0eZ067YcH3KySYDrKU07gygVkucbXL81kK7Q=; b=NQoceVUXnczOA5LnD0Yir
+	7rKlDs74rEl+EqdMaL9Ty5NVnmMiWvM8I9OxEdwWyzR6nHJ9vCSE5fYI9BAScrbg
+	NnVSl/G1WxGAjPNgFqILDt1uHWt2u5EOfETv/Rbt41g/hPtfWnrjd4PdcSfWzwQR
+	aUaD7k7LxGiyw3x4QlwnKs=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wDnj5FY+XZlTHfzCQ--.17744S2;
-	Mon, 11 Dec 2023 19:58:19 +0800 (CST)
+	by zwqz-smtp-mta-g3-3 (Coremail) with SMTP id _____wCnd+N7+XZlVD6+Dw--.13391S2;
+	Mon, 11 Dec 2023 19:58:55 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: hjc@rock-chips.com,
@@ -48,25 +48,25 @@ Cc: hjc@rock-chips.com,
 	sebastian.reichel@collabora.com,
 	kever.yang@rock-chips.com,
 	chris.obbard@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v5 07/16] drm/rockchip: vop2: set bg dly and prescan dly at vop2_post_config
-Date: Mon, 11 Dec 2023 19:58:15 +0800
-Message-Id: <20231211115815.1785131-1-andyshrk@163.com>
+	Andy Yan <andy.yan@rock-chips.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v5 10/16] dt-bindings: display: vop2: Add rk3588 support
+Date: Mon, 11 Dec 2023 19:58:50 +0800
+Message-Id: <20231211115850.1785311-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231211115547.1784587-1-andyshrk@163.com>
 References: <20231211115547.1784587-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnj5FY+XZlTHfzCQ--.17744S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZw4kZw1UJrWUtF15Ww1Utrb_yoW5Xr4rp3
-	4fGry3CrWUJF4qvw1kZa4DZr4fKws7tr47JFW7Jas2yF90qr9xZwn8urn8GrWqqFy7AFy2
-	9rWvgrWYgF1akr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jTApnUUUUU=
+X-CM-TRANSID: _____wCnd+N7+XZlVD6+Dw--.13391S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxAF1DWF13uw13XFWxCw47XFb_yoWrKFyxpa
+	s3C3W8JrZ7Gr13Xr4kt3WrCw4SgFn5Aw4jyrs7Jr43ta1aqFW0vF4akwn8XayUCFn7Zay2
+	9FWUua4xJ3W7ZF7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jw4SOUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqB5DXmVOA44ldgAAse
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnARDXlghl75eowAAso
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_035907_299099_A123C840 
-X-CRM114-Status: UNSURE (   8.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231211_035921_896031_55A5C1B0 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,73 +85,195 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-We need to setup background delay cycle and prescan
-delay cycle when a mode is enable to avoid trigger
-POST_BUF_EMPTY irq on rk3588.
-
-Note: RK356x has no such requirement.
+The vop2 on rk3588 is similar to which on rk356x
+but with 4 video ports and need to reference
+more grf modules.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 ---
 
-(no changes since v1)
+(no changes since v4)
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 26 ++++++++------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
+Changes in v4:
+- drop redundant description.
+- use full stop at all the description's end.
+- address Krzysztof's review in v3
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 40b5c5ca4864..d52395b6aff7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1460,8 +1460,18 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 	u32 top_margin = 100, bottom_margin = 100;
- 	u16 hsize = hdisplay * (left_margin + right_margin) / 200;
- 	u16 vsize = vdisplay * (top_margin + bottom_margin) / 200;
-+	u16 hsync_len = mode->crtc_hsync_end - mode->crtc_hsync_start;
- 	u16 hact_end, vact_end;
- 	u32 val;
-+	u32 bg_dly;
-+	u32 pre_scan_dly;
-+
-+	bg_dly = vp->data->pre_scan_max_dly[3];
-+	vop2_writel(vp->vop2, RK3568_VP_BG_MIX_CTRL(vp->id),
-+		    FIELD_PREP(RK3568_VP_BG_MIX_CTRL__BG_DLY, bg_dly));
-+
-+	pre_scan_dly = ((bg_dly + (hdisplay >> 1) - 1) << 16) | hsync_len;
-+	vop2_vp_write(vp, RK3568_VP_PRE_SCAN_HTIMING, pre_scan_dly);
+Changes in v3:
+- constrain properties in allOf:if:then
+- some description updates
+
+Changes in v2:
+- fix errors when running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+
+ .../display/rockchip/rockchip-vop2.yaml       | 100 ++++++++++++++----
+ 1 file changed, 81 insertions(+), 19 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index b60b90472d42..2531726af306 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -8,8 +8,8 @@ title: Rockchip SoC display controller (VOP2)
  
- 	vsize = rounddown(vsize, 2);
- 	hsize = rounddown(hsize, 2);
-@@ -1956,11 +1966,6 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
- 	u32 layer_sel = 0;
- 	u32 port_sel;
- 	unsigned int nlayer, ofs;
--	struct drm_display_mode *adjusted_mode;
--	u16 hsync_len;
--	u16 hdisplay;
--	u32 bg_dly;
--	u32 pre_scan_dly;
- 	u32 ovl_ctrl;
- 	int i;
- 	struct vop2_video_port *vp0 = &vop2->vps[0];
-@@ -1968,17 +1973,6 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
- 	struct vop2_video_port *vp2 = &vop2->vps[2];
- 	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(vp->crtc.state);
+ description:
+   VOP2 (Video Output Processor v2) is the display controller for the Rockchip
+-  series of SoCs which transfers the image data from a video memory
+-  buffer to an external LCD interface.
++  series of SoCs which transfers the image data from a video memory buffer to
++  an external LCD interface.
  
--	adjusted_mode = &vp->crtc.state->adjusted_mode;
--	hsync_len = adjusted_mode->crtc_hsync_end - adjusted_mode->crtc_hsync_start;
--	hdisplay = adjusted_mode->crtc_hdisplay;
--
--	bg_dly = vp->data->pre_scan_max_dly[3];
--	vop2_writel(vop2, RK3568_VP_BG_MIX_CTRL(vp->id),
--		    FIELD_PREP(RK3568_VP_BG_MIX_CTRL__BG_DLY, bg_dly));
--
--	pre_scan_dly = ((bg_dly + (hdisplay >> 1) - 1) << 16) | hsync_len;
--	vop2_vp_write(vp, RK3568_VP_PRE_SCAN_HTIMING, pre_scan_dly);
--
- 	ovl_ctrl = vop2_readl(vop2, RK3568_OVL_CTRL);
- 	ovl_ctrl |= RK3568_OVL_CTRL__LAYERSEL_REGDONE_IMD;
- 	if (vcstate->yuv_overlay)
+ maintainers:
+   - Sandy Huang <hjc@rock-chips.com>
+@@ -20,6 +20,7 @@ properties:
+     enum:
+       - rockchip,rk3566-vop
+       - rockchip,rk3568-vop
++      - rockchip,rk3588-vop
+ 
+   reg:
+     items:
+@@ -27,8 +28,8 @@ properties:
+           Must contain one entry corresponding to the base address and length
+           of the register space.
+       - description:
+-          Can optionally contain a second entry corresponding to
+-          the CRTC gamma LUT address.
++          Can optionally contain a second entry corresponding to the CRTC gamma
++          LUT address.
+ 
+   reg-names:
+     items:
+@@ -41,45 +42,63 @@ properties:
+       The VOP interrupt is shared by several interrupt sources, such as
+       frame start (VSYNC), line flag and other status interrupts.
+ 
++  # See compatible-specific constraints below.
+   clocks:
++    minItems: 5
+     items:
+-      - description: Clock for ddr buffer transfer.
+-      - description: Clock for the ahb bus to R/W the phy regs.
++      - description: Clock for ddr buffer transfer via axi.
++      - description: Clock for the ahb bus to R/W the regs.
+       - description: Pixel clock for video port 0.
+       - description: Pixel clock for video port 1.
+       - description: Pixel clock for video port 2.
++      - description: Pixel clock for video port 3.
++      - description: Peripheral(vop grf/dsi) clock.
+ 
+   clock-names:
++    minItems: 5
+     items:
+       - const: aclk
+       - const: hclk
+       - const: dclk_vp0
+       - const: dclk_vp1
+       - const: dclk_vp2
++      - const: dclk_vp3
++      - const: pclk_vop
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+-      Phandle to GRF regs used for misc control
++      Phandle to GRF regs used for control the polarity of dclk/hsync/vsync of DPI,
++      also used for query vop memory bisr enable status, etc.
++
++  rockchip,vo1-grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to VO GRF regs used for control the polarity of dclk/hsync/vsync of hdmi
++      on rk3588.
++
++  rockchip,vop-grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to VOP GRF regs used for control data path between vopr and hdmi/edp.
++
++  rockchip,pmu:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to PMU GRF used for query vop memory bisr status on rk3588.
+ 
+   ports:
+     $ref: /schemas/graph.yaml#/properties/ports
+ 
+-    properties:
+-      port@0:
++    patternProperties:
++      "^port@[0-3]$":
+         $ref: /schemas/graph.yaml#/properties/port
+-        description:
+-          Output endpoint of VP0
++        description: Output endpoint of VP0/1/2/3.
+ 
+-      port@1:
+-        $ref: /schemas/graph.yaml#/properties/port
+-        description:
+-          Output endpoint of VP1
++    required:
++      - port@0
+ 
+-      port@2:
+-        $ref: /schemas/graph.yaml#/properties/port
+-        description:
+-          Output endpoint of VP2
++    unevaluatedProperties: false
+ 
+   iommus:
+     maxItems: 1
+@@ -96,6 +115,49 @@ required:
+   - clock-names
+   - ports
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3588-vop
++    then:
++      properties:
++        clocks:
++          minItems: 7
++        clock-names:
++          minItems: 7
++
++        ports:
++          required:
++            - port@0
++            - port@1
++            - port@2
++            - port@3
++
++      required:
++        - rockchip,grf
++        - rockchip,vo1-grf
++        - rockchip,vop-grf
++        - rockchip,pmu
++
++    else:
++      properties:
++        rockchip,vo1-grf: false
++        rockchip,vop-grf: false
++        rockchip,pmu: false
++
++        clocks:
++          maxItems: 5
++        clock-names:
++          maxItems: 5
++
++        ports:
++          required:
++            - port@0
++            - port@1
++            - port@2
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.34.1
 
