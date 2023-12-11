@@ -4,74 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F0DAC4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 12:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1010CC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 12:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9T8kdRr7enNHNG305NpcoTLtYPcMjFB7O6qK4tiWTY=; b=mjDEZ02AgcN+mdO1QrbYYYFeou
-	XiLIpSU4XvlPtGeD7kNbVZq1pJXdLsQRlCBE7uwOpePaSuLfbwqaX1dkwxjgmMGphb5MvU33BleTv
-	NfuvgsD9Yly/AAaz62IYC/B4F5eEhQL54xhAOEDKR2hIUBEd3B31qZ4t9DbmZ/uLSNrvt6byp0mqg
-	JZwctB9bu14M+wMIDA16Mb8odn9+NCocGBa0Qn2bnPPFYwliUWOqYS+YzNIJnrX2sQFwaDW9CtYnQ
-	NQS/o1odPHqUPLVCV6Mezcer7AgXngV8L2FsZMvQ9AId9aWyyr0t/Pqhq0Lnr4+bVQpAMVIwAESzP
-	Z01OYJxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ObXm8i+HH4HNzvesfFyoTZWNnipuPwj6Nr5/U0x8JGc=; b=S1tJLLB+xkrG7u
+	Tf7vIzXrLQiTNlB/qippGLEjqueK/P2ZO6GoJXzL2FMbY6N8WD5BcUBtnDrvyrwn84HWvRBMPE2GY
+	R/FHv3cHDWVmyXYQdGUfnBMULPOsmMd9TUds2dGO1YDPf6sCYkGahs2ynzhFrcGjt56IwApUcbHAR
+	EWo6GgTUYG5uXuSHEjNUzH/MUnnD75SoPPUcdyZo0J4T21OczYyVP7JkZ8gC8KWrUGtj5WRaBa2oT
+	q6G8RSS4/oenncaEYq3xxfx1HGiAZQhYiGr579NKsNVj28NQUnQDZSoNXgG8SakgckNIDp+wYwQVi
+	Q+Ml3tr0G71UJKGTxLOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCfFN-004pEr-07;
-	Mon, 11 Dec 2023 12:18:53 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rCfO7-004rA6-1j;
+	Mon, 11 Dec 2023 12:27:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCfEl-004p8m-1B
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Dec 2023 12:18:51 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rCfEf-0001H0-4X; Mon, 11 Dec 2023 13:18:09 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1rCfO1-004r8m-2n;
+	Mon, 11 Dec 2023 12:27:53 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rCfEe-00F5z5-AI; Mon, 11 Dec 2023 13:18:08 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rCfEe-000tY1-0P; Mon, 11 Dec 2023 13:18:08 +0100
-Date: Mon, 11 Dec 2023 13:18:07 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	platform-driver-x86@vger.kernel.org,
-	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	asahi@lists.linux.dev, kernel@pengutronix.de
-Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
-Message-ID: <20231211121807.zzlgf3alcoo6lrw7@pengutronix.de>
-References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
- <ZXM4CdJxg-XrYhkn@orome.fritz.box>
- <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
- <ZXbzcFTnDTKoZAta@orome.fritz.box>
+	(envelope-from <heiko@sntech.de>)
+	id 1rCfNp-00087M-1j; Mon, 11 Dec 2023 13:27:37 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Andy Yan <andyshrk@163.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v3 4/5] dt-bindings: arm: rockchip: Add Cool Pi CM5 EVB
+Date: Mon, 11 Dec 2023 13:27:36 +0100
+Message-ID: <3203387.BEx9A2HvPv@diego>
+In-Reply-To: <20231211105023.1779786-1-andyshrk@163.com>
+References: <20231211104915.1779476-1-andyshrk@163.com>
+ <20231211105023.1779786-1-andyshrk@163.com>
 MIME-Version: 1.0
-In-Reply-To: <ZXbzcFTnDTKoZAta@orome.fritz.box>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_041815_502081_0D70A50E 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20231211_042749_928872_9B8285AE 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,144 +59,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8635084344206188549=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Andy,
 
---===============8635084344206188549==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yyef2a7pj6vk5dry"
-Content-Disposition: inline
+Am Montag, 11. Dezember 2023, 11:50:23 CET schrieb Andy Yan:
+> Add Cool Pi CM5 EVB, a board powered by RK3588
+> 
+> Signed-off-by: Andy Yan <andyshrk@163.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
+I just realized your mention of this being a som + baseboard combination
+in the previous version.
 
---yyef2a7pj6vk5dry
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In that case the compatible really should reflect that.
 
-Hello Thierry,
+      - description: Cool Pi Compute Module 5(CM5) EVB
+        items:
+          - const: coolpi,pi-cm5-evb
+          - const: coolpi,pi-cm5
+          - const: rockchip,rk3588
 
-On Mon, Dec 11, 2023 at 12:33:04PM +0100, Thierry Reding wrote:
-> On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=F6nig wrote:
-> > The TL;DR; is essentially what I already wrote in my last reply to Bart
-> > in the v3 thread[1]:
-> >=20
-> >  - My approach needs more changes to the individual drivers (which I
-> >    don't consider a relevant disadvantage given that the resulting code
-> >    is better);
-> >  - My approach works with less pointer dereferences which IMHO also
-> >    simplifies understanding the code as all relevant data is in a single
-> >    place.
-> >  - My approach has a weaker separation between the core and the lowlevel
-> >    drivers. That's ok in my book given that this doesn't complicate the
-> >    lowlevel drivers and that hiding details considerably better doesn't
-> >    work anyhow (see the drivers that need internal.h in your patch).
-> >=20
-> > For me the single allocation issue is only an added bonus. The relevant
-> > advantage of my approach is that the code is easier and (probably) more
-> > efficient.
->=20
-> I happen to disagree. I think adding pwmchip_alloc() makes things much
-> more complicated for low level drivers.
-
-Looking at e.g.
-https://lore.kernel.org/linux-pwm/2dda818b8bbbe8ba4b9df5ab54f960ff4a4f1ab5.=
-1701860672.git.u.kleine-koenig@pengutronix.de/
-I wonder where you see "much more complication". OK, there are two
-pointers now for chip and private data, but I'd call that at most a
-"mild" complication[1] which is more than balanced out by the
-simplifications in the remaining parts of that patch.
-
-Best regards
-Uwe
-
-[1] I'm not sure I'd refuse someone suggesting the following patch on
-    top of today's next:
-
-	diff --git a/drivers/pwm/pwm-microchip-core.c b/drivers/pwm/pwm-microchip-=
-core.c
-	index c0c53968f3e9..d32e65914599 100644
-	--- a/drivers/pwm/pwm-microchip-core.c
-	+++ b/drivers/pwm/pwm-microchip-core.c
-	@@ -448,12 +448,14 @@ MODULE_DEVICE_TABLE(of, mchp_core_of_match);
-	 static int mchp_core_pwm_probe(struct platform_device *pdev)
-	 {
-		struct mchp_core_pwm_chip *mchp_core_pwm;
-	+	struct pwm_chip *chip;
-		struct resource *regs;
-		int ret;
-	=20
-		mchp_core_pwm =3D devm_kzalloc(&pdev->dev, sizeof(*mchp_core_pwm), GFP_KE=
-RNEL);
-		if (!mchp_core_pwm)
-			return -ENOMEM;
-	+	chip =3D &mchp_core_pwm->chip;
-	=20
-		mchp_core_pwm->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, &=
-regs);
-		if (IS_ERR(mchp_core_pwm->base))
-	@@ -470,9 +472,9 @@ static int mchp_core_pwm_probe(struct platform_device =
-*pdev)
-	=20
-		mutex_init(&mchp_core_pwm->lock);
-	=20
-	-	mchp_core_pwm->chip.dev =3D &pdev->dev;
-	-	mchp_core_pwm->chip.ops =3D &mchp_core_pwm_ops;
-	-	mchp_core_pwm->chip.npwm =3D 16;
-	+	chip->dev =3D &pdev->dev;
-	+	chip->ops =3D &mchp_core_pwm_ops;
-	+	chip->npwm =3D 16;
-	=20
-		mchp_core_pwm->channel_enabled =3D readb_relaxed(mchp_core_pwm->base + MC=
-HPCOREPWM_EN(0));
-		mchp_core_pwm->channel_enabled |=3D
-	@@ -485,7 +487,7 @@ static int mchp_core_pwm_probe(struct platform_device =
-*pdev)
-		writel_relaxed(1U, mchp_core_pwm->base + MCHPCOREPWM_SYNC_UPD);
-		mchp_core_pwm->update_timestamp =3D ktime_get();
-	=20
-	-	ret =3D devm_pwmchip_add(&pdev->dev, &mchp_core_pwm->chip);
-	+	ret =3D devm_pwmchip_add(&pdev->dev, chip);
-		if (ret)
-			return dev_err_probe(&pdev->dev, ret, "Failed to add pwmchip\n");
-=20
-    With that applied before the above mentioned patch there is no
-    complication at all in my eyes.
+Similar to how all the other som + baseboard combinations do it
+(Edgeble neural modules, engicam px30, Thebroma-SoMs).
 
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+Thanks
+Heiko
 
---yyef2a7pj6vk5dry
-Content-Type: application/pgp-signature; name="signature.asc"
+> ---
+> 
+> (no changes since v2)
+> 
+> Changes in v2:
+> - change board compatible from "CoolPi CM5 EVB" to "coolpi,pi-cm5-evb"
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 11d03035f3db..4da83bbd642a 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -95,6 +95,11 @@ properties:
+>            - const: chipspark,rayeager-px2
+>            - const: rockchip,rk3066a
+>  
+> +      - description: Cool Pi Compute Module 5(CM5) EVB
+> +        items:
+> +          - const: coolpi,pi-cm5-evb
+> +          - const: rockchip,rk3588
+> +
+>        - description: Cool Pi 4 Model B
+>          items:
+>            - const: coolpi,pi-4b
+> 
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmV2/f8ACgkQj4D7WH0S
-/k7QwQgApfQEvhd6se+a8+O5GDdTfjV+EObXMDS2kvZsRHCAmatVaTePkn/Zg6Fo
-ZwGiGr9Ttfcjwf0hpLEmy7G2QP38HPZySu1f9Xo4V6NtkIvo4iPm3o60vDqF3mZM
-i+2779oY7aNOanR7E1KyDs7WfAZowpslVZ9qaXlDs6Pa1Hrz4Z7Wn6sF4gVV0SnX
-Qq2kKClfhZCuWBwwSDHS72BKOj2GRkgP32YIDH1LcEP9iemoZqFJivwMh3VGvIXv
-DocnmNO9JXrr3vx5UTcRHZfakEXbIfGOTtibtXwJDI48rHzGcXYRbYGi5B5Sssx/
-SHrVw/Ghy9VDfrcrkb+gLBfpz7JxyA==
-=RAtQ
------END PGP SIGNATURE-----
-
---yyef2a7pj6vk5dry--
 
 
---===============8635084344206188549==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8635084344206188549==--
-
