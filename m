@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 173F1C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 13:57:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BBB7C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 15:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RZhA3EEVAw2ImOJ8f+Lkmbb7Fxu3cfOzejTqxwJlz9Y=; b=PNCyGq/djvJv49
-	0DICh8vP7GGDHB5qeFzWKOR6u0W1EC3KFpJ4fL9uEa2KRqqbxykxgQAKPyeTqtpYNrIReKAco/Uja
-	1swHR1Ge9GcSb98uo/9axaUs8ViN6F4a7cFc0l2sIsPQLfyU+A/HCTLqbXFeLjNOE4yPuiuNCFqnf
-	OM7ZhoJY5X/+XsvnO7MF4eJmWQaM3oI8cfiR9gdq9S4bSVPqMIpDo+tx38FdKcj29R1IEQX+tgDpA
-	Qe80MBW0Xdrdz+pqter2yjLyeuoup+uRbyAFhfrJUaaMnCLP3LU5Tz1DLF2G1YzNBY/wCLUCThHRC
-	9hIkm+asqerOLsUoSxuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mOkqPTfTWNFFLGniC3HWf1DlM21R+WzuQQ3Sc6CUFa4=; b=Fdn5a04NOiUeHQ
+	0TqMEu6dw1UFAsPU1BWO555YyUiu6PQwYiS6NpEOaMwzIrDNeRvCOGQYaEkdkobtpaGHCNzoIFMEZ
+	jlFSaSivVAkLHc7Qy3dCAjj5D9DA9OCa1LtVhdPHlcACOw93Hp7X+kRocSlg035cyhvz6wHwMcfWr
+	Bjkrrk5tYTcV53aoV1pDvLdXeRavIywd0q+ak0aldOWgsDkz1U/E2/EpkVNQQVDEte5rEfnpnGlRE
+	XovhIevPDNu5Ma9QFTOIKinyPWqR22bfFBrpUN5qGaZADZVd0yZHHVkJy0mOOQUA0ACRQLOTNrP++
+	K9oy4g4LTrSDy3IqvawA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCgmi-00531V-2y;
-	Mon, 11 Dec 2023 13:57:24 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rChsV-005ISm-0y;
+	Mon, 11 Dec 2023 15:07:27 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCglz-0052m5-2J;
-	Mon, 11 Dec 2023 13:56:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Osnv2XOng4mlWKEXYSrHyc0d6F/viLjNjbJfQifN4Tc=; b=NAvuuoyeuKAld/LOQ1jeRZBr9M
-	hoKOTanXDjZjv3T8LDHM9caeoo2lIHwrlsF3Yf3SO5g90FNquCXQMeWeDou7fWVQU1DcxgWYxx9Mf
-	UUqhlxiKDSEQkx/h0znV2oVxXFJQlhaEFLxsv6oIPxjN/23rEedcUKoj8rtL2XZv+QhSyGLZBkTq4
-	xKB6tfsdnd0p9/x6bWNUD5dvkjK6b5Oh6Sr2oD4ZtomL44xfCT67uS4HmO4xTEYfG0CBr2P+6WmWx
-	Ky32YGGPcrwGI51eAbMoDtJ+hIIm+Oq+DhImtasO7LDR2l+Jn0uRgRmSHjFIVveLGNYwpvwDMDNRr
-	jeNz8zgQ==;
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCglv-0086J6-29;
-	Mon, 11 Dec 2023 13:56:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E7E55CE126D;
-	Mon, 11 Dec 2023 13:56:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2A18C433C8;
-	Mon, 11 Dec 2023 13:56:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702302989;
-	bh=YTJmHBrqPg0CR8GZDuwnak/WMVKO84fw0wkyiKcQrjI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aROXTfs2TLlDV4JrqqJ8v4jA790ey6S0LG5zk+fgz2gyk2nhrFt0vPxjIsQxTqPyu
-	 9f9NBBfkZFPAicKpMCWMbTqVV/Plgn7zBpq2ppxpHr5glYphpHlrtSxDq2lmmi53lL
-	 is+jECNQfktBNhD1H+ttn49ae5bD4okBJopINUifMQRvCMGYMNsmYAx7nIROY8J07P
-	 awgIwWpTEz3ZqaYdiBpwLd1jXNxksw0Njv0mfrVWf35bSt4cVktH1ldGvbW0XUHbXE
-	 drkDSn/qUqqO9xpzJmrEl7pyC/1ORmcIiOFTYTfcMw5KK3jG9EA6HIJahM7FtgPFJA
-	 PDCGIsJ/QwbRw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Rob Herring <robh@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	javierm@redhat.com,
-	briannorris@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 21/29] arm64: dts: rockchip: Fix PCI node addresses on rk3399-gru
-Date: Mon, 11 Dec 2023 08:54:05 -0500
-Message-ID: <20231211135457.381397-21-sashal@kernel.org>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231211135457.381397-1-sashal@kernel.org>
-References: <20231211135457.381397-1-sashal@kernel.org>
+	id 1rChsC-005IIm-2t;
+	Mon, 11 Dec 2023 15:07:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id F33EDFF80A;
+	Mon, 11 Dec 2023 15:07:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1702307226;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=+IG8edyMhn3FE8xgdJtbiJSuCXcG/WjMqFQomY/cHok=;
+	b=lh5zGP5FO5/ZpxLd8TIhtY60UAozhTv0xXej8AGly1KO7aZvzIuxTlsm8Nh7xaKvACv0i9
+	475YA1n01wVeS4HTiJWiB6CuBzZiNiYVwfsvsOSiJfj35dcTDPQTe1PLrFM6QyTmqxDCCf
+	Mby6pALwG6HC+G2wfcx2hyKp813pwRVgU+Tq4uIo/cdwQv20kiYJQWkoBsfWsWzGTwNKr4
+	kAyOJD83tALofG7IlyEUia6XdCFI3+jxGRrt/xADzX5YVT3qxrcN7YhogEjtW27T2VHg1u
+	3a2vKZT0AjMzVSza2BvEmW+iIho+NIo4fvxlK1TeK8Ef8kdNQnkZI0Rsh7TXzA==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>,
+	<linux-mtd@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	<linux-rockchip@lists.infradead.org>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	<linux-arm-kernel@lists.infradead.org>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH 1/2] mtd: rawnand: rockchip: Rename a structure
+Date: Mon, 11 Dec 2023 16:07:03 +0100
+Message-Id: <20231211150704.109138-1-miquel.raynal@bootlin.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.66
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_135636_153955_E628A518 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20231211_070709_087154_911ED47E 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,78 +78,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Rob Herring <robh@kernel.org>
+Robots are unhappy with the ecc_cnt_status structure because the kernel
+doc says it should be called rk_ecc_cnt_status. In general, it is
+considered a better practice to prefix all symbols in a file with the
+same prexif, and thus it seems more relevant to rename the structure
+rather than changing the kernel doc header.
 
-[ Upstream commit c13c823a78b77ea0e5f1f73112d910e259911101 ]
-
-The rk3399-gru PCI node addresses are wrong.
-
-In rk3399-gru-scarlet, the bus number in the address should be 0. This is
-because bus number assignment is dynamic and not known up front. For FDT,
-the bus number is simply ignored.
-
-In rk3399-gru-chromebook, the addresses are simply invalid. The first
-"reg" entry must be the configuration space for the device. The entry
-should be all 0s except for device/slot and function numbers. The existing
-64-bit memory space (0x83000000) entries are not valid because they must
-have the BAR address in the lower byte of the first cell.
-
-Warnings for these are enabled by adding the missing 'device_type = "pci"'
-for the root port node.
-
-Signed-off-by: Rob Herring <robh@kernel.org>
-Link: https://lore.kernel.org/r/20231130191830.2424361-1-robh@kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202312102130.geZ4dqyN-lkp@intel.com/
+Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
+Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi  | 3 +--
- arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi             | 1 +
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/mtd/nand/raw/rockchip-nand-controller.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index ee6095baba4d3..7d9b8064ad2ec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -510,8 +510,7 @@ wacky_spi_audio: spi2@0 {
- &pci_rootport {
- 	mvl_wifi: wifi@0,0 {
- 		compatible = "pci1b4b,2b42";
--		reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
--		       0x83010000 0x0 0x00100000 0x0 0x00100000>;
-+		reg = <0x0000 0x0 0x0 0x0 0x0>;
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts
-index 853e88455e750..9e4b12ed62cbe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts
-@@ -34,8 +34,8 @@ &mipi_panel {
- &pci_rootport {
- 	wifi@0,0 {
- 		compatible = "qcom,ath10k";
--		reg = <0x00010000 0x0 0x00000000 0x0 0x00000000>,
--		      <0x03010010 0x0 0x00000000 0x0 0x00200000>;
-+		reg = <0x00000000 0x0 0x00000000 0x0 0x00000000>,
-+		      <0x03000010 0x0 0x00000000 0x0 0x00200000>;
- 		qcom,ath10k-calibration-variant = "GO_DUMO";
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 23bfba86daabe..7ba25315dd9ab 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -489,6 +489,7 @@ pci_rootport: pcie@0,0 {
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 		ranges;
-+		device_type = "pci";
- 	};
+diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+index 596cf9a78274..ab1a9e8687e0 100644
+--- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
++++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+@@ -98,7 +98,7 @@ enum nfc_type {
+  * @high: ECC count high bit index at register.
+  * @high_mask: mask bit
+  */
+-struct ecc_cnt_status {
++struct rk_ecc_cnt_status {
+ 	u8 err_flag_bit;
+ 	u8 low;
+ 	u8 low_mask;
+@@ -144,8 +144,8 @@ struct nfc_cfg {
+ 	u32 int_st_off;
+ 	u32 oob0_off;
+ 	u32 oob1_off;
+-	struct ecc_cnt_status ecc0;
+-	struct ecc_cnt_status ecc1;
++	struct rk_ecc_cnt_status ecc0;
++	struct rk_ecc_cnt_status ecc1;
  };
  
+ struct rk_nfc_nand_chip {
 -- 
-2.42.0
+2.34.1
 
 
 _______________________________________________
