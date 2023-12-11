@@ -4,63 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D7D4C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 10:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A52C4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 11:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2gGCzpuGh1f4SrFaAacu1WY3pVXRjr8NGpXhceQorYk=; b=ARG2gVM6c0F6n9
-	e5j0dhGbUBZHoFZZsdcyT2US9kUi3HLhGvJIVjYBlSccWGZFaZ+5EhkFIGQs5m2ESjvTb3QmA3+4r
-	L2iugrTCKp2htW6PdOB+Marsik1lOrtjraHis0hmli3/UU9ypFLVWkoPbJiv5DsNwUnvfT5HJ8YnP
-	WCOEfkz4M2yzMKrBGZKVvnWCTisVpJtCIisBWsUn19Frfqo9Xa9lR7Kp0+9r0etmg0mkzAjCAf9d1
-	qFlSSRzeUr+RS9Xk+a/x2Ca0BOeCKLD5vodupCayK4fspJ6qg/DmkRKl8dsyItx1HUACyjEq2O6oe
-	lSPYPq1oas0q3T1VW8vg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QtaoMrbcDiJvkcuFFU1kqCQJmTj/y0bJtWN4V/IQIu4=; b=4U1IuD6s6j6WWv6X8d3fBbGYeh
+	D28nG7xHKJoJe2R6QS4Jpuf45B+Ei7NshAp7XNOKO0wTNez5W0i2MWxE3wOIsTd27qa6Dbhf9OIya
+	d7oY3Y8oNkBZeOkO1Kf5wjwQfEkvmpsLyW/eB1q8tM6/9aICEADwqgl05v9FJFH+flNISd34nBtd4
+	74fAOMKA/UztR+vlUQ8D97sn683TxquLOKl7WNkc7yJji07jHoYDDYdKCLbHTzRM7DDMbOr/HAmuK
+	vWfc6FUUUYsaTmq2QfZsbXOnznzldP02mGNYeglP/TcuYrEpjJAx8ZALKrAu8Y/92eyQm4Aca7kv3
+	QbBeTkwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCdss-004fPS-0o;
-	Mon, 11 Dec 2023 10:51:34 +0000
-Received: from m15.mail.163.com ([45.254.50.219])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCdsg-004fJg-0g;
-	Mon, 11 Dec 2023 10:51:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=R6RBb
-	x9SAhoZNoBt56gv7Le/Szri9qP0xN2gBU3nv7A=; b=CMLtBASvlGjO3J3ikJUXl
-	9oJID02tVztHbP+ztUtlzw3gmfWt9I54lraxkfLfB/4IMdl6EvGkrk58VXnY6fXm
-	9eevwvP/aq1kCREr3gAULa+3z6Rz8l8S0oRKWxscENs0TAyqI/PvAHbLCtQRku2c
-	bZtY9pbmwPYqdhUdrjUm8c=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g1-2 (Coremail) with SMTP id _____wA3Lz6E6XZl9Fv7Aw--.21997S2;
-	Mon, 11 Dec 2023 18:50:47 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB
-Date: Mon, 11 Dec 2023 18:50:43 +0800
-Message-Id: <20231211105043.1779852-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231211104915.1779476-1-andyshrk@163.com>
-References: <20231211104915.1779476-1-andyshrk@163.com>
+	id 1rCeXQ-004jJK-0n;
+	Mon, 11 Dec 2023 11:33:28 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rCeXE-004jG9-2D;
+	Mon, 11 Dec 2023 11:33:25 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-54cdef4c913so11016637a12.1;
+        Mon, 11 Dec 2023 03:33:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702294387; x=1702899187; darn=lists.infradead.org;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qd9zuLpOikF1Px3yjGkEdd8czrWs5gOHl9Rmclp6TDM=;
+        b=BIpq+TPyjyrtY/uAc902q6i29hDqqupggO4IqnldJeGtUVY3pwLyDAYF0vRIoxiK5/
+         s1ERCj5wTzUJCXcbIFXPDIrKzIFAF2GiWvKJI4TGTA4F5Eo/udpMeSWoz4AA3onk9aaC
+         LVaxYbULM12dDmjAnawVnBxL0+Qau7WRWFPnUwUqow2B5jGDPb5Q4utOYT7qUuDMEpto
+         8cQwfPqm0RuELoqexjPcIl1v+yyrFQ3zkBHLhU2Nd1enb45j2m6A5u2UUUxZ9MaOU1FX
+         6H/4L2E5VbiNIEy6vqSRv6WuEQoMlslHVKJRleB9bMRZgxaCz8PDwWG3/AvGP+pwbKfH
+         I89A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702294387; x=1702899187;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qd9zuLpOikF1Px3yjGkEdd8czrWs5gOHl9Rmclp6TDM=;
+        b=IzfNVktfgLFeawIfjFsbMJ2Wa5pbMhV9uLIHgw52d1q/swZVOVZeMoxkVansTKsaFn
+         o22OYkXJ0Tg0Lnws99JvrkbxOwRV+weP4KVkS41vjmyLjcZT0SXf253aLquFSinrN+YN
+         oVewbrKFRoVrviBzVFGiNtOgmBj867Hm/4H/hj82ERTidIxalmrdUGEvh1jzk9h3cXgd
+         TnzCfi5QajipeAKdyE41khrYrXoaVPtvItyh388zDdhzhxmakxfhhZYSJ3xVoYubznwq
+         OZ1l5ByQbuZ4lDQGjQPd5Z0Xo19dsLYQUsEDd3rx1j3/J+Xxy9zVgPaQCwuiIyO02hPI
+         ARog==
+X-Gm-Message-State: AOJu0YwvFR48yQ1od6KmqGloeP/IWJDsRiAZHucxBSynQGw0F3ha9jR5
+	YvJ8GanzxqucxNjX/2nSdWg=
+X-Google-Smtp-Source: AGHT+IEe3iBkMjBPkc6BIcrhSeoMgN2XXd3NKfIHMwrYoo7HYeRAaz4oKr/hJrhSAAh3NqtwZdyrPQ==
+X-Received: by 2002:a17:907:7787:b0:a1e:9d2c:f10c with SMTP id ky7-20020a170907778700b00a1e9d2cf10cmr4061661ejc.64.1702294387364;
+        Mon, 11 Dec 2023 03:33:07 -0800 (PST)
+Received: from orome.fritz.box (p200300e41f0fa600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f0f:a600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id tl18-20020a170907c31200b00a1da2c9b06asm4677546ejc.42.2023.12.11.03.33.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Dec 2023 03:33:06 -0800 (PST)
+Date: Mon, 11 Dec 2023 12:33:04 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	platform-driver-x86@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	asahi@lists.linux.dev, kernel@pengutronix.de
+Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
+Message-ID: <ZXbzcFTnDTKoZAta@orome.fritz.box>
+References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
+ <ZXM4CdJxg-XrYhkn@orome.fritz.box>
+ <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wA3Lz6E6XZl9Fv7Aw--.21997S2
-X-Coremail-Antispam: 1Uf129KBjvAXoWfuFW8XryUXF1fCw4UXFy3twb_yoW8urWfKo
-	Z2vry0yF4YgFW3Wr1ktrWDCwn7XrWUGanakF45K3W8Wr4rJwnFyFWayayUWF17Gr10kr1k
-	Z3WrJFW5Cw17C3s5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RQ4SFDUUUU
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEApDXmVOA4ynSwAAsP
+In-Reply-To: <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_025123_510001_C21D3F9C 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20231211_033316_782749_5BABFEF9 
+X-CRM114-Status: GOOD (  67.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,948 +100,803 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7295943465811504888=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cool Pi CM5 EVB is a board based on rk3588.
 
-Specification:
-- Rockchip RK3588
-- LPDDR4 2/4/8/16 GB
-- TF scard slot
-- eMMC 8/32/64/128 GB module
-- Gigabit ethernet x 1 with PHY YT8531
-- Gigabit ethernet x 1 drived by PCIE with YT6801S
-- HDMI Type A out x 2
-- HDMI Type D in x 1
-- USB 2.0 Host x 2
-- USB 3.0 OTG x 1
-- USB 3.0 Host x 1
-- PCIE M.2 E Key for Wireless connection
-- PCIE M.2 M Key for NVME connection
-- 40 pin header
+--===============7295943465811504888==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="K6C0hMjpiKZf3xGL"
+Content-Disposition: inline
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
 
----
+--K6C0hMjpiKZf3xGL
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes in v3:
-- drop ununnecessary property status = "okay" for backlight
-- reorder some nodes alphabetical
-- drop ununnecessary blank line
+On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> Hello Thierry,
+>=20
+> On Fri, Dec 08, 2023 at 04:41:39PM +0100, Thierry Reding wrote:
+> > On Wed, Dec 06, 2023 at 12:43:14PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> > > This series is based on Thierry's for-next.
+> > >=20
+> > > It starts with some cleanups that were all sent out separately alread=
+y:
+> > >=20
+> > >  - "pwm: Reduce number of pointer dereferences in pwm_device_request(=
+)"
+> > >    https://lore.kernel.org/linux-pwm/20231130072105.966848-1-u.kleine=
+-koenig@pengutronix.de
+> > >  - "pwm: crc: Use consistent variable naming for driver data"
+> > >    https://lore.kernel.org/linux-pwm/20231130074133.969806-1-u.kleine=
+-koenig@pengutronix.de
+> > >  - Two leds/qcom-lpg patches
+> > >    https://lore.kernel.org/linux-leds/20231126095230.683204-1-u.klein=
+e-koenig@pengutronix.de
+> > >    Lee already claimed to have taken the series already, but it's not=
+ yet in
+> > >    next.
+> > >  - "leds: qcom-lpg: Introduce a wrapper for getting driver data from =
+a pwm chip"
+> > >    https://lore.kernel.org/linux-leds/20231124215208.616551-3-u.klein=
+e-koenig@pengutronix.de
+> > >=20
+> > > In the following patches I changed:
+> > >=20
+> > >  - "pwm: cros-ec: Change prototype of helper to prepare further chang=
+es" +
+> > >    This was simplified in response to feedback by Tzung-Bi Shih
+> > >  - Make pwmchip_priv() static (and don't export it), let drivers use =
+a new
+> > >    pwmchip_get_drvdata() instead.
+> > >  - For drm/ti-sn65dsi86.c and leds/qcom-lpg make use of
+> > >    pwmchip_set_drvdata() which makes the conversion to
+> > >    devm_pwmchip_alloc() much prettier.
+> > >  - Some cleanups here and there
+> > >  - Add review tags received in v3
+> > >    I kept all tags even though the pwmchip_alloc() patches changed
+> > >    slightly. Most of the time that's only
+> > >    s/pwmchip_priv/pwmchip_get_drvdata/ though. Still, if you object,
+> > >    just tell me. (This affects Paul Cercueil on patch #68, Conor Dool=
+ey
+> > >    on patch #76 and Greg for patch #109.)
+> > >=20
+> > > I kept the pwmchip_alloc() + pwmchip_register() approach despite Bart
+> > > not liking it. To balance that out I don't like Bart's alternative
+> > > approach. There are no technically relevant differences between the t=
+wo
+> > > approaches and no benchmarks that show either of the two to be better
+> > > than the other. Conceptually the design ideas around pwmchip_alloc() +
+> > > pwmchip_register() are used in several other subsystems, so it's a
+> > > proven way to do things.
+> >=20
+> > [Trimming the recipients, keeping only Bart and the mailing lists.]
+> >=20
+> > I do think there are technically relevant differences. For one, the
+> > better we isolate the internal data structure, the easier this becomes
+> > to manage. I'm attaching a patch that I've prototyped which should
+> > basically get us to somewhere around patch 110 of this series but with
+> > something like 1/8th of the changes. It doesn't need every driver to
+> > change and (mostly) decouples driver code from the core code.
+>=20
+> You don't need to touch all drivers because you didn't change struct
+> pwm_chip::dev yet. (If you really want, you don't need to change that,
+> but then you have some duplication as chip->dev holds the same value as
+> priv->dev.parent in the end.)
 
-Changes in v2:
-- change board compatible from "CoolPi CM5 EVB" to "coolpi,pi-cm5-evb"
+I don't think that's a problem. These are for two logically separate
+things, after all. Duplication can also sometimes be useful to simplify
+things. There are plently of cases where we use local variables for the
+same reason.
 
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 879 ++++++++++++++++++
- 2 files changed, 880 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+> > Now, I know that you think this is all bad because it's not a single
+> > allocation, but I much prefer the end result because it's got the driver
+> > and internals much more cleanly separated. Going forward I think it
+> > would be easier to apply all the ref-counting on top of that because we
+> > only need to keep the PWM framework-internal data structure alive after
+> > a PWM chip has gone away.
+>=20
+> Nearly all drivers need driver private data. Isn't it a nice service by
+> the pwm core to make handling this private data easier for the lowlevel
+> drivers?
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e59682691eb0..9be8e4830158 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-new file mode 100644
-index 000000000000..ccf17185dc10
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-@@ -0,0 +1,879 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2023 Rockchip Electronics Co., Ltd.
-+ *
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3588.dtsi"
-+
-+/ {
-+	model = "RK3588 CoolPi CM5 EVB";
-+	compatible = "coolpi,pi-cm5-evb", "rockchip,rk3588";
-+
-+	aliases {
-+		mmc0 = &sdhci;
-+		mmc1 = &sdio;
-+		mmc2 = &sdmmc;
-+		serial2 = &uart2;
-+	};
-+
-+	analog-sound {
-+		compatible = "audio-graph-card";
-+		label = "rk3588-es8316";
-+
-+		widgets = "Microphone", "Mic Jack",
-+			  "Headphone", "Headphones";
-+
-+		routing = "MIC2", "Mic Jack",
-+			  "Headphones", "HPOL",
-+			  "Headphones", "HPOR";
-+
-+		dais = <&i2s0_8ch_p0>;
-+	};
-+
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		power-supply = <&vcc12v_dcin>;
-+		pwms = <&pwm2 0 25000 0>;
-+		enable-gpios = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bl_en>;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	leds: leds {
-+		compatible = "gpio-leds";
-+
-+		led: led-green {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+	vcc12v_dcin: vcc12v-dcin-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc5v0_sys: vcc5v0-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc3v3_lcd: vcc3v3-lcd-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_lcd";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcdpwr_en>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	avdd0v85_pcie20: avdd0v85-pcie20-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd0v85_pcie20";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <850000>;
-+		regulator-max-microvolt = <850000>;
-+		vin-supply = <&vdd_0v85_s0>;
-+	};
-+
-+	avdd1v8_pcie20: avdd1v8-pcie20-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd1v8_pcie20";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&avcc_1v8_s0>;
-+	};
-+
-+	avdd0v75_pcie30: avdd0v75-pcie30-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd0v75_pcie30";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <750000>;
-+		regulator-max-microvolt = <750000>;
-+		vin-supply = <&avdd_0v75_s0>;
-+	};
-+
-+	pcie30_avdd1v8: avdd1v8-pcie30-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&avcc_1v8_s0>;
-+	};
-+
-+	vcc5v0_host: vcc5v0-host-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_host";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_host1_en>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_otg: vcc5v0-otg-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_otg";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&typec5v_pwren>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_mipidphy0: vcc-mipi-dphy0-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_mipidphy0";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&vcc5v0_sys>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam_en>;
-+	};
-+};
-+
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
-+&combphy1_ps {
-+	status = "okay";
-+};
-+
-+&combphy2_psu {
-+	status = "okay";
-+};
-+
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_big0_s0>;
-+};
-+
-+&cpu_b1 {
-+	cpu-supply = <&vdd_cpu_big0_s0>;
-+};
-+
-+&cpu_b2 {
-+	cpu-supply = <&vdd_cpu_big1_s0>;
-+};
-+
-+&cpu_b3 {
-+	cpu-supply = <&vdd_cpu_big1_s0>;
-+};
-+
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l1 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l2 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l3 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&gmac0 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii_phy>;
-+	phy-mode = "rgmii-rxid";
-+	pinctrl-0 = <&gmac0_miim
-+		     &gmac0_tx_bus2
-+		     &gmac0_rx_bus2
-+		     &gmac0_rgmii_clk
-+		     &gmac0_rgmii_bus>;
-+	pinctrl-names = "default";
-+	rx_delay = <0x00>;
-+	tx_delay = <0x43>;
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	pinctrl-0 = <&i2c0m2_xfer>;
-+	status = "okay";
-+
-+	vdd_cpu_big0_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu_big0_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <1050000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vdd_cpu_big1_s0: regulator@43 {
-+		compatible = "rockchip,rk8603", "rockchip,rk8602";
-+		reg = <0x43>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu_big1_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <1050000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	status = "okay";
-+
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+&i2c6 {
-+	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "hym8563";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
-+		wakeup-source;
-+	};
-+};
-+
-+&i2c7 {
-+	pinctrl-0 = <&i2c7m0_xfer>;
-+	status = "okay";
-+
-+	es8316: audio-codec@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		clock-names = "mclk";
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0_8ch {
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
-+		};
-+	};
-+};
-+
-+&mdio0 {
-+	rgmii_phy: ethernet-phy@1 {
-+		/* YT8531C/H */
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&yt8531_rst>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+/* M.2 E-Key */
-+&pcie2x1l1 {
-+	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_clkreq &pcie_wake &pcie_rst &wifi_pwron &bt_pwron>;
-+	status = "okay";
-+};
-+
-+/* ethernet */
-+&pcie2x1l2 {
-+	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rtl8111_isolate>;
-+	status = "okay";
-+};
-+
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	status = "okay";
-+};
-+
-+/* M.2 M-Kye ssd */
-+&pcie3x4 {
-+	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	cam {
-+		cam_en: cam-en {
-+			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
-+
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	lcd {
-+		lcdpwr_en: lcdpwr-en {
-+			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		bl_en: bl-en {
-+			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	rtl8111 {
-+		rtl8111_isolate: rtl8111-isolate {
-+			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	rtl8211f {
-+		yt8531_rst: yt8531-rst {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		vcc5v0_host1_en: vcc5v0-host1-en {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb-typec {
-+		typec5v_pwren: typec5v-pwren {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	wifi {
-+		bt_pwron: bt-pwron {
-+			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_clkreq: pcie-clkreq {
-+			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_rst: pcie-rst {
-+			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		wifi_pwron: wifi-pwron {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_wake: pcie-wake {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8_s0>;
-+	status = "okay";
-+};
-+
-+&sata1 {
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	max-frequency = <150000000>;
-+	no-sdio;
-+	no-mmc;
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vccio_sd_s0>;
-+	status = "okay";
-+};
-+
-+&spi2 {
-+	status = "okay";
-+	assigned-clocks = <&cru CLK_SPI2>;
-+	assigned-clock-rates = <200000000>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi2m2_cs0 &spi2m2_pins>;
-+	num-cs = <1>;
-+
-+	pmic@0 {
-+		compatible = "rockchip,rk806";
-+		spi-max-frequency = <1000000>;
-+		reg = <0x0>;
-+
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
-+			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
-+
-+		vcc1-supply = <&vcc5v0_sys>;
-+		vcc2-supply = <&vcc5v0_sys>;
-+		vcc3-supply = <&vcc5v0_sys>;
-+		vcc4-supply = <&vcc5v0_sys>;
-+		vcc5-supply = <&vcc5v0_sys>;
-+		vcc6-supply = <&vcc5v0_sys>;
-+		vcc7-supply = <&vcc5v0_sys>;
-+		vcc8-supply = <&vcc5v0_sys>;
-+		vcc9-supply = <&vcc5v0_sys>;
-+		vcc10-supply = <&vcc5v0_sys>;
-+		vcc11-supply = <&vcc_2v0_pldo_s3>;
-+		vcc12-supply = <&vcc5v0_sys>;
-+		vcc13-supply = <&vcc_2v0_pldo_s3>;
-+		vcc14-supply = <&vcc_2v0_pldo_s3>;
-+		vcca-supply = <&vcc5v0_sys>;
-+
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+
-+		rk806_dvs1_null: dvs1-null-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs2_null: dvs2-null-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs3_null: dvs3-null-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun0";
-+		};
-+
-+		regulators {
-+			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_gpu_s0";
-+				regulator-enable-ramp-delay = <400>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_lit_s0: vdd_cpu_lit_mem_s0: dcdc-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_cpu_lit_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_log_s0: dcdc-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <675000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_log_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_vdenc_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_ddr_s0: dcdc-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <675000>;
-+				regulator-max-microvolt = <900000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <850000>;
-+				};
-+			};
-+
-+			vdd2_ddr_s3: dcdc-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vdd2_ddr_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_2v0_pldo_s3: dcdc-reg7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <2000000>;
-+				regulator-max-microvolt = <2000000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_2v0_pldo_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <2000000>;
-+				};
-+			};
-+
-+			vcc_3v3_s3: dcdc-reg8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-name = "vcc_3v3_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vddq_ddr_s0: dcdc-reg9 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vddq_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s3: dcdc-reg10 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			avcc_1v8_s0: pldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "avcc_1v8_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s0: pldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			avdd_1v2_s0: pldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-name = "avdd_1v2_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3_s0: pldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vcc_3v3_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd_s0: pldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vccio_sd_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			pldo6_s3: pldo-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "pldo6_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_0v75_s3: nldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdd_ddr_pll_s0: nldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdd_ddr_pll_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <850000>;
-+				};
-+			};
-+
-+			avdd_0v75_s0: nldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "avdd_0v75_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_0v85_s0: nldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdd_0v85_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_0v75_s0: nldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&tsadc {
-+	status = "okay";
-+};
-+
-+&u2phy2 {
-+	status = "okay";
-+};
-+
-+&u2phy3 {
-+	status = "okay";
-+};
-+
-+&u2phy2_host {
-+	phy-supply = <&vcc5v0_host>;
-+	status = "okay";
-+};
-+
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_host>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
--- 
-2.34.1
+That's only true if you think pwmchip_alloc() makes it easier. I happen
+to think that it doesn't. On the contrary, I think having drivers pass
+in a PWM chip descriptor that can be embedded in driver-private data is
+much easier.
 
+> > From 72ea79887d96850f9ccc832ce52b907ca276c940 Mon Sep 17 00:00:00 2001
+> > From: Thierry Reding <thierry.reding@gmail.com>
+> > Date: Tue, 28 Nov 2023 15:42:39 +0100
+> > Subject: [PATCH] pwm: Isolate internal data into a separate structure
+> >=20
+> > In order to prepare for proper reference counting of PWM chips and PWM
+> > devices, move the internal data from the public PWM chip to a private
+> > PWM chip structure. This ensures that the data that the subsystem core
+> > may need to reference later on can stick around beyond the lifetime of
+> > the driver-private data.
+> >=20
+> > Signed-off-by: Thierry Reding <thierry.reding@gmail.com>
+> > ---
+> >  drivers/pwm/core.c            | 185 +++++++++++++++++++++-------------
+> >  drivers/pwm/internal.h        |  38 +++++++
+> >  drivers/pwm/pwm-atmel-hlcdc.c |   8 +-
+> >  drivers/pwm/pwm-fsl-ftm.c     |   6 +-
+> >  drivers/pwm/pwm-lpc18xx-sct.c |   4 +-
+> >  drivers/pwm/pwm-lpss.c        |  14 +--
+> >  drivers/pwm/pwm-pca9685.c     |   6 +-
+> >  drivers/pwm/pwm-samsung.c     |   6 +-
+> >  drivers/pwm/pwm-sifive.c      |   4 +-
+> >  drivers/pwm/pwm-stm32-lp.c    |   6 +-
+> >  drivers/pwm/pwm-stm32.c       |   6 +-
+> >  drivers/pwm/pwm-tiecap.c      |   6 +-
+> >  drivers/pwm/pwm-tiehrpwm.c    |   6 +-
+> >  drivers/pwm/sysfs.c           |  48 ++++-----
+> >  include/linux/pwm.h           |  26 +----
+> >  15 files changed, 228 insertions(+), 141 deletions(-)
+> >  create mode 100644 drivers/pwm/internal.h
+> >=20
+> > diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
+> > index f60b715abe62..54d57dec6dce 100644
+> > --- a/drivers/pwm/core.c
+> > +++ b/drivers/pwm/core.c
+> > @@ -24,17 +24,19 @@
+> >  #define CREATE_TRACE_POINTS
+> >  #include <trace/events/pwm.h>
+> > =20
+> > +#include "internal.h"
+> > +
+> >  static DEFINE_MUTEX(pwm_lookup_lock);
+> >  static LIST_HEAD(pwm_lookup_list);
+> > =20
+> > -/* protects access to pwmchip_idr */
+> > +/* protects access to pwm_chips */
+> >  static DEFINE_MUTEX(pwm_lock);
+> > =20
+> > -static DEFINE_IDR(pwmchip_idr);
+> > +static DEFINE_IDR(pwm_chips);
+>=20
+> That's an unrelated change.
+
+Yeah, it should probably go into the patch that changes the list to an
+IDR. There's really no reason why this needed to change in the first
+place.
+
+>=20
+> >  static struct pwm_chip *pwmchip_find_by_name(const char *name)
+> >  {
+> > -	struct pwm_chip *chip;
+> > +	struct pwm_chip_private *priv;
+> >  	unsigned long id, tmp;
+> > =20
+> >  	if (!name)
+> > @@ -42,12 +44,12 @@ static struct pwm_chip *pwmchip_find_by_name(const =
+char *name)
+> > =20
+> >  	mutex_lock(&pwm_lock);
+> > =20
+> > -	idr_for_each_entry_ul(&pwmchip_idr, chip, tmp, id) {
+> > -		const char *chip_name =3D dev_name(chip->dev);
+> > +	idr_for_each_entry_ul(&pwm_chips, priv, tmp, id) {
+> > +		const char *chip_name =3D dev_name(priv->chip->dev);
+>=20
+> two pointer dereferences instead of one before.
+>=20
+> >  		if (chip_name && strcmp(chip_name, name) =3D=3D 0) {
+> >  			mutex_unlock(&pwm_lock);
+> > -			return chip;
+> > +			return priv->chip;
+>=20
+> one pointer reference instead of none before.
+>=20
+> >  		}
+> >  	}
+> > =20
+> > @@ -58,23 +60,24 @@ static struct pwm_chip *pwmchip_find_by_name(const =
+char *name)
+> > =20
+> >  static int pwm_device_request(struct pwm_device *pwm, const char *labe=
+l)
+> >  {
+> > +	struct pwm_chip *chip =3D pwm->priv->chip;
+>=20
+> With my approach getting the chip of a struct pwm_device is only one
+> pointer dereference away. You need two.
+
+None of the functions here are called very often, so even if this isn't
+optimized away it would hardly matter.
+
+> >  	int err;
+> > =20
+> >  	if (test_bit(PWMF_REQUESTED, &pwm->flags))
+> >  		return -EBUSY;
+> > =20
+> > -	if (!try_module_get(pwm->chip->owner))
+> > +	if (!try_module_get(pwm->priv->owner))
+> >  		return -ENODEV;
+> > =20
+> > -	if (pwm->chip->ops->request) {
+> > -		err =3D pwm->chip->ops->request(pwm->chip, pwm);
+> > +	if (chip->ops->request) {
+> > +		err =3D chip->ops->request(chip, pwm);
+>=20
+> You seem to have reimplemented half of
+> https://lore.kernel.org/linux-pwm/20231130072105.966848-1-u.kleine-koenig=
+@pengutronix.de
+> here.
+
+I started prototyping this before you sent out that patch.
+
+> >  		if (err) {
+> > -			module_put(pwm->chip->owner);
+> > +			module_put(pwm->priv->owner);
+> >  			return err;
+> >  		}
+> >  	}
+> > =20
+> > -	if (pwm->chip->ops->get_state) {
+> > +	if (chip->ops->get_state) {
+> >  		/*
+> >  		 * Zero-initialize state because most drivers are unaware of
+> >  		 * .usage_power. The other members of state are supposed to be
+> > @@ -84,7 +87,7 @@ static int pwm_device_request(struct pwm_device *pwm,=
+ const char *label)
+> >  		 */
+> >  		struct pwm_state state =3D { 0, };
+> > =20
+> > -		err =3D pwm->chip->ops->get_state(pwm->chip, pwm, &state);
+> > +		err =3D chip->ops->get_state(chip, pwm, &state);
+> >  		trace_pwm_get(pwm, &state, err);
+> > =20
+> >  		if (!err)
+> > @@ -196,6 +199,64 @@ static bool pwm_ops_check(const struct pwm_chip *c=
+hip)
+> >  	return true;
+> >  }
+> > =20
+> > +static struct pwm_chip_private *pwmchip_alloc(struct pwm_chip *chip,
+> > +					      struct module *owner)
+> > +{
+> > +	struct pwm_chip_private *priv;
+> > +	struct pwm_device *pwm;
+> > +	unsigned int i;
+> > +	int err;
+> > +
+> > +	priv =3D kzalloc(sizeof(*priv), GFP_KERNEL);
+> > +	if (!priv)
+> > +		return ERR_PTR(-ENOMEM);
+> > +
+> > +	priv->pwms =3D kcalloc(chip->npwm, sizeof(*pwm), GFP_KERNEL);
+> > +	if (!priv->pwms) {
+> > +		err =3D -ENOMEM;
+> > +		goto free;
+> > +	}
+>=20
+> Oh, so you don't use one additional allocation but two.
+
+This could easily be folded into one, but we already determined that we
+both have different opinions about whether this matters a lot or not.
+
+>=20
+> > +	priv->owner =3D owner;
+> > +	priv->chip =3D chip;
+> > +
+> > +	for (i =3D 0; i < chip->npwm; i++) {
+> > +		struct pwm_device *pwm =3D &priv->pwms[i];
+> > +
+> > +		pwm->priv =3D priv;
+> > +		pwm->hwpwm =3D i;
+> > +	}
+> > +
+> > +	mutex_lock(&pwm_lock);
+> > +
+> > +	err =3D idr_alloc(&pwm_chips, priv, 0, 0, GFP_KERNEL);
+> > +	if (err < 0) {
+> > +		mutex_unlock(&pwm_lock);
+> > +		goto free;
+> > +	}
+> > +
+> > +	mutex_unlock(&pwm_lock);
+> > +
+> > +	priv->id =3D err;
+> > +
+> > +	return priv;
+> > +
+> > +free:
+> > +	kfree(priv->pwms);
+> > +	kfree(priv);
+> > +	return ERR_PTR(err);
+> > +}
+> > +
+> > +static void pwmchip_free(struct pwm_chip_private *priv)
+> > +{
+> > +	mutex_lock(&pwm_lock);
+> > +	idr_remove(&pwm_chips, priv->id);
+> > +	mutex_unlock(&pwm_lock);
+> > +
+> > +	kfree(priv->pwms);
+> > +	kfree(priv);
+> > +}
+> > +
+> >  /**
+> >   * __pwmchip_add() - register a new PWM chip
+> >   * @chip: the PWM chip to add
+> > @@ -208,8 +269,7 @@ static bool pwm_ops_check(const struct pwm_chip *ch=
+ip)
+> >   */
+> >  int __pwmchip_add(struct pwm_chip *chip, struct module *owner)
+> >  {
+> > -	unsigned int i;
+> > -	int ret;
+> > +	struct pwm_chip_private *priv;
+> > =20
+> >  	if (!chip || !chip->dev || !chip->ops || !chip->npwm)
+> >  		return -EINVAL;
+> > @@ -217,36 +277,16 @@ int __pwmchip_add(struct pwm_chip *chip, struct m=
+odule *owner)
+> >  	if (!pwm_ops_check(chip))
+> >  		return -EINVAL;
+> > =20
+> > -	chip->owner =3D owner;
+> > -
+> > -	chip->pwms =3D kcalloc(chip->npwm, sizeof(*chip->pwms), GFP_KERNEL);
+> > -	if (!chip->pwms)
+> > +	priv =3D pwmchip_alloc(chip, owner);
+> > +	if (!priv)
+> >  		return -ENOMEM;
+> > =20
+> > -	mutex_lock(&pwm_lock);
+> > -
+> > -	ret =3D idr_alloc(&pwmchip_idr, chip, 0, 0, GFP_KERNEL);
+> > -	if (ret < 0) {
+> > -		mutex_unlock(&pwm_lock);
+> > -		kfree(chip->pwms);
+> > -		return ret;
+> > -	}
+> > -
+> > -	chip->id =3D ret;
+> > -
+> > -	for (i =3D 0; i < chip->npwm; i++) {
+> > -		struct pwm_device *pwm =3D &chip->pwms[i];
+> > -
+> > -		pwm->chip =3D chip;
+> > -		pwm->hwpwm =3D i;
+> > -	}
+> > -
+> > -	mutex_unlock(&pwm_lock);
+> > +	chip->priv =3D priv;
+> > =20
+> >  	if (IS_ENABLED(CONFIG_OF))
+> >  		of_pwmchip_add(chip);
+> > =20
+> > -	pwmchip_sysfs_export(chip);
+> > +	pwmchip_sysfs_export(priv);
+> > =20
+> >  	return 0;
+> >  }
+> > @@ -260,18 +300,14 @@ EXPORT_SYMBOL_GPL(__pwmchip_add);
+> >   */
+> >  void pwmchip_remove(struct pwm_chip *chip)
+> >  {
+> > -	pwmchip_sysfs_unexport(chip);
+> > -
+> > -	if (IS_ENABLED(CONFIG_OF))
+> > -		of_pwmchip_remove(chip);
+> > -
+> >  	mutex_lock(&pwm_lock);
+> > =20
+> > -	idr_remove(&pwmchip_idr, chip->id);
+> > +	pwmchip_sysfs_unexport(chip->priv);
+> > =20
+> > -	mutex_unlock(&pwm_lock);
+> > +	if (IS_ENABLED(CONFIG_OF))
+> > +		of_pwmchip_remove(chip);
+> > =20
+> > -	kfree(chip->pwms);
+> > +	pwmchip_free(chip->priv);
+> >  }
+> >  EXPORT_SYMBOL_GPL(pwmchip_remove);
+> > =20
+> > @@ -315,7 +351,7 @@ struct pwm_device *pwm_request_from_chip(struct pwm=
+_chip *chip,
+> >  		return ERR_PTR(-EINVAL);
+> > =20
+> >  	mutex_lock(&pwm_lock);
+> > -	pwm =3D &chip->pwms[index];
+> > +	pwm =3D &chip->priv->pwms[index];
+>=20
+> two pointer dereferences instead of one before.
+>=20
+> >  	err =3D pwm_device_request(pwm, label);
+> >  	if (err < 0)
+> > @@ -329,9 +365,9 @@ EXPORT_SYMBOL_GPL(pwm_request_from_chip);
+> >  static void pwm_apply_state_debug(struct pwm_device *pwm,
+> >  				  const struct pwm_state *state)
+> >  {
+> > -	struct pwm_state *last =3D &pwm->last;
+> > -	struct pwm_chip *chip =3D pwm->chip;
+> > +	struct pwm_chip *chip =3D pwm->priv->chip;
+> >  	struct pwm_state s1 =3D { 0 }, s2 =3D { 0 };
+> > +	struct pwm_state *last =3D &pwm->last;
+> >  	int err;
+> > =20
+> >  	if (!IS_ENABLED(CONFIG_PWM_DEBUG))
+> > @@ -439,7 +475,6 @@ static void pwm_apply_state_debug(struct pwm_device=
+ *pwm,
+> >   */
+> >  int pwm_apply_state(struct pwm_device *pwm, const struct pwm_state *st=
+ate)
+> >  {
+> > -	struct pwm_chip *chip;
+> >  	int err;
+> > =20
+> >  	/*
+> > @@ -455,8 +490,6 @@ int pwm_apply_state(struct pwm_device *pwm, const s=
+truct pwm_state *state)
+> >  	    state->duty_cycle > state->period)
+> >  		return -EINVAL;
+> > =20
+> > -	chip =3D pwm->chip;
+> > -
+> >  	if (state->period =3D=3D pwm->state.period &&
+> >  	    state->duty_cycle =3D=3D pwm->state.duty_cycle &&
+> >  	    state->polarity =3D=3D pwm->state.polarity &&
+> > @@ -464,7 +497,7 @@ int pwm_apply_state(struct pwm_device *pwm, const s=
+truct pwm_state *state)
+> >  	    state->usage_power =3D=3D pwm->state.usage_power)
+> >  		return 0;
+> > =20
+> > -	err =3D chip->ops->apply(chip, pwm, state);
+> > +	err =3D pwm->priv->chip->ops->apply(pwm->priv->chip, pwm, state);
+>=20
+> four pointer dereferences instead of two before.
+>=20
+> >  	trace_pwm_apply(pwm, state, err);
+> >  	if (err)
+> >  		return err;
+> > @@ -492,16 +525,19 @@ EXPORT_SYMBOL_GPL(pwm_apply_state);
+> >  int pwm_capture(struct pwm_device *pwm, struct pwm_capture *result,
+> >  		unsigned long timeout)
+> >  {
+> > +	struct pwm_chip *chip;
+> >  	int err;
+> > =20
+> > -	if (!pwm || !pwm->chip->ops)
+> > +	if (!pwm)
+> >  		return -EINVAL;
+> > =20
+> > -	if (!pwm->chip->ops->capture)
+> > +	chip =3D pwm->priv->chip;
+>=20
+> One pointer deference more than before (assuming sensible compilation).
+>=20
+> > +	if (!chip || !chip->ops || !chip->ops->capture)
+> >  		return -ENOSYS;
+>=20
+> Changing the return code for !chip->ops isn't intended, is it?
+
+It's a quick prototype, I didn't pay particular attention to keeping all
+error codes exactly as they were before.
+
+> > diff --git a/drivers/pwm/internal.h b/drivers/pwm/internal.h
+> > new file mode 100644
+> > index 000000000000..44fffd3b6744
+> > --- /dev/null
+> > +++ b/drivers/pwm/internal.h
+> > @@ -0,0 +1,38 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +
+> > +#ifndef PWM_INTERNAL_H
+> > +#define PWM_INTERNAL_H
+> > +
+> > +#include <linux/list.h>
+>=20
+> This is unused?
+
+Yes, can be dropped now. This was prototyped prior to the IDR rework and
+I forgot to drop this after rebasing it on top.
+
+> > +struct pwm_chip;
+> > +struct pwm_device;
+> > +
+> > +/**
+> > + * struct pwm_chip_private - subsystem-private PWM chip data
+> > + * @chip: driver-private PWM chip data
+> > + * @owner: module providing the chip
+> > + * @pwms: array of PWM devices allocated by the framework
+> > + * @base: number of first PWM controlled by this chip
+> > + */
+> > +struct pwm_chip_private {
+> > +	struct pwm_chip *chip;
+> > +	struct module *owner;
+> > +	struct pwm_device *pwms;
+> > +	unsigned int id;
+> > +};
+>=20
+> With my approach the struct pwm_chip * pointer isn't needed because it's
+> all in one structure. So you have two structures where I only have one
+> and your two are bigger in sum than my single one (not counting memory
+> management overhead and alignment).
+
+The split is on purpose and has the benefit of clearly separating the
+PWM internal data structures from the driver accessible ones. So in my
+book this is an advantage.
+
+> > +#ifdef CONFIG_PWM_SYSFS
+> > +void pwmchip_sysfs_export(struct pwm_chip_private *priv);
+> > +void pwmchip_sysfs_unexport(struct pwm_chip_private *priv);
+> > +#else
+> > +static inline void pwmchip_sysfs_export(struct pwm_chip_private *priv)
+> > +{
+> > +}
+> > +
+> > +static inline void pwmchip_sysfs_unexport(struct pwm_chip_private *pri=
+v)
+> > +{
+> > +}
+> > +#endif /* CONFIG_PWM_SYSFS */
+> > +
+> > +#endif /* PWM_INTERNAL_H */
+> > diff --git a/drivers/pwm/pwm-atmel-hlcdc.c b/drivers/pwm/pwm-atmel-hlcd=
+c.c
+> > index 3f2c5031a3ba..6bbbfaa582c1 100644
+> > --- a/drivers/pwm/pwm-atmel-hlcdc.c
+> > +++ b/drivers/pwm/pwm-atmel-hlcdc.c
+> > @@ -15,6 +15,8 @@
+> >  #include <linux/pwm.h>
+> >  #include <linux/regmap.h>
+> > =20
+> > +#include "internal.h"
+> > +
+> >  #define ATMEL_HLCDC_PWMCVAL_MASK	GENMASK(15, 8)
+> >  #define ATMEL_HLCDC_PWMCVAL(x)		(((x) << 8) & ATMEL_HLCDC_PWMCVAL_MASK)
+> >  #define ATMEL_HLCDC_PWMPOL		BIT(4)
+> > @@ -185,7 +187,7 @@ static int atmel_hlcdc_pwm_suspend(struct device *d=
+ev)
+> >  	struct atmel_hlcdc_pwm *atmel =3D dev_get_drvdata(dev);
+> > =20
+> >  	/* Keep the periph clock enabled if the PWM is still running. */
+> > -	if (pwm_is_enabled(&atmel->chip.pwms[0]))
+> > +	if (pwm_is_enabled(&atmel->chip.priv->pwms[0]))
+>=20
+> Didn't work so well to hide the internals of pwm_chip_private from the
+> drivers?
+>=20
+> >  		clk_disable_unprepare(atmel->hlcdc->periph_clk);
+> > =20
+> >  	return 0;
+> > =20
+>=20
+> [... a few more drivers where hiding the internals failed ...]
+
+Yes, and you'll recall that these are for exactly the cases where in the
+past you have argued that the core should take a more active role in
+making sure that PWMs get properly disabled. These should be temporary
+and once this logic is all moved into the core these should disappear.
+
+>=20
+> > diff --git a/drivers/pwm/sysfs.c b/drivers/pwm/sysfs.c
+> > index 4edb994fa2e1..653df20afe1c 100644
+> > --- a/drivers/pwm/sysfs.c
+> > +++ b/drivers/pwm/sysfs.c
+> > @@ -14,6 +14,8 @@
+> >  #include <linux/kdev_t.h>
+> >  #include <linux/pwm.h>
+> > =20
+> > +#include "internal.h"
+> > +
+> >  struct pwm_export {
+> >  	struct device child;
+> >  	struct pwm_device *pwm;
+> > @@ -311,7 +313,7 @@ static ssize_t export_store(struct device *parent,
+> >  			    struct device_attribute *attr,
+> >  			    const char *buf, size_t len)
+> >  {
+> > -	struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> >  	struct pwm_device *pwm;
+> >  	unsigned int hwpwm;
+> >  	int ret;
+> > @@ -320,10 +322,10 @@ static ssize_t export_store(struct device *parent,
+> >  	if (ret < 0)
+> >  		return ret;
+> > =20
+> > -	if (hwpwm >=3D chip->npwm)
+> > +	if (hwpwm >=3D priv->chip->npwm)
+>=20
+> One more pointer dereference than before. You could trade that for some
+> data duplication by copying npwm to struct pwmchip_priv for the case
+> when you need .npwm but the chip is already gone.
+
+When the chip is gone, none of these functions should be doing anything
+other than returning an error. None of that is implemented in this yet.
+This is merely a preparatory patch.
+
+>=20
+> >  		return -ENODEV;
+> > =20
+> > -	pwm =3D pwm_request_from_chip(chip, hwpwm, "sysfs");
+> > +	pwm =3D pwm_request_from_chip(priv->chip, hwpwm, "sysfs");
+> >  	if (IS_ERR(pwm))
+> >  		return PTR_ERR(pwm);
+> > =20
+> > @@ -339,7 +341,7 @@ static ssize_t unexport_store(struct device *parent,
+> >  			      struct device_attribute *attr,
+> >  			      const char *buf, size_t len)
+> >  {
+> > -	struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> >  	unsigned int hwpwm;
+> >  	int ret;
+> > =20
+> > @@ -347,10 +349,10 @@ static ssize_t unexport_store(struct device *pare=
+nt,
+> >  	if (ret < 0)
+> >  		return ret;
+> > =20
+> > -	if (hwpwm >=3D chip->npwm)
+> > +	if (hwpwm >=3D priv->chip->npwm)
+>=20
+> One more pointer dereference than before.
+>=20
+> >  		return -ENODEV;
+> > =20
+> > -	ret =3D pwm_unexport_child(parent, &chip->pwms[hwpwm]);
+> > +	ret =3D pwm_unexport_child(parent, &priv->pwms[hwpwm]);
+> > =20
+> >  	return ret ? : len;
+> >  }
+> > @@ -359,9 +361,9 @@ static DEVICE_ATTR_WO(unexport);
+> >  static ssize_t npwm_show(struct device *parent, struct device_attribut=
+e *attr,
+> >  			 char *buf)
+> >  {
+> > -	const struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	const struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> > =20
+> > -	return sysfs_emit(buf, "%u\n", chip->npwm);
+> > +	return sysfs_emit(buf, "%u\n", priv->chip->npwm);
+> >  }
+> >  static DEVICE_ATTR_RO(npwm);
+> > =20
+> > @@ -411,12 +413,12 @@ static int pwm_class_apply_state(struct pwm_expor=
+t *export,
+> > =20
+> >  static int pwm_class_resume_npwm(struct device *parent, unsigned int n=
+pwm)
+> >  {
+> > -	struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> >  	unsigned int i;
+> >  	int ret =3D 0;
+> > =20
+> >  	for (i =3D 0; i < npwm; i++) {
+> > -		struct pwm_device *pwm =3D &chip->pwms[i];
+> > +		struct pwm_device *pwm =3D &priv->pwms[i];
+> >  		struct pwm_state state;
+> >  		struct pwm_export *export;
+> > =20
+> > @@ -442,12 +444,12 @@ static int pwm_class_resume_npwm(struct device *p=
+arent, unsigned int npwm)
+> > =20
+> >  static int pwm_class_suspend(struct device *parent)
+> >  {
+> > -	struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> >  	unsigned int i;
+> >  	int ret =3D 0;
+> > =20
+> > -	for (i =3D 0; i < chip->npwm; i++) {
+> > -		struct pwm_device *pwm =3D &chip->pwms[i];
+> > +	for (i =3D 0; i < priv->chip->npwm; i++) {
+> > +		struct pwm_device *pwm =3D &priv->pwms[i];
+> >  		struct pwm_state state;
+> >  		struct pwm_export *export;
+> > =20
+> > @@ -483,9 +485,9 @@ static int pwm_class_suspend(struct device *parent)
+> > =20
+> >  static int pwm_class_resume(struct device *parent)
+> >  {
+> > -	struct pwm_chip *chip =3D dev_get_drvdata(parent);
+> > +	struct pwm_chip_private *priv =3D dev_get_drvdata(parent);
+> > =20
+> > -	return pwm_class_resume_npwm(parent, chip->npwm);
+> > +	return pwm_class_resume_npwm(parent, priv->chip->npwm);
+>=20
+> One more pointer dereference than before.
+>=20
+> >  }
+> > =20
+> >  static DEFINE_SIMPLE_DEV_PM_OPS(pwm_class_pm_ops, pwm_class_suspend, p=
+wm_class_resume);
+> > @@ -501,7 +503,7 @@ static int pwmchip_sysfs_match(struct device *paren=
+t, const void *data)
+> >  	return dev_get_drvdata(parent) =3D=3D data;
+> >  }
+> > =20
+> > -void pwmchip_sysfs_export(struct pwm_chip *chip)
+> > +void pwmchip_sysfs_export(struct pwm_chip_private *priv)
+> >  {
+> >  	struct device *parent;
+> > =20
+> > @@ -509,26 +511,26 @@ void pwmchip_sysfs_export(struct pwm_chip *chip)
+> >  	 * If device_create() fails the pwm_chip is still usable by
+> >  	 * the kernel it's just not exported.
+> >  	 */
+> > -	parent =3D device_create(&pwm_class, chip->dev, MKDEV(0, 0), chip,
+> > -			       "pwmchip%d", chip->id);
+> > +	parent =3D device_create(&pwm_class, priv->chip->dev, MKDEV(0, 0), pr=
+iv,
+> > +			       "pwmchip%d", priv->id);
+> >  	if (IS_ERR(parent)) {
+> > -		dev_warn(chip->dev,
+> > +		dev_warn(priv->chip->dev,
+>=20
+> One more pointer dereference than before.
+>=20
+> >  			 "device_create failed for pwm_chip sysfs export\n");
+> >  	}
+> >  }
+>=20
+> The TL;DR; is essentially what I already wrote in my last reply to Bart
+> in the v3 thread[1]:
+>=20
+>  - My approach needs more changes to the individual drivers (which I
+>    don't consider a relevant disadvantage given that the resulting code
+>    is better);
+>  - My approach works with less pointer dereferences which IMHO also
+>    simplifies understanding the code as all relevant data is in a single
+>    place.
+>  - My approach has a weaker separation between the core and the lowlevel
+>    drivers. That's ok in my book given that this doesn't complicate the
+>    lowlevel drivers and that hiding details considerably better doesn't
+>    work anyhow (see the drivers that need internal.h in your patch).
+>=20
+> For me the single allocation issue is only an added bonus. The relevant
+> advantage of my approach is that the code is easier and (probably) more
+> efficient.
+
+I happen to disagree. I think adding pwmchip_alloc() makes things much
+more complicated for low level drivers.
+
+Thierry
+
+--K6C0hMjpiKZf3xGL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmV2824ACgkQ3SOs138+
+s6H0gg//S1+8X5DhwNLsj1LhLzrSwP+rxvjlKp2TsGezWN25OGduChDOAFd6KTbk
+WPiLGdEh3C+hkhAyL/DpZBY8urJZu6uUa33gA3Vf+qXLo3GHN9AZd1U2mtlMIUZ+
+sfcSEJczo7T5D98Q74yDBjWSiEiCO44W6BhjAZ9bk461KXv0IZRviRRgG8bBraua
+35/1nTsXz4DUguVIQYgSgKy3y9e0Lf2rFkyBSxsQp8LJ/4eucA6yY+CSBGBrAwvi
+yKPz/sQl8WZd2Keb0vvOuloQwteeVzeUFsLpsOADPK1dstio2r6i86k0utj06wpw
+briIeYZ1L50txyeOmoG1pmD8KG3ZKlySkBDRZ0LUZ+dIjEdajpT/2jb+zvldvmOO
+frEVnHkw2HD0pULxZZCRYTTgIVl9MoFOnHbglH9eXPIJH7vMJUlmJ2+c138q7bM1
+iBUos/Qy300l4zedhvXf+xiTfaYqDn8coL3uM5ehPesm/SQ2EE/8uAsu6OhRsdib
+arvU2eL1GpfMxcp7IKY75E8qPBgzQmwX/Eq0Ae7WcIYZmlXA+bsfFYF2JCAriOjE
+f0Ucm0CUxbz9Z4cR2xmf85yrr3LYisEMK0pCzc5v4mOV01sWcRCKfA1St3bxFimO
+6ru9g+DbneLFh8YP3adfaikn8NEhUQDYX2Os3WB07g3OpAW5PWc=
+=wrfD
+-----END PGP SIGNATURE-----
+
+--K6C0hMjpiKZf3xGL--
+
+
+--===============7295943465811504888==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7295943465811504888==--
+
