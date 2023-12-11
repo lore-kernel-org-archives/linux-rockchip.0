@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E16C4167B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 12:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F0DAC4167B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Dec 2023 12:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c6Y3vXRUf1Hgg4VeMUV2as5kFent3HY74avcQ52Jduo=; b=0+GkA9XsTsbCR6NWOkNb+Abtda
-	CvtUz74bkBdgqCyzR/yYS/GtTQz3UPwDMwA8AdWcmnRU4F/hXG3Nkbey/EUqn3ps12tt7s7X2h0jp
-	dsFUDaXtIN9rYcFzHp5/nAeLytUi5yvKfFnbZASMl15oQP90k9dIE2qgnEp9HDiWXTbLr0FfG9t9i
-	tuT1BFBmPZYDRaKij3UWKKzPv+alENSj4/BBc4DfuvdPKI7i+FW1t6RdineghCnIPOYs6hzx/qCt7
-	/08ijEd5Xm3UJGDde+Hwi4lirXtAkNyc45geIphNvdvqSB4PRXlW8cTWlBCHhv3TGGxg7wwvDftqh
-	wsgBGpAA==;
+	bh=o9T8kdRr7enNHNG305NpcoTLtYPcMjFB7O6qK4tiWTY=; b=mjDEZ02AgcN+mdO1QrbYYYFeou
+	XiLIpSU4XvlPtGeD7kNbVZq1pJXdLsQRlCBE7uwOpePaSuLfbwqaX1dkwxjgmMGphb5MvU33BleTv
+	NfuvgsD9Yly/AAaz62IYC/B4F5eEhQL54xhAOEDKR2hIUBEd3B31qZ4t9DbmZ/uLSNrvt6byp0mqg
+	JZwctB9bu14M+wMIDA16Mb8odn9+NCocGBa0Qn2bnPPFYwliUWOqYS+YzNIJnrX2sQFwaDW9CtYnQ
+	NQS/o1odPHqUPLVCV6Mezcer7AgXngV8L2FsZMvQ9AId9aWyyr0t/Pqhq0Lnr4+bVQpAMVIwAESzP
+	Z01OYJxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCey3-004mgH-2B;
-	Mon, 11 Dec 2023 12:00:59 +0000
-Received: from m12.mail.163.com ([220.181.12.197])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCext-004me4-2e
+	id 1rCfFN-004pEr-07;
+	Mon, 11 Dec 2023 12:18:53 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rCfEl-004p8m-1B
 	for linux-rockchip@lists.infradead.org;
-	Mon, 11 Dec 2023 12:00:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version:
-	Content-Type; bh=EZVVJRwESSfyxJj8cjY5o4AEGpnzdaLjkCRiW1DtUyM=;
-	b=lilYDK4Rvv0jvU84xq4OPY6MN4B+MwwXJwm2cWWAM7seJv2e32u0Ug3eUOh+20
-	7LIOt3WqOb0a8Zz5lYO7zWFCmR1wbAzTwiNdSOD66acS26Bd9WAw1xJ/382OmOM5
-	xdwiW8X13geDiLqLrGirC9f5aL6fJLW1S9n/Skcl5xvNM=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g3-3 (Coremail) with SMTP id _____wDXvx3Z+XZl3Fm+Dw--.13317S2;
-	Mon, 11 Dec 2023 20:00:29 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	sebastian.reichel@collabora.com,
-	kever.yang@rock-chips.com,
-	chris.obbard@collabora.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v5 16/16] MAINTAINERS: Add myself as a reviewer for rockchip drm
-Date: Mon, 11 Dec 2023 20:00:23 +0800
-Message-Id: <20231211120023.1785687-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231211115547.1784587-1-andyshrk@163.com>
-References: <20231211115547.1784587-1-andyshrk@163.com>
+	Mon, 11 Dec 2023 12:18:51 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rCfEf-0001H0-4X; Mon, 11 Dec 2023 13:18:09 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rCfEe-00F5z5-AI; Mon, 11 Dec 2023 13:18:08 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rCfEe-000tY1-0P; Mon, 11 Dec 2023 13:18:08 +0100
+Date: Mon, 11 Dec 2023 13:18:07 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	platform-driver-x86@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	asahi@lists.linux.dev, kernel@pengutronix.de
+Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
+Message-ID: <20231211121807.zzlgf3alcoo6lrw7@pengutronix.de>
+References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
+ <ZXM4CdJxg-XrYhkn@orome.fritz.box>
+ <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
+ <ZXbzcFTnDTKoZAta@orome.fritz.box>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDXvx3Z+XZl3Fm+Dw--.13317S2
-X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
-	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxU-nmiDUUUU
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnAtDXlghl75lJwABsZ
+In-Reply-To: <ZXbzcFTnDTKoZAta@orome.fritz.box>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_040050_222338_0B5FE602 
-X-CRM114-Status: UNSURE (   7.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231211_041815_502081_0D70A50E 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,47 +83,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8761046517634425363=="
+Content-Type: multipart/mixed; boundary="===============8635084344206188549=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8761046517634425363==
-Content-Type: text/plain; charset=all
-Content-Transfer-Encoding: 8bit
 
-From: Andy Yan <andy.yan@rock-chips.com>
-
-As I am familiar with all the details of vop2 display
-architecture, I can help review and test all related
-changes in this subsystem, so add my email here to make
-sure I get CC'd on rockchip drm changes.
-
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
-
-(no changes since v1)
-
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e2c6187a3ac8..ef58773071fc 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7141,6 +7141,7 @@ F:	include/linux/platform_data/shmob_drm.h
- DRM DRIVERS FOR ROCKCHIP
- M:	Sandy Huang <hjc@rock-chips.com>
- M:	Heiko Stübner <heiko@sntech.de>
-+M:	Andy Yan <andy.yan@rock-chips.com>
- L:	dri-devel@lists.freedesktop.org
- S:	Maintained
- T:	git git://anongit.freedesktop.org/drm/drm-misc
--- 
-2.34.1
+--===============8635084344206188549==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yyef2a7pj6vk5dry"
+Content-Disposition: inline
 
 
+--yyef2a7pj6vk5dry
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
---===============8761046517634425363==
+Hello Thierry,
+
+On Mon, Dec 11, 2023 at 12:33:04PM +0100, Thierry Reding wrote:
+> On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=F6nig wrote:
+> > The TL;DR; is essentially what I already wrote in my last reply to Bart
+> > in the v3 thread[1]:
+> >=20
+> >  - My approach needs more changes to the individual drivers (which I
+> >    don't consider a relevant disadvantage given that the resulting code
+> >    is better);
+> >  - My approach works with less pointer dereferences which IMHO also
+> >    simplifies understanding the code as all relevant data is in a single
+> >    place.
+> >  - My approach has a weaker separation between the core and the lowlevel
+> >    drivers. That's ok in my book given that this doesn't complicate the
+> >    lowlevel drivers and that hiding details considerably better doesn't
+> >    work anyhow (see the drivers that need internal.h in your patch).
+> >=20
+> > For me the single allocation issue is only an added bonus. The relevant
+> > advantage of my approach is that the code is easier and (probably) more
+> > efficient.
+>=20
+> I happen to disagree. I think adding pwmchip_alloc() makes things much
+> more complicated for low level drivers.
+
+Looking at e.g.
+https://lore.kernel.org/linux-pwm/2dda818b8bbbe8ba4b9df5ab54f960ff4a4f1ab5.=
+1701860672.git.u.kleine-koenig@pengutronix.de/
+I wonder where you see "much more complication". OK, there are two
+pointers now for chip and private data, but I'd call that at most a
+"mild" complication[1] which is more than balanced out by the
+simplifications in the remaining parts of that patch.
+
+Best regards
+Uwe
+
+[1] I'm not sure I'd refuse someone suggesting the following patch on
+    top of today's next:
+
+	diff --git a/drivers/pwm/pwm-microchip-core.c b/drivers/pwm/pwm-microchip-=
+core.c
+	index c0c53968f3e9..d32e65914599 100644
+	--- a/drivers/pwm/pwm-microchip-core.c
+	+++ b/drivers/pwm/pwm-microchip-core.c
+	@@ -448,12 +448,14 @@ MODULE_DEVICE_TABLE(of, mchp_core_of_match);
+	 static int mchp_core_pwm_probe(struct platform_device *pdev)
+	 {
+		struct mchp_core_pwm_chip *mchp_core_pwm;
+	+	struct pwm_chip *chip;
+		struct resource *regs;
+		int ret;
+	=20
+		mchp_core_pwm =3D devm_kzalloc(&pdev->dev, sizeof(*mchp_core_pwm), GFP_KE=
+RNEL);
+		if (!mchp_core_pwm)
+			return -ENOMEM;
+	+	chip =3D &mchp_core_pwm->chip;
+	=20
+		mchp_core_pwm->base =3D devm_platform_get_and_ioremap_resource(pdev, 0, &=
+regs);
+		if (IS_ERR(mchp_core_pwm->base))
+	@@ -470,9 +472,9 @@ static int mchp_core_pwm_probe(struct platform_device =
+*pdev)
+	=20
+		mutex_init(&mchp_core_pwm->lock);
+	=20
+	-	mchp_core_pwm->chip.dev =3D &pdev->dev;
+	-	mchp_core_pwm->chip.ops =3D &mchp_core_pwm_ops;
+	-	mchp_core_pwm->chip.npwm =3D 16;
+	+	chip->dev =3D &pdev->dev;
+	+	chip->ops =3D &mchp_core_pwm_ops;
+	+	chip->npwm =3D 16;
+	=20
+		mchp_core_pwm->channel_enabled =3D readb_relaxed(mchp_core_pwm->base + MC=
+HPCOREPWM_EN(0));
+		mchp_core_pwm->channel_enabled |=3D
+	@@ -485,7 +487,7 @@ static int mchp_core_pwm_probe(struct platform_device =
+*pdev)
+		writel_relaxed(1U, mchp_core_pwm->base + MCHPCOREPWM_SYNC_UPD);
+		mchp_core_pwm->update_timestamp =3D ktime_get();
+	=20
+	-	ret =3D devm_pwmchip_add(&pdev->dev, &mchp_core_pwm->chip);
+	+	ret =3D devm_pwmchip_add(&pdev->dev, chip);
+		if (ret)
+			return dev_err_probe(&pdev->dev, ret, "Failed to add pwmchip\n");
+=20
+    With that applied before the above mentioned patch there is no
+    complication at all in my eyes.
+
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--yyef2a7pj6vk5dry
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmV2/f8ACgkQj4D7WH0S
+/k7QwQgApfQEvhd6se+a8+O5GDdTfjV+EObXMDS2kvZsRHCAmatVaTePkn/Zg6Fo
+ZwGiGr9Ttfcjwf0hpLEmy7G2QP38HPZySu1f9Xo4V6NtkIvo4iPm3o60vDqF3mZM
+i+2779oY7aNOanR7E1KyDs7WfAZowpslVZ9qaXlDs6Pa1Hrz4Z7Wn6sF4gVV0SnX
+Qq2kKClfhZCuWBwwSDHS72BKOj2GRkgP32YIDH1LcEP9iemoZqFJivwMh3VGvIXv
+DocnmNO9JXrr3vx5UTcRHZfakEXbIfGOTtibtXwJDI48rHzGcXYRbYGi5B5Sssx/
+SHrVw/Ghy9VDfrcrkb+gLBfpz7JxyA==
+=RAtQ
+-----END PGP SIGNATURE-----
+
+--yyef2a7pj6vk5dry--
+
+
+--===============8635084344206188549==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -127,4 +222,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8761046517634425363==--
+--===============8635084344206188549==--
+
