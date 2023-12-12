@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59919C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 12:44:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D15C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 12:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j4t8+7hHgfKdcVWXBzF+fTUXMWNteomIeXiw5Rf30WA=; b=F32TMfz3FwyAWw
-	Yv3BNQTJ/dU+wI57+O7ET4PhFRClqMvx8KLjTRIpX8p+PReIFAdQlFGuwQqbrlJNXfzJjfvxUpLDn
-	Dp9S07j4pi7TZQryBO1s4G/EJzZaQz1dVi7rNjI49X+wdoR+gWZLUGsZKPt+7u3DiXYuljgBBr9wU
-	v7++xx3XeIQhS1E61l9M6GEBXjp5/Nime1xA5UzM/KteAIDaETN8eA1b6eUvYjqsebf0G60A8gXvW
-	yF5tQ3sY9BU09eDGuFRmMu8znLsY/UyqYwZaXpVQT53MnQI/5ziCQHdtmtk1lyDR7Ti0veG359n2A
-	oDH4yl+BB99OsKEV2kqw==;
+	List-Owner; bh=fJy6N8UNZnJTZT0TSg/0pt0toxcLwkGS7qVPLNMPRVo=; b=MpvtSiGcIZvmov
+	6JYTco0rDe+IspGi/kGFvoRn9r3+7lyqcpilaSDU9/rDMk2D3xzkRZBirhOr8JE8z6LSEIVlZUCfQ
+	jMCPNpnhQEPynDud+8TCef3aFkX3ubvt04Zw3RgM/u/XHHWLKGWesx8yUbfvNjyzv7Q6ZzAqiZAOV
+	wuKYw0eAIHLnLAOtXorjZEdHlRXQNr086+3Arw2LV/XopSDE4MyL3A6SqJvqFaphlvE/yyp7GTWgY
+	xq89bD4x/bPVe7duWITEnmIeeJ+PpIfTxCwODQ1vNU1PfCASmcdx16sHThYbISg3KFLjT49xrkxCZ
+	fLviKuktkzfMVw9Wnmsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD27n-00Bid5-2J;
-	Tue, 12 Dec 2023 12:44:35 +0000
-Received: from m12.mail.163.com ([220.181.12.217])
+	id 1rD2AV-00Bj1C-33;
+	Tue, 12 Dec 2023 12:47:23 +0000
+Received: from m1357.mail.163.com ([220.181.13.57])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD27i-00Biam-1c;
-	Tue, 12 Dec 2023 12:44:33 +0000
+	id 1rD2AP-00Bj0C-1O;
+	Tue, 12 Dec 2023 12:47:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=dBIQe
-	4vgkjpANINmABcZ4+cX3MKytsu5ohm8rLasCs0=; b=ntNxlEW6ct9PmWNowlUji
-	9iDpDFPRzILL+0tOF+sTf/wJ+g9IcRAxnq7eEOhTcKVZYq+W7ubMBxhyrkQEYpuS
-	J8/VA0MC9YZ+6YZ3uLxuFCOv9C9A7B92gIbcL0T54Z7DScSESNdsqqhtkrxRQlcu
-	5Hustk6esRiY91vIuNBRhs=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wDnz7mYVXhlUUtMCg--.56823S2;
-	Tue, 12 Dec 2023 20:44:11 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	sre@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB
-Date: Tue, 12 Dec 2023 20:44:07 +0800
-Message-Id: <20231212124407.1897604-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231212124202.1897238-1-andyshrk@163.com>
-References: <20231212124202.1897238-1-andyshrk@163.com>
-MIME-Version: 1.0
-X-CM-TRANSID: _____wDnz7mYVXhlUUtMCg--.56823S2
-X-Coremail-Antispam: 1Uf129KBjvAXoWfuFW8XryUXF1fCw4UXFy3twb_yoW8uFy5Jo
-	Z2vry0yF4YgFW3Wr1kJrWDCw1xXrWUGanakF45KF1rWr4rJwnFyFWayayUWF17Gr10kr1k
-	Z3WrJFW5Cw17A3s5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RQ4SFDUUUU
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=XDTP/MU41+vsThyAsKzYAUO/77fOeQN/hSr71NlacGs=; b=D
+	4uGa7yBWc3Eowh2xYHDkeiAt5C3q3aZlSCj1mex8/ydcC3p/kUAGQHD2yWExM7uM
+	v9vzZtHIo/SyENPUVtopHfk8Y0VU/844ZnY3D+3tXiysH0A/esssXcUrVeILtGzH
+	Z6SaF98tzuQYPn+UXNS/YWLcGUSfM75QUPTkqxH5KU=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by ajax-webmail-wmsvr57
+ (Coremail) ; Tue, 12 Dec 2023 20:46:57 +0800 (CST)
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBxEXmVOA6boNwAAs-
+Date: Tue, 12 Dec 2023 20:46:57 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re:Re: [PATCH v3 5/5] arm64: dts: rockchip: Add support for rk3588
+ based board Cool Pi CM5 EVB
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20230109(dcb5de15)
+ Copyright (c) 2002-2023 www.mailtech.cn 163com
+In-Reply-To: <2215635.TLkxdtWsSY@diego>
+References: <20231211104915.1779476-1-andyshrk@163.com>
+ <20231211105043.1779852-1-andyshrk@163.com> <2215635.TLkxdtWsSY@diego>
+X-NTES-SC: AL_Qu2bAP+Tukoq4SSbYelS4j1Q3pdhAZrp76VXnvEFRsYamADP1QUOWVx4NnnW+/yRmkMlFscwqTocROCR7hF1
+MIME-Version: 1.0
+Message-ID: <30c4856c.51cd.18c5e10efa0.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: OcGowADXX0xBVnhljCkoAA--.49441W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEBVEXmVOA6aMEgABsO
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_044430_864968_661617C9 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20231212_044719_105132_46E0E73F 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,955 +71,448 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cool Pi CM5 EVB works as a mother board connect with CM5.
-
-CM5 Specification:
-- Rockchip RK3588
-- LPDDR4 2/4/8/16 GB
-- TF scard slot
-- eMMC 8/32/64/128 GB module
-- Gigabit ethernet x 1 with PHY YT8531
-- Gigabit ethernet x 1 drived by PCIE with YT6801S
-
-CM5 EVB Specification:
-- HDMI Type A out x 2
-- HDMI Type D in x 1
-- USB 2.0 Host x 2
-- USB 3.0 OTG x 1
-- USB 3.0 Host x 1
-- PCIE M.2 E Key for Wireless connection
-- PCIE M.2 M Key for NVME connection
-- 40 pin header
-
-Signed-off-by: Andy Yan <andyshrk@163.com>
-
----
-
-Changes in v4:
-- split pi-cm5 as a dtsi
-
-Changes in v3:
-- drop ununnecessary property status = "okay" for backlight
-- reorder some nodes alphabetical
-- drop ununnecessary blank line
-
-Changes in v2:
-- change board compatible from "CoolPi CM5 EVB" to "coolpi,pi-cm5-evb"
-
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 214 ++++++
- .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  | 659 ++++++++++++++++++
- 3 files changed, 874 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e59682691eb0..9be8e4830158 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -100,6 +100,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-coolpi-cm5-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6b-io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-new file mode 100644
-index 000000000000..61d01ca7b024
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-@@ -0,0 +1,214 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2023 Rockchip Electronics Co., Ltd.
-+ *
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/leds/common.h>
-+#include "rk3588-coolpi-cm5.dtsi"
-+
-+/ {
-+	model = "RK3588 CoolPi CM5 EVB";
-+	compatible = "coolpi,pi-cm5-evb", "coolpi,pi-cm5", "rockchip,rk3588";
-+
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		power-supply = <&vcc12v_dcin>;
-+		pwms = <&pwm2 0 25000 0>;
-+		enable-gpios = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bl_en>;
-+	};
-+
-+	leds: leds {
-+		compatible = "gpio-leds";
-+
-+		led: led-green {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+	vcc12v_dcin: vcc12v-dcin-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc5v0_sys: vcc5v0-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc3v3_lcd: vcc3v3-lcd-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_lcd";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcdpwr_en>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_host";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_pwren>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb30_otg: vcc5v0-usb30-otg-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_otg";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		enable-active-high;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_otg_pwren>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+/* M.2 E-Key */
-+&pcie2x1l1 {
-+	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_clkreq &pcie_wake &pcie_rst &wifi_pwron &bt_pwron>;
-+	status = "okay";
-+};
-+
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	status = "okay";
-+};
-+
-+/* M.2 M-Key ssd */
-+&pcie3x4 {
-+	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	lcd {
-+		lcdpwr_en: lcdpwr-en {
-+			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		bl_en: bl-en {
-+			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		usb_host_pwren: usb-host-pwren {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		usb_otg_pwren: usb-otg-pwren {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	wifi {
-+		bt_pwron: bt-pwron {
-+			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_clkreq: pcie-clkreq {
-+			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_rst: pcie-rst {
-+			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		wifi_pwron: wifi-pwron {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pcie_wake: pcie-wake {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&sata1 {
-+	status = "okay";
-+};
-+
-+&u2phy2 {
-+	status = "okay";
-+};
-+
-+&u2phy3 {
-+	status = "okay";
-+};
-+
-+&u2phy2_host {
-+	phy-supply = <&vcc5v0_usb30_host>;
-+	status = "okay";
-+};
-+
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_usb30_host>;
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-new file mode 100644
-index 000000000000..fcdc3e7a4351
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
-@@ -0,0 +1,659 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2023 Rockchip Electronics Co., Ltd.
-+ *
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3588.dtsi"
-+
-+/ {
-+	compatible = "coolpi,pi-cm5", "rockchip,rk3588";
-+
-+	aliases {
-+		mmc0 = &sdhci;
-+		mmc1 = &sdio;
-+		mmc2 = &sdmmc;
-+		serial2 = &uart2;
-+	};
-+
-+	analog-sound {
-+		compatible = "audio-graph-card";
-+		label = "rk3588-es8316";
-+
-+		widgets = "Microphone", "Mic Jack",
-+			  "Headphone", "Headphones";
-+
-+		routing = "MIC2", "Mic Jack",
-+			  "Headphones", "HPOL",
-+			  "Headphones", "HPOR";
-+
-+		dais = <&i2s0_8ch_p0>;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	avdd0v85_pcie20: avdd0v85-pcie20-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd0v85_pcie20";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <850000>;
-+		regulator-max-microvolt = <850000>;
-+		vin-supply = <&vdd_0v85_s0>;
-+	};
-+
-+	avdd1v8_pcie20: avdd1v8-pcie20-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd1v8_pcie20";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&avcc_1v8_s0>;
-+	};
-+
-+	avdd0v75_pcie30: avdd0v75-pcie30-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd0v75_pcie30";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <750000>;
-+		regulator-max-microvolt = <750000>;
-+		vin-supply = <&avdd_0v75_s0>;
-+	};
-+
-+	pcie30_avdd1v8: avdd1v8-pcie30-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&avcc_1v8_s0>;
-+	};
-+};
-+
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
-+&combphy1_ps {
-+	status = "okay";
-+};
-+
-+&combphy2_psu {
-+	status = "okay";
-+};
-+
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_big0_s0>;
-+};
-+
-+&cpu_b1 {
-+	cpu-supply = <&vdd_cpu_big0_s0>;
-+};
-+
-+&cpu_b2 {
-+	cpu-supply = <&vdd_cpu_big1_s0>;
-+};
-+
-+&cpu_b3 {
-+	cpu-supply = <&vdd_cpu_big1_s0>;
-+};
-+
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l1 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l2 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l3 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&gmac0 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii_phy>;
-+	phy-mode = "rgmii-rxid";
-+	pinctrl-0 = <&gmac0_miim
-+		     &gmac0_tx_bus2
-+		     &gmac0_rx_bus2
-+		     &gmac0_rgmii_clk
-+		     &gmac0_rgmii_bus>;
-+	pinctrl-names = "default";
-+	rx_delay = <0x00>;
-+	tx_delay = <0x43>;
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	pinctrl-0 = <&i2c0m2_xfer>;
-+	status = "okay";
-+
-+	vdd_cpu_big0_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu_big0_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <1050000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vdd_cpu_big1_s0: regulator@43 {
-+		compatible = "rockchip,rk8603", "rockchip,rk8602";
-+		reg = <0x43>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu_big1_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <1050000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	status = "okay";
-+
-+	vdd_npu_s0: regulator@42 {
-+		compatible = "rockchip,rk8602";
-+		reg = <0x42>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_npu_s0";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <550000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+&i2c6 {
-+	status = "okay";
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "hym8563";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
-+		wakeup-source;
-+	};
-+};
-+
-+&i2c7 {
-+	pinctrl-0 = <&i2c7m0_xfer>;
-+	status = "okay";
-+
-+	es8316: audio-codec@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		clock-names = "mclk";
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0_8ch {
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
-+		};
-+	};
-+};
-+
-+&mdio0 {
-+	rgmii_phy: ethernet-phy@1 {
-+		/* YT8531C/H */
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&yt8531_rst>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+/* ethernet */
-+&pcie2x1l2 {
-+	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&yt6801_isolate>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	yt6801 {
-+		yt6801_isolate: yt6801-isolate {
-+			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	yt8531 {
-+		yt8531_rst: yt8531-rst {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8_s0>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	no-sdio;
-+	no-sd;
-+	non-removable;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	max-frequency = <150000000>;
-+	no-sdio;
-+	no-mmc;
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vccio_sd_s0>;
-+	status = "okay";
-+};
-+
-+&spi2 {
-+	status = "okay";
-+	assigned-clocks = <&cru CLK_SPI2>;
-+	assigned-clock-rates = <200000000>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi2m2_cs0 &spi2m2_pins>;
-+	num-cs = <1>;
-+
-+	pmic@0 {
-+		compatible = "rockchip,rk806";
-+		spi-max-frequency = <1000000>;
-+		reg = <0x0>;
-+
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
-+
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
-+			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
-+
-+		vcc1-supply = <&vcc5v0_sys>;
-+		vcc2-supply = <&vcc5v0_sys>;
-+		vcc3-supply = <&vcc5v0_sys>;
-+		vcc4-supply = <&vcc5v0_sys>;
-+		vcc5-supply = <&vcc5v0_sys>;
-+		vcc6-supply = <&vcc5v0_sys>;
-+		vcc7-supply = <&vcc5v0_sys>;
-+		vcc8-supply = <&vcc5v0_sys>;
-+		vcc9-supply = <&vcc5v0_sys>;
-+		vcc10-supply = <&vcc5v0_sys>;
-+		vcc11-supply = <&vcc_2v0_pldo_s3>;
-+		vcc12-supply = <&vcc5v0_sys>;
-+		vcc13-supply = <&vcc_2v0_pldo_s3>;
-+		vcc14-supply = <&vcc_2v0_pldo_s3>;
-+		vcca-supply = <&vcc5v0_sys>;
-+
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+
-+		rk806_dvs1_null: dvs1-null-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs2_null: dvs2-null-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs3_null: dvs3-null-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun0";
-+		};
-+
-+		regulators {
-+			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_gpu_s0";
-+				regulator-enable-ramp-delay = <400>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_lit_s0: vdd_cpu_lit_mem_s0: dcdc-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_cpu_lit_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_log_s0: dcdc-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <675000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_log_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdd_vdenc_s0: vdd_vdenc_mem_s0: dcdc-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_vdenc_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_ddr_s0: dcdc-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <675000>;
-+				regulator-max-microvolt = <900000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <850000>;
-+				};
-+			};
-+
-+			vdd2_ddr_s3: dcdc-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vdd2_ddr_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_2v0_pldo_s3: dcdc-reg7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <2000000>;
-+				regulator-max-microvolt = <2000000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vdd_2v0_pldo_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <2000000>;
-+				};
-+			};
-+
-+			vcc_3v3_s3: dcdc-reg8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-name = "vcc_3v3_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vddq_ddr_s0: dcdc-reg9 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vddq_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s3: dcdc-reg10 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			avcc_1v8_s0: pldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "avcc_1v8_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s0: pldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			avdd_1v2_s0: pldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-name = "avdd_1v2_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3_s0: pldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vcc_3v3_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd_s0: pldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-ramp-delay = <12500>;
-+				regulator-name = "vccio_sd_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			pldo6_s3: pldo-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "pldo6_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_0v75_s3: nldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdd_ddr_pll_s0: nldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdd_ddr_pll_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <850000>;
-+				};
-+			};
-+
-+			avdd_0v75_s0: nldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "avdd_0v75_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_0v85_s0: nldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdd_0v85_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_0v75_s0: nldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&tsadc {
-+	status = "okay";
-+};
-+
-+
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	status = "okay";
-+};
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIEhlaWtvOgoKQXQgMjAyMy0xMi0xMSAyMDozMzowMCwgIkhlaWtvIFN0w7xibmVyIiA8aGVp
+a29Ac250ZWNoLmRlPiB3cm90ZToKPkFtIE1vbnRhZywgMTEuIERlemVtYmVyIDIwMjMsIDExOjUw
+OjQzIENFVCBzY2hyaWViIEFuZHkgWWFuOgo+PiBDb29sIFBpIENNNSBFVkIgaXMgYSBib2FyZCBi
+YXNlZCBvbiByazM1ODguCj4+IAo+PiBTcGVjaWZpY2F0aW9uOgo+PiAtIFJvY2tjaGlwIFJLMzU4
+OAo+PiAtIExQRERSNCAyLzQvOC8xNiBHQgo+PiAtIFRGIHNjYXJkIHNsb3QKPj4gLSBlTU1DIDgv
+MzIvNjQvMTI4IEdCIG1vZHVsZQo+PiAtIEdpZ2FiaXQgZXRoZXJuZXQgeCAxIHdpdGggUEhZIFlU
+ODUzMQo+PiAtIEdpZ2FiaXQgZXRoZXJuZXQgeCAxIGRyaXZlZCBieSBQQ0lFIHdpdGggWVQ2ODAx
+Uwo+PiAtIEhETUkgVHlwZSBBIG91dCB4IDIKPj4gLSBIRE1JIFR5cGUgRCBpbiB4IDEKPj4gLSBV
+U0IgMi4wIEhvc3QgeCAyCj4+IC0gVVNCIDMuMCBPVEcgeCAxCj4+IC0gVVNCIDMuMCBIb3N0IHgg
+MQo+PiAtIFBDSUUgTS4yIEUgS2V5IGZvciBXaXJlbGVzcyBjb25uZWN0aW9uCj4+IC0gUENJRSBN
+LjIgTSBLZXkgZm9yIE5WTUUgY29ubmVjdGlvbgo+PiAtIDQwIHBpbiBoZWFkZXIKPj4gCj4+IFNp
+Z25lZC1vZmYtYnk6IEFuZHkgWWFuIDxhbmR5c2hya0AxNjMuY29tPgo+Cj5JbiB0aGUgb3ZlcmFs
+bCBzY2hlbWUgb2YgdGhpbmdzIEkgd291bGQgcmVhbGx5IGxpa2UgdG8gc2VlIHRoZSBjb3JyZWN0
+Cj5zcGxpdCBiZXR3ZWVuIFNvTSBkdHNpIGFuZCBiYXNlYm9hcmQgZHRzLCBsaWtlIHRoZSBvdGhl
+ciBTb01zIGRvLgo+Cj5Zb3Ugc2FpZCB5b3Ugd2FudGVkIHRvIHdhaXQgZm9yIGFuIGFjdHVhbCBz
+ZWNvbmQgYmFzZWJvYXJkIHRvIGNvbWUgYWxvbmcKPmJlZm9yZSBkb2luZyB0aGlzIGFuZCBJIGd1
+ZXNzIGZvciAieWV0IGFub3RoZXIgc29tIiB3ZSBjYW4gdHJ5IGdvaW5nIHRoYXQKPnJvdXRlLgo+
+Cj5CdXQgcGxlYXNlIHN0YXRlIHRoaXMgZXhwbGljaXRseSBpbiB0aGUgY29tbWl0IG1lc3NhZ2Ug
+dGhhdCB0aGlzIGlzIGEKPmJhc2Vib2FyZCtzb20gY29tYmluYXRpb24sIHNvIHRoZSBuZXh0IG9u
+ZSB3b3JraW5nIGhlcmUgc2hvdWxkIGRvCj50aGF0IHNwbGl0Lgo+Cj5BbiB1cGRhdGUgaXMgbmVl
+ZGVkIGFueXdheSwgY2F1c2UgdGhlIGNvbXBhdGlibGUgdGhpbmcgbWVudGlvbmVkIGluIAo+dGhl
+IGJpbmRpbmcuCj4KCkkgdHJ5IHRvIHNwbGl0IGl0IGFzIGEgU29NIGR0c2kgKyBib2FyZCBkdHMg
+aW4gVjQKCj4KPlRoYW5rcwo+SGVpa28KPgo+PiAtLS0KPj4gCj4+IENoYW5nZXMgaW4gdjM6Cj4+
+IC0gZHJvcCB1bnVubmVjZXNzYXJ5IHByb3BlcnR5IHN0YXR1cyA9ICJva2F5IiBmb3IgYmFja2xp
+Z2h0Cj4+IC0gcmVvcmRlciBzb21lIG5vZGVzIGFscGhhYmV0aWNhbAo+PiAtIGRyb3AgdW51bm5l
+Y2Vzc2FyeSBibGFuayBsaW5lCj4+IAo+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIGNoYW5nZSBib2Fy
+ZCBjb21wYXRpYmxlIGZyb20gIkNvb2xQaSBDTTUgRVZCIiB0byAiY29vbHBpLHBpLWNtNS1ldmIi
+Cj4+IAo+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgIHwg
+ICAxICsKPj4gIC4uLi9kdHMvcm9ja2NoaXAvcmszNTg4LWNvb2xwaS1jbTUtZXZiLmR0cyAgICB8
+IDg3OSArKysrKysrKysrKysrKysrKysKPj4gIDIgZmlsZXMgY2hhbmdlZCwgODgwIGluc2VydGlv
+bnMoKykKPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzU4OC1jb29scGktY201LWV2Yi5kdHMKPj4gCj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9NYWtlZmlsZQo+PiBpbmRleCBlNTk2ODI2OTFlYjAuLjliZThlNDgzMDE1OCAxMDA2NDQKPj4g
+LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+PiArKysgYi9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4+IEBAIC0xMDAsNiArMTAwLDcgQEAg
+ZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU2OC1vZHJvaWQtbTEuZHRiCj4+ICBk
+dGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTY4LXJhZHhhLWUyNS5kdGIKPj4gIGR0
+Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1Njgtcm9jLXBjLmR0Ygo+PiAgZHRiLSQo
+Q09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU2OC1yb2NrLTNhLmR0Ygo+PiArZHRiLSQoQ09O
+RklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1jb29scGktY201LWV2Yi5kdGIKPj4gIGR0Yi0k
+KENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtZWRnZWJsZS1uZXU2YS1pby5kdGIKPj4g
+IGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtZWRnZWJsZS1uZXU2Yi1pby5k
+dGIKPj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtZXZiMS12MTAuZHRi
+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29s
+cGktY201LWV2Yi5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29s
+cGktY201LWV2Yi5kdHMKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMDAw
+MDAwLi5jY2YxNzE4NWRjMTAKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29scGktY201LWV2Yi5kdHMKPj4gQEAgLTAsMCArMSw4
+NzkgQEAKPj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQo+
+PiArLyoKPj4gKyAqIENvcHlyaWdodCAoYykgMjAyMyBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4s
+IEx0ZC4KPj4gKyAqCj4+ICsgKi8KPj4gKwo+PiArL2R0cy12MS87Cj4+ICsKPj4gKyNpbmNsdWRl
+IDxkdC1iaW5kaW5ncy9ncGlvL2dwaW8uaD4KPj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9sZWRz
+L2NvbW1vbi5oPgo+PiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3B3bS9wd20uaD4KPj4gKyNpbmNs
+dWRlIDxkdC1iaW5kaW5ncy9waW5jdHJsL3JvY2tjaGlwLmg+Cj4+ICsjaW5jbHVkZSAicmszNTg4
+LmR0c2kiCj4+ICsKPj4gKy8gewo+PiArCW1vZGVsID0gIlJLMzU4OCBDb29sUGkgQ001IEVWQiI7
+Cj4+ICsJY29tcGF0aWJsZSA9ICJjb29scGkscGktY201LWV2YiIsICJyb2NrY2hpcCxyazM1ODgi
+Owo+PiArCj4+ICsJYWxpYXNlcyB7Cj4+ICsJCW1tYzAgPSAmc2RoY2k7Cj4+ICsJCW1tYzEgPSAm
+c2RpbzsKPj4gKwkJbW1jMiA9ICZzZG1tYzsKPj4gKwkJc2VyaWFsMiA9ICZ1YXJ0MjsKPj4gKwl9
+Owo+PiArCj4+ICsJYW5hbG9nLXNvdW5kIHsKPj4gKwkJY29tcGF0aWJsZSA9ICJhdWRpby1ncmFw
+aC1jYXJkIjsKPj4gKwkJbGFiZWwgPSAicmszNTg4LWVzODMxNiI7Cj4+ICsKPj4gKwkJd2lkZ2V0
+cyA9ICJNaWNyb3Bob25lIiwgIk1pYyBKYWNrIiwKPj4gKwkJCSAgIkhlYWRwaG9uZSIsICJIZWFk
+cGhvbmVzIjsKPj4gKwo+PiArCQlyb3V0aW5nID0gIk1JQzIiLCAiTWljIEphY2siLAo+PiArCQkJ
+ICAiSGVhZHBob25lcyIsICJIUE9MIiwKPj4gKwkJCSAgIkhlYWRwaG9uZXMiLCAiSFBPUiI7Cj4+
+ICsKPj4gKwkJZGFpcyA9IDwmaTJzMF84Y2hfcDA+Owo+PiArCX07Cj4+ICsKPj4gKwliYWNrbGln
+aHQ6IGJhY2tsaWdodCB7Cj4+ICsJCWNvbXBhdGlibGUgPSAicHdtLWJhY2tsaWdodCI7Cj4+ICsJ
+CXBvd2VyLXN1cHBseSA9IDwmdmNjMTJ2X2RjaW4+Owo+PiArCQlwd21zID0gPCZwd20yIDAgMjUw
+MDAgMD47Cj4+ICsJCWVuYWJsZS1ncGlvcyA9IDwmZ3BpbzQgUktfUEEzIEdQSU9fQUNUSVZFX0hJ
+R0g+Owo+PiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+PiArCQlwaW5jdHJsLTAgPSA8
+JmJsX2VuPjsKPj4gKwl9Owo+PiArCj4+ICsJY2hvc2VuIHsKPj4gKwkJc3Rkb3V0LXBhdGggPSAi
+c2VyaWFsMjoxNTAwMDAwbjgiOwo+PiArCX07Cj4+ICsKPj4gKwlsZWRzOiBsZWRzIHsKPj4gKwkJ
+Y29tcGF0aWJsZSA9ICJncGlvLWxlZHMiOwo+PiArCj4+ICsJCWxlZDogbGVkLWdyZWVuIHsKPj4g
+KwkJCWNvbG9yID0gPExFRF9DT0xPUl9JRF9HUkVFTj47Cj4+ICsJCQlmdW5jdGlvbiA9IExFRF9G
+VU5DVElPTl9TVEFUVVM7Cj4+ICsJCQlncGlvcyA9IDwmZ3BpbzMgUktfUEI3IEdQSU9fQUNUSVZF
+X0hJR0g+Owo+PiArCQkJbGludXgsZGVmYXVsdC10cmlnZ2VyID0gImhlYXJ0YmVhdCI7Cj4+ICsJ
+CX07Cj4+ICsJfTsKPj4gKwo+PiArCXZjYzEydl9kY2luOiB2Y2MxMnYtZGNpbi1yZWd1bGF0b3Ig
+ewo+PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+ICsJCXJlZ3VsYXRvci1u
+YW1lID0gInZjYzEydl9kY2luIjsKPj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gKwkJcmVn
+dWxhdG9yLWJvb3Qtb247Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDEyMDAwMDAw
+PjsKPj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAwMDA+Owo+PiArCX07Cj4+
+ICsKPj4gKwl2Y2M1djBfc3lzOiB2Y2M1djAtc3lzLXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGli
+bGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjNXYwX3N5
+cyI7Cj4+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+
+PiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4gKwkJcmVndWxhdG9y
+LW1heC1taWNyb3ZvbHQgPSA8NTAwMDAwMD47Cj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzEydl9k
+Y2luPjsKPj4gKwl9Owo+PiArCj4+ICsJdmNjM3YzX3N5czogdmNjM3YzLXN5cy1yZWd1bGF0b3Ig
+ewo+PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+ICsJCXJlZ3VsYXRvci1u
+YW1lID0gInZjYzN2M19zeXMiOwo+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQlyZWd1
+bGF0b3ItYm9vdC1vbjsKPj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47
+Cj4+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+PiArCQl2aW4tc3Vw
+cGx5ID0gPCZ2Y2MxMnZfZGNpbj47Cj4+ICsJfTsKPj4gKwo+PiArCXZjYzN2M19sY2Q6IHZjYzN2
+My1sY2QtcmVndWxhdG9yIHsKPj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+
+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfbGNkIjsKPj4gKwkJZW5hYmxlLWFjdGl2ZS1o
+aWdoOwo+PiArCQlncGlvID0gPCZncGlvMSBSS19QQzQgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsJ
+CXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICsJCXBpbmN0cmwtMCA9IDwmbGNkcHdyX2Vu
+PjsKPj4gKwkJdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4+ICsJfTsKPj4gKwo+PiArCWF2
+ZGQwdjg1X3BjaWUyMDogYXZkZDB2ODUtcGNpZTIwLXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGli
+bGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gKwkJcmVndWxhdG9yLW5hbWUgPSAiYXZkZDB2ODVf
+cGNpZTIwIjsKPj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCXJlZ3VsYXRvci1hbHdheXMt
+b247Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDg1MDAwMD47Cj4+ICsJCXJlZ3Vs
+YXRvci1tYXgtbWljcm92b2x0ID0gPDg1MDAwMD47Cj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZkZF8w
+djg1X3MwPjsKPj4gKwl9Owo+PiArCj4+ICsJYXZkZDF2OF9wY2llMjA6IGF2ZGQxdjgtcGNpZTIw
+LXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gKwkJ
+cmVndWxhdG9yLW5hbWUgPSAiYXZkZDF2OF9wY2llMjAiOwo+PiArCQlyZWd1bGF0b3ItYm9vdC1v
+bjsKPj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3Zv
+bHQgPSA8MTgwMDAwMD47Cj4+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDE4MDAwMDA+
+Owo+PiArCQl2aW4tc3VwcGx5ID0gPCZhdmNjXzF2OF9zMD47Cj4+ICsJfTsKPj4gKwo+PiArCWF2
+ZGQwdjc1X3BjaWUzMDogYXZkZDB2NzUtcGNpZTMwLXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGli
+bGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gKwkJcmVndWxhdG9yLW5hbWUgPSAiYXZkZDB2NzVf
+cGNpZTMwIjsKPj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCXJlZ3VsYXRvci1hbHdheXMt
+b247Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDc1MDAwMD47Cj4+ICsJCXJlZ3Vs
+YXRvci1tYXgtbWljcm92b2x0ID0gPDc1MDAwMD47Cj4+ICsJCXZpbi1zdXBwbHkgPSA8JmF2ZGRf
+MHY3NV9zMD47Cj4+ICsJfTsKPj4gKwo+PiArCXBjaWUzMF9hdmRkMXY4OiBhdmRkMXY4LXBjaWUz
+MC1yZWd1bGF0b3Igewo+PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+ICsJ
+CXJlZ3VsYXRvci1uYW1lID0gInBjaWUzMF9hdmRkMXY4IjsKPj4gKwkJcmVndWxhdG9yLWJvb3Qt
+b247Cj4+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92
+b2x0ID0gPDE4MDAwMDA+Owo+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxODAwMDAw
+PjsKPj4gKwkJdmluLXN1cHBseSA9IDwmYXZjY18xdjhfczA+Owo+PiArCX07Cj4+ICsKPj4gKwl2
+Y2M1djBfaG9zdDogdmNjNXYwLWhvc3QtcmVndWxhdG9yIHsKPj4gKwkJY29tcGF0aWJsZSA9ICJy
+ZWd1bGF0b3ItZml4ZWQiOwo+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2M1djBfaG9zdCI7Cj4+
+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQll
+bmFibGUtYWN0aXZlLWhpZ2g7Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAw
+MDA+Owo+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4gKwkJZ3Bp
+byA9IDwmZ3BpbzEgUktfUEQ1IEdQSU9fQUNUSVZFX0hJR0g+Owo+PiArCQlwaW5jdHJsLW5hbWVz
+ID0gImRlZmF1bHQiOwo+PiArCQlwaW5jdHJsLTAgPSA8JnZjYzV2MF9ob3N0MV9lbj47Cj4+ICsJ
+CXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiArCX07Cj4+ICsKPj4gKwl2Y2M1djBfb3Rn
+OiB2Y2M1djAtb3RnLXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZp
+eGVkIjsKPj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjNXYwX290ZyI7Cj4+ICsJCXJlZ3VsYXRv
+ci1ib290LW9uOwo+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQllbmFibGUtYWN0aXZl
+LWhpZ2g7Cj4+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMDA+Owo+PiArCQly
+ZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKPj4gKwkJZ3Bpb3MgPSA8JmdwaW8w
+IFJLX1BBMCBHUElPX0FDVElWRV9ISUdIPjsKPj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0
+IjsKPj4gKwkJcGluY3RybC0wID0gPCZ0eXBlYzV2X3B3cmVuPjsKPj4gKwkJdmluLXN1cHBseSA9
+IDwmdmNjNXYwX3N5cz47Cj4+ICsJfTsKPj4gKwo+PiArCXZjY19taXBpZHBoeTA6IHZjYy1taXBp
+LWRwaHkwLXJlZ3VsYXRvciB7Cj4+ICsJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsK
+Pj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjX21pcGlkcGh5MCI7Cj4+ICsJCXJlZ3VsYXRvci1t
+aW4tbWljcm92b2x0ID0gPDUwMDAwMDA+Owo+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9
+IDw1MDAwMDAwPjsKPj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCXJlZ3VsYXRvci1hbHdh
+eXMtb247Cj4+ICsJCWVuYWJsZS1hY3RpdmUtaGlnaDsKPj4gKwkJZ3Bpb3MgPSA8JmdwaW80IFJL
+X1BDNiBHUElPX0FDVElWRV9ISUdIPjsKPj4gKwkJdmluLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47
+Cj4+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICsJCXBpbmN0cmwtMCA9IDwmY2Ft
+X2VuPjsKPj4gKwl9Owo+PiArfTsKPj4gKwo+PiArJmNvbWJwaHkwX3BzIHsKPj4gKwlzdGF0dXMg
+PSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmY29tYnBoeTFfcHMgewo+PiArCXN0YXR1cyA9ICJv
+a2F5IjsKPj4gK307Cj4+ICsKPj4gKyZjb21icGh5Ml9wc3Ugewo+PiArCXN0YXR1cyA9ICJva2F5
+IjsKPj4gK307Cj4+ICsKPj4gKyZjcHVfYjAgewo+PiArCWNwdS1zdXBwbHkgPSA8JnZkZF9jcHVf
+YmlnMF9zMD47Cj4+ICt9Owo+PiArCj4+ICsmY3B1X2IxIHsKPj4gKwljcHUtc3VwcGx5ID0gPCZ2
+ZGRfY3B1X2JpZzBfczA+Owo+PiArfTsKPj4gKwo+PiArJmNwdV9iMiB7Cj4+ICsJY3B1LXN1cHBs
+eSA9IDwmdmRkX2NwdV9iaWcxX3MwPjsKPj4gK307Cj4+ICsKPj4gKyZjcHVfYjMgewo+PiArCWNw
+dS1zdXBwbHkgPSA8JnZkZF9jcHVfYmlnMV9zMD47Cj4+ICt9Owo+PiArCj4+ICsmY3B1X2wwIHsK
+Pj4gKwljcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2xpdF9zMD47Cj4+ICt9Owo+PiArCj4+ICsmY3B1
+X2wxIHsKPj4gKwljcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2xpdF9zMD47Cj4+ICt9Owo+PiArCj4+
+ICsmY3B1X2wyIHsKPj4gKwljcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2xpdF9zMD47Cj4+ICt9Owo+
+PiArCj4+ICsmY3B1X2wzIHsKPj4gKwljcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2xpdF9zMD47Cj4+
+ICt9Owo+PiArCj4+ICsmZ21hYzAgewo+PiArCWNsb2NrX2luX291dCA9ICJvdXRwdXQiOwo+PiAr
+CXBoeS1oYW5kbGUgPSA8JnJnbWlpX3BoeT47Cj4+ICsJcGh5LW1vZGUgPSAicmdtaWktcnhpZCI7
+Cj4+ICsJcGluY3RybC0wID0gPCZnbWFjMF9taWltCj4+ICsJCSAgICAgJmdtYWMwX3R4X2J1czIK
+Pj4gKwkJICAgICAmZ21hYzBfcnhfYnVzMgo+PiArCQkgICAgICZnbWFjMF9yZ21paV9jbGsKPj4g
+KwkJICAgICAmZ21hYzBfcmdtaWlfYnVzPjsKPj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQi
+Owo+PiArCXJ4X2RlbGF5ID0gPDB4MDA+Owo+PiArCXR4X2RlbGF5ID0gPDB4NDM+Owo+PiArCXN0
+YXR1cyA9ICJva2F5IjsKPj4gK307Cj4+ICsKPj4gKyZpMmMwIHsKPj4gKwlwaW5jdHJsLTAgPSA8
+JmkyYzBtMl94ZmVyPjsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+ICsKPj4gKwl2ZGRfY3B1X2Jp
+ZzBfczA6IHJlZ3VsYXRvckA0MiB7Cj4+ICsJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscms4NjAy
+IjsKPj4gKwkJcmVnID0gPDB4NDI+Owo+PiArCQlmY3Msc3VzcGVuZC12b2x0YWdlLXNlbGVjdG9y
+ID0gPDE+Owo+PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfY3B1X2JpZzBfczAiOwo+PiArCQly
+ZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gKwkJcmVndWxh
+dG9yLW1pbi1taWNyb3ZvbHQgPSA8NTUwMDAwPjsKPj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3Zv
+bHQgPSA8MTA1MDAwMD47Cj4+ICsJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0gPDIzMDA+Owo+PiAr
+CQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPj4gKwo+PiArCQlyZWd1bGF0b3Itc3RhdGUt
+bWVtIHsKPj4gKwkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4gKwkJfTsKPj4gKwl9Owo+
+PiArCj4+ICsJdmRkX2NwdV9iaWcxX3MwOiByZWd1bGF0b3JANDMgewo+PiArCQljb21wYXRpYmxl
+ID0gInJvY2tjaGlwLHJrODYwMyIsICJyb2NrY2hpcCxyazg2MDIiOwo+PiArCQlyZWcgPSA8MHg0
+Mz47Cj4+ICsJCWZjcyxzdXNwZW5kLXZvbHRhZ2Utc2VsZWN0b3IgPSA8MT47Cj4+ICsJCXJlZ3Vs
+YXRvci1uYW1lID0gInZkZF9jcHVfYmlnMV9zMCI7Cj4+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247
+Cj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9
+IDw1NTAwMDA+Owo+PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMDUwMDAwPjsKPj4g
+KwkJcmVndWxhdG9yLXJhbXAtZGVsYXkgPSA8MjMwMD47Cj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZj
+YzV2MF9zeXM+Owo+PiArCj4+ICsJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJcmVndWxh
+dG9yLW9mZi1pbi1zdXNwZW5kOwo+PiArCQl9Owo+PiArCX07Cj4+ICt9Owo+PiArCj4+ICsmaTJj
+MiB7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArCj4+ICsJdmRkX25wdV9zMDogcmVndWxhdG9y
+QDQyIHsKPj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazg2MDIiOwo+PiArCQlyZWcgPSA8
+MHg0Mj47Cj4+ICsJCWZjcyxzdXNwZW5kLXZvbHRhZ2Utc2VsZWN0b3IgPSA8MT47Cj4+ICsJCXJl
+Z3VsYXRvci1uYW1lID0gInZkZF9ucHVfczAiOwo+PiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+
+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8
+NTUwMDAwPjsKPj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8OTUwMDAwPjsKPj4gKwkJ
+cmVndWxhdG9yLXJhbXAtZGVsYXkgPSA8MjMwMD47Cj4+ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzV2
+MF9zeXM+Owo+PiArCj4+ICsJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJcmVndWxhdG9y
+LW9mZi1pbi1zdXNwZW5kOwo+PiArCQl9Owo+PiArCX07Cj4+ICt9Owo+PiArCj4+ICsmaTJjNiB7
+Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArCj4+ICsJaHltODU2MzogcnRjQDUxIHsKPj4gKwkJ
+Y29tcGF0aWJsZSA9ICJoYW95dSxoeW04NTYzIjsKPj4gKwkJcmVnID0gPDB4NTE+Owo+PiArCQkj
+Y2xvY2stY2VsbHMgPSA8MD47Cj4+ICsJCWNsb2NrLWZyZXF1ZW5jeSA9IDwzMjc2OD47Cj4+ICsJ
+CWNsb2NrLW91dHB1dC1uYW1lcyA9ICJoeW04NTYzIjsKPj4gKwkJcGluY3RybC1uYW1lcyA9ICJk
+ZWZhdWx0IjsKPj4gKwkJcGluY3RybC0wID0gPCZoeW04NTYzX2ludD47Cj4+ICsJCWludGVycnVw
+dC1wYXJlbnQgPSA8JmdwaW8wPjsKPj4gKwkJaW50ZXJydXB0cyA9IDxSS19QRDQgSVJRX1RZUEVf
+TEVWRUxfTE9XPjsKPj4gKwkJd2FrZXVwLXNvdXJjZTsKPj4gKwl9Owo+PiArfTsKPj4gKwo+PiAr
+JmkyYzcgewo+PiArCXBpbmN0cmwtMCA9IDwmaTJjN20wX3hmZXI+Owo+PiArCXN0YXR1cyA9ICJv
+a2F5IjsKPj4gKwo+PiArCWVzODMxNjogYXVkaW8tY29kZWNAMTEgewo+PiArCQljb21wYXRpYmxl
+ID0gImV2ZXJlc3QsZXM4MzE2IjsKPj4gKwkJcmVnID0gPDB4MTE+Owo+PiArCQljbG9ja3MgPSA8
+JmNydSBJMlMwXzhDSF9NQ0xLT1VUPjsKPj4gKwkJY2xvY2stbmFtZXMgPSAibWNsayI7Cj4+ICsJ
+CWFzc2lnbmVkLWNsb2NrcyA9IDwmY3J1IEkyUzBfOENIX01DTEtPVVQ+Owo+PiArCQlhc3NpZ25l
+ZC1jbG9jay1yYXRlcyA9IDwxMjI4ODAwMD47Cj4+ICsJCSNzb3VuZC1kYWktY2VsbHMgPSA8MD47
+Cj4+ICsKPj4gKwkJcG9ydCB7Cj4+ICsJCQllczgzMTZfcDBfMDogZW5kcG9pbnQgewo+PiArCQkJ
+CXJlbW90ZS1lbmRwb2ludCA9IDwmaTJzMF84Y2hfcDBfMD47Cj4+ICsJCQl9Owo+PiArCQl9Owo+
+PiArCX07Cj4+ICt9Owo+PiArCj4+ICsmaTJzMF84Y2ggewo+PiArCXBpbmN0cmwtMCA9IDwmaTJz
+MF9scmNrCj4+ICsJCSAgICAgJmkyczBfbWNsawo+PiArCQkgICAgICZpMnMwX3NjbGsKPj4gKwkJ
+ICAgICAmaTJzMF9zZGkwCj4+ICsJCSAgICAgJmkyczBfc2RvMD47Cj4+ICsJc3RhdHVzID0gIm9r
+YXkiOwo+PiArCj4+ICsJaTJzMF84Y2hfcDA6IHBvcnQgewo+PiArCQlpMnMwXzhjaF9wMF8wOiBl
+bmRwb2ludCB7Cj4+ICsJCQlkYWktZm9ybWF0ID0gImkycyI7Cj4+ICsJCQltY2xrLWZzID0gPDI1
+Nj47Cj4+ICsJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmVzODMxNl9wMF8wPjsKPj4gKwkJfTsKPj4g
+Kwl9Owo+PiArfTsKPj4gKwo+PiArJm1kaW8wIHsKPj4gKwlyZ21paV9waHk6IGV0aGVybmV0LXBo
+eUAxIHsKPj4gKwkJLyogWVQ4NTMxQy9IICovCj4+ICsJCWNvbXBhdGlibGUgPSAiZXRoZXJuZXQt
+cGh5LWllZWU4MDIuMy1jMjIiOwo+PiArCQlyZWcgPSA8MHgxPjsKPj4gKwkJcGluY3RybC1uYW1l
+cyA9ICJkZWZhdWx0IjsKPj4gKwkJcGluY3RybC0wID0gPCZ5dDg1MzFfcnN0PjsKPj4gKwkJcmVz
+ZXQtYXNzZXJ0LXVzID0gPDIwMDAwPjsKPj4gKwkJcmVzZXQtZGVhc3NlcnQtdXMgPSA8MTAwMDAw
+PjsKPj4gKwkJcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BCMyBHUElPX0FDVElWRV9MT1c+Owo+
+PiArCX07Cj4+ICt9Owo+PiArCj4+ICsvKiBNLjIgRS1LZXkgKi8KPj4gKyZwY2llMngxbDEgewo+
+PiArCXJlc2V0LWdwaW9zID0gPCZncGlvNCBSS19QQTIgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsJ
+dnBjaWUzdjMtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4gKwlwaW5jdHJsLW5hbWVzID0gImRl
+ZmF1bHQiOwo+PiArCXBpbmN0cmwtMCA9IDwmcGNpZV9jbGtyZXEgJnBjaWVfd2FrZSAmcGNpZV9y
+c3QgJndpZmlfcHdyb24gJmJ0X3B3cm9uPjsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+
+PiArCj4+ICsvKiBldGhlcm5ldCAqLwo+PiArJnBjaWUyeDFsMiB7Cj4+ICsJcmVzZXQtZ3Bpb3Mg
+PSA8JmdwaW8zIFJLX1BEMSBHUElPX0FDVElWRV9ISUdIPjsKPj4gKwl2cGNpZTN2My1zdXBwbHkg
+PSA8JnZjYzN2M19zeXM+Owo+PiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICsJcGlu
+Y3RybC0wID0gPCZydGw4MTExX2lzb2xhdGU+Owo+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4gK307
+Cj4+ICsKPj4gKyZwY2llMzBwaHkgewo+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4gK307Cj4+ICsK
+Pj4gKyZwY2llM3gyIHsKPj4gKwlyZXNldC1ncGlvcyA9IDwmZ3BpbzMgUktfUEIwIEdQSU9fQUNU
+SVZFX0hJR0g+Owo+PiArCXZwY2llM3YzLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4+ICsJc3Rh
+dHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArLyogTS4yIE0tS3llIHNzZCAqLwo+PiArJnBj
+aWUzeDQgewo+PiArCXJlc2V0LWdwaW9zID0gPCZncGlvNCBSS19QQjYgR1BJT19BQ1RJVkVfSElH
+SD47Cj4+ICsJdnBjaWUzdjMtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4gKwlzdGF0dXMgPSAi
+b2theSI7Cj4+ICt9Owo+PiArCj4+ICsmcGluY3RybCB7Cj4+ICsJY2FtIHsKPj4gKwkJY2FtX2Vu
+OiBjYW0tZW4gewo+PiArCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BDNiBSS19GVU5DX0dQSU8g
+JnBjZmdfb3V0cHV0X2hpZ2g+Owo+PiArCQl9Owo+PiArCX07Cj4+ICsKPj4gKwloeW04NTYzIHsK
+Pj4gKwkJaHltODU2M19pbnQ6IGh5bTg1NjMtaW50IHsKPj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8
+MCBSS19QRDQgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+PiArCQl9Owo+PiArCX07Cj4+
+ICsKPj4gKwlsY2Qgewo+PiArCQlsY2Rwd3JfZW46IGxjZHB3ci1lbiB7Cj4+ICsJCQlyb2NrY2hp
+cCxwaW5zID0gPDEgUktfUEM0IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX2Rvd24+Owo+PiArCQl9
+Owo+PiArCj4+ICsJCWJsX2VuOiBibC1lbiB7Cj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktf
+UEEzIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+PiArCQl9Owo+PiArCX07Cj4+ICsK
+Pj4gKwlydGw4MTExIHsKPj4gKwkJcnRsODExMV9pc29sYXRlOiBydGw4MTExLWlzb2xhdGUgewo+
+PiArCQkJcm9ja2NoaXAscGlucyA9IDwxIFJLX1BBNCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91
+cD47Cj4+ICsJCX07Cj4+ICsJfTsKPj4gKwo+PiArCXJ0bDgyMTFmIHsKPj4gKwkJeXQ4NTMxX3Jz
+dDogeXQ4NTMxLXJzdCB7Cj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEIzIFJLX0ZVTkNf
+R1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+PiArCQl9Owo+PiArCX07Cj4+ICsKPj4gKwl1c2Igewo+
+PiArCQl2Y2M1djBfaG9zdDFfZW46IHZjYzV2MC1ob3N0MS1lbiB7Cj4+ICsJCQlyb2NrY2hpcCxw
+aW5zID0gPDEgUktfUEQ1IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKPj4gKwkJfTsKPj4g
+Kwl9Owo+PiArCj4+ICsJdXNiLXR5cGVjIHsKPj4gKwkJdHlwZWM1dl9wd3JlbjogdHlwZWM1di1w
+d3JlbiB7Cj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDAgUktfUEEwIFJLX0ZVTkNfR1BJTyAmcGNm
+Z19wdWxsX3VwPjsKPj4gKwkJfTsKPj4gKwl9Owo+PiArCj4+ICsJd2lmaSB7Cj4+ICsJCWJ0X3B3
+cm9uOiBidC1wd3JvbiB7Cj4+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEE2IFJLX0ZVTkNf
+R1BJTyAmcGNmZ19wdWxsX3VwPjsKPj4gKwkJfTsKPj4gKwo+PiArCQlwY2llX2Nsa3JlcTogcGNp
+ZS1jbGtyZXEgewo+PiArCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BBMCBSS19GVU5DX0dQSU8g
+JnBjZmdfcHVsbF91cD47Cj4+ICsJCX07Cj4+ICsKPj4gKwkJcGNpZV9yc3Q6IHBjaWUtcnN0IHsK
+Pj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQTIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxf
+dXA+Owo+PiArCQl9Owo+PiArCj4+ICsJCXdpZmlfcHdyb246IHdpZmktcHdyb24gewo+PiArCQkJ
+cm9ja2NoaXAscGlucyA9IDwzIFJLX1BCMSBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+
+ICsJCX07Cj4+ICsKPj4gKwkJcGNpZV93YWtlOiBwY2llLXdha2Ugewo+PiArCQkJcm9ja2NoaXAs
+cGlucyA9IDw0IFJLX1BBMSBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+ICsJCX07Cj4+
+ICsJfTsKPj4gK307Cj4+ICsKPj4gKyZwd20yIHsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+ICt9
+Owo+PiArCj4+ICsmc2FyYWRjIHsKPj4gKwl2cmVmLXN1cHBseSA9IDwmdmNjXzF2OF9zMD47Cj4+
+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnNhdGExIHsKPj4gKwlzdGF0dXMg
+PSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmc2RoY2kgewo+PiArCWJ1cy13aWR0aCA9IDw4PjsK
+Pj4gKwluby1zZGlvOwo+PiArCW5vLXNkOwo+PiArCW5vbi1yZW1vdmFibGU7Cj4+ICsJbWF4LWZy
+ZXF1ZW5jeSA9IDwyMDAwMDAwMDA+Owo+PiArCW1tYy1oczQwMC0xXzh2Owo+PiArCW1tYy1oczQw
+MC1lbmhhbmNlZC1zdHJvYmU7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiAr
+JnNkbW1jIHsKPj4gKwltYXgtZnJlcXVlbmN5ID0gPDE1MDAwMDAwMD47Cj4+ICsJbm8tc2RpbzsK
+Pj4gKwluby1tbWM7Cj4+ICsJYnVzLXdpZHRoID0gPDQ+Owo+PiArCWNhcC1tbWMtaGlnaHNwZWVk
+Owo+PiArCWNhcC1zZC1oaWdoc3BlZWQ7Cj4+ICsJZGlzYWJsZS13cDsKPj4gKwlzZC11aHMtc2Ry
+MTA0Owo+PiArCXZxbW1jLXN1cHBseSA9IDwmdmNjaW9fc2RfczA+Owo+PiArCXN0YXR1cyA9ICJv
+a2F5IjsKPj4gK307Cj4+ICsKPj4gKyZzcGkyIHsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+ICsJ
+YXNzaWduZWQtY2xvY2tzID0gPCZjcnUgQ0xLX1NQSTI+Owo+PiArCWFzc2lnbmVkLWNsb2NrLXJh
+dGVzID0gPDIwMDAwMDAwMD47Cj4+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gKwlw
+aW5jdHJsLTAgPSA8JnNwaTJtMl9jczAgJnNwaTJtMl9waW5zPjsKPj4gKwludW0tY3MgPSA8MT47
+Cj4+ICsKPj4gKwlwbWljQDAgewo+PiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrODA2IjsK
+Pj4gKwkJc3BpLW1heC1mcmVxdWVuY3kgPSA8MTAwMDAwMD47Cj4+ICsJCXJlZyA9IDwweDA+Owo+
+PiArCj4+ICsJCWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW8wPjsKPj4gKwkJaW50ZXJydXB0cyA9
+IDw3IElSUV9UWVBFX0xFVkVMX0xPVz47Cj4+ICsKPj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZh
+dWx0IjsKPj4gKwkJcGluY3RybC0wID0gPCZwbWljX3BpbnM+LCA8JnJrODA2X2R2czFfbnVsbD4s
+Cj4+ICsJCQkgICAgPCZyazgwNl9kdnMyX251bGw+LCA8JnJrODA2X2R2czNfbnVsbD47Cj4+ICsK
+Pj4gKwkJdmNjMS1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiArCQl2Y2MyLXN1cHBseSA9IDwm
+dmNjNXYwX3N5cz47Cj4+ICsJCXZjYzMtc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPj4gKwkJdmNj
+NC1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiArCQl2Y2M1LXN1cHBseSA9IDwmdmNjNXYwX3N5
+cz47Cj4+ICsJCXZjYzYtc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPj4gKwkJdmNjNy1zdXBwbHkg
+PSA8JnZjYzV2MF9zeXM+Owo+PiArCQl2Y2M4LXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4+ICsJ
+CXZjYzktc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPj4gKwkJdmNjMTAtc3VwcGx5ID0gPCZ2Y2M1
+djBfc3lzPjsKPj4gKwkJdmNjMTEtc3VwcGx5ID0gPCZ2Y2NfMnYwX3BsZG9fczM+Owo+PiArCQl2
+Y2MxMi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiArCQl2Y2MxMy1zdXBwbHkgPSA8JnZjY18y
+djBfcGxkb19zMz47Cj4+ICsJCXZjYzE0LXN1cHBseSA9IDwmdmNjXzJ2MF9wbGRvX3MzPjsKPj4g
+KwkJdmNjYS1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiArCj4+ICsJCWdwaW8tY29udHJvbGxl
+cjsKPj4gKwkJI2dwaW8tY2VsbHMgPSA8Mj47Cj4+ICsKPj4gKwkJcms4MDZfZHZzMV9udWxsOiBk
+dnMxLW51bGwtcGlucyB7Cj4+ICsJCQlwaW5zID0gImdwaW9fcHdyY3RybDIiOwo+PiArCQkJZnVu
+Y3Rpb24gPSAicGluX2Z1bjAiOwo+PiArCQl9Owo+PiArCj4+ICsJCXJrODA2X2R2czJfbnVsbDog
+ZHZzMi1udWxsLXBpbnMgewo+PiArCQkJcGlucyA9ICJncGlvX3B3cmN0cmwyIjsKPj4gKwkJCWZ1
+bmN0aW9uID0gInBpbl9mdW4wIjsKPj4gKwkJfTsKPj4gKwo+PiArCQlyazgwNl9kdnMzX251bGw6
+IGR2czMtbnVsbC1waW5zIHsKPj4gKwkJCXBpbnMgPSAiZ3Bpb19wd3JjdHJsMyI7Cj4+ICsJCQlm
+dW5jdGlvbiA9ICJwaW5fZnVuMCI7Cj4+ICsJCX07Cj4+ICsKPj4gKwkJcmVndWxhdG9ycyB7Cj4+
+ICsJCQl2ZGRfZ3B1X3MwOiB2ZGRfZ3B1X21lbV9zMDogZGNkYy1yZWcxIHsKPj4gKwkJCQlyZWd1
+bGF0b3ItYm9vdC1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1NTAwMDA+
+Owo+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDk1MDAwMD47Cj4+ICsJCQkJcmVn
+dWxhdG9yLXJhbXAtZGVsYXkgPSA8MTI1MDA+Owo+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZk
+ZF9ncHVfczAiOwo+PiArCQkJCXJlZ3VsYXRvci1lbmFibGUtcmFtcC1kZWxheSA9IDw0MDA+Owo+
+PiArCj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+ICsJCQkJCXJlZ3VsYXRvci1vZmYt
+aW4tc3VzcGVuZDsKPj4gKwkJCQl9Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJdmRkX2NwdV9saXRf
+czA6IHZkZF9jcHVfbGl0X21lbV9zMDogZGNkYy1yZWcyIHsKPj4gKwkJCQlyZWd1bGF0b3ItYWx3
+YXlzLW9uOwo+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJlZ3VsYXRvci1taW4t
+bWljcm92b2x0ID0gPDU1MDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8
+OTUwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItcmFtcC1kZWxheSA9IDwxMjUwMD47Cj4+ICsJCQkJ
+cmVndWxhdG9yLW5hbWUgPSAidmRkX2NwdV9saXRfczAiOwo+PiArCj4+ICsJCQkJcmVndWxhdG9y
+LXN0YXRlLW1lbSB7Cj4+ICsJCQkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4gKwkJCQl9
+Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJdmRkX2xvZ19zMDogZGNkYy1yZWczIHsKPj4gKwkJCQly
+ZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJl
+Z3VsYXRvci1taW4tbWljcm92b2x0ID0gPDY3NTAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1t
+aWNyb3ZvbHQgPSA8NzUwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItcmFtcC1kZWxheSA9IDwxMjUw
+MD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAidmRkX2xvZ19zMCI7Cj4+ICsKPj4gKwkJCQly
+ZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gKwkJCQkJcmVndWxhdG9yLW9mZi1pbi1zdXNwZW5kOwo+
+PiArCQkJCQlyZWd1bGF0b3Itc3VzcGVuZC1taWNyb3ZvbHQgPSA8NzUwMDAwPjsKPj4gKwkJCQl9
+Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJdmRkX3ZkZW5jX3MwOiB2ZGRfdmRlbmNfbWVtX3MwOiBk
+Y2RjLXJlZzQgewo+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9y
+LWJvb3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NTUwMDAwPjsKPj4g
+KwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw5NTAwMDA+Owo+PiArCQkJCXJlZ3VsYXRv
+ci1yYW1wLWRlbGF5ID0gPDEyNTAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfdmRl
+bmNfczAiOwo+PiArCj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+ICsJCQkJCXJlZ3Vs
+YXRvci1vZmYtaW4tc3VzcGVuZDsKPj4gKwkJCQl9Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJdmRk
+X2Rkcl9zMDogZGNkYy1yZWc1IHsKPj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQkJ
+CXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDY3
+NTAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8OTAwMDAwPjsKPj4gKwkJ
+CQlyZWd1bGF0b3ItcmFtcC1kZWxheSA9IDwxMjUwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUg
+PSAidmRkX2Rkcl9zMCI7Cj4+ICsKPj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gKwkJ
+CQkJcmVndWxhdG9yLW9mZi1pbi1zdXNwZW5kOwo+PiArCQkJCQlyZWd1bGF0b3Itc3VzcGVuZC1t
+aWNyb3ZvbHQgPSA8ODUwMDAwPjsKPj4gKwkJCQl9Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJdmRk
+Ml9kZHJfczM6IGRjZGMtcmVnNiB7Cj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gKwkJ
+CQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGQyX2Rkcl9z
+MyI7Cj4+ICsKPj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gKwkJCQkJcmVndWxhdG9y
+LW9uLWluLXN1c3BlbmQ7Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXZjY18ydjBf
+cGxkb19zMzogZGNkYy1yZWc3IHsKPj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQkJ
+CXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDIw
+MDAwMDA+Owo+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDIwMDAwMDA+Owo+PiAr
+CQkJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0gPDEyNTAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbmFt
+ZSA9ICJ2ZGRfMnYwX3BsZG9fczMiOwo+PiArCj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7
+Cj4+ICsJCQkJCXJlZ3VsYXRvci1vbi1pbi1zdXNwZW5kOwo+PiArCQkJCQlyZWd1bGF0b3Itc3Vz
+cGVuZC1taWNyb3ZvbHQgPSA8MjAwMDAwMD47Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4g
+KwkJCXZjY18zdjNfczM6IGRjZGMtcmVnOCB7Cj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsK
+Pj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9s
+dCA9IDwzMzAwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwzMzAwMDAw
+PjsKPj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NfM3YzX3MzIjsKPj4gKwo+PiArCQkJCXJl
+Z3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0b3Itb24taW4tc3VzcGVuZDsKPj4g
+KwkJCQkJcmVndWxhdG9yLXN1c3BlbmQtbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+PiArCQkJCX07
+Cj4+ICsJCQl9Owo+PiArCj4+ICsJCQl2ZGRxX2Rkcl9zMDogZGNkYy1yZWc5IHsKPj4gKwkJCQly
+ZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJl
+Z3VsYXRvci1uYW1lID0gInZkZHFfZGRyX3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRvci1zdGF0
+ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJfTsKPj4g
+KwkJCX07Cj4+ICsKPj4gKwkJCXZjY18xdjhfczM6IGRjZGMtcmVnMTAgewo+PiArCQkJCXJlZ3Vs
+YXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVndWxh
+dG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNy
+b3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAidmNjXzF2OF9zMyI7
+Cj4+ICsKPj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gKwkJCQkJcmVndWxhdG9yLW9u
+LWluLXN1c3BlbmQ7Cj4+ICsJCQkJCXJlZ3VsYXRvci1zdXNwZW5kLW1pY3Jvdm9sdCA9IDwxODAw
+MDAwPjsKPj4gKwkJCQl9Owo+PiArCQkJfTsKPj4gKwo+PiArCQkJYXZjY18xdjhfczA6IHBsZG8t
+cmVnMSB7Cj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItYm9v
+dC1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4gKwkJ
+CQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3It
+bmFtZSA9ICJhdmNjXzF2OF9zMCI7Cj4+ICsKPj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsK
+Pj4gKwkJCQkJcmVndWxhdG9yLW9mZi1pbi1zdXNwZW5kOwo+PiArCQkJCX07Cj4+ICsJCQl9Owo+
+PiArCj4+ICsJCQl2Y2NfMXY4X3MwOiBwbGRvLXJlZzIgewo+PiArCQkJCXJlZ3VsYXRvci1hbHdh
+eXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1pbi1t
+aWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8
+MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAidmNjXzF2OF9zMCI7Cj4+ICsKPj4g
+KwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gKwkJCQkJcmVndWxhdG9yLW9mZi1pbi1zdXNw
+ZW5kOwo+PiArCQkJCQlyZWd1bGF0b3Itc3VzcGVuZC1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+
+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCWF2ZGRfMXYyX3MwOiBwbGRvLXJlZzMgewo+
+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+
+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTIwMDAwMD47Cj4+ICsJCQkJcmVndWxh
+dG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAi
+YXZkZF8xdjJfczAiOwo+PiArCj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+ICsJCQkJ
+CXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4gKwkJCQl9Owo+PiArCQkJfTsKPj4gKwo+PiAr
+CQkJdmNjXzN2M19zMDogcGxkby1yZWc0IHsKPj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+
+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0
+ID0gPDMzMDAwMDA+Owo+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+
+Owo+PiArCQkJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0gPDEyNTAwPjsKPj4gKwkJCQlyZWd1bGF0
+b3ItbmFtZSA9ICJ2Y2NfM3YzX3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0g
+ewo+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJfTsKPj4gKwkJCX07
+Cj4+ICsKPj4gKwkJCXZjY2lvX3NkX3MwOiBwbGRvLXJlZzUgewo+PiArCQkJCXJlZ3VsYXRvci1h
+bHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1p
+bi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQg
+PSA8MzMwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLXJhbXAtZGVsYXkgPSA8MTI1MDA+Owo+PiAr
+CQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY2lvX3NkX3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRv
+ci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJ
+fTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXBsZG82X3MzOiBwbGRvLXJlZzYgewo+PiArCQkJCXJl
+Z3VsYXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVn
+dWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW1heC1t
+aWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAicGxkbzZfczMi
+Owo+PiArCj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+ICsJCQkJCXJlZ3VsYXRvci1v
+bi1pbi1zdXNwZW5kOwo+PiArCQkJCQlyZWd1bGF0b3Itc3VzcGVuZC1taWNyb3ZvbHQgPSA8MTgw
+MDAwMD47Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXZkZF8wdjc1X3MzOiBubGRv
+LXJlZzEgewo+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJv
+b3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NzUwMDAwPjsKPj4gKwkJ
+CQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw3NTAwMDA+Owo+PiArCQkJCXJlZ3VsYXRvci1u
+YW1lID0gInZkZF8wdjc1X3MzIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+
+PiArCQkJCQlyZWd1bGF0b3Itb24taW4tc3VzcGVuZDsKPj4gKwkJCQkJcmVndWxhdG9yLXN1c3Bl
+bmQtbWljcm92b2x0ID0gPDc1MDAwMD47Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJ
+CXZkZF9kZHJfcGxsX3MwOiBubGRvLXJlZzIgewo+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247
+Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3Zv
+bHQgPSA8ODUwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw4NTAwMDA+
+Owo+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZkZF9kZHJfcGxsX3MwIjsKPj4gKwo+PiArCQkJ
+CXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7
+Cj4+ICsJCQkJCXJlZ3VsYXRvci1zdXNwZW5kLW1pY3Jvdm9sdCA9IDw4NTAwMDA+Owo+PiArCQkJ
+CX07Cj4+ICsJCQl9Owo+PiArCj4+ICsJCQlhdmRkXzB2NzVfczA6IG5sZG8tcmVnMyB7Cj4+ICsJ
+CQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gKwkJ
+CQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw3NTAwMDA+Owo+PiArCQkJCXJlZ3VsYXRvci1t
+YXgtbWljcm92b2x0ID0gPDc1MDAwMD47Cj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAiYXZkZF8w
+djc1X3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1
+bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXZk
+ZF8wdjg1X3MwOiBubGRvLXJlZzQgewo+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJ
+CQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8
+ODUwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw4NTAwMDA+Owo+PiAr
+CQkJCXJlZ3VsYXRvci1uYW1lID0gInZkZF8wdjg1X3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRv
+ci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJ
+fTsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCXZkZF8wdjc1X3MwOiBubGRvLXJlZzUgewo+PiArCQkJ
+CXJlZ3VsYXRvci1hbHdheXMtb247Cj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+ICsJCQkJ
+cmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NzUwMDAwPjsKPj4gKwkJCQlyZWd1bGF0b3ItbWF4
+LW1pY3Jvdm9sdCA9IDw3NTAwMDA+Owo+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZkZF8wdjc1
+X3MwIjsKPj4gKwo+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+PiArCQkJCQlyZWd1bGF0
+b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+ICsJCQkJfTsKPj4gKwkJCX07Cj4+ICsJCX07Cj4+ICsJfTsK
+Pj4gK307Cj4+ICsKPj4gKyZ0c2FkYyB7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4g
+Kwo+PiArJnUycGh5MiB7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnUy
+cGh5MyB7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnUycGh5Ml9ob3N0
+IHsKPj4gKwlwaHktc3VwcGx5ID0gPCZ2Y2M1djBfaG9zdD47Cj4+ICsJc3RhdHVzID0gIm9rYXki
+Owo+PiArfTsKPj4gKwo+PiArJnUycGh5M19ob3N0IHsKPj4gKwlwaHktc3VwcGx5ID0gPCZ2Y2M1
+djBfaG9zdD47Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnVhcnQyIHsK
+Pj4gKwlwaW5jdHJsLTAgPSA8JnVhcnQybTBfeGZlcj47Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+
+PiArfTsKPj4gKwo+PiArJnVzYl9ob3N0MF9laGNpIHsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+
+ICt9Owo+PiArCj4+ICsmdXNiX2hvc3QwX29oY2kgewo+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4g
+K307Cj4+ICsKPj4gKyZ1c2JfaG9zdDFfZWhjaSB7Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiAr
+fTsKPj4gKwo+PiArJnVzYl9ob3N0MV9vaGNpIHsKPj4gKwlzdGF0dXMgPSAib2theSI7Cj4+ICt9
+Owo+PiAKPgo+Cj4KPgo+Cj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+bGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKPmxpbnV4LWFybS1rZXJuZWxA
+bGlzdHMuaW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1hcm0ta2VybmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
