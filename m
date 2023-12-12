@@ -4,74 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E261C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B76C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:33:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TgNS/VRv8ggkyiriQ5MZLUCeUZ5vrDQcVTxskyJK0t8=; b=ZAUUmq1ICu/X/otFv09MlvzR9O
-	XWXwdaf9XPg2TrsT1yXU24PzZrfiWTHx+V05/1FIiR28xeWEaMYQjnYhFLCvxBPbFF6D7Jnau78Iu
-	DFBiVlkCOCqgdnn99V2Ocg3tXnVFaFRQNEWkng0w3zmWHPQKvhOBMLk1XoRwFLEPy6yZtXQvm6Gav
-	SHjO3450ckkiE3io5O7YO62HLeL/e/c8OUlZD/eMebU95iEaype23G4KAANiumHWVeYmNKiuCUzb2
-	6I16b14TfalUm5dUFCa/ZSRTkSu9Ohnu+F1pQ9V/TnVtURyR+IBvrMotYYTH65SNPqnmBRykKSUAA
-	QPbKousg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NUYVF1qspz37FWE7koNOGcLMyU4dX6IcakOYwPtL2PI=; b=Oe0QiP8ZowGiHW
+	JL+IsrHGbU3iScrULpWj7qKbLYNwPGinpxnx4HysR9dgE9lvW5edYIxUnbce/FydM2Z5dBpJ5C4Jm
+	BEK/ptkMAdKK70HOqV4BoxG7SbEao6RPRr6fKbEyhp5cUv4dej4NCTMGUQQZM+b8hZ0xtWoUQlE+l
+	Zx0CACkTxqgYBl8GhkGeZhKjjNgG32XuefiYOcIPI/UeoZopY99yCU68jnjqDPn1RBS1VmCaLJUDQ
+	IQGqow8KBr+F9Qz4tKaAg01TkWxt+/lVYNCMAHqtuzVuUgL7rlAqj4rp0kvrnpMVaXFvpHElmnlCn
+	hRNuGpCU9XtTOlgZyXiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD9wN-00CmKP-0N;
-	Tue, 12 Dec 2023 21:05:19 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rDAN8-00Cp3v-2O;
+	Tue, 12 Dec 2023 21:32:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD9wJ-00CmIF-38
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Dec 2023 21:05:17 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rD9wF-0001Oy-5K; Tue, 12 Dec 2023 22:05:11 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1rDAN4-00Cp2j-0b;
+	Tue, 12 Dec 2023 21:32:56 +0000
+Received: from [194.95.143.137] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rD9wE-00FQEY-2C; Tue, 12 Dec 2023 22:05:10 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rD9wD-001snP-Ol; Tue, 12 Dec 2023 22:05:09 +0100
-Date: Tue, 12 Dec 2023 22:05:09 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	platform-driver-x86@vger.kernel.org,
-	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	asahi@lists.linux.dev, kernel@pengutronix.de
-Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
-Message-ID: <20231212210509.focpb63fbmahqij3@pengutronix.de>
-References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
- <ZXM4CdJxg-XrYhkn@orome.fritz.box>
- <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
- <ZXbzcFTnDTKoZAta@orome.fritz.box>
+	(envelope-from <heiko@sntech.de>)
+	id 1rDAN2-0007Am-ND; Tue, 12 Dec 2023 22:32:52 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.8 #1
+Date: Tue, 12 Dec 2023 22:32:52 +0100
+Message-ID: <3535836.iIbC2pHGDl@phil>
 MIME-Version: 1.0
-In-Reply-To: <ZXbzcFTnDTKoZAta@orome.fritz.box>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_130516_005182_3BA9D480 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20231212_133254_367185_7A3568F3 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,101 +53,208 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2068879603929361310=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Arnd, Kevin, Olof,
 
---===============2068879603929361310==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gyt34nc3mm25zmmf"
-Content-Disposition: inline
-
-
---gyt34nc3mm25zmmf
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello Thierry,
-
-On Mon, Dec 11, 2023 at 12:33:04PM +0100, Thierry Reding wrote:
-> On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=F6nig wrote:
-> > You don't need to touch all drivers because you didn't change struct
-> > pwm_chip::dev yet. (If you really want, you don't need to change that,
-> > but then you have some duplication as chip->dev holds the same value as
-> > priv->dev.parent in the end.)
->=20
-> I don't think that's a problem. These are for two logically separate
-> things, after all.
-
-How are they different? I'd say one is the initializer for the other and
-(ideally) unused after that. With that interpretation they are indeed
-different, but then it's ugly that the initializer keeps staying around.
-
-> Duplication can also sometimes be useful to simplify
-> things. There are plently of cases where we use local variables for the
-> same reason.
-
-local variables go away though after the respective function is left.
-chip->dev and its copy priv->dev.parent stay around for the full
-lifetime of the chip.
-
-> > > @@ -58,23 +60,24 @@ static struct pwm_chip *pwmchip_find_by_name(cons=
-t char *name)
-> > > =20
-> > >  static int pwm_device_request(struct pwm_device *pwm, const char *la=
-bel)
-> > >  {
-> > > +	struct pwm_chip *chip =3D pwm->priv->chip;
-> >=20
-> > With my approach getting the chip of a struct pwm_device is only one
-> > pointer dereference away. You need two.
->=20
-> None of the functions here are called very often, so even if this isn't
-> optimized away it would hardly matter.
-
-I'd say pwm_apply_state() at least matters. Also I think that making a
-slow path quicker is a good thing.=20
-
-I wonder how we'll converge to an approach that can go into the
-mainline given that we both have our strong opinions.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---gyt34nc3mm25zmmf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmV4ywQACgkQj4D7WH0S
-/k4AOQf/Rn+1it6Pa2jcb+shcSHEefw76NASZ1jTJwzdnczaZca+4/TdY0/HLE/V
-27TLO93Qd9e4o0E4uFjg/T9KbZy+cu9WxiCJ9LgBEhgPaLIWe9opiDarsy2BNLJi
-e6lERFOmyBoG3USP7t/iEQn5C+0+gC6/pcPVWk8TJO/mc2kr8ioQRsaHtaE0AsX0
-hpZS0GH+ypW5d1saF+TMkSDV4QUzmTaXxsSDqG9/vnXhjln6wlriyIo2gJI2qQ6R
-gBrGVWoz8SnG3OjfGZwo9KhL+KPTbjIba4erb1KbE9j9Ul7c3xF/nA6GcTwU/IcQ
-6WQMUp7Ez5oG8txpknnsR9R2Iimimw==
-=APXJ
------END PGP SIGNATURE-----
-
---gyt34nc3mm25zmmf--
+please find below and in a subsequent pull-request
+Rockchip changes for for 6.8 .
 
 
---===============2068879603929361310==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+The change that might need the most explanation is probably around the
+aliases. In a recent discussion [0] the alias naming came up - with them
+aimed at matching labeling / documentation.
+
+As stated there all the Rockchip core busses (i2c, spi, and so on) use
+a numbered scheme everywhere - from the SoC manual down to the board
+schematics. Meaning i2c2 should always be i2c2.
+
+Together with Krzysztof's additional mention [1] that aliases in board-
+files
+	"is just generic guideline",
+a lot of people involved agreed that we don't want to repeat the same
+huge stack of core-bus aliases on each and every board. On the other
+hand, all the non-numbered busses should be living in the board dts
+files. So a bit of a cleanup got underway to achieve that state on the
+newer socs. (both arm64 and arm32).
+
+
+Please pull!
+
+Thanks
+Heiko
+
+
+[0] https://lore.kernel.org/linux-rockchip/4762834.KRxA6XjA2N@diego/#r
+[1] https://lore.kernel.org/linux-rockchip/7b8a830d-42d0-4220-b9fe-3f5fff43e74d@linaro.org/
+
+
+The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
+
+  Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-dts64-1
+
+for you to fetch changes up to 8174dff9e583f7791dacf6d8ce034eb18ec2b292:
+
+  arm64: dts: rockchip: Add Anbernic RG351V (2023-12-12 21:43:48 +0100)
+
+----------------------------------------------------------------
+New boards are the Anberic RG351V handheld (rk3326), Theobroma Systems Jaguar
+SBC (rk3588), Powkiddy X55 and RK2023 handheld (rk3566), Edgeble-Neu6b (rk3588)
+
+The rk3588 got attention with one working usb3 host on Rock-5a/5b, Orangepi-5
+and audio for the EVB1.
+
+Some smaller improvements for the other socs (fifo-depths on rk3328,
+gpio-line-names on rk3308-rock-pi-s, gpu power-coefficients on rk3399,
+and a fix for the newly converted gpio-fan yaml binding).
+
+Also a number of aliases were moved. Always-numbered core busses can have their
+aliases in the soc dtsi, as is done in a number of cases already and other alises
+like ethernet really should be per board.
+
+----------------------------------------------------------------
+Chris Morgan (8):
+      dt-bindings: arm: rockchip: Add Powkiddy RK2023
+      arm64: dts: rockchip: Update powkiddy,rgb30 include to rk2023 DTSI
+      arm64: dts: rockchip: Add Powkiddy RK2023
+      dt-bindings: arm: rockchip: Add Powkiddy X55
+      arm64: dts: rockchip: Add Powkiddy X55
+      dt-bindings: arm: rockchip: Add Anbernic RG351V
+      arm64: dts: rockchip: Split RG351M from Odroid Go Advance
+      arm64: dts: rockchip: Add Anbernic RG351V
+
+David Heidelberg (1):
+      arm64: dts: rockchip: make dts use gpio-fan matrix instead of array
+
+Dragan Simic (6):
+      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for RK3399
+      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for RK3368
+      arm64: dts: rockchip: Remove ethernetX aliases from the SoC dtsi for RK3328
+      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for PX30
+      arm64: dts: rockchip: Add ethernet0 alias to the dts for RK3566 boards
+      arm64: dts: rockchip: Add ethernet0 alias to the dts for RK3588(S) boards
+
+Heiko Stuebner (6):
+      dt-bindings: arm: rockchip: Add Theobroma-Systems Jaguar SBC
+      arm64: dts: rockchip: add Theobroma Jaguar SBC
+      arm64: dts: rockchip: move rk3588 serial aliases to soc dtsi
+      arm64: dts: rockchip: add rk3588 i2c aliases to soc dtsi
+      arm64: dts: rockchip: add rk3588 gpio aliases to soc dtsi
+      arm64: dts: rockchip: add rk3588 spi aliases to soc dtsi
+
+Jagan Teki (2):
+      dt-bindings: arm: rockchip: Update edgeble-neu6 bindings
+      arm64: dts: rockchip: Use NCM6A-IO board for edgeble-neu6b
+
+Jimmy Hon (1):
+      arm64: dts: rockchip: add USB3 host on rk3588s-orangepi-5
+
+Johan Jonker (1):
+      arm64: dts: rockchip: add gpio alias for gpio dt nodes
+
+Lukasz Luba (1):
+      arm64: dts: rockchip: Add dynamic-power-coefficient to rk3399 GPU
+
+Sebastian Reichel (3):
+      arm64: dts: rockchip: add analog audio to RK3588 EVB1
+      arm64: dts: rockchip: add USB3 host to rock-5b
+      arm64: dts: rockchip: add USB3 host to rock-5a
+
+Trevor Woerner (1):
+      arm64: dts: rockchip: add gpio-line-names to rk3308-rock-pi-s
+
+shironeko (1):
+      arm64: dts: rockchip: add missing tx/rx-fifo-depth for rk3328 gmac
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  32 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |   4 +
+ .../boot/dts/rockchip/px30-engicam-common.dtsi     |   1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |   1 +
+ .../boot/dts/rockchip/px30-ringneck-haikou.dts     |   1 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |   1 -
+ arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts  |  58 ++
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi           |   5 +
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    |   1 +
+ .../boot/dts/rockchip/rk3326-anbernic-rg351m.dts   |  18 +-
+ .../boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi  | 478 +++++++++++
+ .../boot/dts/rockchip/rk3326-anbernic-rg351v.dts   |  44 +
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts |   1 +
+ .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dts  |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |   2 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |   1 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  10 +-
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |   1 +
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |   1 +
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi      |   1 +
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |   1 +
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |   1 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   5 +-
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts  |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      |   4 +
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |   1 +
+ .../dts/rockchip/rk3399-khadas-edge-captain.dts    |   4 +
+ .../boot/dts/rockchip/rk3399-khadas-edge-v.dts     |   4 +
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts  |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |   1 +
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi |   1 +
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   7 +-
+ .../boot/dts/rockchip/rk3399pro-vmarc-som.dtsi     |   1 +
+ .../boot/dts/rockchip/rk3566-powkiddy-rgb30.dts    | 154 +---
+ .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dts   |  38 +
+ .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi  | 875 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-powkiddy-x55.dts      | 926 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |   5 +-
+ .../boot/dts/rockchip/rk3566-radxa-cm3-io.dts      |   1 +
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |   1 +
+ .../boot/dts/rockchip/rk3566-soquartz-blade.dts    |   4 +
+ .../boot/dts/rockchip/rk3566-soquartz-cm4.dts      |   4 +
+ .../boot/dts/rockchip/rk3566-soquartz-model-a.dts  |   4 +
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi  |   1 -
+ .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts  |   4 -
+ .../boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts  |   6 +-
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  99 ++-
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     | 803 ++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  |   1 -
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   |   1 -
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   9 +-
+ .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |   2 -
+ .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |   1 -
+ .../boot/dts/rockchip/rk3588s-khadas-edge2.dts     |   1 -
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |   6 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |  10 +-
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |  32 +
+ 70 files changed, 3502 insertions(+), 196 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2068879603929361310==--
-
