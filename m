@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53DC9C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 12:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB3BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 12:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h5+9biPeorlqsTYFWDDCu5I+4fWsO64a5VkY0PDyhu0=; b=Ns2TgRBX5ams08
-	CdWn7FqMtBSQnI/2EUNyKHtaXo9DEqKqJ/lhLQ40NP1mX9RYfGSQvC8ELeAmfXy8hSx425FwvYmU8
-	ourJqMhOzM/CuN8vnqOH1+5FtFhdc7nYGIxXzDZ7sFQxFq1Z3Sd+j8M9nyqPsRhtSPgYPFxkg2/3s
-	5S1i53tMIoQBlTAQK2pmITK4Z7Ndc1XQ+ZGEmu9/Xzi0UdEDWETsiWpLLqR8UuOofSFea+RUEvQQ1
-	CM9UIGyDYU9p6ZBVNm/dWOTXIs4DFSlcaDnNZhbWRKkmJZ0aY09jPwscMApgGWtwqUL6PisvvuFTS
-	OSDYagTaObHypq1fERWw==;
+	List-Owner; bh=AD8y9hxb9AYrVYcXcFjFgVjjw5xRJ9++SyDtY7PGZVw=; b=W429UW178hTvwV
+	btHx1z4LwKhDsvCLO5Zb5PBmUbOHNID4tHb9sqrBt0D4FqBCJjQ4hwHFBQl11jX0CBUmqfZfFuv+u
+	1nJy45sgp2Trseu9DXDTMeGw8yf9i+emTHG6eZGbejo3BJBJq4xN6Cv3bod14mkpmbM8WpiC33wSn
+	Ggk4Bk9eQzkamXVdM2MXiAVUxUkCyWi5GWyhyancytlpVeVEh+UW85UT1Fd7h1o4u1cls4XKJfscC
+	QRfF/AeuRL6ayYpCnpvhbDnqqNk8tn8HL4eywpt+ylC8Sj4TXeuSc3z7wQ8kMpVCOdT+HopiXOmQO
+	a+sBnuxWiAhtCD0qHFPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD264-00Bi99-3C;
-	Tue, 12 Dec 2023 12:42:49 +0000
-Received: from m15.mail.163.com ([45.254.50.219])
+	id 1rD26I-00BiDe-12;
+	Tue, 12 Dec 2023 12:43:02 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD260-00Bi6r-21;
-	Tue, 12 Dec 2023 12:42:47 +0000
+	id 1rD26F-00BiBr-08;
+	Tue, 12 Dec 2023 12:43:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=nNmAy
-	t5R/FqSzYRKUKMJgqk+9Njbt4i+66funeH8Iu4=; b=GalmYYAIamECCi0CEbJUG
-	e/S4lOTB5L07QAHGXfCtkgPhWb0Pmg8sKIW7ntL8FBuvr9yGZG5hkDGM9bX/Irom
-	BAX1Al7JhiPj8pcvjjJyxpTv9ufBMxgtREP/HSpOHoDPL/kexqlW1T14hNBILZIn
-	B6l09uSXpZfEC1Vd1Ms1f4=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=e9peD
+	WR7QL1+BRJUfU0fLvjbdKGtIhqo6TIPfMq2gjE=; b=TfVn22Q4sVE0cZZYRY/qH
+	Tkgqk2IVgovP0QJjfUhGhmPLJ53v+B2ZuZuCpPYYgoQjr5iigIU1i7pdZuOThK+/
+	kKOqw4MJF2qzjVkUKkolNwhfSZHsHDVw2pkW8I560rLT6dMr1gZ+nZ0CbRTsw9r4
+	dOANIWl3gDF/fHRXt+ebwg=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g0-4 (Coremail) with SMTP id _____wD3H6gwVXhloBDrBA--.14812S2;
-	Tue, 12 Dec 2023 20:42:27 +0800 (CST)
+	by zwqz-smtp-mta-g2-3 (Coremail) with SMTP id _____wD3v70+VXhloaTiFQ--.18769S2;
+	Tue, 12 Dec 2023 20:42:41 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -46,23 +46,23 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	Andy Yan <andyshrk@163.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 1/5] dt-bindings: vendor-prefixes: Add Cool Pi
-Date: Tue, 12 Dec 2023 20:42:23 +0800
-Message-Id: <20231212124223.1897314-1-andyshrk@163.com>
+Subject: [PATCH v4 2/5] dt-bindings: arm: rockchip: Add Cool Pi 4B
+Date: Tue, 12 Dec 2023 20:42:37 +0800
+Message-Id: <20231212124237.1897378-1-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231212124202.1897238-1-andyshrk@163.com>
 References: <20231212124202.1897238-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3H6gwVXhloBDrBA--.14812S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JF13Jr1Uuw4UWr1rWF15Jwb_yoWfArb_Xa
-	1xAw1DZF43JF4Fgw4vyF4xG345Aw12kr9ru3WrtayDCF12yrZrGa97t345Zw1xCF43uas8
-	Crs3GrWDGrnrGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRAcTQUUUUUU==
+X-CM-TRANSID: _____wD3v70+VXhloaTiFQ--.18769S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtw4xJw18urWUJr1DJr4xWFg_yoWDuFgEka
+	4xZ3WruFyFvF909w4DAF48GryYkw47KF9rAF1rtF1DC3yDt39xta95t34SkFyxuF43urn3
+	Crs5JryDGFnxGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRAdb8UUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBnAFEXlghl9curgAAs+
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAFEXmVOA6bjOAAAsm
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_044245_061579_839CF865 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20231212_044259_459429_51C4D5B8 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,31 +80,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add vendor prefix for Cool Pi(https://cool-pi.com/)
+Add Cool Pi 4B, a SBC powered by RK3588S
 
 Signed-off-by: Andy Yan <andyshrk@163.com>
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ---
 
-(no changes since v1)
+(no changes since v2)
 
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Changes in v2:
+- change board compatible from "CoolPi 4 Model B" to "coolpi,pi-4b"
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index 309b94c328c8..ddbba46fcbad 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -294,6 +294,8 @@ patternProperties:
-     description: CompuLab Ltd.
-   "^congatec,.*":
-     description: congatec GmbH
-+  "^coolpi,.*":
-+    description: cool-pi.com
-   "^coreriver,.*":
-     description: CORERIVER Semiconductor Co.,Ltd.
-   "^corpro,.*":
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5deb66a5c7d9..11d03035f3db 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -95,6 +95,11 @@ properties:
+           - const: chipspark,rayeager-px2
+           - const: rockchip,rk3066a
+ 
++      - description: Cool Pi 4 Model B
++        items:
++          - const: coolpi,pi-4b
++          - const: rockchip,rk3588s
++
+       - description: Edgeble Neural Compute Module 2(Neu2) SoM based boards
+         items:
+           - const: edgeble,neural-compute-module-2-io   # Edgeble Neural Compute Module 2 IO Board
 -- 
 2.34.1
 
