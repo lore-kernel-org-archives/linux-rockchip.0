@@ -4,45 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A07FC4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E261C4167B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:05:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0zLhHSkoR6BnsGb2FAI8qHO4GeiaPcb4QZm20W2+tKA=; b=L8T8vUPb6x1zZ5
-	WzX0h2zjwFZ9y2pV/6tvkCo6nkZArHNzMvCgKzi/hMCFyRtPvX3PGp7HMPnRgxPsvYkB2aQ7R3Y9D
-	eSEtueQ+Z+d0RSbbEtWBuq6ilqeFCvPdIlTWJkDD3aoU+UnWOdtoKykpVoreU7/f1dGs25wHxIW3U
-	yM8TBRo274edyAr6iTMoU/Ce5hwuFr0wnlJOhFcONViheE3H5/dqTgGlR+bd9EFv77xQYUz6hI5Vv
-	7Z3udoBetGPP//12SsvldmVZ5YasRcud4Ef7GGVs0fSlz5LwZG6tZfSyoIvXRSULYO8spiPMQfEpK
-	3QypSL2652bdiVHlN2rw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TgNS/VRv8ggkyiriQ5MZLUCeUZ5vrDQcVTxskyJK0t8=; b=ZAUUmq1ICu/X/otFv09MlvzR9O
+	XWXwdaf9XPg2TrsT1yXU24PzZrfiWTHx+V05/1FIiR28xeWEaMYQjnYhFLCvxBPbFF6D7Jnau78Iu
+	DFBiVlkCOCqgdnn99V2Ocg3tXnVFaFRQNEWkng0w3zmWHPQKvhOBMLk1XoRwFLEPy6yZtXQvm6Gav
+	SHjO3450ckkiE3io5O7YO62HLeL/e/c8OUlZD/eMebU95iEaype23G4KAANiumHWVeYmNKiuCUzb2
+	6I16b14TfalUm5dUFCa/ZSRTkSu9Ohnu+F1pQ9V/TnVtURyR+IBvrMotYYTH65SNPqnmBRykKSUAA
+	QPbKousg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD9wD-00CmGk-2C;
-	Tue, 12 Dec 2023 21:05:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rD9wN-00CmKP-0N;
+	Tue, 12 Dec 2023 21:05:19 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD9wA-00CmFk-2w
+	id 1rD9wJ-00CmIF-38
 	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Dec 2023 21:05:08 +0000
-Received: from [194.95.143.137] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	Tue, 12 Dec 2023 21:05:17 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wF-0001Oy-5K; Tue, 12 Dec 2023 22:05:11 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rD9w2-0006qK-SQ; Tue, 12 Dec 2023 22:04:58 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.8 #1
-Date: Tue, 12 Dec 2023 22:04:58 +0100
-Message-ID: <2913962.e9J7NaK4W3@phil>
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wE-00FQEY-2C; Tue, 12 Dec 2023 22:05:10 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rD9wD-001snP-Ol; Tue, 12 Dec 2023 22:05:09 +0100
+Date: Tue, 12 Dec 2023 22:05:09 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	platform-driver-x86@vger.kernel.org,
+	linux-hardening@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-leds@vger.kernel.org, chrome-platform@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-staging@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-pwm@vger.kernel.org, greybus-dev@lists.linaro.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	asahi@lists.linux.dev, kernel@pengutronix.de
+Subject: Re: [PATCH v4 000/115] pwm: Fix lifetime issues for pwm_chips
+Message-ID: <20231212210509.focpb63fbmahqij3@pengutronix.de>
+References: <cover.1701860672.git.u.kleine-koenig@pengutronix.de>
+ <ZXM4CdJxg-XrYhkn@orome.fritz.box>
+ <20231208185033.e6ty2cajcfle6dgk@pengutronix.de>
+ <ZXbzcFTnDTKoZAta@orome.fritz.box>
 MIME-Version: 1.0
+In-Reply-To: <ZXbzcFTnDTKoZAta@orome.fritz.box>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_130506_948930_40E75829 
-X-CRM114-Status: UNSURE (   6.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231212_130516_005182_3BA9D480 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -54,49 +83,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2068879603929361310=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
 
-please find below a pull-request with some small Rockchip stuff.
-
-Please pull.
-
-Thanks
-Heiko
+--===============2068879603929361310==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gyt34nc3mm25zmmf"
+Content-Disposition: inline
 
 
-The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
+--gyt34nc3mm25zmmf
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-  Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
+Hello Thierry,
 
-are available in the Git repository at:
+On Mon, Dec 11, 2023 at 12:33:04PM +0100, Thierry Reding wrote:
+> On Fri, Dec 08, 2023 at 07:50:33PM +0100, Uwe Kleine-K=F6nig wrote:
+> > You don't need to touch all drivers because you didn't change struct
+> > pwm_chip::dev yet. (If you really want, you don't need to change that,
+> > but then you have some duplication as chip->dev holds the same value as
+> > priv->dev.parent in the end.)
+>=20
+> I don't think that's a problem. These are for two logically separate
+> things, after all.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-clk1
+How are they different? I'd say one is the initializer for the other and
+(ideally) unused after that. With that interpretation they are indeed
+different, but then it's ugly that the initializer keeps staying around.
 
-for you to fetch changes up to 721bf080f249ab2adcc4337abe164230bfb8594f:
+> Duplication can also sometimes be useful to simplify
+> things. There are plently of cases where we use local variables for the
+> same reason.
 
-  clk: rockchip: rk3568: Mark pclk_usb as critical (2023-12-05 10:45:55 +0100)
+local variables go away though after the respective function is left.
+chip->dev and its copy priv->dev.parent stay around for the full
+lifetime of the chip.
 
-----------------------------------------------------------------
-Two new pll rates and an additional critical clock on rk3568.
+> > > @@ -58,23 +60,24 @@ static struct pwm_chip *pwmchip_find_by_name(cons=
+t char *name)
+> > > =20
+> > >  static int pwm_device_request(struct pwm_device *pwm, const char *la=
+bel)
+> > >  {
+> > > +	struct pwm_chip *chip =3D pwm->priv->chip;
+> >=20
+> > With my approach getting the chip of a struct pwm_device is only one
+> > pointer dereference away. You need two.
+>=20
+> None of the functions here are called very often, so even if this isn't
+> optimized away it would hardly matter.
 
-----------------------------------------------------------------
-Chris Morgan (3):
-      clk: rockchip: rk3568: Add PLL rate for 115.2MHz
-      clk: rockchip: rk3568: Add PLL rate for 126.4MHz
-      clk: rockchip: rk3568: Mark pclk_usb as critical
+I'd say pwm_apply_state() at least matters. Also I think that making a
+slow path quicker is a good thing.=20
 
- drivers/clk/rockchip/clk-rk3568.c | 3 +++
- 1 file changed, 3 insertions(+)
+I wonder how we'll converge to an approach that can go into the
+mainline given that we both have our strong opinions.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--gyt34nc3mm25zmmf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmV4ywQACgkQj4D7WH0S
+/k4AOQf/Rn+1it6Pa2jcb+shcSHEefw76NASZ1jTJwzdnczaZca+4/TdY0/HLE/V
+27TLO93Qd9e4o0E4uFjg/T9KbZy+cu9WxiCJ9LgBEhgPaLIWe9opiDarsy2BNLJi
+e6lERFOmyBoG3USP7t/iEQn5C+0+gC6/pcPVWk8TJO/mc2kr8ioQRsaHtaE0AsX0
+hpZS0GH+ypW5d1saF+TMkSDV4QUzmTaXxsSDqG9/vnXhjln6wlriyIo2gJI2qQ6R
+gBrGVWoz8SnG3OjfGZwo9KhL+KPTbjIba4erb1KbE9j9Ul7c3xF/nA6GcTwU/IcQ
+6WQMUp7Ez5oG8txpknnsR9R2Iimimw==
+=APXJ
+-----END PGP SIGNATURE-----
+
+--gyt34nc3mm25zmmf--
 
 
-
+--===============2068879603929361310==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2068879603929361310==--
+
