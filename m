@@ -4,86 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DD16C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 03:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82ADFC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 07:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlc91PtxElgRRh93ZZ1R34wG/nQ/ssTaGHJL58ACT+4=; b=Ufs5+KNjLdS7Xe
-	hpat5yqyGgZSs4ULNwscMFGZUCD7kcxso3MBjTjs6Wrl8u/2iT13kyAxlmW5ebNo/2fp5jXD1QbR8
-	3Spw8N2styyxbB8FH81AAif86Ywppmq5sk174qnLNE6ybC+MHGQIex8NbKZKhDXIp+B5yXFLgYi8E
-	su8nGsHJCZjpZgIFne8Cey/OuJYk7orMMzYe40VkIP2+lk4k9rfCWj6+jvl910dupzkVfyywSGzfU
-	w+Lmovn32h6ZDT8nEkuRmG0M9OeEgW3xJF1nMXx9cwsxgkDX8qK6cNrotwwKOJMPVd7UqNGoHo6Js
-	WI2UesWOHIWoSwlddxdg==;
+	List-Owner; bh=Z8KZwSeYdezPleQ/L/UAqATAKkjeORmSfhbdhTvYaT8=; b=ReX9Ahp2+RWvQf
+	FCNd28pcIN6xJTw+qSYNY98VbjF9LpGnwYIZ/Bp6B8+G2yWhU6tOj87+O9wy9wlyj/ktH4xam/bTi
+	a6KYmH8idUZElhkbGY5Oc1dLIvlSAd36OcNna8txzUqSaPldFDZvmMPDoL4r5uwdeOOaRv17+jetP
+	hrbUtqlQI/NO5xYepcj9V8lGxn9sE6ENPFAcaWXMwJDMbqQaPuH2GmlEofu139Yyp6n856GEvno9Q
+	k0dwXiI+h8yFp5rRPHEatQ3gmDU8ERhz4MyVdSlSaFjhmHqpxACzluyuPiKewWgK3VK38Rb97k3kR
+	eagXYZyujlGlvUoWYKKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCted-00Ae60-0V;
-	Tue, 12 Dec 2023 03:41:55 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1rCxah-00Axjg-3C;
+	Tue, 12 Dec 2023 07:54:07 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCtea-00Ae4l-0i
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Dec 2023 03:41:53 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40c2c65e6aaso53167015e9.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 11 Dec 2023 19:41:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702352510; x=1702957310; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=otCq73PAP//VShNSkGXqD+y69yaTjz78g2LtzHfSpc0=;
-        b=QPT2edpy9HLZrdDeCWSE3yssrj8se+xmXj/zGD4B4u8n5Yy4X/c2itOc2DhGkPMPrj
-         +SHZPq477IA75OAMf1s+XsvdffX3bNBR7ZtmaWXh6o09IqSg3j0TiSkG6tg6xUPxLaFc
-         taQsTZ14fEDO1x5j4NvA5LGFfHbS7vXSXjmgjT4U8QFvv9IqbGi0k84br2x0a9eCku05
-         YebbLu7enuRmaebwozEF+ScOOEXEb9tQMyUTVQ9URzREtYtTHCtAg2fDXg46vVu2Bcib
-         ayUvEi/BbYTTo2qTqC/lluooxtzRY2HjIkhA3xnAxtblw/fqf9iHgs7UWi+N1jb6C89L
-         dENw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702352510; x=1702957310;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=otCq73PAP//VShNSkGXqD+y69yaTjz78g2LtzHfSpc0=;
-        b=dbgQAgg/uaq7jSePEG/RA9UxXYywKQTwU6YY8v/5asR9kSqf73tUpm8iAzX5w2JxEb
-         oQpJGGL277PPeFkMg/u8WK4pSaYLZKq3woDx7+zmnuWFGoqYhgrBlYpgJhOLmVP1TtKe
-         qg5FlWRlPLyBLpecaD0y4gtUW6Ml2bQzqsvr/+7XDidaMstheg5d3AeyXjEPKPZX57j+
-         qOR5ItAcJf7RvvkFQkKcOPR8LYpnpY2flMFK94ktqcAQnOfocm9RdRkM1RBLL7O8RL77
-         tqXbSdoVmxbisnXeFlRIdzmD959cocUzDYJVoVSDxyH/zUsZXBD8s68X57gW2Pag7njE
-         9FZA==
-X-Gm-Message-State: AOJu0Yzo4burqe3GWXfcbBR6K30ZaU49wdVAhfqjrz+TEpN5/sAtciBZ
-	6ObJXScIDuAG+0vP51bZ/5NmUQ==
-X-Google-Smtp-Source: AGHT+IHF+JVx1cCLIPXYbQFJMEmp4zrThkoHJA41ehZZfki9vIk22eEH5YgFpqVVdutmj6nuh8Nxiw==
-X-Received: by 2002:a05:600c:2296:b0:40c:6bf:a924 with SMTP id 22-20020a05600c229600b0040c06bfa924mr2583480wmf.78.1702352510032;
-        Mon, 11 Dec 2023 19:41:50 -0800 (PST)
-Received: from [192.168.2.107] ([79.115.63.75])
-        by smtp.gmail.com with ESMTPSA id kw20-20020a170907771400b00a1dc4307ed5sm5566217ejc.195.2023.12.11.19.41.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Dec 2023 19:41:49 -0800 (PST)
-Message-ID: <fe0a16e9-a1f9-424e-a06d-f717f65e0fd7@linaro.org>
-Date: Tue, 12 Dec 2023 03:41:48 +0000
+	id 1rCxac-00AxhN-24;
+	Tue, 12 Dec 2023 07:54:04 +0000
+From: Dragan Simic <dsimic@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1702367636;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=p5/1ag4QGZlOFVXihLy+IHgakjahzXcUBXT7rx+5BHA=;
+	b=yfRsNPYJVE3lzFnNXtBSN8+BZ42R5enkWawK/0JJkFgfkWoxnvDTeGIXHMAkU02jN37A6x
+	atcnX5OXJiA4o2A60iDaL3Faye6wy3Eywjwe0UxqMYcRM8pozMuWmZGgaNdfyiwRvqIJ8m
+	d6q+EJBvr1Di9qtf+IAp2ninirZYU5kq863PjAcYKabmGXSUG9xwjMeJ8uVLfLuwMvz5Aq
+	oHmVgYZTOacH8zAL20irwIhQ7Z5ejwJiWpyBSJgZwv7+THiz83SiFmIpOIqc1ALg997nl1
+	f9Q80S8PwymA259Sm5qf4VvSLQVo0ZB/5Ied4mgONpWrOuZBFC1XcyMC874Oiw==
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Subject: [PATCH 4/4] arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for PX30
+Date: Tue, 12 Dec 2023 08:53:51 +0100
+Message-Id: <0d9da8959b4f567622676c34b5feb74c49489554.1702366958.git.dsimic@manjaro.org>
+In-Reply-To: <cover.1702366958.git.dsimic@manjaro.org>
+References: <cover.1702366958.git.dsimic@manjaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] mtd: rawnand: rockchip: Add missing title to a kernel
- doc comment
-Content-Language: en-US
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Pratyush Yadav <pratyush@kernel.org>, Michael Walle <michael@walle.cc>,
- linux-mtd@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- linux-arm-kernel@lists.infradead.org,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>
-References: <20231211150704.109138-1-miquel.raynal@bootlin.com>
- <20231211150704.109138-2-miquel.raynal@bootlin.com>
-From: Tudor Ambarus <tudor.ambarus@linaro.org>
-In-Reply-To: <20231211150704.109138-2-miquel.raynal@bootlin.com>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_194152_278907_E56D31F1 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20231211_235403_196441_92D79185 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,32 +73,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Not all supported boards actually use the PX30's built-in (G)MAC, while the
+SoC TRM and the datasheet don't define some standard numbering in this case.
+Thus, remove the ethernet0 alias from the PX30 SoC dtsi file, and add the same
+alias back to the appropriate board dts(i) files.
 
+This is quite similar to the already performed migration of the mmcX aliases
+from the Rockchip SoC dtsi files to the board dts(i) files.
 
-On 12/11/23 15:07, Miquel Raynal wrote:
-> All fields of the nfc_cfg structure are documented but the name, which
-> leads to a W=1 warning. Add a title.
-> 
-> Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
-> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+---
+ arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi | 1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts             | 1 +
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts | 1 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi                | 1 -
+ 4 files changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by Tudor Ambarus <tudor.ambarus@linaro.org>
-> ---
->  drivers/mtd/nand/raw/rockchip-nand-controller.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-> index ab1a9e8687e0..7baaef69d70a 100644
-> --- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-> +++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-> @@ -108,6 +108,7 @@ struct rk_ecc_cnt_status {
->  };
->  
->  /**
-> + * struct nfc_cfg: Rockchip NAND controller configuration
->   * @type: NFC version
->   * @ecc_strengths: ECC strengths
->   * @ecc_cfgs: ECC config values
+diff --git a/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi b/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+index 3429e124d95a..5b4e22385165 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+@@ -7,6 +7,7 @@
+ 
+ / {
+ 	aliases {
++		ethernet0 = &gmac;
+ 		mmc1 = &sdmmc;
+ 		mmc2 = &sdio;
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index c1bbd555f5f5..0a90a88fc664 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -14,6 +14,7 @@ / {
+ 	compatible = "rockchip,px30-evb", "rockchip,px30";
+ 
+ 	aliases {
++		ethernet0 = &gmac;
+ 		mmc0 = &sdmmc;
+ 		mmc1 = &sdio;
+ 		mmc2 = &emmc;
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+index 7d4c5324c61b..16798eb77077 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts
+@@ -13,6 +13,7 @@ / {
+ 	compatible = "tsd,px30-ringneck-haikou", "rockchip,px30";
+ 
+ 	aliases {
++		ethernet0 = &gmac;
+ 		mmc2 = &sdmmc;
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 42ce78beb413..d0905515399b 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -20,7 +20,6 @@ / {
+ 	#size-cells = <2>;
+ 
+ 	aliases {
+-		ethernet0 = &gmac;
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
 
 _______________________________________________
 Linux-rockchip mailing list
