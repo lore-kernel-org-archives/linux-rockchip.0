@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF07AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 00:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18CC6C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 03:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rSHFGkETJhDTEDCS8grzVwwAt+Wx80OewyDbTdhY5e4=; b=MUKZdUhyG3HOGV
-	F92LGTUCDRlOWnWNpukWm3jk1d9vAt1NqeZN/jTG8q6EjKdigeRT2l4r7z2GJDTMzAdF0Gbo8lMSj
-	SlyatJJVIqTGv34D7pYXdsBnqDB+wgu20mo2FJ6dOOG8oZeEcRZQU1tt39RjZHK1YguGAsKwmiFK1
-	uaUJb75Lj91MMSPHRaHEXfEbCjTbDE3Hqg0KH9iQhX4+ngjViVIVqe5u/0pXfLja2YO6SlooRFEhf
-	Y4yE/VBVEeUBpcBVP7wPO3nAD1RdBXoXsxCEHkpOnb7atL7OnlfXUqDXosb7NEAv1zE+ip2+xZGxs
-	sdrc/ej+N/E4eWgMZSfw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=E7mXh2KDCl/43CSfSwKx9eD/RQBaS/I4Cra7a1px7Qk=; b=AYk1hBp7zmJQSC
+	3xeAKVu3UBL+kvsLCzPPOb6rOkWgdXjpiHHbfssS9k3wjF6DRb1H3gjuA3YqyGrVO6EPBaMZ86ylw
+	BYY1qD70MOYoLmA4ycF6A/l81AqNwiGx/I3F2Dp0x23iliIhJ45PuCG4OJQfPmWtxf8QgUlQOuf+a
+	y1A0mTJlsBAda5bb/Iab9VAkl6hwQA9pcTMNCXhzQR1zJqSAviG8Gk9z+i7SA88V7vOovDgn1nA/i
+	xhZisNxrPx59ljhD+ZKnPLwaIVcIQ0YAEprGzj++eZDhgjH7/BfNNr7GjlyLdopTanisfPRU7rwKH
+	bteACEVexNcrFhlRydXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCr5s-00APei-21;
-	Tue, 12 Dec 2023 00:57:52 +0000
-Received: from m15.mail.163.com ([45.254.50.219])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCr5o-00APdu-3D;
-	Tue, 12 Dec 2023 00:57:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ALA6E
-	1kxgqoyYdK+X/tV01Cv4nS2fQCV1ZSR7WI680E=; b=FStsEO0uHLWJqwximzbpg
-	kRqRlujuNe6619REWsYePZpQ1B5Cv+psr0Gtv2/FKSQhuAcWEE1hFCb3RFGdHhY+
-	fhCFztfy8uxsMWM9uogzwTROQidBzm2wdG9MYizO+tABPLpRfzdsc0UCLzwpAezZ
-	ZqijZ/n1qZRMdLtZpr1DDs=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g1-3 (Coremail) with SMTP id _____wDnLx3nr3dlgINjCQ--.23988S2;
-	Tue, 12 Dec 2023 08:57:15 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: iommu@lists.linux.dev
-Cc: heiko@sntech.de,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	robin.murphy@arm.com,
-	will@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2] dt-bindings: iommu: rockchip: Add Rockchip RK3588
-Date: Tue, 12 Dec 2023 08:57:10 +0800
-Message-Id: <20231212005710.1837066-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1rCtdI-00AdsE-27;
+	Tue, 12 Dec 2023 03:40:32 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rCtdE-00AdqE-1f
+	for linux-rockchip@lists.infradead.org;
+	Tue, 12 Dec 2023 03:40:30 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-54cc60f3613so6707114a12.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 11 Dec 2023 19:40:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1702352424; x=1702957224; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1QeTvXs/spJN+MKNWgyjyZ+WcgnVS3XBxnAHa/Q8K5Q=;
+        b=pcVOUZW31Po1O3+r+2glayjXbg+WsZEh0AiFxI0ToPfknrSePmT4d1dFAwc9myATMp
+         gKulf1YPCEsl0ct4eCG8740foHHSgQClBgnVusrIMu+a6MzKChjt6Th/1CDmlrvVbiPm
+         MZ298rC80rEm08jwowT+9k7yNkWKS/7f2vxXmlnx5BLuLKDSAo3gLkC051ti78JmMFpx
+         GvlgYv5wEZmY6J+Wz6VxyIQwwRCRBSMvFEkdWTs7SSauqqbnpQTlFufNkUwfKFDCNFFT
+         WSopz9m6zP6mnD28BaMTZ4QhfpaBhJw0HQgKL0emAu7kTqrQAKwldl4aliKdj7jxchsr
+         ttDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702352424; x=1702957224;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1QeTvXs/spJN+MKNWgyjyZ+WcgnVS3XBxnAHa/Q8K5Q=;
+        b=EFVZx8We0fsurF02QJw9LziCbQcrwnTO2jv105nkFBS1uPw9Bvq+w1vT9s+E5iU9eC
+         8cf7JsMe5YVyzR58RY8+LDSTnHVpKDEdpVSBpjWwBYjMWmGhQ668oMT6g+40+pxatOSo
+         Spn1Kn8B3MlLYiIGHtYhHiWR5xQdG5XamUF7fGc6U5O2K+IFQvrP8JvAerRdVYWN11VF
+         6K4XM0USWOAhhHFRqSaOdKUHXKlZg7H+iEBfdJaDImrazXtoP2/UnI3ODyePSQBKFFJS
+         2p7W725rhX/X3RnlJwQ29lL1jIy++NJ1rodKW/VYRUQEYNYXE27db9ROf8eiHniXlqCN
+         JaKg==
+X-Gm-Message-State: AOJu0YxD17OrGN7c9960g3qk0YXvfD4j6GhswIRryA5sOvQUeibia1Ny
+	S0ZIV9+r0x5gMf7/Ki2xEZV80CgcV7QAH+xaQcg=
+X-Google-Smtp-Source: AGHT+IHqC3V6IeSxKMs1C96jTf0qQIRK+0T0n3uSY/6VaxnPBs5Z/6gKg6yhQdvLSvYe0RiH1uva6A==
+X-Received: by 2002:a17:907:961f:b0:a1d:530c:af06 with SMTP id gb31-20020a170907961f00b00a1d530caf06mr3440201ejc.65.1702352424071;
+        Mon, 11 Dec 2023 19:40:24 -0800 (PST)
+Received: from [192.168.2.107] ([79.115.63.75])
+        by smtp.gmail.com with ESMTPSA id kw20-20020a170907771400b00a1dc4307ed5sm5566217ejc.195.2023.12.11.19.40.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 11 Dec 2023 19:40:23 -0800 (PST)
+Message-ID: <611d17e0-c965-4218-9152-5bd93f92ed45@linaro.org>
+Date: Tue, 12 Dec 2023 03:40:21 +0000
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnLx3nr3dlgINjCQ--.23988S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7JF15GFyxXF45Jr1DGF43GFg_yoW8JF45pF
-	srCryDXFyxGw1fWa9rtFn3Cr45tr4DAa1jgryaga17WFn8ta45GrnY9rn8ZF1DWFW8AFW7
-	ua9rurW5A3yavrUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jrcTPUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBBEXmVOA5nBygAAsY
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] mtd: rawnand: rockchip: Rename a structure
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Pratyush Yadav <pratyush@kernel.org>, Michael Walle <michael@walle.cc>,
+ linux-mtd@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel test robot <lkp@intel.com>
+References: <20231211150704.109138-1-miquel.raynal@bootlin.com>
+Content-Language: en-US
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+In-Reply-To: <20231211150704.109138-1-miquel.raynal@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_165749_455202_90F55714 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231211_194028_610705_E7CFE76A 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +98,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
 
-Add a Rockchip RK3588 compatible
 
-I split it from the vop2 patch series as suggested by Heiko[0]
+On 12/11/23 15:07, Miquel Raynal wrote:
+> Robots are unhappy with the ecc_cnt_status structure because the kernel
+> doc says it should be called rk_ecc_cnt_status. In general, it is
+> considered a better practice to prefix all symbols in a file with the
+> same prexif, and thus it seems more relevant to rename the structure
+> rather than changing the kernel doc header.
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202312102130.geZ4dqyN-lkp@intel.com/
+> Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
+> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by Tudor Ambarus <tudor.ambarus@linaro.org>
 
-[0]https://patchwork.kernel.org/project/dri-devel/patch/20231207080235.652719-1-andyshrk@163.com/
-
----
-
-Changes in v2:
-- Add maintainers for the iommu subsystem to cc list
-
- .../devicetree/bindings/iommu/rockchip,iommu.yaml     | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-index ba9124f721f1..621dde0e45d8 100644
---- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-@@ -19,9 +19,14 @@ description: |+
- 
- properties:
-   compatible:
--    enum:
--      - rockchip,iommu
--      - rockchip,rk3568-iommu
-+    oneOf:
-+      - enum:
-+          - rockchip,iommu
-+          - rockchip,rk3568-iommu
-+      - items:
-+          - enum:
-+              - rockchip,rk3588-iommu
-+          - const: rockchip,rk3568-iommu
- 
-   reg:
-     items:
--- 
-2.34.1
-
+> ---
+>  drivers/mtd/nand/raw/rockchip-nand-controller.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+> index 596cf9a78274..ab1a9e8687e0 100644
+> --- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
+> +++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+> @@ -98,7 +98,7 @@ enum nfc_type {
+>   * @high: ECC count high bit index at register.
+>   * @high_mask: mask bit
+>   */
+> -struct ecc_cnt_status {
+> +struct rk_ecc_cnt_status {
+>  	u8 err_flag_bit;
+>  	u8 low;
+>  	u8 low_mask;
+> @@ -144,8 +144,8 @@ struct nfc_cfg {
+>  	u32 int_st_off;
+>  	u32 oob0_off;
+>  	u32 oob1_off;
+> -	struct ecc_cnt_status ecc0;
+> -	struct ecc_cnt_status ecc1;
+> +	struct rk_ecc_cnt_status ecc0;
+> +	struct rk_ecc_cnt_status ecc1;
+>  };
+>  
+>  struct rk_nfc_nand_chip {
 
 _______________________________________________
 Linux-rockchip mailing list
