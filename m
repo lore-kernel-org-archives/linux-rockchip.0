@@ -4,44 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1385CC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18206C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=B1AF2+5NRAj94nL3pJns1gfEc8hjOS6dadxHXj5fSrM=; b=rIncnVDh/+Xykf
-	wEwQvaaMlb3v/O3xBM7/VDjeoqEP4X7WS37AOpL9+tberPO378etlmkzdbuf8aFWPddV+bf28nPeo
-	1UEFS3/2eLc4TO3iLDSreMN124c4L80w7rTkB/Mnb2wpetj/e6CfhYy2n2B2LLZIwLEuneHxGX2MM
-	xk9+07epZtFRGdSKo3XK+AHezMXF9k2AWkN84HqHnK0xm1TulIb0ihx5qo3AqK+fJ2tAK6MC++DAd
-	Mi6muNBsf7d15e0Yua40XVC9SVaAreszPHfPE6J62Us/z/UAHbOcSZ8MuKnI0fISHk4a3k6gKtXgj
-	Nrx1FhQzlm5iEu1rNyrA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NmyvfeSvBo7kKSRwnz1XSIHuDwUdM7tnpi2iZ6iB+fM=; b=JXVTCQfsqXUb5vF/1j+Iz/ZMOL
+	6+CgAw0X/obUVE8cFn7GKrXBGNajrepgeU3/XD9Fpf8TULmd4L1xDqpDD+Kk7MIeY/LYE5pTMEf6r
+	KcGNBslPSGSk3Gr5a8WTqjs4Zipjr2KWuS3bV7J8YZjm31MbGjc79D97iuF+rfPukhn2vthkUoHdO
+	yI/ZXIpZyHC9PgTYvZzM496IAmKv4B19w4ixUVfhW/vdZq8hIbv2vh9hJ1im3trEfaz1R1hQQcsXP
+	PBZPJkxej4Tqx73UpfhtsFUSiH6lsu7yW/4Rb7gib5ULR8NwdI6EKdTmeyp46OCRYLjbBgJ2or/fH
+	V0qKfb8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDANz-00CpCv-0X;
-	Tue, 12 Dec 2023 21:33:51 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rDAgH-00CrqO-0m;
+	Tue, 12 Dec 2023 21:52:45 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDANw-00CpCJ-2x;
-	Tue, 12 Dec 2023 21:33:50 +0000
-Received: from [194.95.143.137] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rDANv-0007Bn-Ml; Tue, 12 Dec 2023 22:33:47 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts32 changes for 6.8 #1
-Date: Tue, 12 Dec 2023 22:33:47 +0100
-Message-ID: <3197878.5fSG56mABF@phil>
+	id 1rDAgD-00Crpi-1r;
+	Tue, 12 Dec 2023 21:52:43 +0000
 MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1702417958;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=L4O0xLTuW49hcnRZ6oXP9tZLQjMz8O4O8wL9GnqPeFA=;
+	b=aL6LoBetuv5N4jVCYP5te9l4WA27jUJVjQXU2nQ7jO70NyNhsaoauPpCdAQohWKI7IZUU5
+	pzGcTN3tNVes4w6cK72ICDQBp3/vwsG4qSdCzfwHvGVducJQbqCmqa8ae3HiJfpL/IJoEX
+	sxk46DYP7hjJFNprAuVIVG4Qjny1KY3EM86tRkFIivWgzEFOa6CQD8qY3n0IoNlnLUVBXM
+	oXbWNVI7/267z3cAdGhbJrK2i7uUCZHuArF1QUpLJSo7U7im8m5xdYrNHomWTDcLxAaejV
+	NCTm/k/WUtHgCFjgpqNNDTnNHI1gP76HBzxBxJW9bAxrpotk3/K+EPSAFdLvOw==
+Date: Tue, 12 Dec 2023 22:52:38 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org
+Subject: Re: [PATCH 0/4] Remove ethernetX aliases from the SoC dtsi for
+ RK3399, RK3368, RK3328 and PX30
+In-Reply-To: <170241214697.534713.17361998299651815805.b4-ty@sntech.de>
+References: <cover.1702366958.git.dsimic@manjaro.org>
+ <170241214697.534713.17361998299651815805.b4-ty@sntech.de>
+Message-ID: <953de15233be59ae1b3bf69e0d2e7474@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_133349_013798_D41108AF 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20231212_135242_093991_4FC4EC69 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -53,94 +69,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
+On 2023-12-12 21:16, Heiko Stuebner wrote:
+> On Tue, 12 Dec 2023 08:53:47 +0100, Dragan Simic wrote:
+>> Unlike for the I2C buses, GPIO lines and UARTs, the Rockchip SoC TRMs 
+>> and
+>> datasheets define no numbering for the built-in GMAC(s) or MAC(s), if 
+>> there
+>> are more than one found in the particular Rockchip SoC.
+>> 
+>> Moreover, not all boards or devices based on these SoCs actually use 
+>> the
+>> built-in GMAC(s) or MAC(s).  Thus, let's remove the ethernetX aliases 
+>> from
+>> the SoC dtsi files and add them back to the appropriate board and 
+>> device
+>> dts(i) files.  See also [1] for the initial discussion.
+>> 
+>> [...]
+> 
+> Applied, thanks!
+> 
+> [1/4] arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi 
+> for RK3399
+>       commit: 8030063ca9b019f9dfb90a654f557d8bb15a97a5
+> [2/4] arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi 
+> for RK3368
+>       commit: 7aab60df473c70f74880267500884b12151b160b
+> [3/4] arm64: dts: rockchip: Remove ethernetX aliases from the SoC dtsi
+> for RK3328
+>       commit: 20a9a7667af6b11b7369073d0186d9c92e52db04
+> [4/4] arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi 
+> for PX30
+>       commit: a69907a915e4c15bf7e632cd324ec5c3e38c3afc
 
-  Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-dts32-1
-
-for you to fetch changes up to 569b26af7919c15a8ce231b4fae29cfbd811f144:
-
-  ARM: dts: rockchip: add hdmi-connector node to rk3036-kylin (2023-12-12 20:38:36 +0100)
-
-----------------------------------------------------------------
-New boards are the Geniatech XPI-3128 (RK3128), Sonoff iHost (rv1109)
-
-One "new" soc is the rv1109 which is a two-core variant of the rv1126
-and everything else is identical.
-
-Lots of love for the old rk3128 (power-domains, gpu, gmac, usb) and
-rv1126 (uart pins, i2c2 special case) and rework of aliases to have
-core busses that are hard-numbered in boards and documentation centrally
-in the dtsi, but the per board aliases in the boards (ethernet).
-
-Plus the rk3036 got a yaml hdmi binding which required some small fixes.
-
-----------------------------------------------------------------
-Alex Bee (14):
-      dt-bindings: arm: rockchip: Add Geniatech XPI-3128
-      ARM: dts: rockchip: Add sdmmc_det pinctrl for RK3128
-      ARM: dts: rockchip: Add Geniatech XPI-3128 RK3128 board
-      ARM: dts: rockchip: Add USB host clocks for RK3128
-      ARM: dts: rockchip: Add dwc2 otg fifo siztes for RK3128
-      ARM: dts: rockchip: Make usbphy the parent of SCLK_USB480M for RK3128
-      ARM: dts: rockchip: Add gmac node for RK3128
-      ARM: dts: rockchip: Enable gmac for XPI-3128
-      ARM: dts: rockchip: Add power-controller for RK3128
-      ARM: dts: rockchip: Add GPU node for RK3128
-      ARM: dts: rockchip: Enable GPU for XPI-3128
-      ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
-      ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
-      ARM: dts: rockchip: Move uart aliases to SoC dtsi for RK3128
-
-Johan Jonker (3):
-      ARM: dts: rockchip: add gpio alias for gpio dt nodes
-      ARM: dts: rockchip: fix rk3036 hdmi ports node
-      ARM: dts: rockchip: add hdmi-connector node to rk3036-kylin
-
-Tim Lunn (7):
-      ARM: dts: rockchip: Add alternate UART pins to rv1126
-      ARM: dts: rockchip: Serial aliases for rv1126
-      ARM: dts: rockchip: Add i2c2 node to rv1126
-      ARM: dts: rockchip: Split up rgmii1 pinctrl on rv1126
-      ARM: dts: rockchip: Add rv1109 SoC
-      dt-bindings: arm: rockchip: Add Sonoff iHost
-      ARM: dts: rockchip: Add Sonoff iHost Smart Home Hub
-
- .../devicetree/bindings/arm/rockchip.yaml          |  12 +
- arch/arm/boot/dts/rockchip/Makefile                |   3 +
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts        |  17 +
- arch/arm/boot/dts/rockchip/rk3036.dtsi             |  17 +-
- arch/arm/boot/dts/rockchip/rk3066a.dtsi            |   5 +
- arch/arm/boot/dts/rockchip/rk3128-evb.dts          |   5 -
- arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts     | 425 +++++++++++++++++++++
- arch/arm/boot/dts/rockchip/rk3128.dtsi             | 185 +++++++++
- arch/arm/boot/dts/rockchip/rk322x.dtsi             |   4 +
- arch/arm/boot/dts/rockchip/rk3288.dtsi             |   9 +
- arch/arm/boot/dts/rockchip/rk3xxx.dtsi             |   4 +
- arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts |  21 +
- arch/arm/boot/dts/rockchip/rv1109.dtsi             |  23 ++
- .../boot/dts/rockchip/rv1126-edgeble-neu2-io.dts   |   2 +-
- arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     |  72 +++-
- arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts |  29 ++
- .../arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 404 ++++++++++++++++++++
- arch/arm/boot/dts/rockchip/rv1126.dtsi             |  21 +
- 18 files changed, 1236 insertions(+), 22 deletions(-)
- create mode 100644 arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rv1109.dtsi
- create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
-
-
-
+Great, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
