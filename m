@@ -4,41 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 401F4C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 07:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA27C4167D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 07:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PJMeDl9DZ7I+kUA4F0ygDakKUIP/vDKH2vR1c/zYzZ8=; b=HJLG35dAjKlgkj
-	aJ3Ju+Q/VXiKruUXvKf+DKAEIVKCaljKBhNN1FY541q7a/+K01ZMK8dts6nRWTl47ycWzZxYXDghX
-	ZSeQtSZGtzj7uusewTGuka5ykzEh5ChpNDx+EpfQY9xDW0sgSAxA9EpRDbq1cJjskLxFAhLmer2ww
-	9uop/pIn8bQdpxihldKHyCSeWM+8OjOslktFAyCvw7gsdSp6XFd134eqVUcckf1qLo/Om31OK6PF2
-	48ekYt2+8soRquHUEfbIUWczAjMwV9ebuCvOBzBR2FulOPhx6x//LqmB9V3c/j4b3d0gczstLEiPu
-	suypQPpd5R0kXx5w/74Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=j6/nsEiMfE2PBpqBh/rp5wAS1ijkCL4jdY6yQ0q0wnE=; b=eTM2NEyvXSya6c
+	0EvOHyrJlTDwQO8G4mJNfWxWvRqVkUKkElkwRlhuqEySLYrjvHhwODAS46hYTZRGSiSqH8QG324IQ
+	DNblYkmjSBT0p6FZKZQiQlSJuXyVGUs2Mo5DVzoK2PzVDe4qJepBCA2SoQCqFtCirIwTfN40vEehI
+	6m+gHu1UWr1BSEp4FP/QvNH2YADhWl9a60/REBwYj9jkPtMd7JRIcOe4dfYJiZMVZ0o0dP5iXZTnI
+	L33AgHfIndRfAbm4S843Bhwo0/7vrXtDKTjAWj81OAhq3RSmiF1SScxwFHj25KVSSWW4uCFpis0CO
+	ZvNQOFyPQLB4bIi9jTcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCxaq-00AxpI-1z;
-	Tue, 12 Dec 2023 07:54:16 +0000
+	id 1rCxai-00Axjl-1U;
+	Tue, 12 Dec 2023 07:54:08 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rCxac-00AxhM-2A;
-	Tue, 12 Dec 2023 07:54:06 +0000
+	id 1rCxac-00AxhH-22;
+	Tue, 12 Dec 2023 07:54:04 +0000
 From: Dragan Simic <dsimic@manjaro.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1702367635;
+	t=1702367633;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+SP4plXsfIblNhwe/TWzlvhS4foBk7zGd6DNr6YG1w0=;
-	b=AMOyMRqPvgnFmd3tSPnWyTpkWcvAycFeaoE7mGm4qUllgbAZPWI/EtBjM9VFWEmxuYGFSP
-	j5sKfhLDQztHZmI7DhQV4cVYv0JmmVFeJeSo0LQFg30XrgqPwN9Cj7MJgtNwDYn3E1UWkL
-	YsZJnW1NQ5IMQQOENXi3fdmn2ijIWmw3zwNol7vAHd6BZyWtJAhcjoguYHF3fHM3xpv+qW
-	HJclzKZiH5EtfdIP1iIsbskBUDqoWLkjWUWlB+eigEAbDnFZJ0Bt5MThNCqb/w6BgQ099u
-	h9W0jh9CoDxkh/aPvEhouVuT6C0MfyVstNZ82ekMmKiesJyysRH4NLvckLgsng==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=GQ4f8+gg0gRtP47ZKqPupgOZu+elqk+j6WeCTAxMuhk=;
+	b=NH8DvxEXuWGrv9wFR0S1uzf2/1eBmqolKzGyLH9P/f80ijf3FEBl+DSrMYDp51+e7/5oIa
+	lcdc0K9b0Q1RmC7rQDVxYo6/T0vOT2hj02BQZ8KqpLY4ONCbKxXxQwSq9ESM1zLb3YaVbk
+	VOOp5Mh8YsQpCR8joUDg6JICyhyVZ/5unyXj8jS57NxVXx6jHyad1xTBI3TTVgpBhym62N
+	pXjaEx0JxFXyRWhv+y+hBWFijXcQTC0fiIs+oz5MoJIuNYiPeRC9PBr5ea3IB5B5S9Kaoh
+	zfbCmux0Zf2vGHORazWuTFwbrJvujMt1hhE314zg18ZmjwchaUwat7PqCg5VIA==
 To: linux-rockchip@lists.infradead.org
 Cc: heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
@@ -46,17 +45,16 @@ Cc: heiko@sntech.de,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	conor+dt@kernel.org
-Subject: [PATCH 3/4] arm64: dts: rockchip: Remove ethernetX aliases from the SoC dtsi for RK3328
-Date: Tue, 12 Dec 2023 08:53:50 +0100
-Message-Id: <0c14f2e354d32f5d45c718ce16643553ca72f6a5.1702366958.git.dsimic@manjaro.org>
-In-Reply-To: <cover.1702366958.git.dsimic@manjaro.org>
-References: <cover.1702366958.git.dsimic@manjaro.org>
+Subject: [PATCH 0/4] Remove ethernetX aliases from the SoC dtsi for RK3399, RK3368, RK3328 and PX30
+Date: Tue, 12 Dec 2023 08:53:47 +0100
+Message-Id: <cover.1702366958.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231211_235403_206590_BA2746A6 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20231211_235403_201470_35017DD9 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,140 +71,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Not all supported boards actually use the RK3328's built-in GMACs, while the
-SoC TRM and the datasheet don't define some standard numbering in this case.
-Thus, remove the ethernet0 and ethernet1 aliases from the RK3328 SoC dtsi file,
-and add the same alias back to the appropriate board dts(i) files.
+Unlike for the I2C buses, GPIO lines and UARTs, the Rockchip SoC TRMs and
+datasheets define no numbering for the built-in GMAC(s) or MAC(s), if there
+are more than one found in the particular Rockchip SoC.
 
-These changes also touch one RK3318-based board dts, because it actually
-depends on the RK3328 SoC dtsi and enables one of the GMACs.
+Moreover, not all boards or devices based on these SoCs actually use the
+built-in GMAC(s) or MAC(s).  Thus, let's remove the ethernetX aliases from
+the SoC dtsi files and add them back to the appropriate board and device
+dts(i) files.  See also [1] for the initial discussion.
 
 This is quite similar to the already performed migration of the mmcX aliases
 from the Rockchip SoC dtsi files to the board dts(i) files.
 
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts          | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts               | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts              | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts       | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts           | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts        | 2 ++
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts           | 1 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi                 | 2 --
- 9 files changed, 9 insertions(+), 2 deletions(-)
+The correctness of the patches in this series was verified by comparing the
+contents of the compiled dtb files before and after applying the patches.
+All of the affected dtb files checked out fine.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-index 1deef53a4c94..c7b1862fca6a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -9,6 +9,7 @@ / {
- 	compatible = "zkmagic,a95x-z2", "rockchip,rk3318";
- 
- 	aliases {
-+		ethernet0 = &gmac2phy;
- 		mmc0 = &sdmmc;
- 		mmc1 = &sdio;
- 		mmc2 = &emmc;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-index 40bf808642b9..824183e515da 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-@@ -9,6 +9,7 @@ / {
- 	compatible = "azw,beelink-a1", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
- 		mmc0 = &sdmmc;
- 		mmc1 = &emmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index ff6b466e0e07..1eef5504445f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -11,6 +11,7 @@ / {
- 	compatible = "rockchip,rk3328-evb", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2phy;
- 		mmc0 = &sdmmc;
- 		mmc1 = &sdio;
- 		mmc2 = &emmc;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-index 1445b879ac7a..a4399da7d8b1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-@@ -14,6 +14,7 @@ / {
- 	compatible = "friendlyarm,nanopi-r2s", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
- 		ethernet1 = &rtl8153;
- 		mmc0 = &sdmmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
-index dc83d74045a3..f20662929c77 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts
-@@ -15,6 +15,7 @@ / {
- 	compatible = "xunlong,orangepi-r1-plus", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
- 		ethernet1 = &rtl8153;
- 		mmc0 = &sdmmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 5d5d9574088c..414897a57e75 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -11,6 +11,7 @@ / {
- 	compatible = "firefly,roc-rk3328-cc", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
- 		mmc0 = &sdmmc;
- 		mmc1 = &emmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index 018a3a5075c7..07f00af19aaf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -21,6 +21,8 @@ / {
- 	compatible = "radxa,rockpi-e", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
-+		ethernet1 = &gmac2phy;
- 		mmc0 = &sdmmc;
- 		mmc1 = &emmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 0a27fa5271f5..229fe9da9c2d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -11,6 +11,7 @@ / {
- 	compatible = "pine64,rock64", "rockchip,rk3328";
- 
- 	aliases {
-+		ethernet0 = &gmac2io;
- 		mmc0 = &sdmmc;
- 		mmc1 = &emmc;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index cc8209795c3e..41433d3340ce 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -27,8 +27,6 @@ aliases {
- 		i2c1 = &i2c1;
- 		i2c2 = &i2c2;
- 		i2c3 = &i2c3;
--		ethernet0 = &gmac2io;
--		ethernet1 = &gmac2phy;
- 	};
- 
- 	cpus {
+[1] https://lore.kernel.org/linux-rockchip/5119280.687JKscXgg@diego/T/#u
+
+Dragan Simic (4):
+  arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for
+    RK3399
+  arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for
+    RK3368
+  arm64: dts: rockchip: Remove ethernetX aliases from the SoC dtsi for
+    RK3328
+  arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for
+    PX30
+
+ arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi       | 1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts                   | 1 +
+ arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts       | 1 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi                      | 1 -
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts             | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts                  | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts                 | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts          | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-orangepi-r1-plus.dts    | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts              | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts           | 2 ++
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts              | 1 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi                    | 2 --
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi                | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts             | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi               | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts      | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts                 | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi                    | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts           | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts                 | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts               | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts             | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts          | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge-captain.dts | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge-v.dts       | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts      | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts           | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi            | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts            | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi               | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi             | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts        | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi          | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi          | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi           | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi                    | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi       | 1 +
+ 38 files changed, 44 insertions(+), 5 deletions(-)
+
 
 _______________________________________________
 Linux-rockchip mailing list
