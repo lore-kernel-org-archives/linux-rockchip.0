@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F279C4167B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 11:40:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54636C4167D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 12:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vsYw1PPcPnLpY+p0RIv5qE5uUkglSZk1muDj8lCpHcM=; b=fn76mfQDDz9mu7
-	fbNewcxWCc/tnY2VWcKaZC78ka9oeUGl/uL3JyWv2mW+zb9d+YnEMT6p+SBISgp2arKQAuTQ4orie
-	XX3qvdj64aQ0zrpDTbWToUPP4UdBKv1LvuJh5SxOqGawHIp3t4KfXCUMr+DkBVIFCf/LBKXIGYAvm
-	5RpsrK3EK0U0NusaNdVQBs0CLJy2LNyL15WwYc3EfGZ9NdVn3+N2kDMEA9qwbvn57k4lgtajEX93l
-	L4RJh3ZumsE1rQzXwNQsdKkMuXSsEWmg7BXXPYeH7N523jAaBqZI70M8OaegOVlBaOAtg56Okl9+1
-	8FKk0rDBrnCu3L4nqTyg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dTBHobOUO22S+iy17zPtvMqtATiiMPZ8GZZsRvWKWxQ=; b=2NE/F/7QxfAgi+
+	g+j847JrAfb9Kyvv+haBn1Rh3jyRhDDY2Qb93I71X9B493+2z1F2/7lxm4tSKxuHWPVHAlWLwdm7s
+	iKwqhCe4TVW0oVFnhfuAh2MsxqD8Q4i+1dzW4aDqBeVTqA21S9esPKWNyLPCaOOzF2jW/1lY+EaNk
+	KTbeTeAzgQiiqcPI1avWLAHGKHQktac9XlYxFCLt6BZxSpkoJuFRkQ1EH8QkezOG8C56F0tlhBKJ8
+	34itQZOgxnTrhhid3fqzCUSihAFe7MkOrtegQ8tzrWSX2kTTHFVUXZcZNVmzs5rXl/nT4JAwKgkXd
+	TnXA1QyBE+3WsCJRw1+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD184-00BYnE-0q;
-	Tue, 12 Dec 2023 11:40:48 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rD181-00BYmJ-0N
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 Dec 2023 11:40:47 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-5d8d2b5d1b5so39728387b3.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 12 Dec 2023 03:40:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=raspberrypi.com; s=google; t=1702381242; x=1702986042; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=0iUPBvo8eOmT//4vl8DQjGC5UmJmCx85Al5r4t/jUw0=;
-        b=a8B1/mhz6XE3bHOh+oHlpS2fi38sid6BvXxRYrNIxf+jXTCj55MIZkdADDcZ/eiENx
-         pVROUGyjBRrRoyz1CTBjLyZMLa968Y8rslvJ7rDYJ6IgreF+iI1bz+KCqrB3pYSbT3kc
-         tCUN58R4I0Eo7iHHuNU9gfC2bfa0zlIfdPJhWGIvwpUSAtRA8jWJoUCb4Az9NSv6R959
-         t+wS2fF6Ro45gvBgigcT1MBeW3GdhS50hsld2UxFvq80lb0gF+8a9Ca4G/TwfUFi4vZO
-         hAiY/YLYXJtJ6KvaWBa7WV3Qvf95TGyjA9zQmZXYnlXdYPpjz9WywKn0g9poFDZLsTBZ
-         daRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702381242; x=1702986042;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0iUPBvo8eOmT//4vl8DQjGC5UmJmCx85Al5r4t/jUw0=;
-        b=OO9WoEOSDovhig7pWoZUNqyq5HZYM7A6FCHIYI27pvrvH4iZvubjyGiUWSSgBQ9Q1x
-         vwklPql68/hUwGag8+bWC9YSLcDFY15WQk9PjjgPo0r8PR2OMiuEbaC51zoFUKGHzdzw
-         ETg/cdrhL6VoQZ5ravWPenveDHzK3VHRTrBxGuePF3rPv6IgQeawIjllh5/LXk1llDkO
-         ZLgnRO/JEsPLIn3I4geswK/yte9jKhWYgSKlyknl37MXDq9fnBaTSKhob4NsgdSMYbWK
-         YCbfdFbswAisP2imT5NcIQfloTq8R94UWhEi85t3G5ubRAcwr879L5h0qrLGvKBcH+Nc
-         z3Ug==
-X-Gm-Message-State: AOJu0Yw5Oqo4TuFIh26bIFXEhpaWWAp/kXUWH02vJ89zerB/Hycc6lny
-	rs/fUSVNksAHoUBbVhb138jocm9qzyuKhUab++jnOA==
-X-Google-Smtp-Source: AGHT+IGkFxJXB+75F7npYS3Sl7fcGotb27eRrk6u5Q+tryG0nLGLjgw4n/C3z2I9FmEbcpAIdKRvpPS2VqJqFmY8cyo=
-X-Received: by 2002:a25:ce8a:0:b0:db5:47ee:47c4 with SMTP id
- x132-20020a25ce8a000000b00db547ee47c4mr2442389ybe.53.1702381242014; Tue, 12
- Dec 2023 03:40:42 -0800 (PST)
+	id 1rD25s-00Bi69-0j;
+	Tue, 12 Dec 2023 12:42:36 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1rD25n-00Bi4z-2r;
+	Tue, 12 Dec 2023 12:42:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ZztcF
+	4m8TPUVhvPQaLZh9GowClmn1CkB2GW7KAZDIzQ=; b=ACNoHcHmdMn4xjxZJYTnl
+	RRtXmYGpwxWLLXJMIGyy6i0so2Hh93M1zDoT8JdtknoAUiakTzfbQ3WfjhNB8eIb
+	uBqk0jKzkH4Vraa7HDRssNMMpwl1K61QyIH8bnW95ERSpK7If2l3jNo3QOGJwMgx
+	rW0HNsmmWMSFz2lNRpthYQ=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by zwqz-smtp-mta-g1-2 (Coremail) with SMTP id _____wAHjrkbVXhlFotZBA--.29150S2;
+	Tue, 12 Dec 2023 20:42:06 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	sre@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH v4 0/5] Add 2 rk3588 based boards from Cool Pi
+Date: Tue, 12 Dec 2023 20:42:02 +0800
+Message-Id: <20231212124202.1897238-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org> <20231207-kms-hdmi-connector-state-v5-18-6538e19d634d@kernel.org>
-In-Reply-To: <20231207-kms-hdmi-connector-state-v5-18-6538e19d634d@kernel.org>
-From: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Date: Tue, 12 Dec 2023 11:40:26 +0000
-Message-ID: <CAPY8ntBe9RfSjdnd5Smx23La5gQaR9WqY8ehXQyp=4D_11N55Q@mail.gmail.com>
-Subject: Re: [PATCH v5 18/44] drm/vc4: hdmi: Create destroy state implementation
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-media@vger.kernel.org
+X-CM-TRANSID: _____wAHjrkbVXhlFotZBA--.29150S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Kw17Ww45Jr1UJrW3urWUtwb_yoW8Cr1Upw
+	n3CrZ8GFn7WFyxXFZIq3Z7Grs3Zwn5tay09rsxXFy2kr9IgF1UAFn3WwnxZ3sxG3W7Aayj
+	gF1kKr47Kr1vqF7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_uc_UUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqB9EXmVOA6bhbwAAst
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_034045_154877_DE42D213 
-X-CRM114-Status: GOOD (  18.90  )
+X-CRM114-CacheID: sfid-20231212_044232_388595_2013E637 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,55 +77,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 7 Dec 2023 at 15:50, Maxime Ripard <mripard@kernel.org> wrote:
->
-> Even though we were rolling our own custom state for the vc4 HDMI
-> controller driver, we were still using the generic helper to destroy
-> that state.
->
-> It was mostly working since the underlying state is the first member of
-> our state so the pointers are probably equal in all relevant cases, but
-> it's still fragile so let's fix this properly.
->
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
 
-Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+This series add support for rk3588s based SBC Cool Pi 4B
+and rk3588 based board Cool Pi CM5 EVB
 
-> ---
->  drivers/gpu/drm/vc4/vc4_hdmi.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> index 25c9c71256d3..f05e2c95a60d 100644
-> --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> @@ -672,11 +672,21 @@ vc4_hdmi_connector_duplicate_state(struct drm_connector *connector)
->         return &new_state->base;
->  }
->
-> +static void vc4_hdmi_connector_destroy_state(struct drm_connector *connector,
-> +                                            struct drm_connector_state *state)
-> +{
-> +       struct vc4_hdmi_connector_state *vc4_state =
-> +               conn_state_to_vc4_hdmi_conn_state(state);
-> +
-> +       __drm_atomic_helper_connector_destroy_state(state);
-> +       kfree(vc4_state);
-> +}
-> +
->  static const struct drm_connector_funcs vc4_hdmi_connector_funcs = {
->         .fill_modes = drm_helper_probe_single_connector_modes,
->         .reset = vc4_hdmi_connector_reset,
->         .atomic_duplicate_state = vc4_hdmi_connector_duplicate_state,
-> -       .atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
-> +       .atomic_destroy_state = vc4_hdmi_connector_destroy_state,
->         .atomic_get_property = vc4_hdmi_connector_get_property,
->         .atomic_set_property = vc4_hdmi_connector_set_property,
->  };
->
-> --
-> 2.43.0
->
+Changes in v4:
+- split pi-cm5 as a dtsi
+
+Changes in v3:
+- drop ununnecessary property status = "okay" for rtc
+- reorder some nodes alphabetical
+- remove disabled node
+- Add compatible "coolpi,pi-cm5" for CM5
+- drop ununnecessary property status = "okay" for backlight
+- reorder some nodes alphabetical
+- drop ununnecessary blank line
+
+Changes in v2:
+- change board compatible from "CoolPi 4 Model B" to "coolpi,pi-4b"
+- change board compatible from "CoolPi 4 Model B" to "coolpi,pi-4b"
+- drop ununnecessary property status = "okay" for gpio-led
+- drop ununnecessary blank line
+- change node name to rtc for hym8563
+- change board compatible from "CoolPi CM5 EVB" to "coolpi,pi-cm5-evb"
+- change board compatible from "CoolPi CM5 EVB" to "coolpi,pi-cm5-evb"
+
+Andy Yan (5):
+  dt-bindings: vendor-prefixes: Add Cool Pi
+  dt-bindings: arm: rockchip: Add Cool Pi 4B
+  arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B
+  dt-bindings: arm: rockchip: Add Cool Pi CM5
+  arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5
+    EVB
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  12 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 214 +++++
+ .../boot/dts/rockchip/rk3588-coolpi-cm5.dtsi  | 659 ++++++++++++++
+ .../boot/dts/rockchip/rk3588s-coolpi-4b.dts   | 823 ++++++++++++++++++
+ 6 files changed, 1712 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
