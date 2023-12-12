@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B76C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:33:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1385CC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Dec 2023 21:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NUYVF1qspz37FWE7koNOGcLMyU4dX6IcakOYwPtL2PI=; b=Oe0QiP8ZowGiHW
-	JL+IsrHGbU3iScrULpWj7qKbLYNwPGinpxnx4HysR9dgE9lvW5edYIxUnbce/FydM2Z5dBpJ5C4Jm
-	BEK/ptkMAdKK70HOqV4BoxG7SbEao6RPRr6fKbEyhp5cUv4dej4NCTMGUQQZM+b8hZ0xtWoUQlE+l
-	Zx0CACkTxqgYBl8GhkGeZhKjjNgG32XuefiYOcIPI/UeoZopY99yCU68jnjqDPn1RBS1VmCaLJUDQ
-	IQGqow8KBr+F9Qz4tKaAg01TkWxt+/lVYNCMAHqtuzVuUgL7rlAqj4rp0kvrnpMVaXFvpHElmnlCn
-	hRNuGpCU9XtTOlgZyXiA==;
+	List-Owner; bh=B1AF2+5NRAj94nL3pJns1gfEc8hjOS6dadxHXj5fSrM=; b=rIncnVDh/+Xykf
+	wEwQvaaMlb3v/O3xBM7/VDjeoqEP4X7WS37AOpL9+tberPO378etlmkzdbuf8aFWPddV+bf28nPeo
+	1UEFS3/2eLc4TO3iLDSreMN124c4L80w7rTkB/Mnb2wpetj/e6CfhYy2n2B2LLZIwLEuneHxGX2MM
+	xk9+07epZtFRGdSKo3XK+AHezMXF9k2AWkN84HqHnK0xm1TulIb0ihx5qo3AqK+fJ2tAK6MC++DAd
+	Mi6muNBsf7d15e0Yua40XVC9SVaAreszPHfPE6J62Us/z/UAHbOcSZ8MuKnI0fISHk4a3k6gKtXgj
+	Nrx1FhQzlm5iEu1rNyrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDAN8-00Cp3v-2O;
-	Tue, 12 Dec 2023 21:32:58 +0000
+	id 1rDANz-00CpCv-0X;
+	Tue, 12 Dec 2023 21:33:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDAN4-00Cp2j-0b;
-	Tue, 12 Dec 2023 21:32:56 +0000
+	id 1rDANw-00CpCJ-2x;
+	Tue, 12 Dec 2023 21:33:50 +0000
 Received: from [194.95.143.137] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rDAN2-0007Am-ND; Tue, 12 Dec 2023 22:32:52 +0100
+	id 1rDANv-0007Bn-Ml; Tue, 12 Dec 2023 22:33:47 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 6.8 #1
-Date: Tue, 12 Dec 2023 22:32:52 +0100
-Message-ID: <3535836.iIbC2pHGDl@phil>
+Subject: [GIT PULL] Rockchip dts32 changes for 6.8 #1
+Date: Tue, 12 Dec 2023 22:33:47 +0100
+Message-ID: <3197878.5fSG56mABF@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231212_133254_367185_7A3568F3 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20231212_133349_013798_D41108AF 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,198 +58,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
-
-please find below and in a subsequent pull-request
-Rockchip changes for for 6.8 .
-
-
-The change that might need the most explanation is probably around the
-aliases. In a recent discussion [0] the alias naming came up - with them
-aimed at matching labeling / documentation.
-
-As stated there all the Rockchip core busses (i2c, spi, and so on) use
-a numbered scheme everywhere - from the SoC manual down to the board
-schematics. Meaning i2c2 should always be i2c2.
-
-Together with Krzysztof's additional mention [1] that aliases in board-
-files
-	"is just generic guideline",
-a lot of people involved agreed that we don't want to repeat the same
-huge stack of core-bus aliases on each and every board. On the other
-hand, all the non-numbered busses should be living in the board dts
-files. So a bit of a cleanup got underway to achieve that state on the
-newer socs. (both arm64 and arm32).
-
-
-Please pull!
-
-Thanks
-Heiko
-
-
-[0] https://lore.kernel.org/linux-rockchip/4762834.KRxA6XjA2N@diego/#r
-[1] https://lore.kernel.org/linux-rockchip/7b8a830d-42d0-4220-b9fe-3f5fff43e74d@linaro.org/
-
-
 The following changes since commit b85ea95d086471afb4ad062012a4d73cd328fa86:
 
   Linux 6.7-rc1 (2023-11-12 16:19:07 -0800)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-dts64-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-dts32-1
 
-for you to fetch changes up to 8174dff9e583f7791dacf6d8ce034eb18ec2b292:
+for you to fetch changes up to 569b26af7919c15a8ce231b4fae29cfbd811f144:
 
-  arm64: dts: rockchip: Add Anbernic RG351V (2023-12-12 21:43:48 +0100)
-
-----------------------------------------------------------------
-New boards are the Anberic RG351V handheld (rk3326), Theobroma Systems Jaguar
-SBC (rk3588), Powkiddy X55 and RK2023 handheld (rk3566), Edgeble-Neu6b (rk3588)
-
-The rk3588 got attention with one working usb3 host on Rock-5a/5b, Orangepi-5
-and audio for the EVB1.
-
-Some smaller improvements for the other socs (fifo-depths on rk3328,
-gpio-line-names on rk3308-rock-pi-s, gpu power-coefficients on rk3399,
-and a fix for the newly converted gpio-fan yaml binding).
-
-Also a number of aliases were moved. Always-numbered core busses can have their
-aliases in the soc dtsi, as is done in a number of cases already and other alises
-like ethernet really should be per board.
+  ARM: dts: rockchip: add hdmi-connector node to rk3036-kylin (2023-12-12 20:38:36 +0100)
 
 ----------------------------------------------------------------
-Chris Morgan (8):
-      dt-bindings: arm: rockchip: Add Powkiddy RK2023
-      arm64: dts: rockchip: Update powkiddy,rgb30 include to rk2023 DTSI
-      arm64: dts: rockchip: Add Powkiddy RK2023
-      dt-bindings: arm: rockchip: Add Powkiddy X55
-      arm64: dts: rockchip: Add Powkiddy X55
-      dt-bindings: arm: rockchip: Add Anbernic RG351V
-      arm64: dts: rockchip: Split RG351M from Odroid Go Advance
-      arm64: dts: rockchip: Add Anbernic RG351V
+New boards are the Geniatech XPI-3128 (RK3128), Sonoff iHost (rv1109)
 
-David Heidelberg (1):
-      arm64: dts: rockchip: make dts use gpio-fan matrix instead of array
+One "new" soc is the rv1109 which is a two-core variant of the rv1126
+and everything else is identical.
 
-Dragan Simic (6):
-      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for RK3399
-      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for RK3368
-      arm64: dts: rockchip: Remove ethernetX aliases from the SoC dtsi for RK3328
-      arm64: dts: rockchip: Remove ethernet0 alias from the SoC dtsi for PX30
-      arm64: dts: rockchip: Add ethernet0 alias to the dts for RK3566 boards
-      arm64: dts: rockchip: Add ethernet0 alias to the dts for RK3588(S) boards
+Lots of love for the old rk3128 (power-domains, gpu, gmac, usb) and
+rv1126 (uart pins, i2c2 special case) and rework of aliases to have
+core busses that are hard-numbered in boards and documentation centrally
+in the dtsi, but the per board aliases in the boards (ethernet).
 
-Heiko Stuebner (6):
-      dt-bindings: arm: rockchip: Add Theobroma-Systems Jaguar SBC
-      arm64: dts: rockchip: add Theobroma Jaguar SBC
-      arm64: dts: rockchip: move rk3588 serial aliases to soc dtsi
-      arm64: dts: rockchip: add rk3588 i2c aliases to soc dtsi
-      arm64: dts: rockchip: add rk3588 gpio aliases to soc dtsi
-      arm64: dts: rockchip: add rk3588 spi aliases to soc dtsi
+Plus the rk3036 got a yaml hdmi binding which required some small fixes.
 
-Jagan Teki (2):
-      dt-bindings: arm: rockchip: Update edgeble-neu6 bindings
-      arm64: dts: rockchip: Use NCM6A-IO board for edgeble-neu6b
+----------------------------------------------------------------
+Alex Bee (14):
+      dt-bindings: arm: rockchip: Add Geniatech XPI-3128
+      ARM: dts: rockchip: Add sdmmc_det pinctrl for RK3128
+      ARM: dts: rockchip: Add Geniatech XPI-3128 RK3128 board
+      ARM: dts: rockchip: Add USB host clocks for RK3128
+      ARM: dts: rockchip: Add dwc2 otg fifo siztes for RK3128
+      ARM: dts: rockchip: Make usbphy the parent of SCLK_USB480M for RK3128
+      ARM: dts: rockchip: Add gmac node for RK3128
+      ARM: dts: rockchip: Enable gmac for XPI-3128
+      ARM: dts: rockchip: Add power-controller for RK3128
+      ARM: dts: rockchip: Add GPU node for RK3128
+      ARM: dts: rockchip: Enable GPU for XPI-3128
+      ARM: dts: rockchip: Move gpio aliases to SoC dtsi for RK3128
+      ARM: dts: rockchip: Move i2c aliases to SoC dtsi for RK3128
+      ARM: dts: rockchip: Move uart aliases to SoC dtsi for RK3128
 
-Jimmy Hon (1):
-      arm64: dts: rockchip: add USB3 host on rk3588s-orangepi-5
+Johan Jonker (3):
+      ARM: dts: rockchip: add gpio alias for gpio dt nodes
+      ARM: dts: rockchip: fix rk3036 hdmi ports node
+      ARM: dts: rockchip: add hdmi-connector node to rk3036-kylin
 
-Johan Jonker (1):
-      arm64: dts: rockchip: add gpio alias for gpio dt nodes
+Tim Lunn (7):
+      ARM: dts: rockchip: Add alternate UART pins to rv1126
+      ARM: dts: rockchip: Serial aliases for rv1126
+      ARM: dts: rockchip: Add i2c2 node to rv1126
+      ARM: dts: rockchip: Split up rgmii1 pinctrl on rv1126
+      ARM: dts: rockchip: Add rv1109 SoC
+      dt-bindings: arm: rockchip: Add Sonoff iHost
+      ARM: dts: rockchip: Add Sonoff iHost Smart Home Hub
 
-Lukasz Luba (1):
-      arm64: dts: rockchip: Add dynamic-power-coefficient to rk3399 GPU
-
-Sebastian Reichel (3):
-      arm64: dts: rockchip: add analog audio to RK3588 EVB1
-      arm64: dts: rockchip: add USB3 host to rock-5b
-      arm64: dts: rockchip: add USB3 host to rock-5a
-
-Trevor Woerner (1):
-      arm64: dts: rockchip: add gpio-line-names to rk3308-rock-pi-s
-
-shironeko (1):
-      arm64: dts: rockchip: add missing tx/rx-fifo-depth for rk3328 gmac
-
- .../devicetree/bindings/arm/rockchip.yaml          |  32 +-
- arch/arm64/boot/dts/rockchip/Makefile              |   4 +
- .../boot/dts/rockchip/px30-engicam-common.dtsi     |   1 +
- arch/arm64/boot/dts/rockchip/px30-evb.dts          |   1 +
- .../boot/dts/rockchip/px30-ringneck-haikou.dts     |   1 +
- arch/arm64/boot/dts/rockchip/px30.dtsi             |   1 -
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts  |  58 ++
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           |   5 +
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    |   1 +
- .../boot/dts/rockchip/rk3326-anbernic-rg351m.dts   |  18 +-
- .../boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi  | 478 +++++++++++
- .../boot/dts/rockchip/rk3326-anbernic-rg351v.dts   |  44 +
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts |   1 +
- .../boot/dts/rockchip/rk3328-orangepi-r1-plus.dts  |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |   2 +
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |   1 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  10 +-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |   1 +
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |   1 +
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi      |   1 +
- .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |   1 +
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |   1 +
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   5 +-
- arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts  |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      |   4 +
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |   1 +
- .../dts/rockchip/rk3399-khadas-edge-captain.dts    |   4 +
- .../boot/dts/rockchip/rk3399-khadas-edge-v.dts     |   4 +
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts  |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |   1 +
- .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |   3 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   7 +-
- .../boot/dts/rockchip/rk3399pro-vmarc-som.dtsi     |   1 +
- .../boot/dts/rockchip/rk3566-powkiddy-rgb30.dts    | 154 +---
- .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dts   |  38 +
- .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi  | 875 +++++++++++++++++++
- .../boot/dts/rockchip/rk3566-powkiddy-x55.dts      | 926 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |   5 +-
- .../boot/dts/rockchip/rk3566-radxa-cm3-io.dts      |   1 +
- arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |   1 +
- .../boot/dts/rockchip/rk3566-soquartz-blade.dts    |   4 +
- .../boot/dts/rockchip/rk3566-soquartz-cm4.dts      |   4 +
- .../boot/dts/rockchip/rk3566-soquartz-model-a.dts  |   4 +
- arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi  |   1 -
- .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts  |   4 -
- .../boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts  |   6 +-
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  99 ++-
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     | 803 ++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  |   1 -
- .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   |   1 -
- .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   2 +-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   9 +-
- .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |   2 -
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |   1 -
- .../boot/dts/rockchip/rk3588s-khadas-edge2.dts     |   1 -
- .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |   6 +-
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |  10 +-
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |  32 +
- 70 files changed, 3502 insertions(+), 196 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-anbernic-rg351v.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+ .../devicetree/bindings/arm/rockchip.yaml          |  12 +
+ arch/arm/boot/dts/rockchip/Makefile                |   3 +
+ arch/arm/boot/dts/rockchip/rk3036-kylin.dts        |  17 +
+ arch/arm/boot/dts/rockchip/rk3036.dtsi             |  17 +-
+ arch/arm/boot/dts/rockchip/rk3066a.dtsi            |   5 +
+ arch/arm/boot/dts/rockchip/rk3128-evb.dts          |   5 -
+ arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts     | 425 +++++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rk3128.dtsi             | 185 +++++++++
+ arch/arm/boot/dts/rockchip/rk322x.dtsi             |   4 +
+ arch/arm/boot/dts/rockchip/rk3288.dtsi             |   9 +
+ arch/arm/boot/dts/rockchip/rk3xxx.dtsi             |   4 +
+ arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts |  21 +
+ arch/arm/boot/dts/rockchip/rv1109.dtsi             |  23 ++
+ .../boot/dts/rockchip/rv1126-edgeble-neu2-io.dts   |   2 +-
+ arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     |  72 +++-
+ arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts |  29 ++
+ .../arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 404 ++++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1126.dtsi             |  21 +
+ 18 files changed, 1236 insertions(+), 22 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1109.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
 
 
 
