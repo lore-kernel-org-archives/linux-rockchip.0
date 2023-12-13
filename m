@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21269C19774
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 19:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD5DBC4167D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 19:52:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R6V5fAIU16JQN67aUXEmgVLY3DCVK7i8r+sHxuQ92yA=; b=ncEucIeOBE+d7x
-	RsSU7eStAMBUPgVk25EDAGfiI4iPLCT9SRALZ0jlI9bbmX29zRuceCyJfMQ6yTsXk97CizGVfG1f9
-	Oh3hYQDQJbKQRJcgae6rPobwTGEDv5eGFaxJoF5pp/NOpKXSlIRPP1tOsU0Ty4Ga47Suu+qbOEqQe
-	b8Q0IDZF+btdbNPZW5kuw+xfy3hq3Kc82NuwBp3ABY4fZhfsxr4RtbIbrrdIeLD3KhmyjahhwUTyh
-	4QAHHEYlOddIVdGnAAGdgmvJq5xeXhLZWHHs/wq+oGOKdMfhKMFUJLUV6r4LfJdBf8W+o4sJn1Jzi
-	53KceDWrsx2ggGcrPchA==;
+	List-Owner; bh=8ez7a8EFX7uQA3QfvAIRPeUN1Bm6CxmyJmAKVSS/jXY=; b=GvNz1PLG0osx6f
+	wFY0gbYzvaUKHsqKtK/g3X7oT3mb1PmMwf0lXAhxAeweaiv5cjID9SNnz/3oiQ3pHJsliI5tyt6nc
+	XA4aHpL6wgcUZO9Q04kkgayF6BiQmKriXbVq1tR0ccICAqWwfI07mmgQ/6ChgnKKuLtmBBGNPTMte
+	yBHy/b9PZSAUAEMI6LU1KNQyFlq1TZpiR6AMfClfEl1oGxU/4UjTxvaYAXAUZnXCTOVsLhMLh/McR
+	T0A7DAjSt/nY3RskAAYCWEp8tHhsecuk/C8S5dSlpEgkhxnEWrawo0Xk20CyanW8T4FncMbmVebGE
+	BJBaG6XPq2aoMGDznI1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDVGs-00Fsq8-2u;
-	Wed, 13 Dec 2023 19:51:54 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1rDVGx-00FsvN-2W;
+	Wed, 13 Dec 2023 19:51:59 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDVGa-00FsVS-0A;
-	Wed, 13 Dec 2023 19:51:37 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40c3f68b69aso44461345e9.1;
-        Wed, 13 Dec 2023 11:51:33 -0800 (PST)
+	id 1rDVGc-00FsXS-0L;
+	Wed, 13 Dec 2023 19:51:39 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-33621d443a7so3664257f8f.3;
+        Wed, 13 Dec 2023 11:51:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702497092; x=1703101892; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1702497094; x=1703101894; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SDq2fLVuR6T1GPARTMOS6b3H20znzfoIBUzVKBtShU4=;
-        b=BsvB0ZBuO1gJVVQVgW989iFkngYXSOohx6UxfVrw3S+8YUFZdDn7Gq7UPH2C0AZhDn
-         bjJUCj+8l+VV+jRZp5iD6PRiP5BewWovCAcp8nduSBB1uUj+fY+MzR1A8C22W+kzFJBS
-         rgh0+mDHfEgPMmpJ+ai+uCxGGYhAUME/FYXvm2/rO44AMTcFL9frZiCvqDqBTFq96fGI
-         P0YtPyymxgEzW2A0zY3+uSbsorrYYjTKdVihd8WQwz39DpJDx/2m5BOL7baR567XCumH
-         cI6NbGkKoddLtKmr/7QzgjpaU8rJ4UoVGatlUfq98ELsEnRtcdZN6obV2R7PFDcSKTSw
-         yXjw==
+        bh=26TYtvJWQfom93EELDFR0hGRGZIq8W0h3c/9XO+9E4k=;
+        b=mm/lBvq2/hss1m53Un+y/Rzu5L4hOIolgr3t152zP9jW7CctYBZjF6uj1v6PVBFT5Z
+         2kxX/FjXinlEm6eJEHkH/Rs9piHYop2ltdBbFZDZtYCwl4614dahTPA1iLsSEfyboNo3
+         DjXajzgT015QyrBgNk5FzhwUt+MrYAdgr1kUsyKwD3SkSslKVfYOin3rQCCVLTPJfGzt
+         VPdJ/dKsIrHSQdhBMV5xt2cz7Id95+xDjtszgJzbxXKdcoMZKdN8QZPF0+efnpX14c2w
+         TMPmkqjU21Fr0xqH3f48kR2rNpyO5J827vx8dbBgm3CRmvneMYUZ2KxOTEjArR/K758s
+         alDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702497092; x=1703101892;
+        d=1e100.net; s=20230601; t=1702497094; x=1703101894;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SDq2fLVuR6T1GPARTMOS6b3H20znzfoIBUzVKBtShU4=;
-        b=eDej5i67O3YQ+sevLG/o/OlNa/T8P6udg9tIMn42zI5OjaAxVga7UmG+W26ZYOxqvP
-         E2jA1qsTztFoeEVcZzAtlaJZAVNyV/B8eGTMXam8w5o3bVwFI/XD391gsxScyK1WZWJA
-         TvNLHztPfNkWZfejGfLsLaXIVFn8zIMSPxE3ZdQ5NYsxyfC/oucvp75Tf8T5ucHMfhIG
-         /78tsW9yaWTWo6v3gtltjyks6jRqgLdZqcbz2gC1eHqjLvaB+Daj2vRJ9of/0aP0Umlv
-         v7myUI44nX7rwkji2DTY/E7hQNY/6poFrnIPC8ydtiWhES83BVR7qk7hNjNdRd6+FC7j
-         6YEw==
-X-Gm-Message-State: AOJu0YxBev8xD99vHpegDb8uLb6oF/+KPw51TsSIJP43MSGnrBM+p/AK
-	sk3AUq05OP1dUMn1Z1mdHg==
-X-Google-Smtp-Source: AGHT+IELl0hfWLjSptTvXIEl3IsyO0H+O35wlMRi+ihqAK0nI8r+NnvvoiYtiu2tVq5so95DtF4X5Q==
-X-Received: by 2002:a05:600c:4f48:b0:40c:426b:fd2d with SMTP id m8-20020a05600c4f4800b0040c426bfd2dmr3758370wmq.102.1702497092225;
-        Wed, 13 Dec 2023 11:51:32 -0800 (PST)
+        bh=26TYtvJWQfom93EELDFR0hGRGZIq8W0h3c/9XO+9E4k=;
+        b=E2mmPk85Ea7J9LAyLbcgmd6G9Pcz6Pti4OlYJh9nUTOVUDyZMMrG3I9ktAGZxEmm10
+         kPNUTZteT8Yjws+XApeh2ZBXq63DcKPFlxGXhGwpa88Hq2SZpsMdtXBc6O+XmEVl0kg8
+         NDax4xj4Ga6u6fGts2cpD/+dOAW/+z5svqlRF+lHG8XGM7jPyqC4KYPDBfhmyDFluEhz
+         a/HaavDH9YEzWpxmMF91/hWkEhEkkoDUdkW03vXWopa4eCcdKA4UDerGyrAipeWVtkQ+
+         NWzYsjIkMAKIZIbCo6oGNKvESWT2z2n3slkRjvRcwMXtTrIJNoudxqMyXhGLrgm6bVF/
+         RoaA==
+X-Gm-Message-State: AOJu0Yz1TJjN5zv3rqKZj5lbheCp+d7pOUF7k/Tbr2xx4LcrGLIFfKbz
+	e82mT9ng58uiEIiIA5wsnQ==
+X-Google-Smtp-Source: AGHT+IHGKyN60yuyPA3ry6yA1Jw305WgBGta1msCkC8kPAxdLBAYlT9Ne9SbYyRVW+lhrit0x6CTYw==
+X-Received: by 2002:a7b:c84b:0:b0:40c:3820:efeb with SMTP id c11-20020a7bc84b000000b0040c3820efebmr4553357wml.196.1702497094178;
+        Wed, 13 Dec 2023 11:51:34 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:92dc:8b1c:e01c:b93c])
-        by smtp.gmail.com with ESMTPSA id fm14-20020a05600c0c0e00b00407b93d8085sm24050698wmb.27.2023.12.13.11.51.31
+        by smtp.gmail.com with ESMTPSA id fm14-20020a05600c0c0e00b00407b93d8085sm24050698wmb.27.2023.12.13.11.51.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 11:51:32 -0800 (PST)
+        Wed, 13 Dec 2023 11:51:33 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 08/11] drm/rockchip: inno_hdmi: Drop custom fill_modes hook
-Date: Wed, 13 Dec 2023 20:51:22 +0100
-Message-ID: <20231213195125.212923-9-knaerzche@gmail.com>
+Subject: [PATCH 11/11] ARM: dts: rockchip: Enable HDMI output for XPI-3128
+Date: Wed, 13 Dec 2023 20:51:25 +0100
+Message-ID: <20231213195125.212923-12-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231213195125.212923-1-knaerzche@gmail.com>
 References: <20231213195125.212923-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_115136_087055_640948B3 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20231213_115138_150877_54C36DFB 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +104,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that we have proper pixelclock-based validation we can drop the
-custom fill_modes hook.
-CRTC size validation for the display controller has been added with
-Commit 8e140cb60270 ("drm/rockchip: vop: limit maximum resolution to
-hardware capabilities")
+Add an hdmi-connector node and enable the hdmi, display-subsystem and vop
+nodes.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 9 +--------
- 1 file changed, 1 insertion(+), 8 deletions(-)
+ .../arm/boot/dts/rockchip/rk3128-xpi-3128.dts | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 2f839ff31c1c..84520da8c995 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -696,13 +696,6 @@ inno_hdmi_connector_mode_valid(struct drm_connector *connector,
- 	return inno_hdmi_mode_valid(hdmi, mode);
- }
+diff --git a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+index 03a97881519a..21c1678f4e91 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
++++ b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
+@@ -47,6 +47,17 @@ dc_5v: dc-5v-regulator {
+ 		regulator-boot-on;
+ 	};
  
--static int
--inno_hdmi_probe_single_connector_modes(struct drm_connector *connector,
--				       uint32_t maxX, uint32_t maxY)
--{
--	return drm_helper_probe_single_connector_modes(connector, 1920, 1080);
--}
--
- static void inno_hdmi_connector_destroy(struct drm_connector *connector)
- {
- 	drm_connector_unregister(connector);
-@@ -710,7 +703,7 @@ static void inno_hdmi_connector_destroy(struct drm_connector *connector)
- }
++	hdmi-connnector {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_connector_in: endpoint {
++				remote-endpoint = <&hdmi_connector_out>;
++			};
++		};
++	};
++
+ 	/*
+ 	 * This is a vbus-supply, which also supplies the GL852G usb hub,
+ 	 * thus has to be always-on
+@@ -239,6 +250,10 @@ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+ };
  
- static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
--	.fill_modes = inno_hdmi_probe_single_connector_modes,
-+	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.detect = inno_hdmi_connector_detect,
- 	.destroy = inno_hdmi_connector_destroy,
- 	.reset = drm_atomic_helper_connector_reset,
++&display_subsystem {
++	status = "okay";
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	vmmc-supply = <&vcc_io>;
+@@ -328,6 +343,16 @@ &gpu {
+ 	status = "okay";
+ };
+ 
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_out {
++	hdmi_connector_out: endpoint {
++		remote-endpoint = <&hdmi_connector_in>;
++	};
++};
++
+ &mdio {
+ 	phy0: ethernet-phy@1 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
+@@ -423,3 +448,7 @@ &usb2phy_host {
+ &usb2phy_otg {
+ 	status = "okay";
+ };
++
++&vop {
++	status = "okay";
++};
 -- 
 2.43.0
 
