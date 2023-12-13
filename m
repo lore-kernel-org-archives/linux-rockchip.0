@@ -4,74 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DF58C4167D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 18:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB38C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 19:51:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cpUID/Q494MvwcWmpESvlh+STTcUrhBn35opI+Ufke8=; b=wVh1lk69Qzmzsp
-	MsfkxUQsZavlDTpNo3s2ra8KIljbdESmWAwcwdJR7O2Nc0BkFfvoE7qR/ncLnMpksR0BHhKNA+KVf
-	ItGGMdCCQxKZMBe3hmyU5OJfD7qmLJ1ZaVc46a+UAHz9ngQOqTDKHtiO7KhrBdFcN3HZaj7CwNMsS
-	IfHJ6J0H9HX3Z4UVe3Q6M0lFq0ONzlYYD03F1UIGVq2+2M+sFHSnZcwYoj3MNko67YoByeC2CjEav
-	rGuJg4zQpTKHnaQRR49L8pSihoyHktUbvS6X/RF2kjp/Ey8Ghqtoaw6aCtysuqMY32Axu/zCOFT01
-	dvmLDgufV3Ao7ejufWgg==;
+	List-Owner; bh=dM8W+B3zLRLMJkGkd6HjW6rprgx2KZrTLALE8IQZjmY=; b=UQ8Df6L7+AY4TV
+	EEVuZAZwMPVuY9fryW4Q70uiLQCigJbfG75tuTYvHnwwfQ8TLwPd8mK7Ni4tU6Qldskjhu3dnDb6b
+	eaHKSE2M6A6LotgUNRPFpCFR1HDJoZMQbhqCrXfbKgimYpd2v5XUhC1/Pe/Rj/4OSe/jsaEJJ/Uy1
+	ElGU4gw+fK3Qsr5UmXrxWU6x0BoLmKUzkZDpQunnypYE/hqLw6CtRGRidOt0QYct9IlZ7LkDE/DxF
+	NDYe6UytxzpKnaoolAtGGkOmIER9EVJx5MWEfqth5xLl5EopPdQbQAF1a+KMiaucLnmt8u1OXjBdb
+	btK0CulmmqRZpIkcZ5yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDUKN-00FlN7-2L;
-	Wed, 13 Dec 2023 18:51:27 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rDVGY-00FsWq-0S;
+	Wed, 13 Dec 2023 19:51:34 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDUKJ-00FlJt-0C
-	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Dec 2023 18:51:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1702493477;
-	bh=fPmx8Nitfxko3MoZPVdVim4NzYjJ4HdO5wW6DU3UhDg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lVadjpGyNrC5dLSC+9hb5vzptqPpZJLqkeSniTvnasQQN6c2heysVa6MFkXJlef4P
-	 B6aL9TJ+kMzMpIAwApDoWOjgEHU+/tnUwUKfM3IQLVhT+qp5mux17qg/xHJWYMyark
-	 15aPdKX+Pv5zp5++Ze3YCVv1Edap2N9onoaI0gvouctw07eGC56uPmGH50Oro7i5WX
-	 NG1MGbZtI9kf/94gkW/PRpyi1w4PoOGCylu2F8SJrIuOwcAaHYurEQfX7qcRd6vrLS
-	 +8pCFZtSxsPEdUatdRgdJyNZ3cjPxkHYX6kg8tyZL1mA0NglHWhIBPXEsWrNDfKIoM
-	 hNglAvNvej+VQ==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3932437814A1;
-	Wed, 13 Dec 2023 18:51:17 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 3DF6A480108; Wed, 13 Dec 2023 19:51:16 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Elaine Zhang <zhangqing@rock-chips.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	linux-clk@vger.kernel.org
-Cc: Kever Yang <kever.yang@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
+	id 1rDVGU-00FsTM-1F;
+	Wed, 13 Dec 2023 19:51:31 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40c38de1ee4so51156685e9.0;
+        Wed, 13 Dec 2023 11:51:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702497088; x=1703101888; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FrtW0qmKYRNQLQV31syGJ5EsohgiI927CfneGFLgIjg=;
+        b=de+p8NiMoiIxZwP7XO48uni5Fk3GyAQKpvvilrM+RA1UOpl4MfKCe/tK0LdNrvPOH7
+         xGx0dTyiEFVRD3GPtjrHBKdpzSoz2s5IXyjixTVo9wjpK+ex74WY66/hxLmjm4PRkuWG
+         j7jeWOV3u/0XWTS4Y+ugQNDoFhQNPKVKsnapHlgh8Erg99g7ahVgD8oHZovm68KFN0kM
+         NOxWGUCHSLQJqNX2ItYXogKIp/YNEqKg731xL0TK5JJmbcwNdHEfdzG6WsDwnYUXAeeA
+         /kfaPSdQ38PU83nd+Q82HdywGWGYZYoWMZXX7CMVU+833gtcSnDT53yhE2PgX2pQqG/5
+         EvKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702497088; x=1703101888;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FrtW0qmKYRNQLQV31syGJ5EsohgiI927CfneGFLgIjg=;
+        b=oJW/xs9RhpEkIq8DBmKMsKD0L4ICClUW1/00AMCZvJxL1qMsU/ClaBc0KkTEJxjFf+
+         RIAHjsp5yBiIKXq6sswU8JZ+jSkv+7hBrwVGyTXiOich5NeLJz4//SyBqGWCZ0JN/fsk
+         1RUgVcdQTpYK+F8es1LuGk5+wePIz8zjZbYU/MB7GrmR7kF3cDaKvGbLqzsbnaOBtMMX
+         x46JnYUD+r8D5/LkTBI3VwqYeFEVmUKs2yhlze4HEefRyolATNStq7u5EelIvCyCAZq1
+         Y4dx3g4x1Jf9Z+5CCUuP5YSxcwbQvBOYAMvHXr+1TngYh/cbMpcRUO3U6202Tv56Uw3+
+         mrlg==
+X-Gm-Message-State: AOJu0YwBAqxH+DCHBAEtOkmlykBRExt34wibhzCHOutor14n9ek24PlA
+	4BcW1nFpxjrRxrZ4hK7S+g==
+X-Google-Smtp-Source: AGHT+IHR1mhbvtfmEHVnytGHmx53+I43r/Hf1Na5JA56piJCh0CXRoRhmTkjC+PLrRTxjaxT4a38fQ==
+X-Received: by 2002:a05:600c:3b29:b0:40c:3290:7b80 with SMTP id m41-20020a05600c3b2900b0040c32907b80mr4610268wms.138.1702497088224;
+        Wed, 13 Dec 2023 11:51:28 -0800 (PST)
+Received: from U4.lan ([2a02:810b:f40:4300:92dc:8b1c:e01c:b93c])
+        by smtp.gmail.com with ESMTPSA id fm14-20020a05600c0c0e00b00407b93d8085sm24050698wmb.27.2023.12.13.11.51.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Dec 2023 11:51:27 -0800 (PST)
+From: Alex Bee <knaerzche@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	huangtao@rock-chips.com,
-	andy.yan@rock-chips.com,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
 	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v7 6/7] clk: rockchip: rk3588: use linked clock ID for GATE_LINK
-Date: Wed, 13 Dec 2023 19:46:51 +0100
-Message-ID: <20231213185114.47565-7-sebastian.reichel@collabora.com>
+	linux-kernel@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 02/11] drm/rockchip: vop: Add output selection registers for RK312x
+Date: Wed, 13 Dec 2023 20:51:16 +0100
+Message-ID: <20231213195125.212923-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231213185114.47565-1-sebastian.reichel@collabora.com>
-References: <20231213185114.47565-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20231213195125.212923-1-knaerzche@gmail.com>
+References: <20231213195125.212923-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_105123_236332_5B8DFE27 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20231213_115130_424158_B5404309 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,79 +104,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In preparation for properly supporting GATE_LINK switch the unused
-linked clock argument from the clock's name to its ID. This allows
-easy and fast lookup of the 'struct clk'.
+In contrast to RK3036, RK312x SoCs have multiple output channels such as
+RGB (i.e. LVDS TTL), LVDS, DSI and HDMI.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+In order to support that, this adds a new vop_output struct for rk3126_vop
+with the registers required to enable the appropriate output and setup the
+correct polarity.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/clk/rockchip/clk-rk3588.c | 46 +++++++++++++++----------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 13 ++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.h |  3 +++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 2e8bdd93c625..b30279a96dc8 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -29,7 +29,7 @@
-  * power, but avoids leaking implementation details into DT or hanging the
-  * system.
-  */
--#define GATE_LINK(_id, cname, pname, linkname, f, o, b, gf) \
-+#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf) \
- 	GATE(_id, cname, pname, f, o, b, gf)
- #define RK3588_LINKED_CLK		CLK_IS_CRITICAL
- 
-@@ -2429,28 +2429,28 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	GATE(ACLK_AV1, "aclk_av1", "aclk_av1_pre", 0,
- 			RK3588_CLKGATE_CON(68), 2, GFLAGS),
- 
--	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", "aclk_vi_root", 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
--	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", "hclk_vi_root", 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
--	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", "aclk_nvm_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
--	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
--	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", "hclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
--	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
--	GATE_LINK(ACLK_VDPU_LOW_PRE, "aclk_vdpu_low_pre", "aclk_vdpu_low_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(44), 5, GFLAGS),
--	GATE_LINK(ACLK_RKVENC1_PRE, "aclk_rkvenc1_pre", "aclk_rkvenc1_root", "aclk_rkvenc0", 0, RK3588_CLKGATE_CON(48), 3, GFLAGS),
--	GATE_LINK(HCLK_RKVENC1_PRE, "hclk_rkvenc1_pre", "hclk_rkvenc1_root", "hclk_rkvenc0", 0, RK3588_CLKGATE_CON(48), 2, GFLAGS),
--	GATE_LINK(HCLK_RKVDEC0_PRE, "hclk_rkvdec0_pre", "hclk_rkvdec0_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(40), 5, GFLAGS),
--	GATE_LINK(ACLK_RKVDEC0_PRE, "aclk_rkvdec0_pre", "aclk_rkvdec0_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(40), 6, GFLAGS),
--	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
--	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
--	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", "aclk_vop_low_root", 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
--	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", "hclk_vop_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(55), 5, GFLAGS),
--	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
--	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", "hclk_vo1usb_top_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(59), 9, GFLAGS),
--	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
--	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
--	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", "hclk_nvm", 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
--	GATE_LINK(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", "hclk_vo0", CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(55), 10, GFLAGS),
--	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", "hclk_vo1", CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(59), 12, GFLAGS),
-+	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", ACLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
-+	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", HCLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
-+	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
-+	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
-+	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", HCLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
-+	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
-+	GATE_LINK(ACLK_VDPU_LOW_PRE, "aclk_vdpu_low_pre", "aclk_vdpu_low_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(44), 5, GFLAGS),
-+	GATE_LINK(ACLK_RKVENC1_PRE, "aclk_rkvenc1_pre", "aclk_rkvenc1_root", ACLK_RKVENC0, 0, RK3588_CLKGATE_CON(48), 3, GFLAGS),
-+	GATE_LINK(HCLK_RKVENC1_PRE, "hclk_rkvenc1_pre", "hclk_rkvenc1_root", HCLK_RKVENC0, 0, RK3588_CLKGATE_CON(48), 2, GFLAGS),
-+	GATE_LINK(HCLK_RKVDEC0_PRE, "hclk_rkvdec0_pre", "hclk_rkvdec0_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(40), 5, GFLAGS),
-+	GATE_LINK(ACLK_RKVDEC0_PRE, "aclk_rkvdec0_pre", "aclk_rkvdec0_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(40), 6, GFLAGS),
-+	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
-+	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
-+	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", ACLK_VOP_LOW_ROOT, 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
-+	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(55), 5, GFLAGS),
-+	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
-+	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(59), 9, GFLAGS),
-+	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
-+	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
-+	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", HCLK_NVM, 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
-+	GATE_LINK(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", HCLK_VO0, CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(55), 10, GFLAGS),
-+	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", HCLK_VO1, CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(59), 12, GFLAGS),
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index c51ca82320cb..b9ee02061d5b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -227,11 +227,22 @@ static const struct vop_win_data rk3126_vop_win_data[] = {
+ 	  .type = DRM_PLANE_TYPE_CURSOR },
  };
  
- static void __init rk3588_clk_init(struct device_node *np)
++static const struct vop_output rk3126_output = {
++	.pin_pol = VOP_REG(RK3036_DSP_CTRL0, 0xf, 4),
++	.hdmi_pin_pol = VOP_REG(RK3126_INT_SCALER, 0x7, 4),
++	.hdmi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 22),
++	.hdmi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 23),
++	.rgb_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 24),
++	.rgb_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 25),
++	.mipi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 28),
++	.mipi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 29),
++};
++
+ static const struct vop_data rk3126_vop = {
+ 	.intr = &rk3036_intr,
+ 	.common = &rk3036_common,
+ 	.modeset = &rk3036_modeset,
+-	.output = &rk3036_output,
++	.output = &rk3126_output,
+ 	.win = rk3126_vop_win_data,
+ 	.win_size = ARRAY_SIZE(rk3126_vop_win_data),
+ 	.max_output = { 1920, 1080 },
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+index 406e981c75bd..fbf1bcc68625 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+@@ -872,6 +872,9 @@
+ /* rk3036 register definition end */
+ 
+ /* rk3126 register definition */
++#define RK3126_INT_SCALER		0x0c
++
++/* win1 register */
+ #define RK3126_WIN1_MST			0x4c
+ #define RK3126_WIN1_DSP_INFO		0x50
+ #define RK3126_WIN1_DSP_ST		0x54
 -- 
 2.43.0
 
