@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD5DBC4167D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 19:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D81E8C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 20:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8ez7a8EFX7uQA3QfvAIRPeUN1Bm6CxmyJmAKVSS/jXY=; b=GvNz1PLG0osx6f
-	wFY0gbYzvaUKHsqKtK/g3X7oT3mb1PmMwf0lXAhxAeweaiv5cjID9SNnz/3oiQ3pHJsliI5tyt6nc
-	XA4aHpL6wgcUZO9Q04kkgayF6BiQmKriXbVq1tR0ccICAqWwfI07mmgQ/6ChgnKKuLtmBBGNPTMte
-	yBHy/b9PZSAUAEMI6LU1KNQyFlq1TZpiR6AMfClfEl1oGxU/4UjTxvaYAXAUZnXCTOVsLhMLh/McR
-	T0A7DAjSt/nY3RskAAYCWEp8tHhsecuk/C8S5dSlpEgkhxnEWrawo0Xk20CyanW8T4FncMbmVebGE
-	BJBaG6XPq2aoMGDznI1w==;
+	List-Owner; bh=5FBJo5wjh7NE3/q7Uh0pPL0BiJU4bh/qDOYTWFvHY0c=; b=d8hKoKjKcJpKyy
+	PXtSzqUxHLaVIAzAFRNEuVCCmlqLsr9ta5sqLdRwZsV689Jx8tLpAjIyhIfaoVdYgMDEtgX5Flbol
+	UK0trVIoSupZJsu1tJDBX6CAndqiYz5hzv+WvwuTuIqE0BCqD6HPzJh/GUM5xtd6V2eD8DztFrX8R
+	+PvLU9jmd4KbtN1p+QfyCfwh8fQWmzDd+zHpNOzovthl1GOYl4QetpURWM8xjVd7SoOXJsnCh824b
+	2J46ltJEh0TiydOLquqbhXHTj8kWbN8qcYornAVBE13YrHrwJJ4LCAiLruFIt7q0zfsmnIfF+glZN
+	G+e3BVEIQ0ybr2gOAWHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDVGx-00FsvN-2W;
-	Wed, 13 Dec 2023 19:51:59 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1rDVri-00FyL8-17;
+	Wed, 13 Dec 2023 20:29:58 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDVGc-00FsXS-0L;
-	Wed, 13 Dec 2023 19:51:39 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-33621d443a7so3664257f8f.3;
-        Wed, 13 Dec 2023 11:51:35 -0800 (PST)
+	id 1rDVre-00FyId-2e;
+	Wed, 13 Dec 2023 20:29:56 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40c3f68b69aso44737355e9.1;
+        Wed, 13 Dec 2023 12:29:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702497094; x=1703101894; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=26TYtvJWQfom93EELDFR0hGRGZIq8W0h3c/9XO+9E4k=;
-        b=mm/lBvq2/hss1m53Un+y/Rzu5L4hOIolgr3t152zP9jW7CctYBZjF6uj1v6PVBFT5Z
-         2kxX/FjXinlEm6eJEHkH/Rs9piHYop2ltdBbFZDZtYCwl4614dahTPA1iLsSEfyboNo3
-         DjXajzgT015QyrBgNk5FzhwUt+MrYAdgr1kUsyKwD3SkSslKVfYOin3rQCCVLTPJfGzt
-         VPdJ/dKsIrHSQdhBMV5xt2cz7Id95+xDjtszgJzbxXKdcoMZKdN8QZPF0+efnpX14c2w
-         TMPmkqjU21Fr0xqH3f48kR2rNpyO5J827vx8dbBgm3CRmvneMYUZ2KxOTEjArR/K758s
-         alDw==
+        d=gmail.com; s=20230601; t=1702499388; x=1703104188; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Zw2AbkoN/4FIKkUWexE+EWqV2AcpdmgqKqjwrsLePhs=;
+        b=FM0pUOFl0BH8HRFurjxh/WfIeGZf9iAHW78xkfgW0HUpqKXqgddZJM8UgZAIVvBwgA
+         a8uwyftRnIbxvL8l3QDmGRnhddCulwctLrE0/Kygk77QJsGOC4FxOPHRgBNsEMqp2v0Q
+         oc7tnOZHobSlZbgUTssyl2gdel9D1qTNxMBLXMcPLKHbsQFhvbQc2+CEocjbXICdXkST
+         /wJb4TdXxHPZVvo8HGIKcy00fd34aIelWk73+YL5CHpz+eyc58F3OIpEkPRoXeZX/TKq
+         QwCkwNzvXZHoW1LAp6AYoRiq+bvHGzbmKm8/vrK50ovqMZ8QNCpZ5dPaTH65/bjmR/Q0
+         g2ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702497094; x=1703101894;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=26TYtvJWQfom93EELDFR0hGRGZIq8W0h3c/9XO+9E4k=;
-        b=E2mmPk85Ea7J9LAyLbcgmd6G9Pcz6Pti4OlYJh9nUTOVUDyZMMrG3I9ktAGZxEmm10
-         kPNUTZteT8Yjws+XApeh2ZBXq63DcKPFlxGXhGwpa88Hq2SZpsMdtXBc6O+XmEVl0kg8
-         NDax4xj4Ga6u6fGts2cpD/+dOAW/+z5svqlRF+lHG8XGM7jPyqC4KYPDBfhmyDFluEhz
-         a/HaavDH9YEzWpxmMF91/hWkEhEkkoDUdkW03vXWopa4eCcdKA4UDerGyrAipeWVtkQ+
-         NWzYsjIkMAKIZIbCo6oGNKvESWT2z2n3slkRjvRcwMXtTrIJNoudxqMyXhGLrgm6bVF/
-         RoaA==
-X-Gm-Message-State: AOJu0Yz1TJjN5zv3rqKZj5lbheCp+d7pOUF7k/Tbr2xx4LcrGLIFfKbz
-	e82mT9ng58uiEIiIA5wsnQ==
-X-Google-Smtp-Source: AGHT+IHGKyN60yuyPA3ry6yA1Jw305WgBGta1msCkC8kPAxdLBAYlT9Ne9SbYyRVW+lhrit0x6CTYw==
-X-Received: by 2002:a7b:c84b:0:b0:40c:3820:efeb with SMTP id c11-20020a7bc84b000000b0040c3820efebmr4553357wml.196.1702497094178;
-        Wed, 13 Dec 2023 11:51:34 -0800 (PST)
-Received: from U4.lan ([2a02:810b:f40:4300:92dc:8b1c:e01c:b93c])
-        by smtp.gmail.com with ESMTPSA id fm14-20020a05600c0c0e00b00407b93d8085sm24050698wmb.27.2023.12.13.11.51.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 11:51:33 -0800 (PST)
-From: Alex Bee <knaerzche@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andyshrk@163.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>
-Cc: David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 11/11] ARM: dts: rockchip: Enable HDMI output for XPI-3128
-Date: Wed, 13 Dec 2023 20:51:25 +0100
-Message-ID: <20231213195125.212923-12-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231213195125.212923-1-knaerzche@gmail.com>
-References: <20231213195125.212923-1-knaerzche@gmail.com>
+        d=1e100.net; s=20230601; t=1702499388; x=1703104188;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Zw2AbkoN/4FIKkUWexE+EWqV2AcpdmgqKqjwrsLePhs=;
+        b=kQZJUVF4fRPe2plh/1JoAXM0H/NB/odWlvbsWVI93YHATDS6nF8ZSj7hFaSxJaZaJo
+         3N88s53tlZw5Qo4D3+VRbmkaKDFGtuBUNatoAeDqvrU+ydih7vi9SgIUU8Mw7r0Iv9VW
+         WO86OIxpS8Zbk/322kW02lzmT8qIudQszuIjTYruZ1bMUlgM+wPZNbZzKL18W3pEjD++
+         FhqtGgtU3CHXyEDFvuMjzP8i8wXGm0nPKg2dpKcQ9WhqV+rJKgZVoRzXZ3qw2b8HdHxO
+         WG7IOmcp+WHO8w5Ee5uIA/WUJwVvS0MW8i6F8WypOR0XFtO2DHCrEQWarXpXAJZVIrC7
+         LERA==
+X-Gm-Message-State: AOJu0YyM7p5sRFVJ7mRro4LC0OGco5Q86MSzjU48fc9o9cZGxNTheAhp
+	Vq3D1q9uW3JSN1A0bjboeQ==
+X-Google-Smtp-Source: AGHT+IG20yw7g9GqI9IbadFk19Exl/zGderaqPqj/VFPT7HLhLixQNc2+B3uD+potrr7JRkM+oOFEA==
+X-Received: by 2002:a05:600c:3648:b0:40b:4812:22e2 with SMTP id y8-20020a05600c364800b0040b481222e2mr5226786wmq.11.1702499387771;
+        Wed, 13 Dec 2023 12:29:47 -0800 (PST)
+Received: from ?IPV6:2a02:810b:f40:4300:3bf6:bcc0:fe50:883f? ([2a02:810b:f40:4300:3bf6:bcc0:fe50:883f])
+        by smtp.gmail.com with ESMTPSA id n21-20020a05600c4f9500b0040b36ad5413sm21179364wmq.46.2023.12.13.12.29.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Dec 2023 12:29:47 -0800 (PST)
+Message-ID: <a5889aba-75b6-4671-918b-26a4b9ec12c5@gmail.com>
+Date: Wed, 13 Dec 2023 21:29:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/31] Fix and improve Rockchip RK3128 support
+Content-Language: en-US, de-DE
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Lee Jones <lee@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Johan Jonker
+ <jbx6244@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ alsa-devel@alsa-project.org, linux-clk@vger.kernel.org,
+ linux-phy@lists.infradead.org
+References: <20230829171647.187787-1-knaerzche@gmail.com>
+ <2167016.irdbgypaU6@phil>
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <2167016.irdbgypaU6@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_115138_150877_54C36DFB 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20231213_122954_861957_FEB3E52D 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,80 +99,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add an hdmi-connector node and enable the hdmi, display-subsystem and vop
-nodes.
+Hi Heiko
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- .../arm/boot/dts/rockchip/rk3128-xpi-3128.dts | 29 +++++++++++++++++++
- 1 file changed, 29 insertions(+)
+Am 12.12.23 um 21:03 schrieb Heiko Stuebner:
+> Hi Alex,
+>
+> Am Dienstag, 29. August 2023, 19:16:16 CET schrieb Alex Bee:
+>> this series fixes some issues I found when testing my "new" RK3128 board
+>> with the mainline kernel and adds some core functionality like SMP bringup,
+>> usb and networking.
+> before I discard this thread, is everything from here migrated to
+> separate serieses or are there patches in this big pile that are still
+> relevant on their own, that haven't been applied?
+> [I lost track of what did go where ;-) ]
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-index 03a97881519a..21c1678f4e91 100644
---- a/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3128-xpi-3128.dts
-@@ -47,6 +47,17 @@ dc_5v: dc-5v-regulator {
- 		regulator-boot-on;
- 	};
- 
-+	hdmi-connnector {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
-+
- 	/*
- 	 * This is a vbus-supply, which also supplies the GL852G usb hub,
- 	 * thus has to be always-on
-@@ -239,6 +250,10 @@ &cpu0 {
- 	cpu-supply = <&vdd_arm>;
- };
- 
-+&display_subsystem {
-+	status = "okay";
-+};
-+
- &emmc {
- 	bus-width = <8>;
- 	vmmc-supply = <&vcc_io>;
-@@ -328,6 +343,16 @@ &gpu {
- 	status = "okay";
- };
- 
-+&hdmi {
-+	status = "okay";
-+};
-+
-+&hdmi_out {
-+	hdmi_connector_out: endpoint {
-+		remote-endpoint = <&hdmi_connector_in>;
-+	};
-+};
-+
- &mdio {
- 	phy0: ethernet-phy@1 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
-@@ -423,3 +448,7 @@ &usb2phy_host {
- &usb2phy_otg {
- 	status = "okay";
- };
-+
-+&vop {
-+	status = "okay";
-+};
--- 
-2.43.0
+No worries - I kept track :)
 
+Not everything is re-sent yet (sound nodes, RK3126/RK3128 split-up) but 
+you can discard this and will re-send everything left in separate series 
+(as I said [0])
+
+[0] 
+https://lore.kernel.org/linux-arm-kernel/170109134007.42627.12929766893521974712.b4-ty@kernel.org/T/#m63efa1c1379353b5cf764d2f9a260cf0329c864c
+
+Regards,
+
+Alex
+
+>
+>
+> Thanks
+> Heiko
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
