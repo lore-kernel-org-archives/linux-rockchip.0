@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B8CC4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 14:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8F0C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 14:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tCyn7BEg1Ti9mQjmcKkcGqY//8l4leidiGSjwfmTTS0=; b=CNrA3QXPqz8/DN
-	MfawKRd6ayTsZICL7uRUmrsGgO10CmI962wn2wmIklNteUtwezcE6nT+QJsp8idMHPs/crFYnk/oH
-	S/LUSfg2M4BgBMx+yokDxheFso0f18GnQWxNIRTWmxuxXxMm8cGlzwlJ52oGCSTBJMTv0DILHItGD
-	U42PdFcRztgu0oOtmIZjDaMCsUe7Kj7wuGYvQBBqGwmYbU34xOl+UB4XZjj4qBq2Pjjzbmml7I3Cq
-	s8+H1IPEC8mHHCM6hda2gMXCYxAc57T1a/UXZ4+R0jihVmwTU62/3WQasHqmDRneztZ1ZnnBGcaMl
-	NHw+FNLv6e1BHEUWmTUA==;
+	List-Owner; bh=R/jrH5NMS91YEeQMTclZ+WzfQw/sD6QlSzIS0EkR/WU=; b=n4iJZns6ircwIK
+	b8GprRJlOxTM8F0OtYTR2ygwRDsYb3NCW+nNBWU7jQs+GnilZIounkCxyXK0LX9KMPk6rLqLBZyJ/
+	SlhZzrN0AdmTqseLRykTNnp0HQiEPp5WjbhXVq9VkCNhuZlLbukDGuBleFGRkkXOWeILm9/KHbzaD
+	PE0jjazRe5YREnVIpDNnu2r69uFeMNUzAWrPm1AU5/HMSlnQ4ljbompk0zQTfYTnMe0NJBjJwnjZB
+	rG5IJPVWZZRMu2tiolGUoCoLKP9YQMnfe+gUoTAAgq0Je4ne/EH+clRloDmxzOFd3DUms89KmUMnY
+	34tFWL7kYw6t5uH9Gthg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQFu-00F2yb-2p;
-	Wed, 13 Dec 2023 14:30:34 +0000
+	id 1rDQVf-00F5W3-0O;
+	Wed, 13 Dec 2023 14:46:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDQFs-00F2xd-1t
+	id 1rDQVc-00F5VN-2k
 	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Dec 2023 14:30:33 +0000
+	Wed, 13 Dec 2023 14:46:50 +0000
 Received: from i53875b61.versanet.de ([83.135.91.97] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rDQFd-00008V-35; Wed, 13 Dec 2023 15:30:17 +0100
+	id 1rDQVN-0000JI-AG; Wed, 13 Dec 2023 15:46:33 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Andy Yan <andyshrk@163.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	sebastian.reichel@collabora.com,
 	krzysztof.kozlowski+dt@linaro.org,
 	chris.obbard@collabora.com,
-	devicetree@vger.kernel.org,
-	Andy Yan <andy.yan@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
-	hjc@rock-chips.com,
-	kever.yang@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	linux-rockchip@lists.infradead.org,
 	robh+dt@kernel.org,
-	linux-kernel@vger.kernel.org
+	devicetree@vger.kernel.org,
+	kever.yang@rock-chips.com,
+	linux-rockchip@lists.infradead.org,
+	hjc@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>
 Subject: Re: (subset) [PATCH v5 00/16] Add VOP2 support on rk3588
-Date: Wed, 13 Dec 2023 15:30:15 +0100
-Message-Id: <170247779733.724099.13674557093099995192.b4-ty@sntech.de>
+Date: Wed, 13 Dec 2023 15:46:31 +0100
+Message-Id: <170247871959.753029.11166929824242336708.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231211115547.1784587-1-andyshrk@163.com>
 References: <20231211115547.1784587-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_063032_618618_AF863C9A 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231213_064648_888618_9ECCC341 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,22 +88,22 @@ On Mon, 11 Dec 2023 19:55:47 +0800, Andy Yan wrote:
 
 Applied, thanks!
 
-[01/16] drm/rockchip: move output interface related definition to rockchip_drm_drv.h
-        commit: 8c8546546f256f834e9c7cab48e5946df340d1a8
-[02/16] Revert "drm/rockchip: vop2: Use regcache_sync() to fix suspend/resume"
-        commit: 81a06f1d02e588cfa14c5e5953d9dc50b1d404be
-[03/16] drm/rockchip: vop2: set half_block_en bit in all mode
-        commit: bebad6bd4fbdc448ad3b337ad281b813e68f6f53
-[04/16] drm/rockchip: vop2: clear afbc en and transform bit for cluster window at linear mode
-        commit: 20529a68307feed00dd3d431d3fff0572616b0f2
-[05/16] drm/rockchip: vop2: Add write mask for VP config done
-        commit: d1f8face0fc1298c88ef4a0479c3027b46ca2c77
-[06/16] drm/rockchip: vop2: Set YUV/RGB overlay mode
-        commit: dd49ee4614cfb0b1f627c4353b60cecfe998a374
-[07/16] drm/rockchip: vop2: set bg dly and prescan dly at vop2_post_config
-        commit: 075a5b3969becb1ebc2f1d4fa1a1fe9163679273
-[08/16] drm/rockchip: vop2: rename grf to sys_grf
-        commit: c408af1afc4b74ea6df69e0313be97f1f83e981a
+[10/16] dt-bindings: display: vop2: Add rk3588 support
+        commit: 4ccdc92c1fea732fac8f3438d6288719055fa141
+[11/16] dt-bindings: rockchip,vop2: Add more endpoint definition
+        commit: dc7226acacc6502291446f9e33cf96246ec49a30
+[12/16] drm/rockchip: vop2: Add support for rk3588
+        commit: 5a028e8f062fc862f051f8e62a0d5a1abac91955
+[13/16] drm/rockchip: vop2: rename VOP_FEATURE_OUTPUT_10BIT to VOP2_VP_FEATURE_OUTPUT_10BIT
+        commit: 9d7fe7704d534c2d043aff2987f10671a8b4373d
+[16/16] MAINTAINERS: Add myself as a reviewer for rockchip drm
+        commit: 6c3ab21f37a97a868193ccbeb8a492e51210ff31
+
+
+I skipped the debugfs patch for now, as I need to look at that separately
+and of course the dts patch as that needs to wait for iommu maintainers
+to pick up the binding addition.
+
 
 Best regards,
 -- 
