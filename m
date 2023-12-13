@@ -4,103 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6D1C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 18:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39657C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Dec 2023 18:08:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=90VsZHvmv2/a11hODRjEV2q0ZQ9NyN9QPBEJRK/yRSY=; b=SIjM0Ne07OGPmM
-	93ouOLm2DgDGdYN50TmWTZ62S4/ljZIjSuUvoKrrbhsF+EdBd/ImxIy2gApVFfTNRf9z/r3XJJOSY
-	oJnVP/0pbnQRuCZGi19kBXe8Qyd2l2hXwddqjltuTAHQM39aFEz1w4KSAYnWfYBK+ey/fheB5Vrx/
-	0H7RBKHtl8rjsXArKwiHrV1NtgM7Qfem5GVImeFecV5NG0oFLolgOAYa5w7DhZDISFZzbDyoJMCX1
-	PcGnGRnMSsRMnp2z0H8DN7BxH9kzqBXCkkhHp2GAfO5zgplneRfNG+WdQgUUhDTDyUo4zLgOuz6EK
-	ie0HZ2ghenxvMoZSHufw==;
+	List-Owner; bh=NQhCXViB4DrPaWlNDg+aMHJkvsDjrz0hxR6gcHdQa9k=; b=jfusJRgE9beh7Z
+	HU30jR/B+ouoUwjaGy3ax40XSwHofhWJAFWOURGsIfsbTfGP1trhqbNuwYdzkAHdP9iclw2FszWRk
+	jWYNLCapolxtl2D+HcvcInQVuoKA02bffWZhCe2VkJ/ydz0YAJhpMTu5Ra2m3O2C+iltzmlpGPMUI
+	82H9b9rle//sbcQzJRRz6umaWkPeV1psr2OZxLdEShG/hkuptGPPSAP6EaVTQfq/BOv3XXp1W5Uh9
+	Atk//Iw5xt2R4hTzLqsr/WlVsUSx68/cAvD6fUePZeJI2oaS+AbiQqQ19jGTPZR0DJQ8El3ijTP2D
+	n3V6cX7xbWL2LAqKYMMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDTYC-00Ffph-2w;
-	Wed, 13 Dec 2023 18:01:40 +0000
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e])
+	id 1rDTeW-00Fgbr-1P;
+	Wed, 13 Dec 2023 18:08:12 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDTY9-00FfoS-0f
+	id 1rDTeT-00Fgaf-0n
 	for linux-rockchip@lists.infradead.org;
-	Wed, 13 Dec 2023 18:01:39 +0000
-Received: by mail-io1-xd2e.google.com with SMTP id ca18e2360f4ac-7b7020f03c9so292005839f.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 13 Dec 2023 10:01:36 -0800 (PST)
+	Wed, 13 Dec 2023 18:08:10 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a1f8a1e9637so850446266b.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 13 Dec 2023 10:08:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1702490495; x=1703095295; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XHJkvyGkozEZfAn1foMxSDGndxq7Z3rvVOkqL1kGsfY=;
-        b=moLALN8WjaA2Kasf9Dqi2ZAw7F8symVylhsELPaOfSBtAnCHoNnsRJcqbMtHQQywww
-         kpi8moj0KSpjYjiNU9S3R2gLO/gOCxwb+OOq5lKZa34l9IqR0pDYbOwUoTTqG3pNetx3
-         2U0LvRAJ0F9as5xmeKUjbD4c90u1mqEB3CQQ4=
+        d=linaro.org; s=google; t=1702490886; x=1703095686; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=/Sz22v/qVZ8FEe06Lv2eVm1w3fWPD2RSBmypkGKFUt0=;
+        b=LGrTS2KZUJ6hQub2TXbhVLtT722brFWLKHsCYhVoht8tIV1G78Th6E9kUhdMzfSqml
+         244zLyT51kQKHccAa5qmrj4h0dL5NAJU90KmDpZ+MVocm3XnSU/0BTdY7Rv5VIUGBYb8
+         IX6CIisJdD7HD8zZM1Co19qoNlYUjdgrQbsf94ktmsrrLpZ3QHvD+JJpx3beSwj5edjg
+         i0B5edhCWpPJ8rGAxs8gQtfN1psxhS9lX1w5pp44kECYcJZsRZ7BEzQ0hnxq5uz4qi6N
+         gCWNN0iQchV4tGJxmCFnMwXDQrqFj6K3YTMHxxGl8Xv0XJw647+Kotz3SPYjJD5gwumO
+         TK9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702490495; x=1703095295;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XHJkvyGkozEZfAn1foMxSDGndxq7Z3rvVOkqL1kGsfY=;
-        b=o1gBnBGq2aM0c1VIHk/DQ13HEk15JgXzFyYfAcv/mX+6mvZcv/jFSFDmmH1UxHfOZb
-         abj0NNiVnGYBJYeb7nf19ouT0sLxxWobgCx/S1pzVfKja/05RlLjwxTWZHlSQYpk5F48
-         eqx3mExY9oB8gvgqdJneWIYC0Gg7IysILh6WA5oexzsDXBjRtbea+8IRrUrM4tDbhhBN
-         qBdTj7b+km1OgluEBDk8ccO0fmR6gnJGEtU6cvnsDqg8IA6LQ33nmkrr6OLEM9wuy/SK
-         YEHmypRRFYOdiFx9Td/j+Brg9ml/XlEe4Wen0vUJnexmzWuPIfhVQ5fMGooKmw24aUKN
-         Aysg==
-X-Gm-Message-State: AOJu0Yx80z/VNHf2Sa9zgWNCINLlutooda3VkhrAKaTiI/GuIpA+ajK0
-	/fp1/RPa4/T0UPfx+lN8R5WkXQ==
-X-Google-Smtp-Source: AGHT+IFlYJgoIT3A6azjL3KGWGM2LFNYIuooaQV3GC7pc2NQaP0QcsiTJdhp9S5ZzNvKJJo5ucv2Lg==
-X-Received: by 2002:a5d:948e:0:b0:7b7:70fe:2913 with SMTP id v14-20020a5d948e000000b007b770fe2913mr2509400ioj.19.1702490495596;
-        Wed, 13 Dec 2023 10:01:35 -0800 (PST)
-Received: from markhas1.corp.google.com ([100.107.108.224])
-        by smtp.gmail.com with ESMTPSA id o28-20020a02cc3c000000b0046671f9717csm3161206jap.109.2023.12.13.10.01.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 10:01:35 -0800 (PST)
-From: Mark Hasemeyer <markhas@chromium.org>
-To: LKML <linux-kernel@vger.kernel.org>
-Cc: Raul Rangel <rrangel@chromium.org>,
-	Mark Hasemeyer <markhas@chromium.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Andy Gross <agross@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baruch Siach <baruch@tkos.co.il>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jesper Nilsson <jesper.nilsson@axis.com>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Paul Barker <paul.barker@sancloud.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	cros-qcom-dts-watchers@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: [PATCH v1 2/6] arm: arm64: dts: Enable cros-ec-spi as wake source
-Date: Wed, 13 Dec 2023 11:00:20 -0700
-Message-ID: <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
-X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
-In-Reply-To: <20231213110009.v1.1.Ifd0903f1c351e84376d71dbdadbd43931197f5ea@changeid>
-References: <20231213110009.v1.1.Ifd0903f1c351e84376d71dbdadbd43931197f5ea@changeid>
+        d=1e100.net; s=20230601; t=1702490886; x=1703095686;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/Sz22v/qVZ8FEe06Lv2eVm1w3fWPD2RSBmypkGKFUt0=;
+        b=sZdk0k48qK2Klma+MWP34zBvEBJjMaYXzdkdkJGpjSdXld/vA+LQSBNGTIQfClHIlY
+         okuMWrCW79W+a6XYYYDvC2ZR4ow2rq7Z2MO80WDCdsw4kwC5AbV16BVUaehkHNnGwkS3
+         aP7goI+nuFcmt1d2iPE6ijTlMZjYX06fhB6D/HvWHDMEri3QYcSpa3fg5XdboWgOihoH
+         cK8Uc60bbqTR2bjDSojLpZgg+0KrRCij+R2vsZOTWHZJPq0adRiP6gGO6Z5vSbD2AGrk
+         zxRmrlv3a9ruquNtToUu1tXxYfUnvMt77kznc4+t/u/l5LaWXYfjYXE00riiJCUUBG9C
+         TTOw==
+X-Gm-Message-State: AOJu0YylPT0q06EysM8NtiN9a1/9zzvCj7xHWoFBb3D+i1FvokOnHKqw
+	v5xOF2aiBPS5p8cNo3GhG+VlWw==
+X-Google-Smtp-Source: AGHT+IFXGar7fRRKDpWjyH1EUxpwM+xdNfvLNoh6Mpuj4/G1yKCzW2mMGjCspgAQz6Wqjpqrhfe49Q==
+X-Received: by 2002:a17:906:957:b0:a1d:8d09:d07d with SMTP id j23-20020a170906095700b00a1d8d09d07dmr7861599ejd.47.1702490885803;
+        Wed, 13 Dec 2023 10:08:05 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.27])
+        by smtp.gmail.com with ESMTPSA id tk7-20020a170907c28700b00a1d1ebc2206sm8193829ejc.72.2023.12.13.10.08.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Dec 2023 10:08:05 -0800 (PST)
+Message-ID: <ab3c00da-5dec-4274-a9ef-2ac0fef6efee@linaro.org>
+Date: Wed, 13 Dec 2023 19:08:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/6] arm: arm64: dts: Enable cros-ec-spi as wake source
+To: Mark Hasemeyer <markhas@chromium.org>, LKML <linux-kernel@vger.kernel.org>
+Cc: Raul Rangel <rrangel@chromium.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Andre Przywara <andre.przywara@arm.com>,
+ Andy Gross <agross@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Baruch Siach <baruch@tkos.co.il>, Bjorn Andersson <andersson@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jesper Nilsson <jesper.nilsson@axis.com>, Jisheng Zhang
+ <jszhang@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@amd.com>, Paul Barker <paul.barker@sancloud.com>,
+ Rob Herring <robh+dt@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20231213110009.v1.1.Ifd0903f1c351e84376d71dbdadbd43931197f5ea@changeid>
+ <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231213_100137_265509_E33EA437 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20231213_100809_336443_22E60A43 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,228 +157,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The cros_ec driver currently assumes that cros-ec-spi compatible device
-nodes are a wakeup-source even though the wakeup-source property is not
-defined.
+On 13/12/2023 19:00, Mark Hasemeyer wrote:
+> The cros_ec driver currently assumes that cros-ec-spi compatible device
+> nodes are a wakeup-source even though the wakeup-source property is not
+> defined.
+> 
+> Add the wakeup-source property to all cros-ec-spi compatible device
+> nodes to match expected behavior.
+> 
+> Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
+> ---
+> 
 
-Add the wakeup-source property to all cros-ec-spi compatible device
-nodes to match expected behavior.
+I did not get any other patches in the set, so no clue what's there...
+but for this patch: please split per subarch. At least Samsung bits.
 
-Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
----
-
- arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi              | 1 +
- arch/arm/boot/dts/nvidia/tegra124-venice2.dts            | 1 +
- arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi | 1 +
- arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts       | 1 +
- arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts        | 1 +
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi             | 1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi           | 1 +
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi         | 1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi         | 1 +
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi          | 1 +
- arch/arm64/boot/dts/nvidia/tegra132-norrin.dts           | 1 +
- arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi             | 1 +
- arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi           | 1 +
- arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi           | 1 +
- arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi               | 1 +
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi             | 1 +
- 16 files changed, 16 insertions(+)
-
-diff --git a/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi b/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
-index a2ee371802004..8125c1b3e8d79 100644
---- a/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
-+++ b/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
-@@ -338,6 +338,7 @@ cros_ec: cros-ec@0 {
- 			interrupt-parent = <&gpio>;
- 			interrupts = <TEGRA_GPIO(C, 7) IRQ_TYPE_LEVEL_LOW>;
- 			reg = <0>;
-+			wakeup-source;
- 
- 			google,cros-ec-spi-msg-delay = <2000>;
- 
-diff --git a/arch/arm/boot/dts/nvidia/tegra124-venice2.dts b/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
-index 3924ee385dee0..df98dc2a67b85 100644
---- a/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
-+++ b/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
-@@ -857,6 +857,7 @@ cros_ec: cros-ec@0 {
- 			interrupt-parent = <&gpio>;
- 			interrupts = <TEGRA_GPIO(C, 7) IRQ_TYPE_LEVEL_LOW>;
- 			reg = <0>;
-+			wakeup-source;
- 
- 			google,cros-ec-spi-msg-delay = <2000>;
- 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-index 092316be67f74..1554fe36e60fe 100644
---- a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-@@ -112,6 +112,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_int>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
-diff --git a/arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts b/arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts
-index 4e757b6e28e1c..3759742d38cac 100644
---- a/arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts
-+++ b/arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts
-@@ -967,6 +967,7 @@ cros_ec: cros-ec@0 {
- 		reg = <0>;
- 		spi-max-frequency = <3125000>;
- 		google,has-vbc-nvram;
-+		wakeup-source;
- 
- 		controller-data {
- 			samsung,spi-feedback-delay = <1>;
-diff --git a/arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts b/arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts
-index f91bc4ae008e4..9bbbdce9103a6 100644
---- a/arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts
-+++ b/arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts
-@@ -949,6 +949,7 @@ cros_ec: cros-ec@0 {
- 		reg = <0>;
- 		spi-max-frequency = <3125000>;
- 		google,has-vbc-nvram;
-+		wakeup-source;
- 
- 		controller-data {
- 			samsung,spi-feedback-delay = <1>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 4dd21dd317026..f0395da659a86 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -1168,6 +1168,7 @@ cros_ec: ec@0 {
- 		interrupt-parent = <&pio>;
- 		interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
- 		google,cros-ec-spi-msg-delay = <500>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel0 {
- 			compatible = "google,cros-ec-i2c-tunnel";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 44647d462e20b..359859f23b1fd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -1013,6 +1013,7 @@ cros_ec: cros-ec@0 {
- 		interrupts = <151 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_ap_int_odl>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index 5f62dc83013f0..74c534d475cb0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -1918,6 +1918,7 @@ cros_ec: ec@0 {
- 		interrupts = <13 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_ap_int>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index a29da53d17894..4594287d60926 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1454,6 +1454,7 @@ cros_ec: ec@0 {
- 		spi-max-frequency = <3000000>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cros_ec_int>;
-+		wakeup-source;
- 
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 37a3e9de90ff7..a5ace1b02c3d2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -1034,6 +1034,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cros_ec_int>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		keyboard-backlight {
- 			compatible = "google,cros-kbd-led-backlight";
-diff --git a/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts b/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
-index bbc2e9bef08da..14d58859bb55c 100644
---- a/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
-+++ b/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
-@@ -762,6 +762,7 @@ ec: cros-ec@0 {
- 			interrupt-parent = <&gpio>;
- 			interrupts = <TEGRA_GPIO(C, 7) IRQ_TYPE_LEVEL_LOW>;
- 			reg = <0>;
-+			wakeup-source;
- 
- 			google,cros-ec-spi-msg-delay = <2000>;
- 
-diff --git a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi b/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-index 5a33e16a8b677..e6a2ed0463997 100644
---- a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-@@ -650,6 +650,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ap_ec_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		cros_ec_pwm: pwm {
- 			compatible = "google,cros-ec-pwm";
-diff --git a/arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi b/arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi
-index 9ea6636125ad9..2ba4ea60cb147 100644
---- a/arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi
-@@ -548,6 +548,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ap_ec_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		cros_ec_pwm: pwm {
- 			compatible = "google,cros-ec-pwm";
-diff --git a/arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi b/arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi
-index ebae545c587c4..fbfac7534d3c6 100644
---- a/arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi
-@@ -19,6 +19,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ap_ec_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		cros_ec_pwm: pwm {
- 			compatible = "google,cros-ec-pwm";
-diff --git a/arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi b/arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi
-index f86e7acdfd99f..d8eb45662c931 100644
---- a/arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi
-@@ -838,6 +838,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_ap_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		cros_ec_pwm: pwm {
- 			compatible = "google,cros-ec-pwm";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index c9bf1d5c3a426..69a0b34f0615b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -602,6 +602,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_ap_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
--- 
-2.43.0.472.g3155946c3a-goog
+Best regards,
+Krzysztof
 
 
 _______________________________________________
