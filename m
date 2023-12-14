@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C65D5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Dec 2023 08:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869B6C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Dec 2023 09:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Obmb9ERBRGsPnmZLkz4h8T1ba7AvKyyzoXns7AJ9tQE=; b=Q8wB4HbxhJjjiXpNLsyK3fJh2W
-	618CPqy3I6NaJB/IWaN1Z+nYTpog1c5hIOG+M643MDzqo+mYwIj11eR/zKaGnkoE8sjWOl0OamqLA
-	44fzH65r97u3chnnX4k2tYc3HE4Don7X85/flQfeHl5R/0L3nR4tUHc7P0ys4XmRTqEjPNmpEiEa/
-	SnyNH+fFDh448UYEUtBnUuiNZiIlLzWGIyD/NXgXY51wri4n86zaC0KY9DXmspi2u5IBZ+TzumeGs
-	vGzNJimSgRaBMTnp0WLI3WguFxpBfPB9YWGHwNGky0wfX8J5jEdi29EhtJe86Q1peoxya+5gJCmwU
-	65dWYncQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Lt6YW3G/LtZilEg154bVgxcb4E2wRp1ECV+IUP/IZl4=; b=MudjWoFLZGVFnx
+	FMbV49ec4HFIWfXn6NS92vc2CQnKoJ+wh/bNNnEtp+GxfX8ZV27ZBcGwvlhKmg0Ck41DRSJDuN6mu
+	ubNtdAzO4FDCtrdvDpd3wXnLf2llKTBi5M1HWNEEEahgW4rhKInDvw0eO6RiMy/5XDHrFaYCEB8FR
+	3zv1bQfSAN5GwHOh1YWS1J+96k5PxQoudt5o1BXMjTX317dWso79/IXMxrUsMHABz7osTqcAFrf78
+	iHvH16Rc06cMt4DlSG8uHZzQ7hEYCG4jJHWeeRVIk2crKIN3VzDddRKtC99Rh0gTmimPsDB/H+Xop
+	lFctevl3fIzmd2AxmQAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDhO5-00HHOC-0T;
-	Thu, 14 Dec 2023 08:48:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rDiMs-00HNwa-28;
+	Thu, 14 Dec 2023 09:50:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDhO2-00HHNj-1C;
-	Thu, 14 Dec 2023 08:48:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6023161D65;
-	Thu, 14 Dec 2023 08:48:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2380C433C8;
-	Thu, 14 Dec 2023 08:48:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702543685;
-	bh=bWHJ2nEewYvkEMXif5fsymjDtt1zbVHkI49YReVBsDQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pPD0dHulfnGTLBExOIGRTAfiqj1Qk7C1wGbXEFFA+Pt+rXyiZAj7vbwEaxmbG0WwT
-	 fXFFyJk+4cXRjuEuZOaIW2zJfaQWQVhtRrRRMs9UBCIfoOA/vwGoNjuOsMobs2oBCm
-	 /x6JnOvRPji6GrvOos2Yw0oUNQ7Twg7kRtElj5s2rVwBJyXcyMMHWXpshWSCkkceSt
-	 DYWU1oSq1eOTpMnCRdiI6PV+tNisgz0AazAxpQrLs1AbDcui/7JAAaAoEKbqsOi4RV
-	 TbFefK+3/aSdO1enpIiXwv3fnydWvBXHZc2tXzUZCp7iO2AVsS4o+JMKrdmlVqf3VR
-	 5MriRhjZBtS9w==
-Date: Thu, 14 Dec 2023 09:48:02 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, Hans Verkuil <hverkuil@xs4all.nl>, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: [PATCH v5 18/44] drm/vc4: hdmi: Create destroy state
- implementation
-Message-ID: <rr5wvkunjglkxozfsvf5zvffwzznq6zt5mzvxw5rx2rpyfzecb@kauuy72x43gj>
-References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
- <20231207-kms-hdmi-connector-state-v5-18-6538e19d634d@kernel.org>
- <CAPY8ntBe9RfSjdnd5Smx23La5gQaR9WqY8ehXQyp=4D_11N55Q@mail.gmail.com>
+	id 1rDiMo-00HNvM-2b;
+	Thu, 14 Dec 2023 09:50:56 +0000
+Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rDiMN-00023i-MP; Thu, 14 Dec 2023 10:50:27 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: iommu@lists.linux.dev, Andy Yan <andyshrk@163.com>, joro@8bytes.org,
+ jroedel@suse.de
+Cc: conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ robh+dt@kernel.org, robin.murphy@arm.com, will@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2] dt-bindings: iommu: rockchip: Add Rockchip RK3588
+Date: Thu, 14 Dec 2023 10:50:26 +0100
+Message-ID: <14263703.RDIVbhacDa@diego>
+In-Reply-To: <20231212005710.1837066-1-andyshrk@163.com>
+References: <20231212005710.1837066-1-andyshrk@163.com>
 MIME-Version: 1.0
-In-Reply-To: <CAPY8ntBe9RfSjdnd5Smx23La5gQaR9WqY8ehXQyp=4D_11N55Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_004806_476005_171B3148 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20231214_015054_843606_B67A402D 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,70 +60,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8434930038625383112=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Joerg,
 
---===============8434930038625383112==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="34euckmdvwkupler"
-Content-Disposition: inline
+Am Dienstag, 12. Dezember 2023, 01:57:10 CET schrieb Andy Yan:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Add a Rockchip RK3588 compatible
+> 
+> I split it from the vop2 patch series as suggested by Heiko[0]
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-
---34euckmdvwkupler
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Dave,
-
-On Tue, Dec 12, 2023 at 11:40:26AM +0000, Dave Stevenson wrote:
-> On Thu, 7 Dec 2023 at 15:50, Maxime Ripard <mripard@kernel.org> wrote:
-> >
-> > Even though we were rolling our own custom state for the vc4 HDMI
-> > controller driver, we were still using the generic helper to destroy
-> > that state.
-> >
-> > It was mostly working since the underlying state is the first member of
-> > our state so the pointers are probably equal in all relevant cases, but
-> > it's still fragile so let's fix this properly.
-> >
-> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
->=20
-> Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-
-Thanks for the review, I've applied that patch now.
-
-Could you also review the framework changes (patches 6 to 16) ?
-
-Thanks!
-Maxime
-
---34euckmdvwkupler
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZXrBQgAKCRDj7w1vZxhR
-xRk8AQDdN5Neajg11B6buyB2iqOXxDC3Ad8XCWlmcjkK9I1jTQEAv+RIYp6M3cV0
-8PQqOi1QiT/3hX+WMjreXGSqFUgQCg8=
-=hVnz
------END PGP SIGNATURE-----
-
---34euckmdvwkupler--
+could you possibly pick this patch for the iommu tree?
 
 
---===============8434930038625383112==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks a lot
+Heiko
+
+
+> [0]https://patchwork.kernel.org/project/dri-devel/patch/20231207080235.652719-1-andyshrk@163.com/
+> 
+> ---
+> 
+> Changes in v2:
+> - Add maintainers for the iommu subsystem to cc list
+> 
+>  .../devicetree/bindings/iommu/rockchip,iommu.yaml     | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> index ba9124f721f1..621dde0e45d8 100644
+> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> @@ -19,9 +19,14 @@ description: |+
+>  
+>  properties:
+>    compatible:
+> -    enum:
+> -      - rockchip,iommu
+> -      - rockchip,rk3568-iommu
+> +    oneOf:
+> +      - enum:
+> +          - rockchip,iommu
+> +          - rockchip,rk3568-iommu
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-iommu
+> +          - const: rockchip,rk3568-iommu
+>  
+>    reg:
+>      items:
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8434930038625383112==--
-
