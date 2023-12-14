@@ -4,51 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869B6C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Dec 2023 09:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98418C4167B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Dec 2023 10:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lt6YW3G/LtZilEg154bVgxcb4E2wRp1ECV+IUP/IZl4=; b=MudjWoFLZGVFnx
-	FMbV49ec4HFIWfXn6NS92vc2CQnKoJ+wh/bNNnEtp+GxfX8ZV27ZBcGwvlhKmg0Ck41DRSJDuN6mu
-	ubNtdAzO4FDCtrdvDpd3wXnLf2llKTBi5M1HWNEEEahgW4rhKInDvw0eO6RiMy/5XDHrFaYCEB8FR
-	3zv1bQfSAN5GwHOh1YWS1J+96k5PxQoudt5o1BXMjTX317dWso79/IXMxrUsMHABz7osTqcAFrf78
-	iHvH16Rc06cMt4DlSG8uHZzQ7hEYCG4jJHWeeRVIk2crKIN3VzDddRKtC99Rh0gTmimPsDB/H+Xop
-	lFctevl3fIzmd2AxmQAQ==;
+	List-Owner; bh=nrm++n6wGrXhRZxd5w4c67wBKqseMZzBqUAEkZ0W1l8=; b=kSBi+sP1+C5xFG
+	gSXFGUzQ24AscpRZjKBeXY8awXsnDLBqLAXC1PyHIgmmafQGU8PrsBJIOtR4ipGa96ZiFFX1a8fN6
+	fkkZPnNNU0iLAiWfbRB0JwTTCgQA1Kr/Sfat6wpl8d5It3AJokdK0kHXO4/kiV9e50OL9+L0dW9/P
+	q2cWKpE86NSgeYwmEwoYLFQBSOUwALjIktVfmDF7pQCXBJPOo0fjBHJ5swWO2DXy98gLy3akMkPe0
+	mj4ZKS/1oGTtsb8mq9AvmYXs4oKXVdgFfCSuE7NDF8i7Fqx7+KWNBL5sRl+s3cg4n234wXhCHHu4N
+	J/ZvbqzLHWUGJNdWh8qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDiMs-00HNwa-28;
-	Thu, 14 Dec 2023 09:50:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rDjNV-00HZ5H-2b;
+	Thu, 14 Dec 2023 10:55:41 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rDiMo-00HNvM-2b;
-	Thu, 14 Dec 2023 09:50:56 +0000
-Received: from i53875b61.versanet.de ([83.135.91.97] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rDiMN-00023i-MP; Thu, 14 Dec 2023 10:50:27 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: iommu@lists.linux.dev, Andy Yan <andyshrk@163.com>, joro@8bytes.org,
- jroedel@suse.de
-Cc: conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- robh+dt@kernel.org, robin.murphy@arm.com, will@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Andy Yan <andy.yan@rock-chips.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v2] dt-bindings: iommu: rockchip: Add Rockchip RK3588
-Date: Thu, 14 Dec 2023 10:50:26 +0100
-Message-ID: <14263703.RDIVbhacDa@diego>
-In-Reply-To: <20231212005710.1837066-1-andyshrk@163.com>
-References: <20231212005710.1837066-1-andyshrk@163.com>
+	id 1rDjNS-00HZ3f-0M;
+	Thu, 14 Dec 2023 10:55:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1702551336;
+	bh=nDwI9Pl6CCoEAnD+fTst64/YqkRvVVhKmZlxyty2nAw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=b7wF6oaus0TpnLvYOVI62QNuXci/Xd3tppTa1l12+jGW1Kj5elHnVNfXkkGE7eZ63
+	 pH2QiLUgHz3yAa1sph4DwjxkOEtItW9JA7tOiaeVPI3XJxZ+LUg9kpdXNCQ6CSyDtT
+	 Kz9WcagvFIPcdgmMs/cunw0MOn0c8Adx0y5aPLEdIogQgkHXSUVfBqqtwKerzyR9j+
+	 lDYUQlLMeMI8UvoRBIfpMSXhqh3aL+vgIsiZBPKSwHIOfom2G1h0InEGlmBfFH/LBg
+	 Tf6CqIsaJPMOtJZsY0m7yPZwKNHCOR1nuWbWG7xm4ew/Ckb6GhFDaKGwbY6juzH0ca
+	 OEORjJUAhZVbA==
+Received: from [100.113.186.2] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F1D31378000B;
+	Thu, 14 Dec 2023 10:55:34 +0000 (UTC)
+Message-ID: <e5625051-e9e2-4a75-a11a-cf5b40606fa4@collabora.com>
+Date: Thu, 14 Dec 2023 11:55:34 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/6] arm: arm64: dts: Enable cros-ec-spi as wake source
+Content-Language: en-US
+To: Mark Hasemeyer <markhas@chromium.org>, LKML <linux-kernel@vger.kernel.org>
+Cc: Raul Rangel <rrangel@chromium.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Andre Przywara <andre.przywara@arm.com>,
+ Andy Gross <agross@kernel.org>, Baruch Siach <baruch@tkos.co.il>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jesper Nilsson <jesper.nilsson@axis.com>, Jisheng Zhang
+ <jszhang@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@amd.com>, Paul Barker <paul.barker@sancloud.com>,
+ Rob Herring <robh+dt@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ cros-qcom-dts-watchers@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20231213110009.v1.1.Ifd0903f1c351e84376d71dbdadbd43931197f5ea@changeid>
+ <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20231213110009.v1.2.I274b2d2255eb539cc9d251c9d65a385cc4014c79@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231214_015054_843606_B67A402D 
-X-CRM114-Status: GOOD (  18.93  )
+X-CRM114-CacheID: sfid-20231214_025538_278291_C0C6702D 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,66 +87,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Joerg,
-
-Am Dienstag, 12. Dezember 2023, 01:57:10 CET schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+Il 13/12/23 19:00, Mark Hasemeyer ha scritto:
+> The cros_ec driver currently assumes that cros-ec-spi compatible device
+> nodes are a wakeup-source even though the wakeup-source property is not
+> defined.
 > 
-> Add a Rockchip RK3588 compatible
+> Add the wakeup-source property to all cros-ec-spi compatible device
+> nodes to match expected behavior.
 > 
-> I split it from the vop2 patch series as suggested by Heiko[0]
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
 
-could you possibly pick this patch for the iommu tree?
+I received only patch [2/6] - please send the entire series to the relevant
+maintainers, as otherwise it's difficult to understand what's going on.
 
+As for this patch alone:
+  1. arch/arm stuff goes to a different commit
+  2. I would prefer if you split per-arch and per-SoC.
 
-Thanks a lot
-Heiko
-
-
-> [0]https://patchwork.kernel.org/project/dri-devel/patch/20231207080235.652719-1-andyshrk@163.com/
-> 
-> ---
-> 
-> Changes in v2:
-> - Add maintainers for the iommu subsystem to cc list
-> 
->  .../devicetree/bindings/iommu/rockchip,iommu.yaml     | 11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> index ba9124f721f1..621dde0e45d8 100644
-> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> @@ -19,9 +19,14 @@ description: |+
->  
->  properties:
->    compatible:
-> -    enum:
-> -      - rockchip,iommu
-> -      - rockchip,rk3568-iommu
-> +    oneOf:
-> +      - enum:
-> +          - rockchip,iommu
-> +          - rockchip,rk3568-iommu
-> +      - items:
-> +          - enum:
-> +              - rockchip,rk3588-iommu
-> +          - const: rockchip,rk3568-iommu
->  
->    reg:
->      items:
-> 
-
-
+Regards,
+Angelo
 
 
 
