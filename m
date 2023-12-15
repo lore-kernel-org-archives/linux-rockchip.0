@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CAE4C41535
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Dec 2023 12:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5BFC35274
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Dec 2023 13:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=173YUnfrlxHsqVzEUUMLBAOgmmklqCRyVWs1VIvNQlE=; b=KU/a1WNpxmzQti
-	qf6NzqGPk82sv0Wj/CG2Yfw72nS2sNsKm+aPszK1Mm+BNS5hHIwbkQ/iUnNgq6vcMp/ottY+aS1/z
-	2yccp7IkpXZDt6jP6otXUTb0+KbE7zeUuVbjTyP9K6dnw3dyUO8QAfv+C5JeHaTjgXR+d1TcnS3yJ
-	T/JgxTo9gFkKBkrFmG+Rc5ijm/ycYWNK9ETZwzckcG/7eYh4Phptbjj5Swmi2qEGISui+1x0Uv6fb
-	A+RGZJqPO56KYBgrg/fv90BK17yyJv5dVWerbESAZCX+VkbwrM2eOxJ3P3hfCBCytVTMnDDVfSfrh
-	2b77irURrU6fEIejxNgA==;
+	List-Owner; bh=Da1K0XyFVkYED46EIVb8nKYxcMSDn/6ul98RPftF148=; b=rytFXbqCn322mh
+	DissD3uHw3JmjLSbLKxkTmLwv5CY7Tu+u5koNxmqYYJVhAffBjb4SlwHx7uxBFe5RzHr/rO2kgJwe
+	rBfc9g6t4U76gXB/5kwaBZ3LtWD6gx5AUvZZEDqCTKabuziQTidxKPw3BslgPR+xrNKx/8+2K2pZR
+	+AVqk75RZXwEiHxMdBF3naCx4JWKqgM0KxWaOyPKXkA6Jrs57XKzp2i5LdQ5WZ75SeqoUeRGf86YK
+	hTzoVbxGroWeGWa0Z9Xh9SQoKW3t7/6XDtNZyy7SjHSRy8rTtN71aKSDSGcNYOj7DZC9KWRFooDNP
+	i0mnX0TPsNGYi3gAjmLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE7JT-003ECv-0z;
-	Fri, 15 Dec 2023 12:29:07 +0000
-Received: from uvw.ixypsilon.net ([81.223.58.118])
+	id 1rE8ff-003Rqy-2V;
+	Fri, 15 Dec 2023 13:56:07 +0000
+Received: from forward101b.mail.yandex.net ([178.154.239.148])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rE7JQ-003EAn-20;
-	Fri, 15 Dec 2023 12:29:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ixypsilon.net; s=20210903; h=Content-Transfer-Encoding:MIME-Version:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Oj0QHgPdvHMo9GUAP8G/tq7iyDKRF1mzr5DOg7Hc4RM=; t=1702643341; x=1703852941; 
-	b=Yc+9JMTwePhlGRrC09C69YES+BVIO7jWilrnqoFBxPp5CIiASfCxh+xaVSpD25Su4umUL8dz4/H
-	Qd9Mdzl5GAy+ym+AadGPS80gPDfwohYzwDmfDHsR8lLleGiXAawtazIci9vUYXBTXlFUsIBzuFXYt
-	2Wu3ivYSyhdqFCJZ7AHFhCRGI7gMzjpOaie93EgerkcTZajBT7nOrosQNdavf8IN08GEyaCNDTEbP
-	6plVqteCu+0yr/btsnNkg8/fJbEsmRbFSOwnV9aYOYTYhIF5DL532sXmsE1QT15VVXnaYu1K/j5ak
-	cUcbag0XDCrb1nY7ngWCjvFiWU7LaHbhX8KA==;
-Received: from [192.168.0.1] (helo=librem14.Hitronhub.home)
-	by uvw.ixypsilon.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <stefan.nagy@ixypsilon.net>)
-	id 1rE7JH-0006gN-0U;
-	Fri, 15 Dec 2023 13:28:56 +0100
-From: Stefan Nagy <stefan.nagy@ixypsilon.net>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
+	id 1rE8fb-003Roa-1g;
+	Fri, 15 Dec 2023 13:56:06 +0000
+Received: from mail-nwsmtp-smtp-production-main-17.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-17.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:96a1:0:640:9109:0])
+	by forward101b.mail.yandex.net (Yandex) with ESMTP id 81A33608F7;
+	Fri, 15 Dec 2023 16:55:54 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-17.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id VtlX2gDOoGk0-AaWlqoYh;
+	Fri, 15 Dec 2023 16:55:53 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail;
+	t=1702648553; bh=ctP5Vc/yFooEeZGOcVWipv3Odg8pHuYf8VwLv1qbbZE=;
+	h=Message-ID:Date:Cc:Subject:To:From;
+	b=OQ1VRyDsx/HCJzpSdi+Osw43AspqBfXaOGFGnpEgTH1WSJ0ixADhzRHfxoZETps/t
+	 v9egXvGUCG/xB16HMBRfD1+LBUCF+56YDOyI85TavqA/eBtW4PhcPRkkK3j50gZza0
+	 p6htQ//Lk2qpZSUZyfeGbRzdqd0sKbdjUQnr/7+U=
+Authentication-Results: mail-nwsmtp-smtp-production-main-17.iva.yp-c.yandex.net; dkim=pass header.i=@6tel.net
+From: efectn@6tel.net
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Increase maximum frequency of SPI flash for ROCK Pi 4A/B/C
-Date: Fri, 15 Dec 2023 13:28:48 +0100
-Message-Id: <20231215122848.59534-1-stefan.nagy@ixypsilon.net>
-X-Mailer: git-send-email 2.30.2
+	linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	sebastian.reichel@collabora.com,
+	jonas@kwiboo.se,
+	Muhammed Efe Cetin <efectn@protonmail.com>
+Subject: [PATCH 0/3] Add Support for NanoPi R6S and R6C boards
+Date: Fri, 15 Dec 2023 16:55:20 +0300
+Message-ID: <cover.1702647349.git.efectn@protonmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Spam_score: -1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_042904_968058_C27A7FBA 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20231215_055603_766426_AE2694D1 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,57 +76,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ROCK Pi 4A/B/C boards come with a 32 Mbit SPI NOR flash chip (XTX Technology Limited XT25F32) which has a maximum clock frequency of 108 MHz. However, the Rockchip SPI controller driver limits the maximum SPI clock frequency to 50 MHz. Use this limit for spi-max-freq.
+From: Muhammed Efe Cetin <efectn@protonmail.com>
 
-This patch has been tested on ROCK Pi 4A.
+Hi, this series add support for RK3588S based NanoPi R6S and R6C boards.
 
-Signed-off-by: Stefan Nagy <stefan.nagy@ixypsilon.net>
----
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Muhammed Efe Cetin (3):
+  dt-bindings: arm: rockchip: Add NanoPi R6 series boards
+  arm64: dts: rockchip: Add support for NanoPi R6S
+  arm64: dts: rockchip: Add support for NanoPi R6C
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-index d5df8939a..30e63e62a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
-@@ -19,6 +19,6 @@ &spi1 {
- 	flash@0 {
- 		compatible = "jedec,spi-nor";
- 		reg = <0>;
--		spi-max-frequency = <10000000>;
-+		spi-max-frequency = <50000000>;
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-index bee6d7588..7122bf6c0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -37,7 +37,7 @@ &spi1 {
- 	flash@0 {
- 		compatible = "jedec,spi-nor";
- 		reg = <0>;
--		spi-max-frequency = <10000000>;
-+		spi-max-frequency = <50000000>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-index de2ebe4cb..8af75bc7c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-@@ -49,7 +49,7 @@ &spi1 {
- 	flash@0 {
- 		compatible = "jedec,spi-nor";
- 		reg = <0>;
--		spi-max-frequency = <10000000>;
-+		spi-max-frequency = <50000000>;
- 	};
- };
- 
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../boot/dts/rockchip/rk3588s-nanopi-r6c.dts  |  14 +
+ .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 755 ++++++++++++++++++
+ 4 files changed, 778 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+
 -- 
-2.30.2
+2.43.0
 
 
 _______________________________________________
