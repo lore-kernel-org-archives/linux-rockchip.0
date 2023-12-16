@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CF5C46CCD
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E605CC46CCD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KYCNTd9SGxZSZ3paItvHE+mbbdEytakLpG8fESLeTnc=; b=ksZScrII9N++qf
-	dipEPRf+li3d9an43v1ADtl5MRsu3zGevbSToX6f3gxY6w1KSeCIi5mYy59xNJhH3wQ/+jCREYjab
-	e7nVKoqXyd5M8dnZ8J7NLXht+W/+IaiVIIXJiGc9yyoNMRU1PsHfmEGW9kZdaxEm+geoYvp6nmE3w
-	X57OInj0KwXoaYwoYB5SBh9sS9h8FTL0KCg3FXJXsIlChB410uCaB9KmUQVWtESSu8fyCewL8EAIJ
-	IDmJnE96ORvVGpZmb0OBXs9fvM/gXtqwLlNt1FGV9aSmQvBvBa2e7trcJOKBnQp3mNrTsH8ClMcjP
-	KkUbTrXTCx0pU63Xep6w==;
+	List-Owner; bh=DuvOLuCsBz0E/DgCXIFoQsvrb7X5gV6CN7QMtEU8hlg=; b=pm4vMgdwpXNKkD
+	d2m4ylp9EtKQKyG/a5Sz5ZsqYh7lFTuZG3NReNoug/vefpQu2txSQI6t7+LXU74I+pVSljn+4s8xT
+	2mDB42yyec/lNXSXt5158njE+F3SzBe7tfZCfmQ1pK7Qqs0twRoAKJ/UFgY8moxNtpbEkgeHI/uUv
+	LeYRR7g7XlPGTB+Frgy1BDvgGk7Uk72PKI7aP+FtgTI/VDu32EMkPJOMqRgJhj4Asmj2MNL0z1Adg
+	+nz6RDPMoR/HE915y7ONU+qwHB86Fvu8VSpcMn4n077KGm86cA9d1daYfaHruqCLD+x4l8dpGL0TC
+	C7YdRvL2OOK7nbb8w4Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXXg-006M4i-1Z;
-	Sat, 16 Dec 2023 16:29:32 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1rEXXh-006M5b-2w;
+	Sat, 16 Dec 2023 16:29:33 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVd-006K2W-2M;
+	id 1rEXVc-006K0A-2F;
 	Sat, 16 Dec 2023 16:27:27 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a1e35c2807fso191394666b.3;
-        Sat, 16 Dec 2023 08:27:25 -0800 (PST)
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40d12b56a38so3244065e9.2;
+        Sat, 16 Dec 2023 08:27:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702744044; x=1703348844; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1702744041; x=1703348841; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gBYs3PhPVI6eUxnSZWKmlMF4qjz6lpemR7OHeO6knFA=;
-        b=kA+IyIU9gMB8GcEpVuU4G3py3SHFbQ3GOf0wdS/ZY2h+baih5ZpnO9zp/gIunAl2Pn
-         o7rPsI7d+2i9hF8BaTd16zgLnW5gORFiTdr/GN4FsQJLcJl8pkVCV3ze1wrioWGVr+gt
-         Uhk3kgmzZWYuYr6aw69aboQ0bdQeFd9+Ybah5PMUC5HiU/eMDcxFPaxnpuFzrIsvhDoy
-         dgXsFI08IfYgLj6MLO8YiM8usKxfYmnqPOMaPrRklibO7UjsNPgSezmiFptlToBHUsFP
-         zQ0MYkRB5IyKSoCigfd7MX9MEO2T98XO2x4wznIB88h3szbb31bM95/O6lr4nlT3zxoH
-         Kx7Q==
+        bh=BFps/f+CAs2Nk6z2SsJd+Q0Norbs9x1sCDtq35o8jMc=;
+        b=OaMhc6hOcWyI3EcwC07sfQHmS61QhAzmhYKWOk0UYaRQQz9qQ8GCKaVsUPsG1iYeIN
+         /A63PGEhDuWq9PEhsLSaXf9UTKn5mg/piy4kUpljirv0whM8CA/viG2HzeIIbideRrNn
+         dAaBVgfoJzvAt3IvPvtaYIEqFFQvtwzenn8RUyMwt2xeJ32FEJ9+F7J9zSPyqVrfBRSI
+         BzzqrSgwvSPJuIVBeGuMiiU1/+cRF3smUBtMGpLlESBaRuBkOn5TTrxSlITvWyY26TKD
+         qUEY/FmRFGIdLlmm8GJyuAqc+5klREWDrAFKyvSEHzal8LPStXMcwQs/6WtrbwKDENNr
+         /E9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702744044; x=1703348844;
+        d=1e100.net; s=20230601; t=1702744041; x=1703348841;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gBYs3PhPVI6eUxnSZWKmlMF4qjz6lpemR7OHeO6knFA=;
-        b=iaG1V7pdPROwNxqi/7zUvhCFFciUsBvSfTXwAfpg+LyPBAZcTVab7SYWIr0rhzfeJQ
-         Gla7H4UlRkf9juTnPPI+o3R8x+QKjpMKYWD1B0YNRZdYuvziASEPyhu/2XSmV4ud0mij
-         i+3zzGa3ym7B5tXJYx07QJqVQvZoKlxTcBoA00KIuYbVS5rPdQQOTnP6wOWFFGwBQ8Ph
-         Q2aYlhWxfxkgQtFajTeEATreNdfqGhGzs1ELCcejSkhi9WQbayS4EAehQBfZcxR0+5R4
-         18xnVvnE6WxPDHHpnkFJWAPObEOkgp9G86jT86yXebvsfydWlgBFDEe09Gmap8GS/9zn
-         aRRg==
-X-Gm-Message-State: AOJu0YzTzw01mNb1ERsl0fDt1btmrib9TKHDnSGHpO4/XECiNGLZ0+7u
-	lnbS0BfyL30EJUECLWUbnQ==
-X-Google-Smtp-Source: AGHT+IFL//jIxTYByWAR+rnaaAeoTcePi2y7wDdwHT2lbXxpOe8v9YhxlqSjIVwsz6sRq5BVkqL4xw==
-X-Received: by 2002:a17:906:3199:b0:a23:2e05:8465 with SMTP id 25-20020a170906319900b00a232e058465mr339276ejy.6.1702744044454;
-        Sat, 16 Dec 2023 08:27:24 -0800 (PST)
+        bh=BFps/f+CAs2Nk6z2SsJd+Q0Norbs9x1sCDtq35o8jMc=;
+        b=jMqQZQvr5PUFdfwnQb/kS7j1Ys/izWOXl5jQ/3ziNMhSLAmXrF7/vhQCR+X7ZvM3Fc
+         2z/7+RTYSjbklaiVyAVyHDUbpMMU0DTS5a0Egx3jzgPYLA+sxU8V1F4l3UmM81CkcFGV
+         nwsna6opMPuLsltdw1ymWiS1LktxN6wm+AzaRgjPWUco4BgL4GNYUdV9XVHCyk0Q64WH
+         IMiYP2kDCSnZe78Ojva7QbHBgSN0l2A0YCcsk4MTtnJejJby0E9l0q8d/WH36795slZB
+         IseJ9UVSFZBopJjvkfynHRUnCn/2CF0T8sprPGDFYTag7xs5FipqpWi52Ae+lmavheiu
+         ppfg==
+X-Gm-Message-State: AOJu0YxNF6Tgp2LBuKeOwQhf20c1rbuSQLCZ/j5+V7ZFsVK49calBOEk
+	g2S9D0XVnxUknfFfiTloPg==
+X-Google-Smtp-Source: AGHT+IGBF4gaRoU/EL0I7tI8RwIyRSfbuxuXO3TR0CaxGjhOjNNy6BcBWFK0VOilT5H96GBjjIme0g==
+X-Received: by 2002:a05:600c:3d10:b0:40c:dda4:3582 with SMTP id bh16-20020a05600c3d1000b0040cdda43582mr264470wmb.314.1702744041618;
+        Sat, 16 Dec 2023 08:27:21 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:e807:d345:6f47:1db9])
-        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.23
+        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Dec 2023 08:27:24 -0800 (PST)
+        Sat, 16 Dec 2023 08:27:21 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 26/27] ARM: dts: rockchip: Add HDMI node for RK3128
-Date: Sat, 16 Dec 2023 17:26:37 +0100
-Message-ID: <20231216162639.125215-27-knaerzche@gmail.com>
+Subject: [PATCH v2 22/27] drm/rockchip: inno_hdmi: Add RK3128 support
+Date: Sat, 16 Dec 2023 17:26:33 +0100
+Message-ID: <20231216162639.125215-23-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231216162639.125215-1-knaerzche@gmail.com>
 References: <20231216162639.125215-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231216_082725_794437_24FC59A0 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20231216_082724_745948_D975F8DA 
+X-CRM114-Status: GOOD (  20.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,69 +104,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3128 has Innosilicon based HDMI TX controller similar to the one found in
-RK3036.
-Add it and the respective port nodes to the SoC device tree.
+This variant requires the phy reference clock to be enabled before the DDC
+block can work and the (initial) DDC bus frequency is calculated based on
+the rate of this clock. Besides the only difference is phy configuration
+required to make the driver working for this variant as well.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes in v2:
  - no changes
 
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 33 ++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 46 +++++++++++++++++++++++++---
+ 1 file changed, 41 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 1a3bc8b2bc6e..fb98873fd94e 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -270,6 +270,11 @@ vop: vop@1010e000 {
- 		vop_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
-+
-+			vop_out_hdmi: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&hdmi_in_vop>;
-+			};
- 		};
- 	};
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 579baba6a61b..792e5fad09bf 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -51,6 +51,7 @@ struct inno_hdmi {
+ 	struct device *dev;
  
-@@ -463,6 +468,34 @@ usb2phy_otg: otg-port {
- 		};
- 	};
+ 	struct clk *pclk;
++	struct clk *refclk;
+ 	void __iomem *regs;
  
-+	hdmi: hdmi@20034000 {
-+		compatible = "rockchip,rk3128-inno-hdmi";
-+		reg = <0x20034000 0x4000>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_HDMI>, <&cru DCLK_VOP>;
-+		clock-names = "pclk", "ref";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
-+		power-domains = <&power RK3128_PD_VIO>;
-+		status = "disabled";
+ 	struct drm_connector	connector;
+@@ -133,6 +134,12 @@ static struct inno_hdmi_phy_config rk3036_hdmi_phy_configs[] = {
+ 	{      ~0UL, 0x00, 0x00 }
+ };
+ 
++static struct inno_hdmi_phy_config rk3128_hdmi_phy_configs[] = {
++	{  74250000, 0x3f, 0xaa },
++	{ 165000000, 0x5f, 0xaa },
++	{      ~0UL, 0x00, 0x00 }
++};
 +
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
+ static int inno_hdmi_find_phy_config(struct inno_hdmi *hdmi,
+ 				     unsigned long pixelclk)
+ {
+@@ -182,13 +189,17 @@ static unsigned long inno_hdmi_tmds_rate(struct inno_hdmi *hdmi)
+ 	}
+ 
+ 	/*
+-	 * When IP controller haven't configured to an accurate video
+-	 * timing, then the TMDS clock source would be switched to
+-	 * PCLK_HDMI, so we need to init the TMDS rate to PCLK rate,
+-	 * and reconfigure the DDC clock.
++	 * When IP controller isn't configured to an accurate
++	 * video timing and there is no reference clock available,
++	 * then the TMDS clock source would be switched to PCLK_HDMI,
++	 * so we need to init the TMDS rate to PCLK rate, and
++	 * reconfigure the DDC clock.
+ 	 */
+ 
+-	return clk_get_rate(hdmi->pclk);
++	if (hdmi->refclk)
++		return clk_get_rate(hdmi->refclk);
++	else
++		return clk_get_rate(hdmi->pclk);
+ }
+ 
+ static void inno_hdmi_i2c_init(struct inno_hdmi *hdmi)
+@@ -912,6 +923,20 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	hdmi->refclk = devm_clk_get_optional(hdmi->dev, "ref");
++	if (IS_ERR(hdmi->refclk)) {
++		DRM_DEV_ERROR(hdmi->dev, "Unable to get HDMI reference clock\n");
++		ret = PTR_ERR(hdmi->refclk);
++		goto err_disable_pclk;
++	}
 +
-+			hdmi_in: port@0 {
-+				reg = <0>;
-+				hdmi_in_vop: endpoint {
-+					remote-endpoint = <&vop_out_hdmi>;
-+				};
-+			};
++	ret = clk_prepare_enable(hdmi->refclk);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev,
++			      "Cannot enable HDMI reference clock: %d\n", ret);
++		goto err_disable_pclk;
++	}
 +
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+ 		ret = irq;
+@@ -951,6 +976,8 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ err_put_adapter:
+ 	i2c_put_adapter(hdmi->ddc);
+ err_disable_clk:
++	clk_disable_unprepare(hdmi->refclk);
++err_disable_pclk:
+ 	clk_disable_unprepare(hdmi->pclk);
+ 	return ret;
+ }
+@@ -964,6 +991,7 @@ static void inno_hdmi_unbind(struct device *dev, struct device *master,
+ 	hdmi->encoder.encoder.funcs->destroy(&hdmi->encoder.encoder);
+ 
+ 	i2c_put_adapter(hdmi->ddc);
++	clk_disable_unprepare(hdmi->refclk);
+ 	clk_disable_unprepare(hdmi->pclk);
+ }
+ 
+@@ -987,10 +1015,18 @@ static const struct inno_hdmi_variant rk3036_inno_hdmi_variant = {
+ 	.default_phy_config = &rk3036_hdmi_phy_configs[1],
+ };
+ 
++static const struct inno_hdmi_variant rk3128_inno_hdmi_variant = {
++	.phy_configs = rk3128_hdmi_phy_configs,
++	.default_phy_config = &rk3128_hdmi_phy_configs[1],
++};
 +
- 	timer0: timer@20044000 {
- 		compatible = "rockchip,rk3128-timer", "rockchip,rk3288-timer";
- 		reg = <0x20044000 0x20>;
+ static const struct of_device_id inno_hdmi_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3036-inno-hdmi",
+ 	  .data = &rk3036_inno_hdmi_variant,
+ 	},
++	{ .compatible = "rockchip,rk3128-inno-hdmi",
++	  .data = &rk3128_inno_hdmi_variant,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
 -- 
 2.43.0
 
