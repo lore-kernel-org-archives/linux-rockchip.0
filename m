@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB4CC46CD3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5B4C46CD4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qKtIDLNWUv6lutXlkfKOIagRmBwonf4J6ybO7lIKMNA=; b=FvqCjt+F6/Vmyw
-	YCSXJ8CXwIr+avo04sMnX5mNKrEhuZYeFUeoY+Y48JP92qRt2IWKs18S+ujGFD1SB/ll8XlorzSxE
-	QMAg8WGGadD+5c5C1ypOxPysx7DzUA9i8sHv4GU7BxWe3YMvMDFcdifrFt1elriUz9pK9N07/Yy0I
-	Vj+NdckpNcDT80wT5nLVFuvHvzWZ/ypju62BB+6bjaRT8hEYZS/SOX9Cxrmg4VmM8yy3p+v2qSgGz
-	iUQMvbISsCJ9esuYfcprOSscFN3RYbSdwrulaJI7TYWzatSOhn2yXL/LLSXpKQH2Hbfn8TErnvvbO
-	VsIUBxbj2Lr98J6Dbglg==;
+	List-Owner; bh=NlP23ql/fzxr9BcHCf4pexTjZuW7S1j3eXbRCd1Bhv0=; b=egPgUvh8D/krdd
+	iy/VNi7A0M2aYoXZTU/4TAUdw5JiaTKpRmz9/rFYqVIgXexF5A+vAzy950OI9eAsLOYT2q5qs3+wH
+	JrXhIOUa0pfhXMJ86sPGb4EBELaEqb4pc6y42eHFcWP8a6Oe/7HD1YbAiP/aSWSaWLsN9/kAvDxjt
+	zgtbGNB3sk6IxOHEqBFLSFmHCYjogHUqWixa/dB1X+PUxViMfG0mpCqEwALuykDTqSh0lwK6Krt+e
+	qpSogkeZjg8Eh1n2YI+/aTOUfmvXXqkF3bkh6YJ638f4Bj7Zw/HCllbtNv9OMXtDYvnFDQu3xsZox
+	l7IezBwyV8M5+ivChJRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVt-006KHs-0m;
-	Sat, 16 Dec 2023 16:27:41 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1rEXVW-006Jve-1A;
+	Sat, 16 Dec 2023 16:27:18 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVQ-006JnX-2e;
-	Sat, 16 Dec 2023 16:27:14 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a2331caab22so26553466b.3;
-        Sat, 16 Dec 2023 08:27:11 -0800 (PST)
+	id 1rEXVO-006JnQ-1s;
+	Sat, 16 Dec 2023 16:27:11 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-50bdec453c8so1858427e87.3;
+        Sat, 16 Dec 2023 08:27:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702744030; x=1703348830; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1702744028; x=1703348828; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Hqi83IjE0rGQjBdIOPd+5QjMZSA3M3R/UCn49KPkLl0=;
-        b=CpqVMpzZ9Of1LYj9Q/Wp7asv3m2gUIP4pYR8RVZS/8YLCx01W+fF+/VeGT6ArJTAbb
-         j2DnzJjeALDTVOzuS+c0AyxP94YlnS0oF2+7wWXg7zdEn2ZdbpGDRXHEf9emzdqVNbTH
-         deoQ7Z3++39hpOEUQ6/ul6PUqjPAlok9eoAWOk26vrKV8EG1pHOsq1A5/8cbDAhpgSxA
-         MArLqPdwQk1otOXBBCncquVQTtzklN4MLresWrbvS+H3K8p8RxmRPpai5hSqo+jEgUdY
-         VGTLkRBPfA0CM5f+QDzS82wieGsq171xwnMOZrwvitKu5GaGaXA8KWiKwKTA+gASUryC
-         eQOQ==
+        bh=ujhT/xhztHbY8JzCzlkbXu+iQMCJG+MMsIZQaYuJZKs=;
+        b=SUtfAFMIbl1jKLXicM/GuMSQNGnoxRpGmMcVVccvMHb/1nwRF9kIsnAGMjucWmOq9W
+         l+aBWfbGShGd/2Y2q3Hgq9eDsMpjlCKh1Qhwhx8lnfspW2m1acBvFglLxc9TPOiwy12a
+         6R00eQ+apNg1lJLTMA0izgw48ZGZr0W1jHGXYDFsykMR/k2fnamPOHztxH3YWgCMqHMc
+         7MxBMlEtMzusX5VdBOCbtORmPhC1X9funXgbYVL0yzML2jHPFSTXWXBrEMj7KZ5TfwvB
+         Yev3NoFCzxQ1pHPg1hetmtBR8nnawg7nrnvRmq/NHRqrbKjdg+gndkqevbERYIqw0EET
+         xjLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702744030; x=1703348830;
+        d=1e100.net; s=20230601; t=1702744028; x=1703348828;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Hqi83IjE0rGQjBdIOPd+5QjMZSA3M3R/UCn49KPkLl0=;
-        b=q47HkO/VeNgFLaKbb04uDiRpN3Wu/RJpJtqXS5pvXJgnc9bMnPQ9MGkwV4B4nnv2sn
-         18R6zIMaNSdEIXNNOHeHNOCCBIVDC7G9hLJYs7LnEMdoQyasFqAbnji12iOScg2VfEOO
-         2hc9i0L4mleCbQ5WmKuiMn4cU+rKPe3kLjr3gjUpmxav31FulIS1g476i9qiF8BdZ9Ma
-         SfHP8ZQJE4aAmSe2/twW3f576qVqBOxOR79TJxL+ErIghBsH1JisYBkLL+6O4oR9EvYk
-         3B1frSTNvkDW5tghyr5+pE+Fj7x/3hFfDYCQ9IDlngbqtWN16HKfg+CDk11Ob2/gNNgH
-         XlBg==
-X-Gm-Message-State: AOJu0YxQrVHTXX2eZ+Shcm/6WHAzG4rwSG7WU8AvAY2PPMb/uXdy8afa
-	JC+8UUDnfp1sRUohVJUgzA==
-X-Google-Smtp-Source: AGHT+IHHkaSV0PLeGLYtGjjthyyJAnEZDrIREkjriPjfZBjDTW6VbnTr3UAM7Dj/3F63T9YuXxGXpg==
-X-Received: by 2002:a17:906:5352:b0:a1f:9617:99a with SMTP id j18-20020a170906535200b00a1f9617099amr4768328ejo.94.1702744029988;
-        Sat, 16 Dec 2023 08:27:09 -0800 (PST)
+        bh=ujhT/xhztHbY8JzCzlkbXu+iQMCJG+MMsIZQaYuJZKs=;
+        b=s4yiAOvtRt7EqVOa1ixXkwkCQsWUd2gutQ18LRHDKdwsCw1B/E7pAC14NEQh+WhXJ0
+         JXkr44iFFvWX7nHVogDrDwf10389374LNmq/YHN118fZ9E5kM6Pz1xK7HNtIvG4MHTPj
+         YWSi783NXRbz4d0EX71aGARR+ZGjaQeN2VUawZh5pEQ8p5wDaGwBjA0VxnQYueiQF8+r
+         GsrX6jWLmDkP89rKVXM6tT0Xp4oB1kFmyK1aFvliAUWUUUmPpYkPTTFqR3HxYxW97IzD
+         89mba+jn4YMi5x+DKme6AHb+0BYW+lwwz1EIpiTlhQhoZnqxN67hGvNdzx4V5gviA6fA
+         B3GQ==
+X-Gm-Message-State: AOJu0YzpNGoO4nl0z7KgpZFPwzEOo0ypJ26W5/y8MiKz7MeYg/Z/yKpH
+	J9JB+TvKOLRoFldkdbNhag==
+X-Google-Smtp-Source: AGHT+IEoZS1JzzGc12YB/MN689Vsdo/GX0yIsCmhRzmI2mChIP6YnFGPdCsy2rPk5UV5T25TnOSVWw==
+X-Received: by 2002:a19:8c0d:0:b0:50b:f55b:abb9 with SMTP id o13-20020a198c0d000000b0050bf55babb9mr6923253lfd.94.1702744028520;
+        Sat, 16 Dec 2023 08:27:08 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:e807:d345:6f47:1db9])
-        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.09
+        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Dec 2023 08:27:09 -0800 (PST)
+        Sat, 16 Dec 2023 08:27:08 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 06/27] drm/rockchip: inno_hdmi: Switch encoder hooks to atomic
-Date: Sat, 16 Dec 2023 17:26:17 +0100
-Message-ID: <20231216162639.125215-7-knaerzche@gmail.com>
+Subject: [PATCH v2 04/27] drm/rockchip: inno_hdmi: Remove useless mode_fixup
+Date: Sat, 16 Dec 2023 17:26:15 +0100
+Message-ID: <20231216162639.125215-5-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231216162639.125215-1-knaerzche@gmail.com>
 References: <20231216162639.125215-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231216_082712_859805_7490A455 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20231216_082710_641370_1F02FF46 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,8 +106,8 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Maxime Ripard <mripard@kernel.org>
 
-The inno_hdmi encoder still uses the !atomic variants of enable, disable
-and modeset. Convert to their atomic equivalents.
+The mode_fixup implementation doesn't do anything, so we can simply
+remove it.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 Tested-by: Alex Bee <knaerzche@gmail.com>
@@ -115,58 +115,35 @@ Tested-by: Alex Bee <knaerzche@gmail.com>
 changes in v2:
  - imported patch
 
- drivers/gpu/drm/rockchip/inno_hdmi.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 14d2ba92a606..48c4f010b260 100644
+index 345253e033c5..0b1740b38c7b 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -491,22 +491,25 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+@@ -517,13 +517,6 @@ static void inno_hdmi_encoder_disable(struct drm_encoder *encoder)
+ 	inno_hdmi_set_pwr_mode(hdmi, LOWER_PWR);
  }
  
- static void inno_hdmi_encoder_mode_set(struct drm_encoder *encoder,
--				       struct drm_display_mode *mode,
--				       struct drm_display_mode *adj_mode)
-+				       struct drm_crtc_state *crtc_state,
-+				       struct drm_connector_state *conn_state)
- {
-+	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
- 
- 	inno_hdmi_setup(hdmi, adj_mode);
- }
- 
--static void inno_hdmi_encoder_enable(struct drm_encoder *encoder)
-+static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
-+				     struct drm_atomic_state *state)
- {
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
- 
- 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
- }
- 
--static void inno_hdmi_encoder_disable(struct drm_encoder *encoder)
-+static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
-+				      struct drm_atomic_state *state)
- {
- 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
- 
-@@ -527,10 +530,10 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
- }
- 
+-static bool inno_hdmi_encoder_mode_fixup(struct drm_encoder *encoder,
+-					 const struct drm_display_mode *mode,
+-					 struct drm_display_mode *adj_mode)
+-{
+-	return true;
+-}
+-
+ static int
+ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ 			       struct drm_crtc_state *crtc_state,
+@@ -540,7 +533,6 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
  static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
--	.enable     = inno_hdmi_encoder_enable,
--	.disable    = inno_hdmi_encoder_disable,
--	.mode_set   = inno_hdmi_encoder_mode_set,
--	.atomic_check = inno_hdmi_encoder_atomic_check,
-+	.atomic_check	= inno_hdmi_encoder_atomic_check,
-+	.atomic_enable	= inno_hdmi_encoder_enable,
-+	.atomic_disable	= inno_hdmi_encoder_disable,
-+	.atomic_mode_set	= inno_hdmi_encoder_mode_set,
+ 	.enable     = inno_hdmi_encoder_enable,
+ 	.disable    = inno_hdmi_encoder_disable,
+-	.mode_fixup = inno_hdmi_encoder_mode_fixup,
+ 	.mode_set   = inno_hdmi_encoder_mode_set,
+ 	.atomic_check = inno_hdmi_encoder_atomic_check,
  };
- 
- static enum drm_connector_status
 -- 
 2.43.0
 
