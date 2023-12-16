@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7993AC46CD3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E77C46CCD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vhC56o1fTo89bdmVyDxK53pu2Sp131JRAMGOgQWeoOM=; b=xChdPafIE/qMUq
-	2tBMJZP2nvHJ4CimCWPY2r7PBBlLkYYwyaeK6BLSr/RUE4+X+yj3TDnhvWR4ikghGxuvkXuSL+iAW
-	Wy8d+r+i82qW9sPtM9VM0r1xTUUiki0ZrLgG4fmsz125ewFvgZnmuw4A207TvnazKCI7RssCkl+3n
-	DuCMjWhl5vp1JYAyq9EzGZcrV7Dj+VUqMRZwj4oY6xy6EU6lVknkhD+NNU8NBh7D+OA8bZ82NLoYD
-	mOrGITs0sVWtoCWZtp3MEB9F1UdwmuG6B7H3IcSuRLp88aW4GvmNQWtWR+QQIb85NLZvo71UjZugF
-	uc7pjAFoF6jr7EAEVs6g==;
+	List-Owner; bh=9nPwA68kGCD5+bFtZsHtD6Fuv+hzfhX/GMcc7Mxlml4=; b=HVwvtr7sUSeUcY
+	oHFkcDZoEU8i1FWBzhtu5OOzxsPcV01CBWTuI+/Njp8KbrUQMyV7dQm1UOPJmNNL9N8D6UVoSmNNn
+	fJXwfdeMDi60+JTXcGnR+CueRY3uE6+o7rYUmQUjgZm7iJ+8VIX4/cuU1rKhkXxDKnDMR3V1z7yjx
+	VRGx7jvbgzzojiRsoGyb9lB7z3TcNgruPxEXAqyK0ESfUnbz8qre16blQNDpkPfZ9dS0E3LuZQ2n9
+	0iTn8eRHQkFn+D+RtuHNse7zWd6CTBnZL1/iIe/iBCwOBnY2tPzLUrvB9NEPTGPwuA9B9qDf9P17O
+	kzqyRMsqVFCYTjbPMVHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXWF-006KiQ-1F;
-	Sat, 16 Dec 2023 16:28:03 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1rEXWL-006Kp9-2c;
+	Sat, 16 Dec 2023 16:28:09 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVU-006Jpm-0Z;
-	Sat, 16 Dec 2023 16:27:18 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40c824b199fso5375565e9.1;
-        Sat, 16 Dec 2023 08:27:14 -0800 (PST)
+	id 1rEXVW-006Jtj-1Q;
+	Sat, 16 Dec 2023 16:27:20 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40c317723a8so19897155e9.3;
+        Sat, 16 Dec 2023 08:27:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702744033; x=1703348833; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1702744036; x=1703348836; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KAoRz0wHCs8LYRbt4lNTAJ8vx4780AGy/20pu4Etj/0=;
-        b=XqJDyUIMQsMzrrK+Dd4E+fgR5pyb/8LUPOH+ZdbPIKiOblNaKVHRaSm1K3c0TTkbyf
-         QPehdWjrkA17qMpQPIw405bZYalt3px+q2dZV4fhXqeij8RkSJaJhtJLRnzxhP3sz7lz
-         3DtPTK2q/PRzgkA+C3jorZnpnFujHskBQ7UXXXi9Z5XOBaxkk4uG5JGl9GTS7B7HiosP
-         pjF4hfyyNoURXUWT4BJMjMn6+EwGGNnJ1vDwHhRTifbLodPW7vCnYDswLZ9k764cH0VI
-         U0pMPcJFw9LYXv22w+RuwiOmH5hOS7XYPROi4E6CAmYGGrbHKVhRrwwnHRw9mz8wAkNr
-         2orQ==
+        bh=mG1054x2y8+5VXwex9KrJL2EhA9y28dmW4DfXU50wTY=;
+        b=RqoRVPu/Cu6qU4NaMR2gGIkJEAn0w+uMRLdaMFlltHkLCo2nOvR/Mn47DXPMwPhCMV
+         HtLRKcyKtD+N/Qsd5NM+DKDCCmgw1yXEjaSSxV0cvx2P8PpqUZXxoVKF2kfEv/lnENgJ
+         7HzSSfuFiFwYC8d/npgWH2K5dZQ1DA7MEJVzvGxcsU+t9lCC2p9uMo73ADfF+k8bX8zW
+         ZKTvMx7qDMdpBk/0Q54vaZnG7YK0+X7UNR6Jw0k6nXembisS/2YmMJoSlMP7eS7kLTI3
+         HZBIRkM8axuOe/9Rm79cabT5WWr0dEBhwG58snZtOfWkUtPqpij5Yj9kqyJd2Ek9N9GB
+         Qeew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702744033; x=1703348833;
+        d=1e100.net; s=20230601; t=1702744036; x=1703348836;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KAoRz0wHCs8LYRbt4lNTAJ8vx4780AGy/20pu4Etj/0=;
-        b=O6nmF3Pw6jRJ/08cZp3wwVXRjXu9c5xcZAurmOOgA9mgDHuDgW2GdAHzKvB8u1LXgb
-         W726ukpXOtw8V8rDw39s72rYpD1YM6eym9zzP/aa4BtkA4G458Kiibqq+oKPZPm4Vmd8
-         +/C1uRwd697jFPGULQe/+JrWLiMEMRLK1wFOgEWf7CfHs6gYdcadnJMpPWjxVqOmGgCG
-         eDm4xypOulS7aZrp6h8PljdhuSISGcmZ9gCfZHo2y4pWZwVy5qrzvakYoyDiCo801Cjy
-         7T3bsaUUiJmwIM/o04elhHXnKsZy5P0vIg4ONIct06J38cBFtzfeCQbRb6xW0whZ0VcC
-         yWEA==
-X-Gm-Message-State: AOJu0YyJWLsOrGhlF8HZTu5w+Bqy/RmDW0DcyaLmuXc6OpyRRk1WTTFF
-	XvRI4RTPJZoUqRTtyaWIFg==
-X-Google-Smtp-Source: AGHT+IG0Hmya+9f+E9zucCIpHt7tAYGl7L/GXaMKN6CpdCLNuo7NhmcAilRqP2ZxOhD8YSjMeDmc/A==
-X-Received: by 2002:a05:600c:474e:b0:40c:4be1:be09 with SMTP id w14-20020a05600c474e00b0040c4be1be09mr4886690wmo.186.1702744032805;
-        Sat, 16 Dec 2023 08:27:12 -0800 (PST)
+        bh=mG1054x2y8+5VXwex9KrJL2EhA9y28dmW4DfXU50wTY=;
+        b=OMTEVd0mHzV95IxfHyH0W3pyjFAmgDkdswEgA1H7UHjkabOsKek8e/8tSHtDkBwa4E
+         YfLILhLEpd3y3WKESGerLUzGv92urU9UjpoXJOVhu9p/bqCtwkQ7W18VQ+3NcgX3KEaX
+         VDXiOBSooa/Mvsdk1faDdsa4+nk6bjXNZyDNEryxwIlanHXGoe6mc6KVrSSyYtByTqfT
+         RMMAW1v+eJB++rdHZ3kG79gO3kYhzUsqZs64aihtzezGHEGj85zBP//ARQ8JjnU8vx2E
+         lK6xGaCDxRrTtib1EFoI4uBnMcscgUEt0BX+ZZowsRodAs+FjJOkU1tOClOCoOLztSjg
+         KUqg==
+X-Gm-Message-State: AOJu0YxGvARNxaR2T+VnhpUia8OD2mCXInzdTGSIMcCko54VM6nTI+21
+	xMcI5ZZs4vaFCiPYqXIY5A==
+X-Google-Smtp-Source: AGHT+IF5X6IwmDt2ZPPo2v31K2XP7aYkHF2OwxSE29V+DEh/kHK4gFeglJFBDfi5S8oMxOTw9YPbPA==
+X-Received: by 2002:a05:600c:3596:b0:40c:ab87:9d9c with SMTP id p22-20020a05600c359600b0040cab879d9cmr547390wmq.53.1702744036134;
+        Sat, 16 Dec 2023 08:27:16 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:e807:d345:6f47:1db9])
-        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.12
+        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Dec 2023 08:27:12 -0800 (PST)
+        Sat, 16 Dec 2023 08:27:15 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 10/27] drm/rockchip: inno_hdmi: Remove useless input format
-Date: Sat, 16 Dec 2023 17:26:21 +0100
-Message-ID: <20231216162639.125215-11-knaerzche@gmail.com>
+Subject: [PATCH v2 14/27] drm/rockchip: inno_hdmi: Switch to infoframe type
+Date: Sat, 16 Dec 2023 17:26:25 +0100
+Message-ID: <20231216162639.125215-15-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231216162639.125215-1-knaerzche@gmail.com>
 References: <20231216162639.125215-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231216_082716_472545_E61E4757 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20231216_082718_488107_2BCDCAEA 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,100 +106,86 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Maxime Ripard <mripard@kernel.org>
 
-The driver has a lot of logic to deal with multiple input formats, but
-hardcodes it to RGB. This means that most of that code has been dead
-code, so let's get rid of it.
+The inno_hdmi driver relies on its own internal infoframe type matching
+the hardware.
+
+This works fine, but in order to make further reworks easier, let's
+switch to the HDMI spec definition of those types.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
-[made checkpatch happy]
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
 Tested-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes in v2:
  - imported patch
-
- drivers/gpu/drm/rockchip/inno_hdmi.c | 41 ++++++++--------------------
- 1 file changed, 11 insertions(+), 30 deletions(-)
+ 
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 58aff7a9c09a..7c75feedacad 100644
+index 6354949bfd8e..b6b34f4b8cda 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -28,7 +28,6 @@
- #include "inno_hdmi.h"
+@@ -207,33 +207,34 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
+ 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
+ }
  
- struct hdmi_data_info {
--	unsigned int enc_in_format;
- 	unsigned int enc_out_format;
- 	unsigned int colorimetry;
- };
-@@ -328,47 +327,30 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
- 		v_VIDEO_INPUT_CSP(0);
- 	hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL2, value);
+-static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi, u32 frame_index)
++static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
++				    enum hdmi_infoframe_type type)
+ {
+ 	struct drm_connector *connector = &hdmi->connector;
  
--	if (data->enc_in_format == data->enc_out_format) {
--		if ((data->enc_in_format == HDMI_COLORSPACE_RGB) ||
--		    (data->enc_in_format >= HDMI_COLORSPACE_YUV444)) {
--			value = v_SOF_DISABLE | v_COLOR_DEPTH_NOT_INDICATED(1);
--			hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL3, value);
--
--			hdmi_modb(hdmi, HDMI_VIDEO_CONTRL,
--				  m_VIDEO_AUTO_CSC | m_VIDEO_C0_C2_SWAP,
--				  v_VIDEO_AUTO_CSC(AUTO_CSC_DISABLE) |
--				  v_VIDEO_C0_C2_SWAP(C0_C2_CHANGE_DISABLE));
--			return 0;
--		}
-+	if (data->enc_out_format == HDMI_COLORSPACE_RGB) {
-+		value = v_SOF_DISABLE | v_COLOR_DEPTH_NOT_INDICATED(1);
-+		hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL3, value);
-+
-+		hdmi_modb(hdmi, HDMI_VIDEO_CONTRL,
-+			  m_VIDEO_AUTO_CSC | m_VIDEO_C0_C2_SWAP,
-+			  v_VIDEO_AUTO_CSC(AUTO_CSC_DISABLE) |
-+			  v_VIDEO_C0_C2_SWAP(C0_C2_CHANGE_DISABLE));
-+		return 0;
+-	if (frame_index != INFOFRAME_AVI) {
++	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+ 		drm_err(connector->dev,
+-			"Unsupported infoframe type: %u\n", frame_index);
++			"Unsupported infoframe type: %u\n", type);
+ 		return;
  	}
  
- 	if (data->colorimetry == HDMI_COLORIMETRY_ITU_601) {
--		if ((data->enc_in_format == HDMI_COLORSPACE_RGB) &&
--		    (data->enc_out_format == HDMI_COLORSPACE_YUV444)) {
-+		if (data->enc_out_format == HDMI_COLORSPACE_YUV444) {
- 			csc_mode = CSC_RGB_0_255_TO_ITU601_16_235_8BIT;
- 			auto_csc = AUTO_CSC_DISABLE;
- 			c0_c2_change = C0_C2_CHANGE_DISABLE;
- 			csc_enable = v_CSC_ENABLE;
--		} else if ((data->enc_in_format == HDMI_COLORSPACE_YUV444) &&
--			   (data->enc_out_format == HDMI_COLORSPACE_RGB)) {
--			csc_mode = CSC_ITU601_16_235_TO_RGB_0_255_8BIT;
--			auto_csc = AUTO_CSC_ENABLE;
--			c0_c2_change = C0_C2_CHANGE_DISABLE;
--			csc_enable = v_CSC_DISABLE;
- 		}
- 	} else {
--		if ((data->enc_in_format == HDMI_COLORSPACE_RGB) &&
--		    (data->enc_out_format == HDMI_COLORSPACE_YUV444)) {
-+		if (data->enc_out_format == HDMI_COLORSPACE_YUV444) {
- 			csc_mode = CSC_RGB_0_255_TO_ITU709_16_235_8BIT;
- 			auto_csc = AUTO_CSC_DISABLE;
- 			c0_c2_change = C0_C2_CHANGE_DISABLE;
- 			csc_enable = v_CSC_ENABLE;
--		} else if ((data->enc_in_format == HDMI_COLORSPACE_YUV444) &&
--			   (data->enc_out_format == HDMI_COLORSPACE_RGB)) {
--			csc_mode = CSC_ITU709_16_235_TO_RGB_0_255_8BIT;
--			auto_csc = AUTO_CSC_ENABLE;
--			c0_c2_change = C0_C2_CHANGE_DISABLE;
--			csc_enable = v_CSC_DISABLE;
- 		}
+-	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, frame_index);
++	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
+ }
+ 
+ static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
+-				  union hdmi_infoframe *frame, u32 frame_index)
++				  union hdmi_infoframe *frame, enum hdmi_infoframe_type type)
+ {
+ 	struct drm_connector *connector = &hdmi->connector;
+ 	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
+ 	ssize_t rc, i;
+ 
+-	if (frame_index != INFOFRAME_AVI) {
++	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+ 		drm_err(connector->dev,
+-			"Unsupported infoframe type: %u\n", frame_index);
++			"Unsupported infoframe type: %u\n", type);
+ 		return 0;
  	}
  
-@@ -443,7 +425,6 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 	struct drm_display_info *display = &hdmi->connector.display_info;
- 	u8 vic = drm_match_cea_mode(mode);
+-	inno_hdmi_disable_frame(hdmi, frame_index);
++	inno_hdmi_disable_frame(hdmi, type);
  
--	hdmi->hdmi_data.enc_in_format = HDMI_COLORSPACE_RGB;
- 	hdmi->hdmi_data.enc_out_format = HDMI_COLORSPACE_RGB;
+ 	rc = hdmi_infoframe_pack(frame, packed_frame,
+ 				 sizeof(packed_frame));
+@@ -257,7 +258,7 @@ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
+ 						      &hdmi->connector,
+ 						      mode);
+ 	if (rc) {
+-		inno_hdmi_disable_frame(hdmi, INFOFRAME_AVI);
++		inno_hdmi_disable_frame(hdmi, HDMI_INFOFRAME_TYPE_AVI);
+ 		return rc;
+ 	}
  
- 	if (vic == 6 || vic == 7 ||
+@@ -268,7 +269,7 @@ static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
+ 	else
+ 		frame.avi.colorspace = HDMI_COLORSPACE_RGB;
+ 
+-	return inno_hdmi_upload_frame(hdmi, &frame, INFOFRAME_AVI);
++	return inno_hdmi_upload_frame(hdmi, &frame, HDMI_INFOFRAME_TYPE_AVI);
+ }
+ 
+ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
 -- 
 2.43.0
 
