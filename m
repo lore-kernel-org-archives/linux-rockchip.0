@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B38BC46CA2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB4CC46CD3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 16:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FQeda7LwE4kWBa7Dip24OXHsvkqof7JGHLXXQxylL4Q=; b=k+ZBQ+KcOIRKMM
-	/KnVFbsbwbNiIfcNCWvbygTKYyIMrWWSAGAV7pEOtLy3V+5vRSuoHV3dinBN+DlRGGg3xFKT+yFJ2
-	EN9QrJ6Kriha0ikitYSYpfvHlnA59biHhA63fcJfbQyRnVN8Z54R14UpbzVcOSMDsrUWh+Pd5E9NJ
-	mfhKPtj2eZLrbi72HS/qB6nHBN8nbT+ue4gf2xQtTObWvo8yhVWvEloiUXSmMifw10dqraan48P1z
-	ZuN+i3PWV1VkToNFelShzgrCi54r0vl7eBhnK+A9L1tHo5efA2RO2yMwt8dBTPAKJp78IfOhAsdQd
-	zpgbvBN43aaDyV3EKHug==;
+	List-Owner; bh=qKtIDLNWUv6lutXlkfKOIagRmBwonf4J6ybO7lIKMNA=; b=FvqCjt+F6/Vmyw
+	YCSXJ8CXwIr+avo04sMnX5mNKrEhuZYeFUeoY+Y48JP92qRt2IWKs18S+ujGFD1SB/ll8XlorzSxE
+	QMAg8WGGadD+5c5C1ypOxPysx7DzUA9i8sHv4GU7BxWe3YMvMDFcdifrFt1elriUz9pK9N07/Yy0I
+	Vj+NdckpNcDT80wT5nLVFuvHvzWZ/ypju62BB+6bjaRT8hEYZS/SOX9Cxrmg4VmM8yy3p+v2qSgGz
+	iUQMvbISsCJ9esuYfcprOSscFN3RYbSdwrulaJI7TYWzatSOhn2yXL/LLSXpKQH2Hbfn8TErnvvbO
+	VsIUBxbj2Lr98J6Dbglg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVf-006K5U-1h;
-	Sat, 16 Dec 2023 16:27:27 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1rEXVt-006KHs-0m;
+	Sat, 16 Dec 2023 16:27:41 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEXVQ-006JnC-08;
-	Sat, 16 Dec 2023 16:27:13 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a1e2ded3d9fso193178666b.0;
-        Sat, 16 Dec 2023 08:27:08 -0800 (PST)
+	id 1rEXVQ-006JnX-2e;
+	Sat, 16 Dec 2023 16:27:14 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a2331caab22so26553466b.3;
+        Sat, 16 Dec 2023 08:27:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702744027; x=1703348827; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1702744030; x=1703348830; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4Lm26+4tm6Q9dy5TiKyQzH1wZ/PMiBfYpwbeTXzDXzY=;
-        b=g9g3rr6irULjB9mBOwDHq3VNJFtOIuae5gTZCNEDtOJFQfEv2KaGyO7Lqn6LaLU6av
-         W4uN711jNQ9Kh/kdU0Y/ElOpAPjZ24CbhWrAi6urC8YwgNOrcg76kaEf1WBiPuu+Ejc8
-         3T/eRTuAzE75iYUTKzZNeArC2fhGnDVMGeTx+9Qgp9VFzb+MD3O1Viy72dkvtONlORGC
-         Wnt26P2NMy7UsqVBit89DC2Weywa9OX19RWfx8nQ4ugc33KvKnIsRWQm68hYzXHBibas
-         9z7RwZGKsPg2Z3WsOUVnEB2uDcDlXChgaNExxoIbrfCucNH6QiEHgHuiDr33NsBOo36U
-         bPng==
+        bh=Hqi83IjE0rGQjBdIOPd+5QjMZSA3M3R/UCn49KPkLl0=;
+        b=CpqVMpzZ9Of1LYj9Q/Wp7asv3m2gUIP4pYR8RVZS/8YLCx01W+fF+/VeGT6ArJTAbb
+         j2DnzJjeALDTVOzuS+c0AyxP94YlnS0oF2+7wWXg7zdEn2ZdbpGDRXHEf9emzdqVNbTH
+         deoQ7Z3++39hpOEUQ6/ul6PUqjPAlok9eoAWOk26vrKV8EG1pHOsq1A5/8cbDAhpgSxA
+         MArLqPdwQk1otOXBBCncquVQTtzklN4MLresWrbvS+H3K8p8RxmRPpai5hSqo+jEgUdY
+         VGTLkRBPfA0CM5f+QDzS82wieGsq171xwnMOZrwvitKu5GaGaXA8KWiKwKTA+gASUryC
+         eQOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702744027; x=1703348827;
+        d=1e100.net; s=20230601; t=1702744030; x=1703348830;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4Lm26+4tm6Q9dy5TiKyQzH1wZ/PMiBfYpwbeTXzDXzY=;
-        b=avOM4wDvyxUtuMWCaS4Xm9DC7CAO7x4XyTDSoroMFNefYV7pQiFJvS+R3iHTmHZSCK
-         GKKook6of4WLTrnvnwfdR65BBgRUqbwZihcrQ/HSbBsD7H7fFJAirGtwdExmjVZZj4Pr
-         i4L5X02YjcY5tZk4KcBMmeWkSC6G2YEf7QzzmrftZAZTQ7J+gjU42nv00835eIzeHX3M
-         ZyELUkTHBfhT3gr5CmRZthX3moWAbnSyUzxDK9ObqOV/8sf6dXl7iDR0q2pkRutuq4ra
-         0a/gyK+/3WTBvyanC+1NWyt/AEZ6qgVmEe5afwhjxgmaXdRsTjyEG8H2UNHul79EROIR
-         50BQ==
-X-Gm-Message-State: AOJu0Yx4AsOG6kvZe76K/TKsr/jXFqAqycWA7PDSbhl53wueA+tRdftJ
-	g9CFKQ6P3XyK2HvOjZcDFg==
-X-Google-Smtp-Source: AGHT+IGZ7VeNHGWq+1VZP4LYh9qX3NgWRdPWJnURnN0HnbB2LJH1KRm9aL1BAMwgow9ZPeylMhQF8w==
-X-Received: by 2002:a17:907:208f:b0:a19:a19b:78a7 with SMTP id pv15-20020a170907208f00b00a19a19b78a7mr7159079ejb.106.1702744027021;
-        Sat, 16 Dec 2023 08:27:07 -0800 (PST)
+        bh=Hqi83IjE0rGQjBdIOPd+5QjMZSA3M3R/UCn49KPkLl0=;
+        b=q47HkO/VeNgFLaKbb04uDiRpN3Wu/RJpJtqXS5pvXJgnc9bMnPQ9MGkwV4B4nnv2sn
+         18R6zIMaNSdEIXNNOHeHNOCCBIVDC7G9hLJYs7LnEMdoQyasFqAbnji12iOScg2VfEOO
+         2hc9i0L4mleCbQ5WmKuiMn4cU+rKPe3kLjr3gjUpmxav31FulIS1g476i9qiF8BdZ9Ma
+         SfHP8ZQJE4aAmSe2/twW3f576qVqBOxOR79TJxL+ErIghBsH1JisYBkLL+6O4oR9EvYk
+         3B1frSTNvkDW5tghyr5+pE+Fj7x/3hFfDYCQ9IDlngbqtWN16HKfg+CDk11Ob2/gNNgH
+         XlBg==
+X-Gm-Message-State: AOJu0YxQrVHTXX2eZ+Shcm/6WHAzG4rwSG7WU8AvAY2PPMb/uXdy8afa
+	JC+8UUDnfp1sRUohVJUgzA==
+X-Google-Smtp-Source: AGHT+IHHkaSV0PLeGLYtGjjthyyJAnEZDrIREkjriPjfZBjDTW6VbnTr3UAM7Dj/3F63T9YuXxGXpg==
+X-Received: by 2002:a17:906:5352:b0:a1f:9617:99a with SMTP id j18-20020a170906535200b00a1f9617099amr4768328ejo.94.1702744029988;
+        Sat, 16 Dec 2023 08:27:09 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:e807:d345:6f47:1db9])
-        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.06
+        by smtp.gmail.com with ESMTPSA id st10-20020a170907c08a00b00a1cd0794696sm11990362ejc.53.2023.12.16.08.27.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Dec 2023 08:27:06 -0800 (PST)
+        Sat, 16 Dec 2023 08:27:09 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 02/27] drm/rockchip: vop: Add output selection registers for RK312x
-Date: Sat, 16 Dec 2023 17:26:13 +0100
-Message-ID: <20231216162639.125215-3-knaerzche@gmail.com>
+Subject: [PATCH v2 06/27] drm/rockchip: inno_hdmi: Switch encoder hooks to atomic
+Date: Sat, 16 Dec 2023 17:26:17 +0100
+Message-ID: <20231216162639.125215-7-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231216162639.125215-1-knaerzche@gmail.com>
 References: <20231216162639.125215-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231216_082712_108313_DAD06D55 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20231216_082712_859805_7490A455 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,64 +104,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In contrast to RK3036, RK312x SoCs have multiple output channels such as
-RGB (i.e. LVDS TTL), LVDS, DSI and HDMI.
+From: Maxime Ripard <mripard@kernel.org>
 
-In order to support that, this splits output from RK3036 and defines an
-separate one for RK3126 with the registers required to enable the
-appropriate output and setup the correct polarity.
+The inno_hdmi encoder still uses the !atomic variants of enable, disable
+and modeset. Convert to their atomic equivalents.
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Tested-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes in v2:
- - rephrase commit message
+ - imported patch
 
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 13 ++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_vop_reg.h |  3 +++
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index c51ca82320cb..b9ee02061d5b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -227,11 +227,22 @@ static const struct vop_win_data rk3126_vop_win_data[] = {
- 	  .type = DRM_PLANE_TYPE_CURSOR },
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 14d2ba92a606..48c4f010b260 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -491,22 +491,25 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+ }
+ 
+ static void inno_hdmi_encoder_mode_set(struct drm_encoder *encoder,
+-				       struct drm_display_mode *mode,
+-				       struct drm_display_mode *adj_mode)
++				       struct drm_crtc_state *crtc_state,
++				       struct drm_connector_state *conn_state)
+ {
++	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
+ 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
+ 
+ 	inno_hdmi_setup(hdmi, adj_mode);
+ }
+ 
+-static void inno_hdmi_encoder_enable(struct drm_encoder *encoder)
++static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
++				     struct drm_atomic_state *state)
+ {
+ 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
+ 
+ 	inno_hdmi_set_pwr_mode(hdmi, NORMAL);
+ }
+ 
+-static void inno_hdmi_encoder_disable(struct drm_encoder *encoder)
++static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
++				      struct drm_atomic_state *state)
+ {
+ 	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
+ 
+@@ -527,10 +530,10 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+ }
+ 
+ static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
+-	.enable     = inno_hdmi_encoder_enable,
+-	.disable    = inno_hdmi_encoder_disable,
+-	.mode_set   = inno_hdmi_encoder_mode_set,
+-	.atomic_check = inno_hdmi_encoder_atomic_check,
++	.atomic_check	= inno_hdmi_encoder_atomic_check,
++	.atomic_enable	= inno_hdmi_encoder_enable,
++	.atomic_disable	= inno_hdmi_encoder_disable,
++	.atomic_mode_set	= inno_hdmi_encoder_mode_set,
  };
  
-+static const struct vop_output rk3126_output = {
-+	.pin_pol = VOP_REG(RK3036_DSP_CTRL0, 0xf, 4),
-+	.hdmi_pin_pol = VOP_REG(RK3126_INT_SCALER, 0x7, 4),
-+	.hdmi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 22),
-+	.hdmi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 23),
-+	.rgb_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 24),
-+	.rgb_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 25),
-+	.mipi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 28),
-+	.mipi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 29),
-+};
-+
- static const struct vop_data rk3126_vop = {
- 	.intr = &rk3036_intr,
- 	.common = &rk3036_common,
- 	.modeset = &rk3036_modeset,
--	.output = &rk3036_output,
-+	.output = &rk3126_output,
- 	.win = rk3126_vop_win_data,
- 	.win_size = ARRAY_SIZE(rk3126_vop_win_data),
- 	.max_output = { 1920, 1080 },
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-index 406e981c75bd..fbf1bcc68625 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-@@ -872,6 +872,9 @@
- /* rk3036 register definition end */
- 
- /* rk3126 register definition */
-+#define RK3126_INT_SCALER		0x0c
-+
-+/* win1 register */
- #define RK3126_WIN1_MST			0x4c
- #define RK3126_WIN1_DSP_INFO		0x50
- #define RK3126_WIN1_DSP_ST		0x54
+ static enum drm_connector_status
 -- 
 2.43.0
 
