@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B263EC4167B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Dec 2023 21:12:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04CD6C35274
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Dec 2023 00:10:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9CpxyFFRLMUFo5jRe1xs32MuFDz1DZ3MwiBQEn2WkV0=; b=geCTD0UYPgWZbH
-	ET7QiwePItEKnhDruWuvSb0+/8Du3xebyCtp+wJk23ebXcoPg6Y7MUpZNAPNBKleDjz55vu2fO1ww
-	9RfHGgFymvApSPHu6mgHUBNoMDpdg6YGgTSE9Tara8NkvQbpFuZrlVOQm8nwDsETiZYVEA0mASHDU
-	iSk9A3DLGgWAAUKM5TaRu28xsg3VomgkpJSUroC5jisqvy+2JOjRlLdwvtiuWFaW7OIQUSZHE3YS0
-	igud1eF4fOK/LqHlBaDKZ1LhSPYv+/gB/q11Q3z9XlWa0ciHnLpoyjBvRD6PzWvBOZ+LGnS/Rp3EG
-	qXFU+9PS+Ed3+zSbXsMQ==;
+	List-Owner; bh=MrlcieDpZBXsqeeY58IyOwYzynamvmz6K8Bae1cFGJI=; b=M07Oqrng+bde53
+	t0IsYGBegBpcTSprpTWrRhtu+iyzyiuQqnG8c82kDaKrEOEHvSpjbGzZwdkEijrrtxr7kI9CQhgKu
+	QgOmeModn0VqPuNZIut76zsKkn3i9F/9jpHJtFQoJ6dRHLwelqaDS35P0NyxIpedSNFsm0We1inho
+	MKeE8rRonKjBIu/EhekKqKc7ohFhmw3tkgM+adayr/8sDuyUDIX8CbhmY+SeKshXQ3A4F4MCQKbgw
+	W8wnP1MZOf0VOTIpenCD9pokQZ6Ic58Ie15qXsFKWrvVBLljWmEemK7H3VSClDmp3Dovyjz+3Lr2b
+	2Ql+0/NGnn4IcH+1tRKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEFTV-004aPU-0b;
-	Fri, 15 Dec 2023 21:12:01 +0000
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+	id 1rEIGD-004vNN-0z;
+	Sat, 16 Dec 2023 00:10:29 +0000
+Received: from mail-pg1-f169.google.com ([209.85.215.169])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rEFTS-004aNl-0x
-	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Dec 2023 21:11:59 +0000
-Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-1f5bd86ceb3so709518fac.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 Dec 2023 13:11:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1702674715; x=1703279515; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=b9KJ+4BbcKeSEG7077PFa7FVZHENUrxS+8ivlb7RAxY=;
-        b=W5z8URnOEXUdXoD5N1Aakpp2ynryqHy+X8R0omzoA2YgO53742Dq15gi86a7vNrsAW
-         p4prq3LSGrgugz1Py4GujmCw2gUlNaVwweInnciJwhPpcg96arKpUr+amfAITZ215wyq
-         jJd98wVpr4eT1qiirXVQyQen3ydB9Ez5/X3XyKJJo9sdDep1iqaSigqa5EC8Kzt8BzO+
-         mGdv1o1XXnRBZgVdAIQoLunfhCrfp4uL8llLOV/NfFsZ/qF/1q03JzsjGLb8n/SAyypK
-         H6tvrF500l/ZcJQc/Bw2+np6sTGB5jl5HQq4Wx1jmXRS8wk7mbIGDrNIKflkK/tsAnmk
-         fDZQ==
+	id 1rEIGA-004vMx-26;
+	Sat, 16 Dec 2023 00:10:27 +0000
+Received: by mail-pg1-f169.google.com with SMTP id 41be03b00d2f7-517ab9a4a13so1016402a12.1;
+        Fri, 15 Dec 2023 16:10:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702674715; x=1703279515;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=b9KJ+4BbcKeSEG7077PFa7FVZHENUrxS+8ivlb7RAxY=;
-        b=OpPeYHc8jP8isdvhqtksEOV3YyWgLL+4tqIdu39mP6BfPG+CRPixxX++RwznH076J2
-         k3QDBPJwB5P0wxMpdDxnPeta8t97KlUsaqHfomjL+zF3tqm5YkvA9p42jLUGZLQRc0Pm
-         OrhVt6zo7qz/cZE3F+cTUHeibY7KUoNk88GSn1RSNhZN2HVP1tdy0iNbxjXihx/QDLGs
-         0NAwBd9NqKFWtI2fNquA8AVAiO4A08+Cmm2z3txp31D6xla7Ay3KcUorR6s2BuphUgxz
-         Pi1OUQOMCWezLC2tO1+rY8RkuKAdMmhsQW+14xjhtrSiRiuPB78xbulqywelCLp/cBIg
-         2hXw==
-X-Gm-Message-State: AOJu0Yw/VJTS6MSdP+mzm/wWsB3fs9j5rhWCcGjQkQH/plSSrEWyuY2o
-	zJXcFLYf5yq2kUXUdGlcdF7z2I5SRfLElo33uOWE9g==
-X-Google-Smtp-Source: AGHT+IFHrLpndT4XCwAesdcyNwQf00aMOvX02D4/8uxdog8acvbjKfsi57jpp2aqEyynfGVCKlt0IXuLjUhCsHgb3nk=
-X-Received: by 2002:a05:6870:c09:b0:203:7ccc:b6e8 with SMTP id
- le9-20020a0568700c0900b002037cccb6e8mr1214533oab.25.1702674715317; Fri, 15
- Dec 2023 13:11:55 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702685423; x=1703290223;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Spo3/hZ8bxeF7fEaxgEqhtcJSHCMuSQdfr9Oa59N2+g=;
+        b=auDYwP8KCkOWImWqHNS+YnoxApHgD8rh2VVgJ66eCFeJietoeIzJqVZTtqOQawa4Rn
+         lUSJAHXU43CnH/F9Zja55DU5iVk8TjY3M1AFqBUha4KZ2gfgbpgxZ/jdp5t5TcxxzsrN
+         Of5xzJiI6EmFrG7pmp+X7U8MzIy4//SEzbkWUWRbJbDaQxHXE7bGxE17simub3ewUFvd
+         hLmzTcVJ2u2egZXUluiWUWs4gIB2aS2ghrYXpArQljkrCKLuwKId5uCgJIZWl/XtQlix
+         65PgLGnxx2PwwY3aWsb7gOyLms/y3Xj8wxEh8IKns5hJaA+3JjCkrv2639FgqPGnDL/b
+         LhSQ==
+X-Gm-Message-State: AOJu0YwpCSp/aWoIskft1a+oT3/kU6pJfftn8GuTGeU9XouHFg3xuPav
+	YAFyJLYO9MXp8rtqYciVcn0=
+X-Google-Smtp-Source: AGHT+IE98CQysK2x+uTIv983lVLMgiO6PyltLPUOTrydctMMoJ3tXdlhdw3rQ75gjZBsCZj6K2+4YA==
+X-Received: by 2002:a05:6a20:5525:b0:18f:cf73:3573 with SMTP id ko37-20020a056a20552500b0018fcf733573mr11872782pzb.121.1702685423442;
+        Fri, 15 Dec 2023 16:10:23 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id e8-20020a056a001a8800b006cdda8519aasm14007334pfv.169.2023.12.15.16.10.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Dec 2023 16:10:22 -0800 (PST)
+Date: Sat, 16 Dec 2023 09:10:21 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lpieralisi@kernel.org, bhelgaas@google.com, robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	quentin.schulz@theobroma-systems.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH] dt-bindings: PCI: dwc: rockchip: document optional pcie
+ reference clock input
+Message-ID: <20231216001021.GD1570493@rocinante>
+References: <20231206145041.667900-1-heiko@sntech.de>
 MIME-Version: 1.0
-References: <20231130201504.2322355-1-pasha.tatashin@soleen.com>
- <20231130201504.2322355-11-pasha.tatashin@soleen.com> <c0d23d3e-39e6-57af-fd38-eb1b885d7da4@google.com>
-In-Reply-To: <c0d23d3e-39e6-57af-fd38-eb1b885d7da4@google.com>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Fri, 15 Dec 2023 16:11:18 -0500
-Message-ID: <CA+CK2bD0Wz8mzB_BGKEYKCHRJKKVwr0CPK7OOC0tD_Sxi5Rp5g@mail.gmail.com>
-Subject: Re: [PATCH v2 10/10] iommu: account IOMMU allocated memory
-To: David Rientjes <rientjes@google.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
-	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
-	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
-	will@kernel.org, yu-cheng.yu@intel.com
+Content-Disposition: inline
+In-Reply-To: <20231206145041.667900-1-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231215_131158_571343_54B343BB 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20231215_161026_711487_38E64EBB 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,36 +86,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > diff --git a/Documentation/admin-guide/cgroup-v2.rst b/Documentation/admin-guide/cgroup-v2.rst
-> > index 3f85254f3cef..e004e05a7cde 100644
-> > --- a/Documentation/admin-guide/cgroup-v2.rst
-> > +++ b/Documentation/admin-guide/cgroup-v2.rst
-> > @@ -1418,7 +1418,7 @@ PAGE_SIZE multiple when read back.
-> >         sec_pagetables
-> >               Amount of memory allocated for secondary page tables,
-> >               this currently includes KVM mmu allocations on x86
-> > -             and arm64.
-> > +             and arm64 and IOMMU page tables.
->
-> Hmm, if existing users are parsing this field and alerting when it exceeds
-> an expected value (a cloud provider, let's say), is it safe to add in a
-> whole new set of page tables?
->
-> I understand the documentation allows for it, but I think potential impact
-> on userspace would be more interesting.
+Hello,
 
-Hi David,
+> On some boards the 100MHz PCIe reference clock to both controller and
+> devices is controllable. Add that clock to the list of clocks.
+> 
+> The clock is optional, so the minItems stays the same.
 
-This is something that was discussed at LPC'23. I also was proposing a
-separate counter for iommu page tables, but it was noted that we
-specifically have sec_pagetables called this way to include all non
-regular CPU page tables, and we should therefore account for them
-together.
+Applied to dt-bindings, thank you!
 
-Please also see this discussion from the previous version of this patch series:
-https://lore.kernel.org/all/CAJD7tkb1FqTqwONrp2nphBDkEamQtPCOFm0208H3tp0Gq2OLMQ@mail.gmail.com/
+[1/1] dt-bindings: PCI: dwc: rockchip: Document optional PCIe reference clock input
+      https://git.kernel.org/pci/pci/c/639f666cf84e
 
-Pasha
+	Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
