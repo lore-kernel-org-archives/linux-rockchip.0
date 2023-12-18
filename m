@@ -4,60 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 309BFC35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 15:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDD2C35274
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 15:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HvzdLryiQfPO/NGEEwsYB9IeiVSM70waataCWyrQBf4=; b=yaDbnOSo5XiOfS
-	BJg0wHjm+uIzQP5p99cu+370bd1JKoezHwSjlTnzScaGEHPnsQVUpq+PeQORfToLr65H88lxDy6F0
-	f7XzHF8wa1UqZrn27CMIwUqxNToR/gI7lZ5VFv5uoxGDDCzC/dXHea/LKUhuKzhMVuHaecAECyGuk
-	DjBOY0eOLN72l5FuBBIYAex7TGBwgX1UXS9cop6kSAO+F8wqKR1gorN84l0cKowM21PEtt/z3W65x
-	vnUfRxkTXIfcMdsNHqDwJfw1ylrMSogqdgSKv+CqTY1XVIersC1UCKMkPGXfLXY25qU/YbVGbf3Nu
-	klioLQx8P/uOoKh7Vmlg==;
+	List-Owner; bh=/2IP+zv4c+rgFFulxreTvxvg5p+3wUNljUtfEsAoOFM=; b=qmvrMG+GbboAPh
+	rNtt6FOYPWZd9xmCzoFhh5UWkAR8bTdD89JDlavEboKMe78JI5+itGY6HQl9EevY/U3kd76EaN9b7
+	2BlGD8rKFi8jgMSW/jOE1O6SoeONlR7pUt0eul/QPn9SqjGfol8xdfBPIgtTlxVsbFzu3R6NlUYrk
+	ZDSPbnrPMJ7R5IwQtplaQNOn3VJSbzcwN5VAFi6mLWvezRWVxZmgDE+oPe4p2kvrmx4jGd8d3kXsA
+	LBjxRseWJJKt6tmameCUwqzFklGoahtae16z6yTm5vRX6fkMKJAKLsU/NNmd/+EogaJcDFMUUfAl3
+	mk2jyOkKxLOc3N/ElmPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFFrA-00BHe6-0a;
-	Mon, 18 Dec 2023 15:48:36 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rFFrM-00BHkW-0x;
+	Mon, 18 Dec 2023 15:48:48 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFFr6-00BHcb-2B;
-	Mon, 18 Dec 2023 15:48:34 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 24B6757E;
-	Mon, 18 Dec 2023 16:47:42 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1702914462;
-	bh=2sOFBL109jjVIul3F+6t0mZTRAhvxnQtgcLNIu0TqOM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=E+eaknYD0yp0U7kSb+ri0GDGITk+JMNKvwxxoCzsQAkn7n4k+JrNDZD/+k7PVajqC
-	 k5db1V+5k6xL1Ipe5FjVJiLg5ATaQKbOsLwI6FXl9lsn8/DZE0oWP1SnPS0Uy+Wa31
-	 hVVGSh2gpgbr7y2Bk+YrSYDri/Wb60eNOrXKZplk=
-Date: Mon, 18 Dec 2023 17:48:38 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com,
-	aford173@gmail.com, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v4 05/11] media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-Message-ID: <20231218154838.GR5290@pendragon.ideasonboard.com>
-References: <20231129092759.242641-1-paul.elder@ideasonboard.com>
- <20231129092759.242641-6-paul.elder@ideasonboard.com>
- <03b98b67-e88c-4bb0-a01d-5a90f78e04a3@ideasonboard.com>
+	id 1rFFrI-00BHi1-10;
+	Mon, 18 Dec 2023 15:48:45 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a236de428a5so15588966b.0;
+        Mon, 18 Dec 2023 07:48:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702914522; x=1703519322; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=nKUBapAjhj0X0B96M3zAwIkjMB25EHCfu9hZ082V30o=;
+        b=GPF0NwP7f0oZajnGGR87FPRSoRlBUJ1M/dz2BMpw8IFEzrSVV4IlgDmsd9isKrdOA5
+         fZchj1h9cuLCRUX3tqnozpkQs6yXAfkEFUfqvd4u7pel/lAwcqwO8NrqYio9H5EH12k/
+         RW+zUpck3cv1nuglvFcqHQwEXW/1VClBlmBgKn5TBISbVFC+oFruxB+B6mlR5sK1ZtMR
+         DasQjIGt84jq5RsQqvCb+i1CUAsFp7NMK4w7Vw6Nm4w1Ti1bZ2xfH+czduNBwuWmsbpO
+         sNsKofIBRGk5HBdsKYSpHPn6/ZLwJ/BptULFwYd6Q4mb9oTPuMC4Obh1r5j1v5bUtWAB
+         zOOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702914522; x=1703519322;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nKUBapAjhj0X0B96M3zAwIkjMB25EHCfu9hZ082V30o=;
+        b=Os3edFD65av54GaTfD5f7MSpqpv+qVdcNyJuG9pl6KRcLHhNh0AhhtZiilDwTSpk4E
+         GeeEscc6cEkyi+C5PlmGxiPJ1a+VuxvDrKnLFv/9mZFLbMpnKUmUjo0uOoNFeTY8lezh
+         UZWf19M+6ZgMwVCIYmXLBJT79IKtu4SXEfh976pO/TI03STK+pj9pQem1ffULX+eukye
+         3B1ShR3qAnOBYJmALYW5ltp8cnJjge/2DB8ku+lgdnjL2OrMHPl0PbnVLeM9SAwo6jCF
+         tmGm6Qw8zHtYePr1YcyBZN7HVkuRDDNZWSX3MWHMei/tEOK2vQhs7ameG7Hsh/OUnNFe
+         66Yw==
+X-Gm-Message-State: AOJu0YzKlWCzFzAk2v3b5vFKoHt56N4tAU/VnO6tfBaIuCMGqEQ4njTF
+	2qfSJZPif0XfusciLlph9+o=
+X-Google-Smtp-Source: AGHT+IG6VzyjvQH34+G4mZe3J8X6d+shURJPU4OY3fo8K/ff+S+V8abQzu8/HpzcKzta+X+jlpzp8Q==
+X-Received: by 2002:a17:906:7399:b0:a23:6c6e:6b4b with SMTP id f25-20020a170906739900b00a236c6e6b4bmr282667ejl.45.1702914522076;
+        Mon, 18 Dec 2023 07:48:42 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id vq6-20020a170907a4c600b00a19b7362dcfsm14334325ejc.139.2023.12.18.07.48.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Dec 2023 07:48:41 -0800 (PST)
+Message-ID: <745f84db-dc9b-81b2-6171-4d8d86a96966@gmail.com>
+Date: Mon, 18 Dec 2023 16:48:40 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <03b98b67-e88c-4bb0-a01d-5a90f78e04a3@ideasonboard.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2 1/2] drm/rockchip: rk3066_hdmi: remove unused drm device
+ pointer
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com
+Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <f86ec29f-194a-800d-0aaf-9e16e551b37d@gmail.com>
+Content-Language: en-US
+In-Reply-To: <f86ec29f-194a-800d-0aaf-9e16e551b37d@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_074832_875954_4DA103EC 
-X-CRM114-Status: GOOD (  30.98  )
+X-CRM114-CacheID: sfid-20231218_074844_359279_C9F8BBA1 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,102 +96,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 18, 2023 at 05:31:18PM +0200, Tomi Valkeinen wrote:
-> Hi Paul,
-> 
-> On 29/11/2023 11:27, Paul Elder wrote:
-> > The ISP8000Nano, found in the i.MX8MP, has a different architecture to
-> > crop at the resizer input. Instead of the "dual crop" block between the
-> > ISP and the resizers found in the RK3399, cropping has been moved to the
-> > input of the resizer blocks. As a result, the resizer CFG_UPD and
-> > CFG_UPD_AUTO bits have been moved to make space for a new CROP_ENABLE
-> > bit.
-> > 
-> > Fix the resizer shadow update accordingly, using the DUAL_CROP feature
-> > to infer whether or not the resizer implements cropping. Support for
-> > resizer cropping itself will be added in a subsequent commit.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> 
-> I don't think this one is correct.
-> 
-> The above is perhaps true for ISP8000, but ISP8000Nano does not have 
-> CROP_ENABLE bit, and the CFG_UPD and CFG_UPD_AUTO are at the same 
-> locations as on RK3399.
-> 
-> I don't have documentation to prove this, but experimentation shows that 
-> this is the case.
+The drm_dev field in the rk3066_hdmi struct stores a pointer to the DRM
+device but is never used anywhere in the driver. Let's remove it.
 
-I agree with you. The missing CROP_ENABLE bit matches the missing
-resizer input crop capability in the i.MX8MP. I don't know if that's
-specific to the i.MX8MP, specific to the ISP8000Nano, or common to all
-ISP8000 versions when the instance is synthesized with a single path
-(which may be what ISP8000Nano is).
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-> > ---
-> > Changes since v3:
-> > 
-> > - Condition on RKISP1_FEATURE_DUAL_CROP feature
-> > - Update commit message
-> > 
-> > Changes since v2:
-> > 
-> > - Condition on RKISP1_FEATURE_RSZ_CROP feature
-> > - Rename bits
-> > - Use the rkisp1_has_feature() macro
-> > 
-> >   .../media/platform/rockchip/rkisp1/rkisp1-regs.h  |  5 +++++
-> >   .../platform/rockchip/rkisp1/rkisp1-resizer.c     | 15 +++++++++++----
-> >   2 files changed, 16 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > index 3b19c8411360..95646b45f28b 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > @@ -168,6 +168,11 @@
-> >   #define RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO		BIT(9)
-> >   #define RKISP1_CIF_RSZ_SCALER_FACTOR			BIT(16)
-> >   
-> > +/* For resizer instances that support cropping */
-> > +#define RKISP1_CIF_RSZ_CTRL_CROP_ENABLE			BIT(8)
-> > +#define RKISP1_CIF_RSZ_CTRL_CROP_CFG_UPD		BIT(9)
-> > +#define RKISP1_CIF_RSZ_CTRL_CROP_CFG_UPD_AUTO		BIT(10)
-> > +
-> >   /* MI_IMSC - MI_MIS - MI_RIS - MI_ICR - MI_ISR */
-> >   #define RKISP1_CIF_MI_FRAME(stream)			BIT((stream)->id)
-> >   #define RKISP1_CIF_MI_MBLK_LINE				BIT(2)
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > index c1aaeed58acc..6d6ebc53c6e5 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > @@ -178,10 +178,17 @@ static void rkisp1_rsz_update_shadow(struct rkisp1_resizer *rsz,
-> >   {
-> >   	u32 ctrl_cfg = rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL);
-> >   
-> > -	if (when == RKISP1_SHADOW_REGS_ASYNC)
-> > -		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO;
-> > -	else
-> > -		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD;
-> > +	if (when == RKISP1_SHADOW_REGS_ASYNC) {
-> > +		if (rkisp1_has_feature(rsz->rkisp1, DUAL_CROP))
-> > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO;
-> > +		else
-> > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CROP_CFG_UPD_AUTO;
-> > +	} else {
-> > +		if (rkisp1_has_feature(rsz->rkisp1, DUAL_CROP))
-> > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD;
-> > +		else
-> > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CROP_CFG_UPD;
-> > +	}
-> >   
-> >   	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, ctrl_cfg);
-> >   }
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index 62e6d8187de7..0dac6d133767 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -40,7 +40,6 @@ struct rk3066_hdmi_i2c {
 
--- 
-Regards,
+ struct rk3066_hdmi {
+ 	struct device *dev;
+-	struct drm_device *drm_dev;
+ 	struct regmap *grf_regmap;
+ 	int irq;
+ 	struct clk *hclk;
+@@ -752,7 +751,6 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
+ 		return -ENOMEM;
 
-Laurent Pinchart
+ 	hdmi->dev = dev;
+-	hdmi->drm_dev = drm;
+ 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(hdmi->regs))
+ 		return PTR_ERR(hdmi->regs);
+--
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
