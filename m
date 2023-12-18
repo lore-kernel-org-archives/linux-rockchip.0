@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74502C35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 12:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A000C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 12:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=T/c51MJVBW+6j8Xx1tlp/mt/19id0eJM/vpUxASTJCs=; b=nNIZf3dCt5bjhx
-	TvcpB6jxfOewIbMQDOvEbhGXWt3TVIPHHChOPxHityFiJnVgRAez+Kjz1TU276ENJjwVdmNYT8vKk
-	tVP30bN41o26SA1R7jE7PkineNtQCW0jfeltTkBUxt+GpslPbwinsXWWCWsnoCiqHMub9+CJsfUyc
-	krRRb4Z71Y0YVRx60r7fkgoZvX/v1sDddfLx5GqA7XM18E2yPneupYuxeb08KWtEDpLdf9Q74ygEY
-	G96KoittPM8pKg2kXIlX5uCdgI215y7dR+gF50vUPe9+BwFYwOmr45wr058RDe86nlBQBWypiWmFe
-	1Wxv62/Iuh42CG2YdFXg==;
+	List-Owner; bh=T/c51MJVBW+6j8Xx1tlp/mt/19id0eJM/vpUxASTJCs=; b=MBhWxc+uDPVKfr
+	ubqswk7skkubvJaJ8q6B5ezi/EIByrVPDxj8xH/r2DqGIPl33SAe6IoPyZFq6wiqw2iUh2LkW1OnX
+	ghrmeZn5yI4i4TZVQe3E7+BIqdMps6TUoLBHI6wnEmr6K3sToJmzkV2MG6gwd29ZUmTCbcDFEjhjr
+	BNHoEdRLOWgD+9xQyMSxfG0auvsECaoW2EsqA6Sbj2XhHvh2QnHEl9iFPyzvEivu8JPOkdcnRrbVj
+	T5VxG0jY9F50jyVoT4TwsvmrfbVtCaOpa4iX0dI0y1C5dXt/dCxL/PStP0MX83B0EI9ooqJh10lND
+	kdvPl++HTIgx1mXG4kUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFD1B-00AgM9-0S;
-	Mon, 18 Dec 2023 12:46:45 +0000
+	id 1rFD1V-00AgVk-1E;
+	Mon, 18 Dec 2023 12:47:05 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFD17-00AgJo-0Q;
-	Mon, 18 Dec 2023 12:46:42 +0000
+	id 1rFD1R-00AgTy-2l;
+	Mon, 18 Dec 2023 12:47:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 85C8ECE10B3;
-	Mon, 18 Dec 2023 12:46:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B887BC433C8;
-	Mon, 18 Dec 2023 12:46:37 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 3C64ACE0A7C;
+	Mon, 18 Dec 2023 12:47:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EDBAC433C7;
+	Mon, 18 Dec 2023 12:46:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702903598;
+	s=k20201202; t=1702903619;
 	bh=hhH0S1d1h1iP5cEliJA43vXsxR1kP/uHQeuebebGyQE=;
 	h=From:To:Cc:Subject:Date:From;
-	b=GJGJ4n1GahTgV8b8C2C5ReWcyWpkYhiLH7sWdHgijiAKwYT+4FW/S7A+euKxLFaau
-	 Y/Nkcn0x4rHE3PlvHQp+v7oWQARp/e5ZjBVtfDUHu+HHBVdUd5UtAuqJ7dorN7qzxZ
-	 V1dz2D6k/laRnVF8IDsZWncupB5cTVkZe5CrHP5VT0JDi2tpTFpvZ7ojUDTId2F3Z+
-	 kv/GXiz0MxhFXQK4GJ2pcRpr0jDc1vZbXyP4NwGbaahGhDkEa09L5ZqWTBfedWB1QB
-	 MuteuivID80BNEx4xANRcdIVEWT7cIDM9A+pEHH6SDSF3Nxmg79CEjf6WHz2pFPEVp
-	 2usr5BeJvijnw==
+	b=W3AOJ6ipq22EP8pj7M5/sT+8PuAbW4JBPUQn7ksOMC6LkRyXguEDUhXK7NPwbNOBP
+	 1a6jk3gKak3vldv9jBLBoxtNlMvNS6HiSeRK2VRyHeownOHyss1rS6j4/RepEnA2lL
+	 WMMND+i6U7Bf1IbAYVfT4Kxt6svXfP7D/E2jhvHGdhNBH0ORHWYQOV8i92maOlqSjS
+	 qJfiXbXatVAoF1T3SZlZLrGG49QJmIWW4iC5bvRNopjipmWaAUvLTlehvaBPn2Qbj6
+	 aOHSuN3A5RlujYQeOIX8tqLzstxIZspADiE+wy+Gs+mU2gkoAg3COLnvZrunB7w+br
+	 vH1oouZ2z7g7A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,16 +52,16 @@ Cc: Weihao Li <cn.liweihao@gmail.com>,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 1/8] clk: rockchip: rk3128: Fix HCLK_OTG gate register
-Date: Mon, 18 Dec 2023 07:46:22 -0500
-Message-ID: <20231218124635.1381482-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 1/7] clk: rockchip: rk3128: Fix HCLK_OTG gate register
+Date: Mon, 18 Dec 2023 07:46:46 -0500
+Message-ID: <20231218124656.1381949-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.10.204
+X-stable-base: Linux 5.4.264
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_044641_362568_75DB9FD4 
+X-CRM114-CacheID: sfid-20231218_044702_065888_8E30F808 
 X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
