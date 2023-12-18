@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EDBC35274
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03740C46CA2
 	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 07:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,61 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o7xCJRvunUUHOTVzsxk78Jw1+doioLggrjYq3X1wvSU=; b=AGmCBiE2AZVFUY
-	Ux/2BqEigpD5CDkUmgQVx/WZ6ozdKECg/uQyF8fy1NdxnFodj0fL0AnLn/YIYmRuxW76w2z2jmxBu
-	2mu9kVkzwvP84DA2qv8z1ykuLF/MkK8cxGMCI6fA0uqurNs+YyNcH+2B/gNm8K+7U8Ou0EWxwDUJ3
-	2oczp+c6/Rs5fjRaTSuBF53a1ELF6cS8ZvE22B7ILoD2nyP0mkK3X0pIurUj5o590EvafzVCmkF9K
-	pND/hY95fgoUHDpl9rsbG2+hPCihCZWSTFw4NuyDzeRDVz2deCuKCqwXQHve+2DOdAXwuBLedHk+U
-	n8W29x4eEd/MA54XqbMg==;
+	List-Owner; bh=R4KRbPIM4GfmJnUTOus/5nJfF0leMgXqGPitjEmUwPY=; b=T5QQPiTuhwJWla
+	Bnn6iYzRW3diwweoEQNhPu55BsVW0m53I4yMiF16Y4d6WzIUxMHWJfhABavswoD9fFwUXNunotqGO
+	QetZSEvI/eafx+98I5n0PFL7G1D7Eoleb1esPva6IYb3oBKqfm5MzJcmKIApUBmbrv2ZF95OxlKOA
+	0yIGdMjepztwLC9kMtmP/aMACykhaB+d859vYhMVYlfh8z2G2v8JZMo0aLfOGYYq3Y2DWTNdNFXZb
+	qHAJS7O/LjYi1fJhXBV12Jgy9MWt5DT827noT4OuWAw3/VETxkSn1MgSkIkALzd4Q/TISxz2ZezIH
+	21/5EER9p0gSGntedV1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF7zx-009LSM-0c;
+	id 1rF7zx-009LSj-1p;
 	Mon, 18 Dec 2023 07:25:09 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rF7zo-009LNl-1f
+	id 1rF7zo-009LNQ-19
 	for linux-rockchip@lists.infradead.org;
 	Mon, 18 Dec 2023 07:25:02 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-553046ea641so1608633a12.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 Dec 2023 23:24:59 -0800 (PST)
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-550dd0e3304so3174332a12.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 17 Dec 2023 23:24:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702884298; x=1703489098; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1702884296; x=1703489096; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Z6qsvUViIy5kHRO5N1dKdbt/rQsdz6PsfozqZJLrOGM=;
-        b=w02nTz4V3sEMywnJHhz22r94WZa287Euctg/C88lgdBZ2JGnAM9lt+TFALiSQu3rVa
-         CoLPHQXfPkl5yzPSMQvTlqcT5fOYppO5YOWtQCiSnR/uXy7yshCYkrAtkXnVP1O+RfS8
-         ml98+qBG7yp+mVjjSFWqWRgaADDVgGEA00hnENbzds62d/L97tXvsDf7hS/NpL8GXpXX
-         bmf0qrh7kvqcq7FjYQH4GASxBbt4YmwCc6zZ4EdydkamFO5DetbcHD5os+7PR7NCejhq
-         WjWwovtbikOJSBHFM5ImoRhNmOVwuiLeYtLtjO+7Ruqf/VMSZJWJZApmnETBenAxXDK1
-         uLKQ==
+        bh=71v1IP5Mo5SwhWuTEYZjMJzZzSfj/IScmSgg4K5ZbcA=;
+        b=FJ43N/RlFchOX8b0tveQ+we5skpEDHP5c1ycUSg48b0OcRpwc4zhuD7Ho2i1QpcDBW
+         buh/JHXa25UK4naGMZSlpCu/PIWs65KwmH0sxpuHPCpO+IrB6SoR8H5AacvAVZWg8Nlc
+         raC3yi/43WbOWeXRBUd4yKaguqrkFOLTo4bVftfQWPoJ/EcO4pfGla39RNxK6udYSAwn
+         h5zG+C5OQGxOjIDJkBLWhnrUn11KgdhMj7vG+BZJWFuC8z5HXkpE+TapknJHG6gTX/mD
+         W7gu5AyRyjoVO/ymWgB1zj2odO0LO7g6xOOENQ9YAT7VBWxMvRmZdNPmdOJPux16XnT3
+         8ZnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702884298; x=1703489098;
+        d=1e100.net; s=20230601; t=1702884296; x=1703489096;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Z6qsvUViIy5kHRO5N1dKdbt/rQsdz6PsfozqZJLrOGM=;
-        b=E10NFl7W4RdTK5238g3xSaAv8IfvqMd5P4ItNI66VLYm/IMqAxgjD7RMchrG+4Xgpo
-         Yyx1deotTpaVTV4dx5NSVLS0dC11W/EgLC+sT6AgZ8EXo8aH/ZKtniEMH+dp+Q4db9Qe
-         nys/4BYlC4mDfrlF9xZ7NdvoCsT9b2j6sJ5rrRpovmx5V195N/mn2p5/7h6LYUoG7wL1
-         rj35cn+p082E5XE7xE+60quYrifpsIRFDwgkIRdMXvQFMxbc7nOcJwlgYXIdbFbRqPHw
-         SKj/6RuqeDOFJBj+ZtiAW0t64uyNtaxihhjZRFKX7al6f1lex25q+TwGvKmtnJsEGQOo
-         aJXQ==
-X-Gm-Message-State: AOJu0Yx/yoJamHxl6yp3Nei2jVeXgc0f1ifGb1HX/syUmHLGzNsHVmNC
-	pB6dOYuyOfV8x2A8d9GHk3En0Q==
-X-Google-Smtp-Source: AGHT+IEzk1oaWh+i7tL6Jk5qCikAuT73A5/Ms5ACQPK2kFjoFgrnQcGsZLu2EW3+0QXAdcNgIi60OQ==
-X-Received: by 2002:a50:aad0:0:b0:553:3a99:4ca7 with SMTP id r16-20020a50aad0000000b005533a994ca7mr589637edc.78.1702884298101;
-        Sun, 17 Dec 2023 23:24:58 -0800 (PST)
+        bh=71v1IP5Mo5SwhWuTEYZjMJzZzSfj/IScmSgg4K5ZbcA=;
+        b=aSafwGxyMEj/IqAMIUDre6qckmULE9gQY8ngx0DtMqVry4AAHphBQOHjuH4hphLMoM
+         ahRxq48AvU2sVFVP9KW8TQHo9bwsMqxnK6klqjmzxrJkGVhGY7Bd/g1pMOkTYeGqrHOI
+         D7cTwf8V8fwBYqRRxR6bFw4MpRgeW7hZOxMcZHfzrJ4fv1clXLtx7Oir3CcTVBVSBlus
+         NHeP5FnHDIOFvfziKfXvxQDjbCoysnlsCbzMrhyi4V3/kFZD9MERCCd454bxgveboB4r
+         4zkgu8g2x731jZsmTjzLET5caaUgSxX/wOyPmDkMfPndSyDTriGpoAlqHdwQwVBwivyw
+         l8xA==
+X-Gm-Message-State: AOJu0YxO3h86V8TxhVXcyPYU1FQaBfabqt6w1SnCDBO80pPomVHcm9e3
+	FzA2dg5GbNKLo7BsLC3YkSBTMQ==
+X-Google-Smtp-Source: AGHT+IE4P4lsIBc8DqC236p+yuTaqflLG/MwPQWqoA4m9Lp2BjXYM9itkKbdmYGnDeoFbxw/pWecUw==
+X-Received: by 2002:a50:cc99:0:b0:553:1681:2ad0 with SMTP id q25-20020a50cc99000000b0055316812ad0mr1727094edi.25.1702884295872;
+        Sun, 17 Dec 2023 23:24:55 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.218.27])
-        by smtp.gmail.com with ESMTPSA id ew12-20020a056402538c00b00552691fc7f9sm4233391edb.66.2023.12.17.23.24.56
+        by smtp.gmail.com with ESMTPSA id ew12-20020a056402538c00b00552691fc7f9sm4233391edb.66.2023.12.17.23.24.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 17 Dec 2023 23:24:57 -0800 (PST)
-Message-ID: <93e07033-6596-44a2-97bf-22425dfaee42@linaro.org>
-Date: Mon, 18 Dec 2023 08:24:56 +0100
+        Sun, 17 Dec 2023 23:24:55 -0800 (PST)
+Message-ID: <45a37621-596d-4e63-b7fa-6b8dc54602c8@linaro.org>
+Date: Mon, 18 Dec 2023 08:24:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add support for NanoPi R6C
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add support for NanoPi R6S
 Content-Language: en-US
 To: efectn@6tel.net, linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -75,7 +75,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  sebastian.reichel@collabora.com, jonas@kwiboo.se,
  Muhammed Efe Cetin <efectn@protonmail.com>
 References: <cover.1702647349.git.efectn@protonmail.com>
- <923b4d9bb60fecd080e7c348ec0d4630392eb091.1702647349.git.efectn@protonmail.com>
+ <25d84712ee3765f5f28dfd355a2392f20f388824.1702647349.git.efectn@protonmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -121,10 +121,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <923b4d9bb60fecd080e7c348ec0d4630392eb091.1702647349.git.efectn@protonmail.com>
+In-Reply-To: <25d84712ee3765f5f28dfd355a2392f20f388824.1702647349.git.efectn@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231217_232500_552034_9BCF1F34 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20231217_232500_394191_5AC93C1E 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,55 +144,50 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 15/12/2023 14:55, efectn@6tel.net wrote:
 > From: Muhammed Efe Cetin <efectn@protonmail.com>
 > 
-> NanoPi R6C is mostly same as R6S variant. It has M2 port instead of a
-> NIC port and different led labeling.
+> Add basic NanoPi R6S support that comes with USB2, PCIe, SD card, eMMC
+> support.
 > 
 > Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/Makefile              |  3 ++-
->  .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts | 14 ++++++++++++++
->  2 files changed, 16 insertions(+), 1 deletion(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3588s-nanopi-r6s.dts  | 755 ++++++++++++++++++
+>  2 files changed, 756 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index ed2583dcd..261505081 100644
+> index 600c420bc..ed2583dcd 100644
 > --- a/arch/arm64/boot/dts/rockchip/Makefile
 > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -114,4 +114,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
+> @@ -114,3 +114,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
 >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
 >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
 >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
-> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
-> \ No newline at end of file
 > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
 > \ No newline at end of file
-
-Still warnings...
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
 > new file mode 100644
-> index 000000000..8031098c3
+> index 000000000..e575cc403
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
-> @@ -0,0 +1,14 @@
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+> @@ -0,0 +1,755 @@
 > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +
 > +/dts-v1/;
 > +
-> +#include "rk3588s-nanopi-r6s.dts"
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/input/input.h>
+> +#include "rk3588s.dtsi"
 > +
 > +/ {
-> +	model = "FriendlyElec NanoPi R6C";
-> +	compatible = "friendlyelec,nanopi-r6c", "rockchip,rk3588s";
+> +	model = "FriendlyElec NanoPi R6S";
+> +	compatible = "friendlyelec,nanopi-r6s", "rockchip,rk3588s";
 
 It does not look like you tested the DTS against bindings. Please run
 `make dtbs_check W=1` (see
 Documentation/devicetree/bindings/writing-schema.rst or
 https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
 for instructions).
-
-
 
 Best regards,
 Krzysztof
