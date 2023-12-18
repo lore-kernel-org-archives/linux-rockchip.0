@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88765C35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 12:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 998C7C35274
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 12:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L1vF3hyiNJ8LexyiakMaqS+gd7h8ykX/uUI8aCnURE8=; b=U5pKP7gMrByz9k
-	tTarpH65Qnu9a3efBvEkG62UI15quUb0xUtdeE3lS36/iso2ZFAQnwbHxZ0yrs2aE+qOFKi8J1dhw
-	sh9/z2yWq+Bm/jNqH/SrFbWAMl+Xy3eIUzsw3e6SSWWLvKsq8gUIg1qDTUqQ2cVQL5eNM/QyCki0r
-	bC/uolWvf8hr+GGUwt+RP9IMZGfsPbqc9QCrhR0GtqQ1F4FmuI0Ey7VQlBVa3XgJMHR2P7ruqt8Zh
-	2SX7HvXmCM+0HZp1o+pFsjMmoeIVo8ity8FCYaoIbQZXqtoRD/G585QY0P+fLMoqWTIyMsatDm0I7
-	7DKbULyBpRextlkhgOTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8q0FA4x9QvchO9uUKepgQf9Jh06mnykcIbIBR290jY0=; b=Vyyzr8J8T38B9J
+	HlsmEAdoPez3SzQiN8CJFtKaBly77rrle/KnN5KrFhnzEBU2osNPdR8ixOFtTLuRy253ShAvMUocd
+	7Qgd/OU0ak8ps9cf7AZBUfI0V0pJhFr/fniVnOVjoqT4ArP5ZF8iHuqY0VfiVISsYd6qZaYk8K7nU
+	bezinY0HBINzXFfqikWIRfr5/ynwd4VjET4fgXr7tRlttMQ+zB+qw+FZs0zMohx4XKJlU06NrR2ds
+	dhtWVmAKUuPvvFz6Ha415jgj51rhe9Vb9sPcCANdVwxjYhD2AtAmR9cZpQVKPFsvgk9YKV5kflKvx
+	aByJ0+poA/Gg1AC5t3LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFCz2-00AfN9-02;
-	Mon, 18 Dec 2023 12:44:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rFCzo-00AfiN-1j;
+	Mon, 18 Dec 2023 12:45:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFCyr-00AfHU-2P;
-	Mon, 18 Dec 2023 12:44:23 +0000
+	id 1rFCzl-00AfgQ-0n;
+	Mon, 18 Dec 2023 12:45:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0D0ED60FCE;
-	Mon, 18 Dec 2023 12:44:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3D04C433CA;
-	Mon, 18 Dec 2023 12:44:19 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6D5FD60FB1;
+	Mon, 18 Dec 2023 12:45:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 109A9C433C7;
+	Mon, 18 Dec 2023 12:45:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1702903460;
-	bh=XvYnOA+in5yAmnoh4pfmxu/13fVJ3JQ4auQotg/2IuU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UU+M6omdHllfd6ifniXOmKKQQ4q8p7dBuTrMGrlZGHKYgIl5l9owasU69RaVoX+zi
-	 Q+vqptuQooVpRnFSsLPaFMal5ekNVmwZ3O7SgD76G487Y/a+NzoJlsx1RVp6L2f/Qy
-	 suDIXMvmq92VPIR7M89iFlx7WM8Mhq0wG1JqRAEHsBYevhibssk6fQBDoWF87uvYBJ
-	 QIPfmDvr6xQgRVKP92rJOWusZ5RpTnbXwOP91GRxeWpA7zO+VYdJDgH/mRIjeiOt70
-	 5LE3ZCkyHOO+8eToXzP5wSLn5M5MO10TaIkyYj2yK3ScHQsMcDV8/dDzw9bkWUughQ
-	 Wbenp495Ac9TA==
+	s=k20201202; t=1702903516;
+	bh=9rP6BnSPVQJq/oennG8ZrSYL24o62xZnF81Faqbn5Pw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=XPd71Lbcqad6nLduGhMhvDOiCbWv3gDQ37J612BcGhtU4L81hpKXWICVJeb8KjO+t
+	 m8jQbAAcPA2kxfUcj7Bh/hAGog3s3DBnxz126ya0P6aeZzNQ1jHJENFHQpw3ChGZRF
+	 w7wFrieuTPAImGYsmng95iskhTOF0JE644sUuiTOen2sPcCdb2bNdG9E55W5nebKLY
+	 e38ceh0m7FAyTOMt7tYX7cZ4amIoDpNqY0AcPL8YuG/JpyEyk1RsXCnNVRvQxtoJPQ
+	 2tHlis7KLKtrm1Ixy8DjUpawQesK2SYBYOgdZ8w7telngWE7CmEBV0Kclqz1hmk/i3
+	 UfDlQ4Tu+DjXQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Weihao Li <cn.liweihao@gmail.com>,
+Cc: Chris Morgan <macromorgan@hotmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Sasha Levin <sashal@kernel.org>,
 	mturquette@baylibre.com,
@@ -52,19 +52,18 @@ Cc: Weihao Li <cn.liweihao@gmail.com>,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 02/18] clk: rockchip: rk3128: Fix HCLK_OTG gate register
-Date: Mon, 18 Dec 2023 07:43:36 -0500
-Message-ID: <20231218124415.1379060-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 01/15] clk: rockchip: rk3568: Add PLL rate for 292.5MHz
+Date: Mon, 18 Dec 2023 07:44:48 -0500
+Message-ID: <20231218124513.1380056-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20231218124415.1379060-1-sashal@kernel.org>
-References: <20231218124415.1379060-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.7
+X-stable-base: Linux 6.1.68
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_044421_830592_CBE6B15D 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20231218_044517_325508_7A92BAF8 
+X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +80,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Weihao Li <cn.liweihao@gmail.com>
+From: Chris Morgan <macromorgan@hotmail.com>
 
-[ Upstream commit c6c5a5580dcb6631aa6369dabe12ef3ce784d1d2 ]
+[ Upstream commit 1af27671f62ce919f1fb76082ed81f71cb090989 ]
 
-The HCLK_OTG gate control is in CRU_CLKGATE5_CON, not CRU_CLKGATE3_CON.
+Add support for a PLL rate of 292.5MHz so that the Powkiddy RGB30 panel
+can run at a requested 60hz (59.96, close enough).
 
-Signed-off-by: Weihao Li <cn.liweihao@gmail.com>
-Link: https://lore.kernel.org/r/20231031111816.8777-1-cn.liweihao@gmail.com
+I have confirmed this rate fits with all the constraints
+listed in the TRM for the VPLL (as an integer PLL) in Part 1 "Chapter
+2 Clock & Reset Unit (CRU)."
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Link: https://lore.kernel.org/r/20231018153357.343142-2-macroalpha82@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/clk/rockchip/clk-rk3128.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3568.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index aa53797dbfc14..7782785a86e69 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -490,7 +490,7 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	GATE(HCLK_I2S_2CH, "hclk_i2s_2ch", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
- 	GATE(0, "hclk_usb_peri", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 13, GFLAGS),
- 	GATE(HCLK_HOST2, "hclk_host2", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 3, GFLAGS),
--	GATE(HCLK_OTG, "hclk_otg", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 13, GFLAGS),
-+	GATE(HCLK_OTG, "hclk_otg", "hclk_peri", 0, RK2928_CLKGATE_CON(5), 13, GFLAGS),
- 	GATE(0, "hclk_peri_ahb", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 14, GFLAGS),
- 	GATE(HCLK_SPDIF, "hclk_spdif", "hclk_peri", 0, RK2928_CLKGATE_CON(10), 9, GFLAGS),
- 	GATE(HCLK_TSP, "hclk_tsp", "hclk_peri", 0, RK2928_CLKGATE_CON(10), 12, GFLAGS),
+diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+index 2f54f630c8b65..1ffb755feea4f 100644
+--- a/drivers/clk/rockchip/clk-rk3568.c
++++ b/drivers/clk/rockchip/clk-rk3568.c
+@@ -72,6 +72,7 @@ static struct rockchip_pll_rate_table rk3568_pll_rates[] = {
+ 	RK3036_PLL_RATE(408000000, 1, 68, 2, 2, 1, 0),
+ 	RK3036_PLL_RATE(312000000, 1, 78, 6, 1, 1, 0),
+ 	RK3036_PLL_RATE(297000000, 2, 99, 4, 1, 1, 0),
++	RK3036_PLL_RATE(292500000, 1, 195, 4, 4, 1, 0),
+ 	RK3036_PLL_RATE(241500000, 2, 161, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE(216000000, 1, 72, 4, 2, 1, 0),
+ 	RK3036_PLL_RATE(200000000, 1, 100, 3, 4, 1, 0),
 -- 
 2.43.0
 
