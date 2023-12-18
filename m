@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51263C35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 10:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45BCFC35274
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 10:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1CJXlwdKo/VTNy1NwSdlS6XzDWa42FZmzEL/l1de2k0=; b=drnf8rK4j2v1SN
-	A2pMwK56fHfTG6fiSatmEhC3uBVDtBPfWusd/tD9kc6ukN9I42sTwZ5PpwhdFnSO0HusvMiprBxv4
-	9DKGoJECU46OuEgs6QIfeMR06GW5bG0GzoIUiKR/Dty+81SIOj3qpZ4/ozV6u9siGLZ82i7wfrhTh
-	IksUhDvFA51SfjwV/wYbb7aPSraXBFRVmdZR1dUDEiRVx3WtIYuhetuguKqyfkmLaLDG/SlQt6Qxh
-	pnabVu1duoTSm1zcVjQxOrARQ+HO2Dn/cIR9o3a5dHcR4GQtO2TdtKQpczLjBUe6MOyMoSEgWfDPG
-	+5+fxwu+7ZZcJ0VALGDw==;
+	List-Owner; bh=hDC9SEflV07ipXoXf/D23JkNiCpEi+gDc57JTNCHjls=; b=fSfZCtyjn/Isrn
+	FgsPU3h1YWKY+8nh2h4IHA7C74iPIjEAv6zDt19u8V9OFeiBxvdn83TqSPfu50TbLFBFTakXdBXl6
+	DUHq/Vht+kaWTdS07/J599g8Q69+31Wg60YqKBpXuwKSwvhLmzn4epybYQ6jnECRyJZyD6Uk/QZkq
+	BSbrj2LgBy/oYo0gi4AmzoGp4DkkaxH+OXkOJlYSNonjVMNBs/8vcC5aUnZ5pxuDfL/eXse9VPaE8
+	RGsPNlH/yyCQ7G4lzox6dH6J4BAb9LDV2OJYfYWwYaokj0YD2FGdbN8K/0n7c91sgOhAYrSBnN0ba
+	+QfMyCLkArDcJZS9vg9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBIT-009wET-0p;
-	Mon, 18 Dec 2023 10:56:29 +0000
-Received: from m15.mail.163.com ([45.254.50.219])
+	id 1rFBIa-009wHg-1m;
+	Mon, 18 Dec 2023 10:56:36 +0000
+Received: from m15.mail.163.com ([45.254.50.220])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBID-009w6g-28;
+	id 1rFBIE-009w6h-1K;
 	Mon, 18 Dec 2023 10:56:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=gwe4z
-	CDjtQz1QKeidqQfolK+ZN+4nQnHqxy78omjQGE=; b=XPqW6oTYieu8ROm5Akl3l
-	jMmVSzu99c8+QMhO68cwiIQmDLML2nrU38ZjLiJNFalFhCN1/oFL6Xsm+galhFIZ
-	BmFvUDtAvVmMZB/Hz3K8RZjbXpKHKNXmDju3R4uZbUFJHd6GqjrSCMG6b1mLItm0
-	Twq1MXzgRS3/zyoTvJs0bs=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=fBHGN
+	YITHW0NUuAbOpjQ5mbFub8s+SVFwFReNTMyTxo=; b=ZewPbAysTlmLbeW5F4VHM
+	wvF+qvlZ05kVH+g6wTcli2otts+H/iGV/7HgOBc2SaCL2FgMCtl6MO0bchd4TzNU
+	N+f13jXv2iIFGmoBNQll6Di2SC1aKTDXVu5fLAZNxHd2Lq76U5IX+TQKOr4VlVhc
+	xRUiTp/UbYDWBa4rHxwxRA=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wDn72EdJYBln1v+Bg--.7214S5;
-	Mon, 18 Dec 2023 18:55:31 +0800 (CST)
+	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wDn72EdJYBln1v+Bg--.7214S4;
+	Mon, 18 Dec 2023 18:55:30 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -45,23 +45,24 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	zhengxing@rock-chips.com,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 3/3] ARM: dts: rockchip: Remove rockchip,default-sample-phase from rk3036.dtsi
-Date: Mon, 18 Dec 2023 18:55:23 +0800
-Message-Id: <20231218105523.2478315-4-andyshrk@163.com>
+Subject: [PATCH v2 2/3] ARM: dts: rockchip: Add stdout-path for rk3036 kylin
+Date: Mon, 18 Dec 2023 18:55:22 +0800
+Message-Id: <20231218105523.2478315-3-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218105523.2478315-1-andyshrk@163.com>
 References: <20231218105523.2478315-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn72EdJYBln1v+Bg--.7214S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Cw15tr48GFy8uF4kWF1fXrb_yoW8Cryxpw
-	13ZrZrGw4xKr1fZasrtwn5Ca9Yyrn8Ga1F9r4xJw1Iqr12qr95GF1a9rZ3XFyUXw42vayY
-	9F43Xry2ya9rZaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jdZ23UUUUU=
+X-CM-TRANSID: _____wDn72EdJYBln1v+Bg--.7214S4
+X-Coremail-Antispam: 1Uf129KBjvdXoWruw1fKr45Zry8uF45JFy8AFb_yoWfGrX_ta
+	43Kas5KFs7Gr15Xw1Dt3yxW343CwnakanxJryvyr1UJF1qqw4kXF4vyas3tw1YkFWUKrZ7
+	AFW5Xa1qqa1akjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0puWJUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgVKXmVOBAp8owABs4
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAdKXmVOBAprAwAAsO
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_025614_119097_7EA84533 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20231218_025614_849077_5973898A 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +81,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-This should be a per board property, should not be put in
-a soc core dtsi.
+Add stdout-path to get a uart console when system boot.
 
-And when this property convert from default-sample-phase
-in linux-5.7 by commit 8a385eb57296 ("ARM: dts: rockchip: fix
-rockchip,default-sample-phase property names"), the emmc
-on rk3036 kylin board get a initialising error:
-
-[    4.512797] Freeing unused kernel memory: 8192K
-[    4.519500] mmc_host mmc1: Bus speed (slot 0) = 37125000Hz (slot req 37500000Hz, actual 37125000HZ div = 0)
-[    4.530971] mmc1: error -84 whilst initialising MMC card
-[    4.537277] Run /init as init process
-[    4.550932] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
-[    4.664717] mmc_host mmc1: Bus speed (slot 0) = 37125000Hz (slot req 37500000Hz, actual 37125000HZ div = 0)
-[    4.676156] mmc1: error -84 whilst initialising MMC card
-
-I think the reason why the emmc on rk3036 kylin board was able
-to work before linux-5.7 was that the illegal property was not
-correctly identified by the rockchip dw_mmc driver.
-
-Fixes: faea098e1808 ("ARM: dts: rockchip: add core rk3036 dtsi")
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
 ---
 
-(no changes since v1)
+Changes in v2:
+- Fix typo s/patch/path/
+- Change subjet s/arm/ARM/
 
- arch/arm/boot/dts/rockchip/rk3036.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm/boot/dts/rockchip/rk3036-kylin.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-index 5344803442a1..466952bf9db4 100644
---- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-@@ -287,7 +287,6 @@ emmc: mmc@1021c000 {
- 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
- 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
- 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
--		rockchip,default-sample-phase = <158>;
- 		disable-wp;
- 		dmas = <&pdma 12>;
- 		dma-names = "rx-tx";
+diff --git a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
+index 67e1e04139e7..f12fa3831bbf 100644
+--- a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
+@@ -8,6 +8,10 @@ / {
+ 	model = "Rockchip RK3036 KylinBoard";
+ 	compatible = "rockchip,rk3036-kylin", "rockchip,rk3036";
+ 
++	chosen {
++		stdout-path = "serial2:115200n8";
++	};
++
+ 	memory@60000000 {
+ 		device_type = "memory";
+ 		reg = <0x60000000 0x20000000>;
 -- 
 2.34.1
 
