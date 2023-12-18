@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61448C35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 10:56:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E243C46CCD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 10:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OHVJzDT1spNxxuRgBEfTnXi6cesL8FbadnETHN0fDxA=; b=34Q9CV1RZwI9rd
-	Hk2V0+VTD+6UaiSh9D6MsCV1mcACnlN6FBZbqnimtQYn+bktFUUyA4TAdtpLFj6vzwBAD45MzdW2O
-	tXBaL/4EhGseOPIaOWLT+W5dFmVo+ndF3Ih59wadAtDStsba16iUBBPb44Yzp+C5T3JGQ/XtPUcMj
-	GBeYVRp8AwJMu3v1C/72ZZevdNcFRiaaNbFC7t5XEAZouKXnxkXZTJEjgetG/IlQpUtChr9uNEbMC
-	x6KxvmaGoC4LetDKUsyqW/moYVDvKaps4VQ8yiMBuMMop4bpk++owd1BKm1cQA374BtSn2eSUc35F
-	Q/Zj5qOBcUfTmTuG9sJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KvZaFdPOXS3b1QcE3fVw0uAHT0/J4zh1yPH0PnI05nE=; b=RzYKUF9Wn9+9Np
+	2aSdmcnKWO/PqEBmrC7N7mftTPXkXA75GZIvrRBRJz5YZmlqHqz63Dzs5Mt61UCpz8xSA7F7jk92q
+	Gbtp+PLH4UWjfnORrnOi/Biu9OVzU0JsWO7WOJNj2DPf63AYivcKc3rhiLrGT6J3QegEA5bcsiXlw
+	t6sM1qbpzKevo5AjKUDTiKiUZ0289+l+e5g87CiiW2cJEt3k/q3/V5WFeNIk0/jyvw+LR+LSlJ9pH
+	0BAHExyMX46I4EqjgVHZTXG1QkzlidVe2DaE1H58bpZZHIrRAXnJv8UrDovqtpVCg6TyQLojNmXyd
+	OSGaLQKYboT03a4aDxzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBII-009wA2-1Y;
+	id 1rFBII-009wAb-2j;
 	Mon, 18 Dec 2023 10:56:18 +0000
 Received: from m15.mail.163.com ([45.254.50.219])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBID-009w6f-24;
+	id 1rFBID-009w6e-0n;
 	Mon, 18 Dec 2023 10:56:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=3zMsq
-	zxERBHEQfxFqCRnEbkWCpgZ7dTA4M/X9Ze6/Rk=; b=YTVZXeFC5IzpriFx2JpK1
-	fd9Bnf03DJplQQwExm868/qNYuzgCxPCxX6ISiLHfK2xnXeHZfq5jl21giEtaYSB
-	j+UAzcw4lbTnHN2bKW4w80v7sMlFPmxHoRJ17P5mIBmsJ/3LijB5y7A1gfDB888x
-	clKlxKeN1dnBXu9/Gz/CnQ=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=M+QB+
+	W4x0XaSH0qLHe9p44+VE5HHYX/QVSrXFOkfL7o=; b=IDSAkXb/r7PmhAbB6wrqP
+	dm7J/h/5wrYDHVhkqiHK9iF1mpkD5B+j/J6V33NtCGo1iTOzaG10Jsm+Y7KFgv8B
+	NDG+Bszdy8pdy11I0nvlBA76ViS61kAsWM1FhMTiCjYMfvupBFjVsrgdb6nUOClG
+	hIwLRpT3tijujTO29c27Rc=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wDn72EdJYBln1v+Bg--.7214S2;
+	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wDn72EdJYBln1v+Bg--.7214S3;
 	Mon, 18 Dec 2023 18:55:29 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
@@ -45,21 +45,23 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	zhengxing@rock-chips.com,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 0/3] Fix mainline support for rk3036 kylin board
-Date: Mon, 18 Dec 2023 18:55:20 +0800
-Message-Id: <20231218105523.2478315-1-andyshrk@163.com>
+Subject: [PATCH v2 1/3] ARM: dts: rockchip: Add psci for rk3036
+Date: Mon, 18 Dec 2023 18:55:21 +0800
+Message-Id: <20231218105523.2478315-2-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231218105523.2478315-1-andyshrk@163.com>
+References: <20231218105523.2478315-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn72EdJYBln1v+Bg--.7214S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrtFWrtF1ruF18GF43Ww1UGFg_yoW3ZFb_ta
-	4fWw1kJa1rGr15t3W5tw4fW398A348KFs3GayDtFnrJF90qF17ZasayasFqF1SyFyS93Z7
-	CrWYgF1j9wsxCjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0KQ6JUUUUU==
+X-CM-TRANSID: _____wDn72EdJYBln1v+Bg--.7214S3
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Gw1kAF47Jr48Kr17KrW3KFg_yoW3XFc_t3
+	WfW3W5Ga1rAr9Iq34DGw48u347Cw40kFZ3Ww18uF1UJF1Sva1kAFWktayxJr15CFW2grZ3
+	GFWrXa1Sk3W3ujkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUnAHUDUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqBtKXmVOBAraoQABs4
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgVKXmVOBAp8owAAs5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_025614_035962_EA223E86 
-X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-CacheID: sfid-20231218_025613_665243_FC295EC9 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,31 +81,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
+The system will hang at bringup secondary CPUs
+without psci node.
 
-When I want to test some patch of inno hdmi driver on
-mainline, I found the support of rk3036 kylin board
-was broken by somehow:
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
-PATCH 1 is add psci dt node, as we switch to psci for
-cpu on/off for many yeas.
-PATCH 2 add stdou-path for uart boot console.
-PATCH 3 fix the emmc per board rockchip,default-sample-phase property
-issue.
+---
 
-Changes in v2:
-- Fix typo s/patch/path/
-- Change subjet s/arm/ARM/
+(no changes since v1)
 
-Andy Yan (3):
-  ARM: dts: rockchip: Add psci for rk3036
-  ARM: dts: rockchip: Add stdout-path for rk3036 kylin
-  ARM: dts: rockchip: Remove rockchip,default-sample-phase from
-    rk3036.dtsi
+ arch/arm/boot/dts/rockchip/rk3036.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts | 4 ++++
- arch/arm/boot/dts/rockchip/rk3036.dtsi      | 6 +++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
+diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+index 78686fc72ce6..5344803442a1 100644
+--- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+@@ -67,6 +67,11 @@ display-subsystem {
+ 		ports = <&vop_out>;
+ 	};
+ 
++	psci {
++		compatible = "arm,psci-1.0";
++		method = "smc";
++	};
++
+ 	timer {
+ 		compatible = "arm,armv7-timer";
+ 		arm,cpu-registers-not-fw-configured;
 -- 
 2.34.1
 
