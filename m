@@ -4,65 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45BCFC35274
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 10:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52201C35274
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Dec 2023 12:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hDC9SEflV07ipXoXf/D23JkNiCpEi+gDc57JTNCHjls=; b=fSfZCtyjn/Isrn
-	FgsPU3h1YWKY+8nh2h4IHA7C74iPIjEAv6zDt19u8V9OFeiBxvdn83TqSPfu50TbLFBFTakXdBXl6
-	DUHq/Vht+kaWTdS07/J599g8Q69+31Wg60YqKBpXuwKSwvhLmzn4epybYQ6jnECRyJZyD6Uk/QZkq
-	BSbrj2LgBy/oYo0gi4AmzoGp4DkkaxH+OXkOJlYSNonjVMNBs/8vcC5aUnZ5pxuDfL/eXse9VPaE8
-	RGsPNlH/yyCQ7G4lzox6dH6J4BAb9LDV2OJYfYWwYaokj0YD2FGdbN8K/0n7c91sgOhAYrSBnN0ba
-	+QfMyCLkArDcJZS9vg9g==;
+	List-Owner; bh=vfMgHCYmucVtRS0idokTW7ZYdgu9BYe2FEvjWLeG5zI=; b=DLsKTdtldUjVok
+	0v+SIh/aqb0IfmZd8c779F/6/kQ5wBzwT/GQUGi8hEScdmEDy3aAJtqyXpU6n1MBB5KR/T437mUJR
+	MDoF2nAj7hgGaj6mfAfpiRbmovBVfnX+sTs7sVppAB5GZ3uT73mpKEr8F4m7+cvgD7bDQ24rUt9KS
+	HLtQc/cg0g6j2Dx6ZqVc2/d0aUsnprC5ZXTAOItREaj8up7NbZT+cNcBtyHYICAyNym0hghjT52tU
+	FuPDtvqfsxnPaMjN4hpEf5njw5aVMGivWLDouOd4xd4UaRe1XGayJBf5Bapca/0fyRpWuQf0iToBk
+	mitcUPSpMwwHJLchzy5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBIa-009wHg-1m;
-	Mon, 18 Dec 2023 10:56:36 +0000
-Received: from m15.mail.163.com ([45.254.50.220])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFBIE-009w6h-1K;
-	Mon, 18 Dec 2023 10:56:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=fBHGN
-	YITHW0NUuAbOpjQ5mbFub8s+SVFwFReNTMyTxo=; b=ZewPbAysTlmLbeW5F4VHM
-	wvF+qvlZ05kVH+g6wTcli2otts+H/iGV/7HgOBc2SaCL2FgMCtl6MO0bchd4TzNU
-	N+f13jXv2iIFGmoBNQll6Di2SC1aKTDXVu5fLAZNxHd2Lq76U5IX+TQKOr4VlVhc
-	xRUiTp/UbYDWBa4rHxwxRA=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by zwqz-smtp-mta-g2-2 (Coremail) with SMTP id _____wDn72EdJYBln1v+Bg--.7214S4;
-	Mon, 18 Dec 2023 18:55:30 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	zhengxing@rock-chips.com,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v2 2/3] ARM: dts: rockchip: Add stdout-path for rk3036 kylin
-Date: Mon, 18 Dec 2023 18:55:22 +0800
-Message-Id: <20231218105523.2478315-3-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231218105523.2478315-1-andyshrk@163.com>
-References: <20231218105523.2478315-1-andyshrk@163.com>
+	id 1rFCnw-00AcH7-1Z;
+	Mon, 18 Dec 2023 12:33:04 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rFCnt-00AcFe-13;
+	Mon, 18 Dec 2023 12:33:02 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40c6a71e88cso36139585e9.0;
+        Mon, 18 Dec 2023 04:32:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1702902778; x=1703507578; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QkzSpzeAL9RmFlL2/hJm5M0aNeQpUfSRQFTTR6+vjCo=;
+        b=Aq2oEimtvodbOCJOJocrMJlagv8rjMINMuNERPlFUi/lO4OHUBkPP5PpIUoz0jq/X9
+         xA5L3FY1gcafwNzp5/+JBKWcSfnspyTWFjnLOQ1XVHrLfUd/ZQjvVWaEERBOFyJCC2Sq
+         wm0Rb7gqt1P7KjDkKLXZngJNJ9VHQW/naLHgBZgrI+CiFZnF0kIdOeQ2Y59iYQ+c0kAJ
+         OWq7XaWVcX1fc6Kdb+oHni39vHJVxZSAM+DZKt8EJM2IVrjYEVvn9r+HXUQZb4Lhw6oH
+         RiM4K9o4n7RJi6LK+p6+WP64154BcAhrIsa7t9qL4rKf3S2tbi3KNRUAP5+foo261S/Y
+         fiKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1702902778; x=1703507578;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QkzSpzeAL9RmFlL2/hJm5M0aNeQpUfSRQFTTR6+vjCo=;
+        b=xCc7x6tBEgz3ZRzk1rrFrCbtgMlmwIc5fuBohm5xZupKjTZ8gSaPS/w8JSZDN1GAxc
+         O+W5Xonnxsn3DGtghHjnHarIjSJw9/EwHPc0vAFUg8FA6BdPNUagzXrVZPnAgfhMEw9W
+         LUUiKwEU2LE5goD4pwvfg6ekVqznfHL702OWk7jDa1OSQr7ldq4YCoIaKmmLNZgkDWzU
+         0JuATXQvjDHu3rcUDMa8dqbbxRkwia2a02PdRgiYBrAKMAsVqIKPl2aCE+45elOg350A
+         p4q6YsYv886K2l/diPlPZkej3TzGkJJAUK+Cumy4bycQ+JUqpNmbbKqCshAoWZ1aejx1
+         L13A==
+X-Gm-Message-State: AOJu0YyjF83zIe5ye3PVR+AB2Vdr9QAOA7B8MfVpds8nSxm0x7bPxb+L
+	8WYm37PcRtuxOI4pAjandQ==
+X-Google-Smtp-Source: AGHT+IHGy9/HNB1mQw8r6qIKH02yibbK9xlzNiJqGPLWfNBD7SdKCS8gkZ8DhddvOj23GmbysRaO8w==
+X-Received: by 2002:a05:600c:4e87:b0:40d:129f:d5ab with SMTP id f7-20020a05600c4e8700b0040d129fd5abmr1778597wmq.73.1702902777907;
+        Mon, 18 Dec 2023 04:32:57 -0800 (PST)
+Received: from ?IPV6:2a02:810b:f40:4300:4847:f8df:b40e:3aa8? ([2a02:810b:f40:4300:4847:f8df:b40e:3aa8])
+        by smtp.gmail.com with ESMTPSA id fj17-20020a1709069c9100b00a1e4cae6b22sm14026777ejc.41.2023.12.18.04.32.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Dec 2023 04:32:57 -0800 (PST)
+Message-ID: <2de65f47-6512-400d-82c9-ae2ba9fdaa12@gmail.com>
+Date: Mon, 18 Dec 2023 13:32:56 +0100
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDn72EdJYBln1v+Bg--.7214S4
-X-Coremail-Antispam: 1Uf129KBjvdXoWruw1fKr45Zry8uF45JFy8AFb_yoWfGrX_ta
-	43Kas5KFs7Gr15Xw1Dt3yxW343CwnakanxJryvyr1UJF1qqw4kXF4vyas3tw1YkFWUKrZ7
-	AFW5Xa1qqa1akjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0puWJUUUUU==
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAdKXmVOBAprAwAAsO
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 18/27] drm/rockchip: inno_hdmi: Subclass connector
+ state
+Content-Language: en-US, de-DE
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20231216162639.125215-1-knaerzche@gmail.com>
+ <20231216162639.125215-19-knaerzche@gmail.com>
+ <rvovzl6rqkaa2hvml75if5bjasqnyh2r354jdjpa5gckfpcxv4@wlknpt7lhncq>
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <rvovzl6rqkaa2hvml75if5bjasqnyh2r354jdjpa5gckfpcxv4@wlknpt7lhncq>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231218_025614_849077_5973898A 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231218_043301_362985_1EDFE282 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +98,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+Hi,
 
-Add stdout-path to get a uart console when system boot.
+Am 18.12.23 um 10:02 schrieb Maxime Ripard:
+> Hi,
+>
+> Thanks for working on that, it's much better now.
+>
+> On Sat, Dec 16, 2023 at 05:26:29PM +0100, Alex Bee wrote:
+>> +static struct drm_connector_state *
+>> +inno_hdmi_connector_duplicate_state(struct drm_connector *connector)
+>> +{
+>> +	struct inno_hdmi_connector_state *inno_conn_state;
+>> +
+>> +	if (WARN_ON(!connector->state))
+>> +		return NULL;
+>> +
+>> +	inno_conn_state = kmemdup(to_inno_hdmi_conn_state(connector->state),
+>> +				  sizeof(*inno_conn_state), GFP_KERNEL);
+>> +
+>> +	if (!inno_conn_state)
+>> +		return NULL;
+>> +
+>> +	__drm_atomic_helper_connector_duplicate_state(connector,
+>> +						      &inno_conn_state->base);
+>> +
+>> +	return &inno_conn_state->base;
+>> +}
+>> +
+>>   static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
+>>   	.fill_modes = inno_hdmi_probe_single_connector_modes,
+>>   	.detect = inno_hdmi_connector_detect,
+>>   	.destroy = inno_hdmi_connector_destroy,
+>>   	.reset = drm_atomic_helper_connector_reset,
+>> -	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+>> +	.atomic_duplicate_state = inno_hdmi_connector_duplicate_state,
+>>   	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+>>   };
+> You also need a custom reset and atomic_destroy_state implementations
+Yea sure - thanks for the heads up.
+I had this in multiple commits locally and thought I squashed them into
+this one. Well, I obviously didn't :)
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
----
-
-Changes in v2:
-- Fix typo s/patch/path/
-- Change subjet s/arm/ARM/
-
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-index 67e1e04139e7..f12fa3831bbf 100644
---- a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
-@@ -8,6 +8,10 @@ / {
- 	model = "Rockchip RK3036 KylinBoard";
- 	compatible = "rockchip,rk3036-kylin", "rockchip,rk3036";
- 
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+
- 	memory@60000000 {
- 		device_type = "memory";
- 		reg = <0x60000000 0x20000000>;
--- 
-2.34.1
-
+Alex
+> Maxime
 
 _______________________________________________
 Linux-rockchip mailing list
