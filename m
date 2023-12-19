@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2077C41535
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 15:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9AF1C41535
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 15:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bbOrdAOUquw0mHNf3ss14q/2OvOKadXACn6R4XY6mnk=; b=GC0RAlQ8/a5ciW
-	YrWmtcGLDAQm14uhRY3/1OeFsR5O7CaHxhVzxwacC8fP7f28Ad2z0Z93Oo3FXrIA50ZzQ4B2sz22U
-	fboG5clygLPU+QF+siDuktf3aQ4eIJBWqYsnmw0w0BzEQS39SWja2tPLEiZ9F/wXIIZFjDxlXtfR6
-	Pkmg8Ymhn9jWNxZWu1OCDAIRWGZITlNF/8YvDiUzdStNmRo3DT0uY25ZokN6kwIESZ4sKVXj+oC4n
-	uQTanGDIOYL1tK+eQh7R+Ikrn15KjAs6/0p9eJXjKSldxGGD8069jHkfUfJiYRGGNhUg5eR+r8duW
-	hcxS2OEcm0Zq+7hkZKUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P84E4rvWQTiYDPiVhQqeyWvFgPpIoE2iuyc/PLXFpjY=; b=EGMaQcRFyJ4jx38SHJghoPGh3V
+	Khgv3EuV9l6fIqf+iusSFQpmWbCyTbng1nyiC0bkQCw3JzWkKqnropsHci/7ofFFbSGG3Lv89JE9X
+	1tnJUo/2UkOaPBEbYRuDT+/pSIdJQgzJq+hGSo0cYQq7lv4hDwAnHY8UxWXOE0UqQl90bF6WMPSud
+	UavOvQuFKJY2m1NVip6gKwF3RohvOrcOb3BQIMiz72cfEvsrxbBlu+XhcWRX8+lCJcWktT/EQ4pN/
+	jStne5miTEeJwksShGYwadKcTj1yqt+KbGI0sLxdguiQ2xXXS7DiEsw0laOPDTbK9rFNUtw6g/EHd
+	L39InmQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFbvs-00EXLJ-0G;
-	Tue, 19 Dec 2023 15:22:56 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1rFbxv-00EXpg-17;
+	Tue, 19 Dec 2023 15:25:03 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFbvn-00EXJo-2B;
-	Tue, 19 Dec 2023 15:22:53 +0000
+	id 1rFbxs-00EXoq-1q;
+	Tue, 19 Dec 2023 15:25:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id A426AB81856;
-	Tue, 19 Dec 2023 15:22:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D439FC433C8;
-	Tue, 19 Dec 2023 15:22:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1702999369;
-	bh=vOJ9fKH6Xqs5UvwP9s7vsM9ZkdDZzxdG2BYm96rLvAY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=WsR5eIqpOuTF0cIbg+QKbJk945zH4aWyXTOIY1x3RQA0jbBvivNWsuj7e6Upmrryd
-	 RyL951N7XwvzbPbR4ViNCIRb5JLQqt7ZEr7thVILxZfFjWkwanT8MVZ+xBn2ZcerUg
-	 bXjNwD7NXCrngu8Maaslp8kRTGGO1BmBMQOT/Ooc=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: wsa@kernel.org
-Cc: linux-kernel@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	by sin.source.kernel.org (Postfix) with ESMTP id 1C58FCE0D01;
+	Tue, 19 Dec 2023 15:24:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E2E5C433C8;
+	Tue, 19 Dec 2023 15:24:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1702999497;
+	bh=Z5r2iggyiWlPUAZbWAbSjId+ThoZdOn1YxqIEOkmg14=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=buhQIoJLeN5iHjaWohjmRrk5VWSZn6oA5JdwE633t2ZsQQzHMnDODzR8dPHY6nJ/G
+	 DFhEnNXKtocvSZVUCjyIoAq0by/qlC0oZzasjUvF2s1d1pUj+1SfXaRr3ZG3A+UtIN
+	 ZNmZqPw+9mz3ej65InMoq8E4hBPk9PaNcj43YVJac0e3WGbLTCeooBW1Cr16ip91lT
+	 AfgNXB/gKnnY3iPAx1exxOuTJHsT09D+l/LU8ZxWT4jIy/ixOEtWD4x+9ZQO6UGshB
+	 iKfjHWl8qGtoda1kXtVu19iAo0CgDkdSZPbOrKT0kja7UOHzsPq30wWccubUf12gsc
+	 jN+i5oI61hoYg==
+Date: Tue, 19 Dec 2023 15:24:51 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: wsa@kernel.org, linux-kernel@vger.kernel.org,
 	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-i2c@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-i2c@vger.kernel.org,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH] i2c: make i2c_bus_type const
-Date: Tue, 19 Dec 2023 16:22:43 +0100
-Message-ID: <2023121942-jumble-unethical-3163@gregkh>
-X-Mailer: git-send-email 2.43.0
+Subject: Re: [PATCH] i2c: make i2c_bus_type const
+Message-ID: <2512ee2f-05ce-4496-9ac3-f3b3a2e4a6b6@sirena.org.uk>
+References: <2023121942-jumble-unethical-3163@gregkh>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2417; i=gregkh@linuxfoundation.org; h=from:subject:message-id; bh=vOJ9fKH6Xqs5UvwP9s7vsM9ZkdDZzxdG2BYm96rLvAY=; b=owGbwMvMwCRo6H6F97bub03G02pJDKmNW51Sba1dDtXZnllysInD6hGjp6HmpIbM+iDrWF39f x6PXrh0xLIwCDIxyIopsnzZxnN0f8UhRS9D29Mwc1iZQIYwcHEKwEQKIhjm2U4SyLvO9cnsvoJq 3W9WhQ+C58WMGObp7bSdUBOyNC9E6FVt/PQlO9Sz518HAA==
-X-Developer-Key: i=gregkh@linuxfoundation.org; a=openpgp; fpr=F4B60CC5BF78C2214A313DCB3147D40DDB2DFB29
+In-Reply-To: <2023121942-jumble-unethical-3163@gregkh>
+X-Cookie: System restarting, wait...
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_072251_998141_0FA44776 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20231219_072500_844560_0D95FEAD 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,80 +70,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4525559920309131503=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that the driver core can properly handle constant struct bus_type,
-move the i2c_bus_type variable to be a constant structure as well, placing
-it into read-only memory which can not be modified at runtime.
 
-Note, the sound/soc/rockchip/rk3399_gru_sound.c also needed tweaking as
-it decided to save off a pointer to a bus type for internal stuff, and
-it was using the i2c_bus_type as well.
+--===============4525559920309131503==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="afW+xaqZsOSbFAHv"
+Content-Disposition: inline
 
-Cc: Wolfram Sang <wsa@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Jaroslav Kysela <perex@perex.cz>
-Cc: Takashi Iwai <tiwai@suse.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-i2c@vger.kernel.org
-Cc: linux-sound@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/i2c/i2c-core-base.c           | 2 +-
- include/linux/i2c.h                   | 2 +-
- sound/soc/rockchip/rk3399_gru_sound.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
-index eac90a3cf61a..24c6e1b52668 100644
---- a/drivers/i2c/i2c-core-base.c
-+++ b/drivers/i2c/i2c-core-base.c
-@@ -689,7 +689,7 @@ static struct attribute *i2c_dev_attrs[] = {
- };
- ATTRIBUTE_GROUPS(i2c_dev);
- 
--struct bus_type i2c_bus_type = {
-+const struct bus_type i2c_bus_type = {
- 	.name		= "i2c",
- 	.match		= i2c_device_match,
- 	.probe		= i2c_device_probe,
-diff --git a/include/linux/i2c.h b/include/linux/i2c.h
-index 0dae9db27538..180462d1a373 100644
---- a/include/linux/i2c.h
-+++ b/include/linux/i2c.h
-@@ -23,7 +23,7 @@
- #include <linux/swab.h>		/* for swab16 */
- #include <uapi/linux/i2c.h>
- 
--extern struct bus_type i2c_bus_type;
-+extern const struct bus_type i2c_bus_type;
- extern struct device_type i2c_adapter_type;
- extern struct device_type i2c_client_type;
- 
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 1a504ebd3a0e..6c89c7331229 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -446,7 +446,7 @@ static const struct rockchip_sound_route rockchip_routes[] = {
- 
- struct dailink_match_data {
- 	const char *compatible;
--	struct bus_type *bus_type;
-+	const struct bus_type *bus_type;
- };
- 
- static const struct dailink_match_data dailink_match[] = {
--- 
-2.43.0
+--afW+xaqZsOSbFAHv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Tue, Dec 19, 2023 at 04:22:43PM +0100, Greg Kroah-Hartman wrote:
+> Now that the driver core can properly handle constant struct bus_type,
+> move the i2c_bus_type variable to be a constant structure as well, placing
+> it into read-only memory which can not be modified at runtime.
+
+Acked-by: Mark Brown <broonie@kernel.org>
+
+--afW+xaqZsOSbFAHv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmWBtcIACgkQJNaLcl1U
+h9AWBgf9GIWnQ9OsLWyHoQ5nwfN1rt2XudsksR4RCKj8rPvwWV4xiTJr8Iwyp5Bx
+uHkUb0QULlGDAZmPQwWIeuEq3QlFMuc1K7ohvPcPhOdJ8ecvhmNdh9lha/whvlK3
+S4XnAlWBg4Jq4g3P6y/C3y7nnIzIbY0K/9uN8HfuGqu9fwo5gXkof3puksGa5ghB
+s3t2PrpYTByhEbroKX7SqMDhtAqLwl2yGbOICXka4zQh3ynthlZ3ycPywXf7/Hvx
+BPva1UzeezeEiDGSKhMvPbMxWh5vVMeoEkQEYmDZRAoAEd522vwZmob8Yawn9Bn1
+Ex2gRrHzcFRCr3D6s8U8hBe32grcLw==
+=PG7I
+-----END PGP SIGNATURE-----
+
+--afW+xaqZsOSbFAHv--
+
+
+--===============4525559920309131503==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4525559920309131503==--
+
