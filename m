@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBC9C46CCD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F4EC41535
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:04:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TuKIU92g6RfSQafSSM5Cqh//U7ibeCiFdSEAcQruj5k=; b=wR++FK+x9NJZgR
-	zouZHwx7bWcMeci0mgmT1K8M33reTYKKdI8wpfHj5ZFZNLHwP21c71tY7ZLa7NYLTlw6VRPFlVtYh
-	kNjyWTnbz8b2OrkXBnew+Z+W/Rwccs1NagrOWUxs2eh1wAPpbrXGKJQuvIuAQA3MWRjCeo3RKsk9j
-	UF45PfQjGO/RzZLcfzkBQEMSbNIi3hMCRuYSQzf16ar06q3+IseneDoZaVDu7BGAS2DlHS1X4jUU5
-	B49YHkh+0ykHZjVQjplHI0k+NQlR70874S5O8FZw0GMZiZPtt7Bj7MLcQl//mX/jNnpjG5cgCSV64
-	s28U6Qtr8qILNe6wQG6Q==;
+	List-Owner; bh=rUcPBeFq2zN5q/nfGxe0OU0It+msfrcuUX025ItSUtw=; b=3Uw32vdVGCo9fz
+	FIu/R+KrnCGc2NuAFCC9HHvEK8hmaK6z+UruijRds+5mrma3hVqATXF9fUyxmVdO8QhUY0dWPAseB
+	73XJST9Mloer/TyDJpwun6CVI0MmitUJ7yrLBOVUKYXLwHCGfbUjwsno2dLn6CFknOi6ord7Vyz3X
+	NFTqtJ8akIuPfOeMCpSMWux0hktpyjIClaTNBjYWV7co8P/C0JnMTNpDHCufq2mwLpSbLAjlVaokU
+	xa37gd/0hfM/16HXojbM9nwCxT/OqrhZpI+clcWpNeSkRnyd4rPeYtNl6go5kGz2RtwfS0p8qZrwu
+	+EN2+p4EZOmelZBmAhrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdVS-00EqWS-0k;
-	Tue, 19 Dec 2023 17:03:46 +0000
+	id 1rFdVT-00EqXk-35;
+	Tue, 19 Dec 2023 17:03:47 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdTS-00EoQw-15;
+	id 1rFdTP-00EoQq-1I;
 	Tue, 19 Dec 2023 17:01:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=824x2Bpa+BljPPIuTHpPefnYLDXHrvCUJjy6fbKwCl4=; b=jVHIPTDAM2poDg+Cgg3Dq0Ea9Z
-	ve47DFmn51XSPLiaKQGptFjDJgZZ6BjIGnGqZ/7RkB3eiUM17jql/CYinumU2GNSvNFBPAp+ojtgq
-	H6/tS0bGWiOzYt1lbFKZfyByNJ41q3wwiNoT3sQVhsupDsqq74O43cNAmUl7XjBmL/vYj5p2aitdv
-	ne/F0T6fGpvd6vItXEFBlSyhVGF6poRkFWjU9nnCnkNNaig4k4UobdasF7zhHhNQeWdBVJHkdDgdg
-	ZjRIqID14oQZuDWtsQyGCtkODAg+jNXM4SPKfrI5CfIAHhayEfK5sWcqaZlJfujLjL75xGTl66355
-	GscAp+mQ==;
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	bh=Fkhg2+aCs7jdMgzfxvYxQH9D4wpiG0MxQ7esIiT4Fss=; b=ImEEOrQbBs7hoSPkuWWSg9QKTv
+	VPSBCUSH9t1KKB33v95B9ihV3Pgf+t9mETIxjgPLP8yQIcDTHR+C+Kh6hZMst4YsiZDE8q3wUQfg2
+	uoo/a56x7WwgcER7Q/+2NoYVVdt/PZA9jSKC6LQzAUmeghP6FdYjZR1eBkn3AmC1heFSxCP1FWB2k
+	uO3LPPk5QZoeUrbB/e+lxhO1kfHyS8PfudDczEHOsDZGdifT1i4DHWYpxalQBTPTgwPp4Bjk1nWpo
+	84Htyyhgdavme742aFvxTz2yh50f7a8XgeR4TiR8i60kXl9S7Cg82Z84M7q/1SJh0fDmBjyQfdnOh
+	nUfUTukQ==;
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdTO-00DXOI-0Y;
-	Tue, 19 Dec 2023 17:01:40 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40c48d7a7a7so45246665e9.3;
-        Tue, 19 Dec 2023 09:01:35 -0800 (PST)
+	id 1rFdTM-00DXOH-0F;
+	Tue, 19 Dec 2023 17:01:38 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-40c3fe6c1b5so52527285e9.2;
+        Tue, 19 Dec 2023 09:01:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703005293; x=1703610093; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1703005292; x=1703610092; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=824x2Bpa+BljPPIuTHpPefnYLDXHrvCUJjy6fbKwCl4=;
-        b=JKAVLkcpR98sJL79JsfJ5LIDbieATYJyepffcw/54vo8HdAVSPAptB/NeG3V91Hn2V
-         nWOUaWwzPDMOut+opuYh/vQVjqNI4Mk+Q7M16qtm5p8jM/zIL3B/gVXM8fMEpgwVc0W0
-         TOgtWxFrHVuKHLmi3IOvVwlaqdZizTg0Mk06TshDVcNLRw+fFD+Elzkq8fDhPzkegKmF
-         HyZTGkN7vhWzoqsJFGL01fbvLlzwCb2WPubwYs3cYwpQQ9VNJmc2PAZQj7OrrjAqhuHu
-         45gt5iwcbXmmM9Ry+kqJ0cOhTPi6HoJEQnQfUbiC075KzcTPyA+yW62Om0VMLfbAIzz4
-         CkHQ==
+        bh=Fkhg2+aCs7jdMgzfxvYxQH9D4wpiG0MxQ7esIiT4Fss=;
+        b=NQS5CarGwvemLOkuRDB2VoTEacHZp153HZlk+Rquf5ndDn7LTKUs//Mj/KtQCnsqBf
+         9wPQxQ4K/eKdcSUZZfT/5qdO9m4kKPHYdhAcvUkU+dnQDrVn+NVdrScxMbb0gEeQQ1wp
+         DGB14EsyGwYc+e+vKLo9K7BSOHlY900zjWPEh6tvpMpWjeL4F9LcJwjiVbzZRWXEvz/r
+         PM2m5NoqpvR18Tuk3vcmXdAq7cD+e55d4mPg/3F34nZNXjzBoSxu7mFdTeH+aW8CIHAG
+         t6oFWJAe3KzeGkMo1+fhRv7GiAwcsy+LUms21p2uK4ownAXeiv0rf3ARpTLIqYEKTtNw
+         MHtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703005293; x=1703610093;
+        d=1e100.net; s=20230601; t=1703005292; x=1703610092;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=824x2Bpa+BljPPIuTHpPefnYLDXHrvCUJjy6fbKwCl4=;
-        b=kcwy0X/ljXMttkOBnXT8c/z/Kx/h1Ebip95lSHjUjx5OS9OCs0p3cT9Y9vF/hx9D//
-         nmVKynOJsItZfT1RE8WuYq1AtjXSH+GtZ3VfXJU8M1koS/wB4HAGqSA2gRbVWR2XZFk4
-         4WBLsrBRrk957qPYUMu2IrfHsA6gyKq8LjhzvB1upFRwEd/Ng3nhKMgfzXGYOiZL1nO7
-         p/Iq4msG2PMVrThu1Wk+mqkbFKBI2i0EclxbdlQSLfYLeGPa7AlOTqJhg1J9UBDxRz8h
-         y3Ggfm0n0wX1cxrB6zIk7r21iCvXCpeJx6GThX5U56RLj9EFgtRkdMBzKefQs71azGHB
-         6Ypw==
-X-Gm-Message-State: AOJu0YxQxHrLL6wAjjKjSsWTzSyEDWdKgS/oXcoRzyarY65ycvu9F6zU
-	cZ9iQRaas2QK2+D2dVAcDA==
-X-Google-Smtp-Source: AGHT+IHgcqfEoRYVHjhmsr69xyQlznMp/1EOCdyz0OLbPaZ9r38nDcrP4sBWbdQwF4XoayjoM4b1fw==
-X-Received: by 2002:a05:600c:4c8a:b0:40c:d3a:2447 with SMTP id g10-20020a05600c4c8a00b0040c0d3a2447mr11436802wmp.87.1703005293173;
-        Tue, 19 Dec 2023 09:01:33 -0800 (PST)
+        bh=Fkhg2+aCs7jdMgzfxvYxQH9D4wpiG0MxQ7esIiT4Fss=;
+        b=UmNyunUQCgNnt7n8fsuG6a2fGm8NXoGvI+4gBEKOXeNV2IDI2Paa4rO5wWPlbp79Co
+         RFbfVJMmyAc9wmgfzJLYUAO+LQt74eJHpS1bY50TZ0+5wHW4H2DnD2YQ1c2khydSaxKW
+         wOEd/uMuMmQ5EjvzjHRTmldIRgsriOiXpXIdxkpe0f69tsX19Xv7dkZAsogtIFoIxzxs
+         +R+rin3lxS0e1XgoCxUt0jSw0dLu8PA/NHblHJXsmvWXKeyoF+c7UyYczofeRp/pBn8N
+         w0U76vyfMG4LyzjSLEM3WeUHZG3usFNByEMZAADN7oHJzpfLY4XG305yxP6ppp6gHrDF
+         GkCg==
+X-Gm-Message-State: AOJu0Yy+1cIpHIQQxwojfOhH4+4Z7walHuFzQ+c+sBVC+OPRo3Xo+s6A
+	S6fjH3S6ADojXSbNsoZ6Rg==
+X-Google-Smtp-Source: AGHT+IGcO6yQrlw/IQJbarilDOyEAsYRP2fJCi+GiVdt/rewnkpVpso4E0zT/HF1QyL68nY60lqA1A==
+X-Received: by 2002:a05:600c:4710:b0:40c:6b6c:6867 with SMTP id v16-20020a05600c471000b0040c6b6c6867mr3950390wmo.178.1703005292435;
+        Tue, 19 Dec 2023 09:01:32 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:7ae5:3e:d1c6:a138])
-        by smtp.gmail.com with ESMTPSA id i7-20020a05600c354700b0040d2805d158sm3225878wmq.48.2023.12.19.09.01.32
+        by smtp.gmail.com with ESMTPSA id i7-20020a05600c354700b0040d2805d158sm3225878wmq.48.2023.12.19.09.01.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 19 Dec 2023 09:01:32 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
@@ -92,16 +92,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 28/29] ARM: dts: rockchip: Add HDMI node for RK3128
-Date: Tue, 19 Dec 2023 18:00:58 +0100
-Message-ID: <20231219170100.188800-29-knaerzche@gmail.com>
+Subject: [PATCH v3 27/29] ARM: dts: rockchip: Add display subsystem for RK3128
+Date: Tue, 19 Dec 2023 18:00:57 +0100
+Message-ID: <20231219170100.188800-28-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231219170100.188800-1-knaerzche@gmail.com>
 References: <20231219170100.188800-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_170138_284740_D71D605F 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20231219_170136_212656_B85F69B3 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,9 +118,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3128 has Innosilicon based HDMI TX controller similar to the one found in
-RK3036.
-Add it and the respective port nodes to the SoC device tree.
+Add vop and display-subsystem nodes to RK3128's device tree.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
@@ -130,60 +128,54 @@ changes in v2:
 changes in v3:
  - no changes
 
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 33 ++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 27 ++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index 1a3bc8b2bc6e..fb98873fd94e 100644
+index e2264c40b924..1a3bc8b2bc6e 100644
 --- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
 +++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -270,6 +270,11 @@ vop: vop@1010e000 {
- 		vop_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
+@@ -115,6 +115,12 @@ opp-1200000000 {
+ 		};
+ 	};
+ 
++	display_subsystem: display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop_out>;
++		status = "disabled";
++	};
 +
-+			vop_out_hdmi: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&hdmi_in_vop>;
-+			};
+ 	gpu_opp_table: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 
+@@ -246,6 +252,27 @@ power-domain@RK3128_PD_GPU {
  		};
  	};
  
-@@ -463,6 +468,34 @@ usb2phy_otg: otg-port {
- 		};
- 	};
- 
-+	hdmi: hdmi@20034000 {
-+		compatible = "rockchip,rk3128-inno-hdmi";
-+		reg = <0x20034000 0x4000>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_HDMI>, <&cru DCLK_VOP>;
-+		clock-names = "pclk", "ref";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
++	vop: vop@1010e000 {
++		compatible = "rockchip,rk3126-vop";
++		reg = <0x1010e000 0x300>;
++		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_LCDC0>, <&cru DCLK_VOP>,
++			 <&cru HCLK_LCDC0>;
++		clock-names = "aclk_vop", "dclk_vop",
++			      "hclk_vop";
++		resets = <&cru SRST_VOP_A>, <&cru SRST_VOP_H>,
++			 <&cru SRST_VOP_D>;
++		reset-names = "axi", "ahb",
++			      "dclk";
 +		power-domains = <&power RK3128_PD_VIO>;
 +		status = "disabled";
 +
-+		ports {
++		vop_out: port {
 +			#address-cells = <1>;
 +			#size-cells = <0>;
-+
-+			hdmi_in: port@0 {
-+				reg = <0>;
-+				hdmi_in_vop: endpoint {
-+					remote-endpoint = <&vop_out_hdmi>;
-+				};
-+			};
-+
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
 +		};
 +	};
 +
- 	timer0: timer@20044000 {
- 		compatible = "rockchip,rk3128-timer", "rockchip,rk3288-timer";
- 		reg = <0x20044000 0x20>;
+ 	qos_gpu: qos@1012d000 {
+ 		compatible = "rockchip,rk3128-qos", "syscon";
+ 		reg = <0x1012d000 0x20>;
 -- 
 2.43.0
 
