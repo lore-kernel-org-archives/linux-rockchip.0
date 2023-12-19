@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 106FBC41535
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0DDFC41535
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qg6SWjeddiELNXDbPraA/cmTqcqzl67WNHVw0AX/Cbs=; b=LkkTEcWETSrb3p7wvvVBTcbq20
-	yoIULTNexKjlLI8fwLopLTACQJOav5/hw4K7zb17FwbcoVP36jU5VrfLCYQbmdAXEn0kOjQlguvLQ
-	LvXWfCwDc2MMxFnJrktrEZhE67g4ZHbYpOXwbjIbY/s1oE7TtgaULnzW8rVrDhEyzoBgvgjV49p1q
-	eDLvLioVzowXG4r14s+MyFMmHdNLhGJb/hCyghbF8swsmN+lA6+8Nzx5YnkhpPip/+5Zy+P6gLg7T
-	JudbP3zkNshhmkTEzlwVtz+/yeB1ffCrKgmpDg1VgN/d8ILrgAjL+GzF0Usse5s2gjxHvlootFXCK
-	srxlS+cw==;
+	bh=W16A0aPEhBuHU1P7pTTTGryQgYcn/G9F9YIFcKWiPOI=; b=mMGjbOFEM3iZ+lqXnkBhiYiWE3
+	akGcEBHxxgwZC+JrIpXPnpsIpa+0gDxwOIW7nl8E1uxnK6wNCDgEUlY7JpSG+yVxWA6dhdnf/fRY7
+	p9qyrvlJ2sND29IpgqL2tdqCSXcQXt37VbXvfbgDb53P9e8qWipUX+zUBKBtRz6dso21hPkkt9dwL
+	387zBerzjxLMxb19yNE3AGsqBqpRGp8s/nRg/b5p8HKebOPynUTcvVlu1p3yVsaXBueOfbuvA72uY
+	b1MClJfAMiG5qeyXoYcGOPeqz+uVy+K33SsJREt/ATpMvVzyLj7UbCWh463eE+Wf+7OE6WVWm6gNk
+	D/VFTmtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdYC-00Errm-0O;
-	Tue, 19 Dec 2023 17:06:36 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rFdok-00Ev6m-0f;
+	Tue, 19 Dec 2023 17:23:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdY8-00ErqG-1y;
-	Tue, 19 Dec 2023 17:06:33 +0000
+	id 1rFdog-00Ev4m-2H;
+	Tue, 19 Dec 2023 17:23:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 1DEF9B81900;
-	Tue, 19 Dec 2023 17:06:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C06B3C433CA;
-	Tue, 19 Dec 2023 17:06:29 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E90A3CE19E3;
+	Tue, 19 Dec 2023 17:23:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ADBEC433C7;
+	Tue, 19 Dec 2023 17:23:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703005590;
-	bh=a7OnamfCwWf+orWN0KvpA25yoky33RSY7KSTSqDl/A8=;
+	s=k20201202; t=1703006616;
+	bh=20UlB/3GfBU7VYZQewkO6lNFHuoMJTapMIPvG5CgEsA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QG+RfNMDFWyLdUnI3z9dEpRaS/CjlNjdf9whequWAeBC/cq2NpTpAAOaJE6WGNqMX
-	 aZwjfMcMV1oQ65I394Yc1ZK42hCLpm4YZMDDPj9iIRcKoy07BQhuREIcyGVOFpiYgg
-	 0xr3pSG/It9HDJhPl0ZNh1CS5kynJQD8QigPks1esTRsEU7/LxYmsh5Jr42BvUXSH+
-	 ENDM9zXsM5dWAcn+beWg5lXRuc5cTwyY8v4T64Yn5TsVrZmdz+YZXKhcoZ6nm6BQhN
-	 jU+mHkzc8PDvgvPO/3bDN5H8/15C7BUiWRl9WyJ1sw2dauEaSgWpysP1GzZr6jutH2
-	 Va2udn3TEkxMQ==
-Date: Tue, 19 Dec 2023 18:06:26 +0100
+	b=TggN0vebKJ6zeSIXebegrggCNwejrthasvy1lIIA7g8T3m8pdMjO+QzvSkWd6kacP
+	 a3V8Cu4UM2V7YHffN0m/T2R07vKhPE5MxMXOJBkiOCdjBFyVQGZNjWM2jV3msavsSv
+	 p5MVd8ONuLdnHnCLdlYi/W6DlzUk7laGzv1vMTU6D9U6uatOpuaok2mFiQYtH9P3+T
+	 2HYHCcaQwSC8qHB6CcUV6OG3tEWv6Uod+MBQqbRw+CsIfJiHCjIxgsP2xih5nazRSw
+	 ozaG412tuzBggoNg+tacIncA+mG2GQnBrcJsRq51UiV5d1jfc2cxiTfAG1gcx+vRYx
+	 hFf07aavyy11g==
+Date: Tue, 19 Dec 2023 18:23:32 +0100
 From: Wolfram Sang <wsa@kernel.org>
-To: Tim Lunn <tim@feathertop.org>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>, Conor Dooley <conor+dt@kernel.org>,
+To: Jensen Huang <jensenhuang@friendlyarm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v3 3/8] i2c: rk3x: Adjust mask/value offset for i2c2 on
- rv1126
-Message-ID: <ZYHNkgxAauYp6ivX@shikoro>
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] i2c: rk3x: fix potential spinlock recursion on poll
+Message-ID: <ZYHRlMukbJUZw7cO@shikoro>
 Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>,
-	Conor Dooley <conor+dt@kernel.org>,
+	Jensen Huang <jensenhuang@friendlyarm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org
-References: <20231203124004.2676174-1-tim@feathertop.org>
- <20231203124004.2676174-4-tim@feathertop.org>
+	linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+References: <20231207082200.16388-1-jensenhuang@friendlyarm.com>
 MIME-Version: 1.0
-In-Reply-To: <20231203124004.2676174-4-tim@feathertop.org>
+In-Reply-To: <20231207082200.16388-1-jensenhuang@friendlyarm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_090632_795933_C52C44A5 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20231219_092338_917096_EB5B03BB 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,63 +74,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6609144317792147178=="
+Content-Type: multipart/mixed; boundary="===============4632761485955384011=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6609144317792147178==
+--===============4632761485955384011==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sByZ41cl6uk/xLbT"
+	protocol="application/pgp-signature"; boundary="lI4kUQ0cF6rdsM1g"
 Content-Disposition: inline
 
 
---sByZ41cl6uk/xLbT
+--lI4kUQ0cF6rdsM1g
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Sun, Dec 03, 2023 at 11:39:59PM +1100, Tim Lunn wrote:
-> Rockchip RV1126 is using old style i2c controller, the i2c2
-> bus uses a non-sequential offset in the grf register for the
-> mask/value bits for this bus.
+On Thu, Dec 07, 2023 at 04:21:59PM +0800, Jensen Huang wrote:
+> Possible deadlock scenario (on reboot):
+> rk3x_i2c_xfer_common(polling)
+>     -> rk3x_i2c_wait_xfer_poll()
+>         -> rk3x_i2c_irq(0, i2c);
+>             --> spin_lock(&i2c->lock);
+>             ...
+>         <rk3x i2c interrupt>
+>         -> rk3x_i2c_irq(0, i2c);
+>             --> spin_lock(&i2c->lock); (deadlock here)
 >=20
-> This patch fixes i2c2 bus on rv1126 SoCs.
+> Store the IRQ number and disable/enable it around the polling transfer.
+> This patch has been tested on NanoPC-T4.
 >=20
-> Signed-off-by: Tim Lunn <tim@feathertop.org>
-> Acked-by: Heiko Stuebner <heiko@sntech.de>
->=20
+> Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
 
-Applied to for-next, thanks!
+Applied to for-current, thanks!
 
-But, phew, the fact that this driver _needs_ i2c-aliases in DT should be
-fixed somewhen. I totally overlooked this so far :/
+But I'd like to see the follow-up patches somewhen which have been
+discussed in this thread.
 
 
---sByZ41cl6uk/xLbT
+--lI4kUQ0cF6rdsM1g
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmWBzZIACgkQFA3kzBSg
-KbbCTxAAhKVTE46KK8QieYwxX2cW+2NJfyL0OYbsB05G5G49MqoDkY9qO2m0+p+5
-WWkmnMZHQ90vsx5Rep5qcFUmAC+q+b4+tU9qVT2WEPmdgsiBteDB43HetxdBBbzO
-NwT8Z3uanQpcubf9hzW4v6UZAIrmmpvQWO7LKMa4ZqWtlFIYnyLYCLKl5MK8Rzbi
-n+z/8ppmMp98e/lj153aKh+F8IxLNW5jHy83elAudC2ovyc2veIXhpcxria5S7Ca
-U3KQdFvBdwLoGiAsMsLfRbIRYf9ItR7E4oKTyKnlEJzZF5C4gpjgeEa39w7g/Kl6
-pIS2rnuMKvWObEnyvZGUJBbyxzFkjCOXA1O1wANLgtV3HrTWFifkIdup5pudJtKg
-uhJqlqFfvDDGxpKrdSBFYT82tDL2WON+wiOg5bF7cjLx6r4QZ2MZBaiOmuMnsadE
-BqLwnHjSR9QyAa+2SliYrahWyae9rFxwAVBv+/DrZpuK0L7u1SeMonq/r+jh7Fpf
-yhpQTSW1levm6ltNXPyajNwpZiUKJCMB0yy/Sw/Tnpqw1e+PY0PxenPAgSOBIcPo
-oNtTjhSXfS+QeorHPM9zUDu9OoCGRW412FRXQU6L+NVQOCjFOaX2d6RMPedbOYql
-NZnS9kaFXtWL6roKEwFghdhym4sj6PO5ieJOpdsZh0xcXOUaf4E=
-=Ifc0
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmWB0ZQACgkQFA3kzBSg
+KbbOVw/+NVen+AGSOw4eMjuOsuw6K8gqDN/xh3Ljd6DswQnEF9MIELUKGPoq8/Iw
+AgJfpJdu+JLIxqZ7n8wxXAzQNeq4cA7/66j+5N4NSPE5C5DV7iAcQIvlQQHi2P93
+uxCjDe6OnDoeS2JA3KCwL+Kce2JQvZ7EWLp5A/UaX1sANt2L3aZ4Xs0vj6yFpRg2
+keWp0ouKrsMhRt9Vmi5zFWxtd1M0vdiOLywFLcWRq9vbVB6ZKjcMidjLQHPQ96sM
+uKm+3QbhLrV4qPZE+BLI+WAFfAr6x9/geqZ7qyFQeJOfWEcFFHFYMWEba+zybCKa
+P9zdG4vAkn8ZzRzoRJ/+xhvoXwUh7RbumsdnNiR51pGnSBF68BsQla5A/cg/mhHL
+fMrdIg9d/2BBm0rUrOpIE2EuSRLDJWCWaPuVyx+QNKRDzOlVIYM9PyZbREiWNEyP
+1n+IZf09ueeTVy5OJRpQVq4tGy6tp0+R4F/kFLfZKUe4UYr6CQdiUH4ctQw6YBt0
+01RAzx4GWxyRpXBjp8uH+Ili3ZIqJpLFDfABErhxfUIMluAOsBetPSuNdEIcWny8
+7JICmbtPoYvWoLahdHT8DE3YNQcjf25IQZY3j2mCNKicTeibisXBkgsWieRbcAXS
+D8p6y+ALiam4Yx9t871AZAMqZlUq/cXQT7TrkxVaXp/OfsviIpo=
+=dZSq
 -----END PGP SIGNATURE-----
 
---sByZ41cl6uk/xLbT--
+--lI4kUQ0cF6rdsM1g--
 
 
---===============6609144317792147178==
+--===============4632761485955384011==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -146,5 +148,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6609144317792147178==--
+--===============4632761485955384011==--
 
