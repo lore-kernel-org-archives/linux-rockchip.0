@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80669C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 14:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B224C41535
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 14:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C0YBqw+gcSY8Xvuh9VUBb0mN4mve4e+HLz5MWAy63jk=; b=z6vE4xsPI+F+wz
-	VHsOXvLA/KHnsjksn2I5vWhJbOmOkMwEHJbvTqjDzf8yHrnfjUrNcS7Us6MlSAoZAQRH1D1skFcPY
-	yq/gUXg5jqeKyBCk4yp3LN6laS4fIcY0+uo+Ff5MBqhwBqwpNEQHQofyYS7jcS+F4rGACdcWCuvl5
-	3bhVfGLOwQoX483LweGsUypS3sf6TAGkDhpBcbrvoZuj0FQ74WLcowj4c3JrOR5eMfKlwN67kqBYv
-	zEbU9bXulb44GjV/jfG2SD7E2IK6sQw/L1akEup7I52O9BmL+aWFpc12E+229b1srn2nxnKFkwN6n
-	EEDuEj0ALYkN23Xn2gaw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GbxTK2xeB3NLBTmd0qCXoC9DjAKRoZ9zHGsi8A+yGL0=; b=xsQXmwfx7jgpBB
+	RkGgSnyDBjbGvNqXVyQF1JRMREcz7qA+gsegUlY39sRFNG8l73M5vMkAQ6Yzek4c9LAvpkfcUbk7y
+	F/TeJB5kAvRpcSYLqMeurAPd+s3Dz7M084aW5aTJOklWIC3aFPg0Ra19DsniZcx8J1ycWLUjMmAyH
+	He5bAWMdi+8V7gRAvQBWeovBbfVckwVN1TI1RgCdys0kYc1dB6/CxzjUVY80RbmmP7y91ebx5wtnn
+	CRAloMNns0i/uktX+lGtUf5jcouF95ZPcsw731HQHpazyVYmtKW6/NeqIsu3xnfX926rh9eAXcqM+
+	QyeEczhaDFiz9xgq06yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFbUk-00ERmE-2X;
-	Tue, 19 Dec 2023 14:54:54 +0000
+	id 1rFbUt-00ERro-1s;
+	Tue, 19 Dec 2023 14:55:03 +0000
 Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFbUg-00ERiO-0I;
-	Tue, 19 Dec 2023 14:54:51 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 6F93940008;
-	Tue, 19 Dec 2023 14:54:44 +0000 (UTC)
+	id 1rFbUh-00ERio-0q;
+	Tue, 19 Dec 2023 14:54:53 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 3812040009;
+	Tue, 19 Dec 2023 14:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1702997685;
+	t=1702997688;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=s/kiy+EyoHiEM1ZV0AcyGmIqSBGfNRYrAo9pwLUdKJo=;
-	b=eR0TgaFv74SLX0l5Cita7+vpYSlCMvCJaQ9tObGKdHHAJA5hsBg6vthhimj+cRldwreQym
-	rZaisRyMrMktg+0PHFV0Vsb0JQgbqaAnqQnz/7fnGO/a4i8wKOgDkC7T/uhbf43bj9b5rB
-	5d8kRsnvwxhDmhBy4xwfdxtX5vDUrxpTvzYrOkF/6XlYwG64ISTIZKokRm7BIlUa9j+RV/
-	IyFT2h5WRWJArYi4nlbG+EvVCjSuIFwivplFC4Flgt3zx3GDLCL0cj3sSWDD40RmOUV1BS
-	zNuN2JEYcPbgN7ip5QD24wiQY7Do5g9pOeQMafrWiCQcGP6AKSOyCVObSp6f3w==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jzW2JR3KUHEBRvbUZ7SjMZvoo6agNjWiHJ41yASPvJk=;
+	b=aJcqxiuMtphsbOJDgOQgGXFv9oXj1R2pBkky5UQf5hja8CM7txnmYwBGBAI4XbP6V8qRdY
+	C77Pw6F0VhT10q5DHM9T8rvGWJV4ASEOFfbFcxLIVcJAN/UiHDI8RDS4qN3+UduXYlF9B1
+	h7JfwmshDbJaW4WkgSUKCw/igEfeWCQX78BQk+X3PpL0uGha65K9Kn7NT8R5y6hyCSfsGG
+	A2xUjiarZhJxQIj/SlYXGOu/xQlq0eL0R8eSCfLlqf3NXMgVUrvjCdARUw/B4VOGLzdKgt
+	1fYRymmyrTM3skVhJB9ztnByhaeDFHJoRHXxCeLCaNQF18WApSdQdyu71IfbAA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Subject: [PATCH v2 0/6] Add support for the internal RK3308 audio codec
-Date: Tue, 19 Dec 2023 15:54:15 +0100
-Message-Id: <20231219-rk3308-audio-codec-v2-0-c70d06021946@bootlin.com>
+Date: Tue, 19 Dec 2023 15:54:17 +0100
+Subject: [PATCH v2 2/6] ASoC: dt-bindings: Add Rockchip RK3308 internal
+ audio codec
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAJeugWUC/x3MQQqAIBBA0avIrBtITdCuEi1MpxqCDKUIorsnL
- d/i/wcKZaYCvXgg08WF016hGgFh9ftCyLEaVKu0VNJh3rRuLfozcsKQIgX0xhg7ees6F6GGR6a
- Z7386jO/7ASkiTjpkAAAA
+Message-Id: <20231219-rk3308-audio-codec-v2-2-c70d06021946@bootlin.com>
+References: <20231219-rk3308-audio-codec-v2-0-c70d06021946@bootlin.com>
+In-Reply-To: <20231219-rk3308-audio-codec-v2-0-c70d06021946@bootlin.com>
 To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
@@ -60,8 +61,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.12.4
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_065450_424864_860B0A28 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20231219_065451_561862_D9F728D4 
+X-CRM114-Status: GOOD (  17.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,61 +79,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series of patches adds support to use the internal audio codec of the
-Rockchip RK3308 SoC. This codec is internally connected to the I2S
-peripherals on the same chip, and it has some peculiarities arising from
-that interconnection.
-
-For proper bidirectional operation with the internal codec, the I2S
-peripheral needs two clock sources (tx and rx), while connection with an
-external codec commonly needs only one. Since v5.16 there is a driver for
-the I2S in sound/soc/rockchip/rockchip_i2s_tdm.c, but it does not correctly
-handle receiving those two clocks via the .set_sysclk op. Patch 1 fixes
-that.
-
-Patches 2-4 adds the codec driver along with the bindings and a new helper
-macro.
-
-Patches 5-6 add to the SoC DT file two I2S controllers (those which are
-internally connected to the internal codec) and the codec itself.
-
-Luca
+Add device tree bindings document for the internal audio codec of the
+Rockchip RK3308 SoC.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+
 ---
 
 Changed in v2:
- - largely rewrote the codec driver to use DAPM and lots of improvements
-   and cleanups   
- - removed the RK3308 audio card and related patches, will be sent later
- - various other changes, listed per-patch
-
+ - reword commit title
+ - add maxItems to resets
+ - remove quotes from reset-names
+ - use percent values for rockchip,micbias-avdd-multiplier
+ - use name compliant to the docs in the example
 ---
-Luca Ceresoli (6):
-      ASoC: rockchip: i2s-tdm: Fix clk_id usage in .set_sysclk()
-      ASoC: dt-bindings: Add Rockchip RK3308 internal audio codec
-      ASoC: core: add SOC_DOUBLE_RANGE_TLV() helper macro
-      ASoC: codecs: Add RK3308 internal audio codec driver
-      arm64: dts: rockchip: add i2s_8ch_2 and i2s_8ch_3
-      arm64: dts: rockchip: add the internal audio codec
+ .../bindings/sound/rockchip,rk3308-codec.yaml      | 98 ++++++++++++++++++++++
+ MAINTAINERS                                        |  5 ++
+ 2 files changed, 103 insertions(+)
 
- .../bindings/sound/rockchip,rk3308-codec.yaml      |   98 ++
- MAINTAINERS                                        |    7 +
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           |   68 ++
- include/sound/soc.h                                |   12 +
- sound/soc/codecs/Kconfig                           |   11 +
- sound/soc/codecs/Makefile                          |    2 +
- sound/soc/codecs/rk3308_codec.c                    | 1012 ++++++++++++++++++++
- sound/soc/codecs/rk3308_codec.h                    |  593 ++++++++++++
- sound/soc/rockchip/rockchip_i2s_tdm.c              |   22 +-
- 9 files changed, 1819 insertions(+), 6 deletions(-)
----
-base-commit: f89a0253ea1f519e6866689f0e83857ca276a2e9
-change-id: 20231219-rk3308-audio-codec-a5558ba8949d
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+new file mode 100644
+index 000000000000..27a9e5bcfa58
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+@@ -0,0 +1,98 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/rockchip,rk3308-codec.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK3308 Internal Codec
++
++description: |
++  This is the audio codec embedded in the Rockchip RK3308
++  SoC. It has 8 24-bit ADCs and 2 24-bit DACs. The maximum supported
++  sampling rate is 192 kHz.
++
++  It is connected internally to one out of a selection of the internal I2S
++  controllers.
++
++  The RK3308 audio codec has 8 independent capture channels, but some
++  features work on stereo pairs called groups:
++    * grp 0 -- MIC1 / MIC2
++    * grp 1 -- MIC3 / MIC4
++    * grp 2 -- MIC5 / MIC6
++    * grp 3 -- MIC7 / MIC8
++
++maintainers:
++  - Luca Ceresoli <luca.ceresoli@bootlin.com>
++
++properties:
++  compatible:
++    const: rockchip,rk3308-codec
++
++  reg:
++    maxItems: 1
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the General Register Files (GRF)
++
++  clocks:
++    items:
++      - description: clock for TX
++      - description: clock for RX
++      - description: AHB clock driving the interface
++
++  clock-names:
++    items:
++      - const: mclk_tx
++      - const: mclk_rx
++      - const: hclk
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    items:
++      - const: codec
++
++  "#sound-dai-cells":
++    const: 0
++
++  rockchip,micbias-avdd-percent:
++    description: |
++      Voltage setting for the MICBIAS pins expressed as a percentage of
++      AVDD.
++
++      E.g. if rockchip,micbias-avdd-percent = 85 and AVDD = 3v3, then the
++      MIC BIAS voltage will be 3.3 V * 85% = 2.805 V.
++
++    enum: [ 50, 55, 60, 65, 70, 75, 80, 85 ]
++
++required:
++  - compatible
++  - reg
++  - rockchip,grf
++  - clocks
++  - resets
++  - "#sound-dai-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3308-cru.h>
++
++    audio-codec: audio-codec@ff560000 {
++        compatible = "rockchip,rk3308-codec";
++        reg = <0xff560000 0x10000>;
++        rockchip,grf = <&grf>;
++        clock-names = "mclk_tx", "mclk_rx", "hclk";
++        clocks = <&cru SCLK_I2S2_8CH_TX_OUT>,
++                 <&cru SCLK_I2S2_8CH_RX_OUT>,
++                 <&cru PCLK_ACODEC>;
++        reset-names = "codec";
++        resets = <&cru SRST_ACODEC_P>;
++        #sound-dai-cells = <0>;
++    };
++
++...
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9104430e148e..feddd6610b51 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -18669,6 +18669,11 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/media/rockchip-rga.yaml
+ F:	drivers/media/platform/rockchip/rga/
+ 
++ROCKCHIP RK3308 INTERNAL AUDIO CODEC
++M:	Luca Ceresoli <luca.ceresoli@bootlin.com>
++S:	Maintained
++F:	Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
++
+ ROCKCHIP VIDEO DECODER DRIVER
+ M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+ L:	linux-media@vger.kernel.org
 
-Best regards,
 -- 
-Luca Ceresoli <luca.ceresoli@bootlin.com>
+2.34.1
 
 
 _______________________________________________
