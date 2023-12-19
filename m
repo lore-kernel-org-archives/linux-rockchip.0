@@ -4,51 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B590BC41535
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 22:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B22C46CCD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 23:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M8Pmui3H2/oGJvUQLzgW1JPi2UE8xNtsFx5scAyoIzQ=; b=0LJeccuAAQICr8
-	bm2281sawDtxAAnVCiCU0bJ1eM7B4ldff2wgATJ0+SZegdpsH2RJOq/NJTuy3nB0r39IsfvAiUr1p
-	CqWReiVF/nBvlQat8D0weVvNRBrMZTvp0rmWLlhAG62ZYEpNJJ5+6WkKk5gkJxYnwehO/iVTcnK6D
-	M61lDH4YSmxMQsZw2VNuXvCH88IKekxFcuq9038CarDMzEIzm5cZDnm7aWFaJR1auw3ecGOlUyjF+
-	BjyhH9bW/2697waTI8ABfDpuC6JxOkM75PUVfy0XNPHwcQPpiYlk7eGO8ud8X/IY0WqLQX0BRU50n
-	IoqMLtPR0Rh7T115jiaQ==;
+	List-Owner; bh=S4yI54w9d8eS4D7S15ms1jHLPpIuhXS2Qwv2xRYbEdk=; b=JXGqXy4sHB3oI3
+	jbjgp16jVpSrXbN2Y6qX9qD1x3usJbGa8pJpJ9oFUdncUp5JO9oJjjOGfFueLYfW16CLX2Ev1BVj/
+	QM4aSKHeZZmfLnmB0drPdbErZ6BVxVL1NGYZ5IWUP2QkjdCRO9NRb6OWUlGkf9BH++LGyfT8DaXFe
+	t5OKW5/MrrZoj90blUGVH0OrpTNiWgNPX2rORviTe9JSmchXi3BZmUx8vcqvVKg9AOIWG8SbMWPnr
+	2b33pjRRnx9f8X4Z3UOLSpHJ7fDsoPUSp+jSCk3DrFKR0/Dkjki0fERj6OqB1gT1nq0yR6oD4NN2j
+	P4wytw7xWXa2jrlrB+yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFixt-00FdfA-2T;
-	Tue, 19 Dec 2023 22:53:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rFjHK-00Ff2c-2g;
+	Tue, 19 Dec 2023 23:13:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFixq-00Fdei-1y;
-	Tue, 19 Dec 2023 22:53:28 +0000
-Received: from i53875b78.versanet.de ([83.135.91.120] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rFixj-0002E6-VR; Tue, 19 Dec 2023 23:53:20 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Wolfram Sang <wsa@kernel.org>, Tim Lunn <tim@feathertop.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Jagan Teki <jagan@edgeble.ai>, Conor Dooley <conor+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Andi Shyti <andi.shyti@kernel.org>, linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v3 3/8] i2c: rk3x: Adjust mask/value offset for i2c2 on rv1126
-Date: Tue, 19 Dec 2023 23:53:18 +0100
-Message-ID: <3368267.VdNmn5OnKV@diego>
-In-Reply-To: <ZYHNkgxAauYp6ivX@shikoro>
-References: <20231203124004.2676174-1-tim@feathertop.org>
- <20231203124004.2676174-4-tim@feathertop.org> <ZYHNkgxAauYp6ivX@shikoro>
+	id 1rFjHH-00Ff1y-0j;
+	Tue, 19 Dec 2023 23:13:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 180C0614B1;
+	Tue, 19 Dec 2023 23:13:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3AAEEC433C7;
+	Tue, 19 Dec 2023 23:13:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703027608;
+	bh=yXicCXSWH5EUUBda6scEiKgMhU/r4oYSFT679x7VNPY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=aHRhp2O4EdVLAoyV/ApY8QUYV5FPZkfNj2W4CU8A0ZKgSuP3F0xx+X6Gtd5fNm/Fc
+	 c27q85gkNqomuj+Szm2j9c2ih2je6nDr+xSn11zjz2FJYDin/T+silexxeUSeVBSJ1
+	 yRQdFs+rDg3KOC2UKjA25Rd6nutGVeUU1om/S7IvrSanpQBR8YqDcW4WIumQYCmf9W
+	 7V3zr8mHxnU0Ibm5h8VmZoXPpvgzWWZV2P2toDFyIcJT07lJmMsd4H5HfgSHc5ZfwI
+	 LcKzA++q14dUNHQVn0gJe1xPBghZv5yBd8fxIGewwvxjdznfOC4t5Jf7zw5ZZyCeji
+	 Zaj7ejGEyUbkQ==
+Received: (nullmailer pid 2025101 invoked by uid 1000);
+	Tue, 19 Dec 2023 23:13:26 -0000
 MIME-Version: 1.0
+From: Rob Herring <robh@kernel.org>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: linux-rockchip@lists.infradead.org, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, linux-sound@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+In-Reply-To: <20231219-rk3308-audio-codec-v2-2-c70d06021946@bootlin.com>
+References: <20231219-rk3308-audio-codec-v2-0-c70d06021946@bootlin.com>
+ <20231219-rk3308-audio-codec-v2-2-c70d06021946@bootlin.com>
+Message-Id: <170302760623.2025074.2958729782154314139.robh@kernel.org>
+Subject: Re: [PATCH v2 2/6] ASoC: dt-bindings: Add Rockchip RK3308 internal
+ audio codec
+Date: Tue, 19 Dec 2023 17:13:26 -0600
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_145326_673835_8CBAA1AB 
-X-CRM114-Status: GOOD (  23.27  )
+X-CRM114-CacheID: sfid-20231219_151331_372723_94E340ED 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,60 +73,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Wolfram,
 
-Am Dienstag, 19. Dezember 2023, 18:06:26 CET schrieb Wolfram Sang:
-> On Sun, Dec 03, 2023 at 11:39:59PM +1100, Tim Lunn wrote:
-> > Rockchip RV1126 is using old style i2c controller, the i2c2
-> > bus uses a non-sequential offset in the grf register for the
-> > mask/value bits for this bus.
-> > 
-> > This patch fixes i2c2 bus on rv1126 SoCs.
-> > 
-> > Signed-off-by: Tim Lunn <tim@feathertop.org>
-> > Acked-by: Heiko Stuebner <heiko@sntech.de>
-> > 
+On Tue, 19 Dec 2023 15:54:17 +0100, Luca Ceresoli wrote:
+> Add device tree bindings document for the internal audio codec of the
+> Rockchip RK3308 SoC.
 > 
-> Applied to for-next, thanks!
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 > 
-> But, phew, the fact that this driver _needs_ i2c-aliases in DT should be
-> fixed somewhen. I totally overlooked this so far :/
+> ---
+> 
+> Changed in v2:
+>  - reword commit title
+>  - add maxItems to resets
+>  - remove quotes from reset-names
+>  - use percent values for rockchip,micbias-avdd-multiplier
+>  - use name compliant to the docs in the example
+> ---
+>  .../bindings/sound/rockchip,rk3308-codec.yaml      | 98 ++++++++++++++++++++++
+>  MAINTAINERS                                        |  5 ++
+>  2 files changed, 103 insertions(+)
+> 
 
-Yeah, relying on aliases for this is probably not the most elegant thing
-to do ;-)
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Though right now I don't see the perfect way to change that.
-Options I can think of, could be:
+yamllint warnings/errors:
 
-(1) As this really is "just" a thing for older socs that offer both a very
-legacy i2c and the more modern one we use, I guess one possibility
-would be to move this completely out of the i2c driver and into the
-"grf-cleanup" driver [0].
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.example.dts:20.20-21 syntax error
+FATAL ERROR: Unable to parse input tree
+make[2]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1424: dt_binding_check] Error 2
+make: *** [Makefile:234: __sub-make] Error 2
 
-We never actually implemented the "old"-style i2c driver for rk29xx
-and earlier - and that thing is more than 10 years old now, so noone ever
-will. So we always want to switch to the new one anyway in the kernel.
+doc reference errors (make refcheckdocs):
 
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20231219-rk3308-audio-codec-v2-2-c70d06021946@bootlin.com
 
-(2) The other option would be to try to identify the busses by their
-address. We do this in some places, like the dsi driver [1]
-with the entry matched against the reg property.
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-I guess from a "being done with it" perspective, the first option
-would be nicer ;-) .
+pip3 install dtschema --upgrade
 
-Thoughts?
-Heiko
-
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/rockchip/grf.c
-That code does a number of settings the in the "General Register Files"
-that we simply expect, so also doing the i2c controller switch there
-for all i2c busses in one go would make sense.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c#n1586
-
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
