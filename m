@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 468C6C46CA2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:01:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6044FC46CD4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Dec 2023 17:01:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8uRmCkZfdDZM40/amBft79quB3LGD6kVD9tBaa5NHQI=; b=f8R/Qh/6laWXMI
-	Sk//emOzddXf61DqCXO4f6dbHyImjk2zD2dCLoqYJ5UQfKS9ljRTZboLp3tUKS1mqrPuRsjUYzj5N
-	9RbiG9zctD4hZXXOOuot5e0xp9ZvUtEGNAMmjSZTIUjHoK8zeHTbRRvmSLcigriveV9TIIfDYQuPF
-	GbuuvdTan91gXjMneqc1Ygoq942UOHe6p4/7+XhyEJjZJwNZNK8L1ijt8Tin5moQcWP0iHQQ9FFNh
-	h28ZcVAsHCfJWN/eJpYE3fE90pjaiavKrxozk/WKAsskmOXLL4ThtAm62zTlr1oIwRYE1+VszmECq
-	pPi5TXC8mU+2FNCCTumQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OEZnRIu1iZXUlazGwx5Lh//kRIXC5zyYE6jBDkLdtak=; b=1xvpMfb+UCNIxc
+	DX9HnMiylsN6UPx91eUzn9JHfJDzXa1DY/+0ePdT/wvLrZFvth0MJ4sQ410hDSjgHzTs+c7tS8Cka
+	a3SadrsyTj3+nN3QSrC5UlFP3aiCh5sZG8rnzrhoLEl+JaLwojas+RWjXoGEToS5GtZ2jt3SasCQp
+	TPhELZtYiY8WYwOCLkc9m/hVk/ZrTibcfHSbXO0ILvQzv8vD/C3TuLjAQ2xbevfhGLI+rQPtV7Nvk
+	PiHK/Kdg0zu/jj0Fy7JubmF5mg8te27l+xSSmygNEYD9PlD90l6aKYkQ8e74fjaLTECh9+E0I57l8
+	CwU58YrIN4afgdcsXB8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdT7-00Eo9r-33;
-	Tue, 19 Dec 2023 17:01:21 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1rFdTG-00EoIw-1Z;
+	Tue, 19 Dec 2023 17:01:30 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFdSy-00Enwm-0b;
-	Tue, 19 Dec 2023 17:01:13 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40c2bb872e2so54677365e9.3;
-        Tue, 19 Dec 2023 09:01:08 -0800 (PST)
+	id 1rFdT0-00Enxg-0V;
+	Tue, 19 Dec 2023 17:01:16 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40d31116dbeso612105e9.3;
+        Tue, 19 Dec 2023 09:01:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703005267; x=1703610067; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=N8PJRoWBXdJr6P9kQaOUuh4wo+XEtKpMrItz+79btFw=;
-        b=b6c4ThpZWcgqczrRu/SbZduE0a5zZmeUDSTctvoTb4gX0KNMXwMaT687R5STqQ7JR/
-         GfIjBEtWEBkDnBtbT4XMhb1Sxd9TsTjtS4/MEjGdMIeAPsjQ9lOnZjngdn9wFXM8fI5U
-         OdgjuedrPgF9D2p06AZNIYuNZk/vOoHhXvCkNe6vxrKQXQOc6xbJdNNdJeXX6xSVJDcz
-         aaUMiBuqHQdcVFAwT0atbLGyiNetC6ex2UIUC3hIhMUmcMlLxQ5NQUOAgjcUsK0yv5hv
-         r2XyTii4Tc1SaaeK8qYUXRLFYk15SLAd648bQxqjFMcVugdep51NmmTnIGPbvgMoPdAe
-         pYOQ==
+        d=gmail.com; s=20230601; t=1703005269; x=1703610069; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uClaQQ2dRjLaUKPRgkZZsqsXWCBLw2oyW3zHKJRRqCQ=;
+        b=nHWZla9jDMDomZqx7OsrStTdb4EfDCN8MRHtNO59BlLtgXDEkVOiwIS1lTs+lRCAOZ
+         xkQ0x9f1uO1UmpNCkYGPPHUFq503/imfkYaPtloDr0WpaAywpPEl/ovdexjtl0vCTg3u
+         iUP/5ec8CWWMep4tBbHUUVX7U5Xz4t+izYK8YObYHFUWyOjc2oBKlqHN7TORbTxYaVC/
+         1QOLRNPoJ5Ef3MLvhma2IdKmUDRuYGweIZOeqAhoQDPWGk+2EETZn0AfRLmEp/zzhH7B
+         JvsYqOoQjA4jy5+VbrVi1DDUQiM70B3lV9CcsuMpzHihlCiEsJXz1nNvNSV+hXCpVoKE
+         G+bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703005267; x=1703610067;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=N8PJRoWBXdJr6P9kQaOUuh4wo+XEtKpMrItz+79btFw=;
-        b=C4a2RE1R1/mSHnb0lLTXO4voDvj/zVV/SFse49/HCS8CN4V0gefVJVsPV0mvI/gcMp
-         hMdAEbMHZW6d+QRITbSQT23NeUv/rGlc54xcC98RFtPY5/aCR9vkoWVNpsg86HAMDh8q
-         Bl/7BbPkTri3aEkL58vuw2zV85FXBVPdv7EXamC7iCvUxNDT8rNhhxusyNyYhGaYx0iq
-         RAjX9dtRw8Hi4jqzFKvieLv5VVkd5Wwi84xvfk0yVb/PCKvjjGVy325ChU7HiG+PUYFr
-         UOToJPyKjD6+6uzzIBSwRkevNxbxxw6xO0538dmBtKGU4G+yCCd8BQEXpU+YMHN+suvX
-         I1sw==
-X-Gm-Message-State: AOJu0YwEAUSIhgh7aNXmwBcz72Dgx77mxVNHqm2dsU/mO08tRjlrGp5v
-	pQoqiILZNbQhaF2hyY4ACg==
-X-Google-Smtp-Source: AGHT+IFtTnWSg8by21FsHwIUaOzjc1ZOwAk0/3xwkWAAHFdNcNdnQXbOrW8p59ru2prAZIag/1ge2w==
-X-Received: by 2002:a05:600c:4706:b0:40c:6a6b:ceed with SMTP id v6-20020a05600c470600b0040c6a6bceedmr1998676wmo.259.1703005267112;
-        Tue, 19 Dec 2023 09:01:07 -0800 (PST)
+        d=1e100.net; s=20230601; t=1703005269; x=1703610069;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uClaQQ2dRjLaUKPRgkZZsqsXWCBLw2oyW3zHKJRRqCQ=;
+        b=mkgdoJyfM2tJepLioElYHTNDZy30PNM/fIxwI6PANLGmQbCKHHZmSAGvnIWuQldtWn
+         TfPECOrWvlraTslmmcxwVm1PFY6Jn4JieZFwI6hiVzpfAT3XxGuxX9Uc9/Yw2LLp79fx
+         gCGE8cM97NRvTWgP2AV6/WbwcqMhGAmJqVH/MAf/jD377B6LMNuxRCKePKNEun50ZwTD
+         vTZyUuS/qzyj/M9QZH0P2DBpxEM7KeQozWFuRX1Dr0Lfhtn8YPpuZZfr9JIBejhh5TIy
+         eL5s+6NFVIM4swvOQFliFOBv9Xh8zv+2a3/bjdliop5IwkzxxIXf0wDh1SYQZwyiwd77
+         VfCg==
+X-Gm-Message-State: AOJu0Yz+qPuVuczzU0Iy+G7fLfj1KwepofTzZwDqbNjNuem1g5HHZcir
+	krC1RA7a2QSyh2/9H82pHg==
+X-Google-Smtp-Source: AGHT+IFjM19BzeJ7opBdpwxu2A1HFwreYdOm1l3GDNQQNs3Nw6kKgPMgszKGHl0AEjwpNwVYqeSAcA==
+X-Received: by 2002:a05:600c:2212:b0:40c:6160:98f7 with SMTP id z18-20020a05600c221200b0040c616098f7mr5158875wml.17.1703005269466;
+        Tue, 19 Dec 2023 09:01:09 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:7ae5:3e:d1c6:a138])
-        by smtp.gmail.com with ESMTPSA id i7-20020a05600c354700b0040d2805d158sm3225878wmq.48.2023.12.19.09.01.01
+        by smtp.gmail.com with ESMTPSA id i7-20020a05600c354700b0040d2805d158sm3225878wmq.48.2023.12.19.09.01.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Dec 2023 09:01:06 -0800 (PST)
+        Tue, 19 Dec 2023 09:01:09 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -76,15 +77,18 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 00/29] Add HDMI support for RK3128
-Date: Tue, 19 Dec 2023 18:00:30 +0100
-Message-ID: <20231219170100.188800-1-knaerzche@gmail.com>
+	Alex Bee <knaerzche@gmail.com>,
+	Zheng Yang <zhengyang@rock-chips.com>
+Subject: [PATCH v3 03/29] drm/rockchip: inno_hdmi: Fix video timing
+Date: Tue, 19 Dec 2023 18:00:33 +0100
+Message-ID: <20231219170100.188800-4-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231219170100.188800-1-knaerzche@gmail.com>
+References: <20231219170100.188800-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231219_090112_227192_72FA5C39 
-X-CRM114-Status: GOOD (  23.42  )
+X-CRM114-CacheID: sfid-20231219_090114_214587_4AB25E33 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,90 +105,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is version 3 of my series that aims to add support for the display
-controller (VOP) and the HDMI controller block of RK3128 (which is very
-similar to the one found in RK3036).
-The original intention of this series was to add support for this slightly
-different integration but is by now, driven by maintainer's feedback,
-exploded to be a rework of inno-hdmi driver in large parts.
+The controller wants the difference between *total and *sync_start in the
+HDMI_VIDEO_EXT_*DELAY registers. Otherwise the signal is very unstable for
+certain non-VIC modes. See downstream commit [0].
 
+[0] https://github.com/rockchip-linux/kernel/commit/8eb559f2502c
 
-The VOP part is very simple -  everything we need for HDMI support is
-already there. I only needed to split the output selection registers from
-RK3036. The VOP has an IOMMU attached, but it has a serious silicon bug:
-Registers can only be written, but not be read. As it's not possible to use
-it with the IOMMU driver in it's current state I'm not adding it here and
-we have to live with CMA for now - which works fine also. I got response
-from the vendor, that there is no possibility to read the registers and an
-workaround must be implemented in software in order to use it.
+Fixes: 412d4ae6b7a5 ("drm/rockchip: hdmi: add Innosilicon HDMI support")
+Co-developed-by: Zheng Yang <zhengyang@rock-chips.com>
+Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+changes in v2:
+ - none
 
-The inno-hdmi driver currently gets a lot of attention [0-2] and I'm
-hooking in now also. As requested I incorporated some of Maxime's series
-[0] (and tested them).
-I have intentionally not removed any code dealing with output format
-conversion in this series. In contrast to the input format, which is always
-RGB on this platform and certainly can be dropped, that can be implemented
-later. And secondly I need the conversion for RGB full range to RGB limited
-range for this series.
+changes in v3:
+ - none
+ 
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I did also some smaller driver cleanups from my side and implemented a
-custom connector state which now holds the data that belongs there and it
-is not longer in the device structure and, of course, addressed the
-feedback from v1 [3] and v2 [4].
-Please see individual patches for changelog.
-
-Note: Patches are based and tested on next-20231213.
-
-[0] https://lore.kernel.org/all/20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org
-[1] https://lore.kernel.org/all/20231204123315.28456-1-keith.zhao@starfivetech.com
-[2] https://lore.kernel.org/all/2601b669-c570-f39d-8cf9-bff56c939912@gmail.com
-[3] https://lore.kernel.org/all/20231213195125.212923-1-knaerzche@gmail.com/
-[4] https://lore.kernel.org/all/20231216162639.125215-1-knaerzche@gmail.com/
-
-Alex Bee (17):
-  dt-bindings: display: rockchip,inno-hdmi: Document RK3128 compatible
-  drm/rockchip: vop: Add output selection registers for RK312x
-  drm/rockchip: inno_hdmi: Fix video timing
-  drm/rockchip: inno_hdmi: Remove YUV-based csc coefficents
-  drm/rockchip: inno_hdmi: Drop irq struct member
-  drm/rockchip: inno_hdmi: Remove useless include
-  drm/rockchip: inno_hdmi: Subclass connector state
-  drm/rockchip: inno_hdmi: Correctly setup HDMI quantization range
-  drm/rockchip: inno_hdmi: Don't power up the phy after resetting
-  drm/rockchip: inno_hdmi: Split power mode setting
-  drm/rockchip: inno_hdmi: Add variant support
-  drm/rockchip: inno_hdmi: Add RK3128 support
-  drm/rockchip: inno_hdmi: Add basic mode validation
-  drm/rockchip: inno_hdmi: Drop custom fill_modes hook
-  ARM: dts: rockchip: Add display subsystem for RK3128
-  ARM: dts: rockchip: Add HDMI node for RK3128
-  ARM: dts: rockchip: Enable HDMI output for XPI-3128
-
-Maxime Ripard (12):
-  drm/rockchip: inno_hdmi: Remove useless mode_fixup
-  drm/rockchip: inno_hdmi: Remove useless copy of drm_display_mode
-  drm/rockchip: inno_hdmi: Switch encoder hooks to atomic
-  drm/rockchip: inno_hdmi: Get rid of mode_set
-  drm/rockchip: inno_hdmi: no need to store vic
-  drm/rockchip: inno_hdmi: Remove unneeded has audio flag
-  drm/rockchip: inno_hdmi: Remove useless input format
-  drm/rockchip: inno_hdmi: Remove tmds rate from structure
-  drm/rockchip: inno_hdmi: Drop HDMI Vendor Infoframe support
-  drm/rockchip: inno_hdmi: Move infoframe disable to separate function
-  drm/rockchip: inno_hdmi: Switch to infoframe type
-  drm/rockchip: inno_hdmi: Remove unused drm device pointer
-
- .../display/rockchip/rockchip,inno-hdmi.yaml  |  40 +-
- .../arm/boot/dts/rockchip/rk3128-xpi-3128.dts |  29 +
- arch/arm/boot/dts/rockchip/rk3128.dtsi        |  60 ++
- drivers/gpu/drm/rockchip/inno_hdmi.c          | 543 +++++++++++-------
- drivers/gpu/drm/rockchip/inno_hdmi.h          |   5 -
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |  13 +-
- drivers/gpu/drm/rockchip/rockchip_vop_reg.h   |   3 +
- 7 files changed, 478 insertions(+), 215 deletions(-)
-
-
-base-commit: 48e8992e33abf054bcc0bb2e77b2d43bb899212e
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index 6e5b922a121e..345253e033c5 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -412,7 +412,7 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_HBLANK_L, value & 0xFF);
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_HBLANK_H, (value >> 8) & 0xFF);
+ 
+-	value = mode->hsync_start - mode->hdisplay;
++	value = mode->htotal - mode->hsync_start;
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_HDELAY_L, value & 0xFF);
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_HDELAY_H, (value >> 8) & 0xFF);
+ 
+@@ -427,7 +427,7 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
+ 	value = mode->vtotal - mode->vdisplay;
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_VBLANK, value & 0xFF);
+ 
+-	value = mode->vsync_start - mode->vdisplay;
++	value = mode->vtotal - mode->vsync_start;
+ 	hdmi_writeb(hdmi, HDMI_VIDEO_EXT_VDELAY, value & 0xFF);
+ 
+ 	value = mode->vsync_end - mode->vsync_start;
 -- 
 2.43.0
 
