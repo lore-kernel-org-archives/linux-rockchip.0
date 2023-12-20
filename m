@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 761D5C46CD3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 12:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13E5C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 13:47:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mz0uht4vXTP0muLc5O5TAuZLd5yKg8TbXYslI3FMGUA=; b=L59AFnz8WLdIky
-	L6YwMxtcLKUku1asbNGVR7SgizTqzJXwwjNyedEhrjCvDW/nLKDkfiCWcLcYo2pEGihfwied01aki
-	1c8FtjD5//+1Dbk/sIoYwy2EPAPaZG0OMoiFj5LKoMlGpt+6krxV41vDyrKNZoy4BJPJyDB7M7NOJ
-	/7/1mUD3USkdn+TAhfzmIxvYDF9mboUmworPxaIDLTnsl5ui5iCQl1hhyW10PktPe4c17Fi8zbIYp
-	dfsal+BlKMDUJ7Duf5T0aXwoo17D+sVLfZiB/rXPnypsBHHhsQzNZqnFvLXf4nZ84JvbVbgI0h9hH
-	8bvVKG/hAwlt3LOA66Cw==;
+	List-Owner; bh=THGX6pypWTZIvl3gQ8vJzFSBGsVMw7HaUFntKNbHWHI=; b=ASOPUiNuVKZZeX
+	GHm50oH5NbGXiDWcIW98IW0if3MRBJp7Wrj3Wt0iiZTEGnL5x0KZWcVOsrsgt+D/jwYvnH5Qr0e7u
+	jR+uS6V9C0wvpVMC4ND9l9+eNm5qeFgmMvSkkI8wFuZsP+nBt/ZyQnRsh4b+Gb6EaphzSRYa6StA9
+	YbGpa4REebu+l1PRROlra7oRvtf6oOhr+PS3uvvOaY5TJLitOjUfB7ZyfdqEwW7cd4+Y7zlGwjRff
+	QML02fmOeDzce+MXZ3EEGO/jX3PtWcZNy8LNTL3eibV0/gjnHcLoiPxBsHIhtwuoThYrwV768zL4k
+	WShQaKrys9kPMaDHIvtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvR1-00HJkt-1i;
-	Wed, 20 Dec 2023 12:12:23 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rFwvD-00HYtM-2l;
+	Wed, 20 Dec 2023 13:47:39 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvQv-00HJf7-3A;
-	Wed, 20 Dec 2023 12:12:21 +0000
+	id 1rFwv9-00HYrd-0v;
+	Wed, 20 Dec 2023 13:47:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703074336;
-	bh=MflLEurTiGg1PBiiaFa9nE+oeb3L1txjVdY0QpC+lio=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dQdgu0L/EjGSalNDFbRZEFOXNAWYzWa90D4aJC+8X7zyXVUjXdNIuT8nqo1MlJ0aN
-	 B8r4FeJyn7+0d+T/h0F2nlXnnWd/dA+UDapzvU/DcF/kiWF4ux0kdjGUFspFM9o6SI
-	 Ozdb8oMs6+T9z2T0QE2wxNVumgpnJeIJ+6XzMnKRgkAODifMOf11hoVIs4hLDigRgA
-	 3+v2ibfuz1x4sAReOv1yhIhVhnDHVvMjydcpG2gC9atZY4eLCsuXJwkGoer1lVh22c
-	 6Kp7SvLGBgfG7GyD+Lat25hkgqiBXZ5Ma1UkTyS1VXeDFpC5Vnp6gorPuuQI4cpMI/
-	 yJEHjcf8MVZRg==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	s=mail; t=1703080052;
+	bh=NQl0a41Gc1ldcX14E0vlnoPZ/1bs8DbZ9Gz925Y9mZg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=z5dzxmq34u8+LyyevT81zwdq3QcZrrjrC5G9TDceeRkK3/AHfQ0dwBQuK7LI0l2uq
+	 9gfcF5sRzo3ndyUDhm5l76mzad7tfZUdM6y7gNm/epfKsKc6x7wnPj64ktTocqUlBM
+	 C5VV4tM+FWiVJ5OmOLTBMbmsnQmuwbm4E2O4PsCrVzmCHgV/ycQB62eBKktWmGCOeO
+	 ornWKVbzM3xV2n1N/DU2y60qCgoUGwWIVX//Q7lVuZOESka1gl7EjxPUhRFZSKTy6a
+	 tnju79xDNgWZ7yu1m3SLIcIun6HT8817sPYZX5xM4nB8IuFAwZYJw/7dS/uBpf2VkP
+	 1z633xnGcnULw==
+Received: from nicolas-tpx395.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 74FD93781FD5;
-	Wed, 20 Dec 2023 12:12:11 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	daniels@collabora.com
-Cc: david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	emma@anholt.net,
-	robdclark@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 8/8] drm/ci: Update xfails
-Date: Wed, 20 Dec 2023 17:41:10 +0530
-Message-Id: <20231220121110.1441160-9-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20231220121110.1441160-1-vignesh.raman@collabora.com>
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
+	(Authenticated sender: nicolas)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0B01A3781F8C;
+	Wed, 20 Dec 2023 13:47:28 +0000 (UTC)
+Message-ID: <174478b773ab2f5db8708c29b025332f75b24fe7.camel@collabora.com>
+Subject: Re: [PATCH v3 2/5] media: hantro: add support for STM32MP25 VDEC
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Hugues Fruchet <hugues.fruchet@foss.st.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>, Sakari Ailus
+ <sakari.ailus@linux.intel.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Laurent Pinchart
+ <laurent.pinchart+renesas@ideasonboard.com>, Daniel Almeida
+ <daniel.almeida@collabora.com>, Benjamin Mugnier
+ <benjamin.mugnier@foss.st.com>,  Heiko Stuebner <heiko@sntech.de>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-media@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ linux-stm32@st-md-mailman.stormreply.com, Rob Herring <robh+dt@kernel.org>,
+  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org
+Cc: Marco Felsch <m.felsch@pengutronix.de>, Adam Ford <aford173@gmail.com>
+Date: Wed, 20 Dec 2023 08:47:25 -0500
+In-Reply-To: <20231220084641.2076428-3-hugues.fruchet@foss.st.com>
+References: <20231220084641.2076428-1-hugues.fruchet@foss.st.com>
+	 <20231220084641.2076428-3-hugues.fruchet@foss.st.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=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
+User-Agent: Evolution 3.50.2 (3.50.2-1.fc39) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_041218_149306_4895C7C0 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20231220_054735_547597_6E74A682 
+X-CRM114-Status: GOOD (  25.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,277 +87,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add fails and flakes files for mt8173 and mt8183 mediatek-drm
-driver tests. Add fails, skips and flakes files for rk3288 and
-rk3399 rockchip-drm driver tests. Add fails file for meson-drm
-display driver tests.
-
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- .../xfails/mediatek-mt8173-display-flakes.txt | 13 ++++
- .../xfails/mediatek-mt8183-display-fails.txt  |  7 ++
- .../xfails/mediatek-mt8183-display-flakes.txt |  8 +++
- .../ci/xfails/meson-g12b-display-fails.txt    | 13 ++++
- .../xfails/rockchip-rk3288-display-fails.txt  | 15 ++++
- .../xfails/rockchip-rk3288-display-flakes.txt | 13 ++++
- .../xfails/rockchip-rk3288-display-skips.txt  |  8 +++
- .../xfails/rockchip-rk3399-display-fails.txt  | 69 +++++++++++++++++++
- .../xfails/rockchip-rk3399-display-flakes.txt | 20 ++++++
- .../xfails/rockchip-rk3399-display-skips.txt  |  6 ++
- 10 files changed, 172 insertions(+)
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-display-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt
-
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
-new file mode 100644
-index 000000000000..64b30c092c85
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
-@@ -0,0 +1,13 @@
-+# Board Name: mt8173-elm-hana.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/931e3f9a-9c5c-fc42-16fc-abaac4e0c0ff@collabora.com/T/#u
-+# IGT Version: 1.28-gd2af13d9f
-+# Failure Rate: 50
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_cursor_legacy@cursor-vs-flip-atomic-transitions
-+
-+# Below test shows inconsistency across multiple runs,
-+# giving results of Pass and Timeout/Fail alternately
-+kms_prop_blob@invalid-set-prop
-+kms_prop_blob@invalid-set-prop-any
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
-new file mode 100644
-index 000000000000..bfa2f92c907a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
-@@ -0,0 +1,7 @@
-+kms_bw@linear-tiling-2-displays-3840x2160p,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@flip-vs-suspend,Fail
-+kms_prop_blob@invalid-set-prop,Fail
-+kms_prop_blob@invalid-set-prop-any,Fail
-+kms_properties@get_properties-sanity-atomic,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
-new file mode 100644
-index 000000000000..5885a950fa72
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
-@@ -0,0 +1,8 @@
-+# Board Name: mt8183-kukui-jacuzzi-juniper-sku16.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/931e3f9a-9c5c-fc42-16fc-abaac4e0c0ff@collabora.com/T/#u
-+# IGT Version: 1.28-gd2af13d9f
-+# Failure Rate: 100
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_cursor_legacy@cursor-vs-flip-atomic-transitions
-diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-display-fails.txt b/drivers/gpu/drm/ci/xfails/meson-g12b-display-fails.txt
-new file mode 100644
-index 000000000000..f123fb0cb820
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/meson-g12b-display-fails.txt
-@@ -0,0 +1,13 @@
-+kms_3d,Fail
-+kms_cursor_legacy@forked-bo,Fail
-+kms_cursor_legacy@forked-move,Fail
-+kms_cursor_legacy@single-bo,Fail
-+kms_cursor_legacy@single-move,Fail
-+kms_cursor_legacy@torture-bo,Fail
-+kms_cursor_legacy@torture-move,Fail
-+kms_force_connector_basic@force-edid,Fail
-+kms_hdmi_inject@inject-4k,Fail
-+kms_properties@connector-properties-atomic,Fail
-+kms_properties@connector-properties-legacy,Fail
-+kms_properties@get_properties-sanity-atomic,Fail
-+kms_properties@get_properties-sanity-non-atomic,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt
-new file mode 100644
-index 000000000000..8e763195defc
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt
-@@ -0,0 +1,15 @@
-+kms_bw@linear-tiling-3-displays-2560x1440p,Fail
-+kms_cursor_crc@cursor-dpms,Crash
-+kms_cursor_crc@cursor-onscreen-64x21,Crash
-+kms_cursor_crc@cursor-random-64x64,Crash
-+kms_cursor_crc@cursor-sliding-32x10,Crash
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-atomic,Crash
-+kms_flip@flip-vs-panning-vs-hang,Crash
-+kms_pipe_crc_basic@read-crc-frame-sequence,Crash
-+kms_prop_blob@invalid-set-prop,Crash
-+kms_prop_blob@invalid-set-prop-any,Crash
-+kms_properties@get_properties-sanity-atomic,Crash
-+kms_properties@get_properties-sanity-non-atomic,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt
-new file mode 100644
-index 000000000000..2ee69be541c4
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt
-@@ -0,0 +1,13 @@
-+# Board Name: rk3288-veyron-jaq.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gd2af13d9f
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_cursor_crc@cursor-offscreen-64x21
-+kms_cursor_legacy@flip-vs-cursor-legacy
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_cursor_crc@cursor-size-change
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt
-new file mode 100644
-index 000000000000..627bf03f3c78
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt
-@@ -0,0 +1,8 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Machine is hanging in this test with linux kernel version 6.7.0-rc4, so skip it
-+kms_cursor_crc@cursor-onscreen-32x32
-+kms_pipe_crc_basic@disable-crc-after-crtc
-+kms_pipe_crc_basic@pipe-A-eDP-1
-+kms_bw@linear-tiling-3-displays-2560x1440
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-fails.txt
-new file mode 100644
-index 000000000000..e7c1a7e5b1db
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-fails.txt
-@@ -0,0 +1,69 @@
-+kms_color@legacy-gamma,Fail
-+kms_cursor_crc@cursor-alpha-opaque,Fail
-+kms_cursor_crc@cursor-alpha-transparent,Fail
-+kms_cursor_crc@cursor-dpms,Fail
-+kms_cursor_crc@cursor-offscreen-32x10,Fail
-+kms_cursor_crc@cursor-offscreen-64x21,Fail
-+kms_cursor_crc@cursor-offscreen-64x64,Fail
-+kms_cursor_crc@cursor-onscreen-32x10,Fail
-+kms_cursor_crc@cursor-onscreen-32x32,Fail
-+kms_cursor_crc@cursor-onscreen-64x21,Fail
-+kms_cursor_crc@cursor-onscreen-64x64,Fail
-+kms_cursor_crc@cursor-random-32x10,Fail
-+kms_cursor_crc@cursor-random-32x32,Fail
-+kms_cursor_crc@cursor-random-64x21,Fail
-+kms_cursor_crc@cursor-random-64x64,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x32,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x21,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x64,Fail
-+kms_cursor_crc@cursor-size-change,Fail
-+kms_cursor_crc@cursor-sliding-32x10,Fail
-+kms_cursor_crc@cursor-sliding-32x32,Fail
-+kms_cursor_crc@cursor-sliding-64x21,Fail
-+kms_cursor_crc@cursor-sliding-64x64,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
-+kms_cursor_legacy@basic-flip-before-cursor-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-atomic,Fail
-+kms_cursor_legacy@cursor-vs-flip-legacy,Fail
-+kms_cursor_legacy@cursor-vs-flip-toggle,Fail
-+kms_cursor_legacy@cursorA-vs-flipA-legacy,Fail
-+kms_cursor_legacy@flip-vs-cursor-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-atomic,Fail
-+kms_cursor_legacy@flip-vs-cursor-crc-legacy,Fail
-+kms_cursor_legacy@flip-vs-cursor-legacy,Fail
-+kms_flip@basic-flip-vs-wf_vblank,Fail
-+kms_flip@blocking-wf_vblank,Fail
-+kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@dpms-vs-vblank-race-interruptible,Fail
-+kms_flip@flip-vs-absolute-wf_vblank,Fail
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning,Fail
-+kms_flip@flip-vs-panning-interruptible,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@flip-vs-wf_vblank-interruptible,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@modeset-vs-vblank-race-interruptible,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_flip@wf_vblank-ts-check,Fail
-+kms_flip@wf_vblank-ts-check-interruptible,Fail
-+kms_invalid_mode@int-max-clock,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
-+kms_pipe_crc_basic@nonblocking-crc,Fail
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Fail
-+kms_pipe_crc_basic@read-crc,Fail
-+kms_pipe_crc_basic@read-crc-frame-sequence,Fail
-+kms_plane@pixel-format,Fail
-+kms_plane@pixel-format-source-clamping,Fail
-+kms_plane@plane-panning-bottom-right,Fail
-+kms_plane@plane-panning-top-left,Fail
-+kms_plane@plane-position-covered,Fail
-+kms_plane@plane-position-hole,Fail
-+kms_plane@plane-position-hole-dpms,Fail
-+kms_rmfb@close-fd,Fail
-+kms_setmode@basic,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt
-new file mode 100644
-index 000000000000..ac8badcb6e07
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt
-@@ -0,0 +1,20 @@
-+# Board Name: rk3399-gru-kevin.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# IGT Version: 1.28-gd2af13d9f
-+# Failure Rate: 50
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_color@gamma
-+kms_cursor_legacy@cursorA-vs-flipA-toggle
-+kms_flip@dpms-vs-vblank-race
-+kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible
-+kms_flip@flip-vs-wf_vblank-interruptible
-+kms_flip@modeset-vs-vblank-race-interruptible
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24
-+kms_setmode@basic
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_cursor_crc@cursor-rapid-movement-32x10
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt
-new file mode 100644
-index 000000000000..cf5577b7720c
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt
-@@ -0,0 +1,6 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Machine ends up hanging after lots of Oopses with linux version 6.7.0-rc4
-+# rockchip-dp ff970000.dp: AUX CH error happened: 0x2
-+kms_plane_multiple.*
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgbWVyY3JlZGkgMjAgZMOpY2VtYnJlIDIwMjMgw6AgMDk6NDYgKzAxMDAsIEh1Z3VlcyBGcnVj
+aGV0IGEgw6ljcml0wqA6Cj4gQWRkIHN1cHBvcnQgZm9yIFNUTTMyTVAyNSBWREVDIHZpZGVvIGhh
+cmR3YXJlIGRlY29kZXIuCj4gSDI2NC9WUDggZGVjb2RpbmcgdXAgdG8gNDA4MHg0MDgwLgo+IE5v
+IHBvc3QtcHJvY2Vzc29yIHN1cHBvcnQuCj4gVkRFQyBoYXMgaXRzIG93biByZXNldC9jbG9jay9p
+cnEuCj4gCj4gU2lnbmVkLW9mZi1ieTogSHVndWVzIEZydWNoZXQgPGh1Z3Vlcy5mcnVjaGV0QGZv
+c3Muc3QuY29tPgoKUmV2aWV3ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVz
+bmVAY29sbGFib3JhLmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNp
+bGljb24vS2NvbmZpZyAgICB8IDE0ICsrLQo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3Zlcmlz
+aWxpY29uL01ha2VmaWxlICAgfCAgMyArCj4gIC4uLi9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNv
+bi9oYW50cm9fZHJ2LmMgICB8ICAzICsKPiAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29u
+L2hhbnRyb19ody5oICAgIHwgIDEgKwo+ICAuLi4vcGxhdGZvcm0vdmVyaXNpbGljb24vc3RtMzJt
+cDI1X3ZkZWNfaHcuYyAgfCA5MiArKysrKysrKysrKysrKysrKysrCj4gIDUgZmlsZXMgY2hhbmdl
+ZCwgMTEwIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3N0bTMybXAyNV92ZGVjX2h3LmMK
+PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9LY29u
+ZmlnIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9LY29uZmlnCj4gaW5kZXgg
+ZTY1YjgzNmI5ZDc4Li43NjQyZmY5Y2Y5NmMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9LY29uZmlnCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS92ZXJpc2lsaWNvbi9LY29uZmlnCj4gQEAgLTQsNyArNCw3IEBAIGNvbW1lbnQgIlZlcmlzaWxp
+Y29uIG1lZGlhIHBsYXRmb3JtIGRyaXZlcnMiCj4gIAo+ICBjb25maWcgVklERU9fSEFOVFJPCj4g
+IAl0cmlzdGF0ZSAiSGFudHJvIFZQVSBkcml2ZXIiCj4gLQlkZXBlbmRzIG9uIEFSQ0hfTVhDIHx8
+IEFSQ0hfUk9DS0NISVAgfHwgQVJDSF9BVDkxIHx8IEFSQ0hfU1VOWEkgfHwgQ09NUElMRV9URVNU
+Cj4gKwlkZXBlbmRzIG9uIEFSQ0hfTVhDIHx8IEFSQ0hfUk9DS0NISVAgfHwgQVJDSF9BVDkxIHx8
+IEFSQ0hfU1VOWEkgfHwgQVJDSF9TVE0zMiB8fCBDT01QSUxFX1RFU1QKPiAgCWRlcGVuZHMgb24g
+VjRMX01FTTJNRU1fRFJJVkVSUwo+ICAJZGVwZW5kcyBvbiBWSURFT19ERVYKPiAgCXNlbGVjdCBN
+RURJQV9DT05UUk9MTEVSCj4gQEAgLTE2LDggKzE2LDggQEAgY29uZmlnIFZJREVPX0hBTlRSTwo+
+ICAJc2VsZWN0IFY0TDJfVlA5Cj4gIAloZWxwCj4gIAkgIFN1cHBvcnQgZm9yIHRoZSBIYW50cm8g
+SVAgYmFzZWQgVmlkZW8gUHJvY2Vzc2luZyBVbml0cyBwcmVzZW50IG9uCj4gLQkgIFJvY2tjaGlw
+IGFuZCBOWFAgaS5NWDhNIFNvQ3MsIHdoaWNoIGFjY2VsZXJhdGUgdmlkZW8gYW5kIGltYWdlCj4g
+LQkgIGVuY29kaW5nIGFuZCBkZWNvZGluZy4KPiArCSAgUm9ja2NoaXAsIE5YUCBpLk1YOE0gYW5k
+IFNUTTMyTVAyNSBTb0NzLCB3aGljaCBhY2NlbGVyYXRlIHZpZGVvCj4gKwkgIGFuZCBpbWFnZSBl
+bmNvZGluZyBhbmQgZGVjb2RpbmcuCj4gIAkgIFRvIGNvbXBpbGUgdGhpcyBkcml2ZXIgYXMgYSBt
+b2R1bGUsIGNob29zZSBNIGhlcmU6IHRoZSBtb2R1bGUKPiAgCSAgd2lsbCBiZSBjYWxsZWQgaGFu
+dHJvLXZwdS4KPiAgCj4gQEAgLTUyLDMgKzUyLDExIEBAIGNvbmZpZyBWSURFT19IQU5UUk9fU1VO
+WEkKPiAgCWRlZmF1bHQgeQo+ICAJaGVscAo+ICAJICBFbmFibGUgc3VwcG9ydCBmb3IgSDYgU29D
+Lgo+ICsKPiArY29uZmlnIFZJREVPX0hBTlRST19TVE0zMk1QMjUKPiArCWJvb2wgIkhhbnRybyBT
+VE0zMk1QMjUgc3VwcG9ydCIKPiArCWRlcGVuZHMgb24gVklERU9fSEFOVFJPCj4gKwlkZXBlbmRz
+IG9uIEFSQ0hfU1RNMzIgfHwgQ09NUElMRV9URVNUCj4gKwlkZWZhdWx0IHkKPiArCWhlbHAKPiAr
+CSAgRW5hYmxlIHN1cHBvcnQgZm9yIFNUTTMyTVAyNSBTb0NzLgo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL01ha2VmaWxlIGIvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9NYWtlZmlsZQo+IGluZGV4IDZhZDJlZjg4NTkyMC4uNTg1NGUw
+ZjBkZDMyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24v
+TWFrZWZpbGUKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL01ha2Vm
+aWxlCj4gQEAgLTM5LDMgKzM5LDYgQEAgaGFudHJvLXZwdS0kKENPTkZJR19WSURFT19IQU5UUk9f
+Uk9DS0NISVApICs9IFwKPiAgCj4gIGhhbnRyby12cHUtJChDT05GSUdfVklERU9fSEFOVFJPX1NV
+TlhJKSArPSBcCj4gIAkJc3VueGlfdnB1X2h3Lm8KPiArCj4gK2hhbnRyby12cHUtJChDT05GSUdf
+VklERU9fSEFOVFJPX1NUTTMyTVAyNSkgKz0gXAo+ICsJCXN0bTMybXAyNV92ZGVjX2h3Lm8KPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2
+LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19kcnYuYwo+IGlu
+ZGV4IGE5ZmEwNWFjNTZhOS4uMmRiMjdjMzMzOTI0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2Rydi5jCj4gKysrIGIvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMKPiBAQCAtNzMzLDYgKzczMyw5IEBA
+IHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG9mX2hhbnRyb19tYXRjaFtdID0gewo+
+ICAjZW5kaWYKPiAgI2lmZGVmIENPTkZJR19WSURFT19IQU5UUk9fU1VOWEkKPiAgCXsgLmNvbXBh
+dGlibGUgPSAiYWxsd2lubmVyLHN1bjUwaS1oNi12cHUtZzIiLCAuZGF0YSA9ICZzdW54aV92cHVf
+dmFyaWFudCwgfSwKPiArI2VuZGlmCj4gKyNpZmRlZiBDT05GSUdfVklERU9fSEFOVFJPX1NUTTMy
+TVAyNQo+ICsJeyAuY29tcGF0aWJsZSA9ICJzdCxzdG0zMm1wMjUtdmRlYyIsIC5kYXRhID0gJnN0
+bTMybXAyNV92ZGVjX3ZhcmlhbnQsIH0sCj4gICNlbmRpZgo+ICAJeyAvKiBzZW50aW5lbCAqLyB9
+Cj4gIH07Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24v
+aGFudHJvX2h3LmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19o
+dy5oCj4gaW5kZXggN2YzM2Y3YjA3Y2U0Li5iN2VjY2MxYTk2ZmMgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9faHcuaAo+ICsrKyBiL2RyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2h3LmgKPiBAQCAtNDA2LDYgKzQw
+Niw3IEBAIGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQgcmszNTY4X3ZwdV92YXJp
+YW50Owo+ICBleHRlcm4gY29uc3Qgc3RydWN0IGhhbnRyb192YXJpYW50IHJrMzU4OF92cHU5ODFf
+dmFyaWFudDsKPiAgZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBzYW1hNWQ0X3Zk
+ZWNfdmFyaWFudDsKPiAgZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBzdW54aV92
+cHVfdmFyaWFudDsKPiArZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBzdG0zMm1w
+MjVfdmRlY192YXJpYW50Owo+ICAKPiAgZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fcG9zdHBy
+b2Nfb3BzIGhhbnRyb19nMV9wb3N0cHJvY19vcHM7Cj4gIGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFu
+dHJvX3Bvc3Rwcm9jX29wcyBoYW50cm9fZzJfcG9zdHByb2Nfb3BzOwo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3N0bTMybXAyNV92ZGVjX2h3LmMgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3N0bTMybXAyNV92ZGVjX2h3LmMKPiBu
+ZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAwMDAwMC4uYWE4YjBmNzUxMzkwCj4g
+LS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24v
+c3RtMzJtcDI1X3ZkZWNfaHcuYwo+IEBAIC0wLDAgKzEsOTIgQEAKPiArLy8gU1BEWC1MaWNlbnNl
+LUlkZW50aWZpZXI6IEdQTC0yLjAKPiArLyoKPiArICogU1RNMzJNUDI1IFZERUMgdmlkZW8gZGVj
+b2RlciBkcml2ZXIKPiArICoKPiArICogQ29weXJpZ2h0IChDKSBTVE1pY3JvZWxlY3Ryb25pY3Mg
+U0EgMjAyMgo+ICsgKiBBdXRob3JzOiBIdWd1ZXMgRnJ1Y2hldCA8aHVndWVzLmZydWNoZXRAZm9z
+cy5zdC5jb20+Cj4gKyAqICAgICAgICAgIGZvciBTVE1pY3JvZWxlY3Ryb25pY3MuCj4gKyAqCj4g
+KyAqLwo+ICsKPiArI2luY2x1ZGUgImhhbnRyby5oIgo+ICsKPiArLyoKPiArICogU3VwcG9ydGVk
+IGZvcm1hdHMuCj4gKyAqLwo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBoYW50cm9fZm10IHN0
+bTMybXAyNV92ZGVjX2ZtdHNbXSA9IHsKPiArCXsKPiArCQkuZm91cmNjID0gVjRMMl9QSVhfRk1U
+X05WMTIsCj4gKwkJLmNvZGVjX21vZGUgPSBIQU5UUk9fTU9ERV9OT05FLAo+ICsJCS5mcm1zaXpl
+ID0gewo+ICsJCQkubWluX3dpZHRoID0gRk1UX01JTl9XSURUSCwKPiArCQkJLm1heF93aWR0aCA9
+IEZNVF9GSERfV0lEVEgsCj4gKwkJCS5zdGVwX3dpZHRoID0gTUJfRElNLAo+ICsJCQkubWluX2hl
+aWdodCA9IEZNVF9NSU5fSEVJR0hULAo+ICsJCQkubWF4X2hlaWdodCA9IEZNVF9GSERfSEVJR0hU
+LAo+ICsJCQkuc3RlcF9oZWlnaHQgPSBNQl9ESU0sCj4gKwkJfSwKPiArCX0sCj4gKwl7Cj4gKwkJ
+LmZvdXJjYyA9IFY0TDJfUElYX0ZNVF9WUDhfRlJBTUUsCj4gKwkJLmNvZGVjX21vZGUgPSBIQU5U
+Uk9fTU9ERV9WUDhfREVDLAo+ICsJCS5tYXhfZGVwdGggPSAyLAo+ICsJCS5mcm1zaXplID0gewo+
+ICsJCQkubWluX3dpZHRoID0gRk1UX01JTl9XSURUSCwKPiArCQkJLm1heF93aWR0aCA9IEZNVF9G
+SERfV0lEVEgsCj4gKwkJCS5zdGVwX3dpZHRoID0gTUJfRElNLAo+ICsJCQkubWluX2hlaWdodCA9
+IEZNVF9NSU5fSEVJR0hULAo+ICsJCQkubWF4X2hlaWdodCA9IEZNVF9GSERfSEVJR0hULAo+ICsJ
+CQkuc3RlcF9oZWlnaHQgPSBNQl9ESU0sCj4gKwkJfSwKPiArCX0sCj4gKwl7Cj4gKwkJLmZvdXJj
+YyA9IFY0TDJfUElYX0ZNVF9IMjY0X1NMSUNFLAo+ICsJCS5jb2RlY19tb2RlID0gSEFOVFJPX01P
+REVfSDI2NF9ERUMsCj4gKwkJLm1heF9kZXB0aCA9IDIsCj4gKwkJLmZybXNpemUgPSB7Cj4gKwkJ
+CS5taW5fd2lkdGggPSBGTVRfTUlOX1dJRFRILAo+ICsJCQkubWF4X3dpZHRoID0gRk1UX0ZIRF9X
+SURUSCwKPiArCQkJLnN0ZXBfd2lkdGggPSBNQl9ESU0sCj4gKwkJCS5taW5faGVpZ2h0ID0gRk1U
+X01JTl9IRUlHSFQsCj4gKwkJCS5tYXhfaGVpZ2h0ID0gRk1UX0ZIRF9IRUlHSFQsCj4gKwkJCS5z
+dGVwX2hlaWdodCA9IE1CX0RJTSwKPiArCQl9LAo+ICsJfSwKPiArfTsKPiArCj4gKy8qCj4gKyAq
+IFN1cHBvcnRlZCBjb2RlYyBvcHMuCj4gKyAqLwo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBo
+YW50cm9fY29kZWNfb3BzIHN0bTMybXAyNV92ZGVjX2NvZGVjX29wc1tdID0gewo+ICsJW0hBTlRS
+T19NT0RFX1ZQOF9ERUNdID0gewo+ICsJCS5ydW4gPSBoYW50cm9fZzFfdnA4X2RlY19ydW4sCj4g
+KwkJLnJlc2V0ID0gaGFudHJvX2cxX3Jlc2V0LAo+ICsJCS5pbml0ID0gaGFudHJvX3ZwOF9kZWNf
+aW5pdCwKPiArCQkuZXhpdCA9IGhhbnRyb192cDhfZGVjX2V4aXQsCj4gKwl9LAo+ICsJW0hBTlRS
+T19NT0RFX0gyNjRfREVDXSA9IHsKPiArCQkucnVuID0gaGFudHJvX2cxX2gyNjRfZGVjX3J1biwK
+PiArCQkucmVzZXQgPSBoYW50cm9fZzFfcmVzZXQsCj4gKwkJLmluaXQgPSBoYW50cm9faDI2NF9k
+ZWNfaW5pdCwKPiArCQkuZXhpdCA9IGhhbnRyb19oMjY0X2RlY19leGl0LAo+ICsJfSwKPiArfTsK
+PiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgaGFudHJvX2lycSBzdG0zMm1wMjVfaXJxc1tdID0g
+ewo+ICsJeyAidmRlYyIsIGhhbnRyb19nMV9pcnEgfSwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25z
+dCBjaGFyICogY29uc3Qgc3RtMzJtcDI1X2Nsa19uYW1lc1tdID0geyAidmRlYy1jbGsiIH07Cj4g
+Kwo+ICtjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQgc3RtMzJtcDI1X3ZkZWNfdmFyaWFudCA9
+IHsKPiArCS5kZWNfZm10cyA9IHN0bTMybXAyNV92ZGVjX2ZtdHMsCj4gKwkubnVtX2RlY19mbXRz
+ID0gQVJSQVlfU0laRShzdG0zMm1wMjVfdmRlY19mbXRzKSwKPiArCS5jb2RlYyA9IEhBTlRST19W
+UDhfREVDT0RFUiB8IEhBTlRST19IMjY0X0RFQ09ERVIsCj4gKwkuY29kZWNfb3BzID0gc3RtMzJt
+cDI1X3ZkZWNfY29kZWNfb3BzLAo+ICsJLmlycXMgPSBzdG0zMm1wMjVfaXJxcywKPiArCS5udW1f
+aXJxcyA9IEFSUkFZX1NJWkUoc3RtMzJtcDI1X2lycXMpLAo+ICsJLmNsa19uYW1lcyA9IHN0bTMy
+bXAyNV9jbGtfbmFtZXMsCj4gKwkubnVtX2Nsb2NrcyA9IEFSUkFZX1NJWkUoc3RtMzJtcDI1X2Ns
+a19uYW1lcyksCj4gK307CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
