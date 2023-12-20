@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88139C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 12:12:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F6F1C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 12:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P0TLS6xCSHxJqQH4pI3UR+jY2eKT+uaGLaA54AABFS0=; b=0pgmsPHkCe4XoT
-	yR1+LWp29ToJT+Nj1OtJj1gaqebChXBh9T1YJVN5v6rrpsk8RI8zu4/nsYig4NkR3rXubRYiXylqX
-	16NNh61a3YFKEd8pWyCcw/2QlNvA1RBaWyVKOtvmViipRJcyiyqXJEe6QmDeKw2RHkd5Q1uUTqwA0
-	D/sQygTX7gvxuQuwg2+cAnlAXu/9xfGJVd2MhYraCtkVaoy6Kv3clyKUO8L/UOKnUFq7RC0o8sDH1
-	7dVA4RYul2/Kh8548E+bOJFSU1AZbufub35qvhNLxACkr71bcmSpZDqdSseMgGX+MlREZGOKRI95J
-	9V903yLWOwSWDsY308vA==;
+	List-Owner; bh=xTohJ5zGVxSy5+hMuHfugfIYt0Z3ZdLwlnu48hJX0aA=; b=QhaRILfuNCN1AL
+	dxSRGdUG0Mo9Df/1MK3tbzSwhIvX/OqojGgkJlzKDfQkDMxMA3GcWOPBsjQzFigay/Y2vyJw5zb6G
+	4u+YkW8DiIACLuaBdDQRHXd4zrHFZyGur3ZaFJhEdgaaB4HXdZZRd26JTVWYERZTtCckSMBVTV11k
+	ZAl4ZlOlxhqX3Q03f9U4vI26uRBpspwW31Y50FJvej2DhTukx1TkjkrCMwUZnTmzameAq8QKvhaLa
+	2kv5z0tK4SNqiaQZSxIDDUdUzWBpOLsT60M1/ta9AG7U374w54c/5lLFD2dsSw242tuOIxcBQwHIG
+	n9XuV2GI9Vt3Imlq1wpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvQi-00HJU3-1D;
-	Wed, 20 Dec 2023 12:12:04 +0000
+	id 1rFvQn-00HJZ4-2c;
+	Wed, 20 Dec 2023 12:12:09 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvQe-00HJP4-0p;
-	Wed, 20 Dec 2023 12:12:01 +0000
+	id 1rFvQj-00HJUc-3C;
+	Wed, 20 Dec 2023 12:12:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703074319;
-	bh=5JYtuIZuEkvTZxlUYgCyzZRIqd+leW54ZkRZefuebz0=;
+	s=mail; t=1703074324;
+	bh=o5VygW2F7/dS/7MDJfHNbT3yI/+OvM90k1Msadpf4uk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VWFMwSBpYXflgVVjmHkLWkDqTMrLZdeyvBBDlzfjY0Cbfl40+z593xdaFYf20AJXq
-	 DYfwdwTCFEXRgf8ICdB5YeklNI3UzQQz8m/k2hXGh1yfm+yaG1Bw2tgpXCIRsKOdCc
-	 sbnfuWVGRBv8RI8bhMIvrl1WKibyDteLH8XsQgTuXma4JYwGIfcyvh+S+grfHzOUX5
-	 Srot51lVbJlX3Yt/FwUbrTXsBbfIl4zskxlLns1gXTxfwr8AgUQSSB0QqjGuao1PeO
-	 hqwyFGZQXt0yXB8tTVDzTRKHyHv1H5P0nHQwlhiHI1M+B/9F/cD0OeSVcTjgOScaEX
-	 BKmo9gWCZ9jbA==
+	b=eWwyjF15SvtXp/ZxTBm2Nsl7Jwjq0tr2ptKcIRwgyNUAHJDcx96FAbQX9FW1EPjzV
+	 UO4qPeKpcr7cIAu9Z+d2CiM4X3MBHWjY5t1LThv6Upybpqpk06F+DiMJVjWh8ehLZr
+	 lDgrP8vH6CWxGsq4cgtgkN8v8Ci6EkRhQQYCdxSd9awlbnWJsEYMpugAOmvlcou+E0
+	 G6L/ZgaKI8j4Ch1yd0aS4cGv+pYDg3qWm+avQGWN8QC/zKyOQee3+e05y6s0nHrpwE
+	 LFLLzc/nzKxyQPn28SaAKmGKBJNhxolKGkzPFQrw0OLqBIPt8jkh0kJrfP4K8BPCIY
+	 k12gasUBKmZPw==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 412613781FED;
-	Wed, 20 Dec 2023 12:11:53 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BB48C3781FD5;
+	Wed, 20 Dec 2023 12:11:59 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -58,16 +58,16 @@ Cc: david.heidelberg@collabora.com,
 	linux-rockchip@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 5/8] drm/ci: Do not set IGT_FORCE_DRIVER based on driver name
-Date: Wed, 20 Dec 2023 17:41:07 +0530
-Message-Id: <20231220121110.1441160-6-vignesh.raman@collabora.com>
+Subject: [PATCH v1 6/8] MAINTAINERS: drm/ci: xfails: add entry for panfrost
+Date: Wed, 20 Dec 2023 17:41:08 +0530
+Message-Id: <20231220121110.1441160-7-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231220121110.1441160-1-vignesh.raman@collabora.com>
 References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_041200_417165_EAA874D8 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20231220_041206_159471_35CF453E 
+X-CRM114-Status: UNSURE (   8.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,36 +85,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the correct driver name is passed from the job to
-test gpu and display driver, remove the check to set
-IGT_FORCE_DRIVER based on driver name.
+DRM CI tests panfrost drivers, and track of which tests
+are failing, flaking or being skipped by the ci in the
+expectations files. So add entry for these files, so
+that the corresponding driver maintainer can be notified
+when they change.
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
- drivers/gpu/drm/ci/igt_runner.sh | 10 ----------
- 1 file changed, 10 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-index f1a08b9b146f..ce6e22369d4d 100755
---- a/drivers/gpu/drm/ci/igt_runner.sh
-+++ b/drivers/gpu/drm/ci/igt_runner.sh
-@@ -20,16 +20,6 @@ cat /sys/kernel/debug/dri/*/state
- set -e
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9d959a6881f7..bcdc17d1aa26 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1645,6 +1645,7 @@ L:	dri-devel@lists.freedesktop.org
+ S:	Supported
+ T:	git git://anongit.freedesktop.org/drm/drm-misc
+ F:	Documentation/gpu/panfrost.rst
++F:	drivers/gpu/drm/ci/xfails/panfrost*
+ F:	drivers/gpu/drm/panfrost/
+ F:	include/uapi/drm/panfrost_drm.h
  
- case "$DRIVER_NAME" in
--    rockchip|meson)
--        export IGT_FORCE_DRIVER="panfrost"
--        ;;
--    mediatek)
--        if [ "$GPU_VERSION" = "mt8173" ]; then
--            export IGT_FORCE_DRIVER=${DRIVER_NAME}
--        elif [ "$GPU_VERSION" = "mt8183" ]; then
--            export IGT_FORCE_DRIVER="panfrost"
--        fi
--        ;;
-     amdgpu)
-         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
-         mv /install/modules/lib/modules/* /lib/modules/.
 -- 
 2.40.1
 
