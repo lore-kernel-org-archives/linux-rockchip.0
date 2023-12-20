@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6966C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 12:11:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073F6C46CD4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Dec 2023 12:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MuxuuZqyraXCnOGusemhqdvfSTCXwJtF9PFDCJ4dLac=; b=U/IYE1zZndHIoW
-	+K2Ewuamwtsz8H2abdJ8BSHG6qYi1+jQjsFmXXtaB5t2ho97PSXeSL6xJ9jFG9J9pZJQfq4tGC4Up
-	3cg5zpLnXnH+W2pZ4wyLl97xG2HO0T45l3BzL+zojgD7mEjVJZJ+QJQ9XfHOxqJw3yde9A2Jnv2gZ
-	6nwkEvqgy0A+xHmaCEwWnAmmJpHY6s48elooMzB8pNkCr2h+sfR2eh8Fov/BHq5ToxeCc9n0oyZN9
-	jdEE0IkNwSYfN/4V+2k3Wfj4W87mj0OJ0IuDNZSOMYhKwkyDycuPX8+mnoea7BcQN3XZhSkx9KNVQ
-	BISwxQQsHU+llje/RGtw==;
+	List-Owner; bh=r2EoDzFMRoAaePETBJnU2Fu6V3oTCvkN4/ByQ+QefIM=; b=hVapVfa9Gzvgyr
+	ET4WQ57EwEe/MddJRM2Hj+FuBtF7N0/1fFU7Hq+Vc2Fu+cLGL+i+W3T4OB55rJkBSuQfd08I7N03q
+	EA2fjNIptjo8IKutf32uQJ0NDNL+hWup6olCwUN1lMEgG2GW2bWz0JIiUFhG4vRYV/5RbgvjMGEMs
+	NQv9+ytRNptT9ff41kvA+5J88eGXvWL6rBD+bM+D1dbDSAoUindXtTz0/9OkAies9U0ysoMOtr1S9
+	UiOtyWFNwIwNmkNPdoa7VNlVL+jIfahwls2FLtIKvbncoL5DWFhc7LCoOos6+yk+nVQlrHtgXn888
+	5eko6APYY+vhdQV7kwNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvQX-00HJJo-1q;
-	Wed, 20 Dec 2023 12:11:53 +0000
+	id 1rFvQc-00HJNl-0F;
+	Wed, 20 Dec 2023 12:11:58 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rFvQT-00HJFl-0c;
-	Wed, 20 Dec 2023 12:11:50 +0000
+	id 1rFvQY-00HJKZ-2g;
+	Wed, 20 Dec 2023 12:11:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703074308;
-	bh=Oh463TEYwWlMnYER5Qs7j3iFZItrw8O/XAP1/5Xns2U=;
+	s=mail; t=1703074313;
+	bh=cpGbNlIDrcIqhAFCyy26RbpIG22BYa4C8X4/107Zjy8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=M9b7xfe4SEa6MrlfHuJX3mN4lKOCgV2ixf1mwLt5VLRaN/BYK43jBqAH7+w8nmWLY
-	 2DvBlHHU4EdWR19FSey0+CxbzGWZ/bjIcbwpE7/0f0s7/a0GSaoci/WmyFzVX+wwo4
-	 FLnzKvpkB3tieXdBNd+Fg+K94ySxhgd/QOKCnygoUl0BpzH2lv6GZ3YX/ZiIQx3YSY
-	 iyhWLhAOQyJ6WOCvfbfMpi9q/plT21jiTNdX5ZPRCe2ETwe1QuEX5S2BWNXKHX3yTC
-	 iMudimtroNePbPIf8Ea7rD73tbDV6EMtjb14uV1HvsVRO3vJx3DulwmhnSL9nTL1MM
-	 6OYrucRAGuGbQ==
+	b=H826zMsu4Ly2DqEn2dK54lHrjWC37YcV8O1ySVSqZjIhNZXFth9HFiQ5cPYSiXQs4
+	 6nYwDCj0JViAuWFV+f2RmXtHzu1QaOLmelK0NqTPsoZwUr6rER4/dpQvsJwp4UfR4h
+	 T5r+ROQkeRrl6Gb7/JGzUTn8fx/WsJYq6j5YaG/Sokk41Jflnud+mcgW9V+7b5xqy+
+	 408M2U9Ku6TMpEMXtqYZvvMWID2JWK4qhFTFWJgXyQKG8sfW0oL8nI5Pb8kZQ3uvla
+	 5+yKUYIGfXMiI9Ts7GbiIgGkZbEPGsDsPGW8oS5Tx+hlolGyM6o0bjMVdJ21a9cRRQ
+	 T6D5oDR733+Ug==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E938F3781FEF;
-	Wed, 20 Dec 2023 12:11:42 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9DEB73781FD5;
+	Wed, 20 Dec 2023 12:11:48 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: helen.koike@collabora.com,
 	airlied@gmail.com,
@@ -58,16 +58,16 @@ Cc: david.heidelberg@collabora.com,
 	linux-rockchip@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 3/8] drm/ci: rockchip: Test both GPU and display drivers
-Date: Wed, 20 Dec 2023 17:41:05 +0530
-Message-Id: <20231220121110.1441160-4-vignesh.raman@collabora.com>
+Subject: [PATCH v1 4/8] drm/ci: meson: Test both GPU and display drivers
+Date: Wed, 20 Dec 2023 17:41:06 +0530
+Message-Id: <20231220121110.1441160-5-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231220121110.1441160-1-vignesh.raman@collabora.com>
 References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231220_041149_371143_D46C6BF2 
-X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-CacheID: sfid-20231220_041155_001835_8CB19096 
+X-CRM114-Status: UNSURE (   7.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,91 +85,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip rk3288 and rk3399 SOCs have a separate display controller
-and GPU, with different drivers for each. Add support in drm-ci
+Meson SOC have a separate display controller and GPU,
+with different drivers for each. Add support in drm-ci
 to test both these drivers.
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
- drivers/gpu/drm/ci/test.yml | 50 ++++++++++++++++++++++++++++---------
- 1 file changed, 38 insertions(+), 12 deletions(-)
+ drivers/gpu/drm/ci/test.yml | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 1945c0a70e76..8081925303f5 100644
+index 8081925303f5..159eb7ba3588 100644
 --- a/drivers/gpu/drm/ci/test.yml
 +++ b/drivers/gpu/drm/ci/test.yml
-@@ -135,33 +135,59 @@ msm:sdm845:
-   script:
-     - ./install/bare-metal/cros-servo.sh
- 
--rockchip:rk3288:
--  extends:
--    - .lava-igt:arm32
-+.rockchip:
-   stage: rockchip
-   variables:
--    DRIVER_NAME: rockchip
--    DEVICE_TYPE: rk3288-veyron-jaq
-     DTB: ${DEVICE_TYPE}
-     BOOT_METHOD: depthcharge
-+
-+.rk3288:
-+  extends:
-+    - .lava-igt:arm32
-+    - .rockchip
-+  variables:
-+    DEVICE_TYPE: rk3288-veyron-jaq
-     KERNEL_IMAGE_TYPE: "zimage"
--    GPU_VERSION: rk3288
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3288-veyron-jaq
- 
--rockchip:rk3399:
-+.rk3399:
-   extends:
+@@ -357,20 +357,32 @@ mediatek:mt8183-display:
      - .lava-igt:arm64
--  stage: rockchip
-+    - .rockchip
-   parallel: 2
+   stage: meson
    variables:
--    DRIVER_NAME: rockchip
-     DEVICE_TYPE: rk3399-gru-kevin
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
-     KERNEL_IMAGE_TYPE: ""
--    GPU_VERSION: rk3399
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
+-    DRIVER_NAME: meson
+     DTB: ${DEVICE_TYPE}
+     BOOT_METHOD: u-boot
+     KERNEL_IMAGE_TYPE: "image"
  
-+rockchip:rk3288-gpu:
-+  extends:
-+    - .rk3288
-+  variables:
-+    GPU_VERSION: rk3288-gpu
-+    DRIVER_NAME: panfrost
-+
-+rockchip:rk3288-display:
-+  extends:
-+    - .rk3288
-+  variables:
-+    GPU_VERSION: rk3288-display
-+    DRIVER_NAME: rockchip
-+
-+rockchip:rk3399-gpu:
-+  extends:
-+    - .rk3399
-+  variables:
-+    GPU_VERSION: rk3399-gpu
-+    DRIVER_NAME: panfrost
-+
-+rockchip:rk3399-display:
-+  extends:
-+    - .rk3399
-+  variables:
-+    GPU_VERSION: rk3399-display
-+    DRIVER_NAME: rockchip
-+
- .i915:
+-meson:g12b:
++.g12b:
    extends:
-     - .lava-igt:x86_64
+     - .meson
+   parallel: 3
+   variables:
+     DEVICE_TYPE: meson-g12b-a311d-khadas-vim3
+-    GPU_VERSION: g12b
+     RUNNER_TAG: mesa-ci-x86-64-lava-meson-g12b-a311d-khadas-vim3
+ 
++meson:g12b-gpu:
++  extends:
++    - .g12b
++  variables:
++    GPU_VERSION: g12b-gpu
++    DRIVER_NAME: panfrost
++
++meson:g12b-display:
++  extends:
++    - .g12b
++  variables:
++    GPU_VERSION: g12b-display
++    DRIVER_NAME: meson
++
+ virtio_gpu:none:
+   stage: virtio-gpu
+   variables:
 -- 
 2.40.1
 
