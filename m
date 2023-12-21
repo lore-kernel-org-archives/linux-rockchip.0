@@ -4,62 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEC3C35274
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Dec 2023 09:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADB6C35274
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Dec 2023 09:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I3w8c+RN4H1e1sPH/pEmU5Ux2z5xAx78IiG2k0VlBsw=; b=X3lsqk26gzkDHw+jaPu6644MaK
-	WRieYv91oDPjnMa3HMQ2Bc2QUTO2q6H62i2O4785rjhISzxbsJ1J3Nwnn/sxbqGqjSyquwMZUSkd/
-	bEBnm+FSy1fHtikUjiu7p6pWV0tnwzSf2EL+caA0x4/lju2ku3nPZTludMtCxUWvYbhnVE9v7uSap
-	MeEIKPww+dGV5y1q78hssYKfZP91AApCM5kvvUNNLOcsgzm2e8uJZTP6b1DyiJf6u0nBdVtxFxZD3
-	RH5cvFsowT1oO/268tZhC37CdbbypQz0MLj0/vbbL5gkLNG/swLwIdQVK6ZMikLCxllJvqC1/Us/i
-	OZQkxE3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aAvuIlkJBUeLYkBImF1YhOwsh8PDdAgfGJMOZULVqoY=; b=gEL4apm/aEt8ot
+	oE41Pj1BKDuS80rrJBFQbr7byQHeCtyNn1RoeiCgMG41OasHUszntadwSRSTtjZi9hA6bSml//6IY
+	NAcMZRDPvirmNqTSe/Ekxundr3ef+nE5i1y5/TH3jnvjyRkE/O5ofkDmkKkm1zeij0iW9zhylAqH5
+	0qI+jpfq42K+YyhqDC3GHJNGM3QdZJQ3vn3S6XL1ft5yss4gaqPxtjVmp+KIy0CUv5qJjP/VbH6Lk
+	j/KhWrepmREDseggOeq4ta2B2ddZkEqOXgGZ7hYujmeKSP4TiFiJE4qEy/reZ9+qmxjYXLojJODkZ
+	XAMoVBRffKKJEgF0Ei3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGF1O-002Aqz-2n;
-	Thu, 21 Dec 2023 09:07:14 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rGF31-002BkC-1T;
+	Thu, 21 Dec 2023 09:08:55 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGF1I-002Aos-14;
-	Thu, 21 Dec 2023 09:07:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id DED28B81F9D;
-	Thu, 21 Dec 2023 09:07:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8BAAC433C8;
-	Thu, 21 Dec 2023 09:07:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1703149626;
-	bh=e4HwI+rYcJHOJPcuJl4AqF12SZkaucHI/9Vovq6T6p8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b856BG6L9vLS0sdCXBgb52Gt/Pt4sqc+2n2ncutFNWVGpa3KsxOb01pBpalzXQ/1m
-	 jPzxgTVD8CtRJTrcunmi7c3f0smXiR2+O2+uEx8e4M6iLXfvbb5PeHncqjArNYmclK
-	 lEKUemErrE0JOuQv5OQ9xNHh+Qy3T9Gsy0yT1Jg3SJOZ66xqjYMUJOzWqXk8hjsdE4
-	 p746EmlkTIaqEN54KIp2WjlFuCYvhi3LJ4ShAFuL+Qu8Jwa9OttanUZhwjCe8pY5pf
-	 Zbv4lpw8PgS2QweswLZ4Dn+i5+7Ads+HdObObzi9QCITFtlG5AZMKFw4Cv/AOaZ31I
-	 YuhgD45wOJ1Yw==
-Date: Thu, 21 Dec 2023 10:07:03 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com, 
-	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] drm/rockchip: rk3066_hdmi: drop custom fill_modes
- hook
-Message-ID: <j2cpes3kyssj6cw34v5z6clef4buzb2j6srvmrniumbn2kptqx@ovf2yvhxlslr>
-References: <f86ec29f-194a-800d-0aaf-9e16e551b37d@gmail.com>
- <410b116b-cb63-7ba7-3689-4f0832ab5796@gmail.com>
- <evaq3yfbqf4gchsps2qoojemtii7tmcss24aruiuze5kkzlnhy@mih7rky7viqz>
- <4aeef6df-2616-0741-00a3-6e45ec63f920@gmail.com>
+	id 1rGF2z-002BiT-05
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 Dec 2023 09:08:54 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5532b348d30so591712a12.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 21 Dec 2023 01:08:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1703149730; x=1703754530; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6LLWL/X8T9S+Mzfk/Ov4wcBcbgYwmtqCT7OrVDgW/84=;
+        b=tUsfBfTLD68q8qADScyLNVCIuytgXPTwKGA5S94oNsqAbBAOiZeo/dY1JaqtwQXjCH
+         cN47lg9PEdKobWgFVH8p3rWeKMV8kAVI8jtrK6ovb3GBokeGxb3nEGLGGd/Y+7NFqdN9
+         /HjeKYjUc+1K0C5al6AFj7AdMcXGNFyM7hUPYUCxMdwCjHw/CHS2UlvVz8uOD0GHB6yt
+         xozmPqikMmsX63LIV59WOeFcIn5zLLaddkmI0CWyQQr9/vzpxAAkeEG66pfLaVYnCEf1
+         hCaXvBmz4WLiIZ3S6KpFnrwxaM1ODvn9FGpRlwjBTViutJCf43/iK5osaJ76hES9HXxc
+         0hug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703149730; x=1703754530;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=6LLWL/X8T9S+Mzfk/Ov4wcBcbgYwmtqCT7OrVDgW/84=;
+        b=ksj63W+1FhqRHHIpfU4GmRaCbCn/sTZCSlgmmbOCu27WMS96V0P7u6kd3bihrPBFJE
+         YbgBUw+P2kMIP0CvoGJz1UGPtrPb2pF0+hT/aU4ruvef5j1r2tNXLqqkNctfl5KHNoZj
+         lfJOLJxkzeMgtrH/CBCFRrM9coeuAlsXfX3g1ukENlOdL+ID+TO9icTtyjjFzttEhQrK
+         rPDncemL6Rp3qaVumwZZ9/zBZHvLZPxiH/UBCXgFrR5im9SaZ8SKEY7rPkncMjFloL6U
+         gRSv5i2PXMUvs6IB/KQukXL4UO5v0tzAVadv5Fh3Ein7BFvKwVxyqW/7Q93PJIkv1jLV
+         pjZw==
+X-Gm-Message-State: AOJu0Yxur55dlFPQaVbIenio4cABuK7btj/cSYi7AlLlpPUy3lMAUVdT
+	P7ZxGMOP3dkDAgAmGuSpbZ796A==
+X-Google-Smtp-Source: AGHT+IFZG8w+mbQj+GcYYVnxqrLYrB78urVsH66RTrVGGJZ6Ki9+DQ+dfJFju2Sgg5UaJGEWFtfjFg==
+X-Received: by 2002:a50:d4dc:0:b0:553:26db:ed73 with SMTP id e28-20020a50d4dc000000b0055326dbed73mr4352785edj.72.1703149730549;
+        Thu, 21 Dec 2023 01:08:50 -0800 (PST)
+Received: from [192.168.0.22] ([78.10.206.178])
+        by smtp.gmail.com with ESMTPSA id o15-20020aa7d3cf000000b00553a094dd5csm892333edr.32.2023.12.21.01.08.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 21 Dec 2023 01:08:50 -0800 (PST)
+Message-ID: <0af254af-5560-4462-a76a-747f4d7fdbf3@linaro.org>
+Date: Thu, 21 Dec 2023 10:08:48 +0100
 MIME-Version: 1.0
-In-Reply-To: <4aeef6df-2616-0741-00a3-6e45ec63f920@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 1/5] dt-bindings: media: Document STM32MP25 VDEC & VENC
+ video codecs
+Content-Language: en-US
+To: Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+ Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ linux-media@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Cc: Marco Felsch <m.felsch@pengutronix.de>, Adam Ford <aford173@gmail.com>
+References: <20231221084723.2152034-1-hugues.fruchet@foss.st.com>
+ <20231221084723.2152034-2-hugues.fruchet@foss.st.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20231221084723.2152034-2-hugues.fruchet@foss.st.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231221_010708_660506_2CAAED90 
-X-CRM114-Status: GOOD (  22.98  )
+X-CRM114-CacheID: sfid-20231221_010853_061492_4B64690D 
+X-CRM114-Status: UNSURE (   5.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,137 +152,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0251401338151569314=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 21/12/2023 09:47, Hugues Fruchet wrote:
+> Add STM32MP25 VDEC video decoder & VENC video encoder bindings.
+> 
+> Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
+> ---
 
---===============0251401338151569314==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6x4c6jydyzhxy4vm"
-Content-Disposition: inline
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
+Best regards,
+Krzysztof
 
---6x4c6jydyzhxy4vm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Dec 19, 2023 at 04:40:12PM +0100, Johan Jonker wrote:
->=20
->=20
-> On 12/19/23 13:55, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Mon, Dec 18, 2023 at 04:49:06PM +0100, Johan Jonker wrote:
-> >> CRTC size validation for the display controller has been added with
-> >> Commit 8e140cb60270 ("drm/rockchip: vop: limit maximum resolution to
-> >> hardware capabilities"), so we can drop the custom fill_modes hook.
-> >>
-> >> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> >=20
->=20
-> > I'm not sure those two are equivalent. CRTC and connectors usually have
-> > different requirements and capabilities, and thus different,
-> > supplementary, mode_valid/atomic_check implementations.
->=20
-> Rockchip RK3066 CRTC and connector resolution max_output are equivalent.
->=20
-> From Rockchip PX2 TRM V1.0.pdf page 17:
-> - Video Encoder
->   Maximum frame rate is up to 30fps@1920x1080
->=20
-> - Display Interface
->   Support LCD or TFT interfaces up to 1920x1080
->=20
-> - HDMI TX Interface
->    HDMI version 1.4a, HDCP revision 1.4 and DVI version 1.0 compliant tra=
-nsmitter
->    Supports DTV from 480i to 1080i/p HD resolution, and PC from VGA to UX=
-GA by LCDC0 or LCDC1 in RK PX2
-
-My point is that there's two limits: the CRTC and HDMI controller ones.
-You should put the CRTC ones in the CRTC driver, and the HDMI controller
-ones in the HDMI controller driver.
-
-If they are equivalent, great, it's going to filter out the same things, bu=
-t...
-
-> Compared to the drm_helper_probe_single_connector_modes() this function a=
-dded an extra max_output
->=20
-> Checked in rockchip_drm_vop.c is:
-> https://lore.kernel.org/linux-rockchip/20230216102447.582905-2-s.hauer@pe=
-ngutronix.de/
->=20
-> +	if (vop->data->max_output.width && mode->hdisplay > vop->data->max_outp=
-ut.width)
-> +		return MODE_BAD_HVALUE;
-> +
-> +	if (vop->data->max_output.height && mode->vdisplay > vop->data->max_out=
-put.height)
-> +		return MODE_BAD_VVALUE;
->=20
-> For RK3066 VOP max_output:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/d=
-rivers/gpu/drm/rockchip/rockchip_vop_reg.c#n506
->=20
-> This patch was made with HDMI in mind.
->=20
-> 	.max_output =3D { 1920, 1080 },
->=20
-> This first part was added by Heiko, but not was not part my patch that I =
-submitted:
-> -	if (maxX > 1920)
-> -		maxX =3D 1920;
-> -	if (maxY > 1080)
-> -		maxY =3D 1080;
-> -
-> -	return drm_helper_probe_single_connector_modes(connector, maxX, maxY);
-> -}
->=20
-> Original patch:
-> https://patchwork.freedesktop.org/patch/msgid/20190330095639.14626-2-jbx6=
-244@gmail.com
->=20
-> +static int
-> +rk3066_hdmi_probe_single_connector_modes(struct drm_connector *connector,
-> +					 uint32_t maxX, uint32_t maxY)
-> +{
-> +	return drm_helper_probe_single_connector_modes(connector, 1920, 1080);
-> +}
->=20
-> Rockchip RK3066 CRTC and connector resolution max_output are equivalent.
-
-=2E.. a user / dev unfamiliar with the SoC won't have to go through that
-to figure out how it's handled, it will be obvious.
-
-Maxime
-
---6x4c6jydyzhxy4vm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZYQANwAKCRDj7w1vZxhR
-xSAjAQC/cny6EDPS6Yo2LIqQuLPlGA1yohiqkZolkGVOCEB3rgEA+W93tTlZ5lV2
-ZZIvJUVxNMzYtlqJpZ9Tk7HKVNiPegk=
-=tcho
------END PGP SIGNATURE-----
-
---6x4c6jydyzhxy4vm--
-
-
---===============0251401338151569314==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0251401338151569314==--
-
