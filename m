@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65606C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 17:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7F9EC46CD4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 17:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dydg/f93CaAIpeK9CZCvlnaPNDKwNONLjhZY+IhQC7Q=; b=kQct2dPPsrvXTR
-	FpUgd2F6PpEkVBfPobXqHA3izT1qjIIfn4TgG9ZaPT6a1xdJ8EmMh6aDFmy82CCd4eB6Jyr1gVXT7
-	+dGVp5PFByQOJe81EITDzK/a1Pno9ai3JirVHWGfaivwq5tBEJJnMEQNY8B34ncCwAF2Ktmlx8DQU
-	VJgK06vtKyN/+7VC0q0M2p5wmDkobtZc9JGiMBpBx6JYUHVuo2ya01Hyxoik+H3OjedsK0192EEPk
-	9CGJzof7/KXwL/U/wpCI51iV5pyZO3Tsm2Zpj6m3DBLf6m1yKJkG042yDSEVVp0dDKjwmNDEQYLjj
-	TcWGdXKL+KC2TChX286w==;
+	List-Owner; bh=DJd/kUoY2SyZO2czaD7yLT8RMqmIKhCCn9lO50DGKTM=; b=xtCxXpciR94cdY
+	LeTF/CsuSS+sQA+FLDIzG4mvabZCasDe7uz3okJKcdWYXCo+zMeD24IRya2B+3XTuuKZ8WdcEsyku
+	DEgbUEwtRSO/OllJ8pVCX7bBqc57gMKYJVICnIxts3XeIu52AtylUGEo2rc1SoCsZYnasiFCaVeuF
+	3jU5jjj++Hwhe1cFlRG06i15LdMfGtfSRjICkSQj+FOMeDwsH2mI8xCz5LsLM+vaJE1mhemF8pC7E
+	+tTluiUrB3icxmI81pOeNQq+kWE0WqNupjjViNTVyttUYrFHi3kuiySvFSGui7lM8ggYmsA79nCsS
+	uzCRMwuCP35WriY+KKrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGjZS-006Y9x-0H;
-	Fri, 22 Dec 2023 17:44:26 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1rGjZR-006Y9I-1j;
+	Fri, 22 Dec 2023 17:44:25 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGjXf-006WRF-1o;
+	id 1rGjXf-006WQh-0s;
 	Fri, 22 Dec 2023 17:42:37 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3368ae75082so1045095f8f.1;
-        Fri, 22 Dec 2023 09:42:35 -0800 (PST)
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40d4a222818so3419505e9.0;
+        Fri, 22 Dec 2023 09:42:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703266954; x=1703871754; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1703266953; x=1703871753; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fVOgOlLPAvEr0sLISb9E6/KYZz//LU2ejxtiVGPulEQ=;
-        b=FBqP7emvlcGilzMNgsUX4fZt4liowegwr9dytPuZmciPwqLlEXg8g7tqt4LkesWaXJ
-         jMi+3pcRAQZde+3y4OJ18qyHrua+5ojf3SbUjfyJQvioYSJP0aUnGgKOCiKsgBVQy1Ln
-         FhhGTeZb2D0PFA12OrkPfH6UgfBcQYwj8c9j/Y2GHKf6q7FkCXXkJKTKZ3OMjpTKe4Dw
-         o33yIkDUMZtCliNbvjVGeHL7CZIivQweJ9oyNwiFEHqT18r9y1wvXT1ifaHAQzoBs+oI
-         KrzAzFmONqMwl7x3dUWWYisb+N93EIp14YNsLYalbOy8I3h3R27v8+N4eHRwWvySUE6l
-         Q/4w==
+        bh=f/FPPxJuSjh4vXrR5zkAljtm7LBwORW2untky7snjAo=;
+        b=fIPlhGRI+tTZaNGmpFNoVIlwH1RERB9mQx9cnG5G+36lreI95LvkLJd2m4PSuTbE0N
+         ZDQueC4D9sA/VXF/D482SYFZot5pzoPbVqRR7dj/D9QImm/oE9h16YgqDYO/PdfgieYj
+         c39Ns9TyYgbRQPTrdyABztTo1PDiKvyFUkRbMvPdv3RRUWHqpjOFxAvmraDIwBL7VQm+
+         G03ouhKjYXpO3Nwzdso8fW3bpeVHCoKUotncDa64EsR/iwpfq4hvxw5/sx9UKlwE32VO
+         R5onIreUK0b8M7Fpn+3g+gs+IGNeSn//HvFnz/fQFo5yaS3dlAmgBFQSs1l4VjaY0lz7
+         CRPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703266954; x=1703871754;
+        d=1e100.net; s=20230601; t=1703266953; x=1703871753;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fVOgOlLPAvEr0sLISb9E6/KYZz//LU2ejxtiVGPulEQ=;
-        b=Fltv8bhuFZpT0OZkA1KCTKRuF7cSkAMKYGQqlUmgruhAfR46CoTYoGIzIHqX6ff4LQ
-         pqleiaQMXkhNmyHA/vJL/3dHHPiP/olcGxn4m/jCOMoEHD15M6x9df4l80JABAMu2/PB
-         bMnxjZtD2d5NUoVjTOD4xlnbXrFJdwsKpPeZgCbQ9Wx3Vb40PGwXah0HekxY2ipV6DwZ
-         cV86uVPuzB48wMAk/5w6puk4c2eyXuk54u8wYG/m4oXOWR4q1k+bE+eZYuksdxjSMEZ0
-         aCdGckMkrfJs2HOC48rBotzk4MyDfuOUFV6a4iclSMSdj/MOkcnZli4ikGFD/Dj0BNqh
-         TPMw==
-X-Gm-Message-State: AOJu0Yy3dJaOiy8/O/dZzwFAW7o4zwxyVAKyAnNLjazcOjuDc/AdTy0o
-	JEqxeM+r/0+DUlHiEbf9HA==
-X-Google-Smtp-Source: AGHT+IG0VO/bIXEiwSNnQQTPGjLRg14lP+2fe564PcKz/X7g3SD2+YUJXu7x0ci0ig2sXjCTtOJ87A==
-X-Received: by 2002:adf:f74a:0:b0:336:8030:214d with SMTP id z10-20020adff74a000000b003368030214dmr748542wrp.19.1703266954331;
-        Fri, 22 Dec 2023 09:42:34 -0800 (PST)
+        bh=f/FPPxJuSjh4vXrR5zkAljtm7LBwORW2untky7snjAo=;
+        b=plGXtxGObWRxxezAk131d0pK6wKPM+ZSabv3wxJDq7TaCS9TGzKqTb+XXwyYdL/25Q
+         SGGmm+Tcs78LL3+kCkoCTzshDXie4MnqFUFFgHMv/yNzs3r+xBbrh4gvcWMNKAY0KPz4
+         QJhXfbjw55PKvUcmBVZLHktlzo2duSjIX/91CjU7g/fM+GOS14HjzQ75Ck0kJTSCzq8P
+         eg1DhJGOL4ASiJEanJBf6A6TLit9Sp2voJKL2xg9nX+ABcbPZUAFsa6vrOYeJmQK7Qpc
+         7jwbCfN989j6QF/HLxMsFDeTqC2SNrMSttSqMD5q5wF7fn9/OpC92bEdSeRqykcbigs+
+         uW4g==
+X-Gm-Message-State: AOJu0Yzn5TF0tVIACxLVDuSUnBEhA8Qx4XDrM/ZVcKvJuNIOo8MZggai
+	BeLqsnbCq/RRmSxkglfvtQ==
+X-Google-Smtp-Source: AGHT+IESVQNuwVKMm5k3RVva8Soc6Echl59mQa32aRicQaMoyZBUEGDXAro7m0A3Md1PmbcYnl/kjw==
+X-Received: by 2002:a05:600c:3c9c:b0:40d:40ea:a0ea with SMTP id bg28-20020a05600c3c9c00b0040d40eaa0eamr911042wmb.130.1703266953617;
+        Fri, 22 Dec 2023 09:42:33 -0800 (PST)
 Received: from U4.lan ([2a02:810b:f40:4300:f3ae:2788:7e03:f44])
         by smtp.gmail.com with ESMTPSA id w10-20020adfec4a000000b00336670abdcasm4777116wrn.40.2023.12.22.09.42.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Dec 2023 09:42:34 -0800 (PST)
+        Fri, 22 Dec 2023 09:42:33 -0800 (PST)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -78,16 +78,16 @@ Cc: David Airlie <airlied@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v4 17/29] drm/rockchip: inno_hdmi: Drop irq struct member
-Date: Fri, 22 Dec 2023 18:42:08 +0100
-Message-ID: <20231222174220.55249-18-knaerzche@gmail.com>
+Subject: [PATCH v4 16/29] drm/rockchip: inno_hdmi: Remove unused drm device pointer
+Date: Fri, 22 Dec 2023 18:42:07 +0100
+Message-ID: <20231222174220.55249-17-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231222174220.55249-1-knaerzche@gmail.com>
 References: <20231222174220.55249-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_094235_603512_90E939BF 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20231222_094235_338248_0CABB0AD 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,35 +104,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The struct member irq isn't used anywhere. Drop it.
+From: Maxime Ripard <mripard@kernel.org>
 
+The drm_dev field in the inno_hdmi struct stores a pointer to the DRM
+device but is never used anywhere in the driver. Let's remove it.
+
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Tested-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
 ---
 changes in v2:
- - new patch
+ - imported patch
 
 changes in v3:
- - collect RB
+ - added my SoB
 
 changes in v4:
  - none
 
- drivers/gpu/drm/rockchip/inno_hdmi.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/rockchip/inno_hdmi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index 51c1a69dfcc0..138cd4287dea 100644
+index 49367ca24125..51c1a69dfcc0 100644
 --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
 +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -45,7 +45,6 @@ struct inno_hdmi_i2c {
+@@ -44,7 +44,6 @@ struct inno_hdmi_i2c {
+ 
  struct inno_hdmi {
  	struct device *dev;
+-	struct drm_device *drm_dev;
  
--	int irq;
+ 	int irq;
  	struct clk *pclk;
- 	void __iomem *regs;
+@@ -757,7 +756,6 @@ static int inno_hdmi_bind(struct device *dev, struct device *master,
+ 		return -ENOMEM;
  
+ 	hdmi->dev = dev;
+-	hdmi->drm_dev = drm;
+ 
+ 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(hdmi->regs))
 -- 
 2.43.0
 
