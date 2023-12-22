@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B973C4706C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA9CC41535
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yfRDqL+cIJ9wFCUnraNIUdH7KXirKo861tWU7Tuax9M=; b=hGjGEXqfA+gdk/
-	gVRcSfJaj+WCDJZXzatpVrCxQobff8aAtLqkNu60bI3Feykwb8QRRBQ16Et6510c6nld7QxDjTWWM
-	AsB0CIi4AzjUvKFZIryM90YAmfRbgReJGRfnTtQe4u/APlRYl6R2s8q9ip8q3U0UXVUKLmpC802Yj
-	9160hQ7z0Je065zQ0brCIciqKKYWh110z7AW3sFfA+RkPL0u5FvL6l28Vk88VN/GZqI7Ofc3w6Oww
-	hepkHvChYLs9RyoNYt9NVbyGbUGN24u74DMAcAXyPfGmgRf0bxXWeDWj8IgXOXn/pJnijP38TSbfy
-	t5qCqtGXDZPtEU2uf4Lw==;
+	List-Owner; bh=4Jdeaz0ggSZs7VKSxmL2wzzR6pybBXSiy9IJ34cFt04=; b=ufS6jfDb5YxT/5
+	MjcqU/n32PB5JZU1ZV6dWSiY2W5oGFX4pKLUY2m/elh8kGeTzk80jiY+ROJH6F7tWRCDiOwcrxTsK
+	saGDsGxXEBHiC62Lms5hDVgC7r2vRJKQlcv7m8q9ijKUkC1U086WzKiNV7zEvetzCy9fijM1KTzds
+	i88eHWixT7LjMgLD6SaVee8ayF1yoN05kMDrxr2DB0YMQuQwlq9rTf3sPgrYqULCNlCYt5vyXVUjK
+	ppKC9pD64pjwZkUhaw/8o/hMhQNniyK1TSlHzx9qEZXUjqNhiYlgJ9ZBS6g/iwvDGABxFNziXrVjW
+	Uno9AKkIVasR/TSIs5wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGhy6-006JiH-0y;
-	Fri, 22 Dec 2023 16:01:46 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1rGhyy-006K0O-29;
+	Fri, 22 Dec 2023 16:02:40 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGhy3-006Jgu-30
+	id 1rGhyv-006Jyd-1f
 	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Dec 2023 16:01:45 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a236456fee1so252648966b.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:01:41 -0800 (PST)
+	Fri, 22 Dec 2023 16:02:38 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-55322dbabf6so2176106a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:02:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703260900; x=1703865700; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1703260954; x=1703865754; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=RbGsdzKTA1YOv8U+Moo23lWNJuGxRgXBP6UPTooKUgM=;
-        b=NlqAWlAn03HIkhheNWBEiHP9WYNaj63aBv+IB9CH8M1Tr33t5HdUa524wFn6MAQ1aJ
-         31ads2Ul6xVrDXHmMRd5i48wJ/3V5sIB5hlQLke1P1TWzd0/nkUyOfTsT5IKpoTxW95p
-         N+rHNZQtZtzyydkACD+uGXt/fcY5eBO08jCN2Htnz7rl9eAxOcJRS19fzBWtrjFST4rk
-         nf+VuopZ/pKEM2PGfiXg2mGJq5IhY5u4wlk73OWnbmEFe7aaF/GukNaTGpHIwgIXx4NV
-         dZRRX0YdYgzVc9Ac8JVo3WV8NDoBG7V53XrIZs+/MPn/ZfXVbRX9riTr9OUE3iYd9l9W
-         ij7Q==
+        bh=mu/L0OAfiVeOdaqFqlc5Uzg8G2ECrhHl0T7TsiF/PeY=;
+        b=Q1gZTNOjgKwXzIfnz3J6YKeeLN0Z+g3b3ONcwfJNGOYO/av3RQoPgKsNBgxoV3UrTq
+         n9Jez9GF2R3/Cha7b8aysV22IZ6z60XXJMbNnryRqVxxjx5efg16jMD3FJ0QxW+vKWwX
+         5Qfhy7KShv/L4X4NoGzeKWx4YLecfJu+IWge4UMO9Q62cQBUWFVQgNetkyXduB+rDqn5
+         mcouoHfGxCrVAtMms4CW2YkKNoou54xBPsCRykTRtGAkScf/ctJifhppWR7T6SvuJouD
+         8HQGidC2C9ft2AHK9WRVUMSeYFztGW3asNKBSWbumRmsAsOFrhFx+Ve5gZ4YOREPnO0p
+         +49A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703260900; x=1703865700;
+        d=1e100.net; s=20230601; t=1703260954; x=1703865754;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RbGsdzKTA1YOv8U+Moo23lWNJuGxRgXBP6UPTooKUgM=;
-        b=mAIFXaTaKVfvXQLSEEwBSlsQt8ZpENonZWG1sAt2bLzcqVmW686zJsT3MqMVmuQB26
-         uHGoslCldi+UgL5/TJtEiP6aV2SFTIjTtpX3zOnybZ7yBDZrOvX5mGlIphttHKJEa4mL
-         iIyfq0uQhtNKece27iYe99iBBQb6fp2i56XR90IG7qK+0dTHKPEgemNDxAEufzrj7yz8
-         MFZ7DDDkB9NbWvW4RRzbdaquonjrd75GlIuoMaWehBQ6Ds5KRWtkfVFMDkoWXRNt2LT/
-         X0qBX4DO+okVfY/KeoDTODiR5LekiKDos8NqojbakpjY16wT6slaGWlhb7y+slF1XGm8
-         yn2A==
-X-Gm-Message-State: AOJu0YyHZ9QNSFjyiQXCfMFwEjeFO7CT/Jmj6DXfZA3d2v6hHBKua07h
-	WVDoQdvVFMwcUKRpfUpBSc8IQsZe3ADEkw==
-X-Google-Smtp-Source: AGHT+IHp1X9wjZ8Dyx64BDczrPkxSRvF6ZrfA2b/hGVgbbq60pOvwCcEThyr010X98IeVaIRq8Ih4g==
-X-Received: by 2002:a17:906:3748:b0:a23:11a7:3d7e with SMTP id e8-20020a170906374800b00a2311a73d7emr751562ejc.139.1703260899703;
-        Fri, 22 Dec 2023 08:01:39 -0800 (PST)
+        bh=mu/L0OAfiVeOdaqFqlc5Uzg8G2ECrhHl0T7TsiF/PeY=;
+        b=ALxn50et4EXduhHwe0MGGKfGiMWd8qve3NtC/dUry2Wj5TXqCeLoJw1rnZndeXrzK/
+         ZCl8icHQU5fz0zn52H8rELakvd3ILiCJeU8o/7zw5Hw8ULa6PMZ5JpV9tp9I5PDe0tHJ
+         W6ZQed08Qx7arOPVbBM3HEqsqEGWxBmHY3gZrotO6ZvuL8fUqC1M0rk3bOu7UWYYmtj8
+         FMKaLurMc3KsKw+AjpKHwYsxxFuoAfdFQVWRrgvyvxXc/KvrNJ3sZQV7PAiFEPrxlEkL
+         BKBihpS3q2cR+JCf/Q5gZCtIQa6doduaNi8eh/geqXlBRcPQaJfTFmSrvvsc6tv8HaEP
+         xUMA==
+X-Gm-Message-State: AOJu0YzxLw9YV/6yyWQarqU1o9YuS7X/Zd2WmlT3Rs0qY048VU6wPexA
+	AP8QD9lwnw495jGpzJqYN68cDdSqVOzhwg==
+X-Google-Smtp-Source: AGHT+IGvjzwEMBNFBojcj/9stMIsuJ813FGZwNTfJJ20Lk8ywKvLKiwVzmcYJnLSG1XqONmfeXty0Q==
+X-Received: by 2002:a17:906:7c54:b0:a26:ad13:e9d9 with SMTP id g20-20020a1709067c5400b00a26ad13e9d9mr866297ejp.85.1703260954280;
+        Fri, 22 Dec 2023 08:02:34 -0800 (PST)
 Received: from [192.168.0.22] ([78.10.206.178])
-        by smtp.gmail.com with ESMTPSA id dx15-20020a170906a84f00b00a2363247829sm2155753ejb.216.2023.12.22.08.01.38
+        by smtp.gmail.com with ESMTPSA id dx15-20020a170906a84f00b00a2363247829sm2155753ejb.216.2023.12.22.08.02.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Dec 2023 08:01:39 -0800 (PST)
-Message-ID: <282596bd-3987-4322-b8f1-fabfe2c91628@linaro.org>
-Date: Fri, 22 Dec 2023 17:01:37 +0100
+        Fri, 22 Dec 2023 08:02:33 -0800 (PST)
+Message-ID: <5b4692c8-e9f7-46dc-a060-6b309da97d27@linaro.org>
+Date: Fri, 22 Dec 2023 17:02:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] dt-bindings: display: panel: Add BOE
- TH101MB31IG002-28A panel
+Subject: Re: [PATCH 3/6] dt-bindings: arm64: rockchip: Add Pine64 Pinetab2
 Content-Language: en-US
 To: Manuel Traut <manut@mecka.net>, Neil Armstrong
  <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>,
@@ -85,7 +84,7 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net>
- <20231222-pinetab2-v1-1-e148a7f61bd1@mecka.net>
+ <20231222-pinetab2-v1-3-e148a7f61bd1@mecka.net>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -131,10 +130,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231222-pinetab2-v1-1-e148a7f61bd1@mecka.net>
+In-Reply-To: <20231222-pinetab2-v1-3-e148a7f61bd1@mecka.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_080143_986283_FA90DCA4 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20231222_080237_555497_FCE728E8 
+X-CRM114-Status: UNSURE (   6.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,84 +152,13 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 22/12/2023 12:05, Manuel Traut wrote:
-> Add bindings for the BOE TH101MB31IG002-28A LCD panel. It is
-> used e.g. in the Pine64 Pinetab2 and PinetabV.
+> Add devicvetree binding documentation for Pine64 Pinetab2
+> which uses the Rockchip RK3566 SoC.
 > 
 > Signed-off-by: Manuel Traut <manut@mecka.net>
 > ---
 
-> +
-> +maintainers:
-> +  - Manuel Traut <manut@mecka.net>
-> +
-> +allOf:
-> +  - $ref: panel-common.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +        # BOE TH101MB31IG002-28A 10.1" WXGA TFT LCD panel
-> +      - boe,th101mb31ig002-28a
-> +
-> +  reg:
-
-reg: true
-
-> +    description: the virtual channel number of a DSI peripheral
-> +
-> +  backlight:
-
-: true
-
-> +    description: phandle of the backlight device attached to the panel
-
-Because there is really no need to repeat obvious.
-
-> +
-> +  enable-gpios:
-> +    description: a GPIO spec for the enable pin
-
-Ditto
-
-> +
-> +  power-supply:
-> +    description: core voltage supply
-
-Ditto
-
-> +
-> +
-
-And drop redundant blank lines.
-
-> +  ports: true
-
-Hm, why ports? From where did you copy it?
-
-> +  rotation: true
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - enable-gpios
-> +  - power-supply
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    dsi {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +        panel@0 {
-> +            compatible = "boe,th101mb31ig002-28a";
-> +            reg = <0>;
-> +            backlight = <&backlight_lcd0>;
-> +            enable-gpios = <&pio 45 0>;
-
-Use define for GPIO flag.
-
-
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
