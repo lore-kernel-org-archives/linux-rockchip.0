@@ -4,68 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70201C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 17:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F09C41535
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 17:42:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0CH+E5UaGntEPKCx0xWbI4vhg6LqCQvN22vuRjfPaM=; b=s2wYMhmSCj3I1LTw88SBHIEraB
-	zhFBbtoPirTsQpcujyBi9Tp/Pz52YnLBBIb4QtQXjMPusxFTEW+1EK7CX3C+vD/XOCmLyx17QBO32
-	Zc4t+jfjbHL+PYazeOmp73pkKHm91ai1bAOq/lIDL8ZJ2SUwcGeUMoYmq8pAXc/3x5puWwaNashPa
-	AVBIItbGqS6Vdvr7DTDozAdAHOhb/Mz6gDw9w+dzx+ijna1VmZoZDDNk9663EfSHw0ZLNaB3CeInB
-	YZ2zVeWo4mn0p9f4livO2yJmXwi3fERcaJlZRT91QERqnC1LNOrOgLluToQ68J9CVrSW+7uvrfa+d
-	PAx6dW5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iJoZMURAeAlw4cxrnfkFmkkvOdcyA36nYVhZvKAmJVs=; b=jh9zwPxim4LF8Y
+	3A2itGHKuIU8+HWM7iSqnC0Xc7CIFkaPl8q0aDaLlm62IxBDg6MlT84b7zMb54VTT2FggMSqNuHpf
+	DPBi+P24cYsJr17PBU6n6935Rx9vdVGHtKJznyNVLPJwM4Q2pUYEmH5Zopl9dubHQSo6FnQIRml7R
+	Pov4sDpexPagkFmasx1QHiKcPU7z0Udbit970ochRxi/c/YVRyguQIYULTro0pa2SihLLdQQsDKF2
+	26gIhX9DBelxAA+qJy16kuHK6lgBba6VfhaZpJf51t72b33Kz8hD8OxOAt/GBvGPFls2Tr6HGZisb
+	iHa8F6/ZVRdHFNCVaRkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGiuu-006TO6-1l;
-	Fri, 22 Dec 2023 17:02:32 +0000
-Received: from out-184.mta0.migadu.com ([2001:41d0:1004:224b::b8])
+	id 1rGjXZ-006WMD-0K;
+	Fri, 22 Dec 2023 17:42:29 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGiuh-006TGS-1x
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Dec 2023 17:02:21 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1703264536;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=px3/C2GAp78mWv3p8bN07M1WSx6501Th3bqcTa2ov/U=;
-	b=hMDkNbAovGIvQXqMv9oaj7Q5hNQDVlxWc60o9k1oRnAISXnsGbddJaVrt1ZFF3BWojKP0L
-	oP/Y05IxzcYG8Hn0HqT+hcDNx3EUNt52DH1dfnZnWQFiV6MIgpceY2GWeQKgWR5nCAUIDQ
-	DLCiy18i12XBzdvl5f+dsE1pDVKJRhXF56EwoT4Wj+9eSmDgqN5bV4HuTgVZFWChSV/J1T
-	5rwKqRBiA6oQZG8yg2GbSnwMl0SYwb8s76KlpZRssfnP/OrmMGAgB2L75cGKp7xUrhtw/L
-	+wI3rNCNotFvEwOhQZuHF5ECOx/4IycDLXd+gaxRoZxxa1gGp6hE4BfkVNlqyg==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>,
- Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
- Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
- Manuel Traut <manut@mecka.net>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Manuel Traut <manut@mecka.net>
-Subject: Re: [PATCH 4/6] arm64: dts: rockchip: Add devicetree for Pine64 Pinetab2
-Date: Fri, 22 Dec 2023 18:01:54 +0100
-Message-ID: <2121710.IWpXjAX0fk@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20231222-pinetab2-v1-4-e148a7f61bd1@mecka.net>
-References: <20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net>
- <20231222-pinetab2-v1-4-e148a7f61bd1@mecka.net>
+	id 1rGjXV-006WJx-1T;
+	Fri, 22 Dec 2023 17:42:26 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3368d1c7b23so1336667f8f.0;
+        Fri, 22 Dec 2023 09:42:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703266944; x=1703871744; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=S0neXejdyKcMYrQeMYfWnn6/UkX9PKjLjeZy6MNbiAE=;
+        b=Vumgjr9fQANSOpE8saEYhVdJ5/+tIfSFuzYoY4SpCGf2htbPhN329mXqauh2LGYydz
+         2s202a6p8V5H7i3IhCExbecKoOjh+pYiMRiF9hebQ7Kf7ELlAEPV8PQ9zOF6a4jBtXFr
+         4/JQOhtCB3TfFnm0zrSDJDf3aVhXMnFwxzYmDiDGLZBle/d+TvWlYvvi+9RBdAOX74bp
+         sIoGuaSFVwPjv3sCe6M2VTx///YjMpsxX2wwzGP92HYk6/rZc+1ixWdL2PkOgEHLcjAO
+         8mpLUZKzWHn9e3+yEtyP/tcbtdbIPZZ2+7D0MGkamZHSslQBris+yRnPgRR7PGGO5HKB
+         9x/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703266944; x=1703871744;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=S0neXejdyKcMYrQeMYfWnn6/UkX9PKjLjeZy6MNbiAE=;
+        b=ZNHVXsMFiEBkGJOsegfbx8HFyGVDmJNauhsV/nigMrtEo9CV2JSJ5kUoxchTvUMMUq
+         kpKGQP82FPNsnjwNXkGkoGz1p7lPnVvx0k6CpQEzXp6GmKvJE5CfYc1h/ci58K78yL/Y
+         MxVpNmjWJKvf1iEyRYsdE9lj1xv8RvRQIWOVRaH4Pp9bF321qOoatr+hneRbB2ZJPnGh
+         Hsd6o/x14zPQ51LdcRq8VaP/5NupHbsUXdd9sHDG96DZa9aQ9+Ny1FQ0tVyrF1fmFxjL
+         LwFieOdfG9N1MkJ6rluxApose0MeQTe54uXkW5A8oVJ0z1U2AGCq22DRAET5zEd96z3h
+         s0qg==
+X-Gm-Message-State: AOJu0YyezrTZQ6yBUij6diSNiZjZpQAioQrQnhTog6bNTaKy5KLu9sxj
+	jrUSxwYnOPYu2LX1fnJf5w==
+X-Google-Smtp-Source: AGHT+IHgMx+o2VEbHPVQJ4P/KXTppQFx3koXaTkd1ZRvghWFSrx8ldGUAziC02wAFGucwtqAJI5Y4A==
+X-Received: by 2002:a5d:5341:0:b0:336:8485:d870 with SMTP id t1-20020a5d5341000000b003368485d870mr954023wrv.65.1703266943886;
+        Fri, 22 Dec 2023 09:42:23 -0800 (PST)
+Received: from U4.lan ([2a02:810b:f40:4300:f3ae:2788:7e03:f44])
+        by smtp.gmail.com with ESMTPSA id w10-20020adfec4a000000b00336670abdcasm4777116wrn.40.2023.12.22.09.42.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Dec 2023 09:42:23 -0800 (PST)
+From: Alex Bee <knaerzche@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH v4 02/29] drm/rockchip: vop: Add output selection registers for RK312x
+Date: Fri, 22 Dec 2023 18:41:53 +0100
+Message-ID: <20231222174220.55249-3-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231222174220.55249-1-knaerzche@gmail.com>
+References: <20231222174220.55249-1-knaerzche@gmail.com>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_090220_049708_A448276B 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20231222_094225_509784_6BE5A074 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,123 +99,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1766314853874243152=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1766314853874243152==
-Content-Type: multipart/signed; boundary="nextPart1748370.CxT9PIvavd";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+In contrast to RK3036, RK312x SoCs have multiple output channels such as
+RGB (i.e. LVDS TTL), LVDS, DSI and HDMI.
 
---nextPart1748370.CxT9PIvavd
-Content-Type: multipart/mixed; boundary="nextPart3145776.fJ4KNo4xjy";
- protected-headers="v1"
-Content-Transfer-Encoding: 7Bit
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Fri, 22 Dec 2023 18:01:54 +0100
-Message-ID: <2121710.IWpXjAX0fk@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20231222-pinetab2-v1-4-e148a7f61bd1@mecka.net>
-MIME-Version: 1.0
+In order to support that, this splits output from RK3036 and defines an
+separate one for RK3126 with the registers required to enable the
+appropriate output and setup the correct polarity.
 
-This is a multi-part message in MIME format.
-
---nextPart3145776.fJ4KNo4xjy
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-
-On Friday, 22 December 2023 12:05:44 CET Manuel Traut wrote:
-> +
-> +&cru {
-> +       assigned-clocks = <&cru PLL_GPLL>, <&pmucru PLL_PPLL>, <&cru
-> PLL_VPLL>; +       assigned-clock-rates = <1200000000>, <200000000>,
-> <500000000>; +};
-
-Attachment seem to work and for this I also have the attached patch in my 
-patch set.
-IIRC without it you get an error in dmesg immediately at boot up which is 
-visible on the PT2 *if* you have immediate visual output (which is not (yet?) 
-the case in my image/kernel).
-
-Cheers,
-  Diederik
---nextPart3145776.fJ4KNo4xjy
-Content-Disposition: attachment;
- filename="0006-arm64-dts-rk3566-pinetab2-Fix-cru-assigned-clocks.patch"
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/x-patch; charset="x-UTF_8J";
- name="0006-arm64-dts-rk3566-pinetab2-Fix-cru-assigned-clocks.patch"
-
-From d782a64f3b51ffb2f33d3ba3e11e2ebc416542e3 Mon Sep 17 00:00:00 2001
-From: Jonas Karlman <jonas@kwiboo.se>
-Date: Thu, 17 Aug 2023 17:52:47 +0200
-Subject: [PATCH 6/8] arm64: dts: rk3566-pinetab2: Fix cru assigned clocks
-
-Jonas Karlman provided/linked to the patch on IRC.
-Seems related to upstream commit 64b69474edf3b885c19a89bb165f978ba1b4be00.
-
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
-Link: https://github.com/Kwiboo/u-boot-rockchip/blob/rk3568-2023.10/arch/arm/dts/rk3566-pinetab2-u-boot.dtsi#L11-L15
-Link: https://lore.kernel.org/all/20230110225547.1563119-2-jonas@kwiboo.se/
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+changes in v2:
+ - rephrase commit message
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-index bbd7ed53602a..4a5bee5a28a7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-@@ -288,8 +288,9 @@ &cpu3 {
+changes in v3:
+ - none
+
+changes in v4:
+ - none
+
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 13 ++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.h |  3 +++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index c51ca82320cb..b9ee02061d5b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -227,11 +227,22 @@ static const struct vop_win_data rk3126_vop_win_data[] = {
+ 	  .type = DRM_PLANE_TYPE_CURSOR },
  };
  
- &cru {
--	assigned-clocks = <&cru PLL_GPLL>, <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
--	assigned-clock-rates = <1200000000>, <200000000>, <500000000>;
-+	assigned-clocks = <&pmucru CLK_RTC_32K>, <&cru PLL_GPLL>, <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
-+	assigned-clock-rates = <32768>, <1200000000>, <200000000>, <500000000>;
-+	assigned-clock-parents = <&pmucru CLK_RTC32K_FRAC>;
- };
++static const struct vop_output rk3126_output = {
++	.pin_pol = VOP_REG(RK3036_DSP_CTRL0, 0xf, 4),
++	.hdmi_pin_pol = VOP_REG(RK3126_INT_SCALER, 0x7, 4),
++	.hdmi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 22),
++	.hdmi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 23),
++	.rgb_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 24),
++	.rgb_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 25),
++	.mipi_en = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 28),
++	.mipi_dclk_pol = VOP_REG(RK3036_AXI_BUS_CTRL, 0x1, 29),
++};
++
+ static const struct vop_data rk3126_vop = {
+ 	.intr = &rk3036_intr,
+ 	.common = &rk3036_common,
+ 	.modeset = &rk3036_modeset,
+-	.output = &rk3036_output,
++	.output = &rk3126_output,
+ 	.win = rk3126_vop_win_data,
+ 	.win_size = ARRAY_SIZE(rk3126_vop_win_data),
+ 	.max_output = { 1920, 1080 },
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+index 406e981c75bd..fbf1bcc68625 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
+@@ -872,6 +872,9 @@
+ /* rk3036 register definition end */
  
- &csi_dphy {
+ /* rk3126 register definition */
++#define RK3126_INT_SCALER		0x0c
++
++/* win1 register */
+ #define RK3126_WIN1_MST			0x4c
+ #define RK3126_WIN1_DSP_INFO		0x50
+ #define RK3126_WIN1_DSP_ST		0x54
 -- 
-2.42.0
+2.43.0
 
-
---nextPart3145776.fJ4KNo4xjy--
-
---nextPart1748370.CxT9PIvavd
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZYXBAgAKCRDXblvOeH7b
-bhcpAQCGga/E5eb2w/0+X/AHwmyoGxkSCdFMHH5O+JASROW0NAD/cer+0/CX3l23
-ubyIofrQa3gkr+ini5cyFgQy37IsKAY=
-=fTG/
------END PGP SIGNATURE-----
-
---nextPart1748370.CxT9PIvavd--
-
-
-
-
-
---===============1766314853874243152==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1766314853874243152==--
-
-
-
-
