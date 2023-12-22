@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA9CC41535
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88CCAC41535
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Jdeaz0ggSZs7VKSxmL2wzzR6pybBXSiy9IJ34cFt04=; b=ufS6jfDb5YxT/5
-	MjcqU/n32PB5JZU1ZV6dWSiY2W5oGFX4pKLUY2m/elh8kGeTzk80jiY+ROJH6F7tWRCDiOwcrxTsK
-	saGDsGxXEBHiC62Lms5hDVgC7r2vRJKQlcv7m8q9ijKUkC1U086WzKiNV7zEvetzCy9fijM1KTzds
-	i88eHWixT7LjMgLD6SaVee8ayF1yoN05kMDrxr2DB0YMQuQwlq9rTf3sPgrYqULCNlCYt5vyXVUjK
-	ppKC9pD64pjwZkUhaw/8o/hMhQNniyK1TSlHzx9qEZXUjqNhiYlgJ9ZBS6g/iwvDGABxFNziXrVjW
-	Uno9AKkIVasR/TSIs5wA==;
+	List-Owner; bh=gK4U5Wb60Q0HiIN8mpl51N+wCR+RbkJoYpuGvIP8j80=; b=1O0766QinFh7/i
+	w/gCEzb5YnX7o2XGCXEBJeE5/LebANOoLbe1gJXlWAPX7Eg4ZGxHhiC4cIrtI5/yoqVNSuXiu5aot
+	F4gWK2kj7EyoDp9oAThrER5i9jT/mg28HNuFId91s07YZ2PKoovP8h03K5wVL+4qzX5+uw8+OhV0/
+	KFEW5S+KcjXVRrFAFx7yPKOJHbsfnu7gVJ5w79XJTZmFJMqAWcrPE51nPIFbc0mHamhWxyKBeR/Rv
+	TTo/6CJd6a5/9xqxjYNSNZJrhXNR04HIADv4wih/UecXmgLoBoiidO6OegH1Ao2HArUTfPTI2X04e
+	ORWdarlRJgDNXGgY790A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGhyy-006K0O-29;
-	Fri, 22 Dec 2023 16:02:40 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rGi1p-006KRY-1B;
+	Fri, 22 Dec 2023 16:05:37 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGhyv-006Jyd-1f
+	id 1rGi1l-006KQa-2u
 	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Dec 2023 16:02:38 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-55322dbabf6so2176106a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:02:35 -0800 (PST)
+	Fri, 22 Dec 2023 16:05:35 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a233a60f8feso222853266b.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:05:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703260954; x=1703865754; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1703261129; x=1703865929; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=mu/L0OAfiVeOdaqFqlc5Uzg8G2ECrhHl0T7TsiF/PeY=;
-        b=Q1gZTNOjgKwXzIfnz3J6YKeeLN0Z+g3b3ONcwfJNGOYO/av3RQoPgKsNBgxoV3UrTq
-         n9Jez9GF2R3/Cha7b8aysV22IZ6z60XXJMbNnryRqVxxjx5efg16jMD3FJ0QxW+vKWwX
-         5Qfhy7KShv/L4X4NoGzeKWx4YLecfJu+IWge4UMO9Q62cQBUWFVQgNetkyXduB+rDqn5
-         mcouoHfGxCrVAtMms4CW2YkKNoou54xBPsCRykTRtGAkScf/ctJifhppWR7T6SvuJouD
-         8HQGidC2C9ft2AHK9WRVUMSeYFztGW3asNKBSWbumRmsAsOFrhFx+Ve5gZ4YOREPnO0p
-         +49A==
+        bh=HHl6sZyQddXXojGQMUKkQSvhz58BwxXZqlywNu0im7g=;
+        b=xgdAK8A0lkqgNUos3F0G2+AgatFpRIdYSHEu3x6tT4mhs41pRF16rS0JNYorZgUMAo
+         UQdv6moLTRVj/vsPev9iuFBSOXHT0R3yDmwL2KovmlH2oH330b2XS6kQeKnTlBunDGbS
+         hJVif0aTS79uGX5zXHVP0ZCJ4BlG7XMqNQ8ffFJPx8Skk8xY204UiMbGKCeiVirURzET
+         PKmZ0Ar6CQcMTH6FMo7fRPNV7p000rk6aRD8XwIfvOVQIiWZ8U13nFsiOuQJFS+EkIYl
+         QWiEMrcIjqrwUkxaM+0x21DZ+bRbk9qAvlK1SarENAsMa32GzonxkVjhb8IXtU62Trxo
+         01rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703260954; x=1703865754;
+        d=1e100.net; s=20230601; t=1703261129; x=1703865929;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mu/L0OAfiVeOdaqFqlc5Uzg8G2ECrhHl0T7TsiF/PeY=;
-        b=ALxn50et4EXduhHwe0MGGKfGiMWd8qve3NtC/dUry2Wj5TXqCeLoJw1rnZndeXrzK/
-         ZCl8icHQU5fz0zn52H8rELakvd3ILiCJeU8o/7zw5Hw8ULa6PMZ5JpV9tp9I5PDe0tHJ
-         W6ZQed08Qx7arOPVbBM3HEqsqEGWxBmHY3gZrotO6ZvuL8fUqC1M0rk3bOu7UWYYmtj8
-         FMKaLurMc3KsKw+AjpKHwYsxxFuoAfdFQVWRrgvyvxXc/KvrNJ3sZQV7PAiFEPrxlEkL
-         BKBihpS3q2cR+JCf/Q5gZCtIQa6doduaNi8eh/geqXlBRcPQaJfTFmSrvvsc6tv8HaEP
-         xUMA==
-X-Gm-Message-State: AOJu0YzxLw9YV/6yyWQarqU1o9YuS7X/Zd2WmlT3Rs0qY048VU6wPexA
-	AP8QD9lwnw495jGpzJqYN68cDdSqVOzhwg==
-X-Google-Smtp-Source: AGHT+IGvjzwEMBNFBojcj/9stMIsuJ813FGZwNTfJJ20Lk8ywKvLKiwVzmcYJnLSG1XqONmfeXty0Q==
-X-Received: by 2002:a17:906:7c54:b0:a26:ad13:e9d9 with SMTP id g20-20020a1709067c5400b00a26ad13e9d9mr866297ejp.85.1703260954280;
-        Fri, 22 Dec 2023 08:02:34 -0800 (PST)
+        bh=HHl6sZyQddXXojGQMUKkQSvhz58BwxXZqlywNu0im7g=;
+        b=AWWNmCU8fxxC66tpnvJHKIZIuMGw6+2EuqYroDHsJobth5EtqV6kPNKbK5BaDsMIOk
+         deEfF+toXWnud1SSl6lgsfvQgZgX7fL9l9r6yx1t4cRRa6k63pdlx+xWK10XTI6PWaFO
+         SDmKGleJXQpJnFZgMzUAKJwKjNuOwW4N4AOOqlkbnwSwS/wfDGPQ9ROE4FlxzMOvohzE
+         O+i9loLVU32miyXdrz1uAE2xu3fc7ekMmuzNcWFSB8cJbQiS+PNuUSn+1RWCnPpZKODI
+         WTyrnQcessLgo+RtB5B+A7ij5MdYaj7Gd3Xyx4fLGHZgYDliUY+2ViUAtQRvpL5PIk6T
+         7Phg==
+X-Gm-Message-State: AOJu0Yy5FTrbH4E/V7DErnuOQJrSA3Ye3tV193R2yeT+RIxtXfBpsgxV
+	RqP6obsQ81Vw8Ep4yXvCd9euqiPLdsXaaQ==
+X-Google-Smtp-Source: AGHT+IFthi5KYqzM16tLDzvvyF2OPyTdgAnrOHasqfjooSFhESvvXaRIjQImsur2ONhFSfaMTMhxPw==
+X-Received: by 2002:a17:906:5d0:b0:a23:6c9c:d4ce with SMTP id t16-20020a17090605d000b00a236c9cd4cemr852719ejt.116.1703261129013;
+        Fri, 22 Dec 2023 08:05:29 -0800 (PST)
 Received: from [192.168.0.22] ([78.10.206.178])
-        by smtp.gmail.com with ESMTPSA id dx15-20020a170906a84f00b00a2363247829sm2155753ejb.216.2023.12.22.08.02.32
+        by smtp.gmail.com with ESMTPSA id fh24-20020a1709073a9800b00a26a5f83cecsm1846592ejc.79.2023.12.22.08.05.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Dec 2023 08:02:33 -0800 (PST)
-Message-ID: <5b4692c8-e9f7-46dc-a060-6b309da97d27@linaro.org>
-Date: Fri, 22 Dec 2023 17:02:32 +0100
+        Fri, 22 Dec 2023 08:05:28 -0800 (PST)
+Message-ID: <da0ba7fd-4704-42d5-8d7b-f033cb68d259@linaro.org>
+Date: Fri, 22 Dec 2023 17:05:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] dt-bindings: arm64: rockchip: Add Pine64 Pinetab2
+Subject: Re: [PATCH 6/6] dt-bindings: display: rockchip: dw-hdmi: Add missing
+ sound-dai-cells property
 Content-Language: en-US
 To: Manuel Traut <manut@mecka.net>, Neil Armstrong
  <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>,
@@ -84,7 +85,7 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net>
- <20231222-pinetab2-v1-3-e148a7f61bd1@mecka.net>
+ <20231222-pinetab2-v1-6-e148a7f61bd1@mecka.net>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -130,11 +131,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231222-pinetab2-v1-3-e148a7f61bd1@mecka.net>
+In-Reply-To: <20231222-pinetab2-v1-6-e148a7f61bd1@mecka.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_080237_555497_FCE728E8 
-X-CRM114-Status: UNSURE (   6.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231222_080533_951001_84FB6A02 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,13 +152,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 22/12/2023 12:05, Manuel Traut wrote:
-> Add devicvetree binding documentation for Pine64 Pinetab2
-> which uses the Rockchip RK3566 SoC.
+> The sound-dai-cells property is used, e.g. in rk356x.dtsi
+
+Better to see here rather explanation why dai cells are needed, unless
+you aren't sure and just want to fix warning.
+
 > 
 > Signed-off-by: Manuel Traut <manut@mecka.net>
 > ---
+>  .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml        | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> index 7e59dee15a5f..43250255fb6f 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> @@ -94,6 +94,9 @@ properties:
+>        - const: default
+>        - const: unwedge
+>  
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Please add $ref to dai-common.yaml in allOf.
+
+	
+> +  '#sound-dai-cells':
+> +    const: 0
+> +
 
 Best regards,
 Krzysztof
