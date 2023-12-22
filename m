@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88CCAC41535
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 626ABC41535
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Dec 2023 16:07:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gK4U5Wb60Q0HiIN8mpl51N+wCR+RbkJoYpuGvIP8j80=; b=1O0766QinFh7/i
-	w/gCEzb5YnX7o2XGCXEBJeE5/LebANOoLbe1gJXlWAPX7Eg4ZGxHhiC4cIrtI5/yoqVNSuXiu5aot
-	F4gWK2kj7EyoDp9oAThrER5i9jT/mg28HNuFId91s07YZ2PKoovP8h03K5wVL+4qzX5+uw8+OhV0/
-	KFEW5S+KcjXVRrFAFx7yPKOJHbsfnu7gVJ5w79XJTZmFJMqAWcrPE51nPIFbc0mHamhWxyKBeR/Rv
-	TTo/6CJd6a5/9xqxjYNSNZJrhXNR04HIADv4wih/UecXmgLoBoiidO6OegH1Ao2HArUTfPTI2X04e
-	ORWdarlRJgDNXGgY790A==;
+	List-Owner; bh=44MiZwpEsMQMV2JiB4Y3utEpmMXZCr4lhBr6Ka0TXkw=; b=XNmegek4WOI9zp
+	2tp2nVk5xFTddI7aG6FANw+usHiLSnm4zVwYKUsAmLByK2Vm6vf/Kj6DD3TixEl2mesyWsxmGl3RS
+	T30Bn0o6Bm+QYRHsC4U3qufC/Tmf//cITFpycdCA8HBwTEs6DxdD3bGft2lF8ksfk5CV8SJWGh/tI
+	YidT1ONLtu4G12spegreFfWvfxrkOPLUvFF53k7yW0nRAVewiTRhFrJvnDKF5PXLLxtLGhcV/eK/a
+	gi51/FAFJ/RlcTO/6BaTsMpBRpp0XMBPMOnywrEAduSg9GvzaGhikKYHU5+10PzjRDLtBLyLX4E/G
+	BXmqollM07Iuu5qjEkhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGi1p-006KRY-1B;
-	Fri, 22 Dec 2023 16:05:37 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1rGi3n-006Kff-2n;
+	Fri, 22 Dec 2023 16:07:39 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rGi1l-006KQa-2u
+	id 1rGi3k-006KeU-1t
 	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Dec 2023 16:05:35 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a233a60f8feso222853266b.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:05:30 -0800 (PST)
+	Fri, 22 Dec 2023 16:07:38 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-50e4a637958so2480834e87.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 22 Dec 2023 08:07:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703261129; x=1703865929; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1703261253; x=1703866053; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=HHl6sZyQddXXojGQMUKkQSvhz58BwxXZqlywNu0im7g=;
-        b=xgdAK8A0lkqgNUos3F0G2+AgatFpRIdYSHEu3x6tT4mhs41pRF16rS0JNYorZgUMAo
-         UQdv6moLTRVj/vsPev9iuFBSOXHT0R3yDmwL2KovmlH2oH330b2XS6kQeKnTlBunDGbS
-         hJVif0aTS79uGX5zXHVP0ZCJ4BlG7XMqNQ8ffFJPx8Skk8xY204UiMbGKCeiVirURzET
-         PKmZ0Ar6CQcMTH6FMo7fRPNV7p000rk6aRD8XwIfvOVQIiWZ8U13nFsiOuQJFS+EkIYl
-         QWiEMrcIjqrwUkxaM+0x21DZ+bRbk9qAvlK1SarENAsMa32GzonxkVjhb8IXtU62Trxo
-         01rg==
+        bh=B+wXRXUTOZMyl1LFRrfsL0kKZmHY+nM2UvjNpacptSo=;
+        b=iKmJ33wkk/EiJHPeFSxum7ZDJ/M3SBs6nI+W8foZfbdi/QEoPov5V4QXDkimyiZJWJ
+         L3DCDxsJdalRfUiKxEGPBibcskc6a61ySnb+Bffy32Wov+qhbKTAOtGJ0rGGY0oy7KgO
+         rjqV3AsFI7DJpW/7+dKA3m1r9xfR6JBdRPwdoj5EaE1QuNEkZFqVHCrK9VCwujIhx5bw
+         W3oiQy+lgNtRw73k17SGCwEhi9hppwWWH6xIMZeMJBNkWk7f1ZAaI1va5dZfg/02KJwE
+         SuoGkZcqFCN4uA+OR2nYYT2nOjCFezq3V8gsTPlJiUIZJsy13qeHClK6QHnHQaUs9sm/
+         CEhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703261129; x=1703865929;
+        d=1e100.net; s=20230601; t=1703261253; x=1703866053;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HHl6sZyQddXXojGQMUKkQSvhz58BwxXZqlywNu0im7g=;
-        b=AWWNmCU8fxxC66tpnvJHKIZIuMGw6+2EuqYroDHsJobth5EtqV6kPNKbK5BaDsMIOk
-         deEfF+toXWnud1SSl6lgsfvQgZgX7fL9l9r6yx1t4cRRa6k63pdlx+xWK10XTI6PWaFO
-         SDmKGleJXQpJnFZgMzUAKJwKjNuOwW4N4AOOqlkbnwSwS/wfDGPQ9ROE4FlxzMOvohzE
-         O+i9loLVU32miyXdrz1uAE2xu3fc7ekMmuzNcWFSB8cJbQiS+PNuUSn+1RWCnPpZKODI
-         WTyrnQcessLgo+RtB5B+A7ij5MdYaj7Gd3Xyx4fLGHZgYDliUY+2ViUAtQRvpL5PIk6T
-         7Phg==
-X-Gm-Message-State: AOJu0Yy5FTrbH4E/V7DErnuOQJrSA3Ye3tV193R2yeT+RIxtXfBpsgxV
-	RqP6obsQ81Vw8Ep4yXvCd9euqiPLdsXaaQ==
-X-Google-Smtp-Source: AGHT+IFthi5KYqzM16tLDzvvyF2OPyTdgAnrOHasqfjooSFhESvvXaRIjQImsur2ONhFSfaMTMhxPw==
-X-Received: by 2002:a17:906:5d0:b0:a23:6c9c:d4ce with SMTP id t16-20020a17090605d000b00a236c9cd4cemr852719ejt.116.1703261129013;
-        Fri, 22 Dec 2023 08:05:29 -0800 (PST)
+        bh=B+wXRXUTOZMyl1LFRrfsL0kKZmHY+nM2UvjNpacptSo=;
+        b=UmFFwpSk0EvFmSt4qSFwug+q/mvehIe2FddCQHtuwLuhhLWE2Ig0F1G9t0FLxwSN/P
+         drXqi4H3VbC8Pi7Wh0HtNwMR+Oo3Qq1cNQpnLM9iGVm20u3oaRab9rS2qpV4s+H2K1wL
+         zDOo155dfv6z6Q2tuPfDb/BW3VDRfK+9PIrRxna9c7bGDeAFtcFDcJ5tmG7xtA7mfIYo
+         bZp3D+ha/G5tH5RjfafhtbYauGvL358FMwEVNKfAQxpAMy/jcjU+7O/3xBpPwd8a6lEf
+         3EbaBKHoTQtizFHW1Jmeu5L5rgMPgxl6qsTIvhnRfxHX7HjNnJPJFO+myE6KDFezC7sR
+         7GLw==
+X-Gm-Message-State: AOJu0YwtCaZjSi5VF2li7USYBUM3m86hUc1B4IVufOAy+qUtLL4ic8tz
+	Fsh/uyJY0Vkjx/qsEPen1Q/TA2BitVKcVw==
+X-Google-Smtp-Source: AGHT+IG9zmrWqdLHelPmE88vblgo1ArESfXchHRQ7uFdNxlL7DHEWhHb84tBucYdOTEMaOyk6ACT4g==
+X-Received: by 2002:a19:700e:0:b0:50e:5a39:bbeb with SMTP id h14-20020a19700e000000b0050e5a39bbebmr430335lfc.173.1703261253060;
+        Fri, 22 Dec 2023 08:07:33 -0800 (PST)
 Received: from [192.168.0.22] ([78.10.206.178])
-        by smtp.gmail.com with ESMTPSA id fh24-20020a1709073a9800b00a26a5f83cecsm1846592ejc.79.2023.12.22.08.05.27
+        by smtp.gmail.com with ESMTPSA id zr16-20020a170907711000b00a26af905229sm1269203ejb.29.2023.12.22.08.07.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Dec 2023 08:05:28 -0800 (PST)
-Message-ID: <da0ba7fd-4704-42d5-8d7b-f033cb68d259@linaro.org>
-Date: Fri, 22 Dec 2023 17:05:26 +0100
+        Fri, 22 Dec 2023 08:07:32 -0800 (PST)
+Message-ID: <d59a60d9-6bd3-4945-a345-0b01eaf1ead8@linaro.org>
+Date: Fri, 22 Dec 2023 17:07:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/6] dt-bindings: display: rockchip: dw-hdmi: Add missing
- sound-dai-cells property
+Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Fix some dtb-check warnings
 Content-Language: en-US
 To: Manuel Traut <manut@mecka.net>, Neil Armstrong
  <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>,
@@ -85,7 +84,7 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net>
- <20231222-pinetab2-v1-6-e148a7f61bd1@mecka.net>
+ <20231222-pinetab2-v1-5-e148a7f61bd1@mecka.net>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -131,10 +130,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231222-pinetab2-v1-6-e148a7f61bd1@mecka.net>
+In-Reply-To: <20231222-pinetab2-v1-5-e148a7f61bd1@mecka.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231222_080533_951001_84FB6A02 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20231222_080736_624783_8B403FD8 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,32 +152,36 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 22/12/2023 12:05, Manuel Traut wrote:
-> The sound-dai-cells property is used, e.g. in rk356x.dtsi
-
-Better to see here rather explanation why dai cells are needed, unless
-you aren't sure and just want to fix warning.
-
+> devicetree checks show some warnings:
 > 
-> Signed-off-by: Manuel Traut <manut@mecka.net>
-> ---
->  .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml        | 4 ++++
->  1 file changed, 4 insertions(+)
+> video-codec@fdea0400: 'interrupt-names' is a required property
+> from schema $id: http://devicetree.org/schemas/media/rockchip-vpu.yaml#
 > 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-> index 7e59dee15a5f..43250255fb6f 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-> @@ -94,6 +94,9 @@ properties:
->        - const: default
->        - const: unwedge
->  
+> hdmi@fe0a0000: Unevaluated properties are not allowed ('power-domains' were unexpected)
+> from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+> 
 
-Please add $ref to dai-common.yaml in allOf.
+...
 
-	
-> +  '#sound-dai-cells':
-> +    const: 0
-> +
+> @@ -819,7 +820,6 @@ hdmi: hdmi@fe0a0000 {
+>  		clock-names = "iahb", "isfr", "cec", "ref";
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
+> -		power-domains = <&power RK3568_PD_VO>;
+>  		reg-io-width = <4>;
+>  		rockchip,grf = <&grf>;
+>  		#sound-dai-cells = <0>;
+> @@ -1123,7 +1123,7 @@ i2s2_2ch: i2s@fe420000 {
+>  		dmas = <&dmac1 4>, <&dmac1 5>;
+>  		dma-names = "tx", "rx";
+>  		resets = <&cru SRST_M_I2S2_2CH>;
+> -		reset-names = "m";
+> +		reset-names = "tx-m", "rx-m";
+
+That's not correct. Look at line above. How many entries it has?
+
+Do not fix warnings just to make the warning disappear. Your change here
+clearly suggests you did just that.
 
 Best regards,
 Krzysztof
