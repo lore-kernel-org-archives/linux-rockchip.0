@@ -4,74 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36976C46CD3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 12:37:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7C8C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 12:44:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:Mime-Version
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fhhx+NWi3AQ4PozJ4j7hhc/0SapSrmer1/49MRuNbhY=; b=vh8HzH10DSOW8q
-	yVZxNQsKS/W5HkfnYgXp0Sram3ZsCd0aNAX8ieqajmOJPZ6zMriCnwmEXskRgtFZO/ti4YKMFkJcT
-	QGJfJ/e7YWbsiMaOIuATuIsj8Q6XQjFdd6yEIObm+ihpILfReh73fjbdpqq1ygm/i9/dhq7t+UWj+
-	ixWwO0BQWYZ0kkg1N/bz28eGCyNbmTn1BxbInqd0CdqO11Pocf8EXiMp+yPaIbSigOSH930foccDx
-	YooFKjSKcqQ5sut+fBYy0sb7l1Igfgq7TwBICAAe19PiRHX0Rq2w6SRfDb9dfvebQGQgjQIP1gAqE
-	rRo4QCKaKcnUbCn5/rYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sz9QhaGGJAWhrLWb/ecTlIk5RMMobcP1q9XlXBRJ9Xw=; b=iYvGKBgLb+FOX2
+	DBC1TpsHiAHBg4bRs8v+o7xKXyX3IdduHZIVg/tuXsN8ah3QcXM7C7HtVT0TYZIQBsyY4Gm8c9/qg
+	Db3jABZ7rr0XHdv4jQ+Gx7EYo0esgBz2tUyiwVL2Xsu1Np2tlXVDNK61jvmeu/TNZnAroE4EuB344
+	j602sltXijYTas/0egVPjRrAFsyDe1KWHRpFj3AfEXGZyBOX/JzzGCXN/YXdd2kpaw6KOZSMV3YuV
+	ULMKhoUsKWvWZELvb35AAG9+KQHMtjejkbIUs8hhEir7gYsHCCWfZ6YDVMNB+BGoxkg2ukOK2f99g
+	CfNkT/t/2Kx3kzj7No0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHNjO-009OVG-2r;
-	Sun, 24 Dec 2023 12:37:22 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1rHNqd-009PGR-3D;
+	Sun, 24 Dec 2023 12:44:52 +0000
+Received: from mail-os0jpn01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:2815::801] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHNjK-009OUx-2z
-	for Linux-rockchip@lists.infradead.org;
-	Sun, 24 Dec 2023 12:37:22 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40d31116dbeso36957175e9.3
-        for <Linux-rockchip@lists.infradead.org>; Sun, 24 Dec 2023 04:37:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703421433; x=1704026233; darn=lists.infradead.org;
-        h=to:date:message-id:subject:mime-version:content-transfer-encoding
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=iAb99EPJSczvnpvF75Xlws6mgVSlBquAe5zUnxcOfxA=;
-        b=QNBn1TLYKdvYJYtjbVGN9AtZr1ooiju9M161tdCxc7fYJ9RpIrHwDVzhxvROvBdpM/
-         s+26A4BQrasFtneQigdpqsjYgtLGhDxQ8+fYZeAM97w02UtZWRjSVnwnT5ZxmLl9GyFq
-         3JRJyOtDSKiTkdcMO8LVkX01xrS4jeV/XmVHPwVlU0lsemNdJ2jZXH8+rt+K6MmNwlYv
-         I3QoMf9djSDwmpRTsGRcorJYkfKOEHflj0PxpY5DIMWzcFF5BCy8gnccUjWtaDzo/2Zd
-         XqQSUuurXSvTJ/1+pn8B6Y8RwvoVF+NYAzSWJlo3Xjp6zwlA2+KRDiLx9a35P3hVEXgY
-         UVLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703421433; x=1704026233;
-        h=to:date:message-id:subject:mime-version:content-transfer-encoding
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iAb99EPJSczvnpvF75Xlws6mgVSlBquAe5zUnxcOfxA=;
-        b=UoB1TSv+2Q2bs9PgFXZ9GasLk2bpIq2WJy9g8s8hkk/zZo1AmBAfZXhAO+UIFdP5e3
-         l1O50u2fjGqbG7J77Cag9GpQ7wUxmlK/Ujpcpu6k+i1luBUOIrqrYo/zWYLavDexbBcU
-         zASaNwOzkm6lu4hFT8nGK8yp+E1Yitp3UqtC+neRUj9oW8TIdU/d9u69bjAyHQtONNCc
-         6GO48URkPc0bDE/CNisU1pA0hZv5oNm2eA39LO8DFxYRnF95OnMd7nNdiVExo7DoZN/S
-         tSsZWdfnvPP3wxtUNEoIz5aKycmdJXkWKocRbopLNSZpDzWlrQWH1yjTfIvMolkso4gC
-         bBTQ==
-X-Gm-Message-State: AOJu0Yxy807VQI0Hf5Kwo97P5pCT5uuy5HDtMCvhTEeG3pP7lUYHgGRn
-	/xPp5GvdiGnck08/Nl/CAK10vEXq2Oo=
-X-Google-Smtp-Source: AGHT+IHyAIMvCeXEKoDgxhaxXcqO4iGE/pozVbhj5ljTMgYbKOC9ZfHjbgPj8fD0xzoXOjm07NmOJw==
-X-Received: by 2002:a05:600c:1381:b0:40c:6c81:e6d with SMTP id u1-20020a05600c138100b0040c6c810e6dmr2208469wmf.6.1703421433536;
-        Sun, 24 Dec 2023 04:37:13 -0800 (PST)
-Received: from smtpclient.apple (84-10-101-169.static.chello.pl. [84.10.101.169])
-        by smtp.gmail.com with ESMTPSA id n8-20020a195508000000b0050e7551dd6bsm411622lfe.14.2023.12.24.04.37.12
-        for <Linux-rockchip@lists.infradead.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Dec 2023 04:37:13 -0800 (PST)
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.15\))
-Subject: vop2: 3566 vs 3568: green screen on 3566; on 3568 all ok... 
-Message-Id: <7408CE66-E110-4DB2-8B73-856E71E16754@gmail.com>
-Date: Sun, 24 Dec 2023 13:37:11 +0100
-To: Linux-rockchip@lists.infradead.org
-X-Mailer: Apple Mail (2.3654.120.0.1.15)
+	id 1rHNqb-009PFx-0C;
+	Sun, 24 Dec 2023 12:44:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gbg9AeND6SUvaQ+yHk5eAEIQwyiVvrXiCRJcVGAwvPH727nlMv2SVLcgHL7uKVt0mBwTiJEJHt0SMF/fiK7LdvxQAjQ3UhdnOJ+sGeGGQFDvk+9g4Empx18wDbw4CFwJsmd9HEd6lXiQrYsboW3ySJIIaXTfJOy6H10OPHe17ZElAQAb6wjewKeKHrfzoQ+TMCrKCkKsPOKYthE5A3Q5gV4PMce+t8+PdxAWv5XX2YzaCnvKI8V6HfgQSBUuVG1cvYIkGWTRU1PP5kVN20g2m4FS3hZPSm5/XV5g91lzn9+m2YW8dVnC0gzjPPFbfhgUQxw+V0xo12SGLE+p9syhlA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BWQibc5NKvPuYzlW5jeDxMBIMaVNDEsDR9+KQZFe+CM=;
+ b=h1NuIA6P7yceb6lv5fr30xRDtkFqxWLz/2UQfIBq281UJi5H2ez5pgH5bPQa435dq9yLgFRpAIj9lNuzqXG4mUOo1zUSZNf6HKCVFE7l/wsFHBAtwxwK5wlC8hSOjV7n+xY0lMhVCcBUL0Ak7Q/lTIkx3U6fr2w/NfB/Dlj37StvtuIJFIlLfPqj0bzlIN9AnXMr1volGAiREeaZRaFhZl04eHwrGez0bZEz5IrqufqK+seaB9B3vBzg+BnNhChrOdaJEA3W1BJm6tzoP3oFlJvc9zfm2P/MxykBBj3B1aIh61fPR7h9EHYDSwHVVIeyux3zwkd1EzgSN/+0BUOQPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BWQibc5NKvPuYzlW5jeDxMBIMaVNDEsDR9+KQZFe+CM=;
+ b=bpPb+9EzbXSLjPqjbLCdBPV+hJb7VcUUXq76M/GdFAmCyB9EoNegIU6nQSvgcHaw1gaIY9mVzSkpwRY3oikuFW/BfVqwKyeCTgVsysC7y2AdDKDMslezUX9UaknH/Dqfnsxj2ni397A8zvcu8xqg9hwZWy7FhtXx16APYy5nTWmSa1UmEGWuWbx7Z1a97/sj7MRRwgCc7qRmG7awWf7872E43k7hvZRW647TA40okoAZoe31wqB1rzgCWVNLnww+76I2yFLu5S9jbyv2hButvXj4TIYUTiw3V1B+rvgpHUvQBUiCGQm9RkHuLmU2f0W/VLodrXW3hhG6i7r377kt5g==
+Received: from OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:cb::10)
+ by TYWP286MB3079.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:2a2::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7113.24; Sun, 24 Dec
+ 2023 12:44:40 +0000
+Received: from OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::3bc:35ff:e1d9:212f]) by OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::3bc:35ff:e1d9:212f%7]) with mapi id 15.20.7113.023; Sun, 24 Dec 2023
+ 12:44:40 +0000
+Date: Sun, 24 Dec 2023 20:44:35 +0800
+From: Zhang Ning <zhangn1985@outlook.com>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	lasstp5011@gmail.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: boot: dts: rockchip: Fix led pinctrl of lubancat 1
+Message-ID: <OS0P286MB064153B62ECBBEED9C16755DCD9AA@OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM>
+References: <20231224075001.3032214-1-andyshrk@163.com>
+Content-Disposition: inline
+In-Reply-To: <20231224075001.3032214-1-andyshrk@163.com>
+X-TMN: [L413JATTD6zhewnoYwwVyh17306I0bns3aJQS57qkmZfiVEJf+ydifQlrnsWwuE0]
+X-ClientProxiedBy: SI2P153CA0003.APCP153.PROD.OUTLOOK.COM
+ (2603:1096:4:140::20) To OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:604:cb::10)
+X-Microsoft-Original-Message-ID: <ZYgnsx6rmpy7KgBQ@orangepipc>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OS0P286MB0641:EE_|TYWP286MB3079:EE_
+X-MS-Office365-Filtering-Correlation-Id: 06182430-0148-4ab4-afb5-08dc047e18a9
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 8imfxOhnBYV6G/O6Q6redJvuTuNfe2aVV9p4zuuSOcCshrZ33iHyeeeepKx93bOCGRBJAZUclqUfvFNfsUgMHuJ7OkAZWFudZJzWOdWJiQTF2WPdm3+LguGbDvg6uHsROZ68x9sTkQdNZPxluzup2uWxPNsaGsGdLwYFIEl4RVssBJI47fAxmyiMKHwOIGkAPqvnrLy3X57CE1+vb+BbP4Kil7X0hdc6uJIgpf2x4Dkc85i5rTxTAXyz8g0ihUCYEWcTuo6o738M1vFZlY8GdKFXpyPWAH5MO6/ALdN1R76ukXC/8Nl3C17vv6E1pNPPE1bJPf2eLorkgDKj+pV+3Sjpg50S/pNTpsl4FFRXnNR3Dpcqux/JEGm6ZZVEi9c1TtXJfjmtvLViNAdDgu8JRHpf0mhNBv5G2hHqtBkgd32fUxZqkLKGemcWXuV6zJlQInFULlKYCnWUazfPew3PFNPF9FW5ZzOAp6hXhEhluDjkxgL/25Vp1XYXWezf3bYv9TibnO6p8HXUSXX8kT6oPduXC3yJkjpfsq6d0JhTI9wfVNCw2MtM7saG+gXnYO7QVxq4EFkrTAHtgUthn29eCu1yeY97kh+9Xlsgw4x9RjI=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SHl3NkZDZURsaytkMWFWVlJZa2dJelVlTHl1YzlyQ3RxV0JETWpOZ1NIQ1pP?=
+ =?utf-8?B?NFJqd0NvcDlzd3N4eHZaaklVSElCM2hySC8xbUpiL3k5RkppakpPa3JhRWVE?=
+ =?utf-8?B?MUR0QTlXbEpDeEUrR2s4RUw4SUU1RWpONHlvcWxLMGdKY3h2MGhtQ2lDaEdk?=
+ =?utf-8?B?YnNPV1Z1clB6c1dienBDcVlNU2RkMzNrazRvaHBqajE3OE5tQlZoQm5lNlFY?=
+ =?utf-8?B?ZlFobU9yWUxKb1JaaU5ESzRZRE5lSGNRdCthVTF1eXRQUHNTVWpTdzVnRW9h?=
+ =?utf-8?B?L21xa0x3T3NKN2tacWtxZFRldm1IMVN0cXdlRDc0WDBBWnpFU1Jqd2VsY3Ur?=
+ =?utf-8?B?NEppbm9wbENqTkJtaW55L3ZQV09VMXRwcU1vNmJTUE82cXRTU0JudmJFUlZ1?=
+ =?utf-8?B?RGZDaG5CcmJjSW0zajQyalA0YzdycjdLd0g5Nk5ldGJvbk4rbm9GUzlpYlpv?=
+ =?utf-8?B?VUtxSk1DMXQyNm9TdmtjSG9mSzNmcEdRTC9xRVlqY0g5Nkw1RHRZTUhyY0Zk?=
+ =?utf-8?B?MkZCRGpUdzJIRFR0dzJqRWxDTmcza1Y5S0QrNVlyQi9xSkd1aUU3NXUwejhN?=
+ =?utf-8?B?Y001d2RYaTErYmVEeElQQWJ1WnpDNlpuNWtBdWdNbFVwcTQrYkNKdVJab3l2?=
+ =?utf-8?B?VndVTEVOc09pa1FTYXpkMDNqM0lrTmtKTVNyVmdwSFNoSmFjdFovT0NBWW03?=
+ =?utf-8?B?S01aZjBoVE42OXFFQk94clFLeUt5RWlVQ2g1akM0eW4vQjVUQzNRVmUxRlQy?=
+ =?utf-8?B?K2JGUHZMS2NBU1l3UTJsSXRLaHlGa0FSQ2NFYUZESjdlMlNZTWQ3NmFjZExQ?=
+ =?utf-8?B?RjlsMjI0RWNGYS9LRUZyM3d1OC9EVHdQdHFEQkd1UU1HZEJGdDR4OTZLUXVT?=
+ =?utf-8?B?ZXpOd2toQ0dvRFJQN1o3LzRQRWFoVkw2T3JSdnRHNG1Bc1RhR1pPQU5BU0pJ?=
+ =?utf-8?B?UklFMGloUCtXWUYrbzJTcE9ib1RhMnVNd0hMSm5DSlhVdy84OWRWZEtTdnFS?=
+ =?utf-8?B?b1NyK3RRUGlJL0xaTVBIK1NkRGZHWjkwbGpCRlJ1ZXY4ajhyQXhiQ2gyeVVz?=
+ =?utf-8?B?U292NFZZQkpwdi84VC92N0hlclNFN0x6VUhwNUZtRzBFNVRWRkNScU5FcUEv?=
+ =?utf-8?B?NnFBUk1MZFhLblBwZk96Y3JqM1FnNmNRR2plVTR1WDVxM3p4UnBaMlEwQis1?=
+ =?utf-8?B?WG9Nbm9jZlN1V2RoY1NNL0dId2VaUEo2ZUNidVJ1aExyQUVYcE5CK2RPUkhY?=
+ =?utf-8?B?NitTcHNUMnFMR0RUUGtDVXUzK2ZLek00WTZNNm85cUtyNnlJS1ZsWDZmMFBn?=
+ =?utf-8?B?VEduNWtVREo4eEJ5c3ZYektnUXpPOFZybWgwUUppVktySWFsalZ3a1ZPTXBl?=
+ =?utf-8?B?TCszR2ZzS0sxSmhxN0lIQ0RzczRIMWJkV29rak5xZDVBOFl4ZFoxYTJzaUNs?=
+ =?utf-8?B?MDJCN2dpcDRJSldrdnhpTlZiOURDL2VJeFdPUWpaSk5LZGZyWEN6RzBkR1M3?=
+ =?utf-8?B?UDkrUnpjcThRZ3pXbi9ZVm5pcE0rTFRBcVBBNnh6UGVSajFLTmszaFBzd0Qz?=
+ =?utf-8?B?QXN1YTlrbEEzSlpmc21JNG9WUHFacjRQd1ZZdy9NL3kweDRGemIyWS8vcXMz?=
+ =?utf-8?B?Z2d3MUM3bm5HdE41bFp5L00rK1AvNHA5SW9FYnUxT1VKNjN6eFQ2WE9sQU1U?=
+ =?utf-8?B?MnlyRTNqeUNnekJQSlZ4Mmw1V1hWVWYyazRzUnBOZk9KY2RzU3p6TDhHWlJ0?=
+ =?utf-8?Q?Jq2oG3f7m8b99e4fKg=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 06182430-0148-4ab4-afb5-08dc047e18a9
+X-MS-Exchange-CrossTenant-AuthSource: OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2023 12:44:40.8351
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWP286MB3079
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231224_043719_006407_05FA0143 
-X-CRM114-Status: UNSURE (   4.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231224_044449_135806_AAE018D3 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,25 +128,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgKiAKCkkgaGF2ZSB3ZWxsIHdvcmtpbmcgdmlkZW8gZGVjb2RpbmcgKyByZW5kZXJpbmcgdG8g
-ZHJtIHBsYW5lcyBvbiByazM1NjguIAoKT24gcmszNTY2IGhvd2V2ZXIgdmlkZW8gcGxheWJhY2sg
-Z2l2ZXMgbXIgZ3JlZW4gc2NyZWVuLiAKTG9va2luZyBvbiA2LjYuOCB2b3AyIHNvdXJjZXMgaSBz
-ZWUgZS5nLiByazM1Njhfdm9wX3dpbl9kYXRhW10gaXMgY29tbW9uIGZvciAzNTY2IGFuZCAzNTY4
-LiAKCkkgcmVjYWxsIGhvd2V2ZXIgQW5keSBZYW4gKHJvY2tjaGlwKSBzYWlkOiAKCiJCdXQgdGFr
-ZSBjYXJlIHRoYXQgdGhlIHZvcCBvbiByazM1NjYgaGFzIGEgc3BlY2lhbCBsaW1pdGF0aW9uOiB0
-aGVyZSBhcmUgdGhyZWUgd2luZG93cyhDbHVzdGVyMS9Fc21hcnQxL1NtYXJ0MSkgdGhhdCBoYXZl
-IGEgbWlycm9yIGxvY2ssIHRoYXQgbWVhbnMgdGhleSBjYW4ndCBiZSBwcm9ncmFtbWVkIGZyYW1l
-YnVmZmVyIGFkZHJlc3MgaW5kZXBlbmRlbnRseSAsIHRoZXkgY2FuIG9ubHkgc2hhcmUgZnJhbWVi
-dWZmZXIgYWRkcmVzcyB3aXRoIENsdXN0ZXIwL0VzbWFydDAvU21hcnQw4oCdLgoKSSBzdXNwZWN0
-IG15IDM1NjYgZ3JlZW4gdmlkZW8gaXNzdWUgaXMgc29tZWhvdyByZXN1bHQgb2YgInRvbyIgY29t
-bW9uIHZvcDIgY29kZSBmb3IgMzU2NiAmIDM1NjggdmFyaWFudHMuIAoKSXNuJ3QgdGhhdCAzNTY2
-IHNob3VsZCBoYXZlIGRlZGljYXRlZCB2YXJpYW50IGNvZGUgdG8gZGVhbCB3aXRoIDM1NjYgbGlt
-aXRhdGlvbnMgbWVudGlvbmVkIGJ5IEFuZHk/CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+O Sun, Dec 24, 2023 at 03:50:01PM +0800, Andy Yan wrote:
+> According to the sch, the gpio control sys_led
+> is GPIO0_C5.
+> 
+> Fixes: 8d94da58de53 ("arm64: dts: rockchip: Add EmbedFire LubanCat 1")
+>Reported-by: zhangn1985@outlook.com
+
+Reported-by: Zhang Ning <zhangn1985@outlook.com>
+
+in case if have rev2.
+
+> Closes: https://lore.kernel.org/linux-rockchip/OS0P286MB06412D049D8BF7B063D41350CD95A@OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM/T/#u
+> Signed-off-by: Andy Yan <andyshrk@163.com>
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
+> index 1c6d83b47cd2..6ecdf5d28339 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
+> @@ -455,7 +455,7 @@ &pcie2x1 {
+>  &pinctrl {
+>  	leds {
+>  		sys_led_pin: sys-status-led-pin {
+> -			rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+> +			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+>  
+> -- 
+> 2.34.1
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
