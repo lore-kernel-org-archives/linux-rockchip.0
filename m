@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B159EC46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 21:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE05C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 21:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vyqvStq7dstEpKE6+vV7LbB6yUYeBAQM4HQerR9wLVI=; b=CmTh//gOt2zWam
-	rc5gVgOybIAKPTcohRHe8aMIcpNlLMSz7/wL32HS9q5jkHMo7zwz2VOBRDGB9gZ0etvGfoVQA6jA9
-	GNWkC0C2EDVUpxWzB/5rY9Vd/pdrvHI470l5Qd9+0XWxRL/v9PJM+UlZPQCaGM6AUvCKurj2ZJ5X3
-	q1r5DIGLUkvio3jSlUQ4Z0XEAP+nt8Bb9+pYmMaPioaKS6N8aJQcMV7OX+Jl73jRlSzo5iL0ZKNzo
-	5ZJZqaEoeIT+hMDv8Xq2tSZ9n9kcM1RfkBK6wtOuz/wX/6eXRCaGuNxmz8cdSRr3NnOw1U2Gnr6SY
-	s0nEhhtjIGAOVvhHykFw==;
+	List-Owner; bh=ePA8PcH8VcNL0mhTScckivU5qHEfcnE/eDwPBm+KjpM=; b=ttEjLuQu2noK+z
+	cNyq1k5HJw2AEJa1fdk2/aXsYnVabgGncjKIn745Pb3BmLy0XB0OcrctYGca+R15zFKCkrjKKak0X
+	f5f/QpFlYQJajc+TKPLf5oPDeGza4eSWAgaK7rBruwyUFsMqqXPgzYMIy8DfJMj6RELJdBGQwFve5
+	8iuV9CkgObbtsGgMlkcSHucCOkhmCuXW7hz2sgQ2NVCmuDX+/lbQAap/ITqN/tVfuo4fYBBlGRX0s
+	notvY+LDMsP+Y0KvMCRAJqDArgHAJEDPKVKYk0YCLL112wZqzFO5PRhLODmFnrHA8By9OlmvDLQmP
+	mpuNp6ebELpt5LnOoiPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHW7M-009u52-0Q;
-	Sun, 24 Dec 2023 21:34:40 +0000
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
+	id 1rHW9b-009uG4-1j;
+	Sun, 24 Dec 2023 21:36:59 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHW7H-009u3d-2N
+	id 1rHW9Y-009uER-0Y
 	for linux-rockchip@lists.infradead.org;
-	Sun, 24 Dec 2023 21:34:37 +0000
-Received: by mail-il1-x12a.google.com with SMTP id e9e14a558f8ab-35ffc781b3bso58165ab.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 24 Dec 2023 13:34:34 -0800 (PST)
+	Sun, 24 Dec 2023 21:36:58 +0000
+Received: by mail-il1-x12d.google.com with SMTP id e9e14a558f8ab-36000a26f8aso25885ab.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 24 Dec 2023 13:36:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1703453674; x=1704058474; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1703453815; x=1704058615; darn=lists.infradead.org;
         h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=TfM2Ozc84jVU4EjDuheFZr1xJI8bldYDvajnMAoQpG8=;
-        b=XVvNFcIlycIcu0Hh6uJDfwOCR5bJ9J6z7N8P9n2KmyDdKmWumCCOV5RP+ATkI2md8+
-         AI+/GnNQ7LiFrYSUiioZqdNPWMliyYnXpmwLKCupEtpzboyQoBb+SCqVylCnDRblSiHn
-         fQdC00RWhxL40MtTZFhfZ/CIJuzjwASmzK08otvwoOu46pFkXc94DGPBeWKJgHycmGA/
-         fWP4DNn3RqVcMxr+O3s8uohJLoVVXpOa7K7HqG4W+YLSb7KCuBZRURGOtH1qQuN9+aba
-         oPTm1wCGwx87FaUEmFqTFb1/nZP++wyNlN65gWb984RMbE0cqHgCJz5lwq5GDk+yihPA
-         K9ww==
+        bh=Os/oPiSZBtjIUvvwHAsDtB34DNNtYdnH9WgDGcFTsds=;
+        b=PialE1Y6+O2NhXX7vuZN9JM2rj9BsYEv1+0zi8FDHY6WjYLDunMn4cnXzHQMb446+l
+         eJtp2m3dHrcWA4wHm2HXY4Ce5OcFZgSAeDglOdut7L+tvKFjsQUOoZqGwQe0SeuV7+Ts
+         3iNzWFIVE/VBzee3Q0ejFRK6HjDbzpgnSc9sZj8sY8BQ9/QV9uLishxkDnfEoBP7fsGz
+         ymWxocIcogRov2hwMg3NuuLN5s0XdajP0/2cWOPlIlY7NT1f8pC+3ZPya4iCcPKnnh87
+         CIlmTMUmQaoTkSarK1Zh/5XwhyydlaV6xu9RRNESrpH9AVA2d6IxGkNCP2zOZZt6zxkN
+         Pcyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703453674; x=1704058474;
+        d=1e100.net; s=20230601; t=1703453815; x=1704058615;
         h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TfM2Ozc84jVU4EjDuheFZr1xJI8bldYDvajnMAoQpG8=;
-        b=Cn490z6fiv4O0hvl0o66oQ18uBBSlH9zn+Y0dZuCdk7YchZKKqasIpJpg4kLKaj9Qi
-         9oux/s8gfPnQgSzoRc/wxe+jWHRv4ftudvQX6nVgwym3Q6YiFFFHUQipIIjk+Me35yss
-         Xt/fU9VxOtj6ajSwjSxWGhceatmxGghxluo014GsK/TFeoW5/iBo0/o+aIrn0JUs+xr8
-         LoAbV3Tjdei8oGTHSv2hmFdJCWCEcTT09eE3Dov1KkCMT5jTmXEgQZAR/yk4uONxC43o
-         Bpma9NaUSGo8RwTBHmzcDrz3yDNPKrVFj+O3Sl7vRdMkdTE9KJZ3H4BradPD3aXwBZgx
-         7DMQ==
-X-Gm-Message-State: AOJu0YzPQvzI3tAvAUBIemzJrbnBZIZfKMBqb2IyLD09m+SKuWuz/EQC
-	J7t2A+XVXtp4tQQKx56/PoU4MYmZdltQ
-X-Google-Smtp-Source: AGHT+IG3cVdgoPXJNOP0FoX9QP3AtXmf/dh4TZ34AQ57wFrWDSmH4MJwWcFfrokVe6jo4lwlGVdhWA==
-X-Received: by 2002:a92:6802:0:b0:35f:ff76:2d40 with SMTP id d2-20020a926802000000b0035fff762d40mr25383ilc.28.1703453673759;
-        Sun, 24 Dec 2023 13:34:33 -0800 (PST)
+        bh=Os/oPiSZBtjIUvvwHAsDtB34DNNtYdnH9WgDGcFTsds=;
+        b=j1V/HhjCxvYOz8RMXNoIQkaS8DAB020emF3zTeOJwxWarz4RuPd5KZWgq5j3/fxRRh
+         YpjiNCNVh6SCjyITv+abniIVELUK3zcl+VzMOQMhKANnrDkIK5hmsqxPtxCci7F+QFsy
+         iKv5Nk3tpjyVqWS7MUxzJ9da4ekZ4w3WHLuPZkfmBmkXbcf7udfy3F81BQFhYkF87zcd
+         LNBHyWl19TmgtsfFQYCNerzYbKKZ3TG/fJ7sLp8kLrcq5boTZ1T5I5B5hrB+EByRRSVr
+         kQ+0Rpk+Lp+vuJgAubrWayHWImfm70jZqYJFA9jq4X+flKjOnx2eg1ebGQfGXK81OXox
+         wtCg==
+X-Gm-Message-State: AOJu0Yzqfnq4vt5gpPTU2oJcFgXmsgseoXOzdasV7mlVa4+SSYxDL6Ae
+	N+ffdzdk5lPzC99stdzUh9BURaJjqNCR
+X-Google-Smtp-Source: AGHT+IH2zcpLJWPKD+BeBsfBapGRJ4delpEMsonOf6psnFmaNZJ7wb6YGlKK2PGLdTvnRk1ktYgw3w==
+X-Received: by 2002:a92:ca8b:0:b0:35f:65d8:dd50 with SMTP id t11-20020a92ca8b000000b0035f65d8dd50mr389199ilo.18.1703453814883;
+        Sun, 24 Dec 2023 13:36:54 -0800 (PST)
 Received: from [2620:0:1008:15:c723:e11e:854b:ac88] ([2620:0:1008:15:c723:e11e:854b:ac88])
-        by smtp.gmail.com with ESMTPSA id h16-20020aa79f50000000b006d9ab1e15c3sm2281753pfr.129.2023.12.24.13.34.32
+        by smtp.gmail.com with ESMTPSA id y18-20020a170902b49200b001d0ce267eaesm6915344plr.250.2023.12.24.13.36.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 24 Dec 2023 13:34:33 -0800 (PST)
-Date: Sun, 24 Dec 2023 13:34:32 -0800 (PST)
+        Sun, 24 Dec 2023 13:36:54 -0800 (PST)
+Date: Sun, 24 Dec 2023 13:36:53 -0800 (PST)
 From: David Rientjes <rientjes@google.com>
 To: Pasha Tatashin <pasha.tatashin@soleen.com>
 cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
@@ -78,15 +78,15 @@ cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io,
     suravee.suthikulpanit@amd.com, sven@svenpeter.dev, 
     thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com, 
     vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com
-Subject: Re: [PATCH v2 03/10] iommu/io-pgtable-arm: use page allocation
+Subject: Re: [PATCH v2 04/10] iommu/io-pgtable-dart: use page allocation
  function provided by iommu-pages.h
-In-Reply-To: <20231130201504.2322355-4-pasha.tatashin@soleen.com>
-Message-ID: <f36a5a1e-f28f-c25b-337b-8c67ccd46943@google.com>
-References: <20231130201504.2322355-1-pasha.tatashin@soleen.com> <20231130201504.2322355-4-pasha.tatashin@soleen.com>
+In-Reply-To: <20231130201504.2322355-5-pasha.tatashin@soleen.com>
+Message-ID: <0db8fdb5-26ee-5069-30d2-118595516926@google.com>
+References: <20231130201504.2322355-1-pasha.tatashin@soleen.com> <20231130201504.2322355-5-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231224_133435_894799_9AF2630F 
-X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-CacheID: sfid-20231224_133656_222830_D04E5593 
+X-CRM114-Status: UNSURE (   6.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,10 +106,15 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Thu, 30 Nov 2023, Pasha Tatashin wrote:
 
-> Convert iommu/io-pgtable-arm.c to use the new page allocation functions
+> Convert iommu/io-pgtable-dart.c to use the new page allocation functions
 > provided in iommu-pages.h.
 > 
+
+... and remove unnecessary struct io_pgtable_cfg formal to 
+__dart_alloc_pages() while there :)
+
 > Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
+> Reviewed-by: Janne Grunau <j@jannau.net>
 
 Acked-by: David Rientjes <rientjes@google.com>
 
