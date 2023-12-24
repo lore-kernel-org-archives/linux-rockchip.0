@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1AEFC46CD3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 19:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0DCC47073
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 19:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lz+RZfPqaXcPtumi7bsoYMgqaxGHCrJm+XW96V6f+Rg=; b=dpf17umDUkuGs7
-	keI7ty7qFVRPVcB2AQOPLchDOCiUNkY4noU4QrwFa4t9bJxyKDdJwScDDv+vThaOMwrR6MJNhRj8G
-	mmy39cg7vAQmMAEuzu51RIgokpgpiqeifVoVT42IXct0KlUhRx+u/0rKvO8mY/7ibn7Me44tqtBqH
-	PBU+xIuzjBDeYDt9XoCDEsOnitc2JkwU/ux3nZx4J/FwqVFdRbqfCo/V0Nlh5GP7lTiga8xLT+Cgi
-	mfaDWEcFuyeVtQNoDZVOj/xxiq0QH+EN/+B9ZnHb9ICiBSH+94uw6640ZZpXoQpni99/HAw8Z4K7K
-	U+1+Dvdv/PqPHDlHDf1w==;
+	List-Owner; bh=vhfqZMDGNGKmvTYWUuK2RQ5pwm5fMq1kRXUnodKoP9U=; b=LeKVGzE/2wQPNE
+	OBQZn49WUdkK93ZQ8TXkj9fjWowBvaANavtt8Fs7LB7QZWxsX+tBUWkAG69P8Rk6Vs4dl5TfA2/xN
+	bSXgG10EgCdrE7G8WLr+VC15u0Hwh1DZn3+3fNmayTUo7EW295gfQpbSitFi6CljBCoC1mECfceW/
+	QzjjY1YHPeuDOfE3YX1GDtbniuBvKe6KgoFxAuJUFMB/1RGkBrUIs4kwOsKrCGjlua3y/1O8oUsTF
+	ebkzLDmf2+1g+ZpxmjEMUuu2KIoaBd92/6JED827tedueKB0rwLoMT9vSXqlXiTiDghGgCT+lSX45
+	/2zFb/iJvUf9W1YQERLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHUZ4-009p0k-0E;
-	Sun, 24 Dec 2023 19:55:10 +0000
+	id 1rHUZ6-009p1e-0l;
+	Sun, 24 Dec 2023 19:55:12 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHUYn-009ouN-20;
+	id 1rHUYo-009ouk-0P;
 	Sun, 24 Dec 2023 19:54:55 +0000
 Received: from i5e86193c.versanet.de ([94.134.25.60] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rHUYl-0006HY-95; Sun, 24 Dec 2023 20:54:51 +0100
+	id 1rHUYj-0006HY-Hb; Sun, 24 Dec 2023 20:54:49 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Trevor Woerner <twoerner@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Andy Yan <andyshrk@163.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3308-rock-pi-s cleanup
-Date: Sun, 24 Dec 2023 20:54:48 +0100
-Message-Id: <170344745822.2405994.1040172386629808336.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	zhengxing@rock-chips.com
+Subject: Re: (subset) [PATCH v2 0/3] Fix mainline support for rk3036 kylin board
+Date: Sun, 24 Dec 2023 20:54:44 +0100
+Message-Id: <170344745821.2405994.10562040784600617888.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231219173814.1569-1-twoerner@gmail.com>
-References: <20231219173814.1569-1-twoerner@gmail.com>
+In-Reply-To: <20231218105523.2478315-1-andyshrk@163.com>
+References: <20231218105523.2478315-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231224_115453_654405_A93DBF4C 
-X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-CacheID: sfid-20231224_115454_168498_5805ADE4 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,18 +69,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Dec 2023 12:38:13 -0500, Trevor Woerner wrote:
-> Perform the following cleanups on a previous patch:
-> - indent lines after "gpio-line-names"
-> - fix D0-D8 -> D0-D7
-> - sort phandle references
+On Mon, 18 Dec 2023 18:55:20 +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
 > 
+> When I want to test some patch of inno hdmi driver on
+> mainline, I found the support of rk3036 kylin board
+> was broken by somehow:
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rk3308-rock-pi-s cleanup
-      commit: 085021cc825ed90a6ddc4406f608fb8a85745f81
+[2/3] ARM: dts: rockchip: Add stdout-path for rk3036 kylin
+      commit: 1df4bc6908b2739f7ff28a1775729730d1addf16
+[3/3] ARM: dts: rockchip: Remove rockchip,default-sample-phase from rk3036.dtsi
+      commit: bb0b255fb6f14b1620566d7d32c43adaca09c5e5
 
 Best regards,
 -- 
