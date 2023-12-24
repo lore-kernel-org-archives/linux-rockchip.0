@@ -4,119 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7C8C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 12:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE42DC46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 19:00:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sz9QhaGGJAWhrLWb/ecTlIk5RMMobcP1q9XlXBRJ9Xw=; b=iYvGKBgLb+FOX2
-	DBC1TpsHiAHBg4bRs8v+o7xKXyX3IdduHZIVg/tuXsN8ah3QcXM7C7HtVT0TYZIQBsyY4Gm8c9/qg
-	Db3jABZ7rr0XHdv4jQ+Gx7EYo0esgBz2tUyiwVL2Xsu1Np2tlXVDNK61jvmeu/TNZnAroE4EuB344
-	j602sltXijYTas/0egVPjRrAFsyDe1KWHRpFj3AfEXGZyBOX/JzzGCXN/YXdd2kpaw6KOZSMV3YuV
-	ULMKhoUsKWvWZELvb35AAG9+KQHMtjejkbIUs8hhEir7gYsHCCWfZ6YDVMNB+BGoxkg2ukOK2f99g
-	CfNkT/t/2Kx3kzj7No0w==;
+	List-Owner; bh=HucsJLt6v+fedifTPa5OxQXOd7jC1JSqAvfDxCHFZnk=; b=SEE71vm1FBs4uB
+	JFtW//0QDeW+pJthWs6zZR5IiEjkmExaPT3kQeJEhZemZR0wDsdMYSGrv2WQoJP6HKIT9hCKetNkY
+	Opzlw+z5oCNBspYJ/53w0sg1W9zbm7Zuii9yUMuThK+KXtUoaovWiwVzJ8ypoaiALl+MsJniT794C
+	7KJ5JrOHqJi0yFkrCEP4cm+Q9Jtw5XDuH9puJ/T68NM6EmFxkZ8PAmdrVSr91y6O4OOKkgrxZ3ccH
+	w8opYuLqTWtRG2713JpKCgwDadMjNWG872VTiW6MXiXu2l4AY9jl/1EW44Y9d7GkDtB/ZqxDznTc2
+	fX4s1OeB3GSSmoNW9wtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHNqd-009PGR-3D;
-	Sun, 24 Dec 2023 12:44:52 +0000
-Received: from mail-os0jpn01olkn20801.outbound.protection.outlook.com ([2a01:111:f403:2815::801] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
+	id 1rHThd-009mDV-1X;
+	Sun, 24 Dec 2023 18:59:57 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHNqb-009PFx-0C;
-	Sun, 24 Dec 2023 12:44:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gbg9AeND6SUvaQ+yHk5eAEIQwyiVvrXiCRJcVGAwvPH727nlMv2SVLcgHL7uKVt0mBwTiJEJHt0SMF/fiK7LdvxQAjQ3UhdnOJ+sGeGGQFDvk+9g4Empx18wDbw4CFwJsmd9HEd6lXiQrYsboW3ySJIIaXTfJOy6H10OPHe17ZElAQAb6wjewKeKHrfzoQ+TMCrKCkKsPOKYthE5A3Q5gV4PMce+t8+PdxAWv5XX2YzaCnvKI8V6HfgQSBUuVG1cvYIkGWTRU1PP5kVN20g2m4FS3hZPSm5/XV5g91lzn9+m2YW8dVnC0gzjPPFbfhgUQxw+V0xo12SGLE+p9syhlA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BWQibc5NKvPuYzlW5jeDxMBIMaVNDEsDR9+KQZFe+CM=;
- b=h1NuIA6P7yceb6lv5fr30xRDtkFqxWLz/2UQfIBq281UJi5H2ez5pgH5bPQa435dq9yLgFRpAIj9lNuzqXG4mUOo1zUSZNf6HKCVFE7l/wsFHBAtwxwK5wlC8hSOjV7n+xY0lMhVCcBUL0Ak7Q/lTIkx3U6fr2w/NfB/Dlj37StvtuIJFIlLfPqj0bzlIN9AnXMr1volGAiREeaZRaFhZl04eHwrGez0bZEz5IrqufqK+seaB9B3vBzg+BnNhChrOdaJEA3W1BJm6tzoP3oFlJvc9zfm2P/MxykBBj3B1aIh61fPR7h9EHYDSwHVVIeyux3zwkd1EzgSN/+0BUOQPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BWQibc5NKvPuYzlW5jeDxMBIMaVNDEsDR9+KQZFe+CM=;
- b=bpPb+9EzbXSLjPqjbLCdBPV+hJb7VcUUXq76M/GdFAmCyB9EoNegIU6nQSvgcHaw1gaIY9mVzSkpwRY3oikuFW/BfVqwKyeCTgVsysC7y2AdDKDMslezUX9UaknH/Dqfnsxj2ni397A8zvcu8xqg9hwZWy7FhtXx16APYy5nTWmSa1UmEGWuWbx7Z1a97/sj7MRRwgCc7qRmG7awWf7872E43k7hvZRW647TA40okoAZoe31wqB1rzgCWVNLnww+76I2yFLu5S9jbyv2hButvXj4TIYUTiw3V1B+rvgpHUvQBUiCGQm9RkHuLmU2f0W/VLodrXW3hhG6i7r377kt5g==
-Received: from OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:cb::10)
- by TYWP286MB3079.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:2a2::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7113.24; Sun, 24 Dec
- 2023 12:44:40 +0000
-Received: from OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
- ([fe80::3bc:35ff:e1d9:212f]) by OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
- ([fe80::3bc:35ff:e1d9:212f%7]) with mapi id 15.20.7113.023; Sun, 24 Dec 2023
- 12:44:40 +0000
-Date: Sun, 24 Dec 2023 20:44:35 +0800
-From: Zhang Ning <zhangn1985@outlook.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	lasstp5011@gmail.com, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: boot: dts: rockchip: Fix led pinctrl of lubancat 1
-Message-ID: <OS0P286MB064153B62ECBBEED9C16755DCD9AA@OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM>
-References: <20231224075001.3032214-1-andyshrk@163.com>
-Content-Disposition: inline
-In-Reply-To: <20231224075001.3032214-1-andyshrk@163.com>
-X-TMN: [L413JATTD6zhewnoYwwVyh17306I0bns3aJQS57qkmZfiVEJf+ydifQlrnsWwuE0]
-X-ClientProxiedBy: SI2P153CA0003.APCP153.PROD.OUTLOOK.COM
- (2603:1096:4:140::20) To OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:604:cb::10)
-X-Microsoft-Original-Message-ID: <ZYgnsx6rmpy7KgBQ@orangepipc>
+	id 1rHThZ-009mCg-2E;
+	Sun, 24 Dec 2023 18:59:55 +0000
+Received: from i5e86193c.versanet.de ([94.134.25.60] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rHThJ-0005pM-Gb; Sun, 24 Dec 2023 19:59:37 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Trevor Woerner <twoerner@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: rockchip: dts: rk3328-rock-pi-e: enable GbE eth
+Date: Sun, 24 Dec 2023 19:59:36 +0100
+Message-ID: <2404910.8hb0ThOEGa@diego>
+In-Reply-To: <20231221062244.11871-1-twoerner@gmail.com>
+References: <20231221062244.11871-1-twoerner@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OS0P286MB0641:EE_|TYWP286MB3079:EE_
-X-MS-Office365-Filtering-Correlation-Id: 06182430-0148-4ab4-afb5-08dc047e18a9
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8imfxOhnBYV6G/O6Q6redJvuTuNfe2aVV9p4zuuSOcCshrZ33iHyeeeepKx93bOCGRBJAZUclqUfvFNfsUgMHuJ7OkAZWFudZJzWOdWJiQTF2WPdm3+LguGbDvg6uHsROZ68x9sTkQdNZPxluzup2uWxPNsaGsGdLwYFIEl4RVssBJI47fAxmyiMKHwOIGkAPqvnrLy3X57CE1+vb+BbP4Kil7X0hdc6uJIgpf2x4Dkc85i5rTxTAXyz8g0ihUCYEWcTuo6o738M1vFZlY8GdKFXpyPWAH5MO6/ALdN1R76ukXC/8Nl3C17vv6E1pNPPE1bJPf2eLorkgDKj+pV+3Sjpg50S/pNTpsl4FFRXnNR3Dpcqux/JEGm6ZZVEi9c1TtXJfjmtvLViNAdDgu8JRHpf0mhNBv5G2hHqtBkgd32fUxZqkLKGemcWXuV6zJlQInFULlKYCnWUazfPew3PFNPF9FW5ZzOAp6hXhEhluDjkxgL/25Vp1XYXWezf3bYv9TibnO6p8HXUSXX8kT6oPduXC3yJkjpfsq6d0JhTI9wfVNCw2MtM7saG+gXnYO7QVxq4EFkrTAHtgUthn29eCu1yeY97kh+9Xlsgw4x9RjI=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SHl3NkZDZURsaytkMWFWVlJZa2dJelVlTHl1YzlyQ3RxV0JETWpOZ1NIQ1pP?=
- =?utf-8?B?NFJqd0NvcDlzd3N4eHZaaklVSElCM2hySC8xbUpiL3k5RkppakpPa3JhRWVE?=
- =?utf-8?B?MUR0QTlXbEpDeEUrR2s4RUw4SUU1RWpONHlvcWxLMGdKY3h2MGhtQ2lDaEdk?=
- =?utf-8?B?YnNPV1Z1clB6c1dienBDcVlNU2RkMzNrazRvaHBqajE3OE5tQlZoQm5lNlFY?=
- =?utf-8?B?ZlFobU9yWUxKb1JaaU5ESzRZRE5lSGNRdCthVTF1eXRQUHNTVWpTdzVnRW9h?=
- =?utf-8?B?L21xa0x3T3NKN2tacWtxZFRldm1IMVN0cXdlRDc0WDBBWnpFU1Jqd2VsY3Ur?=
- =?utf-8?B?NEppbm9wbENqTkJtaW55L3ZQV09VMXRwcU1vNmJTUE82cXRTU0JudmJFUlZ1?=
- =?utf-8?B?RGZDaG5CcmJjSW0zajQyalA0YzdycjdLd0g5Nk5ldGJvbk4rbm9GUzlpYlpv?=
- =?utf-8?B?VUtxSk1DMXQyNm9TdmtjSG9mSzNmcEdRTC9xRVlqY0g5Nkw1RHRZTUhyY0Zk?=
- =?utf-8?B?MkZCRGpUdzJIRFR0dzJqRWxDTmcza1Y5S0QrNVlyQi9xSkd1aUU3NXUwejhN?=
- =?utf-8?B?Y001d2RYaTErYmVEeElQQWJ1WnpDNlpuNWtBdWdNbFVwcTQrYkNKdVJab3l2?=
- =?utf-8?B?VndVTEVOc09pa1FTYXpkMDNqM0lrTmtKTVNyVmdwSFNoSmFjdFovT0NBWW03?=
- =?utf-8?B?S01aZjBoVE42OXFFQk94clFLeUt5RWlVQ2g1akM0eW4vQjVUQzNRVmUxRlQy?=
- =?utf-8?B?K2JGUHZMS2NBU1l3UTJsSXRLaHlGa0FSQ2NFYUZESjdlMlNZTWQ3NmFjZExQ?=
- =?utf-8?B?RjlsMjI0RWNGYS9LRUZyM3d1OC9EVHdQdHFEQkd1UU1HZEJGdDR4OTZLUXVT?=
- =?utf-8?B?ZXpOd2toQ0dvRFJQN1o3LzRQRWFoVkw2T3JSdnRHNG1Bc1RhR1pPQU5BU0pJ?=
- =?utf-8?B?UklFMGloUCtXWUYrbzJTcE9ib1RhMnVNd0hMSm5DSlhVdy84OWRWZEtTdnFS?=
- =?utf-8?B?b1NyK3RRUGlJL0xaTVBIK1NkRGZHWjkwbGpCRlJ1ZXY4ajhyQXhiQ2gyeVVz?=
- =?utf-8?B?U292NFZZQkpwdi84VC92N0hlclNFN0x6VUhwNUZtRzBFNVRWRkNScU5FcUEv?=
- =?utf-8?B?NnFBUk1MZFhLblBwZk96Y3JqM1FnNmNRR2plVTR1WDVxM3p4UnBaMlEwQis1?=
- =?utf-8?B?WG9Nbm9jZlN1V2RoY1NNL0dId2VaUEo2ZUNidVJ1aExyQUVYcE5CK2RPUkhY?=
- =?utf-8?B?NitTcHNUMnFMR0RUUGtDVXUzK2ZLek00WTZNNm85cUtyNnlJS1ZsWDZmMFBn?=
- =?utf-8?B?VEduNWtVREo4eEJ5c3ZYektnUXpPOFZybWgwUUppVktySWFsalZ3a1ZPTXBl?=
- =?utf-8?B?TCszR2ZzS0sxSmhxN0lIQ0RzczRIMWJkV29rak5xZDVBOFl4ZFoxYTJzaUNs?=
- =?utf-8?B?MDJCN2dpcDRJSldrdnhpTlZiOURDL2VJeFdPUWpaSk5LZGZyWEN6RzBkR1M3?=
- =?utf-8?B?UDkrUnpjcThRZ3pXbi9ZVm5pcE0rTFRBcVBBNnh6UGVSajFLTmszaFBzd0Qz?=
- =?utf-8?B?QXN1YTlrbEEzSlpmc21JNG9WUHFacjRQd1ZZdy9NL3kweDRGemIyWS8vcXMz?=
- =?utf-8?B?Z2d3MUM3bm5HdE41bFp5L00rK1AvNHA5SW9FYnUxT1VKNjN6eFQ2WE9sQU1U?=
- =?utf-8?B?MnlyRTNqeUNnekJQSlZ4Mmw1V1hWVWYyazRzUnBOZk9KY2RzU3p6TDhHWlJ0?=
- =?utf-8?Q?Jq2oG3f7m8b99e4fKg=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 06182430-0148-4ab4-afb5-08dc047e18a9
-X-MS-Exchange-CrossTenant-AuthSource: OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2023 12:44:40.8351
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYWP286MB3079
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231224_044449_135806_AAE018D3 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20231224_105953_752034_4D550FAF 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,40 +62,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-O Sun, Dec 24, 2023 at 03:50:01PM +0800, Andy Yan wrote:
-> According to the sch, the gpio control sys_led
-> is GPIO0_C5.
+Hi Trevor,
+
+Am Donnerstag, 21. Dezember 2023, 07:22:43 CET schrieb Trevor Woerner:
+> Adjust the device-tree to get the GbE interface working using a patch found
+> on the Radxa forum.
 > 
-> Fixes: 8d94da58de53 ("arm64: dts: rockchip: Add EmbedFire LubanCat 1")
->Reported-by: zhangn1985@outlook.com
-
-Reported-by: Zhang Ning <zhangn1985@outlook.com>
-
-in case if have rev2.
-
-> Closes: https://lore.kernel.org/linux-rockchip/OS0P286MB06412D049D8BF7B063D41350CD95A@OS0P286MB0641.JPNP286.PROD.OUTLOOK.COM/T/#u
-> Signed-off-by: Andy Yan <andyshrk@163.com>
+> Link: https://forum.radxa.com/t/rock-pi-e-board-version-1-21-ethhernet-not-working-in-armbian/15061/3
+> Signed-off-by: Trevor Woerner <twoerner@gmail.com>
 > ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> index 1c6d83b47cd2..6ecdf5d28339 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts
-> @@ -455,7 +455,7 @@ &pcie2x1 {
->  &pinctrl {
->  	leds {
->  		sys_led_pin: sys-status-led-pin {
-> -			rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-> +			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+
+> @@ -165,15 +165,17 @@ mdio {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+>  
+> -		rtl8211e: ethernet-phy@1 {
+> +		rtl8211f: ethernet-phy@1 {
+> +			compatible = "ethernet-phy-id001c.c916", "ethernet-phy-ieee802.3-c22";
+
+skipping through that thread, it looks like there are variants of the
+board with one of the rtl8211e _or_ rtl8211f phys.
+
+So while the "ethernet-phy-ieee802.3-c22" compatible would work for both,
+the "ethernet-phy-id001c.c916" compat effectively disables phy- probing.
+So applying this patch would effectively disable ethernet support on those
+older rock-pi-e boards?
+
+In a similar context concerning boards using different phys, it was
+suggested [0] that the bootloader should modify the dt it passes to the
+kernel to provide the correct phy id.
+
+
+>  			reg = <1>;
+>  			pinctrl-0 = <&eth_phy_int_pin>, <&eth_phy_reset_pin>;
+>  			pinctrl-names = "default";
+>  			interrupt-parent = <&gpio1>;
+>  			interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
+> -			reset-assert-us = <10000>;
+> -			reset-deassert-us = <50000>;
+> +			reset-assert-us = <20000>;
+> +			reset-deassert-us = <100000>;
+
+I guess for those we can consolidate onto the "slower" ones in the kernel though.
+
+
+>  			reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+> +			max-speed = <1000>;
 >  		};
 >  	};
->  
-> -- 
-> 2.34.1
+>  };
 > 
+
+
+Heiko
+
+[0] https://lore.kernel.org/all/ecbdcfb7-32ab-45cc-991a-982c52bf4b14@gmail.com/
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
