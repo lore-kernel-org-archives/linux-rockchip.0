@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FEA8C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 21:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8C68C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Dec 2023 21:39:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1FEESvpfVwDwSiWNEwDzFPzCHusGxracejcabhBR7JY=; b=d0nLg+qfgYmuPA
-	I6CdyvB2q7s6pp3YYfhGf6kYC+LbjNTBskwPk0YsAe5eEpSV7I8o5sRTFTAuoTETY6S3I1dlOaNK9
-	+Ghp9dQO803qTiNpGAhp6ojGT+ZgKm+2fMsnuskPK3yOh/V8rsEdRUE8M7gaen87gK+vCZqy/KcQ/
-	3F6BdP1SXV/AVrLilsWAOvMymvF3uw1fNYLOdQr/LZgrBpDJvQVgibZR9uBxeEYcP4QRroeWMucBN
-	MDfc+R7K6un5ZYi7X487RgzT858kZ7S7oOdOxA6j7UMwMT34tpOLMY6LWi9RaIy/ZriBPhksnZDfA
-	YSfMSiZVwUZnoigu59fw==;
+	List-Owner; bh=nTLwbWTJmgzvUuJlHSGl6Ts0AEtZZEIWlNqU4WAaxNQ=; b=ls7r9d2zCIcg6A
+	nEhMuQhXkzK146+dOdtwqHQKVy94egYK2pWINFRBGptnPLWruWRuE2d00SqARd8iZLCqVgdhb48IM
+	r8x9T1YCY9jXmLcCkdNF+EOSUUdz9pPKujcMRf5F9SD5SngnIQr8axmD2rqs8jxuyoqqGMOFoikuO
+	G82ak06St7Ppf2RSAWBozW+V1vQ1Bg6GuEY1TYmsUfFWO6v17lRD8/HOgzKDAD9ZkND2Ms24uS1tT
+	kUo3KqUFEU5ZbitqXWdQgZr/RuoaRDKJFq8YzHeIYAfKcH0eF8gffVK0k2GzWLdpNcbCmF61Gw51o
+	Nx8VXhqgc2cD9wKvdYfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHWA6-009uQD-1X;
-	Sun, 24 Dec 2023 21:37:30 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1rHWC3-009uba-1p;
+	Sun, 24 Dec 2023 21:39:31 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHWA2-009uOK-14
+	id 1rHWC0-009uaj-2Z
 	for linux-rockchip@lists.infradead.org;
-	Sun, 24 Dec 2023 21:37:28 +0000
-Received: by mail-il1-x131.google.com with SMTP id e9e14a558f8ab-36000a26f8aso26135ab.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 24 Dec 2023 13:37:25 -0800 (PST)
+	Sun, 24 Dec 2023 21:39:30 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1d42ed4cdc7so135525ad.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 24 Dec 2023 13:39:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1703453845; x=1704058645; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1703453968; x=1704058768; darn=lists.infradead.org;
         h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
          :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=pVxyPMcJnzxVjqwUrIgqhLO2uo1Gd7uHiOR5G5u7XjE=;
-        b=a3qwWNkJCmNlM0bkda+phbCTO6yCDzc0qCJ5NNL+8k00XJm3SKOWBiGf7PQJYrQr1L
-         hcGaC91DX21ffhrdYcQr+ndBEoVmQMUUVMM6ObNzd4QnnEr0o/lBIrDs2rs4uP8sOmKd
-         pCxaLFtvqgtlD1KxQ12ZheST3RCsJCXbfwMCcsvETQECLu3zAKv9qYzDYbS9g7XVHfu5
-         sVLHH+s4Hpy/V6/+6yQnjANNrsfO/jxsKu2BURWc+lG17jkkXX2/6WQH6xUddwo+orzx
-         ufdNavQkfeMsEuTpY4O10YKlxpVPsCo67GyIxWFHFd+Fbfr8F1RjdKva+avAgKl4FnJI
-         xwkw==
+        bh=EOImtChB3trquByqyhjURvrTs5b+pxovzmqfkNY6h9E=;
+        b=hwBgkJKXZM7RXjALs0uyz/EBVNLFD8Jv10OSMjqSEp/RDYGN9v6/HpGf6aOiQiMn1q
+         fVTPCp4Hnfb06DqS0U2/+p6/JR4iorZEm4DcxfGRPSgfUC3zL8AukT3tRxNetX4nD9At
+         wwoxeQtwUOen8tDwzzYHrJFHQu4wGimYWh2M0BeEfxLkUQiYUAQ72c1tkJZLKiHAwteV
+         1MgHtFxH/aoSmWrWsgwSoo986az5rBI4p3IJUJcoh1PzuokZ8vj3TeGRwN05EMHecfYA
+         Qgm0w/uMy8agJMAAfCsVeuIYlNwCgya4QG8ZI8zeCua9o7rGCKd930aeeQjpdo3WsrO8
+         cqTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703453845; x=1704058645;
+        d=1e100.net; s=20230601; t=1703453968; x=1704058768;
         h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
          :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pVxyPMcJnzxVjqwUrIgqhLO2uo1Gd7uHiOR5G5u7XjE=;
-        b=N2s/4D31EcQ5G3mucyvIm3uyDxp7ClMqwaza50ooBRSPiBBjdWZah6yFU816Ck/dD4
-         2hHk+YWixXTWxLScyHFPazFmihAFhVUM7Bg8EIF5lH5Tw3DkhF2evPqoioDynACbIieF
-         R14Zfqw8VNfA/ksDCAhaDaLp1rlzddXeu97xuI6CQH7xzpea5xwrKfbL/EahqRgKnoBn
-         Fg1M8uqmrh6yJLgZjJ3hMQxuYzGXZleVzIM8G5TC1dgJ62PMo7TRcj2FkIPlcMWGafkr
-         U7rWvSoPl9SSOoAJS0ZnktBCj1RkA+wmhPl/2BkqpVZLKAXfDF8wdx/B8cxsY2K9zQjB
-         TpDg==
-X-Gm-Message-State: AOJu0Yy8VFvgyA/CzByVDRWmjAzgA7VvLY2INBBQXQ6hO4aQzPn94rpw
-	2kN9a/ao/wZBOm5AgKcs/Gv7Y5nQXYkv
-X-Google-Smtp-Source: AGHT+IEltSw2it/AyEQL4TJEReIP7j1yGavDmVQF3lJZLlbsuLGoO+wANiaULFEhAWOlUQIZqn8B1g==
-X-Received: by 2002:a05:6e02:1110:b0:35f:eb24:6e67 with SMTP id u16-20020a056e02111000b0035feb246e67mr189109ilk.7.1703453845125;
-        Sun, 24 Dec 2023 13:37:25 -0800 (PST)
+        bh=EOImtChB3trquByqyhjURvrTs5b+pxovzmqfkNY6h9E=;
+        b=fbJ7yGvcOCj5z56DEv4G3rXcCTbnD8VnlNKf0D7K6cCtSrwdlSrNT3TYR1pHFcymuD
+         8RA49GjJfTdEzB/gEf9mztpbYZNt+yiiTejHUlUTY8ss7LNhqDvF0fLt5vNtXaRGFtF3
+         hsOKxJOK7DzHshQoAEF+p2aNKFL4ahO//sEd9jeh+QP9bbG6KXTFF5MMkPVagPSOA8Xk
+         6yL3rXqTOfCnnlSPDi6L8YhtT+Rwcu3aUP1YzjDMC+ijcY+BbPVuj9Ys2m5yLVZgTOpl
+         KMps7od2iSW9t8o4wrRz7T2UaezaJN28stu8PwttVTRZOqEbzFIjilwGTS3m/TyGzdb0
+         GqJQ==
+X-Gm-Message-State: AOJu0YzLcfaIwwFNx+O6u3+XZZzqwqJDma7nDBkIJkxPfld5U8pIXP83
+	kbCmyAwYFIc2xRjq7CePmDASwK/u5h7g
+X-Google-Smtp-Source: AGHT+IElpEFSzbeLneHWmSC7ejxW+Do+3dnn4gYiug1msTA/I/LBb12Sdd4HWPHDnGbuoug2DX8XpA==
+X-Received: by 2002:a17:902:e84b:b0:1d3:a238:77ad with SMTP id t11-20020a170902e84b00b001d3a23877admr287503plg.18.1703453967726;
+        Sun, 24 Dec 2023 13:39:27 -0800 (PST)
 Received: from [2620:0:1008:15:c723:e11e:854b:ac88] ([2620:0:1008:15:c723:e11e:854b:ac88])
-        by smtp.gmail.com with ESMTPSA id x2-20020aa784c2000000b006d99cbe22f5sm3116025pfn.217.2023.12.24.13.37.24
+        by smtp.gmail.com with ESMTPSA id jv11-20020a170903058b00b001d3b258e04bsm6894532plb.248.2023.12.24.13.39.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 24 Dec 2023 13:37:24 -0800 (PST)
-Date: Sun, 24 Dec 2023 13:37:23 -0800 (PST)
+        Sun, 24 Dec 2023 13:39:27 -0800 (PST)
+Date: Sun, 24 Dec 2023 13:39:26 -0800 (PST)
 From: David Rientjes <rientjes@google.com>
 To: Pasha Tatashin <pasha.tatashin@soleen.com>
 cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
@@ -78,15 +78,15 @@ cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io,
     suravee.suthikulpanit@amd.com, sven@svenpeter.dev, 
     thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com, 
     vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com
-Subject: Re: [PATCH v2 05/10] iommu/exynos: use page allocation function
+Subject: Re: [PATCH v2 06/10] iommu/rockchip: use page allocation function
  provided by iommu-pages.h
-In-Reply-To: <20231130201504.2322355-6-pasha.tatashin@soleen.com>
-Message-ID: <5c2d33b4-3360-10f3-7d97-5cdcb29e4d73@google.com>
-References: <20231130201504.2322355-1-pasha.tatashin@soleen.com> <20231130201504.2322355-6-pasha.tatashin@soleen.com>
+In-Reply-To: <20231130201504.2322355-7-pasha.tatashin@soleen.com>
+Message-ID: <25bded65-29ed-2fe7-9db6-570dedf8d530@google.com>
+References: <20231130201504.2322355-1-pasha.tatashin@soleen.com> <20231130201504.2322355-7-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231224_133726_609869_BB2F4186 
-X-CRM114-Status: UNSURE (   6.35  )
+X-CRM114-CacheID: sfid-20231224_133928_862849_82C26CEB 
+X-CRM114-Status: UNSURE (   6.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,7 +106,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Thu, 30 Nov 2023, Pasha Tatashin wrote:
 
-> Convert iommu/exynos-iommu.c to use the new page allocation functions
+> Convert iommu/rockchip-iommu.c to use the new page allocation functions
 > provided in iommu-pages.h.
 > 
 > Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
