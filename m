@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E64C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Dec 2023 09:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 512FCC3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Dec 2023 09:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x9wBf9RamuKh85FQa3McwH0eQRWe5Oy+BGTE+dKKL6w=; b=B+PwnM+Xibc0bP
-	rfd27XVtHGR4rjMgbVSlAbwXn9y7ESCrTS1tk36YwAgKphjO0nwrABTscYv6xUOhmMCqlj2KuDrd2
-	FWJo09AoZGVbNsgSzmos+XiQ613Yx0f8tj6x7hPEdMgxxW7nGwb1QCjhMRCAP6bKT7ftGpkANAhRL
-	aLqt2h8gjgTBEADV0zoSPEFUhswOQn3Uc+cAfSIcoQ7NK8tLVlSFYeUb6w56+Z14/swaDg8DsIi4o
-	GSF0dmptLgf7rpXWHO00lRmQFvrVjUonBrzKRloU+U3SL5xmrexfK5JdELz7TRAgRF0+1OGc3QEAV
-	a87V3/qVklQDNbNxev8g==;
+	List-Owner; bh=CRS8xuIul/tqMY48DOPLIsz9ji7fCV2QXvbpU+QqcdQ=; b=3RLeq4yaGrAAcG
+	I+HqNeHefFWqnvUgKBOvcI9LIfUE6PMS5V8Gf5VS6q6vmIGuie9ZZGefbQe0lCR5ndQWgXu62n4Zj
+	zX305bFrPqiG43+IwfbFza52NDmAwsFbgowKNZqEsV3JnBQT93YUTKlJQ21aT9x89S3bSm8/5TxgK
+	4Lc/wXP+c2yy5yU6LeHKRSWRJ7lV0yAAGHr2CihgFVp6UG+z1oJsG1A+JU+C2SxTRuZNVRLExGost
+	8LVyBXlkbB5FJx40nddyPBpR9JhN1amV15fyE8k5MiNVPj31s232FOgfOJoqEtBVXyh/AYwI1Lzyv
+	kb+Sz/xfmAUQYQQm09Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHh6i-00ASE2-0I;
-	Mon, 25 Dec 2023 09:18:44 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1rHh7U-00ASJp-2P;
+	Mon, 25 Dec 2023 09:19:32 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHh6e-00ASDe-2d
+	id 1rHh7R-00ASJY-2j
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Dec 2023 09:18:42 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a26db4e9676so157783166b.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Dec 2023 01:18:37 -0800 (PST)
+	Mon, 25 Dec 2023 09:19:31 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-50e73b068beso1342814e87.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Dec 2023 01:19:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703495916; x=1704100716; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=3qDSjmmGpAfg7EUCau5DfwKJMhBBba36kM79Ev5Yago=;
-        b=DFIJylwMNVwaoQVH0sGQazHDMU2lL+si/kcaSUcYtU6wyfV5DQ2SmYuVJslmh62tXy
-         X07S3OtoNmSlK/n0M5hRIR8xPrwFZvsYKZTSFLf7m18883cTXt9MC1mZ3BeenK2WSrA+
-         uV59I4ivk+SKZ8+aZCBx4CuCOkb5/UoCjK6h39CBr/VI0gQqjyg7Zm8XbfUnXbNGo6Xd
-         fOrA9nZ423X/6IyGlWFo8jZwe9VS/bm5Z962aOFh50NQjs+NTeNvh0U7ln0BtXH0xQCa
-         OqvNxBlpPELUnxC9v8Sw/Jsdqvi2Xg7xKW3/BFiRnWTX+dma2luTHjE/X73ouWA2aSE7
-         U3+A==
+        d=linaro.org; s=google; t=1703495967; x=1704100767; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=955/m+mnfCTa5vGbLy4bcAWSPA0cTxpOLnYJeVCA6+c=;
+        b=kHunmaoYa9hPl76G6/FJvLHuxv0ElV5hJyqhDGDIMnUveR2O1+AWI1Id8dhebGpRee
+         awA0Sf7wTr3eOl8MWf9n+NRzh4rjkgThLitQNdFLHQdVnNA6hottIn7Vm9jiCxWKcpP/
+         DNRUoE3K1KTCNenw6mx2xFUR0R3CxghTCKtQnWAlgeyPZvzCa9bpcbhFoiEY18ZOqWCl
+         7WQIgA9zoT1HYbKl7bEfSYHWgSFMfCN3DkXRJl7jN6iS7piRBdMeCpDOmRfWXo2H/zyw
+         fZOAiYzyNVcmYX2nHdOTQqy9dBWmPlH2TTecAk2Oz4mQed5JGXk/28XOhUO9j+H+lWFZ
+         /Skg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703495916; x=1704100716;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3qDSjmmGpAfg7EUCau5DfwKJMhBBba36kM79Ev5Yago=;
-        b=hRRX7WSsy14CzWdxyv7pC2uJbRJqNOXl2UvkowMspzed0ZKb4YpdJBrUJS3tE7v0Pr
-         qnprs/IF0vU1iVyWBvDinsUj8o3wxoEP5ZSKsZVRNbGpruq39jrq/z2PYQG7soGsHQPC
-         TKKaLTqfP44XZDLlc51ZWcIC3sGPfM351jYD/ww8rmdNhmZrjPOLU2dyAZfp4LD3sHR7
-         1aTjSURBBKmcvIUlTYs8Z9B9kS8F7zWiOvQJAotmEwDD54DgYI6cIaxm8ArL5sA7LZN7
-         ZVJbS/q7NufJzq3LF0e+99/uHWYPZd9Vl70i44KNemT9pWFG1SLjH0Oy/Doj1mFjBWBL
-         cymw==
-X-Gm-Message-State: AOJu0YzfD8CDfgz1bBxu9eTc9GB8hhk3x00GhiGqiROlJlTKbExnElkA
-	7zlSWQzRu1l2UoW5YIYcPbQmkSEZ9kraKCIxEr6AKbncEWo=
-X-Google-Smtp-Source: AGHT+IE55ko3I53T+Qy4x80PrnUbtRhP7IBb/igf/fxvg7mAT/N39bHpqUhEII0UMhri81a/asBMww==
-X-Received: by 2002:a17:907:7e83:b0:a26:f7f8:c636 with SMTP id qb3-20020a1709077e8300b00a26f7f8c636mr166642ejc.100.1703495916421;
-        Mon, 25 Dec 2023 01:18:36 -0800 (PST)
+        d=1e100.net; s=20230601; t=1703495967; x=1704100767;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=955/m+mnfCTa5vGbLy4bcAWSPA0cTxpOLnYJeVCA6+c=;
+        b=qJGkfyX3sJPM0jixTIMLXsOuQvccX96VZwPcsuOVBkclqU0/9ASqxuX1/5lNfVbQyD
+         LdKn5Dt8R1EtU8KD6SkuYTsH5yOY12ACLCgP6YhXzhqQXsY5JC5v6RhoVtK8+8pnnXkM
+         9hamwfcR0oweK7VLhmh0rDfAy+NtBrILBXhP6RyUAF29CDxnz18VBfq0x2BNAln2V5J0
+         7GUVgopa+yugNaJ2gpEFmDp1dpoHZNdbzi9SHjG3HCP+eGxlq4ifJL1wla7nIFWVoM5k
+         z+n383lXnXSueQi8cupvKsTdDGGKhteFtucrNEntmOwaf4dzkIBcKfKHbU66z45jFDlM
+         GY+Q==
+X-Gm-Message-State: AOJu0YxKIVe+B9lT09yy7cQUwZz+rQV/Veagyqtk7M8/as8rRWQkC0B2
+	i9Gm+ysvR4QBRHH8MqJSu64+6Qohex+UhRS/lxYFvVRydHQ=
+X-Google-Smtp-Source: AGHT+IErLUa9p1wfBTvqxHH8/B8zJeYhBT1Hbz5gkk72MjvUNKdbRFKVVLIMLHNJxzu3sufna9eedA==
+X-Received: by 2002:a05:6512:61b:b0:50e:76e0:9ef7 with SMTP id b27-20020a056512061b00b0050e76e09ef7mr649792lfe.99.1703495967020;
+        Mon, 25 Dec 2023 01:19:27 -0800 (PST)
 Received: from [192.168.0.22] ([78.10.206.178])
-        by smtp.gmail.com with ESMTPSA id vp16-20020a17090712d000b00a26f6b420b6sm504672ejb.88.2023.12.25.01.18.35
+        by smtp.gmail.com with ESMTPSA id vp16-20020a17090712d000b00a26f6b420b6sm504672ejb.88.2023.12.25.01.19.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Dec 2023 01:18:35 -0800 (PST)
-Message-ID: <4a34f55c-5a70-40ab-801e-411bac7a031c@linaro.org>
-Date: Mon, 25 Dec 2023 10:18:34 +0100
+        Mon, 25 Dec 2023 01:19:26 -0800 (PST)
+Message-ID: <3f4b01cf-c334-4c17-ae3a-58b3591484e9@linaro.org>
+Date: Mon, 25 Dec 2023 10:19:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: correct gpio_pwrctrl1 typo
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: support poweroff on rock-5b
+Content-Language: en-US
 To: John Clark <inindev@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  linux-rockchip@lists.infradead.org
-References: <20231225091148.4396-1-inindev@gmail.com>
-Content-Language: en-US
+References: <20231225090856.3890-1-inindev@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -119,10 +118,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20231225091148.4396-1-inindev@gmail.com>
+In-Reply-To: <20231225090856.3890-1-inindev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231225_011840_915671_6A3C8601 
-X-CRM114-Status: UNSURE (   4.95  )
+X-CRM114-CacheID: sfid-20231225_011929_902731_F0320836 
+X-CRM114-Status: UNSURE (   4.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -140,12 +139,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/12/2023 10:11, John Clark wrote:
-> Signed-off-by: John Clark <inindev@gmail.com>
+On 25/12/2023 10:08, John Clark wrote:
+> Allow the rock-5b to poweroff its pmic.
+> 
+> related: c699fbfdfd54630fc51b96da577f02e7b772eb37
 
-Please provide commit messages explaining what is the issue, how it
-impacts users etc.
-
+Reference commits how checkpatch and submitting-patches ask - commit foo
+("bar") and explain what is "related".
 
 Best regards,
 Krzysztof
