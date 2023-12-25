@@ -4,105 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 996A9C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Dec 2023 16:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F152C4706F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Dec 2023 22:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TY3jYQOPkYtcshzUuf/2g9q2B4RY3+0gYN7cgEiZeYk=; b=IqJICrpJlZ0a2b
-	xAxdYwcI+MowLAKPPnzDfeCf8KKCF/mnfhILYgan6TrKwb3vyMfxzaoSzf31zmfS9VObxEwwJ6MSm
-	bMfBBVd7HYW/Du1z0wL8kSrevb4nQrk+Fra9AMjyo7h+ah7sNLB2V4dmISSpTLLUVqISzdCYlhMRl
-	1ZrcVFH7BnYk1LSl9iYzBKQ7Wbi3oYGSwooeg/xkVGXdrHgLFhkF5Z5vV+EUg5eCmBiDqeGfsHyUh
-	nrzAquZg6YsGuIvIp50K3dGejI4zSNOfJflIEkHkBVblfU0ufceaBdv7TpsUUwCt5kW8chCAiOHao
-	lxQWtS7m41CHlCfFbWJg==;
+	List-Owner; bh=dxJkn/7ymk+wvh0RQO/1KrG+FmBT4y5qbvfF3Q8Ziho=; b=jQtm/SUcoMoJPY
+	SFUhOClGRk9VBZntWdBcUQz+hEft7SMbJuLSHxLwi08eDfrm1XDXjvLo05Fri0uQkMX+MSEpIDug7
+	c/nM9xOVst0Cy0qYA7oTPZ67YGgM8CNtM8pAUdCBLuCpNc9bhHZ5LkGktwBSmGSjlVO3fbhCPte4u
+	pk4X9n7rM+tN6fS5u7GX1SvmnvsCQfCvzFBedIurWILgkef0skLj1HRCyIXCcC8YrN2k1JPLQqPru
+	YvQZGuVJrBitGloyHr/cus/vfx3V9eIzJxLJmJBNxGt4kYEytLVK4H9LKiTu9/uLLweNKzDCl0s2f
+	u9R2vUKQvjAbYxlQbsOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHnWc-00B4QX-0F;
-	Mon, 25 Dec 2023 16:09:54 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1rHtRm-00BKPm-0A;
+	Mon, 25 Dec 2023 22:29:18 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHnWX-00B4Ou-0Y
-	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Dec 2023 16:09:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1703520588;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VqafsTsLWFL6NUacBRAsGtc9kpoOdr+j/kVqdz2KGps=;
-	b=KwRwlwzUzgG0vx8Vrw4EdL41TKawJEyi/lWBQ/+SclLW85RgAlzMi6uSPKDuD+hm2WtCur
-	cVtURg1bT0kf4x2mszO4M0WhxcKUoMq+mt6vc2mpSG79aS43f2YpAnzjQoSjzfzqx4oKVC
-	E1MaX/jG4Jac6i8ZIqyMTeU1RppWDCw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-641-hs80YqLUNpiNdjXVpsrt7A-1; Mon, 25 Dec 2023 11:09:44 -0500
-X-MC-Unique: hs80YqLUNpiNdjXVpsrt7A-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-40d5970422cso16415e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Dec 2023 08:09:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703520583; x=1704125383;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	id 1rHtRh-00BKOz-22;
+	Mon, 25 Dec 2023 22:29:14 +0000
+Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-78101108e3fso322713385a.1;
+        Mon, 25 Dec 2023 14:29:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703543352; x=1704148152; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=VqafsTsLWFL6NUacBRAsGtc9kpoOdr+j/kVqdz2KGps=;
-        b=uy3stp/SqYQ1dFZIsAX3OuHjOpRS1n1yYKvKGyT1JlGRitdIISTZh8yB4oN8Ylgv5h
-         xiwcbyMgYg8YftqhK1hmrRbggp4jIplipkxjXrROIT/rgg4JDlZs1dSG1+FeaeUKkjsM
-         WHPrh+DNNuCT4GaIh3y2hspZAYsIVB52oLsHs3/GNsmTVzMMygDxdOgxxiiA8fxTeE8a
-         wLp59O2OZve5glY9OOr+9nxwC8PKML0w89MMUtVc05xjvKtRpVyxz8fxK9g+DCk2Ci60
-         qV4S3tC8+Rj5LzlL2sfkS/YYSx2Fuwxiqkt5W5q2UEuztFr+7A9tMNw1tXudhSrxaVUq
-         SC2w==
-X-Gm-Message-State: AOJu0YxGyk4DnBr+upnxelHMgI4hxsLrZ7OVyZUjQH4QJx7fwaTt/20R
-	pmz+CdkCg29erNoQHKXqCHquijd3703eHTyrRn2dnfe0zuAxr+VsY7URytV0KkUvIPz2J6V3+NI
-	46Zw8c2quWWy9nbQTjLE+wK/e9GCAbBiP8GRnMkz+
-X-Received: by 2002:a05:600c:4587:b0:40c:33be:d193 with SMTP id r7-20020a05600c458700b0040c33bed193mr4060346wmo.78.1703520582984;
-        Mon, 25 Dec 2023 08:09:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHfGGCax+SlWX/roShT1Wqm6zJg2zHkXbA4PNy8JwUTudzLUljk5TaAwhoH/7jZ8kvUv2pY7Q==
-X-Received: by 2002:a05:600c:4587:b0:40c:33be:d193 with SMTP id r7-20020a05600c458700b0040c33bed193mr4060329wmo.78.1703520582646;
-        Mon, 25 Dec 2023 08:09:42 -0800 (PST)
-Received: from redhat.com ([2a06:c701:73ef:4100:2cf6:9475:f85:181e])
-        by smtp.gmail.com with ESMTPSA id f12-20020a05600c4e8c00b0040d3db8186fsm16769282wmq.5.2023.12.25.08.09.38
+        bh=UBjIIiV/w0rycQ7ypCmDgdwnPkjj+juDPZk9jbDH0Jc=;
+        b=ecr//E2FDRpPjA9U2u3IpCBZXdBYV5C8OwDzLvPohYKUACt10myO9TwGJQzOtwftBO
+         S5H5uTEqbuAQ9EiF+64Bs/WLbL6ZzD3pNJwINz70gLkYr86fu90/yIgL6bqDBMXGMuB4
+         nP5XiKahPJirrGcaeLWrS9ZoRKtV7KIq6rSyb4k0Lit+X5ugdVr7mj83ILHmbiMdqfYu
+         Wbe9IqQ+BnqHcQzEnj6zP9FO8npxNIabiyeH1TXalX0PR4sMU1gnbezMjXnvagVlNCbz
+         Ms+XJPxJMlzlBT5AWJRxpuGUl5nEWvBbWteT/s5w7l5SRaCnAV53dvYA/xTDWKVpW5Nq
+         Dnsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703543352; x=1704148152;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UBjIIiV/w0rycQ7ypCmDgdwnPkjj+juDPZk9jbDH0Jc=;
+        b=VqyDeZciN1Nfj18BYtfTMP5i7MfxDpX+xexJdYFjxKqLihf7g418xmbQS3h5aRioli
+         ZeP84nPjUamEpt6Re8pHfIXuLff4OZZ6+3uIAcHMoSVZ9SwvcQVMSd19K8Ib/iViijTr
+         8Ue1CorvTIbo2qiimXrAB1ZEVhS24JCcgwFj0SuO3Hv9gPpzYk3yb0gZso+DAzkeB0Vc
+         erz9ZztuIkgmAC9DmxJAtxcmb8QZDBfFWRVjyz+qwqPSFjaXofuJaxUpA7qo/BQBn1OW
+         1IKstOkURe/hzXS9Hhb7DO1Z9jdIO8+nXH+LsHDZF0V44LdmKtWR4SR14+sZaDmx56n/
+         kkxw==
+X-Gm-Message-State: AOJu0YxOkCRkppGwgaql/Nexny1d4nyyno2smfLikAK5RmCApxjR7eOj
+	HAmBapi/1Qcf1S4JjgkxQeg=
+X-Google-Smtp-Source: AGHT+IEq/qS6oCN+yyKq7dAPzoMeuKQ19G2WCt94dfb77pkr9X+bBLthS8GxgqrMi5vIWeihhcrsVA==
+X-Received: by 2002:a05:620a:51cd:b0:77f:ad35:dc33 with SMTP id cx13-20020a05620a51cd00b0077fad35dc33mr7182979qkb.65.1703543351862;
+        Mon, 25 Dec 2023 14:29:11 -0800 (PST)
+Received: from localhost.localdomain (107-015-241-140.res.spectrum.com. [107.15.241.140])
+        by smtp.gmail.com with ESMTPSA id ay8-20020a05620a178800b0077f15eb3528sm3881457qkb.70.2023.12.25.14.29.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Dec 2023 08:09:41 -0800 (PST)
-Date: Mon, 25 Dec 2023 11:09:37 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alex.williamson@redhat.com,
-	alim.akhtar@samsung.com, alyssa@rosenzweig.io,
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com,
-	bhelgaas@google.com, cgroups@vger.kernel.org, corbet@lwn.net,
-	david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
-	heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com,
-	jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com,
-	joro@8bytes.org, kevin.tian@intel.com,
-	krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com,
-	netdev@vger.kernel.org, paulmck@kernel.org, rdunlap@infradead.org,
-	robin.murphy@arm.com, samuel@sholland.org,
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
-	thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
-	vdumpa@nvidia.com, virtualization@lists.linux.dev, wens@csie.org,
-	will@kernel.org, yu-cheng.yu@intel.com
-Subject: Re: [PATCH 15/16] vhost-vdpa: account iommu allocations
-Message-ID: <20231225110930-mutt-send-email-mst@kernel.org>
-References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-16-pasha.tatashin@soleen.com>
+        Mon, 25 Dec 2023 14:29:11 -0800 (PST)
+From: John Clark <inindev@gmail.com>
+To: "Rob Herring" <robh+dt@kernel.org>,
+	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
+	"Conor Dooley" <conor+dt@kernel.org>,
+	"Heiko Stuebner" <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: "Thomas McKahan" <tmckahan@singleboardsolutions.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	John Clark <inindev@gmail.com>
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: correct gpio_pwrctrl1 typo
+Date: Mon, 25 Dec 2023 22:28:20 +0000
+Message-ID: <20231225222859.17153-2-inindev@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231225222859.17153-1-inindev@gmail.com>
+References: <20231225222859.17153-1-inindev@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20231128204938.1453583-16-pasha.tatashin@soleen.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231225_080949_277812_974818B5 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20231225_142913_731854_9796FF3B 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,36 +98,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 28, 2023 at 08:49:37PM +0000, Pasha Tatashin wrote:
-> iommu allocations should be accounted in order to allow admins to
-> monitor and limit the amount of iommu memory.
-> 
-> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
+Both rk806_dvs1_null and rk806_dvs2_null duplicate gpio_pwrctrl2 and
+gpio_pwrctrl1 is not set. This patch sets gpio_pwrctrl1.
 
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+Changes since v1:
+ - added commit message with additional patch detail
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-> ---
->  drivers/vhost/vdpa.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/vhost/vdpa.c b/drivers/vhost/vdpa.c
-> index da7ec77cdaff..a51c69c078d9 100644
-> --- a/drivers/vhost/vdpa.c
-> +++ b/drivers/vhost/vdpa.c
-> @@ -968,7 +968,8 @@ static int vhost_vdpa_map(struct vhost_vdpa *v, struct vhost_iotlb *iotlb,
->  			r = ops->set_map(vdpa, asid, iotlb);
->  	} else {
->  		r = iommu_map(v->domain, iova, pa, size,
-> -			      perm_to_iommu_flags(perm), GFP_KERNEL);
-> +			      perm_to_iommu_flags(perm),
-> +			      GFP_KERNEL_ACCOUNT);
->  	}
->  	if (r) {
->  		vhost_iotlb_del_range(iotlb, iova, iova + size - 1);
-> -- 
-> 2.43.0.rc2.451.g8631bc7472-goog
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index dc7b88f29172..a0e303c3a1dc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -448,7 +448,7 @@ pmic@0 {
+ 		#gpio-cells = <2>;
+ 
+ 		rk806_dvs1_null: dvs1-null-pins {
+-			pins = "gpio_pwrctrl2";
++			pins = "gpio_pwrctrl1";
+ 			function = "pin_fun0";
+ 		};
+ 
+-- 
+2.43.0
 
 
 _______________________________________________
