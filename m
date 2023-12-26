@@ -4,42 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6F4C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 13:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B0EFC46CD4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 16:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2PPVuty8YYBulHpaYoxb8wFr9DkHndkqhyTk+gsmvzM=; b=x9OwiIaoJQaTOxWkVpblsqauga
-	2fErRVz9Ufi/sLxnpACMv1GeOqIg5SRCVLdxKozhFThRljQql+9sD+tqANz3KTXEfjLtIBFXQ77I5
-	CKH+rVHh5Bx+wSj1WEh9Y92SEsIyT8GlEe+cJn64RDDdLgAg5Ufnixzbvz95cYI39+1/L/zYMTl0r
-	F6aaQI86uqfIhuESfhdHPB93jk/GqPk/y0qYq+sED/paB1VlvUdrD/4Q87q/lv8UN6oxzRMnJbAUV
-	JcqSfIYwHG8l7yzXDAjSLi1haMsydUmXtcQZeC2/hyp4wFWc8bbj+zUR4+UgQz/7SfPApH7oJWlJD
-	0x/NszlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/rG5r2cAa7Ps+J+GroCfry2byqVNQjoqEeS54ExFYZc=; b=xBrCVY6wlWizFv
+	NS9V7KbbkpGQRHlUPuXfIKU5FCrO6kmp3LHyB9aRLsjFkWCiVjbwnyZFSrHCKe1Aj/mJnBp+rBhXh
+	MS7PE8vfY3pyO3Ajddi8FJOmXSh42gs2ZEPiH4+vlHO9dwYE9v9ZS0ucvZMP5+c51rg5ufcw9Vtmz
+	ZkJ2YN0EhMHcCbABgefui1tvqXVWZWYtHuuBSdru9bsSvBs4r+OPv0LIA7mAkNbTLwNK4opGYVotq
+	f1v3nIcS9JgvYyiVZBPdyXJJiU/bZlh5crycN/lxuTXIs/obc0Gqw5HtQ2VrbNjSdSQTBRJmkb2Y5
+	tojexUHsYSrMZzfyVqYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rI7YI-00D6FP-1X;
-	Tue, 26 Dec 2023 13:32:58 +0000
-Received: from out-187.mta0.migadu.com ([91.218.175.187])
+	id 1rIAMR-00DGjm-24;
+	Tue, 26 Dec 2023 16:32:55 +0000
+Received: from mx0.riseup.net ([198.252.153.6])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rI7YC-00D6Bf-14
-	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Dec 2023 13:32:56 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1703597563;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9ku35WW1EA9BdBudQjC59w9ui3r1wOFBpgsP/3VnOfA=;
-	b=yEe2C7ttyb3kCGqY8DWko+qxmO8hau2Ppq+yqcWod8fjtkTQqGmArtJGT5mkj7YQkyn1ew
-	wmwFXsvVf1Ic8NbhYcjOn6IxMGpBymIOihJ1dqvDT6PzN74kvduulwhx/O9PBNpOIV6GnP
-	V5oA2oj78Lpxm+r4rCpUMsFFDTiSt5h5z80IbFLrYOtFHswwQYdFcGX1G1BoKkPnKKoSuW
-	/K5hFhO451UpEsb4Etc/k9DYdGhyyPCqJjENyqeSqZc0a1U1nfeqceeOMcyQfM7FBCzu5P
-	LGnjLPKAkl8FDcJ9E1HXz5s5o25i3HiylZb1Fhjaqloerbk4HSX7ww32Re1BnA==
-From: Diederik de Haas <didi.debian@cknow.org>
+	id 1rIAMN-00DGi3-1K;
+	Tue, 26 Dec 2023 16:32:52 +0000
+Received: from fews01-sea.riseup.net (fews01-sea-pn.riseup.net [10.0.1.109])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx0.riseup.net (Postfix) with ESMTPS id 4T00gD3yZnz9x1s;
+	Tue, 26 Dec 2023 16:32:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
+	t=1703608361; bh=7Z0QZDUqtUb0SVOcfo3DjMkSg2JZFz632/axgQAClno=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=JXqaeUHrIrSN6gbZDKjZy79covUTsKAg6oibqlNHR+2TlmeRWbH4NZGI+wU02FXtW
+	 LIpb6ARaMqpHBgrNEVK8k0S/uJ4FMR7ixYu2c1VxHJXhXXIZeKlCnYXTw8WLuDVaM/
+	 Voc/WXwl9uttpnd8/zNHB6out9t98u05IhOW5C5Y=
+X-Riseup-User-ID: E3266E2FE8A468CF052B0366B6691ACFC63C59369F6E61E12BD8CA58073E2F17
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	 by fews01-sea.riseup.net (Postfix) with ESMTPSA id 4T00ft4lBtzJmth;
+	Tue, 26 Dec 2023 16:32:22 +0000 (UTC)
+From: Dang Huynh <danct12@riseup.net>
 To: Neil Armstrong <neil.armstrong@linaro.org>,
  Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -50,22 +53,20 @@ To: Neil Armstrong <neil.armstrong@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
  Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
- Danct12 <danct12@riseup.net>, Manuel Traut <manut@mecka.net>
+ Manuel Traut <manut@mecka.net>, Diederik de Haas <didi.debian@cknow.org>
 Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, Manuel Traut <manut@mecka.net>,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Subject: Re: [PATCH v2 0/4] arm64: rockchip: Pine64 pinetab2 support
-Date: Tue, 26 Dec 2023 14:32:32 +0100
-Message-ID: <2905432.tPBmtbmofK@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
-References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+Date: Tue, 26 Dec 2023 16:32:10 +0000
+Message-ID: <6875992.lOV4Wx5bFT@melttower>
+In-Reply-To: <2905432.tPBmtbmofK@bagend>
+References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net> <2905432.tPBmtbmofK@bagend>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_053253_599269_B810A561 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20231226_083251_465736_25C965BF 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,236 +78,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5810019596257184092=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5810019596257184092==
-Content-Type: multipart/signed; boundary="nextPart1781507.039SJ5k1sN";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
+On Tuesday, December 26, 2023 1:32:32 PM UTC Diederik de Haas wrote:
+> [    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR
+> (-22) [    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc
+> regulator [    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set
+> regulator OCR (-22) [    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to
+> enable vmmc regulator
+This is the WLAN SDIO, the error shows up when the device is not powered on.
 
---nextPart1781507.039SJ5k1sN
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Diederik de Haas <didi.debian@cknow.org>
-Subject: Re: [PATCH v2 0/4] arm64: rockchip: Pine64 pinetab2 support
-Date: Tue, 26 Dec 2023 14:32:32 +0100
-Message-ID: <2905432.tPBmtbmofK@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
-References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
-MIME-Version: 1.0
-
-On Saturday, 23 December 2023 16:20:14 CET Manuel Traut wrote:
-> This adds support for the BOE TH101MB31IG002 LCD Panel used in Pinetab2 [1]
-> and Pinetab-V [2] as well as the devictrees for the Pinetab2 v0.1 and v2.0.
-
-I have a PineTab2 4GB/64GB model and I run a Debian Trixie system
-*from an SDcard* (danctnix system is on eMMC). On it, I have a 6.6
-kernel with my own patch set and a 6.7-rc7 kernel with this patch set.
-
-Everything seems to work properly. I've now also tested the HDMI output
-connector and that worked too :) So based on that, you can add my
-Tested-By: Diederik de Haas <didi.debian@cknow.org>
-
-I do see an error in dmesg wrt mmc. I had one with my own patch set
-too, but a different one and it seems the mainline patch set fixes that,
-but then runs into another issue: 
-[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-
-Both also have an error wrt `goodix_911_cfg.bin` firmware, but the error
-could be because Debian kernel 'upgraded' a warning to an error.
-I've searched online for that filename, but haven't found anything.
-The touchscreen works, so I guess that one can be ignored.
-
-kernel 6.7-rc7 + mainline patch set:
-===========================================================
-# uname -a
-Linux pinetab2 6.7-rc7+unreleased-arm64 #1 SMP Debian 6.7~rc7-1~pine64 (2023-12-24) aarch64 GNU/Linux
-# dmesg --level emerg,alert,crit
-# dmesg --level emerg,alert,crit,err
-[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-[   19.569452] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
-[   19.575504] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
-[   19.613497] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
-# dmesg | grep mmc
-[    3.782844] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    3.783027] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    3.783132] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    3.783314] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
-[    3.853034] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    3.853859] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    3.854492] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    3.856863] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    3.861731] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    3.862459] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    3.863088] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    3.863656] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
-[    3.870506] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
-[    4.015316] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    4.016042] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    4.016660] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    4.017223] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    4.034954] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    4.035772] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    4.037119] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    4.039868] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
-[    4.041248] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
-[    5.172937] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    5.175108] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    5.175750] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    5.176311] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    5.179484] dwmmc_rockchip fe2b0000.mmc: Got CD GPIO
-[    5.193439] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
-[    5.259322] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
-[    5.332873] dwmmc_rockchip fe2b0000.mmc: Successfully tuned phase to 254
-[    5.332922] mmc0: new ultra high speed SDR104 SDHC card at address 59b4
-[    5.335025] mmcblk0: mmc0:59b4 00000 14.9 GiB
-[    5.345735]  mmcblk0: p1 p2
-[    5.563710] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    5.564608] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    5.565399] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    5.566101] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
-[    5.568350] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
-[    5.569190] mmc_host mmc2: card is non-removable.
-[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-[    5.585194] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
-[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
-[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
-[    5.635189] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
-[    5.670372] mmc2: Failed to initialize a non-removable card
-[    6.080928] EXT4-fs (mmcblk0p2): mounted filesystem 9aca1904-b511-411f-bb28-4ecfbf1b4061 ro with ordered data mode. Quota mode: none.
-[    9.969704] EXT4-fs (mmcblk0p2): re-mounted 9aca1904-b511-411f-bb28-4ecfbf1b4061 r/w. Quota mode: none.
-[   11.095737] EXT4-fs (mmcblk0p2): resizing filesystem from 3903227 to 3903227 blocks
-[   19.432869] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
-[   19.569396] mmc1: new HS200 MMC card at address 0001
-[   19.574273] mmcblk1: mmc1:0001 SPeMMC 58.2 GiB
-[   19.737723]  mmcblk1: p1 p2
-[   19.744563] mmcblk1boot0: mmc1:0001 SPeMMC 4.00 MiB
-[   19.757787] mmcblk1boot1: mmc1:0001 SPeMMC 4.00 MiB
-[   19.833373] mmcblk1rpmb: mmc1:0001 SPeMMC 4.00 MiB, chardev (240:0)
-===========================================================
-kernel 6.6 + my patch set:
-===========================================================
-# uname -a
-Linux pinetab2 6.6.0-0-pine64-arm64 #1 SMP Debian 6.6-1~pine64 (2023-11-04) aarch64
-# dmesg --level emerg,alert,crit
-# dmesg --level emerg,alert,crit,err
-[    5.632076] mmc0: tuning execution failed: -5
-[    5.632089] mmc0: error -5 whilst initialising SD card
-[    5.712059] mmc0: tuning execution failed: -5
-[   21.192647] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
-[   21.196489] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
-[   21.212984] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
-[   21.632392] ov5648 2-0036: failed to find 168000000 clk rate in endpoint link-frequencies
-# dmesg | grep mmc
-[    4.184334] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    4.185120] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    4.185745] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    4.186375] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
-[    4.186549] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    4.188064] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    4.188702] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    4.189380] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    4.235598] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    4.236317] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    4.236988] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    4.237594] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
-[    4.245532] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    4.246253] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    4.246861] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    4.247415] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    4.368444] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    4.370700] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    4.371345] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    4.371969] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
-[    4.374128] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    4.375122] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    4.375752] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    4.377884] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    5.542858] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
-[    5.543575] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
-[    5.543970] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
-[    5.544176] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
-[    5.544894] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
-[    5.545867] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
-[    5.546117] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
-[    5.548155] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
-[    5.549753] dwmmc_rockchip fe2b0000.mmc: Got CD GPIO
-[    5.550997] dwmmc_rockchip fe2c0000.mmc: allocated mmc-pwrseq
-[    5.551557] mmc_host mmc2: card is non-removable.
-[    5.563821] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
-[    5.630780] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
-[    5.632066] dwmmc_rockchip fe2b0000.mmc: All phases bad!
-[    5.632076] mmc0: tuning execution failed: -5
-[    5.632089] mmc0: error -5 whilst initialising SD card
-[    5.646986] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
-[    5.710777] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
-[    5.712050] dwmmc_rockchip fe2b0000.mmc: All phases bad!
-[    5.712059] mmc0: tuning execution failed: -5
-[    5.728169] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
-[    5.768379] mmc_host mmc0: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
-[    5.768503] mmc0: new high speed SDHC card at address 59b4
-[    5.770692] mmcblk0: mmc0:59b4 00000 14.9 GiB
-[    5.772990] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
-[    5.791753]  mmcblk0: p1 p2
-[    6.962745] EXT4-fs (mmcblk0p2): mounted filesystem 9aca1904-b511-411f-bb28-4ecfbf1b4061 ro with ordered data mode. Quota mode: none.
-[    8.264296] mmc2: Skipping voltage switch
-[    8.280973] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
-[    8.293741] mmc2: new high speed SDIO card at address 0001
-[   11.101267] EXT4-fs (mmcblk0p2): re-mounted 9aca1904-b511-411f-bb28-4ecfbf1b4061 r/w. Quota mode: none.
-[   12.839514] EXT4-fs (mmcblk0p2): resizing filesystem from 3903227 to 3903227 blocks
-[   21.248940] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
-[   21.345979] mmc1: new HS200 MMC card at address 0001
-[   21.357326] mmcblk1: mmc1:0001 SPeMMC 58.2 GiB
-[   21.462230]  mmcblk1: p1 p2
-[   21.466068] mmcblk1boot0: mmc1:0001 SPeMMC 4.00 MiB
-[   21.478585] mmcblk1boot1: mmc1:0001 SPeMMC 4.00 MiB
-[   21.516472] mmcblk1rpmb: mmc1:0001 SPeMMC 4.00 MiB, chardev (240:0)
-===========================================================
-
-Cheers,
-  Diederik
---nextPart1781507.039SJ5k1sN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZYrV8AAKCRDXblvOeH7b
-bhFQAQDJNk7n8SiLB0L7vkRNoQpBtdtNMQYY87Zt8wJhnYrEcgD/a00CnD0kuSxD
-JXrz3wGAyA10JRu8wKpOPzm8fAEzqwU=
-=F1jR
------END PGP SIGNATURE-----
-
---nextPart1781507.039SJ5k1sN--
+> Both also have an error wrt `goodix_911_cfg.bin` firmware, but the error
+> could be because Debian kernel 'upgraded' a warning to an error.
+> I've searched online for that filename, but haven't found anything.
+> The touchscreen works, so I guess that one can be ignored.
+This can be ignored, it's for touch panels where it's config is not on flash 
+(typically touch panel calibration data).
 
 
-
-
-
---===============5810019596257184092==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5810019596257184092==--
-
-
-
-
