@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE7BAC46CD3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 18:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E68D7C47072
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 19:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aJk2kZGdS+tB6LQxPiS12nutw/ZUnGkYJcSK7mizoiA=; b=oJHK3ANEdo0Umh
-	MQs2V92njjgkR9sU90zESb8LJuWtLB/L+LSge3UJBp0w4CSY/hVL3gC7dG2rPzaP/XoyCcjTBo58d
-	8NjXZIr8qMwUtNGbDMjLCy0MS8DedGofUjQ+rJS9RGDE9O1emPsHjryV1LJ3EWc1sY+qsKcmQ84Q0
-	8u9XqoIz6Dgnc1EGJYCS+hpMndoNJ07A9GlqnEUT/d+61Dswd62ownPjz4P5dAynC2ASwNzjSVEdw
-	CgkCBu6SmPurgd9nfwpANTnGtxaMRl2VSx3X4jOQB4pREefg+SAWr/gn/a2cMMbseX1cxixmhgI2y
-	Wq0/zAtkfXQQp/ahLqoQ==;
+	List-Owner; bh=Se0R4h4suxuPF4fwW2QcY4/B/2Ugx34x0FnK6FuOAvU=; b=PIjIHoTIrp9LxF
+	4ltjrZ7hc/U8RQ8C4x3r1h7qzIRCXAwRm82lMxVfyCnfxtZupJEPK6WVN/JBX1X3xzm1HXfUyyu8a
+	Zaotto+1A78REPYyWIqHsKdVCS6B2WfRJzAl9zOFyouJDq5WqxfPq9YdTgLyCN4mmiIHp8QVlN8Dc
+	hiQheKqKlKrQTNM9yd7+U3l6JFpJhLi4+COBDiJ+Y4aCSSEHKuVvwiS40EC5DEo+IW6lF207++KQD
+	CTkDWybCGhnlXOxGs1vVsd2ZL5WYyriEnr7GHT8+QdyncHj8x14tWKjv5a9+vFhHnDfjxCvF4fzzt
+	K+Ke3SoDe0W6U9xDZF1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIC6E-00DNJF-3B;
-	Tue, 26 Dec 2023 18:24:18 +0000
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	id 1rID0F-00DPk8-1X;
+	Tue, 26 Dec 2023 19:22:11 +0000
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIC6B-00DNHX-1H
+	id 1rID0C-00DPhW-1x
 	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Dec 2023 18:24:17 +0000
-Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-4277e7146abso43076521cf.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 10:24:14 -0800 (PST)
+	Tue, 26 Dec 2023 19:22:09 +0000
+Received: by mail-io1-xd31.google.com with SMTP id ca18e2360f4ac-7ba7c845e1aso282353839f.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 11:22:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1703615053; x=1704219853; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1703618527; x=1704223327; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nbpck61YwtlHFMw5U/Lo3wdHWoHYEKh8KkvQ9gudgQY=;
-        b=Oo16qrTSo5c4sdRxCHJam2YFqFWwzxUqLkNGh+SuuGWpfoGgfha4Yyrysemo669Ye2
-         16Jh2/sHKSwa6BLz4Gal6lvnW4dEvYyinPjxSwWndHkNSsHu52ojdul0ZYLVouTibCZ4
-         i3fAS/vqLpTjnolUP3oXgxBkOdvtmtOjJHNTnLl+zcB92mnoAdsDRZiFqvawRur1X52+
-         6kGwLZS1KixvmLbLQncQ+w242YKFth9BXVUvPdWKPT6q043wrwd0ZcMCaJ5pdkdSLv1Y
-         fIRvZG4weGp8lJn0cYizo1NBwb3HkcVNbDT/d9XjGLuKdpbQCYmVu7TkQL4LjF5kt6QK
-         vzRQ==
+        bh=0beT1lRwobeT/udVDQveaOigS7b6fLoDcuD/SsK5GZQ=;
+        b=BC/ps7Xha3YFCWIXZLPEC/AU1X5geLC/fH0mToiHic1YJUzqRi4+u1E9Nj0UqaThCU
+         dK3zjEDaeCrMNiu9AxvTBDLZriuavI/3GMLc7TKjyg2r8rftrPWOTCyeHTuefv8THjs2
+         5eFYvATM94v+ss4w/4pGcGi64kvw4j7W9zoKY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703615053; x=1704219853;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1703618527; x=1704223327;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nbpck61YwtlHFMw5U/Lo3wdHWoHYEKh8KkvQ9gudgQY=;
-        b=FOQgZUIo6vol/gNB7AkWOT20t2HRR++GOBpxUFA6bWB+oeS3Z8uiQ3mz/S5H3Hx1yi
-         NmU/E5UbMLNIJk6VBlD8ZdC+70ifjkEw5D3y+gNgGQX8AqNP5WrObN71qJ85Uhn14HEi
-         HJ7Vb3WN/7cuPHmQIoDVGrhhmVhS0yX9tzFHA7cD/37orb0FFN7sAnD4hfeA1iHMdL92
-         FnQ6VQQoTxOQCzaosY5MUDyYJshJ3wFxFjJSXh1B91qbiYYD9sHRhWz+Gj9QvpJPtqEk
-         irwYa2VcPbAS3xcEX0hUcC+pkIVe+mH4ak/GgA4Z9OaP/RytTysH+LBNtTHmGchl4zoP
-         IJWA==
-X-Gm-Message-State: AOJu0YymLnRxhRV7p+9ex0U6Pcd2DOUzdsEretHXf1bYxWZsBRWmxJxk
-	JrSc28ZNgA+Gfqm1z51WkNV5qTRNKZACPYAzBtMrKTNmJNckTw==
-X-Google-Smtp-Source: AGHT+IFWmjNlQw3TJVBvqU22wp4AVqBkS4XAMC4VqHZ635t1MVhw4Y6RPWn1r1oeRtxRwF8xQLfAKRRH1Aun3pHsf+k=
-X-Received: by 2002:a05:622a:307:b0:427:7c4f:9d1a with SMTP id
- q7-20020a05622a030700b004277c4f9d1amr12102912qtw.31.1703615053674; Tue, 26
- Dec 2023 10:24:13 -0800 (PST)
+        bh=0beT1lRwobeT/udVDQveaOigS7b6fLoDcuD/SsK5GZQ=;
+        b=UsfQ3wtAKlFUJb1TRBtDo8+J/lYK0CDb9umiCtAj/v63ExANxhZ3E6yOo3tQpeoSv0
+         SF8+FP3ZoRn5zww4Ml+hNs3bAUUPELpcO2TDocYFw6Y7teCz+XID7jiCE/4EtM5Uc5gA
+         sFnfT5lJapFfT071GuchvZbRWLWXYCWfYQdXzpUkNQ2iP+xAeedroURgw2yt0FBLfvab
+         guFzfkBtX3W9/+BHg2B6YSEZPs+Kf4+xqTRpUy/kkwk0/j7EWCju9r9bQ/wHwQj8f9cq
+         jHLVCbRg2E+828WDtaeE92xbfIlk0YhZ9NuFpZlxIs1MM7wSiRiGTAgKwwVTfvPJTxYl
+         /j1g==
+X-Gm-Message-State: AOJu0Yyr/DUriAGzF5BnDbF8J+ovviooC2aMDqyKcNJwxWj6Juud3wrr
+	FobG+BXz58H9DnmOrEmNKKvp4rgtsCAi
+X-Google-Smtp-Source: AGHT+IGADxqOdqzCrh+kKQobH0CySQymMukyoXwB9KeUWYmRE9fqJHH6xGioz00eswrRyG6LPpu5FQ==
+X-Received: by 2002:a6b:5a15:0:b0:7ba:b0d7:20e5 with SMTP id o21-20020a6b5a15000000b007bab0d720e5mr9733427iob.0.1703618527498;
+        Tue, 26 Dec 2023 11:22:07 -0800 (PST)
+Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
+        by smtp.gmail.com with ESMTPSA id gw3-20020a0566381ee300b0046b692e719esm3207609jab.150.2023.12.26.11.22.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Dec 2023 11:22:07 -0800 (PST)
+From: Mark Hasemeyer <markhas@chromium.org>
+To: LKML <linux-kernel@vger.kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Andy Shevchenko <andriy.shevchenko@intel.com>,
+	Raul Rangel <rrangel@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Mark Hasemeyer <markhas@chromium.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 06/24] ARM: dts: rockchip: rk3288: Enable cros-ec-spi as wake source
+Date: Tue, 26 Dec 2023 12:21:10 -0700
+Message-ID: <20231226122113.v3.6.I8249df4df0b7d12fb68ea1e69f84ca589c574bb1@changeid>
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+In-Reply-To: <20231226192149.1830592-1-markhas@chromium.org>
+References: <20231226192149.1830592-1-markhas@chromium.org>
 MIME-Version: 1.0
-References: <20231128204938.1453583-1-pasha.tatashin@soleen.com>
- <20231128204938.1453583-16-pasha.tatashin@soleen.com> <20231225110930-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20231225110930-mutt-send-email-mst@kernel.org>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Tue, 26 Dec 2023 13:23:37 -0500
-Message-ID: <CA+CK2bCTVqgW2uuSi7WqwGKkd7GT+QoSad2zkNun74wVV_J0Yw@mail.gmail.com>
-Subject: Re: [PATCH 15/16] vhost-vdpa: account iommu allocations
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: akpm@linux-foundation.org, alex.williamson@redhat.com, 
-	alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev, 
-	baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org, 
-	corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org, 
-	heiko@sntech.de, iommu@lists.linux.dev, jasowang@redhat.com, 
-	jernej.skrabec@gmail.com, jgg@ziepe.ca, jonathanh@nvidia.com, joro@8bytes.org, 
-	kevin.tian@intel.com, krzysztof.kozlowski@linaro.org, kvm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, netdev@vger.kernel.org, 
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com, 
-	samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev, 
-	thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com, 
-	vdumpa@nvidia.com, virtualization@lists.linux.dev, wens@csie.org, 
-	will@kernel.org, yu-cheng.yu@intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_102415_457618_65868D0F 
-X-CRM114-Status: UNSURE (   7.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231226_112208_649333_A9F3FBF5 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,19 +98,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBEZWMgMjUsIDIwMjMgYXQgMTE6MDnigK9BTSBNaWNoYWVsIFMuIFRzaXJraW4gPG1z
-dEByZWRoYXQuY29tPiB3cm90ZToKPgo+IE9uIFR1ZSwgTm92IDI4LCAyMDIzIGF0IDA4OjQ5OjM3
-UE0gKzAwMDAsIFBhc2hhIFRhdGFzaGluIHdyb3RlOgo+ID4gaW9tbXUgYWxsb2NhdGlvbnMgc2hv
-dWxkIGJlIGFjY291bnRlZCBpbiBvcmRlciB0byBhbGxvdyBhZG1pbnMgdG8KPiA+IG1vbml0b3Ig
-YW5kIGxpbWl0IHRoZSBhbW91bnQgb2YgaW9tbXUgbWVtb3J5Lgo+ID4KPiA+IFNpZ25lZC1vZmYt
-Ynk6IFBhc2hhIFRhdGFzaGluIDxwYXNoYS50YXRhc2hpbkBzb2xlZW4uY29tPgo+Cj4KPiBBY2tl
-ZC1ieTogTWljaGFlbCBTLiBUc2lya2luIDxtc3RAcmVkaGF0LmNvbT4KClRoYW5rIHlvdSwKUGFz
-aGEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+The cros_ec driver currently assumes that cros-ec-spi compatible device
+nodes are a wakeup-source even though the wakeup-source property is not
+defined.
+
+Some Chromebooks use a separate wake pin, while others overload the
+interrupt for wake and IO. With the current assumption, spurious wakes
+can occur on systems that use a separate wake pin. It is planned to
+update the driver to no longer assume that the EC interrupt pin should
+be enabled for wake.
+
+Add the wakeup-source property to all cros-ec-spi compatible device
+nodes to signify to the driver that they should still be a valid wakeup
+source.
+
+-Commit-changes: 3
+-Update commit message to provide details of the motivation behind the
+change
+
+Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
+---
+
+(no changes since v2)
+
+Changes in v2:
+-Split by arch/soc
+
+ arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
+index 092316be67f74..1554fe36e60fe 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
+@@ -112,6 +112,7 @@ cros_ec: ec@0 {
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&ec_int>;
+ 		spi-max-frequency = <3000000>;
++		wakeup-source;
+ 
+ 		i2c_tunnel: i2c-tunnel {
+ 			compatible = "google,cros-ec-i2c-tunnel";
+-- 
+2.43.0.472.g3155946c3a-goog
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
