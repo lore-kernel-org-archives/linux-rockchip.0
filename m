@@ -4,80 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D422DC46CD4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 11:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6F4C46CD4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 13:33:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IpvVUp7m70FXNzkIAo29kb2UdYhoYitJ+QpNz7j0Bvw=; b=ETSRicMUz432D3
-	h7gIAUKDnnE2w4QI2Jdmpz+APh3F3seQLuxVYB7z6zrshC9TkkXFuyj28EcbQOZXTJUrYvFSQCDbq
-	bkvXuFV316nJRl2OF6iN9mz81Ev0jD1PXY42i3kZDYylCwNdLMAnhhnq05nyOALZb6o/s9H4QFLqd
-	Ol+A5e1LLxG1vMFTYH3+5Ysh5NsTVnLVt/GVEPtabs8xzmF6gZAIMf3WfuuDC0q6Lve3BE7oFKMxJ
-	GYbfQHV4qBDjneLRrpXLdwQEF8AUMx6rERH9/xCI/74d6q5RbcZv7SCKZUlDKUALqAuxEElH3DTOE
-	0JHRHickF01/Xe7kCODQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2PPVuty8YYBulHpaYoxb8wFr9DkHndkqhyTk+gsmvzM=; b=x9OwiIaoJQaTOxWkVpblsqauga
+	2fErRVz9Ufi/sLxnpACMv1GeOqIg5SRCVLdxKozhFThRljQql+9sD+tqANz3KTXEfjLtIBFXQ77I5
+	CKH+rVHh5Bx+wSj1WEh9Y92SEsIyT8GlEe+cJn64RDDdLgAg5Ufnixzbvz95cYI39+1/L/zYMTl0r
+	F6aaQI86uqfIhuESfhdHPB93jk/GqPk/y0qYq+sED/paB1VlvUdrD/4Q87q/lv8UN6oxzRMnJbAUV
+	JcqSfIYwHG8l7yzXDAjSLi1haMsydUmXtcQZeC2/hyp4wFWc8bbj+zUR4+UgQz/7SfPApH7oJWlJD
+	0x/NszlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rI5WU-00CBBI-2X;
-	Tue, 26 Dec 2023 11:22:58 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1rI7YI-00D6FP-1X;
+	Tue, 26 Dec 2023 13:32:58 +0000
+Received: from out-187.mta0.migadu.com ([91.218.175.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rI5WR-00CB8q-1v
-	for Linux-rockchip@lists.infradead.org;
-	Tue, 26 Dec 2023 11:22:57 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2ccc34a9f90so10961961fa.0
-        for <Linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 03:22:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703589769; x=1704194569; darn=lists.infradead.org;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aypPoG/QLcqDXOXyGvtPYMmCLQUdksQxR8ayqCjT0pA=;
-        b=atJA/uGonHbM5SKTaPIzFXNMRMqDx0mjBVtTFt2im9mQhkiNhSFI0ARRNEtl1UrO7k
-         lbrQkSyiDoCBtK7ReKHwWoh+niUvZsEGgDO97c6Pj4r/UO62GGyNUBvzMJT81aafv77L
-         CajnLB/xeNzD1DeP6ANtyqCKN4MOcYCUQAe6nFiS0p6PgsOxm2L9Cel8SZB4Oceo569o
-         /qobHZAw4omOBV7XBfOXbR9LcqloqFMhvb/W3a+Euc9RvEe6M2vTUl1DEK+FxfL3pRH3
-         o7XQloU27/lTDCzj8UlC9KjGubHMD3UCVmQVlH+xuIDL4+EgU+9Sqh8emFmpdmSGNDWH
-         fQeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703589769; x=1704194569;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aypPoG/QLcqDXOXyGvtPYMmCLQUdksQxR8ayqCjT0pA=;
-        b=FQYGbVrBNTDaRwhamCCKIA0nE4QyOQ+xKLARNuRx/SEd7GkZT+V3CLDAOTZELieS/3
-         t4SM+ZzuXCvltfLEh8POiLgb96G+GdOBhEGFgX0h5H7IDZA/TEEp0LNJcPXoE4x69lN+
-         8AdtyiEv3efisGmP2drHATa9Px112O3v9SnCSgjzyIO0Kwx7OsvsYPh1gc+XaWPcStsb
-         /ddlMX3/eB8mSD9RKfrpuszAlPZyUP1CTCQvykaCgFeNLrM/Uv0K5lloiKTBBIhQgbLq
-         o8cKmO12bjWJA7nyNjg0BK56QBNAy9mmCMn+Df9fCp9WIlg3516ip7py2Xd64Dl+sAaj
-         C7mQ==
-X-Gm-Message-State: AOJu0YzK0npazxIptpniJ2cWJ9jjp48orwaKyw8fMOOJ8YlZBd85oT4T
-	URJ4MAumSymPJjO1NOQ1LVBN4q1ZcqE=
-X-Google-Smtp-Source: AGHT+IHq4blC8o0xDuY3QOGhWOfHpYg9wnyMvxV/xpA9kpstlxQWVdqd1KWGSsb2SE09yNq3upu1eA==
-X-Received: by 2002:a2e:b8d2:0:b0:2cc:69e4:6fe7 with SMTP id s18-20020a2eb8d2000000b002cc69e46fe7mr3248493ljp.33.1703589768762;
-        Tue, 26 Dec 2023 03:22:48 -0800 (PST)
-Received: from smtpclient.apple (84-10-101-169.static.chello.pl. [84.10.101.169])
-        by smtp.gmail.com with ESMTPSA id d3-20020a05651c01c300b002cccdd2d5c5sm506357ljn.11.2023.12.26.03.22.48
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Dec 2023 03:22:48 -0800 (PST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.15\))
-Subject: Re: vop2: 3566 vs 3568: green screen on 3566; on 3568 all ok... 
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <ef6186aa-f600-4d3a-be0d-155ff3336a27@rock-chips.com>
-Date: Tue, 26 Dec 2023 12:22:47 +0100
-Cc: Linux-rockchip@lists.infradead.org
-Message-Id: <DEF50A27-6DF2-4B83-8F30-A47AA3878BC6@gmail.com>
-References: <7408CE66-E110-4DB2-8B73-856E71E16754@gmail.com>
- <b1381668-9561-4b69-9183-3ec582b4c0df@rock-chips.com>
- <15DF99D4-D626-4C3A-B25A-C713E5264C7C@gmail.com>
- <ef6186aa-f600-4d3a-be0d-155ff3336a27@rock-chips.com>
-To: Andy Yan <andy.yan@rock-chips.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.15)
+	id 1rI7YC-00D6Bf-14
+	for linux-rockchip@lists.infradead.org;
+	Tue, 26 Dec 2023 13:32:56 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1703597563;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9ku35WW1EA9BdBudQjC59w9ui3r1wOFBpgsP/3VnOfA=;
+	b=yEe2C7ttyb3kCGqY8DWko+qxmO8hau2Ppq+yqcWod8fjtkTQqGmArtJGT5mkj7YQkyn1ew
+	wmwFXsvVf1Ic8NbhYcjOn6IxMGpBymIOihJ1dqvDT6PzN74kvduulwhx/O9PBNpOIV6GnP
+	V5oA2oj78Lpxm+r4rCpUMsFFDTiSt5h5z80IbFLrYOtFHswwQYdFcGX1G1BoKkPnKKoSuW
+	/K5hFhO451UpEsb4Etc/k9DYdGhyyPCqJjENyqeSqZc0a1U1nfeqceeOMcyQfM7FBCzu5P
+	LGnjLPKAkl8FDcJ9E1HXz5s5o25i3HiylZb1Fhjaqloerbk4HSX7ww32Re1BnA==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
+ Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
+ Danct12 <danct12@riseup.net>, Manuel Traut <manut@mecka.net>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Manuel Traut <manut@mecka.net>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 0/4] arm64: rockchip: Pine64 pinetab2 support
+Date: Tue, 26 Dec 2023 14:32:32 +0100
+Message-ID: <2905432.tPBmtbmofK@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_032255_651785_BA748227 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20231226_053253_599269_B810A561 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,64 +77,236 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5810019596257184092=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW5keSwKCnBscyBzZWUgaW5saW5lCgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IEFuZHkg
-WWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4gdyBkbml1IDI2LjEyLjIwMjMsIG8gZ29kei4g
-MDI6NDE6Cj4gCj4gSGkgUGlvdHIsCj4gCj4gT24gMTIvMjUvMjMgMjA6MTQsIFBpb3RyIE9uaXN6
-Y3p1ayB3cm90ZToKPj4gQW5keSwKPj4gVGh4IGZvciBsb29raW5nIG9uIHRoaXMhCj4+IEJlZm9y
-ZSBwYXNzaW5nIGRyaSBzdGF0ZSBsb2dzIC0gbGV0IG1lIGdpdmUgc29tZSBjb250ZXh0IHdoeSBp
-4oCZbSBhc2tpbmcgaGVyZSBmb3IgaGVscC4KPj4gSeKAmW0gZGV2ZWxvcGluZyAyIGRpc3Ryb3Mg
-d2l0aCBnb2FsIHRvIG9mZmVyIHVzZXIgY29udmVuaWVudCBydW4gb2YgbXVsdGltZWRpYSBwbGF5
-ZXJzIChLb2RpIGFuZCBNeXRoVFYpOiBhcHBsaWFuY2UgYW5kIGdlbmVyYWwgZGlzdHJvLgo+PiBH
-b2FsIGlzIG91dCBvZiBib3ggcnVuIG9mIEtvZGkvTXl0aFRWIGluIDIgcmVuZGVyaW5nIG1vZGVz
-OiBFR0wgREFNQnVmIGFuZCBEUk0gZGlyZWN0IHBsYW5lcy4KPj4gQ3VycmVudGx5IGkgaGF2ZSBv
-dXQtb2YtYm94IChubyBhbnkgU29DIHNwZWNpZmljIGNvbmZpZ3MgaW4gS29kaS9NeXRoVFYpIGZv
-cjogcmszMzI4L3JrMzM5OS9INi9IMzEzL0g2MTYvcnBpMy9ycGk0Lgo+PiBJc3N1ZXMgaWEgaGF2
-ZSBhcmUgd2l0aDogcmszNTY2IGFuZCByazM1NjgKPj4gIAo+IAo+IFllcywgaXQgaXMgYSBjb29s
-IHByb2plY3QsIEkgcnVuIGl0IG9uIHJrMzU2Ni1ib3gtZGVtbyBmb3IgYSB3aGlsZSBsYXN0IHll
-YXIuCgpNYW55IHRoeCBmb3Iga2luZCB3b3JkcyEgCgo+IAo+PiBWYW5pbGxhIDYuNi44IGtlcm5l
-bCBvbiAzNTY4IG5vdCBvZmZlcnMgbWUgd2VsbCB3b3JraW5nIG91dC1vZi1ib3ggS29kaS9NeXRo
-VFYgaW4gRFJNIGRpcmVjdCBwbGFuZXMgLSBidXQgaSB3YXMgYWJsZSB0byBwYXRjaCB2b3AyIHRv
-IGdldCBzdWNoIG91dC1vZi1ib3ggb3BlcmF0aW9uIChwbHMgc2VlIHBhdGNoIGJlbG93KS4KPj4g
-SSBoYXZlIGFsc28gaXNzdWUgd2l0aCAzNTY2IC0gd2hlcmUgaSBhbHNvIGRldmVsb3BlZCBwYXRj
-aCAoYWxzbyBzZWUgYmVsb3cpIC0gYnV0IGnigJltIG5vdCBhYmxlIHRvIGdldCAzNTY2IGZ1bGx5
-IHdvcmtpbmcgKEVHTCBETUFidWYgaXMgb2s7IGluIERSTSBQbGFuZXMgR1VJIGlzIG9rLCBidXQg
-dmlkZW8gcGxheWJhY2sgZ2l2ZXMgcGFydCBzY3JlZW4gZ3JlZW4gcGFydCBibGFjazsgZ3JlZW4v
-YmxhY2sgYm9yZGVyIGlzIHZpYnJhbnRseSBjaGFuZ2luZyBhdCBwbGF5YmFjaykKPj4gTG9nczoK
-PiAKPiAKPiBUaGUgZHJpL3N0YXRlIGR1bXAgYWxyZWFkeSBpbmRpY2F0ZXMgdGhlIHJvb3QgY2Fz
-ZSBvZiB0aGUgcHJvYmxlbToKPiAKPiBGb3IgcmszNTY2L3JrMzU2OCwgdGhlIENsdXN0ZXIgd2lu
-ZG93cyBvbmx5IHN1cHBvcnQgQUZCQyBiYXNlZCBSR0Igb3IgWVVWIGZvcm1hdCwKPiBsaW5lYXIg
-Zm9ybWF0cyhzdWNoIGFzIE5WMTIgeW91IHVzZWQgZm9yIENsdXN0ZXIwLXdpbjAgb24gcmszNTY2
-KSBhcmUgbm90IHN1cHBvcnRlZCwgdGhlc2UKPiBsaW5lYXIgZm9ybWF0cyBhcmUgb25seSBzdXBw
-b3J0IGJ5IEVzbWFydChSR0IvWVVWKSxzbWFydChSR0Igb25seSkgd2luZG93cy4KPiAKPiBDb21w
-YXJlZCB3aXRoIHJrMzU2OCB5b3UgdXNlLCB0aGUgTlYxMiBpcyBjb21taXR0ZWQgdG8gRXNtYXJ0
-MSwgYW5kIFhSR0IgVUkgaXMKPiBjb21taXR0ZWQgdG8gRXNtYXJ0MC4KPiBCdXQgb24gcmszNTY2
-LCB0aGVyZSBhcmUgb25seSB0aHJlZSB3aW5kb3dzL3BsYW5lIHlvdSBjYW4gdXNlLCBpZiB5b3Ug
-Y2FuIG9ubHkgZGVjb2Rlcgo+IGxpbmVhciBOVjEyLCBpdCBzaG91bGQgYmUgY29tbWl0dGVkIHRv
-IEVzbWFydDAsIGFuZCB1c2UgU21hcnQwIGZvciBVSS4KPiAKPiAKPiBCdXQgd2hlbiB0aGUgdm9w
-MiBkcml2ZXJzIGZpcnN0IGxhbmRzLCBpdCBtaXN0YWtlbmx5IGFkZCBsaW5lYXIgZm9ybWF0cyhO
-VjEyL05WMTYpIHRvCj4gQ2x1c3RlciB3aW5kb3dzIGZvcm1hdCBsaXN0cywgdGhpcyB3aWxsIG1p
-c2xlYWQgdXNlciBzcGFjZS4KPiAKPiBJIGhhdmUgYSBwYXRjaCBzZXJpZXMgdG8gZml4IHRoaXMg
-dGhhdCBhbHJlYWR5IGJlIG1lcmdlZCBpbiBsaW51eCA2LjdbMF0KPiAKPiBGZWVsIGZyZWUgdG8g
-bGV0IG1lIGtub3cgaWYgeW91IHN0aWxsIGhhdmUgcHJvYmxlbS4KPiAKPiBbMF0gaHR0cHM6Ly9n
-aXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvc3RhYmxlL2xpbnV4LmdpdC9j
-b21taXQvP2lkPTAxZDVhNzUzNzBhNjBjM2E4ZDY5MTM0N2FlNmViYjJhOWY4ZGM0NGEKClBlcmZl
-Y3QuCgpBYm92ZSBwYXRjaCArIHZvcDJfd2luX2RhdGEgcmszNTY4X3ZvcF93aW5fZGF0YVtdIHJl
-b3JkZXJpbmcgdG86CgpFc21hcnQxLXdpbjAKRXNtYXJ0MC13aW4wClNtYXJ0MC13aW4wClNtYXJ0
-MS13aW4wCkNsdXN0ZXIwLXdpbjAKQ2x1c3RlcjEtd2luMAoKbWFrZXMgS29kaSBhbmQgTXl0aFRW
-IHdvcmtpbmcgb3V0LW9mLWJveCB3aXRoIEVHTCBETUFidWYgYW5kIERSTSBwbGFuZXMgSFcgZGVj
-b2RlZCB2aWRlbyByZW5kZXJpbmcgOi0pCgpTbyB3aXRoIHlvdXIgaGVscCB3ZSBoYXZlIHNpbmds
-ZSA2LjYuOCBrZXJuZWwgb2ZmZXJpbmcgRUdMIERNQWJ1ZiBhbmQgRFJNIHBsYW5lcyBIVyBkZWNv
-ZGVkIHZpZGVvIHJlbmRlcmluZyBvbiByazMzMjgvcmszMzk5L3JrMzU2Ni9yazM1NjgvSDYvSDMx
-My9INjE2L0g2MTgvcnBpMy9ycGk0CgpvbmNlIGFnYWluOiBtYW55IHRoeAoKKHAuczogaXQgbG9v
-a3MgbGlrZSBvbmx5IHRoaW5nIG1pc3NpbmcgaW4gMzU2eCB0byBiZSBwZXJmZWN0IG9wZW4tc291
-cmNlIG11bHRpbWVkaWEgc29jIGlzOiBsYWNrIG9mIHJrdmRlYzIgZm9yIGhldmMvdnA5IGh3IGRl
-Y29kaW5nLiBBcmUgdGhlcmUgYW55IHBsYW5zIGZyb20gcm9jay1jaGlwcyB0byBoZWxwIGZvc3Mg
-dG8gYnJpbmctdXAgbWFpbmxpbmUga2VybmVsIHN1cHBvcnQgZm9yIHJrdmRlYzI/KQogICAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============5810019596257184092==
+Content-Type: multipart/signed; boundary="nextPart1781507.039SJ5k1sN";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
+
+--nextPart1781507.039SJ5k1sN
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+Subject: Re: [PATCH v2 0/4] arm64: rockchip: Pine64 pinetab2 support
+Date: Tue, 26 Dec 2023 14:32:32 +0100
+Message-ID: <2905432.tPBmtbmofK@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+MIME-Version: 1.0
+
+On Saturday, 23 December 2023 16:20:14 CET Manuel Traut wrote:
+> This adds support for the BOE TH101MB31IG002 LCD Panel used in Pinetab2 [1]
+> and Pinetab-V [2] as well as the devictrees for the Pinetab2 v0.1 and v2.0.
+
+I have a PineTab2 4GB/64GB model and I run a Debian Trixie system
+*from an SDcard* (danctnix system is on eMMC). On it, I have a 6.6
+kernel with my own patch set and a 6.7-rc7 kernel with this patch set.
+
+Everything seems to work properly. I've now also tested the HDMI output
+connector and that worked too :) So based on that, you can add my
+Tested-By: Diederik de Haas <didi.debian@cknow.org>
+
+I do see an error in dmesg wrt mmc. I had one with my own patch set
+too, but a different one and it seems the mainline patch set fixes that,
+but then runs into another issue: 
+[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+
+Both also have an error wrt `goodix_911_cfg.bin` firmware, but the error
+could be because Debian kernel 'upgraded' a warning to an error.
+I've searched online for that filename, but haven't found anything.
+The touchscreen works, so I guess that one can be ignored.
+
+kernel 6.7-rc7 + mainline patch set:
+===========================================================
+# uname -a
+Linux pinetab2 6.7-rc7+unreleased-arm64 #1 SMP Debian 6.7~rc7-1~pine64 (2023-12-24) aarch64 GNU/Linux
+# dmesg --level emerg,alert,crit
+# dmesg --level emerg,alert,crit,err
+[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+[   19.569452] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
+[   19.575504] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   19.613497] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
+# dmesg | grep mmc
+[    3.782844] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    3.783027] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    3.783132] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    3.783314] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
+[    3.853034] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    3.853859] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    3.854492] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    3.856863] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    3.861731] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    3.862459] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    3.863088] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    3.863656] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
+[    3.870506] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
+[    4.015316] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    4.016042] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    4.016660] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    4.017223] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    4.034954] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    4.035772] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    4.037119] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    4.039868] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
+[    4.041248] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
+[    5.172937] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    5.175108] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    5.175750] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    5.176311] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    5.179484] dwmmc_rockchip fe2b0000.mmc: Got CD GPIO
+[    5.193439] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
+[    5.259322] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
+[    5.332873] dwmmc_rockchip fe2b0000.mmc: Successfully tuned phase to 254
+[    5.332922] mmc0: new ultra high speed SDR104 SDHC card at address 59b4
+[    5.335025] mmcblk0: mmc0:59b4 00000 14.9 GiB
+[    5.345735]  mmcblk0: p1 p2
+[    5.563710] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    5.564608] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    5.565399] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    5.566101] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 24,32 bit host data width,256 deep fifo
+[    5.568350] dwmmc_rockchip fe2c0000.mmc: Failed getting OCR mask: -22
+[    5.569190] mmc_host mmc2: card is non-removable.
+[    5.570059] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.570835] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+[    5.585194] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
+[    5.616373] dwmmc_rockchip fe2c0000.mmc: could not set regulator OCR (-22)
+[    5.621903] dwmmc_rockchip fe2c0000.mmc: failed to enable vmmc regulator
+[    5.635189] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
+[    5.670372] mmc2: Failed to initialize a non-removable card
+[    6.080928] EXT4-fs (mmcblk0p2): mounted filesystem 9aca1904-b511-411f-bb28-4ecfbf1b4061 ro with ordered data mode. Quota mode: none.
+[    9.969704] EXT4-fs (mmcblk0p2): re-mounted 9aca1904-b511-411f-bb28-4ecfbf1b4061 r/w. Quota mode: none.
+[   11.095737] EXT4-fs (mmcblk0p2): resizing filesystem from 3903227 to 3903227 blocks
+[   19.432869] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
+[   19.569396] mmc1: new HS200 MMC card at address 0001
+[   19.574273] mmcblk1: mmc1:0001 SPeMMC 58.2 GiB
+[   19.737723]  mmcblk1: p1 p2
+[   19.744563] mmcblk1boot0: mmc1:0001 SPeMMC 4.00 MiB
+[   19.757787] mmcblk1boot1: mmc1:0001 SPeMMC 4.00 MiB
+[   19.833373] mmcblk1rpmb: mmc1:0001 SPeMMC 4.00 MiB, chardev (240:0)
+===========================================================
+kernel 6.6 + my patch set:
+===========================================================
+# uname -a
+Linux pinetab2 6.6.0-0-pine64-arm64 #1 SMP Debian 6.6-1~pine64 (2023-11-04) aarch64
+# dmesg --level emerg,alert,crit
+# dmesg --level emerg,alert,crit,err
+[    5.632076] mmc0: tuning execution failed: -5
+[    5.632089] mmc0: error -5 whilst initialising SD card
+[    5.712059] mmc0: tuning execution failed: -5
+[   21.192647] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
+[   21.196489] firmware_class: See https://wiki.debian.org/Firmware for information about missing firmware
+[   21.212984] Goodix-TS 1-005d: firmware: failed to load goodix_911_cfg.bin (-2)
+[   21.632392] ov5648 2-0036: failed to find 168000000 clk rate in endpoint link-frequencies
+# dmesg | grep mmc
+[    4.184334] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    4.185120] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    4.185745] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    4.186375] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
+[    4.186549] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    4.188064] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    4.188702] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    4.189380] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    4.235598] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    4.236317] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    4.236988] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    4.237594] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
+[    4.245532] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    4.246253] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    4.246861] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    4.247415] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    4.368444] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    4.370700] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    4.371345] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    4.371969] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
+[    4.374128] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    4.375122] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    4.375752] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    4.377884] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    5.542858] dwmmc_rockchip fe2b0000.mmc: IDMAC supports 32-bit address mode.
+[    5.543575] dwmmc_rockchip fe2b0000.mmc: Using internal DMA controller.
+[    5.543970] dwmmc_rockchip fe2c0000.mmc: IDMAC supports 32-bit address mode.
+[    5.544176] dwmmc_rockchip fe2b0000.mmc: Version ID is 270a
+[    5.544894] dwmmc_rockchip fe2c0000.mmc: Using internal DMA controller.
+[    5.545867] dwmmc_rockchip fe2b0000.mmc: DW MMC controller at irq 30,32 bit host data width,256 deep fifo
+[    5.546117] dwmmc_rockchip fe2c0000.mmc: Version ID is 270a
+[    5.548155] dwmmc_rockchip fe2c0000.mmc: DW MMC controller at irq 31,32 bit host data width,256 deep fifo
+[    5.549753] dwmmc_rockchip fe2b0000.mmc: Got CD GPIO
+[    5.550997] dwmmc_rockchip fe2c0000.mmc: allocated mmc-pwrseq
+[    5.551557] mmc_host mmc2: card is non-removable.
+[    5.563821] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
+[    5.630780] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
+[    5.632066] dwmmc_rockchip fe2b0000.mmc: All phases bad!
+[    5.632076] mmc0: tuning execution failed: -5
+[    5.632089] mmc0: error -5 whilst initialising SD card
+[    5.646986] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
+[    5.710777] mmc_host mmc0: Bus speed (slot 0) = 150000000Hz (slot req 150000000Hz, actual 150000000HZ div = 0)
+[    5.712050] dwmmc_rockchip fe2b0000.mmc: All phases bad!
+[    5.712059] mmc0: tuning execution failed: -5
+[    5.728169] mmc_host mmc0: Bus speed (slot 0) = 375000Hz (slot req 375000Hz, actual 375000HZ div = 0)
+[    5.768379] mmc_host mmc0: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
+[    5.768503] mmc0: new high speed SDHC card at address 59b4
+[    5.770692] mmcblk0: mmc0:59b4 00000 14.9 GiB
+[    5.772990] mmc_host mmc2: Bus speed (slot 0) = 375000Hz (slot req 400000Hz, actual 375000HZ div = 0)
+[    5.791753]  mmcblk0: p1 p2
+[    6.962745] EXT4-fs (mmcblk0p2): mounted filesystem 9aca1904-b511-411f-bb28-4ecfbf1b4061 ro with ordered data mode. Quota mode: none.
+[    8.264296] mmc2: Skipping voltage switch
+[    8.280973] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
+[    8.293741] mmc2: new high speed SDIO card at address 0001
+[   11.101267] EXT4-fs (mmcblk0p2): re-mounted 9aca1904-b511-411f-bb28-4ecfbf1b4061 r/w. Quota mode: none.
+[   12.839514] EXT4-fs (mmcblk0p2): resizing filesystem from 3903227 to 3903227 blocks
+[   21.248940] mmc1: SDHCI controller on fe310000.mmc [fe310000.mmc] using ADMA
+[   21.345979] mmc1: new HS200 MMC card at address 0001
+[   21.357326] mmcblk1: mmc1:0001 SPeMMC 58.2 GiB
+[   21.462230]  mmcblk1: p1 p2
+[   21.466068] mmcblk1boot0: mmc1:0001 SPeMMC 4.00 MiB
+[   21.478585] mmcblk1boot1: mmc1:0001 SPeMMC 4.00 MiB
+[   21.516472] mmcblk1rpmb: mmc1:0001 SPeMMC 4.00 MiB, chardev (240:0)
+===========================================================
+
+Cheers,
+  Diederik
+--nextPart1781507.039SJ5k1sN
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZYrV8AAKCRDXblvOeH7b
+bhFQAQDJNk7n8SiLB0L7vkRNoQpBtdtNMQYY87Zt8wJhnYrEcgD/a00CnD0kuSxD
+JXrz3wGAyA10JRu8wKpOPzm8fAEzqwU=
+=F1jR
+-----END PGP SIGNATURE-----
+
+--nextPart1781507.039SJ5k1sN--
+
+
+
+
+
+--===============5810019596257184092==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5810019596257184092==--
+
+
+
+
