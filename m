@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F5FC3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Dec 2023 22:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF1FC47074
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 00:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7dhLDLsSyFLFaRsUkT3ylAbhcd8xJPAyUsUScoCJSpY=; b=k3RuZ5305mhwxQ
-	+qlNiF3YMOKMzcZxGXm96RFStOR0QL15ftbqOzre0OmiZ5LLEeMc8KK1zE4oqcLxFzbFllxjr742t
-	UGgRl4u0i3nQH82hTL7kz5QJzlj517PPQ0TJWWGqBLmRO05zppkmW55T/6Ra5goe6NhNoCy7x1y89
-	kXAsN1IbOIXuQW2IoXN5UwT5fTNKnou4CrS+vy8QBVplaYO6rAgXkpDmOYaTLcuFwCiwm9SewQ0m9
-	oWFlkZF52ed5C/xFQEsiYX2FQ6aLCLvNcSK2ZG3WsuBz/ka1bC9k+Elb88jgymzhGF4wBDGnjZnXD
-	Fj8WQTROHqkSqgFnE8NQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4cM6H83JxKH1+f8SDwSXaMVi/w5wQzpns0B9iknh4Lw=; b=K+s4yPSb0FViXD
+	8AX9e8eFx3ru0j7eYjM8ui6tnsXuMraYZ1UcllzybdkQRp+jXI1hKBdGEQGkKCajh8AZlJcJyWtsS
+	EcDHgwbbEUFogLsAkvr5LYvL5QwTEHe6qH0Fb7geB0OVmIBWLjK1c4ZN4gJHW8mW9IWWpgX2PkFXx
+	SZ8kq3+PHVUKukSAIrXdWFXTdCFDqi/u0qwMiHrovzA+AwmFOB6LWLyP/aNZungCffWh+uRGw2SE4
+	ci7hNlCPAT/mvk8ByMzD5LGsvZ/69caHjzV9j07Bkaj/UP4Lo+wJYa1i2LzW2ESM0uD1GlnsbuUAP
+	+CSVrp9TuSfoawtyK5aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHtV0-00BKk3-1K;
-	Mon, 25 Dec 2023 22:32:38 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1rHvCa-00BQ2y-32;
+	Tue, 26 Dec 2023 00:21:44 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rHtUy-00BKjh-0U;
-	Mon, 25 Dec 2023 22:32:37 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-78102c516a7so383397385a.2;
-        Mon, 25 Dec 2023 14:32:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703543554; x=1704148354; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=9AXVgWVsZaXTaZ2MYrLDbeRzFgb65vHx3yvBMYSyN7I=;
-        b=XHKXL+K/869IZVyyj5yJH164ErudjFkm3JqfOEWZyBQrokNAKqfX1JXIpr88R+ttkx
-         w1ZfRY8azwY5rKFQcaXqvnRZBD2FKV3kdelXi3eCOcV7buKQYnmWWH45Nh5qxO9nSp4J
-         gdV5+0T/B5kmjPEfIq5SpiaZje4KjQQwAbHx90VGMaVS0Oq8exPzkw+i+FTnIUuE7aRE
-         Y6RQmN93VIN1Z8pqXAKG7I7MmPH8suo5ctgQl81b1o/quf5OjYUQLr40OBuXsDSrLLrk
-         SaBTsQogLex6pqwnqYPR/6g7YRTGHSrQoBzNdspXqJ8mBlFJem79RGhPDlU3Bq6etWav
-         GNCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703543554; x=1704148354;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9AXVgWVsZaXTaZ2MYrLDbeRzFgb65vHx3yvBMYSyN7I=;
-        b=JftIcNMhObDci1bse7MWuGgXplypfVJNeBdpCuQCKPgF0v+TlWza8CfNlW6PBOCBFr
-         4MrczRbyJ0vsMBgYYXPfP3utKZtNZ/8M1NrM+PXDU0bPbSC1bX7Gf4RudnCAfpIDdeZG
-         IS10EaxGLmzNZuTqSzOg6nmoiV9uXIrcsHPmw0rFtjY/nG8AfAlxuoYhkmfDdLS6dyY7
-         gEMYHGXB7ysbq67maJ9g/xoHDNMx+op/1q82o418jz9o3pDM5dDvuos6oekj4Asb6hxM
-         pHsPPbsqTl3EHS556A11SSI3vGBZapC++koOIek1lPTb5JNqyKmdeYQlLyMQwLVrq+Vm
-         v3AQ==
-X-Gm-Message-State: AOJu0YyvCsPnk8yp1mS0ipnhWKDHPiG324pDRFicGVMrbtYbrvDrbzrL
-	NIO7LEYh5yHYzwIeh0d2Fyg=
-X-Google-Smtp-Source: AGHT+IF525M1SC2MBZdNWTYLYvaOFmLvhK/WeGaLidoL7771wvZqYFubfDK0gB87y3l2paGzoVQTMw==
-X-Received: by 2002:a37:e112:0:b0:781:c38:8e60 with SMTP id c18-20020a37e112000000b007810c388e60mr7727978qkm.102.1703543554520;
-        Mon, 25 Dec 2023 14:32:34 -0800 (PST)
-Received: from localhost.localdomain (107-015-241-140.res.spectrum.com. [107.15.241.140])
-        by smtp.gmail.com with ESMTPSA id br37-20020a05620a462500b0077edde498d3sm3856151qkb.89.2023.12.25.14.32.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Dec 2023 14:32:34 -0800 (PST)
-From: John Clark <inindev@gmail.com>
-To: "Rob Herring" <robh+dt@kernel.org>,
-	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
-	"Conor Dooley" <conor+dt@kernel.org>,
-	"Heiko Stuebner" <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: "Thomas McKahan" <tmckahan@singleboardsolutions.com>,
-	devicetree@vger.kernel.org,
+	id 1rHvCX-00BQ1y-2G;
+	Tue, 26 Dec 2023 00:21:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5722660C98;
+	Tue, 26 Dec 2023 00:21:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBE99C433C8;
+	Tue, 26 Dec 2023 00:21:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1703550099;
+	bh=KnSATFSyOZ4+4RVZvqwFS/FZHQTtYsgjx1WVj9YuKPU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=IQsFH+3YBr75W0dRxAgzzWqYsl1PbdA2jyjC21TRUYNQ/TbwZLD9Mn2P+wXcBcd5F
+	 PYzttGAwNwxgR8ODdi98YAUfVKLGQoVsoNKvDyssVVM9DRGmKYj0pXhy2coMT+YqJj
+	 8rsVROk0xOjswHftRheHED6epPXJl1ZxljdIoEvM6hlrbd/NJVQCYcCfEC6xi6wBmX
+	 QmRWEmmMo23OTQfCZeniNM5ul/F38SL75gz3ZNkyYMglAQKdeRqqcYht5LbyuNM+Vb
+	 euQdKvrxpLVXcpaq5dyxAbY8/bKO+tvaI05gE5oCcFvI7zMJUsUC1oB5IuY4EziIie
+	 sH4iswq/YofGQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Wolfram Sang <wsa@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	John Clark <inindev@gmail.com>
-Subject: [PATCH v2] arm64: dts: rockchip: correct gpio_pwrctrl1 typo
-Date: Mon, 25 Dec 2023 22:32:16 +0000
-Message-ID: <20231225223226.17690-1-inindev@gmail.com>
+	linux-rockchip@lists.infradead.org,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.6 31/39] i2c: rk3x: fix potential spinlock recursion on poll
+Date: Mon, 25 Dec 2023 19:19:21 -0500
+Message-ID: <20231226002021.4776-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231226002021.4776-1-sashal@kernel.org>
+References: <20231226002021.4776-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.6.8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231225_143236_231075_1FACD8FA 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20231225_162141_783068_484EB6A8 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,31 +81,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Both rk806_dvs1_null and rk806_dvs2_null duplicate gpio_pwrctrl2 and
-gpio_pwrctrl1 is not set. This patch sets gpio_pwrctrl1.
+From: Jensen Huang <jensenhuang@friendlyarm.com>
 
-Signed-off-by: John Clark <inindev@gmail.com>
+[ Upstream commit 19cde9c92b8d3b7ee555d0da3bcb0232d3a784f4 ]
+
+Possible deadlock scenario (on reboot):
+rk3x_i2c_xfer_common(polling)
+    -> rk3x_i2c_wait_xfer_poll()
+        -> rk3x_i2c_irq(0, i2c);
+            --> spin_lock(&i2c->lock);
+            ...
+        <rk3x i2c interrupt>
+        -> rk3x_i2c_irq(0, i2c);
+            --> spin_lock(&i2c->lock); (deadlock here)
+
+Store the IRQ number and disable/enable it around the polling transfer.
+This patch has been tested on NanoPC-T4.
+
+Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
+Signed-off-by: Wolfram Sang <wsa@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-Changes since v1:
- - added commit message with additional patch detail
+ drivers/i2c/busses/i2c-rk3x.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-index 0fc48fb0d34d..e83b71510a47 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-@@ -591,7 +591,7 @@ pmic@0 {
- 		#gpio-cells = <2>;
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index a044ca0c35a19..4362db7c57892 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -178,6 +178,7 @@ struct rk3x_i2c_soc_data {
+  * @clk: function clk for rk3399 or function & Bus clks for others
+  * @pclk: Bus clk for rk3399
+  * @clk_rate_nb: i2c clk rate change notify
++ * @irq: irq number
+  * @t: I2C known timing information
+  * @lock: spinlock for the i2c bus
+  * @wait: the waitqueue to wait for i2c transfer
+@@ -200,6 +201,7 @@ struct rk3x_i2c {
+ 	struct clk *clk;
+ 	struct clk *pclk;
+ 	struct notifier_block clk_rate_nb;
++	int irq;
  
- 		rk806_dvs1_null: dvs1-null-pins {
--			pins = "gpio_pwrctrl2";
-+			pins = "gpio_pwrctrl1";
- 			function = "pin_fun0";
- 		};
+ 	/* Settings */
+ 	struct i2c_timings t;
+@@ -1087,13 +1089,18 @@ static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
  
+ 		spin_unlock_irqrestore(&i2c->lock, flags);
+ 
+-		rk3x_i2c_start(i2c);
+-
+ 		if (!polling) {
++			rk3x_i2c_start(i2c);
++
+ 			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
+ 						     msecs_to_jiffies(WAIT_TIMEOUT));
+ 		} else {
++			disable_irq(i2c->irq);
++			rk3x_i2c_start(i2c);
++
+ 			timeout = rk3x_i2c_wait_xfer_poll(i2c);
++
++			enable_irq(i2c->irq);
+ 		}
+ 
+ 		spin_lock_irqsave(&i2c->lock, flags);
+@@ -1310,6 +1317,8 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	i2c->irq = irq;
++
+ 	platform_set_drvdata(pdev, i2c);
+ 
+ 	if (i2c->soc_data->calc_timings == rk3x_i2c_v0_calc_timings) {
 -- 
 2.43.0
 
