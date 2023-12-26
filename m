@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EE32C46CD3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 20:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D20C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 21:15:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/e+fZ3h2OU+G8e5Cnr36ryx770w2a4jeQTtqhM8iO0s=; b=S8n+FmGWqKveAH
-	Re+LJForzbZx4iHP5pekuAX4wAkafdJvEudcuVtPqZBgNY45oRdHGBlj1pN+3jpbybZ6A2MbCZ1+C
-	ogzxsi+xuW7PuhPJsFkHmVLY6rbt3UgaOoMxXZXSFNbXMWxYC2bjATauqO0JW4f5+cpUPg/610ff6
-	KYrdUttiw2hzegqbyBt3amDrERht6XlGYjDqtp/Mkyw3gpJ50s5EUeB55tCgAjI2/wxBFCSVIGHbF
-	TNegBwspcMww3F414ARytQ9vORRto4eGAE6ZRWY0TklEkYQ6M2DLzLclqn/cO+NsEYM1jF6dRoRV2
-	G7j82OcwNO+l0lLUKh8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=brw7izN87QKe27U7LxB4WngDZdnGL5LZmrUmM0Jy1Vo=; b=GUwfniuphBfGUJ
+	T04DoYVzzHcJtrkh+H6P5h2dcGIv8bZarTAWqPdFIUYUsdGtfMH9qJ9BlzcqmcsJt5BQSH7SolF38
+	tTLF4sElWco+EDbGIJpua3DTD467/rtjMEcnXGv/TCwdsA/IOYNYohZ5yJbO7spvKIMLedlGpyea1
+	rS4xXoY8u8WAEsYz4XNmF8eDXJPWc9xSgum4Sk+uJ9cFldV+TzLXY/KNkLPKeYbBa09fMdEjpEA9j
+	lvvZjpDLY96+29x3aGAXN2LHPZs79g2TXZu09AwouPICAFSiHlYSxz8HCI069r9YHDT7CrgwB0eQJ
+	jay6zF/UX+hGArI99Q6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIDdK-00DUD9-0W;
-	Tue, 26 Dec 2023 20:02:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rIEly-00DYDu-0o;
+	Tue, 26 Dec 2023 21:15:34 +0000
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIDdG-00DU9a-04
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 26 Dec 2023 20:02:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
-	Content-Type:Content-ID:Content-Description;
-	bh=WnHaCiJRfpPGl2Fxvk26Xz7yYvu7rKjQdjdVfjQamuM=; b=jkDqKJyweN+cZYIyblognh8EJ3
-	Jm4WjyZIkL+lD45FOpCO87jve4LqYvbxLWfwK6yvyIbP6J3QPciZoAFumQzTbdvfg8FukmjwKouOh
-	KYeiMFkmMluFil1Ch1WzUWUL8lEzPukT5+PeL/KGY1j+fNs5ZuO1yIAw5+eqb3fXbeu8fIJ8NdSjY
-	7bCtbv8qzCjqyR5IyzAQNVfhGeVFTVhR/j9cdn5uU2y0lUFLUYs9BoZoFM+wEC06JjeMf4sDELg0J
-	QNW1gB3n87gjFb9M+Za958kX9bP4jNJFKQVGJ1iUQ//KJdqm3UjH2xLzFKGDIzXm3N+WifD8XwlBi
-	GVUnbHSw==;
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIDd7-000T3f-0i
+	id 1rIDcv-00DTtK-2A
 	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Dec 2023 20:02:27 +0000
-Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-67f85fe5632so32992636d6.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 12:02:17 -0800 (PST)
+	Tue, 26 Dec 2023 20:02:12 +0000
+Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-67fe0210665so16404916d6.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 12:02:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1703620934; x=1704225734; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=WnHaCiJRfpPGl2Fxvk26Xz7yYvu7rKjQdjdVfjQamuM=;
-        b=KUNcZOSbjFRagMFInYUb78E9tWnOROKQ4aWno+klbmUj2nO/+kijaF4qQpdBvEkFRk
-         sW/sqA94Y18PsnwR6nw8WBmdEw6wItTvAKk8IiMDhvrciZ967ghuYnDHJK6LMAkTLg/O
-         wf7mavf348prKp0Ry8cbgQolAk+5sf/RxBHbK66b3OFryVBHRGH3erR6MXz15llizD7p
-         NVI/T/2ozA4Ad+K9mhUFqyOLFOM+jZNXneMJVeiYAVmLmc6E90hcZmSI9eyu6TPwCe4R
-         WjZQ7p+2KVkgnmoyxffMwnJ1GgrRKHtCVpnXztoGXAAbzZvTAZ4n/IlmTerPNNLjQvgC
-         G7ug==
+        d=soleen.com; s=google; t=1703620928; x=1704225728; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=O3PECSz7M6LwJTPdrkLY+55pPQo2vTN8jkKqtc7LNKw=;
+        b=aTEjK3ePZoEW/ZewiYfAiXAoWwtfsJfBtyBnVUgfoICI+RYA9Uy+J7Ix4C+nzCR4NW
+         2xNVJHH/p8l8lM31KSnqt+/2nCzyha+gEYFIRqKEwjUI0yUkVDuaBJ0IUEqMBuIZI3D3
+         e6/4nIH83kPiOYjuxvq4dF7Cc6/ey32j2+aDznUVUFGcXYz1aq8R3SApu2j0BLEgOVaa
+         0160qPe9UPPZXmlN8mHNstX5gt/yCiyXTAIiHIwNxqW8xVU3/U5VpYX4kF57IlTir9Um
+         V6eRuNeh9Gf3uIkWBZhStdjNBIEP/YXhXQhIdIbHkSHHidkDOM5N4aJy6Fim2mk+8C7n
+         7qRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703620934; x=1704225734;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WnHaCiJRfpPGl2Fxvk26Xz7yYvu7rKjQdjdVfjQamuM=;
-        b=KfzXgxzTMJSL4bXp7YVJkAAljcYnm1adiL4QgGYIhlG5l72UK03KD+fad1xHJXPbeC
-         gwfRm7wNfNhkzaR11jdV4IKV/LDvuUqa+nZftH4XHv61t+mEERES6Urzf9mcuZNqKlEo
-         jkyTN3AQYmqoTYYLmDq3ua7XU/WogWh0a3c5fUFYr22Vm4PtPRgzsNdtU9dbQNPM/nvz
-         tqlhYiVqe5Dr9OpmLR8zPykHfD1xBHBJuQEDiinih6rrJnjWLHYsZbhasmANjFddA+nO
-         iOxqF3rUJDokgkBTqpZ3qu5ioSuB+AjJxJKaADXYKNH6W30NefL0eEl1foTYkxfWYdJ0
-         oQ2A==
-X-Gm-Message-State: AOJu0Yx8RjYuNokgkVW9aAfGdSwMTmm2FZaruYsXQEl2lSqKWZgqi+De
-	+y0U3N6DrD538UkVH/bOBliRUTuPdcQ+QA==
-X-Google-Smtp-Source: AGHT+IEjSL92+xZ/bAtRl2Tju/DugZ1gVQzpypJBCuESKN0IWhI/QyhY0T30YGd/IZCCOkD5WPDVJg==
-X-Received: by 2002:a05:6214:2a85:b0:67f:67de:5d32 with SMTP id jr5-20020a0562142a8500b0067f67de5d32mr12181917qvb.41.1703620934647;
-        Tue, 26 Dec 2023 12:02:14 -0800 (PST)
+        d=1e100.net; s=20230601; t=1703620928; x=1704225728;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=O3PECSz7M6LwJTPdrkLY+55pPQo2vTN8jkKqtc7LNKw=;
+        b=Ts4bEx5C64DCcjaPUPSS5nVkvIBWrVBVJrh8L7GaD6kYoat3bfoWS5v3ZHX3oFWIi4
+         7tm+GTmd7i6WnPHu5ThdP7sIfPYv7rsmhMhNcAe7RlQcnk+ftrV+k5HFQi70v3YjwFGj
+         lv6B6ZEj0gGoXkoMuBi2W+rGlAoP2p6j+c4dAobUuYP2sYLBO6UXWZFdq5XApHUN0D/l
+         yO4b7tP/Kt1vnwgISCX6UbvQhleJ6H0z0G5dNnakxs7EgpzohAqsLi+wLX/2RbBnsdGh
+         DdORqE2lobGXuhQ5Pcc2DI+W0hgf8ecNE3O6SyGnaUyZdUxymy4R0k5APwP0ym/tBjpV
+         BcUg==
+X-Gm-Message-State: AOJu0YwIQN+sq8+jhItyAq4zUHUHmrgneztP2lSA75Mo8rit/xsFJlFF
+	qEPvSgIeqmyCN+iNAD3AeI+AtAs65H0rMQ==
+X-Google-Smtp-Source: AGHT+IEQhfs2w29Y4oEHKMdn2lx6fbgiHsN/7DqKMKEEg4mMRcO6NOtJWlf/527QYsbumDRKw7qTlA==
+X-Received: by 2002:a05:6214:769:b0:67f:3d0e:783f with SMTP id f9-20020a056214076900b0067f3d0e783fmr13773008qvz.54.1703620928161;
+        Tue, 26 Dec 2023 12:02:08 -0800 (PST)
 Received: from soleen.c.googlers.com.com (55.87.194.35.bc.googleusercontent.com. [35.194.87.55])
-        by smtp.gmail.com with ESMTPSA id t5-20020a0cf985000000b0067f696f412esm4894539qvn.112.2023.12.26.12.02.13
+        by smtp.gmail.com with ESMTPSA id t5-20020a0cf985000000b0067f696f412esm4894539qvn.112.2023.12.26.12.02.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Dec 2023 12:02:14 -0800 (PST)
+        Tue, 26 Dec 2023 12:02:07 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alim.akhtar@samsung.com,
@@ -122,16 +105,14 @@ To: akpm@linux-foundation.org,
 	will@kernel.org,
 	yu-cheng.yu@intel.com,
 	rientjes@google.com
-Subject: [PATCH v3 07/10] iommu/sun50i: use page allocation function provided by iommu-pages.h
-Date: Tue, 26 Dec 2023 20:02:02 +0000
-Message-ID: <20231226200205.562565-8-pasha.tatashin@soleen.com>
+Subject: [PATCH v3 00/10] IOMMU memory observability
+Date: Tue, 26 Dec 2023 20:01:55 +0000
+Message-ID: <20231226200205.562565-1-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
-In-Reply-To: <20231226200205.562565-1-pasha.tatashin@soleen.com>
-References: <20231226200205.562565-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_200221_741763_230B5EF0 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20231226_120209_972314_765F1609 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,47 +129,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/sun50i-iommu.c to use the new page allocation functions
-provided in iommu-pages.h.
+----------------------------------------------------------------------
+Changelog
+----------------------------------------------------------------------
+v3:
+- Sync with v6.7-rc7
+- Addressed comments from David Rientjes: s/pages/page/, added unlikely() into
+  the branches, expanded comment for iommu_free_pages_list().
+- Added Acked-bys: David Rientjes
 
-Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-Acked-by: David Rientjes <rientjes@google.com>
----
- drivers/iommu/sun50i-iommu.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+v2:
+- Added Reviewed-by Janne Grunau
+- Sync with 6.7.0-rc3, 3b47bc037bd44f142ac09848e8d3ecccc726be99
+- Separated form the series patches:
+vhost-vdpa: account iommu allocations
+https://lore.kernel.org/all/20231130200447.2319543-1-pasha.tatashin@soleen.com
+vfio: account iommu allocations
+https://lore.kernel.org/all/20231130200900.2320829-1-pasha.tatashin@soleen.com
+as suggested by Jason Gunthorpe
+- Fixed SPARC build issue detected by kernel test robot
+- Drop the following patches as they do account iommu page tables:
+iommu/dma: use page allocation function provided by iommu-pages.h
+iommu/fsl: use page allocation function provided by iommu-pages.h
+iommu/iommufd: use page allocation function provided by iommu-pages.h
+as suggested by Robin Murphy. These patches are not related to IOMMU
+page tables. We might need to do a separate work to support DMA
+observability.
+- Remove support iommu/io-pgtable-arm-v7s as the 2nd level pages are
+under a page size, thanks Robin Murphy for pointing this out.
 
-diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
-index 41484a5a399b..172ddb717eb5 100644
---- a/drivers/iommu/sun50i-iommu.c
-+++ b/drivers/iommu/sun50i-iommu.c
-@@ -26,6 +26,8 @@
- #include <linux/spinlock.h>
- #include <linux/types.h>
- 
-+#include "iommu-pages.h"
-+
- #define IOMMU_RESET_REG			0x010
- #define IOMMU_RESET_RELEASE_ALL			0xffffffff
- #define IOMMU_ENABLE_REG		0x020
-@@ -679,8 +681,7 @@ sun50i_iommu_domain_alloc_paging(struct device *dev)
- 	if (!sun50i_domain)
- 		return NULL;
- 
--	sun50i_domain->dt = (u32 *)__get_free_pages(GFP_KERNEL | __GFP_ZERO,
--						    get_order(DT_SIZE));
-+	sun50i_domain->dt = iommu_alloc_pages(GFP_KERNEL, get_order(DT_SIZE));
- 	if (!sun50i_domain->dt)
- 		goto err_free_domain;
- 
-@@ -702,7 +703,7 @@ static void sun50i_iommu_domain_free(struct iommu_domain *domain)
- {
- 	struct sun50i_iommu_domain *sun50i_domain = to_sun50i_domain(domain);
- 
--	free_pages((unsigned long)sun50i_domain->dt, get_order(DT_SIZE));
-+	iommu_free_pages(sun50i_domain->dt, get_order(DT_SIZE));
- 	sun50i_domain->dt = NULL;
- 
- 	kfree(sun50i_domain);
+----------------------------------------------------------------------
+Description
+----------------------------------------------------------------------
+IOMMU subsystem may contain state that is in gigabytes. Majority of that
+state is iommu page tables. Yet, there is currently, no way to observe
+how much memory is actually used by the iommu subsystem.
+
+This patch series solves this problem by adding both observability to
+all pages that are allocated by IOMMU, and also accountability, so
+admins can limit the amount if via cgroups.
+
+The system-wide observability is using /proc/meminfo:
+SecPageTables:    438176 kB
+
+Contains IOMMU and KVM memory.
+
+Per-node observability:
+/sys/devices/system/node/nodeN/meminfo
+Node N SecPageTables:    422204 kB
+
+Contains IOMMU and KVM memory memory in the given NUMA node.
+
+Per-node IOMMU only observability:
+/sys/devices/system/node/nodeN/vmstat
+nr_iommu_pages 105555
+
+Contains number of pages IOMMU allocated in the given node.
+
+Accountability: using sec_pagetables cgroup-v2 memory.stat entry.
+
+With the change, iova_stress[1] stops as limit is reached:
+
+# ./iova_stress
+iova space:     0T      free memory:   497G
+iova space:     1T      free memory:   495G
+iova space:     2T      free memory:   493G
+iova space:     3T      free memory:   491G
+
+stops as limit is reached.
+
+This series encorporates suggestions that came from the discussion
+at LPC [2].
+----------------------------------------------------------------------
+[1] https://github.com/soleen/iova_stress
+[2] https://lpc.events/event/17/contributions/1466
+----------------------------------------------------------------------
+Previous versions
+v1: https://lore.kernel.org/all/20231128204938.1453583-1-pasha.tatashin@soleen.com
+v2: https://lore.kernel.org/linux-mm/20231130201504.2322355-1-pasha.tatashin@soleen.com
+----------------------------------------------------------------------
+
+Pasha Tatashin (10):
+  iommu/vt-d: add wrapper functions for page allocations
+  iommu/amd: use page allocation function provided by iommu-pages.h
+  iommu/io-pgtable-arm: use page allocation function provided by
+    iommu-pages.h
+  iommu/io-pgtable-dart: use page allocation function provided by
+    iommu-pages.h
+  iommu/exynos: use page allocation function provided by iommu-pages.h
+  iommu/rockchip: use page allocation function provided by iommu-pages.h
+  iommu/sun50i: use page allocation function provided by iommu-pages.h
+  iommu/tegra-smmu: use page allocation function provided by
+    iommu-pages.h
+  iommu: observability of the IOMMU allocations
+  iommu: account IOMMU allocated memory
+
+ Documentation/admin-guide/cgroup-v2.rst |   2 +-
+ Documentation/filesystems/proc.rst      |   4 +-
+ drivers/iommu/amd/amd_iommu.h           |   8 -
+ drivers/iommu/amd/init.c                |  91 +++++----
+ drivers/iommu/amd/io_pgtable.c          |  13 +-
+ drivers/iommu/amd/io_pgtable_v2.c       |  20 +-
+ drivers/iommu/amd/iommu.c               |  13 +-
+ drivers/iommu/exynos-iommu.c            |  14 +-
+ drivers/iommu/intel/dmar.c              |  10 +-
+ drivers/iommu/intel/iommu.c             |  47 ++---
+ drivers/iommu/intel/iommu.h             |   2 -
+ drivers/iommu/intel/irq_remapping.c     |  10 +-
+ drivers/iommu/intel/pasid.c             |  12 +-
+ drivers/iommu/intel/svm.c               |   7 +-
+ drivers/iommu/io-pgtable-arm.c          |   7 +-
+ drivers/iommu/io-pgtable-dart.c         |  37 ++--
+ drivers/iommu/iommu-pages.h             | 236 ++++++++++++++++++++++++
+ drivers/iommu/rockchip-iommu.c          |  14 +-
+ drivers/iommu/sun50i-iommu.c            |   7 +-
+ drivers/iommu/tegra-smmu.c              |  18 +-
+ include/linux/mmzone.h                  |   5 +-
+ mm/vmstat.c                             |   3 +
+ 22 files changed, 395 insertions(+), 185 deletions(-)
+ create mode 100644 drivers/iommu/iommu-pages.h
+
 -- 
 2.43.0.472.g3155946c3a-goog
 
