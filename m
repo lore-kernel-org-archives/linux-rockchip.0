@@ -4,115 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D20C46CD3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 21:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F7D7C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Dec 2023 22:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=brw7izN87QKe27U7LxB4WngDZdnGL5LZmrUmM0Jy1Vo=; b=GUwfniuphBfGUJ
-	T04DoYVzzHcJtrkh+H6P5h2dcGIv8bZarTAWqPdFIUYUsdGtfMH9qJ9BlzcqmcsJt5BQSH7SolF38
-	tTLF4sElWco+EDbGIJpua3DTD467/rtjMEcnXGv/TCwdsA/IOYNYohZ5yJbO7spvKIMLedlGpyea1
-	rS4xXoY8u8WAEsYz4XNmF8eDXJPWc9xSgum4Sk+uJ9cFldV+TzLXY/KNkLPKeYbBa09fMdEjpEA9j
-	lvvZjpDLY96+29x3aGAXN2LHPZs79g2TXZu09AwouPICAFSiHlYSxz8HCI069r9YHDT7CrgwB0eQJ
-	jay6zF/UX+hGArI99Q6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6Q/wYm2doyhHwXDZds7+OVpsgJ0z7Zq8v9xfMzC/gnk=; b=QYUTh+Er8XHnuP
+	GRpd1NdxJMX+H/xGX5QgF6fYsdFQufNkVuHN86Y+1MV7tiw7WFMJYJc6gzJ4YISWCdSZ92ljeP+sw
+	fnbK9N0U2Ha1LwmELsJBPd7hns+nNJDeR4oz7cignoHyTWMdGyYqWbEwSqN2UvEVrhM9YXF8jbi7Q
+	QChxnuS8COuILKF+K0mXj5gv7XvPKFrzTO4fusz23TCJWW5SgocokXapBxu61aDTcVQkgUGGHo3ST
+	Gv5h+pIAmbbvV4FETKSxyxrxeaxvyMxvUVvaNfZT089qPphp5ee9h8FtY1gblDBpRlRHI/NrFwPRh
+	xDaI7pISQMvhOXaqRbTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIEly-00DYDu-0o;
-	Tue, 26 Dec 2023 21:15:34 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1rIGHq-00Ddd9-08;
+	Tue, 26 Dec 2023 22:52:34 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIDcv-00DTtK-2A
-	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Dec 2023 20:02:12 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-67fe0210665so16404916d6.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Dec 2023 12:02:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1703620928; x=1704225728; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=O3PECSz7M6LwJTPdrkLY+55pPQo2vTN8jkKqtc7LNKw=;
-        b=aTEjK3ePZoEW/ZewiYfAiXAoWwtfsJfBtyBnVUgfoICI+RYA9Uy+J7Ix4C+nzCR4NW
-         2xNVJHH/p8l8lM31KSnqt+/2nCzyha+gEYFIRqKEwjUI0yUkVDuaBJ0IUEqMBuIZI3D3
-         e6/4nIH83kPiOYjuxvq4dF7Cc6/ey32j2+aDznUVUFGcXYz1aq8R3SApu2j0BLEgOVaa
-         0160qPe9UPPZXmlN8mHNstX5gt/yCiyXTAIiHIwNxqW8xVU3/U5VpYX4kF57IlTir9Um
-         V6eRuNeh9Gf3uIkWBZhStdjNBIEP/YXhXQhIdIbHkSHHidkDOM5N4aJy6Fim2mk+8C7n
-         7qRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703620928; x=1704225728;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=O3PECSz7M6LwJTPdrkLY+55pPQo2vTN8jkKqtc7LNKw=;
-        b=Ts4bEx5C64DCcjaPUPSS5nVkvIBWrVBVJrh8L7GaD6kYoat3bfoWS5v3ZHX3oFWIi4
-         7tm+GTmd7i6WnPHu5ThdP7sIfPYv7rsmhMhNcAe7RlQcnk+ftrV+k5HFQi70v3YjwFGj
-         lv6B6ZEj0gGoXkoMuBi2W+rGlAoP2p6j+c4dAobUuYP2sYLBO6UXWZFdq5XApHUN0D/l
-         yO4b7tP/Kt1vnwgISCX6UbvQhleJ6H0z0G5dNnakxs7EgpzohAqsLi+wLX/2RbBnsdGh
-         DdORqE2lobGXuhQ5Pcc2DI+W0hgf8ecNE3O6SyGnaUyZdUxymy4R0k5APwP0ym/tBjpV
-         BcUg==
-X-Gm-Message-State: AOJu0YwIQN+sq8+jhItyAq4zUHUHmrgneztP2lSA75Mo8rit/xsFJlFF
-	qEPvSgIeqmyCN+iNAD3AeI+AtAs65H0rMQ==
-X-Google-Smtp-Source: AGHT+IEQhfs2w29Y4oEHKMdn2lx6fbgiHsN/7DqKMKEEg4mMRcO6NOtJWlf/527QYsbumDRKw7qTlA==
-X-Received: by 2002:a05:6214:769:b0:67f:3d0e:783f with SMTP id f9-20020a056214076900b0067f3d0e783fmr13773008qvz.54.1703620928161;
-        Tue, 26 Dec 2023 12:02:08 -0800 (PST)
-Received: from soleen.c.googlers.com.com (55.87.194.35.bc.googleusercontent.com. [35.194.87.55])
-        by smtp.gmail.com with ESMTPSA id t5-20020a0cf985000000b0067f696f412esm4894539qvn.112.2023.12.26.12.02.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Dec 2023 12:02:07 -0800 (PST)
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-To: akpm@linux-foundation.org,
-	alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io,
-	asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com,
-	bhelgaas@google.com,
-	cgroups@vger.kernel.org,
-	corbet@lwn.net,
-	david@redhat.com,
-	dwmw2@infradead.org,
-	hannes@cmpxchg.org,
-	heiko@sntech.de,
-	iommu@lists.linux.dev,
-	jernej.skrabec@gmail.com,
-	jonathanh@nvidia.com,
-	joro@8bytes.org,
-	krzysztof.kozlowski@linaro.org,
-	linux-doc@vger.kernel.org,
-	linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	lizefan.x@bytedance.com,
-	marcan@marcan.st,
-	mhiramat@kernel.org,
-	m.szyprowski@samsung.com,
-	pasha.tatashin@soleen.com,
-	paulmck@kernel.org,
-	rdunlap@infradead.org,
-	robin.murphy@arm.com,
-	samuel@sholland.org,
-	suravee.suthikulpanit@amd.com,
-	sven@svenpeter.dev,
-	thierry.reding@gmail.com,
-	tj@kernel.org,
-	tomas.mudrunka@gmail.com,
-	vdumpa@nvidia.com,
-	wens@csie.org,
-	will@kernel.org,
-	yu-cheng.yu@intel.com,
-	rientjes@google.com
-Subject: [PATCH v3 00/10] IOMMU memory observability
-Date: Tue, 26 Dec 2023 20:01:55 +0000
-Message-ID: <20231226200205.562565-1-pasha.tatashin@soleen.com>
-X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+	id 1rIGHl-00Ddbw-1u;
+	Tue, 26 Dec 2023 22:52:32 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 3BQMpCJr012323;
+	Tue, 26 Dec 2023 22:51:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	message-id:date:mime-version:subject:to:cc:references:from
+	:in-reply-to:content-type:content-transfer-encoding; s=
+	qcppdkim1; bh=SYGUVY+UmaauR562PbcqjdKMb0wR6VSm6vagIVeqRGo=; b=li
+	z/p8FfzzRfplh/ewxt8MvcLOel1zueV87QuyR/WrgaucgKbFeS4hjP2qzT8YU+V0
+	LYdPFI9yXqDNWFvLJyQfku4MKxsjdUGDbCUGhLBG64Hkik1kx6cgd2EM2vYsJ96o
+	nGSwEWbu3QQdvzbzzkZ4ovzcjomIwOCCW08HbV0eiPjLHb782NcesnLbkthIsfTJ
+	1wnThGjH/Dcx0OoO+sRh74NLXGjBVleXKWTsDWvaMygPIHzq7J/dlm7RLHyuZfcA
+	1Uh4ZX1KOdPj1rb65yhlBE0IoZBVfAB7AVoL3x0OSpp5St/1uVhGyX754bzy3jCn
+	rn9WKJlmG+gXvsWSxYlw==
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3v80kfrt6e-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 26 Dec 2023 22:51:32 +0000 (GMT)
+Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3BQMpVep026218
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 26 Dec 2023 22:51:31 GMT
+Received: from [10.110.123.205] (10.80.80.8) by nasanex01b.na.qualcomm.com
+ (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Tue, 26 Dec
+ 2023 14:51:29 -0800
+Message-ID: <1eab96e0-fad1-437b-b8bc-77013e32f724@quicinc.com>
+Date: Tue, 26 Dec 2023 14:51:28 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/6] drm/panel: Add driver for BOE TH101MB31IG002-28A
+ panel
+Content-Language: en-US
+To: Manuel Traut <manut@mecka.net>,
+        Neil Armstrong
+	<neil.armstrong@linaro.org>,
+        Sam Ravnborg <sam@ravnborg.org>,
+        Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard
+	<mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie
+	<airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Sandy Huang <hjc@rock-chips.com>, Mark Yao
+	<markyao0591@gmail.com>,
+        Diederik de Haas <didi.debian@cknow.org>,
+        Segfault
+	<awarnecke002@hotmail.com>,
+        Arnaud Ferraris <aferraris@debian.org>
+CC: <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>
+References: <20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net>
+ <20231222-pinetab2-v1-2-e148a7f61bd1@mecka.net>
+From: Jessica Zhang <quic_jesszhan@quicinc.com>
+In-Reply-To: <20231222-pinetab2-v1-2-e148a7f61bd1@mecka.net>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01b.na.qualcomm.com (10.46.141.250)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: q5RlT8qdRJyWlDqxxTvLd5FKV_pP9hhc
+X-Proofpoint-GUID: q5RlT8qdRJyWlDqxxTvLd5FKV_pP9hhc
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-12-09_01,2023-12-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 impostorscore=0
+ mlxlogscore=999 malwarescore=0 clxscore=1011 priorityscore=1501 mlxscore=0
+ spamscore=0 lowpriorityscore=0 adultscore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2311290000
+ definitions=main-2312260174
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231226_120209_972314_765F1609 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20231226_145229_797496_2AFBF29C 
+X-CRM114-Status: GOOD (  27.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,134 +116,389 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-----------------------------------------------------------------------
-Changelog
-----------------------------------------------------------------------
-v3:
-- Sync with v6.7-rc7
-- Addressed comments from David Rientjes: s/pages/page/, added unlikely() into
-  the branches, expanded comment for iommu_free_pages_list().
-- Added Acked-bys: David Rientjes
 
-v2:
-- Added Reviewed-by Janne Grunau
-- Sync with 6.7.0-rc3, 3b47bc037bd44f142ac09848e8d3ecccc726be99
-- Separated form the series patches:
-vhost-vdpa: account iommu allocations
-https://lore.kernel.org/all/20231130200447.2319543-1-pasha.tatashin@soleen.com
-vfio: account iommu allocations
-https://lore.kernel.org/all/20231130200900.2320829-1-pasha.tatashin@soleen.com
-as suggested by Jason Gunthorpe
-- Fixed SPARC build issue detected by kernel test robot
-- Drop the following patches as they do account iommu page tables:
-iommu/dma: use page allocation function provided by iommu-pages.h
-iommu/fsl: use page allocation function provided by iommu-pages.h
-iommu/iommufd: use page allocation function provided by iommu-pages.h
-as suggested by Robin Murphy. These patches are not related to IOMMU
-page tables. We might need to do a separate work to support DMA
-observability.
-- Remove support iommu/io-pgtable-arm-v7s as the 2nd level pages are
-under a page size, thanks Robin Murphy for pointing this out.
 
-----------------------------------------------------------------------
-Description
-----------------------------------------------------------------------
-IOMMU subsystem may contain state that is in gigabytes. Majority of that
-state is iommu page tables. Yet, there is currently, no way to observe
-how much memory is actually used by the iommu subsystem.
+On 12/22/2023 3:05 AM, Manuel Traut wrote:
+> From: Segfault <awarnecke002@hotmail.com>
+> 
+> The BOE TH101MB31IG002-28A panel is a WXGA panel.
+> It is used in Pine64 Pinetab2 and PinetabV.
+> 
+> Signed-off-by: Segfault <awarnecke002@hotmail.com>
+> Signed-off-by: Manuel Traut <manut@mecka.net>
+> ---
+>   drivers/gpu/drm/panel/Kconfig                      |  11 +
+>   drivers/gpu/drm/panel/Makefile                     |   1 +
+>   .../gpu/drm/panel/panel-boe-th101mb31ig002-28a.c   | 307 +++++++++++++++++++++
+>   3 files changed, 319 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+> index 99e14dc212ec..927ddd10e688 100644
+> --- a/drivers/gpu/drm/panel/Kconfig
+> +++ b/drivers/gpu/drm/panel/Kconfig
+> @@ -67,6 +67,17 @@ config DRM_PANEL_BOE_HIMAX8279D
+>   	  24 bit RGB per pixel. It provides a MIPI DSI interface to
+>   	  the host and has a built-in LED backlight.
+>   
+> +config DRM_PANEL_BOE_TH101MB31UIG002_28A
+> +	tristate "Boe TH101MB31UIG002-28A panel"
+> +	depends on OF
+> +	depends on DRM_MIPI_DSI
+> +	depends on BACKLIGHT_CLASS_DEVICE
+> +	help
+> +	  Say Y here if you want to enable support for Boe
+> +	  TH101MB31UIG002-28A TFT-LCD modules. The panel has a 800x1280
+> +	  resolution and uses 24 bit RGB per pixel. It provides a MIPI DSI
+> +	  interface to the host and has a built-in LED backlight.
+> +
+>   config DRM_PANEL_BOE_TV101WUM_NL6
+>   	tristate "BOE TV101WUM and AUO KD101N80 45NA 1200x1920 panel"
+>   	depends on OF
+> diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+> index d10c3de51c6d..dd6e1ac9d0a2 100644
+> --- a/drivers/gpu/drm/panel/Makefile
+> +++ b/drivers/gpu/drm/panel/Makefile
+> @@ -5,6 +5,7 @@ obj-$(CONFIG_DRM_PANEL_ASUS_Z00T_TM5P5_NT35596) += panel-asus-z00t-tm5p5-n35596.
+>   obj-$(CONFIG_DRM_PANEL_AUO_A030JTN01) += panel-auo-a030jtn01.o
+>   obj-$(CONFIG_DRM_PANEL_BOE_BF060Y8M_AJ0) += panel-boe-bf060y8m-aj0.o
+>   obj-$(CONFIG_DRM_PANEL_BOE_HIMAX8279D) += panel-boe-himax8279d.o
+> +obj-$(CONFIG_DRM_PANEL_BOE_TH101MB31UIG002_28A) += panel-boe-th101mb31ig002-28a.o
+>   obj-$(CONFIG_DRM_PANEL_BOE_TV101WUM_NL6) += panel-boe-tv101wum-nl6.o
+>   obj-$(CONFIG_DRM_PANEL_DSI_CM) += panel-dsi-cm.o
+>   obj-$(CONFIG_DRM_PANEL_LVDS) += panel-lvds.o
+> diff --git a/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c b/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c
+> new file mode 100644
+> index 000000000000..ac1dc99a0300
+> --- /dev/null
+> +++ b/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c
+> @@ -0,0 +1,307 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2023 Alexander Warnecke <awarnecke002@hotmail.com>
+> + * Copyright (c) 2023 Manuel Traut <manut@mecka.net>
+> + */
+> +
+> +#include <linux/delay.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/regulator/consumer.h>
+> +
+> +#include <drm/drm_connector.h>
+> +#include <drm/drm_mipi_dsi.h>
+> +#include <drm/drm_modes.h>
+> +#include <drm/drm_panel.h>
+> +
+> +struct boe_th101mb31ig002 {
+> +	struct drm_panel panel;
+> +	bool enabled;
+> +	bool prepared;
 
-This patch series solves this problem by adding both observability to
-all pages that are allocated by IOMMU, and also accountability, so
-admins can limit the amount if via cgroups.
+Hi Manuel,
 
-The system-wide observability is using /proc/meminfo:
-SecPageTables:    438176 kB
+If I remember correctly, commit 
+d2aacaf07395bd798373cbec6af05fff4147aff3 should have introduced 
+prepared/enabled do the drm_panel struct.
 
-Contains IOMMU and KVM memory.
+Thanks,
 
-Per-node observability:
-/sys/devices/system/node/nodeN/meminfo
-Node N SecPageTables:    422204 kB
+Jessica Zhang
 
-Contains IOMMU and KVM memory memory in the given NUMA node.
-
-Per-node IOMMU only observability:
-/sys/devices/system/node/nodeN/vmstat
-nr_iommu_pages 105555
-
-Contains number of pages IOMMU allocated in the given node.
-
-Accountability: using sec_pagetables cgroup-v2 memory.stat entry.
-
-With the change, iova_stress[1] stops as limit is reached:
-
-# ./iova_stress
-iova space:     0T      free memory:   497G
-iova space:     1T      free memory:   495G
-iova space:     2T      free memory:   493G
-iova space:     3T      free memory:   491G
-
-stops as limit is reached.
-
-This series encorporates suggestions that came from the discussion
-at LPC [2].
-----------------------------------------------------------------------
-[1] https://github.com/soleen/iova_stress
-[2] https://lpc.events/event/17/contributions/1466
-----------------------------------------------------------------------
-Previous versions
-v1: https://lore.kernel.org/all/20231128204938.1453583-1-pasha.tatashin@soleen.com
-v2: https://lore.kernel.org/linux-mm/20231130201504.2322355-1-pasha.tatashin@soleen.com
-----------------------------------------------------------------------
-
-Pasha Tatashin (10):
-  iommu/vt-d: add wrapper functions for page allocations
-  iommu/amd: use page allocation function provided by iommu-pages.h
-  iommu/io-pgtable-arm: use page allocation function provided by
-    iommu-pages.h
-  iommu/io-pgtable-dart: use page allocation function provided by
-    iommu-pages.h
-  iommu/exynos: use page allocation function provided by iommu-pages.h
-  iommu/rockchip: use page allocation function provided by iommu-pages.h
-  iommu/sun50i: use page allocation function provided by iommu-pages.h
-  iommu/tegra-smmu: use page allocation function provided by
-    iommu-pages.h
-  iommu: observability of the IOMMU allocations
-  iommu: account IOMMU allocated memory
-
- Documentation/admin-guide/cgroup-v2.rst |   2 +-
- Documentation/filesystems/proc.rst      |   4 +-
- drivers/iommu/amd/amd_iommu.h           |   8 -
- drivers/iommu/amd/init.c                |  91 +++++----
- drivers/iommu/amd/io_pgtable.c          |  13 +-
- drivers/iommu/amd/io_pgtable_v2.c       |  20 +-
- drivers/iommu/amd/iommu.c               |  13 +-
- drivers/iommu/exynos-iommu.c            |  14 +-
- drivers/iommu/intel/dmar.c              |  10 +-
- drivers/iommu/intel/iommu.c             |  47 ++---
- drivers/iommu/intel/iommu.h             |   2 -
- drivers/iommu/intel/irq_remapping.c     |  10 +-
- drivers/iommu/intel/pasid.c             |  12 +-
- drivers/iommu/intel/svm.c               |   7 +-
- drivers/iommu/io-pgtable-arm.c          |   7 +-
- drivers/iommu/io-pgtable-dart.c         |  37 ++--
- drivers/iommu/iommu-pages.h             | 236 ++++++++++++++++++++++++
- drivers/iommu/rockchip-iommu.c          |  14 +-
- drivers/iommu/sun50i-iommu.c            |   7 +-
- drivers/iommu/tegra-smmu.c              |  18 +-
- include/linux/mmzone.h                  |   5 +-
- mm/vmstat.c                             |   3 +
- 22 files changed, 395 insertions(+), 185 deletions(-)
- create mode 100644 drivers/iommu/iommu-pages.h
-
--- 
-2.43.0.472.g3155946c3a-goog
-
+> +
+> +	struct mipi_dsi_device *dsi;
+> +
+> +	struct regulator *power;
+> +	struct gpio_desc *enable;
+> +	struct gpio_desc *reset;
+> +
+> +	enum drm_panel_orientation orientation;
+> +};
+> +
+> +static int boe_th101mb31ig002_disable(struct drm_panel *panel)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +
+> +	if (!ctx->enabled)
+> +		return 0;
+> +
+> +	mipi_dsi_dcs_set_display_off(ctx->dsi);
+> +	msleep(120);
+> +	ctx->enabled = false;
+> +
+> +	return 0;
+> +}
+> +
+> +static int boe_th101mb31ig002_unprepare(struct drm_panel *panel)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +
+> +	if (!ctx->prepared)
+> +		return 0;
+> +
+> +	mipi_dsi_dcs_enter_sleep_mode(ctx->dsi);
+> +	msleep(220);
+> +	gpiod_set_value_cansleep(ctx->reset, 1);
+> +	gpiod_set_value_cansleep(ctx->enable, 0);
+> +	regulator_disable(ctx->power);
+> +	ctx->prepared = false;
+> +
+> +	return 0;
+> +}
+> +
+> +static int boe_th101mb31ig002_prepare(struct drm_panel *panel)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +	struct mipi_dsi_device *dsi = ctx->dsi;
+> +	int ret;
+> +
+> +	if (ctx->prepared)
+> +		return 0;
+> +
+> +	ret = regulator_enable(ctx->power);
+> +	if (ret) {
+> +		dev_err(&dsi->dev, "Failed to enable power supply: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	gpiod_set_value_cansleep(ctx->enable, 1);
+> +	msleep(120);
+> +	gpiod_direction_output(ctx->reset, 1);
+> +	msleep(120);
+> +	gpiod_direction_output(ctx->reset, 0);
+> +	msleep(120);
+> +
+> +	mipi_dsi_dcs_write_seq(dsi, 0xE0, 0xAB, 0xBA);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xE1, 0xBA, 0xAB);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB1, 0x10, 0x01, 0x47, 0xFF);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB2, 0x0C, 0x14, 0x04, 0x50, 0x50, 0x14);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB3, 0x56, 0x53, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB4, 0x33, 0x30, 0x04);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB6, 0xB0, 0x00, 0x00, 0x10, 0x00, 0x10,
+> +			       0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB8, 0x05, 0x12, 0x29, 0x49, 0x48, 0x00,
+> +			       0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xB9, 0x7C, 0x65, 0x55, 0x49, 0x46, 0x36,
+> +			       0x3B, 0x24, 0x3D, 0x3C, 0x3D, 0x5C, 0x4C, 0x55,
+> +			       0x47, 0x46, 0x39, 0x26, 0x06, 0x7C, 0x65, 0x55,
+> +			       0x49, 0x46, 0x36, 0x3B, 0x24, 0x3D, 0x3C, 0x3D,
+> +			       0x5C, 0x4C, 0x55, 0x47, 0x46, 0x39, 0x26, 0x06);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC0, 0xFF, 0x87, 0x12, 0x34, 0x44, 0x44,
+> +			       0x44, 0x44, 0x98, 0x04, 0x98, 0x04, 0x0F, 0x00,
+> +			       0x00, 0xC1);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC1, 0x54, 0x94, 0x02, 0x85, 0x9F, 0x00,
+> +			       0x7F, 0x00, 0x54, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC2, 0x17, 0x09, 0x08, 0x89, 0x08, 0x11,
+> +			       0x22, 0x20, 0x44, 0xFF, 0x18, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC3, 0x86, 0x46, 0x05, 0x05, 0x1C, 0x1C,
+> +			       0x1D, 0x1D, 0x02, 0x1F, 0x1F, 0x1E, 0x1E, 0x0F,
+> +			       0x0F, 0x0D, 0x0D, 0x13, 0x13, 0x11, 0x11, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC4, 0x07, 0x07, 0x04, 0x04, 0x1C, 0x1C,
+> +			       0x1D, 0x1D, 0x02, 0x1F, 0x1F, 0x1E, 0x1E, 0x0E,
+> +			       0x0E, 0x0C, 0x0C, 0x12, 0x12, 0x10, 0x10, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC6, 0x2A, 0x2A);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xC8, 0x21, 0x00, 0x31, 0x42, 0x34, 0x16);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xCA, 0xCB, 0x43);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xCD, 0x0E, 0x4B, 0x4B, 0x20, 0x19, 0x6B,
+> +			       0x06, 0xB3);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xD2, 0xE3, 0x2B, 0x38, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xD4, 0x00, 0x01, 0x00, 0x0E, 0x04, 0x44,
+> +			       0x08, 0x10, 0x00, 0x00, 0x00);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xE6, 0x80, 0x01, 0xFF, 0xFF, 0xFF, 0xFF,
+> +			       0xFF, 0xFF);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xF0, 0x12, 0x03, 0x20, 0x00, 0xFF);
+> +	mipi_dsi_dcs_write_seq(dsi, 0xF3, 0x00);
+> +
+> +	mipi_dsi_dcs_exit_sleep_mode(dsi);
+> +	msleep(120);
+> +	ctx->prepared = true;
+> +
+> +	return 0;
+> +}
+> +
+> +static int boe_th101mb31ig002_enable(struct drm_panel *panel)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +
+> +	if (ctx->enabled)
+> +		return 0;
+> +
+> +	mipi_dsi_dcs_set_display_on(ctx->dsi);
+> +	msleep(120);
+> +	ctx->enabled = true;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct drm_display_mode boe_th101mb31ig002_default_mode = {
+> +	.clock		= 73500,
+> +	.hdisplay	= 800,
+> +	.hsync_start	= 800 + 64,
+> +	.hsync_end	= 800 + 64 + 16,
+> +	.htotal		= 800 + 64 + 16 + 64,
+> +	.vdisplay	= 1280,
+> +	.vsync_start	= 1280 + 2,
+> +	.vsync_end	= 1280 + 2 + 4,
+> +	.vtotal		= 1280 + 2 + 4 + 12,
+> +	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
+> +};
+> +
+> +static int boe_th101mb31ig002_get_modes(struct drm_panel *panel,
+> +					struct drm_connector *connector)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +	struct drm_display_mode *mode;
+> +
+> +	mode = drm_mode_duplicate(connector->dev,
+> +				  &boe_th101mb31ig002_default_mode);
+> +	if (!mode) {
+> +		dev_err(panel->dev, "Failed to add mode %ux%u@%u\n",
+> +			boe_th101mb31ig002_default_mode.hdisplay,
+> +			boe_th101mb31ig002_default_mode.vdisplay,
+> +			drm_mode_vrefresh(&boe_th101mb31ig002_default_mode));
+> +		return -ENOMEM;
+> +	}
+> +
+> +	drm_mode_set_name(mode);
+> +	drm_mode_probed_add(connector, mode);
+> +
+> +	connector->display_info.bpc = 8;
+> +	connector->display_info.width_mm = 216;
+> +	connector->display_info.height_mm = 135;
+> +
+> +	/*
+> +	 * TODO: Remove once all drm drivers call
+> +	 * drm_connector_set_orientation_from_panel()
+> +	 */
+> +	drm_connector_set_panel_orientation(connector, ctx->orientation);
+> +
+> +	return 1;
+> +}
+> +
+> +static enum drm_panel_orientation boe_th101mb31ig002_get_orientation(struct drm_panel *panel)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
+> +						      struct boe_th101mb31ig002,
+> +						      panel);
+> +
+> +	return ctx->orientation;
+> +}
+> +
+> +static const struct drm_panel_funcs boe_th101mb31ig002_funcs = {
+> +	.disable = boe_th101mb31ig002_disable,
+> +	.unprepare = boe_th101mb31ig002_unprepare,
+> +	.prepare = boe_th101mb31ig002_prepare,
+> +	.enable = boe_th101mb31ig002_enable,
+> +	.get_modes = boe_th101mb31ig002_get_modes,
+> +	.get_orientation = boe_th101mb31ig002_get_orientation,
+> +};
+> +
+> +static int boe_th101mb31ig002_dsi_probe(struct mipi_dsi_device *dsi)
+> +{
+> +	struct boe_th101mb31ig002 *ctx;
+> +	int ret;
+> +
+> +	ctx = devm_kzalloc(&dsi->dev, sizeof(*ctx), GFP_KERNEL);
+> +	if (!ctx)
+> +		return -ENOMEM;
+> +
+> +	ctx->enabled = false;
+> +	ctx->prepared = false;
+> +
+> +	mipi_dsi_set_drvdata(dsi, ctx);
+> +	ctx->dsi = dsi;
+> +
+> +	drm_panel_init(&ctx->panel, &dsi->dev, &boe_th101mb31ig002_funcs,
+> +		       DRM_MODE_CONNECTOR_DSI);
+> +
+> +	ctx->power = devm_regulator_get(&dsi->dev, "power");
+> +	if (IS_ERR(ctx->power))
+> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->power),
+> +				     "Failed to get power regulator\n");
+> +
+> +	ctx->enable = devm_gpiod_get(&dsi->dev, "enable", GPIOD_OUT_LOW);
+> +	if (IS_ERR(ctx->enable))
+> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->enable),
+> +				     "Failed to get enable GPIO\n");
+> +
+> +	ctx->reset = devm_gpiod_get(&dsi->dev, "reset", GPIOD_OUT_HIGH);
+> +	if (IS_ERR(ctx->reset))
+> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->reset),
+> +				     "Failed to get reset GPIO\n");
+> +
+> +	ret = of_drm_get_panel_orientation(dsi->dev.of_node,
+> +					   &ctx->orientation);
+> +	if (ret)
+> +		return dev_err_probe(&dsi->dev, ret,
+> +				     "Failed to get orientation\n");
+> +
+> +	ret = drm_panel_of_backlight(&ctx->panel);
+> +	if (ret)
+> +		return ret;
+> +
+> +	drm_panel_add(&ctx->panel);
+> +
+> +	dsi->lanes = 4;
+> +	dsi->format = MIPI_DSI_FMT_RGB888;
+> +	dsi->mode_flags = MIPI_DSI_MODE_VIDEO_BURST |
+> +			  MIPI_DSI_MODE_NO_EOT_PACKET |
+> +			  MIPI_DSI_MODE_LPM;
+> +
+> +	ret = mipi_dsi_attach(dsi);
+> +	if (ret < 0) {
+> +		drm_panel_remove(&ctx->panel);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void boe_th101mb31ig002_dsi_remove(struct mipi_dsi_device *dsi)
+> +{
+> +	struct boe_th101mb31ig002 *ctx = mipi_dsi_get_drvdata(dsi);
+> +
+> +	mipi_dsi_detach(dsi);
+> +	drm_panel_remove(&ctx->panel);
+> +}
+> +
+> +static const struct of_device_id boe_th101mb31ig002_of_match[] = {
+> +	{ .compatible = "boe,th101mb31ig002-28a", },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, boe_th101mb31ig002_of_match);
+> +
+> +static struct mipi_dsi_driver boe_th101mb31ig002_driver = {
+> +	.driver = {
+> +		.name = "boe-th101mb31ig002-28a",
+> +		.of_match_table = boe_th101mb31ig002_of_match,
+> +	},
+> +	.probe = boe_th101mb31ig002_dsi_probe,
+> +	.remove = boe_th101mb31ig002_dsi_remove,
+> +};
+> +module_mipi_dsi_driver(boe_th101mb31ig002_driver);
+> +
+> +MODULE_AUTHOR("Alexander Warnecke <awarnecke002@hotmail.com>");
+> +MODULE_DESCRIPTION("BOE TH101MB31IG002-28A MIPI-DSI LCD panel");
+> +MODULE_LICENSE("GPL");
+> 
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
