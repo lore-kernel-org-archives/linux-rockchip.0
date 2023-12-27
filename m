@@ -4,64 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D181C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Dec 2023 22:29:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1482C46CD4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Dec 2023 23:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4DBtFPaKBnTeAfbGv4rh50w+tmBbadarTpIJlzKYSEc=; b=mnFs3OVbcvqQYNRvfErllC+egw
-	IJVqXlphzTkQ+1iJP0vc/7qs+6VBvt84hn0+cwAeH8qph3zcuejh1mJ5mY2Ty2sra8RT+NywwIhqc
-	CO8/X31FLzj7KVuUxt50W33xa9F4towr6OmFGXfZFsKvZZlFPBhqM/fPJhXj3a2v56OtGM994CLdp
-	bKC6AMP8jxM1eY0gJeM/Kh+8loaO0HmvhBXoEdWrkcNvlweOxTiY7SO7GPSzhIknvB91e4FFLvOFe
-	JG8K6Njl4h4ZQ3Z/o9nVoGjpLSA7jUPRi4nqwdojDt8HEPg2CQRoxjBmgfPGw8JZNfZZCy3x0APST
-	y3EnTBKA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/xFqvkStKzlW7ymKwo35XTCnuKM0q6Rp3T0N/LWbS0U=; b=SDaQA/0wRRKw/G
+	b54+ARxVDkU0f+W9OyfrymdYm86gUSPtVU8Y6M4pYg4Z2Q4Eyeqd7o/moxLyRUT0YQSrz0w0LEDZ4
+	+moVcCl1RNePpxAeoZvLNMpiOQKngh3oFtmONOYZhE8rZGzSb52x9K6xdh/MBD0g4fjW22nD9ruuv
+	8rgAGXcy06Iy7BiMW7x7a45IINgoWYQoleW/cdhDoNw+eBV4OqaWsI3VZ/vbokmaL/jPj+Lq/hEZa
+	40jyRbCUlw0sX1NomEuF7lH88N9Wj8ChK0Et/UvcLbdjNUXBvZ7ComJBNE9GBkhYmeqe7ib6nYVsA
+	0WOgdzqY5pGbn6q+qjxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIcOu-00Fbfa-1b;
-	Wed, 27 Dec 2023 22:29:20 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rId1H-00Fedp-2a;
+	Wed, 27 Dec 2023 23:08:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rIcOh-00FbbO-1i;
-	Wed, 27 Dec 2023 22:29:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1703715541;
-	bh=lVrc7pxkQHkTuollDpRgSMgm5cYN81tWN40U/e2kEUs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tqcXeBIQEcV3CNcZJ16qIstgq1OEJm881nbEZVThQzd9IBww5OuWVAof3T2xqS1hp
-	 tB+EG2z+6ImNyrwIr8YUuBL0xDYrd+FbFwenLHY7uKsQOlqY5oVCUUIWDiBgndGrvf
-	 Vrh2CCa1a3Vj4i9VNu4HkefX6rGg2N45Vs1m/CF/4cTZ+xNxRVo7MVoy+FaiAi8dSx
-	 tTAaHKKmDqJayfeGlqpNRM3iuNIUZizxRNcki5vNHupAgQf7OQXKaGNmkj7t/uOJUA
-	 lM5n74o63FkLtqZvpLS2WstF+QtK6c4tnKNj4nMIJ81vROjzjmto4xQLpLQU/4GfSM
-	 VuvYrA4aOFHCw==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2BEC43780624;
-	Wed, 27 Dec 2023 22:19:01 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id CA6A4106CE00; Wed, 27 Dec 2023 01:16:01 +0100 (CET)
-Date: Wed, 27 Dec 2023 01:16:01 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: John Clark <inindev@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
-	Thomas McKahan <tmckahan@singleboardsolutions.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: support poweroff on the
- rock-5b
-Message-ID: <pqvmguq77qbxmuxsushrz4ykxtmvkugirbxnckmbfk47gx2u5n@cz2kllnjr6ba>
-References: <20231225222859.17153-1-inindev@gmail.com>
+	id 1rId1E-00FedM-2J
+	for linux-rockchip@lists.infradead.org;
+	Wed, 27 Dec 2023 23:08:58 +0000
+Received: from i53875a56.versanet.de ([83.135.90.86] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rId1A-0000uL-L2; Thu, 28 Dec 2023 00:08:52 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: liujianfeng1994@gmail.com, Jianfeng Liu <liujianfeng1994@gmail.com>
+Subject: Re: [PATCH 1/3] media: verisilicon: Add support for Hantro G1 on RK3588
+Date: Thu, 28 Dec 2023 00:08:51 +0100
+Message-ID: <2608913.C4sosBPzcN@diego>
+In-Reply-To: <20231227173911.3295410-2-liujianfeng1994@gmail.com>
+References: <20231227173911.3295410-1-liujianfeng1994@gmail.com>
+ <20231227173911.3295410-2-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20231225222859.17153-1-inindev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231227_142907_699478_B0ADD387 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20231227_150856_781849_8ECB91BF 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,99 +56,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2040692855235155970=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============2040692855235155970==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kvxm4plewcxgwfam"
-Content-Disposition: inline
-
-
---kvxm4plewcxgwfam
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
 Hi,
 
-On Mon, Dec 25, 2023 at 10:28:19PM +0000, John Clark wrote:
-> Allow the rock-5b to poweroff its pmic. When issuing a "shutdown -h now"
-> on the rock-5b it reboots instead. Defining 'system-power-controller'
-> allows the rk806 to power down.
->=20
-> Commit c699fbfdfd54 ("arm64: dts: rockchip: Support poweroff on
-> NanoPC-T6") similarly resolves this issue for the nanopc-t6.
->=20
-> Signed-off-by: John Clark <inindev@gmail.com>
+Am Mittwoch, 27. Dezember 2023, 18:39:09 CET schrieb Jianfeng Liu:
+> This patch adds support for RK3588 in existing Hantro
+> video decoder kernel driver.
+> 
+> Tested with FFmpeg v4l2_request code taken from [1]
+> with MPEG2, H.264 and VP8 samples.
+> 
+> [1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
+> 
+
+thanks so much for looking into this :-) .
+
+But please use scripts/get_maintainers.pl when submitting patches, because
+not everyone reads mailing lists all the time.
+
+Most of the time people enjoy being able to read the whole series, so also
+please don't do per-patch recipients.
+
+Especially when adding devicetree bindings you need to add the devicetree
+maintainers and lists.
+
+So running for example
+# scripts/get_maintainer.pl -f Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+will get you this pretty correct list of recipients for your series:
+
+Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Philipp Zabel <p.zabel@pengutronix.de>
+Mauro Carvalho Chehab <mchehab@kernel.org>
+Rob Herring <robh+dt@kernel.org>
+Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Conor Dooley <conor+dt@kernel.org>
+Heiko Stuebner <heiko@sntech.de>
+linux-media@vger.kernel.org
+linux-rockchip@lists.infradead.org
+devicetree@vger.kernel.org
+linux-arm-kernel@lists.infradead.org
+linux-kernel@vger.kernel.org
+
+
+
+
+
+> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 > ---
+>  drivers/media/platform/verisilicon/hantro_drv.c    |  1 +
+>  drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
+>  .../media/platform/verisilicon/rockchip_vpu_hw.c   | 14 ++++++++++++++
+>  3 files changed, 16 insertions(+)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+> index db3df6cc4..4c988f272 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -722,6 +722,7 @@ static const struct of_device_id of_hantro_match[] = {
+>  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+>  	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
+>  	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
+> +	{ .compatible = "rockchip,rk3588-vpu", .data = &rk3588_vpu_variant, },
+>  	{ .compatible = "rockchip,rk3588-av1-vpu", .data = &rk3588_vpu981_variant, },
 
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+I do think this list is sorted alphabetically, so rk3588-vpu would be _after_ rk3588-a...
 
--- Sebastian
 
-> Changes since v1:
->  - added commit message with additional patch detail
->  - expressed the related commit using checkpatch
->=20
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64=
-/boot/dts/rockchip/rk3588-rock-5b.dts
-> index 74719aaf697c..dc7b88f29172 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -426,6 +426,8 @@ pmic@0 {
->  		pinctrl-0 =3D <&pmic_pins>, <&rk806_dvs1_null>,
->  			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
-> =20
-> +		system-power-controller;
+Thanks
+Heiko
+
+>  #endif
+>  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+> index 9aec8a79a..276f09a7a 100644
+> --- a/drivers/media/platform/verisilicon/hantro_hw.h
+> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+> @@ -405,6 +405,7 @@ extern const struct hantro_variant rk3328_vpu_variant;
+>  extern const struct hantro_variant rk3399_vpu_variant;
+>  extern const struct hantro_variant rk3568_vepu_variant;
+>  extern const struct hantro_variant rk3568_vpu_variant;
+> +extern const struct hantro_variant rk3588_vpu_variant;
+>  extern const struct hantro_variant rk3588_vpu981_variant;
+>  extern const struct hantro_variant sama5d4_vdec_variant;
+>  extern const struct hantro_variant sunxi_vpu_variant;
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> index f97527670..4ee8d64eb 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> @@ -797,6 +797,20 @@ const struct hantro_variant px30_vpu_variant = {
+>  	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
+>  };
+> 
+> +const struct hantro_variant rk3588_vpu_variant = {
+> +	.dec_offset = 0x400,
+> +	.dec_fmts = rockchip_vdpu2_dec_fmts,
+> +	.num_dec_fmts = ARRAY_SIZE(rockchip_vdpu2_dec_fmts),
+> +	.codec = HANTRO_MPEG2_DECODER |
+> +		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
+> +	.codec_ops = rk3399_vpu_codec_ops,
+> +	.irqs = rockchip_vdpu2_irqs,
+> +	.num_irqs = ARRAY_SIZE(rockchip_vdpu2_irqs),
+> +	.init = rockchip_vpu_hw_init,
+> +	.clk_names = rockchip_vpu_clk_names,
+> +	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
+> +};
 > +
->  		vcc1-supply =3D <&vcc5v0_sys>;
->  		vcc2-supply =3D <&vcc5v0_sys>;
->  		vcc3-supply =3D <&vcc5v0_sys>;
-> --=20
-> 2.43.0
->=20
->=20
-
---kvxm4plewcxgwfam
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmWLbL0ACgkQ2O7X88g7
-+ppLdRAAh2XPhGTc/H7YdLn4Qr1Z2zdInwHqPU48aPogwAwNH0X4GOjp+e05nCPG
-umdF7rRq+ZQvwp5wADlZ76cGpJ1PhxyiXGXjv00EvflDBb0S/edJjvrhxj4MFJMl
-e5UJH8pQNLaJlCk2wpz0nSEO7MiCM5xnukb8aUAuXJhunjqrFEXT4b8I88kmWlW5
-YmcvT40usLIv7s9tyYyy0l9KE/BdPBQ/ANDhKfJaulN2s3+UdfIco8cgUuR2UaUX
-Ry3cqQUm7jLi3iDVAwUTS8lCv+3gI//D890PEh4KDd5XCsU5q5Y0XYi/WcXWNmJQ
-hgbfyWSgAXToOc1AKFj2STX+hgESqLMigV1MbZOeDBVUajJ9U9d9I0ewMlGxjNwB
-reCEvU60sH6LrO37Lxmzwt+w1G8oD1NA6LWPglhh3CAPGnOXW0Fq53TIs9DdZ0x6
-vVRXWTevFPYwXTUehJD1PzLmJ0vUEwHXBtErcOcfllAieRetQMr9A5RwDNao6nST
-j3kxWh3ExyXX48sAOU3b0AhF+lbqojesaxtXweXj6Nn9hPz6qvDyqWHn9nd9bL2e
-E4rW7i91zVuovFC1ExDsLkypFMm7Wxxkte82NgbWAMGXC0eosSs+246wQWMlNniZ
-7nyYUW/tin2mfYvugbyYzgpsbI4nW8gtoE3JgMuM0gEQzQr+jjU=
-=+bGO
------END PGP SIGNATURE-----
-
---kvxm4plewcxgwfam--
+>  const struct hantro_variant rk3588_vpu981_variant = {
+>  	.dec_offset = 0x0,
+>  	.dec_fmts = rockchip_vpu981_dec_fmts,
+> --
+> 2.34.1
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
 
 
---===============2040692855235155970==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2040692855235155970==--
-
