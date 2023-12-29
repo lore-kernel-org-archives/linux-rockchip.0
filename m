@@ -4,49 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA23C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Dec 2023 03:29:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C07C46CD3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Dec 2023 11:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gZZiAPDTRKd1C8reDmctosGiqBoyfl2W8zOdkN/ycNA=; b=i269NC6eCNQv6i
-	bVUBVwhMMIW92Pt/cgpPTFLDY06ZuOulPtccL3w4bCXJKGf5U6u69yYM1meLNILNL4cJfjTZbik4H
-	0Np1HhW+sF2Dtm1+GTX8FMGc/DeUAx7Rb8+PwpA6h9D3vuIfq4ApfqkyH+FIiUbZrmhNpVAh0wR++
-	bi/pB3waR97oUxgcbb/lh8liCiz+nPguEQ8nY0NXIyoFpiwsAHDGG7vtDL9jQnCc11yvi+81f8/7I
-	siwT9z3xEcF7wxB2xvBOXI2WEd2M/PAVGBuhhQF5InFXz6KvFeqvC9dLsPNvkRCiK7D0rfogg9sib
-	NWXKjvRABqlt5yKWeY9A==;
+	List-Owner; bh=3fDttSrdM5NP+bXHbSC5yFLXLg2QxUztq5t6HSz4bhY=; b=rJU3m+0ycc+MI2
+	kzi8lmM/MfYTWQu9Zd4q8fR4HaKJM8092xDbdKgB2Xn2/exuICuRZr0u/ymnd3AWCqFRew7hC0JCf
+	/F3ZkPHpHM5vRcuqnW3el8MAN9ChHfO3BTtfplHZjeltG2cU9JS673fS4FGuYzOKDqcLmsH/5WxQk
+	InuPb0aUbo5y1daONsrDxwKdcN0U9iVAP6grulK7mF7VVbdxynDp5PJPhKXZLWLz7dLspORLNr7qD
+	CtQaZpkk6CSDSpqc8UyepU/gIBk4ZYWaPe+8UWma24+feSBiZGb/47RuqpxPSI+TH+yLCxfIFhaRV
+	/kaBGUSc6BiDfdtrcn7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ3YN-0009UU-0K;
-	Fri, 29 Dec 2023 03:28:55 +0000
-Received: from abb.hmeau.com ([144.6.53.87])
+	id 1rJAcJ-000eZh-2A;
+	Fri, 29 Dec 2023 11:01:27 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJ3YJ-0009R8-28;
-	Fri, 29 Dec 2023 03:28:53 +0000
-Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
-	by formenos.hmeau.com with smtp (Exim 4.94.2 #2 (Debian))
-	id 1rJ3Y0-00FG3R-64; Fri, 29 Dec 2023 11:28:33 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Fri, 29 Dec 2023 11:28:43 +0800
-Date: Fri, 29 Dec 2023 11:28:43 +0800
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: ovidiu.panait@windriver.com
-Cc: linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
-	davem@davemloft.net, Heiko Stuebner <heiko@sntech.de>,
-	Corentin Labbe <clabbe@baylibre.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/7] crypto: rk3288 - Use helper to set reqsize
-Message-ID: <ZY486/gwA4o/hmeM@gondor.apana.org.au>
-References: <20231218164649.2492465-1-ovidiu.panait@windriver.com>
+	id 1rJAcG-000eZI-16;
+	Fri, 29 Dec 2023 11:01:25 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-50e70b0b869so5013847e87.2;
+        Fri, 29 Dec 2023 03:01:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703847682; x=1704452482; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=i0ULouMbZfbNQIosOC2sdx22KVaZt1+H52YT662+sxE=;
+        b=JeljwIteNC6rLrxx8ZQ+ovL9QZGhN9RuYlUvr/AQCa+g+YwzbTXUGNPPp5bKemtbPA
+         cYmpyXWjHTpH9SVfu+6btxBijTj9ZbaIh5Iph6nPIj/ZdZ/lQK7idTjfJwH/uhyFBN6l
+         dRtAVsbwBdqjFIrt375/xFCKwG/Zq3a8HoWQJBBCieBADrWqV2ngXKMxfthYbHBGcwVm
+         db8SJILU3sgRUmU/xEmmtOAllDJqh5eTHmEQVVhOfHAcoHBsoJ00GxCNMZcaVNP4cHFZ
+         bxKqIIkAr/vuPIXNNoyZxlbILJ71O40l0rVh+5ryXEHW2wEJfzhIqZHL8zb5wlDOvLeq
+         b72Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703847682; x=1704452482;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=i0ULouMbZfbNQIosOC2sdx22KVaZt1+H52YT662+sxE=;
+        b=pmIJdjFedYo2TSTlxn2UWxWKkf0PmY52FJXU68iKUbuo0O/GUGYqG4MTOn5qoO12C8
+         DBHjXOru4Oba6cOxsWReOdjn2wUJ/f1QjeLucriWKD4YX+p3H86VUe/iCgACNUKzQmmt
+         6Nk0wNYMwWD0WG2um0aLeZoh9t3WsbZsH1nQ9JeyUm6wqkACOhZdyHbc1UvBjoX7UMxu
+         4teS47VWhTmn7qofXBijjV5D1m8K9ReSTWnQLt/su+oUFKtpx3IFpO67sAeRGLgUOXMj
+         ftWpIBpPJD4X+fhtIhuRW6qHORZQFosVjgjoZ1E6aJujMYHo4Fm4HxOUuUy3aNGkn3lt
+         aY/Q==
+X-Gm-Message-State: AOJu0Yw/0t1Q8afwYfT5BVqodCGPfQshAJHuPtXb5LN2xlibatxHCeKJ
+	QTlzMDI3EiWPD/Os/fZiuxs1XLo8zjf08XfSqfc=
+X-Google-Smtp-Source: AGHT+IFYmZYcuaNbniJSBscSzp9FFsmSNpN2Lf6ogu42hEQ/b84GJyhHVpKT54sM7Bzbn6T7OweYzUudjSyuZqxMlQ0=
+X-Received: by 2002:ac2:5934:0:b0:50e:7673:54d4 with SMTP id
+ v20-20020ac25934000000b0050e767354d4mr2872352lfi.29.1703847681448; Fri, 29
+ Dec 2023 03:01:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231218164649.2492465-1-ovidiu.panait@windriver.com>
+References: <20231228131617.3411561-1-liujianfeng1994@gmail.com>
+In-Reply-To: <20231228131617.3411561-1-liujianfeng1994@gmail.com>
+From: Hugh Cole-Baker <sigmaris@gmail.com>
+Date: Fri, 29 Dec 2023 11:01:09 +0000
+Message-ID: <CAAXNxMT3f68-ptM7Crhrfmn7iwTyJc9pwz4Beob+5beVODaSHQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] Add hantro g1 video decoder support for RK3588
+To: Jianfeng Liu <liujianfeng1994@gmail.com>
+Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, 
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+	heiko@sntech.de, sfr@canb.auug.org.au, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231228_192851_709962_B6C6AB19 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20231229_030124_380040_78751CB0 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,26 +89,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 18, 2023 at 06:46:43PM +0200, ovidiu.panait@windriver.com wrote:
-> From: Ovidiu Panait <ovidiu.panait@windriver.com>
-> 
-> The value of reqsize must only be changed through the helper.
-> 
-> Signed-off-by: Ovidiu Panait <ovidiu.panait@windriver.com>
-> ---
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Corentin Labbe <clabbe@baylibre.com>
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> 
->  drivers/crypto/rockchip/rk3288_crypto_skcipher.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Thu, 28 Dec 2023 at 13:16, Jianfeng Liu <liujianfeng1994@gmail.com> wrote:
+>
+> This is the v2 version of this series adding hantro g1 video decoder
+> support for rk3588.
+>
+> Changes in v2:
+> - Fix alphabetical order in patch1 and patch3
+> - Sort device tree node by bus-address
+> - Drop rk3588_vpu_variant fron v1 because that is exactly the same as rk3568_vpu_variant
+> - Link to v1: https://lore.kernel.org/all/20231227173911.3295410-1-liujianfeng1994@gmail.com
+>
+> Jianfeng Liu (3):
+>   media: verisilicon: Add support for Hantro G1 on RK3588
+>   arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
+>   dt-bindings: media: rockchip-vpu: Add RK3588 compatible
+>
+>  .../bindings/media/rockchip-vpu.yaml          |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 20 +++++++++++++++++++
+>  .../media/platform/verisilicon/hantro_drv.c   |  1 +
+>  3 files changed, 22 insertions(+)
+>
+> --
+> 2.34.1
 
-All applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+Tested H.264 and VP8 decode with Fluster on NanoPC T6;
+
+H.264 JVT-AVC_V1 test suite:
+  Ran 129/135 tests successfully.
+  (matches FFmpeg-H.264 software decoder)
+H.264 JVT-FR-EXT test suite:
+  Ran 44/69 tests successfully
+  (some failures caused by lack of support for Hi10P and 4:2:2)
+VP8-TEST-VECTORS test suite:
+  Ran 59/61 tests successfully
+  (matches FFmpeg-VP8 software decoder)
+Full results at:
+https://gist.github.com/sigmaris/d3d8586bfced5ddc021aa9dab94d4ab8
+
+Tested-by: Hugh Cole-Baker <sigmaris@gmail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
