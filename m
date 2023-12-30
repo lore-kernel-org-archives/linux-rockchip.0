@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523A0C47074
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 11:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBE4C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 11:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NrSdI5R5G06WG2F1EdAXVachnSQJax8q5dqTCWdOkiQ=; b=D15XhJnQNK1dmV
-	wuC/tfYL6l2606l25WG7BcfGERPk8ZucJYlB0AJwqkcUxX86yqWkKb+13zquO/gDHVfhmTBwgVPcx
-	zPFKXDOv57ZURZJm1suPwBm77ATRuyDWSlp5lL/e2+xUqRU9To/faTccMuWnxRx/bHoFGS5lXWddD
-	PcIQlQVrJcfhnt280HirZxfkLD1hlqrmWXIN2ns5PFDxB3cp0jCQ5xtJPnXxPKeyE4Kc0/2erKYQI
-	qKlxpqBpUWANmlYyS7ERSh/Yg0UG8BUFiAtgJmsGU9pH0fNm9DpqZxcfHiZNKVm6LaUVb7/WiER1W
-	ozFgoUJqgxlzLzm0LZJA==;
+	List-Owner; bh=CXS6tFKzWLNpthscE5R+YgbYkNi3odBZA6si51sqkPI=; b=YSxu6TGZZZAJaT
+	p7joMndzy9KqGuN5ZMSKgSTkNKtD9p1CCSOy68YGQDVrMm+o9pW3VQBk6g5mrN2yQbqW2LqZCKvUm
+	JJa8lZ4E6wM3206SN3l3drETH3YKFZDY+q3tZm3HT4fEs3awyPC8La/UErokH3POQvTiL0KddOWsi
+	IOPS/ntZxq4gCKOjL+VdSZuFeI3LmGBDsHqtUUkZWKux+HuGbkL9l0/RCRKFFRGtS1t0W8oAkJfSY
+	Mw3P2UoL1rYbGL91Miwr0hmdzDkPQACxJpFz2IYluPe/TcPrrNxSVyM9/7lTW2VPe9vRG2Q6w7qjw
+	zmRgSTM1EyoTAiK2sixg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJXMY-002cDa-0t;
-	Sat, 30 Dec 2023 11:18:42 +0000
-Received: from forward500c.mail.yandex.net ([178.154.239.208])
+	id 1rJXMZ-002cEf-14;
+	Sat, 30 Dec 2023 11:18:43 +0000
+Received: from forward501c.mail.yandex.net ([178.154.239.209])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJXMM-002c19-22;
-	Sat, 30 Dec 2023 11:18:32 +0000
+	id 1rJXMN-002c34-1s;
+	Sat, 30 Dec 2023 11:18:33 +0000
 Received: from mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:12ac:0:640:b64e:0])
-	by forward500c.mail.yandex.net (Yandex) with ESMTP id CC5A6609F0;
-	Sat, 30 Dec 2023 14:18:21 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 3IVUxO8g5Ko0-JextyKru;
-	Sat, 30 Dec 2023 14:18:20 +0300
+	by forward501c.mail.yandex.net (Yandex) with ESMTP id 40E7360E6D;
+	Sat, 30 Dec 2023 14:18:28 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 3IVUxO8g5Ko0-5KxRwi7a;
+	Sat, 30 Dec 2023 14:18:27 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail;
-	t=1703935100; bh=NOfOR3WmGBG8VnmZCdu7/HLUZv7HTJnYt7hUccOv6xE=;
+	t=1703935107; bh=n47Gea6rGFU10OYrbHw+VPcV6QRBypXud2PYckOKEwc=;
 	h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
-	b=m+rfidmsZ/CdVddtHvA0jnJXUCLjwn9mQAKFeYvf8C1aCHZHgsUOA6ZACwxskwEmf
-	 0G+UIkaOTaZ6Y2/qsGMvmIoFaqcfFp7OwprozFZ98nMD43FikXC0c+MLL4WLvTcDFB
-	 f4CJlj58u53DO42igxCvqW76SpxmSOzw10PmnLpU=
+	b=W8zgIgCtuNeM5x2ACniLjtz5qpWGIoyAWFaKAoiHL4ZQSorjY2WmZqsUwWX3nIbz2
+	 7WGgZ4V4rsE5bKYeW752PGYcQtDVlbkHF57zGNwogBabWnGFtk+pqAKWWIkbxCyluL
+	 218FQG1R4C3GO3sNmIyWmIZLxzpz5IXzEn71UH/I=
 Authentication-Results: mail-nwsmtp-smtp-production-main-46.myt.yp-c.yandex.net; dkim=pass header.i=@6tel.net
 From: efectn@6tel.net
 To: linux-rockchip@lists.infradead.org
@@ -52,17 +52,16 @@ Cc: devicetree@vger.kernel.org,
 	jonas@kwiboo.se,
 	inindev@gmail.com,
 	Muhammed Efe Cetin <efectn@protonmail.com>
-Subject: [PATCH v2 1/3] dt-bindings: arm: rockchip: Add NanoPi R6 series boards
-Date: Sat, 30 Dec 2023 14:17:59 +0300
-Message-ID: <30c1c7eac02cd32b76edb77572523f6ad8de89fb.1703934548.git.efectn@protonmail.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: Add support for NanoPi R6C
+Date: Sat, 30 Dec 2023 14:18:01 +0300
+Message-ID: <0f9ee0baa6c9de4d54dd6d13957ca15a63ec934f.1703934548.git.efectn@protonmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1703934548.git.efectn@protonmail.com>
 References: <cover.1703934548.git.efectn@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231230_031830_879025_31788954 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20231230_031831_800467_5CEEA000 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +80,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Muhammed Efe Cetin <efectn@protonmail.com>
 
-Add support for NanoPi R6 series boards that based on RK3588S.
-
-NanoPi R6S basically has:
-- USB3
-- USB2
-- eMMC
-- 2x 2.5GBe & 1x 1GBe ethernet
-- HDMI
-- SD card support
-
-Unlike R6S variant, NanoPi R6C has PCIe M.2 M-key instead of 1x 2.5GBe.
+NanoPi R6C is mostly same as R6S variant. It has M2 port instead of a
+NIC port and different led labeling.
 
 Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile              |  1 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ee92f0535..07c4eb828 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -225,6 +225,13 @@ properties:
-               - friendlyarm,nanopi-r5s
-           - const: rockchip,rk3568
- 
-+      - description: FriendlyElec NanoPi R6 series boards
-+        items:
-+          - enum:
-+              - friendlyarm,nanopi-r6c
-+              - friendlyarm,nanopi-r6s
-+          - const: rockchip,rk3588s
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 634b9be47..f2d13482e 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -115,3 +115,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-rock-5a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-orangepi-5.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+new file mode 100644
+index 000000000..497bbb570
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+@@ -0,0 +1,14 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
-       - description: FriendlyElec NanoPC T6
-         items:
-           - const: friendlyarm,nanopc-t6
++/dts-v1/;
++
++#include "rk3588s-nanopi-r6s.dts"
++
++/ {
++	model = "FriendlyElec NanoPi R6C";
++	compatible = "friendlyarm,nanopi-r6c", "rockchip,rk3588s";
++};
++
++&lan2_led {
++	label = "user_led";
++};
 -- 
 2.43.0
 
