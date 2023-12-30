@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE4A5C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 10:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC56EC46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 10:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4aLQCRsDWT2ZGqWb/RCTHW1npyKNQmBkjABH+SG9nP8=; b=AIlfBwWi0Rp70g
-	kwtw7qX+xoi9RtZE8Cv7mf/w5RjdPx8kuNUGJQnWUAGGycht0c+Ut/I8kNq5oJ9hj0kbTdcNavub7
-	ksBggsUpe7vwfHSceY/ibjrdkcWaDzfyCoqqTLTDK2NEK3i70FCF4jUjPt3Y0vNE6vVv3C4kK/Ohx
-	QmxRJ7VRtD4UPOHgxA2i5or5N3kHZvpDdxFbIy2ofpOaP/orIf06N3eciUt3J93hNuZRRptCSNBA1
-	7lvHfb+11y7E8qJb8FMHonpIBhswEyF9agXvawQZprRj5Fq4nTrJdx/JoeQjxtDAN3ZaeOoIEDYdI
-	tqC6o/+sOWLhyPzUnwlA==;
+	List-Owner; bh=3EPleMvqdvI9iGryoJfs3szCHDssBRkf7iP45CeJJ44=; b=uXXcHTN6CqKla3
+	Qm/f8MNyCwbBd3DNab71D00j80o/3B1e3A24ixDY7JJCOZGK6G+FIyx+/yVRu3whp2R4bV304j/hl
+	GHyDgWm9VwdZ/0CZS+t60ZlCodvP0W+hoJovXWbPhwyDeLuhriv+Mfn365zScDFSJXSWN3CRP3tWE
+	QP6EMuhk8A4JeSj1aVn1ifFxuFmOagV2qpoX6eS+oZ6o7bvQtxB/xm5GPXFq14zezgA9zNLaeiHlL
+	/9jB/DCZ5fKrMpE5jm0oMWR/uc/eJA8tnLEeCkrfjjZMmTdc6bS1KWLHHnxSIXi+ycbZk0YYFj1EF
+	ddi/91aRTZ80KPyeKVyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJWIl-002W3k-2N;
-	Sat, 30 Dec 2023 10:10:43 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1rJWSO-002Wob-37;
+	Sat, 30 Dec 2023 10:20:40 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJWIi-002W2r-1F;
-	Sat, 30 Dec 2023 10:10:41 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1d4a980fdedso2196135ad.1;
-        Sat, 30 Dec 2023 02:10:39 -0800 (PST)
+	id 1rJWSM-002Wo4-2A;
+	Sat, 30 Dec 2023 10:20:39 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-1d4a2526a7eso4106875ad.3;
+        Sat, 30 Dec 2023 02:20:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703931039; x=1704535839; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1703931637; x=1704536437; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GUwoHcWCWeNwaua/GlD5vIC8+pco3z2IDUy7BqEvQuc=;
-        b=QG/+ecnz7rP6zbbefQAa0TQP7Dl3LXO1RLn3bQbViTItGJgIbOFuXLX2xl/PKoPtMO
-         FjZlgskftVFP3s9EXisE9TeBOpGAjdmXh/02yUnil11gsQkblhcDzVLdWitt8RKilbyS
-         FzcpNCBlZR5GKoiYjC6xOWWD0xthkWpcXozsUZLNn7dbehJajqKqzV4DJTkG6VQdZH+W
-         uREvjM8J4TJihr6VhROc8H2fZz5K+H+hgnV2ZY+kPB82I6qRr9uHoYPxF73YBzSiFCbj
-         nmj2F+u/EKNgeU5pfn8c/jpVnEmKekbQwfBA5ctVobBIQCAKZpUHJolnC32K/xHdgWhn
-         QlFw==
+        bh=4XaXtsrgSXYum/vGa7ZpC/g8Y8EoPoiL6Ss51LA99lM=;
+        b=iaeJ1Cf5hCEiJhckZOD29DkO7Qt+mWXJoEUrpbB8ytilKD2g8Ulw1p9bzw0K6LrHMj
+         PevhrNg5ljRBVWQr9OFrF/YtjM7N2SbS2jHAm6AwT/47v2eomHNB9Z+JZFSdrncBLXWH
+         tsvE9NAsRru2ymLW3QKEcYiaWHWNEDgluS4XtobnZBaTx1SJrX0iiaRm52sUDaHtcQWT
+         G1GXIvj9U4qRgYjm6oJ8WCsjokArjbL8GXMNfq67zK7uQHKqNRYVg25P7TXY8nsr1tgl
+         ErSfH2Xf8FVSstrLomzPKpY5FgshNgg/7pb3dC57Jlj2dV+QaMMM05IWPYb+jvN1W4EQ
+         I/Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703931039; x=1704535839;
+        d=1e100.net; s=20230601; t=1703931637; x=1704536437;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GUwoHcWCWeNwaua/GlD5vIC8+pco3z2IDUy7BqEvQuc=;
-        b=BFk2tOCmH4Lcr7OBbmgzfjofP44IZ8w7z8OYhSbJ69XdwM9gPro70KsaXx0hbHJufr
-         SRubRf2Tk2umDbsTKkc1iXg3FT8dkTJllxs6lFCtxHzCuEQkwNj17cVlawqDm3Dh/kV8
-         xEzoaNyDnTft5KIv/X6tIIXmVAxA0NLyTNZ/pkwuR/raoTQJm7QJZ9RnonB4NcLHzD10
-         871jpoKiIUAAr+GKyH8c86SxvwGudlvDV6j2QqUZzZtAUIegpeN223XYDdHAznBvLPxv
-         XQUzWdp4FIAaDjNDb5XgREcb2ez5co+zTHOOpxispJz2tm+pCJJgtX2c0Js9nXS/UctS
-         qd6w==
-X-Gm-Message-State: AOJu0Ywtw9vR+2CJxka/vL62YavA2OiWfAHVwwALa5pyfiN3vc0q3X8L
-	jtQbdjkh0yZMbgGZnauy2+I=
-X-Google-Smtp-Source: AGHT+IG6AQ7NkttmEt+vKSAtKtO4REhFtyapg0WY7cxINl846hNcIzMUUlHk84tKE6tmQ3nMDwZbFA==
-X-Received: by 2002:a17:902:e549:b0:1d4:48ab:a83 with SMTP id n9-20020a170902e54900b001d448ab0a83mr10017701plf.71.1703931039106;
-        Sat, 30 Dec 2023 02:10:39 -0800 (PST)
+        bh=4XaXtsrgSXYum/vGa7ZpC/g8Y8EoPoiL6Ss51LA99lM=;
+        b=ouFxawQtnl8yq31/AaOQYweeL5/yRftLauHUaVz1qQxBecbOWJj8kl3ujBwrwRVfWC
+         KSOmCO9xg6wtNdTMwTb+SMmG7hX+QL602eqvbavlIEXI6WkyvMblHTPKT8dsRdoFUpyN
+         wQWOe/xVVUEN6kRl5goh+rxHgKLkdfqin0iIzE6OsqG9rcmyTaij0163iCxKJhddbvnx
+         8kN3NThJ+DuXJ3TC1t8eltTM20nSNZzCsL6TaJhg24/sk4CNYGp9dz8uS330f0v3aAwV
+         GnX3aRy0Ec4/9STVFzEqe6BRfAfRT8oOc5b94CZslJBa4SGoIKPpW42spUPAIbmdjGN8
+         gSug==
+X-Gm-Message-State: AOJu0Ywx/Ekxz/wlquWTlpGE0FBH3GA2es39lVPZgafNSvxrtErMHyI/
+	QH9bvI5SVupyOpWnJsrvVrg=
+X-Google-Smtp-Source: AGHT+IHtd3W1hmJqeHzjse7BNVqjjzNfPExVuEDemRsdmZbWPy4wmQhiPx0NDD/Ifvyn7rdVCRojUw==
+X-Received: by 2002:a17:90b:101:b0:286:6cc1:2cce with SMTP id p1-20020a17090b010100b002866cc12ccemr4180950pjz.88.1703931637268;
+        Sat, 30 Dec 2023 02:20:37 -0800 (PST)
 Received: from localhost.localdomain ([2408:8207:2540:8c00:23b7:4d83:3222:c5dd])
-        by smtp.gmail.com with ESMTPSA id u1-20020a17090282c100b001c71ec1866fsm9751639plz.258.2023.12.30.02.09.35
+        by smtp.gmail.com with ESMTPSA id ok13-20020a17090b1d4d00b0028aea6c24bcsm22160649pjb.53.2023.12.30.02.20.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Dec 2023 02:10:35 -0800 (PST)
+        Sat, 30 Dec 2023 02:20:36 -0800 (PST)
 From: amazingfate <liujianfeng1994@gmail.com>
-To: knaerzche@gmail.com
+To: sigmaris@gmail.com
 Cc: conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	ezequiel@vanguardiasur.com.ar,
@@ -77,16 +77,16 @@ Cc: conor+dt@kernel.org,
 	p.zabel@pengutronix.de,
 	robh+dt@kernel.org,
 	sfr@canb.auug.org.au
-Subject: Re: [PATCH v2 0/3] Add hantro g1 video decoder support for RK3588
-Date: Sat, 30 Dec 2023 18:09:30 +0800
-Message-Id: <20231230100930.3740439-1-liujianfeng1994@gmail.com>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
+Date: Sat, 30 Dec 2023 18:20:25 +0800
+Message-Id: <20231230102025.3740749-1-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <35df6456-2bc2-415d-bc61-09e4b440e2ac@gmail.com>
-References: <35df6456-2bc2-415d-bc61-09e4b440e2ac@gmail.com>
+In-Reply-To: <CAAXNxMRkpM+dSV3azDFgm07ygJrXyS=Htz_h8Z_WMmeG0YZ+ig@mail.gmail.com>
+References: <CAAXNxMRkpM+dSV3azDFgm07ygJrXyS=Htz_h8Z_WMmeG0YZ+ig@mail.gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231230_021040_449474_275F20D1 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20231230_022038_732707_A4C6300B 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,20 +104,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->On Sat, 30 Dec 2023 10:46:42 +0100, Alex Bee <knaerzche@gmail.com> wrote:
->if the RK3568 and RK3588 variants match, patch [1/3] is not necessary. Just
->document a additional compatible in a similar way it's being done for
->rk3188/rk3066 or rk3228/rk3399.
->If there are ever differences we don't know about yet, a additional variant
->can still be added in the driver.
+On Fri, 29 Dec 2023 11:02:08 +0000, Hugh Cole-Baker <sigmaris@gmail.com> wrote:
+>The node name should be video-codec@fdb50000 to match the reg address.
 
-Hi Alex,
-I did try to not touching hantro driver code and just enabling the node in
-devicetree by a compatible property like:
-compatible = "rockchip,rk3588-vpu", "rockchip,rk3568-vpu";
-but the hantro g1 node is not binded by hantro driver. I guess that is
-because hantro driver is already binded to the hantro av1 vpu on rk3588,
-so I added patch[1/3] to make it work.
+Hi,
+Thanks a lot for youre review, I will change the node name in v3.
 
 Jianfeng
 
