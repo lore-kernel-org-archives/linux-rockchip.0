@@ -4,60 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66B8C46CD4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Dec 2023 23:42:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC02C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 08:08:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MuwLY4xApvq7InEG4nFWj5fik/yCkpxApBWiQNG0okk=; b=DpkhUTC2wMJpO4
-	cC/hHZ83ynPAP0za2OkicgGXGXZwFxQUudHOedMRYzgFUufxDJpHa7DksKO1pi3LXOIYgCFWzVdwk
-	Efdu9a4DyFiMCPj2DuyDPf7IWYKMmpW7zpUWFnV6hi1cpY3q1DyBuCFdXo75sWa+Mgmlzz/4Yq2LN
-	KeKpQcJGCWiD+RtIkZTBFqXy5Qwj/UsgEVHCiyKaeAmssWr+adnHb8hL40CV0n0T7BeVlDnLYhwUv
-	I6Ab2IGWkTqaARLGIH4fUm1cwbb40lzqxhoDzCFrOXAW/bQiO8UqV3tM5HFegZU4kuachsGSuedEa
-	Rhyg/BfAFDUek03UOrAQ==;
+	List-Owner; bh=DVSarsUoFhGaa3n/YBKDIRwk8yPYPssnWjvQWMW2Sk0=; b=T51CRIuvXiffxh
+	DgoOXapL/sW2cddhx7LMTUxDQNyyJvxVkoAgiRlBOMCWr74yiiMGZxFf5BR86g7ITt73riVxeybLc
+	EbZnzch1PPvctq9GJojcUOrbtVSFuv7YAs1krs7IpydDpwoCCCqm8khplu8WySCc35E37+w4bfUgT
+	mCaTNbxsXrl5jYaGHm3iKjKiqK3q+u/SVorHjFycxUZS0WI/AtBObyUojSSoS592dNVzxaVGW2pd3
+	Oi7T73PE0Ga2RaRigjXbM/nE/a+Gl4lUPQAG8siceWTpZLhozQrvHEHRLFfqRlxdPKTuE27KKszcw
+	a/V/iSfH9Gv0wS+67z9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJMUn-001mr6-2b;
-	Fri, 29 Dec 2023 23:42:29 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rJUOR-002O1U-2f;
+	Sat, 30 Dec 2023 08:08:27 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJMUl-001mqF-08;
-	Fri, 29 Dec 2023 23:42:28 +0000
-Received: from i53875a56.versanet.de ([83.135.90.86] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rJMUX-0004oA-5r; Sat, 30 Dec 2023 00:42:13 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Thomas Zimmermann <tzimmermann@suse.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Alex Bee <knaerzche@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	David Airlie <airlied@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	Daniel Vetter <daniel@ffwll.ch>,
+	id 1rJUOO-002O12-33
+	for linux-rockchip@lists.infradead.org;
+	Sat, 30 Dec 2023 08:08:26 +0000
+Received: by mail-il1-x130.google.com with SMTP id e9e14a558f8ab-36017ab9760so13617055ab.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 30 Dec 2023 00:08:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1703923702; x=1704528502; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kTFPw7SSCy/tJCxWpvSz/wr15aBQzl2Y5J7YUlIbDmw=;
+        b=MnIgZPB/rTZoUTx91psr1kl0yEdpf9NFoZrsJ13umd/xxwN4h4NJkUBeEIzH9g+GzE
+         fdkeqf81N23Yub9izxu/0JOaghafKkJyyxm9JCMR5GIMx1TotPjC6WRJ792XDfDUP4QV
+         AP/FYaFF9XBoEjMx69zV+LiYlVoFdtR3SLzI594fsdcjgs3ELpeXnr18h8RBe618q6QU
+         2+J277S6+p5GJ0d3RTry72GgGTa+yI+gBly/0EV+pbv+xDsDF1fxkxCE6OYwoyB4V0TX
+         gdIwEeGCmOs4iIp2lyOBvqN4SjsKfzMlfLCbLqa8W4COX+pqB1UtgnThuPFRfPsbvB2r
+         O1EQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703923702; x=1704528502;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kTFPw7SSCy/tJCxWpvSz/wr15aBQzl2Y5J7YUlIbDmw=;
+        b=O+EsrmTnVv5ybCtCJA2T8ulDsWPn5a93xSYA9suGyCb2wUoeLZKLDqL3jHrYc9u1MO
+         wdwfikb+3aXFVN9tKhA7puWbJru/FvPMUVWYJa2nLdArWDqBKxtkj+XQgwHwLKzW3qzc
+         4f2h5RT78bGttK8Bpry8fECCrzw8mIcCdJ5mBl9RMV7dRLZN7yF3iyzT1R57EkOf8wPF
+         L++O4pk1AKwsjH2vPkatRA4dEYdveJu0YnajSdfi1vfr4gx4E4AFGLrBa4EgQxfgREei
+         r+MFznUSfeKIL2lzycWz9NTVpDhabzeWryXGWiHWQd3aqHMdW3c4kvLUnls+JcHxEIaH
+         ky9A==
+X-Gm-Message-State: AOJu0YzwwY2t7dW6aghHgrRkK8Pu4esyepmoGCWjUe/N9tbyIQt0F9cY
+	j+vWPtK2UBTc85eivBddfWo=
+X-Google-Smtp-Source: AGHT+IH0aH1upL9AXxloMy3Lj7gxqSeJEG3P+zNJLpfJS7aBFOusjZnwkW84Y8sMLcgBMWV+McC6uQ==
+X-Received: by 2002:a05:6e02:216c:b0:360:303:fe67 with SMTP id s12-20020a056e02216c00b003600303fe67mr10265162ilv.22.1703923702423;
+        Sat, 30 Dec 2023 00:08:22 -0800 (PST)
+Received: from localhost.localdomain ([2408:8207:2540:8c00:23b7:4d83:3222:c5dd])
+        by smtp.gmail.com with ESMTPSA id c1-20020a63a441000000b005ce472f2d0fsm5413911pgp.66.2023.12.30.00.08.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 30 Dec 2023 00:08:21 -0800 (PST)
+From: amazingfate <liujianfeng1994@gmail.com>
+To: krzk@kernel.org,
+	heiko@sntech.de
+Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: (subset) [PATCH v4 00/29] Add HDMI support for RK3128
-Date: Sat, 30 Dec 2023 00:42:11 +0100
-Message-Id: <170389332196.2712965.572879488382890334.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231222174220.55249-1-knaerzche@gmail.com>
-References: <20231222174220.55249-1-knaerzche@gmail.com>
+	liujianfeng1994@gmail.com
+Subject: Re: [PATCH 3/3] dt-bindings: media: rockchip-vpu: Add RK3588 compatible
+Date: Sat, 30 Dec 2023 16:08:14 +0800
+Message-Id: <20231230080814.3736970-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <1b6787cf-7f39-4d27-9ccb-62f538b31933@kernel.org>
+References: <1b6787cf-7f39-4d27-9ccb-62f538b31933@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231229_154227_081129_7B6DDEE8 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20231230_000824_987138_A1480BFD 
+X-CRM114-Status: UNSURE (   5.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +95,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Dec 2023 18:41:51 +0100, Alex Bee wrote:
-> This is version 4 of my series that aims to add support for the display
-> controller (VOP) and the HDMI controller block of RK3128 (which is very
-> similar to the one found in RK3036). The original intention of this series
-> was to add support for this slightly different integration but is by now,
-> driven by maintainer's feedback, exploded to be a rework of inno-hdmi
-> driver in large parts. It is, however, a change for the better.
-> 
-> [...]
+Many thanks for your kindly review. Please forgive my newbee actions.
+I just learned how to reply mails with git send-email so forgive me
+again for my late reply.
 
-Applied, thanks!
+I have just sent v2 of this series to maintainerers and I will send
+v3 later.
 
-[13/29] drm/rockchip: inno_hdmi: Drop HDMI Vendor Infoframe support
-        commit: aa4f96e2de82f5e0dfc0102d08f66918c5e3637f
-[14/29] drm/rockchip: inno_hdmi: Move infoframe disable to separate function
-        commit: cc9ec38cb2cd32518fe02615d004e96ce2fd0348
-[15/29] drm/rockchip: inno_hdmi: Switch to infoframe type
-        commit: 4278ff62b73936a9138b60cc0610381003132b77
-[16/29] drm/rockchip: inno_hdmi: Remove unused drm device pointer
-        commit: 153fe8dbd866869846af3a359ecf82d5ad9fe247
-[17/29] drm/rockchip: inno_hdmi: Drop irq struct member
-        commit: 073aa696f8cbc170a2c3502c2165aeb835be0156
-[18/29] drm/rockchip: inno_hdmi: Remove useless include
-        commit: f68a68fe9d9197ea6aa9cb461270685f370b165e
-[19/29] drm/rockchip: inno_hdmi: Subclass connector state
-        commit: ceeb0f0104a62c867656c2730a51df47e7350b8f
-[20/29] drm/rockchip: inno_hdmi: Correctly setup HDMI quantization range
-        commit: 164abbd2b7ef62aae6fc80450a2d085acdc3da3e
-[21/29] drm/rockchip: inno_hdmi: Don't power up the phy after resetting
-        commit: 71892cee6ceb3e1b88e0bb44b05c8397d8261a85
-[22/29] drm/rockchip: inno_hdmi: Split power mode setting
-        commit: f01e33cb586b5fd354cba73052f82c3b4246109d
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Many thanks to you guys,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
