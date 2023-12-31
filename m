@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE06EC46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Dec 2023 20:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAE5C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Dec 2023 15:12:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ODArEFQwjIWp3SkpSfqwdhaU159zLxT4IJ2M7kXolPg=; b=hmLlOv6QRsuYb3
-	D+NYZxtc55/jcYgPDDKCFJTLK7anf8w9WNBKjFTdFQlFgPq2FMBo/Q6UunsjD95W6MeDzqTLVZkT4
-	S6rDbcLWKwVy4EV7aOjvzGhdFPI934fL+bDy0k1NYq1LdsNzbmFAoXbJPzc3b/ddo54VWM9g3DCc8
-	PfZ4BS3NSM+Y7TnndUoGjrsvTyD/1FNlD8y0L3n6nLTs4kPiQET6VIt6/F+R59w46dTcq+++MigK9
-	Z3eJT8MWa+4xU68lXZ2Jz5Z40E5USVOYbQ9QnCN5rajFGqwyvryeO9/N3kiCUgfjyUciZ/vFkCgDA
-	pFHtXY0vHk2uN+hY6rRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gZzT91OO7EMgUeC+hsDsX6SqbucH4K6Bg6tmvycTBSw=; b=3ryqyNfnKeRwPk
+	FgVjdFrTXNjpEAZjHNUIM05ge2bfbSnD99NR6qjlsWGDoxWWyAahEdcKW3yyzp8+9Jut1tMKmM+ff
+	VOW63HlcFFb1WvabvWyOaFa7G1r+rM/HeFEiw7OXQrcYQLYc80SjOH3dFQ1Tspm3EieL2XiKYhTtF
+	5lwJ+eSIcaCMXcg05tDW7jb8v6+yfY0EiB7IDm75zlDHsrf5trDOSzAuJdhgzLhuuG9UTsQKrSfOZ
+	vbMZExqgcur1uOjHx7vYSZL4wlWNZJaqFMpiOwpaz0ZvdWS2Rc9LiiZQTM/IMyLr3tiGmI9Ei3LIS
+	Nb+gqOodsU6wPOoSdOUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJfhS-003Nwm-05;
-	Sat, 30 Dec 2023 20:12:50 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1rJxUK-004l05-1g;
+	Sun, 31 Dec 2023 15:12:28 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJfhP-003NvD-0f
-	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Dec 2023 20:12:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1703967150;
- bh=48uwgyUepoTSwyC5niR44R50rvv/N7Od8yW5FGvT5tM=;
- b=CwSvrHrVc21lQQfqDKPX8TCsCabekBKSYC+SHd0X6ZS3dIaFBFvV4slhuGiHpCybwX02zt1VN
- mDD2UQDU1B1e+K/hCXkMNJOX3BbVsh5zLDUJTTF1CV553y6fe23e8HN7CtT88ilOpQmVwD4U5jA
- M/vu83g0v0WPu6PN5V+LqchpMRaXNTmZAKZ+mPuMqaCAk2FZVfkzkAMrGFXeJ3Wq/qPvLRXp8qS
- fJpI9/+hPIrP9iD4ca3xK5qLVng4xWUTGZtVH1az5wyrT/4Yd6wiVMN0Nv8qAuzlx4bQd6OjFjg
- aSKtUr5zXKcTjwOAqH7xqGktW6WMln/olg6T3FxBrm7w==
-Message-ID: <b9e6702d-4781-413b-8e4c-0b74272e9f22@kwiboo.se>
-Date: Sat, 30 Dec 2023 21:12:23 +0100
+	id 1rJxUG-004kz4-1g;
+	Sun, 31 Dec 2023 15:12:26 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-53fbf2c42bfso5933912a12.3;
+        Sun, 31 Dec 2023 07:12:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704035542; x=1704640342; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jeYeBXSxdMTougCaSNrlMRCUw3h8MjaQqsA3L1UWeJM=;
+        b=lXleHYdF4h+ih+3LPNix9a3saIMOVVEgG9MSnbCjJ2Zi8MreT/XPnjtK+vC3jPZca3
+         ZT20s2ch2sIpjQzaB8pBvVqhegh/Al9VNkddweq4ABsD45zOQFRAqzk2+nt0s2i+ZoUd
+         QPt7btyLQW/pQA8LwzSBKbMiFF7qkREQyqeF0W4D5Fgm3B3nXGPWbNwZss1Dn0DdYBvG
+         LUF1i6HFCnRBGMEkXrAuSR35JpgQsSG0T9Mbn1MiDCrxh1cH8RCa0jqJDMHq/25E1dtz
+         ldHG28trFtsvV+SqVf7lAJqCzGPhaJxqfmMufYkG2kgyeYvGLPh9nutd5VY8zu4FVdwM
+         qE7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704035542; x=1704640342;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jeYeBXSxdMTougCaSNrlMRCUw3h8MjaQqsA3L1UWeJM=;
+        b=Q3JOBah14ELSXuxIYq+cW9NmD5e+fE9dH4bKTqmBiCqb1j/X8LIoVH8Gtfbis71M/t
+         bBsTXTic2N9orwuFf0n4FjVXo5MZNLu3nhD+6zu8ySwGIlnS00eGtLufLpUseMklG37x
+         eu/ZxC0lXrZXWZaAgQdiJBpW4QnJKwkHCm9k92ZqXW2UABDo5xBkX3uZufGZhSlyUmjL
+         nqxKtm5OYFaHm92AUxoyzEtR4pnXfqTgp7VwiFtsm7DQ9UbftUyI2et7Iz15Ym0DuV3t
+         kcU/ntwq0APsDrVSy9G+yqAb7+6iVHki+5EutT6QgJNf1bY5BgL7SoW//TYhsh/FzI7t
+         B/JA==
+X-Gm-Message-State: AOJu0YzBtlncnnpy0TmEc+yUDAiai238p61G6TFYzlnUP7sLx0DQE1Np
+	t4U9FUAMCjX8nX6fxnw4EZ8=
+X-Google-Smtp-Source: AGHT+IFYiCNMbl3dZt18tBdXWUUj2YyulwcA8ZtzasbEmO897ubaYYezbzhFB6TThhQZw069VWyoEQ==
+X-Received: by 2002:a17:902:e5c7:b0:1d4:35d6:f999 with SMTP id u7-20020a170902e5c700b001d435d6f999mr16284099plf.139.1704035541802;
+        Sun, 31 Dec 2023 07:12:21 -0800 (PST)
+Received: from localhost.localdomain ([2408:8207:2540:8c00:2643:6273:f90:f77e])
+        by smtp.gmail.com with ESMTPSA id a4-20020a170902ecc400b001d058ad8770sm18775011plh.306.2023.12.31.07.12.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 31 Dec 2023 07:12:21 -0800 (PST)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Subject: [PATCH v3 0/2] [v3]Add hantro g1 video decoder support for RK3588
+Date: Sun, 31 Dec 2023 23:11:10 +0800
+Message-Id: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] Add hantro g1 video decoder support for RK3588
-Content-Language: en-US
-To: amazingfate <liujianfeng1994@gmail.com>
-References: <97faf49b-0109-439a-accf-251b502ad40b@kwiboo.se>
- <20231230153159.3748580-1-liujianfeng1994@gmail.com>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20231230153159.3748580-1-liujianfeng1994@gmail.com>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 659079ad220dc6bab27e429e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231230_121247_297670_3FDD808D 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20231231_071224_581785_FB3D842E 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,56 +88,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, heiko@sntech.de, sfr@canb.auug.org.au, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, ezequiel@vanguardiasur.com.ar, krzysztof.kozlowski+dt@linaro.org, p.zabel@pengutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: sfr@canb.auug.org.au, liujianfeng1994@gmail.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, knaerzche@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jianfeng,
+This is the v3 version of this series adding hantro g1 video decoder
+support for rk3588.
 
-On 2023-12-30 16:31, amazingfate wrote:
-> Hi Jonas,
-> 
-> On Sat, 30 Dec 2023 12:49:38 +0100, Jonas Karlman <jonas@kwiboo.se> wrote:
->> I have only tested this fork of fluster with ffmpeg 6.x, what version of
->> ffmpeg did you test with? I was expecting it to also work on ffmpeg 5.x.
-> 
-> I am using ffmpeg 6.0 with v4l2-request patches from libreelec[1].
+RK3588 has Hantro G1 video decoder known as VDPU121 in TRM of RK3588 which
+is capable to decode MPEG2/H.264/VP8 up to 1920x1088. This vpu ip is also
+found in RK3568.
 
-Great, that patch should match my v4l2-request-n6.0.1 branch [2],
-and does not have any NV15/NV20 ffmpeg pix fmt patches that could
-interfere.
+Test results from fluster can be found from thread of v2[1][2].
 
-[2] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-n6.0.1/
+[1] https://lore.kernel.org/all/CAAXNxMT3f68-ptM7Crhrfmn7iwTyJc9pwz4Beob+5beVODaSHQ@mail.gmail.com
+[2] https://lore.kernel.org/all/20231230153159.3748580-1-liujianfeng1994@gmail.com
 
-> Ffmpeg v4l2 decoder in fluster fork is using ffmpeg args:
-> "-hwaccel_device /dev/dri/renderD128"
-> which make the test fall with hantro g1 on rk3588. After removing it I
-> can run tests by ffmpeg v4l2-request decoder. 
 
-Thanks for confirming and testing again, and I fully understand why
-"-hwaccel_device /dev/dri/renderD128" caused issues on rk3588 :-)
+Changes in v3:
+ - Drop code in hantro_drv.c because hantro g1 vpu in rk3588 is compatible
+with the one in rk3568, only adding devicetree node should work.
+ - Change devicetree node name to video-codec@fdb50000 to match the reg
+address.
+ - Add dt-bindings rockchip,rk3588-vpu compatible with rockchip,rk3568-vpu
+ - Link to v2: https://lore.kernel.org/all/20231228131617.3411561-1-liujianfeng1994@gmail.com
 
-The commit "HACK: hwcontext_drm: do not require drm device" was required
-to run ffmpeg without a hwaccel_device, and I tested fluster without it.
+Jianfeng Liu (2):
+  arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
+  dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible string
 
-Regards,
-Jonas
+ .../bindings/media/rockchip-vpu.yaml          |  3 +++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 20 +++++++++++++++++++
+ 2 files changed, 23 insertions(+)
 
-> 
-> Rk3566 and rk3588 are sharing the same results:
-> JVT-AVC_V1 test suite with decoder FFmpeg-H.264-V4L2-request:
->  Ran 127/135 tests successfully.
-> JVT-FR_EXT test suite with decoder FFmpeg-H.264-V4L2-request:
->  Ran 44/69 tests successfully.
-> VP8-TEST-VECTORS test suite with decoder FFmpeg-VP8-V4L2-request:
->  Ran 59/61 tests successfully.
-> 
-> [1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
-> 
-> Regards,
-> Jianfeng
+-- 
+2.34.1
 
 
 _______________________________________________
