@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAE5C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Dec 2023 15:12:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BB8C47077
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Dec 2023 15:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gZzT91OO7EMgUeC+hsDsX6SqbucH4K6Bg6tmvycTBSw=; b=3ryqyNfnKeRwPk
-	FgVjdFrTXNjpEAZjHNUIM05ge2bfbSnD99NR6qjlsWGDoxWWyAahEdcKW3yyzp8+9Jut1tMKmM+ff
-	VOW63HlcFFb1WvabvWyOaFa7G1r+rM/HeFEiw7OXQrcYQLYc80SjOH3dFQ1Tspm3EieL2XiKYhTtF
-	5lwJ+eSIcaCMXcg05tDW7jb8v6+yfY0EiB7IDm75zlDHsrf5trDOSzAuJdhgzLhuuG9UTsQKrSfOZ
-	vbMZExqgcur1uOjHx7vYSZL4wlWNZJaqFMpiOwpaz0ZvdWS2Rc9LiiZQTM/IMyLr3tiGmI9Ei3LIS
-	Nb+gqOodsU6wPOoSdOUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MlIvA3COPzJpLUEPqxoxqEwIXMVPkuUjM7RumfuGXxc=; b=m4VvB6l3knDIx9
+	m1luJ+oOOh1QRxHjcXqk99El4EekxcLeowobLNx1rfUZaLSBK0xgULxhm7QwruWc+bgmhIoeHD15t
+	vdoHAk30B+wgxDg5PFV/yMaOVDzCCC1mS7sBFAV2Ti/uF8bBZMH62cVxRP8rN1w8mGYv8hAhz/8Ks
+	21cLRfPsXfcrA9XucbAnMf/Nb9+pdJNntfad/mBur2aDOiz2w+/TKk1DzUVbJ7uiaMo8f2y0X9grQ
+	spwWZl83+IQV4oML0Du7SxGirh90+c5MYAYUSmSz170E1URKeP8Mu3BhQGNCVaiatummVZC2lScY3
+	MJZJKSuLFB5Fx8L0GHCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJxUK-004l05-1g;
-	Sun, 31 Dec 2023 15:12:28 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1rJxUc-004l6b-2U;
+	Sun, 31 Dec 2023 15:12:46 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJxUG-004kz4-1g;
-	Sun, 31 Dec 2023 15:12:26 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-53fbf2c42bfso5933912a12.3;
-        Sun, 31 Dec 2023 07:12:22 -0800 (PST)
+	id 1rJxUU-004l1z-0v;
+	Sun, 31 Dec 2023 15:12:39 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1d420aaa2abso27326385ad.3;
+        Sun, 31 Dec 2023 07:12:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704035542; x=1704640342; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=jeYeBXSxdMTougCaSNrlMRCUw3h8MjaQqsA3L1UWeJM=;
-        b=lXleHYdF4h+ih+3LPNix9a3saIMOVVEgG9MSnbCjJ2Zi8MreT/XPnjtK+vC3jPZca3
-         ZT20s2ch2sIpjQzaB8pBvVqhegh/Al9VNkddweq4ABsD45zOQFRAqzk2+nt0s2i+ZoUd
-         QPt7btyLQW/pQA8LwzSBKbMiFF7qkREQyqeF0W4D5Fgm3B3nXGPWbNwZss1Dn0DdYBvG
-         LUF1i6HFCnRBGMEkXrAuSR35JpgQsSG0T9Mbn1MiDCrxh1cH8RCa0jqJDMHq/25E1dtz
-         ldHG28trFtsvV+SqVf7lAJqCzGPhaJxqfmMufYkG2kgyeYvGLPh9nutd5VY8zu4FVdwM
-         qE7w==
+        d=gmail.com; s=20230601; t=1704035556; x=1704640356; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1LxeA0IIZhqjEAhSl3nYPkL3LXbf+ObZ5X4oac0U0NA=;
+        b=WkaPX4eqN2bbysHkqyw31lVEagEZmWBeeZWlx5n9x3lJMXYdq/G3xRenaaV7m66YId
+         tWO93lC1etjrgxeMJE1lwVfcLfQYI4KPcg6HsQOus0GblmM93qJ9HOkH0tQ3/WUn5IqN
+         3A9X8E6AEzT7Kk1FVa+30QtA29/hAvyltYEw7L12YjxgGb7OMLvX+kCzrU7SDBVXISYx
+         pHlRPXN1Rix9X6BpmvX9sontDoVpq/x7O+5d740VlTbdq4QbklPgWwfsgnwL6QK9jOUY
+         zXGcWCSyCu2nMB8KBb06FidZoNwLfvFo9+FLaAph839hH2mYs7ijpMatUnGbrL+uUn87
+         MSIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704035542; x=1704640342;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jeYeBXSxdMTougCaSNrlMRCUw3h8MjaQqsA3L1UWeJM=;
-        b=Q3JOBah14ELSXuxIYq+cW9NmD5e+fE9dH4bKTqmBiCqb1j/X8LIoVH8Gtfbis71M/t
-         bBsTXTic2N9orwuFf0n4FjVXo5MZNLu3nhD+6zu8ySwGIlnS00eGtLufLpUseMklG37x
-         eu/ZxC0lXrZXWZaAgQdiJBpW4QnJKwkHCm9k92ZqXW2UABDo5xBkX3uZufGZhSlyUmjL
-         nqxKtm5OYFaHm92AUxoyzEtR4pnXfqTgp7VwiFtsm7DQ9UbftUyI2et7Iz15Ym0DuV3t
-         kcU/ntwq0APsDrVSy9G+yqAb7+6iVHki+5EutT6QgJNf1bY5BgL7SoW//TYhsh/FzI7t
-         B/JA==
-X-Gm-Message-State: AOJu0YzBtlncnnpy0TmEc+yUDAiai238p61G6TFYzlnUP7sLx0DQE1Np
-	t4U9FUAMCjX8nX6fxnw4EZ8=
-X-Google-Smtp-Source: AGHT+IFYiCNMbl3dZt18tBdXWUUj2YyulwcA8ZtzasbEmO897ubaYYezbzhFB6TThhQZw069VWyoEQ==
-X-Received: by 2002:a17:902:e5c7:b0:1d4:35d6:f999 with SMTP id u7-20020a170902e5c700b001d435d6f999mr16284099plf.139.1704035541802;
-        Sun, 31 Dec 2023 07:12:21 -0800 (PST)
+        d=1e100.net; s=20230601; t=1704035556; x=1704640356;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1LxeA0IIZhqjEAhSl3nYPkL3LXbf+ObZ5X4oac0U0NA=;
+        b=Ut2IAIkpAzqOUigAJATv/r6XrOXlojTcimuJbtKgkTzZBJb/uMdNfpooCenD31GLwX
+         +CnSIUqWb6051jcKhk2kd3m/LwN+ZY9+vn2MUZokvlqgMlkK1Xecidqf21bSLsm6qKO3
+         DkqxQddm7ioKaK4LeOSrvAIj/i/Xu/FbWFS5OZRgIkad/+knN/8gudepVDrEMfTiwpyh
+         5MzFwAOCb4ToKgq4TyF7e57cgc1Or/q9W4/a74QiOortIXI5I2/sMy1I1R5CBPyssBvc
+         98cUT9KZ+mAEswd8rw+nvC2aPYGc6V/kAXAxiRf690waAkzAx4LMthkE7qaF+O8WftA9
+         Evlw==
+X-Gm-Message-State: AOJu0YxOrbsg4fuOE2qerbyIazb2bPp1/zxqZ/xHYt0E0y0m7iEP4yu6
+	x37KwKuAZtCt6lO94/UkWhg=
+X-Google-Smtp-Source: AGHT+IEeC/oNDmebvGAlCDPpcUUA71dA7m7XJNDO6ov3pNSjePgSV63EBlmsTgDSigIUfGJ9GW9DjQ==
+X-Received: by 2002:a17:902:c601:b0:1d0:c888:d129 with SMTP id r1-20020a170902c60100b001d0c888d129mr5937727plr.103.1704035556512;
+        Sun, 31 Dec 2023 07:12:36 -0800 (PST)
 Received: from localhost.localdomain ([2408:8207:2540:8c00:2643:6273:f90:f77e])
-        by smtp.gmail.com with ESMTPSA id a4-20020a170902ecc400b001d058ad8770sm18775011plh.306.2023.12.31.07.12.14
+        by smtp.gmail.com with ESMTPSA id a4-20020a170902ecc400b001d058ad8770sm18775011plh.306.2023.12.31.07.12.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Dec 2023 07:12:21 -0800 (PST)
+        Sun, 31 Dec 2023 07:12:36 -0800 (PST)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
 To: robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
@@ -68,14 +69,16 @@ To: robh+dt@kernel.org,
 	ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
 	mchehab@kernel.org
-Subject: [PATCH v3 0/2] [v3]Add hantro g1 video decoder support for RK3588
-Date: Sun, 31 Dec 2023 23:11:10 +0800
-Message-Id: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
+Subject: [PATCH v3 2/2] dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible string
+Date: Sun, 31 Dec 2023 23:11:12 +0800
+Message-Id: <20231231151112.3994194-3-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
+References: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231231_071224_581785_FB3D842E 
-X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-CacheID: sfid-20231231_071238_321576_7101887D 
+X-CRM114-Status: UNSURE (   7.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,35 +97,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is the v3 version of this series adding hantro g1 video decoder
-support for rk3588.
+Add Hantro G1 VPU compatible string for RK3588.
+RK3588 has the same Hantro G1 ip as RK3568, which are both
+known as VDPU121 in TRM of RK3568 and RK3588.
 
-RK3588 has Hantro G1 video decoder known as VDPU121 in TRM of RK3588 which
-is capable to decode MPEG2/H.264/VP8 up to 1920x1088. This vpu ip is also
-found in RK3568.
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+---
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Test results from fluster can be found from thread of v2[1][2].
-
-[1] https://lore.kernel.org/all/CAAXNxMT3f68-ptM7Crhrfmn7iwTyJc9pwz4Beob+5beVODaSHQ@mail.gmail.com
-[2] https://lore.kernel.org/all/20231230153159.3748580-1-liujianfeng1994@gmail.com
-
-
-Changes in v3:
- - Drop code in hantro_drv.c because hantro g1 vpu in rk3588 is compatible
-with the one in rk3568, only adding devicetree node should work.
- - Change devicetree node name to video-codec@fdb50000 to match the reg
-address.
- - Add dt-bindings rockchip,rk3588-vpu compatible with rockchip,rk3568-vpu
- - Link to v2: https://lore.kernel.org/all/20231228131617.3411561-1-liujianfeng1994@gmail.com
-
-Jianfeng Liu (2):
-  arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
-  dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible string
-
- .../bindings/media/rockchip-vpu.yaml          |  3 +++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 20 +++++++++++++++++++
- 2 files changed, 23 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index c57e1f488..16886bccf 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -31,6 +31,9 @@ properties:
+       - items:
+           - const: rockchip,rk3228-vpu
+           - const: rockchip,rk3399-vpu
++      - items:
++          - const: rockchip,rk3588-vpu
++          - const: rockchip,rk3568-vpu
+ 
+   reg:
+     maxItems: 1
 -- 
 2.34.1
 
