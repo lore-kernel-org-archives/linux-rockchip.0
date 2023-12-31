@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76BB8C47077
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Dec 2023 15:12:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D263C47073
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Dec 2023 15:12:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MlIvA3COPzJpLUEPqxoxqEwIXMVPkuUjM7RumfuGXxc=; b=m4VvB6l3knDIx9
-	m1luJ+oOOh1QRxHjcXqk99El4EekxcLeowobLNx1rfUZaLSBK0xgULxhm7QwruWc+bgmhIoeHD15t
-	vdoHAk30B+wgxDg5PFV/yMaOVDzCCC1mS7sBFAV2Ti/uF8bBZMH62cVxRP8rN1w8mGYv8hAhz/8Ks
-	21cLRfPsXfcrA9XucbAnMf/Nb9+pdJNntfad/mBur2aDOiz2w+/TKk1DzUVbJ7uiaMo8f2y0X9grQ
-	spwWZl83+IQV4oML0Du7SxGirh90+c5MYAYUSmSz170E1URKeP8Mu3BhQGNCVaiatummVZC2lScY3
-	MJZJKSuLFB5Fx8L0GHCw==;
+	List-Owner; bh=BuGsjdzgM4pYDwAdUiLmz1hv3be11ZeG44QYMlGkj2c=; b=3HjDIWBcxwQC5L
+	HnycDJxalA8lIsuAxxA5mvBGZLO9kETbGzP7/NMBj36ae/XIFU+6gbf6IAePDPABvloCNowGelKPb
+	J4wiqRV8uGDx42fN/KzOh7WvCtc11eoSgRf5LYA3clIKf75X7/UC/pAHEeU91K2RPWl9RyBOEd3rv
+	AfNVlWqzaEZVMXe87+ISbK1+ZnuEj2Qtq0sEul/x054HrIlWVtMt1HTymeIdbcd06qP58j0MuitgR
+	HWehdmZ/JKd1zYuGj/zeGrSPUTEkY0wrKLeXUY4Hhn0s6DkIWLkkjlplrffGFvgMVoXIW76YLTHh/
+	HnSxIwLbCm+7lQsvQsgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJxUc-004l6b-2U;
-	Sun, 31 Dec 2023 15:12:46 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rJxUU-004l1z-0v;
+	id 1rJxUV-004l2x-2d;
 	Sun, 31 Dec 2023 15:12:39 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1d420aaa2abso27326385ad.3;
-        Sun, 31 Dec 2023 07:12:37 -0800 (PST)
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rJxUN-004l0F-0E;
+	Sun, 31 Dec 2023 15:12:32 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-5cd51c0e8ebso2853168a12.3;
+        Sun, 31 Dec 2023 07:12:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704035556; x=1704640356; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1704035549; x=1704640349; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1LxeA0IIZhqjEAhSl3nYPkL3LXbf+ObZ5X4oac0U0NA=;
-        b=WkaPX4eqN2bbysHkqyw31lVEagEZmWBeeZWlx5n9x3lJMXYdq/G3xRenaaV7m66YId
-         tWO93lC1etjrgxeMJE1lwVfcLfQYI4KPcg6HsQOus0GblmM93qJ9HOkH0tQ3/WUn5IqN
-         3A9X8E6AEzT7Kk1FVa+30QtA29/hAvyltYEw7L12YjxgGb7OMLvX+kCzrU7SDBVXISYx
-         pHlRPXN1Rix9X6BpmvX9sontDoVpq/x7O+5d740VlTbdq4QbklPgWwfsgnwL6QK9jOUY
-         zXGcWCSyCu2nMB8KBb06FidZoNwLfvFo9+FLaAph839hH2mYs7ijpMatUnGbrL+uUn87
-         MSIA==
+        bh=dQ3gts5DeG3AEZVfFZjp7LgA4Q4AdeMKho3AyDhAyJM=;
+        b=U8JeYtqsjTvDSS3jNBamNjUO2CxDwW4TFUTghPr3IiJebRe4uQuk1/Y/m+j1QP11qL
+         TUetTdPe621B3YJmVav9RfKnFy43mpOJALz6/qjoD2xWa1IhGVjVMa7CKS+cmqJ38rCd
+         wrRuTOW1Yj0ZFOPGlHf5IzAkhtT+CLbiE2dx+P5suh6uWE6ZiqM8cf+Jj8Il6bcNOOP3
+         OIIwMLB/WgLtyZa7FhpWYShnJTG6H1RdZo2vzecxhikHVkw3PDEP5w60ck1QlaiEttPI
+         7oQdLiRqiQENWT8Ka4Au6qkj0Di2OUPJKKCnFA4Oeiik4Uf0lXGdqBnv+szMU91/kTDA
+         4wSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704035556; x=1704640356;
+        d=1e100.net; s=20230601; t=1704035549; x=1704640349;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1LxeA0IIZhqjEAhSl3nYPkL3LXbf+ObZ5X4oac0U0NA=;
-        b=Ut2IAIkpAzqOUigAJATv/r6XrOXlojTcimuJbtKgkTzZBJb/uMdNfpooCenD31GLwX
-         +CnSIUqWb6051jcKhk2kd3m/LwN+ZY9+vn2MUZokvlqgMlkK1Xecidqf21bSLsm6qKO3
-         DkqxQddm7ioKaK4LeOSrvAIj/i/Xu/FbWFS5OZRgIkad/+knN/8gudepVDrEMfTiwpyh
-         5MzFwAOCb4ToKgq4TyF7e57cgc1Or/q9W4/a74QiOortIXI5I2/sMy1I1R5CBPyssBvc
-         98cUT9KZ+mAEswd8rw+nvC2aPYGc6V/kAXAxiRf690waAkzAx4LMthkE7qaF+O8WftA9
-         Evlw==
-X-Gm-Message-State: AOJu0YxOrbsg4fuOE2qerbyIazb2bPp1/zxqZ/xHYt0E0y0m7iEP4yu6
-	x37KwKuAZtCt6lO94/UkWhg=
-X-Google-Smtp-Source: AGHT+IEeC/oNDmebvGAlCDPpcUUA71dA7m7XJNDO6ov3pNSjePgSV63EBlmsTgDSigIUfGJ9GW9DjQ==
-X-Received: by 2002:a17:902:c601:b0:1d0:c888:d129 with SMTP id r1-20020a170902c60100b001d0c888d129mr5937727plr.103.1704035556512;
-        Sun, 31 Dec 2023 07:12:36 -0800 (PST)
+        bh=dQ3gts5DeG3AEZVfFZjp7LgA4Q4AdeMKho3AyDhAyJM=;
+        b=hMkr87nVb3ApDvG6WONo5i+e1wPBH93SDWZyuac6v1tyBcaN+W62WPoVdOB5x7dRzy
+         l2Xg4bXI2+e0QA2NVHeawq73hlM3eUN8PEuNk50Igo9tn6D19SY9GjV86PPyGoPZEPpx
+         o8oZt1vOlszDY7fxKuysRa74ehpMbIDuGGMg5Ee76miJ+9NmK06tcRnHHsponv6OBT+n
+         GxdII9MRdBYhsMEz5kLBRWdgW7Ogvsstoh97UEbBCp81EAC8LgYme09AZ2igQH4nCKNJ
+         1jDRURPqqqqqDPyJNNd6s5f9m+rSssg09i1TYepYcPY7mEIk39uvzDg7FpS6G7yraDd1
+         V/kQ==
+X-Gm-Message-State: AOJu0Yy48/G2ebt2GN3yHA37mFU15MxoZbxHsw+cHCQCgIDH+LbmROcK
+	QvZ7762v36EFuvDzWwuvkwc=
+X-Google-Smtp-Source: AGHT+IGBB6t3FuQ8QHq8Y7Xn/0fTrRbyfKnwRVaCWJpDClar+fRlIaXHT2rMc6fCLi/Q2cjIWZNPaA==
+X-Received: by 2002:a17:903:1208:b0:1d4:a24c:4be0 with SMTP id l8-20020a170903120800b001d4a24c4be0mr1607599plh.133.1704035549240;
+        Sun, 31 Dec 2023 07:12:29 -0800 (PST)
 Received: from localhost.localdomain ([2408:8207:2540:8c00:2643:6273:f90:f77e])
-        by smtp.gmail.com with ESMTPSA id a4-20020a170902ecc400b001d058ad8770sm18775011plh.306.2023.12.31.07.12.29
+        by smtp.gmail.com with ESMTPSA id a4-20020a170902ecc400b001d058ad8770sm18775011plh.306.2023.12.31.07.12.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Dec 2023 07:12:36 -0800 (PST)
+        Sun, 31 Dec 2023 07:12:28 -0800 (PST)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
 To: robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
@@ -69,16 +69,16 @@ To: robh+dt@kernel.org,
 	ezequiel@vanguardiasur.com.ar,
 	p.zabel@pengutronix.de,
 	mchehab@kernel.org
-Subject: [PATCH v3 2/2] dt-bindings: media: rockchip-vpu: Add rk3588 vpu compatible string
-Date: Sun, 31 Dec 2023 23:11:12 +0800
-Message-Id: <20231231151112.3994194-3-liujianfeng1994@gmail.com>
+Subject: [PATCH v3 1/2] arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
+Date: Sun, 31 Dec 2023 23:11:11 +0800
+Message-Id: <20231231151112.3994194-2-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
 References: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20231231_071238_321576_7101887D 
-X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-CacheID: sfid-20231231_071231_105135_89044CB6 
+X-CRM114-Status: UNSURE (   8.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,29 +97,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Hantro G1 VPU compatible string for RK3588.
-RK3588 has the same Hantro G1 ip as RK3568, which are both
-known as VDPU121 in TRM of RK3568 and RK3588.
+This patch enables Hantro G1 video decoder in RK3588's
+devicetree.
+
+Tested with FFmpeg v4l2_request code taken from [1]
+with MPEG2, H.264 and VP8 samples.
+
+[1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
 
 Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-index c57e1f488..16886bccf 100644
---- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-@@ -31,6 +31,9 @@ properties:
-       - items:
-           - const: rockchip,rk3228-vpu
-           - const: rockchip,rk3399-vpu
-+      - items:
-+          - const: rockchip,rk3588-vpu
-+          - const: rockchip,rk3568-vpu
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 5fb0baf8a..ab2792162 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -640,6 +640,26 @@ i2c0: i2c@fd880000 {
+ 		status = "disabled";
+ 	};
  
-   reg:
-     maxItems: 1
++	vpu: video-codec@fdb50000 {
++		compatible = "rockchip,rk3588-vpu", "rockchip,rk3568-vpu";
++		reg = <0x0 0xfdb50000 0x0 0x800>;
++		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		clock-names = "aclk", "hclk";
++		iommus = <&vdpu_mmu>;
++		power-domains = <&power RK3588_PD_VDPU>;
++	};
++
++	vdpu_mmu: iommu@fdb50800 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdb50800 0x0 0x40>;
++		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
++		clock-names = "aclk", "iface";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		power-domains = <&power RK3588_PD_VDPU>;
++		#iommu-cells = <0>;
++	};
++
+ 	vop: vop@fdd90000 {
+ 		compatible = "rockchip,rk3588-vop";
+ 		reg = <0x0 0xfdd90000 0x0 0x4200>, <0x0 0xfdd95000 0x0 0x1000>;
 -- 
 2.34.1
 
