@@ -4,57 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA9A9C4706F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jan 2024 13:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A484CC47074
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jan 2024 22:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uO2uq21L6AuSCQjH8kKZKftvxzMDDnuS68C/EPa7nYk=; b=3cu/47IK6a9mpvipKzG036+dtq
-	/3iKOh5B+cn6gWF4531qY67b5Bql+IOSY4wFYiVetLGWpyPH3x+zDuRcjKukpXfRfm4lE/dQCmlri
-	9zg0B9NO3+h1GX9zS1zehhy/AJyrUQyyyybgdtf5ZsXnRTKIHi0DGNmVDNYWSlGdK1OThCGIlRpwK
-	BLnZWtWp/xgf696/CjXBpL3BY9Gtdm+GGzLGGTzs5HRyxTFapWGYUUYVq2g3+vLM5r/ZSHDTYh/nk
-	54FYmuGW9cB/WwHFofgXmvrpIYCCqvnYPLKmJeMZLk/SO1uOChKcyGpF9ed6gD55OMomMquTb5AXC
-	2RXdyBMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YauZmFvKdwrw+m8jaO7GkJSBMArN5BDahW26JQnv3Pk=; b=4AIHR9xSHhiQGb
+	zelV4M1hHtJA8MphLIVI8ImExZliVx9JhC9hAQFaEXw0WMFxgXbyX0JmZnXbt34upydDxucmVDszN
+	NeghbJ6drBrxPHeXUXXEpZd16y3UCVEstyo4g4z1ypEhiz4YyU91QYAirudX4ATssOhIOLacFfYV0
+	/Zi9fxcXZ1gckMbQ7M1vuqjsAGdlqZQVZNW3jyvjFm5JZ6LehGMu0TDHLHKvW4yUM/0FnTy+h7X27
+	CovwEvCNT2GW4aBAetVoou8X0GF3f+ZXsFfKEF8qewP/IomC/A3wpv5cWGAAGX0wx7JQyXcVDcEXr
+	UaobP4xb8md2d2J3bLgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKIoa-006M0Q-2f;
-	Mon, 01 Jan 2024 13:58:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rKRBK-006nRN-1C;
+	Mon, 01 Jan 2024 22:54:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKIoY-006Lzx-06;
-	Mon, 01 Jan 2024 13:58:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DF19C60EFB;
-	Mon,  1 Jan 2024 13:58:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5299AC433C8;
-	Mon,  1 Jan 2024 13:58:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1704117523;
-	bh=t+f4Znj3FNYbBCxfo60vMjy20/W1jFBDpQMRsFjVBuE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=inc5WUqsf/Vw/W+FtcWbnloAfe2/VDN5sVHInSg5AR0Oyp18cPiuyGwcB6ul2pTO+
-	 OrioZ2G0Ke49+WgjcKhAEckVWVMSZsOIJO38eni5SXzfnwzT6TYWEd6NoiVygrlRo6
-	 0INsqNnn1ng4cInW3xssTisviDkbp+4bQkDrqE85+J1P6bv6x5BZpTku/ZT8eP4B7V
-	 ltwg8DbbfhdEx5z/8mLfqao5n33rNQZlLv3rwAFJzTPmlSJowAvQNW/Iw9Ox/MDaRz
-	 kGmBF7+UEs0/hqxmchcCRUwd6h/8SQU1GPGR/yN0kxwZfL3I6DSrj9byCj3dl8ODss
-	 zpIoszdNlfWjQ==
-Date: Mon, 1 Jan 2024 13:58:38 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Subject: Re: [PATCH v3 2/2] dt-bindings: media: rockchip-vpu: Add rk3588 vpu
- compatible string
-Message-ID: <20240101-subsystem-clinking-d3b1a1dcf640@spud>
-References: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
- <20231231151112.3994194-3-liujianfeng1994@gmail.com>
+	id 1rKRBH-006nQx-0p;
+	Mon, 01 Jan 2024 22:54:48 +0000
+Received: from i53875a56.versanet.de ([83.135.90.86] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rKRBB-0007XP-HO; Mon, 01 Jan 2024 23:54:41 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.8 #2
+Date: Mon, 01 Jan 2024 23:54:40 +0100
+Message-ID: <3711719.VqM8IeB0Os@diego>
 MIME-Version: 1.0
-In-Reply-To: <20231231151112.3994194-3-liujianfeng1994@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240101_055846_134747_F30BA208 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240101_145447_319245_3218773A 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,59 +53,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: sfr@canb.auug.org.au, conor+dt@kernel.org, heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, knaerzche@gmail.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1847397333526091216=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Arnd, Kevin, Olof,
 
---===============1847397333526091216==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="KyxL4TV6V4aWT69C"
-Content-Disposition: inline
+please find below and in a subsequent pull-request
+some more Rockchip changes for for 6.8 .
 
+Just some stuff that came in since #1 .
+If it's too late for this stuff for 6.8, I'll respin this for
+6.9, so no worries :-)
 
---KyxL4TV6V4aWT69C
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+But if there is still time, please pull
 
-On Sun, Dec 31, 2023 at 11:11:12PM +0800, Jianfeng Liu wrote:
-> Add Hantro G1 VPU compatible string for RK3588.
-> RK3588 has the same Hantro G1 ip as RK3568, which are both
-> known as VDPU121 in TRM of RK3568 and RK3588.
->=20
-> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
---KyxL4TV6V4aWT69C
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZZLFDQAKCRB4tDGHoIJi
-0krIAP4x33KV2Y2E1cOYB1TgS8jK9biNoJfRtKdWrA2G3rLj7QD9GDgJCPMBn59S
-ECEYH9sl7zdG8Bid60MeDGWnzLyv5Aw=
-=36Vr
------END PGP SIGNATURE-----
-
---KyxL4TV6V4aWT69C--
+Thanks
+Heiko
 
 
---===============1847397333526091216==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+The following changes since commit 8174dff9e583f7791dacf6d8ce034eb18ec2b292:
+
+  arm64: dts: rockchip: Add Anbernic RG351V (2023-12-12 21:43:48 +0100)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.8-rockchip-dts64-2
+
+for you to fetch changes up to 8586a5d217ef7bfeee24943c600a8a7890d6f477:
+
+  arm64: dts: rockchip: Fix led pinctrl of lubancat 1 (2023-12-29 23:03:53 +0100)
+
+----------------------------------------------------------------
+One new boards, the CoolPi CM5 SoM and 4B SBC. Basic node for the rk3588
+display controller and a bunch of small improvements for different boards,
+
+----------------------------------------------------------------
+Andy Yan (8):
+      dt-bindings: soc: rockchip: add rk3588 vop/vo syscon
+      arm64: dts: rockchip: Add vop on rk3588
+      dt-bindings: vendor-prefixes: Add Cool Pi
+      dt-bindings: arm: rockchip: Add Cool Pi 4B
+      arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B
+      dt-bindings: arm: rockchip: Add Cool Pi CM5
+      arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB
+      arm64: dts: rockchip: Fix led pinctrl of lubancat 1
+
+Hugh Cole-Baker (1):
+      arm64: dts: rockchip: Support poweroff on NanoPC-T6
+
+Jimmy Hon (1):
+      arm64: dts: rockchip: Support poweroff on Orange Pi 5
+
+John Clark (4):
+      arm64: dts: rockchip: nanopc-t6 sdmmc beautification
+      arm64: dts: rockchip: support poweroff on the rock-5b
+      arm64: dts: rockchip: correct gpio_pwrctrl1 typo on rock-5b
+      arm64: dts: rockchip: correct gpio_pwrctrl1 typo on nanopc-t6
+
+Sam Edwards (1):
+      arm64: dts: rockchip: Fix rk3588 USB power-domain clocks
+
+Tianling Shen (1):
+      arm64: dts: rockchip: configure eth pad driver strength for orangepi r1 plus lts
+
+Trevor Woerner (2):
+      arm64: dts: rockchip: add gpio-line-names to rk3328-rock-pi-e
+      arm64: dts: rockchip: rk3308-rock-pi-s gpio-line-names cleanup
+
+Vahe Grigoryan (3):
+      arm64: dts: rockchip: fix misleading comment in rk3399-puma-haikou.dts
+      arm64: dts: rockchip: expose BIOS Disable feedback pin on rk3399-puma
+      arm64: dts: rockchip: make use gpio-keys for buttons on puma-haikou
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  12 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |   2 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   2 +
+ arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts  | 120 +--
+ .../dts/rockchip/rk3328-orangepi-r1-plus-lts.dts   |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |  53 ++
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  42 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  14 +
+ arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts |   2 +-
+ .../boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts    | 214 ++++++
+ .../arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi | 650 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  |   9 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 812 +++++++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |   1 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi          |  84 +++
+ 17 files changed, 1956 insertions(+), 71 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1847397333526091216==--
-
