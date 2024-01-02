@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E053C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 11:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E27C47074
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 14:49:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RxzfPPU/Z1PpUbjf8eVe/HVC6CY6n4Dh9aasz3H9Cjg=; b=Ifccx3aZJIpe59
-	KVG82aaBLDSx6qYWO5KgUoUJk5Qqo+k4ouMSvthlFVa1X0CLKlI/xDIFf7jMAZ8yFPxGiQtcJLRrl
-	oZcxXo8/ogoWOn5cP0DHztg2vbqmmEPxAj3NQi61N7JzAVQkfWpJEDiBEOfOvafY/Anqku8PXHvzx
-	/ByPmAdBZjqpckYaaPXM8VEjfSKEHJDaucpuSh5PkiYuWF4YAQeAwu5/Z5GbKfabrveVFXzWbyxK1
-	0QeghrSDEeHO051UMwMSrh/uXttoIQO0iAUecI2UqaXY2GgFm5VYIKrDTsOpJA+36k/ulPT78vE4l
-	gEQzMtnrQsAr4ZC5aeJw==;
+	List-Owner; bh=kuYX5CfY4Gfdu2eYuZwGzbH5Twd2B4eOCMX4EWo6XdM=; b=RHfKUQfxSavQlK
+	E6YxmD6kKdDtyoRLsF5M+KWfSLbrxnEggnfdVWdHvSOH8KEqk4NE/zKEaVdSnqE4TGK1qdewWT58T
+	JrxwLMHgzbfgWgOlR8I1Qz3ZTOuF1dqyJZrRTWqKWcwHDQV6Ca/k9wKRO8cUUGAC+NnmL8YzondSz
+	lURE2zbxxTDeszyL+fijrUoRwVhu0nK4rezaForwwrCaAt1pT1Ie0dHOLmJffZjPJMgeD2AZANwmn
+	P28rKwJUDF/ErDsfUcIZvJHwodPo5lSe+m8cBP4p2Y19+dAsN12OT4S17XJug6KQISp9KrIcsBZQB
+	1f36rFdQLV+BbsMJVTEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKcWj-007fAT-0I;
-	Tue, 02 Jan 2024 11:01:41 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKcWe-007f73-17
-	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jan 2024 11:01:37 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-6d9bd63ec7fso1899752b3a.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 03:01:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1704193293; x=1704798093; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Cl3+Gz73Blj8bbHen/MsuMvAvYRueD40O/9CXlEA1Ac=;
-        b=bSkjj2ZQ7+YFBSLsklv6Mq+juZpFYXxlAUPTsQhabXg2b/It/ZpA6VYNOuORjF7V/k
-         +n1WFc5KAWQJEZFKTiNXEVCIw7tx0K1ZTLsFchEnrpUVDnfysOKhjSH01kNqT1/cQkhW
-         6XS9jr+38kNkLGbmPruB5GWG4GDS3YoJvh8wBFIEoRaM/xy3mbc8SvgAnPTo1UM6yXTy
-         bL5pb+xqKcwA1dy4H4yQhKX64g+iNOG81A+R2xHQfePpLNiUYw5vhNWVaoSEiRX45lZE
-         4rU+wL5fse6Xo8v3/NeyAL2jJGMbFiJXgCv5r1loTIYI74f96Os6GcRupHU5dd+yFBmD
-         tZtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704193293; x=1704798093;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Cl3+Gz73Blj8bbHen/MsuMvAvYRueD40O/9CXlEA1Ac=;
-        b=tme7E41U7D62qhSj8B2oomh12ogCr8eWyYm3mPCe8Ej05HXeb4ldyx7Ix7jUNW/4Li
-         oiFeOAaFyg3QVAPF0UGLNOB9MJxbdHjM5hfhzsYIwN6O++zqQjxrigcECLHkQsDbBqZU
-         h6hgXbxikWnj/D4YBBs3phu/7nGq85j1re5wTaioutWfzPX0cniiE8LzxyhBcRQWdwsC
-         YJqp1IQkmsOHFhqQXRKr6AJaTqE6paSiDD5XihrbzwEIvKvk8vL3DLzkO4VvGNfmPEpz
-         7yM5XxAM8B34Z7+PmtPAYT2CFrXm3yQV8sTLe7prhHchd8JeU64PLkNs+I+iiGvcFxJQ
-         BMUA==
-X-Gm-Message-State: AOJu0YwRFG0ysOom8JbbZ44SccmdMosP2udAJQHgIOlF5PiO1JMgVmA/
-	yNPJUm7UXKbXZMpP0ie1ijSI20vviQjCNqRUCgMxspT09Lcd3g==
-X-Google-Smtp-Source: AGHT+IF2EGlw5GxLPP0MtA41B9f42K0EkBosD189HmVIxczVkPrEaRXnF58QaQps8h0wuPDaT95GdcqYAeKGjGLEysk=
-X-Received: by 2002:aa7:90d8:0:b0:6d5:a679:e8f4 with SMTP id
- k24-20020aa790d8000000b006d5a679e8f4mr7350622pfk.57.1704193293222; Tue, 02
- Jan 2024 03:01:33 -0800 (PST)
-MIME-Version: 1.0
-References: <20231125190522.87607-1-jagan@edgeble.ai>
-In-Reply-To: <20231125190522.87607-1-jagan@edgeble.ai>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Tue, 2 Jan 2024 16:31:21 +0530
-Message-ID: <CA+VMnFx4j1=CGou4yya_7RbFgPwQ_KqOLoTWbYLthPw2VwR3iQ@mail.gmail.com>
-Subject: Re: [PATCH v2 00/10] arm64: dts: rockchip: Pack Edgeble NCM6A, 6B DT
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	id 1rKg4l-008Hcf-0P;
+	Tue, 02 Jan 2024 14:49:03 +0000
+Received: from [2a01:4f8:1c1c:934f::1] (helo=mecka.net)
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1rKg4g-008Ha3-16;
+	Tue, 02 Jan 2024 14:49:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mecka.net; s=2016.11;
+	t=1704206933; bh=OLsgumS1zwfIQwHwTxGsJd911hWOiA9RORKv5bCget8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OlCBZLIVeF/PoWDACRceIzqmgbYteJEJ355bQ4YJdhOXq6ILi0racCbJ6xERTAkhu
+	 vs1kNQwxNsPHgrddbFYJENfb1E53QLEp3HygJqSADaZcTljUobsfwnjTEIGTHDKB+6
+	 QpvLBUBJLYdG9s6rMh4rKRQPL+OLQ1h+DdI1Tjpg9ErMxLRbOHGhcTtqxRJBKuyUIX
+	 lMNavOXv+doYpUl7zIvJZpSkqH7by1n8OkxzTfJkF0ZO/HLUpqQtcTjVS5Cinp+wWA
+	 k/b3WUCjXkC+POgl8A32MlXHZpUPBHe90L+4TQyUTbde/H3P13qnCQFkNGvcilqhBa
+	 BqX8loGptRM0A==
+Received: from mecka.net (unknown [185.147.11.134])
+	by mecka.net (Postfix) with ESMTPSA id 8F75D377B81;
+	Tue,  2 Jan 2024 15:48:52 +0100 (CET)
+Date: Tue, 2 Jan 2024 15:48:51 +0100
+From: Manuel Traut <manut@mecka.net>
+To: Jessica Zhang <quic_jesszhan@quicinc.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Mark Yao <markyao0591@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Segfault <awarnecke002@hotmail.com>,
+	Arnaud Ferraris <aferraris@debian.org>,
+	Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 2/4] drm/panel: Add driver for BOE TH101MB31IG002-28A
+ panel
+Message-ID: <ZZQiU7o9QQrm-axU@mecka.net>
+References: <20231223-pinetab2-v2-0-ec1856d0030e@mecka.net>
+ <20231223-pinetab2-v2-2-ec1856d0030e@mecka.net>
+ <342bf5a0-8454-4fd6-be45-462f1e31e606@quicinc.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <342bf5a0-8454-4fd6-be45-462f1e31e606@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_030136_505223_7B8A4D9C 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20240102_064858_985075_22322A49 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,36 +87,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+On Tue, Dec 26, 2023 at 02:56:58PM -0800, Jessica Zhang wrote:
+> 
+> 
+> On 12/23/2023 7:20 AM, Manuel Traut wrote:
+> > From: Alexander Warnecke <awarnecke002@hotmail.com>
+> > 
+> > The BOE TH101MB31IG002-28A panel is a WXGA panel.
+> > It is used in Pine64 Pinetab2 and PinetabV.
+> > 
 
-On Sun, 26 Nov 2023 at 00:35, Jagan Teki <jagan@edgeble.ai> wrote:
->
-> DT patch set for Edgeble NCM6A, NCM6B SoM, and IO board.
->
-> Changes for v2:
-> - suffix -regulator in node names
-> - fix node lables
-> - update commit message
->
-> Any inputs?
-> Jagan.
->
-> Jagan Teki (10):
->   arm64: dts: rockchip: Drop edgeble-neu6b dcdc-reg4 regulator-init-microvolt
->   arm64: dts: rockchip: Add edgeble-neu6a-common DT
->   arm64: dts: rockchip: Add common DT for edgeble-neu6b-io
->   arm64: dts: rockchip: Add Edgeble NCM6A WiFi6 Overlay
->   arm64: dts: rockchip: Add vdd_cpu_big reg to rk3588-edgeble-ncm6
->   arm64: dts: rockchip: Add Edgeble NCM6A-IO 2.5G ETH
->   arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2 M-Key
->   arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2 B-Key, E-Key
->   arm64: dts: rockchip: Add Edgeble NCM6A-IO USB2
->   arm64: dts: rockchip: Add LED_GREEN for edgeble-neu6a
+> Hi Manuel,
 
-Any update on this patch-set?
+Hi Jessica,
 
-Thanks,
-Jagan.
+> Sorry, I responded to the v1 instead of the latest version. Carrying my
+> comment over to here:
+> 
+> If I remember correctly, commit d2aacaf07395bd798373cbec6af05fff4147aff3
+> should have introduced prepared/enabled do the drm_panel struct.
+
+thanks for the hint, I will update this in v3.
+
+Regards
+Manuel
 
 _______________________________________________
 Linux-rockchip mailing list
