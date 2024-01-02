@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9144C4707B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12062C47079
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:09:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2E50vHjD72+eyWEYl4HNWgtwjRlvSh/o8QqfWVP+ck0=; b=QRESV2sd8o6Gd1
-	AkBUeSMJ+RuPz/7D91unl9z4EzXWeoUBFhIr/EefHt5kjuDm8c/c8khsA2gVF1ntFDlPzwS7Vnufy
-	vGN3mFdGKlW6N5b0NUZWOEHBwuSmC/4z9FCB967CMYJpkS65ifEyt3j4D4SOXMuIRR/H4IowilvlT
-	3jP7H/Ic1Ul4bv++RUTX+blgWROe9yIhJ5wPfsueXG/73e8tgYySkmHhzXu3DjoOBwwmlhmfTGw6H
-	aSm89MXN2WbGWX8z+SJGbMQGvmOY+ooxdikSksEPVvzYvEgY41+wBuRuZsxnz7jrR9P3JSjDBmhZT
-	vRQ7jmftZIUKF4x9X4yQ==;
+	List-Owner; bh=Nd46hMZi12B+ELbrkpviFK62uuXoFw7wca5pWDCyx0E=; b=b2f4od3NcrW2EN
+	X6wRp0d8djcgdtvxyRzSdsoE12ia0B11WfTojmyqYsV2zjfPDu2P7B9SNNZL7uulSHDVmp0LfwvWF
+	GhedDw3y0rRzP17AhN9pxqqsPlTBSv/xhHQw716zT54+f8/rSsObggfB/g3Y2CKSAvWUmO70cygs5
+	XgN44NmQhwUvSxxoIF3v2S1rivG8QMRKjLkRR3rUYWPeC3lW+YU4iC7Oy9GT6Ptm48IwPTzYqTyMX
+	NJeigLshLpQiSqSYkix3NpFoE7Z647maJTBAAWcew61waAP/YCfGGhp7uaOPq2Q2kZPc/ex7qtRMj
+	iaW+D311tuDjUgKZtyUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKm0L-008zgl-1b;
-	Tue, 02 Jan 2024 21:08:53 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1rKm0Z-008zs0-0u;
+	Tue, 02 Jan 2024 21:09:07 +0000
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKm0H-008zd8-0w
+	id 1rKm0R-008zkr-1T
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jan 2024 21:08:50 +0000
-Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-7baa8da5692so421989539f.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 13:08:49 -0800 (PST)
+	Tue, 02 Jan 2024 21:09:00 +0000
+Received: by mail-io1-xd2b.google.com with SMTP id ca18e2360f4ac-7bb99f77f97so50074139f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 13:08:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1704229728; x=1704834528; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1704229739; x=1704834539; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Y5uC/dqzQmYcBPDfBK6LehJHA1Nu9NUaC8OommBsuso=;
-        b=mm5iSNZookuV7Mj/TzSxRIJMUeIqG4+glkaMZeFK+WG54L4+GpdFboX2NRcMqRT5fa
-         wHVUVJ0pC30vMQKGlwDs8Zf5eX3T9+4Ab16eYJ4GuGlT1u/V8ldvHmv7EpEchfBrvc/o
-         p5xe8Tkvw35HiP5pb5IOrgNcosw9v5dcyX4cE=
+        bh=HRoMMnuwwy1ybNYQkYoJT5CIAhjtnaw7FKUhRhlzX2I=;
+        b=I3QT2hNuz30S+6RygZoShoiSpNdkOjcZBVG/pGEKVSzxR/Cn2Zj2wSIUlMDb+o6yxf
+         utZ7RY/+pjq/1mMbUBUSUnRrOs7tlzlLdxEfj/YouhuGTeTZGmxDqzmJefAzA69YTf4k
+         Rzj4DXM4zc90nkEHb59sZ6PEJbgBzdhF4bLBA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704229728; x=1704834528;
+        d=1e100.net; s=20230601; t=1704229739; x=1704834539;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Y5uC/dqzQmYcBPDfBK6LehJHA1Nu9NUaC8OommBsuso=;
-        b=vU9yBUOUADwYR9fGx2TWwS7+D8k2gGUnJTOWnIWgLa+kervJ5u8wPyX4J/O18jdNtQ
-         TSqcVoqrvwG/463OHWfb7+MVO6/gh4bjHxeCYgT9sw1ZIl6uFh3U+Shiy/gKhHHtrfEV
-         qTNGQRv4Oe2atu4HNwU589IHS0VK7O0shZ+d7Jyo1cABj3MyQJE8/bkKTsK+H3XDxBOc
-         xZqHvIUKx5gWK0hbHtDlZ558tf9mK6Od5yWnazIa5X0bbcpayIZXkjZBPIqnMwOXoFb6
-         36Qo0SRLAzDhHKZbnj5AqBMuOmln0uE3Bx5Yrr/UyoBcgSAAW9mV5aJRYIwZLI+04zYi
-         DpLQ==
-X-Gm-Message-State: AOJu0YwFThIEssfl8M/OthrdJnFqJeqLBC7WQEC6c15EksnG9YpFcqJn
-	GgziDL3beIigdC2gFMVTqPZawyXt6KJ6
-X-Google-Smtp-Source: AGHT+IHWKoCxJRGKNJPcLHrsAhYdGs8ek7DpUdoZoMbtH5+b3OOlyzYczn2NyfouKVIhZZpmVYFcgQ==
-X-Received: by 2002:a5d:8d84:0:b0:7bb:40db:9a47 with SMTP id b4-20020a5d8d84000000b007bb40db9a47mr8538555ioj.34.1704229728788;
-        Tue, 02 Jan 2024 13:08:48 -0800 (PST)
+        bh=HRoMMnuwwy1ybNYQkYoJT5CIAhjtnaw7FKUhRhlzX2I=;
+        b=g2h4Gynjo49Mats1TtaA/CwPv9oaSjt8ousYtXNUcUfNdN/s5iLdfRpHpr/YJRi9+P
+         uVHTqyBB1Zouw4/PQDVXtwYRyKTDXLFM1M2idm+clpRhLQMc9h6kVPD2EfJK6Xm4zf4z
+         PWEHtGkmrSGdfZQues48KL8cQisbZnNl2b5+STzqjS5OamGldoPl0SwiZR7Jxr9fQ170
+         PnJJvlWNkOL3BK+HlgRzf+bzM0SNVRkiAV3ILTlXPm2Nt6OWHC+GIe1qfiGgTe+IUaAp
+         d7NFvj5Z6s7rymQTJVgE+SgjIVUmV1cnp9GiAetWwoNP16HMMXY5pM9nthVy3lBOEr7s
+         6JeQ==
+X-Gm-Message-State: AOJu0YxYZR4e37Q52NDuKFNos6EwPzkTom3izrn807AF77KH805itlYz
+	EfyHYhSd8Df0K04RNjXisfrHEr2K48+E
+X-Google-Smtp-Source: AGHT+IFgjON8QaOIIt26i2gGQ8LaLRzi4hK2OMzadsvli0BLJTN6UjupAQhSNUzvjDASC8Dg4A9IRQ==
+X-Received: by 2002:a5d:83c2:0:b0:7bb:b722:63c1 with SMTP id u2-20020a5d83c2000000b007bbb72263c1mr34165ior.16.1704229738882;
+        Tue, 02 Jan 2024 13:08:58 -0800 (PST)
 Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
-        by smtp.gmail.com with ESMTPSA id bo18-20020a056638439200b0046993034c91sm6956978jab.77.2024.01.02.13.08.48
+        by smtp.gmail.com with ESMTPSA id bo18-20020a056638439200b0046993034c91sm6956978jab.77.2024.01.02.13.08.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jan 2024 13:08:48 -0800 (PST)
+        Tue, 02 Jan 2024 13:08:58 -0800 (PST)
 From: Mark Hasemeyer <markhas@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: Sudeep Holla <sudeep.holla@arm.com>,
@@ -77,16 +77,16 @@ Cc: Sudeep Holla <sudeep.holla@arm.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 06/24] ARM: dts: rockchip: rk3288: Enable cros-ec-spi as wake source
-Date: Tue,  2 Jan 2024 14:07:30 -0700
-Message-ID: <20240102140734.v4.6.I8249df4df0b7d12fb68ea1e69f84ca589c574bb1@changeid>
+Subject: [PATCH v4 17/24] arm64: dts: rockchip: rk3399: Enable cros-ec-spi as wake source
+Date: Tue,  2 Jan 2024 14:07:41 -0700
+Message-ID: <20240102140734.v4.17.Ice617703aded22ad4c806459129e1ae693eb57af@changeid>
 X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
 In-Reply-To: <20240102210820.2604667-1-markhas@chromium.org>
 References: <20240102210820.2604667-1-markhas@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_130849_333904_25A3550E 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20240102_130859_507275_B26E54F5 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,16 +129,16 @@ change
 Changes in v2:
 -Split by arch/soc
 
- arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-index 092316be67f74..1554fe36e60fe 100644
---- a/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288-veyron-chromebook.dtsi
-@@ -112,6 +112,7 @@ cros_ec: ec@0 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 789fd0dcc88ba..b5734e056aef1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -603,6 +603,7 @@ cros_ec: ec@0 {
  		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_int>;
+ 		pinctrl-0 = <&ec_ap_int_l>;
  		spi-max-frequency = <3000000>;
 +		wakeup-source;
  
