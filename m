@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12062C47079
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:09:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063C6C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nd46hMZi12B+ELbrkpviFK62uuXoFw7wca5pWDCyx0E=; b=b2f4od3NcrW2EN
-	X6wRp0d8djcgdtvxyRzSdsoE12ia0B11WfTojmyqYsV2zjfPDu2P7B9SNNZL7uulSHDVmp0LfwvWF
-	GhedDw3y0rRzP17AhN9pxqqsPlTBSv/xhHQw716zT54+f8/rSsObggfB/g3Y2CKSAvWUmO70cygs5
-	XgN44NmQhwUvSxxoIF3v2S1rivG8QMRKjLkRR3rUYWPeC3lW+YU4iC7Oy9GT6Ptm48IwPTzYqTyMX
-	NJeigLshLpQiSqSYkix3NpFoE7Z647maJTBAAWcew61waAP/YCfGGhp7uaOPq2Q2kZPc/ex7qtRMj
-	iaW+D311tuDjUgKZtyUA==;
+	List-Owner; bh=bVVTjrp+rQznLyvmye7aiMxDn9uYqgiOsoDpi7Z9UCg=; b=iSgiiGRaAgQReF
+	txwBc9pjWkqQju9a16lKMFxnTFHjQoPRiUuVO71WSoU+bbBFJQMgCPLtLMfEJiqq4sQ9H85n5d9NI
+	042BwcTvGRAw6+MYvXN6dUbuDrm+Uk/u0/aGwae1arHB8smYM9xuB/GtMvwMu4+4bc9UmZuuZY1p6
+	+nnN0n4ZOdwXRy9hSmW9r86l+oL2FdqU0ok4Q7YugtONlVL7P1BigNjpp9Rv7CXaY++DIu57jjnl8
+	xDvr9GVM8CXU48LwqThzRRV72TYeM8xFPIQ8Fn0oYiHtxK7M38GDOWPOLSznrq62QFDjFG9QtzwjW
+	TOjKGNIKWj+VMl97EM0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKm0Z-008zs0-0u;
-	Tue, 02 Jan 2024 21:09:07 +0000
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+	id 1rKmA8-00926u-2H;
+	Tue, 02 Jan 2024 21:19:00 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKm0R-008zkr-1T
-	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jan 2024 21:09:00 +0000
-Received: by mail-io1-xd2b.google.com with SMTP id ca18e2360f4ac-7bb99f77f97so50074139f.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 13:08:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1704229739; x=1704834539; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HRoMMnuwwy1ybNYQkYoJT5CIAhjtnaw7FKUhRhlzX2I=;
-        b=I3QT2hNuz30S+6RygZoShoiSpNdkOjcZBVG/pGEKVSzxR/Cn2Zj2wSIUlMDb+o6yxf
-         utZ7RY/+pjq/1mMbUBUSUnRrOs7tlzlLdxEfj/YouhuGTeTZGmxDqzmJefAzA69YTf4k
-         Rzj4DXM4zc90nkEHb59sZ6PEJbgBzdhF4bLBA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704229739; x=1704834539;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HRoMMnuwwy1ybNYQkYoJT5CIAhjtnaw7FKUhRhlzX2I=;
-        b=g2h4Gynjo49Mats1TtaA/CwPv9oaSjt8ousYtXNUcUfNdN/s5iLdfRpHpr/YJRi9+P
-         uVHTqyBB1Zouw4/PQDVXtwYRyKTDXLFM1M2idm+clpRhLQMc9h6kVPD2EfJK6Xm4zf4z
-         PWEHtGkmrSGdfZQues48KL8cQisbZnNl2b5+STzqjS5OamGldoPl0SwiZR7Jxr9fQ170
-         PnJJvlWNkOL3BK+HlgRzf+bzM0SNVRkiAV3ILTlXPm2Nt6OWHC+GIe1qfiGgTe+IUaAp
-         d7NFvj5Z6s7rymQTJVgE+SgjIVUmV1cnp9GiAetWwoNP16HMMXY5pM9nthVy3lBOEr7s
-         6JeQ==
-X-Gm-Message-State: AOJu0YxYZR4e37Q52NDuKFNos6EwPzkTom3izrn807AF77KH805itlYz
-	EfyHYhSd8Df0K04RNjXisfrHEr2K48+E
-X-Google-Smtp-Source: AGHT+IFgjON8QaOIIt26i2gGQ8LaLRzi4hK2OMzadsvli0BLJTN6UjupAQhSNUzvjDASC8Dg4A9IRQ==
-X-Received: by 2002:a5d:83c2:0:b0:7bb:b722:63c1 with SMTP id u2-20020a5d83c2000000b007bbb72263c1mr34165ior.16.1704229738882;
-        Tue, 02 Jan 2024 13:08:58 -0800 (PST)
-Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
-        by smtp.gmail.com with ESMTPSA id bo18-20020a056638439200b0046993034c91sm6956978jab.77.2024.01.02.13.08.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jan 2024 13:08:58 -0800 (PST)
-From: Mark Hasemeyer <markhas@chromium.org>
-To: LKML <linux-kernel@vger.kernel.org>
-Cc: Sudeep Holla <sudeep.holla@arm.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Raul Rangel <rrangel@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Mark Hasemeyer <markhas@chromium.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 17/24] arm64: dts: rockchip: rk3399: Enable cros-ec-spi as wake source
-Date: Tue,  2 Jan 2024 14:07:41 -0700
-Message-ID: <20240102140734.v4.17.Ice617703aded22ad4c806459129e1ae693eb57af@changeid>
-X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
-In-Reply-To: <20240102210820.2604667-1-markhas@chromium.org>
-References: <20240102210820.2604667-1-markhas@chromium.org>
+	id 1rKmA4-00925j-1c;
+	Tue, 02 Jan 2024 21:18:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1704230330; bh=NkgNNWrU5A+qrlyuoridyMA0T+gww6nA9Sf4hu63gmI=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=Fi02OVej7qHAlyYnp+pT6vaLbwXZjF/w4bjtOyReDOlrriSZqpWmfDA2KgpkXwriC
+	 L8prIzUKpNvdjwZg3bEywTq+VGwN3nVUNanL4DcEnx9xMHrMCbuzzRo8NkpTxFhUJw
+	 GglC0TZWR+N0WyOOckCsdRESaRUwgzH1WTQZLBbg=
+Date: Tue, 2 Jan 2024 22:18:48 +0100
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Manuel Traut <manut@mecka.net>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>, 
+	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>, 
+	Diederik de Haas <didi.debian@cknow.org>, Segfault <awarnecke002@hotmail.com>, 
+	Arnaud Ferraris <aferraris@debian.org>, Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64
+ PineTab2
+Message-ID: <qwndrkppuctp2mybnibbf6fppp6abzimqs4hirrwjauig34why@gawjwsbauffm>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Jonas Karlman <jonas@kwiboo.se>, Manuel Traut <manut@mecka.net>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>, 
+	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>, 
+	Diederik de Haas <didi.debian@cknow.org>, Segfault <awarnecke002@hotmail.com>, 
+	Arnaud Ferraris <aferraris@debian.org>, Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
+ <20240102-pinetab2-v3-4-cb1aa69f8c30@mecka.net>
+ <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
+ <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_130859_507275_B26E54F5 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20240102_131857_005304_64110E42 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,57 +86,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The cros_ec driver currently assumes that cros-ec-spi compatible device
-nodes are a wakeup-source even though the wakeup-source property is not
-defined.
-
-Some Chromebooks use a separate wake pin, while others overload the
-interrupt for wake and IO. With the current assumption, spurious wakes
-can occur on systems that use a separate wake pin. It is planned to
-update the driver to no longer assume that the EC interrupt pin should
-be enabled for wake.
-
-Add the wakeup-source property to all cros-ec-spi compatible device
-nodes to signify to the driver that they should still be a valid wakeup
-source.
-
-Signed-off-by: Mark Hasemeyer <markhas@chromium.org>
----
-
-(no changes since v3)
-
-Changes in v3:
--Update commit message to provide details of the motivation behind the
-change
-
-Changes in v2:
--Split by arch/soc
-
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index 789fd0dcc88ba..b5734e056aef1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -603,6 +603,7 @@ cros_ec: ec@0 {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ec_ap_int_l>;
- 		spi-max-frequency = <3000000>;
-+		wakeup-source;
- 
- 		i2c_tunnel: i2c-tunnel {
- 			compatible = "google,cros-ec-i2c-tunnel";
--- 
-2.43.0.472.g3155946c3a-goog
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKYW4gMDIsIDIwMjQgYXQgMDk6NTY6MjBQTSArMDEwMCwgSm9uYXMgS2FybG1hbiB3
+cm90ZToKPiBIaSBNYW51ZWwgYW5kIE9uZMWZZWosCj4gCj4gT24gMjAyNC0wMS0wMiAxOTowNywg
+T25kxZllaiBKaXJtYW4gd3JvdGU6Cj4gPiBIZWxsbyBNYW51ZWwsCj4gCj4gWy4uLl0KPiAKPiA+
+PiArCj4gPj4gKyZzZmMgewo+ID4+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+PiAr
+CXBpbmN0cmwtMCA9IDwmZnNwaV9kdWFsX2lvX3BpbnM+Owo+ID4+ICsJc3RhdHVzID0gIm9rYXki
+Owo+ID4+ICsJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gPj4gKwkjc2l6ZS1jZWxscyA9IDwwPjsK
+PiA+PiArCj4gPj4gKwlmbGFzaEAwIHsKPiA+PiArCQljb21wYXRpYmxlID0gImplZGVjLHNwaS1u
+b3IiOwo+ID4+ICsJCXJlZyA9IDwwPjsKPiA+PiArCQlzcGktbWF4LWZyZXF1ZW5jeSA9IDwyNDAw
+MDAwMD47Cj4gPiAKPiA+IFRoYXQncyBhIGJpdCBvbiB0aGUgbG93IHNpZGUuIFRoZSBmbGFzaCBj
+aGlwIHNob3VsZCB3b3JrIGZvciBhbGwgY29tbWFuZHMgdXAgdG8KPiA+IDgwTUh6IGh0dHBzOi8v
+bWVnb3VzLmNvbS9kbC90bXAvYjQyOGFkOWI4NWFjNDYzMy5wbmcgYW5kIFNHTTMxNTdZQzYgc3dp
+dGNoCj4gPiBmb3IgdGhlIEZTUEktQ0xLIHNob3VsZCBoYXZlIGhpZ2ggZW5vdWdoIGJhbmR3aWR0
+aCwgdG9vLgo+IAo+IEkgYWdyZWUgdGhhdCB0aGlzIGlzIGEgbGl0dGxlIGJpdCBvbiB0aGUgbG93
+IHNpZGUsIGl0IHdhcyBhIHNhZmUgcmF0ZQo+IHRoYXQgSSB1c2VkIGZvciBVLUJvb3QuIFUtQm9v
+dCByZXF1aXJlZCBhbiBleGFjdCByYXRlIG9mIHRoZSBzdXBwb3J0ZWQKPiBzZmMgY2xrIHJhdGVz
+OiAyNCwgNTAsIDc1LCAxMDAsIDEyNSBvciAxNTAgTUh6Lgo+IAo+IFBsZWFzZSBhbHNvIG5vdGUg
+dGhhdCB0aGUgU1BJIE5PUiBmbGFzaCBjaGlwIHVzZWQgaW4gUGluZVRhYjIgaXMgbm90IGEKPiBH
+aWdhRGV2aWNlIEdEMjVMUTEyOEUsIGl0IHNob3VsZCBiZSBhIFNpbGljb25LYWlzZXIgU0syNUxQ
+MTI4LCBzYW1lIGFzCj4gZm91bmQgaW4gdGhlIFBpbmU2NCBQaW5lUGhvbmUgUHJvLgoKQWNjb3Jk
+aW5nIHRvIHRoaXMgaHR0cDovL2VuLnNpbGljb25rYWlzZXIuY29tL3Byby8gIGl0IHNob3VsZCBt
+YXliZSBnbyB1cCB0bwoxMzNNSHouIE5vIGlkZWEgd2hhdCdzIHRoZSBkaWZmZXJlbmNlIGJldHdl
+ZW4gTFAgdnMgTEUgdmFyaWFudC4gU28gaXQgbWF5IHdvcmsKd2l0aCAxMDAgTUh6LgoKT24gUGlu
+ZXBob25lIFBybyB2YXJpYW50cyB3aXRoIG5lcmZlZCBTUEkgQ0xLIHNpZ25hbCBpbnRlZ3JpdHkg
+KGFueSB2YXJpYW50IHdpdGgKUkUgaW5zdGVhZCBvZiBhIFJFU0VUIGJ1dHRvbiAtIHNvIGFsbCBw
+cm9kdWN0aW9uIGJhdGNoZXMpLCBhbnl0aGluZyBhYm92ZSAxMCBNSHoKaGFzIHJlYWwgdHJvdWJs
+ZSB3b3JraW5nLiBCdXQgdGhpcyBzaG91bGQgbm90IGJlIHRoZSBjYXNlIGhlcmUgd2l0aCBQVDIs
+IGxvb2tpbmcKYXQgdGhlIHNjaGVtYXRpYy4uLgoKQW55d2F5LCBpdCdzIGEgbmljZSB0byBoYXZl
+LgoKPiA+IAo+ID4+ICsJCXNwaS1yeC1idXMtd2lkdGggPSA8Mj47Cj4gPiAKPiA+IEdEMjVMUTEy
+OEUgc3VwcG9ydHMgcXVhZCBJL08uIE1heWJlIHRyeSA0IGlmIGl0IHdpbGwgd29yay4KPiAKPiBU
+aGUgc2NoZW1hdGljIG9ubHkgc2hvd3MgZnNwaSBEMCBhbmQgRDEgY29ubmVjdGVkLCBhbmQgdXNl
+IHRoZSBEMiBsaW5lCj4gZm9yIGVNTUNfUlNUbiwgc28gc3BpLXJ4LWJ1cy13aWR0aCA9IDwyPiBz
+aG91bGQgYmUgY29ycmVjdC4KCkFoLCBJIHNlZS4KCnJlZ2FyZHMsCglvLgoKPiA+IAo+ID4+ICsJ
+CXNwaS10eC1idXMtd2lkdGggPSA8MT47Cj4gPj4gKwl9Owo+ID4+ICt9Owo+ID4+ICsKPiAKPiBS
+ZWdhcmRzLAo+IEpvbmFzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
