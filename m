@@ -4,75 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A84B8C47074
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 20:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79736C47074
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3ggbuamSogbiLubQj1a+U6+0bpEZ1erd10Cv+EgTWFA=; b=dx4ZzywEqMry2J
-	hlBmKsN9zQPIugLjCEQXyK67GXK9oCVqjYRA+KZk3x8Y+dIVnNCSY0Fr3xPZBv1lO7zkOIFCoeEJn
-	J3UuZIpMYNC3OoY/6hP2Stw/AnLzqAXoz3GiUR4qh3/9odn3iWL37sueR69KiH3LV+egA8cnChqcU
-	US5M+NNvSmD96L4XMTntIwReh4KhIuWBtSfwzouyN8/azwr7g7NYEOAuzZiWCS0R+2oWVAVc6v0Yl
-	dgi16vmXhMACDImKE2H/O3dzEDgbl7YsJE/08cBJb5LkpvBXPUvoYrz45uiZyj5v6l9g4uudtwdU8
-	pqylVSDebGfed7yKjaxA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=drzsZ3LS9mLyjI41GXMEqnRQuFm5B2U3DxVoopvPWxw=; b=jKOEJzE3WAVvEN
+	3hkZhSDOGg2nJewr0npJVSFofJayhwjlDy/4oxsfV3cZtQABByd05aIEx8SdVqciCScKFddns/vTu
+	hdjsgCoy7eVx0r3rNh6Eihr4xn1pF7Z1AV9/HP2k9u2Y0IHdAd8yuX4kAOGIbF2TQgS13qm8iTKLS
+	So1u/HsX03OSXoiCdXXsYsMWRzn9oC1bnxnkJ0NifOPR2cEVVoT+9KyRUYYruz+tXsAgdsSScbOa+
+	PgdbFsfeS2Me7q0fUktsHt8CVmcAtpFdqKdlSMVH1J1x3r2++4nXZemT7N6lBE6Szywf73m6CsMXX
+	C1270aUiHGTxlRGZhYXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKlpG-008yHO-1d;
-	Tue, 02 Jan 2024 20:57:26 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1rKm0F-008zci-35;
+	Tue, 02 Jan 2024 21:08:47 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKlpB-008yCy-24
+	id 1rKm0D-008zbf-0N
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jan 2024 20:57:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- To: Subject: MIME-Version: Date: Message-ID; q=dns/txt; s=fe-e1b5cab7be;
- t=1704228988; bh=ccZgqPCrJ4T9GeS8WnNP4L0gon1xZyOTx7zhUGDzNNc=;
- b=DaH0KB+5QYKAOAnRy5h6rDe5fjTgNdsmF4lFOcqxdsv3vpukMlnHOv9ESNFhq+KfIwTeEKjXk
- 2e0KzMSn/FK6IZOrohCBq/jCd4TuUYAG9537LgfPP+JlRDIicnd0BEfneaXY3FbPeGGH5G3uPT3
- PWqOEyLrX/S5lF8VUuLcQRWjen8bSmSxMlTH/cBvzOGFx+lXlK5Y8DkoIRrCyyNhD744o4kIY/K
- 56xbC4S1K5Ay/0LwhOpghd94srR0A79K/xSildlCid/akMIkCE1rD3e+MpoiaJL94eRnmWvq4aL
- 0vADC7dkPJOL8y3mshEqBZdKpAphrV424solT5lwvJlQ==
-Message-ID: <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
-Date: Tue, 2 Jan 2024 21:56:20 +0100
+	Tue, 02 Jan 2024 21:08:46 +0000
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-7b7a9f90f34so534005939f.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 13:08:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1704229723; x=1704834523; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=C7mFJdJJR38MVoewAU3PshqnCmTUbmo4+vjrut4nXkA=;
+        b=LFZN/Lq0ui9cbzgySnxmQVrIyk6ciWzRVqIBvh7eT/32Yk9mKmryUNsDZINCujhwGg
+         LTex1Bnn8lCWWX7eWzTXhW4WE2zrJ2G/o194vLga0Dpsne90R3HUWvBCiRHA3pK3uZEj
+         j8zd2RH/euGBWUV6YwiDrQplC7X1SuA0SoDTM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704229723; x=1704834523;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=C7mFJdJJR38MVoewAU3PshqnCmTUbmo4+vjrut4nXkA=;
+        b=xM6scXUKsCIiMNjVREAJOeNoZkXR5WtBLbIhKEx9FtYRyXzBNV7qAkvv8v5zy5j0WB
+         PRscTmRhXpeCq6VD1SGZjhM/blFhl45kyZlTobkxk4QmG2tbMs6yfv3AsJvHNWmDQUvg
+         Gprgi7jFStHPr7gBgt/dZZm5Vb1Xv7PITNcAizr6hHdEFASY4r+sdEEFnyZRRYywA1DQ
+         5+IQYsB+Se6m+J3SdclFSaph0oLgWZBqwMllu65mzNyKSPVbatSWPXDg+EjWSCrnIVmx
+         n7aWjzxZ716W2Q9wKSxHg0MtO1RarJXEGvJkqfRiJprHFKaMP4i+5yvVnxxoagUxF8OX
+         K0fg==
+X-Gm-Message-State: AOJu0Yxb9eblXYd3C1mxYpNShKyAULZNKpLY/83ynT9g4Erv/ByoHHNP
+	E2v9XMPS6VGipxj0IDwxRthvZlNahXjN
+X-Google-Smtp-Source: AGHT+IH30ze8lliPJsLy0+gFPaeKunMXu0LXjX1HO6/sLENHoZmveXOqCkZRgWXN24Z3/Wl9tJipHw==
+X-Received: by 2002:a05:6602:e03:b0:7ba:a232:30fe with SMTP id gp3-20020a0566020e0300b007baa23230femr13087461iob.20.1704229723563;
+        Tue, 02 Jan 2024 13:08:43 -0800 (PST)
+Received: from markhas1.lan (71-218-50-136.hlrn.qwest.net. [71.218.50.136])
+        by smtp.gmail.com with ESMTPSA id bo18-20020a056638439200b0046993034c91sm6956978jab.77.2024.01.02.13.08.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jan 2024 13:08:43 -0800 (PST)
+From: Mark Hasemeyer <markhas@chromium.org>
+To: LKML <linux-kernel@vger.kernel.org>
+Cc: Sudeep Holla <sudeep.holla@arm.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@intel.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Raul Rangel <rrangel@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Mark Hasemeyer <markhas@chromium.org>,
+	AKASHI Takahiro <takahiro.akashi@linaro.org>,
+	Alexandre TORGUE <alexandre.torgue@st.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Andre Przywara <andre.przywara@arm.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Baoquan He <bhe@redhat.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Benson Leung <bleung@chromium.org>,
+	Bhanu Prakash Maiya <bhanumaiya@chromium.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	David Gow <davidgow@google.com>,
+	Frank Rowand <frowand.list@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Len Brown <lenb@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mika Westerberg <mika.westerberg@linux.intel.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Paul Barker <paul.barker@sancloud.com>,
+	Prashant Malani <pmalani@chromium.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Rob Barnes <robbarnes@google.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Romain Perier <romain.perier@gmail.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Stephen Boyd <swboyd@chromium.org>,
+	Takashi Iwai <tiwai@suse.de>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Wei Xu <xuwei5@hisilicon.com>,
+	Wolfram Sang <wsa@kernel.org>,
+	chrome-platform@lists.linux.dev,
+	cros-qcom-dts-watchers@chromium.org,
+	devicetree@vger.kernel.org,
+	linux-acpi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-tegra@vger.kernel.org
+Subject: [PATCH v4 00/24] Improve IRQ wake capability reporting and update the cros_ec driver to use it
+Date: Tue,  2 Jan 2024 14:07:24 -0700
+Message-ID: <20240102210820.2604667-1-markhas@chromium.org>
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64
- PineTab2
-Content-Language: en-US
-To: "=?UTF-8?Q?Ond=C5=99ej_Jirman?=" <megi@xff.cz>, Manuel Traut
- <manut@mecka.net>, Neil Armstrong <neil.armstrong@linaro.org>, Jessica
- Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Mark
- Yao <markyao0591@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris
- <aferraris@debian.org>, Danct12 <danct12@riseup.net>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
- <20240102-pinetab2-v3-4-cb1aa69f8c30@mecka.net>
- <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 6594787c1cdb56bea851e248
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_125721_748115_34963F4E 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20240102_130845_206637_269CFE73 
+X-CRM114-Status: GOOD (  19.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +141,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFudWVsIGFuZCBPbmTFmWVqLAoKT24gMjAyNC0wMS0wMiAxOTowNywgT25kxZllaiBKaXJt
-YW4gd3JvdGU6Cj4gSGVsbG8gTWFudWVsLAoKWy4uLl0KCj4+ICsKPj4gKyZzZmMgewo+PiArCXBp
-bmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICsJcGluY3RybC0wID0gPCZmc3BpX2R1YWxfaW9f
-cGlucz47Cj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+PiArCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+
-PiArCSNzaXplLWNlbGxzID0gPDA+Owo+PiArCj4+ICsJZmxhc2hAMCB7Cj4+ICsJCWNvbXBhdGli
-bGUgPSAiamVkZWMsc3BpLW5vciI7Cj4+ICsJCXJlZyA9IDwwPjsKPj4gKwkJc3BpLW1heC1mcmVx
-dWVuY3kgPSA8MjQwMDAwMDA+Owo+IAo+IFRoYXQncyBhIGJpdCBvbiB0aGUgbG93IHNpZGUuIFRo
-ZSBmbGFzaCBjaGlwIHNob3VsZCB3b3JrIGZvciBhbGwgY29tbWFuZHMgdXAgdG8KPiA4ME1IeiBo
-dHRwczovL21lZ291cy5jb20vZGwvdG1wL2I0MjhhZDliODVhYzQ2MzMucG5nIGFuZCBTR00zMTU3
-WUM2IHN3aXRjaAo+IGZvciB0aGUgRlNQSS1DTEsgc2hvdWxkIGhhdmUgaGlnaCBlbm91Z2ggYmFu
-ZHdpZHRoLCB0b28uCgpJIGFncmVlIHRoYXQgdGhpcyBpcyBhIGxpdHRsZSBiaXQgb24gdGhlIGxv
-dyBzaWRlLCBpdCB3YXMgYSBzYWZlIHJhdGUKdGhhdCBJIHVzZWQgZm9yIFUtQm9vdC4gVS1Cb290
-IHJlcXVpcmVkIGFuIGV4YWN0IHJhdGUgb2YgdGhlIHN1cHBvcnRlZApzZmMgY2xrIHJhdGVzOiAy
-NCwgNTAsIDc1LCAxMDAsIDEyNSBvciAxNTAgTUh6LgoKUGxlYXNlIGFsc28gbm90ZSB0aGF0IHRo
-ZSBTUEkgTk9SIGZsYXNoIGNoaXAgdXNlZCBpbiBQaW5lVGFiMiBpcyBub3QgYQpHaWdhRGV2aWNl
-IEdEMjVMUTEyOEUsIGl0IHNob3VsZCBiZSBhIFNpbGljb25LYWlzZXIgU0syNUxQMTI4LCBzYW1l
-IGFzCmZvdW5kIGluIHRoZSBQaW5lNjQgUGluZVBob25lIFByby4KCj4gCj4+ICsJCXNwaS1yeC1i
-dXMtd2lkdGggPSA8Mj47Cj4gCj4gR0QyNUxRMTI4RSBzdXBwb3J0cyBxdWFkIEkvTy4gTWF5YmUg
-dHJ5IDQgaWYgaXQgd2lsbCB3b3JrLgoKVGhlIHNjaGVtYXRpYyBvbmx5IHNob3dzIGZzcGkgRDAg
-YW5kIEQxIGNvbm5lY3RlZCwgYW5kIHVzZSB0aGUgRDIgbGluZQpmb3IgZU1NQ19SU1RuLCBzbyBz
-cGktcngtYnVzLXdpZHRoID0gPDI+IHNob3VsZCBiZSBjb3JyZWN0LgoKPiAKPj4gKwkJc3BpLXR4
-LWJ1cy13aWR0aCA9IDwxPjsKPj4gKwl9Owo+PiArfTsKPj4gKwoKUmVnYXJkcywKSm9uYXMKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Currently the cros_ec driver assumes that its associated interrupt is
+wake capable. This is an incorrect assumption as some Chromebooks use a
+separate wake pin, while others overload the interrupt for wake and IO.
+This patch train updates the driver to query the underlying ACPI/DT data
+to determine whether or not the IRQ should be enabled for wake.
+
+Both the device tree and ACPI systems have methods for reporting IRQ
+wake capability. In device tree based systems, a node can advertise
+itself as a 'wakeup-source'. In ACPI based systems, GpioInt and
+Interrupt resource descriptors can use the 'SharedAndWake' or
+'ExclusiveAndWake' share types.
+
+Some logic is added to the platform, ACPI, and DT subsystems to more
+easily pipe wakeirq information up to the driver.
+
+Changes in v4:
+-Rebase on linux-next
+-See each patch for patch specific changes
+
+Changes in v3:
+-Rebase on linux-next
+-See each patch for patch specific changes
+
+Changes in v2:
+-Rebase on linux-next
+-Add cover letter
+-See each patch for patch specific changes
+
+Mark Hasemeyer (24):
+  resource: Add DEFINE_RES_*_NAMED_FLAGS macro
+  gpiolib: acpi: Modify acpi_dev_irq_wake_get_by() to use resource
+  i2c: acpi: Modify i2c_acpi_get_irq() to use resource
+  dt-bindings: power: Clarify wording for wakeup-source property
+  ARM: dts: tegra: Enable cros-ec-spi as wake source
+  ARM: dts: rockchip: rk3288: Enable cros-ec-spi as wake source
+  ARM: dts: samsung: exynos5420: Enable cros-ec-spi as wake source
+  ARM: dts: samsung: exynos5800: Enable cros-ec-spi as wake source
+  arm64: dts: mediatek: mt8173: Enable cros-ec-spi as wake source
+  arm64: dts: mediatek: mt8183: Enable cros-ec-spi as wake source
+  arm64: dts: mediatek: mt8192: Enable cros-ec-spi as wake source
+  arm64: dts: mediatek: mt8195: Enable cros-ec-spi as wake source
+  arm64: dts: tegra: Enable cros-ec-spi as wake source
+  arm64: dts: qcom: sc7180: Enable cros-ec-spi as wake source
+  arm64: dts: qcom: sc7280: Enable cros-ec-spi as wake source
+  arm64: dts: qcom: sdm845: Enable cros-ec-spi as wake source
+  arm64: dts: rockchip: rk3399: Enable cros-ec-spi as wake source
+  of: irq: add wake capable bit to of_irq_resource()
+  of: irq: Add default implementation for of_irq_to_resource()
+  of: irq: Remove extern from function declarations
+  device property: Modify fwnode irq_get() to use resource
+  device property: Update functions to use EXPORT_SYMBOL_GPL()
+  platform: Modify platform_get_irq_optional() to use resource
+  platform/chrome: cros_ec: Use PM subsystem to manage wakeirq
+
+ .../bindings/power/wakeup-source.txt          | 18 ++--
+ arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi   |  1 +
+ arch/arm/boot/dts/nvidia/tegra124-venice2.dts |  1 +
+ .../rockchip/rk3288-veyron-chromebook.dtsi    |  1 +
+ .../boot/dts/samsung/exynos5420-peach-pit.dts |  1 +
+ .../boot/dts/samsung/exynos5800-peach-pi.dts  |  1 +
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  1 +
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  1 +
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     |  1 +
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      |  1 +
+ .../arm64/boot/dts/nvidia/tegra132-norrin.dts |  1 +
+ arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi  |  1 +
+ .../arm64/boot/dts/qcom/sc7280-herobrine.dtsi |  1 +
+ .../arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi |  1 +
+ arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  |  1 +
+ drivers/acpi/property.c                       | 11 ++-
+ drivers/base/platform.c                       | 90 ++++++++++++-------
+ drivers/base/property.c                       | 40 ++++++---
+ drivers/gpio/gpiolib-acpi.c                   | 28 ++++--
+ drivers/i2c/i2c-core-acpi.c                   | 43 ++++-----
+ drivers/i2c/i2c-core-base.c                   |  6 +-
+ drivers/i2c/i2c-core.h                        |  4 +-
+ drivers/of/irq.c                              | 39 +++++++-
+ drivers/of/property.c                         |  8 +-
+ drivers/platform/chrome/cros_ec.c             | 48 ++++++++--
+ drivers/platform/chrome/cros_ec_lpc.c         | 40 +++++++--
+ drivers/platform/chrome/cros_ec_spi.c         | 15 ++--
+ drivers/platform/chrome/cros_ec_uart.c        | 14 ++-
+ include/linux/acpi.h                          | 25 +++---
+ include/linux/fwnode.h                        |  8 +-
+ include/linux/ioport.h                        | 20 +++--
+ include/linux/of_irq.h                        | 41 +++++----
+ include/linux/platform_data/cros_ec_proto.h   |  4 +-
+ include/linux/platform_device.h               |  3 +
+ include/linux/property.h                      |  2 +
+ 36 files changed, 350 insertions(+), 172 deletions(-)
+
+-- 
+2.43.0.472.g3155946c3a-goog
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
