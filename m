@@ -4,81 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB57EC4706F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 02:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F48CC47079
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 10:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FHh73iqVgL2u0SakOhJVC0xCamtpUXV637M2bN/0yZo=; b=PXM1Z4Z4wclcaQ
-	ER6c6fG+NwCkw0af4fkFRjSYeYJOyYaTlgSrJ4a+lZpsN/eDPlK4fi1Fa7VBkgqvHWr0LYX19JyUg
-	6l2Jdit84qyV/9Vg7aE5cyxcPCrDdpRlPk8PVI3Bdvw0UFcp4sFn6HHI039eWYUJVno4LPPa2934p
-	U4cMpcxwVAv8YkU5k7Oe9Z+8cf6wgcvSeXTsel2lbfcD+ilNj5bDH6ePHLgLj5oZPpv4ttMA4QG4a
-	9t26XN+cKhOH84M7+hIZJpJe0UMvUSiqwvQ/U1y0OKVjHhWAQcjuMCkzz8VvL1/7P3FVna99xhtSw
-	KIEM9AzP1opor2jhLtvw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kdAReHVIKNuYMuzqDbbGFO9CQ6iUbJ5aRk5LYSmWiAw=; b=2v5mFLhG0Y3V9b
+	Nr2Amb4g8108NkxmOl2V8maj36iLfISA2lNWLSBho3/Zz9NEjwD3YW+2z/XJW0eXkM5OWCUqiDdTi
+	SYIrqxxTK8R1jSWllP28YG+3h3CT4mS8f5DqMuKUOvQrxPXjjg0s10Kmch94kLEIrLM4Rg9HM0Xml
+	ISJHT0ME6YSsPW84qlO3X5rKiy4GcQktLnRxesa+LVhaoifjALtiqc/fI5FS8CEl9oSIRdgk/YibU
+	CtcjCrdLa+lACrY2VXxh1R3uwDFeCx3j2i3z26NkFeIEcDLhMqJxy6/LqeaLESM6gVFOvO3OQ07cJ
+	GL8SE9VD1WcuL8yHRngQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKUip-006zFF-2U;
-	Tue, 02 Jan 2024 02:41:39 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1rKc68-007bey-1T;
+	Tue, 02 Jan 2024 10:34:12 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKUin-006zEG-15;
-	Tue, 02 Jan 2024 02:41:38 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-78101108e3fso744676585a.1;
-        Mon, 01 Jan 2024 18:41:35 -0800 (PST)
+	id 1rKc65-007bdk-2Y
+	for linux-rockchip@lists.infradead.org;
+	Tue, 02 Jan 2024 10:34:11 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40d5aefcc2fso53175245e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jan 2024 02:34:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704163295; x=1704768095; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=eRVOpblwQ3hnrC1ABa9hLFHr9iquzQYphLKUbyNwreY=;
-        b=iHP6SO48hyTY6Lqi558MQEi7/4rzDSlgcP/KbBho5vtk04QMXQmMjuRj85FDzdsjN4
-         vjVEp6q9FKVItgGr/+YJI2wXVaIn0YvzEdQiTADw4MdQTJhlWmYpTktMLikBntBV20Ic
-         O06ZS+EBFSFLFvr94TjmTCWQB8he7qfrm5hrXoSu1j0FpMPB/H9B/iYuCrfFt4toQxmv
-         N6xWIciFtQn8WVH0QjbCP8SycJsa91Hd+bYrkQ0FXJODCGavwkF5c2fc51NfyAF5eV9B
-         t19hkE5y6rm0zvcxRfd/6Xw/4i1ISgSVbAlBwzbZOnhSSjU03LQMAJFcIossb3ES7/sw
-         Sv/g==
+        d=linaro.org; s=google; t=1704191647; x=1704796447; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nCERMpooYaZKMcdn9+yhylHTyfqm8d7HEzDVi0qPotE=;
+        b=RRpNKJCg1H1qHg3PWTx2gfinE+RbtBb8BlXYNQ6mmUIESknCX9bnd7wfjmW1c6HWPR
+         j+JAauO0NuqCAxm7o83pUer3AQHl/OvKUyTroDZL9fzsIxELoahmxkDuoz2nEZFkZnZT
+         mwZHZldy7QVk+kaKL0RzpQoz/kgRbwbUfk/RO2xEUFAknwHDlz6qjbUwXpHWVYFr52DI
+         xSLkEE64AOa1IDaQj4BgqFSCSkr8unGyHRxCnJGmzQeXZh086hD56DN29OMlnwXbRjjx
+         T0hDhjuTpDn/JsOGLxtTzK6gi5v3A0oC05OKJH4O2bDyBB3+bjfCrDoYA3Etr2CfpWc2
+         ZNaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704163295; x=1704768095;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eRVOpblwQ3hnrC1ABa9hLFHr9iquzQYphLKUbyNwreY=;
-        b=GVumsK1/6Uid76rlmMq1L54fjJNOHlyKB/0aXaPP0R8MBMq7Gab0pu0HsTFqnCSobA
-         GuCLJb4WV5j6x7xDLDicktNSacgq/19FxyaOTE581eWoXHwfdzEjRQ+ZjP0iU3EgqwG2
-         F5ujMqsHxU3oSInj3SORmefJ+aOFf5QkrLCDdKbNw2T/g7cOzN4Ydy8sijYQoPaCSIwz
-         hKIamtXAMGPBPr0lkQxeOR0qk+23TZGDr4FfE5Jg2bWG/TpiornVtZDrIPMstm9osmUM
-         23kpY/NCu6ucqJZFKnF9tzmoiTv2kWYWA5AZISkQCzZ+UQe3GM4+SPUMbyals+ecoTTw
-         NOWg==
-X-Gm-Message-State: AOJu0Yw2njPQsHA53WgJmAM88pKOJk3j2qOWzqTjJpLv/H0SVxNMgwrN
-	hS6dQ13Ev8GfNAEFg3KK8HE=
-X-Google-Smtp-Source: AGHT+IEl3+Pk1MOkQjs46lysrTP/eWZLzFXJpHaRZUn8ihW9X0n1DRVLcHdsPtYNlhrgHw7yuwO0Mg==
-X-Received: by 2002:ae9:e416:0:b0:781:415c:273e with SMTP id q22-20020ae9e416000000b00781415c273emr17154242qkc.99.1704163295025;
-        Mon, 01 Jan 2024 18:41:35 -0800 (PST)
-Received: from localhost.localdomain (107-015-241-140.res.spectrum.com. [107.15.241.140])
-        by smtp.gmail.com with ESMTPSA id bk7-20020a05620a1a0700b0077d7326c60csm9161896qkb.38.2024.01.01.18.41.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jan 2024 18:41:34 -0800 (PST)
-From: John Clark <inindev@gmail.com>
-To: "Rob Herring" <robh+dt@kernel.org>,
-	"Krzysztof Kozlowski" <krzysztof.kozlowski+dt@linaro.org>,
-	"Conor Dooley" <conor+dt@kernel.org>,
-	"Heiko Stuebner" <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: "Thomas McKahan" <tmckahan@singleboardsolutions.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	John Clark <inindev@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: nanopc-t6 sdmmc regulator
-Date: Tue,  2 Jan 2024 02:40:53 +0000
-Message-ID: <20240102024054.1030313-1-inindev@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        d=1e100.net; s=20230601; t=1704191647; x=1704796447;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nCERMpooYaZKMcdn9+yhylHTyfqm8d7HEzDVi0qPotE=;
+        b=KJ4KXeQBPwrzPtZ5L+on1AOGsz0wDwmZQVTX2qrOwu9MC2iflSIlxvt4sgCO3cLyS7
+         W/uxUCAPaaPOmRcjL9WJ6LVswvjVajLLWf3QmAl1gkQ4pzOzEI6F4vr+AG7bB8JeaBIk
+         NOdDzss1HJl95utIWtlVp4kBtK2yQ9LWQ8ZaK7LJM5frKu2mE2VZEHQJ87Boa6dhENB5
+         X3YzU0rNPqJfbheikUH40gF9QfzDp+FOc3NksX6bKY/eXQcxetBYUDpohwohSUR4VOKP
+         PVlEsr9T89Q2bTpEaeBlRfEHYvLcK4Cyy+NC1uxQa0d7VG3GuTQTU/Mh9YXUbD70H90j
+         8x2A==
+X-Gm-Message-State: AOJu0YygVdsK8aZdXymhWTizcaidxituE0kMNgpyXspzYHJUPZBHRV6N
+	E/GSERTZCtP2E69Sof5DSS8aYN9qW9cj6w==
+X-Google-Smtp-Source: AGHT+IFdK44S6KvSjk9sNFQvkc/GGLwTwKhnyG/jyTL4RpC77b0I0K9NzhC0SmkqCHfW4C0Vm7ZAPQ==
+X-Received: by 2002:a05:600c:2201:b0:40d:3bd2:a1b3 with SMTP id z1-20020a05600c220100b0040d3bd2a1b3mr8836070wml.120.1704191647096;
+        Tue, 02 Jan 2024 02:34:07 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.218.27])
+        by smtp.gmail.com with ESMTPSA id p4-20020a05600c358400b0040d5471f7acsm32323004wmq.13.2024.01.02.02.34.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jan 2024 02:34:05 -0800 (PST)
+Message-ID: <c165c485-661b-4a5d-8a19-4dce166dfae4@linaro.org>
+Date: Tue, 2 Jan 2024 11:34:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] dt-bindings: arm: rockchip: Add NanoPi R6 series
+ boards
+Content-Language: en-US
+To: efectn@6tel.net, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, heiko@sntech.de,
+ sebastian.reichel@collabora.com, jonas@kwiboo.se, inindev@gmail.com,
+ Muhammed Efe Cetin <efectn@protonmail.com>
+References: <cover.1703934548.git.efectn@protonmail.com>
+ <30c1c7eac02cd32b76edb77572523f6ad8de89fb.1703934548.git.efectn@protonmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <30c1c7eac02cd32b76edb77572523f6ad8de89fb.1703934548.git.efectn@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240101_184137_372269_D11DC023 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20240102_023409_836116_516499E7 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +142,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-sdmmc on the nanopc-t6 is powered by vcc3v3_sd_s0, not vcc_3v3_s3
-add the vcc3v3_sd_s0 regulator, and control it with gpio4_a5
+On 30/12/2023 12:17, efectn@6tel.net wrote:
+> From: Muhammed Efe Cetin <efectn@protonmail.com>
+> 
+> Add support for NanoPi R6 series boards that based on RK3588S.
+> 
 
-Signed-off-by: John Clark <inindev@gmail.com>
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
 ---
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-index 54445f929a37..fc8add8df3db 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-@@ -159,6 +159,17 @@ vcc3v3_pcie30: vcc3v3-pcie30-regulator {
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
-+
-+	vcc3v3_sd_s0: vcc3v3-sd-s0-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-low;
-+		gpio = <&gpio4 RK_PA5 GPIO_ACTIVE_LOW>;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-name = "vcc3v3_sd_s0";
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
- };
- 
- &combphy0_ps {
-@@ -544,7 +555,7 @@ &sdmmc {
- 	no-mmc;
- 	no-sdio;
- 	sd-uhs-sdr104;
--	vmmc-supply = <&vcc_3v3_s3>;
-+	vmmc-supply = <&vcc3v3_sd_s0>;
- 	vqmmc-supply = <&vccio_sd_s0>;
- 	status = "okay";
- };
--- 
-2.43.0
+This is an automated instruction, just in case, because many review tags
+are being ignored. If you know the process, you can skip it (please do
+not feel offended by me posting it here - no bad intentions intended).
+If you do not know the process, here is a short explanation:
+
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions, under or above your Signed-off-by tag. Tag is "received", when
+provided in a message replied to you on the mailing list. Tools like b4
+can help here. However, there's no need to repost patches *only* to add
+the tags. The upstream maintainer will do that for tags received on the
+version they apply.
+
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
