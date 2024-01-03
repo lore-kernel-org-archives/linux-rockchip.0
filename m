@@ -4,71 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74589C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jan 2024 04:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D48DEC3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jan 2024 07:54:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ui2plOZdR097QfCk5VN7V1Dg3JdU0fzaroZ20J8mmvk=; b=TI/EiYRr1G1Frq
-	zEYKxDrn+ea7SfB23wPac+vVTgenFi80AjVen4iV4uHm2Jdcb5QDWNZbjCUZ8Jrb1ZhoGeyv+cY0+
-	Oiqj82I3MckdhVcHZf8xRm+ELnojhGVaJZt948FehJyfg9GW+nnMsuiR3V/5L/jqDz2d3I4KiI1xb
-	ODyXZkLxHcy/7vuDkfs0K7PPR7YG9TnqcxciNX4vPKnBiZCodMwWwT/u8mcNngWXrBWMsBjYmrv7i
-	O2+lRrC7S+Vrzl8stFbW4FPIylGwFY5fLu1bXCENEgAxwdPY3qIPbGoy43V+alLTmvdqteYY5/WZe
-	AoJ0fx0cfJ1no4QH/eEQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/+uLShWiVerDcE5fVbPFtCR93ShvlPVui9B4W5MA28g=; b=Alx2ULe6WwrN5q
+	5klyewWhnX6WoC0ndQ6PB2AA1vPN9IDfvL3jVZTfhT0nwduiy78PurXRq8k/vtyMAPKpf/vZ6gREl
+	vr21DoO9OIEldo1Mx+QKrK8+Od73RuQvW07XQn7vpMp3S8T+YT22N/M0q5rqIlIC/QwFHAOxc0Xh5
+	Rr9/SfL+szWJ+lzspieQr81eC1X192qs7JhjEUdHLDU8kzYlrPnVMllOLnSOhpegS81GGFmWI0K9g
+	GffTjJ/2ufFpOBF7pK1FpKjqqpwVzKsJz87mPOF4MtH9C9icuq26IwzKe5+Ki2i0bAT6LvwSLoath
+	Hx1/c1LQNTkDwX54kAmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKsaM-009jWB-0z;
-	Wed, 03 Jan 2024 04:10:30 +0000
-Received: from mx0.riseup.net ([198.252.153.6])
+	id 1rKw4w-00A1YE-2L;
+	Wed, 03 Jan 2024 07:54:18 +0000
+Received: from mail-vi1eur02on20619.outbound.protection.outlook.com ([2a01:111:f400:fe16::619] helo=EUR02-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKsaJ-009jUZ-13;
-	Wed, 03 Jan 2024 04:10:28 +0000
-Received: from fews01-sea.riseup.net (fews01-sea-pn.riseup.net [10.0.1.109])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx0.riseup.net (Postfix) with ESMTPS id 4T4bpx2l20z9vy5;
-	Wed,  3 Jan 2024 04:10:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
-	t=1704255018; bh=Q4QSWB4lpoWhI6LvZXYA/LFlYxYL0e3ql56uc4uLsUs=;
-	h=From:To:Subject:Date:In-Reply-To:References:From;
-	b=TRxxtCGuzWmXNaAyM/tnH6YN8e4sGhtY9nP3iz88vSpD56P+4Qi2Tuvp0NK5lDUuJ
-	 MkIRN4QDAyPnJK2KNAhtazIXRQFS5kuVTv01x00IeB5G7lFl6JxNF7zMyjnsUfxg1X
-	 siFJKtKYGbllHXv/M9T69EGCSNLXfD9fW+12UtYw=
-X-Riseup-User-ID: 405420CC388E9EF22FE493B6FCB7CB07418DA6345B23D1C17FCD1E61398A9170
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	 by fews01-sea.riseup.net (Postfix) with ESMTPSA id 4T4bpp3Bf5zJmps;
-	Wed,  3 Jan 2024 04:10:09 +0000 (UTC)
-From: Dang Huynh <danct12@riseup.net>
-To: =?utf-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
- Manuel Traut <manut@mecka.net>, Neil Armstrong <neil.armstrong@linaro.org>,
- Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
- Diederik de Haas <didi.debian@cknow.org>,
- Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
- Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64 PineTab2
-Date: Wed, 03 Jan 2024 04:09:55 +0000
-Message-ID: <4814116.aeNJFYEL58@melttower>
-In-Reply-To: <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
-References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
- <20240102-pinetab2-v3-4-cb1aa69f8c30@mecka.net>
- <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
+	id 1rKw4t-00A1Vn-1p;
+	Wed, 03 Jan 2024 07:54:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Oghgw8gOj6CfgxgwEet2leN3cDhx7/4EnUk+dyJ7sKNPi5Gkwl39G3PBWE4gRBbcUHn1cGSQdIhflqsz29PoXzENnVEpNZfC/w+pZux55c3MVu1hytf4Mp+3qr2WkHPZEtooHk+W/lHbBDHvosoQ1lEDYIV34AvLldhIE88tWTwlLioW3JS5gYkcO6DOVLdx5V8mnGfB2a7XpJD+V8imqHaodR40omv9EWi9+MwnaGJUciD6uFxmX1gTV7/rBsGe7w9QMDw8y+GWOHX5H+5q3NL4bCl8lg60H0Om+DtqZjAVQDiGG9/3lnKXViN34I38NqOmpOeCc0HGGAsqHOG/bA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=99I0Vif/lKja3UIosHBYTgLnuGDSXzAlAADMMVcEdjE=;
+ b=jmrfbMRnEZeYUuy8RdMWKKKXhRp6IeEuKern4uGELSPDHlLroF2+DslGpn9h3GwOQfg/WfhWETugb8mQjaXPu1bCC/uzPKW1ICewsplgnPzyeGQYpnt5uBSScAYSG/vELA9pVKobdEzN98mKDk4zUM2Y4wpIVR5i52DSNaQhIF0b6R9cX+jYvW4kxeAntKTSfHIQHx9B+QjqV22WxEsQI/JB/E10le1xX8eKgsFSsLF48tGN5lf2+tJrq4d0QsMeiNMFTich4d4q9Npc0k8EfTu3yycH8UFRHx/BlwxBxXPRSobRD/e8Rse4kJ52aludBaduKfJQ0c8DUqXFf9zJBg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=99I0Vif/lKja3UIosHBYTgLnuGDSXzAlAADMMVcEdjE=;
+ b=Z7P3vMIXMc9VyvORZPGcuirGuKguVXFawRWNpInBgNjPS7Kkpbc04x7lURzoukMGHEo3Nago9mU8r4uw6+1+FHrlqXzaYm1ujje4pf4k/0PIKd5Ri5x7JgBn/2/Y+kdZmX1vqfVQWhgvnlo0kgZxpV8BDXoGhCfc7fHgmCvhEJFaarDPeAWStOaFc19SVJaZvnqIrHcXAe5syCQh8jETeGyFvxAAoAxpcWIFe+auIr4Tq2omBIi4f3am4ExRSBaJz6cQYE4CHWHZy0HLQDcB7waeUYWSPI7c0DZOrrnmVYeBVP7SyrKe+y+CP/x/mc+8VhTA4+mI6OUF1XgPcpwaqA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from VI1PR04MB6013.eurprd04.prod.outlook.com (2603:10a6:803:cb::15)
+ by DUZPR04MB9946.eurprd04.prod.outlook.com (2603:10a6:10:4db::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7159.13; Wed, 3 Jan
+ 2024 07:54:01 +0000
+Received: from VI1PR04MB6013.eurprd04.prod.outlook.com
+ ([fe80::cc4a:6b4:812d:7c8a]) by VI1PR04MB6013.eurprd04.prod.outlook.com
+ ([fe80::cc4a:6b4:812d:7c8a%5]) with mapi id 15.20.7159.013; Wed, 3 Jan 2024
+ 07:54:01 +0000
+From: Iskander Amara <iskander.amara@theobroma-systems.com>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: quentin.schulz@theobroma-systems.com,
+	Iskander Amara <iskander.amara@theobroma-systems.com>
+Subject: [PATCH] arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
+Date: Wed,  3 Jan 2024 08:53:52 +0100
+Message-Id: <20240103075352.1009393-1-iskander.amara@theobroma-systems.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: VI1PR07CA0136.eurprd07.prod.outlook.com
+ (2603:10a6:802:16::23) To VI1PR04MB6013.eurprd04.prod.outlook.com
+ (2603:10a6:803:cb::15)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: VI1PR04MB6013:EE_|DUZPR04MB9946:EE_
+X-MS-Office365-Filtering-Correlation-Id: d0369bea-7df6-438c-4c58-08dc0c3125fb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 1le8VZEWeqmQx7+4VB4Gp3krl47OkLqn3mpK/PwuEK3Yj+3/BJYfjL3aorAB7dIptGxk3fkPgb0xXK7pEj24zRb3baOOWM5pKpNkkBLHrz4ZIypfzXtRemB78F4WZ7a0ADA4Cpy2X6dKaaApiy8PVO1jk9vAgdbbtDKYTxCqTPUlEnkZ1/rgZLJrxSQgUfDqhi8wXfLgi/FuGC6hNmyth/6hmD2wQDIC54VkjhnlXAz7fyTjmnDTbsGenqTXrHFHrE2VQvuqgTDadezUpd8/bKG7gcr1LE6gFEP++6KHOheyW+fVi6woI9fJo4w5rakrOsYTWABBfdU3V8f0Rzw53LCl7rGD8dq6UNAqEs673mBnxYRkzCfzaxi+Vs/KhVC7CQgmyOmFPO9bgSFskDa+G3rdDw65CjhT575OElCXlNCeeemOBN/7zCeZWEe4gnQZw9HVhuYltp9fnB1xv/WENq1RaP0RXTCOAK+mPoWSRCLT1Yd2YGgWaP0O33HAdqoYCQqTL63nh+i8PaDf/hTTMCeo9pGPylh88T17Y7tObXlbsi3Sj4D/cnqsvQFssSdX1BWLA4s6JyCGNQJ4279+xddxwJCWvE3cchprih0K3w5jy267b7XsaCCfIofrcdO1
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB6013.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39850400004)(396003)(346002)(136003)(366004)(376002)(230922051799003)(186009)(451199024)(64100799003)(1800799012)(5660300002)(4744005)(2906002)(38350700005)(41300700001)(44832011)(26005)(1076003)(107886003)(52116002)(6512007)(6666004)(6506007)(478600001)(2616005)(86362001)(38100700002)(316002)(4326008)(66946007)(66476007)(36756003)(66556008)(6486002)(8936002)(8676002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4nXPnj2WHzUVAycEL3+WEwgYYEZl8AIyEB6DvJUr4uZZkqpivvmoHpWOr9jv?=
+ =?us-ascii?Q?4KqqO8L6fN9RQzmHKIL37ObC4FiZLtWTNkMNFcQOvD8KDHj6q+Mj6zC74P80?=
+ =?us-ascii?Q?H6OVizK0DndWRZEYcOYdxc/pk2zOmv7dLT4v/X8cseDA+dBs/8TrBxgAye7G?=
+ =?us-ascii?Q?+5zS2Dhw85QIDSsbaEJs8NLgegiBdXHPSTSb15/KUOR0B7o0Xt1bkPmk/vKl?=
+ =?us-ascii?Q?B24ZExtiWs6LkllSUKvN4FgmxGwt2g1aFTa+WvSpmVP9GuaqLPwaAFH48Ye4?=
+ =?us-ascii?Q?1WEUppuqmdiAhW493aDRnC91dT1uUrv5ex/T3BFiQM08YH5yzzEsKhSDpbrm?=
+ =?us-ascii?Q?OaeyIJqzDvCkz6rNV5EBiyLUqbBS55stOR8/4FwOJJAjTku63XXX0PNSVZGS?=
+ =?us-ascii?Q?WN/9tmehn+kZIOg6i8ExDX5xBCYV8LaOUjab6ga+UCPcxaeaZlifr7m0UURx?=
+ =?us-ascii?Q?dxQRhU+2EvitBJgrKJPl65HSkvQP1oWRwVIwcmKPJ8+iFgJewBkUUUFeJdnk?=
+ =?us-ascii?Q?QL6oD9TvsWidtMAlmnJdnZ4aDtChZc+yr34b2Cu9jCKu/SWNWwXKVlkRDrH9?=
+ =?us-ascii?Q?wr9/szUTTSOA7zRLIYDuT6iWbaRrcGrPgCy4WhuXGTdXIUFsx/lO0oOifQ5r?=
+ =?us-ascii?Q?UJAEqYLIIM0zAPbR0Q+mkuMnlYu90JZIzAm58RV5t2SUZpJrMmzLACfbIZrF?=
+ =?us-ascii?Q?y2ThXcn4w8SUT51Nr33Al6xs180aiZkJ54+UCry8+eqmu2HrZ1w7haI3SbVs?=
+ =?us-ascii?Q?JR+5wB7MNedLGJxWhsPOb8hz7AyS2u2kENLSyETdnWI4EeOyS1WEDEFyoT/C?=
+ =?us-ascii?Q?1kzLj4X/eIpULDECF/u/fiU0wAUE/KVy1Z58HWgrCQo6CRPqaknWMO/BiF6U?=
+ =?us-ascii?Q?1wXmB3ELeU/4ahsKgbn77wgN7S7qMzyhq4H3XtFb60pbu/3+GPSFz0bCMmiv?=
+ =?us-ascii?Q?4bj3rBJiNExSnTH8N4LBBZB0ohV6NFxudavxeSlucozmMGI/j0G8lchUXtsj?=
+ =?us-ascii?Q?CKgvzjitp5Mx8hoRk8dkhabjgWfLvmS9hod1QN74Y6kKMlIpljJ6YfPJoxjj?=
+ =?us-ascii?Q?wslU4shyb6GhoFEMEo0oFJ3HA+kSgwVSckw26DIdcaMEUXrG++SDqjePsqyG?=
+ =?us-ascii?Q?c3zlryJauSGcoXMeXz9wL4wrVn5zzOO7miP/td4D90/X4qdad5LNqN202nbC?=
+ =?us-ascii?Q?erUWuOYv5po3litr6y/HH4ck42KjUzxSBhQk/vilZXQuKpXGhW1j3ZS7n4cL?=
+ =?us-ascii?Q?jJtJ5tM1foiuwYgm1bXSojNVFlZaEd60MuIzsDWd/bpoUOp18KR87mCcXsWv?=
+ =?us-ascii?Q?HBlxPQwIsPh1uwsb28H6kY0VNXnISwTb7Zxz7RnX7PWwV796NLCWY1dbAJIm?=
+ =?us-ascii?Q?aqImAK/kTyVuqQCYZLZ5sf51HzouIIgLfCRucK0f2MSkjOrDyKmDomRT3o6e?=
+ =?us-ascii?Q?cSEwqtRHwWK3jduf34PSAe+xkELt+CwVwCCLeTNl/ms4x9I6QS5836l/lYOQ?=
+ =?us-ascii?Q?2l5cTOVPAceHeAu/op2v/4T6nxHmFFziUGCUz8y7rfVuiTsZLn/2JQnuFpoo?=
+ =?us-ascii?Q?pH0RDgods3a74rGci7iQ+0d5VjHB50jVNDviMdo1vgOM16oAO+7mzdzQMMaR?=
+ =?us-ascii?Q?QvWH9EOQKqaYAcIBm10+8/g=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0369bea-7df6-438c-4c58-08dc0c3125fb
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB6013.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2024 07:54:01.1204
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ouSwGu+5YKmhggKFFu4P2Tv2uWjXYTRlgeqbIRfuHCTFj+BK+J8z2d/AgoGtT/WXuWmjdfAAsm9HLVYvvOoEuVXeXq52HoWV0hvtVmagIwj2aAvakQ+osLKeykEPfKIY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DUZPR04MB9946
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_201027_396388_EC363B17 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20240102_235415_657242_DADC1A9D 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +135,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlc2RheSwgSmFudWFyeSAyLCAyMDI0IDY6MDc6NTYgUE0gVVRDIE9uZMWZZWogSmlybWFu
-IHdyb3RlOgo+IE9uIFR1ZSwgSmFuIDAyLCAyMDI0IGF0IDA1OjE1OjQ3UE0gKzAxMDAsIE1hbnVl
-bCBUcmF1dCB3cm90ZToKPiA+ICsmcGNpZTJ4MSB7Cj4gPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVm
-YXVsdCI7Cj4gPiArCXBpbmN0cmwtMCA9IDwmcGNpZV9yZXNldF9oPjsKPiA+ICsJcmVzZXQtZ3Bp
-b3MgPSA8JmdwaW8xIFJLX1BCMiBHUElPX0FDVElWRV9ISUdIPjsKPiA+ICsJdnBjaWUzdjMtc3Vw
-cGx5ID0gPCZ2Y2MzdjNfbWluaXBjaWU+Owo+ID4gKwlzdGF0dXMgPSAib2theSI7Cj4gPiArfTsK
-PiAKPiBEb2VzIGl0IG1ha2Ugc2Vuc2UgdG8gZW5hYmxlIHRoaXMgSFcgYmxvY2sgYnkgZGVmYXVs
-dCwgd2hlbiBpdCBpc24ndCB1c2VkIG9uCj4gYWN0dWFsIEhXPwo+IAoKUENJLUUgaXMgaG9va2Vk
-IHVwIHRvIGEgY29ubmVjdG9yIGluIHRoZSBzY2hlbWF0aWNzLCBzbyBJIHRoaW5rIGl0IG1ha2Ug
-c2Vuc2UgCnRvIGVuYWJsZSBpdCB3aGVuIHRoZXJlJ3Mgb25lIGF2YWlsYWJsZS4KCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Two pmuio domains on ringneck are not defined:
+	1- PMUIO1: supplied by vcc_3v3 regulator(PMIC RK809)
+	2- PMUIO2: supplied by vcc_3v3 regulator(PMIC RK809)
+
+The reason why no functional effect was observed is because of that
+the above mentionned PMUIO domains were supplied by a regulator
+which is always on.
+
+So let's add their definition in the dtsi.
+
+Signed-off-by: Iskander Amara <iskander.amara@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index 12397755830b..821824a6668e 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -347,6 +347,12 @@ pmic_int: pmic-int {
+ 	};
+ };
+ 
++&pmu_io_domains {
++		pmuio1-supply = <&vcc_3v3>;
++		pmuio2-supply = <&vcc_3v3>;
++		status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcc_1v8>;
+ 	status = "okay";
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
