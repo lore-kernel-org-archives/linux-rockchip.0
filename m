@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 063C6C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jan 2024 21:19:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74589C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jan 2024 04:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bVVTjrp+rQznLyvmye7aiMxDn9uYqgiOsoDpi7Z9UCg=; b=iSgiiGRaAgQReF
-	txwBc9pjWkqQju9a16lKMFxnTFHjQoPRiUuVO71WSoU+bbBFJQMgCPLtLMfEJiqq4sQ9H85n5d9NI
-	042BwcTvGRAw6+MYvXN6dUbuDrm+Uk/u0/aGwae1arHB8smYM9xuB/GtMvwMu4+4bc9UmZuuZY1p6
-	+nnN0n4ZOdwXRy9hSmW9r86l+oL2FdqU0ok4Q7YugtONlVL7P1BigNjpp9Rv7CXaY++DIu57jjnl8
-	xDvr9GVM8CXU48LwqThzRRV72TYeM8xFPIQ8Fn0oYiHtxK7M38GDOWPOLSznrq62QFDjFG9QtzwjW
-	TOjKGNIKWj+VMl97EM0A==;
+	List-Owner; bh=Ui2plOZdR097QfCk5VN7V1Dg3JdU0fzaroZ20J8mmvk=; b=TI/EiYRr1G1Frq
+	zEYKxDrn+ea7SfB23wPac+vVTgenFi80AjVen4iV4uHm2Jdcb5QDWNZbjCUZ8Jrb1ZhoGeyv+cY0+
+	Oiqj82I3MckdhVcHZf8xRm+ELnojhGVaJZt948FehJyfg9GW+nnMsuiR3V/5L/jqDz2d3I4KiI1xb
+	ODyXZkLxHcy/7vuDkfs0K7PPR7YG9TnqcxciNX4vPKnBiZCodMwWwT/u8mcNngWXrBWMsBjYmrv7i
+	O2+lRrC7S+Vrzl8stFbW4FPIylGwFY5fLu1bXCENEgAxwdPY3qIPbGoy43V+alLTmvdqteYY5/WZe
+	AoJ0fx0cfJ1no4QH/eEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKmA8-00926u-2H;
-	Tue, 02 Jan 2024 21:19:00 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1rKsaM-009jWB-0z;
+	Wed, 03 Jan 2024 04:10:30 +0000
+Received: from mx0.riseup.net ([198.252.153.6])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rKmA4-00925j-1c;
-	Tue, 02 Jan 2024 21:18:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1704230330; bh=NkgNNWrU5A+qrlyuoridyMA0T+gww6nA9Sf4hu63gmI=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=Fi02OVej7qHAlyYnp+pT6vaLbwXZjF/w4bjtOyReDOlrriSZqpWmfDA2KgpkXwriC
-	 L8prIzUKpNvdjwZg3bEywTq+VGwN3nVUNanL4DcEnx9xMHrMCbuzzRo8NkpTxFhUJw
-	 GglC0TZWR+N0WyOOckCsdRESaRUwgzH1WTQZLBbg=
-Date: Tue, 2 Jan 2024 22:18:48 +0100
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Manuel Traut <manut@mecka.net>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>, 
-	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>, 
-	Diederik de Haas <didi.debian@cknow.org>, Segfault <awarnecke002@hotmail.com>, 
-	Arnaud Ferraris <aferraris@debian.org>, Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64
- PineTab2
-Message-ID: <qwndrkppuctp2mybnibbf6fppp6abzimqs4hirrwjauig34why@gawjwsbauffm>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Jonas Karlman <jonas@kwiboo.se>, Manuel Traut <manut@mecka.net>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Jessica Zhang <quic_jesszhan@quicinc.com>, 
-	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>, 
-	Diederik de Haas <didi.debian@cknow.org>, Segfault <awarnecke002@hotmail.com>, 
-	Arnaud Ferraris <aferraris@debian.org>, Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
+	id 1rKsaJ-009jUZ-13;
+	Wed, 03 Jan 2024 04:10:28 +0000
+Received: from fews01-sea.riseup.net (fews01-sea-pn.riseup.net [10.0.1.109])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx0.riseup.net (Postfix) with ESMTPS id 4T4bpx2l20z9vy5;
+	Wed,  3 Jan 2024 04:10:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
+	t=1704255018; bh=Q4QSWB4lpoWhI6LvZXYA/LFlYxYL0e3ql56uc4uLsUs=;
+	h=From:To:Subject:Date:In-Reply-To:References:From;
+	b=TRxxtCGuzWmXNaAyM/tnH6YN8e4sGhtY9nP3iz88vSpD56P+4Qi2Tuvp0NK5lDUuJ
+	 MkIRN4QDAyPnJK2KNAhtazIXRQFS5kuVTv01x00IeB5G7lFl6JxNF7zMyjnsUfxg1X
+	 siFJKtKYGbllHXv/M9T69EGCSNLXfD9fW+12UtYw=
+X-Riseup-User-ID: 405420CC388E9EF22FE493B6FCB7CB07418DA6345B23D1C17FCD1E61398A9170
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	 by fews01-sea.riseup.net (Postfix) with ESMTPSA id 4T4bpp3Bf5zJmps;
+	Wed,  3 Jan 2024 04:10:09 +0000 (UTC)
+From: Dang Huynh <danct12@riseup.net>
+To: =?utf-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
+ Manuel Traut <manut@mecka.net>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
+ Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64 PineTab2
+Date: Wed, 03 Jan 2024 04:09:55 +0000
+Message-ID: <4814116.aeNJFYEL58@melttower>
+In-Reply-To: <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
 References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
  <20240102-pinetab2-v3-4-cb1aa69f8c30@mecka.net>
  <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
- <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240102_131857_005304_64110E42 
-X-CRM114-Status: GOOD (  24.60  )
+X-CRM114-CacheID: sfid-20240102_201027_396388_EC363B17 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,40 +85,16 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBKYW4gMDIsIDIwMjQgYXQgMDk6NTY6MjBQTSArMDEwMCwgSm9uYXMgS2FybG1hbiB3
-cm90ZToKPiBIaSBNYW51ZWwgYW5kIE9uZMWZZWosCj4gCj4gT24gMjAyNC0wMS0wMiAxOTowNywg
-T25kxZllaiBKaXJtYW4gd3JvdGU6Cj4gPiBIZWxsbyBNYW51ZWwsCj4gCj4gWy4uLl0KPiAKPiA+
-PiArCj4gPj4gKyZzZmMgewo+ID4+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+PiAr
-CXBpbmN0cmwtMCA9IDwmZnNwaV9kdWFsX2lvX3BpbnM+Owo+ID4+ICsJc3RhdHVzID0gIm9rYXki
-Owo+ID4+ICsJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gPj4gKwkjc2l6ZS1jZWxscyA9IDwwPjsK
-PiA+PiArCj4gPj4gKwlmbGFzaEAwIHsKPiA+PiArCQljb21wYXRpYmxlID0gImplZGVjLHNwaS1u
-b3IiOwo+ID4+ICsJCXJlZyA9IDwwPjsKPiA+PiArCQlzcGktbWF4LWZyZXF1ZW5jeSA9IDwyNDAw
-MDAwMD47Cj4gPiAKPiA+IFRoYXQncyBhIGJpdCBvbiB0aGUgbG93IHNpZGUuIFRoZSBmbGFzaCBj
-aGlwIHNob3VsZCB3b3JrIGZvciBhbGwgY29tbWFuZHMgdXAgdG8KPiA+IDgwTUh6IGh0dHBzOi8v
-bWVnb3VzLmNvbS9kbC90bXAvYjQyOGFkOWI4NWFjNDYzMy5wbmcgYW5kIFNHTTMxNTdZQzYgc3dp
-dGNoCj4gPiBmb3IgdGhlIEZTUEktQ0xLIHNob3VsZCBoYXZlIGhpZ2ggZW5vdWdoIGJhbmR3aWR0
-aCwgdG9vLgo+IAo+IEkgYWdyZWUgdGhhdCB0aGlzIGlzIGEgbGl0dGxlIGJpdCBvbiB0aGUgbG93
-IHNpZGUsIGl0IHdhcyBhIHNhZmUgcmF0ZQo+IHRoYXQgSSB1c2VkIGZvciBVLUJvb3QuIFUtQm9v
-dCByZXF1aXJlZCBhbiBleGFjdCByYXRlIG9mIHRoZSBzdXBwb3J0ZWQKPiBzZmMgY2xrIHJhdGVz
-OiAyNCwgNTAsIDc1LCAxMDAsIDEyNSBvciAxNTAgTUh6Lgo+IAo+IFBsZWFzZSBhbHNvIG5vdGUg
-dGhhdCB0aGUgU1BJIE5PUiBmbGFzaCBjaGlwIHVzZWQgaW4gUGluZVRhYjIgaXMgbm90IGEKPiBH
-aWdhRGV2aWNlIEdEMjVMUTEyOEUsIGl0IHNob3VsZCBiZSBhIFNpbGljb25LYWlzZXIgU0syNUxQ
-MTI4LCBzYW1lIGFzCj4gZm91bmQgaW4gdGhlIFBpbmU2NCBQaW5lUGhvbmUgUHJvLgoKQWNjb3Jk
-aW5nIHRvIHRoaXMgaHR0cDovL2VuLnNpbGljb25rYWlzZXIuY29tL3Byby8gIGl0IHNob3VsZCBt
-YXliZSBnbyB1cCB0bwoxMzNNSHouIE5vIGlkZWEgd2hhdCdzIHRoZSBkaWZmZXJlbmNlIGJldHdl
-ZW4gTFAgdnMgTEUgdmFyaWFudC4gU28gaXQgbWF5IHdvcmsKd2l0aCAxMDAgTUh6LgoKT24gUGlu
-ZXBob25lIFBybyB2YXJpYW50cyB3aXRoIG5lcmZlZCBTUEkgQ0xLIHNpZ25hbCBpbnRlZ3JpdHkg
-KGFueSB2YXJpYW50IHdpdGgKUkUgaW5zdGVhZCBvZiBhIFJFU0VUIGJ1dHRvbiAtIHNvIGFsbCBw
-cm9kdWN0aW9uIGJhdGNoZXMpLCBhbnl0aGluZyBhYm92ZSAxMCBNSHoKaGFzIHJlYWwgdHJvdWJs
-ZSB3b3JraW5nLiBCdXQgdGhpcyBzaG91bGQgbm90IGJlIHRoZSBjYXNlIGhlcmUgd2l0aCBQVDIs
-IGxvb2tpbmcKYXQgdGhlIHNjaGVtYXRpYy4uLgoKQW55d2F5LCBpdCdzIGEgbmljZSB0byBoYXZl
-LgoKPiA+IAo+ID4+ICsJCXNwaS1yeC1idXMtd2lkdGggPSA8Mj47Cj4gPiAKPiA+IEdEMjVMUTEy
-OEUgc3VwcG9ydHMgcXVhZCBJL08uIE1heWJlIHRyeSA0IGlmIGl0IHdpbGwgd29yay4KPiAKPiBU
-aGUgc2NoZW1hdGljIG9ubHkgc2hvd3MgZnNwaSBEMCBhbmQgRDEgY29ubmVjdGVkLCBhbmQgdXNl
-IHRoZSBEMiBsaW5lCj4gZm9yIGVNTUNfUlNUbiwgc28gc3BpLXJ4LWJ1cy13aWR0aCA9IDwyPiBz
-aG91bGQgYmUgY29ycmVjdC4KCkFoLCBJIHNlZS4KCnJlZ2FyZHMsCglvLgoKPiA+IAo+ID4+ICsJ
-CXNwaS10eC1idXMtd2lkdGggPSA8MT47Cj4gPj4gKwl9Owo+ID4+ICt9Owo+ID4+ICsKPiAKPiBS
-ZWdhcmRzLAo+IEpvbmFzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+T24gVHVlc2RheSwgSmFudWFyeSAyLCAyMDI0IDY6MDc6NTYgUE0gVVRDIE9uZMWZZWogSmlybWFu
+IHdyb3RlOgo+IE9uIFR1ZSwgSmFuIDAyLCAyMDI0IGF0IDA1OjE1OjQ3UE0gKzAxMDAsIE1hbnVl
+bCBUcmF1dCB3cm90ZToKPiA+ICsmcGNpZTJ4MSB7Cj4gPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVm
+YXVsdCI7Cj4gPiArCXBpbmN0cmwtMCA9IDwmcGNpZV9yZXNldF9oPjsKPiA+ICsJcmVzZXQtZ3Bp
+b3MgPSA8JmdwaW8xIFJLX1BCMiBHUElPX0FDVElWRV9ISUdIPjsKPiA+ICsJdnBjaWUzdjMtc3Vw
+cGx5ID0gPCZ2Y2MzdjNfbWluaXBjaWU+Owo+ID4gKwlzdGF0dXMgPSAib2theSI7Cj4gPiArfTsK
+PiAKPiBEb2VzIGl0IG1ha2Ugc2Vuc2UgdG8gZW5hYmxlIHRoaXMgSFcgYmxvY2sgYnkgZGVmYXVs
+dCwgd2hlbiBpdCBpc24ndCB1c2VkIG9uCj4gYWN0dWFsIEhXPwo+IAoKUENJLUUgaXMgaG9va2Vk
+IHVwIHRvIGEgY29ubmVjdG9yIGluIHRoZSBzY2hlbWF0aWNzLCBzbyBJIHRoaW5rIGl0IG1ha2Ug
+c2Vuc2UgCnRvIGVuYWJsZSBpdCB3aGVuIHRoZXJlJ3Mgb25lIGF2YWlsYWJsZS4KCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
