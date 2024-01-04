@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C789EC47073
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 10:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9B5C47073
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 14:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QHhhfGTMozt2DnABO6xfcw/kM7SqfAYGJzgwHuQBY/M=; b=qSTsVE1coxqE1R
-	gwxN2cRk88Cx1JDKLi3J9PlOUmuyjA4mpTvB4yk1EGHu+V5SCz8egt9o4g5Ln4Y4aVLgSgoUqJ8/j
-	3UKB4yQMP6IRWCfX/0YxXRtNnvpUf2TQHA4iA8tVCvo4CxDnmHEYyhyFjq5FunK3cArOYjaME5SPN
-	SZ0VvTsvdMhCoStdgXYmy5PUd2k2iLsh1kzro9sBC6Jh/nYwv3QHvyccPw0RCztzKwdPb9D7YqQlV
-	aDtPwumLOYLbwvE6MTUZVvSGZ0/oti8t81XJ9CX9OXFXRARiOIjPzg9Y2mitkuTDQBnt44UVAb/aY
-	cml61JgACSw/M2uQMbRw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=v41AMoc+jDhF0L5Wr3MnYGyqWX8e1v5itQn2aAqUVpc=; b=mCUzhc1ZHwnl5R
+	pvMhqswXDvMPFym1Xa7c/bkAFpm6oJZvTAp9J6gqCw1L19vLSHwAzt8piZq5oy+kKzfJYlmiwUZgy
+	jvtOZxjIlfm9kHA3Evv3RMIg1VCeLCAkCnmkdmKukdrTD+blNtZCeUTqDT7jd271aWFHem+V4cios
+	wRWkRMvO+anq+T7h0odm1EDSTNQ1Ee4njNglyU15/vnyEjnN1+Q1PATW03LEarx7eOzjQCWzb4j+/
+	894gq9wTYexcMZyp/U26EAbJFug2ZLCA3/+E/pzg01oRQ5odLmrhSBlvrlx+XlABiFUP43P3XExk5
+	NTKjcBVSYTyryG6um3jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLLPh-00DbmT-38;
-	Thu, 04 Jan 2024 10:57:25 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rLOt6-00ENUs-39;
+	Thu, 04 Jan 2024 14:40:00 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLLPe-00DblL-0H;
-	Thu, 04 Jan 2024 10:57:24 +0000
-Received: from i53875a56.versanet.de ([83.135.90.86] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rLLPQ-0003Kg-Tf; Thu, 04 Jan 2024 11:57:09 +0100
-From: Heiko Stuebner <heiko@sntech.de>
+	id 1rLOt3-00ENTh-1f;
+	Thu, 04 Jan 2024 14:39:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704379193;
+	bh=qc3xakyHE+a32IwuTxDwyhQGwwi7DGoompf3iqlbs2o=;
+	h=From:To:Cc:Subject:Date:From;
+	b=5lEi+tqYFx+1gRJ81VBYBLnkv9SEtSW55qQj4yA2WZbh1Bw1+Uj+naADvOlQZXKdk
+	 64LF9zTsmOgSAGYrSH4zm3/Ci1iLi7Lyih36xo07kjDPs0m/kmPpaDHWZnGatIGjKY
+	 mkTZFSpQ1toDi3nD3+MvYPltafvsMd6HYR5QBlFREo8bNOjgBlpIZScfwLjLLX3Vkh
+	 PfDzq8OUdtktwHM81P4CGh+TGbJ8VCFG5w/Q/hIgv7fWszGCEUNYzrzDEcJOhxXxEe
+	 0UOB463luBT4cEm6iUTdBuJ8tkvG32mVHbthecbI4Colj5LQJ3U2JmCmuw+2Wwb//f
+	 S5C2+DyznA+Kw==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 825D8378200E;
+	Thu,  4 Jan 2024 14:39:53 +0000 (UTC)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>,
-	Mark Yao <markyao0591@gmail.com>,
-	David Airlie <airlied@gmail.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Quentin Schulz <foss+kernel@0leil.net>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>
-Subject: Re: [PATCH v2 0/2] drm/rockchip: lvds: improve erroring out when drm_of_find_panel_or_bridge fails
-Date: Thu,  4 Jan 2024 11:57:07 +0100
-Message-Id: <170436581964.3241728.17762561185162139964.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231120-rk-lvds-defer-msg-v2-0-9c59a5779cf9@theobroma-systems.com>
-References: <20231120-rk-lvds-defer-msg-v2-0-9c59a5779cf9@theobroma-systems.com>
+	kernel@collabora.com
+Subject: [PATCH] drm/rockchip: vop2: Drop superfluous include
+Date: Thu,  4 Jan 2024 16:39:49 +0200
+Message-ID: <20240104143951.85219-1-cristian.ciocaltea@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_025722_123086_B7443D68 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20240104_063957_735115_A3CF7642 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,26 +82,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 20 Nov 2023 13:29:47 +0100, Quentin Schulz wrote:
-> drm_of_find_panel_or_bridge may return a different error code than
-> EPROBE_DEFER so let's not overwrite it.
-> 
-> At the same time, let's demote the DRM_DEV_ERROR message to
-> dev_err_probe so that the scary message isn't shown (by default)
-> whenever EPROBE_DEFER is returned to not mislead users.
-> 
-> [...]
+The rockchip_drm_fb.h header contains just a single function which is
+not directly used by the VOP2 driver.  Drop the unnecessary include.
 
-Applied, thanks!
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-[1/2] drm/rockchip: lvds: do not overwrite error code
-      commit: 79b09453c4e369ca81cfb670d0136d089e3b92f0
-[2/2] drm/rockchip: lvds: do not print scary message when probing defer
-      commit: 52d11c863ac92e36a0365249f7f6d27ac48c78bc
-
-Best regards,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 923985d4161b..74c533292bbb 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -35,7 +35,6 @@
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_gem.h"
+-#include "rockchip_drm_fb.h"
+ #include "rockchip_drm_vop2.h"
+ #include "rockchip_rgb.h"
+ 
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
