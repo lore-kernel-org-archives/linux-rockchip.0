@@ -4,87 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DCAC47073
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 16:30:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA8CC47074
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 17:04:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h61Qu1ptsTfA3ek96ye3UfvHkKbDbhZA1DvZ+j3lA7Y=; b=wbZP1P1yQTb2a2
-	YrFAaPgtbN9P9WO9JSBFZknxVlucZMALlBUFgKrhdOxY0QnMRMTACUOizfxjH88PTP3a29HKq09DL
-	Ujch+b04fKVxVhHEadH2iF9i2x79ZVcvPtPnSKoefyQL5ylQt7Pmjip50dKTuO+o0w04IPBYovRV1
-	2oAOl1OAA4CANNtfp6CUzTvOZEeQT15NcPQuHHeoXbJCs7ADXggf0r2Nr+eeAX8Vpl1pmb3b6unBa
-	qgTvsWGBZFgLPFC8uDPU4cI+/8QFS46rnsw1aBgJ7a12ifIlN/d0SoZJKPWZTFEYRzgFbKwmQsgvV
-	z1lEqUtkK6wpuALguRIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hoqfLhT5feMrlfOSymdsfMwWi+rR3jcUxawi/M5f3JI=; b=0t/32rRghSoZo+rYDxfK/8vqQa
+	kGVFuGWflyo2B1L2rpFA1hkTl80SnZrPh+5uk49wh3KKAj0utld5E/lbUJY6txdlwIyycvI68QC33
+	71tqQ08CZRWgFjag/c5yooV3cecIOnt/ysb+FC0vkfX7yNYmX8+1x/1kfM0Sw6v4MIakz9qsmLMfs
+	dTc2R132jrRLe6PX1qZC0Vi5zhpFd2+2KmTTohqXfcMNfh9F0GsG90ahyJiTmeiGsTDGqQFpRo3j1
+	3+dwsaDs6tQGblTS5wHvS+aKeLfQPnztLV8G+Tk2myq0rB2FRqwdxmz4U63RgiI/DEKHuZ/BaJgvK
+	LjesgOAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLQc0-00EgSR-2N;
-	Thu, 04 Jan 2024 16:30:28 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1rLR8u-00ElLC-20;
+	Thu, 04 Jan 2024 17:04:28 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLQbw-00EgOS-0o
+	id 1rLR8r-00ElJs-0v
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jan 2024 16:30:26 +0000
-Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-427f21ced6aso3410541cf.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jan 2024 08:30:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1704385819; x=1704990619; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Aj4IIq0tzuh1/OdFywt45Ed5fBVp3SK/t71RwP6JXSw=;
-        b=RJ5d7BKtaSga4GFSuuYkAfdbYbgTqapQCmDfCJBjhuLqaFNjkSS1jgqse7FfixZxWl
-         lAkejAVf+Rj2sBQgy2PT0jxuk5P8ysso9ESw3m4KlqNFqLpDUWJ+HAlhxhxW3tUEltlb
-         FGVRzf5/tIPIorsFSSrCKLzFTMHb+4kmZyj5mmbk0X7hOX7Qk82CxmWrAtMwTgIrQ6UD
-         xcVlX69AAUgE6HpmkaUhr7r00w0kymG88kkGB7jgnj3pD0wHN+C7V5eTGWshqTxErhP3
-         n7+N5dVWNc1KYju45MHyyu5bLk8CbL8xihFY8EE7pzlB21VtWGU4AmJoYrjxhoU+VPcy
-         03HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704385819; x=1704990619;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Aj4IIq0tzuh1/OdFywt45Ed5fBVp3SK/t71RwP6JXSw=;
-        b=l0W5+L2Gf9pXZILRxY+qUNhPRqJQMolSZlTax4UKFd7Nwqx8xu7J8aL0VKp/zCAalr
-         afuiXyA8a6zP9P+ujp7VBJ5nH+SMZxzT+qfy7lefZ/uzKY9vOLe3tv7WDq85FM2UaAUR
-         K0CCgDm1U2Cw4rvdZ9ngMj1j2XSj1fw3viqX3DEAxCK/4f4/Cu2F9lds4F0C86D+kkU5
-         VWiO9RZEsvQaSlOOiSFuy47bzoTnZsDJZ03BMq6k4Q7DzHpn+ic0IwEgW39oL8yDqJEF
-         bIChLB17MOgINt+kyFQTYnnyCdqGDHxoOM4D6+DR9T1hRDIdASRa18Sdn3u1uQ4DXmXb
-         bSug==
-X-Gm-Message-State: AOJu0YzAKbHDqo+TZQSvjZ8cb9HK+ZHYLMEv6Sh/9/fsl7CYC6+RtCiq
-	rAjU0YJUvb51eilevTKQG7m174tQXPCVFQA1iKxaFj+2GS4J7w==
-X-Google-Smtp-Source: AGHT+IHbmPwv6z7KPbpI44YRa4bYQfIXyvmSunk5ru1UyVqC5KptkTXxtDOkWoeYljsAtoXlTJC88ShSxszX3+BvyHo=
-X-Received: by 2002:ac8:5cce:0:b0:428:3602:4ad8 with SMTP id
- s14-20020ac85cce000000b0042836024ad8mr839527qta.60.1704385819426; Thu, 04 Jan
- 2024 08:30:19 -0800 (PST)
-MIME-Version: 1.0
-References: <20231226200205.562565-1-pasha.tatashin@soleen.com> <eqkpplwwyeqqd356ka3g6isaoboe62zrii77krsb7zwzmvdusr@5i3lzfhpt2xe>
-In-Reply-To: <eqkpplwwyeqqd356ka3g6isaoboe62zrii77krsb7zwzmvdusr@5i3lzfhpt2xe>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Thu, 4 Jan 2024 11:29:43 -0500
-Message-ID: <CA+CK2bBE1bQuqZy3cbWiv8V3vJ8YNJZRayp6Wv-j2_9i37XT4g@mail.gmail.com>
+	Thu, 04 Jan 2024 17:04:27 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id A22F01F821;
+	Thu,  4 Jan 2024 17:04:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1704387859; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ipK/226LRJDTM3FDOd68E2idK7q9JRqvu+4u/g3wH50=;
+	b=K3Rgv7W7sta/rNDtR0eZIZmZNKZUs0KubO9/2GP3vpEH7iAUILQfJvyKtKMy6kd/voBYGU
+	BgK5F8KgWvEAUx4gmMDTSX+gF09v9SZxutGU/aR8dqTee7V8PS/jkZ9U/flaNILNZC0EoL
+	V5CaUtevifWroaAiZir/Abo2a+5JkNk=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1704387857; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ipK/226LRJDTM3FDOd68E2idK7q9JRqvu+4u/g3wH50=;
+	b=t7RtALx4OLAwYM1NSnnPIxj9u/urq88xoeMObBg2yBueCWbTplQCDwM9XjKaKTlCZNXWSb
+	8UvcDmIESZxi2Pw4v1s1yqzQRAaW2t4k3Dss65JDw5QjtwUxXXp9gRl3D1T+jt99x7U8C4
+	0fdzJJvtaZzf2609O9HT7+10cFgFQc8=
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 726B213722;
+	Thu,  4 Jan 2024 17:04:17 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([10.150.64.162])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id MsmyGxHllmWDaAAAD6G6ig
+	(envelope-from <mkoutny@suse.com>); Thu, 04 Jan 2024 17:04:17 +0000
+Date: Thu, 4 Jan 2024 18:04:16 +0100
+From: Michal =?utf-8?Q?Koutn=C3=BD?= <mkoutny@suse.com>
+To: Pasha Tatashin <pasha.tatashin@soleen.com>
+Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, 
+	alyssa@rosenzweig.io, asahi@lists.linux.dev, baolu.lu@linux.intel.com, 
+	bhelgaas@google.com, cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
+	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, iommu@lists.linux.dev, 
+	jernej.skrabec@gmail.com, jonathanh@nvidia.com, joro@8bytes.org, 
+	krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com, 
+	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
+	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org, 
+	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, will@kernel.org, 
+	yu-cheng.yu@intel.com, rientjes@google.com
 Subject: Re: [PATCH v3 00/10] IOMMU memory observability
-To: =?UTF-8?Q?Michal_Koutn=C3=BD?= <mkoutny@suse.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
-	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
-	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
-	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com
+Message-ID: <eng4vwaci5hwlicszgcld6uny55vll2bfs3vp2yjbjf3exhamg@zf6yc2uhax7w>
+References: <20231226200205.562565-1-pasha.tatashin@soleen.com>
+ <eqkpplwwyeqqd356ka3g6isaoboe62zrii77krsb7zwzmvdusr@5i3lzfhpt2xe>
+ <CA+CK2bBE1bQuqZy3cbWiv8V3vJ8YNJZRayp6Wv-j2_9i37XT4g@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CA+CK2bBE1bQuqZy3cbWiv8V3vJ8YNJZRayp6Wv-j2_9i37XT4g@mail.gmail.com>
+Authentication-Results: smtp-out2.suse.de;
+	none
+X-Spamd-Result: default: False [-1.43 / 50.00];
+	 ARC_NA(0.00)[];
+	 RCVD_VIA_SMTP_AUTH(0.00)[];
+	 URIBL_BLOCKED(0.00)[soleen.com:email];
+	 FROM_HAS_DN(0.00)[];
+	 TO_DN_SOME(0.00)[];
+	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	 TO_MATCH_ENVRCPT_ALL(0.00)[];
+	 TAGGED_RCPT(0.00)[];
+	 MIME_GOOD(-0.20)[multipart/signed,text/plain];
+	 NEURAL_HAM_LONG(-1.00)[-1.000];
+	 BAYES_HAM(-0.03)[55.23%];
+	 RCVD_COUNT_THREE(0.00)[3];
+	 DKIM_SIGNED(0.00)[suse.com:s=susede1];
+	 NEURAL_HAM_SHORT(-0.20)[-1.000];
+	 RCPT_COUNT_TWELVE(0.00)[44];
+	 DBL_BLOCKED_OPENRESOLVER(0.00)[soleen.com:email];
+	 SIGNED_PGP(-2.00)[];
+	 FUZZY_BLOCKED(0.00)[rspamd.com];
+	 FROM_EQ_ENVFROM(0.00)[];
+	 MIME_TRACE(0.00)[0:+,1:+,2:~];
+	 MID_RHS_NOT_FQDN(0.50)[];
+	 FREEMAIL_CC(0.00)[linux-foundation.org,samsung.com,rosenzweig.io,lists.linux.dev,linux.intel.com,google.com,vger.kernel.org,lwn.net,redhat.com,infradead.org,cmpxchg.org,sntech.de,gmail.com,nvidia.com,8bytes.org,linaro.org,kvack.org,lists.infradead.org,bytedance.com,marcan.st,kernel.org,arm.com,sholland.org,amd.com,svenpeter.dev,csie.org,intel.com];
+	 RCVD_TLS_ALL(0.00)[];
+	 SUSPICIOUS_RECIPS(1.50)[]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_083024_287585_059EACF3 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20240104_090425_488983_B1BC6E5C 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +123,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8480472987065126515=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKYW4gNCwgMjAyNCBhdCAxMDozMeKAr0FNIE1pY2hhbCBLb3V0bsO9IDxta291dG55
-QHN1c2UuY29tPiB3cm90ZToKPgo+IEhlbGxvLgo+Cj4gT24gVHVlLCBEZWMgMjYsIDIwMjMgYXQg
-MDg6MDE6NTVQTSArMDAwMCwgUGFzaGEgVGF0YXNoaW4gPHBhc2hhLnRhdGFzaGluQHNvbGVlbi5j
-b20+IHdyb3RlOgo+ID4gVGhpcyBwYXRjaCBzZXJpZXMgc29sdmVzIHRoaXMgcHJvYmxlbSBieSBh
-ZGRpbmcgYm90aCBvYnNlcnZhYmlsaXR5IHRvCj4gPiBhbGwgcGFnZXMgdGhhdCBhcmUgYWxsb2Nh
-dGVkIGJ5IElPTU1VLCBhbmQgYWxzbyBhY2NvdW50YWJpbGl0eSwgc28KPiA+IGFkbWlucyBjYW4g
-bGltaXQgdGhlIGFtb3VudCBpZiB2aWEgY2dyb3Vwcy4KPgo+IE1heWJlIHRoaXMgaXMgYSBtaXNt
-YXRjaCBpbiB2b2NhYnVsYXJ5IHdoYXQgeW91IG1lYW4gYnkgdGhlIHZlcmIKPiAibGltaXQiLiBC
-dXQgSSBkb24ndCBzZWUgaW4gdGhlIHBhdGNoc2V0IHRoYXQgdGhlIG9mZmVuZGluZyBwYWdlcyB3
-b3VsZAo+IGJlIGFsbG9jYXRlZCB3aXRoIEdGUF9BQ0NPVU5ULiBTbyB0aGUgcmVzdWx0IGlzIHRo
-YXQgdGhlIHBhZ2VzIGFyZQo+IGFjY291bnRlZCAoeW91IGNhbiB2aWV3IHRoZSBhbW91bnQgaW4g
-bWVtb3J5LnN0YXQpIGJ1dCB0aGV5IGFyZSBub3QKPiBzdWJqZWN0IHRvIG1lbWNnIGxpbWl0cy4K
-Pgo+IElzIHRoYXQgd2hhdCB5b3UgaW50ZW5kPwoKSGkgTWljaGFsLAoKVGhhbmsgeW91IGZvciB0
-YWtpbmcgYSBsb29rIGF0IHRoaXMuIFRoZSB0d28gcGF0Y2hlcyBbMV0gWzJdIHdoaWNoIGFkZApH
-RlBfS0VSTkVMX0FDQ09VTlQgd2VyZSBzZW50IHNlcGFyYXRlIGZyb20gdGhpcyBzZXJpZXMgYXQg
-cmVxdWVzdCBvZgpyZXZpZXdlcnM6CgpQYXNoYQoKWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
-L2xpbnV4LW1tLzIwMjMxMjI2MTgyODI3LjI5NDE1OC0xLXBhc2hhLnRhdGFzaGluQHNvbGVlbi5j
-b20KWzJdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1tLzIwMjMxMTMwMjAwOTAwLjIz
-MjA4MjktMS1wYXNoYS50YXRhc2hpbkBzb2xlZW4uY29tCgo+Cj4KPiBSZWdhcmRzLAo+IE1pY2hh
-bAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+
+--===============8480472987065126515==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="22fntkpk3vilmqk6"
+Content-Disposition: inline
+
+
+--22fntkpk3vilmqk6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Jan 04, 2024 at 11:29:43AM -0500, Pasha Tatashin <pasha.tatashin@soleen.com> wrote:
+> Thank you for taking a look at this. The two patches [1] [2] which add
+> GFP_KERNEL_ACCOUNT were sent separate from this series at request of
+> reviewers:
+
+Ah, I didn't catch that.
+
+Though, I mean the patch 02/10 calls iommu_alloc_pages() with GFP_KERNEL
+(and not a passed gfp from iommu_map).
+Then patch 09/10 accounts all iommu_alloc_pages() under NR_IOMMU_PAGES.
+
+I think there is a difference between what's shown NR_IOMMU_PAGES and
+what will have __GFP_ACCOUNT because of that.
+
+I.e. is it the intention that this difference is not subject to
+limiting?
+
+(Note: I'm not familiar with iommu code and moreover I'm only looking at
+the two patch sets, not the complete code applied. So you may correct my
+reasoning.)
+
+
+Thanks,
+Michal
+
+--22fntkpk3vilmqk6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQQpEWyjXuwGT2dDBqAGvrMr/1gcjgUCZZblDgAKCRAGvrMr/1gc
+jiwfAQCSCpFQriEKwkEB8UUxOA9LFBhZfPl+l6lvTbTvghQXmQEAh2ukMdYInk9Z
+KYebGDty+dxGKeNxW6aKFLuxo9UKywg=
+=e+tC
+-----END PGP SIGNATURE-----
+
+--22fntkpk3vilmqk6--
+
+
+--===============8480472987065126515==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8480472987065126515==--
+
