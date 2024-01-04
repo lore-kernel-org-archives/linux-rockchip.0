@@ -4,52 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B3EC47074
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 09:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 993BFC47073
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jan 2024 09:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ywVN/YPDQLohFulSBoboSMMYLx9sosnbJHJKPY/BLtE=; b=kWTADY97iA/upe
-	TemBiJnDN0UdfXcZCcv/joq3pq0pWJay9W7doBWo45NL6lc68J4uc2ASBOkXvFoklLV91FHLN7C8P
-	aA20HeoaQEk2uAOS4IEbcsQYydEO8Pj51GSljvY7eaQSLafi7Y+Xk9atJUwML2I6ktYcqQuEWNc0/
-	TMhrLznqqXgvh/exp/O0JUrSJ4fC+7zLlCGS4K0jvgm5For/H12BQ+JWXQitGbYcGhFBN/YtxvU9I
-	yw5MLQRDgXPaD5+Tv450QWq8m2ilNgFlKOiniluU3hbwL7WrFWCCSJ7lIhj3CV00u8F3j8m/i6GBg
-	953GaN9aIJ895svdC07Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O/ZZ+8yXsci2ahjsXrLOS05AB8grCJ7nrQctj14WLzs=; b=aE9yvYUO/h4bjKJVPGoVZ7QzoQ
+	XnoiVly736gIeM4AVKAw1PaVWDQc6iutLNmuvfakPiHZX4YVlmgfXzvE2w9bPuw8fG1ySXaluNSh6
+	paZc1yp65oySH2qHwWMoqpwgDXbgB5X5vJQKGVJrDI6Nhrr8M1KlYVw2jtf/+DHe/+Zfk4e56Vu2f
+	nnd4LDzP4jA3kGbI6tylSl+T2DEdvY1J8Ixvk22HwFJZ8wp3rZ1688Brhkal3grh6dT2fA4wvfT8k
+	DH1M6QyPpH3cN18PP7hXR5s3cukDqw99u+Fl22zKOng7V3A4A4T1LpP6kZBZ2RTxB7TPJLewU2cZA
+	V/cew3GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLJh9-00DJ8P-1p;
-	Thu, 04 Jan 2024 09:07:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rLJmV-00DKkg-2a;
+	Thu, 04 Jan 2024 09:12:51 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLJh5-00DJ6o-1o;
-	Thu, 04 Jan 2024 09:07:17 +0000
-Received: from i53875a56.versanet.de ([83.135.90.86] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rLJh3-00027h-O1; Thu, 04 Jan 2024 10:07:13 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	id 1rLJmS-00DKjW-15;
+	Thu, 04 Jan 2024 09:12:49 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1704359566;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4SRiCSFjjtpimRPvqsP147KRAIehZL0MOp1p8t19fT8=;
+	b=p53t3Y3bE0DAIiVIVG4SJuncMPbf1wwPvq7EuNYUSY+V8nqF3JkXbR8D8fMUgQYKUVsLzd
+	CB1aOeNdyQIgB/UoLfWmlKrqB7DFMkCwPd3LwoqHuEvNAaF59MkHXaxUkF+9m/VJ7eHCgN
+	99Pbe2Eg6y5l7dFN9JIvj2xQ4shWiqOeUE4kCtfLNcrhBJrPMgYQMmXPJrcAAGBD6o+6rk
+	1EubrezEJnNecQHG6QSXFeWL4ks8PU4XEXXZffB8cJE1dEKV/svORuWdhlmSLOv2ZxKzhI
+	BL2vFBRH64a2MkQFjD2uvHHL7xqJsTRp6TOcykxJ9U/XiXa4PWvNxws3b5N/vA==
+Date: Thu, 04 Jan 2024 10:12:46 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  devicetree@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- Kyle Copperfield <kmcopper@danwin1210.me>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add cache information to the SoC dtsi for
- RK3399
-Date: Thu, 04 Jan 2024 10:07:12 +0100
-Message-ID: <2157455.yIU609i1g2@diego>
-In-Reply-To: <fc03e6046bba49b6a4b0794412e0bac6@manjaro.org>
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, Kyle Copperfield
+ <kmcopper@danwin1210.me>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add cache information to the SoC
+ dtsi for RK3399
+In-Reply-To: <2157455.yIU609i1g2@diego>
 References: <be3cbcae5c40fa72a52845d30dcc66c847a98cfa.1702616304.git.dsimic@manjaro.org>
  <0476656a-6d3d-4662-879a-1caf0efb4d9e@linaro.org>
- <fc03e6046bba49b6a4b0794412e0bac6@manjaro.org>
-MIME-Version: 1.0
+ <fc03e6046bba49b6a4b0794412e0bac6@manjaro.org> <2157455.yIU609i1g2@diego>
+Message-ID: <7e1d4611079375f92f6ab7d446160200@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240104_010715_593185_5CD2EDCA 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20240104_011248_529715_15282528 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,41 +71,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 4. Januar 2024, 09:55:35 CET schrieb Dragan Simic:
-> On 2024-01-04 09:51, Krzysztof Kozlowski wrote:
-> > On 04/01/2024 09:50, Dragan Simic wrote:
-> >> Hello,
-> >> 
-> >> Just checking, is there something preventing this patch from becoming
-> >> accepted?  I'd appreciate if you'd provide some feedback and let me 
-> >> know
-> >> if there's something in the patch that needs adjusting.
-> > 
-> > Merge window? Is it a fix? If not, the cutoff is around rc5-rc7,
-> > depending on your SoC maintainer preferences.
-> 
-> Ah, I see, thanks for the clarification.  It isn't a bugfix, so I'll 
-> send the patch again during the next merge window.
-
-no need to resend.
-
-The main thing holding the patch back was xmas ;-) .
-
-But as Krzysztof wrote, the merge-window is upon us, so I'll pick this up
-for 6.9 .
-
-Thanks
-Heiko
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyNC0wMS0wNCAxMDowNywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gRG9ubmVyc3Rh
+ZywgNC4gSmFudWFyIDIwMjQsIDA5OjU1OjM1IENFVCBzY2hyaWViIERyYWdhbiBTaW1pYzoKPj4g
+T24gMjAyNC0wMS0wNCAwOTo1MSwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKPj4gPiBPbiAw
+NC8wMS8yMDI0IDA5OjUwLCBEcmFnYW4gU2ltaWMgd3JvdGU6Cj4+ID4+IEhlbGxvLAo+PiA+Pgo+
+PiA+PiBKdXN0IGNoZWNraW5nLCBpcyB0aGVyZSBzb21ldGhpbmcgcHJldmVudGluZyB0aGlzIHBh
+dGNoIGZyb20gYmVjb21pbmcKPj4gPj4gYWNjZXB0ZWQ/ICBJJ2QgYXBwcmVjaWF0ZSBpZiB5b3Un
+ZCBwcm92aWRlIHNvbWUgZmVlZGJhY2sgYW5kIGxldCBtZQo+PiA+PiBrbm93Cj4+ID4+IGlmIHRo
+ZXJlJ3Mgc29tZXRoaW5nIGluIHRoZSBwYXRjaCB0aGF0IG5lZWRzIGFkanVzdGluZy4KPj4gPgo+
+PiA+IE1lcmdlIHdpbmRvdz8gSXMgaXQgYSBmaXg/IElmIG5vdCwgdGhlIGN1dG9mZiBpcyBhcm91
+bmQgcmM1LXJjNywKPj4gPiBkZXBlbmRpbmcgb24geW91ciBTb0MgbWFpbnRhaW5lciBwcmVmZXJl
+bmNlcy4KPj4gCj4+IEFoLCBJIHNlZSwgdGhhbmtzIGZvciB0aGUgY2xhcmlmaWNhdGlvbi4gIEl0
+IGlzbid0IGEgYnVnZml4LCBzbyBJJ2xsCj4+IHNlbmQgdGhlIHBhdGNoIGFnYWluIGR1cmluZyB0
+aGUgbmV4dCBtZXJnZSB3aW5kb3cuCj4gCj4gbm8gbmVlZCB0byByZXNlbmQuCj4gCj4gVGhlIG1h
+aW4gdGhpbmcgaG9sZGluZyB0aGUgcGF0Y2ggYmFjayB3YXMgeG1hcyA7LSkgLgo+IAo+IEJ1dCBh
+cyBLcnp5c3p0b2Ygd3JvdGUsIHRoZSBtZXJnZS13aW5kb3cgaXMgdXBvbiB1cywgc28gSSdsbCBw
+aWNrIHRoaXMgCj4gdXAKPiBmb3IgNi45IC4KCkF3ZXNvbWUsIHRoYW5rIHlvdSEgOikgIEknbGwg
+bW92ZSBmb3J3YXJkIGFuZCBwcmVwYXJlIGEgZmV3IG1vcmUgc2ltaWxhciAKcGF0Y2hlcyBmb3Ig
+b3RoZXIgUm9ja2NoaXAgU29DcywgYWZ0ZXIgSSByZWNvdmVyIGZyb20gc29tZSBuYXN0eSBmbHUg
+CkkndmUgdW5mb3J0dW5hdGVseSBjb250cmFjdGVkLgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
