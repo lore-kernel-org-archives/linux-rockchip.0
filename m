@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 424D7C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jan 2024 16:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CFE8C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jan 2024 16:47:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fF5a+OujD8gJ6lAipWIP+OErv9/p7Fop51As7Qscz9k=; b=0SB+IFRzyd3ukB
-	u0kW/yLyt0iE0R/UmSrWqvpv5iQJf3zzRRNjZaA2S8ILsM/t4iiX4bsEzcqphWrIzwYYNOE8CBCyZ
-	YdnGt9uOnEYmte57M0pB7lgpz3n/QWW1jwuDp52SSoWobJcNWZRIKI+hqSIQGyhxtNQw2eKwl6Z3r
-	dZeYJ+bU6tEilbqqd2aXmi07tGlnzpLwDs5hdiN1moxzUO3Yc1G51PAwa/DdNKjw8sgyVvRbmZftp
-	4lYQ9pn5yH2Pfib82Xqauk0I0ONqP96cNIYClYdd1BKOtnsHGcPacP9YpU6Atp5jPIzomNPnIbgBw
-	GgxHDn9YS6+8eWmIHS8A==;
+	List-Owner; bh=ppP9P7WxDLE+4XhXwbTgbJzCBgAwl/24EcJGU36kIGM=; b=CuWAjZFX47zomO
+	4r3gcdIFCm9HtgvoIN7jeLbXb4L7R7JRcXap+BDc21XFP40Mo4W1y4mzQpYCdaHw5AaTFvxLSg6Qa
+	+ibE8mRhItNrMZOO33QOcgsEvSVXY3Jm4DKR6M/eWB1Y53TqlLXxKuqX1yLw/wsj9kuO+PqftxZF9
+	Z08stiAMVg9iqat7xa390Qpoc2jiNhTyw2989zmO9u2b0h93g5kh1JuvmK55HejqkqEhQf+Kjn6Qy
+	3YlbOj9JnxvngwE1L7qn+6i+22pc/VjphXnX4celdhmD84nlAgSzEtxEVj3JEwk5A49iiLJKRKxMw
+	yw+RGsiLYPV2kS6fxA8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLnLP-00HLvn-1Y;
-	Fri, 05 Jan 2024 16:46:51 +0000
-Received: from [2a01:4f8:1c1c:934f::1] (helo=mecka.net)
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLnLL-00HLuJ-2i;
-	Fri, 05 Jan 2024 16:46:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mecka.net; s=2016.11;
-	t=1704473206; bh=dHnrrrn6vo3WQZOIjrjrAbt6U0ZZNfLqqP84NXJM+E0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l2Xg7rXV0Z61wO3d803JrtBJ3v49QkhSEPGZxFHws7PbldB7B/h3vsctcA1fImG54
-	 9dR9aNu1baqmk/xRTAqluLBLsu0k5FrRL8svHlvvEKOV4KIv7t3AlvnfSpxl+lB7pg
-	 R1exJRstdITouVpfids2D5FVbdEmro4YL4+Z/IHSA+1/K59zTj6BIlFHK/nspq+nUP
-	 MuYpzyCJEtiQrgaszQOssz88oikViG0TVsPVyajqOQnAZOwS59dMIbZy8WoVQe93kz
-	 PPmXv+x1e0/32zBNGDrPFMGHsMaXc+/9Yfl9d619SlzrIZPPL8OJt53VXtjGACbmSI
-	 z7khgi0JbGTPg==
-Received: from mecka.net (unknown [185.147.11.134])
-	by mecka.net (Postfix) with ESMTPSA id 16F2037C392;
-	Fri,  5 Jan 2024 17:46:46 +0100 (CET)
-Date: Fri, 5 Jan 2024 17:46:40 +0100
-From: Manuel Traut <manut@mecka.net>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Jessica Zhang <quic_jesszhan@quicinc.com>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Mark Yao <markyao0591@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Segfault <awarnecke002@hotmail.com>,
-	Arnaud Ferraris <aferraris@debian.org>,
-	Danct12 <danct12@riseup.net>, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Add devicetree for Pine64
- PineTab2
-Message-ID: <ZZgycP5YKBam2p6W@mecka.net>
-References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
- <20240102-pinetab2-v3-4-cb1aa69f8c30@mecka.net>
- <775vjfucu2g2s6zzeutj7f7tapx3q2geccpxvv4ppcms4hxbq7@cbrdmlu2ryzp>
- <903e9d0c-a00c-4214-9f0e-dd676b13b428@kwiboo.se>
- <ZZVjzwgANJMdHnuo@mecka.net>
- <6efe305c-4ab4-43c1-ab6d-64bdf1d81a2f@kwiboo.se>
+	id 1rLnM1-00HM3K-13;
+	Fri, 05 Jan 2024 16:47:29 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1rLnLy-00HM2P-2u;
+	Fri, 05 Jan 2024 16:47:28 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-55739500b39so605631a12.0;
+        Fri, 05 Jan 2024 08:47:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704473243; x=1705078043; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8GhoWygouKwNF/i+Ar+uHKGYE9ZPPakZhcuyJ3HA+yM=;
+        b=XvHCE4NCVK1N90wPXru2fukxzIeHS6XBQ7AxSIjqPGuxJDdNaZ8cLsZzArh5+9wbvJ
+         NoYfxSK6o5kdCB2TgZkPEJms3NwGLCvfpgxjfR1R0smJzAUfAyD0ajS6zhvXKdxkAPlu
+         0buQKiGbC5Y1XS6JoeIXehCcie2g76XCXeaKtJNGjD+Q1GY9NFkV1W56N3yNbvVEtZ9a
+         rVq+yHN81gR2BhoTS7SsgaA5MKvo/RSkblcvKffOyDL71Wz46y2XzkO6kf269wHV1x59
+         MkpZWVOUmAsXs2xlBqXNeQjfDlbUte3bqrEj86Qw2a7M0pNyPCu5aOPsT+JIR06nonFg
+         6VhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704473243; x=1705078043;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8GhoWygouKwNF/i+Ar+uHKGYE9ZPPakZhcuyJ3HA+yM=;
+        b=PoNliAXWiqNFccn9J08Gw6RIe/mYarIPTDhi2EiIWDgs6wwgbfOoK3rZebpagZiCDl
+         QHL4+albSYqDVhYV5u1wsyZnEHFyLlLCnzdSzTSLSygLJEzNN1DLloAAwHzpQ/bypcGJ
+         ZlTEDnuV4wSAVfa8urxBwuhkoodNJNfLceeBY+WAnfK6tHRjytf0JpO9zuUy/IQMhkrB
+         X/xRRkM2Nj1KPvP2w+Q1E3l6cJHF5sqwntIGlEG60Q5fE8/lR/cObxm5BZRecjIaGHj9
+         TAc+Oar6L4j+ALq6QBiSdamxHKEUbX2QWsVIY6oJDrop/an3Dzwi98KqIjPUWGHDB2U+
+         toYQ==
+X-Gm-Message-State: AOJu0YycfnyitV8G3I7Vi/8n7g+pvHBJg8KpbFcGe6IGyJuAIw6MSZCx
+	6xKFKf3IzP+qkenJpJf7gQ==
+X-Google-Smtp-Source: AGHT+IEmqVeHlv3hQC7rMHa0U1jc6f1uX/xyuXiZ6rLuFGn1h9XpROfBTFyH9I651Ze1bS12LJUPyw==
+X-Received: by 2002:a17:906:2853:b0:a27:a258:f340 with SMTP id s19-20020a170906285300b00a27a258f340mr1240311ejc.65.1704473243418;
+        Fri, 05 Jan 2024 08:47:23 -0800 (PST)
+Received: from ?IPV6:2a02:810b:f40:4300:890b:36c3:934f:6f56? ([2a02:810b:f40:4300:890b:36c3:934f:6f56])
+        by smtp.gmail.com with ESMTPSA id r11-20020a1709062ccb00b00a26aa845084sm1064504ejr.17.2024.01.05.08.47.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Jan 2024 08:47:23 -0800 (PST)
+Message-ID: <3e7aa9f2-6e37-44c3-9361-5fa7c4ef203d@gmail.com>
+Date: Fri, 5 Jan 2024 17:47:21 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6efe305c-4ab4-43c1-ab6d-64bdf1d81a2f@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: (subset) [PATCH v4 00/29] Add HDMI support for RK3128
+Content-Language: en-US, de-DE
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ David Airlie <airlied@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>
+References: <20231222174220.55249-1-knaerzche@gmail.com>
+ <170435598418.3166964.9367277671989164237.b4-ty@sntech.de>
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <170435598418.3166964.9367277671989164237.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_084648_031920_F383D835 
-X-CRM114-Status: GOOD (  33.73  )
+X-CRM114-CacheID: sfid-20240105_084726_940333_B4344587 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,62 +95,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSm9uYXMsCgpPbiBXZWQsIEphbiAwMywgMjAyNCBhdCAwMzoxOToyNVBNICswMTAwLCBKb25h
-cyBLYXJsbWFuIHdyb3RlOgo+IEhpIE1hbnVlbCwKPiAKPiBPbiAyMDI0LTAxLTAzIDE0OjQwLCBN
-YW51ZWwgVHJhdXQgd3JvdGU6Cj4gPiBIaSBKb25hcyBhbmQgT25kxZllaiwKPiA+IAo+ID4+Pj4g
-KyZzZmMgewo+ID4+Pj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ID4+Pj4gKwlwaW5j
-dHJsLTAgPSA8JmZzcGlfZHVhbF9pb19waW5zPjsKPiA+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+
-ID4+Pj4gKwkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiA+Pj4+ICsJI3NpemUtY2VsbHMgPSA8MD47
-Cj4gPj4+PiArCj4gPj4+PiArCWZsYXNoQDAgewo+ID4+Pj4gKwkJY29tcGF0aWJsZSA9ICJqZWRl
-YyxzcGktbm9yIjsKPiA+Pj4+ICsJCXJlZyA9IDwwPjsKPiA+Pj4+ICsJCXNwaS1tYXgtZnJlcXVl
-bmN5ID0gPDI0MDAwMDAwPjsKPiA+Pj4KPiA+Pj4gVGhhdCdzIGEgYml0IG9uIHRoZSBsb3cgc2lk
-ZS4gVGhlIGZsYXNoIGNoaXAgc2hvdWxkIHdvcmsgZm9yIGFsbCBjb21tYW5kcyB1cCB0bwo+ID4+
-PiA4ME1IeiBodHRwczovL21lZ291cy5jb20vZGwvdG1wL2I0MjhhZDliODVhYzQ2MzMucG5nIGFu
-ZCBTR00zMTU3WUM2IHN3aXRjaAo+ID4+PiBmb3IgdGhlIEZTUEktQ0xLIHNob3VsZCBoYXZlIGhp
-Z2ggZW5vdWdoIGJhbmR3aWR0aCwgdG9vLgo+ID4+Cj4gPj4gSSBhZ3JlZSB0aGF0IHRoaXMgaXMg
-YSBsaXR0bGUgYml0IG9uIHRoZSBsb3cgc2lkZSwgaXQgd2FzIGEgc2FmZSByYXRlCj4gPj4gdGhh
-dCBJIHVzZWQgZm9yIFUtQm9vdC4gVS1Cb290IHJlcXVpcmVkIGFuIGV4YWN0IHJhdGUgb2YgdGhl
-IHN1cHBvcnRlZAo+ID4+IHNmYyBjbGsgcmF0ZXM6IDI0LCA1MCwgNzUsIDEwMCwgMTI1IG9yIDE1
-MCBNSHouCj4gPj4KPiA+PiBQbGVhc2UgYWxzbyBub3RlIHRoYXQgdGhlIFNQSSBOT1IgZmxhc2gg
-Y2hpcCB1c2VkIGluIFBpbmVUYWIyIGlzIG5vdCBhCj4gPj4gR2lnYURldmljZSBHRDI1TFExMjhF
-LCBpdCBzaG91bGQgYmUgYSBTaWxpY29uS2Fpc2VyIFNLMjVMUDEyOCwgc2FtZSBhcwo+ID4+IGZv
-dW5kIGluIHRoZSBQaW5lNjQgUGluZVBob25lIFByby4KPiA+IAo+ID4gVGhlIHNjaGVtYXRpY3Mg
-Zm9yIHYyLjAgcmVmZXJlbmNlIGEgR0QyNUxRMTI4RVdJR1IuIEkgbmV2ZXIgY2hlY2tlZCB0aGUg
-amVkZWMKPiA+IGlkLiBIb3cgZGlkIHlvdSByZXRyaWV2ZSB0aGlzIGluZm9ybWF0aW9uLCBvciBp
-cyBpdCBtYXliZSBhIGRpZmZlcmVuY2UgaW4gdjAuMQo+ID4gYW5kIDIuMD8KPiAKPiBUaGlzIHdh
-cyB3aGVuIHdvcmtpbmcgb24gbWFpbmxpbmUgVS1Cb290IGZvciB0aGUgUGluZVRhYjIgKGFuZCBv
-dGhlcgo+IHJrMzU2eCBkZXZpY2VzKS4gU2VlIFsxXSBmb3IgYSBwZW5kaW5nIFUtQm9vdCBwYXRj
-aCB0aGF0IGlzIHdhaXRpbmcgb24gYQo+IHByb3BlciBtYWlubGluZSBsaW51eCBkZXZpY2V0cmVl
-IGZvciB0aGUgUFQyLgo+IAo+IFRoZSBKRURFQyBJRCBpcyByZXBvcnRlZCBhcyAweDI1NzAxOCBv
-biBteSB2Mi4wIHByb2R1Y3Rpb24gdW5pdCwgYW5kCj4gZG9lcyBub3QgbWF0Y2ggdGhlIEpFREVD
-IElEIGZvciBHRDI1TFExMjhFICgweGM4NjAxOCkgcmVmZXJlbmNlZCBpbgo+IHRoZSBzY2hlbWF0
-aWNzLgo+IAo+IEkgZm91bmQgdGhhdCB0aGUgSkVERUMgSUQgMHgyNTcwMTggd2FzIHJlZmVyZW5j
-ZWQgaW4gcHJpb3IgcGF0Y2hlcwo+IHJlbGF0ZWQgdG8gdGhlIFNLMjVMUDEyOCBTUEkgTk9SIGZs
-YXNoIGNoaXAgdXNlZCBpbiBQaW5lNjQgUGluZVBob25lIFByby4KPiAKPiBJIGhhdmUgb25seSBl
-dmVyIHRlc3RlZCB0aGUgMjQgTUh6IHJhdGUsIGJ1dCBJIGFtIGV4cGVjdGluZyB0aGF0IGUuZy4K
-PiAxMDAgTUh6IGFsc28gc2hvdWxkIHdvcmsuIFdpbGwgbm90IGJlIGFibGUgdG8gdGVzdCBvbiBt
-eSBQVDIgdW50aWwgYXQKPiBlYXJsaWVzdCBuZXh0IHdlZWsuCj4gCj4gWzFdIGh0dHBzOi8vZ2l0
-aHViLmNvbS9Ld2lib28vdS1ib290LXJvY2tjaGlwL2NvbW1pdC82NjU2MmQ2ZWFmMmMxMWE5Zjk3
-ZmNkYmEzNzlkM2NlZGE4YWE3MGVmCgpUaGFua3MgZm9yIHRoZSBpbmZvcm1hdGlvbi4KCk15IHYy
-LjAgZGV2aWNlIGFsc28gcmVwb3J0cyBKRURFQyBJRCAweDI1NzAxOC4gSSBpbmNyZWFzZWQgdGhl
-IGNsb2NrLXJhdGUKdG8gMTAwIE1IeiBhbmQgaXQgaXMgYXQgbGVhc3Qgc3RpbGwgZGV0ZWN0ZWQu
-CgpJIHdpbGwgZmluZCBvdXQgaG93IHRvIHRlc3QgbW9yZSwgY3VycmVudGx5IGhleGR1bXAgL2Rl
-di9tdGQwIGp1c3QgcmVwb3J0cwoweGZmIG9uIHRoZSBob2xlIGZsYXNoLCBJIGV4cGVjdGVkIHRv
-IHNlZSB1LWJvb3QgdGhlcmUuLgoKUmVnYXJkcwpNYW51ZWwKCj4gPj4+PiArCQlzcGktcngtYnVz
-LXdpZHRoID0gPDI+Owo+ID4+Pgo+ID4+PiBHRDI1TFExMjhFIHN1cHBvcnRzIHF1YWQgSS9PLiBN
-YXliZSB0cnkgNCBpZiBpdCB3aWxsIHdvcmsuCj4gPj4KPiA+PiBUaGUgc2NoZW1hdGljIG9ubHkg
-c2hvd3MgZnNwaSBEMCBhbmQgRDEgY29ubmVjdGVkLCBhbmQgdXNlIHRoZSBEMiBsaW5lCj4gPj4g
-Zm9yIGVNTUNfUlNUbiwgc28gc3BpLXJ4LWJ1cy13aWR0aCA9IDwyPiBzaG91bGQgYmUgY29ycmVj
-dC4KPiA+IAo+ID4gYWNrCj4gPiAKPiA+IFNpbmNlIGl0IGlzIG9ubHkgbmVlZGVkIGZvciBib290
-bG9hZGVyIHVwZGF0ZXMgYW5kIGVudmlyb25tZW50IGl0cyBtYXliZSBiZXR0ZXIKPiA+IHRvIHN0
-YXkgb24gdGhlIHNhZmUgc2lkZT8KPiA+IAo+ID4gQnV0IEkgY2FuIHRlc3QgZmFzdGVyIGZyZXF1
-ZW5jeSBpZiB5b3Ugd2FudCBtZSB0byBkby4uCj4gPiAKPiA+IFJlZ2FyZHMKPiA+IE1hbnVlbAo+
-IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Hi Heiko,
+
+
+Am 04.01.24 um 09:14 schrieb Heiko Stuebner:
+> On Fri, 22 Dec 2023 18:41:51 +0100, Alex Bee wrote:
+>> This is version 4 of my series that aims to add support for the display
+>> controller (VOP) and the HDMI controller block of RK3128 (which is very
+>> similar to the one found in RK3036). The original intention of this series
+>> was to add support for this slightly different integration but is by now,
+>> driven by maintainer's feedback, exploded to be a rework of inno-hdmi
+>> driver in large parts. It is, however, a change for the better.
+>>
+>> [...]
+> Applied, thanks!
+>
+> [23/29] drm/rockchip: inno_hdmi: Add variant support
+>          commit: 5f2e93e6719701a91307090f8f7696fd6b3bffdf
+> [24/29] drm/rockchip: inno_hdmi: Add RK3128 support
+>          commit: aa54f334c291effe321aa4b9ac0e67a895fd7b58
+> [25/29] drm/rockchip: inno_hdmi: Add basic mode validation
+>          commit: 701029621d4141d0c9f8b81a88a37b95ec84ce65
+> [26/29] drm/rockchip: inno_hdmi: Drop custom fill_modes hook
+>          commit: 50a3c772bd927dd409c484832ddd9f6bf00b7389
+>
+>
+> For reference, Rob has applied the rk3128 compatible in
+> https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/commit/?id=21960bda59852ca961fcd27fba9f92750caccd06
+thanks for keeping track on this.
+
+Is there any reason the DT paches aren't merged yet? From what I can see
+they should be fine to be merged in your v6.8-armsoc/dts32 branch which is
+6.7-rc1 based. There was only a txt-binding at this point and it's very
+likely that both the rockchip,inno-hdmi.yaml-conversion and the rk3128
+additon will both land in 6.8 (they are both in linux-next). Linus' 6.8
+merge-window will open earliest next week.
+I'm really not pressuring here and I'm fine if they land in 6.9 - it's just
+for my understanding for further submissions.
+
+Alex
+
+>
+> Best regards,
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
