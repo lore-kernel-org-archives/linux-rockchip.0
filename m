@@ -4,127 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C7FC3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jan 2024 09:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1945C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jan 2024 09:05:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HhuKJ0WSBqlhQrBoQ3nGE4XOr0WP9wafi6/f6zHNBIw=; b=YQAFDpQuhNQ6t5zlujpLeZJUz9
-	z1NhDhgbqJQEaqe2WHVi2LuezcbbCAE4oTQ666et5wQU7xqxYkYJ6EHOpMcpeIf0WyxUsqo82ycXS
-	L0fEfo0Uim5JRZMXfwFMPPkAnbgHayP1MryuWcOWRqVGd/bEVu0LZnQ5k32T3NHg6bJ2N8ocMCpTn
-	OYVZyjFzFP10YBsutZHqjOPV31vTzysLn/Vo9IzjjpFocue1sp8FKj98GWcJ17Vbiih7gP2qKMdvr
-	sqnbT9Tvt3hJpRTvnPGYFIBhJd0f2hNUWGuCsvuLln33rtP0jovotSJWCTTU12ydFpQ7KH4nlrnH1
-	O2eq4u+A==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xrF4ceV6moU2JhyRvWz+P22ol0P0/xcwILsNfQ7FxBs=; b=jm6ctVF2hKIgIB
+	si6DwbL3A3aPcauqpF+PqGO2EJzITVbbt7CQJ9kL4fYGF4lv1jp4+l1IZddJwtJwvIsFR1LW4Hx3W
+	+17YlEo5/1/jqWIjyDfvre4NJSdGJbLTgnAjSsr24OKPoK4wNdaQUbpAgxgUcyFATvgC7S5cE8j3o
+	NlCxuHZsgTiIl22JuQEUvBqZD3YBI/3TKXpk8JFK2DhJV1fnNcgs2B3mHeKhhpdPrENigzlQre4u1
+	r2sQ3WIXEk3KWTsQ8TqjxBih6I/s3NRlj//RN8wjW/u2D80c560avi5g5tYtpxbWXKwjplAiCHLi1
+	NOrOlVpugXy1fcfZ7R6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLg5z-00GKEI-1a;
-	Fri, 05 Jan 2024 09:02:27 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1rLg8v-00GKmA-2E;
+	Fri, 05 Jan 2024 09:05:29 +0000
+Received: from mail-m118115.qiye.163.com ([115.236.118.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rLg5u-00GKCf-2l
-	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Jan 2024 09:02:25 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C4C9D21F4F;
-	Fri,  5 Jan 2024 09:02:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1704445339; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/Hmj9D9VfyQx+ZfVXhsSYh7Uls173247uQLnYHxXG1M=;
-	b=LOl7umdXMasBBJC+adYeUl4Qi2+31gpUnZx2Dszu/570f6w9mSpa5Zj2pQL35AmskmGqPM
-	bRGrv8eW8BsoW3ia+yEWFtC0eKHgC6MUnRuXnnLFT3B0EOt4qzWhLqyTowMGBaNBPaCyEI
-	ginbt+IEW3mLW7T0tgfzQTVplxmymGQ=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1704445338; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/Hmj9D9VfyQx+ZfVXhsSYh7Uls173247uQLnYHxXG1M=;
-	b=oXf6BzBUGOHvQ67mDKNH8+c9QYm0uiGfDeK4Ufa8ynqSMGwJKittfVFmT+4clTun94BiM9
-	zEnRGSQskkF33k+CycmilhUBqsV+8Aw6RSsF4gcF7o1WH7RzsB2jc/9clyNEy65noVfvVK
-	WrhQcDV6UJKqajwr2AxsXuroJXVKJpU=
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 93371137E8;
-	Fri,  5 Jan 2024 09:02:18 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([10.150.64.162])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id zoe2I5rFl2VvRgAAD6G6ig
-	(envelope-from <mkoutny@suse.com>); Fri, 05 Jan 2024 09:02:18 +0000
-Date: Fri, 5 Jan 2024 10:02:17 +0100
-From: Michal =?utf-8?Q?Koutn=C3=BD?= <mkoutny@suse.com>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, 
-	alyssa@rosenzweig.io, asahi@lists.linux.dev, baolu.lu@linux.intel.com, 
-	bhelgaas@google.com, cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, iommu@lists.linux.dev, 
-	jernej.skrabec@gmail.com, jonathanh@nvidia.com, joro@8bytes.org, 
-	krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com, 
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org, 
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, will@kernel.org, 
-	yu-cheng.yu@intel.com, rientjes@google.com
-Subject: Re: [PATCH v3 00/10] IOMMU memory observability
-Message-ID: <elsuzdcx2qpnazvz2ayzmco4ctms5ci3iet3k7ggbjt3p2pfk2@tvr3plow26oi>
-References: <20231226200205.562565-1-pasha.tatashin@soleen.com>
- <eqkpplwwyeqqd356ka3g6isaoboe62zrii77krsb7zwzmvdusr@5i3lzfhpt2xe>
- <CA+CK2bBE1bQuqZy3cbWiv8V3vJ8YNJZRayp6Wv-j2_9i37XT4g@mail.gmail.com>
- <eng4vwaci5hwlicszgcld6uny55vll2bfs3vp2yjbjf3exhamg@zf6yc2uhax7w>
- <CA+CK2bCUGepLLA2Hsmq00XEhPzLWPb5CjzY_UPT0qWSKastjAQ@mail.gmail.com>
+	id 1rLg8s-00GKkf-0r;
+	Fri, 05 Jan 2024 09:05:28 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=J49zP1kcxyDLDuYjM1j/Nm85RnUYMNpETkXTFJtmfMkDN7noi608Tk7coSGxV/XODolyLuQGAfQwK5z9r8GBmQTRolRWVBxr3xENAIZ/q631aqmpzcv2t/h44mHU7k8zm6iScrfG66xhRB6ZXc+4CrxCcpc58vsJz6ASrURiAxE=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=7Rpg1YBO3YN3stA5+Iw9eTT2absDZpy7ygnLlv2cEYU=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m12779.qiye.163.com (Hmail) with ESMTPA id 799D37802A7;
+	Fri,  5 Jan 2024 17:04:56 +0800 (CST)
+Message-ID: <acb52035-4f0c-430d-a2d2-26ab37805d7b@rock-chips.com>
+Date: Fri, 5 Jan 2024 17:04:55 +0800
 MIME-Version: 1.0
-In-Reply-To: <CA+CK2bCUGepLLA2Hsmq00XEhPzLWPb5CjzY_UPT0qWSKastjAQ@mail.gmail.com>
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.com header.s=susede1 header.b=oXf6BzBU
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-5.22 / 50.00];
-	 RCVD_VIA_SMTP_AUTH(0.00)[];
-	 SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	 TO_DN_SOME(0.00)[];
-	 R_RATELIMIT(0.00)[to_ip_from(RLn3qdfh3r5akp7hsapswoh51s)];
-	 RCVD_COUNT_THREE(0.00)[3];
-	 DKIM_TRACE(0.00)[suse.com:+];
-	 MX_GOOD(-0.01)[];
-	 NEURAL_HAM_SHORT(-0.20)[-1.000];
-	 SIGNED_PGP(-2.00)[];
-	 FROM_EQ_ENVFROM(0.00)[];
-	 MIME_TRACE(0.00)[0:+,1:+,2:~];
-	 BAYES_HAM(-0.11)[66.01%];
-	 ARC_NA(0.00)[];
-	 R_DKIM_ALLOW(-0.20)[suse.com:s=susede1];
-	 URIBL_BLOCKED(0.00)[suse.com:dkim,soleen.com:email];
-	 FROM_HAS_DN(0.00)[];
-	 DWL_DNSWL_MED(-2.00)[suse.com:dkim];
-	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	 TO_MATCH_ENVRCPT_ALL(0.00)[];
-	 TAGGED_RCPT(0.00)[];
-	 MIME_GOOD(-0.20)[multipart/signed,text/plain];
-	 NEURAL_HAM_LONG(-1.00)[-1.000];
-	 RCVD_DKIM_ARC_DNSWL_HI(-1.00)[];
-	 DKIM_SIGNED(0.00)[suse.com:s=susede1];
-	 RCPT_COUNT_TWELVE(0.00)[44];
-	 DBL_BLOCKED_OPENRESOLVER(0.00)[suse.com:dkim];
-	 FUZZY_BLOCKED(0.00)[rspamd.com];
-	 MID_RHS_NOT_FQDN(0.50)[];
-	 FREEMAIL_CC(0.00)[linux-foundation.org,samsung.com,rosenzweig.io,lists.linux.dev,linux.intel.com,google.com,vger.kernel.org,lwn.net,redhat.com,infradead.org,cmpxchg.org,sntech.de,gmail.com,nvidia.com,8bytes.org,linaro.org,kvack.org,lists.infradead.org,bytedance.com,marcan.st,kernel.org,arm.com,sholland.org,amd.com,svenpeter.dev,csie.org,intel.com];
-	 RCVD_TLS_ALL(0.00)[];
-	 SUSPICIOUS_RECIPS(1.50)[];
-	 RCVD_IN_DNSWL_HI(-0.50)[2a07:de40:b281:104:10:150:64:97:from]
-X-Rspamd-Queue-Id: C4C9D21F4F
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: vop2: Drop unused if_dclk_rate variable
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20240104143951.85219-1-cristian.ciocaltea@collabora.com>
+ <20240104143951.85219-2-cristian.ciocaltea@collabora.com>
+ <5867171.29KlJPOoH8@diego>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <5867171.29KlJPOoH8@diego>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhlPTFZDH0lJTh0fQkJPTkJVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8cd8de4dd6b24fkuuu799d37802a7
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kxg6Pww*MDwZST8KPjc*F09R
+	UTAaCRxVSlVKTEtPT09OT0JMSEhMVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT09IQzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240105_010223_042939_C11C2FB3 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240105_010526_818335_1B6E3AE8 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,59 +77,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7715314889471403721=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7715314889471403721==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="p5ofvbvnu5dmxsky"
-Content-Disposition: inline
-
-
---p5ofvbvnu5dmxsky
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Jan 04, 2024 at 02:12:26PM -0500, Pasha Tatashin <pasha.tatashin@soleen.com> wrote:
-> Yes, we will have a difference between GFP_ACCOUNT and what
-> NR_IOMMU_PAGES shows. GFP_ACCOUNT is set only where it makes sense to
-> charge to user processes, i.e. IOMMU Page Tables, but there more IOMMU
-> shared data that should not really be charged to a specific process.
-
-I see. I'd suggest adding this explanation to commit 10/10 message
-(perhaps with some ballpark numbers of pages). In order to have a
-reference and understadning if someone decided to charge (and limit) all
-in the future.
-
-Thanks,
-Michal
-
---p5ofvbvnu5dmxsky
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQQpEWyjXuwGT2dDBqAGvrMr/1gcjgUCZZfFiAAKCRAGvrMr/1gc
-jvXNAQC/s1r4INt0DOMzuMTQyF7r+E2pYEbj7Prf+TyU1lbn7QD/bVGBlsIv9kpI
-Hr5Fq+4l1uV/keTc7yErY9BpbizGVQ0=
-=aBiM
------END PGP SIGNATURE-----
-
---p5ofvbvnu5dmxsky--
-
-
---===============7715314889471403721==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7715314889471403721==--
-
+SGk6CgpPbiAxLzQvMjQgMjM6NTgsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEhpIENocmlzdGlh
+biwgQW5keSwKPiAKPiBBbSBEb25uZXJzdGFnLCA0LiBKYW51YXIgMjAyNCwgMTU6Mzk6NTAgQ0VU
+IHNjaHJpZWIgQ3Jpc3RpYW4gQ2lvY2FsdGVhOgo+PiBDb21taXQgNWEwMjhlOGYwNjJmICgiZHJt
+L3JvY2tjaGlwOiB2b3AyOiBBZGQgc3VwcG9ydCBmb3IgcmszNTg4IikKPj4gaW50cm9kdWNlZCBh
+IHZhcmlhYmxlIHdoaWNoIGVuZGVkIHVwIGJlaW5nIHVudXNlZC4gIFJlbW92ZSBpdC4KPj4KPj4g
+cm9ja2NoaXBfZHJtX3ZvcDIuYzoxNjg4OjIzOiB3YXJuaW5nOiB2YXJpYWJsZSDigJhpZl9kY2xr
+X3JhdGXigJkgc2V0IGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtYnV0LXNldC12YXJpYWJsZV0KPj4K
+Pj4gU2lnbmVkLW9mZi1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFA
+Y29sbGFib3JhLmNvbT4KPiAKPiBpbiBnZW5lcmFsLCBwbGVhc2UgZG9uJ3Qgc2VuZCBub24tc2Vy
+aWVzIHBhdGNoZXMgYXMgcmVwbGllcyB0byBvdGhlciBwYXRjaGVzLgo+IEl0IGNvbmZ1c2VzIHRv
+b2xpbmcgbGlrZSBiNCB3YXkgdG9vIG9mdGVuLCBhcyB0aGlzIHBhdGNoIGlzIG5vdCBkZXNpZ25h
+dGVkCj4gYXMgYSAyLzIgKHNpbWlsYXIgdG8gdGhlIGZpcnN0IG9uZSBub3QgYmVpbmcgMS8yKS4K
+PiAKPj4gLS0tCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Ay
+LmMgfCAyIC0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDIgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4+IGluZGV4IDQ0NTA4
+YzJkZDYxNC4uOTIzOTg1ZDQxNjFiIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+PiBAQCAtMTY4NSw3ICsxNjg1LDYgQEAgc3RhdGljIHVu
+c2lnbmVkIGxvbmcgcmszNTg4X2NhbGNfY3J1X2NmZyhzdHJ1Y3Qgdm9wMl92aWRlb19wb3J0ICp2
+cCwgaW50IGlkLAo+PiAgIAl1bnNpZ25lZCBsb25nIGRjbGtfY29yZV9yYXRlID0gdl9waXhjbGsg
+Pj4gMjsKPj4gICAJdW5zaWduZWQgbG9uZyBkY2xrX3JhdGUgPSB2X3BpeGNsazsKPj4gICAJdW5z
+aWduZWQgbG9uZyBkY2xrX291dF9yYXRlOwo+PiAtCXVuc2lnbmVkIGxvbmcgaWZfZGNsa19yYXRl
+Owo+PiAgIAl1bnNpZ25lZCBsb25nIGlmX3BpeGNsa19yYXRlOwo+PiAgIAlpbnQgSyA9IDE7Cj4+
+ICAgCj4+IEBAIC0xNzAwLDcgKzE2OTksNiBAQCBzdGF0aWMgdW5zaWduZWQgbG9uZyByazM1ODhf
+Y2FsY19jcnVfY2ZnKHN0cnVjdCB2b3AyX3ZpZGVvX3BvcnQgKnZwLCBpbnQgaWQsCj4+ICAgCQl9
+Cj4+ICAgCj4+ICAgCQlpZl9waXhjbGtfcmF0ZSA9IChkY2xrX2NvcmVfcmF0ZSA8PCAxKSAvIEs7
+Cj4+IC0JCWlmX2RjbGtfcmF0ZSA9IGRjbGtfY29yZV9yYXRlIC8gSzsKPj4gICAJCS8qCj4+ICAg
+CQkgKiAqaWZfcGl4Y2xrX2RpdiA9IGRjbGtfcmF0ZSAvIGlmX3BpeGNsa19yYXRlOwo+PiAgIAkJ
+ICogKmlmX2RjbGtfZGl2ID0gZGNsa19yYXRlIC8gaWZfZGNsa19yYXRlOwo+PiAgIAkJICovCj4g
+CQkqaWZfcGl4Y2xrX2RpdiA9IDI7Cj4gCQkqaWZfZGNsa19kaXYgPSA0Owo+IAo+IHdpdGggdGhl
+IGNvZGUgY29udGludWluZyB3aXRoIHRob3NlIHN0YXRpYyBjb25zdGFudHMgYnV0IHRoZSBjb21t
+ZW50Cj4gc2hvd2luZyBhIGZvcnVtdWxhLCBJIGRvIGhvcGUgQW5keSBjYW4gcHJvdmlkZSBhIGJp
+dCBvZiBpbnNpZ2h0IGludG8KPiB3aGF0IGlzIGhhcHBlbmluZyBoZXJlLgo+IAo+IEkuZS4gSSdk
+IHJlYWxseSBsaWtlIHRvIHVuZGVyc3RhbmQgaWYgdGhhdCByZWFsbHkgaXMganVzdCBhIHJlbW5h
+bnQgb3IKPiBzb21ldGhpbmcgZGlmZmVyZW50IGlzIG5lZWRlZC4KClRoaXMgaXMgbm90IGEgcmVt
+bmFudCwgaW4gbXkgVjEsIEkgY2FsY3VsYXRlIGFsbCB0aGUgZGl2IGJ5IGZvcm11bGEsIGJ1dCBT
+YXNjaGEgcHJlZmVyCm1vcmUgZm9yIGEgY29uc3RhbnRzIHZhbHVlWzBdLCBzbyBJIGtlZXAgdGhp
+cyBmb3JtdWxhIGFzIGNvbW1lbnRzIHRvIGluZGljYXRlIGhvdyB0aGVzZSB2YWx1ZSBjb21lIGZy
+b20uCgpbMF1odHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtcm9ja2No
+aXAvcGF0Y2gvMjAyMzExMTQxMTI4NTUuMTc3MTM3Mi0xLWFuZHlzaHJrQDE2My5jb20vCj4gCj4g
+Cj4gSGVpa28KPiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
