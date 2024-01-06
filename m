@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77669C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Jan 2024 22:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 742A5C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Jan 2024 23:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yQLapFlAIL7dzFgMyZM/RRg5cas+Y+9/9cbMLT38rlo=; b=U2oRKnTiRLVZ83QtWd+Od0yH4D
-	hpALir4iOAD29h1CMSQM7Pl5ta/y+Vo92v/ZwsRCvkVK4BqRFU6orTjeErl2ZxuywzXdavM7SW8+P
-	h+/UxhZjb0KqUU0cJqzxCc01CC8I5NbSFJ9OFT8obJOmwftb+d/FH5ca1ul94kBlqu5Gtk53desRH
-	MrK+uO3il1j5uBHgDtUD2Gb2SZeUSxixUJoPZkNk7l6DHgry3G5RjqijywOsOtnC8/MMFqD5n+L5c
-	Oeq4stodTmo5Ip7rcMn0Ydn23XF+vpOUQhRPIDGti8FSDInh8NS/v31h7VPBcvZOt/FhDbHgf29qc
-	oGTvKLJw==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZgRqKgaYqtSdltdRjwN7Pp6ocW5Eth6tk4GymLrGeGU=; b=pvmwfesgMYJJq/8zKM878aX9K/
+	N4X9C7fkCf71q4WHLGyJx+r66W+vViacXxESESKQU2ymozPluqSp4XPMfW00jYmZvZIDgxvsfBas/
+	yGv8PnI9lnYILq4V012Q/jqCf9jSTdRUOj/93Ut8dcjR4EFqedFaIyXUZ6EQeds1SZYliohFZQCiO
+	JcO4iAWK6dAVOqQexle9JmX7fd0satZWKoe2nS9V4CKtrbxe1kg96g5DQJC9qLA6mjpnFHd3RgGLx
+	0rjVqmzM2TPcIE60Tz85VI7KJ0K9KLQdTZAnb7mr1QFxCGHWufBQmYGsTHuEfyh8w2dJiYePKfOer
+	7ySo3PTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMFZ4-001zu1-1a;
-	Sat, 06 Jan 2024 22:54:50 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rMG3N-0021zV-39;
+	Sat, 06 Jan 2024 23:26:09 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMFYz-001zsl-2r;
-	Sat, 06 Jan 2024 22:54:48 +0000
+	id 1rMG3K-0021xk-02
+	for linux-rockchip@lists.infradead.org;
+	Sat, 06 Jan 2024 23:26:08 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rMG32-0005S0-BJ; Sun, 07 Jan 2024 00:25:48 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rMG31-000uBk-3e; Sun, 07 Jan 2024 00:25:47 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1rMG31-0045QT-05;
+	Sun, 07 Jan 2024 00:25:47 +0100
+Date: Sun, 7 Jan 2024 00:25:41 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Johan Jonker <jbx6244@yandex.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	kernel@pengutronix.de, devicetree@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: pwm: rockchip: Allow "interrupts" prooperty
+Message-ID: <cvvifoctmgdsgqfadqbhgywfw2ff57fz33w26hghf5kyo5j5sw@mj75xtvczr2h>
+References: <20240106142654.1262758-2-u.kleine-koenig@pengutronix.de>
+ <7dea73a6-d733-4cd2-b2d5-02f09e2a6dd9@linaro.org>
+ <94ad0f59-4095-40ee-963d-4ac379fc8852@yandex.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1704581680;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bi/9uuw0QbO+5ghXCWyrtwMbNZZbLyDpZzMphz145b0=;
-	b=bMlpjIHzUH1cktNyniTdaMiRZJPB3lejcN6ljBuaiqQuwv8Dx/9UEHB/eReAwqGAZx6hpU
-	waHvxdQ8f8h0AvVHSWKFBYnD3uuI+L6RPBP1+eEuhHgAx0c5nQMX5cy2ox8DrElCfb+vL+
-	0R07a7U87KzwnVs+JISf6zmEdVGgo54RpKXwKF6l/4Owc972S/j0F2133C1g4IYiySCmYs
-	i12ErAy9jVgP2dz8cBavQrXUY+fNiHT58esk+PFtL48WUus9RWij9g4bfJObSil8j0tYZw
-	W05YdxK3PgBEWjrmwwFIYQ9Cp0Q25dcJ1MHCGqH2YDU8ozHaYuNupzSzu7wgnQ==
-Date: Sat, 06 Jan 2024 23:54:39 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Sebastian Reichel
- <sebastian.reichel@collabora.com>, Cristian Ciocaltea
- <cristian.ciocaltea@collabora.com>, Christopher Obbard
- <chris.obbard@collabora.com>, =?UTF-8?Q?Tam=C3=A1s_Sz=C5=B1cs?=
- <szucst@iit.uni-miskolc.hu>, Shreeya Patel <shreeya.patel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, Chris Morgan
- <macromorgan@hotmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable built-in thermal monitoring
- on rk3588
-In-Reply-To: <20240106222357.23835-1-alchark@gmail.com>
-References: <20240106222357.23835-1-alchark@gmail.com>
-Message-ID: <e0302da12345e5539583b2c96d747592@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <94ad0f59-4095-40ee-963d-4ac379fc8852@yandex.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240106_145446_549476_35A0DA85 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20240106_152606_045566_CB97AAFD 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,243 +74,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8346320638869021216=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Alexey,
 
-Please see my comments below.
+--===============8346320638869021216==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="k6n65kljntfxlgu3"
+Content-Disposition: inline
 
-On 2024-01-06 23:23, Alexey Charkov wrote:
-> Include thermal zones information in device tree for rk3588 variants
-> and enable the built-in thermal sensing ADC on RADXA Rock 5B
-> 
-> Signed-off-by: Alexey Charkov <alchark@gmail.com>
-> ---
->  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 143 ++++++++++++++++++
->  2 files changed, 147 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index a5a104131403..f9d540000de3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -772,3 +772,7 @@ &usb_host1_ehci {
->  &usb_host1_ohci {
->  	status = "okay";
->  };
-> +
-> +&tsadc {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> index 8aa0499f9b03..8235991e3112 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -10,6 +10,7 @@
->  #include <dt-bindings/reset/rockchip,rk3588-cru.h>
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/ata/ahci.h>
-> +#include <dt-bindings/thermal/thermal.h>
-> 
->  / {
->  	compatible = "rockchip,rk3588";
-> @@ -2112,6 +2113,148 @@ tsadc: tsadc@fec00000 {
->  		status = "disabled";
->  	};
-> 
-> +	thermal_zones: thermal-zones {
-> +		soc_thermal: soc-thermal {
 
-It should be better to name it cpu_thermal instead.  In the end, that's 
-what it is.
+--k6n65kljntfxlgu3
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			sustainable-power = <2100>; /* milliwatts */
+Hello,
 
-These three comments above are pretty much redundant.
+On Sat, Jan 06, 2024 at 10:25:10PM +0100, Johan Jonker wrote:
+> On 1/6/24 18:10, Krzysztof Kozlowski wrote:
+> > On 06/01/2024 15:26, Uwe Kleine-K=F6nig wrote:
+> >> This fixes the dtbs_check error
+> >>
+> >> 	arch/arm/boot/dts/rockchip/rv1108-elgin-r1.dtb: pwm@10280030: 'interr=
+upts' does not match any of the regexes: 'pinctrl-[0-9]+'
+> >> 	from schema $id: http://devicetree.org/schemas/pwm/pwm-rockchip.yaml#
+> >>
+> >> in several device trees.
+> >>
+> >> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+>=20
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>=20
+> NAK
+>=20
+> There's a reason why this isn't implemented before:
+>=20
+> [RFC PATCH v1 1/2] dt-bindings: pwm: rockchip: add interrupts property <h=
+ttps://lore.kernel.org/linux-rockchip/ed3df2c8-ffb5-1723-0ed7-3a2721972852@=
+gmail.com/#r>
+>=20
+> https://lore.kernel.org/linux-rockchip/ed3df2c8-ffb5-1723-0ed7-3a27219728=
+52@gmail.com/
+>=20
+> [PATCH 1/1] dt-bindings: pwm: rockchip: Add description for rk3588 <https=
+://lore.kernel.org/linux-rockchip/20220901135523.52151-1-sebastian.reichel@=
+collabora.com/#r>
+>=20
+> https://lore.kernel.org/linux-rockchip/66b5b616-ae9f-a1aa-e2b5-450f570cfc=
+dd@gmail.com/
+>=20
+> [PATCH v1 03/11] dt-bindings: pwm: rockchip: add rockchip,rk3128-pwm <htt=
+ps://lore.kernel.org/linux-rockchip/f5dd0ee4-d97e-d878-ffde-c06e9b233e38@gm=
+ail.com/>
+>=20
+> https://lore.kernel.org/linux-rockchip/946d8ac2-6ff2-093a-ad3c-aa755e00d1=
+dd@arm.com/
+>=20
+>=20
+> On how to correctly model the DT with common interrupts , PWM and one sho=
+t as a sort of MFD etc there's no consensus yet.
+>=20
+> Leaf it as it is till someone made a working driver demo, so that the cod=
+er is free to model a DT solution that fits to him/her.
 
-> +
-> +			thermal-sensors = <&tsadc 0>;
+Having the warnings until this happens is bad though. If describing the
+irqs in the schema is considered wrong, we should remove the interrupts
+properties from the device tree sources.
 
-An empty line should be added here.
+Best regards
+Uwe
 
-> +			trips {
-> +				threshold: trip-point-0 {
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
-It should be better to name it cpu_alert0 instead, because that's what 
-other newer dtsi files already use.
+--k6n65kljntfxlgu3
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> +					temperature = <75000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				target: trip-point-1 {
+-----BEGIN PGP SIGNATURE-----
 
-It should be better to name it cpu_alert1 instead, because that's what 
-other newer dtsi files already use.
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmWZ4W0ACgkQj4D7WH0S
+/k7tKAgAtAf2QMmreY13aVdggwzkDRejn5LlPtH9i75yOhD82+fHrQlGV1FAH6/j
+MGO96OT4P/wZfxxjQjWT4bQsp657BXs8decOHx099HpWSwF9n5ZDiHSHd7ExmbyL
+pg73mDSpDtcemlmI75H2VPF1OvTk/rPl6F2b3FlDgewcTqir5ojqk6ov3yCoOasl
+WIJ2vwkwkvGqqQc6npmqZIYanWBJlMvK3Mbmeg/RkWQgo2XHowhSNnfx82I80Dky
+VWYme/woR3T0MDbOBG6eCs2wxILhaePXRVokg/qiSDuLSC7W4Bn1O6sfe9zYxGnz
+/Pwr+6Hl/fYCYPGM8Iq7UlFNRf/HYw==
+=pwCa
+-----END PGP SIGNATURE-----
 
-> +					temperature = <85000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				soc_crit: soc-crit {
+--k6n65kljntfxlgu3--
 
-It should be better to name it cpu_crit instead, because that's what 
-other newer dtsi files already use.
 
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-
-These two comments above are pretty much redundant.  It also applies to 
-all other similar comments below.
-
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +			cooling-maps {
-> +				map0 {
-> +					trip = <&target>;
-
-Shouldn't &threshold (i.e. &cpu_alert0) be referenced here instead?
-
-> +					cooling-device = <&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-
-Shouldn't all big CPU cores be listed here instead?
-
-> +					contribution = <1024>;
-> +				};
-> +				map1 {
-> +					trip = <&target>;
-
-Shouldn't &target (i.e. &cpu_alert1) be referenced here instead?
-
-> +					cooling-device = <&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-
-Shouldn't all little and big CPU cores be listed here instead?
-
-> +					contribution = <1024>;
-> +				};
-> +				map2 {
-> +					trip = <&target>;
-> +					cooling-device = <&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> +					contribution = <1024>;
-> +				};
-
-Isn't this cooling map redundant?
-
-> +			};
-> +		};
-> +
-> +		bigcore0_thermal: bigcore0-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 1>;
-> +
-> +			trips {
-> +				big0_crit: big0-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		bigcore1_thermal: bigcore1-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 2>;
-> +
-> +			trips {
-> +				big1_crit: big1-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		little_core_thermal: littlecore-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 3>;
-> +
-> +			trips {
-> +				little_crit: little-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		center_thermal: center-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 4>;
-> +
-> +			trips {
-> +				center_crit: center-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		gpu_thermal: gpu-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 5>;
-> +
-> +			trips {
-> +				gpu_crit: gpu-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		npu_thermal: npu-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +			thermal-sensors = <&tsadc 6>;
-> +
-> +			trips {
-> +				npu_crit: npu-crit {
-> +					/* millicelsius */
-> +					temperature = <115000>;
-> +					/* millicelsius */
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +	};
-> +
->  	saradc: adc@fec10000 {
->  		compatible = "rockchip,rk3588-saradc";
->  		reg = <0x0 0xfec10000 0x0 0x10000>;
+--===============8346320638869021216==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8346320638869021216==--
+
