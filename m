@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19F0BC3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jan 2024 11:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D70C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jan 2024 11:38:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zWFg+Sp50j2faMdx9zcQD4MD/hj8Vb+m6azkC/r1B/g=; b=rkFSwefC4jdqa0
-	ZihvjAa6Z2i0NY82vLkMFJMlhGtXrJ4nkvvfqwvsFKbH/Lr3aHJDzyUL1KgSu5L8pTpT+MKwmgd2R
-	DAFBUTOzkR2sbGbxv05NEcSXQH5DXbUdGikQp2cgqhHlcHwvBkIj8FOcdmbR+cT2BrLcdUVxBBM0T
-	nU6/5hULG1SMlmVJ+QskYokOaZzV9WxVwgSeiWQYMs5KkWnE/aRP8e4tWOIstGCfjcN9CYMeL9KQF
-	zYVWZE2TXJuR+zlWB3SSXMRuVoM5tESPNIGx+f8te/bdLKhNEwiJWo/lzbRSdopqx0uSQ0BRdPS//
-	HQTFKf2Aa0KWZHbCilTA==;
+	List-Owner; bh=y/JJ7D6kUr73M7u3jpjLxheaFPztDavEDaiWTcf1Umk=; b=ey4TYsChkji+Ds
+	9kd/PRNBjdFwWDmS6qOLtefgvzt7/OZk4oh9vd/A9+ekZZRs+KFq3+vHShTIpEv4NHYTq0JlUGqEe
+	V3UrwPy00YdNA2b2JpzFvhX7JC22piXrmyBC9nNGyNvcBK0P+0LmDdKg0SyKJlNiTRQE6qF0Xr/un
+	CzcUEKXLrnrDztI5TG4Mwn3/RSXngUd+2NCuOrg6VU9LdtbI8QBk6R4b9mScs2KFR3H/rw+hfVn9W
+	YOwS++9BOlM5SrxJpLPlazRsGhT2uTorC3PGTQ6X4rt68wybzJ6pP4Oq/jIc8Cn0sreKCIuZH4gj6
+	V1CmWJIPXOf3b2/2Q0QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMnwj-004w8W-2y;
-	Mon, 08 Jan 2024 11:37:33 +0000
+	id 1rMnxl-004wQ2-1l;
+	Mon, 08 Jan 2024 11:38:37 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMnwg-004w6d-0z;
-	Mon, 08 Jan 2024 11:37:32 +0000
+	id 1rMnxh-004wPE-1g;
+	Mon, 08 Jan 2024 11:38:35 +0000
 Received: from [192.168.88.20] (91-154-35-128.elisa-laajakaista.fi [91.154.35.128])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id DC39F480;
-	Mon,  8 Jan 2024 12:36:24 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 73E24480;
+	Mon,  8 Jan 2024 12:37:28 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1704713785;
-	bh=wLsXXURlsAber4mf3UeD5DZIsRKiZzhmGxVOIZi0OLQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mZA7oNAy8NPtKDZ1t7MFgisZ2ioXOd6SRM0MFdl/wu/mTL14fVcFpF3RPS5p2yv9T
-	 H0a6C/1uBZaDupnSfeN/Yd0izCfCsTzGUIvpgfhht4UFiKZvg/Ia0hQIAE4iPZ+Dsi
-	 cviJQlBlFcLsDWBfm2p+n4U4c2ejWdIj8LsqCDA4=
-Message-ID: <5e335fef-201c-4775-8a42-4441d749c345@ideasonboard.com>
-Date: Mon, 8 Jan 2024 13:37:25 +0200
+	s=mail; t=1704713849;
+	bh=Apu0LcX+HI1x1I8B+6F1DY6EFGKpI+VtkB40HG3o5+Y=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=Lf/gwVK9PQdCt/2A5xkMzEai0YrJFJuO23QFB9mgrTTJWdjDExgPFmm7WORZQ7bDy
+	 0PwFlyTcW1v2qMQnRvFRzuw77fhp2aavHnyXyZIfwi+0LqDNYXcyTNV8OKsU9Cvqpa
+	 D/XQeKzWfmreGzNqju1VbWbQQ+rLI7O7KZPO3Qvk=
+Message-ID: <83520f6d-15b5-412a-adb4-e95daf519bf2@ideasonboard.com>
+Date: Mon, 8 Jan 2024 13:38:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 08/10] media: rkisp1: Shift DMA buffer addresses on
  i.MX8MP
 Content-Language: en-US
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 Cc: kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com,
@@ -56,7 +57,7 @@ Cc: kieran.bingham@ideasonboard.com, umang.jain@ideasonboard.com,
  open list <linux-kernel@vger.kernel.org>
 References: <20240106160221.4183409-1-paul.elder@ideasonboard.com>
  <20240106160221.4183409-9-paul.elder@ideasonboard.com>
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+ <5e335fef-201c-4775-8a42-4441d749c345@ideasonboard.com>
 Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
  xsFNBE6ms0cBEACyizowecZqXfMZtnBniOieTuFdErHAUyxVgtmr0f5ZfIi9Z4l+uUN4Zdw2
  wCEZjx3o0Z34diXBaMRJ3rAk9yB90UJAnLtb8A97Oq64DskLF81GCYB2P1i0qrG7UjpASgCA
@@ -100,10 +101,10 @@ Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
  ueeIlwJl5CpT5l8RpoZXEOVtXYn8zzOJ7oGZYINRV9Pf8qKGLf3Dft7zKBP832I3PQjeok7F
  yjt+9S+KgSFSHP3Pa4E7lsSdWhSlHYNdG/czhoUkSCN09C0rEK93wxACx3vtxPLjXu6RptBw
  3dRq7n+mQChEB1am0BueV1JZaBboIL0AGlSJkm23kw==
-In-Reply-To: <20240106160221.4183409-9-paul.elder@ideasonboard.com>
+In-Reply-To: <5e335fef-201c-4775-8a42-4441d749c345@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_033730_485937_45A615C1 
-X-CRM114-Status: GOOD (  36.00  )
+X-CRM114-CacheID: sfid-20240108_033833_841291_8B91CD90 
+X-CRM114-Status: GOOD (  32.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,201 +116,173 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/01/2024 18:02, Paul Elder wrote:
-> On the ISP that is integrated in the i.MX8MP, DMA addresses have been
-> extended to 34 bits, with the 32 MSBs stored in the DMA address
-> registers and the 2 LSBs set to 0. Shift the buffer addresses right by 2
-> on that platform.
-> 
-> While at it, fix an issue where if the system allocated CMA memory
-> happens to be located higher than 32-bits, the driver will fail to
-> allocate CMA memory and falls back to kmalloc(), which will fail for
-> larger allocations (over MAX_ORDER, which often mean 4MB).
-> 
-> Fix this by setting the dma mask to 34 bits when allowed, and fixing the
-> use dma_addr_t when storing dma addresses instead of u32.
-
-I think the desc could be rewritten a bit for clarity. "While at it" 
-sounds like doing some secondary changes too, but it's all required. And 
-it's not really "fixing", as this is adding a new feature.
-
-To support i.MX8MP's 34-bit addresses, we need to:
-
-- shift the addresses when writing to registers
-- set the dma mask
-- use dma_addr_t instead of u32 when storing the addresses
-
-Can you rewrite the desc to describe the above?
-
-For the change itself:
-
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-
-  Tomi
-
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-> Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> Tested-by: Adam Ford <aford173@gmail.com>
-> ---
-> Changes since v4:
-> 
-> - Squash in fix from Tomi:
->    - https://gitlab.com/ideasonboard/nxp/linux/-/commit/d6477fe673b1c0d05d12ae21d8db9a03b07e7fea
-> 
-> Changes since v2:
-> 
-> - Document the RKISP1_FEATURE_DMA_34BIT bit
-> - Use the rkisp1_has_feature() macro
-> ---
->   .../platform/rockchip/rkisp1/rkisp1-capture.c | 20 ++++++++++---------
->   .../platform/rockchip/rkisp1/rkisp1-common.h  |  4 +++-
->   .../platform/rockchip/rkisp1/rkisp1-dev.c     | 11 +++++++++-
->   3 files changed, 24 insertions(+), 11 deletions(-)
-
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-
-  Tomi
-
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> index ca95f62822fa..1ee7639c42b7 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> @@ -648,11 +648,13 @@ static void rkisp1_dummy_buf_destroy(struct rkisp1_capture *cap)
->   
->   static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
->   {
-> +	u8 shift = rkisp1_has_feature(cap->rkisp1, DMA_34BIT) ? 2 : 0;
-> +
->   	cap->buf.curr = cap->buf.next;
->   	cap->buf.next = NULL;
->   
->   	if (!list_empty(&cap->buf.queue)) {
-> -		u32 *buff_addr;
-> +		dma_addr_t *buff_addr;
->   
->   		cap->buf.next = list_first_entry(&cap->buf.queue, struct rkisp1_buffer, queue);
->   		list_del(&cap->buf.next->queue);
-> @@ -660,7 +662,7 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
->   		buff_addr = cap->buf.next->buff_addr;
->   
->   		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
-> -			     buff_addr[RKISP1_PLANE_Y]);
-> +			     buff_addr[RKISP1_PLANE_Y] >> shift);
->   		/*
->   		 * In order to support grey format we capture
->   		 * YUV422 planar format from the camera and
-> @@ -669,17 +671,17 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
->   		if (cap->pix.cfg->fourcc == V4L2_PIX_FMT_GREY) {
->   			rkisp1_write(cap->rkisp1,
->   				     cap->config->mi.cb_base_ad_init,
-> -				     cap->buf.dummy.dma_addr);
-> +				     cap->buf.dummy.dma_addr >> shift);
->   			rkisp1_write(cap->rkisp1,
->   				     cap->config->mi.cr_base_ad_init,
-> -				     cap->buf.dummy.dma_addr);
-> +				     cap->buf.dummy.dma_addr >> shift);
->   		} else {
->   			rkisp1_write(cap->rkisp1,
->   				     cap->config->mi.cb_base_ad_init,
-> -				     buff_addr[RKISP1_PLANE_CB]);
-> +				     buff_addr[RKISP1_PLANE_CB] >> shift);
->   			rkisp1_write(cap->rkisp1,
->   				     cap->config->mi.cr_base_ad_init,
-> -				     buff_addr[RKISP1_PLANE_CR]);
-> +				     buff_addr[RKISP1_PLANE_CR] >> shift);
->   		}
->   	} else {
->   		/*
-> @@ -687,11 +689,11 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
->   		 * throw data if there is no available buffer.
->   		 */
->   		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
-> -			     cap->buf.dummy.dma_addr);
-> +			     cap->buf.dummy.dma_addr >> shift);
->   		rkisp1_write(cap->rkisp1, cap->config->mi.cb_base_ad_init,
-> -			     cap->buf.dummy.dma_addr);
-> +			     cap->buf.dummy.dma_addr >> shift);
->   		rkisp1_write(cap->rkisp1, cap->config->mi.cr_base_ad_init,
-> -			     cap->buf.dummy.dma_addr);
-> +			     cap->buf.dummy.dma_addr >> shift);
->   	}
->   
->   	/* Set plane offsets */
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 69940014d597..26573f6ae575 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -114,6 +114,7 @@ enum rkisp1_isp_pad {
->    * @RKISP1_FEATURE_MAIN_STRIDE: The ISP supports configurable stride on the main path
->    * @RKISP1_FEATURE_SELF_PATH: The ISP has a self path
->    * @RKISP1_FEATURE_DUAL_CROP: The ISP has the dual crop block at the resizer input
-> + * @RKISP1_FEATURE_DMA_34BIT: The ISP uses 34-bit DMA addresses
->    *
->    * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
->    * the driver to implement support for features present in some ISP versions
-> @@ -124,6 +125,7 @@ enum rkisp1_feature {
->   	RKISP1_FEATURE_MAIN_STRIDE = BIT(1),
->   	RKISP1_FEATURE_SELF_PATH = BIT(2),
->   	RKISP1_FEATURE_DUAL_CROP = BIT(3),
-> +	RKISP1_FEATURE_DMA_34BIT = BIT(4),
->   };
->   
->   #define rkisp1_has_feature(rkisp1, feature) \
-> @@ -239,7 +241,7 @@ struct rkisp1_vdev_node {
->   struct rkisp1_buffer {
->   	struct vb2_v4l2_buffer vb;
->   	struct list_head queue;
-> -	u32 buff_addr[VIDEO_MAX_PLANES];
-> +	dma_addr_t buff_addr[VIDEO_MAX_PLANES];
->   };
->   
->   /*
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index 01f811b9f9a5..fd99355d5fe0 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -549,7 +549,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
->   	.isrs = imx8mp_isp_isrs,
->   	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
->   	.isp_ver = IMX8MP_V10,
-> -	.features = RKISP1_FEATURE_MAIN_STRIDE,
-> +	.features = RKISP1_FEATURE_MAIN_STRIDE
-> +		  | RKISP1_FEATURE_DMA_34BIT,
->   };
->   
->   static const struct of_device_id rkisp1_of_match[] = {
-> @@ -575,6 +576,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->   	struct device *dev = &pdev->dev;
->   	struct rkisp1_device *rkisp1;
->   	struct v4l2_device *v4l2_dev;
-> +	unsigned long long dma_mask;
->   	unsigned int i;
->   	int ret, irq;
->   	u32 cif_id;
-> @@ -589,6 +591,13 @@ static int rkisp1_probe(struct platform_device *pdev)
->   	dev_set_drvdata(dev, rkisp1);
->   	rkisp1->dev = dev;
->   
-> +	dma_mask = rkisp1_has_feature(rkisp1, DMA_34BIT) ? DMA_BIT_MASK(34) :
-> +							   DMA_BIT_MASK(32);
-> +
-> +	ret = dma_set_mask_and_coherent(dev, dma_mask);
-> +	if (ret)
-> +		return ret;
-> +
->   	mutex_init(&rkisp1->stream_lock);
->   
->   	rkisp1->base_addr = devm_platform_ioremap_resource(pdev, 0);
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDgvMDEvMjAyNCAxMzozNywgVG9taSBWYWxrZWluZW4gd3JvdGU6Cj4gT24gMDYvMDEvMjAy
+NCAxODowMiwgUGF1bCBFbGRlciB3cm90ZToKPj4gT24gdGhlIElTUCB0aGF0IGlzIGludGVncmF0
+ZWQgaW4gdGhlIGkuTVg4TVAsIERNQSBhZGRyZXNzZXMgaGF2ZSBiZWVuCj4+IGV4dGVuZGVkIHRv
+IDM0IGJpdHMsIHdpdGggdGhlIDMyIE1TQnMgc3RvcmVkIGluIHRoZSBETUEgYWRkcmVzcwo+PiBy
+ZWdpc3RlcnMgYW5kIHRoZSAyIExTQnMgc2V0IHRvIDAuIFNoaWZ0IHRoZSBidWZmZXIgYWRkcmVz
+c2VzIHJpZ2h0IGJ5IDIKPj4gb24gdGhhdCBwbGF0Zm9ybS4KPj4KPj4gV2hpbGUgYXQgaXQsIGZp
+eCBhbiBpc3N1ZSB3aGVyZSBpZiB0aGUgc3lzdGVtIGFsbG9jYXRlZCBDTUEgbWVtb3J5Cj4+IGhh
+cHBlbnMgdG8gYmUgbG9jYXRlZCBoaWdoZXIgdGhhbiAzMi1iaXRzLCB0aGUgZHJpdmVyIHdpbGwg
+ZmFpbCB0bwo+PiBhbGxvY2F0ZSBDTUEgbWVtb3J5IGFuZCBmYWxscyBiYWNrIHRvIGttYWxsb2Mo
+KSwgd2hpY2ggd2lsbCBmYWlsIGZvcgo+PiBsYXJnZXIgYWxsb2NhdGlvbnMgKG92ZXIgTUFYX09S
+REVSLCB3aGljaCBvZnRlbiBtZWFuIDRNQikuCj4+Cj4+IEZpeCB0aGlzIGJ5IHNldHRpbmcgdGhl
+IGRtYSBtYXNrIHRvIDM0IGJpdHMgd2hlbiBhbGxvd2VkLCBhbmQgZml4aW5nIHRoZQo+PiB1c2Ug
+ZG1hX2FkZHJfdCB3aGVuIHN0b3JpbmcgZG1hIGFkZHJlc3NlcyBpbnN0ZWFkIG9mIHUzMi4KPiAK
+PiBJIHRoaW5rIHRoZSBkZXNjIGNvdWxkIGJlIHJld3JpdHRlbiBhIGJpdCBmb3IgY2xhcml0eS4g
+IldoaWxlIGF0IGl0IiAKPiBzb3VuZHMgbGlrZSBkb2luZyBzb21lIHNlY29uZGFyeSBjaGFuZ2Vz
+IHRvbywgYnV0IGl0J3MgYWxsIHJlcXVpcmVkLiBBbmQgCj4gaXQncyBub3QgcmVhbGx5ICJmaXhp
+bmciLCBhcyB0aGlzIGlzIGFkZGluZyBhIG5ldyBmZWF0dXJlLgo+IAo+IFRvIHN1cHBvcnQgaS5N
+WDhNUCdzIDM0LWJpdCBhZGRyZXNzZXMsIHdlIG5lZWQgdG86Cj4gCj4gLSBzaGlmdCB0aGUgYWRk
+cmVzc2VzIHdoZW4gd3JpdGluZyB0byByZWdpc3RlcnMKPiAtIHNldCB0aGUgZG1hIG1hc2sKPiAt
+IHVzZSBkbWFfYWRkcl90IGluc3RlYWQgb2YgdTMyIHdoZW4gc3RvcmluZyB0aGUgYWRkcmVzc2Vz
+Cj4gCj4gQ2FuIHlvdSByZXdyaXRlIHRoZSBkZXNjIHRvIGRlc2NyaWJlIHRoZSBhYm92ZT8KCk9o
+LCBhbmQgdGhlIHBhdGNoIHRpdGxlIGlzIG5vdCBxdWl0ZSByaWdodCBhbnltb3JlLiBJIHRoaW5r
+IHRoaXMgaXMgbW9yZSAKYWJvdXQgc3VwcG9ydGluZyBpLk1YOE1QJ3MgMzQtYml0IERNQS4KCiAg
+VG9taQoKPiBGb3IgdGhlIGNoYW5nZSBpdHNlbGY6Cj4gCj4gUmV2aWV3ZWQtYnk6IFRvbWkgVmFs
+a2VpbmVuIDx0b21pLnZhbGtlaW5lbkBpZGVhc29uYm9hcmQuY29tPgo+IAo+ICDCoFRvbWkKPiAK
+Pj4gU2lnbmVkLW9mZi1ieTogUGF1bCBFbGRlciA8cGF1bC5lbGRlckBpZGVhc29uYm9hcmQuY29t
+Pgo+PiBSZXZpZXdlZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVh
+c29uYm9hcmQuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBUb21pIFZhbGtlaW5lbiA8dG9taS52YWxr
+ZWluZW5AaWRlYXNvbmJvYXJkLmNvbT4KPj4gVGVzdGVkLWJ5OiBBbGV4YW5kZXIgU3RlaW4gPGFs
+ZXhhbmRlci5zdGVpbkBldy50cS1ncm91cC5jb20+Cj4+IFRlc3RlZC1ieTogQWRhbSBGb3JkIDxh
+Zm9yZDE3M0BnbWFpbC5jb20+Cj4+IC0tLQo+PiBDaGFuZ2VzIHNpbmNlIHY0Ogo+Pgo+PiAtIFNx
+dWFzaCBpbiBmaXggZnJvbSBUb21pOgo+PiDCoMKgIC0gCj4+IGh0dHBzOi8vZ2l0bGFiLmNvbS9p
+ZGVhc29uYm9hcmQvbnhwL2xpbnV4Ly0vY29tbWl0L2Q2NDc3ZmU2NzNiMWMwZDA1ZDEyYWUyMWQ4
+ZGI5YTAzYjA3ZTdmZWEKPj4KPj4gQ2hhbmdlcyBzaW5jZSB2MjoKPj4KPj4gLSBEb2N1bWVudCB0
+aGUgUktJU1AxX0ZFQVRVUkVfRE1BXzM0QklUIGJpdAo+PiAtIFVzZSB0aGUgcmtpc3AxX2hhc19m
+ZWF0dXJlKCkgbWFjcm8KPj4gLS0tCj4+IMKgIC4uLi9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEv
+cmtpc3AxLWNhcHR1cmUuYyB8IDIwICsrKysrKysrKystLS0tLS0tLS0KPj4gwqAgLi4uL3BsYXRm
+b3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtY29tbW9uLmjCoCB8wqAgNCArKystCj4+IMKgIC4u
+Li9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jwqDCoMKgwqAgfCAxMSArKysr
+KysrKystCj4+IMKgIDMgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRp
+b25zKC0pCj4gCj4gUmV2aWV3ZWQtYnk6IFRvbWkgVmFsa2VpbmVuIDx0b21pLnZhbGtlaW5lbkBp
+ZGVhc29uYm9hcmQuY29tPgo+IAo+ICDCoFRvbWkKPiAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jYXB0dXJlLmMgCj4+IGIvZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNhcHR1cmUuYwo+PiBp
+bmRleCBjYTk1ZjYyODIyZmEuLjFlZTc2MzljNDJiNyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNhcHR1cmUuYwo+PiArKysgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtY2FwdHVyZS5jCj4+
+IEBAIC02NDgsMTEgKzY0OCwxMyBAQCBzdGF0aWMgdm9pZCBya2lzcDFfZHVtbXlfYnVmX2Rlc3Ry
+b3koc3RydWN0IAo+PiBya2lzcDFfY2FwdHVyZSAqY2FwKQo+PiDCoCBzdGF0aWMgdm9pZCBya2lz
+cDFfc2V0X25leHRfYnVmKHN0cnVjdCBya2lzcDFfY2FwdHVyZSAqY2FwKQo+PiDCoCB7Cj4+ICvC
+oMKgwqAgdTggc2hpZnQgPSBya2lzcDFfaGFzX2ZlYXR1cmUoY2FwLT5ya2lzcDEsIERNQV8zNEJJ
+VCkgPyAyIDogMDsKPj4gKwo+PiDCoMKgwqDCoMKgIGNhcC0+YnVmLmN1cnIgPSBjYXAtPmJ1Zi5u
+ZXh0Owo+PiDCoMKgwqDCoMKgIGNhcC0+YnVmLm5leHQgPSBOVUxMOwo+PiDCoMKgwqDCoMKgIGlm
+ICghbGlzdF9lbXB0eSgmY2FwLT5idWYucXVldWUpKSB7Cj4+IC3CoMKgwqDCoMKgwqDCoCB1MzIg
+KmJ1ZmZfYWRkcjsKPj4gK8KgwqDCoMKgwqDCoMKgIGRtYV9hZGRyX3QgKmJ1ZmZfYWRkcjsKPj4g
+wqDCoMKgwqDCoMKgwqDCoMKgIGNhcC0+YnVmLm5leHQgPSBsaXN0X2ZpcnN0X2VudHJ5KCZjYXAt
+PmJ1Zi5xdWV1ZSwgc3RydWN0IAo+PiBya2lzcDFfYnVmZmVyLCBxdWV1ZSk7Cj4+IMKgwqDCoMKg
+wqDCoMKgwqDCoCBsaXN0X2RlbCgmY2FwLT5idWYubmV4dC0+cXVldWUpOwo+PiBAQCAtNjYwLDcg
+KzY2Miw3IEBAIHN0YXRpYyB2b2lkIHJraXNwMV9zZXRfbmV4dF9idWYoc3RydWN0IAo+PiBya2lz
+cDFfY2FwdHVyZSAqY2FwKQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgYnVmZl9hZGRyID0gY2FwLT5i
+dWYubmV4dC0+YnVmZl9hZGRyOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmtpc3AxX3dyaXRlKGNh
+cC0+cmtpc3AxLCBjYXAtPmNvbmZpZy0+bWkueV9iYXNlX2FkX2luaXQsCj4+IC3CoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBidWZmX2FkZHJbUktJU1AxX1BMQU5FX1ldKTsKPj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJ1ZmZfYWRkcltSS0lTUDFfUExBTkVfWV0g
+Pj4gc2hpZnQpOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgLyoKPj4gwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgKiBJbiBvcmRlciB0byBzdXBwb3J0IGdyZXkgZm9ybWF0IHdlIGNhcHR1cmUKPj4gwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgKiBZVVY0MjIgcGxhbmFyIGZvcm1hdCBmcm9tIHRoZSBjYW1lcmEgYW5k
+Cj4+IEBAIC02NjksMTcgKzY3MSwxNyBAQCBzdGF0aWMgdm9pZCBya2lzcDFfc2V0X25leHRfYnVm
+KHN0cnVjdCAKPj4gcmtpc3AxX2NhcHR1cmUgKmNhcCkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGlm
+IChjYXAtPnBpeC5jZmctPmZvdXJjYyA9PSBWNEwyX1BJWF9GTVRfR1JFWSkgewo+PiDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCBya2lzcDFfd3JpdGUoY2FwLT5ya2lzcDEsCj4+IMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNhcC0+Y29uZmlnLT5taS5jYl9i
+YXNlX2FkX2luaXQsCj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGNhcC0+YnVmLmR1bW15LmRtYV9hZGRyKTsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIgPj4gc2hpZnQpOwo+PiDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBya2lzcDFfd3JpdGUoY2FwLT5ya2lzcDEsCj4+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNhcC0+Y29uZmlnLT5taS5j
+cl9iYXNlX2FkX2luaXQsCj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIGNhcC0+YnVmLmR1bW15LmRtYV9hZGRyKTsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIgPj4gc2hpZnQpOwo+PiDC
+oMKgwqDCoMKgwqDCoMKgwqAgfSBlbHNlIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
+cmtpc3AxX3dyaXRlKGNhcC0+cmtpc3AxLAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCBjYXAtPmNvbmZpZy0+bWkuY2JfYmFzZV9hZF9pbml0LAo+PiAtwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBidWZmX2FkZHJbUktJU1AxX1BM
+QU5FX0NCXSk7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJ1
+ZmZfYWRkcltSS0lTUDFfUExBTkVfQ0JdID4+IHNoaWZ0KTsKPj4gwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgcmtpc3AxX3dyaXRlKGNhcC0+cmtpc3AxLAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjYXAtPmNvbmZpZy0+bWkuY3JfYmFzZV9hZF9pbml0
+LAo+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBidWZmX2FkZHJb
+UktJU1AxX1BMQU5FX0NSXSk7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIGJ1ZmZfYWRkcltSS0lTUDFfUExBTkVfQ1JdID4+IHNoaWZ0KTsKPj4gwqDCoMKgwqDC
+oMKgwqDCoMKgIH0KPj4gwqDCoMKgwqDCoCB9IGVsc2Ugewo+PiDCoMKgwqDCoMKgwqDCoMKgwqAg
+LyoKPj4gQEAgLTY4NywxMSArNjg5LDExIEBAIHN0YXRpYyB2b2lkIHJraXNwMV9zZXRfbmV4dF9i
+dWYoc3RydWN0IAo+PiBya2lzcDFfY2FwdHVyZSAqY2FwKQo+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAqIHRocm93IGRhdGEgaWYgdGhlcmUgaXMgbm8gYXZhaWxhYmxlIGJ1ZmZlci4KPj4gwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgKi8KPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJraXNwMV93cml0ZShjYXAt
+PnJraXNwMSwgY2FwLT5jb25maWctPm1pLnlfYmFzZV9hZF9pbml0LAo+PiAtwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIpOwo+PiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIgPj4gc2hp
+ZnQpOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmtpc3AxX3dyaXRlKGNhcC0+cmtpc3AxLCBjYXAt
+PmNvbmZpZy0+bWkuY2JfYmFzZV9hZF9pbml0LAo+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIpOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIgPj4gc2hpZnQpOwo+PiDCoMKg
+wqDCoMKgwqDCoMKgwqAgcmtpc3AxX3dyaXRlKGNhcC0+cmtpc3AxLCBjYXAtPmNvbmZpZy0+bWku
+Y3JfYmFzZV9hZF9pbml0LAo+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2Fw
+LT5idWYuZHVtbXkuZG1hX2FkZHIpOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgY2FwLT5idWYuZHVtbXkuZG1hX2FkZHIgPj4gc2hpZnQpOwo+PiDCoMKgwqDCoMKgIH0KPj4g
+wqDCoMKgwqDCoCAvKiBTZXQgcGxhbmUgb2Zmc2V0cyAqLwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNvbW1vbi5oIAo+PiBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jb21tb24uaAo+PiBp
+bmRleCA2OTk0MDAxNGQ1OTcuLjI2NTczZjZhZTU3NSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNvbW1vbi5oCj4+ICsrKyBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jb21tb24uaAo+PiBA
+QCAtMTE0LDYgKzExNCw3IEBAIGVudW0gcmtpc3AxX2lzcF9wYWQgewo+PiDCoMKgICogQFJLSVNQ
+MV9GRUFUVVJFX01BSU5fU1RSSURFOiBUaGUgSVNQIHN1cHBvcnRzIGNvbmZpZ3VyYWJsZSBzdHJp
+ZGUgCj4+IG9uIHRoZSBtYWluIHBhdGgKPj4gwqDCoCAqIEBSS0lTUDFfRkVBVFVSRV9TRUxGX1BB
+VEg6IFRoZSBJU1AgaGFzIGEgc2VsZiBwYXRoCj4+IMKgwqAgKiBAUktJU1AxX0ZFQVRVUkVfRFVB
+TF9DUk9QOiBUaGUgSVNQIGhhcyB0aGUgZHVhbCBjcm9wIGJsb2NrIGF0IHRoZSAKPj4gcmVzaXpl
+ciBpbnB1dAo+PiArICogQFJLSVNQMV9GRUFUVVJFX0RNQV8zNEJJVDogVGhlIElTUCB1c2VzIDM0
+LWJpdCBETUEgYWRkcmVzc2VzCj4+IMKgwqAgKgo+PiDCoMKgICogVGhlIElTUCBmZWF0dXJlcyBh
+cmUgc3RvcmVkIGluIGEgYml0bWFzayBpbiAmcmtpc3AxX2luZm8uZmVhdHVyZXMgCj4+IGFuZCBh
+bGxvdwo+PiDCoMKgICogdGhlIGRyaXZlciB0byBpbXBsZW1lbnQgc3VwcG9ydCBmb3IgZmVhdHVy
+ZXMgcHJlc2VudCBpbiBzb21lIElTUCAKPj4gdmVyc2lvbnMKPj4gQEAgLTEyNCw2ICsxMjUsNyBA
+QCBlbnVtIHJraXNwMV9mZWF0dXJlIHsKPj4gwqDCoMKgwqDCoCBSS0lTUDFfRkVBVFVSRV9NQUlO
+X1NUUklERSA9IEJJVCgxKSwKPj4gwqDCoMKgwqDCoCBSS0lTUDFfRkVBVFVSRV9TRUxGX1BBVEgg
+PSBCSVQoMiksCj4+IMKgwqDCoMKgwqAgUktJU1AxX0ZFQVRVUkVfRFVBTF9DUk9QID0gQklUKDMp
+LAo+PiArwqDCoMKgIFJLSVNQMV9GRUFUVVJFX0RNQV8zNEJJVCA9IEJJVCg0KSwKPj4gwqAgfTsK
+Pj4gwqAgI2RlZmluZSBya2lzcDFfaGFzX2ZlYXR1cmUocmtpc3AxLCBmZWF0dXJlKSBcCj4+IEBA
+IC0yMzksNyArMjQxLDcgQEAgc3RydWN0IHJraXNwMV92ZGV2X25vZGUgewo+PiDCoCBzdHJ1Y3Qg
+cmtpc3AxX2J1ZmZlciB7Cj4+IMKgwqDCoMKgwqAgc3RydWN0IHZiMl92NGwyX2J1ZmZlciB2YjsK
+Pj4gwqDCoMKgwqDCoCBzdHJ1Y3QgbGlzdF9oZWFkIHF1ZXVlOwo+PiAtwqDCoMKgIHUzMiBidWZm
+X2FkZHJbVklERU9fTUFYX1BMQU5FU107Cj4+ICvCoMKgwqAgZG1hX2FkZHJfdCBidWZmX2FkZHJb
+VklERU9fTUFYX1BMQU5FU107Cj4+IMKgIH07Cj4+IMKgIC8qCj4+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2LmMgCj4+IGIvZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4+IGluZGV4
+IDAxZjgxMWI5ZjlhNS4uZmQ5OTM1NWQ1ZmUwIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2LmMKPj4gKysrIGIvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4+IEBAIC01NDksNyAr
+NTQ5LDggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBya2lzcDFfaW5mbyBpbXg4bXBfaXNwX2luZm8g
+PSB7Cj4+IMKgwqDCoMKgwqAgLmlzcnMgPSBpbXg4bXBfaXNwX2lzcnMsCj4+IMKgwqDCoMKgwqAg
+Lmlzcl9zaXplID0gQVJSQVlfU0laRShpbXg4bXBfaXNwX2lzcnMpLAo+PiDCoMKgwqDCoMKgIC5p
+c3BfdmVyID0gSU1YOE1QX1YxMCwKPj4gLcKgwqDCoCAuZmVhdHVyZXMgPSBSS0lTUDFfRkVBVFVS
+RV9NQUlOX1NUUklERSwKPj4gK8KgwqDCoCAuZmVhdHVyZXMgPSBSS0lTUDFfRkVBVFVSRV9NQUlO
+X1NUUklERQo+PiArwqDCoMKgwqDCoMKgwqDCoMKgIHwgUktJU1AxX0ZFQVRVUkVfRE1BXzM0QklU
+LAo+PiDCoCB9Owo+PiDCoCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBya2lzcDFf
+b2ZfbWF0Y2hbXSA9IHsKPj4gQEAgLTU3NSw2ICs1NzYsNyBAQCBzdGF0aWMgaW50IHJraXNwMV9w
+cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiDCoMKgwqDCoMKgIHN0cnVjdCBk
+ZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4+IMKgwqDCoMKgwqAgc3RydWN0IHJraXNwMV9kZXZp
+Y2UgKnJraXNwMTsKPj4gwqDCoMKgwqDCoCBzdHJ1Y3QgdjRsMl9kZXZpY2UgKnY0bDJfZGV2Owo+
+PiArwqDCoMKgIHVuc2lnbmVkIGxvbmcgbG9uZyBkbWFfbWFzazsKPj4gwqDCoMKgwqDCoCB1bnNp
+Z25lZCBpbnQgaTsKPj4gwqDCoMKgwqDCoCBpbnQgcmV0LCBpcnE7Cj4+IMKgwqDCoMKgwqAgdTMy
+IGNpZl9pZDsKPj4gQEAgLTU4OSw2ICs1OTEsMTMgQEAgc3RhdGljIGludCBya2lzcDFfcHJvYmUo
+c3RydWN0IHBsYXRmb3JtX2RldmljZSAKPj4gKnBkZXYpCj4+IMKgwqDCoMKgwqAgZGV2X3NldF9k
+cnZkYXRhKGRldiwgcmtpc3AxKTsKPj4gwqDCoMKgwqDCoCBya2lzcDEtPmRldiA9IGRldjsKPj4g
+K8KgwqDCoCBkbWFfbWFzayA9IHJraXNwMV9oYXNfZmVhdHVyZShya2lzcDEsIERNQV8zNEJJVCkg
+PyAKPj4gRE1BX0JJVF9NQVNLKDM0KSA6Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgRE1BX0JJVF9NQVNLKDMyKTsKPj4gKwo+
+PiArwqDCoMKgIHJldCA9IGRtYV9zZXRfbWFza19hbmRfY29oZXJlbnQoZGV2LCBkbWFfbWFzayk7
+Cj4+ICvCoMKgwqAgaWYgKHJldCkKPj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+ICsK
+Pj4gwqDCoMKgwqDCoCBtdXRleF9pbml0KCZya2lzcDEtPnN0cmVhbV9sb2NrKTsKPj4gwqDCoMKg
+wqDCoCBya2lzcDEtPmJhc2VfYWRkciA9IGRldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZShw
+ZGV2LCAwKTsKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
