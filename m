@@ -4,110 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9210FC3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jan 2024 18:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25258C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 08:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HqCMCNOTO0seY2bl/EsMEZCEOloDcH06V2rNaG/kg7Q=; b=ajI0WNNZUyo4Cj
-	JzGyY3108vgQpKv0XyNM8nsjrz9qzA69BpDN4uVGVU/85SGl7d0dvoAq9+emDzjC535YTVhpBD95X
-	D1Akh+0OafVpEkHU/s0lcV+GZeLRf+18tgrlVuqsenXtV3X8Y4AoFK96BE3Si8TkiFt0HTC2pSxtz
-	KxsvnVG4za2QSymzSWGu0HADrqicHd5cjo5KjjvG/QYUIosDzMFGVsiCrXFYcLY/vt+RTziQhQGBO
-	AtOfv8r8+QqBffrxTc14dzFEJ+o/Ax5TbUARBXA7hABFZvOMwpLstjYHRKGvqi+izIabZJ3xBaZUU
-	Qwr4pUxCpgQvx5R+bZXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CayeDczmpAUFAc5NcQxZNQnL0YX1r1mCglXsRtkulUQ=; b=HftFEN3kqPuyPj
+	F9XFHMl3slVpnBQikpgGfQyWWQKOzv3FCsqDMvH6DKgb5Xc1Kmb2wK5SidcXtszZSrfQXNrex2BKY
+	IbdY7MGxQDVqW9Oah5b/AG7E2BvvWyi0QkdRNXfw5zAgmB+Ys04Y+XvkJdafymm1/E0yFKHXqWDef
+	3fEWWqs74x4aWu9UxUEZzgKWrLNIz41/BzOtP7RqZ+8z1iPoK0Xjp5GAd1PWnj4kT99A3VEEZCkan
+	7gTb04V3pwn8oDPmoQnPESzBLIrB4K3ZXGIRdh+CVaeKgA1ViLLgHmj8BgThCY16+QLBwYFxqODJl
+	p6pPktNCyVCJMajX3jxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMuJF-005stW-0h;
-	Mon, 08 Jan 2024 18:25:13 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1rN7qW-007Oyu-2d;
+	Tue, 09 Jan 2024 08:52:28 +0000
+Received: from mx07-00178001.pphosted.com ([185.132.182.106])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rMuJB-005sro-2Z;
-	Mon, 08 Jan 2024 18:25:12 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 408GdE7P021198;
-	Mon, 8 Jan 2024 18:24:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	message-id:date:mime-version:subject:to:cc:references:from
-	:in-reply-to:content-type:content-transfer-encoding; s=
-	qcppdkim1; bh=HyXTlmvtDo3WqCRwGTm9OuvoIEcEoxnphYOGsydg4D8=; b=YX
-	foH4B+lHPhV5R5DTKHypxcNBpzMo3p3RL+9yFRfyMJGh0tak1IcJb4qyCY8+DetC
-	NkmTsIRDvNtE67/brU0GJauU7SHCrzGhbIz1UcHpconIMjcq2NKund9n4VCCwBsM
-	1qRqimBl96UjwNqdlojoI59vsjavTkOMHQLFtWB67gOjkp21G6v2sEGJa6qhjRhV
-	CSpRnyChqpoSmUfMBkhRD+myL5Q5/2NrBIBWbEox7cf84dWVpaZX54fPyZO1zqTj
-	is5FpbM8+QkK/CRKENIM8Y3iVzar9WEZAYyxqMo/jsNQGYFmuh5VtNESqvRfsPIK
-	AVMC+VvtMzYqsxt8X8og==
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3vgbuj9gx7-1
+	id 1rN7qT-007Ow5-0k;
+	Tue, 09 Jan 2024 08:52:26 +0000
+Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 409343pj004773;
+	Tue, 9 Jan 2024 09:52:04 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
+	from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding:content-type; s=selector1; bh=mEkudfn
+	bPoeAGsN0k1FwZZxBRhXTdPPOdbTjUnhj2ac=; b=uEKeNxaUxpDuWX9I9PBRmTg
+	7usMLb5ibtMCzRX1/81ZCLaXYDEwAoYL+ld2Ay3EFsq+X7fDpG+xqtR9QU++ypKj
+	NO9A4LEfAEq67s5zc05IbWY7AniR3uzKgdTWdQBOi1R1PlVQ/2vmZXOPNanFBmTB
+	AOyZ+1hUUeKNLpeonOWqQyrLD+L9zbNOXf3yZcdHAicwLWhPysshMWaeeh2GPQiP
+	CvLoaCJpuTBp8nbLsc/KaqZsJ1l4maqgO/GF7sPTvXpqxVOoqFmCXQTfo580REyh
+	MspEwkURmFYh+YuI8qsFi2mHY9oc4pdIyUhc0uUjy2dkvojvFWURABawLGaONBA=
+	=
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3vey30jr8m-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 08 Jan 2024 18:24:51 +0000 (GMT)
-Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 408IOnUJ017464
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 8 Jan 2024 18:24:49 GMT
-Received: from [10.110.0.29] (10.80.80.8) by nasanex01b.na.qualcomm.com
- (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Mon, 8 Jan
- 2024 10:24:47 -0800
-Message-ID: <37575b84-9f60-4a9e-a8ac-c8039c4fddfd@quicinc.com>
-Date: Mon, 8 Jan 2024 10:24:45 -0800
+	Tue, 09 Jan 2024 09:52:04 +0100 (CET)
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id DC1C710002A;
+	Tue,  9 Jan 2024 09:51:59 +0100 (CET)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id C852E22FA2D;
+	Tue,  9 Jan 2024 09:51:59 +0100 (CET)
+Received: from localhost (10.201.20.120) by SHFDAG1NODE1.st.com (10.75.129.69)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 9 Jan
+ 2024 09:51:59 +0100
+From: Hugues Fruchet <hugues.fruchet@foss.st.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+        Philipp Zabel
+	<p.zabel@pengutronix.de>,
+        Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+        Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+        Sakari Ailus
+	<sakari.ailus@linux.intel.com>,
+        Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>,
+        Laurent Pinchart
+	<laurent.pinchart+renesas@ideasonboard.com>,
+        Daniel Almeida
+	<daniel.almeida@collabora.com>,
+        Benjamin Mugnier
+	<benjamin.mugnier@foss.st.com>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Mauro
+ Carvalho Chehab <mchehab@kernel.org>,
+        Hans Verkuil <hverkuil@xs4all.nl>, <linux-media@vger.kernel.org>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-rockchip@lists.infradead.org>
+CC: Hugues Fruchet <hugues.fruchet@foss.st.com>,
+        Marco Felsch
+	<m.felsch@pengutronix.de>,
+        Adam Ford <aford173@gmail.com>
+Subject: [PATCH v6 0/5] Add support for video hardware codec of STMicroelectronics STM32 SoC series
+Date: Tue, 9 Jan 2024 09:51:50 +0100
+Message-ID: <20240109085155.252358-1-hugues.fruchet@foss.st.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] drm/panel: Add driver for BOE TH101MB31IG002-28A
- panel
-Content-Language: en-US
-To: Manuel Traut <manut@mecka.net>,
-        Neil Armstrong
-	<neil.armstrong@linaro.org>,
-        Sam Ravnborg <sam@ravnborg.org>,
-        Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard
-	<mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie
-	<airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-        Rob Herring
-	<robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Sandy Huang <hjc@rock-chips.com>, Mark Yao
-	<markyao0591@gmail.com>,
-        Diederik de Haas <didi.debian@cknow.org>,
-        Segfault
-	<awarnecke002@hotmail.com>,
-        Arnaud Ferraris <aferraris@debian.org>, Danct12
-	<danct12@riseup.net>,
-        Ondrej Jirman <megi@xff.cz>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <dri-devel@lists.freedesktop.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>
-References: <20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net>
- <20240102-pinetab2-v3-2-cb1aa69f8c30@mecka.net>
-From: Jessica Zhang <quic_jesszhan@quicinc.com>
-In-Reply-To: <20240102-pinetab2-v3-2-cb1aa69f8c30@mecka.net>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01b.na.qualcomm.com (10.46.141.250)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: SxDgwzrEtoO-lXtk-yvfFkdKnYIV_plY
-X-Proofpoint-ORIG-GUID: SxDgwzrEtoO-lXtk-yvfFkdKnYIV_plY
+X-Originating-IP: [10.201.20.120]
+X-ClientProxiedBy: SHFCAS1NODE1.st.com (10.75.129.72) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-09_01,2023-12-07_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 suspectscore=0
- bulkscore=0 phishscore=0 adultscore=0 priorityscore=1501 mlxscore=0
- mlxlogscore=999 lowpriorityscore=0 malwarescore=0 impostorscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2311290000 definitions=main-2401080154
+ definitions=2024-01-05_08,2024-01-05_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240108_102509_972775_65E79F42 
-X-CRM114-Status: GOOD (  27.98  )
+X-CRM114-CacheID: sfid-20240109_005225_605447_7D15BFCB 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,404 +107,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This patchset introduces support for VDEC video hardware decoder
+and VENC video hardware encoder of STMicroelectronics STM32MP25
+SoC series.
 
+This initial support implements H264 decoding, VP8 decoding and
+JPEG encoding.
 
-On 1/2/2024 8:15 AM, Manuel Traut wrote:
-> From: Alexander Warnecke <awarnecke002@hotmail.com>
-> 
-> The BOE TH101MB31IG002-28A panel is a WXGA panel.
-> It is used in Pine64 PineTab2 and PineTab-V.
-> 
-> Signed-off-by: Alexander Warnecke <awarnecke002@hotmail.com>
-> Signed-off-by: Manuel Traut <manut@mecka.net>
-> ---
->   drivers/gpu/drm/panel/Kconfig                      |  11 +
->   drivers/gpu/drm/panel/Makefile                     |   1 +
->   .../gpu/drm/panel/panel-boe-th101mb31ig002-28a.c   | 322 +++++++++++++++++++++
->   3 files changed, 334 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
-> index 99e14dc212ec..927ddd10e688 100644
-> --- a/drivers/gpu/drm/panel/Kconfig
-> +++ b/drivers/gpu/drm/panel/Kconfig
-> @@ -67,6 +67,17 @@ config DRM_PANEL_BOE_HIMAX8279D
->   	  24 bit RGB per pixel. It provides a MIPI DSI interface to
->   	  the host and has a built-in LED backlight.
->   
-> +config DRM_PANEL_BOE_TH101MB31UIG002_28A
-> +	tristate "Boe TH101MB31UIG002-28A panel"
-> +	depends on OF
-> +	depends on DRM_MIPI_DSI
-> +	depends on BACKLIGHT_CLASS_DEVICE
-> +	help
-> +	  Say Y here if you want to enable support for Boe
-> +	  TH101MB31UIG002-28A TFT-LCD modules. The panel has a 800x1280
-> +	  resolution and uses 24 bit RGB per pixel. It provides a MIPI DSI
-> +	  interface to the host and has a built-in LED backlight.
-> +
->   config DRM_PANEL_BOE_TV101WUM_NL6
->   	tristate "BOE TV101WUM and AUO KD101N80 45NA 1200x1920 panel"
->   	depends on OF
-> diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
-> index d10c3de51c6d..dd6e1ac9d0a2 100644
-> --- a/drivers/gpu/drm/panel/Makefile
-> +++ b/drivers/gpu/drm/panel/Makefile
-> @@ -5,6 +5,7 @@ obj-$(CONFIG_DRM_PANEL_ASUS_Z00T_TM5P5_NT35596) += panel-asus-z00t-tm5p5-n35596.
->   obj-$(CONFIG_DRM_PANEL_AUO_A030JTN01) += panel-auo-a030jtn01.o
->   obj-$(CONFIG_DRM_PANEL_BOE_BF060Y8M_AJ0) += panel-boe-bf060y8m-aj0.o
->   obj-$(CONFIG_DRM_PANEL_BOE_HIMAX8279D) += panel-boe-himax8279d.o
-> +obj-$(CONFIG_DRM_PANEL_BOE_TH101MB31UIG002_28A) += panel-boe-th101mb31ig002-28a.o
->   obj-$(CONFIG_DRM_PANEL_BOE_TV101WUM_NL6) += panel-boe-tv101wum-nl6.o
->   obj-$(CONFIG_DRM_PANEL_DSI_CM) += panel-dsi-cm.o
->   obj-$(CONFIG_DRM_PANEL_LVDS) += panel-lvds.o
-> diff --git a/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c b/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c
-> new file mode 100644
-> index 000000000000..763e9f8342d3
-> --- /dev/null
-> +++ b/drivers/gpu/drm/panel/panel-boe-th101mb31ig002-28a.c
-> @@ -0,0 +1,322 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2023 Alexander Warnecke <awarnecke002@hotmail.com>
-> + * Copyright (c) 2023 Manuel Traut <manut@mecka.net>
-> + * Copyright (c) 2023 Dang Huynh <danct12@riseup.net>
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/regulator/consumer.h>
-> +
-> +#include <drm/drm_connector.h>
-> +#include <drm/drm_mipi_dsi.h>
-> +#include <drm/drm_modes.h>
-> +#include <drm/drm_panel.h>
-> +
-> +struct boe_th101mb31ig002 {
-> +	struct drm_panel panel;
-> +
-> +	struct mipi_dsi_device *dsi;
-> +
-> +	struct regulator *power;
-> +	struct gpio_desc *enable;
-> +	struct gpio_desc *reset;
-> +
-> +	enum drm_panel_orientation orientation;
-> +};
-> +
-> +static void boe_th101mb31ig002_reset(struct boe_th101mb31ig002 *ctx)
-> +{
-> +	gpiod_direction_output(ctx->reset, 0);
-> +	usleep_range(10, 100);
-> +	gpiod_direction_output(ctx->reset, 1);
-> +	usleep_range(10, 100);
-> +	gpiod_direction_output(ctx->reset, 0);
-> +	usleep_range(5000, 6000);
-> +}
-> +
-> +static int boe_th101mb31ig002_enable(struct drm_panel *panel)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +	struct mipi_dsi_device *dsi = ctx->dsi;
-> +	struct device *dev = &dsi->dev;
-> +	int ret;
-> +
-> +	mipi_dsi_dcs_write_seq(dsi, 0xE0, 0xAB, 0xBA);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xE1, 0xBA, 0xAB);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB1, 0x10, 0x01, 0x47, 0xFF);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB2, 0x0C, 0x14, 0x04, 0x50, 0x50, 0x14);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB3, 0x56, 0x53, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB4, 0x33, 0x30, 0x04);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB6, 0xB0, 0x00, 0x00, 0x10, 0x00, 0x10,
-> +				    0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB8, 0x05, 0x12, 0x29, 0x49, 0x48, 0x00,
-> +				    0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xB9, 0x7C, 0x65, 0x55, 0x49, 0x46, 0x36,
-> +				    0x3B, 0x24, 0x3D, 0x3C, 0x3D, 0x5C, 0x4C,
-> +				    0x55, 0x47, 0x46, 0x39, 0x26, 0x06, 0x7C,
-> +				    0x65, 0x55, 0x49, 0x46, 0x36, 0x3B, 0x24,
-> +				    0x3D, 0x3C, 0x3D, 0x5C, 0x4C, 0x55, 0x47,
-> +				    0x46, 0x39, 0x26, 0x06);
-> +	mipi_dsi_dcs_write_seq(dsi, 0x00, 0xFF, 0x87, 0x12, 0x34, 0x44, 0x44,
-> +				    0x44, 0x44, 0x98, 0x04, 0x98, 0x04, 0x0F,
-> +				    0x00, 0x00, 0xC1);
+This has been tested on STM32MP257F-EV1 evaluation board.
 
-Hi Manuel,
+===========
+= history =
+===========
+version 6:
+   - Use a single file for VDEC and VENC variants as suggested by Alex Bee
+   - Fix some typos raised by Sebastian Fricke
+   - Add Krzysztof Kozlowski Reviewed-by
 
-(I'm assuming the `0x00` here is not MIPI_DCS_NOP)
+version 5:
+   - Precise that video decoding as been successfully tested up to full HD
+   - Add Nicolas Dufresne Reviewed-by
 
-Reviewed-by: Jessica Zhang <quic_jesszhan@quicinc.com>
+version 4:
+   - Fix comments from Nicolas about dropping encoder raw steps
 
-Thanks,
+version 3:
+   - Fix remarks from Krzysztof Kozlowski:
+    - drop "items", we keep simple enum in such case
+    - drop second example - it is the same as the first
+   - Drop unused node labels as suggested by Conor Dooley
+   - Revisit min/max resolutions as suggested by Nicolas Dufresne
 
-Jessica Zhang
+version 2:
+   - Fix remarks from Krzysztof Kozlowski on v1:
+    - single video-codec binding for both VDEC/VENC
+    - get rid of "-names"
+    - use of generic node name "video-codec"
 
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC1, 0x54, 0x94, 0x02, 0x85, 0x9F, 0x00,
-> +				    0x7F, 0x00, 0x54, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC2, 0x17, 0x09, 0x08, 0x89, 0x08, 0x11,
-> +				    0x22, 0x20, 0x44, 0xFF, 0x18, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC3, 0x86, 0x46, 0x05, 0x05, 0x1C, 0x1C,
-> +				    0x1D, 0x1D, 0x02, 0x1F, 0x1F, 0x1E, 0x1E,
-> +				    0x0F, 0x0F, 0x0D, 0x0D, 0x13, 0x13, 0x11,
-> +				    0x11, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC4, 0x07, 0x07, 0x04, 0x04, 0x1C, 0x1C,
-> +				    0x1D, 0x1D, 0x02, 0x1F, 0x1F, 0x1E, 0x1E,
-> +				    0x0E, 0x0E, 0x0C, 0x0C, 0x12, 0x12, 0x10,
-> +				    0x10, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC6, 0x2A, 0x2A);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xC8, 0x21, 0x00, 0x31, 0x42, 0x34, 0x16);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xCA, 0xCB, 0x43);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xCD, 0x0E, 0x4B, 0x4B, 0x20, 0x19, 0x6B,
-> +				    0x06, 0xB3);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xD2, 0xE3, 0x2B, 0x38, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xD4, 0x00, 0x01, 0x00, 0x0E, 0x04, 0x44,
-> +				    0x08, 0x10, 0x00, 0x00, 0x00);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xE6, 0x80, 0x01, 0xFF, 0xFF, 0xFF, 0xFF,
-> +				    0xFF, 0xFF);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xF0, 0x12, 0x03, 0x20, 0x00, 0xFF);
-> +	mipi_dsi_dcs_write_seq(dsi, 0xF3, 0x00);
-> +
-> +	ret = mipi_dsi_dcs_exit_sleep_mode(dsi);
-> +	if (ret < 0) {
-> +		dev_err(dev, "Failed to exit sleep mode: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	msleep(120);
-> +
-> +	ret = mipi_dsi_dcs_set_display_on(dsi);
-> +	if (ret < 0) {
-> +		dev_err(dev, "Failed to set panel on: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int boe_th101mb31ig002_disable(struct drm_panel *panel)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +	struct mipi_dsi_device *dsi = ctx->dsi;
-> +	struct device *dev = &dsi->dev;
-> +	int ret;
-> +
-> +	ret = mipi_dsi_dcs_set_display_off(dsi);
-> +	if (ret < 0)
-> +		dev_err(dev, "Failed to set panel off: %d\n", ret);
-> +
-> +	msleep(120);
-> +
-> +	ret = mipi_dsi_dcs_enter_sleep_mode(dsi);
-> +	if (ret < 0)
-> +		dev_err(dev, "Failed to enter sleep mode: %d\n", ret);
-> +
-> +	return 0;
-> +}
-> +
-> +static int boe_th101mb31ig002_unprepare(struct drm_panel *panel)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +
-> +	gpiod_set_value_cansleep(ctx->reset, 1);
-> +	gpiod_set_value_cansleep(ctx->enable, 0);
-> +	regulator_disable(ctx->power);
-> +
-> +	return 0;
-> +}
-> +
-> +static int boe_th101mb31ig002_prepare(struct drm_panel *panel)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +	struct device *dev = &ctx->dsi->dev;
-> +	int ret;
-> +
-> +	ret = regulator_enable(ctx->power);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to enable power supply: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	gpiod_set_value_cansleep(ctx->enable, 1);
-> +	msleep(50);
-> +	boe_th101mb31ig002_reset(ctx);
-> +	boe_th101mb31ig002_enable(panel);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct drm_display_mode boe_th101mb31ig002_default_mode = {
-> +	.clock		= 73500,
-> +	.hdisplay	= 800,
-> +	.hsync_start	= 800 + 64,
-> +	.hsync_end	= 800 + 64 + 16,
-> +	.htotal		= 800 + 64 + 16 + 64,
-> +	.vdisplay	= 1280,
-> +	.vsync_start	= 1280 + 2,
-> +	.vsync_end	= 1280 + 2 + 4,
-> +	.vtotal		= 1280 + 2 + 4 + 12,
-> +	.width_mm	= 135,
-> +	.height_mm	= 216,
-> +	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
-> +};
-> +
-> +static int boe_th101mb31ig002_get_modes(struct drm_panel *panel,
-> +					struct drm_connector *connector)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +	struct drm_display_mode *mode;
-> +
-> +	mode = drm_mode_duplicate(connector->dev,
-> +				  &boe_th101mb31ig002_default_mode);
-> +	if (!mode) {
-> +		dev_err(panel->dev, "Failed to add mode %ux%u@%u\n",
-> +			boe_th101mb31ig002_default_mode.hdisplay,
-> +			boe_th101mb31ig002_default_mode.vdisplay,
-> +			drm_mode_vrefresh(&boe_th101mb31ig002_default_mode));
-> +		return -ENOMEM;
-> +	}
-> +
-> +	drm_mode_set_name(mode);
-> +
-> +	connector->display_info.bpc = 8;
-> +	connector->display_info.width_mm = mode->width_mm;
-> +	connector->display_info.height_mm = mode->height_mm;
-> +
-> +	/*
-> +	 * TODO: Remove once all drm drivers call
-> +	 * drm_connector_set_orientation_from_panel()
-> +	 */
-> +	drm_connector_set_panel_orientation(connector, ctx->orientation);
-> +
-> +	drm_mode_probed_add(connector, mode);
-> +
-> +	return 1;
-> +}
-> +
-> +static enum drm_panel_orientation
-> +boe_th101mb31ig002_get_orientation(struct drm_panel *panel)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = container_of(panel,
-> +						      struct boe_th101mb31ig002,
-> +						      panel);
-> +
-> +	return ctx->orientation;
-> +}
-> +
-> +static const struct drm_panel_funcs boe_th101mb31ig002_funcs = {
-> +	.prepare = boe_th101mb31ig002_prepare,
-> +	.unprepare = boe_th101mb31ig002_unprepare,
-> +	.disable = boe_th101mb31ig002_disable,
-> +	.get_modes = boe_th101mb31ig002_get_modes,
-> +	.get_orientation = boe_th101mb31ig002_get_orientation,
-> +};
-> +
-> +static int boe_th101mb31ig002_dsi_probe(struct mipi_dsi_device *dsi)
-> +{
-> +	struct boe_th101mb31ig002 *ctx;
-> +	int ret;
-> +
-> +	ctx = devm_kzalloc(&dsi->dev, sizeof(*ctx), GFP_KERNEL);
-> +	if (!ctx)
-> +		return -ENOMEM;
-> +
-> +	mipi_dsi_set_drvdata(dsi, ctx);
-> +	ctx->dsi = dsi;
-> +
-> +	dsi->lanes = 4;
-> +	dsi->format = MIPI_DSI_FMT_RGB888;
-> +	dsi->mode_flags = MIPI_DSI_MODE_VIDEO_BURST |
-> +			  MIPI_DSI_MODE_NO_EOT_PACKET |
-> +			  MIPI_DSI_MODE_LPM;
-> +
-> +	ctx->power = devm_regulator_get(&dsi->dev, "power");
-> +	if (IS_ERR(ctx->power))
-> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->power),
-> +				     "Failed to get power regulator\n");
-> +
-> +	ctx->enable = devm_gpiod_get(&dsi->dev, "enable", GPIOD_OUT_LOW);
-> +	if (IS_ERR(ctx->enable))
-> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->enable),
-> +				     "Failed to get enable GPIO\n");
-> +
-> +	ctx->reset = devm_gpiod_get(&dsi->dev, "reset", GPIOD_OUT_HIGH);
-> +	if (IS_ERR(ctx->reset))
-> +		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->reset),
-> +				     "Failed to get reset GPIO\n");
-> +
-> +	ret = of_drm_get_panel_orientation(dsi->dev.of_node,
-> +					   &ctx->orientation);
-> +	if (ret)
-> +		return dev_err_probe(&dsi->dev, ret,
-> +				     "Failed to get orientation\n");
-> +
-> +	drm_panel_init(&ctx->panel, &dsi->dev, &boe_th101mb31ig002_funcs,
-> +		       DRM_MODE_CONNECTOR_DSI);
-> +
-> +	ret = drm_panel_of_backlight(&ctx->panel);
-> +	if (ret)
-> +		return ret;
-> +
-> +	drm_panel_add(&ctx->panel);
-> +
-> +	ret = mipi_dsi_attach(dsi);
-> +	if (ret < 0) {
-> +		dev_err_probe(&dsi->dev, ret,
-> +			      "Failed to attach panel to DSI host\n");
-> +		drm_panel_remove(&ctx->panel);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void boe_th101mb31ig002_dsi_remove(struct mipi_dsi_device *dsi)
-> +{
-> +	struct boe_th101mb31ig002 *ctx = mipi_dsi_get_drvdata(dsi);
-> +
-> +	mipi_dsi_detach(dsi);
-> +	drm_panel_remove(&ctx->panel);
-> +}
-> +
-> +static const struct of_device_id boe_th101mb31ig002_of_match[] = {
-> +	{ .compatible = "boe,th101mb31ig002-28a", },
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, boe_th101mb31ig002_of_match);
-> +
-> +static struct mipi_dsi_driver boe_th101mb31ig002_driver = {
-> +	.driver = {
-> +		.name = "boe-th101mb31ig002-28a",
-> +		.of_match_table = boe_th101mb31ig002_of_match,
-> +	},
-> +	.probe = boe_th101mb31ig002_dsi_probe,
-> +	.remove = boe_th101mb31ig002_dsi_remove,
-> +};
-> +module_mipi_dsi_driver(boe_th101mb31ig002_driver);
-> +
-> +MODULE_AUTHOR("Alexander Warnecke <awarnecke002@hotmail.com>");
-> +MODULE_DESCRIPTION("BOE TH101MB31IG002-28A MIPI-DSI LCD panel");
-> +MODULE_LICENSE("GPL");
-> 
-> -- 
-> 2.43.0
-> 
+version 1:
+  - Initial submission
+
+Hugues Fruchet (5):
+  dt-bindings: media: Document STM32MP25 VDEC & VENC video codecs
+  media: hantro: add support for STM32MP25 VDEC
+  media: hantro: add support for STM32MP25 VENC
+  arm64: dts: st: add video decoder support to stm32mp255
+  arm64: dts: st: add video encoder support to stm32mp255
+
+ .../media/st,stm32mp25-video-codec.yaml       |  50 +++++
+ arch/arm64/boot/dts/st/stm32mp251.dtsi        |  12 ++
+ arch/arm64/boot/dts/st/stm32mp255.dtsi        |  17 ++
+ drivers/media/platform/verisilicon/Kconfig    |  14 +-
+ drivers/media/platform/verisilicon/Makefile   |   3 +
+ .../media/platform/verisilicon/hantro_drv.c   |   4 +
+ .../media/platform/verisilicon/hantro_hw.h    |   2 +
+ .../platform/verisilicon/stm32mp25_vpu_hw.c   | 186 ++++++++++++++++++
+ 8 files changed, 285 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/st,stm32mp25-video-codec.yaml
+ create mode 100644 drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
