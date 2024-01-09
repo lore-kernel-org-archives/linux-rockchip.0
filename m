@@ -4,77 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B318C47073
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 13:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24967C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 15:15:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Qa9zeyxcNRw45BGoGpsQ8Jqq2yG+2oaaA6YPdYQD74g=; b=F5GMMVy7ka0XWXbPaUkUJ2kUMl
-	msSEmRLo8yH/yEfCbyUIe9JEndcaJzMPZLpc1fmrkRRj/2rn9O7h6eN0rGmoZDkg9qmsbkUfM+2us
-	1Rg0RUcJVhiK3T2L714dogycDy1DsSI4plTMzAfraKESMVXPnrton1IpyfzMeZ4l/WkuSWzj3b0ze
-	eiJMxwlFaaP4YmoGwtoT5YXy6QBher5QvlrwM8U7hLr401knHzkw+4hxVtKhakdZzthxlKI8L04++
-	Aufc2pDRwS6YnGPzTIw4jklvVNYqgmOXnxG8akT/5CQtlRcpBD87FKGRpFO+RcxQEOurAdJYfydA1
-	XUOM60tQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=epbChYqUpR3mHID+sL0+tox2HzjNpUf7Z8FCi6t8qok=; b=fmhFHOBg+yzIAp
+	G15+HqK+ouq/GVwIRQZYQ9K4DO1kW2du/SXfCa0G9USBjJXSS6BzoU7t8nCr7YKzCJFnnLLRnx+Q0
+	ypBbBAK4turxtaQBTtRJbQGUahsiR3zlIxqMyPpQ+p2MDAeio/zNrE8X8VTLXr1N3MXJ1jvj11PiY
+	3DyGU4l0SJIo0IocO4+SiP+Ia5x4m5WPoHG9EKZZfBVg9ldwSVDJiBej+lMPAU71/usR5vXs63Tlr
+	pV/nhx0tw6rEx5XDL6isJqvnS+wiaENK2IiXKEeyWA9CRSici2TTctLCDyotbYUwSrurizX2xlVaq
+	z0a/rEwRrkle+MMQAx8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNCJI-008OVj-2l;
-	Tue, 09 Jan 2024 13:38:28 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1rNDpI-008d6u-34;
+	Tue, 09 Jan 2024 15:15:36 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNCJF-008OU6-1x
+	id 1rNDpG-008d6V-0S
 	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jan 2024 13:38:27 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-3bbebe6191bso2759289b6e.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 09 Jan 2024 05:38:19 -0800 (PST)
+	Tue, 09 Jan 2024 15:15:35 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3366e78d872so3311387f8f.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 09 Jan 2024 07:15:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1704807499; x=1705412299; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+        d=linaro.org; s=google; t=1704813332; x=1705418132; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=7mDLa1lDA9I4zsDt/vUi7Q5DM723KSTf2pIxDEMdeEE=;
-        b=qKfT9Ns23BC8nz+0XwlIdVUH3aVT4Yl2lOY1QaDiSelbf+GLc/vRTXyt6w/g2hWl3W
-         iUc+eLnONK11UuLx4rO3zV1DMdB+p/izhaZp1ekw+bFr8IEjibAbBYOGLEUXshkMmrG2
-         XnQjPsGp/I0qwGJLbApBgBxbfV9SdGwMjd2IodpX3tDsj4OEC9YNMTmdfhCHs8B9226u
-         vy4A9xnuQxDsHLNmkAcICK8DNqc31g8weZyL0GQnovBdna+rq3olPO2nDYm3OCvtRJyo
-         Af8rcamW47lIeJ189eecOMGN1OnDWGkxgvRy+2l0wO4tXZ2B/CsoDD7We+S+U0aEeSjd
-         /+ug==
+        bh=24M+4beCvcf8dZJS2wUWTIVSZ4v6f773ejW3RnRoqfg=;
+        b=ai6hLuj93re1rsuZzajO0+zeVe9X2W5TCmGR/FB8xRgTzFoLhxcHLh0sH/ACtNi8Xh
+         XARqXvlUO/zE37ulgQhPefymgCet/bQxmQ9dBing8ca2L+4+JdUX0zdY90MRRTqhI+zl
+         3XMiA1egqHmaXljyEob3qPXMwKsmcIvCGviz1/QMnW5A4t/z8jE8pBx37hvhPgJGOSrH
+         9eg/a6yxSFgpZgZC0LTv9TcRc2Cq4I6m/1IH0oB+pSiCQX0rMIrKs4nPKnsjUWKNyPKD
+         avRTqrwxitsCDh7kBMcr1CkU21d9/kgou4IunqeaIDd4mt94NEuaELvHKY4WcvTnT2Vl
+         b46g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704807499; x=1705412299;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+        d=1e100.net; s=20230601; t=1704813332; x=1705418132;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7mDLa1lDA9I4zsDt/vUi7Q5DM723KSTf2pIxDEMdeEE=;
-        b=vz37rWfIlo80nNhA0qxwjISSAANo9jZWjzysS/Iv3tkwD1zSic1WmD+xZEe5pCEq5h
-         1QkGInK1/Kl8scXRVGPeguAwbHCxSOChtFHtxM7ica9r6G446kGq0XNhTKC3y4RE2MGt
-         WUHCNjcygpVt7XJXT+5A9L9vJ/zUzGRxh+yYTgQyBPX2U5VYkYOADEUm9rbhpfGhsuWL
-         r+Rh60+sWnYbrNG73UJuYrHYdy2gl77u8Oe1nwc+GMoTNcpynGrdVe5OUkU0WO2ac0fq
-         k9UVQ0VgGE7FKHWpQGI6AYM7lAP1ffc+qg/faShQP4oBVXy7b/OOGNph6P1sl4OMcqyF
-         Lkdg==
-X-Gm-Message-State: AOJu0Yxz7cJkw/9OL2m0oux4Bh6sMb9jn0oNps7M9D/NBjpaWsMrrp3Q
-	ridzB3kE0tPiKmS6AeOP331H766Ekz3cxitSvQ85LX9CKEuDtw==
-X-Google-Smtp-Source: AGHT+IEiIF+TOwHH0WeGea/W9p977jXEPA2RPNa5wHtj/r0Fwo02EIRShmM0F605PcR5+mNqG3weRRapKtHQAzzaPtk=
-X-Received: by 2002:a05:6808:3185:b0:3bb:d83a:99a8 with SMTP id
- cd5-20020a056808318500b003bbd83a99a8mr8896956oib.58.1704807499107; Tue, 09
- Jan 2024 05:38:19 -0800 (PST)
+        bh=24M+4beCvcf8dZJS2wUWTIVSZ4v6f773ejW3RnRoqfg=;
+        b=KgWLHWrwpYh9bHiKcXrlHcMEHIiZpHtjqa2/k0c45cE8h3R/tHcRUtJEjHbKb4b1JN
+         DFAdAHVyIu/VptdeQ6kcOSoPCPAeEMA7OxwwwJ6XVB1gesNWLBQY2B2NOVc9BO9vETAm
+         vpQ/jOeqF47gkOFzTAo5q7mzhkJjATxpxZVnXs0I6mViR0RFrWSBanj0FWknmJ71atCT
+         Tq8aKY4LN587nrnFVCWROpuOkKu7aykGCNquz9SqnY8awdGCrQWSnrDH4XmSy/WwVHnp
+         xI5Vx03UUSEvqyMJao7vfqeoioatlLTy9dEyNrsrHD11FtEPrQ+LCHKKlmgRZgEF5oFF
+         8Y2g==
+X-Gm-Message-State: AOJu0YwclywOKCqtRDhaL5HDxF2CmmdZ+YHQaDW9DxGzPPdU76Uj/qnJ
+	WiDbozMEd+/fdAXrajn2jl866F1MGMG05Q==
+X-Google-Smtp-Source: AGHT+IG6V62p3LglXpXOmc6pIxrMiwBBX+RAd4o9gRxq+0Uvr3h7PwxkmRH3w4t2Y0Y8gpqGCTYZAg==
+X-Received: by 2002:a05:6000:1942:b0:336:6ebb:704f with SMTP id e2-20020a056000194200b003366ebb704fmr365226wry.122.1704813332593;
+        Tue, 09 Jan 2024 07:15:32 -0800 (PST)
+Received: from [192.168.1.20] ([178.197.223.112])
+        by smtp.gmail.com with ESMTPSA id h16-20020a05600004d000b003367ff4aadasm2653977wri.31.2024.01.09.07.15.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 Jan 2024 07:15:31 -0800 (PST)
+Message-ID: <685047b0-a907-49c6-919b-e46976d8ef7b@linaro.org>
+Date: Tue, 9 Jan 2024 16:15:30 +0100
 MIME-Version: 1.0
-References: <20231220121110.1441160-1-vignesh.raman@collabora.com>
-In-Reply-To: <20231220121110.1441160-1-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 9 Jan 2024 13:38:08 +0000
-Message-ID: <CAPj87rOMPioOK0r74vcnVkXusm6Nah6KNUWyxYgpVLdkMNtW2g@mail.gmail.com>
-Subject: Re: [PATCH v1 0/8] drm/ci: Add support for GPU and display testing
-To: Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>, 
-	Sima Vetter <daniel@ffwll.ch>, Daniel Stone <daniels@collabora.com>, Emma Anholt <emma@anholt.net>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	David Heidelberg <david.heidelberg@collabora.com>, Rob Clark <robdclark@gmail.com>, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add spi controller aliases on
+ rk3399
+Content-Language: en-US
+To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>
+References: <20240109-rk3399-spi-aliases-v1-0-2009e44e734a@theobroma-systems.com>
+ <20240109-rk3399-spi-aliases-v1-1-2009e44e734a@theobroma-systems.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240109-rk3399-spi-aliases-v1-1-2009e44e734a@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_053825_862224_1C5A89EA 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20240109_071534_185157_B083B9BF 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,50 +143,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 09/01/2024 14:35, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> 
+> There are 6 SPI controllers on RK3399 and they are all numbered in the
+> TRM, so let's add the appropriate aliases to the main DTSI so that any
+> RK3399-based board doesn't need to define the aliases themselves to
+> benefit from stable SPI indices in userspace.
 
-On Wed, 20 Dec 2023 at 12:11, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> Some ARM SOCs have a separate display controller and GPU, each with
-> different drivers. For mediatek mt8173, the GPU driver is powervr,
-> and the display driver is mediatek. In the case of mediatek mt8183,
-> the GPU driver is panfrost, and the display driver is mediatek.
-> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
-> display driver is rockchip. For amlogic meson, the GPU driver is
-> panfrost, and the display driver is meson.
->
-> IGT tests run various tests with different xfails and can test both
-> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
-> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
-> This leads to incomplete coverage since the display is never tested on
-> these platforms. This commit series adds support in drm-ci to run tests
-> for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
-> Meson platforms.
+But that contradicts the point that board should define aliases for
+exposable interfaces. Sorry, that's a NAK.
 
-Thanks a lot for these. The patches need to be squashed to be
-bisectable though. For example, patch #2 changes the MTK job names and
-adds more jobs, but the corresponding xfail updates only come in #7
-and #8. This means we have a span of a few patches where we don't have
-useful test results.
+> 
+> Cc: Quentin Schulz <foss+kernel@0leil.net>
 
-A better sequencing would be something like:
-  1. add ANX7625 config
-  2. refactor _existing_ MTK display jobs to use YAML includes, change
-the existing job name, and rename the existing xfail set, remove
-IGT_FORCE_DRIVER from the script since it's now set by the job
-  3. add MTK Panfrost+PVR GPU jobs with new xfails, add xfail entry to
-MAINTAINERS
-  4+5: same as 2+3 but for Amlogic
-  6+7: same as 2+3 but for Rockchip
+No need to Cc yourself...
 
-Then the separate rename/update xfail commits just disappear, as does
-the removal of IGT_FORCE_DRIVER, because it's just done incrementally
-as part of the commits which change the related functionality. It's
-extremely important that every change can work standalone, instead of
-introducing intermediate breakage which is only fixed in later commits
-in the series.
+> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> ---
 
-Cheers,
-Daniel
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
