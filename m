@@ -4,130 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 973EAC4707B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 19:14:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC555C4706C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 19:26:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3lKjNL34XfMmAHGqW1/k2gWhSp/4vRXRtfYFh11XOWs=; b=eBC9J7YG8/1peA
-	JlCswcZD9bWqfoMPZQB8s4FwPrNtEt0sr/cGCZj5cemTp9JjjLHKOu4fbs0T8Ba6HG8WeqAprXVB2
-	u2IkC+Yxj9TsSO73xelQeigyieu8za38CLX7JOmu72BJTbeWPFa6VZAFq10/oBuQhNN1MQqTxty3i
-	Bza36KvdxPgJ9lMQ69splXx9DcXwEamXCdTyWqVwAIttqKM80g/4F+pNGRdyXFHinZf/ytK6PJw5u
-	JFmZDMZerKaMQo+O6clsNYtAK0nL57rsRDguc23y08Vr1nbAa+nztB7nzoNvAqHZq7PrsYrSG1Jbe
-	dF9iQJhS2TUNu1O07/Fg==;
+	List-Owner; bh=phgLWpJFhOg9AJAQFo3JLfcn6WtR5ej3Q+8IenWjd2w=; b=1xL+BvWmCsQFGp
+	GNhmVzd8vJsElNIYd2WQNLDDHAVXgjcMT6iX26o4Jyv+oggbI6vzjs+p13aTIOwIwGaO/syZSYa3E
+	Tl7u3zckPqGMh2Devrogcg0ZppaL+N2jxBJ9vtMuoquMJZtZvS4clPn8YzQX2BwPmatNZGcqkzhPr
+	iqUWI8607l7LcwP4ljT1TF3OuKNzY00mf4LFaQsnRQ35zh/e7AcYVCTvTz4pAEBxbCJeZ+SRFos59
+	6OqoQRvyrUAs0cjhL2gdKXXEgJC7uCD6oCU8qRBS0fzmZ/VD0DFWuIN1UOoGCSgNjc0aIKToI9ebo
+	LzFUoJtmJQ/vUq02D9oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNHYm-009FPA-1y;
-	Tue, 09 Jan 2024 19:14:48 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1rNHkJ-009H9h-2a;
+	Tue, 09 Jan 2024 19:26:43 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNHYj-009FNt-0a
-	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jan 2024 19:14:46 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3368abe1093so2893585f8f.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 09 Jan 2024 11:14:41 -0800 (PST)
+	id 1rNHkG-009H7x-0g;
+	Tue, 09 Jan 2024 19:26:41 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-40d5a41143fso36979845e9.3;
+        Tue, 09 Jan 2024 11:26:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704827680; x=1705432480; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=m2MeK/V2qBqsbBcpViEfyXZnDNgIZUZI/pYNdPHh1Hs=;
-        b=TdxURkyhczys1s4uM+V/WXg5O56kB3dN/e7y0iKZzneGJ+Wra7HMrZS2XvqR4VKt2z
-         vW5kS1Vy10F2xcfDUq08lF8yx2UQw3dbQ0lNaXqobmhDcNmhUevWF2XZvpQnmNxkthXG
-         GXj2EN42uwwXPni50LGpJye0oJiY821dBeQKorI5T75Wl1Dm42iEsWuOW7Slf7Arij1V
-         OdzCselMACf/XMDapUwrWRobISEZPU5Xz5nia+3WtLciGwvp1B3hI6mSOTOUSHrmKX1t
-         MN7lfK4TgmB+nuNte/5UOUsIA9WLib92zyRcgr3pDOAr70G75X9fhvzyd9g3RWK6dTe/
-         y2Zw==
+        d=gmail.com; s=20230601; t=1704828397; x=1705433197; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=umKNw6oY7W/GC+6PKYH46lfy8g9nHWoaPdVcGAt9mEE=;
+        b=dBglk8RagPa6zJYtJKE480ViEyd5lCrIiJsQb7waCHOAL3hb+hQjfED/7HXRakgrJz
+         i7PRPfrX+HCG64Sme4SFJwCp6JQrBgKp9qEwzyHoxUG41zMsrDNpJ7enkV7ohdTb7B8M
+         PjfH6oaVolQOtJCxqJ96W8zsOJEq1gvMmFZXitg5WMxLmXH+2Aho4iXKCgpoK/W2PPQ5
+         snpQBzWuvEr9MUb1IsVQfGqKV7wT4Ms7tus8AIY0Ua2K96zf+34DUoCEEWsasdHlExhR
+         NQqtEUEu34dad+brI4i7XmFcAUG5Li6ENFbFGF8cDBhK82VYfXKha7yqXJmUqsiEGBUc
+         5vEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704827680; x=1705432480;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m2MeK/V2qBqsbBcpViEfyXZnDNgIZUZI/pYNdPHh1Hs=;
-        b=UCW4UD40t+GP5r1xI2JY8N+fILAT+KI28Rc1fvHWfx/8+t9W4aG7zFCCteoB2610l+
-         s2KL6siC65kDRzlD2sJ4BJCmks4f0V1zU09qtLqoeS0wCQkc5SqPJ48gMCKWZUXkkImY
-         tkjW6LH3wufNzK8GFR/wbQp1RtKGXOp8NLELRenOVTK4+dhOUwVwNtkvERuXFpSnWThn
-         RygYXcaIKPdKdRepa87y+XICmw658uU6yMKLoW0YVswrBNfvxbicClReLPlsIm0kI/xL
-         Bha/VcaVc/IIIFtqR7ofsYDIc+vWHe3wGSSv4Ol/mfIO1zQx7c+ZyENbt+o+6dEScRQj
-         yTQg==
-X-Gm-Message-State: AOJu0YxqNnErbWX1HkQHI/E6yKVEn7ZghutN//DvjOdXQSqDvs8r+cyZ
-	7/gCVLHAk3+BPO3Z4J2OFGmNLTDFf4E6Rw==
-X-Google-Smtp-Source: AGHT+IEPveZme1aSJDCbiFj3sdF937DxVzMA8fHTv7ZXHrgv/NjeESUoLtztsUyMtXcXvv+38V2v8g==
-X-Received: by 2002:a5d:4a45:0:b0:337:7680:8ccf with SMTP id v5-20020a5d4a45000000b0033776808ccfmr779186wrs.56.1704827680169;
-        Tue, 09 Jan 2024 11:14:40 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id c15-20020adffb0f000000b003374d8306cesm3102746wrr.86.2024.01.09.11.14.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 11:14:39 -0800 (PST)
-Message-ID: <48f1b3cb-0a98-4b14-89f6-e1ca6b858512@linaro.org>
-Date: Tue, 9 Jan 2024 20:14:38 +0100
+        d=1e100.net; s=20230601; t=1704828397; x=1705433197;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=umKNw6oY7W/GC+6PKYH46lfy8g9nHWoaPdVcGAt9mEE=;
+        b=LhO+45wQsUdy6MWxCaBmerNV41E7cOdKenJOoI1myeHqkUyIqc3suKWkD34p4+AJqt
+         5an7spXNNNezltsSKNpY5QzfL3it/HpT8SQV5HHpm/J/VFP6bwAGevaPi0IFojXZMcWa
+         VOmYAdsjf7/VgxC+rfPtbs4YPzLg7ZJHStCwFp1l7QRW9GMdRmbwqqocwKWQ/Z7ZwDIP
+         7hnGN0C/l7fQpFhdd9zin2DGdKeULIloicEEFlMOvl4Va4z3QKpEnua+ahxaW0dLpgXN
+         aVxPa6Uh9BjT1r4jMcxQo7ndbwb3x562PYhvvmFrcF0DrYGmoSjS1/+ozg2oaMkiwOP2
+         ZTBw==
+X-Gm-Message-State: AOJu0Yxmp4lTbLAe9kuGxismAJ0pYev3JNaINdlekTkRUsmWjo9idagv
+	EQIS3ZA/ACqOFrCS1fNgWLQ=
+X-Google-Smtp-Source: AGHT+IH0KeqbQuZiWB45O+iblu+q55Y/2sxdc4eSxm5+N49hgpfamlc2UgeXUeBY/5CoXA6u0w7Z5w==
+X-Received: by 2002:a7b:c4d1:0:b0:40e:4aed:ad27 with SMTP id g17-20020a7bc4d1000000b0040e4aedad27mr1281983wmk.144.1704828397241;
+        Tue, 09 Jan 2024 11:26:37 -0800 (PST)
+Received: from latitude-fedora.lan ([2001:8f8:183b:50fb::d35])
+        by smtp.gmail.com with ESMTPSA id u7-20020a05600c138700b0040d62f97e3csm15672468wmf.10.2024.01.09.11.26.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Jan 2024 11:26:36 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	=?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <szucst@iit.uni-miskolc.hu>,
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jagan Teki <jagan@edgeble.ai>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: enable built-in thermal monitoring on rk3588
+Date: Tue,  9 Jan 2024 23:19:47 +0400
+Message-ID: <20240109192608.5981-1-alchark@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240106222357.23835-1-alchark@gmail.com>
+References: <20240106222357.23835-1-alchark@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: remove duplicate SPI aliases
- for helios64
-Content-Language: en-US
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>
-References: <20240109-rk3399-spi-aliases-v1-0-2009e44e734a@theobroma-systems.com>
- <20240109-rk3399-spi-aliases-v1-2-2009e44e734a@theobroma-systems.com>
- <103b45c8-3e16-480d-9f39-c677da747090@linaro.org> <2258938.QZUTf85G27@diego>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <2258938.QZUTf85G27@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_111445_237047_4F4E3CC1 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20240109_112640_269735_E8CF3D0D 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,28 +100,213 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDkvMDEvMjAyNCAxNjoyMywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gRGllbnN0YWcs
-IDkuIEphbnVhciAyMDI0LCAxNjoxNjoxNSBDRVQgc2NocmllYiBLcnp5c3p0b2YgS296bG93c2tp
-Ogo+PiBPbiAwOS8wMS8yMDI0IDE0OjM1LCBRdWVudGluIFNjaHVseiB3cm90ZToKPj4+IEZyb206
-IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNjaHVsekB0aGVvYnJvbWEtc3lzdGVtcy5jb20+Cj4+
-Pgo+Pj4gQW4gZWFybGllciBjb21taXQgZGVmaW5lZCBhbiBhbGlhcyBmb3IgYWxsIFNQSSBjb250
-cm9sbGVycyBmb3VuZCBvbiB0aGUKPj4+IFJLMzM5OSwgc28gdGhlcmUncyBubyBuZWVkIHRvIGR1
-cGxpY2F0ZSB0aGUgYWxpYXNlcyBpbiBoZWxpb3M2NCdzIGRldmljZQo+Pj4gdHJlZS4KPj4KPj4g
-VGhhdCdzIG5vdCB3aGF0IHdlIHdhbnQuIEJvYXJkcyBzaG91bGQgZGVmaW5lIGFsaWFzZXMgZm9y
-IHdoYXQgaXMKPj4gYXZhaWxhYmxlLCBhY2NvcmRpbmcgdG8gdGhlIGJvYXJkIGxhYmVsaW5nLgo+
-IAo+IGFuZCB0aGUgYm9hcmQgbGFiZWxpbmcgZm9yIHNwaTIgaGFzIGFsd2F5cyBiZWVuIHNwaTIt
-bWlzbywgc3BpMi1taXNvIGV0Yy4KPiBJbiB0aGUgbGFzdCAxMCB5ZWFycyBvZiBkb2luZyBSb2Nr
-Y2hpcCBzdHVmZiwgSSBoYXZlbid0IHNlZW4gYW55IHNjaGVtYXRpYwo+IGRvaW5nIGl0IGRpZmZl
-cmVudGx5LgoKT0ssIHRoaXMgY291bGQgYmUgYSBjYXNlLi4uIGJ1dCB0aGVuIHlvdSBhZGQgYWxp
-YXNlcyBmb3IgdGhpbmdzIHdoaWNoCmFyZSBub3QgbGFiZWxlZCBvbiB0aGUgYm9hcmQuCgpMZXQn
-cyBicmluZyBBcm5kIGFnYWluOgpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hp
-cC9DQUs4UDNhMEFMZ2JoVFZKN3QzWFJYQUxzOXZCTT1YQnZrR2hOS1h4QitRVGVwby0zQVFAbWFp
-bC5nbWFpbC5jb20vCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Include thermal zones information in device tree for rk3588 variants
+and enable the built-in thermal sensing ADC on RADXA Rock 5B
+
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+Changes in v2:
+ - Dropped redundant comments
+ - Included all CPU cores in cooling maps
+ - Split cooling maps into more granular ones utilizing TSADC
+   channels 1-3 which measure temperature by separate CPU clusters
+   instead of channel 0 which measures the center of the SoC die
+---
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 151 ++++++++++++++++++
+ 2 files changed, 155 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index a5a104131403..f9d540000de3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -772,3 +772,7 @@ &usb_host1_ehci {
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&tsadc {
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 8aa0499f9b03..8d54998d0ecc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/ata/ahci.h>
++#include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+ 	compatible = "rockchip,rk3588";
+@@ -2112,6 +2113,156 @@ tsadc: tsadc@fec00000 {
+ 		status = "disabled";
+ 	};
+ 
++	thermal_zones: thermal-zones {
++		/* sensor near the center of the whole chip */
++		soc_thermal: soc-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			sustainable-power = <2100>;
++			thermal-sensors = <&tsadc 0>;
++
++			trips {
++				soc_crit: soc-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
++
++		/* sensor between A76 cores 0 and 1 */
++		bigcore0_thermal: bigcore0-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 1>;
++
++			trips {
++				bigcore0_alert: bigcore0-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				bigcore0_crit: bigcore0-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map0 {
++					trip = <&bigcore0_alert>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					contribution = <1024>;
++				};
++			};
++		};
++
++		/* sensor between A76 cores 2 and 3 */
++		bigcore2_thermal: bigcore2-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 2>;
++
++			trips {
++				bigcore2_alert: bigcore2-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				bigcore2_crit: bigcore2-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map1 {
++					trip = <&bigcore2_alert>;
++					cooling-device =
++						<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					contribution = <1024>;
++				};
++			};
++		};
++
++		/* sensor between the four A55 cores */
++		little_core_thermal: littlecore-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 3>;
++
++			trips {
++				littlecore_alert: littlecore-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++				littlecore_crit: littlecore-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++			cooling-maps {
++				map2 {
++					trip = <&littlecore_alert>;
++					cooling-device =
++						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++					contribution = <1024>;
++				};
++			};
++		};
++
++		/* sensor near the PD_CENTER power domain */
++		center_thermal: center-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 4>;
++
++			trips {
++				center_crit: center-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
++
++		gpu_thermal: gpu-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 5>;
++
++			trips {
++				gpu_crit: gpu-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
++
++		npu_thermal: npu-thermal {
++			polling-delay-passive = <20>;
++			polling-delay = <1000>;
++			thermal-sensors = <&tsadc 6>;
++
++			trips {
++				npu_crit: npu-crit {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
++	};
++
+ 	saradc: adc@fec10000 {
+ 		compatible = "rockchip,rk3588-saradc";
+ 		reg = <0x0 0xfec10000 0x0 0x10000>;
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
