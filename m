@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24967C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 15:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E7B2C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jan 2024 15:16:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=epbChYqUpR3mHID+sL0+tox2HzjNpUf7Z8FCi6t8qok=; b=fmhFHOBg+yzIAp
-	G15+HqK+ouq/GVwIRQZYQ9K4DO1kW2du/SXfCa0G9USBjJXSS6BzoU7t8nCr7YKzCJFnnLLRnx+Q0
-	ypBbBAK4turxtaQBTtRJbQGUahsiR3zlIxqMyPpQ+p2MDAeio/zNrE8X8VTLXr1N3MXJ1jvj11PiY
-	3DyGU4l0SJIo0IocO4+SiP+Ia5x4m5WPoHG9EKZZfBVg9ldwSVDJiBej+lMPAU71/usR5vXs63Tlr
-	pV/nhx0tw6rEx5XDL6isJqvnS+wiaENK2IiXKEeyWA9CRSici2TTctLCDyotbYUwSrurizX2xlVaq
-	z0a/rEwRrkle+MMQAx8w==;
+	List-Owner; bh=RXYhLc+pS6RS5wWtq2+73XGircCzJd8KdQqjnfXX1Ag=; b=dkYuYcC3B1Yos0
+	42YON2vXF7H+Boq6ladYV6+V/ju9TE2zRhn57c8pn9B0sq7lpLb/DtaH+PF6YLfPQ0/q6Hu3om4Vz
+	jK+L5hkp1c/HmcVv5b0+iNwKaz7Y/FZThPFmPuUX7OBr5X2vXIfXu//OEOa65M/Sit6gOPhTYZq/P
+	SEkF+cXXoTuSBTvWn15EILGLOw/0sO6OdiSaTdqSQH5ZNIFfE6qrR//umoIXaix9AiYR0lhAF3bdR
+	FtJ5Vw4WDIPzz5etdYvnFer4ca7ZX6LEk5YCYzgA34ZSUzkH/AqtYIrtvkmpQh/ZYe1PyKBit7u+s
+	I8/7oMNmiDelgde0LSfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNDpI-008d6u-34;
-	Tue, 09 Jan 2024 15:15:36 +0000
+	id 1rNDq1-008dIX-2b;
+	Tue, 09 Jan 2024 15:16:21 +0000
 Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNDpG-008d6V-0S
+	id 1rNDpy-008dHa-2D
 	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jan 2024 15:15:35 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3366e78d872so3311387f8f.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 09 Jan 2024 07:15:33 -0800 (PST)
+	Tue, 09 Jan 2024 15:16:19 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-336dcebcdb9so3197726f8f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 09 Jan 2024 07:16:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704813332; x=1705418132; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1704813377; x=1705418177; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=24M+4beCvcf8dZJS2wUWTIVSZ4v6f773ejW3RnRoqfg=;
-        b=ai6hLuj93re1rsuZzajO0+zeVe9X2W5TCmGR/FB8xRgTzFoLhxcHLh0sH/ACtNi8Xh
-         XARqXvlUO/zE37ulgQhPefymgCet/bQxmQ9dBing8ca2L+4+JdUX0zdY90MRRTqhI+zl
-         3XMiA1egqHmaXljyEob3qPXMwKsmcIvCGviz1/QMnW5A4t/z8jE8pBx37hvhPgJGOSrH
-         9eg/a6yxSFgpZgZC0LTv9TcRc2Cq4I6m/1IH0oB+pSiCQX0rMIrKs4nPKnsjUWKNyPKD
-         avRTqrwxitsCDh7kBMcr1CkU21d9/kgou4IunqeaIDd4mt94NEuaELvHKY4WcvTnT2Vl
-         b46g==
+        bh=vMaaM4nO+t6Lh+yeQOmhcF9DwBegIxkBM69Bdz+nMO0=;
+        b=TYVn5k37yRTt9shBZabxCyR3GfWDUCgWptq8f4bQj+SVhcxRcIeDyyUc59gLFWQXkb
+         iQiXzNZu/p2GIlqAfVrS7HhnCPVRXfEyWYBj+uHh9pLfcXbWyVryl2r6JSpCFQCvz0DA
+         MiO07YAYSQDz5LlAEBIf6h+pQCzs1QoCrmNEQgs3AdehJMOAAxWkX5T3kw00qsLSJNWZ
+         JUNobvTof+MLf0Zq74qLfqhFIIYjEiAFvNAajE7B/pbmgxcvEsPu1yzm3DJr3OfuZo7j
+         Zdz4PyEl5QjmlrKnCoslQbDY7ydUIaYq/4rVxNeAZMovg7zUZNVLU6w9g9+iFzKohPyG
+         h+aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704813332; x=1705418132;
+        d=1e100.net; s=20230601; t=1704813377; x=1705418177;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=24M+4beCvcf8dZJS2wUWTIVSZ4v6f773ejW3RnRoqfg=;
-        b=KgWLHWrwpYh9bHiKcXrlHcMEHIiZpHtjqa2/k0c45cE8h3R/tHcRUtJEjHbKb4b1JN
-         DFAdAHVyIu/VptdeQ6kcOSoPCPAeEMA7OxwwwJ6XVB1gesNWLBQY2B2NOVc9BO9vETAm
-         vpQ/jOeqF47gkOFzTAo5q7mzhkJjATxpxZVnXs0I6mViR0RFrWSBanj0FWknmJ71atCT
-         Tq8aKY4LN587nrnFVCWROpuOkKu7aykGCNquz9SqnY8awdGCrQWSnrDH4XmSy/WwVHnp
-         xI5Vx03UUSEvqyMJao7vfqeoioatlLTy9dEyNrsrHD11FtEPrQ+LCHKKlmgRZgEF5oFF
-         8Y2g==
-X-Gm-Message-State: AOJu0YwclywOKCqtRDhaL5HDxF2CmmdZ+YHQaDW9DxGzPPdU76Uj/qnJ
-	WiDbozMEd+/fdAXrajn2jl866F1MGMG05Q==
-X-Google-Smtp-Source: AGHT+IG6V62p3LglXpXOmc6pIxrMiwBBX+RAd4o9gRxq+0Uvr3h7PwxkmRH3w4t2Y0Y8gpqGCTYZAg==
-X-Received: by 2002:a05:6000:1942:b0:336:6ebb:704f with SMTP id e2-20020a056000194200b003366ebb704fmr365226wry.122.1704813332593;
-        Tue, 09 Jan 2024 07:15:32 -0800 (PST)
+        bh=vMaaM4nO+t6Lh+yeQOmhcF9DwBegIxkBM69Bdz+nMO0=;
+        b=NTeKm+yCfTtSO8TcwdSIgtOQJ852zYm7cKg7rDTooZ3apBtHogSk0ctQVbkRMRoWj4
+         Tp9qVNZAmYhBU3w7PiS3QJPPWfDEH4pChxuSahlkCSyMeCiXlaAj1cZBtE3yHe56ENNx
+         4lTZjM71y5GKF0FwD2/UySkg+p+SeErObAIqLHFGMiliWUSPYs2bmDp7p6yCq6omPiB7
+         Q71ITY6zA1m+FfLpuqNHrQ717xizRZ9ZHqzunoOmxaRYeF38QNsbZEsq3umqG84Jt2cD
+         ZMbzsiKpfvcbrJqGLTUgXk5LHZqTn5WhZmgRx18SIGh5EqQurZtn62RRxBqX5w/SBnUH
+         V9Ww==
+X-Gm-Message-State: AOJu0YyhuRg0vmXFz1CYbyku+W9UI5dYLO/ggHgRamUvNN0DSa+oLMMV
+	twBRuyToSc4ZuZiyqnHZNGTsCo8TmSjkoA==
+X-Google-Smtp-Source: AGHT+IGhAsmfeHaPURFXxUfLzCkjoc64uD0WcMUJgxCfFySlkBRR59ITnIcVl1fndci+UVvMjSzymQ==
+X-Received: by 2002:adf:e19d:0:b0:336:5383:a726 with SMTP id az29-20020adfe19d000000b003365383a726mr332327wrb.165.1704813377385;
+        Tue, 09 Jan 2024 07:16:17 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id h16-20020a05600004d000b003367ff4aadasm2653977wri.31.2024.01.09.07.15.30
+        by smtp.gmail.com with ESMTPSA id h16-20020a05600004d000b003367ff4aadasm2653977wri.31.2024.01.09.07.16.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Jan 2024 07:15:31 -0800 (PST)
-Message-ID: <685047b0-a907-49c6-919b-e46976d8ef7b@linaro.org>
-Date: Tue, 9 Jan 2024 16:15:30 +0100
+        Tue, 09 Jan 2024 07:16:16 -0800 (PST)
+Message-ID: <103b45c8-3e16-480d-9f39-c677da747090@linaro.org>
+Date: Tue, 9 Jan 2024 16:16:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add spi controller aliases on
- rk3399
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: remove duplicate SPI aliases
+ for helios64
 Content-Language: en-US
 To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -76,7 +76,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Quentin Schulz <quentin.schulz@theobroma-systems.com>
 References: <20240109-rk3399-spi-aliases-v1-0-2009e44e734a@theobroma-systems.com>
- <20240109-rk3399-spi-aliases-v1-1-2009e44e734a@theobroma-systems.com>
+ <20240109-rk3399-spi-aliases-v1-2-2009e44e734a@theobroma-systems.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -122,10 +122,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240109-rk3399-spi-aliases-v1-1-2009e44e734a@theobroma-systems.com>
+In-Reply-To: <20240109-rk3399-spi-aliases-v1-2-2009e44e734a@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240109_071534_185157_B083B9BF 
-X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-CacheID: sfid-20240109_071618_731456_9D4FE0DF 
+X-CRM114-Status: UNSURE (   8.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -146,21 +146,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 09/01/2024 14:35, Quentin Schulz wrote:
 > From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 > 
-> There are 6 SPI controllers on RK3399 and they are all numbered in the
-> TRM, so let's add the appropriate aliases to the main DTSI so that any
-> RK3399-based board doesn't need to define the aliases themselves to
-> benefit from stable SPI indices in userspace.
+> An earlier commit defined an alias for all SPI controllers found on the
+> RK3399, so there's no need to duplicate the aliases in helios64's device
+> tree.
 
-But that contradicts the point that board should define aliases for
-exposable interfaces. Sorry, that's a NAK.
-
-> 
-> Cc: Quentin Schulz <foss+kernel@0leil.net>
-
-No need to Cc yourself...
-
-> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> ---
+That's not what we want. Boards should define aliases for what is
+available, according to the board labeling.
 
 Best regards,
 Krzysztof
