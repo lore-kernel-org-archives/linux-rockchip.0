@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE00C3DA6E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jan 2024 10:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F2A2C3DA6E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jan 2024 10:48:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gLTAiINtZcaM+F8JCKF/wsUj3XLoHHzYhLX0x1AJvxo=; b=Vt+qHxaeEER9gj
-	e+Rr2GJbhI8zjNp615q6V1YJpq0Rbr7fM0pBFV8/B8gkZt/oyxud15IAeGnA3PVL4AEnR9Ud/3JP/
-	PkWMJTZ+2Ml4TfgGeY2EjaxVaoWeVAo/tzBmX3EJP2Qhyn1tjgUaymyanAn1aw/BS72woBFsiwfeI
-	7GzDK7txtoQg0+y6XsF2/nYSmiXvGrzq9lxcyNLYkXv+9TR0whPPAwUXglPFlorrfCSD8qMe5g8kB
-	e6gZJ101iA49+h1JrtTjMLlVfnIpCYIBMef10x91/nuTMoUeaHrRJICXSHerdupHEZdReccjJWoQw
-	YwOXK9DcY+KuLsKguDUQ==;
+	List-Owner; bh=xGengCOHbittJ0VCnLfN/bpMbY/++VozaAfrUnnSb6k=; b=TEE+mi3K7DiQXn
+	FZo2RWBnh+Jy68v4Zf5C7gUIpq0wOA3i4rUsjCNN/oubbtCwWPCEyMoEKgaX2NlrrEq8kuha/1K08
+	ev9wyPq49wAFIaJgb6IGGtQQoh3P8T5KLQMM778zm3G1v6lX4f8/ITYsZcHmMAAPZXWGICajJ3lIw
+	Z53EC67MlXQ+pnn/qyHhKVMB5qIwLHT5hnel42d5DhqBqVRfOuNYUZksR2huu1PAoddfXMNOnY1N3
+	LE0TSPB0oDYpqxCjxWNU5F2Njn16iNebzYgSUpfDCutkA+QwKX44SB8nPL4Qch58V5Utvtln9A8iE
+	+eZILz0qYkx9uhE9HMHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNW7e-00B5RL-0E;
-	Wed, 10 Jan 2024 10:47:46 +0000
-Received: from mx08-00178001.pphosted.com ([91.207.212.93])
+	id 1rNW8C-00B5pZ-0c;
+	Wed, 10 Jan 2024 10:48:20 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNW7W-00B5Kx-0g;
-	Wed, 10 Jan 2024 10:47:41 +0000
-Received: from pps.filterd (m0369457.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 40A9DPKa014680;
-	Wed, 10 Jan 2024 11:47:03 +0100
+	id 1rNW89-00B5nn-2G;
+	Wed, 10 Jan 2024 10:48:19 +0000
+Received: from pps.filterd (m0046661.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 40A9VLDp006375;
+	Wed, 10 Jan 2024 11:48:06 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
 	from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding:content-type; s=
-	selector1; bh=bKDY4JqLAfcTateE5N/zYQ2tWG6qV9HCBIu52pV908A=; b=5p
-	p79yS2VDtFRjVElOOwdF614vkiyhkEebwsdlkx/XwzTg/Ti0VD14wpMbeEbaCbFj
-	xpevF3oMEVA/himLk+gzshH8B89mK+I3+mRaoNNU/TmFa4XarMe/Dq5w5X1Uqrjr
-	o7zT9l4Ubjcpgzj+EVXJYXQK1seke+q7Dn5j3xaVVeA8S7mJHqoB+zJ24zMLwLev
-	p+4xYxd/4BHl90iqNeah9QaWIePuNcZEAN3zO+7HScYMn5rsbEcFHdp+VND1mgvL
-	s/ixkSF+8re1eY64Ac9nfA3LxYXTEP7HbohwLhP21BkayvMDbhZ3pDaEtJnY4wc4
-	Y42PdFs0hGXlQROyJDUQ==
+	selector1; bh=XYFUPkHCquAfdm1z7WpruAcO8XbDhwQU7gWaIj3jlwc=; b=si
+	5w8zvvujTnSCB03AnYmiGORVogLCdq91EPMdw6iymjR5O+ICM/jQyrYMFbz5hbFA
+	66zZ6FoIdsaeUsaDsbjYhbMm+wUQh3TpxgCUcWb//79aPs+XiQrU6JdUCpJvYAzA
+	PzIAj/cDC9JRqLZQt7JwTc4vLLIEI3PftTQwYlPsd99f8kkDU2zlejYHNN23nQV8
+	jPgDBQOQqo/B1izhWB2UfZ6TRa7ek9A0eptbsMs0Wd8N+5gEGnJrZ/KfXrq3dobl
+	eGENXqC6p7NfP5AB5AGolb1ItKRW1SqJrsYIEX04HW8o82EoVwFcdQ3l5heXX2K6
+	IOxk4qkB81SEyN2MEdiQ==
 Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3vfjpnwk0s-1
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3vexmffv8v-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 10 Jan 2024 11:47:03 +0100 (CET)
+	Wed, 10 Jan 2024 11:48:05 +0100 (CET)
 Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 80ABB10002A;
-	Wed, 10 Jan 2024 11:47:02 +0100 (CET)
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 1020710002A;
+	Wed, 10 Jan 2024 11:48:05 +0100 (CET)
 Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 7363326C046;
-	Wed, 10 Jan 2024 11:47:02 +0100 (CET)
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id F132A26C050;
+	Wed, 10 Jan 2024 11:48:04 +0100 (CET)
 Received: from localhost (10.201.20.120) by SHFDAG1NODE1.st.com (10.75.129.69)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 10 Jan
- 2024 11:47:02 +0100
+ 2024 11:48:04 +0100
 From: Hugues Fruchet <hugues.fruchet@foss.st.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
         Philipp Zabel
@@ -86,9 +86,9 @@ CC: Hugues Fruchet <hugues.fruchet@foss.st.com>,
         Marco Felsch
 	<m.felsch@pengutronix.de>,
         Adam Ford <aford173@gmail.com>
-Subject: [RESEND PATCH v6 2/5] media: hantro: add support for STM32MP25 VDEC
-Date: Wed, 10 Jan 2024 11:46:39 +0100
-Message-ID: <20240110104642.532011-3-hugues.fruchet@foss.st.com>
+Subject: [RESEND PATCH v6 5/5] arm64: dts: st: add video encoder support to stm32mp255
+Date: Wed, 10 Jan 2024 11:46:42 +0100
+Message-ID: <20240110104642.532011-6-hugues.fruchet@foss.st.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240110104642.532011-1-hugues.fruchet@foss.st.com>
 References: <20240110104642.532011-1-hugues.fruchet@foss.st.com>
@@ -100,8 +100,9 @@ X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-01-05_08,2024-01-05_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240110_024738_545973_F0B8F8F6 
-X-CRM114-Status: GOOD (  21.82  )
+X-CRM114-CacheID: sfid-20240110_024818_023935_B42552CD 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,199 +119,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for STM32MP25 VDEC video hardware decoder.
-Support of H264/VP8 decoding.
-No post-processor support.
-VDEC has its own reset/clock/irq.
+Add VENC hardware video encoder support to STM32MP255.
 
-Successfully tested up to full HD.
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hugues Fruchet <hugues.fruchet@foss.st.com>
 ---
- drivers/media/platform/verisilicon/Kconfig    | 14 ++-
- drivers/media/platform/verisilicon/Makefile   |  3 +
- .../media/platform/verisilicon/hantro_drv.c   |  3 +
- .../media/platform/verisilicon/hantro_hw.h    |  1 +
- .../platform/verisilicon/stm32mp25_vpu_hw.c   | 96 +++++++++++++++++++
- 5 files changed, 114 insertions(+), 3 deletions(-)
- create mode 100644 drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
+ arch/arm64/boot/dts/st/stm32mp251.dtsi | 6 ++++++
+ arch/arm64/boot/dts/st/stm32mp255.dtsi | 7 +++++++
+ 2 files changed, 13 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/Kconfig b/drivers/media/platform/verisilicon/Kconfig
-index 24b927d8f182..9a34d14c6e40 100644
---- a/drivers/media/platform/verisilicon/Kconfig
-+++ b/drivers/media/platform/verisilicon/Kconfig
-@@ -4,7 +4,7 @@ comment "Verisilicon media platform drivers"
- 
- config VIDEO_HANTRO
- 	tristate "Hantro VPU driver"
--	depends on ARCH_MXC || ARCH_ROCKCHIP || ARCH_AT91 || ARCH_SUNXI || COMPILE_TEST
-+	depends on ARCH_MXC || ARCH_ROCKCHIP || ARCH_AT91 || ARCH_SUNXI || ARCH_STM32 || COMPILE_TEST
- 	depends on V4L_MEM2MEM_DRIVERS
- 	depends on VIDEO_DEV
- 	select MEDIA_CONTROLLER
-@@ -15,8 +15,8 @@ config VIDEO_HANTRO
- 	select V4L2_VP9
- 	help
- 	  Support for the Hantro IP based Video Processing Units present on
--	  Rockchip and NXP i.MX8M SoCs, which accelerate video and image
--	  encoding and decoding.
-+	  Rockchip, NXP i.MX8M and STM32MP25 SoCs, which accelerate video
-+	  and image encoding and decoding.
- 	  To compile this driver as a module, choose M here: the module
- 	  will be called hantro-vpu.
- 
-@@ -51,3 +51,11 @@ config VIDEO_HANTRO_SUNXI
- 	default y
- 	help
- 	  Enable support for H6 SoC.
+diff --git a/arch/arm64/boot/dts/st/stm32mp251.dtsi b/arch/arm64/boot/dts/st/stm32mp251.dtsi
+index cd6c4f627739..1584debca7f5 100644
+--- a/arch/arm64/boot/dts/st/stm32mp251.dtsi
++++ b/arch/arm64/boot/dts/st/stm32mp251.dtsi
+@@ -58,6 +58,12 @@ ck_icn_p_vdec: ck-icn-p-vdec {
+ 			compatible = "fixed-clock";
+ 			clock-frequency = <200000000>;
+ 		};
 +
-+config VIDEO_HANTRO_STM32MP25
-+	bool "Hantro STM32MP25 support"
-+	depends on VIDEO_HANTRO
-+	depends on ARCH_STM32 || COMPILE_TEST
-+	default y
-+	help
-+	  Enable support for STM32MP25 SoCs.
-diff --git a/drivers/media/platform/verisilicon/Makefile b/drivers/media/platform/verisilicon/Makefile
-index 6ad2ef885920..eb38a1833b02 100644
---- a/drivers/media/platform/verisilicon/Makefile
-+++ b/drivers/media/platform/verisilicon/Makefile
-@@ -39,3 +39,6 @@ hantro-vpu-$(CONFIG_VIDEO_HANTRO_ROCKCHIP) += \
++		ck_icn_p_venc: ck-icn-p-venc {
++			#clock-cells = <0>;
++			compatible = "fixed-clock";
++			clock-frequency = <200000000>;
++		};
+ 	};
  
- hantro-vpu-$(CONFIG_VIDEO_HANTRO_SUNXI) += \
- 		sunxi_vpu_hw.o
+ 	firmware {
+diff --git a/arch/arm64/boot/dts/st/stm32mp255.dtsi b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+index aea5096dac3c..17f197c5b22b 100644
+--- a/arch/arm64/boot/dts/st/stm32mp255.dtsi
++++ b/arch/arm64/boot/dts/st/stm32mp255.dtsi
+@@ -14,6 +14,13 @@ vdec: vdec@480d0000 {
+ 				interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+ 				clocks = <&ck_icn_p_vdec>;
+ 			};
 +
-+hantro-vpu-$(CONFIG_VIDEO_HANTRO_STM32MP25) += \
-+		stm32mp25_vpu_hw.o
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index db3df6cc4513..fe8e2240324c 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -735,6 +735,9 @@ static const struct of_device_id of_hantro_match[] = {
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_SUNXI
- 	{ .compatible = "allwinner,sun50i-h6-vpu-g2", .data = &sunxi_vpu_variant, },
-+#endif
-+#ifdef CONFIG_VIDEO_HANTRO_STM32MP25
-+	{ .compatible = "st,stm32mp25-vdec", .data = &stm32mp25_vdec_variant, },
- #endif
- 	{ /* sentinel */ }
++			venc: venc@480e0000 {
++				compatible = "st,stm32mp25-venc";
++				reg = <0x480e0000 0x800>;
++				interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>;
++				clocks = <&ck_icn_ls_mcu>;
++			};
+ 		};
+ 	};
  };
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 9aec8a79acdc..0b4806f67630 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -408,6 +408,7 @@ extern const struct hantro_variant rk3568_vpu_variant;
- extern const struct hantro_variant rk3588_vpu981_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- extern const struct hantro_variant sunxi_vpu_variant;
-+extern const struct hantro_variant stm32mp25_vdec_variant;
- 
- extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
- extern const struct hantro_postproc_ops hantro_g2_postproc_ops;
-diff --git a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-new file mode 100644
-index 000000000000..6af6edcb6650
---- /dev/null
-+++ b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-@@ -0,0 +1,96 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * STM32MP25 video codec driver
-+ *
-+ * Copyright (C) STMicroelectronics SA 2024
-+ * Authors: Hugues Fruchet <hugues.fruchet@foss.st.com>
-+ *          for STMicroelectronics.
-+ *
-+ */
-+
-+#include "hantro.h"
-+
-+/*
-+ * Supported formats.
-+ */
-+
-+static const struct hantro_fmt stm32mp25_vdec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_VP8_FRAME,
-+		.codec_mode = HANTRO_MODE_VP8_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.codec_mode = HANTRO_MODE_H264_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+};
-+
-+/*
-+ * Supported codec ops.
-+ */
-+
-+static const struct hantro_codec_ops stm32mp25_vdec_codec_ops[] = {
-+	[HANTRO_MODE_VP8_DEC] = {
-+		.run = hantro_g1_vp8_dec_run,
-+		.reset = hantro_g1_reset,
-+		.init = hantro_vp8_dec_init,
-+		.exit = hantro_vp8_dec_exit,
-+	},
-+	[HANTRO_MODE_H264_DEC] = {
-+		.run = hantro_g1_h264_dec_run,
-+		.reset = hantro_g1_reset,
-+		.init = hantro_h264_dec_init,
-+		.exit = hantro_h264_dec_exit,
-+	},
-+};
-+
-+/*
-+ * Variants.
-+ */
-+
-+static const struct hantro_irq stm32mp25_vdec_irqs[] = {
-+	{ "vdec", hantro_g1_irq },
-+};
-+
-+static const char * const stm32mp25_vdec_clk_names[] = { "vdec-clk" };
-+
-+const struct hantro_variant stm32mp25_vdec_variant = {
-+	.dec_fmts = stm32mp25_vdec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(stm32mp25_vdec_fmts),
-+	.codec = HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
-+	.codec_ops = stm32mp25_vdec_codec_ops,
-+	.irqs = stm32mp25_vdec_irqs,
-+	.num_irqs = ARRAY_SIZE(stm32mp25_vdec_irqs),
-+	.clk_names = stm32mp25_vdec_clk_names,
-+	.num_clocks = ARRAY_SIZE(stm32mp25_vdec_clk_names),
-+};
 -- 
 2.25.1
 
