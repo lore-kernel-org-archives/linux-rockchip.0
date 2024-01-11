@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63C3FC47077
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jan 2024 13:01:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9090C47077
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jan 2024 13:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GELIKhR3IQ5NdZwVZTDkYxOeVWzZuo1UT7hk6FZwL0o=; b=TV0zwYrnfH5gwU
-	L4XVtRUcd78cYzh5F7m36O9IZM9VF7L5niNAUivTufcXoqMZfdt/KnxlF+uwVeONTDwMSkLHU+Epx
-	lbWlOT3CMn7J6gLmSdxnrxIjY/1dOjGrrXbuHeLTLIGQ8HiMs4MHxnATq4mnioW2QnqNmWpkAtNQg
-	4IP//ghVmxQ5WJE3kTTL/Ln22vwDhY6QUysW3CQ3UGur1Xb+tlzSWqvErFTYcjwPcdaOLzX4zg9O2
-	WIuBW2o2ikrcCiMC7qMqRTCn/tu+emNbF8tQvze4evjZ/34Lfi/Br7hWE5aUZz+Oa8HVWEOYFnFbC
-	99r0KkwlUstsiP5N6KgA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NIOu3HRjJsCyrhj/YS2R3q0g/Qa0/XECVZS2z/qnkjw=; b=0MtVBSf39+n/zB
+	iKyb+Yvxk7tlHt55co9jhf7jJmGaoFPZaGkY7HL/PXjUO0htFU7Pp3IJ6nHK+E4WCICZ4tTuuymgv
+	BZO3ewP7rFyJ89Z9LekMDrC4XsCZ1dXuHAf7sZnSd+8QvlsJOldtJheeSvnKZn91o5JWMDMRz47cl
+	LQSWrg125+QMt1ilmjzqPf14oMuEq46WdAfP2KWDXj8fqC+I6iMHGoVr6TGbCuNEYVyca/HnsHuPV
+	dOraAIBLuxKxfmVSk0ereamaJ9h7RUGj8ws/w8DuTgw2WpvW3tCaAxtqRDJVw3r+tMCwpo5suxb3A
+	nY8V5rP1wJOdI/+xR53g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNug9-0005S9-2b;
-	Thu, 11 Jan 2024 13:01:03 +0000
+	id 1rNug8-0005Rg-2w;
+	Thu, 11 Jan 2024 13:01:00 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNtZG-00HTaU-37;
-	Thu, 11 Jan 2024 11:49:52 +0000
+	id 1rNtYL-00HSZZ-2H
+	for linux-rockchip@lists.infradead.org;
+	Thu, 11 Jan 2024 11:48:55 +0000
 Received: from pyrite.hamster-moth.ts.net (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D284F15B5;
-	Thu, 11 Jan 2024 12:48:38 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CC110AF2;
+	Thu, 11 Jan 2024 12:47:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1704973724;
-	bh=K70IzSs6vgDWbdrp4Sy/MWQlESNUan8JBoy4snxEayc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b+9Qjq9iD8M+LfxDOudOl1+Y881geg2VjrvA8+Fqu2NIuR/FbXpTH2iggyJZ1Dmj9
-	 6u/g1eHuIx9akd5N3Fu6cE4RZ/+ODtVCioCp1QzOZWkxFSJJ3PKkUDANwSuguLCRhF
-	 c1EaXq8Ltoo8L3v5IhP9yjTehe1/60cyi6mzfrtA=
+	s=mail; t=1704973660;
+	bh=IT/dSv/sXBNNPMmmgP7PVDiGi4ZhUZuM0hCfxcY7kLI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=P5wlqEyV5abgevpcmepyaIsa8hSe40UWN7thB04bMmPDefxOE+97iqj4eFmPBAI2O
+	 VVhzMhFDp1ektIGU+6mtXidghlOGdXzEfNE1r5CBJfGmh74bM6KJtJWyyiwgH793Kz
+	 CWfVUKNnSBM5jZi04Y+yMqR1qgIM5o+zn5648j8o=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
@@ -44,24 +45,15 @@ Cc: kieran.bingham@ideasonboard.com,
 	tomi.valkeinen@ideasonboard.com,
 	umang.jain@ideasonboard.com,
 	aford173@gmail.com,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v6 10/11] media: rkisp1: Add UYVY as an output format
-Date: Thu, 11 Jan 2024 20:48:30 +0900
-Message-Id: <20240111114831.656736-11-paul.elder@ideasonboard.com>
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: [PATCH v6 00/11] media: rkisp1: Add support for i.MX8MP
+Date: Thu, 11 Jan 2024 20:48:20 +0900
+Message-Id: <20240111114831.656736-1-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240111114831.656736-1-paul.elder@ideasonboard.com>
-References: <20240111114831.656736-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_034951_223414_1674A73C 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20240111_034853_912240_07180103 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,94 +70,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for UYVY as an output format. The uv_swap bit in the
-MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
-work for packed YUV formats. Thus, UYVY support is implemented via
-byte-swapping. This method clearly does not work for implementing
-support for YVYU and VYUY.
+This patch series depends on the series "media: rkisp1: Fix shared
+interrupt handling" [1]
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-Tested-by: Adam Ford <aford173@gmail.com>
----
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 41 +++++++++++++++++++
- 1 file changed, 41 insertions(+)
+This series extends the rkisp1 driver to support the ISP found in the
+NXP i.MX8MP SoC.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index bf63f78dc48c..813d4274f118 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -231,6 +237,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -464,6 +477,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-@@ -507,6 +534,20 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
+The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
+and in the NXP i.MX8MP have the same origin, and have slightly diverged
+over time as they are now independently developed (afaik) by Rockchip
+and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
+and is close enough to the RK3399 ISP that it can easily be supported by
+the same driver.
+
+The last two patches add support for UYVY output format, which can be
+implemented on the ISP version in the i.MX8MP but not in the one in the
+RK3399.
+
+This version of the series specifically has been tested on a Polyhex
+Debix model A with an imx219 (Raspberry Pi cam v2).
+
+v6 adds an extra patch at to fix endinanness issues on raw streams on
+the i.MX8MP.
+
+In v5 the patch "media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP" has been
+dropped.
+
+[1] https://lore.kernel.org/all/20231218-rkisp-shirq-fix-v1-0-173007628248@ideasonboard.com/
+
+Laurent Pinchart (2):
+  media: rkisp1: Add and use rkisp1_has_feature() macro
+  media: rkisp1: Configure gasket on i.MX8MP
+
+Paul Elder (9):
+  media: rkisp1: Support setting memory stride for main path
+  media: rkisp1: Support devices lacking self path
+  media: rkisp1: Support devices lacking dual crop
+  dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+  media: rkisp1: Add match data for i.MX8MP ISP
+  media: rkisp1: Support i.MX8MP's 34-bit DMA
+  media: rkisp1: Add YC swap capability
+  media: rkisp1: Add UYVY as an output format
+  media: rkisp1: Fix endianness on raw streams on i.MX8MP
+
+ .../bindings/media/rockchip-isp1.yaml         |  37 ++-
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 219 +++++++++++++-----
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  39 +++-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     |  73 +++++-
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 ++++++++++-
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    |  35 +++
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c |  12 +-
+ include/uapi/linux/rkisp1-config.h            |   2 +
+ 8 files changed, 470 insertions(+), 78 deletions(-)
+
 -- 
 2.39.2
 
