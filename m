@@ -4,56 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9090C47077
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jan 2024 13:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12451C47077
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jan 2024 16:07:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NIOu3HRjJsCyrhj/YS2R3q0g/Qa0/XECVZS2z/qnkjw=; b=0MtVBSf39+n/zB
-	iKyb+Yvxk7tlHt55co9jhf7jJmGaoFPZaGkY7HL/PXjUO0htFU7Pp3IJ6nHK+E4WCICZ4tTuuymgv
-	BZO3ewP7rFyJ89Z9LekMDrC4XsCZ1dXuHAf7sZnSd+8QvlsJOldtJheeSvnKZn91o5JWMDMRz47cl
-	LQSWrg125+QMt1ilmjzqPf14oMuEq46WdAfP2KWDXj8fqC+I6iMHGoVr6TGbCuNEYVyca/HnsHuPV
-	dOraAIBLuxKxfmVSk0ereamaJ9h7RUGj8ws/w8DuTgw2WpvW3tCaAxtqRDJVw3r+tMCwpo5suxb3A
-	nY8V5rP1wJOdI/+xR53g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=92Hsbs4STzr7MgpHaIK97eRP/4DVOor3csyaVXtSOJk=; b=SBCaN8bNwALMdt
+	LYTTgKaMEj5CD0bhLw+Vgz23FkCwYUmOKdOsROXl4AO89s1uwd2PIrzatrTrM+vrmwA17gqbQ+eTw
+	3czT7ZhhJH9CElSAyQIIDQXNHXstMo30Wlwv4kJ1EPc4vx9gre69FkvTLNGFwzDsiQMoN6B3AMbyI
+	NGitldlnloH6r5d3blZLNgqeBzap2xsLSLHOV7Fi6G1+oQCefO0vDx9NbuzDI/MOvEyIR+LG4cDbz
+	uejXrWNn4b8W0p/iuBhZU8bybNiX/RPCf/U+6lAZP89NVtR3LTqyrHkBQBmdB8chHZ01pVsHb4lWW
+	UnSSo5kHLsWGQXcR9TfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNug8-0005Rg-2w;
-	Thu, 11 Jan 2024 13:01:00 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rNxag-000XNG-2P;
+	Thu, 11 Jan 2024 16:07:34 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rNtYL-00HSZZ-2H
+	id 1rNxad-000XKr-16
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jan 2024 11:48:55 +0000
-Received: from pyrite.hamster-moth.ts.net (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CC110AF2;
-	Thu, 11 Jan 2024 12:47:37 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1704973660;
-	bh=IT/dSv/sXBNNPMmmgP7PVDiGi4ZhUZuM0hCfxcY7kLI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=P5wlqEyV5abgevpcmepyaIsa8hSe40UWN7thB04bMmPDefxOE+97iqj4eFmPBAI2O
-	 VVhzMhFDp1ektIGU+6mtXidghlOGdXzEfNE1r5CBJfGmh74bM6KJtJWyyiwgH793Kz
-	 CWfVUKNnSBM5jZi04Y+yMqR1qgIM5o+zn5648j8o=
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: linux-media@vger.kernel.org,
+	Thu, 11 Jan 2024 16:07:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1704989248;
+	bh=4Ntkv53/ay1b9IY+9lgJ2+STZE4g9vhrLr7e58YkCSw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Pfzq54u1c66toyzrg6Ae0/4xekI4QbiTFLBxcwK1U1zUVQyLlF0N4LA2MfFZ9qevQ
+	 c5YbXpgf1HHmoWDMXAe/5TYTmga088smayHf5geKOHJgliMJK9bcVaAdFViPQegpqE
+	 VtqNygrjEhu8QHVvOruLKp1XcF4LCBb6lpFlaGREt8GabhIiNIzKFjXmBy1UvgUCrU
+	 3tazA6pEhOl/2BSs92cX7oxBkOR+OEu50J4ve6OGcLrqylhNFSD0E5ZqoOJIxJ+FZo
+	 b2w89CdMxwkX/vjRJjDqpha7k89+GQGTW2wu3hs+uxaxtFQAlbp99xaR5SfwxcL6IW
+	 n7aTJbucp/SKg==
+Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 944693782011;
+	Thu, 11 Jan 2024 16:07:27 +0000 (UTC)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	p.zabel@pengutronix.de,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Cc: kieran.bingham@ideasonboard.com,
-	tomi.valkeinen@ideasonboard.com,
-	umang.jain@ideasonboard.com,
-	aford173@gmail.com,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v6 00/11] media: rkisp1: Add support for i.MX8MP
-Date: Thu, 11 Jan 2024 20:48:20 +0900
-Message-Id: <20240111114831.656736-1-paul.elder@ideasonboard.com>
-X-Mailer: git-send-email 2.39.2
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [RCF 1/2] media: videodev2: Add V4L2_FMT_FLAG_ALL_FORMATS flag
+Date: Thu, 11 Jan 2024 17:07:20 +0100
+Message-Id: <20240111160721.50020-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240111160721.50020-1-benjamin.gaignard@collabora.com>
+References: <20240111160721.50020-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240111_034853_912240_07180103 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20240111_080731_505546_3A22D41D 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,61 +80,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series depends on the series "media: rkisp1: Fix shared
-interrupt handling" [1]
+Add new flag to allow enumerate all pixels formats when
+calling VIDIOC_ENUM_FMT ioctl.
+When this flag is set drivers must ignore the configuration
+and return the hardware supported pixel formats for the specified queue.
+This will permit to discover which pixels formats are supported
+without setting codec-specific information so userland can more easily
+knows if the driver suit well to what it needs.
+The main target are stateless decoders so update the documentation
+about how use this flag.
 
-This series extends the rkisp1 driver to support the ISP found in the
-NXP i.MX8MP SoC.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../userspace-api/media/v4l/dev-stateless-decoder.rst         | 3 +++
+ Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst     | 4 ++++
+ Documentation/userspace-api/media/videodev2.h.rst.exceptions  | 1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c                          | 2 +-
+ include/uapi/linux/videodev2.h                                | 1 +
+ 5 files changed, 10 insertions(+), 1 deletion(-)
 
-The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-and in the NXP i.MX8MP have the same origin, and have slightly diverged
-over time as they are now independently developed (afaik) by Rockchip
-and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-and is close enough to the RK3399 ISP that it can easily be supported by
-the same driver.
-
-The last two patches add support for UYVY output format, which can be
-implemented on the ISP version in the i.MX8MP but not in the one in the
-RK3399.
-
-This version of the series specifically has been tested on a Polyhex
-Debix model A with an imx219 (Raspberry Pi cam v2).
-
-v6 adds an extra patch at to fix endinanness issues on raw streams on
-the i.MX8MP.
-
-In v5 the patch "media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP" has been
-dropped.
-
-[1] https://lore.kernel.org/all/20231218-rkisp-shirq-fix-v1-0-173007628248@ideasonboard.com/
-
-Laurent Pinchart (2):
-  media: rkisp1: Add and use rkisp1_has_feature() macro
-  media: rkisp1: Configure gasket on i.MX8MP
-
-Paul Elder (9):
-  media: rkisp1: Support setting memory stride for main path
-  media: rkisp1: Support devices lacking self path
-  media: rkisp1: Support devices lacking dual crop
-  dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-  media: rkisp1: Add match data for i.MX8MP ISP
-  media: rkisp1: Support i.MX8MP's 34-bit DMA
-  media: rkisp1: Add YC swap capability
-  media: rkisp1: Add UYVY as an output format
-  media: rkisp1: Fix endianness on raw streams on i.MX8MP
-
- .../bindings/media/rockchip-isp1.yaml         |  37 ++-
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 219 +++++++++++++-----
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  39 +++-
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  73 +++++-
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 ++++++++++-
- .../platform/rockchip/rkisp1/rkisp1-regs.h    |  35 +++
- .../platform/rockchip/rkisp1/rkisp1-resizer.c |  12 +-
- include/uapi/linux/rkisp1-config.h            |   2 +
- 8 files changed, 470 insertions(+), 78 deletions(-)
-
+diff --git a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+index 35ed05f2695e..b7b650f1a18f 100644
+--- a/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
++++ b/Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+@@ -58,6 +58,9 @@ Querying capabilities
+      default values for these controls being used, and a returned set of formats
+      that may not be usable for the media the client is trying to decode.
+ 
++   * If ``V4L2_FMT_FLAG_ALL_FORMATS`` flag is set the driver must enumerate
++     all the supported formats without taking care of codec-dependent controls.
++
+ 3. The client may use :c:func:`VIDIOC_ENUM_FRAMESIZES` to detect supported
+    resolutions for a given format, passing desired pixel format in
+    :c:type:`v4l2_frmsizeenum`'s ``pixel_format``.
+diff --git a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+index 000c154b0f98..db8bc8e29a91 100644
+--- a/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
++++ b/Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst
+@@ -227,6 +227,10 @@ the ``mbus_code`` field is handled differently:
+ 	The application can ask to configure the quantization of the capture
+ 	device when calling the :ref:`VIDIOC_S_FMT <VIDIOC_G_FMT>` ioctl with
+ 	:ref:`V4L2_PIX_FMT_FLAG_SET_CSC <v4l2-pix-fmt-flag-set-csc>` set.
++    * - ``V4L2_FMT_FLAG_ALL_FORMATS``
++      - 0x0200
++      - Set by userland application to enumerate all possible pixels formats
++        without taking care of the current configuration.
+ 
+ Return Value
+ ============
+diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+index 3e58aac4ef0b..42d9075b7fc2 100644
+--- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
++++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+@@ -215,6 +215,7 @@ replace define V4L2_FMT_FLAG_CSC_XFER_FUNC fmtdesc-flags
+ replace define V4L2_FMT_FLAG_CSC_YCBCR_ENC fmtdesc-flags
+ replace define V4L2_FMT_FLAG_CSC_HSV_ENC fmtdesc-flags
+ replace define V4L2_FMT_FLAG_CSC_QUANTIZATION fmtdesc-flags
++replace define V4L2_FMT_FLAG_ALL_FORMATS fmtdesc-flags
+ 
+ # V4L2 timecode types
+ replace define V4L2_TC_TYPE_24FPS timecode-type
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index 33076af4dfdb..22a93d074a5b 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1544,7 +1544,7 @@ static int v4l_enum_fmt(const struct v4l2_ioctl_ops *ops,
+ 		p->mbus_code = 0;
+ 
+ 	mbus_code = p->mbus_code;
+-	memset_after(p, 0, type);
++	memset_after(p, 0, flags);
+ 	p->mbus_code = mbus_code;
+ 
+ 	switch (p->type) {
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 68e7ac178cc2..82d8c8a7fb7f 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -869,6 +869,7 @@ struct v4l2_fmtdesc {
+ #define V4L2_FMT_FLAG_CSC_YCBCR_ENC		0x0080
+ #define V4L2_FMT_FLAG_CSC_HSV_ENC		V4L2_FMT_FLAG_CSC_YCBCR_ENC
+ #define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0100
++#define V4L2_FMT_FLAG_ALL_FORMATS		0x0200
+ 
+ 	/* Frame Size and frame rate enumeration */
+ /*
 -- 
-2.39.2
+2.40.1
 
 
 _______________________________________________
