@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411E9C4706C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jan 2024 17:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5765C4706C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jan 2024 17:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PGL1rH+OQcZXg6C2tftn5PADUUvgsuyTxWHVzVHnr8M=; b=uKDi6JKEFkaQmn
-	U+3sMIn0IRPw/OKhchWWWYIEv5Z0Bb6ummg5vMUD81NTQMSigRwgwyrrcqEpI3YxVtX1GbA/+rfrZ
-	n4dS4pYtilHry0b7do/HBr2hyGKzSjBnM1zajhP5yge0lRhZ6Z5WY/SyyrexVWaMrAf+2wHY1Pkaq
-	eF62nJbe8Ut10zT5yJWWG+auS2YrHosHyewkOhB4vOF46+DA/HVRe2XFb8jqNPDlTub0l9nt/bfQE
-	1Lrs1G/cCxqJhH/VdgskrpOd73tBMvZ/mLQSPduRg46r3Oi6mhtYZK6KAlYwzhvynX0dGZXHUXZtV
-	IkUCmbvqY6UXq2J8cx6A==;
+	List-Owner; bh=tJnGKu9BKgA6fJkHMzsfcgtzlmZaY04ntSfPF0m81X8=; b=Hnkh2yg2TwXUTK
+	E264oeWmYYAVm30BhWSMjpxBOJmBMXjRB/kJz4U9QOWP3J2iAx7NUHV1IRKaUhr5+D88yHOjDfa/h
+	Djk14fnjmhkQhHDBD6KbhWzYPKadl2E6Qy6HJl1FWPskXcRddAdAYcjWEpJNivd2t5qn/4RQ8BlJN
+	lkT+9O6vsxRV75g0RZukV98JaL0lgohZFKMFEQFPPq4KLV+DzQhW0bic0VmgA0qSIxuAqDcms/og0
+	aHsk/Hys3eCCW4WYt/fn/6+HLnxH/4vnm3iiOA5GigNV1WQkPGIbTYXWqRQaXiImVjpTWgwrJpWps
+	w+1fgggT4HhFJnyGvsJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOLZG-003VDp-0c;
-	Fri, 12 Jan 2024 17:43:42 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1rOLa6-003Vaf-0k;
+	Fri, 12 Jan 2024 17:44:34 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOLZC-003VCR-2T
+	id 1rOLa2-003VYq-1Q
 	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Jan 2024 17:43:40 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-33674f60184so6324048f8f.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 12 Jan 2024 09:43:37 -0800 (PST)
+	Fri, 12 Jan 2024 17:44:31 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3368ac0f74dso4600075f8f.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 12 Jan 2024 09:44:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705081416; x=1705686216; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705081468; x=1705686268; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Ee6xKpvxneUnoDiC8AB7cIQc/ZfkSZ84CMrUIJPEZ+c=;
-        b=FPh+yFq9hacIvP8BsHEccMfXSeJuT1mdnKAoGGakVyEvv9ModXGhIRRTRjo/fB10Et
-         XyHQht4BMVZxbTa302oAKv6DM/4qdL20HSXdTHeNQ4pC4uzQ0kfsbPCIrxuZiIRhXtK5
-         JRXVztw6uq5nXDBfY53IB2FXpZQSEV+fYiu8J0jTmbaj0O4FwfUFD29Tr2yB5D3tJZQ3
-         NBuMRZfp3PpgTVupkjvhslAnpmDiJkmUwSys8b2+5Wz/JV5sCtMTH+NDYtkjjpQT78tY
-         m+ya92M5SIaWYK3GFZKJppreI+wE5b738k572laJ0mpZvZ9zljR5P5Baryz1o3wnxttO
-         f9fQ==
+        bh=hKEv7YOJq5Zdj/IPrmRwmsM2kCNywg3/rkvBbxiaV8k=;
+        b=wswH+OAI49yH4+7HIq5QYDBNx7G6HCQtcShkuRLVj6pJ93iPUyPxDJyGU9ahQ7IU/c
+         ZnAIUt7L4iNkyvF/8yXQZDiRtLEGgeRgAwp62cV+pBK05ZPILYIpC1KCkqM61In384sY
+         7AIEXacdMI0QH4npqptz/iUn43Afeb+FoJ5RTrcALclriIfBVKzF79nr2FhYVo+MaByb
+         e9KYi50174avzeCgxjaIQNUlL5yVZkQ+bAswiC+QX3CshFZmLcVVrN6wGFjr0Ot9zXun
+         q0wColGB0NdzbGnozSLGzBaKxtzYfaztvQtlL9A7zeOW7PoxFhKJ0b2RewwKbSeN0QJ9
+         OXPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705081416; x=1705686216;
+        d=1e100.net; s=20230601; t=1705081468; x=1705686268;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ee6xKpvxneUnoDiC8AB7cIQc/ZfkSZ84CMrUIJPEZ+c=;
-        b=JhDIMtxje/132ZkcnISvQIPk8lrLTBcSO8S5GaQILnj+Z+9JCz1vEzPURe3PA6MFC1
-         GFmfSD1N742oDRCcLOMEBRk3pOzYkjuDEHWzf+kIfIyf2WPNFKumiQhkEEm7Inu1qhOe
-         JqapGsMcoh3yhLbP0Nhal/ZWs8IMYE3FAzqNrt63NtKEEfwv9BCp/5ckIA68eVJgbN/N
-         TuqmLut0w17LjZtIpA2VjBVDlghUMEumYZCnTRAGzZf8TBMUuJqXM2TkcWB6TVIelWwj
-         UU4eSYUBvHD+/YFYV9tzTkuQGIFPaGxxYVUxAtwCyQzgP0ePe2AQefIfORVw6ig1iutu
-         nRrg==
-X-Gm-Message-State: AOJu0YxNegDjXD/uOQkibXXt2mu/I0WA6wINqnRyKycDxLBI2QsArq2L
-	OnGlZUw6NGfwQ4JlVC2aoUflfzRcmcunmjyA2SEPE/Pi6gE=
-X-Google-Smtp-Source: AGHT+IEG/RfygOLnVEXU1ua+90WU6Kb2zmqMLCNjZlPGmGHulU5Ed+rlhuWJaTig7LLnl+pgA60sTA==
-X-Received: by 2002:adf:a319:0:b0:336:8ce8:454f with SMTP id c25-20020adfa319000000b003368ce8454fmr738433wrb.138.1705081416323;
-        Fri, 12 Jan 2024 09:43:36 -0800 (PST)
+        bh=hKEv7YOJq5Zdj/IPrmRwmsM2kCNywg3/rkvBbxiaV8k=;
+        b=p80lCu7C7aO2TxoBIhhogIaEZvjh2HCLc1/CtNnKBSw35DwWfK1mDz0esS5yhKzr/z
+         oycY6fp2+/WGmPMzJQXlBMIh1VP1+vahjaXD/m+WO57TKkkgs9zqshKCo3JHy+lssimm
+         aKzFCVtba/yDjbeVSFg51wf84sydzPnmopAchqD1wdDB2E9nu2tXV+2Xh1+jFP6g8vCl
+         9fITKSbUkZn3mXIkKIQ6iKYLjMNlMM4ilvqcX3VPdrpX/ebr1YfrERK4JlMmtId+FAaT
+         XCEXTg+V4xORvi14dktENzyf6iINmImjWVhGEEKpEGth/tVSYLR3EZY3uz3BlCi8RVu2
+         cSCw==
+X-Gm-Message-State: AOJu0YzkPzzshVmifh3JzGRv3scKx3XbqOiXbqzpbsO50iICImS/EnNl
+	TWDhP2JBtGPTMaul9Zje+SiAQLm+nHH3yw==
+X-Google-Smtp-Source: AGHT+IFMr4GNXrnSPMkWmc3f2JQ62mkSCD8u7fOdW9UxTugAVZyexcZuIyp3jIfTHX+CQKKxlnNoKA==
+X-Received: by 2002:a5d:5234:0:b0:337:6a69:e8e with SMTP id i20-20020a5d5234000000b003376a690e8emr1045154wra.84.1705081468320;
+        Fri, 12 Jan 2024 09:44:28 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.223.112])
-        by smtp.gmail.com with ESMTPSA id b7-20020adfe647000000b0033763a9ea2dsm4462856wrn.63.2024.01.12.09.43.34
+        by smtp.gmail.com with ESMTPSA id b7-20020adfe647000000b0033763a9ea2dsm4462856wrn.63.2024.01.12.09.44.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Jan 2024 09:43:35 -0800 (PST)
-Message-ID: <21a8feea-7306-4016-9a58-6e5bf8fe30a8@linaro.org>
-Date: Fri, 12 Jan 2024 18:43:33 +0100
+        Fri, 12 Jan 2024 09:44:27 -0800 (PST)
+Message-ID: <0ba3e9aa-4546-461a-a90b-0c99bfa9da48@linaro.org>
+Date: Fri, 12 Jan 2024 18:44:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/2] dt-bindings: rockchip: Add Hardkernel ODROID-M1S
  board
 Content-Language: en-US
-To: Conor Dooley <conor@kernel.org>
-Cc: KyuHyuk Lee <lee@kyuhyuk.kr>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+To: KyuHyuk Lee <lee@kyuhyuk.kr>, Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Chris Morgan <macromorgan@hotmail.com>, Jagan Teki <jagan@edgeble.ai>,
  Tianling Shen <cnsztl@gmail.com>, Andy Yan <andyshrk@163.com>,
@@ -79,9 +78,6 @@ Cc: KyuHyuk Lee <lee@kyuhyuk.kr>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20240112134230.28055-1-lee@kyuhyuk.kr>
- <20240112-granola-underline-36a525dc789c@spud>
- <dc4e9808-cd36-4b99-afd9-8dd4cd16a2a9@linaro.org>
- <20240112-headsman-concur-1d47da7e3e14@spud>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -127,10 +123,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240112-headsman-concur-1d47da7e3e14@spud>
+In-Reply-To: <20240112134230.28055-1-lee@kyuhyuk.kr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_094338_802192_CA1B5452 
-X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-CacheID: sfid-20240112_094430_482259_EE4FAAB2 
+X-CRM114-Status: UNSURE (   6.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -148,25 +144,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/01/2024 18:26, Conor Dooley wrote:
->>> if the vendor for this board is hardkernel...
->>>
->>>> +        items:
->>>> +          - const: rockchip,rk3566-odroid-m1s
->>>
->>> ...why is the vendor prefix here rockchip?
->>
->> Uh, good catch. I missed it when acking their earlier mistake year ago
->> :( Would be nice if they fixed that one too.
+On 12/01/2024 14:42, KyuHyuk Lee wrote:
+> Add device tree binding for Hardkernel ODROID-M1S board based on
+> RK3566 SoC.
 > 
-> Maybe they will if they got your email, they did not get mine
-> apparently:
-> <lee@kyuhyuk.kr>: host mx02.mail.icloud.com[17.57.155.34] said: 554 5.7.1
->     [HM08] Message rejected due to local policy. Please visit
->     https://support.apple.com/en-us/HT204137 (in reply to end of DATA command)
+> Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
 
-Uh, what did you do to Apple to be denied by their policy? Admit, you
-have an Android phone?
+Your system bounces emails from Conor, so just formality:
+
+Fix the vendor prefix.
 
 Best regards,
 Krzysztof
