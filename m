@@ -4,64 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1A1C4706C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jan 2024 16:58:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E999C4706C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jan 2024 17:01:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xc0wgk2Ne38jVUz1EajfWzgHwhSMgkFlN5vtDf0LbXE=; b=hx9KLD4KADI+ypIqj/w12yjQx6
-	MR7B2yxkf150T00BBBg/eHEluhKlx29X8bFXnRivtvK+hzk2RCIDLMshvx6Xxplx0YSQFQ3+LTIHI
-	Lr71WS4ly8v2/VYMGs42+IstxtnFAlUbn3MUqPN5DXGGqTd8/BNrWTT0eQv+PnEhpwomDYB8WCzpA
-	LhJwNkLD+srbO419uztRzGZGSeGzpxyVQ47W97IR8pulAXeLeFd4PweT7yZf+DlgCZNFIjXdQbLI1
-	Ajob5luR+gxt1y17saonFJzq/9c5O16LrLDSPfqATUgUtw97sVVEpPjEZnQmeUOuFWqDyOSWpBakd
-	QuCiy7Ew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OH6f8JGGquQEAdiBhhzCn2rb5bYZw9OTmaFy9fq0uEo=; b=neb68a5z41dkBF
+	qTyrzfKZc9yWbMUn+ePwrLgCCUsAQz1cW3HXcNFVMoVTp+prLdwmSr8aV/R1v77mgABEpTgwKsOG/
+	sdVTgYZOJ9Y7mJMf47j7+adSO3CN30KhgKu+lOpexqnXyKlgBhb/VRVH5ONodcdDyT0KM7BDPblQ/
+	gBT71bdsUFJHZLRlqKrGNt/aEhYzpHR1gQLHtPR+7Bxadn/MLlcC10EnIQRpdVjjol36+Yja0atrp
+	bD2Wry0kD7JmI0eoT+r9Zt3qUcviEUTx8NTbCC9ZQ6r7Yaymh7kpvrhEsWpS2+cpSxAN/bQ1Fd7AY
+	XKiHaoAZ2xW/X+wNth/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOKrH-003NBc-1O;
-	Fri, 12 Jan 2024 16:58:15 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rOKu8-003NmX-0B;
+	Fri, 12 Jan 2024 17:01:12 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rOKrE-003NB4-1R;
-	Fri, 12 Jan 2024 16:58:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id EC2CACE2082;
-	Fri, 12 Jan 2024 16:58:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7067AC43390;
-	Fri, 12 Jan 2024 16:58:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705078689;
-	bh=R017C35XZgULOTl/xha7MyuS1RZo/GZh2uHIhJvPTbM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sryWrizcLFiIRtjL2T2O6J7y4Xf1KNRTjVhxcm6onbBPZtNH00DpE2nWImgF/qG90
-	 Ez4H++i94x6WyBeSN83a+c5wPpBwvKUtxeeb/jd+RGn5zmF2Tf0D/iquqSX4iJns7M
-	 /wMfqFRKTi9z77H8BuEOmD18h4fE5G0KOBhZqRt86tmOg1gcouFERrO3ihwf51HSnx
-	 QVjcn8ILDd40b+hv9NeRCMs9P6MmY/rDOpj6JJUz6ESYxRHnLJlK49B/5bafsjOia3
-	 JUNWm5H6MniZio06IaTuyedkZ8zoObTyH4H1orTW07gFL7FyWD0iBZE02oA2/8x/f1
-	 6marEdWt9+q6A==
-Date: Fri, 12 Jan 2024 16:58:04 +0000
-From: Conor Dooley <conor@kernel.org>
-To: KyuHyuk Lee <lee@kyuhyuk.kr>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Jagan Teki <jagan@edgeble.ai>, Tianling Shen <cnsztl@gmail.com>,
-	Andy Yan <andyshrk@163.com>, Ondrej Jirman <megi@xff.cz>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: rockchip: Add Hardkernel ODROID-M1S
- board
-Message-ID: <20240112-granola-underline-36a525dc789c@spud>
-References: <20240112134230.28055-1-lee@kyuhyuk.kr>
+	id 1rOJwK-003EbV-2m
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 Jan 2024 15:59:26 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-dbf2740355fso2423576276.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 12 Jan 2024 07:59:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=raspberrypi.com; s=google; t=1705075163; x=1705679963; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=OOjkY6qLcUDJ6pAB2XOnTphDRYpUaH4ZDZBnldaqt/Y=;
+        b=fyPWsrbOzrfhb9HMqA9r0sWSYa5IGsK5E3RGSHKRlLlMg2G7o3AqFXmPrEoOtwPN3n
+         C9ke3tz2NMSzwzzg2YpP0Wu5VJqJXA7WQrE3S14MoJ28Pd0d4KOpW5VlpXYrQw/iGnWF
+         rXc/32wNnpd09KXFlcviTlF7W/S931goKP2un8T8YXu76x0rxo7hP8XZKpH43aj6lmmH
+         WsiKHXW0oP/1A17HvmwZsGzdX3c8qhRrEi2LcMD/EydP2s5X4BjtivFN/Wk1fj4WO5ih
+         WImkbLImTxb9aJ2IAmEL3gAzkWs59yH1YbIyF0R7VcCgUPNuVc93QQIZq9hpnYyPkNpf
+         GCaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705075163; x=1705679963;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OOjkY6qLcUDJ6pAB2XOnTphDRYpUaH4ZDZBnldaqt/Y=;
+        b=U7T9k8vMga1sWTgOYsmC0QSo6bFaMmxq8ZH14qX2t7q8seaWbdgzk5Ql8YqbMX2YY3
+         GvOY7zoq/hdkmPA/TVbApXWKuvW+DH8u+c6tT4TPz6ZF8fLtN/4nGlsctBO4bRwyrqQZ
+         6SIAvzlFyBt5aN5OXeOq3vBoqVIhd05I4j2gas1YTnWOWSlUhrRYRJl7Q8gCOvO2KrTU
+         sDxbDRSHp5jKBKuLiEv6MwzKjV6Z0JIWaKD1qw0KbedGOBzqFajbEDlze73VXlVJX2IS
+         dah6geWUYK5WzBSuZ2KYqP4L1syM1Zctyivw6S71K7ZC629NVTcGoov8kb4dXdTlSQab
+         dAqw==
+X-Gm-Message-State: AOJu0YwEsBY3Ryq23QLVqmD0cfqyiwiZfM7VixYqcxXCmJ/G5R3GYswe
+	TjoYyvoXpOT0fAovwr8L9+OA9lOngONFTYi9QCn43a0MCEHjxA==
+X-Google-Smtp-Source: AGHT+IHr3UudPwurXaz4S+dT72h2sVx6HX8ltwQ55glZrlvIRFVV+m1zueg0vrLt+5IAqr6Wt0L8KbJCDVH/13I+Tbw=
+X-Received: by 2002:a25:8106:0:b0:dbf:3d61:8d03 with SMTP id
+ o6-20020a258106000000b00dbf3d618d03mr551130ybk.28.1705075163182; Fri, 12 Jan
+ 2024 07:59:23 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20240112134230.28055-1-lee@kyuhyuk.kr>
+References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+ <20231207-kms-hdmi-connector-state-v5-8-6538e19d634d@kernel.org>
+ <CAPY8ntCs9EAYsxwjkscms3kqoC0N8+CcTHoyrG+gFMc0Mh=cwg@mail.gmail.com> <337mubsn42zlpuoqqvqmsjtdww4kg3x6lo6brdos5o6xgwjdwo@cxfad2pk2so2>
+In-Reply-To: <337mubsn42zlpuoqqvqmsjtdww4kg3x6lo6brdos5o6xgwjdwo@cxfad2pk2so2>
+From: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Date: Fri, 12 Jan 2024 15:59:06 +0000
+Message-ID: <CAPY8ntDbM=j6YP3A5TNHoK73eTj0uUvnbAS0cZtxHgVoeuOFrg@mail.gmail.com>
+Subject: Re: [PATCH v5 08/44] drm/connector: hdmi: Add Broadcast RGB property
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-media@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240112_085812_687252_D0C466DE 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20240112_075924_984041_5FA045D7 
+X-CRM114-Status: GOOD (  22.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,85 +92,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2959505617154999048=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime
 
---===============2959505617154999048==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8SF8l+0YFEFPpEIl"
-Content-Disposition: inline
+On Fri, 12 Jan 2024 at 13:59, Maxime Ripard <mripard@kernel.org> wrote:
+>
+> Hi Dave,
+>
+> On Thu, Dec 14, 2023 at 02:43:37PM +0000, Dave Stevenson wrote:
+> > On Thu, 7 Dec 2023 at 15:50, Maxime Ripard <mripard@kernel.org> wrote:
+> > >
+> > > The i915 driver has a property to force the RGB range of an HDMI output.
+> > > The vc4 driver then implemented the same property with the same
+> > > semantics. KWin has support for it, and a PR for mutter is also there to
+> > > support it.
+> > >
+> > > Both drivers implementing the same property with the same semantics,
+> > > plus the userspace having support for it, is proof enough that it's
+> > > pretty much a de-facto standard now and we can provide helpers for it.
+> > >
+> > > Let's plumb it into the newly created HDMI connector.
+> >
+> > To have such a significant proportion of the patch being kunit tests
+> > when there was no reference to such in the commit text was slightly
+> > unexpected.
+>
+> Thanks for your review. Does that mean that you would prefer the tests
+> to be in a separate patch?
 
+If there was a need for a respin, then I think ideally yes, or at
+least a mention in the commit text ("Let's plumb it into the newly
+created HDMI connector*, and add appropriate unit tests*").
+Overall I'm not that fussed though.
 
---8SF8l+0YFEFPpEIl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Jan 12, 2024 at 10:42:30PM +0900, KyuHyuk Lee wrote:
-> Add device tree binding for Hardkernel ODROID-M1S board based on
-> RK3566 SoC.
->=20
-> Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
-ntation/devicetree/bindings/arm/rockchip.yaml
-> index 5cf5cbef2cf5..cc37d2118131 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -566,6 +566,11 @@ properties:
->            - const: rockchip,rk3568-odroid-m1
->            - const: rockchip,rk3568
-> =20
-> +      - description: Hardkernel Odroid M1S
-
-if the vendor for this board is hardkernel...
-
-> +        items:
-> +          - const: rockchip,rk3566-odroid-m1s
-
-=2E..why is the vendor prefix here rockchip?
-
-Thanks,
-Conor.
-
-> +          - const: rockchip,rk3566
-> +
->        - description: Hugsun X99 TV Box
->          items:
->            - const: hugsun,x99
-> --=20
-> 2.34.1
->=20
-
---8SF8l+0YFEFPpEIl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaFvnAAKCRB4tDGHoIJi
-0n/AAQDkHzkEpbkEcPgsWiysuI7BEp4nrEoSAcQvm/4eChZuegD6Aztb5FfajYfD
-gJvPbsipxJ9PyVMsiM5/pyUwU68MZwk=
-=bjqJ
------END PGP SIGNATURE-----
-
---8SF8l+0YFEFPpEIl--
-
-
---===============2959505617154999048==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+  Dave
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2959505617154999048==--
-
