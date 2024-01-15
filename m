@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E137DC3DA79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 15:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5E5C3DA79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 16:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iNxPtM5B0cHTaN91QBoJlfPMviNgEhsOPFGGsJQC+lA=; b=X0qtbinZNKhe8D
-	oZBxeV1l+rVAgZod3E0XeECGMFEqjCl8sxn4VPDNS25eY9AoabqTDgNj4TS7YzLwD4eG95AM+PU6r
-	9W+ynhrE5duCNIUpRZT+dn4UTd9yALLinsqZYfXAPJKP1XBWYU0l8qGEY1ceTpMVhElhgROZDyy9p
-	Ny2dV1JESAfCQwjituFKLww/SnFCM2cqjbhtSglK7K1YMOwtsFpPeJvD+iUOmmX9yKDN5Fc11lRNP
-	vR1HK5nyjvrGJ5vb4wXliEnUZJxTWbpWnMwkjRjCMgW6aTjHYPJuIfLoGLZ40QykjlIoov0SLv1hV
-	ijYKP/wrT5nT1m3vwj9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uR8ElIh/8WM7zDLvcLvEvYA/y6D7QhrEvabp9bSFXPA=; b=d92B0QcTZnhPJDj0ZVLxXpTzib
+	68p0UwXKHk8ndu845poWixNuW21MNnF7JFnvFUm+NIg53e7erxmSTErQ4nE8tzU+fJvMrTvlfKvB3
+	q8GfrkIkgEAeJCCXTpn62HORp1GlaCAOQJ38lUElbfGUDGhEKmfjrtqWJ7YEIdsxqmABQZNY8cP73
+	gl5dCN8pF5zTKRteZi3QjE12a1WS0cMvngyQbohcZapcp7lHdg8QoMrcEtiP9ahEAM1Sso8/UDcKL
+	dACsV+fcjA3/p7+1su6kOhKZ3rtfbZvqHYFqiSitPoBREtaXOG+w9CFe7N+RQbiNG+evplmK88Ia+
+	y6A5JpVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPPCt-009TX7-1I;
-	Mon, 15 Jan 2024 15:48:59 +0000
-Received: from pv50p00im-zteg10011501.me.com ([17.58.6.42])
+	id 1rPQ5W-009iYm-35;
+	Mon, 15 Jan 2024 16:45:26 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPPCq-009TUM-2A
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jan 2024 15:48:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kyuhyuk.kr; s=sig1;
-	t=1705333733; bh=yxNM4ChCxcfO1k8Hlw537DgVXRAXIZRMKWfvKsTXyrE=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type;
-	b=JQlNQZqMl+B2aYMVXWvFwnRZIExG1g/izHCe19R87x7oy0OItSlfdn9Zx9NQnfvzy
-	 IfSbbLTnTFwVj81JEvEBrQQWKvd10Szg39wte6sNhsyhc3rzkFyzwDwJBjHoS1JUL6
-	 U05Jtq1tjR11qRPVKms3rl6zeGcfxfSWy8dxymZbzDONWjQiiMxcBsKui70c+dpeL4
-	 ipWuXcpN0h2tB1wNbPgpSmHZyR00+3qUadrrCbuLi3HCk1RKyJtY86SIUQIHv3DhiA
-	 451YJPZcjxMIe3d351mCnlErLO2Th8i8tTK4vAbpzRNoligIbitVEPlXwf2YeskG1v
-	 mSg8gpI2yD5Dw==
-Received: from kyuhyuk.kr (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-zteg10011501.me.com (Postfix) with ESMTPSA id BC2FF4A0176;
-	Mon, 15 Jan 2024 15:48:49 +0000 (UTC)
-Date: Tue, 16 Jan 2024 00:48:37 +0900
-From: KyuHyuk Lee <lee@kyuhyuk.kr>
+	id 1rPQ5S-009iWf-1x;
+	Mon, 15 Jan 2024 16:45:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 52679CE13C0;
+	Mon, 15 Jan 2024 16:45:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D9F9C433C7;
+	Mon, 15 Jan 2024 16:45:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705337118;
+	bh=ViDfJVgPPtY9rthYpqceej159xuom9miTC+tJZsNboU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BVngNTTMNIP4L6CU5fdgNjvv0Oo1gRZ1Is6CiKzne5UWuyW0DqTGU2+DN3MKVUcQa
+	 rnUNKBQHsfgmUBfWCDMzbAvbgu8gxoToUN0ze8+oVpne9kBYwTSjStn1fJHhOzcoag
+	 NditqqFyScWwP2uajbi4zzkAKu3S7LNqPjBQaM7dKDVrANUUWz86SDF9keMPrOJl5E
+	 ZQ4jKNhEF/t1XoSqHbYDjMhm41NtUrPh0Nw79iKPY1AW69+Af9H7Je6lmGflg2Wi8Z
+	 pXmDv5gkNhPKkvuNXyThTO0M/ylG5VM//Kwpzzx1GWqqeL7unf9yIuWczs+OPUtvwi
+	 tYIA6yFx2Ho4A==
+Date: Mon, 15 Jan 2024 16:45:13 +0000
+From: Conor Dooley <conor@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
+Cc: KyuHyuk Lee <lee@kyuhyuk.kr>, Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Chris Morgan <macromorgan@hotmail.com>,
-	Tianling Shen <cnsztl@gmail.com>, Jagan Teki <jagan@edgeble.ai>,
-	Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
+	Jagan Teki <jagan@edgeble.ai>, Tianling Shen <cnsztl@gmail.com>,
+	Andy Yan <andyshrk@163.com>, Ondrej Jirman <megi@xff.cz>,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: rockchip: Fix Hardkernel ODROID-M1 board
- bindings
-Message-ID: <ZaVT1S7bb6qZ++FK@kyuhyuk.kr>
-References: <20240115145142.6292-1-lee@kyuhyuk.kr>
- <b4f97202-43ec-4f04-af95-b1ccd3b5d203@linaro.org>
+Subject: Re: [PATCH 1/2] dt-bindings: rockchip: Add Hardkernel ODROID-M1S
+ board
+Message-ID: <20240115-elk-paralyses-e308f1d9cc2f@spud>
+References: <20240112134230.28055-1-lee@kyuhyuk.kr>
+ <20240112-granola-underline-36a525dc789c@spud>
+ <dc4e9808-cd36-4b99-afd9-8dd4cd16a2a9@linaro.org>
+ <20240112-headsman-concur-1d47da7e3e14@spud>
+ <21a8feea-7306-4016-9a58-6e5bf8fe30a8@linaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b4f97202-43ec-4f04-af95-b1ccd3b5d203@linaro.org>
-X-Proofpoint-ORIG-GUID: xfG1gLpxLCaQEbJ_kmI3LhtxShXho3-8
-X-Proofpoint-GUID: xfG1gLpxLCaQEbJ_kmI3LhtxShXho3-8
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-15_10,2024-01-15_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxlogscore=785
- mlxscore=0 clxscore=1030 malwarescore=0 spamscore=0 phishscore=0
- bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2401150115
+In-Reply-To: <21a8feea-7306-4016-9a58-6e5bf8fe30a8@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_074856_758013_3F408136 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20240115_084522_821862_032B21BE 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,47 +77,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2767759930607138278=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 15, 2024 at 03:58:56PM +0100, Krzysztof Kozlowski wrote:
-> On 15/01/2024 15:51, KyuHyuk Lee wrote:
-> > The vendor in ODROID-M1 is hardkernel, but it was incorrectly written
-> > as rockchip. Fixed the vendor prefix correctly.
-> > 
-> > Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
-> > ---
-> >  Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> You need to start testing your patches. Your last M1 fails as well in
-> multiple places.
-> 
-> It does not look like you tested the DTS against bindings. Please run
-> `make dtbs_check W=1` (see
-> Documentation/devicetree/bindings/writing-schema.rst or
-> https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-> for instructions).
-> 
-> The DTS change will break the users, so would be nice to mention this in
-> its commit msg.
-> 
-> Best regards,
-> Krzysztof
-> 
 
-Hello, Krzysztof.
+--===============2767759930607138278==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="riS/1QbGyvUIkYNO"
+Content-Disposition: inline
 
-I am truly sorry for wasting your time due to my mistake.
-From now on, i will carefully send PATCH with testing.
-I'm really sorry.
 
-Thank you,
-KyuHyuk Lee.
+--riS/1QbGyvUIkYNO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jan 12, 2024 at 06:43:33PM +0100, Krzysztof Kozlowski wrote:
+> On 12/01/2024 18:26, Conor Dooley wrote:
+> >>> if the vendor for this board is hardkernel...
+> >>>
+> >>>> +        items:
+> >>>> +          - const: rockchip,rk3566-odroid-m1s
+> >>>
+> >>> ...why is the vendor prefix here rockchip?
+> >>
+> >> Uh, good catch. I missed it when acking their earlier mistake year ago
+> >> :( Would be nice if they fixed that one too.
+> >=20
+> > Maybe they will if they got your email, they did not get mine
+> > apparently:
+> > <lee@kyuhyuk.kr>: host mx02.mail.icloud.com[17.57.155.34] said: 554 5.7=
+=2E1
+> >     [HM08] Message rejected due to local policy. Please visit
+> >     https://support.apple.com/en-us/HT204137 (in reply to end of DATA c=
+ommand)
+>=20
+> Uh, what did you do to Apple to be denied by their policy? Admit, you
+> have an Android phone?
+
+I do. I guess that puts me on -1 social credit score. I have a macbook,
+but I run linux on it, so I guess that is a +1 -0.5 sorta deal, leaving
+me negative overall.
+
+Either way, not sure what causes it. Maybe the fact that I sign all my
+mail is a contributing factor, but I may not be the only @kernel.org
+address that KyuHyuk Lee is not receiving mail from.
+
+--riS/1QbGyvUIkYNO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaVhGQAKCRB4tDGHoIJi
+0uviAP4vY6e5kowaPAGO9WitJXCjm8YoC2PCKDXRVbYxWNgtCQD/XT84O8/v1mMh
+C1CpXZDjrgNrmxMCmlEXsjq8g9mDEAo=
+=gT6T
+-----END PGP SIGNATURE-----
+
+--riS/1QbGyvUIkYNO--
+
+
+--===============2767759930607138278==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2767759930607138278==--
+
