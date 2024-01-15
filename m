@@ -4,74 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0FDC47077
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jan 2024 15:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4244C3DA79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 08:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MmIkV1mmpb/a59HjB2Nb8M71xXnlFvZHRA+oH4J2T/Q=; b=Bj3n8S5MVizT/1
-	90bYRi9I4iVxeotLSTuMJwtq1ehKYky90OE5fl3csBkxTP+rq7CUbD7FrlwL6Gd4/mdHT+THjksaC
-	hpWa9EX3H3UtxDYrDm5awfvu8IsR3TETEPs9TrGmbj+Bj6txNZvS6OymwCRvhkd/SWlCqqfqyvY7/
-	nwixtcBdF8Lny3h2fB3oUluRVu+IP3L1LaT94NcF/mAoAAps+MzyqIaxbwWjgeL1tBvGhvqbAAGiJ
-	/P4cBwDJ4pdkUUk8o2r0U9bQtBROFLVZM05km7lDLTDzL/UceHvPjnC4zCs9aVFy2geVVJMv3uynI
-	xUdn8Lzw75OXkC7Z1rmw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lJHerjCwIwGpufTUR4U7URnOAdxWU23cS/8aszbuszk=; b=NDkWfqbxGuw4EuO7azCMoj57hL
+	+37iEznqZofeRnKvI9LSp/tGfitQMWiun3gTu0LomoRkj5FLy+z1hDw1igKJ+7t8lYpRyF1GCEi+m
+	fuVqR59Nt6gPDOXOdzwrLUSPbUOYRtrZy0JEoG0owXJ5cdKvD9mXqyyp7C73IXqrU4ITbTcwpsiVx
+	hoLYj9lH4AhDpTv0NdLHOxM+iF/cqJVSiGKT1v/+u/hF1pijb/D+AergUZwmpGqLkHZaoGoauwrP+
+	w1YMke8tDqilxbChy1ew+eeJfTSUF2oWGBp/u66SKj5X+NyWbZdQcAKEKahXKO8IcVt6LVRqeeXbf
+	4s+OPPUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rP28n-006sMt-2v;
-	Sun, 14 Jan 2024 15:11:13 +0000
-Received: from pv50p00im-hyfv10011601.me.com ([17.58.6.43])
+	id 1rPIau-008I7P-20;
+	Mon, 15 Jan 2024 08:45:20 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rP28h-006sLt-2J
+	id 1rPIao-008I2s-2x
 	for linux-rockchip@lists.infradead.org;
-	Sun, 14 Jan 2024 15:11:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kyuhyuk.kr; s=sig1;
-	t=1705245063; bh=qvAtBKFzunlr+pj2jJnMPpjsQvkroxkCD0slVQnw7hI=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type;
-	b=a9hHG5F2QyjCjX4X124oYHXNftAb2AaXES9xpJxX0i5XSFDZE+yPa77+f6Dqn1zTr
-	 qma0QhkluKMY87/nTuhSWR99ef/T1wQP7fKp7tKY4j9EXRoGnSTvx0A7nb88Duyb2A
-	 t427PZq64fDAOmSS/EmN436GdHsWRSaVB2gXxV5CAoJRGEea6S/aVXdpswlyAyycLd
-	 jLdOztn3JHwJigH8fAcuE+L2sxi2QS6nIQ4vG1NiKirudUKCvmY2jiDiTFCOwS57uD
-	 kbmQfStSRWvKoKt/g2kx+8nvE1S2tdbmeBy4Jkih8lkJHvzTa64OwJER4Rutfmzaka
-	 lxNQD5csTV3qA==
-Received: from kyuhyuk.kr (pv50p00im-dlb-asmtp-mailmevip.me.com [17.56.9.10])
-	by pv50p00im-hyfv10011601.me.com (Postfix) with ESMTPSA id 106E4C80146;
-	Sun, 14 Jan 2024 15:10:57 +0000 (UTC)
-Date: Mon, 15 Jan 2024 00:10:45 +0900
-From: KyuHyuk Lee <lee@kyuhyuk.kr>
-To: Tim Lunn <tim@feathertop.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Tianling Shen <cnsztl@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>, Ondrej Jirman <megi@xff.cz>,
-	Andy Yan <andyshrk@163.com>, Jagan Teki <jagan@edgeble.ai>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Heidelberg <david@ixit.cz>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Hardkernel ODROID-M1S board
-Message-ID: <ZaP5de5wchr/b9WM@kyuhyuk.kr>
-References: <20240112135004.28907-1-lee@kyuhyuk.kr>
- <5774eb3f-dfdc-4e4d-985e-3ec4b69ad206@feathertop.org>
+	Mon, 15 Jan 2024 08:45:19 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40e60e137aaso38382375e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 15 Jan 2024 00:45:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1705308312; x=1705913112; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=MkvUp3r4BoZpuzEzE3dqcWkeQdN+VmBZ+WCi4HFTClE=;
+        b=NU8TjjJE2QPvcFTTs8unmPmzoJ4PNRAgj8IekvR3HP8U7YBexu9ndYZZkBvy6dkQiL
+         pp2W+JK6P1WAfsplSAx+eTRgrgDETD4HcYduiGgtp7DilHQMLPwOLkHAurReCHi/pYxk
+         LkXfEKq07tbEqIoJxvNwDUKMpn9YdzH5d9TE84k5jJhTRDSZd4tq5qvor8R/lunWZFco
+         CiuvUZvBbowIaaMpWNmgbFGyAtOQeFC5jiDiJWPJBaTqnavN/ubzZn2rWEFCLlqQPmtd
+         r6KhVl89uhKt9sqgVSBVVSDHqBTnzQMe0ZQngKczeGDs1LojAiINc+LXD7KVnbzT3Kp/
+         BXHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705308312; x=1705913112;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :references:cc:to:content-language:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=MkvUp3r4BoZpuzEzE3dqcWkeQdN+VmBZ+WCi4HFTClE=;
+        b=fS8/Vaq0P5Fwa3i9jFiY4q5gAgve0cIRtD8zHZd+lYQooeO9Iji5Kr+6ZfInCkKuxq
+         /elfCKQvELcyzgUVxlm3ofYE5MAjrFSdJHQlNfFG9n0WY6Am/G2kvKOEUpJdrNyL9sOS
+         liQYy9QOZgmDmqoD0zHISFyZ7yu5jcnuk/xd5qnPfxzMK2+gtDhshkaXxHGIei7HW9IS
+         72rb19AiYdPO/gsH/ktVGYVftwT8tuqgIMpIEyh6oVDn73FAeHIRltIlbFv1IX8GI+SF
+         U/1Fy8LlxCL0rllKo4kcmjx8SjW2XzUEZfJgdWPDk/qanW+r1yBg5os5yQENk0NjqNkH
+         Dv6Q==
+X-Gm-Message-State: AOJu0YwgTdHD37GL9wyfM51d0ni5TbKxQmmwP0uuBvgjLqlnBQicKzx6
+	/qM11OoX9bdhgjikyWVtIu9Av8sGuVi8DQ==
+X-Google-Smtp-Source: AGHT+IFzDJllfxrskx0EeLYqcR/JG0o5oDu+AhtJ2Rufm6ow1NgQUK2RTAW7KX62LW9mxQUFctMV1w==
+X-Received: by 2002:a05:600c:3585:b0:40e:4556:5870 with SMTP id p5-20020a05600c358500b0040e45565870mr2875085wmq.120.1705308311739;
+        Mon, 15 Jan 2024 00:45:11 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:982:cbb0:af6f:bcbb:3c88:33c2? ([2a01:e0a:982:cbb0:af6f:bcbb:3c88:33c2])
+        by smtp.gmail.com with ESMTPSA id m26-20020a7bca5a000000b0040e54381a85sm14669897wml.26.2024.01.15.00.45.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 15 Jan 2024 00:45:11 -0800 (PST)
+Message-ID: <9dd100de-6d33-4872-8619-1df6ee520c5a@linaro.org>
+Date: Mon, 15 Jan 2024 09:45:10 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5774eb3f-dfdc-4e4d-985e-3ec4b69ad206@feathertop.org>
-X-Proofpoint-GUID: X9K8esLsFtU9kyWzM7X5UUUF9oIpxu5u
-X-Proofpoint-ORIG-GUID: X9K8esLsFtU9kyWzM7X5UUUF9oIpxu5u
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-01-14_08,2024-01-12_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 mlxlogscore=999
- phishscore=0 mlxscore=0 malwarescore=0 suspectscore=0 clxscore=1030
- bulkscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2401140118
+User-Agent: Mozilla Thunderbird
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH] drm/bridge: synopsys: dw-mipi-dsi: fix deferred dsi host
+ probe breaks dsi device probe
+Content-Language: en-US, fr
+To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
+ victor.liu@nxp.com, andrzej.hajda@intel.com, rfoss@kernel.org,
+ jonas@kwiboo.se, jernej.skrabec@gmail.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, daniel@ffwll.ch, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, hjc@rock-chips.com, heiko@sntech.de,
+ yannick.fertre@foss.st.com, raphael.gallais-pou@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Cc: quentin.schulz@theobroma-systems.com, bouabid.farouk97@gmail.com
+References: <20240112180737.551318-1-farouk.bouabid@theobroma-systems.com>
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro Developer Services
+In-Reply-To: <20240112180737.551318-1-farouk.bouabid@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240114_071108_634184_8D23E70F 
-X-CRM114-Status: GOOD (  25.28  )
+X-CRM114-CacheID: sfid-20240115_004514_961486_A8F0C98C 
+X-CRM114-Status: GOOD (  30.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,438 +128,314 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: neil.armstrong@linaro.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 14, 2024 at 11:01:32PM +1100, Tim Lunn wrote:
-> Hi Lee,
-> =
+Hi,
 
-> On 1/13/24 00:50, KyuHyuk Lee wrote:
-> > This patch is to add a device tree for new board Hardkernel ODROID-M1S
-> > based on Rockchip RK3566, includes basic peripherals uart/eMMC/uSD/i2c
-> > =
+On 12/01/2024 19:07, Farouk Bouabid wrote:
+> dw-mipi-dsi based drivers such as dw-mipi-dsi-rockchip or dw_mipi_dsi-stm
+> depend on dw_mipi_dsi_probe() to initialize the dw_mipi_dsi driver
+> structure (dmd pointer). This structure is only initialized once
+> dw_mipi_dsi_probe() returns, creating the link between the locally created
+> structure and the actual dmd pointer.
+> 
+> Probing the dsi host can be deferred in case of dependency to a dsi
+> phy-supply (eg. "rockchip,px30-dsi-dphy"). Meanwhile dsi-device drivers
+> like panels (eg. "ltk050h3146w") can already be registered on the bus.
+> In that case, when attempting, to register the dsi host from
+> dw_mipi_dsi_probe() using mipi_dsi_host_register(), the panel probe is
+> called with a dsi-host pointer that is still locally allocated in
+> dw_mipi_dsi_probe().
+> 
+> While probing, the panel driver tries to attach to a dsi host
+> (mipi_dsi_attach()) which calls in return for the specific dsi host
+> attach hook. (e.g. dw_mipi_dsi_rockchip_host_attach()).
+> dw_mipi_dsi_rockchip uses the component framework.
+> In the attach hook, the host component is registered which calls in return
+> for drm_bridge_attach() while trying to bind the component
+> (dw_mipi_dsi_bind())
 
-> > Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
-> > ---
-> >   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> >   .../boot/dts/rockchip/rk3566-odroid-m1s.dts   | 388 ++++++++++++++++++
-> >   2 files changed, 389 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts
-> > =
+In meson_dw_mipi_dsi I simply fixed this by getting rid of components...
 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dt=
-s/rockchip/Makefile
-> > index a7b30e11beaf..0cc7360a6120 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -76,6 +76,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-anbernic-rg35=
-3ps.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-anbernic-rg353v.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-anbernic-rg353vs.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-anbernic-rg503.dtb
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-odroid-m1s.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-pinenote-v1.1.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-pinenote-v1.2.dtb
-> >   dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3566-powkiddy-rgb30.dtb
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts b/arch/=
-arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts
-> > new file mode 100644
-> > index 000000000000..c6c4f573535f
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts
-> > @@ -0,0 +1,388 @@
-> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> > +/*
-> > + * Copyright (c) 2024 KyuHyuk Lee <lee@kyuhyuk.kr>
-> > + *
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/leds/common.h>
-> > +#include <dt-bindings/pinctrl/rockchip.h>
-> > +#include "rk3566.dtsi"
-> > +
-> > +/ {
-> > +	model =3D "Hardkernel ODROID-M1S";
-> > +	compatible =3D "rockchip,rk3566-odroid-m1s", "rockchip,rk3566";
-> > +
-> > +	aliases {
-> > +		i2c0 =3D &i2c3;
-> > +		i2c3 =3D &i2c0;
-> > +		spi0 =3D &spi1;
-> > +		spi1 =3D &spi0;
-> > +		mmc0 =3D &sdmmc0;
-> > +		mmc1 =3D &sdhci;
-> > +		serial0 =3D &uart6;
-> > +		serial1 =3D &uart0;
-> > +		serial6 =3D &uart1;
-> > +	};
-> I suppose these mismatched aliases are here to keep compatibility with the
-> Odroid M1? However thats going to be super confusing to anyone following =
-the
-> actual Odroid M1S connector pinout (even the pin card that came with my
-> Odroid M1S doesnt show these mappings, but the actual real ports)?
-> > +
-> > +	chosen {
-> > +		stdout-path =3D "serial2:1500000n8";
-> > +	};
-> > +
-> > +	leds {
-> > +		compatible =3D "gpio-leds";
-> > +
-> > +		led_power: led-0 {
-> > +			gpios =3D <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-> > +			function =3D LED_FUNCTION_POWER;
-> > +			color =3D <LED_COLOR_ID_RED>;
-> > +			linux,default-trigger =3D "default-on";
-> > +			pinctrl-names =3D "default";
-> > +			pinctrl-0 =3D <&led_power_pin>;
-> > +		};
-> > +		led_work: led-1 {
-> > +			gpios =3D <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
-> > +			function =3D LED_FUNCTION_HEARTBEAT;
-> > +			color =3D <LED_COLOR_ID_BLUE>;
-> > +			linux,default-trigger =3D "heartbeat";
-> > +			pinctrl-names =3D "default";
-> > +			pinctrl-0 =3D <&led_work_pin>;
-> > +		};
-> > +	};
-> > +
-> > +	vcc_sys: vcc-sys-regulator {
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "vcc_sys";
-> > +		regulator-always-on;
-> > +		regulator-boot-on;
-> > +		regulator-min-microvolt =3D <5000000>;
-> > +		regulator-max-microvolt =3D <5000000>;
-> > +	};
-> > +
-> > +	vcc3v3_sys: vcc3v3-sys-regulator {
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "vcc3v3_sys";
-> > +		regulator-always-on;
-> > +		regulator-boot-on;
-> > +		regulator-min-microvolt =3D <3300000>;
-> > +		regulator-max-microvolt =3D <3300000>;
-> > +		vin-supply =3D <&vcc5v0_sys>;
-> > +	};
-> > +
-> > +	vcc5v0_sys: vcc5v0-sys-regulator {
-> > +		compatible =3D "regulator-fixed";
-> > +		regulator-name =3D "vcc5v0_sys";
-> > +		regulator-always-on;
-> > +		regulator-boot-on;
-> > +		regulator-min-microvolt =3D <5000000>;
-> > +		regulator-max-microvolt =3D <5000000>;
-> > +		vin-supply =3D <&vcc_sys>;
-> > +	};
-> > +};
-> > +
-> > +&cpu0 {
-> > +	cpu-supply =3D <&vdd_cpu>;
-> > +};
-> > +
-> > +&cpu1 {
-> > +	cpu-supply =3D <&vdd_cpu>;
-> > +};
-> > +
-> > +&cpu2 {
-> > +	cpu-supply =3D <&vdd_cpu>;
-> > +};
-> > +
-> > +&cpu3 {
-> > +	cpu-supply =3D <&vdd_cpu>;
-> > +};
-> > +
-> > +&i2c0 {
-> > +	status =3D "okay";
-> > +
-> > +	vdd_cpu: regulator@1c {
-> > +		compatible =3D "tcs,tcs452x";
-> This compatible seems to be from the Rockchip kernel, for mainline it sho=
-uld
-> be=A0 "tcs,tcs4525"?
-> > +		reg =3D <0x1c>;
-> > +		fcs,suspend-voltage-selector =3D <1>;
-> > +		regulator-name =3D "vdd_cpu";
-> > +		regulator-always-on;
-> > +		regulator-boot-on;
-> > +		regulator-min-microvolt =3D <712500>;
-> > +		regulator-max-microvolt =3D <1390000>;
-> > +		regulator-init-microvolt =3D <900000>;
-> > +		regulator-ramp-delay =3D <2300>;
-> > +		vin-supply =3D <&vcc5v0_sys>;
-> I had checked schematics for this and they seem to show that this is
-> vin-supply =3D <&vcc3v3_sys>?
-> > +
-> > +		regulator-state-mem {
-> > +			regulator-off-in-suspend;
-> > +		};
-> > +	};
-> > +
-> > +	rk809: pmic@20 {
-> > +		compatible =3D "rockchip,rk809";
-> > +		reg =3D <0x20>;
-> > +		interrupt-parent =3D <&gpio0>;
-> > +		interrupts =3D <3 IRQ_TYPE_LEVEL_LOW>;
-> > +		#clock-cells =3D <1>;
-> > +		pinctrl-names =3D "default";
-> > +		pinctrl-0 =3D <&pmic_int_l>;
-> > +		rockchip,system-power-controller;
-> > +		vcc1-supply =3D <&vcc3v3_sys>;
-> > +		vcc2-supply =3D <&vcc3v3_sys>;
-> > +		vcc3-supply =3D <&vcc3v3_sys>;
-> > +		vcc4-supply =3D <&vcc3v3_sys>;
-> > +		vcc5-supply =3D <&vcc3v3_sys>;
-> > +		vcc6-supply =3D <&vcc3v3_sys>;
-> > +		vcc7-supply =3D <&vcc3v3_sys>;
-> > +		vcc8-supply =3D <&vcc3v3_sys>;
-> > +		vcc9-supply =3D <&vcc3v3_sys>;
-> > +		wakeup-source;
-> > +
-> > +		regulators {
-> > +			vdd_logic: DCDC_REG1 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <500000>;
-> > +				regulator-max-microvolt =3D <1350000>;
-> > +				regulator-init-microvolt =3D <900000>;
-> > +				regulator-ramp-delay =3D <6001>;
-> > +				regulator-initial-mode =3D <0x2>;
-> > +				regulator-name =3D "vdd_logic";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vdd_gpu: DCDC_REG2 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <500000>;
-> > +				regulator-max-microvolt =3D <1350000>;
-> > +				regulator-init-microvolt =3D <900000>;
-> > +				regulator-ramp-delay =3D <6001>;
-> > +				regulator-initial-mode =3D <0x2>;
-> > +				regulator-name =3D "vdd_gpu";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_ddr: DCDC_REG3 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-initial-mode =3D <0x2>;
-> > +				regulator-name =3D "vcc_ddr";
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vdd_npu: DCDC_REG4 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <500000>;
-> > +				regulator-max-microvolt =3D <1350000>;
-> > +				regulator-init-microvolt =3D <900000>;
-> > +				regulator-ramp-delay =3D <6001>;
-> > +				regulator-initial-mode =3D <0x2>;
-> > +				regulator-name =3D "vdd_npu";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vdda0v9_image: LDO_REG1 {
-> > +				regulator-boot-on;
-> > +				regulator-always-on;
-> > +				regulator-min-microvolt =3D <900000>;
-> > +				regulator-max-microvolt =3D <900000>;
-> > +				regulator-name =3D "vdda0v9_image";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vdda_0v9: LDO_REG2 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <900000>;
-> > +				regulator-max-microvolt =3D <900000>;
-> > +				regulator-name =3D "vdda_0v9";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vdda0v9_pmu: LDO_REG3 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <900000>;
-> > +				regulator-max-microvolt =3D <900000>;
-> > +				regulator-name =3D "vdda0v9_pmu";
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt =3D <900000>;
-> > +				};
-> > +			};
-> > +
-> > +			vccio_acodec: LDO_REG4 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <3000000>;
-> > +				regulator-max-microvolt =3D <3000000>;
-> > +				regulator-name =3D "vccio_acodec";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vccio_sd: LDO_REG5 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <1800000>;
-> > +				regulator-max-microvolt =3D <3300000>;
-> > +				regulator-name =3D "vccio_sd";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc3v3_pmu: LDO_REG6 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <3300000>;
-> > +				regulator-max-microvolt =3D <3300000>;
-> > +				regulator-name =3D "vcc3v3_pmu";
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt =3D <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcca_1v8: LDO_REG7 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <1800000>;
-> > +				regulator-max-microvolt =3D <1800000>;
-> > +				regulator-name =3D "vcca_1v8";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcca1v8_ddr: LDO_REG8 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <1800000>;
-> > +				regulator-max-microvolt =3D <1800000>;
-> > +				regulator-name =3D "vcca1v8_pmu";
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt =3D <1800000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcca1v8_image: LDO_REG9 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <1800000>;
-> > +				regulator-max-microvolt =3D <1800000>;
-> > +				regulator-name =3D "vcca1v8_image";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_1v8: DCDC_REG5 {
-> Maybe its just me, but seems odd that DCDC_REG5 is out of order with the
-> other DCDC regulators above.
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-min-microvolt =3D <1800000>;
-> > +				regulator-max-microvolt =3D <1800000>;
-> > +				regulator-name =3D "vcc_1v8";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_3v3: SWITCH_REG1 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-name =3D "vcc_3v3";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc3v3_sd: SWITCH_REG2 {
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +				regulator-name =3D "vcc3v3_sd";
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +				};
-> > +			};
-> > +		};
-> > +	};
-> > +};
-> > +
-> > +&pinctrl {
-> > +	leds {
-> > +		led_power_pin: led-power-pin {
-> > +			rockchip,pins =3D <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +		};
-> > +		led_work_pin: led-work-pin {
-> > +			rockchip,pins =3D <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +		};
-> > +	};
-> > +
-> > +	pmic {
-> > +		pmic_int_l: pmic-int-l {
-> > +			rockchip,pins =3D
-> > +				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-> > +		};
-> > +	};
-> > +};
-> > +
-> > +&pmu_io_domains {
-> > +	pmuio2-supply =3D <&vcc3v3_pmu>;
-> > +	vccio1-supply =3D <&vccio_acodec>;
-> > +	vccio3-supply =3D <&vccio_sd>;
-> > +	vccio4-supply =3D <&vcc_3v3>;
-> > +	vccio5-supply =3D <&vcc_3v3>;
-> > +	vccio6-supply =3D <&vcc_3v3>;
-> > +	vccio7-supply =3D <&vcc_3v3>;
-> > +	status =3D "okay";
-> > +};
-> Did you miss pmuio1 and vccio2 here? the latter of which is the eMMC doma=
-in.
-> =
+Neil
 
-> Are you planning to add additional patches for usb, gmac etc? I had been
-> working through cleaning up these device tree files with a view to
-> submitting them soon also.
-> =
+> 
+> drm_bridge_attach() requires a valid drm bridge parameter. However, the
+> drm bridge (&dmd->bridge) that will be passed, is not yet initialized since
+> the dw_mipi_dsi_probe() has not yet returned. This call will fail with a
+> fatal error (invalid bridge) causing the panel to not be probed again.
+> 
+> To simplify the issue: drm_bridge_attach() depends on the result pointer
+> of dw_mipi_dsi_probe().
+> While, if the dsi probe is deferred, drm_bridge_attach() is called before
+> dw_mipi_dsi_probe() returns.
+> 
+> drm_bridge_attach+0x14/0x1ac
+> dw_mipi_dsi_bind+0x24/0x30
+> dw_mipi_dsi_rockchip_bind+0x258/0x378
+> component_bind_all+0x118/0x248
+> rockchip_drm_bind+0xb0/0x1f8
+> try_to_bring_up_aggregate_device+0x168/0x1d4
+> __component_add+0xa4/0x170
+> component_add+0x14/0x20
+> dw_mipi_dsi_rockchip_host_attach+0x54/0x144
+> dw_mipi_dsi_host_attach+0x9c/0xcc
+> mipi_dsi_attach+0x28/0x3c
+> ltk050h3146w_probe+0x10c/0x1a4
+> mipi_dsi_drv_probe+0x20/0x2c
+> really_probe+0x148/0x2ac
+> __driver_probe_device+0x78/0x12c
+> driver_probe_device+0xdc/0x160
+> __device_attach_driver+0xb8/0x134
+> bus_for_each_drv+0x80/0xdc
+> __device_attach+0xa8/0x1b0
+> device_initial_probe+0x14/0x20
+> bus_probe_device+0xa8/0xac
+> device_add+0x5cc/0x778
+> mipi_dsi_device_register_full+0xd8/0x198
+> mipi_dsi_host_register+0x98/0x18c
+> __dw_mipi_dsi_probe+0x290/0x35c
+> dw_mipi_dsi_probe+0x10/0x6c
+> dw_mipi_dsi_rockchip_probe+0x208/0x3e4
+> platform_probe+0x68/0xdc
+> really_probe+0x148/0x2ac
+> __driver_probe_device+0x78/0x12c
+> driver_probe_device+0xdc/0x160
+> __device_attach_driver+0xb8/0x134
+> bus_for_each_drv+0x80/0xdc
+> __device_attach+0xa8/0x1b0
+> device_initial_probe+0x14/0x20
+> bus_probe_device+0xa8/0xac
+> deferred_probe_work_func+0x88/0xc0
+> process_one_work+0x138/0x260
+> worker_thread+0x32c/0x438
+> kthread+0x118/0x11c
+> ret_from_fork+0x10/0x20
+> ---[ end trace 0000000000000000 ]---
+> 
+> Fix this by initializing directly the dmd pointer in dw_mipi_dsi_probe(),
+> which requires also initializting the dmd->bridge attributes that are
+> required in drm_bridge_attach() before calling mipi_dsi_host_register().
+> 
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+> ---
+>   drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c   |  4 +-
+>   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 42 ++++++++++---------
+>   drivers/gpu/drm/meson/meson_dw_mipi_dsi.c     |  8 ++--
+>   .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  5 +--
+>   drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  5 +--
+>   include/drm/bridge/dw_mipi_dsi.h              |  5 ++-
+>   6 files changed, 35 insertions(+), 34 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c b/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
+> index 3ff30ce80c5b..469976ad3b19 100644
+> --- a/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
+> @@ -881,8 +881,8 @@ static int imx93_dsi_probe(struct platform_device *pdev)
+>   	dsi->pdata.priv_data = dsi;
+>   	platform_set_drvdata(pdev, dsi);
+>   
+> -	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
+> -	if (IS_ERR(dsi->dmd))
+> +	ret = dw_mipi_dsi_probe(pdev, &dsi->pdata, &dsi->dmd);
+> +	if (ret < 0)
+>   		return dev_err_probe(dev, PTR_ERR(dsi->dmd),
+>   				     "failed to probe dw_mipi_dsi\n");
+>   
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index 824fb3c65742..306cba366ba8 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -1184,18 +1184,19 @@ static void dw_mipi_dsi_debugfs_remove(struct dw_mipi_dsi *dsi) { }
+>   
+>   #endif /* CONFIG_DEBUG_FS */
+>   
+> -static struct dw_mipi_dsi *
+> -__dw_mipi_dsi_probe(struct platform_device *pdev,
+> -		    const struct dw_mipi_dsi_plat_data *plat_data)
+> +int __dw_mipi_dsi_probe(struct platform_device *pdev,
+> +		    const struct dw_mipi_dsi_plat_data *plat_data, struct dw_mipi_dsi **dsi_p)
+>   {
+>   	struct device *dev = &pdev->dev;
+>   	struct reset_control *apb_rst;
+>   	struct dw_mipi_dsi *dsi;
+>   	int ret;
+>   
+> -	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
+> -	if (!dsi)
+> -		return ERR_PTR(-ENOMEM);
+> +	*dsi_p = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
+> +	if (!*dsi_p)
+> +		return -ENOMEM;
+> +
+> +	dsi = *dsi_p;
+>   
+>   	dsi->dev = dev;
+>   	dsi->plat_data = plat_data;
+> @@ -1203,13 +1204,13 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>   	if (!plat_data->phy_ops->init || !plat_data->phy_ops->get_lane_mbps ||
+>   	    !plat_data->phy_ops->get_timing) {
+>   		DRM_ERROR("Phy not properly configured\n");
+> -		return ERR_PTR(-ENODEV);
+> +		return -ENODEV;
+>   	}
+>   
+>   	if (!plat_data->base) {
+>   		dsi->base = devm_platform_ioremap_resource(pdev, 0);
+>   		if (IS_ERR(dsi->base))
+> -			return ERR_PTR(-ENODEV);
+> +			return -ENODEV;
+>   
+>   	} else {
+>   		dsi->base = plat_data->base;
+> @@ -1219,7 +1220,7 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>   	if (IS_ERR(dsi->pclk)) {
+>   		ret = PTR_ERR(dsi->pclk);
+>   		dev_err(dev, "Unable to get pclk: %d\n", ret);
+> -		return ERR_PTR(ret);
+> +		return ret;
+>   	}
+>   
+>   	/*
+> @@ -1233,14 +1234,14 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>   		if (ret != -EPROBE_DEFER)
+>   			dev_err(dev, "Unable to get reset control: %d\n", ret);
+>   
+> -		return ERR_PTR(ret);
+> +		return ret;
+>   	}
+>   
+>   	if (apb_rst) {
+>   		ret = clk_prepare_enable(dsi->pclk);
+>   		if (ret) {
+>   			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
+> -			return ERR_PTR(ret);
+> +			return ret;
+>   		}
+>   
+>   		reset_control_assert(apb_rst);
+> @@ -1255,19 +1256,20 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>   
+>   	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
+>   	dsi->dsi_host.dev = dev;
+> +	dsi->bridge.driver_private = dsi;
+> +	dsi->bridge.funcs = &dw_mipi_dsi_bridge_funcs;
+> +	dsi->bridge.of_node = pdev->dev.of_node;
+> +
+>   	ret = mipi_dsi_host_register(&dsi->dsi_host);
+>   	if (ret) {
+>   		dev_err(dev, "Failed to register MIPI host: %d\n", ret);
+>   		pm_runtime_disable(dev);
+>   		dw_mipi_dsi_debugfs_remove(dsi);
+> -		return ERR_PTR(ret);
+> +		return ret;
+>   	}
+>   
+> -	dsi->bridge.driver_private = dsi;
+> -	dsi->bridge.funcs = &dw_mipi_dsi_bridge_funcs;
+> -	dsi->bridge.of_node = pdev->dev.of_node;
+>   
+> -	return dsi;
+> +	return 0;
+>   }
+>   
+>   static void __dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
+> @@ -1301,11 +1303,11 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_get_bridge);
+>   /*
+>    * Probe/remove API, used from platforms based on the DRM bridge API.
+>    */
+> -struct dw_mipi_dsi *
+> -dw_mipi_dsi_probe(struct platform_device *pdev,
+> -		  const struct dw_mipi_dsi_plat_data *plat_data)
+> +int dw_mipi_dsi_probe(struct platform_device *pdev,
+> +		  const struct dw_mipi_dsi_plat_data *plat_data,
+> +		  struct dw_mipi_dsi **dsi_p)
+>   {
+> -	return __dw_mipi_dsi_probe(pdev, plat_data);
+> +	return __dw_mipi_dsi_probe(pdev, plat_data, dsi_p);
+>   }
+>   EXPORT_SYMBOL_GPL(dw_mipi_dsi_probe);
+>   
+> diff --git a/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c b/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
+> index e5fe4e994f43..b103f3e31f2a 100644
+> --- a/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
+> +++ b/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
+> @@ -262,6 +262,7 @@ static int meson_dw_mipi_dsi_probe(struct platform_device *pdev)
+>   {
+>   	struct meson_dw_mipi_dsi *mipi_dsi;
+>   	struct device *dev = &pdev->dev;
+> +	int ret;
+>   
+>   	mipi_dsi = devm_kzalloc(dev, sizeof(*mipi_dsi), GFP_KERNEL);
+>   	if (!mipi_dsi)
+> @@ -315,10 +316,9 @@ static int meson_dw_mipi_dsi_probe(struct platform_device *pdev)
+>   	mipi_dsi->pdata.priv_data = mipi_dsi;
+>   	platform_set_drvdata(pdev, mipi_dsi);
+>   
+> -	mipi_dsi->dmd = dw_mipi_dsi_probe(pdev, &mipi_dsi->pdata);
+> -	if (IS_ERR(mipi_dsi->dmd))
+> -		return dev_err_probe(dev, PTR_ERR(mipi_dsi->dmd),
+> -				     "Failed to probe dw_mipi_dsi\n");
+> +	ret = dw_mipi_dsi_probe(pdev, &mipi_dsi->pdata, &mipi_dsi->dmd);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret, "Failed to probe dw_mipi_dsi\n");
+>   
+>   	return 0;
+>   }
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index 6396f9324dab..4df32747476c 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -1457,9 +1457,8 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+>   	if (IS_ERR(phy_provider))
+>   		return PTR_ERR(phy_provider);
+>   
+> -	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
+> -	if (IS_ERR(dsi->dmd)) {
+> -		ret = PTR_ERR(dsi->dmd);
+> +	ret = dw_mipi_dsi_probe(pdev, &dsi->pdata, &dsi->dmd);
+> +	if (ret < 0) {
+>   		if (ret != -EPROBE_DEFER)
+>   			DRM_DEV_ERROR(dev,
+>   				      "Failed to probe dw_mipi_dsi: %d\n", ret);
+> diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> index d5f8c923d7bc..44dbbfc277d8 100644
+> --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> @@ -518,9 +518,8 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
+>   
+>   	platform_set_drvdata(pdev, dsi);
+>   
+> -	dsi->dsi = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
+> -	if (IS_ERR(dsi->dsi)) {
+> -		ret = PTR_ERR(dsi->dsi);
+> +	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data, &dsi->dsi);
+> +	if (ret < 0) {
+>   		dev_err_probe(dev, ret, "Failed to initialize mipi dsi host\n");
+>   		goto err_dsi_probe;
+>   	}
+> diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
+> index 65d5e68065e3..f073e819251e 100644
+> --- a/include/drm/bridge/dw_mipi_dsi.h
+> +++ b/include/drm/bridge/dw_mipi_dsi.h
+> @@ -76,9 +76,10 @@ struct dw_mipi_dsi_plat_data {
+>   	void *priv_data;
+>   };
+>   
+> -struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
+> +int dw_mipi_dsi_probe(struct platform_device *pdev,
+>   				      const struct dw_mipi_dsi_plat_data
+> -				      *plat_data);
+> +				      *plat_data,
+> +					  struct dw_mipi_dsi **dsi_p);
+>   void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
+>   int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder);
+>   void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
 
-> Regards
-> =A0=A0 Tim
-
-Hello Tim. Thank you for your reviewing.
-
-I'll check you said above.
-
-Yes, I am planning additional patches like usb, gmac as you said.
-May I understand that you cleaned up my patch?
-I look forward to your reply.
-
-Thank you,
-KyuHyuk Lee.
 
 _______________________________________________
 Linux-rockchip mailing list
