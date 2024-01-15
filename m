@@ -4,129 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1052C3DA79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 14:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54161C3DA79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 15:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iw3Gcme8LWEADVLu5OtD8hgiNIVEo6owroHlQ1xD7pg=; b=f8O9+fEF2ffbg7
-	0MSZ5PHvLXA/HYkGbPbhfYI/AJU9/SzQO5+naKH7J7kcyiLIMNO2eh3Frps54EZw8dykUyGEilK3W
-	VsDgvZYCZLmWljJQiBf2UUWzuapUmtgTj32RfLOhh1k6Dioju8T6CfnLBSoJ09v1sjSjfhEs5uiQF
-	sfCC/2v3G99Np0hzqWmhFKLy17rSwkFNSV/FKmeJnJVs7i568KhoIVS30ZZC5uWqtN/4JZhkzvs3z
-	0h1zL7aEDb9YdrdgnW+EgtU9FqaBbxP/9Ud52Pkn8EZ/7NyBcGK9V3qGceNGL3/MC0aBXvAkhd3Ez
-	HN5+gVQIwBQcaFhckf9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QkqunjrjZM8z1MVZAPbpNbLxUbLi/Lt0sgAmQaCvWz0=; b=2hMLbrCpxZsUMooTZ4PZI68Ado
+	iNsO9DfAcaPD86J9ZbBsL7IY423/wsQiMIPmhH+vhqBe09PbDexMsSdTzpzwXeks872ULMy0jG2kc
+	aV1C909epV/sgmW+dId77Lx8eEAkT8JUJL6l4i3LYigD8fg1G2tQrdfH4JQ5F4ATDPFD1Tnl6QOgu
+	ssG+Y8H6k1oxxvC5qTZkbXyVEkJQ9BfBjd0t1M1z7EO/gqTyBF8mVA8Y+hTaVEtwtQe2VpSQ/7qqw
+	6qxPFhKT0ZbsVGg+MP9VOXjMn5O621jBdHOBRVi6/EIOAomLfycFWdw2+rfWRzCvDF7ByRSELWcKi
+	/jxmA1xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPOQa-009KBI-19;
-	Mon, 15 Jan 2024 14:59:04 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1rPOqW-009OV7-0d;
+	Mon, 15 Jan 2024 15:25:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPOQX-009K9K-0B
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jan 2024 14:59:02 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-50eaa8b447bso9695701e87.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Jan 2024 06:59:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705330739; x=1705935539; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=EElY+BJl6RKUQaYaAMecQraHTbTen04LJB6W0a07C8s=;
-        b=DcMJAoCP7py95lU5UDQwSEJBmR0yvJ4mRcjtJEXmD4XI3xCsCZiHb4VylZpSntSIwL
-         kSPsJ+k+7sUpNKj3XMpCArZxwXscpyMosaFg0AzxdZoBuQ5Yb6E/IxfUaph7LPcE5Feh
-         KdZwFcXjKDSPLxxOXX6CWqAjvVjDwuHJ5f6/s7jtz2W//rxAPPENo0KU5JnucECjpqJa
-         nwV3uQc90C0vs8DjVOpIPvdg2oik11PCk0D5pjDVAkVUb/FtWqO69sTh2mbHsSZA6di0
-         lt9MCH/aAamTab+DeF6h6t7jtNYfMpAjhUHjuSKexb7b0y3NozJHAcY7sA3alm5KjjwA
-         CyCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705330739; x=1705935539;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EElY+BJl6RKUQaYaAMecQraHTbTen04LJB6W0a07C8s=;
-        b=YbA3lF1XfZ0eeQAFE6YSLDbzgxLmvyLCSfkV+IDvOgzEXhAD94BWahL5YuljxtKvWs
-         FPBO1dOWW2e+CLD2qE4IZTLTrYqkr52HMSbFzjG2n//oA9lAa1580JxC69BAmGiOUATf
-         GMKHroNY1OLUi8pLyw9aBlaz0A1EImVWXlfxrXzgndpSYYe6S8PEUC7XwoKtzfVV8VYN
-         dXA0Of0mru5bevj/0DTpBUDfyHX24+MAqFoACYujx5/BUEy2B76J1Ie/8b9yHVIzTzRZ
-         pZMesFWUb3fVa5bXruV/c/MMYEnzd4bLcvoFqjSiQEoGfkjK3hTP4UvUysBP7O2z/zUd
-         VStg==
-X-Gm-Message-State: AOJu0YySpTXKoepSmJ7e+UFvkqoYSrH6BWNU0/jAayQUSZiNlfcl46al
-	waJZmadOhsl5j9a471eOcSgmlNZDWVum2w==
-X-Google-Smtp-Source: AGHT+IFlo+ao9jgz3mGyzRiLuHFM4+YOg3HQPu7mLSIY3ZNIZ9hIHvDrrgH3UB2L/gyz96hhCWZKSA==
-X-Received: by 2002:a05:6512:1310:b0:50e:7f0c:7913 with SMTP id x16-20020a056512131000b0050e7f0c7913mr1516527lfu.262.1705330738687;
-        Mon, 15 Jan 2024 06:58:58 -0800 (PST)
-Received: from [192.168.1.20] ([178.197.215.66])
-        by smtp.gmail.com with ESMTPSA id a23-20020a1709062b1700b00a2a67731f31sm5313145ejg.109.2024.01.15.06.58.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 15 Jan 2024 06:58:58 -0800 (PST)
-Message-ID: <b4f97202-43ec-4f04-af95-b1ccd3b5d203@linaro.org>
-Date: Mon, 15 Jan 2024 15:58:56 +0100
+	id 1rPOqR-009ORj-1l;
+	Mon, 15 Jan 2024 15:25:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9C7A560C78;
+	Mon, 15 Jan 2024 15:25:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEB19C433C7;
+	Mon, 15 Jan 2024 15:25:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705332344;
+	bh=F+KShPyxC2iWhYtXbRbIEplYrB9q6J1tUU6JHTlPDX8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=euQlCMkLJcL2D4vkC4R75T4/MgQt/FWOdjmTNjrXW4LWTF5fO3uKIJgoyQbjAjJw8
+	 yOw0BRyBdyTB8uEyoeBz2SwjbRkeJkkXg0NVYq9Be0KYlNPjNIawRM0z0JgQ1/8OG4
+	 dt9O64QiNHoyhyJbInor9qAWkq/0P+1Ifvd1qPNdA+K+fGD27Gm/yh5J7pBalsPt7e
+	 5rYpN3eiJcY86z1aWyN+75ZKXeahea2OgZcr/YVbZbadEbA3aKzjteTvvAbXlD7rS4
+	 j6HRMuiNpSOYk42xBoikwMHecf3dD9SVE+ChIiIChjfpD3XLERLKr19YPRz6djluow
+	 P/19UNpHxSYRA==
+Date: Mon, 15 Jan 2024 16:25:41 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Sebastian Wick <sebastian.wick@redhat.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, Hans Verkuil <hverkuil@xs4all.nl>, 
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Subject: Re: Re: [PATCH v5 08/44] drm/connector: hdmi: Add Broadcast RGB
+ property
+Message-ID: <jpcov2bvhpabws36ueywr4xjfnbmwjsd42b4tpcicyi66qkjs2@3xn5mdl4zyus>
+References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+ <20231207-kms-hdmi-connector-state-v5-8-6538e19d634d@kernel.org>
+ <20240115143308.GA159345@toolbox>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: rockchip: Fix Hardkernel ODROID-M1 board
- bindings
-Content-Language: en-US
-To: KyuHyuk Lee <lee@kyuhyuk.kr>, Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Chris Morgan <macromorgan@hotmail.com>, Tianling Shen <cnsztl@gmail.com>,
- Jagan Teki <jagan@edgeble.ai>, Ondrej Jirman <megi@xff.cz>,
- Andy Yan <andyshrk@163.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20240115145142.6292-1-lee@kyuhyuk.kr>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240115145142.6292-1-lee@kyuhyuk.kr>
+In-Reply-To: <20240115143308.GA159345@toolbox>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_065901_096068_A4A7C9DF 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20240115_072547_670890_27FFC623 
+X-CRM114-Status: GOOD (  45.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,37 +75,282 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3209119994287100406=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 15/01/2024 15:51, KyuHyuk Lee wrote:
-> The vendor in ODROID-M1 is hardkernel, but it was incorrectly written
-> as rockchip. Fixed the vendor prefix correctly.
-> 
-> Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 
-You need to start testing your patches. Your last M1 fails as well in
-multiple places.
+--===============3209119994287100406==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yd3mop6hvuqz5nhz"
+Content-Disposition: inline
 
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check W=1` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
 
-The DTS change will break the users, so would be nice to mention this in
-its commit msg.
+--yd3mop6hvuqz5nhz
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
-Krzysztof
+On Mon, Jan 15, 2024 at 03:33:08PM +0100, Sebastian Wick wrote:
+> On Thu, Dec 07, 2023 at 04:49:31PM +0100, Maxime Ripard wrote:
+> > The i915 driver has a property to force the RGB range of an HDMI output.
+> > The vc4 driver then implemented the same property with the same
+> > semantics. KWin has support for it, and a PR for mutter is also there to
+> > support it.
+> >=20
+> > Both drivers implementing the same property with the same semantics,
+> > plus the userspace having support for it, is proof enough that it's
+> > pretty much a de-facto standard now and we can provide helpers for it.
+> >=20
+> > Let's plumb it into the newly created HDMI connector.
+> >=20
+> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >  Documentation/gpu/kms-properties.csv               |   1 -
+> >  drivers/gpu/drm/drm_atomic.c                       |   5 +
+> >  drivers/gpu/drm/drm_atomic_state_helper.c          |  17 +
+> >  drivers/gpu/drm/drm_atomic_uapi.c                  |   4 +
+> >  drivers/gpu/drm/drm_connector.c                    |  76 +++++
+> >  drivers/gpu/drm/tests/Makefile                     |   1 +
+> >  .../gpu/drm/tests/drm_atomic_state_helper_test.c   | 376 +++++++++++++=
+++++++++
+> >  drivers/gpu/drm/tests/drm_connector_test.c         | 117 ++++++-
+> >  drivers/gpu/drm/tests/drm_kunit_edid.h             | 106 ++++++
+> >  include/drm/drm_connector.h                        |  36 ++
+> >  10 files changed, 737 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/Documentation/gpu/kms-properties.csv b/Documentation/gpu/k=
+ms-properties.csv
+> > index 0f9590834829..caef14c532d4 100644
+> > --- a/Documentation/gpu/kms-properties.csv
+> > +++ b/Documentation/gpu/kms-properties.csv
+> > @@ -17,7 +17,6 @@ Owner Module/Drivers,Group,Property Name,Type,Propert=
+y Values,Object attached,De
+> >  ,Virtual GPU,=E2=80=9Csuggested X=E2=80=9D,RANGE,"Min=3D0, Max=3D0xfff=
+fffff",Connector,property to suggest an X offset for a connector
+> >  ,,=E2=80=9Csuggested Y=E2=80=9D,RANGE,"Min=3D0, Max=3D0xffffffff",Conn=
+ector,property to suggest an Y offset for a connector
+> >  ,Optional,"""aspect ratio""",ENUM,"{ ""None"", ""4:3"", ""16:9"" }",Co=
+nnector,TDB
+> > -i915,Generic,"""Broadcast RGB""",ENUM,"{ ""Automatic"", ""Full"", ""Li=
+mited 16:235"" }",Connector,"When this property is set to Limited 16:235 an=
+d CTM is set, the hardware will be programmed with the result of the multip=
+lication of CTM by the limited range matrix to ensure the pixels normally i=
+n the range 0..1.0 are remapped to the range 16/255..235/255."
+> >  ,,=E2=80=9Caudio=E2=80=9D,ENUM,"{ ""force-dvi"", ""off"", ""auto"", ""=
+on"" }",Connector,TBD
+> >  ,SDVO-TV,=E2=80=9Cmode=E2=80=9D,ENUM,"{ ""NTSC_M"", ""NTSC_J"", ""NTSC=
+_443"", ""PAL_B"" } etc.",Connector,TBD
+> >  ,,"""left_margin""",RANGE,"Min=3D0, Max=3D SDVO dependent",Connector,T=
+BD
+> > diff --git a/drivers/gpu/drm/drm_atomic.c b/drivers/gpu/drm/drm_atomic.c
+> > index c31fc0b48c31..1465a7f09a0b 100644
+> > --- a/drivers/gpu/drm/drm_atomic.c
+> > +++ b/drivers/gpu/drm/drm_atomic.c
+> > @@ -1142,6 +1142,11 @@ static void drm_atomic_connector_print_state(str=
+uct drm_printer *p,
+> >  	drm_printf(p, "\tmax_requested_bpc=3D%d\n", state->max_requested_bpc);
+> >  	drm_printf(p, "\tcolorspace=3D%s\n", drm_get_colorspace_name(state->c=
+olorspace));
+> > =20
+> > +	if (connector->connector_type =3D=3D DRM_MODE_CONNECTOR_HDMIA ||
+> > +	    connector->connector_type =3D=3D DRM_MODE_CONNECTOR_HDMIB)
+> > +		drm_printf(p, "\tbroadcast_rgb=3D%s\n",
+> > +			   drm_hdmi_connector_get_broadcast_rgb_name(state->hdmi.broadcast_=
+rgb));
+> > +
+> >  	if (connector->connector_type =3D=3D DRM_MODE_CONNECTOR_WRITEBACK)
+> >  		if (state->writeback_job && state->writeback_job->fb)
+> >  			drm_printf(p, "\tfb=3D%d\n", state->writeback_job->fb->base.id);
+> > diff --git a/drivers/gpu/drm/drm_atomic_state_helper.c b/drivers/gpu/dr=
+m/drm_atomic_state_helper.c
+> > index e69c0cc1c6da..10d98620a358 100644
+> > --- a/drivers/gpu/drm/drm_atomic_state_helper.c
+> > +++ b/drivers/gpu/drm/drm_atomic_state_helper.c
+> > @@ -583,6 +583,7 @@ EXPORT_SYMBOL(drm_atomic_helper_connector_tv_reset);
+> >  void __drm_atomic_helper_connector_hdmi_reset(struct drm_connector *co=
+nnector,
+> >  					      struct drm_connector_state *new_state)
+> >  {
+> > +	new_state->hdmi.broadcast_rgb =3D DRM_HDMI_BROADCAST_RGB_AUTO;
+> >  }
+> >  EXPORT_SYMBOL(__drm_atomic_helper_connector_hdmi_reset);
+> > =20
+> > @@ -650,6 +651,22 @@ EXPORT_SYMBOL(drm_atomic_helper_connector_tv_check=
+);
+> >  int drm_atomic_helper_connector_hdmi_check(struct drm_connector *conne=
+ctor,
+> >  					   struct drm_atomic_state *state)
+> >  {
+> > +	struct drm_connector_state *old_state =3D
+> > +		drm_atomic_get_old_connector_state(state, connector);
+> > +	struct drm_connector_state *new_state =3D
+> > +		drm_atomic_get_new_connector_state(state, connector);
+> > +
+> > +	if (old_state->hdmi.broadcast_rgb !=3D new_state->hdmi.broadcast_rgb)=
+ {
+> > +		struct drm_crtc *crtc =3D new_state->crtc;
+> > +		struct drm_crtc_state *crtc_state;
+> > +
+> > +		crtc_state =3D drm_atomic_get_crtc_state(state, crtc);
+> > +		if (IS_ERR(crtc_state))
+> > +			return PTR_ERR(crtc_state);
+> > +
+> > +		crtc_state->mode_changed =3D true;
+> > +	}
+> > +
+> >  	return 0;
+> >  }
+> >  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_check);
+> > diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/drm_at=
+omic_uapi.c
+> > index aee4a65d4959..3eb4f4bc8b71 100644
+> > --- a/drivers/gpu/drm/drm_atomic_uapi.c
+> > +++ b/drivers/gpu/drm/drm_atomic_uapi.c
+> > @@ -818,6 +818,8 @@ static int drm_atomic_connector_set_property(struct=
+ drm_connector *connector,
+> >  		state->max_requested_bpc =3D val;
+> >  	} else if (property =3D=3D connector->privacy_screen_sw_state_propert=
+y) {
+> >  		state->privacy_screen_sw_state =3D val;
+> > +	} else if (property =3D=3D connector->broadcast_rgb_property) {
+> > +		state->hdmi.broadcast_rgb =3D val;
+> >  	} else if (connector->funcs->atomic_set_property) {
+> >  		return connector->funcs->atomic_set_property(connector,
+> >  				state, property, val);
+> > @@ -901,6 +903,8 @@ drm_atomic_connector_get_property(struct drm_connec=
+tor *connector,
+> >  		*val =3D state->max_requested_bpc;
+> >  	} else if (property =3D=3D connector->privacy_screen_sw_state_propert=
+y) {
+> >  		*val =3D state->privacy_screen_sw_state;
+> > +	} else if (property =3D=3D connector->broadcast_rgb_property) {
+> > +		*val =3D state->hdmi.broadcast_rgb;
+> >  	} else if (connector->funcs->atomic_get_property) {
+> >  		return connector->funcs->atomic_get_property(connector,
+> >  				state, property, val);
+> > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_conn=
+ector.c
+> > index d9961cce8245..929b0a911f62 100644
+> > --- a/drivers/gpu/drm/drm_connector.c
+> > +++ b/drivers/gpu/drm/drm_connector.c
+> > @@ -1183,6 +1183,29 @@ static const u32 dp_colorspaces =3D
+> >  	BIT(DRM_MODE_COLORIMETRY_BT2020_CYCC) |
+> >  	BIT(DRM_MODE_COLORIMETRY_BT2020_YCC);
+> > =20
+> > +static const struct drm_prop_enum_list broadcast_rgb_names[] =3D {
+> > +	{ DRM_HDMI_BROADCAST_RGB_AUTO, "Automatic" },
+> > +	{ DRM_HDMI_BROADCAST_RGB_FULL, "Full" },
+> > +	{ DRM_HDMI_BROADCAST_RGB_LIMITED, "Limited 16:235" },
+> > +};
+> > +
+> > +/*
+> > + * drm_hdmi_connector_get_broadcast_rgb_name - Return a string for HDM=
+I connector RGB broadcast selection
+> > + * @broadcast_rgb: Broadcast RGB selection to compute name of
+> > + *
+> > + * Returns: the name of the Broadcast RGB selection, or NULL if the ty=
+pe
+> > + * is not valid.
+> > + */
+> > +const char *
+> > +drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb =
+broadcast_rgb)
+> > +{
+> > +	if (broadcast_rgb > DRM_HDMI_BROADCAST_RGB_LIMITED)
+> > +		return NULL;
+> > +
+> > +	return broadcast_rgb_names[broadcast_rgb].name;
+> > +}
+> > +EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
+> > +
+> >  /**
+> >   * DOC: standard connector properties
+> >   *
+> > @@ -1655,6 +1678,26 @@ EXPORT_SYMBOL(drm_connector_attach_dp_subconnect=
+or_property);
+> >  /**
+> >   * DOC: HDMI connector properties
+> >   *
+> > + * Broadcast RGB
+> > + *      Indicates the RGB Quantization Range (Full vs Limited) used.
+> > + *      Infoframes will be generated according to that value.
+> > + *
+> > + *      The value of this property can be one of the following:
+> > + *
+> > + *      Automatic:
+> > + *              RGB Range is selected automatically based on the mode
+> > + *              according to the HDMI specifications.
+> > + *
+> > + *      Full:
+> > + *              Full RGB Range is forced.
+> > + *
+> > + *      Limited 16:235:
+> > + *              Limited RGB Range is forced. Unlike the name suggests,
+> > + *              this works for any number of bits-per-component.
+> > + *
+> > + *      Drivers can set up this property by calling
+> > + *      drm_connector_attach_broadcast_rgb_property().
+> > + *
+>=20
+> This is a good time to document this in more detail.
 
+I have the feeling that it already is documented in more detail. But
+anyway, last time we discussed it the answer was basically to not bother
+and just merge the thing. So I'm getting some mixed signals here.
+
+> There might be two different things being affected:
+>=20
+> 1. The signalling (InfoFrame/SDP/...)
+> 2. The color pipeline processing
+>=20
+> All values of Broadcast RGB always affect the color pipeline processing
+> such that a full-range input to the CRTC is converted to either full- or
+> limited-range, depending on what the monitor is supposed to accept.
+>=20
+> When automatic is selected, does that mean that there is no signalling,
+> or that the signalling matches what the monitor is supposed to accept
+> according to the spec?
+
+The doc states that "Infoframes will be generated according to that
+value". Is it ambiguous?
+
+> Also, is this really HDMI specific?
+
+Probably not, but it can easily be expanded to other connector types
+when needs be.
+
+> When full or limited is selected and the monitor doesn't support the
+> signalling, what happens?
+
+I would expect colors to be off
+
+Maxime
+
+--yd3mop6hvuqz5nhz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZaVOdAAKCRDj7w1vZxhR
+xVZ6AQCBIsao3/wYmeGvcP81lWBqUDOqug3y4nijDxhLDsn2gQEAjbAujKqIXO3q
+T2U8XyzbANX2DfajXGwDY+9QrqnI/QY=
+=i+f4
+-----END PGP SIGNATURE-----
+
+--yd3mop6hvuqz5nhz--
+
+
+--===============3209119994287100406==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3209119994287100406==--
+
