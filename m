@@ -4,59 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F761C3DA79
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 10:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D22CC3DA79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jan 2024 10:21:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8lWtiRWiC4sqyP7y+Bbk87bUpzZGFrJ+sTcH0EZtQBE=; b=trCb5ajnoidfgk
-	PLd75nvRCfTFtECnrlbpbq+MbLs2vetUDrPtw8WUAhfJMGSCbYN3ngKwl7FoNtbj4n9LCk9QTi82S
-	T6aw35bl633w+SSrO46R0spNb0mKufXP5cYFesGoZVHsMuU5I2+sBMql0BhW5neUcnhUpRqkeb7rM
-	GVw5ooCKo6C+u79MxJE1/trY7gRHx4/cXVUJxXrNTesSKwxrpQFrVx+fi+IaSJGd06J8XZ+NQUc4/
-	pkh3qZwiXuhcrJFvGYjH6KOiWMpfnhH0gok0IfukVsHrrZmytxL9hclfl3UTrOsa/mEVraQPh3gAx
-	BYrLUyyWX6z4CfXU0KJQ==;
+	List-Owner; bh=PIUb8uPz606PjX7cFTod+Qr0dnPQBMpb9684NoiMbaM=; b=cUjsJhxh3YrY+g
+	je5VE1Mw0jCtYVXyY0DVsES3gaNF/A4Fx1xqOHfspZgU+csILzpFPxrB87CYaft9xlxhDyFnfd6Ha
+	dlwQq2Sr/sctltGDE5gEkan+0kMOp+BzEz2Idlokd2i4jr7oTRI+Uu9/xNnJJjiicsipTnCCiNZC9
+	rYDN78uRcH+1JXlofBC5rubdYHM20qPQLsA08EaVwiCG6rWw7GS/s1e6rF0lKbJJvk56+cnP3zUic
+	3DGxl1cZvP4S7Joz3qTieeYmVGUS9kpO0cQeI4z05KQHTiv+vojjTA/1oldRa+/yMLht0eDMtAhXV
+	Urnoa3xxJ1DMmIA5Zhig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPJt9-008WzM-1s;
-	Mon, 15 Jan 2024 10:08:15 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rPK5r-008Z9T-0o;
+	Mon, 15 Jan 2024 10:21:23 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPJt5-008WwV-09;
-	Mon, 15 Jan 2024 10:08:13 +0000
-Received: from i5e860cd7.versanet.de ([94.134.12.215] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rPJsC-00005J-QB; Mon, 15 Jan 2024 11:07:16 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>, victor.liu@nxp.com,
- andrzej.hajda@intel.com, rfoss@kernel.org, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, hjc@rock-chips.com,
- yannick.fertre@foss.st.com, raphael.gallais-pou@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, neil.armstrong@linaro.org
-Cc: quentin.schulz@theobroma-systems.com, bouabid.farouk97@gmail.com
-Subject: Re: [PATCH] drm/bridge: synopsys: dw-mipi-dsi: fix deferred dsi host probe
- breaks dsi device probe
-Date: Mon, 15 Jan 2024 11:07:14 +0100
-Message-ID: <8542394.JRmrKFJ9eK@diego>
-In-Reply-To: <9dd100de-6d33-4872-8619-1df6ee520c5a@linaro.org>
-References: <20240112180737.551318-1-farouk.bouabid@theobroma-systems.com>
- <9dd100de-6d33-4872-8619-1df6ee520c5a@linaro.org>
+	id 1rPK5m-008Z6P-0b;
+	Mon, 15 Jan 2024 10:21:20 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id BD7F45C0069;
+	Mon, 15 Jan 2024 05:21:16 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Mon, 15 Jan 2024 05:21:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
+	 t=1705314076; x=1705400476; bh=tlYr0vGJzYQYoc8BNv3wVi1q8e4xLb6C
+	7VT9Mo7EniY=; b=M/EiVjFKbK39rm/VI0X3SyS5wcJdZI3C08Qn19lhEeE96fqs
+	wlNyAymZgrVwZJBHuKVYDsLB8dmzfoFgbglEbUBacu1wUvfW7tbCZTcYpcx/waMX
+	lmfo5hJohhbJcok8BciqL6M5/HtmHkL7qwh9GpTd/us+wJFnqDnyc0a+EPueVSZE
+	kVbPLWLb5zDp04UoXXrKdK0Ql0SMUfvwgRNu5M42yP0OgwPu4fVgRWEit/GS6zdE
+	bTdh0/gycVQJn7mZZSf+TfpfJ4CivS4ZvnMGy4YcfJDFV6DBJeRBQsz1W0JZfDDE
+	t44GNtLgGDVCFYSSNikAuah3oDua33cSU3TcvQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1705314076; x=
+	1705400476; bh=tlYr0vGJzYQYoc8BNv3wVi1q8e4xLb6C7VT9Mo7EniY=; b=U
+	UVk7WNfdhdbTn5gRgDKsEN0X8fG5CmRZUPMQ3niVxCxsmW1C/WMgJcUNbWaQUxPA
+	kN3DRl7EcpF/UAGIu//KwBZycyKulyxIFj1f+IpMAj4lizKx99m3W3YpfGK+h38l
+	Oduf60AcZJOuhXGvXIXIhinDoGFCBVUNphoniY9WMDidpRNiPod51UODLWleDFqF
+	i7WEOEaslCpHzfBsir8qDoOHQr56v3JGE5/EultYgTspP5RAUf0qD0HWSzKcGOlm
+	28gmfbeJhGY9FbGnu7Iu05YcQPXpLUe3LxpTMQLRqHfd5EwXXDzc/Bh24cBUhfHa
+	nPYk+x3w1ybys3VdxkvAQ==
+X-ME-Sender: <xms:GwelZVZfUsMshNrdRrWNBbZqDKWle3w0fKvrTrW46CPGLVwrE9tbwg>
+    <xme:GwelZcb39-o0FiWdjKxmHx90NFor9RU2XMOkoVfijVOefBU3ozBk89RjaXQ6bp6S_
+    lsWCtFDRw>
+X-ME-Received: <xmr:GwelZX-7GOrgD9BLemfbFvOKYnhnD4b0H-SsHf_8UbowFBWWeNU5fkw2umkX6PCFE9Z37dBlfsLdm_Ibbl-owAsSnY_uxDlmymRYVw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejuddgudehucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepkfffgggfuffvvehfhfgjtgfgsehtkeertddtvdejnecuhfhrohhmpefvihhm
+    ucfnuhhnnhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvg
+    hrnhepveeggfffkeduteefteekhfduueegteejteekkeekffeugfekkeevfefgleegveev
+    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpihhnfhhrrgguvggrugdrohhrghenuc
+    evlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmsehf
+    vggrthhhvghrthhophdrohhrgh
+X-ME-Proxy: <xmx:GwelZTpb8ySUrpafPsepb-zE9p5Rkuo85S7k0sSWwanBJhfxCqfuBw>
+    <xmx:GwelZQq4TwGiT-N3N490mrPOKBoDE0gs_57qQkQaYadFF7jhQvj6KQ>
+    <xmx:GwelZZT0aARP2eem_lQjP7OC1t0XM9v3Ie7YdhW1AXCWaChIwq9pSg>
+    <xmx:HAelZca5QD6FJyAAQ85V4g-znoz6U8L8mTQa6U1RoH2zfVz6AwNFyQ>
+Feedback-ID: i1f8241ce:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 15 Jan 2024 05:21:08 -0500 (EST)
+Message-ID: <0ac2701a-9498-4952-848b-fb614900f3ab@feathertop.org>
+Date: Mon, 15 Jan 2024 21:21:05 +1100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Hardkernel ODROID-M1S board
+To: KyuHyuk Lee <lee@kyuhyuk.kr>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Tianling Shen <cnsztl@gmail.com>, Chris Morgan <macromorgan@hotmail.com>,
+ Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
+ Jagan Teki <jagan@edgeble.ai>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ David Heidelberg <david@ixit.cz>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240112135004.28907-1-lee@kyuhyuk.kr>
+ <5774eb3f-dfdc-4e4d-985e-3ec4b69ad206@feathertop.org>
+ <ZaP5de5wchr/b9WM@kyuhyuk.kr>
+Content-Language: en-US
+From: Tim Lunn <tim@feathertop.org>
+In-Reply-To: <ZaP5de5wchr/b9WM@kyuhyuk.kr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240115_020811_245589_E7CD1F67 
-X-CRM114-Status: GOOD (  40.45  )
+X-CRM114-CacheID: sfid-20240115_022118_569976_B4842F40 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,329 +112,152 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 15. Januar 2024, 09:45:10 CET schrieb neil.armstrong@linaro.org:
-> Hi,
-> 
-> On 12/01/2024 19:07, Farouk Bouabid wrote:
-> > dw-mipi-dsi based drivers such as dw-mipi-dsi-rockchip or dw_mipi_dsi-stm
-> > depend on dw_mipi_dsi_probe() to initialize the dw_mipi_dsi driver
-> > structure (dmd pointer). This structure is only initialized once
-> > dw_mipi_dsi_probe() returns, creating the link between the locally created
-> > structure and the actual dmd pointer.
-> > 
-> > Probing the dsi host can be deferred in case of dependency to a dsi
-> > phy-supply (eg. "rockchip,px30-dsi-dphy"). Meanwhile dsi-device drivers
-> > like panels (eg. "ltk050h3146w") can already be registered on the bus.
-> > In that case, when attempting, to register the dsi host from
-> > dw_mipi_dsi_probe() using mipi_dsi_host_register(), the panel probe is
-> > called with a dsi-host pointer that is still locally allocated in
-> > dw_mipi_dsi_probe().
-> > 
-> > While probing, the panel driver tries to attach to a dsi host
-> > (mipi_dsi_attach()) which calls in return for the specific dsi host
-> > attach hook. (e.g. dw_mipi_dsi_rockchip_host_attach()).
-> > dw_mipi_dsi_rockchip uses the component framework.
-> > In the attach hook, the host component is registered which calls in return
-> > for drm_bridge_attach() while trying to bind the component
-> > (dw_mipi_dsi_bind())
-> 
-> In meson_dw_mipi_dsi I simply fixed this by getting rid of components...
-
-If I remember correctly, the component element is there on Rockchip to
-facilitate running dual-dsi displays (1 panel driven by 2 dsi controllers),
-because it allows to wait for both controllers to have probed individually
-before trying to drive the display.
-
-Not sure if there is a better way to do that now.
-
-
-Heiko
-
-
-> > drm_bridge_attach() requires a valid drm bridge parameter. However, the
-> > drm bridge (&dmd->bridge) that will be passed, is not yet initialized since
-> > the dw_mipi_dsi_probe() has not yet returned. This call will fail with a
-> > fatal error (invalid bridge) causing the panel to not be probed again.
-> > 
-> > To simplify the issue: drm_bridge_attach() depends on the result pointer
-> > of dw_mipi_dsi_probe().
-> > While, if the dsi probe is deferred, drm_bridge_attach() is called before
-> > dw_mipi_dsi_probe() returns.
-> > 
-> > drm_bridge_attach+0x14/0x1ac
-> > dw_mipi_dsi_bind+0x24/0x30
-> > dw_mipi_dsi_rockchip_bind+0x258/0x378
-> > component_bind_all+0x118/0x248
-> > rockchip_drm_bind+0xb0/0x1f8
-> > try_to_bring_up_aggregate_device+0x168/0x1d4
-> > __component_add+0xa4/0x170
-> > component_add+0x14/0x20
-> > dw_mipi_dsi_rockchip_host_attach+0x54/0x144
-> > dw_mipi_dsi_host_attach+0x9c/0xcc
-> > mipi_dsi_attach+0x28/0x3c
-> > ltk050h3146w_probe+0x10c/0x1a4
-> > mipi_dsi_drv_probe+0x20/0x2c
-> > really_probe+0x148/0x2ac
-> > __driver_probe_device+0x78/0x12c
-> > driver_probe_device+0xdc/0x160
-> > __device_attach_driver+0xb8/0x134
-> > bus_for_each_drv+0x80/0xdc
-> > __device_attach+0xa8/0x1b0
-> > device_initial_probe+0x14/0x20
-> > bus_probe_device+0xa8/0xac
-> > device_add+0x5cc/0x778
-> > mipi_dsi_device_register_full+0xd8/0x198
-> > mipi_dsi_host_register+0x98/0x18c
-> > __dw_mipi_dsi_probe+0x290/0x35c
-> > dw_mipi_dsi_probe+0x10/0x6c
-> > dw_mipi_dsi_rockchip_probe+0x208/0x3e4
-> > platform_probe+0x68/0xdc
-> > really_probe+0x148/0x2ac
-> > __driver_probe_device+0x78/0x12c
-> > driver_probe_device+0xdc/0x160
-> > __device_attach_driver+0xb8/0x134
-> > bus_for_each_drv+0x80/0xdc
-> > __device_attach+0xa8/0x1b0
-> > device_initial_probe+0x14/0x20
-> > bus_probe_device+0xa8/0xac
-> > deferred_probe_work_func+0x88/0xc0
-> > process_one_work+0x138/0x260
-> > worker_thread+0x32c/0x438
-> > kthread+0x118/0x11c
-> > ret_from_fork+0x10/0x20
-> > ---[ end trace 0000000000000000 ]---
-> > 
-> > Fix this by initializing directly the dmd pointer in dw_mipi_dsi_probe(),
-> > which requires also initializting the dmd->bridge attributes that are
-> > required in drm_bridge_attach() before calling mipi_dsi_host_register().
-> > 
-> > Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-> > ---
-> >   drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c   |  4 +-
-> >   drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 42 ++++++++++---------
-> >   drivers/gpu/drm/meson/meson_dw_mipi_dsi.c     |  8 ++--
-> >   .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  5 +--
-> >   drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  5 +--
-> >   include/drm/bridge/dw_mipi_dsi.h              |  5 ++-
-> >   6 files changed, 35 insertions(+), 34 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c b/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
-> > index 3ff30ce80c5b..469976ad3b19 100644
-> > --- a/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
-> > +++ b/drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c
-> > @@ -881,8 +881,8 @@ static int imx93_dsi_probe(struct platform_device *pdev)
-> >   	dsi->pdata.priv_data = dsi;
-> >   	platform_set_drvdata(pdev, dsi);
-> >   
-> > -	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
-> > -	if (IS_ERR(dsi->dmd))
-> > +	ret = dw_mipi_dsi_probe(pdev, &dsi->pdata, &dsi->dmd);
-> > +	if (ret < 0)
-> >   		return dev_err_probe(dev, PTR_ERR(dsi->dmd),
-> >   				     "failed to probe dw_mipi_dsi\n");
-> >   
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> > index 824fb3c65742..306cba366ba8 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> > @@ -1184,18 +1184,19 @@ static void dw_mipi_dsi_debugfs_remove(struct dw_mipi_dsi *dsi) { }
-> >   
-> >   #endif /* CONFIG_DEBUG_FS */
-> >   
-> > -static struct dw_mipi_dsi *
-> > -__dw_mipi_dsi_probe(struct platform_device *pdev,
-> > -		    const struct dw_mipi_dsi_plat_data *plat_data)
-> > +int __dw_mipi_dsi_probe(struct platform_device *pdev,
-> > +		    const struct dw_mipi_dsi_plat_data *plat_data, struct dw_mipi_dsi **dsi_p)
-> >   {
-> >   	struct device *dev = &pdev->dev;
-> >   	struct reset_control *apb_rst;
-> >   	struct dw_mipi_dsi *dsi;
-> >   	int ret;
-> >   
-> > -	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> > -	if (!dsi)
-> > -		return ERR_PTR(-ENOMEM);
-> > +	*dsi_p = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> > +	if (!*dsi_p)
-> > +		return -ENOMEM;
-> > +
-> > +	dsi = *dsi_p;
-> >   
-> >   	dsi->dev = dev;
-> >   	dsi->plat_data = plat_data;
-> > @@ -1203,13 +1204,13 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
-> >   	if (!plat_data->phy_ops->init || !plat_data->phy_ops->get_lane_mbps ||
-> >   	    !plat_data->phy_ops->get_timing) {
-> >   		DRM_ERROR("Phy not properly configured\n");
-> > -		return ERR_PTR(-ENODEV);
-> > +		return -ENODEV;
-> >   	}
-> >   
-> >   	if (!plat_data->base) {
-> >   		dsi->base = devm_platform_ioremap_resource(pdev, 0);
-> >   		if (IS_ERR(dsi->base))
-> > -			return ERR_PTR(-ENODEV);
-> > +			return -ENODEV;
-> >   
-> >   	} else {
-> >   		dsi->base = plat_data->base;
-> > @@ -1219,7 +1220,7 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
-> >   	if (IS_ERR(dsi->pclk)) {
-> >   		ret = PTR_ERR(dsi->pclk);
-> >   		dev_err(dev, "Unable to get pclk: %d\n", ret);
-> > -		return ERR_PTR(ret);
-> > +		return ret;
-> >   	}
-> >   
-> >   	/*
-> > @@ -1233,14 +1234,14 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
-> >   		if (ret != -EPROBE_DEFER)
-> >   			dev_err(dev, "Unable to get reset control: %d\n", ret);
-> >   
-> > -		return ERR_PTR(ret);
-> > +		return ret;
-> >   	}
-> >   
-> >   	if (apb_rst) {
-> >   		ret = clk_prepare_enable(dsi->pclk);
-> >   		if (ret) {
-> >   			dev_err(dev, "%s: Failed to enable pclk\n", __func__);
-> > -			return ERR_PTR(ret);
-> > +			return ret;
-> >   		}
-> >   
-> >   		reset_control_assert(apb_rst);
-> > @@ -1255,19 +1256,20 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
-> >   
-> >   	dsi->dsi_host.ops = &dw_mipi_dsi_host_ops;
-> >   	dsi->dsi_host.dev = dev;
-> > +	dsi->bridge.driver_private = dsi;
-> > +	dsi->bridge.funcs = &dw_mipi_dsi_bridge_funcs;
-> > +	dsi->bridge.of_node = pdev->dev.of_node;
-> > +
-> >   	ret = mipi_dsi_host_register(&dsi->dsi_host);
-> >   	if (ret) {
-> >   		dev_err(dev, "Failed to register MIPI host: %d\n", ret);
-> >   		pm_runtime_disable(dev);
-> >   		dw_mipi_dsi_debugfs_remove(dsi);
-> > -		return ERR_PTR(ret);
-> > +		return ret;
-> >   	}
-> >   
-> > -	dsi->bridge.driver_private = dsi;
-> > -	dsi->bridge.funcs = &dw_mipi_dsi_bridge_funcs;
-> > -	dsi->bridge.of_node = pdev->dev.of_node;
-> >   
-> > -	return dsi;
-> > +	return 0;
-> >   }
-> >   
-> >   static void __dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
-> > @@ -1301,11 +1303,11 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_get_bridge);
-> >   /*
-> >    * Probe/remove API, used from platforms based on the DRM bridge API.
-> >    */
-> > -struct dw_mipi_dsi *
-> > -dw_mipi_dsi_probe(struct platform_device *pdev,
-> > -		  const struct dw_mipi_dsi_plat_data *plat_data)
-> > +int dw_mipi_dsi_probe(struct platform_device *pdev,
-> > +		  const struct dw_mipi_dsi_plat_data *plat_data,
-> > +		  struct dw_mipi_dsi **dsi_p)
-> >   {
-> > -	return __dw_mipi_dsi_probe(pdev, plat_data);
-> > +	return __dw_mipi_dsi_probe(pdev, plat_data, dsi_p);
-> >   }
-> >   EXPORT_SYMBOL_GPL(dw_mipi_dsi_probe);
-> >   
-> > diff --git a/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c b/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
-> > index e5fe4e994f43..b103f3e31f2a 100644
-> > --- a/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
-> > +++ b/drivers/gpu/drm/meson/meson_dw_mipi_dsi.c
-> > @@ -262,6 +262,7 @@ static int meson_dw_mipi_dsi_probe(struct platform_device *pdev)
-> >   {
-> >   	struct meson_dw_mipi_dsi *mipi_dsi;
-> >   	struct device *dev = &pdev->dev;
-> > +	int ret;
-> >   
-> >   	mipi_dsi = devm_kzalloc(dev, sizeof(*mipi_dsi), GFP_KERNEL);
-> >   	if (!mipi_dsi)
-> > @@ -315,10 +316,9 @@ static int meson_dw_mipi_dsi_probe(struct platform_device *pdev)
-> >   	mipi_dsi->pdata.priv_data = mipi_dsi;
-> >   	platform_set_drvdata(pdev, mipi_dsi);
-> >   
-> > -	mipi_dsi->dmd = dw_mipi_dsi_probe(pdev, &mipi_dsi->pdata);
-> > -	if (IS_ERR(mipi_dsi->dmd))
-> > -		return dev_err_probe(dev, PTR_ERR(mipi_dsi->dmd),
-> > -				     "Failed to probe dw_mipi_dsi\n");
-> > +	ret = dw_mipi_dsi_probe(pdev, &mipi_dsi->pdata, &mipi_dsi->dmd);
-> > +	if (ret < 0)
-> > +		return dev_err_probe(dev, ret, "Failed to probe dw_mipi_dsi\n");
-> >   
-> >   	return 0;
-> >   }
-> > diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> > index 6396f9324dab..4df32747476c 100644
-> > --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> > +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> > @@ -1457,9 +1457,8 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
-> >   	if (IS_ERR(phy_provider))
-> >   		return PTR_ERR(phy_provider);
-> >   
-> > -	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
-> > -	if (IS_ERR(dsi->dmd)) {
-> > -		ret = PTR_ERR(dsi->dmd);
-> > +	ret = dw_mipi_dsi_probe(pdev, &dsi->pdata, &dsi->dmd);
-> > +	if (ret < 0) {
-> >   		if (ret != -EPROBE_DEFER)
-> >   			DRM_DEV_ERROR(dev,
-> >   				      "Failed to probe dw_mipi_dsi: %d\n", ret);
-> > diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> > index d5f8c923d7bc..44dbbfc277d8 100644
-> > --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> > +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
-> > @@ -518,9 +518,8 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
-> >   
-> >   	platform_set_drvdata(pdev, dsi);
-> >   
-> > -	dsi->dsi = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
-> > -	if (IS_ERR(dsi->dsi)) {
-> > -		ret = PTR_ERR(dsi->dsi);
-> > +	ret = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data, &dsi->dsi);
-> > +	if (ret < 0) {
-> >   		dev_err_probe(dev, ret, "Failed to initialize mipi dsi host\n");
-> >   		goto err_dsi_probe;
-> >   	}
-> > diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
-> > index 65d5e68065e3..f073e819251e 100644
-> > --- a/include/drm/bridge/dw_mipi_dsi.h
-> > +++ b/include/drm/bridge/dw_mipi_dsi.h
-> > @@ -76,9 +76,10 @@ struct dw_mipi_dsi_plat_data {
-> >   	void *priv_data;
-> >   };
-> >   
-> > -struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
-> > +int dw_mipi_dsi_probe(struct platform_device *pdev,
-> >   				      const struct dw_mipi_dsi_plat_data
-> > -				      *plat_data);
-> > +				      *plat_data,
-> > +					  struct dw_mipi_dsi **dsi_p);
-> >   void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
-> >   int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder);
-> >   void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
-> 
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTGVlLAoKT24gMS8xNS8yNCAwMjoxMCwgS3l1SHl1ayBMZWUgd3JvdGU6Cj4+PiArCj4+PiAr
+CQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4+ICsJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7
+Cj4+PiArCQl9Owo+Pj4gKwl9Owo+Pj4gKwo+Pj4gKwlyazgwOTogcG1pY0AyMCB7Cj4+PiArCQlj
+b21wYXRpYmxlID0gInJvY2tjaGlwLHJrODA5IjsKPj4+ICsJCXJlZyA9IDwweDIwPjsKPj4+ICsJ
+CWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW8wPjsKPj4+ICsJCWludGVycnVwdHMgPSA8MyBJUlFf
+VFlQRV9MRVZFTF9MT1c+Owo+Pj4gKwkJI2Nsb2NrLWNlbGxzID0gPDE+Owo+Pj4gKwkJcGluY3Ry
+bC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+ICsJCXBpbmN0cmwtMCA9IDwmcG1pY19pbnRfbD47Cj4+
+PiArCQlyb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlcjsKPj4+ICsJCXZjYzEtc3VwcGx5
+ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXZjYzItc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+
+ICsJCXZjYzMtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXZjYzQtc3VwcGx5ID0gPCZ2
+Y2MzdjNfc3lzPjsKPj4+ICsJCXZjYzUtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXZj
+YzYtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXZjYzctc3VwcGx5ID0gPCZ2Y2MzdjNf
+c3lzPjsKPj4+ICsJCXZjYzgtc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXZjYzktc3Vw
+cGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPj4+ICsJCXdha2V1cC1zb3VyY2U7Cj4+PiArCj4+PiArCQly
+ZWd1bGF0b3JzIHsKPj4+ICsJCQl2ZGRfbG9naWM6IERDRENfUkVHMSB7Cj4+PiArCQkJCXJlZ3Vs
+YXRvci1hbHdheXMtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1
+bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDA+Owo+Pj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1p
+Y3Jvdm9sdCA9IDwxMzUwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLWluaXQtbWljcm92b2x0ID0g
+PDkwMDAwMD47CkFsc28gInJlZ3VsYXRvci1pbml0LW1pY3Jvdm9sdCIgaXMgYWxzbyBjb3BpZWQg
+ZnJvbSBkb3duc3RyZWFtIGFuZCBub3QgCmN1cnJlbnRseSBzdXBwb3J0ZWQsIHNlZToKaHR0cHM6
+Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjMwNzA3MTYyMjE3LjY3NTM5MC0xLWNyaXN0aWFuLmNp
+b2NhbHRlYUBjb2xsYWJvcmEuY29tLwo+Pj4gKwkJCQlyZWd1bGF0b3ItcmFtcC1kZWxheSA9IDw2
+MDAxPjsKPj4+ICsJCQkJcmVndWxhdG9yLWluaXRpYWwtbW9kZSA9IDwweDI+Owo+Pj4gKwkJCQly
+ZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfbG9naWMiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVt
+IHsKPj4+ICsJCQkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4+ICsJCQkJfTsKPj4+ICsJ
+CQl9Owo+Pj4gKwo+Pj4gKwkJCXZkZF9ncHU6IERDRENfUkVHMiB7Cj4+PiArCQkJCXJlZ3VsYXRv
+ci1hbHdheXMtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1bGF0
+b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDA+Owo+Pj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jv
+dm9sdCA9IDwxMzUwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLWluaXQtbWljcm92b2x0ID0gPDkw
+MDAwMD47Cj4+PiArCQkJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0gPDYwMDE+Owo+Pj4gKwkJCQly
+ZWd1bGF0b3ItaW5pdGlhbC1tb2RlID0gPDB4Mj47Cj4+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0g
+InZkZF9ncHUiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4+ICsJCQkJCXJlZ3Vs
+YXRvci1vZmYtaW4tc3VzcGVuZDsKPj4+ICsJCQkJfTsKPj4+ICsJCQl9Owo+Pj4gKwo+Pj4gKwkJ
+CXZjY19kZHI6IERDRENfUkVHMyB7Cj4+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+PiAr
+CQkJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1bGF0b3ItaW5pdGlhbC1tb2RlID0g
+PDB4Mj47Cj4+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY19kZHIiOwo+Pj4gKwkJCQlyZWd1
+bGF0b3Itc3RhdGUtbWVtIHsKPj4+ICsJCQkJCXJlZ3VsYXRvci1vbi1pbi1zdXNwZW5kOwo+Pj4g
+KwkJCQl9Owo+Pj4gKwkJCX07Cj4+PiArCj4+PiArCQkJdmRkX25wdTogRENEQ19SRUc0IHsKPj4+
+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+
+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMD47Cj4+PiArCQkJCXJlZ3Vs
+YXRvci1tYXgtbWljcm92b2x0ID0gPDEzNTAwMDA+Owo+Pj4gKwkJCQlyZWd1bGF0b3ItaW5pdC1t
+aWNyb3ZvbHQgPSA8OTAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLXJhbXAtZGVsYXkgPSA8NjAw
+MT47Cj4+PiArCQkJCXJlZ3VsYXRvci1pbml0aWFsLW1vZGUgPSA8MHgyPjsKPj4+ICsJCQkJcmVn
+dWxhdG9yLW5hbWUgPSAidmRkX25wdSI7Cj4+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+
+Pj4gKwkJCQkJcmVndWxhdG9yLW9mZi1pbi1zdXNwZW5kOwo+Pj4gKwkJCQl9Owo+Pj4gKwkJCX07
+Cj4+PiArCj4+PiArCQkJdmRkYTB2OV9pbWFnZTogTERPX1JFRzEgewo+Pj4gKwkJCQlyZWd1bGF0
+b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+ICsJCQkJcmVndWxh
+dG9yLW1pbi1taWNyb3ZvbHQgPSA8OTAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNy
+b3ZvbHQgPSA8OTAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAidmRkYTB2OV9pbWFn
+ZSI7Cj4+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+Pj4gKwkJCQkJcmVndWxhdG9yLW9m
+Zi1pbi1zdXNwZW5kOwo+Pj4gKwkJCQl9Owo+Pj4gKwkJCX07Cj4+PiArCj4+PiArCQkJdmRkYV8w
+djk6IExET19SRUcyIHsKPj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+ICsJCQkJcmVn
+dWxhdG9yLWJvb3Qtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDkwMDAw
+MD47Cj4+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDkwMDAwMD47Cj4+PiArCQkJ
+CXJlZ3VsYXRvci1uYW1lID0gInZkZGFfMHY5IjsKPj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1l
+bSB7Cj4+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+PiArCQkJCX07Cj4+PiAr
+CQkJfTsKPj4+ICsKPj4+ICsJCQl2ZGRhMHY5X3BtdTogTERPX1JFRzMgewo+Pj4gKwkJCQlyZWd1
+bGF0b3ItYWx3YXlzLW9uOwo+Pj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVn
+dWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8OTAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW1heC1t
+aWNyb3ZvbHQgPSA8OTAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW5hbWUgPSAidmRkYTB2OV9w
+bXUiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4+ICsJCQkJCXJlZ3VsYXRvci1v
+bi1pbi1zdXNwZW5kOwo+Pj4gKwkJCQkJcmVndWxhdG9yLXN1c3BlbmQtbWljcm92b2x0ID0gPDkw
+MDAwMD47Cj4+PiArCQkJCX07Cj4+PiArCQkJfTsKPj4+ICsKPj4+ICsJCQl2Y2Npb19hY29kZWM6
+IExET19SRUc0IHsKPj4+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4+ICsJCQkJcmVndWxh
+dG9yLWJvb3Qtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMwMDAwMDA+
+Owo+Pj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwzMDAwMDAwPjsKPj4+ICsJCQkJ
+cmVndWxhdG9yLW5hbWUgPSAidmNjaW9fYWNvZGVjIjsKPj4+ICsJCQkJcmVndWxhdG9yLXN0YXRl
+LW1lbSB7Cj4+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+PiArCQkJCX07Cj4+
+PiArCQkJfTsKPj4+ICsKPj4+ICsJCQl2Y2Npb19zZDogTERPX1JFRzUgewo+Pj4gKwkJCQlyZWd1
+bGF0b3ItYWx3YXlzLW9uOwo+Pj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVn
+dWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+PiArCQkJCXJlZ3VsYXRvci1tYXgt
+bWljcm92b2x0ID0gPDMzMDAwMDA+Owo+Pj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2Npb19z
+ZCI7Cj4+PiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+Pj4gKwkJCQkJcmVndWxhdG9yLW9m
+Zi1pbi1zdXNwZW5kOwo+Pj4gKwkJCQl9Owo+Pj4gKwkJCX07Cj4+PiArCj4+PiArCQkJdmNjM3Yz
+X3BtdTogTERPX1JFRzYgewo+Pj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4gKwkJCQly
+ZWd1bGF0b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMw
+MDAwMD47Cj4+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+Pj4g
+KwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfcG11IjsKPj4+ICsJCQkJcmVndWxhdG9yLXN0
+YXRlLW1lbSB7Cj4+PiArCQkJCQlyZWd1bGF0b3Itb24taW4tc3VzcGVuZDsKPj4+ICsJCQkJCXJl
+Z3VsYXRvci1zdXNwZW5kLW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKPj4+ICsJCQkJfTsKPj4+ICsJ
+CQl9Owo+Pj4gKwo+Pj4gKwkJCXZjY2FfMXY4OiBMRE9fUkVHNyB7Cj4+PiArCQkJCXJlZ3VsYXRv
+ci1hbHdheXMtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1bGF0
+b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNy
+b3ZvbHQgPSA8MTgwMDAwMD47Cj4+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY2FfMXY4IjsK
+Pj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+PiArCQkJCQlyZWd1bGF0b3Itb2ZmLWlu
+LXN1c3BlbmQ7Cj4+PiArCQkJCX07Cj4+PiArCQkJfTsKPj4+ICsKPj4+ICsJCQl2Y2NhMXY4X2Rk
+cjogTERPX1JFRzggewo+Pj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+Pj4gKwkJCQlyZWd1
+bGF0b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAw
+MD47Cj4+PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDE4MDAwMDA+Owo+Pj4gKwkJ
+CQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NhMXY4X3BtdSI7Cj4+PiArCQkJCXJlZ3VsYXRvci1zdGF0
+ZS1tZW0gewo+Pj4gKwkJCQkJcmVndWxhdG9yLW9uLWluLXN1c3BlbmQ7Cj4+PiArCQkJCQlyZWd1
+bGF0b3Itc3VzcGVuZC1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+PiArCQkJCX07Cj4+PiArCQkJ
+fTsKPj4+ICsKPj4+ICsJCQl2Y2NhMXY4X2ltYWdlOiBMRE9fUkVHOSB7Cj4+PiArCQkJCXJlZ3Vs
+YXRvci1hbHdheXMtb247Cj4+PiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1
+bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4+ICsJCQkJcmVndWxhdG9yLW1heC1t
+aWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+PiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY2Exdjhf
+aW1hZ2UiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4+ICsJCQkJCXJlZ3VsYXRv
+ci1vZmYtaW4tc3VzcGVuZDsKPj4+ICsJCQkJfTsKPj4+ICsJCQl9Owo+Pj4gKwo+Pj4gKwkJCXZj
+Y18xdjg6IERDRENfUkVHNSB7Cj4+IE1heWJlIGl0cyBqdXN0IG1lLCBidXQgc2VlbXMgb2RkIHRo
+YXQgRENEQ19SRUc1IGlzIG91dCBvZiBvcmRlciB3aXRoIHRoZQo+PiBvdGhlciBEQ0RDIHJlZ3Vs
+YXRvcnMgYWJvdmUuCj4+PiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+PiArCQkJCXJlZ3Vs
+YXRvci1ib290LW9uOwo+Pj4gKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAw
+PjsKPj4+ICsJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+PiArCQkJ
+CXJlZ3VsYXRvci1uYW1lID0gInZjY18xdjgiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVt
+IHsKPj4+ICsJCQkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4+ICsJCQkJfTsKPj4+ICsJ
+CQl9Owo+Pj4gKwo+Pj4gKwkJCXZjY18zdjM6IFNXSVRDSF9SRUcxIHsKPj4+ICsJCQkJcmVndWxh
+dG9yLWFsd2F5cy1vbjsKPj4+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4+PiArCQkJCXJlZ3Vs
+YXRvci1uYW1lID0gInZjY18zdjMiOwo+Pj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4+
+ICsJCQkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPj4+ICsJCQkJfTsKPj4+ICsJCQl9Owo+
+Pj4gKwo+Pj4gKwkJCXZjYzN2M19zZDogU1dJVENIX1JFRzIgewo+Pj4gKwkJCQlyZWd1bGF0b3It
+YWx3YXlzLW9uOwo+Pj4gKwkJCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+ICsJCQkJcmVndWxhdG9y
+LW5hbWUgPSAidmNjM3YzX3NkIjsKPj4+ICsJCQkJcmVndWxhdG9yLXN0YXRlLW1lbSB7Cj4+PiAr
+CQkJCQlyZWd1bGF0b3Itb2ZmLWluLXN1c3BlbmQ7Cj4+PiArCQkJCX07Cj4+PiArCQkJfTsKPj4+
+ICsJCX07Cj4+PiArCX07Cj4+PiArfTsKPj4+ICsKPj4+ICsmcGluY3RybCB7Cj4+PiArCWxlZHMg
+ewo+Pj4gKwkJbGVkX3Bvd2VyX3BpbjogbGVkLXBvd2VyLXBpbiB7Cj4+PiArCQkJcm9ja2NoaXAs
+cGlucyA9IDwwIFJLX1BDNiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPj4+ICsJCX07
+Cj4+PiArCQlsZWRfd29ya19waW46IGxlZC13b3JrLXBpbiB7Cj4+PiArCQkJcm9ja2NoaXAscGlu
+cyA9IDwwIFJLX1BCNyBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPj4+ICsJCX07Cj4+
+PiArCX07Cj4+PiArCj4+PiArCXBtaWMgewo+Pj4gKwkJcG1pY19pbnRfbDogcG1pYy1pbnQtbCB7
+Cj4+PiArCQkJcm9ja2NoaXAscGlucyA9Cj4+PiArCQkJCTwwIFJLX1BBMyBSS19GVU5DX0dQSU8g
+JnBjZmdfcHVsbF91cD47Cj4+PiArCQl9Owo+Pj4gKwl9Owo+Pj4gK307Cj4+PiArCj4+PiArJnBt
+dV9pb19kb21haW5zIHsKPj4+ICsJcG11aW8yLXN1cHBseSA9IDwmdmNjM3YzX3BtdT47Cj4+PiAr
+CXZjY2lvMS1zdXBwbHkgPSA8JnZjY2lvX2Fjb2RlYz47Cj4+PiArCXZjY2lvMy1zdXBwbHkgPSA8
+JnZjY2lvX3NkPjsKPj4+ICsJdmNjaW80LXN1cHBseSA9IDwmdmNjXzN2Mz47Cj4+PiArCXZjY2lv
+NS1zdXBwbHkgPSA8JnZjY18zdjM+Owo+Pj4gKwl2Y2NpbzYtc3VwcGx5ID0gPCZ2Y2NfM3YzPjsK
+Pj4+ICsJdmNjaW83LXN1cHBseSA9IDwmdmNjXzN2Mz47Cj4+PiArCXN0YXR1cyA9ICJva2F5IjsK
+Pj4+ICt9Owo+PiBEaWQgeW91IG1pc3MgcG11aW8xIGFuZCB2Y2NpbzIgaGVyZT8gdGhlIGxhdHRl
+ciBvZiB3aGljaCBpcyB0aGUgZU1NQyBkb21haW4uCj4+Cj4+IEFyZSB5b3UgcGxhbm5pbmcgdG8g
+YWRkIGFkZGl0aW9uYWwgcGF0Y2hlcyBmb3IgdXNiLCBnbWFjIGV0Yz8gSSBoYWQgYmVlbgo+PiB3
+b3JraW5nIHRocm91Z2ggY2xlYW5pbmcgdXAgdGhlc2UgZGV2aWNlIHRyZWUgZmlsZXMgd2l0aCBh
+IHZpZXcgdG8KPj4gc3VibWl0dGluZyB0aGVtIHNvb24gYWxzby4KPj4KPj4gUmVnYXJkcwo+PiAg
+wqDCoCBUaW0KPiBIZWxsbyBUaW0uIFRoYW5rIHlvdSBmb3IgeW91ciByZXZpZXdpbmcuCj4KPiBJ
+J2xsIGNoZWNrIHlvdSBzYWlkIGFib3ZlLgo+Cj4gWWVzLCBJIGFtIHBsYW5uaW5nIGFkZGl0aW9u
+YWwgcGF0Y2hlcyBsaWtlIHVzYiwgZ21hYyBhcyB5b3Ugc2FpZC4KPiBNYXkgSSB1bmRlcnN0YW5k
+IHRoYXQgeW91IGNsZWFuZWQgdXAgbXkgcGF0Y2g/CgpObywgSSd2ZSBiZWVuIHdvcmtpbmcgZnJv
+bSB0aGUgSGFyZGtlcm5lbMKgIGFuZCBUb2JldHRlcnMgZGV2aWNlIHRyZWVzLgoKClJlZ2FyZHMK
+IMKgwqAgVGltCgo+IEkgbG9vayBmb3J3YXJkIHRvIHlvdXIgcmVwbHkuCgoKCj4KPiBUaGFuayB5
+b3UsCj4gS3l1SHl1ayBMZWUuCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
