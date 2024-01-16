@@ -4,77 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C018AC4706C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 11:20:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BDD6C4706C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 13:21:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Vkzp66iNDeUEMoTTlaec/wF7Um/lLPqq0wgsV23bJ6w=; b=Bm2pQwOeeYC9lFX7MTGOEVh42w
-	usyNNST/nAnj8X6U8A3IvQDzUR9OEwjL4MJhG3dAxMixg267L6R0OivbSyekIjdtEKHLrq/80yzIs
-	dY1wpsDS5Qqcz+d69CKAOXVbflf484nlsITTFPFe7PFqAFZ0StGYFltqaa9BtfDZ2JcFD5DYUfRYj
-	ieTVtMdKE9qznuefmwb7lodD6ULOSQQXnKo3G3RTSDmXyExsHguvHYE2kG9ZSeyjD1xKtXPE641oR
-	FYLNNQjo4H8y0YQXA4jbg/Pl2IDf892rYdKPaJcyR4jKMzOOz3TxW5/bDbvPLMuQk+xtf4uWB2T70
-	ttQ+XojQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=X7o0wsrYsPYNUops14VU9quLyLNenbAYSQmWGnhaEtw=; b=qhzneJw/dZdzKM
+	aShs5eRihitP0txV+lSpCgetmQBNdoxW6POVcjKTIs2DtILUoTtP2EqG4eZBDFyMc2XH4yZ64D67x
+	nEPUmysM03nZKuI300XMQ4T2FGgG/ruEqNgnAc3Zc9yfL7UdVMNzPyWXrtU2x2H0Xdm22fOqcDsNY
+	AtvNvoPrh/e38W6dyVDujCwCCroTPNDNDLbeSmnr+TtzR94OVfuHOaWS0qE+uiy/VNXhrNPq1Nc/x
+	R4XOG/uIrVxF7dpCjUpS1YSIs/1G9nHD+bpJj3k9Q5QShhUZRvEbQfT6pBx381/aEK4J8veShMSPq
+	Ix1vUWXT+LhZtmI3WSWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPhUB-00BrsZ-0L;
-	Tue, 16 Jan 2024 11:20:03 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1rPjNf-00CA1U-1W;
+	Tue, 16 Jan 2024 13:21:27 +0000
+Received: from out4-smtp.messagingengine.com ([66.111.4.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPhU6-00Brlr-0z
-	for linux-rockchip@lists.infradead.org;
-	Tue, 16 Jan 2024 11:20:01 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-67fe0210665so55824336d6.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 16 Jan 2024 03:19:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1705403995; x=1706008795; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AS3BBwgYanBUfBnpxKNvwfAfy1OJUBRnEQmNzkGmJ1s=;
-        b=LHHENKyzoEs6fAMgJugFGVUbwSH9HULI/hIoHawqrbBw2xmkO8BuYGdoiJRiq10l5m
-         autJVHqZW2u2qjEeJRcPXoC0cjCJgbobakKS8VoMQK2euNb1n/6qvGsaZdMc4X330nf1
-         T3ZhWeUFkCl8IswmbH7IMCH11MRvovoKh0AkBOYcuroZa9JL7oIUtJ4n1SPCqxXXklIE
-         ry1h7cYCe3Kvd1+UsNDz/unKukzJYlQSPV/q4hidfm5xca+T/f0VUU2X+miTWX7Oy63H
-         BXnVJhFpcmGHZZ1CkOEJYI/tkYkqB923KZuVQuqhm91MZ36j/q2U+NbGi4F8ZBxW0lDd
-         qerQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705403995; x=1706008795;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AS3BBwgYanBUfBnpxKNvwfAfy1OJUBRnEQmNzkGmJ1s=;
-        b=TqcxzYax5UC5mQx4t+CAv0K0S8B0wjEOUOO1QObFQxpEAFbN2wLzXIbgiJvc9vSqV0
-         dtmxLHXd2slWiDPVdCNvSDZbuIiv0dDoPcINTfy/qHssBIJ/Rf+zpTVwQCN2bb+p4Uum
-         CrzMeY7ZwKCSodcWV/q3edGmm62ddXWfF2Ep1AAcEzVIQlMRNmMDfTv8MeDmBUiPZ+VE
-         wsgEEC4qhmWSEgcWm8VyEclN6ascJt6O96xePYRLzpj+mz3AlVw1+QqFJ/B+8U/n5F6W
-         pSTlTcum1P/bGEtzHPP1X7HIcgOA0RfWLqXglA/uVUVm6JvIbAXGY+iKB73LtNxi1tpw
-         L50g==
-X-Gm-Message-State: AOJu0YyoUZYoCsCJKXrYuKTUF4+uaQjtxhnnk7Yx84FLolqU1Ai/Ocfb
-	bwo+W2RGslQztgi7r06cAk2HGzE9wjJ0LkZp/icJj+iX3RT8YQ==
-X-Google-Smtp-Source: AGHT+IFrGX+QlGcwiMcvFXBVyO7eiX4wVISfsMNIemyKgmDmI8h7UYeLiWdxotNRUa1oCcK60IlwlDmzM+TIfP+BjPM=
-X-Received: by 2002:a05:6214:31a1:b0:681:562a:16e1 with SMTP id
- lb33-20020a05621431a100b00681562a16e1mr4955020qvb.102.1705403995478; Tue, 16
- Jan 2024 03:19:55 -0800 (PST)
+	id 1rPjNb-00CA04-0n;
+	Tue, 16 Jan 2024 13:21:25 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id E51075C01A6;
+	Tue, 16 Jan 2024 08:21:15 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute5.internal (MEProxy); Tue, 16 Jan 2024 08:21:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm2; t=1705411275; x=1705497675; bh=YOvwe5sp9z
+	vUo6Rpj6VCafW5qclDGLNfQgRXc/raG44=; b=tJXofF7Ipkw9IK/+JxHNfSGWdP
+	lOwP71PTukALc49FwudQYa9RTAEE6XZOXPiZm3ZnkJV+koW2pKoeB9TtM14jicXn
+	c8FfOdy5O5kOWjwKUGJWpfqoc+YSbxupMNrDTv+DQ8nB0aegAqzCSX5pZvTVtdxH
+	hw83yEdDdfX4Rww0Uo6ET3hl/FhJErlcqlmlvv2DUFL3aDebk888wSH0c9Ybn/KM
+	D2FZSlEdyoJm/mEw4c7tuo6FOJaKuhVeOaCBylyB+GEF9fiFEinxRhKWS0UGKy+9
+	KavjiDHQp5RHpBLRcDRTkYb2plo2sb33dmPlJ5jL2ENjUIzSIRZSluqy0rhA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1705411275; x=1705497675; bh=YOvwe5sp9zvUo6Rpj6VCafW5qclD
+	GLNfQgRXc/raG44=; b=coCSC9JgdPguzEjD1s1erwzPKwp3oGEA93/64ie0+gOd
+	FIQK2jUjesbOnd8EhD8siya7S4kh+qAqdzGSpKBBFDTwIpnud61fAMrd5KFHRG4v
+	6N+6G6zOK8Q3upYCWcGjCyCszIWGp/49OZrMH2RSaqgNjgjuR+XgVn78a0nlPc4R
+	HFSPyNr6lc6MaCO1FAVsyCt3G3rFND97a+Q7G1tOV1Fx+kWY+ImA1XW8j6bdlc6+
+	zRtDzXWE9l2FT1h2TQ70jPsgRDJ+GqlErqIRhdbcg6SYcJGcrX9w5i2eQyb8VTce
+	PIODkZ0tbbi19jTA2GUzqTvPE11SVOdsSmWuLukUEw==
+X-ME-Sender: <xms:yoKmZXdRgGyXIjljxBNhU8oRTdbv0-x4yRJ5oRQSLh9Yr1wtWYd_xg>
+    <xme:yoKmZdO1fQ_oelj3FNYr-b8-6xTaJF51ATszze5EytCGmY5QND-U02JUbsL6sMZsY
+    lczn_2YzQ>
+X-ME-Received: <xmr:yoKmZQhVxhmUkgP_amlnDQqa7SfAV0kl_tC5tZmt24fwhv-77ZYif-oHH1W7s4sY6h14kYPuSB6H3aGU8oH-IRtUT9gpoUD2LqA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejfedgheduucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhephffvvefufffkofgggfestdekredtredttdenucfhrhhomhepvfhimhcunfhu
+    nhhnuceothhimhesfhgvrghthhgvrhhtohhprdhorhhgqeenucggtffrrghtthgvrhhnpe
+    duhfdtveeujeejjeffieevgfdtudegfeffvedugfetteehudevteehtefgieeitdenucev
+    lhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehtihhmsehfvg
+    grthhhvghrthhophdrohhrgh
+X-ME-Proxy: <xmx:yoKmZY_QGsJcWHpSm5Qi8aZCiLiH7F3Frxi1wRwqaKxtusaObZPH5w>
+    <xmx:yoKmZTsL4z6e3OiDX_G3IBYLo6WxbDvFfB9PQNCE3jFzTB3yQEJCNA>
+    <xmx:yoKmZXFmDcilmX18hs_8zSHEhbDv4QxOHeDKR5ta7hJuRnl9KcttYQ>
+    <xmx:y4KmZUni3oRHt9N_TyfKBAIyuu55VVtd_B3O1-H6CDBVmfd2ULrjXQ>
+Feedback-ID: i1f8241ce:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 16 Jan 2024 08:21:08 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Wed, 17 Jan 2024 00:21:03 +1100
+From: Tim Lunn <tim@feathertop.org>
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: Tim Lunn <tim@feathertop.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Chris Zhong <zyw@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/3] dt-bindings: rockchip: Add support for rk809 audio codec
+Date: Wed, 17 Jan 2024 00:20:59 +1100
+Message-Id: <20240116132102.3272682-1-tim@feathertop.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-References: <20240116095439.107324-1-vignesh.raman@collabora.com> <20240116095439.107324-3-vignesh.raman@collabora.com>
-In-Reply-To: <20240116095439.107324-3-vignesh.raman@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 16 Jan 2024 11:19:44 +0000
-Message-ID: <CAPj87rNKLPETVGzpXaZtQwVGauH2V-fCuFGN4zrOE0nH2R+F+Q@mail.gmail.com>
-Subject: Re: [PATCH v2 2/7] drm/ci: mediatek: Rename exisitng job
-To: dri-devel <dri-devel@lists.freedesktop.org>, 
-	Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>, 
-	Sima Vetter <daniel@ffwll.ch>, David Heidelberg <david.heidelberg@collabora.com>, 
-	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	linux-mediatek@lists.infradead.org, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-amlogic@lists.infradead.org, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_031959_324136_34C762A1 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20240116_052124_511923_10998CAD 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,23 +111,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vignesh,
+Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
+using the same rk817_codec driver. However it is missing from the
+bindings.
 
-On Tue, 16 Jan 2024 at 09:55, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> Rename the name of xfail files for mediatek (mt8173 and mt8183),
-> to include information about the tested driver and update xfails
-> accordingly. Since the correct driver name is passed from the job to
-> test gpu and display driver, remove the check to set IGT_FORCE_DRIVER
-> based on driver name.
+This series documents the audio codec properties in rockchip,rk809.yaml
+bindings and updates example.
 
-I think something is still wrong here, because I can see that later
-xfails updates are setting expectations on kms tests when we're
-supposed to be using the panfrost driver. I can't tell which branch
-was used to run this, but you definitely want to look closely at the
-job logs and results to find out what's going on here.
+Changes in v2:
+- Fix vcc-supply warning detected by dt_binding bot
+- Fix missing include and pinctrl for codec example
 
-Cheers,
-Daniel
+Tim Lunn (3):
+  dt-bindings: rockchip: Document rk809 support for rk817 audio codec
+  dt-bindings: rockchip: rk809 fix existing example
+  dt-bindings: rockchip: Update rk809 example with audio codec
+    properties
+
+ .../bindings/mfd/rockchip,rk809.yaml          | 46 ++++++++++++++++---
+ 1 file changed, 39 insertions(+), 7 deletions(-)
+
+-- 
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
