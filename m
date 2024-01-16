@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E09C47077
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 17:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D73C47DA2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 17:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=crqMok5xsD3JpvecbMtDu96rnuYApXDbo18sqpERoYg=; b=x3aOnwp2P3PR6iH0C8mgJvgvka
-	h7Dbfjr7SRvrBh8t3m27M3qHokUoRoLsSv/+Q/FRjt4xLlVGIp7o068+SNjLiM7a+DHT0mPjpwxoz
-	bkwYf3p/iXyc7aPPfaEk4qQ4vUeegteUL4DP2hXOR57NXWAYERz2OOtq5CCpz3GK4I2mN25CS0m9o
-	0m5jUC3E9gbG+D5SfLicOx2+Vl8YwDKzfkeSNKSE/Y5r7UNuogsep71FVnxzL5MQUBWV1JOYKnkDS
-	fhI332rQ9CzM4WGf0qFOy8/0HPqksZsYKQ4l3I1O+5IUpSHMfweK+jSjQKpDD8vt6Xu5BzpHgzqip
-	yWycaUMA==;
+	bh=ahKUF9nSuFW/RZB7PTjVw9kCkveMaEMFnc11CE2ag28=; b=gcjeXiSxDgB4YACgBNcDP//geV
+	8IqArqB7WL5ug3AZ0wC4UYvH7boqwjk86Gjq2x/4TdhBTcqqlt8ognfuXDq3CHrMQXVm5kr6fl7R/
+	awdKbr2F9bMJENxMmq0f3RNt5DryLr8LKTy8Md19KyAXhusFTfx3CkOUISDove/Bufk27m2sjeTR+
+	F9QrDk7XW6niTOA3n1IYqtrm+s3g7U9xJixr7mLGX5UErpdVre23HjLEIiaMeUoUhSnOG4+7K1bQb
+	Awe2udnliUSCmkqob8T+oq1zCwPohKyb4hDypNrR3jK+NlgrPk9J7unKF2J3oYjwe+3tQ2LDXYKcF
+	dWmxatcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPmtj-00ChbB-0I;
-	Tue, 16 Jan 2024 17:06:47 +0000
+	id 1rPmun-00Chw5-1k;
+	Tue, 16 Jan 2024 17:07:53 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPmte-00ChZU-08;
-	Tue, 16 Jan 2024 17:06:44 +0000
+	id 1rPmug-00Chpx-0B;
+	Tue, 16 Jan 2024 17:07:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id CB153CE1A21;
-	Tue, 16 Jan 2024 17:06:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7F66C433C7;
-	Tue, 16 Jan 2024 17:06:36 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 320A2CE1A32;
+	Tue, 16 Jan 2024 17:07:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 105ADC433C7;
+	Tue, 16 Jan 2024 17:07:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705424799;
-	bh=mM4aZ0Smj1G4ODpdQlh2X3TH/t0XZAPwOM9uWl64c9A=;
+	s=k20201202; t=1705424863;
+	bh=+J6OFZXz7AZ/IBScI79H1TDKdTdYLnQ20QFDaLANvjY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fbTy1yY5YxIsWytGQu9ziFjQaRe7cKrNYnXd7y34HcLIZPxluOWFbjDV0Im888hDy
-	 7TtkDfwaTTlPwerg5EAYDoz+rU5e8ISdQHVgNZw7Uq1sK42ntiJRNK5d/VFrkaZh/z
-	 DobE60Vow1DeHNY1ReyC7/5dnhsNywHRQyxlTu8YZjBrDxeKOj1gMrQX77e6OwUoOc
-	 eMuuFZ87vKseu2E5zv4SED7vsGtIOauILPFRi0oeOL54GzuOXOTjdf69Bclz9Vbqas
-	 f51Y4wIQDNmPkRpWjaiI6esJclmWhClwKAcSCjKpKexy//WphAWAFS+U19lwonI2ED
-	 rq+sG0QVQhcOw==
-Date: Tue, 16 Jan 2024 17:06:34 +0000
+	b=FYvDD04nkNrSO8ZRyS7yRyGFsjR6Z7Y96CF44xNwonJpYfFMEdbBgYaqs7aReVNX5
+	 66UQXzE9JBMftPjbAsPj82gySETMtBRo7dSd0COGTzOnhHk5seBW6cwe627prxXvFQ
+	 2XihRMGBDHrIBVArT7mMRmsHfJnUHp8p4sKNIuv6kM/Gcj9/FKZt0Wql2bXftTLQ2s
+	 /d60jK/oNgYRPEADnVLFEqy6i4Q+5K/Rfy5AWR8RKuFeZMw3cp8olskt4Y4hR89hJ2
+	 77Oo2pej9I6APxNc6rz0l5X/g5Kekzh+a3PfUB19SUgP6c2IZ3PTUVO+IrFacrr1es
+	 u5bXDdFojtaYg==
+Date: Tue, 16 Jan 2024 17:07:38 +0000
 From: Conor Dooley <conor@kernel.org>
 To: Tim Lunn <tim@feathertop.org>
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
@@ -52,16 +52,16 @@ Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
 	Zhang Qing <zhangqing@rock-chips.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: rockchip: Document rk809 support for
- rk817 audio codec
-Message-ID: <20240116-mangle-parish-93b5cd672d17@spud>
+Subject: Re: [PATCH v2 2/3] dt-bindings: rockchip: rk809 fix existing example
+Message-ID: <20240116-flick-ungraded-b36f8db15dcc@spud>
 References: <20240116132102.3272682-1-tim@feathertop.org>
- <20240116132102.3272682-2-tim@feathertop.org>
+ <20240116132102.3272682-3-tim@feathertop.org>
 MIME-Version: 1.0
-In-Reply-To: <20240116132102.3272682-2-tim@feathertop.org>
+In-Reply-To: <20240116132102.3272682-3-tim@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_090642_431364_8CF674A4 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20240116_090746_349075_CC906977 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,120 +73,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6252919596511497411=="
+Content-Type: multipart/mixed; boundary="===============1423339359630246954=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6252919596511497411==
+--===============1423339359630246954==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HCATQ6nEVgWWIaF+"
+	protocol="application/pgp-signature"; boundary="BDyGpo91jO6xcf5l"
 Content-Disposition: inline
 
 
---HCATQ6nEVgWWIaF+
+--BDyGpo91jO6xcf5l
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jan 17, 2024 at 12:21:00AM +1100, Tim Lunn wrote:
-> Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
-> using the same rk817_codec driver. However it is missing from the
-> bindings.
->=20
-> Update dt-binding documentation for rk809 to include the audio codec
-> properties. This fixes the following warning from dtb check:
->=20
-> pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks',
->    'clock-names', 'clocks', 'codec' do not match any of the regexes:
->    'pinctrl-[0-9]+'
+On Wed, Jan 17, 2024 at 12:21:01AM +1100, Tim Lunn wrote:
+> Fix typo in the example specifying wrong compatible string for rk809.
+> Remove additional vccX-supply properties that dont exist on rk809.
 >=20
 > Signed-off-by: Tim Lunn <tim@feathertop.org>
-> ---
->=20
-> (no changes since v1)
->=20
->  .../bindings/mfd/rockchip,rk809.yaml          | 30 ++++++++++++++++++-
->  1 file changed, 29 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/=
-Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> index 839c0521f1e5..bac2e751e2f2 100644
-> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> @@ -12,7 +12,7 @@ maintainers:
-> =20
->  description: |
->    Rockchip RK809 series PMIC. This device consists of an i2c controlled =
-MFD
-> -  that includes regulators, an RTC, and power button.
-> +  that includes regulators, an RTC, a power button, and an audio codec.
-> =20
->  properties:
->    compatible:
-> @@ -93,6 +93,34 @@ properties:
->          unevaluatedProperties: false
->      unevaluatedProperties: false
-> =20
-> +  clocks:
-> +    description:
-> +      The input clock for the audio codec.
-> +
-> +  clock-names:
-> +    description:
-> +      The clock name for the codec clock.
-> +    items:
-> +      - const: mclk
 
-You have one clock only, why do you need to have clock-names?
-
-Otherwise,
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Cheers,
+A fixes tag would be nice too I suppose. Not worth resending for IMO
+since b4 will pick it up if you reply with one.
+
+Thanks,
 Conor.
 
-> +
-> +  '#sound-dai-cells':
-> +    description:
-> +      Needed for the interpretation of sound dais.
-> +    const: 0
-> +
-> +  codec:
-> +    description: |
-> +      The child node for the codec to hold additional properties. If no
-> +      additional properties are required for the codec, this node can be
-> +      omitted.
-> +    type: object
-> +    additionalProperties: false
-> +    properties:
-> +      rockchip,mic-in-differential:
-> +        type: boolean
-> +        description:
-> +          Describes if the microphone uses differential mode.
-> +
->  allOf:
->    - if:
->        properties:
-> --=20
-> 2.40.1
->=20
-
---HCATQ6nEVgWWIaF+
+--BDyGpo91jO6xcf5l
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaa3mgAKCRB4tDGHoIJi
-0negAQC6WRkztcA8oUNox2CjFfyLMgPQeNqY0Naid3MIsCE1+AEAoN9U55E3bKoA
-xbTlriGwpSuOCwAhptplZHMfaNSOpgk=
-=qI+7
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZaa32gAKCRB4tDGHoIJi
+0uG0AQDC2ImT5MjKTf4HGa7Ioch+YiRhKQ18P0S1aRyfoi7xPQEAoaDxLxpXf1JJ
+Ownp4v0mP3JoN5oGLPMAitAyk9wdYAY=
+=PzrD
 -----END PGP SIGNATURE-----
 
---HCATQ6nEVgWWIaF+--
+--BDyGpo91jO6xcf5l--
 
 
---===============6252919596511497411==
+--===============1423339359630246954==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -197,5 +128,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6252919596511497411==--
+--===============1423339359630246954==--
 
