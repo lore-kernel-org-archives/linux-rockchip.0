@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB38C4706C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 11:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C018AC4706C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 11:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3+detGJRCEwuEXSPgbm5kXNEU3XzQQ9Tv6wG5zbKQ8s=; b=Yc4QRM8FWrECKf5j3XyiD7f/cn
-	Tq6v3JlUCLbLBU5MYBepBkaViXsI0bj7PcRPQ+Z8jYHz984lZ8w0hfsktAEeGPb4h8wnPZnauRN/v
-	lUPazpZ6ETY6vpsxewmj4kkooFzLyFwJKpsz8UsuL6meFaet05mxiFRl8Y4As1En9/phXGxWYJaf2
-	RCRquYiTR/1dQ7awpLwDp7qjvESoXHEbV3rz3yZIMEKTcCUOx+iP9PbBdRmOakdvl0j50e1ebHaFB
-	jxsovkjW7hsMAeJ+CRIYFxS7z9MKZy/lRCKPjlmhG5cxcvHc/bf8uES0unu6OlIwQLIPPIE6gjLIG
-	B/ZvlzXg==;
+	bh=Vkzp66iNDeUEMoTTlaec/wF7Um/lLPqq0wgsV23bJ6w=; b=Bm2pQwOeeYC9lFX7MTGOEVh42w
+	usyNNST/nAnj8X6U8A3IvQDzUR9OEwjL4MJhG3dAxMixg267L6R0OivbSyekIjdtEKHLrq/80yzIs
+	dY1wpsDS5Qqcz+d69CKAOXVbflf484nlsITTFPFe7PFqAFZ0StGYFltqaa9BtfDZ2JcFD5DYUfRYj
+	ieTVtMdKE9qznuefmwb7lodD6ULOSQQXnKo3G3RTSDmXyExsHguvHYE2kG9ZSeyjD1xKtXPE641oR
+	FYLNNQjo4H8y0YQXA4jbg/Pl2IDf892rYdKPaJcyR4jKMzOOz3TxW5/bDbvPLMuQk+xtf4uWB2T70
+	ttQ+XojQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPhJq-00BlEt-2C;
-	Tue, 16 Jan 2024 11:09:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rPhUB-00BrsZ-0L;
+	Tue, 16 Jan 2024 11:20:03 +0000
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPhJm-00BlBf-0y;
-	Tue, 16 Jan 2024 11:09:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9DD1B6104E;
-	Tue, 16 Jan 2024 11:08:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22AE5C433F1;
-	Tue, 16 Jan 2024 11:08:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705403327;
-	bh=kJGk0fjidgmzt3ZWgK7tdK17z1gn1n+qBqI3dXSdxbo=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=QPPGEEQtJlx2/mNwA1qsS0qhQ9WYxoeJknVaQhBPzj4yPVjIbC2ITWDvgRfx4Bguz
-	 F8GYZb5yBjzlwEicvSFgNGcHPI9bdPvaMkf78ofPZf8mpy12Bpnf/GENKSZlEe4Bii
-	 tiFu+k5ZaNGnwhhibIVscyUtL65C5xp5qB8wudfBM8rGHmqXg7tnq9ipAyIbgxT+PO
-	 UFAhDs3dczpZIJnn+/L3GwvwnX83vf5FxqSftYiM8jJHwTSeZaYmZlZkHZnitwec2Y
-	 JbtFTaOaqhrKapB5PtuUSuMHtsFJGk8Dg4PoBKXXITlc7Cj1uhyFIpqRBkeBqnkxW2
-	 tAAAGjm/BHS+w==
-Date: Tue, 16 Jan 2024 05:08:46 -0600
+	id 1rPhU6-00Brlr-0z
+	for linux-rockchip@lists.infradead.org;
+	Tue, 16 Jan 2024 11:20:01 +0000
+Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-67fe0210665so55824336d6.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 16 Jan 2024 03:19:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1705403995; x=1706008795; darn=lists.infradead.org;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AS3BBwgYanBUfBnpxKNvwfAfy1OJUBRnEQmNzkGmJ1s=;
+        b=LHHENKyzoEs6fAMgJugFGVUbwSH9HULI/hIoHawqrbBw2xmkO8BuYGdoiJRiq10l5m
+         autJVHqZW2u2qjEeJRcPXoC0cjCJgbobakKS8VoMQK2euNb1n/6qvGsaZdMc4X330nf1
+         T3ZhWeUFkCl8IswmbH7IMCH11MRvovoKh0AkBOYcuroZa9JL7oIUtJ4n1SPCqxXXklIE
+         ry1h7cYCe3Kvd1+UsNDz/unKukzJYlQSPV/q4hidfm5xca+T/f0VUU2X+miTWX7Oy63H
+         BXnVJhFpcmGHZZ1CkOEJYI/tkYkqB923KZuVQuqhm91MZ36j/q2U+NbGi4F8ZBxW0lDd
+         qerQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705403995; x=1706008795;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AS3BBwgYanBUfBnpxKNvwfAfy1OJUBRnEQmNzkGmJ1s=;
+        b=TqcxzYax5UC5mQx4t+CAv0K0S8B0wjEOUOO1QObFQxpEAFbN2wLzXIbgiJvc9vSqV0
+         dtmxLHXd2slWiDPVdCNvSDZbuIiv0dDoPcINTfy/qHssBIJ/Rf+zpTVwQCN2bb+p4Uum
+         CrzMeY7ZwKCSodcWV/q3edGmm62ddXWfF2Ep1AAcEzVIQlMRNmMDfTv8MeDmBUiPZ+VE
+         wsgEEC4qhmWSEgcWm8VyEclN6ascJt6O96xePYRLzpj+mz3AlVw1+QqFJ/B+8U/n5F6W
+         pSTlTcum1P/bGEtzHPP1X7HIcgOA0RfWLqXglA/uVUVm6JvIbAXGY+iKB73LtNxi1tpw
+         L50g==
+X-Gm-Message-State: AOJu0YyoUZYoCsCJKXrYuKTUF4+uaQjtxhnnk7Yx84FLolqU1Ai/Ocfb
+	bwo+W2RGslQztgi7r06cAk2HGzE9wjJ0LkZp/icJj+iX3RT8YQ==
+X-Google-Smtp-Source: AGHT+IFrGX+QlGcwiMcvFXBVyO7eiX4wVISfsMNIemyKgmDmI8h7UYeLiWdxotNRUa1oCcK60IlwlDmzM+TIfP+BjPM=
+X-Received: by 2002:a05:6214:31a1:b0:681:562a:16e1 with SMTP id
+ lb33-20020a05621431a100b00681562a16e1mr4955020qvb.102.1705403995478; Tue, 16
+ Jan 2024 03:19:55 -0800 (PST)
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Tim Lunn <tim@feathertop.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, Chris Zhong <zyw@rock-chips.com>, 
- Zhang Qing <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20240116084618.3112410-3-tim@feathertop.org>
-References: <20240116084618.3112410-1-tim@feathertop.org>
- <20240116084618.3112410-3-tim@feathertop.org>
-Message-Id: <170540332448.3326634.4106682214139586687.robh@kernel.org>
-Subject: Re: [PATCH 2/3] dt-bindings: rockchip: rk809 fix compatible string
- in examples
+References: <20240116095439.107324-1-vignesh.raman@collabora.com> <20240116095439.107324-3-vignesh.raman@collabora.com>
+In-Reply-To: <20240116095439.107324-3-vignesh.raman@collabora.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Tue, 16 Jan 2024 11:19:44 +0000
+Message-ID: <CAPj87rNKLPETVGzpXaZtQwVGauH2V-fCuFGN4zrOE0nH2R+F+Q@mail.gmail.com>
+Subject: Re: [PATCH v2 2/7] drm/ci: mediatek: Rename exisitng job
+To: dri-devel <dri-devel@lists.freedesktop.org>, 
+	Helen Koike <helen.koike@collabora.com>, Dave Airlie <airlied@gmail.com>, 
+	Sima Vetter <daniel@ffwll.ch>, David Heidelberg <david.heidelberg@collabora.com>, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	linux-mediatek@lists.infradead.org, 
+	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-amlogic@lists.infradead.org, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_030918_396366_E1DE2A5A 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20240116_031959_324136_34C762A1 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +91,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Vignesh,
 
-On Tue, 16 Jan 2024 19:46:17 +1100, Tim Lunn wrote:
-> Fix typo in the example specifying wrong compatible string
-> 
-> Signed-off-by: Tim Lunn <tim@feathertop.org>
-> ---
-> 
->  Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+On Tue, 16 Jan 2024 at 09:55, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> Rename the name of xfail files for mediatek (mt8173 and mt8183),
+> to include information about the tested driver and update xfails
+> accordingly. Since the correct driver name is passed from the job to
+> test gpu and display driver, remove the check to set IGT_FORCE_DRIVER
+> based on driver name.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+I think something is still wrong here, because I can see that later
+xfails updates are setting expectations on kms tests when we're
+supposed to be using the panfrost driver. I can't tell which branch
+was used to run this, but you definitely want to look closely at the
+job logs and results to find out what's going on here.
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/rockchip,rk809.example.dtb: pmic@1b: 'vcc10-supply', 'vcc11-supply', 'vcc12-supply' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240116084618.3112410-3-tim@feathertop.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
