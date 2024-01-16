@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D4E1C4706C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 08:46:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B52F5C47077
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 08:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YY/02AobYPYAM8pjqJIGuUxMpnoRq1+3grbT8QawpEw=; b=X09A/rJVgDXudI
-	wg5g4kK5+lzPJoupY2Uv8ErD7JOX8qt5BjBzuqhs5pKRY3oF/xSLnVHwEYGZVB3ga2ir0KyXkDsss
-	VJZlFVJr1ACAFXV1Yz7u6k7VDPR6yYlosDug/2OFpO7VPaiByX3yemoZVfMhnJ6sbjodQvQZDmhrY
-	p0NCtPQZdFLlvqgVOc2HuhMdy1g09w1Bpvk0uY35fnpzWFNlSmWlWTqhxNhlutZbzGOBdGKlm9v6F
-	+5iqA9aVmzLYg2nqZgNJF4W/W1+5hOmBc1DhcEaB8GnVkfmc+vp/4xHzGGPUq+atPf58ZByHSlNxj
-	hh6FcVrfvhpqJp7DTGXQ==;
+	List-Owner; bh=AwxGH0IdZE4DtcCPqC8Y2XR26n1pqnMczXNdnM6M4ow=; b=gEdC+h8dKSP0xt
+	5uyTMvHb+NLnJuz/6FYMdMptfmnE0Ot+lJ9mH6I7rXV0hCSELOe+D8Uk76/0QtnleABRIhlCFEVks
+	TkckqkmP1BejNvaO60+tQegLSbc1mdiqHb7EE0M4eDOXf804aTp6+dKCubTY7MzmtyJQItWbGzpWI
+	4JTI5xU21nFLKQMv02hDet98SmRpHfGsk464PjK1Iakl4nC/L5JoZ9jv8FZpHkZsn+UbEKZUr7Fis
+	hLqXgdL9WWRdt169zVBClLDaQZ5OedQaclkIkRLrlOCWIlV25gCEGXT7Nfjvm82qIfZR2NyfBooQC
+	RqqRvYdQKymPazUQK4Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPf5r-00BSTv-2O;
-	Tue, 16 Jan 2024 08:46:47 +0000
+	id 1rPf64-00BSao-14;
+	Tue, 16 Jan 2024 08:47:00 +0000
 Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPf5o-00BSSN-3C;
-	Tue, 16 Jan 2024 08:46:46 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 717543200B22;
-	Tue, 16 Jan 2024 03:46:43 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Tue, 16 Jan 2024 03:46:44 -0500
+	id 1rPf60-00BSXe-0F;
+	Tue, 16 Jan 2024 08:46:57 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.west.internal (Postfix) with ESMTP id 80EBA3200035;
+	Tue, 16 Jan 2024 03:46:54 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute5.internal (MEProxy); Tue, 16 Jan 2024 03:46:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1705394802; x=
-	1705481202; bh=+17r0Un58EPuippchMhMs32wnnmhSQrNhZlHlh0KRMI=; b=T
-	Q/+wzMAE6deHpwr6N169FX6P3XJHxAqjXlEmgFgTe6rJfrmaRPp0uhjpCEF0/xv6
-	AaZ1xlfDI7APdj6Z2xlVOG2Gd7VruQAnrOfKvscdt1CyTo+DVPJzeoodxX0A6adB
-	vwlnD6JMUcYgmaY54WVBMbCXzVaE5SnCcdg8ovUBF8gWb1skpb3IZEeiyGWDiP4r
-	IvEpE4AYwxtMiZw4CiNTxsM9Cr/sQM2gOibUUIQfVyJviJasGY5uBiLqtLXCcLtn
-	BGA916sA0aGU5ioeeLs45Uv387l/cmCKq/Ml/qpVQoLyjfkb74x+BlYg+HU7Vac9
-	nL3R09tXW+FCkkZz1xTGQ==
+	:reply-to:subject:subject:to:to; s=fm2; t=1705394814; x=
+	1705481214; bh=w1YMVooaDUNQBk1O+CtoMJUHFZppLvEDdMn6ledxCLI=; b=g
+	OappuYc+T/Ab5VSbVosyZk0ljpLGV1ZTWXhRU2wsCGJlHCj3o+9buMrPwVUoT5Sx
+	op83I2pFHsiIh7OPdJWwzzLHTnCfM20AqMwQRGgAh1JwltxE7CMAJjXKpkQ6iltU
+	k2hMoP4TCApk4vSVpBn+s5S/A1G0OCWnRcUsPQn1MEW3IlVvcHJS43cbjX1u9PRa
+	ND9M0P6AV5Vp+0xvU2uiNnYfzcpIzZ2PgLtUmkxGCWNzmaH+v1XjNxADh2LkXdx4
+	TSuHSmrdkzqlTYrpDVJ+UE5xHFtbqfoNwsbI8fnNIAVd5+k9E0qVjM3+pMXifUPu
+	0sw11IrmExeVADyJC+5kw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1705394802; x=
-	1705481202; bh=+17r0Un58EPuippchMhMs32wnnmhSQrNhZlHlh0KRMI=; b=J
-	5nmHJbsF2iIGP+KbMUgcKV+w+hZh9y5UKVq8ZYBd5ALQmuDU8DIK37C248q/3oFE
-	o1ygASbFK5AGdOojNzW84WloAiBHpRCbqSmGAPqIl84MIg6OITv+dfkI/9HifZEH
-	j+AB3mI3EPg4HzI8Mw7Q31jB7aR4/gp0ZIbAfpIaXGXYOnugLytbYuLOZ5YwH1V1
-	adoEpkK3JzyRmbBgTNkyvbmSHbgrdFfpbzdm1ol1xL8N/yF49rHdtl6eZFEQh0Vb
-	jam9jFyzwTFiZMqfayDgXayCD2FaFYzS48T2IruaNzyp/tjT6k6ltW+WvPXx18lq
-	s6xZWhd7eMJfBmVAfAIJw==
-X-ME-Sender: <xms:ckKmZQ98PICkVvVpH9AKqifszg77niwjeCsI_KDjd3feJMP5IsbTog>
-    <xme:ckKmZYtoAJkOfYWhOYClLuI0F2WeNnXEcwtX70t1nsOp8dQ9bj1Q2nzSFve6d81S6
-    rztNH26CA>
-X-ME-Received: <xmr:ckKmZWC9nWTCjRSe_nQQXxefKDJv0-8mB9fHrE7wo8I0dA3IW-BnBCTZhveWZOR74CA2XAQALgQzQlHEeZK1Lg82guisQ9u4eLo>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1705394814; x=
+	1705481214; bh=w1YMVooaDUNQBk1O+CtoMJUHFZppLvEDdMn6ledxCLI=; b=f
+	kO3RDEhM+8fs2kJ3J8jvNyylu6NQJbpO7DrR3TUH1vP3CzNgv7rfpqQSz8gZLehj
+	1NdJRGQwDvdMRnneDcnneCWmy4u/yyOBhBOFuSX9H1V2rZkWBMWhJiZc6UmiNuMP
+	/PN30NX9yFeoylHZBTsVZjP7iEJsa/GWpRcMETh5QTieCmKUeABRe7J0Ir8h/3Pg
+	EVODsCOmlUQvTkCODXsOJknRUu7pS0ejVujQz/1lzxoq9PdsXguK2tvp88+JVtJv
+	7s8pSSYYLfh0rJyUGtH7bXRj9yNBCnpCBv2Ypu2XVPWn4+jlEHDu5/PPTSDdEq/G
+	xWg5bttp7h3s3o14xH5lg==
+X-ME-Sender: <xms:fUKmZbGKaS8hxLCn4wyWdsrKl0ElnZDWD8gFFAWBPiYfNZiEf5t5GQ>
+    <xme:fUKmZYUvraPLWSPcsMQ9UIpBE2q6o7Yj0BXGu27V4vTfm8dqey42HHt2DmDZqPBIU
+    qw2PpluYw>
+X-ME-Received: <xmr:fUKmZdIRa2UFgNwS8jjMduPTjtuR1LLTJrmtgOaJwEEu1MCLQPe-9lXowIJ-q6tQ994p3vJ55W84aQKxX_SIz2QXCw3cyHGb0HU>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejvddguddvhecutefuodetggdotefrod
     ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
     necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
@@ -67,14 +67,14 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejvddguddvhecutefuodetgg
     hrnhepfeffuefhteegieekjeevgfdtfeethefgvdfhteefueffuefhhfefkefgkeegheei
     necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimh
     esfhgvrghthhgvrhhtohhprdhorhhg
-X-ME-Proxy: <xmx:ckKmZQdOsahFIN2U49wOszFZGJAHQPWYP09C_2npbg5e3EHzvBc02A>
-    <xmx:ckKmZVNHUFzqcM2XZHlB4Dvn3QrOghuVf6NU9TwjQv0uSaccoCa5wA>
-    <xmx:ckKmZamMranHb8-sdRn04sTLQ8C9qT9t1N98AwCZv4VCk-q8wDvPyg>
-    <xmx:ckKmZWFU8xKx-NdZmeFzNiFUHUF1voFeqUcRUZj_j9d2rL_D6BFHEQ>
+X-ME-Proxy: <xmx:fUKmZZGuFC-nknTn2gVAH0AdqG-D33UwTEZ6bBC87xXm7YMYu5Zr1A>
+    <xmx:fUKmZRVelIjjMcvtZ5Dfxm3VmpSFuoQh3Q7Y-YRmTnfzRZXd0IO0ow>
+    <xmx:fUKmZUOJ9eXtZgFJCjWVdDUrEagk0ttoRnzo-vWKUrNGB0JZsIuv_Q>
+    <xmx:fkKmZaOfUugaIrdeEYlZY0j2CMvt5EgKv35OlKPIXdKOam2a9W-8AA>
 Feedback-ID: i1f8241ce:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 16 Jan 2024 03:46:37 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Tue, 16 Jan 2024 19:46:34 +1100
+ 16 Jan 2024 03:46:48 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Tue, 16 Jan 2024 19:46:45 +1100
 From: Tim Lunn <tim@feathertop.org>
 To: linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
@@ -88,16 +88,16 @@ Cc: Tim Lunn <tim@feathertop.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Zhang Qing <zhangqing@rock-chips.com>,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] dt-bindings: rockchip: Add rk809 support for rk817 audio codec
-Date: Tue, 16 Jan 2024 19:46:16 +1100
-Message-Id: <20240116084618.3112410-2-tim@feathertop.org>
+Subject: [PATCH 2/3] dt-bindings: rockchip: rk809 fix compatible string in examples
+Date: Tue, 16 Jan 2024 19:46:17 +1100
+Message-Id: <20240116084618.3112410-3-tim@feathertop.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240116084618.3112410-1-tim@feathertop.org>
 References: <20240116084618.3112410-1-tim@feathertop.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_004645_062964_4B87DEA2 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20240116_004656_145050_F8B0D2B5 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,71 +114,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
-using the same rk817_codec driver. However it is missing from the
-bindings.
-
-Update dt-binding documentation for rk809 to include the audio codec
-properties. This fixes the following warning from dtb check:
-
-pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks',
-   'clock-names', 'clocks', 'codec' do not match any of the regexes:
-   'pinctrl-[0-9]+'
+Fix typo in the example specifying wrong compatible string
 
 Signed-off-by: Tim Lunn <tim@feathertop.org>
 ---
 
- .../bindings/mfd/rockchip,rk809.yaml          | 30 ++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-index 839c0521f1e5..bac2e751e2f2 100644
+index bac2e751e2f2..3f31478932c2 100644
 --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
 +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-@@ -12,7 +12,7 @@ maintainers:
+@@ -154,8 +154,8 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
- description: |
-   Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
--  that includes regulators, an RTC, and power button.
-+  that includes regulators, an RTC, a power button, and an audio codec.
- 
- properties:
-   compatible:
-@@ -93,6 +93,34 @@ properties:
-         unevaluatedProperties: false
-     unevaluatedProperties: false
- 
-+  clocks:
-+    description:
-+      The input clock for the audio codec.
-+
-+  clock-names:
-+    description:
-+      The clock name for the codec clock.
-+    items:
-+      - const: mclk
-+
-+  '#sound-dai-cells':
-+    description:
-+      Needed for the interpretation of sound dais.
-+    const: 0
-+
-+  codec:
-+    description: |
-+      The child node for the codec to hold additional properties. If no
-+      additional properties are required for the codec, this node can be
-+      omitted.
-+    type: object
-+    additionalProperties: false
-+    properties:
-+      rockchip,mic-in-differential:
-+        type: boolean
-+        description:
-+          Describes if the microphone uses differential mode.
-+
- allOf:
-   - if:
-       properties:
+-        rk808: pmic@1b {
+-            compatible = "rockchip,rk808";
++        rk809: pmic@1b {
++            compatible = "rockchip,rk809";
+             reg = <0x1b>;
+             #clock-cells = <1>;
+             clock-output-names = "xin32k", "rk808-clkout2";
 -- 
 2.40.1
 
