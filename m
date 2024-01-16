@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD2BC47258
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 09:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E20C4706C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 11:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VuypSGObLhNF94qG2PlfiaASvIHfW/FMWb/dWA7uIJ0=; b=3IoYZpam/JOMpN
-	Oh+6qxfoO6FfZoCPTtu2DKGRfUYGzYXipA1EvQllIOoZUVum1+bBfmO4AT4JPtb9tqUGk44oQXMVM
-	GIkyW2E8xU+zznTx/hYZ8VSFp55dYEDRoLg95TzoRLHqYZ/8Q9V2zKgwLfnl6Dn8o4TtAW/0Iwiss
-	KiFCN6dtQOQ/xEy5CrXk3VNKtqiyaGYuPvjsS40okbAE6qn+cGLpOj00wNouzbewdkbR+3oiWSHT1
-	Pz2uvP2meZtmd5HWUvpHMMgx8cKSqj3cpRoAxdon4/b1zJDcRmhjxOojJDM4ZiTDoldamenu9ophJ
-	AyDHxSJCg1l4ZIEdDayQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=GJVmxdEKiERhem72oIhnF0p2SPrVZQJc893Uec73oBQ=; b=vPcFuUpOQKkDjOXE0LcLoNlii4
+	sm6wTV9ERDPJpbdKmrSbiga/odXBAuXtzhzAUf0oEeW4GYVzadL4O9d4NgzSIlNIZ7/zkIxFb+wwv
+	swSEToUsbQwSE8qjK3O0sZDXVJjL1FltfujLoi8Klsttnc5djh+Ltm+QYmytBKuSVHzRJlNK57T6I
+	QytWPf2O2P89vJ5EZnZR1DmqNwoq9f/m4GDoCmBDS0GHhS249WIJnZr8aLnoCKvKBMtlPAZOd3EnD
+	zDOgFkkTvSid+jUZeLwSS+zyUx+8/kx1zpn4QKspDuLcHnDv0Ml0sjBbtb3uvSu+OILXY71VtOnpR
+	3FLEq2JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgB5-00Bbzy-1d;
-	Tue, 16 Jan 2024 09:56:15 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rPhJR-00BkyE-02;
+	Tue, 16 Jan 2024 11:08:57 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPgB0-00BbuT-1h;
-	Tue, 16 Jan 2024 09:56:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1705398969;
-	bh=ihrYlqcfJH2iTt+S6IZaRZeXbpV9xKed8vW0TK/5lH8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DfavQs062G4Ep8YU6BJqBZXeJI3NrkgXDT5iAduCZFZmiX0D/0o8jar1EZfLpSQn2
-	 8vHSobAQNGXvocFQOGl5F5VMnSbxBTCa+o01o0fo4pByHXzw1XBr29j45VLWGajSGd
-	 NmGYXJLTQ5uQw7Wro/1+ll8OA6dxwTijwvtaRw35tf/eGFgezB7Xq8d0RRpT+8ovLg
-	 hHQNhbx4pDh1I7vI7ixSbJzFWInjWMm/DMqC2pwmn7REK0MaDs/UvOFEuGh8QNkm5r
-	 foDQwqEPgUK2aq980tWCarCeQGf8aPcuL/lcle9MuOjOw7KiMgV36zkDEu+TIO1Dk7
-	 lGKgZk5qqrftg==
-Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id AE2B83782067;
-	Tue, 16 Jan 2024 09:56:04 +0000 (UTC)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniel@fooishbar.org,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	david.heidelberg@collabora.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 7/7] drm/ci: rockchip: Add job to test panfrost GPU driver
-Date: Tue, 16 Jan 2024 15:24:39 +0530
-Message-Id: <20240116095439.107324-8-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240116095439.107324-1-vignesh.raman@collabora.com>
-References: <20240116095439.107324-1-vignesh.raman@collabora.com>
+	id 1rPhJM-00Bkv7-01;
+	Tue, 16 Jan 2024 11:08:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by ams.source.kernel.org (Postfix) with ESMTP id 62F47B80DDD;
+	Tue, 16 Jan 2024 11:08:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F047C43390;
+	Tue, 16 Jan 2024 11:08:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1705403329;
+	bh=UBxcbAnXiks5IiAwgVqn56UX+EH62CTPUKLNeWoIi7w=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=VQUkAm9A2QilJX7x2yVaKl/d9/RSzntd55pS7Xev/oZ17pR4WvPvX3Y+E47jGx8Xr
+	 eBO/wp4+0fsP5LgE2NV0bvlck439YvZTva/CZUQOH08csOTb7M0uGefH7ocNUZHkrP
+	 VaVFADSpZAqGD9dkz8gMFLlulmrTkDNH9c/6w67Z1T6bFmmOIjiokSIrk645mLtLIh
+	 h7mPj5rVy1g+/VqE5XzrT2FUzsTp/4pzdTQ9m7UI4qb/D/HONMuAbNpHCUuQRC+Yy3
+	 s6n39AFDMwazRYSaDygMtstg8GkAfEDBYFi5cmecdWEBwz4MXgjvbkQgRAcThdPG/F
+	 mZdeCJHTKGscA==
+Date: Tue, 16 Jan 2024 05:08:48 -0600
 MIME-Version: 1.0
+From: Rob Herring <robh@kernel.org>
+To: Tim Lunn <tim@feathertop.org>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Lee Jones <lee@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Zhang Qing <zhangqing@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ devicetree@vger.kernel.org
+In-Reply-To: <20240116084618.3112410-4-tim@feathertop.org>
+References: <20240116084618.3112410-1-tim@feathertop.org>
+ <20240116084618.3112410-4-tim@feathertop.org>
+Message-Id: <170540332496.3326672.17840639764491593170.robh@kernel.org>
+Subject: Re: [PATCH 3/3] dt-bindings: rockchip: Update rk809 example with
+ audio codec properties
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_015610_700792_D42AB75B 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20240116_030852_218615_A00BED3F 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,288 +78,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the GPU driver is panfrost.
-So add support in drm-ci to test panfrost driver for rockchip
-SOC and update xfails.
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
+On Tue, 16 Jan 2024 19:46:18 +1100, Tim Lunn wrote:
+> Update the example provided to include the properties for using
+> rk817 audio codec.
+> 
+> Signed-off-by: Tim Lunn <tim@feathertop.org>
+> ---
+> 
+>  Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
 
-v2:
-  - Add panfrost GPU jobs for rockchip SOC with new xfails.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
----
- drivers/gpu/drm/ci/test.yml                   | 14 ++++
- .../ci/xfails/panfrost-rk3288-gpu-fails.txt   | 54 +++++++++++++
- .../ci/xfails/panfrost-rk3288-gpu-skips.txt   | 52 +++++++++++++
- .../ci/xfails/panfrost-rk3399-gpu-fails.txt   | 75 +++++++++++++++++++
- .../ci/xfails/panfrost-rk3399-gpu-flakes.txt  |  7 ++
- .../ci/xfails/panfrost-rk3399-gpu-skips.txt   |  5 ++
- 6 files changed, 207 insertions(+)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
+yamllint warnings/errors:
 
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index c9ba58571882..4d44421ec510 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -175,6 +175,13 @@ msm:sdm845:
-     KERNEL_IMAGE_TYPE: ""
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
- 
-+rockchip:rk3288-gpu:
-+  extends:
-+    - .rk3288
-+  variables:
-+    GPU_VERSION: rk3288-gpu
-+    DRIVER_NAME: panfrost
-+
- rockchip:rk3288-display:
-   extends:
-     - .rk3288
-@@ -182,6 +189,13 @@ rockchip:rk3288-display:
-     GPU_VERSION: rk3288-display
-     DRIVER_NAME: rockchip
- 
-+rockchip:rk3399-gpu:
-+  extends:
-+    - .rk3399
-+  variables:
-+    GPU_VERSION: rk3399-gpu
-+    DRIVER_NAME: panfrost
-+
- rockchip:rk3399-display:
-   extends:
-     - .rk3399
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
-new file mode 100644
-index 000000000000..90c63f519e9e
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-fails.txt
-@@ -0,0 +1,54 @@
-+kms_3d,Crash
-+kms_bw@linear-tiling-2-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-2-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-2-displays-3840x2160p,Fail
-+kms_bw@linear-tiling-3-displays-1920x1080p,Fail
-+kms_bw@linear-tiling-3-displays-2560x1440p,Fail
-+kms_bw@linear-tiling-3-displays-3840x2160p,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Crash
-+kms_flip@flip-vs-panning-vs-hang,Crash
-+kms_force_connector_basic@force-load-detect,Fail
-+kms_invalid_mode@int-max-clock,Crash
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Crash
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Crash
-+kms_pipe_crc_basic@read-crc-frame-sequence,Crash
-+kms_plane@pixel-format,Crash
-+kms_plane@pixel-format-source-clamping,Crash
-+kms_plane@plane-position-hole,Crash
-+kms_plane@plane-position-hole-dpms,Crash
-+kms_plane_cursor@overlay,Crash
-+kms_plane_cursor@pipe-A-overlay-size-128,Fail
-+kms_plane_cursor@pipe-A-overlay-size-256,Fail
-+kms_plane_cursor@pipe-A-overlay-size-64,Fail
-+kms_plane_cursor@pipe-A-primary-size-128,Fail
-+kms_plane_cursor@pipe-A-primary-size-256,Fail
-+kms_plane_cursor@pipe-A-primary-size-64,Fail
-+kms_plane_cursor@pipe-A-viewport-size-128,Fail
-+kms_plane_cursor@pipe-A-viewport-size-256,Fail
-+kms_plane_cursor@pipe-A-viewport-size-64,Fail
-+kms_plane_cursor@pipe-B-overlay-size-128,Fail
-+kms_plane_cursor@pipe-B-overlay-size-256,Fail
-+kms_plane_cursor@pipe-B-overlay-size-64,Fail
-+kms_plane_cursor@pipe-B-primary-size-128,Fail
-+kms_plane_cursor@pipe-B-primary-size-256,Fail
-+kms_plane_cursor@pipe-B-primary-size-64,Fail
-+kms_plane_cursor@pipe-B-viewport-size-128,Fail
-+kms_plane_cursor@pipe-B-viewport-size-256,Fail
-+kms_plane_cursor@pipe-B-viewport-size-64,Fail
-+kms_plane_cursor@primary,Crash
-+kms_plane_cursor@viewport,Crash
-+kms_plane_lowres@tiling-none,Fail
-+kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
-+kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-modifier-20x20,Fail
-+kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
-+kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
-+kms_plane_scaling@upscale-with-rotation-20x20,Fail
-+kms_prime@basic-crc,Fail
-+kms_properties@connector-properties-atomic,Crash
-+kms_properties@connector-properties-legacy,Crash
-+kms_properties@get_properties-sanity-atomic,Crash
-+kms_properties@get_properties-sanity-non-atomic,Crash
-+kms_rmfb@close-fd,Crash
-+kms_setmode@invalid-clone-single-crtc,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
-new file mode 100644
-index 000000000000..f20c3574b75a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-gpu-skips.txt
-@@ -0,0 +1,52 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
-+
-+# Started hanging the machine on Linux 5.19-rc2:
-+#
-+# [IGT] kms_plane_lowres: executing
-+# [IGT] kms_plane_lowres: starting subtest pipe-F-tiling-y
-+# [IGT] kms_plane_lowres: exiting, ret=77
-+# Console: switching to colour frame buffer device 170x48
-+# rockchip-drm display-subsystem: [drm] *ERROR* flip_done timed out
-+# rockchip-drm display-subsystem: [drm] *ERROR* [CRTC:35:crtc-0] commit wait timed out
-+# BUG: spinlock bad magic on CPU#3, kms_plane_lowre/482
-+# 8<--- cut here ---
-+# Unable to handle kernel paging request at virtual address 7812078e
-+# [7812078e] *pgd=00000000
-+# Internal error: Oops: 5 [#1] SMP ARM
-+# Modules linked in:
-+# CPU: 3 PID: 482 Comm: kms_plane_lowre Tainted: G        W         5.19.0-rc2-323596-g00535de92171 #1
-+# Hardware name: Rockchip (Device Tree)
-+# Process kms_plane_lowre (pid: 482, stack limit = 0x1193ac2b)
-+#  spin_dump from do_raw_spin_lock+0xa4/0xe8
-+#  do_raw_spin_lock from wait_for_completion_timeout+0x2c/0x120
-+#  wait_for_completion_timeout from drm_crtc_commit_wait+0x18/0x7c
-+#  drm_crtc_commit_wait from drm_atomic_helper_wait_for_dependencies+0x44/0x168
-+#  drm_atomic_helper_wait_for_dependencies from commit_tail+0x34/0x180
-+#  commit_tail from drm_atomic_helper_commit+0x164/0x18c
-+#  drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe4
-+#  drm_atomic_commit from drm_client_modeset_commit_atomic+0x23c/0x284
-+#  drm_client_modeset_commit_atomic from drm_client_modeset_commit_locked+0x60/0x1c8
-+#  drm_client_modeset_commit_locked from drm_client_modeset_commit+0x24/0x40
-+#  drm_client_modeset_commit from drm_fbdev_client_restore+0x58/0x94
-+#  drm_fbdev_client_restore from drm_client_dev_restore+0x70/0xbc
-+#  drm_client_dev_restore from drm_release+0xf4/0x114
-+#  drm_release from __fput+0x74/0x240
-+#  __fput from task_work_run+0x84/0xb4
-+#  task_work_run from do_exit+0x34c/0xa20
-+#  do_exit from do_group_exit+0x34/0x98
-+#  do_group_exit from __wake_up_parent+0x0/0x18
-+# Code: e595c008 12843d19 03e00000 03093168 (15940508)
-+# ---[ end trace 0000000000000000 ]---
-+# note: kms_plane_lowre[482] exited with preempt_count 1
-+# Fixing recursive fault but reboot is needed!
-+kms_plane_lowres@pipe-F-tiling-y
-+
-+# Take too long, we have only two machines, and these are very flaky
-+kms_cursor_crc.*
-+
-+# Machine is hanging in this test, so skip it
-+kms_pipe_crc_basic@disable-crc-after-crtc
-\ No newline at end of file
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
-new file mode 100644
-index 000000000000..d516d9c1d546
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-fails.txt
-@@ -0,0 +1,75 @@
-+kms_color@gamma,Fail
-+kms_color@legacy-gamma,Fail
-+kms_color@pipe-A-legacy-gamma,Fail
-+kms_color@pipe-B-legacy-gamma,Fail
-+kms_cursor_crc@cursor-alpha-opaque,Fail
-+kms_cursor_crc@cursor-alpha-transparent,Fail
-+kms_cursor_crc@cursor-dpms,Fail
-+kms_cursor_crc@cursor-offscreen-32x10,Fail
-+kms_cursor_crc@cursor-offscreen-32x32,Fail
-+kms_cursor_crc@cursor-offscreen-64x64,Fail
-+kms_cursor_crc@cursor-onscreen-32x10,Fail
-+kms_cursor_crc@cursor-onscreen-32x32,Fail
-+kms_cursor_crc@cursor-onscreen-64x21,Fail
-+kms_cursor_crc@cursor-onscreen-64x64,Fail
-+kms_cursor_crc@cursor-random-32x10,Fail
-+kms_cursor_crc@cursor-random-32x32,Fail
-+kms_cursor_crc@cursor-random-64x21,Fail
-+kms_cursor_crc@cursor-random-64x64,Fail
-+kms_cursor_crc@cursor-rapid-movement-32x32,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x21,Fail
-+kms_cursor_crc@cursor-rapid-movement-64x64,Fail
-+kms_cursor_crc@cursor-size-change,Fail
-+kms_cursor_crc@cursor-sliding-32x10,Fail
-+kms_cursor_crc@cursor-sliding-32x32,Fail
-+kms_cursor_crc@cursor-sliding-64x21,Fail
-+kms_cursor_crc@cursor-sliding-64x64,Fail
-+kms_flip@basic-flip-vs-wf_vblank,Fail
-+kms_flip@blocking-wf_vblank,Fail
-+kms_flip@dpms-vs-vblank-race,Fail
-+kms_flip@flip-vs-absolute-wf_vblank,Fail
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
-+kms_flip@flip-vs-blocking-wf-vblank,Fail
-+kms_flip@flip-vs-modeset-vs-hang,Fail
-+kms_flip@flip-vs-panning,Fail
-+kms_flip@flip-vs-panning-interruptible,Fail
-+kms_flip@flip-vs-panning-vs-hang,Fail
-+kms_flip@modeset-vs-vblank-race,Fail
-+kms_flip@plain-flip-fb-recreate,Fail
-+kms_flip@plain-flip-fb-recreate-interruptible,Fail
-+kms_flip@plain-flip-ts-check,Fail
-+kms_flip@plain-flip-ts-check-interruptible,Fail
-+kms_flip@wf_vblank-ts-check,Fail
-+kms_flip@wf_vblank-ts-check-interruptible,Fail
-+kms_invalid_mode@int-max-clock,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
-+kms_pipe_crc_basic@disable-crc-after-crtc,Fail
-+kms_pipe_crc_basic@nonblocking-crc,Fail
-+kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Fail
-+kms_pipe_crc_basic@read-crc,Fail
-+kms_pipe_crc_basic@read-crc-frame-sequence,Fail
-+kms_plane@pixel-format,Fail
-+kms_plane@pixel-format-source-clamping,Fail
-+kms_plane@plane-panning-bottom-right,Fail
-+kms_plane@plane-panning-top-left,Fail
-+kms_plane@plane-position-covered,Fail
-+kms_plane@plane-position-hole,Fail
-+kms_plane@plane-position-hole-dpms,Fail
-+kms_plane_cursor@overlay,Fail
-+kms_plane_cursor@pipe-B-overlay-size-128,Fail
-+kms_plane_cursor@pipe-B-overlay-size-256,Fail
-+kms_plane_cursor@pipe-B-overlay-size-64,Fail
-+kms_plane_cursor@pipe-B-primary-size-128,Fail
-+kms_plane_cursor@pipe-B-primary-size-256,Fail
-+kms_plane_cursor@pipe-B-primary-size-64,Fail
-+kms_plane_cursor@pipe-B-viewport-size-128,Fail
-+kms_plane_cursor@pipe-B-viewport-size-256,Fail
-+kms_plane_cursor@pipe-B-viewport-size-64,Fail
-+kms_plane_cursor@primary,Fail
-+kms_plane_cursor@viewport,Fail
-+kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
-+kms_plane_multiple@tiling-none,Fail
-+kms_prime@basic-crc,Fail
-+kms_rmfb@close-fd,Fail
-+kms_universal_plane@universal-plane-pipe-B-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
-new file mode 100644
-index 000000000000..c9fdc623ab91
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-flakes.txt
-@@ -0,0 +1,7 @@
-+kms_bw@linear-tiling-2-displays-1920x1080p
-+kms_cursor_crc@cursor-offscreen-64x21
-+kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@flip-vs-wf_vblank-interruptible
-+kms_plane_cursor@overlay
-+kms_plane_cursor@primary
-+kms_plane_cursor@viewport
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
-new file mode 100644
-index 000000000000..10c3d81a919a
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-gpu-skips.txt
-@@ -0,0 +1,5 @@
-+# Suspend to RAM seems to be broken on this machine
-+.*suspend.*
-+
-+# Too unstable, machine ends up hanging after lots of Oopses
-+kms_cursor_legacy.*
--- 
-2.40.1
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/mfd/rockchip,rk809.example.dts:39.32-33 syntax error
+FATAL ERROR: Unable to parse input tree
+make[2]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/mfd/rockchip,rk809.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1424: dt_binding_check] Error 2
+make: *** [Makefile:234: __sub-make] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240116084618.3112410-4-tim@feathertop.org
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
