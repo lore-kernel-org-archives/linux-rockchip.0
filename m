@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82F90C47077
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 19:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB98C47258
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 19:53:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9/Rvd4e2iLedbu/fvc6wU6dY+Mj4HRYfzQiUEL2sNCM=; b=eITM5uAZTKXoQW
-	dDyktJQrPfj5WghgdOqEBis5mdEhuW2trCJIgFJGtsItfPnNPDbhFqyoPdR+Dw2t/hgvP++WwwF/A
-	wpikZFO1i8RdXaoiE7m88ThTBIKUFu5jwa/k2m0C3uTYvTCnE0oUC4phul9Pkb5bs3kIIkaNfPf61
-	tHVuWNYt4vFQr37368MgSXgbk5MthzL1Gk8W+Mm6OG9yjwxf2NEekhgj5wcsITv/yF8+KY3P7FlN0
-	NSft6MyOfEAjBuEO1HOtD4NKbT/3AWZJTf/MJv7rHDpZY3hLKbLqJGtbrpzY5y1Cf21/KLwnP4TlV
-	eBoXxpa45L12LLWqQ/2g==;
+	List-Owner; bh=9efIfHPoZDEsqvTx3U/8d2iwYZJ9MC7d02Mbabuz44w=; b=kmQaWLzr+wyjKE
+	Xh4gmDBgr0x0xKRqOSFAOTPW8RZzZwGI5xSyGzZn3PoSL24LQsFw1Y2j8AorWrBm9VJob5K01KTZX
+	IJuU9fGXZwl9MPORfTpm74zok+Eke+MAMYkXBp6ZRwJkeLc8EvJOIg7Ss1TJIsVokWO5duaskjlFE
+	BhvRJxhn3BSqdeJMjWYS5OcaYwKyLFJavCpk1jt3OfiX3qxqdLxaUInlFYi+xJlIxWDHQ5LM4l5iI
+	p0GOiZUEGF4gove5HYQFUr/W1KUD7FifTMPPwSAiFkdvs92XOp8U0vKEmGh7iKSkNdXYLTiUrVyur
+	JuA9iEDhs33VNIN/rSXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPpTn-00DFKL-11;
-	Tue, 16 Jan 2024 19:52:11 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rPpUU-00DFqj-22;
+	Tue, 16 Jan 2024 19:52:54 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPpTk-00DFI4-1K;
-	Tue, 16 Jan 2024 19:52:09 +0000
+	id 1rPpUR-00DFni-2b;
+	Tue, 16 Jan 2024 19:52:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CB3CF61368;
-	Tue, 16 Jan 2024 19:51:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79159C433F1;
-	Tue, 16 Jan 2024 19:51:36 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id F080FCE1B31;
+	Tue, 16 Jan 2024 19:52:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B710BC433F1;
+	Tue, 16 Jan 2024 19:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705434697;
-	bh=sRESA0Mf6oMOfaCCJFfjN2881zrZn5Z1Kd53N5cU50w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cdf4XAfAwI3YbwtGvOanqQTGlvzxYN4gAXmc9KPDp6Ff/GAvLPNX2Lhf+QLvqt48m
-	 8gVmlz6PF7cw1Zgr2nvclEFsJWgMj1PsyWOmUnyupkx+mpk/elmKgqorkr92Ohuvis
-	 ULGUKOVvmgtxrcgPk+Wd+F/8lVZaM5N6OQijPu+cv89FEAqevkXKEff4oVWE3+raL+
-	 9jrRXzSc7myla2leLoZBH/plIkzYEHNfUKS0c0sCA1lO+LE9QtUQhmd8SwQ2EV0Hsm
-	 QPuQT3GV1U1BOvqmFt0bDkxfwGgeMx7gH/WvtJVj8TkOvvPOzWvcIyJ0XchJEec+Pj
-	 zHds4/S1Hi5PQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	s=k20201202; t=1705434768;
+	bh=igwQ8TV2mQvIAUVH8VnNjV0M7RH3HutkarYq2gKU5qo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MPrQ4RJ5J3UtRJ48Jr1q16AF0yP925Y0IOjaQDX7IC1z6m7nXyVK+1Bncqfb6PKgY
+	 RVvuGVlSqX5qGdSEebmpT9GSaVLmLxJuigP6LKThPGulhMtrtQ9oYGgvUZ4kz/IhiH
+	 PETQ8FViaMkNgAr3SzPSICSgX+EPqNJPgoQ7ilMDn+wQxJZ9hdBhJE4YY5Den9R+y7
+	 D/EJFq9NyxzcoI7GVRVk9McUaBBgxuo3aDK9yVufb8TigJuzwWtm4TS8gHeWvoXE/h
+	 /6o/WlCV6nE7pzb4wFMRANxe2qApDud+AX0DYFj7HJ7iRtEeDS8TRKRGJ9XpMwsH8Y
+	 rzduDhxOwNJIg==
+Date: Tue, 16 Jan 2024 13:52:46 -0600
+From: Rob Herring <robh@kernel.org>
+To: Tim Lunn <tim@feathertop.org>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 054/104] ARM: dts: rockchip: fix rk3036 hdmi ports node
-Date: Tue, 16 Jan 2024 14:46:20 -0500
-Message-ID: <20240116194908.253437-54-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240116194908.253437-1-sashal@kernel.org>
-References: <20240116194908.253437-1-sashal@kernel.org>
+	Chris Zhong <zyw@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>, Zhang Qing <zhangqing@rock-chips.com>,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/3] dt-bindings: rockchip: Add support for rk809
+ audio codec
+Message-ID: <20240116195246.GA306579-robh@kernel.org>
+References: <20240116132102.3272682-1-tim@feathertop.org>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.12
+Content-Disposition: inline
+In-Reply-To: <20240116132102.3272682-1-tim@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_115208_491186_543287A8 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20240116_115252_027590_1408B6C5 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +78,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+On Wed, Jan 17, 2024 at 12:20:59AM +1100, Tim Lunn wrote:
+> Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
+> using the same rk817_codec driver. However it is missing from the
+> bindings.
+> 
+> This series documents the audio codec properties in rockchip,rk809.yaml
+> bindings and updates example.
+> 
+> Changes in v2:
+> - Fix vcc-supply warning detected by dt_binding bot
+> - Fix missing include and pinctrl for codec example
 
-[ Upstream commit 27ded76ef0fcfcf939914532aae575cf23c221b4 ]
+I just reviewed v1. Please apply those comments. And wait a bit between 
+sending new versions.
 
-Fix hdmi ports node so that it matches the
-rockchip,inno-hdmi.yaml binding.
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/9a2afac1-ed5c-382d-02b0-b2f5f1af3abb@gmail.com
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm/boot/dts/rockchip/rk3036.dtsi | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-index 78686fc72ce6..c420c7c642cb 100644
---- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
-@@ -402,12 +402,20 @@ hdmi: hdmi@20034000 {
- 		pinctrl-0 = <&hdmi_ctl>;
- 		status = "disabled";
- 
--		hdmi_in: port {
-+		ports {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
--			hdmi_in_vop: endpoint@0 {
-+
-+			hdmi_in: port@0 {
- 				reg = <0>;
--				remote-endpoint = <&vop_out_hdmi>;
-+
-+				hdmi_in_vop: endpoint {
-+					remote-endpoint = <&vop_out_hdmi>;
-+				};
-+			};
-+
-+			hdmi_out: port@1 {
-+				reg = <1>;
- 			};
- 		};
- 	};
--- 
-2.43.0
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
