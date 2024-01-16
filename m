@@ -4,54 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEC5C47077
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 08:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66ECFC4706C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jan 2024 08:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x0ML7m9ao6m7arPICKlJJ9j2aIKh7K9IWCDLfY8HFiI=; b=sDXrfnLs1UAsgJ
-	rbNihrP439t1G12yPCdGmmxtXSNGOv4vhMSvN/Pud+YAgjG3/0jC2aO1yxszH21jivGHQUqM8eAn/
-	xxSesVNxvn94Wui/ykr12VeiiF5hwVho0C7GZqmS0LL3AnY3aYJ1a0Qj9bxW3QZqwijnv33lb6n/Z
-	pU0HVtcNW46O3YfR7ChCJJyCcnpjn/FsbWf7dssX/33ITVAogtpmrZV1Y0IMHQXvm+C4w69IQ4T+x
-	4ICW8I0FdRp1HhbrEr4oZtIiV3Ns98/ptJ+Qifo2NtMqbED9tzE75Edu9q8tUCig13o0yO/i584Gi
-	611+Uicr+IInA1dS8Ecw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zAuv8gUuGbba50kmRq3ZkCkOY1o7J4Jb2yR6d2acVBc=; b=Kvy/JqU1ZjNrSz
+	L+6Jg845eOIV0/pLyDtto4D0dScc9P8MgtVleUd80J1z2lAj7EA9gxeILOxPX0xsOmal/M+U4Q/Os
+	7mKbHcBl5aqGTb0wCh+ln5CV3lu6fvU6lfnB7SEtTfWPAdACLMGmMRLVRMKpCPunCxjw7d6VJ6WAF
+	EbyN0gvX8np2hG21N2023s0zLff5FCxPVd6VGmjUx0kTc9BYztOwYrdMvzyyUXUMvB/r6RFrsBilR
+	rvhLOVGQvPmP/S1C+tMBPg1laFyjsaac+Htop3wnULEkpEzGI3N3jh5qIWonByzg3eVq7JpEKX9PK
+	92QZa08wcpGGrJIuPvgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPerZ-00BQPn-2m;
-	Tue, 16 Jan 2024 08:32:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rPf5n-00BSRq-0h;
+	Tue, 16 Jan 2024 08:46:43 +0000
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rPerW-00BQJz-0m;
-	Tue, 16 Jan 2024 08:31:59 +0000
-Received: from i5e860cd7.versanet.de ([94.134.12.215] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rPerA-0000Y0-Lt; Tue, 16 Jan 2024 09:31:36 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Tim Lunn <tim@feathertop.org>, KyuHyuk Lee <lee@kyuhyuk.kr>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chris Morgan <macromorgan@hotmail.com>,
- Tianling Shen <cnsztl@gmail.com>, Jagan Teki <jagan@edgeble.ai>,
- Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: rockchip: Fix Hardkernel ODROID-M1 board bindings
-Date: Tue, 16 Jan 2024 09:31:35 +0100
-Message-ID: <2421144.zToM8qfIzz@diego>
-In-Reply-To: <3dfe868d-ff8d-44ac-a68e-066ac42a6705@linaro.org>
-References: <20240115145142.6292-1-lee@kyuhyuk.kr>
- <8b31ae29-b88b-4ded-95b4-c2d9bbad24e1@feathertop.org>
- <3dfe868d-ff8d-44ac-a68e-066ac42a6705@linaro.org>
+	id 1rPf5j-00BSR3-1D;
+	Tue, 16 Jan 2024 08:46:40 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+	by mailout.west.internal (Postfix) with ESMTP id 4D91B3200A5B;
+	Tue, 16 Jan 2024 03:46:32 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute7.internal (MEProxy); Tue, 16 Jan 2024 03:46:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm2; t=1705394791; x=1705481191; bh=9H8bZXRdsz
+	0qz6AEubHA5FAaHG4KuZ+c/Qt2QBb1k1k=; b=orgSwFK+O3XLft3efWV1RiBlIk
+	8g+t4s4VF1GvuAJDmpD4rLXokLXUsTCf6zfcGsQ8dzvuZSGI3j5HrKGLBYw9Y0KK
+	dchDAMj05jpAKeBIIaitIHZ0Od6zpSx0NHmiUEbcIZ7bwjikocBNUuSu85OD5ubx
+	Nha4BN3XjE4TTXO0Qto4oMfC+4EmLiA5YdQylarxIqEoBm4pGG29X1SI3mSJgS4z
+	PO8ztNnspumEjr+2HGsDq1DjCJ7J0YUBH+8WdVAnjsKuvclNCFwbOmxV1QMoMlOH
+	qWMKSYo2UCqLrfWMRAgxgJkg471YLmufHRAckSt+vzR5wEutVThgy4GPP8jQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1705394791; x=1705481191; bh=9H8bZXRdsz0qz6AEubHA5FAaHG4K
+	uZ+c/Qt2QBb1k1k=; b=XZ2V3GOptCpTKdwnYDgl6qosigBPWBzYwYUzOShy3NAm
+	K3f98Qbr7i0T2l4HDXUaQdmptBsnTPo5JrkQnXuRs2f0S/8c/NUW7oQly0psST4c
+	9K5YZMEuMrboqokakySuOmeZWevl12kOFc9zcVbfLvq5I66HX+i4ZNGUUe+1KmBP
+	uxjHL3Ex91xXB/IbEKClGsK3NFXRkA4Uc/h/OmQgQlbbrEphktmUvW4zHroCGjXB
+	WgWO0VYX33ORPXluJkLUB+d4hWvGGy0DTMXYJpWBV5u5ccX5W6wCHucXdn6FHBAz
+	EDZEnlaqrcYrTr4RFHSrAwjPbGBkBWPycD+HD2Ak7A==
+X-ME-Sender: <xms:ZkKmZewi8wGN4FqueMN7NUF-6qZQVC78S0avGfqZ3YPThsZ7DnNrbQ>
+    <xme:ZkKmZaQCbGcXJgMxoxXZMQ37Iq4d61Q32CCdpU8GmfW6Nq-4VPft6uLrsmHZXZiwj
+    6q6wKR_Ew>
+X-ME-Received: <xmr:ZkKmZQXQ7LFZ9mz_wxX0EIkk-slGM6SZq1p8qss9fSixsQ_KZhSkq-NF6ExpABYwM_F6f0P00QfE9Npb90lNeFAwIY02CQHpivM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejvddguddvhecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvihhmucfn
+    uhhnnhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvghrnh
+    epudfhtdevueejjeejffeivefgtddugeefffevudfgteetheduveetheetgfeiiedtnecu
+    vehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimhesfh
+    gvrghthhgvrhhtohhprdhorhhg
+X-ME-Proxy: <xmx:ZkKmZUh8OOSM6WndYP5E0KEY50xyXY4hnvwDFK9QVTZZIrNnTVpl8w>
+    <xmx:ZkKmZQBfWSrD0Wj7v17Xcz7UpaU4KYTaR11PMK3q7t2wR6Ri3xXSdg>
+    <xmx:ZkKmZVIPTmjc41Ln2Nd6bYSB1l0scw7G8bmI-MCY265HTeyhk36mtw>
+    <xmx:Z0KmZU6x1Q-uzQ96JhDUiNunURO9r_-pOF7dfUdxM4LUF7nPktg3Ng>
+Feedback-ID: i1f8241ce:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 16 Jan 2024 03:46:25 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Tue, 16 Jan 2024 19:46:21 +1100
+From: Tim Lunn <tim@feathertop.org>
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: Tim Lunn <tim@feathertop.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Chris Zhong <zyw@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] dt-bindings: rockchip: Add support for rk809 audio codec
+Date: Tue, 16 Jan 2024 19:46:15 +1100
+Message-Id: <20240116084618.3112410-1-tim@feathertop.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_003158_279499_192D263E 
-X-CRM114-Status: GOOD (  25.26  )
+X-CRM114-CacheID: sfid-20240116_004639_757517_5B30C465 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,50 +111,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 16. Januar 2024, 08:24:44 CET schrieb Krzysztof Kozlowski:
-> On 16/01/2024 03:00, Tim Lunn wrote:
-> > 
-> > On 1/16/24 01:58, Krzysztof Kozlowski wrote:
-> >> On 15/01/2024 15:51, KyuHyuk Lee wrote:
-> >>> The vendor in ODROID-M1 is hardkernel, but it was incorrectly written
-> >>> as rockchip. Fixed the vendor prefix correctly.
-> >>>
-> >>> Signed-off-by: KyuHyuk Lee <lee@kyuhyuk.kr>
-> >>> ---
-> >>>   Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
-> >>>   1 file changed, 1 insertion(+), 1 deletion(-)
-> >> You need to start testing your patches. Your last M1 fails as well in
-> >> multiple places.
-> >>
-> >> It does not look like you tested the DTS against bindings. Please run
-> >> `make dtbs_check W=1` (see
-> >> Documentation/devicetree/bindings/writing-schema.rst or
-> >> https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-> >> for instructions).
-> >>
-> >> The DTS change will break the users, so would be nice to mention this in
-> >> its commit msg.
-> > 
-> > I notice there are a couple of other boards that incorrectly use 
-> > rockchip as the vendor also:
-> > 
-> >            - const: rockchip,rk3399-orangepi
-> >            - const: rockchip,rk3568-bpi-r2pro
-> > 
-> > Perhaps these should also be fixed at the same time?
-> 
-> What is happening with rockchip boards?
+Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
+using the same rk817_codec driver. However it is missing from the
+bindings.
 
-Copy-paste stuff ... boards using rockchip,boardname instead of
-vendor,boardname for their compatible.
+This series documents the audio codec properties in rockchip,rk809.yaml
+bindings and updates example.
 
-I do remember us noticing this a number of times on some boards
-and requesting fixes, but looks like some slipped through.
 
-So I guess Tim is suggesting changing the compatible, but with boards
-being merged a while ago, this would break backwards compatibility.
-So I guess both the Orange and Banana Pies will need to live with that.
+Tim Lunn (3):
+  dt-bindings: rockchip: Add rk809 support for rk817 audio codec
+  dt-bindings: rockchip: rk809 fix compatible string in examples
+  dt-bindings: rockchip: Update rk809 example with audio codec
+    properties
 
+ .../bindings/mfd/rockchip,rk809.yaml          | 40 +++++++++++++++++--
+ 1 file changed, 37 insertions(+), 3 deletions(-)
+
+-- 
+2.40.1
 
 
 _______________________________________________
