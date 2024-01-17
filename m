@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E8D4C47258
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jan 2024 15:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F69FC47258
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jan 2024 19:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sr4dqHCLNemKQ1hRcB/v7D9XtDfRQj12p5ATqSP9o9U=; b=xnopG7vDQ/V2RaVVp78rgXe1dF
-	cC7gZ51GEFWiGrxb4KFZSnJjJLoolN1daUcakLhFoRzx0QpUhThz0Ur0d7/rPjkp65rC3/QwkgBeD
-	dcP1LBHcMG6Jo4PtL8veCku/nLnfPROABT0aoGjvpp5zRW08n1uUSdZOGtp4iUaLfcd5iH4xdsU06
-	4Z1JRRr0YUemMLGOPMk9qJHP9b6sx1l121qhciGRg/xl2q5P5DdUe2sfqMY0tJo2g4w/jhLF/v1CX
-	z6J1DcCIBhfIMDCtTobqhvWggHOlJtgHDrcdpSQiptxDj6j8oATpRQfTrOhe+qDMP/X2dEmKmMnbA
-	FCc0meEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2Wyr7UWB6rbUkdXi2Vs3cNVwBvOPOOX6FBwKCEnvYOA=; b=tG8Di8x9PQD6S2
+	RpUi6Uy/NTIUxhZujMcoKumTELDIjDkrhYF9Rc1HDKNXwWb8BjmUA6DYuYpW4lYXn0HV0FlEp2wBx
+	MSN8GTlQY8rQzpOwDYjTF3swNcqh2czDbvUxZ3Jwldeg/cEHAZ6QIJbhFQiqXWqU0DtUWLCdHObaK
+	QAyut6wxrap+valm/kywTE3wMKImd/aywhsp6xmFa7vH6Ov0qVe5H0IOxdDv8xoUeP1T5r2ZEODKQ
+	XsRYZmRmT3FMRQLsM+mYb8wwSIf0b5rhf7EFcrW/XeyzjGyBHqCxiu4kxJ9Fa3adHrsi2axeT4smC
+	bU6uczT9OAIA3e1ixnVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ7rT-00HSmT-20;
-	Wed, 17 Jan 2024 15:29:51 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1rQBLt-000Shx-0M;
+	Wed, 17 Jan 2024 19:13:29 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ7rQ-00HSlR-1E;
-	Wed, 17 Jan 2024 15:29:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by ams.source.kernel.org (Postfix) with ESMTP id 82EB4B8110A;
-	Wed, 17 Jan 2024 15:29:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45890C433F1;
-	Wed, 17 Jan 2024 15:29:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705505385;
-	bh=qxxZ9RjuckhZiHlpj6s0cb/PxO0021+SF6EF75yf3pg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GthVqAlu8QyItM872HC2zFIziyZXmGUFTUjvYc9wybCEfU0Uji5Q0Z1fLCfOKTyH5
-	 jQmKY5Sp7TYEn2z6YfVz5HUy27zQlKnaxTEYSJu4UpJznLrShbS98wlOlrKH8KRHDo
-	 XEB1ZXUTq1hjgbIIegibTODOMV8tEoIN2MuhyQKgmZHxsPKCLDk4GQLL10Cir11YRx
-	 lJYlsHef/2rCvt4vJAqQBa77Cqj6m1+E+0vEw6uBiAjScWB0kZUMno3rcYuYP/3Hti
-	 RrurJJSDNsDWmy7SSOIerlHNcdrhr55r4i3Od2tkAUKP/WuZ7X6sTPE96jgR7kZDnZ
-	 QQoIjHbGGLSwQ==
-Date: Wed, 17 Jan 2024 15:29:41 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Tim Lunn <tim@feathertop.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Chris Zhong <zyw@rock-chips.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Zhang Qing <zhangqing@rock-chips.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: rockchip: Document rk809 support for
- rk817 audio codec
-Message-ID: <20240117-motto-uselessly-b27523fac94d@spud>
-References: <20240116132102.3272682-1-tim@feathertop.org>
- <20240116132102.3272682-2-tim@feathertop.org>
- <20240116-mangle-parish-93b5cd672d17@spud>
- <72ed509c-f754-4e65-a65e-130185777c53@feathertop.org>
- <b798a7cc-c9fd-4bc3-bb14-401e10e4eeb8@linaro.org>
- <9636bcb9-6b4b-41ef-bcfc-ff39c11d127e@feathertop.org>
+	id 1rQBLo-000Sfo-1b
+	for linux-rockchip@lists.infradead.org;
+	Wed, 17 Jan 2024 19:13:26 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-78315243c11so805346485a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 17 Jan 2024 11:13:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1705518801; x=1706123601; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=bV2ObK4Gn6zBfHyaALWYuYvkHMTPFOM7kyZ+I5+TgvA=;
+        b=k5l1aKUgZsXq/nRiTYhbl1VRYAjJD9ITiFG6Lw2Y37I2zWcJ2Uqg8fp0S/u7liYOik
+         DC6IvHI+QAOPXlINLokoFQ0l9FYOA8mA3ebXWyfAP+/BzGA6md82CzMppFMR/MGfBSmo
+         bVdgxVif08zLsI5XViDBtMzrEEKO/KT0hDNQW1N1ve67oDFHdv6JezuoHviDMSG1ZjPP
+         1mFin7XCnF6A3Je4Knu+Hya5oWxef0zPiHfTAUmQXl4Pjz8qiyc3X0tll9RANL4psM7N
+         jOkkdEjqnlTLVzqt2eE1ezAj/03dxpOlTuJL6F7eA5l6GDOhEF0+i5zIlJQZvoCHZKeb
+         TKGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1705518801; x=1706123601;
+        h=mime-version:user-agent:content-transfer-encoding:autocrypt
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bV2ObK4Gn6zBfHyaALWYuYvkHMTPFOM7kyZ+I5+TgvA=;
+        b=GJUUrdfBbD/lWfSKuten2ki7lY95kEUf4oZXjc0ZOmo0hNeVhjcRC2Q0JqbHu5YG85
+         B4FE0/twRHFjzEo5dg1q7MK5FD1frQU+Eg3LVaUaU0wu24l38L8oAna1t02uVE9wsvza
+         AEifb1EFqKdl5MzydkLpnex6SXAacM/5OoCbuJL7LF5icw/mZOOElfO4EKH6bA+zzes7
+         swVhh5M6FCy0uOqLcLTJgNWygtYNCrcKFrkJBuiCjS/t/wzT/SG/f73yjx/UJJ+ugowf
+         ls8T+qx8VE7bhiFj184lDh9Plen4YvCsthLUjaxr5F03gR2D9QGAS6bvmrcpyn9eX/ti
+         t9DA==
+X-Gm-Message-State: AOJu0YzPa414IYPmemoGeg/MVq5o71CdFKtCx6Vz7A1YJyVj8+wKP+lg
+	Pi6mxePKVvw8GrR9yEsvo6OVwqAOheUxjQ==
+X-Google-Smtp-Source: AGHT+IG73tqD/icOIiDqu1zoHWcRrz4j9u5/SPw8nh8PdpyyAo+kwFkgCZy+NiroIxfP1GwDgXR5Lw==
+X-Received: by 2002:a05:620a:44d1:b0:783:3ea4:e39d with SMTP id y17-20020a05620a44d100b007833ea4e39dmr10686331qkp.146.1705518801111;
+        Wed, 17 Jan 2024 11:13:21 -0800 (PST)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:11:3354::7a9])
+        by smtp.gmail.com with ESMTPSA id i16-20020a05620a249000b007832c2e3b80sm4633406qkn.132.2024.01.17.11.13.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jan 2024 11:13:20 -0800 (PST)
+Message-ID: <e01c9ab69f3e120cdb9b70fbacebbab32d5abba4.camel@ndufresne.ca>
+Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: Add Hantro G1 VPU support
+ for RK3588
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jianfeng Liu <liujianfeng1994@gmail.com>, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, heiko@sntech.de, 
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org
+Date: Wed, 17 Jan 2024 14:13:19 -0500
+In-Reply-To: <20231231151112.3994194-2-liujianfeng1994@gmail.com>
+References: <20231231151112.3994194-1-liujianfeng1994@gmail.com>
+	 <20231231151112.3994194-2-liujianfeng1994@gmail.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.50.3 (3.50.3-1.fc39) 
 MIME-Version: 1.0
-In-Reply-To: <9636bcb9-6b4b-41ef-bcfc-ff39c11d127e@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240117_072948_748065_1ADDF61D 
-X-CRM114-Status: GOOD (  36.06  )
+X-CRM114-CacheID: sfid-20240117_111324_743374_562CF1F3 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,126 +92,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6119568273505647500=="
+Cc: sfr@canb.auug.org.au, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, knaerzche@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6119568273505647500==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="yBdANV7KjVXVo10Z"
-Content-Disposition: inline
-
-
---yBdANV7KjVXVo10Z
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jan 17, 2024 at 08:58:56PM +1100, Tim Lunn wrote:
->=20
-> On 1/17/24 20:22, Krzysztof Kozlowski wrote:
-> > On 17/01/2024 10:19, Tim Lunn wrote:
-> > > On 1/17/24 04:06, Conor Dooley wrote:
-> > > > On Wed, Jan 17, 2024 at 12:21:00AM +1100, Tim Lunn wrote:
-> > > > > Rockchip RK809 shares the same audio codec as the rk817 mfd, it i=
-s also
-> > > > > using the same rk817_codec driver. However it is missing from the
-> > > > > bindings.
-> > > > >=20
-> > > > > Update dt-binding documentation for rk809 to include the audio co=
-dec
-> > > > > properties. This fixes the following warning from dtb check:
-> > > > >=20
-> > > > > pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-=
-clocks',
-> > > > >      'clock-names', 'clocks', 'codec' do not match any of the reg=
-exes:
-> > > > >      'pinctrl-[0-9]+'
-> > > > >=20
-> > > > > Signed-off-by: Tim Lunn<tim@feathertop.org>
-> > > > > ---
-> > > > >=20
-> > > > > (no changes since v1)
-> > > > >=20
-> > > > >    .../bindings/mfd/rockchip,rk809.yaml          | 30 +++++++++++=
-+++++++-
-> > > > >    1 file changed, 29 insertions(+), 1 deletion(-)
-> > > > >=20
-> > > > > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809=
-=2Eyaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> > > > > index 839c0521f1e5..bac2e751e2f2 100644
-> > > > > --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> > > > > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> > > > > @@ -12,7 +12,7 @@ maintainers:
-> > > > >    description: |
-> > > > >      Rockchip RK809 series PMIC. This device consists of an i2c c=
-ontrolled MFD
-> > > > > -  that includes regulators, an RTC, and power button.
-> > > > > +  that includes regulators, an RTC, a power button, and an audio=
- codec.
-> > > > >    properties:
-> > > > >      compatible:
-> > > > > @@ -93,6 +93,34 @@ properties:
-> > > > >            unevaluatedProperties: false
-> > > > >        unevaluatedProperties: false
-> > > > > +  clocks:
-> > > > > +    description:
-> > > > > +      The input clock for the audio codec.
-> > > > > +
-> > > > > +  clock-names:
-> > > > > +    description:
-> > > > > +      The clock name for the codec clock.
-> > > > > +    items:
-> > > > > +      - const: mclk
-> > > > You have one clock only, why do you need to have clock-names?
-> > > This is just documenting the existing rk817 codec driver, which is us=
-ing
-> > > the name to get the clock:
-> > >=20
-> > > devm_clk_get(pdev->dev.parent, "mclk");
-> > >=20
-> > > Thus i dont think clock-names can=A0 be removed in this case? atleast=
- not
-> > > without patching the driver as well?
-> > Your commit msg claims this is for existing driver using rk817_codec. So
-> > what about rk817? It does not use clocks?
-> >=20
-> rk817 uses exactly the same properties as what I included here. i.e it
-> includes both clocks and clock-names.
-> My point above was that I dont think I can just remove the clock-names
-> property as Conor suggested? I could be wrong though.
-
-You can't remove it from the rk817 binding, but that doesn't mean you
-should add it here. If the rk817 only has one clock too, then the driver
-could be modified to not rely on the clock names at all. I'd be inclined
-to allow it here since that makes the binding compatible with the
-existing driver for the other device.
-
---yBdANV7KjVXVo10Z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZafyZAAKCRB4tDGHoIJi
-0hr9AP96djRfCAp8WT+Xh0+AVthBfqn4ug+yWw3y2+LGgfJ1SgD/c4Vmyl2Gq+Yp
-G2XGQ4njjJGSmJYhMHhdhBJnPSRvrAQ=
-=ZR79
------END PGP SIGNATURE-----
-
---yBdANV7KjVXVo10Z--
-
-
---===============6119568273505647500==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6119568273505647500==--
-
+SGkgSmlhbmZlbmcsCgpMZSBkaW1hbmNoZSAzMSBkw6ljZW1icmUgMjAyMyDDoCAyMzoxMSArMDgw
+MCwgSmlhbmZlbmcgTGl1IGEgw6ljcml0wqA6Cj4gVGhpcyBwYXRjaCBlbmFibGVzIEhhbnRybyBH
+MSB2aWRlbyBkZWNvZGVyIGluIFJLMzU4OCdzCj4gZGV2aWNldHJlZS4KPiAKPiBUZXN0ZWQgd2l0
+aCBGRm1wZWcgdjRsMl9yZXF1ZXN0IGNvZGUgdGFrZW4gZnJvbSBbMV0KPiB3aXRoIE1QRUcyLCBI
+LjI2NCBhbmQgVlA4IHNhbXBsZXMuCgpJbiBnZW5lcmFsLCB3ZSBhc2sgc3VibWl0dGVycyB0byBz
+aGFyZSBhIGZsdXN0ZXIgWzBdIHNjb3JlICh0aGlzIGlzIGp1c3QgdG8KZGVtb25zdHJhdGUgdGhh
+dCB0aGUgaW50ZWdyYXRpb24gaGFzIGJlZW4gd2VsbCB2YWxpZGF0ZWQpLiBMaWJyZUVMRUMgY29t
+bXVuaXR5CmhhdmUgcGF0Y2ggdG8gZW5hYmxlIHRoaXMgZmZtcGVnIGZvcmsuIEkgZG9uJ3QgZXhw
+ZWN0IGFueSBzdXJwcmlzZSBoZXJlLCBhbmQgeW91CmNhbiBqdXN0IHJlcGx5IHRvIG15IGVtYWls
+IGhlcmUuCgpBbHRlcm5hdGl2ZWx5LCB0aGlzIHRlc3QgdG9vbCBpcyBzaGlwcGVkIGluIGxhdGVz
+dCBEZWJpYW4sIGFuZCB3aXRoIHRoZQphcHByb3ByaWF0ZSBHU3RyZWFtZXIgcGFja2FnZXMgeW91
+J2xsIGJlIGFibGUgdG8gcnVuIHRoZSBWUDggYW5kIEguMjY0IHRlc3RzLgoKTmljb2xhcwoKWzBd
+IGh0dHBzOi8vZ2l0aHViLmNvbS9mbHVlbmRvL2ZsdXN0ZXIKCj4gCj4gWzFdIGh0dHBzOi8vZ2l0
+aHViLmNvbS9MaWJyZUVMRUMvTGlicmVFTEVDLnR2L2Jsb2IvbWFzdGVyL3BhY2thZ2VzL211bHRp
+bWVkaWEvZmZtcGVnL3BhdGNoZXMvdjRsMi1yZXF1ZXN0L2ZmbXBlZy0wMDEtdjRsMi1yZXF1ZXN0
+LnBhdGNoCj4gCj4gU2lnbmVkLW9mZi1ieTogSmlhbmZlbmcgTGl1IDxsaXVqaWFuZmVuZzE5OTRA
+Z21haWwuY29tPgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMu
+ZHRzaSB8IDIwICsrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAyMCBpbnNl
+cnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTg4cy5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kK
+PiBpbmRleCA1ZmIwYmFmOGEuLmFiMjc5MjE2MiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMuZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTg4cy5kdHNpCj4gQEAgLTY0MCw2ICs2NDAsMjYgQEAgaTJjMDogaTJjQGZk
+ODgwMDAwIHsKPiAgCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICAJfTsKPiAgCj4gKwl2cHU6IHZp
+ZGVvLWNvZGVjQGZkYjUwMDAwIHsKPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC12
+cHUiLCAicm9ja2NoaXAscmszNTY4LXZwdSI7Cj4gKwkJcmVnID0gPDB4MCAweGZkYjUwMDAwIDB4
+MCAweDgwMD47Cj4gKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExOSBJUlFfVFlQRV9MRVZFTF9I
+SUdIIDA+Owo+ICsJCWNsb2NrcyA9IDwmY3J1IEFDTEtfVlBVPiwgPCZjcnUgSENMS19WUFU+Owo+
+ICsJCWNsb2NrLW5hbWVzID0gImFjbGsiLCAiaGNsayI7Cj4gKwkJaW9tbXVzID0gPCZ2ZHB1X21t
+dT47Cj4gKwkJcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszNTg4X1BEX1ZEUFU+Owo+ICsJfTsK
+PiArCj4gKwl2ZHB1X21tdTogaW9tbXVAZmRiNTA4MDAgewo+ICsJCWNvbXBhdGlibGUgPSAicm9j
+a2NoaXAscmszNTg4LWlvbW11IiwgInJvY2tjaGlwLHJrMzU2OC1pb21tdSI7Cj4gKwkJcmVnID0g
+PDB4MCAweGZkYjUwODAwIDB4MCAweDQwPjsKPiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTE4
+IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Cj4gKwkJY2xvY2stbmFtZXMgPSAiYWNsayIsICJpZmFj
+ZSI7Cj4gKwkJY2xvY2tzID0gPCZjcnUgQUNMS19WUFU+LCA8JmNydSBIQ0xLX1ZQVT47Cj4gKwkJ
+cG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszNTg4X1BEX1ZEUFU+Owo+ICsJCSNpb21tdS1jZWxs
+cyA9IDwwPjsKPiArCX07Cj4gKwo+ICAJdm9wOiB2b3BAZmRkOTAwMDAgewo+ICAJCWNvbXBhdGli
+bGUgPSAicm9ja2NoaXAscmszNTg4LXZvcCI7Cj4gIAkJcmVnID0gPDB4MCAweGZkZDkwMDAwIDB4
+MCAweDQyMDA+LCA8MHgwIDB4ZmRkOTUwMDAgMHgwIDB4MTAwMD47CgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
