@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1671C47DA7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jan 2024 07:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 590B7C47422
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jan 2024 07:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UKbsrpBysL10LsJ/4mdl2uo4+PnVpneqB2MFRgHFNgY=; b=2s9epsKzfpMq5X
-	tWx+BvmfqcjdXL+EY3gJbqFtOm728ZFqkDMwp+5VZQ0yGQVIouPKGzGH6tDJc4Q3So6/jITSVWDBA
-	cvrj0zzSKWmA81s4dQn0SUs8p0SR7zv0RjpNxvr2bXLU5yQ5h2kvj3ODJjprqBfJSJQT6rtp7For2
-	drEh+J2N8iiqoZorJDqjToyHl0gWV0YvMxqM7Oaaos4rgsrFSsVNcaPbN/ojkpSrYaaYdup28T+oS
-	X3HZbQkq9J+IwGOwyn17ktIIfCL9BHnPUqAQM2Xy8i4O8hqIF/1NJ4bmeOYKmrDavxNuAKwCc60Z4
-	l3egGj8uVY4/RW0Pyxhg==;
+	List-Owner; bh=AnVcyvZOZsmqpqL1znxb1bvaFndmbyhmUUmvvfdhR+g=; b=nZOPypdJ1yV+EK
+	6FsmEONRelbfWwXbgiHZS8ksgJ65jdLINcSuRiy34xJZwoesGYCcVXSaCLqxj6licUN77pNmJY/tV
+	sShbdswxBffoCYCfLo5JHbdRbkW0X/6LjXu0G3JJ6q7pmpW6CXM2M6fEFLLJBAy7E4XaCMTvO7U7C
+	oa7b8mkUMje3EyqGO38N+DFQ4NXyvJeo5x2ULjr5PrHHpgUCWOPgsI5k8dSDeb4izCSLqqHRSczIW
+	FdPcJf8Eh8JOhDNPk+5/fSjH2+mFmYGCMbf+ZgqlvzeV/JnYJjW12svKByzzHLapw77DBxdtGEQI/
+	p/burTKljz+j69KWvIvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ0Zo-00EjC1-21;
-	Wed, 17 Jan 2024 07:43:08 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1rQ0a4-00EjKx-06;
+	Wed, 17 Jan 2024 07:43:24 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQ0Zl-00Ej9N-02
+	id 1rQ0a1-00EjHV-0a
 	for linux-rockchip@lists.infradead.org;
-	Wed, 17 Jan 2024 07:43:06 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a28cc85e6b5so1268563666b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 16 Jan 2024 23:43:04 -0800 (PST)
+	Wed, 17 Jan 2024 07:43:22 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-559de6145c3so188459a12.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 16 Jan 2024 23:43:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1705477383; x=1706082183; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1705477399; x=1706082199; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZhBFCZ33D7H1fYEpYZJAn1kyzMl62460DHrOkyDHGBM=;
-        b=vzRK7S2TZE49A8x8OwYllgFPrDnBJP3+aMby8ZrueWerYVHnZltTalZuyQyeUF3UzA
-         6WJFB6R/61ngp7KqjWbdLmVRQiRu00YeS51E2b1NmJW+34ypoeYeCEPNYkRy+FqLATo0
-         4vn0hQ9WIWgcRqE1b8PASEfQ8i9LmkfHZ7WTHFAd4Sm5VRZkwo5OUeXpHHqXMtSh9ovV
-         5gFF12Z3jRHqpUsZmAhLaBnkJJxTHM2GGX2Wkw59tvwiehX7MRb0uDQioX6FlwAQfufe
-         836qh4Nt3wv7deWbRVqjnRPLV1MBaanLrGlPwkXvjEKnCKNz4XH1u5LhLKKrH62+AyO4
-         y6IA==
+        bh=LbVIeN9ezawLnADTnMQHfabMUYp6YwfppD+4nTXfKXI=;
+        b=KZWI+isnHEgTTBrx4gVND40ZzfPX1NYitsBZwyNkQPXV+OFApwvGcCbcQFq+n+bXEi
+         tz2B4wkPV8Gp9n8+wbZTlusaL0Xhtj96ZmhlXQjEHtebViD5bPesfmy6u5rtXd4dbQqB
+         90Em8n9QB5gXk4+vYi7nC5IWc9t4YBq2/Fl7C+gljNFpPCnA1lP8gkb2ZJK4j0XNI4cO
+         qEPQgYhDzOPUX1oU4JuTl6QSuz5fxGXsXtRH36avF6Um8x+5ZmZu3Bwt/8Q6jOXQOBgr
+         AeTkpIFuai5E9D0XqihnkeCW2iyrkwPrgbeaZR8L5WXEjXk9Or9vXDkt3usFjyfdcci+
+         kYzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1705477383; x=1706082183;
+        d=1e100.net; s=20230601; t=1705477399; x=1706082199;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZhBFCZ33D7H1fYEpYZJAn1kyzMl62460DHrOkyDHGBM=;
-        b=CttPzaIAZ4dN7mGQhuEu+gVkvo3GvoaKgOO1PfRY79x66GpDydhgnCiYTZBXtBvHqv
-         JWaXu2BrZrA8U8wPVVJK0r1IvJ/ecKHSmiokML1zUs385GDxpFGrO2N6AbNYSYN/i+v4
-         S/GpjTFH/BE33dhZIbsJ6xjGaqXeDaNuN5SmZjbdGA+3w/eHDsapYzHHn11KVv9xjhoh
-         7LFDoGmlp3WtyhF80eTwE74ELy/2Czda95K075M+Xo3dxBnZsMUBFs5YJ06FH/X4MJwk
-         F62paDLT7m0oWfssWYzqSYlsn4cc+dvIc5GUBUzRQYmJsBo9t7LgFt6DmmZR5WYH3SvE
-         HXkA==
-X-Gm-Message-State: AOJu0YzRCmoJmmSbFYN93dWMC0GcAoms3dKzM+i5jK6GMhgS7epbA3gY
-	ODMNn1fi6fjUifQbw+pTFooV9vhmfmv5mw==
-X-Google-Smtp-Source: AGHT+IEAPV55Ar4wd0H6tSDZokpxgWCF/K0gD85OgLv8aFoKpSW9a+90Siq0h9uqGmpoZ8RLA31ClA==
-X-Received: by 2002:a17:907:5c9:b0:a28:810b:580 with SMTP id wg9-20020a17090705c900b00a28810b0580mr3237060ejb.66.1705477383203;
-        Tue, 16 Jan 2024 23:43:03 -0800 (PST)
+        bh=LbVIeN9ezawLnADTnMQHfabMUYp6YwfppD+4nTXfKXI=;
+        b=ndGJgzTxjuAhBV67VkI143uY7HpTrO5xpY8LBAWE5/UHklojLvZ2Grpr9+bUmexKsK
+         1Egk0g5ji1XggdjW8r+3UyRkr0ZwwrLRcscqfs9LrRN6+QmGKatHpahRilNMfIQCOgt0
+         ap2edYyKe18nxpVVC64QIOGATgK4WZe0emeQ72Mb/MaJnnANcbQ2NfXxjmV1vg7XisVH
+         fqxAnCwCCBCGRSazRcYZUQ2Lnmw04IOKr6G1N2gJBKLx61Wd6DpbyelcaPN1Aiq+1N8L
+         CIXuW4ha8K9yiANvf+PHOm1xDtUARWA3YXL1OYBfNo0cEJMO9+YJ0RqTqyqA2aQbmqkT
+         xzVA==
+X-Gm-Message-State: AOJu0YwidU/Nm9Q4sFngCy/M4Q7v1/PtpmtuiBVgND2+Sde0vc1yzHAG
+	SaDPkLNboJC9OqqZ8wXjewVLFbvy87Xg4g==
+X-Google-Smtp-Source: AGHT+IHRSy49ph9pHeNOum6KTUTid3XwglsmtC6V51wnacs00roNEFENdoO/vyPKzHhNmlvigVF+BQ==
+X-Received: by 2002:a17:907:d504:b0:a2c:fe9d:c6b8 with SMTP id wb4-20020a170907d50400b00a2cfe9dc6b8mr3181843ejc.31.1705477399642;
+        Tue, 16 Jan 2024 23:43:19 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.215.66])
-        by smtp.gmail.com with ESMTPSA id y23-20020a170906559700b00a269357c2e7sm7426706ejp.36.2024.01.16.23.43.01
+        by smtp.gmail.com with ESMTPSA id y23-20020a170906559700b00a269357c2e7sm7426706ejp.36.2024.01.16.23.43.18
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Jan 2024 23:43:02 -0800 (PST)
-Message-ID: <a98f1927-53fe-420c-86d0-e91eeab0e9ab@linaro.org>
-Date: Wed, 17 Jan 2024 08:43:01 +0100
+        Tue, 16 Jan 2024 23:43:19 -0800 (PST)
+Message-ID: <3d4d8fc4-2b57-454e-a7f7-637309590cc3@linaro.org>
+Date: Wed, 17 Jan 2024 08:43:18 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: rockchip: Document rk809 support for
- rk817 audio codec
+Subject: Re: [PATCH v2 2/3] dt-bindings: rockchip: rk809 fix existing example
 Content-Language: en-US
 To: Tim Lunn <tim@feathertop.org>, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
@@ -77,7 +76,7 @@ Cc: linux-arm-kernel@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>,
  Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  Zhang Qing <zhangqing@rock-chips.com>, linux-kernel@vger.kernel.org
 References: <20240116132102.3272682-1-tim@feathertop.org>
- <20240116132102.3272682-2-tim@feathertop.org>
+ <20240116132102.3272682-3-tim@feathertop.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -123,10 +122,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240116132102.3272682-2-tim@feathertop.org>
+In-Reply-To: <20240116132102.3272682-3-tim@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240116_234305_054068_C115D80C 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20240116_234321_225293_2F187EC1 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,50 +143,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 16/01/2024 14:21, Tim Lunn wrote:
-> Rockchip RK809 shares the same audio codec as the rk817 mfd, it is also
-> using the same rk817_codec driver. However it is missing from the
-> bindings.
-> 
-> Update dt-binding documentation for rk809 to include the audio codec
-> properties. This fixes the following warning from dtb check:
-> 
-> pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks',
->    'clock-names', 'clocks', 'codec' do not match any of the regexes:
->    'pinctrl-[0-9]+'
+> Fix typo in the example specifying wrong compatible string for rk809.
+> Remove additional vccX-supply properties that dont exist on rk809.
 > 
 > Signed-off-by: Tim Lunn <tim@feathertop.org>
+> 
 > ---
 > 
-> (no changes since v1)
+> Changes in v2:
+> - Fix vcc-supply warning detected by dt_binding bot
 > 
->  .../bindings/mfd/rockchip,rk809.yaml          | 30 ++++++++++++++++++-
->  1 file changed, 29 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 > 
 > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> index 839c0521f1e5..bac2e751e2f2 100644
+> index bac2e751e2f2..9b9d670708ce 100644
 > --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
 > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
-> @@ -12,7 +12,7 @@ maintainers:
+> @@ -154,8 +154,8 @@ examples:
+>          #address-cells = <1>;
+>          #size-cells = <0>;
 >  
->  description: |
->    Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
-> -  that includes regulators, an RTC, and power button.
-> +  that includes regulators, an RTC, a power button, and an audio codec.
->  
->  properties:
->    compatible:
-> @@ -93,6 +93,34 @@ properties:
->          unevaluatedProperties: false
->      unevaluatedProperties: false
->  
-> +  clocks:
-> +    description:
-> +      The input clock for the audio codec.
+> -        rk808: pmic@1b {
+> -            compatible = "rockchip,rk808";
+> +        rk809: pmic@1b {
 
-Nothing improved here. Implement the feedback.
-
-Don't send the patchsets more than once per day, so reviewers can
-actually review it.
+Drop label.
 
 Best regards,
 Krzysztof
