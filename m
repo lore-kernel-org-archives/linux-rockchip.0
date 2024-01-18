@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA862C47DD3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jan 2024 18:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB4DC47DB7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jan 2024 19:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cyKhDjCU3CxH0IUJZKDDXyScr6PdX0eSZnZO8cKp3O8=; b=2Ld/BFK5IjdxuFoLhQuLPOJgTv
-	BWLYgrmEQgm/HzjsfxgUz9TJs+H0OYi7cBPa4OXKkmkxxbNrxbNegqaFnRYhWQm1lA0axFILyDoPx
-	5fYxH6K0Ljr0fVb66kr42QyItolZ1lEbjWywijpqoKQroOCiDZFlK2KXBBHskHTPkgSccYtaWPGEq
-	tVeEoomrRQRx1LShHsmJcPdfkrqsgnKilnlETdpJ2FqOdR9/FcBnZ2CRodDGalYLjh7k6cme5eRcL
-	xO3PORGVaTsVkIPKzCyENdeuB6RAVBPdHE0PTQZoUkNfDoL7eL3n35WV2GtSodZt+DvhQxG6pRXzb
-	sxD37ArQ==;
+	bh=dvhXsKlNb6jMwJtvwXT/GohBU/U3JE7FJC43mqgEPxU=; b=o5Xx6jDcI90rz5QMYjSfdV/JC+
+	RSEsfXLb1yIZccQJ4sijtLhTBMNWeBxPGqptbkfAIk5lNEkOWTHWxmZkZY3avk3fXLJKl5gSovzw3
+	aikygvqYybtXanVKeju+1Fi7hszx8FvMiWNH3acc2EEZy2jGJXgUgnx3RSrXqXNBctykWN8V1WyCV
+	fHNXV7D+LHdV44RhMTTnbe/rQo/IkQw2WfaQHRDk0H/Avn+b4Ub7wpg8tFqEqUBEsYJUAkVWbEiP0
+	EBj+u9EupUWl4oq3LpdrfhlfvTQBGWPG5qdYKUwpevMdI/gKhALmgb/vjY0ZzkK9197NG/hYCJ1KL
+	C2cZ5+1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQXRr-003Y3T-0b;
-	Thu, 18 Jan 2024 18:49:07 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rQXwJ-003baT-3C;
+	Thu, 18 Jan 2024 19:20:35 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rQXRn-003Y2k-0f;
-	Thu, 18 Jan 2024 18:49:05 +0000
+	id 1rQXwG-003bWw-16;
+	Thu, 18 Jan 2024 19:20:34 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1705603735;
+	t=1705605628;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/hihwF0J7BfIK6RvrjCa3XMzS4nEYJZcotMhLsDWzew=;
-	b=RF1atSkW9W7u05pqa5iEaev9NFGTGqziTJruMnSh+9Qs1daCAJVliDKQZlmee4KItbtvKn
-	BR7CQVW8wNXgtOLjtEMjCV7ZCPv/e7XXTyXc3Ijx5E84tAuhRahtXqMb76Oe7cBmCrZIps
-	5wDLXf8GlPpnTNT3w5fK9JEJDYRQWbB7JiHsPy+lHDWr81JF6AKjFwnaXXclZ/UcbPAqud
-	yjm8dR3/Fkv0RaZ4hUvcycXC6Hj7LFxQdMlqNwPpc0cAQ8wlKhzHFfgXMkCc6myZXO+6+U
-	HFOE46VYX/n0xWIZYI5w0IlzQMK3KmBemVjw5my1wTLUaxXM+Jvy7XpScmPylg==
-Date: Thu, 18 Jan 2024 19:48:52 +0100
+	bh=gbaiGyjUuFBv/B6T7BobR3rYeP5lnHdOhbgwwWsDHPQ=;
+	b=MlLRzmYXJVZsDtFuEV0oioMp21CqTzeOtr/1cvAC8nwzaJo3PJBFGxKJP6V9D1X+Q6aH5C
+	VPzeD+6Mq7jDIfDwMFNtVaM3YgMAZ0VtKD6Qt+HCbeeSNDtJm7nhxTHWtQEQAzXFkkKQz0
+	sTyAYS6j8Mdo9oqK71Lq577F1ddUvJARIIziRqEewiFWbO0JOusMWdjYuL9U/gJt8Mjpt5
+	UjDTL8FSyfFTeOAHOebs2rOlKSvOOW+pUqjbsx58e2gFyvv4OpQaenWdVCKIu4BBWu0Xic
+	fYs5xvr9jblTMMK1i2HePVXKr1N7s96dKCE+u5hjCBcXqlR8+OknFHipiCO//g==
+Date: Thu, 18 Jan 2024 20:20:28 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Alexey Charkov <alchark@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -49,23 +49,22 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  <cristian.ciocaltea@collabora.com>, Christopher Obbard
  <chris.obbard@collabora.com>, =?UTF-8?Q?Tam=C3=A1s_Sz=C5=B1cs?=
  <szucst@iit.uni-miskolc.hu>, Shreeya Patel <shreeya.patel@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, Chris Morgan
- <macromorgan@hotmail.com>, devicetree@vger.kernel.org,
+ Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, Chris
+ Morgan <macromorgan@hotmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable built-in thermal monitoring
- on rk3588
-In-Reply-To: <CABjd4Yw5wTLyK5OPw2S-ipPVCw7RTUeF2J0RgH-Vyis-ng8rTw@mail.gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: enable built-in thermal
+ monitoring on rk3588
+In-Reply-To: <20240109192608.5981-1-alchark@gmail.com>
 References: <20240106222357.23835-1-alchark@gmail.com>
- <e0302da12345e5539583b2c96d747592@manjaro.org>
- <CABjd4Yw5wTLyK5OPw2S-ipPVCw7RTUeF2J0RgH-Vyis-ng8rTw@mail.gmail.com>
-Message-ID: <d7f2f25071a4d7c72bd286b11836dce7@manjaro.org>
+ <20240109192608.5981-1-alchark@gmail.com>
+Message-ID: <121f6c6f65efcca3ad6dbe5264563561@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240118_104903_893292_CF6B2DA1 
-X-CRM114-Status: GOOD (  37.13  )
+X-CRM114-CacheID: sfid-20240118_112032_681857_14423276 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,129 +76,231 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0wMS0wOCAxNDo0MSwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4gSGVsbG8gRHJhZ2Fu
-LAoKSGVsbG8gQWxleGV5ISA6KQoKSSBhcG9sb2dpemUgZm9yIG15IGRlbGF5ZWQgcmVzcG9uc2Uu
-ICBJdCB0b29rIG1lIGFsbW9zdCBhIG1vbnRoIHRvCm5lYXJseSBmdWxseSByZWNvdmVyIGZyb20g
-c29tZSByZWFsbHkgbmFzdHkgZmx1IHRoYXQgZXZlbnR1YWxseSB3ZW50CmludG8gbXkgbHVuZ3Mu
-ICBJdCB3YXMgYXdmdWwgYW5kIEknbSBzdGlsbCBub3QgYmFjayB0byBteSAxMDAlLiA6KAoKPiBU
-aGFua3MgYSBsb3QgZm9yIHlvdXIgcmV2aWV3IGFuZCBjb21tZW50cyEgU29tZSByZWZsZWN0aW9u
-cyBiZWxvdy4KClRoYW5rIHlvdSBmb3IgeW91ciB3b3JrIGFuZCBmb3IgeW91ciBkZXRhaWxlZCBy
-ZXNwb25zZS4gIFBsZWFzZSBzZWUgbXkKY29tbWVudHMgYmVsb3csIHdoaWNoIGFwcGx5IHRvIHlv
-dXIgdjIgc3VibWlzc2lvbiBhcyBhIHdlbGwsIHRvIHdoaWNoCkknbGwgcmVzcG9uZCBzZXBhcmF0
-ZWx5IGEgYml0IGxhdGVyLgoKPiBPbiBTdW4sIEphbiA3LCAyMDI0IGF0IDI6NTTigK9BTSBEcmFn
-YW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4gd3JvdGU6Cj4+IE9uIDIwMjQtMDEtMDYgMjM6
-MjMsIEFsZXhleSBDaGFya292IHdyb3RlOgo+PiA+IEluY2x1ZGUgdGhlcm1hbCB6b25lcyBpbmZv
-cm1hdGlvbiBpbiBkZXZpY2UgdHJlZSBmb3IgcmszNTg4IHZhcmlhbnRzCj4+ID4gYW5kIGVuYWJs
-ZSB0aGUgYnVpbHQtaW4gdGhlcm1hbCBzZW5zaW5nIEFEQyBvbiBSQURYQSBSb2NrIDVCCj4+ID4K
-Pj4gPiBTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkgQ2hhcmtvdiA8YWxjaGFya0BnbWFpbC5jb20+Cj4+
-ID4gLS0tCj4+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-NTg4cy5kdHNpCj4+ID4gYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMuZHRz
-aQo+PiA+IGluZGV4IDhhYTA0OTlmOWIwMy4uODIzNTk5MWUzMTEyIDEwMDY0NAo+PiA+IC0tLSBh
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpCj4+ID4gKysrIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kKPj4gPiBAQCAtMTAsNiArMTAs
-NyBAQAo+PiA+ICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcmVzZXQvcm9ja2NoaXAscmszNTg4LWNy
-dS5oPgo+PiA+ICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcGh5L3BoeS5oPgo+PiA+ICAjaW5jbHVk
-ZSA8ZHQtYmluZGluZ3MvYXRhL2FoY2kuaD4KPj4gPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Ro
-ZXJtYWwvdGhlcm1hbC5oPgo+PiA+Cj4+ID4gIC8gewo+PiA+ICAgICAgIGNvbXBhdGlibGUgPSAi
-cm9ja2NoaXAscmszNTg4IjsKPj4gPiBAQCAtMjExMiw2ICsyMTEzLDE0OCBAQCB0c2FkYzogdHNh
-ZGNAZmVjMDAwMDAgewo+PiA+ICAgICAgICAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsKPj4g
-PiAgICAgICB9Owo+PiA+Cj4+ID4gKyAgICAgdGhlcm1hbF96b25lczogdGhlcm1hbC16b25lcyB7
-Cj4+ID4gKyAgICAgICAgICAgICBzb2NfdGhlcm1hbDogc29jLXRoZXJtYWwgewo+PiAKPj4gSXQg
-c2hvdWxkIGJlIGJldHRlciB0byBuYW1lIGl0IGNwdV90aGVybWFsIGluc3RlYWQuICBJbiB0aGUg
-ZW5kLCAKPj4gdGhhdCdzCj4+IHdoYXQgaXQgaXMuCj4gCj4gVGhlIFRSTSBkb2N1bWVudCBzYXlz
-IHRoZSBmaXJzdCBUU0FEQyBjaGFubmVsICh0byB3aGljaCB0aGlzIHNlY3Rpb24KPiBhcHBsaWVz
-KSBtZWFzdXJlcyB0aGUgdGVtcGVyYXR1cmUgbmVhciB0aGUgY2VudGVyIG9mIHRoZSBTb0MgZGll
-LAo+IHdoaWNoIGltcGxpZXMgbm90IG9ubHkgdGhlIENQVSBidXQgYWxzbyB0aGUgR1BVIGF0IGxl
-YXN0LiBSQURYQSdzCj4ga2VybmVsIGZvciBSb2NrIDVCIGFsc28gaGFzIEdQVSBwYXNzaXZlIGNv
-b2xpbmcgYXMgb25lIG9mIHRoZSBjb29saW5nCj4gbWFwcyB1bmRlciB0aGlzIG5vZGUgKG5vdCBp
-bmNsdWRlZCBoZXJlLCBhcyB3ZSBkb24ndCBoYXZlIHRoZSBHUFUgbm9kZQo+IGluIC5kdHNpIGp1
-c3QgeWV0KS4gU28gcGVyaGFwcyBuYW1pbmcgdGhpcyBvbmUgY3B1X3RoZXJtYWwgY291bGQgYmUK
-PiBtaXNsZWFkaW5nPwoKQWgsIEkgc2VlIG5vdywgdGhhbmtzIGZvciByZW1pbmRpbmc7ICBpdCdz
-IGFsbCBkZXNjcmliZWQgb24gcGFnZSAxLDM3MgpvZiB0aGUgZmlyc3QgcGFydCBvZiB0aGUgUksz
-NTg4IFRSTSB2MS4wLgoKSGF2aW5nIHRoYXQgaW4gbWluZCwgSSdkIHN1Z2dlc3QgdGhhdCB3ZSBl
-bmQgdXAgbmFtaW5nIGl0IApwYWNrYWdlX3RoZXJtYWwuClRoZSB0ZW1wZXJhdHVyZSBuZWFyIHRo
-ZSBjZW50ZXIgb2YgdGhlIGNoaXAgaXMgdXN1YWxseSBjb25zaWRlcmVkIHRvIGJlCnRoZSBvdmVy
-YWxsIHBhY2thZ2UgdGVtcGVyYXR1cmU7ICBmb3IgZXhhbXBsZSwgdGhhdCdzIGhvdyB0aGUgCnVz
-ZXItZmFjaW5nCkNQVSB0ZW1wZXJhdHVyZXMgYXJlIG1lYXN1cmVkIGluIHRoZSB4ODZfNjQgd29y
-bGQuCgo+PiA+ICsgICAgICAgICAgICAgICAgICAgICB0cmlwcyB7Cj4+ID4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgdGhyZXNob2xkOiB0cmlwLXBvaW50LTAgewo+PiAKPj4gSXQgc2hv
-dWxkIGJlIGJldHRlciB0byBuYW1lIGl0IGNwdV9hbGVydDAgaW5zdGVhZCwgYmVjYXVzZSB0aGF0
-J3Mgd2hhdAo+PiBvdGhlciBuZXdlciBkdHNpIGZpbGVzIGFscmVhZHkgdXNlLgo+IAo+IFJlZmxl
-Y3Rpbmcgb24geW91ciBjb21tZW50cyBoZXJlIGFuZCBiZWxvdywgSSdtIHRoaW5raW5nIHRoYXQg
-bWF5YmUgaXQKPiB3b3VsZCBiZSBiZXR0ZXIgdG8gZGVmaW5lIG9ubHkgdGhlIGNyaXRpY2FsIHRy
-aXAgcG9pbnQgZm9yIHRoZSBTb0MKPiBvdmVyYWxsLCBhbmQgdGhlbiBoYXZlIGFsZXJ0cyBhbG9u
-ZyB3aXRoIHRoZSByZXNwZWN0aXZlIGNvb2xpbmcgbWFwcwo+IHNlcGFyYXRlbHkgZm9yIEE3Ni0w
-LDEsIEE3Ni0yLDMsIEE1NS0wLDEsMiwzPyBBZnRlciBhbGwsIGdpdmVuIHRoYXQgd2UKPiBoYXZl
-IG1vcmUgZ3JhbnVsYXIgdGVtcGVyYXR1cmUgbWVhc3VyZW1lbnQgaGVyZSB0aGFuIGluIHByZXZp
-b3VzIFJLCj4gY2hpcHNldHMgaXQgbWlnaHQgYmUgYmV0dGVyIHRvIG9ubHkgdGhyb3R0bGUgdGhl
-ICJvZmZlbmRpbmciIGNvcmVzLAo+IG5vdCB0aGUgZnVsbCBwYWNrYWdlLgo+IAo+IFdoYXQgZG8g
-eW91IHRoaW5rPwo+IAo+IERvd25zdHJlYW0gRFQgZG9lc24ndCBmb2xsb3cgdGhpcyBhcHByb2Fj
-aCB0aG91Z2gsIHNvIG1heWJlIHRoZXJlJ3MKPiBzb21ldGhpbmcgSSdtIG1pc3NpbmcgaGVyZS4K
-CkkgYWdyZWUsIGl0J3MgYmV0dGVyIHRvIGZ1bGx5IHV0aWxpemUgdGhlIGhpZ2hlciBtZWFzdXJl
-bWVudCBncmFudWxhcml0eQptYWRlIHBvc3NpYmxlIGJ5IGhhdmluZyBtdWx0aXBsZSB0ZW1wZXJh
-dHVyZSBzZW5zb3JzIGF2YWlsYWJsZS4KCkkgYWxzbyBhZ3JlZSB0aGF0IHdlIHNob3VsZCBoYXZl
-IG9ubHkgdGhlIGNyaXRpY2FsIHRyaXAgZGVmaW5lZCBmb3IgdGhlCnBhY2thZ2UtbGV2ZWwgdGVt
-cGVyYXR1cmUgc2Vuc29yLiAgTGV0J3MgaGF2ZSB0aGUgc2VwYXJhdGUgdGVtcGVyYXR1cmUKbWVh
-c3VyZW1lbnRzIGZvciB0aGUgQ1BVIChzdWIpY2x1c3RlcnMgZG8gdGhlIHRoZXJtYWwgdGhyb3R0
-bGluZywgYW5kCmxldCdzIGtlZXAgdGhlIHBhY2thZ2UtbGV2ZWwgbWVhc3VyZW1lbnQgZm9yIHRo
-ZSBjcml0aWNhbCBzaHV0ZG93bnMgCm9ubHkuCklJUkMsIHNvbWUgTWVkaWFUZWsgU29DIGR0c2kg
-YWxyZWFkeSBkb2VzIGV4YWN0bHkgdGhhdC4KCk9mIGNvdXJzZSwgdGhlcmUgYXJlIG5vIHJlYXNv
-bnMgbm90IHRvIGhhdmUgdGhlIGNyaXRpY2FsIHRyaXBzIGRlZmluZWQKZm9yIHRoZSBDUFUgKHN1
-YiljbHVzdGVycyBhcyB3ZWxsLgoKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHRlbXBlcmF0dXJlID0gPDc1MDAwPjsKPj4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIGh5c3RlcmVzaXMgPSA8MjAwMD47Cj4+ID4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gInBhc3NpdmUiOwo+PiA+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIH07Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-dGFyZ2V0OiB0cmlwLXBvaW50LTEgewo+PiAKPj4gSXQgc2hvdWxkIGJlIGJldHRlciB0byBuYW1l
-IGl0IGNwdV9hbGVydDEgaW5zdGVhZCwgYmVjYXVzZSB0aGF0J3Mgd2hhdAo+PiBvdGhlciBuZXdl
-ciBkdHNpIGZpbGVzIGFscmVhZHkgdXNlLgo+PiAKPj4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHRlbXBlcmF0dXJlID0gPDg1MDAwPjsKPj4gPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGh5c3RlcmVzaXMgPSA8MjAwMD47Cj4+ID4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gInBhc3NpdmUiOwo+PiA+ICsg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgc29jX2NyaXQ6IHNvYy1jcml0IHsKPj4gCj4+IEl0IHNob3VsZCBiZSBiZXR0ZXIg
-dG8gbmFtZSBpdCBjcHVfY3JpdCBpbnN0ZWFkLCBiZWNhdXNlIHRoYXQncyB3aGF0Cj4+IG90aGVy
-IG5ld2VyIGR0c2kgZmlsZXMgYWxyZWFkeSB1c2UuCj4gCj4gU2VlbXMgdG8gbWUgdGhhdCBpZiBJ
-IGRlZmluZSBzZXBhcmF0ZSB0cmlwcyBmb3IgdGhlIHRocmVlIGdyb3VwcyBvZgo+IENQVSBjb3Jl
-cyBhcyBtZW50aW9uZWQgYWJvdmUgdGhpcyB3b3VsZCBiZXR0ZXIgc3RheSBhcyBzb2NfY3JpdCwg
-YXMgaXQKPiBhcHBsaWVzIHRvIHRoZSB3aG9sZSBkaWUgcmF0aGVyIHRoYW4gdGhlIENQVSBjbHVz
-dGVyIGFsb25lLiBUaGVuCj4gJ3RocmVzaG9sZCcgYW5kICd0YXJnZXQnIHdpbGwgZ28gYWx0b2dl
-dGhlciwgYW5kIEknbGwgaGF2ZSBzZXBhcmF0ZQo+ICpfYWxlcnQwIGFuZCAqX2FsZXJ0MSBwZXIg
-Q1BVIGdyb3VwLgoKSXQgc2hvdWxkIHBlcmhhcHMgYmUgdGhlIGJlc3QgdG8gaGF2ZSAicGFzc2l2
-ZSIsICJob3QiIGFuZCAiY3JpdGljYWwiCnRyaXBzIGRlZmluZWQgZm9yIGFsbCB0aHJlZSBDUFUg
-Z3JvdXBzLyhzdWIpY2x1c3RlcnMsIHNlcGFyYXRlbHkgb2YKY291cnNlLCB0byBoYXZlIGV2ZW4g
-aGlnaGVyIGdyYW51bGFyaXR5IHdoZW4gaXQgY29tZXMgdG8gdGhlIHJlc3VsdGluZwp0aGVybWFs
-IHRocm90dGxpbmcuCgo+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-aHlzdGVyZXNpcyA9IDwyMDAwPjsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHR5cGUgPSAiY3JpdGljYWwiOwo+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIH07Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgIH07Cj4+ID4gKyAgICAgICAgICAgICAg
-ICAgICAgIGNvb2xpbmctbWFwcyB7Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-bWFwMCB7Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlwID0g
-PCZ0YXJnZXQ+Owo+PiAKPj4gU2hvdWxkbid0ICZ0aHJlc2hvbGQgKGkuZS4gJmNwdV9hbGVydDAp
-IGJlIHJlZmVyZW5jZWQgaGVyZSBpbnN0ZWFkPwo+PiAKPj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGNvb2xpbmctZGV2aWNlID0gPCZjcHVfbDAgVEhFUk1BTF9OT19M
-SU1JVCBUSEVSTUFMX05PX0xJTUlUPjsKPj4gCj4+IFNob3VsZG4ndCBhbGwgYmlnIENQVSBjb3Jl
-cyBiZSBsaXN0ZWQgaGVyZSBpbnN0ZWFkPwo+IAo+IEkgZ3Vlc3MgaWYgYSBzZXBhcmF0ZSB0cmlw
-IHBvaW50IGlzIGRlZmluZWQgZm9yIGNwdV9sMCwxLDIsMyB0aGVuIGl0Cj4gd291bGQgbmVlZCB0
-byB0aHJvdHRsZSBhdCA3NUMsIGFuZCB0aGVuIGNwdV9iMCwxIGFuZCBjcHVfYjIsMyBhdCA4NUMK
-PiBlYWNoLiBMb2dpYyBiZWluZyB0aGF0IGlmIGEgc2Vuc29yIHN0YWNrZWQgaW4gdGhlIG1pZGRs
-ZSBvZiBhIGdyb3VwIG9mCj4gZm91ciBjb3JlcyBzaG93cyA3NUMgdGhlbiBvbmUgb2YgdGhlIGZv
-dXIgbWlnaHQgd2VsbCBiZSBpbiBhYm5vcm1hbAo+IHRlbXBlcmF0dXJlIHJhbmdlIGFscmVhZHkg
-KDg1KyksIHdoaWxlIHNlbnNvcnMgbmV4dCB0byBvbmx5IHR3byBiaWcKPiBjb3JlcyBlYWNoIHdp
-bGwgbGlrZWx5IHNob3cgdGVtcGVyYXR1cmVzIHNpbWlsYXIgdG8gdGhlIGFjdHVhbCBjb3JlCj4g
-dGVtcGVyYXR1cmUuCgpJIHRoaW5rIHdlIHNob3VsZG4ndCBtYWtlIGFueSBhc3N1bXB0aW9ucyBv
-ZiBob3cgdGhlIENQVSBjb3JlcyBoZWF0IHVwCmFuZCBhZmZlY3QgZWFjaCBvdGhlciwgYmVjYXVz
-ZSB3ZSBkb24ndCByZWFsbHkga25vdyB0aGUgcmVxdWlyZWQgCmRldGFpbHMuCkluc3RlYWQsIHdl
-IHNob3VsZCBzaW1wbHkgZGVmaW5lIHRoZSByZWFzb25hYmxlIHZhbHVlcyBmb3IgdGhlIAoicGFz
-c2l2ZSIsCiJob3QiIGFuZCAiY3JpdGljYWwiIHRyaXBzLCBhbmQgbGVhdmUgdGhlIHJlc3QgdG8g
-dGhlIHN0YW5kYXJkIHRoZXJtYWwKdGhyb3R0bGluZyBsb2dpYy4gIEkgaG9wZSB5b3UgYWdyZWUu
-CgpJbiB0aGUgZW5kLCB0aGF0J3Mgd2h5IHdlIGhhdmUgc2VwYXJhdGUgdGhlcm1hbCBzZW5zb3Jz
-IGF2YWlsYWJsZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On 2024-01-09 20:19, Alexey Charkov wrote:
+> Include thermal zones information in device tree for rk3588 variants
+> and enable the built-in thermal sensing ADC on RADXA Rock 5B
+> 
+> Signed-off-by: Alexey Charkov <alchark@gmail.com>
+> ---
+> Changes in v2:
+>  - Dropped redundant comments
+>  - Included all CPU cores in cooling maps
+>  - Split cooling maps into more granular ones utilizing TSADC
+>    channels 1-3 which measure temperature by separate CPU clusters
+>    instead of channel 0 which measures the center of the SoC die
+> ---
+>  .../boot/dts/rockchip/rk3588-rock-5b.dts      |   4 +
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 151 ++++++++++++++++++
+>  2 files changed, 155 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index a5a104131403..f9d540000de3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -772,3 +772,7 @@ &usb_host1_ehci {
+>  &usb_host1_ohci {
+>  	status = "okay";
+>  };
+> +
+> +&tsadc {
+> +	status = "okay";
+> +};
+
+I keep forgetting to note that enabling it for the Rock 5B should
+be performed in a separate patch.
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> index 8aa0499f9b03..8d54998d0ecc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> @@ -10,6 +10,7 @@
+>  #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+>  #include <dt-bindings/phy/phy.h>
+>  #include <dt-bindings/ata/ahci.h>
+> +#include <dt-bindings/thermal/thermal.h>
+> 
+>  / {
+>  	compatible = "rockchip,rk3588";
+> @@ -2112,6 +2113,156 @@ tsadc: tsadc@fec00000 {
+>  		status = "disabled";
+>  	};
+> 
+> +	thermal_zones: thermal-zones {
+> +		/* sensor near the center of the whole chip */
+> +		soc_thermal: soc-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			sustainable-power = <2100>;
+> +			thermal-sensors = <&tsadc 0>;
+> +
+> +			trips {
+> +				soc_crit: soc-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+
+As already noted in my previous response, perhaps it whould be
+better to name it package_thermal instead.  That way, it should
+be more self descriptive.
+
+> +		/* sensor between A76 cores 0 and 1 */
+> +		bigcore0_thermal: bigcore0-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 1>;
+> +
+> +			trips {
+> +				bigcore0_alert: bigcore0-alert {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +				bigcore0_crit: bigcore0-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+
+As already noted in my previous message, perhaps another trip,
+of the "hot" type, should be added here.
+
+> +			cooling-maps {
+> +				map0 {
+> +					trip = <&bigcore0_alert>;
+> +					cooling-device =
+> +						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> +						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					contribution = <1024>;
+> +				};
+> +			};
+> +		};
+> +
+> +		/* sensor between A76 cores 2 and 3 */
+> +		bigcore2_thermal: bigcore2-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 2>;
+> +
+> +			trips {
+> +				bigcore2_alert: bigcore2-alert {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +				bigcore2_crit: bigcore2-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+
+The same suggestion about one more "hot" trip applies here as well.
+
+> +			cooling-maps {
+> +				map1 {
+> +					trip = <&bigcore2_alert>;
+> +					cooling-device =
+> +						<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> +						<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					contribution = <1024>;
+> +				};
+> +			};
+> +		};
+> +
+> +		/* sensor between the four A55 cores */
+> +		little_core_thermal: littlecore-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 3>;
+> +
+> +			trips {
+> +				littlecore_alert: littlecore-alert {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +				littlecore_crit: littlecore-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+
+The same suggestion about one more "hot" trip applies here as well.
+
+> +			cooling-maps {
+> +				map2 {
+> +					trip = <&littlecore_alert>;
+> +					cooling-device =
+> +						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> +						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> +						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> +						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					contribution = <1024>;
+> +				};
+> +			};
+> +		};
+> +
+> +		/* sensor near the PD_CENTER power domain */
+> +		center_thermal: center-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 4>;
+> +
+> +			trips {
+> +				center_crit: center-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+> +
+> +		gpu_thermal: gpu-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 5>;
+> +
+> +			trips {
+> +				gpu_crit: gpu-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+> +
+> +		npu_thermal: npu-thermal {
+> +			polling-delay-passive = <20>;
+> +			polling-delay = <1000>;
+> +			thermal-sensors = <&tsadc 6>;
+> +
+> +			trips {
+> +				npu_crit: npu-crit {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>  	saradc: adc@fec10000 {
+>  		compatible = "rockchip,rk3588-saradc";
+>  		reg = <0x0 0xfec10000 0x0 0x10000>;
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
