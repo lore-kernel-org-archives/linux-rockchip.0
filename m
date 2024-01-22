@@ -4,130 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F819C4725D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 11:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61BDC4725D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 12:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YAoRXtk+ljx505QdM2dQnEp0XQLDuGRQX62mZSpDYig=; b=RTYt2rYbOUKA54XYjnWH/uTkc1
-	GhxNr+1Qxp/ZxcdBPQxfokgSZWgGRyoIBwPH/yMyS+z49dYC4XThRUrgMspJG5Ycv3gWf4NAdAN7L
-	IHg34emkYxlLLolgrxAW8XRT/ES6XIZ097lL/pk7QCKsuntTIrpsiE3w2i7STwXn/0lWcEESeBfZ2
-	YwD99NQscOR+TR6HBupLW6STeY3OvnihdyRLW6Nn+NkB2abgGm1iZSeoLYgjvFMNCg3hj/o8kHF62
-	+qtaiZKZnS4T+EJN3/d7ja0LWjZIa8SRUP9PcO+Z1zftUvxAP7cRemrgHkXquGEE9YK6HJz8doYiZ
-	wQIRbxGw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VuA8OIYBbtXlPnv3sNcMsbDGDcaDzfSv6vfMv7DU6l8=; b=l3jCCXRyIgWpEy
+	jLEVu2Qy2POI1wAmJHy7y+TQEAmoq41MpYulHpBGi4oCVIbKAYR4IUqFYFZpLt4Qv8PPJHUQRM7eO
+	SYbsmcF9sDlugCnIrhd8Q6QDWcGAmeM5spAtvMt9aMOpkZmgvY+/jOqDoUDesY1Wl5o1EDH/urGCV
+	7I+0l5Fi2aEyB8iG0c6BdZAdiMmSyJ4YtT4ur0a+d4xusCNEiMZUClhhwg2x8VjJQtZq5ScUk4C1K
+	V90ZEz36YekARE6c3XM9S0ZjVcKFxaYC+CDS/65u4w5TiCUnB/Qw0ThGr+rKrxwjhUHEEKj8tCd52
+	fJ0fCtFtmVzLrrNHTpGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRsQ8-00BkKX-0v;
-	Mon, 22 Jan 2024 11:24:52 +0000
-Received: from mail-db8eur05on20610.outbound.protection.outlook.com ([2a01:111:f400:7e1a::610] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1rRtCH-00C317-0l;
+	Mon, 22 Jan 2024 12:14:37 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRsQ4-00BkIQ-28;
-	Mon, 22 Jan 2024 11:24:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eP5sHE+KdpFlYRLlSdAV2owC1uiRDkzIakLgdQ9SqQtt5cqJPYmFr/2SYLQLXRpLmdznDES+VuOltuEF1a68QoRZ6FmJywJ1Vh65rs34GlCne7Joft9wlDb9JXtwxWYPxrM9Fd6DNqouDz19Gy5Pijyi82kcCbhtwuRvU25f+bs3n6pH0VQaCvtcpScCkDZ6aFS1Jm3bn/58LdqBHwE3mG5G8pKsLFSUrN9rIKYZvMKqm2woOhWRz9EvFDXKbuAR06pLnHFl5uJytxaPg9oQCEn5vf+/njlFdxS2zjXShF80fPYr1RIes4VQykVxz0IrXb3lK1yW9VqldOrggj7ASQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VBM07z3+8XQBE4Y2lor65BnTO+d7pu+YJ25Ku5+YIXY=;
- b=kx+V9oRemKtgt64DcUKpUwaMlDIX+VnCd6fysNM1a1PFsn+Cdmmmt2Boph2fV65jHnFUZSVlAlddszVYPN0GVYUn1+ynffTWQA93HG19hJfGLVrecnvBSXWXhFSwYniuz7Yl650mhTwgGVoMKutxZmwHBtjw4B/iQEjxnln63iyeSo3wgnx/jBK6uwmbnnAIHkAaXaMBUWW6TkARn81BkGo/Hs/B/2x5BZJhDj2KOPw4Xq4MNGJXm/akSKm4xFHYL1ZnhOxKogrFrgd14QWmVDfRDlLcf891MDApQBw1WVJcSqyYBeA+rBg84fqj4SCdl8yhahju+hjAVJremXD96Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VBM07z3+8XQBE4Y2lor65BnTO+d7pu+YJ25Ku5+YIXY=;
- b=IsINlVz0mlWZ5OTbRgcD5aUlhdqJYlGe1fUT2GnPynrk19MhE6H8TIndgbIujS8zvDpX5I9oy0/09PIHZ2gkIxayQNFVxK3/F/rMp19uaJoLuEN1i8F1JmoHpqczWxOFRP8pdMX3bkNAHwZ7/flagzZAK3CB1z5PYKF+O4F+Q/0t0woCU0hTWi7l5o7xbUYuYq2FeJIbIdkFG0hFr/f836us/QnNDqkXM7AadHnGIKDi8CV86p8OWITKo/PdEaJdkE+40Wp/nvmE6JxEwSpXFn2v3X3UZXlqPjlKg5FVkA1PK3+tKEym29ZB+R+DrXzGaGUVWsqh8m3HHCdlRcNUYw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
- by DBBPR04MB7545.eurprd04.prod.outlook.com (2603:10a6:10:200::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.24; Mon, 22 Jan
- 2024 11:24:40 +0000
-Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
- ([fe80::9ee0:71d6:cd29:289a]) by DU2PR04MB8536.eurprd04.prod.outlook.com
- ([fe80::9ee0:71d6:cd29:289a%7]) with mapi id 15.20.7202.031; Mon, 22 Jan 2024
- 11:24:39 +0000
-Message-ID: <a7884548-3b8c-4bec-ab79-543dd3521c35@theobroma-systems.com>
-Date: Mon, 22 Jan 2024 12:24:38 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: set num-cs property for spi on px30
-Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20240119101656.965744-1-heiko@sntech.de>
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-In-Reply-To: <20240119101656.965744-1-heiko@sntech.de>
-X-ClientProxiedBy: FR4P281CA0285.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:e6::19) To DU2PR04MB8536.eurprd04.prod.outlook.com
- (2603:10a6:10:2d7::10)
+	id 1rRtCE-00C2yq-0L
+	for linux-rockchip@lists.infradead.org;
+	Mon, 22 Jan 2024 12:14:36 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rRtBt-0001Ez-7i; Mon, 22 Jan 2024 13:14:13 +0100
+Received: from [2a0a:edc0:2:b01:1d::c0] (helo=ptx.whiteo.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rRtBp-001al3-I5; Mon, 22 Jan 2024 13:14:09 +0100
+Received: from sha by ptx.whiteo.stw.pengutronix.de with local (Exim 4.92)
+	(envelope-from <sha@pengutronix.de>)
+	id 1rRtBp-001Bwe-En; Mon, 22 Jan 2024 13:14:09 +0100
+Date: Mon, 22 Jan 2024 13:14:09 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Algea Cao <algea.cao@rock-chips.com>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 3/3] phy: rockchip: Add Samsung HDMI/DP Combo PHY driver
+Message-ID: <20240122121409.GW4700@pengutronix.de>
+References: <20240119193806.1030214-1-cristian.ciocaltea@collabora.com>
+ <20240119193806.1030214-4-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|DBBPR04MB7545:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5c865323-dc9a-4914-b88d-08dc1b3cb908
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Q2mukS89vn9HFF39Ge01cHLDZNjg9cN/WkY2tFkE6sAHeqBR6dtHI0/+20vkuv25tJhQKOktbSWrW6Hld5kUG2C3Bv6C11J9j9K9prHahZR7vvn8lHuaz5dn3eu8117xQujdLpauqiILzurlIT/4sd49hANF0ShHJO30/6c313S4RzZVpBYWumIwqiwoPZhZBQ0vCn8H54PwasO/b1wwEzn/tQDBqN1JVe/ytS4bZRyyMy7zBJCv9fyL5SV4s6LW0z3ZfiyKrh+VissGLz7kESHNlnQr+vWuOjNFDEIvJi3VRDWgpwVbsU5JnqY4coLyAGgK5KZiRnyQu25k6khfvrPloCA4EV/DJbq4Jk0qSxYOraX5SmdVmTlAihFCu0LM0t5tkEOZ1KPrmqqAKbss4DIGCqNevt5ewIs/UPM7Dqbi6k5f+k7pPDtNL5cIVPJi3lEwtSC0Xl0qKzkbUojkA3ZuVdTKeaQ9jtxSIHimL9q2Cn+gDVb0YySMLFz7jydiUa2MyOQkU2gQ8IZ9BbpzRuCaie8EzsXf+cwYWKXKgQKa6XvxoLNGxspoY8w/i+IjzC5HdZfjQRkMTUiimpXqrxgVlJ/YtGVgAW4xkg3mGrtdWd31/qJPAuLKTHV/nXOpXmX41UrFNeyOyS+C9EN3CA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(136003)(39850400004)(396003)(376002)(346002)(230922051799003)(451199024)(186009)(1800799012)(64100799003)(66476007)(66556008)(6512007)(6506007)(478600001)(66946007)(8676002)(8936002)(6486002)(316002)(6916009)(2616005)(26005)(107886003)(53546011)(4326008)(5660300002)(4744005)(2906002)(44832011)(41300700001)(36756003)(86362001)(38100700002)(31686004)(31696002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?alAySmIwTHZBeTdXL205aTljY2ZXblRrN0llUXlla1o4OU1lSHplenVzMmpI?=
- =?utf-8?B?VzRDaDBBemxZdHpuYUl2T1VmcXhwU0NJcGVTVU95L0tZSDZyd3FlM2FFYTRn?=
- =?utf-8?B?aEJRK2xIZHMzbmhPWWcyb1FpOXJXbGV0Zmh1eUVBZHNiMHVYYmxuTXVnOUtr?=
- =?utf-8?B?dVlRVUFrU2g1MDg3VmZCQmpTbU1FYW1WQWllS2loMzJUY2cxVWEweVpoTFRk?=
- =?utf-8?B?RCtsbUYvd1VTSCtWLy8wODRPRTNzcVpGc01WaUJwaGhMWThnSi9uaXNpM2xN?=
- =?utf-8?B?eCtMRTd0TEIwME1QMUtGNU10REdCNGwwN0VNblBFb0lsZUxRTlp0MVVBRE9O?=
- =?utf-8?B?VlhDZE54UU9mSGpPRFk2OC9uZ1hwbVhIc2pxb0JpMWxXMlpLdDZ0L0NTM1J1?=
- =?utf-8?B?cEFJVlZVN0lGcWVMdjhNOGhueVFvMUtiU1BkSDlVSGVHNmhoWjBIZ1RocUJh?=
- =?utf-8?B?UGVqQmFOck4vRXN2SUVVL3JjSUM3bWpnbG43VEVuQW1mSlFqRXFsYXNrWTV0?=
- =?utf-8?B?M2t6dllCNXowNG1Bdjg0VlJGa3IxTFV0TW51aDh6OXUvM2VSK0RKM3RtODlm?=
- =?utf-8?B?UklCY2FYc0thcFk5eiswZitNSjRaVmRTYmNuRmtKYmZFUjZRKy9JOEFHbXp0?=
- =?utf-8?B?dmhoQy8vaTd3YkFHSUluSENJY2xJMjEzc0xhUUI5VEZnYlZvVkR5bEM3b1lv?=
- =?utf-8?B?aGFVZWtTbmtHZ2o4a2hUOUo3SFlVUnRMYiswbHdVMVQrdGRrQmQ0Qmx1NkZJ?=
- =?utf-8?B?RnZxdzJuOFpZOGMvUDJaTW9SbW5SQjdvR1NFOCt2TnkrWG50ZWxWRnRzLzJQ?=
- =?utf-8?B?bzZ4ZjIxd1ZUUGgzNDZLbDRYbUtVZXJyTTFvN09sQVZiYUdFaDlsRlZrVysx?=
- =?utf-8?B?blZsUWZ5WnJTWUcvTkh5OWlSZzVTRUJ5S0hxWTB5S3ZZTXFUK0RoRm9NYzBx?=
- =?utf-8?B?MUxiOGxGenQrQzV1NUsrWmRlaUw1eWJFQWNGMVl0TEdFUzk0VHltMnFCZzcy?=
- =?utf-8?B?RkpwSjV5U205VUluZWFjVlU4RXE0ZW1ybjZERDhFQWhlZStCem1oMDVBdTdw?=
- =?utf-8?B?NmcwSjFjUGE3T0xZQVA1UW1vbTRqQi9Bakg2L2E5RzdpcXhMa0NHUC9kMjNJ?=
- =?utf-8?B?RHJEdVpRdVFUZVlZcDI2WGRGZll1NFRYSlVVQVBSc2hyRlVKZlJpajRrdWw4?=
- =?utf-8?B?aWNpU3NUNXVUUGdmb2JUeGc4RkR0cTFTSlVXUWZuS2JJRTJiVjlVaFdGRjJC?=
- =?utf-8?B?OElLekh1eFdXWWJtQTYyVWpXQTN6RmtTZGQ5eGVpZEhPc0cybjhCalh1NTha?=
- =?utf-8?B?bDVGdlc5UUVnTTZyMnE2WlVUdWFmMzZyUXRtZ1VZOEJVZ2w0VVNBU1VQci9v?=
- =?utf-8?B?U0NRMXYzbXdxb1BVSGpRZk5FYVVtdGFWVS9nclhyZG8yNDdXbE8wYU1LVFlI?=
- =?utf-8?B?ZE9tNk9zbGE2L0d6TllxVng0S0ZhUVdrdFl0dDRZQWk4TFZlTUllUk00Yzcv?=
- =?utf-8?B?cVcxOUd0cWt2UmVEZWFpeWRjcDFaWnBsaVZFalRiVGtrRWl3c2h5UTFEY085?=
- =?utf-8?B?YU9Ob2o1T000NVdrcENoYVBlTytTQUQrTmJjUm94Q0FsN1hSUHFjS01SaWE1?=
- =?utf-8?B?cHpzdjhrRHo4MGdLMUF1RGZrNkRieW9UOXRNd082alZucVlOU1BHVWJJMllt?=
- =?utf-8?B?bEFPTC9VSlpqMzE0WWRXRVhGSXpMVjdkT3RjeDJwYkJJaGVBTVdyOCtxZVZz?=
- =?utf-8?B?d1BOTjVFZ3duKzdpT25oNkM0WFlYVW5lQ3A4K0IxK3Jtc3gxbHh0MUFtV0RD?=
- =?utf-8?B?dFBXTlVJVzdzVXQzTFhDWE4xYXlGblR0bkFVYm96SjVaT2lXWmprV0NtL21r?=
- =?utf-8?B?YXJPcUJtenl1NjB6MFB1enR0RmNUMUN1V2ZucnhqSWg3NURWeGhmV2RYUUxz?=
- =?utf-8?B?Y3hyUWFLY0NlZmhuSS9pYzBFb0dlWE5GRTBzS3E5MkxaNnV0aTdXRjFQcGg5?=
- =?utf-8?B?dWEwT0xxTnk0RWNwTkJGWnVWQWg3M1dDVi84MmZvMGFkOTFUWVVkNkhmckJM?=
- =?utf-8?B?R3dtYXFSZGt1MEVMaVh5bWVxb1cvSHJSbFJmeEE1M2ZpNXYyTVFOdjRGMmdl?=
- =?utf-8?B?MVpScWVER0RwcXZxQ1ZyaXkzRmVSeG9aS3orYklJNUdnN1l5VlZnQmpITWFs?=
- =?utf-8?Q?wHMRZ6zPh79g5LMeIezYoMs=3D?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5c865323-dc9a-4914-b88d-08dc1b3cb908
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jan 2024 11:24:39.8853
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9QmEDLIdJTT+QyD2/6npVVDNKBXY4XiXX8aPFtOU1lXZWgGT49Myk2+wvGzXRTUUJxGEdFHGFFgg7KbetEfK+0PLMQ+L+KzY8rUBeuChiWL/C0em/ycGq0bqs1lUQBlr
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7545
+Content-Disposition: inline
+In-Reply-To: <20240119193806.1030214-4-cristian.ciocaltea@collabora.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_032448_722750_E031C24F 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20240122_041434_289487_E307DDF3 
+X-CRM114-Status: GOOD (  37.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,31 +87,181 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-On 1/19/24 11:16, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On Fri, Jan 19, 2024 at 09:38:03PM +0200, Cristian Ciocaltea wrote:
+> Add driver for the Rockchip HDMI/eDP TX Combo PHY found on RK3588 SoC.
 > 
-> The px30 has two spi controllers with two chip-selects each.
-> The num-cs property is specified as the total number of chip
-> selects a controllers has and is used since 2020 to find uses
-> of chipselects outside that range in the Rockchip spi driver.
+> The PHY is based on a Samsung IP block and supports HDMI 2.1 TMDS, FRL
+> and eDP links.  The maximum data rate is 12Gbps (HDMI 2.1 FRL), while
+> the minimum is 250Mbps (HDMI 2.1 TMDS).
 > 
-> Without the property set, the default is 1, so spi devices
-> using the second chipselect will not be created.
+> Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
+> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/phy/rockchip/Kconfig                  |    8 +
+>  drivers/phy/rockchip/Makefile                 |    1 +
+>  .../phy/rockchip/phy-rockchip-samsung-hdptx.c | 2045 +++++++++++++++++
+>  3 files changed, 2054 insertions(+)
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 > 
-> Fixes: eb1262e3cc8b ("spi: spi-rockchip: use num-cs property and ctlr->enable_gpiods")
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index 94360fc96a6f..95666ac6aa3b 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -83,6 +83,14 @@ config PHY_ROCKCHIP_PCIE
+>  	help
+>  	  Enable this to support the Rockchip PCIe PHY.
+>  
+> +config PHY_ROCKCHIP_SAMSUNG_HDPTX
+> +	tristate "Rockchip Samsung HDMI/DP Combo PHY driver"
+> +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Enable this to support the Rockchip HDMI/DP Combo PHY
+> +	  with Samsung IP block.
+> +
+>  config PHY_ROCKCHIP_SNPS_PCIE3
+>  	tristate "Rockchip Snps PCIe3 PHY Driver"
+>  	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+> index 7eab129230d1..3d911304e654 100644
+> --- a/drivers/phy/rockchip/Makefile
+> +++ b/drivers/phy/rockchip/Makefile
+> @@ -8,6 +8,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY)	+= phy-rockchip-naneng-combphy.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX)	+= phy-rockchip-samsung-hdptx.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_SNPS_PCIE3)	+= phy-rockchip-snps-pcie3.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> new file mode 100644
+> index 000000000000..d8171ea5ce2b
+> --- /dev/null
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> @@ -0,0 +1,2045 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
+> + * Copyright (c) 2024 Collabora Ltd.
+> + *
+> + * Author: Algea Cao <algea.cao@rock-chips.com>
+> + * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> + */
+> +#include <linux/bitfield.h>
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/rational.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +
+> +#define GRF_HDPTX_CON0			0x00
+> +#define HDPTX_I_PLL_EN			BIT(7)
+> +#define HDPTX_I_BIAS_EN			BIT(6)
+> +#define HDPTX_I_BGR_EN			BIT(5)
+> +#define GRF_HDPTX_STATUS		0x80
+> +#define HDPTX_O_PLL_LOCK_DONE		BIT(3)
+> +#define HDPTX_O_PHY_CLK_RDY		BIT(2)
+> +#define HDPTX_O_PHY_RDY			BIT(1)
+> +#define HDPTX_O_SB_RDY			BIT(0)
+> +
+> +#define CMN_REG0000			0x0000
 
-Reviewed-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+These register names are not particularly helpful. Maybe use a
 
-Cheers,
-Quentin
+#define CMN_REG(x)			((x) * 4)
+
+Instead?
+
+> +
+> +static int hdptx_lcpll_frl_mode_config(struct rockchip_hdptx_phy *hdptx,
+> +				       u32 rate)
+> +{
+> +	u32 bit_rate = rate & DATA_RATE_MASK;
+> +	u8 color_depth = (rate & COLOR_DEPTH_MASK) ? 1 : 0;
+> +	const struct lcpll_config *cfg = lcpll_cfg;
+> +
+> +	for (; cfg->bit_rate != ~0; cfg++)
+> +		if (bit_rate == cfg->bit_rate)
+> +			break;
+
+You could use ARRAY_SIZE() to iterate over the array and save the extra
+entry at the end. Likewise for the other arrays used in the driver.
+
+> +
+> +	if (cfg->bit_rate == ~0)
+> +		return -EINVAL;
+> +
+
+> +static int rockchip_hdptx_phy_power_on(struct phy *phy)
+> +{
+> +	struct rockchip_hdptx_phy *hdptx = phy_get_drvdata(phy);
+> +	int bus_width = phy_get_bus_width(hdptx->phy);
+> +	int bit_rate = bus_width & DATA_RATE_MASK;
+
+What is going on here? bus_width is set to 8 in probe() using
+phy_set_bus_width(), but the value you pull out of phy_get_bus_width()
+is expected to contain the bit_rate and several other flags.
+
+It looks like you are tunneling flags from some other driver using this
+field. Isn't there a better way to accomplish this? If not, I think this
+needs some explanation.
+
+At least the variable should be renamed. it's called "bus_width" and it's
+passed to functions like hdptx_lcpll_frl_mode_config() which has this
+parameter named "rate" which is quite confusing.
+
+Sascha
+
+> +	int ret;
+> +
+> +	dev_dbg(hdptx->dev, "%s bus_width=%x rate=%d\n",
+> +		__func__, bus_width, bit_rate);
+> +
+> +	ret = pm_runtime_resume_and_get(hdptx->dev);
+> +	if (ret) {
+> +		dev_err(hdptx->dev, "Failed to resume phy: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	if (bus_width & HDMI_EARC_MASK)
+> +		hdptx->earc_en = true;
+> +	else
+> +		hdptx->earc_en = false;
+> +
+> +	if (bus_width & HDMI_MODE_MASK) {
+> +		if (bit_rate > 24000000)
+> +			ret = hdptx_lcpll_frl_mode_config(hdptx, bus_width);
+> +		else
+> +			ret = hdptx_ropll_frl_mode_config(hdptx, bus_width);
+> +	} else {
+> +		ret = hdptx_ropll_tmds_mode_config(hdptx, bus_width);
+> +	}
+> +
+> +	if (ret)
+> +		pm_runtime_put(hdptx->dev);
+> +
+> +	return ret;
+> +}
+> +
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
