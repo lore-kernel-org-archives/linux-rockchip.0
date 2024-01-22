@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C49C47DD9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 14:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E4F8C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 14:58:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N5x/3kp1HzlWCecAZQvZXaMsturwPFAWPTMkAqPZ6xA=; b=1dGGWJ7enrft39
-	sRR54rai+iT54gzpnnRUClxYY6cHy50u1Z961Z7OH23vDwpRhx5bh+ORb/INqvJadAbLKBHQt5jjL
-	L047g5RIJTkCVmIIVSxXjrjovqKwqim0KE7lpD4rui2gs4FctD6F7zdj8Dt2he5putfLovpI6zH+J
-	PpVQn2B28L2bewBoDYqxx6r4+ro3ckkAtp3t2t7H7DzBaURE1yKakurZ8C1TDVxOc+7UEAu1mxAkt
-	LHxhvTDBgrf9c3jKCsozsp3ulpQp5qO4FflGMiBhy48po+oRl7b0ZcrUUg13tUbKI6KvzFB/buPCZ
-	Pq/q/a7QRUhnWnz6fxWg==;
+	List-Owner; bh=MKVA0ij8yZRD7GYwaOE6QOW/YiROrHL8jSISKQEckNw=; b=E8Auc4Lqe+Erqk
+	x1184gpQ1b93kxsfEPHAJUiS+D+rMOnf1pv8ahaxMu4BDOFyxzWu+vh5os6zLZ19hd+lzizgkaqlZ
+	bUhIIOjjkqhsvLHoyGQmyGLi8mVpRNxqTZcY8L7Yix1NHImD6SUGFcDkWFDHtG4eebDXoECu363mc
+	I2pPlaXiyL0ueeysSv18EPUeDisF4oZW31a7jtabD7EH1U3E2tBpoA/4zu23aW+CCvv9liapzoX+Z
+	H8otn1rxBYV0c9nLiLXCbQO4axS8bYTxky9WU8ezQ29PFVFs2QGDOVkUNH5k4K0yQDYyh7s8e7EFx
+	Fz8+nCB7wUo3MBhRiJjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvl0-00CWbc-36;
-	Mon, 22 Jan 2024 14:58:38 +0000
+	id 1rRvl5-00CWfW-1W;
+	Mon, 22 Jan 2024 14:58:43 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvkn-00CWOG-2j;
-	Mon, 22 Jan 2024 14:58:29 +0000
+	id 1rRvkt-00CWSV-0d;
+	Mon, 22 Jan 2024 14:58:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5962961532;
-	Mon, 22 Jan 2024 14:58:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1CFFC433A6;
-	Mon, 22 Jan 2024 14:58:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 623856152D;
+	Mon, 22 Jan 2024 14:58:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4AE3C433F1;
+	Mon, 22 Jan 2024 14:58:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705935505;
-	bh=e4S5oxyAI1Ym/DoprimOTsdp+Rj2lpWX0FiR3QL2cfk=;
+	s=k20201202; t=1705935509;
+	bh=0vse99/kKixfDBqusosdmXGea5zqNdeoyLw1kNT6yJg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CBJ4Yfe1PArpKlKO9QiS50bl9C5Ez+290oILJhCWoB87/Z9dhBOBusfSxg0JmxC43
-	 PiMpx7rmawk4mydrdELY6O8txFTXmOLbStlsyNq0PydpacCtkLEdRL8ogO24nrLQud
-	 BmOiDgM/VcWQXbP+CX3CCk6f2Oz8Cuwzv3cGb5vpuj7AGXUpZYNDu9hl/mZ7UNyoT7
-	 IM6snDVoOHdsfyQaTVvJ4gVyxzsk5yG7M2BuXs/cggITOBmKh4zfUXqLEFl9muzcFN
-	 6o1wOEofhDYA6AOsY1xaWtJrLEmcSfQf6Ng9yfBot7UGoe1BRr2H8GJFXzgTwUmvw4
-	 tFbj/XNZP9Qug==
+	b=CuGJ/qdKzTaug7p4Kx+GHjVuHZ+ZmqXP2xFP0glzIab2YqqKxz4rnJEeCeYIzH9qs
+	 R9kBcbouB/qxhwAd5zMRTshNAzOgLggXYfeZZU+KvLsjulN9zbwLpDvGKDuJB3q7wW
+	 fyiw8RL/gWCTzsuRJzCLJ3CVOmZugAh5S+/X51oTGf/G0OfVzbXfy/fAL0C5ya6JWD
+	 lq0Iv+7m/079m89VDa65Vh1vtNpePtS6wRkov/qd6zHEk2pjixHVdS7gq96ixM1yHa
+	 3mARX/5phH91cOc5pobI3oEHlSb0yNduwwpRjNCw+Bx0Un/TFtjm+i9UYTvdrEssLX
+	 AtCLQhLEUIdOw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Adam Ford <aford173@gmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
 	dafna@fastmail.com,
@@ -54,9 +54,9 @@ Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.7 37/88] media: rkisp1: Store IRQ lines
-Date: Mon, 22 Jan 2024 09:51:10 -0500
-Message-ID: <20240122145608.990137-37-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.7 39/88] media: rkisp1: resizer: Stop manual allocation of v4l2_subdev_state
+Date: Mon, 22 Jan 2024 09:51:12 -0500
+Message-ID: <20240122145608.990137-39-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240122145608.990137-1-sashal@kernel.org>
 References: <20240122145608.990137-1-sashal@kernel.org>
@@ -65,8 +65,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.7.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_065825_980137_E3ADF58B 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20240122_065831_385541_5A598A11 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,124 +83,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-[ Upstream commit 0753874617de883c6d4da903142f334f76a75d70 ]
+[ Upstream commit efa28efd9cba015f8c3d88123527c3c3cfcd13d0 ]
 
-Store the IRQ lines used by the driver for easy access. These are needed
-in future patches which fix IRQ race issues.
+Supported media bus codes on the resizer sink pad are identical to the
+ISP source pad. The .enum_mbus_code() handler thus delegates the
+enumeration to the ISP's operation. This is problematic for two
+reasons:
 
-Link: https://lore.kernel.org/r/20231207-rkisp-irq-fix-v3-3-358a2c871a3c@ideasonboard.com
+- Format enumeration on the ISP source pad is dependent on the format
+  configured on the ISP sink pad for the same subdev state (TRY or
+  ACTIVE), while format enumeration on the resizer sink pad should
+  return all formats supported by the resizer subdev, regardless of the
+  ISP configuration.
 
-Tested-by: Adam Ford <aford173@gmail.com>  #imx8mp-beacon
-Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+- Delegating the operation involves creating a fake v4l2_subdev_state on
+  the stack to pass to the ISP .enum_mbus_code() handler. This gets in
+  the way of evolution of both the ISP enumeration handler and, more
+  generally, the V4L2 subdev state infrastructure.
+
+Fix those two issues by implementing format enumeration manually for the
+resizer.
+
+Link: https://lore.kernel.org/r/20231126020948.2700-1-laurent.pinchart@ideasonboard.com
+
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h    | 11 ++++++++++-
- .../media/platform/rockchip/rkisp1/rkisp1-dev.c | 17 +++++++++++++----
- 2 files changed, 23 insertions(+), 5 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c | 38 ++++++++++++-------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 1e7cea1bea5e..2d7f06281c39 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -61,6 +61,14 @@ struct dentry;
- 						 RKISP1_CIF_ISP_EXP_END |	\
- 						 RKISP1_CIF_ISP_HIST_MEASURE_RDY)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+index 28ecc7347d54..6297870ee9e9 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+@@ -335,12 +335,8 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
+ {
+ 	struct rkisp1_resizer *rsz =
+ 		container_of(sd, struct rkisp1_resizer, sd);
+-	struct v4l2_subdev_pad_config dummy_cfg;
+-	struct v4l2_subdev_state pad_state = {
+-		.pads = &dummy_cfg
+-	};
+-	u32 pad = code->pad;
+-	int ret;
++	unsigned int index = code->index;
++	unsigned int i;
  
-+/* IRQ lines */
-+enum rkisp1_irq_line {
-+	RKISP1_IRQ_ISP = 0,
-+	RKISP1_IRQ_MI,
-+	RKISP1_IRQ_MIPI,
-+	RKISP1_NUM_IRQS,
-+};
+ 	if (code->pad == RKISP1_RSZ_PAD_SRC) {
+ 		/* supported mbus codes on the src are the same as in the capture */
+@@ -360,15 +356,29 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
+ 		return 0;
+ 	}
+ 
+-	/* supported mbus codes on the sink pad are the same as isp src pad */
+-	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
+-	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
+-			       &pad_state, code);
++	/*
++	 * Supported mbus codes on the sink pad are the same as on the ISP
++	 * source pad.
++	 */
++	for (i = 0; ; i++) {
++		const struct rkisp1_mbus_info *fmt =
++			rkisp1_mbus_info_get_by_index(i);
+ 
+-	/* restore pad */
+-	code->pad = pad;
+-	code->flags = 0;
+-	return ret;
++		if (!fmt)
++			break;
 +
- /* enum for the resizer pads */
- enum rkisp1_rsz_pad {
- 	RKISP1_RSZ_PAD_SINK,
-@@ -423,7 +431,6 @@ struct rkisp1_debug {
-  * struct rkisp1_device - ISP platform device
-  *
-  * @base_addr:	   base register address
-- * @irq:	   the irq number
-  * @dev:	   a pointer to the struct device
-  * @clk_size:	   number of clocks
-  * @clks:	   array of clocks
-@@ -441,6 +448,7 @@ struct rkisp1_debug {
-  * @stream_lock:   serializes {start/stop}_streaming callbacks between the capture devices.
-  * @debug:	   debug params to be exposed on debugfs
-  * @info:	   version-specific ISP information
-+ * @irqs:          IRQ line numbers
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
-@@ -461,6 +469,7 @@ struct rkisp1_device {
- 	struct mutex stream_lock; /* serialize {start/stop}_streaming cb between capture devices */
- 	struct rkisp1_debug debug;
- 	const struct rkisp1_info *info;
-+	int irqs[RKISP1_NUM_IRQS];
- };
- 
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 22b2ae0e89c4..c3fa40976140 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -114,6 +114,7 @@
- struct rkisp1_isr_data {
- 	const char *name;
- 	irqreturn_t (*isr)(int irq, void *ctx);
-+	u32 line_mask;
- };
- 
- /* ----------------------------------------------------------------------------
-@@ -471,9 +472,9 @@ static const char * const px30_isp_clks[] = {
- };
- 
- static const struct rkisp1_isr_data px30_isp_isrs[] = {
--	{ "isp", rkisp1_isp_isr },
--	{ "mi", rkisp1_capture_isr },
--	{ "mipi", rkisp1_csi_isr },
-+	{ "isp", rkisp1_isp_isr, BIT(RKISP1_IRQ_ISP) },
-+	{ "mi", rkisp1_capture_isr, BIT(RKISP1_IRQ_MI) },
-+	{ "mipi", rkisp1_csi_isr, BIT(RKISP1_IRQ_MIPI) },
- };
- 
- static const struct rkisp1_info px30_isp_info = {
-@@ -492,7 +493,7 @@ static const char * const rk3399_isp_clks[] = {
- };
- 
- static const struct rkisp1_isr_data rk3399_isp_isrs[] = {
--	{ NULL, rkisp1_isr },
-+	{ NULL, rkisp1_isr, BIT(RKISP1_IRQ_ISP) | BIT(RKISP1_IRQ_MI) | BIT(RKISP1_IRQ_MIPI) },
- };
- 
- static const struct rkisp1_info rk3399_isp_info = {
-@@ -543,6 +544,9 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	if (IS_ERR(rkisp1->base_addr))
- 		return PTR_ERR(rkisp1->base_addr);
- 
-+	for (unsigned int il = 0; il < ARRAY_SIZE(rkisp1->irqs); ++il)
-+		rkisp1->irqs[il] = -1;
++		if (!(fmt->direction & RKISP1_ISP_SD_SRC))
++			continue;
 +
- 	for (i = 0; i < info->isr_size; i++) {
- 		irq = info->isrs[i].name
- 		    ? platform_get_irq_byname(pdev, info->isrs[i].name)
-@@ -550,6 +554,11 @@ static int rkisp1_probe(struct platform_device *pdev)
- 		if (irq < 0)
- 			return irq;
- 
-+		for (unsigned int il = 0; il < ARRAY_SIZE(rkisp1->irqs); ++il) {
-+			if (info->isrs[i].line_mask & BIT(il))
-+				rkisp1->irqs[il] = irq;
++		if (!index) {
++			code->code = fmt->mbus_code;
++			return 0;
 +		}
 +
- 		ret = devm_request_irq(dev, irq, info->isrs[i].isr, 0,
- 				       dev_driver_string(dev), dev);
- 		if (ret) {
++		index--;
++	}
++
++	return -EINVAL;
+ }
+ 
+ static int rkisp1_rsz_init_config(struct v4l2_subdev *sd,
 -- 
 2.43.0
 
