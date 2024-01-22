@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3490DC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 15:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA1CAC47DAF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 15:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5RwSDqW37ATtXtRjxk/H8B70Ggx6mrvg6YXHsuCHZaM=; b=QvU2w3TwVqvVKB
-	KQoimrxT6lh6bQK5IDHOMrLpeqBmbpFugp+z4RbS7w6zWqy32ZOdmVtAaJDCNuVtNMb1VE9fk7Uq2
-	Eg8ucLhOmTItP/bcw8CSZudZi3o7FaVeCnsTKSlyhagO2aelzUwvnB4VuRERa29hBC+rHl4iyEo0e
-	GGlwCoAguNOmbjk/oxOD8ax0g3OlrtdynNXlo9lE+VLAxjmrLdoQBmvknVZGsQq2SC1y1KvNRxrwa
-	nfERilf606MoG5Yuh1lUsee6R1TsdbzOTNLITHHycKdmgatvVQCM4Ux7gfJvdVJayhj99Rj5ortvn
-	jSCIrijFj1HnJl+R5Uag==;
+	List-Owner; bh=G1C7K71fwis1uFW5Z+b3uI1VHMGIoOeEBTBh96nqeNU=; b=Frfn988R7ed9qo
+	PVfEUyVkGCCA65TdFDsJNGCMO+7KbVpnlXmMra+L12GKoRQsf71jrjX+3la9zWBIuJes7rVDNWa06
+	jtSHen5lryulVKsdLkdeB+fJbq2Ht5nwPFwFwSNJCvEGTuHPdAvitxD7MTYIvV8KcKPl0zUP2DWH9
+	yPudWO9/3roaxEI2txPt4RJPuIruHDZ8RIIvb+Gi0qjcqlYULYsA/eUMWCGD4BWyHosM4Hq7Su/We
+	KWEQMufBj+2SCokmBkg67U1dRDU9wewGbeuNQ6jO1Q5mbbbb+lX0HlLdyPZ8l0SC0BUVktcSszhPP
+	4uJA+EgfrybkWECKe7oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvrq-00CZmr-2k;
-	Mon, 22 Jan 2024 15:05:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rRvsD-00CZxN-2G;
+	Mon, 22 Jan 2024 15:06:05 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvrm-00CZk0-1l;
-	Mon, 22 Jan 2024 15:05:40 +0000
+	id 1rRvs9-00CZtI-0n;
+	Mon, 22 Jan 2024 15:06:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 01D8C61536;
-	Mon, 22 Jan 2024 15:05:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5640DC43601;
-	Mon, 22 Jan 2024 15:05:36 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8FAB9CE2B12;
+	Mon, 22 Jan 2024 15:05:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D515EC433F1;
+	Mon, 22 Jan 2024 15:05:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705935937;
-	bh=4lNMdeEVMvwU2ZC+YYaASXkC7INSwaNBxa6w96wgbts=;
+	s=k20201202; t=1705935956;
+	bh=xD9xpuiZUPrSvYzQ2YyguGL/6fOMJQL/RT0rBtUxc7A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l8JB6G916zbLV4uhwou1Bm3JT//s5hxQQ8Y2+D9sqvjFstX6oSh0nrzmFe26DkZdW
-	 WEc7Rmrb6cJKu8HFBupvmAb5fMElTDHesX+IN5Zx+FlzroIpIxsxeihgTfuJFjKgyr
-	 gxVwvjINQxNXMh8Mv9e8JDYCmwGpBpfp7qfNFfRwDBHvkwtXSVzb8UdEk74qDCVE2J
-	 252A5sLp6ZZyu1UU248AZrOSPhAzOzihfOQjWjQG2v++AvNik0kKr2eIheBOigT2Pd
-	 HbR9HYCipdF+HAroDrk2fmRTrghVoUpWzfAjPUlQfXVBQiWcz6uYEyG1DaF1MxPd8N
-	 CJnL/cmpo1w2Q==
+	b=gTGiKfT3YGgckVWmnEPDXeJ7PisZJnxhfX2/7GwJWXy+eHpal//LZnAZ79wFKdvRP
+	 DuwhLNycUlODRYh+WwvM4bD61JzZ4B3UFmZrhplRv07pCnrGPHvXhe/EMla9kTMgV8
+	 lje2sO6KF/jxzh1wgcQxKL4d+yG94PeqKCXh2LuS2710wL/ydYHDztbTzHF+tHpyVE
+	 bI2oX9n4dNcnY37aizcfCVpdn8R+PWL9OYGX4w+4wKRzD/y17ddvB8KEBbYwTJfLFl
+	 JtN6L4EcQery9el/JG1KyEDTGxC9VuuJV1D5WgciNjmSuX+LXEqaRyEjpfuJD/HzLB
+	 RCf+Aguqfu0kA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Michael Tretter <m.tretter@pengutronix.de>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Adam Ford <aford173@gmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	jacob-chen@iotwrt.com,
-	ezequiel@vanguardiasur.com.ar,
-	mchehab@kernel.org,
+	dafna@fastmail.com,
 	heiko@sntech.de,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 22/73] media: rockchip: rga: fix swizzling for RGB formats
-Date: Mon, 22 Jan 2024 10:01:36 -0500
-Message-ID: <20240122150432.992458-22-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 30/73] media: rkisp1: Fix IRQ handler return values
+Date: Mon, 22 Jan 2024 10:01:44 -0500
+Message-ID: <20240122150432.992458-30-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240122150432.992458-1-sashal@kernel.org>
 References: <20240122150432.992458-1-sashal@kernel.org>
@@ -65,8 +65,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.6.13
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_070538_636900_3A1DF774 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20240122_070601_458154_5C73E41A 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +83,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Tretter <m.tretter@pengutronix.de>
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 
-[ Upstream commit 9e7dc39260edac180c206bb6149595a40eabae3e ]
+[ Upstream commit 3eb7910e1b16a2c136be26a8380f21469225b2f6 ]
 
-When using 32 bit RGB formats, the RGA on the rk3568 produces wrong
-colors as the wrong color channels are read or written.  The reason is
-that the format description for the channel swizzeling is wrong and the
-wrong bits are configured. For example, when converting ARGB32 to NV12,
-the alpha channel is used as blue channel.. This doesn't happen if the
-color format is the same on both sides.
+The IRQ handler rkisp1_isr() calls sub-handlers, all of which returns an
+irqreturn_t value, but rkisp1_isr() ignores those values and always
+returns IRQ_HANDLED.
 
-Fix the color_swap settings of the formats to correctly handle 32 bit
-RGB formats.
+Fix this by collecting the return values, and returning IRQ_HANDLED or
+IRQ_NONE as appropriate.
 
-For RGA_COLOR_FMT_XBGR8888, the RGA_COLOR_ALPHA_SWAP bit doesn't have an
-effect. Thus, it isn't possible to handle the V4L2_PIX_FMT_XRGB32. Thus,
-it is removed from the list of supported formats.
+Link: https://lore.kernel.org/r/20231207-rkisp-irq-fix-v3-2-358a2c871a3c@ideasonboard.com
 
-Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Tested-by: Adam Ford <aford173@gmail.com>  #imx8mp-beacon
+Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c  | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index f1c532a5802a..25f5b5eebf13 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -184,25 +184,16 @@ static int rga_setup_ctrls(struct rga_ctx *ctx)
- static struct rga_fmt formats[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_ARGB32,
--		.color_swap = RGA_COLOR_RB_SWAP,
-+		.color_swap = RGA_COLOR_ALPHA_SWAP,
- 		.hw_format = RGA_COLOR_FMT_ABGR8888,
- 		.depth = 32,
- 		.uv_factor = 1,
- 		.y_div = 1,
- 		.x_div = 1,
- 	},
--	{
--		.fourcc = V4L2_PIX_FMT_XRGB32,
--		.color_swap = RGA_COLOR_RB_SWAP,
--		.hw_format = RGA_COLOR_FMT_XBGR8888,
--		.depth = 32,
--		.uv_factor = 1,
--		.y_div = 1,
--		.x_div = 1,
--	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_ABGR32,
--		.color_swap = RGA_COLOR_ALPHA_SWAP,
-+		.color_swap = RGA_COLOR_RB_SWAP,
- 		.hw_format = RGA_COLOR_FMT_ABGR8888,
- 		.depth = 32,
- 		.uv_factor = 1,
-@@ -211,7 +202,7 @@ static struct rga_fmt formats[] = {
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_XBGR32,
--		.color_swap = RGA_COLOR_ALPHA_SWAP,
-+		.color_swap = RGA_COLOR_RB_SWAP,
- 		.hw_format = RGA_COLOR_FMT_XBGR8888,
- 		.depth = 32,
- 		.uv_factor = 1,
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 4c4514e20673..22b2ae0e89c4 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -442,17 +442,25 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 
+ static irqreturn_t rkisp1_isr(int irq, void *ctx)
+ {
++	irqreturn_t ret = IRQ_NONE;
++
+ 	/*
+ 	 * Call rkisp1_capture_isr() first to handle the frame that
+ 	 * potentially completed using the current frame_sequence number before
+ 	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
+ 	 * sync.
+ 	 */
+-	rkisp1_capture_isr(irq, ctx);
+-	rkisp1_isp_isr(irq, ctx);
+-	rkisp1_csi_isr(irq, ctx);
+ 
+-	return IRQ_HANDLED;
++	if (rkisp1_capture_isr(irq, ctx) == IRQ_HANDLED)
++		ret = IRQ_HANDLED;
++
++	if (rkisp1_isp_isr(irq, ctx) == IRQ_HANDLED)
++		ret = IRQ_HANDLED;
++
++	if (rkisp1_csi_isr(irq, ctx) == IRQ_HANDLED)
++		ret = IRQ_HANDLED;
++
++	return ret;
+ }
+ 
+ static const char * const px30_isp_clks[] = {
 -- 
 2.43.0
 
