@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E4F8C47DD9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 14:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E9D1C47DDB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jan 2024 14:59:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MKVA0ij8yZRD7GYwaOE6QOW/YiROrHL8jSISKQEckNw=; b=E8Auc4Lqe+Erqk
-	x1184gpQ1b93kxsfEPHAJUiS+D+rMOnf1pv8ahaxMu4BDOFyxzWu+vh5os6zLZ19hd+lzizgkaqlZ
-	bUhIIOjjkqhsvLHoyGQmyGLi8mVpRNxqTZcY8L7Yix1NHImD6SUGFcDkWFDHtG4eebDXoECu363mc
-	I2pPlaXiyL0ueeysSv18EPUeDisF4oZW31a7jtabD7EH1U3E2tBpoA/4zu23aW+CCvv9liapzoX+Z
-	H8otn1rxBYV0c9nLiLXCbQO4axS8bYTxky9WU8ezQ29PFVFs2QGDOVkUNH5k4K0yQDYyh7s8e7EFx
-	Fz8+nCB7wUo3MBhRiJjA==;
+	List-Owner; bh=5RwSDqW37ATtXtRjxk/H8B70Ggx6mrvg6YXHsuCHZaM=; b=LUXuc9IlOa2TEk
+	eG66mNVNt09Z2uj4YMWrFpFIpdIh6qwGlgErjyMLH+210G89NBKMi7mtfDANLm7QpkOfaN+RI/E6k
+	CAJbrNCx3paVVYH4ThjlBOcmlvWrKUDySGc0zAcyyUNAIoAW8+9tW+12Qk4mH3GsZwlYmITfuJ/T8
+	qXE99y+SurSpd3+XWuatUwjDXkgEfWWs+N1Iz0kpCgiFaAhZeALGo8gNKokVuq8YOaV9lbCuF8isT
+	QSqP3irKjcEN3xIAXjIWe/IodIzhlBYDEIfJy9F1jaa4ID7WZpg5vxbfPl3fVjmovKQkB5p9eEr0Q
+	mFZIOc/ZFRYLyGTY+5wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvl5-00CWfW-1W;
-	Mon, 22 Jan 2024 14:58:43 +0000
+	id 1rRvlB-00CWlk-2V;
+	Mon, 22 Jan 2024 14:58:49 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rRvkt-00CWSV-0d;
-	Mon, 22 Jan 2024 14:58:34 +0000
+	id 1rRvkx-00CWYL-2q;
+	Mon, 22 Jan 2024 14:58:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 623856152D;
-	Mon, 22 Jan 2024 14:58:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4AE3C433F1;
-	Mon, 22 Jan 2024 14:58:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 40B9D61534;
+	Mon, 22 Jan 2024 14:58:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B9B0C43390;
+	Mon, 22 Jan 2024 14:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1705935509;
-	bh=0vse99/kKixfDBqusosdmXGea5zqNdeoyLw1kNT6yJg=;
+	s=k20201202; t=1705935484;
+	bh=4lNMdeEVMvwU2ZC+YYaASXkC7INSwaNBxa6w96wgbts=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CuGJ/qdKzTaug7p4Kx+GHjVuHZ+ZmqXP2xFP0glzIab2YqqKxz4rnJEeCeYIzH9qs
-	 R9kBcbouB/qxhwAd5zMRTshNAzOgLggXYfeZZU+KvLsjulN9zbwLpDvGKDuJB3q7wW
-	 fyiw8RL/gWCTzsuRJzCLJ3CVOmZugAh5S+/X51oTGf/G0OfVzbXfy/fAL0C5ya6JWD
-	 lq0Iv+7m/079m89VDa65Vh1vtNpePtS6wRkov/qd6zHEk2pjixHVdS7gq96ixM1yHa
-	 3mARX/5phH91cOc5pobI3oEHlSb0yNduwwpRjNCw+Bx0Un/TFtjm+i9UYTvdrEssLX
-	 AtCLQhLEUIdOw==
+	b=UJ25wzEd6+pkvzFCmyYkcwlz/veoFYqXMoZp4T9VjA+TrGLZ+R0TFk69jKqPsdZSA
+	 sorBJpaS52jabM/IvWWvokCsYTJg+/TgpJmkOoojrZG0ilrDhan4gi7e0d2sh2L9o0
+	 PnvrSmhjk+afOL0Pjw2bohQquDtyujWDPD2P4RYsMky6F6f8TSb5CcDzUQygWDB5HE
+	 BG3aqOaUe1BNCzfcO249XlphoQMXnsnHoB4U635WbUO52LaApu/TXEfm5CuZqlPwQ9
+	 SYG1i5R+AQV04b37Ka+/EJO8pCiwlivmr3BU7Mt4g5e/S0BkJzFIrL0OSzKNdeF/0O
+	 QwzPoBvexN08A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+Cc: Michael Tretter <m.tretter@pengutronix.de>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Sasha Levin <sashal@kernel.org>,
-	dafna@fastmail.com,
+	jacob-chen@iotwrt.com,
+	ezequiel@vanguardiasur.com.ar,
+	mchehab@kernel.org,
 	heiko@sntech.de,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.7 39/88] media: rkisp1: resizer: Stop manual allocation of v4l2_subdev_state
-Date: Mon, 22 Jan 2024 09:51:12 -0500
-Message-ID: <20240122145608.990137-39-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.7 28/88] media: rockchip: rga: fix swizzling for RGB formats
+Date: Mon, 22 Jan 2024 09:51:01 -0500
+Message-ID: <20240122145608.990137-28-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240122145608.990137-1-sashal@kernel.org>
 References: <20240122145608.990137-1-sashal@kernel.org>
@@ -65,8 +65,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.7.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240122_065831_385541_5A598A11 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20240122_065835_985587_199DC5FC 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,97 +83,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+From: Michael Tretter <m.tretter@pengutronix.de>
 
-[ Upstream commit efa28efd9cba015f8c3d88123527c3c3cfcd13d0 ]
+[ Upstream commit 9e7dc39260edac180c206bb6149595a40eabae3e ]
 
-Supported media bus codes on the resizer sink pad are identical to the
-ISP source pad. The .enum_mbus_code() handler thus delegates the
-enumeration to the ISP's operation. This is problematic for two
-reasons:
+When using 32 bit RGB formats, the RGA on the rk3568 produces wrong
+colors as the wrong color channels are read or written.  The reason is
+that the format description for the channel swizzeling is wrong and the
+wrong bits are configured. For example, when converting ARGB32 to NV12,
+the alpha channel is used as blue channel.. This doesn't happen if the
+color format is the same on both sides.
 
-- Format enumeration on the ISP source pad is dependent on the format
-  configured on the ISP sink pad for the same subdev state (TRY or
-  ACTIVE), while format enumeration on the resizer sink pad should
-  return all formats supported by the resizer subdev, regardless of the
-  ISP configuration.
+Fix the color_swap settings of the formats to correctly handle 32 bit
+RGB formats.
 
-- Delegating the operation involves creating a fake v4l2_subdev_state on
-  the stack to pass to the ISP .enum_mbus_code() handler. This gets in
-  the way of evolution of both the ISP enumeration handler and, more
-  generally, the V4L2 subdev state infrastructure.
+For RGA_COLOR_FMT_XBGR8888, the RGA_COLOR_ALPHA_SWAP bit doesn't have an
+effect. Thus, it isn't possible to handle the V4L2_PIX_FMT_XRGB32. Thus,
+it is removed from the list of supported formats.
 
-Fix those two issues by implementing format enumeration manually for the
-resizer.
-
-Link: https://lore.kernel.org/r/20231126020948.2700-1-laurent.pinchart@ideasonboard.com
-
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Michael Tretter <m.tretter@pengutronix.de>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../platform/rockchip/rkisp1/rkisp1-resizer.c | 38 ++++++++++++-------
- 1 file changed, 24 insertions(+), 14 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 28ecc7347d54..6297870ee9e9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -335,12 +335,8 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
- {
- 	struct rkisp1_resizer *rsz =
- 		container_of(sd, struct rkisp1_resizer, sd);
--	struct v4l2_subdev_pad_config dummy_cfg;
--	struct v4l2_subdev_state pad_state = {
--		.pads = &dummy_cfg
--	};
--	u32 pad = code->pad;
--	int ret;
-+	unsigned int index = code->index;
-+	unsigned int i;
- 
- 	if (code->pad == RKISP1_RSZ_PAD_SRC) {
- 		/* supported mbus codes on the src are the same as in the capture */
-@@ -360,15 +356,29 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
- 		return 0;
- 	}
- 
--	/* supported mbus codes on the sink pad are the same as isp src pad */
--	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
--	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
--			       &pad_state, code);
-+	/*
-+	 * Supported mbus codes on the sink pad are the same as on the ISP
-+	 * source pad.
-+	 */
-+	for (i = 0; ; i++) {
-+		const struct rkisp1_mbus_info *fmt =
-+			rkisp1_mbus_info_get_by_index(i);
- 
--	/* restore pad */
--	code->pad = pad;
--	code->flags = 0;
--	return ret;
-+		if (!fmt)
-+			break;
-+
-+		if (!(fmt->direction & RKISP1_ISP_SD_SRC))
-+			continue;
-+
-+		if (!index) {
-+			code->code = fmt->mbus_code;
-+			return 0;
-+		}
-+
-+		index--;
-+	}
-+
-+	return -EINVAL;
- }
- 
- static int rkisp1_rsz_init_config(struct v4l2_subdev *sd,
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index f1c532a5802a..25f5b5eebf13 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -184,25 +184,16 @@ static int rga_setup_ctrls(struct rga_ctx *ctx)
+ static struct rga_fmt formats[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_ARGB32,
+-		.color_swap = RGA_COLOR_RB_SWAP,
++		.color_swap = RGA_COLOR_ALPHA_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_ABGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
+ 		.y_div = 1,
+ 		.x_div = 1,
+ 	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_XRGB32,
+-		.color_swap = RGA_COLOR_RB_SWAP,
+-		.hw_format = RGA_COLOR_FMT_XBGR8888,
+-		.depth = 32,
+-		.uv_factor = 1,
+-		.y_div = 1,
+-		.x_div = 1,
+-	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_ABGR32,
+-		.color_swap = RGA_COLOR_ALPHA_SWAP,
++		.color_swap = RGA_COLOR_RB_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_ABGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
+@@ -211,7 +202,7 @@ static struct rga_fmt formats[] = {
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_XBGR32,
+-		.color_swap = RGA_COLOR_ALPHA_SWAP,
++		.color_swap = RGA_COLOR_RB_SWAP,
+ 		.hw_format = RGA_COLOR_FMT_XBGR8888,
+ 		.depth = 32,
+ 		.uv_factor = 1,
 -- 
 2.43.0
 
