@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1E2C47258
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jan 2024 21:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A6FC47DDB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jan 2024 21:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2zdoFdODbNVX8NZaRmVzwT6pm0LPIfiDW/k0IVCZnlU=; b=snz2FN5FSqG/ve
-	3YV2HuchkjhWW7mAtjTwRGdViwQj+17mWkFwE/VELVx6p4RQaoFnjktXeVh/xVxjqCohykqqMuTFR
-	8oo4WKY7DlqZShDarV4KakNWIZ/H32zPZjJ5LZ0/mtVszhxQo1wCeGPrwsJV3hPmAwQ/HBuI2yS6k
-	ZeiBxcc9z39lVd8RMeXW7GY0CBszh2vMgn9AfgLMn4OjUj0aias6mJpDFWaXTJLlmrLpR5qsLPNK2
-	yzQzUuiBOhHJJE4dk8huleWHyHiXRKxYhhsefz90047qAC3kbrFuE4bTKiFJAPALWD849PZrzKv9D
-	tSLFzqPqbwGWXdPUbeFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YsD1RVfw1fcDbAZ6+zDitvGhkXkZqH/a1L67rfR1jZk=; b=r/vbZQ/7JmgbG8
+	F9BIecNNoUMizN2Uhc0aTmnj15peew5thdgW9ceh62h/gCaHOTO9qvtimj9WKg7wvqxhFpQ49NSst
+	U+0gbvUx/g9RZUQEtCvOkHPTSbyk6n+33c5PtmQHu4NDafZJE1yis41EPklshJgyT/81FnT1wHxls
+	tzhuiGiiKcjTDTov5acDo5RDaz8uUnZ532hNt9PJEn8Vj5tI2RDuf0VPTop2qbShdy1TrVyhLsocK
+	lHLTiZDl85E5PLXZSUW1vZlFsM/QtLBHXKL14EKAoU4VzOjzO9t8RE2QN8r3IIupNpjbLCgPjU+91
+	Y0Tnq8U+VvSTARzWw9ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSODv-000Vlj-0s;
-	Tue, 23 Jan 2024 21:22:23 +0000
-Received: from mail-ot1-f48.google.com ([209.85.210.48])
+	id 1rSODw-000Vmz-1T;
+	Tue, 23 Jan 2024 21:22:24 +0000
+Received: from mail-oa1-f50.google.com ([209.85.160.50])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSODs-000Vjd-02
+	id 1rSODt-000Vjv-2Q
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jan 2024 21:22:21 +0000
-Received: by mail-ot1-f48.google.com with SMTP id 46e09a7af769-6dde173384aso3839865a34.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 23 Jan 2024 13:22:18 -0800 (PST)
+	Tue, 23 Jan 2024 21:22:22 +0000
+Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-206689895bfso2448252fac.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 23 Jan 2024 13:22:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706044878; x=1706649678; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AHAGkFwxLewCCCdzfxQpaTguak4yI4GrECprCWhB9r8=;
-        b=LGMJhvnjTkXEc7r+6qzAnJTkbGu6kCeejoMIw5SIy7BQOA6a/Svdfw+4h6XhHGWMrH
-         N4/qG8UUOkv2FX/QWYgHFBiYWrFoO4JxdsASqYBbFU+GBf0TiMyMMlUpxsSxjMNXlhU+
-         pl75qvh2Jwxs4RFd1EyGhnEHO1LlLxtw6V9LMnYfB1IRleEjg6hNR40v5X9It1RqN/MM
-         Zv4LpWOMSwDl/iUsdT0p/5B0lhmGoptM2HGLuOA7rOSm8x2/isXkR6nyp3R2oQlunSjg
-         PpPd8E9HHlbuQHEfUZPK5Aa5ENsj933xOHAzQNnBe7e7p7uLMxygE/a8hbvWGcC2lFPa
-         V4JA==
+        d=gmail.com; s=20230601; t=1706044879; x=1706649679; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sWxTTmvypeY8hSwgGVw3+bFVkwR+7Vq8EoTW4jvNu7c=;
+        b=dWxSDac37PH/5pgBj2NVwj8jZWvNKYJKF+h9Tp+6zsG7VqfeptKNVBUhBLNCT08F4u
+         9XcEP5Qi8x2YCv2zn5W3+/WNSGajW+CmMJ45GuAhj2OUCQUUeK8fYKZHV+XokFRjpCY9
+         JNl+nYCdWIpI0jFrMVzO7w9b8Mg8kTRssJtUguxxrDi3wXhulDAR9JCvKBbM8QcjzZ22
+         DXZRK0F4HaCylJSl06k9N4NC9upViqnp4Ud5kIp1V8jS6xxxXsgNOyeQvhuo2RCM0nrA
+         sVQC9WnR/G8BzmwNQt7ovliS5jSg3V316i/3M/q/30dT4vAcfe3lp1sUZe8ZmhEWYIBk
+         LsSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706044878; x=1706649678;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=AHAGkFwxLewCCCdzfxQpaTguak4yI4GrECprCWhB9r8=;
-        b=DbNqKm7MCKFU5kGczTdcEzbdfoNM3F+6iXA2FXedK+CNjH+hR+Y/jVLnPA6EKPXRB2
-         fHAWM4JgHsPDxJYrfV3JdsdvRsC6RCFVHAlxteHfz6HGC2ELvQ2yxoELlywigCVO6v79
-         ZzZlMGe0+bOk7jV0gluBx/PCk9G6v+BcI9TPjT7uwRSU4SyOuJuVWimKFOd5Z+qGk0AN
-         b9JxGlfnsk871AJW+wUqnviGsVjdqHv46TA0Q39Cv5uizefy8sEcrbkqS8BtnjPQoqGM
-         AoRyluDAUuiaN9k54LJ5faKLOS4syLz/IwmsbPYbb1z1/95WQV6K47BAJl9CXWwOoKJV
-         OZZg==
-X-Gm-Message-State: AOJu0Yw3TFfruBAj/jOFLZNV/GrlhAZsAUhAWaHJgDt1Qb3OW470Sp7a
-	7eCpxfdV4DLZFArS/6KF+vfZR1uoh5x3iLwQuLzCA8P8si4JBMW+OR6cU7ui
-X-Google-Smtp-Source: AGHT+IGkxYUjValEXECGEiPKxSkIveHC+S7J1r3MOep0Caq0PQhXCD5g8WzFDheWBpkldInCCYB4hQ==
-X-Received: by 2002:a05:6830:1e0e:b0:6dd:de84:2626 with SMTP id s14-20020a0568301e0e00b006ddde842626mr573131otr.58.1706044877797;
-        Tue, 23 Jan 2024 13:21:17 -0800 (PST)
+        d=1e100.net; s=20230601; t=1706044879; x=1706649679;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sWxTTmvypeY8hSwgGVw3+bFVkwR+7Vq8EoTW4jvNu7c=;
+        b=MEyIJY8lrcllfWZAFNYFSIxdZQBOeqhsPcYsBnyY/OZy3Y9gdPQtsmyJtrFh1RVllS
+         PTaDTQ8m0ZdSnFuriFiBlPXwzhwDYMaJK014etJkQtrAu7XSd4iFOS4lgrd3aANwHw27
+         DMbCpVnlI1rSQNE7FjPdHY+5GSX0v7BQ6rMpRmV5wbDwNq6ZcRkd4OO633UQxbIrnXBt
+         Dlbp0FGyxqatxIruOuSYeQVCoLxjBVid+KjkiPhZo2d0W7+UIHVQsMXT1SdO9VMWRZio
+         OrbL+5Upt1KZTiAcxC/V/p3McI/cBgiLoYHHxGzzgX2hT/NcEumDcZRxdurcU5b7wEL3
+         MPAQ==
+X-Gm-Message-State: AOJu0YwICeAaTTlsDsB3Ze0vPq9GBV6osSAp6QEyiSirYsqD/p0YqQF6
+	PKeslcaz8cLwUVlQnrhCnVZPnfyo4DNjciaLM/tUnmFE0wJCoQ9/k0Hg30vP
+X-Google-Smtp-Source: AGHT+IGK/VUGFNkHOBl97RvjCZ8ZfMUgIf4+aEkpbywEmMngm6YKO5SFrej9dQQ0OsyV/C7fuiv0gw==
+X-Received: by 2002:a05:6870:ac25:b0:214:7225:a0af with SMTP id kw37-20020a056870ac2500b002147225a0afmr1938740oab.84.1706044878940;
+        Tue, 23 Jan 2024 13:21:18 -0800 (PST)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id w2-20020a9d4502000000b006dc6e40ba97sm2265770ote.72.2024.01.23.13.21.17
+        by smtp.gmail.com with ESMTPSA id w2-20020a9d4502000000b006dc6e40ba97sm2265770ote.72.2024.01.23.13.21.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Jan 2024 13:21:17 -0800 (PST)
+        Tue, 23 Jan 2024 13:21:18 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -71,14 +72,16 @@ Cc: devicetree@vger.kernel.org,
 	mturquette@baylibre.com,
 	sboyd@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/4] Add Support for RK3566 Anbernic RG-ARC
-Date: Tue, 23 Jan 2024 15:21:07 -0600
-Message-Id: <20240123212111.202146-1-macroalpha82@gmail.com>
+Subject: [PATCH 2/4] dt-bindings: arm: rockchip: Add Anbernic RG-Arc
+Date: Tue, 23 Jan 2024 15:21:09 -0600
+Message-Id: <20240123212111.202146-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240123212111.202146-1-macroalpha82@gmail.com>
+References: <20240123212111.202146-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240123_132220_046913_3CCEDC25 
-X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-CacheID: sfid-20240123_132221_797030_5E88E425 
+X-CRM114-Status: UNSURE (   8.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,29 +101,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Anbernic RG-ARC S and RG-ARC D handheld gaming
-console.
+Add the Anbernic RG-Arc S and RG-Arc D devices, and consolidate
+all Anbernic RK3566 based devices under a single description.
 
-Chris Morgan (4):
-  arm64: dts: rockchip: Move device specific properties
-  dt-bindings: arm: rockchip: Add Anbernic RG-Arc
-  clk: rockchip: rk3568: Add PLL rate for 128MHz
-  arm64: dts: rockchip: add Anbernic RG-ARC S and RG-ARC D
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../devicetree/bindings/arm/rockchip.yaml     | 31 ++++++-------------
+ 1 file changed, 9 insertions(+), 22 deletions(-)
 
- .../devicetree/bindings/arm/rockchip.yaml     |  31 +--
- arch/arm64/boot/dts/rockchip/Makefile         |   2 +
- .../dts/rockchip/rk3566-anbernic-rg-arc-d.dts |  42 ++++
- .../dts/rockchip/rk3566-anbernic-rg-arc-s.dts |  19 ++
- .../dts/rockchip/rk3566-anbernic-rg-arc.dtsi  | 237 ++++++++++++++++++
- .../dts/rockchip/rk3566-anbernic-rg353x.dtsi  |  74 ++++++
- .../dts/rockchip/rk3566-anbernic-rg503.dts    |  74 ++++++
- .../dts/rockchip/rk3566-anbernic-rgxx3.dtsi   |  74 ------
- drivers/clk/rockchip/clk-rk3568.c             |   1 +
- 9 files changed, 458 insertions(+), 96 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5cf5cbef2cf5..5592fdc85b9e 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -37,29 +37,16 @@ properties:
+               - anbernic,rg351v
+           - const: rockchip,rk3326
+ 
+-      - description: Anbernic RG353P
++      - description: Anbernic RK3566 Handheld Gaming Console
+         items:
+-          - const: anbernic,rg353p
+-          - const: rockchip,rk3566
+-
+-      - description: Anbernic RG353PS
+-        items:
+-          - const: anbernic,rg353ps
+-          - const: rockchip,rk3566
+-
+-      - description: Anbernic RG353V
+-        items:
+-          - const: anbernic,rg353v
+-          - const: rockchip,rk3566
+-
+-      - description: Anbernic RG353VS
+-        items:
+-          - const: anbernic,rg353vs
+-          - const: rockchip,rk3566
+-
+-      - description: Anbernic RG503
+-        items:
+-          - const: anbernic,rg503
++          - enum:
++              - anbernic,rg353p
++              - anbernic,rg353ps
++              - anbernic,rg353v
++              - anbernic,rg353vs
++              - anbernic,rg503
++              - anbernic,rg-arc-d
++              - anbernic,rg-arc-s
+           - const: rockchip,rk3566
+ 
+       - description: Asus Tinker board
 -- 
 2.34.1
 
