@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE966C47DDF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jan 2024 20:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B1FC46CD2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jan 2024 20:31:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/80cEUXR8L95n3tHQxochfyHvMgfkOju8M/WOUkVJHU=; b=hhoEORSCeM89aF
-	ipX9YDYW/6PpUUfSysJShuaWs0RVMvEjJv5CybFbm3XLjDgir+1mOG0WwqgJJnFg5I0Ahu2R3Xvrl
-	i1DQ0vuoUWh50u3dohaMkJvdzPrOSHIZUT8T5uXQVZZbZvMUJ+3aUoRM7JYJ5YppkHIsCSGYr3qas
-	ivfCUL/mAjjsKwzt5miJmnrux8gEZVu639fT9l/Wpc2CFLUQ7traZAUZNDdynetSPsxCt4L4PNcFN
-	5B2nWWh8odg0pNndBuQWlDHWzuqR82PYFpha5AMy/BSxj/tdpT5JOWHG4AS1qTvpLaUKJx2TqkLAG
-	G3yXMq7RjeVlOLLhaz+A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qNbJoGPSliugC9yb9ywJwWYs0O3UthrJpQ/kWgL+5K0=; b=zHoSOu75Mmx8bR
+	WEaMuIe7u2n8TFa80Dqp4BFRcC3t6fwmMp677viqiMW2+jky4LHV9fsfWHTL++cBIPl7OxUwCsSJS
+	8Z0U0AhOmIMQSIn3gwjm3DbOM403IyEjlbOaTajpfuDYEMpEBz+CHFtVLOQDTeTi/9+rLRmo+CMlW
+	qD6hWTakMD1erKYGQFkyrDKqh7bE1WymXp89o8yRbvKCikZn/cCDUaUzD/tVJ4UWbQbjKGegnZ0WM
+	CdpDm5elamk4U3CO/AjibbM+bII3cOVzNtu6WqKKl0oHN6F6XhZ9qvZvJvLnadra+6Dm7n9cJeQd8
+	vbmxyAmJLC0yvPyMlA4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjtW-0050xj-15;
-	Wed, 24 Jan 2024 20:30:46 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1rSjtr-00514N-1K;
+	Wed, 24 Jan 2024 20:31:07 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjtI-0050t5-2F;
-	Wed, 24 Jan 2024 20:30:34 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-40e80046264so74401475e9.0;
-        Wed, 24 Jan 2024 12:30:29 -0800 (PST)
+	id 1rSjtK-0050tN-09;
+	Wed, 24 Jan 2024 20:30:35 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40ecd47a0c5so2328495e9.0;
+        Wed, 24 Jan 2024 12:30:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706128228; x=1706733028; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6VI6vBuko+qXcZ57Ez3xJHzWek0A70ejNW+GSI4wbas=;
-        b=bKQRQC0H8C+4T4PGT3lvo5YpJlFe5HdLJ9WJOcxdJ2/GeDBxmqT+tm7IVsU6xJWVJg
-         gDVXkKw70ojUT4jobYw9K91QjftpuqekS/wiuLdM+7SwZr1cKNjJujmr2gVfxzCQD42E
-         QqNLt+JKS5bvLSthPolCudFaC2ipTKx7evsx2d/E3mMKekhWDD/41vYDckT7j9ZGdoih
-         ab0AKLP/5u82zC1MUL4AVTEoBUeAJkXjgCHFOy60sQ8AqziTqsu+5mFiEyl1254roa38
-         bVe+R589gLdOSete6b8eSKyEMrqqEUP4Wj4aoFiJJLlgGCn6VRCXHWTB63u5ciYBIDSC
-         pCtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706128228; x=1706733028;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1706128231; x=1706733031; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=6VI6vBuko+qXcZ57Ez3xJHzWek0A70ejNW+GSI4wbas=;
-        b=edXeGVZJ+oy8OxSXivHWFmMqyKZybC6DQd0VgIz0VTCZ7RZKBTo9YHPmfKz5qtx+Ow
-         y25uPNhfwTdMl86APsWrpbPPutYIb+mzMDBWegWDgIw2lQRQMeIhKGtkZP21Hi05HnPV
-         9XI60fkiQ9ltOjwjPC4ufgyXl8dGW+BR7jCfh/aUHBJMnGA0J0vd7oN3xNY/kAa3QD9J
-         aNlrzDz1iRNPUfhaTH2GWHrRNindHCvPZEjTpZrJsSFI/fFRYt738qcXsSHJdiTfN6Qf
-         Sf3M0KLC1aVYuPJDAzoURJvXRwvkbpLO6WZyUFzMnYG1ukCGdAMZtUum2bfHJqlbAAIR
-         5r0g==
-X-Gm-Message-State: AOJu0Yzf7XDdoybLwKHmQSC+Shh39IHzEzCKCGMtU3gpSi5qCfmYgLmY
-	EZdQAjx4xBp7qk0w5y7Y1lKojTfKWtP0hENrGysaRaGJgHxhaiu6
-X-Google-Smtp-Source: AGHT+IFyyDsTtkrw64HBFX1IHQsvIYAQH3MtMf9LlLq5GaTxcdXjVtLdyiil/BSAQyvnPaodlfUVWw==
-X-Received: by 2002:a1c:7905:0:b0:40e:aee0:125b with SMTP id l5-20020a1c7905000000b0040eaee0125bmr1534637wme.181.1706128227803;
-        Wed, 24 Jan 2024 12:30:27 -0800 (PST)
+        bh=rwDZ7OaLOoaTgMtKqR7jNk1DW8NZBJVNMOjbsbiqpKw=;
+        b=g3gc7CNuo0ncmx4Sx9rauqFcLLmgt0n4qEDdlNTlAUN3ipiTV4uU56InK9D4FDgbzH
+         4Azy2lXJkhbpEuOZUUhLLQKmvaQ19DLMiDAgSSN0j4ocPR37tGbGJu9+y58+JV2q83X/
+         XkY7bKxzjCac/oU4WIgLEPKIocWYgwOqWRg7X946J1HdrDjX/wIKZhk9JYXelDx1KEFP
+         1Tj+jK4hCG7XEkNSZnMRK6OV9+bQn8RWOiwzOr+twA5O+3sU5EUJok/ZVqakagDPYCPS
+         YNq1YTOPxFMeDNXoXvtrT/qW+l0Y9ZXwPuAaB9Wi7qz8HA0TodPErxC6oRwfUZy3NGaU
+         FPIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706128231; x=1706733031;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rwDZ7OaLOoaTgMtKqR7jNk1DW8NZBJVNMOjbsbiqpKw=;
+        b=ZbJJbsnEBen9KBPknU1MdyXMYn5I7+3M7v+3WyaIMMWoj45lf6WqeLyqFHLSGSBMu8
+         DkB9A0LVqbZSZyEL2MxKnbAjwetf+cNcUongUoX0RNMb80mt5gkmBW4w6tPT5Y9rrNlY
+         RQrrL64wz+Iz3EAN9jCqcDypqojyY0TYhXno+3u9ruJg2BVrEIL2vsjYLZF2Bwa1B3VY
+         nULY0R36PuL0Dyx+hgytWwelGcCXaf17c2FArhiMfERZ4efDPcPoT175ezq4v+BlDLCt
+         rYZZX9TgnmhY/H9U9iqrEohyY9ix7h4vHvnxYjCrKrJBrJOZaqzYUTRKqBvnAZDlrGx/
+         QGJw==
+X-Gm-Message-State: AOJu0Yy7yFg2POsTN5sxVTybr1tr2StL+KNfg92PqHCQKHwIkzPp9T3i
+	8LyprFb3fQRoL0JERveW/OjHecCwlsMvZU/uF/AfMxQ07I6QUhg+1QDksvLbEumRkA==
+X-Google-Smtp-Source: AGHT+IGXbvOJHTK/rThOmT1crecXWEtTPAc8HXU8nW+Eq1Sw4iCNC6eKKbn+Ps8UFppe9Zq+1UH1kQ==
+X-Received: by 2002:a05:600c:2d8a:b0:40e:86eb:9e7e with SMTP id i10-20020a05600c2d8a00b0040e86eb9e7emr1405413wmg.142.1706128230991;
+        Wed, 24 Jan 2024 12:30:30 -0800 (PST)
 Received: from [172.30.32.188] ([2001:8f8:183b:50fb::d35])
-        by smtp.gmail.com with ESMTPSA id r15-20020a05600c458f00b0040d62f89381sm174073wmo.35.2024.01.24.12.30.23
+        by smtp.gmail.com with ESMTPSA id r15-20020a05600c458f00b0040d62f89381sm174073wmo.35.2024.01.24.12.30.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jan 2024 12:30:27 -0800 (PST)
+        Wed, 24 Jan 2024 12:30:30 -0800 (PST)
 From: Alexey Charkov <alchark@gmail.com>
-Subject: [PATCH 0/4] RK3588 and Rock 5B dts additions: thermal, OPP, rfkill
- and fan
-Date: Thu, 25 Jan 2024 00:30:03 +0400
-Message-Id: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
+Date: Thu, 25 Jan 2024 00:30:04 +0400
+Subject: [PATCH 1/4] arm64: dts: rockchip: add rfkill node for M.2 Key E
+ WiFi on rock-5b
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAEtzsWUC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDQyMT3aJs3ZSSYt3ElJTMEqBaIMssxTzJ1MjcwjzJUgmoraAoNS2zAmx
- kdGxtLQC0LgGSYgAAAA==
+Message-Id: <20240125-rk-dts-additions-v1-1-5879275db36f@gmail.com>
+References: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
+In-Reply-To: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -77,16 +77,16 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1706128223; l=2476;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1706128223; l=1054;
  i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=Zphw5jSFEs0fQt9R++0K1tpqDhgnJQ1WYKuZaCBTVvU=;
- b=OXPnsOQ5Iq/W0WZ1F4YtQlFxGEwUcI4fsa3zeywZTfuleBhP1Q23MJwIc0KuetJ9//8ditpY+
- gG16JPhk22uAWhz01j3ISMWisSWRfa07EfXZn7LNtnKOUFyZM7mm0HW
+ bh=WL2tRjg8ew8DqItHe5VMXx4XizhzUARbkSBb7xc+JjU=;
+ b=zUPpF+OtMc0JFVxYHKKr0Q3E8J3khN2xHdZhW5GT1e0hcSNmOdPXmJJg0T/SqCHyAK1DRPw26
+ ni6pTFSKc+TBft41+kwwrqfotSizXxL3GtEJwgKSxcEx/hSWQEW6UsV
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_123032_752102_A92D8968 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20240124_123034_082964_2D7AFE85 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,58 +103,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an assortment of device tree additions for RK3588(s) and their
-enablement on Radxa Rock5B.
-
-Thermal zone information and cooling maps is the follow-up to feedback
-received on v2 patch version [1] - thanks a lot to Dragan, Heiko and
-Daniel for review and comments. The patch adds passive cooling maps
-for the three separate CPU clusters found in RK3588, as well as
-critical trips for all TSADC channels. Enablement on Rock 5B was
-split out to a separate patch, where I also add active cooling via
-the PWM fan optionally available there. Other changes from v2:
- - Zero hysteresis for critical trips, per Daniel's guidance
- - Zero 'polling-delay' for zones having no active cooling maps,
-   given that the driver supports interrupts for crossing trip
-   temperature and thus doesn't need polling there, per Daniel's
-   guidance
- - Zero 'polling-delay-passive' for zones having no passive cooling,
-   per Daniel's guidance
- - Extra passive cooling alerts before the control temperature
-   to enable power allocation governor's PID parameters
-   initialization, per Daniel's guidance
- - Renamed the thermal zone tracking the middle of the chip
-   to package_thermal, per Dragan's guidance
-
-OPPs help actually scale CPU frequencies up and down for both cooling
-and performance - tested on Rock 5B under varied loads.
-
-RFKILL patch is the same one sent earlier just before the merge window
-opened [2]. It didn't get any feedback back then, so I'm just
-resending it here for ease of reference. Tested on Rock 5B with an
-Intel AX210 card.
-
-[1] https://lore.kernel.org/linux-rockchip/20240109192608.5981-1-alchark@gmail.com/
-[2] https://lore.kernel.org/linux-rockchip/20240106202650.22310-1-alchark@gmail.com/
+By default the GPIO pin that connects to the WiFi enable signal
+inside the M.2 Key E slot is driven low, resulting in impossibility
+to connect to any network. Add a DT node to expose it as an RFKILL
+device, which lets the WiFi driver or userspace toggle it as
+required.
 
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
-Alexey Charkov (4):
-      arm64: dts: rockchip: add rfkill node for M.2 Key E WiFi on rock-5b
-      arm64: dts: rockchip: enable built-in thermal monitoring on rk3588
-      arm64: dts: rockchip: enable temperature driven fan control on Rock 5B
-      arm64: dts: rockchip: Add OPP data for CPU cores on RK3588
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts |  32 +-
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi       | 374 ++++++++++++++++++++++++
- 2 files changed, 405 insertions(+), 1 deletion(-)
----
-base-commit: 615d300648869c774bd1fe54b4627bb0c20faed4
-change-id: 20240124-rk-dts-additions-a6d7b52787b9
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index a0e303c3a1dc..9b7bf6cec8bd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -58,6 +58,13 @@ fan: pwm-fan {
+ 		#cooling-cells = <2>;
+ 	};
+ 
++	rfkill {
++		compatible = "rfkill-gpio";
++		label = "rfkill-pcie-wlan";
++		radio-type = "wlan";
++		shutdown-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
++	};
++
+ 	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
 
-Best regards,
 -- 
-Alexey Charkov <alchark@gmail.com>
+2.43.0
 
 
 _______________________________________________
