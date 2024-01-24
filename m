@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 860D4C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jan 2024 20:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 454A7C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jan 2024 21:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PPe0PtqlNct+tZryDlD6I7YyCK/3fH7SugKijCPfCBo=; b=wlMmN/j7z3dgMQ
-	7UlA8tKloLtJGV+QUoifdRpttVCpSDgb4D013ITlmGtySY8l4inGtkxCN0/had04LphayLBHmzVQj
-	ZJZryLESAgqQwdpJgylYq45VaeVyva5c99MQJJJojIr/rAv9aAV9vR8+lUiy0/08XkzFJSZq/y7vE
-	ASd4I/AjbiqtPGAHpmD+UYzaffRO/0Q8qpDV9girt+KHeALqySZPy9Rmg8jF07dOwHlKaUnUks7Z9
-	bn0G2mjDfo3oM/mz9/d9/4HWGOpuJTinwotyevJzM6Si/qOC6IsmQZxyUQu+p+iH7beHuvlWp+eFE
-	w2iGCPnlEbXhRLZlAlTw==;
+	List-Owner; bh=HV2wqwLIbxwcBTXa0kVMxgA6hO79dwDOSJnDCCAqnsE=; b=zojT6oge6Latpq
+	HKkmQDydsTFYM25mLp0seUv8G4hb+9AlDNevyRWvSlXR8unPBzM/l/LBLUHwQlNEhayP+pH0FoGgG
+	cFSdZxMdOwwDU2Lp5C5gMvUDe+jn8E6/WZKdH419cthhX/+gFsPNsXO2AOSPUdyGSWymc2ZvGSiuv
+	l1jA6fpsthK9lPTH/+M2LkjXiFVjHc03WG/v0PUFF78eCuAazoaEoiJehHlxRPlr5/KbCTej7Rx+V
+	ryQq08Czc/o1dGhyfhmwpHtxv8iNKV/ixhJyoXtxygKiWM9XfLzgMdq3FA2Vq3RtTBjF1o7xBPBsR
+	8qygHYzB3DqUbqHZ+XTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjuJ-0051JC-0q;
-	Wed, 24 Jan 2024 20:31:35 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rSlEZ-005Dgm-0C;
+	Wed, 24 Jan 2024 21:56:35 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1rSjtY-0050wm-0N;
-	Wed, 24 Jan 2024 20:30:49 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-40e7065b7bdso69915275e9.3;
-        Wed, 24 Jan 2024 12:30:44 -0800 (PST)
+	id 1rSlET-005Dby-2Z
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 Jan 2024 21:56:32 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40e7065b7bdso70787655e9.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Jan 2024 13:56:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706128243; x=1706733043; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=szXmS7HmgictJ5RAkHxueDyLdRYR+rfDMMc1ONVgan0=;
-        b=Ah/JZgPGEiaNjvB2DETtx6hx/Yd0X45m5pLPSWpFf2PSohJ+2oSuFUzVtwo9eaLduc
-         pqsDZRSYb2B52kK8LTEDkvpgNxOul4LJFAwV3PHKEt/DuAhSLDWpehShpQVrbW1AIFmc
-         EnN61MF2M7pukwpsr6pioi95/8HOiZEEGmSs7RzFNPRHt43MDOU3ujx2DHxUh+pZpluJ
-         uUxgMk43X/01aRmO+ba+H6KtaCmo7S+V+0yIQPIj99wdoswvEEuphdTVtCnrMQRDbv0p
-         VnQjKDaLRI27Yyz+/xg0VSrypmfoIYeELWLkXhkrQMtro+Kwa83NzNN0nkO2ZhU5gLBm
-         olHg==
+        d=linaro.org; s=google; t=1706133383; x=1706738183; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EdTvmEU+xHHgmqyOex/ty2VAc9Q/TL690DSs8BPGiJc=;
+        b=vLEtRiEmKeiN2AVTkXC5u6Sqk9dYGoZzFPKj4AONvZNTWbzVtL0CkUxXFI81UK7FSD
+         YkUFTCJ7EW5h0TlyGAn+QxJdaBFCGf0IeMJaIim2eLMH5+6Ukei837EdVOWcwffrcs/S
+         T0tQujyfXYZl03PVAqDVhp54aq49fcJQEWzA7oyefgYFt75A+Hl3M6nRXonn3fMKukFJ
+         LjEs1hTVKvgB/9p2JbNoVhnIouNEs5VBNy5CIMix0xZOdKV8Xx/4h2ruls3W5PFEKb7F
+         mGrKTl1J3MT4rJZB6WFmWizJOZtFkgWs6TOw4ukwypPwkxRLjTmGh7ScMXnJ0zPR5bVo
+         AdUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706128243; x=1706733043;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=szXmS7HmgictJ5RAkHxueDyLdRYR+rfDMMc1ONVgan0=;
-        b=UB0BuimJ9o6MkIyW8TlbYW+R0bIZkdZZ5Tjk4jhgZM2qjDw7xRkk65aV9SsW2p8luo
-         6T/JR/61L79QOZvmaaWQCNA0+4D2Z4sS7tFcQkxNlBcRwBf1Ocg1xDekEqxuxvsfp/Mc
-         ymizHCSY4pupFMrrM3Erjg590P9IfaycC+YyOwxPVoaPxaF21JAWTk+NST0locYZWwCw
-         1Ub2TT+SHbdPLuI5fnTejielwQLllRUb+s6for+qZPvqsVR1ruvbWRbC7Ogobnnt0QZ1
-         N5GgIdQNN0+zryd1X06C6CtKFpkdXBzOwCqhIU/hoNBev3MGSSk2R9om12IfEmBHu85x
-         pBVg==
-X-Gm-Message-State: AOJu0YxnHoEBtSKVCvPJEYgTR4eZS2+jRBVeBHf0dWBV7IPuiI6QsIbK
-	zYgTB/6oe8xtqlLT8gL6Hx6xb0UKHgLsRZV440VIsVfKD31tLukU
-X-Google-Smtp-Source: AGHT+IFvOcW0SfdrgXgun/JC1D49FDUDLHin1aupGwZRNz+xHqfknIHxIjah7udRXtf7RnvMZKOU1w==
-X-Received: by 2002:a05:600c:3b88:b0:40e:c4c8:8ac1 with SMTP id n8-20020a05600c3b8800b0040ec4c88ac1mr845741wms.85.1706128243492;
-        Wed, 24 Jan 2024 12:30:43 -0800 (PST)
-Received: from [172.30.32.188] ([2001:8f8:183b:50fb::d35])
-        by smtp.gmail.com with ESMTPSA id r15-20020a05600c458f00b0040d62f89381sm174073wmo.35.2024.01.24.12.30.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jan 2024 12:30:43 -0800 (PST)
-From: Alexey Charkov <alchark@gmail.com>
-Date: Thu, 25 Jan 2024 00:30:07 +0400
-Subject: [PATCH 4/4] arm64: dts: rockchip: Add OPP data for CPU cores on
- RK3588
+        d=1e100.net; s=20230601; t=1706133383; x=1706738183;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EdTvmEU+xHHgmqyOex/ty2VAc9Q/TL690DSs8BPGiJc=;
+        b=e8XDkTNrsu0NXar6J7U8dfZ5qait64JIvtaBx6FNzVChUoHbuHyqhCvwFILLwVt39R
+         wZuRkFVt4QFF1Jr2qLcJDhtTV08vKB9GvBChXO2nNvvSM8rf/R52CKE4kXE2TQ8lLx03
+         yzH1xpkcxV6Q0PcOnFy6NgsW/lBHloajhKatmggLEvOEE5Pysa6czHZ1c+Z4F1jHmh4L
+         K8BrWjYsSTFkxPoh3pvZz0cwlCrCWfbspC9f3Fw6TUSan/UoLtGUitvqmnCXxwIC8NMY
+         9Ga42KB2HW5otXJ8D01siPtNYq/pPWAMARNddz0/zAEWp4/ZAf92nL1vTRFzaWoKhzfh
+         rpqA==
+X-Gm-Message-State: AOJu0Yy8bS+oyHacG77gtFMm5drQwz1CzaTZlyeMfoA121QkYV/o8DyU
+	szqKLffRGfMy6RqBbuyQ+FxOpB5ahsItp3AUnBAkXJjmjeHIc5HJ8ip4si/q0Mk=
+X-Google-Smtp-Source: AGHT+IGFN1yZ6bkhyyR0G3nSuRypLXrxZfSyl7bbfq6gvKvNiRN9o22JGYpQGM1U0hToOzmUoKPSdg==
+X-Received: by 2002:a05:600c:4ed2:b0:40e:bfca:f1b8 with SMTP id g18-20020a05600c4ed200b0040ebfcaf1b8mr996061wmq.54.1706133382771;
+        Wed, 24 Jan 2024 13:56:22 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:92d0:e652:43b1:5e6a? ([2a05:6e02:1041:c10:92d0:e652:43b1:5e6a])
+        by smtp.googlemail.com with ESMTPSA id t15-20020a05600c198f00b0040e395cd20bsm377273wmq.7.2024.01.24.13.56.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 24 Jan 2024 13:56:22 -0800 (PST)
+Message-ID: <245f5692-be30-4216-8b13-988092793732@linaro.org>
+Date: Wed, 24 Jan 2024 22:56:21 +0100
 MIME-Version: 1.0
-Message-Id: <20240125-rk-dts-additions-v1-4-5879275db36f@gmail.com>
-References: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
-In-Reply-To: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: enable built-in thermal
+ monitoring on rk3588
+To: Alexey Charkov <alchark@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, 
- Dragan Simic <dsimic@manjaro.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1706128223; l=8740;
- i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=JJqT9UTpf85L5Gq2NC1bIoVV2fXmQ+hsdNDZBhO5wms=;
- b=pSX8bHCbBcvrohGdJ2VDdnz7u/QyP80+XkWJHVuTXKnzmrrPyZTvqljNk1DpRKs6L+oFZO5ib
- 7pimpVJ6J4vCfqmrujOdGgkN1nB9lw2jdqA6la6B0IeTyCtyF4mraKq
-X-Developer-Key: i=alchark@gmail.com; a=ed25519;
- pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
+Cc: Dragan Simic <dsimic@manjaro.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com>
+ <20240125-rk-dts-additions-v1-2-5879275db36f@gmail.com>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20240125-rk-dts-additions-v1-2-5879275db36f@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240124_123048_158154_58AB52A7 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20240124_135629_836301_47FB5B58 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,302 +93,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-By default the CPUs on RK3588 start up in a conservative performance
-mode. Add frequency and voltage mappings to the device tree to enable
-dynamic scaling via cpufreq
-
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 209 ++++++++++++++++++++++++++++++
- 1 file changed, 209 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 131b9eb21398..e605be531a0f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -97,6 +97,7 @@ cpu_l0: cpu@0 {
- 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
- 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUL>;
- 			assigned-clock-rates = <816000000>;
-+			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <32768>;
- 			i-cache-line-size = <64>;
-@@ -116,6 +117,7 @@ cpu_l1: cpu@100 {
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <530>;
- 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
-+			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <32768>;
- 			i-cache-line-size = <64>;
-@@ -135,6 +137,7 @@ cpu_l2: cpu@200 {
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <530>;
- 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
-+			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <32768>;
- 			i-cache-line-size = <64>;
-@@ -154,6 +157,7 @@ cpu_l3: cpu@300 {
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <530>;
- 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
-+			operating-points-v2 = <&cluster0_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <32768>;
- 			i-cache-line-size = <64>;
-@@ -175,6 +179,7 @@ cpu_b0: cpu@400 {
- 			clocks = <&scmi_clk SCMI_CLK_CPUB01>;
- 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB01>;
- 			assigned-clock-rates = <816000000>;
-+			operating-points-v2 = <&cluster1_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <65536>;
- 			i-cache-line-size = <64>;
-@@ -194,6 +199,7 @@ cpu_b1: cpu@500 {
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			clocks = <&scmi_clk SCMI_CLK_CPUB01>;
-+			operating-points-v2 = <&cluster1_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <65536>;
- 			i-cache-line-size = <64>;
-@@ -215,6 +221,7 @@ cpu_b2: cpu@600 {
- 			clocks = <&scmi_clk SCMI_CLK_CPUB23>;
- 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB23>;
- 			assigned-clock-rates = <816000000>;
-+			operating-points-v2 = <&cluster2_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <65536>;
- 			i-cache-line-size = <64>;
-@@ -234,6 +241,7 @@ cpu_b3: cpu@700 {
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			clocks = <&scmi_clk SCMI_CLK_CPUB23>;
-+			operating-points-v2 = <&cluster2_opp_table>;
- 			cpu-idle-states = <&CPU_SLEEP>;
- 			i-cache-size = <65536>;
- 			i-cache-line-size = <64>;
-@@ -348,6 +356,207 @@ l3_cache: l3-cache {
- 		};
- 	};
- 
-+	cluster0_opp_table: opp-table-cluster0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-408000000 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <675000 675000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-600000000 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <675000 675000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-816000000 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <675000 675000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1008000000 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <675000 675000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <712500 712500 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <762500 762500 950000>;
-+			clock-latency-ns = <40000>;
-+			opp-suspend;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <850000 850000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1800000000 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <950000 950000 950000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+
-+	cluster1_opp_table: opp-table-cluster1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-408000000 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+			opp-suspend;
-+		};
-+		opp-600000000 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-816000000 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1008000000 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <725000 725000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <762500 762500 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1800000000 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <850000 850000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2016000000 {
-+			opp-hz = /bits/ 64 <2016000000>;
-+			opp-microvolt = <925000 925000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2208000000 {
-+			opp-hz = /bits/ 64 <2208000000>;
-+			opp-microvolt = <987500 987500 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2256000000 {
-+			opp-hz = /bits/ 64 <2256000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2304000000 {
-+			opp-hz = /bits/ 64 <2304000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2352000000 {
-+			opp-hz = /bits/ 64 <2352000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2400000000 {
-+			opp-hz = /bits/ 64 <2400000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+
-+	cluster2_opp_table: opp-table-cluster2 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-408000000 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+			opp-suspend;
-+		};
-+		opp-600000000 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-816000000 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1008000000 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <675000 675000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1416000000 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <725000 725000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1608000000 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <762500 762500 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1800000000 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <850000 850000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2016000000 {
-+			opp-hz = /bits/ 64 <2016000000>;
-+			opp-microvolt = <925000 925000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2208000000 {
-+			opp-hz = /bits/ 64 <2208000000>;
-+			opp-microvolt = <987500 987500 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2256000000 {
-+			opp-hz = /bits/ 64 <2256000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2304000000 {
-+			opp-hz = /bits/ 64 <2304000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2352000000 {
-+			opp-hz = /bits/ 64 <2352000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-2400000000 {
-+			opp-hz = /bits/ 64 <2400000000>;
-+			opp-microvolt = <1000000 1000000 1000000>;
-+			clock-latency-ns = <40000>;
-+		};
-+	};
-+
- 	firmware {
- 		optee: optee {
- 			compatible = "linaro,optee-tz";
-
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjQvMDEvMjAyNCAyMTozMCwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4gSW5jbHVkZSB0aGVy
+bWFsIHpvbmVzIGluZm9ybWF0aW9uIGluIGRldmljZSB0cmVlIGZvciByazM1ODggdmFyaWFudHMK
+ClRoZXJlIGlzIGFuIGVuZXJneSBtb2RlbCBmb3IgdGhlIENQVXMuIEJ1dCBmaW5kaW5nIG91dCB0
+aGUgc3VzdGFpbmFibGUgCnBvd2VyIG1heSBiZSBhIGJpdCB0cmlja3kuIFNvIEkgc3VnZ2VzdCB0
+byByZW1vdmUgZXZlcnl0aGluZyByZWxhdGVkIHRvIAp0aGUgcG93ZXIgYWxsb2NhdG9yIGluIHRo
+aXMgY2hhbmdlIGFuZCBwcm9wb3NlIGEgZGVkaWNhdGVkIGNoYW5nZSB3aXRoIAphbGwgdGhlIHBv
+d2VyIGNvbmZpZ3VyYXRpb24gKHdoaWNoIGluY2x1ZGVzIHByb3BlciBrX3AqIGNvZWZmaWNpZW50
+cyB0byAKYmUgc2V0IGZyb20gdXNlcnNwYWNlIHRvIGhhdmUgYSBmbGF0IG1pdGlnYXRpb24gZmln
+dXJlKS4KClRoYXQgaW1wbGllcyByZW1vdmluZyB0aGUgImNvbnRyaWJ1dGlvbiIgcHJvcGVydGll
+cyBpbiB0aGlzIGRlc2NyaXB0aW9uLgoKU29tZSBjb21tZW50cyBiZWxvdyBidXQgZGVmaW5pdGl2
+ZWx5IHRoaXMgdmVyc2lvbiBpcyBjbG9zZSB0byBiZSBvay4KCgo+IFNpZ25lZC1vZmYtYnk6IEFs
+ZXhleSBDaGFya292IDxhbGNoYXJrQGdtYWlsLmNvbT4KPiAtLS0KPiAgIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpIHwgMTY1ICsrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDE2NSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy5kdHNpIGIvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLmR0c2kKPiBpbmRleCAzNmIxYjdhY2ZlNmEu
+LjEzMWI5ZWIyMTM5OCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzU4OHMuZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
+cy5kdHNpCj4gQEAgLTEwLDYgKzEwLDcgQEAKPiAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9yZXNl
+dC9yb2NrY2hpcCxyazM1ODgtY3J1Lmg+Cj4gICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcGh5L3Bo
+eS5oPgo+ICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2F0YS9haGNpLmg+Cj4gKyNpbmNsdWRlIDxk
+dC1iaW5kaW5ncy90aGVybWFsL3RoZXJtYWwuaD4KPiAgIAo+ICAgLyB7Cj4gICAJY29tcGF0aWJs
+ZSA9ICJyb2NrY2hpcCxyazM1ODgiOwo+IEBAIC0yMjI4LDYgKzIyMjksMTcwIEBAIHRzYWRjOiB0
+c2FkY0BmZWMwMDAwMCB7Cj4gICAJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gICAJfTsKPiAgIAo+
+ICsJdGhlcm1hbF96b25lczogdGhlcm1hbC16b25lcyB7Cj4gKwkJLyogc2Vuc29yIG5lYXIgdGhl
+IGNlbnRlciBvZiB0aGUgd2hvbGUgY2hpcCAqLwo+ICsJCXBhY2thZ2VfdGhlcm1hbDogcGFja2Fn
+ZS10aGVybWFsIHsKPiArCQkJcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDA+Owo+ICsJCQlwb2xs
+aW5nLWRlbGF5ID0gPDA+Owo+ICsJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRzYWRjIDA+Owo+ICsK
+PiArCQkJdHJpcHMgewo+ICsJCQkJcGFja2FnZV9jcml0OiBwYWNrYWdlLWNyaXQgewo+ICsJCQkJ
+CXRlbXBlcmF0dXJlID0gPDExNTAwMD47Cj4gKwkJCQkJaHlzdGVyZXNpcyA9IDwwPjsKPiArCQkJ
+CQl0eXBlID0gImNyaXRpY2FsIjsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwkJfTsKPiArCj4gKwkJ
+Lyogc2Vuc29yIGJldHdlZW4gQTc2IGNvcmVzIDAgYW5kIDEgKi8KPiArCQliaWdjb3JlMF90aGVy
+bWFsOiBiaWdjb3JlMC10aGVybWFsIHsKPiArCQkJcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDIw
+PjsKCjIwbXMgc2VlbXMgdmVyeSBzaG9ydCwgaXMgdGhpcyB2YWx1ZSBvbiBwdXJwb3NlPyBPciBq
+dXN0IHBpY2tlZCB1cCAKYXJiaXRyYXJpbHk/CgpJZiBpdCBpcyBwb3NzaWJsZSwgcGVyaGFwcyB5
+b3Ugc2hvdWxkIHByb2ZpbGUgdGhlIHRlbXBlcmF0dXJlIG9mIHRoZXNlIAp0aGVybWFsIHpvbmVz
+IChDUFVzIG9uZXMpLiBUaGVyZSBpcyBhIHRvb2wgaW4gCjxsaW51eGRpcj4vdG9vbHMvdGhlcm1h
+bC90aGVybW9tZXRlciB0byBkbyB0aGF0LgoKWW91IGNhbiBtZWFzdXJlIHdpdGggMTBtcyBzYW1w
+bGluZyByYXRlIHdoZW4gcnVubmluZyBmb3IgaW5zdGFuY2UgCmRocnlzdG9uZSBwaW5uZWQgb24g
+YjAgYW5kIGIxLCB0aGVuIG9uIGIyIGFuZCBiMy4gQW5kIGZpbmFsbHkgb24gdGhlIApzbWFsbCBj
+bHVzdGVyLgoKQnV0IGlmIHlvdSBkb24ndCBoYXZlIHNwYXJlIHRpbWUgYW5kIDIwIGlzIG9rIGZv
+ciB5b3UuIFRoZW4gaXQgaXMgZmluZSAKZm9yIG1lIHRvby4KClNvbWUgbml0cyBiZWxvdy4KCj4g
+KwkJCXBvbGxpbmctZGVsYXkgPSA8MD47Cj4gKwkJCXRoZXJtYWwtc2Vuc29ycyA9IDwmdHNhZGMg
+MT47Cj4gKwo+ICsJCQl0cmlwcyB7Cj4gKwkJCQliaWdjb3JlMF9hbGVydDA6IGJpZ2NvcmUwLWFs
+ZXJ0MCB7Cj4gKwkJCQkJdGVtcGVyYXR1cmUgPSA8NzUwMDA+Owo+ICsJCQkJCWh5c3RlcmVzaXMg
+PSA8MjAwMD47Cj4gKwkJCQkJdHlwZSA9ICJwYXNzaXZlIjsKPiArCQkJCX07Cj4gKwkJCQliaWdj
+b3JlMF9hbGVydDE6IGJpZ2NvcmUwLWFsZXJ0MSB7Cj4gKwkJCQkJdGVtcGVyYXR1cmUgPSA8ODUw
+MDA+Owo+ICsJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47Cj4gKwkJCQkJdHlwZSA9ICJwYXNzaXZl
+IjsKPiArCQkJCX07Cj4gKwkJCQliaWdjb3JlMF9jcml0OiBiaWdjb3JlMC1jcml0IHsKPiArCQkJ
+CQl0ZW1wZXJhdHVyZSA9IDwxMTUwMDA+Owo+ICsJCQkJCWh5c3RlcmVzaXMgPSA8MD47Cj4gKwkJ
+CQkJdHlwZSA9ICJjcml0aWNhbCI7Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCQljb29saW5nLW1h
+cHMgewo+ICsJCQkJbWFwMCB7Cj4gKwkJCQkJdHJpcCA9IDwmYmlnY29yZTBfYWxlcnQxPjsKPiAr
+CQkJCQljb29saW5nLWRldmljZSA9Cj4gKwkJCQkJCTwmY3B1X2IwIFRIRVJNQUxfTk9fTElNSVQg
+VEhFUk1BTF9OT19MSU1JVD4sCj4gKwkJCQkJCTwmY3B1X2IxIFRIRVJNQUxfTk9fTElNSVQgVEhF
+Uk1BTF9OT19MSU1JVD47Cj4gKwkJCQkJY29udHJpYnV0aW9uID0gPDEwMjQ+Owo+ICsJCQkJfTsK
+PiArCQkJfTsKPiArCQl9Owo+ICsKPiArCQkvKiBzZW5zb3IgYmV0d2VlbiBBNzYgY29yZXMgMiBh
+bmQgMyAqLwo+ICsJCWJpZ2NvcmUyX3RoZXJtYWw6IGJpZ2NvcmUyLXRoZXJtYWwgewo+ICsJCQlw
+b2xsaW5nLWRlbGF5LXBhc3NpdmUgPSA8MjA+Owo+ICsJCQlwb2xsaW5nLWRlbGF5ID0gPDA+Owo+
+ICsJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRzYWRjIDI+Owo+ICsKPiArCQkJdHJpcHMgewo+ICsJ
+CQkJYmlnY29yZTJfYWxlcnQwOiBiaWdjb3JlMi1hbGVydDAgewo+ICsJCQkJCXRlbXBlcmF0dXJl
+ID0gPDc1MDAwPjsKPiArCQkJCQloeXN0ZXJlc2lzID0gPDIwMDA+Owo+ICsJCQkJCXR5cGUgPSAi
+cGFzc2l2ZSI7Cj4gKwkJCQl9Owo+ICsJCQkJYmlnY29yZTJfYWxlcnQxOiBiaWdjb3JlMi1hbGVy
+dDEgewo+ICsJCQkJCXRlbXBlcmF0dXJlID0gPDg1MDAwPjsKPiArCQkJCQloeXN0ZXJlc2lzID0g
+PDIwMDA+Owo+ICsJCQkJCXR5cGUgPSAicGFzc2l2ZSI7Cj4gKwkJCQl9Owo+ICsJCQkJYmlnY29y
+ZTJfY3JpdDogYmlnY29yZTItY3JpdCB7Cj4gKwkJCQkJdGVtcGVyYXR1cmUgPSA8MTE1MDAwPjsK
+PiArCQkJCQloeXN0ZXJlc2lzID0gPDA+Owo+ICsJCQkJCXR5cGUgPSAiY3JpdGljYWwiOwo+ICsJ
+CQkJfTsKPiArCQkJfTsKPiArCQkJY29vbGluZy1tYXBzIHsKPiArCQkJCW1hcDEgewoKcy9tYXAx
+L21wYTAvCgo+ICsJCQkJCXRyaXAgPSA8JmJpZ2NvcmUyX2FsZXJ0MT47Cj4gKwkJCQkJY29vbGlu
+Zy1kZXZpY2UgPQo+ICsJCQkJCQk8JmNwdV9iMiBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9f
+TElNSVQ+LAo+ICsJCQkJCQk8JmNwdV9iMyBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9fTElN
+SVQ+Owo+ICsJCQkJCWNvbnRyaWJ1dGlvbiA9IDwxMDI0PjsKPiArCQkJCX07Cj4gKwkJCX07Cj4g
+KwkJfTsKPiArCj4gKwkJLyogc2Vuc29yIGJldHdlZW4gdGhlIGZvdXIgQTU1IGNvcmVzICovCj4g
+KwkJbGl0dGxlX2NvcmVfdGhlcm1hbDogbGl0dGxlY29yZS10aGVybWFsIHsKPiArCQkJcG9sbGlu
+Zy1kZWxheS1wYXNzaXZlID0gPDIwPjsKPiArCQkJcG9sbGluZy1kZWxheSA9IDwwPjsKPiArCQkJ
+dGhlcm1hbC1zZW5zb3JzID0gPCZ0c2FkYyAzPjsKPiArCj4gKwkJCXRyaXBzIHsKPiArCQkJCWxp
+dHRsZWNvcmVfYWxlcnQwOiBsaXR0bGVjb3JlLWFsZXJ0MCB7Cj4gKwkJCQkJdGVtcGVyYXR1cmUg
+PSA8NzUwMDA+Owo+ICsJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47Cj4gKwkJCQkJdHlwZSA9ICJw
+YXNzaXZlIjsKPiArCQkJCX07Cj4gKwkJCQlsaXR0bGVjb3JlX2FsZXJ0MTogbGl0dGxlY29yZS1h
+bGVydDEgewo+ICsJCQkJCXRlbXBlcmF0dXJlID0gPDg1MDAwPjsKPiArCQkJCQloeXN0ZXJlc2lz
+ID0gPDIwMDA+Owo+ICsJCQkJCXR5cGUgPSAicGFzc2l2ZSI7Cj4gKwkJCQl9Owo+ICsJCQkJbGl0
+dGxlY29yZV9jcml0OiBsaXR0bGVjb3JlLWNyaXQgewo+ICsJCQkJCXRlbXBlcmF0dXJlID0gPDEx
+NTAwMD47Cj4gKwkJCQkJaHlzdGVyZXNpcyA9IDwwPjsKPiArCQkJCQl0eXBlID0gImNyaXRpY2Fs
+IjsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwkJCWNvb2xpbmctbWFwcyB7Cj4gKwkJCQltYXAyIHsK
+CnMvbWFwMi9tYXAwLwoKPiArCQkJCQl0cmlwID0gPCZsaXR0bGVjb3JlX2FsZXJ0MT47Cj4gKwkJ
+CQkJY29vbGluZy1kZXZpY2UgPQo+ICsJCQkJCQk8JmNwdV9sMCBUSEVSTUFMX05PX0xJTUlUIFRI
+RVJNQUxfTk9fTElNSVQ+LAo+ICsJCQkJCQk8JmNwdV9sMSBUSEVSTUFMX05PX0xJTUlUIFRIRVJN
+QUxfTk9fTElNSVQ+LAo+ICsJCQkJCQk8JmNwdV9sMiBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxf
+Tk9fTElNSVQ+LAo+ICsJCQkJCQk8JmNwdV9sMyBUSEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9f
+TElNSVQ+Owo+ICsJCQkJCWNvbnRyaWJ1dGlvbiA9IDwxMDI0PjsKPiArCQkJCX07Cj4gKwkJCX07
+Cj4gKwkJfTsKPiArCj4gKwkJLyogc2Vuc29yIG5lYXIgdGhlIFBEX0NFTlRFUiBwb3dlciBkb21h
+aW4gKi8KPiArCQljZW50ZXJfdGhlcm1hbDogY2VudGVyLXRoZXJtYWwgewo+ICsJCQlwb2xsaW5n
+LWRlbGF5LXBhc3NpdmUgPSA8MD47Cj4gKwkJCXBvbGxpbmctZGVsYXkgPSA8MD47Cj4gKwkJCXRo
+ZXJtYWwtc2Vuc29ycyA9IDwmdHNhZGMgND47Cj4gKwo+ICsJCQl0cmlwcyB7Cj4gKwkJCQljZW50
+ZXJfY3JpdDogY2VudGVyLWNyaXQgewo+ICsJCQkJCXRlbXBlcmF0dXJlID0gPDExNTAwMD47Cj4g
+KwkJCQkJaHlzdGVyZXNpcyA9IDwwPjsKPiArCQkJCQl0eXBlID0gImNyaXRpY2FsIjsKPiArCQkJ
+CX07Cj4gKwkJCX07Cj4gKwkJfTsKPiArCj4gKwkJZ3B1X3RoZXJtYWw6IGdwdS10aGVybWFsIHsK
+PiArCQkJcG9sbGluZy1kZWxheS1wYXNzaXZlID0gPDA+Owo+ICsJCQlwb2xsaW5nLWRlbGF5ID0g
+PDA+Owo+ICsJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRzYWRjIDU+Owo+ICsKPiArCQkJdHJpcHMg
+ewo+ICsJCQkJZ3B1X2NyaXQ6IGdwdS1jcml0IHsKPiArCQkJCQl0ZW1wZXJhdHVyZSA9IDwxMTUw
+MDA+Owo+ICsJCQkJCWh5c3RlcmVzaXMgPSA8MD47Cj4gKwkJCQkJdHlwZSA9ICJjcml0aWNhbCI7
+Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCX07Cj4gKwo+ICsJCW5wdV90aGVybWFsOiBucHUtdGhl
+cm1hbCB7Cj4gKwkJCXBvbGxpbmctZGVsYXktcGFzc2l2ZSA9IDwwPjsKPiArCQkJcG9sbGluZy1k
+ZWxheSA9IDwwPjsKPiArCQkJdGhlcm1hbC1zZW5zb3JzID0gPCZ0c2FkYyA2PjsKPiArCj4gKwkJ
+CXRyaXBzIHsKPiArCQkJCW5wdV9jcml0OiBucHUtY3JpdCB7Cj4gKwkJCQkJdGVtcGVyYXR1cmUg
+PSA8MTE1MDAwPjsKPiArCQkJCQloeXN0ZXJlc2lzID0gPDA+Owo+ICsJCQkJCXR5cGUgPSAiY3Jp
+dGljYWwiOwo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiArCj4gICAJc2FyYWRj
+OiBhZGNAZmVjMTAwMDAgewo+ICAgCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC1zYXJh
+ZGMiOwo+ICAgCQlyZWcgPSA8MHgwIDB4ZmVjMTAwMDAgMHgwIDB4MTAwMDA+Owo+IAoKLS0gCjxo
+dHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2Fy
+ZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9vay5jb20v
+cGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGluYXJvb3Jn
+PiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJsb2cKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
