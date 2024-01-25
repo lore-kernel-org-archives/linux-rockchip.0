@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4150C4828A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jan 2024 21:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0494EC47258
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jan 2024 21:12:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/NYdLnsZ43941WEnBSuQcCDtG/jARwm6q9IZ7w/+F20=; b=V2ZBcQ1f0F/MwO
-	T7bhVRzRwKi6n0LgBcAhFaq4J+Wz2s1cRK6U28Hae6fHMjwBuJM5osLgK5N7NQeJJpjE9ydI47L0I
-	nJQ9qIQ3G7dL+C168xX27wooO85vncLJf+P74N4c1J1WtauqxzrDoe0lvY3SFl56xzTqfO3B7PlU9
-	5WDyUEhuqbLqzcQNzBln629qJzeQ2Ei+7FEnVAEh97wnAfoTQo94yIaRXQKOvJ8s03Zbij3f+Popw
-	67IR8ddqxjvYcr8MCdYV4EfZ22qib8etdFbSQ4TteAJ0dNAD4X9bMhlgBqp1Z1qSgpjMxYTR+juY0
-	M+WPfHhMEM7lCpDvWGog==;
+	List-Owner; bh=anCw5HDGgI5SLO3MyqQgClVoQ6nLk1EuoqZESEwHKSU=; b=FTQFwlDF0igHvv
+	lqrbtFm8P3fU7CIL8y9S35w56HzxCcxI9+NWl1PeyFJ/JW/lhjQKcd2C+r2NYLtopOAvissQh/jfg
+	WU62lwyHXxOQvFszaZzRCJXnF3cJdW1l5iMBVuk0EzL3mxu3Y7KPlWWb9HeiwcvHaiH1utaNg7DLg
+	isyLf1GAwMNeNAZh5c1EwiaWWKRpxm/tsclWnBZXHx7NI+8lwda1HgqxaPlOghck/Z69gEpJ/ScxE
+	7bLRV7di43jxXDFtbsJG3hHmzit2406hpEp1XX/xqeqEN3c0XuzO99LDdfVgcDUnNfGlGMaBiiKlu
+	pRXgLgFuBIRh1Dj+Y0hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT71S-00000001vGJ-01fP;
-	Thu, 25 Jan 2024 21:12:30 +0000
+	id 1rT71c-00000001vOa-3lKx;
+	Thu, 25 Jan 2024 21:12:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT71N-00000001vCs-02he;
-	Thu, 25 Jan 2024 21:12:26 +0000
+	id 1rT71N-00000001vCx-0ZQb
+	for linux-rockchip@lists.infradead.org;
+	Thu, 25 Jan 2024 21:12:27 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rT71J-0002EX-Sr; Thu, 25 Jan 2024 22:12:22 +0100
+	id 1rT71L-0002EX-Sk; Thu, 25 Jan 2024 22:12:23 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: conor+dt@kernel.org,
-	robh+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	Iskander Amara <iskander.amara@theobroma-systems.com>,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
+To: linux-rockchip@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	quentin.schulz@theobroma-systems.com
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
-Date: Thu, 25 Jan 2024 22:12:10 +0100
-Message-Id: <170621707722.1872080.5468349555925757842.b4-ty@sntech.de>
+	kernel@collabora.com,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: rk3588-evb1: mark system power controller
+Date: Thu, 25 Jan 2024 22:12:14 +0100
+Message-Id: <170621707723.1872080.11945045942033585251.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240103164734.1151290-1-iskander.amara@theobroma-systems.com>
-References: <20240103164734.1151290-1-iskander.amara@theobroma-systems.com>
+In-Reply-To: <20240117191555.86138-1-sebastian.reichel@collabora.com>
+References: <20240117191555.86138-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_131225_088892_EE971CCE 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20240125_131225_229546_A94F561D 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,21 +69,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 3 Jan 2024 17:47:34 +0100, Iskander Amara wrote:
-> Two pmuio domains on ringneck are not defined:
-> 	1- PMUIO1: supplied by vcc_3v3 regulator(PMIC RK809)
-> 	2- PMUIO2: supplied by vcc_3v3 regulator(PMIC RK809)
+On Wed, 17 Jan 2024 20:14:48 +0100, Sebastian Reichel wrote:
+> Mark the primary PMIC as system-power-controller, so that the
+> system properly shuts down on poweroff.
 > 
-> The reason why no functional effect was observed is because of that
-> the above mentionned PMUIO domains were supplied by a regulator
-> which is always on.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
-      commit: 16a9c74012c4e4bff6d493832cd648b486046ce1
+[1/1] arm64: dts: rockchip: rk3588-evb1: mark system power controller
+      commit: fc4657971be31ae679e2bbeee2fb8e93a7a063eb
 
 Best regards,
 -- 
