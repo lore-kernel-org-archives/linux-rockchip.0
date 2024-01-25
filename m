@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D22FAC48286
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jan 2024 21:12:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4150C4828A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jan 2024 21:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2gE0tGMjdD/u2Xl2nmimbtde68lbpUyaaZmHWu3dJKk=; b=mPqIsnDHxX9Jdq
-	4Vl3Bf71CQBHw5M2gtReNU7YL/QUyMlY/P1iFTCDrBsU0RV+TMfCq+Yppxy4w3P5MGoQxRljvUHWv
-	/Wm5h0MGI780CrZSD0Xw54yJPPvO/nnEO3CxG1TYPBPJz8P2mzUSkHk41xhNbG/fOaXKmULc7K2lw
-	wALJcn+SLg+3aTL4Hg6O0KHeFefNeSxlexEiVKCuvebXOkwpqpuu4Vp2F+4Mz6dJeG9/mFsE3t5ez
-	nWEqRPNQS/14XtDLOjjQ0vAUDWfK3WbmvEV92/T7T3ZO5vfwAvcf6bjBG/FGiVbwPlGxS/dYd8j8/
-	cjtT4mv3atsjZJj4Fn3w==;
+	List-Owner; bh=/NYdLnsZ43941WEnBSuQcCDtG/jARwm6q9IZ7w/+F20=; b=V2ZBcQ1f0F/MwO
+	T7bhVRzRwKi6n0LgBcAhFaq4J+Wz2s1cRK6U28Hae6fHMjwBuJM5osLgK5N7NQeJJpjE9ydI47L0I
+	nJQ9qIQ3G7dL+C168xX27wooO85vncLJf+P74N4c1J1WtauqxzrDoe0lvY3SFl56xzTqfO3B7PlU9
+	5WDyUEhuqbLqzcQNzBln629qJzeQ2Ei+7FEnVAEh97wnAfoTQo94yIaRXQKOvJ8s03Zbij3f+Popw
+	67IR8ddqxjvYcr8MCdYV4EfZ22qib8etdFbSQ4TteAJ0dNAD4X9bMhlgBqp1Z1qSgpjMxYTR+juY0
+	M+WPfHhMEM7lCpDvWGog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT71T-00000001vGq-1zAT;
-	Thu, 25 Jan 2024 21:12:31 +0000
+	id 1rT71S-00000001vGJ-01fP;
+	Thu, 25 Jan 2024 21:12:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rT71N-00000001vCw-01oq
-	for linux-rockchip@lists.infradead.org;
-	Thu, 25 Jan 2024 21:12:27 +0000
+	id 1rT71N-00000001vCs-02he;
+	Thu, 25 Jan 2024 21:12:26 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rT71L-0002EX-K2; Thu, 25 Jan 2024 22:12:23 +0100
+	id 1rT71J-0002EX-Sr; Thu, 25 Jan 2024 22:12:22 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Chris Morgan <macroalpha82@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	conor+dt@kernel.org,
+To: conor+dt@kernel.org,
 	robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	mturquette@baylibre.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
-	sboyd@kernel.org,
+	Iskander Amara <iskander.amara@theobroma-systems.com>,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH 0/4] Add Support for RK3566 Anbernic RG-ARC
-Date: Thu, 25 Jan 2024 22:12:13 +0100
-Message-Id: <170621707721.1872080.13657125176438385219.b4-ty@sntech.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	quentin.schulz@theobroma-systems.com
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
+Date: Thu, 25 Jan 2024 22:12:10 +0100
+Message-Id: <170621707722.1872080.5468349555925757842.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240123212111.202146-1-macroalpha82@gmail.com>
-References: <20240123212111.202146-1-macroalpha82@gmail.com>
+In-Reply-To: <20240103164734.1151290-1-iskander.amara@theobroma-systems.com>
+References: <20240103164734.1151290-1-iskander.amara@theobroma-systems.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240125_131225_092917_B777A1CA 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240125_131225_088892_EE971CCE 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,30 +68,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Jan 2024 15:21:07 -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Wed, 3 Jan 2024 17:47:34 +0100, Iskander Amara wrote:
+> Two pmuio domains on ringneck are not defined:
+> 	1- PMUIO1: supplied by vcc_3v3 regulator(PMIC RK809)
+> 	2- PMUIO2: supplied by vcc_3v3 regulator(PMIC RK809)
 > 
-> Add support for the Anbernic RG-ARC S and RG-ARC D handheld gaming
-> console.
-> 
-> Chris Morgan (4):
->   arm64: dts: rockchip: Move device specific properties
->   dt-bindings: arm: rockchip: Add Anbernic RG-Arc
->   clk: rockchip: rk3568: Add PLL rate for 128MHz
->   arm64: dts: rockchip: add Anbernic RG-ARC S and RG-ARC D
+> The reason why no functional effect was observed is because of that
+> the above mentionned PMUIO domains were supplied by a regulator
+> which is always on.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] arm64: dts: rockchip: Move device specific properties
-      commit: 46943b333d60b8f4998df359fe697254eb2f90ad
-[2/4] dt-bindings: arm: rockchip: Add Anbernic RG-Arc
-      commit: e441dd472eb23329de738f365a5429fe7e6f844b
-[3/4] clk: rockchip: rk3568: Add PLL rate for 128MHz
-      commit: b3244351e2b39bd49aba780ea204f0f2a45a4725
-[4/4] arm64: dts: rockchip: add Anbernic RG-ARC S and RG-ARC D
-      commit: 05a708c6ebcadfb6c506f649375ccfc56b572652
+[1/1] arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
+      commit: 16a9c74012c4e4bff6d493832cd648b486046ce1
 
 Best regards,
 -- 
