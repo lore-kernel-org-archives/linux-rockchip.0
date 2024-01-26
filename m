@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082AFC47DDB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 18:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DBB1C48285
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 18:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xWvRSCtp3vfM4KNF7sEt1pPu1ks+BoTGN7cNhf3NJ7k=; b=Tm1xLis/uVkIm6
-	5nUmqgIvL819G3dmBHasjoJL7kA4HrSabASKbdeOSh9cXynWnNbDjRa5FlfyKVeAPnrDzOzvtsQe0
-	dsnEd+eQhmAfzWsA1q2FE+nJr9goFdI6Vs4ZzJ/CFecehq8A2ES69BCVIzhBsDdtezVDi2IqbkFQ4
-	UFkd3+JQmlzdrDgBqv12AsF3gcjS+wShA+gqPeqWjMD9A/I6ZdwTBVxApYvCIEoX/LfxKNr0uI7ef
-	VfJbT5vpmsTHmpeckLspr79b5rsRmKAKt2MZjA9b+MSTj6zcULy/dbLuqhA48uAQhef0GuqL808TY
-	S8/DTAWeqfo8RAhybeMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HQocYtQWjqyMiSqNRDJVUBnPnTkgz8NEbLfEPNqmTwU=; b=BRtaIY7i8NsfFg
+	mkGGBVT6X+HEi7Tb53zMYs0u8rHAXhxJss7UJMO8S6V64L6i4yERgkAICvLPva+Hgb+Y5QBTVbsgS
+	XsuyQzE9WOTVD8iuBJGyUegKEfXf327TKefhQzRYvZgdYWwavvZH7KWBqLnDg3B9N4zoYtMomAY4j
+	WNEFL4XQoxKXZwQrwRToVHh2dJQEKHJtouqBMwDbsHNC/10eAVGDzMLnVo8RvBMHHNIGlgSbdwtpc
+	vo9dRqJpafziaCmrcfa2cxyIsXGq5snVBksQ6oxIRd6WYGaSkrfMjuzbjTVC58lVeX+Ek2cRerm0e
+	hXvwf6PnQt71Y94MDsLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTQxI-000000054Tp-3QO3;
-	Fri, 26 Jan 2024 18:29:32 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rTQxG-000000054ST-2lcb;
+	Fri, 26 Jan 2024 18:29:31 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTQxC-000000054OS-3wse
+	id 1rTQxC-000000054OU-2PBB
 	for linux-rockchip@lists.infradead.org;
-	Fri, 26 Jan 2024 18:29:29 +0000
+	Fri, 26 Jan 2024 18:29:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1706293762;
-	bh=1tPW8GrHlWUsQEkwO2MnvdVEo7+MHF/Flt6K9BKancg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=J7sErgsDAG0h0yxrGrUdIzhEq+mOEVIXb4RQ8p7cV19r8NpajMJ5cNc6PRizL2lMf
-	 BiKPhxZtcot2NyPkjvHAjgye3rEDmDvUstdvCgEOEwg9sz3D4bocZoQpAMKjqzpevi
-	 QEEw1+eU+uMsN+oLj2XQXSs6ND+MXyEe8z724BamplVByXguv/f2xWieBkXzLFfufz
-	 /l3rKkctdUpCzCB/x3cp63rXlh8bMvtna+qBW5TNVzvq25Bxyeq3DC9YVmodtJ8wGo
-	 YzauI3uQMu0MXgV65LaPt+oliZ1SY9deRHYcz9c+w+LfoSjrZ0iPWj3TZgWUl6JUyH
-	 3LZKICTzTnZSQ==
+	bh=qH4wgxYS/QxVVd4rAM7HJxckxSO0Woynsp+9EbTo41o=;
+	h=From:To:Cc:Subject:Date:From;
+	b=S3YJS3mBMQAO4i0ykGCkUQhuItHdFnun27O5imvtyTUezAfxaS/zTJgRoFqNBFDGE
+	 ajlYOsvZCOR1p1XW0LLnq1ZFTOR0nL00sNjfl+uOAeYCByx62W9M2qX4JRVZAgG0vn
+	 CEPqJh6LjiEDfh93Tz849QX/BYUgCEsSZ4uXDmtcgIUj3rrKBriohN0suIOX4fdoPl
+	 7wNZf5Mu+ukjK3bnWRQ0lUu4tPNLGqojZGK8i9N69US6c8yyM0dyEXvnQ4UK9fN8HB
+	 xxRaQoV5esBb9ksb9VY/JhtLTe1Gf7yS3VgDz/abkWByYQQTcWXGhWIm50xbl10/T2
+	 ffuX+Z2cgpcww==
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 18DA43782080;
-	Fri, 26 Jan 2024 18:29:22 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E7CAC37811D4;
+	Fri, 26 Jan 2024 18:29:21 +0000 (UTC)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 992A4482AC5; Fri, 26 Jan 2024 19:29:21 +0100 (CET)
+	id 915EC480C4D; Fri, 26 Jan 2024 19:29:21 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -62,16 +62,14 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v8 4/7] clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
-Date: Fri, 26 Jan 2024 19:18:25 +0100
-Message-ID: <20240126182919.48402-5-sebastian.reichel@collabora.com>
+Subject: [PATCH v8 0/7] rockchip: clk: improve GATE_LINK support
+Date: Fri, 26 Jan 2024 19:18:21 +0100
+Message-ID: <20240126182919.48402-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240126182919.48402-1-sebastian.reichel@collabora.com>
-References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_102927_220615_96D173C6 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20240126_102926_887935_122D903B 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,60 +86,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently pclk_vo1grf is not exposed, but it should be referenced
-from the vo1_grf syscon, which needs it enabled. That syscon is
-required for HDMI RX and TX functionality among other things.
+Hi,
 
-Apart from that pclk_vo0grf and pclk_vo1grf are both linked gates
-and need the VO's hclk enabled in addition to their parent clock.
+This is a follow-up for Elaine's series. These patches are written from
+scratch, though. There are two parts:
 
-No Fixes tag has been added, since the logic requiring these clocks
-is not yet upstream anyways.
+part 1:
+Elaine's series used to contain patches for the VO1GRF handling, but they were
+dropped at some point because of the CLK_NR_CLKS feedback from the DT
+maintainers. I added some code, that should hopefully fix everyones concerns by
+figuring out the right number at runtime. I also moved the correct handling of
+pclk_vo0grf/pclk_vo1grf before proper handling of GATE_LINK clocks, so that it
+can be merged ASAP. These patches are needed for HDMI RX/TX support on RK3588.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/clk/rockchip/clk-rk3588.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+part 2:
+For proper GATE_LINK support I tried implementing the suggestion from Stephen
+Boyd to use clk PM operations by creating MFD dynamically. This required some
+restructuring, since CLK_OF_DECLARE() is called before devices are available.
+All of this can be found in the last patch of this series.
 
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 0b60ae78f9d8..26330d655159 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -1851,8 +1851,6 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(56), 0, GFLAGS),
- 	GATE(PCLK_TRNG0, "pclk_trng0", "pclk_vo0_root", 0,
- 			RK3588_CLKGATE_CON(56), 1, GFLAGS),
--	GATE(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", CLK_IGNORE_UNUSED,
--			RK3588_CLKGATE_CON(55), 10, GFLAGS),
- 	COMPOSITE(CLK_I2S4_8CH_TX_SRC, "clk_i2s4_8ch_tx_src", gpll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(118), 5, 1, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(56), 11, GFLAGS),
-@@ -1998,8 +1996,6 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(60), 9, GFLAGS),
- 	GATE(PCLK_TRNG1, "pclk_trng1", "pclk_vo1_root", 0,
- 			RK3588_CLKGATE_CON(60), 10, GFLAGS),
--	GATE(0, "pclk_vo1grf", "pclk_vo1_root", CLK_IGNORE_UNUSED,
--			RK3588_CLKGATE_CON(59), 12, GFLAGS),
- 	GATE(PCLK_S_EDP0, "pclk_s_edp0", "pclk_vo1_s_root", 0,
- 			RK3588_CLKGATE_CON(59), 14, GFLAGS),
- 	GATE(PCLK_S_EDP1, "pclk_s_edp1", "pclk_vo1_s_root", 0,
-@@ -2447,12 +2443,14 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
- 	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", "aclk_vop_low_root", 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
--	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", "hclk_vop_root", 0, RK3588_CLKGATE_CON(55), 5, GFLAGS),
-+	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", "hclk_vop_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(55), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", "aclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
--	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", "hclk_vo1usb_top_root", 0, RK3588_CLKGATE_CON(59), 9, GFLAGS),
-+	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", "hclk_vo1usb_top_root", RK3588_LINKED_CLK, RK3588_CLKGATE_CON(59), 9, GFLAGS),
- 	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", "aclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
- 	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", "hclk_vdpu_root", 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
- 	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", "hclk_nvm", 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
-+	GATE_LINK(PCLK_VO0GRF, "pclk_vo0grf", "pclk_vo0_root", "hclk_vo0", CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(55), 10, GFLAGS),
-+	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", "hclk_vo1", CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(59), 12, GFLAGS),
- };
- 
- static void __init rk3588_clk_init(struct device_node *np)
+Changes since PATCHv7:
+ * https://lore.kernel.org/all/20231213185114.47565-1-sebastian.reichel@collabora.com/
+ * rebased to v6.8-rc1
+ * Collected Reviewed-by/Acked-by from Krzysztof Kozlowski for DT binding patches
+ * support nr_clk=0 in rockchip_clk_find_max_clk_id() for smatch
+
+Greetings,
+
+-- Sebstian
+
+Sebastian Reichel (7):
+  clk: rockchip: rk3588: fix CLK_NR_CLKS usage
+  dt-bindings: clock: rk3588: drop CLK_NR_CLKS
+  dt-bindings: clock: rk3588: add missing PCLK_VO1GRF
+  clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
+  clk: rockchip: rk3588: fix indent
+  clk: rockchip: rk3588: use linked clock ID for GATE_LINK
+  clk: rockchip: implement proper GATE_LINK support
+
+ drivers/clk/rockchip/clk-rk3588.c             | 163 ++++++++----------
+ drivers/clk/rockchip/clk.c                    |  86 ++++++++-
+ drivers/clk/rockchip/clk.h                    |  18 ++
+ .../dt-bindings/clock/rockchip,rk3588-cru.h   |   3 +-
+ 4 files changed, 179 insertions(+), 91 deletions(-)
+
 -- 
 2.43.0
 
