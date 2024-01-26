@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F39C47DDB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 19:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC076C47DDB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 19:46:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vTCK3MQvG36Qk0u0R1pDRpD1uwRI2WfCrL2OpqfhL4w=; b=dvpyzIv555NTV1
-	qmRM6t5yygpurW6+0DTjpwhV8yPWoYdQ99eVyCyFEykVjPGagVmc9R9zhG9k1eAKpM2u1acuIT70y
-	DMiZOyIZA6LeQG52ILaGTKZ7vVRCNQ7F49C4FbhkWvaxlNxnVAx/dSru2x7zfGhN677G3rzE4s8lv
-	ftpB6jBecqexHTBwkcfy40/u1LcRurHYBddxhSiOkz+QPaftB8cbD4KFAdNMLfQs744x7JKzJ6tYu
-	Cx3KJRzXIZTKjpbx0fY2eo+xOFpUw1vajf2CbdxQqISFQNAvODL1TU5zXmQpzi3YkEMCtDrkEpqDw
-	/oLuB5/7VEW74AIp1AUA==;
+	List-Owner; bh=KSyirAIHflpOk6FB5ClC7YzSLuWXu/hoailei2Gi0a0=; b=bylfLaASdZiMhh
+	PPRd7AU6TJ8JKSK7cgCzSXzkYutkqqv3DWdpNrVXuBHhaiCbevOJPSQP9UInJEEeQWDF6tgcIGI3E
+	ksdZdCiOC8d/W9Ij6FCNKsb9SvsNCg888l5FICCBzhLJiq5v3Z6CnTN/Kt62IypYCxHBBRH3qWYG9
+	2vvujJheUQBcheb/zBTj/uyQlrSvfwRNKhRrfsCjLYVvXOm0bRPyg7MW9MiYFT9tSLDmOTq2f2VeS
+	n0h2PrtOnwvrIS/K5CNwYTtp65oeGrUc4YZLhN8cwAnws9V1Njbt3SCugKNGSzPYJV0wn5pJmg6un
+	6s2WGj0FsT8ZGnGNmGJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTS9c-00000005GmU-0ogh;
-	Fri, 26 Jan 2024 19:46:20 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1rTS9u-00000005Gpy-2djL;
+	Fri, 26 Jan 2024 19:46:38 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTS9a-00000005Gm5-0wEC;
-	Fri, 26 Jan 2024 19:46:19 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-40e76626170so12635755e9.2;
-        Fri, 26 Jan 2024 11:46:18 -0800 (PST)
+	id 1rTS9r-00000005Gp8-2O3u;
+	Fri, 26 Jan 2024 19:46:36 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-33934567777so960336f8f.1;
+        Fri, 26 Jan 2024 11:46:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706298377; x=1706903177; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706298394; x=1706903194; darn=lists.infradead.org;
         h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
          :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=42nKbvzxrhLtTO1/HhA5ZrxxRE9ibe+1064kf/7Xdy8=;
-        b=JWGNKI0szKQfxeZLdBO8mQ55qDnPDlbBuX5x9ROo4plKolJZ5HJq3Uw5JfEkaxJ8IG
-         mobY50EyCvH3K7z2I8Ddd7gTp6hQ3syh991GQge3Mp+iqXMzATratc9chLHG/O4KFQBf
-         qnNlpOFxn3FpXn+r1tqFQDfBsYHdCR+hMVmRIvOvEeWKNwKP3cJl+RIJXQY8s+3OfS8J
-         Po5mf29Dzu1VUhP9Q2goiiSzruT2JmHb5Uur6baCuAT8FJKWoYyYGCvf7DOJrwB8RnRJ
-         AHTkelGsJ7y0YJMNjPNt314FsDBISdVXWbnL9lf7ZnbHM19Ute2C7J5tjdNuOjBnYniP
-         oV6Q==
+        bh=ELPxmtn49SBjAi9TU0DUsydleKjJ78oJdceadEbwh5I=;
+        b=hYtZkKuC9DeeJxhSjc4TMlw850af4XepYq56qmFISoXcLj91vgbdQPdEHwmBiyX+6j
+         xMHGSx3wlUEnEV8Gyls9E9aBq1bewc1oRTLacMB0VNSMx4IxD1+6yIoovCPCNJAoErA9
+         kuHFwtXuObX4GPmNu37HWZwIqGhxnfcGTlXMKQGjgfTwIlRqFVqVPL+rEbwqJMP+/1kr
+         kfUhaH2dKfEviVWDjMwFOEGnBpQWnNQWyuaet6dOPh+ia//T6MY4Wms4EtGQQmleFIMQ
+         CSlUzERoATDr3giWpO+j2KRBleJcbjl470mB0ZIJv+lUxp5vGYjc4wQu32Zh+S5BrVZi
+         mr5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706298377; x=1706903177;
+        d=1e100.net; s=20230601; t=1706298394; x=1706903194;
         h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
          :subject:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=42nKbvzxrhLtTO1/HhA5ZrxxRE9ibe+1064kf/7Xdy8=;
-        b=SrlLM4sLt0Q6gitDiYrfsupubNfnNzx08U8zaGiIY/5KiMQYgWopdlKYHDDWE3+Gcy
-         MKg9BGvCxgaO7ke6dycRJqkoYs2c2oeTkF+SxPV+KzMgQOIfWux2jqaiRosTuV7FKGbV
-         tVVD8IMADON5lCVJEDzG7XJ8vgQ+bkVHnvcn42VssJ8OaJa5EQ2SNyQw7NaKBf2SXXbH
-         OLDo8498hZAWmlDH3Rj85H2zwcvVoz7E0Ccbd+nC24lz/hZMfD5tjehRgbacHjqo669n
-         Q52nm9HgdZS05puXDtImRB6mDOEBXIgNH634J0yaNl5WraHF89g9hbhMFulwYvT+jOjn
-         1/5A==
-X-Gm-Message-State: AOJu0YxOyVcrXEMwbA996XqJzQnr2XfqL5nfZ9LX5Y0i46sHg8+bmF7g
-	jfztW/byP1euh70SURmF7p7w8+tvf3KA6hYOQSD4nsgTtHpMQv3J
-X-Google-Smtp-Source: AGHT+IG5ZcuFua96Ii9AFQF3yBsEPz4LeP31TI+oooY7YAJiWQgsXgZlF9VKTtO17a4vWy2D/+l6ww==
-X-Received: by 2002:a05:600c:3d19:b0:40e:e945:1baa with SMTP id bh25-20020a05600c3d1900b0040ee9451baamr214623wmb.141.1706298376685;
-        Fri, 26 Jan 2024 11:46:16 -0800 (PST)
+        bh=ELPxmtn49SBjAi9TU0DUsydleKjJ78oJdceadEbwh5I=;
+        b=BByAJvGqCCe64p3/Tdlg4vO/380RD4s0XabHzZoV3xUCt92CYUabkzJnzTN7OhmBCG
+         IlQJK/xdswjgmaWoU8/9/TMTFHKrpWshyx/CNETniNVAXkGzRhNVWVB72zci7VvALlgd
+         IekWUy0/bYIk0MwhmLYXU/dHwXQGN4uELhK79Si7HTFechhGNwzM4Hba1dQ+IMzO8V3t
+         +b+4OQYE7FrBxjo+yn/i5cOr0Tf5ZYHZv4+tRr9P0BgeHwvce2wFF+EEBWPGiFqdJD9M
+         I7DQge8WLiAAdfFeAQ2sucubeUXpGj/cMKL5WmAuD66Vad9nFBMWgKj2grSkeBAu6DfZ
+         Fu+Q==
+X-Gm-Message-State: AOJu0YziMnItzH807RRXVbvM7aLGKzJ+DK+mHKsGfxYiDRibnNixKsah
+	wWKu+mJy3RrFwV/Vy5+L60Nd/Gnz6DpOfRAcglFSS4sAu4hxMzqmMGzAnAPXySCTBA==
+X-Google-Smtp-Source: AGHT+IFDktryRMsL2GnllBeHMRu5xBVFqB3atm9WtCpg9CMFwPfsoTLWDKvyE2nSetolmi+Q1tYvmQ==
+X-Received: by 2002:a7b:c8ca:0:b0:40e:e97c:247a with SMTP id f10-20020a7bc8ca000000b0040ee97c247amr224674wml.51.1706298393788;
+        Fri, 26 Jan 2024 11:46:33 -0800 (PST)
 Received: from [192.168.0.5] (cm-83-97-153-254.telecable.es. [83.97.153.254])
-        by smtp.gmail.com with ESMTPSA id bp19-20020a5d5a93000000b003394495566dsm1917666wrb.22.2024.01.26.11.46.15
+        by smtp.gmail.com with ESMTPSA id c4-20020a05600c0a4400b0040e621feca9sm2723301wmq.17.2024.01.26.11.46.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 11:46:16 -0800 (PST)
-Message-ID: <08e518f54f94b78a3985a3c9247bced5b275433b.camel@gmail.com>
-Subject: [PATCH 0/3] spi: spi-rockchip: Fix of chip select lines handling
+        Fri, 26 Jan 2024 11:46:33 -0800 (PST)
+Message-ID: <d0a0c4b94f933f7f43973c34765214303ee82b77.camel@gmail.com>
+Subject: [PATCH 1/3] spi: spi-rockchip: Fix out of bounds array access
 From: Luis de Arquer <ldearquer@gmail.com>
 To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org
 Cc: broonie@kernel.org, heiko@sntech.de,
  linux-arm-kernel@lists.infradead.org,  Robin Murphy <robin.murphy@arm.com>,
  luis.dearquer@inertim.com
-Date: Fri, 26 Jan 2024 20:46:05 +0100
+Date: Fri, 26 Jan 2024 20:46:22 +0100
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_114618_283179_F0457D67 
-X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-CacheID: sfid-20240126_114635_637775_7951CE46 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,21 +90,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series has several fixes concerning spi-rockchip handling of chip select lines.
+From: Luis de Arquer <luis.dearquer@inertim.com>
 
-Probably the more important issue is an out of bounds access to an array, fixed on
-the first commit of the series. The issue was found and reproduced on a downstream
-kernel (orange pi 5 plus), but it seems to still be present on mainline
+Since spi-rockchip enables use_gpio_descriptors and the
+SPI_CONTROLLER_GPIO_SS flag, the spi subsytem may call set_cs()
+for spi devices with indexes above ROCKCHIP_SPI_MAX_CS_NUM
 
-The patch has been made and built on linux-rockchip tree.
-It will take me a few days to complete proper testing, but any comments at this point
-are welcome.
+Remove array cs_asserted[] which held a shadow copy of the state
+of the chip select lines with the only purpose of optimizing out
+rewriting a chip select line to the current state (no-op)
+This case is already handled by spi.c
 
-Also, this is my first patch, so let me know of any side issues with patch or email
-format :)
+Signed-off-by: Luis de Arquer <luis.dearquer@inertim.com>
+---
+ drivers/spi/spi-rockchip.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-Luis de Arquer
-Inertim Research
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 4b9669da2cf3..2fb2d65bd5f4 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -192,8 +192,6 @@ struct rockchip_spi {
+ 	u8 n_bytes;
+ 	u8 rsd;
+ 
+-	bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
+-
+ 	bool target_abort;
+ 	bool cs_inactive; /* spi target tansmition stop when cs inactive */
+ 	bool cs_high_supported; /* native CS supports active-high polarity */
+@@ -245,10 +243,6 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+ 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
+ 	bool cs_asserted = spi->mode & SPI_CS_HIGH ? enable : !enable;
+ 
+-	/* Return immediately for no-op */
+-	if (cs_asserted == rs->cs_asserted[spi_get_chipselect(spi, 0)])
+-		return;
+-
+ 	if (cs_asserted) {
+ 		/* Keep things powered as long as CS is asserted */
+ 		pm_runtime_get_sync(rs->dev);
+@@ -268,8 +262,6 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+ 		/* Drop reference from when we first asserted CS */
+ 		pm_runtime_put(rs->dev);
+ 	}
+-
+-	rs->cs_asserted[spi_get_chipselect(spi, 0)] = cs_asserted;
+ }
+ 
+ static void rockchip_spi_handle_err(struct spi_controller *ctlr,
+-- 
+2.34.1
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
