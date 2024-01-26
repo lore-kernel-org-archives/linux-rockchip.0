@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B36BAC4828A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC3BC48285
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DMDu3ce2TeGNqPofCcQrT+Uva649PB+USrSm9s5bSbk=; b=3azWRDb6nB4vZN
-	8LnO4+Pf7EEH8+2921UxsZDM8TH9H/Q1ZNxmjNQdiQa1/Z1dbJKEEvo8zLS0dtTbTVOSQ2VXVFSH0
-	4ubNAB6c7JNnrXmGabPgA9G/aYLKbRt1fno4klL5BZucmWohXQeYtwXEyNEJvRP9gqpeyGwp2ehmb
-	Xe8zWRfyQMY6ATboi8ts9SXPMTqwobxJ7WKE7s0RJ5/uMxTafxjM0mRvNsdnMm1/CIA5En69P3jzk
-	KnKyjvPSugpqdZhOmaE3Ag5NbtZHMIFPMDR+Sas5Oo412dMfCq2YK2mCoZNjIz7dYZQnnfP+sq06n
-	QVXKLjV6yh+Fiud52fjQ==;
+	List-Owner; bh=k8DTZpyYEF9x55gM17d/BJvuNi+qlh2DG4rxcED6MkA=; b=3yh/rnCZSVGWOY
+	E4+aC7BqAg88vIMN3QDKq/F2Lw6eWiBMCjJza0wHDCTHxfmHT9iFRfJNDiORMW9oZW0M4cR/ak8Ha
+	nEE1ppkUZtkLIHmdDeDht9G/crqLvVX7ii2HWRK3fzuz+aJ2JUk5czyvAuGeouAisZoOy3wsu3G4R
+	CAkfbdR6+km1NHve6BEMZo+BF7Ml9zj6XfQWJGHEDql4/sMcAC/ug8S1/LVHNM58CuGBISrzDdCal
+	ijtV8oJSlYPMQ6PcZ45EdQh4F1vZYnoKirtFhRgVwmEarvfhQTHW1aqDdq/hD6yzM/pP9PLtcX6oe
+	r8VvGVL3/QIFUgflhsmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVRA-00000005ivp-3Qza;
-	Fri, 26 Jan 2024 23:16:40 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1rTVRS-00000005jD5-0c4r;
+	Fri, 26 Jan 2024 23:16:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVQe-00000005iQk-3scr
+	id 1rTVQp-00000005ib7-2T5B
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 26 Jan 2024 23:16:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=wJ0m3P4movTLz/Nvfo+j871i2YxzmvzYNu3X7u/7SQ8=; b=Kz3aY2Zr/PAaL3vXrTnpO7V++a
+	xpX1V7IVnAgi/09nNW5U/cazJA+A5DS6NqgWNvIs5lg56y1KR0krRsQuEecFPRowKy4HTkTS5x+ZF
+	rA+EyvMkgv6hncYeK+eNHae1onbIkUu42mdKiXjKol4azOwS9nNf5O1Alg4/6g7HNrU+fVJiZgk9F
+	bumn9m0NgZjEtz/lf1ErLBi0bDUdamaVEGJOOTrYdae5lSVIlJGVsMyHajmHTGr89x02lGXhj50Ex
+	a8AwSThbal7CMs0ziPph3U9UZv8WrrHaDTEnCql6U6wvE5aZ0NuqDeWqQoG75+AAveH9dKhC4SFxl
+	EHAQdu7Q==;
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTVQi-00000006IzJ-1en5
 	for linux-rockchip@lists.infradead.org;
 	Fri, 26 Jan 2024 23:16:16 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-7838d13395dso63859685a.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:16:07 -0800 (PST)
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-783d4b3a00bso61711585a.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:16:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706310967; x=1706915767; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1706310970; x=1706915770; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=yKZ2I0FgT+c8VUKnt1mK+wIxC1JMtHjQ/OWMUKXoVdE=;
-        b=QalqUtMF4PDKz/hKVV5ple+NU8j15nurwIRrtkLlLUxVxGco/kv7OD2XGxTWNJOS6D
-         onH3TjC776OU2kOXHl2D6fwQnWlo8zJQK6uy9MKOnyt/eX6J7KohhKJquyB5H+BM8+GC
-         aXJTZMBmYa8Y/V5IRMpjvSrEVu6LKVa+cXUq0=
+        bh=wJ0m3P4movTLz/Nvfo+j871i2YxzmvzYNu3X7u/7SQ8=;
+        b=V/woJ72P0KPgTjccHZNUk/RP+t0EVdl46aTfIEIyS7T7wsfnd6Ihi0LZYSgobQDryM
+         Wc/PLhO8tJUP4G69oBLb+eZUDzoz0NiQL3eWWap/vaIdOI9PdnYbCchzSHssBUDDf25n
+         DFXb1t4MmLKPPxfMf6ha+AbEASm8AN+xtnvWY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706310967; x=1706915767;
+        d=1e100.net; s=20230601; t=1706310970; x=1706915770;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yKZ2I0FgT+c8VUKnt1mK+wIxC1JMtHjQ/OWMUKXoVdE=;
-        b=ZR6kQ07a41paXvP7pCPNkEb2MxsMxX8Fp8PZgMBtnLoLJIbLGnoHW8HVc13MiBBBDZ
-         2cl0yATMfm/YldDk57B1+FiLKpuZjHW0iW/t1IMyJVJ11xg9GJ6hMcW3KiOg4hCyVkfu
-         ZVUMIoUgV8rDNuGdyp1gQQXWfS/vDFyhtHwO5GHHgS+gZW032nvKIx7a3f8+6+QL9ijx
-         Ht1ADXGf3mmdy9mPUzJvpEppuExiljqcM94R7dW1eoVeABURWtxxFwKv+xWfa7sRT5hA
-         MBsSY7udSuty7oUf1jhv4IJ0TBohoSBACDHfBmvCp0i4YVNAZR/33cz+GyDYhWkv0BWH
-         7B5A==
-X-Gm-Message-State: AOJu0Yx21p7oxroQBt0ImV6q7h/+XwuFJeorpSAA4u6jgiY/UhtE5BiA
-	ja2Smleq9dEdybftXV+k9sRW+hdchQDOXZv3Y3tR7ejXmBkyZCIUCADvVm4LRg==
-X-Google-Smtp-Source: AGHT+IGfaDanel4bAe+Gm4pPjfl4j2bUb1CcCFTzpsa5FCnRkAwIXhqbnMbyXrNSHptz1QBTZemCAg==
-X-Received: by 2002:a05:620a:3888:b0:783:3cee:425a with SMTP id qp8-20020a05620a388800b007833cee425amr491959qkn.141.1706310966713;
-        Fri, 26 Jan 2024 15:16:06 -0800 (PST)
+        bh=wJ0m3P4movTLz/Nvfo+j871i2YxzmvzYNu3X7u/7SQ8=;
+        b=RN32VROUCQDyVRyOGo5cSVT0hMhSYLz4g5BIu0IdPP9EEUS056/SntggqINicXoEp6
+         93+8wU7LvPkE0E0nYv+zmvUpfomrea33d4muJU3sF+jXdykRyUskX7a4Lv714z/dS7vD
+         d1k0b0rD61PrzsR5ncgiKWn7xK5L4RUH7a3zTQ+AllsM47YmDMZT1m3uNsi05hxGyj6t
+         SGp/N6i9HscrGtRqk8fZyQUoMzSb8DPeVdgvpf6gjwViQ1utXUT83XAXC/37Ct249Hwh
+         2yisb8Nl0NPnXfw7/AlE9Zmp+kUs7ecDt+zRYi1MDL22I3/vgiGvvjFzRp24P7QEvXXo
+         7c9Q==
+X-Gm-Message-State: AOJu0YxUuWA7HB3F1qwGW+pfzQKSsEWeX0qWIV93RqODNUVI51XIzRk0
+	eIVBhTCaWwlnyyDzwQIl9Qh0be8OrD7+eenbCt4gxMT+Apj8KURQ/k/k/UJGZw==
+X-Google-Smtp-Source: AGHT+IHAmNfItdlyJWsZ1GtS50XKPZcd4sgiZnzEdRhsQ66Nd+BshXmAy/d7aAGqJVN+Us+VU1C3UA==
+X-Received: by 2002:a05:620a:148c:b0:783:89f2:d9f5 with SMTP id w12-20020a05620a148c00b0078389f2d9f5mr495965qkj.104.1706310970554;
+        Fri, 26 Jan 2024 15:16:10 -0800 (PST)
 Received: from denia.c.googlers.com (240.157.150.34.bc.googleusercontent.com. [34.150.157.240])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.05
+        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 15:16:05 -0800 (PST)
+        Fri, 26 Jan 2024 15:16:09 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 26 Jan 2024 23:16:01 +0000
-Subject: [PATCH 02/17] media: videodev2.h: Fix kerneldoc
+Date: Fri, 26 Jan 2024 23:16:04 +0000
+Subject: [PATCH 05/17] media: pci: dt315.h: Fix kerneldoc
 MIME-Version: 1.0
-Message-Id: <20240126-gix-mtk-warnings-v1-2-eed7865fce18@chromium.org>
+Message-Id: <20240126-gix-mtk-warnings-v1-5-eed7865fce18@chromium.org>
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 In-Reply-To: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -101,8 +116,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_151609_083095_9C4AA7D8 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20240126_231612_765194_FA4CB24E 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,79 +135,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Named nested unions need their prefix:
-https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#nested-structs-unions
+The field is gone, remove it.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- include/uapi/linux/videodev2.h | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ drivers/media/pci/dt3155/dt3155.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 68e7ac178cc2..a8015e5e7fa4 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -1041,13 +1041,13 @@ struct v4l2_requestbuffers {
-  * struct v4l2_plane - plane info for multi-planar buffers
-  * @bytesused:		number of bytes occupied by data in the plane (payload)
-  * @length:		size of this plane (NOT the payload) in bytes
-- * @mem_offset:		when memory in the associated struct v4l2_buffer is
-+ * @m.mem_offset:	when memory in the associated struct v4l2_buffer is
-  *			V4L2_MEMORY_MMAP, equals the offset from the start of
-  *			the device memory for this plane (or is a "cookie" that
-  *			should be passed to mmap() called on the video node)
-- * @userptr:		when memory is V4L2_MEMORY_USERPTR, a userspace pointer
-+ * @m.userptr:		when memory is V4L2_MEMORY_USERPTR, a userspace pointer
-  *			pointing to this plane
-- * @fd:			when memory is V4L2_MEMORY_DMABUF, a userspace file
-+ * @m.fd:		when memory is V4L2_MEMORY_DMABUF, a userspace file
-  *			descriptor associated with this plane
-  * @m:			union of @mem_offset, @userptr and @fd
-  * @data_offset:	offset in the plane to the start of data; usually 0,
-@@ -1085,14 +1085,14 @@ struct v4l2_plane {
-  * @sequence:	sequence count of this frame
-  * @memory:	enum v4l2_memory; the method, in which the actual video data is
-  *		passed
-- * @offset:	for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
-+ * @m.offset:	for non-multiplanar buffers with memory == V4L2_MEMORY_MMAP;
-  *		offset from the start of the device memory for this plane,
-  *		(or a "cookie" that should be passed to mmap() as offset)
-- * @userptr:	for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
-+ * @m.userptr:	for non-multiplanar buffers with memory == V4L2_MEMORY_USERPTR;
-  *		a userspace pointer pointing to this buffer
-- * @fd:		for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
-+ * @m.fd:		for non-multiplanar buffers with memory == V4L2_MEMORY_DMABUF;
-  *		a userspace file descriptor associated with this buffer
-- * @planes:	for multiplanar buffers; userspace pointer to the array of plane
-+ * @m.planes:	for multiplanar buffers; userspace pointer to the array of plane
-  *		info structs for this buffer
-  * @m:		union of @offset, @userptr, @planes and @fd
-  * @length:	size in bytes of the buffer (NOT its payload) for single-plane
-@@ -2423,15 +2423,15 @@ struct v4l2_meta_format {
- 
- /**
-  * struct v4l2_format - stream data format
-- * @type:	enum v4l2_buf_type; type of the data stream
-- * @pix:	definition of an image format
-- * @pix_mp:	definition of a multiplanar image format
-- * @win:	definition of an overlaid image
-- * @vbi:	raw VBI capture or output parameters
-- * @sliced:	sliced VBI capture or output parameters
-- * @raw_data:	placeholder for future extensions and custom formats
-- * @fmt:	union of @pix, @pix_mp, @win, @vbi, @sliced, @sdr, @meta
-- *		and @raw_data
-+ * @type:		enum v4l2_buf_type; type of the data stream
-+ * @fmt.pix:		definition of an image format
-+ * @fmt.pix_mp:		definition of a multiplanar image format
-+ * @fmt.win:		definition of an overlaid image
-+ * @fmt.vbi:		raw VBI capture or output parameters
-+ * @fmt.sliced:		sliced VBI capture or output parameters
-+ * @fmt.raw_data:	placeholder for future extensions and custom formats
-+ * @fmt:		union of @pix, @pix_mp, @win, @vbi, @sliced, @sdr,
-+ *			@meta and @raw_data
-  */
- struct v4l2_format {
- 	__u32	 type;
+diff --git a/drivers/media/pci/dt3155/dt3155.h b/drivers/media/pci/dt3155/dt3155.h
+index c9ce79cb5566..ce1835d9691e 100644
+--- a/drivers/media/pci/dt3155/dt3155.h
++++ b/drivers/media/pci/dt3155/dt3155.h
+@@ -162,7 +162,6 @@
+  * @height:		frame height
+  * @input:		current input
+  * @sequence:		frame counter
+- * @stats:		statistics structure
+  * @regs:		local copy of mmio base register
+  * @csr2:		local copy of csr2 register
+  * @config:		local copy of config register
 
 -- 
 2.43.0.429.g432eaa2c6b-goog
