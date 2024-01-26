@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494B0C47422
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 18:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1209DC47DDB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 19:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W+C4Lw58uU45n20FFK/gz9ZJ1T+6oeh3QnQU09c2ZsI=; b=v7zB8YpaihV4vB
-	xpr3011tKpWIAKSeQ+rI0umodTRr2IFxZg0cm0XstMfgNF5raKr46Fzv+8wqW8uFvtmITThaUo7eV
-	jYDz9c5B/CZojFYHFeUWR6Xx7yYDKbopO1SneGuHweKNcBMiyx0Z1NLYVxSuIrdIGOVPvZVK2S8YR
-	OnMHYT6IiBJZm7cpLISTbotBKsNFMZDLWQA3fjsV69Q1O8DegCNTg6QT/oHHNFj7oyD6f71/TBiiU
-	Ao9grpkP8aGxoafER8FI6c8kQfEfVN57cy2KBLjW9HsgjCKHiEFia54Xhh3QBNg+p695PI5HkRdYh
-	xLXIgzY/EYzRMnGwXC5g==;
+	List-Owner; bh=GLETJhWaylCyjZ/rMBVB+5xr09o391Oc6LsAXc1sEJY=; b=m+b88md3y6gwwA
+	qxno615j2bP5XuCJTVuRwo9xfc8v8x/xbUePg5lQBFmu7vU8GY846TliTXvJ8WG6sCNfbM4HDpi60
+	YZzAy/TZ/kKCk/rOYbNP2Vgg5lUS5J0MOrKuk2UHlfaTq9QVsRqszuwGxP4X7yhuhfdV/zuM6DryS
+	JwhOLUD/z3/10yxyCDPk4P/JpcUvxVMWTLKgluTLdog4SNaSjvSCLmqQsvMbkk0BVOKcKvuAv2PNc
+	oY3gQi8W2kpF2fLOvYwAGF++OUI+B/3o7U0yO+VDgXnVmggrN89h88kFu6RSNXypB4Prr0WSwn9xt
+	80T4quq8WM+EEfNO/VIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTQxQ-000000054b2-2KEi;
-	Fri, 26 Jan 2024 18:29:40 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rTRnE-00000005DaS-1UPA;
+	Fri, 26 Jan 2024 19:23:12 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTQxF-000000054RW-2H2U
-	for linux-rockchip@lists.infradead.org;
-	Fri, 26 Jan 2024 18:29:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706293762;
-	bh=krD6cO2tyhVXcVkpXWJFsU7KStdBrYWbgIJ6Se6IRkI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RTjQ9+ov2t51CO7+6IwuV+Htp17mBwPpGHtUspEFva0YXHMsQTS+LFARL3kD49jJC
-	 gO6s98UrHAxeq4gLvA5+Dh1DXKtI+8Y5AaNA+a2XR7r+pzYfHyQjk/lv8PilTN66CS
-	 wcD7KWoJN1z+WbMEzT10jUPI5wxNiqKy0aur4GTR7fS2zo7iyJS2XXSkca7iJ1GIP2
-	 V9R7bxCHtlFLDUgd63OcJ1cnohX9PJ8PafZjUBt9UWszwGFDQ+V6rNuPpDhF5syIXK
-	 oeIPuLeXUOVr2u+yEQRYePAtq2U0AuMCJH4WhZyYbpsPn2hHBirgUbexMzj3WH61vl
-	 lcq4UQyb1iyRQ==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 89FC93782089;
-	Fri, 26 Jan 2024 18:29:22 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9F434482ACC; Fri, 26 Jan 2024 19:29:21 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	linux-clk@vger.kernel.org
-Cc: Elaine Zhang <zhangqing@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	huangtao@rock-chips.com,
-	andy.yan@rock-chips.com,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
-Date: Fri, 26 Jan 2024 19:18:28 +0100
-Message-ID: <20240126182919.48402-8-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240126182919.48402-1-sebastian.reichel@collabora.com>
-References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
+	id 1rTRnB-00000005DZj-1BbU;
+	Fri, 26 Jan 2024 19:23:10 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-337cf4ac600so861152f8f.3;
+        Fri, 26 Jan 2024 11:23:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706296986; x=1706901786; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=i7XyfHafPzk4o7TH4Z/Q88VVxtW7j3Tbp7VfVnvGsEc=;
+        b=fFyzuuJ5HrH+aSiRy6Kjgkmabt1Kep6UXlyioRp+o93vLwEKjMaZifzDfhyKqZ4cop
+         93ouAsaBTvjrz8jUlpTx1bMGr1VsUOzXXncgNjsa40385zxnOnyd/FVZjLkJf6nL7eNo
+         RaFyZLpTVE4yRfwYE4a6oQ32C2UvDs8knNsdaMYf7rMmASsruRg1pSfdhtwgYD/0KclC
+         olbOslx3FnEDBYY8Kq4qpkXoKZWBp6KMloXf8tH5Mh2tftMWK6o6KCSzrpIw6xQyV2VY
+         ZkIWDlI1KI55RvhSAh4nyw5r0Fsl0IOFlxxoUIKpn3CwEvBKTlXvoZoQ5EABR+FB3UJD
+         j9UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706296986; x=1706901786;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=i7XyfHafPzk4o7TH4Z/Q88VVxtW7j3Tbp7VfVnvGsEc=;
+        b=HkFGvUEZRfs91Ik2THVNyGSrxJh2tmUbVqBkhkRkLmaiZUfLk37RblkIg8uAghm9UW
+         izghqhLTKgbH655GU8dTScG7E1iWWwVTIQrEKtuPoWQ09k8HV2zzjkLOaxaoB+BEv2rt
+         a5x/oQiGTlfbeFIyQs4tNWP2wYFyArHMwT3EEtA/3JJ87UbQUxbZi7qSt20kFjo4zepA
+         aO6M5IMz/z4KXgBudDrl2WOxgZVeaSdonMdD0Ps/ufg5fGuO+nSKerGlGtbwiw8etFOT
+         En/KLJcgr+LBlJizpoEcGiJ+YqoVMb0ukntGajeqDi/8ZZfX1xpXbB9UelPBAea330IM
+         D2sg==
+X-Gm-Message-State: AOJu0YygryHmTEs4a0nOzd+ZvN27o9AkZOnyyBE2S7+wYw0Z9m/S8b+K
+	Uz+7cSdgwRj09avcFpO4Zdg00LZhLAUrXjDc+VtZbX816XXI5oNf
+X-Google-Smtp-Source: AGHT+IF1+PZeX7PZt2kTQgTViZHQHL+3yVD7+6dcQhCOhwvZBDjkk41rFIK3ofAq4p5K5JETMKgALQ==
+X-Received: by 2002:a5d:4008:0:b0:337:c7ff:85e1 with SMTP id n8-20020a5d4008000000b00337c7ff85e1mr83945wrp.131.1706296986249;
+        Fri, 26 Jan 2024 11:23:06 -0800 (PST)
+Received: from [192.168.0.5] (cm-83-97-153-254.telecable.es. [83.97.153.254])
+        by smtp.gmail.com with ESMTPSA id ba11-20020a0560001c0b00b003366c058509sm1859765wrb.23.2024.01.26.11.23.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 26 Jan 2024 11:23:05 -0800 (PST)
+Message-ID: <c88d56ba-3214-4053-9533-bec12bf110ef@gmail.com>
+Date: Fri, 26 Jan 2024 20:23:04 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] spi: dt-bindings: spi-rockchip: restrict num-cs
+To: Robin Murphy <robin.murphy@arm.com>, Johan Jonker <jbx6244@gmail.com>,
+ broonie@kernel.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, heiko@sntech.de, linux-spi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <acc4ff4b-811a-4a6d-8f58-9d8da3be40bb@gmail.com>
+ <d6fc0ad6-ce20-4604-89e5-2598dc3fc0a6@gmail.com>
+ <344a3de8-7f10-46f0-9524-dca58ceda671@gmail.com>
+ <97fcde65-9eb0-44e1-a87a-caa308d1998b@arm.com>
+Content-Language: en-US
+From: Luis de Arquer <ldearquer@gmail.com>
+In-Reply-To: <97fcde65-9eb0-44e1-a87a-caa308d1998b@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_102929_937608_920EF312 
-X-CRM114-Status: GOOD (  27.01  )
+X-CRM114-CacheID: sfid-20240126_112309_347593_8BAD1758 
+X-CRM114-Status: GOOD (  28.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,438 +93,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recent Rockchip SoCs have a new hardware block called Native Interface
-Unit (NIU), which gates clocks to devices behind them. These effectively
-need two parent clocks.
-
-GATE_LINK type clocks handle the second parent via 'linkedclk' by using
-runtime PM clocks. To make that possible a new platform device is created
-for every clock handled in this way.
-
-Note, that before this patch clk_rk3588_probe() has never been called,
-because CLK_OF_DECLARE marks the DT node as processed. This patch replaces
-that with CLK_OF_DECLARE_DRIVER and thus the probe function is used now.
-This is necessary to have 'struct device' available.
-
-Also instead of builtin_platform_driver_probe, the driver has been
-switched to use core_initcall, since it should be fully probed before
-the Rockchip PM domain driver (and that is using postcore_initcall).
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/clk/rockchip/clk-rk3588.c | 122 +++++++++++++-----------------
- drivers/clk/rockchip/clk.c        |  69 ++++++++++++++++-
- drivers/clk/rockchip/clk.h        |  16 ++++
- 3 files changed, 138 insertions(+), 69 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index b30279a96dc8..f0eb380b727c 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -12,28 +12,6 @@
- #include <dt-bindings/clock/rockchip,rk3588-cru.h>
- #include "clk.h"
- 
--/*
-- * Recent Rockchip SoCs have a new hardware block called Native Interface
-- * Unit (NIU), which gates clocks to devices behind them. These effectively
-- * need two parent clocks.
-- *
-- * Downstream enables the linked clock via runtime PM whenever the gate is
-- * enabled. This implementation uses separate clock nodes for each of the
-- * linked gate clocks, which leaks parts of the clock tree into DT.
-- *
-- * The GATE_LINK macro instead takes the second parent via 'linkname', but
-- * ignores the information. Once the clock framework is ready to handle it, the
-- * information should be passed on here. But since these clocks are required to
-- * access multiple relevant IP blocks, such as PCIe or USB, we mark all linked
-- * clocks critical until a better solution is available. This will waste some
-- * power, but avoids leaking implementation details into DT or hanging the
-- * system.
-- */
--#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf) \
--	GATE(_id, cname, pname, f, o, b, gf)
--#define RK3588_LINKED_CLK		CLK_IS_CRITICAL
--
--
- #define RK3588_GRF_SOC_STATUS0		0x600
- #define RK3588_PHYREF_ALT_GATE		0xc38
- 
-@@ -266,6 +244,8 @@ static struct rockchip_pll_rate_table rk3588_pll_rates[] = {
- 	},							\
- }
- 
-+static struct rockchip_clk_provider *early_ctx;
-+
- static struct rockchip_cpuclk_rate_table rk3588_cpub0clk_rates[] __initdata = {
- 	RK3588_CPUB01CLK_RATE(2496000000, 1),
- 	RK3588_CPUB01CLK_RATE(2400000000, 1),
-@@ -694,7 +674,7 @@ static struct rockchip_pll_clock rk3588_pll_clks[] __initdata = {
- 		     RK3588_MODE_CON0, 10, 15, 0, rk3588_pll_rates),
- };
- 
--static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
-+static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	/*
- 	 * CRU Clock-Architecture
- 	 */
-@@ -1456,7 +1436,7 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	COMPOSITE_NODIV(HCLK_NVM_ROOT,  "hclk_nvm_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(77), 0, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(31), 0, GFLAGS),
--	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, 0,
- 			RK3588_CLKSEL_CON(77), 7, 1, MFLAGS, 2, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(31), 1, GFLAGS),
- 	GATE(ACLK_EMMC, "aclk_emmc", "aclk_nvm_root", 0,
-@@ -1685,13 +1665,13 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(42), 9, GFLAGS),
- 
- 	/* vdpu */
--	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(98), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(44), 0, GFLAGS),
- 	COMPOSITE_NODIV(ACLK_VDPU_LOW_ROOT, "aclk_vdpu_low_root", mux_400m_200m_100m_24m_p, 0,
- 			RK3588_CLKSEL_CON(98), 7, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(44), 1, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(98), 9, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(44), 2, GFLAGS),
- 	COMPOSITE(ACLK_JPEG_DECODER_ROOT, "aclk_jpeg_decoder_root", gpll_cpll_aupll_spll_p, 0,
-@@ -1742,9 +1722,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	COMPOSITE(ACLK_RKVENC0_ROOT, "aclk_rkvenc0_root", gpll_cpll_npll_p, 0,
- 			RK3588_CLKSEL_CON(102), 7, 2, MFLAGS, 2, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(47), 1, GFLAGS),
--	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", RK3588_LINKED_CLK,
-+	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", 0,
- 			RK3588_CLKGATE_CON(47), 4, GFLAGS),
--	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", RK3588_LINKED_CLK,
-+	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", 0,
- 			RK3588_CLKGATE_CON(47), 5, GFLAGS),
- 	COMPOSITE(CLK_RKVENC0_CORE, "clk_rkvenc0_core", gpll_cpll_aupll_npll_p, 0,
- 			RK3588_CLKSEL_CON(102), 14, 2, MFLAGS, 9, 5, DFLAGS,
-@@ -1754,10 +1734,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(48), 6, GFLAGS),
- 
- 	/* vi */
--	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, 0,
- 			RK3588_CLKSEL_CON(106), 5, 3, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(49), 0, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(106), 8, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(49), 1, GFLAGS),
- 	COMPOSITE_NODIV(PCLK_VI_ROOT, "pclk_vi_root", mux_100m_50m_24m_p, 0,
-@@ -1927,10 +1907,10 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	COMPOSITE(ACLK_VOP_ROOT, "aclk_vop_root", gpll_cpll_dmyaupll_npll_spll_p, 0,
- 			RK3588_CLKSEL_CON(110), 5, 3, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(52), 0, GFLAGS),
--	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, 0,
- 			RK3588_CLKSEL_CON(110), 8, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(52), 1, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(110), 10, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(52), 2, GFLAGS),
- 	COMPOSITE_NODIV(PCLK_VOP_ROOT, "pclk_vop_root", mux_100m_50m_24m_p, 0,
-@@ -2428,10 +2408,12 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(68), 5, GFLAGS),
- 	GATE(ACLK_AV1, "aclk_av1", "aclk_av1_pre", 0,
- 			RK3588_CLKGATE_CON(68), 2, GFLAGS),
-+};
- 
-+static struct rockchip_clk_branch rk3588_clk_branches[] = {
- 	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", ACLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
- 	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", HCLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
--	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
-+	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, 0, RK3588_CLKGATE_CON(31), 2, GFLAGS),
- 	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
- 	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", HCLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
- 	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
-@@ -2443,9 +2425,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
- 	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", ACLK_VOP_LOW_ROOT, 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
--	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(55), 5, GFLAGS),
-+	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, 0, RK3588_CLKGATE_CON(55), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
--	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(59), 9, GFLAGS),
-+	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(59), 9, GFLAGS),
- 	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
- 	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
- 	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", HCLK_NVM, 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
-@@ -2453,14 +2435,18 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
- 	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", HCLK_VO1, CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(59), 12, GFLAGS),
- };
- 
--static void __init rk3588_clk_init(struct device_node *np)
-+static void __init rk3588_clk_early_init(struct device_node *np)
- {
- 	struct rockchip_clk_provider *ctx;
--	unsigned long clk_nr_clks;
-+	unsigned long clk_nr_clks, max_clk_id1, max_clk_id2;
- 	void __iomem *reg_base;
- 
--	clk_nr_clks = rockchip_clk_find_max_clk_id(rk3588_clk_branches,
--					ARRAY_SIZE(rk3588_clk_branches)) + 1;
-+	max_clk_id1 = rockchip_clk_find_max_clk_id(rk3588_clk_branches,
-+					ARRAY_SIZE(rk3588_clk_branches));
-+	max_clk_id2 = rockchip_clk_find_max_clk_id(rk3588_early_clk_branches,
-+					ARRAY_SIZE(rk3588_early_clk_branches));
-+	clk_nr_clks = max(max_clk_id1, max_clk_id2) + 1;
-+
- 	reg_base = of_iomap(np, 0);
- 	if (!reg_base) {
- 		pr_err("%s: could not map cru region\n", __func__);
-@@ -2473,6 +2459,7 @@ static void __init rk3588_clk_init(struct device_node *np)
- 		iounmap(reg_base);
- 		return;
- 	}
-+	early_ctx = ctx;
- 
- 	rockchip_clk_register_plls(ctx, rk3588_pll_clks,
- 				   ARRAY_SIZE(rk3588_pll_clks),
-@@ -2491,54 +2478,53 @@ static void __init rk3588_clk_init(struct device_node *np)
- 			&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
- 			ARRAY_SIZE(rk3588_cpub1clk_rates));
- 
-+	rockchip_clk_register_branches(ctx, rk3588_early_clk_branches,
-+				       ARRAY_SIZE(rk3588_early_clk_branches));
-+
-+	rockchip_clk_of_add_provider(np, ctx);
-+}
-+CLK_OF_DECLARE_DRIVER(rk3588_cru, "rockchip,rk3588-cru", rk3588_clk_early_init);
-+
-+static int clk_rk3588_probe(struct platform_device *pdev)
-+{
-+	struct rockchip_clk_provider *ctx = early_ctx;
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+
- 	rockchip_clk_register_branches(ctx, rk3588_clk_branches,
- 				       ARRAY_SIZE(rk3588_clk_branches));
- 
--	rk3588_rst_init(np, reg_base);
--
-+	rk3588_rst_init(np, ctx->reg_base);
- 	rockchip_register_restart_notifier(ctx, RK3588_GLB_SRST_FST, NULL);
- 
-+	/*
-+	 * Re-add clock provider, so that the newly added clocks are also
-+	 * re-parented and get their defaults configured.
-+	 */
-+	of_clk_del_provider(np);
- 	rockchip_clk_of_add_provider(np, ctx);
--}
- 
--CLK_OF_DECLARE(rk3588_cru, "rockchip,rk3588-cru", rk3588_clk_init);
--
--struct clk_rk3588_inits {
--	void (*inits)(struct device_node *np);
--};
--
--static const struct clk_rk3588_inits clk_3588_cru_init = {
--	.inits = rk3588_clk_init,
--};
-+	return 0;
-+}
- 
- static const struct of_device_id clk_rk3588_match_table[] = {
- 	{
- 		.compatible = "rockchip,rk3588-cru",
--		.data = &clk_3588_cru_init,
- 	},
- 	{ }
- };
- 
--static int __init clk_rk3588_probe(struct platform_device *pdev)
--{
--	const struct clk_rk3588_inits *init_data;
--	struct device *dev = &pdev->dev;
--
--	init_data = device_get_match_data(dev);
--	if (!init_data)
--		return -EINVAL;
--
--	if (init_data->inits)
--		init_data->inits(dev->of_node);
--
--	return 0;
--}
--
- static struct platform_driver clk_rk3588_driver = {
-+	.probe		= clk_rk3588_probe,
- 	.driver		= {
- 		.name	= "clk-rk3588",
- 		.of_match_table = clk_rk3588_match_table,
- 		.suppress_bind_attrs = true,
- 	},
- };
--builtin_platform_driver_probe(clk_rk3588_driver, clk_rk3588_probe);
-+
-+static int __init rockchip_clk_rk3588_drv_register(void)
-+{
-+	return platform_driver_register(&clk_rk3588_driver);
-+}
-+core_initcall(rockchip_clk_rk3588_drv_register);
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 73d2cbdc716b..5807f1d820d6 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -19,8 +19,12 @@
- #include <linux/clk-provider.h>
- #include <linux/io.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/of_platform.h>
-+#include <linux/pm_clock.h>
-+#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/reboot.h>
-+#include <linux/platform_device.h>
- 
- #include "../clk-fractional-divider.h"
- #include "clk.h"
-@@ -376,7 +380,7 @@ struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
- 		goto err_free;
- 
- 	for (i = 0; i < nr_clks; ++i)
--		clk_table[i] = ERR_PTR(-ENOENT);
-+		clk_table[i] = ERR_PTR(-EPROBE_DEFER);
- 
- 	ctx->reg_base = base;
- 	ctx->clk_data.clks = clk_table;
-@@ -446,6 +450,66 @@ unsigned long rockchip_clk_find_max_clk_id(struct rockchip_clk_branch *list,
- }
- EXPORT_SYMBOL_GPL(rockchip_clk_find_max_clk_id);
- 
-+static struct platform_device *rockchip_clk_register_pdev(
-+		struct platform_device *parent,
-+		const char *name,
-+		struct device_node *np)
-+{
-+	struct platform_device_info pdevinfo = {
-+		.parent = &parent->dev,
-+		.name = name,
-+		.fwnode = of_fwnode_handle(np),
-+		.of_node_reused = true,
-+	};
-+
-+	return platform_device_register_full(&pdevinfo);
-+}
-+
-+static struct clk *rockchip_clk_register_linked_gate(
-+	struct rockchip_clk_provider *ctx,
-+	struct rockchip_clk_branch *clkbr)
-+{
-+	struct clk *linked_clk = ctx->clk_data.clks[clkbr->linked_clk_id];
-+	unsigned long flags = clkbr->flags | CLK_SET_RATE_PARENT;
-+	struct device_node *np = ctx->cru_node;
-+	struct platform_device *parent, *pdev;
-+	struct device *dev = NULL;
-+	int ret;
-+
-+	parent = of_find_device_by_node(np);
-+	if (!parent) {
-+		pr_err("failed to find device for %pOF\n", np);
-+		goto exit;
-+	}
-+
-+	pdev = rockchip_clk_register_pdev(parent, clkbr->name, np);
-+	put_device(&parent->dev);
-+	if (!pdev) {
-+		pr_err("failed to register device for clock %s\n", clkbr->name);
-+		goto exit;
-+	}
-+
-+	dev = &pdev->dev;
-+	pm_runtime_enable(dev);
-+	ret = pm_clk_create(dev);
-+	if (ret) {
-+		pr_err("failed to create PM clock list for %s\n", clkbr->name);
-+		goto exit;
-+	}
-+
-+	ret = pm_clk_add_clk(dev, linked_clk);
-+	if (ret) {
-+		pr_err("failed to setup linked clock for %s\n", clkbr->name);
-+	}
-+
-+exit:
-+	return clk_register_gate(dev, clkbr->name,
-+				 clkbr->parent_names[0], flags,
-+				 ctx->reg_base + clkbr->gate_offset,
-+				 clkbr->gate_shift, clkbr->gate_flags,
-+				 &ctx->lock);
-+}
-+
- void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				    struct rockchip_clk_branch *list,
- 				    unsigned int nr_clk)
-@@ -526,6 +590,9 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				ctx->reg_base + list->gate_offset,
- 				list->gate_shift, list->gate_flags, &ctx->lock);
- 			break;
-+		case branch_linked_gate:
-+			clk = rockchip_clk_register_linked_gate(ctx, list);
-+			break;
- 		case branch_composite:
- 			clk = rockchip_clk_register_branch(list->name,
- 				list->parent_names, list->num_parents,
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index fd3b476dedda..0d8e729fe332 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -517,6 +517,7 @@ enum rockchip_clk_branch_type {
- 	branch_divider,
- 	branch_fraction_divider,
- 	branch_gate,
-+	branch_linked_gate,
- 	branch_mmc,
- 	branch_inverter,
- 	branch_factor,
-@@ -544,6 +545,7 @@ struct rockchip_clk_branch {
- 	int				gate_offset;
- 	u8				gate_shift;
- 	u8				gate_flags;
-+	unsigned int			linked_clk_id;
- 	struct rockchip_clk_branch	*child;
- };
- 
-@@ -842,6 +844,20 @@ struct rockchip_clk_branch {
- 		.gate_flags	= gf,				\
- 	}
- 
-+#define GATE_LINK(_id, cname, pname, linkedclk, f, o, b, gf)	\
-+	{							\
-+		.id		= _id,				\
-+		.branch_type	= branch_linked_gate,		\
-+		.name		= cname,			\
-+		.parent_names	= (const char *[]){ pname },	\
-+		.linked_clk_id	= linkedclk,			\
-+		.num_parents	= 1,				\
-+		.flags		= f,				\
-+		.gate_offset	= o,				\
-+		.gate_shift	= b,				\
-+		.gate_flags	= gf,				\
-+	}
-+
- #define MMC(_id, cname, pname, offset, shift)			\
- 	{							\
- 		.id		= _id,				\
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgUm9iaW4sCgpPbiAxLzIzLzI0IDE4OjQ1LCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMjMv
+MDEvMjAyNCAxMDo0OSBhbSwgSm9oYW4gSm9ua2VyIHdyb3RlOgo+Pgo+Pgo+PiBPbiAxLzIzLzI0
+IDEwOjE3LCBMdWlzIGRlIEFycXVlciB3cm90ZToKPj4+IE9uIDEvMjIvMjQgMjM6NTksIEpvaGFu
+IEpvbmtlciB3cm90ZToKPj4+PiBJbiB0aGUgZHJpdmVyIHNwaS1yb2NrY2hpcC5jIG1heF9uYXRp
+dmVfY3MgaXMgbGltaXRlZCB0byA0IGFuZCB0aGUKPj4+PiBkZWZhdWx0IG51bS1jcyBwcm9wZXJ0
+eSBpcyAxLiBSZXN0cmljdCBudW0tY3MgaW4gc3BpLXJvY2tjaGlwLnlhbWwuCj4+Pj4KPj4+Cj4+
+Cj4+PiBEb2Vzbid0IG51bS1jcyBpbmNsdWRlIGdwaW8gY2hpcCBzZWxlY3RzIHRvbz8KPj4+IEkg
+aGF2ZSBhIHNldHVwIHdpdGggbnVtLWNzID0gPDEyPiB3aGljaCB1c2VzIG5vbi1uYXRpdmUgY3Mt
+Z3Bpb3MganVzdCAKPj4+IGZpbmUKPj4KPj4gR2l2ZW4gdGhhdCBiaW5kaW5ncyBhbmQgTGludXgg
+ZHJpdmVycyBjYXBhYmlsaXRpZXMgYXJlIDIgc2VwYXJhdGUgdGhpbmdzLgo+IAo+IEVyLCB0aGF0
+J3MgdGhlIHdob2xlIHBvaW50IC0gYmluZGluZ3MgYW5kIGRyaXZlcnMgKmFyZSogc2VwYXJhdGUg
+dGhpbmdzLCAKPiBhbmQgYmluZGluZ3MgZG8gbm90IGRlc2NyaWJlIGRyaXZlcnMuIE5vdCBsZWFz
+dCBzaW5jZSB0aGUgZnVuZGFtZW50YWwgCj4gbW9kZWwgaXMgdG8gaGF2ZSBvbmUgY2Fub25pY2Fs
+IGJpbmRpbmcgZm9yIG11bHRpcGxlIGRpZmZlcmVudCBkcml2ZXJzIHRvIAo+IGNvbnN1bWUuCj4g
+Cj4gVGhlcmUgc2VlbXMgdG8gYmUgc29tZSBhbWJpZ3VpdHkgYXMgdG8gd2hldGhlciB0aGUgY29t
+bW9uICJudW0tY3MiIAo+IHByb3BlcnR5IGlzIHN1cHBvc2VkIHRvIGRlc2NyaWJlIHRoZSBudW1i
+ZXIgb2YgZGVkaWNhdGVkIGhhcmR3YXJlIAo+IGNoaXBzZWxlY3RzIG9yIHRoZSB0b3RhbCBudW1i
+ZXIgaW5jbHVkaW5nIGFkZGl0aW9uYWwgR1BJT3MsIGJ1dCBlaXRoZXIgCj4gd2F5IHRoaXMgY2hh
+bmdlIGFwcGVhcnMgdG8gYmUgb2JqZWN0aXZlbHkgd3JvbmcgLSBpZiBpdCdzIHRoZSBmb3JtZXIg
+Cj4gdGhhbiB0aGUgY29tbWVudCBpbiB0aGUgZHJpdmVyIHBsdXMgYSBzdXJ2ZXkgb2YgYSBmZXcg
+VFJNcyBpbXBsaWVzIHRoYXQgCj4gdGhlIG1heGltdW0gbnVtYmVyIG9mIGhhcmR3YXJlIGxpbmVz
+IGlzIDI7IGlmIGl0J3MgdGhlIGxhdHRlciB0aGVuIAo+IG9idmlvdXNseSBpdCdzIHZhbGlkIGZv
+ciBhIHBsYXRmb3JtIHRvIHdpcmUgdXAgMyBvciBtb3JlIGFkZGl0aW9uYWwgCj4gR1BJT3MgYXMg
+ZGVzaXJlZCwgYW5kIGZvciBhIERUIHRvIGFjY3VyYXRlbHkgZGVzY3JpYmUgdGhhdCwgcmVnYXJk
+bGVzcyAKPiBvZiB3aGV0aGVyIGFueSBwYXJ0aWN1bGFyIGNvbnN1bWVyIGhhcHBlbnMgdG8gc3Vw
+cG9ydCBpdCB5ZXQgb3Igbm90LiBGb3IgCj4gZXhhbXBsZSwgQUZBSUNTIHRoZSBVLUJvb3QgYW5k
+IEZyZWVCU0QgZHJpdmVycyBmb3IgUm9ja2NoaXAgU1BJIGFwcGVhciAKPiBub3QgdG8gc3VwcG9y
+dCBHUElPIGNoaXBzZWxlY3RzIGF0IGFsbC4KPiAKCkkgYWx3YXlzIHVuZGVyc3Rvb2QgbnVtLWNz
+IHdhcyBhIHNwaSBzdWJzeXN0ZW0gdGhpbmcsIHdoaWNoIGNhbiBiZSAKZXh0ZW5kZWQgd2l0aCBh
+cyBtYW55IGdwaW9zIGFzIG5lZWRlZC4KCkhvd2V2ZXIsIGl0IGxvb2tzIHNwaS1yb2NrY2hpcCBt
+YXkgYmUgbGltaXRpbmcgbnVtLWNzIHRvIDQgYWZ0ZXIgYWxsLgoKSXQga2VlcHMgYSBjb3B5IG9m
+IHRoZSBzdGF0ZSBvZiB0aGUgY2hpcCBzZWxlY3RzIGludG8gYW4gYXJyYXkgCidjc19hc3NlcnRl
+ZCcgb2Ygc2l6ZSA0LiBJdCB3b3VsZG4ndCBiZSBhIHByb2JsZW0gaWYgaXQgd2Fzbid0IGJlY2F1
+c2UgCnRoZSBkcml2ZXIgc2V0cyB0aGUgZmxhZyBTUElfQ09OVFJPTExFUl9HUElPX1NTLCB3aGlj
+aCBtYWtlcyBkcml2ZXIncyAKc2V0X2NzKCkgZnVuY3Rpb24gdG8gYmUgY2FsbGVkIGV2ZW4gZm9y
+IGdwaW8gbGluZXMuCgpBbGwgdGhpcyBsZWFkcyB0byBhbiBvdXQgb2YgYm91bmRzIGFjY2VzcyB3
+aGVuIG51bS1jcyA+IDQuCgpJIHdhcyBhYmxlIHRvIHJlcHJvZHVjZSB0aGUgaXNzdWUgd2l0aCA2
+IHNwaWRldiBkZXZpY2VzIChhbGwgd2l0aCBncGlvIApjcykgYWRkaW5nIDIgZ3VhcmQgdTggdmFy
+aWFibGVzIGluICdzdHJ1Y3Qgcm9ja2NoaXBfc3BpJyByaWdodCBhZnRlciAKJ2NzX2Fzc2VydGVk
+JyBhcnJheSwgYW5kIHRoZXkgZ290IG92ZXJ3cml0dGVuIHdoZW4gYWNjZXNzaW5nIGRldmljZXMg
+CnNwaWRldjAuNCBhbmQgc3BpZGV2MC41CgpFdmVuIHRob3VnaCBJIGRpZCB0aGUgdGVzdCB3aXRo
+IGEgZG93bnN0cmVhbSBrZXJuZWwgKEkgbmVlZCBtb3JlIHRpbWUgdG8gCnRlc3Qgb24gbWFpbmxp
+bmUpLCB0aGUgZHJpdmVyIGlzIG1vc3RseSBpZGVudGljYWwsIGFuZCB0aGUgcHJvYmxlbSBzZWVt
+cyAKdG8gcGVyc2lzdCBpbiBtYWlubGluZS4KCkkgcmV2aWV3ZWQgYW5kIHByZXBhcmVkIGEgZml4
+IG9uIG15IHN5c3RlbS4gSSBhbSBidWlsZGluZyB0aGUgZml4IG9uIApsaW51eC1yb2NrY2hpcCB0
+cmVlLCBhbmQgSSB3aWxsIHRyeSB0byBwb3N0IGl0IGZvciByZXZpZXcgc29vbi4KCkx1aXMKCj4g
+VGhhbmtzLAo+IFJvYmluLgo+IAo+PiBIb3dldmVyIHRoaXMgZG9jdW1lbnQgaGFzIGFsc28gYSBw
+dXJwb3NlIHRoYXQgbXVzdCBub3RpZnkgbWFpbmxpbmUgCj4+IG1haW50YWluZXJzIGlmIHVzZXJz
+IHN1Ym1pdCBib2d1cyBEVCB2YWx1ZXMuCj4+IEN1cnJlbnRseSB0aGF0IGxpbWl0IGlzIHNldCB0
+byA0IGluIHRoZSBtYWlubGluZSBkcml2ZXIuCj4+IFlvdSBhcmUgZnJlZSB0byBzdWJtaXQgYSBy
+ZWFsIGJvYXJkIGZpbGUvcGF0Y2ggc2VyaWUgYWZ0ZXJ3b3JkcyBhcyAKPj4gcHJvb2YgZm9yIHJl
+dmlldyB3aXRoIDEyIHNwaSBjaGlwcyBhbmQgdGhlbiBhZGp1c3QgdGhpcyBsaW1pdCBhbmQgCj4+
+IGluY3JlYXNlIFJPQ0tDSElQX1NQSV9NQVhfQ1NfTlVNLgo+Pgo+PiBKb2hhbgo+Pgo+Pj4KPj4+
+IEx1aXMKPj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogSm9oYW4gSm9ua2VyIDxqYng2MjQ0QGdtYWls
+LmNvbT4KPj4+PiAtLS0KPj4+PiDCoMKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9zcGkvc3BpLXJvY2tjaGlwLnlhbWwgfCA1ICsrKysrCj4+Pj4gwqDCoCAxIGZpbGUgY2hhbmdl
+ZCwgNSBpbnNlcnRpb25zKCspCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL3NwaS9zcGktcm9ja2NoaXAueWFtbCAKPj4+PiBiL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zcGkvc3BpLXJvY2tjaGlwLnlhbWwKPj4+PiBpbmRl
+eCBlNDk0MWU5MjEyZDEuLjAwZDU1NWJjYmFkMyAxMDA2NDQKPj4+PiAtLS0gYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc3BpL3NwaS1yb2NrY2hpcC55YW1sCj4+Pj4gKysrIGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NwaS9zcGktcm9ja2NoaXAueWFtbAo+
+Pj4+IEBAIC02NSw2ICs2NSwxMSBAQCBwcm9wZXJ0aWVzOgo+Pj4+IMKgwqDCoMKgwqDCoMKgwqAg
+LSBjb25zdDogdHgKPj4+PiDCoMKgwqDCoMKgwqDCoMKgIC0gY29uc3Q6IHJ4Cj4+Pj4KPj4+PiAr
+wqAgbnVtLWNzOgo+Pj4+ICvCoMKgwqAgZGVmYXVsdDogMQo+Pj4+ICvCoMKgwqAgbWluaW11bTog
+MQo+Pj4+ICvCoMKgwqAgbWF4aW11bTogNAo+Pj4+ICsKPj4+PiDCoMKgwqDCoCByeC1zYW1wbGUt
+ZGVsYXktbnM6Cj4+Pj4gwqDCoMKgwqDCoMKgIGRlZmF1bHQ6IDAKPj4+PiDCoMKgwqDCoMKgwqAg
+ZGVzY3JpcHRpb246Cj4+Pj4gLS0gCj4+Pj4gMi4zOS4yCj4+Pj4KPj4+Pgo+Pj4+IF9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+Pj4gTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0Cj4+Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+
+Pj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAKPj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCj4+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+PiBMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
