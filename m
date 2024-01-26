@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEDA3C47422
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF3AC47422
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SD9waZuclfWfm08i3UKF6rwCHYMeK1DsywZnq3aQO/w=; b=utREN7MPUZvlen
-	TRIbyXXUiwEJ8B2Q5hqrAclFgD0LwenjSGoMe9RajZRSBSMwGtTOJ9iKi5sMOD21JQpiEqRBe5Qyg
-	a9nqACy+zZDxFeW2b9Ux6+eJndUrap92RgGRpRCev1qMhRV8d6YRIxLDXr3iUMKc+Jqrqa2KkVg/1
-	vJUhMqq3YFBkzEo+ntFgmfg/SyRaBS1qA9/DH3NzFc4IHnwviw3Me1QNoosGNumuKULWVXGSghJHK
-	uQjuG31A3tWjiCWDcLpKCdPyKXKce6tiPjJPyxyOuMSRf9yHwRnPhSs/7CGYHFCTPbI6S8sU3QwmH
-	ps5mNJkV1+puse72cW4Q==;
+	List-Owner; bh=M+kWMqbtW7CqBgxbw+EPU6TKhoe8VObA2BKZe3g0G6M=; b=Gn8XpMxP4+Iyzy
+	TJB04CLjpmTHYU2iQJNxXni+YxJqfHc5d+2URuV/ahIzi88lEqr4Gk7Ajlf1tdMj7QpKD9AwUh/1l
+	KRTHoeQeq9SfBSbbfQl/fAiorEVXjHsOMPeU1DmNAi13Zcx4AYnjK3VUgBKcb9U7EkDMJegurm64J
+	jdZG19ramPqv5uRMrMx6MebzXzaAdagucgpiK6htlqjenc+ZaPXlAl+8LfsYuSL1Q/ih9CR9KYJPW
+	L3gKvIwCL41TrrrRA9P7AXOk+Pul0TsD0udDdJkvpiHCIzXaiSydAutWvu+kFGzhdxdAIdV9vXXXT
+	vXH6sM7HGaB38GCjOfDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVSn-00000005kIt-3sSd;
-	Fri, 26 Jan 2024 23:18:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rTVTN-00000005klK-1CsK;
+	Fri, 26 Jan 2024 23:18:57 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVR0-00000005imi-3GBo
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 26 Jan 2024 23:16:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=lTQuVZL8YGJGo91HZaWDjGYZpj4eaCPL+PrXyKe44Kc=; b=YddYXwcKcAh63oITkBaCpit1S5
-	9BYhGPrwX/q8jg64AQoDRZzYXcOLJSELyUzpvqyohUatUKQE7yDJcX5zfCbdqSr3aurI0vbWo3nNp
-	tU2UcwaSEKeimOXEADGfWzMmIUhm6r9Razb/NtWwGTBFvzJc2b1c/144D19u3GIntcfmF8pTFCGv6
-	CwAXoKxmHXP/NrbjIU+hbNyXorbfxGXeHou69sPTgTk4611RfK4bokHR1mmlRvEO1iij6gtz29dfY
-	FtyIhr38l0UiSEjm7Kq4E7Yr60tV3hkeT750pxagWBDmaia+jhiFi+aplll+P58gC+EkXvkNLI5EA
-	/qAEudJA==;
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVQt-00000006J6V-43cd
+	id 1rTVRr-00000005jVT-2rEY
 	for linux-rockchip@lists.infradead.org;
-	Fri, 26 Jan 2024 23:16:28 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-783def87c8cso34780385a.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:16:23 -0800 (PST)
+	Fri, 26 Jan 2024 23:17:31 +0000
+Received: by mail-oi1-f175.google.com with SMTP id 5614622812f47-3bbbc6e51d0so587450b6e.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:17:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706310982; x=1706915782; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1706310981; x=1706915781; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=lTQuVZL8YGJGo91HZaWDjGYZpj4eaCPL+PrXyKe44Kc=;
-        b=bQUHg4VmVPzqNhUQFEdZXekaiwy9kLnmcHvK76QPGtK4FdWDK85kmOwFSu7QJuFg2h
-         w97Mndnpcni/Xcsrv8kfM6zmAJ3dqURmvSqDm403g+dEE7vIqb+rgV68Wz0syK17W/8J
-         yF1LXd2iI+CNydnoe5LYrneQ14niIfH9rAfU8=
+        bh=yCxJ4tiFippaBrxy1sFWSD98oDdK4KvGR8VQl9S7yQ4=;
+        b=SLRslFPTTWSRObsP4D7sFhnh3tH+h4Tk4ioN1CPP30tuheicpOnAxlgZc7cWtc6fuB
+         uZerJFFmHpaQ0He6t3sMqQ9IdXc7G/SvF2f7CQn6jJ3Vhb/4qWOH+FYFK8lxWQMA2Ups
+         jolwIIFzbRpZzwt1rQcaa58uw+ccFSIHaanQA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706310982; x=1706915782;
+        d=1e100.net; s=20230601; t=1706310981; x=1706915781;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lTQuVZL8YGJGo91HZaWDjGYZpj4eaCPL+PrXyKe44Kc=;
-        b=kQy269f0Fjs3gCJMSfPU/YxKO8D10Y5HagGp+xlXD4oNI+yR/AQ98dlm9qaz8AczSF
-         LuRSp4Tz4f/TFnNYzxBeCQh78twZ8LYr+8vHX9x747HJf/zQBbARrfhtr8PrE7L0oWTS
-         mbN1DJhGf3UfJ3ZvrdCeDORvQxo3vQ62++rx78Lb9luguWnZQYiJ3njfq2PZbslRm3HJ
-         O4YQ/B1K04n/reQ/laH0Y2Xd+qrtW6O1er35VvDV8+tcxLgm+kTAn6M/1dZA7TgCi0f+
-         3ZIvN6nvyAjksFPvjkS0paPcmD07YKsmvMaAKSxd1g7kpCCdaCIsbaYBPVe5aVsE3ask
-         CzaA==
-X-Gm-Message-State: AOJu0YyC4FPrMIaZGmmApX6OhYwbBcapJY7kroButhDrvaNFn/WCtQFm
-	ax2kErbz4P5ZlsdeGULZ0dLflYhaJytm/R/Wff8kbPBHf65QldB2ebaEXxcp+g==
-X-Google-Smtp-Source: AGHT+IEphMi3U2VaLxz1TX+i8gpYrzavZfgthHPoIK0is3/PzYweSa+k/yEg+NZuAGKrkSdAEIRBPw==
-X-Received: by 2002:a05:620a:22e:b0:783:d13c:cfa0 with SMTP id u14-20020a05620a022e00b00783d13ccfa0mr539361qkm.12.1706310982441;
-        Fri, 26 Jan 2024 15:16:22 -0800 (PST)
+        bh=yCxJ4tiFippaBrxy1sFWSD98oDdK4KvGR8VQl9S7yQ4=;
+        b=cIwUnEDymFKiXx/A2kbntjucBw9Fs+DS4w0Bu3q+CIkkK21csDfYo5bFchMK1JbtVz
+         Q0ElWsQ6BoXeax9l2i+elkRvFhwwBRx9+ARhQoE8l8PLLReH+9LwuCClS8oPd+abQPqn
+         qhyF/7Kp9i3gJw+Wef1Zl5zZS1EKgMjrZ0vLiDGSNIVOOHq57om2lcV7uzc+TnsS6p34
+         XYaQDUslkxwAyRIdgjKvOqAOkNqIu9XyWw04FNcR+BCM9l6hLrBQA1RrsxAlJTbNFzM7
+         ObKlp9Op+U6zBKPubVcS6jfFYSVhR8mCn2FMeZtaPe0WT9CpG11uUAd4SBpzMDNK6qR8
+         PNTQ==
+X-Gm-Message-State: AOJu0YzJKqPG0BxKWmqGHGv9H4HPdgl/g+DiHY2zxIz3UqX5/kFIUOX7
+	/rL7kTPixjW2rzQijiZrkk4NG9O24tv3dWtVMp2q6/7ROLeoeK/lF41rwrzjZA==
+X-Google-Smtp-Source: AGHT+IG2D3NC+8qBPHrcajc/wj1UJVv6b2Ko0Gyqx05WQt6GLVPDwCaJl+4BVmpG1ygKipZTOYQ4Rw==
+X-Received: by 2002:a05:6808:124d:b0:3bd:c98e:bf88 with SMTP id o13-20020a056808124d00b003bdc98ebf88mr451359oiv.79.1706310981414;
+        Fri, 26 Jan 2024 15:16:21 -0800 (PST)
 Received: from denia.c.googlers.com (240.157.150.34.bc.googleusercontent.com. [34.150.157.240])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.21
+        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 15:16:22 -0800 (PST)
+        Fri, 26 Jan 2024 15:16:21 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 26 Jan 2024 23:16:15 +0000
-Subject: [PATCH 16/17] media: staging: meson: Fix kerneldoc
+Date: Fri, 26 Jan 2024 23:16:14 +0000
+Subject: [PATCH 15/17] media: ipu3: Fix kerneldoc
 MIME-Version: 1.0
-Message-Id: <20240126-gix-mtk-warnings-v1-16-eed7865fce18@chromium.org>
+Message-Id: <20240126-gix-mtk-warnings-v1-15-eed7865fce18@chromium.org>
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 In-Reply-To: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -116,8 +101,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_231626_513602_FDDB5173 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20240126_151723_912826_8649D837 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,25 +120,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove documentation from missing field.
+Remove documentation from missing fields.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/staging/media/meson/vdec/vdec.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/ipu3/include/uapi/intel-ipu3.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/staging/media/meson/vdec/vdec.h b/drivers/staging/media/meson/vdec/vdec.h
-index 0906b8fb5cc6..258685177700 100644
---- a/drivers/staging/media/meson/vdec/vdec.h
-+++ b/drivers/staging/media/meson/vdec/vdec.h
-@@ -101,7 +101,6 @@ struct amvdec_core {
-  * @conf_esparser: mandatory call to let the vdec configure the ESPARSER
-  * @vififo_level: mandatory call to get the current amount of data
-  *		  in the VIFIFO
-- * @use_offsets: mandatory call. Returns 1 if the VDEC supports vififo offsets
-  */
- struct amvdec_ops {
- 	int (*start)(struct amvdec_session *sess);
+diff --git a/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h b/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
+index caa358e0bae4..4aa2797f5e3c 100644
+--- a/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
++++ b/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
+@@ -2485,11 +2485,9 @@ struct ipu3_uapi_anr_config {
+  *		&ipu3_uapi_yuvp1_y_ee_nr_config
+  * @yds:	y down scaler config. See &ipu3_uapi_yuvp1_yds_config
+  * @chnr:	chroma noise reduction config. See &ipu3_uapi_yuvp1_chnr_config
+- * @reserved1: reserved
+  * @yds2:	y channel down scaler config. See &ipu3_uapi_yuvp1_yds_config
+  * @tcc:	total color correction config as defined in struct
+  *		&ipu3_uapi_yuvp2_tcc_static_config
+- * @reserved2: reserved
+  * @anr:	advanced noise reduction config.See &ipu3_uapi_anr_config
+  * @awb_fr:	AWB filter response config. See ipu3_uapi_awb_fr_config
+  * @ae:	auto exposure config  As specified by &ipu3_uapi_ae_config
+@@ -2724,7 +2722,6 @@ struct ipu3_uapi_obgrid_param {
+  * @acc_ae: 0 = no update, 1 = update.
+  * @acc_af: 0 = no update, 1 = update.
+  * @acc_awb: 0 = no update, 1 = update.
+- * @__acc_osys: 0 = no update, 1 = update.
+  * @reserved3: Not used.
+  * @lin_vmem_params: 0 = no update, 1 = update.
+  * @tnr3_vmem_params: 0 = no update, 1 = update.
 
 -- 
 2.43.0.429.g432eaa2c6b-goog
