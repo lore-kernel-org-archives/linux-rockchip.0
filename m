@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87396C47DDB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 19:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF9B1C47DDB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 19:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JepI0J/sENHUp01vXu8g0XKgyRqF/3VJ3ic3RjiYy9g=; b=kPaD9zjiBxuWSS
-	nxo0ltVL6hZQ0H+En2icbTcsPC9L4P1ynO612jCWtJ/ARGpd1CFQ9N4XJ15bYlnAIp+WZ1RHNVz+V
-	u/7Tygi11IO86PGT1HWOSKYhLAMakGDXAVS/0xzInilcNf1ZJAaokw6fsLAzRKN9MCDsmtavSEw4P
-	SUsqLxUATZP/SKBm2FwqedWSoDUmlaaSssu/BHViEaTr6HyNAs+Zdizyth/Yhlzbd4rov5gc2HJRM
-	FJfkE9yKxsLq4+fBfR8XvuL/XznOSgs0L+HqE1r66K+UfRsLelFLtiEgUp1FauDeQwXxb3SYsEzbb
-	lmme3aPgVO2ugtYFb9Ag==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1MNDAwktSIBYcPb7a9Ie4OEYH76YcYJjuUgmpH1X0gA=; b=WyjwKZmwVu8aRA
+	drcCInEDL74E7yQH3S3lJ+5RdyXEYcTu1ndEPtqeswcJcMcc1IyW/2FRaHBx2aIq9/ibVBZUemkSp
+	iYowk5wiM1EKVvL6BdTyJtNJ/ikFRG5PSUTKMt3oHTwKIUPXpfebAAOxX9clc8SmKw/UqZlqyromw
+	FfXaj8L88J2/cMhEz7KhWx/Ec/xprUMbLA8FHxgpYBXXWSAQtYIFGB0U6osoIQbIsdOcs1k+DddRJ
+	RA1vgjhuzPRUQSumwKUu01Y30xwdajT0PY0yrqivTMweUuXdpbMx7lQPt7/5RYFfSAWODd1mLrAUc
+	wG5pYBN5XQJzwCHn2VHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTSAb-00000005H45-2kqj;
-	Fri, 26 Jan 2024 19:47:21 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1rTSM0-00000005Ieb-33vU;
+	Fri, 26 Jan 2024 19:59:08 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTSAZ-00000005H2Y-061w;
-	Fri, 26 Jan 2024 19:47:20 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-339208f5105so975332f8f.1;
-        Fri, 26 Jan 2024 11:47:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706298436; x=1706903236; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=GSMFl5nllj5v1PrRTFHuxExKyyAx3NuOJlgSRm6sXPM=;
-        b=MTs7KeuIP2skoyTjNzwHspDgBLEOGwWyxdPzKzTbPMBmlnm4SC2qlvbO9HApaUcE6a
-         ZaMe24MEDGEa2/+owm6Zf/wk1aNstFJjY76S9iPj9WBzcwZfYuLwUa43HQOwzUfVghu8
-         I2JVxg2kxK19IVU3tGHvOyzJiSTpqe4JSy80eNLp55WLqvwLK8MS57xi9K69ekSA8Du5
-         yhn/pu+GLF0zN01EbOPYzoVpmK2Zw2BGwz4MbpUGYp2m2NJaFlKFjh8XhZYrc/mDR3bI
-         ztnPRDz/onKncF7o5DZnAdsuSy+v1law00eunkAUA86SthaC/kZzbSaMDoQdISHVKt6a
-         DrqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706298436; x=1706903236;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GSMFl5nllj5v1PrRTFHuxExKyyAx3NuOJlgSRm6sXPM=;
-        b=YFU5PhkWRr3M5ti/lYSQ+/3QEgnjsy4zv7QNbklZeo9m8S+/nde2Vwhi9fxJPDElbx
-         1DZ5K8kte2gnTIuQvNV5CmoEUKKd/+YloDjhrkH+HDlArd667ccDnkCsTSG/AeCtl/H9
-         HvRMeuS4k0KdHIhtANfP1NsON9nAqokUTHnkW09mgxW/jJ+qyJzPJ+DMfDvevda9jNs4
-         gBt47v71cLMYumFaB0O1GVAwdwFaJAkaZReGdpkBDHBOGWPydEc6mgW1Flai7y1Ve6ON
-         62tJNV63/TgXb90k10/+L65yTlXXEmuFyPrB5C5rZSAphuziYCF9SSyD9RDTek8oGRgm
-         l1KQ==
-X-Gm-Message-State: AOJu0Ywv181mIjhhvNFPsWdfdlNIbmSUPgk5ZsaBRDu7R2klNOUhXTDj
-	b7Xd40pBhSdP7V15Ka77yQT4qvsKq0PFpj6Gx5i7u2LUiun/FryV
-X-Google-Smtp-Source: AGHT+IF6Rga6mv64blYjD/Oft6VTs6a8MSrYnbKYGuy3EC8KRzyRoEb9bn2yxKYI0PL5WWPkLS1yNA==
-X-Received: by 2002:a05:6000:1b07:b0:337:67e:a1ef with SMTP id f7-20020a0560001b0700b00337067ea1efmr100398wrz.7.1706298436373;
-        Fri, 26 Jan 2024 11:47:16 -0800 (PST)
-Received: from [192.168.0.5] (cm-83-97-153-254.telecable.es. [83.97.153.254])
-        by smtp.gmail.com with ESMTPSA id eo9-20020a056000428900b00337d9b772c6sm1891773wrb.37.2024.01.26.11.47.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 11:47:16 -0800 (PST)
-Message-ID: <fc9519de1d278c3f0f0ba8a9640b0499ae2bedca.camel@gmail.com>
-Subject: [PATCH 3/3] spi: spi-rockchip: Fix unused chip select line when
- using gpio cs
-From: Luis de Arquer <ldearquer@gmail.com>
-To: linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: broonie@kernel.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org,  Robin Murphy <robin.murphy@arm.com>,
- luis.dearquer@inertim.com
-Date: Fri, 26 Jan 2024 20:47:05 +0100
-User-Agent: Evolution 3.44.4-0ubuntu2 
+	id 1rTSLx-00000005Icp-2Sg9;
+	Fri, 26 Jan 2024 19:59:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
+	t=1706299131; x=1706903931; i=linosanfilippo@gmx.de;
+	bh=cRzLRQLkoT/9QCSn+btL5/4YZw+PC8W1ychaTIgW3/Q=;
+	h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
+	 In-Reply-To;
+	b=qSh8rlp++h2UL10nO3ZC6Qhyxh9m8pn53Dt2WTcaUCG6k2bApgwssHd7NIk2TbJu
+	 Zo+WfXtE43EucUy+yKr4BsJwqeUhv3wR5vBPogtcDFRli3mBozrnOjlCiC9AQEbxU
+	 kZOaOHbQk2zzeWftCh+zfCUDsvU1vc0oBF2sz2ajn2p1gVqdOC3JMFGj0YJ491/1X
+	 IewEf1Q86xDFWDbd73UKUmIxzeGVXY0vrerDckSb6CVGzVb5rX5kjIFQpuiuOetRr
+	 xqKhgMmKn9aGI6p9So3ssYKk+pmgsU9oGGjMQJNQ+93AiQEQgqKTaj8VwYhYLk2VO
+	 FqIqODPwHgvKNctyLQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [192.168.2.42] ([84.180.5.12]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1M1HZi-1rWCAb24XC-002rBK; Fri, 26
+ Jan 2024 20:58:51 +0100
+Message-ID: <098216ce-50b3-43e4-ad1a-42228c58b761@gmx.de>
+Date: Fri, 26 Jan 2024 20:58:47 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/6] serial: 8250: Support separate rs485 rx-enable
+ GPIO
+Content-Language: en-US
+To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ quentin.schulz@theobroma-systems.com,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20240126-dev-rx-enable-v5-0-5d934eda05ca@theobroma-systems.com>
+ <20240126-dev-rx-enable-v5-2-5d934eda05ca@theobroma-systems.com>
+From: Lino Sanfilippo <LinoSanfilippo@gmx.de>
+In-Reply-To: <20240126-dev-rx-enable-v5-2-5d934eda05ca@theobroma-systems.com>
+X-Provags-ID: V03:K1:ZxMRSpxhrKQNxRQVUQyrIc8UZwPVseB5XxzkFHOXhcCiL9DaKQ+
+ LoOnRpzN6nc+kk0LwXWXCb3q9omGjK4QqK46ZFM0pFBpjurJ/TMUaSzMcmatc0t9IbB9XOh
+ m1ipbp6DGASgrgCICC1hkD/Y8kCDX4irts5qeyO66IAzHcPlYv6DS3ZjdhWxeD2n51USWjY
+ 8oC2bt2tH1AFA4e+qXYQA==
+UI-OutboundReport: notjunk:1;M01:P0:gDeFAUjQu88=;LyErTh1wbmp4ZgUkN2hipgHtJip
+ Doasra58RavpqzDzDkRpATvXg2UWTEIs8FY3wGifrBGjoG8OZ7XWkAWj7S7d/CqD8+XJozQgg
+ GXbN1lSKKAMwvlFtJwrC+mFYX8f9AMByLl2inW33lRUHV9zt/ozkAczOIukrBYMdJzhUfK8bL
+ EIGpYZwCLKi0NxwE8nq/9OkiEXlqk0+paRlr8cewb4fRcpOIan4Anozb6PqsnRgPM7QcZM1w5
+ phyRqULFK7WdO06b0nSRXe8Z69HjxoqSFMIDRgm7ZqOg/KsAzJwjqvNSNTa8A4WjuHRUWZVKo
+ c9TO5w3UiF/SWoftSN1wEIps/d5YTOJK5ouPrcGnKItZgekoSQO0Z5q2ZX9i7UoEClgtz9sMF
+ M7KlxJ6CU7jSybRv7cdD+jrEFeYH4TnHVhHqOxpmEmyCw1K2h9QtRzGbZPIMxOGkjVI9avub4
+ XPM72OdUCP/zGxht5V6HyqM5VnyXRG/FKVkLjgIMs5E934N0qA6sCIsR68mnHe59QVZSFLSBD
+ y4JQlMFaKZXKTyK5oKXiwFZ3z21/pzKdYxP/bjUhhR8tZl2Iw1tiRXSmUShk3VGHgy/6a3Sqo
+ RrvNboGzXBaKmIGtWy+0pFe/Vf6zw+DqHQ9DeMI/hKuUtUQzdeXJDkD2xoPe96RBFtsaFOKsf
+ Yu1eHFHcKnaYFfZ8Mb1pEmUTA3pxvgARx+kYLJcV44D6tr+oVHzAc1D0QezjC+PLc+7yXAw+k
+ G8JHOYNegYJQvUWoE+gaYbLp8iuUTJdGnbMza8NU1YRui2utEERA+ahnOvfgMNDHBL0vjhVVz
+ B4Qls2sbQGt/NGT3zpmWbYlj7mVj+Bi6Xcil1giY1tGYTc4ZKebGHZYJPk5sApQEJRazuVwRw
+ pwm/TpmUMJawXcDQ7pUOztJSnzRN4QDqO3ZRdvZ7D4al6Lh+479MaZHfTDUiC0zzObA4F5qDd
+ SW2XOQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_114719_087941_BE0077FC 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240126_115905_946429_E591BD32 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +100,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Luis de Arquer <luis.dearquer@inertim.com>
 
-This change allows the DT to use native c1 for a device while leaving
-native cs0 reserved for allowing gpio cs operation
+Hi,
 
-Signed-off-by: Luis de Arquer <luis.dearquer@inertim.com>
----
- drivers/spi/spi-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 26.01.24 18:27, Farouk Bouabid wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+>
+> The RE signal is used to control the duplex mode of transmissions,
+> aka receiving data while sending in full duplex mode, while stopping
+> receiving data in half-duplex mode.
+>
+> On a number of boards the !RE signal is tied to ground so reception
+> is always enabled except if the UART allows disabling the receiver.
+> This can be taken advantage of to implement half-duplex mode - like
+> done on 8250_bcm2835aux.
+>
+> Another solution is to tie !RE to RTS always forcing half-duplex mode.
+>
+> And finally there is the option to control the RE signal separately,
+> like done here by introducing a new rs485-specific gpio that can be
+> set depending on the RX_DURING_TX setting in the common em485 callbacks.
+>
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index e1ecd96c7858..e1ae62e8765c 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -247,13 +247,13 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
- 		pm_runtime_get_sync(rs->dev);
- 
- 		if (spi_get_csgpiod(spi, 0))
--			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
-+			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, ctlr->unused_native_cs);
- 		else
- 			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER,
- 					      BIT(spi_get_chipselect(spi, 0)));
- 	} else {
- 		if (spi_get_csgpiod(spi, 0))
--			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
-+			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, ctlr->unused_native_cs);
- 		else
- 			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER,
- 					      BIT(spi_get_chipselect(spi, 0)));
--- 
-2.34.1
+we just added the rx_during_tx_gpio to the serial core.
+Why cant you use this GPIO for your purpose?
 
+Regards,
+Lino
 
 
 _______________________________________________
