@@ -4,35 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23EF8C47DDF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 14:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA49C48286
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 14:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S8oC5+0TFPTI/aM8/lOq9kz3GkMrF6m+rvlZs38Iopk=; b=hahF1fmcGP/mIr
-	Xx4wFwwgn37a7F8dQ6YX7+USg8UUrKn7fmTlUHciKsBP6g02woVyR+OvWvktfGkRpumNkRcjoe+uT
-	hblLbZyYl93cuE8rKCeoPwYuxdPDNLtj5I8IANvxHo/JrnypQ9mjQC8Ku/1MjL1N/Z520e+OE1zHO
-	Sun/RO/t/TPy1w+4oKvPnXzP9AqZeoiKYF/5fobE1caVlZFcmP1jYzBnQIjN/1SSp+BkuXpTZfVur
-	omhg7Y+7TBQ8jzzSPm+RTThWb0kfBTMYOGeebBwU7C9hseZw0kHL4ErD9I+UTGj2+RS/H0QvgqK8z
-	Qm2x/5DhnjbPcY1bDpog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=GffurWJ9J+M7cf+is8xqofkoHjjzwsyn26d37n5WnM0=; b=zAB3cXDOVXHayz1fH3DyaMbsZj
+	ZFmWqa9c5qn9zSZwFBa6733d81XZV5ajY3Rh6ZnJ7XOHt3NRJ9tZ8yBS9OQBbteB5mDrCnM27zvRa
+	tnBUK5/WqI8m2/y8K9E1mb+PoHogacdPV5v52b/hedIzyvbGfEAeceDhMMCyEGf1msMyhMm9i3IMQ
+	5DwjrTcr0B2bzBIlAyIv63YIM4oyXVoxJ9ZDt97YUvYXs3JBAYDmm1H2oI84TiPMjvFbM6tH1Sb2e
+	U5J0k0I/4IdWBVyMdkEOOzX7SW8W87qyLvE1pivTFmCSgClA4fFenRAs1nAeb3jD3BOu/0A1lnGyz
+	1NdOWZqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTNfC-00000004Rcg-02om;
-	Fri, 26 Jan 2024 14:58:38 +0000
-Received: from mail-db3eur04on060a.outbound.protection.outlook.com ([2a01:111:f400:fe0c::60a] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
+	id 1rTNfL-00000004RiW-1rpN;
+	Fri, 26 Jan 2024 14:58:47 +0000
+Received: from mail-am6eur05on20600.outbound.protection.outlook.com ([2a01:111:f403:2612::600] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTNf7-00000004RY9-35pZ;
-	Fri, 26 Jan 2024 14:58:35 +0000
+	id 1rTNf9-00000004RZM-0Que;
+	Fri, 26 Jan 2024 14:58:36 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ia6aSDTVy/sjv9eWQRouY9WVtQaUXSNbfuObYu8b5QTKDJwrmzDfXlCWOF23IjYylSdPh0U/X/ZzckWv5aYFaRY1qmpsn4G8quiWVDzuQ5F8mdfPupMoVhy1q0taD7++cnPXcmHDABHBIEuGqCPjteYhn7/H2l2VgJJDMNZnMrG0sxpVvPtKLe5f5yTczsKhK88x0uA9qrP7kytVOMpqjIxeoVB5iLFv8ZpHPZyQqRCI54hPlg9oxNu/gkcWNTk/IPGqDp4dv6xXgh37g4xDj1fFKy/vhRA5t5htLicIg5MI6fuNwlDKMQtvQ8NTFWvvww14ryow8mVC7eC+Gx2new==
+ b=jJlgeLV+KopdFamoZVVisgk5eg9lpyvwFBsiUYTzZoI2Pf7j8S5w9WvpdfpxD0gUTaSYPO0wk6d8vwzo33IZn9Wh+6wU1SUrRHjR49yUaw4xyUSYSYusFmCx8Da/irxrzMMDoIa0Qe/PY8JQm9E7TxT6Nm+zu8j1/8d6yKj23mSM3D8LlUizJ3gGvsYW/ryjjCvIRirk+FcxSPM+hL9gl65B/Ka7cbXOCTq+8xyfYhqjh4kDsTMPadRsjLUJ0SNr4050ETlHhChius05dnTCyJojDpl2Aw7b/Q2rUF8gg60fzvMz48qGfpEt97kpOZ/Il9KV+YtF9GRTPyk1aPWYUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fSCKe2OcTqJsvI3kD+f+eWX2tw7eVNsZl5iY1pZu8Gg=;
- b=K/w/a+0JuETUIGrWN5JsBGeTQLgUaF0NXINl+HPPDzrSGwIj2aVaY3IN9b+QHDPpx1PspBezt+3f45BVZWwYqcYO7oNBF0K3s1+ZQewg/TpfgFYyiftuBk4UMxrEIn0/JTSDX60DSXn580jcpmzPESju+THaN6sNGo1haRWlGh6nawwRWDXQaS/FOOHSnrfETqLYdvv0gsByPXoHvFAjeXM9vC6jL7RRo7xQvGnf2vldh2OXZNvIZ3Tbb776SN4wH+6tXyazUA4yF/muv2MQyKav4fNAZa8KutxZkxNVA+mTTxhjIQZgXKyqeO2hRLkewaOcz3nFlYu1iDUHeF/6rA==
+ bh=bTLh7Dd/7uz1m4CtqrTzye9JHtHx9qlYpEWKaOA4UaE=;
+ b=T+Mm3fBuhzKo/mL389j333IFGLqU2Xw+Ykcu7S/CGLngyZIViCUJy4rclGZc4qFKVtc50Nw4tUUPIk3jeFmJN9XH/I7MRadk6MGwSd+sFqZO811roNnBNY7e/GG5HvoaL5AfSAVF9mg5LImDn7knjSVRVQcXJ3MkCbLtpd3V0/tkfyn859ZrTNecrf3mpUSahhWXi3VkILBkZ8Up2YX1wgC90ig8FrxRC+DHobNbiVc432cQrEwclHkTTQ+maOsbhKPjq/uWGY50iynobnLnT6z4xx/oEpzZxE2bTtYefg0GhGNzMzDRaPA1gqa4bZbzU8m7DpOxn1F5gr0w+qaiRg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
  header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
@@ -40,28 +41,26 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fSCKe2OcTqJsvI3kD+f+eWX2tw7eVNsZl5iY1pZu8Gg=;
- b=E/fPac+X+mn1O7iiiRkN8vNmUp4bVUKFnXhxGsAXZwZoBTBcqMjq0Y1OjsWPtXWAXzb0fBxN3Bry0B1sj2iu/S6gfZcdKfwBAUMtZmtVx3bk3MZL9WYzI5yrmbSe42tjxo3sEJZ7fjEWDAdaNrx2KM3g660hkGjFlB8ARFVmoOl3gySp/YqL8zSvaHXHcm9vXkypJDJY6VEzbLucB9fOG/PPssn6CdjQnsocHnlzdQi1Hb60ssGEFBKLHOryU6zLr5xixrWApzyEmas5LtPRv/uctC2b4Tve0Zag9/HQcGGD3TatoDLBdfQ1lZ2X/kWVJ4XCyHq8p79QPwFm4sNW4w==
+ bh=bTLh7Dd/7uz1m4CtqrTzye9JHtHx9qlYpEWKaOA4UaE=;
+ b=IU8jxQHF0UjIr1OPl2XJlVJMh/MxZPuOBjF+17GljZM5PCZ2yBcHJZqc66F59a/3Zn1pgmM3ofYPw+Ykxk+y86nltCwFtjz7KWhDnJZFsrRlU5Itvp+gh5Vzyc9NGrlxT1R3RVNF3KztOr0/bcq7mut2mS8Ap1a89lcMmtvZ6XdtfuNTxm5xGtp+ORB7lvj3Vl2BhW2jD/eWdHJBoyw6Oa3dhVLituLXoM5ZfM1rO27CRUR6132yPrBTIMA8pgSpJRsbeVNb4j7kDtvM7KdQqtvqbGZo3c2sioBJ7odO+eXBERFBGSYX2FWbA7PaE1zpDqs0l4wStRXDnBEGzWXqsQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
 Received: from AM0PR04MB6371.eurprd04.prod.outlook.com (2603:10a6:208:178::19)
- by AS4PR04MB9435.eurprd04.prod.outlook.com (2603:10a6:20b:4eb::14) with
+ by GVXPR04MB9735.eurprd04.prod.outlook.com (2603:10a6:150:118::12) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.27; Fri, 26 Jan
- 2024 14:58:22 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.22; Fri, 26 Jan
+ 2024 14:58:26 +0000
 Received: from AM0PR04MB6371.eurprd04.prod.outlook.com
  ([fe80::e130:6c40:23e5:9a8f]) by AM0PR04MB6371.eurprd04.prod.outlook.com
  ([fe80::e130:6c40:23e5:9a8f%5]) with mapi id 15.20.7228.022; Fri, 26 Jan 2024
- 14:58:22 +0000
+ 14:58:26 +0000
 From: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-Subject: [PATCH v4 0/6] serial: 8250: Add support for rs485 half/full
- duplex on puma/ringneck-haikou
-Date: Fri, 26 Jan 2024 15:55:09 +0100
-Message-Id: <20240126-dev-rx-enable-v4-0-45aaf4d96328@theobroma-systems.com>
-X-B4-Tracking: v=1; b=H4sIAM3Hs2UC/53PsQ7CIBDG8VcxzGLKlSJ18j2MA+UOS2KLgYZom
- r676OBkHRz/l9wv+WaWKHpK7LCZWaTskw9jCbndMNub8ULcY2kGFchKQMORMo93TqPprsRRa6G
- xc3sLmpWfWyTn72/vdC7d+zSF+HjzWbyua1IWvOKN0miNMRYsHKeeQhfDYHh6pImGtLNhYC81y
- 5+SLJKrW3BWSOmEXpG2n1Xqm1BLQFTUSRTtf4IyAI1ygNCatTXLsjwB9DVon4QBAAA=
+Date: Fri, 26 Jan 2024 15:55:13 +0100
+Subject: [PATCH v4 4/6] serial: 8250: set rx-enable gpio state when rs485
+ is disabled
+Message-Id: <20240126-dev-rx-enable-v4-4-45aaf4d96328@theobroma-systems.com>
+References: <20240126-dev-rx-enable-v4-0-45aaf4d96328@theobroma-systems.com>
+In-Reply-To: <20240126-dev-rx-enable-v4-0-45aaf4d96328@theobroma-systems.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
  Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
@@ -70,7 +69,6 @@ Cc: Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
  linux-serial@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  quentin.schulz@theobroma-systems.com, 
- Heiko Stuebner <heiko.stuebner@cherry.de>, 
  Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
 X-Mailer: b4 0.12.3
 X-ClientProxiedBy: VI1PR06CA0114.eurprd06.prod.outlook.com
@@ -78,65 +76,65 @@ X-ClientProxiedBy: VI1PR06CA0114.eurprd06.prod.outlook.com
  (2603:10a6:208:178::19)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM0PR04MB6371:EE_|AS4PR04MB9435:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0ab26628-c2c4-4f1b-9d96-08dc1e7f3dc0
+X-MS-TrafficTypeDiagnostic: AM0PR04MB6371:EE_|GVXPR04MB9735:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6c0ebeb1-be25-4032-f3ba-08dc1e7f3fc1
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: mFNN40mHUbva29mEbqYnAVwUqv9z1GZr2ftvEBBCP0k3BbiCRidSPXyg7xoUkNF5p9kjvGl4OHIOV+TU6D4jFNNjZebss8UlRLavWn0y8024s7CXAknoaGrFFxmMpCT31kTSjJuMZMcBuyFoum+Tljs9GJZ5OTFNwWbfgLv4OybDb3Sd60rpfTsKziuT2dZ7RRWyb82b/LuYcBPi7Ro9w1iIJj2/Itry4UC1CbDdrcjsWOTRqkqhPAZgj6hha/RgULrUp0eHKVVQLd+iY4LUOMx5eXxs5+Le+LDbnHTUTzizIXJNbXRVAZu7/aTkepmnmnfvfNnLIcLliVHolx0w3ZQHPLAT6TRg+QT3uXcxx1hBf+BQm/2ehhRlXxvAJKnZdv/bWA1Nxjg3C+RyHIhUrZfzpNDevw5HamjvZ4rdtLvgDU5buN0lDdaXDm416zf1r2LhpwpjLIaBe3cGtKylRR6DTIet+1BqBpJ8SHYzsSL9y8K658kq6OlipzFexpf+tlCSLbd68xrvG/P3lBl2usragY6buOW8J5Htl+9B3v17BP0Ezqk63mEduVswOzJh+/8r6nCqObguzOwNGG2amvsRGMeeZ0G0l+T2e2HMNjDh4zkuy1NWr45eHLGyyMet7tZtltqlHmUBFuwqL+D+fA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6371.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39850400004)(376002)(366004)(346002)(396003)(136003)(230273577357003)(230922051799003)(230173577357003)(451199024)(64100799003)(1800799012)(186009)(38100700002)(2906002)(41300700001)(36756003)(86362001)(54906003)(66476007)(66556008)(6512007)(52116002)(6506007)(66946007)(7416002)(316002)(478600001)(966005)(6486002)(6666004)(110136005)(5660300002)(83380400001)(4326008)(26005)(2616005)(8676002)(44832011)(8936002)(107886003)(38350700005);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam-Message-Info: ikwHT/+cbQmtqAhpOtEGbU0vuw5FSbJMS7eJfTaLYFPoWCsop7taknZ6ampf5edwpbP0iEBHkIZ30g1NjumSDQZRhYGudootMhwyuDKSasZF5mk6Tln0Kdvrt53NFT3We1I2rEQeg2l/+UG2VJ778purf7kyIE6HA8veHAL81Pr3NAOAEGyw7gvX+bUs0Uve+l8Qr0yJuJGQAk9TVFku18ZxiWeKgfSWqHaKg7/y4rzJE8t2L9bi53NH2Qeqkc+pXZnA6S5l1mXP12XMkdVn5H0TCuq7J5i+4twOQCIWzh9qZSE7XzJ+t9Dxw9S8wNt8Hu1sKSvkNJ1UZRpoDa7+6eR+Rp5XQfFdQzfXH2fEQJPqjQ2xgeq7+Sl6FaD0v5ZA8FA8hlxD3vWQs0fXDO46rvrxFWMiQXdnw/TEdB/tdeEmGFi9WU/lU0bkxqSYrnuYWIruodiWrYBUxvgyjk6u2o8XUJDjZ3omivzJ2o5WvBxhl2nWU4mOMytV06+pGbQuBPANHoSuU4UIbrnPYexP0koy1GKiQnmh3BUb489VEzO1eyDrHsrSSfP7vdIka+TFVsZSyOOw47khx7YS+0I0Mk+S56f2TSyygj0W4l/Nnc97xR05D1jSOqxVcFMbro1J
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6371.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(396003)(346002)(136003)(39850400004)(376002)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(66476007)(54906003)(66556008)(86362001)(478600001)(38100700002)(6486002)(6506007)(36756003)(38350700005)(41300700001)(52116002)(4326008)(8676002)(8936002)(26005)(2616005)(316002)(5660300002)(66946007)(6512007)(6666004)(7416002)(2906002)(44832011)(83380400001)(107886003)(110136005);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UGt1V2pEYmo0UXAwRFlUM215V0RXUTd2M0srdUtGVnVsMU9hSGc5cWdxdU9G?=
- =?utf-8?B?clNGQ1ZVZVVQb0kvSEJseitZSHVjMHRkRmNtNmZXVzIxdDNiNkllUjZwZVhQ?=
- =?utf-8?B?aEtGNWVBU2RKUDZwbWgwVk9lMS8zc0VGSDdlb1AzMnVsQ0RDY2FPUHZYUnBJ?=
- =?utf-8?B?Y3Bma09uMmlqaTYzOCtPSWRFUHp1Y2ZaSDhaVlZNV0x2eWRQeUtxU1hWVHVp?=
- =?utf-8?B?b1FTSjczanFJbWZYeFlEMjdqdUhjUXpKa0YyclZaMXhWMHE2Uld2ZU44VU9N?=
- =?utf-8?B?VG5CNlFoQmErZnZ3R1VGYW1yRVJrY2x1QTV4cDFHWThDYys2aHBJOVhDTVkv?=
- =?utf-8?B?VjlQTlh4NkRjOFZheFY2eFBZSlk5OTB1N2pVYldFK3ExQ3luNFZpcHdwTEsr?=
- =?utf-8?B?L2NSdFNQMTQ5OUJ3eFYwMTF5dnRENVVEV1FaOGFpUVFHOXo1R3VrZUc4NHE0?=
- =?utf-8?B?d3NCL3ozQTFXOS93OUdPaWxQTDRNN2MwbURmTEtCVXc5TFF2eEhIZDRwckd4?=
- =?utf-8?B?eENxVzVGakM4SHhTNkEvYnBYOHRRWkVac1NnQitBNjFoWVlMSjFzTlZUUUFS?=
- =?utf-8?B?N0FxZzJ4cEZWM1BiNjhNdVF0bHlxd0xWR0JIZzFjcXRMZ1JtS1ZFb1k4eHBq?=
- =?utf-8?B?WVlPaXRKRlU5Y1FWQnoxYlp3cTJzMDd5b1cyOWtjcXJ4WGF5TmxWcXgyeE8y?=
- =?utf-8?B?Rm1xRVR5UlNLT0dPKzdQQm83cnZ0RzFrM01zc2l0T29LY2dSdlBLdUw4M3Vn?=
- =?utf-8?B?SFdkbGltTlFPbFVzTUgvMjhGbHg0cmhabExEL3g3UnJvU3EwN0ltWDEyMTNB?=
- =?utf-8?B?NzJqcjE5Y2ZjcktuS0NoOFBSMmZPajU1VVE3T09tRGRhSXcwME9ua1l1eDRE?=
- =?utf-8?B?L3RaMFpMTXJqVjRuY0p4WW45dE1DdFZDNFREc2ovbVB2NGwvajJhNFdybEZv?=
- =?utf-8?B?dG55SkZ5YzBrME81MitBVFo0RTM1TEhocVBqVU1UZ3V5dWpGMk9xUU9kR0FM?=
- =?utf-8?B?djhsTFRjMit6ZGlWK3VDdE5OK2IrVzkrVHo2WS83dVVQVVZ5Z080dk1jd21B?=
- =?utf-8?B?Mm1Jd0ZiZFBZTVpHWXdvWW5uUnNmYUJQSHRCZUpmazZEazVGdlYyZ1psMjJi?=
- =?utf-8?B?SFZQdkYxK1Q2dFFna1BLM0NCNmM0eU44YmhIQmQyK1BkUVFWUkhvUFFhWGJm?=
- =?utf-8?B?UTNKRDdXZVgrMkVpNElBWmx0UWxWeUZPdGhJa1dmZDEybXBuZHQ3cUorV0xR?=
- =?utf-8?B?TG5JeFh6dXVKcGgyNzJyeEdJMnBuQmxYY0hWa0g4YWEza0JLYTkyK2JaeXl4?=
- =?utf-8?B?ZjA2SW1yRjhyYkwxYzM4b0J6RU1nbDZSa3dzWTRhUlllZkUrWEx4dHhGK29Z?=
- =?utf-8?B?T2tmOTd2R005dmJlYVl3UytZdzd1SGhxdVpWcXVhNjB3TGJickh5Y0lIcDJQ?=
- =?utf-8?B?RUtkQnBpK2VKd29IYTd0KzdSRTFwOG1YU1lBTVM2RlVmVjNXS2VHMUxiZlNu?=
- =?utf-8?B?UWo5cE5RbHp4NnpWOXFGU3YreDREallXN05abkRnRjhtc3NlZ1QreHdWUDhu?=
- =?utf-8?B?TTBhdCtMWml1b0hyQWV2WTV4S2NuV0lmcnZVRW9lMEpaRkJ2dlEzQ3Q4aE5N?=
- =?utf-8?B?bnE3Y05sM0xPa3VVS01iQ3ZzTUNUZ1JUOVhSdmZ1UmYzcVpDOTJDcGJkUmVV?=
- =?utf-8?B?U3FzQWVIcjZtQlJneWNQamIvVm94SGdKM29pT0lrN1FnNUFTSjg3YjMzOTFp?=
- =?utf-8?B?emZ2T3JRdGJSTTNJaC8vRTFnTGxtNjFqamR3aVdpb05LcnB0WWdwOXRLekU2?=
- =?utf-8?B?LzkybzJpUUc4SEEveXFWUFVUVldSY2h1YUhUN2l3K2NjeVBRU3pPVTV4UjFQ?=
- =?utf-8?B?K0RQQ0FCdmNRS0FzUmhNRzNoVURrSjJaeTJjWERuWlJ6c3JrSXNQMWNlZUJC?=
- =?utf-8?B?L2FVZWF5Q2pFa2RNc1plbGFiWVcwMlZBZXdVQ2tEeGd4ZE9LaGdGZGJFNUg0?=
- =?utf-8?B?S2FheGRhaWFab3R2WG1KdVgxbTh1NXJjOXZsMWcyMjROVTFGdDlLemMxckZh?=
- =?utf-8?B?eWV6TTcwdHp3RGZycnVtWmowWW85MENPeGFSM0FFRTNTOUw4WmJXNU1RRXd0?=
- =?utf-8?B?T2t5VWUvcHV0dUFpMTkwSlVidHptZ3U3aUJGTzh6eFdoTzZmUzM2Ly9OeHV2?=
- =?utf-8?Q?UVwOJKgCqzjlLH9dYJv9zvI=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L09kWVhaa0VwVDJDZXNpb0RDMG1YZSt3OGdEQlNBb01WVWhrVS9lUnlVOHBR?=
+ =?utf-8?B?Um1jMG14ZDJhU1BuVHdXNGVYd3diblBEbEg3enhmVU1ZZHpjRnp4ZmtMVlZP?=
+ =?utf-8?B?TG5NSEJZanNXMFFibXREbjIzNlU1cE9YdXdZdzNBM0pIU3hhYlhXTVc0TDhM?=
+ =?utf-8?B?akhKSm9ZTHVQWkVWUVdmd084SkxsSCs4TGs4TU9wNzlqL05BbzN6UGVtdzVC?=
+ =?utf-8?B?YXFGUHJLMXc1T0pjbFpUVS9mQ3lwOS9nRTIyK3RYZHJLNDJvLzZlekVDWExr?=
+ =?utf-8?B?T3pvdWN0aUtjMjVqWnd2VDVrclpMNnJTT0laazQ4dXBiS1o3MEwwaTErSllF?=
+ =?utf-8?B?OUw4Nk9jNXlBOGlIZk1TNEZGbnh5emsxT2lZdDRJZjl3MmxsT3ZXNG9ZREty?=
+ =?utf-8?B?SGhrWkF4NnRNYUJpRjNaSENwdStDS3NzNStKdmFWVldHTG9iKzdGYzcyNkZ6?=
+ =?utf-8?B?TTBwQk1iaWZJZHdjTWdZd0IzdWNVNk1UR05CdzFEVDhCM1pXNldadEZGTlJJ?=
+ =?utf-8?B?R1NZekdaVTBnUk9JV2U0V2VFR3lYS0g3aDRGSDlyU3lIdFNQMkFHcW5VODh6?=
+ =?utf-8?B?RTBxKzBtRzV5dUpjYU9aQnJ6YkFYVVdNald5aXFPL0ZPTjhCcVJXMGhKWFM4?=
+ =?utf-8?B?U3FzZzdQejJDMVdrek5ua0dsb0ZPa3I4bkhVOUFqeXFydm4veWY1dmVuZXkw?=
+ =?utf-8?B?cnBBR0RreUd3MlYyWk5WVHBpbnE2cHM4eVNROTNIMjV2dEUxcjZ2dnh2cmVK?=
+ =?utf-8?B?L09ubzEvNjgzYmlsV0tYc1NvaFptVDhMTW93aVpwdWFjamZ3UlBUTjZBaHky?=
+ =?utf-8?B?YjBPS2I5UDg3eWJBQnJvMDMvdjUrcU5QVitpM1V2bkdJMzErSUhCTldRK1ZZ?=
+ =?utf-8?B?NDRKVzRlazNmTGYvb3ROcC9WZHVmLzYrekN6M1QyeHlpWVd1cWhPRldFRDBK?=
+ =?utf-8?B?Yy9BV3NneUdwclRCaGxVZFRiWW01MEVQTW5nd0kvVjJoTDBacnhhMGxvQldl?=
+ =?utf-8?B?QU5aZkZjTm1wYUtmaEx1NkkrVUJaU1lTWmtZalR2SjF4dnN1RXNkOEtUT0Vi?=
+ =?utf-8?B?VTgwa2RSbDFpRnhPWHNYckhiR2kydTdJU09oWHYyVitlYi9LWDBkK1JEejV3?=
+ =?utf-8?B?VUZJdE92MlRTSk1sT3hOSWx4TXI2U3c3bHFiSmQxK29Oa0RwY0llTVFSVHRs?=
+ =?utf-8?B?TlZvYnVwZnhxV281VWRxdmtOYVBJVUVyazB4T2RtcDczNTdWM1B0eUJzVmo0?=
+ =?utf-8?B?aTNscUpCdW5LOTd4TEVKNVZRREdKeHZuKzIzbE9TOTdLOUFSOVI2T0ZHa1NS?=
+ =?utf-8?B?RFViWXVIQjJsUlVWbGo1NWt0YlA2Vi9vT0Z5RTAzR2ZqV1B0ZlRjNGpsdWpq?=
+ =?utf-8?B?NGNZU2pXOTEvOFJDajRaUEEvZkdrQzYrWnlMRXdGNngyaUVqOVhEa2VRbkM1?=
+ =?utf-8?B?Qko4Yk9DWlR0QnM3Q25EampsbEdCYXZvYTl1RDlwdmdDQm11V0hQNWo1dmlY?=
+ =?utf-8?B?KzBLelhxZmtqbGl6bXlSYlgrVWRQem5hSVFxTGZIVXhpVWpYRzAxYjI1TDBV?=
+ =?utf-8?B?alBKckVUbnFFazNmcHJ0SnNPbVJOMTlwT3RaSjl2SDMyWEJFbnBUWUNKajUr?=
+ =?utf-8?B?VmN4d1djVDk5Yzl4aEtORG94MkU1bWVhYm1aWXpRVXVqVWY3QmFKOFI5WTN2?=
+ =?utf-8?B?ZHh0QlVPQUphYXhFUGgyaTBET0MwdFIzWGpaTjZOVHdkR09LWUJ3RzFId0p5?=
+ =?utf-8?B?S1R5RHpKeG5vRjFXbDd4Z3ZMUFlOOGppeVMxQko1RnJwRmwxVTlyQVZLQlk4?=
+ =?utf-8?B?N2FabHNoV2dIanYvV3gvV3J1Y1hFU0pjclJTQllYcWJ2RTc0TDVyOFp5ZkNj?=
+ =?utf-8?B?a3RBd3JYZmhSUFJMVFYrd0hGbzNSRDZrRDJNbUdld1ZvRytpOWliMVpiSXZG?=
+ =?utf-8?B?NDdNeS80bXVVeXAxRHRTeXJMSTNIQUgycGJ4dzF6K1haeGFCS3MyZjlyNUd5?=
+ =?utf-8?B?WGFnbmlLeDlmUHZxRnVxU3lkOXdKMy9LbS8zcXJWYWYrZkpnYjFuUEhQN0ky?=
+ =?utf-8?B?cEliZVFHWTJpbkdYNVVGVUVkOGFXVGdHaGRoWHNUSmpQUWRXK3JqM3cwK25t?=
+ =?utf-8?B?OVFRYTZCWlhRL29pR3F5REk5c1FPR0tBUG1YQ0ppdjhZMjZ6M3FZeStObzlH?=
+ =?utf-8?Q?ZntQtaAH5SObQODDmWjjLB4=3D?=
 X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ab26628-c2c4-4f1b-9d96-08dc1e7f3dc0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6c0ebeb1-be25-4032-f3ba-08dc1e7f3fc1
 X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6371.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2024 14:58:22.7613
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2024 14:58:26.0485
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qeSGuZmu9qCPFvvOIpSNzVCfGrZN0oizEye4J68g6kGtKTKk8Z88apKkHfszdHgjgQqW++xZ/ukhxMCLslS0MIrkG8v/MdAlbESHyXhcgD+zei6ZCkERm4l116zDpfpp
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS4PR04MB9435
+X-MS-Exchange-CrossTenant-UserPrincipalName: clzWHEw8xOlS8yBTA2WH9Q4a/FbnYMFn5A0nbIv37DXvRUcuhoPkhhbCpHhh1IhQ2Ubp2UrofvkN9fi36W7PMrLYVncfjvAm8hp9X1m/TFmzDPmJxibZFX+CWEXo0Xw7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB9735
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_065833_828871_000C6E58 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20240126_065835_183747_CF4A1378 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,60 +151,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series tries to revive the work of Heiko Stuebner from 2020
+Add the possibility to de-activate rx-enable gpio when rs485 is disabled.
+This defines the state of RE or DE/RE signal when em485 is disabled.
 
-On the boards that we are using (ringneck/puma-haikou) a hardware switch
-can set the rs485 transceiver into half or full duplex mode.
-
-In half-duplex mode the DE/RE signal of the rs485 transceiver is not
-connected to an RTS signal whose control is already handled in the rs485
-emulation (start/stop callbacks), but rather to a gpio. And since enabling
-the receiver requires setting this gpio active we need to do that in em485
-while receiving and disable it while sending to enable the driver mode.
-
-In full-duplex mode RE is grounded and separated  from DE. Meanwhile the
-rx-enable gpio remains connected to the DE pin. In this case the
-receiver-enable gpio should be disabled to enable driver mode in parallel
-to the enabled receiver.
-
-This patch-series adds support for controlling the receiver mode using a
-gpio in em485 for half-duplex mode while allowing users to keep using the
-full-duplex feature if em485 is disabled.
-
-Changes in v4:
-- define the state of rx-enable gpio when em485 is disabled
-- add rs485 half/full duplex support to ringneck/puma-haikou
-- use dev_err_probe instead of dev_err if error is -EPROBE_DEFER
-
-Changes from the 2020 submission include:
-- external gpio for optional receiver-enable handling
-
-Link: https://lore.kernel.org/all/20200517215610.2131618-1-heiko@sntech.de/
+Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
 ---
-Farouk Bouabid (4):
-      dt-bindings: serial: add binding for rs485 rx-enable state when rs485 is disabled
-      serial: 8250: set rx-enable gpio state when rs485 is disabled
-      arm64: dts: rockchip: rk3399-puma-haikou: add rs485 support on uart2
-      arm64: dts: rockchip: px30-ringneck-haikou: add rs485 support on uart5
+ drivers/tty/serial/8250/8250_port.c | 4 ++++
+ drivers/tty/serial/serial_core.c    | 6 ++++++
+ include/linux/serial_core.h         | 1 +
+ 3 files changed, 11 insertions(+)
 
-Heiko Stuebner (2):
-      dt-bindings: serial: Add binding for rs485 receiver enable GPIO
-      serial: 8250: Support separate rs485 rx-enable GPIO
+diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+index 54d8f809b81e..fbd0212d2397 100644
+--- a/drivers/tty/serial/8250/8250_port.c
++++ b/drivers/tty/serial/8250/8250_port.c
+@@ -582,12 +582,16 @@ static int serial8250_em485_init(struct uart_8250_port *p)
+  */
+ void serial8250_em485_destroy(struct uart_8250_port *p)
+ {
++	struct uart_port *port = &p->port;
++
+ 	if (!p->em485)
+ 		return;
+ 
+ 	hrtimer_cancel(&p->em485->start_tx_timer);
+ 	hrtimer_cancel(&p->em485->stop_tx_timer);
+ 
++	gpiod_set_value(port->rs485_re_gpio, !port->rs485_re_gpio_inactive_when_rs485_disabled);
++
+ 	kfree(p->em485);
+ 	p->em485 = NULL;
+ }
+diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
+index 47aeece985f3..6460646cf83c 100644
+--- a/drivers/tty/serial/serial_core.c
++++ b/drivers/tty/serial/serial_core.c
+@@ -3663,6 +3663,12 @@ int uart_get_rs485_mode(struct uart_port *port)
+ 	if (port->rs485_rx_during_tx_gpio)
+ 		port->rs485_supported.flags |= SER_RS485_RX_DURING_TX;
+ 
++	port->rs485_re_gpio_inactive_when_rs485_disabled = device_property_read_bool(dev,
++		"rs485-rx-enable-inactive-when-rs485-disabled");
++
++	port->rs485_re_gpio = devm_gpiod_get_optional(dev, "rs485-rx-enable",
++		port->rs485_re_gpio_inactive_when_rs485_disabled ? GPIOD_OUT_LOW : GPIOD_OUT_HIGH);
++
+ 	if (IS_ERR(port->rs485_re_gpio)) {
+ 		ret = PTR_ERR(port->rs485_re_gpio);
+ 		port->rs485_re_gpio = NULL;
+diff --git a/include/linux/serial_core.h b/include/linux/serial_core.h
+index 364583203a24..fa5a92b56360 100644
+--- a/include/linux/serial_core.h
++++ b/include/linux/serial_core.h
+@@ -585,6 +585,7 @@ struct uart_port {
+ 	struct gpio_desc	*rs485_term_gpio;	/* enable RS485 bus termination */
+ 	struct gpio_desc	*rs485_rx_during_tx_gpio; /* Output GPIO that sets the state of RS485 RX during TX */
+ 	struct gpio_desc	*rs485_re_gpio;		/* gpio RS485 receive enable */
++	bool	rs485_re_gpio_inactive_when_rs485_disabled;
+ 	struct serial_iso7816   iso7816;
+ 	void			*private_data;		/* generic platform data pointer */
+ };
 
- Documentation/devicetree/bindings/serial/rs485.yaml   |  9 +++++++++
- arch/arm64/boot/dts/rockchip/px30-ringneck-haikou.dts |  2 ++
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts   |  4 +++-
- drivers/tty/serial/8250/8250_port.c                   | 11 ++++++++++-
- drivers/tty/serial/serial_core.c                      | 12 ++++++++++++
- include/linux/serial_core.h                           |  2 ++
- 6 files changed, 38 insertions(+), 2 deletions(-)
----
-base-commit: 5ebe731c2a586b379103f736cd498bcca3cf1ea9
-change-id: 20240125-dev-rx-enable-d8818dbf7c28
-
-Best regards,
 -- 
-Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+2.34.1
 
 
 _______________________________________________
