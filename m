@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86DCEC47422
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A44CC47DDB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jan 2024 23:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uJqr741B3TePawSQ0bOR5MYatlqqpXhaHaaBt936Hi0=; b=KYI9o2G5zWMQsX
-	DwCYyQ+5JFfRAZY4qM0xfrjOuhkuOH+2Qk5W6ucySgT7CqoGu0tvhVGwB1XahP3LXPVJ8pwf2W8n4
-	4AZJ1FHdQgDNXE1O6CpEJ5R+2uJl8os1OuB06qG3GrsVZKXsLatGgKb8ubSgP+ufUgriqnfBGuj7+
-	jXFQKKqX9392OtbtCj/iLVrWYzBjbSdPIuLJGQSRV4/BCbpMx2OX5wx5/dI+p3i/0pzQbAP40OWq1
-	4Flzf6A2rHU8LZ5F52UzdA6Upoe9j5QQLPBMr1i79erceVnPgmwooywSJvJGjbzlSuyYc7M8x+isH
-	En05JloR2bbVF8bEKBhg==;
+	List-Owner; bh=WVnPw8wURaVf9F9qQxdp/dle+1mSNzJJiCky6VOHF1M=; b=eVzeSbpNYLYmDQ
+	mVoaj0gYP4tIOFapn2vDx/RjaOMfOPS1MYXVzF4wzB2JBGzS66Tkn/f+ZBycKK9zl6dcEIIOztOuR
+	yNSkJv+57yWb6C8fdU3ARy7EHoufPxPb6LLiTOZW7fZzlBdNO+ZyyqMLW3wlyra9GN5MH+iL96J0k
+	C8S0uDm8rdmypLP0dtEJ4U4QFTOWfHopqoGlrvE0VILWfODAfhxYLrsieDO8c4a0VAWZs2LjB0KB5
+	HWa+J1uJL/sTOvB7L8lh5IJwPNQAj03euPl6aCYwcSU7dXU8ZY8u5SRuaTNb7ahIrK0yLd5zc3ZWG
+	vwVjnMYCXLo0a1UeSbwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVSa-00000005k8C-2N78;
-	Fri, 26 Jan 2024 23:18:08 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1rTVSh-00000005kEF-3GyE;
+	Fri, 26 Jan 2024 23:18:15 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTVQu-00000005iga-294y
-	for linux-rockchip@lists.infradead.org;
+	id 1rTVQy-00000005ike-2Sh2
+	for linux-rockchip@bombadil.infradead.org;
 	Fri, 26 Jan 2024 23:16:28 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-783d4b3ad96so78746585a.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:16:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=IQ2hVP5YSWUaFh2DmjHhBwG+r6f86O5FO2Ifv95SzW4=; b=dRtuKrCtWKto7Hak3VGaWPUv4J
+	TKhIhe1X6ss2POSfQWIzPqXbbwFJKUiVhLnEnzOnSJ/U3DTZ6hvOIhPgbyxjJ2BpaTYbpT1zcN0NC
+	nINhKN65lszNRtQiJKoVboNyoJyMk+e5z5D+VlzHzoBvbSvb/9zQg+phnte6o3zvbEmMon39MWprf
+	NmOuRFw3y1yi04zQazstnl1JCmAS1Bt/LUWEliGU88UUBFxgOub5e/WZzKMCsiC0v8ZVwgrAzy5JR
+	dU/Xw4XV/6KIApWhQzSirmBzqsvT1cIdzBjU7vlrM09NMmymATUuVsc4NydLl6vV89dXKc7PJcjk7
+	H6qZqoWw==;
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTVQs-0000000F96R-486q
+	for linux-rockchip@lists.infradead.org;
+	Fri, 26 Jan 2024 23:16:27 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-783cd284528so62925985a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jan 2024 15:16:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1706310983; x=1706915783; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1706310977; x=1706915777; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=mtltgslBdQHae+oLD1399tQsPexikCLm+b/oIxSwL94=;
-        b=epokoW0nZrBF68rk6G9i2rQEHhuDRksk0Z0bcmrsvG04GeQbuhBiDpzFD7MIfZedSR
-         pTLoJT5lFySag1QwwqM8TGIHMEPVHFNRGhUhb1K9zaupzP/pa0lExmls76FuJaN7o6cB
-         myt0+3NBaA6V142EqpFZLNTI1Y0D1zR//8coc=
+        bh=IQ2hVP5YSWUaFh2DmjHhBwG+r6f86O5FO2Ifv95SzW4=;
+        b=S+/YLqV51YkHEpRBSjSayCHVqhv2eryiqhGUoqKDD6NkDvQQpArvgLAaNsfgFUzO9w
+         hXFAo/hXdhB/gHKIc8VgOSsxLJZXLg9lrWxgBi+z8zNC4NltGc0/MvxGixRAqCY57Z7V
+         IoF+QyETVObwU5fDsP9TctoFY+pcCbzAtkIK4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706310983; x=1706915783;
+        d=1e100.net; s=20230601; t=1706310977; x=1706915777;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mtltgslBdQHae+oLD1399tQsPexikCLm+b/oIxSwL94=;
-        b=NSzYfFrthACxgCRWOhivXx+b/30qr2GatMs2GqcdXX7eE49Jda1yoInfGm9KDPZUmM
-         wEiv4/FdazR7I9fEt6YNmDpn5RYeEhFo7iIL2axEC2IzOkWktZXAIKMzJ8w9grJY/h0g
-         6QuJfo4VUTB7bHJ0yDUPvaWm2/1c7LVSpUYWP2Nb4IzvuFyZwJS5EtpjxZBevFhQ6rmS
-         g53ZOEdApdnVMQQ/Mb1pBQ98UjM8lrQh28vE5WUuc/WG+8BuiIi/1c7+C0bIC/2ee9Qp
-         Yi7v6w8aelmO7yze/Z0a8ktLPRyu59+g5u+Tus6MRdhcKPWwj/SaoPu4G38rb4dIQa4A
-         lYgg==
-X-Gm-Message-State: AOJu0YxaBjYWdws0+LH2U4DmpjELYZ+NUe3WP0fnlwHVK+6Safc02xyE
-	EkJXdJv0xovAVWH9kX3EJFZlUWFoDwaTlzPamgHDr4ZmOut6kiasevHJzDu4qw==
-X-Google-Smtp-Source: AGHT+IFr6+3pqj0JMsLxQ2GW7atIeRCtD6HJIvow5am3DYJqsXSoZPigBa/gFlr3DGsp4f3R3YcSBQ==
-X-Received: by 2002:a05:620a:618e:b0:783:4cbd:9ed7 with SMTP id or14-20020a05620a618e00b007834cbd9ed7mr711408qkn.38.1706310983521;
-        Fri, 26 Jan 2024 15:16:23 -0800 (PST)
+        bh=IQ2hVP5YSWUaFh2DmjHhBwG+r6f86O5FO2Ifv95SzW4=;
+        b=um/p/eO1mRVZQRie+i3IECtlhyuj4BN8HIvugUzfZnx/rmGCANpe0FPIpSSHZNp/k6
+         M+6sigSI3yD7RaTf49+eOjPELB4LdPbnMVEprvKaXkxqCC23h8zRu06osrFiquZQQPfJ
+         oLBZdm+Vmbtwpj73qUmkCbG8JDRmvKVIDrKoMkrKIYX3P+c/Jk4LjVv/2nJ+Xf7TB98n
+         b6BKGPxjY1XO7q4PGJNN8NaQaIwJmMHiJ+r5yfu4CQHMxvxcYoroFHjLO0C9LW423b6x
+         yARKAFxEgD/QtlujMdBdhX5YVs54CIM87V5RgNmZcJ/2PIELSGP8/ni8n+5E24srTJOP
+         wa9w==
+X-Gm-Message-State: AOJu0Yw3e7UPxzHPHLCR9t6ZfC4W3yhhQfQzN1fgn00BSgwluOuiAuj4
+	HgMqUuRlfLhrN9kHwqKDvDe7PAHAlGi+aJm8r/D/CelTEfCBQe8Kd6N8U04zUQ==
+X-Google-Smtp-Source: AGHT+IHtaIwGnlHCGr2gV5vTdHthY/KJARNYO6pIlwA2CpmdH7LMlVQFPCHc4W3qOep8rQ/bvmYRGg==
+X-Received: by 2002:a05:620a:12d9:b0:783:25ba:6c70 with SMTP id e25-20020a05620a12d900b0078325ba6c70mr576836qkl.129.1706310977198;
+        Fri, 26 Jan 2024 15:16:17 -0800 (PST)
 Received: from denia.c.googlers.com (240.157.150.34.bc.googleusercontent.com. [34.150.157.240])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.22
+        by smtp.gmail.com with ESMTPSA id m4-20020a05620a290400b00783de3ddf5esm507358qkp.70.2024.01.26.15.16.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 15:16:23 -0800 (PST)
+        Fri, 26 Jan 2024 15:16:16 -0800 (PST)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Fri, 26 Jan 2024 23:16:16 +0000
-Subject: [PATCH 17/17] linux: v4l2-vp9.h: Fix kerneldoc
+Date: Fri, 26 Jan 2024 23:16:10 +0000
+Subject: [PATCH 11/17] media: qcom: venus: Fix kerneldoc
 MIME-Version: 1.0
-Message-Id: <20240126-gix-mtk-warnings-v1-17-eed7865fce18@chromium.org>
+Message-Id: <20240126-gix-mtk-warnings-v1-11-eed7865fce18@chromium.org>
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 In-Reply-To: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -101,8 +116,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-amlogic@lists.infradead.org, Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_151625_014634_0003FB44 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20240126_231624_637417_1A5DBD79 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,59 +135,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Kerneldoc cannot understand arrays defined like
-v4l2_frame_symbol_counts.
-
-Adding an asterisk to the name does do the trick.
-
-Disable the kerneldoc notation for now, it is already ignored:
-https://docs.kernel.org/search.html?q=v4l2_vp9_frame_symbol_counts
-
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'partition' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'skip' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'intra_inter' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'tx32p' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'tx16p' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'tx8p' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'y_mode' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'uv_mode' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'comp' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'comp_ref' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'single_ref' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'mv_mode' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'filter' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'mv_joint' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'sign' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'classes' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'class0' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'bits' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'class0_fp' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'fp' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'class0_hp' description in 'v4l2_vp9_frame_symbol_counts'
-include/media/v4l2-vp9.h:144: warning: Excess struct member 'hp' description in 'v4l2_vp9_frame_symbol_counts'
+Remove doc for missing field.
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- include/media/v4l2-vp9.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/media/platform/qcom/venus/core.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/media/v4l2-vp9.h b/include/media/v4l2-vp9.h
-index 05478ad6d4ab..f0d80273bd61 100644
---- a/include/media/v4l2-vp9.h
-+++ b/include/media/v4l2-vp9.h
-@@ -83,7 +83,11 @@ struct v4l2_vp9_frame_context {
- 	struct v4l2_vp9_frame_mv_context mv;
- };
- 
--/**
-+/*
-+ * NOTE: This is not a kerneldoc, because the (*name) notation confuses the
-+ *	 parser.
-+ */
-+/*
-  * struct v4l2_vp9_frame_symbol_counts - pointers to arrays of symbol counts
-  *
-  * @partition: partition counts.
+diff --git a/drivers/media/platform/qcom/venus/core.h b/drivers/media/platform/qcom/venus/core.h
+index 4a633261ece4..a39986ce79f1 100644
+--- a/drivers/media/platform/qcom/venus/core.h
++++ b/drivers/media/platform/qcom/venus/core.h
+@@ -428,7 +428,6 @@ enum venus_inst_modes {
+  * @error:	an error returned during last HFI sync operation
+  * @session_error:	a flag rised by HFI interface in case of session error
+  * @ops:		HFI operations
+- * @priv:	a private for HFI operations callbacks
+  * @session_type:	the type of the session (decoder or encoder)
+  * @hprop:	a union used as a holder by get property
+  * @core_acquired:	the Core has been acquired
 
 -- 
 2.43.0.429.g432eaa2c6b-goog
