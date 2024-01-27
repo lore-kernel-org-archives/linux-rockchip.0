@@ -4,61 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F04C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 13:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC58C47DA9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 18:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zzia69u+aWZHLYgdprSJPK/U82uJy1IYP9FbcH7JgKg=; b=Ii109o0cPW1YHu5ySR9w7AthCY
-	WK0BQ5Qypo+l3arWiJuaF1VoIoaDax3B/Q8D5FHu/Ig2J0gHCmlSSKN18SxiaTFD9RqJuIP2wB8Wl
-	svHF5xx6LfKtTP2epfA6KR5HL9E716YUAQV9Nvc7FnBFbsqPUV+DUVgchtQurEEAWr4Htf26idbV4
-	+o4i+uc5oG968byGRRq0qPqreeNNFJQDCueFL8IWhkDG+bDUwtm8usagz7Vywozfwrszsm692FtgU
-	qE4bl+foBOdiQbsHaLus0C/ssEifHtcqWWcyY7oZUlibgIf5hoj4s3Jj/W5c62LpODxZ5hTMDuqdQ
-	Uz7Nu6gA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B9mN1zSXpcMehK/TD6mkBy/3l1EdUI/8SVtpZAt/m2o=; b=yHnsuDX2bilxE2
+	8veF9iKR5Iu4PN9CJ+8kKNMfZEgdv+jzjLkBywStVFcUBeXK3wZf9vYibRtIr3OKh/vsQNKxCwJsR
+	gzo1WUWmlTqFuFlPG1H3+tfelG8W5nrpIVRV9MYVtxkis8cD2Yc7xhAIvujlamI1FV8PJF44zMq+8
+	zUxcsbfKmIPzs7UPpXMp1LNFzCpiAB27UG5H0GuKoPbPV2WGa8jbhKPdCfpkZHp6Q9RCOc90N/zLf
+	4ygTGtRUYR/dHEzG6qcqctrlDs/R1/4Mv2W7yDrr6mirDSaWr5IEARQYSAWDIwuqVJv9m+tn1lHGe
+	0GKWyA1hU7DMNnnRoWiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTiRU-00000007WHI-2BRN;
-	Sat, 27 Jan 2024 13:09:52 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1rTnhK-000000080y7-1xT8;
+	Sat, 27 Jan 2024 18:46:34 +0000
+Received: from mgamail.intel.com ([134.134.136.31])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTiRR-00000007WGp-03nD;
-	Sat, 27 Jan 2024 13:09:50 +0000
+	id 1rTnhG-000000080wi-2zSh;
+	Sat, 27 Jan 2024 18:46:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1706381190; x=1737917190;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=EYPyaz87RkOJljahQF8funE2XdsGXXg6gukJ+v+90GA=;
+  b=Wb9Ewt5uzMlHwOUQEMD4+2k7ervB3L2rZNZ1hFes6snsoLS13GCbi701
+   CbZjjKQO6r9kfprjBtKJnyOTR6tfc/C4jvo9Wb9++wyFGQTgRGX7r4tq6
+   ECNmy4IuQeH4h9v4r3iRo0MD5wYMPdn3mW6PcmdSMQFWqrdjnpXnNv07J
+   x7fwe/C8lEslklDFgv3Bg7Yku0rz9OmAD4zFVrj3fVvUNAnYBYLb9zf4U
+   DmS1Mu19jwK1XxE4mMD+iVL9/hjv56Fjtsg1MfLp4ikJVb24OZoTioI+T
+   SVdHoqvyyOZeLJaxeMTREHiwgiayAvrkXqZo3c7R8daJr9L5M7gSzvIrG
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10966"; a="466977476"
+X-IronPort-AV: E=Sophos;i="6.05,220,1701158400"; 
+   d="scan'208";a="466977476"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2024 10:46:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10966"; a="910649621"
+X-IronPort-AV: E=Sophos;i="6.05,220,1701158400"; 
+   d="scan'208";a="910649621"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2024 10:46:16 -0800
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 4755F11FB1F;
+	Sat, 27 Jan 2024 20:40:25 +0200 (EET)
+Date: Sat, 27 Jan 2024 18:40:25 +0000
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Randy Dunlap <rdunlap@infradead.org>
+Cc: Ricardo Ribalda <ribalda@chromium.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Bingbu Cao <bingbu.cao@intel.com>,
+	Tianshu Qiu <tian.shu.qiu@intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-amlogic@lists.infradead.org
+Subject: Re: [PATCH 03/17] media: media-entity.h: Fix kerneldoc
+Message-ID: <ZbVOGaw-8qU2QNle@kekkonen.localdomain>
+References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
+ <e6b72dff-911e-4923-9996-b3b7db36fb8e@infradead.org>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1706360987;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cufdQqnYjHFq8zPvbdj8xB6WnLzWkarMVmEXqUgJEsk=;
-	b=wAcJWRdLS11R2tadF3UO4hLBBCd39YvSBm6DEIpEcuOR/3Vxada9/LOeX1Lgf1VD0vNZSG
-	cmYOn+wfNi7YhyVF6O0mJ4DYPb2wixfyH4lGvHqGZ8epGpszahlWZuIMQD6U9Dd5PHE9LA
-	JK0IhnWMwhtjGBDcJrBN/uzTnM/iV38MrcGljkxKVwCUtNMo9u2spphCo+y134OQLZhiYq
-	0Fo+SoMSypi+FZqv6xA/Y7yga3zZqe9vH3/u+KBK8yhseTrQGfDVzstGZ2YObDQE1xPM2t
-	jW/MIjHmUFo4F+rjgdS5uPSOwqxeWNezC+K+RilUauIIsMsrPY7iujUCEkBsFA==
-Date: Sat, 27 Jan 2024 14:09:46 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: rename vcc5v0_usb30_host
- regulator for Cool Pi CM5 EVB
-In-Reply-To: <23650d42.ecb.18d4ad89c0c.Coremail.andyshrk@163.com>
-References: <20240127092034.887085-1-andyshrk@163.com>
- <20240127092034.887085-3-andyshrk@163.com> <2798389.3c9HiEOlIg@diego>
- <23650d42.ecb.18d4ad89c0c.Coremail.andyshrk@163.com>
-Message-ID: <00ed78ea06aecde202a11a23c80f80af@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <e6b72dff-911e-4923-9996-b3b7db36fb8e@infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240127_050949_228839_38C3D167 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20240127_104630_823413_97269A15 
+X-CRM114-Status: GOOD (  26.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,51 +115,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0wMS0yNyAxMzoxNSwgQW5keSBZYW4gd3JvdGU6Cj4gQXQgMjAyNC0wMS0yNyAxODoz
-Njo0MCwgIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPj4gQW0gU2Ft
-c3RhZywgMjcuIEphbnVhciAyMDI0LCAxMDoyMDozMyBDRVQgc2NocmllYiBBbmR5IFlhbjoKPj4+
-IEFjY29yZGluZyB0byB0aGUgc2NoZW1hdGljLCB0aGlzIHJlZ3VsYXRvciBpcyB1c2VkIGJvdGgg
-Zm9yIFVTQjMwIGFuZAo+Pj4gVVNCMjAsIHNvIGdpdmUgaXQgYSBtb3JlIGFwcHJvcHJpYXRlIG5h
-bWUuCj4+IAo+PiBJIGRvbid0IGhhdmUgdGhlIHNjaGVtYXRpY3MsIHNvIEknbGwgbmVlZCB5b3Ug
-dG8gYW5zd2VyIHRoaXMsIGJ1dCB3aGF0Cj4+IGlzIHRoZSByZWd1bGF0b3IgY2FsbGVkIF9pbl8g
-dGhlIHNjaGVtYXRpY3M/Cj4gCj4gVGhlcmUgYXJlIHR3byByZWd1bGF0b3JzIGNhbGxlZCBWQ0M1
-MF9VU0JfSE9TVDEgYW5kIFZDQzUwX1VTQl9IT1NUMiwKPiBhbmQgdGhleSBhcmUgYm90aCBjb250
-cm9sbGVkIGJ5IEdQSU8xX0Q1Cj4gVGhleSBib3RoIGZvciB0d28gdXNiIDIuMCBob3N0cywgIG5v
-dCB1c2IgMzAsIHRoZSBzY2hlbWF0aWNzIG1ha2UKPiBtZSBhIGJpdCBjb25mdXNlZC4KCkluIHRo
-YXQgY2FzZSwgSSdkIHNheSB0aGF0IHJlbmFtaW5nIHRoZSByZWd1bGF0b3IgdG8gdmNjNXYwX3Vz
-Yl9ob3N0IGlzCmZpbmUsIGJ1dCB0aGVyZSBzaG91bGQgYWxzbyBiZSBhIGNvbW1lbnQgaW4gdGhl
-IGJvYXJkIGR0cyBmaWxlIHRoYXQgaXQncwphY3R1YWxseSB0d28gc2VwYXJhdGUgcmVndWxhdG9y
-cy4KCj4+IEkuZS4gd2Ugd2FudCByZWd1bGF0b3JzIHRvIHJlYWxseSBiZSBuYW1lZCB0aGUgc2Ft
-ZSBhcyBpbiB0aGUgCj4+IHNjaGVtYXRpYwo+PiBzbyBwZW9wbGUgY2FuIGxvb2sgdXAgdGhpbmcg
-ZnJvbSB0aGUgZHRzIGluIHRoZSBzY2hlbWF0aWNzIGFuZCB0aGUgCj4+IG90aGVyCj4+IHdheSBh
-cm91bmQgdG9vLgoKQWgsIHRoYXQncyB2ZXJ5IGhlbHBmdWwuCgo+Pj4gRml4ZXM6IDc5MWMxNTRj
-Mzk4MiAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgc3VwcG9ydCBmb3IgcmszNTg4IAo+Pj4g
-YmFzZWQgYm9hcmQgQ29vbCBQaSBDTTUgRVZCIikKPj4+IFNpZ25lZC1vZmYtYnk6IEFuZHkgWWFu
-IDxhbmR5c2hya0AxNjMuY29tPgo+Pj4gLS0tCj4+PiAKPj4+ICBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU4OC1jb29scGktY201LWV2Yi5kdHMgfCA2ICsrKy0tLQo+Pj4gIDEgZmls
-ZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4+PiAKPj4+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29scGktY201LWV2
-Yi5kdHMgCj4+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWNvb2xwaS1j
-bTUtZXZiLmR0cwo+Pj4gaW5kZXggMWI1NjgxZmUwNDcxLi41ZjQyZjEwNjVkNzMgMTAwNjQ0Cj4+
-PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1jb29scGktY201LWV2
-Yi5kdHMKPj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWNvb2xw
-aS1jbTUtZXZiLmR0cwo+Pj4gQEAgLTg0LDcgKzg0LDcgQEAgdmNjM3YzX2xjZDogdmNjM3YzLWxj
-ZC1yZWd1bGF0b3Igewo+Pj4gIAkJdmluLXN1cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4+PiAgCX07
-Cj4+PiAKPj4+IC0JdmNjNXYwX3VzYjMwX2hvc3Q6IHZjYzV2MC11c2IzMC1ob3N0LXJlZ3VsYXRv
-ciB7Cj4+PiArCXZjYzV2MF91c2JfaG9zdDogdmNjNXYwLXVzYi1ob3N0LXJlZ3VsYXRvciB7Cj4+
-PiAgCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+PiAgCQlyZWd1bGF0b3ItbmFt
-ZSA9ICJ2Y2M1djBfaG9zdCI7Cj4+PiAgCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4+IEBAIC0yMDAs
-MTIgKzIwMCwxMiBAQCAmdTJwaHkzIHsKPj4+ICB9Owo+Pj4gCj4+PiAgJnUycGh5Ml9ob3N0IHsK
-Pj4+IC0JcGh5LXN1cHBseSA9IDwmdmNjNXYwX3VzYjMwX2hvc3Q+Owo+Pj4gKwlwaHktc3VwcGx5
-ID0gPCZ2Y2M1djBfdXNiX2hvc3Q+Owo+Pj4gIAlzdGF0dXMgPSAib2theSI7Cj4+PiAgfTsKPj4+
-IAo+Pj4gICZ1MnBoeTNfaG9zdCB7Cj4+PiAtCXBoeS1zdXBwbHkgPSA8JnZjYzV2MF91c2IzMF9o
-b3N0PjsKPj4+ICsJcGh5LXN1cHBseSA9IDwmdmNjNXYwX3VzYl9ob3N0PjsKPj4+ICAJc3RhdHVz
-ID0gIm9rYXkiOwo+Pj4gIH07CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Randy,
+
+On Fri, Jan 26, 2024 at 05:51:06PM -0800, Randy Dunlap wrote:
+> 
+> 
+> On 1/26/24 15:16, Ricardo Ribalda wrote:
+> > The fields seems to be documented twice.
+> > 
+> > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> > ---
+> >  include/media/media-entity.h | 4 ----
+> >  1 file changed, 4 deletions(-)
+> > 
+> > diff --git a/include/media/media-entity.h b/include/media/media-entity.h
+> > index 2b6cd343ee9e..c79176ed6299 100644
+> > --- a/include/media/media-entity.h
+> > +++ b/include/media/media-entity.h
+> > @@ -337,10 +337,6 @@ enum media_entity_type {
+> >   * @info.dev:	Contains device major and minor info.
+> >   * @info.dev.major: device node major, if the device is a devnode.
+> >   * @info.dev.minor: device node minor, if the device is a devnode.
+> > - * @major:	Devnode major number (zero if not applicable). Kept just
+> > - *		for backward compatibility.
+> > - * @minor:	Devnode minor number (zero if not applicable). Kept just
+> > - *		for backward compatibility.
+> >   *
+> >   * .. note::
+> >   *
+> > 
+> 
+> I'd say that this is correct based on
+> https://patchwork.kernel.org/project/linux-media/patch/20231223050707.14091-1-rdunlap@infradead.org/
+> 
+> 
+> Hans, can you please explain this message from you, on 2024-Jan-22, that
+> I cannot find in the media patchwork:
+
+It's in linuxtv.org Patchwork here
+<URL:https://patchwork.linuxtv.org/project/linux-media/patch/20231223050707.14091-1-rdunlap@infradead.org/>
+and also in the media stage tree (as indicated by the state) but not yet in
+master AFAIU.
+
+> 
+> 
+> Subject: [git:media_stage/master] media: media-entity.h: fix Excess kernel-doc description warnings
+> 
+> 
+> 
+> This is an automatic generated email to let you know that the following patch were queued:
+> 
+> Subject: media: media-entity.h: fix Excess kernel-doc description warnings
+> Author:  Randy Dunlap <rdunlap@infradead.org>
+> Date:    Fri Dec 22 21:07:07 2023 -0800
+> 
+> Remove the @major: and @minor: lines to prevent the kernel-doc warnings:
+> 
+> include/media/media-entity.h:376: warning: Excess struct member 'major' description in 'media_entity'
+> include/media/media-entity.h:376: warning: Excess struct member 'minor' description in 'media_entity'
+> 
+> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> 
+>  include/media/media-entity.h | 4 ----
+>  1 file changed, 4 deletions(-)
+> 
+> ---
+> 
+> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
+> index 2b6cd343ee9e..c79176ed6299 100644
+> --- a/include/media/media-entity.h
+> +++ b/include/media/media-entity.h
+> @@ -337,10 +337,6 @@ enum media_entity_type {
+>   * @info.dev:	Contains device major and minor info.
+>   * @info.dev.major: device node major, if the device is a devnode.
+>   * @info.dev.minor: device node minor, if the device is a devnode.
+> - * @major:	Devnode major number (zero if not applicable). Kept just
+> - *		for backward compatibility.
+> - * @minor:	Devnode minor number (zero if not applicable). Kept just
+> - *		for backward compatibility.
+>   *
+>   * .. note::
+>   *
+> 
+> 
+> 
+> Thanks.
+
+-- 
+Regards,
+
+Sakari Ailus
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
