@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46412C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 22:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 326BEC47DA9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 22:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GoTUyazrvwro15zum86Vcem13yDSSg7+lWueDp/6dj4=; b=1Yqvag/MdrwMjH
-	5szzZoSSvmWRbqId+p4b1zfIsS9DXXtGXy+i1iLL5W09VYomRCqrA1kPFM+b0Bi5vBDCUIItEsZOm
-	sSRchWOL8S3wgpyan7ixm48iOb1SLjKmvMZjHubIC2MjsfqMCsAWDr/WKsi64ODvZiKw0VZVebcr9
-	ZGFTCmHxRXenjEM1xHJEuxdzLJYRzmH0OELY9/xZV+eHVoU/hwtGgr7Qonc/OdviA+HexVHjokcMd
-	DjRHsAf+rsmIkYXRFaZ/Pzzxg4Xv+ft4e3yxZa0XF5MzGlFzly9zcoTVEskx/qK1AjKAaGzajZU3V
-	vaOXIas/cV3+Zt5D5Fcg==;
+	List-Owner; bh=YZfx+IkGcEt5E+Aymuee6ckkDFLEY/W14/zuWVxLbvw=; b=RlmObWUDFBGvhQ
+	IErfOnDCaRKc7zBFgwY2JMrXnl890gZijpOsZr7XhtVtotB64GjvNmhWF9JsQR5lWRfHl1mhIwWIR
+	gnNgkE+bgF1J4hWTjJ1F7rszwWB9dum/8Sves+6Qfuxg+8lBGFFY6Gdp1kUpDs+M5du1qRKn3TIAz
+	LqwfkUN/MUcsaOJQAzFEj8BPCEmK66hkHnogm70XwKXht8ePVq0a1W1qRVPqIgeIKJvYJXGSrecE/
+	yPOvrR3ZX+5h2CrG+9fHoTUxzKXGFjSH3FvV9DZDemJEy9j5UmDz+W8BGW4Dsod/x9L32TcPd8tSI
+	KctT97fIH+rZ015Kgl4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTr4G-00000008IXB-2XKz;
-	Sat, 27 Jan 2024 22:22:28 +0000
+	id 1rTr5m-00000008Ila-1Vbb;
+	Sat, 27 Jan 2024 22:24:02 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTr4C-00000008IVq-3NJU;
-	Sat, 27 Jan 2024 22:22:25 +0000
-Message-ID: <eed7560f-cd7d-4e07-9b38-038ca65445bf@infradead.org>
-Date: Sat, 27 Jan 2024 14:22:23 -0800
+	id 1rTr5i-00000008IVq-2AZl;
+	Sat, 27 Jan 2024 22:23:58 +0000
+Message-ID: <9f3b5e25-3d41-4c1f-a8be-788f617f4d58@infradead.org>
+Date: Sat, 27 Jan 2024 14:23:57 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/17] media: ipu3: Fix kerneldoc
+Subject: Re: [PATCH 16/17] media: staging: meson: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-15-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-16-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-15-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-16-eed7865fce18@chromium.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +89,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> Remove documentation from missing fields.
+> Remove documentation from missing field.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
+ 
 Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
 Thanks.
 
 > ---
->  drivers/staging/media/ipu3/include/uapi/intel-ipu3.h | 3 ---
->  1 file changed, 3 deletions(-)
+>  drivers/staging/media/meson/vdec/vdec.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h b/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-> index caa358e0bae4..4aa2797f5e3c 100644
-> --- a/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-> +++ b/drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
-> @@ -2485,11 +2485,9 @@ struct ipu3_uapi_anr_config {
->   *		&ipu3_uapi_yuvp1_y_ee_nr_config
->   * @yds:	y down scaler config. See &ipu3_uapi_yuvp1_yds_config
->   * @chnr:	chroma noise reduction config. See &ipu3_uapi_yuvp1_chnr_config
-> - * @reserved1: reserved
->   * @yds2:	y channel down scaler config. See &ipu3_uapi_yuvp1_yds_config
->   * @tcc:	total color correction config as defined in struct
->   *		&ipu3_uapi_yuvp2_tcc_static_config
-> - * @reserved2: reserved
->   * @anr:	advanced noise reduction config.See &ipu3_uapi_anr_config
->   * @awb_fr:	AWB filter response config. See ipu3_uapi_awb_fr_config
->   * @ae:	auto exposure config  As specified by &ipu3_uapi_ae_config
-> @@ -2724,7 +2722,6 @@ struct ipu3_uapi_obgrid_param {
->   * @acc_ae: 0 = no update, 1 = update.
->   * @acc_af: 0 = no update, 1 = update.
->   * @acc_awb: 0 = no update, 1 = update.
-> - * @__acc_osys: 0 = no update, 1 = update.
->   * @reserved3: Not used.
->   * @lin_vmem_params: 0 = no update, 1 = update.
->   * @tnr3_vmem_params: 0 = no update, 1 = update.
+> diff --git a/drivers/staging/media/meson/vdec/vdec.h b/drivers/staging/media/meson/vdec/vdec.h
+> index 0906b8fb5cc6..258685177700 100644
+> --- a/drivers/staging/media/meson/vdec/vdec.h
+> +++ b/drivers/staging/media/meson/vdec/vdec.h
+> @@ -101,7 +101,6 @@ struct amvdec_core {
+>   * @conf_esparser: mandatory call to let the vdec configure the ESPARSER
+>   * @vififo_level: mandatory call to get the current amount of data
+>   *		  in the VIFIFO
+> - * @use_offsets: mandatory call. Returns 1 if the VDEC supports vififo offsets
+>   */
+>  struct amvdec_ops {
+>  	int (*start)(struct amvdec_session *sess);
 > 
 
 -- 
