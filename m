@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F454C47DA9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 01:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDD0C47422
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 01:56:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cb/JPmLq7WCeTPzFzUStxZSI0p9nNA0T5itEOTVKLWg=; b=YdBzFHvdST6M+k
-	NG8fIHXDl/jFhe8w0Z5AOZRID9rL9CcmZiyzAmiksuvEQOutZzAVJYLZMiUZMu/A2L6ZOuUNnVxa5
-	wLh8kmA7lUO/vkLxQ3N1+K5SQ3u1fuizXsnFGSbyvYfsoz9K+xhwz9yGNUOSTs4MhLU86F4f9HxNP
-	TRIG0HDRN0UKpdlCjwr0G78p5OZNHg/NAqead9uP3BJFC/IxQn55M9h3QqaJW8Cm7TXlBhvtu3C2X
-	pEo1bUBQ8PVqZSYfX5sRbVdjateW5UkQzPmHGFdL6yE/Iri3u0e+zz3hLnriBz/gcG2yzuWxlymgo
-	7Ahe47TR1yEYO/C1jIKg==;
+	List-Owner; bh=Rc+8xtvUqhM+TjWyb1kQIgh7vQ2lZcIlQCeFTbBogIQ=; b=oabn3qOMGFDLF9
+	QI4MW/skLSjGezrSSzxEQV5RENnBA3k0xglu5xF7ikVZCWTeEuFUl5RSkiVqIPElbZg+kUossIMtD
+	4I2miMQMpg4R6CjUbVbiu5UhyrjLi4N0WvotVF5R+flNNaHSUsuV2Z3pcsowdaciZoepcNnTWGjWI
+	mr8ikfZ8WXT68DFu9FAiZNqGQAz0O/XK9qcpIOpQYGGh7ys+YfIxrhKZ2bzwKOV8ucK0uXlU2jjtv
+	WQVJ5uf8us7+yJPFepkKhvNXQzsbEdXUMEWJC7/PkuYwSzJWgjFvi4MO3XDsJyhA+ME9vmYIvpL3x
+	OnityPPavpoPC/Olh7aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXqi-00000006Ana-29KX;
-	Sat, 27 Jan 2024 01:51:12 +0000
-Received: from [50.53.50.0] (helo=[192.168.254.15])
-	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXqe-00000006Alx-2cQm;
-	Sat, 27 Jan 2024 01:51:08 +0000
-Message-ID: <e6b72dff-911e-4923-9996-b3b7db36fb8e@infradead.org>
-Date: Fri, 26 Jan 2024 17:51:06 -0800
+	id 1rTXvy-00000006BnY-0fgh;
+	Sat, 27 Jan 2024 01:56:38 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTXvv-00000006BmS-0yyv;
+	Sat, 27 Jan 2024 01:56:36 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-6818a9fe380so6135116d6.2;
+        Fri, 26 Jan 2024 17:56:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706320592; x=1706925392; darn=lists.infradead.org;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/afVxJVRAH/Hka426Kik5pPJmKRNBFsEk7DBPTNKyGs=;
+        b=Ry4pYUInlcFWZtf1/9hOZq/iKul9Y0oxbjYy6yDKRvRQenWUKkSUgTdmZ/1JN1xQOy
+         86bWHnBX1il6fA8KkL4wk8AHAE+rhG6NA8RtKW21ITU4jkTKQmj+Tw/2boUuapY+KJQe
+         XaGhfa5rzQtnmNGr5dAKoNSJfRRLzdKEjYk2BII1DhFUz7rG3h7bwBTLUo9Vu7ZFpXaG
+         DAvbwiyMUr7VNQixFBLGXAp3RcV0ogDSde6azJJxMiotqH3mL5p1yp6QJU41ZCvWKghk
+         9L0tPVn+n7D9Frh41vyl9hmPWFmJEIcklbxWcGG8so8qaRRwbcp9gHNeeE8Jk20yKBNh
+         vlKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706320592; x=1706925392;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/afVxJVRAH/Hka426Kik5pPJmKRNBFsEk7DBPTNKyGs=;
+        b=YsQkc5DFimB2hz5C2Oe8Saoc/iCS3sQW6tqL8qR8EzQWfQjMhECaPkltnvKbu42kM2
+         EeDorVfuPbq2Ql5fcTMChwZeizDDrVEbJVFFvWOSj3gWicqg3xHPUI706bztrbkHV4kV
+         EHFHnEooNcaP2DktO3t2MOSUV7LC053OOv0Hgnlg1/V9xD4AwrmSlf1MtvGVjmF/olwc
+         CTLdHvoB0RXTLLySa/aU3S6w0TPRHRMfgvhbtviXhOnR6Cbxejn9rY6274YnUHpRa5Kx
+         FoHlZl8d/V4RCHWEuDafcGkYUh4LCIHsOhsOnsXkBnyE9Ih/pNIJf6ziMgwl9mnBD1qo
+         fqsA==
+X-Gm-Message-State: AOJu0YzBJtHEgPQheUrCJfee411onFZPTq+CxYLJeQ+wKrQRwmnOh/2f
+	eMYvxHStoC6UseRTRlDkEGGzFACgwSeFirfwuQlSmj9hrqlAjaZx
+X-Google-Smtp-Source: AGHT+IFkNflH+BD21PMssYPhDkGtjPw/IUQ5epAxGPBNdBEmXmNHE/6kB23j0pbiLNRS52u4ol6Y4g==
+X-Received: by 2002:ad4:5c8b:0:b0:683:c2b7:bee8 with SMTP id o11-20020ad45c8b000000b00683c2b7bee8mr1017615qvh.72.1706320592406;
+        Fri, 26 Jan 2024 17:56:32 -0800 (PST)
+Received: from localhost (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
+        by smtp.gmail.com with ESMTPSA id dk6-20020a056214092600b0067f339c0c16sm1015924qvb.134.2024.01.26.17.56.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Jan 2024 17:56:31 -0800 (PST)
+Date: Fri, 26 Jan 2024 20:56:29 -0500
+From: Trevor Woerner <twoerner@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Chen-Yu Tsai <wens@csie.org>,
+	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rock-pi-e: fix location of
+ snps properties
+Message-ID: <20240127015629.GA36077@localhost>
+References: <20240116204103.29318-1-twoerner@gmail.com>
+ <df78489b-7546-46ea-b09f-39a80692a962@kwiboo.se>
+ <20240118230312.GB14779@localhost>
+ <1976352.usQuhbGJ8B@phil>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/17] media: media-entity.h: Fix kerneldoc
-Content-Language: en-US
-To: Ricardo Ribalda <ribalda@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Bin Liu <bin.liu@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-amlogic@lists.infradead.org
-References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-3-eed7865fce18@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <1976352.usQuhbGJ8B@phil>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240126_175635_302464_67DC7498 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,86 +100,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/26/24 15:16, Ricardo Ribalda wrote:
-> The fields seems to be documented twice.
+On Thu 2024-01-25 @ 09:12:46 PM, Heiko Stuebner wrote:
+> Hi,
 > 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> ---
->  include/media/media-entity.h | 4 ----
->  1 file changed, 4 deletions(-)
+> Am Freitag, 19. Januar 2024, 00:03:12 CET schrieb Trevor Woerner:
+> > On Thu 2024-01-18 @ 08:31:30 AM, Jonas Karlman wrote:
+> > > On 2024-01-17 09:15, Jonas Karlman wrote:
+> > > I have just sent out a U-Boot series that fix ethernet on the v1.21
+> > > revision of the ROCK Pi E board, see [2].
+> > 
+> > Thank you! I have tested your patches both in U-Boot and Linux and they work
+> > perfectly.
 > 
-> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-> index 2b6cd343ee9e..c79176ed6299 100644
-> --- a/include/media/media-entity.h
-> +++ b/include/media/media-entity.h
-> @@ -337,10 +337,6 @@ enum media_entity_type {
->   * @info.dev:	Contains device major and minor info.
->   * @info.dev.major: device node major, if the device is a devnode.
->   * @info.dev.minor: device node minor, if the device is a devnode.
-> - * @major:	Devnode major number (zero if not applicable). Kept just
-> - *		for backward compatibility.
-> - * @minor:	Devnode minor number (zero if not applicable). Kept just
-> - *		for backward compatibility.
->   *
->   * .. note::
->   *
-> 
+> if I'm reading this correctly, this patch is not needed anymore, right?
 
-I'd say that this is correct based on
-https://patchwork.kernel.org/project/linux-media/patch/20231223050707.14091-1-rdunlap@infradead.org/
+True, patch 2/2 is not needed (or correct).
 
+> I'm not yet sure about the first patch, as it really is
+> just a cosmetic ;-)
 
-Hans, can you please explain this message from you, on 2024-Jan-22, that I cannot find in the media patchwork:
-
-
-Subject: [git:media_stage/master] media: media-entity.h: fix Excess kernel-doc description warnings
-
-
-
-This is an automatic generated email to let you know that the following patch were queued:
-
-Subject: media: media-entity.h: fix Excess kernel-doc description warnings
-Author:  Randy Dunlap <rdunlap@infradead.org>
-Date:    Fri Dec 22 21:07:07 2023 -0800
-
-Remove the @major: and @minor: lines to prevent the kernel-doc warnings:
-
-include/media/media-entity.h:376: warning: Excess struct member 'major' description in 'media_entity'
-include/media/media-entity.h:376: warning: Excess struct member 'minor' description in 'media_entity'
-
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-
- include/media/media-entity.h | 4 ----
- 1 file changed, 4 deletions(-)
-
----
-
-diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-index 2b6cd343ee9e..c79176ed6299 100644
---- a/include/media/media-entity.h
-+++ b/include/media/media-entity.h
-@@ -337,10 +337,6 @@ enum media_entity_type {
-  * @info.dev:	Contains device major and minor info.
-  * @info.dev.major: device node major, if the device is a devnode.
-  * @info.dev.minor: device node minor, if the device is a devnode.
-- * @major:	Devnode major number (zero if not applicable). Kept just
-- *		for backward compatibility.
-- * @minor:	Devnode minor number (zero if not applicable). Kept just
-- *		for backward compatibility.
-  *
-  * .. note::
-  *
-
-
-
-Thanks.
--- 
-#Randy
+I wouldn't say it's entirely cosmetic. Some rock-pi-e boards come with the
+8211e PHY and others come with the 8211f PHY. Labelling the phandle as
+"rtl8211e" would be misleading/confusing for people who had boards whose boot
+logs would report otherwise.
 
 _______________________________________________
 Linux-rockchip mailing list
