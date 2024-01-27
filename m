@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D1A2C47DA9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 22:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AAE8C47DA9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 22:02:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=09zgdF2vAH4GJtW43jfgJ60XREpWSSaHNJmfE9YlJ1Q=; b=oU7utgqjs3sIQZ
-	C8pn0W3r2eGNVtwmT7MDd6oIE226g7G526UwRUPjf1DeP9ksWaiDVhuGcT6WBdc3qMWYdf+MP6EDi
-	zjs4ziu6RvwY1vqTkhPOcIml4g1XnayuL7BBKMMVgUOhdIFPp3Hw/FgzMOdaaxSh7T5puuuDf6ytJ
-	mfRNa4h031eRUfy5RkNqxw6M/6wg5+Crj0sBWeF/nHRMHFL7pyqx+yS5EaiA29dqKYpeTqTpABqAT
-	v9c1I9hLa+Y+AbnncxS4MBbLFgq9vVczHTuvtz4V/OgC014YgeRDH1TdXtXUNsZVGj92r48PhQYbN
-	z6aD2MLbgHBqXc/kvIFA==;
+	List-Owner; bh=cnlxQ71g4wpNIZVGOcFpt3lI8nR7zUSQWvR7PdDEHs4=; b=Oll576v3f1ne6C
+	6emX5BC2k5LcN8ozZdIOBa2GZ1q0BRNaWxO1COyJYzmWEcFMdyUCrstyZ2nTZl65tYJri8XVfbwJd
+	9eGIiFw20JOog21QVZpZylgoF+qre7PIVTvpgIBDV58gPdSc3zOLtxo7nQUceG811nYnzpgl3VxtF
+	e/+vXlDNluC3Jq5u6GeyxpZYkIzAfQLgYOkxa5rZwPf7F7FEMgbYUf0yB1VCUbLwB0Q3w/BM1GoAe
+	vdcGkXgjEXEJDC+3rltLivA+tJ8nlWUyHJHhaUpmMLmf2G/e/xOnjF9boKMeGqdObr10iKOv9/m1/
+	SVj1FraIlvGDPJ4Q6nTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqjB-00000008FoB-0vCm;
-	Sat, 27 Jan 2024 22:00:41 +0000
+	id 1rTqkr-00000008G9f-1vjq;
+	Sat, 27 Jan 2024 22:02:25 +0000
 Received: from [50.53.50.0] (helo=[192.168.254.15])
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTqj6-00000008FnG-0a1X;
-	Sat, 27 Jan 2024 22:00:36 +0000
-Message-ID: <d757c5a7-bb3c-4dd9-bac4-e43ee7685a18@infradead.org>
-Date: Sat, 27 Jan 2024 14:00:34 -0800
+	id 1rTqko-00000008G8i-10Rk;
+	Sat, 27 Jan 2024 22:02:22 +0000
+Message-ID: <0331b70a-ee6b-4654-8c55-235545dce4e2@infradead.org>
+Date: Sat, 27 Jan 2024 14:02:20 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/17] media: i2c: css-quirk.h: Fix kerneldoc
+Subject: Re: [PATCH 07/17] media: i2c: adv748: Fix kerneldoc
 Content-Language: en-US
 To: Ricardo Ribalda <ribalda@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -67,9 +67,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-amlogic@lists.infradead.org
 References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-6-eed7865fce18@chromium.org>
+ <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20240126-gix-mtk-warnings-v1-6-eed7865fce18@chromium.org>
+In-Reply-To: <20240126-gix-mtk-warnings-v1-7-eed7865fce18@chromium.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,46 +89,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 On 1/26/24 15:16, Ricardo Ribalda wrote:
-> Kerneldoc does not seem to understand that embed doc:
-> drivers/media/i2c/ccs/ccs-quirk.h:50: warning: Excess struct member 'write' description in 'ccs_quirk'
-> drivers/media/i2c/ccs/ccs-quirk.h:50: warning: Excess struct member 'reg' description in 'ccs_quirk'
-> drivers/media/i2c/ccs/ccs-quirk.h:50: warning: Excess struct member 'val' description in 'ccs_quirk'
-> 
-
-Correct. It's never tried to understand that AFAIK.
-
-> Convert into a standard doc.
+> The field is gone, remove the documentation.
 > 
 > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
 Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
-
 Thanks.
 
 > ---
->  drivers/media/i2c/ccs/ccs-quirk.h | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/media/i2c/adv748x/adv748x.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/media/i2c/ccs/ccs-quirk.h b/drivers/media/i2c/ccs/ccs-quirk.h
-> index 0b1a64958d71..392c97109617 100644
-> --- a/drivers/media/i2c/ccs/ccs-quirk.h
-> +++ b/drivers/media/i2c/ccs/ccs-quirk.h
-> @@ -28,11 +28,11 @@ struct ccs_sensor;
->   * @reg_access: Register access quirk. The quirk may divert the access
->   *		to another register, or no register at all.
+> diff --git a/drivers/media/i2c/adv748x/adv748x.h b/drivers/media/i2c/adv748x/adv748x.h
+> index 6f90f78f58cf..d2b5e722e997 100644
+> --- a/drivers/media/i2c/adv748x/adv748x.h
+> +++ b/drivers/media/i2c/adv748x/adv748x.h
+> @@ -173,7 +173,6 @@ struct adv748x_afe {
 >   *
-> - *		@write: Is this read (false) or write (true) access?
-> - *		@reg: Pointer to the register to access
-> - *		@value: Register value, set by the caller on write, or
-> + *		-write: Is this read (false) or write (true) access?
-> + *		-reg:   Pointer to the register to access
-> + *		-val:   Register value, set by the caller on write, or
->   *			by the quirk on read
-> - *		@return: 0 on success, -ENOIOCTLCMD if no register
-> + *		-return: 0 on success, -ENOIOCTLCMD if no register
->   *			 access may be done by the caller (default read
->   *			 value is zero), else negative error code on error
->   * @flags: Quirk flags
+>   * @endpoints:		parsed device node endpoints for each port
+>   *
+> - * @i2c_addresses:	I2C Page addresses
+>   * @i2c_clients:	I2C clients for the page accesses
+>   * @regmap:		regmap configuration pages.
+>   *
 > 
 
 -- 
