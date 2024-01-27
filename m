@@ -4,49 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE1FC47DDB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 09:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC5BEC46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 09:49:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0sRu46qOuRqIBUp7MhmA8Ohed3uksu4n6PMszGdDPnE=; b=xpPb8iD6DFgkPF
-	7qdgQ9qJdL8DX+nxeIV4tzQmj8wbP724AQjP70W/lawySrQkUdd6L9DazTPGjhXgLOJlmLx8myi/4
-	vnlEpOGuUNd2jMtMasFTd1YRoiofoMc7Z6enpqiab3YhLV88VAOcDPcqbRY5/FZDujv11Moiu0qxA
-	UOM+BJJK8GCJXXBBNtPcY9Tyq3lKHe/QnmX4AN1btgCsuiW8LVESBjUc7eiYz68DFlpMaWegVt3Q0
-	61KFsMp39KnySRK+VeMPirzVmpqetDJG9eFA96OI+ad98WlOCQilqZm5mBrVnAFRPaaquUF/6itUy
-	wbkL/2Vym0MMyWkE1keg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pI284NQfe3vVJN63Apk1HddYyOwlNFAN/MP9DsJqJso=; b=0jQuXMkv2UMG+z
+	4t3fszDRVZQE8t5uKJ+LyXoTrtlFzkAviX7rMzOv+ic0UyaqGCr5KYBoDqBwqFJutb8oJa38roQ/k
+	907XJbGkV2tPYh03q03+w2O1DhuUqUbQ3PQo/vp1CzxyNzUPPHN+6Zr6AmUMu6zcKnNLjVBHqJzXO
+	0NxQ5/HhTl25DdMC6XXUVXPGChN72gJELyJJ7sjpLDL7BhyMumF7tPxBL2fj2KNU86kTKBUA1D9qM
+	g/u1vvMhd//Nk99qThirmWeMDQlibTck7T3pUxR79fDZezmzv81V+5U70/M844gh0Pp4qWIID7ifQ
+	W5Qmt3XEoo1yG46Ol8Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTfJ8-00000007J6F-2otn;
-	Sat, 27 Jan 2024 09:49:02 +0000
+	id 1rTfJ7-00000007J52-2Fvj;
+	Sat, 27 Jan 2024 09:49:01 +0000
 Received: from [2a01:4f8:1c1c:934f::1] (helo=mecka.net)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTfIr-00000007IsL-2zEI;
-	Sat, 27 Jan 2024 09:48:48 +0000
+	id 1rTfIs-00000007Its-27tp;
+	Sat, 27 Jan 2024 09:48:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mecka.net; s=2016.11;
-	t=1706348923; bh=00DmZqyEpDXJ+Q5kUCHk3ZsWcoc+Ik/n4Bym0Re+KiE=;
-	h=From:Subject:Date:To:Cc:From;
-	b=jBbfztp9ORHzMWR37x+KZLSzE6IQPCI62bPLbEfC5YovcUzUucgqmpX8Sae7TprVb
-	 F+YIGFsP1r2+SlUOmK9RzDDQvrHW01tC25Cw0F8+Jxv864v/MMNHzA8kmCIg4oz0ea
-	 ygnPjnEXmdP0/mnq6z9vLwJBFaPdz6KDfaLUlQowGExsNUbzeDCSEviJE8zLo1VTrt
-	 J9EtSk5kyzbGGBa8QcMMKRKfGv/lie4dPxhlpWo/QLs6AKBlsk/dTjlrePhUHQ6PWf
-	 j5UEFRA0g6uEZ+Z1rmbZIjmd277ouDcyDP2XqjR0Vf5K98gmz+mJefOMGV721QwfuD
-	 SALZ4IPR7beeA==
+	t=1706348925; bh=b8ZKwzuKSR+B8npDXbJdxQemMwTR+ciHyPfl/3VRGTg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=RYFnCmvL6bDyP9Agh9Bv7DpCTWPQjzWgT12uEJLwrSQsMkqBZC4Le1W03EsfBAgeY
+	 9tvpENJ9qaQb3GaDE4CgvZw0j1Jy5vmWUGQEh7v2hRZ0+rJnAQrwxiNgzzhkAVjx6k
+	 61fUc+Kdh2xkPVgqt7jxnvMJEmWtV+Y/0Gz1V/6gClN6sSfNYS9av8mRrWD18QFfNn
+	 GeZmKdJ/oHIlxNTa3VvinbIvTz/X+ntqW30hNan8X+F5Tq0AZBxxxBBDm6kR2ZVDGc
+	 AsMgqNXg/JtPUFfRnhspYVAPvUFMKQUaNbMVfd1DBWmEZpvHSkjTPHNsocJblmWQcY
+	 F3Lc5ZS05aOjA==
 Received: from arthur.fritz.box (unknown [185.147.11.134])
-	by mecka.net (Postfix) with ESMTPSA id DCDF53BF7A4;
-	Sat, 27 Jan 2024 10:48:42 +0100 (CET)
+	by mecka.net (Postfix) with ESMTPSA id 0C7E63BF7A9;
+	Sat, 27 Jan 2024 10:48:45 +0100 (CET)
 From: Manuel Traut <manut@mecka.net>
-Subject: [PATCH v4 0/4] arm64: rockchip: Pine64 PineTab2 support
-Date: Sat, 27 Jan 2024 10:48:41 +0100
-Message-Id: <20240127-pinetab2-v4-0-37aab1c39194@mecka.net>
+Date: Sat, 27 Jan 2024 10:48:44 +0100
+Subject: [PATCH v4 3/4] dt-bindings: arm64: rockchip: Add Pine64 PineTab2
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAHnRtGUC/22NSwrCMBBAryJZG5lJaltdeQ9xkc/EBrEtSQlK6
- d1NC0IQl29m3puZRQqeIjvvZhYo+eiHPkO13zHTqf5O3NvMTICQKITgo+9pUlpwp1TTEKDVtWP
- 5fAzk/GtLXW+ZOx+nIby3csJ1+ieSkAMnrFrVuBq1xcuTzEMd8pqtkSRKURaiWEWD7bG2ABLoV
- 5RfsQKE8qPMotGoVH1yrZFQisuyfACGowGHEgEAAA==
+Message-Id: <20240127-pinetab2-v4-3-37aab1c39194@mecka.net>
+References: <20240127-pinetab2-v4-0-37aab1c39194@mecka.net>
+In-Reply-To: <20240127-pinetab2-v4-0-37aab1c39194@mecka.net>
 To: Neil Armstrong <neil.armstrong@linaro.org>, 
  Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>, 
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,8 +63,9 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240127_014846_278385_656432AD 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20240127_014846_956862_8D34A663 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,91 +82,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds support for the BOE TH101MB31IG002 LCD Panel used in PineTab2 [1] and
-PineTab-V [2] as well as the devictrees for the PineTab2 v0.1 and v2.0.
-
-The BOE LCD Panel patch was retrieved from [3]. The function-name prefix has
-been adapted and the LCD init section was simplified.
-
-The PineTab2 devicetree patch was retrieved from [4]. Some renaming was needed
-to pass the dtb-checks, the brightness-levels are specified as range and steps
-instead of a list of values.
-
-[5] and [6] was also used as source for this queue.
-
-[1] https://wiki.pine64.org/wiki/PineTab2
-[2] https://wiki.pine64.org/wiki/PineTab-V
-[3] https://salsa.debian.org/Mobian-team/devices/kernels/rockchip-linux/-/blob/mobian-6.6/debian/patches/display/0018-drm-panel-add-BOE-TH101MB31IG002-28A-driver.patch?ref_type=heads
-[4] https://salsa.debian.org/Mobian-team/devices/kernels/rockchip-linux/-/blob/mobian-6.6/debian/patches/device-tree/0134-arch-arm64-add-Pine64-PineTab2-device-trees.patch?ref_type=heads
-[5] https://github.com/dreemurrs-embedded/linux-pinetab2/tree/v6.6.7-danctnix1
-[6] https://xff.cz/git/linux?h=pt2-6.7
+Add devicvetree binding documentation for Pine64 PineTab2
+which uses the Rockchip RK3566 SoC.
 
 Signed-off-by: Manuel Traut <manut@mecka.net>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-Changes in v4:
-- Rebased on v6.8-rc1
-- BOE TH101MB31IG002 LCD Panel:
-  * Picked patches from https://anongit.freedesktop.org/git/drm/drm-misc.git (drm-misc-next)
-- PineTab2 dts:
-  * Make flash-led a regulator-led and control the regulator by GPIO and set
-    V5_MIDU as vin-supply to ensure that LED is working even if all other
-    drivers using V5 MIDU are unloaded.
-  * Add -regulator suffix to nodes, replace -con suffix by -connector
-  * Set lcd pinctrl in .dts instead of .dtsi so it is more clear that this is
-    different between pinetab v0.1 and v2.0
-  * Remove unused bluetooth uart configuration and pinctrl
-  * Increase spi-nor max-speed from 24 to 100 MHz
-- Link to v3: https://lore.kernel.org/r/20240102-pinetab2-v3-0-cb1aa69f8c30@mecka.net
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Changes in v3:
-- PineTab2 dts:
-    * Remove useless regulator-state-mem nodes for fixed regulators
-    * Swap mmc0 and mmc1, so mmc0 is now the internal eMMC
-- BOE TH101MB31IG002 LCD Panel:
-    * Remove enabled/prepared checks since they are done in core.
-- Use consistent naming (PineTab2 and PineTab-V) in commit messages.
-- Link to v2: https://lore.kernel.org/r/20231223-pinetab2-v2-0-ec1856d0030e@mecka.net
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 5cf5cbef2cf5..1b9740e2f3a1 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -650,6 +650,14 @@ properties:
+           - const: pine64,pinenote
+           - const: rockchip,rk3566
+ 
++      - description: Pine64 PineTab2
++        items:
++          - enum:
++              - pine64,pinetab2-v0.1
++              - pine64,pinetab2-v2.0
++          - const: pine64,pinetab2
++          - const: rockchip,rk3566
++
+       - description: Pine64 PinePhonePro
+         items:
+           - const: pine64,pinephone-pro
 
-Changes in v2:
-- Removed dtb-checker fixups, cause I am not sure if they are correct
-- Applied review comments for dt bindings
-- pinetab2 dts:
-    * Remove unverified WLAN entries, as in [5]
-    * Simplify flash LED definition, as in [5]
-    * Fix headphone detection and sound routing, as in [5]
-    * Fix CRU clock configuration
-- BOE TH101MB31IG002 LCD Panel:
-    * Reworked prepare/enable unprepare/disable, as in [5]
-- Replaced nicknames by realnames in author and signed-offs
-
-- Link to v1: https://lore.kernel.org/r/20231222-pinetab2-v1-0-e148a7f61bd1@mecka.net
-
----
-Alexander Warnecke (1):
-      drm/panel: Add driver for BOE TH101MB31IG002-28A panel
-
-Manuel Traut (3):
-      dt-bindings: display: panel: Add BOE TH101MB31IG002-28A panel
-      dt-bindings: arm64: rockchip: Add Pine64 PineTab2
-      arm64: dts: rockchip: Add devicetree for Pine64 PineTab2
-
- .../devicetree/bindings/arm/rockchip.yaml          |   8 +
- .../display/panel/boe,th101mb31ig002-28a.yaml      |  58 ++
- arch/arm64/boot/dts/rockchip/Makefile              |   2 +
- .../boot/dts/rockchip/rk3566-pinetab2-v0.1.dts     |  28 +
- .../boot/dts/rockchip/rk3566-pinetab2-v2.0.dts     |  48 ++
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi  | 943 +++++++++++++++++++++
- drivers/gpu/drm/panel/Kconfig                      |  11 +
- drivers/gpu/drm/panel/Makefile                     |   1 +
- .../gpu/drm/panel/panel-boe-th101mb31ig002-28a.c   | 322 +++++++
- 9 files changed, 1421 insertions(+)
----
-base-commit: 3a5879d495b226d0404098e3564462d5f1daa33b
-change-id: 20231222-pinetab2-faa77e01db6f
-
-Best regards,
 -- 
-Manuel Traut <manut@mecka.net>
+2.43.0
 
 
 _______________________________________________
