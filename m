@@ -4,86 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDD0C47422
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 01:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E74C46CD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jan 2024 09:21:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rc+8xtvUqhM+TjWyb1kQIgh7vQ2lZcIlQCeFTbBogIQ=; b=oabn3qOMGFDLF9
-	QI4MW/skLSjGezrSSzxEQV5RENnBA3k0xglu5xF7ikVZCWTeEuFUl5RSkiVqIPElbZg+kUossIMtD
-	4I2miMQMpg4R6CjUbVbiu5UhyrjLi4N0WvotVF5R+flNNaHSUsuV2Z3pcsowdaciZoepcNnTWGjWI
-	mr8ikfZ8WXT68DFu9FAiZNqGQAz0O/XK9qcpIOpQYGGh7ys+YfIxrhKZ2bzwKOV8ucK0uXlU2jjtv
-	WQVJ5uf8us7+yJPFepkKhvNXQzsbEdXUMEWJC7/PkuYwSzJWgjFvi4MO3XDsJyhA+ME9vmYIvpL3x
-	OnityPPavpoPC/Olh7aA==;
+	List-Owner; bh=KEYV2NoEGMyjnTsMEwl/pesoK/X1wn7LpkGNNrH5crw=; b=wbY5b0bCEHKUjI
+	CDrKff7taWPpYvp0gANIGOUeo3uIgVneaXGZHSTT8mqg5YdT0YioVueJgaXQKW5sHE5St7q8LIbah
+	l+Hb2Nh3OiN5BjuKw0aFOnJCPu6725np3yM9guHCNPsv7JC/uBZaNMt2kIZZ2isy9MJ08SUG3A8n/
+	nYEtRCuNYRAc2eK+C/flUe0T0Wzt+4Kl7zCFVCAcxQB85dazAYzEMMSxLsjA1tx1PRMuHVgwkpxvN
+	yFvD8KJcMXRJohz5ThJr2xsTChpTb+gLBOtw4yx2lhg5LLr6/TqkVElMpjdbKAfXqzGNqKuoCnu6z
+	zDxSCRKlW2KdHdLMLcPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXvy-00000006BnY-0fgh;
-	Sat, 27 Jan 2024 01:56:38 +0000
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rTXvv-00000006BmS-0yyv;
-	Sat, 27 Jan 2024 01:56:36 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-6818a9fe380so6135116d6.2;
-        Fri, 26 Jan 2024 17:56:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706320592; x=1706925392; darn=lists.infradead.org;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/afVxJVRAH/Hka426Kik5pPJmKRNBFsEk7DBPTNKyGs=;
-        b=Ry4pYUInlcFWZtf1/9hOZq/iKul9Y0oxbjYy6yDKRvRQenWUKkSUgTdmZ/1JN1xQOy
-         86bWHnBX1il6fA8KkL4wk8AHAE+rhG6NA8RtKW21ITU4jkTKQmj+Tw/2boUuapY+KJQe
-         XaGhfa5rzQtnmNGr5dAKoNSJfRRLzdKEjYk2BII1DhFUz7rG3h7bwBTLUo9Vu7ZFpXaG
-         DAvbwiyMUr7VNQixFBLGXAp3RcV0ogDSde6azJJxMiotqH3mL5p1yp6QJU41ZCvWKghk
-         9L0tPVn+n7D9Frh41vyl9hmPWFmJEIcklbxWcGG8so8qaRRwbcp9gHNeeE8Jk20yKBNh
-         vlKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706320592; x=1706925392;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/afVxJVRAH/Hka426Kik5pPJmKRNBFsEk7DBPTNKyGs=;
-        b=YsQkc5DFimB2hz5C2Oe8Saoc/iCS3sQW6tqL8qR8EzQWfQjMhECaPkltnvKbu42kM2
-         EeDorVfuPbq2Ql5fcTMChwZeizDDrVEbJVFFvWOSj3gWicqg3xHPUI706bztrbkHV4kV
-         EHFHnEooNcaP2DktO3t2MOSUV7LC053OOv0Hgnlg1/V9xD4AwrmSlf1MtvGVjmF/olwc
-         CTLdHvoB0RXTLLySa/aU3S6w0TPRHRMfgvhbtviXhOnR6Cbxejn9rY6274YnUHpRa5Kx
-         FoHlZl8d/V4RCHWEuDafcGkYUh4LCIHsOhsOnsXkBnyE9Ih/pNIJf6ziMgwl9mnBD1qo
-         fqsA==
-X-Gm-Message-State: AOJu0YzBJtHEgPQheUrCJfee411onFZPTq+CxYLJeQ+wKrQRwmnOh/2f
-	eMYvxHStoC6UseRTRlDkEGGzFACgwSeFirfwuQlSmj9hrqlAjaZx
-X-Google-Smtp-Source: AGHT+IFkNflH+BD21PMssYPhDkGtjPw/IUQ5epAxGPBNdBEmXmNHE/6kB23j0pbiLNRS52u4ol6Y4g==
-X-Received: by 2002:ad4:5c8b:0:b0:683:c2b7:bee8 with SMTP id o11-20020ad45c8b000000b00683c2b7bee8mr1017615qvh.72.1706320592406;
-        Fri, 26 Jan 2024 17:56:32 -0800 (PST)
-Received: from localhost (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
-        by smtp.gmail.com with ESMTPSA id dk6-20020a056214092600b0067f339c0c16sm1015924qvb.134.2024.01.26.17.56.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jan 2024 17:56:31 -0800 (PST)
-Date: Fri, 26 Jan 2024 20:56:29 -0500
-From: Trevor Woerner <twoerner@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jonas Karlman <jonas@kwiboo.se>, Chen-Yu Tsai <wens@csie.org>,
-	linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	id 1rTesC-00000007EFf-2TAl;
+	Sat, 27 Jan 2024 09:21:12 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rTes7-00000007ED8-3KCL;
+	Sat, 27 Jan 2024 09:21:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=qXKs7
+	77YlJXMt8Y4vLlzfp04iXltM/VO9c7EPLhu6nw=; b=Sc4R8pCUrKIpDXgH3nint
+	QC5KH+JKw6vI94XXIkW//286CO9ZTOUkcFsLwmlBDvcVk5bxUJleGtsoX8I/aYnv
+	JSGpg+I9AbMnltWh0OLFam33344uQSgctM8Ccex0Nwi0vqkNuENx0352saCzvFnV
+	B2gcMad4UevhPPCW9OaDe4=
+Received: from ProDesk.. (unknown [58.22.7.114])
+	by gzga-smtp-mta-g0-4 (Coremail) with SMTP id _____wD3rzHkyrRl5GopBA--.2976S3;
+	Sat, 27 Jan 2024 17:20:40 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rock-pi-e: fix location of
- snps properties
-Message-ID: <20240127015629.GA36077@localhost>
-References: <20240116204103.29318-1-twoerner@gmail.com>
- <df78489b-7546-46ea-b09f-39a80692a962@kwiboo.se>
- <20240118230312.GB14779@localhost>
- <1976352.usQuhbGJ8B@phil>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH 2/4] arm64: dts: rockchip: aliase sdmmc as mmc1 for Cool Pi CM5 EVB
+Date: Sat, 27 Jan 2024 17:20:32 +0800
+Message-Id: <20240127092034.887085-2-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240127092034.887085-1-andyshrk@163.com>
+References: <20240127092034.887085-1-andyshrk@163.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1976352.usQuhbGJ8B@phil>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CM-TRANSID: _____wD3rzHkyrRl5GopBA--.2976S3
+X-Coremail-Antispam: 1Uf129KBjvdXoWrZryDuFyDGr4kXF1fWF1kuFg_yoW3tFg_ta
+	42ga1kJayrWr98W34Dtay8G343C34DCw1fJayYvF4kAFW3X39rJayrKa9FvF1jyF429r1f
+	JrZ3ZF18Jw15CjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRN-BM7UUUUU==
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqApyXmVOB+QgpgAAsA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240126_175635_302464_67DC7498 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20240127_012108_239783_D5066FD5 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +77,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu 2024-01-25 @ 09:12:46 PM, Heiko Stuebner wrote:
-> Hi,
-> 
-> Am Freitag, 19. Januar 2024, 00:03:12 CET schrieb Trevor Woerner:
-> > On Thu 2024-01-18 @ 08:31:30 AM, Jonas Karlman wrote:
-> > > On 2024-01-17 09:15, Jonas Karlman wrote:
-> > > I have just sent out a U-Boot series that fix ethernet on the v1.21
-> > > revision of the ROCK Pi E board, see [2].
-> > 
-> > Thank you! I have tested your patches both in U-Boot and Linux and they work
-> > perfectly.
-> 
-> if I'm reading this correctly, this patch is not needed anymore, right?
+Follow others rk3588 based boards, and u-boot only use mmc0/1
+as mmc boot targets, so aliase sdmmc as mmc1.
 
-True, patch 2/2 is not needed (or correct).
+Fixes: 791c154c3982 ("arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB")
+Signed-off-by: Andy Yan <andyshrk@163.com>
+---
 
-> I'm not yet sure about the first patch, as it really is
-> just a cosmetic ;-)
+ arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I wouldn't say it's entirely cosmetic. Some rock-pi-e boards come with the
-8211e PHY and others come with the 8211f PHY. Labelling the phandle as
-"rtl8211e" would be misleading/confusing for people who had boards whose boot
-logs would report otherwise.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+index 0b02f4d6e003..cce1c8e83587 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+@@ -16,8 +16,8 @@ / {
+ 
+ 	aliases {
+ 		mmc0 = &sdhci;
+-		mmc1 = &sdio;
+-		mmc2 = &sdmmc;
++		mmc1 = &sdmmc;
++		mmc2 = &sdio;
+ 		serial2 = &uart2;
+ 	};
+ 
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
