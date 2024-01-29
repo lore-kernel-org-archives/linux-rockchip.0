@@ -4,69 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55EFCC47422
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jan 2024 11:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D0DBC47422
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jan 2024 11:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w0c9cO7OKjx7L+9sdxfU46DUo+Pec9LAULXO3A0qUkk=; b=aC5C3JbrvnpPlrzaYXwutmzgVk
-	dUbyhcsq4ERJ3OByMaIx8gjSow9cTvOVxJ38j2ELJH4jbWZgomLH3PY0c7CjiQnneQY2YUqD//tJE
-	mgRNbAKzPT3hMJkD183PBs9BxoB8turtkHWm3/DYzFy1uMHwQtvZmMCsLplI587zYoaumcOahLciI
-	lJWs8OO2m+pxXaeNrrKn9cCGFh66L2pSYEIJJGptrLQC2IeEsN1GyO9gFCZjno6j49U6eUEXYlUqR
-	6iJ/D2OObH7P8oMIpaVilpYfhscMZq4702TNlUNq5Y7bjg8Epe2pvg0WfzrwMAWGEstt0+694K0k3
-	MH+nez7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dOV6U/3WMb5CPyIESUlcAwVptD+qjGGfgpLHxG2BC8Y=; b=N+uZh3trYEghqa
+	GXncBb2Gp5BtS+gPH+NJgNVBk3rpEniaILWWXmZDSfv9W743yGN2SbAtxvtsoSAAhiLzbn2/oKJKk
+	R2IO/KYwI46hTYk5Z7XA+pgfjL9dE4aPQB+mLULB8l4hviAbOoWi8HTGeDJ74zxHCjhH+qUE7ss0F
+	imgO2cxpDh8NkF69eE13fM5/eXfZ0wF//ypOA5KI5n335Po6D2Com0Bzhu9PMDGk4aDKu4muYo01j
+	o4zntZyX7aFwC6cW6FGfZNAxKJn4ZGd87wFQTb+mQr5LkTf1uiRn35C/ia/9ALAjANvgpfZxnkXle
+	8AdJP3PM/umEgZ1UMXpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUQ1T-0000000CQcy-2J2c;
-	Mon, 29 Jan 2024 11:41:55 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rUQ8N-0000000CSVe-13re;
+	Mon, 29 Jan 2024 11:49:03 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUQ1R-0000000CQbw-04gy
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jan 2024 11:41:54 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rUQ1K-0006sh-Ut; Mon, 29 Jan 2024 12:41:46 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1rUQ8K-0000000CSTK-3Mzn;
+	Mon, 29 Jan 2024 11:49:02 +0000
+Received: from i53875a60.versanet.de ([83.135.90.96] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rUQ1K-0039xJ-1f; Mon, 29 Jan 2024 12:41:46 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rUQ1J-00As6C-35;
-	Mon, 29 Jan 2024 12:41:45 +0100
-Date: Mon, 29 Jan 2024 12:41:45 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Johan Jonker <jbx6244@yandex.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, kernel@pengutronix.de
-Subject: Re: [PATCH] dt-bindings: pwm: rockchip: Allow "interrupts" prooperty
-Message-ID: <dsq5f77dkwfzjegisz6waaqln4b4hbyhoafeygsisdhfzjy2ud@v4pdwvkkupbh>
-References: <20240106142654.1262758-2-u.kleine-koenig@pengutronix.de>
- <7dea73a6-d733-4cd2-b2d5-02f09e2a6dd9@linaro.org>
- <94ad0f59-4095-40ee-963d-4ac379fc8852@yandex.com>
- <cvvifoctmgdsgqfadqbhgywfw2ff57fz33w26hghf5kyo5j5sw@mj75xtvczr2h>
- <210132de-a46b-4f9f-8546-0c36d8a34665@linaro.org>
- <5swqcqpc5zwa3bfhuoyjnymozyzy3lgurnbsurebybj2c7fck3@ycwk2ugo2ouf>
- <b03fc42e-653a-49b2-8835-6cfb7a7bb39e@yandex.com>
+	(envelope-from <heiko@sntech.de>)
+	id 1rUQ8F-0000ZH-Vf; Mon, 29 Jan 2024 12:48:56 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	heiko@sntech.de,
+	quentin.schulz@theobroma-systems.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH] arm64: dts: rockchip: drop unneeded status from rk3588-jaguar gpio-leds
+Date: Mon, 29 Jan 2024 12:48:51 +0100
+Message-Id: <20240129114851.2019861-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-In-Reply-To: <b03fc42e-653a-49b2-8835-6cfb7a7bb39e@yandex.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240129_034153_102525_EE699748 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20240129_034900_866365_B8544BD8 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,79 +56,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1106085602061370043=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
---===============1106085602061370043==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="p7u3kwx5lvuf6mxa"
-Content-Disposition: inline
+The default status is okay, so it is definitly not necessary to set
+it on a newly added node.
 
+Fixes: d1b8b36a2cc5 ("arm64: dts: rockchip: add Theobroma Jaguar SBC")
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
---p7u3kwx5lvuf6mxa
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index 4ce70fb75a30..39d65002add1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+@@ -62,7 +62,6 @@ leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&led1_pin>;
+-		status = "okay";
+ 
+ 		/* LED1 on PCB */
+ 		led-1 {
+-- 
+2.39.2
 
-Hello Johan,
-
-On Wed, Jan 24, 2024 at 10:40:15AM +0100, Johan Jonker wrote:
-> The interrupt registers are located outside the PWM range and have nothin=
-g to do with the PWM driver.
-> Adding them to a PWM binding is just bogus.
-> They are a left over from the manufacturer tree that use them in a IR det=
-ection driver.
-> Heiko keeps them because someone outside mainline kernel might use them?
-> They should be removed and remodeled in a new sort of MFD node that handl=
-es all operating 3 modes.
-
-After some more feedback on irc, I sent a patch removing the interrupts
-property. However I failed to Cc: you on it. This first patch catched
-your attention even without you being explicitly Cc:d, so I hoped the
-new patch also hit your inbox. Find it at
-
-	https://lore.kernel.org/linux-pwm/20240129113205.2453029-2-u.kleine-koenig=
-@pengutronix.de
-
-and tell me if you want a bounce.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---p7u3kwx5lvuf6mxa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmW3jvgACgkQj4D7WH0S
-/k7cyQf+KF/024MjeRRDq7JoTp/gABQjsEkdql+YPSGnbFims+m61aWadom2WbqE
-7IcSORlT/w7ttWXcxIFT6YidFwhUVrmNSoDkMNigX6epHthh8gtb5gxf/v9s8aUr
-Zgw8xt9+n8xo5Bcod5719qMm3wE28ke7pbP2Lb30iy/K9hUia7uprlCdWH/RpNos
-/sA2QUvMonssEiE7blvZ1ipy7TOmG+duWbrOy++BqGQHhG6uSeI5yBlrS7a6L6sl
-QC39LKKfAVxLoA+517BjxlOGjI9DAXZn8HXi4K/ZQZ8seMOI4yITzYJ0SJKssraa
-e9L5x42WcyuSgxoU+W7JfE41L329bA==
-=8zBU
------END PGP SIGNATURE-----
-
---p7u3kwx5lvuf6mxa--
-
-
---===============1106085602061370043==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1106085602061370043==--
-
