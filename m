@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AB7C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 18:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E6FC48285
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 18:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4FBAOT0JrT5z8NR3pRg8RoAWs0vkc2rxCSC0xh/+lxI=; b=xYYYUZCLD7Ki6i
-	HbZiZPYRtNGpv6tv+oJoSQkBXT3X2R88Yxy9y5Qb45BEF0KbNXOf3KycnC7G3mEU9BbEWQoxqLuOT
-	tcIuDLwLUuUGJIT9gvf+UckzeVoSi0APP4aistgyAFHVSF3Ubs/BCGsjHwmHHGViEWq3izn0fcP9P
-	PtbgbNmkdhYIFjJtEXDFxUfHixBY3skpchzti2Y3uU1yqxDbh6r3PcvTOD+ycYoXX0QRbytYYZCpZ
-	YkYNrZRPrArGT+VL3MnmKMF3uRe1qiUb0rRLI8IAyLkAIwfPxKxx67nFbkPgoUXEnB32wIN/ITrop
-	ceggWa9FWjEeNtlHY/Ng==;
+	List-Owner; bh=v50j8mYS5zPC773arl6408ruozXFy98TyRXJZYkrKyo=; b=UkMEbwKlPTI2am
+	9emg5FThko29XeXVguGs9hUeRABmIOkkXv/pNYDOL1MkoRxt8vha4YBPTa8gmyd60hN5+pHinXIUa
+	sZVRhARrRiL6P/dy8SNJZzIPCBpDJK4R3Y0Rclgef/o0Ox1ErTga+b+9Zf1K8riYChLyaSsM8ikMy
+	6xs3k+UNz+WhXtKJ1IaouhW9T88VHpqcbC59SFrYf62f56uCUSYbn0qMmej4jXAx1d2v8iim4z/8U
+	mjSsAuc0b0nXb/a/nmt6rTG9UeKwIY9CnQYT8WlSPuCRghXkBekNV/AEEPhMcNhQ9cb3gSnxG8OLj
+	X7tRUF8MmyHChxYeSjAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUskA-000000007Ip-02HQ;
-	Tue, 30 Jan 2024 18:21:58 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1rUskB-000000007Km-2mW6;
+	Tue, 30 Jan 2024 18:21:59 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUsjs-0000000076A-42vo;
-	Tue, 30 Jan 2024 18:21:42 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-40eccf4a91dso45720045e9.2;
-        Tue, 30 Jan 2024 10:21:39 -0800 (PST)
+	id 1rUsjw-00000000780-0Nwq;
+	Tue, 30 Jan 2024 18:21:45 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-33ae6f4fd78so2034008f8f.1;
+        Tue, 30 Jan 2024 10:21:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706638898; x=1707243698; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706638901; x=1707243701; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=q2U4TAbafybXjGIReik+c+16abvnMXxD9lt1dnQ2x+0=;
-        b=S5Xcgm+cWlJHleJGH56eg9CI7rGhsmDCuFHJGqGUz07JunllJrrwgtreM/nlHDSAmk
-         Yb5txxt7m3R/z+xvyr/Pbdq1tAH6kZ0IznrdqloardRrrwxfpGaI5oD9bLIbRuId48Wq
-         L/beGlqzytu/dQGZP0U/yAfz/hnW0L0gfukRg9kokLGehCouOhXBD0cCptcaoLItRivA
-         Ty2TrvtlkNlAQp4pAfinzjvBsUmQS70F0cj+A2iDkqwKgemR6tPHTnyr7awbFRJl49rD
-         bjSu2ouxyklUeuNZn+6fXhnPxlVahPoXMOV7nP0BOkiWlQu0s1f6KsUPztc6u/cNfF33
-         00pg==
+        bh=/gI9Ml9wRgXKLGlzoLORIisEejDK3Kkmbvg0DC8EST0=;
+        b=muHLvQ1WdyDL3YJFv+3Vg3teHRqUrP4inRfdrYU6/HwTiUGpSUBOtdPvCp+ESZ7Y42
+         wqHeofNZGSLItFktHyi5vmyG4+YZClSqTIh5iJKz61S/wCx+HvbGPgPJ/bd88IC1gcOT
+         vkp51eHWLCO7m+ISzQ2GdfeQ9jTqncTw6cCOk23jivsF2SrVOqoz3fVlrmwFzbh3U3hP
+         j8gJW0QHfZus5H0eJiLfSX7DZJRF1Oyjf/noz3bUGX7MEyGDnvLiSfdh2/KiDthLVvUi
+         dLAK9RwIyaSk01LZn/6ukUWYh/mCG3WtGUieMrQ4MKaJmgfb6TWC0uiPx2dtOAEbBfFC
+         PI8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706638898; x=1707243698;
+        d=1e100.net; s=20230601; t=1706638901; x=1707243701;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=q2U4TAbafybXjGIReik+c+16abvnMXxD9lt1dnQ2x+0=;
-        b=uTC6P/uEnmWsNnB4nZpUForhubYk9pV/xHPqs+LmwJ0cjMntkvsV+a3U+wuoGZm+fb
-         vlK1x31pEe9dO2KNOc6T5Srxnntb3EWqL0ZYs7JcgRLUK76EYyXQkJoCoSFOPVok7N6A
-         6OWLwYI5M1pvckN4W5DVKy8+/4LRTdEGDRJZ/V4q6jiui2hCwbvk8xn4gz3Wu2F3Tlal
-         5Cz/2LzCudiH+ijLTVtiQo8KOTHZ0gBncgD2keMrq8OevG2eYYiSCx4hkqPg8+XK84j5
-         wxHLJ76dvswt8lvFjgl20UbI6fboINnyt7Tqjdlc8ckxKAhO9KHTlitO3aii5NZvyGh2
-         dGoA==
-X-Gm-Message-State: AOJu0YwONPgr0/l/r5+SZqyuxosqoAiPTUuP6LVkLaYUvqW9awt6c9Jl
-	KqFghEWG05Wuq7NKpYK1XXC7ykgeb+N8X7HfvWkU9ziGYLJy8sPc
-X-Google-Smtp-Source: AGHT+IHBQCMkepKWAeKxDUBpAUlEm/TcMlAb0frcezMSAbReG028bhaOw7guEcR7uXYxNnjS1D6e1g==
-X-Received: by 2002:a5d:648e:0:b0:33a:f0cf:3d5d with SMTP id o14-20020a5d648e000000b0033af0cf3d5dmr4379648wri.23.1706638897973;
-        Tue, 30 Jan 2024 10:21:37 -0800 (PST)
+        bh=/gI9Ml9wRgXKLGlzoLORIisEejDK3Kkmbvg0DC8EST0=;
+        b=wEC8Z4RLN5p5LHiJJxJlFknRwAP5QMgsREqcHWzvKujWOUqVksx4UbPncophI/aDxc
+         c0x6rON9vtgqZPmrFvwQ6DK52/DiPd10U/ptB4U4xTpOD/fpe33O8evdzbl2wSJ1g76i
+         k/fDgbL+PwiU0pj/vCATM7fnH0cLFJrAf6GEHNq/vwKpCXZXlAk6fgO//kmUc2NJIdAp
+         WhOO6AnTq8tsEWigBYk2oU6xzvEVE/zDf5+iXm0XOv4k14kJM1NHECEf24/BoBvMQdaJ
+         dE4D9jYGPpPUQf7ICcnAwj+KqLNTOoapiZVe6aaeXfxwLEA83xz9r0uwxrVdt/0AeT/y
+         LfQw==
+X-Gm-Message-State: AOJu0YxnnIaSjrsSBJu5C+cTOCEnXAQ6kd4BIieCgroiN9+k4lbnSjRF
+	gWFpZ2w1/y0fffjxhFTrhkgdcnMDdzI+XbXpzqyeHQsen0vdQN05dNg4QjHJDuJ/Xw==
+X-Google-Smtp-Source: AGHT+IHg3hKiKQ2Rqr2darLpiuJG03zVu17ObsODDESWVoas/zrX7VMxxmtrtisvBwd5wFBqnoUeVg==
+X-Received: by 2002:adf:eb4f:0:b0:33a:ee08:7541 with SMTP id u15-20020adfeb4f000000b0033aee087541mr4331501wrn.35.1706638901496;
+        Tue, 30 Jan 2024 10:21:41 -0800 (PST)
 Received: from [172.30.32.188] ([2001:8f8:183b:50fb::d35])
-        by smtp.gmail.com with ESMTPSA id u18-20020a5d4352000000b003392b1ebf5csm11374254wrr.59.2024.01.30.10.21.35
+        by smtp.gmail.com with ESMTPSA id u18-20020a5d4352000000b003392b1ebf5csm11374254wrr.59.2024.01.30.10.21.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jan 2024 10:21:37 -0800 (PST)
+        Tue, 30 Jan 2024 10:21:41 -0800 (PST)
 From: Alexey Charkov <alchark@gmail.com>
-Date: Tue, 30 Jan 2024 22:21:14 +0400
-Subject: [PATCH v2 2/4] arm64: dts: rockchip: enable temperature driven fan
- control on Rock 5B
+Date: Tue, 30 Jan 2024 22:21:15 +0400
+Subject: [PATCH v2 3/4] arm64: dts: rockchip: Add OPP data for CPU cores on
+ RK3588
 MIME-Version: 1.0
-Message-Id: <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
+Message-Id: <20240130-rk-dts-additions-v2-3-c6222c4c78df@gmail.com>
 References: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
 In-Reply-To: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, 
@@ -78,16 +78,16 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1706638888; l=1891;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1706638888; l=6248;
  i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=HGDpyfKI2RDyGPXzCZEZxUOoyZ5xEWyQzEQkIW49rB8=;
- b=SYlXApX3kBczLS+c6uzRjnh8soVjqGOy2sCKbiM9vFvUCq7QzrBgjPc4X6RD1zHn7x6nI6c5T
- NphLweK5PuFB48PdHMzbxOCZQm/mH4l0jyf+QEWD/Ieb4W7jpHn3xIr
+ bh=qKHxRZMdX7Ar4Tj1hshUChwl60L+N5VIFghv04DWmdU=;
+ b=WXAIPQODiocjnhp//mdzH3nuuSrciVnNBAux59L7tdp7xACtmHuZJ1Wg4lponVsLVlAF8Lp3F
+ chMkRm3fnEiADfxjk6X2rWqR6lIWCScYgpjDOEPCY+eQk5VEC22S1s/
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_102141_148938_446EE871 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20240130_102144_194332_DDFEDEE7 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,76 +104,204 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This enables thermal monitoring on Radxa Rock 5B and links the PWM
-fan as an active cooling device managed automatically by the thermal
-subsystem, with a target SoC temperature of 65C and a minimum-spin
-interval from 55C to 65C to ensure airflow when the system gets warm
+By default the CPUs on RK3588 start up in a conservative performance
+mode. Add frequency and voltage mappings to the device tree to enable
+dynamic scaling via cpufreq
 
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 34 ++++++++++++++++++++++++-
- 1 file changed, 33 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 122 ++++++++++++++++++++++++++++++
+ 1 file changed, 122 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index a0e303c3a1dc..b485edeef876 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -52,7 +52,7 @@ led_rgb_b {
- 
- 	fan: pwm-fan {
- 		compatible = "pwm-fan";
--		cooling-levels = <0 95 145 195 255>;
-+		cooling-levels = <0 120 150 180 210 240 255>;
- 		fan-supply = <&vcc5v0_sys>;
- 		pwms = <&pwm1 0 50000 0>;
- 		#cooling-cells = <2>;
-@@ -173,6 +173,34 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
- };
- 
-+&package_thermal {
-+	polling-delay = <1000>;
-+
-+	trips {
-+		package_fan0: package-fan0 {
-+			temperature = <55000>;
-+			hysteresis = <2000>;
-+			type = "active";
-+		};
-+		package_fan1: package-fan1 {
-+			temperature = <65000>;
-+			hysteresis = <2000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map0 {
-+			trip = <&package_fan0>;
-+			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-+		};
-+		map1 {
-+			trip = <&package_fan1>;
-+			cooling-device = <&fan 1 THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
-@@ -731,6 +759,10 @@ regulator-state-mem {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 696cb72d75d0..af8b932a04c1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -97,6 +97,7 @@ cpu_l0: cpu@0 {
+ 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
+ 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUL>;
+ 			assigned-clock-rates = <816000000>;
++			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <32768>;
+ 			i-cache-line-size = <64>;
+@@ -116,6 +117,7 @@ cpu_l1: cpu@100 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <530>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
++			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <32768>;
+ 			i-cache-line-size = <64>;
+@@ -135,6 +137,7 @@ cpu_l2: cpu@200 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <530>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
++			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <32768>;
+ 			i-cache-line-size = <64>;
+@@ -154,6 +157,7 @@ cpu_l3: cpu@300 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <530>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUL>;
++			operating-points-v2 = <&cluster0_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <32768>;
+ 			i-cache-line-size = <64>;
+@@ -175,6 +179,7 @@ cpu_b0: cpu@400 {
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB01>;
+ 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB01>;
+ 			assigned-clock-rates = <816000000>;
++			operating-points-v2 = <&cluster1_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -194,6 +199,7 @@ cpu_b1: cpu@500 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB01>;
++			operating-points-v2 = <&cluster1_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -215,6 +221,7 @@ cpu_b2: cpu@600 {
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB23>;
+ 			assigned-clocks = <&scmi_clk SCMI_CLK_CPUB23>;
+ 			assigned-clock-rates = <816000000>;
++			operating-points-v2 = <&cluster2_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -234,6 +241,7 @@ cpu_b3: cpu@700 {
+ 			enable-method = "psci";
+ 			capacity-dmips-mhz = <1024>;
+ 			clocks = <&scmi_clk SCMI_CLK_CPUB23>;
++			operating-points-v2 = <&cluster2_opp_table>;
+ 			cpu-idle-states = <&CPU_SLEEP>;
+ 			i-cache-size = <65536>;
+ 			i-cache-line-size = <64>;
+@@ -348,6 +356,120 @@ l3_cache: l3-cache {
+ 		};
  	};
- };
  
-+&tsadc {
-+	status = "okay";
-+};
++	cluster0_opp_table: opp-table-cluster0 {
++		compatible = "operating-points-v2";
++		opp-shared;
 +
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
- 	status = "okay";
++		opp-1008000000 {
++			opp-hz = /bits/ 64 <1008000000>;
++			opp-microvolt = <675000 675000 950000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <712500 712500 950000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1416000000 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <762500 762500 950000>;
++			clock-latency-ns = <40000>;
++			opp-suspend;
++		};
++		opp-1608000000 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <850000 850000 950000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1800000000 {
++			opp-hz = /bits/ 64 <1800000000>;
++			opp-microvolt = <950000 950000 950000>;
++			clock-latency-ns = <40000>;
++		};
++	};
++
++	cluster1_opp_table: opp-table-cluster1 {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <675000 675000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1416000000 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <725000 725000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1608000000 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <762500 762500 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1800000000 {
++			opp-hz = /bits/ 64 <1800000000>;
++			opp-microvolt = <850000 850000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2016000000 {
++			opp-hz = /bits/ 64 <2016000000>;
++			opp-microvolt = <925000 925000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2208000000 {
++			opp-hz = /bits/ 64 <2208000000>;
++			opp-microvolt = <987500 987500 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2400000000 {
++			opp-hz = /bits/ 64 <2400000000>;
++			opp-microvolt = <1000000 1000000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++	};
++
++	cluster2_opp_table: opp-table-cluster2 {
++		compatible = "operating-points-v2";
++		opp-shared;
++
++		opp-1200000000 {
++			opp-hz = /bits/ 64 <1200000000>;
++			opp-microvolt = <675000 675000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1416000000 {
++			opp-hz = /bits/ 64 <1416000000>;
++			opp-microvolt = <725000 725000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1608000000 {
++			opp-hz = /bits/ 64 <1608000000>;
++			opp-microvolt = <762500 762500 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-1800000000 {
++			opp-hz = /bits/ 64 <1800000000>;
++			opp-microvolt = <850000 850000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2016000000 {
++			opp-hz = /bits/ 64 <2016000000>;
++			opp-microvolt = <925000 925000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2208000000 {
++			opp-hz = /bits/ 64 <2208000000>;
++			opp-microvolt = <987500 987500 1000000>;
++			clock-latency-ns = <40000>;
++		};
++		opp-2400000000 {
++			opp-hz = /bits/ 64 <2400000000>;
++			opp-microvolt = <1000000 1000000 1000000>;
++			clock-latency-ns = <40000>;
++		};
++	};
++
+ 	firmware {
+ 		optee: optee {
+ 			compatible = "linaro,optee-tz";
 
 -- 
 2.43.0
