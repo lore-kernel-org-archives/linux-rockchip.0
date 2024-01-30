@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C4E1C47DA9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 19:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5E8C47DDF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 22:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OHEvBXyGQzXATWjuv6N9u070j41sjn0jCFTwZe6jCP4=; b=gS1xtdCOOUJa75
-	PK/alOzUxFFRp3VTSMZa9UeJj3puvitU6K5mXqncjNVaU7QoIIB7JbSTV5iHKPQAHOexSDCVqVgpD
-	/tpwKJP7GNNc5fqLgYvonhj/oft4wAlyGhY7d1kdPIXN3gs/NMCF4xMhBh5TmCIIFlZ1wjNXFWpxk
-	mgbGJn1y0bx4gy9mDGm1xLHTo/2PpMKknzAkH2VYiA5PyBELyEcHbKkFQ/kb7s+8lY5+I0uLC4hB2
-	+NzrYHukx30Tm8JkRf7sMZTyH5pntufMm/w2hV3YEClzqMV1S5QBOlo/hdNuIZfnvhxcwjE5DWXbo
-	4i+hnxrjbTvuHuT+Hmzg==;
+	List-Owner; bh=z6xTij/gt5WIB+coGdXZgMBuvJqU3/lfB3HyZVsFOog=; b=tPKj/D8L0046Xg
+	uyo5KmGhMkIMYm83uiGNH+6eTyRf5CLuXWxT80MbedPQipcOF20SDVatkQQ6frljxq+MymMroBwjR
+	bRTv0mTV1LYHTnvdScm13sI82HUGF4p3mF2AbUpL0IOHaCk49RFnJbRKxnY0+CnB4MguuYxTFqwHO
+	Zvdkjb4NwL01rUJmvDS+opOloChHI+oru1MeODbQYmpIbNED26/jFrX9sI1YWHKKn/+h/2B+IB9Xr
+	vr4ZjWEynhD34DB38uPu05h7HIuBkeVg9iAM7aDf3YYdbuT/basOV/0ly0gnQ4ik5hD8WWG04fWtj
+	GFz7ThenCEsYIjOyel2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUtuM-00000000M3l-16Ai;
-	Tue, 30 Jan 2024 19:36:34 +0000
-Received: from [2a01:4f8:1c1c:934f::1] (helo=mecka.net)
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUtuH-00000000LzA-3jKz;
-	Tue, 30 Jan 2024 19:36:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mecka.net; s=2016.11;
-	t=1706643384; bh=BEEx4gwRs1iKnUvPL+DNQPwugqIAQBhuDJjeH0AXavw=;
+	id 1rUx2M-00000000p9r-1RcN;
+	Tue, 30 Jan 2024 22:57:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rUx2I-00000000p9O-2xqE;
+	Tue, 30 Jan 2024 22:56:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D2B5F60F8A;
+	Tue, 30 Jan 2024 22:56:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DF22C433F1;
+	Tue, 30 Jan 2024 22:56:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706655416;
+	bh=VdU6if5rHUMAoE64rsagsgfaJZ9LSIB1pT2VMNKYYv0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XkCZL0T1Ic9+FBUE62JW+/ktECjWhYSnNULt00KRgvzUoIrXAcpADfmW2G9+W4Srk
-	 4D3l9Xu95fkdHbhQNl/DxRUEvwEMwedKXEY4vQkGlPXcdHsaJYxjLi6wH0BRmNqWuL
-	 7/nJmkipBcqeQyB6Zv2F+xyk3h1i9LrS3ndskK580O5zoqJx8D+OMzvtJqVkbBDiRr
-	 M/4Km9TP6Rqy4rjBQqTonDiFps3H1vfIE1qzpLTBjQrQ540UtL0qNpSkwwUjJmdSYf
-	 gU1qrmdmuT7YeK8Cr8mjU1b/KSnNOV4hRlSAzG3eZ1kGPymFmLwcYLjPPljMTkKoJu
-	 +bi7WjpjCrcrw==
-Received: from mecka.net (unknown [185.147.11.134])
-	by mecka.net (Postfix) with ESMTPSA id 8F8BC3C95A9;
-	Tue, 30 Jan 2024 20:36:23 +0100 (CET)
-Date: Tue, 30 Jan 2024 20:36:22 +0100
-From: Manuel Traut <manut@mecka.net>
-To: Dang Huynh <danct12@riseup.net>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Jessica Zhang <quic_jesszhan@quicinc.com>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Mark Yao <markyao0591@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Segfault <awarnecke002@hotmail.com>,
-	Arnaud Ferraris <aferraris@debian.org>, Ondrej Jirman <megi@xff.cz>,
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	b=N8aIbmYbXSXUzz5OyjXF3V2Y2TT9ChHKCPaL9WHvH4FEVUrx1FjfoWpyxup97VDjc
+	 WaL2DH0GbT8Iiq3NcJSXI6GQ80Ki26ot7TM3fZqiJjpPyO05xT0MEHuwbGjQcVQ5BS
+	 V8Wr4Zv9j2lssXNz4uF5INuWm9Z+g4junrxh9erfKwa/enwapQz+lgrrDA6f7wzj0Z
+	 GlFUVmW4iF5UhST7Psd0Y1ct0PlPXqnSjNVzrxMcUROEWwkonZ41uDzs3TE6ZYa437
+	 JDcIYoAkMLGHtdRodVmeMsMlBsvSDDN2iNIybKUMpPqtonI5yGl8mqp/RK39FPs7ry
+	 t2V7H1fYOMOpQ==
+Date: Tue, 30 Jan 2024 16:56:54 -0600
+From: Rob Herring <robh@kernel.org>
+To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	linux-serial@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v4 0/4] arm64: rockchip: Pine64 PineTab2 support
-Message-ID: <ZblPtrW7suT3RRXc@mecka.net>
-References: <20240127-pinetab2-v4-0-37aab1c39194@mecka.net>
- <6035442.lOV4Wx5bFT@melttower>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	quentin.schulz@theobroma-systems.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Subject: Re: [PATCH v5 1/6] dt-bindings: serial: Add binding for rs485
+ receiver enable GPIO
+Message-ID: <170665541359.2569633.3534356334365614400.robh@kernel.org>
+References: <20240126-dev-rx-enable-v5-0-5d934eda05ca@theobroma-systems.com>
+ <20240126-dev-rx-enable-v5-1-5d934eda05ca@theobroma-systems.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6035442.lOV4Wx5bFT@melttower>
+In-Reply-To: <20240126-dev-rx-enable-v5-1-5d934eda05ca@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_113630_572707_64F0B487 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20240130_145658_803673_1D97430F 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,26 +81,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dang,
 
-On Sat, Jan 27, 2024 at 06:35:50PM +0700, Dang Huynh wrote:
-> Hi Manuel,
+On Fri, 26 Jan 2024 18:27:42 +0100, Farouk Bouabid wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
 > 
-> Since the BOE patches have been accepted to next, you do not need to include 
-> it in this patch series.
-
-sorry, I thought patches to LKML shall be against Linux master since the
-patches are still only in drm-next I considered to keep them in the queue.
-
-Regards
-Manuel
-
-> On Saturday, January 27, 2024 4:48:41 PM +07 Manuel Traut wrote:
-> > - BOE TH101MB31IG002 LCD Panel:
-> >   * Picked patches from https://anongit.freedesktop.org/git/drm/drm-misc.git
-> > (drm-misc-next)
+> RS485 has two signals to control transmissions "driver enable" (DE) and
+> "receiver enable" (RE). DE is already handled via the uarts RTS signal
+> while the RE signal on most implementations doesn't get handled
+> separately at all.
 > 
+> As there still will be cases where this is needed though add a gpio
+> property for declaring this signal pin.
 > 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+> ---
+>  Documentation/devicetree/bindings/serial/rs485.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
