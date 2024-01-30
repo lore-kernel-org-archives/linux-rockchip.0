@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5838C46CD2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 14:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0019C47DDB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jan 2024 15:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GAVL1kYVUSmD3C7wwrp1/OPxSfYOXf2feVY8vomODqs=; b=Q2/yuR1aLN3ns/+0nKRD0zzblZ
-	pBt8L0X65uu7F5OJHKtdPow330drink8nfRrpDXIYYHI7h6NJ6CmC6NDwYZjRFW7yXTQXvJZ8AQIa
-	Bb1fNvaF+kQGGVP+YhPKrNO248WxDT59PoSy9zN0tEHY6fFCAlpDi/RE+HfQVWujxpsZgcJ4sbtLd
-	5aDFAcYV0PcV0JUcWed5KKQLeUQHGxPop4NC3SN4bBB7jrUhaq/jBON/bzjDPrmqbecGfhrFvZQwh
-	ff0hR1f7OcYnT/5xvS667GnsvVEx/W931SZWAFf6E8Jlqkr0CwnUMcdlOI6s3rw7gdPi6MWjCw4Bk
-	U2EW13Lg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sYLh97CWoGjcOtWKLW5Oi5eVLWAtB4+eVPiKk9BjqrY=; b=RtCbV68G3e6NQR
+	L0/r46fxPDwoGJCciE86V5U3pXv/NTM/eKM59/UnVj6GjsYGDxZFMCTxhZSsZT4s8uSzGAr8MipTN
+	YgzAzcCiXW8gfUdkDZXrh7nGh6PJZdboE3pr9nVa0YfqiDYzcO1HGhBV4NJhZ4L6bUCSP6hqtkOJ9
+	YsYiTFlAsrZegs7+3TdryvU+TIiZqh5fYzQuK88Q8SeD4mGQZx899BzhBE9VC0pBaDIcd8w7XXs6Y
+	HLWDAXPpNRnqpn3GDNOwLr++1r0Jy5lA+93aK+yMW17EOHF1t+OhP/vxCYVG9zdhRws4G70COPLIZ
+	9qjro7Hu+cv+la3fr5RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUpOm-0000000H1VH-0e3L;
-	Tue, 30 Jan 2024 14:47:40 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rUpfb-0000000H5IZ-1whW;
+	Tue, 30 Jan 2024 15:05:03 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rUpOj-0000000H1UY-1Nna
-	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Jan 2024 14:47:38 +0000
+	id 1rUpfX-0000000H5H0-1tBr;
+	Tue, 30 Jan 2024 15:05:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706626053;
-	bh=FI1o2shOT/ij4/zuD/4jiajye0Rvj5KQ1PCOiOvQ1qg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZAq2ro36Muznt5+EuPTqB4/iT8QRQF9EO4FTRfFxsocopEluPGjTN2VZN0QcmUHQ3
-	 T4iWq8vHQLUpAtCIB1HELSRImOnrehoM9ZxIUV58h+EPdc4idlh4VIV/NZzBZWO0Hk
-	 B29F7TBTfaBiU5/7C+lsoungykWMJyIr4PQtwaw3Iq30TtUeghjOmrPyvDOKxNpIlA
-	 LUHoKTYlCvA+jeqPGqjEqlgh0cNQpTUDbF496POSqM2T8Y/4+GRSSE2VL/H9TOTB9m
-	 0r2sxPzVvD65SoWyIYTZItLpIy3vwhr9Ai35ZpeSO1AafypuOA6cumYcO5RDxY7nLP
-	 cwUEuCdEwkY3A==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	s=mail; t=1706627095;
+	bh=KxxppCtScPleTsQ2kw4mZIMAQ37g6r0K3U2qtG4xi28=;
+	h=From:To:Cc:Subject:Date:From;
+	b=UvMgL+trW/+tLi0dvGrqIsy2SfA/AI+pdWvP119oX0+1yc2WTLnlD4UM2xXuEt6CE
+	 3EdnWoFWNa+gmwBmmkAyzMkdPKV0SZuPVpfWinvPHXUmiCgb92v0+VOcOR7dF0G2lf
+	 1ca6XWe/GOiAEIhJ3T7YC//IzELVjjO0S8Tg1z0vcuFt2ZHHM4Cwopxc6JuHg/aNM3
+	 YaSd2DiXHmhIlNCUjnLVYFXvEA/IF6wp6hAut7hh325B4r/FwJ/iAjQ9AYuGquH/9q
+	 Zek91+t8CtkZFrEissD0I1hgMzkioc7ywVIqd3Pq01SDsaT2lZ6vjMF4G/PYne4OB/
+	 92lRVJ1Sh7fOA==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 2D94937811CF;
-	Tue, 30 Jan 2024 14:47:33 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id C283E1063C86; Tue, 30 Jan 2024 15:47:32 +0100 (CET)
-Date: Tue, 30 Jan 2024 15:47:32 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, huangtao@rock-chips.com, 
-	andy.yan@rock-chips.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
-Message-ID: <i5qagtdg73rhojifmublx2w2kxvjeisd6qwqbo5vnhrgyedx3i@pyckzpstlnvb>
-References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
- <20240126182919.48402-8-sebastian.reichel@collabora.com>
- <8b4214a5-6ba7-402d-b2f6-f2424783d455@collabora.com>
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8F5CD37811CF;
+	Tue, 30 Jan 2024 15:04:50 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniel@fooishbar.org,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	robdclark@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/9] drm/ci: Add support for GPU and display testing
+Date: Tue, 30 Jan 2024 20:33:31 +0530
+Message-Id: <20240130150340.687871-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-In-Reply-To: <8b4214a5-6ba7-402d-b2f6-f2424783d455@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_064737_532942_A0DEE206 
-X-CRM114-Status: GOOD (  24.07  )
+X-CRM114-CacheID: sfid-20240130_070459_648773_3E3DBE18 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,103 +77,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3216183591273381786=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Some ARM SOCs have a separate display controller and GPU, each with
+different drivers. For mediatek mt8173, the GPU driver is powervr,
+and the display driver is mediatek. In the case of mediatek mt8183,
+the GPU driver is panfrost, and the display driver is mediatek.
+With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
+display driver is rockchip. For amlogic meson, the GPU driver is
+panfrost, and the display driver is meson.
 
---===============3216183591273381786==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vkzhu7wafk4plwhd"
-Content-Disposition: inline
+IGT tests run various tests with different xfails and can test both
+GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
+Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
+This leads to incomplete coverage since the display is never tested on
+these platforms. This commit series adds support in drm-ci to run tests
+for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
+Meson platforms.
 
+Uprev mesa and IGT in drm-ci and add amd, v3d, vc4 and vgem specific
+tests to testlist. Have testlist.txt per driver and include a base
+testlist so that the driver specific tests will run only on those hardware.
 
---vkzhu7wafk4plwhd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Vignesh Raman (9):
+  drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
+  drm/ci: mediatek: Rename exisitng job
+  drm/ci: mediatek: Add job to test panfrost and powervr GPU driver
+  drm/ci: meson: Rename exisitng job
+  drm/ci: meson: Add job to test panfrost GPU driver
+  drm/ci: rockchip: Rename existing job
+  drm/ci: rockchip: Add job to test panfrost GPU driver
+  drm/ci: uprev mesa version
+  drm/ci: uprev IGT and update testlist
 
-Hi Dmitry,
+ MAINTAINERS                                   |   1 +
+ drivers/gpu/drm/ci/arm64.config               |   1 +
+ drivers/gpu/drm/ci/container.yml              |   6 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |   8 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |  34 ++--
+ drivers/gpu/drm/ci/image-tags.yml             |   3 +-
+ drivers/gpu/drm/ci/test.yml                   | 137 ++++++++++++----
+ drivers/gpu/drm/ci/testlist-amdgpu.txt        | 151 ++++++++++++++++++
+ drivers/gpu/drm/ci/testlist-msm.txt           |  50 ++++++
+ drivers/gpu/drm/ci/testlist-panfrost.txt      |  17 ++
+ drivers/gpu/drm/ci/testlist-v3d.txt           |  73 +++++++++
+ drivers/gpu/drm/ci/testlist-vc4.txt           |  49 ++++++
+ drivers/gpu/drm/ci/testlist.txt               |  84 ++++------
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  24 ++-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   9 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |  10 +-
+ ....txt => mediatek-mt8173-display-fails.txt} |  13 --
+ .../xfails/mediatek-mt8173-display-flakes.txt |  13 ++
+ .../xfails/mediatek-mt8183-display-fails.txt  |  16 ++
+ .../xfails/mediatek-mt8183-display-flakes.txt |   8 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  13 --
+ .../ci/xfails/mediatek-mt8183-gpu-skips.txt   |   2 +
+ ...fails.txt => meson-g12b-display-fails.txt} |   3 -
+ .../drm/ci/xfails/meson-g12b-gpu-fails.txt    |   1 +
+ .../drm/ci/xfails/meson-g12b-gpu-skips.txt    |   2 +
+ .../xfails/rockchip-rk3288-display-fails.txt  |  21 +++
+ .../xfails/rockchip-rk3288-display-flakes.txt |  17 ++
+ .../xfails/rockchip-rk3288-display-skips.txt  |   8 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  54 -------
+ .../ci/xfails/rockchip-rk3288-gpu-fails.txt   |   1 +
+ .../ci/xfails/rockchip-rk3288-gpu-skips.txt   |   2 +
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |  52 ------
+ ....txt => rockchip-rk3399-display-fails.txt} |  38 +++--
+ .../xfails/rockchip-rk3399-display-flakes.txt |  23 +++
+ .../xfails/rockchip-rk3399-display-skips.txt  |   6 +
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   7 -
+ .../ci/xfails/rockchip-rk3399-gpu-fails.txt   |   1 +
+ .../ci/xfails/rockchip-rk3399-gpu-skips.txt   |   2 +
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   5 -
+ 39 files changed, 686 insertions(+), 279 deletions(-)
+ create mode 100644 drivers/gpu/drm/ci/testlist-amdgpu.txt
+ create mode 100644 drivers/gpu/drm/ci/testlist-msm.txt
+ create mode 100644 drivers/gpu/drm/ci/testlist-panfrost.txt
+ create mode 100644 drivers/gpu/drm/ci/testlist-v3d.txt
+ create mode 100644 drivers/gpu/drm/ci/testlist-vc4.txt
+ rename drivers/gpu/drm/ci/xfails/{mediatek-mt8173-fails.txt => mediatek-mt8173-display-fails.txt} (59%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-display-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-gpu-skips.txt
+ rename drivers/gpu/drm/ci/xfails/{meson-g12b-fails.txt => meson-g12b-display-fails.txt} (84%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-gpu-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-gpu-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-display-skips.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-gpu-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-gpu-skips.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
+ rename drivers/gpu/drm/ci/xfails/{rockchip-rk3399-fails.txt => rockchip-rk3399-display-fails.txt} (71%)
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-display-skips.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-gpu-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-gpu-skips.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
 
-On Fri, Jan 26, 2024 at 10:36:13PM +0300, Dmitry Osipenko wrote:
-> On 1/26/24 21:18, Sebastian Reichel wrote:
-> > Recent Rockchip SoCs have a new hardware block called Native Interface
-> > Unit (NIU), which gates clocks to devices behind them. These effectively
-> > need two parent clocks.
-> >=20
-> > GATE_LINK type clocks handle the second parent via 'linkedclk' by using
-> > runtime PM clocks. To make that possible a new platform device is creat=
-ed
-> > for every clock handled in this way.
-> >=20
-> > Note, that before this patch clk_rk3588_probe() has never been called,
-> > because CLK_OF_DECLARE marks the DT node as processed. This patch repla=
-ces
-> > that with CLK_OF_DECLARE_DRIVER and thus the probe function is used now.
-> > This is necessary to have 'struct device' available.
-> >=20
-> > Also instead of builtin_platform_driver_probe, the driver has been
-> > switched to use core_initcall, since it should be fully probed before
-> > the Rockchip PM domain driver (and that is using postcore_initcall).
->=20
-> Why clk driver needs to be fully probed before PD? The PD driver
-> shouldn't probe until all clk providers that it uses are registered, and
-> then both clk and PD should be registered at the default level.
+-- 
+2.40.1
 
-The error handling in the rockchip PD driver needs rework to
-properly handle -EPROBE_DEFER, which I consider a separate series.
-
-Note, that the driver currently has 'builtin_platform_driver_probe',
-but does not actually probe anything. All clocks are registered via
-CLK_OF_DECLARE, which happens even before core_initcall. So this
-does not make things worse.
-
-Also the OF node is marked as initialized by the early clocks
-(CLK_OF_DECLARE_DRIVER) via the call to of_clk_add_provider(). This
-is necessary, since otherwise the early clocks cannot be referenced
-and we need the early clocks for the timer registration (so it's not
-possible to move all the clocks to late init). This effectively
-results in fw_devlink not working properly. It will tell PM domain
-driver too early, that it may start probing (so a bunch of useless
--EPROBE_DEFER will happen).
-
-Greetings,
-
--- Sebastian
-
---vkzhu7wafk4plwhd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmW5C/0ACgkQ2O7X88g7
-+ppdJw/8CHy0yXXXuEDrx70oy4owoZo5xIMHXN32hTvwFH9eVj8nYPtVQjOhGwJW
-gVj28u1i87QbL246bl2ok/4PbStOC+OgniV1weSi8QWIoWJGsOK3UHy7FErWcXw8
-khKb305Fc+aUwrdbgy0hbcoIH0oYnFQqnzNrG0yCnnCY6+Qshx1jxlHLBoWSOzo+
-Cbm6FVZuwV4tVsoa7ORK06ZmNruyQ5q7uj1igUsPGhTuXO+QQSvZIv0jv14FN4ml
-+mAVU2vn5C+4yU3AV4z2t9c/RxAS7O4OlQ22jNMgHnea2QiIMmzYCVL2mF5oe4pD
-nn5KxT8qPTkBx5tOtCRVqc817ciG+ZCkYe0qxXvepxxtTV9y+tS9yEU6yPBzOeOO
-CgacGJ5Z7Oe7msH30CjGiLX2wzdz3g2v7d+yt/DGHkUGgAniXI4Wz/ADiu0w+Mes
-DwPsIUbVrWRfs0T6tilPCOul720EyNPUt2+gX4U+gU8Hts7NwSOYMNTyHx95aztm
-XMHqOd+cDHdcZ4yL2BOuo7kkK76wz7/8N03WhV5i4psn4V7NADrF3fW3Xs9QMmaH
-zYtPR6iUtnF30RNeNShgi3fOCKHJeg3Ot7nBQA8iNJLRnHYM5OPZ4CjFfqu9sUxx
-bvctNp/h03OavnjOmRYh5DQO7vEIdQGvpJ8MF8hOEM288oxk1pM=
-=NE/i
------END PGP SIGNATURE-----
-
---vkzhu7wafk4plwhd--
-
-
---===============3216183591273381786==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3216183591273381786==--
-
