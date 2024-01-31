@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9565EC48285
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 05:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32AD1C47258
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 05:08:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g0PV6x63L2rlCP1JP64GYqktfSNLq2I+WaxjxzRz2zw=; b=DcydBKrr1ib0k2JVe8BJjBTads
-	hOi5au6OI3KQ2DkmXizZGXcWcmdJ0pD/8IIkLSdi945NF8n+lWME0aemI0L0RGTiioMNLGCdKsx8g
-	NDFIaDLaq9Fjjaj7teT5yNd27JEsv47I6nGRK9+IRU2Z+SNDt2PRR4T1w1mmPsXkyzyidWSAIykP8
-	hSYZ2m1mRiP3OufD01wBeiUGfC8T8TAg6cctaAsmm/bT1SakItQ8hj8eL4An8NX7Yud9NoWkw3gY0
-	gYs+oUH5MbzFc824/BXPLIwtpjHazreLBZcBvtYcBS+OTuIi2bwl1lsAUjZkMuaKMJNhkFs1Fhdpf
-	hzqscIzQ==;
+	bh=awo4rf5hPy17IbxLHJr6V8xtYtC020Eis1+prm8P7nQ=; b=R8K1drNKoNC52kBqBJ4HCz4iVO
+	y7nleHeVs+CwNLaNOr1gaMHosAG5JP8SJ6E5OOfpLbOsftsEjXOoAcVoMptPaKqM/nWKqrN5Sk4ny
+	15NhQ2rNxH/WgQdcoQeWY2qB8vY94wqjFAMJMzlCJdEBqzl9kM7Zn5E5QCNvZExLnQtXyTZzxDWzx
+	aGkzovz7EyXCvO740qYAPTBdhOv2OC7hISgzFqCE1zBBNs+QhPRjYZ8iDz5oWjgEleZhwLPvdaHgS
+	mJucdvD12K4kwjuSrX7Q+XkQkqX61/EajYxICdybvOpnXyOx+ss+c1G66E/Wb16mfMI0kP+JpROUa
+	xYyrf6LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rV2nU-00000001UXz-38VT;
-	Wed, 31 Jan 2024 05:06:04 +0000
+	id 1rV2pS-00000001V7l-1qOH;
+	Wed, 31 Jan 2024 05:08:06 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rV2nO-00000001USK-2y3T;
-	Wed, 31 Jan 2024 05:06:01 +0000
+	id 1rV2pO-00000001V75-4Bo3;
+	Wed, 31 Jan 2024 05:08:04 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1706677554;
+	t=1706677681;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YS6JbNQ2jaewqZUbnCIKLMUYy9mmoZ8lFT9ULydhMQE=;
-	b=eK1WUb4+QyGsy4bpZNRl2rbt2HABjdXw6syrhVwQFknOh2moxoPxEeYF4qC3jDZjGLH/7j
-	M6YlkgoxF+UF05QRQ6w3GA4wb9Jl6LiO9Vjxu7ShGoVbOBaFCbGUanXIVHN89SMLvmuCWb
-	t8upFOyV1gZULjm9QhkiTHEJBbbNqNqHCAqLWorHuQbprmx2jz54BkV9MhpslteYMC5weV
-	9TNfiiQmi9Dmf/TDi/lTUVFH692PhIArqpdjBraLpxn0Hc5BA9le4BIAVNlfWBuwJhE4f2
-	bVGh4bQ2bkO+3WdVIUABbERl9te+jIGmqK0voxCN+j6Zhuc+J9SsxuOgSInNdw==
-Date: Wed, 31 Jan 2024 06:05:53 +0100
+	bh=Us+qssCGr8QHz8vvSMbnHALHDwmXvmpX/0BFSvsEVDg=;
+	b=GOegNALwbNgKp9/kXZbGM+DpeUw8qNVettMK5m0NKqrmMLdJmcOw8u6qP6+m3Mav1Qtqa6
+	nqlCjEBYiXM1Rf/cihonHvm9kqNag/ROaFLPWFV+pzR58PjcsC37f6tvA79I13CYp20H0U
+	1o03VNyR8BV6n+X7lHgKdn5FtC1tZ13cZKc7NHsrkTaaTShgm7/CmwNNnghdiHvpDyjapj
+	c+YLFVhgfDN/ySbax+dvMJ98Dwi1DVJd8uOp6bm/GkomeJ03glPxlLqyZ/Z/AXV7gCQjnt
+	LnRFdARcfKnBdaURjHFlcvFegGy+yxLKqs0wK2LTbHn+MgH5gWKklbSIgnW4hA==
+Date: Wed, 31 Jan 2024 06:08:00 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Alexey Charkov <alchark@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -48,18 +48,18 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/4] arm64: dts: rockchip: enable built-in thermal
- monitoring on rk3588
-In-Reply-To: <20240130-rk-dts-additions-v2-1-c6222c4c78df@gmail.com>
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: enable temperature driven
+ fan control on Rock 5B
+In-Reply-To: <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
 References: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
- <20240130-rk-dts-additions-v2-1-c6222c4c78df@gmail.com>
-Message-ID: <0702542c8d7dc4139ba5da690fd98e67@manjaro.org>
+ <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
+Message-ID: <8115ab382115f66aa01dd3d00aaae474@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_210559_396857_07FFBF45 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20240130_210803_373338_7BC55B3D 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,237 +78,98 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello Alexey,
 
-Some small nitpicks below, please have a look.
+Some notes below, please have a look.
 
 On 2024-01-30 19:21, Alexey Charkov wrote:
-> Include thermal zones information in device tree for rk3588 variants
+> This enables thermal monitoring on Radxa Rock 5B and links the PWM
+> fan as an active cooling device managed automatically by the thermal
+> subsystem, with a target SoC temperature of 65C and a minimum-spin
+> interval from 55C to 65C to ensure airflow when the system gets warm
 
-Please use "RK3588" instead of "rk3588", both here and in the
-patch subject.  Looks much better.
+I'd suggest that you replace "temperature driven fan control" with
+"active cooling" in the patch subject.  More concise and reads better.
 
+> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 > Signed-off-by: Alexey Charkov <alchark@gmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 162 
-> ++++++++++++++++++++++++++++++
->  1 file changed, 162 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 34 
+> ++++++++++++++++++++++++-
+>  1 file changed, 33 insertions(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> index 36b1b7acfe6a..696cb72d75d0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-> @@ -10,6 +10,7 @@
->  #include <dt-bindings/reset/rockchip,rk3588-cru.h>
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/ata/ahci.h>
-> +#include <dt-bindings/thermal/thermal.h>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index a0e303c3a1dc..b485edeef876 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -52,7 +52,7 @@ led_rgb_b {
 > 
->  / {
->  	compatible = "rockchip,rk3588";
-> @@ -2228,6 +2229,167 @@ tsadc: tsadc@fec00000 {
->  		status = "disabled";
->  	};
+>  	fan: pwm-fan {
+>  		compatible = "pwm-fan";
+> -		cooling-levels = <0 95 145 195 255>;
+> +		cooling-levels = <0 120 150 180 210 240 255>;
+>  		fan-supply = <&vcc5v0_sys>;
+>  		pwms = <&pwm1 0 50000 0>;
+>  		#cooling-cells = <2>;
+> @@ -173,6 +173,34 @@ &cpu_l3 {
+>  	cpu-supply = <&vdd_cpu_lit_s0>;
+>  };
 > 
-> +	thermal_zones: thermal-zones {
-> +		/* sensor near the center of the whole chip */
-
-It would be good to replace "whole chip" with "SoC".  Simpler and
-IIRC closer to the official description of the sensor.
-
-> +		package_thermal: package-thermal {
-> +			polling-delay-passive = <0>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 0>;
+> +&package_thermal {
+> +	polling-delay = <1000>;
 > +
-> +			trips {
-> +				package_crit: package-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
+> +	trips {
+> +		package_fan0: package-fan0 {
+> +			temperature = <55000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
 > +		};
-> +
-> +		/* sensor between A76 cores 0 and 1 */
-> +		bigcore0_thermal: bigcore0-thermal {
-> +			polling-delay-passive = <100>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 1>;
-> +
-> +			trips {
-
-Please add the following comment here, to make it clear what's
-the purpose of this thermal trip when the IPA thermal governor
-is used (more similar comments below):
-
-                                 /* IPA threshold */
-
-> +				bigcore0_alert0: bigcore0-alert0 {
-> +					temperature = <75000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-
-Please add the following comment here:
-
-                                 /* IPA target */
-
-> +				bigcore0_alert1: bigcore0-alert1 {
-> +					temperature = <85000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				bigcore0_crit: bigcore0-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
-> +			cooling-maps {
-> +				map0 {
-> +					trip = <&bigcore0_alert1>;
-> +					cooling-device =
-> +						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> +				};
-> +			};
-> +		};
-> +
-> +		/* sensor between A76 cores 2 and 3 */
-> +		bigcore2_thermal: bigcore2-thermal {
-> +			polling-delay-passive = <100>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 2>;
-> +
-> +			trips {
-
-Please add the following comment here:
-
-                                 /* IPA threshold */
-
-> +				bigcore2_alert0: bigcore2-alert0 {
-> +					temperature = <75000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-
-Please add the following comment here:
-
-                                 /* IPA target */
-
-> +				bigcore2_alert1: bigcore2-alert1 {
-> +					temperature = <85000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				bigcore2_crit: bigcore2-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
-> +			cooling-maps {
-> +				map0 {
-> +					trip = <&bigcore2_alert1>;
-> +					cooling-device =
-> +						<&cpu_b2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu_b3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> +				};
-> +			};
-> +		};
-> +
-> +		/* sensor between the four A55 cores */
-> +		little_core_thermal: littlecore-thermal {
-> +			polling-delay-passive = <100>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 3>;
-> +
-> +			trips {
-
-Please add the following comment here:
-
-                                 /* IPA threshold */
-
-> +				littlecore_alert0: littlecore-alert0 {
-> +					temperature = <75000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-
-Please add the following comment here:
-
-                                 /* IPA target */
-
-> +				littlecore_alert1: littlecore-alert1 {
-> +					temperature = <85000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				littlecore_crit: littlecore-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
-> +			cooling-maps {
-> +				map0 {
-> +					trip = <&littlecore_alert1>;
-> +					cooling-device =
-> +						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu_l1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu_l2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu_l3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> +				};
-> +			};
-> +		};
-> +
-> +		/* sensor near the PD_CENTER power domain */
-> +		center_thermal: center-thermal {
-> +			polling-delay-passive = <0>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 4>;
-> +
-> +			trips {
-> +				center_crit: center-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		gpu_thermal: gpu-thermal {
-> +			polling-delay-passive = <0>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 5>;
-> +
-> +			trips {
-> +				gpu_crit: gpu-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
-> +		};
-> +
-> +		npu_thermal: npu-thermal {
-> +			polling-delay-passive = <0>;
-> +			polling-delay = <0>;
-> +			thermal-sensors = <&tsadc 6>;
-> +
-> +			trips {
-> +				npu_crit: npu-crit {
-> +					temperature = <115000>;
-> +					hysteresis = <0>;
-> +					type = "critical";
-> +				};
-> +			};
+> +		package_fan1: package-fan1 {
+> +			temperature = <65000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
 > +		};
 > +	};
 > +
->  	saradc: adc@fec10000 {
->  		compatible = "rockchip,rk3588-saradc";
->  		reg = <0x0 0xfec10000 0x0 0x10000>;
+> +	cooling-maps {
+> +		map0 {
+
+Should be "map1" instead of "map0".  There's already "map0"
+defined for "package_thermal" in the RK3588(s) dtsi file.
+
+> +			trip = <&package_fan0>;
+> +			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
+> +		};
+> +		map1 {
+
+Should be "map2" instead of "map1".
+
+> +			trip = <&package_fan1>;
+> +			cooling-device = <&fan 1 THERMAL_NO_LIMIT>;
+
+Should be "cooling-device = <&fan 2 THERMAL_NO_LIMIT>;"
+(i.e., "2 THERMAL_NO_LIMIT" instead of "1 THERMAL_NO_LIMIT").
+
+The first fan speed is already covered by the first cooling map.
+The second cooling map takes over from the second fan speed.
+
+> +		};
+> +	};
+> +};
+> +
+>  &i2c0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&i2c0m2_xfer>;
+> @@ -731,6 +759,10 @@ regulator-state-mem {
+>  	};
+>  };
+> 
+> +&tsadc {
+> +	status = "okay";
+> +};
+> +
+>  &uart2 {
+>  	pinctrl-0 = <&uart2m0_xfer>;
+>  	status = "okay";
 
 _______________________________________________
 Linux-rockchip mailing list
