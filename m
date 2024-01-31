@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B53AC47258
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 21:14:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC958C47258
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 21:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rXIavT08gaFeH2UIuyu4JHhP2fbFRMk80MJtPJ67Y38=; b=JJcpeoijFK0aqa
-	947qGg2veSt3/jzO0p02GOot2GwLs0IeY+Gnzq3+ew7cCM/loyK3USB8l9L/8OM2Tsl6sSjPuRLaO
-	BlnleT+xKEX9HpliCFRshcbpUv7TDumcDp52tCNii90nMFP3OFearjTUoM/T0zV/masKYTft1uZVn
-	tNT4x1anFj3Of8bkxgggAk7wjmTg7SA0xr+HWlHnCtocIu62QdUUAwPRnzKc1jaHopt0S5n9K7B7I
-	HFPyxtP+MNj+++ikNaZ/g/B8tTc2QZJcLfBt1ydLK9q8mSKnmNcH4ftME0bIICTf1jGPTYiEHggfq
-	mVV4MGhpmJcLKdFWfLCQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=holg58qG2q5cHt3z7XeMzbtLWrr2kOyIcnguKbU6xdw=; b=jcOU23Z+3ZoQTL
+	ehlnJRFSOVTlVoG6rwmBsWeUS4s49o9PyuqrZrKSyviXrUaL9Mfk4RDrlhELAOPXvwUNNVEk01jna
+	lwr7M630tnGgxK2Gzk8WoKSi/M/jIyFFSN1ZxH86VSkx5u2ZCPSeuKIOtO/+CQ5bX2AETC9nWaRZo
+	Zjd0OJ5CmWvn92a4YCIh+/c2P7LLu9rPPb43UUbOf/zUUYIkGyTcIDgmgmCLRwQKZ2AnUjFE9Oh1+
+	Q7Vl7G2JbbAKxHgkmF2lHWeXKu+XBambKVr7jgY+vQxYZsaEsfoTAD95qYYeDB6Wkfo/rJINiLy4v
+	F/mE1uB8ocyAjvO5Sksw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVHum-00000005SC9-37EL;
-	Wed, 31 Jan 2024 21:14:36 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1rVHwf-00000005T6Z-0tQr;
+	Wed, 31 Jan 2024 21:16:33 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVHuj-00000005SBQ-2VLI;
-	Wed, 31 Jan 2024 21:14:34 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-55f0b2c79cdso245380a12.3;
-        Wed, 31 Jan 2024 13:14:32 -0800 (PST)
+	id 1rVHwa-00000005T3K-3rpe;
+	Wed, 31 Jan 2024 21:16:30 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a350bfcc621so21647666b.0;
+        Wed, 31 Jan 2024 13:16:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706735671; x=1707340471; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BzKBpTO+yAsO6AKq5s8rWuJxCgwGnyxQPNp5dZtPA/4=;
-        b=lb7AVvDjoz9wUBaYnc0t7+mTvXeV3r9xIQ80PDgVM2+ludYDuvSI9EbWQi4MOIABKN
-         Gcwvg+BUU6tx+COp6lbAy/00DbYLc8Waw/6tUmGBkmrzF9K6b6nKc3FuHCt/K/lXRqGn
-         JOb0TS2EqqjeT2J4bHhqJlAo/y1qzASKQpD4cUPPNhnZQe8e4SDoMjby/Rv12I+ZXQrC
-         BJc2JkEeGgVM3Hi0sQPoNjJilQeyxU8mhIq79twKRzWHIwekglUgW1GBhY90Z9j080uy
-         Wi7c0kLwYzltbqNZPAd2UrCpVAHdfBjJX38p7re4q0dYXIQCEyPGHPJlihm8G7Ca6Qqu
-         9g+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706735671; x=1707340471;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+        d=gmail.com; s=20230601; t=1706735786; x=1707340586; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=BzKBpTO+yAsO6AKq5s8rWuJxCgwGnyxQPNp5dZtPA/4=;
-        b=qxd4z8J9TmGUSnBE30x/psJAsZ/1/gQ/Qzy0XmQzd1fJqqfVS3nU21gFnhZ04hcm9D
-         em0rsK5DBk5+65LUN/a32Vx8NcLCdp/CL71+qYwfzd+wC33i7bdR0tSjAubcsRIueElF
-         CcJPfF+ueOxi7A4ZyMQYsbeikkkx2Vv6Xo8N9/aUKoPnmAOYe69bL4IERt0IyhZc1kxr
-         0uAYd04k/kmL+i7U5wIF6zisOPAG9r1ZUv9ahB6aiBHZZPZXaudHiSQ2vWEXho5BssOu
-         YZB2C80tQeGw26/B9kJI7NiWcuw7oatW8Z+xJI4F9ICUJV7iXxC0S5EnVelz2lfFZUkA
-         wgiw==
-X-Gm-Message-State: AOJu0YydHMmgNEXWjl2O00YkgU0ZcyC8FPx49YmgfzP9GpYJfEAafIyN
-	+ToAOVkMSBD8txqjaAgtXI9LburCKBdIoI7VTUgUUVlhycCXf517
-X-Google-Smtp-Source: AGHT+IGKSAQ0iom5aOWp/ud0qd1AnStLBR0ipcNAgWjoyolxlKbW/Qay9WlmcGjARF23PCDI5a71JQ==
-X-Received: by 2002:a50:ed91:0:b0:55f:4ce3:5988 with SMTP id h17-20020a50ed91000000b0055f4ce35988mr1738459edr.8.1706735671176;
-        Wed, 31 Jan 2024 13:14:31 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCULQ33QhABS4n6ZmrFSYOAyDgetml7TCChj/sOPv0oioq5VepLJymPA1kx2NkWnR/s/br7OHudwGBzZQ5lJljEVZ0T8ec2Qp1S80hCa2QJ/ToAZa1YotVwMLjl1ixwuX3c7Cu+05OhCGKZkQey/yuZ2Bw6v0NVp2+VtTGbXGVknaBG1caPpDodXH8w2Gv/zN7o5cVAOiQHi9MBkRsVot/HEcvmJEiKtCss4rKm7VvdBqeNBwZBwqxTaQPORu/gHnP6qcawXXJpcVGjzH6VAlZvH3ErYrVqCokAc/Rww/1Xp80adSwmW4MDgtNtHYQQyyLLEZIyow/Bpq6vIbRaYa5ynGN86YgBNPs9PsrXMZrXxxonkYDbgwwceyhD1DlNa1QtF0buPDCKbvEXuDI4YJZ5Hdx4UPHCsKxRufcd+/SKhB9BYYyvLq2uV94mWiDf7SiE8EzadWm2IkK3USljlB47pSTIfHntNiE46d3ZtXcpwD8jpvymiIPIFkfazQVGZ1ljIe8QguTVnuWOzaum/Qon6g7VEJ826bImqyFkegmo5KHphHZieTr3zht96D9DCWQSFQ43PUzoKevPHSvk=
+        bh=7WAHmXqhwFGwnUoVVTvOT31zVVDiv5ormXLbiLzvJr0=;
+        b=HsfoKsy/wJYm6XIRLzofpr8dy/suORCRbN7aCR24nLcO0xmn2TK1A+kD5fAs7rmpe8
+         pc7cj7Sax0K+5oC+sQVdvf0Hh10esCkp8HqbJi5E6rtlCt40JjHRc+v5TbpTxgBmQXT2
+         O67SXkh4DesFkh0DSlAJASn9eZligMQJUbhMZwcKx1tHimUoM8ZS6/jVOGUungkdXuWL
+         kG/X0XXJ+ygcJEG3gq9xf77MKoEAppYJkuLzlHo19gojCafLDFlX7JZXN3cnxRJxhJHl
+         RVNQj1gGkwWlmpN8+OH3aCWzFXIz3v88PUktfbs69HhBriiYafOOthQhGGwFsGtGk3U3
+         U9rQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706735786; x=1707340586;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7WAHmXqhwFGwnUoVVTvOT31zVVDiv5ormXLbiLzvJr0=;
+        b=E5/azdTxLN1sshuV34oUsZ4iyBCYceMCcoxDI44TwLBFWILutsQSBjUJjCWnHOovVI
+         j4U9TrAVBOVwljo6kZxY9pEQIcz0nGK68fky3bAouG1jCO9Lr+iwv8ngvJcG/yCBebn/
+         UJwBKQA5aKe+cO72iLh1FVtGQXxcbKjkWT5LHmRBeOaccUGYc+4ohrqYtu+kaNcqLm9F
+         n+TgVRPsNvntq2PeZfkgWATk7AL/JCVr3DURxc+Xi7yrt/YuBBX9D7tPCyXeH8+MDRuw
+         vYjjKgAqzMJo6Jtgck+F9K8CBgZoxBVyC4/4jtcUHIAYeFVhW5tNrvMDQl6fGmrDdOoM
+         O6Fg==
+X-Gm-Message-State: AOJu0YxPEozbNCTRvBioPb8QM/ctUCQs/ezl3eSldcf/caU4dF8PZC0d
+	9VOKWofNcTUykFIYApwNN/8mm4LwLm8CdF4OgoEVya0opigJCvH9
+X-Google-Smtp-Source: AGHT+IG1BFq7Pp2hw0FCVuWw6rIJcYrAM9nq28Kr5azCiS9LKzq/m7hwGTr5nk2ETTNoY9f8m7yc6A==
+X-Received: by 2002:a17:906:da06:b0:a35:edda:ca8b with SMTP id fi6-20020a170906da0600b00a35eddaca8bmr1992854ejb.76.1706735786182;
+        Wed, 31 Jan 2024 13:16:26 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCVc2fs4IrBG2YWUC5LcZZStHjB+RqDtXVILboDRP8Y2Xm1IoMKnaO2pMi/h4SQUCrAruBblHzoOgDf+Aud6ulOos3QKpvTrOPDbWDrqrs4HoncHMRv6melTKIpllEW8OtFwnN33yPaEFX9kPiIJVFaz94d8Y4gJLNprrxIiTqgEwAzZF7DeO5/IO+fEX+0/dhCvlliQGm9DqOzAUU99bBQXn8o6SMzo0Hgoqm5QeA2k8zgHOry8CgP0VBNfmF6GRhoZHfwmUaL8uBJq2XbfcWxvunXQBbU7jqJRykZJI7KloTyZpPzrwxL2fFFCF6Bhxt2IUP/Th38ZoCpdRzQ6aMCLFa2oh+q58pPry2SEjx389pdHUxDhLD1zBehNndrSw2rsYkLQxOTTyGj1urAZFRt7Si96ewe9IW1EE5T+1hm6QZu0b3o05WuKCL0qn+GsDGuC/NhYfkqoWV0flggiV7whpyZ47IjqSXr14Zgh9zg3S1LmTND+9p305Lhk7uaXtn3un3AdZ6x3agLqjRDz/BlXoxQTGjcJ4DNSh7kyURpMcQ7mZNxtPNxNIrdB1QW1nlxVxlpJ1FUsiiLxuuc=
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id h28-20020a50cddc000000b0055f384e7530sm2241381edj.32.2024.01.31.13.14.30
+        by smtp.gmail.com with ESMTPSA id ty5-20020a170907c70500b00a35a8571419sm4040634ejc.135.2024.01.31.13.16.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Jan 2024 13:14:30 -0800 (PST)
-Message-ID: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
-Date: Wed, 31 Jan 2024 22:14:29 +0100
+        Wed, 31 Jan 2024 13:16:25 -0800 (PST)
+Message-ID: <5c45527a-e218-40a3-8e71-a5815417e5f7@gmail.com>
+Date: Wed, 31 Jan 2024 22:16:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 1/6] dt-bindings: display: rockchip: rockchip,dw-hdmi:
- remove port property
+Subject: [PATCH v2 2/6] dt-bindings: display: rockchip,dw-hdmi: add
+ power-domains property
 To: robh+dt@kernel.org
 Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
  krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, airlied@gmail.com,
@@ -76,10 +76,13 @@ Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
  mripard@kernel.org, markyao0591@gmail.com, dri-devel@lists.freedesktop.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
 Content-Language: en-US
+In-Reply-To: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_131433_674225_72439720 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20240131_131629_061670_D8388914 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,91 +99,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The hdmi-connector nodes are now functional and the new way to model
-hdmi ports nodes with both in and output port subnodes. Unfortunately
-with the conversion to YAML the old method with only an input port node
-was used. Later the new method was also added to the binding.
-A binding must be unambiguously, so remove the old port property
-entirely and make port@0 and port@1 a requirement as all
-upstream dts files are updated as well and because checking
-deprecated stuff is a bit pointless.
-Update the example to avoid use of the removed property.
+Most Rockchip hdmi nodes are part of a power domain.
+Add a power-domains property and include it to the example
+with some reordering to align with the (new) documentation
+about property ordering.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
 
 Changed V2:
-  rename title from deprecate to remove
-  reword
+  keep reg-io-width together with reg
+  explain reordering
 ---
- .../display/rockchip/rockchip,dw-hdmi.yaml    | 24 +++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+ .../bindings/display/rockchip/rockchip,dw-hdmi.yaml      | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index 7e59dee15a5f..391c2a7e79de 100644
+index 391c2a7e79de..af638b6c0d21 100644
 --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
 +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -97,8 +97,8 @@ properties:
+@@ -94,6 +94,9 @@ properties:
+       - const: default
+       - const: unwedge
+
++  power-domains:
++    maxItems: 1
++
    ports:
      $ref: /schemas/graph.yaml#/properties/ports
 
--    patternProperties:
--      "^port(@0)?$":
-+    properties:
-+      port@0:
-         $ref: /schemas/graph.yaml#/properties/port
-         description: Input of the DWC HDMI TX
-         properties:
-@@ -108,11 +108,14 @@ properties:
-             description: Connection to the VOPB
-           endpoint@1:
-             description: Connection to the VOPL
--    properties:
-       port@1:
-         $ref: /schemas/graph.yaml#/properties/port
-         description: Output of the DWC HDMI TX
+@@ -138,16 +141,18 @@ examples:
+     #include <dt-bindings/clock/rk3288-cru.h>
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/rk3288-power.h>
 
-+    required:
-+      - port@0
-+      - port@1
-+
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -147,7 +150,11 @@ examples:
+     hdmi: hdmi@ff980000 {
+         compatible = "rockchip,rk3288-dw-hdmi";
+         reg = <0xff980000 0x20000>;
+         reg-io-width = <4>;
+-        ddc-i2c-bus = <&i2c5>;
+-        rockchip,grf = <&grf>;
+         interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+         clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>;
          clock-names = "iahb", "isfr";
++        ddc-i2c-bus = <&i2c5>;
++        power-domains = <&power RK3288_PD_VIO>;
++        rockchip,grf = <&grf>;
 
          ports {
--            port {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            port@0 {
-+                reg = <0>;
-                 #address-cells = <1>;
-                 #size-cells = <0>;
-
-@@ -155,11 +162,20 @@ examples:
-                     reg = <0>;
-                     remote-endpoint = <&vopb_out_hdmi>;
-                 };
-+
-                 hdmi_in_vopl: endpoint@1 {
-                     reg = <1>;
-                     remote-endpoint = <&vopl_out_hdmi>;
-                 };
-             };
-+
-+            port@1 {
-+                reg = <1>;
-+
-+                hdmi_out_con: endpoint {
-+                    remote-endpoint = <&hdmi_con_in>;
-+                };
-+            };
-         };
-     };
-
+             #address-cells = <1>;
 --
 2.39.2
 
