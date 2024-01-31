@@ -4,50 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 052D9C47DDF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 14:24:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F44BC47258
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 16:10:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zVuMdPkSR9YRv6D/eTqDAoKlLPHuViqJhtXDXS+NGMY=; b=MZbDRfGhhqsCAJ
-	ZJMEiCAEiSLhUlXhHjC3EqvvRXUeem1Fn69XmA0/1CBlBjb4cXQ6MFRX25TlNbObn7WLaWrQBC3SK
-	jyMS3ecMQk1AP1CcRMmWK3zFEbK9xThvrfj4mR1Sk8Goe9zG3LmBInQswU79hb9VvGFR82RILkC6L
-	+xBJ5tbwpyaaB0G43+XT11kB3rV1EHxcprZFI2puze/RUENPSF+RhH9lHKJuVFo3uCqJMkPgeFt59
-	bE8uKHDWItMLLWr+/u8ipceZGhO4NLBsFCKEgJgR8pyqDT7etX8Th4vfDdZRPQQyxhFiSR0S9E2Qn
-	JN9jomqIRh9/g0y+Su8Q==;
+	List-Owner; bh=eImtqamlIcD7H3MpQfUzGiIszmd5qDa6+GfTxtb2YPE=; b=xR0GVFxoZAmMYo
+	V2c9dEGFMdtbz/fbndDOPPtYpB9t8GwIbkrJko9WqWaVClbi/JzeLjIzuCTtsQUjAX84VCYiVXuzC
+	PzeIbj8EHY5mRgkEetqPvA96JtEknqWOI+vQu/XxwE0BxKAbhIV5BV9i9X4lBtevmh1sEQrUbwZoI
+	LHR2ldW8Kd8Ssr3Yi249w61BN7+S4U//+15gxesdClQ00be4QlypMTm/JxDQkKHqS0yeGbEL32Xwf
+	XPFMbyrboWT8MR/YlyXm9Vmvtbcsev1YpR94C1RVJ5BCFrrYQ90xwY0eYQGOTY9lODvigZ0t3Za8X
+	jIoNI/+Ax7Mt8AnhGnEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVBVx-00000003s4Q-3k5d;
-	Wed, 31 Jan 2024 14:24:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rVDAn-00000004QXp-1WgI;
+	Wed, 31 Jan 2024 16:10:49 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVBVv-00000003s27-17Hf;
-	Wed, 31 Jan 2024 14:24:32 +0000
-Received: from i53875ab1.versanet.de ([83.135.90.177] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rVBVh-0005Ja-Ds; Wed, 31 Jan 2024 15:24:17 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Dragan Simic <dsimic@manjaro.org>, Andy Yan <andyshrk@163.com>
-Cc: krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: rename vcc5v0_usb30_host regulator for
- Cool Pi CM5 EVB
-Date: Wed, 31 Jan 2024 15:24:16 +0100
-Message-ID: <2179538.KUTt5R2Mg1@diego>
-In-Reply-To: <1e98352e.2dd2.18d5f780043.Coremail.andyshrk@163.com>
-References: <20240127092034.887085-1-andyshrk@163.com>
- <00ed78ea06aecde202a11a23c80f80af@manjaro.org>
- <1e98352e.2dd2.18d5f780043.Coremail.andyshrk@163.com>
+	id 1rVDAk-00000004QV1-3H5p
+	for linux-rockchip@lists.infradead.org;
+	Wed, 31 Jan 2024 16:10:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1706717443;
+	bh=mOgddOnlFNve156jpGaNRlrIn0v6Pm2QIzZnnQ1nVh8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Qnt8lHTonSrYxRLxk4GqeiGzZNZIuilfAUR08dkJ0euHbBts2iy0ewRfDZLw9JFGg
+	 bS7RrxfVAByoKWo3jr2HKptQXNqQTawOfNxIeV/ACPlPg1IjehtJwrHjIevwsum3Ii
+	 MKELhBFwlagnTy+ikrsUFXQuOhEuZyK+nZP8weMIR+AZy+SxlDFwOL+GTz7/3HZC7/
+	 G/F/BztkbODFzyVOx3O4/hSwPncpUsWd7SiQPCktsVPsZwOb0RSQgXndvzAIh0vkEG
+	 ONmzSef2ZZDkc8j7hLAlBolCM1QZTDN8G0yMZAJHnHGX/hlqskqvGIqc1jOQQZD/pC
+	 UpLp/r+pDvKtw==
+Received: from [100.109.49.129] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 42AEC378202B;
+	Wed, 31 Jan 2024 16:10:42 +0000 (UTC)
+Message-ID: <a0f26bfd-5c78-4c5f-9c37-dc1cc3925ede@collabora.com>
+Date: Wed, 31 Jan 2024 19:10:39 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, huangtao@rock-chips.com,
+ andy.yan@rock-chips.com, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
+ <20240126182919.48402-8-sebastian.reichel@collabora.com>
+ <8b4214a5-6ba7-402d-b2f6-f2424783d455@collabora.com>
+ <i5qagtdg73rhojifmublx2w2kxvjeisd6qwqbo5vnhrgyedx3i@pyckzpstlnvb>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <i5qagtdg73rhojifmublx2w2kxvjeisd6qwqbo5vnhrgyedx3i@pyckzpstlnvb>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_062431_335311_ECE5242A 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20240131_081047_033691_279DC275 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,35 +80,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDMxLiBKYW51YXIgMjAyNCwgMTM6MjE6NTYgQ0VUIHNjaHJpZWIgQW5keSBZ
-YW46Cj4gCj4gSGkgSGVpa2/vvJoKPiAKPiDlnKggMjAyNC0wMS0yNyAyMTowOTo0Nu+8jCJEcmFn
-YW4gU2ltaWMiIDxkc2ltaWNAbWFuamFyby5vcmc+IOWGmemBk++8mgo+ID5PbiAyMDI0LTAxLTI3
-IDEzOjE1LCBBbmR5IFlhbiB3cm90ZToKPiA+PiBBdCAyMDI0LTAxLTI3IDE4OjM2OjQwLCAiSGVp
-a28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4+PiBBbSBTYW1zdGFnLCAy
-Ny4gSmFudWFyIDIwMjQsIDEwOjIwOjMzIENFVCBzY2hyaWViIEFuZHkgWWFuOgo+ID4+Pj4gQWNj
-b3JkaW5nIHRvIHRoZSBzY2hlbWF0aWMsIHRoaXMgcmVndWxhdG9yIGlzIHVzZWQgYm90aCBmb3Ig
-VVNCMzAgYW5kCj4gPj4+PiBVU0IyMCwgc28gZ2l2ZSBpdCBhIG1vcmUgYXBwcm9wcmlhdGUgbmFt
-ZS4KPiA+Pj4gCj4gPj4+IEkgZG9uJ3QgaGF2ZSB0aGUgc2NoZW1hdGljcywgc28gSSdsbCBuZWVk
-IHlvdSB0byBhbnN3ZXIgdGhpcywgYnV0IHdoYXQKPiA+Pj4gaXMgdGhlIHJlZ3VsYXRvciBjYWxs
-ZWQgX2luXyB0aGUgc2NoZW1hdGljcz8KPiA+PiAKPiA+PiBUaGVyZSBhcmUgdHdvIHJlZ3VsYXRv
-cnMgY2FsbGVkIFZDQzUwX1VTQl9IT1NUMSBhbmQgVkNDNTBfVVNCX0hPU1QyLAo+ID4+IGFuZCB0
-aGV5IGFyZSBib3RoIGNvbnRyb2xsZWQgYnkgR1BJTzFfRDUKPiA+PiBUaGV5IGJvdGggZm9yIHR3
-byB1c2IgMi4wIGhvc3RzLCAgbm90IHVzYiAzMCwgdGhlIHNjaGVtYXRpY3MgbWFrZQo+ID4+IG1l
-IGEgYml0IGNvbmZ1c2VkLgo+ID4KPiA+SW4gdGhhdCBjYXNlLCBJJ2Qgc2F5IHRoYXQgcmVuYW1p
-bmcgdGhlIHJlZ3VsYXRvciB0byB2Y2M1djBfdXNiX2hvc3QgaXMKPiA+ZmluZSwgYnV0IHRoZXJl
-IHNob3VsZCBhbHNvIGJlIGEgY29tbWVudCBpbiB0aGUgYm9hcmQgZHRzIGZpbGUgdGhhdCBpdCdz
-Cj4gPmFjdHVhbGx5IHR3byBzZXBhcmF0ZSByZWd1bGF0b3JzLgo+IAo+IEhvdyBkbyB5b3UgZmVl
-bCBhYm91dCB0aGlzIO+8nyBPciBzb21lIG90aGVyIHN0eWxlIGxpa2XvvJoKPiB2Y2M1djBfdXNi
-X2hvc3QxOiB2Y2M1djBfdXNiX2hvc3Qy77yadmNjNXYwLXVzYi1ob3N0LXJlZ3VsYXRvciB7CgpJ
-IHRoaW5rIHdlJ3JlIHVzaW5nIHN1Y2ggYSBzY2hlbWUgaW4gc29tZSBwbGFjZXMgYWxyZWFkeSwg
-YW5kCnllcyBJIHJlYWxseSBsaWtlIGdvaW5nIHRoaXMgd2F5LiBTbyB0aGF0IHRoZSBwaGFuZGxl
-cyBmb2xsb3cgdGhlCnNjaGVtYXRpYyBuYW1lcyBhbmQgd2UgY2FuIHN0aWxsIGdyZXAgZm9yIHRo
-aW5ncy4KCgpIZWlrbwoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On 1/30/24 17:47, Sebastian Reichel wrote:
+> Hi Dmitry,
+> 
+> On Fri, Jan 26, 2024 at 10:36:13PM +0300, Dmitry Osipenko wrote:
+>> On 1/26/24 21:18, Sebastian Reichel wrote:
+>>> Recent Rockchip SoCs have a new hardware block called Native Interface
+>>> Unit (NIU), which gates clocks to devices behind them. These effectively
+>>> need two parent clocks.
+>>>
+>>> GATE_LINK type clocks handle the second parent via 'linkedclk' by using
+>>> runtime PM clocks. To make that possible a new platform device is created
+>>> for every clock handled in this way.
+>>>
+>>> Note, that before this patch clk_rk3588_probe() has never been called,
+>>> because CLK_OF_DECLARE marks the DT node as processed. This patch replaces
+>>> that with CLK_OF_DECLARE_DRIVER and thus the probe function is used now.
+>>> This is necessary to have 'struct device' available.
+>>>
+>>> Also instead of builtin_platform_driver_probe, the driver has been
+>>> switched to use core_initcall, since it should be fully probed before
+>>> the Rockchip PM domain driver (and that is using postcore_initcall).
+>>
+>> Why clk driver needs to be fully probed before PD? The PD driver
+>> shouldn't probe until all clk providers that it uses are registered, and
+>> then both clk and PD should be registered at the default level.
+> 
+> The error handling in the rockchip PD driver needs rework to
+> properly handle -EPROBE_DEFER, which I consider a separate series.
+> 
+> Note, that the driver currently has 'builtin_platform_driver_probe',
+> but does not actually probe anything. All clocks are registered via
+> CLK_OF_DECLARE, which happens even before core_initcall. So this
+> does not make things worse.
+> 
+> Also the OF node is marked as initialized by the early clocks
+> (CLK_OF_DECLARE_DRIVER) via the call to of_clk_add_provider(). This
+> is necessary, since otherwise the early clocks cannot be referenced
+> and we need the early clocks for the timer registration (so it's not
+> possible to move all the clocks to late init). This effectively
+> results in fw_devlink not working properly. It will tell PM domain
+> driver too early, that it may start probing (so a bunch of useless
+> -EPROBE_DEFER will happen).
+
+Thanks for the clarification! Definitely will be good to improve the
+probe defer handling in the future. And indeed, it can be done
+separately from this patchset.
+
+-- 
+Best regards,
+Dmitry
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
