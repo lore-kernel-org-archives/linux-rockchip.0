@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F44BC47258
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 16:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B53AC47258
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 21:14:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eImtqamlIcD7H3MpQfUzGiIszmd5qDa6+GfTxtb2YPE=; b=xR0GVFxoZAmMYo
-	V2c9dEGFMdtbz/fbndDOPPtYpB9t8GwIbkrJko9WqWaVClbi/JzeLjIzuCTtsQUjAX84VCYiVXuzC
-	PzeIbj8EHY5mRgkEetqPvA96JtEknqWOI+vQu/XxwE0BxKAbhIV5BV9i9X4lBtevmh1sEQrUbwZoI
-	LHR2ldW8Kd8Ssr3Yi249w61BN7+S4U//+15gxesdClQ00be4QlypMTm/JxDQkKHqS0yeGbEL32Xwf
-	XPFMbyrboWT8MR/YlyXm9Vmvtbcsev1YpR94C1RVJ5BCFrrYQ90xwY0eYQGOTY9lODvigZ0t3Za8X
-	jIoNI/+Ax7Mt8AnhGnEg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rXIavT08gaFeH2UIuyu4JHhP2fbFRMk80MJtPJ67Y38=; b=JJcpeoijFK0aqa
+	947qGg2veSt3/jzO0p02GOot2GwLs0IeY+Gnzq3+ew7cCM/loyK3USB8l9L/8OM2Tsl6sSjPuRLaO
+	BlnleT+xKEX9HpliCFRshcbpUv7TDumcDp52tCNii90nMFP3OFearjTUoM/T0zV/masKYTft1uZVn
+	tNT4x1anFj3Of8bkxgggAk7wjmTg7SA0xr+HWlHnCtocIu62QdUUAwPRnzKc1jaHopt0S5n9K7B7I
+	HFPyxtP+MNj+++ikNaZ/g/B8tTc2QZJcLfBt1ydLK9q8mSKnmNcH4ftME0bIICTf1jGPTYiEHggfq
+	mVV4MGhpmJcLKdFWfLCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVDAn-00000004QXp-1WgI;
-	Wed, 31 Jan 2024 16:10:49 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rVHum-00000005SC9-37EL;
+	Wed, 31 Jan 2024 21:14:36 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVDAk-00000004QV1-3H5p
-	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Jan 2024 16:10:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1706717443;
-	bh=mOgddOnlFNve156jpGaNRlrIn0v6Pm2QIzZnnQ1nVh8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Qnt8lHTonSrYxRLxk4GqeiGzZNZIuilfAUR08dkJ0euHbBts2iy0ewRfDZLw9JFGg
-	 bS7RrxfVAByoKWo3jr2HKptQXNqQTawOfNxIeV/ACPlPg1IjehtJwrHjIevwsum3Ii
-	 MKELhBFwlagnTy+ikrsUFXQuOhEuZyK+nZP8weMIR+AZy+SxlDFwOL+GTz7/3HZC7/
-	 G/F/BztkbODFzyVOx3O4/hSwPncpUsWd7SiQPCktsVPsZwOb0RSQgXndvzAIh0vkEG
-	 ONmzSef2ZZDkc8j7hLAlBolCM1QZTDN8G0yMZAJHnHGX/hlqskqvGIqc1jOQQZD/pC
-	 UpLp/r+pDvKtw==
-Received: from [100.109.49.129] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 42AEC378202B;
-	Wed, 31 Jan 2024 16:10:42 +0000 (UTC)
-Message-ID: <a0f26bfd-5c78-4c5f-9c37-dc1cc3925ede@collabora.com>
-Date: Wed, 31 Jan 2024 19:10:39 +0300
+	id 1rVHuj-00000005SBQ-2VLI;
+	Wed, 31 Jan 2024 21:14:34 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-55f0b2c79cdso245380a12.3;
+        Wed, 31 Jan 2024 13:14:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706735671; x=1707340471; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BzKBpTO+yAsO6AKq5s8rWuJxCgwGnyxQPNp5dZtPA/4=;
+        b=lb7AVvDjoz9wUBaYnc0t7+mTvXeV3r9xIQ80PDgVM2+ludYDuvSI9EbWQi4MOIABKN
+         Gcwvg+BUU6tx+COp6lbAy/00DbYLc8Waw/6tUmGBkmrzF9K6b6nKc3FuHCt/K/lXRqGn
+         JOb0TS2EqqjeT2J4bHhqJlAo/y1qzASKQpD4cUPPNhnZQe8e4SDoMjby/Rv12I+ZXQrC
+         BJc2JkEeGgVM3Hi0sQPoNjJilQeyxU8mhIq79twKRzWHIwekglUgW1GBhY90Z9j080uy
+         Wi7c0kLwYzltbqNZPAd2UrCpVAHdfBjJX38p7re4q0dYXIQCEyPGHPJlihm8G7Ca6Qqu
+         9g+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706735671; x=1707340471;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=BzKBpTO+yAsO6AKq5s8rWuJxCgwGnyxQPNp5dZtPA/4=;
+        b=qxd4z8J9TmGUSnBE30x/psJAsZ/1/gQ/Qzy0XmQzd1fJqqfVS3nU21gFnhZ04hcm9D
+         em0rsK5DBk5+65LUN/a32Vx8NcLCdp/CL71+qYwfzd+wC33i7bdR0tSjAubcsRIueElF
+         CcJPfF+ueOxi7A4ZyMQYsbeikkkx2Vv6Xo8N9/aUKoPnmAOYe69bL4IERt0IyhZc1kxr
+         0uAYd04k/kmL+i7U5wIF6zisOPAG9r1ZUv9ahB6aiBHZZPZXaudHiSQ2vWEXho5BssOu
+         YZB2C80tQeGw26/B9kJI7NiWcuw7oatW8Z+xJI4F9ICUJV7iXxC0S5EnVelz2lfFZUkA
+         wgiw==
+X-Gm-Message-State: AOJu0YydHMmgNEXWjl2O00YkgU0ZcyC8FPx49YmgfzP9GpYJfEAafIyN
+	+ToAOVkMSBD8txqjaAgtXI9LburCKBdIoI7VTUgUUVlhycCXf517
+X-Google-Smtp-Source: AGHT+IGKSAQ0iom5aOWp/ud0qd1AnStLBR0ipcNAgWjoyolxlKbW/Qay9WlmcGjARF23PCDI5a71JQ==
+X-Received: by 2002:a50:ed91:0:b0:55f:4ce3:5988 with SMTP id h17-20020a50ed91000000b0055f4ce35988mr1738459edr.8.1706735671176;
+        Wed, 31 Jan 2024 13:14:31 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCULQ33QhABS4n6ZmrFSYOAyDgetml7TCChj/sOPv0oioq5VepLJymPA1kx2NkWnR/s/br7OHudwGBzZQ5lJljEVZ0T8ec2Qp1S80hCa2QJ/ToAZa1YotVwMLjl1ixwuX3c7Cu+05OhCGKZkQey/yuZ2Bw6v0NVp2+VtTGbXGVknaBG1caPpDodXH8w2Gv/zN7o5cVAOiQHi9MBkRsVot/HEcvmJEiKtCss4rKm7VvdBqeNBwZBwqxTaQPORu/gHnP6qcawXXJpcVGjzH6VAlZvH3ErYrVqCokAc/Rww/1Xp80adSwmW4MDgtNtHYQQyyLLEZIyow/Bpq6vIbRaYa5ynGN86YgBNPs9PsrXMZrXxxonkYDbgwwceyhD1DlNa1QtF0buPDCKbvEXuDI4YJZ5Hdx4UPHCsKxRufcd+/SKhB9BYYyvLq2uV94mWiDf7SiE8EzadWm2IkK3USljlB47pSTIfHntNiE46d3ZtXcpwD8jpvymiIPIFkfazQVGZ1ljIe8QguTVnuWOzaum/Qon6g7VEJ826bImqyFkegmo5KHphHZieTr3zht96D9DCWQSFQ43PUzoKevPHSvk=
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id h28-20020a50cddc000000b0055f384e7530sm2241381edj.32.2024.01.31.13.14.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 Jan 2024 13:14:30 -0800 (PST)
+Message-ID: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
+Date: Wed, 31 Jan 2024 22:14:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2 1/6] dt-bindings: display: rockchip: rockchip,dw-hdmi:
+ remove port property
+To: robh+dt@kernel.org
+Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, airlied@gmail.com,
+ daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, tzimmermann@suse.de,
+ mripard@kernel.org, markyao0591@gmail.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, huangtao@rock-chips.com,
- andy.yan@rock-chips.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
- <20240126182919.48402-8-sebastian.reichel@collabora.com>
- <8b4214a5-6ba7-402d-b2f6-f2424783d455@collabora.com>
- <i5qagtdg73rhojifmublx2w2kxvjeisd6qwqbo5vnhrgyedx3i@pyckzpstlnvb>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <i5qagtdg73rhojifmublx2w2kxvjeisd6qwqbo5vnhrgyedx3i@pyckzpstlnvb>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_081047_033691_279DC275 
-X-CRM114-Status: GOOD (  19.80  )
+X-CRM114-CacheID: sfid-20240131_131433_674225_72439720 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +96,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 1/30/24 17:47, Sebastian Reichel wrote:
-> Hi Dmitry,
-> 
-> On Fri, Jan 26, 2024 at 10:36:13PM +0300, Dmitry Osipenko wrote:
->> On 1/26/24 21:18, Sebastian Reichel wrote:
->>> Recent Rockchip SoCs have a new hardware block called Native Interface
->>> Unit (NIU), which gates clocks to devices behind them. These effectively
->>> need two parent clocks.
->>>
->>> GATE_LINK type clocks handle the second parent via 'linkedclk' by using
->>> runtime PM clocks. To make that possible a new platform device is created
->>> for every clock handled in this way.
->>>
->>> Note, that before this patch clk_rk3588_probe() has never been called,
->>> because CLK_OF_DECLARE marks the DT node as processed. This patch replaces
->>> that with CLK_OF_DECLARE_DRIVER and thus the probe function is used now.
->>> This is necessary to have 'struct device' available.
->>>
->>> Also instead of builtin_platform_driver_probe, the driver has been
->>> switched to use core_initcall, since it should be fully probed before
->>> the Rockchip PM domain driver (and that is using postcore_initcall).
->>
->> Why clk driver needs to be fully probed before PD? The PD driver
->> shouldn't probe until all clk providers that it uses are registered, and
->> then both clk and PD should be registered at the default level.
-> 
-> The error handling in the rockchip PD driver needs rework to
-> properly handle -EPROBE_DEFER, which I consider a separate series.
-> 
-> Note, that the driver currently has 'builtin_platform_driver_probe',
-> but does not actually probe anything. All clocks are registered via
-> CLK_OF_DECLARE, which happens even before core_initcall. So this
-> does not make things worse.
-> 
-> Also the OF node is marked as initialized by the early clocks
-> (CLK_OF_DECLARE_DRIVER) via the call to of_clk_add_provider(). This
-> is necessary, since otherwise the early clocks cannot be referenced
-> and we need the early clocks for the timer registration (so it's not
-> possible to move all the clocks to late init). This effectively
-> results in fw_devlink not working properly. It will tell PM domain
-> driver too early, that it may start probing (so a bunch of useless
-> -EPROBE_DEFER will happen).
+The hdmi-connector nodes are now functional and the new way to model
+hdmi ports nodes with both in and output port subnodes. Unfortunately
+with the conversion to YAML the old method with only an input port node
+was used. Later the new method was also added to the binding.
+A binding must be unambiguously, so remove the old port property
+entirely and make port@0 and port@1 a requirement as all
+upstream dts files are updated as well and because checking
+deprecated stuff is a bit pointless.
+Update the example to avoid use of the removed property.
 
-Thanks for the clarification! Definitely will be good to improve the
-probe defer handling in the future. And indeed, it can be done
-separately from this patchset.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
--- 
-Best regards,
-Dmitry
+Changed V2:
+  rename title from deprecate to remove
+  reword
+---
+ .../display/rockchip/rockchip,dw-hdmi.yaml    | 24 +++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+index 7e59dee15a5f..391c2a7e79de 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+@@ -97,8 +97,8 @@ properties:
+   ports:
+     $ref: /schemas/graph.yaml#/properties/ports
+
+-    patternProperties:
+-      "^port(@0)?$":
++    properties:
++      port@0:
+         $ref: /schemas/graph.yaml#/properties/port
+         description: Input of the DWC HDMI TX
+         properties:
+@@ -108,11 +108,14 @@ properties:
+             description: Connection to the VOPB
+           endpoint@1:
+             description: Connection to the VOPL
+-    properties:
+       port@1:
+         $ref: /schemas/graph.yaml#/properties/port
+         description: Output of the DWC HDMI TX
+
++    required:
++      - port@0
++      - port@1
++
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -147,7 +150,11 @@ examples:
+         clock-names = "iahb", "isfr";
+
+         ports {
+-            port {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            port@0 {
++                reg = <0>;
+                 #address-cells = <1>;
+                 #size-cells = <0>;
+
+@@ -155,11 +162,20 @@ examples:
+                     reg = <0>;
+                     remote-endpoint = <&vopb_out_hdmi>;
+                 };
++
+                 hdmi_in_vopl: endpoint@1 {
+                     reg = <1>;
+                     remote-endpoint = <&vopl_out_hdmi>;
+                 };
+             };
++
++            port@1 {
++                reg = <1>;
++
++                hdmi_out_con: endpoint {
++                    remote-endpoint = <&hdmi_con_in>;
++                };
++            };
+         };
+     };
+
+--
+2.39.2
 
 
 _______________________________________________
