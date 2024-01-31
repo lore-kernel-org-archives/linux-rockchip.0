@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32AD1C47258
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 05:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99B55C48285
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 05:08:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=awo4rf5hPy17IbxLHJr6V8xtYtC020Eis1+prm8P7nQ=; b=R8K1drNKoNC52kBqBJ4HCz4iVO
-	y7nleHeVs+CwNLaNOr1gaMHosAG5JP8SJ6E5OOfpLbOsftsEjXOoAcVoMptPaKqM/nWKqrN5Sk4ny
-	15NhQ2rNxH/WgQdcoQeWY2qB8vY94wqjFAMJMzlCJdEBqzl9kM7Zn5E5QCNvZExLnQtXyTZzxDWzx
-	aGkzovz7EyXCvO740qYAPTBdhOv2OC7hISgzFqCE1zBBNs+QhPRjYZ8iDz5oWjgEleZhwLPvdaHgS
-	mJucdvD12K4kwjuSrX7Q+XkQkqX61/EajYxICdybvOpnXyOx+ss+c1G66E/Wb16mfMI0kP+JpROUa
-	xYyrf6LQ==;
+	bh=KuOS98z0xDEvCPHdVxFP3eDL+Qr+yKlqSYfDFZU+HVs=; b=obitss3/mQS/7X5qafjSZk5nK0
+	6WPSheBs8MsQ7VTFxK7fpYLGA2YMiumF2V/VjVS7PPmyQbUNhwK6UwDNvYHJHSi/BTwkjRvMd0H/S
+	nDeFa4+1l1ecJWbhmes4kVEWXL6eFhEmymA0EWddzt/kw5AFEI5uZErcG232zgk+7eanDdErXe+7q
+	KLRpwK8723O4EUWgVoxkQUBO3T/uOFhLEZTHfa6ExHgeYHES0Ehu47js0XSQ0QkWEVn/AyjUuS0oe
+	7g8MxDW0zGEVqiCESSfwUjstggWXP9aX+zkugJwZUGUOjPAmMAPRcsdge3tBvOPuaMzkgkADkmPeS
+	WfgEKLIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rV2pS-00000001V7l-1qOH;
-	Wed, 31 Jan 2024 05:08:06 +0000
+	id 1rV2pw-00000001VFV-3Ygq;
+	Wed, 31 Jan 2024 05:08:36 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rV2pO-00000001V75-4Bo3;
-	Wed, 31 Jan 2024 05:08:04 +0000
+	id 1rV2pt-00000001VES-2CzB;
+	Wed, 31 Jan 2024 05:08:35 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1706677681;
+	t=1706677712;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Us+qssCGr8QHz8vvSMbnHALHDwmXvmpX/0BFSvsEVDg=;
-	b=GOegNALwbNgKp9/kXZbGM+DpeUw8qNVettMK5m0NKqrmMLdJmcOw8u6qP6+m3Mav1Qtqa6
-	nqlCjEBYiXM1Rf/cihonHvm9kqNag/ROaFLPWFV+pzR58PjcsC37f6tvA79I13CYp20H0U
-	1o03VNyR8BV6n+X7lHgKdn5FtC1tZ13cZKc7NHsrkTaaTShgm7/CmwNNnghdiHvpDyjapj
-	c+YLFVhgfDN/ySbax+dvMJ98Dwi1DVJd8uOp6bm/GkomeJ03glPxlLqyZ/Z/AXV7gCQjnt
-	LnRFdARcfKnBdaURjHFlcvFegGy+yxLKqs0wK2LTbHn+MgH5gWKklbSIgnW4hA==
-Date: Wed, 31 Jan 2024 06:08:00 +0100
+	bh=dFaxIwxEmyt5THRnWn7HLhXsgUMlYlkFF7eFCp1ek/g=;
+	b=SKWMr+XdnjWACiQxgwrji/XGE94Cz/zzma1cpB55I+LTJxedRtmOA+jwXHJ+TwC6+SpCUd
+	AG7OqABrcNjdgO+YJVv2uYELGMiusfhmtBUGDjKYSg1CrvI7ZRaIKuYs2yO1v9cpz4ZQBj
+	T4Yqzyd9rWhi0OjfO3EZ4qMDrihrwR0tMnoE5xCrbxwAd036rhL1/z8CNvM7b7BLv7u8AE
+	3t1HaYp3VqF0k3YN8E6LUJQ2D7KbfMzCXmHBeERn8zlUfH3jxY8F4pls06dYiCLKTAguZt
+	GvVGfd+n5n6nJzmh38meWvSvzXAqHxRlhdXJ9zxxHfoP2y5kMoO/BgS2LqQ8Ng==
+Date: Wed, 31 Jan 2024 06:08:31 +0100
 From: Dragan Simic <dsimic@manjaro.org>
 To: Alexey Charkov <alchark@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -48,18 +48,18 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: enable temperature driven
- fan control on Rock 5B
-In-Reply-To: <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add further granularity in
+ RK3588 CPU OPPs
+In-Reply-To: <20240130-rk-dts-additions-v2-4-c6222c4c78df@gmail.com>
 References: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
- <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
-Message-ID: <8115ab382115f66aa01dd3d00aaae474@manjaro.org>
+ <20240130-rk-dts-additions-v2-4-c6222c4c78df@gmail.com>
+Message-ID: <400e19a3f7b2de674a1db457b675233f@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240130_210803_373338_7BC55B3D 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20240130_210833_911895_67E0AD8B 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,98 +78,159 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello Alexey,
 
-Some notes below, please have a look.
-
 On 2024-01-30 19:21, Alexey Charkov wrote:
-> This enables thermal monitoring on Radxa Rock 5B and links the PWM
-> fan as an active cooling device managed automatically by the thermal
-> subsystem, with a target SoC temperature of 65C and a minimum-spin
-> interval from 55C to 65C to ensure airflow when the system gets warm
+> This introduces additional OPPs that share the same voltage as
+> another OPP already present in the .dtsi but with lower frequency.
+> 
+> The idea is to try and limit system throughput more gradually upon
+> reaching the throttling condition for workloads that are close to
+> sustainable power already, thus avoiding needless performance loss.
+> 
+> My limited synthetic benchmarking [1] showed around 3.8% performance
+> benefit when these are in place, other things equal (not meant to
+> be comprehensive though).
 
-I'd suggest that you replace "temperature driven fan control" with
-"active cooling" in the patch subject.  More concise and reads better.
+I'm fine with this two-patch approach, so this important new feature
+can be merged quicker, hopefully in the current merge window.  We can
+add more OPPs later, after the additional testing is performed, of
+course if all checks out as expected.
 
-> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> [1] 
+> https://lore.kernel.org/linux-rockchip/CABjd4YxqarUCbZ-a2XLe3TWJ-qjphGkyq=wDnctnEhdoSdPPpw@mail.gmail.com/T/#me92aa0ee25e6eeb1d1501ce85f5af4e58b3b13c5
+> 
 > Signed-off-by: Alexey Charkov <alchark@gmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 34 
-> ++++++++++++++++++++++++-
->  1 file changed, 33 insertions(+), 1 deletion(-)
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 87 
+> +++++++++++++++++++++++++++++++
+>  1 file changed, 87 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> index a0e303c3a1dc..b485edeef876 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> @@ -52,7 +52,7 @@ led_rgb_b {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> index af8b932a04c1..506676985a7e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> @@ -360,6 +360,21 @@ cluster0_opp_table: opp-table-cluster0 {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
 > 
->  	fan: pwm-fan {
->  		compatible = "pwm-fan";
-> -		cooling-levels = <0 95 145 195 255>;
-> +		cooling-levels = <0 120 150 180 210 240 255>;
->  		fan-supply = <&vcc5v0_sys>;
->  		pwms = <&pwm1 0 50000 0>;
->  		#cooling-cells = <2>;
-> @@ -173,6 +173,34 @@ &cpu_l3 {
->  	cpu-supply = <&vdd_cpu_lit_s0>;
->  };
+> +		opp-408000000 {
+> +			opp-hz = /bits/ 64 <408000000>;
+> +			opp-microvolt = <675000 675000 950000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-600000000 {
+> +			opp-hz = /bits/ 64 <600000000>;
+> +			opp-microvolt = <675000 675000 950000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-816000000 {
+> +			opp-hz = /bits/ 64 <816000000>;
+> +			opp-microvolt = <675000 675000 950000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+>  		opp-1008000000 {
+>  			opp-hz = /bits/ 64 <1008000000>;
+>  			opp-microvolt = <675000 675000 950000>;
+> @@ -392,6 +407,27 @@ cluster1_opp_table: opp-table-cluster1 {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
 > 
-> +&package_thermal {
-> +	polling-delay = <1000>;
-> +
-> +	trips {
-> +		package_fan0: package-fan0 {
-> +			temperature = <55000>;
-> +			hysteresis = <2000>;
-> +			type = "active";
+> +		opp-408000000 {
+> +			opp-hz = /bits/ 64 <408000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +			opp-suspend;
 > +		};
-> +		package_fan1: package-fan1 {
-> +			temperature = <65000>;
-> +			hysteresis = <2000>;
-> +			type = "active";
+> +		opp-600000000 {
+> +			opp-hz = /bits/ 64 <600000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
 > +		};
-> +	};
-> +
-> +	cooling-maps {
-> +		map0 {
-
-Should be "map1" instead of "map0".  There's already "map0"
-defined for "package_thermal" in the RK3588(s) dtsi file.
-
-> +			trip = <&package_fan0>;
-> +			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
+> +		opp-816000000 {
+> +			opp-hz = /bits/ 64 <816000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
 > +		};
-> +		map1 {
-
-Should be "map2" instead of "map1".
-
-> +			trip = <&package_fan1>;
-> +			cooling-device = <&fan 1 THERMAL_NO_LIMIT>;
-
-Should be "cooling-device = <&fan 2 THERMAL_NO_LIMIT>;"
-(i.e., "2 THERMAL_NO_LIMIT" instead of "1 THERMAL_NO_LIMIT").
-
-The first fan speed is already covered by the first cooling map.
-The second cooling map takes over from the second fan speed.
-
+> +		opp-1008000000 {
+> +			opp-hz = /bits/ 64 <1008000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
 > +		};
-> +	};
-> +};
-> +
->  &i2c0 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&i2c0m2_xfer>;
-> @@ -731,6 +759,10 @@ regulator-state-mem {
->  	};
->  };
+>  		opp-1200000000 {
+>  			opp-hz = /bits/ 64 <1200000000>;
+>  			opp-microvolt = <675000 675000 1000000>;
+> @@ -422,6 +458,21 @@ opp-2208000000 {
+>  			opp-microvolt = <987500 987500 1000000>;
+>  			clock-latency-ns = <40000>;
+>  		};
+> +		opp-2256000000 {
+> +			opp-hz = /bits/ 64 <2256000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-2304000000 {
+> +			opp-hz = /bits/ 64 <2304000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-2352000000 {
+> +			opp-hz = /bits/ 64 <2352000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+>  		opp-2400000000 {
+>  			opp-hz = /bits/ 64 <2400000000>;
+>  			opp-microvolt = <1000000 1000000 1000000>;
+> @@ -433,6 +484,27 @@ cluster2_opp_table: opp-table-cluster2 {
+>  		compatible = "operating-points-v2";
+>  		opp-shared;
 > 
-> +&tsadc {
-> +	status = "okay";
-> +};
-> +
->  &uart2 {
->  	pinctrl-0 = <&uart2m0_xfer>;
->  	status = "okay";
+> +		opp-408000000 {
+> +			opp-hz = /bits/ 64 <408000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +			opp-suspend;
+> +		};
+> +		opp-600000000 {
+> +			opp-hz = /bits/ 64 <600000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-816000000 {
+> +			opp-hz = /bits/ 64 <816000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-1008000000 {
+> +			opp-hz = /bits/ 64 <1008000000>;
+> +			opp-microvolt = <675000 675000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+>  		opp-1200000000 {
+>  			opp-hz = /bits/ 64 <1200000000>;
+>  			opp-microvolt = <675000 675000 1000000>;
+> @@ -463,6 +535,21 @@ opp-2208000000 {
+>  			opp-microvolt = <987500 987500 1000000>;
+>  			clock-latency-ns = <40000>;
+>  		};
+> +		opp-2256000000 {
+> +			opp-hz = /bits/ 64 <2256000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-2304000000 {
+> +			opp-hz = /bits/ 64 <2304000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+> +		opp-2352000000 {
+> +			opp-hz = /bits/ 64 <2352000000>;
+> +			opp-microvolt = <1000000 1000000 1000000>;
+> +			clock-latency-ns = <40000>;
+> +		};
+>  		opp-2400000000 {
+>  			opp-hz = /bits/ 64 <2400000000>;
+>  			opp-microvolt = <1000000 1000000 1000000>;
 
 _______________________________________________
 Linux-rockchip mailing list
