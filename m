@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06FE1C47258
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 21:17:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9453C47DB3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 21:17:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JGNuqr/LvDG7nHeqq0GaVC26HnSghyvEud4Y+DPon+k=; b=V9ZE8FZ1UQzEcH
-	/fV9QF8BRcG8aYRvsl3lEdf+qGuM0HZsqFEfmgGEES52+pD8iNfK/9GaDJGzLP3vPgnI3EQ6SlTk5
-	17Egyarq+N6xtWFXX/81iN3MLY5gHSo0y5ktrbp86PP1QlVYlso9EktjZ/w4Q319BukmbpwX37Uea
-	Zm5KxQJ1L64QQM67oOAM9S2RhvjtJFVTwObb/SLt+axBVfNDi5KhkPyNDZT5fQcjdN79RJAP2txHe
-	Am1Iz/p3av/l/1dWQ+4Kwj0lOCCVAZGUF0jIOpuDEMn9uYSLzwVnE0UcAfigOER8iG0g6NWtTu6B9
-	clX+gGRg8Ua1sSyonFwA==;
+	List-Owner; bh=FbRt3IU0Qw10pTmb7/MyWXyPHKb3P8qcw64upmVGzCU=; b=UV632GNg5K0+Qo
+	4Q5kng9UVqZc5YBb9rgj0mD2joZOTS5KL81pBJT9IUJoutJJBd6GE+qK49AVGNhdihcVAXflvr/Kt
+	DBxLFR5U3Qhm6INI7Xr/xRxwfXEBTZFsFSyCmfgrY4qbwi0B4RoMy+/UAyNo3MA97TKMO8tS5GYrQ
+	GsmvqDgwwp/WqEwX+9jwVJtPixcV04l1f7nk0QvprK3vKG7C2qF1JjqwEdLwblEm4GlTUzY5nkjcC
+	Q2U0N920Dsg6EsZA99bQWZNMjXY0abM+ZID6qOyhYGthUvJu5Qcb7L7oi4Mozu5Yh+thhPV9goGpJ
+	IogWh3KSwCFUiGq9Ny5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVHx2-00000005TII-2Njd;
-	Wed, 31 Jan 2024 21:16:56 +0000
-Received: from mail-ej1-f48.google.com ([209.85.218.48])
+	id 1rVHxH-00000005TQc-1TZS;
+	Wed, 31 Jan 2024 21:17:11 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVHws-00000005TBL-1qSQ;
-	Wed, 31 Jan 2024 21:16:53 +0000
-Received: by mail-ej1-f48.google.com with SMTP id a640c23a62f3a-a315f43ecc3so22127966b.0;
-        Wed, 31 Jan 2024 13:16:44 -0800 (PST)
+	id 1rVHx5-00000005TJ1-2hvO;
+	Wed, 31 Jan 2024 21:17:03 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a2a17f3217aso20861266b.2;
+        Wed, 31 Jan 2024 13:16:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706735803; x=1707340603; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1706735817; x=1707340617; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Y9SmInleJJW50YrvZW+J7AO+eV3PNYGh0Bhi/yWPzWQ=;
-        b=LLmDqRF/aV/qqMyho4e0fwPZ1lbaXgqcio7iL0b61pH+s2ft/zCC5vi3kqA6ZU/xW9
-         glMP9IznSKhN0uc8wWMOAsrWAQoQbdE03r3iWtfhI3HqjEkSjaPMqXbw7Fzi0Fd6tkRq
-         PWG4134CO1vZirOM63BBPShBLu6z8UwCbX/1NFO50heecTiXnW7PQz/ZHnDSNncoJVWy
-         pI5cwAbzViSsBzywkS/apnJo19gT//cGQyqIu74ybIqq76yQz499DHmLxUUd8sTcZWu/
-         tNm0Q8uzWinUHgcW0sVXQWYVZwzBt+cOczpnpkb+dksIjfFTrMiUWJk2GPoKA0Coksyt
-         FBKA==
+        bh=aIvaypLdP0+JFHDzqqa1D+EbFHtABYPWV2c8Aa5Q328=;
+        b=ZKzDNJjr1JJ86F3b/OHgeE8lDB9XFW9DbnWu0pihxn8YC15WMg9xBgLBo3QsRi4wFJ
+         TYbjTy2PLYnnQ6ykwjoDOOALArNjofbSksBZOkJzHlvDDyfUXD89Duk21h7NHRJ6sMcu
+         jSlBcMsczi9RIrY3vid5xbjJoHP039ZsKBj4oIEhCTnqncDjeD2rqdVCugVjq6A7Oym9
+         58f2WYIApafgjbg0zZS6L9uz5XnAQRuXw9EzMmpRtTZJ1iJQ6RVNxyLg/h3+ZbEdf02r
+         w/XHnvBGlncSkgDt1JopKzVhOKek+3Wpfkvc1rWjemJVfcuzlnP0k2Ax4ry4b/37cBg+
+         Hp/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706735803; x=1707340603;
+        d=1e100.net; s=20230601; t=1706735817; x=1707340617;
         h=content-transfer-encoding:in-reply-to:content-language:references
          :cc:to:subject:from:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y9SmInleJJW50YrvZW+J7AO+eV3PNYGh0Bhi/yWPzWQ=;
-        b=vv6JCB2p1qVVU9r621RdISoPXkFBVfmCPKC1eBEH7Fr7wXzZ1NKuC0uUtKHbnT8CrW
-         mFXSRAiN1RpBVd8Ni37iRNqmGTCVRXCFIlxKycN+GyHqijpfUz2Qm0sozfc/ueTHe9YJ
-         qcDfBUmzPmfZrztt5C+xx8wLytnpa7ogbByZOVwjPuYEz3HSNly+xYTlRBCZ6oZzH27k
-         ZMj7IaxW+HdXxyAn7Y0rCd7R3Z+n7UTmx6hkSN1iyEMwOHsrnVjtVmC5QD872+86BjTn
-         Ek7QjALDnS2Hg5V16TxbtiyJr5pJulp4eLga+po4k3celXmGEyuT6oOsFH+jjFClxPdT
-         7sBQ==
-X-Gm-Message-State: AOJu0YykBWgDBYEX3a5XtXLYkCCrN/gIXEtqSQFxf0gvrdqF9ekeA24z
-	iA5hABj6gkAVVIL/DAZ559QE+msNuP0RShp5Jb4wrb4IL4cIp1JL
-X-Google-Smtp-Source: AGHT+IFiNtk2W8Gds5rlEUJucqr0hxZtYVlXx8CB9ZL0yV0dlIBsl7TELozRqSGeP779yRy9JMoREg==
-X-Received: by 2002:a17:906:fa92:b0:a36:7291:888f with SMTP id lt18-20020a170906fa9200b00a367291888fmr2238279ejb.65.1706735803038;
-        Wed, 31 Jan 2024 13:16:43 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCVj/RaJySAKCvrlAOnjJsXfF/SANVDVD9dt5oLx30qbfHP74A0GI9LD66qJ4884hbNihZ9apPn3ZAAbFpzrkaZKgLp7vGkgRR+JfUqiaGWKEBWH/cqXnosXABbvoq1H/kOLHHsMsFWwlFNDlQ9RUtX2J5fPWK2J60pu6GfS7ODbtoLOBjKyOK+6Lmrc81vyudsuR3NwFx8eCYiSWoofQE/YgtCeqMl0nmGPwYebNcKuDrqzKPzxmH4Ant5DTzhUqhNKJAOA0ExoFEflnMuRtbmQVVzv2hh/4rX77AMIeLe2rbGiY0sIPeI5Fz6sfagpo2z+4TGtYPFfjKV1sqMhwFwqHdrnEZslAwGMyk2ZAQDIweLrFkSqn44rhQW6Bw3jLWU8paue+4/I/lJYkkPSK1tOazJ79ShFvx/ZGKqSIeEBkwvgJU7ERM4S/KJuMfKuK3vKsRdVGd3C0Sne5Hs5n6aZz5MYkFCZcRqdLx5KQCz5ywXobujwvEhVmsuC3rU3OEAF/cKka0SpzdwRoXko3ORfMvZpH0DRMr7P1WxrNROWfBcosCRQ+s1KJFedfrqtTqLLpoeuTVcMnjXxqmY=
+        bh=aIvaypLdP0+JFHDzqqa1D+EbFHtABYPWV2c8Aa5Q328=;
+        b=WHWhWyrgbTUD9oeQ//p7zAZjB58ME2QprE5YVEG3LgVEc6yaqbhiTT9U71Ig0pLCpv
+         nFu54FGRvxHhfXJ/5oxOGDNeBVlUjDqrmPFq2a+N3yz7XEaAPD3pkSygRC57FybjTLEQ
+         1Doyhjuh9jU8Fdd090S0Eru/Khwv/dMHWEhNvTQXe6zYdJUC41MJ3lN+0fgPg3mskIuY
+         Lab30rsHlLlmZPrsvP6U6p3Oq68zoNdPOQDww2isUCo31FSn001Q9/9YyeOaR8EL7yJS
+         6iPUqoCIWjvVM9CxIyadtr4aSIlmIi0BwvG2fYasHkv1dFDurruX0Wr1XhOzRuuw/C23
+         fMLQ==
+X-Gm-Message-State: AOJu0YwnG3kNBnqPC/F+xbL9J4FiuQxjUmR6t/AaeI7WHptzbcfLMsYR
+	HxA9bLhG5D2KSfoqmYhtkZoH5NKgWSjuVIhyAqWNQazKGnKkIvFm
+X-Google-Smtp-Source: AGHT+IHnO3WBh/+ajC4q+i/16gR61Amb9UqtxVbpXreKVzkmjEyKKcJdnZqL0gzfWAOgay1EoAzL9g==
+X-Received: by 2002:a17:906:2495:b0:a35:854f:6c9e with SMTP id e21-20020a170906249500b00a35854f6c9emr2058734ejb.51.1706735816769;
+        Wed, 31 Jan 2024 13:16:56 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCX6h2Y8J63c7oNmYUJeFHimF+GcNPtlF6WODVlXW+KZ6iCTqVqg0D51fEnFrd9PaRhjVZMpNJaOy2701csFyW8y0S+7/CgZBrNgtpfQ5QMjH5TCCL+CxYGKm0eb62yd17kMdsgnrikdnrrQ7RN0yHC054sAoinbOGzJF/OcbhhEuazViV8Ch9fuHX2KPrdDMQdFmjZfAmcSflVDCUlvyrRV3twI0NTdA6G1uWr/5leHTYx9r3g1pPt8BFAebYLJa9y7YjM4/xqD0AAYwvNpx6x8M6n/re4liSV00Nlsi0Zp8LD1igj6fwWiQubUZ8Bg9Y36dxHYP7Xhp5tHJ2r/3QiJhvIk0g8X73VF2vo/P4MXc74X9IFsLXUf8l0kZINM9D7h07ERqXfY6XQ2Aam1FLixptd7AWHwy0L1F7EC2RrZHxP9Lim31uAmBKQVfqqGbOwZXAxBXqfyQgm9wDKqTALAY2aoWzm3oDK3Y8hw+kPSawpNA8hlxVrMCOcp7FIoj1ZP3t1Y/b2jVCANP7gkha8y76qXMxX4XBnH5El/McGwAP3l8LDmvzdXLRqSpntlGyJUQvnlYt5i+Ht340o=
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id ty5-20020a170907c70500b00a35a8571419sm4040634ejc.135.2024.01.31.13.16.41
+        by smtp.gmail.com with ESMTPSA id ty5-20020a170907c70500b00a35a8571419sm4040634ejc.135.2024.01.31.13.16.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Jan 2024 13:16:42 -0800 (PST)
-Message-ID: <cc3a9b4f-076d-4660-b464-615003b6a066@gmail.com>
-Date: Wed, 31 Jan 2024 22:16:41 +0100
+        Wed, 31 Jan 2024 13:16:56 -0800 (PST)
+Message-ID: <9b84adf0-9312-47fd-becc-cadd06941f70@gmail.com>
+Date: Wed, 31 Jan 2024 22:16:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 3/6] ARM: dts: rockchip: fix rk3288 hdmi ports node
+Subject: [PATCH v2 4/6] ARM: dts: rockchip: fix rk322x hdmi ports node
 To: robh+dt@kernel.org
 Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
  krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, airlied@gmail.com,
@@ -79,8 +79,8 @@ References: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
 Content-Language: en-US
 In-Reply-To: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_131646_587232_C81CCE10 
-X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-CacheID: sfid-20240131_131659_795398_07DB4045 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,57 +98,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix rk3288 hdmi ports node so that it matches the
-rockchip,dw-hdmi.yaml binding with some reordering
-to align with the (new) documentation about
-property ordering.
+Fix rk322x hdmi ports node so that it matches the
+rockchip,dw-hdmi.yaml binding.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
 
 Changed V2:
   keep reg-io-width together with reg
-  reword
 ---
- arch/arm/boot/dts/rockchip/rk3288.dtsi | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/rockchip/rk322x.dtsi | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-index ead343dc3df1..3f1d640afafa 100644
---- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-@@ -1240,27 +1240,37 @@ hdmi: hdmi@ff980000 {
- 		compatible = "rockchip,rk3288-dw-hdmi";
- 		reg = <0x0 0xff980000 0x0 0x20000>;
- 		reg-io-width = <4>;
--		#sound-dai-cells = <0>;
--		rockchip,grf = <&grf>;
- 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
- 		clock-names = "iahb", "isfr", "cec";
- 		power-domains = <&power RK3288_PD_VIO>;
-+		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
+diff --git a/arch/arm/boot/dts/rockchip/rk322x.dtsi b/arch/arm/boot/dts/rockchip/rk322x.dtsi
+index 831561fc1814..96421355c274 100644
+--- a/arch/arm/boot/dts/rockchip/rk322x.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk322x.dtsi
+@@ -736,14 +736,20 @@ hdmi: hdmi@200a0000 {
  		status = "disabled";
 
  		ports {
 -			hdmi_in: port {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
+-				hdmi_in_vop: endpoint@0 {
+-					reg = <0>;
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
 +			hdmi_in: port@0 {
 +				reg = <0>;
- 				#address-cells = <1>;
- 				#size-cells = <0>;
 +
- 				hdmi_in_vopb: endpoint@0 {
- 					reg = <0>;
- 					remote-endpoint = <&vopb_out_hdmi>;
- 				};
-+
- 				hdmi_in_vopl: endpoint@1 {
- 					reg = <1>;
- 					remote-endpoint = <&vopl_out_hdmi>;
++				hdmi_in_vop: endpoint {
+ 					remote-endpoint = <&vop_out_hdmi>;
  				};
  			};
 +
