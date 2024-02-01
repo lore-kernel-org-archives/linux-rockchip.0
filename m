@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 930D2C4828D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F37C47DDF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QlNI0shyL+HnqH9CeYC8/FzRlfdU4KERFufVfS/dFFo=; b=ZCwluKyKJXBz3K
-	Wp6sOG29mxRXBImm+8bwQCEe7XOpK5KanD6vS6AMS8w36Qb5+UPq9/vB+IXfr+fwmEbK+X89x+tRR
-	gGjo3fKvJjdZFfUN3PePYEY9KJxgpDD0aPkAX+q+Xopjmp99Ffh1ZAH2+1EXEZuB08i/zsVSexERH
-	Z5/jBuWzXuNCfTbpjQfwOnfcc6IwN4ltUi4l7aV7IwQFPngxYgMIGhdl7ROUncacydwmvyE1sQZPM
-	ryGxegdZ73r5e54l9rCUoP2KeYP65Z1OARGCkZwrkfDz9R1AWyRIjRrZ5eX5uSXehrqbanuLdXBLP
-	aL9wGd6Ryvz6ct78XtBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5l8QeTceDKfjVdMLPRmcCp8yhSi33LCb/uAh7qsQUes=; b=UDm/2rnHxXTO0L
+	yQayC7LHL6H6Jj1z1o6GsDMC4nPVnW8NUyxAmeuznsE1LoSy7XGIC7UL2uU6ofEj5XhX/MMBatudg
+	aOLTNdxmbyaiixP2iDIsPabqwUi9iUqk/z9gWd6Pkwm7/8HKSHwAZKtOgWPVrPH1v4+iYGY0G4ot7
+	PfCAh+V91HovyTUe3Lft6X9GMUC2bmuy0ADL1gPexfsmht1YZuKLVnqoSd0KLu/9sLAJmkzJAqzlj
+	avvGrRJTCuGG1qZziSMIpVY3m83EiDREZcqUlepym8jzCEth06X7Cz4qG2fvnEeqyj8bf+fGrpiU9
+	RHvVoW8Nf+L0HpyrBTZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVVvI-00000007hlu-3nhi;
-	Thu, 01 Feb 2024 12:12:04 +0000
+	id 1rVVvD-00000007hjB-469a;
+	Thu, 01 Feb 2024 12:11:59 +0000
 Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVVvE-00000007hib-0X8h;
-	Thu, 01 Feb 2024 12:12:01 +0000
+	id 1rVVv9-00000007hf1-01v7;
+	Thu, 01 Feb 2024 12:11:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=KvYmw
-	ZNEjvb9A83FVmZYX/sRC9FmnLhMGuA9Gda7q+0=; b=GI+6UBnhwGYod5utkzp3j
-	DEGfcPT4QO8ODjHm6fzt30kdYkPEAEQ9Az9+9c9WSaJsB+4ahzU9zDig1oxzheKk
-	KydstvaX2FVA3k3WGWywQUiSfoHShf5QHrNo8AwJgvPvUrd+oJyOCRQpg62jn4Fm
-	MveMgKc9/wrKkJ3aMQa3IA=
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=pnMdN
+	pfxgQzJxgzSTVf6q0src2GgoFnb5r6Fx+QgrFU=; b=CcXxQEh1Rvn0yiDz9E0yG
+	XOqHrohCI1RVzLiagB5PSx54jTsUXhE/yF2FO1Av18HFyrhVJ4gdyh1bgjacSSdg
+	oXMVZA76uk9WgFNe5OAwpNOb/AaYHhXr178SG8YKY7LIrtY+Ac8mD2r2ckPzf9xs
+	EyCMtjQuA+UFz///vAPSc0=
 Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g1-0 (Coremail) with SMTP id _____wDX_35birtlKEO5AA--.30092S2;
-	Thu, 01 Feb 2024 20:11:12 +0800 (CST)
+	by gzga-smtp-mta-g1-0 (Coremail) with SMTP id _____wDX_35birtlKEO5AA--.30092S4;
+	Thu, 01 Feb 2024 20:11:14 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: heiko@sntech.de
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -43,23 +43,24 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>,
-	Dragan Simic <dsimic@manjaro.org>
-Subject: [PATCH v2 1/4] arm64: dts: rockchip: aliase sdmmc as mmc1 for Cool Pi 4B
-Date: Thu,  1 Feb 2024 20:11:03 +0800
-Message-Id: <20240201121106.1471301-1-andyshrk@163.com>
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH v2 3/4] arm64: dts: rockchip: rename vcc5v0_usb30_host regulator for Cool Pi CM5 EVB
+Date: Thu,  1 Feb 2024 20:11:05 +0800
+Message-Id: <20240201121106.1471301-3-andyshrk@163.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240201121106.1471301-1-andyshrk@163.com>
+References: <20240201121106.1471301-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDX_35birtlKEO5AA--.30092S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZryDuFyDJw1kuFyDZFyxZrb_yoWfWFX_ta
-	47Wr1kXa93Jry3Z3s8tay5Gay7Gayq9w4fK3yYva95JF1Yqan7Jay5Ja9293WUAF4jkrs3
-	JrZxZF1xGw1a9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sR3n5GPUUUUU==
+X-CM-TRANSID: _____wDX_35birtlKEO5AA--.30092S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uFyDXFykWw4DKFy8JrykGrg_yoW8GFWfpw
+	nxurZrJr1fuFWUt3yqg3Z7Krn8Cw4kJ3ZxurykJr1rKr12qFnrtFn3uF1fAFZ8J3Z2yan0
+	kF98Zry7JFyqvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zi3CztUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAZ3XmVOCDl11gABsH
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/1tbiqAZ3XmVOCDrNgAAAsT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_041200_659212_6F16F625 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20240201_041155_465751_4E37D710 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +77,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Follow others rk3588 based boards, and u-boot only use mmc0/1
-as mmc boot targets, so aliase sdmmc as mmc1.
+According to the schematic, USB20 HOST0 and HOST1 each have their own
+independent power supply, but these two regulators controlled by a
+same GPIO, so give it a more appropriate name.
 
-Fixes: 3f5d336d64d6 ("arm64: dts: rockchip: Add support for rk3588s based board Cool Pi 4B")
+Fixes: 791c154c3982 ("arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB")
 Signed-off-by: Andy Yan <andyshrk@163.com>
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-
 ---
 
-(no changes since v1)
+Changes in v2:
+- Add two lable for this regulator
 
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index 3fae40b9ae1b..3b9d21a6f8bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -20,8 +20,8 @@ / {
- 
- 	aliases {
- 		mmc0 = &sdhci;
--		mmc1 = &sdio;
--		mmc2 = &sdmmc;
-+		mmc1 = &sdmmc;
-+		mmc2 = &sdio;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+index 1b5681fe0471..9c0f408ef339 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
+@@ -84,7 +84,7 @@ vcc3v3_lcd: vcc3v3-lcd-regulator {
+ 		vin-supply = <&vcc3v3_sys>;
  	};
  
- 	analog-sound {
+-	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
++	vcc5v0_usb_host1: vcc5v0_usb_host2: vcc5v0-usb-host-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_host";
+ 		regulator-boot-on;
+@@ -200,12 +200,12 @@ &u2phy3 {
+ };
+ 
+ &u2phy2_host {
+-	phy-supply = <&vcc5v0_usb30_host>;
++	phy-supply = <&vcc5v0_usb_host1>;
+ 	status = "okay";
+ };
+ 
+ &u2phy3_host {
+-	phy-supply = <&vcc5v0_usb30_host>;
++	phy-supply = <&vcc5v0_usb_host2>;
+ 	status = "okay";
+ };
+ 
 -- 
 2.34.1
 
