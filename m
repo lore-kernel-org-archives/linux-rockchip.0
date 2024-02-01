@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4601CC47DDF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC215C47DDF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G1nqvKcA3+FvHjNyHd1LqGNGSJsFoiGvl4nLAXcQXnQ=; b=EQGfXrXMejFpM7qub/hPm7umuZ
-	iR4Z4Kwx3h2lJXWNnjCeWOj9/L2wCLt8CWopshrnC/HFl9AF2OMPnSz0lG/Q0JRThb77mz0S9BkAn
-	hAnA20lVc+ag91C+Wo8+Y9OlTokV+/ToJwX05A2atfa7lN8cNOA7T7m30cLpT0fZnX/J9owOubX14
-	d+/RcL0lIaUPKx7nVDUPPiGqGMb4OikvLeyHnYGnIC0ln0qAteNTR9p3QBKpKqaY4tNTrPPFwx8xG
-	dwK49HzpUmdGvxQlYWAw5Ck6mOeQm9tmIXIx3cPZsUaF2en4VQIKa2XKtGFis08O3Y+lyUXVk7T4E
-	wuymftDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=w863Z5R73bxpOydnOrk8HPDGbdYtzYh/YW8kxH7l8Ws=; b=iBKXLe1jZDLCyJ
+	tXBMDbfPAOzPUc8qgybRcEuCO3oP9/W6e/3yuEH5FeLHgUUGO53Jie605VT8dNrekbPQ3XiqMZQ6G
+	hGn9WX1zjNjNwQZeblWsvWcRQDt0CR/Ze526pTIiRF6kLpxjKiZfOgBKW9/iWkNg+p9/wsTUkGRIL
+	CcW2SokHwUtE8JPthKg2+Qsyub3bqDG+hTa9Jk8pKQlRDcMVvCJDq1jzKQwEk+MbEQMiQKjBBHOcV
+	hIKy5YynPQOT6YtdHAIcSWo4RHjQyAJPzPe3M3mk9FAuTgdTwgmk/MjJjWEieBjgj8XLntxfzuhOh
+	MNetYAlwh+2b6T5ULPGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWIW-00000007myG-0zhu;
-	Thu, 01 Feb 2024 12:36:04 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rVWR9-00000007oT9-2M7S;
+	Thu, 01 Feb 2024 12:44:59 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWIS-00000007mxM-0U11;
-	Thu, 01 Feb 2024 12:36:01 +0000
+	id 1rVWR6-00000007oQE-2QxW
+	for linux-rockchip@lists.infradead.org;
+	Thu, 01 Feb 2024 12:44:58 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40f033c2e30so8122435e9.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Feb 2024 04:44:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1706791486; x=1707396286; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6IHYNEjrz+fMnkN7rBKRPCSWZe0v/T0N15MdaE6oBBg=;
+        b=OikGP/azZMXrBty+T7KqTLBUuQssd+T2hV23nv4d6+rT9lxwJ8O9oYTxOuSvGFuHlW
+         eUJ4KpAClJkVSm75B10Oz4z3PGP/24XdU6h5uFf91ya304ffkPn7WeTkP22VFk6ei+EN
+         O7W/1c6e1PoyOF60NIPMS18OBIb/kAn8ckeYRDWL1DGHjGnzKbiRtKJvGc/A7ncjuPPJ
+         40pyoPN0eFUNARL736rZuRSbFzW82Uu2Ieae45o7Yrj+FF3gmohv0xY65AHR9KXgwXHO
+         dTY+HoE5R6veq/Ku4Rxv8UkJgwvyijcdxTpt/fySd6SwjCkTigLbO1Fi0mb+KISVI+Fb
+         Zxqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1706791486; x=1707396286;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6IHYNEjrz+fMnkN7rBKRPCSWZe0v/T0N15MdaE6oBBg=;
+        b=kcuuJrGTlxOUGYfjoxVB8/6p7skgZ/8tQdnE+abS3FKOyiC3Fa8Bv9/rfEUv3SnfPW
+         HzzZRYuF8bDQUXlfcDEZGYMW7F4jET4rkerg7gZxXKC6c0oHEl7IA9ycBOQO0sZzhW70
+         S1fZJHRuVU7qJX8Sck8RwdQaYYIPaHZX/P5+nZARu3uHWB0jIETEgjqukbi/nMhJQZL+
+         IBwD89RQDMBAPrFcs0ORpxXK4os9eIpvT4YaLOwqMmMxjRUGM1foeWS+Jxz8RlK2NEvD
+         5SGOThR80Mz7fTpHEmIah2tvVyVwsHQI9Jlv334zDr85QykuJ0tWbNc0ayPv+wBx0Ztn
+         ZySg==
+X-Gm-Message-State: AOJu0YyBrPundPdGfBbBlnLIioCKTtl+WM0ELPWn8oe/gCIUD7gJYSvu
+	UqKEIlSRpHIr34nWC1FcZ5RreB3yBmuiiH0hdAioUR6bhaQEleOoK1BlL1YA
+X-Google-Smtp-Source: AGHT+IH9YbsjSMfEN7/ZxTFY71wHCViMJcRPseJso13x5uspbJi9rylCpTSQtwzo5cDG75EvN3c24g==
+X-Received: by 2002:a05:600c:4f4d:b0:40f:b65c:6127 with SMTP id m13-20020a05600c4f4d00b0040fb65c6127mr2881416wmq.35.1706791486133;
+        Thu, 01 Feb 2024 04:44:46 -0800 (PST)
+X-Forwarded-Encrypted: i=0; AJvYcCXlasx3CmtE47ZwaWveo1MK/khSiwuxBliYYlFYx+i+SBYU4+x+KwjTVjMkDXRdGNuESyYhHgDgYGk6JOefzcidpECDxibfwcgQJP6LgYCgIXc9EUXy6txcDe9ROJQRbRJC0F31qDOqxEtpdgkewY9lwB5i88X6kN4=
+Received: from localhost.localdomain (2a02-8388-180a-cd80-ae73-baa1-6de4-2169.cable.dynamic.v6.surfer.at. [2a02:8388:180a:cd80:ae73:baa1:6de4:2169])
+        by smtp.gmail.com with ESMTPSA id p23-20020a05600c1d9700b0040e9d507424sm4483028wms.5.2024.02.01.04.44.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Feb 2024 04:44:45 -0800 (PST)
+From: Jakob Unterwurzacher <jakobunt@gmail.com>
+X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	jakob.unterwurzacher@theobroma-systems.com,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: add attiny_rst_gate to Ringneck
+Date: Thu,  1 Feb 2024 13:44:27 +0100
+Message-ID: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1706790954;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TNyn5Df3rgP7z195cu82vjAEsVN9pPRraJv9Xn4e6Rc=;
-	b=nhL5AXsH0UqTo5sX9FwKfgCdD9oqkOaTfqnaE8JgTfx/DSZos/Ltmg8rTB+TmkBu0dfZQv
-	K0X2TaqpuQKKAX4yoGtVXiY4BRaK524w/GI9mSnM/oBl2OODYP4SgCaVb+B5dxb/rk597a
-	Q2Pn3l+YZv5NnR9oWtoMQHvOUb2gAS2mjSavi/O0VBvrQfS2SkJEnsN32RU9BsQXAROEby
-	QwcsXBba2bE5hwsRCz1D24Nr7xKV7OTF+Hc+2Qj3IQFooHCuYg+v41WCYyqCDglcBRA61g
-	08t3qhE+pnt2Qf0xnFPdJUrfdnA3RCuJL+O7s2SRrB1tmEIdkNYuLvJWe+qrFw==
-Date: Thu, 01 Feb 2024 13:35:53 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/4] arm64: dts: rockchip: rename vcc5v0_usb30_host
- regulator for Cool Pi CM5 EVB
-In-Reply-To: <20240201121106.1471301-3-andyshrk@163.com>
-References: <20240201121106.1471301-1-andyshrk@163.com>
- <20240201121106.1471301-3-andyshrk@163.com>
-Message-ID: <2da07d89de139b6325c7353273b16805@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_043600_647935_119B040F 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20240201_044456_628401_96CBF5E8 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,60 +87,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-02-01 13:11, Andy Yan wrote:
-> According to the schematic, USB20 HOST0 and HOST1 each have their own
-> independent power supply, but these two regulators controlled by a
-> same GPIO, so give it a more appropriate name.
-> 
-> Fixes: 791c154c3982 ("arm64: dts: rockchip: Add support for rk3588
-> based board Cool Pi CM5 EVB")
-> Signed-off-by: Andy Yan <andyshrk@163.com>
+Ringneck v1.4 can contain (placement option) an on-board ATtiny
+microcontroller instead of an STM32. In normal operation, this
+is transparent to the software, as both microcontrollers emulate
+the same ICs (amc6821 and isl1208).
 
-Looking good to me.
+For flashing the ATtiny, the SWITCH_REG1 regulator of the board's PMIC is
+used to enable the ATtiny UPDI debug interface. If the STM32 is placed, or if
+we are running on an older Ringneck revision, SWITCH_REG1 is not connected
+and has no effect.
 
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+Add attiny-updi-gate-regulator so userspace can control it via sysfs:
 
-> ---
-> 
-> Changes in v2:
-> - Add two lable for this regulator
-> 
->  arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-> b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-> index 1b5681fe0471..9c0f408ef339 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts
-> @@ -84,7 +84,7 @@ vcc3v3_lcd: vcc3v3-lcd-regulator {
->  		vin-supply = <&vcc3v3_sys>;
->  	};
-> 
-> -	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
-> +	vcc5v0_usb_host1: vcc5v0_usb_host2: vcc5v0-usb-host-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc5v0_host";
->  		regulator-boot-on;
-> @@ -200,12 +200,12 @@ &u2phy3 {
->  };
-> 
->  &u2phy2_host {
-> -	phy-supply = <&vcc5v0_usb30_host>;
-> +	phy-supply = <&vcc5v0_usb_host1>;
->  	status = "okay";
->  };
-> 
->  &u2phy3_host {
-> -	phy-supply = <&vcc5v0_usb30_host>;
-> +	phy-supply = <&vcc5v0_usb_host2>;
->  	status = "okay";
->  };
+  echo enabled > /sys/devices/platform/attiny-updi-gate-regulator/state
+
+Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index dec29a75d361..1f7f4b2ea66a 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -15,6 +15,12 @@ aliases {
+ 		rtc1 = &rk809;
+ 	};
+ 
++	/* allows userspace to control the gate of the ATtiny UPDI pass FET via sysfs */
++	attiny-updi-gate-regulator {
++		compatible = "regulator-output";
++		vout-supply = <&vg_attiny_updi>;
++	};
++
+ 	emmc_pwrseq: emmc-pwrseq {
+ 		compatible = "mmc-pwrseq-emmc";
+ 		pinctrl-0 = <&emmc_reset>;
+@@ -146,6 +152,7 @@ rk809: pmic@20 {
+ 		vcc5-supply = <&vcc_3v3>;
+ 		vcc6-supply = <&vcc_3v3>;
+ 		vcc7-supply = <&vcc_3v3>;
++		vcc8-supply = <&vcc5v0_sys>;
+ 		vcc9-supply = <&vcc5v0_sys>;
+ 
+ 		regulators {
+@@ -290,6 +297,11 @@ regulator-state-mem {
+ 					regulator-suspend-microvolt = <1800000>;
+ 				};
+ 			};
++
++			/* supplies the gate of the ATtiny UPDI pass FET */
++			vg_attiny_updi: SWITCH_REG1 {
++				regulator-name = "vg_attiny_updi";
++			};
+ 		};
+ 	};
+ };
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
