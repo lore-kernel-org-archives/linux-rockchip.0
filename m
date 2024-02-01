@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F931C4828D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 17:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6688FC4828D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 18:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/W0QJ8r6aXFWlJu/oz2pPxrbSL+LvwPPRCDNHZ2VU4A=; b=rbfONid2YP8tM7VITjHVXVN9na
-	hkJFv4jf/bDi/RVw61LD3IYSiTX+VFPjAXciStwmbCk1Mp3b7z5MYSdK0EgMcyGT/7HNWV8B3pdL3
-	pSRV93VlBT425UDZA7HMMSRn/zcczt2ipOQX3KuiP5ShFXuJqFpJcmuRwg+s2tiADjAW7BL65upmc
-	GPgl1tdO7b1esg7tIkPM7bntkqyi5md5wY1cnybxBEZYoW6Yoc+1EcgPzoQ+cipJf8lFAzPp+xFZt
-	SFHALO4+p1SuG/cd1lE1MBtzMvdoAAc5wZXRr6ktx8STdpcqSTH/cAYstoCv2Ar2XT9AY8r31JF5J
-	rJUd42nQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JIijd7p2StLI2wKs0wx4W1utkGq8ettbxDaWM9uchfw=; b=cJRDoesJmdAsUx
+	rdsZKFwJzsn9PRGuaMterm7IR+sodLCCzU5hoAfB+0r3KFaYsyo0ovp/HIhNFlRon0fNmslE0Fmoc
+	pf+LALhZjVQM13Hd5pZAHDwsCLO2H8HIPQaZ+ZtX1RfGDPQ3k8alUJqntEFwbBu9k2JS62R4xQvoy
+	SujnrZBFYRzFEyeP6j42Zgi0qecGkXcTu725OfLZIGkVr/qz8IR0vYJ7mWO/cudUjpbYarnWqf5JZ
+	32pMBasBh78E6APjq67Sr9zzpCeBBOvHd4cTMgT2yzIN/Fegs/xtMpBJv2mj7mP8paRd7vWA/BDBn
+	B80f5EJXsAhWA/0XPIyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVaxG-00000008okN-354H;
-	Thu, 01 Feb 2024 17:34:26 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1rVbT8-00000008wFa-46ff;
+	Thu, 01 Feb 2024 18:07:22 +0000
+Received: from mail.someserver.de ([2a01:4f8:241:f700:8fb:afff:fef5:f64e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVaxC-00000008oit-2nkX;
-	Thu, 01 Feb 2024 17:34:24 +0000
+	id 1rVbT5-00000008wBU-3nsD;
+	Thu, 01 Feb 2024 18:07:21 +0000
+Received: from localhost (unknown [195.162.191.218])
+	by mail.someserver.de (Postfix) with ESMTPSA id 80FA2A211E;
+	Thu,  1 Feb 2024 19:07:10 +0100 (CET)
+From: Christina Quast <contact@christina-quast.de>
+Subject: [PATCH v2 0/3] Add Rust Rockchip PHY driver
+Date: Thu, 01 Feb 2024 19:06:57 +0100
+Message-Id: <20240201-rockchip-rust-phy_depend-v2-0-c5fa4faab924@christina-quast.de>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1706808859;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=I62Ngu6mHUbbEd5/PKgWiEzJpbocaOMuoLyyq/u6R8M=;
-	b=WkY/V6+2VLAsUER854fHTV0ijhfmJSzor5H6LK4YNxI2Z9+7CpORaMMz4uetnzSEQDFxJh
-	ICEh9Du6iegkMwDanyR4V2Ro7ptplD8sOZ5Q2QRz5+hm56aeH/RRiiw1T9oz92eQgEk6V2
-	6yf38wMVwANtCJWVwN9gKD5++gVglcvUuM/ruqcLnd4EdV9QxvBQ0wJRNa9gsOBn4uZBYx
-	w7Th5wyqr+dIbLpSXTkeN+LClphsGIXgt0ZHfsuKPUg9IiIYJDLBuruSSXwBX5K6QjphIk
-	aSFprWQ9gT96w8UldfAYuWcueWJHdHrOfqBAEXd35XKhm0x/5WnV55Er7R+aMA==
-Date: Thu, 01 Feb 2024 18:34:18 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: wens@kernel.org
-Cc: Alexey Charkov <alchark@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: enable temperature driven
- fan control on Rock 5B
-In-Reply-To: <CAGb2v65--rgb2FqmG_0-w1-jUL0odqKXxiZJ-XPYA4uomfYmaQ@mail.gmail.com>
-References: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
- <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
- <CAGb2v65--rgb2FqmG_0-w1-jUL0odqKXxiZJ-XPYA4uomfYmaQ@mail.gmail.com>
-Message-ID: <5e3e12d65e4919372e7fb02d56202393@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-B4-Tracking: v=1; b=H4sIAMHdu2UC/0XMQQ7CIBCF4asY1o4BWtvqynsYYyhMZWKkONBG0
+ /TuEl34dt/i/YtIyIRJHDeLYJwp0RgK9HYjrDfhhkCuWGipa6mlAh7t3XqKwFPKEP376jBicNB
+ 0yvV1K9syUe6RcaDXN32+FA88PiB7RvMPqkr+Oj1lmBUoQKfRNVV3MPvuZD1TyhQMPCeT8s6hW
+ NcPdt7myrMAAAA=
+To: Miguel Ojeda <ojeda@kernel.org>, Alex Gaynor <alex.gaynor@gmail.com>, 
+ Wedson Almeida Filho <wedsonaf@gmail.com>, 
+ Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, 
+ =?utf-8?q?Bj=C3=B6rn_Roy_Baron?= <bjorn3_gh@protonmail.com>, 
+ Benno Lossin <benno.lossin@proton.me>, 
+ Andreas Hindborg <a.hindborg@samsung.com>, 
+ Alice Ryhl <aliceryhl@google.com>, 
+ FUJITA Tomonori <fujita.tomonori@gmail.com>, 
+ Trevor Gross <tmgross@umich.edu>, Andrew Lunn <andrew@lunn.ch>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: rust-for-linux@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Christina Quast <contact@christina-quast.de>
+X-Mailer: b4 0.12.4
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1706810819; l=1206;
+ i=contact@christina-quast.de; s=20240130; h=from:subject:message-id;
+ bh=jWA5iTRD69ucDNwkpZwR5jCH+P2otKImG+J2kWpMQs8=;
+ b=x2+WW6v6zLMM6XjRuSZYbZ89dx3Cl5LmXdahaHthccc/4Gh8+ZzNrEDkpGaplAm9LUlUMptAJ
+ DRo0OfTS6bQB4JaHE1iLovyZ7EjwiZi42bBiADhExh0vY5oYleM7WbV
+X-Developer-Key: i=contact@christina-quast.de; a=ed25519;
+ pk=aoQfinjbnr265vCkIZdYteLDcmIqLBhY1m74WfFUU9E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_093423_334337_59AA98FD 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20240201_100720_154432_8BD6EF69 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,72 +79,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQ2hlbi1ZdSwKCk9uIDIwMjQtMDItMDEgMTU6MjYsIENoZW4tWXUgVHNhaSB3cm90ZToK
-PiBPbiBXZWQsIEphbiAzMSwgMjAyNCBhdCAyOjIy4oCvQU0gQWxleGV5IENoYXJrb3YgPGFsY2hh
-cmtAZ21haWwuY29tPiAKPiB3cm90ZToKPj4gCj4+IFRoaXMgZW5hYmxlcyB0aGVybWFsIG1vbml0
-b3Jpbmcgb24gUmFkeGEgUm9jayA1QiBhbmQgbGlua3MgdGhlIFBXTQo+PiBmYW4gYXMgYW4gYWN0
-aXZlIGNvb2xpbmcgZGV2aWNlIG1hbmFnZWQgYXV0b21hdGljYWxseSBieSB0aGUgdGhlcm1hbAo+
-PiBzdWJzeXN0ZW0sIHdpdGggYSB0YXJnZXQgU29DIHRlbXBlcmF0dXJlIG9mIDY1QyBhbmQgYSBt
-aW5pbXVtLXNwaW4KPj4gaW50ZXJ2YWwgZnJvbSA1NUMgdG8gNjVDIHRvIGVuc3VyZSBhaXJmbG93
-IHdoZW4gdGhlIHN5c3RlbSBnZXRzIHdhcm0KPj4gCj4+IEFja2VkLWJ5OiBEYW5pZWwgTGV6Y2Fu
-byA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4KPj4gU2lnbmVkLW9mZi1ieTogQWxleGV5IENo
-YXJrb3YgPGFsY2hhcmtAZ21haWwuY29tPgo+PiAtLS0KPj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzIHwgMzQgCj4+ICsrKysrKysrKysrKysrKysrKysr
-KysrKy0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAzMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
-Cj4+IAo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgt
-cm9jay01Yi5kdHMgCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9j
-ay01Yi5kdHMKPj4gaW5kZXggYTBlMzAzYzNhMWRjLi5iNDg1ZWRlZWY4NzYgMTAwNjQ0Cj4+IC0t
-LSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzCj4+ICsr
-KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzCj4+IEBA
-IC01Miw3ICs1Miw3IEBAIGxlZF9yZ2JfYiB7Cj4+IAo+PiAgICAgICAgIGZhbjogcHdtLWZhbiB7
-Cj4+ICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInB3bS1mYW4iOwo+PiAtICAgICAgICAg
-ICAgICAgY29vbGluZy1sZXZlbHMgPSA8MCA5NSAxNDUgMTk1IDI1NT47Cj4+ICsgICAgICAgICAg
-ICAgICBjb29saW5nLWxldmVscyA9IDwwIDEyMCAxNTAgMTgwIDIxMCAyNDAgMjU1PjsKPj4gICAg
-ICAgICAgICAgICAgIGZhbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiAgICAgICAgICAgICAg
-ICAgcHdtcyA9IDwmcHdtMSAwIDUwMDAwIDA+Owo+PiAgICAgICAgICAgICAgICAgI2Nvb2xpbmct
-Y2VsbHMgPSA8Mj47Cj4+IEBAIC0xNzMsNiArMTczLDM0IEBAICZjcHVfbDMgewo+PiAgICAgICAg
-IGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfbGl0X3MwPjsKPj4gIH07Cj4+IAo+PiArJnBhY2thZ2Vf
-dGhlcm1hbCB7Cj4+ICsgICAgICAgcG9sbGluZy1kZWxheSA9IDwxMDAwPjsKPj4gKwo+PiArICAg
-ICAgIHRyaXBzIHsKPj4gKyAgICAgICAgICAgICAgIHBhY2thZ2VfZmFuMDogcGFja2FnZS1mYW4w
-IHsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgdGVtcGVyYXR1cmUgPSA8NTUwMDA+Owo+PiAr
-ICAgICAgICAgICAgICAgICAgICAgICBoeXN0ZXJlc2lzID0gPDIwMDA+Owo+PiArICAgICAgICAg
-ICAgICAgICAgICAgICB0eXBlID0gImFjdGl2ZSI7Cj4+ICsgICAgICAgICAgICAgICB9Owo+PiAr
-ICAgICAgICAgICAgICAgcGFja2FnZV9mYW4xOiBwYWNrYWdlLWZhbjEgewo+PiArICAgICAgICAg
-ICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9IDw2NTAwMD47Cj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgIGh5c3RlcmVzaXMgPSA8MjAwMD47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHR5
-cGUgPSAiYWN0aXZlIjsKPj4gKyAgICAgICAgICAgICAgIH07Cj4+ICsgICAgICAgfTsKPj4gKwo+
-PiArICAgICAgIGNvb2xpbmctbWFwcyB7Cj4+ICsgICAgICAgICAgICAgICBtYXAwIHsKPj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgdHJpcCA9IDwmcGFja2FnZV9mYW4wPjsKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgY29vbGluZy1kZXZpY2UgPSA8JmZhbiBUSEVSTUFMX05PX0xJTUlUIDE+
-Owo+PiArICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgICAgIG1hcDEgewo+PiArICAg
-ICAgICAgICAgICAgICAgICAgICB0cmlwID0gPCZwYWNrYWdlX2ZhbjE+Owo+PiArICAgICAgICAg
-ICAgICAgICAgICAgICBjb29saW5nLWRldmljZSA9IDwmZmFuIDEgVEhFUk1BTF9OT19MSU1JVD47
-Cj4+ICsgICAgICAgICAgICAgICB9Owo+PiArICAgICAgIH07Cj4+ICt9Owo+PiArCj4+ICAmaTJj
-MCB7Cj4+ICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gICAgICAgICBwaW5j
-dHJsLTAgPSA8JmkyYzBtMl94ZmVyPjsKPj4gQEAgLTczMSw2ICs3NTksMTAgQEAgcmVndWxhdG9y
-LXN0YXRlLW1lbSB7Cj4+ICAgICAgICAgfTsKPj4gIH07Cj4+IAo+PiArJnRzYWRjIHsKPj4gKyAg
-ICAgICBzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+PiArCj4gCj4gSXMgdGhlcmUgYW55IHJlYXNv
-biB0aGlzIGNhbid0IGJlIGVuYWJsZWQgYnkgZGVmYXVsdCBpbiB0aGUgLmR0c2kgZmlsZT8KPiBU
-aGUgdGhlcm1hbCBzZW5zb3IgZG9lc24ndCBkZXBlbmQgb24gYW55dGhpbmcgZXh0ZXJuYWwsIHNv
-IHRoZXJlIHNob3VsZAo+IGJlIG5vIHJlYXNvbiB0byBwdXNoIHRoaXMgZG93biB0byB0aGUgYm9h
-cmQgbGV2ZWwuCgpBY3R1YWxseSwgdGhlcmUgaXMgYSByZWFzb24uICBEaWZmZXJlbnQgYm9hcmRz
-IGNhbiBoYW5kbGUgdGhlIGNyaXRpY2FsCm92ZXJoZWF0aW5nIGRpZmZlcmVudGx5LCBieSBsZXR0
-aW5nIHRoZSBDUlUgb3IgdGhlIFBNSUMgaGFuZGxlIGl0LiAgVGhpcwp3YXMgYWxzbyB0aGUgY2Fz
-ZSBmb3IgdGhlIFJLMzM5OS4KClBsZWFzZSwgaGF2ZSBhIGxvb2sgYXQgdGhlIGZvbGxvd2luZyBE
-VCBwcm9wZXJ0aWVzLCB3aGljaCBhcmUgY29uc3VtZWQKYnkgZHJpdmVycy90aGVybWFsL3JvY2tj
-aGlwX3RoZXJtYWwuYzoKICAgLSAicm9ja2NoaXAsaHctdHNodXQtbW9kZSIKICAgLSAicm9ja2No
-aXAsaHctdHNodXQtcG9sYXJpdHkiCgpTZWUgYWxzbyBwYWdlIDEsMzcyIG9mIHRoZSBSSzM1ODgg
-VFJNIHYxLjAuCgpUaGlzIGhhcyBhbHNvIHJlbWluZGVkIG1lIHRvIGNoZWNrIGhvdyBpcyB0aGUg
-Um9jayA1QiBhY3R1YWxseSB3aXJlZCwKanVzdCB0byBtYWtlIHN1cmUuICBXZSBhY3R1YWxseSBu
-ZWVkIHRvIHByb3ZpZGUgdGhlIHR3byBEVCBwcm9wZXJ0aWVzCmxpc3RlZCBhYm92ZSwgYXQgbGVh
-c3QgdG8gYXZvaWQgZW1pdHRpbmcgdGhlIHdhcm5pbmdzLgoKPj4gICZ1YXJ0MiB7Cj4+ICAgICAg
-ICAgcGluY3RybC0wID0gPCZ1YXJ0Mm0wX3hmZXI+Owo+PiAgICAgICAgIHN0YXR1cyA9ICJva2F5
-IjsKPj4gCj4+IC0tCj4+IDIuNDMuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Based on the example shown in drivers/net/phy/ax88796b_rust.rs, I ported
+the rockchip phy driver to Rust. The code in drivers/net/phy/rockchip.c
+was basically rewritten in Rust.  The patchset includes changes to
+phy.rs, adding more struct driver functions for the abstraction with
+Rust.
+
+The driver was not tested on real hardware, because I do not have a
+board with this phy, and I would appreciate it if somebody could try
+out the driver on their board.
+
+Signed-off-by: Christina Quast <contact@christina-quast.de>
+---
+Christina Quast (3):
+      DONOTMERGE: rust: prelude: add bit function
+      rust: phy: add some phy_driver and genphy_ functions
+      net: phy: add Rust Rockchip PHY driver
+
+ drivers/net/phy/Kconfig          |   8 +++
+ drivers/net/phy/Makefile         |   4 ++
+ drivers/net/phy/rockchip_rust.rs | 131 +++++++++++++++++++++++++++++++++++++++
+ rust/kernel/net/phy.rs           |  31 +++++++++
+ rust/kernel/prelude.rs           |  16 +++++
+ 5 files changed, 190 insertions(+)
+---
+base-commit: 6613476e225e090cc9aad49be7fa504e290dd33d
+change-id: 20240201-rockchip-rust-phy_depend-681db4707777
+
+Best regards,
+-- 
+Christina Quast <contact@christina-quast.de>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
