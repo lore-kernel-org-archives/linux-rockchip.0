@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0753C47DDF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC2A0C4828D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 13:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xlzsZuzbRQv1O55CV1eSQhrOecsTv9xsRbB4fZqRE3M=; b=EjPAbg48Zs4VMb74Do/arjQqIl
-	yoRBML+3LPcgDqFEsxxOYpuR/VHP82CxShgqPvrwUgZKxE+aKPHCy82WP+9WjFubsjYWHu8vHNV0e
-	JPJinpPAZ+B2QLT1D2fr2q+h6ZKCtww8aaZMqJzgzhTOWKGwUPwNnEOPvupv9WOhFrYa2MMpUaVPo
-	ht/WDN19GAFKxxABNkm4zPel2/TDgEH0AKs1udqM9o4aGN/oBuQMvJSXe6cbezNaYSOQvg79Fampm
-	WH/KisOFQd+HPSiI+mzeVSnLAfbvojRfFA0KpSpC8HoeVDTuvHEAmA3opcrd9YpVdJPk+/g84lYzx
-	oIsgQLVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DN3BD7ZZK4S5FDxSomnw+WBJ0rI6e5n48RZdI/Wh91Q=; b=XwR1PLhAMPRrch
+	mhSFea2Ypa7VVDvdNxOOddjqyCchcMhJyEheEH7X+xmQ5T/EaNcOW7tnOBzLZfCCRAk26v3TCpj1l
+	c7Kyv18IYBo7G1u8Pq7lqUANZHQ3/UeV27K5Zh2d5bWUNPAMBHdtf4S6rsKjLDiHkXHUvOMLDjrBT
+	LfgWs9RIrM1SS/ht711bAkDs1A65nNcuMLGwlQUsw8DOOzYFljacDqwTtwFlrS7y9phgHwDYpXmWo
+	nh2zmlAn/B3F9HCe+IThgE5fDiUPWAWhOzYNp/F1FBh621E8Jq2rBGigzG5wtNOj0CmAS/jhMhxD2
+	9AQvkuhpZboX1Wncc0Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWXN-00000007pfv-3pnI;
-	Thu, 01 Feb 2024 12:51:25 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rVXUj-00000008BBw-39kE;
+	Thu, 01 Feb 2024 13:52:45 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWXK-00000007pe0-0eIx;
-	Thu, 01 Feb 2024 12:51:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 5A230CE1E2F;
-	Thu,  1 Feb 2024 12:51:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C37FC433C7;
-	Thu,  1 Feb 2024 12:51:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706791878;
-	bh=iO+Eo8pPglcxEzFGDR/NbmaGU1weyDXreVR1dhmvHfA=;
+	id 1rVXUd-00000008B8M-2ElC;
+	Thu, 01 Feb 2024 13:52:41 +0000
+Received: from pendragon.ideasonboard.com (unknown [94.107.229.70])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 79909613C;
+	Thu,  1 Feb 2024 14:51:14 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1706795474;
+	bh=ebmTHicMZOC5G/O7XY0VPUZ32gErFhOhfjjwyQcH3aQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VG2TeXqvjxGcRv1tIL7nOyafkaL7z3CCvzIcS+2JApyFPDRQM0dhUM3PKC9rui9W7
-	 opOWXzX3wf+INRuwos5WuH4cf3M6JbqJJyg+LLI0aU/Mjafxp/zI/6LLOjymUIwDoC
-	 VDSk9ZulqP9mhOGNO91YqNdrN/xj0ITM+fgsH8po+qhjWD78Oni1Q/PDRrpA8716mK
-	 q7pVitaQP60mvxztWefD4GBlghOrGBUOghPd2F99j+OOahvR6F8gTncbv1qJZI/FBz
-	 m1WAK/Vazl7vTC3aR4c4aWHK20XFT2GuwJVRCjUR6Z4saoYMDPtpDx3hv0SXZYc5LH
-	 BbV/B+1mMlIrg==
-Date: Thu, 1 Feb 2024 13:51:15 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, Hans Verkuil <hverkuil@xs4all.nl>, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: Re: [PATCH v5 15/44] drm/connector: hdmi: Compute bpc and format
- automatically
-Message-ID: <jlkoofv7nszj2uqmo2672yo4wjd3yjqarge2l2hxofixcchu6a@j72pa4iybitd>
-References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
- <20231207-kms-hdmi-connector-state-v5-15-6538e19d634d@kernel.org>
- <CAPY8ntBQ+qY9441-rMzq_JAoYAaY_r+E-ADv7Wry0tJNTzKpwg@mail.gmail.com>
+	b=UD9a8fj3OvrZ5BeNaUdR2+AZQXSSCY7pfmfYLmE55moZqqNph9JgP8Gmn+b0M2Ngw
+	 emvh68QZD96AbHtCoqkYXrFjP94ELxMj/vXZuyHumLBdyPSbJns7bqsME9R3cgPzvq
+	 9ZHRS3U/4WrGrwVr+jip+mS55c08kjBzRdFJ5haI=
+Date: Thu, 1 Feb 2024 15:52:32 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, kieran.bingham@ideasonboard.com,
+	tomi.valkeinen@ideasonboard.com, umang.jain@ideasonboard.com,
+	aford173@gmail.com,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v6 04/11] media: rkisp1: Support devices lacking dual crop
+Message-ID: <20240201135232.GB5344@pendragon.ideasonboard.com>
+References: <20240111114831.656736-1-paul.elder@ideasonboard.com>
+ <20240111114831.656736-5-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <CAPY8ntBQ+qY9441-rMzq_JAoYAaY_r+E-ADv7Wry0tJNTzKpwg@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20240111114831.656736-5-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_045122_577048_954236A1 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20240201_055239_922636_A25E4E5F 
+X-CRM114-Status: GOOD (  27.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,162 +70,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6288355321161989273=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Paul,
 
---===============6288355321161989273==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vqybhtpmawkwvb6z"
-Content-Disposition: inline
+Thank you for the patch.
 
+On Thu, Jan 11, 2024 at 08:48:24PM +0900, Paul Elder wrote:
+> Some versions of the ISP supported by the rkisp1 driver, such as the ISP
+> in the i.MX8MP, lack the dual crop registers and don't support cropping
+> at the resizer input. They instead rely on cropping in the Image
+> Stabilization module, at the output of the ISP, to modify the resizer
+> input size and implement digital zoom.
+> 
+> Support those ISP versions by addind a dual crop feature flag, and
 
---vqybhtpmawkwvb6z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+s/addind/adding/
 
-On Thu, Dec 14, 2023 at 03:10:43PM +0000, Dave Stevenson wrote:
-> > +static bool
-> > +sink_supports_format_bpc(const struct drm_connector *connector,
-> > +                        const struct drm_display_info *info,
-> > +                        const struct drm_display_mode *mode,
-> > +                        unsigned int format, unsigned int bpc)
-> > +{
-> > +       struct drm_device *dev =3D connector->dev;
-> > +       u8 vic =3D drm_match_cea_mode(mode);
-> > +
-> > +       if (vic =3D=3D 1 && bpc !=3D 8) {
-> > +               drm_dbg(dev, "VIC1 requires a bpc of 8, got %u\n", bpc);
-> > +               return false;
-> > +       }
-> > +
-> > +       if (!info->is_hdmi &&
-> > +           (format !=3D HDMI_COLORSPACE_RGB || bpc !=3D 8)) {
-> > +               drm_dbg(dev, "DVI Monitors require an RGB output at 8 b=
-pc\n");
-> > +               return false;
-> > +       }
-> > +
-> > +       if (!(connector->hdmi.supported_formats & BIT(format))) {
-> > +               drm_dbg(dev, "%s format unsupported by the connector.\n=
-",
-> > +                       drm_hdmi_connector_get_output_format_name(forma=
-t));
-> > +               return false;
-> > +       }
-> > +
-> > +       switch (format) {
-> > +       case HDMI_COLORSPACE_RGB:
-> > +               drm_dbg(dev, "RGB Format, checking the constraints.\n");
-> > +
-> > +               if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444))
-> > +                       return false;
->=20
-> We've dropped this check from vc4 in our downstream kernel as it stops
-> you using the prebaked EDIDs (eg drm.edid_firmware=3Dedid/1024x768.bin),
-> or any other EDID that is defined as an analog monitor.
-> The EDID parsing bombs out at [1], so info->color_formats gets left at 0.
+> mapping the resizer input crop rectangle to either the resizer dual crop
+> module or the image stabilization module.
 
-Right, but it only does so if the display isn't defined as a digital displa=
-y...
+The implementation doesn't match the commit message. You only disable
+dual-crop here, you don't handle the image stabilization module. I'm
+fine with that, I think adding IS support belongs to a separate patch,
+but what this patch is missing is disabling the ability to set a crop
+rectangle on the resizer input when dual-crop is not supported.
 
-> RGB is mandatory for both DVI and HDMI, so rejecting it seems overly fuss=
-y.
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Tested-by: Adam Ford <aford173@gmail.com>
+> Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-common.h  | 2 ++
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c     | 6 ++++--
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c | 6 ++++--
+>  3 files changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index f7c251f79aa9..219d4a2547aa 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -112,6 +112,7 @@ enum rkisp1_isp_pad {
+>   * @RKISP1_FEATURE_MIPI_CSI2: The ISP has an internal MIPI CSI-2 receiver
+>   * @RKISP1_FEATURE_MAIN_STRIDE: The ISP supports configurable stride on the main path
+>   * @RKISP1_FEATURE_SELF_PATH: The ISP has a self path
+> + * @RKISP1_FEATURE_DUAL_CROP: The ISP has the dual crop block at the resizer input
+>   *
+>   * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
+>   * the driver to implement support for features present in some ISP versions
+> @@ -121,6 +122,7 @@ enum rkisp1_feature {
+>  	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
+>  	RKISP1_FEATURE_MAIN_STRIDE = BIT(1),
+>  	RKISP1_FEATURE_SELF_PATH = BIT(2),
+> +	RKISP1_FEATURE_DUAL_CROP = BIT(3),
+>  };
+>  
+>  #define rkisp1_has_feature(rkisp1, feature) \
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index f48a21985b18..2e40c376cab5 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -507,7 +507,8 @@ static const struct rkisp1_info px30_isp_info = {
+>  	.isr_size = ARRAY_SIZE(px30_isp_isrs),
+>  	.isp_ver = RKISP1_V12,
+>  	.features = RKISP1_FEATURE_MIPI_CSI2
+> -		  | RKISP1_FEATURE_SELF_PATH,
+> +		  | RKISP1_FEATURE_SELF_PATH
+> +		  | RKISP1_FEATURE_DUAL_CROP,
+>  };
+>  
+>  static const char * const rk3399_isp_clks[] = {
+> @@ -527,7 +528,8 @@ static const struct rkisp1_info rk3399_isp_info = {
+>  	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
+>  	.isp_ver = RKISP1_V10,
+>  	.features = RKISP1_FEATURE_MIPI_CSI2
+> -		  | RKISP1_FEATURE_SELF_PATH,
+> +		  | RKISP1_FEATURE_SELF_PATH
+> +		  | RKISP1_FEATURE_DUAL_CROP,
+>  };
+>  
+>  static const struct of_device_id rkisp1_of_match[] = {
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> index dd77a31e6014..de2eb2c97cc4 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> @@ -635,7 +635,8 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
+>  	struct v4l2_subdev_state *sd_state;
+>  
+>  	if (!enable) {
+> -		rkisp1_dcrop_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
+> +		if (rkisp1_has_feature(rkisp1, DUAL_CROP))
+> +			rkisp1_dcrop_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
+>  		rkisp1_rsz_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
+>  		return 0;
+>  	}
+> @@ -646,7 +647,8 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
+>  	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
+>  
+>  	rkisp1_rsz_config(rsz, sd_state, when);
+> -	rkisp1_dcrop_config(rsz, sd_state);
+> +	if (rkisp1_has_feature(rkisp1, DUAL_CROP))
+> +		rkisp1_dcrop_config(rsz, sd_state);
+>  
+>  	v4l2_subdev_unlock_state(sd_state);
+>  
 
-=2E.. which is required for both DVI and HDMI.
+-- 
+Regards,
 
-And sure enough, if we decode that EDID:
-
-edid-decode (hex):
-
-00 ff ff ff ff ff ff 00 31 d8 00 00 00 00 00 00
-05 16 01 03 6d 23 1a 78 ea 5e c0 a4 59 4a 98 25
-20 50 54 00 08 00 61 40 01 01 01 01 01 01 01 01
-01 01 01 01 01 01 64 19 00 40 41 00 26 30 08 90
-36 00 63 0a 11 00 00 18 00 00 00 ff 00 4c 69 6e
-75 78 20 23 30 0a 20 20 20 20 00 00 00 fd 00 3b
-3d 2f 31 07 00 0a 20 20 20 20 20 20 00 00 00 fc
-00 4c 69 6e 75 78 20 58 47 41 0a 20 20 20 00 55
-
-----------------
-
-Block 0, Base EDID:
-  EDID Structure Version & Revision: 1.3
-  Vendor & Product Identification:
-    Manufacturer: LNX
-    Model: 0
-    Made in: week 5 of 2012
-  Basic Display Parameters & Features:
-    Analog display
-    Signal Level Standard: 0.700 : 0.000 : 0.700 V p-p
-    Blank level equals black level
-    Sync: Separate Composite Serration
-    Maximum image size: 35 cm x 26 cm
-    Gamma: 2.20
-    DPMS levels: Standby Suspend Off
-    RGB color display
-    First detailed timing is the preferred timing
-  Color Characteristics:
-    Red  : 0.6416, 0.3486
-    Green: 0.2919, 0.5957
-    Blue : 0.1474, 0.1250
-    White: 0.3125, 0.3281
-  Established Timings I & II:
-    DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 =
-MHz
-  Standard Timings:
-    DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 =
-MHz
-  Detailed Timing Descriptors:
-    DTD 1:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 MHz=
- (355 mm x 266 mm)
-                 Hfront    8 Hsync 144 Hback  168 Hpol N
-                 Vfront    3 Vsync   6 Vback   29 Vpol N
-    Display Product Serial Number: 'Linux #0'
-    Display Range Limits:
-      Monitor ranges (GTF): 59-61 Hz V, 47-49 kHz H, max dotclock 70 MHz
-    Display Product Name: 'Linux XGA'
-Checksum: 0x55
-
-----------------
-
-Warnings:
-
-Block 0, Base EDID:
-  Detailed Timing Descriptor #1: DTD is similar but not identical to DMT 0x=
-10.
-
-EDID conformity: PASS
-
-So, if anything, it's the EDID that needs to be updated, not the code there.
-Maxime
-
---vqybhtpmawkwvb6z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZbuTwwAKCRDj7w1vZxhR
-xStzAQDYM7L7UXag4iNuhrqdZjT3FFQPKQRkvAlVCUNanR6aCQEAkg4xQyzE9/jz
-b81DQAxlvCB4Ne7NX/cfiEPrXcR93Q0=
-=Fb2U
------END PGP SIGNATURE-----
-
---vqybhtpmawkwvb6z--
-
-
---===============6288355321161989273==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6288355321161989273==--
-
