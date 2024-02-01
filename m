@@ -4,82 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC35C4828F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 15:06:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DED8C4828D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 15:28:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ALwlbQQ90AnnWjZuOAQG4WH2+JKIAF1db6w4/YXDc+w=; b=cOhcn6jy19JAZC
-	PofyEDVWTQ882oH3cVyLYQ0ErkGu822Tuk/RqyhMqSGzDcFTsRkKWy2LLjYLuaF/ed8rNrORnmVTy
-	OLjOolwJgyXDMAnlwn8dwb9kHebuxnut/eQ0ABn1Ql9MQKoyVDzHwa3x5o4tpLMjWxyrTb1l2C3Bl
-	CImJNfMrpcX/TWTDRszAhN/zWvPFGc2/DXk30KEhW7JqzB2tJf0J9oduGYmAYwZJVb48zyD6CiJfe
-	Whv73TOHZ88RjqeSgld4AOA7NCgyKn8kc5Y4f+eVlxAs9z4L6BCBqEBHp5seLV2g6TgFP7rZOC2hX
-	AfHH/tk3RY8sBQJlqUEg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d3PJyoAhFjfIqZnKAi0b8kj/tPGLpjTxEjrCG7uEzDA=; b=Ihu3Tkan9m5twEql9Wc9ZhRLVk
+	tvQIqZ4NSrCDpG4M0MjsKWUn/OWPqE25VjiVSuReomFpgYMw3o5WRhnds6qSdRUk8zDZGNwm6V2IV
+	L6ZZoh7HWnLoK5By6H8V4i+YDstm+ew90pB/AE6Tey7qfPaoVPh4x3wxs1sOmTfIRpqNBv/2T8nZz
+	MubHWFF0DvB++4Stc1vn7ojoelq3cX2KvOBnfybosI13IGLIetaXQfoixlf5SzV5DcZzQZJ860y/k
+	2hZBzQdeeHcqiHIkXRr4epFXU+BJyb23Nw8B5p7HxaXGJiPDLhgB36THGHJJqkRNjpWNHUSdZxdrB
+	cblPiM1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVYeE-00000008N2C-2N1i;
-	Thu, 01 Feb 2024 15:06:38 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1rVYzV-00000008RqE-3whh;
+	Thu, 01 Feb 2024 15:28:37 +0000
+Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVYeB-00000008N1V-21j3
+	id 1rVYzR-00000008Rlw-3Car
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Feb 2024 15:06:37 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3bb9b28acb4so714221b6e.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Feb 2024 07:06:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706799991; x=1707404791; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7V3dhLDDeVG0FMkRqXcHl9bSwZHFa+HO/bVpbOmkDAE=;
-        b=NYMHlFDjjb5KkQAG+qsAOfngcUDX3SJ9fBN65RfOr8EXJOW9+xd2nY17iPAZhjeUzo
-         M8zZOI9oV0A6WR6lah4YEwos/BwxUJjONPz9ltjXWzokUVTIYj+u0BfSbEVG/8CSEyJ4
-         3WzYDztTZLC8iil4L6EBBRvzHQiCmzOZjWBaS+ekfvSZV0eeTrTnjfJsg2G3W6dJHKDn
-         tOlsU5SpUu0lTVCgfsCUGWLR0Lv/KSIucP/jbhr35Yc5tYeke5Ab03YtFO2xW/Z+G6a1
-         9YFLquPORmw2+CT3OMcCJbycP3JA7OBYjqJY43y7rsGyF5HvJEro/cYzBRElLzHUo4N3
-         SP1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706799991; x=1707404791;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7V3dhLDDeVG0FMkRqXcHl9bSwZHFa+HO/bVpbOmkDAE=;
-        b=L3mE6HsqhvkGMEtvCCLzjYrcuDTj/bsfxeYRbHsNdT9rhwjZLiiUNg/dUYM37EmxWX
-         cW2v/FXGJ9XlFZeQM/xIXM67kUiO1n1Sm5ozk22uspD4kIhJGJokhE02RC9ccRv4fKUD
-         E1eFyGEYXB4mQbOy0SGZaNU4zr2TIX6Fu383jKkVkn2Do2P4XxdC1lBop+/bwWAJX2Sn
-         c7Wa86m5G4OyfH2PdPJN7BNIzseB9cycR8TJdjfkr4rGqRwDCOgMTo3Kw1bRYsfsIeXZ
-         WY1EbsaprydpbTRCvRnisnaqKej7MLRsMuAVLhLBE6DQlEZwh6M+NjQTpCFi18tpnD70
-         RjhA==
-X-Gm-Message-State: AOJu0YwxG6KUZsJbeKSM4aqx6p65fabessqN5bqP3RJDJ0Wwrf+p4WYu
-	DyZ3Zldhn0xk6eLrygbOcAtr2KluNvLCD58WjE7VLdVX9opvDOxJxKUr0HVy
-X-Google-Smtp-Source: AGHT+IGMGUKsarRxxcCpyIike2J4WFPYe6V4xaPOmR6nyzgtWgMYvFvdhO6ZHxKZn5TeppPBYnwzSw==
-X-Received: by 2002:a05:6808:3020:b0:3bd:da5f:4af7 with SMTP id ay32-20020a056808302000b003bdda5f4af7mr6148649oib.55.1706799991502;
-        Thu, 01 Feb 2024 07:06:31 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCXUvo6+Ulg6dUlpLnA3DRlGAzIKoSEz87rQrf3YKiKgRG+yLbuPxUzrLlwkHPxmROKNKZY3ZwC6RSV0AU/GIHPDeIA8uI+vJMqAGAnmNta8WqtA2y/vgHYKQ+O0b5meRh4rEI7T5SnoKMTww2PjzLzKDXv0x1jfScKZqh7xwtS30egJXcXI/LKJvosoBGwlINm9LaOrJBSMcvkKhLmpB6MBQF9hNAELU7XBY+WEhSUoRNwgMpK4i8O1eco=
-Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id h23-20020a056808015700b003be8122a4basm1184437oie.27.2024.02.01.07.06.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 07:06:31 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Trooper_Max <troopermax@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Add Touch to Anbernic RG-ARC D
-Date: Thu,  1 Feb 2024 09:06:20 -0600
-Message-Id: <20240201150620.886786-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	Thu, 01 Feb 2024 15:28:35 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1706801306;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=26SIQ5pnUVxGBuzI6N0P1NMwW5cCHuoQn92ze0+AFsQ=;
+	b=dbsB0s4yLvfcXftjxVr1PtbRs0QgJobNiO59PIQlR+5vqDeS6MwE3KDheQe7Zeo/6jj9Wu
+	3YYkWz02yT5UvIE6dYU778APsSZ3OoLjiw2acfpe6EN01sFNvUpeSrL9WCuwQ7DKzvVNL3
+	TPT83bfEyHiowg7jkGq16z+gZOX95kRZ2T6KvX8sKvgryAaTlZGnuhBVcZpDNzM/RHvOGv
+	4/CZVqJC3FKT9xqUgVCBSIcnoNPNHdQzMlaMeEzMw2mqMwUxCbwJIRXSNEwJOKrXBBIN8r
+	hxvCJau/xkmanotkIlFn8oAO33+ZY43btxhwKWKJUXJ3S3dKTANUGpCdb6Y4Sw==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <quic_jesszhan@quicinc.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Mark Yao <markyao0591@gmail.com>,
+ Segfault <awarnecke002@hotmail.com>, Arnaud Ferraris <aferraris@debian.org>,
+ Danct12 <danct12@riseup.net>, Ondrej Jirman <megi@xff.cz>,
+ Manuel Traut <manut@mecka.net>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Manuel Traut <manut@mecka.net>
+Subject: Re: [PATCH v4 4/4] arm64: dts: rockchip: Add devicetree for Pine64 PineTab2
+Date: Thu, 01 Feb 2024 16:28:15 +0100
+Message-ID: <13234147.MA61SxHe9P@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240127-pinetab2-v4-4-37aab1c39194@mecka.net>
+References: <20240127-pinetab2-v4-0-37aab1c39194@mecka.net>
+ <20240127-pinetab2-v4-4-37aab1c39194@mecka.net>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_070636_657190_4F55C3C3 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240201_072834_012931_EEDC97B6 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,67 +78,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0786839105855952645=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+--===============0786839105855952645==
+Content-Type: multipart/signed; boundary="nextPart1794107.V1UpVPejRP";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Add the Goodix GT927 touchscreen to the Anbernic RG-ARC D.
+--nextPart1794107.V1UpVPejRP
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Thu, 01 Feb 2024 16:28:15 +0100
+Message-ID: <13234147.MA61SxHe9P@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <20240127-pinetab2-v4-4-37aab1c39194@mecka.net>
+MIME-Version: 1.0
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Tested-by: Trooper_Max <troopermax@gmail.com>
----
- .../dts/rockchip/rk3566-anbernic-rg-arc-d.dts | 26 ++++++++++++++++---
- 1 file changed, 22 insertions(+), 4 deletions(-)
+On Saturday, 27 January 2024 10:48:45 CET Manuel Traut wrote:
+> This includes support for both the v0.1 units that were sent to developers
+> and the v2.0 units from production.
+> 
+> v1.0 is not included as no units are known to exist.
+> 
+> Working/Tested:
+> - SDMMC
+> - UART
+> - Buttons
+> - Charging/Battery/PMIC
+> - Audio
+> - USB
+> - Display
+> - SPI NOR Flash
+> 
+> Signed-off-by: Alexander Warnecke <awarnecke002@hotmail.com>
+> Signed-off-by: Manuel Traut <manut@mecka.net>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-index 795fbedc3c1b..a4e68e82fc06 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-@@ -19,14 +19,32 @@ aliases {
- 	};
- };
- 
--/*
-- * Unknown Goodix touchscreen at i2c2 0x14. Needs testing before it's
-- * enabled.
-- */
- &i2c2 {
- 	pinctrl-0 = <&i2c2m1_xfer>;
- 	pinctrl-names = "default";
- 	status = "okay";
-+
-+	gt927@14 {
-+		compatible = "goodix,gt927";
-+		reg = <0x14>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PB1 IRQ_TYPE_EDGE_FALLING>;
-+		irq-gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&touch_int>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		touchscreen-inverted-y;
-+		touchscreen-size-x = <640>;
-+		touchscreen-size-y = <480>;
-+	};
-+};
-+
-+&pinctrl {
-+	touchscreen {
-+		touch_int: touch_int {
-+			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
- };
- 
- &sdhci {
--- 
-2.34.1
+Everything seems to (still) work, so:
+Tested-By: Diederik de Haas <didi.debian@cknow.org>
 
+Thanks for submitting this upstream :-)
+
+Cheers,
+  Diederik
+--nextPart1794107.V1UpVPejRP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZbu4kAAKCRDXblvOeH7b
+blXGAQDP5qENxaN5dIVjBieTyOlY8fPPngqtXwFL4vkEdreqjQD/b48bb1yvUxQr
+vS2R3FNuHLcDSnHLKoxjZg+592xUfAU=
+=5fTJ
+-----END PGP SIGNATURE-----
+
+--nextPart1794107.V1UpVPejRP--
+
+
+
+
+
+--===============0786839105855952645==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0786839105855952645==--
+
+
+
+
