@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC215C47DDF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0753C47DDF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 12:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=w863Z5R73bxpOydnOrk8HPDGbdYtzYh/YW8kxH7l8Ws=; b=iBKXLe1jZDLCyJ
-	tXBMDbfPAOzPUc8qgybRcEuCO3oP9/W6e/3yuEH5FeLHgUUGO53Jie605VT8dNrekbPQ3XiqMZQ6G
-	hGn9WX1zjNjNwQZeblWsvWcRQDt0CR/Ze526pTIiRF6kLpxjKiZfOgBKW9/iWkNg+p9/wsTUkGRIL
-	CcW2SokHwUtE8JPthKg2+Qsyub3bqDG+hTa9Jk8pKQlRDcMVvCJDq1jzKQwEk+MbEQMiQKjBBHOcV
-	hIKy5YynPQOT6YtdHAIcSWo4RHjQyAJPzPe3M3mk9FAuTgdTwgmk/MjJjWEieBjgj8XLntxfzuhOh
-	MNetYAlwh+2b6T5ULPGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xlzsZuzbRQv1O55CV1eSQhrOecsTv9xsRbB4fZqRE3M=; b=EjPAbg48Zs4VMb74Do/arjQqIl
+	yoRBML+3LPcgDqFEsxxOYpuR/VHP82CxShgqPvrwUgZKxE+aKPHCy82WP+9WjFubsjYWHu8vHNV0e
+	JPJinpPAZ+B2QLT1D2fr2q+h6ZKCtww8aaZMqJzgzhTOWKGwUPwNnEOPvupv9WOhFrYa2MMpUaVPo
+	ht/WDN19GAFKxxABNkm4zPel2/TDgEH0AKs1udqM9o4aGN/oBuQMvJSXe6cbezNaYSOQvg79Fampm
+	WH/KisOFQd+HPSiI+mzeVSnLAfbvojRfFA0KpSpC8HoeVDTuvHEAmA3opcrd9YpVdJPk+/g84lYzx
+	oIsgQLVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWR9-00000007oT9-2M7S;
-	Thu, 01 Feb 2024 12:44:59 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1rVWXN-00000007pfv-3pnI;
+	Thu, 01 Feb 2024 12:51:25 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVWR6-00000007oQE-2QxW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Feb 2024 12:44:58 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-40f033c2e30so8122435e9.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Feb 2024 04:44:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706791486; x=1707396286; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6IHYNEjrz+fMnkN7rBKRPCSWZe0v/T0N15MdaE6oBBg=;
-        b=OikGP/azZMXrBty+T7KqTLBUuQssd+T2hV23nv4d6+rT9lxwJ8O9oYTxOuSvGFuHlW
-         eUJ4KpAClJkVSm75B10Oz4z3PGP/24XdU6h5uFf91ya304ffkPn7WeTkP22VFk6ei+EN
-         O7W/1c6e1PoyOF60NIPMS18OBIb/kAn8ckeYRDWL1DGHjGnzKbiRtKJvGc/A7ncjuPPJ
-         40pyoPN0eFUNARL736rZuRSbFzW82Uu2Ieae45o7Yrj+FF3gmohv0xY65AHR9KXgwXHO
-         dTY+HoE5R6veq/Ku4Rxv8UkJgwvyijcdxTpt/fySd6SwjCkTigLbO1Fi0mb+KISVI+Fb
-         Zxqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706791486; x=1707396286;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6IHYNEjrz+fMnkN7rBKRPCSWZe0v/T0N15MdaE6oBBg=;
-        b=kcuuJrGTlxOUGYfjoxVB8/6p7skgZ/8tQdnE+abS3FKOyiC3Fa8Bv9/rfEUv3SnfPW
-         HzzZRYuF8bDQUXlfcDEZGYMW7F4jET4rkerg7gZxXKC6c0oHEl7IA9ycBOQO0sZzhW70
-         S1fZJHRuVU7qJX8Sck8RwdQaYYIPaHZX/P5+nZARu3uHWB0jIETEgjqukbi/nMhJQZL+
-         IBwD89RQDMBAPrFcs0ORpxXK4os9eIpvT4YaLOwqMmMxjRUGM1foeWS+Jxz8RlK2NEvD
-         5SGOThR80Mz7fTpHEmIah2tvVyVwsHQI9Jlv334zDr85QykuJ0tWbNc0ayPv+wBx0Ztn
-         ZySg==
-X-Gm-Message-State: AOJu0YyBrPundPdGfBbBlnLIioCKTtl+WM0ELPWn8oe/gCIUD7gJYSvu
-	UqKEIlSRpHIr34nWC1FcZ5RreB3yBmuiiH0hdAioUR6bhaQEleOoK1BlL1YA
-X-Google-Smtp-Source: AGHT+IH9YbsjSMfEN7/ZxTFY71wHCViMJcRPseJso13x5uspbJi9rylCpTSQtwzo5cDG75EvN3c24g==
-X-Received: by 2002:a05:600c:4f4d:b0:40f:b65c:6127 with SMTP id m13-20020a05600c4f4d00b0040fb65c6127mr2881416wmq.35.1706791486133;
-        Thu, 01 Feb 2024 04:44:46 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCXlasx3CmtE47ZwaWveo1MK/khSiwuxBliYYlFYx+i+SBYU4+x+KwjTVjMkDXRdGNuESyYhHgDgYGk6JOefzcidpECDxibfwcgQJP6LgYCgIXc9EUXy6txcDe9ROJQRbRJC0F31qDOqxEtpdgkewY9lwB5i88X6kN4=
-Received: from localhost.localdomain (2a02-8388-180a-cd80-ae73-baa1-6de4-2169.cable.dynamic.v6.surfer.at. [2a02:8388:180a:cd80:ae73:baa1:6de4:2169])
-        by smtp.gmail.com with ESMTPSA id p23-20020a05600c1d9700b0040e9d507424sm4483028wms.5.2024.02.01.04.44.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Feb 2024 04:44:45 -0800 (PST)
-From: Jakob Unterwurzacher <jakobunt@gmail.com>
-X-Google-Original-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	jakob.unterwurzacher@theobroma-systems.com,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: add attiny_rst_gate to Ringneck
-Date: Thu,  1 Feb 2024 13:44:27 +0100
-Message-ID: <20240201124427.279986-1-jakob.unterwurzacher@theobroma-systems.com>
-X-Mailer: git-send-email 2.43.0
+	id 1rVWXK-00000007pe0-0eIx;
+	Thu, 01 Feb 2024 12:51:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 5A230CE1E2F;
+	Thu,  1 Feb 2024 12:51:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C37FC433C7;
+	Thu,  1 Feb 2024 12:51:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1706791878;
+	bh=iO+Eo8pPglcxEzFGDR/NbmaGU1weyDXreVR1dhmvHfA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VG2TeXqvjxGcRv1tIL7nOyafkaL7z3CCvzIcS+2JApyFPDRQM0dhUM3PKC9rui9W7
+	 opOWXzX3wf+INRuwos5WuH4cf3M6JbqJJyg+LLI0aU/Mjafxp/zI/6LLOjymUIwDoC
+	 VDSk9ZulqP9mhOGNO91YqNdrN/xj0ITM+fgsH8po+qhjWD78Oni1Q/PDRrpA8716mK
+	 q7pVitaQP60mvxztWefD4GBlghOrGBUOghPd2F99j+OOahvR6F8gTncbv1qJZI/FBz
+	 m1WAK/Vazl7vTC3aR4c4aWHK20XFT2GuwJVRCjUR6Z4saoYMDPtpDx3hv0SXZYc5LH
+	 BbV/B+1mMlIrg==
+Date: Thu, 1 Feb 2024 13:51:15 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, Hans Verkuil <hverkuil@xs4all.nl>, 
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Subject: Re: Re: [PATCH v5 15/44] drm/connector: hdmi: Compute bpc and format
+ automatically
+Message-ID: <jlkoofv7nszj2uqmo2672yo4wjd3yjqarge2l2hxofixcchu6a@j72pa4iybitd>
+References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+ <20231207-kms-hdmi-connector-state-v5-15-6538e19d634d@kernel.org>
+ <CAPY8ntBQ+qY9441-rMzq_JAoYAaY_r+E-ADv7Wry0tJNTzKpwg@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAPY8ntBQ+qY9441-rMzq_JAoYAaY_r+E-ADv7Wry0tJNTzKpwg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_044456_628401_96CBF5E8 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20240201_045122_577048_954236A1 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,72 +75,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6288355321161989273=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ringneck v1.4 can contain (placement option) an on-board ATtiny
-microcontroller instead of an STM32. In normal operation, this
-is transparent to the software, as both microcontrollers emulate
-the same ICs (amc6821 and isl1208).
 
-For flashing the ATtiny, the SWITCH_REG1 regulator of the board's PMIC is
-used to enable the ATtiny UPDI debug interface. If the STM32 is placed, or if
-we are running on an older Ringneck revision, SWITCH_REG1 is not connected
-and has no effect.
+--===============6288355321161989273==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vqybhtpmawkwvb6z"
+Content-Disposition: inline
 
-Add attiny-updi-gate-regulator so userspace can control it via sysfs:
 
-  echo enabled > /sys/devices/platform/attiny-updi-gate-regulator/state
+--vqybhtpmawkwvb6z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
----
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+On Thu, Dec 14, 2023 at 03:10:43PM +0000, Dave Stevenson wrote:
+> > +static bool
+> > +sink_supports_format_bpc(const struct drm_connector *connector,
+> > +                        const struct drm_display_info *info,
+> > +                        const struct drm_display_mode *mode,
+> > +                        unsigned int format, unsigned int bpc)
+> > +{
+> > +       struct drm_device *dev =3D connector->dev;
+> > +       u8 vic =3D drm_match_cea_mode(mode);
+> > +
+> > +       if (vic =3D=3D 1 && bpc !=3D 8) {
+> > +               drm_dbg(dev, "VIC1 requires a bpc of 8, got %u\n", bpc);
+> > +               return false;
+> > +       }
+> > +
+> > +       if (!info->is_hdmi &&
+> > +           (format !=3D HDMI_COLORSPACE_RGB || bpc !=3D 8)) {
+> > +               drm_dbg(dev, "DVI Monitors require an RGB output at 8 b=
+pc\n");
+> > +               return false;
+> > +       }
+> > +
+> > +       if (!(connector->hdmi.supported_formats & BIT(format))) {
+> > +               drm_dbg(dev, "%s format unsupported by the connector.\n=
+",
+> > +                       drm_hdmi_connector_get_output_format_name(forma=
+t));
+> > +               return false;
+> > +       }
+> > +
+> > +       switch (format) {
+> > +       case HDMI_COLORSPACE_RGB:
+> > +               drm_dbg(dev, "RGB Format, checking the constraints.\n");
+> > +
+> > +               if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444))
+> > +                       return false;
+>=20
+> We've dropped this check from vc4 in our downstream kernel as it stops
+> you using the prebaked EDIDs (eg drm.edid_firmware=3Dedid/1024x768.bin),
+> or any other EDID that is defined as an analog monitor.
+> The EDID parsing bombs out at [1], so info->color_formats gets left at 0.
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-index dec29a75d361..1f7f4b2ea66a 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-@@ -15,6 +15,12 @@ aliases {
- 		rtc1 = &rk809;
- 	};
- 
-+	/* allows userspace to control the gate of the ATtiny UPDI pass FET via sysfs */
-+	attiny-updi-gate-regulator {
-+		compatible = "regulator-output";
-+		vout-supply = <&vg_attiny_updi>;
-+	};
-+
- 	emmc_pwrseq: emmc-pwrseq {
- 		compatible = "mmc-pwrseq-emmc";
- 		pinctrl-0 = <&emmc_reset>;
-@@ -146,6 +152,7 @@ rk809: pmic@20 {
- 		vcc5-supply = <&vcc_3v3>;
- 		vcc6-supply = <&vcc_3v3>;
- 		vcc7-supply = <&vcc_3v3>;
-+		vcc8-supply = <&vcc5v0_sys>;
- 		vcc9-supply = <&vcc5v0_sys>;
- 
- 		regulators {
-@@ -290,6 +297,11 @@ regulator-state-mem {
- 					regulator-suspend-microvolt = <1800000>;
- 				};
- 			};
-+
-+			/* supplies the gate of the ATtiny UPDI pass FET */
-+			vg_attiny_updi: SWITCH_REG1 {
-+				regulator-name = "vg_attiny_updi";
-+			};
- 		};
- 	};
- };
--- 
-2.43.0
+Right, but it only does so if the display isn't defined as a digital displa=
+y...
 
+> RGB is mandatory for both DVI and HDMI, so rejecting it seems overly fuss=
+y.
+
+=2E.. which is required for both DVI and HDMI.
+
+And sure enough, if we decode that EDID:
+
+edid-decode (hex):
+
+00 ff ff ff ff ff ff 00 31 d8 00 00 00 00 00 00
+05 16 01 03 6d 23 1a 78 ea 5e c0 a4 59 4a 98 25
+20 50 54 00 08 00 61 40 01 01 01 01 01 01 01 01
+01 01 01 01 01 01 64 19 00 40 41 00 26 30 08 90
+36 00 63 0a 11 00 00 18 00 00 00 ff 00 4c 69 6e
+75 78 20 23 30 0a 20 20 20 20 00 00 00 fd 00 3b
+3d 2f 31 07 00 0a 20 20 20 20 20 20 00 00 00 fc
+00 4c 69 6e 75 78 20 58 47 41 0a 20 20 20 00 55
+
+----------------
+
+Block 0, Base EDID:
+  EDID Structure Version & Revision: 1.3
+  Vendor & Product Identification:
+    Manufacturer: LNX
+    Model: 0
+    Made in: week 5 of 2012
+  Basic Display Parameters & Features:
+    Analog display
+    Signal Level Standard: 0.700 : 0.000 : 0.700 V p-p
+    Blank level equals black level
+    Sync: Separate Composite Serration
+    Maximum image size: 35 cm x 26 cm
+    Gamma: 2.20
+    DPMS levels: Standby Suspend Off
+    RGB color display
+    First detailed timing is the preferred timing
+  Color Characteristics:
+    Red  : 0.6416, 0.3486
+    Green: 0.2919, 0.5957
+    Blue : 0.1474, 0.1250
+    White: 0.3125, 0.3281
+  Established Timings I & II:
+    DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 =
+MHz
+  Standard Timings:
+    DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 =
+MHz
+  Detailed Timing Descriptors:
+    DTD 1:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000 MHz=
+ (355 mm x 266 mm)
+                 Hfront    8 Hsync 144 Hback  168 Hpol N
+                 Vfront    3 Vsync   6 Vback   29 Vpol N
+    Display Product Serial Number: 'Linux #0'
+    Display Range Limits:
+      Monitor ranges (GTF): 59-61 Hz V, 47-49 kHz H, max dotclock 70 MHz
+    Display Product Name: 'Linux XGA'
+Checksum: 0x55
+
+----------------
+
+Warnings:
+
+Block 0, Base EDID:
+  Detailed Timing Descriptor #1: DTD is similar but not identical to DMT 0x=
+10.
+
+EDID conformity: PASS
+
+So, if anything, it's the EDID that needs to be updated, not the code there.
+Maxime
+
+--vqybhtpmawkwvb6z
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZbuTwwAKCRDj7w1vZxhR
+xStzAQDYM7L7UXag4iNuhrqdZjT3FFQPKQRkvAlVCUNanR6aCQEAkg4xQyzE9/jz
+b81DQAxlvCB4Ne7NX/cfiEPrXcR93Q0=
+=Fb2U
+-----END PGP SIGNATURE-----
+
+--vqybhtpmawkwvb6z--
+
+
+--===============6288355321161989273==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6288355321161989273==--
+
