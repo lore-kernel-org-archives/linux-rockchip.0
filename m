@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04574C4828F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 16:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F931C4828D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 17:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wq55DPa4oSSsTg3MKdTb9fHvj+FZbYkHtJDv1SeBLFc=; b=N6y75wJ29JU22uNpS7+K/xHZ88
-	pV0XeOPwhMqLCzcfpNzbH1us7QzULMDUWOfykTmx0Pr5IzMouO9y3PiKMMUcGfuXeUmDyiN5Bbodd
-	cZT4Ao+6AM+S80MIL8IwB3bleFkphaC33PQNkfSOVn+7st4XFOgq8dAdxmwyNcGcsvXaL4/arRLHh
-	8OOEh4MZZcDPDjnZRSK5MBFiEE/hx++QfPwAaQx/osce6iQI2ku4cZqE89ACcCZjQPvKF4XcxQv8K
-	Bf8GNDROdKPcuDk4RDklMnyfkVkxJhx9e+CJNSneipmfwPKdDMZy41/8RwDCgLNFNB6ts3ThV3G0U
-	NOhF0yXw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/W0QJ8r6aXFWlJu/oz2pPxrbSL+LvwPPRCDNHZ2VU4A=; b=rbfONid2YP8tM7VITjHVXVN9na
+	hkJFv4jf/bDi/RVw61LD3IYSiTX+VFPjAXciStwmbCk1Mp3b7z5MYSdK0EgMcyGT/7HNWV8B3pdL3
+	pSRV93VlBT425UDZA7HMMSRn/zcczt2ipOQX3KuiP5ShFXuJqFpJcmuRwg+s2tiADjAW7BL65upmc
+	GPgl1tdO7b1esg7tIkPM7bntkqyi5md5wY1cnybxBEZYoW6Yoc+1EcgPzoQ+cipJf8lFAzPp+xFZt
+	SFHALO4+p1SuG/cd1lE1MBtzMvdoAAc5wZXRr6ktx8STdpcqSTH/cAYstoCv2Ar2XT9AY8r31JF5J
+	rJUd42nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVaGT-00000008h5R-3Y42;
-	Thu, 01 Feb 2024 16:50:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rVaxG-00000008okN-354H;
+	Thu, 01 Feb 2024 17:34:26 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVaGR-00000008h40-0I8X;
-	Thu, 01 Feb 2024 16:50:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 811D961F9D;
-	Thu,  1 Feb 2024 16:50:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 896B7C433C7;
-	Thu,  1 Feb 2024 16:50:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1706806209;
-	bh=tOF6dvF9mpcgfY2pG3oXqVYb2x1RXJ2H4D5i85BCkio=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TMOPg8h30sL7VC9mMIdrMyHzRyRdT8UU6z6NrwEbuK5YEouKuiljSFCz1wRGX7Yx7
-	 lzomvGIaR3jn3rk+KkYxben1YOlz3kjwyWpHQgBEjVxrb6vhRE0EUlosw+Qrv93ght
-	 hBhPyiknjoBmQfFwXvwLinPwYlr3CWM4/hIrmYRcriLgWxqyeppuEAZUH20P5MZbOz
-	 G1XV2kRQRAtMJ5w4IXlJpXPKK1i9LvFWY+jgRB+LLevoAO6Uy1GYbWVTh4HoqHIOOJ
-	 SipgFjpQILc1j3yVNyg4yAEnh+NsXMTK5w0A2rNaT7i542TMV0ptN6rRfvJhwaS0p0
-	 Pu9a6WJPGqblA==
-Date: Thu, 1 Feb 2024 17:50:07 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, Hans Verkuil <hverkuil@xs4all.nl>, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: Re: Re: [PATCH v5 15/44] drm/connector: hdmi: Compute bpc and
- format automatically
-Message-ID: <vydlftxen23kd2odwegxbtpaz73sy2lgpv7nlynfjr3p2xvc2b@7lkdkaw3gp5q>
-References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
- <20231207-kms-hdmi-connector-state-v5-15-6538e19d634d@kernel.org>
- <CAPY8ntBQ+qY9441-rMzq_JAoYAaY_r+E-ADv7Wry0tJNTzKpwg@mail.gmail.com>
- <jlkoofv7nszj2uqmo2672yo4wjd3yjqarge2l2hxofixcchu6a@j72pa4iybitd>
- <CAPY8ntAmXyKtebMeM7rLtgRR+QwL1H+UCwSO=bLBQN4TsgwsDg@mail.gmail.com>
+	id 1rVaxC-00000008oit-2nkX;
+	Thu, 01 Feb 2024 17:34:24 +0000
 MIME-Version: 1.0
-In-Reply-To: <CAPY8ntAmXyKtebMeM7rLtgRR+QwL1H+UCwSO=bLBQN4TsgwsDg@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1706808859;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=I62Ngu6mHUbbEd5/PKgWiEzJpbocaOMuoLyyq/u6R8M=;
+	b=WkY/V6+2VLAsUER854fHTV0ijhfmJSzor5H6LK4YNxI2Z9+7CpORaMMz4uetnzSEQDFxJh
+	ICEh9Du6iegkMwDanyR4V2Ro7ptplD8sOZ5Q2QRz5+hm56aeH/RRiiw1T9oz92eQgEk6V2
+	6yf38wMVwANtCJWVwN9gKD5++gVglcvUuM/ruqcLnd4EdV9QxvBQ0wJRNa9gsOBn4uZBYx
+	w7Th5wyqr+dIbLpSXTkeN+LClphsGIXgt0ZHfsuKPUg9IiIYJDLBuruSSXwBX5K6QjphIk
+	aSFprWQ9gT96w8UldfAYuWcueWJHdHrOfqBAEXd35XKhm0x/5WnV55Er7R+aMA==
+Date: Thu, 01 Feb 2024 18:34:18 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: wens@kernel.org
+Cc: Alexey Charkov <alchark@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: enable temperature driven
+ fan control on Rock 5B
+In-Reply-To: <CAGb2v65--rgb2FqmG_0-w1-jUL0odqKXxiZJ-XPYA4uomfYmaQ@mail.gmail.com>
+References: <20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com>
+ <20240130-rk-dts-additions-v2-2-c6222c4c78df@gmail.com>
+ <CAGb2v65--rgb2FqmG_0-w1-jUL0odqKXxiZJ-XPYA4uomfYmaQ@mail.gmail.com>
+Message-ID: <5e3e12d65e4919372e7fb02d56202393@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240201_085011_225594_D79AE0F2 
-X-CRM114-Status: GOOD (  33.96  )
+X-CRM114-CacheID: sfid-20240201_093423_334337_59AA98FD 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,200 +72,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6048815399651449285=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6048815399651449285==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="j5ozu7iwnqfrstbx"
-Content-Disposition: inline
-
-
---j5ozu7iwnqfrstbx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Feb 01, 2024 at 03:33:24PM +0000, Dave Stevenson wrote:
-> Hi Maxime
->=20
-> On Thu, 1 Feb 2024 at 12:51, Maxime Ripard <mripard@kernel.org> wrote:
-> >
-> > On Thu, Dec 14, 2023 at 03:10:43PM +0000, Dave Stevenson wrote:
-> > > > +static bool
-> > > > +sink_supports_format_bpc(const struct drm_connector *connector,
-> > > > +                        const struct drm_display_info *info,
-> > > > +                        const struct drm_display_mode *mode,
-> > > > +                        unsigned int format, unsigned int bpc)
-> > > > +{
-> > > > +       struct drm_device *dev =3D connector->dev;
-> > > > +       u8 vic =3D drm_match_cea_mode(mode);
-> > > > +
-> > > > +       if (vic =3D=3D 1 && bpc !=3D 8) {
-> > > > +               drm_dbg(dev, "VIC1 requires a bpc of 8, got %u\n", =
-bpc);
-> > > > +               return false;
-> > > > +       }
-> > > > +
-> > > > +       if (!info->is_hdmi &&
-> > > > +           (format !=3D HDMI_COLORSPACE_RGB || bpc !=3D 8)) {
-> > > > +               drm_dbg(dev, "DVI Monitors require an RGB output at=
- 8 bpc\n");
-> > > > +               return false;
-> > > > +       }
-> > > > +
-> > > > +       if (!(connector->hdmi.supported_formats & BIT(format))) {
-> > > > +               drm_dbg(dev, "%s format unsupported by the connecto=
-r.\n",
-> > > > +                       drm_hdmi_connector_get_output_format_name(f=
-ormat));
-> > > > +               return false;
-> > > > +       }
-> > > > +
-> > > > +       switch (format) {
-> > > > +       case HDMI_COLORSPACE_RGB:
-> > > > +               drm_dbg(dev, "RGB Format, checking the constraints.=
-\n");
-> > > > +
-> > > > +               if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444=
-))
-> > > > +                       return false;
-> > >
-> > > We've dropped this check from vc4 in our downstream kernel as it stops
-> > > you using the prebaked EDIDs (eg drm.edid_firmware=3Dedid/1024x768.bi=
-n),
-> > > or any other EDID that is defined as an analog monitor.
-> > > The EDID parsing bombs out at [1], so info->color_formats gets left a=
-t 0.
-> >
-> > Right, but it only does so if the display isn't defined as a digital di=
-splay...
-> >
-> > > RGB is mandatory for both DVI and HDMI, so rejecting it seems overly =
-fussy.
-> >
-> > ... which is required for both DVI and HDMI.
-> >
-> > And sure enough, if we decode that EDID:
-> >
-> > edid-decode (hex):
-> >
-> > 00 ff ff ff ff ff ff 00 31 d8 00 00 00 00 00 00
-> > 05 16 01 03 6d 23 1a 78 ea 5e c0 a4 59 4a 98 25
-> > 20 50 54 00 08 00 61 40 01 01 01 01 01 01 01 01
-> > 01 01 01 01 01 01 64 19 00 40 41 00 26 30 08 90
-> > 36 00 63 0a 11 00 00 18 00 00 00 ff 00 4c 69 6e
-> > 75 78 20 23 30 0a 20 20 20 20 00 00 00 fd 00 3b
-> > 3d 2f 31 07 00 0a 20 20 20 20 20 20 00 00 00 fc
-> > 00 4c 69 6e 75 78 20 58 47 41 0a 20 20 20 00 55
-> >
-> > ----------------
-> >
-> > Block 0, Base EDID:
-> >   EDID Structure Version & Revision: 1.3
-> >   Vendor & Product Identification:
-> >     Manufacturer: LNX
-> >     Model: 0
-> >     Made in: week 5 of 2012
-> >   Basic Display Parameters & Features:
-> >     Analog display
-> >     Signal Level Standard: 0.700 : 0.000 : 0.700 V p-p
-> >     Blank level equals black level
-> >     Sync: Separate Composite Serration
-> >     Maximum image size: 35 cm x 26 cm
-> >     Gamma: 2.20
-> >     DPMS levels: Standby Suspend Off
-> >     RGB color display
-> >     First detailed timing is the preferred timing
-> >   Color Characteristics:
-> >     Red  : 0.6416, 0.3486
-> >     Green: 0.2919, 0.5957
-> >     Blue : 0.1474, 0.1250
-> >     White: 0.3125, 0.3281
-> >   Established Timings I & II:
-> >     DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000=
-000 MHz
-> >   Standard Timings:
-> >     DMT 0x10:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000=
-000 MHz
-> >   Detailed Timing Descriptors:
-> >     DTD 1:  1024x768    60.003840 Hz   4:3     48.363 kHz     65.000000=
- MHz (355 mm x 266 mm)
-> >                  Hfront    8 Hsync 144 Hback  168 Hpol N
-> >                  Vfront    3 Vsync   6 Vback   29 Vpol N
-> >     Display Product Serial Number: 'Linux #0'
-> >     Display Range Limits:
-> >       Monitor ranges (GTF): 59-61 Hz V, 47-49 kHz H, max dotclock 70 MHz
-> >     Display Product Name: 'Linux XGA'
-> > Checksum: 0x55
-> >
-> > ----------------
-> >
-> > Warnings:
-> >
-> > Block 0, Base EDID:
-> >   Detailed Timing Descriptor #1: DTD is similar but not identical to DM=
-T 0x10.
-> >
-> > EDID conformity: PASS
-> >
-> > So, if anything, it's the EDID that needs to be updated, not the code t=
-here.
->=20
-> So are these EDIDs only valid for VGA outputs and another set needs to
-> be added for HDMI monitors?
->=20
-> Having drm.edid_firmware=3Dedid/1024x768.bin works on an HDMI connector
-> prior to this patch, so presumably drm_edid_loader needs to
-> automatically switch between the existing (analog) and new (digital)
-> EDIDs based on the connector type? Or are you requiring users to
-> change the strings they use?
-
-We've discussed that on IRC today. I'm not sure there was a conclusion
-other than "well this doesn't seem right". I think we should at least
-provide different EDIDs depending on the connector type indeed, but
-there was also a few discussions that arose:
-
-  - Is it useful to have embedded EDIDs in the kernel at all, and could
-    we just get rid of it?
-
-  - Should we expose those EDIDs to userspace, and what happens to the
-    compositor when we do?
-
-  - The current way to generate those EDIDs isn't... optimal? Should we
-    get rid of that as well?
-
-Anyway, all of those issues have been here for a while so I don't really
-expect this series to fix that.
-
-Maxime
-
---j5ozu7iwnqfrstbx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZbvLvgAKCRDj7w1vZxhR
-xSCOAP96iK948t4DHQtM0RjNfYbNEnT9IPn1B8+p9FAgrkYKMgD7BNjR2zGVhdBX
-JcgARDy3OnatYKDdLcS+h0fMuxIGWgs=
-=9IpS
------END PGP SIGNATURE-----
-
---j5ozu7iwnqfrstbx--
-
-
---===============6048815399651449285==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6048815399651449285==--
-
+SGVsbG8gQ2hlbi1ZdSwKCk9uIDIwMjQtMDItMDEgMTU6MjYsIENoZW4tWXUgVHNhaSB3cm90ZToK
+PiBPbiBXZWQsIEphbiAzMSwgMjAyNCBhdCAyOjIy4oCvQU0gQWxleGV5IENoYXJrb3YgPGFsY2hh
+cmtAZ21haWwuY29tPiAKPiB3cm90ZToKPj4gCj4+IFRoaXMgZW5hYmxlcyB0aGVybWFsIG1vbml0
+b3Jpbmcgb24gUmFkeGEgUm9jayA1QiBhbmQgbGlua3MgdGhlIFBXTQo+PiBmYW4gYXMgYW4gYWN0
+aXZlIGNvb2xpbmcgZGV2aWNlIG1hbmFnZWQgYXV0b21hdGljYWxseSBieSB0aGUgdGhlcm1hbAo+
+PiBzdWJzeXN0ZW0sIHdpdGggYSB0YXJnZXQgU29DIHRlbXBlcmF0dXJlIG9mIDY1QyBhbmQgYSBt
+aW5pbXVtLXNwaW4KPj4gaW50ZXJ2YWwgZnJvbSA1NUMgdG8gNjVDIHRvIGVuc3VyZSBhaXJmbG93
+IHdoZW4gdGhlIHN5c3RlbSBnZXRzIHdhcm0KPj4gCj4+IEFja2VkLWJ5OiBEYW5pZWwgTGV6Y2Fu
+byA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4KPj4gU2lnbmVkLW9mZi1ieTogQWxleGV5IENo
+YXJrb3YgPGFsY2hhcmtAZ21haWwuY29tPgo+PiAtLS0KPj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzIHwgMzQgCj4+ICsrKysrKysrKysrKysrKysrKysr
+KysrKy0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAzMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
+Cj4+IAo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgt
+cm9jay01Yi5kdHMgCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9j
+ay01Yi5kdHMKPj4gaW5kZXggYTBlMzAzYzNhMWRjLi5iNDg1ZWRlZWY4NzYgMTAwNjQ0Cj4+IC0t
+LSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzCj4+ICsr
+KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzCj4+IEBA
+IC01Miw3ICs1Miw3IEBAIGxlZF9yZ2JfYiB7Cj4+IAo+PiAgICAgICAgIGZhbjogcHdtLWZhbiB7
+Cj4+ICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInB3bS1mYW4iOwo+PiAtICAgICAgICAg
+ICAgICAgY29vbGluZy1sZXZlbHMgPSA8MCA5NSAxNDUgMTk1IDI1NT47Cj4+ICsgICAgICAgICAg
+ICAgICBjb29saW5nLWxldmVscyA9IDwwIDEyMCAxNTAgMTgwIDIxMCAyNDAgMjU1PjsKPj4gICAg
+ICAgICAgICAgICAgIGZhbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+PiAgICAgICAgICAgICAg
+ICAgcHdtcyA9IDwmcHdtMSAwIDUwMDAwIDA+Owo+PiAgICAgICAgICAgICAgICAgI2Nvb2xpbmct
+Y2VsbHMgPSA8Mj47Cj4+IEBAIC0xNzMsNiArMTczLDM0IEBAICZjcHVfbDMgewo+PiAgICAgICAg
+IGNwdS1zdXBwbHkgPSA8JnZkZF9jcHVfbGl0X3MwPjsKPj4gIH07Cj4+IAo+PiArJnBhY2thZ2Vf
+dGhlcm1hbCB7Cj4+ICsgICAgICAgcG9sbGluZy1kZWxheSA9IDwxMDAwPjsKPj4gKwo+PiArICAg
+ICAgIHRyaXBzIHsKPj4gKyAgICAgICAgICAgICAgIHBhY2thZ2VfZmFuMDogcGFja2FnZS1mYW4w
+IHsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgdGVtcGVyYXR1cmUgPSA8NTUwMDA+Owo+PiAr
+ICAgICAgICAgICAgICAgICAgICAgICBoeXN0ZXJlc2lzID0gPDIwMDA+Owo+PiArICAgICAgICAg
+ICAgICAgICAgICAgICB0eXBlID0gImFjdGl2ZSI7Cj4+ICsgICAgICAgICAgICAgICB9Owo+PiAr
+ICAgICAgICAgICAgICAgcGFja2FnZV9mYW4xOiBwYWNrYWdlLWZhbjEgewo+PiArICAgICAgICAg
+ICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9IDw2NTAwMD47Cj4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgIGh5c3RlcmVzaXMgPSA8MjAwMD47Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHR5
+cGUgPSAiYWN0aXZlIjsKPj4gKyAgICAgICAgICAgICAgIH07Cj4+ICsgICAgICAgfTsKPj4gKwo+
+PiArICAgICAgIGNvb2xpbmctbWFwcyB7Cj4+ICsgICAgICAgICAgICAgICBtYXAwIHsKPj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgdHJpcCA9IDwmcGFja2FnZV9mYW4wPjsKPj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgY29vbGluZy1kZXZpY2UgPSA8JmZhbiBUSEVSTUFMX05PX0xJTUlUIDE+
+Owo+PiArICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgICAgIG1hcDEgewo+PiArICAg
+ICAgICAgICAgICAgICAgICAgICB0cmlwID0gPCZwYWNrYWdlX2ZhbjE+Owo+PiArICAgICAgICAg
+ICAgICAgICAgICAgICBjb29saW5nLWRldmljZSA9IDwmZmFuIDEgVEhFUk1BTF9OT19MSU1JVD47
+Cj4+ICsgICAgICAgICAgICAgICB9Owo+PiArICAgICAgIH07Cj4+ICt9Owo+PiArCj4+ICAmaTJj
+MCB7Cj4+ICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gICAgICAgICBwaW5j
+dHJsLTAgPSA8JmkyYzBtMl94ZmVyPjsKPj4gQEAgLTczMSw2ICs3NTksMTAgQEAgcmVndWxhdG9y
+LXN0YXRlLW1lbSB7Cj4+ICAgICAgICAgfTsKPj4gIH07Cj4+IAo+PiArJnRzYWRjIHsKPj4gKyAg
+ICAgICBzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+PiArCj4gCj4gSXMgdGhlcmUgYW55IHJlYXNv
+biB0aGlzIGNhbid0IGJlIGVuYWJsZWQgYnkgZGVmYXVsdCBpbiB0aGUgLmR0c2kgZmlsZT8KPiBU
+aGUgdGhlcm1hbCBzZW5zb3IgZG9lc24ndCBkZXBlbmQgb24gYW55dGhpbmcgZXh0ZXJuYWwsIHNv
+IHRoZXJlIHNob3VsZAo+IGJlIG5vIHJlYXNvbiB0byBwdXNoIHRoaXMgZG93biB0byB0aGUgYm9h
+cmQgbGV2ZWwuCgpBY3R1YWxseSwgdGhlcmUgaXMgYSByZWFzb24uICBEaWZmZXJlbnQgYm9hcmRz
+IGNhbiBoYW5kbGUgdGhlIGNyaXRpY2FsCm92ZXJoZWF0aW5nIGRpZmZlcmVudGx5LCBieSBsZXR0
+aW5nIHRoZSBDUlUgb3IgdGhlIFBNSUMgaGFuZGxlIGl0LiAgVGhpcwp3YXMgYWxzbyB0aGUgY2Fz
+ZSBmb3IgdGhlIFJLMzM5OS4KClBsZWFzZSwgaGF2ZSBhIGxvb2sgYXQgdGhlIGZvbGxvd2luZyBE
+VCBwcm9wZXJ0aWVzLCB3aGljaCBhcmUgY29uc3VtZWQKYnkgZHJpdmVycy90aGVybWFsL3JvY2tj
+aGlwX3RoZXJtYWwuYzoKICAgLSAicm9ja2NoaXAsaHctdHNodXQtbW9kZSIKICAgLSAicm9ja2No
+aXAsaHctdHNodXQtcG9sYXJpdHkiCgpTZWUgYWxzbyBwYWdlIDEsMzcyIG9mIHRoZSBSSzM1ODgg
+VFJNIHYxLjAuCgpUaGlzIGhhcyBhbHNvIHJlbWluZGVkIG1lIHRvIGNoZWNrIGhvdyBpcyB0aGUg
+Um9jayA1QiBhY3R1YWxseSB3aXJlZCwKanVzdCB0byBtYWtlIHN1cmUuICBXZSBhY3R1YWxseSBu
+ZWVkIHRvIHByb3ZpZGUgdGhlIHR3byBEVCBwcm9wZXJ0aWVzCmxpc3RlZCBhYm92ZSwgYXQgbGVh
+c3QgdG8gYXZvaWQgZW1pdHRpbmcgdGhlIHdhcm5pbmdzLgoKPj4gICZ1YXJ0MiB7Cj4+ICAgICAg
+ICAgcGluY3RybC0wID0gPCZ1YXJ0Mm0wX3hmZXI+Owo+PiAgICAgICAgIHN0YXR1cyA9ICJva2F5
+IjsKPj4gCj4+IC0tCj4+IDIuNDMuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
