@@ -4,83 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC4FBC4828E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Jan 2024 22:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16860C47DDB
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Feb 2024 03:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cybzozNGYNnYxkNMj/iBXHTphcCSB9NkUY0jwwcgQBo=; b=yfLpAOcC/A0sc3
-	cgaHkSVEvK68EaTQGlDW1KSTbL8QNEDl8W7B/snXnxP/IqROpVPLvNehH6Dez0DhNoG8yRfWu+Dqz
-	cqMOw8wjaCRTcg1Daqn8p+hDwcwu/6tMkAy3Banxx0Bv4/sGtslQuQNlbnEJ7DSn6/y6Z0Ehb5T2P
-	1wK5xFAAvke6ZII8QIIK8eLdtQS0/RqFpr5uAmFpbEhmLUPQVAphhyTzhlCQfLVMFa7L2//+5998T
-	SqBc3FD++zLjBTVpfFsyYvYCfe+Y2twwDoAKVqWAO2Dp9c2um69L6I7Z//Eno+5sB+NwVxZm7Rybp
-	Pk7i+paI4lLOKXMyiRow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7fYnmB20oyPm42q7LVwFi49xnmVmLoPz8D3wh9A3o+Q=; b=rpsjgKHtR9rxPN
+	M2S6SHqQOPua4lhLJeg9Elzu7YFYp13uU8ZA2F659nt9K2mCX70V0VfX6TaWv96G3w7UHbI9gLvM9
+	7H8TQMuAgZyN7uu1Suwf4pgJywXh+PNSJYUMSiLSjgl+1Ob9qTlHzUeZQo2RJVg7B0r3lWQ7DZNch
+	/mejnk1LR2IduyNbSyuWjugN8iUIjjy+O5Z18F3loFYalHixzsB4VXoFuMtwRg+tVUcnmAeehTBjG
+	iBrcQsEsXv1DvFQKHIwrQCsaUWD5nBQXzNHFmAGFUEl6gv3xFDqEmOZg+Y3lBynVq80TADIbiHXmJ
+	Aq+YjybaFZRfyhpQaw9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVJ7Q-00000005iEF-2pTZ;
-	Wed, 31 Jan 2024 22:31:44 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1rVO3I-00000006QuR-2Nuj;
+	Thu, 01 Feb 2024 03:47:48 +0000
+Received: from mail-m19731124.qiye.163.com ([220.197.31.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rVHxH-00000005TQ1-1PeD;
-	Wed, 31 Jan 2024 21:17:19 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a318ccfe412so18353166b.1;
-        Wed, 31 Jan 2024 13:17:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1706735830; x=1707340630; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=m809IEfmsOt69Mzj+ewn9rd/I21cqoMQF9Z+13+EcwY=;
-        b=cRWVHEhF3xe6WLrAEtI1mCusdCu2f67PUu/hrJQZ/mroz74VLXnbwgI5Pv0SHbBPM6
-         Ge9V2SHTzR2EOBfATdkXctbfbdGSQTjuvxQuVD7eIqU8X3SAanTJeY+9uV5dHyif43kS
-         DtuZK1yVezCs1nUAOApXUzNdoAWkOzHwYplY6QZp8jRiSlNgdmfZdUpxRs/56XOG1fcf
-         zbQRMOGDAJKbZmBr5qL0Z/S+vEl1JmX/aOFejFMXibyhBuVfjVKnisNTjccdgTHQNIbw
-         BTHM/2zKSYOnjVDbqry+Ihx4rP9H/KtIh+FI0EH6Nn06E2WXgAjzxOLWfO4JHX/xJGRb
-         aqFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1706735830; x=1707340630;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m809IEfmsOt69Mzj+ewn9rd/I21cqoMQF9Z+13+EcwY=;
-        b=fnVAYWdRSGe4gWFBNLl/FG54Ddt9bfGq+NraeHUKv2SscgjEqQPcqI9Nyb1LvRKYlO
-         XOhpnwhWPqKVO+MIXxARGb3SXlISxLhpdB0241di3XOB6FOiQKhElC98ly1AB68df4oE
-         mtdbsNr3bG8+9SXVkkF3u8LjItBbQV9/f2YNAM9TetomPum8z8ENDiapYDQ27BkX/pnc
-         2uypFtsaMlp2wt59DOfdVMjrLGv96BU919Wx7s+h/65h1ib3H6JuGgs+WrT0wl10UJ7r
-         54sSPbVXtQhwA04+xbnU8pmdAATU0LrlbgmN3P5UBVzTuyGuT6ylwPgQZPOYxFszQ4hC
-         5VHw==
-X-Gm-Message-State: AOJu0YwGUSjRhHpvoX/gjXiwDdNtoLpAzdvT/cwMwThAheqZyoHIQsYW
-	3+r1oRLeeLWi2aSflrjyjt9jy0rnjLrC9QwXoPFe7HsIT55aifW0
-X-Google-Smtp-Source: AGHT+IErUVMAdxFTL73O0fpk+TAYJywDN+0bWX9BrjrCHQ2aPbxJ4ulDwCy4QPkkxKUz88lXPQE+LQ==
-X-Received: by 2002:a17:906:b892:b0:a35:6667:b3ed with SMTP id hb18-20020a170906b89200b00a356667b3edmr2101448ejb.8.1706735829899;
-        Wed, 31 Jan 2024 13:17:09 -0800 (PST)
-X-Forwarded-Encrypted: i=0; AJvYcCX4l5u5Ajq9ylzzqYpkqzDFhuvJh6UcTWtUwBEF20/WVE5VlfDsUyor+mEeZhXLOS2GpQoSC9Sgo88wnvbODLkZGVeRbj9lG+gIRVnZP1vsjzbL2G8/xcZUxrmCYT/qtoTMBprmmHqnJqwDTkJA6vZ4g7eo79nvaQ66KWmrR12G4BSEOCMzNZrUO9uruaVQ2jISuTjR/x2xCoc8q0EPUi6S56Wz20U+XQ3GfsmmRq76t4ptsu1HiXh5tOOx1FYeVAxL13LZXKK9mYPpqxSJDV5ZWWsk772icN/1jsPaFih0xzaiBrBt2kULGo7L2yPgsPLl+OdrHDPs0ox70Acg3WsG0ti+vTFkGDdmwZ3Y9PnSqYrRJWmFOIeXvc9C0V9Jfha+QpQMuU/QN92BLmS1l9P5mUcVvIljvPlocx6TTEE9Q/+ZenkbwsEVGHVFh2goYy1Exqm/CcsgmuejRhklC2OVO/VN88jzLu6+Pd1YFVQkX1nH2durRSTdTfWH4FlTdugj1dxzEc8uY3FWDM2/82OoNk4Q6AF9Wv2kcYESlYNmyNni00kfClh7JtANd897aYugEORlc76hXEgrq1Y=
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id ty5-20020a170907c70500b00a35a8571419sm4040634ejc.135.2024.01.31.13.17.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Jan 2024 13:17:09 -0800 (PST)
-Message-ID: <e5dea3b7-bf84-4474-9530-cc2da3c41104@gmail.com>
-Date: Wed, 31 Jan 2024 22:17:08 +0100
+	id 1rVO3G-00000006QtJ-0L5b;
+	Thu, 01 Feb 2024 03:47:47 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=CeQj6lMCylRdQEJgGtPj0Cau28pDAvxSiKaBuy6d8hjZvb5Bs3XI2zLFGXK995yY1AQjBZ40u92rByBj9B49T5qYXK72I9FxSEX7GBi/gogLEiwxvF/x/HzEEuIp+zuirXqbuBuYTpZAgZSgShucC44TdZ4wNiF7J8x+DW+bVxs=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=vUd7IweKCDAI5DPZtFehaRnre2b1TEPbLmlLAdm/y2A=;
+	h=date:mime-version:subject:message-id:from;
+Received: from localhost.localdomain (unknown [103.29.142.67])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 0EB1E900144;
+	Thu,  1 Feb 2024 11:46:36 +0800 (CST)
+From: Kever Yang <kever.yang@rock-chips.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Jagan Teki <jagan@edgeble.ai>,
+	John Clark <inindev@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lucas Tanure <lucas.tanure@collabora.com>,
+	Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh+dt@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	=?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <tszucs@protonmail.ch>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: rk3588: remove redundant cd-gpios in sdmmc node
+Date: Thu,  1 Feb 2024 11:46:21 +0800
+Message-Id: <20240201034621.1970279-1-kever.yang@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 5/6] arm64: dts: rockchip: fix rk3328 hdmi ports node
-To: robh+dt@kernel.org
-Cc: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, airlied@gmail.com,
- daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, tzimmermann@suse.de,
- mripard@kernel.org, markyao0591@gmail.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
-Content-Language: en-US
-In-Reply-To: <a493c65e-7cf9-455f-95d5-8c98cad35710@gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaH0NLVkhKT0MfTh0fSEJKSlUTARMWGhIXJBQOD1
+	lXWRgSC1lBWUpLSFVJQlVKT0lVTUxZV1kWGg8SFR0UWUFZT0tIVUpNT0lMTlVKS0tVSkJLS1kG
+X-HM-Tid: 0a8d62c6981503a9kunm0eb1e900144
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PBQ6HTo4LzMVLk0LSTQhNglN
+	TUwaCjhVSlVKTEtNTE5CSkJCSkNKVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlKS0hVSUJVSk9JVU1MWVdZCAFZQU9DTE03Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240131_131711_579182_A9231364 
-X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-CacheID: sfid-20240131_194746_642281_58FC9B8A 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,46 +88,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix rk3328 hdmi ports node so that it matches the
-rockchip,dw-hdmi.yaml binding.
+The sdmmc node already have a "&sdmmc_det" for pinctrl which switch the
+GPIO0A4 to sdmmc detect function, no need to define a separate "cd-gpios".
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+RK3588 has force_jtage feature which is enable JTAG function via sdmmc
+pins automatically when there is no SD card insert, this feature will
+need the GPIO0A4 works in sdmmc_det function like other mmc signal instead
+of GPIO function, or else the force_jtag can not auto be disabled when
+SD card insert.
+
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 
-Changed V2:
-  keep reg-io-width together with reg
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 1 -
+ arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts     | 1 -
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts         | 1 -
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts        | 1 -
+ 4 files changed, 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index fb5dcf6e9327..a73234b11ff1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -745,11 +745,20 @@ hdmi: hdmi@ff3c0000 {
- 		status = "disabled";
-
- 		ports {
--			hdmi_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			hdmi_in: port@0 {
-+				reg = <0>;
-+
- 				hdmi_in_vop: endpoint {
- 					remote-endpoint = <&vop_out_hdmi>;
- 				};
- 			};
-+
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
- 	};
-
---
-2.39.2
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index 3e660ff6cd5ff..1b606ea5b6cf2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -444,7 +444,6 @@ &sdhci {
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+-	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+index 87a0abf95f7d4..67414d72e2b6e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+@@ -429,7 +429,6 @@ &sdhci {
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+-	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index a0e303c3a1dc6..25a82008e4f76 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -371,7 +371,6 @@ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
+-	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	sd-uhs-sdr104;
+ 	vmmc-supply = <&vcc_3v3_s3>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 2002fd0221fa3..00afb90d4eb10 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -366,7 +366,6 @@ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
+-	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
+ 	no-sdio;
+-- 
+2.25.1
 
 
 _______________________________________________
