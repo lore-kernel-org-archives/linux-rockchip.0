@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB07C48291
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Feb 2024 10:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B1CC4828D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Feb 2024 11:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ILQNXlySJvk1A5PzfhcgtxMernHejKv5vAYkprpEsjg=; b=2Sm7rm25a5lomM
-	i5cHqqiZde005YzqnqnN7+DWrbd0xk2y7aEHZuKhlMJ0jjuVDzfNWHtaz9emAEKlCH6BEKHHo47f8
-	vP2eZflN9izF4giKn8JKxQA1QRNiA2/NG5qFYjcciWPd9V4b0J9lLHzybWO1XzswH5Ag065YT1XZd
-	h7NJnMPugYUabzvRhd1NIkKZZ/T4VOW7GftD1KT+/MpTHBtpy4LT5ZCL8L6si3GM60b509QncEVMf
-	A8Nr286YX0LGr6px19lUNYSMppciOPg1Qn2iKgkEzpgecqTq9/3G9D075V15z3uFddkAnxquoSFHy
-	r4X6WHmvD8lcFm8u82Vg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3hjDzia/eYZwUTK46/xm+0B+MuBNPehE336I3bOJjH4=; b=3L7RFg3v2bzFf3
+	g832TKI8e+pM2NOaieK2PKUNu1oT9nNm2944lsy58/HVyPN3++ZJDqtOrLKDLthQKszDeqTWS/rvl
+	ZcQzFq7+i6teNxS2OogA4kdMezRwSQ1xZKzvs0aM1EE8Q6h7017g+MEFYwFBqiwtOz86ser8lf3ie
+	o8f95V9Pqb1Ztc/qtj0p5ItAevi/DXFqGjC+93/geAnr65hZCLG+wtpEPbdxN3EzlybbFxGQoS/hq
+	vxrWVV7KmNt1yymXw+P6OfiSTwJeLl2PgsFEl4p+V0JRzmw9HP9iu2zf2Xr0NaWDfCUI/bl5xT2hs
+	G1HEBm/StvtqeY+PQBPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWwSk-00000002s7W-39yB;
-	Mon, 05 Feb 2024 10:44:30 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rWx75-00000002ytk-1w2D;
+	Mon, 05 Feb 2024 11:26:11 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rWwSg-00000002s5P-2NMM;
-	Mon, 05 Feb 2024 10:44:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2A71CCE0C7C;
-	Mon,  5 Feb 2024 10:44:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F21B2C433F1;
-	Mon,  5 Feb 2024 10:44:14 +0000 (UTC)
-Message-ID: <e565f8bd-19d2-4574-8c6d-5573733a8185@xs4all.nl>
-Date: Mon, 5 Feb 2024 11:44:13 +0100
+	id 1rWx6z-00000002yqF-1anI;
+	Mon, 05 Feb 2024 11:26:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707132361;
+	bh=HEFTrisHcwP/RUwGwlzUD3rlgftR0EEubBnkx8n5Y6o=;
+	h=From:Subject:Date:To:Cc:From;
+	b=TgPAjrgSt35SPVjCcqmmPj/tSXqjAbk4HD7ypkMPNnq4uEeG5UaPfN8sK25450VLM
+	 9ilvuQHdgHWsdP8Ex2CLGEJ4muZ5Wqg5mdflZpGZmexoLCZljKlu53z3UcVKAzI6t+
+	 M4Vd2668bc2SY90W4XseI8Kch8rde3ufYGM1jq7scSs0zRf850H4NSeDiZSiDw7puZ
+	 xjbw/jXIwYAXG271YafuGuMxXYrI3nKU+VtyP9Ljy2a9UL4y6nIOGbGSI2Qa4I7Q6G
+	 m9l0P16ACm/R2HsCIOEz+Edk+360NJ/4F4ntM0cmC3mS3cEBSZerJV7kW/JwzhnxXt
+	 MeVQ3O2adLQkQ==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F1332378107C;
+	Mon,  5 Feb 2024 11:26:00 +0000 (UTC)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v2 0/2] Add support for RK3588 HDMI/eDP Combo PHY
+Date: Mon, 05 Feb 2024 13:24:23 +0200
+Message-Id: <20240205-phy-hdptx-v2-0-a7150814c047@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/17] linux: v4l2-vp9.h: Fix kerneldoc
-Content-Language: en-US, nl
-To: Randy Dunlap <rdunlap@infradead.org>,
- Ricardo Ribalda <ribalda@chromium.org>, Jonathan Corbet <corbet@lwn.net>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- Bin Liu <bin.liu@mediatek.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
- Vikash Garodia <quic_vgarodia@quicinc.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-amlogic@lists.infradead.org, Sakari Ailus <sakari.ailus@iki.fi>
-References: <20240126-gix-mtk-warnings-v1-0-eed7865fce18@chromium.org>
- <20240126-gix-mtk-warnings-v1-17-eed7865fce18@chromium.org>
- <ZbTTb-SdK-EubGdc@valkosipuli.retiisi.eu>
- <201ae1d1-1e03-40e2-9cc4-49df70abb8da@xs4all.nl>
- <8f3bab1f-8697-40c0-91f2-de934b4b9ddb@infradead.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <8f3bab1f-8697-40c0-91f2-de934b4b9ddb@infradead.org>
+X-B4-Tracking: v=1; b=H4sIAGjFwGUC/6WOQQqDMBBFryJZN5JEkdhV71FcjHFsBtTIREQR7
+ 97oqvsuHzze/4eIyIRRPLNDMK4UKUwJzCMTzsP0QUldYmGUKZU2Vs5+l76bl01aqC20leq0RZH
+ 8mbGn7W69m8Q9h1EunhF+CrrWdWFVlWtVKKNLqaVjigvBlDsKDoYF4eXCMEAbGHIXxqvtkxJ4v
+ 2+u+lr4o9ec5/kFnws8avkAAAA=
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Johan Jonker <jbx6244@gmail.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Algea Cao <algea.cao@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org, kernel@collabora.com, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.13-dev-a684c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240205_024427_000726_441575BE 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20240205_032605_774209_293FEA1E 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,51 +86,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/02/2024 11:39, Randy Dunlap wrote:
-> 
-> 
-> On 2/5/24 02:29, Hans Verkuil wrote:
->> On 27/01/2024 10:57, Sakari Ailus wrote:
->>> Hi Ricardo,
->>>
->>> On Fri, Jan 26, 2024 at 11:16:16PM +0000, Ricardo Ribalda wrote:
->>>> Kerneldoc cannot understand arrays defined like
->>>> v4l2_frame_symbol_counts.
->>>>
->>>> Adding an asterisk to the name does do the trick.
->>>>
->>>> Disable the kerneldoc notation for now, it is already ignored:
->>>> https://docs.kernel.org/search.html?q=v4l2_vp9_frame_symbol_counts
->>>
->>> Wouldn't it be nicer to fix kerneldoc instead? It might not be difficult at
->>> all.
->>>
->>> Feel free to, but I can also give it a try.
->>>
->>
->> It would be nice to have this fixed in kerneldoc itself. I'm holding this
->> patch back for two weeks to see if someone wants to work on kerneldoc.
->>
->> If not, then I'll take this anyway to fix the noise in our build.
->>
->> Note that while this header is indeed ignored in the documentation, that
->> is really more a bug and it would be nice to actually include this header
->> somewhere in our documentation. So fixing these kerneldoc warnings one way
->> or another is something that we should do.
->>
-> 
-> It's just waiting for Jon to apply it: (from Sakari)
-> 
-> https://lore.kernel.org/all/20240131084934.191226-1-sakari.ailus@linux.intel.com/
+Add driver and bindings to add initial support the Rockchip HDMI/eDP TX
+Combo PHY found on RK3588 SoC.
 
-Ah, that patch was CCed to me but not to linux-media, and I only searched linux-media
-for it so I missed it. Good news that this is fixed in the right place.
+The PHY is based on a Samsung IP block and supports HDMI 2.1 TMDS, FRL
+and eDP links.
 
-I marked this 17/17 patch as Obsoleted in patchwork.
+Please note that currently only the TMDS related functionality has been
+implemented.  This has been tested on Radxa ROCK 5B and Rockchip EVB1
+boards.
 
-Regards,
+Changes in v2:
+- Rebased series onto next-20240129
+- Removed patch 'dt-bindings: soc: rockchip: Add rk3588 hdptxphy syscon'
+  already applied by Heiko
+- For consistency with SoC TRM, replaced all references to DP with eDP
+- Updated PHY schema per Krzysztof's review; also collected his R-b tag
+- Dropped FRL, EARC and 10-bit color depth functionality until the HDMI
+  configuration options become available in PHY API
+- Squashed lots of regmap_write operations via regmap_multi_reg_write
+  (Sebastian)
+- Introduced parametrized {CMN|SB|LNTOP|LANE}_REG() macros to replace
+  the long list of register defines
+- Optimized handling of the config arrays by using ARRAY_SIZE() (Sascha)
+- Link to v1:
+  https://lore.kernel.org/r/20240119193806.1030214-1-cristian.ciocaltea@collabora.com
 
-	Hans
+---
+Cristian Ciocaltea (2):
+      dt-bindings: phy: Add Rockchip HDMI/eDP Combo PHY schema
+      phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver
+
+ .../bindings/phy/rockchip,rk3588-hdptx-phy.yaml    |   91 ++
+ drivers/phy/rockchip/Kconfig                       |    8 +
+ drivers/phy/rockchip/Makefile                      |    1 +
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c  | 1040 ++++++++++++++++++++
+ 4 files changed, 1140 insertions(+)
+---
+base-commit: 596764183be8ebb13352b281a442a1f1151c9b06
+change-id: 20240128-phy-hdptx-8a98ab60d18e
+
 
 _______________________________________________
 Linux-rockchip mailing list
