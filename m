@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3FEC4829C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Feb 2024 17:41:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3893EC4829D
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Feb 2024 17:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wt1eUHe6u3MGW+gzfa5ibvCGIQHHX440E3ZDjhcVQS0=; b=H9vRNtvKz1CdWO
-	pqo8iRtlacEt0Jc7iir/WLmRHU2tZByoYgUTvazRodoVSzUJbGMN3dG+dvvq0JBtmMsWb0QrevXT1
-	gHVD7VMImd8zHQ+h4P8JYbMSjoC3An/emcUFRUqFU4CgaKq4pO6ej4XPAGc5WgbxNKFE0nHik7gQM
-	p1a5sx4m97cvl+5Xil0trw3/mvi3suHF2e9lPWnZ4kOsIDcJSYnu8hClyLB1+6u96aERU7SmgPwix
-	8Qrie9EpVR5jYSr6L6ebcgBt4XGCDUw/WIZiBvQZ5FNpkDqU5hSDKSAfiV9r6bzxEAPjv3sg7dgub
-	rwsn7cccYb+U8wJkdF8Q==;
+	List-Owner; bh=B89F0lGMHc4Uwgaw/tpDWco6EHo6dgQJaU9+OiilCXs=; b=AIPBgzJGU3TNee
+	iRO491SLTtAMxrIZ4e//woKxU/SyQCQDZDW8gNmzTQA7Bk/V0bOmoBYLxgNKSZGzEYGA0A91a6JZr
+	AS27zEZSTaJUBqDBkhS27dBvBn/fzKU/FHsSb91cyjlVUI9f0bKkydVkIscdC380u7/ts30FsZPcw
+	CoRx2uA0gABF4C1uZd3mSCxDKvOpdvK7Ng5XNZp1iJmzgAuFndurV0coDAOemQ34V+zlB0h/a+Yad
+	gyy5acDaqLOPbyuHvRkeMigO5U33zb6GX+jQbGuCpsC/Us4zdhZfwfUE53wySTDwtSJJ3Ymssneep
+	tLstMAPzeR9XRxCq+sqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXlvM-0000000BKT3-0D3c;
-	Wed, 07 Feb 2024 17:41:28 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1rXlv9-0000000BKFI-33u3;
+	Wed, 07 Feb 2024 17:41:15 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXlvC-0000000BKGl-21lb
+	id 1rXlv4-0000000BK9t-1zyR
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Feb 2024 17:41:22 +0000
-Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-783f553fdabso5940385a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Feb 2024 09:41:17 -0800 (PST)
+	Wed, 07 Feb 2024 17:41:13 +0000
+Received: by mail-qk1-x735.google.com with SMTP id af79cd13be357-783def87c8cso46568185a.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Feb 2024 09:41:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1707327676; x=1707932476; darn=lists.infradead.org;
+        d=soleen.com; s=google; t=1707327668; x=1707932468; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=wfVh0oPEahUZvzrBZ9xf+/i5rxN2+U5mi493evzNcuQ=;
-        b=A2CSALiUo6Zm0YWbIbOWZnSsd9nAbCXv4YjRbO9C1ojlxL/VTuvN+JHEtUVaiLs4VP
-         GY86d7lQt0I4GMaC5DizCqqOzS454PnGaFCnBYXBoViPfV7lGRX/X5HrcAeTFlX0tCkC
-         BBOV4AkqA+w7uvwzNntkRgoVxhGW0QLHIYeh+dEzqtlSNNdKDJHLRj9bM25suu3VLQAW
-         ess0+2g5n88pitFqMz1TdX9/YXxlY+Y5Vx4fh0T0W97mGl6oPeWKDv/rtP/f0xA45Bhx
-         iPIIKyurrShPWw7oq0qUUhTwRfSZR/wUi90p6oIOadzteizgndIuxzLeU1hDfR4BJPV4
-         pvMw==
+        bh=1p6c0H8WTvJk6gi2vvmtKHr5lJOFWnxgAzSISbVOa0Q=;
+        b=D+8DwAQI2114n6lvOahNprLyiW40MxnWPtvPlaJ0AXXipafMUukAA/y7RKZY1Cc+5L
+         qpi9JQ77y+VgIwI9g4fHcROMyy+SStfZnwxCWrZQnyiPW0QByT3Ze22h/020XowZ4i+S
+         h6UbJ+WnUVjva9oez49BEIDQ/MmTnaoASjdm2VkvD9A2BdBrHYkJ+7cn/3aJedOuUaoJ
+         9LKj4AngCjsyt1BWD3RE4saCQUcM+l+25r5Xsq1BffyjcNl4RhonMDyI9BI4kze+qiNp
+         uutLLEkt8LDssGs+Dh27RT4yVrHqZi1tGoljDQ+5h+KV8Wr9fkQn/+7ag/6o1+xP8FiF
+         LKdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707327676; x=1707932476;
+        d=1e100.net; s=20230601; t=1707327668; x=1707932468;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wfVh0oPEahUZvzrBZ9xf+/i5rxN2+U5mi493evzNcuQ=;
-        b=YsjLrFPdlvAM6hIF3RUMdPOVn6uRd1YRptMw+3ubKK6iLUHgRtw+9Cv4MRttR40KMN
-         CyfuSadwA4Mgb/2PN3Fxbbmr5cv50bvmE5oJjw3Q29/iZ9HzIHvTNgt10Di1UO8EbbJ7
-         UtsfznROTKWk2yWLdqN2HoIYEeZmw1bVn/YPFFHeN175JZJ07oCKiHsC3DPHkNQ6SVaI
-         eMCflyUPDmeemqJzaSyvjQ8MWc/N4noZRiwLN1sxhrfX04IIq4dzdu3hNFovt7eUnr9g
-         FOPhg+1LKHwRGdM/5CAXVlYSmu1G770skAUgq5avA4pbOP1dVjiD8+wH0K8ZC25bEruU
-         dGeA==
-X-Forwarded-Encrypted: i=1; AJvYcCXLTImRHgI5ekozZkQEWriIxjIH2/U5mvb8Exldr0RkAS5k+/rc+hzHkBE4LxlPlGJnv7yOZ8y13JP+dE0v9JbW3gzwLD4TXDmMkzEPpv8/fzN9
-X-Gm-Message-State: AOJu0YxMIqZos4msHmaTFMVffq7OZrzDtRK4K7sYHO+0yIu+0Smj5ZWZ
-	HmXqN4kmry29rz9QxW238N6gD9bg1EKvYSeITqufChwSyrhQK1ir9/Ux6WhUBPM=
-X-Google-Smtp-Source: AGHT+IEYw/oN3ccwsdwQFv2jRl2FvfT6B6nkPyMXJGG4ZBtYYD02TxlhcFEf6LXGuUiTE1mdL7ys/w==
-X-Received: by 2002:a05:620a:2191:b0:785:a0fd:26c with SMTP id g17-20020a05620a219100b00785a0fd026cmr230165qka.36.1707327676289;
-        Wed, 07 Feb 2024 09:41:16 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVXXSvczqKSyNm43JX5/tzjrxJXXar4QNtSDMhqU2+N72ON7heLA3zeXwN1sPD8iNP1Ua3viph4VSvSaigEeBs+4AB16FSQoHG3nR2ARKpJ6Z6eqdW6RZ/Dx5gVULGUeNiZJs2bmFqEcerVJIR/k77MlP0P0vb2m946zLj3/Q+KKlAaf+S7e+fUwZ84VZBAoIKR3CAFqaEvfgSVeHvJDNlreq4nUF0bRbOmv+CTFkg6/34uIuhSrA1PfBuZS9NDpUrr7qD3iWEui7dadf1quYchsrHJm7Et0JCMwNo5G7j88fU0jnlH2f3xq6IprlzgVbwgVawD+F0w5yMxaKe31AMQCKLJDPkDnYGtso1cb3VcL9cwUUlE8zHdYGqDtmL4A3bNsEc+cHEYWlAikX+B5mca++p25pQQybiJgq5+xuv6MXn3SJAmkIrOedVuJQIGWWxUXhVKrHyW1vTefklNntllKnJ8kE94Q2QK6FQ7R5hbS7ZM+HnDQX4b8eU46NlXSODa0H04teVLWvmP9gtCad8fAMZqMrrR3WQ/TUTBO30OMZ3zF+k4DWHX9SXVVrt9nrRNprKLO9Z7u8dKJ7+GXLD3DWJoiQaPYhHwdfNS0J/6cWv0Cmhs4GVlXWvAwjKLkG6R+bd+Ys0jdTkMgWDuLUuIUZJXKs8G2j8ytxUN9ONqBDbvEtiqVgUbhqFtknANpqKIjtrOa5afMZB6vaVlSXSz7JIia1p4WLqYg76UjL26wPfE+YNYaoqoyla+/NM5tlqcG+Qv9qaBsUT0PrZlag/9hIB7OlkLkbIDeffOo1piVsMnuWQ2Fb0sIE5M3tMlSV4LOUvlm6MMoqTigjLdoiMPCpo3eSydh5ThPXQcdvauDs1iooRO19ROz7wfGQiGkN433FzI8pQIGwB/Y28HAGJ2Z/e4dzgMME9mxSg6/v6VWpPcpYfrpADNnE1HG5m17F3Z9/
- UwJNwsxkn3pX7eMFA/DZyCzVr6lCgR+6OWns+GLU2SxZUdU0xVvSfjQhkSCVyzsqGTBKOAl46Qb5IR6uUP95vhYRyZh/sazLK1hp6TuSuGwGRiqCEq3kw5QrDYNAeSeryfxDajztI6S9jiXf9iOAeZ2u7rYaFZy50vg9l9iMXxf9hkJco867096dyje+DKkhn4WuJV5pUKUPg0jyDyOEh9YkiepVTHVZe+2/e6eXAACmAIqtLN291FEcNxHSFVc9VoRJotuYKq+P9z10tdNS+gaUUxRVwOH60jk5JdNq6iqwWPhfb90cWSdU5X/SASbKNAWT2TUn7fb+cqTPdJqZU5F61vo4y6m5LgEiIZFuY8ciAZqGeXCJ4KoNYNcloHQYen9MDAb9yvPdMPytSIThAuivd6JL/t1mQ68T7pjNDeJUQ62Bl8xjmJOCkONVL1QfNYzX6G15djtpimeWhgGmyglvGJqsqIKWUnJObt/eRFoB8y
+        bh=1p6c0H8WTvJk6gi2vvmtKHr5lJOFWnxgAzSISbVOa0Q=;
+        b=HrmVpDclGFWi7fRkslvqxasSnTfk+NaouTKtwIzinJQmkBL2TKS6sL2gY/iV0UHFCH
+         FlRBvvdhAncU5tRLwaI9nT630deKlAveePSaxOJZld+pHsrIyYVztpsaxlpFCvAOR4dz
+         dXz7hxUu1zwgIPkV9J2hn3GRe9IeOhXxdxaJQNE/N19l3x4mMHkVT1uqn5F2fiTBmhyX
+         wy9MZ55knPbSwd1A0b8N6h+pOJq/JTk4T844c383W2mKEmB1Bqsx5PPOsM2mwiSk2MEC
+         xksqvq74JG1nvfBweEvmJ9EAAXa0hir0Log1VxNRiFrdm3fDXll6a9GEisPrKK1fXa8A
+         7ucw==
+X-Gm-Message-State: AOJu0YybZ8hZ8t8r8infi9T5KGWb7fRk7sbVAJzFu4jMZclwMH3g1JJj
+	H6Vws8mhTfijoyUYjpnMm0A6+usk3xFt20lbZciPRcoA9+F01+nbuMGR0dXU6bM=
+X-Google-Smtp-Source: AGHT+IFqsKvbYxnsl607lpwUnjdcEC2VTwCJMsnUUJ+7cj6jPT1gdZy4znTZwiDYd+P63yLvfl8CGg==
+X-Received: by 2002:a05:620a:5d:b0:785:8bb1:5d6d with SMTP id t29-20020a05620a005d00b007858bb15d6dmr6330373qkt.32.1707327668043;
+        Wed, 07 Feb 2024 09:41:08 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCW6WbJCv2xiMWVXy51m5+spYoiETKd3c9i/GdyqQjSTWjcTfDFx513A9g5laMMpceSxDIAufK6NgvJBAcobhIY+AiA8qeNFzNf8jPbXwADU97BCGk0HRgCSgypPOE53mzzKxD3GQVRbYhArys/w5F7U05bjXxVJlMijTpas0JbqtUULs5Tyt5h7UJsPeJ0nKvljkcxCSTt8GStEf0WxIUBM3Mbrc7a4/tjHrcMj3EKeC8im4aw3UQrmlNsWoQeRCgUJQzPoK5GVUFsffOpyxwRTEBXuJ9+z/dl70zYihkksq3xTMCc9pKPof1cwSAMPTT7hpdr419oVNJPD37TkF5WrdqrI9F+mU1tZPGnbfJD6z8F8l8XysVAixyI4V6sFy4O52xEgIxzMBmirv7EsV+JmB8H26UXAEragpyt6By+XsvpFatLprzjTmHDhKrCcp7Mrkr0ej/Z3g1pBmRkU7ufcFUy3wl/E9b0dWwaP3Cxkt8qequLso5ItBzn3ISDVBRNywxWk+yPrtODVQ/G8FLOWmNzy9FwmuyEQsZcjoYAkCSJoQE80JK+55qOO8y9xohmDxFNps7Gp6BzmXPYg89NauvNDtOLu1chrRGj55Wg3uQi+iF7cPFPs4rUh4CNCBj5HlsGO6dpQQt8bbvm814jGorl7sIUtl1Hr7nMW80D7MSJb3AOTfu1V6QI9ryFy24Xyz2u3lYpD9BnLZbsvq9sg/XwYeSdRfFt2FrWbCzycLdxCxkR44MzmgW8QrUX/INt9qsKQzwEoSNYVklkOXf7FpaifttywkEuQEq0aRzBSJ0FFZlU+u7PvZ2tpCxH6n5rtmYnTC3s4A2j7tqGsfHIVmCEJ28RnaJ/MBIarau/1yJqiTF6a6il2dKQnxucq6ps/WyANhdwOydPWZAFl0xI7vuc0xDyBKPB0LIaadrjx9dO/w+UumATSuJ+PpvQNitnshK
+ yy3f+r6z4KEHNfiot5FF3BJlNeTqEbxt9rzbDfFCAX4g1MNO5o3GhcBtdTuyCkLVHtsJgd7VI92MFH37B1Dy03HIzzN314nriNgqPup8HvufpjxyKYX6/LFMUk9N3bA/ykNzkjCuLpXIDAgb8Uu71XKYoV4+7iuu38Yv7+ybSXOaJc+v4HlSTbtQkWlEO1ol0eX/AXMvH7fV/QCXvGgecaE0GqUB6Ab0gyiY160uPhYfskl7Fs3tJnHqWISq7F+PZvL4UUr+L0fekj/0y/QFE91XYflkFSVoSwHIKb7gxas/vgnqRYTCZP72Ap/YU3umpgKMj5qW91RiFoTgdVm7W0Ziv++alXQa1XxnDLjKJVeWrihh6p4pVvYnB2j30vNeiUasr2MTymxEOdwLFMZuWgAkTicMzEP2gBfxDBSa1AalS19fUB7dcLoLZnFBd3cC83ECHV8i7P1QZkX42bYkG+EkExjV07jjX0l8Vq+qBrgq+l
 Received: from soleen.c.googlers.com.com (249.240.85.34.bc.googleusercontent.com. [34.85.240.249])
-        by smtp.gmail.com with ESMTPSA id e10-20020a37db0a000000b007854018044bsm696310qki.134.2024.02.07.09.41.15
+        by smtp.gmail.com with ESMTPSA id e10-20020a37db0a000000b007854018044bsm696310qki.134.2024.02.07.09.41.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Feb 2024 09:41:15 -0800 (PST)
+        Wed, 07 Feb 2024 09:41:07 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alim.akhtar@samsung.com,
@@ -112,17 +111,16 @@ To: akpm@linux-foundation.org,
 	rientjes@google.com,
 	bagasdotme@gmail.com,
 	mkoutny@suse.com
-Subject: [PATCH v4 07/10] iommu/sun50i: use page allocation function provided by iommu-pages.h
-Date: Wed,  7 Feb 2024 17:40:59 +0000
-Message-ID: <20240207174102.1486130-8-pasha.tatashin@soleen.com>
+Subject: [PATCH v4 02/10] iommu/amd: use page allocation function provided by iommu-pages.h
+Date: Wed,  7 Feb 2024 17:40:54 +0000
+Message-ID: <20240207174102.1486130-3-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.43.0.594.gd9cf4e227d-goog
 In-Reply-To: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
 References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_094118_771480_2CFC682B 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240207_094110_664632_DCDEA69A 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,48 +137,528 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/sun50i-iommu.c to use the new page allocation functions
+Convert iommu/amd/* files to use the new page allocation functions
 provided in iommu-pages.h.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 Acked-by: David Rientjes <rientjes@google.com>
 Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
 ---
- drivers/iommu/sun50i-iommu.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/iommu/amd/amd_iommu.h     |  8 ---
+ drivers/iommu/amd/init.c          | 91 ++++++++++++++-----------------
+ drivers/iommu/amd/io_pgtable.c    | 13 +++--
+ drivers/iommu/amd/io_pgtable_v2.c | 20 +++----
+ drivers/iommu/amd/iommu.c         | 13 +++--
+ 5 files changed, 64 insertions(+), 81 deletions(-)
 
-diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
-index 41484a5a399b..172ddb717eb5 100644
---- a/drivers/iommu/sun50i-iommu.c
-+++ b/drivers/iommu/sun50i-iommu.c
-@@ -26,6 +26,8 @@
- #include <linux/spinlock.h>
- #include <linux/types.h>
+diff --git a/drivers/iommu/amd/amd_iommu.h b/drivers/iommu/amd/amd_iommu.h
+index 8b3601f285fd..9270c820a2ab 100644
+--- a/drivers/iommu/amd/amd_iommu.h
++++ b/drivers/iommu/amd/amd_iommu.h
+@@ -142,14 +142,6 @@ static inline int get_pci_sbdf_id(struct pci_dev *pdev)
+ 	return PCI_SEG_DEVID_TO_SBDF(seg, devid);
+ }
  
-+#include "iommu-pages.h"
-+
- #define IOMMU_RESET_REG			0x010
- #define IOMMU_RESET_RELEASE_ALL			0xffffffff
- #define IOMMU_ENABLE_REG		0x020
-@@ -679,8 +681,7 @@ sun50i_iommu_domain_alloc_paging(struct device *dev)
- 	if (!sun50i_domain)
+-static inline void *alloc_pgtable_page(int nid, gfp_t gfp)
+-{
+-	struct page *page;
+-
+-	page = alloc_pages_node(nid, gfp | __GFP_ZERO, 0);
+-	return page ? page_address(page) : NULL;
+-}
+-
+ bool translation_pre_enabled(struct amd_iommu *iommu);
+ bool amd_iommu_is_attach_deferred(struct device *dev);
+ int __init add_special_device(u8 type, u8 id, u32 *devid, bool cmd_line);
+diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
+index c83bd0c2a1c9..239ddf46426f 100644
+--- a/drivers/iommu/amd/init.c
++++ b/drivers/iommu/amd/init.c
+@@ -35,6 +35,7 @@
+ 
+ #include "amd_iommu.h"
+ #include "../irq_remapping.h"
++#include "../iommu-pages.h"
+ 
+ /*
+  * definitions for the ACPI scanning code
+@@ -648,8 +649,8 @@ static int __init find_last_devid_acpi(struct acpi_table_header *table, u16 pci_
+ /* Allocate per PCI segment device table */
+ static inline int __init alloc_dev_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	pci_seg->dev_table = (void *)__get_free_pages(GFP_KERNEL | __GFP_ZERO | GFP_DMA32,
+-						      get_order(pci_seg->dev_table_size));
++	pci_seg->dev_table = iommu_alloc_pages(GFP_KERNEL | GFP_DMA32,
++					       get_order(pci_seg->dev_table_size));
+ 	if (!pci_seg->dev_table)
+ 		return -ENOMEM;
+ 
+@@ -658,17 +659,16 @@ static inline int __init alloc_dev_table(struct amd_iommu_pci_seg *pci_seg)
+ 
+ static inline void free_dev_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	free_pages((unsigned long)pci_seg->dev_table,
+-		    get_order(pci_seg->dev_table_size));
++	iommu_free_pages(pci_seg->dev_table,
++			 get_order(pci_seg->dev_table_size));
+ 	pci_seg->dev_table = NULL;
+ }
+ 
+ /* Allocate per PCI segment IOMMU rlookup table. */
+ static inline int __init alloc_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	pci_seg->rlookup_table = (void *)__get_free_pages(
+-						GFP_KERNEL | __GFP_ZERO,
+-						get_order(pci_seg->rlookup_table_size));
++	pci_seg->rlookup_table = iommu_alloc_pages(GFP_KERNEL,
++						   get_order(pci_seg->rlookup_table_size));
+ 	if (pci_seg->rlookup_table == NULL)
+ 		return -ENOMEM;
+ 
+@@ -677,16 +677,15 @@ static inline int __init alloc_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
+ 
+ static inline void free_rlookup_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	free_pages((unsigned long)pci_seg->rlookup_table,
+-		   get_order(pci_seg->rlookup_table_size));
++	iommu_free_pages(pci_seg->rlookup_table,
++			 get_order(pci_seg->rlookup_table_size));
+ 	pci_seg->rlookup_table = NULL;
+ }
+ 
+ static inline int __init alloc_irq_lookup_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	pci_seg->irq_lookup_table = (void *)__get_free_pages(
+-					     GFP_KERNEL | __GFP_ZERO,
+-					     get_order(pci_seg->rlookup_table_size));
++	pci_seg->irq_lookup_table = iommu_alloc_pages(GFP_KERNEL,
++						      get_order(pci_seg->rlookup_table_size));
+ 	kmemleak_alloc(pci_seg->irq_lookup_table,
+ 		       pci_seg->rlookup_table_size, 1, GFP_KERNEL);
+ 	if (pci_seg->irq_lookup_table == NULL)
+@@ -698,8 +697,8 @@ static inline int __init alloc_irq_lookup_table(struct amd_iommu_pci_seg *pci_se
+ static inline void free_irq_lookup_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+ 	kmemleak_free(pci_seg->irq_lookup_table);
+-	free_pages((unsigned long)pci_seg->irq_lookup_table,
+-		   get_order(pci_seg->rlookup_table_size));
++	iommu_free_pages(pci_seg->irq_lookup_table,
++			 get_order(pci_seg->rlookup_table_size));
+ 	pci_seg->irq_lookup_table = NULL;
+ }
+ 
+@@ -707,8 +706,8 @@ static int __init alloc_alias_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+ 	int i;
+ 
+-	pci_seg->alias_table = (void *)__get_free_pages(GFP_KERNEL,
+-					get_order(pci_seg->alias_table_size));
++	pci_seg->alias_table = iommu_alloc_pages(GFP_KERNEL,
++						 get_order(pci_seg->alias_table_size));
+ 	if (!pci_seg->alias_table)
+ 		return -ENOMEM;
+ 
+@@ -723,8 +722,8 @@ static int __init alloc_alias_table(struct amd_iommu_pci_seg *pci_seg)
+ 
+ static void __init free_alias_table(struct amd_iommu_pci_seg *pci_seg)
+ {
+-	free_pages((unsigned long)pci_seg->alias_table,
+-		   get_order(pci_seg->alias_table_size));
++	iommu_free_pages(pci_seg->alias_table,
++			 get_order(pci_seg->alias_table_size));
+ 	pci_seg->alias_table = NULL;
+ }
+ 
+@@ -735,8 +734,8 @@ static void __init free_alias_table(struct amd_iommu_pci_seg *pci_seg)
+  */
+ static int __init alloc_command_buffer(struct amd_iommu *iommu)
+ {
+-	iommu->cmd_buf = (void *)__get_free_pages(GFP_KERNEL | __GFP_ZERO,
+-						  get_order(CMD_BUFFER_SIZE));
++	iommu->cmd_buf = iommu_alloc_pages(GFP_KERNEL,
++					   get_order(CMD_BUFFER_SIZE));
+ 
+ 	return iommu->cmd_buf ? 0 : -ENOMEM;
+ }
+@@ -844,19 +843,19 @@ static void iommu_disable_command_buffer(struct amd_iommu *iommu)
+ 
+ static void __init free_command_buffer(struct amd_iommu *iommu)
+ {
+-	free_pages((unsigned long)iommu->cmd_buf, get_order(CMD_BUFFER_SIZE));
++	iommu_free_pages(iommu->cmd_buf, get_order(CMD_BUFFER_SIZE));
+ }
+ 
+ static void *__init iommu_alloc_4k_pages(struct amd_iommu *iommu,
+ 					 gfp_t gfp, size_t size)
+ {
+ 	int order = get_order(size);
+-	void *buf = (void *)__get_free_pages(gfp, order);
++	void *buf = iommu_alloc_pages(gfp, order);
+ 
+ 	if (buf &&
+ 	    check_feature(FEATURE_SNP) &&
+ 	    set_memory_4k((unsigned long)buf, (1 << order))) {
+-		free_pages((unsigned long)buf, order);
++		iommu_free_pages(buf, order);
+ 		buf = NULL;
+ 	}
+ 
+@@ -866,7 +865,7 @@ static void *__init iommu_alloc_4k_pages(struct amd_iommu *iommu,
+ /* allocates the memory where the IOMMU will log its events to */
+ static int __init alloc_event_buffer(struct amd_iommu *iommu)
+ {
+-	iommu->evt_buf = iommu_alloc_4k_pages(iommu, GFP_KERNEL | __GFP_ZERO,
++	iommu->evt_buf = iommu_alloc_4k_pages(iommu, GFP_KERNEL,
+ 					      EVT_BUFFER_SIZE);
+ 
+ 	return iommu->evt_buf ? 0 : -ENOMEM;
+@@ -900,14 +899,13 @@ static void iommu_disable_event_buffer(struct amd_iommu *iommu)
+ 
+ static void __init free_event_buffer(struct amd_iommu *iommu)
+ {
+-	free_pages((unsigned long)iommu->evt_buf, get_order(EVT_BUFFER_SIZE));
++	iommu_free_pages(iommu->evt_buf, get_order(EVT_BUFFER_SIZE));
+ }
+ 
+ /* allocates the memory where the IOMMU will log its events to */
+ static int __init alloc_ppr_log(struct amd_iommu *iommu)
+ {
+-	iommu->ppr_log = iommu_alloc_4k_pages(iommu, GFP_KERNEL | __GFP_ZERO,
+-					      PPR_LOG_SIZE);
++	iommu->ppr_log = iommu_alloc_4k_pages(iommu, GFP_KERNEL, PPR_LOG_SIZE);
+ 
+ 	return iommu->ppr_log ? 0 : -ENOMEM;
+ }
+@@ -936,14 +934,14 @@ static void iommu_enable_ppr_log(struct amd_iommu *iommu)
+ 
+ static void __init free_ppr_log(struct amd_iommu *iommu)
+ {
+-	free_pages((unsigned long)iommu->ppr_log, get_order(PPR_LOG_SIZE));
++	iommu_free_pages(iommu->ppr_log, get_order(PPR_LOG_SIZE));
+ }
+ 
+ static void free_ga_log(struct amd_iommu *iommu)
+ {
+ #ifdef CONFIG_IRQ_REMAP
+-	free_pages((unsigned long)iommu->ga_log, get_order(GA_LOG_SIZE));
+-	free_pages((unsigned long)iommu->ga_log_tail, get_order(8));
++	iommu_free_pages(iommu->ga_log, get_order(GA_LOG_SIZE));
++	iommu_free_pages(iommu->ga_log_tail, get_order(8));
+ #endif
+ }
+ 
+@@ -988,13 +986,11 @@ static int iommu_init_ga_log(struct amd_iommu *iommu)
+ 	if (!AMD_IOMMU_GUEST_IR_VAPIC(amd_iommu_guest_ir))
+ 		return 0;
+ 
+-	iommu->ga_log = (u8 *)__get_free_pages(GFP_KERNEL | __GFP_ZERO,
+-					get_order(GA_LOG_SIZE));
++	iommu->ga_log = iommu_alloc_pages(GFP_KERNEL, get_order(GA_LOG_SIZE));
+ 	if (!iommu->ga_log)
+ 		goto err_out;
+ 
+-	iommu->ga_log_tail = (u8 *)__get_free_pages(GFP_KERNEL | __GFP_ZERO,
+-					get_order(8));
++	iommu->ga_log_tail = iommu_alloc_pages(GFP_KERNEL, get_order(8));
+ 	if (!iommu->ga_log_tail)
+ 		goto err_out;
+ 
+@@ -1007,7 +1003,7 @@ static int iommu_init_ga_log(struct amd_iommu *iommu)
+ 
+ static int __init alloc_cwwb_sem(struct amd_iommu *iommu)
+ {
+-	iommu->cmd_sem = iommu_alloc_4k_pages(iommu, GFP_KERNEL | __GFP_ZERO, 1);
++	iommu->cmd_sem = iommu_alloc_4k_pages(iommu, GFP_KERNEL, 1);
+ 
+ 	return iommu->cmd_sem ? 0 : -ENOMEM;
+ }
+@@ -1015,7 +1011,7 @@ static int __init alloc_cwwb_sem(struct amd_iommu *iommu)
+ static void __init free_cwwb_sem(struct amd_iommu *iommu)
+ {
+ 	if (iommu->cmd_sem)
+-		free_page((unsigned long)iommu->cmd_sem);
++		iommu_free_page((void *)iommu->cmd_sem);
+ }
+ 
+ static void iommu_enable_xt(struct amd_iommu *iommu)
+@@ -1080,7 +1076,6 @@ static bool __copy_device_table(struct amd_iommu *iommu)
+ 	u32 lo, hi, devid, old_devtb_size;
+ 	phys_addr_t old_devtb_phys;
+ 	u16 dom_id, dte_v, irq_v;
+-	gfp_t gfp_flag;
+ 	u64 tmp;
+ 
+ 	/* Each IOMMU use separate device table with the same size */
+@@ -1114,9 +1109,8 @@ static bool __copy_device_table(struct amd_iommu *iommu)
+ 	if (!old_devtb)
+ 		return false;
+ 
+-	gfp_flag = GFP_KERNEL | __GFP_ZERO | GFP_DMA32;
+-	pci_seg->old_dev_tbl_cpy = (void *)__get_free_pages(gfp_flag,
+-						    get_order(pci_seg->dev_table_size));
++	pci_seg->old_dev_tbl_cpy = iommu_alloc_pages(GFP_KERNEL | GFP_DMA32,
++						     get_order(pci_seg->dev_table_size));
+ 	if (pci_seg->old_dev_tbl_cpy == NULL) {
+ 		pr_err("Failed to allocate memory for copying old device table!\n");
+ 		memunmap(old_devtb);
+@@ -2800,8 +2794,8 @@ static void early_enable_iommus(void)
+ 
+ 		for_each_pci_segment(pci_seg) {
+ 			if (pci_seg->old_dev_tbl_cpy != NULL) {
+-				free_pages((unsigned long)pci_seg->old_dev_tbl_cpy,
+-						get_order(pci_seg->dev_table_size));
++				iommu_free_pages(pci_seg->old_dev_tbl_cpy,
++						 get_order(pci_seg->dev_table_size));
+ 				pci_seg->old_dev_tbl_cpy = NULL;
+ 			}
+ 		}
+@@ -2814,8 +2808,8 @@ static void early_enable_iommus(void)
+ 		pr_info("Copied DEV table from previous kernel.\n");
+ 
+ 		for_each_pci_segment(pci_seg) {
+-			free_pages((unsigned long)pci_seg->dev_table,
+-				   get_order(pci_seg->dev_table_size));
++			iommu_free_pages(pci_seg->dev_table,
++					 get_order(pci_seg->dev_table_size));
+ 			pci_seg->dev_table = pci_seg->old_dev_tbl_cpy;
+ 		}
+ 
+@@ -3018,8 +3012,8 @@ static bool __init check_ioapic_information(void)
+ 
+ static void __init free_dma_resources(void)
+ {
+-	free_pages((unsigned long)amd_iommu_pd_alloc_bitmap,
+-		   get_order(MAX_DOMAIN_ID/8));
++	iommu_free_pages(amd_iommu_pd_alloc_bitmap,
++			 get_order(MAX_DOMAIN_ID / 8));
+ 	amd_iommu_pd_alloc_bitmap = NULL;
+ 
+ 	free_unity_maps();
+@@ -3091,9 +3085,8 @@ static int __init early_amd_iommu_init(void)
+ 	/* Device table - directly used by all IOMMUs */
+ 	ret = -ENOMEM;
+ 
+-	amd_iommu_pd_alloc_bitmap = (void *)__get_free_pages(
+-					    GFP_KERNEL | __GFP_ZERO,
+-					    get_order(MAX_DOMAIN_ID/8));
++	amd_iommu_pd_alloc_bitmap = iommu_alloc_pages(GFP_KERNEL,
++						      get_order(MAX_DOMAIN_ID / 8));
+ 	if (amd_iommu_pd_alloc_bitmap == NULL)
+ 		goto out;
+ 
+diff --git a/drivers/iommu/amd/io_pgtable.c b/drivers/iommu/amd/io_pgtable.c
+index 2a0d1e97e52f..7676b0f019d0 100644
+--- a/drivers/iommu/amd/io_pgtable.c
++++ b/drivers/iommu/amd/io_pgtable.c
+@@ -22,6 +22,7 @@
+ 
+ #include "amd_iommu_types.h"
+ #include "amd_iommu.h"
++#include "../iommu-pages.h"
+ 
+ static void v1_tlb_flush_all(void *cookie)
+ {
+@@ -156,7 +157,7 @@ static bool increase_address_space(struct protection_domain *domain,
+ 	bool ret = true;
+ 	u64 *pte;
+ 
+-	pte = alloc_pgtable_page(domain->nid, gfp);
++	pte = iommu_alloc_page_node(domain->nid, gfp);
+ 	if (!pte)
+ 		return false;
+ 
+@@ -187,7 +188,7 @@ static bool increase_address_space(struct protection_domain *domain,
+ 
+ out:
+ 	spin_unlock_irqrestore(&domain->lock, flags);
+-	free_page((unsigned long)pte);
++	iommu_free_page(pte);
+ 
+ 	return ret;
+ }
+@@ -250,7 +251,7 @@ static u64 *alloc_pte(struct protection_domain *domain,
+ 
+ 		if (!IOMMU_PTE_PRESENT(__pte) ||
+ 		    pte_level == PAGE_MODE_NONE) {
+-			page = alloc_pgtable_page(domain->nid, gfp);
++			page = iommu_alloc_page_node(domain->nid, gfp);
+ 
+ 			if (!page)
+ 				return NULL;
+@@ -259,7 +260,7 @@ static u64 *alloc_pte(struct protection_domain *domain,
+ 
+ 			/* pte could have been changed somewhere. */
+ 			if (!try_cmpxchg64(pte, &__pte, __npte))
+-				free_page((unsigned long)page);
++				iommu_free_page(page);
+ 			else if (IOMMU_PTE_PRESENT(__pte))
+ 				*updated = true;
+ 
+@@ -431,7 +432,7 @@ static int iommu_v1_map_pages(struct io_pgtable_ops *ops, unsigned long iova,
+ 	}
+ 
+ 	/* Everything flushed out, free pages now */
+-	put_pages_list(&freelist);
++	iommu_free_pages_list(&freelist);
+ 
+ 	return ret;
+ }
+@@ -580,7 +581,7 @@ static void v1_free_pgtable(struct io_pgtable *iop)
+ 	/* Make changes visible to IOMMUs */
+ 	amd_iommu_domain_update(dom);
+ 
+-	put_pages_list(&freelist);
++	iommu_free_pages_list(&freelist);
+ }
+ 
+ static struct io_pgtable *v1_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
+diff --git a/drivers/iommu/amd/io_pgtable_v2.c b/drivers/iommu/amd/io_pgtable_v2.c
+index 6d69ba60744f..477371b1ed54 100644
+--- a/drivers/iommu/amd/io_pgtable_v2.c
++++ b/drivers/iommu/amd/io_pgtable_v2.c
+@@ -18,6 +18,7 @@
+ 
+ #include "amd_iommu_types.h"
+ #include "amd_iommu.h"
++#include "../iommu-pages.h"
+ 
+ #define IOMMU_PAGE_PRESENT	BIT_ULL(0)	/* Is present */
+ #define IOMMU_PAGE_RW		BIT_ULL(1)	/* Writeable */
+@@ -99,11 +100,6 @@ static inline int page_size_to_level(u64 pg_size)
+ 	return PAGE_MODE_1_LEVEL;
+ }
+ 
+-static inline void free_pgtable_page(u64 *pt)
+-{
+-	free_page((unsigned long)pt);
+-}
+-
+ static void free_pgtable(u64 *pt, int level)
+ {
+ 	u64 *p;
+@@ -125,10 +121,10 @@ static void free_pgtable(u64 *pt, int level)
+ 		if (level > 2)
+ 			free_pgtable(p, level - 1);
+ 		else
+-			free_pgtable_page(p);
++			iommu_free_page(p);
+ 	}
+ 
+-	free_pgtable_page(pt);
++	iommu_free_page(pt);
+ }
+ 
+ /* Allocate page table */
+@@ -156,14 +152,14 @@ static u64 *v2_alloc_pte(int nid, u64 *pgd, unsigned long iova,
+ 		}
+ 
+ 		if (!IOMMU_PTE_PRESENT(__pte)) {
+-			page = alloc_pgtable_page(nid, gfp);
++			page = iommu_alloc_page_node(nid, gfp);
+ 			if (!page)
+ 				return NULL;
+ 
+ 			__npte = set_pgtable_attr(page);
+ 			/* pte could have been changed somewhere. */
+ 			if (cmpxchg64(pte, __pte, __npte) != __pte)
+-				free_pgtable_page(page);
++				iommu_free_page(page);
+ 			else if (IOMMU_PTE_PRESENT(__pte))
+ 				*updated = true;
+ 
+@@ -185,7 +181,7 @@ static u64 *v2_alloc_pte(int nid, u64 *pgd, unsigned long iova,
+ 		if (pg_size == IOMMU_PAGE_SIZE_1G)
+ 			free_pgtable(__pte, end_level - 1);
+ 		else if (pg_size == IOMMU_PAGE_SIZE_2M)
+-			free_pgtable_page(__pte);
++			iommu_free_page(__pte);
+ 	}
+ 
+ 	return pte;
+@@ -374,7 +370,7 @@ static struct io_pgtable *v2_alloc_pgtable(struct io_pgtable_cfg *cfg, void *coo
+ 	int ret;
+ 	int ias = IOMMU_IN_ADDR_BIT_SIZE;
+ 
+-	pgtable->pgd = alloc_pgtable_page(pdom->nid, GFP_ATOMIC);
++	pgtable->pgd = iommu_alloc_page_node(pdom->nid, GFP_ATOMIC);
+ 	if (!pgtable->pgd)
  		return NULL;
  
--	sun50i_domain->dt = (u32 *)__get_free_pages(GFP_KERNEL | __GFP_ZERO,
--						    get_order(DT_SIZE));
-+	sun50i_domain->dt = iommu_alloc_pages(GFP_KERNEL, get_order(DT_SIZE));
- 	if (!sun50i_domain->dt)
- 		goto err_free_domain;
+@@ -397,7 +393,7 @@ static struct io_pgtable *v2_alloc_pgtable(struct io_pgtable_cfg *cfg, void *coo
+ 	return &pgtable->iop;
  
-@@ -702,7 +703,7 @@ static void sun50i_iommu_domain_free(struct iommu_domain *domain)
- {
- 	struct sun50i_iommu_domain *sun50i_domain = to_sun50i_domain(domain);
+ err_free_pgd:
+-	free_pgtable_page(pgtable->pgd);
++	iommu_free_page(pgtable->pgd);
  
--	free_pages((unsigned long)sun50i_domain->dt, get_order(DT_SIZE));
-+	iommu_free_pages(sun50i_domain->dt, get_order(DT_SIZE));
- 	sun50i_domain->dt = NULL;
+ 	return NULL;
+ }
+diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
+index 4283dd8191f0..0c7bd09ab617 100644
+--- a/drivers/iommu/amd/iommu.c
++++ b/drivers/iommu/amd/iommu.c
+@@ -42,6 +42,7 @@
+ #include "amd_iommu.h"
+ #include "../dma-iommu.h"
+ #include "../irq_remapping.h"
++#include "../iommu-pages.h"
  
- 	kfree(sun50i_domain);
+ #define CMD_SET_TYPE(cmd, t) ((cmd)->data[1] |= ((t) << 28))
+ 
+@@ -1637,7 +1638,7 @@ static void free_gcr3_tbl_level1(u64 *tbl)
+ 
+ 		ptr = iommu_phys_to_virt(tbl[i] & PAGE_MASK);
+ 
+-		free_page((unsigned long)ptr);
++		iommu_free_page(ptr);
+ 	}
+ }
+ 
+@@ -1665,7 +1666,7 @@ static void free_gcr3_table(struct protection_domain *domain)
+ 	else
+ 		BUG_ON(domain->glx != 0);
+ 
+-	free_page((unsigned long)domain->gcr3_tbl);
++	iommu_free_page(domain->gcr3_tbl);
+ }
+ 
+ /*
+@@ -1692,7 +1693,7 @@ static int setup_gcr3_table(struct protection_domain *domain, int pasids)
+ 	if (levels > amd_iommu_max_glx_val)
+ 		return -EINVAL;
+ 
+-	domain->gcr3_tbl = alloc_pgtable_page(domain->nid, GFP_ATOMIC);
++	domain->gcr3_tbl = iommu_alloc_page_node(domain->nid, GFP_ATOMIC);
+ 	if (domain->gcr3_tbl == NULL)
+ 		return -ENOMEM;
+ 
+@@ -2074,7 +2075,7 @@ static void protection_domain_free(struct protection_domain *domain)
+ 		free_gcr3_table(domain);
+ 
+ 	if (domain->iop.root)
+-		free_page((unsigned long)domain->iop.root);
++		iommu_free_page(domain->iop.root);
+ 
+ 	if (domain->id)
+ 		domain_id_free(domain->id);
+@@ -2089,7 +2090,7 @@ static int protection_domain_init_v1(struct protection_domain *domain, int mode)
+ 	BUG_ON(mode < PAGE_MODE_NONE || mode > PAGE_MODE_6_LEVEL);
+ 
+ 	if (mode != PAGE_MODE_NONE) {
+-		pt_root = (void *)get_zeroed_page(GFP_KERNEL);
++		pt_root = iommu_alloc_page(GFP_KERNEL);
+ 		if (!pt_root)
+ 			return -ENOMEM;
+ 	}
+@@ -2762,7 +2763,7 @@ static u64 *__get_gcr3_pte(u64 *root, int level, u32 pasid, bool alloc)
+ 			if (!alloc)
+ 				return NULL;
+ 
+-			root = (void *)get_zeroed_page(GFP_ATOMIC);
++			root = iommu_alloc_page(GFP_ATOMIC);
+ 			if (root == NULL)
+ 				return NULL;
+ 
 -- 
 2.43.0.594.gd9cf4e227d-goog
 
