@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873FFC4828F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C5AC48BC0
 	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Feb 2024 17:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,59 +12,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jL3Wrgk+JmpEYCiqdBl8G0AuTLjpKjinP3ljER/WBtU=; b=IDwJ5RGiI3Nw+Y
-	02veEz9oLUkqWbGmowWbU7+YFAnpcbVoVHsZrssIla5qdx/NkP13MxlXvX9uPmq8E8edqv56SzBgZ
-	rvEHnNftGZdQUEauDISy0tdQVSX8/EEl7yqE0jxHPEUEceXB8awxWC6hVu3f8PfkSEHaHqB7BcB/E
-	3Fb66FDDMSOzRBquF3MHYumKy5R+TVXT2GSU6Gv25jpHxvTpM3KLketDnI1ojt3lNXRNcKXfS69Nf
-	Hon9/cUTYGjLf4heB3lYiurIBWSvw9g3oByDXLfDAHIBdOpikuTmIiwVV9wQMhyIIetliq/9AzQVp
-	ZtDA3gqH3U0RUYRpDU0w==;
+	List-Owner; bh=eD4bSH/0gpqfCZ4v4y6IEq8SwrzYFfPCrAgcVkW572Q=; b=x1xK3Bi7vWfjpn
+	PdL1zB7U8pKNKz6k4n+AQXH3lpcWBLm+NTmGrzh/XcvZG/cxdBWUXGN5bD7KE+iiolxJiPkN1OHmd
+	sgsgRLF+41Y8Tzh6/Imgbi3h18a0vI0L4xGmDBIlvEgTa4h3tykMEOtlaExv3sBqeVEEZgTU60b9i
+	kq23JU45ctASKDHma5HErVxbPCs7y/GY8rvQA+Hf+DrYvFcSPrsSYMHnXtsDlb+PN+PU28Mw0taKq
+	PPDp0AwKa2sIeE+aME7c0CggE78yCnW/u+lRohn/Txowbdlx0MjMWqsmo+nk5ScVarmEm//4G5zCF
+	4nx20ZBLctUHJaORXEaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXlvC-0000000BKHi-0GnI;
-	Wed, 07 Feb 2024 17:41:18 +0000
-Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
+	id 1rXlvK-0000000BKRn-1G29;
+	Wed, 07 Feb 2024 17:41:26 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rXlv6-0000000BKB6-1OFZ
+	id 1rXlvC-0000000BKHc-0xO9
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Feb 2024 17:41:15 +0000
-Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-783f27300b1so40594985a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Feb 2024 09:41:10 -0800 (PST)
+	Wed, 07 Feb 2024 17:41:21 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-7857bbfb25bso52364985a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Feb 2024 09:41:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1707327670; x=1707932470; darn=lists.infradead.org;
+        d=soleen.com; s=google; t=1707327677; x=1707932477; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=0JA+g9MenvDAdiHbGDRChMbxLGZk1W2zcwaqv2KKBmE=;
-        b=YxXSVEdUvO89RY6Ndi59/pNQOssblrDsQCr64ZAO7mp6UsLj7sEvbMy9I+ykLgE43H
-         SSWVvOVjF8VYOGVUoM+XM5Pk1hGHC/p3YRdGxlGJwpr/oM5FzH/juvKpXxgL/dwfikxr
-         cYW7CYlxwM6a7owGQsPIy1O9qzxtFBsXekPbOd8HCJ7UJWVjSKR2YwpdArQpC6xAtWNq
-         jZqe4Rg0ED5RdkPNuv6CehhfP7Ga/DOBLRxOmDhc+GW5MEK/Oe82vR8fII68BULTc4fr
-         +HvhjCs8o7B8iZSGGCy+/tm4xR5z72iqVQRU3Dya9Dj8T/KRldZcQ06Y9cadYHpVtBd+
-         gSeQ==
+        bh=xWt6Kj9gOwsVhKnLqI4ecc+RWbgSNCQCfN6SnKHrmRU=;
+        b=iD5QJwCSuUsObLd+QpXOLeENLE0zXKk7JVTYwHMDvKWE0cyCYwE5Jh56CRRVDdXi0K
+         5Ka5krcG9v4vu8BR8gyqUoPIL9Aq8gXlSiAu7AA4MqDsrYILGhSiKA4w+D4ujWRk9mf6
+         6wZdDDIhY6vjPn0fPaSjsiEG+wVJUIhDstdMT9iRSceRDA7IjvgNMAJ1iCcyfh7fXUOV
+         FxeJPWanN8s+fXLUOla/gjJYDZTkJThH2mRHxaKleZfqG/i4iYXFIaQS8XxE4RCR+ImI
+         EC9zLkL9j7AmfLNKSAJGSNXuRYdVG1z0ejqn7CLs6D3XyLeyy8xgFLQCTB8kKL7asESI
+         zE6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707327670; x=1707932470;
+        d=1e100.net; s=20230601; t=1707327677; x=1707932477;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0JA+g9MenvDAdiHbGDRChMbxLGZk1W2zcwaqv2KKBmE=;
-        b=TNJh2nzLsDDmdiiszq93CkBZfojBlNdVqlpOIaU7z/6l3h8paRXf5fB2M2Sx67s4SF
-         5ZHGu9AJoG6350J2eMWQBE9epI4XT74gsECeNdTOsjqvuiTXNn6CY40d2VMehJOugWXw
-         FoLWPAbxb6UChJSbKmSofsuWhGun2z0XlCICAbx80hEg1Pn0GwYS+RzKLwxHHiyUz8hb
-         zupqi7oU+wb/Fzp2d9sD9Htrx91epPi47sC/9isLOlG1dblIwG2T6iMCk5zjUsKD2psC
-         Bxk09KWtSNdu/s+msahrxLaKwzjnKdvbsGplMMEKG1qm5XnAduei57cchA4jVrYx2LQb
-         WAKw==
-X-Forwarded-Encrypted: i=1; AJvYcCUuHB//WoBeLgScT/Gaui8+7EynZnOSN9gK2NyLjzS7ENoEUTEe0tuNM8DqnN8DNllwnw/vJjtQzikF4T1Yj7kNYZYvP35veQOSww7tklcwPcn/
-X-Gm-Message-State: AOJu0Yx1aJxbMhm6E7yDdJNQYazV5k9xlaKtaCPy7pFQHftlBWafLvYj
-	KKROE+/nUJ3/ZFBWEf7CYA9iEmvN4PEZ/otiP+beL77F+wgoR4VFG7dLczjBtwg=
-X-Google-Smtp-Source: AGHT+IElGFXh4B0vtRDxKd8uklPl89u5PGWF33uvo1vT3Tprks3bAAOetfH+2TcFICeRh6m1eJF/jA==
-X-Received: by 2002:a05:620a:4393:b0:785:98ab:8898 with SMTP id a19-20020a05620a439300b0078598ab8898mr3650487qkp.18.1707327670170;
-        Wed, 07 Feb 2024 09:41:10 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXnOhFQK//OwjZNKUHINcQcq4GudU6s8Wsutjl75lKOf6D9RWh4FLHgsOUIKofDqbNFRfWgV/NHq4wMqswC5boWbx8uBB3eLjdPPJEDG+JpokbKJ24prVlsZCvz1bJ8lArrWCc2ovwEGlsvxtG2iwKNu+/Trrg2V6q2NVi2AnFBisRh30T4uHYT71AYbFR4RAaBrB9DJfu9gBgqW67xCIrBebLJHhdBt6iemjDFphM1ze+qyCJ3SfW7rnvQ5VN6LILBv5D3M7D7p6BESzx5yvv9tZ5MPENSw4Yf9hiA8/mM0hyJirPFR3Xlk2WeN4BnK0oM+unwGSpufCd27SfWadz7626HL/nyFqCDcbVwRo8suAZcfP7aVH3ftKhXi6Q8gEh19xp+lm04M8pJOSbegy3UzRzuOw3uqCPHO7d8Ej+iytbJKsDI2UXVT9eAbbYyddf8AnjZLxS1cT8BWSLa6QB/OJDMNI7YrAQ3ZRoUeEb7ZtVTnV0VjJOOJ6Q7tLPMt8I93o5ADXBUFTOS9Z9dIxPsD7pylm5o6N1CCII9ENXJ6rarWAvN+lCwGz8ANG5TOcZPgc2iBQK9wElVV3Q0nKQCa4keQlJZlBGxROG/lIjqXc8OZkfJELUKKlOCYFqJwdG3iUsNbOyS5cfUAg2cD9YpKt2ZAVtvZ9RW1/CCho7S2eD9vihzafV7l7B+GY27RkKonMQEbqUHIdBr25L/ZVWDF/B20M96ndDH/iNnjt1cg/U80ydG5MX4tEA4YoPWEnJkF4/BKzDpEGuIWseeppB1JFzf4HUfSuRm/JSL/kw+l0fYUTI1X4A5KLT8AAhJEptMUaFu18pKAwXNBHVI4MJTHWXC6vB/NP8WjoxON8R4WP1Ffpw01ZL8E75NGkzZcgJmptCJQrPFWgJ/dJ8JHS5Rh+kHTNTYJL6Scxh+h3vshyVNyKXHTwab2M6eST2kOzCUNQ
- +Zy4XD7JcdygwKNsFqhHYU9f4qLik9Wt+jJXdBCmW00mbGJQLSbt3auPkpzgZCWxdDiUkyWmSy2erf5ZmNoCCvTODBILMexUleg+8Zh/lUkX0mcQ2a3MEsLeys6KUqvNvWS18JlWOiJw7TALOzXDz3BxJS9qCWzgIT7MpIfbZLqPPjvO1RwhcvaMoGpFJABn52u1L64O87/jK116UWlhgXqQ0Xvme+jQrcJnwQxdgnLFl1NuOU9EBjTG0MLF2Zs9CkGuzI9VfaEAw6FFDPBRx/3kRTFC+HLR/teJ9sN6aRXkgugBq3eJQbqTGhWa6RM01Mqk6tgSJO978N5R3lGHqQkt5pjjpX5hqYiMYIyWldRmjRI1ZqkL3m60FfU2mFBF+CA91okBT0Jdtj/YeL/cJRGUvYR6Uqz6L3ShLyC2UepAwEUE9xgfVRs8EEJx2MJn6QdFO8I493pkNddkbzt8GpT4eFRrro01q41ZILmvRYLx0l
+        bh=xWt6Kj9gOwsVhKnLqI4ecc+RWbgSNCQCfN6SnKHrmRU=;
+        b=mxInl2rcxrrmpxo/LdCWD6fFnx5UH7aSjn3L5IyUaPZm25r8YxEze0ZzeyuFtnkgk9
+         I0tFkbkzLkMbAs1g5nc/WCncwgoJ5ToSiC5ozQbI6e7VCwOIQSQnjVu3WFVb0OH9hnx2
+         KeJ7oUk0iGAhXxzFFYfT7sHJ+gV1tIB1Usv9mqVI/UxWodEWu4omol+Q7C3B/Wz9MZFK
+         BwlSBFMMI3Dp9ssxes+8mOXAMh8mr7ZEhXrjwdVcXmd0O95aLEH67oIUqLlB+PGcQgTb
+         to8lIB9s6UV6++qFp1sV5Wy2kJHHCVWnL5K1fHaF2g+x9WKm/eeXueNNeG5l0+k7+E5r
+         Mtdw==
+X-Gm-Message-State: AOJu0YxAhljfNc92j6Qozorx8mnsYAx5pD2ucATaFaya+VT+EOcPAMmR
+	YEiP8/1hGXCyCpmLpf05oq8grb0K/P3u0FewxKAZ7XAxByS1ByLRXUNaCK7QQdA=
+X-Google-Smtp-Source: AGHT+IHeQy+PfPTf7nBSLMGCvJMntsBufk0Si/3gJdM+srJ22A2iBif8tXuqrNfbof1VrQoYmJ+haw==
+X-Received: by 2002:a05:620a:24c7:b0:783:4c2b:cd31 with SMTP id m7-20020a05620a24c700b007834c2bcd31mr7624063qkn.44.1707327677315;
+        Wed, 07 Feb 2024 09:41:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV07MGvI4Ypo2h445jSLHybue8b/Jl//KnDW5a0waD/mCyzQoo4zwqN1ovns4RyMBF7dWelEXf+y/BMce8UTxxq3OAOyEJdx84aMHu3Xj3LNN0h8+PWnMFEE+z2yOaWBuE59sMW37SvqeY2r+eddvdkbwQQ0visKlJywOwTrMUf8bZCr+C97H8x5rJJN90UubbobWaZA/xY1wS0vWPAquvxEg1hW1l28JQ53ZJx95HU0khGFmoTf79lupjMXxqjmuiNshSoarMoqYJlkOScCqu+AzutOUb3hemyHowzfJt4oQ5vEa1AqDVWJc5qq9GwVhdBQpQ1bjwh/41lfRAoS+zdREj8QtB0yC8Yf3fqjP0bV/AQWGDWDl7AfxCGkqvXaWAi3c0FFJ8LHhlIOPCAfJXSiFfWf6hJY4gnlh1zdcTkDpX5vHjlux7o9mLm8xCEuso7GlAvyaCahljtfdJ3n9He1HG2A1JKk14Dp91svBMy4ACi4YjPBYxU5G6arqfc9Aa9ID46kIFxHAabnsJdGUmoWrSiLJ37J4zqxIFPKteeDOU74RPNvqXXZbrh+kwbVkpkNyZe+ausHvzpbhe53+69z5xvpe5yz9LDtoptdeoq/e95bHyxU06s9O4xJWgegjHXaE/TG9CVzS7e8EQ6S+o3PSzjPJiw2FxqV7XKMv5fNqsaq3ZnMqYOZquy2m+v/zhJILWFJWBJQYb1rEPYtmsadOpw3HuDIXjsc7+VkSguFrWGSWLv8KpJD9KFIRW3LI+MvaImrkmCSzDiSVZ6RDudqEFvZYSmqwS7dR+c9ojQ39rqDcRoUTVPgcq9hYxerx4Zb0hKQlrxZdYZlaeEYtvs70TKIyQjNh/90ivUw0nvVBM979zJloyZT0luhm0T77jolZ/+DUh8NcXLhU99yGpN0jycxaJdWQ/XTPQ3YblLvB/JYpeG6+dinfywPfndj0evBQ
+ cjwGWfxcAlsvta7HagMoAKkZDmGrKu6IQAXTkfceEaOFQjobeyFL7uPcD9WqPNUuTcinn6O2hVSaDE3sB91Fe25TnZxotHh7OfdDU6pVyT5VjN5xHg8ym4Qy8zTk7FhXznhJubrj5oIYVZd7dTTCR6P0f+WG/aKlC2Uv1CpzhAUn5GH/Bc11h/mtj4gUypoq0KQEevPp5E+tw4JPNQGTKi05iYJiEoXJXGCV167QIg4d8lnRnJM41YFlpwAVduF39jQYyREhtCqzsX9O5lpM4WNzt5CxhwcXH3TL905ZjPt804cwe+TFZc+HM/tZC5gRtjBtVeZb/l/cV0C8UVs2UJsWZqdeH83YNXz6q/p4t7x9MRhw58c7FqTjP4PppYzx7DQGiI/8b7Yz5uKM+/NZUCMppthUMAdoId8salBi+S/s5S9pMfWNkj6O/yEOAkekKT1ezCkB+lRuTIX+hjVWjWA4AxIqA8e/PiDfl4OamSHsHK
 Received: from soleen.c.googlers.com.com (249.240.85.34.bc.googleusercontent.com. [34.85.240.249])
-        by smtp.gmail.com with ESMTPSA id e10-20020a37db0a000000b007854018044bsm696310qki.134.2024.02.07.09.41.08
+        by smtp.gmail.com with ESMTPSA id e10-20020a37db0a000000b007854018044bsm696310qki.134.2024.02.07.09.41.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Feb 2024 09:41:09 -0800 (PST)
+        Wed, 07 Feb 2024 09:41:16 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alim.akhtar@samsung.com,
@@ -112,16 +111,16 @@ To: akpm@linux-foundation.org,
 	rientjes@google.com,
 	bagasdotme@gmail.com,
 	mkoutny@suse.com
-Subject: [PATCH v4 03/10] iommu/io-pgtable-arm: use page allocation function provided by iommu-pages.h
-Date: Wed,  7 Feb 2024 17:40:55 +0000
-Message-ID: <20240207174102.1486130-4-pasha.tatashin@soleen.com>
+Subject: [PATCH v4 08/10] iommu/tegra-smmu: use page allocation function provided by iommu-pages.h
+Date: Wed,  7 Feb 2024 17:41:00 +0000
+Message-ID: <20240207174102.1486130-9-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.43.0.594.gd9cf4e227d-goog
 In-Reply-To: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
 References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240207_094112_464536_4210ECBB 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240207_094118_425064_D9E7F759 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,64 +137,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/io-pgtable-arm.c to use the new page allocation functions
+Convert iommu/tegra-smmu.c to use the new page allocation functions
 provided in iommu-pages.h.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 Acked-by: David Rientjes <rientjes@google.com>
+Acked-by: Thierry Reding <treding@nvidia.com>
 Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
 ---
- drivers/iommu/io-pgtable-arm.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ drivers/iommu/tegra-smmu.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/iommu/io-pgtable-arm.c b/drivers/iommu/io-pgtable-arm.c
-index f7828a7aad41..3d23b924cec1 100644
---- a/drivers/iommu/io-pgtable-arm.c
-+++ b/drivers/iommu/io-pgtable-arm.c
-@@ -21,6 +21,7 @@
- #include <asm/barrier.h>
+diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+index 310871728ab4..5e0730dc1b0e 100644
+--- a/drivers/iommu/tegra-smmu.c
++++ b/drivers/iommu/tegra-smmu.c
+@@ -19,6 +19,8 @@
+ #include <soc/tegra/ahb.h>
+ #include <soc/tegra/mc.h>
  
- #include "io-pgtable-arm.h"
 +#include "iommu-pages.h"
++
+ struct tegra_smmu_group {
+ 	struct list_head list;
+ 	struct tegra_smmu *smmu;
+@@ -282,7 +284,7 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
  
- #define ARM_LPAE_MAX_ADDR_BITS		52
- #define ARM_LPAE_S2_MAX_CONCAT_PAGES	16
-@@ -198,14 +199,10 @@ static void *__arm_lpae_alloc_pages(size_t size, gfp_t gfp,
+ 	as->attr = SMMU_PD_READABLE | SMMU_PD_WRITABLE | SMMU_PD_NONSECURE;
  
- 	VM_BUG_ON((gfp & __GFP_HIGHMEM));
- 
--	if (cfg->alloc) {
-+	if (cfg->alloc)
- 		pages = cfg->alloc(cookie, size, gfp);
--	} else {
--		struct page *p;
--
--		p = alloc_pages_node(dev_to_node(dev), gfp | __GFP_ZERO, order);
--		pages = p ? page_address(p) : NULL;
--	}
-+	else
-+		pages = iommu_alloc_pages_node(dev_to_node(dev), gfp, order);
- 
- 	if (!pages)
+-	as->pd = alloc_page(GFP_KERNEL | __GFP_DMA | __GFP_ZERO);
++	as->pd = __iommu_alloc_page(GFP_KERNEL | __GFP_DMA);
+ 	if (!as->pd) {
+ 		kfree(as);
  		return NULL;
-@@ -233,7 +230,7 @@ static void *__arm_lpae_alloc_pages(size_t size, gfp_t gfp,
- 	if (cfg->free)
- 		cfg->free(cookie, pages, size);
- 	else
--		free_pages((unsigned long)pages, order);
-+		iommu_free_pages(pages, order);
+@@ -290,7 +292,7 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
  
- 	return NULL;
- }
-@@ -249,7 +246,7 @@ static void __arm_lpae_free_pages(void *pages, size_t size,
- 	if (cfg->free)
- 		cfg->free(cookie, pages, size);
- 	else
--		free_pages((unsigned long)pages, get_order(size));
-+		iommu_free_pages(pages, get_order(size));
- }
+ 	as->count = kcalloc(SMMU_NUM_PDE, sizeof(u32), GFP_KERNEL);
+ 	if (!as->count) {
+-		__free_page(as->pd);
++		__iommu_free_page(as->pd);
+ 		kfree(as);
+ 		return NULL;
+ 	}
+@@ -298,7 +300,7 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
+ 	as->pts = kcalloc(SMMU_NUM_PDE, sizeof(*as->pts), GFP_KERNEL);
+ 	if (!as->pts) {
+ 		kfree(as->count);
+-		__free_page(as->pd);
++		__iommu_free_page(as->pd);
+ 		kfree(as);
+ 		return NULL;
+ 	}
+@@ -599,14 +601,14 @@ static u32 *as_get_pte(struct tegra_smmu_as *as, dma_addr_t iova,
+ 		dma = dma_map_page(smmu->dev, page, 0, SMMU_SIZE_PT,
+ 				   DMA_TO_DEVICE);
+ 		if (dma_mapping_error(smmu->dev, dma)) {
+-			__free_page(page);
++			__iommu_free_page(page);
+ 			return NULL;
+ 		}
  
- static void __arm_lpae_sync_pte(arm_lpae_iopte *ptep, int num_entries,
+ 		if (!smmu_dma_addr_valid(smmu, dma)) {
+ 			dma_unmap_page(smmu->dev, dma, SMMU_SIZE_PT,
+ 				       DMA_TO_DEVICE);
+-			__free_page(page);
++			__iommu_free_page(page);
+ 			return NULL;
+ 		}
+ 
+@@ -649,7 +651,7 @@ static void tegra_smmu_pte_put_use(struct tegra_smmu_as *as, unsigned long iova)
+ 		tegra_smmu_set_pde(as, iova, 0);
+ 
+ 		dma_unmap_page(smmu->dev, pte_dma, SMMU_SIZE_PT, DMA_TO_DEVICE);
+-		__free_page(page);
++		__iommu_free_page(page);
+ 		as->pts[pde] = NULL;
+ 	}
+ }
+@@ -688,7 +690,7 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
+ 	if (gfpflags_allow_blocking(gfp))
+ 		spin_unlock_irqrestore(&as->lock, *flags);
+ 
+-	page = alloc_page(gfp | __GFP_DMA | __GFP_ZERO);
++	page = __iommu_alloc_page(gfp | __GFP_DMA);
+ 
+ 	if (gfpflags_allow_blocking(gfp))
+ 		spin_lock_irqsave(&as->lock, *flags);
+@@ -700,7 +702,7 @@ static struct page *as_get_pde_page(struct tegra_smmu_as *as,
+ 	 */
+ 	if (as->pts[pde]) {
+ 		if (page)
+-			__free_page(page);
++			__iommu_free_page(page);
+ 
+ 		page = as->pts[pde];
+ 	}
 -- 
 2.43.0.594.gd9cf4e227d-goog
 
