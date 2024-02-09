@@ -4,67 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8539C4828F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 18:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47947C48297
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 19:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yg/OtMHM599Al/aH2IDkrXmYtrlZGkOxaAAdLfk52CY=; b=gbcM1SuomXN9pR
-	MNqt1XIMTTw7FYlr3skRQC8+piLqDDwVPz/O+JkJZ+AAFJ+Tsan/empu4W91r/9ypXy6xwUkFDek/
-	MovxaNB5RM6PxL3wJHBcp9YVz7rqfh5CmxWYxmjbgn7HT1wwemb1rh9F+vusrVsoCcxye4a4j5N9U
-	w6DZjJFfsBx545Gldz7pyEuwP7BgdEISLtwgu1MrGTIxfWNWOfmlt+uWxpJjhbjwJNSUjNIKLA804
-	6lB4CY33cw8kpicVJC/8GtEzjmuLT+ghy8VEEtnNx2BeByZy79A+Jl50DOtnPzEiINDhhDkBnjoq8
-	zZjoZRYnESzrz/K0UHYA==;
+	List-Owner; bh=sORfJE5kOwomXojac2MTqWqIT3RLdOP+07qfrLRlZcc=; b=z6kmQkE/kEvt2Y
+	Z5Uj8n0duZWfK0pnHzfu2S/QPalCrZep7+kZ34lr3dKVm8d+CDISNVyWI2A/o71sk1Y1ZdtX7Gzon
+	phNcN3YINXSw6H9kXzJ7g8Kc8NhTGrOP/C7ddelk9S5xv4eHDxlGKQvU5Y0cwjs2ppegTeyW0Gpyr
+	e4mgV3gsXiL1+hPimk2NhplDwAMAU92be6oABm9GSohaiALUPhODEEde+zpMo87fgDkKSJ+0o6lEG
+	CagoVY1t9XaMeBhoD2nd8DBouxcXQXrkfGypSE+tjFK92k0tN14NEwUoVdPHJ2fDC2/h7jEU4R25h
+	vULKE/XzvvZRpszYJ+0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYVVb-00000000EkF-1hWE;
-	Fri, 09 Feb 2024 18:21:55 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rYW7k-00000000KkD-29eH;
+	Fri, 09 Feb 2024 19:01:20 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYVVX-00000000Ehk-2Aj3;
-	Fri, 09 Feb 2024 18:21:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707502910;
-	bh=F+klo6fdojqlg+YAs2CadokLdG0bO4HyDw1qUizxtOs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=4j8DTV+GTNxYkGLZ5B+b9Y6izmx8bzBAqjMWKWheDJvMXwfF2rQcY4RqUcrWnH0ja
-	 bMlR1gtPDoGA6eiM9bjD8yFS2QpA/i687MXj6w4L+xEvJht2lwoBvq4Pkc1xVygWKq
-	 TeMAG/2lIdNoR6tXVIQt3yX1nSvSvzxj+rxVXUjFAlwniLs1qlfsjDiy2CCddlUiFr
-	 K3N+WigVtKqeoXnXNPSe6waK4R9a0TgqLmQVs/wCay5f4pxgKzcvaIdPSUcnkhiAFG
-	 n6k3PGfBQBP3J+AkTKoPR606UbG3g/P0wnUMHQirdDFAx8+YR5Ww0pL16OJI31h57o
-	 F+wf7e1Wlv6dg==
-Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CE55A37813FD;
-	Fri,  9 Feb 2024 18:21:45 +0000 (UTC)
-Message-ID: <d0cd95eb-4f16-4b48-97a4-cc74ba9f1345@collabora.com>
-Date: Fri, 9 Feb 2024 15:21:45 -0300
+	id 1rYW7h-00000000Kik-1vbi
+	for linux-rockchip@lists.infradead.org;
+	Fri, 09 Feb 2024 19:01:18 +0000
+Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6dc36e501e1so837218a34.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 09 Feb 2024 11:01:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=soleen.com; s=google; t=1707505275; x=1708110075; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=A6nixm9+pytVx29gZ1u6InMe44RI3ah/j/zSFqY5qPg=;
+        b=G5J19qvbJR8A2n53UsENVv95sGHQRlDnFnqVFvzPjXInriyVj1Bb3s5AIAd/wXb8f9
+         6v4iR2RWDtZ1+9PuCy62H7el5F2EIiF5IIaEDwM0LjGc5a9gMfpQOr7KJkWG3vi1EPUK
+         UrKJ/hDR0KftLhXukajjUELua2nFNYDeisqixMH331lUEY2j84NoQsh6fBTqnNFj87Ul
+         z2oy6MfPRj58iAgjyQXt9cxwBIGcgaIjlHRaqDO+7sCB6PcnLZxX1CyIkBLNEA0SnYv6
+         bltZHD7wEu0pgO9tCyjZ7zvKlMguvogCgq8/RxlfvROblNVGz4Gyr+SN8+NFt08ti2Nd
+         t8Rg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707505275; x=1708110075;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=A6nixm9+pytVx29gZ1u6InMe44RI3ah/j/zSFqY5qPg=;
+        b=qlzauHKTIbFkGdsGbYfpMCoFAAbCmlfIZmP3XdhwPzt2keC4NcBqLOtlcTKG6FzA16
+         IQDQLwRNwamFvT+laOsIb/5EChukJHxvPFIywrqxybWwyNcHo2wf8109Wx7eeVymslim
+         YslWOF1AicrSmMQTgTLKNd6THtE2hZBIesCQeMg0DiercTV25YiFMil2HL64a30Pm6D0
+         gCjRMuz5SGcDPyH0bHqoOnW8E58iR3IHstbjEMSoZjpwNJTfFBhnRPbzLBqoeHiuyZrg
+         tVRct6ukxjlK20BmU44t3h/RSsOwKSThIrJn/DmGBpttwfgV2aGkiFbSAc12zheOmqS6
+         8uLg==
+X-Gm-Message-State: AOJu0YzxAcMa2sxg9oaezJtM/xXLJgd2aZ9KAsjFpvBRhL8gvPB7xNkL
+	b/fuLo1l+bwrVCD7m1gV6to2wgkDdDBX3eQbhIW84svAx4a4DCmpy0DCBoDnsQk7YrOLZY91pm7
+	p+7TqwzbcbtzMET9fOVXSHZuBCwPkOHIi6vZrsA==
+X-Google-Smtp-Source: AGHT+IFk85AK/GUYg3sBgSG/PbDJz6nuE4vk8ZoEGio36nkbZvD4VZo1ESUanwCzArrVosJa8bsMEnRS+HyilbasQKI=
+X-Received: by 2002:a05:6830:141a:b0:6e0:faab:cff4 with SMTP id
+ v26-20020a056830141a00b006e0faabcff4mr3036212otp.13.1707505274772; Fri, 09
+ Feb 2024 11:01:14 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/9] drm/ci: arm64.config: Enable
- CONFIG_DRM_ANALOGIX_ANX7625
-Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: daniel@fooishbar.org, airlied@gmail.com, daniel@ffwll.ch,
- david.heidelberg@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, robdclark@gmail.com,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-References: <20240130150340.687871-1-vignesh.raman@collabora.com>
- <20240130150340.687871-2-vignesh.raman@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20240130150340.687871-2-vignesh.raman@collabora.com>
+References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
+ <CGME20240207174117eucas1p237865b0a39f3a6d1a6650150efe22e83@eucas1p2.samsung.com>
+ <20240207174102.1486130-6-pasha.tatashin@soleen.com> <a1c452f9-c265-4934-82c2-8c9278d087ec@samsung.com>
+In-Reply-To: <a1c452f9-c265-4934-82c2-8c9278d087ec@samsung.com>
+From: Pasha Tatashin <pasha.tatashin@soleen.com>
+Date: Fri, 9 Feb 2024 14:00:37 -0500
+Message-ID: <CA+CK2bCax2NVhVwiVdyWG0Fpj7W8gi2Tmz1guNKOFNf9O1tfng@mail.gmail.com>
+Subject: Re: [PATCH v4 05/10] iommu/exynos: use page allocation function
+ provided by iommu-pages.h
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
+	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
+	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
+	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
+	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
+	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
+	mhiramat@kernel.org, paulmck@kernel.org, rdunlap@infradead.org, 
+	robin.murphy@arm.com, samuel@sholland.org, suravee.suthikulpanit@amd.com, 
+	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org, 
+	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, will@kernel.org, 
+	yu-cheng.yu@intel.com, rientjes@google.com, bagasdotme@gmail.com, 
+	mkoutny@suse.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_102151_759372_833E2F56 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20240209_110117_520389_B06F300D 
+X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +102,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 30/01/2024 12:03, Vignesh Raman wrote:
-> Enable CONFIG_DRM_ANALOGIX_ANX7625 in the arm64 defconfig to get
-> display driver probed on the mt8183-kukui-jacuzzi-juniper machine.
-> 
-> arch/arm64/configs/defconfig has CONFIG_DRM_ANALOGIX_ANX7625=m,
-> but drm-ci don't have initrd with modules, so add
-> CONFIG_DRM_ANALOGIX_ANX7625=y in CI arm64 config.
-
-Couldn't you load the module as it is done on
-https://cgit.freedesktop.org/drm/drm-misc/tree/drivers/gpu/drm/ci/igt_runner.sh#n35 
-?
-
-This is not a blocker, in any case
-
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-Thanks
-Helen
-
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
->    - No changes
-> 
-> v3:
->    - No changes
-> 
-> ---
->   drivers/gpu/drm/ci/arm64.config | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-> index 8dbce9919a57..37d23fd7a367 100644
-> --- a/drivers/gpu/drm/ci/arm64.config
-> +++ b/drivers/gpu/drm/ci/arm64.config
-> @@ -187,6 +187,7 @@ CONFIG_MTK_DEVAPC=y
->   CONFIG_PWM_MTK_DISP=y
->   CONFIG_MTK_CMDQ=y
->   CONFIG_REGULATOR_DA9211=y
-> +CONFIG_DRM_ANALOGIX_ANX7625=y
->   
->   # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
->   CONFIG_ARCH_TEGRA=y
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBGZWIgOSwgMjAyNCBhdCA2OjI24oCvQU0gTWFyZWsgU3p5cHJvd3NraQo8bS5zenlw
+cm93c2tpQHNhbXN1bmcuY29tPiB3cm90ZToKPgo+IE9uIDA3LjAyLjIwMjQgMTg6NDAsIFBhc2hh
+IFRhdGFzaGluIHdyb3RlOgo+ID4gQ29udmVydCBpb21tdS9leHlub3MtaW9tbXUuYyB0byB1c2Ug
+dGhlIG5ldyBwYWdlIGFsbG9jYXRpb24gZnVuY3Rpb25zCj4gPiBwcm92aWRlZCBpbiBpb21tdS1w
+YWdlcy5oLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFBhc2hhIFRhdGFzaGluIDxwYXNoYS50YXRh
+c2hpbkBzb2xlZW4uY29tPgo+ID4gQWNrZWQtYnk6IERhdmlkIFJpZW50amVzIDxyaWVudGplc0Bn
+b29nbGUuY29tPgo+ID4gVGVzdGVkLWJ5OiBCYWdhcyBTYW5qYXlhIDxiYWdhc2RvdG1lQGdtYWls
+LmNvbT4KPiBBY2tlZC1ieTogTWFyZWsgU3p5cHJvd3NraSA8bS5zenlwcm93c2tpQHNhbXN1bmcu
+Y29tPgoKVGhhbmsgeW91LApQYXNoYQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
