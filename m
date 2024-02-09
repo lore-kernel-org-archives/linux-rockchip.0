@@ -4,97 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D71C48297
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 10:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F47C48297
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 11:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3+/cSIrrOqO072jRKmP00kuzZd8A47ckvNC2bnTIzuY=; b=DeqfnWCAYWLdc3
-	28mF3xZTtcT72MRfn5S9SdVWrc6jelv6sjadwfVpTBQgiKY0/8KqP8YXlfe+qxMIZACnZePR+P7ed
-	AZ23hxNatlZHYbShCR7T9RpTmor2d0BOvUC4fiatZeTBP/W1nz195+v3KaGZBczwx86N/67AsmTt/
-	58t3WNq2LHivp5MIvSv86Eu9KFhZJzQlw6zx77ugKA6drmb/1AJqbAD/71ta+d7CthG2aJoOD0Uzd
-	TShqHt86vudrUlnm6fGw3M5AN3MlW+rE7pouNT0OT6bfbbLGmBJo6M3RR2FUJeFEYKWz5ib5gk225
-	6Z/E+YHRCnMxYzygEf6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vEmLmtX+IKH21JjzUsgSaEIdw5dDvNU79Mf4CTrb46Y=; b=QmZZvgZtEG2ZsgdyJRweaHfRTT
+	Ph9KQ3NvAYVKa+8bjgVuVv97DxHXjpOiUd9kFR3neVv4CQU7vshh7ggZEjp35ky8RdEynxdo85LjP
+	B0aQQKcHt6cT4iO7irVwIv8M7OlCeYJf0OCfXXJICsGskK65AP+B/awevAJ/xQpDtconw1eVNWRUd
+	B65GGuYCHgIAAjqjSNkKU2uTbbo63MW3ojnJVsMCJhPeeg2nknpJIAjRgYT0OnN5wpQBJu77TXnTA
+	jqJ2WZZKbG0vzzMHRjZ1ryUD5F+WIxGutcs+h4ISw3WJcc0fb7JlIra7Lx6vA2EQD+M8oKE6Nc4Gb
+	hHyWf37g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYOXV-0000000GmKn-17Wx;
-	Fri, 09 Feb 2024 10:55:25 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYOXS-0000000GmHn-0mPr
+	id 1rYOtK-0000000Gp5r-2OSs;
+	Fri, 09 Feb 2024 11:17:58 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rYOtI-0000000Gp55-07tD
 	for linux-rockchip@lists.infradead.org;
-	Fri, 09 Feb 2024 10:55:23 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a3122b70439so93653266b.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 09 Feb 2024 02:55:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1707476116; x=1708080916; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VPDCxvBNMC7jVwM9lF/rwisiu2UQZms91Q9LKR4ZUe8=;
-        b=IUqSdDAnkRuQa1Dg3j3q1gcQDuEy1O1diROVR4wHz/xPH1N2hOalOPFMwqv7+GHJFN
-         qjgth8GwN7x+YBkPbjuTgzjdmh7fDLRvf8Hxgsv4oDWMp6SQBDxcKU25AvaR2X8s1CQJ
-         snzyymlAXyD+TjpV8/QqqxYc/hzjEkKcVTQVIij2glP1XWfhqu+MAsRc3Tc6juWOJRFa
-         EQYdTHR5hdRlwVKnR/gVPrK5MbINKnlNsiYxN9NXs5YOX2J6py++J/GcVgPX8x9y06QG
-         Y2/MMnMiKi83yBJagEDVZZNti+XoA3cBgC7d0gppFEhwRuNtpnuzqJwFG8inyHzALktF
-         VYQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707476116; x=1708080916;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VPDCxvBNMC7jVwM9lF/rwisiu2UQZms91Q9LKR4ZUe8=;
-        b=J9KMLbJWGe8uBLxjcpJ72MqUlQMbg3nSY0CRNhJw475l9Qjakwr7c092gNd/LAnHrA
-         ebXeOzY3cKvwZOMA/ZyGd+qMzzRDxid5Nsz+K8FzCu5PQWhI3XcqAFCv6Hs138vZEkyc
-         SmU8Nw8rsumcO+CBJmmjrWRF2RFXxaMoHmzqYMi2WX1PeRPpbniZp7AiI95ZK2c3Z007
-         bZRHpkHL1j9bmNhh38nJESaMTQRIrQMlP3SNvReys+Yupo6tJhpxsRRxonbykhcO1lit
-         V1eYAoZvojM2XTAveoGFw0FQO47Ea8usI0cZP0UK+BSqAmlaErSRwrJC6KW7KQG+yUNF
-         lw9g==
-X-Forwarded-Encrypted: i=1; AJvYcCULAW8BUXwJvkz0MIXra2Yz+cxGdyD/mx0bBKZ4x7bmZm7V7Nr3SAzACQdSW6xnw4pUa6kbxkGlXgw6F8ICoYKweOpZnrBd3q+sRPYJC1jUBm0L
-X-Gm-Message-State: AOJu0Yxn8lTWGAucGnzOVk21CSn15KARB/v88Qi9+DpyXkctK+D5O9qi
-	VfEzCMKA/yDWu3teWfdbBQG55937TfGj5awJgiFjf0a4/IIlLXvJ
-X-Google-Smtp-Source: AGHT+IH8fQC4BYcatf4eNnFGSb58UqS4zJtebYfp5Tkvc0uum0cdKtMKpIELju2LqVMZ4Dh9GK/KUg==
-X-Received: by 2002:a17:906:f9d1:b0:a35:103e:3614 with SMTP id lj17-20020a170906f9d100b00a35103e3614mr863231ejb.52.1707476115517;
-        Fri, 09 Feb 2024 02:55:15 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCW0W2ig//yQ03IYUX8CzVxAEgCm8ndS3T1j4w20EZR4F7pSO46B0Ssj3CYd8S2QKwCcARm6ki3u9e+DBebFxzoEmI0oAbFUYYnNmQnIfRpW9iMLjJG04+63v/Bw70+28ySDWZpJTWzL6cI2ZNkUJZJBwsdxGXcv13Cex5FSXWQ/rA9VbY9FqqY9gqP3vr4cmM/C3FOjfKS8JqLEr7MLEXtAgcq9EhKu+atw3ez0PoqAKQG/JmJIV2N3c6/pHD4PEA5X2XFnqx8RZrsvXH+e/FBSspe0y9uDFUUpbR+LzWYkl9acy+GflcK9HZwzgdhL5XJATWhk/+YNWJSYJgI+XFcILFpe3zGY7mon1YpeqDQFNax5MEtzOpB5DFscrKJeiFJa/7oEMJeHdR8nIb74rJbhsoPHQM5vd0oKFnfn7QtJHpVf89dKVi8weQbjAgJ8g2mC1rBg2UiWropsPA72suo7mEQ2M8/tfdoGloKbAuI+XKt7MyeE0A4AUXuhmNfplAnS7k3f5b8skGR7wFI1yF/DOwTR9dk2x5l3vM5QHJJa/wXVNHmAM7ZtMSHzOAcf7sB/1Dk6rr6D6sBvSBih/Yi7A3mTIUvJfrTMeAH3bu+fBav/NdxOlr0OWM9Aut74GPCsiTwnDNmslfl6+GV9NyNqTeUeLd6jND27dWT/VhjfxwKpej42Iobb9GYk/l2DwagtHAj1C6DTy4Tyejx0ACCc3UnkebndWh0nS1SilTf6sRtD17hmcAGj6yEScljW6quvxOQyxq1rGybRxq+XfDHNKiGkrJcTfhs7AOxIFi8aJl3Fnj8/k/Q+dBj1ROIQhnjUeOw/Ex01Ynamfb6VACenMHuYjs2DjUiRQe5nrAPgYOyUOHlpV/SI9NViaJOezY/A87rwGJG3CngeT5OAMkMDIqpvq62KcNN+aLUv/t7qFkaBjYyzTSgLR+iN0DO+phbXFZ
- pZJknOwjoo5SfgsL5gCYFRu5BCGxsd7nqNZTS9Hzq/tcc4IS/I7MGp6eiH+iCXIfdGAUgh4wOUbiOFGVsT9Z4idnsbB4hg5CGFiXSz6dgATKIgfsFvnmH4aQsC8iOJY2gmUAl3aIcQoEvOGdClgxelpZRKICgoSZzGK6kDqTQ6vgChMcBthxj+Rdb0aQRz1GtwtU+RcgF48fqY/UxEv4oUdUktTlEpJvnVT+0OlR5hZMlrAkTb4orEqBQKit/397dC5qzNVOLhyViUGFZVmUj8RcXSSScjXz/1Qn6eg+H7iKlae2EqEcdkYUiIBH/c/9zREOdzHiAGPOLatjckrAsePGDqYRUI/w0KCpzynCVjY1wV3GpyCS/noMczEQKDj7rAfUyB7PzDOalH/Cd8ScBs3aHXlv9Eo6z+MLOLKzJwD/e02tmzYjM86xU4WeM23qznU1N3jw777w==
-Received: from jernej-laptop.localnet (APN-123-244-98-gprs.simobil.net. [46.123.244.98])
-        by smtp.gmail.com with ESMTPSA id cu7-20020a170906ba8700b00a37b795348fsm629101ejd.127.2024.02.09.02.55.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Feb 2024 02:55:14 -0800 (PST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io,
- asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com,
- cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
- dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
- iommu@lists.linux.dev, jonathanh@nvidia.com, joro@8bytes.org,
- krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st,
- mhiramat@kernel.org, m.szyprowski@samsung.com, pasha.tatashin@soleen.com,
- paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
+	Fri, 09 Feb 2024 11:17:57 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BF7CFDA7;
+	Fri,  9 Feb 2024 03:18:33 -0800 (PST)
+Received: from [10.57.47.119] (unknown [10.57.47.119])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7511A3F762;
+	Fri,  9 Feb 2024 03:17:45 -0800 (PST)
+Message-ID: <14e55a48-4439-47c7-a74f-126eaa998968@arm.com>
+Date: Fri, 9 Feb 2024 11:17:44 +0000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 09/10] iommu: observability of the IOMMU allocations
+Content-Language: en-GB
+To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
+ alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev,
+ baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org,
+ corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
+ heiko@sntech.de, iommu@lists.linux.dev, jernej.skrabec@gmail.com,
+ jonathanh@nvidia.com, joro@8bytes.org, krzysztof.kozlowski@linaro.org,
+ linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org,
+ m.szyprowski@samsung.com, paulmck@kernel.org, rdunlap@infradead.org,
  samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
  thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
  vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com,
- rientjes@google.com, bagasdotme@gmail.com, mkoutny@suse.com,
- Pasha Tatashin <pasha.tatashin@soleen.com>
-Subject: Re: [PATCH v4 07/10] iommu/sun50i: use page allocation function provided by
- iommu-pages.h
-Date: Fri, 09 Feb 2024 11:55:09 +0100
-Message-ID: <2718393.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <20240207174102.1486130-8-pasha.tatashin@soleen.com>
+ rientjes@google.com, bagasdotme@gmail.com, mkoutny@suse.com
 References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
- <20240207174102.1486130-8-pasha.tatashin@soleen.com>
-MIME-Version: 1.0
+ <20240207174102.1486130-10-pasha.tatashin@soleen.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20240207174102.1486130-10-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_025522_236416_7E2D41FA 
-X-CRM114-Status: UNSURE (   5.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240209_031756_191349_E70F07E6 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,25 +73,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne sreda, 07. februar 2024 ob 18:40:59 CET je Pasha Tatashin napisal(a):
-> Convert iommu/sun50i-iommu.c to use the new page allocation functions
-> provided in iommu-pages.h.
+On 2024-02-07 5:41 pm, Pasha Tatashin wrote:
+> Add NR_IOMMU_PAGES into node_stat_item that counts number of pages
+> that are allocated by the IOMMU subsystem.
+> 
+> The allocations can be view per-node via:
+> /sys/devices/system/node/nodeN/vmstat.
+> 
+> For example:
+> 
+> $ grep iommu /sys/devices/system/node/node*/vmstat
+> /sys/devices/system/node/node0/vmstat:nr_iommu_pages 106025
+> /sys/devices/system/node/node1/vmstat:nr_iommu_pages 3464
+> 
+> The value is in page-count, therefore, in the above example
+> the iommu allocations amount to ~428M.
 > 
 > Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 > Acked-by: David Rientjes <rientjes@google.com>
 > Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
+> ---
+>   drivers/iommu/iommu-pages.h | 30 ++++++++++++++++++++++++++++++
+>   include/linux/mmzone.h      |  3 +++
+>   mm/vmstat.c                 |  3 +++
+>   3 files changed, 36 insertions(+)
+> 
+> diff --git a/drivers/iommu/iommu-pages.h b/drivers/iommu/iommu-pages.h
+> index c412d0aaa399..7336f976b641 100644
+> --- a/drivers/iommu/iommu-pages.h
+> +++ b/drivers/iommu/iommu-pages.h
+> @@ -17,6 +17,30 @@
+>    * state can be rather large, i.e. multiple gigabytes in size.
+>    */
+>   
+> +/**
+> + * __iommu_alloc_account - account for newly allocated page.
+> + * @page: head struct page of the page.
+> + * @order: order of the page
+> + */
+> +static inline void __iommu_alloc_account(struct page *page, int order)
+> +{
+> +	const long pgcnt = 1l << order;
+> +
+> +	mod_node_page_state(page_pgdat(page), NR_IOMMU_PAGES, pgcnt);
+> +}
+> +
+> +/**
+> + * __iommu_free_account - account a page that is about to be freed.
+> + * @page: head struct page of the page.
+> + * @order: order of the page
+> + */
+> +static inline void __iommu_free_account(struct page *page, int order)
+> +{
+> +	const long pgcnt = 1l << order;
+> +
+> +	mod_node_page_state(page_pgdat(page), NR_IOMMU_PAGES, -pgcnt);
+> +}
+> +
+>   /**
+>    * __iommu_alloc_pages_node - allocate a zeroed page of a given order from
+>    * specific NUMA node.
+> @@ -35,6 +59,8 @@ static inline struct page *__iommu_alloc_pages_node(int nid, gfp_t gfp,
+>   	if (unlikely(!page))
+>   		return NULL;
+>   
+> +	__iommu_alloc_account(page, order);
+> +
+>   	return page;
+>   }
+>   
+> @@ -53,6 +79,8 @@ static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
+>   	if (unlikely(!page))
+>   		return NULL;
+>   
+> +	__iommu_alloc_account(page, order);
+> +
+>   	return page;
+>   }
+>   
+> @@ -89,6 +117,7 @@ static inline void __iommu_free_pages(struct page *page, int order)
+>   	if (!page)
+>   		return;
+>   
+> +	__iommu_free_account(page, order);
+>   	__free_pages(page, order);
+>   }
+>   
+> @@ -197,6 +226,7 @@ static inline void iommu_free_pages_list(struct list_head *page)
+>   		struct page *p = list_entry(page->prev, struct page, lru);
+>   
+>   		list_del(&p->lru);
+> +		__iommu_free_account(p, 0);
 
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+I'm keen to revive my patches to hook up freelist support in 
+io-pgtable-arm, which would then mean a chance of higher-order GFP_COMP 
+allocations coming back though this path - do you have any pointers for 
+what I'd have to do here to make it work properly?
 
-Best regards,
-Jernej
+Thanks,
+Robin.
 
-
+>   		put_page(p);
+>   	}
+>   }
+> diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
+> index a497f189d988..bb6bc504915a 100644
+> --- a/include/linux/mmzone.h
+> +++ b/include/linux/mmzone.h
+> @@ -203,6 +203,9 @@ enum node_stat_item {
+>   #endif
+>   	NR_PAGETABLE,		/* used for pagetables */
+>   	NR_SECONDARY_PAGETABLE, /* secondary pagetables, e.g. KVM pagetables */
+> +#ifdef CONFIG_IOMMU_SUPPORT
+> +	NR_IOMMU_PAGES,		/* # of pages allocated by IOMMU */
+> +#endif
+>   #ifdef CONFIG_SWAP
+>   	NR_SWAPCACHE,
+>   #endif
+> diff --git a/mm/vmstat.c b/mm/vmstat.c
+> index db79935e4a54..8507c497218b 100644
+> --- a/mm/vmstat.c
+> +++ b/mm/vmstat.c
+> @@ -1242,6 +1242,9 @@ const char * const vmstat_text[] = {
+>   #endif
+>   	"nr_page_table_pages",
+>   	"nr_sec_page_table_pages",
+> +#ifdef CONFIG_IOMMU_SUPPORT
+> +	"nr_iommu_pages",
+> +#endif
+>   #ifdef CONFIG_SWAP
+>   	"nr_swapcached",
+>   #endif
 
 _______________________________________________
 Linux-rockchip mailing list
