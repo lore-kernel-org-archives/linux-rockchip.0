@@ -4,139 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1468CC4828F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 11:26:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B9BC48297
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 13:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5SZsEJGwVC5D/iS8UYvicmHfptZMSbgZAUC9lL9PleE=; b=PknmU+qQjGy83V
-	nse8qpnqIeXz4hX+xPLJZaS3Z8Q5ZCd6yHXUE8X5YXjKvEknQVM4uhENFVjGXdRkzPjsx1bgU6qsJ
-	KIV66eTmIPxBEOvOqWXqKOY1PNjJ7Etdxuo2XkFZxseCRo32p+t6TUy69y3DbQWiaaez0zXzgFvu4
-	kOdZaYYTKthreLJ2nb8EAKf6P9HvoQn/Q6VAUlElh3h8XlvZeTd3GlxZH1011Ybs/d1T6vmpsB1ui
-	GqQYJGUfTDkbV0Si7eEwxGI5EyiGrT6+UgdRGRIS0Swg4IFsL6sOirwrv6Lw9yMqSVQ4XT1najpbQ
-	K8dLVXw7D1kslvnkTpFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tg8tFQnJu6N2Hnfxwt5a5zYvRPVr+cplCd6is1zJ9NA=; b=tEqCTpG0kzf2+jbNjgxPkaL8yy
+	r4D22AYaau2YEz1oXkhJRofgUNqE6lH68cxX9Mq2KC3PYlRzgxaP1UpWoGHn720UyvPwRnCIuTlbN
+	90VrVrjdnwnCTwQk1GMHh9RF8pOuWUV9NfIcG8bNo/SU4VjIwMwLO6Y9B1xt+dNPaEXORFErOH/ko
+	d7DYNBzB7AL5uMScaOhXrWVky0u2Qi95alxz/t/VBzpwAuOy4ZJ7uW/jNsh2JTCU31Gl0VvxuLjD5
+	lAEYhUTCDQ1CpGrZe8FD08Td2AhdpZ2zspaoz7UGNpwlOzKEWxsuomwDDs8uJAQzOLW0LkUam4Z4b
+	P8QoudGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYP1T-0000000GqwH-1HOe;
-	Fri, 09 Feb 2024 11:26:23 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYP1P-0000000GquJ-1xKO
+	id 1rYRBB-0000000H6RF-3ndd;
+	Fri, 09 Feb 2024 13:44:33 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rYRB8-0000000H6Q8-2ppi
 	for linux-rockchip@lists.infradead.org;
-	Fri, 09 Feb 2024 11:26:22 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20240209112612euoutp02e7afcd652788447d16f24e353ee6eec4~yLitwV40s1148511485euoutp02k;
-	Fri,  9 Feb 2024 11:26:12 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20240209112612euoutp02e7afcd652788447d16f24e353ee6eec4~yLitwV40s1148511485euoutp02k
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1707477972;
-	bh=5LC74cW+Fbdz3s4xIgDv8lYzBx2xOsdxE4BOP4kFzgE=;
-	h=Date:Subject:To:From:In-Reply-To:References:From;
-	b=YdAD4LbVjFg8tZee0Q+ZGs7/X816uHjBEb2EBoMWE5MsD1ptbrdSiVrLX7p+bxYTM
-	 +ZKYmvhY6flz7/CqS5GZfF0XTXM+n2+VO1W7ks7Eeo9kiolXDvci0TC/9tTZ1EDld6
-	 Fbos9VIMlHfc+QH8/vC9Eam5S8D4OXc3N2q6HFEY=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTP id
-	20240209112612eucas1p189aa0d19a71218f7119cb52436b8269d~yLiti3I1-3086330863eucas1p15;
-	Fri,  9 Feb 2024 11:26:12 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
-	eusmges3new.samsung.com (EUCPMTA) with SMTP id BD.46.09552.4DB06C56; Fri,  9
-	Feb 2024 11:26:12 +0000 (GMT)
-Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20240209112612eucas1p27996a26c0866043ae96f9240ed7680b9~yLitBvhuf2354223542eucas1p2M;
-	Fri,  9 Feb 2024 11:26:12 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
-	eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
-	20240209112612eusmtrp2b90f15aeb3ffdcd96ed8c0eb14f7a289~yLitAmzRP1526215262eusmtrp2R;
-	Fri,  9 Feb 2024 11:26:12 +0000 (GMT)
-X-AuditID: cbfec7f5-853ff70000002550-60-65c60bd47bdb
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
-	eusmgms1.samsung.com (EUCPMTA) with SMTP id F8.71.09146.3DB06C56; Fri,  9
-	Feb 2024 11:26:11 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20240209112609eusmtip1be13c5e6f826b7e71540651fd316dc7a~yLirDTnKD2008820088eusmtip1p;
-	Fri,  9 Feb 2024 11:26:09 +0000 (GMT)
-Message-ID: <a1c452f9-c265-4934-82c2-8c9278d087ec@samsung.com>
-Date: Fri, 9 Feb 2024 12:26:08 +0100
+	Fri, 09 Feb 2024 13:44:32 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B9D9BDA7;
+	Fri,  9 Feb 2024 05:45:09 -0800 (PST)
+Received: from [10.57.47.119] (unknown [10.57.47.119])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6B0283F762;
+	Fri,  9 Feb 2024 05:44:21 -0800 (PST)
+Message-ID: <8ce2cd7b-7702-45aa-b4c8-25a01c27ed83@arm.com>
+Date: Fri, 9 Feb 2024 13:44:20 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 05/10] iommu/exynos: use page allocation function
- provided by iommu-pages.h
-Content-Language: en-US
+Subject: Re: [PATCH v4 01/10] iommu/vt-d: add wrapper functions for page
+ allocations
+Content-Language: en-GB
 To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
-	alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org,
-	corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
-	heiko@sntech.de, iommu@lists.linux.dev, jernej.skrabec@gmail.com,
-	jonathanh@nvidia.com, joro@8bytes.org, krzysztof.kozlowski@linaro.org,
-	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org,
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
-	samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
-	thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
-	vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com,
-	rientjes@google.com, bagasdotme@gmail.com, mkoutny@suse.com
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <20240207174102.1486130-6-pasha.tatashin@soleen.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Te0xTVxzHc3pvb28xZZeK4YxpUIZEkYdOl5yNjagj46pjzoVBXDZHQ++A
-	yGstuLFs2k2gtnGE1wQrFMQqoOX9JsDkJXS8FKEqFCVIZJV1PIRJC8pWLm789/n+zu97ft/f
-	SQ6JCc/xHMnwqFhGEiWKcCZs8Jpb5n6PwQ23mN2mti0ou1RLoDF1DYGqupMBMg/Zol9/Aqgy
-	tZpAmp/D0P2CLBxN3JQDtFBqwVBqUTqGblT4o5XxKS6yzCM0mVsCUIIqH0eKS2U81DRVzUOX
-	kzQ4amzS4ehuQzaBHmpXuGhubAVDWf3NHJTR3EAgxbyKQF1T7QTq1ufx0JUCV5Sj+g1Hv5t/
-	QHOav3FkMmTiKElTzkEtMxNcNDmuIFDqYh5AyyMrHGRuUOPIUtABkKJsDkfJTZ8ic2s/ByUY
-	3kZFskXufg96okXNoRMHXhC0Vq0F9MsuLUG3/TmN0WXjN7h0vWqUR+dVxNGVhW70lUYjh664
-	riDoirk0Hm3QNxJ0V9YSTqt1x+hKzZlPtnxu856YiQg/xUi8fIJtwsrrHhAxauF3urJiIANn
-	X1MCPgmpffCv1Ce4EtiQQqoQwIznOTxWzAOovzbAZcUzAFvri7ivLGOLw2uWAgAvTD/GWDEL
-	4NWsbqAEJCmgfOBtvYvVgFMuMLHu/KpZQNlB3cUJ3MqbKCf4aDiLZ+WNlBg+zr/LsTJGOcDh
-	iVyO9U57SkfC2ocFq00EtQcqTUrCynzqAKypH10zOMFaU/ZqCEhlbIAL1XKCjeoLMxoHeSxv
-	hE87q9Z4M1ypZydASg5g3tKjNZECoGxyGLBd3tDQZyGs62DUTlja4MWWD0D1UPtqGVK28L7J
-	jg1hC9NqMjG2LIDnkoRstytUdZb8N7bl9gDGMg2TFy5yU8A21bp3Ua3bX7VuNdX/GfIAfh04
-	MHHSyFBGujeK+dZTKoqUxkWFeoZER1aAfz9L98vOhTpQ+HTWsxVwSNAKIIk52wsCNO2MUCAW
-	xX/PSKK/ksRFMNJW8AaJOzsItoudGCEVKoplTjJMDCN5dcoh+Y4yzv5Qy9Fru5d28ne59HUE
-	F/keH0/3u5rjJ1xyO9FoDmqPSWgLyum1VSxnnjYG/tFzb6+ksmu75utj3r0iY6VxNNkj7sNN
-	hpD8EzLHEsFxr4+KtaKwQ4fje2zGtvK/dO06wj/iNjYj2BcwY5frmzh48I4woDh9K/nsrGPz
-	4PNg+cB0dH/2jDLjM4cf/V1lKQPy19O2nabD+3flGl3KqaXpkKovePodsydjLxj8vjHmJPvP
-	6mpv8j8wGehfvLx9U94M7tCfsncP9+k72tFQPOL+5Pxm3/ffDXQPHGo2hMe/dbivqUd4Z8Sd
-	vndQvCPycqm4VE55lHy8XDL7Tm8kE3QGhFx68MLfGZeGifa4YRKp6B+gJCk3mwQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTdxTH/d3e/npBkEuBcCVTSEVjIBTKo55OxnRh7rIpEecjczHYyRWI
-	vNKHwz0iaEVomA6feKkFoQsioDwGQgc6kSEFM+YYhCEggSbEAWES3CgDOx5bwn+f5Hw/55yc
-	HEog/gZ7UYkpGk6VokySYEey882TwYDutW1c0HSrHAz3KjAMG+sxfN95AYGtZx1czURQm1eH
-	wXQmAfpK80mw/ngewet7cwLIK7ssgPKaPWAfGRfC3AzAWOFdBDq+mIScgioRNI/XieBWlomE
-	pmYLCd1mA4ahCrsQpoftAsjvekDAlQdmDDkzPIb28VYMnb1FIigp3QI3+YckdNi+gmnTXyRM
-	DlwnIctUTcCjP61CGBvJwZA3W4Rg/rmdAJvZSMJc6U8IcqqmSbjQvA9sLV0E6AbCoCxjVrgj
-	gLU+MhLsuV8XMFthrEDsm/YKzD6emBKwVSPlQraRHxSxRTVatva2H1vS9JJga+7kYLZm+pKI
-	Hehtwmx7/j8ka7TEsLWm03s3HJaGq1K1Gs4nIVWteUfyqQyCpTIFSINDFVJZyLYjbweHSQIj
-	wuO4pMSTnCow4qg0obrhd5xmFKdbqipRBjrrokcOFEOHMsOz/aQeOVJi+jvEXOkqwiuFtxjL
-	tQzhCrsx8716vBKaQsyNqYxFg6Kc6Qjml17fpQxJ+zLnGnKX8860K2O5YSWX2IP2Zl7054uW
-	2I2OY0aLu4klFtCeTL+1cJndaQvF8AZqpX8nYoZbetBSAdMyRj+pX17Igd7J1DcO/ifLGX2d
-	Hq2wN3N/0iD4Frnyq2bzq2bwqxR+lVKEyDvIndOqk+OT1TKpWpms1qbES4+lJtegxb+sb7PV
-	NiDjH6+kLYigUAtiKIHE3Xm/qZUTO8cpT33BqVJjVdokTt2CwhYPkCfw8jiWuvjYKZpYmTwo
-	TBYqVwSFKeQhEk/nqLRspZiOV2q4ExyXxqn+9wjKwSuDyA4XV9skW7cf7DM/9bQ6FRMv321c
-	KO/w2H3APXq/+8ZBtdIrpDBa5BJzdELkreCfjZ0orT0V2yHyfWYuKGvatSHkS9Zf23Z+UBoT
-	jeebeq6PIr/d9WJ586XbWzb5FAS8uhYVO5Lww4utfSFOCyZ7dFrknlu8DvVbAyvXbWaiInde
-	PR7ve8RzR9ahzvdtyo90B+cqXeOi7k85pQdmvi4246HDDu+Nftz+8yefb9oVvC9729qvP3R7
-	LBxaM3M68WG6f67huCLafPFyhyEe567XTK154lK+Pt30WehG3Qfzz31+o4vvRh7y13meuVli
-	PTDR6rBAKxy9x+0nh7YvKMqfZsLf9rMSUp2glPkJVGrlvy4KzuQgBAAA
-X-CMS-MailID: 20240209112612eucas1p27996a26c0866043ae96f9240ed7680b9
-X-Msg-Generator: CA
-X-RootMTR: 20240207174117eucas1p237865b0a39f3a6d1a6650150efe22e83
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20240207174117eucas1p237865b0a39f3a6d1a6650150efe22e83
+ alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev,
+ baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org,
+ corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
+ heiko@sntech.de, iommu@lists.linux.dev, jernej.skrabec@gmail.com,
+ jonathanh@nvidia.com, joro@8bytes.org, krzysztof.kozlowski@linaro.org,
+ linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org,
+ m.szyprowski@samsung.com, paulmck@kernel.org, rdunlap@infradead.org,
+ samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
+ thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
+ vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com,
+ rientjes@google.com, bagasdotme@gmail.com, mkoutny@suse.com
 References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
-	<CGME20240207174117eucas1p237865b0a39f3a6d1a6650150efe22e83@eucas1p2.samsung.com>
-	<20240207174102.1486130-6-pasha.tatashin@soleen.com>
+ <20240207174102.1486130-2-pasha.tatashin@soleen.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20240207174102.1486130-2-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_032620_123306_0F46801C 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20240209_054430_860687_52505ADF 
+X-CRM114-Status: GOOD (  25.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,79 +74,267 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07.02.2024 18:40, Pasha Tatashin wrote:
-> Convert iommu/exynos-iommu.c to use the new page allocation functions
-> provided in iommu-pages.h.
->
-> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-> Acked-by: David Rientjes <rientjes@google.com>
-> Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
->   drivers/iommu/exynos-iommu.c | 14 ++++++++------
->   1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-> index 2c6e9094f1e9..3eab0ae65a4f 100644
-> --- a/drivers/iommu/exynos-iommu.c
-> +++ b/drivers/iommu/exynos-iommu.c
-> @@ -22,6 +22,8 @@
->   #include <linux/pm_runtime.h>
->   #include <linux/slab.h>
->   
-> +#include "iommu-pages.h"
+On 2024-02-07 5:40 pm, Pasha Tatashin wrote:
+[...]> diff --git a/drivers/iommu/iommu-pages.h 
+b/drivers/iommu/iommu-pages.h
+> new file mode 100644
+> index 000000000000..c412d0aaa399
+> --- /dev/null
+> +++ b/drivers/iommu/iommu-pages.h
+> @@ -0,0 +1,204 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (c) 2024, Google LLC.
+> + * Pasha Tatashin <pasha.tatashin@soleen.com>
+> + */
 > +
->   typedef u32 sysmmu_iova_t;
->   typedef u32 sysmmu_pte_t;
->   static struct iommu_domain exynos_identity_domain;
-> @@ -900,11 +902,11 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
->   	if (!domain)
->   		return NULL;
->   
-> -	domain->pgtable = (sysmmu_pte_t *)__get_free_pages(GFP_KERNEL, 2);
-> +	domain->pgtable = iommu_alloc_pages(GFP_KERNEL, 2);
->   	if (!domain->pgtable)
->   		goto err_pgtable;
->   
-> -	domain->lv2entcnt = (short *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 1);
-> +	domain->lv2entcnt = iommu_alloc_pages(GFP_KERNEL, 1);
->   	if (!domain->lv2entcnt)
->   		goto err_counter;
->   
-> @@ -930,9 +932,9 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
->   	return &domain->domain;
->   
->   err_lv2ent:
-> -	free_pages((unsigned long)domain->lv2entcnt, 1);
-> +	iommu_free_pages(domain->lv2entcnt, 1);
->   err_counter:
-> -	free_pages((unsigned long)domain->pgtable, 2);
-> +	iommu_free_pages(domain->pgtable, 2);
->   err_pgtable:
->   	kfree(domain);
->   	return NULL;
-> @@ -973,8 +975,8 @@ static void exynos_iommu_domain_free(struct iommu_domain *iommu_domain)
->   					phys_to_virt(base));
->   		}
->   
-> -	free_pages((unsigned long)domain->pgtable, 2);
-> -	free_pages((unsigned long)domain->lv2entcnt, 1);
-> +	iommu_free_pages(domain->pgtable, 2);
-> +	iommu_free_pages(domain->lv2entcnt, 1);
->   	kfree(domain);
->   }
->   
+> +#ifndef __IOMMU_PAGES_H
+> +#define __IOMMU_PAGES_H
+> +
+> +#include <linux/vmstat.h>
+> +#include <linux/gfp.h>
+> +#include <linux/mm.h>
+> +
+> +/*
+> + * All page allocation that are performed in the IOMMU subsystem must use one of
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+"All page allocations" is too broad; As before, this is only about 
+pagetable allocations, or I guess for the full nuance, allocations of 
+pagetables and other per-iommu_domain configuration structures which are 
+reasonable to report as "pagetables" to userspace.
 
+> + * the functions below.  This is necessary for the proper accounting as IOMMU
+> + * state can be rather large, i.e. multiple gigabytes in size.
+> + */
+> +
+> +/**
+> + * __iommu_alloc_pages_node - allocate a zeroed page of a given order from
+> + * specific NUMA node.
+> + * @nid: memory NUMA node id
+> + * @gfp: buddy allocator flags
+> + * @order: page order
+> + *
+> + * returns the head struct page of the allocated page.
+> + */
+> +static inline struct page *__iommu_alloc_pages_node(int nid, gfp_t gfp,
+> +						    int order)
+> +{
+> +	struct page *page;
+> +
+> +	page = alloc_pages_node(nid, gfp | __GFP_ZERO, order);
+> +	if (unlikely(!page))
+> +		return NULL;
+> +
+> +	return page;
+> +}
+
+All 3 invocations of this only use the returned struct page to trivially 
+derive page_address(), so we really don't need it; just clean up these 
+callsites a bit more.
+
+> +
+> +/**
+> + * __iommu_alloc_pages - allocate a zeroed page of a given order.
+> + * @gfp: buddy allocator flags
+> + * @order: page order
+> + *
+> + * returns the head struct page of the allocated page.
+> + */
+> +static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
+> +{
+> +	struct page *page;
+> +
+> +	page = alloc_pages(gfp | __GFP_ZERO, order);
+> +	if (unlikely(!page))
+> +		return NULL;
+> +
+> +	return page;
+> +}
+
+Same for the single invocation of this one.
+
+> +
+> +/**
+> + * __iommu_alloc_page_node - allocate a zeroed page at specific NUMA node.
+> + * @nid: memory NUMA node id
+> + * @gfp: buddy allocator flags
+> + *
+> + * returns the struct page of the allocated page.
+> + */
+> +static inline struct page *__iommu_alloc_page_node(int nid, gfp_t gfp)
+> +{
+> +	return __iommu_alloc_pages_node(nid, gfp, 0);
+> +}
+
+There are no users of this at all.
+
+> +
+> +/**
+> + * __iommu_alloc_page - allocate a zeroed page
+> + * @gfp: buddy allocator flags
+> + *
+> + * returns the struct page of the allocated page.
+> + */
+> +static inline struct page *__iommu_alloc_page(gfp_t gfp)
+> +{
+> +	return __iommu_alloc_pages(gfp, 0);
+> +}
+> +
+> +/**
+> + * __iommu_free_pages - free page of a given order
+> + * @page: head struct page of the page
+> + * @order: page order
+> + */
+> +static inline void __iommu_free_pages(struct page *page, int order)
+> +{
+> +	if (!page)
+> +		return;
+> +
+> +	__free_pages(page, order);
+> +}
+> +
+> +/**
+> + * __iommu_free_page - free page
+> + * @page: struct page of the page
+> + */
+> +static inline void __iommu_free_page(struct page *page)
+> +{
+> +	__iommu_free_pages(page, 0);
+> +}
+
+Beyond one more trivial Intel cleanup for __iommu_alloc_pages(), these 3 
+are then only used by tegra-smmu, so honestly I'd be inclined to just 
+open-code there page_address()/virt_to_page() conversions as appropriate 
+there (once again I think the whole thing could in fact be refactored to 
+not use struct pages at all because all it's ever ultimately doing with 
+them is page_address(), but that would be a bigger job so definitely 
+out-of-scope for this series).
+
+> +
+> +/**
+> + * iommu_alloc_pages_node - allocate a zeroed page of a given order from
+> + * specific NUMA node.
+> + * @nid: memory NUMA node id
+> + * @gfp: buddy allocator flags
+> + * @order: page order
+> + *
+> + * returns the virtual address of the allocated page
+> + */
+> +static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp, int order)
+> +{
+> +	struct page *page = __iommu_alloc_pages_node(nid, gfp, order);
+> +
+> +	if (unlikely(!page))
+> +		return NULL;
+
+As a general point I'd prefer to fold these checks into the accounting 
+function itself rather than repeat them all over.
+
+> +
+> +	return page_address(page);
+> +}
+> +
+> +/**
+> + * iommu_alloc_pages - allocate a zeroed page of a given order
+> + * @gfp: buddy allocator flags
+> + * @order: page order
+> + *
+> + * returns the virtual address of the allocated page
+> + */
+> +static inline void *iommu_alloc_pages(gfp_t gfp, int order)
+> +{
+> +	struct page *page = __iommu_alloc_pages(gfp, order);
+> +
+> +	if (unlikely(!page))
+> +		return NULL;
+> +
+> +	return page_address(page);
+> +}
+> +
+> +/**
+> + * iommu_alloc_page_node - allocate a zeroed page at specific NUMA node.
+> + * @nid: memory NUMA node id
+> + * @gfp: buddy allocator flags
+> + *
+> + * returns the virtual address of the allocated page
+> + */
+> +static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
+> +{
+> +	return iommu_alloc_pages_node(nid, gfp, 0);
+> +}
+
+TBH I'm not entirely convinced that saving 4 characters per invocation 
+times 11 invocations makes this wrapper worthwhile :/
+
+> +
+> +/**
+> + * iommu_alloc_page - allocate a zeroed page
+> + * @gfp: buddy allocator flags
+> + *
+> + * returns the virtual address of the allocated page
+> + */
+> +static inline void *iommu_alloc_page(gfp_t gfp)
+> +{
+> +	return iommu_alloc_pages(gfp, 0);
+> +}
+> +
+> +/**
+> + * iommu_free_pages - free page of a given order
+> + * @virt: virtual address of the page to be freed.
+> + * @order: page order
+> + */
+> +static inline void iommu_free_pages(void *virt, int order)
+> +{
+> +	if (!virt)
+> +		return;
+> +
+> +	__iommu_free_pages(virt_to_page(virt), order);
+> +}
+> +
+> +/**
+> + * iommu_free_page - free page
+> + * @virt: virtual address of the page to be freed.
+> + */
+> +static inline void iommu_free_page(void *virt)
+> +{
+> +	iommu_free_pages(virt, 0);
+> +}
+> +
+> +/**
+> + * iommu_free_pages_list - free a list of pages.
+> + * @page: the head of the lru list to be freed.
+> + *
+> + * There are no locking requirement for these pages, as they are going to be
+> + * put on a free list as soon as refcount reaches 0. Pages are put on this LRU
+> + * list once they are removed from the IOMMU page tables. However, they can
+> + * still be access through debugfs.
+> + */
+> +static inline void iommu_free_pages_list(struct list_head *page)
+
+Nit: I'd be inclined to call this iommu_put_pages_list for consistency.
+
+> +{
+> +	while (!list_empty(page)) {
+> +		struct page *p = list_entry(page->prev, struct page, lru);
+> +
+> +		list_del(&p->lru);
+> +		put_page(p);
+> +	}
+> +}
+
+I realise now you've also missed the common freelist freeing sites in 
+iommu-dma.
+
+Thanks,
+Robin.
+
+> +
+> +#endif	/* __IOMMU_PAGES_H */
 
 _______________________________________________
 Linux-rockchip mailing list
