@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B9BC48297
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 13:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5086AC48297
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 18:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tg8tFQnJu6N2Hnfxwt5a5zYvRPVr+cplCd6is1zJ9NA=; b=tEqCTpG0kzf2+jbNjgxPkaL8yy
-	r4D22AYaau2YEz1oXkhJRofgUNqE6lH68cxX9Mq2KC3PYlRzgxaP1UpWoGHn720UyvPwRnCIuTlbN
-	90VrVrjdnwnCTwQk1GMHh9RF8pOuWUV9NfIcG8bNo/SU4VjIwMwLO6Y9B1xt+dNPaEXORFErOH/ko
-	d7DYNBzB7AL5uMScaOhXrWVky0u2Qi95alxz/t/VBzpwAuOy4ZJ7uW/jNsh2JTCU31Gl0VvxuLjD5
-	lAEYhUTCDQ1CpGrZe8FD08Td2AhdpZ2zspaoz7UGNpwlOzKEWxsuomwDDs8uJAQzOLW0LkUam4Z4b
-	P8QoudGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kspZnkb7jRv/5+7or/gPANWn5BJmOssBk0f/VF2KdsM=; b=bXLbGvc4qe5RSZ
+	YyYLyrUH3WPOzNiw3dUzIflLjP2hg9okqYIZzdWQYg/gVlfxgqTFmUnIeira9L3z61XzxqASZm+jX
+	8nJlNORD/ImvSSkBRsZfxXTcrIOtFGZCaxrS0gf15j7vHOnbpnEb0yht350FuFAXnI4/34wD0+Gw5
+	KCSyNd0rDxlOhq7sK/q5So1WbCewVTc5fmt6VdL7guZ94nwx+B1gJftnmJESipXO9ORVNyHhzpJwo
+	rfkYClaFqLCkeDbWBLMZOifa9h2myTgjwKKYuG24DBD2UF8wMswYHYdUPC9kTDcs4RB7BpgSFyQZd
+	f8T+6ibwy2pIvpb8MTCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYRBB-0000000H6RF-3ndd;
-	Fri, 09 Feb 2024 13:44:33 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYRB8-0000000H6Q8-2ppi
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 Feb 2024 13:44:32 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B9D9BDA7;
-	Fri,  9 Feb 2024 05:45:09 -0800 (PST)
-Received: from [10.57.47.119] (unknown [10.57.47.119])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6B0283F762;
-	Fri,  9 Feb 2024 05:44:21 -0800 (PST)
-Message-ID: <8ce2cd7b-7702-45aa-b4c8-25a01c27ed83@arm.com>
-Date: Fri, 9 Feb 2024 13:44:20 +0000
+	id 1rYVST-00000000Dkr-1IWs;
+	Fri, 09 Feb 2024 18:18:41 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rYVSO-00000000Dh6-3rzy;
+	Fri, 09 Feb 2024 18:18:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707502713;
+	bh=M3InQbAecp+TY2BOUEnYIx3BHcZ4RcX54rgYLrXzsfM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=MKszrpYtlVYY7v/zzvGY01LIu8VvHC2+2EXYhAo74BBptZ86N15u50WPBoWZNDTO+
+	 2yBi7igqi7z9znLiTLVlql669AaYtIhIRL7C2ejItuHh6+92oWsBIxq0W6BeO7B0hA
+	 HBasMi+ili1PESExAdszGIzqb+F3v/6p95WJ5EY8eCJXUhXnPwk6FwMpNEmFdudiaU
+	 upIhEPGv5UM3XMMQ8VKrjSv1S/LeH9eWP/05kAzX7ebjlYY/5l1MXAMFP117np/Z3N
+	 u9JHH+XJsJSBoYJYnnOhipnvSRkiqAs739WVRVMhpfaAXEtuur3Mi8gyFl5Kl5taDE
+	 79Wsi93onWF1g==
+Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id ECB7F37813FD;
+	Fri,  9 Feb 2024 18:18:32 +0000 (UTC)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 8CC2B4800CE; Fri,  9 Feb 2024 19:18:32 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH v1 00/10] RK3588 USBDP support
+Date: Fri,  9 Feb 2024 19:17:16 +0100
+Message-ID: <20240209181831.104687-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/10] iommu/vt-d: add wrapper functions for page
- allocations
-Content-Language: en-GB
-To: Pasha Tatashin <pasha.tatashin@soleen.com>, akpm@linux-foundation.org,
- alim.akhtar@samsung.com, alyssa@rosenzweig.io, asahi@lists.linux.dev,
- baolu.lu@linux.intel.com, bhelgaas@google.com, cgroups@vger.kernel.org,
- corbet@lwn.net, david@redhat.com, dwmw2@infradead.org, hannes@cmpxchg.org,
- heiko@sntech.de, iommu@lists.linux.dev, jernej.skrabec@gmail.com,
- jonathanh@nvidia.com, joro@8bytes.org, krzysztof.kozlowski@linaro.org,
- linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- lizefan.x@bytedance.com, marcan@marcan.st, mhiramat@kernel.org,
- m.szyprowski@samsung.com, paulmck@kernel.org, rdunlap@infradead.org,
- samuel@sholland.org, suravee.suthikulpanit@amd.com, sven@svenpeter.dev,
- thierry.reding@gmail.com, tj@kernel.org, tomas.mudrunka@gmail.com,
- vdumpa@nvidia.com, wens@csie.org, will@kernel.org, yu-cheng.yu@intel.com,
- rientjes@google.com, bagasdotme@gmail.com, mkoutny@suse.com
-References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
- <20240207174102.1486130-2-pasha.tatashin@soleen.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20240207174102.1486130-2-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_054430_860687_52505ADF 
-X-CRM114-Status: GOOD (  25.82  )
+X-CRM114-CacheID: sfid-20240209_101837_296518_730277CE 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,267 +79,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-02-07 5:40 pm, Pasha Tatashin wrote:
-[...]> diff --git a/drivers/iommu/iommu-pages.h 
-b/drivers/iommu/iommu-pages.h
-> new file mode 100644
-> index 000000000000..c412d0aaa399
-> --- /dev/null
-> +++ b/drivers/iommu/iommu-pages.h
-> @@ -0,0 +1,204 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2024, Google LLC.
-> + * Pasha Tatashin <pasha.tatashin@soleen.com>
-> + */
-> +
-> +#ifndef __IOMMU_PAGES_H
-> +#define __IOMMU_PAGES_H
-> +
-> +#include <linux/vmstat.h>
-> +#include <linux/gfp.h>
-> +#include <linux/mm.h>
-> +
-> +/*
-> + * All page allocation that are performed in the IOMMU subsystem must use one of
+Hi,
 
-"All page allocations" is too broad; As before, this is only about 
-pagetable allocations, or I guess for the full nuance, allocations of 
-pagetables and other per-iommu_domain configuration structures which are 
-reasonable to report as "pagetables" to userspace.
+This adds Rockchip RK3588 USBDP PHY support, which is used for two of the three
+USB3 controllers in the RK3588 (the third one uses a different PHY, which is
+already supported). The USBDP PHY offers USB3 dual-role and DisplayPort. The
+driver and bindings being upstreamed contains the DP parts, but only USB3 has
+been tested by me (upstream does not yet have a DRM DP bridge driver for this
+platform).
 
-> + * the functions below.  This is necessary for the proper accounting as IOMMU
-> + * state can be rather large, i.e. multiple gigabytes in size.
-> + */
-> +
-> +/**
-> + * __iommu_alloc_pages_node - allocate a zeroed page of a given order from
-> + * specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-> + * @order: page order
-> + *
-> + * returns the head struct page of the allocated page.
-> + */
-> +static inline struct page *__iommu_alloc_pages_node(int nid, gfp_t gfp,
-> +						    int order)
-> +{
-> +	struct page *page;
-> +
-> +	page = alloc_pages_node(nid, gfp | __GFP_ZERO, order);
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page;
-> +}
+What has been tested by me:
+ - USB3 Type A ports on Rock 5A, Rock 5B, EVB1
+ - USB Type C port on EVB1 in Host mode
 
-All 3 invocations of this only use the returned struct page to trivially 
-derive page_address(), so we really don't need it; just clean up these 
-callsites a bit more.
+I did not yet include a patch to enable the Type-C from the Rock 5B, since that
+requires enabling proper support for the fusb302. Since the system is usually
+supplied via USB-C and without any battery backup, this easily results in
+system reset when the power-delivery negotiation happens. As this issue is
+independent from the USBDP PHY, I skipped enabling that port on Rock 5B for
+now.
 
-> +
-> +/**
-> + * __iommu_alloc_pages - allocate a zeroed page of a given order.
-> + * @gfp: buddy allocator flags
-> + * @order: page order
-> + *
-> + * returns the head struct page of the allocated page.
-> + */
-> +static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
-> +{
-> +	struct page *page;
-> +
-> +	page = alloc_pages(gfp | __GFP_ZERO, order);
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page;
-> +}
+You can find a branch with these patches here:
 
-Same for the single invocation of this one.
+https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-usbdp
 
-> +
-> +/**
-> + * __iommu_alloc_page_node - allocate a zeroed page at specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the struct page of the allocated page.
-> + */
-> +static inline struct page *__iommu_alloc_page_node(int nid, gfp_t gfp)
-> +{
-> +	return __iommu_alloc_pages_node(nid, gfp, 0);
-> +}
+The binding updates introduces one DT warning, for vo1 grf, which is already
+upstream and does not describe its clock. Fixing that requires this series,
+which adds the necessary clock ID for vo1:
 
-There are no users of this at all.
+https://lore.kernel.org/linux-rockchip/20240126182919.48402-1-sebastian.reichel@collabora.com/T/#mbc27d87270f7f182fb85bf1ceaf03b902688cbb8
 
-> +
-> +/**
-> + * __iommu_alloc_page - allocate a zeroed page
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the struct page of the allocated page.
-> + */
-> +static inline struct page *__iommu_alloc_page(gfp_t gfp)
-> +{
-> +	return __iommu_alloc_pages(gfp, 0);
-> +}
-> +
-> +/**
-> + * __iommu_free_pages - free page of a given order
-> + * @page: head struct page of the page
-> + * @order: page order
-> + */
-> +static inline void __iommu_free_pages(struct page *page, int order)
-> +{
-> +	if (!page)
-> +		return;
-> +
-> +	__free_pages(page, order);
-> +}
-> +
-> +/**
-> + * __iommu_free_page - free page
-> + * @page: struct page of the page
-> + */
-> +static inline void __iommu_free_page(struct page *page)
-> +{
-> +	__iommu_free_pages(page, 0);
-> +}
+-- Sebastian
 
-Beyond one more trivial Intel cleanup for __iommu_alloc_pages(), these 3 
-are then only used by tegra-smmu, so honestly I'd be inclined to just 
-open-code there page_address()/virt_to_page() conversions as appropriate 
-there (once again I think the whole thing could in fact be refactored to 
-not use struct pages at all because all it's ever ultimately doing with 
-them is page_address(), but that would be a bigger job so definitely 
-out-of-scope for this series).
+Sebastian Reichel (10):
+  dt-bindings: soc: rockchip: add clock to RK3588 VO grf
+  dt-bindings: soc: rockchip: add rk3588 USB3 syscon
+  dt-bindings: phy: add rockchip usbdp combo phy document
+  phy: rockchip: add usbdp combo phy driver
+  arm64: defconfig: enable Rockchip Samsung USBDP PHY
+  arm64: dts: rockchip: add USBDP phys on rk3588
+  arm64: dts: rockchip: add USB3 DRD controllers on rk3588
+  arm64: dts: rockchip: add USB3 to rk3588-evb1
+  arm64: dts: rockchip: add upper USB3 port to rock-5a
+  arm64: dts: rockchip: add lower USB3 port to rock-5b
 
-> +
-> +/**
-> + * iommu_alloc_pages_node - allocate a zeroed page of a given order from
-> + * specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-> + * @order: page order
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp, int order)
-> +{
-> +	struct page *page = __iommu_alloc_pages_node(nid, gfp, order);
-> +
-> +	if (unlikely(!page))
-> +		return NULL;
+ .../bindings/phy/phy-rockchip-usbdp.yaml      |  166 ++
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   21 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  151 ++
+ .../boot/dts/rockchip/rk3588-rock-5b.dts      |   21 +
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |   82 +
+ .../boot/dts/rockchip/rk3588s-rock-5a.dts     |   22 +
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |   95 +
+ arch/arm64/configs/defconfig                  |    1 +
+ drivers/phy/rockchip/Kconfig                  |   12 +
+ drivers/phy/rockchip/Makefile                 |    1 +
+ drivers/phy/rockchip/phy-rockchip-usbdp.c     | 1641 +++++++++++++++++
+ 11 files changed, 2213 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-usbdp.c
 
-As a general point I'd prefer to fold these checks into the accounting 
-function itself rather than repeat them all over.
+-- 
+2.43.0
 
-> +
-> +	return page_address(page);
-> +}
-> +
-> +/**
-> + * iommu_alloc_pages - allocate a zeroed page of a given order
-> + * @gfp: buddy allocator flags
-> + * @order: page order
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_pages(gfp_t gfp, int order)
-> +{
-> +	struct page *page = __iommu_alloc_pages(gfp, order);
-> +
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page_address(page);
-> +}
-> +
-> +/**
-> + * iommu_alloc_page_node - allocate a zeroed page at specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
-> +{
-> +	return iommu_alloc_pages_node(nid, gfp, 0);
-> +}
-
-TBH I'm not entirely convinced that saving 4 characters per invocation 
-times 11 invocations makes this wrapper worthwhile :/
-
-> +
-> +/**
-> + * iommu_alloc_page - allocate a zeroed page
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_page(gfp_t gfp)
-> +{
-> +	return iommu_alloc_pages(gfp, 0);
-> +}
-> +
-> +/**
-> + * iommu_free_pages - free page of a given order
-> + * @virt: virtual address of the page to be freed.
-> + * @order: page order
-> + */
-> +static inline void iommu_free_pages(void *virt, int order)
-> +{
-> +	if (!virt)
-> +		return;
-> +
-> +	__iommu_free_pages(virt_to_page(virt), order);
-> +}
-> +
-> +/**
-> + * iommu_free_page - free page
-> + * @virt: virtual address of the page to be freed.
-> + */
-> +static inline void iommu_free_page(void *virt)
-> +{
-> +	iommu_free_pages(virt, 0);
-> +}
-> +
-> +/**
-> + * iommu_free_pages_list - free a list of pages.
-> + * @page: the head of the lru list to be freed.
-> + *
-> + * There are no locking requirement for these pages, as they are going to be
-> + * put on a free list as soon as refcount reaches 0. Pages are put on this LRU
-> + * list once they are removed from the IOMMU page tables. However, they can
-> + * still be access through debugfs.
-> + */
-> +static inline void iommu_free_pages_list(struct list_head *page)
-
-Nit: I'd be inclined to call this iommu_put_pages_list for consistency.
-
-> +{
-> +	while (!list_empty(page)) {
-> +		struct page *p = list_entry(page->prev, struct page, lru);
-> +
-> +		list_del(&p->lru);
-> +		put_page(p);
-> +	}
-> +}
-
-I realise now you've also missed the common freelist freeing sites in 
-iommu-dma.
-
-Thanks,
-Robin.
-
-> +
-> +#endif	/* __IOMMU_PAGES_H */
 
 _______________________________________________
 Linux-rockchip mailing list
