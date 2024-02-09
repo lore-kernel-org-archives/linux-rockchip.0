@@ -4,92 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECC9C48297
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 19:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84005C4828F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Feb 2024 20:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/ivhX2FiZbpBFohnaj3X3OjvJ7MXVRrlsYtizTcOq4=; b=BnZKCtx2QgIHLK
-	y6ZT6QqfDmvP3TcIBV5JRHV3u4lfMvJGGXJuHTlKdsBmjO4taQT93r6LtONZHPQjb/i/UV2zzm9Te
-	fiAzug7CqAm3ixPTaApJCFoRTOBLrebL1LhEspqVBVtHAIvp6+/TLoEeS08DtzA9UOh4F9vWF+uxj
-	xEERQvNvAU/yW96xVy7iM4ZORZVg/yUMmJamJY0poCCB1t2s/XIRuduEd5Nl15pSCY04t5ZPpW7+7
-	MP7RCgWWv9Y8R2laSkbzH+nRnXAL3npY/kmsT0KtzPeYos/oK1yLDlpjIFZcq5/NoCVfpTmKAgEfr
-	y4CyItLalLqlgeaP3qxQ==;
+	List-Owner; bh=OgXxAAbCQcPOa+axdCANjI9N+qybuyMseOKwydhI8O8=; b=dB5mZ+e+nha1lv
+	bNcx+/2j6apokYIHr/voRVYHsxgcop7oBgFd8qPEiMvVcWdv3vicxQf9Jfz4jsofvjA0ZIFOooueK
+	Nq5DEbKfVonQ03kyQsJ3fM33NiVz+yl+KBqRThQzuywtYRSAq7XT/gh0A0O1tGdiFFzf3Z2g2gT8R
+	+vOy5SSsb1z9UDh5StZ4V5+PgwuEx5ApqqXAWorEtCrcQjHoJMF4Zn+dCW7Sz5bRxAILNNjhcu8PT
+	0sT94gLaErnCgHCJCtgRtETC9sM387RLG2MQ4VqSBUpCrMohxZUFxgkiEmSp8IdxAtaxkr7Mv7ZT1
+	I2JavbXXulCieIEeS7CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYW8U-00000000L0D-3bF7;
-	Fri, 09 Feb 2024 19:02:06 +0000
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+	id 1rYXWU-00000000V6M-07iH;
+	Fri, 09 Feb 2024 20:30:58 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rYW8R-00000000Kx3-40LN
+	id 1rYXWP-00000000V58-2dZY
 	for linux-rockchip@lists.infradead.org;
-	Fri, 09 Feb 2024 19:02:05 +0000
-Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-42aa4a9d984so5759841cf.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 09 Feb 2024 11:02:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1707505321; x=1708110121; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=r2GAPlcgJGDaQINPFrlt1R7Ny0c1Ad/P9P2yI23KbDE=;
-        b=YDD5H8/hNISlBu92smqQJ5PqsCf5gx8E3O+LJ/Q6gaF3AV/+YXMEgxrgt3JALOSG8z
-         PrFQSziv0ZfkIjThTe8KfQ2o8zmkAUeYksZq12qH3SG8p8efzRRAXJrRZ86eH1Y7ftjH
-         kVU0OcxESTnRoLcLt4o0d4elB44cX24wKFh1Z7+8pRAZGk2X4WtTENPMgoKr87QK5wXc
-         SXfo7qukKXuCGW2SbmHDB1SD0tlzbjCnVGFrDljJGGKu2TbdGeBFxo5cAFArj5Izfrtg
-         eh+UXxMCk/ZcezJl3ZA4genidNHF5BhNbC8xGNstWXJF064bOrZcBm6ouXXRGfj8hcRc
-         8KBA==
+	Fri, 09 Feb 2024 20:30:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1707510651;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r8J/XbEGW4rTV6z/EaKBWgEwgI/IDyi1WgmOXHA89nc=;
+	b=N0FgUj9Q5AK+1OWY6KMcWcLFXB/nZbDYog2dGqDrcpbgUfbx5ZfyGNR2JUg7JV2lwnMGeH
+	kggPAdrbt4tgIPXLnqdhjVv03cLUuNRX0xpwiggwpKfTcv5dnQ69MHW5FtlDO0Hl7jRxg3
+	pJ4atz0DpzLjVyiY4rri7g79PERYhJY=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-346-o78jbG64MnCua5siPs49Ug-1; Fri, 09 Feb 2024 15:30:49 -0500
+X-MC-Unique: o78jbG64MnCua5siPs49Ug-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-41005484bf3so9325485e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 09 Feb 2024 12:30:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707505321; x=1708110121;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=r2GAPlcgJGDaQINPFrlt1R7Ny0c1Ad/P9P2yI23KbDE=;
-        b=o/00TY4jfnSe1zB0E9q8dsITXbuPAnHeiWNBg/j473pWdcByAqa+NuBOQ9+QMTdMW5
-         jlAKvST54WLfUuqBkpF9MMiUBXGxBkowCbfxlkyr+335KAHvu2wvINAIxHTu6jj7bg4X
-         MCrnh7bdJ8EdGt2vrdZmQkcs9Z7PDPevU7LY9UGBL246V67S7Fh3GaxXiEsINyxcuEnN
-         PgYTsgszZSkBTbDkwYnRi7zdtkcW4oCHWbS0/KkUdzHi1DErSLnNGZtzr0r31WD9glIt
-         vpVPPcLCGqo8GaQLHDMnvpaVlNnzE+k+r6/1pjkRQNh/t7+Xx6BiBETXAAM3uHK9M3/+
-         aRwQ==
-X-Gm-Message-State: AOJu0YxSbbWnvbfNp4Lk202sk2wOEdda1zxf52hjUxF/YvK8Ay4gzSE9
-	oITQaJJ8uEYTjtbHiBIEv7vuFT3oMVUFgFqiA8X+ajNzVoX3ziqxxObma9TXbZ5GkaaGAzYyRec
-	kHrHGF+6qsbP59zQkZsTJaAHP0DC+uHgFw5qcbQ==
-X-Google-Smtp-Source: AGHT+IH7/mZBjs2EjvojqcpcvFrKDkqXbLzePQwHXjWI3pjuKzeuKKYp6aDXpqli+cr6MKqGXO43wFaJScoTxBnZMCE=
-X-Received: by 2002:ac8:5e51:0:b0:42c:5f0e:6411 with SMTP id
- i17-20020ac85e51000000b0042c5f0e6411mr85445qtx.25.1707505320844; Fri, 09 Feb
- 2024 11:02:00 -0800 (PST)
+        d=1e100.net; s=20230601; t=1707510648; x=1708115448;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r8J/XbEGW4rTV6z/EaKBWgEwgI/IDyi1WgmOXHA89nc=;
+        b=Qlb8czKqSjHjoyO1XgBfot4s+p3nUPSQDgCaFAyx8aSzC0H3FTIKk0fHP85ieniEs3
+         TB+ppGuw8QhZS0zm8hP0H2MDolXdkpUs/R8ORp3y+oEFMicCJ3xz5tw+bMlOR70vFJdu
+         vGGp1ny3pSiF+lhWZFJiSUM3P6K/bdswV+FkAsjErrVFHe7tg/SfZN8tsWJx2ZIqMrqW
+         Jc8B8gV9vGPl97rmzYiatHEA8MufifaIR9n2mBrb+3gQ9LNy1a97xRduXGAVv9f/sm/p
+         r6PoYylabSRZZUTTBimJbP+dZwnc6ecNOM7Eui5pnD4FEoWHljJcEVY9EYbm8NTWFgez
+         fdkQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU+GbPRQarul9ccRL8Ce2QcZqD2cLmKp8z85KI6U4uSnayXhQd2FCPshTI76NVDtHghLYDf8l6dErmwiyMaxFWtMuV/fv2djCyL1BQBs85ID8cN
+X-Gm-Message-State: AOJu0YyGFH5tOflmBNN3DuA94FgddB+h6Q81khUv9Nhc7y3mAdcl/tXj
+	P5MKgznaifUtYVOapU2hUBI59tzmxvztlPutrOHZ3twyb2qdxwxf/R5oaZW5nFt7oM5Rz9pFq9n
+	I2fTcLDEnbEjaSfhdL4okS/NQlLuBm6zOt/L3NKIH6pEfJuNMqFkCqaJFQ/o5r7icremPYA==
+X-Received: by 2002:a05:600c:5248:b0:40e:f2d6:9dc with SMTP id fc8-20020a05600c524800b0040ef2d609dcmr299008wmb.33.1707510648622;
+        Fri, 09 Feb 2024 12:30:48 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHn7tTpFP36Rfj//rT72qd9+jvGx2yenpz6/LSui/V8HYLJ/ywcOwSHhBf9szBB3acqUagp1Q==
+X-Received: by 2002:a05:600c:5248:b0:40e:f2d6:9dc with SMTP id fc8-20020a05600c524800b0040ef2d609dcmr298995wmb.33.1707510648315;
+        Fri, 09 Feb 2024 12:30:48 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVcq9h0v46XkBbkpGmGw7p+gvFjC5M5dM9Vxo8+153Wr+2lSmDerGeFt0bQGagJ3AqQ62L9bMcfNAhyGp2EErv/jeUfhwoqxnFqHWXQmWyIufisWQ5NN+QWQZlhqNzGtg3ymkuvzMX62LPzGS7cu5QPu8iSUMsQ7o6o8mDsv/1PeyApbtC7c0tr4rM19hySOPuvNxflS+MbsX7T4dcy51FG4nTDSJDOHg2oTilImEUjF9D97lu6EPkSvViSU5ywMA6djQ5iy8zI6i8Z1CgH9ADUR4hIYgyTZ5dnpM5e3m41u/AzGTlyFFLd1f8XUHyiMrA2TbDmPUp5WspO/0kN3M4DJfVZl1bznOif8MLeUNZ6JMJUffSu4bpqe4e3RjzORPF4lNXqSILT96MQe6qWSLLYaiRE9viR3LceZoFPgmqQ4SLwrk5+FfsTiZKXV4pGD77JBdQi4X+LMuG+3Y6kX6rHBO1SJC2XaPIdkIlpeCi4v+S7sSmgEXReM8iiCvemxFkRuc3WnHLe1Fa0/cXLvqaT9xfK6QfieDTCNEXIlIWWWNaoUpH0eAyFuxH2qyqMoSV10vmbY//bU6qpp6m8rb//wF90dZGrVCRNumEXcMHCB/ll6EBPUktzLtXGDl4=
+Received: from toolbox ([2001:9e8:898e:7200:1f00:29c:19b0:2997])
+        by smtp.gmail.com with ESMTPSA id g7-20020a5d5407000000b003392206c808sm109606wrv.105.2024.02.09.12.30.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Feb 2024 12:30:47 -0800 (PST)
+Date: Fri, 9 Feb 2024 21:30:46 +0100
+From: Sebastian Wick <sebastian.wick@redhat.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Subject: Re: Re: [PATCH v5 08/44] drm/connector: hdmi: Add Broadcast RGB
+ property
+Message-ID: <20240209203046.GA996172@toolbox>
+References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
+ <20231207-kms-hdmi-connector-state-v5-8-6538e19d634d@kernel.org>
+ <20240115143308.GA159345@toolbox>
+ <niqn7eql5neyfp5ficdfisdpmlwrprovqn5g7lgcfwoe74ds23@7fr4yv2miqe7>
 MIME-Version: 1.0
-References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
- <20240207174102.1486130-8-pasha.tatashin@soleen.com> <2718393.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <2718393.mvXUDI8C0e@jernej-laptop>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Fri, 9 Feb 2024 14:01:24 -0500
-Message-ID: <CA+CK2bBqzd4imzKxGJVUn3SkvDBPk_=CLA1Fm05kz3DqSE2gpA@mail.gmail.com>
-Subject: Re: [PATCH v4 07/10] iommu/sun50i: use page allocation function
- provided by iommu-pages.h
-To: =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jonathanh@nvidia.com, joro@8bytes.org, 
-	krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
-	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
-	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com, 
-	bagasdotme@gmail.com, mkoutny@suse.com
+In-Reply-To: <niqn7eql5neyfp5ficdfisdpmlwrprovqn5g7lgcfwoe74ds23@7fr4yv2miqe7>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240209_110204_036416_14628596 
-X-CRM114-Status: UNSURE (   6.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240209_123053_765949_FBEF6EC3 
+X-CRM114-Status: GOOD (  28.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,20 +111,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBGZWIgOSwgMjAyNCBhdCA1OjU14oCvQU0gSmVybmVqIMWga3JhYmVjIDxqZXJuZWou
-c2tyYWJlY0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4gRG5lIHNyZWRhLCAwNy4gZmVicnVhciAyMDI0
-IG9iIDE4OjQwOjU5IENFVCBqZSBQYXNoYSBUYXRhc2hpbiBuYXBpc2FsKGEpOgo+ID4gQ29udmVy
-dCBpb21tdS9zdW41MGktaW9tbXUuYyB0byB1c2UgdGhlIG5ldyBwYWdlIGFsbG9jYXRpb24gZnVu
-Y3Rpb25zCj4gPiBwcm92aWRlZCBpbiBpb21tdS1wYWdlcy5oLgo+ID4KPiA+IFNpZ25lZC1vZmYt
-Ynk6IFBhc2hhIFRhdGFzaGluIDxwYXNoYS50YXRhc2hpbkBzb2xlZW4uY29tPgo+ID4gQWNrZWQt
-Ynk6IERhdmlkIFJpZW50amVzIDxyaWVudGplc0Bnb29nbGUuY29tPgo+ID4gVGVzdGVkLWJ5OiBC
-YWdhcyBTYW5qYXlhIDxiYWdhc2RvdG1lQGdtYWlsLmNvbT4KPgo+IEFja2VkLWJ5OiBKZXJuZWog
-U2tyYWJlYyA8amVybmVqLnNrcmFiZWNAZ21haWwuY29tPgoKVGhhbmsgeW91LApQYXNoYQoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Feb 02, 2024 at 04:49:04PM +0100, Maxime Ripard wrote:
+> Hi Sebastian,
+> 
+> On Mon, Jan 15, 2024 at 03:33:08PM +0100, Sebastian Wick wrote:
+> > >  /**
+> > >   * DOC: HDMI connector properties
+> > >   *
+> > > + * Broadcast RGB
+> > > + *      Indicates the RGB Quantization Range (Full vs Limited) used.
+> > > + *      Infoframes will be generated according to that value.
+> > > + *
+> > > + *      The value of this property can be one of the following:
+> > > + *
+> > > + *      Automatic:
+> > > + *              RGB Range is selected automatically based on the mode
+> > > + *              according to the HDMI specifications.
+> > > + *
+> > > + *      Full:
+> > > + *              Full RGB Range is forced.
+> > > + *
+> > > + *      Limited 16:235:
+> > > + *              Limited RGB Range is forced. Unlike the name suggests,
+> > > + *              this works for any number of bits-per-component.
+> > > + *
+> > > + *      Drivers can set up this property by calling
+> > > + *      drm_connector_attach_broadcast_rgb_property().
+> > > + *
+> > 
+> > This is a good time to document this in more detail. There might be two
+> > different things being affected:
+> > 
+> > 1. The signalling (InfoFrame/SDP/...)
+> > 2. The color pipeline processing
+> > 
+> > All values of Broadcast RGB always affect the color pipeline processing
+> > such that a full-range input to the CRTC is converted to either full- or
+> > limited-range, depending on what the monitor is supposed to accept.
+> > 
+> > When automatic is selected, does that mean that there is no signalling,
+> > or that the signalling matches what the monitor is supposed to accept
+> > according to the spec? Also, is this really HDMI specific?
+> > 
+> > When full or limited is selected and the monitor doesn't support the
+> > signalling, what happens?
+> 
+> Leaving the YCbCr vs RGB discussion aside, would this be better ?
+
+Yes, it is. Thanks.
+
+We do have to resolve the YCbCr vs RGB issue though.
+
+>  * Broadcast RGB (HDMI specific)
+>  *      Indicates the Quantization Range (Full vs Limited) used. The color
+>  *      processing pipeline will be adjusted to match the value of the
+
+Ah, another thing no note here is that the CRTC as configured by user
+space must always produce full range pixels.
+
+>  *      property, and the Infoframes will be generated and sent accordingly.
+>  *
+>  *      The value of this property can be one of the following:
+>  *
+>  *      Automatic:
+>  *              The quantization range is selected automatically based on the
+>  *              mode according to the HDMI specifications (HDMI 1.4b - Section
+>  *              6.6 - Video Quantization Ranges).
+>  *
+>  *      Full:
+>  *              Full quantization range is forced.
+>  *
+>  *      Limited 16:235:
+>  *              Limited quantization range is forced. Unlike the name suggests,
+>  *              this works for any number of bits-per-component.
+>  *
+>  *      Property values other than Automatic can result in colors being off (if
+>  *      limited is selected but the display expects full), or a black screen
+>  *      (if full is selected but the display expects limited).
+>  *
+>  *      Drivers can set up this property by calling
+>  *      drm_connector_attach_broadcast_rgb_property().
+> 
+> Thanks!
+> Maxime
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
