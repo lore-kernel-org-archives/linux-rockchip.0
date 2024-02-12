@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 244CCC4829B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 10:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F209AC4829B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 13:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5u9JwyO6nlzGx+MKcz/1FXtc0oZzunDTW29ms8rFzeE=; b=NhYYFJ8VVe6bdatmHBrXOldErB
-	RHYOvYFU7lEcUiOmakSI2arNZnN+dzx+B97dUM/NKY5zNK9/zS3vWrHna/fSMNLnUxHkm3z+yIJ3o
-	zE/T93u+ugcemQC2oHMqVmYBOqs3O5zSGZyAWoLnZnoI11k+J1Nl/x3K3pHIL6H22hkx3qUnaNQr2
-	+TxCvEUuwUUSBJptISUT+CufZCnGdqBgI2syRiYckxDLyVKRNZilJBDO/5taUYGY+42drEtCY8LJf
-	yXzJAY6LulwC+XLbANolzz9n8VRzxbMQrBEiJt5pQ5fQvzCA10UFCxcljCP2Zpad5PnTBMVY2i1hP
-	CNxjnKdw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pRicNm0GsTV7oYM6NOSLmFwuCM8dh+3eec21wWlVMXQ=; b=Vz1xkEl3EfYmmF
+	HXY2urX4kdgolKUVas3vTjRhlULTROadCaWwMHr0yZnQWQLf22MJzsbb1pduNxXsniCxTbU3g1uQc
+	/j5iFd+LqfFJDQP+Fzf7DElVnJiux8M7wwAX0JA+9DA5EOfTdC2gaxW63yX7qtxb4VFpjubr33fmY
+	GV6WcUE0cZmHjnEBbtnObRXyMRrw4Nd/bY2tgVM/58VmgdfOP6V8YeQjAFu2h4USqZsazTYbHele8
+	2bix7AAXZHbsDPqOCVw9M3cGAKf6ltn+O5U3KJkwxTcOVLdg31DzqR3RGOv1AIyQvhDFTae80fDWP
+	6my06nOQIOE+o9aZ6uFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZT7k-00000004oDG-1rt9;
-	Mon, 12 Feb 2024 10:01:16 +0000
+	id 1rZW7r-00000005OS3-1zWs;
+	Mon, 12 Feb 2024 13:13:35 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZT7g-00000004oBu-2DLi;
-	Mon, 12 Feb 2024 10:01:14 +0000
+	id 1rZW7n-00000005OOG-0n38;
+	Mon, 12 Feb 2024 13:13:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 886C5CE0FC8;
-	Mon, 12 Feb 2024 10:01:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76253C433F1;
-	Mon, 12 Feb 2024 10:01:09 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 6012DCE128B;
+	Mon, 12 Feb 2024 13:13:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DBD5C433C7;
+	Mon, 12 Feb 2024 13:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707732069;
-	bh=ZV4pECgPYcbYpTFYE/HHDZCGaJXwRLM519uxPcGBl0I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vRdcfGdNCOnmnB8/dcuM1aTGBkhnZCU+s8sdi2HDhKo1bAM9sweGpXpaiAluc56DU
-	 6M+uTI+N44afTG92KjSZS06Cfpa3OKXGNfTgQHDL2jFuLI3Rng7DXh+ZJI3cWNlsJS
-	 BrKiT9j7VQH3iQOQrybjasLvm2WVuEaU0eflNduPT/sjhtKqTrydzL3flueiwkwNlu
-	 f/aJmEAyfDnbIhycldNE2lW71I6zwId6r2BydT7BXebgkkBpsQreTcUL1iJlcsiVx/
-	 1f3nRZU3Jb4tGQY9zd4Z/FxH4FKFD7uYhtz7fG5gF60eK1onGRgp31xxYoRYOP9X6S
-	 MgypK9eU7VjMA==
-Date: Mon, 12 Feb 2024 11:01:07 +0100
+	s=k20201202; t=1707743608;
+	bh=nfLivOWirCrzLbv4NQIBwe6Dnr51YbMfSDUPHLxokCE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=UQpx9702gqf8+epegcpIaBYkO2p90PaQEqBUo2EXvu/QXeTlPiKdTcJxXLgmXokFt
+	 6+paNW+4+ihxlstIP7SoGh0YUtH9GGLKyacjjW8Apna0hVVkqfNgUDdgZkf0cx+U/f
+	 a6vIiv8dkFFs0I4T6cAyNOjw7sw1ShVRxqvo2TUFzWWLmowICT5M3WjOW32EIM70HJ
+	 p/5gl6qyaWvYAcp5YmiX9qSiFRjRtc3RdWq3ock+NqLx7jx0EYJT9jIS8HrhDdZnB+
+	 8n1pTYWcv95rKn3MjtW+FsSFL8P5KQpYOL5JjQWVXx8jMKwQgQDTfbwyF0Z0jF04hP
+	 YHxTzzjZGNj+A==
 From: Maxime Ripard <mripard@kernel.org>
-To: Sebastian Wick <sebastian.wick@redhat.com>
-Cc: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, 
-	Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: Re: Re: Re: Re: [PATCH v5 08/44] drm/connector: hdmi: Add
- Broadcast RGB property
-Message-ID: <ahfl6f72lpgpsbnrbgvbsh4db4npr2hh36kua2c6krh544hv5r@dndw4hz2mu2g>
-References: <20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org>
- <20231207-kms-hdmi-connector-state-v5-8-6538e19d634d@kernel.org>
- <20240115143308.GA159345@toolbox>
- <20240115143720.GA160656@toolbox>
- <73peztbeeikb3fg6coxu3punxllgtyrmgco34tnxkojtsjbr3s@26bud3sjbcez>
- <Zb0M_2093UwPXK8y@intel.com>
- <hez2m57ogqx3yyqk45tzdkvxvhrbdepgm244i4m2aty2xhf5b5@acqgvmxhmmvr>
- <Zb0aYAapkxQ2kopt@intel.com>
- <zml6j27skvjmbrfyz7agy5waxajv4p4asbemeexelm3wuv4o7j@xkd2wvnxhbuc>
- <20240209203435.GB996172@toolbox>
+Subject: [PATCH v6 00/36] drm/connector: Create HDMI Connector
+ infrastructure
+Date: Mon, 12 Feb 2024 14:12:43 +0100
+Message-Id: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20240209203435.GB996172@toolbox>
+X-B4-Tracking: v=1; b=H4sIAEsZymUC/43PTWrDMBAF4KsErasymtGfu+o9ShauNYlFGhkkY
+ yjBd8/QRU0xmK6Gx+N9MA/VuGZu6u30UJWX3PJUJPiXkxrGvlxZ5yRZISBBNFbf7k2P6Z71MJX
+ CwzxV3eZ+Zu2NDzGwDx0GJfMxNym/f+TFyPn4B7IYDRpsBGfThbyz7zeuhb9ep3pVZ1EX3KQO4
+ UBCkUzoCFOfUgppJ9GvZIDMgUQiEcZPuPRsqQ87yW6SwXggWZGG4AGNiwSed5LbJIRwIDmRvKP
+ Ipkue7N/v1nV9AtRs2xvZAQAA
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, 
+ Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+ Maxime Ripard <mripard@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8341; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=nfLivOWirCrzLbv4NQIBwe6Dnr51YbMfSDUPHLxokCE=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmnJGM//JKpCvNU+s1Sri7BfWtu0mnH1vmOG+q/rj9+f
+ vXsTxEcHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZjI1uWMDL0GOasPz7jbMOHI
+ yw6mm7+uH/q9nJ/JRPu17uH8qizNde8YGRb+kZX4wic177K5TcPhpYa/U3ctXnNRmpmrvll2dnm
+ wHxcA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_020112_949084_D2C3E8EF 
-X-CRM114-Status: GOOD (  45.94  )
+X-CRM114-CacheID: sfid-20240212_051331_681744_F40ABC56 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,171 +89,187 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5747061070748320498=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============5747061070748320498==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jve3saefgwx6cqdm"
-Content-Disposition: inline
+Here's a series that creates some extra infrastructure specifically
+targeted at HDMI controllers.
 
+The idea behind this series came from a recent discussion on IRC during
+which we discussed infoframes generation of i915 vs everything else.
 
---jve3saefgwx6cqdm
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Infoframes generation code still requires some decent boilerplate, with
+each driver doing some variation of it.
 
-On Fri, Feb 09, 2024 at 09:34:35PM +0100, Sebastian Wick wrote:
-> On Mon, Feb 05, 2024 at 10:39:38AM +0100, Maxime Ripard wrote:
-> > On Fri, Feb 02, 2024 at 06:37:52PM +0200, Ville Syrj=E4l=E4 wrote:
-> > > On Fri, Feb 02, 2024 at 04:59:30PM +0100, Maxime Ripard wrote:
-> > > > On Fri, Feb 02, 2024 at 05:40:47PM +0200, Ville Syrj=E4l=E4 wrote:
-> > > > > On Fri, Feb 02, 2024 at 02:01:39PM +0100, Maxime Ripard wrote:
-> > > > > > Hi,
-> > > > > >=20
-> > > > > > On Mon, Jan 15, 2024 at 03:37:20PM +0100, Sebastian Wick wrote:
-> > > > > > > > >  /**
-> > > > > > > > >   * DOC: HDMI connector properties
-> > > > > > > > >   *
-> > > > > > > > > + * Broadcast RGB
-> > > > > > > > > + *      Indicates the RGB Quantization Range (Full vs Li=
-mited) used.
-> > > > > > > > > + *      Infoframes will be generated according to that v=
-alue.
-> > > > > > > > > + *
-> > > > > > > > > + *      The value of this property can be one of the fol=
-lowing:
-> > > > > > > > > + *
-> > > > > > > > > + *      Automatic:
-> > > > > > > > > + *              RGB Range is selected automatically base=
-d on the mode
-> > > > > > > > > + *              according to the HDMI specifications.
-> > > > > > > > > + *
-> > > > > > > > > + *      Full:
-> > > > > > > > > + *              Full RGB Range is forced.
-> > > > > > > > > + *
-> > > > > > > > > + *      Limited 16:235:
-> > > > > > > > > + *              Limited RGB Range is forced. Unlike the =
-name suggests,
-> > > > > > > > > + *              this works for any number of bits-per-co=
-mponent.
-> > > > > > > > > + *
-> > > > > > > > > + *      Drivers can set up this property by calling
-> > > > > > > > > + *      drm_connector_attach_broadcast_rgb_property().
-> > > > > > > > > + *
-> > > > > > > >=20
-> > > > > > > > This is a good time to document this in more detail. There =
-might be two
-> > > > > > > > different things being affected:
-> > > > > > > >=20
-> > > > > > > > 1. The signalling (InfoFrame/SDP/...)
-> > > > > > > > 2. The color pipeline processing
-> > > > > > > >=20
-> > > > > > > > All values of Broadcast RGB always affect the color pipelin=
-e processing
-> > > > > > > > such that a full-range input to the CRTC is converted to ei=
-ther full- or
-> > > > > > > > limited-range, depending on what the monitor is supposed to=
- accept.
-> > > > > > > >=20
-> > > > > > > > When automatic is selected, does that mean that there is no=
- signalling,
-> > > > > > > > or that the signalling matches what the monitor is supposed=
- to accept
-> > > > > > > > according to the spec? Also, is this really HDMI specific?
-> > > > > > > >=20
-> > > > > > > > When full or limited is selected and the monitor doesn't su=
-pport the
-> > > > > > > > signalling, what happens?
-> > > > > > >=20
-> > > > > > > Forgot to mention: user-space still has no control over RGB v=
-s YCbCr on
-> > > > > > > the cable, so is this only affecting RGB? If not, how does it=
- affect
-> > > > > > > YCbCr?
-> > > > > >=20
-> > > > > > So I dug a bit into both the i915 and vc4 drivers, and it looks=
- like if
-> > > > > > we're using a YCbCr format, i915 will always use a limited rang=
-e while
-> > > > > > vc4 will follow the value of the property.
-> > > > >=20
-> > > > > The property is literally called "Broadcast *RGB*".
-> > > > > That should explain why it's only affecting RGB.
-> > > >=20
-> > > > Right. And the limited range option is called "Limited 16:235" desp=
-ite
-> > > > being usable on bpc > 8 bits. Naming errors occurs, and history hap=
-pens
-> > > > to make names inconsistent too, that's fine and not an argument in
-> > > > itself.
-> > > >=20
-> > > > > Full range YCbCr is a much rarer beast so we've never bothered
-> > > > > to enable it.
-> > > >=20
-> > > > vc4 supports it.
-> > >=20
-> > > Someone implemented it incorrectly then.
-> >=20
-> > Incorrectly according to what documentation / specification? I'm sorry,
-> > but I find it super ironic that i915 gets to do its own thing, not
-> > document any of it, and when people try to clean things up they get told
-> > that we got it all wrong.
->=20
-> FWIW, this was an i915 property and if another driver uses the same
-> property name it must have the same behavior. Yes, it isn't standardized
-> and yes, it's not documented (hence this effort here) but it's still on
-> vc4 to make the property compatible.
+In parallel, while working on vc4, we ended up converting a lot of i915
+logic (mostly around format / bpc selection, and scrambler setup) to
+apply on top of a driver that relies only on helpers.
 
-How is it not compatible? It's a superset of what i915 provides, but
-it's strictly compatible with it.
+While currently sitting in the vc4 driver, none of that logic actually
+relies on any driver or hardware-specific behaviour.
 
-I would argue that i915 is the broken one since userspace could force a
-full range output, but since the driver takes the YUV vs RGB decision
-itself and only supports limited range for YUV, the driver would
-effectively ignore that user-space property, without the user-space
-being able to tell it was ignored in the first place.
+The only missing piece to make it shareable are a bunch of extra
+variables stored in a state (current bpc, format, RGB range selection,
+etc.).
 
-> Trying to make the property handle YCbCr is very much in the "let's try
-> to fix the property" territory that I want to avoid, so I'm in favor of
-> adjusting vc4.
+The initial implementation was relying on some generic subclass of
+drm_connector to address HDMI connectors, with a bunch of helpers that
+will take care of all the "HDMI Spec" related code. Scrambler setup is
+missing at the moment but can easily be plugged in.
 
-Breaking the ABI in the process. For something that is explicitly
-supported by the spec, the driver, and the hardware. On a property that
-never said it wasn't meant to be used that way, and with semantics based
-on a driver that never provided a way to check those restrictions in the
-first place.
+The feedback was that creating a connector subclass like was done for
+writeback would prevent the adoption of those helpers since it couldn't
+be used in all situations (like when the connector driver can implement
+multiple output) and required more churn to cast between the
+drm_connector and its subclass. The decision was thus to provide a set
+of helper and to store the required variables in drm_connector and
+drm_connector_state. This what has been implemented now.
 
-And it's not like i915 is going to use that code anyway.
+Hans Verkuil also expressed interest in implementing a mechanism in v4l2
+to retrieve infoframes from HDMI receiver and implementing a tool to
+decode (and eventually check) infoframes. His current work on
+edid-decode to enable that based on that series can be found here:
+https://git.linuxtv.org/hverkuil/edid-decode.git/log/?h=hverkuil
 
+And some more context here:
+https://lore.kernel.org/dri-devel/50db7366-cd3d-4675-aaad-b857202234de@xs4all.nl/
+
+This series thus leverages the infoframe generation code to expose it
+through debugfs.
+
+I also used the occasion to unit-test everything but the infoframe
+generation, which can come later once I get a proper understanding of
+what the infoframe are supposed to look like. This required to add some
+extra kunit helpers and infrastructure to have multiple EDIDs and allow
+each test to run with a particular set of capabilities.
+
+This entire series has been tested on a Pi4, passes all its unittests
+(125 new tests), and has only been build-tested for sunxi and rockchip.
+
+Let me know what you think,
 Maxime
 
---jve3saefgwx6cqdm
-Content-Type: application/pgp-signature; name="signature.asc"
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Changes in v6:
+- Rebased on top of current next
+- Split the tests into separate patches
+- Improve the Broadcast RGB documentation
+- Link to v5: https://lore.kernel.org/r/20231207-kms-hdmi-connector-state-v5-0-6538e19d634d@kernel.org
 
------BEGIN PGP SIGNATURE-----
+Changes in v5:
+- Dropped the connector init arg checking patch, and the related kunit
+  tests
+- Dropped HDMI Vendor infoframes in rockchip inno_hdmi
+- Fixed the build warnings
+- Link to v4: https://lore.kernel.org/r/20231128-kms-hdmi-connector-state-v4-0-c7602158306e@kernel.org
 
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZcnsYgAKCRDj7w1vZxhR
-xbXvAQCwcVIa0ZIBiFB60+Djxs5Q9r6KT+VmRcFEid+4vu5kmAD/SoSSxALs4Fec
-o0UKGT8WuF+A9QWBqCkljcQ1i+X1aAA=
-=q4Ag
------END PGP SIGNATURE-----
+Changes in v4:
+- Create unit tests for everything but infoframes
+- Fix a number of bugs identified by the unit tests
+- Rename DRM (Dynamic Range and Mastering) infoframe file to HDR_DRM
+- Drop RFC status
+- Link to v3: https://lore.kernel.org/r/20231031-kms-hdmi-connector-state-v3-0-328b0fae43a7@kernel.org
 
---jve3saefgwx6cqdm--
+Changes in v3:
+- Made sure the series work on the RaspberryPi4
+- Handle YUV420 in the char clock rate computation
+- Use the maximum bpc value the connector allows at reset
+- Expose the RGB Limited vs Full Range value in the connector state
+  instead of through a helper
+- Fix Broadcast RGB documentation
+- Add more debug logging
+- Small fixes here and there
+- Link to v2: https://lore.kernel.org/r/20230920-kms-hdmi-connector-state-v2-0-17932daddd7d@kernel.org
 
+Changes in v2:
+- Change from a subclass to a set of helpers for drm_connector and
+  drm_connector state
+- Don't assume that all drivers support RGB, YUV420 and YUV422 but make
+  them provide a bitfield instead.
+- Don't assume that all drivers support the Broadcast RGB property but
+  make them call the registration helper.
+- Document the Broacast RGB property
+- Convert the inno_hdmi and sun4i_hdmi driver.
+- Link to v1: https://lore.kernel.org/r/20230814-kms-hdmi-connector-state-v1-0-048054df3654@kernel.org
 
---===============5747061070748320498==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+---
+Maxime Ripard (36):
+      drm/tests: helpers: Include missing drm_drv header
+      drm/tests: helpers: Add atomic helpers
+      drm/tests: Add helper to create mock plane
+      drm/tests: Add helper to create mock crtc
+      drm/tests: connector: Add tests for drmm_connector_init
+      drm/connector: Introduce an HDMI connector initialization function
+      drm/tests: connector: Add tests for drmm_connector_hdmi_init
+      drm/connector: hdmi: Create an HDMI sub-state
+      drm/connector: hdmi: Add Broadcast RGB property
+      drm/tests: Add tests for Broadcast RGB property
+      drm/connector: hdmi: Add RGB Quantization Range to the connector state
+      drm/tests: Add RGB Quantization tests
+      drm/connector: hdmi: Add output BPC to the connector state
+      drm/tests: Add output bpc tests
+      drm/connector: hdmi: Add support for output format
+      drm/tests: Add output formats tests
+      drm/connector: hdmi: Add HDMI compute clock helper
+      drm/tests: Add HDMI TDMS character rate tests
+      drm/connector: hdmi: Calculate TMDS character rate
+      drm/tests: Add TDMS character rate connector state tests
+      drm/connector: hdmi: Add custom hook to filter TMDS character rate
+      drm/tests: Add HDMI connector rate filter hook tests
+      drm/connector: hdmi: Compute bpc and format automatically
+      drm/tests: Add HDMI connector bpc and format tests
+      drm/connector: hdmi: Add Infoframes generation
+      drm/tests: Add infoframes test
+      drm/connector: hdmi: Create Infoframe DebugFS entries
+      drm/vc4: hdmi: Switch to HDMI connector
+      drm/vc4: tests: Remove vc4_dummy_plane structure
+      drm/vc4: tests: Convert to plane creation helper
+      drm/rockchip: inno_hdmi: Switch to HDMI connector
+      drm/sun4i: hdmi: Convert encoder to atomic
+      drm/sun4i: hdmi: Move mode_set into enable
+      drm/sun4i: hdmi: Switch to container_of_const
+      drm/sun4i: hdmi: Consolidate atomic_check and mode_valid
+      drm/sun4i: hdmi: Switch to HDMI connector
+
+ Documentation/gpu/kms-properties.csv               |    1 -
+ drivers/gpu/drm/Kconfig                            |    1 +
+ drivers/gpu/drm/drm_atomic.c                       |   11 +
+ drivers/gpu/drm/drm_atomic_state_helper.c          |  659 ++++++++
+ drivers/gpu/drm/drm_atomic_uapi.c                  |    4 +
+ drivers/gpu/drm/drm_connector.c                    |  264 +++
+ drivers/gpu/drm/drm_debugfs.c                      |  110 ++
+ drivers/gpu/drm/rockchip/inno_hdmi.c               |  123 +-
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |  203 ++-
+ drivers/gpu/drm/tests/Makefile                     |    1 +
+ .../gpu/drm/tests/drm_atomic_state_helper_test.c   | 1728 ++++++++++++++++++++
+ drivers/gpu/drm/tests/drm_connector_test.c         | 1227 +++++++++++++-
+ drivers/gpu/drm/tests/drm_kunit_edid.h             |  482 ++++++
+ drivers/gpu/drm/tests/drm_kunit_helpers.c          |  150 ++
+ drivers/gpu/drm/vc4/tests/vc4_mock.c               |    6 +-
+ drivers/gpu/drm/vc4/tests/vc4_mock.h               |    9 +-
+ drivers/gpu/drm/vc4/tests/vc4_mock_plane.c         |   44 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.c                     |  638 +-------
+ drivers/gpu/drm/vc4/vc4_hdmi.h                     |   44 +-
+ drivers/gpu/drm/vc4/vc4_hdmi_phy.c                 |    6 +-
+ include/drm/drm_atomic_state_helper.h              |   12 +
+ include/drm/drm_connector.h                        |  257 +++
+ include/drm/drm_kunit_helpers.h                    |   23 +
+ 23 files changed, 5186 insertions(+), 817 deletions(-)
+---
+base-commit: ae00c445390b349e070a64dc62f08aa878db7248
+change-id: 20230814-kms-hdmi-connector-state-616787e67927
+
+Best regards,
+-- 
+Maxime Ripard <mripard@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5747061070748320498==--
-
