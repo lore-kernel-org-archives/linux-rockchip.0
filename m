@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178ABC48297
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 13:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A39E6C4829B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 14:15:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S+lzqgrGGXYR6cKLNrhom3xCJqxfsKcNqMs4H1ilsmU=; b=ehcv465JyKZnZy
-	FIe7GvBu6wttQQz8fYV3eNwBnO+1qwtEMCXoSq07CEtauWh5Z+F360JpI0d/5YIgb2A0qoyK7aWxH
-	/GiV/v5UZkhgTuw39X8Lw6VfGCRoVkGQtUk70LpKFYxHaXmmS/ZOoXUyJeUr8zqT3C9RTUdeS5KXo
-	8mauhJTQ+1aggq3FmZ3x1BsbgADRszsWDQe4pCvKdNkqXJGB98ZHqIeeD+YgM+Ih3QA8KSYS3UxuD
-	UqwMHhbMcUNeG53OCgysSOZlhj1AWDJjlb8Sx3gd7Hkoa0RaSN1ZpODyb3q1zlu8ZDVjM0nzn7aL0
-	Tyb1ByS/f6IFThdeauLg==;
+	List-Owner; bh=wxpf0vqWhHyDZKj1nhvggmc5AdN83gE9K6FeK36A2A4=; b=LxGFAuchGlbuJM
+	VMv77Hj8Meq2C7M776e9NKiu3CFFq4daJ0xL8Yc8KuKOmjhsqcNyuPe9HsIk8LzkDSvgAlGj6aVmn
+	vKoP55aJh1O8Cq7qyOOQVD3gd8WFCoSc+ZnVwO0YaIAz9hqDPnaO1RngjzdOXHTfj3vG/5MdI70Ua
+	OrZXhiMBfu13JkxDEZ42I+ymhjC+rNC7lvtOij3Q8/uMPLEnCy0Tie6eBFxqgioekm9h4atYwpq38
+	g5CGrnEwuFoCkQyK+Fv88juT2cBr6R9Mc6QldN0IdG1fQ8rEVfwbbsJmwsD3TeY2GyEWvvXA9Tl3i
+	CCmMJ06//gMNrsOw18Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZWBy-00000005RvQ-0oIA;
-	Mon, 12 Feb 2024 13:17:50 +0000
+	id 1rZX5d-00000005kMj-0laU;
+	Mon, 12 Feb 2024 14:15:21 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZW9O-00000005Pqa-0Rtr;
-	Mon, 12 Feb 2024 13:15:15 +0000
+	id 1rZW7x-00000005OV0-0WIz;
+	Mon, 12 Feb 2024 13:13:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5CD1460FBC;
-	Mon, 12 Feb 2024 13:15:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F303CC433F1;
-	Mon, 12 Feb 2024 13:15:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 56B0560FC5;
+	Mon, 12 Feb 2024 13:13:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3DC8C433C7;
+	Mon, 12 Feb 2024 13:13:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707743708;
-	bh=l7az7PI3sr6iJExwxQ3T/NzoIC1/E5ZG/ch/JDJ1A3s=;
+	s=k20201202; t=1707743620;
+	bh=EhwkazNlZ1kcicF1NryTZowdCh8r1uFd2Irf8ktLv6M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=N8O/NQn02I4O+8iu2op4Zm2Eq6Jx+InYbm/1d+l0itl4L7iu3VhBYcjiFdvQCokqI
-	 ceV8oVw6+ukjKLL1KSdpzbzlNPrsXuJsjED7SbBnDl5D9lJqBCut7QcQ9IVfNPF/lN
-	 Nh8RuN1RpZzyW5L9pJTnfz6A+phgy8rn2OPvX5X21+aDKMROxN2zU9hHJpRBKXvUAh
-	 eY43ADmTm9U19SShlfe5ZqoF5Mjv/fio7u+1n3LykA+Q8OD2WLsOIrRU00Unv1UvGt
-	 TbTaSTETGh363AR+B0KQGbTA6YLsHRrfshogutc/uciBk1RSGQhydAiIQ839yp6axH
-	 vJp7bq/G63Icw==
+	b=Sp7HV+bvdO68KCasoWvCWIRZsfKu8CHLwDit+uwjxPAAsxomz7i/dPxYsFTuY80nQ
+	 J0GRGAphZ7bLnRvmxBP5b8MfTpb18FODs4d8MZM1vakrVnJrWkBUgZ4G3sGmeJN6Uz
+	 lkJWvbekUOwBiGBOqx7aqOfuqc8vcv8oldVupj6eQv3mIf6tr66B14OT2QANuZ28Ub
+	 EQ9Kbk7zMEieijS8lKU0ljW01AjlSCMKLobOyqo+kRIGsjkV5qFUQpEqrjb7ck1J6v
+	 cQbU37KQy8VV1i0rgJinn8JnsSI/v+azOA3mZAwtK5Stq1KuuvRnYNJwWnYTYNCuxb
+	 4hbxHrj8Wlhjw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 12 Feb 2024 14:13:18 +0100
-Subject: [PATCH v6 35/36] drm/sun4i: hdmi: Consolidate atomic_check and
- mode_valid
+Date: Mon, 12 Feb 2024 14:12:47 +0100
+Subject: [PATCH v6 04/36] drm/tests: Add helper to create mock crtc
 MIME-Version: 1.0
-Message-Id: <20240212-kms-hdmi-connector-state-v6-35-f4bcdc979e6f@kernel.org>
+Message-Id: <20240212-kms-hdmi-connector-state-v6-4-f4bcdc979e6f@kernel.org>
 References: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
 In-Reply-To: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -60,19 +59,19 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
- Maxime Ripard <mripard@kernel.org>, Sui Jingfeng <sui.jingfeng@linux.dev>
+ Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4307; i=mripard@kernel.org;
- h=from:subject:message-id; bh=l7az7PI3sr6iJExwxQ3T/NzoIC1/E5ZG/ch/JDJ1A3s=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmnJEvmCJ7ZZFW76My7xJjZkz+f26+z8/LBCT4P6gz2f
- v35/sSXCR2lLAxiXAyyYoosMcLmS+JOzXrdycY3D2YOKxPIEAYuTgGYiPsmhr/Sr2fMXqlte4TB
- RG5H+/Yr17ep7TyddaxG47NP+/G5E6f/ZGRYyZ3ZO/dL8PaO9S4VRlc6hOZpebVZ6uZ2LdGOE3o
- ks58fAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3793; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=EhwkazNlZ1kcicF1NryTZowdCh8r1uFd2Irf8ktLv6M=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmnJBMe/uKeEc4pk5Hb8HD+pX8nM06eDFrFMPdNZ+rp4
+ D9X5B90dZSyMIhxMciKKbLECJsviTs163UnG988mDmsTCBDGLg4BWAibrcYGX4dPOTvOvGzbaqf
+ oIzHvvaT86Q1vJbr9Kyxae/VFw9uWcPwV851KVMRC5u+yLIy1bnyPfXff5fKVnC+M+u5XWr1/4g
+ xMwA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_051510_541958_5713F699 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20240212_051341_443674_B381C44C 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,126 +88,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-atomic_check and mode_valid do not check for the same things which can
-lead to surprising result if the userspace commits a mode that didn't go
-through mode_valid. Let's merge the two implementations into a function
-called by both.
+We're going to need a full-blown, functional, KMS device to test more
+components of the atomic modesetting infrastructure.
 
-Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+Let's add a new helper to create a dumb, mocked, CRTC. By default it
+will create a CRTC relying only on the default helpers, but drivers are
+free to deviate from that.
+
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 74 +++++++++++++++++++++-------------
- 1 file changed, 47 insertions(+), 27 deletions(-)
+ drivers/gpu/drm/tests/drm_kunit_helpers.c | 62 +++++++++++++++++++++++++++++++
+ include/drm/drm_kunit_helpers.h           | 10 +++++
+ 2 files changed, 72 insertions(+)
 
-diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-index c276d984da6b..b7cf369b1906 100644
---- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-@@ -62,18 +62,6 @@ static int sun4i_hdmi_setup_avi_infoframes(struct sun4i_hdmi *hdmi,
- 	return 0;
+diff --git a/drivers/gpu/drm/tests/drm_kunit_helpers.c b/drivers/gpu/drm/tests/drm_kunit_helpers.c
+index 32dc8354641a..d5317d13d3fc 100644
+--- a/drivers/gpu/drm/tests/drm_kunit_helpers.c
++++ b/drivers/gpu/drm/tests/drm_kunit_helpers.c
+@@ -249,5 +249,67 @@ drm_kunit_helper_create_primary_plane(struct kunit *test,
  }
+ EXPORT_SYMBOL_GPL(drm_kunit_helper_create_primary_plane);
  
--static int sun4i_hdmi_atomic_check(struct drm_encoder *encoder,
--				   struct drm_crtc_state *crtc_state,
--				   struct drm_connector_state *conn_state)
--{
--	struct drm_display_mode *mode = &crtc_state->mode;
--
--	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
--		return -EINVAL;
--
--	return 0;
--}
--
- static void sun4i_hdmi_disable(struct drm_encoder *encoder,
- 			       struct drm_atomic_state *state)
- {
-@@ -166,31 +154,61 @@ static void sun4i_hdmi_enable(struct drm_encoder *encoder,
- 	writel(val, hdmi->base + SUN4I_HDMI_VID_CTRL_REG);
- }
- 
--static enum drm_mode_status sun4i_hdmi_mode_valid(struct drm_encoder *encoder,
--					const struct drm_display_mode *mode)
-+static const struct drm_encoder_helper_funcs sun4i_hdmi_helper_funcs = {
-+	.atomic_disable	= sun4i_hdmi_disable,
-+	.atomic_enable	= sun4i_hdmi_enable,
++static const struct drm_crtc_helper_funcs default_crtc_helper_funcs = {
 +};
 +
-+static enum drm_mode_status
-+sun4i_hdmi_connector_clock_valid(const struct drm_connector *connector,
-+				 const struct drm_display_mode *mode,
-+				 unsigned long long clock)
- {
--	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
--	unsigned long rate = mode->clock * 1000;
--	unsigned long diff = rate / 200; /* +-0.5% allowed by HDMI spec */
-+	const struct sun4i_hdmi *hdmi = drm_connector_to_sun4i_hdmi(connector);
-+	unsigned long diff = clock / 200; /* +-0.5% allowed by HDMI spec */
- 	long rounded_rate;
- 
-+	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
-+		return MODE_BAD;
++static const struct drm_crtc_funcs default_crtc_funcs = {
++	.atomic_destroy_state   = drm_atomic_helper_crtc_destroy_state,
++	.atomic_duplicate_state = drm_atomic_helper_crtc_duplicate_state,
++	.reset                  = drm_atomic_helper_crtc_reset,
++};
 +
- 	/* 165 MHz is the typical max pixelclock frequency for HDMI <= 1.2 */
--	if (rate > 165000000)
-+	if (clock > 165000000)
- 		return MODE_CLOCK_HIGH;
--	rounded_rate = clk_round_rate(hdmi->tmds_clk, rate);
-+
-+	rounded_rate = clk_round_rate(hdmi->tmds_clk, clock);
- 	if (rounded_rate > 0 &&
--	    max_t(unsigned long, rounded_rate, rate) -
--	    min_t(unsigned long, rounded_rate, rate) < diff)
-+	    max_t(unsigned long, rounded_rate, clock) -
-+	    min_t(unsigned long, rounded_rate, clock) < diff)
- 		return MODE_OK;
-+
- 	return MODE_NOCLOCK;
- }
- 
--static const struct drm_encoder_helper_funcs sun4i_hdmi_helper_funcs = {
--	.atomic_check	= sun4i_hdmi_atomic_check,
--	.atomic_disable	= sun4i_hdmi_disable,
--	.atomic_enable	= sun4i_hdmi_enable,
--	.mode_valid	= sun4i_hdmi_mode_valid,
--};
-+static int sun4i_hdmi_connector_atomic_check(struct drm_connector *connector,
-+					     struct drm_atomic_state *state)
++/**
++ * drm_kunit_helper_create_crtc - Creates a mock CRTC for a KUnit test
++ * @test: The test context object
++ * @drm: The device to alloc the plane for
++ * @primary: Primary plane for CRTC
++ * @cursor: Cursor plane for CRTC. Optional.
++ * @funcs: Callbacks for the new plane. Optional.
++ * @helper_funcs: Helpers callbacks for the new plane. Optional.
++ *
++ * This allocates and initializes a mock struct &drm_crtc meant to be
++ * part of a mock device for a KUnit test.
++ *
++ * Resources will be cleaned up automatically.
++ *
++ * @funcs will default to the default helpers implementations.
++ * @helper_funcs will default to an empty implementation.
++ *
++ * Returns:
++ * A pointer to the new CRTC, or an ERR_PTR() otherwise.
++ */
++struct drm_crtc *
++drm_kunit_helper_create_crtc(struct kunit *test,
++			     struct drm_device *drm,
++			     struct drm_plane *primary,
++			     struct drm_plane *cursor,
++			     const struct drm_crtc_funcs *funcs,
++			     const struct drm_crtc_helper_funcs *helper_funcs)
 +{
-+	struct drm_connector_state *conn_state =
-+		drm_atomic_get_new_connector_state(state, connector);
-+	struct drm_crtc *crtc = conn_state->crtc;
-+	struct drm_crtc_state *crtc_state = crtc->state;
-+	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
-+	enum drm_mode_status status;
++	struct drm_crtc *crtc;
++	int ret;
 +
-+	status = sun4i_hdmi_connector_clock_valid(connector, mode,
-+						  mode->clock * 1000);
-+	if (status != MODE_OK)
-+		return -EINVAL;
++	if (!funcs)
++		funcs = &default_crtc_funcs;
 +
-+	return 0;
++	if (!helper_funcs)
++		helper_funcs = &default_crtc_helper_funcs;
++
++	crtc = drmm_kzalloc(drm, sizeof(*crtc), GFP_KERNEL);
++	KUNIT_ASSERT_NOT_NULL(test, crtc);
++
++	ret = drmm_crtc_init_with_planes(drm, crtc,
++					 primary,
++					 cursor,
++					 funcs,
++					 NULL);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	drm_crtc_helper_add(crtc, helper_funcs);
++
++	return crtc;
 +}
++EXPORT_SYMBOL_GPL(drm_kunit_helper_create_crtc);
 +
-+static enum drm_mode_status
-+sun4i_hdmi_connector_mode_valid(struct drm_connector *connector,
-+				struct drm_display_mode *mode)
-+{
-+	return sun4i_hdmi_connector_clock_valid(connector, mode,
-+						mode->clock * 1000);
-+}
+ MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
+ MODULE_LICENSE("GPL");
+diff --git a/include/drm/drm_kunit_helpers.h b/include/drm/drm_kunit_helpers.h
+index 38667d624aa8..6e99627edf45 100644
+--- a/include/drm/drm_kunit_helpers.h
++++ b/include/drm/drm_kunit_helpers.h
+@@ -9,6 +9,8 @@
  
- static int sun4i_hdmi_get_modes(struct drm_connector *connector)
- {
-@@ -236,6 +254,8 @@ static struct i2c_adapter *sun4i_hdmi_get_ddc(struct device *dev)
- }
+ #include <kunit/test.h>
  
- static const struct drm_connector_helper_funcs sun4i_hdmi_connector_helper_funcs = {
-+	.atomic_check	= sun4i_hdmi_connector_atomic_check,
-+	.mode_valid	= sun4i_hdmi_connector_mode_valid,
- 	.get_modes	= sun4i_hdmi_get_modes,
- };
++struct drm_crtc_funcs;
++struct drm_crtc_helper_funcs;
+ struct drm_device;
+ struct drm_plane_funcs;
+ struct drm_plane_helper_funcs;
+@@ -110,4 +112,12 @@ drm_kunit_helper_create_primary_plane(struct kunit *test,
+ 				      unsigned int num_formats,
+ 				      const uint64_t *modifiers);
  
++struct drm_crtc *
++drm_kunit_helper_create_crtc(struct kunit *test,
++			     struct drm_device *drm,
++			     struct drm_plane *primary,
++			     struct drm_plane *cursor,
++			     const struct drm_crtc_funcs *funcs,
++			     const struct drm_crtc_helper_funcs *helper_funcs);
++
+ #endif // DRM_KUNIT_HELPERS_H_
 
 -- 
 2.43.0
