@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED9DC4829F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 14:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9D2C4829B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 15:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xLFfvLHiN4/vpzp5TGfV4lomNdBWMN5/wbiT9IzkMZo=; b=AWUfXsKcyswLSf
-	QBoXw6AAxHF6nGDQlDOCxQQwBzvubAn/cG01GMtVCqRZSTUo1d251bv2V+lTR0QhHnxgu1sjhrNKA
-	6l66F7aCpqsti3TTirCSkGkor2xIdaie/IrxZWY5h/f/w8pD2VFxRf8xxX6JQ0bNvLwumS7DIu3Ib
-	pqapxLIwWItUjMBGqfghlYd+c6AKj+tjkhH28pKjyI2bNXxFVMkKWoG1hdnoX+mt7VvY1rU5Q1MqP
-	X7ZfJz7aiKMabVjrkGwPj+meyimSDYaITUtJLb+3rr3HzVxtAOnkL5IMVBgWXGRBRktQw0EttRbTo
-	JY4vmse9YjW2c5LJb2IA==;
+	List-Owner; bh=5T3BiC9jx/8q5jT0WLg0X00nlwYXjYjeKaWkuCM6b4k=; b=ad1o0peqJghksU
+	ZOkR4Xl4/7FhGpXLJUmz032IPgJKnDH/auRCnlf2gVtxas18kHW/2Z3/WLIg4Q1UxJMKC0vR9K2Fa
+	NqMn97L9y8xCxi+pTZ1MF4WnaNVqWaNVu1fQ1kJL/m9Q/hDAmQAxIrOi8X2NJA0etP2GInEd/rMmK
+	h2gv7RNJgNu6Z9+R85i2NEZCcqp5Q3/f4+0JBcmoFGyJhQnXwTDmcTCJcdCWsskHtLg3v0TtXaMj0
+	k6OSAREsCEd/2S7NA8KQ8Q4TwxFk0eiqZMt+36Dmj76TxIYNACfC6PgwKJE6l0qTvZcgZVWq+ZbwP
+	UDFoemet5Foug3tteUPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZXK9-00000005nbc-2JSx;
-	Mon, 12 Feb 2024 14:30:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rZYYz-000000061iR-2F4j;
+	Mon, 12 Feb 2024 15:49:45 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZW8v-00000005PPm-48Jj;
-	Mon, 12 Feb 2024 13:14:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=AYFyxns+vUj9Mz6yfe1Beu2mrIqPTzc0/6itLsTr1nE=; b=NYv7+apkn5T4HVahrU3ewAYLpN
-	BaUGDtaUDVzJu21Rq/jFnpp6SLQdryQY7O8Jhu1SM9/gKRRIGU7XEQgXsR0XOY+spyjUWAK1WTqYC
-	AE7LjrrdigaJrkYBmuaM+d6Hg0al4aaW61kEOhOOsIAOygwNCnQhUOnpOxAMpDEE8+oK1prliiUP4
-	yL/IM6251qtPn0i0K+IEF8aBTjDYghqsJaBHD/r4QK/fDckUKlPfIgSNMCmMwoDH92pNcUHnyxcBv
-	n9++IYHxHLT34Dmu8OWEHfbBtaX2bAEcfxHuAa8Aw0Kkq6oLvd2kHtJhodSukReN7Cw1OmJDIBdPY
-	q65RWDUQ==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZW8s-0000000FIYe-1r5C;
-	Mon, 12 Feb 2024 13:14:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0374D60FCE;
-	Mon, 12 Feb 2024 13:14:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 228F3C43609;
-	Mon, 12 Feb 2024 13:14:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707743676;
-	bh=Rffl6qvCp13etRQCv4UHD54Lchb9zVRLPz1JX9Yd8M0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KmWFQdWCtrXIO/pJ0fz5oUB7vN6emo7oSwMWZKMOpzjqyOUkjcOYhMdJfs0lkWiq6
-	 lwRsdmas0wDW/TeG52x9PQT6PzqdyvxryLMMmPynhRxNHs/aDPMDiDZNiLZjsfkKtE
-	 EQgBo8DDaPhNuBZv3hWCa5sFkrOZaakii3h7VmeQgbnEquES7pj3ZgKR5Y3uEPSG7J
-	 l5UyeDjVrHb0EsF0Oz5Hsdjj6d20voglvcw1dgfj1o2CvtoPjiH1U+o0d9rGr+oCmw
-	 iYs0h4LhV2cekF76MA+Yawjll7Vi7LN4PIm/O7DTOOGkKJ8joD1K51j1Pcn1vU1KSH
-	 lmaielvj9IXuA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Mon, 12 Feb 2024 14:13:07 +0100
-Subject: [PATCH v6 24/36] drm/tests: Add HDMI connector bpc and format
- tests
+	id 1rZYYw-000000061hM-0WRO;
+	Mon, 12 Feb 2024 15:49:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1707752982; x=1739288982;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=RaXsYzelOZvoa5TGyCbteu+6xy/YY/Aun1Nfajjsacg=;
+  b=IqHcer/rhQbI3jE9pk0HNclSvXd1+WkzQJuInfZk74hQ4NXffibKBtyF
+   eY+dyHqfY6Z6WY5bJa7Q34WIuIX7BJZtHIf9/QUNwymyscWgyfvMzkTY+
+   POcgRZ2AZI3Z31rOvVc3D8v0NwneDy0x8yRSQYnphAf+n1fVIoE/+Ggi2
+   CcAx2LFN5POd0iDeOTpaRz8HXxyAY9GbomJez+Dfex5bzpf7HJWC1TT0x
+   d4ctc/jgOUeGb4tjapS89Ck/Z3k7aGPhvkz8cZK/1XZEsIoFIwSaebd5k
+   pdU89HupPg91VZhLffeSvL0orKiJ8b3pt9ZueCQcZ865re9bGpYGdZzZj
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="24202758"
+X-IronPort-AV: E=Sophos;i="6.06,264,1705392000"; 
+   d="scan'208";a="24202758"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Feb 2024 07:49:40 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="825840546"
+X-IronPort-AV: E=Sophos;i="6.06,264,1705392000"; 
+   d="scan'208";a="825840546"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
+  by orsmga001.jf.intel.com with SMTP; 12 Feb 2024 07:49:34 -0800
+Received: by stinkbox (sSMTP sendmail emulation); Mon, 12 Feb 2024 17:49:33 +0200
+Date: Mon, 12 Feb 2024 17:49:33 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Sebastian Wick <sebastian.wick@redhat.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Subject: Re: Re: Re: Re: Re: [PATCH v5 08/44] drm/connector: hdmi: Add
+ Broadcast RGB property
+Message-ID: <Zco-DQaXqae7B1jt@intel.com>
+References: <20231207-kms-hdmi-connector-state-v5-8-6538e19d634d@kernel.org>
+ <20240115143308.GA159345@toolbox>
+ <20240115143720.GA160656@toolbox>
+ <73peztbeeikb3fg6coxu3punxllgtyrmgco34tnxkojtsjbr3s@26bud3sjbcez>
+ <Zb0M_2093UwPXK8y@intel.com>
+ <hez2m57ogqx3yyqk45tzdkvxvhrbdepgm244i4m2aty2xhf5b5@acqgvmxhmmvr>
+ <Zb0aYAapkxQ2kopt@intel.com>
+ <zml6j27skvjmbrfyz7agy5waxajv4p4asbemeexelm3wuv4o7j@xkd2wvnxhbuc>
+ <20240209203435.GB996172@toolbox>
+ <ahfl6f72lpgpsbnrbgvbsh4db4npr2hh36kua2c6krh544hv5r@dndw4hz2mu2g>
 MIME-Version: 1.0
-Message-Id: <20240212-kms-hdmi-connector-state-v6-24-f4bcdc979e6f@kernel.org>
-References: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
-In-Reply-To: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, 
- Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
- Maxime Ripard <mripard@kernel.org>
-X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=27010; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Rffl6qvCp13etRQCv4UHD54Lchb9zVRLPz1JX9Yd8M0=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKmnJHNZ2Gzd97a9FOC2Cyk9eWhnWdfP99IVoqcS8o0sr
- gVUKq3qKGVhEONikBVTZIkRNl8Sd2rW6042vnkwc1iZQIYwcHEKwET6bRn+Kchuu3hSJEJoXVZd
- U45JwpQ5Di+SVVK0v+yffL80NXlaB8P/eKY4fums7asXdjhdW/fMW9d9B1fQ9rpN0Wfa4r/KOW7
- hAgA=
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Disposition: inline
+In-Reply-To: <ahfl6f72lpgpsbnrbgvbsh4db4npr2hh36kua2c6krh544hv5r@dndw4hz2mu2g>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_131439_064585_6F7DB3B3 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20240212_074942_233154_C1A25C81 
+X-CRM114-Status: GOOD (  52.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,735 +99,173 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The previous patch added the bpc and format an HDMI connector needs to
-be set up with for a given connector state.
+On Mon, Feb 12, 2024 at 11:01:07AM +0100, Maxime Ripard wrote:
+> On Fri, Feb 09, 2024 at 09:34:35PM +0100, Sebastian Wick wrote:
+> > On Mon, Feb 05, 2024 at 10:39:38AM +0100, Maxime Ripard wrote:
+> > > On Fri, Feb 02, 2024 at 06:37:52PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > On Fri, Feb 02, 2024 at 04:59:30PM +0100, Maxime Ripard wrote:
+> > > > > On Fri, Feb 02, 2024 at 05:40:47PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > > > On Fri, Feb 02, 2024 at 02:01:39PM +0100, Maxime Ripard wrote:
+> > > > > > > Hi,
+> > > > > > > =
 
-Let's add a few tests to make sure it works as expected.
+> > > > > > > On Mon, Jan 15, 2024 at 03:37:20PM +0100, Sebastian Wick wrot=
+e:
+> > > > > > > > > >  /**
+> > > > > > > > > >   * DOC: HDMI connector properties
+> > > > > > > > > >   *
+> > > > > > > > > > + * Broadcast RGB
+> > > > > > > > > > + *      Indicates the RGB Quantization Range (Full vs =
+Limited) used.
+> > > > > > > > > > + *      Infoframes will be generated according to that=
+ value.
+> > > > > > > > > > + *
+> > > > > > > > > > + *      The value of this property can be one of the f=
+ollowing:
+> > > > > > > > > > + *
+> > > > > > > > > > + *      Automatic:
+> > > > > > > > > > + *              RGB Range is selected automatically ba=
+sed on the mode
+> > > > > > > > > > + *              according to the HDMI specifications.
+> > > > > > > > > > + *
+> > > > > > > > > > + *      Full:
+> > > > > > > > > > + *              Full RGB Range is forced.
+> > > > > > > > > > + *
+> > > > > > > > > > + *      Limited 16:235:
+> > > > > > > > > > + *              Limited RGB Range is forced. Unlike th=
+e name suggests,
+> > > > > > > > > > + *              this works for any number of bits-per-=
+component.
+> > > > > > > > > > + *
+> > > > > > > > > > + *      Drivers can set up this property by calling
+> > > > > > > > > > + *      drm_connector_attach_broadcast_rgb_property().
+> > > > > > > > > > + *
+> > > > > > > > > =
 
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
- .../gpu/drm/tests/drm_atomic_state_helper_test.c   | 504 +++++++++++++++++++++
- drivers/gpu/drm/tests/drm_kunit_edid.h             | 160 +++++++
- 2 files changed, 664 insertions(+)
+> > > > > > > > > This is a good time to document this in more detail. Ther=
+e might be two
+> > > > > > > > > different things being affected:
+> > > > > > > > > =
 
-diff --git a/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c b/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
-index 262d974341c0..860e34b00fee 100644
---- a/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
-+++ b/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
-@@ -839,6 +839,56 @@ static void drm_test_check_output_bpc_crtc_mode_not_changed(struct kunit *test)
- 	KUNIT_EXPECT_FALSE(test, crtc_state->mode_changed);
- }
- 
-+/*
-+ * Test that if we have an HDMI connector but a !HDMI display, we always
-+ * output RGB with 8 bpc.
-+ */
-+static void drm_test_check_output_bpc_dvi(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB) |
-+						     BIT(HDMI_COLORSPACE_YUV422) |
-+						     BIT(HDMI_COLORSPACE_YUV444),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_dvi_1080p,
-+				 ARRAY_SIZE(test_edid_dvi_1080p));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_FALSE(test, info->is_hdmi);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 8);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
- /*
-  * Test that when doing a commit which would use RGB 8bpc, the TMDS
-  * clock rate stored in the connector state is equal to the mode clock
-@@ -1031,6 +1081,452 @@ static void drm_test_check_hdmi_funcs_reject_rate(struct kunit *test)
- 	KUNIT_EXPECT_LT(test, ret, 0);
- }
- 
-+/*
-+ * Test that if:
-+ * - We have an HDMI connector supporting RGB only
-+ * - The chosen mode has a TMDS character rate higher than the display
-+ *   supports in RGB/12bpc
-+ * - The chosen mode has a TMDS character rate lower than the display
-+ *   supports in RGB/10bpc.
-+ *
-+ * Then we will pick the latter, and the computed TMDS character rate
-+ * will be equal to 1.25 times the mode pixel clock.
-+ */
-+static void drm_test_check_max_tmds_rate_bpc_fallback(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+	KUNIT_ASSERT_FALSE(test, preferred->flags & DRM_MODE_FLAG_DBLCLK);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_GT(test, rate, info->max_tmds_clock * 1000);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 10, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 10);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.tmds_char_rate, preferred->clock * 1250);
-+}
-+
-+/*
-+ * Test that if:
-+ * - We have an HDMI connector supporting both RGB and YUV422 and up to
-+ *   12 bpc
-+ * - The chosen mode has a TMDS character rate higher than the display
-+ *   supports in RGB/12bpc
-+ * - The chosen mode has a TMDS character rate lower than the display
-+ *   supports in YUV422/12bpc.
-+ *
-+ * Then we will pick the latter, and the computed TMDS character rate
-+ * will be equal to the mode pixel clock.
-+ */
-+static void drm_test_check_max_tmds_rate_format_fallback(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB) |
-+						     BIT(HDMI_COLORSPACE_YUV422) |
-+						     BIT(HDMI_COLORSPACE_YUV444),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+	KUNIT_ASSERT_FALSE(test, preferred->flags & DRM_MODE_FLAG_DBLCLK);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_GT(test, rate, info->max_tmds_clock * 1000);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_YUV422);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 12);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_YUV422);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.tmds_char_rate, preferred->clock * 1000);
-+}
-+
-+/*
-+ * Test that if a driver and screen supports RGB and YUV formats, and we
-+ * try to set the VIC 1 mode, we end up with 8bpc RGB even if we could
-+ * have had a higher bpc.
-+ */
-+static void drm_test_check_output_bpc_format_vic_1(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *mode;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB) |
-+						     BIT(HDMI_COLORSPACE_YUV422) |
-+						     BIT(HDMI_COLORSPACE_YUV444),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	mode = drm_display_mode_from_cea_vic(drm, 1);
-+	KUNIT_ASSERT_NOT_NULL(test, mode);
-+
-+	/*
-+	 * NOTE: We can't use drm_connector_hdmi_compute_mode_clock()
-+	 * here because we're trying to get the rate of an invalid
-+	 * configuration.
-+	 *
-+	 * Thus, we have to calculate the rate by hand.
-+	 */
-+	rate = mode->clock * 1500;
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, mode, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 8);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
-+/*
-+ * Test that if a driver supports only RGB but the screen also supports
-+ * YUV formats, we only end up with an RGB format.
-+ */
-+static void drm_test_check_output_bpc_format_driver_rgb_only(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_yuv_dc_max_200mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	/*
-+	 * We're making sure that YUV422 would be the preferred option
-+	 * here: we're always favouring higher bpc, we can't have RGB
-+	 * because the TMDS character rate exceeds the maximum supported
-+	 * by the display, and YUV422 works for that display.
-+	 *
-+	 * But since the driver only supports RGB, we should fallback to
-+	 * a lower bpc with RGB.
-+	 */
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_GT(test, rate, info->max_tmds_clock * 1000);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_YUV422);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_LT(test, conn_state->hdmi.output_bpc, 12);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
-+/*
-+ * Test that if a screen supports only RGB but the driver also supports
-+ * YUV formats, we only end up with an RGB format.
-+ */
-+static void drm_test_check_output_bpc_format_display_rgb_only(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB) |
-+						     BIT(HDMI_COLORSPACE_YUV422) |
-+						     BIT(HDMI_COLORSPACE_YUV444),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_max_200mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_max_200mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	/*
-+	 * We're making sure that YUV422 would be the preferred option
-+	 * here: we're always favouring higher bpc, we can't have RGB
-+	 * because the TMDS character rate exceeds the maximum supported
-+	 * by the display, and YUV422 works for that display.
-+	 *
-+	 * But since the display only supports RGB, we should fallback to
-+	 * a lower bpc with RGB.
-+	 */
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_GT(test, rate, info->max_tmds_clock * 1000);
-+
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_YUV422);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_LT(test, conn_state->hdmi.output_bpc, 12);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
-+/*
-+ * Test that if a display supports higher bpc but the driver only
-+ * supports 8 bpc, we only end up with 8 bpc even if we could have had a
-+ * higher bpc.
-+ */
-+static void drm_test_check_output_bpc_format_driver_8bpc_only(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB),
-+						     8);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	/*
-+	 * We're making sure that we have headroom on the TMDS character
-+	 * clock to actually use 12bpc.
-+	 */
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 8);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
-+/*
-+ * Test that if a driver supports higher bpc but the display only
-+ * supports 8 bpc, we only end up with 8 bpc even if we could have had a
-+ * higher bpc.
-+ */
-+static void drm_test_check_output_bpc_format_display_8bpc_only(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx *ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	unsigned long long rate;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int ret;
-+
-+	priv = drm_atomic_helper_connector_hdmi_init(test,
-+						     BIT(HDMI_COLORSPACE_RGB) |
-+						     BIT(HDMI_COLORSPACE_YUV422) |
-+						     BIT(HDMI_COLORSPACE_YUV444),
-+						     12);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	conn = &priv->connector;
-+	ret = set_connector_edid(test, conn,
-+				 test_edid_hdmi_1080p_rgb_max_340mhz,
-+				 ARRAY_SIZE(test_edid_hdmi_1080p_rgb_max_340mhz));
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_GT(test, info->max_tmds_clock, 0);
-+
-+	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	/*
-+	 * We're making sure that we have headroom on the TMDS character
-+	 * clock to actually use 12bpc.
-+	 */
-+	rate = drm_connector_hdmi_compute_mode_clock(preferred, 12, HDMI_COLORSPACE_RGB);
-+	KUNIT_ASSERT_LT(test, rate, info->max_tmds_clock * 1000);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_bpc, 8);
-+	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, HDMI_COLORSPACE_RGB);
-+}
-+
- static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
- 	KUNIT_CASE(drm_test_check_broadcast_rgb_auto_cea_mode),
- 	KUNIT_CASE(drm_test_check_broadcast_rgb_auto_cea_mode_vic_1),
-@@ -1041,8 +1537,16 @@ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
- 	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_changed),
- 	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_not_changed),
- 	KUNIT_CASE(drm_test_check_hdmi_funcs_reject_rate),
-+	KUNIT_CASE(drm_test_check_max_tmds_rate_bpc_fallback),
-+	KUNIT_CASE(drm_test_check_max_tmds_rate_format_fallback),
- 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_changed),
- 	KUNIT_CASE(drm_test_check_output_bpc_crtc_mode_not_changed),
-+	KUNIT_CASE(drm_test_check_output_bpc_dvi),
-+	KUNIT_CASE(drm_test_check_output_bpc_format_vic_1),
-+	KUNIT_CASE(drm_test_check_output_bpc_format_display_8bpc_only),
-+	KUNIT_CASE(drm_test_check_output_bpc_format_display_rgb_only),
-+	KUNIT_CASE(drm_test_check_output_bpc_format_driver_8bpc_only),
-+	KUNIT_CASE(drm_test_check_output_bpc_format_driver_rgb_only),
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_8bpc),
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_10bpc),
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_12bpc),
-diff --git a/drivers/gpu/drm/tests/drm_kunit_edid.h b/drivers/gpu/drm/tests/drm_kunit_edid.h
-index 24f3377ef0f0..3e3527c58c31 100644
---- a/drivers/gpu/drm/tests/drm_kunit_edid.h
-+++ b/drivers/gpu/drm/tests/drm_kunit_edid.h
-@@ -1,6 +1,64 @@
- #ifndef DRM_KUNIT_EDID_H_
- #define DRM_KUNIT_EDID_H_
- 
-+/*
-+ * edid-decode (hex):
-+ *
-+ * 00 ff ff ff ff ff ff 00 31 d8 2a 00 00 00 00 00
-+ * 00 21 01 03 81 a0 5a 78 0a 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 01 01 01 01 01 01 01 01 01 01
-+ * 01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c
-+ * 45 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
-+ * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 32
-+ * 46 1e 46 0f 00 0a 20 20 20 20 20 20 00 00 00 10
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ab
-+ *
-+ * ----------------
-+ *
-+ * Block 0, Base EDID:
-+ *   EDID Structure Version & Revision: 1.3
-+ *   Vendor & Product Identification:
-+ *     Manufacturer: LNX
-+ *     Model: 42
-+ *     Made in: 2023
-+ *   Basic Display Parameters & Features:
-+ *     Digital display
-+ *     DFP 1.x compatible TMDS
-+ *     Maximum image size: 160 cm x 90 cm
-+ *     Gamma: 2.20
-+ *     RGB color display
-+ *     First detailed timing is the preferred timing
-+ *   Color Characteristics:
-+ *     Red  : 0.0000, 0.0000
-+ *     Green: 0.0000, 0.0000
-+ *     Blue : 0.0000, 0.0000
-+ *     White: 0.0000, 0.0000
-+ *   Established Timings I & II: none
-+ *   Standard Timings: none
-+ *   Detailed Timing Descriptors:
-+ *     DTD 1:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz (1600 mm x 900 mm)
-+ *                  Hfront   88 Hsync  44 Hback  148 Hpol P
-+ *                  Vfront    4 Vsync   5 Vback   36 Vpol P
-+ *     Display Product Name: 'Test EDID'
-+ *     Display Range Limits:
-+ *       Monitor ranges (GTF): 50-70 Hz V, 30-70 kHz H, max dotclock 150 MHz
-+ *     Dummy Descriptor:
-+ * Checksum: 0xab
-+ */
-+const unsigned char test_edid_dvi_1080p[] = {
-+  0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x2a, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x01, 0x03, 0x81, 0xa0, 0x5a, 0x78,
-+  0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
-+  0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x3a, 0x80, 0x18, 0x71, 0x38,
-+  0x2d, 0x40, 0x58, 0x2c, 0x45, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
-+  0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
-+  0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x32,
-+  0x46, 0x1e, 0x46, 0x0f, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-+  0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xab
-+};
-+
- /*
-  * edid-decode (hex):
-  *
-@@ -103,6 +161,108 @@ const unsigned char test_edid_hdmi_1080p_rgb_max_200mhz[] = {
-   0x00, 0x00, 0x00, 0xd0
- };
- 
-+/*
-+ * edid-decode (hex):
-+ *
-+ * 00 ff ff ff ff ff ff 00 31 d8 2a 00 00 00 00 00
-+ * 00 21 01 03 81 a0 5a 78 02 00 00 00 00 00 00 00
-+ * 00 00 00 20 00 00 01 01 01 01 01 01 01 01 01 01
-+ * 01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c
-+ * 45 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
-+ * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 32
-+ * 46 1e 46 0f 00 0a 20 20 20 20 20 20 00 00 00 10
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 92
-+ *
-+ * 02 03 1b 81 e3 05 00 20 41 10 e2 00 4a 6d 03 0c
-+ * 00 12 34 00 28 20 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d0
-+ *
-+ * ----------------
-+ *
-+ * Block 0, Base EDID:
-+ *   EDID Structure Version & Revision: 1.3
-+ *   Vendor & Product Identification:
-+ *     Manufacturer: LNX
-+ *     Model: 42
-+ *     Made in: 2023
-+ *   Basic Display Parameters & Features:
-+ *     Digital display
-+ *     DFP 1.x compatible TMDS
-+ *     Maximum image size: 160 cm x 90 cm
-+ *     Gamma: 2.20
-+ *     Monochrome or grayscale display
-+ *     First detailed timing is the preferred timing
-+ *   Color Characteristics:
-+ *     Red  : 0.0000, 0.0000
-+ *     Green: 0.0000, 0.0000
-+ *     Blue : 0.0000, 0.0000
-+ *     White: 0.0000, 0.0000
-+ *   Established Timings I & II:
-+ *     DMT 0x04:   640x480    59.940476 Hz   4:3     31.469 kHz     25.175000 MHz
-+ *   Standard Timings: none
-+ *   Detailed Timing Descriptors:
-+ *     DTD 1:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz (1600 mm x 900 mm)
-+ *                  Hfront   88 Hsync  44 Hback  148 Hpol P
-+ *                  Vfront    4 Vsync   5 Vback   36 Vpol P
-+ *     Display Product Name: 'Test EDID'
-+ *     Display Range Limits:
-+ *       Monitor ranges (GTF): 50-70 Hz V, 30-70 kHz H, max dotclock 150 MHz
-+ *     Dummy Descriptor:
-+ *   Extension blocks: 1
-+ * Checksum: 0x92
-+ *
-+ * ----------------
-+ *
-+ * Block 1, CTA-861 Extension Block:
-+ *   Revision: 3
-+ *   Underscans IT Video Formats by default
-+ *   Native detailed modes: 1
-+ *   Colorimetry Data Block:
-+ *     sRGB
-+ *   Video Data Block:
-+ *     VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz
-+ *   Video Capability Data Block:
-+ *     YCbCr quantization: No Data
-+ *     RGB quantization: Selectable (via AVI Q)
-+ *     PT scan behavior: No Data
-+ *     IT scan behavior: Always Underscanned
-+ *     CE scan behavior: Always Underscanned
-+ *   Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
-+ *     Source physical address: 1.2.3.4
-+ *     Maximum TMDS clock: 340 MHz
-+ *     Extended HDMI video details:
-+ * Checksum: 0xd0  Unused space in Extension Block: 100 bytes
-+ */
-+const unsigned char test_edid_hdmi_1080p_rgb_max_340mhz[] = {
-+  0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x2a, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x01, 0x03, 0x81, 0xa0, 0x5a, 0x78,
-+  0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20,
-+  0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
-+  0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x3a, 0x80, 0x18, 0x71, 0x38,
-+  0x2d, 0x40, 0x58, 0x2c, 0x45, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
-+  0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
-+  0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x32,
-+  0x46, 0x00, 0x00, 0xc4, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-+  0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x41, 0x02, 0x03, 0x1b, 0x81,
-+  0xe3, 0x05, 0x00, 0x20, 0x41, 0x10, 0xe2, 0x00, 0x4a, 0x6d, 0x03, 0x0c,
-+  0x00, 0x12, 0x34, 0x00, 0x44, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+  0x00, 0x00, 0x00, 0xd0
-+};
-+
- /*
-  * edid-decode (hex):
-  *
+> > > > > > > > > 1. The signalling (InfoFrame/SDP/...)
+> > > > > > > > > 2. The color pipeline processing
+> > > > > > > > > =
 
--- 
-2.43.0
+> > > > > > > > > All values of Broadcast RGB always affect the color pipel=
+ine processing
+> > > > > > > > > such that a full-range input to the CRTC is converted to =
+either full- or
+> > > > > > > > > limited-range, depending on what the monitor is supposed =
+to accept.
+> > > > > > > > > =
 
+> > > > > > > > > When automatic is selected, does that mean that there is =
+no signalling,
+> > > > > > > > > or that the signalling matches what the monitor is suppos=
+ed to accept
+> > > > > > > > > according to the spec? Also, is this really HDMI specific?
+> > > > > > > > > =
+
+> > > > > > > > > When full or limited is selected and the monitor doesn't =
+support the
+> > > > > > > > > signalling, what happens?
+> > > > > > > > =
+
+> > > > > > > > Forgot to mention: user-space still has no control over RGB=
+ vs YCbCr on
+> > > > > > > > the cable, so is this only affecting RGB? If not, how does =
+it affect
+> > > > > > > > YCbCr?
+> > > > > > > =
+
+> > > > > > > So I dug a bit into both the i915 and vc4 drivers, and it loo=
+ks like if
+> > > > > > > we're using a YCbCr format, i915 will always use a limited ra=
+nge while
+> > > > > > > vc4 will follow the value of the property.
+> > > > > > =
+
+> > > > > > The property is literally called "Broadcast *RGB*".
+> > > > > > That should explain why it's only affecting RGB.
+> > > > > =
+
+> > > > > Right. And the limited range option is called "Limited 16:235" de=
+spite
+> > > > > being usable on bpc > 8 bits. Naming errors occurs, and history h=
+appens
+> > > > > to make names inconsistent too, that's fine and not an argument in
+> > > > > itself.
+> > > > > =
+
+> > > > > > Full range YCbCr is a much rarer beast so we've never bothered
+> > > > > > to enable it.
+> > > > > =
+
+> > > > > vc4 supports it.
+> > > > =
+
+> > > > Someone implemented it incorrectly then.
+> > > =
+
+> > > Incorrectly according to what documentation / specification? I'm sorr=
+y,
+> > > but I find it super ironic that i915 gets to do its own thing, not
+> > > document any of it, and when people try to clean things up they get t=
+old
+> > > that we got it all wrong.
+> > =
+
+> > FWIW, this was an i915 property and if another driver uses the same
+> > property name it must have the same behavior. Yes, it isn't standardized
+> > and yes, it's not documented (hence this effort here) but it's still on
+> > vc4 to make the property compatible.
+> =
+
+> How is it not compatible? It's a superset of what i915 provides, but
+> it's strictly compatible with it.
+
+No it is not. Eg. what happens if you set the thing to full range for
+RGB (which you must on many broken monitors), and then the kernel
+automagically switches to YCbCr (for whatever reason) but the monitor
+doesn't support full range YCbCr? Answer: you get crap output.
+
+> =
+
+> I would argue that i915 is the broken one since userspace could force a
+> full range output, but since the driver takes the YUV vs RGB decision
+> itself and only supports limited range for YUV, the driver would
+> effectively ignore that user-space property, without the user-space
+> being able to tell it was ignored in the first place.
+> =
+
+> > Trying to make the property handle YCbCr is very much in the "let's try
+> > to fix the property" territory that I want to avoid, so I'm in favor of
+> > adjusting vc4.
+> =
+
+> Breaking the ABI in the process. For something that is explicitly
+> supported by the spec, the driver, and the hardware. On a property that
+> never said it wasn't meant to be used that way, and with semantics based
+> on a driver that never provided a way to check those restrictions in the
+> first place.
+> =
+
+> And it's not like i915 is going to use that code anyway.
+> =
+
+> Maxime
+
+
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
