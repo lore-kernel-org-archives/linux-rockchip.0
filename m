@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025E8C4829E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 18:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93300C48BC1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Feb 2024 18:53:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qwTJP1OZIZRehI//REWThmoIK68KybQgNVW6EQy6CCA=; b=Z5cs6Ik2MOWbAA
-	5z15T2hIeM+I3eaKuqCE2i6c2hF4cGFN9ufkWTGa9jKweX5Ktad4JGOToliyVGYMqMa7c4D3C6Nhi
-	3hHZ9i6CkexUUYPk4GeFrw4zfKArNG+mhap6RlaXtNGDXzBVA1XrWTMyY7PcyrCKOn7RMKlroaMBj
-	lGyB6a3PtAPz6hQmyvKJ6eb8w8gcEUn+BwNIhDmJR5/Oxmz6AgctHSEJ2Y4r4IdSCdBH5LI00gqna
-	Kaa6eoL9g6g1bee9d48mMYfMPn7JFOKl3TLoOngdyOODRj0FVH9dr0pzDB0LnHpGBAnFKDoAgcD8Q
-	U8IioPVNu30t4ABXTssw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XRRSC/dn5c9GP3ycNzBTIdIUlKzqpHl8Nt4KMlVa9D0=; b=QorG1ZaAyaEClK
+	XQYTYu9v0XDgq/IpBasurnXF7zKyDdBLQTZSTEbLePOizwmKLm2+xX1NTkjCn6O9hGC+msgp9LUN5
+	QwuIb4sHlgF9+q2D8IIWmf3EIN3GzO3caMdwJ2QW/rSru1GQFKQ0acDtT8BXzi2PB4z8waKP6Bmt1
+	okvakhm8zo/gawhVpahmpho2YR+f/hWoolnautUKzEU2iklzsB1AIUPSBg88xwBn69ULsYf26kIqY
+	GvclPrLbZ2JxHfzs+61T4KOuDSHjCmeOfEqDipcOepQTrjzsBQpDGa15wE/uAAdRir11UYXShpjhz
+	BrnDtpEX3EO2MDeqkH/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZbQV-00000006gnF-45Q0;
-	Mon, 12 Feb 2024 18:53:11 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rZbQa-00000006gp4-2dC8;
+	Mon, 12 Feb 2024 18:53:16 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZbQS-00000006glA-0ZSe;
-	Mon, 12 Feb 2024 18:53:09 +0000
+	id 1rZbQT-00000006glG-15s1;
+	Mon, 12 Feb 2024 18:53:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1707763986;
-	bh=7nBNtyOe9B7di3tlfXkDPiWXRmeY0kYi18klzwAbx7M=;
-	h=From:Subject:Date:To:Cc:From;
-	b=pqnR+JiLiFvgv1Kduw36CAl7PtOEjrU2Qg1ijPxf8BpEuVsk6/mFsV6Dnc/y6xEzv
-	 z2DUMWYek26avU3H837Uh2E89fLMSxkcgn0Z+w5cZWYLKTJYNFpLUPOah44HM4fZBs
-	 R7RcYFqdQQpvOnptNofsr5L16RVzML/J183dPhyRQoQPOrCcMDxB5po8iT4KCrraMz
-	 +NoRMIelwcoPGJl35Q3fJFb7m9raQRu/xsgG+6oKJ2ANtsMXIKOBLAiE00FIueZRPj
-	 Ha8EOtzYqHDp9LD1/lI1YufgREeYc6UUaq599MI0gD6I3BDUZz9Y1M3TKWBANXSS4D
-	 9xVuSSR2LrZSw==
+	s=mail; t=1707763987;
+	bh=L1Xv0upbYC1NK7GU2DwkbRMikhm9rpTORFzsKNFZn/M=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=YdZDBNMU/N5F7/Ba7DqZFY+ypriwyV4u2Dvqc3O8ZsLS8NF6lbMNkS05VkwsOqRWC
+	 iEaRgvEemdMbAOXuHgN+qDW8t5IlMwxhjWaQyV8xJna8vqQ6wy7YEJufvLvuAU4jUT
+	 yRkG9d3NxGo3K6R0YoXq+BbJF8JUQP12z9WR4JFxJQYqukUZ4r4gGTBpnvTow2S76n
+	 ZJ6lSlQiVjjf8PUsyMsNXGN49st6DDILGF3Xv3LjGp5elqQ1q6SiGaLXH8svwBQBFC
+	 9677Dx/gQffmrAi10ru9OlaUnwT1QwFiFGKWnOy3acgE+n58T48rpcWr9IrdJ/b4qo
+	 7aq3jC5tUwaqQ==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 977C63782059;
-	Mon, 12 Feb 2024 18:53:06 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B67FE3782075;
+	Mon, 12 Feb 2024 18:53:07 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v3 0/2] Add support for RK3588 HDMI/eDP Combo PHY
-Date: Mon, 12 Feb 2024 20:52:28 +0200
-Message-Id: <20240212-phy-hdptx-v3-0-2cde680cd024@collabora.com>
+Date: Mon, 12 Feb 2024 20:52:29 +0200
+Subject: [PATCH v3 1/2] dt-bindings: phy: Add Rockchip HDMI/eDP Combo PHY
+ schema
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAOxoymUC/6WPQQ6CMBBFr2K6dshMqVJceQ/jYijFNkFKSkM0h
- Ltb3GjcunzJn/f/LGKy0dtJnHaLiHb2kw9DhnK/E8bxcLPg28xColRIUsPonuDaMT1Ac625OWJ
- L2oqcH6Pt/OPtulwzdzHcIblo+ctANdWlxmNBWKIkBQQm+il5Hgrjg+E+WT6b0PfchMiFCffN7
- XIkxOd75kxbwx++bdwsPxKJh6+3ZgkIXNEBNSmDqvq9Xtf1BbKtoQc3AQAA
+Message-Id: <20240212-phy-hdptx-v3-1-2cde680cd024@collabora.com>
+References: <20240212-phy-hdptx-v3-0-2cde680cd024@collabora.com>
+In-Reply-To: <20240212-phy-hdptx-v3-0-2cde680cd024@collabora.com>
 To: Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -67,8 +66,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.13-dev-a684c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240212_105308_336970_D4E9B264 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20240212_105309_463347_F85EC881 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,53 +84,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add driver and bindings to add initial support the Rockchip HDMI/eDP TX
-Combo PHY found on RK3588 SoC.
+Add dt-binding schema for the HDMI/eDP Transmitter Combo PHY found on
+Rockchip RK3588 SoC.
 
-The PHY is based on a Samsung IP block and supports HDMI 2.1 TMDS, FRL
-and eDP links.
-
-Please note that currently only the TMDS related functionality has been
-implemented.  This has been tested on Radxa ROCK 5B and Rockchip EVB1
-boards.
-
-Changes in v3:
-- Collected R-b & T-b tags from Heiko
-- Converted all *_REG() args to lowercase (Vinod)
-- Dropped unnecessary register read/write wrappers (Vinod)
-- Added rate overflow check in hdptx_phy_clk_pll_calc() (Luis)
-- Link to v2:
-  https://lore.kernel.org/r/20240205-phy-hdptx-v2-0-a7150814c047@collabora.com
-
-Changes in v2:
-- Rebased series onto next-20240129
-- Removed patch 'dt-bindings: soc: rockchip: Add rk3588 hdptxphy syscon'
-  already applied by Heiko
-- For consistency with SoC TRM, replaced all references to DP with eDP
-- Updated PHY schema per Krzysztof's review; also collected his R-b tag
-- Dropped FRL, EARC and 10-bit color depth functionality until the HDMI
-  configuration options become available in PHY API
-- Squashed lots of regmap_write operations via regmap_multi_reg_write
-  (Sebastian)
-- Introduced parametrized {CMN|SB|LNTOP|LANE}_REG() macros to replace
-  the long list of register defines
-- Optimized handling of the config arrays by using ARRAY_SIZE() (Sascha)
-- Link to v1:
-  https://lore.kernel.org/r/20240119193806.1030214-1-cristian.ciocaltea@collabora.com
-
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Cristian Ciocaltea (2):
-      dt-bindings: phy: Add Rockchip HDMI/eDP Combo PHY schema
-      phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver
+ .../bindings/phy/rockchip,rk3588-hdptx-phy.yaml    | 91 ++++++++++++++++++++++
+ 1 file changed, 91 insertions(+)
 
- .../bindings/phy/rockchip,rk3588-hdptx-phy.yaml    |   91 ++
- drivers/phy/rockchip/Kconfig                       |    8 +
- drivers/phy/rockchip/Makefile                      |    1 +
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c  | 1028 ++++++++++++++++++++
- 4 files changed, 1128 insertions(+)
----
-base-commit: 596764183be8ebb13352b281a442a1f1151c9b06
-change-id: 20240128-phy-hdptx-8a98ab60d18e
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml
+new file mode 100644
+index 000000000000..54e822c715f3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-hdptx-phy.yaml
+@@ -0,0 +1,91 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/rockchip,rk3588-hdptx-phy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoC HDMI/eDP Transmitter Combo PHY
++
++maintainers:
++  - Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3588-hdptx-phy
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Reference clock
++      - description: APB clock
++
++  clock-names:
++    items:
++      - const: ref
++      - const: apb
++
++  "#phy-cells":
++    const: 0
++
++  resets:
++    items:
++      - description: PHY reset line
++      - description: APB reset line
++      - description: INIT reset line
++      - description: CMN reset line
++      - description: LANE reset line
++      - description: ROPLL reset line
++      - description: LCPLL reset line
++
++  reset-names:
++    items:
++      - const: phy
++      - const: apb
++      - const: init
++      - const: cmn
++      - const: lane
++      - const: ropll
++      - const: lcpll
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Some PHY related data is accessed through GRF regs.
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - "#phy-cells"
++  - resets
++  - reset-names
++  - rockchip,grf
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
++
++    soc {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      phy@fed60000 {
++        compatible = "rockchip,rk3588-hdptx-phy";
++        reg = <0x0 0xfed60000 0x0 0x2000>;
++        clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX0>;
++        clock-names = "ref", "apb";
++        #phy-cells = <0>;
++        resets = <&cru SRST_HDPTX0>, <&cru SRST_P_HDPTX0>,
++                 <&cru SRST_HDPTX0_INIT>, <&cru SRST_HDPTX0_CMN>,
++                 <&cru SRST_HDPTX0_LANE>, <&cru SRST_HDPTX0_ROPLL>,
++                 <&cru SRST_HDPTX0_LCPLL>;
++        reset-names = "phy", "apb", "init", "cmn", "lane", "ropll", "lcpll";
++        rockchip,grf = <&hdptxphy_grf>;
++      };
++    };
+
+-- 
+2.43.0
 
 
 _______________________________________________
