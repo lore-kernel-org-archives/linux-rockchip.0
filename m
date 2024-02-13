@@ -4,90 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E8BC4829A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 08:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F826C4829A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 11:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jqxhe68nY3dCd4TSj7i3cicakoLD8kWS5A56ETHNE7I=; b=mQ/zD1ei3M39rS
-	4rj7a5uO31UwCQSAj+iOLFgAB5oCVO0CYediC2sMMcY/rifVvz66Pv8tgylXaW44SbtogvEC9FyAv
-	FMbbKReWggm8Ea/LxuLGY/FpDqnkOHKQ8OFrBHrOu4VYlVZxJo9CDbcsu8ic4WYxQZaHMEOq4wt3T
-	4E5t1uZQcI/aYDzzEeh0cBKC7Z0ao0e3O1Ktj1blQ3R0XfW4Uy57s+9iiyGogCL6DrC0AznZgHcp4
-	EJduXOsFM7UGgFmBzkP2bLhYg2Ey8hle+7n3DhLsZU56IpSRN5Og7o0Pwf6wN7RIHaqLqnzmS3Mp3
-	94enrYMDJ1J9nx0ahKrw==;
+	List-Owner; bh=qgiwCckUn8ZvRYxatLOohOq6/VSnzKrJZvc6R/qI1bw=; b=B4pUDc2yLZt8KS
+	J0LpRTEuLy1gcYBdiGwArEimh5VKFEvfENLkE6+z9d9mOqAuyrhnHJG/pOggMCRgWbLTbXcSsAlgy
+	fzh4HikJoM9CQq3GZkeZ3X009huzmOGUqM4qOHZrN295syLZqqa9d78sgzncONFVMrIvPRwuacweT
+	nXX9N54KXFVhx52G9uIyM00/7SAnrE4Dp844AyB3nApt3toYdyXatF9ABBRZ/NxLjI8pnxLMR9CLq
+	Sh1nxpjXFOYD1h9aGkpp1YawvtEccMmE5WKxvCUyQN1ASWEQYJAs3+QLjTx29j65NOXwOmvX9+jOj
+	IUQEYRQA+NYZZBz6AFfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZoJo-00000008SE1-3eL6;
-	Tue, 13 Feb 2024 08:39:08 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1rZrJj-000000094mI-1lnf;
+	Tue, 13 Feb 2024 11:51:15 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZoJl-00000008SDa-2Qwn;
-	Tue, 13 Feb 2024 08:39:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1707813545; x=1739349545;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=EW4hyg6ywuwUU3ETBIP6P9hAzw5rF+JafXM/qqClrws=;
-  b=Nq+FAIFGZ+vbGpaspxZZQWfqyNugROV6PtXFRLG/ecZM05I1/hnl5Pch
-   1RfZ+UCB4q1eY0D1957NvXPYbXm1dN0/NHh1y3Na4VTGMVkqeZ4GUQSNQ
-   FzuqXLKQ+CmnNYP2uFwgegqjOUA1fH/lfeM38NOhD0qF92noIQkCoigF8
-   28JL7YE2j7XLam03dRHI4NiiDeWnBPpAq5j3bOjFZ/GHAQuTkzs0ucVTT
-   IayjMpdrHnakqd9B6+uKfNjOLjOvrVsK7KWA/U/Jt1jBfJbAxL5oUxWnW
-   03GgYBbZTd3mldytNV4biVsnNmBs4ohpCeBeqKIsUhk2qGofs3scxjyxR
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="5629259"
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="5629259"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Feb 2024 00:39:04 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="826052613"
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="826052613"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
-  by orsmga001.jf.intel.com with SMTP; 13 Feb 2024 00:38:57 -0800
-Received: by stinkbox (sSMTP sendmail emulation); Tue, 13 Feb 2024 10:38:56 +0200
-Date: Tue, 13 Feb 2024 10:38:56 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Sebastian Wick <sebastian.wick@redhat.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
-	Emma Anholt <emma@anholt.net>, Jonathan Corbet <corbet@lwn.net>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Subject: Re: Re: Re: Re: Re: Re: [PATCH v5 08/44] drm/connector: hdmi: Add
- Broadcast RGB property
-Message-ID: <ZcsqoPCJDjA5PJUF@intel.com>
-References: <20240115143720.GA160656@toolbox>
- <73peztbeeikb3fg6coxu3punxllgtyrmgco34tnxkojtsjbr3s@26bud3sjbcez>
- <Zb0M_2093UwPXK8y@intel.com>
- <hez2m57ogqx3yyqk45tzdkvxvhrbdepgm244i4m2aty2xhf5b5@acqgvmxhmmvr>
- <Zb0aYAapkxQ2kopt@intel.com>
- <zml6j27skvjmbrfyz7agy5waxajv4p4asbemeexelm3wuv4o7j@xkd2wvnxhbuc>
- <20240209203435.GB996172@toolbox>
- <ahfl6f72lpgpsbnrbgvbsh4db4npr2hh36kua2c6krh544hv5r@dndw4hz2mu2g>
- <Zco-DQaXqae7B1jt@intel.com>
- <yx2t7xltxxgsngdsxamsfq6y7dze3wzegxcqwmsb5yrxen73x6@u3vilqhpci4w>
+	id 1rZrJg-000000094lA-2iaS
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Feb 2024 11:51:13 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-40fb3b5893eso33534705e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Feb 2024 03:51:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1707825070; x=1708429870; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=KCJUUo4NY8H1iJowVwWL5uTUekQPIffQFSEsxY0BDG8=;
+        b=OOS4fR/53sNUo5BqsfElusqDZ1deSnrfLu5yW7D6pB7L4ObIZCldmQATjkjjKrmyFy
+         3RPGRb7JNo+kqRZjQ3/aT9jvVyLP6veP1iWuAhIKIPA5Usof1dtbqCnQcOY2Udq24UGv
+         +x03+xomyGcfv2Wh+I90QUX10fudU7PAiOTc1AfEpTr+6sdEmYnMZHoi5GkDdLaDeYC9
+         JBa8HD3kJeTH6YFSQxeCToqZzyk8POQLrFei4Mv2WRgvyvFVZzF3ocnpsbQ8EvbtAv1Q
+         emRO3S5fKADHk4KfFFU0ZFNPFJ8Cc6J02jpPK0H7Nrodh1fU/if2oGdWtAqpZflVp3Oy
+         YjqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1707825070; x=1708429870;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KCJUUo4NY8H1iJowVwWL5uTUekQPIffQFSEsxY0BDG8=;
+        b=jo9K0o1G8/WYcXa5DK7/LRkXuGsaHIWr9aIo37LWCWTaQHfmy72LM5vE1LHrC7CRGX
+         dbsfz2jpVjzJmOCLnujfDj0Cr4psYwzIdd1MsNpIJvZI1lcrkJSwLyfBwCQkSVFwrVHv
+         4xv4CCPJF9Icw1DHMYIeI/tCY59g4BFXpjlCFqe/hMMJHa3ecoIKBtT3bK6MolIyE/OP
+         PFx4iu/AFCfhcVj6ZxiJ90Z62+W9AnVHz1QOwnHRg6jbFj2nKxflNLaXyt2wj8ifMfm8
+         J4NBrGjeehYxhxa07ao7q4AQS+GvX7hC4K+4kJuBuzs7AkXPu9pWcFd9gFoy5wGnpQMM
+         oEPw==
+X-Forwarded-Encrypted: i=1; AJvYcCW5FuRFzHVvGPEbJnIQObhGcyMDI5vgsFVY6nFIEEDxFxlWgUmcJ86bCvo9FZdlogBu1iQLtfTvye71rlX+MtyCCamG6ru+vi+V4Xf5CRGwqpur
+X-Gm-Message-State: AOJu0YyqSiTc0UAS+5Fvo8oJbQe5ahvq8SoONzFxIVAMwTv2QqSrdkHE
+	S5YovRr5XNRTmioq6gkYk3wKWdSFgHZBtZrufplCS/QkqWk97fTuGynK4CGb/W4=
+X-Google-Smtp-Source: AGHT+IEnrKObr5hq2yICYsBQYVK4BBhB9K7XzXqG4lCfv3DJwJUjXYEQmv8obG0ucBf+pSFKQNJy5g==
+X-Received: by 2002:a5d:53c2:0:b0:33b:876f:b7d8 with SMTP id a2-20020a5d53c2000000b0033b876fb7d8mr2697559wrw.42.1707825070298;
+        Tue, 13 Feb 2024 03:51:10 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVJ4/81GGNGYeGVI0uJVMAHZzGFpiB2/ulmLhkks6BholmwE53sv1Elt5CYUNaSK+3eSOKAG8PobsfaiJWPDQBh4lmZGnBgJC/g2WyvTTenDNuoPUvRLbD81KfoLUnudAN0M3BrX4h1kFYyPYGHojz9BKFliqy7h0qFN4nPj6doeao1ZHjwFAXGAyfzDFPdJne52JagoGJfr6KrwcJu8QsOWm79BQWRGR05cSvk/oOVSUM6fSIgVh0nQE4sOaJ9RgS5H7/a/bFv83IKYxQI42wOe6WN1t1QjKfRnEbN9F8FAmZEune27N39cRsJYkTE10FS8fp/uBbtYQ1nvbR0jg7270KiTcrFPTQ2DUvNGs3YgTsOwNdiEbuvo5ALZrwO8vrJ24RrX3XpcZuuoqCFNhSsOWyeEtKlRKUqUNXXZYEZ2T8JbUQx/q4x74W6+J/s6neGI1NfR2OL2xIAKxfEziWzDPCe/a8Knsc6hLYAAzLM6rfTVW0+yMmDDzttaBiWqwx7A0CefrISR1vFMAQd6PntCBZazYvpR8JeSl5t6lGGeKIWFQrDLjm/ajTXq2qGbXLBjaYU19Y9+z3iGVaAyOMJUpy0IrsbHve6aKRM0508
+Received: from [192.168.1.20] ([178.197.223.6])
+        by smtp.gmail.com with ESMTPSA id ce9-20020a5d5e09000000b0033cddadde6esm1090631wrb.80.2024.02.13.03.51.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Feb 2024 03:51:09 -0800 (PST)
+Message-ID: <d39c2186-026f-4326-b666-5a90422a5d68@linaro.org>
+Date: Tue, 13 Feb 2024 12:51:06 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <yx2t7xltxxgsngdsxamsfq6y7dze3wzegxcqwmsb5yrxen73x6@u3vilqhpci4w>
-X-Patchwork-Hint: comment
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/7] dt-bindings: display: st7703: Add Powkiddy RGB10MAX3
+ panel
+To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org,
+ quic_jesszhan@quicinc.com, neil.armstrong@linaro.org, megi@xff.cz,
+ kernel@puri.sm, agx@sigxcpu.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20240212184950.52210-1-macroalpha82@gmail.com>
+ <20240212184950.52210-2-macroalpha82@gmail.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTRLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+wsGUBBMBCgA+FiEE
+ m9B+DgxR+NWWd7dUG5NDfTtBYpsFAmI+BxMCGwMFCRRfreEFCwkIBwIGFQoJCAsCBBYCAwEC
+ HgECF4AACgkQG5NDfTtBYptgbhAAjAGunRoOTduBeC7V6GGOQMYIT5n3OuDSzG1oZyM4kyvO
+ XeodvvYv49/ng473E8ZFhXfrre+c1olbr1A8pnz9vKVQs9JGVa6wwr/6ddH7/yvcaCQnHRPK
+ mnXyP2BViBlyDWQ71UC3N12YCoHE2cVmfrn4JeyK/gHCvcW3hUW4i5rMd5M5WZAeiJj3rvYh
+ v8WMKDJOtZFXxwaYGbvFJNDdvdTHc2x2fGaWwmXMJn2xs1ZyFAeHQvrp49mS6PBQZzcx0XL5
+ cU9ZjhzOZDn6Apv45/C/lUJvPc3lo/pr5cmlOvPq1AsP6/xRXsEFX/SdvdxJ8w9KtGaxdJuf
+ rpzLQ8Ht+H0lY2On1duYhmro8WglOypHy+TusYrDEry2qDNlc/bApQKtd9uqyDZ+rx8bGxyY
+ qBP6bvsQx5YACI4p8R0J43tSqWwJTP/R5oPRQW2O1Ye1DEcdeyzZfifrQz58aoZrVQq+innR
+ aDwu8qDB5UgmMQ7cjDSeAQABdghq7pqrA4P8lkA7qTG+aw8Z21OoAyZdUNm8NWJoQy8m4nUP
+ gmeeQPRc0vjp5JkYPgTqwf08cluqO6vQuYL2YmwVBIbO7cE7LNGkPDA3RYMu+zPY9UUi/ln5
+ dcKuEStFZ5eqVyqVoZ9eu3RTCGIXAHe1NcfcMT9HT0DPp3+ieTxFx6RjY3kYTGLOwU0EVUNc
+ NAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDyfv4dEKuCqeh0
+ hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOGmLPRIBkXHqJY
+ oHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6H79LIsiYqf92
+ H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4argt4e+jum3Nwt
+ yupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8nO2N5OsFJOcd
+ 5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFFknCmLpowhct9
+ 5ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz7fMkcaZU+ok/
+ +HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgNyxBZepj41oVq
+ FPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMip+12jgw4mGjy
+ 5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYCGwwWIQSb0H4O
+ DFH41ZZ3t1Qbk0N9O0FimwUCYDzvagUJFF+UtgAKCRAbk0N9O0Fim9JzD/0auoGtUu4mgnna
+ oEEpQEOjgT7l9TVuO3Qa/SeH+E0m55y5Fjpp6ZToc481za3xAcxK/BtIX5Wn1mQ6+szfrJQ6
+ 59y2io437BeuWIRjQniSxHz1kgtFECiV30yHRgOoQlzUea7FgsnuWdstgfWi6LxstswEzxLZ
+ Sj1EqpXYZE4uLjh6dW292sO+j4LEqPYr53hyV4I2LPmptPE9Rb9yCTAbSUlzgjiyyjuXhcwM
+ qf3lzsm02y7Ooq+ERVKiJzlvLd9tSe4jRx6Z6LMXhB21fa5DGs/tHAcUF35hSJrvMJzPT/+u
+ /oVmYDFZkbLlqs2XpWaVCo2jv8+iHxZZ9FL7F6AHFzqEFdqGnJQqmEApiRqH6b4jRBOgJ+cY
+ qc+rJggwMQcJL9F+oDm3wX47nr6jIsEB5ZftdybIzpMZ5V9v45lUwmdnMrSzZVgC4jRGXzsU
+ EViBQt2CopXtHtYfPAO5nAkIvKSNp3jmGxZw4aTc5xoAZBLo0OV+Ezo71pg3AYvq0a3/oGRG
+ KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
+ fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240212184950.52210-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_003905_726416_EC6314DE 
-X-CRM114-Status: GOOD (  47.12  )
+X-CRM114-CacheID: sfid-20240213_035112_725130_7BCEBD5B 
+X-CRM114-Status: UNSURE (   6.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,170 +143,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 12, 2024 at 05:53:48PM +0100, Maxime Ripard wrote:
-> On Mon, Feb 12, 2024 at 05:49:33PM +0200, Ville Syrj=E4l=E4 wrote:
-> > On Mon, Feb 12, 2024 at 11:01:07AM +0100, Maxime Ripard wrote:
-> > > On Fri, Feb 09, 2024 at 09:34:35PM +0100, Sebastian Wick wrote:
-> > > > On Mon, Feb 05, 2024 at 10:39:38AM +0100, Maxime Ripard wrote:
-> > > > > On Fri, Feb 02, 2024 at 06:37:52PM +0200, Ville Syrj=E4l=E4 wrote:
-> > > > > > On Fri, Feb 02, 2024 at 04:59:30PM +0100, Maxime Ripard wrote:
-> > > > > > > On Fri, Feb 02, 2024 at 05:40:47PM +0200, Ville Syrj=E4l=E4 w=
-rote:
-> > > > > > > > On Fri, Feb 02, 2024 at 02:01:39PM +0100, Maxime Ripard wro=
-te:
-> > > > > > > > > Hi,
-> > > > > > > > > =
+On 12/02/2024 19:49, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> The RGB10MAX3 panel is a panel specific to the Powkiddy RGB10MAX3
+> handheld device that measures 5 inches diagonally with a resolution
+> of 720x1280.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-> > > > > > > > > On Mon, Jan 15, 2024 at 03:37:20PM +0100, Sebastian Wick =
-wrote:
-> > > > > > > > > > > >  /**
-> > > > > > > > > > > >   * DOC: HDMI connector properties
-> > > > > > > > > > > >   *
-> > > > > > > > > > > > + * Broadcast RGB
-> > > > > > > > > > > > + *      Indicates the RGB Quantization Range (Full=
- vs Limited) used.
-> > > > > > > > > > > > + *      Infoframes will be generated according to =
-that value.
-> > > > > > > > > > > > + *
-> > > > > > > > > > > > + *      The value of this property can be one of t=
-he following:
-> > > > > > > > > > > > + *
-> > > > > > > > > > > > + *      Automatic:
-> > > > > > > > > > > > + *              RGB Range is selected automaticall=
-y based on the mode
-> > > > > > > > > > > > + *              according to the HDMI specificatio=
-ns.
-> > > > > > > > > > > > + *
-> > > > > > > > > > > > + *      Full:
-> > > > > > > > > > > > + *              Full RGB Range is forced.
-> > > > > > > > > > > > + *
-> > > > > > > > > > > > + *      Limited 16:235:
-> > > > > > > > > > > > + *              Limited RGB Range is forced. Unlik=
-e the name suggests,
-> > > > > > > > > > > > + *              this works for any number of bits-=
-per-component.
-> > > > > > > > > > > > + *
-> > > > > > > > > > > > + *      Drivers can set up this property by calling
-> > > > > > > > > > > > + *      drm_connector_attach_broadcast_rgb_propert=
-y().
-> > > > > > > > > > > > + *
-> > > > > > > > > > > =
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-> > > > > > > > > > > This is a good time to document this in more detail. =
-There might be two
-> > > > > > > > > > > different things being affected:
-> > > > > > > > > > > =
+Best regards,
+Krzysztof
 
-> > > > > > > > > > > 1. The signalling (InfoFrame/SDP/...)
-> > > > > > > > > > > 2. The color pipeline processing
-> > > > > > > > > > > =
-
-> > > > > > > > > > > All values of Broadcast RGB always affect the color p=
-ipeline processing
-> > > > > > > > > > > such that a full-range input to the CRTC is converted=
- to either full- or
-> > > > > > > > > > > limited-range, depending on what the monitor is suppo=
-sed to accept.
-> > > > > > > > > > > =
-
-> > > > > > > > > > > When automatic is selected, does that mean that there=
- is no signalling,
-> > > > > > > > > > > or that the signalling matches what the monitor is su=
-pposed to accept
-> > > > > > > > > > > according to the spec? Also, is this really HDMI spec=
-ific?
-> > > > > > > > > > > =
-
-> > > > > > > > > > > When full or limited is selected and the monitor does=
-n't support the
-> > > > > > > > > > > signalling, what happens?
-> > > > > > > > > > =
-
-> > > > > > > > > > Forgot to mention: user-space still has no control over=
- RGB vs YCbCr on
-> > > > > > > > > > the cable, so is this only affecting RGB? If not, how d=
-oes it affect
-> > > > > > > > > > YCbCr?
-> > > > > > > > > =
-
-> > > > > > > > > So I dug a bit into both the i915 and vc4 drivers, and it=
- looks like if
-> > > > > > > > > we're using a YCbCr format, i915 will always use a limite=
-d range while
-> > > > > > > > > vc4 will follow the value of the property.
-> > > > > > > > =
-
-> > > > > > > > The property is literally called "Broadcast *RGB*".
-> > > > > > > > That should explain why it's only affecting RGB.
-> > > > > > > =
-
-> > > > > > > Right. And the limited range option is called "Limited 16:235=
-" despite
-> > > > > > > being usable on bpc > 8 bits. Naming errors occurs, and histo=
-ry happens
-> > > > > > > to make names inconsistent too, that's fine and not an argume=
-nt in
-> > > > > > > itself.
-> > > > > > > =
-
-> > > > > > > > Full range YCbCr is a much rarer beast so we've never bothe=
-red
-> > > > > > > > to enable it.
-> > > > > > > =
-
-> > > > > > > vc4 supports it.
-> > > > > > =
-
-> > > > > > Someone implemented it incorrectly then.
-> > > > > =
-
-> > > > > Incorrectly according to what documentation / specification? I'm =
-sorry,
-> > > > > but I find it super ironic that i915 gets to do its own thing, not
-> > > > > document any of it, and when people try to clean things up they g=
-et told
-> > > > > that we got it all wrong.
-> > > > =
-
-> > > > FWIW, this was an i915 property and if another driver uses the same
-> > > > property name it must have the same behavior. Yes, it isn't standar=
-dized
-> > > > and yes, it's not documented (hence this effort here) but it's stil=
-l on
-> > > > vc4 to make the property compatible.
-> > > =
-
-> > > How is it not compatible? It's a superset of what i915 provides, but
-> > > it's strictly compatible with it.
-> > =
-
-> > No it is not.
-> =
-
-> The property is compatible with i915 interpretation of it, whether you
-> like it or not. And that's what Sebastian was referring to.
-> =
-
-> > Eg. what happens if you set the thing to full range for RGB (which you
-> > must on many broken monitors), and then the kernel automagically
-> > switches to YCbCr (for whatever reason) but the monitor doesn't
-> > support full range YCbCr? Answer: you get crap output.
-> =
-
-> And that part is just moving goalposts.
-
-No. Allowing users to get correct colors with broken displays
-is the sole reason why this property even exists.
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
