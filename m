@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74179C4829A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 17:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DBE1C4829A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 18:55:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w3EbCyquSaRpDboW4FOI3ttQaKNUwpiHyzLmTn7G3pI=; b=Zka6hypG7eOg3c
-	1ytZ6FvBHBqLn8FzkKSGb0/dpJmN4B8mmDNQtHS2PwOs2YL9fNu7GJTHOb6WE6aZSuTHUeKCz+vsj
-	J4Vuht9KTuIev5Ya7PWMrRnjWO3cKKHtTvCYYbmRS78lOUVHd3Jf10asER2w5vTypIzQ6ossZjamR
-	vt38tGWJcP8VRtHVa0tGQBr948hXwVMQMa3sjXi7VYOYL9YUbAPKSwDb+E75vD33xw098uqB/dx3Z
-	4L7SwG2d6CZXkAavSGhux3C5+6KIv2smOTapC5TZVeVtJeZRUhsd8vRxEyny4pRtfU4ZUu7Ph+Xac
-	kZVbQWpxRlvkL1fz+ygA==;
+	List-Owner; bh=JO3wYAT3CKyRlPwrB+5elSic4Vm627XWe46aTp3g1U0=; b=MQw2FYO5BJky0p
+	68eWOO7W5JD2Tbn0KdLfmgbdXCM6x6Kb8rgIG1TZQ7w1r11EtwE9pQSotSBgAZ1WNlTFzk62mYOi7
+	g2Xrjfa7467dwN2uBUVSzCDbScwZkvwo1HV1vyPhytUD8TKhGv8wWyLougz3dSNbv6/AMAiaiZU1l
+	J3u+srKjHCVnLIM6hR4JG2l+B0+H2QfqRAimIB2LK0fo20UTGA1dnWCjI0YzP4YCQX2TFQtXnlqs+
+	ZRQ+QJUMmKy9RErcJdTt/dC6JsejG9s6a2gDUYvrCQggYWUUEuwJQTOktf80fj/8eQ8TH7YudXw+Q
+	S2pZi4IPwez/n2jQOmfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZwYH-0000000A89q-3S8d;
-	Tue, 13 Feb 2024 17:26:37 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZwYF-0000000A88C-19sy
+	id 1rZxwP-0000000AO4a-34Zp;
+	Tue, 13 Feb 2024 18:55:37 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rZxwN-0000000AO3x-1ohV
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Feb 2024 17:26:36 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 724E71FB;
-	Tue, 13 Feb 2024 09:27:15 -0800 (PST)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 155943F5A1;
-	Tue, 13 Feb 2024 09:26:27 -0800 (PST)
-Message-ID: <b008bd2d-a189-481f-917d-bb045c43cb07@arm.com>
-Date: Tue, 13 Feb 2024 17:26:26 +0000
+	Tue, 13 Feb 2024 18:55:36 +0000
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rZxwC-00086B-1v; Tue, 13 Feb 2024 19:55:24 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Chris Morgan <macroalpha82@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	conor+dt@kernel.org,
+	quic_jesszhan@quicinc.com,
+	tzimmermann@suse.de,
+	agx@sigxcpu.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	neil.armstrong@linaro.org,
+	megi@xff.cz,
+	kernel@puri.sm,
+	dri-devel@lists.freedesktop.org,
+	robh+dt@kernel.org,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	devicetree@vger.kernel.org,
+	sam@ravnborg.org,
+	krzysztof.kozlowski+dt@linaro.org
+Subject: Re: (subset) [PATCH 0/7] Add Support for RK3566 Powkiddy RGB10MAX3
+Date: Tue, 13 Feb 2024 19:55:20 +0100
+Message-Id: <170785046231.3338864.13569806071230599737.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240212184950.52210-1-macroalpha82@gmail.com>
+References: <20240212184950.52210-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/10] iommu/vt-d: add wrapper functions for page
- allocations
-Content-Language: en-GB
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io,
- asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com,
- cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
- dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
- iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com,
- joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st,
- mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org,
- rdunlap@infradead.org, samuel@sholland.org, suravee.suthikulpanit@amd.com,
- sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
- tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, will@kernel.org,
- yu-cheng.yu@intel.com, rientjes@google.com, bagasdotme@gmail.com,
- mkoutny@suse.com
-References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
- <20240207174102.1486130-2-pasha.tatashin@soleen.com>
- <8ce2cd7b-7702-45aa-b4c8-25a01c27ed83@arm.com>
- <CA+CK2bC=XyUhoSP9f0XBqEnQ-P5mMT2U=5dfzRSc9C=2b+bstQ@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <CA+CK2bC=XyUhoSP9f0XBqEnQ-P5mMT2U=5dfzRSc9C=2b+bstQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_092635_450898_E5843F23 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20240213_105535_491260_F297DD4C 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +75,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/02/2024 2:21 am, Pasha Tatashin wrote:
-[...]
->>> +/**
->>> + * iommu_alloc_pages_node - allocate a zeroed page of a given order from
->>> + * specific NUMA node.
->>> + * @nid: memory NUMA node id
->>> + * @gfp: buddy allocator flags
->>> + * @order: page order
->>> + *
->>> + * returns the virtual address of the allocated page
->>> + */
->>> +static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp, int order)
->>> +{
->>> +     struct page *page = __iommu_alloc_pages_node(nid, gfp, order);
->>> +
->>> +     if (unlikely(!page))
->>> +             return NULL;
->>
->> As a general point I'd prefer to fold these checks into the accounting
->> function itself rather than repeat them all over.
+On Mon, 12 Feb 2024 12:49:43 -0600, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> For the free functions this saves a few cycles by not repeating this
-> check again inside __free_pages(), to keep things symmetrical it makes
-> sense to keep __iomu_free_account and __iomu_alloc_account the same.
-> With the other clean-up there are not that many of these checks left.
-
-__free_pages() doesn't accept NULL, so __iommu_free_pages() shouldn't 
-need a check; free_pages() does, but correspondingly iommu_free_pages() 
-needs its own check up-front to avoid virt_to_page(NULL); either way it 
-means there are no callers of iommu_free_account() who should be passing 
-NULL.
-
-The VA-returning allocators of course need to avoid page_address(NULL), 
-so I clearly made this comment in the wrong place to begin with, oops. 
-In the end I guess that will leave __iommu_alloc_pages() as the only 
-caller of iommu_alloc_account() who doesn't already need to handle their 
-own NULL. OK, I'm convinced, apologies for having to bounce it off you 
-to work it through :)
-
->>> + */
->>> +static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
->>> +{
->>> +     return iommu_alloc_pages_node(nid, gfp, 0);
->>> +}
->>
->> TBH I'm not entirely convinced that saving 4 characters per invocation
->> times 11 invocations makes this wrapper worthwhile :/
+> Add support for the Powkiddy RGB10MAX3 handheld gaming console.
 > 
-> Let's keep them. After the clean-up that you suggested, there are
-> fewer functions left in this file, but I think that it is cleaner to
-> keep these remaining, as it is beneficial to easily distinguish when
-> exactly one page is allocated vs when multiple are allocated via code
-> search.
+> [1] https://powkiddy.com/products/pre-sale-powkiddy-rgb10max3-handheld-game-console
+> 
+> Chris Morgan (7):
+>   dt-bindings: display: st7703: Add Powkiddy RGB10MAX3 panel
+>   drm/panel: st7703: Add Powkiddy RGB10MAX3 Panel Support
+>   dt-bindings: display: Document ST7703 panel rotation
+>   drm/panel: st7703: Add Panel Rotation Support
+>   arm64: dts: rockchip: Update powkiddy rk2023 dtsi for RGB10MAX3
+>   dt-bindings: arm: rockchip: Add Powkiddy RGB10MAX3
+>   arm64: dts: rockchip: Add Powkiddy RGB10MAX3
+> 
+> [...]
 
-But is it, really? It's not at all obvious to me *why* it would be 
-significantly interesting to distinguish fixed order-0 allocations from 
-higher-order or variable-order (which may still be 0) ones. After all, 
-there's no regular alloc_page_node() wrapper, yet plenty more callers of 
-alloc_pages_node(..., 0) :/
+Applied, thanks!
 
-Thanks,
-Robin.
+[1/7] dt-bindings: display: st7703: Add Powkiddy RGB10MAX3 panel
+      commit: 9913a60f318b6c88ea8385048952e3557464bb84
+[2/7] drm/panel: st7703: Add Powkiddy RGB10MAX3 Panel Support
+      commit: e0c732291250e205fb834881ad7ecf9ee3ffef45
+[3/7] dt-bindings: display: Document ST7703 panel rotation
+      commit: 20b18c2be4f3dcb5448ecc122484bef6c2852fdd
+[4/7] drm/panel: st7703: Add Panel Rotation Support
+      commit: 762195e5c26936b891fb54ba0183aa3ef366b41e
+
+I've adapted the binding subjects to poin to the rocktech,jh057n00900
+panel that gets changed and also dropped the one added newline as
+requested by Guido.
+
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
