@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B610BC48260
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 19:02:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE69C48260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 19:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oNY0m9YnAGuz+FpdyMyw5JMBk8fsk0/bEEqSIcmKk/4=; b=ykfndUea7C5INR
-	/OdIRm+2h6wAeid5h/d5S/ElcC+tMBz5NdOpIvln8CoRtWefw2NX8jj89iy3hpQNC9I8Xz3IlN4+p
-	N0oKSAbR307vzMfLKBS+4mDbo2xnHmtWlN+8kvxW1TCKZyWVTySoXMLBjLzmWFzSiUptlkFWXX4qd
-	GlJiFe2psWPYvHKfV1zWoj4Y1lDP/iFok50a8QI2FAYoOOrXMl8kphQ0HQZfYlbHxht91vUMWpP0v
-	TBwoAFGw2d8inRJwlLs7EPvxJrH82SHtWRkPWh/41If1dZkufNxZpYWn/8Z+c4X4NfpqmO27CXPP9
-	BahsauTEEiweJmBP+9Ng==;
+	List-Owner; bh=dSD/2ZONPRbz+sfLkC5o3/+wam2T0K1yXu4R6+SDriQ=; b=Fl1Aq52eCEc+pY
+	jitBQ2r+4cbLeWPWyE9p1hpX92KduwfiA87dx1bdtQdZuhupQnyGk4/8oGyODmkDS53/gqxCd4/bB
+	bBGUVwBhHblqp57jU10Y5PM33Ks6zL7l44TgwZ/jClSpcYfHd0lSgFSfMTqKutsFjh3JUoNCwV83Z
+	chgL9SETiUbnczWSsSIkubfszIAtW8fNeo5ZOgatoJdXgyZ+dERELTFLDgRaVHH5IWv0eJXULjAtH
+	xGRHxa0u4X93wBk0UZBVPeBfGREggPXxiQ5WK9hUBL0QVHt52kF/ZximdHgBlj/ha8y3vMqyjCN3f
+	wex7mUei55qMkQC6DkjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZy2g-0000000AOp1-1CL1;
-	Tue, 13 Feb 2024 19:02:06 +0000
+	id 1rZyGd-0000000AQWZ-0rtv;
+	Tue, 13 Feb 2024 19:16:31 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZy2d-0000000AOoH-0Bnk;
-	Tue, 13 Feb 2024 19:02:04 +0000
-Received: from [194.95.143.137] (helo=phil.localnet)
+	id 1rZyGZ-0000000AQT6-1D0H;
+	Tue, 13 Feb 2024 19:16:28 +0000
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rZy2H-00088l-Vd; Tue, 13 Feb 2024 20:01:41 +0100
+	id 1rZyGX-0008FY-2h; Tue, 13 Feb 2024 20:16:25 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>,
- Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Maxime Ripard <mripard@kernel.org>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v6 31/36] drm/rockchip: inno_hdmi: Switch to HDMI connector
-Date: Tue, 13 Feb 2024 20:01:40 +0100
-Message-ID: <1852174.atdPhlSkOF@phil>
-In-Reply-To: <20240212-kms-hdmi-connector-state-v6-31-f4bcdc979e6f@kernel.org>
-References: <20240212-kms-hdmi-connector-state-v6-0-f4bcdc979e6f@kernel.org>
- <20240212-kms-hdmi-connector-state-v6-31-f4bcdc979e6f@kernel.org>
+To: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-kernel@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	kernel@collabora.com,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: (subset) [PATCH v2 00/12] RK3588 USBDP support
+Date: Tue, 13 Feb 2024 20:16:21 +0100
+Message-Id: <170785172853.3347621.6269747485696963458.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240213163609.44930-1-sebastian.reichel@collabora.com>
+References: <20240213163609.44930-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_110203_283852_CACE8894 
-X-CRM114-Status: GOOD (  27.05  )
+X-CRM114-CacheID: sfid-20240213_111627_383070_29E51C20 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,283 +72,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 12. Februar 2024, 14:13:14 CET schrieb Maxime Ripard:
-> The new HDMI connector infrastructure allows to remove some boilerplate,
-> especially to generate infoframes. Let's switch to it.
+On Tue, 13 Feb 2024 17:32:34 +0100, Sebastian Reichel wrote:
+> This adds Rockchip RK3588 USBDP PHY support, which is used for two of the three
+> USB3 controllers in the RK3588 (the third one uses a different PHY, which is
+> already supported). The USBDP PHY offers USB3 dual-role and DisplayPort. The
+> driver and bindings being upstreamed contains the DP parts, but only USB3 has
+> been tested by me (upstream does not yet have a DRM DP bridge driver for this
+> platform).
 > 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> [...]
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+Applied, thanks!
 
-> ---
->  drivers/gpu/drm/rockchip/inno_hdmi.c | 123 ++++++++++++-----------------------
->  1 file changed, 42 insertions(+), 81 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-> index 1d2261643743..d59947679042 100644
-> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-> @@ -67,9 +67,7 @@ struct inno_hdmi {
->  
->  struct inno_hdmi_connector_state {
->  	struct drm_connector_state	base;
-> -	unsigned int			enc_out_format;
->  	unsigned int			colorimetry;
-> -	bool				rgb_limited_range;
->  };
->  
->  static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
-> @@ -257,26 +255,29 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
->  	inno_hdmi_standby(hdmi);
->  }
->  
-> -static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
-> -				    enum hdmi_infoframe_type type)
-> +static int inno_hdmi_disable_frame(struct drm_connector *connector,
-> +				   enum hdmi_infoframe_type type)
->  {
-> -	struct drm_connector *connector = &hdmi->connector;
-> +	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
->  
->  	if (type != HDMI_INFOFRAME_TYPE_AVI) {
->  		drm_err(connector->dev,
->  			"Unsupported infoframe type: %u\n", type);
-> -		return;
-> +		return 0;
->  	}
->  
->  	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
-> +
-> +	return 0;
->  }
->  
-> -static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
-> -				  union hdmi_infoframe *frame, enum hdmi_infoframe_type type)
-> +static int inno_hdmi_upload_frame(struct drm_connector *connector,
-> +				  enum hdmi_infoframe_type type,
-> +				  const u8 *buffer, size_t len)
->  {
-> -	struct drm_connector *connector = &hdmi->connector;
-> +	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
->  	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
-> -	ssize_t rc, i;
-> +	ssize_t i;
->  
->  	if (type != HDMI_INFOFRAME_TYPE_AVI) {
->  		drm_err(connector->dev,
-> @@ -284,59 +285,19 @@ static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
->  		return 0;
->  	}
->  
-> -	inno_hdmi_disable_frame(hdmi, type);
-> +	inno_hdmi_disable_frame(connector, type);
->  
-> -	rc = hdmi_infoframe_pack(frame, packed_frame,
-> -				 sizeof(packed_frame));
-> -	if (rc < 0)
-> -		return rc;
-> -
-> -	for (i = 0; i < rc; i++)
-> +	for (i = 0; i < len; i++)
->  		hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_ADDR + i,
->  			    packed_frame[i]);
->  
->  	return 0;
->  }
->  
-> -static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
-> -				      struct drm_display_mode *mode)
-> -{
-> -	struct drm_connector *connector = &hdmi->connector;
-> -	struct drm_connector_state *conn_state = connector->state;
-> -	struct inno_hdmi_connector_state *inno_conn_state =
-> -					to_inno_hdmi_conn_state(conn_state);
-> -	union hdmi_infoframe frame;
-> -	int rc;
-> -
-> -	rc = drm_hdmi_avi_infoframe_from_display_mode(&frame.avi,
-> -						      &hdmi->connector,
-> -						      mode);
-> -	if (rc) {
-> -		inno_hdmi_disable_frame(hdmi, HDMI_INFOFRAME_TYPE_AVI);
-> -		return rc;
-> -	}
-> -
-> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444)
-> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV444;
-> -	else if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV422)
-> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV422;
-> -	else
-> -		frame.avi.colorspace = HDMI_COLORSPACE_RGB;
-> -
-> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_RGB) {
-> -		drm_hdmi_avi_infoframe_quant_range(&frame.avi,
-> -						   connector, mode,
-> -						   inno_conn_state->rgb_limited_range ?
-> -						   HDMI_QUANTIZATION_RANGE_LIMITED :
-> -						   HDMI_QUANTIZATION_RANGE_FULL);
-> -	} else {
-> -		frame.avi.quantization_range = HDMI_QUANTIZATION_RANGE_DEFAULT;
-> -		frame.avi.ycc_quantization_range =
-> -			HDMI_YCC_QUANTIZATION_RANGE_LIMITED;
-> -	}
-> -
-> -	return inno_hdmi_upload_frame(hdmi, &frame, HDMI_INFOFRAME_TYPE_AVI);
-> -}
-> +static const struct drm_connector_hdmi_funcs inno_hdmi_hdmi_connector_funcs = {
-> +	.clear_infoframe	= inno_hdmi_disable_frame,
-> +	.write_infoframe	= inno_hdmi_upload_frame,
-> +};
->  
->  static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
->  {
-> @@ -361,8 +322,8 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
->  		v_VIDEO_INPUT_CSP(0);
->  	hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL2, value);
->  
-> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_RGB) {
-> -		if (inno_conn_state->rgb_limited_range) {
-> +	if (conn_state->hdmi.output_format == HDMI_COLORSPACE_RGB) {
-> +		if (!conn_state->hdmi.is_full_range) {
->  			csc_mode = CSC_RGB_0_255_TO_RGB_16_235_8BIT;
->  			auto_csc = AUTO_CSC_DISABLE;
->  			c0_c2_change = C0_C2_CHANGE_DISABLE;
-> @@ -380,14 +341,14 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
->  		}
->  	} else {
->  		if (inno_conn_state->colorimetry == HDMI_COLORIMETRY_ITU_601) {
-> -			if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444) {
-> +			if (conn_state->hdmi.output_format == HDMI_COLORSPACE_YUV444) {
->  				csc_mode = CSC_RGB_0_255_TO_ITU601_16_235_8BIT;
->  				auto_csc = AUTO_CSC_DISABLE;
->  				c0_c2_change = C0_C2_CHANGE_DISABLE;
->  				csc_enable = v_CSC_ENABLE;
->  			}
->  		} else {
-> -			if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444) {
-> +			if (conn_state->hdmi.output_format == HDMI_COLORSPACE_YUV444) {
->  				csc_mode = CSC_RGB_0_255_TO_ITU709_16_235_8BIT;
->  				auto_csc = AUTO_CSC_DISABLE;
->  				c0_c2_change = C0_C2_CHANGE_DISABLE;
-> @@ -462,10 +423,12 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
->  }
->  
->  static int inno_hdmi_setup(struct inno_hdmi *hdmi,
-> -			   struct drm_display_mode *mode)
-> +			   struct drm_crtc_state *new_crtc_state,
-> +			   struct drm_connector_state *new_conn_state)
->  {
-> -	struct drm_display_info *display = &hdmi->connector.display_info;
-> -	unsigned long mpixelclock = mode->clock * 1000;
-> +	struct drm_connector *connector = &hdmi->connector;
-> +	struct drm_display_info *display = &connector->display_info;
-> +	struct drm_display_mode *mode = &new_crtc_state->adjusted_mode;
->  
->  	/* Mute video and audio output */
->  	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
-> @@ -479,8 +442,8 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
->  
->  	inno_hdmi_config_video_csc(hdmi);
->  
-> -	if (display->is_hdmi)
-> -		inno_hdmi_config_video_avi(hdmi, mode);
-> +	drm_atomic_helper_connector_hdmi_update_infoframes(connector,
-> +							   new_conn_state->state);
->  
->  	/*
->  	 * When IP controller have configured to an accurate video
-> @@ -488,13 +451,13 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
->  	 * DCLK_LCDC, so we need to init the TMDS rate to mode pixel
->  	 * clock rate, and reconfigure the DDC clock.
->  	 */
-> -	inno_hdmi_i2c_init(hdmi, mpixelclock);
-> +	inno_hdmi_i2c_init(hdmi, new_conn_state->hdmi.tmds_char_rate);
->  
->  	/* Unmute video and audio output */
->  	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
->  		  v_AUDIO_MUTE(0) | v_VIDEO_MUTE(0));
->  
-> -	inno_hdmi_power_up(hdmi, mpixelclock);
-> +	inno_hdmi_power_up(hdmi, new_conn_state->hdmi.tmds_char_rate);
->  
->  	return 0;
->  }
-> @@ -546,7 +509,7 @@ static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
->  	if (WARN_ON(!crtc_state))
->  		return;
->  
-> -	inno_hdmi_setup(hdmi, &crtc_state->adjusted_mode);
-> +	inno_hdmi_setup(hdmi, crtc_state, conn_state);
->  }
->  
->  static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
-> @@ -563,7 +526,6 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
->  			       struct drm_connector_state *conn_state)
->  {
->  	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-> -	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
->  	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
->  	u8 vic = drm_match_cea_mode(mode);
->  	struct inno_hdmi_connector_state *inno_conn_state =
-> @@ -580,12 +542,7 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
->  	else
->  		inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
->  
-> -	inno_conn_state->enc_out_format = HDMI_COLORSPACE_RGB;
-> -	inno_conn_state->rgb_limited_range =
-> -		drm_default_rgb_quant_range(mode) == HDMI_QUANTIZATION_RANGE_LIMITED;
-> -
-> -	return  inno_hdmi_display_mode_valid(hdmi,
-> -				&crtc_state->adjusted_mode) == MODE_OK ? 0 : -EINVAL;
-> +	return 0;
->  }
->  
->  static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
-> @@ -662,10 +619,9 @@ static void inno_hdmi_connector_reset(struct drm_connector *connector)
->  		return;
->  
->  	__drm_atomic_helper_connector_reset(connector, &inno_conn_state->base);
-> +	__drm_atomic_helper_connector_hdmi_reset(connector, connector->state);
->  
->  	inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
-> -	inno_conn_state->enc_out_format = HDMI_COLORSPACE_RGB;
-> -	inno_conn_state->rgb_limited_range = false;
->  }
->  
->  static struct drm_connector_state *
-> @@ -698,6 +654,7 @@ static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
->  };
->  
->  static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
-> +	.atomic_check = drm_atomic_helper_connector_hdmi_check,
->  	.get_modes = inno_hdmi_connector_get_modes,
->  	.mode_valid = inno_hdmi_connector_mode_valid,
->  };
-> @@ -725,10 +682,14 @@ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
->  
->  	drm_connector_helper_add(&hdmi->connector,
->  				 &inno_hdmi_connector_helper_funcs);
-> -	drm_connector_init_with_ddc(drm, &hdmi->connector,
-> -				    &inno_hdmi_connector_funcs,
-> -				    DRM_MODE_CONNECTOR_HDMIA,
-> -				    hdmi->ddc);
-> +	drmm_connector_hdmi_init(drm, &hdmi->connector,
-> +				 "Rockchip", "Inno HDMI",
-> +				 &inno_hdmi_connector_funcs,
-> +				 &inno_hdmi_hdmi_connector_funcs,
-> +				 DRM_MODE_CONNECTOR_HDMIA,
-> +				 hdmi->ddc,
-> +				 BIT(HDMI_COLORSPACE_RGB),
-> +				 8);
->  
->  	drm_connector_attach_encoder(&hdmi->connector, encoder);
->  
-> 
-> 
+[01/12] dt-bindings: soc: rockchip: add clock to RK3588 VO grf
+        commit: c110b7e2d6bdad21caab3f4706a969b05aff7f62
+[02/12] dt-bindings: soc: rockchip: add rk3588 USB3 syscon
+        commit: 85a33544afa8895803798553c7510658dcbd3546
 
+again just grabbed the grf bindings for now :-)
 
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
