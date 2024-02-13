@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE69C48260
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B353C4829F
 	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 19:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dSD/2ZONPRbz+sfLkC5o3/+wam2T0K1yXu4R6+SDriQ=; b=Fl1Aq52eCEc+pY
-	jitBQ2r+4cbLeWPWyE9p1hpX92KduwfiA87dx1bdtQdZuhupQnyGk4/8oGyODmkDS53/gqxCd4/bB
-	bBGUVwBhHblqp57jU10Y5PM33Ks6zL7l44TgwZ/jClSpcYfHd0lSgFSfMTqKutsFjh3JUoNCwV83Z
-	chgL9SETiUbnczWSsSIkubfszIAtW8fNeo5ZOgatoJdXgyZ+dERELTFLDgRaVHH5IWv0eJXULjAtH
-	xGRHxa0u4X93wBk0UZBVPeBfGREggPXxiQ5WK9hUBL0QVHt52kF/ZximdHgBlj/ha8y3vMqyjCN3f
-	wex7mUei55qMkQC6DkjQ==;
+	List-Owner; bh=QgUSGcTS6OxOH0wYH96k1YSv61HqytQ57etG9VZI9bA=; b=4F0wh2/yS1SXH1
+	eF6jHYuHe/WtzDB9qPV+fJTML/0yh7RL99+9+lcQWmsWvbWUx9MwanNzCLR4BiYU5vbbNc1zfiqFi
+	51Y20uZmdHwgvZwSJMiRgy1oJmeo0MqxI82TfkhIQ+loVfYXHhwwWDWLtxn1PaM2y/F5zRvRgNyut
+	7wRh9F82Bhh+wXNctHr0SyDVHSoFh6x8U5NZCx05uxJNxLtq3a9iYHRKMG6sy4GEYXSg5FeMq6xAA
+	3w6+LRAa7W4uOkrl+FjT8y1NE2nTL/+EP5muMKyX4MXYmYppfs7u/tQXirV2k5EOnOxp9rC7RF5Op
+	n28PlL/3k04svaL0fPjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyGd-0000000AQWZ-0rtv;
-	Tue, 13 Feb 2024 19:16:31 +0000
+	id 1rZyGa-0000000AQUS-1SES;
+	Tue, 13 Feb 2024 19:16:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyGZ-0000000AQT6-1D0H;
-	Tue, 13 Feb 2024 19:16:28 +0000
+	id 1rZyGX-0000000AQSX-2Msx;
+	Tue, 13 Feb 2024 19:16:26 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rZyGX-0008FY-2h; Tue, 13 Feb 2024 20:16:25 +0100
+	id 1rZyGV-0008FY-2W; Tue, 13 Feb 2024 20:16:23 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Kishon Vijay Abraham I <kishon@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-kernel@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	kernel@collabora.com,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: (subset) [PATCH v2 00/12] RK3588 USBDP support
-Date: Tue, 13 Feb 2024 20:16:21 +0100
-Message-Id: <170785172853.3347621.6269747485696963458.b4-ty@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	quentin.schulz@theobroma-systems.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: set num-cs property for spi on px30
+Date: Tue, 13 Feb 2024 20:16:16 +0100
+Message-Id: <170785172859.3347621.5058867416491288233.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240213163609.44930-1-sebastian.reichel@collabora.com>
-References: <20240213163609.44930-1-sebastian.reichel@collabora.com>
+In-Reply-To: <20240119101656.965744-1-heiko@sntech.de>
+References: <20240119101656.965744-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_111627_383070_29E51C20 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20240213_111625_655413_0D42BF0E 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,24 +63,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 13 Feb 2024 17:32:34 +0100, Sebastian Reichel wrote:
-> This adds Rockchip RK3588 USBDP PHY support, which is used for two of the three
-> USB3 controllers in the RK3588 (the third one uses a different PHY, which is
-> already supported). The USBDP PHY offers USB3 dual-role and DisplayPort. The
-> driver and bindings being upstreamed contains the DP parts, but only USB3 has
-> been tested by me (upstream does not yet have a DRM DP bridge driver for this
-> platform).
+On Fri, 19 Jan 2024 11:16:56 +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> The px30 has two spi controllers with two chip-selects each.
+> The num-cs property is specified as the total number of chip
+> selects a controllers has and is used since 2020 to find uses
+> of chipselects outside that range in the Rockchip spi driver.
 > 
 > [...]
 
 Applied, thanks!
 
-[01/12] dt-bindings: soc: rockchip: add clock to RK3588 VO grf
-        commit: c110b7e2d6bdad21caab3f4706a969b05aff7f62
-[02/12] dt-bindings: soc: rockchip: add rk3588 USB3 syscon
-        commit: 85a33544afa8895803798553c7510658dcbd3546
-
-again just grabbed the grf bindings for now :-)
+[1/1] arm64: dts: rockchip: set num-cs property for spi on px30
+      commit: 334bf0710c98d391f4067b72f535d6c4c84dfb6f
 
 Best regards,
 -- 
