@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB44C48260
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 19:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1817C4829F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 19:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gyF7znWCaCgmGTjQQYHfhTdeg0h10DKtwWZWrTBRCIo=; b=UVXCnAe69aslAk
-	XQtWhSnpa1J9Ah0UfyA2YKmU+DPPkmHkjwYq5ef3pu/0KSJOHyot8KE2e2vL8k9YJawWRxqk27y9+
-	XWBiOCc60a+nLr9b0E6a81GC3uU7gU7IVbTmqs4ZqD/s8XI0Dz1SrQ1SoXD/EkK8t0eEIClU39R46
-	x+JMsklQZQj+oydGCUyOt4Vd/2cyTVoDeu2Spql7RnVbH+2Bj5Qilgnx2qcLQIV1H154B/h7+01M1
-	l5hVDzolxThBgnWtvp2njiYTkWu7mZlY17NhLpjJnpqRvCvWk1twVdEPuEKfJQgDQs3Nk9zd7qdYY
-	2eUznQY/4e/opzk+soJg==;
+	List-Owner; bh=gCm6fTke33VsTAnQevBuY/8fwfpP0RnaVAwhmrsTpgM=; b=mxt/qcYzHO2rvs
+	oFflNPztV7tLi3cuj/4rNws4Ta5wLzmqbo6tZJJ8SVtnCp4uG7trM8VnyPNsV1AuB8ptOQ17VUUR+
+	dGXFYJDr0d1StaWYLTr1gCebNzGe8U4NBNn9RfQ2I4/nzoae1PiiSnedyK3YfdNBnBTsKd8RXKyDz
+	EY9lyF3aQIVYWGE8zW/VVsUV90gLx5QOvAt2UqUeTbyyho6qCbrSV4oNhykizQstgNhtFz8c7sT3L
+	da5YZKdWG0Gq52hOrUBovXsMRDGvGMYZjRmxQ6l7MXF9GtA/X+J31E/TinvgBBbzsBgifBpgJ7zYi
+	W+WHcmaePQsbtH/17Rhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyGz-0000000AQny-20iV;
-	Tue, 13 Feb 2024 19:16:53 +0000
+	id 1rZyGy-0000000AQnQ-3Co2;
+	Tue, 13 Feb 2024 19:16:52 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZyGh-0000000AQZB-2I1U;
-	Tue, 13 Feb 2024 19:16:37 +0000
+	id 1rZyGc-0000000AQVO-2bP9;
+	Tue, 13 Feb 2024 19:16:33 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rZyGV-0008FY-Td; Tue, 13 Feb 2024 20:16:23 +0100
+	id 1rZyGU-0008FY-SS; Tue, 13 Feb 2024 20:16:22 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	=?UTF-8?q?Tam=C3=A1s=20Sz=C5=B1cs?= <tszucs@protonmail.ch>,
-	linux-rockchip@lists.infradead.org,
-	Lucas Tanure <lucas.tanure@collabora.com>,
-	Shreeya Patel <shreeya.patel@collabora.com>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	Ondrej Jirman <megi@xff.cz>,
 	Rob Herring <robh+dt@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	quentin.schulz@theobroma-systems.com,
+	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	John Clark <inindev@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3588: remove redundant cd-gpios in sdmmc node
-Date: Tue, 13 Feb 2024 20:16:18 +0100
-Message-Id: <170785172862.3347621.15441860587856403205.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 0/2] serial: 8250: Add support for rs485 half/full duplex on puma/ringneck-haikou
+Date: Tue, 13 Feb 2024 20:16:15 +0100
+Message-Id: <170785172857.3347621.5386366884287991661.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240201034621.1970279-1-kever.yang@rock-chips.com>
-References: <20240201034621.1970279-1-kever.yang@rock-chips.com>
+In-Reply-To: <20240208-dev-rx-enable-v6-0-39e68e17a339@theobroma-systems.com>
+References: <20240208-dev-rx-enable-v6-0-39e68e17a339@theobroma-systems.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_111635_797166_3DE6F696 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20240213_111630_848035_907A7002 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +68,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 1 Feb 2024 11:46:21 +0800, Kever Yang wrote:
-> The sdmmc node already have a "&sdmmc_det" for pinctrl which switch the
-> GPIO0A4 to sdmmc detect function, no need to define a separate "cd-gpios".
+On Thu, 08 Feb 2024 16:39:54 +0100, Farouk Bouabid wrote:
+> On the boards that we are using (ringneck/puma-haikou) a hardware switch
+> can set the rs485 transceiver into half or full duplex mode.
 > 
-> RK3588 has force_jtage feature which is enable JTAG function via sdmmc
-> pins automatically when there is no SD card insert, this feature will
-> need the GPIO0A4 works in sdmmc_det function like other mmc signal instead
-> of GPIO function, or else the force_jtag can not auto be disabled when
-> SD card insert.
+> In half-duplex mode the DE/RE signal of the rs485 transceiver is not
+> connected to an RTS signal whose control is already handled in the rs485
+> emulation (start/stop callbacks), but rather to a gpio. And since enabling
+> the receiver requires setting this gpio active we need to do that in em485
+> while receiving and disable it while sending to enable the driver mode.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rk3588: remove redundant cd-gpios in sdmmc node
-      commit: d859ad305ed19d9a77d8c8ecd22459b73da36ba6
+[1/2] arm64: dts: rockchip: rk3399-puma-haikou: add rs485 support on uart2
+      commit: 54448f711aa32f176534bbd7b1903cc6d1c8a50d
+[2/2] arm64: dts: rockchip: px30-ringneck-haikou: add rs485 support on uart5
+      commit: 5963d97aa780619ffb66cf4886c0ca1175ccbd3e
 
 Best regards,
 -- 
