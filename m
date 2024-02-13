@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B85C48260
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 08:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86079C48260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 08:14:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nci3HbdZbCTxcPkEA1FG5qy8wfKZXWhGq+QNH6TS6gk=; b=k6PmCLMWucdF1L
-	VRLyEhF2QUJDAqHN06/tFukhbN8hHsFCKWa+YXc5NXiV/eByXRq4ZI8B6i3GWXSU5lA2vY2Yt7k81
-	Cu9Ud1Sqk6SGZpDM+rmwR9eJZht5tpF9DN2nGd2YX0p8QR8+9OBZvZN0+b4axbYDZCO/tBO/0YyIe
-	AkREq6J+LExFfWfGd6UAxHqUgNRPY718tXcmJvhtCHg55Bi6EvzWN6ZTN6XhBCXqmDoBQMHCMfiCd
-	0TqFXD55/in9xrC2b63ChK0tKbumsjhcwlYa3jLIoCFoJGEvfLJrqV3E9YqyYGKF7u3dYF3//6AM0
-	j72Zc0KNUg1VnvQbOHqw==;
+	List-Owner; bh=OJqhYmpo5jVBd9gT1Tuty1BADUoaJ4oWKdKOT1G4yQg=; b=gkCtygvBlU23YL
+	bmvoL00QiyDwWwVRkTbJC32iIqVUW439q3LphtcuZ8Ctz7gn0hWRIcQagXeWK6X6n+8bnYn5q7EDJ
+	338H9G9jg9OeNGbrVyrQaYyw1U2CykKagoZ5LwmqhUVLgVo0lhAjsun3Jj5sbaCLqzoneReU3IzfR
+	AnaBjkH48CwhNlbe07Kkh0gdcdynrh/bxuKwQUhyht4mQQaG2MsyUiH6uyaf/T2vr0ZDezeFTIjXl
+	UQ9UES1C1CfbTpTmfOvVtDhRzBzcKK/M4xQZnmZ+Oi0UVOevIK9KCxR+Z0OKso5EKQ3vFLCrhzrB3
+	oMYL06DESSUufyuCIIyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZnqk-00000008Lh7-1F3B;
-	Tue, 13 Feb 2024 08:09:06 +0000
+	id 1rZnvY-00000008M9F-2A9d;
+	Tue, 13 Feb 2024 08:14:04 +0000
 Received: from honk.sigxcpu.org ([24.134.29.49])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZnqg-00000008LgS-32d7
+	id 1rZnvV-00000008M8Q-3SVM
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Feb 2024 08:09:04 +0000
+	Tue, 13 Feb 2024 08:14:03 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by honk.sigxcpu.org (Postfix) with ESMTP id DBA98FB03;
-	Tue, 13 Feb 2024 09:00:35 +0100 (CET)
+	by honk.sigxcpu.org (Postfix) with ESMTP id D6A6AFB06;
+	Tue, 13 Feb 2024 09:05:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sigxcpu.org; s=2024;
-	t=1707811236; bh=yKmzIACGmln6cc4um1JqjafqS8ErymUzJ7el3Su2Bto=;
+	t=1707811538; bh=KRuuw7YzU7/CW38+mXRnIoY4ogV8wheL/KaqE7yovF0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cxrZ1tXQ+DTiT2bXkMROARspyq8fRVtd7B1+JhuSxyS/ITRKvC94ETl0dOFXO4qfb
-	 7vqyewaas+9DiH2ZF3VJUdenX4oJL3P5qjdr0HH7TAJMJ+WpXM8z2XSUWxBpwTq8JY
-	 zjstmSjFI0jSH/w4tqYvxxk8YhoDbJzONDCWhofQ3kfaJNeixH+cFFKEw8FvyzZJwb
-	 wOIGBAZ2oVrE40PGkKWaJKOIZkkK7b5taRQUyNAimCOnAZtM8yLyVsTwwDSZwNLCQP
-	 LACHxDfGoU9/UwJoAkk0ZDTnilK8ifnrJuxEbNzOBPg0K8pzKLLldEjmZeICzooHbZ
-	 mC4YDrC3ikCgw==
+	b=uFon58O1DvfPx32KLoXpPxq4qeeHDGEBv8gniIc2KoFx93xU61/OkOxtb0pxN7/Ti
+	 2eVnPfUU+V8jqxIUP8aG+Xu/GPxQ5mFFQtiMJPHlP29VsyZSCK8Oxpfo7AG7yq5/1C
+	 Q1SpvL6Zp6Xumt+KlhpVkOnNDb3A/r+nEgrWKI/IaXRxTlBoJIybl2UuFtzYavQwyh
+	 1r2yWNnPLTKIagBbHAOn/ICBvcQCQd058F0fT9ALftdcZNn+3dPTt1Zae9EExRuuGe
+	 oNNOrzvm7C7qzHWMv4YCFV2F6hmF62hqLepyAcKHPaQWXdjGKsu3VIj6RzcSP9Eg+f
+	 rCzCGMJJ1iWEA==
 Received: from honk.sigxcpu.org ([127.0.0.1])
 	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AeDCnu0LeCGH; Tue, 13 Feb 2024 09:00:35 +0100 (CET)
-Date: Tue, 13 Feb 2024 09:00:32 +0100
+	with ESMTP id EdovbXp8vkH5; Tue, 13 Feb 2024 09:05:36 +0100 (CET)
+Date: Tue, 13 Feb 2024 09:05:34 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=sigxcpu.org; s=2024;
-	t=1707811235; bh=yKmzIACGmln6cc4um1JqjafqS8ErymUzJ7el3Su2Bto=;
+	t=1707811536; bh=KRuuw7YzU7/CW38+mXRnIoY4ogV8wheL/KaqE7yovF0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YGGjLTNoQsDaOUQMux+e5bOF7f6QZY2pvlrtlF+ibfkO+J7IGcJ4ewWCM0S3TZ7iG
-	 cIJFnPG4KaKCnNtfDwWoQvndgQ23IdmIZh5VGUwtyfrdTzZucQS26FO5Ic5NRg2A7C
-	 5fuZhyHImzwk8FIPRKl9ZLW/h7AHfHPUVNY/z7po9aRTBf/GtO+Gsgd/Y2U+AnwfVY
-	 Vx3Q33c2qVz/n6OuABIAWXPmdHvcJwGoTyu8EPiXGRI7D8G8q2Y97shogfKfHY0AuC
-	 1wWfZhXnyFeA8oqpxCqrAzD6Hq7q+jsZvfQYyFuLhXV/rosdORDMuy3SCf91CTzb7/
-	 ww4oh2Jvot4XQ==
+	b=T0PjJTTCKwcEYxG9bEmKTWBhYhtb6RilEBkrOc0r3g1HzDvG7AZWWhJk3vJJMwbG2
+	 +VOBuz8jpvi64umw4MDceS409oBwx043J2SrfkBnulQ4oI/4eH1cfIYkR5UdqKM1QB
+	 xhIB0Aqa2YeARY95cJRrO8UiVYc+hzSHELyyJNpab8xxHMUSntGQAlvXptd6hMbLKQ
+	 3+dIuQWYG15rFGjEQhzizsMHk4cJoOd/DghYrgd1wR7D6voA1btw9iE10kk2Appa/R
+	 QAYJY1eslbduDQRlkU/yBlN5a/hRDPBxe+nAZiakbu+pedWvWcD4ejeoOVt700mGZB
+	 ZnSnDAoptc3LA==
 From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
@@ -62,17 +62,16 @@ Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	kernel@puri.sm, heiko@sntech.de, conor+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/7] dt-bindings: display: st7703: Add Powkiddy RGB10MAX3
- panel
-Message-ID: <ZcshoKi9cbhZQ6V5@qwark.sigxcpu.org>
+Subject: Re: [PATCH 4/7] drm/panel: st7703: Add Panel Rotation Support
+Message-ID: <ZcsizkRuBPdmG_Qy@qwark.sigxcpu.org>
 References: <20240212184950.52210-1-macroalpha82@gmail.com>
- <20240212184950.52210-2-macroalpha82@gmail.com>
+ <20240212184950.52210-5-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240212184950.52210-2-macroalpha82@gmail.com>
+In-Reply-To: <20240212184950.52210-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_000902_928469_CC213098 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20240213_001402_028283_2B06C83F 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +89,76 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Hi,
-On Mon, Feb 12, 2024 at 12:49:44PM -0600, Chris Morgan wrote:
+On Mon, Feb 12, 2024 at 12:49:47PM -0600, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > =
 
-> The RGB10MAX3 panel is a panel specific to the Powkiddy RGB10MAX3
-> handheld device that measures 5 inches diagonally with a resolution
-> of 720x1280.
+> Add support for panel rotation to ST7703 based devices.
 > =
 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->  .../devicetree/bindings/display/panel/rocktech,jh057n00900.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/gpu/drm/panel/panel-sitronix-st7703.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > =
 
-> diff --git a/Documentation/devicetree/bindings/display/panel/rocktech,jh0=
-57n00900.yaml b/Documentation/devicetree/bindings/display/panel/rocktech,jh=
-057n00900.yaml
-> index 97cccd8a8479..8dfe8951bf5b 100644
-> --- a/Documentation/devicetree/bindings/display/panel/rocktech,jh057n0090=
-0.yaml
-> +++ b/Documentation/devicetree/bindings/display/panel/rocktech,jh057n0090=
-0.yaml
-> @@ -22,6 +22,8 @@ properties:
->      enum:
->        # Anberic RG353V-V2 5.0" 640x480 TFT LCD panel
->        - anbernic,rg353v-panel-v2
-> +      # Powkiddy RGB10MAX3 5.0" 720x1280 TFT LCD panel
-> +      - powkiddy,rgb10max3-panel
->        # Powkiddy RGB30 3.0" 720x720 TFT LCD panel
->        - powkiddy,rgb30-panel
->        # Rocktech JH057N00900 5.5" 720x1440 TFT LCD panel
+> diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/=
+drm/panel/panel-sitronix-st7703.c
+> index 939ba05c9b58..a3e142f156d5 100644
+> --- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
+> +++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
+> @@ -62,6 +62,7 @@ struct st7703 {
+>  =
+
+>  	struct dentry *debugfs;
+>  	const struct st7703_panel_desc *desc;
+> +	enum drm_panel_orientation orientation;
+>  };
+>  =
+
+>  struct st7703_panel_desc {
+> @@ -743,12 +744,20 @@ static int st7703_get_modes(struct drm_panel *panel,
+>  	return 1;
+>  }
+>  =
+
+> +static enum drm_panel_orientation st7703_get_orientation(struct drm_pane=
+l *panel)
+> +{
+> +	struct st7703 *st7703 =3D panel_to_st7703(panel);
+> +
+> +	return st7703->orientation;
+> +}
+> +
+>  static const struct drm_panel_funcs st7703_drm_funcs =3D {
+>  	.disable   =3D st7703_disable,
+>  	.unprepare =3D st7703_unprepare,
+>  	.prepare   =3D st7703_prepare,
+>  	.enable	   =3D st7703_enable,
+>  	.get_modes =3D st7703_get_modes,
+> +	.get_orientation =3D st7703_get_orientation,
+>  };
+>  =
+
+>  static int allpixelson_set(void *data, u64 val)
+> @@ -817,6 +826,10 @@ static int st7703_probe(struct mipi_dsi_device *dsi)
+>  		return dev_err_probe(dev, PTR_ERR(ctx->iovcc),
+>  				     "Failed to request iovcc regulator\n");
+>  =
+
+> +	ret =3D of_drm_get_panel_orientation(dsi->dev.of_node, &ctx->orientatio=
+n);
+> +	if (ret < 0)
+> +		return dev_err_probe(&dsi->dev, ret, "Failed to get orientation\n");
+> +
+>  	drm_panel_init(&ctx->panel, dev, &st7703_drm_funcs,
+>  		       DRM_MODE_CONNECTOR_DSI);
 
 Reviewed-by: Guido G=FCnther <agx@sigxcpu.org>
-
 Cheers,
  -- Guido
+
+>  =
 
 > -- =
 
