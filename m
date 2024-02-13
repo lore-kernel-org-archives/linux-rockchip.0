@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A34C4829A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 15:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FC3C48BC4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 16:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fXxLv66R7qRlh3c/Lh8UngY8lELxJBpx2CE++swqK7c=; b=n2g93VGzO2TrBn
-	1geVmB+tqj48wVu3+hC8RdhscAsIdd8vVP7nbgKOIg3ADpH0RpKLHmBP1/TVFCj7PUWpe1l7mYJIQ
-	bJc5nM7wEnaHA6ZoPZPIfYpFi36MhBnsGw8iKRo8N4uljMlVubN1+Hmq7QQ2cxjqMyf47d81Et9cx
-	JOCnn6LsQZ/Yw1gqYloh2a079tynzVFyQKBogPedlPBsvLWGxW9+uYsW0+QkRNIssblVOpXVkNQED
-	l6MoG/h2rX5Y7bIMDZLKK0MPrtv0dANMD0/cEiMLimQSPNs1uiIq1FXkVJn+rPV1KkrlRcFq8FfnG
-	EoCxlWrc3qQZkzD0aVhA==;
+	List-Owner; bh=8aG/IZP0ooaeGJglzdA9ddJ8iKVPnlvwg/EnFgWqfQc=; b=j92vJ+D57Q8UcN
+	Q+u7wz5zhmz3fscxTwC3cakScB2rHmGw2JpwnatvXtIS9sw1mNfosuqbJoKml2BKm9QiU5AbhcJ0e
+	RXU/SVoWYJMLuBuvolHazpzV/HFGxTnQt1+k5irycBOmrICbni11j6qf8aCQI/gBr5C5LfSqnNxzk
+	1JrCMQlMLLXiE6TxfWxy7qpz0EVcK/S8p1WYZtvcUNS2BmBZKkahQtlCW0sBbHhXhs5onDe/VjTgA
+	K/wXyiJ8gf+Egnu179LMF2CoTNY6g2oLCtPFzx0Ns8uqlvhTbXEdGzWHKclP6SBQoTXCmG6HYf/yf
+	fpa+O/yTduz/w2chOswQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZuyW-00000009oiv-0eYh;
-	Tue, 13 Feb 2024 15:45:36 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1rZvla-00000009yGh-21GP;
+	Tue, 13 Feb 2024 16:36:18 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZuyT-00000009ogy-2mE0
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Feb 2024 15:45:34 +0000
-Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-785bdb57dfaso299861185a.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Feb 2024 07:45:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen.com; s=google; t=1707839131; x=1708443931; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=r+5lFm1GOYo46btsIaJvA6S/B+CQsp17IG3lccG/v6g=;
-        b=UWm1dHIwrS3RnaRORpQRH1uwr7u2Pe2vNlcTMa3nn8ClroT8qau8O8I37E9nTYbLpT
-         4kpXPFcoEHGf6vWu8h5YoITcm7eVtsM8+sG6Hg/D0Z2BGgkh5JyIMvw3bmDG8MNxRd6N
-         J6Dbe8qwoAqT8bf9XUY4s3TfEdIyGIycQcScihinP0pnKQaZ6+JBj/4igdA+A9/7h7br
-         Se+h3AC7yWaoI91zB3zKdRdtfdy9Lxon+kuXwlke2AhP25/2/D6F/IB+C1iMGPzhzazz
-         dgFXbpcxZ8Kf6QAvC0Wd9iWoKQzj0cGay9eNNP88xat2z2pCNLNRLmrGkIRmImN9DcAo
-         5rtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707839131; x=1708443931;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=r+5lFm1GOYo46btsIaJvA6S/B+CQsp17IG3lccG/v6g=;
-        b=MbvWvFqga2D+IW+bQ5jBrr/WPjtUFCahEO/lUt0TtJyWO8ls/5jZJWXmokLoRGfvpc
-         E1ID2DmuG73PphhkD4DOhnaKYyF8p5puNc3NKZfFMSdz+UaEMI41ECSqi2QvFn+wCGMf
-         xyXY2nfCZNEpMBs9PQnVZjTFwT6UPiEkykEFIXRBYS/a2liytrRuXO7yScDg2rQGq/5E
-         rtE7YL/telfYSI39XEigrvbRcpaEzp7dvvo7QL3srumF6SyX30r8Llbe+rw6E9wha0Nb
-         moKW1ZoeEuEBtj6xN1NqZ7bh3rjrsB5LpH4BLwSUiCK34Fvwq4fsMRmV6MFCHXpfxwcM
-         bsTQ==
-X-Gm-Message-State: AOJu0YzH+zT9duPOSvfFXiPKXLfw82FW6Agkb6Y/lVW0kknPT57clTt1
-	sHJzWI9nMsirE2bi874BeoJQxEXN46DaPLWEI2cmnww8ddb6P1DsrGPY2qjGbxLbgsWNTB43Hjx
-	HzGkMl3fx0Eo7sPtLKnS5BoJGTfogqOBaWSUofg==
-X-Google-Smtp-Source: AGHT+IFqChznTFjr/EeidSN571ZA0nQfVJvF+Fp0E+Y2flaP6eNCXc4z1s3ADkdtr1CrUfrPgpTF+9pex3Z052b1w5U=
-X-Received: by 2002:a05:620a:618b:b0:787:1db5:f0de with SMTP id
- or11-20020a05620a618b00b007871db5f0demr2991955qkn.26.1707839131046; Tue, 13
- Feb 2024 07:45:31 -0800 (PST)
+	id 1rZvlW-00000009yDi-3CR1;
+	Tue, 13 Feb 2024 16:36:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1707842171;
+	bh=Stme3NHXDHiNzytVLTnIW18XS/qOabrFsQeujcPp0/k=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=oaok93SSV42mhGnPpjPmDUOuM7Kjh3aDN72Nff7oMEwyRuvLiwPOwjnLg6d8W9xUW
+	 YsrHNhp/7nVlyVfzrcDoqTbXFro0ZvJBc8hGCn/9gKylRmnom4URA0vbx7bbGowFBt
+	 8bzu5W/U/RLJS2j+96E7FFkZI8n5OldMxp/mnByBojsNe2sQzRQSxDQWx9PQR6sMy7
+	 vNMDcq9FmrlqNy7+L4AWXagC4q0KSG8axT/yaHti0+acZvSjkJWcgHyyqJvNy5KPzi
+	 8YuW+wWibcIyJ7FOt8bFTNC9SKC0I9ILA/xVg3zk+attjoCStLqZEL/E82y55JdsP9
+	 FYpDvPD5YoTbQ==
+Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 5C3803782074;
+	Tue, 13 Feb 2024 16:36:11 +0000 (UTC)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id F19684800D0; Tue, 13 Feb 2024 17:36:10 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v2 02/12] dt-bindings: soc: rockchip: add rk3588 USB3 syscon
+Date: Tue, 13 Feb 2024 17:32:36 +0100
+Message-ID: <20240213163609.44930-3-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240213163609.44930-1-sebastian.reichel@collabora.com>
+References: <20240213163609.44930-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-References: <20231226200205.562565-1-pasha.tatashin@soleen.com>
- <20231226200205.562565-11-pasha.tatashin@soleen.com> <20240213131210.GA28926@willie-the-truck>
-In-Reply-To: <20240213131210.GA28926@willie-the-truck>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Tue, 13 Feb 2024 10:44:53 -0500
-Message-ID: <CA+CK2bB4Z+z8tocO79AdsAy+gmN_4aVHgFUsm_gYLUJ2zV1A6A@mail.gmail.com>
-Subject: Re: [PATCH v3 10/10] iommu: account IOMMU allocated memory
-To: Will Deacon <will@kernel.org>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
-	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
-	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
-	yu-cheng.yu@intel.com, rientjes@google.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_074533_727945_9C10E578 
-X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-CacheID: sfid-20240213_083614_962201_AAE8744F 
+X-CRM114-Status: UNSURE (   8.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,26 +88,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> >  SecPageTables
-> > -              Memory consumed by secondary page tables, this currently
-> > -              currently includes KVM mmu allocations on x86 and arm64.
-> > +              Memory consumed by secondary page tables, this currently includes
-> > +              KVM mmu and IOMMU allocations on x86 and arm64.
+RK3588 USB3 support requires the GRF for USB and USBDP PHY.
 
-Hi Will,
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> While I can see the value in this for IOMMU mappings managed by VFIO,
-> doesn't this end up conflating that with the normal case of DMA domains?
-> For systems that e.g. rely on an IOMMU for functional host DMA, it seems
-> wrong to subject that to accounting constraints.
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 20bc1f46384c..12e7a78f7f6b 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -28,6 +28,8 @@ properties:
+               - rockchip,rk3588-sys-grf
+               - rockchip,rk3588-pcie3-phy-grf
+               - rockchip,rk3588-pcie3-pipe-grf
++              - rockchip,rk3588-usb-grf
++              - rockchip,rk3588-usbdpphy-grf
+               - rockchip,rk3588-vo-grf
+               - rockchip,rk3588-vop-grf
+               - rockchip,rv1108-usbgrf
+-- 
+2.43.0
 
-The accounting constraints are only applicable when GFP_KERNEL_ACCOUNT
-is passed to the iommu mapping functions. We do that from the vfio,
-iommufd, and vhost. Without this flag, the memory useage is reported
-in /proc/meminfo as part of  SecPageTables field, but not constrained
-in cgroup.
-
-Pasha
 
 _______________________________________________
 Linux-rockchip mailing list
