@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA1D0C4829A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 11:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24B06C48260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Feb 2024 11:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OH5mXVbucraEfQDYj8jm9KQz/tlk8dYahlUE0WTiJsQ=; b=1mTeFDcy+R99AU
-	8zUomb0P2+1DmcddAjQy3gz4dpqIcfXg6CO+y7c4P9MdDN5JlNIy8iY3IrunibYF4w9sq5mqSS7hb
-	a9bduzve4cRthWwAzlVz54pYWXQ6m0XWOEmsoNm7ndntvkX/jurtMYxILnRwPcYIAuvZiw+047h0n
-	uieaAMfY8d8olwLolVVjmYwjl9zjq7ZO8rEKOu0Slj9yz2RjVrQBx4e94wk94vRa66uZONtFqLg/W
-	wPODcUCmWf7RHUYkPx+Uev4hvq0OIE/7rnmsu3rsN6dLQUunH1qWEUjCwNbLFpB7To0R/zPVejqWA
-	vTJvoIQWnYIygrhzfuJQ==;
+	List-Owner; bh=H8gM24tBugEYXesBIKTS4MGBl55NhNgXeyZaoK8zewY=; b=WM/5qfUZVDFQVl
+	jMlVrodutYHIdfQLBbkkiQPhUuMRZfaM6uMwudKeByKh+nQgv02DTyk+jCg9uiy8EbvXPjrjl0eqj
+	6+/Skd8r5m4FBh9Wtyyfn3vyXVXXw8/R0dBneYrizrXrFu/WV8jT+DsLcD+fvK0XK24YHcfkSAAxm
+	DjzuD71htNJ30ciJ/1gIUu07iW3J6PLN51jByA8GH4R0bEotAhv0bVrs2qPXP2+7IoxqHvfuAL+CB
+	b2rjSbuZeXbiBEUbjrG2xdKR5vyeDK7TdErSSu54dlxBoBxBmio0xyprMmbzl3YjiC1VekC1jm1Dg
+	xaOHhwsSN+M82JEcC8XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZrKZ-000000094z4-19xa;
-	Tue, 13 Feb 2024 11:52:07 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rZrKx-00000009566-14Yg;
+	Tue, 13 Feb 2024 11:52:31 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rZrKW-000000094yP-2xbq
+	id 1rZrKu-0000000954F-2lec
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Feb 2024 11:52:06 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-411bf7e4fc0so3274785e9.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Feb 2024 03:52:03 -0800 (PST)
+	Tue, 13 Feb 2024 11:52:30 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-410db155e57so13466905e9.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Feb 2024 03:52:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1707825122; x=1708429922; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1707825144; x=1708429944; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=d/8hvfnB52WKyQuDYeSY+T60yEnMttg2LqXyXeds56w=;
-        b=ctHPiu8dnez7SVZJOBsZWD33jmLVOM/nvU+xF9wjjyR5qg56b0oj+hEasAOpgHKDk2
-         lxjOpo0f7LX9muXKNrdhf4KVJ1fI+ElUR/7SRq2qBxZogcYD0+QUqUFjNtTwRuAXxfAX
-         WrKvjVFqYFWYtl7T63Tue0uKoQeubspNZlvZN0zICaeB5vsgT3SVXuZbFkc2Q9Ha4dFV
-         p1+xeX7HPHCIhXBU8RB8hyMZaPJMlwcOA4kgFlM+wPxMrYB3PqdNL7gHwIg+pysLNwY2
-         UZLoonqAZtUl5rAIa9ga1vbNQnKvVx9VUOKetAfHZlAuHyRE/eoHUf2mCdZ5UgMITYQj
-         qT1Q==
+        bh=5d3Z/NF6a7ZPQfF9qbF966oZ0kG4Ex+JXd6p8X8s4Fo=;
+        b=OnartF8HG6KAvBV+9ilv/mMu2IYtnSFZMNZLH0A+b2irIN9rdKPf9yt+oYDRWikhEs
+         KJRv+bJP/HmSRrhcTosAX+uXvbY2UsJpp4zsaSy2EvRvFhTOKQd0Pix/GRt1OjlJfnFt
+         Q3HArFH5obGrCe75LY9Tayle6B35sZaDA0/MWbMe2CJZUGgveptdkLim0kArziYfPVRD
+         sz39/znGNeC2To/oM5ugd9lzYOue0DBDVwUkWCob+6lpBaRMTAcRZ7k3TSmSbGimkBeP
+         o6m2zf7H/PuUVzyQXWAWVVtXJPpVLc+NO8WhNYYZX71wCzcCsPWFoovLQWBvDutXFpip
+         BwWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1707825122; x=1708429922;
+        d=1e100.net; s=20230601; t=1707825144; x=1708429944;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=d/8hvfnB52WKyQuDYeSY+T60yEnMttg2LqXyXeds56w=;
-        b=IIV7xql73GeQddlD8Ys+qE2BlhyPSOJdALcdCYrwu6Jos0U6Ef8BJFY+j0B2Igq+9V
-         GNQXrTpBUxuOpXf6+qjHxhDh5upSsProKHxQBsUpXigI0lD8929c+xk1iWfFNPC47MCx
-         Mu628giNV8oB/z3FqNLGPMyocAkUq0+Mu7CFWFy+/Cwi8c8NBQZC5F1zeUDyBWeGStNC
-         tXOgu0RS3wmmxgDc8fULUQDjJq/CjaqmcOl1ZuW4zxEzj2lETYKObeyuvhBz5fqkcpN+
-         ipitQFkC3a/NwIzCiMjZTWZHq9l5DSNDCm1jhXZsmD5lLxyQ1M3asp8b5TyXBGoQX/tA
-         KvDw==
-X-Forwarded-Encrypted: i=1; AJvYcCVREzCbSd+GANpTyKJFq8J8vlbleO1vFuxP5yr5X1iJwjV6nGtpmQnIvPQy+3bRa6Nm+McgDJkrLA9ekRWv6vKZwsh5+dPknXzO45cVf6pb6sFr
-X-Gm-Message-State: AOJu0YxKKhx078OAVhyH2YVXxbc2yZsJZC2um4Bl1f197rHy7MMUY9o6
-	5S+7nxBrudWWH0ialB0Ff/k7vBe0p9IjQpu5Qz+KL4VFimwJL/Pl6GPBJXCCOtc=
-X-Google-Smtp-Source: AGHT+IHonkkurPUvJavEJpeMYX9VSCpuekmQBUsogxy3x8teNWtObawj37dzh2fc1R7htZFP4Udrxw==
-X-Received: by 2002:a05:600c:4709:b0:40e:e834:3d86 with SMTP id v9-20020a05600c470900b0040ee8343d86mr8201325wmo.37.1707825122315;
-        Tue, 13 Feb 2024 03:52:02 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXKMaS9AuJ7XQ3rkJVqEFEokJo3tjRWlKUvffNx5SXum2LJHH3Bvw0+P7i2To8z3wox0BEW8GkCSwe+SXVk3znoZmyeshQISrNsyjs7zMDUyJFL38qjuUmhfy5k4SegeW8Wp5aIs6dRoHJYx0xDPZUi8/TBF+rF36VGvWP2GTKRiaBchP2AOHZFbrJxURBoUNQf5tGycsufQQObs88oRRy4vzTCA0pxcCXin917IQaQ9nac097iwu1NoLeih0Vcc4b5VRf+pNj4zpcDfxeTg8LL0+gFv2fptmONcPLI4r5S9DaNNlKW4Naw1H80d72U7w4uHzakpGcWtRFSf8hehB+bBzJn35LwduBRv4A5QXdL3WIA4f26kw28jVrFyBL3AY4qHh80wcDU61ArYNO55urLifMR8JDj1v3Wam/JYebbFY4c/4vr88kiVXpT5AGcjvOPd+JJf3fy4doEHm6PlHFEIFJikG92FVTH2soa2Gew4rq2bcqdOJLA3uISsCqtEkPHV6RITM5ictW24MYhvREgM41McQU7s/geUbKFl/KbGSK7JUU9thr1zfQcSsTi1J9B9OZg89vKL/lwCnmCoNRtpNkSPoZJs9Jle3JBf+Aa
+        bh=5d3Z/NF6a7ZPQfF9qbF966oZ0kG4Ex+JXd6p8X8s4Fo=;
+        b=CXKCFQYtoG+CYzROgpCeh7M0gCb2t+dwXCSZkuheP9Lzq/dd0gTfCFXvxv/9QDvznH
+         96uPhpyyXFMGbG5SdFRtja5TXBecBh2rPnEQLrFwgMZJiXz5s02EXFIiQRX4RSpWo0vL
+         fSnOnDx8BEvOwznWJ92/2BwCMV9Q8TC9GpDrLKNL1b8Tgx78h35MK7PntusEtkAOxrw6
+         2PkhVzktxuXKyLuvwSV4Wku/ZLUYepJIuYSFkrfCH6GorljsrRth4Hbt8vuacdx7RYUi
+         gLA8VoZEpT8IzywtqDSQTXHh3c80zkmwLfcC6FuO5qo3loDDihrJHf5HfVMg6hMxJsID
+         grgA==
+X-Forwarded-Encrypted: i=1; AJvYcCV1R0FXRPeTnIk6ma3cNsqOuuix7u+pxMHd/Vq7LzGC77XhJ0iIAPrRyov3F7mbEbXd2hkALYpk0toYFlk54owOlotuPOnyO+G/Q3PNmR3oUutz
+X-Gm-Message-State: AOJu0YxwGRjwQPoqa4HSk0rEHBliIJ4lnD3sPbQmGWThQcKqGdz618w9
+	RveRzF6HjZjW5v4e3Hx1khzNIpXM/itVepXybUVI3nevVnE0k8fWOw/Qtxna25w=
+X-Google-Smtp-Source: AGHT+IH1dvPhAF1Xt3/TWhNxmonPxt9a1r+G7hgR3bKZsuaAkpwAgTvfN0Kf34ArTknAa1l9pZSQGQ==
+X-Received: by 2002:a05:600c:3503:b0:40f:ddc8:f804 with SMTP id h3-20020a05600c350300b0040fddc8f804mr8193229wmq.17.1707825144512;
+        Tue, 13 Feb 2024 03:52:24 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXChUvc/75NNUW6EN33sG4iwtLsk0ZiYXD+6BjO/sA3gZr7XERA51BtWD3sdapR0sVAMGwjRBdj4KcByp8Hvs1m3jxQ+vLLzRvwVFH41SPlDUK2Q5AEfEl4e7dEledSTM5bUrRfHyhL6rbqC2I0kfWhgmy08M5Mky0bkg8nj7glhBfyc2h3V0Ik1ZMLpd56EVVEzNES8qvYNTux0ZHclFJeEbgdbBWPg0aM5Du2IzmmXp12mfvMlQuoN280U0RFKiv6tMYO8ZBqumuKsjyxifh+etP9YYLrCR0tgOUjB0qf6c76kkgTJu1gTcH40dSMBgj/fjfxnr7XO7DSHcyMqs6O69eSvws/MBkRuGnuokUl435sHPLr+P50N6DbmPC4NWFPW1xJ2GaGTQyEDSlaAbik9hmUXyGcCh7Efn4tSbRQJCF66HtY7oThePcwIpzwNi/NgeiiPIUMPfLqsRQWTYW5lQM7vBt50MTdEvCQpgfduW3rLjsQw18MFwiV+d6rm09g0KjXnoKMyEbV8fL6wCPTWADgo0COCY0/cAQNYfnmZdtWL5l8sva7LJJCQNTrtQf1FQh7O1LPgacYtwyEOR3Te8z3antuM8HcH4GS64Bh
 Received: from [192.168.1.20] ([178.197.223.6])
-        by smtp.gmail.com with ESMTPSA id ce9-20020a5d5e09000000b0033cddadde6esm1090631wrb.80.2024.02.13.03.51.59
+        by smtp.gmail.com with ESMTPSA id ce9-20020a5d5e09000000b0033cddadde6esm1090631wrb.80.2024.02.13.03.52.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Feb 2024 03:52:01 -0800 (PST)
-Message-ID: <840738f2-abfb-422e-bf2a-c2763e76197b@linaro.org>
-Date: Tue, 13 Feb 2024 12:51:59 +0100
+        Tue, 13 Feb 2024 03:52:24 -0800 (PST)
+Message-ID: <b1653331-2ccf-4d0b-bc1d-a5b39e6d9a9a@linaro.org>
+Date: Tue, 13 Feb 2024 12:52:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] dt-bindings: display: Document ST7703 panel rotation
+Subject: Re: [PATCH 6/7] dt-bindings: arm: rockchip: Add Powkiddy RGB10MAX3
 Content-Language: en-US
 To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
@@ -79,7 +79,7 @@ Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
  krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
 References: <20240212184950.52210-1-macroalpha82@gmail.com>
- <20240212184950.52210-4-macroalpha82@gmail.com>
+ <20240212184950.52210-7-macroalpha82@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -125,10 +125,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240212184950.52210-4-macroalpha82@gmail.com>
+In-Reply-To: <20240212184950.52210-7-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_035204_776396_77E72C65 
-X-CRM114-Status: UNSURE (   5.62  )
+X-CRM114-CacheID: sfid-20240213_035228_737385_D9A038F2 
+X-CRM114-Status: UNSURE (   6.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -149,15 +149,13 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 12/02/2024 19:49, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Document the rotation property for ST7703 based panels.
+> The Powkiddy RGB10MAX3 is a handheld gaming device made by Powkiddy and
+> powered by the Rockchip RK3566 SoC.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
 
-
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-(with or without empty line removal)
 
 Best regards,
 Krzysztof
