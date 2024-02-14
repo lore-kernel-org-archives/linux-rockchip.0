@@ -4,98 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B168CC4829D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 04:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5B9CC4829A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 04:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w/RgG2m8aoXj0OmnunvJqNgPp56t5TysjVTppAtuafw=; b=MQk3kcbJUH/5hu
-	vufBDpt+bkk55IXVgj/7I3p6qpzYJun8uEplVE0On+vkp6mTFvpJxxdJUl3Pel2q6rKd76D+Z5pT2
-	Rmc6nidpN87zsDKeRznRxaB9G76ocCLf/QVObq9UG29zPyIK2r9g2tZB0zfvfFiP94uhbDXrfzxwq
-	zqJPy9+Cm0Zs0CwidvS6kyWZnZr674vQk9foOYMtiLbuO/2wc/XoUqMW1xkiRRB04IMqs0gGcnHHa
-	3O9SZiS2bLMK6ZOQIS6U1qOlrMnLZrGRJt2wVzDCbyV1b5LCrNh5QI6DVeS6DmySdewD1bLYnqZZA
-	NNPhza1exsYu/MA/GyWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NdsyA7qXN+hYAyBR6cVRI40rpLnUmgT526n9jZa+Vd8=; b=CrT1sQu6oFV5+NEPuWtm0DhCzj
+	vwpLr4LV+tKotTvVoCwvsYO8z8oPwbj/vtp8lp8Dfn9rU2yOTOMoKzul2q05jZOfSpF6vtGW87xyg
+	CXlBpDZKeo9JKeqZe2nmc74SlMuuShHijQFbSXbpIUco2H+jepn+GovAloBLmcDszUTiPiORpOuZC
+	NHed/V1mavnTTOoyG9yZduOkdhCEKbgvxDHM6AG7btPvbYTwEIksQNKaDV4hoH5AFuZBkrC1ZpeA3
+	WwsSlYPpDYaAW26oXlow73up4FyDIBgCF8XBaAK//PX4R14rdx8p9Re0Lmnq4AvK2/9WdhsyEVwzv
+	jDWfxpEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra6ZQ-0000000BlMx-2HBc;
-	Wed, 14 Feb 2024 04:08:28 +0000
-Received: from wfhigh2-smtp.messagingengine.com ([64.147.123.153])
+	id 1ra6fH-0000000BmVF-3bB4;
+	Wed, 14 Feb 2024 04:14:31 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra6ZJ-0000000BlGU-0j1M;
-	Wed, 14 Feb 2024 04:08:22 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailfhigh.west.internal (Postfix) with ESMTP id 274931800084;
-	Tue, 13 Feb 2024 23:08:18 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute6.internal (MEProxy); Tue, 13 Feb 2024 23:08:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1707883697; x=
-	1707970097; bh=dpyL4PQAJGDQZibg4w7Ubg9AMrLDbdkCnl9FxVnyHf0=; b=n
-	4r+WwaM94dlOXT/D2fCePU0mDJEFJKT97Kc95S9ZpC9rsOrsJElLpsvLtHH7MQI2
-	NDrqwkYBSJ0NT5lHDuTFBuVj9rVoatVxgy9o3fpzXZIRU64QA2LmK2i30Gqd1fkV
-	vJQaD7YwKx+ImdamncZk53Xsjv4N7tcsk8cRU6v5yNgoPeEiWUlsVu8s6EUuN9/e
-	ogpO3PuwYKIGtD8PuyYrnNhzTcjVUJRhd7QtYXVTgJX9xceyK7sZ7/BKGuIZfJnn
-	s3mSkrTOoLS5alPIP4vIn9YJRzgkMsttKJuqREdbBNCQ4xPdHaAUieiU8+E5eQqP
-	9wScZhOGUHJw+GrxcGkiw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1707883697; x=
-	1707970097; bh=dpyL4PQAJGDQZibg4w7Ubg9AMrLDbdkCnl9FxVnyHf0=; b=I
-	x29FDKWXdVs7BNpW0s8y2Qno9puAUdzgTYRMKcYudtYqr9LH34UXklzYBnyjzYUX
-	9cXKTFGN58Ij75uAtA8f7icUGWwsEdSy9kfCTvjr9suoLo7bwPUxxYt5o84KuuZN
-	QJYj6A/UJUAPZPAmAMwMU9CfFVCAgDOnhUx5TvigoM2UqZbT5SDILw5DoHy6aor8
-	5vQWxyzfIwOGPiTGCJMHN9xYyz16KDvymtcQJMh7YyYfz2maoZcY1ULVKartWrkT
-	vhrs3WB8K1Pnn+xLc7Del+yHgr8UIRXMG25727mcGToJb+zO6DOszW+mNk8k1fnL
-	diASMEFJ8D9T0sgWpSJnA==
-X-ME-Sender: <xms:sTzMZVQFUAkzubDY17qTsgCkmuM1203vJ_VY5oxHKQZOg9AdxaMrhg>
-    <xme:sTzMZezYQeX5vd4DhGLrGthU0T-6jJQn94vMXJQOaHsH9yQuuwUsvkahcdqE0lxHY
-    g15rUORSw>
-X-ME-Received: <xmr:sTzMZa283V77HkV4VPU3NgT5MPZR8klXM2i1Vz2i_jp8x_WPNienyRkuuKuVj7SmUVJRdTThYd-zo4B4O1-nDdZsY0ROVDXdLEg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudeigdeilecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefvihhmucfn
-    uhhnnhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvghrnh
-    epfeffuefhteegieekjeevgfdtfeethefgvdfhteefueffuefhhfefkefgkeegheeinecu
-    vehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepthhimhesfh
-    gvrghthhgvrhhtohhprdhorhhg
-X-ME-Proxy: <xmx:sTzMZdAvTNaPVIf5q8f8f4yS1dwou4jbN2iCpMK5ZxAFsA-yJRlNxA>
-    <xmx:sTzMZej_aGGJctJe_3QGJOyQ5Tevhvdn7hMCjShE4Tl1dEmmcmv4WQ>
-    <xmx:sTzMZRoCZmr52-Rf1ZrRnXMmcU4a0THBA2VKNLZfUYAzHgETZ21ayQ>
-    <xmx:sTzMZTZcLxMbZXAttWLlCVh7O971ZoRNnWXcx0lHkKXZyjfIGxKPKFiLfdQ>
-Feedback-ID: i1f8241ce:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 13 Feb 2024 23:08:13 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Wed, 14 Feb 2024 15:08:10 +1100
-From: Tim Lunn <tim@feathertop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: Tim Lunn <tim@feathertop.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] arm64: dts: rockchip: adjust vendor on orangepi rk3399 board
-Date: Wed, 14 Feb 2024 15:07:31 +1100
-Message-Id: <20240214040731.3069111-5-tim@feathertop.org>
-X-Mailer: git-send-email 2.40.1
+	id 1ra6fD-0000000BmTl-2wbz;
+	Wed, 14 Feb 2024 04:14:29 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1707884062;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+eiBT625I2qlHvYLLXothJ7tnuzCBy930SrRvWjZiPo=;
+	b=IBBinqAtdzjnhrWHXDlV6WWsjZI6lk67YJJaW7+e/Padr0qOxM3htyl2YEzq6lLLCl6Qvl
+	MIJHgmi3mR91OZXfDyjcRThuRIymA499ySpa8osdqDIfd6lxzJ0w0ff57bFgkczwTfwXeL
+	r/IZDnEao6NNlMzkjiVT1NB19AmYLj+LXwIHPd66tTse6AZ52+2xZtpMm/uWISCn3wEzZN
+	SnKa1YcGaQISsQ4VngTtCs6/7cG6OzMYcE+VGuJTSeHtwKgl9z6eKUFAt/qfaMPK0wLpNM
+	Rev1YR2x11cyCPi6/kTxEBdC2x2W+AygUOjAUJE+tr0iN70nc6GJ+MLqtaSg9w==
+Date: Wed, 14 Feb 2024 05:14:21 +0100
+From: Dragan Simic <dsimic@manjaro.org>
+To: Tim Lunn <tim@feathertop.org>
+Cc: linux-rockchip@lists.infradead.org, Andy Yan <andyshrk@163.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chris
+ Morgan <macromorgan@hotmail.com>, Conor Dooley <conor+dt@kernel.org>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, David Heidelberg
+ <david@ixit.cz>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki
+ <jagan@edgeble.ai>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh+dt@kernel.org>, Tianling Shen
+ <cnsztl@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/4] Fix vendor strings on Rockchip boards
 In-Reply-To: <20240214040731.3069111-1-tim@feathertop.org>
 References: <20240214040731.3069111-1-tim@feathertop.org>
-MIME-Version: 1.0
+Message-ID: <c03220db663279c9e83bab81f3d829e7@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_200821_319829_45764DBD 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20240213_201427_935672_D278811F 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,35 +72,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Adjust compatible string to match the board vendor of Xunlong
+Hello Tim,
 
-Signed-off-by: Tim Lunn <tim@feathertop.org>
----
+On 2024-02-14 05:07, Tim Lunn wrote:
+> A couple of rockchip boards incorrectly list their vendor as Rockchip
+> when they are in fact not manufactured by Rockchip.
+> 
+> Fix the vendor strings to correctly list the manufacturer
 
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Just checking, have you verified that the old, incorrect "compatible"
+strings from the board dts files aren't used anywhere in the kernel 
+code,
+such as in some drivers?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index e7551449e718..e26e2d86279c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -14,7 +14,7 @@
- 
- / {
- 	model = "Orange Pi RK3399 Board";
--	compatible = "rockchip,rk3399-orangepi", "rockchip,rk3399";
-+	compatible = "xunlong,rk3399-orangepi", "rockchip,rk3399";
- 
- 	aliases {
- 		ethernet0 = &gmac;
--- 
-2.40.1
+Otherwise, for the entire series:
 
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+> Tim Lunn (4):
+>   dt-bindings: arm: rockchip: Correct vendor for Orange Pi RK3399 board
+>   dt-bindings: arm: rockchip: Correct vendor for Banana Pi R2 Pro
+>   arm64: dts: rockchip: adjust vendor on Banana Pi R2 Pro board
+>   arm64: dts: rockchip: adjust vendor on orangepi rk3399 board
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 8 ++++----
+>  arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts    | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts  | 2 +-
+>  3 files changed, 6 insertions(+), 6 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
