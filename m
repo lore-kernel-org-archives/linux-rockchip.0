@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50AD5C4829A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 04:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F23F8C4829A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 04:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hjPy8YeOH2/My4l5+1zVJqG5C33wetzpx97r2Kl7AQY=; b=MAWDVe+VtGNo4g
-	DSdout1Jf5UD2ykDuq1+Pw+sJJ0nA3Dag8bdUk/gGCYbeUP2m4+Utjvjs6kVTkquJcR5tZvYiFdPh
-	DBr0lPShsuXzq0dOJlFIUS9LBuyBXak2O14TbMdeFxfeZrlX3PYYmWn1CLghvF1NOefGMeiaMNUBc
-	90oJ4n/xjiLmuBZv01j7uszhdxQ3JeOJGDZk3J7ITno4+k+ca32q2EbxBrXEaoRFY64pGUgojb3dT
-	VipBmbANOy8pfXsV6dIAXZKWv5dL8RAlX2d60EbQvuyrdX2teZKF/HC1FBNAbHmf+xoT2Ifp3hoKh
-	7qV3mNj1Ih9X8hedQcww==;
+	List-Owner; bh=at8W6s9G124WwBTolYwd1IyrEQe1R/naFSQBJHnMlGM=; b=xb7wPr0NWItsLZ
+	aKPGbUotvq+V76zJilbTP/jBd+0Nu166ebj0ftsgdSdKwT4DKPR5puOgT5rY398OCSLKOF6jhrkqD
+	gRDRGqfa1KIYYFDna6WklnU8SIECV48qw5B5JvkZrIT00etEPaWz51f0d/s9Ondv+o2Flte8qpozP
+	yYpCeBehL7kZqa+xF23tJvHlbnHMOMR4eVcE/UCfZyPCXty0sHnS+9KCTp7dpBvRu/r6Brr2OpqdN
+	dDtqP4rHGqX/6L6pySMtORsP839DNErGdE+gywkF4QYMuLcPdgLvfzLbFjHg4++W1QN/RJjICK6dE
+	ji1ceMhLEJcxUGLjxO6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra6Yv-0000000Bl0G-34Vl;
-	Wed, 14 Feb 2024 04:07:57 +0000
-Received: from fout4-smtp.messagingengine.com ([103.168.172.147])
+	id 1ra6Z3-0000000Bl6T-2aHO;
+	Wed, 14 Feb 2024 04:08:05 +0000
+Received: from fhigh7-smtp.messagingengine.com ([103.168.172.158])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ra6Yr-0000000Bkx3-3ifj;
-	Wed, 14 Feb 2024 04:07:55 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailfout.nyi.internal (Postfix) with ESMTP id DA17F1380098;
-	Tue, 13 Feb 2024 23:07:51 -0500 (EST)
+	id 1ra6Yz-0000000Bl2p-01s0;
+	Wed, 14 Feb 2024 04:08:02 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailfhigh.nyi.internal (Postfix) with ESMTP id 4B07711400A9;
+	Tue, 13 Feb 2024 23:08:00 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
-  by compute5.internal (MEProxy); Tue, 13 Feb 2024 23:07:51 -0500
+  by compute4.internal (MEProxy); Tue, 13 Feb 2024 23:08:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1707883671; x=
-	1707970071; bh=GWcf2ViSQbSAWLVPyT3EBLhQvOVzCrCtXD9HBxRw93M=; b=R
-	BK2IUaCtxJeprbY7POmyAJaf98rvLnu4ZDHhe51nQGhMGk231n8siC/4VY6BiGg8
-	7Udkz9Heh0AGyjehkJBAYR/Xn1twwxXyQVpAkH30hlQjNkxxd0G2bK5LWFJ1dfs4
-	KiTYpK/rs4vUpP3/iBG/UCxlrOlDut8z1eFaTP36wC21JF4IfwL0xfv/xUUiMp5h
-	pmhNyHgLlqP7ndds59bycGs4YXI3yIAqNaIs4cp9+r5DPskL5CL85qzrHEMhuHmm
-	35hl6VdFMdLs9QxgjnQv/axkr+UGfqVAD5z2hk5b8X/dRxVlezJ76W8/iL0SFoT5
-	5vePfC4uXtln2lCqzUMVQ==
+	:reply-to:subject:subject:to:to; s=fm2; t=1707883680; x=
+	1707970080; bh=9WoQRLE1KfwHraU5Vv9QP4/yV2f55MUrS1IyZ9YV7t8=; b=Y
+	8BsDNGwR4eDbnfQKt0Sf6BqKYqAbfClQduewmshOvGqqiEJzqvg87RGmGQFX0m7x
+	vTGpEwMARs9aqJvb+21/JT6zxKScK8z+ZiE1A3SKy0pbKBroNI2JCSPkhkMilRES
+	P1IOwN9pLOhDfDb0rJ9S4OY8K9IAOmJsNVFgRRmLwaVmoMHBxj+j3+GOWxnhh+MA
+	/LX3oAZCMvHI6aS/tN3Ni8srUWi7wHRajHjVY2Y62t8QFXxaCeXEInIgF+xbp6jL
+	T6xtp+6rckZJvGFvsh87HIgAhae1iHz0jgmb5lEIQU6iNO9+G7Pk24Pa6gWoIqQT
+	N5AqwtOsmDWdYxHgl/gRQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1707883671; x=
-	1707970071; bh=GWcf2ViSQbSAWLVPyT3EBLhQvOVzCrCtXD9HBxRw93M=; b=s
-	j/mhshvQTEiXgCqN9mNQ5t4vSadKR9JMlGVn6MbFwy0A/DvvGeKeDM1F1d0j8J7u
-	+AO1Y94eBfeCokrRXRG2QZMmzEeRrjSu21ta2oHKGavZMi/XvkhUnW2iUZcJnWAl
-	8ClBFx1PkHh6cN8gIr9dzAJmAaEbiRh6rX3CcjfaqlHFh7TzwmEm7F4YfBTxBNt+
-	N5WqcQoxxt2Ih9ibnl+8Eciy4lX/68mDxnxrTMHofh7YVf0HBvX5Ry1ANopQP6UK
-	mUPhAxFMoHXdV4+wgqmtDwLpQUBAWRLqyNM94RGk1S5y7VvhSkp4QJ060Rx7anVH
-	kc/86PgzbewDkT7aA46UQ==
-X-ME-Sender: <xms:ljzMZUnwfskBm2GxLZq4IbaJ_cTey0wqGd79RL5mBZiKq1rvd0pQrQ>
-    <xme:ljzMZT0BMPA0HcfLzrwXSxwidRdsaXFPbK2B0_aSkfBmm4I0tWl8y2HCB0b_ph2Je
-    f0qfIAYzA>
-X-ME-Received: <xmr:ljzMZSqtKWeRZouAVRGhpFcNXHr0b8Sg5J2w3sljJYoXN-fYavbMnzRjqNVY4iejr-nUKIjC0diZhJd5sbogDhehNonT_I46rrI>
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1707883680; x=
+	1707970080; bh=9WoQRLE1KfwHraU5Vv9QP4/yV2f55MUrS1IyZ9YV7t8=; b=n
+	TIrNl4MuGm5djX+d7glB2+8g4c4xnLnleF8Nr2BlmraSmtcuF8k0kbsIYp5eoLX3
+	LotcRQJP27dDkPu6GmkjKKO1wVe2u6uThSbhVdfvH7y60dLD8f+5EjwOVoCe6OB4
+	oTmBkEjKAyVuyZzbzwmN0/vAs7DZzntIRbQo5lTJ2o8TzWqAp7q58w6ZVWf49eqK
+	M+SZj8i0Cy9HpQImiZY+7qMN1QqFHmRxvygs8F1SmIIID8qB2Xe0BHXWdRCvpSiO
+	IKBHDn8tDKxoXYXPpib3eJ9r7+oMw0aAkJAe1OV4c9a1FMXqIF7mch880U9Om/Bw
+	4uSleqyKWI+0KCVRuSEEw==
+X-ME-Sender: <xms:oDzMZZrqDLVVmTtxG1T7VdFI1MqJnR5xGJgrgxxeCE1ZOh0nt62zQQ>
+    <xme:oDzMZbpbNMuZz6dQojwpiRXxhogPkVZC4pa-k5T7OPlG9wNurFiOQXtm3K0-4uqcJ
+    Dzk19yx0g>
+X-ME-Received: <xmr:oDzMZWOCjGIdQmYplVjGTK_9mK7fpOXTYUsffLzMvAZ8X9qHkkrmB7TJBhWBjs0IzyJffBIE3fNCwJq5NBj_-Jll9wL0vB46jUY>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudeigdeilecutefuodetggdotefrodftvf
     curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
     uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
@@ -67,14 +67,14 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudeigdeilecutefuodetggdote
     epfeffuefhteegieekjeevgfdtfeethefgvdfhteefueffuefhhfefkefgkeegheeinecu
     vehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimhesfh
     gvrghthhgvrhhtohhprdhorhhg
-X-ME-Proxy: <xmx:ljzMZQnj7bHbsWDK3g1bf1v43Q0N1s0gSR7INWMnIw5OCuY7G8ZJMA>
-    <xmx:ljzMZS2F09Iwxg7c6nfYJ7_4FPgeUy5GvgInn9KPiiYEXhlFlBEKBA>
-    <xmx:ljzMZXu-GBoF1H3PxdOYqtjQxT9gGc4WYQb99zBaZIcKxBcsi68o0A>
-    <xmx:lzzMZcOQhcTjQURBhesDzEwxBXCGNtetNs1Yr2b6HSDLlZuBQo0FhQ>
+X-ME-Proxy: <xmx:oDzMZU7iH4ULHjO8dgYE84VNVdEtgK-JBk29BW0KF7o__rq_K1znNA>
+    <xmx:oDzMZY4zEdRHzxaFcbQz56YNu5DDa7hXrU8mHECiksDMwOiMzPR7Jw>
+    <xmx:oDzMZcgjc-t9M3kbD7rEea8QJR70Nij0JNOiLFA3TM1VKjYGwSYQPQ>
+    <xmx:oDzMZXTi_w9jFk5RyD6URFZYxUSrtH8dzeZUYGhAgnn-gEnpxRaFDQ>
 Feedback-ID: i1f8241ce:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 13 Feb 2024 23:07:45 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Wed, 14 Feb 2024 15:07:43 +1100
+ 13 Feb 2024 23:07:55 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Wed, 14 Feb 2024 15:07:52 +1100
 From: Tim Lunn <tim@feathertop.org>
 To: linux-rockchip@lists.infradead.org
 Cc: Tim Lunn <tim@feathertop.org>,
@@ -90,16 +90,16 @@ Cc: Tim Lunn <tim@feathertop.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] dt-bindings: arm: rockchip: Correct vendor for Orange Pi RK3399 board
-Date: Wed, 14 Feb 2024 15:07:28 +1100
-Message-Id: <20240214040731.3069111-2-tim@feathertop.org>
+Subject: [PATCH 2/4] dt-bindings: arm: rockchip: Correct vendor for Banana Pi R2 Pro
+Date: Wed, 14 Feb 2024 15:07:29 +1100
+Message-Id: <20240214040731.3069111-3-tim@feathertop.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240214040731.3069111-1-tim@feathertop.org>
 References: <20240214040731.3069111-1-tim@feathertop.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240213_200754_014603_06DCBF9F 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20240213_200801_202473_BA6773CD 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,7 +120,7 @@ The vendor for this board was incorrectly listed as Rockchip. Fix this
 now while they are not used anywhere, in the future they may be used by
 bootloader to select dts.
 
-Update the vendor to Xunlong.
+Update the vendor to Sinovoip.
 
 Signed-off-by: Tim Lunn <tim@feathertop.org>
 ---
@@ -129,21 +129,21 @@ Signed-off-by: Tim Lunn <tim@feathertop.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 5cf5cbef2cf5..29f922f3ca4e 100644
+index 29f922f3ca4e..89261b9601ce 100644
 --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
 +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -626,9 +626,9 @@ properties:
-           - const: openailab,eaidk-610
-           - const: rockchip,rk3399
+@@ -940,9 +940,9 @@ properties:
+           - const: rockchip,rk3568-evb1-v10
+           - const: rockchip,rk3568
  
--      - description: Orange Pi RK3399 board
-+      - description: Xunlong Orange Pi RK3399 board
+-      - description: Rockchip RK3568 Banana Pi R2 Pro
++      - description: Sinovoip RK3568 Banana Pi R2 Pro
          items:
--          - const: rockchip,rk3399-orangepi
-+          - const: xunlong,rk3399-orangepi
-           - const: rockchip,rk3399
+-          - const: rockchip,rk3568-bpi-r2pro
++          - const: sinovoip,rk3568-bpi-r2pro
+           - const: rockchip,rk3568
  
-       - description: Phytec phyCORE-RK3288 Rapid Development Kit
+       - description: Sonoff iHost Smart Home Hub
 -- 
 2.40.1
 
