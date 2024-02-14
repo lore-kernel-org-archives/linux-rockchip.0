@@ -4,116 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB4CCC48BC1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 17:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E970C48BC1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Feb 2024 18:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wnhMpumt/wMxxV6KLBUIyPa6SZdyqc/gzsWQzrZzjOE=; b=IFvPO7ojdy1fgR
-	ge0p+jFFPiw8tnVi4Ud+zHrtY54tMdNyTRZL8kfssHbBJy2ycwhyjM+CT8uYm0+lvKze7HFqOVw3p
-	X6tlkrBzBX4ProE1haQhwSb6vTpw5yCIZVeNPEdAIGpasVmyl8Ds4zbtWpiF6+/Uz/g6hWmGu6o0p
-	K07LO8gmr9m/xUYuEbyEmQ0WcuuhtNmHCz6H+4A+Gl7vHSNzb0A565yVAiui5X0Q7TueqPZPheJcb
-	lvfJzs0qvUw5585FSQ9ccvzo9+DKHocJECgAIbvV5cx8Iao2G87Q+L8XMoO+30rBG189iGzRUYL47
-	sKWhvZxLXs4falBLuS/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VD1BDQAnGHMvEo5pkjcVFEUFLWNrSHOTRhvZqT7sepo=; b=YTGlYn5pmlj00QSmxQ7pEAon/m
+	NpcsYRPPpKNmcIWZB5O+CRILWFqoHDgdeVAPX7wagPFnhJyM9V2XJIUldg272A+5ZksyXOoEBwcIs
+	uq49Snt/YgfxnLXRNxuZYeo2p6jBC4v2roC8FRAHyLqbDJc3+zKOJLIasICj0RojykOr7ObrPWJch
+	3/uWrIwJHrVj/dHs82oU+94t/VnBcrKKYV4BTzDarfY0/PyeyHHZ8o4yOBcq93oW6qV/Na/jX9JwZ
+	Du5t0f2Bkv1N2/3O46Ol3yh4V5gqOg7za7KqIRlc5WrPNE5JfYqMMMdduQ3cn11c6SeQQPlMr5NAc
+	/7c9MCBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raJWP-0000000DpUm-0vME;
-	Wed, 14 Feb 2024 17:58:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1raJkE-0000000DtDu-32t2;
+	Wed, 14 Feb 2024 18:12:30 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raJWJ-0000000DpQx-3YV3;
-	Wed, 14 Feb 2024 17:58:09 +0000
+	id 1raJkB-0000000DtDB-1V9q;
+	Wed, 14 Feb 2024 18:12:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1F320618BC;
-	Wed, 14 Feb 2024 17:58:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B0BC43142;
-	Wed, 14 Feb 2024 17:58:02 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id AA0C4CE1A35;
+	Wed, 14 Feb 2024 18:12:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87DA1C433C7;
+	Wed, 14 Feb 2024 18:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1707933486;
-	bh=O6pRZuRL+P52lLJRfk2VJAJRJdaaIOt/DzPXTAga/fo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C1odWszCRzcHQNPJoWdBZCz4vsARycHIxJSZYbMEzn/dQVOlrZDiihzitCWjht4I6
-	 RltR25Y4se3uxyDWa8TQyPv/15diajOSK3DJk9YvgisQZ0tgJ8bAVi3kdDDNKhzfOp
-	 wKnHjfx2GQLzFm3QUEdVaxvauJgJbijuwtDW2GvC+DNlKT0UqSS2by/RJksOtBLB7K
-	 uZALUjCDMGmyQ0TTeb2X92j1A9whF/QakfZan/K1jUn8AT+C9MZZYPm1LSLTbDBCWE
-	 dFd3vHCrZ5ThbPpKQdqU+RpIZcmaLY3cE88p7wGVbukAgO3W1Qp73F1RtUQcMNNFmt
-	 VgtYR9rd2Dkqw==
-From: Bjorn Andersson <andersson@kernel.org>
-To: LKML <linux-kernel@vger.kernel.org>,
-	Mark Hasemeyer <markhas@chromium.org>
-Cc: Sudeep Holla <sudeep.holla@arm.com>,
+	s=k20201202; t=1707934344;
+	bh=CDlqvcoUaaFjZ++J28H0zcJUMfv3V3DXrfQN3Lt2XuM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FhmO2/GBR4pf1wnPFAUrJMYYOsp1eWlMvm9qhAcjmfPzxb0H7Nd8STbTB38vJc8BW
+	 /jPYSgEYnYxBmeAtTgMQHh/EJVBMmJryXTm/DbLiOBzTqPuXupLG6sWjwkE4Gb41m8
+	 zEvigiSmLlhOLmOl3uYM8r3m5Stb0rMs1hR+kDEAGkHVKtXklHpObmo7526vO4AfnA
+	 Y6GsRdd/T7IiO6BkyVSi/f7RBBwjyAKqKmb6vMxniPQXMHoxsOC2AwP8JFp1q89NXX
+	 XiPsT42i1Oy3jmB0xfSz0An6xDCKX6YGPaSSU+cjBMfdbZxFVjlTfjEAUgvNbSMPcq
+	 X6ARDw/uAme0w==
+Date: Wed, 14 Feb 2024 18:12:19 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Tim Lunn <tim@feathertop.org>
+Cc: Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Raul Rangel <rrangel@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	AKASHI Takahiro <takahiro.akashi@linaro.org>,
-	Alexandre TORGUE <alexandre.torgue@st.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Baoquan He <bhe@redhat.com>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Benson Leung <bleung@chromium.org>,
-	Bhanu Prakash Maiya <bhanumaiya@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
+	Chris Morgan <macromorgan@hotmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	David Gow <davidgow@google.com>,
-	Frank Rowand <frowand.list@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	David Heidelberg <david@ixit.cz>, Heiko Stuebner <heiko@sntech.de>,
+	Jagan Teki <jagan@edgeble.ai>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Len Brown <lenb@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Paul Barker <paul.barker@sancloud.com>,
-	Prashant Malani <pmalani@chromium.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Rob Barnes <robbarnes@google.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Romain Perier <romain.perier@gmail.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Stephen Boyd <swboyd@chromium.org>,
-	Takashi Iwai <tiwai@suse.de>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Wei Xu <xuwei5@hisilicon.com>,
-	Wolfram Sang <wsa@kernel.org>,
-	chrome-platform@lists.linux.dev,
-	cros-qcom-dts-watchers@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-acpi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: Re: (subset) [PATCH v4 00/24] Improve IRQ wake capability reporting and update the cros_ec driver to use it
-Date: Wed, 14 Feb 2024 11:57:34 -0600
-Message-ID: <170793345819.27225.11284824552535043524.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240102210820.2604667-1-markhas@chromium.org>
-References: <20240102210820.2604667-1-markhas@chromium.org>
+	Ondrej Jirman <megi@xff.cz>, Rob Herring <robh+dt@kernel.org>,
+	Tianling Shen <cnsztl@gmail.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/4] Fix vendor strings on Rockchip boards
+Message-ID: <20240214-moocher-womanless-21201b67b76d@spud>
+References: <20240214040731.3069111-1-tim@feathertop.org>
+ <c03220db663279c9e83bab81f3d829e7@manjaro.org>
+ <e952d127-b12d-4b5a-838b-807a876db707@feathertop.org>
 MIME-Version: 1.0
+In-Reply-To: <e952d127-b12d-4b5a-838b-807a876db707@feathertop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240214_095808_032864_84EB4C01 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20240214_101227_591439_0CAB1E55 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,41 +77,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5514118381394276653=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 02 Jan 2024 14:07:24 -0700, Mark Hasemeyer wrote:
-> Currently the cros_ec driver assumes that its associated interrupt is
-> wake capable. This is an incorrect assumption as some Chromebooks use a
-> separate wake pin, while others overload the interrupt for wake and IO.
-> This patch train updates the driver to query the underlying ACPI/DT data
-> to determine whether or not the IRQ should be enabled for wake.
-> 
-> Both the device tree and ACPI systems have methods for reporting IRQ
-> wake capability. In device tree based systems, a node can advertise
-> itself as a 'wakeup-source'. In ACPI based systems, GpioInt and
-> Interrupt resource descriptors can use the 'SharedAndWake' or
-> 'ExclusiveAndWake' share types.
-> 
-> [...]
+--===============5514118381394276653==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="xM0QSn4CMXaJ9cxt"
+Content-Disposition: inline
 
-Applied, thanks!
 
-[14/24] arm64: dts: qcom: sc7180: Enable cros-ec-spi as wake source
-        commit: f172a341ec1f66bac2866720931594e81f02ad4d
-[15/24] arm64: dts: qcom: sc7280: Enable cros-ec-spi as wake source
-        commit: a4b28b9ecc99673da875e214b1a06f1e0f0a24fa
-[16/24] arm64: dts: qcom: sdm845: Enable cros-ec-spi as wake source
-        commit: a7baa25bfbfdcd4e76414f29ab43317ded8d3e6e
+--xM0QSn4CMXaJ9cxt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
--- 
-Bjorn Andersson <andersson@kernel.org>
+On Wed, Feb 14, 2024 at 03:27:08PM +1100, Tim Lunn wrote:
+> Hi Dragan,
+>=20
+> On 2/14/24 15:14, Dragan Simic wrote:
+> > Hello Tim,
+> >=20
+> > On 2024-02-14 05:07, Tim Lunn wrote:
+> > > A couple of rockchip boards incorrectly list their vendor as Rockchip
+> > > when they are in fact not manufactured by Rockchip.
+> > >=20
+> > > Fix the vendor strings to correctly list the manufacturer
+> >=20
+> > Just checking, have you verified that the old, incorrect "compatible"
+> > strings from the board dts files aren't used anywhere in the kernel cod=
+e,
+> > such as in some drivers?
+> >=20
+> Yes I checked that, there are no remaining references to the old/incorrect
+> compatible strings in kernel code
+
+What about other code? Like a BSD or a bootloader? If nothing is using
+them
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+Fixes tags I think wouldn't go amiss, but I'm not expecting a resend
+with them.
+
+Cheers,
+Conor.
+
+--xM0QSn4CMXaJ9cxt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZc0CgwAKCRB4tDGHoIJi
+0rnIAP4266uBVs8L2WyYwA8DkZLeNbpLCOsYZojqX3g8t5zn2QEAmlVsc/c21nrD
+IOXryV8IFMuPO4v9U4rwGrS6mo9QQQ4=
+=kr05
+-----END PGP SIGNATURE-----
+
+--xM0QSn4CMXaJ9cxt--
+
+
+--===============5514118381394276653==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5514118381394276653==--
+
