@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F85C4829E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Feb 2024 11:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891B3C4829E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Feb 2024 11:04:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r91F3LVkLviG8SfGGCNFXoogpPRZ4AqxvUWRNyOt61g=; b=1IopAR+AOsB33g
-	JqZbhn8tIdVH4dsadNFUFJeZgaYafiR1+lYA0dA10UKjNBVfoSo54ZQGnKuXkWI2jGm0u5u58OIkc
-	W0tSHGBgejCzPRP3vOwzqgVdQUQdqggvEo2x3JJyw53et9MKWoxjRz7SAu5BebiKTbL7UgjoJFzL0
-	OVJV+v04nwTYea926vVTuA8HUDySjQMWtVXImmsPhLa29nZHerpU7hvnZ0ka63xHfrtM0LhoyNcJF
-	dTo7IlqhBFtd0ueUVygGx5sKnkOCdCcWdVgr883PyzLJvSkF3x028VcayTl+/ZE62qBEFw/rlFUvM
-	u9jrMr7mFEoKe3bgtzWw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3PHFWFAlpySuCLa+T8eZ4dtNqIxBN4jTwGXy2e0n6ak=; b=MtLts5/tpGVqhV
+	egz93OpchvLDA7LYZ3yiJ72q3lTo7SqHYAIvFoEou417MBiTXKrux2B2Ie0wJVa4Bdw4d0Udcr0rY
+	nbCWWZcBke/oEvZatnnA8kDPGEOfnkrIlpKuVGNCDUuLMN0ymDJw8s2UfM92Cj7Yop5FukZwKLSU7
+	qjcqxZzbFNlkHzJPmLZqnJ2YN5vD0QzYdraphHwCnD+P6e0VJSNKntRN6T0ghc4pJjXIBdckGw2j3
+	c0Xj7+OZtCXUb2HbGaTJjwxgHrpmlPqb2pAcFF9lWAO1M5FzPOkkYpYoVAwfW8CuAsbmo83xf+Xz5
+	DLoz4ctOsC8lMOY6pjXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raZXr-0000000FwEr-05Pw;
-	Thu, 15 Feb 2024 11:04:47 +0000
+	id 1raZXx-0000000FwH4-1LCg;
+	Thu, 15 Feb 2024 11:04:53 +0000
 Received: from fhigh2-smtp.messagingengine.com ([103.168.172.153])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raZXl-0000000FwAN-06vw;
-	Thu, 15 Feb 2024 11:04:44 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailfhigh.nyi.internal (Postfix) with ESMTP id 1F28011400F7;
-	Thu, 15 Feb 2024 06:04:36 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Thu, 15 Feb 2024 06:04:36 -0500
+	id 1raZXp-0000000FwDZ-0YU5;
+	Thu, 15 Feb 2024 11:04:46 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailfhigh.nyi.internal (Postfix) with ESMTP id 8A60B11400F9;
+	Thu, 15 Feb 2024 06:04:44 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Thu, 15 Feb 2024 06:04:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=feathertop.org;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:message-id:mime-version:reply-to:subject
-	:subject:to:to; s=fm3; t=1707995076; x=1708081476; bh=orAhrN5tQs
-	DXbvphAeqrgPill/y0dP9Y2EbQICt1uWo=; b=Ggu6prDg4x0ShAuxim68z5iUbD
-	cr4CaiuOpZcs1TjNWdQHpznuKCoH3WT1VwkM3ef4goac+Fi1dr+rPACf8Bz+zugS
-	VG+xT4FABA2HCfCCUZMi/LUev2ovqEhXXCBU3YmF8V9gnazo7FR7mQhsREqvWRWn
-	dEm/1cQJxdq689LfOmMjPa6gExg3bBJYM+bE7K07iNKkwps9oagDOaJSwCbd9Hrl
-	W4yusGNHg6XnIV3+Ad8MK9qEx1lLWlT0Ekuxj+huLmw0VLJsIYBc0m/1/KUgYigK
-	O5KGD/m9kNIh7BXZ2nVh/G6SY8fUskqWzbzEHuso7M0PXoxUxIZufHEXY7zQ==
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm3; t=1707995084; x=
+	1708081484; bh=hqHAzAJRp5parpjb2dKyLOoSMeJsSciKAVogkFU4n+A=; b=D
+	NHvgkzYEPk8GTM9yH6mWs5KT75juXzU1Xy9lXVPDOROGK/R+u/SWC/b+blV1y3Er
+	7bEgxVvVgJ2XrFJ6LZgmphbiRnAQJE3fSOsvKczogEEWs1A5KS3rfxl5iAcrksng
+	9uJTro37kW+pJq6sFtGWTPUvNL7cM+kmqrB7j1DeG4FQDIZsBfO84PJu/vEltKzj
+	1yWhjvePWBjZNoK51FoR8cT8gxFhC0T0X+lgzxQVKWqfYlo/s4YCDzGKrgfNQ3Ng
+	g6ZVHNgBP5Itxnc1Iu+BNXqoMZ4GlAKlShwBzm6vIhUKWZEJYT+v3SbM/CftbpOI
+	QvzpPxNkPYJ4BOtk+eK5Q==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; t=1707995076; x=1708081476; bh=orAhrN5tQsDXbvphAeqrgPill/y0
-	dP9Y2EbQICt1uWo=; b=b0vnoD0WgyQMyv5jfXcEwD3TNBmS3HyTjeYoIzSd62FX
-	bhgALGKTGr2qU22gfztZE5Z434L635Sr8PqNoRtxPQo2ut2WcReVRoUCmJEZVyEI
-	Wq4S8SStCCE11VIfh70LxdEsagBp7lMlTK+MMXfN81nSory+LR2vl8epxG1Sd/YG
-	ar5Cc2JpAq49ZhNN97VXYBq4WlwCvD/M7JAuONXFrrEk4imWIDLr1+m2osBWsUwH
-	yHhrs0lL2JjA1raNEoiIM87F/mw4f6G1EpnrD9ka9DfHWYSin0K0K3FIiEFBlXTv
-	nwqkPhivCnpu8DwnOM8c4umqnrtiZZjUFDGVlDVOVw==
-X-ME-Sender: <xms:wu_NZXr-8RH-TLFNnrHYIF-Hw6QShUOmLJz63JnBZGdx26lCXlL9GQ>
-    <xme:wu_NZRoSGbvCd0AjQw5eJrvEOAfxS1PzjbeJddRR6cKlDwqeWDTKhUXboMakmrQxM
-    iG5Bb4ZKw>
-X-ME-Received: <xmr:wu_NZUNpSGM2o7zhuGJNCIDRKScx4H_3EdN1hmjplPfOgcdj4Atdtg6cHWFG5E2bUyaz65p7mnk9VxKTjCM927wiNAPqS3NQ1rE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtgddvvdcutefuodetggdotefrodftvf
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1707995084; x=
+	1708081484; bh=hqHAzAJRp5parpjb2dKyLOoSMeJsSciKAVogkFU4n+A=; b=I
+	RZkryi8Ke/Jwufb+MQJO1MHvX4AIHt6l46gM9MKkh1fvwfHgpXTI32aH8iWGVYH+
+	5HKQ3QXLE1Tgmv4/N42emfZ6BqYeihj+4J4uenCBr6UzoQpWjzw25lIaqPzuV5FU
+	fludYWQbLoA4aqb5/wnZ3PQeGbmxhOnKITvFS8XNgHSt7n1jCWloTGTCDFEn0ewP
+	YpOQwiYYcDd3ng0tyZMUpMX5E/QsHuJ00pDIBvNCI1+y6NwISBOYJicnKIvCc+Oo
+	IQCSMY4XkFUMrQvmkR3XM+owg2lW42Gzni1Gaz76zE7EGqEa905+fKOnxLjUTUcx
+	mY/ogjD9ATFLmTT22j4bA==
+X-ME-Sender: <xms:zO_NZQ9pQoafWuWOnXDmgNEe5NBqxTKwJpMe2iYQsk_OmDbYux-NYQ>
+    <xme:zO_NZYtRdPgl4w0cTxPICMjlHVnA2xXHIUm7SvbomjJk3aFEihWGPtTKGx2WSfQRh
+    _9Oy4b6LA>
+X-ME-Received: <xmr:zO_NZWDyTfgf33-XtLKc9KSAf_1DjUM08tYcJtc2Wp5HHSu350BGyN16E8gu-dr3pzJg6KLDeSzbD6xEpHh1IjyXItxx6QVVNtk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtgddvfecutefuodetggdotefrodftvf
     curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
     uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvihhmucfnuhhn
-    nhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvghrnhepud
-    fhtdevueejjeejffeivefgtddugeefffevudfgteetheduveetheetgfeiiedtnecuvehl
-    uhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimhesfhgvrg
-    hthhgvrhhtohhprdhorhhg
-X-ME-Proxy: <xmx:w-_NZa5vDr0NOxTJ61bEs2mVMddU34KSH1BDyPyhiOy_yjtyzq_iow>
-    <xmx:w-_NZW6lJ4xNKTSLd5q9sJkmQwHDK6GPzIr41Zhx3oizPvmiCFKW9g>
-    <xmx:w-_NZSjg0LHwppK0-sBYcc0nqo9FVFFrWocQw85Cs0TqJ6xURltJIA>
-    <xmx:xO_NZfHXdhUHCCE2UE0H9_Q4Gp1W_PaKvzhDoFYYY-aEXp9RqX4ivw>
+    fjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefvihhmucfn
+    uhhnnhcuoehtihhmsehfvggrthhhvghrthhophdrohhrgheqnecuggftrfgrthhtvghrnh
+    epfeffuefhteegieekjeevgfdtfeethefgvdfhteefueffuefhhfefkefgkeegheeinecu
+    vehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhimhesfh
+    gvrghthhgvrhhtohhprdhorhhg
+X-ME-Proxy: <xmx:zO_NZQffVbYi2mbZ7VI5A-6Y7L4_vt9RBm6z8QHpnz-txczs6Nv6XA>
+    <xmx:zO_NZVMEqLF-Zw-vDK2h5uZMOrZUFl_CzG7n2_E-3RAx9M-W3Z6BLw>
+    <xmx:zO_NZakF1w81Q2glqMLLZzbCJRHBc6xv4qDM_KEsGw7bNwtlF7fVxw>
+    <xmx:zO_NZYrPzMMp3IRmRurbE-mROc9Cq-JDUVwaSOxnNDXWgBk-U7qP2Q>
 Feedback-ID: i1f8241ce:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 15 Feb 2024 06:04:31 -0500 (EST)
-Received: by feathertop.org (sSMTP sendmail emulation); Thu, 15 Feb 2024 22:04:27 +1100
+ 15 Feb 2024 06:04:40 -0500 (EST)
+Received: by feathertop.org (sSMTP sendmail emulation); Thu, 15 Feb 2024 22:04:36 +1100
 From: Tim Lunn <tim@feathertop.org>
 To: linux-rockchip@lists.infradead.org
 Cc: Tim Lunn <tim@feathertop.org>,
@@ -83,15 +85,16 @@ Cc: Tim Lunn <tim@feathertop.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] dts fixes for Sonoff iHost
-Date: Thu, 15 Feb 2024 22:04:23 +1100
-Message-Id: <20240215110425.934740-1-tim@feathertop.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: mmc aliases for Sonoff iHost
+Date: Thu, 15 Feb 2024 22:04:24 +1100
+Message-Id: <20240215110425.934740-2-tim@feathertop.org>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240215110425.934740-1-tim@feathertop.org>
+References: <20240215110425.934740-1-tim@feathertop.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_030441_578503_77C6259F 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240215_030445_297635_225902C4 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,21 +111,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A couple of tweaks to the dts for Sonoff iHost.
+Add aliases for sdio and sdmmc to ensure consistent ordering of
+mmc devices on boot
 
-Add aliases for sdio and sdmmc to ensure consistent ordering of devices
-on boot.
+Signed-off-by: Tim Lunn <tim@feathertop.org>
+---
 
-Tweak sdio properties to improve detection of the rtl8723ds sdio wifi module.
+ arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-
-Tim Lunn (2):
-  ARM: dts: rockchip: mmc aliases for Sonoff iHost
-  ARM: dts: rockchip: Wifi improvements for Sonoff iHost
-
- arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
+diff --git a/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi b/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+index 32b329e87a0c..ba6c3a674f22 100644
+--- a/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
++++ b/arch/arm/boot/dts/rockchip/rv1126-sonoff-ihost.dtsi
+@@ -8,6 +8,8 @@ / {
+ 	aliases {
+ 		ethernet0 = &gmac;
+ 		mmc0 = &emmc;
++		mmc1 = &sdio;
++		mmc2 = &sdmmc;
+ 	};
+ 
+ 	chosen {
 -- 
 2.40.1
 
