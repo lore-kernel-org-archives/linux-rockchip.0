@@ -4,91 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464D2C4829E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 01:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17198C48BEC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 06:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u1QPHzcb5rTbTClBXisG77q0+BtE1LmGdz+crUGeipg=; b=EGzxiBepeNMfCD
-	H33Ajan7QlmJ6665EUg2Uu6hXWE3/dglYNAR+DaqlHGvwFmUO3ia7Foxzll5dHBtismwrZ8/cofyW
-	jQ8VwBrMHYsR23M2uBS7a4rdB5NiRZ53oWmaRLRBFecAPx9qv+OV2I9Aq5a7v72ZjtoU7bVUyahYj
-	rMZEm20AjTRgoghlaCUaaZztI3zR85Xh3qOpc8tGr32EO+6ivdauwpfCd1t/nFZwnmT+qGKHIF0zG
-	B2PZcvPgwO5U/eVWDZaX+y2JkOKb7vIPBBIv+8e5z7zha3qJl5ctnP+IPsQF2h/qLhKdXnx1QYgDd
-	0wMhG8CcqeyFm91V8Rwg==;
+	List-Owner; bh=ABzBAxfZy8zg4x7F9ZhJk1tWoy5Qw8QFRgF2K+0m7Rw=; b=0i+iKIgZn47dO0
+	kYiTbXkOm1FMzFP/JgHrpp96y+THHj+G+x3Rr+MRZ1cjhZ4ZV7fQB5eRD9reWLX1kRH1bALRowU7c
+	w5HX0IG1A0jCX+uTgS+WVF9gSbyOFC2Rqf8b5+XUJjGGMwV2QONUvFp437AYnT/5OMHYNnmUoRMTA
+	DBOQFjL566sfHisr3zJPXziPOKMxJBQE6rhjRWLIAwTOLE2hzQwnC6/mzoZziRCf+7BtrusqtOOX3
+	fQtuqZPKfyRoYjQOEx+Ci1fxYqqj7A40dqwev1uVlxwMywPgsKDYe7rw2lClnwmi9TSR8re7TsW2L
+	JVUWmCL6Uvv6+Bz+5XSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ramgV-00000000ggI-2M60;
-	Fri, 16 Feb 2024 01:06:35 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1ras0c-00000001GYN-1mlx;
+	Fri, 16 Feb 2024 06:47:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ramgT-00000000gfM-1IIz
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Feb 2024 01:06:34 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-42dc86cc35dso7753621cf.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Feb 2024 17:06:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1708045592; x=1708650392; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=SJOk5GBoNGjtYX6UP2FD6x8pshcgNrZex6zZ50AbGYM=;
-        b=jlI/s59cJA53ZZcpgaFhWtdDunA4O1n3YSxC5edKYNp7tr5DnBCT579HoFaBVl9Y8U
-         4O3iwLymvOBMgkB7edbwXp9ysadZPwDCWrTBIxF2eAGe8ILG2l8ACBvXxNH/D9d2MKUc
-         G51AGdHXJFH9AipOjrqBlqB1iJBX3qUlhRF1UiYJ5srifUvFZtpHbaaxcvXERuwPqSO6
-         OPk/VeVFHj4XXhxbKn8PPiJV9AC5IyRtIenBQJCcyRJg1RwdZow5YHj28Svhb0fd3o8Y
-         eHwqZDn6TWPFze3n37FvtP0/8eiYHR0CYxBkQsu/0NRsowIU1g+dXAVIqIYR1sQ0q0le
-         du/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708045592; x=1708650392;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SJOk5GBoNGjtYX6UP2FD6x8pshcgNrZex6zZ50AbGYM=;
-        b=CiJWzmOm0xjB4lHKWPoRCJlkKsNq6LXJnEO9SfF5vQvlYV/0NaftFrHrh3wJZ6ro7x
-         Y5t6XKFpZOoFZkDNqqHf8K5AktGMAVnn7HSR+5qWftBu4kccIfG7nwgFf9JEH2NtSG/G
-         XWXUvk9KUqh8fIs39sa0RF7f8ix6IVgq/pd3mEJaZFgwQLc3pwFYVvnBVZEHPC0R9YVt
-         lXaZ8ch/Z9fEhNwAJ+g/D2y0Y94rzE/N8aYa3/nXal5k9TOAvN7/fnZMy2vCmdur2bHo
-         R5ISJOSs5917P36dWnbQkPgRGgMmumynK4UERUsXDm/w1DqSex0+NloC1vrHZa0ovjUu
-         qjQA==
-X-Forwarded-Encrypted: i=1; AJvYcCVNbd5+qwM4CVNdQMBNJRhWSmTejZHlsoaQSphzWSJNXYYWdjwPYXMbP6GdMPA/+ya5GoJdhbk05oTqbDLU2t8U2zzMLtuIvfsmpTDPj6gAaNI/
-X-Gm-Message-State: AOJu0Ywea/IxetTEODn/nTed9Hu/IuJvy0bDp1d9+1Maw3qPcHAkXXWG
-	eKZPvJRWMex1A5q68Zs5i6iy6hUv8ZDJ9pR8OI2HyuWgiJjUE55BtuSVGvya/iTsn4IKrVOlN/w
-	zss7KZrYMUeL220UtN0gv8c6LnobSvrcmtCNPMQ==
-X-Google-Smtp-Source: AGHT+IFn+h3r/AaoF4MfmIEWnQLUDUmnx1Kec57gXxwxEXHIeMLPIowE5fZkN66KK2rAD8UQkIaND2e8M33sIsMCnhQ=
-X-Received: by 2002:a05:622a:1048:b0:42c:798a:a053 with SMTP id
- f8-20020a05622a104800b0042c798aa053mr4373943qte.55.1708045591818; Thu, 15 Feb
- 2024 17:06:31 -0800 (PST)
+	id 1ras0Z-00000001GXj-0M5T;
+	Fri, 16 Feb 2024 06:47:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AFCFA61503;
+	Fri, 16 Feb 2024 06:47:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28845C433C7;
+	Fri, 16 Feb 2024 06:47:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708066057;
+	bh=IaYS5krugxcWWLdlP3aNH0s2GExm1DY2BuiHt8XgCtM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OFixQkYX/oFkmeTY9XozPfHlCyyrwGGiRn+t5Qo2SQB/M3BQWiTr6Gmi+2QULbQIP
+	 ZXyActqWf41o80jJ/+K/aXx3YrthzC4zot80y4ffZW05ZYxhXuJLS4Xb9d8m+4qWm4
+	 ZITMB1FHWB47wV/xS9bobtFeFdi8szGyjBCxLvwX6VopLmpkmGPqg/gMb4BR97pBwO
+	 HOXf7/oYuxZ+TR5Qjqc8l5ef/mmv6O4cZt7vWOFgPIOo42otWumPFAq/7INIlaVp+D
+	 lZvsWls0YcMYkkuRYs8lmSvHfHBp3g4mkjYpFRZt/hOfeHmFVZszks349e2vRiV7ZP
+	 PJ0kdCoTwZeEQ==
+Date: Fri, 16 Feb 2024 12:17:32 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, kernel@collabora.com,
+	Zhang Yubing <yubing.zhang@rock-chips.com>
+Subject: Re: [PATCH v2 04/12] phy: rockchip: add usbdp combo phy driver
+Message-ID: <Zc8FBJbMeLng9DjS@matsya>
+References: <20240213163609.44930-1-sebastian.reichel@collabora.com>
+ <20240213163609.44930-5-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-References: <20240207174102.1486130-1-pasha.tatashin@soleen.com>
- <20240207174102.1486130-2-pasha.tatashin@soleen.com> <8ce2cd7b-7702-45aa-b4c8-25a01c27ed83@arm.com>
- <CA+CK2bC=XyUhoSP9f0XBqEnQ-P5mMT2U=5dfzRSc9C=2b+bstQ@mail.gmail.com> <b008bd2d-a189-481f-917d-bb045c43cb07@arm.com>
-In-Reply-To: <b008bd2d-a189-481f-917d-bb045c43cb07@arm.com>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Thu, 15 Feb 2024 20:05:55 -0500
-Message-ID: <CA+CK2bBTe93nXzY3Qhty+821LrkjBVnQDxro3m7Y-GVihSP18A@mail.gmail.com>
-Subject: Re: [PATCH v4 01/10] iommu/vt-d: add wrapper functions for page allocations
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
-	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, samuel@sholland.org, suravee.suthikulpanit@amd.com, 
-	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org, 
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, will@kernel.org, 
-	yu-cheng.yu@intel.com, rientjes@google.com, bagasdotme@gmail.com, 
-	mkoutny@suse.com
+Content-Disposition: inline
+In-Reply-To: <20240213163609.44930-5-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_170633_395586_33775D8A 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20240215_224739_240089_AE4B83CC 
+X-CRM114-Status: GOOD (  32.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,42 +80,178 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> >>> + */
-> >>> +static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
-> >>> +{
-> >>> +     return iommu_alloc_pages_node(nid, gfp, 0);
-> >>> +}
-> >>
-> >> TBH I'm not entirely convinced that saving 4 characters per invocation
-> >> times 11 invocations makes this wrapper worthwhile :/
-> >
-> > Let's keep them. After the clean-up that you suggested, there are
-> > fewer functions left in this file, but I think that it is cleaner to
-> > keep these remaining, as it is beneficial to easily distinguish when
-> > exactly one page is allocated vs when multiple are allocated via code
-> > search.
->
-> But is it, really? It's not at all obvious to me *why* it would be
-> significantly interesting to distinguish fixed order-0 allocations from
-> higher-order or variable-order (which may still be 0) ones. After all,
-> there's no regular alloc_page_node() wrapper, yet plenty more callers of
-> alloc_pages_node(..., 0) :/
+On 13-02-24, 17:32, Sebastian Reichel wrote:
+> This adds a new USBDP combo PHY with Samsung IP block driver.
+> 
+> The driver get lane mux and mapping info in 2 ways, supporting
+> DisplayPort alternate mode or parsing from DT. When parsing from DT,
+> the property "rockchip,dp-lane-mux" provide the DP mux and mapping
+> info. This is needed when the PHY is not used with TypeC Alt-Mode.
+> For example if the USB3 interface of the PHY is connected to a USB
+> Type A connector and the DP interface is connected to a DisplayPort
+> connector.
+> 
+> When do DP link training, need to set lane number, link rate, swing,
+> and pre-emphasis via PHY configure interface.
+> 
+> Co-developed-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Co-developed-by: Zhang Yubing <yubing.zhang@rock-chips.com>
+> Signed-off-by: Zhang Yubing <yubing.zhang@rock-chips.com>
+> Co-developed-by: Frank Wang <frank.wang@rock-chips.com>
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/phy/rockchip/Kconfig              |   12 +
+>  drivers/phy/rockchip/Makefile             |    1 +
+>  drivers/phy/rockchip/phy-rockchip-usbdp.c | 1639 +++++++++++++++++++++
+>  3 files changed, 1652 insertions(+)
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-usbdp.c
+> 
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index 94360fc96a6f..d21b458c1d18 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -107,3 +107,15 @@ config PHY_ROCKCHIP_USB
+>  	select GENERIC_PHY
+>  	help
+>  	  Enable this to support the Rockchip USB 2.0 PHY.
+> +
+> +config PHY_ROCKCHIP_USBDP
+> +	tristate "Rockchip USBDP COMBO PHY Driver"
+> +	depends on ARCH_ROCKCHIP && OF
+> +	select GENERIC_PHY
+> +	select TYPEC
+> +	help
+> +	  Enable this to support the Rockchip USB3.0/DP combo PHY with
+> +	  Samsung IP block. This is required for USB3 support on RK3588.
+> +
+> +	  To compile this driver as a module, choose M here: the module
+> +	  will be called phy-rockchip-usbdp
+> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+> index 7eab129230d1..25d2e1355db7 100644
+> --- a/drivers/phy/rockchip/Makefile
+> +++ b/drivers/phy/rockchip/Makefile
+> @@ -11,3 +11,4 @@ obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_SNPS_PCIE3)	+= phy-rockchip-snps-pcie3.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_USBDP)	+= phy-rockchip-usbdp.o
+> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> new file mode 100644
+> index 000000000000..8b1ace2aaa98
+> --- /dev/null
+> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+> @@ -0,0 +1,1639 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Rockchip USBDP Combo PHY with Samsung IP block driver
+> + *
+> + * Copyright (C) 2021 Rockchip Electronics Co., Ltd
+> + */
+> +
+> +#include <linux/bitfield.h>
+> +#include <linux/bits.h>
+> +#include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+> +#include <linux/delay.h>
+> +#include <linux/gpio.h>
+> +#include <linux/io.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/mutex.h>
+> +#include <linux/of.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +#include <linux/usb/ch9.h>
+> +#include <linux/usb/typec_dp.h>
+> +#include <linux/usb/typec_mux.h>
 
-The pages that are allocated with order > 0 cannot be freed using
-iommu_put_pages_list(), without messing up refcounts in the tail
-pages. I think having a dedicated function that guarantees order = 0
-pages allocation makes it easier for the reviewer to follow the code,
-and ensures that only these pages are put on the freelist.
+Thats a lot of headers, do you need all?
 
-Even in the existing code, the order=0 allocation is wrapped in the
-*alloc_pgtable_page() function.
+> +static inline int rk_udphy_grfreg_write(struct regmap *base,
+> +					const struct rk_udphy_grf_reg *reg, bool en)
+> +{
+> +	u32 val, mask, tmp;
+> +
+> +	tmp = en ? reg->enable : reg->disable;
+> +	mask = GENMASK(reg->bitend, reg->bitstart);
+> +	val = (tmp << reg->bitstart) | (mask << BIT_WRITEABLE_SHIFT);
 
-Pasha
+Perhaps FIELD_PREP|GET for these?
 
+> +static int rk_udphy_dplane_get(struct rk_udphy *udphy)
+> +{
+> +	int dp_lanes;
+> +
+> +	switch (udphy->mode) {
+> +	case UDPHY_MODE_DP:
+> +		dp_lanes = 4;
+> +		break;
 
->
-> Thanks,
-> Robin.
+empty line after break makes it more readable
+
+> +	case UDPHY_MODE_DP_USB:
+> +		dp_lanes = 2;
+> +		break;
+> +	case UDPHY_MODE_USB:
+> +		fallthrough;
+> +	default:
+> +		dp_lanes = 0;
+> +		break;
+> +	}
+> +
+> +	return dp_lanes;
+> +}
+> +
+> +static int rk_udphy_dplane_enable(struct rk_udphy *udphy, int dp_lanes)
+> +{
+> +	u32 val = 0;
+> +	int i;
+> +
+> +	for (i = 0; i < dp_lanes; i++)
+> +		val |= BIT(udphy->dp_lane_sel[i]);
+> +
+> +	regmap_update_bits(udphy->pma_regmap, CMN_LANE_MUX_AND_EN_OFFSET, CMN_DP_LANE_EN_ALL,
+> +			   FIELD_PREP(CMN_DP_LANE_EN_ALL, val));
+> +
+> +	if (!dp_lanes)
+> +		regmap_update_bits(udphy->pma_regmap, CMN_DP_RSTN_OFFSET,
+> +				   CMN_DP_CMN_RSTN, FIELD_PREP(CMN_DP_CMN_RSTN, 0x0));
+> +
+> +	return 0;
+
+there is no error generation in the fn, these kind of fn should really
+be not returning anything
+
+> +static int rk_udphy_usb3_phy_init(struct phy *phy)
+> +{
+> +	struct rk_udphy *udphy = phy_get_drvdata(phy);
+> +	int ret = 0;
+> +
+> +	mutex_lock(&udphy->mutex);
+> +	/* DP only or high-speed, disable U3 port */
+> +	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
+> +		rk_udphy_u3_port_disable(udphy, true);
+> +		goto unlock;
+
+no power up in that case?
+
+> +	}
+> +
+> +	ret = rk_udphy_power_on(udphy, UDPHY_MODE_USB);
+> +
+> +unlock:
+> +	mutex_unlock(&udphy->mutex);
+> +	return ret;
+> +}
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
