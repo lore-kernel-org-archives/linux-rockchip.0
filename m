@@ -4,47 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC9EC48BEB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 12:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F50C48BC4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 14:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n/KUHEtrk4GehpocHvcwTfjoq9xgfgBv6M9iK2Nz/IA=; b=xWJcZ4qEdPE/bj
-	wj4N+LBdkwSbQEJr+DuCknTjY1D/WK4DChoqgekKaILgoyqYWnJfe/aJsmiMEIHesEEFgJgqlTSQO
-	xDHpgHzsza2jzlEccjv7Y/pxM3RR0xEFSzDWjQpcixJCqh/vdfsNUZbcQyIJh64gGj+CTGzuFah7B
-	Xfze0wYADV5T9FB2RjE6/JccBibmeWLuty8gOBBPEaJ4RkbIwrevqriE92qutXCJCx48kZLiQ0mUj
-	TVEbGRB+atrcaJAQYoXESiXTCZUcqM3lpoUDS8c+QkeKtZsvQm8IuDHgJ9rmjOJ5w5hukVdKMDIel
-	lt4imE1+OiaU6dnu298w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7SERrn+D/ZWj1q0HgpFbWYB/U7GkbccKOeREOSJbpq0=; b=hlvnULUN47ptA6
+	yZf5u2ySQ2dvnpfMAKwTLD7wgQ9x/ncCvkneO9eUiqOfRcgBvteS9qWFYdDO5kqFGSQ9MRks4s+X8
+	33lowFWSNAL0/tpo3UyKHNZFvIAKiUnjcR3zK6CK6KpIPAFcqy2GeZp3dG336GKD1fv6jMDQweg+S
+	Ge2ZbkWmqz5tEskH0ZdbjzCrLHQIhtDHWDK90gaVCKVIg0WfKxN0lJOqzSLFwmCtEQWc307wFexOx
+	Ii3nWU8YEdOyu03Midlt42sItpCQgoq0I7yX9tbkIxzbDDJwDuu/uA/oEqwJpNviC/zq/pGzvmVCC
+	FHug17RFHPy60Yh6QBJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raxda-00000002LLw-0fun;
-	Fri, 16 Feb 2024 12:48:18 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1razOK-00000002cxa-43X6;
+	Fri, 16 Feb 2024 14:40:40 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1raxdW-00000002LLJ-0TLO;
-	Fri, 16 Feb 2024 12:48:15 +0000
-Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1b:c794::1])
-	by madrid.collaboradmins.com (Postfix) with ESMTP id 4636B3780626;
-	Fri, 16 Feb 2024 12:48:10 +0000 (UTC)
-From: "Shreeya Patel" <shreeya.patel@collabora.com>
-In-Reply-To: <237e690a-2f49-4046-b054-3a878eed6748@linaro.org>
-X-Forward: 127.0.0.1
-References: <20240216094922.257674-1-shreeya.patel@collabora.com>
- <20240216094922.257674-2-shreeya.patel@collabora.com> <237e690a-2f49-4046-b054-3a878eed6748@linaro.org>
-Date: Fri, 16 Feb 2024 12:48:10 +0000
-Cc: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com, shawn.wen@rock-chips.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-dt@vger.kernel.org, linux-arm@lists.infradead.org
-To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
+	id 1razOG-00000002cu3-3CVB
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 Feb 2024 14:40:38 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a2f79e79f0cso316920566b.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 16 Feb 2024 06:40:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1708094432; x=1708699232; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZRC42YbuNYRdIwcaj+US8j1sKLD+6CzDw3sU7mb37/4=;
+        b=tAJmQgjknWrkqyT9Gp6rSeUpOPI/SpT2US/q1aSTcqcDDR4HLRzZzecZCoBUFXNmIX
+         n06ZXVa2ANg77iQ69a5I/xM2/HXFtJwV4mL49S7ReJuEjfCoRB4W/Q0mxefUVnLSu18S
+         XkcXH4KimFvQX+juIHD0oz+E74nz9hoNwoVu8EAiQQX/Zz+aVaT5hW9Tp3copZr0VM4s
+         1y2LnAvQOzKv1Ib2tBogk8WYlPM7gcjNS26dO1R2VGz6J1L2JhlIrPoNHJrhUcO/sQuU
+         4/DJLF09CfO5gFEt0re/StQciirfy4BoARksBBXoqkUBO+ty6EapN9m9Ia7XKzuoyA4Q
+         ubww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708094432; x=1708699232;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZRC42YbuNYRdIwcaj+US8j1sKLD+6CzDw3sU7mb37/4=;
+        b=QxRhX/pUZOGI0SB8goMslS2Jkx/0GKfKnq2xbvqSWRyqbQ3/1Kw7lmtjShMRRYrgSR
+         dYkvzNtyV+SHROFsroYFr+rwaEsU/EW/zV6HP3OLWSHJ5QmrhnJetmbOGhVbgwGG2f3j
+         f3kIvMrhhp/jNEQAgnC8Vf1hTI/S4crMIWaQur2LdyxU6WSwv8kHNYN4BjDKK2cY6igf
+         S1SU9eMhzYHp0XXJDKRiZargnKARs4DENqg9/QN3vKlN2sEyHm3+3JHJZIdov5vhtd/f
+         AzCWqwsooFTrtIXf2Oatnx23jrGwewyEiLEbvUfuyphpESCR4JWccYNu4kj4Kh7CdviC
+         oSbw==
+X-Forwarded-Encrypted: i=1; AJvYcCUKqDxcG+5cS8nWLhzSXe509AdenIkaV/jDgvM8guDOIe2AgLeCKSXhjVtUfdeatbgUXcLl8rJF6UsMWyeWPHAxdDz83chNU9ME6fN9ErEtQcBd
+X-Gm-Message-State: AOJu0YypP4lpaU3NEICyPuuUOEi7jydkHdIo/ZkhSMori3bCHFbzLYOW
+	XG56jMiXfZL67YNR9A5BEeh4k8r9TNRmgz029fUR+QxFP4Yyll5yP6XsQHjty9Q=
+X-Google-Smtp-Source: AGHT+IHf//9yt3eTnyw6VXgXdUG6tjNHVGPCN0at0VvNZn01LUmWCi7a4swsg2sOshpZkHrmmM9UNA==
+X-Received: by 2002:a17:906:185a:b0:a3d:994a:791d with SMTP id w26-20020a170906185a00b00a3d994a791dmr3667044eje.59.1708094432164;
+        Fri, 16 Feb 2024 06:40:32 -0800 (PST)
+Received: from krzk-bin.. ([78.10.207.130])
+        by smtp.gmail.com with ESMTPSA id a8-20020a170906670800b00a3ce3c5b2a4sm1592942ejp.195.2024.02.16.06.40.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Feb 2024 06:40:31 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Hector Martin <marcan@marcan.st>,
+	Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux.dev
+Subject: [PATCH 1/4] iommu: constify pointer to bus_type
+Date: Fri, 16 Feb 2024 15:40:24 +0100
+Message-Id: <20240216144027.185959-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Message-ID: <30d2-65cf5980-3-2ec9f500@242931553>
-Subject: =?utf-8?q?Re=3A?= [PATCH 1/4] =?utf-8?q?clk=3A?==?utf-8?q?_rockchip=3A?=
- =?utf-8?q?_rst-rk3588=3A?= Add BIU reset
-User-Agent: SOGoMail 5.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_044814_297794_04DC3C89 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20240216_064037_013643_3D7B224A 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,47 +123,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, February 16, 2024 15:33 IST, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
+Make pointer to bus_type a pointer to const for code safety.
 
-> On 16/02/2024 10:49, Shreeya Patel wrote:
-> > Export hdmirx_biu soft reset id which is required by the hdmirx controller.
-> > 
-> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > ---
-> >  drivers/clk/rockchip/rst-rk3588.c               | 1 +
-> >  include/dt-bindings/reset/rockchip,rk3588-cru.h | 2 ++
-> 
-> Please run scripts/checkpatch.pl and fix reported warnings. Some
-> warnings can be ignored, but the code here looks like it needs a fix.
-> Feel free to get in touch if the warning is not clear.
-> 
-> Please do internal review. The internal Collabora review would tell you:
-> YOU MUST run checkpatch. Then you see errors, so why do you send patch
-> with errors to the mailing list?
-> 
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/iommu/iommu-priv.h | 5 +++--
+ drivers/iommu/iommu.c      | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
-I am sorry but what errors are you talking about?
-I don't see any errors reported by checkpatch :-
-
-shreeya@shreeya:~/collabora/rd/rockchip/torvalds$ ./scripts/checkpatch.pl hdmirx/0001-clk-rockchip-rst-rk3588-Add-BIU-reset.patch
-WARNING: DT binding docs and includes should be a separate patch. See: Documentation/devicetree/bindings/submitting-patches.rst
-
-total: 0 errors, 1 warnings, 13 lines checked
-
-NOTE: For some of the reported defects, checkpatch may be able to
-      mechanically convert to the typical style using --fix or --fix-inplace.
-
-hdmirx-v1-1602/0001-clk-rockchip-rst-rk3588-Add-BIU-reset.patch has style problems, please review.
-
-I see the above warning but that looks like a false positive to me.
-
-> Best regards,
-> Krzysztof
-> 
-> _______________________________________________
-> Kernel mailing list -- kernel@mailman.collabora.com
-> To unsubscribe send an email to kernel-leave@mailman.collabora.com
-> This list is managed by https://mailman.collabora.com
+diff --git a/drivers/iommu/iommu-priv.h b/drivers/iommu/iommu-priv.h
+index 2024a2313348..5f731d994803 100644
+--- a/drivers/iommu/iommu-priv.h
++++ b/drivers/iommu/iommu-priv.h
+@@ -21,10 +21,11 @@ int iommu_group_replace_domain(struct iommu_group *group,
+ 			       struct iommu_domain *new_domain);
+ 
+ int iommu_device_register_bus(struct iommu_device *iommu,
+-			      const struct iommu_ops *ops, struct bus_type *bus,
++			      const struct iommu_ops *ops,
++			      const struct bus_type *bus,
+ 			      struct notifier_block *nb);
+ void iommu_device_unregister_bus(struct iommu_device *iommu,
+-				 struct bus_type *bus,
++				 const struct bus_type *bus,
+ 				 struct notifier_block *nb);
+ 
+ #endif /* __LINUX_IOMMU_PRIV_H */
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index d14413916f93..170329a085b8 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -291,7 +291,7 @@ EXPORT_SYMBOL_GPL(iommu_device_unregister);
+ 
+ #if IS_ENABLED(CONFIG_IOMMUFD_TEST)
+ void iommu_device_unregister_bus(struct iommu_device *iommu,
+-				 struct bus_type *bus,
++				 const struct bus_type *bus,
+ 				 struct notifier_block *nb)
+ {
+ 	bus_unregister_notifier(bus, nb);
+@@ -305,7 +305,8 @@ EXPORT_SYMBOL_GPL(iommu_device_unregister_bus);
+  * some memory to hold a notifier_block.
+  */
+ int iommu_device_register_bus(struct iommu_device *iommu,
+-			      const struct iommu_ops *ops, struct bus_type *bus,
++			      const struct iommu_ops *ops,
++			      const struct bus_type *bus,
+ 			      struct notifier_block *nb)
+ {
+ 	int err;
+-- 
+2.34.1
 
 
 _______________________________________________
