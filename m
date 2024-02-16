@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17198C48BEC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 06:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB438C48BEC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 09:52:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ABzBAxfZy8zg4x7F9ZhJk1tWoy5Qw8QFRgF2K+0m7Rw=; b=0i+iKIgZn47dO0
-	kYiTbXkOm1FMzFP/JgHrpp96y+THHj+G+x3Rr+MRZ1cjhZ4ZV7fQB5eRD9reWLX1kRH1bALRowU7c
-	w5HX0IG1A0jCX+uTgS+WVF9gSbyOFC2Rqf8b5+XUJjGGMwV2QONUvFp437AYnT/5OMHYNnmUoRMTA
-	DBOQFjL566sfHisr3zJPXziPOKMxJBQE6rhjRWLIAwTOLE2hzQwnC6/mzoZziRCf+7BtrusqtOOX3
-	fQtuqZPKfyRoYjQOEx+Ci1fxYqqj7A40dqwev1uVlxwMywPgsKDYe7rw2lClnwmi9TSR8re7TsW2L
-	JVUWmCL6Uvv6+Bz+5XSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/wBl1GGPkfe8sc8mh/NlMX4L41CK8QsBV8/ZONTvwFY=; b=E/hn2chR52Y+l5
+	nwwxlXi8xqkLcTMs0bf5co1kWI0hQOwLNaslIa7Hc37h96QnqDx4XA5Ll1jECgGvPzrLCJ20TSmcj
+	rf7WulPdUy3yXh+E8CWPEEtSbqR1jvh3sNrm7cQtRXtJTz7a2WJoSRz9bst5MIOkoKZzn+3mTDEwq
+	BAFTcyL6Y3fIe1UoCcnEgd3MRJO1Mkfaa5K34tBZOS39p0D2KMwZhuj/nYp2kVGjdf5ygzAWWTfNM
+	OirkQnaTrPBPYl7/SR+dFNQZtQ1tHcGAxhNkm4p2vKfF8IScngxeuutldkliotUygn6MfsxGnJLeJ
+	JIoZ6rFxhPHSH55yInfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ras0c-00000001GYN-1mlx;
-	Fri, 16 Feb 2024 06:47:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rauso-00000001oZ4-1QFa;
+	Fri, 16 Feb 2024 09:51:50 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ras0Z-00000001GXj-0M5T;
-	Fri, 16 Feb 2024 06:47:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AFCFA61503;
-	Fri, 16 Feb 2024 06:47:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28845C433C7;
-	Fri, 16 Feb 2024 06:47:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708066057;
-	bh=IaYS5krugxcWWLdlP3aNH0s2GExm1DY2BuiHt8XgCtM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OFixQkYX/oFkmeTY9XozPfHlCyyrwGGiRn+t5Qo2SQB/M3BQWiTr6Gmi+2QULbQIP
-	 ZXyActqWf41o80jJ/+K/aXx3YrthzC4zot80y4ffZW05ZYxhXuJLS4Xb9d8m+4qWm4
-	 ZITMB1FHWB47wV/xS9bobtFeFdi8szGyjBCxLvwX6VopLmpkmGPqg/gMb4BR97pBwO
-	 HOXf7/oYuxZ+TR5Qjqc8l5ef/mmv6O4cZt7vWOFgPIOo42otWumPFAq/7INIlaVp+D
-	 lZvsWls0YcMYkkuRYs8lmSvHfHBp3g4mkjYpFRZt/hOfeHmFVZszks349e2vRiV7ZP
-	 PJ0kdCoTwZeEQ==
-Date: Fri, 16 Feb 2024 12:17:32 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	Zhang Yubing <yubing.zhang@rock-chips.com>
-Subject: Re: [PATCH v2 04/12] phy: rockchip: add usbdp combo phy driver
-Message-ID: <Zc8FBJbMeLng9DjS@matsya>
-References: <20240213163609.44930-1-sebastian.reichel@collabora.com>
- <20240213163609.44930-5-sebastian.reichel@collabora.com>
+	id 1rausV-00000001oL4-3JCg;
+	Fri, 16 Feb 2024 09:51:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708077087;
+	bh=+5L6w5aXX/IFqw0JlbmwRtzdrKY61duPIHAKakYlDW4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BWZw3dktI9TkDyDR+hmF1+WvbWOtKbzZEknpW3mciT555Yz2fv4aNsGY29qcKu3aF
+	 0vVK8vX6s2DMsruH85BjABQi6oVKkLTMzFkW6HJ2U5ppigrRFVNdhHlGmf0HlPkLwh
+	 PR8uW8wvOrJxZGL04zpjxAi4J+Hksf2gATOrOSgdUHcSB8De5T7vK3gaZgCIuZ0uBF
+	 cAubgm64ZBHZLUG0hj9I4vPkLVg6oWxtZBK/ZawIRGrcBwX8ttmUZDHGIcHjcllAaR
+	 9dUcDySq8vHR3YnqF9Kv7jH/y3rXLm7uaHGhHtq0xAWAZuF6d44/gRw+SZTmbIjMFj
+	 sGYibDcfsJdDg==
+Received: from shreeya.shreeya (ec2-34-240-57-77.eu-west-1.compute.amazonaws.com [34.240.57.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: shreeya)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E461F3780FC7;
+	Fri, 16 Feb 2024 09:51:22 +0000 (UTC)
+From: Shreeya Patel <shreeya.patel@collabora.com>
+To: heiko@sntech.de,
+	mchehab@kernel.org,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	p.zabel@pengutronix.de,
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	dmitry.osipenko@collabora.com,
+	sebastian.reichel@collabora.com,
+	shawn.wen@rock-chips.com
+Cc: kernel@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-dt@vger.kernel.org,
+	linux-arm@lists.infradead.org,
+	Shreeya Patel <shreeya.patel@collabora.com>
+Subject: [PATCH 0/4] Add Synopsys DesignWare HDMI RX Controller
+Date: Fri, 16 Feb 2024 15:19:18 +0530
+Message-Id: <20240216094922.257674-1-shreeya.patel@collabora.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240213163609.44930-5-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240215_224739_240089_AE4B83CC 
-X-CRM114-Status: GOOD (  32.95  )
+X-CRM114-CacheID: sfid-20240216_015132_236075_0A46ABDF 
+X-CRM114-Status: GOOD (  15.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,178 +91,166 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13-02-24, 17:32, Sebastian Reichel wrote:
-> This adds a new USBDP combo PHY with Samsung IP block driver.
-> 
-> The driver get lane mux and mapping info in 2 ways, supporting
-> DisplayPort alternate mode or parsing from DT. When parsing from DT,
-> the property "rockchip,dp-lane-mux" provide the DP mux and mapping
-> info. This is needed when the PHY is not used with TypeC Alt-Mode.
-> For example if the USB3 interface of the PHY is connected to a USB
-> Type A connector and the DP interface is connected to a DisplayPort
-> connector.
-> 
-> When do DP link training, need to set lane number, link rate, swing,
-> and pre-emphasis via PHY configure interface.
-> 
-> Co-developed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Co-developed-by: Zhang Yubing <yubing.zhang@rock-chips.com>
-> Signed-off-by: Zhang Yubing <yubing.zhang@rock-chips.com>
-> Co-developed-by: Frank Wang <frank.wang@rock-chips.com>
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/phy/rockchip/Kconfig              |   12 +
->  drivers/phy/rockchip/Makefile             |    1 +
->  drivers/phy/rockchip/phy-rockchip-usbdp.c | 1639 +++++++++++++++++++++
->  3 files changed, 1652 insertions(+)
->  create mode 100644 drivers/phy/rockchip/phy-rockchip-usbdp.c
-> 
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index 94360fc96a6f..d21b458c1d18 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -107,3 +107,15 @@ config PHY_ROCKCHIP_USB
->  	select GENERIC_PHY
->  	help
->  	  Enable this to support the Rockchip USB 2.0 PHY.
-> +
-> +config PHY_ROCKCHIP_USBDP
-> +	tristate "Rockchip USBDP COMBO PHY Driver"
-> +	depends on ARCH_ROCKCHIP && OF
-> +	select GENERIC_PHY
-> +	select TYPEC
-> +	help
-> +	  Enable this to support the Rockchip USB3.0/DP combo PHY with
-> +	  Samsung IP block. This is required for USB3 support on RK3588.
-> +
-> +	  To compile this driver as a module, choose M here: the module
-> +	  will be called phy-rockchip-usbdp
-> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-> index 7eab129230d1..25d2e1355db7 100644
-> --- a/drivers/phy/rockchip/Makefile
-> +++ b/drivers/phy/rockchip/Makefile
-> @@ -11,3 +11,4 @@ obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
->  obj-$(CONFIG_PHY_ROCKCHIP_SNPS_PCIE3)	+= phy-rockchip-snps-pcie3.o
->  obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
->  obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
-> +obj-$(CONFIG_PHY_ROCKCHIP_USBDP)	+= phy-rockchip-usbdp.o
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> new file mode 100644
-> index 000000000000..8b1ace2aaa98
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> @@ -0,0 +1,1639 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Rockchip USBDP Combo PHY with Samsung IP block driver
-> + *
-> + * Copyright (C) 2021 Rockchip Electronics Co., Ltd
-> + */
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/bits.h>
-> +#include <linux/clk.h>
-> +#include <linux/clk-provider.h>
-> +#include <linux/delay.h>
-> +#include <linux/gpio.h>
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/of.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/property.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
-> +#include <linux/usb/ch9.h>
-> +#include <linux/usb/typec_dp.h>
-> +#include <linux/usb/typec_mux.h>
+This series implements support for the Synopsys DesignWare
+HDMI RX Controller, being compliant with standard HDMI 1.4b
+and HDMI 2.0.
 
-Thats a lot of headers, do you need all?
+Features that are currently supported by the HDMI RX driver
+have been tested on rock5b board using a HDMI to micro-HDMI cable.
+It is recommended to use a good quality cable as there were
+multiple issues seen during testing the driver.
 
-> +static inline int rk_udphy_grfreg_write(struct regmap *base,
-> +					const struct rk_udphy_grf_reg *reg, bool en)
-> +{
-> +	u32 val, mask, tmp;
-> +
-> +	tmp = en ? reg->enable : reg->disable;
-> +	mask = GENMASK(reg->bitend, reg->bitstart);
-> +	val = (tmp << reg->bitstart) | (mask << BIT_WRITEABLE_SHIFT);
+Please note the below information :-
+* This patch series depends on series from Sebastian [0] about
+improving GATE_LINK support.
+* While testing the driver on rock5b we noticed that the binary BL31
+from Rockchip contains some unknown code to get the HDMI-RX PHY
+access working. With TF-A BL31, the HDMI-RX PHY doesn't work as
+expected since there are no interrupts seen for rk_hdmirx-hdmi
+leading to some failures in the driver [1].
 
-Perhaps FIELD_PREP|GET for these?
+[0] https://lore.kernel.org/all/20240126182919.48402-1-sebastian.reichel@collabora.com/
+[1] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/trusted-firmware-a/-/issues/1
 
-> +static int rk_udphy_dplane_get(struct rk_udphy *udphy)
-> +{
-> +	int dp_lanes;
-> +
-> +	switch (udphy->mode) {
-> +	case UDPHY_MODE_DP:
-> +		dp_lanes = 4;
-> +		break;
+To test the HDMI RX Controller driver, following example commands can be used :-
 
-empty line after break makes it more readable
+root@debian-rockchip-rock5b-rk3588:~# v4l2-ctl --verbose -d /dev/video0 \
+--set-fmt-video=width=1920,height=1080,pixelformat='BGR3' --stream-mmap=4 \
+--stream-skip=3 --stream-count=100 --stream-to=/home/hdmiin4k.raw --stream-poll
 
-> +	case UDPHY_MODE_DP_USB:
-> +		dp_lanes = 2;
-> +		break;
-> +	case UDPHY_MODE_USB:
-> +		fallthrough;
-> +	default:
-> +		dp_lanes = 0;
-> +		break;
-> +	}
-> +
-> +	return dp_lanes;
-> +}
-> +
-> +static int rk_udphy_dplane_enable(struct rk_udphy *udphy, int dp_lanes)
-> +{
-> +	u32 val = 0;
-> +	int i;
-> +
-> +	for (i = 0; i < dp_lanes; i++)
-> +		val |= BIT(udphy->dp_lane_sel[i]);
-> +
-> +	regmap_update_bits(udphy->pma_regmap, CMN_LANE_MUX_AND_EN_OFFSET, CMN_DP_LANE_EN_ALL,
-> +			   FIELD_PREP(CMN_DP_LANE_EN_ALL, val));
-> +
-> +	if (!dp_lanes)
-> +		regmap_update_bits(udphy->pma_regmap, CMN_DP_RSTN_OFFSET,
-> +				   CMN_DP_CMN_RSTN, FIELD_PREP(CMN_DP_CMN_RSTN, 0x0));
-> +
-> +	return 0;
+root@debian-rockchip-rock5b-rk3588:~# ffmpeg -f rawvideo -vcodec rawvideo \
+-s 1920x1080 -r 60 -pix_fmt bgr24 -i /home/hdmiin4k.raw output.mkv
 
-there is no error generation in the fn, these kind of fn should really
-be not returning anything
 
-> +static int rk_udphy_usb3_phy_init(struct phy *phy)
-> +{
-> +	struct rk_udphy *udphy = phy_get_drvdata(phy);
-> +	int ret = 0;
-> +
-> +	mutex_lock(&udphy->mutex);
-> +	/* DP only or high-speed, disable U3 port */
-> +	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-> +		rk_udphy_u3_port_disable(udphy, true);
-> +		goto unlock;
+Following is the v4l2-compliance test result :-
 
-no power up in that case?
+root@debian-rockchip-rock5b-rk3588:~# v4l2-compliance -d /dev/video0
+v4l2-compliance 1.27.0-5174, 64 bits, 64-bit time_t
+v4l2-compliance SHA: d700deb14368 2024-01-18 12:19:05
 
-> +	}
-> +
-> +	ret = rk_udphy_power_on(udphy, UDPHY_MODE_USB);
-> +
-> +unlock:
-> +	mutex_unlock(&udphy->mutex);
-> +	return ret;
-> +}
+Compliance test for snps_hdmirx device /dev/video0:
+
+Driver Info:
+        Driver name      : snps_hdmirx
+        Card type        : snps_hdmirx
+        Bus info         : platform: snps_hdmirx
+        Driver version   : 6.8.0
+        Capabilities     : 0x84201000
+                Video Capture Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps      : 0x04201000
+                Video Capture Multiplanar
+                Streaming
+                Extended Pix Format
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+        test invalid ioctls: OK
+
+Allow for multiple opens:
+        test second /dev/video0 open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK
+        test VIDIOC_DV_TIMINGS_CAP: OK
+        test VIDIOC_G/S_EDID: OK
+
+Control ioctls (Input 0):
+        test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+        test VIDIOC_QUERYCTRL: OK
+        test VIDIOC_G/S_CTRL: OK
+        test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+        test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+        Standard Controls: 2 Private Controls: 0
+
+Format ioctls (Input 0):
+        test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+        test VIDIOC_G/S_PARM: OK
+        test VIDIOC_G_FBUF: OK (Not Supported)
+        test VIDIOC_G_FMT: OK
+        test VIDIOC_TRY_FMT: OK
+        test VIDIOC_S_FMT: OK
+        test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+        test Cropping: OK (Not Supported)
+        test Composing: OK (Not Supported)
+        test Scaling: OK (Not Supported)
+
+Codec ioctls (Input 0):
+        test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+        test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+        test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls (Input 0):
+        test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+        test CREATE_BUFS maximum buffers: OK
+        test VIDIOC_EXPBUF: OK
+        test Requests: OK (Not Supported)
+
+Total for snps_hdmirx device /dev/video0: 46, Succeeded: 46, Failed: 0, Warnings: 0
+
+Shreeya Patel (4):
+  clk: rockchip: rst-rk3588: Add BIU reset
+  dt-bindings: media: Document bindings for HDMI RX Controller
+  arm64: dts: rockchip: Add device tree support for HDMI RX Controller
+  media: platform: synopsys: Add support for hdmi input driver
+
+ .../bindings/media/snps,dw-hdmi-rx.yaml       |  128 +
+ .../boot/dts/rockchip/rk3588-pinctrl.dtsi     |   41 +
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |   50 +
+ drivers/clk/rockchip/rst-rk3588.c             |    1 +
+ drivers/media/platform/Kconfig                |    1 +
+ drivers/media/platform/Makefile               |    1 +
+ drivers/media/platform/synopsys/Kconfig       |    3 +
+ drivers/media/platform/synopsys/Makefile      |    2 +
+ .../media/platform/synopsys/hdmirx/Kconfig    |   18 +
+ .../media/platform/synopsys/hdmirx/Makefile   |    4 +
+ .../platform/synopsys/hdmirx/snps_hdmirx.c    | 2856 +++++++++++++++++
+ .../platform/synopsys/hdmirx/snps_hdmirx.h    |  394 +++
+ .../synopsys/hdmirx/snps_hdmirx_cec.c         |  289 ++
+ .../synopsys/hdmirx/snps_hdmirx_cec.h         |   46 +
+ .../dt-bindings/reset/rockchip,rk3588-cru.h   |    2 +
+ 15 files changed, 3836 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+ create mode 100644 drivers/media/platform/synopsys/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Kconfig
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/Makefile
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.c
+ create mode 100644 drivers/media/platform/synopsys/hdmirx/snps_hdmirx_cec.h
+
 -- 
-~Vinod
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
