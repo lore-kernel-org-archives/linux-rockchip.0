@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D80A7C48260
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 10:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF672C48260
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 10:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V8661bueg6XvfKprthRc/lBTsLvyoFe3f3LwujUqPsM=; b=Xxf7ekfXAx1MGn
-	Zwe5frE7M+Jl7BqEoRByTRYOjingKu5jn8jY9Za0zV88fbAvthyCRYzxv5cPhfN0IWE3SEgD6ABXK
-	SqPFLh4XN/Q+yq/6JPL4PUWyCfGw4RCojbMdakjVvymy3Kg01teiZM4wv3rZ4lPtxfq6gVsgExkyM
-	5RXjdc4R9Td8ApQxpe8A0ui2/4FWET8KWY0/VPzz4fLXXo6yn1awSSrnPGN+XZcPjFFECZwmc+0PW
-	WpcBgMLzhD/QnQDK4tBiDrFcHqqvAU3E5d9bwf6TLMDJpG/l28RNGwYGpN5W/mY8ANftvV0YsQywC
-	CxRR+HyL8VbHUFcwGWKA==;
+	List-Owner; bh=W4vJR0Levm9kTEQ7GbNZnnc49Y+yWa0aHlZpdGGz1M0=; b=rsWt7vvnWjw8Tg
+	CLZsGDuRF/2zoSN+Y4lUSSAI+i2crXGrP99gHolsLzBKHmzL+kTt3HjittSoXsWHHu7BWJeXPaP+d
+	wjnFKcH/kwEE8X+MfW0/nwEgPYWQnwqyyeit9wZFQaImIxru3hDYTFRIJ0TTSKK5ooGdzQ5pvWv8G
+	OF0PVNIBHPkKR77nrPt4u/8W3V1c0ycjtJHkuBFlc+MB1uI1Lg1YQoNhAzkFcTt6JOxky/OVnnSey
+	8LL9vFls6M7dKuchPM7AUBD+zjjPfkeYRCqhRLqu6to0UsEth7yLf9nSCaxiOEqgFo9Sbcd1lGKFS
+	M/e4PQ+T78ys98GAY2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rav2f-00000001sSX-15go;
-	Fri, 16 Feb 2024 10:02:01 +0000
+	id 1rav3m-00000001snZ-0s6l;
+	Fri, 16 Feb 2024 10:03:10 +0000
 Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rav2b-00000001sQx-1DFA
+	id 1rav3k-00000001smW-0HvT
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Feb 2024 10:01:59 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a36126ee41eso245225266b.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 16 Feb 2024 02:01:55 -0800 (PST)
+	Fri, 16 Feb 2024 10:03:09 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a34c5ca2537so223020666b.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 16 Feb 2024 02:03:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708077714; x=1708682514; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1708077787; x=1708682587; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=3QT/ux1VatBXPTZcSq/MG2mossW5fK3VfSxozRaV9SI=;
-        b=IP7HAVdEyWz00xSgp8ivHYPSPdP5UsbCBEzT02iqv2ZmRLIwoStfA5Bq2O8d7q6xmQ
-         H5QCfLCOdNSsRncXvvQvFKv0oJsJHYlFaJsdqV0XcE17B5uyjtukXp5ZQhIO3D10x2Tc
-         BN2LOI3ezGhEm5NccinN8IPBOBGIFOQAQyINaegTek8b8xB/nVRfq1byxzr/XragUH4y
-         STUmYZ8KwFMLDLCfk8Lslx1515FANntZBkoAxhskiC4tP8euAfcsRRO6dH7m5pIUHbhN
-         IZRO8tz/K2WR0eHBMeCaNUXB8tGql8fWC2dIrkwPDYZYYIixOSz0vt10YqnH3xwKTTO4
-         cGMA==
+        bh=jm3UgGlMNkbIvZSZrfTMr+zRaBb92EXyZ+EDLRjPkmM=;
+        b=vm26YUWGRlRfAmfezBl5XsQ73s5ocEdlejp5X5ZMbLZBrWAMiCiPEdeZPutAom50A2
+         d6XkPaP91m6whjNqLgMh41+BxSoNBKHEE5OWYBHNwHYzj7/MxvCTEX0hJuilghyrWfbR
+         gggkaa7i+pxquujQahtAr1K/a5JCWA1kcJk6pnkyXCMUU2DKbXmN+n5c2gtqECthLWxw
+         8LBKZwziuzCx4ZoA0W3HtFTTICtRZo26hE0V07iy0TVFkTDRJYd+iBIv/Lw1MRVjbxaC
+         9u7TpP9zowcvAq+HXixkWApzBeqrBS5GKkqI0r87e6trsJkcOuKiH3GqqDHV96MmlWUp
+         Ro0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708077714; x=1708682514;
+        d=1e100.net; s=20230601; t=1708077787; x=1708682587;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3QT/ux1VatBXPTZcSq/MG2mossW5fK3VfSxozRaV9SI=;
-        b=bQdTudeXKWWA0JdCimdLRmygdKRaXasAujrcjs2Al7/uuV8oQRwX3UYns/6vguFJN9
-         U4Jb5y58mEiiwjidr1EPDY3HwM02e6x4D58o2wITCAS5TyOhRapltnhq6QzHXZ1voSVP
-         /mHP070llzNwTvtJF11IFOeKxTkRDQVKXZXUQqq85FCWkLzdAO0oBDIN3ylH5BY2WOaE
-         JPh0OqvkdhUq9tuYuQElNOTySWIjmFEYKvFirv/IMrDpkw1g0Hxos6jUB4B5GGE3kjy6
-         +SAACleQejewGQnPLuCq6CHyDKCvOZBbJ/YyeCiz4IBAaHYshiGePrhldBX/YKOA9pJ9
-         ZMTQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVuSw6ntDdOsSgGaJq64uNG5zVfTvkEqEG3Aj5St5Ajtzbn96xWbostzQV0llbjun3nkCeRk3lqx7e/dSTwm94KlJ7aebYE+XWGcQqQpk68XN3w
-X-Gm-Message-State: AOJu0Yxm7va1WR3M9K+ai92Z2WHtBRT0iQ2mFy5TT3EmH8C9Ij1jomnx
-	FFWzvrNf3OTSyq6jnmkknGui5kvKmvTnj/2tsH3fuV1y2jdeL8QagbJxRqqIB+MD5cR7+o+X41x
-	m
-X-Google-Smtp-Source: AGHT+IGgpuj+6MrK/exz/vLTKC/yIxnfx058qaJM+QEM56Ti2Co8gAQl68udOr78c7mrUFcO79WD2A==
-X-Received: by 2002:a17:906:3659:b0:a3d:1fad:e37d with SMTP id r25-20020a170906365900b00a3d1fade37dmr2718584ejb.20.1708077714491;
-        Fri, 16 Feb 2024 02:01:54 -0800 (PST)
+        bh=jm3UgGlMNkbIvZSZrfTMr+zRaBb92EXyZ+EDLRjPkmM=;
+        b=QqIXnoWR7suZEcmcGA2zE9t8YQ52B5eROptuPDt0zUmBhieX6Deak20zE1XLsUfRxH
+         o5xa1mwrO407rAxkk5ywDpjCzdNvfQOEuJcVWZoqEBJJF4bWFGfpnPs1vQTock5KCcr6
+         q1xSggSq3zN8XgSUTjq2bP4Vq/WgArajApwqmwkoigwS7qxxFcFgwnPLKWGlmHEV3T+N
+         bXv4mY9PXQRfnlyBXruYC2Z1q35v2bPhd2dwBAcDopbzBgIUje9oDeHJXI6tgHbs07T6
+         E5ydy0WgESbK/0JrioHkAVeSB+FDYTuRPW0et3B+j7WSMSxrbyl/+TAcQNiqoQBIcCZS
+         AXOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUv0qa8RYKWZ4IvR2Qkvz0YVX+kkTCtHh3UTaN9nqJbIx4i31y+edITyL2XKOyXPlzXVo2fVpYittp8YC51wn5IndARh3dMu7RyGvUiO35uLg5W
+X-Gm-Message-State: AOJu0YwScuSXjQsv0qjqfJb/+kkS0TFr2FNh34Uxe48wuJQ2EHtZsO73
+	DUIlEa2jKTSZLtfifnzxKj51YvqYBrYdFU7ltifmgXoklfsRXyFgF3XI0PU22RA=
+X-Google-Smtp-Source: AGHT+IGyyB5KoX2BTi/fhuhn2a2i4yHeyeUatRb+8KuuKxEyuD5U/2iLAGb6tEZgy3wfFDpVUpO62g==
+X-Received: by 2002:a17:906:7d86:b0:a3d:8207:c83b with SMTP id v6-20020a1709067d8600b00a3d8207c83bmr3103932ejo.37.1708077786751;
+        Fri, 16 Feb 2024 02:03:06 -0800 (PST)
 Received: from [192.168.0.22] ([78.10.207.130])
-        by smtp.gmail.com with ESMTPSA id ty8-20020a170907c70800b00a3d1b3c5f1esm1400467ejc.77.2024.02.16.02.01.52
+        by smtp.gmail.com with ESMTPSA id ty8-20020a170907c70800b00a3d1b3c5f1esm1400467ejc.77.2024.02.16.02.03.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Feb 2024 02:01:54 -0800 (PST)
-Message-ID: <fd3b7ab7-3702-412f-947a-95396dbe1f4c@linaro.org>
-Date: Fri, 16 Feb 2024 11:01:52 +0100
+        Fri, 16 Feb 2024 02:03:06 -0800 (PST)
+Message-ID: <237e690a-2f49-4046-b054-3a878eed6748@linaro.org>
+Date: Fri, 16 Feb 2024 11:03:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: media: Document bindings for HDMI RX
- Controller
+Subject: Re: [PATCH 1/4] clk: rockchip: rst-rk3588: Add BIU reset
 Content-Language: en-US
 To: Shreeya Patel <shreeya.patel@collabora.com>, heiko@sntech.de,
  mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
@@ -83,7 +81,7 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-clk@vger.kernel.org, linux-dt@vger.kernel.org,
  linux-arm@lists.infradead.org
 References: <20240216094922.257674-1-shreeya.patel@collabora.com>
- <20240216094922.257674-3-shreeya.patel@collabora.com>
+ <20240216094922.257674-2-shreeya.patel@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -129,10 +127,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240216094922.257674-3-shreeya.patel@collabora.com>
+In-Reply-To: <20240216094922.257674-2-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_020157_346958_18378676 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20240216_020308_305435_0A766E33 
+X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,175 +149,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 16/02/2024 10:49, Shreeya Patel wrote:
-> Document bindings for the Synopsys DesignWare HDMI RX Controller.
+> Export hdmirx_biu soft reset id which is required by the hdmirx controller.
 > 
-> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-
-A nit, subject: drop second/last, redundant "bindings for". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
-
 > ---
->  .../bindings/media/snps,dw-hdmi-rx.yaml       | 128 ++++++++++++++++++
->  1 file changed, 128 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
-> new file mode 100644
-> index 000000000000..a70d96b548ee
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
-> @@ -0,0 +1,128 @@
-> +# SPDX-License-Identifier: (GPL-3.0 OR BSD-2-Clause)
+>  drivers/clk/rockchip/rst-rk3588.c               | 1 +
+>  include/dt-bindings/reset/rockchip,rk3588-cru.h | 2 ++
 
-Use license checkpatch tells you.
+Please run scripts/checkpatch.pl and fix reported warnings. Some
+warnings can be ignored, but the code here looks like it needs a fix.
+Feel free to get in touch if the warning is not clear.
 
-> +# Device Tree bindings for Synopsys DesignWare HDMI RX Controller
-> +
-> +---
-> +$id: http://devicetree.org/schemas/media/snps,dw-hdmi-rx.yaml#
-
-Why this is a media, not display? Does RX means input? Lack of hardware
-description does not help?
-
-
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Synopsys DesignWare HDMI RX Controller
-> +
-> +maintainers:
-> +  - Shreeya Patel <shreeya.patel@collabora.com>
-> +
-
-description:
-
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: rockchip,rk3588-hdmirx-ctrler
-> +      - const: snps,dw-hdmi-rx
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 3
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: cec
-> +      - const: hdmi
-> +      - const: dma
-> +
-> +  clocks:
-> +    maxItems: 7
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: audio
-> +      - const: cr_para
-> +      - const: pclk
-> +      - const: ref
-> +      - const: hclk_s_hdmirx
-> +      - const: hclk_vo1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    maxItems: 4
-> +
-> +  reset-names:
-> +    items:
-> +      - const: rst_a
-> +      - const: rst_p
-> +      - const: rst_ref
-> +      - const: rst_biu
-
-Drop rest_ prefix
-
-> +
-> +  pinctrl-names:
-> +    const: default
-
-Drop
-
-> +
-> +  memory-region:
-> +    maxItems: 1
-> +
-> +  hdmirx-5v-detection-gpios:
-> +    description: GPIO specifier for 5V detection.
-
-Detection of what? Isn't this HPD?
-
-> +    maxItems: 1
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      The phandle of the syscon node for the GRF register.
-
-Instead describe what for. Basically 80% of your description is
-redundant and only "GRF register" brings some information.
-
-
-> +
-> +  rockchip,vo1_grf:
-
-No underscores.
-
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      The phandle of the syscon node for the VO1 GRF register.
-
-Same problem.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +  - clock-names
-> +  - power-domains
-> +  - resets
-> +  - pinctrl-0
-> +  - pinctrl-names
-
-Why? Drop.
-
-> +  - hdmirx-5v-detection-gpios
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/rk3588-power.h>
-> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-> +    hdmirx_ctrler: hdmirx-controller@fdee0000 {
-
-What is hdmirx-controller? Isn't this just hdmi@?
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-
-> +      compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
-> +      reg = <0x0 0xfdee0000 0x0 0x6000>;
-> +      interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                   <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
-
-
+Please do internal review. The internal Collabora review would tell you:
+YOU MUST run checkpatch. Then you see errors, so why do you send patch
+with errors to the mailing list?
 
 Best regards,
 Krzysztof
