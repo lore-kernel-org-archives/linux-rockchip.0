@@ -4,68 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA5CC48BEB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 11:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC9EC48BEB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Feb 2024 12:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zFgrj1y1QeUerAyHaY3QCEOVfWcYwFsahF/3u2AVAc8=; b=wEeudO8j05ksN2
-	EOTp8+5tZsOdE/c1lxwDES7nCFxuqHqfCven4TKI1GTOuWYBTsYvq4HGZEFwu23B1iqofC9OqGyHQ
-	E4VaS5jGvqsoxKKVFdiziTBBrDhLq9tF+uiFopkh/49InBUgP+Lye7tRLGSwxnzsPNspn74GBcyHf
-	GCOAW2c7W1ECmNixZchMeZPnz/P8+IPK3nPg7p2ELJxOVSVwuQk+vQIC+oV0oz0YL0fzJ6RHysVWl
-	nICzG3fMO1YeJaQa0pOv9f29n7QKDO0ISjO9HWzg3zKr7P7b7OnpN25yN6qKyYzUcU3fnuw4Aql59
-	/7/OOSXY6wGhUoWUk2Pg==;
+	List-Owner; bh=n/KUHEtrk4GehpocHvcwTfjoq9xgfgBv6M9iK2Nz/IA=; b=xWJcZ4qEdPE/bj
+	wj4N+LBdkwSbQEJr+DuCknTjY1D/WK4DChoqgekKaILgoyqYWnJfe/aJsmiMEIHesEEFgJgqlTSQO
+	xDHpgHzsza2jzlEccjv7Y/pxM3RR0xEFSzDWjQpcixJCqh/vdfsNUZbcQyIJh64gGj+CTGzuFah7B
+	Xfze0wYADV5T9FB2RjE6/JccBibmeWLuty8gOBBPEaJ4RkbIwrevqriE92qutXCJCx48kZLiQ0mUj
+	TVEbGRB+atrcaJAQYoXESiXTCZUcqM3lpoUDS8c+QkeKtZsvQm8IuDHgJ9rmjOJ5w5hukVdKMDIel
+	lt4imE1+OiaU6dnu298w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rawr8-00000002Dug-2FnJ;
-	Fri, 16 Feb 2024 11:58:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1raxda-00000002LLw-0fun;
+	Fri, 16 Feb 2024 12:48:18 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rawr4-00000002DsR-3zwe;
-	Fri, 16 Feb 2024 11:58:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4F307CE2AF6;
-	Fri, 16 Feb 2024 11:58:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A69EC433F1;
-	Fri, 16 Feb 2024 11:58:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708084688;
-	bh=02zB0ODjIh7Ni22bBy7tChA9AIJOF8lNxePQq8wnRdk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=MzpqLh0y6hKn3tTEciOdvs8P4G6Ht+gx34okHzjAp26dx0rimQLB7q5B0dVsk8cb3
-	 nzuRQMDVXTHpZkVv+pBuAnV5P4cPZD1fYeA+r+aX1nFay7F5a165rAU5JHQArPdCnT
-	 6/DwO42uGzbeBCyIwqwQmXb/x8cRtek0nPgK9LEkkvCvziju0tvOUxvufyzbESioLE
-	 jW6+nBJK6LgLsoVkl+/4KKR2N0xJRTb3Fx6CrVUrrSvec8zx4yKzpl5EClWigLa9ic
-	 p1uYWwlHYfYE85j6A2V7gNE0g8APT8xKyFlURWCtiKIBikItL6oKLfzoFyUNRguZoO
-	 VYwdQtDfV0bMw==
-From: Vinod Koul <vkoul@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Johan Jonker <jbx6244@gmail.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Algea Cao <algea.cao@rock-chips.com>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-phy@lists.infradead.org, kernel@collabora.com, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240214-phy-hdptx-v4-0-e7974f46c1a7@collabora.com>
-References: <20240214-phy-hdptx-v4-0-e7974f46c1a7@collabora.com>
-Subject: Re: [PATCH v4 0/2] Add support for RK3588 HDMI/eDP Combo PHY
-Message-Id: <170808468224.352706.3107795890372449699.b4-ty@kernel.org>
-Date: Fri, 16 Feb 2024 17:28:02 +0530
+	id 1raxdW-00000002LLJ-0TLO;
+	Fri, 16 Feb 2024 12:48:15 +0000
+Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1b:c794::1])
+	by madrid.collaboradmins.com (Postfix) with ESMTP id 4636B3780626;
+	Fri, 16 Feb 2024 12:48:10 +0000 (UTC)
+From: "Shreeya Patel" <shreeya.patel@collabora.com>
+In-Reply-To: <237e690a-2f49-4046-b054-3a878eed6748@linaro.org>
+X-Forward: 127.0.0.1
+References: <20240216094922.257674-1-shreeya.patel@collabora.com>
+ <20240216094922.257674-2-shreeya.patel@collabora.com> <237e690a-2f49-4046-b054-3a878eed6748@linaro.org>
+Date: Fri, 16 Feb 2024 12:48:10 +0000
+Cc: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com, shawn.wen@rock-chips.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-dt@vger.kernel.org, linux-arm@lists.infradead.org
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.12.3
+Message-ID: <30d2-65cf5980-3-2ec9f500@242931553>
+Subject: =?utf-8?q?Re=3A?= [PATCH 1/4] =?utf-8?q?clk=3A?==?utf-8?q?_rockchip=3A?=
+ =?utf-8?q?_rst-rk3588=3A?= Add BIU reset
+User-Agent: SOGoMail 5.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240216_035811_201587_51A26BA2 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20240216_044814_297794_04DC3C89 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,31 +61,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Friday, February 16, 2024 15:33 IST, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
 
-On Wed, 14 Feb 2024 13:45:35 +0200, Cristian Ciocaltea wrote:
-> Add driver and bindings to add initial support the Rockchip HDMI/eDP TX
-> Combo PHY found on RK3588 SoC.
+> On 16/02/2024 10:49, Shreeya Patel wrote:
+> > Export hdmirx_biu soft reset id which is required by the hdmirx controller.
+> > 
+> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> > ---
+> >  drivers/clk/rockchip/rst-rk3588.c               | 1 +
+> >  include/dt-bindings/reset/rockchip,rk3588-cru.h | 2 ++
 > 
-> The PHY is based on a Samsung IP block and supports HDMI 2.1 TMDS, FRL
-> and eDP links.
+> Please run scripts/checkpatch.pl and fix reported warnings. Some
+> warnings can be ignored, but the code here looks like it needs a fix.
+> Feel free to get in touch if the warning is not clear.
 > 
-> Please note that currently only the TMDS related functionality has been
-> implemented.  This has been tested on Radxa ROCK 5B and Rockchip EVB1
-> boards.
+> Please do internal review. The internal Collabora review would tell you:
+> YOU MUST run checkpatch. Then you see errors, so why do you send patch
+> with errors to the mailing list?
 > 
-> [...]
 
-Applied, thanks!
+I am sorry but what errors are you talking about?
+I don't see any errors reported by checkpatch :-
 
-[1/2] dt-bindings: phy: Add Rockchip HDMI/eDP Combo PHY schema
-      commit: 3312a0e8f64ec68db695224fcc7457e7292426eb
-[2/2] phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver
-      commit: 553be2830c5f33308483e8118de748a2c69fe593
+shreeya@shreeya:~/collabora/rd/rockchip/torvalds$ ./scripts/checkpatch.pl hdmirx/0001-clk-rockchip-rst-rk3588-Add-BIU-reset.patch
+WARNING: DT binding docs and includes should be a separate patch. See: Documentation/devicetree/bindings/submitting-patches.rst
 
-Best regards,
--- 
-~Vinod
+total: 0 errors, 1 warnings, 13 lines checked
 
+NOTE: For some of the reported defects, checkpatch may be able to
+      mechanically convert to the typical style using --fix or --fix-inplace.
+
+hdmirx-v1-1602/0001-clk-rockchip-rst-rk3588-Add-BIU-reset.patch has style problems, please review.
+
+I see the above warning but that looks like a false positive to me.
+
+> Best regards,
+> Krzysztof
+> 
+> _______________________________________________
+> Kernel mailing list -- kernel@mailman.collabora.com
+> To unsubscribe send an email to kernel-leave@mailman.collabora.com
+> This list is managed by https://mailman.collabora.com
 
 
 _______________________________________________
