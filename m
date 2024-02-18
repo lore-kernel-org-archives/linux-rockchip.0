@@ -4,110 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB7DC48BF6
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Feb 2024 12:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30129C48BF6
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Feb 2024 15:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HLSP6y5NsbC+qnwW1o0LbChC0eJn98X26FLkJSpR/vI=; b=dTyTHS9xfIv70f
-	BOv03EfHzN0UkdTd5cOmBv+p5xZhTj9IxRUjy7OOk2cr5xG701oycg1665sWn7i6dZTd5doN0DIar
-	TGrQxskOudFKpFXDn4VntRwC+Z5xwqzCHmBnurqgebmy1dMJZ+W0pnrtsawtyDJ1drr7bkv0WGhbp
-	ZwX+OstU9Xb6WNJMG7rt33T122Av+IrXm6PfcK2F2TmIf4+TF8RKe5mCCVzd0gDDQ4nez0b0nbCC/
-	6KiITSjsHwbjo92N5BmagE1w9vmM4cViNCNQ01+4CS7bzIzoMCh1APoBBdnezukGt3fReEXOLvpxC
-	lWYCkad8PXbxI5S/zq4w==;
+	List-Owner; bh=bxUDbDCEITahmXGN6wbEaPbmaV+ircBOzfC8ANacpdc=; b=127+tvlA0NWDsi
+	upuAy1XF6z1m7zVBZ0ZOUdovWFRELQckexWUax4lY3j3mY5ztEg3+hz/aJLZu8GNpAlAbBaq+UGSX
+	wWlux45Oi4sEW8sGWum93YwZsjEZI8PKLLvw2JCpxwK/LJEL2mxMRIIA9IRFWdU8bNmWyEkdDqumO
+	+ns7xYoI9/IgwexEiCVwiszeNIHr18M8fnmWlo0WrI9kikT7Ly+Frm0hfOSObUk/MaPfWQnBhjeFV
+	eZ/uPup7UCl18EHeocrk1VlhJwtK16tjvrnmm4zFcyUO1dl1yiJJ7xPUApT4vd0p2BlueJBctcVRc
+	TnF59ecvH+kTf3BYmsGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbgTD-00000007idd-0fSE;
-	Sun, 18 Feb 2024 12:40:35 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1rbiv3-00000007w19-1N7i;
+	Sun, 18 Feb 2024 15:17:29 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbgT5-00000007ibc-34FX;
-	Sun, 18 Feb 2024 12:40:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gZmqfmB6fTBR74XgJI+NN8XTEyIaAFoIbaH6cB+nt6s=; b=mBR2OF66UJDI6eSNbTgQXD+wCc
-	NesRa+Hql7Df5cVcsDdkuEl5mwXoNrHSgNDgkML6JoR6Mnob4IED2QMayj6A0YoBnGwnw4DaztJFj
-	wihuyCiFiT19ddMcFLX9JYFYZxHSsZofJusrW5UKvtXQ8rJ9exHa/tT14EwJchA+iCgu2pha6aLYD
-	XeIYSz+WpDwgJyxnSGUoXW7cKOuJN7UobFSwWr6AGiUBzvcR5YoLHQciZF6co0COeZICs/QFSfAMJ
-	n9QWMvr8lUZ95gMIJStvpyNQH3m8Slpj1DZQbVil+WiupdVF5jH28K29h13ghcHZGuzRkfvoLnwGs
-	TV57ATRA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53158)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1rbgS7-0002It-3D;
-	Sun, 18 Feb 2024 12:39:28 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1rbgRu-0007Qi-70; Sun, 18 Feb 2024 12:39:14 +0000
-Date: Sun, 18 Feb 2024 12:39:14 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Michael Hennerich <michael.hennerich@analog.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Arun Ramadoss <arun.ramadoss@microchip.com>,
-	UNGLinuxDriver@microchip.com, Peter Geis <pgwipeout@gmail.com>,
-	Frank <Frank.Sae@motor-comm.com>, Xu Liang <lxu@maxlinear.com>,
-	Piergiorgio Beruto <piergiorgio.beruto@gmail.com>,
-	Andrei Botila <andrei.botila@oss.nxp.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Miguel Ojeda <ojeda@kernel.org>,
-	Alex Gaynor <alex.gaynor@gmail.com>,
-	Wedson Almeida Filho <wedsonaf@gmail.com>,
-	Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>,
-	=?iso-8859-1?Q?Bj=F6rn?= Roy Baron <bjorn3_gh@protonmail.com>,
-	Benno Lossin <benno.lossin@proton.me>,
-	Andreas Hindborg <a.hindborg@samsung.com>,
-	Alice Ryhl <aliceryhl@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Robert Marko <robimarko@gmail.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	David Epping <david.epping@missinglinkelectronics.com>,
-	Harini Katakam <harini.katakam@amd.com>,
-	Simon Horman <horms@kernel.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, rust-for-linux@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [net-next RFC PATCH 0/3] net: phy: detach PHY driver OPs from
- phy_driver struct
-Message-ID: <ZdH6csVX1ZOPYP84@shell.armlinux.org.uk>
-References: <20240217194116.8565-1-ansuelsmth@gmail.com>
- <ZdEOpB1oVDE8+Qhq@shell.armlinux.org.uk>
- <65d13fcd.050a0220.88fe3.665f@mx.google.com>
+	id 1rbiv0-00000007w0L-0G1D;
+	Sun, 18 Feb 2024 15:17:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1708269442; bh=vgYyrkfy4NvMffwZnA9GbIjwpDwWVz0QVFbKOYEwfJQ=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=betw1GS2RwS4OjostOe9MAyGZAzRsiDV36jcyw9WQ9jAB+MQ+pbGdaHEsM1Irngqh
+	 uzGfdq/2mOTdrV9ZRyr5tGZyEWVR5dvQAJzZ6q+1hEqP+RbIfet/pSkFiiTn3cwCLk
+	 p7GFEg35DB2UFv/USy8i6Y0HfbeLIg/DKhNUM5iI=
+Date: Sun, 18 Feb 2024 16:17:22 +0100
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	"open list:DRM DRIVERS FOR ROCKCHIP" <dri-devel@lists.freedesktop.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH] drm: rockchip: Don't require MIPI DSI device when it's
+ used for ISP
+Message-ID: <bsc3lpdxvhy3ss2uja4do3jwvj43zbs7zhx4bzs2tryrakn7be@pt2qsyvryk73>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Andy Yan <andy.yan@rock-chips.com>, linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	"open list:DRM DRIVERS FOR ROCKCHIP" <dri-devel@lists.freedesktop.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20240217183941.1752463-1-megi@xff.cz>
+ <4c66c084-5af6-43fb-a256-4746b2e00192@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <65d13fcd.050a0220.88fe3.665f@mx.google.com>
+In-Reply-To: <4c66c084-5af6-43fb-a256-4746b2e00192@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240218_044029_114368_B85C81F5 
-X-CRM114-Status: GOOD (  30.79  )
+X-CRM114-CacheID: sfid-20240218_071726_590839_BC13C4D2 
+X-CRM114-Status: GOOD (  33.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,197 +74,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 18, 2024 at 12:22:45AM +0100, Christian Marangi wrote:
-> On Sat, Feb 17, 2024 at 07:53:08PM +0000, Russell King (Oracle) wrote:
-> > Would it make more sense instead of this big churn, to instead
-> > introduce into struct phy_driver:
-> > 
-> > 	struct mdio_device_id	*ids;
-> > 
-> > which would then allow a phy_driver structure to be matched by
-> > several device IDs?
-> 
-> Yes that was an alternative idea, but is it good to then have 2 way to
-> declare PHY ID?
-> 
-> Also the name should be changed... Maybe an array of a struct PHY_ID,
-> name that ends with a sentinel?
-
-We already have arrays of mdio_device_id in every driver, whether they
-can be re-used or not is a separate issue. In any case, merely adding
-support for this (only build tested patch below) is a much smaller
-change.
-
- drivers/net/phy/phy_device.c | 64 +++++++++++++++++++++++++++++++++-----------
- include/linux/phy.h          | 16 ++++++++++-
- 2 files changed, 63 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index 2e7d5bfb338e..7e02bf51a2a5 100644
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
-@@ -522,12 +522,51 @@ static int phy_scan_fixups(struct phy_device *phydev)
- 	return 0;
- }
- 
-+static const struct mdio_device_id *
-+phy_driver_match_id(struct phy_driver *phydrv, u32 id)
-+{
-+	const struct mdio_device_id *ids = phydrv->ids;
-+
-+	if (ids) {
-+		while (ids->phy_id) {
-+			if (phy_id_compare(id, ids->phy_id, ids->phy_id_mask))
-+				return ids;
-+			ids++;
-+		}
-+	}
-+
-+	if (phy_id_compare(id, phydrv->id.phy_id, phydrv->id.phy_id_mask))
-+		return &phydrv->id;
-+
-+	return NULL;
-+}
-+
-+static const struct mdio_device_id *
-+phy_driver_match(struct phy_driver *phydrv, struct phy_device *phydev)
-+{
-+	const int num_ids = ARRAY_SIZE(phydev->c45_ids.device_ids);
-+	const struct mdio_device_id *id;
-+	int i;
-+
-+	if (!phydev->is_c45)
-+		return phy_driver_match_id(phydrv, phydev->phy_id);
-+
-+	for (i = 1; i < num_ids; i++) {
-+		if (phydev->c45_ids.device_ids[i] == 0xffffffff)
-+			continue;
-+
-+		id = phy_driver_match_id(phydrv, phydev->c45_ids.device_ids[i]);
-+		if (id)
-+			return id;
-+	}
-+
-+	return NULL;
-+}
-+
- static int phy_bus_match(struct device *dev, struct device_driver *drv)
- {
- 	struct phy_device *phydev = to_phy_device(dev);
- 	struct phy_driver *phydrv = to_phy_driver(drv);
--	const int num_ids = ARRAY_SIZE(phydev->c45_ids.device_ids);
--	int i;
- 
- 	if (!(phydrv->mdiodrv.flags & MDIO_DEVICE_IS_PHY))
- 		return 0;
-@@ -535,20 +574,7 @@ static int phy_bus_match(struct device *dev, struct device_driver *drv)
- 	if (phydrv->match_phy_device)
- 		return phydrv->match_phy_device(phydev);
- 
--	if (phydev->is_c45) {
--		for (i = 1; i < num_ids; i++) {
--			if (phydev->c45_ids.device_ids[i] == 0xffffffff)
--				continue;
--
--			if (phy_id_compare(phydev->c45_ids.device_ids[i],
--					   phydrv->phy_id, phydrv->phy_id_mask))
--				return 1;
--		}
--		return 0;
--	} else {
--		return phy_id_compare(phydev->phy_id, phydrv->phy_id,
--				      phydrv->phy_id_mask);
--	}
-+	return !!phy_driver_match(phydrv, phydev);
- }
- 
- static ssize_t
-@@ -3311,6 +3337,7 @@ static int phy_probe(struct device *dev)
- 	int err = 0;
- 
- 	phydev->drv = phydrv;
-+	phydev->drv_id = phy_driver_match(phydrv, phydev);
- 
- 	/* Disable the interrupt if the PHY doesn't support it
- 	 * but the interrupt is still a valid one
-@@ -3485,6 +3512,11 @@ int phy_driver_register(struct phy_driver *new_driver, struct module *owner)
- 	new_driver->mdiodrv.driver.owner = owner;
- 	new_driver->mdiodrv.driver.probe_type = PROBE_FORCE_SYNCHRONOUS;
- 
-+	if (!new_driver->id.phy_id) {
-+		new_driver->id.phy_id = new_driver->phy_id;
-+		new_driver->id.phy_id_mask = new_driver->phy_id_mask;
-+	}
-+
- 	retval = driver_register(&new_driver->mdiodrv.driver);
- 	if (retval) {
- 		pr_err("%s: Error %d in registering driver\n",
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index fd8dbea9b4d9..2f2ebbd41535 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -542,6 +542,7 @@ struct macsec_ops;
-  *
-  * @mdio: MDIO bus this PHY is on
-  * @drv: Pointer to the driver for this PHY instance
-+ * @drv_id: The matched driver ID for this PHY instance
-  * @devlink: Create a link between phy dev and mac dev, if the external phy
-  *           used by current mac interface is managed by another mac interface.
-  * @phy_id: UID for this device found during discovery
-@@ -639,6 +640,7 @@ struct phy_device {
- 	/* Information about the PHY type */
- 	/* And management functions */
- 	const struct phy_driver *drv;
-+	const struct mdio_device_id *drv_id;
- 
- 	struct device_link *devlink;
- 
-@@ -882,6 +884,9 @@ struct phy_led {
-  * struct phy_driver - Driver structure for a particular PHY type
-  *
-  * @mdiodrv: Data common to all MDIO devices
-+ * @ids: array of mdio device IDs to match this driver (terminated with
-+ *   zero phy_id)
-+ * @id: mdio device ID to match
-  * @phy_id: The result of reading the UID registers of this PHY
-  *   type, and ANDing them with the phy_id_mask.  This driver
-  *   only works for PHYs with IDs which match this field
-@@ -903,6 +908,8 @@ struct phy_led {
-  */
- struct phy_driver {
- 	struct mdio_driver_common mdiodrv;
-+	const struct mdio_device_id *ids;
-+	struct mdio_device_id id;
- 	u32 phy_id;
- 	char *name;
- 	u32 phy_id_mask;
-@@ -1203,7 +1210,14 @@ static inline bool phy_id_compare(u32 id1, u32 id2, u32 mask)
-  */
- static inline bool phydev_id_compare(struct phy_device *phydev, u32 id)
- {
--	return phy_id_compare(id, phydev->phy_id, phydev->drv->phy_id_mask);
-+	u32 mask;
-+
-+	if (phydev->drv_id)
-+		mask = phydev->drv_id->phy_id_mask;
-+	else
-+		mask = phydev->drv->phy_id_mask;
-+
-+	return phy_id_compare(id, phydev->phy_id, mask);
- }
- 
- /* A Structure for boards to register fixups with the PHY Lib */
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5keSwKCk9uIFN1biwgRmViIDE4LCAyMDI0IGF0IDA3OjE0OjU2UE0gKzA4MDAsIEFuZHkg
+WWFuIHdyb3RlOgo+IEhpLAo+IAo+IE9uIDIvMTgvMjQgMDI6MzksIE9uZMWZZWogSmlybWFuIHdy
+b3RlOgo+ID4gRnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Cj4gPiAKPiA+IE9uIFJL
+MzM5OSBvbmUgTUlQSSBEU0kgZGV2aWNlIGNhbiBiZSBhbHRlcm5hdGl2ZWx5IHVzZWQgd2l0aCB0
+aGUgSVNQMSwKPiA+IHRvIHByb3ZpZGUgUlggRFBIWS4gV2hlbiB0aGlzIGlzIHRoZSBjYXNlIChJ
+U1AxIGlzIGVuYWJsZWQgaW4gZGV2aWNlCj4gPiB0cmVlKSwgcHJvYmUgc3VjY2VzcyBvZiBEUk0g
+aXMgdGllZCB0byBwcm9iZSBzdWNjZXNzIG9mIElTUDEgY29ubmVjdGVkCj4gPiBjYW1lcmEgc2Vu
+c29yLiBUaGlzIGNhbiBmYWlsIGlmIHRoZSB1c2VyIGlzIGFibGUgdG8ga2lsbHN3aXRjaCB0aGUg
+Y2FtZXJhCj4gPiBwb3dlciwgbGlrZSBvbiBQaW5lcGhvbmUgUHJvLgo+ID4gCj4gPiBEZXRlY3Qg
+dXNlIG9mIE1JUEkgRFNJIGNvbnRyb2xsZXIgYnkgSVNQLCBhbmQgZG9uJ3QgaW5jbHVkZSBpdCBp
+bgo+ID4gY29tcG9uZW50IG1hdGNoIGxpc3QgaW4gdGhhdCBjYXNlLgo+ID4gCj4gCj4gSXNuJ3Qg
+dGhpcyBzdXBwb3NlZCB0byBiZSB0YWtlbiBjYXJlIG9mIHdpdGhpbiB0aGUgZHRzPwo+IFNpbmNl
+IERQSFkxIHNob3VsZCBleGNsdXNpdmVseSB1c2VkIGJ5IE1JUEkgRFNJMSBhbmQgSVNQMSwgdGhl
+biBpZgo+IGEgZGV2aWNlIHdhbnQgdG8gdXNlIElTUDEsIHRoZSBEU0kxIHNob3VsZCBiZSBkaXNh
+YmxlZCBpbiBkdHMuCgpEU0kxIGNhbid0IGJlIGRpc2FibGVkLCBiZWNhdXNlIGl0IHByb3ZpZGVz
+IFBIWSBkZXZpY2UgZm9yIElTUDEgaW4gdGhpcwpzY2VuYXJpby4KClRoZSBwcm9ibGVtIGlzIHRo
+YXQgaW4gdGhpcyBzY2VuYXJpbyBEUk0ga2VlcHMgd2FpdGluZyBmb3IgRFNJMSBkZXZpY2UsCmRl
+c3BpdGUgaXQganVzdCBiZWluZyB1c2VkIGZvciBQSFkgZm9yIElTUDEgYW5kIG5vdCBhcyBhIGNv
+bXBvbmVudCBmb3IKcm9ja2NoaXAgRFJNIGRyaXZlci4KClNlZToKCiAgICAgICAgaXNwMTogaXNw
+MUBmZjkyMDAwMCB7CiAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5
+OS1jaWYtaXNwIjsKICAgICAgICAgICAgICAgIHJlZyA9IDwweDAgMHhmZjkyMDAwMCAweDAgMHg0
+MDAwPjsKICAgICAgICAgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSA0NCBJUlFfVFlQRV9M
+RVZFTF9ISUdIIDA+OwogICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgU0NMS19JU1AxPiwK
+ICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEFDTEtfSVNQMV9XUkFQUEVSPiwKICAgICAg
+ICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfSVNQMV9XUkFQUEVSPjsKICAgICAgICAgICAg
+ICAgIGNsb2NrLW5hbWVzID0gImlzcCIsICJhY2xrIiwgImhjbGsiOwogICAgICAgICAgICAgICAg
+aW9tbXVzID0gPCZpc3AxX21tdT47CiAgICAgICAgICAgICAgICBwaHlzID0gPCZtaXBpX2RzaTE+
+OyAgPC0tLS0tLS0tLSAKICAgICAgICAgICAgICAgIHBoeS1uYW1lcyA9ICJkcGh5IjsKICAgICAg
+ICAgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9JU1AxPjsKICAgICAg
+ICAgICAgICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7CgpJZiBtaXBpX2RzaTEgaXMgZGlzYWJsZWQs
+IGlzcDEgd2lsbCBuZXZlciBwcm9iZS4KCkl0J3MgYSBjb25zZXF1ZW5jZSBvZiB0aGlzIHNwZWNp
+YWwgZHVhbCB1c2Ugb2YgbWlwaV9kc2kxLgoKa2luZCByZWdhcmRzLAoJby4KCj4gPiBTaWduZWQt
+b2ZmLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiA+IC0tLQo+ID4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgNDcgKysrKysrKysrKysrKysr
+KysrKysrCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA0NyBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ID4gaW5kZXggYWI1
+NWQ3MTMyNTUwLi5mNDdkZTk0YWQ1NzYgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gPiBAQCAtMzU0LDYgKzM1NCw0MyBAQCBzdGF0aWMg
+dm9pZCByb2NrY2hpcF9kcm1fbWF0Y2hfcmVtb3ZlKHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICAg
+CQlkZXZpY2VfbGlua19kZWwobGluayk7Cj4gPiAgIH0KPiA+ICsvKgo+ID4gKyAqIENoZWNrIGlm
+IElTUCBibG9jayBsaW5rZWQgdG8gYSBtaXBpLWRzaSBkZXZpY2UgdmlhIHBoeXMgcGhhbmRsZSBp
+cwo+ID4gKyAqIGVuYWJsZWQgaW4gZGV2aWNlIHRyZWUuCj4gPiArICovCj4gPiArc3RhdGljIGJv
+b2wgcm9ja2NoaXBfZHJtX2lzX21pcGkxX2FuZF91c2VkX2J5X2lzcChzdHJ1Y3QgZGV2aWNlICpk
+ZXYpCj4gPiArewo+ID4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gTlVMTCwgKnBoeV9ucDsK
+PiA+ICsKPiA+ICsJaWYgKCFvZl9kZXZpY2VfaXNfY29tcGF0aWJsZShkZXYtPm9mX25vZGUsICJy
+b2NrY2hpcCxyazMzOTktbWlwaS1kc2kiKSkKPiA+ICsJCXJldHVybiBmYWxzZTsKPiA+ICsKPiA+
+ICsJd2hpbGUgKHRydWUpIHsKPiA+ICsJCW5wID0gb2ZfZmluZF9jb21wYXRpYmxlX25vZGUobnAs
+IE5VTEwsICJyb2NrY2hpcCxyazMzOTktY2lmLWlzcCIpOwo+ID4gKwkJaWYgKCFucCkKPiA+ICsJ
+CQlicmVhazsKPiA+ICsKPiA+ICsJCWlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShucCkpIHsK
+PiA+ICsJCQlvZl9ub2RlX3B1dChucCk7Cj4gPiArCQkJY29udGludWU7Cj4gPiArCQl9Cj4gPiAr
+Cj4gPiArCQlwaHlfbnAgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicGh5cyIsIDApOwo+ID4gKwkJ
+aWYgKCFwaHlfbnApIHsKPiA+ICsJCQlvZl9ub2RlX3B1dChucCk7Cj4gPiArCQkJY29udGludWU7
+Cj4gPiArCQl9Cj4gPiArCj4gPiArCQlvZl9ub2RlX3B1dChwaHlfbnApOwo+ID4gKwkJb2Zfbm9k
+ZV9wdXQobnApOwo+ID4gKwo+ID4gKwkJaWYgKHBoeV9ucCA9PSBkZXYtPm9mX25vZGUpCj4gPiAr
+CQkJcmV0dXJuIHRydWU7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcmV0dXJuIGZhbHNlOwo+ID4gK30K
+PiA+ICsKPiA+ICAgc3RhdGljIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKnJvY2tjaGlwX2RybV9t
+YXRjaF9hZGQoc3RydWN0IGRldmljZSAqZGV2KQo+ID4gICB7Cj4gPiAgIAlzdHJ1Y3QgY29tcG9u
+ZW50X21hdGNoICptYXRjaCA9IE5VTEw7Cj4gPiBAQCAtMzcxLDYgKzQwOCwxNiBAQCBzdGF0aWMg
+c3RydWN0IGNvbXBvbmVudF9tYXRjaCAqcm9ja2NoaXBfZHJtX21hdGNoX2FkZChzdHJ1Y3QgZGV2
+aWNlICpkZXYpCj4gPiAgIAkJCWlmICghZCkKPiA+ICAgCQkJCWJyZWFrOwo+ID4gKwkJCS8qCj4g
+PiArCQkJICogSWYgbWlwaTEgaXMgY29ubmVjdGVkIHRvIElTUCwgd2UgZG9uJ3Qgd2FudCB0byB3
+YWl0IGZvciBtaXBpMSBjb21wb25lbnQsCj4gPiArCQkJICogYmVjYXVzZSBpdCB3aWxsIG5vdCBi
+ZSB1c2VkIGJ5IERSTSBhbnl3YXksIHRvIG5vdCB0aWUgc3VjY2VzcyBvZiBjYW1lcmEKPiA+ICsJ
+CQkgKiBkcml2ZXIgcHJvYmUgdG8gZGlzcGxheSBwaXBlbGluZSBpbml0aWFsaXphdGlvbi4KPiA+
+ICsJCQkgKi8KPiA+ICsJCQlpZiAocm9ja2NoaXBfZHJtX2lzX21pcGkxX2FuZF91c2VkX2J5X2lz
+cChkKSkgewo+ID4gKwkJCQlkZXZfaW5mbyhkLCAidXNlZCBieSBJU1AxLCBza2lwcGluZyBmcm9t
+IERSTVxuIik7Cj4gPiArCQkJCWNvbnRpbnVlOwo+ID4gKwkJCX0KPiA+ICsKPiA+ICAgCQkJZGV2
+aWNlX2xpbmtfYWRkKGRldiwgZCwgRExfRkxBR19TVEFURUxFU1MpOwo+ID4gICAJCQljb21wb25l
+bnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wb25lbnRfY29tcGFyZV9kZXYsIGQpOwo+ID4g
+ICAJCX0gd2hpbGUgKHRydWUpOwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
