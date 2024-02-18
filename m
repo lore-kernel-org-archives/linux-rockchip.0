@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E442FC48BF6
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Feb 2024 20:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C0A8C48BF6
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Feb 2024 20:44:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nq+xPVT7vIaPCB4qhKcw7fbn8vvJGGVQPVnqaA3sNdw=; b=Q1qGMOxt28WsPa
-	deYjF465bb0Oq1I2FkcHWNEtyt1PFuNYUSK2h8JuNw0qasWo1WdpM5D/xm+O2e2KuYxUG/B185ulR
-	Uw+Z/Aa+8aoNfHbIqIjOJ0QXyYzOs7RyjvMcye6St60ShHO7YEMTZoyOfA/SqAn1lEHD59Wl8dLb5
-	1OhdpOtReoPiliP2jeeRwRnHEYPaOwQrCuQSQOveY4l/uOye4wTJqzd7yrBUpPHQBg4Qu+lnUhyMu
-	po8J5LcrqX7AKDtMlc8KoF+eyjTceUMSynzkSNuuszvO1r+XbUaK00BTKW5rak7iYX5JSoLJRZzzE
-	j549wCvWZoJA1VVqp6ig==;
+	List-Owner; bh=Thp/XBQQ7oijwrsHdI7gauvMxH12rIBjCO6QBVa1gDA=; b=JQWoZBtiyPTubK
+	QY9A1Hj9iiIWM7j49+x0sq/DTcPtOZt0Ufs1uB1SF0i5voN8C6Ls/Z0lUcVha18iPpsurpBCy6HHu
+	B5xNowXJ5X/pmiDbGy1GRx+lPmtqj+T9mb8CfUJlITKODum2NaBuyYR5MB8Ksd30R0+wFnIud218R
+	Rq0F9DYCFci3eLUBYpLl72HnDE2K03D4kTgEiEfUyswGgV8za+v0Xc5NzGAjO1CYJOEFtWd+rfhe4
+	mVudErsArRRfY8ybXmz06UQSH7Az2/fIkzTQdmRbqxn/90yyuF5jHLdPxzI6qfp3kaTiVEEdV2tec
+	zZPvu4LZjdjyR8zl+btQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbo17-00000008PRY-0Fwn;
-	Sun, 18 Feb 2024 20:44:05 +0000
+	id 1rbo1D-00000008PXZ-3nUS;
+	Sun, 18 Feb 2024 20:44:11 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbo10-00000008PKs-2Tie
+	id 1rbo13-00000008PNN-0rDt
 	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Feb 2024 20:44:02 +0000
+	Sun, 18 Feb 2024 20:44:04 +0000
 Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5DDC31BA7;
-	Sun, 18 Feb 2024 21:43:51 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F40611C1D;
+	Sun, 18 Feb 2024 21:43:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1708289031;
-	bh=oqAdTNIE9xBQbrtEhCFpCuBexXpqVCCV72LrhUwGx3E=;
+	s=mail; t=1708289034;
+	bh=j0wCPQLs+LbZ056Jh8fQyY1hzBEVcm2K/+cl1Nzg9bU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XYmY0CQEvDsMAcGbXzgvnmTeG8FGuog7Dn6ipKlMzSdxMk6TpBQyTfWtunoRrOUWl
-	 BgdQB8BQ/+hLbBpEAtGZcch2ro6K98NjIGEpqK+gYDbJXSiobvWhe5JpKAphAkUFrd
-	 G3ko1oi/42O6YsoNCG1qXpyWNT+2E1gWqJ+HhNA0=
+	b=KYl+7gEgXrx5cC5ESOKrxkuFse9sdBtyyJwfS87/B/ZIwId8z++WOApL2N2eGj7jY
+	 2SjSde5Rpiq1abrBG0ZDn0eqPptMa53ILrsdVO/Bgorj/l2G9qLerD5Yj4gr9rgcV0
+	 uK7w7zFSBonmXCBMuKtb2HNOtRdQOYy9gkKZRZD0=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Paul Elder <paul.elder@ideasonboard.com>,
@@ -48,16 +48,16 @@ Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	Kieran Bingham <kieran.bingham@ideasonboard.com>,
 	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v13 08/12] media: rkisp1: Support i.MX8MP's 34-bit DMA
-Date: Sun, 18 Feb 2024 22:43:46 +0200
-Message-ID: <20240218204350.10916-9-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v13 10/12] media: rkisp1: Add UYVY as an output format
+Date: Sun, 18 Feb 2024 22:43:48 +0200
+Message-ID: <20240218204350.10916-11-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
 References: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240218_124358_917808_57750F60 
-X-CRM114-Status: GOOD (  21.24  )
+X-CRM114-CacheID: sfid-20240218_124401_638590_7056AD53 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,166 +76,98 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Paul Elder <paul.elder@ideasonboard.com>
 
-On the ISP that is integrated in the i.MX8MP, DMA addresses have been
-extended to 34 bits, with the 32 MSBs stored in the DMA address
-registers and the 2 LSBs set to 0.
-
-To support this:
-- Shift the addresses to the right by 2 when writing to registers
-- Set the dma mask to 34 bits
-- Use dma_addr_t instead of u32 when storing the addresses
+Add support for UYVY as an output format. The uv_swap bit in the
+MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
+work for packed YUV formats. Thus, UYVY support is implemented via
+byte-swapping. This method clearly does not work for implementing
+support for YVYU and VYUY.
 
 Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
 Tested-by: Adam Ford <aford173@gmail.com>
-Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
-Changes since v12:
+Changes since v6:
 
-- Make dma_mask a u64
-
-Changes since v5:
-
-- Improve the commit message
-
-Changes since v4:
-
-- Squash in fix from Tomi:
-  - https://gitlab.com/ideasonboard/nxp/linux/-/commit/d6477fe673b1c0d05d12ae21d8db9a03b07e7fea
-
-Changes since v2:
-
-- Document the RKISP1_FEATURE_DMA_34BIT bit
-- Use the rkisp1_has_feature() macro
+- Replace MI_OUTPUT_FORMAT feature flag with MAIN_STRIDE
 ---
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 20 ++++++++++---------
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  4 +++-
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  8 ++++++++
- 3 files changed, 22 insertions(+), 10 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 7d56874c3106..50e86d8ff902 100644
+index 33756b44a317..0efdf8513de0 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -648,11 +648,13 @@ static void rkisp1_dummy_buf_destroy(struct rkisp1_capture *cap)
- 
- static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- {
-+	u8 shift = rkisp1_has_feature(cap->rkisp1, DMA_34BIT) ? 2 : 0;
-+
- 	cap->buf.curr = cap->buf.next;
- 	cap->buf.next = NULL;
- 
- 	if (!list_empty(&cap->buf.queue)) {
--		u32 *buff_addr;
-+		dma_addr_t *buff_addr;
- 
- 		cap->buf.next = list_first_entry(&cap->buf.queue, struct rkisp1_buffer, queue);
- 		list_del(&cap->buf.next->queue);
-@@ -660,7 +662,7 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		buff_addr = cap->buf.next->buff_addr;
- 
- 		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
--			     buff_addr[RKISP1_PLANE_Y]);
-+			     buff_addr[RKISP1_PLANE_Y] >> shift);
- 		/*
- 		 * In order to support grey format we capture
- 		 * YUV422 planar format from the camera and
-@@ -669,17 +671,17 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		if (cap->pix.cfg->fourcc == V4L2_PIX_FMT_GREY) {
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cb_base_ad_init,
--				     cap->buf.dummy.dma_addr);
-+				     cap->buf.dummy.dma_addr >> shift);
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cr_base_ad_init,
--				     cap->buf.dummy.dma_addr);
-+				     cap->buf.dummy.dma_addr >> shift);
- 		} else {
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cb_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CB]);
-+				     buff_addr[RKISP1_PLANE_CB] >> shift);
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cr_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CR]);
-+				     buff_addr[RKISP1_PLANE_CR] >> shift);
- 		}
- 	} else {
- 		/*
-@@ -687,11 +689,11 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		 * throw data if there is no available buffer.
- 		 */
- 		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
- 		rkisp1_write(cap->rkisp1, cap->config->mi.cb_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
- 		rkisp1_write(cap->rkisp1, cap->config->mi.cr_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
+@@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+ 		.uv_swap = 0,
+ 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+ 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
++	}, {
++		.fourcc = V4L2_PIX_FMT_UYVY,
++		.uv_swap = 0,
++		.yc_swap = 1,
++		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
++		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+ 	}, {
+ 		.fourcc = V4L2_PIX_FMT_YUV422P,
+ 		.uv_swap = 0,
+@@ -231,6 +237,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+ 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+ 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+ 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
++	}, {
++		.fourcc = V4L2_PIX_FMT_UYVY,
++		.uv_swap = 0,
++		.yc_swap = 1,
++		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
++		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
++		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+ 	}, {
+ 		.fourcc = V4L2_PIX_FMT_YUV422P,
+ 		.uv_swap = 0,
+@@ -464,6 +477,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+ 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
  	}
  
- 	/* Set plane offsets */
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 070317196aa1..0afee50b97b9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -114,6 +114,7 @@ enum rkisp1_isp_pad {
-  * @RKISP1_FEATURE_MAIN_STRIDE: The ISP supports configurable stride on the main path
-  * @RKISP1_FEATURE_SELF_PATH: The ISP has a self path
-  * @RKISP1_FEATURE_DUAL_CROP: The ISP has the dual crop block at the resizer input
-+ * @RKISP1_FEATURE_DMA_34BIT: The ISP uses 34-bit DMA addresses
-  *
-  * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
-  * the driver to implement support for features present in some ISP versions
-@@ -124,6 +125,7 @@ enum rkisp1_feature {
- 	RKISP1_FEATURE_MAIN_STRIDE = BIT(1),
- 	RKISP1_FEATURE_SELF_PATH = BIT(2),
- 	RKISP1_FEATURE_DUAL_CROP = BIT(3),
-+	RKISP1_FEATURE_DMA_34BIT = BIT(4),
- };
- 
- #define rkisp1_has_feature(rkisp1, feature) \
-@@ -239,7 +241,7 @@ struct rkisp1_vdev_node {
- struct rkisp1_buffer {
- 	struct vb2_v4l2_buffer vb;
- 	struct list_head queue;
--	u32 buff_addr[VIDEO_MAX_PLANES];
-+	dma_addr_t buff_addr[VIDEO_MAX_PLANES];
- };
- 
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 885339159763..ff4ba0682068 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -531,6 +531,7 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	struct rkisp1_device *rkisp1;
- 	struct v4l2_device *v4l2_dev;
- 	unsigned int i;
-+	u64 dma_mask;
- 	int ret, irq;
- 	u32 cif_id;
- 
-@@ -544,6 +545,13 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	dev_set_drvdata(dev, rkisp1);
- 	rkisp1->dev = dev;
- 
-+	dma_mask = rkisp1_has_feature(rkisp1, DMA_34BIT) ? DMA_BIT_MASK(34) :
-+							   DMA_BIT_MASK(32);
++	/*
++	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
++	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
++	 * YVYU and VYUY cannot be supported with this method.
++	 */
++	if (rkisp1_has_feature(rkisp1, MAIN_STRIDE)) {
++		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
++		if (cap->pix.cfg->yc_swap)
++			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
++		else
++			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
++		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
++	}
 +
-+	ret = dma_set_mask_and_coherent(dev, dma_mask);
-+	if (ret)
-+		return ret;
-+
- 	mutex_init(&rkisp1->stream_lock);
+ 	rkisp1_mi_config_ctrl(cap);
  
- 	rkisp1->base_addr = devm_platform_ioremap_resource(pdev, 0);
+ 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
+@@ -507,6 +534,20 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+ 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
+ 	}
+ 
++	/*
++	 * U/V swapping with the MI_XTD_FORMAT_CTRL register only works for
++	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
++	 * YVYU and VYUY cannot be supported with this method.
++	 */
++	if (rkisp1_has_feature(rkisp1, MAIN_STRIDE)) {
++		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
++		if (cap->pix.cfg->yc_swap)
++			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
++		else
++			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
++		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
++	}
++
+ 	rkisp1_mi_config_ctrl(cap);
+ 
+ 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
 -- 
 Regards,
 
