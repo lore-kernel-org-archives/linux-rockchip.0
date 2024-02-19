@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 994D5C48BC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F96AC48260
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yBuscGvvZHjzrrYOQe6evGX+pNwyRkq+y4cUEZG9yoA=; b=0gCmbzOIzp25eV
-	1VpdP4moRH9DwmlfBusatOJxQpqxFwOM1RFYkrtuGclC1eWsZv2DjzdSLlMx+aEVZiaL4IJ6smDTo
-	OB3wwYLKoc74R94dRIPTkVYB48alQU8hkdsWWSWGyD2BbljjQCOuZG68sV0+73lCUiSTvzxrncxMe
-	/MqHg5w5lknN4R+N9gHpwxgS1WdFoh0RjycsxGs9hXdYj6J1Q9VqIPuxWlouIAfHHX3nbtIR1mEgZ
-	m9qM6IPXrX6ljD7fdVuw97QhpIPrnqB+sfvkgAsBl9vxlKJIrVYgQkqbhhxmijzbx/oeB64svlUS9
-	XfCybsAvOEpQTLVp/vEg==;
+	List-Owner; bh=5XebLybMcrGVLd+zJkxAX3s81+aEtB4d1w538FZv6nU=; b=izfmJREvMMEgqN
+	iu4zwS7r4lbtBwSG0fjnSvP5iCiOKUV3p8MsYVosU6X6zhmrfkVfy5qdQfy/1+p+y1r//60pYmWIe
+	zaRbN1byVejS481JQKP9J+F33m07gjv+nCC5AZcsMLy7aufV+WDZLbmfq9JeLQrxNjcLGTc8p4zR/
+	f5f1+iCIsJwlZBoAFHBFoSjIgKBuG6qKchO/R5GHhiCXRTCNlNp3iUYBgi0eAcpaFPlXooeCOPnR7
+	BbhLLX6xvr0H+JS801dAqJzCZ5fe1SjyLjgAuBJnhD1tOHYSH7nBSsK7Bqhb0w6oWBC9o9v6034gG
+	GRD8a1WrM0mxtcVuNVtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbyti-00000009Xw9-0ZMz;
-	Mon, 19 Feb 2024 08:21:10 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1rbzEP-00000009dJM-1iH3;
+	Mon, 19 Feb 2024 08:42:33 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbytg-00000009XvI-1jXx;
-	Mon, 19 Feb 2024 08:21:09 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-563ed3d221aso4117111a12.0;
-        Mon, 19 Feb 2024 00:21:07 -0800 (PST)
+	id 1rbzEL-00000009dIx-36Mk
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Feb 2024 08:42:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708330866; x=1708935666; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mBKDXP+4q2FP5//e66ThZpAWcTrY4eAILWbq0sVnKpI=;
-        b=f7MgKhCagOY3euPGDsWHf2i4HFAHAZRdBFtrDwBkuU56xm+i095HZUGIwnHTHS2wW2
-         zq82R0YVtp5iFngLG/zN6Pv1p9fCNyJkJoPvKqoL/6/IEorgWPLCHTjHoJSunecNlkZI
-         8mAdSXjDkgVmGYgrY2Y1MpM+C5nnCP+XHdpX5cViGhrJ4KPCD4zFiSKmsJuVVej9kmGW
-         2GI7yIemRy/Q/p1WgMHRrPLwoEoqDqEqo4ufMlG1ZISG2fnOshHrKwQZIWLpLbMk0gIU
-         BhyFG6mSm2XLUlVhf/Pnwv/Q/JjY8a76anUkDcpbFlkYCfvbwb3mJolz4FTTQEyIen7L
-         H4Hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708330866; x=1708935666;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mBKDXP+4q2FP5//e66ThZpAWcTrY4eAILWbq0sVnKpI=;
-        b=WcCA+eOxr+xFAUFgbZD7aK5fax7EAf5OhyyXda3GFvpAnTIvdznKqJBwAPOKoHYvyE
-         9i9m4NFjLuPB/KsN1lc+/TD09wEZYGdj/ckMVNmMZFFvGbaF05q9Fk6+QSiEE/LIJvr+
-         v4rH24qTYLcPB0dCSsOGO+Dqn9oFBN6ki5VFHUmpA7sTUtKDrIqyv4I/2y3jUhDXVZzg
-         +q99odDPzNxzSQJ0llmGW5v23XwKKNI1zTUC8e8iCxXwxOhOtArp+F0CHqaxI7Fivjk9
-         wvm6BN2un4g4jdSoT1/irfF6uUpVKaKDAMey+PUAU38GUgwlgwAXyhMzYtJGeYllxwSm
-         M57Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXK0StyxAjrAGxt5fw05bFzckbzOb2hiKed4AjSg/dyKIPdrU++A+px32MORB9doDuUrWRpEKd5+idZVKYLKPLtJAUANAS8x7B0WgPC0WhzIe1YjH0YIOqObcspCtyHbRlJYxNHRVXurLQvVr4KeFlydrCxOtbCdTY=
-X-Gm-Message-State: AOJu0YzzaTjScoKUbC03p1ViHIzy93n6Cf+D5mbXstNPT161X9yldtT3
-	e7ZElQ1WsNEZzj9k2u4OG15+w458YHyo8FODT5VRsQqn9dnAIqzAlxlxTEfDqgQVthLC2XDRR8M
-	SdFXZy4GKskxFL2NqjMUhjkOk4Nk=
-X-Google-Smtp-Source: AGHT+IEsJAubvCl5vdc5tgko+DNharyYkEwBy+6jjjKck75mGFBtNg4Xia6jN5YanvWhnw7HJrZgviXNXN/+a3bigfE=
-X-Received: by 2002:a05:6402:1513:b0:561:33dd:621c with SMTP id
- f19-20020a056402151300b0056133dd621cmr9912390edw.7.1708330866311; Mon, 19 Feb
- 2024 00:21:06 -0800 (PST)
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1708332149; x=1739868149;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=b3pLRSvlRNkx4QVYyNlxFS5vrERzFzUE1laQUlHC0YI=;
+  b=p37kSZjShauff4zfMfl3LlkNkrOXzSeOIsMNtl/c4GphRS2dy9pxpjwK
+   yEXOIZHJnH4bxLBIXO0Pgm/0B3l5bsjFY2PTe9Xsci8hr+08JrGwBL3Bx
+   BYTYGDwi8hGxxIsqqaOP33fLFiyrFhrAyGeKcUuUbyRnUagHtbqROdZN7
+   9iolTXxlBUORQA9ZNLiY54YG9NsjFVOBI+X1WOSx/xUg08vsonjvyMizo
+   NsDejmuRCMI6fzCkVZjTCzjtzEpmTU1C6v9URQiSgVfu3eAHpxoYiQM2U
+   52zecaqvbb9YeySzagMpfDvW05GJa4VS6xHpvqjqzv0BGKZ07jL1bt0WY
+   A==;
+X-IronPort-AV: E=Sophos;i="6.06,170,1705359600"; 
+   d="scan'208";a="35468937"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 19 Feb 2024 09:42:25 +0100
+Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.25])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id BD1E7280075;
+	Mon, 19 Feb 2024 09:42:24 +0100 (CET)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: linux-media@vger.kernel.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Adam Ford <aford173@gmail.com>, Conor Dooley <conor+dt@kernel.org>, Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>, Kieran Bingham <kieran.bingham@ideasonboard.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v13 00/12] media: rkisp1: Add support for i.MX8MP
+Date: Mon, 19 Feb 2024 09:42:27 +0100
+Message-ID: <6019598.lOV4Wx5bFT@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
+References: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-References: <20240218065407.652213-1-zhangzj@rock-chips.com>
- <20240218085314.658223-1-zhangzj@rock-chips.com> <20240218085314.658223-2-zhangzj@rock-chips.com>
-In-Reply-To: <20240218085314.658223-2-zhangzj@rock-chips.com>
-From: Weizhao Ouyang <o451686892@gmail.com>
-Date: Mon, 19 Feb 2024 16:20:55 +0800
-Message-ID: <CAHk0HovRrm3=99eTNvs+4UmdC-LYSuuuuP1Tuobr7KYbD23tCQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] dt-bindings: arm: rockchip: Add Toybrick TB-RK3588X
-To: Elon Zhang <zhangzj@rock-chips.com>
-Cc: heiko@sntech.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	conor+dt@kernel.org, weizhao.ouyang@arm.com, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_002108_471269_FD1AF350 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20240219_004230_187459_DE71C657 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +74,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBGZWIgMTgsIDIwMjQgYXQgNDo1M+KAr1BNIEVsb24gWmhhbmcgPHpoYW5nempAcm9j
-ay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gQWRkIGRldmljZXRyZWUgYmluZGluZyBmb3IgVG95YnJp
-Y2sgVEItUkszNTg4WCBib2FyZCBmcm9tIFJvY2tjaGlwIFRveWJyaWNrLgo+Cj4gU2lnbmVkLW9m
-Zi1ieTogRWxvbiBaaGFuZyA8emhhbmd6akByb2NrLWNoaXBzLmNvbT4KClJldmlld2VkLWJ5OiBX
-ZWl6aGFvIE91eWFuZyA8d2Vpemhhby5vdXlhbmdAYXJtLmNvbT4KCkJSLApXZWl6aGFvCgo+IC0t
-LQo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwg
-fCA1ICsrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1n
-aXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwg
-Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPiBp
-bmRleCA1Y2Y1Y2JlZjJjZjUuLmQyOWRmOTdjN2IyNSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPiArKysgYi9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPiBAQCAtODc4LDYg
-Kzg3OCwxMSBAQCBwcm9wZXJ0aWVzOgo+ICAgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscnYx
-MTA4LWV2Ygo+ICAgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscnYxMTA4Cj4KPiArICAgICAg
-LSBkZXNjcmlwdGlvbjogUm9ja2NoaXAgVG95YnJpY2sgVEItUkszNTg4WCBib2FyZAo+ICsgICAg
-ICAgIGl0ZW1zOgo+ICsgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszNTg4LXRveWJyaWNr
-LXgwCj4gKyAgICAgICAgICAtIGNvbnN0OiByb2NrY2hpcCxyazM1ODgKPiArCj4gICAgICAgIC0g
-ZGVzY3JpcHRpb246IFRoZW9icm9tYSBTeXN0ZW1zIFBYMzAtdVE3IHdpdGggSGFpa291IGJhc2Vi
-b2FyZAo+ICAgICAgICAgIGl0ZW1zOgo+ICAgICAgICAgICAgLSBjb25zdDogdHNkLHB4MzAtcmlu
-Z25lY2staGFpa291Cj4gLS0KPiAyLjM0LjEKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Laurent,
+
+thanks for the update.
+
+Am Sonntag, 18. Februar 2024, 21:43:38 CET schrieb Laurent Pinchart:
+> Hello,
+> =
+
+> This series extends the rkisp1 driver to support the ISP found in the
+> NXP i.MX8MP SoC.
+> =
+
+> The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
+> and in the NXP i.MX8MP have the same origin, and have slightly diverged
+> over time as they are now independently developed (afaik) by Rockchip
+> and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
+> and is close enough to the RK3399 ISP that it can easily be supported by
+> the same driver.
+> =
+
+> This version of the series specifically has been tested on a Polyhex
+> Debix model A with an IMX219 camera sensor (Raspberry Pi cam v2).
+> =
+
+> See individual patches for a detailed description of changes compared to
+> v12.
+> =
+
+> This should hopefully be the last version, I plan to send a pull request
+> in a few days, in time for v6.9.
+
+Still works on my platform TQMa8MPQL/MBa8MPxL + IMX327 using libcamera for =
+1080p + SRGGB10 debayering. For the missing commits:
+Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+
+> Laurent Pinchart (2):
+>   media: rkisp1: Add and use rkisp1_has_feature() macro
+>   media: rkisp1: Configure gasket on i.MX8MP
+> =
+
+> Paul Elder (10):
+>   media: rkisp1: Support setting memory stride for main path
+>   media: rkisp1: Support devices lacking self path
+>   media: rkisp1: Support devices lacking dual crop
+>   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+>   media: rkisp1: Add version enum for i.MX8MP ISP
+>   media: rkisp1: Support i.MX8MP's 34-bit DMA
+>   media: rkisp1: Add YC swap capability
+>   media: rkisp1: Add UYVY as an output format
+>   media: rkisp1: Fix endianness on raw streams on i.MX8MP
+>   media: rkisp1: Add match data for i.MX8MP ISP
+> =
+
+>  .../bindings/media/rockchip-isp1.yaml         |  37 +++-
+>  .../platform/rockchip/rkisp1/rkisp1-capture.c | 180 ++++++++++++++----
+>  .../platform/rockchip/rkisp1/rkisp1-common.h  |  35 +++-
+>  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  71 ++++++-
+>  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 ++++++++++++-
+>  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  35 ++++
+>  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  19 +-
+>  include/uapi/linux/rkisp1-config.h            |  50 ++---
+>  8 files changed, 472 insertions(+), 86 deletions(-)
+> =
+
+> =
+
+> base-commit: e0b8eb0f6d652981bfd9ba7c619c9d81ed087ad0
+> =
+
+
+
+-- =
+
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
