@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B05C48BC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BB7C48BC3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:15:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z9h9i8fKGgjDZ7r8I96nszPOUltXisXu34WwBFFU7Vo=; b=DYbAGe/6956cnl
-	ySQOpn+Lc98oSlJFhzI33zxqPjG3Opxj4zJ59P6wKJmKYquMxg+2DYfDai8igwNVGmhTRTw3OKP93
-	woqRR1LcN5iztgf9c7clz2ExUpRoNAPLrAxlrRGQiIiF9y5RDtwlMRbtKPHJTypbWIYgIMJDG4f/D
-	bNY92OO9W3OVz3Qc8J5NmHfYO1ggW6ZGwUTrCV97XxFY0HhijPpt0DJFxQvTyVrJt9xTSzCEW7qIV
-	LDsqPTCvm3mbDmEyl0fX0e7oQKJeWNm23swMW5NJtsIVuj7j/hJjruw1OAxvTpmW9Yb7XMukyzT7l
-	lVbXmCqsHj4LplQgvETQ==;
+	List-Owner; bh=LL/ip2SzKr+zpTsNR/UvjV+LH9Y96sYCqEwUDSHrwoo=; b=vRCjf4JNWejg+x
+	xe6Xiqv7yKcrL0/4xHOIfT/QLlv5oWfkQkQQuB6jbmYG/SOAWrPNCnt1cWabF/zQkDfEoqvUNVPDX
+	s2VHjzsvcVG10QvrnwQClYB7KSr8HDwKLC8vuzhS2cY2U9E5+lRNlPP1ZqFcg6tDnMjWBZ0pggxvu
+	1EKAts2ZrOfgQ5QgpBCzkTY6MJ3dWd5/GPgCXVxpKBpZ1Wxq94sa1kap4IoIGU2G2ffySmzk4C6zg
+	BPCroX5PoaVhPcz890AkeYaR5MnrBEhhoIXLYINYLigZdcJ86IuCdgVLPWLRm0uhKDHJERhai42eD
+	mZ7d8g43A62bSAecjVvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbynJ-00000009WRP-1ZEx;
-	Mon, 19 Feb 2024 08:14:33 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rbyo4-00000009WkA-3Mxl;
+	Mon, 19 Feb 2024 08:15:20 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbynH-00000009WPv-1p9z
+	id 1rbyo2-00000009Whq-0Blp
 	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Feb 2024 08:14:32 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-412641511beso5668825e9.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 19 Feb 2024 00:14:28 -0800 (PST)
+	Mon, 19 Feb 2024 08:15:19 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2d2387a5408so12014051fa.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 19 Feb 2024 00:15:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1708330467; x=1708935267; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1708330515; x=1708935315; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=p9MGknvx7gKM1o1+MnDJc2Ovn7fkZrxKQGfjWiijceM=;
-        b=x4hDYEqatQ/O10MbK0VObZvsMi1E7WQW8P9QBnQcBBXJve0w2V3fTYPyYZ73AVVyvI
-         YVhmViVWNen8kei99TFN9R7O27jTltFz3hMIO1HXh1O0skl8YaPAtoBK0MfOLxmDLXzr
-         LSx8B0WazlCBnOMXlbszw3oppDdLh7UTK0Qy/SQjeJqIBE9mLzVE3jHo/w3rJ5unrWCK
-         tzRQ2zu2FOT8mKEcoJ2B8EZloR8i3VBI7fR/SEFBxucRakQG30rctbQZVz7FKuvNPloR
-         3PHAcjafXNKzOZEKNveJd4PsdF3se4wHgCFyRqSote7LxAQoA+LUC3A3MCE5KUHpP5tZ
-         7ueQ==
+        bh=z3K4ad/Lfv3ZGBwgn4i0F+LzMaTVaDUBN9X1Fxu1n0g=;
+        b=bGB9FEW24T2hnz1BebY6s9A2ueAiZ7bsVT3D6yT6tMsidV0LGDRaTi3Lszxz0lE3HV
+         9sc0GXW4/OfLJ+zrLOL3+i5cgLjCG5ms+E9fK9TaLBsWTEfifmj1EMAJUApuywijnMNt
+         JZFqLzq/riNdlW8rsxoT4tRRHP/r2gE9bZNblbJRfxrgcPSkirNxz+elHQaW0uT2CXzu
+         wImjGjVanoQm3BoGCE2nj7A7pzgRjJlz8Wjb3eKYcFZy6WFlxbeiB/EKJCTPar+ynb4X
+         eQwtP5NFf+L/ZAUcemGcgctGsnyRPZMYD/qL3o9JEk5ArR98xhQ/JvVUuSZF5ilhoSpq
+         zOkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708330467; x=1708935267;
+        d=1e100.net; s=20230601; t=1708330515; x=1708935315;
         h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p9MGknvx7gKM1o1+MnDJc2Ovn7fkZrxKQGfjWiijceM=;
-        b=Z6vp9knN5j7xpGHYQcVMnOEklz6LNS4PNu3cTWA3GpBsljOE1i80kFGQZ66YPeea0B
-         Mk5zvgKfsnOpbcYpd+8lEcHxPFEyExgfzp/fGKwD4QI1jj6ROgNtysxn4w7wVCZEDrXE
-         /3FKOSXwStvGFpaUPBzOM+GpAyrycD64cjeJKirldiuLacLz9YvqzyoshRznJAhH2FtL
-         hcPhKC1ijq+PZRzmNxehpnwQfaZwEt9afRTUPP7zjhJS9Tsb0mdqWNdx+6cJqPwD22R7
-         4Kuq24oMbeJQYxAx09noxzaumM+B6IHbk7XOMOf0EFfjWWGPNdj6+SUjRobikmr2mP0G
-         jOVA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2l71b3ksjgMGloGq3SQpM5PXID/mjOGv2KO7wMXQSleLdLlD1M9KzNdc5RnswMRv6b9KeiwooNhTpxauuVEbFEEIoOJ3ZFhvIdUUUbvF9Xyag
-X-Gm-Message-State: AOJu0Yw66yX416CC/+MR4IBgT0o1M60SSd5qhro7KVD31D4chqM/7RWT
-	hp2EtgUpPNZkEIPijZ1Py9eusJOKHVPmNbigQhy3ype6EydwNf0Pn3oUFV3i+dY=
-X-Google-Smtp-Source: AGHT+IH6eGc6okNeBoJexPf2P4Fodhj5zQ6Bxnzn/yudT2F06lN06XajdvlixTai0kdA53i8AcDfQg==
-X-Received: by 2002:adf:e846:0:b0:33d:3ff3:c8e6 with SMTP id d6-20020adfe846000000b0033d3ff3c8e6mr2375416wrn.17.1708330467350;
-        Mon, 19 Feb 2024 00:14:27 -0800 (PST)
+        bh=z3K4ad/Lfv3ZGBwgn4i0F+LzMaTVaDUBN9X1Fxu1n0g=;
+        b=WhgCi2lHxAJhIYm7KjLUWWd2yzM1mRtVIJleyiXv8Lg612tvdjioGbkttdrNhOGRUZ
+         y5S9O9wdItVMqaXmmgKnGkBfrxJVGL72f4bsVTEn/GSsitK0QYXEmvmtvZAxH6N3THZC
+         TIXnTem9MrRvIJoVBgA2voa5GZndRvB0vZijMq+QCyecklpvHZKRURpbtQLX01I5ltwD
+         MS9Dwif1alFnXzaWeHwuwX1PqhaujkjBGo/9pOV+Kaa2B2ivQURM8PAcqlfbqxthERiO
+         Rco8Z4dC8B4Bx3/zBoUPFe/JAeC8EudYYBMojGCMu25ZxHbjYW0yHBbl3lNXZ2L2OnSN
+         kbSw==
+X-Forwarded-Encrypted: i=1; AJvYcCUCpftJHM9XhZprQlI5YO99vJovT3R2BB7K0sT8nrT2E7scaQbaWXM1vOrJU09juQm6UXwdGAzqDJJWdOuot0p5udJv086lo30eYtKaigr2nqT0
+X-Gm-Message-State: AOJu0Yw8441BeHGOH6hMfehN1VXtXIIxaylu+d8JGTM/T4Uxrlj04q1I
+	kC28yfiLcLf1kZ8y3575GxmsxA1YFmBuIFTb2dcCrkTgT2MuSlLxDs+scK9MBwU=
+X-Google-Smtp-Source: AGHT+IEuOAHkitTHG/a4+gR94ZjXAK2+gibe1H7tHVtJLlvqP5qJ0LnqwheyMUbCWA45h6juT09BtQ==
+X-Received: by 2002:a2e:9197:0:b0:2d1:8f:d2ba with SMTP id f23-20020a2e9197000000b002d1008fd2bamr7046504ljg.23.1708330515136;
+        Mon, 19 Feb 2024 00:15:15 -0800 (PST)
 Received: from [192.168.1.20] ([178.197.222.116])
-        by smtp.gmail.com with ESMTPSA id co22-20020a0560000a1600b0033d2848046asm7075888wrb.95.2024.02.19.00.14.26
+        by smtp.gmail.com with ESMTPSA id co22-20020a0560000a1600b0033d2848046asm7075888wrb.95.2024.02.19.00.15.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Feb 2024 00:14:26 -0800 (PST)
-Message-ID: <335472bf-7371-4555-bddd-97bb34f73bc3@linaro.org>
-Date: Mon, 19 Feb 2024 09:14:25 +0100
+        Mon, 19 Feb 2024 00:15:14 -0800 (PST)
+Message-ID: <28ea8dc1-302b-496b-a3b5-6e7f9382b0ca@linaro.org>
+Date: Mon, 19 Feb 2024 09:15:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: Add devicetree support for
- TB-RK3588X board
+Subject: Re: [PATCH v2 2/2] dt-bindings: arm: rockchip: Add Toybrick
+ TB-RK3588X
 Content-Language: en-US
 To: Elon Zhang <zhangzj@rock-chips.com>, heiko@sntech.de, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
@@ -77,6 +77,7 @@ Cc: weizhao.ouyang@arm.com, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org
 References: <20240218065407.652213-1-zhangzj@rock-chips.com>
  <20240218085314.658223-1-zhangzj@rock-chips.com>
+ <20240218085314.658223-2-zhangzj@rock-chips.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -122,11 +123,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240218085314.658223-1-zhangzj@rock-chips.com>
+In-Reply-To: <20240218085314.658223-2-zhangzj@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_001431_485809_F6DE10C2 
-X-CRM114-Status: UNSURE (   6.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240219_001518_225994_324B5305 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,19 +138,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTgvMDIvMjAyNCAwOTo1MywgRWxvbiBaaGFuZyB3cm90ZToKPiBBZGQgYm9hcmQgZmlsZSBm
-b3IgUm9ja2NoaXAgVG95YnJpY2sgVEItUkszNTg4WCBib2FyZC4KPiAKPiBTcGVjaWZpY2F0aW9u
-Ogo+IAlSb2NrY2hpcCBSazM1ODggU29DCj4gCTR4IEFSTSBDb3J0ZXgtQTc2LCA0eCBBUk0gQ29y
-dGV4LUE1NQo+IAk4LzE2R0IgTWVtb3J5IExQRERSNHgKPiAJTWFsaSBHNjEwTUM0IEdQVQo+IAky
-w5cgTUlQSS1DU0kwIENvbm5lY3RvcgoKRG8gbm90IGF0dGFjaCAodGhyZWFkKSB5b3VyIHBhdGNo
-c2V0cyB0byBzb21lIG90aGVyIHRocmVhZHMgKHVucmVsYXRlZApvciBvbGRlciB2ZXJzaW9ucyku
-IFRoaXMgYnVyaWVzIHRoZW0gZGVlcCBpbiB0aGUgbWFpbGJveCBhbmQgbWlnaHQKaW50ZXJmZXJl
-IHdpdGggYXBwbHlpbmcgZW50aXJlIHNldHMuCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 18/02/2024 09:53, Elon Zhang wrote:
+> Add devicetree binding for Toybrick TB-RK3588X board from Rockchip Toybrick.
+> 
+> Signed-off-by: Elon Zhang <zhangzj@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 5cf5cbef2cf5..d29df97c7b25 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -878,6 +878,11 @@ properties:
+>            - const: rockchip,rv1108-evb
+>            - const: rockchip,rv1108
+>  
+> +      - description: Rockchip Toybrick TB-RK3588X board
+> +        items:
+> +          - const: rockchip,rk3588-toybrick-x0
+> +          - const: rockchip,rk3588
+
+Assuming you keep it in-order with existing ordering in this file:
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
