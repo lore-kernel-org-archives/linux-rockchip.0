@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A04C48BF8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 20:37:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB22CC48BF8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 20:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=96yNM7Teud8EbnJdYRFsDN3GsdGUZq0b3dFbgZGpLM4=; b=CDYt5HufjKni+z
-	wr5LAYxdHONHJHpi0OVZqh9RQ0rRH9w8UifOExBYn0W3JvKlBBU0EM9Jp0IjiwhiVuMZTIi/tVrdd
-	+wfWRLxiZY+EH/HJlQtcCVtVWh2x38qJ2zb0RP8w/Rn+NpaKO2YcfAcLOPHolwY5zX0LbXOsGDxAf
-	atbqIrxx2XkAIfrm2QrdkXydFZTo6iJgLqdNNuMbFhe1PIpLtuOkQ5GeUQz5HaVbDdlCXX8LokibY
-	c+3TxmJUKYXkSsXiJa47Mg/Mc5Wc/iWSvebwVxjxm0ckl9pybGtTHjKhCXtgGddfdFyJzR9PayRt6
-	fHhXEyZ2e3HNK8pNpqKg==;
+	List-Owner; bh=EnMsfEkBZSZ6DNiXg5L4B/yR46k4U4VPGuDj+Xgh6k4=; b=WqrXVuL8h36O20
+	zX5T4inxYMol2C8ACOcUKQeSCSFYZiIlQlH+H+VCvuhdYdefzdHG2XRrRDn4aSFQTJIrBYI5P8tlo
+	C73SF+ubwsNiebkK/iVCI9nNQu3TQ5oyXE5YRYfrNFlIjqc3fsI3SHGrvjsbNMVJeG8aE7/x2xVt1
+	p71u+MvPL0e7UTHvnHqpKw8vam+thMX1IKECo1611nDxfHerNERM27hs13+gPtUMOrXPFwYzn8V8L
+	KATmH8dZMCxCT4OfSMiBcC7yIliKKJW2gdCvX4dbzCvFra7FHvTU9BCgEenEAMIRy+HVOrYKkDTEY
+	nNAlqVEFf2i6qOnKs6zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcAOP-0000000C7Lu-0BbU;
-	Mon, 19 Feb 2024 20:37:37 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rcAX7-0000000C992-0rTf;
+	Mon, 19 Feb 2024 20:46:37 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcAOL-0000000C7Ke-1VdN;
-	Mon, 19 Feb 2024 20:37:34 +0000
+	id 1rcAX4-0000000C98B-1WYS;
+	Mon, 19 Feb 2024 20:46:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708375047;
-	bh=tmU1TAOSo2/1xTTWVq6GYLkUWbf4ZZznDP5eiUCLTNE=;
+	s=mail; t=1708375592;
+	bh=d4IYYZx35WXgEpuH5iqpmxV6a4CGdc4bKaNsMSXujIM=;
 	h=From:To:Cc:Subject:Date:From;
-	b=hkAu+vXwKAEuAMy5kLMyDoyXdErhbrKZ9+kGwesEArRBbCHvXVjTmc0Xd4lJd8Ob2
-	 X0eiapSQlw8Qt5aTTi9xwFPiLTlXPI5WB7hTcI59kIn9zSXLX3cF4iAtx3MkeBQLmm
-	 SKUDG6CZjTn5+JPnbcnMYznQdTjlPLaWmUVCaq0WHFKFPm5pgNjQZ83vHERTU3gI30
-	 2e3sGXoD9mNH8UrnjANc5ZQqbhneEQ3mW1nlSfcNogIjyFussHMLyIaEdaOSTNzqL4
-	 x9iy0qmpuoYM+XqigIBENMlKs1TmlJzsDFP6tBcZnkbTMKpnNoyftqQqAzE2cIPFlK
-	 5Ec74kFtAMHiQ==
+	b=j5iAxmQEx2EbCc4DjL8AoNWvrZUqN5Zh6n/TsbU2LDVTgiEWTq7FY4uXEyhiUWjtP
+	 Xyj+dimvLZFu6QeXPel8L+KGwnjpnfbdG1Lo057aUfGWDw6LNj5v8W0zrmF0LS+2Eq
+	 wm4X2dCEzXbq5ucDR2cmdn6M016ojtvTliUtbi79gecKSz30P7ZyAWSsRIwZJYGBNF
+	 BkcWe71oXlcWODWlMj3rQnefbIZF+dWb4qX53TBT05KPQb1+CSt2Fb9uoyn2wWyu5+
+	 /JOQY+/U2JrGhQ5g64/S8dHiopgaAw/eNx3q8QuZAo3aP3p+9hnMBfyzk9z+DyR9u5
+	 oXk8NSpmG1GAw==
 Received: from localhost (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 33FFA3782080;
-	Mon, 19 Feb 2024 20:37:27 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 22DD63782080;
+	Mon, 19 Feb 2024 20:46:32 +0000 (UTC)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH] arm64: defconfig: Enable Rockchip HDMI/eDP Combo PHY
-Date: Mon, 19 Feb 2024 22:37:24 +0200
-Message-ID: <20240219203725.283532-1-cristian.ciocaltea@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: Add HDMI0 PHY to rk3588
+Date: Mon, 19 Feb 2024 22:46:25 +0200
+Message-ID: <20240219204626.284399-1-cristian.ciocaltea@collabora.com>
 X-Mailer: git-send-email 2.43.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_123733_549447_9C4AEDBF 
-X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-CacheID: sfid-20240219_124634_559986_9BAFD724 
+X-CRM114-Status: UNSURE (   9.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,26 +78,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable support for the Rockchip HDMI/eDP Combo PHY, which is based on a
-Samsung IP block. This is used by the RK3588 SoC family.
+Add DT nodes for HDMI0 PHY and related syscon found on RK3588 SoC.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 056a6cc546a4..b1f8ff32f940 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1510,6 +1510,7 @@ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
- CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
- CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
- CONFIG_PHY_ROCKCHIP_PCIE=m
-+CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX=m
- CONFIG_PHY_ROCKCHIP_SNPS_PCIE3=y
- CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PHY_SAMSUNG_UFS=y
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 36b1b7acfe6a..3a15a30543c3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -586,6 +586,11 @@ u2phy3_host: host-port {
+ 		};
+ 	};
+ 
++	hdptxphy0_grf: syscon@fd5e0000 {
++		compatible = "rockchip,rk3588-hdptxphy-grf", "syscon";
++		reg = <0x0 0xfd5e0000 0x0 0x100>;
++	};
++
+ 	ioc: syscon@fd5f0000 {
+ 		compatible = "rockchip,rk3588-ioc", "syscon";
+ 		reg = <0x0 0xfd5f0000 0x0 0x10000>;
+@@ -2360,6 +2365,22 @@ dmac2: dma-controller@fed10000 {
+ 		#dma-cells = <1>;
+ 	};
+ 
++	hdptxphy_hdmi0: phy@fed60000 {
++		compatible = "rockchip,rk3588-hdptx-phy";
++		reg = <0x0 0xfed60000 0x0 0x2000>;
++		clocks = <&cru CLK_USB2PHY_HDPTXRXPHY_REF>, <&cru PCLK_HDPTX0>;
++		clock-names = "ref", "apb";
++		#phy-cells = <0>;
++		resets = <&cru SRST_HDPTX0>, <&cru SRST_P_HDPTX0>,
++			 <&cru SRST_HDPTX0_INIT>, <&cru SRST_HDPTX0_CMN>,
++			 <&cru SRST_HDPTX0_LANE>, <&cru SRST_HDPTX0_ROPLL>,
++			 <&cru SRST_HDPTX0_LCPLL>;
++		reset-names = "phy", "apb", "init", "cmn", "lane", "ropll",
++			      "lcpll";
++		rockchip,grf = <&hdptxphy0_grf>;
++		status = "disabled";
++	};
++
+ 	combphy0_ps: phy@fee00000 {
+ 		compatible = "rockchip,rk3588-naneng-combphy";
+ 		reg = <0x0 0xfee00000 0x0 0x100>;
 -- 
 2.43.2
 
