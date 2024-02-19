@@ -4,62 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F550C48BC3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 10:29:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A78C48BF8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 11:32:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ASmnptal3TMVdDB6au36sjfRS/+z6bOC8vZ7yjkx0MU=; b=Jbqcd9WLuOfuEy
-	lw9IULUkZBkiU7yhNKtgMWnPCDsUnxaqVMebe4z9G3kPbr4bLoV0uU4XtpFRPv3/9ZB3ePgLpybcs
-	GzW2vX1rMJ0973ny8hsNPlyLfpkTssq0c7QAaPXCz70c8hHHGvajlUEjMDEJGtiU0iPH7SXVNa9sp
-	6q88vkL8RKZkJ8eY7/WkQRw8uRkFxCs5mhFpFjOgl6e02yS0yOctR12+t7n5y2Jip0zSvB3jKEPWS
-	vqGaBbhqVfpcxJhLkqabgY5X1dUup4VsM5JJvxFFYdWrOEcbIseJoOdYDOqRCodjNKBU3mEhmGW+G
-	wsWEhix7cR1rBTQbpScA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:Message-ID:
+	Mime-Version:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=sLHuV398pxvdWGB0U5rD3/56ysNb4INCgyfebLVcPIo=; b=yqk
+	2WZoIRBZRMmXudC4iDkCZfTG1jOa6V3YqHK6B8JcTVnuL2zZx/Z8ZrlFIT9Nut3e3HxJoQmKwpyRT
+	fwkptflwDtgjRDGYLZ4xECiq3oBktSzecLNW1bxQTKvWP1dVFvGf289ZIMpX0CWCMLdW5tMGjg9iK
+	thclH0qeIECzCiukwMaRSJqPlaOaTaif5R9d5g2q7hNqWeDTwyR5/QYEgPrVbt+TUSa6LVVZBAIAt
+	X05zcoKXr6u0ITBmsmv+c0BHM9IU1fnFpJWlns3GHkjClbVA/g2f9HNsUX4rEl7F2BP6vA21RXYBa
+	6g9a3n8+hGcMnfs8IG03HBTgnTwvOdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc0u8-0000000A36b-09fc;
-	Mon, 19 Feb 2024 10:29:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rc1sl-0000000AD95-1l3v;
+	Mon, 19 Feb 2024 11:32:23 +0000
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rc0u5-0000000A35U-1dQv
+	id 1rc1sh-0000000AD4w-0UFZ
 	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Feb 2024 10:29:42 +0000
-Received: from pendragon.ideasonboard.com (89-27-53-110.bb.dnainternet.fi [89.27.53.110])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ECF5866F;
-	Mon, 19 Feb 2024 11:29:32 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1708338573;
-	bh=3cvAy+UWGB27ignTvrLbcdb+ID/48LvZLU3RV+8lrKE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cooAbhKy5SjCe1Y1YMjpUS50EZZUhGLDKXG5+vjYzy2KVzm2CuhkWlHNcBYqu4WJY
-	 Mhi13tfsNVR6VHNkOdaK0l2NlDdDNXG53FdqqOlQsPmyKRi4TU1sBYG1I4aTWNg59T
-	 d46nnlBYzQ0gR58GiY4/yknq+t24dul2J7TSUmP0=
-Date: Mon, 19 Feb 2024 12:29:44 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Adam Ford <aford173@gmail.com>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v13 11/12] media: rkisp1: Fix endianness on raw streams
- on i.MX8MP
-Message-ID: <20240219102944.GA25664@pendragon.ideasonboard.com>
-References: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
- <20240218204350.10916-12-laurent.pinchart@ideasonboard.com>
- <ZdMl68AeA8jAF8Sg@pyrite.rasen.tech>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZdMl68AeA8jAF8Sg@pyrite.rasen.tech>
+	Mon, 19 Feb 2024 11:32:20 +0000
+Received: by mail-yb1-xb4a.google.com with SMTP id 3f1490d57ef6-dce775fa8adso1719597276.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 19 Feb 2024 03:32:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1708342337; x=1708947137; darn=lists.infradead.org;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=F9Y8XdXv1kzTQtopo89RJ5Qe87rOsaXFYORvSusUYec=;
+        b=dOygqeFl5qoSIWNBZjvv/A8Qro7706ryzeu2DZj8oLNNBBiBTsYBZGxi4zPopndOjo
+         ysEQPvNBH126hH6Tkl21PJtD+gb5cOgr6BEyLwbbA5wXVDFwMVryByZbAI/1ytb2PKG4
+         zeEG3b6xH/UtpjfucVPoQ02Jv19zLAg4UJBgTqrrOcCmWeRm2RszsV/vt3GURx+stj29
+         jz2ZlGchhD/p8q77/PSqWEHW7MV2659MhdWItMWXk1ERODckCatEWLBIWLf7PLGtjbQ1
+         vBGGAP6/XlNGFMst/2bneK7CSZ5ZdtQlqZraKB5phRsiUsc4ksFdmaW29x3WW5hRs3uN
+         lz/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708342337; x=1708947137;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=F9Y8XdXv1kzTQtopo89RJ5Qe87rOsaXFYORvSusUYec=;
+        b=JCn4aw6LPsBMccz4WIvypsalD1mDw93esPttapmGOj/sKT+mYS6U/OagL5RuUAKR7/
+         jFPxbvaN5wDGOFD1NgEv3vVCUAKTZgfhxQIOfdQOs/ADsNuBmdPDYsclfKVkoNH4BAca
+         200Xlcdp/m8FeYEB3mW/DU2ol2Rb3QyaTeDUlER6uzmii2FBpsQd6EWZ0aVUQxQcdsDf
+         RiISGfCufaYbiaBZAUxdgJONgNPdjEHcPtYyyeHXHmmew62hZts7dGra6iWWfqFsBWYW
+         feLmiD/Urj+5mxcvMpAbE8jDauLlX4T5J3UDmwNgvwHvHUig0QS6zSHVg+k6J9vueFzh
+         OsoA==
+X-Forwarded-Encrypted: i=1; AJvYcCWEZzlNHSEjIR1dnFL+qvuQD/wSTprbRyzrd18uvOjAjzE1ZV8S3NWRZ6WOv5jjTvYxTGsMf91KjJxPCUPsexDsZgJChl/d4qjNmbBQl1rjQ8U4
+X-Gm-Message-State: AOJu0YwBviJoBLy3jt246BtWwUz1Vaj+glkVEeypF7HAvmZ1XLywFxWu
+	1LK95BuknX6fUGowbyo1F9mdscHfScYCJiQFbB5U2/JWGIJGvoZt79WqgbGyiGX7UQox5JlhBvd
+	AxQpWBFElIg==
+X-Google-Smtp-Source: AGHT+IFrFQSwNuSWu6/Y6yp6TLKb1ES+/eMj+OGcS+zU6Jh3xmGly/67ECjCQIexHldo+hDW4MAPEIU45QbnUA==
+X-Received: from joychakr.c.googlers.com ([fda3:e722:ac3:cc00:4f:4b78:c0a8:6ea])
+ (user=joychakr job=sendgmr) by 2002:a25:ced3:0:b0:dc2:3441:897f with SMTP id
+ x202-20020a25ced3000000b00dc23441897fmr3248186ybe.6.1708342337288; Mon, 19
+ Feb 2024 03:32:17 -0800 (PST)
+Date: Mon, 19 Feb 2024 11:31:48 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
+Message-ID: <20240219113149.2437990-1-joychakr@google.com>
+Subject: [PATCH v1 0/1] nvmem: Handle actual amount of data read/written by suppliers
+From: Joy Chakraborty <joychakr@google.com>
+To: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vincent Shih <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Rafal Milecki <rafal@milecki.pl>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+	Joy Chakraborty <joychakr@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_022941_650286_2C9691DC 
-X-CRM114-Status: GOOD (  31.68  )
+X-CRM114-CacheID: sfid-20240219_033219_231791_F6A7C7DA 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,303 +109,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 19, 2024 at 06:56:59PM +0900, Paul Elder wrote:
-> On Sun, Feb 18, 2024 at 10:43:49PM +0200, Laurent Pinchart wrote:
-> > From: Paul Elder <paul.elder@ideasonboard.com>
-> > 
-> > The i.MX8MP has extra register fields in the memory interface control
-> > register for setting the output format, which work with the output
-> > alignment format register for byte-swapping and LSB/MSB alignment.
-> > 
-> > With processed and 8-bit raw streams, it doesn't cause any problems to
-> > not set these, but with raw streams of higher bit depth the endianness
-> > is swapped and the data is not aligned properly.
-> > 
-> > Add support for setting these registers and plumb them in to fix this.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> > Changes since v12:
-> > 
-> > - Merge the output_format_mp and output_format_sp fields
-> > - Set the MP output format in rkisp1_mp_config()
-> > - Fix typo in commit message
-> > 
-> > Changes since v6:
-> > 
-> > - replace MP_OUTPUT_FORMAT feature flag with MAIN_STRIDE
-> > 
-> > New in v6
-> > ---
-> >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 52 +++++++++++++++++--
-> >  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  8 +++
-> >  2 files changed, 56 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > index 0efdf8513de0..accc16ad1432 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > @@ -48,14 +48,17 @@ enum rkisp1_plane {
-> >   * @fmt_type: helper filed for pixel format
-> >   * @uv_swap: if cb cr swapped, for yuv
-> >   * @yc_swap: if y and cb/cr swapped, for yuv
-> > + * @byte_swap: if byte pairs are swapped, for raw
-> >   * @write_format: defines how YCbCr self picture data is written to memory
-> > - * @output_format: defines sp output format
-> > + * @output_format: defines the output format (RKISP1_CIF_MI_INIT_MP_OUTPUT_* for
-> > + *	the main path and RKISP1_MI_CTRL_SP_OUTPUT_* for the self path)
-> >   * @mbus: the mbus code on the src resizer pad that matches the pixel format
-> >   */
-> >  struct rkisp1_capture_fmt_cfg {
-> >  	u32 fourcc;
-> >  	u32 uv_swap : 1;
-> >  	u32 yc_swap : 1;
-> > +	u32 byte_swap : 1;
-> >  	u32 write_format;
-> >  	u32 output_format;
-> >  	u32 mbus;
-> > @@ -96,42 +99,50 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
-> >  		.fourcc = V4L2_PIX_FMT_YUYV,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_UYVY,
-> >  		.uv_swap = 0,
-> >  		.yc_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_YUV422P,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV16,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV61,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV16M,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV61M,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_YVU422M,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	},
-> >  	/* yuv400 */
-> > @@ -139,6 +150,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
-> >  		.fourcc = V4L2_PIX_FMT_GREY,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV400,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> >  	},
-> >  	/* yuv420 */
-> > @@ -146,81 +158,107 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
-> >  		.fourcc = V4L2_PIX_FMT_NV21,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV12,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV21M,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_NV12M,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_YUV420,
-> >  		.uv_swap = 0,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_YVU420,
-> >  		.uv_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420,
-> >  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
-> >  	},
-> >  	/* raw */
-> >  	{
-> >  		.fourcc = V4L2_PIX_FMT_SRGGB8,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW8,
-> >  		.mbus = MEDIA_BUS_FMT_SRGGB8_1X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGRBG8,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW8,
-> >  		.mbus = MEDIA_BUS_FMT_SGRBG8_1X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGBRG8,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW8,
-> >  		.mbus = MEDIA_BUS_FMT_SGBRG8_1X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SBGGR8,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW8,
-> >  		.mbus = MEDIA_BUS_FMT_SBGGR8_1X8,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SRGGB10,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW10,
-> >  		.mbus = MEDIA_BUS_FMT_SRGGB10_1X10,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGRBG10,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW10,
-> >  		.mbus = MEDIA_BUS_FMT_SGRBG10_1X10,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGBRG10,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW10,
-> >  		.mbus = MEDIA_BUS_FMT_SGBRG10_1X10,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SBGGR10,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW10,
-> >  		.mbus = MEDIA_BUS_FMT_SBGGR10_1X10,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SRGGB12,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW12,
-> >  		.mbus = MEDIA_BUS_FMT_SRGGB12_1X12,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGRBG12,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW12,
-> >  		.mbus = MEDIA_BUS_FMT_SGRBG12_1X12,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SGBRG12,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW12,
-> >  		.mbus = MEDIA_BUS_FMT_SGBRG12_1X12,
-> >  	}, {
-> >  		.fourcc = V4L2_PIX_FMT_SBGGR12,
-> > +		.byte_swap = 1,
-> >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> > +		.output_format = RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW12,
-> >  		.mbus = MEDIA_BUS_FMT_SBGGR12_1X12,
-> >  	},
-> >  };
-> > @@ -484,10 +522,12 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
-> >  	 */
-> >  	if (rkisp1_has_feature(rkisp1, MAIN_STRIDE)) {
-> >  		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-> > -		if (cap->pix.cfg->yc_swap)
-> > +		if (cap->pix.cfg->yc_swap || cap->pix.cfg->byte_swap)
-> >  			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-> >  		else
-> >  			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-> > +
-> > +		reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_LSB_ALIGNMENT;
-> >  		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-> >  	}
-> >  
-> > @@ -557,6 +597,8 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
-> >  		   cap->pix.cfg->output_format |
-> >  		   RKISP1_CIF_MI_SP_AUTOUPDATE_ENABLE;
-> >  	rkisp1_write(rkisp1, RKISP1_CIF_MI_CTRL, mi_ctrl);
-> > +
-> > +	rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT, cap->pix.cfg->output_format);
-> 
-> I think you're missing the analogous register setting for the main path.
+This Patch series stems from discussions in patchset,
+"[PATCH v2] nvmem: rmem: Fix return value of rmem_read()"
+(https://lore.kernel.org/all/20240206042408.224138-1-joychakr@google.com/).
+Where we come across the fact that currently the nvmem suppliers do not
+actually let the core know how much data has been actually read or written.
+Instead they are expected to return 0 for success and the core assumes that
+the amount of data written is equal to what the core has requested.
 
-How did this end up in rkisp1_sp_config() instead of
-rkisp1_mp_config()... Thanks for catching my mistake. I'll send a new
-version of this patch.
+On addition this patchset will also add some guards and checks based on the
+count of data returned by the nvmem supplier.
+---
+V1 Changes : Change read/write callback prototype to ssize_t and
+supplier changes to accomodate the same with core checks and bounds.
+---
 
-> >  }
-> >  
-> >  static void rkisp1_mp_disable(struct rkisp1_capture *cap)
-> > @@ -943,6 +985,7 @@ static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
-> >  	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> >  	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
-> >  	bool has_self_path = rkisp1_has_feature(rkisp1, SELF_PATH);
-> > +	u32 reg;
-> >  
-> >  	cap->ops->set_data_path(cap);
-> >  	cap->ops->config(cap);
-> > @@ -962,8 +1005,9 @@ static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
-> >  	 */
-> >  	if (!has_self_path || !other->is_streaming) {
-> >  		/* force cfg update */
-> > -		rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT,
-> > -			     RKISP1_CIF_MI_INIT_SOFT_UPD);
-> > +		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_INIT);
-> > +		reg |= RKISP1_CIF_MI_INIT_SOFT_UPD;
-> > +		rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT, reg);
-> >  		rkisp1_set_next_buf(cap);
-> >  	}
-> >  	spin_unlock_irq(&cap->buf.lock);
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > index 3b19c8411360..762243016f05 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > @@ -144,6 +144,14 @@
-> >  /* MI_INIT */
-> >  #define RKISP1_CIF_MI_INIT_SKIP				BIT(2)
-> >  #define RKISP1_CIF_MI_INIT_SOFT_UPD			BIT(4)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV400		(0 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV420		(1 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV422		(2 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_YUV444		(3 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW12		(4 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW8		(5 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_JPEG		(6 << 5)
-> > +#define RKISP1_CIF_MI_INIT_MP_OUTPUT_RAW10		(7 << 5)
-> >  
-> >  /* MI_CTRL_SHD */
-> >  #define RKISP1_CIF_MI_CTRL_SHD_MP_IN_ENABLED		BIT(0)
+Joy Chakraborty (1):
+  nvmem: Change return type of reg read/write to ssize_t
+
+ drivers/nvmem/apple-efuses.c        |  5 +-
+ drivers/nvmem/bcm-ocotp.c           |  8 ++--
+ drivers/nvmem/brcm_nvram.c          |  8 +++-
+ drivers/nvmem/core.c                | 73 +++++++++++++----------------
+ drivers/nvmem/imx-iim.c             |  4 +-
+ drivers/nvmem/imx-ocotp-ele.c       |  4 +-
+ drivers/nvmem/imx-ocotp-scu.c       |  8 ++--
+ drivers/nvmem/imx-ocotp.c           |  6 +--
+ drivers/nvmem/jz4780-efuse.c        |  5 +-
+ drivers/nvmem/lan9662-otpc.c        |  8 ++--
+ drivers/nvmem/layerscape-sfp.c      |  7 ++-
+ drivers/nvmem/lpc18xx_eeprom.c      | 10 ++--
+ drivers/nvmem/lpc18xx_otp.c         |  4 +-
+ drivers/nvmem/meson-efuse.c         | 10 +++-
+ drivers/nvmem/meson-mx-efuse.c      |  4 +-
+ drivers/nvmem/microchip-otpc.c      |  4 +-
+ drivers/nvmem/mtk-efuse.c           |  4 +-
+ drivers/nvmem/mxs-ocotp.c           |  5 +-
+ drivers/nvmem/nintendo-otp.c        |  4 +-
+ drivers/nvmem/qcom-spmi-sdam.c      |  8 ++--
+ drivers/nvmem/qfprom.c              | 10 ++--
+ drivers/nvmem/qoriq-efuse.c         |  4 +-
+ drivers/nvmem/rave-sp-eeprom.c      | 12 ++---
+ drivers/nvmem/rmem.c                |  2 +-
+ drivers/nvmem/rockchip-efuse.c      | 11 +++--
+ drivers/nvmem/rockchip-otp.c        | 13 ++---
+ drivers/nvmem/sc27xx-efuse.c        |  3 +-
+ drivers/nvmem/sec-qfprom.c          |  4 +-
+ drivers/nvmem/snvs_lpgpr.c          | 13 +++--
+ drivers/nvmem/sprd-efuse.c          |  8 ++--
+ drivers/nvmem/stm32-bsec-optee-ta.c |  8 ++--
+ drivers/nvmem/stm32-bsec-optee-ta.h | 12 ++---
+ drivers/nvmem/stm32-romem.c         | 16 +++----
+ drivers/nvmem/sunplus-ocotp.c       |  4 +-
+ drivers/nvmem/sunxi_sid.c           | 11 +++--
+ drivers/nvmem/u-boot-env.c          |  4 +-
+ drivers/nvmem/uniphier-efuse.c      |  4 +-
+ drivers/nvmem/vf610-ocotp.c         |  5 +-
+ drivers/nvmem/zynqmp_nvmem.c        |  2 +-
+ include/linux/nvmem-provider.h      |  4 +-
+ 40 files changed, 180 insertions(+), 159 deletions(-)
 
 -- 
-Regards,
+2.44.0.rc0.258.g7320e95886-goog
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
