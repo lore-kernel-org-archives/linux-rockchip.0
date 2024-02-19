@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F96AC48260
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11146C48260
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Feb 2024 08:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5XebLybMcrGVLd+zJkxAX3s81+aEtB4d1w538FZv6nU=; b=izfmJREvMMEgqN
-	iu4zwS7r4lbtBwSG0fjnSvP5iCiOKUV3p8MsYVosU6X6zhmrfkVfy5qdQfy/1+p+y1r//60pYmWIe
-	zaRbN1byVejS481JQKP9J+F33m07gjv+nCC5AZcsMLy7aufV+WDZLbmfq9JeLQrxNjcLGTc8p4zR/
-	f5f1+iCIsJwlZBoAFHBFoSjIgKBuG6qKchO/R5GHhiCXRTCNlNp3iUYBgi0eAcpaFPlXooeCOPnR7
-	BbhLLX6xvr0H+JS801dAqJzCZ5fe1SjyLjgAuBJnhD1tOHYSH7nBSsK7Bqhb0w6oWBC9o9v6034gG
-	GRD8a1WrM0mxtcVuNVtQ==;
+	List-Owner; bh=U5IOnXz7MgjbHiLPJ7yeYRtp87bxHGnW3+TV4+RBx1c=; b=z6Ad6P7EQ7yVNa
+	FzyEQ3/GxliAwYfJvRTkmCnDEltdoT1BD5N6WXFA0LTHrjBd5BRHytr2lwDUXUNHKeyQbOBHaJyrt
+	wnZ4ivEdPh9HDARpLeUa3X8QGr03Q+WmWV9H7PHn9F1RE0rEj+t2PizyTMnd9XxFPi49u4nDzJ6uQ
+	uSoWNj63aOJfv2VXpEsE2qAUVjnsLVRyxjzuGwMdaP16Vpej6tGroeLsp4Cr6NQ91Bxp7OZgGQX3S
+	pD+2UUbht1an+BG6DGl4LuMjVwo9BcsMm/iR0qTEYWU9Iac9pBZZzOEwFoXPCv5r0I7iZdATSWUdp
+	CVVAI9HiCAaVJFytnCyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzEP-00000009dJM-1iH3;
-	Mon, 19 Feb 2024 08:42:33 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1rbzOQ-00000009fz0-29Je;
+	Mon, 19 Feb 2024 08:52:54 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rbzEL-00000009dIx-36Mk
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Feb 2024 08:42:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1708332149; x=1739868149;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=b3pLRSvlRNkx4QVYyNlxFS5vrERzFzUE1laQUlHC0YI=;
-  b=p37kSZjShauff4zfMfl3LlkNkrOXzSeOIsMNtl/c4GphRS2dy9pxpjwK
-   yEXOIZHJnH4bxLBIXO0Pgm/0B3l5bsjFY2PTe9Xsci8hr+08JrGwBL3Bx
-   BYTYGDwi8hGxxIsqqaOP33fLFiyrFhrAyGeKcUuUbyRnUagHtbqROdZN7
-   9iolTXxlBUORQA9ZNLiY54YG9NsjFVOBI+X1WOSx/xUg08vsonjvyMizo
-   NsDejmuRCMI6fzCkVZjTCzjtzEpmTU1C6v9URQiSgVfu3eAHpxoYiQM2U
-   52zecaqvbb9YeySzagMpfDvW05GJa4VS6xHpvqjqzv0BGKZ07jL1bt0WY
-   A==;
-X-IronPort-AV: E=Sophos;i="6.06,170,1705359600"; 
-   d="scan'208";a="35468937"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 19 Feb 2024 09:42:25 +0100
-Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.25])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1rbzOL-00000009fww-3mlx;
+	Mon, 19 Feb 2024 08:52:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708332766;
+	bh=4X90vGi+S3GMD8xcunMsqdnSAQ5bq0oM8thgSR31da0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=c1+wIJB9dLAkFFYkLTsVtGo2Or1NO0CJwUEHlS8GwLHyT9hnJGRE9px9PHnthYq2a
+	 XOuT1I79SybuczGIRRiJu2VegJUKqo/qpckhL+4Ze4fpu1PXiL2ypsMASzj/9A8bER
+	 p3K3LddVkPhsm0xRfNmPDd+eEH3qf1Wbzd8JTRYey0LxDZ7KU8oo8qzlQwNXdroJpA
+	 gjt2OFWM1ENlTG/ggT6h+l+aOQh3k1vUlLnz6BE6cQrcxF02ufERfuW7qjETqRAJFy
+	 /dDV501hps75ck2b29IKbXCk82qu1Ju7gla2X3XGfYbMibxVhoQuj4f7VaW0ENycD3
+	 sDWRU+FszXeWA==
+Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id BD1E7280075;
-	Mon, 19 Feb 2024 09:42:24 +0100 (CET)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: linux-media@vger.kernel.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Adam Ford <aford173@gmail.com>, Conor Dooley <conor+dt@kernel.org>, Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>, Kieran Bingham <kieran.bingham@ideasonboard.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v13 00/12] media: rkisp1: Add support for i.MX8MP
-Date: Mon, 19 Feb 2024 09:42:27 +0100
-Message-ID: <6019598.lOV4Wx5bFT@steina-w>
-Organization: TQ-Systems GmbH
-In-Reply-To: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
-References: <20240218204350.10916-1-laurent.pinchart@ideasonboard.com>
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D764D37820BF;
+	Mon, 19 Feb 2024 08:52:43 +0000 (UTC)
+Message-ID: <e1f56317-b70d-0b81-75f0-fef50616e026@collabora.com>
+Date: Mon, 19 Feb 2024 14:22:41 +0530
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 9/9] drm/ci: uprev IGT and update testlist
+Content-Language: en-US
+To: =?UTF-8?Q?Ma=c3=adra_Canal?= <mcanal@igalia.com>,
+ dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, linux-kernel@vger.kernel.org,
+ david.heidelberg@collabora.com, helen.koike@collabora.com,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ daniel@ffwll.ch, linux-amlogic@lists.infradead.org, airlied@gmail.com
+References: <20240130150340.687871-1-vignesh.raman@collabora.com>
+ <20240130150340.687871-10-vignesh.raman@collabora.com>
+ <26f6426d-dcb6-4b14-b031-368b2248e9e7@igalia.com>
+ <799653a3-e079-4e17-9d68-c0e384a216b0@igalia.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <799653a3-e079-4e17-9d68-c0e384a216b0@igalia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240219_004230_187459_DE71C657 
-X-CRM114-Status: GOOD (  20.99  )
+X-CRM114-CacheID: sfid-20240219_005250_257768_113E6B8E 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,92 +77,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-
-thanks for the update.
-
-Am Sonntag, 18. Februar 2024, 21:43:38 CET schrieb Laurent Pinchart:
-> Hello,
-> =
-
-> This series extends the rkisp1 driver to support the ISP found in the
-> NXP i.MX8MP SoC.
-> =
-
-> The ISP IP cores in the Rockchip RK3399 (known as the "Rockchip ISP1")
-> and in the NXP i.MX8MP have the same origin, and have slightly diverged
-> over time as they are now independently developed (afaik) by Rockchip
-> and VeriSilicon. The latter is marketed under the name "ISP8000Nano",
-> and is close enough to the RK3399 ISP that it can easily be supported by
-> the same driver.
-> =
-
-> This version of the series specifically has been tested on a Polyhex
-> Debix model A with an IMX219 camera sensor (Raspberry Pi cam v2).
-> =
-
-> See individual patches for a detailed description of changes compared to
-> v12.
-> =
-
-> This should hopefully be the last version, I plan to send a pull request
-> in a few days, in time for v6.9.
-
-Still works on my platform TQMa8MPQL/MBa8MPxL + IMX327 using libcamera for =
-1080p + SRGGB10 debayering. For the missing commits:
-Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-
-> Laurent Pinchart (2):
->   media: rkisp1: Add and use rkisp1_has_feature() macro
->   media: rkisp1: Configure gasket on i.MX8MP
-> =
-
-> Paul Elder (10):
->   media: rkisp1: Support setting memory stride for main path
->   media: rkisp1: Support devices lacking self path
->   media: rkisp1: Support devices lacking dual crop
->   dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
->   media: rkisp1: Add version enum for i.MX8MP ISP
->   media: rkisp1: Support i.MX8MP's 34-bit DMA
->   media: rkisp1: Add YC swap capability
->   media: rkisp1: Add UYVY as an output format
->   media: rkisp1: Fix endianness on raw streams on i.MX8MP
->   media: rkisp1: Add match data for i.MX8MP ISP
-> =
-
->  .../bindings/media/rockchip-isp1.yaml         |  37 +++-
->  .../platform/rockchip/rkisp1/rkisp1-capture.c | 180 ++++++++++++++----
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  35 +++-
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  71 ++++++-
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 131 ++++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  35 ++++
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  19 +-
->  include/uapi/linux/rkisp1-config.h            |  50 ++---
->  8 files changed, 472 insertions(+), 86 deletions(-)
-> =
-
-> =
-
-> base-commit: e0b8eb0f6d652981bfd9ba7c619c9d81ed087ad0
-> =
-
-
-
--- =
-
-TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-Amtsgericht M=FCnchen, HRB 105018
-Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-http://www.tq-group.com/
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWHDrXJhLAoKT24gMTAvMDIvMjQgMjM6NTAsIE1hw61yYSBDYW5hbCB3cm90ZToKPiBPbiAy
+LzEwLzI0IDE1OjE3LCBNYcOtcmEgQ2FuYWwgd3JvdGU6Cj4+IE9uIDEvMzAvMjQgMTI6MDMsIFZp
+Z25lc2ggUmFtYW4gd3JvdGU6Cj4+PiBVcHJldiBJR1QgYW5kIGFkZCBhbWQsIHYzZCwgdmM0IGFu
+ZCB2Z2VtIHNwZWNpZmljCj4+PiB0ZXN0cyB0byB0ZXN0bGlzdC4gSGF2ZSB0ZXN0bGlzdC50eHQg
+cGVyIGRyaXZlcgo+Pj4gYW5kIGluY2x1ZGUgYSBiYXNlIHRlc3RsaXN0IHNvIHRoYXQgdGhlIGRy
+aXZlcgo+Pj4gc3BlY2lmaWMgdGVzdHMgd2lsbCBydW4gb25seSBvbiB0aG9zZSBoYXJkd2FyZS4K
+Pj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBWaWduZXNoIFJhbWFuIDx2aWduZXNoLnJhbWFuQGNvbGxh
+Ym9yYS5jb20+Cj4+PiAtLS0KPj4+Cj4+PiB2MzoKPj4+IMKgwqAgLSBOZXcgcGF0Y2ggaW4gc2Vy
+aWVzIHRvIHVwcmV2IElHVCBhbmQgdXBkYXRlIHRlc3RsaXN0Lgo+Pj4KPj4+IC0tLQo+Pj4gwqAg
+ZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCB8wqDCoCAyICstCj4+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvaWd0X3J1bm5lci5zaMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxMiArLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL2Np
+L3Rlc3RsaXN0LWFtZGdwdS50eHTCoMKgwqDCoMKgwqDCoCB8IDE1MSArKysrKysrKysrKysrKysr
+KysKPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS90ZXN0bGlzdC1tc20udHh0wqDCoMKgwqDCoMKg
+wqDCoMKgwqAgfMKgIDUwICsrKysrKwo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3RsaXN0
+LXBhbmZyb3N0LnR4dMKgwqDCoMKgwqAgfMKgIDE3ICsrCj4+PiDCoCBkcml2ZXJzL2dwdS9kcm0v
+Y2kvdGVzdGxpc3QtdjNkLnR4dMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA3MyArKysrKysrKysK
+Pj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS90ZXN0bGlzdC12YzQudHh0wqDCoMKgwqDCoMKgwqDC
+oMKgwqAgfMKgIDQ5ICsrKysrKwo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3RsaXN0LnR4
+dMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAxMDAgKysrKy0tLS0tLS0tCj4+PiDCoCAu
+Li4vZ3B1L2RybS9jaS94ZmFpbHMvYW1kZ3B1LXN0b25leS1mYWlscy50eHQgfMKgIDI0ICsrLQo+
+Pj4gwqAgLi4uL2RybS9jaS94ZmFpbHMvYW1kZ3B1LXN0b25leS1mbGFrZXMudHh0wqDCoMKgIHzC
+oMKgIDkgKy0KPj4+IMKgIC4uLi9ncHUvZHJtL2NpL3hmYWlscy9hbWRncHUtc3RvbmV5LXNraXBz
+LnR4dCB8wqAgMTAgKy0KPj4+IMKgIDExIGZpbGVzIGNoYW5nZWQsIDQyNyBpbnNlcnRpb25zKCsp
+LCA3MCBkZWxldGlvbnMoLSkKPj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
+cm0vY2kvdGVzdGxpc3QtYW1kZ3B1LnR4dAo+Pj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9jaS90ZXN0bGlzdC1tc20udHh0Cj4+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3RsaXN0LXBhbmZyb3N0LnR4dAo+Pj4gwqAgY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS90ZXN0bGlzdC12M2QudHh0Cj4+PiDCoCBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3RsaXN0LXZjNC50eHQKPj4+Cj4+
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwgCj4+PiBiL2Ry
+aXZlcnMvZ3B1L2RybS9jaS9naXRsYWItY2kueW1sCj4+PiBpbmRleCBiYzhjYjM0MjA0NzYuLmUy
+YjAyMTYxNmE4ZSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9jaS9naXRsYWItY2ku
+eW1sCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbAo+Pj4gQEAgLTUs
+NyArNSw3IEBAIHZhcmlhYmxlczoKPj4+IMKgwqDCoCBVUFNUUkVBTV9SRVBPOiBnaXQ6Ly9hbm9u
+Z2l0LmZyZWVkZXNrdG9wLm9yZy9kcm0vZHJtCj4+PiDCoMKgwqAgVEFSR0VUX0JSQU5DSDogZHJt
+LW5leHQKPj4+IC3CoCBJR1RfVkVSU0lPTjogZDJhZjEzZDlmNWJlNWNlMjNkOTk2ZTRhZmQzZTQ1
+OTkwZjVhYjk3Nwo+Pj4gK8KgIElHVF9WRVJTSU9OOiBiMGNjODE2MGViZGM4N2NlMDhiN2ZkODNi
+YjNjOTlmZjdhNGQ4NjEwCj4+PiDCoMKgwqAgREVRUF9SVU5ORVJfR0lUX1VSTDogCj4+PiBodHRw
+czovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvYW5ob2x0L2RlcXAtcnVubmVyLmdpdAo+Pj4gwqDC
+oMKgIERFUVBfUlVOTkVSX0dJVF9UQUc6IHYwLjE1LjAKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vY2kvaWd0X3J1bm5lci5zaCAKPj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL2lndF9y
+dW5uZXIuc2gKPj4+IGluZGV4IGYwMDFlMDE1ZDEzNS4uMmZkMDliOWI3Y2Y2IDEwMDc1NQo+Pj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2NpL2lndF9ydW5uZXIuc2gKPj4+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9jaS9pZ3RfcnVubmVyLnNoCj4+PiBAQCAtNjQsMTAgKzY0LDIwIEBAIGlmICEgZ3Jl
+cCAtcSAiY29yZV9nZXR2ZXJzaW9uIiAKPj4+IC9pbnN0YWxsL3Rlc3RsaXN0LnR4dDsgdGhlbgo+
+Pj4gwqAgZmkKPj4+IMKgIHNldCArZQo+Pj4gK2lmIFsgIiREUklWRVJfTkFNRSIgPSAiYW1kZ3B1
+IiBdOyB0aGVuCj4+PiArwqDCoMKgIFRFU1RfTElTVD0iL2luc3RhbGwvdGVzdGxpc3QtYW1kZ3B1
+LnR4dCIKPj4+ICtlbGlmIFsgIiREUklWRVJfTkFNRSIgPSAibXNtIiBdOyB0aGVuCj4+PiArwqDC
+oMKgIFRFU1RfTElTVD0iL2luc3RhbGwvdGVzdGxpc3QtbXNtLnR4dCIKPj4+ICtlbGlmIFsgIiRE
+UklWRVJfTkFNRSIgPSAicGFuZnJvc3QiIF07IHRoZW4KPj4+ICvCoMKgwqAgVEVTVF9MSVNUPSIv
+aW5zdGFsbC90ZXN0bGlzdC1wYW5mcm9zdC50eHQiCj4+PiArZWxzZQo+Pj4gK8KgwqDCoCBURVNU
+X0xJU1Q9Ii9pbnN0YWxsL3Rlc3RsaXN0LnR4dCIKPj4+ICtmaQo+Pj4gKwo+Pgo+PiBJc24ndCBW
+M0QgYW5kIFZDNCB0ZXN0bGlzdHMgbWlzc2luZz8KClllcy4gV2UgbmVlZCB0byBhZGQgY2kgam9i
+cyB0byB0ZXN0IHYzZC92YzQuIFRoZSBpbml0aWFsIGlkZWEgd2FzIGp1c3QgCnRvIHNwbGl0IHRo
+ZSB0ZXN0bGlzdCBwZXIgZHJpdmVyIGFuZCBhZGQgdmM0L3YzZCB0ZXN0cyBzbyB0aGF0IGl0IGNh
+biBiZSAKdXNlZCBpbiBmdXR1cmUuIEkgd2lsbCBhZGQgdGhlIGpvYnMgYXMgcGFydCBvZiB2NC4K
+Cj4+IEl0IHdvdWxkIGJlIG5pY2UgaWYgeW91IGNvdWxkIHByb3ZpZGUgdXMgYSBsaW5rIHRvIGEg
+d29ya2luZyBwaXBlbGluZS4KCldpbGwgcHJvdmlkZSB0aGUgd29ya2luZyBwaXBlbGluZSBsaW5r
+IGluIG5leHQgc2VyaWVzLgoKPj4gQWxzbywgaWYgcG9zc2libGUsIEkgd291bGQgbGlrZSB0byBi
+ZSBDQ2VkIG9uIHRoZSBuZXh0IHZlcnNpb24gb2YgdGhpcwo+PiBwYXRjaCwgYXMgSSBoYXZlIGlu
+dGVyZXN0IGluIHRoZSBWM0QvVkM0IHRlc3RzLgoKU3VyZSwgd2lsbCBkby4KCj4gQWgsIG9uZSB0
+aGluZzogaXQgd291bGQgYmUgbmljZSB0byBhZGQgdGhlIHRlc3RsaXN0cyB0byB0aGUgTUFJTlRB
+SU5FUlMKPiBmaWxlLiBUaGlzIHdheSwgbWFpbnRhaW5lcnMgY2FuIGtlZXAgdHJhY2sgb2YgYW55
+IGNoYW5nZXMuCgpZZXMsIHdpbGwgYWRkIHRoZSB0ZXN0bGlzdHMgdG8gTUFJTlRBSU5FUlMgZmls
+ZS4KClRoYW5rcyBmb3IgdGhlIHJldmlldyBhbmQgZmVlZGJhY2suCgpSZWdhcmRzLApWaWduZXNo
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
