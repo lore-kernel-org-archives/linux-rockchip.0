@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C1CC48BC4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Feb 2024 09:41:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9829DC48BC4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Feb 2024 09:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,51 +13,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=+VEA6oLeb9Jwc/L5w0+aFyqYy8UZOP+dP2kUhjjfdvQ=; b=gt04vCQDA4r8qk39+yTsTIMhB5
-	6HRTo65tjlrCqPanjX8NVr+cRQfop34lqC7x3pcy+dpCOhih6PutjmuwnQ1If0I2ng5LgEJKSKp5w
-	LyOOqOdcV9Ff0fktCsPLobXfNSgq7j1UCXSloK7EW08kY8jp7iHHeAdGP34htabZr3f4QUfeSJEEt
-	pYZptp3KwyuX+ZCetuB5wgwXocHadj8eHaxf1a++r0j3HbNeA+QASLU0ylHTlkm+84gdIOEAykZRQ
-	LGJqADhXwyLIPiH4do1r1BGi4/4mttH2VizK+r2z9AFKnUeLQUQ0BhZApKiQ+2Q1sAMhCz9tmByz2
-	bNh0VGgQ==;
+	bh=10ilFJtr9fmW8vA3OoaVyYmvW2sRY7mKR8FdhYHXZgA=; b=3yBjFYW2FADY1wWvGOo2We1JqX
+	WkDbn+IfY0jG8JzL5rFF3UTADKWCBSLCyKvuplX06ulIUaxA3h2S/7d38qtkHUvPZvpqFLIjfq8JA
+	/Z46j1RjfkJnAM3OnroPMkGJ1v33pPTpkOE0aUoXXoULGCDG/8zSZMubS5EOBVXuNUAIaxqi58jyV
+	rxLc14O/L4s5RTYzpsAZcvrKYZTL86MvIYGxwrs4pDtMppBmPqnKVcDFi2BT8JpVk8Gf+RZMsBv9F
+	UDvfu4p7erJU+dHESYgyHNAJ0Xbr3ZSZ98BvRtiYbcghxO0R+Sk2/O9+8EZq3UWD+O6w3AP2WLWZV
+	pKORWV6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcMd2-0000000E37Z-3Fed;
-	Tue, 20 Feb 2024 09:41:32 +0000
-Received: from mail-he1eur04on20701.outbound.protection.outlook.com ([2a01:111:f403:260f::701] helo=EUR04-HE1-obe.outbound.protection.outlook.com)
+	id 1rcMdD-0000000E3Eb-07N0;
+	Tue, 20 Feb 2024 09:41:43 +0000
+Received: from mail-vi1eur04on20701.outbound.protection.outlook.com ([2a01:111:f403:2611::701] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcMc0-0000000E2MU-3zBz;
-	Tue, 20 Feb 2024 09:40:34 +0000
+	id 1rcMc2-0000000E2NK-0aKN;
+	Tue, 20 Feb 2024 09:40:36 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mk+iY7saq2bdwldOFQyts1l25iZU4KpAZGjXzeswteytt5cG1SsmrGiLt6Y8X7JPM0Rx4ulqJ3+Q7MzesHB4OwcyQNRGjKZPH9/7hapyvq4zHhcF+TwsgnCfxw5jAL5/zRvpycKg+qB81AfIiYQFcdw6I0gkMJDchd8o6LhNpWMV+ED3b2uaugDZ33W2N3tlSy4yaGHW+XPSfAVz0PNJmi8xTUga3q7s6kqLvO6zM38+1c5yq8k/CC1Gi9m3bKFlAU6vByLmzdfU7Hsu8Onrk8Jw9S85hw6RcriTKVF1VyT/A0ZawsGeM71PlLW66NVs6oV2KGGu4yNYOw3+RYNHDw==
+ b=bGL/JCN0L6WcnI5q6/sQlj8rY2fNbhxLF8xd0EkIxAm8dLfc/q6PYqH3lITmBwd1elMCGl4pMBz88dTaK68ih2U1hrbrCqtpS4linKhUR7e7p+AMgLE84MXrklWkEk1h32rFa1o2CBFyVLcknImnqKiHIZ9V8qEkwvr+T7icecW4DAQ1k26n+52448rlKo+Sqz1e/BI/9huCifv7MskaicDslmza7IdaK92bS3ypYeQNRNyeWydMUki+FPOvRymbAoZ3CU7b+RbmS27fjXb4dqXrbLNbkgmZ+L+42dkDraEiZQxDzrYM+hIQ3HEDMvBe+OMgeUWgbEXfFQ2YLuen8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=boH9GrW7+OUCqgPgiUWbbmJsWcS2u7Pz66CwVac9ZVo=;
- b=XSY3WR75ySmIupK2v3gRi/3+mhanD5T5AuSqLL8v7sRHP2MbrsZDJSgqO4r0YIzG52k0fSF5KoN7bjmPytO3pqgsBHkPUibvfZvXkrVdYmkNJcsMFtqbn+PoKQVfuK4/8XnM5NooMZiQBid7oJoTn0a4afjkae0imk+hbkprSh2WGdWi5+o9/+bYRmpKhAMbr54iO7MsnPSIoRryO0bNRVmaGDjW5wpy7g1+av3Qt6uik8QXQa1I/KtLiv2FDSju/Ef0NWZEerEe3R+yLi6XX1VCv3WJbl7SVrVrhms/+ff8iXOBMHxJ9LjV0zh+56Ksd9PBFiKLK0Z5giUt3wBPVA==
+ bh=lFBNepf4pT5Z+UVSMHeI4wc9QqXpHqSP5xxqc77jhS0=;
+ b=QRlt/fhtbDgz78p/bmH0ldVCKgbFIyyvhZ1gwVxJAZfNK5FI04CSYg/1HgZetjHJx1YNwsjqswggL5P8wFJ0FlRhfjQplKzf+IZ4gLuyZ0+KksEGVFF+n07mjBeSjQ4VLi4uEuXJAm4Kzja7vZ8d3oU0rFOMnxfHk1G9Ewf6T0abbo8D8b2BhFnbNiUX4WYGysRg+zVNiPHdkxWYo0iZkYZU9C9sq4wJLoApLN2sozWIs3s31iyQqgz4JRb97iigGk1H6vwSTKUFYb5ZTFy51wWoD9bV7IktqhQiT+1ZvWcYkOtlVTVG1vz2Ojef5z1o5bTxAv2ZISQC0RlUL5ZvPA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=boH9GrW7+OUCqgPgiUWbbmJsWcS2u7Pz66CwVac9ZVo=;
- b=lVeD0BZ6ENSzdJyKGb18d/ABOFpY6tVWLjZS990eQCby9bKBlESBe5iiVIns9R65mnhi68Q1R5O3avyD8ymKkzwtbk3Ye7/H6+Q+KROIztq1BlN8+osyYwkYH7VYYINbcg+jUBsesfMwl/stz/j4WbopKnBdnfq3j1VUf3IszM0=
+ bh=lFBNepf4pT5Z+UVSMHeI4wc9QqXpHqSP5xxqc77jhS0=;
+ b=xi5Ov/s6+Azv0UPA+/YcD3D/zthHoLbw1kzctYxyYjjEviTYgAJOIqsbVcU1TyplyiJ7x5RWMKkwj2yODtVud1RlgnBAJjoQzchg59ax1dKhTdM+csOOLcOOr6ziRNXyNTnfPyPP8u1kkCAHPu6CuACi2hUk9kPmI9Kp5nhvxgE=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=wolfvision.net;
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by GV1PR08MB7681.eurprd08.prod.outlook.com (2603:10a6:150:60::21) with
+ by DB4PR08MB9357.eurprd08.prod.outlook.com (2603:10a6:10:3f3::9) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.32; Tue, 20 Feb
- 2024 09:40:21 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.39; Tue, 20 Feb
+ 2024 09:40:24 +0000
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::7409:db60:8209:c9f4]) by DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::7409:db60:8209:c9f4%6]) with mapi id 15.20.7270.043; Tue, 20 Feb 2024
- 09:40:20 +0000
+ 09:40:24 +0000
 From: Michael Riesch <michael.riesch@wolfvision.net>
-Date: Tue, 20 Feb 2024 10:39:22 +0100
-Subject: [PATCH 12/14] media: rockchip: cif: make register access variant
- specific
-Message-Id: <20240220-v6-8-topic-rk3568-vicap-v1-12-2680a1fa640b@wolfvision.net>
+Date: Tue, 20 Feb 2024 10:39:24 +0100
+Subject: [PATCH 14/14] arm64: dts: rockchip: add vicap node to rk356x
+Message-Id: <20240220-v6-8-topic-rk3568-vicap-v1-14-2680a1fa640b@wolfvision.net>
 References: <20240220-v6-8-topic-rk3568-vicap-v1-0-2680a1fa640b@wolfvision.net>
 In-Reply-To: <20240220-v6-8-topic-rk3568-vicap-v1-0-2680a1fa640b@wolfvision.net>
 To: Mehdi Djait <mehdi.djait.k@gmail.com>, 
@@ -74,11 +73,11 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, 
  Michael Riesch <michael.riesch@wolfvision.net>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1708421995; l=4765;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1708421995; l=2396;
  i=michael.riesch@wolfvision.net; s=20230803; h=from:subject:message-id;
- bh=obBxQWVh8Y0Fgnw+fpdRah3Rpr9ZAPUSz141wf1Voiw=;
- b=Y2lL2xHpFYvCYYNgdHWXnRAHBHxd/4wiFj8uYdTv9u/PTM5aTlb9Jy2IiOZlpk69fGls2DieI
- PNf8SfYla2QDJeBbbZut4T6pxsk4aTqKuif1wKNzBVMk0tIM/bOqfVu
+ bh=RKZXPNXHmUaOg5wL+hV6LweGPMEPN+5I6UNCMOLdLas=;
+ b=J8OtPxGHxTeFBcoWvj2EBzbRwi1DObzht3jj3cSjTISl1PYORzE+Y0n5WAK+yZElkPJmUAARN
+ ivdndc10u4/BsiCucaFKJdTxkt1ptSSoOTD1kaSslea4UXFGiE474ah
 X-Developer-Key: i=michael.riesch@wolfvision.net; a=ed25519;
  pk=9ral3sulLe95bLcbaiNXTgUTRiBayRBEFZ5OVIEHp+0=
 X-ClientProxiedBy: VI1PR04CA0128.eurprd04.prod.outlook.com
@@ -86,65 +85,65 @@ X-ClientProxiedBy: VI1PR04CA0128.eurprd04.prod.outlook.com
  (2603:10a6:10:416::5)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|GV1PR08MB7681:EE_
-X-MS-Office365-Filtering-Correlation-Id: 35172da9-deed-42d6-8b22-08dc31f7f429
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DB4PR08MB9357:EE_
+X-MS-Office365-Filtering-Correlation-Id: c1a1c8d8-93aa-4b0d-51c3-08dc31f7f6c7
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: TQLhUpl5/KGF8kcfX2RDZeuXlTbKXeiBzoY3w2rKUT0NyNrcqNrLMJIs3J09IZfE8MBe9yHKz5Zxn/Q9VWYSON2T5+aOunXLTZtRWsy9bwlAoEv/ejhn+mmsWO8WXpCxWSn+JEsLl2ugORBiZyhpQra3bMmeJolHU9g3cyCmyQWp2Z6+9RXqg95Ai6zFr+YDRaEKQ+B9ihtAh3K0Rl7CZjueft6JzZu6TeOZtx012avTtQ3jkhyEguOVb4s3EjyTLo2qM0XJO/hFSXCdX50NHDbvYEDYvA3TJBS253WfsZWqTO9JO8o/E0xD7gIOMIslWPpQHUjhADcICZ6wQZMcf8eUMUd9yWhWEGYzNvrwOcM96oSV5QcbNMKuoMgBMPgbl89JVQc11CFIcxeQBekEuUYblS9j3ZaPI01TKAky2S9CmAvEsuChIJSQMk+fOby2X4NOu0kmB4mLDeb9561b0WUl9FJGGA73bewQWXRmnRhv3BxuarUFD3PS+HVJ0MMsl1DWg9Frcu7BSGRd2CwzVvq5TDo2gHqfItsAnZVTNl+vZb600hKiX/xZ9UDUOPyTJ+fKAkOcM/kdm24yld1gtWZ6Sno/w6xNEFAUbCDA4r9HWi1T1jfNJ0WpNory/I62CMxvGFDlIFBlOm06Y1HhFQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(921011)(38350700005);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam-Message-Info: fp7OkyOO7SX8TTu90S8JA5ZOfQkQUk4fQ2kviKXxAWjDdb/lZV5ul1yFuYjqE8r7lugzh35dVVfDPEUntk49GdLFpDJ6yBIgxF6QXfRtX/rHxBSK/cPwi85/3pabG6gbxWqXgcWAy0N2iig2GJhmY+8wegTUP1SFk9WFoZyaB9WsfusfuedebXXXpDfLvnd85oxVrqtGJKKdGSy3RENK4RCNu5I68UNrmiar10Xe5eXPrVKSzrSWDr56n0QN1ccjY4W67Flr5zPQVxNxDm6yY7Ynor0S6XTzRfP/URsEMlkvFD2bITp65nJ4oUPK/u52MHCeljFx7/x5VZNdI8TfFb5C9CdPNhtwWqzk4Liypatq4ZRheHqpr8bMKyVdAL78fWPNpXQ0CIDpeJFVxX3WeVT12ybqPuLBF0Iaajz2CqTL418RjBI75rzQ3QkUd10GEBJhU64ebL1FM19nQLZKxar+Xv2fnDzx8jMQfJLMuj+XIX97oGDadeZ32rqTaztUnJ4/sGpr4IgHHiy1q+GgAx1By4h0hdSUbxWYe9QBsplGFxlb9a8pLmv7eH5f/U6lDda9e9ME6/nUsVMYmA8BKz94skWi2uU1Y9SvAEy3/kfxOUQLF0rIZygM/uUrqXA8
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(38350700005)(921011);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Vys1bGJxRmZFRk9GS01XcE9ianZMUndzTWhraUl2ZXZNMWlhRnNFVU51S0Vr?=
- =?utf-8?B?NUtxRFFubTRRdGlqZGs5OFBvb1ZMcENDOXpzM293a1RBMXQ5eWhRaDZ3QUtJ?=
- =?utf-8?B?dWd3THpRam1UQjU3dVlqcHdIUTZ2QUFKY2ZFbXB2dnBDK2haamJ4TjZCaStR?=
- =?utf-8?B?N1U1ellxVDBqZHhwcDQvaUZpbCtpd2wwVUJRRGxxMURSdkZJVW95QTRSVWM1?=
- =?utf-8?B?OHJEdnFrTEdyNEpxWVpFRUJONjVVZWJoMHY1czlDNGIyZHhzcVd5b0cvem5x?=
- =?utf-8?B?TVdJRlg5cTF2d3FLeTl6Skl6NXlKVEpURTlwSWsxcmMwVTZQQm4rVE54UEFK?=
- =?utf-8?B?MVpJUUovc0piOWZNL0JLM1hPZ2dnUUdJVE5NMkMyQklTa1RYeEx5Z1ZrY1hM?=
- =?utf-8?B?L21ndWZ6OEJvV1VXTmFQYUtlWktCSzQxNWdvenM2QTIzUlV2cUhYZkJjcFYw?=
- =?utf-8?B?VjJVeUNMVmh5b1N3djFzaXdVeXYrbUtwejduT2pwK0hUMjk3RGVQekd0blFx?=
- =?utf-8?B?SUk4bG5QZnFwb1V5ZWhVVkR3eFlIMDEwNjMzb21KRWhLMU1qOTh2YnJOMStY?=
- =?utf-8?B?eHVDSDBvOENsaU1qUlBoYXI0RzBWVm9YR2w4bVBOZ3grUklzT2dyclFUUmNR?=
- =?utf-8?B?eWJiVlEvbVV2R01RVmZRTTJDQVBPRUhTOHNIZU5zeUFOL0hma21lWDBybWlp?=
- =?utf-8?B?RkJLdDM4TnRPdVIvSitDcDN2Umw0c1AxMUpocFB2S1pITnNpTjRIZ2V5L2Uz?=
- =?utf-8?B?eGdidktTaDRaV09nK001cFpsSkh6bXQvMDhrd3ZHRUdDMFU1cXlPazkrV1dS?=
- =?utf-8?B?bnpCY2J0VVpUMVh0a2FMbTcvSTdUeThVSThjTnZkZDNPYUZreGpiYUpHcjhy?=
- =?utf-8?B?M0pPV0VDZmZrdmVEaFl3elBiOVF5clpOTm5hVVR3ZFNwdHRsV2EvaE04cWxN?=
- =?utf-8?B?MkFvSC9WNTJBSVRnY0FJSlhJaERpcms5MmpjUnFHNjQ5UEFkZkdZUFNSamhl?=
- =?utf-8?B?M3pGTXBFUnhKSlByR2hJSHhWSEpkeG1wVm1iVE1WQjN2a3VCWEt6N3NXekxK?=
- =?utf-8?B?RnZUUE1RK2psbitxWmYreDVMRXZBdHh4TU44Vm8zUmdzdGM1N3VnS3lFTlZC?=
- =?utf-8?B?L0xHelFzWFBKN2lsbjJTZDgrM09sdHNlVzUwV3QrT3BDdlkvY2FPRlkrYnd3?=
- =?utf-8?B?UWhqd0FuelNQWFVEVTN5dVRkTkV5Rno0aHVnOERZSSs0RmdITzdYTiszRHlH?=
- =?utf-8?B?QllUWlg3VHdSTE0wVDdkcEUwM280U0pEcW5VR2R5OUJjNXpOT2d5WmhnV0x4?=
- =?utf-8?B?dDlCYkdRRkM3UUhTa280clNFU2doOGdYV1REclYrUDVDczJ0ZlhWRVU2N1Mz?=
- =?utf-8?B?Y2hqd1lYS2QyUHdMbGRlVi8zM0JuRTcyZjdVYmxlMEJTdTFYYThNR0V3UVY1?=
- =?utf-8?B?VTFWQXVQamFmQlhkRlBtRlV1ckJkdG83RTR5RG5wOHdBOGZIY2hJaWhkS2M1?=
- =?utf-8?B?RXpoUWIyUFZmYytkZzRTWmJOYWNZK09SQXVlTElFT3VRL1F5bms1Z0VwVUtt?=
- =?utf-8?B?U3RBUUt4VkErOFBKSGFJZXdRMTZaVlBaZVdlVTFGdDVVeUp0U0taMUdkUU1K?=
- =?utf-8?B?a0tWSUxXcnJiQzdodVhHUzNhcjh3aEgrYm8xTjNWV3ZwV2xIY1VGUjNBbmRM?=
- =?utf-8?B?eVdyOUExSmczUmZjanlrSUlsdnpaRHJSSVczVnFiQ3h5QXVHUFhTQnVnS3lF?=
- =?utf-8?B?K1Z4b0JUL1dtaStEOEh0YnpCRkhaOGgyb255ZW9mcEhYNkhxZld4SlJJNUIx?=
- =?utf-8?B?SUg4WjlrRTNHemtLZjUzSE4xZ2hTdFM0OGszME1TSHVndHlOQmkwRXV2OSto?=
- =?utf-8?B?VHJkYkdUNlBmV1NmTUdNejZ2ajg3bVpqT2RJa0J4L21GamtmVmRHQnUxS2NR?=
- =?utf-8?B?VFVvK2g0WWU0MHpZRmJTWlcrU1Bpb0Y0eDd1bEZYQkthdHNHZXpNS0Foemx6?=
- =?utf-8?B?Q25ueDhkNUpHUi8rNmNMWTdCZmlRaXMxL2E2TnFsYW1GSkoyb2dyRVJjc3da?=
- =?utf-8?B?S2ZhYjNYWUM2SHAwbmFmWVd4blhYYkZMZTB1cFJuOERGeVk5RzIyVW5oeHlN?=
- =?utf-8?B?cFBlTCsyckptUDR2RVV2KytTU0FZNllPKzRDV1FxUm1mWUlRRW5xZnN4eXI3?=
- =?utf-8?B?c0E9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WGYyYUJIOUZFeGxsanR1a0EyMklYSEIvRDh4bk0wZWc0dGJrWGFRODdueGdT?=
+ =?utf-8?B?azE2TCtzY20rdU1IT2wxcWU2cmFVRE9ld0IwNUY0RGZQYkNaYXdWQUxRTnlp?=
+ =?utf-8?B?aVdlaU5tRm9QUERsdm9aS2EzK2VpZXRCU1Ric0J3bG9PeWFkeVR6T3ozaGVk?=
+ =?utf-8?B?T3hSTUI4TUhNaEVNazU2ZXZINXFEalF3SExWQUFnaTV0QW5yUGV5Z0VXaDBQ?=
+ =?utf-8?B?UFgzOGk0SE5yTHhCYU1jdEJhSS9Ua05aY0dCdUVwWE1JMStLZHlLdTFUVCt5?=
+ =?utf-8?B?dlppRWRTd2p0Q2sra09GckZXQlBVQ2xKTThPc0NNc3BlM2RTOWRlK0hXdU8r?=
+ =?utf-8?B?THpsenZKOGVJTmM4K2pES3AzM0FlVFV2RFpHdisyV1RTTzc5dWtJRDNLUFhN?=
+ =?utf-8?B?ZGcyYkFaTnN3RnFJdm9oemk2ZVcyRktqVzR2TWpZWlJHYjJ5ZjB6Z0Z2c1JH?=
+ =?utf-8?B?aDFpMVU4clNTTHRMMGNTSzRxTTFJcVd5ZXlNbysvYWxJdVpURk95V0pObkcv?=
+ =?utf-8?B?ZGhCSVNQRC9VdnNBUFRDeVdQcHRxVGdWZHdBZDNpdFdvb3lhQ1ArTnBFNG9O?=
+ =?utf-8?B?MXhaTS83K1pGbVJsTWJlRUYzSTlFdVVjMG5lZ21WTUdSeUdxYmFPS1V5eWo0?=
+ =?utf-8?B?U0VuTmlicVl5ZTRlZWwwbHBJQUVoOWRNdi8vSndLV2l4dXdHdzhvMzdUNUlZ?=
+ =?utf-8?B?MUMxVEx1N0xJSllHdUxWMjRUMUpUaU8yVWx1TUs4dkpZK2IwRlErNmo2dFJX?=
+ =?utf-8?B?S3greWFscTFmN2dBQW1QbGlPeXBHWG12Mnlna2tuV0FDeXIybGFQNjR4ZVlE?=
+ =?utf-8?B?aUlTaWRHVkFWM2VDMkp3K0VKbzhMY2JNS01SblJINVN2UGQxN0wweFhUSGV3?=
+ =?utf-8?B?eldwNnpMd2VIQ2xPNi8zYXovMFl1L09sYWNYQkp5ZUNmYkF1SUZmbG8renRG?=
+ =?utf-8?B?UGtLaTYvVmN4Q1R3NmZhaVdyOWJJUWc5MnduUW5iVVlIeXBmS2pYb3lFbW1C?=
+ =?utf-8?B?aGg3ZWIrTGF3bURGSWh3VTA4UXM1N0pvZUUrL3d6WWxsemhHd1hEZU9sU3Yz?=
+ =?utf-8?B?NVNrRzY0KzlxNnRNdHJ2a0hac3drR0lFc1g5SlVxNmVzWjdROFVEVlBBazJB?=
+ =?utf-8?B?STAybHVnQ3E5bzFTTXBoOUJSUnVweHgyRWpFRTBpUTQ1T2wvVGFjbzRMNHhz?=
+ =?utf-8?B?OGt4ZXZEQ0hERXE3b20xemZEaUtyS2pUL0M5TVlaWmEvejNFZk8waStFdFB4?=
+ =?utf-8?B?VTBhMnRESjFPVkU1SHozd1lrRGhmbXgrTFdWWWFic1QzSVlmeXphQjY4NWx2?=
+ =?utf-8?B?bHZFdWJMRWZCZGozQ2pnakFwMS9NdFd3VHZkbmZvTWVub2VzUklFU0NxcmQw?=
+ =?utf-8?B?VE5RQXhMZlpDWDUzYTVuT1lRTEVqQlJFSksxQ0dpK3p5Y2JtaHlweWwvZTcr?=
+ =?utf-8?B?VDNlTEw4dmlyc2dOT3EzdFVqWXRad1kvTHkwbnJVSnRwWVU0QXZpalNFSlVT?=
+ =?utf-8?B?YnJ1VkQvaG1WSHo5QkRDZEc3ZWFndTQ2N0ZSdThjMEJwNjRpbHllU3dwcWIx?=
+ =?utf-8?B?eGxhdG1wb0VDZitNcUc4bDQ4T3BSbWx5RXhLVGtzdmJmSWt1c1BlUit2Ulhy?=
+ =?utf-8?B?SWFrRWhIOGVsVVljZFYrK1ZJck8rdU9aWGFhQVMyLzBZYzF3SkEvOTlKS01K?=
+ =?utf-8?B?eHhuRE1kOWx2K1NLS2RRdjI1Q09PL3M5eEszNWpsejNiVGFqb0kwZ2FENnJE?=
+ =?utf-8?B?SUVTR2hrVVJMS2VocWQySi9CT2dNUTUrUXJ3aWV4OWY3UkJ5Z1hZbXNWZVlr?=
+ =?utf-8?B?VE1LZFFXK2FRTE1RVFJWaFpKMkthRkxSdk1OdlI2SVl2MHVkVFVxMTgvNFo5?=
+ =?utf-8?B?QlJ3bjl1QWpISWc2aWtJZ2pxV1Rka2RsdXhBL1NrYm0zNW1hNm52NE5QdUFn?=
+ =?utf-8?B?NGx1Wk9qdnRQTHp5Z1dVY05pMEhIa0JyaldzUFFZWHZlQmhLWUwrQzhTS0FW?=
+ =?utf-8?B?NVF1N1IzdmR5T0kyN0I4dzNKLzQzUDI3bk40RS9rQ29hTHQ5L00rK3J6L3Bo?=
+ =?utf-8?B?NDJVOURBazM2eWRCb0M3UUZSWlJiU25UbDNLalp0SGtwcEVOSDJJMjFUR3lU?=
+ =?utf-8?B?R1EwMUNFYTExblBabms2NURQOWJXVUZhRlV2eFByNStHOFZqbm5UU21jWS9H?=
+ =?utf-8?B?alE9PQ==?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 35172da9-deed-42d6-8b22-08dc31f7f429
+X-MS-Exchange-CrossTenant-Network-Message-Id: c1a1c8d8-93aa-4b0d-51c3-08dc31f7f6c7
 X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2024 09:40:20.3638
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Feb 2024 09:40:24.7551
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: r7vTBWUv2SN1g1b9M+SfotGVwY8xgrM2/iWj59suFNjr/NAGj4o/pBxpgVaNQ42pV+7QCUOyc4Ts6Iwpn0u1q9EKY5TEFw6nCEGbfpzBeIQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR08MB7681
+X-MS-Exchange-CrossTenant-UserPrincipalName: VRbhh20BwTEcBxxN+ZAG9DuFwFUqp9Lm7U/Yte/d0ZzbGkb5lTFkt0RBTLBLzvcv6aJ14m0fmWeqD3Nm5xpvHLnZVzO7LlwAkgrdnCUshQE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB4PR08MB9357
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240220_014029_645314_974E947D 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20240220_014030_757289_43C68528 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,160 +160,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The offsets of the Rockchip CIF registers may differ between the
-different variants. Modify the cif_{read,write} methods in order
-to support variant specific register offsets
+Add the device tree node for the RK356x Video Capture (VICAP)
+block.
 
 Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 ---
- drivers/media/platform/rockchip/cif/cif-common.h | 26 ++++++++++++-
- drivers/media/platform/rockchip/cif/cif-dev.c    | 17 +++++++++
- drivers/media/platform/rockchip/cif/cif-regs.h   | 47 ++++++++++--------------
- 3 files changed, 61 insertions(+), 29 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 45 ++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/cif/cif-common.h b/drivers/media/platform/rockchip/cif/cif-common.h
-index e5500705eee2..7ecdc820171e 100644
---- a/drivers/media/platform/rockchip/cif/cif-common.h
-+++ b/drivers/media/platform/rockchip/cif/cif-common.h
-@@ -19,6 +19,8 @@
- #include <media/v4l2-device.h>
- #include <media/videobuf2-v4l2.h>
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index c19c0f1b3778..ad61afd84c12 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/clock/rk3568-cru.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/media/rockchip-cif.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/power/rk3568-power.h>
+@@ -593,6 +594,50 @@ gpu: gpu@fde60000 {
+ 		status = "disabled";
+ 	};
  
-+#include "cif-regs.h"
++	vicap: video-capture@fdfe0000 {
++		compatible = "rockchip,rk3568-vicap";
++		reg = <0x0 0xfdfe0000 0x0 0x200>;
++		interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
++		assigned-clocks = <&cru DCLK_VICAP>;
++		assigned-clock-rates = <300000000>;
++		clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>,
++			 <&cru DCLK_VICAP>, <&cru ICLK_VICAP_G>;
++		clock-names = "aclk", "hclk", "dclk", "iclk";
++		iommus = <&vicap_mmu>;
++		power-domains = <&power RK3568_PD_VI>;
++		resets = <&cru SRST_A_VICAP>, <&cru SRST_H_VICAP>,
++			 <&cru SRST_D_VICAP>, <&cru SRST_P_VICAP>,
++			 <&cru SRST_I_VICAP>;
++		reset-names = "arst", "hrst", "drst", "prst", "irst";
++		rockchip,grf = <&grf>;
++		status = "disabled";
 +
- #define CIF_DRIVER_NAME		"rockchip-cif"
- 
- #define CIF_MAX_BUS_CLK		8
-@@ -101,6 +103,7 @@ struct cif_match_data {
- 	int in_fmts_num;
- 	void (*grf_dvp_setup)(struct cif_device *cif_dev);
- 	bool has_scaler;
-+	unsigned int regs[CIF_REGISTERS_MAX];
- };
- 
- struct cif_device {
-@@ -121,14 +124,33 @@ struct cif_device {
- 	const struct cif_match_data	*match_data;
- };
- 
--static inline void cif_write(struct cif_device *cif_dev, unsigned int addr,
-+static inline unsigned int cif_get_addr(struct cif_device *cif_device,
-+					unsigned int index)
-+{
-+	if (index >= CIF_REGISTERS_MAX)
-+		return CIF_REGISTERS_INVALID;
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
 +
-+	return cif_device->match_data->regs[index];
-+}
++			vicap_dvp: port@MEDIA_ROCKCHIP_CIF_DVP {
++				reg = <MEDIA_ROCKCHIP_CIF_DVP>;
++			};
 +
-+static inline void cif_write(struct cif_device *cif_dev, unsigned int index,
- 			     u32 val)
- {
-+	unsigned int addr = cif_get_addr(cif_dev, index);
++			vicap_mipi: port@MEDIA_ROCKCHIP_CIF_MIPI {
++				reg = <MEDIA_ROCKCHIP_CIF_MIPI>;
++			};
++		};
++	};
 +
-+	if (addr == CIF_REGISTERS_INVALID)
-+		return;
++	vicap_mmu: iommu@fdfe0800 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdfe0800 0x0 0x100>;
++		interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_VICAP>, <&cru HCLK_VICAP>;
++		clock-names = "aclk", "iface";
++		#iommu-cells = <0>;
++		power-domains = <&power RK3568_PD_VI>;
++		rockchip,disable-mmu-reset;
++		status = "disabled";
++	};
 +
- 	writel(val, cif_dev->base_addr + addr);
- }
- 
--static inline u32 cif_read(struct cif_device *cif_dev, unsigned int addr)
-+static inline u32 cif_read(struct cif_device *cif_dev, unsigned int index)
- {
-+	unsigned int addr = cif_get_addr(cif_dev, index);
-+
-+	if (addr == CIF_REGISTERS_INVALID)
-+		return 0;
-+
- 	return readl(cif_dev->base_addr + addr);
- }
- 
-diff --git a/drivers/media/platform/rockchip/cif/cif-dev.c b/drivers/media/platform/rockchip/cif/cif-dev.c
-index e7b5ae5804ca..929ea39dd832 100644
---- a/drivers/media/platform/rockchip/cif/cif-dev.c
-+++ b/drivers/media/platform/rockchip/cif/cif-dev.c
-@@ -283,6 +283,23 @@ static const struct cif_match_data px30_cif_match_data = {
- 	.in_fmts = px30_in_fmts,
- 	.in_fmts_num = ARRAY_SIZE(px30_in_fmts),
- 	.has_scaler = true,
-+	.regs = {
-+		[CIF_CTRL] = 0x00,
-+		[CIF_INTEN] = 0x04,
-+		[CIF_INTSTAT] = 0x08,
-+		[CIF_FOR] = 0x0c,
-+		[CIF_LINE_NUM_ADDR] = 0x10,
-+		[CIF_FRM0_ADDR_Y] = 0x14,
-+		[CIF_FRM0_ADDR_UV] = 0x18,
-+		[CIF_FRM1_ADDR_Y] = 0x1c,
-+		[CIF_FRM1_ADDR_UV] = 0x20,
-+		[CIF_VIR_LINE_WIDTH] = 0x24,
-+		[CIF_SET_SIZE] = 0x28,
-+		[CIF_SCL_CTRL] = 0x48,
-+		[CIF_FRAME_STATUS] = 0x60,
-+		[CIF_LAST_LINE] = 0x68,
-+		[CIF_LAST_PIX] = 0x6c,
-+	},
- };
- 
- static const struct of_device_id cif_plat_of_match[] = {
-diff --git a/drivers/media/platform/rockchip/cif/cif-regs.h b/drivers/media/platform/rockchip/cif/cif-regs.h
-index b8500f0a9ac1..2ce756fde204 100644
---- a/drivers/media/platform/rockchip/cif/cif-regs.h
-+++ b/drivers/media/platform/rockchip/cif/cif-regs.h
-@@ -9,33 +9,26 @@
- #ifndef _CIF_REGS_H
- #define _CIF_REGS_H
- 
--#define CIF_CTRL				0x00
--#define CIF_INTEN				0x04
--#define CIF_INTSTAT				0x08
--#define CIF_FOR					0x0c
--#define CIF_LINE_NUM_ADDR			0x10
--#define CIF_FRM0_ADDR_Y				0x14
--#define CIF_FRM0_ADDR_UV			0x18
--#define CIF_FRM1_ADDR_Y				0x1c
--#define CIF_FRM1_ADDR_UV			0x20
--#define CIF_VIR_LINE_WIDTH			0x24
--#define CIF_SET_SIZE				0x28
--#define CIF_SCM_ADDR_Y				0x2c
--#define CIF_SCM_ADDR_U				0x30
--#define CIF_SCM_ADDR_V				0x34
--#define CIF_WB_UP_FILTER			0x38
--#define CIF_WB_LOW_FILTER			0x3c
--#define CIF_WBC_CNT				0x40
--#define CIF_CROP				0x44
--#define CIF_SCL_CTRL				0x48
--#define CIF_SCL_DST				0x4c
--#define CIF_SCL_FCT				0x50
--#define CIF_SCL_VALID_NUM			0x54
--#define CIF_LINE_LOOP_CTR			0x58
--#define CIF_FRAME_STATUS			0x60
--#define CIF_CUR_DST				0x64
--#define CIF_LAST_LINE				0x68
--#define CIF_LAST_PIX				0x6c
-+enum cif_register {
-+	CIF_CTRL,
-+	CIF_INTEN,
-+	CIF_INTSTAT,
-+	CIF_FOR,
-+	CIF_LINE_NUM_ADDR,
-+	CIF_FRM0_ADDR_Y,
-+	CIF_FRM0_ADDR_UV,
-+	CIF_FRM1_ADDR_Y,
-+	CIF_FRM1_ADDR_UV,
-+	CIF_VIR_LINE_WIDTH,
-+	CIF_SET_SIZE,
-+	CIF_SCL_CTRL,
-+	CIF_FRAME_STATUS,
-+	CIF_LAST_LINE,
-+	CIF_LAST_PIX,
-+	CIF_REGISTERS_MAX,
-+	CIF_REGISTERS_INVALID,
-+};
-+
- #define CIF_FETCH_Y_LAST_LINE(VAL)		((VAL) & 0x1fff)
- 
- #define CIF_CTRL_ENABLE_CAPTURE			BIT(0)
+ 	vpu: video-codec@fdea0400 {
+ 		compatible = "rockchip,rk3568-vpu";
+ 		reg = <0x0 0xfdea0000 0x0 0x800>;
 
 -- 
 2.30.2
