@@ -4,69 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6CCC5478B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 17:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E6FC5478A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 20:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T3ifXaDNoAew3/EUtXbs1udH/hhC/4VxS2NdDJFWl0U=; b=maNewHyXdN1gMs
-	QEcdVk6boRt+pR37/p+s7lsRZKZv2jk5FHbzU1zQBlMkfk1nafkxBTJW6It/ALkiUv+G9AVCMhtpK
-	NBo1dFj4ssdguK2gxDeHlmbuZROh0QZ10WX1MmaVwSejc7E4NzRxMZWSlvj3TCFUIGGEQKmU/HSJm
-	UOyh6r/VuO0KY544QjGiDBo2ntUqSnUdeGY82wL6tCWwJyq/0VoZLwS2HfHNzYwqBY+doVE5TDi4I
-	VKNzZjR4BcQ+jnWacSNSV9oKUten97H/DlYJ+2nGTv0fOEuZbX/1Q//tDFuDAxCorl5NorFR1386c
-	386LX2uQd5TUkbcqTuCg==;
+	List-Owner; bh=aux3qW8W00VnTW2kfR8fUF2Tk2XlPGQXtwtXpgyONAw=; b=uTJJGISyZN8J84
+	pI7Ug2xhzVb5IgnHBghs0cJCXv1RaesEx+MzPYBnCPkQ0S6xd8QxWkh0ZpX8hNbOE+6iZy5QuTVZ7
+	EG/I7/JaVynCMTSjl8Ck8eXcsM8Kn3Dm6t0OZfGxYHvl3wa7C39/9ekmQ20/xH0Hpjs6TJ9YASOBt
+	FoNUre7hQ/UXySsZniHFbVpwneW0+ENnY6/QFKYl/fIVKmkBUtMIJWy/2oL7N6htJgRbaeT1muX4g
+	8z0Ya2LyCuqyaIiEgGL5RPpeOZVdxYy2S9CAI5kRi2x4Ebso1sW1hAOSxdkIJjSwSJNqCrYAca1Cz
+	XfIOHSfmFMtKuGmflTeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcpxm-00000001pX2-32KL;
-	Wed, 21 Feb 2024 17:00:54 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rctdF-00000002Xjx-0vfT;
+	Wed, 21 Feb 2024 20:55:57 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcovp-00000001aB4-0qwm
-	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Feb 2024 15:54:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1708530886;
-	bh=q/70MdBzth/2lUXTHflNvTocA810ZeD66FDcxyBvRAU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B6U2lXYLAEuq75jJOs5Q6UTe1/7bHTLm2ikwbEi7ZdFiwTvTAPYQ/FDRLGjKpkZHs
-	 SN97/s8rtnXN8/UAECAmVOz9qAYueHby1Uq1vTA9qFZwGeI8xpYwDiVeka0Tgu4gYa
-	 J8/2P/p+PBbslfCj0GCXLQkaBkNkCtYsb0Lj1odFMMIAfTR/OkxG6DQ32guxn8yVwW
-	 JxSxRvUdIlPoU1xWzY9XJT/CUgalO3TPpNEnrn9QtclfLBeUHENCHkEjkSjGsEmN0t
-	 fARUH0iIIS5jDsxYCmoU1dS9ewV8EkuaKI7w4+UO/IVFUbdcIVLlHeL629ysqIpGVS
-	 srAF4AO0BMs/w==
-Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6601637820CF;
-	Wed, 21 Feb 2024 15:54:45 +0000 (UTC)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	hverkuil-cisco@xs4all.nl,
-	nicolas@ndufresne.ca
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v20 5/9] media: core: Add bitmap manage bufs array entries
-Date: Wed, 21 Feb 2024 16:54:31 +0100
-Message-Id: <20240221155435.100093-6-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240221155435.100093-1-benjamin.gaignard@collabora.com>
-References: <20240221155435.100093-1-benjamin.gaignard@collabora.com>
+	id 1rctdB-00000002Xgp-0cWw;
+	Wed, 21 Feb 2024 20:55:54 +0000
+Received: from harlem.collaboradmins.com (harlem.collaboradmins.com [IPv6:2a01:4f8:1c0c:5936::1])
+	by madrid.collaboradmins.com (Postfix) with ESMTP id BB61937820D2;
+	Wed, 21 Feb 2024 20:55:46 +0000 (UTC)
+From: "Shreeya Patel" <shreeya.patel@collabora.com>
+In-Reply-To: <fd3b7ab7-3702-412f-947a-95396dbe1f4c@linaro.org>
+X-Forward: 127.0.0.1
+References: <20240216094922.257674-1-shreeya.patel@collabora.com>
+ <20240216094922.257674-3-shreeya.patel@collabora.com> <fd3b7ab7-3702-412f-947a-95396dbe1f4c@linaro.org>
+Date: Wed, 21 Feb 2024 20:55:46 +0000
+Cc: heiko@sntech.de, mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com, shawn.wen@rock-chips.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-dt@vger.kernel.org, linux-arm@lists.infradead.org
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
+Message-ID: <1048c3-65d66380-b-49a25c80@188726434>
+Subject: =?utf-8?q?Re=3A?= [PATCH 2/4] =?utf-8?q?dt-bindings=3A?=
+ =?utf-8?q?_media=3A?= Document bindings for HDMI RX Controller
+User-Agent: SOGoMail 5.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_075451_215696_93AE82E0 
-X-CRM114-Status: GOOD (  23.04  )
+X-CRM114-CacheID: sfid-20240221_125553_338553_8B61FAA8 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,253 +61,202 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a bitmap field to know which of bufs array entries are
-used or not.
-Remove no more used num_buffers field from queue structure.
-Use bitmap_find_next_zero_area() to find the first possible
-range when creating new buffers to fill the gaps.
-If no suitable range is found try to allocate less buffers
-than requested.
+On Friday, February 16, 2024 15:31 IST, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/common/videobuf2/videobuf2-core.c   | 71 ++++++++++++++-----
- include/media/videobuf2-core.h                | 18 +++--
- 2 files changed, 64 insertions(+), 25 deletions(-)
+> On 16/02/2024 10:49, Shreeya Patel wrote:
+> > Document bindings for the Synopsys DesignWare HDMI RX Controller.
+> > 
+> > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> 
+> A nit, subject: drop second/last, redundant "bindings for". The
+> "dt-bindings" prefix is already stating that these are bindings.
+> See also:
+> https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+> 
+> > ---
+> >  .../bindings/media/snps,dw-hdmi-rx.yaml       | 128 ++++++++++++++++++
+> >  1 file changed, 128 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > new file mode 100644
+> > index 000000000000..a70d96b548ee
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> > @@ -0,0 +1,128 @@
+> > +# SPDX-License-Identifier: (GPL-3.0 OR BSD-2-Clause)
+> 
+> Use license checkpatch tells you.
+> 
+> > +# Device Tree bindings for Synopsys DesignWare HDMI RX Controller
+> > +
+> > +---
+> > +$id: http://devicetree.org/schemas/media/snps,dw-hdmi-rx.yaml#
+> 
+> Why this is a media, not display? Does RX means input? Lack of hardware
+> description does not help?
+> 
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 8e819d198c34..ec81426d4d79 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -421,11 +421,12 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
-  */
- static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
- {
--	WARN_ON(index >= q->max_num_buffers || q->bufs[index] || vb->vb2_queue);
-+	WARN_ON(index >= q->max_num_buffers || test_bit(index, q->bufs_bitmap) || vb->vb2_queue);
- 
- 	q->bufs[index] = vb;
- 	vb->index = index;
- 	vb->vb2_queue = q;
-+	set_bit(index, q->bufs_bitmap);
- }
- 
- /**
-@@ -434,6 +435,7 @@ static void vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
-  */
- static void vb2_queue_remove_buffer(struct vb2_buffer *vb)
- {
-+	clear_bit(vb->index, vb->vb2_queue->bufs_bitmap);
- 	vb->vb2_queue->bufs[vb->index] = NULL;
- 	vb->vb2_queue = NULL;
- }
-@@ -452,9 +454,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			     const unsigned int plane_sizes[VB2_MAX_PLANES],
- 			     unsigned int *first_index)
- {
--	unsigned int q_num_buffers = vb2_get_num_buffers(q);
- 	unsigned int buffer, plane;
- 	struct vb2_buffer *vb;
-+	unsigned long index = q->max_num_buffers;
- 	int ret;
- 
- 	/*
-@@ -462,9 +464,25 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 	 * in the queue is below q->max_num_buffers
- 	 */
- 	num_buffers = min_t(unsigned int, num_buffers,
--			    q->max_num_buffers - q_num_buffers);
-+			    q->max_num_buffers - vb2_get_num_buffers(q));
-+
-+	while (num_buffers) {
-+		index = bitmap_find_next_zero_area(q->bufs_bitmap, q->max_num_buffers,
-+						   0, num_buffers, 0);
-+
-+		if (index < q->max_num_buffers)
-+			break;
-+		/* Try to find free space for less buffers */
-+		num_buffers--;
-+	}
-+
-+	/* If there is no space left to allocate buffers return 0 to indicate the error */
-+	if (!num_buffers) {
-+		*first_index = 0;
-+		return 0;
-+	}
- 
--	*first_index = q_num_buffers;
-+	*first_index = index;
- 
- 	for (buffer = 0; buffer < num_buffers; ++buffer) {
- 		/* Allocate vb2 buffer structures */
-@@ -484,7 +502,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
- 			vb->planes[plane].min_length = plane_sizes[plane];
- 		}
- 
--		vb2_queue_add_buffer(q, vb, q_num_buffers + buffer);
-+		vb2_queue_add_buffer(q, vb, index++);
- 		call_void_bufop(q, init_buffer, vb);
- 
- 		/* Allocate video buffer memory for the MMAP type */
-@@ -664,7 +682,6 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		kfree(vb);
- 	}
- 
--	q->num_buffers -= buffers;
- 	if (!vb2_get_num_buffers(q)) {
- 		q->memory = VB2_MEMORY_UNKNOWN;
- 		INIT_LIST_HEAD(&q->queued_list);
-@@ -818,6 +835,32 @@ static bool verify_coherency_flags(struct vb2_queue *q, bool non_coherent_mem)
- 	return true;
- }
- 
-+static int vb2_core_allocated_buffers_storage(struct vb2_queue *q)
-+{
-+	if (!q->bufs)
-+		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
-+	if (!q->bufs)
-+		return -ENOMEM;
-+
-+	if (!q->bufs_bitmap)
-+		q->bufs_bitmap = bitmap_zalloc(q->max_num_buffers, GFP_KERNEL);
-+	if (!q->bufs_bitmap) {
-+		kfree(q->bufs);
-+		q->bufs = NULL;
-+		return -ENOMEM;
-+	}
-+
-+	return 0;
-+}
-+
-+static void vb2_core_free_buffers_storage(struct vb2_queue *q)
-+{
-+	kfree(q->bufs);
-+	q->bufs = NULL;
-+	bitmap_free(q->bufs_bitmap);
-+	q->bufs_bitmap = NULL;
-+}
-+
- int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		     unsigned int flags, unsigned int *count)
- {
-@@ -879,10 +922,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	 * in the queue_setup op.
- 	 */
- 	mutex_lock(&q->mmap_lock);
--	if (!q->bufs)
--		q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--	if (!q->bufs)
--		ret = -ENOMEM;
-+	ret = vb2_core_allocated_buffers_storage(q);
- 	q->memory = memory;
- 	mutex_unlock(&q->mmap_lock);
- 	if (ret)
-@@ -954,7 +994,6 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers = allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -982,6 +1021,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 	mutex_lock(&q->mmap_lock);
- 	q->memory = VB2_MEMORY_UNKNOWN;
- 	mutex_unlock(&q->mmap_lock);
-+	vb2_core_free_buffers_storage(q);
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
-@@ -1015,11 +1055,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * value in the queue_setup op.
- 		 */
- 		mutex_lock(&q->mmap_lock);
-+		ret = vb2_core_allocated_buffers_storage(q);
- 		q->memory = memory;
--		if (!q->bufs)
--			q->bufs = kcalloc(q->max_num_buffers, sizeof(*q->bufs), GFP_KERNEL);
--		if (!q->bufs)
--			ret = -ENOMEM;
- 		mutex_unlock(&q->mmap_lock);
- 		if (ret)
- 			return ret;
-@@ -1082,7 +1119,6 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 	}
- 
- 	mutex_lock(&q->mmap_lock);
--	q->num_buffers += allocated_buffers;
- 
- 	if (ret < 0) {
- 		/*
-@@ -2583,8 +2619,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_queue_cancel(q);
- 	mutex_lock(&q->mmap_lock);
- 	__vb2_queue_free(q, vb2_get_num_buffers(q));
--	kfree(q->bufs);
--	q->bufs = NULL;
-+	vb2_core_free_buffers_storage(q);
- 	q->is_busy = 0;
- 	mutex_unlock(&q->mmap_lock);
- }
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index ee0cbd8705ec..7aebeaf671d8 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -346,8 +346,8 @@ struct vb2_buffer {
-  *			describes the requested number of planes and sizes\[\]
-  *			contains the requested plane sizes. In this case
-  *			\*num_buffers are being allocated additionally to
-- *			q->num_buffers. If either \*num_planes or the requested
-- *			sizes are invalid callback must return %-EINVAL.
-+ *			the buffers already allocated. If either \*num_planes
-+ *			or the requested sizes are invalid callback must return %-EINVAL.
-  * @wait_prepare:	release any locks taken while calling vb2 functions;
-  *			it is called before an ioctl needs to wait for a new
-  *			buffer to arrive; required to avoid a deadlock in
-@@ -571,8 +571,9 @@ struct vb2_buf_ops {
-  * @mmap_lock:	private mutex used when buffers are allocated/freed/mmapped
-  * @memory:	current memory type used
-  * @dma_dir:	DMA mapping direction.
-- * @bufs:	videobuf2 buffer structures
-- * @num_buffers: number of allocated/used buffers
-+ * @bufs:	videobuf2 buffer structures. If it is non-NULL then
-+ *		bufs_bitmap is also non-NULL.
-+ * @bufs_bitmap: bitmap tracking whether each bufs[] entry is used
-  * @max_num_buffers: upper limit of number of allocated/used buffers.
-  *		     If set to 0 v4l2 core will change it VB2_MAX_FRAME
-  *		     for backward compatibility.
-@@ -640,7 +641,7 @@ struct vb2_queue {
- 	unsigned int			memory;
- 	enum dma_data_direction		dma_dir;
- 	struct vb2_buffer		**bufs;
--	unsigned int			num_buffers;
-+	unsigned long			*bufs_bitmap;
- 	unsigned int			max_num_buffers;
- 
- 	struct list_head		queued_list;
-@@ -1170,7 +1171,10 @@ static inline bool vb2_fileio_is_active(struct vb2_queue *q)
-  */
- static inline unsigned int vb2_get_num_buffers(struct vb2_queue *q)
- {
--	return q->num_buffers;
-+	if (q->bufs_bitmap)
-+		return bitmap_weight(q->bufs_bitmap, q->max_num_buffers);
-+
-+	return 0;
- }
- 
- /**
-@@ -1279,7 +1283,7 @@ static inline struct vb2_buffer *vb2_get_buffer(struct vb2_queue *q,
- 	if (index >= q->max_num_buffers)
- 		return NULL;
- 
--	if (index < q->num_buffers)
-+	if (test_bit(index, q->bufs_bitmap))
- 		return q->bufs[index];
- 	return NULL;
- }
--- 
-2.40.1
+Yes, RX means input and this binding doc is for the HDMI INPUT controller.
+I'll add some description in v2
+
+> 
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Synopsys DesignWare HDMI RX Controller
+> > +
+> > +maintainers:
+> > +  - Shreeya Patel <shreeya.patel@collabora.com>
+> > +
+> 
+> description:
+> 
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - const: rockchip,rk3588-hdmirx-ctrler
+> > +      - const: snps,dw-hdmi-rx
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 3
+> > +
+> > +  interrupt-names:
+> > +    items:
+> > +      - const: cec
+> > +      - const: hdmi
+> > +      - const: dma
+> > +
+> > +  clocks:
+> > +    maxItems: 7
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: aclk
+> > +      - const: audio
+> > +      - const: cr_para
+> > +      - const: pclk
+> > +      - const: ref
+> > +      - const: hclk_s_hdmirx
+> > +      - const: hclk_vo1
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  resets:
+> > +    maxItems: 4
+> > +
+> > +  reset-names:
+> > +    items:
+> > +      - const: rst_a
+> > +      - const: rst_p
+> > +      - const: rst_ref
+> > +      - const: rst_biu
+> 
+> Drop rest_ prefix
+> 
+> > +
+> > +  pinctrl-names:
+> > +    const: default
+> 
+> Drop
+> 
+> > +
+> > +  memory-region:
+> > +    maxItems: 1
+> > +
+> > +  hdmirx-5v-detection-gpios:
+> > +    description: GPIO specifier for 5V detection.
+> 
+> Detection of what? Isn't this HPD?
+> 
+> > +    maxItems: 1
+> > +
+> > +  rockchip,grf:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      The phandle of the syscon node for the GRF register.
+> 
+> Instead describe what for. Basically 80% of your description is
+> redundant and only "GRF register" brings some information.
+> 
+> 
+> > +
+> > +  rockchip,vo1_grf:
+> 
+> No underscores.
+> 
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description:
+> > +      The phandle of the syscon node for the VO1 GRF register.
+> 
+> Same problem.
+> 
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - interrupt-names
+> > +  - clocks
+> > +  - clock-names
+> > +  - power-domains
+> > +  - resets
+> > +  - pinctrl-0
+> > +  - pinctrl-names
+> 
+> Why? Drop.
+> 
+> > +  - hdmirx-5v-detection-gpios
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/power/rk3588-power.h>
+> > +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> > +    hdmirx_ctrler: hdmirx-controller@fdee0000 {
+> 
+> What is hdmirx-controller? Isn't this just hdmi@?
+> 
+
+Writing just hdmi would imply hdmi output I think so that name
+will not be appropriate here.
+
+> Node names should be generic. See also an explanation and list of
+> examples (not exhaustive) in DT specification:
+> https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+> 
+
+This documentation doesn't have any generic name for HDMI INPUT
+but maybe we can use the name hdmi-receiver like some other existing
+binding has it here :-
+Documentation/devicetree/bindings/media/i2c/tda1997x.txt
+
+Thanks,
+Shreeya Patel
+> 
+> > +      compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+> > +      reg = <0x0 0xfdee0000 0x0 0x6000>;
+> > +      interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
+> > +                   <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
+> > +                   <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
+> 
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
+> _______________________________________________
+> Kernel mailing list -- kernel@mailman.collabora.com
+> To unsubscribe send an email to kernel-leave@mailman.collabora.com
+> This list is managed by https://mailman.collabora.com
 
 
 _______________________________________________
