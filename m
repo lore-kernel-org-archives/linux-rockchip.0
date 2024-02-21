@@ -4,92 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D267EC48BEB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 22:13:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD15BC48BEB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 22:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jjlo3onHXjD2sR++C28OHMdrc7ZmaZCNwoDmpCvHMf4=; b=fhM8sjx1GJO7ew6MlMZUX2P4Gn
-	ezGPSv9/lE+2a0LWSs7DvD4fFpr3sBceb+vXFIqzQXHThBRARUtuE9Fds8A/n0cOQ0ZzhdC/cFMdL
-	OXMVjqh7q3lY/49OJhswcdgVvucvTkj4BWJluAdJjXGPxJs+B+wTrwF/2ONiQDHiDHnn0FZ7wBXFF
-	/tfqcW16dLzqWu/rrSaaB8s1MmSDoEUuzotssqKPKpl2wxYW/MIET8dr7Cfql/pAA90EkwWdJNVtX
-	EEuSM3GhaUrjm12mHa/6RGoju2Q8awdS/qZ0Ks1fC+twwSqk8QH0Mq7689GNGn9l5ZY551bc+s5mi
-	2tEHQlkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kkww9B8HeL0WwNn4mXE5ne1wO+eGO+aRm5EKV6XekG8=; b=VvvUecYANro6Tf
+	UYQQ0RpWE7oZciZ/0thR2XVgtAhq2ayHc2b7AN5BzJR1RIj4hMzkYE4A+UcME5fxS6TE5fwFzIYZ+
+	hDPN/0oAT7c+PKuaZdumIYzSc3NVQXTyjYy2Zhr4sFjykF1M+KNl/aA1t60OYIGbUtg9BQO/c1att
+	WVywu8xXsuoohs6o6Tnqy8GTqOdbf95JvYkBKxaVEiEYgE8CipZd+IsErJbCpEwgsoL4cOFAzdTtq
+	c+XDBtGo6tZ/avGUWUcr6CQYe89jS2WR3lDjV4PW43YC8Gf1V8TvTQOLcJybcfJKcIeTtW4otQFFx
+	r2W1cnDVVOu0OnI250oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcupv-00000002lFV-1g3D;
-	Wed, 21 Feb 2024 22:13:07 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1rcvXE-00000002qOz-2XQl;
+	Wed, 21 Feb 2024 22:57:52 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcupq-00000002lCl-372c;
-	Wed, 21 Feb 2024 22:13:04 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id 3f1490d57ef6-dc6d9a8815fso7088293276.3;
-        Wed, 21 Feb 2024 14:12:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1708553571; x=1709158371; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zvHohG/osJUUJ6MrbAQ8TEaNGcUB4t0Qr7/JkHGHUIo=;
-        b=W2+uLuLDecqy3neqnGZwQ/fj2wzz9vKkCLS8WATAEtZNOHCyTI9/w8aPHRc0I5jMlt
-         MKPReH3mKMRjfbvl6g8Rv/mMaFIjYZIujVgnAcnwCuZzRrDNyYmgDHiZ20til58eW0oc
-         nHZ+5BF3LaWIyk8dE/Q27IRNuM3vxVVTKeOalCnG2kC3INWY0vCm8ueRC2UM5ZtvU1YD
-         ymkFSNUXdGNQF9z74XMA5nHsMmtEkE3v+7tskLDgBuQs9GTXFxLpptC1ubnCkD04Yw9G
-         O8a4atEDLYg4jm1gELJcs5GkVaj0Ea+pmimk7YohPftStPpT7gFoj+QwnfNTJY3M3qGa
-         +pvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708553571; x=1709158371;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zvHohG/osJUUJ6MrbAQ8TEaNGcUB4t0Qr7/JkHGHUIo=;
-        b=Rpa+I4ioMo9tmwtWOfdZ+Wv3yEhk9ydL/lGwxiMHNknOq+XePlrJTOvs6APIVApM5w
-         5gArcM1K7AFXAbtjtVeL7HSZwUlt+GZwp/fNaMi5cm8QmtpsDEeJ4el+b2E+LaVVpEn4
-         OB59qELSRRj8OnCybFxOXjRJeBxB1YE6CGR/xmSvwjn0cl9MOyGq2LxhZepnwozuafvC
-         dXoj4qME/2kQFsnVWsjg3VG5LCIjS55EbXbK/ZeLFEV9YKRPozgD3BjzVKZ8PWW1ElR/
-         Hic/DfFsSg0kDe2qN3lx8OIFcmkfON+IFt6N8WCUZNQ/7uEjDa0IkomJAaK566Dt+2Bl
-         p16g==
-X-Forwarded-Encrypted: i=1; AJvYcCW4WXQsIgaaE8N2NZjy8/nZhKFOvmJdF3y2Qh0qWNaEtaWqCv+KcNV7H1Iuu8irnz1a0gDjdM0QopE1kjW+XvlWgFAHnzzHxoGNczqKzDwTFOIEUEfj/ffZPVltdOTkPRpfal/9uF3hP2bzUmkX/GIDjCCpRWd3edUh3o/qQSDI2o3CQ72je7FECJDnbIBJ0Goyw3/rPKTJkZwHFEpe5SJBxNmhmaLu1I+G2T5h1UGgAhhTDbU6exDLpP3YaOTaxoiVTnP7wMuQFx7s+PYgyrpqFp0o9nI6GYeWiqKxtSk=
-X-Gm-Message-State: AOJu0Yw0m/wvSsdSxlC+oGHDMGUKoW+kudvJhqYe2TDO7+P1cddlbtbC
-	zr/WyrMk9oZvUao0X+iPqaEWCy8ZQfukHpmbK3al7DY0LnBmrz3J
-X-Google-Smtp-Source: AGHT+IF7kP+13CFMgvNV4rXPEp1sBAjlnfLwnWDRvHGUt3wwBoE4opoEpDnOPFhvcnuSrbWo1HtsDQ==
-X-Received: by 2002:a25:9346:0:b0:dcc:76a0:503b with SMTP id g6-20020a259346000000b00dcc76a0503bmr692068ybo.13.1708553571608;
-        Wed, 21 Feb 2024 14:12:51 -0800 (PST)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id i19-20020a05620a405300b007858c17df9csm4712295qko.96.2024.02.21.14.12.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Feb 2024 14:12:50 -0800 (PST)
-Message-ID: <69a0df59-7d27-406b-b0a0-3e43f18b20bf@gmail.com>
-Date: Wed, 21 Feb 2024 14:12:45 -0800
+	id 1rcvXB-00000002qNF-0Bj6;
+	Wed, 21 Feb 2024 22:57:51 +0000
+Received: from i5e861914.versanet.de ([94.134.25.20] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rcvX7-0000og-OV; Wed, 21 Feb 2024 23:57:45 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.9 #1
+Date: Wed, 21 Feb 2024 23:57:43 +0100
+Message-ID: <3622360.hdfAi7Kttb@diego>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] phy: constify of_phandle_args in xlate
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
- netdev@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org, linux-gpio@vger.kernel.org
-References: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_141302_789525_FB6A01D4 
-X-CRM114-Status: UNSURE (   6.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240221_145749_264854_E97A8D13 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,21 +53,171 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/17/24 01:39, Krzysztof Kozlowski wrote:
-> The xlate callbacks are supposed to translate of_phandle_args to proper
-> provider without modifying the of_phandle_args.  Make the argument
-> pointer to const for code safety and readability.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hi Arnd, Kevin, Olof,
 
-Acked-by: Florian Fainelli <florian.fainelli@broadcom.com> #Broadcom
--- 
-Florian
+please find below and in a subsequent pull-request
+Rockchip changes for for 6.9 .
+
+Some new boards, some new peripherals, nothing really stands out.
+
+
+Please pull!
+
+Thanks
+Heiko
+
+
+The following changes since commit 6613476e225e090cc9aad49be7fa504e290dd33d:
+
+  Linux 6.8-rc1 (2024-01-21 14:11:32 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.9-rockchip-dts64-1
+
+for you to fetch changes up to 4622485f005aaf0f7a684b69280d0494e0ea301e:
+
+  arm64: dts: rockchip: Add USB3.0 to Indiedroid Nova (2024-02-13 20:28:08 +0100)
+
+----------------------------------------------------------------
+New boards: Powkiddy RGB10MAX3, Pine64 PineTab2, NanoPi R6C+R6S, Anbernic
+RG-ARC S and RG-ARC D.
+New peripherals: rs485 on Theobroma Systems boards, usb3 on Indidroid Nova,
+Edgeble NCM6A (usb2, m.2, ethernet, wifi, cpu-regulator), Rock-5b rfkill
+for wifi, cache information for rk3399.
+Snmaller DT fixes (hdmi nodes, aliases, redundant card-detect gpios, max-
+frequency for spi-flashes on rock-pi 4 boards, missing pmu-io-domains on
+Ringneck)
+
+----------------------------------------------------------------
+Alexey Charkov (1):
+      arm64: dts: rockchip: add rfkill node for M.2 Key E WiFi on rock-5b
+
+Chris Morgan (8):
+      arm64: dts: rockchip: Move device specific properties
+      dt-bindings: arm: rockchip: Add Anbernic RG-Arc
+      arm64: dts: rockchip: add Anbernic RG-ARC S and RG-ARC D
+      arm64: dts: rockchip: Add Touch to Anbernic RG-ARC D
+      arm64: dts: rockchip: Update powkiddy rk2023 dtsi for RGB10MAX3
+      dt-bindings: arm: rockchip: Add Powkiddy RGB10MAX3
+      arm64: dts: rockchip: Add Powkiddy RGB10MAX3
+      arm64: dts: rockchip: Add USB3.0 to Indiedroid Nova
+
+Dragan Simic (1):
+      arm64: dts: rockchip: Add cache information to the SoC dtsi for RK3399
+
+Farouk Bouabid (2):
+      arm64: dts: rockchip: add rs485 support on uart2 of rk3399-puma-haikou
+      arm64: dts: rockchip: add rs485 support on uart5 of px30-ringneck-haikou
+
+Hugh Cole-Baker (1):
+      arm64: dts: rockchip: enable NanoPC-T6 MiniPCIe power
+
+Iskander Amara (1):
+      arm64: dts: rockchip: add missing definition of pmu io domains 1 and 2 on ringneck
+
+Jagan Teki (10):
+      arm64: dts: rockchip: Drop edgeble-neu6b dcdc-reg4 regulator-init-microvolt
+      arm64: dts: rockchip: Add edgeble-neu6a-common DT
+      arm64: dts: rockchip: Add common DT for edgeble-neu6b-io
+      arm64: dts: rockchip: Add Edgeble NCM6A WiFi6 Overlay
+      arm64: dts: rockchip: Add vdd_cpu_big reg to rk3588-edgeble-ncm6
+      arm64: dts: rockchip: Add Edgeble NCM6A-IO 2.5G ETH
+      arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2 M-Key
+      arm64: dts: rockchip: Add Edgeble NCM6A-IO M.2 B-Key, E-Key
+      arm64: dts: rockchip: Add Edgeble NCM6A-IO USB2
+      arm64: dts: rockchip: Add LED_GREEN for edgeble-neu6a
+
+Johan Jonker (2):
+      arm64: dts: rockchip: fix rk3328 hdmi ports node
+      arm64: dts: rockchip: fix rk3399 hdmi ports node
+
+John Clark (2):
+      arm64: dts: rockchip: add sdmmc card detect to the nanopc-t6
+      arm64: dts: rockchip: fix nanopc-t6 sdmmc regulator
+
+Kever Yang (1):
+      arm64: dts: rockchip: remove redundant cd-gpios from rk3588 sdmmc nodes
+
+Manuel Traut (2):
+      dt-bindings: arm64: rockchip: Add Pine64 PineTab2
+      arm64: dts: rockchip: Add devicetree for Pine64 PineTab2
+
+Muhammed Efe Cetin (3):
+      dt-bindings: arm: rockchip: Add NanoPi R6 series boards
+      arm64: dts: rockchip: Add support for NanoPi R6S
+      arm64: dts: rockchip: Add support for NanoPi R6C
+
+Quentin Schulz (2):
+      arm64: dts: rockchip: add spi controller aliases on rk3399
+      arm64: dts: rockchip: remove duplicate SPI aliases for helios64
+
+Stefan Nagy (1):
+      arm64: dts: rockchip: Increase maximum frequency of SPI flash for ROCK Pi 4A/B/C
+
+Trevor Woerner (1):
+      arm64: dts: rockchip: adjust phy-handle name on rock-pi-e
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  47 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |   8 +
+ .../boot/dts/rockchip/px30-ringneck-haikou.dts     |   1 +
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |   6 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts  |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  11 +-
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |   3 -
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  82 +-
+ .../boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts |  60 ++
+ .../boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts |  19 +
+ .../boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi  | 237 ++++++
+ .../boot/dts/rockchip/rk3566-anbernic-rg353x.dtsi  |  74 ++
+ .../boot/dts/rockchip/rk3566-anbernic-rg503.dts    |  74 ++
+ .../boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi   |  74 --
+ .../boot/dts/rockchip/rk3566-pinetab2-v0.1.dts     |  28 +
+ .../boot/dts/rockchip/rk3566-pinetab2-v2.0.dts     |  48 ++
+ arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi  | 943 +++++++++++++++++++++
+ .../dts/rockchip/rk3566-powkiddy-rgb10max3.dts     |  87 ++
+ .../boot/dts/rockchip/rk3566-powkiddy-rgb30.dts    |  18 +
+ .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dts   |  18 +
+ .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi  |  18 +-
+ .../dts/rockchip/rk3588-edgeble-neu6a-common.dtsi  | 466 ++++++++++
+ .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dts  |  10 +-
+ .../boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 232 +++++
+ .../dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso    |  56 ++
+ .../boot/dts/rockchip/rk3588-edgeble-neu6a.dtsi    |  25 +-
+ .../boot/dts/rockchip/rk3588-edgeble-neu6b-io.dts  |  76 +-
+ .../boot/dts/rockchip/rk3588-edgeble-neu6b.dtsi    | 383 +--------
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts  |  31 +-
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   |   1 -
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |   1 -
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |   8 +-
+ .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |   8 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts |  14 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts | 764 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   1 -
+ 40 files changed, 3325 insertions(+), 620 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-pinetab2-v0.1.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-pinetab2-v2.0.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb10max3.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-wifi.dtso
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+
+
 
 
 _______________________________________________
