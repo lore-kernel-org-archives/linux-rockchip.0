@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 314D7C48BF6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 13:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A793BC48BC3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Feb 2024 15:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6w2XWmCL/ah4kvW8c7chEr9CsVzkH4NHPkRZmGQ2A4=; b=w+EaFIGIhkpYfZ
-	phrllWL9vRVSP0fm9LdsDmsE7/mXoOwt/0HTw1lp1Ho/Yyf2NKT30cJvt/47zb531/Ncek/a4XVeO
-	QJl0ZTyz0pl72Dt7E0yhz0WRRt3bOMmSGOb+VP1ptcqqSTvEAONzEmqx0gFMuj+MQZ9a7YByAhFVg
-	qW+X+KZdBT06aFDZYmtlUvcS24RZK8EoTsGRUp/fKIaUsWA4jo/Iup/omYuqG33FgFFAo74PBxv4O
-	iLT2+l03wE6EhC9NFA0tM8gELQJ9jVQ0YcKO2jWb40RNr4o3+ttdrsaUsPIVZC2KXqiddh7KA0XAG
-	mMTHO63TzvcRyMng9Y1Q==;
+	List-Owner; bh=yHh1ffyTuW/P7EK808EpIY4iK8KE+Wb/3hU0/vWfXx8=; b=dfkftUxNa9bOMW
+	s85xAJfQS+htORtO/m1VgrN72E9dXedrEmFMLtVV1xkm4IEY0Vk5w30lhFxVosZip/+O8wLRAMeHd
+	OhESUlozMyTsAH8PZ3HXcqWeD4hhDuG92QXjNCfYPPtCoD/7BsrE//71E9dAN1Qy5THJkcyXvDXe1
+	bPKaTbzKhOBV3iW1Cz4zIKbP1sLW1JQxtx9ak1jGVlHMCw38Mry/h6gADTn9AUtvYOr09LgjoNGuF
+	Jd9ZbrQxW/2CXX8Wvtd+3lXvjBDKbwbSV2wmK6oI+QKdEUq4SnlyMhb9j+1UjHMuUUdDbmYWvWuZk
+	wSQkVGKtjfHQtlRB+8IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcmfH-0000000144q-47tr;
-	Wed, 21 Feb 2024 13:29:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rcovy-00000001aHC-0vYP;
+	Wed, 21 Feb 2024 15:54:58 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rcmfF-000000013ul-1kpI
+	id 1rcovl-00000001a7s-2XWo
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Feb 2024 13:29:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D5729614FA;
-	Wed, 21 Feb 2024 13:29:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31A34C43390;
-	Wed, 21 Feb 2024 13:29:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708522170;
-	bh=1uXA3tuk5DSrYBKlcNHOd+IpgOiOvjcTfXfos632w+8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YiBXL6VxZWpc4KOcEK2JVTNsblnglRNXqfOhTGNFEOOP3Z05SEHo/yJJZgGTfy6Yy
-	 x5i2ENXsswo0PsZfBbOQAsZyHoNv/onQNmWuZpA+8n/oxElvFdoqRi0mzLwWVmnusP
-	 4o020bDIPLnaGgwRaawuQ6ExPSxEwS9tjNHSOU3RRAgwx0t3fpNdN4N9xYYf8nH+f/
-	 AOtHcMNsU9xJMldnzfakVY3MacOvm0l/CKsIgCAZnZ61GsXNnBfAEtA1aDxQgVd0+n
-	 jM6rpcQZPk7BVwHx5KaEP4lSa8C5hCRPVxHKvPn3uCLDMLLgfnPAlq21qZXhNA05QB
-	 jflhzGp8tFFOg==
-Date: Wed, 21 Feb 2024 13:29:19 +0000
-From: Will Deacon <will@kernel.org>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com,
-	jonathanh@nvidia.com, joro@8bytes.org,
-	krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com,
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
-	samuel@sholland.org, suravee.suthikulpanit@amd.com,
-	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org,
-	yu-cheng.yu@intel.com, rientjes@google.com
-Subject: Re: [PATCH v3 10/10] iommu: account IOMMU allocated memory
-Message-ID: <20240221132919.GC7273@willie-the-truck>
-References: <20231226200205.562565-1-pasha.tatashin@soleen.com>
- <20231226200205.562565-11-pasha.tatashin@soleen.com>
- <20240213131210.GA28926@willie-the-truck>
- <CA+CK2bB4Z+z8tocO79AdsAy+gmN_4aVHgFUsm_gYLUJ2zV1A6A@mail.gmail.com>
- <20240216175752.GB2374@willie-the-truck>
- <CA+CK2bDURTkZFo9uE9Bgfrz-NwgXqo4SAzLOW6Jb35M+eqUEaA@mail.gmail.com>
+	Wed, 21 Feb 2024 15:54:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1708530884;
+	bh=qivh6TydDKfcZbVPYc7spMw2cRqVCzEb9YVNhr43HUY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mo7CVcNRkNEnOCUwPUwGEKTgSn9c+7jl5okXJy7nJmfldpDtSCxsozIxuessgjTdY
+	 EGK56JNDqAbIy03IC+ExWO5g/7UAOpDPk6bnxKmnJL7MDF36GXV58Hcr5TUnUD10is
+	 9jjHqtv2t5otztlllK6eHWVOL76M/29LPw0gxOwO3MxZvqP5VksDpljVSN2Q8SOteG
+	 9VeOQUsEltsudZ1yVoktG3M5yQCZOGcuhUVpKEYYVVwE3S/gm5myMSXTeLc/879EJy
+	 iNxbsttBLDvv6pNvu21Xyq1RVnZtCndg8KHr94Q8DPSGSVPCRvf7E3AzX8+d3aUntW
+	 lfR/3y9OKk7sA==
+Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C505237820CC;
+	Wed, 21 Feb 2024 15:54:43 +0000 (UTC)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	hverkuil-cisco@xs4all.nl,
+	nicolas@ndufresne.ca
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v20 3/9] media: test-drivers: Set REQBUFS minimum number of buffers
+Date: Wed, 21 Feb 2024 16:54:29 +0100
+Message-Id: <20240221155435.100093-4-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240221155435.100093-1-benjamin.gaignard@collabora.com>
+References: <20240221155435.100093-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+CK2bDURTkZFo9uE9Bgfrz-NwgXqo4SAzLOW6Jb35M+eqUEaA@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240221_052933_564644_350B76B7 
-X-CRM114-Status: GOOD (  27.83  )
+X-CRM114-CacheID: sfid-20240221_075445_841079_3502E017 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,55 +78,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBGZWIgMTYsIDIwMjQgYXQgMDI6NDg6MDBQTSAtMDUwMCwgUGFzaGEgVGF0YXNoaW4g
-d3JvdGU6Cj4gT24gRnJpLCBGZWIgMTYsIDIwMjQgYXQgMTI6NTjigK9QTSBXaWxsIERlYWNvbiA8
-d2lsbEBrZXJuZWwub3JnPiB3cm90ZToKPiA+Cj4gPiBPbiBUdWUsIEZlYiAxMywgMjAyNCBhdCAx
-MDo0NDo1M0FNIC0wNTAwLCBQYXNoYSBUYXRhc2hpbiB3cm90ZToKPiA+ID4gPiA+ICBTZWNQYWdl
-VGFibGVzCj4gPiA+ID4gPiAtICAgICAgICAgICAgICBNZW1vcnkgY29uc3VtZWQgYnkgc2Vjb25k
-YXJ5IHBhZ2UgdGFibGVzLCB0aGlzIGN1cnJlbnRseQo+ID4gPiA+ID4gLSAgICAgICAgICAgICAg
-Y3VycmVudGx5IGluY2x1ZGVzIEtWTSBtbXUgYWxsb2NhdGlvbnMgb24geDg2IGFuZCBhcm02NC4K
-PiA+ID4gPiA+ICsgICAgICAgICAgICAgIE1lbW9yeSBjb25zdW1lZCBieSBzZWNvbmRhcnkgcGFn
-ZSB0YWJsZXMsIHRoaXMgY3VycmVudGx5IGluY2x1ZGVzCj4gPiA+ID4gPiArICAgICAgICAgICAg
-ICBLVk0gbW11IGFuZCBJT01NVSBhbGxvY2F0aW9ucyBvbiB4ODYgYW5kIGFybTY0Lgo+ID4gPgo+
-ID4gPiBIaSBXaWxsLAo+ID4gPgo+ID4gPiA+IFdoaWxlIEkgY2FuIHNlZSB0aGUgdmFsdWUgaW4g
-dGhpcyBmb3IgSU9NTVUgbWFwcGluZ3MgbWFuYWdlZCBieSBWRklPLAo+ID4gPiA+IGRvZXNuJ3Qg
-dGhpcyBlbmQgdXAgY29uZmxhdGluZyB0aGF0IHdpdGggdGhlIG5vcm1hbCBjYXNlIG9mIERNQSBk
-b21haW5zPwo+ID4gPiA+IEZvciBzeXN0ZW1zIHRoYXQgZS5nLiByZWx5IG9uIGFuIElPTU1VIGZv
-ciBmdW5jdGlvbmFsIGhvc3QgRE1BLCBpdCBzZWVtcwo+ID4gPiA+IHdyb25nIHRvIHN1YmplY3Qg
-dGhhdCB0byBhY2NvdW50aW5nIGNvbnN0cmFpbnRzLgo+ID4gPgo+ID4gPiBUaGUgYWNjb3VudGlu
-ZyBjb25zdHJhaW50cyBhcmUgb25seSBhcHBsaWNhYmxlIHdoZW4gR0ZQX0tFUk5FTF9BQ0NPVU5U
-Cj4gPiA+IGlzIHBhc3NlZCB0byB0aGUgaW9tbXUgbWFwcGluZyBmdW5jdGlvbnMuIFdlIGRvIHRo
-YXQgZnJvbSB0aGUgdmZpbywKPiA+ID4gaW9tbXVmZCwgYW5kIHZob3N0LiBXaXRob3V0IHRoaXMg
-ZmxhZywgdGhlIG1lbW9yeSB1c2VhZ2UgaXMgcmVwb3J0ZWQKPiA+ID4gaW4gL3Byb2MvbWVtaW5m
-byBhcyBwYXJ0IG9mICBTZWNQYWdlVGFibGVzIGZpZWxkLCBidXQgbm90IGNvbnN0cmFpbmVkCj4g
-PiA+IGluIGNncm91cC4KPiA+Cj4gPiBUaGFua3MsIFBhc2hhLCB0aGF0IGV4cGxhbmF0aW9uIG1h
-a2VzIHNlbnNlLiBJIHN0aWxsIGZpbmQgaXQgYml6YXJyZSB0bwo+ID4gaW5jbHVkZSBJT01NVSBh
-bGxvY2F0aW9ucyBmcm9tIHRoZSBETUEgQVBJIGluIFNlY1BhZ2VUYWJsZXMgdGhvdWdoLCBhbmQK
-PiA+IEkgd29ycnkgdGhhdCBpdCB3aWxsIGNvbmZ1c2UgcGVvcGxlIHdobyBhcmUgdXNpbmcgdGhh
-dCBtZXRyaWMgYXMgYSB3YXkKPiA+IHRvIGdldCBhIGZlZWxpbmcgZm9yIGhvdyBtdWNoIG1lbW9y
-eSBpcyBiZWluZyB1c2VkIGJ5IEtWTSdzIHNlY29uZGFyeQo+ID4gcGFnZS10YWJsZXMuIEFzIGFu
-IGV4dHJlbWUgZXhhbXBsZSwgaGF2aW5nIGEgbm9uLXplcm8gU2VjUGFnZVRhYmxlcyBjb3VudAo+
-ID4gd2l0aG91dCBLVk0gZXZlbiBjb21waWxlZCBpbiBpcyBwcmV0dHkgYml6YXJyZS4KPiAKPiBJ
-IGFncmVlOyBJIGFsc28gcHJlZmVyIGEgbmV3IGZpZWxkIGluIC9wcm9jL21lbWluZm8gbmFtZWQK
-PiAnSU9NTVVQYWdlVGFibGVzJy4gVGhpcyBpcyB3aGF0IEkgcHJvcG9zZWQgYXQgTFBDLCBidXQg
-SSB3YXMgYXNrZWQgdG8KPiByZXVzZSB0aGUgZXhpc3RpbmcgJ1NlY1BhZ2VUYWJsZXMnIGZpZWxk
-IGluc3RlYWQuIFRoZSByYXRpb25hbGUgd2FzCj4gdGhhdCAnc2Vjb25kYXJ5JyBpbXBsaWVzIG5v
-dCBvbmx5IEtWTSBwYWdlIHRhYmxlcywgYnV0IGFueSBvdGhlcgo+IG5vbi1yZWd1bGFyIHBhZ2Ug
-dGFibGVzLgo+IAo+IEkgd291bGQgYXBwcmVjaWF0ZSB0aGUgb3BpbmlvbiBvZiBJT01NVSBtYWlu
-dGFpbmVycyBvbiB0aGlzOiBpcyBpdAo+IHByZWZlcmFibGUgdG8gYnVuZGxlIHRoZSBpbmZvcm1h
-dGlvbiB3aXRoICdTZWNQYWdlVGFibGVzJyBvciBtYWludGFpbgo+IGEgc2VwYXJhdGUgZmllbGQ/
-CgpJIHBlcnNvbmFsbHkgZmluZCBpdCBjb25mdXNpbmcgdG8gYWRkIGFsbCBJT01NVSBwYWdlLXRh
-YmxlIGFsbG9jYXRpb25zCnRvIFNlY1BhZ2VUYWJsZXMsIGNvbnNpZGVyaW5nIHRoYXQgdXNlcnNw
-YWNlIGNvdWxkIGJlIHVzaW5nIHRoYXQgdG9kYXkKd2l0aCBhIHJlYXNvbmFibGUgZXhwZWN0YXRp
-b24gdGhhdCBpdCdzIGNvbmNlcm5lZCBvbmx5IHdpdGggdmlydHVhbAptYWNoaW5lIG92ZXJoZWFk
-LiBIb3dldmVyLCBpZiB0aGUgb3Bwb3NpdGUgY29uY2x1c2lvbiB3YXMgcmVhY2hlZCBhdCBMUEMs
-CnRoZW4gSSByZWFsbHkgZG9uJ3Qgd2FudCB0byByZS1vcGVuIHRoZSBkaXNjdXNzaW9uIGFuZCBk
-ZXJhaWwgeW91cgpwYXRjaHNldC4KCldpbGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Instead of using 'min_queued_buffers' field to specify the
+minimum number of buffers to be allocated when calling REQBUF
+use 'min_reqbufs_allocation' field which is dedicated to this
+purpose.
+
+While at it rename vivid_create_queue() parameter.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ drivers/media/test-drivers/vimc/vimc-capture.c | 2 +-
+ drivers/media/test-drivers/vivid/vivid-core.c  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
+index 2a2d19d23bab..97693561f1e4 100644
+--- a/drivers/media/test-drivers/vimc/vimc-capture.c
++++ b/drivers/media/test-drivers/vimc/vimc-capture.c
+@@ -432,7 +432,7 @@ static struct vimc_ent_device *vimc_capture_add(struct vimc_device *vimc,
+ 	q->mem_ops = vimc_allocator == VIMC_ALLOCATOR_DMA_CONTIG
+ 		   ? &vb2_dma_contig_memops : &vb2_vmalloc_memops;
+ 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+-	q->min_queued_buffers = 2;
++	q->min_reqbufs_allocation = 2;
+ 	q->lock = &vcapture->lock;
+ 	q->dev = v4l2_dev->dev;
+ 
+diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+index 159c72cbb5bf..11b8520d9f57 100644
+--- a/drivers/media/test-drivers/vivid/vivid-core.c
++++ b/drivers/media/test-drivers/vivid/vivid-core.c
+@@ -861,7 +861,7 @@ static const struct media_device_ops vivid_media_ops = {
+ static int vivid_create_queue(struct vivid_dev *dev,
+ 			      struct vb2_queue *q,
+ 			      u32 buf_type,
+-			      unsigned int min_queued_buffers,
++			      unsigned int min_reqbufs_allocation,
+ 			      const struct vb2_ops *ops)
+ {
+ 	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE && dev->multiplanar)
+@@ -898,7 +898,7 @@ static int vivid_create_queue(struct vivid_dev *dev,
+ 	q->mem_ops = allocators[dev->inst] == 1 ? &vb2_dma_contig_memops :
+ 						  &vb2_vmalloc_memops;
+ 	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+-	q->min_queued_buffers = supports_requests[dev->inst] ? 0 : min_queued_buffers;
++	q->min_reqbufs_allocation = min_reqbufs_allocation;
+ 	q->lock = &dev->mutex;
+ 	q->dev = dev->v4l2_dev.dev;
+ 	q->supports_requests = supports_requests[dev->inst];
+-- 
+2.40.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
