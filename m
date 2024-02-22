@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494B6C48BF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 17:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A24C48BF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 17:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hImvPxw4ElZ/dS2oO9DMBPQTS0PSPY6wX/fERf1LuaA=; b=siruvZVHNGYA7a
-	yi6y/cZOYvaQWzDOPYOV3LdN4l58mgIAEMHpd6kZDGzYmv30H+b3zN/UHS650Mwxidfkje5GIeuqZ
-	EW4JfIjiLgGrEO0VFbYdO9bEYUwNF5wMkGvDTx42R4Y3+S59qnwojVgwQ0AyngpF/gDft5wO4atCC
-	vOp1gHALAFFZEr0c0LNr4R1PyYl2A230jtICyQhWZ5dNjuVj3Y5o+sGkhAF7xj0mTe3Sx2MSOSQcE
-	ndjSA4qkpSyY614xusBPpa/MOXtsFkJ3tz2zfjpoGoK8utUAvrtDODRq6u3ad1PT4dX2TJxOQwVnV
-	BJj31YiW7wd3NNbnxyFA==;
+	List-Owner; bh=0uwTEHBUi1qR8XHEQWBdoes8wS2w9/xmI4I7O6nY6vc=; b=DJkVGJCws2z9uk
+	ThNNNd6suiTebGE9rTchiF7nDJswUlNirSyoLuOC2dLumVdtel6kWU7MDV66FNpLrXoixe5/T2uOa
+	lYZdLeR1IZn8GrlTclhWUqYzSpOsPwpPj0+vha0GWYSHji4HWpde6AboZsOOQxZvgKQH+rPF2M63N
+	7oJEbTAxNb6nnDBvVsDe3amOdKau7FzYnDkPswZIjXOc7Bpsi+H44PKAweS6eAt8XhFLS+2BPW61x
+	uK/HHuAGgIXJlpQ+wl52iU+tSNs3sxkR1d5C4+gyCK5jUP36u7a1IHz8qamkGI7qGmXrOY2j9F+q9
+	5iwRCaqr1AO67byqkRAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD4D-00000005qBU-2iNK;
-	Thu, 22 Feb 2024 17:41:05 +0000
+	id 1rdD4J-00000005qHg-2nkh;
+	Thu, 22 Feb 2024 17:41:11 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD4B-00000005q86-2aoZ
+	id 1rdD4C-00000005q9q-3R1i
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 22 Feb 2024 17:41:03 +0000
+	Thu, 22 Feb 2024 17:41:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
 	Content-Type:Content-ID:Content-Description;
-	bh=g7w3BmgXmvWecR5SKtsZ1cNA/rDbNvV1OeS7wJNdwTQ=; b=VEZn1EJFuLZXNJwQENFpYITNxh
-	hv/0WDgecTTb1b2ByJgP5YqOBr0/B7u0ySebPW99TVbD1UXLN397OUeMbzHIpJ3ezdZvDw+TSdR3Y
-	3BesXtVo24AOH+Ewxl0qViSBfEgZJvp0ij9DLwMiBrDJDgLp8zjRlEPqQf7sMGc+rEsJOH79AaWRl
-	YmJcvqVtX2IItItEc0uuSYMebB5je9YqAQvjL1mWqZwEczcs3/GcR44IwlvYuMMY5wHKbbhQUm2oE
-	qBlr2k4yCiOYcbNeuzX29NdjT2Yezi6NBI4N8XP170cTDqsairBPw1AWGdtgcJAMLRxZN57FyB6O/
-	MkAzyRYQ==;
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+	bh=SZ2pQJ9+dxF//EaiCt/uq+OdRpwnCyd+9hrUk8R734o=; b=u+JudMTauaCcZcTWtbwPxJQZm5
+	jG3NeoLgiLSl+B2kNpXSnaNdSDTFdWt4FhkkFj3+/sDrqJSyLjZTdVVRQaEvVpkRvOq76KXfVNGeY
+	iiZWFWpruJjYKIII/a1eSiZmgKjFM9GgMbOzFmC0igfvV6M6G/yTCGnVEkcuMRvNNQTQ3moSXqXxd
+	eIFPrQaMudcLc36tvva8uccUE6LpXxCt5YJqqkRBc/mQFn/bxxjmQmnLi8kvvR2I9Hq1ATrJxsOD7
+	rkmX4yfiyPSwTTjLekK02x9wxWkKD4QYziZF8w71qFqabht9BOJekY5vyqwXxe6w/s2gQdym4uX43
+	lDlSEOwA==;
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD45-00000004Dnq-43A3
+	id 1rdD49-00000004DqN-0rnH
 	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Feb 2024 17:41:02 +0000
-Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-42c758f075dso10246951cf.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Feb 2024 09:40:57 -0800 (PST)
+	Thu, 22 Feb 2024 17:41:03 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-6087192b092so22361217b3.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 22 Feb 2024 09:41:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1708623591; x=1709228391; darn=lists.infradead.org;
+        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1708623596; x=1709228396; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=g7w3BmgXmvWecR5SKtsZ1cNA/rDbNvV1OeS7wJNdwTQ=;
-        b=k9RH59x7yzXDMdWcP5k6FToKK554MnvOLc9ckAApIYvC6FpKp3JmaTHrMHqvq36YIY
-         x6LJ5Fb8dprPhafNgnmAHsiahSmXaYpU+Pf+4mOVT/fHerUFhdUVM08MbBOmkpbLpbY5
-         F9XbKqTj/fRorvuDKhb5H23GZuoHJ4aLazAsqV565fyoD6qNZTqYgDTyqQxHCcVf5sec
-         BC+r9V5tHSTmC85F+u/JSp80nRbxeARZ8PS0Dj+BeyuQ0oWbKrFqcKzCFMs42Dg7qx3f
-         Fe9/cIzxt6l0RZ7JUR5JDM4xvJIZoguyKN02VijeBwZxUEWzqrAxclOyHvabaX3vJsP9
-         nZCg==
+        bh=SZ2pQJ9+dxF//EaiCt/uq+OdRpwnCyd+9hrUk8R734o=;
+        b=aCc9E9KoqkHsXfA0Ws2zYUhKs74pR0HB0LB55cGGHQ/SeooBKAidulySeUTNrttYjQ
+         8LPVj7alQAANR9fXOd+8ndVxlR7VV1XlSUFGSRI3pNtpbvuqg9bxk6lnzZwxQ8pCBuh8
+         qsghCotRV+/ZN/Y1TWUz4EBik4RSJEtxM57fMqHIwpxdrDUxzzMoWH1XY47pqOfu6lVi
+         /VgAUr4n3+ZY68bL+bBtbNUF5JswKP+gNDvx+oyAROGfAnAyKjxb3VShCOU6kCDKfte9
+         vdXdHuHE2lyUEnWMo8cYZ/59HsfxfnBLVDpt2mMd0p1JecW6AtOJpWztdNnamhmD/4n4
+         5JWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708623591; x=1709228391;
+        d=1e100.net; s=20230601; t=1708623596; x=1709228396;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=g7w3BmgXmvWecR5SKtsZ1cNA/rDbNvV1OeS7wJNdwTQ=;
-        b=UTP90S1E31ha33GwRJULncgm+RxCQkkrlb2hgTH/ACzR4yQXzwPCR4PBZY8bxhlLxJ
-         GVTBu1jDI3ZFtoK5TEPa1PwhTbqS8d0rKapIr1QSpycmC3srE+UswRv2woCC0F0k0XdN
-         +uAaXoN4HQKV4aP0mdZrUy+2YUeFLjlRuhv87HjJNHu/YpuXYeWayyVOT5cbXWGQllPU
-         gbV1ke7DNGHlUdAueQj2h7txa0rWxbg3a4qCoUO/YumABo8njNcK4bW8c2hhRIAXCngd
-         FyybhYeug1O/LyZMzPuS1Mw/vs1nm9cD6iTAcVN0B4LMoBIhIJX72o0fn5WhmTAuJT6z
-         5AJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX9Qd61oW7ipT7+ntyuOv98J32a1fjlS5xTDGq2tqKuzs3E5XhiRglZYgr98sJRth6HmdCGvl41YU7RwiEr5e+3lBqzwcvD2UkXFP568bYUyYTZ
-X-Gm-Message-State: AOJu0YysJg3+PGbAGwexCt7lnfxu8S5P5hAv4n1NFkm5ZCatzaMRyJV3
-	wCNVJx+Lzl7YwWiOxotjBuItGkvwhDa11xbsdZ+lsKLapJXed4BNwU78Nui21Ts=
-X-Google-Smtp-Source: AGHT+IG90zBa6YLMZGIfCYT7Th/1b5UWVffhOhrq9tGqR1mvmgjPkxAiIwv1iDqI+0/4uYQJoXyfRA==
-X-Received: by 2002:ac8:4e82:0:b0:42c:8054:8a with SMTP id 2-20020ac84e82000000b0042c8054008amr5212735qtp.27.1708623591384;
-        Thu, 22 Feb 2024 09:39:51 -0800 (PST)
+        bh=SZ2pQJ9+dxF//EaiCt/uq+OdRpwnCyd+9hrUk8R734o=;
+        b=g94dBnm96qyK2/z/iQs/Q2z78QYTLAz1fE+YRJsYtUODJcTkfuj8z2Uqf0AlfI2DdL
+         KFJ23ZdaQ9L9RasAdBCpD8hYC0xh/6DOYGd0zV1PfZ9FQhz/69z6kqa9VQhMeq32KZjm
+         AsrMHdPjLMb7OUk8hR/6ukRZux+FOCg8ILhzsUrOXA+b9T3XrxpSu4xtkUy+4svjFigO
+         LjAI2ufxejtEf/aM63Rsm6sQGjCitoewp4wvkTNefs54FoLUucRGYixxYKPCZgMksIVs
+         P6xDl3evGL+qvWGtZpVJtjwEqfYHkHj043rrZ5itDHcmdL77nKWj+So/ppq26krOR+iu
+         B4pw==
+X-Forwarded-Encrypted: i=1; AJvYcCVkkJoeWOo/CmLbCYtW7sJQO4M8Ex1GeRoouwAbIj+yNAoSEM09rBXVyk0D7UONJTIEQxQ8npJdEaecvEYIPUVxuHujU1iB1pkBPNMB9Ag2oRpi
+X-Gm-Message-State: AOJu0YwBz1ABVgJpChb4HaDjN0D4i/X5PH2U0voaPhP41n7JX6yPgRWr
+	Bcv1E2UxHaDvFm0tUlcwE3vtmSShhJdLrdlv0HWVN2HeLjXFttg6KfxsTZC3Pvs=
+X-Google-Smtp-Source: AGHT+IEtAUUqy5uqw2b6AFNUjnG1318TVskHRq83YxSHDfvItzdqlBQeiT8forYQaEVyJnoFBVJVWg==
+X-Received: by 2002:a81:431a:0:b0:607:ef06:eb8 with SMTP id q26-20020a81431a000000b00607ef060eb8mr20801514ywa.40.1708623595945;
+        Thu, 22 Feb 2024 09:39:55 -0800 (PST)
 Received: from soleen.c.googlers.com.com (249.240.85.34.bc.googleusercontent.com. [34.85.240.249])
-        by smtp.gmail.com with ESMTPSA id f17-20020ac86ed1000000b0042e5ab6f24fsm259682qtv.7.2024.02.22.09.39.50
+        by smtp.gmail.com with ESMTPSA id f17-20020ac86ed1000000b0042e5ab6f24fsm259682qtv.7.2024.02.22.09.39.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Feb 2024 09:39:51 -0800 (PST)
+        Thu, 22 Feb 2024 09:39:55 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alim.akhtar@samsung.com,
@@ -125,17 +125,16 @@ To: akpm@linux-foundation.org,
 	rientjes@google.com,
 	bagasdotme@gmail.com,
 	mkoutny@suse.com
-Subject: [PATCH v5 06/11] iommu/exynos: use page allocation function provided by iommu-pages.h
-Date: Thu, 22 Feb 2024 17:39:32 +0000
-Message-ID: <20240222173942.1481394-7-pasha.tatashin@soleen.com>
+Subject: [PATCH v5 11/11] iommu: account IOMMU allocated memory
+Date: Thu, 22 Feb 2024 17:39:37 +0000
+Message-ID: <20240222173942.1481394-12-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 In-Reply-To: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_174058_104903_796A630C 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240222_174101_288286_72A7A2C0 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,67 +151,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/exynos-iommu.c to use the new page allocation functions
-provided in iommu-pages.h.
+In order to be able to limit the amount of memory that is allocated
+by IOMMU subsystem, the memory must be accounted.
+
+Account IOMMU as part of the secondary pagetables as it was discussed
+at LPC.
+
+The value of SecPageTables now contains mmeory allocation by IOMMU
+and KVM.
+
+There is a difference between GFP_ACCOUNT and what NR_IOMMU_PAGES shows.
+GFP_ACCOUNT is set only where it makes sense to charge to user
+processes, i.e. IOMMU Page Tables, but there more IOMMU shared data
+that should not really be charged to a specific process.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
 Acked-by: David Rientjes <rientjes@google.com>
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
 ---
- drivers/iommu/exynos-iommu.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ Documentation/admin-guide/cgroup-v2.rst | 2 +-
+ Documentation/filesystems/proc.rst      | 4 ++--
+ drivers/iommu/iommu-pages.h             | 2 ++
+ include/linux/mmzone.h                  | 2 +-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-index 2c6e9094f1e9..3eab0ae65a4f 100644
---- a/drivers/iommu/exynos-iommu.c
-+++ b/drivers/iommu/exynos-iommu.c
-@@ -22,6 +22,8 @@
- #include <linux/pm_runtime.h>
- #include <linux/slab.h>
+diff --git a/Documentation/admin-guide/cgroup-v2.rst b/Documentation/admin-guide/cgroup-v2.rst
+index 17e6e9565156..15f80fea8df7 100644
+--- a/Documentation/admin-guide/cgroup-v2.rst
++++ b/Documentation/admin-guide/cgroup-v2.rst
+@@ -1432,7 +1432,7 @@ PAGE_SIZE multiple when read back.
+ 	  sec_pagetables
+ 		Amount of memory allocated for secondary page tables,
+ 		this currently includes KVM mmu allocations on x86
+-		and arm64.
++		and arm64 and IOMMU page tables.
  
-+#include "iommu-pages.h"
-+
- typedef u32 sysmmu_iova_t;
- typedef u32 sysmmu_pte_t;
- static struct iommu_domain exynos_identity_domain;
-@@ -900,11 +902,11 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
- 	if (!domain)
- 		return NULL;
+ 	  percpu (npn)
+ 		Amount of memory used for storing per-cpu kernel
+diff --git a/Documentation/filesystems/proc.rst b/Documentation/filesystems/proc.rst
+index 104c6d047d9b..604b2dccdc5a 100644
+--- a/Documentation/filesystems/proc.rst
++++ b/Documentation/filesystems/proc.rst
+@@ -1110,8 +1110,8 @@ KernelStack
+ PageTables
+               Memory consumed by userspace page tables
+ SecPageTables
+-              Memory consumed by secondary page tables, this currently
+-              currently includes KVM mmu allocations on x86 and arm64.
++              Memory consumed by secondary page tables, this currently includes
++              KVM mmu and IOMMU allocations on x86 and arm64.
+ NFS_Unstable
+               Always zero. Previous counted pages which had been written to
+               the server, but has not been committed to stable storage.
+diff --git a/drivers/iommu/iommu-pages.h b/drivers/iommu/iommu-pages.h
+index daac2da00e40..6df286931907 100644
+--- a/drivers/iommu/iommu-pages.h
++++ b/drivers/iommu/iommu-pages.h
+@@ -30,6 +30,7 @@ static inline void __iommu_alloc_account(struct page *page, int order)
+ 	const long pgcnt = 1l << order;
  
--	domain->pgtable = (sysmmu_pte_t *)__get_free_pages(GFP_KERNEL, 2);
-+	domain->pgtable = iommu_alloc_pages(GFP_KERNEL, 2);
- 	if (!domain->pgtable)
- 		goto err_pgtable;
- 
--	domain->lv2entcnt = (short *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 1);
-+	domain->lv2entcnt = iommu_alloc_pages(GFP_KERNEL, 1);
- 	if (!domain->lv2entcnt)
- 		goto err_counter;
- 
-@@ -930,9 +932,9 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
- 	return &domain->domain;
- 
- err_lv2ent:
--	free_pages((unsigned long)domain->lv2entcnt, 1);
-+	iommu_free_pages(domain->lv2entcnt, 1);
- err_counter:
--	free_pages((unsigned long)domain->pgtable, 2);
-+	iommu_free_pages(domain->pgtable, 2);
- err_pgtable:
- 	kfree(domain);
- 	return NULL;
-@@ -973,8 +975,8 @@ static void exynos_iommu_domain_free(struct iommu_domain *iommu_domain)
- 					phys_to_virt(base));
- 		}
- 
--	free_pages((unsigned long)domain->pgtable, 2);
--	free_pages((unsigned long)domain->lv2entcnt, 1);
-+	iommu_free_pages(domain->pgtable, 2);
-+	iommu_free_pages(domain->lv2entcnt, 1);
- 	kfree(domain);
+ 	mod_node_page_state(page_pgdat(page), NR_IOMMU_PAGES, pgcnt);
++	mod_lruvec_page_state(page, NR_SECONDARY_PAGETABLE, pgcnt);
  }
  
+ /**
+@@ -42,6 +43,7 @@ static inline void __iommu_free_account(struct page *page, int order)
+ 	const long pgcnt = 1l << order;
+ 
+ 	mod_node_page_state(page_pgdat(page), NR_IOMMU_PAGES, -pgcnt);
++	mod_lruvec_page_state(page, NR_SECONDARY_PAGETABLE, -pgcnt);
+ }
+ 
+ /**
+diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
+index bb6bc504915a..a18edcf12d53 100644
+--- a/include/linux/mmzone.h
++++ b/include/linux/mmzone.h
+@@ -202,7 +202,7 @@ enum node_stat_item {
+ 	NR_KERNEL_SCS_KB,	/* measured in KiB */
+ #endif
+ 	NR_PAGETABLE,		/* used for pagetables */
+-	NR_SECONDARY_PAGETABLE, /* secondary pagetables, e.g. KVM pagetables */
++	NR_SECONDARY_PAGETABLE, /* secondary pagetables, KVM & IOMMU */
+ #ifdef CONFIG_IOMMU_SUPPORT
+ 	NR_IOMMU_PAGES,		/* # of pages allocated by IOMMU */
+ #endif
 -- 
 2.44.0.rc0.258.g7320e95886-goog
 
