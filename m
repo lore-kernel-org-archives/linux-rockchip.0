@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D403DC48BF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B797C48BF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:41:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e5512c7y+L46I+AYpISgfP7iZemNgyz5pxIwGNqF2Ug=; b=kywNkl1hlCBFo0
-	06zJP5Zo4N8+2d4SCh8WL8p0n9ZNmA6xgdC0s42mnRXgHeDMq27J2mvz9ZUwVnRmJZEr44aKP1Jue
-	9BR09wAUihTV2ytHQTCyvY/XhiJj3AdQTlLM5Env6paB843Cs6wRnSX+tyfZ75/xDwx9bUeVSND5b
-	ljVtXrjHrKoKMtuB5O+5y8erigV4u8/Ds4NSwPFrcDnl3vmWJae+s7CqAOntP78RJMjRwRQKmeU9y
-	5cdqFefGA4+R3HxpnVA9aABQLnlirwq3pFpJakAeb+3f381UlPiUAYXzcjZv7wSJ8O+X4Jc/PPcxI
-	Yp9oCuPbUgtJz6bCnn2Q==;
+	List-Owner; bh=BJGCavozoq5mFMd9WghetyCN3OjWwkcdX2RzYS25pMA=; b=uedYi3L1gZt5Nx
+	QTBmiQRNWpKZlKQZUd1+4Jx4x/qjahUjOt9a6jMJrme0VJpf8PO8xLYAWZVCrn94Vm2poWq7PplEt
+	JOI36wteKzr8HQoTflbaw1Hadn7S2lUTQKmGwoOHfnezxVtRgAsg4sdXWbYxPdqZE6RccaWU2X7iy
+	ODg/mHgN3Br8qkX8/2/Qu2wpGdD8M7q6QV6sm5pjFpeDsaxtAQ38yoZpIsSnTbKAzaQwb9EGh2CdA
+	2KLd8zQewY+AAaOwgsdA1xbNIB111ED13qZ9t53hKSykcLH3tUfAP3Z8yORmYwUA56iU5yofbhJ9x
+	vFmxbLpbMt2Ia9EcDzLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDzy-000000069im-3wH3;
-	Thu, 22 Feb 2024 18:40:46 +0000
+	id 1rdE0Q-000000069x0-0GA1;
+	Thu, 22 Feb 2024 18:41:14 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDzX-000000069Px-30TJ;
-	Thu, 22 Feb 2024 18:40:19 +0000
+	id 1rdDzd-000000069TY-3c2Q;
+	Thu, 22 Feb 2024 18:40:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=59bBfPtSUCGvNMcSTdpjSCDzJRpQrgjnv9vA94G1rY0=; b=HUw0KbMw6UbZPdeDZUWsQ1cqep
-	sdTmjb9OypLBiUgqXHwrcm19ChIo8XN3kQOS2F2RDVb/KHx6ipAiy025KWjzd9V+MHTEp0bjPRmny
-	vpuMOzouYkQb1NDQP+xBXiDsAB0XKHH0/7wLtRbD03/Pr5NiHrjn6MZV2dUonNTe7C/fpyucaf50Z
-	Vf5qYGM6Aj+qePR8jNy/YcyNhl5+M4BbYGSvB8uqO9MlK9i041129/sR7bnDnu/k7bGa9fS2vLC5z
-	BDxQmZ/GHTRdQAAvTuzHPORlAYTjBHaCSL39SRM2xzFQ5TJcEZDSaWrkVbEgEt1FBc5FZl9x5ZlDE
-	8XKjTSbg==;
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	bh=GcpVXsJcy60zS9t2ACfwVyym7WjKVKCydaA9dFZHyko=; b=Ral5jKdt2DTRbLr3WKr2ji5iHb
+	R5okW/WILKg+CFz5YsgP2ThOlE4I9eUt7TCNkmGqlwpenqhUAX9kSItytapWxQyYstwlT9osUblyp
+	06PBGzi7t+26FHA0yOJdn5ahwxZ+riU4D9pNyMUMrKQit/WLye2Pwj26DKt0ewJpt0ZUQUkq+ctbM
+	AgOR6aBqNyThURmqJLUiiiTKQdvKviK8ECCaxq1kM5DVLfNjNwhwbApZNejdwre9Q3buzXM9j+d7Z
+	q54C6Oaz+hYjvC8wTIPRQGzP/vqZMkKyCXDJ8DJpFHjw3zN+iC5+Xaadxd0CGF2Tg3aIBQFAcwD02
+	0F+0OeFg==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDcG-00000004J44-2Inn;
-	Thu, 22 Feb 2024 18:16:20 +0000
+	id 1rdDbz-00000004Iu4-1mv0;
+	Thu, 22 Feb 2024 18:16:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 190BECE28BC;
-	Thu, 22 Feb 2024 18:16:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 047AEC433F1;
-	Thu, 22 Feb 2024 18:16:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C25B0619FE;
+	Thu, 22 Feb 2024 18:15:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25C59C433C7;
+	Thu, 22 Feb 2024 18:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708625766;
-	bh=T+Mwu+EH8KKp7SKPsP5xhhewnkamDcEqVw1vxC33JeM=;
+	s=k20201202; t=1708625752;
+	bh=8tamAetoSgHQ1OcsRskLkqCtZqUknTtgTwiDjxhENTo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=e0NBs1SQK24/CJ6wPapKpX3i/K65QEnaHjdddDM0lnaMo1WqBIMwjvYDgghLy069h
-	 DcxpGwEHv90/ZDwYP3EJw3ze23GA5Jd4gOvDS4c/NnDIdQDIAmfJ5HcyfTWXHSYyj/
-	 34ZFrNj9fIdaxy/EpGuLsJnJDgk9zYP+i0sDF7HM5idpNHN96r2lxa4hWYCttdNStY
-	 HbfgSKORdKnYqk7tMLEtle3fQTK65+D+CWaZgBdVsC0gu7CNgejddL6JqCqUNfDkxT
-	 qtu+X236s+8/mPmg5HfBrYUOcyWJrX26xgtf2MxpI71w4T/6GsUTQQZLWX5V6g+pvi
-	 JFJ+VvIQwX7ig==
+	b=QR1hMWSIWiLieEB07vaDhgJeHXTdXha3tjaZH33S3sg362WRN1ZZmhTXdIBRJ2RIf
+	 kx5G6BVDwCFO2Pw8zKk3fB2XvclUOSpITaHM3lqqvIkXIYzyl96eagH3ajpktkHGz1
+	 RqnIoyB6FYqgD63xmGjdZdw+smV+y0a//JDUBtaa+JlqvGSJ2DeBCP3hVa6WBFe0BC
+	 QQE2Ify7Tb7bNNr9u3aY2UU5ba24WpD/o0QL6ND+9jauSeUtCls8QxG/nLoBrbfgrr
+	 cLgiQYtjjkcwsJFjqul27/k+DKr/TkF29jBqwh7bwT7BBxywGsC8TgpXk8O5R0haLC
+	 ksyfoNvuab6Pw==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 22 Feb 2024 19:14:21 +0100
-Subject: [PATCH v7 35/36] drm/sun4i: hdmi: Consolidate atomic_check and
- mode_valid
+Date: Thu, 22 Feb 2024 19:14:16 +0100
+Subject: [PATCH v7 30/36] drm/vc4: tests: Convert to plane creation helper
 MIME-Version: 1.0
-Message-Id: <20240222-kms-hdmi-connector-state-v7-35-8f4af575fce2@kernel.org>
+Message-Id: <20240222-kms-hdmi-connector-state-v7-30-8f4af575fce2@kernel.org>
 References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 In-Reply-To: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -76,20 +75,20 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- Sui Jingfeng <sui.jingfeng@linux.dev>
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4307; i=mripard@kernel.org;
- h=from:subject:message-id; bh=T+Mwu+EH8KKp7SKPsP5xhhewnkamDcEqVw1vxC33JeM=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+/4nvJn7iXPDwx83j1tOMPO3WD27Lad3PdePqgrfX
- pN7D/9Wd5SyMIhxMciKKbLECJsviTs163UnG988mDmsTCBDGLg4BWAiM9kZGa6+uHcz8iajdM+n
- 1yz3q1f/DbtRuWVe7AnNc4t2GKss5ddh+F+lLhZy3mS2SOB7m2e7S+5qqb6olti+7PUck9BnMyU
- WmzMAAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2025; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=8tamAetoSgHQ1OcsRskLkqCtZqUknTtgTwiDjxhENTo=;
+ b=kA0DAAoW4+8Nb2cYUcUByyZiAGXXjvyhaRrBDlWjl3LMUICDVFNoGLYbz56S+cfYlsUBjdB/8
+ 4h1BAAWCgAdFiEEXBM3pF7KmuuJBg6e4+8Nb2cYUcUFAmXXjvwACgkQ4+8Nb2cYUcX6lQD+LVKq
+ N8MxTOTivfG8G6auJjmW4gY0MqC1O3/UbUDHPsgBAL3lPa49s3q5gr6HBNPRtQL4Ct9vghvk+cx
+ KHDnHkGQN
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_181617_413543_15056172 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20240222_181559_747065_1C2F8177 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,126 +105,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-atomic_check and mode_valid do not check for the same things which can
-lead to surprising result if the userspace commits a mode that didn't go
-through mode_valid. Let's merge the two implementations into a function
-called by both.
+Now that we have a plane create helper for kunit mocked drivers, let's
+convert to it in vc4.
 
-Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 74 +++++++++++++++++++++-------------
- 1 file changed, 47 insertions(+), 27 deletions(-)
+ drivers/gpu/drm/vc4/tests/vc4_mock_plane.c | 34 +++++++-----------------------
+ 1 file changed, 8 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-index c276d984da6b..b7cf369b1906 100644
---- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-@@ -62,18 +62,6 @@ static int sun4i_hdmi_setup_avi_infoframes(struct sun4i_hdmi *hdmi,
- 	return 0;
- }
+diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+index 973f5f929097..14357db82238 100644
+--- a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
++++ b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
+@@ -1,43 +1,25 @@
+ // SPDX-License-Identifier: GPL-2.0
  
--static int sun4i_hdmi_atomic_check(struct drm_encoder *encoder,
--				   struct drm_crtc_state *crtc_state,
--				   struct drm_connector_state *conn_state)
--{
--	struct drm_display_mode *mode = &crtc_state->mode;
--
--	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
--		return -EINVAL;
--
--	return 0;
--}
--
- static void sun4i_hdmi_disable(struct drm_encoder *encoder,
- 			       struct drm_atomic_state *state)
- {
-@@ -166,31 +154,61 @@ static void sun4i_hdmi_enable(struct drm_encoder *encoder,
- 	writel(val, hdmi->base + SUN4I_HDMI_VID_CTRL_REG);
- }
+-#include <drm/drm_atomic_state_helper.h>
+-#include <drm/drm_fourcc.h>
+-#include <drm/drm_modeset_helper_vtables.h>
++#include <drm/drm_kunit_helpers.h>
+ #include <drm/drm_plane.h>
  
--static enum drm_mode_status sun4i_hdmi_mode_valid(struct drm_encoder *encoder,
--					const struct drm_display_mode *mode)
-+static const struct drm_encoder_helper_funcs sun4i_hdmi_helper_funcs = {
-+	.atomic_disable	= sun4i_hdmi_disable,
-+	.atomic_enable	= sun4i_hdmi_enable,
-+};
-+
-+static enum drm_mode_status
-+sun4i_hdmi_connector_clock_valid(const struct drm_connector *connector,
-+				 const struct drm_display_mode *mode,
-+				 unsigned long long clock)
- {
--	struct sun4i_hdmi *hdmi = drm_encoder_to_sun4i_hdmi(encoder);
--	unsigned long rate = mode->clock * 1000;
--	unsigned long diff = rate / 200; /* +-0.5% allowed by HDMI spec */
-+	const struct sun4i_hdmi *hdmi = drm_connector_to_sun4i_hdmi(connector);
-+	unsigned long diff = clock / 200; /* +-0.5% allowed by HDMI spec */
- 	long rounded_rate;
+ #include <kunit/test.h>
  
-+	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
-+		return MODE_BAD;
-+
- 	/* 165 MHz is the typical max pixelclock frequency for HDMI <= 1.2 */
--	if (rate > 165000000)
-+	if (clock > 165000000)
- 		return MODE_CLOCK_HIGH;
--	rounded_rate = clk_round_rate(hdmi->tmds_clk, rate);
-+
-+	rounded_rate = clk_round_rate(hdmi->tmds_clk, clock);
- 	if (rounded_rate > 0 &&
--	    max_t(unsigned long, rounded_rate, rate) -
--	    min_t(unsigned long, rounded_rate, rate) < diff)
-+	    max_t(unsigned long, rounded_rate, clock) -
-+	    min_t(unsigned long, rounded_rate, clock) < diff)
- 		return MODE_OK;
-+
- 	return MODE_NOCLOCK;
- }
+ #include "vc4_mock.h"
  
--static const struct drm_encoder_helper_funcs sun4i_hdmi_helper_funcs = {
--	.atomic_check	= sun4i_hdmi_atomic_check,
--	.atomic_disable	= sun4i_hdmi_disable,
--	.atomic_enable	= sun4i_hdmi_enable,
--	.mode_valid	= sun4i_hdmi_mode_valid,
+-static const struct drm_plane_helper_funcs vc4_dummy_plane_helper_funcs = {
 -};
-+static int sun4i_hdmi_connector_atomic_check(struct drm_connector *connector,
-+					     struct drm_atomic_state *state)
-+{
-+	struct drm_connector_state *conn_state =
-+		drm_atomic_get_new_connector_state(state, connector);
-+	struct drm_crtc *crtc = conn_state->crtc;
-+	struct drm_crtc_state *crtc_state = crtc->state;
-+	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
-+	enum drm_mode_status status;
-+
-+	status = sun4i_hdmi_connector_clock_valid(connector, mode,
-+						  mode->clock * 1000);
-+	if (status != MODE_OK)
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
-+static enum drm_mode_status
-+sun4i_hdmi_connector_mode_valid(struct drm_connector *connector,
-+				struct drm_display_mode *mode)
-+{
-+	return sun4i_hdmi_connector_clock_valid(connector, mode,
-+						mode->clock * 1000);
-+}
- 
- static int sun4i_hdmi_get_modes(struct drm_connector *connector)
+-
+-static const struct drm_plane_funcs vc4_dummy_plane_funcs = {
+-	.atomic_destroy_state	= drm_atomic_helper_plane_destroy_state,
+-	.atomic_duplicate_state	= drm_atomic_helper_plane_duplicate_state,
+-	.reset			= drm_atomic_helper_plane_reset,
+-};
+-
+-static const uint32_t vc4_dummy_plane_formats[] = {
+-	DRM_FORMAT_XRGB8888,
+-};
+-
+ struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
+ 				  enum drm_plane_type type)
  {
-@@ -236,6 +254,8 @@ static struct i2c_adapter *sun4i_hdmi_get_ddc(struct device *dev)
+ 	struct drm_plane *plane;
+ 
+-	plane = __drmm_universal_plane_alloc(drm, sizeof(struct drm_plane), 0,
+-						 0,
+-						 &vc4_dummy_plane_funcs,
+-						 vc4_dummy_plane_formats,
+-						 ARRAY_SIZE(vc4_dummy_plane_formats),
+-						 NULL,
+-						 DRM_PLANE_TYPE_PRIMARY,
+-						 NULL);
++	KUNIT_ASSERT_EQ(test, type, DRM_PLANE_TYPE_PRIMARY);
++
++	plane = drm_kunit_helper_create_primary_plane(test, drm,
++						      NULL,
++						      NULL,
++						      NULL, 0,
++						      NULL);
+ 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
+ 
+-	drm_plane_helper_add(plane, &vc4_dummy_plane_helper_funcs);
+-
+ 	return plane;
  }
- 
- static const struct drm_connector_helper_funcs sun4i_hdmi_connector_helper_funcs = {
-+	.atomic_check	= sun4i_hdmi_connector_atomic_check,
-+	.mode_valid	= sun4i_hdmi_connector_mode_valid,
- 	.get_modes	= sun4i_hdmi_get_modes,
- };
- 
 
 -- 
 2.43.2
