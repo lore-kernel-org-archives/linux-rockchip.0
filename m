@@ -4,62 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74DA9C54791
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952A8C5478C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3QcPFssxIQXTVNyAuWHW5FtuvI/NJwhD+j3vuLlwr+0=; b=wP2Fj/5cltZ36h
-	qZqsyzHBnBPB4ET8ZTU2zOm/TL/h06QhJiiBG+KpL3gry7b2Ioe4UNoY95A6EBdIK0gp7Q1o/EWrg
-	dbKuMKC5/7WHdrQ0iOrTzbrAQu7KW7+bo8HceZSAAk4Dq/TsKws4J4PvjU+jah5JeTbI4JGka/fGV
-	Vveyqi0PXzvGG8U9s6cyHL+pQ/abfcGM+oDghqofI6tvy7QFew5CkEi+NPnScHIbwAzdniRMon8rD
-	Rf/QfvGjQOapI6I3YPVi2srk6tw7iU/vZQ+d2VyMC9Ur5BDcXuIoS+kucrbwBmP49rdEItX0fShF0
-	mMkJ8b3kGuTiGoWYeOrw==;
+	List-Owner; bh=r2+KwbvGAIaAEEU6e8syfbPg01gDA5H+vwnTXLED458=; b=vLjTlRmClN4b9P
+	8QfxL5Efw7jw8ivaEY2TqaQrw8n4E+wbtsvrI+RDLK/jDOtC3X0QmYbq/SISKhV7PhJAT0A4fVfII
+	XYtwnP9OERHZbAgv2rnQHRHjvZMrPQSc7/L+GA58yiY+FoU/Zpa2hdpyGWQol//dR/uKJBtDfY0Jf
+	QGsWUUs0YBeVlQV858iWu0qEOdtvuPSdM/Ao4XYdqahxnhNxxgZVX4LVBBgOIjADnXdo8DU6Jibbx
+	QXLHU1eoCIhbp8i/VqrHRClAW73R3J9iatAVEnsLsUq9b5sd05vZwpc37avWpMMvPn6FGjLqzd5nz
+	wubddj6D05ZT1gAjmiow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDiF-000000060yK-0I8B;
-	Thu, 22 Feb 2024 18:22:27 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1rdDiS-000000061A7-2kEW;
+	Thu, 22 Feb 2024 18:22:40 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDbx-00000005xfx-0Dnv;
-	Thu, 22 Feb 2024 18:16:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=iE0M3K0dKqmF4t8VfCIP4HjbDJgrfjTnQJZcOKPhQag=; b=Eq+hYETUU/vpywLUO6pCzB4+eM
-	etoF7fxT/IIVs8W1lK93T7krF7iQyepWwTvqrdlgjIY8fYcH7ZBydjC7hNnEMa5sHlLedbAj8rhSm
-	dw2CQEjEmPUyUSG2mubJ0e89pIivra/ce1zy2I58L56PxFqTWo4JasLgl3LcmE0W5j1fD2req+ir6
-	3u2NrnZx0d/C8mJxVx+Bqnh1cV89hv4g21nhDAerwx0A4DZtvA3qoIG41We7F7TGANEgtHo0DCrYj
-	jLVanockLDPrp80IgX58UrN/nqrfmgNFsgUIkAdchJQw12Hnwx/MvnPfcHLYDO3fof2NnFdixO1ZP
-	Vgw4jmhw==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDbt-00000004Iqh-07b0;
-	Thu, 22 Feb 2024 18:15:56 +0000
+	id 1rdDba-00000005xXS-43Hy;
+	Thu, 22 Feb 2024 18:15:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 221306198B;
-	Thu, 22 Feb 2024 18:15:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7126CC433C7;
-	Thu, 22 Feb 2024 18:15:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 70B0E61999;
+	Thu, 22 Feb 2024 18:15:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAA34C433F1;
+	Thu, 22 Feb 2024 18:15:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708625749;
-	bh=mEyVDQhhKVyw3edURYriU45qe55YIRK057j8zDEIx38=;
+	s=k20201202; t=1708625730;
+	bh=MnAMc9YgC+tVs4lR8Oy+j36YZ/eTfxmPaM/u8EgA1Lk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EeLRUhX1irC9WINz5LLmJoriChNAd1/BD3YjjxNGBgvSHuWaFOAk/5XFZbFrktSHg
-	 YfJgHs1YCK+7DRufwDSZ+GqUCTQAIbLOE4Lkwc/Qt5FA625mI0setcbhqxROlD1VTC
-	 1nIN80Flz7/a4FMBnjhgTnS7O3cyjyYfpkiL0M/vWuFA+j2VF77kryKHO+fjlls/FY
-	 kQ9nBGX8VseRakyQyDSV/NiIvBJ3OLM1L1Mga/RX0llq8EgTuzAGblp2Gn14HE3ngr
-	 /yCj1a3TZSp3495bqhV1RQjB91MG7150m23m46fSZ5PAg6fbY2zuH1R+dOhM2P4nY8
-	 BC6Di6X9PjZlg==
+	b=PpLGYfkqxdHMeTQuIpb2DqL95MY87gbeqfnkerIu2eo6Od9UHcEOSs57rD1G0UMzn
+	 1wUVnOF57i4Ytv+Q4DgyizBecakP7hI0a8dO1+E39gyjOaeKfyNNMAuS5xjTrSoIW+
+	 1YLkfBtr3NL65JKqoWjW3GKo+K5e0diXVYFvJgOqP5FOj+YcRVKS0oq7+5pxHq6g/f
+	 eIr4dZaAsXLCw/x7X5eqzSFQNj9xi+FIUES/NA7YK1YDFOApxPHxmjaDEPT5KW8mxD
+	 VderxLkVaE/2MNl+sR36BKckv6KWPZ7EaAAm4/Ett7NFCqG+2t97EVzUQh+k+iDdAA
+	 8XUxTGT9Ft1cA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 22 Feb 2024 19:14:15 +0100
-Subject: [PATCH v7 29/36] drm/vc4: tests: Remove vc4_dummy_plane structure
+Date: Thu, 22 Feb 2024 19:14:08 +0100
+Subject: [PATCH v7 22/36] drm/tests: Add tests for Broadcast RGB property
 MIME-Version: 1.0
-Message-Id: <20240222-kms-hdmi-connector-state-v7-29-8f4af575fce2@kernel.org>
+Message-Id: <20240222-kms-hdmi-connector-state-v7-22-8f4af575fce2@kernel.org>
 References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 In-Reply-To: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -75,20 +61,20 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3334; i=mripard@kernel.org;
- h=from:subject:message-id; bh=mEyVDQhhKVyw3edURYriU45qe55YIRK057j8zDEIx38=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+34f/6mY1LbiW4qRWf+5bb84Gc/MfCe4Zqa++uXXA
- XJrJ4XzdpSyMIhxMciKKbLECJsviTs163UnG988mDmsTCBDGLg4BWAiBnYM/8MrGnfd2Vi52GDK
- 5kjJhsN+Gsq3HpgLbPh2Wnad7KPn2tEM/wvmiF1ZPbtGX3smH+fU8D0NFvVim9hMBLam9L9KeMt
- kxg4A
+X-Developer-Signature: v=1; a=openpgp-sha256; l=12623; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=MnAMc9YgC+tVs4lR8Oy+j36YZ/eTfxmPaM/u8EgA1Lk=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+767TZa4HtQTkubrO+fpddOSvV/Fwg6r/uSU9S7uC
+ +NwOczdUcrCIMbFICumyBIjbL4k7tSs151sfPNg5rAygQxh4OIUgInsbWD4zWL5NfqW+4T7Wziy
+ XtxcJ7hk9YYN8iemsHjab4y3nhSdIMHwP/yPx0GGA2G3UoqnvXq6TZ7n7sK/jwSTmpndY0NFnPZ
+ P5QAA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_181553_309659_5CC7C71F 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240222_101535_273340_262E2D27 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,95 +91,345 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vc4_dummy_plane structure is an exact equivalent to vc4_plane, so we
-don't need it.
+This had a bunch of kunit tests to make sure our code to handle the
+Broadcast RGB property behaves properly.
 
+This requires bringing a bit of infrastructure to create mock HDMI
+connectors, with custom EDIDs.
+
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/vc4/tests/vc4_mock.c       |  6 ++----
- drivers/gpu/drm/vc4/tests/vc4_mock.h       |  9 ++-------
- drivers/gpu/drm/vc4/tests/vc4_mock_plane.c | 14 +++++---------
- 3 files changed, 9 insertions(+), 20 deletions(-)
+ .../gpu/drm/tests/drm_atomic_state_helper_test.c   | 151 +++++++++++++++++++++
+ drivers/gpu/drm/tests/drm_connector_test.c         | 116 ++++++++++++++++
+ 2 files changed, 267 insertions(+)
 
-diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock.c b/drivers/gpu/drm/vc4/tests/vc4_mock.c
-index becb3dbaa548..0731a7d85d7a 100644
---- a/drivers/gpu/drm/vc4/tests/vc4_mock.c
-+++ b/drivers/gpu/drm/vc4/tests/vc4_mock.c
-@@ -109,16 +109,14 @@ static const struct vc4_mock_desc vc5_mock =
- static int __build_one_pipe(struct kunit *test, struct drm_device *drm,
- 			    const struct vc4_mock_pipe_desc *pipe)
- {
--	struct vc4_dummy_plane *dummy_plane;
- 	struct drm_plane *plane;
- 	struct vc4_dummy_crtc *dummy_crtc;
- 	struct drm_crtc *crtc;
- 	unsigned int i;
- 
--	dummy_plane = vc4_dummy_plane(test, drm, DRM_PLANE_TYPE_PRIMARY);
--	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_plane);
-+	plane = vc4_dummy_plane(test, drm, DRM_PLANE_TYPE_PRIMARY);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
- 
--	plane = &dummy_plane->plane.base;
- 	dummy_crtc = vc4_mock_pv(test, drm, plane, pipe->data);
- 	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_crtc);
- 
-diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock.h b/drivers/gpu/drm/vc4/tests/vc4_mock.h
-index 2d0b339bd9f3..002b6218960c 100644
---- a/drivers/gpu/drm/vc4/tests/vc4_mock.h
-+++ b/drivers/gpu/drm/vc4/tests/vc4_mock.h
-@@ -21,13 +21,8 @@ struct drm_crtc *vc4_find_crtc_for_encoder(struct kunit *test,
- 	return NULL;
+diff --git a/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c b/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
+index c0f26422e925..3de15cec2f5f 100644
+--- a/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
++++ b/drivers/gpu/drm/tests/drm_atomic_state_helper_test.c
+@@ -224,6 +224,134 @@ drm_atomic_helper_connector_hdmi_init(struct kunit *test,
+ 	return priv;
  }
  
--struct vc4_dummy_plane {
--	struct vc4_plane plane;
--};
--
--struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
--					struct drm_device *drm,
--					enum drm_plane_type type);
-+struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
-+				  enum drm_plane_type type);
++/*
++ * Test that if we change the RGB quantization property to a different
++ * value, we trigger a mode change on the connector's CRTC, which will
++ * in turn disable/enable the connector.
++ */
++static void drm_test_check_broadcast_rgb_crtc_mode_changed(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx *ctx;
++	struct drm_connector_state *old_conn_state;
++	struct drm_connector_state *new_conn_state;
++	struct drm_crtc_state *crtc_state;
++	struct drm_atomic_state *state;
++	struct drm_display_mode *preferred;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	int ret;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
++
++	conn = &priv->connector;
++	preferred = find_preferred_mode(conn);
++	KUNIT_ASSERT_NOT_NULL(test, preferred);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	state = drm_kunit_helper_atomic_state_alloc(test, drm, ctx);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
++
++	new_conn_state = drm_atomic_get_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state->hdmi.broadcast_rgb = DRM_HDMI_BROADCAST_RGB_FULL;
++
++	KUNIT_ASSERT_NE(test,
++			old_conn_state->hdmi.broadcast_rgb,
++			new_conn_state->hdmi.broadcast_rgb);
++
++	ret = drm_atomic_check_only(state);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	new_conn_state = drm_atomic_get_new_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++	KUNIT_EXPECT_EQ(test, new_conn_state->hdmi.broadcast_rgb, DRM_HDMI_BROADCAST_RGB_FULL);
++
++	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
++	KUNIT_EXPECT_TRUE(test, crtc_state->mode_changed);
++}
++
++/*
++ * Test that if we set the RGB quantization property to the same value,
++ * we don't trigger a mode change on the connector's CRTC and leave the
++ * connector unaffected.
++ */
++static void drm_test_check_broadcast_rgb_crtc_mode_not_changed(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx *ctx;
++	struct drm_connector_state *old_conn_state;
++	struct drm_connector_state *new_conn_state;
++	struct drm_crtc_state *crtc_state;
++	struct drm_atomic_state *state;
++	struct drm_display_mode *preferred;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	int ret;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	ctx = drm_kunit_helper_acquire_ctx_alloc(test);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, ctx);
++
++	conn = &priv->connector;
++	preferred = find_preferred_mode(conn);
++	KUNIT_ASSERT_NOT_NULL(test, preferred);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	ret = light_up_connector(test, drm, crtc, conn, preferred, ctx);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	state = drm_kunit_helper_atomic_state_alloc(test, drm, ctx);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
++
++	new_conn_state = drm_atomic_get_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state->hdmi.broadcast_rgb = old_conn_state->hdmi.broadcast_rgb;
++
++	ret = drm_atomic_check_only(state);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	old_conn_state = drm_atomic_get_old_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, old_conn_state);
++
++	new_conn_state = drm_atomic_get_new_connector_state(state, conn);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
++
++	KUNIT_EXPECT_EQ(test,
++			old_conn_state->hdmi.broadcast_rgb,
++			new_conn_state->hdmi.broadcast_rgb);
++
++	crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
++	KUNIT_EXPECT_FALSE(test, crtc_state->mode_changed);
++}
++
+ /*
+  * Test that if we change the maximum bpc property to a different value,
+  * we trigger a mode change on the connector's CRTC, which will in turn
+@@ -1059,6 +1187,8 @@ static void drm_test_check_output_bpc_format_display_8bpc_only(struct kunit *tes
+ }
  
- struct vc4_dummy_crtc {
- 	struct vc4_crtc crtc;
-diff --git a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
-index 62b18f5f41db..973f5f929097 100644
---- a/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
-+++ b/drivers/gpu/drm/vc4/tests/vc4_mock_plane.c
-@@ -22,15 +22,12 @@ static const uint32_t vc4_dummy_plane_formats[] = {
- 	DRM_FORMAT_XRGB8888,
+ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
++	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_changed),
++	KUNIT_CASE(drm_test_check_broadcast_rgb_crtc_mode_not_changed),
+ 	KUNIT_CASE(drm_test_check_hdmi_funcs_reject_rate),
+ 	KUNIT_CASE(drm_test_check_max_tmds_rate_bpc_fallback),
+ 	KUNIT_CASE(drm_test_check_max_tmds_rate_format_fallback),
+@@ -1090,6 +1220,26 @@ static struct kunit_suite drm_atomic_helper_connector_hdmi_check_test_suite = {
+ 	.test_cases	= drm_atomic_helper_connector_hdmi_check_tests,
  };
  
--struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
--					struct drm_device *drm,
--					enum drm_plane_type type)
-+struct drm_plane *vc4_dummy_plane(struct kunit *test, struct drm_device *drm,
-+				  enum drm_plane_type type)
- {
--	struct vc4_dummy_plane *dummy_plane;
- 	struct drm_plane *plane;
- 
--	dummy_plane = drmm_universal_plane_alloc(drm,
--						 struct vc4_dummy_plane, plane.base,
-+	plane = __drmm_universal_plane_alloc(drm, sizeof(struct drm_plane), 0,
- 						 0,
- 						 &vc4_dummy_plane_funcs,
- 						 vc4_dummy_plane_formats,
-@@ -38,10 +35,9 @@ struct vc4_dummy_plane *vc4_dummy_plane(struct kunit *test,
- 						 NULL,
- 						 DRM_PLANE_TYPE_PRIMARY,
- 						 NULL);
--	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, dummy_plane);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
- 
--	plane = &dummy_plane->plane.base;
- 	drm_plane_helper_add(plane, &vc4_dummy_plane_helper_funcs);
- 
--	return dummy_plane;
-+	return plane;
++/*
++ * Test that the value of the Broadcast RGB property out of reset is set
++ * to auto.
++ */
++static void drm_test_check_broadcast_rgb_value(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_connector_state *conn_state;
++	struct drm_connector *conn;
++
++	priv = drm_atomic_helper_connector_hdmi_init(test,
++						     BIT(HDMI_COLORSPACE_RGB),
++						     8);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	conn = &priv->connector;
++	conn_state = conn->state;
++	KUNIT_EXPECT_EQ(test, conn_state->hdmi.broadcast_rgb, DRM_HDMI_BROADCAST_RGB_AUTO);
++}
++
+ /*
+  * Test that if the connector was initialised with a maximum bpc of 8,
+  * the value of the max_bpc and max_requested_bpc properties out of
+@@ -1207,6 +1357,7 @@ static void drm_test_check_tmds_char_value(struct kunit *test)
  }
+ 
+ static struct kunit_case drm_atomic_helper_connector_hdmi_reset_tests[] = {
++	KUNIT_CASE(drm_test_check_broadcast_rgb_value),
+ 	KUNIT_CASE(drm_test_check_bpc_8_value),
+ 	KUNIT_CASE(drm_test_check_bpc_10_value),
+ 	KUNIT_CASE(drm_test_check_bpc_12_value),
+diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
+index 732c59a1d4d5..6a3651b08c81 100644
+--- a/drivers/gpu/drm/tests/drm_connector_test.c
++++ b/drivers/gpu/drm/tests/drm_connector_test.c
+@@ -564,6 +564,63 @@ static struct kunit_suite drm_get_tv_mode_from_name_test_suite = {
+ 	.test_cases = drm_get_tv_mode_from_name_tests,
+ };
+ 
++struct drm_hdmi_connector_get_broadcast_rgb_name_test {
++	unsigned int kind;
++	const char *expected_name;
++};
++
++#define BROADCAST_RGB_TEST(_kind, _name)	\
++	{					\
++		.kind = _kind,			\
++		.expected_name = _name,		\
++	}
++
++static void drm_test_drm_hdmi_connector_get_broadcast_rgb_name(struct kunit *test)
++{
++	const struct drm_hdmi_connector_get_broadcast_rgb_name_test *params =
++		test->param_value;
++
++	KUNIT_EXPECT_STREQ(test,
++			   drm_hdmi_connector_get_broadcast_rgb_name(params->kind),
++			   params->expected_name);
++}
++
++static const
++struct drm_hdmi_connector_get_broadcast_rgb_name_test
++drm_hdmi_connector_get_broadcast_rgb_name_valid_tests[] = {
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_AUTO, "Automatic"),
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_FULL, "Full"),
++	BROADCAST_RGB_TEST(DRM_HDMI_BROADCAST_RGB_LIMITED, "Limited 16:235"),
++};
++
++static void
++drm_hdmi_connector_get_broadcast_rgb_name_valid_desc(const struct drm_hdmi_connector_get_broadcast_rgb_name_test *t,
++						     char *desc)
++{
++	sprintf(desc, "%s", t->expected_name);
++}
++
++KUNIT_ARRAY_PARAM(drm_hdmi_connector_get_broadcast_rgb_name_valid,
++		  drm_hdmi_connector_get_broadcast_rgb_name_valid_tests,
++		  drm_hdmi_connector_get_broadcast_rgb_name_valid_desc);
++
++static void drm_test_drm_hdmi_connector_get_broadcast_rgb_name_invalid(struct kunit *test)
++{
++	KUNIT_EXPECT_NULL(test, drm_hdmi_connector_get_broadcast_rgb_name(3));
++};
++
++static struct kunit_case drm_hdmi_connector_get_broadcast_rgb_name_tests[] = {
++	KUNIT_CASE_PARAM(drm_test_drm_hdmi_connector_get_broadcast_rgb_name,
++			 drm_hdmi_connector_get_broadcast_rgb_name_valid_gen_params),
++	KUNIT_CASE(drm_test_drm_hdmi_connector_get_broadcast_rgb_name_invalid),
++	{ }
++};
++
++static struct kunit_suite drm_hdmi_connector_get_broadcast_rgb_name_test_suite = {
++	.name = "drm_hdmi_connector_get_broadcast_rgb_name",
++	.test_cases = drm_hdmi_connector_get_broadcast_rgb_name_tests,
++};
++
+ struct drm_hdmi_connector_get_output_format_name_test {
+ 	unsigned int kind;
+ 	const char *expected_name;
+@@ -622,6 +679,63 @@ static struct kunit_suite drm_hdmi_connector_get_output_format_name_test_suite =
+ 	.test_cases = drm_hdmi_connector_get_output_format_name_tests,
+ };
+ 
++static void drm_test_drm_connector_attach_broadcast_rgb_property(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	struct drm_connector *connector = &priv->connector;
++	struct drm_property *prop;
++	int ret;
++
++	ret = drmm_connector_init(&priv->drm, connector,
++				  &dummy_funcs,
++				  DRM_MODE_CONNECTOR_HDMIA,
++				  &priv->ddc);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	ret = drm_connector_attach_broadcast_rgb_property(connector);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	prop = connector->broadcast_rgb_property;
++	KUNIT_ASSERT_NOT_NULL(test, prop);
++	KUNIT_EXPECT_NOT_NULL(test, drm_mode_obj_find_prop_id(&connector->base, prop->base.id));
++}
++
++static void drm_test_drm_connector_attach_broadcast_rgb_property_hdmi_connector(struct kunit *test)
++{
++	struct drm_connector_init_priv *priv = test->priv;
++	struct drm_connector *connector = &priv->connector;
++	struct drm_property *prop;
++	int ret;
++
++	ret = drmm_connector_hdmi_init(&priv->drm, connector,
++				       &dummy_funcs,
++				       &dummy_hdmi_funcs,
++				       DRM_MODE_CONNECTOR_HDMIA,
++				       &priv->ddc,
++				       BIT(HDMI_COLORSPACE_RGB),
++				       8);
++	KUNIT_EXPECT_EQ(test, ret, 0);
++
++	ret = drm_connector_attach_broadcast_rgb_property(connector);
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	prop = connector->broadcast_rgb_property;
++	KUNIT_ASSERT_NOT_NULL(test, prop);
++	KUNIT_EXPECT_NOT_NULL(test, drm_mode_obj_find_prop_id(&connector->base, prop->base.id));
++}
++
++static struct kunit_case drm_connector_attach_broadcast_rgb_property_tests[] = {
++	KUNIT_CASE(drm_test_drm_connector_attach_broadcast_rgb_property),
++	KUNIT_CASE(drm_test_drm_connector_attach_broadcast_rgb_property_hdmi_connector),
++	{ }
++};
++
++static struct kunit_suite drm_connector_attach_broadcast_rgb_property_test_suite = {
++	.name = "drm_connector_attach_broadcast_rgb_property",
++	.init = drm_test_connector_init,
++	.test_cases = drm_connector_attach_broadcast_rgb_property_tests,
++};
++
+ /*
+  * Test that for a given mode, with 8bpc and an RGB output the TMDS
+  * character rate is equal to the mode pixel clock.
+@@ -945,8 +1059,10 @@ static struct kunit_suite drm_connector_hdmi_compute_mode_clock_test_suite = {
+ kunit_test_suites(
+ 	&drmm_connector_hdmi_init_test_suite,
+ 	&drmm_connector_init_test_suite,
++	&drm_connector_attach_broadcast_rgb_property_test_suite,
+ 	&drm_connector_hdmi_compute_mode_clock_test_suite,
+ 	&drm_get_tv_mode_from_name_test_suite,
++	&drm_hdmi_connector_get_broadcast_rgb_name_test_suite,
+ 	&drm_hdmi_connector_get_output_format_name_test_suite
+ );
+ 
 
 -- 
 2.43.2
