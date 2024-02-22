@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2DCC5478C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6836BC5478C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c2sQU8eZySFullA6E4cK9kf3Yd8vcPRzIHwHRFT+/Ow=; b=3zawK2BPC+Fz31
-	oThN+KUeNxXd694mr9ba0YfVd4Z6mbao6smzZSET3PjyG+QKt00HpqrHKBcuSNb1EdHT6GalLQv0Y
-	HFAEfMthU46JspJJY9MKAHL2eanuwmhX1Iosj61hTynIZfFCy0w1U8kW5dzp7Rd2kZi7fxcw2b6bp
-	tzdbWPg7orVdSiIBD/0qfXI73FwVpOLiDH0TxFvJdgHeF+SQ4BzIOs5Tg+zVLXKBiV7PpLSLso3CV
-	A0ZWNlq3gppHrkVrmU/6BhlqHHZlNjzj8ZXbpm77lXIhCVpjmZWxwA6GRE0noqloz+6LVVbrmvSOS
-	HhlJysMr8LKz4yCqNPHw==;
+	List-Owner; bh=XywtTrL4jsayy3qc+EUu5l12670az552iWL45wIol0I=; b=E3p8fT9EFBkro2
+	LqupgOgnh1ez42QH2UPF2RH2xJ5ZYlHwHCcHWo3+txYO6s/DtMDN1BlIyJZ0w9wJzFR002ZfG9Qhd
+	R8qk0oYg7uxPJ8rBuF9Gj+fwvhP9A1LJZActYre3RQ0R3Sza+jVb61dMSb5vBAZMxg/CD3R5XzIN+
+	TZ2apqJMH0Loty8uoHa5dhwl9ZN4nYDjoq8MtLPXvUKKCEegs9NrRtBCWFuaXC7dp0V79s2PWkrg0
+	egDrPraRS9UJy+oMe7/y6BUi7fmFYISkvBbqoyjjjSKeizLkTfDoP0PfZv6ikCHFMPhiUYjion9Vn
+	2wVHQJv00oXrI6gZkpgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDdr-00000005yJb-49jK;
-	Thu, 22 Feb 2024 18:17:56 +0000
+	id 1rdDdt-00000005yL7-139U;
+	Thu, 22 Feb 2024 18:17:57 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDaq-00000005xAt-1siI;
-	Thu, 22 Feb 2024 18:14:50 +0000
+	id 1rdDas-00000005xBm-0umw;
+	Thu, 22 Feb 2024 18:14:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=PnX968uCL3A4UpMj1PEiTX97CKD3pWHCd+e4RNRXo1c=; b=q1yQB2eyeIz9DEaQC2fkTC609C
-	94lwByI6qrakZ+4R2VLPSOYSlRYIOvR+dhh48/wgdnH9DRDbkqmy3171D1X/BkK3Lj9yQz6pRO0Ho
-	xBOdZqg284GxHEvgjOm0Or0vGd+tVvKmaTLnrqxI5XC+VdtH9msYQ6zFPnU/TbL6UTzdRQ9RbMP9L
-	IWKfeaAGZ0oas8MdWz1R7NdBjYvDFAje5wd/BlDWZWPQ33g50nX1nt/IVmf8FunCrez/Ki1fhcU8k
-	ZakIdJZjw6DAmgIJr9yL8XAaXJDRElAQpZi6eYd0+L1EVcm4c4/u6Hu+vrMhxABbmDsmAetrK59lj
-	eGq6tQAQ==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	bh=NyM5WwLHCQ8kcNNuykIG0lYgEGjrMzTAcwMIS0N2Ln4=; b=Opqf9oI0d45C7Fc/PMHQn5ywCm
+	W+l3bUP9xNwTb8SBoXTxlfMwth+vbSfKvqxjwdHyr46bo1zdFGqBppg1oL5SnxUeRtytNiuS/WIqT
+	S6NzdZsYrNeS6j7WOOLk+1SX/5qM4Sh76X5+LMgja+8zdfLPVfY9eMB8eCq+GVIhPeqPaywzadzc1
+	GtKhsYHwxfzVQQ0+QL7QNxKjXsxJsw23jnEBJGgMwVcSXjLntDRtDMZh8mxT0ch/iuX2Ud8HMz9Nf
+	Uuz2LFlwSd+PQXkySQTeUgexM95Z547NdLFbn1UUbGBw6hmLuwfbOGb12yHc5qVgrfP2kBZ9NqBAp
+	JXZpPvMw==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDal-00000004IFf-1OG8;
-	Thu, 22 Feb 2024 18:14:47 +0000
+	id 1rdDao-00000004IJE-3Urg;
+	Thu, 22 Feb 2024 18:14:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C53C461997;
-	Thu, 22 Feb 2024 18:14:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19E8EC433F1;
-	Thu, 22 Feb 2024 18:14:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0E60861999;
+	Thu, 22 Feb 2024 18:14:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BDDCC433C7;
+	Thu, 22 Feb 2024 18:14:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708625676;
-	bh=1ZewVq1VdElOMix4yzkeT47wHJmNn7LzalSFh1GQZY4=;
+	s=k20201202; t=1708625679;
+	bh=+carovPUcrljcpRVv3z7gkTq0nha5XSrXPMvLfHaNxg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SrhdV9+hCdPfPtwYyUU3l3UAAq1WLmeEROhir6gx7OZCW57ekMjOBbAWo7CddLsH8
-	 Eate8zXjRdUeiGJN+Bw3e4IPd8blvmkoj4AfBK/RDjsHEof+VgmcgIjOLP9R5Tqhrd
-	 RLcUDbF9ZyppCR4JLtaEByZPy8N9JwzamGPDDHIfwSZdFfFeyYItotbqAXZlYEX+w/
-	 Qdy/8/Sg0jcS4vywSVbemRmTKUMNVNIdDRldoFDvN3eJLD66ENbbiSxV9cXNivG/B6
-	 cOCQiHDSUWCHpdcyhl7T+o/bF/ce6njxHsbMDImDHl34Q3pouA7gFdS3St9SNlMJWh
-	 G1puVZd4YnR2A==
+	b=VTou2p8d5pbdwCO+Z3GcUPUivBLpLhufXqW8+OuEelivIxPbghA+PYfDssNS9cQvW
+	 PzMNpHlt7W84SRvfR1YIr4O2j+HqmAPo0Xy/THcrFGkxc4QNIhVVzK+ULkmExuWVnN
+	 obPiBogyAuxx+aVMYoDnUETyR4nYjfrKXkC00K5qfvTLdsuAp9XkKRVs57Blyhm1op
+	 +fPF6SEw4ku8nyTrYEM3i562cf0WmT530YbXaneZbD8XEI4EzBTb253/RMOcVZus76
+	 N+XSHhummEb3AUf3ZgmWC6x1/9/QBgmkeMxFamaU+YuoIU+Wrue7QoWG6gcqf0l3Ys
+	 oUTXxM3hfiMAg==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 22 Feb 2024 19:13:49 +0100
-Subject: [PATCH v7 03/36] drm/tests: Add helper to create mock plane
+Date: Thu, 22 Feb 2024 19:13:50 +0100
+Subject: [PATCH v7 04/36] drm/tests: Add helper to create mock crtc
 MIME-Version: 1.0
-Message-Id: <20240222-kms-hdmi-connector-state-v7-3-8f4af575fce2@kernel.org>
+Message-Id: <20240222-kms-hdmi-connector-state-v7-4-8f4af575fce2@kernel.org>
 References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 In-Reply-To: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -77,17 +77,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4849; i=mripard@kernel.org;
- h=from:subject:message-id; bh=1ZewVq1VdElOMix4yzkeT47wHJmNn7LzalSFh1GQZY4=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+17p6G/lCz0rHHfk5FpdgRMGu30O/a7g+y14M0Osw
- uGurGRqRykLgxgXg6yYIkuMsPmSuFOzXney8c2DmcPKBDKEgYtTACay6A7DXwF57o3CmhM7kv+y
- WvHyx1xexVdyT2pN4fHvoUumeLdVyDMyTFjxm+FBdDvbjb3P2GS9pt5kvzVT5ebBP8+7fpgIWs2
- 9yAkA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3793; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=+carovPUcrljcpRVv3z7gkTq0nha5XSrXPMvLfHaNxg=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+16XHBar+OE7IWvpjKy0Y49FT84w9d/UVemtuWmGb
+ lbNOZHnHaUsDGJcDLJiiiwxwuZL4k7Net3JxjcPZg4rE8gQBi5OAZjI3zZGhgcLp77/cPPhwsA/
+ 5nWW8+c+jzRTm/1ljU73On4Xiw+Cp94yMmxf2JHh+i8td3ZH3d2HKjOSLVO1A0QbvZu0Oa50fTc
+ r5wAA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_181443_645912_2386CE24 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20240222_181447_129847_5397150C 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,143 +107,112 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 We're going to need a full-blown, functional, KMS device to test more
 components of the atomic modesetting infrastructure.
 
-Let's add a new helper to create a dumb, mocked, primary plane. By
-default, it will create a linear XRGB8888 plane, using the default
-helpers.
+Let's add a new helper to create a dumb, mocked, CRTC. By default it
+will create a CRTC relying only on the default helpers, but drivers are
+free to deviate from that.
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/tests/drm_kunit_helpers.c | 85 +++++++++++++++++++++++++++++++
- include/drm/drm_kunit_helpers.h           | 11 ++++
- 2 files changed, 96 insertions(+)
+ drivers/gpu/drm/tests/drm_kunit_helpers.c | 62 +++++++++++++++++++++++++++++++
+ include/drm/drm_kunit_helpers.h           | 10 +++++
+ 2 files changed, 72 insertions(+)
 
 diff --git a/drivers/gpu/drm/tests/drm_kunit_helpers.c b/drivers/gpu/drm/tests/drm_kunit_helpers.c
-index 4fb11b938bc1..32dc8354641a 100644
+index 32dc8354641a..d5317d13d3fc 100644
 --- a/drivers/gpu/drm/tests/drm_kunit_helpers.c
 +++ b/drivers/gpu/drm/tests/drm_kunit_helpers.c
-@@ -3,6 +3,7 @@
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_drv.h>
-+#include <drm/drm_fourcc.h>
- #include <drm/drm_kunit_helpers.h>
- #include <drm/drm_managed.h>
- 
-@@ -164,5 +165,89 @@ drm_kunit_helper_atomic_state_alloc(struct kunit *test,
+@@ -249,5 +249,67 @@ drm_kunit_helper_create_primary_plane(struct kunit *test,
  }
- EXPORT_SYMBOL_GPL(drm_kunit_helper_atomic_state_alloc);
+ EXPORT_SYMBOL_GPL(drm_kunit_helper_create_primary_plane);
  
-+static const uint32_t default_plane_formats[] = {
-+	DRM_FORMAT_XRGB8888,
++static const struct drm_crtc_helper_funcs default_crtc_helper_funcs = {
 +};
 +
-+static const uint64_t default_plane_modifiers[] = {
-+	DRM_FORMAT_MOD_LINEAR,
-+	DRM_FORMAT_MOD_INVALID
-+};
-+
-+static const struct drm_plane_helper_funcs default_plane_helper_funcs = {
-+};
-+
-+static const struct drm_plane_funcs default_plane_funcs = {
-+	.atomic_destroy_state	= drm_atomic_helper_plane_destroy_state,
-+	.atomic_duplicate_state	= drm_atomic_helper_plane_duplicate_state,
-+	.reset			= drm_atomic_helper_plane_reset,
++static const struct drm_crtc_funcs default_crtc_funcs = {
++	.atomic_destroy_state   = drm_atomic_helper_crtc_destroy_state,
++	.atomic_duplicate_state = drm_atomic_helper_crtc_duplicate_state,
++	.reset                  = drm_atomic_helper_crtc_reset,
 +};
 +
 +/**
-+ * drm_kunit_helper_create_primary_plane - Creates a mock primary plane for a KUnit test
++ * drm_kunit_helper_create_crtc - Creates a mock CRTC for a KUnit test
 + * @test: The test context object
 + * @drm: The device to alloc the plane for
++ * @primary: Primary plane for CRTC
++ * @cursor: Cursor plane for CRTC. Optional.
 + * @funcs: Callbacks for the new plane. Optional.
 + * @helper_funcs: Helpers callbacks for the new plane. Optional.
-+ * @formats: array of supported formats (DRM_FORMAT\_\*). Optional.
-+ * @num_formats: number of elements in @formats
-+ * @modifiers: array of struct drm_format modifiers terminated by
-+ *             DRM_FORMAT_MOD_INVALID. Optional.
 + *
-+ * This allocates and initializes a mock struct &drm_plane meant to be
++ * This allocates and initializes a mock struct &drm_crtc meant to be
 + * part of a mock device for a KUnit test.
 + *
 + * Resources will be cleaned up automatically.
 + *
 + * @funcs will default to the default helpers implementations.
-+ * @helper_funcs will default to an empty implementation. @formats will
-+ * default to XRGB8888 only. @modifiers will default to a linear
-+ * modifier only.
++ * @helper_funcs will default to an empty implementation.
 + *
 + * Returns:
-+ * A pointer to the new plane, or an ERR_PTR() otherwise.
++ * A pointer to the new CRTC, or an ERR_PTR() otherwise.
 + */
-+struct drm_plane *
-+drm_kunit_helper_create_primary_plane(struct kunit *test,
-+				      struct drm_device *drm,
-+				      const struct drm_plane_funcs *funcs,
-+				      const struct drm_plane_helper_funcs *helper_funcs,
-+				      const uint32_t *formats,
-+				      unsigned int num_formats,
-+				      const uint64_t *modifiers)
++struct drm_crtc *
++drm_kunit_helper_create_crtc(struct kunit *test,
++			     struct drm_device *drm,
++			     struct drm_plane *primary,
++			     struct drm_plane *cursor,
++			     const struct drm_crtc_funcs *funcs,
++			     const struct drm_crtc_helper_funcs *helper_funcs)
 +{
-+	struct drm_plane *plane;
++	struct drm_crtc *crtc;
++	int ret;
 +
 +	if (!funcs)
-+		funcs = &default_plane_funcs;
++		funcs = &default_crtc_funcs;
 +
 +	if (!helper_funcs)
-+		helper_funcs = &default_plane_helper_funcs;
++		helper_funcs = &default_crtc_helper_funcs;
 +
-+	if (!formats || !num_formats) {
-+		formats = default_plane_formats;
-+		num_formats = ARRAY_SIZE(default_plane_formats);
-+	}
++	crtc = drmm_kzalloc(drm, sizeof(*crtc), GFP_KERNEL);
++	KUNIT_ASSERT_NOT_NULL(test, crtc);
 +
-+	if (!modifiers)
-+		modifiers = default_plane_modifiers;
++	ret = drmm_crtc_init_with_planes(drm, crtc,
++					 primary,
++					 cursor,
++					 funcs,
++					 NULL);
++	KUNIT_ASSERT_EQ(test, ret, 0);
 +
-+	plane = __drmm_universal_plane_alloc(drm,
-+					     sizeof(struct drm_plane), 0,
-+					     0,
-+					     funcs,
-+					     formats,
-+					     num_formats,
-+					     default_plane_modifiers,
-+					     DRM_PLANE_TYPE_PRIMARY,
-+					     NULL);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, plane);
++	drm_crtc_helper_add(crtc, helper_funcs);
 +
-+	drm_plane_helper_add(plane, helper_funcs);
-+
-+	return plane;
++	return crtc;
 +}
-+EXPORT_SYMBOL_GPL(drm_kunit_helper_create_primary_plane);
++EXPORT_SYMBOL_GPL(drm_kunit_helper_create_crtc);
 +
  MODULE_AUTHOR("Maxime Ripard <maxime@cerno.tech>");
  MODULE_LICENSE("GPL");
 diff --git a/include/drm/drm_kunit_helpers.h b/include/drm/drm_kunit_helpers.h
-index 3ae19892229d..38667d624aa8 100644
+index 38667d624aa8..6e99627edf45 100644
 --- a/include/drm/drm_kunit_helpers.h
 +++ b/include/drm/drm_kunit_helpers.h
-@@ -10,6 +10,8 @@
+@@ -9,6 +9,8 @@
+ 
  #include <kunit/test.h>
  
++struct drm_crtc_funcs;
++struct drm_crtc_helper_funcs;
  struct drm_device;
-+struct drm_plane_funcs;
-+struct drm_plane_helper_funcs;
- struct kunit;
+ struct drm_plane_funcs;
+ struct drm_plane_helper_funcs;
+@@ -110,4 +112,12 @@ drm_kunit_helper_create_primary_plane(struct kunit *test,
+ 				      unsigned int num_formats,
+ 				      const uint64_t *modifiers);
  
- struct device *drm_kunit_helper_alloc_device(struct kunit *test);
-@@ -99,4 +101,13 @@ drm_kunit_helper_atomic_state_alloc(struct kunit *test,
- 				    struct drm_device *drm,
- 				    struct drm_modeset_acquire_ctx *ctx);
- 
-+struct drm_plane *
-+drm_kunit_helper_create_primary_plane(struct kunit *test,
-+				      struct drm_device *drm,
-+				      const struct drm_plane_funcs *funcs,
-+				      const struct drm_plane_helper_funcs *helper_funcs,
-+				      const uint32_t *formats,
-+				      unsigned int num_formats,
-+				      const uint64_t *modifiers);
++struct drm_crtc *
++drm_kunit_helper_create_crtc(struct kunit *test,
++			     struct drm_device *drm,
++			     struct drm_plane *primary,
++			     struct drm_plane *cursor,
++			     const struct drm_crtc_funcs *funcs,
++			     const struct drm_crtc_helper_funcs *helper_funcs);
 +
  #endif // DRM_KUNIT_HELPERS_H_
 
