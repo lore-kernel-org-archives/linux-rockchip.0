@@ -4,49 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A4BC5478C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A173C48BF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 18:17:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OrZ79MyCwpAZxpgDGJI/Aa9uZWdvnjb9+DVDIMjXV60=; b=nM5lBPaGTW7NQc
-	ISenZUIDXBmRxu8LyxEuPjaXAWhLvYdklN1zxW67sAbSWnAAbV7j952aZx+E74UUA2jgcDAnpo2ay
-	K0qv2yK6/NcYPXqeXzgW/RWgLhiw2rMgFq1UzZ/Zx/Z+Uc+tDHUztLfH/cAVnuD6eRagUlxekIgws
-	gQjlzaRf4qofjzv9+zhgLOAd2CPqWQIRz0BJmJtpgoR6+AkN4k6qhwo0iekvcmWLt/gDleXhebhQ5
-	A5fvkmyhToPbxKzP35u8jOssstV1E3Z4iRqEz2Fcz/HgtEWz6svKXKcNAfQ5VRLmbuOdfx8QqYAK9
-	bVWaUBP8e6rTqpLZBb7A==;
+	List-Owner; bh=a52nDUOY7Th236kXCx2h4EPW37w6Y84xJrNpYocoLoM=; b=ghg/FTIhcvst0o
+	9ZpbYVYKLtymJkJUKAu67hLHQzRTWW3YPZYAYR/r0eFpppS1QxuxBK8K9XDQOhrszYZVUiJ43ermR
+	tTJspSYn20A+St7tK2zqcwWEVKlSS3PHsOkBIcSwmMX4u/umneTIbrUQFy52yNSTKDPNYt+Sw0Vhs
+	Pkwjh/JiCR4XTQUqBy09xWuA1dzxeBXuiWTqMQr0tEwy6FmoNd71jdWfijwjtXLREiYUInr8YHB97
+	No5vfXehc5l7/EKh6J4cDhjvJwAf/wWiwvansuZX2ZbSsNDFXj5BqTnKT0sPy7KKpy7KiJmEkZJJu
+	C4AEPZvftfwm6I3wZHKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDd2-00000005xy9-3V8S;
-	Thu, 22 Feb 2024 18:17:05 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rdDdD-00000005y5R-3e28;
+	Thu, 22 Feb 2024 18:17:15 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdDai-00000005x40-482c;
-	Thu, 22 Feb 2024 18:14:45 +0000
+	id 1rdDan-00000005x9u-22ac;
+	Thu, 22 Feb 2024 18:14:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=LGU1uoSYV6XFxmpWP17GkUNO3Z1gMHblacZZR0S6V/8=; b=pYfuJB36Y6pLQj2r2GbRLHibxu
+	mTqAE+HM6BYUHKShybXZtUh3mFK3pmmkqXV7azekRRhIbxZ0CBOC+lwHEeOQWhZ+PttzNsAFSB1pA
+	jledvt8BgGGr5CgJa3eVwhMYm+UTMcplNVhKIQoifEt3OaGuHTje7mTQEcruhsn6ri+8Zjm20S7Sq
+	zK55SQAS1KLNTWKDYKTaGIiytcNwZ+AUFUdksoQqITXtQzOqEeahgEoMSefFyvDVO9i17ddLUwz8Q
+	SzluUYjqruLR1JnusdLeV+YJoXikq105JDi1/6ZM44pLC/cZ0CxXgX53eq+hU8k8XPzhWf/uO0zXX
+	nIWKhAuA==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rdDak-00000004IFC-2d0F;
+	Thu, 22 Feb 2024 18:14:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 24C3FCE28C1;
-	Thu, 22 Feb 2024 18:14:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C23AC433C7;
-	Thu, 22 Feb 2024 18:14:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E5DC4619AF;
+	Thu, 22 Feb 2024 18:14:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63CADC43399;
+	Thu, 22 Feb 2024 18:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708625670;
-	bh=kHekB7+ds8HZQmTIIDcT/8myymC9mYLsud01YExrJOg=;
+	s=k20201202; t=1708625673;
+	bh=TPv8mjAc7k5WixCBRXHynM6H/AaB/bUbe1H5MJSrFTQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=g3zBTaDItjm2XsKVKjxzwnBiuzy4wNXnVf4UYigdnUHlIBqP105EyAoYw1osMwpJM
-	 aMnUJvo0HCmK4cFpqouGt7Y8kLbOsY+EGzHu4rJO1W69bpA3nVT7ZPJkW8p/2DmLEP
-	 I6uBgaVc+ZJ3RwKSHbHsp3LLzfj1dyhWKUphOwiMb+//cxELWiEKcQ/n44G14DmEKb
-	 8fyx883D8W1OmsOof61Lda6qUjkPeQf2KnnvgI+LX2E0WcZLCc4RhaRu1uqsRBwiEn
-	 iSsaRJjCa7Bv2QUUN1U5erKp4Ara5IzUddvlwcvwior7wpnawQYD5kN0+oaQIwnPSi
-	 MDoICaAnAGe+g==
+	b=X+M5ANkB1G/XImwHDpav6Puqp1tOivphrSFKAYvmOdJchFlHyCPJYfTXMrxPNi+Wo
+	 Xi5p2qC9Q92a0AH97//XjY6qjSMO0pzcsMplhKKuHRAp1/CqdU62EflPbnWwI1NHpL
+	 iMgRNV2C3AoV7bcRuCBbhihhYOGTyP9b/j9oB/of4n8ncIufeKXgVJXY+fOJF67P7T
+	 SP3Ecy3Hpc1uA2/A7mPcdN+szfNbAFddDScakVfzxdnXN0yizutE9sfcQP5w1UuOfO
+	 y/MM1ie2l+ekMhxnRguIo1l6hd2rWld2YAFHsP5Yg2I5vyTn100oEuAB6E6Q3s5smY
+	 DT1CAmYDF8+JQ==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 22 Feb 2024 19:13:47 +0100
-Subject: [PATCH v7 01/36] drm/tests: helpers: Include missing drm_drv
- header
+Date: Thu, 22 Feb 2024 19:13:48 +0100
+Subject: [PATCH v7 02/36] drm/tests: helpers: Add atomic helpers
 MIME-Version: 1.0
-Message-Id: <20240222-kms-hdmi-connector-state-v7-1-8f4af575fce2@kernel.org>
+Message-Id: <20240222-kms-hdmi-connector-state-v7-2-8f4af575fce2@kernel.org>
 References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 In-Reply-To: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -64,18 +77,17 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=857; i=mripard@kernel.org;
- h=from:subject:message-id; bh=kHekB7+ds8HZQmTIIDcT/8myymC9mYLsud01YExrJOg=;
- b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+14+OPGD65yaVsrXhVmJuUeYFHZas6m/kLWwjn/uM
- e2Q+QW2jlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzE6Cojw8dX7G+ZpRLPTvky
- 72jM/sy/Xqt2bxLjSFZ5zHvgq6fpOROGf3bOQpurI/9sPsWz6HlQz6qaOm62E3fYiyTfejJ9UOr
- 2YQAA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1086; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=TPv8mjAc7k5WixCBRXHynM6H/AaB/bUbe1H5MJSrFTQ=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnX+17F6uVucBPQ2WjBInZLQdLzjvr37ZceBBx8Ei6y/
+ 9tibRnRjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzkpyAjw7GvS26/03vapBp3
+ bfr1pd/XHs1av5C7ZnvFwfhDn96/aFrIyPBO/Z2sBptBi2LkPzHmdT0fdRIXNsttmvNX64XIVPa
+ zbpwA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_101441_524608_A1C94A1F 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240222_181442_805973_257949B9 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +104,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We have a few functions declared in our kunit helpers header, some of
-them dereferencing the struct drm_driver.
+The mock device we were creating was missing any of the driver-wide
+helpers. That was fine before since we weren't testing the atomic state
+path, but we're going to start, so let's use the default
+implementations.
 
-However, we don't include the drm_drv.h header file defining that
-structure, leading to compilation errors if we don't include both
-headers.
-
-Fixes: d98780310719 ("drm/tests: helpers: Allow to pass a custom drm_driver")
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- include/drm/drm_kunit_helpers.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/tests/drm_kunit_helpers.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/include/drm/drm_kunit_helpers.h b/include/drm/drm_kunit_helpers.h
-index ba483c87f0e7..3ae19892229d 100644
---- a/include/drm/drm_kunit_helpers.h
-+++ b/include/drm/drm_kunit_helpers.h
-@@ -3,6 +3,8 @@
- #ifndef DRM_KUNIT_HELPERS_H_
- #define DRM_KUNIT_HELPERS_H_
+diff --git a/drivers/gpu/drm/tests/drm_kunit_helpers.c b/drivers/gpu/drm/tests/drm_kunit_helpers.c
+index ca4f8e4c5d5d..4fb11b938bc1 100644
+--- a/drivers/gpu/drm/tests/drm_kunit_helpers.c
++++ b/drivers/gpu/drm/tests/drm_kunit_helpers.c
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0
  
-+#include <drm/drm_drv.h>
-+
- #include <linux/device.h>
+ #include <drm/drm_atomic.h>
++#include <drm/drm_atomic_helper.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_kunit_helpers.h>
+ #include <drm/drm_managed.h>
+@@ -14,6 +15,8 @@
+ #define KUNIT_DEVICE_NAME	"drm-kunit-mock-device"
  
- #include <kunit/test.h>
+ static const struct drm_mode_config_funcs drm_mode_config_funcs = {
++	.atomic_check	= drm_atomic_helper_check,
++	.atomic_commit	= drm_atomic_helper_commit,
+ };
+ 
+ /**
 
 -- 
 2.43.2
