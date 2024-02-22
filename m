@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6280C48BF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 17:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4FCEC54791
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 17:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lzPvRA0gFrutB2T9jXGasbMI3BxJSjt0RryDgYL4MOk=; b=2goEzdoMa1BvTs
-	k1mUeikiFGCoSwPL3dJW2qpqcpQ07p0NDzuWK42Re2KGjDw9Afvp7h/d4csCvJ/4XTpMQEfEiZ8aZ
-	ezNhhjL7OIwamezGpqqpbE+cImeVnj7tgfK2QuzDoIkQD4LmevNVeWETREgUWPVqYceLvXqebmDhF
-	+QoBtRMJ9eR27gOFWEVTp5/EQyUclsQhVr7qk2Qe+RS0xQEw40nkALJwof+gLaVlbwDKmO5aAz4Fx
-	tKJfZWOVDKLUsIR0GfzasjawRU00dGBHDDTyOdIwoqwueQI1vRCaG72AArWu2gch8da+BPg1+hq+i
-	XQbz/Lba3dXdzJL5olcw==;
+	List-Owner; bh=+9BJYU/UmPFCHYx9DQ2iE4SWjDuR1ewFngsGeeB6dlI=; b=UnSdjEgyWZ5//y
+	olxE2K5S5ADwuW6GlchnsbS0bqiTI6SgqXBxVzd3jCBxZsbZwbR0FQiJrVYsJ83Sz1bC4pDvhjMIH
+	Vhq653XDkuPY3rh9rwb8Z/hBLiDu41p/yv0aK9KdQCM6xF9djquB0NGNfUhrhNfTbgsothzXoC4wR
+	GKiod6OqzVHc4U4Eg0DR2oDG/tI/hi4gYqJOW8hZvTWZkZozbQbpLzkPGaMbwfiaJaRfZ+D40hVBq
+	pwcCpaWIpiMjXGiaoMcM0N6GbXlKQZ+TQS/r9rPdmveM4EZ2wex8sJDo1U9jy5JyYWVehgWL2BrWq
+	Lno4PZ+0nIGaSsfxsHJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD48-00000005q4x-2cWl;
-	Thu, 22 Feb 2024 17:41:00 +0000
+	id 1rdD4B-00000005q8X-17nN;
+	Thu, 22 Feb 2024 17:41:03 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD46-00000005q1n-0Xc4
+	id 1rdD49-00000005q5U-3V7w
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 22 Feb 2024 17:40:58 +0000
+	Thu, 22 Feb 2024 17:41:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
 	Content-Type:Content-ID:Content-Description;
-	bh=xhLjauiol2hX/CcN6wSXepYqvX9ekQ41OuBb1dZBQzE=; b=VI1kErhte+r67yhuCNs18JYd6z
-	vssCcE7J7V7UCKGUNVw6DFUXlARQeeKzXNVt8511EIwZ8IWNNEZPh57N/zXvqasgLjZ3ET4UrFcuo
-	nhFDojQ3dk9paU8GyGEIDonuUWx5idNPEOuiZ4zPpkUFsK/mf/rWbfFvEj9ji06DVQlQMy/FIUy21
-	OjBFhsS1FVry/0DjNy6MjJRPSR1zT9knOozBsA+U01hB9+G0SWXOAFOoiI/zTs99X2JptQWDAM77x
-	FIzeND4hipGi9b3amCDh2+xbtFjXRJ6BpDYdehxbwL44ASOd7aLb3gu+HukTVCcaztwo8233Nnmci
-	Wg/q1jmw==;
-Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
+	bh=1VAat8TBDVTapf/cNKrpWJJOpQ7pgkQwxbfklHwcriQ=; b=aoNV8OOUIfT3Y22Aa20pDBrA6G
+	l/L7YQ7AKcevQaHj6vr3mvzWR/W9jy85oH7WUIxK4KpyrwCD/8j60ZMETKGVYC+JusHqfzpusTIjn
+	X18q57OW9qw6OcM76g+RLy2BPChYWtcUbhrWtFNaLW8170AW7YdeTd+QLp4IbM5axiUFgEof1YgY3
+	mTAmQO3Hzgg/nfm8G0ieZ6nn7lCugqtTBzA4j7caCJRTw/d9u51E/21QkSFLvIJ1rrPQTRPOWam3L
+	salg5r5HUqapiYFXkgOmpQt2+W4fU8YUPCh1TYbaqpL3yGd8ohRtbdEOn1eC1Zao4drheWrk75v5D
+	OUFkBJ0Q==;
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdD43-00000004DmK-0PL7
+	id 1rdD45-00000004Dnj-42cY
 	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Feb 2024 17:40:57 +0000
-Received: by mail-qt1-x833.google.com with SMTP id d75a77b69052e-42a4516ec5dso62209141cf.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Feb 2024 09:40:54 -0800 (PST)
+	Thu, 22 Feb 2024 17:41:00 +0000
+Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-42a4516ec5dso62209441cf.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 22 Feb 2024 09:40:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1708623590; x=1709228390; darn=lists.infradead.org;
+        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1708623592; x=1709228392; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=xhLjauiol2hX/CcN6wSXepYqvX9ekQ41OuBb1dZBQzE=;
-        b=p5PVt0UqsO7gtQVusyNcCmDcaxyB3AAOtBGengvG0/saB3EnSK1JpCBUsu6OJYX0RE
-         BW+gYK0Rq4p95nOqWfTsO7HRISVS1nHe/V3fzypENgNG0/5DMfl2AZBvvRHMqWPjSLya
-         y0NJMEkWePz0A6cXfvvYFC0W7koLOjXj54YuwyTXuZWw87ZplHQyuyVw3nkYU70JAquu
-         oAF4yod/2zZWwuFc+2aMTBfUHamYWTU35ABLtbD2bgstsFNp+2fpkcsWHv8I0+1lv4Z6
-         2yO7lfT6ar52I3Gv7oVy5prHSxtvWcFM7w8xKVobeiqWmL12D33OKm2HwZNtamIjPm/I
-         000Q==
+        bh=1VAat8TBDVTapf/cNKrpWJJOpQ7pgkQwxbfklHwcriQ=;
+        b=pCTYCSkI2Fh/D9bhSCqzOw14nsOaRzEPR3p2SzgDrlow5ACSzZxdZs6Zz86rV8oBQE
+         9YzJLUAHa3Um1wZmNkFpIEQUlj40LVJtZ1siEAyrL7a95WgAsOeFKoYEQ9wwNUVdtOcE
+         Zi4TqOwYUfED2RyWyGz1OXn/UQyBa9DMsFWrsO9QJiyX1YBmI5G4cDbClFYZzP1p3lmE
+         En/RtR2bjXzqZ3pLh1tiUmCnxGkmrcki5Kdi7dE8dOtbmAzM4uZ1Q3qF8oZQk7J1E8/M
+         Hx6w8SQLDZUqIftYbTow+K5C3iThleyoO8YU1rWOBYIAGKDI3raafs5z9XTj3tCP5TSs
+         Aw9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1708623590; x=1709228390;
+        d=1e100.net; s=20230601; t=1708623592; x=1709228392;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xhLjauiol2hX/CcN6wSXepYqvX9ekQ41OuBb1dZBQzE=;
-        b=YCrzayCrvaZDCMA8EOtePb3Df47FpWj4AuWL5cd/2Z4wkY3ajvdrMVwcjS5XE4XIVe
-         zQzY1IFyF/MNutHeqnxnoB+t2yP5RSQOofVJJ2dfJNp9XAp2h30UXsSCy5s7tKi8q2k6
-         UWVIwxwYEC8rSe2khXJhuoEgHttY8DyRarxY41pqcIZ7xG8JkuPwv/UTF9Eg3L0kpO8B
-         ebLQoCFgBaHbMzcEJKvtq/rsAenVrNkDqMgpx0Zs5dmTwEvHqrBZ2sfnV3DvHv/WRa3F
-         f4K7geKO4wWIIdzHnZQSRld/LJ/wvlFxnQU0bYSR8YiCcDVKFKZf3kSQGsFDRXXNduqG
-         EyjA==
-X-Forwarded-Encrypted: i=1; AJvYcCXinTbwW1y4D3Su+BX+Brbqs3t1AAJPS13qfZ73GlyC2wtN0zxH43cEIVuEt4r0J4GodPHlR30tTn+qyklDrTa/MWZnq/md4rhBxFpHqaRCrFMJ
-X-Gm-Message-State: AOJu0YyTg/loYxZtJKyTsal5p9k1d5ZG8FtYo95ZLbqu4Mu6FkZB/tp3
-	PrTa0+jfiY7l5R0A+dTip9MeilpJK2CrASEBiyyunJS+D+IUGuiv3svD6dVDjgM=
-X-Google-Smtp-Source: AGHT+IEp4MwFnGzbjUWvOKNS7CvUx1mMeLXTjvER84y2unxVOxwU99/U/wStbNygCnfZAxx//dKL9w==
-X-Received: by 2002:ac8:5b84:0:b0:42e:3bf2:89ce with SMTP id a4-20020ac85b84000000b0042e3bf289cemr5044762qta.49.1708623590514;
-        Thu, 22 Feb 2024 09:39:50 -0800 (PST)
+        bh=1VAat8TBDVTapf/cNKrpWJJOpQ7pgkQwxbfklHwcriQ=;
+        b=H0fTndBMsALWPS9r1qJj6Faq6Kudk7Fzu+6JJUlQWMBBLsB6fIbhoohylnO+tpAIBH
+         F/crmDa78TMvjuljoDKnpoY6W1UbRRuTwscM+4TnqZrKiE0yLyrQK16wFofG2t9gl0oM
+         RHlbJdxI5dgDxVQBlABSyzbZS9U2jV+DtJS0USJKDg7sYfJJrqIGJwnNiRV+48hKAkuL
+         lJH2trFx4FvIwxwA07aUk1SiaouyCVnUmRKfWiYi+qDmZ9hjPdxdwgQwQpW0mjU719Vt
+         VIsKai9kz8FBaA7gCqIIizb9kLfz3Sa3/X4Ts9sW77fsB9XdlK5EY0YLtkz1T2/epd2z
+         RlgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWolJqmVXbK4T3b8dH4T67oeR2fMfXsAC1jNwGq3imyZChiuAsFpSwm4TLTguCcYT3qupbhVrySTOJlMNJxzAiwPylLYC+4m4BEh9Rbc+Ofi6gH
+X-Gm-Message-State: AOJu0YwjX9kXcbVNAs/NHzqIFQgqywPFPaHDWVQxSeobHKT/hmQLd+yU
+	Xb5DlFFX0nKaJWQDUaikSmDS6xhVfGUFYOL85s1BdOI/qiaZtk/SKJy/cqTnFk4=
+X-Google-Smtp-Source: AGHT+IHz4D/tAkiJUKSEKYTo9KdtwALGRXWZMTTOk9WSdUZLPjcPPGovrQbnMAx6QcYLnGz/9iyYUQ==
+X-Received: by 2002:ac8:5f4c:0:b0:42c:7b12:70eb with SMTP id y12-20020ac85f4c000000b0042c7b1270ebmr25812453qta.3.1708623592225;
+        Thu, 22 Feb 2024 09:39:52 -0800 (PST)
 Received: from soleen.c.googlers.com.com (249.240.85.34.bc.googleusercontent.com. [34.85.240.249])
-        by smtp.gmail.com with ESMTPSA id f17-20020ac86ed1000000b0042e5ab6f24fsm259682qtv.7.2024.02.22.09.39.49
+        by smtp.gmail.com with ESMTPSA id f17-20020ac86ed1000000b0042e5ab6f24fsm259682qtv.7.2024.02.22.09.39.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Feb 2024 09:39:50 -0800 (PST)
+        Thu, 22 Feb 2024 09:39:51 -0800 (PST)
 From: Pasha Tatashin <pasha.tatashin@soleen.com>
 To: akpm@linux-foundation.org,
 	alim.akhtar@samsung.com,
@@ -125,16 +125,16 @@ To: akpm@linux-foundation.org,
 	rientjes@google.com,
 	bagasdotme@gmail.com,
 	mkoutny@suse.com
-Subject: [PATCH v5 05/11] iommu/io-pgtable-dart: use page allocation function provided by iommu-pages.h
-Date: Thu, 22 Feb 2024 17:39:31 +0000
-Message-ID: <20240222173942.1481394-6-pasha.tatashin@soleen.com>
+Subject: [PATCH v5 07/11] iommu/rockchip: use page allocation function provided by iommu-pages.h
+Date: Thu, 22 Feb 2024 17:39:33 +0000
+Message-ID: <20240222173942.1481394-8-pasha.tatashin@soleen.com>
 X-Mailer: git-send-email 2.44.0.rc0.258.g7320e95886-goog
 In-Reply-To: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_174055_183710_781E7DE7 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20240222_174058_050286_5B607B24 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,118 +151,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert iommu/io-pgtable-dart.c to use the new page allocation functions
-provided in iommu-pages.h., and remove unnecessary struct io_pgtable_cfg
-argument from __dart_alloc_pages().
+Convert iommu/rockchip-iommu.c to use the new page allocation functions
+provided in iommu-pages.h.
 
 Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-Reviewed-by: Janne Grunau <j@jannau.net>
 Acked-by: David Rientjes <rientjes@google.com>
 Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
 ---
- drivers/iommu/io-pgtable-dart.c | 37 +++++++++++++--------------------
- 1 file changed, 14 insertions(+), 23 deletions(-)
+ drivers/iommu/rockchip-iommu.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iommu/io-pgtable-dart.c b/drivers/iommu/io-pgtable-dart.c
-index 74b1ef2b96be..ad28031e1e93 100644
---- a/drivers/iommu/io-pgtable-dart.c
-+++ b/drivers/iommu/io-pgtable-dart.c
-@@ -23,6 +23,7 @@
- #include <linux/types.h>
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 2685861c0a12..e04f22d481d0 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -26,6 +26,8 @@
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
  
- #include <asm/barrier.h>
 +#include "iommu-pages.h"
++
+ /** MMU register offsets */
+ #define RK_MMU_DTE_ADDR		0x00	/* Directory table address */
+ #define RK_MMU_STATUS		0x04
+@@ -727,14 +729,14 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+ 	if (rk_dte_is_pt_valid(dte))
+ 		goto done;
  
- #define DART1_MAX_ADDR_BITS	36
+-	page_table = (u32 *)get_zeroed_page(GFP_ATOMIC | rk_ops->gfp_flags);
++	page_table = iommu_alloc_page(GFP_ATOMIC | rk_ops->gfp_flags);
+ 	if (!page_table)
+ 		return ERR_PTR(-ENOMEM);
  
-@@ -106,18 +107,12 @@ static phys_addr_t iopte_to_paddr(dart_iopte pte,
- 	return paddr;
- }
- 
--static void *__dart_alloc_pages(size_t size, gfp_t gfp,
--				    struct io_pgtable_cfg *cfg)
-+static void *__dart_alloc_pages(size_t size, gfp_t gfp)
- {
- 	int order = get_order(size);
--	struct page *p;
- 
- 	VM_BUG_ON((gfp & __GFP_HIGHMEM));
--	p = alloc_pages(gfp | __GFP_ZERO, order);
--	if (!p)
--		return NULL;
--
--	return page_address(p);
-+	return iommu_alloc_pages(gfp, order);
- }
- 
- static int dart_init_pte(struct dart_io_pgtable *data,
-@@ -262,13 +257,13 @@ static int dart_map_pages(struct io_pgtable_ops *ops, unsigned long iova,
- 
- 	/* no L2 table present */
- 	if (!pte) {
--		cptep = __dart_alloc_pages(tblsz, gfp, cfg);
-+		cptep = __dart_alloc_pages(tblsz, gfp);
- 		if (!cptep)
- 			return -ENOMEM;
- 
- 		pte = dart_install_table(cptep, ptep, 0, data);
- 		if (pte)
--			free_pages((unsigned long)cptep, get_order(tblsz));
-+			iommu_free_pages(cptep, get_order(tblsz));
- 
- 		/* L2 table is present (now) */
- 		pte = READ_ONCE(*ptep);
-@@ -419,8 +414,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- 	cfg->apple_dart_cfg.n_ttbrs = 1 << data->tbl_bits;
- 
- 	for (i = 0; i < cfg->apple_dart_cfg.n_ttbrs; ++i) {
--		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL,
--					   cfg);
-+		data->pgd[i] = __dart_alloc_pages(DART_GRANULE(data), GFP_KERNEL);
- 		if (!data->pgd[i])
- 			goto out_free_data;
- 		cfg->apple_dart_cfg.ttbr[i] = virt_to_phys(data->pgd[i]);
-@@ -429,9 +423,10 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- 	return &data->iop;
- 
- out_free_data:
--	while (--i >= 0)
--		free_pages((unsigned long)data->pgd[i],
--			   get_order(DART_GRANULE(data)));
-+	while (--i >= 0) {
-+		iommu_free_pages(data->pgd[i],
-+				 get_order(DART_GRANULE(data)));
-+	}
- 	kfree(data);
- 	return NULL;
- }
-@@ -439,6 +434,7 @@ apple_dart_alloc_pgtable(struct io_pgtable_cfg *cfg, void *cookie)
- static void apple_dart_free_pgtable(struct io_pgtable *iop)
- {
- 	struct dart_io_pgtable *data = io_pgtable_to_data(iop);
-+	int order = get_order(DART_GRANULE(data));
- 	dart_iopte *ptep, *end;
- 	int i;
- 
-@@ -449,15 +445,10 @@ static void apple_dart_free_pgtable(struct io_pgtable *iop)
- 		while (ptep != end) {
- 			dart_iopte pte = *ptep++;
- 
--			if (pte) {
--				unsigned long page =
--					(unsigned long)iopte_deref(pte, data);
--
--				free_pages(page, get_order(DART_GRANULE(data)));
--			}
-+			if (pte)
-+				iommu_free_pages(iopte_deref(pte, data), order);
- 		}
--		free_pages((unsigned long)data->pgd[i],
--			   get_order(DART_GRANULE(data)));
-+		iommu_free_pages(data->pgd[i], order);
+ 	pt_dma = dma_map_single(dma_dev, page_table, SPAGE_SIZE, DMA_TO_DEVICE);
+ 	if (dma_mapping_error(dma_dev, pt_dma)) {
+ 		dev_err(dma_dev, "DMA mapping error while allocating page table\n");
+-		free_page((unsigned long)page_table);
++		iommu_free_page(page_table);
+ 		return ERR_PTR(-ENOMEM);
  	}
  
- 	kfree(data);
+@@ -1061,7 +1063,7 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+ 	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
+ 	 * Allocate one 4 KiB page for each table.
+ 	 */
+-	rk_domain->dt = (u32 *)get_zeroed_page(GFP_KERNEL | rk_ops->gfp_flags);
++	rk_domain->dt = iommu_alloc_page(GFP_KERNEL | rk_ops->gfp_flags);
+ 	if (!rk_domain->dt)
+ 		goto err_free_domain;
+ 
+@@ -1083,7 +1085,7 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+ 	return &rk_domain->domain;
+ 
+ err_free_dt:
+-	free_page((unsigned long)rk_domain->dt);
++	iommu_free_page(rk_domain->dt);
+ err_free_domain:
+ 	kfree(rk_domain);
+ 
+@@ -1104,13 +1106,13 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 			u32 *page_table = phys_to_virt(pt_phys);
+ 			dma_unmap_single(dma_dev, pt_phys,
+ 					 SPAGE_SIZE, DMA_TO_DEVICE);
+-			free_page((unsigned long)page_table);
++			iommu_free_page(page_table);
+ 		}
+ 	}
+ 
+ 	dma_unmap_single(dma_dev, rk_domain->dt_dma,
+ 			 SPAGE_SIZE, DMA_TO_DEVICE);
+-	free_page((unsigned long)rk_domain->dt);
++	iommu_free_page(rk_domain->dt);
+ 
+ 	kfree(rk_domain);
+ }
 -- 
 2.44.0.rc0.258.g7320e95886-goog
 
