@@ -4,52 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2745FC48BF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 10:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63B0C48BF8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Feb 2024 10:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3z9bFfhEE/PAfJpnp3mzELCqpEKY+Zi/VfY2gwp/l5s=; b=bedkMCi0pmGhWm
-	HfXq4eYTG92nmVyLHN5IrOUk+PX9M7nMeia+NPeegGqoF5XU7+UpBy3XRw+oWThQOIoaqkfWK/egS
-	bQFNuE8D9xTHKQoylomjCmGCGlvx7gO7xRznMElJ47y51zeWG/ZOyG9hz1jxTgqaRcX6vjH0Nu8dx
-	Ya2xwpaVlJlE8pTaOa+XHb2ubl48MPuNuoXb2n5d5e9dYzhWMP9AXqiaJCtcs7iPrR8OxHxMJHBYR
-	rW91iYxAmZxS+y6lwbbRbGVGTcsfD08x/wpNWTtUuSGslIR/EyyTjxS4OdNDz+oy6VCkRiyiHgax0
-	ETqrzUu4xMfPMorOwuiw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yMsSmBZWBDFdXFaeGdo25OgK0p26UaQ3zAasPG/Cdvc=; b=mjsnO9OnqP0WJnQD4B1Ay8tK7J
+	V7UnkBGb7UES0LFkXQ/ahpBPgg23iFe7eBeLLGcah2HgRhHRuZdULT3wqYYH5mqD5aze0o+iPXFKr
+	sn9kQYOtoVk/rfSvYkBAjl7yqqQGThqTlyAAFMBg0gR8p2vDYebJad/Pa/mctbC5kbfd+V6i3hxsl
+	M5y0liS3Yb3Od+UyID+lG8ZuTdJBmgFLFuCPCwYlmEaTp5brSC7KAPFAfJC+2JbV7X8fMYhKmMLOe
+	gggMTrrJt26rN+ptBo/Ux2F1QSoUYQ5uQF3pUaxKIlZhMG9CF1wrghxbrC2aVrJXfBitdxkDiBnrR
+	yQS5lrNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rd5sk-00000004Of5-0pNg;
-	Thu, 22 Feb 2024 10:00:46 +0000
-Received: from mail.thrivehub.pl ([164.132.48.43])
+	id 1rd6iU-00000004Yh3-0Uxy;
+	Thu, 22 Feb 2024 10:54:14 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rd5sg-00000004Od0-2giW
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Feb 2024 10:00:43 +0000
-Received: by mail.thrivehub.pl (Postfix, from userid 1002)
-	id 936F025802; Wed, 21 Feb 2024 08:45:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=thrivehub.pl; s=mail;
-	t=1708505211; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
-	h=Date:From:To:Subject:From;
-	b=q+wts4W+kh3mzQcDFYrCt7GkfYWfGtvjAkVTGQ5eZihm6gY+wuHFlnkx5JKlkvvRP
-	 cMfTLq6S269tg3K0n2ZsbZinqcByIZJh13MKWv9oCc/qhRichHKRJWWZQM3Lw5wKw1
-	 tJdSRoYLsBSOGM0FS28kLbeijbJFYfuJpAHLPPUR2s/lMbGLrB0dtYRIpp5kg7Tx0Y
-	 rg8V/4gn03QZyhWnUhx2nwYbGoxHWIvjFbkcW16sf4EG6CerRJmhqH3tegabo8OrgW
-	 EAkO8t4rSQvC84mUf5AiZEpjMyCVK/H+gpQAvauLnh0T0pB5Mps3WI3SX3e3Kq/tkg
-	 amnRCKAZZoDWw==
-Received: by mail.thrivehub.pl for <linux-rockchip@lists.infradead.org>; Wed, 21 Feb 2024 08:45:49 GMT
-Message-ID: <20240221074500-0.1.4r.233r4.0.pej0jg6qaa@thrivehub.pl>
-Date: Wed, 21 Feb 2024 08:45:49 GMT
-From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.thrivehub.pl
+	id 1rd6iQ-00000004Yey-0TIu;
+	Thu, 22 Feb 2024 10:54:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 43E4DCE171B;
+	Thu, 22 Feb 2024 10:54:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 062AFC433F1;
+	Thu, 22 Feb 2024 10:54:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1708599247;
+	bh=loLivqtLkCVCvcc36ob4PcvIWRrqM9ZGR67glJQXpxQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p3wvyloeEyROYySZMhKhyijsbbEPmsXor7/vqv3JAmDrQirLk9J3HpQfxHf2AHS4g
+	 3Mfkl4Z2sWtuKKkFkziZqxoMBoCctyt+WE9cuGJGizwvG7yvpeRcurNfsWHiVi+mYH
+	 THcCJ1trswqTgqUw3+La26WaVeATB6DDGyEm3ySw3HZzniNsdtWbaEA9SWKHKmzLvR
+	 V5T0cnYVsMtXBcqZtBzkn+JR2bfkQmGT7/cIWQb5pB49yZCPIF2Ys527u/KCq+8nmH
+	 cUnfDQz5A0/fGs2+TufpQ3OdZXy0xGdNsd0keKdkoWu84ILsff6dzn0BFmmYCv2TXM
+	 tkSJQ6H9fU8HQ==
+Date: Thu, 22 Feb 2024 11:54:04 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Sebastian Wick <sebastian.wick@redhat.com>
+Cc: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Emma Anholt <emma@anholt.net>, 
+	Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Subject: Re: [PATCH v5 08/44] drm/connector: hdmi: Add Broadcast RGB property
+Message-ID: <euaujtp4jyyoud3ccg5qhyvixyq2p6vir4ojlzoky6kep754rj@wruidyfxssry>
+References: <hez2m57ogqx3yyqk45tzdkvxvhrbdepgm244i4m2aty2xhf5b5@acqgvmxhmmvr>
+ <Zb0aYAapkxQ2kopt@intel.com>
+ <zml6j27skvjmbrfyz7agy5waxajv4p4asbemeexelm3wuv4o7j@xkd2wvnxhbuc>
+ <20240209203435.GB996172@toolbox>
+ <ahfl6f72lpgpsbnrbgvbsh4db4npr2hh36kua2c6krh544hv5r@dndw4hz2mu2g>
+ <Zco-DQaXqae7B1jt@intel.com>
+ <yx2t7xltxxgsngdsxamsfq6y7dze3wzegxcqwmsb5yrxen73x6@u3vilqhpci4w>
+ <20240212170618.GA1372043@toolbox>
+ <2mih3humepuedtli7ge52ncom4uffkqravdpalncgfyucmwdzc@bp5o7i3ky77a>
+ <20240219140144.GB1956149@toolbox>
 MIME-Version: 1.0
+In-Reply-To: <20240219140144.GB1956149@toolbox>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240222_020042_841025_21989F6D 
-X-CRM114-Status: UNSURE (   1.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240222_025410_532638_E527C81F 
+X-CRM114-Status: GOOD (  70.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,17 +81,271 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1295047531390447474=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
-c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
-IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
-ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
-ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
-b24gSmFua293c2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+
+--===============1295047531390447474==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gwyt2ovqrahookux"
+Content-Disposition: inline
+
+
+--gwyt2ovqrahookux
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Feb 19, 2024 at 03:01:44PM +0100, Sebastian Wick wrote:
+> On Thu, Feb 15, 2024 at 12:00:01PM +0100, Maxime Ripard wrote:
+> > On Mon, Feb 12, 2024 at 06:06:18PM +0100, Sebastian Wick wrote:
+> > > On Mon, Feb 12, 2024 at 05:53:48PM +0100, Maxime Ripard wrote:
+> > > > On Mon, Feb 12, 2024 at 05:49:33PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > > On Mon, Feb 12, 2024 at 11:01:07AM +0100, Maxime Ripard wrote:
+> > > > > > On Fri, Feb 09, 2024 at 09:34:35PM +0100, Sebastian Wick wrote:
+> > > > > > > On Mon, Feb 05, 2024 at 10:39:38AM +0100, Maxime Ripard wrote:
+> > > > > > > > On Fri, Feb 02, 2024 at 06:37:52PM +0200, Ville Syrj=E4l=E4=
+ wrote:
+> > > > > > > > > On Fri, Feb 02, 2024 at 04:59:30PM +0100, Maxime Ripard w=
+rote:
+> > > > > > > > > > On Fri, Feb 02, 2024 at 05:40:47PM +0200, Ville Syrj=E4=
+l=E4 wrote:
+> > > > > > > > > > > On Fri, Feb 02, 2024 at 02:01:39PM +0100, Maxime Ripa=
+rd wrote:
+> > > > > > > > > > > > Hi,
+> > > > > > > > > > > >=20
+> > > > > > > > > > > > On Mon, Jan 15, 2024 at 03:37:20PM +0100, Sebastian=
+ Wick wrote:
+> > > > > > > > > > > > > > >  /**
+> > > > > > > > > > > > > > >   * DOC: HDMI connector properties
+> > > > > > > > > > > > > > >   *
+> > > > > > > > > > > > > > > + * Broadcast RGB
+> > > > > > > > > > > > > > > + *      Indicates the RGB Quantization Range=
+ (Full vs Limited) used.
+> > > > > > > > > > > > > > > + *      Infoframes will be generated accordi=
+ng to that value.
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > > > + *      The value of this property can be on=
+e of the following:
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > > > + *      Automatic:
+> > > > > > > > > > > > > > > + *              RGB Range is selected automa=
+tically based on the mode
+> > > > > > > > > > > > > > > + *              according to the HDMI specif=
+ications.
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > > > + *      Full:
+> > > > > > > > > > > > > > > + *              Full RGB Range is forced.
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > > > + *      Limited 16:235:
+> > > > > > > > > > > > > > > + *              Limited RGB Range is forced.=
+ Unlike the name suggests,
+> > > > > > > > > > > > > > > + *              this works for any number of=
+ bits-per-component.
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > > > + *      Drivers can set up this property by =
+calling
+> > > > > > > > > > > > > > > + *      drm_connector_attach_broadcast_rgb_p=
+roperty().
+> > > > > > > > > > > > > > > + *
+> > > > > > > > > > > > > >=20
+> > > > > > > > > > > > > > This is a good time to document this in more de=
+tail. There might be two
+> > > > > > > > > > > > > > different things being affected:
+> > > > > > > > > > > > > >=20
+> > > > > > > > > > > > > > 1. The signalling (InfoFrame/SDP/...)
+> > > > > > > > > > > > > > 2. The color pipeline processing
+> > > > > > > > > > > > > >=20
+> > > > > > > > > > > > > > All values of Broadcast RGB always affect the c=
+olor pipeline processing
+> > > > > > > > > > > > > > such that a full-range input to the CRTC is con=
+verted to either full- or
+> > > > > > > > > > > > > > limited-range, depending on what the monitor is=
+ supposed to accept.
+> > > > > > > > > > > > > >=20
+> > > > > > > > > > > > > > When automatic is selected, does that mean that=
+ there is no signalling,
+> > > > > > > > > > > > > > or that the signalling matches what the monitor=
+ is supposed to accept
+> > > > > > > > > > > > > > according to the spec? Also, is this really HDM=
+I specific?
+> > > > > > > > > > > > > >=20
+> > > > > > > > > > > > > > When full or limited is selected and the monito=
+r doesn't support the
+> > > > > > > > > > > > > > signalling, what happens?
+> > > > > > > > > > > > >=20
+> > > > > > > > > > > > > Forgot to mention: user-space still has no contro=
+l over RGB vs YCbCr on
+> > > > > > > > > > > > > the cable, so is this only affecting RGB? If not,=
+ how does it affect
+> > > > > > > > > > > > > YCbCr?
+> > > > > > > > > > > >=20
+> > > > > > > > > > > > So I dug a bit into both the i915 and vc4 drivers, =
+and it looks like if
+> > > > > > > > > > > > we're using a YCbCr format, i915 will always use a =
+limited range while
+> > > > > > > > > > > > vc4 will follow the value of the property.
+> > > > > > > > > > >=20
+> > > > > > > > > > > The property is literally called "Broadcast *RGB*".
+> > > > > > > > > > > That should explain why it's only affecting RGB.
+> > > > > > > > > >=20
+> > > > > > > > > > Right. And the limited range option is called "Limited =
+16:235" despite
+> > > > > > > > > > being usable on bpc > 8 bits. Naming errors occurs, and=
+ history happens
+> > > > > > > > > > to make names inconsistent too, that's fine and not an =
+argument in
+> > > > > > > > > > itself.
+> > > > > > > > > >=20
+> > > > > > > > > > > Full range YCbCr is a much rarer beast so we've never=
+ bothered
+> > > > > > > > > > > to enable it.
+> > > > > > > > > >=20
+> > > > > > > > > > vc4 supports it.
+> > > > > > > > >=20
+> > > > > > > > > Someone implemented it incorrectly then.
+> > > > > > > >=20
+> > > > > > > > Incorrectly according to what documentation / specification=
+? I'm sorry,
+> > > > > > > > but I find it super ironic that i915 gets to do its own thi=
+ng, not
+> > > > > > > > document any of it, and when people try to clean things up =
+they get told
+> > > > > > > > that we got it all wrong.
+> > > > > > >=20
+> > > > > > > FWIW, this was an i915 property and if another driver uses th=
+e same
+> > > > > > > property name it must have the same behavior. Yes, it isn't s=
+tandardized
+> > > > > > > and yes, it's not documented (hence this effort here) but it'=
+s still on
+> > > > > > > vc4 to make the property compatible.
+> > > > > >=20
+> > > > > > How is it not compatible? It's a superset of what i915 provides=
+, but
+> > > > > > it's strictly compatible with it.
+> > > > >=20
+> > > > > No it is not.
+> > > >=20
+> > > > The property is compatible with i915 interpretation of it, whether =
+you
+> > > > like it or not. And that's what Sebastian was referring to.
+> > > >=20
+> > > > > Eg. what happens if you set the thing to full range for RGB (whic=
+h you
+> > > > > must on many broken monitors), and then the kernel automagically
+> > > > > switches to YCbCr (for whatever reason) but the monitor doesn't
+> > > > > support full range YCbCr? Answer: you get crap output.
+> > > >=20
+> > > > And that part is just moving goalposts.
+> > >=20
+> > > But it's really not.
+> >=20
+> > It really is. This whole discussion started by "well it would be nice if
+> > we made that property handled by the core", and we're now at the "we
+> > need to deal with broken YCbCr displays and i915 opinion about them"
+> > stage. After creating documentation, unit tests, etc. It's the textbook
+> > definition of moving goalposts. And while i915 won't be affected by all
+> > that work.
+>=20
+> Sorry, but what you're saying is just not true.
+>=20
+> The Broadcast RGB property is an Intel specific property.
+
+No, it's not. vc4 has been using it for a year now.
+
+> It lacked documentation but the user space contract exists and it
+> based on how i915 implemented it. By changing the semantics you're
+> breaking user space. The documentation has to document the current
+> contract between i915 and user space, not whatever you want the
+> property to be like.
+>=20
+> I get that you're frustrated that you have to do work while i915 doesn't
+> but none of that is relevant for what the property is and how user space
+> expects it to work.
+
+That's not it, really. I don't mind doing the work. I do mind losing
+functionalities on something that was working fine. And getting the
+blame for something that is, at best, just as much of an documentation
+issue on i915 devs.
+
+> > That series has been stuck for multiple iterations on pointless and
+> > mundane debates while the biggest part and whole point of it is not
+> > getting any review. So yeah, sorry, it's frustrating.
+>=20
+> I'm reviewing the parts that I can, and that's the uAPI. I find it
+> really offensive that you're saying that this is pointless and mundate.
+
+I'm sorry I offended you, but I was talking about the whole debate
+itself, not the uAPI. The uAPI itself exists. It's already there, it's
+used in the wild on several drivers, and several user-space components.
+
+What that patch does is trying to document it, and test it. It's a net
+benefit. Is it perfect? Probably not.
+
+It's a net benefit nonetheless. The part where I mostly disagree with
+you I guess (and what we've actually been arguing obut) is trying to get
+something perfect (to the best of our knowledge) out of it.
+
+Anyway, I'll just shut up and to do the work I guess.
+
+> The uAPI is your end product, if it can't be used, everything you do in
+> your driver is utterly pointless.
+>=20
+> > > The Broadcast RGB property kind of works from a user space perspective
+> > > because it's a workaround for broken sinks. If a sink expects limited
+> > > range we can force full range. If this however affects YCbCr modes as
+> > > well, then this isn't a workaround for broken RGB range anymore
+> > > because it now breaks YCbCr.
+> >=20
+> > Or, you know, it's a workaround for broken YCbCr display.
+>=20
+> Displays can accept both RGB and YCbCr signals, drivers can chose
+> whichever they want, and user space can not influence or even know which
+> one is being used.
+>=20
+> The automatic selection of the range is very different between RGB and
+> YCbCr. If user space forces the range to a specific value and the driver
+> for whatever reason switches from RGB to YCbCr or the other way around,
+> this forcing of the range will most likely be incorrect.
+>=20
+> This is what we're talking about when we say that the semantics of the
+> vc4 Broadcast RGB property is broken. User space literally cannot use it
+> consistenly. By restricting it to RGB signals, user space can user it
+> consistently and fix monitors that do not follow the automatic
+> quantization range algorithm correctly. Yes, if there is an issue with
+> the quantization range of a YCbCr signal then this property doesn't
+> help, but it never tried to help those cases.
+
+Ack, thanks
+
+Maxime
+
+--gwyt2ovqrahookux
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZdcnzAAKCRDj7w1vZxhR
+xRqnAQDefz6f2FBe9kLtuo09d0IXpRytvlJT3Y9pbl1YdRZYMgEApnLSteNUg63V
+/mBTl1qxQbzQrR5ewp8lQ1kYaAXFwQM=
+=eUkv
+-----END PGP SIGNATURE-----
+
+--gwyt2ovqrahookux--
+
+
+--===============1295047531390447474==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1295047531390447474==--
+
