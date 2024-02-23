@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20710C54798
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 12:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD9F8C5478C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 12:47:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6g/7B9BROAH14D75xz2r96GJKK8ZScy9kCcERpmD5wU=; b=2YyND/STofqErx
-	YbepsJpdPbevIvObM+1GXu8q1r448nV8HoW2yw+9UH7eSTZasY1QNJLwWYfsv3xukotJGhiSg3Mrd
-	MJ4494x1ODOq2EizA5+Wsy7I7D8Dzq1ziuanvXh2hudk5nv2xfWj5XVg5UTwmwTgjE44VyeqlvqmV
-	hAqn2++24oRfenaVG7D0AqGboZ69a+P+Q6bL1JLbU0uv8LVYrgzsdSN5z5ItANP6dnPRcfade44GF
-	MnQj1hzs0KjMo1NUnNIS+hTCGo2TFkD9l8qZa7Qi+0shB+85O4PyRG4M56SbpVc3LV5ffxcAWFFO2
-	0YpmI39Ao12vbXa5RUuQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Wpp5KHwEhcgrsb0wvtsicXtSFRvjEazcdmXQq5rJKg4=; b=RYYpV1gK6d+6gl
+	d+RcUw4fFX8fW4KM+zmVPJHDvVjbWjmwRU43itKF0y/zbSTcnW3lOMQsba8Dk9S1Xt21ZXTo9SdXJ
+	fq9EX4SQj8e7AcX0KVAGcegZsVJbTl3WidWNT45R7JzME7Sl0uLXHCCciqHSRRYO38qrFSIa4COk8
+	VSw2Qp3GpV20RT9QsXy3cCqNO0l9qfQPdX0QRtKHcZ5iA1PqEacg7mvDwToBsaGLYrC9ZRp2naRaI
+	DwSbPc28RcUA2G9dMFPKBuInxBEieC0OFlIqhGCnxm2GSPQpjF6eNbDJ/ib0HJSOXOsvbnDBtFpOQ
+	atfUYhufr5cCot7EF6Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUww-00000009Otd-2YHO;
-	Fri, 23 Feb 2024 12:46:46 +0000
-Received: from smtp-8fab.mail.infomaniak.ch ([83.166.143.171])
+	id 1rdUxS-00000009P35-0FJX;
+	Fri, 23 Feb 2024 12:47:18 +0000
+Received: from smtp-190f.mail.infomaniak.ch ([2001:1600:7:10::190f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUwV-00000009Ofv-1IPP
+	id 1rdUwV-00000009Ofu-0zIX
 	for linux-rockchip@lists.infradead.org;
 	Fri, 23 Feb 2024 12:46:23 +0000
 Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Th8rS6rJ3z5mK;
-	Fri, 23 Feb 2024 13:46:00 +0100 (CET)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Th8rR5kDjzyKs;
-	Fri, 23 Feb 2024 13:45:59 +0100 (CET)
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Th8rV3Qr6zGMT;
+	Fri, 23 Feb 2024 13:46:02 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Th8rT5JLQzv7F;
+	Fri, 23 Feb 2024 13:46:01 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Subject: [PATCH 0/3] iio: adc: rockchip_saradc: fix bitmasking and remove
- custom logic for getting reset
-Date: Fri, 23 Feb 2024 13:45:20 +0100
-Message-Id: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+Date: Fri, 23 Feb 2024 13:45:22 +0100
+Subject: [PATCH 2/3] iio: adc: rockchip_saradc: use mask for write_enable
+ bitfield
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGGT2GUC/x2M2wpAUBAAf0X7bItlhV+RhxOLTS6drZOSf3d4n
- KaZG0y8ikGb3OAlqOmxR8jTBIbF7bOgjpGBMiozIkJz3o1DIPw0bs5W5KbgmuuKiSuI4ell0uu
- fdv3zvF0lV5dkAAAA
+Message-Id: <20240223-saradcv2-chan-mask-v1-2-84b06a0f623a@theobroma-systems.com>
+References: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+In-Reply-To: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
  Lars-Peter Clausen <lars@metafoo.de>, Heiko Stuebner <heiko@sntech.de>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -55,8 +54,8 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 X-Mailer: b4 0.13.0
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_044619_786550_99A0AAB4 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20240223_044619_749787_77D93BB0 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,46 +72,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The mask for the channel selection is incorrect as it's specified to be
-16b wide by is actually only 4.
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-Also, the 16 lower bits in the SARADC_CONV_CON register are write
-protected. Whatever their value is can only be written to the hardware
-block if their associated bit in the higher 16 bits is set. Considering
-that the channel bitmask is 4b wide but that we can write e.g. 0 in
-there, we shouldn't use the value shifted by 16 as a mask but rather the
-bitmask for that value shifted by 16. This is currently NOT an issue
-because the only SoC with SARADCv2 IP is the RK3588 which has a reset
-defined in the SoC DTSI. When that is the case, the reset is asserted
-before every channel conversion is started. This means the registers are
-reset so effectively, we do not need to write zeros so the wrong mask
-still works because where we should be writing zeroes, there are already
-zeroes. However, let's fix this in case there comes a day there's an SoC
-which doesn't require to reset the controller before every channel
-conversion is started.
+Some of the registers on the SARADCv2 have bits write protected except
+if another bit is set. This is usually done by having the lowest 16 bits
+store the data to write and the highest 16 bits specify which of the 16
+lowest bits should have their value written to the hardware block.
 
-Lastly, let's use the appropriate function from the reset subsystem
-for getting an optional exclusive reset instead of rolling out our own
-logic.
+The write_enable mask for the channel selection was incorrect because it
+was just the value shifted by 16 bits, which means it would only ever
+write bits and never clear them. So e.g. if someone starts a conversion
+on channel 5, the lowest 4 bits would be 0x5, then starts a conversion
+on channel 0, it would still be 5.
 
-Those three patches should not be changing any behavior.
+Instead of shifting the value by 16 as the mask, let's use the OR'ing of
+the appropriate masks shifted by 16.
 
+Note that this is not an issue currently because the only SARADCv2
+currently supported has a reset defined in its Device Tree, that reset
+resets the SARADC controller before starting a conversion on a channel.
+However, this reset is handled as optional by the probe function and
+thus proper masking should be used in the event an SARADCv2 without a
+reset ever makes it upstream.
+
+Fixes: 757953f8ec69 ("iio: adc: rockchip_saradc: Add support for RK3588")
+Cc: Quentin Schulz <foss+kernel@0leil.net>
 Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
-Quentin Schulz (3):
-      iio: adc: rockchip_saradc: fix bitmask for channels on SARADCv2
-      iio: adc: rockchip_saradc: use mask for write_enable bitfield
-      iio: adc: rockchip_saradc: replace custom logic with devm_reset_control_get_optional_exclusive
+ drivers/iio/adc/rockchip_saradc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/iio/adc/rockchip_saradc.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
----
-base-commit: 39133352cbed6626956d38ed72012f49b0421e7b
-change-id: 20240222-saradcv2-chan-mask-593585865256
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 2da8d6f3241a..1c0042fbbb54 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -102,12 +102,12 @@ static void rockchip_saradc_start_v2(struct rockchip_saradc *info, int chn)
+ 	writel_relaxed(0xc, info->regs + SARADC_T_DAS_SOC);
+ 	writel_relaxed(0x20, info->regs + SARADC_T_PD_SOC);
+ 	val = FIELD_PREP(SARADC2_EN_END_INT, 1);
+-	val |= val << 16;
++	val |= SARADC2_EN_END_INT << 16;
+ 	writel_relaxed(val, info->regs + SARADC2_END_INT_EN);
+ 	val = FIELD_PREP(SARADC2_START, 1) |
+ 	      FIELD_PREP(SARADC2_SINGLE_MODE, 1) |
+ 	      FIELD_PREP(SARADC2_CONV_CHANNELS, chn);
+-	val |= val << 16;
++	val |= (SARADC2_START | SARADC2_SINGLE_MODE | SARADC2_CONV_CHANNELS) << 16;
+ 	writel(val, info->regs + SARADC2_CONV_CON);
+ }
+ 
 
-Best regards,
 -- 
-Quentin Schulz <quentin.schulz@theobroma-systems.com>
+2.43.2
 
 
 _______________________________________________
