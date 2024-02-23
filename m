@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B71BC54E49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 12:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F124FC5478C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 12:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eUpMjNzdzByEjKnOprtz971iGk02hi4GPXaQYUKz9w4=; b=2YmIYQxguXW1Hc
-	uC0oG376wrw0MLLyfSru2LFCwSH/o3ykMAHcEzHOiHurDPJxhR75NFk4oKMPPTpOAUyT+99K5MnZC
-	yPnFZjCrI6v1lhpqGh5Z4kB0L6/+8XOgUuWcU0ygnqdtVekdgdlOTMbdsY9vlxrcsp2x2b0KUj0/8
-	5BHyuurlCyl2ih1Itg94NKOETV1TiT3NxKLDPKSVeQLclpaPQU8MnWW74JxgF2vIOe6Ao5ZFg9BHB
-	p809+gz/R/nL+UP1PzMpYLpW/J8bdowL8dLv1VfBHCPSHiZ0Zthh2+wRq0FYY1FqIf31y6P5OiwN7
-	xobuRB08eJqX5sl6Lcfw==;
+	List-Owner; bh=G5hXm62x10kCQPRvN59LNwAjNZWzuRHBe/f8FguGKpk=; b=5Gvgd2nFU6L/Ij
+	5b5HCePYxSTHO6+uKxEmwQfJM/mBLjRvia3/p5cGSximZ6oJQ8MJK726q9fGpCcxK391GXF1jBVaf
+	qoKXZ8k6y3W8UP02kcMDLT3kEn1k3D8r9Ue14Ee6tZQM7g0BR3KrbFWpbA4cUBxt+Y5frdRQv16Dw
+	WY6Kmfu1jirLIYm84RZz2FClZaqDd803LH35fbprmQ0Wj+XbpKnZ/noCZ9+UCcI6G7f2GarJfVJC/
+	ew4vvynE9Q8X89c/QbIyLBdXIwqkQ1jo+V4x9Ac7pYtyaWZIQpQrTJD8G3G33sYGpivdG97YYav9R
+	Zc3kbEHeQGqJnCVTubDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUTQ-00000009Hv0-24lp;
-	Fri, 23 Feb 2024 12:16:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rdUwh-00000009Ooe-0QiP;
+	Fri, 23 Feb 2024 12:46:31 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdUTI-00000009HrP-0xBz;
-	Fri, 23 Feb 2024 12:16:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4F0886176E;
-	Fri, 23 Feb 2024 12:16:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02934C433C7;
-	Fri, 23 Feb 2024 12:15:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708690563;
-	bh=JCFDC8egWyXQb7HABdNFJAfvo0AUNIyjCWnepDQI21c=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=iwAAV5G0xRLinAtkNwS/UDub21NcNA/YD1kSoIhSJS+aJCIHz/rumU3D1Lenn5wnk
-	 HkGxD26tSsFekC+CXQG5DAxyM5Nzw7ypVnkoX0qMWTFo45T7vyZh1ulJdmcw6I6vSI
-	 UJ6q6aPRVM14waxuS1UmjG5fRjGbU95J8syQO6PWLp28QwLU5RigoqYeGbzTnehotR
-	 OZnD6ewlC3ECto1MNL2V+wyAZ3smxhQ8ivngTmijPejLtLKy0AU+B7T3E2jt7ju1IV
-	 UjCjpAXG60xgL49D4fBUMAYJ90iueYRNijtk1m0BQrN7+M/KilrjgPT1EIM/oblm0X
-	 /pGqEA5bFmyQw==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Linus Walleij <linus.walleij@linaro.org>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
- linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
- netdev@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
- linux-tegra@vger.kernel.org, linux-gpio@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
-References: <20240217093937.58234-1-krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH] phy: constify of_phandle_args in xlate
-Message-Id: <170869055762.530534.10335046810476136989.b4-ty@kernel.org>
-Date: Fri, 23 Feb 2024 17:45:57 +0530
+	id 1rdUwQ-00000009Ohb-3y0R
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 23 Feb 2024 12:46:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=hVPGwzrf4l7G4dYf8bLHWHZUm4bLf5NyT+s4EhMj80o=; b=WrUbCVQ7RnV7SKJ/9h6cuxVRdG
+	KX6KabsIlgzuYhqJkqjsVo6JYW4vKxDcf1k2jr+RO8kz/72vqB4+7WefBcm6b3f3WmLD6B8KGkFFg
+	ChlXh+jY/rh/SED58ci4ya2XDz8LibOElx0mSRP66wUaO8PX19sNehPUyYTCSJZJ7r6R13k5qHocW
+	wChA9E4JNKzbsOdP4yQdWpYdHrE6YAZh50sm7BuHZ4ugFOrVRpwddX9aO/wb4Qu+Rr4hNSmTS6eZO
+	xS8zRHAVq8HFAk9cOl/IBhN8I8OMh88zz65ynNeT8VA9O7Wg6sb1DQ5BuoDqDjL9f02TD31uNCweN
+	CznAky/g==;
+Received: from smtp-8fac.mail.infomaniak.ch ([2001:1600:4:17::8fac])
+	by casper.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rdUwN-000000072oH-3JKH
+	for linux-rockchip@lists.infradead.org;
+	Fri, 23 Feb 2024 12:46:13 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (unknown [10.7.10.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Th8rT5Sg8zMrtd6;
+	Fri, 23 Feb 2024 13:46:01 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4Th8rS6knNzwNb;
+	Fri, 23 Feb 2024 13:46:00 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 23 Feb 2024 13:45:21 +0100
+Subject: [PATCH 1/3] iio: adc: rockchip_saradc: fix bitmask for channels on
+ SARADCv2
 MIME-Version: 1.0
-X-Mailer: b4 0.12.3
+Message-Id: <20240223-saradcv2-chan-mask-v1-1-84b06a0f623a@theobroma-systems.com>
+References: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+In-Reply-To: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+To: Jonathan Cameron <jic23@kernel.org>, 
+ Lars-Peter Clausen <lars@metafoo.de>, Heiko Stuebner <heiko@sntech.de>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andy Shevchenko <andy.shevchenko@gmail.com>, 
+ Shreeya Patel <shreeya.patel@collabora.com>, Simon Xue <xxm@rock-chips.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+ linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ Quentin Schulz <foss+kernel@0leil.net>
+X-Mailer: b4 0.13.0
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_041608_413408_3B6E69A3 
-X-CRM114-Status: UNSURE (   5.34  )
+X-CRM114-CacheID: sfid-20240223_124611_895034_EE876FD2 
+X-CRM114-Status: UNSURE (   8.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,23 +88,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-On Sat, 17 Feb 2024 10:39:37 +0100, Krzysztof Kozlowski wrote:
-> The xlate callbacks are supposed to translate of_phandle_args to proper
-> provider without modifying the of_phandle_args.  Make the argument
-> pointer to const for code safety and readability.
-> 
-> 
+The SARADCv2 on RK3588 (the only SoC currently supported that has an
+SARADCv2) selects the channel through the channel_sel bitfield which is
+the 4 lowest bits, therefore the mask should be GENMASK(3, 0) and not
+GENMASK(15, 0).
 
-Applied, thanks!
+Fixes: 757953f8ec69 ("iio: adc: rockchip_saradc: Add support for RK3588")
+Cc: Quentin Schulz <foss+kernel@0leil.net>
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+---
+ drivers/iio/adc/rockchip_saradc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[1/1] phy: constify of_phandle_args in xlate
-      commit: 00ca8a15dafa990d391abc37f2b8256ddf909b35
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index dd94667a623b..2da8d6f3241a 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -52,7 +52,7 @@
+ #define SARADC2_START			BIT(4)
+ #define SARADC2_SINGLE_MODE		BIT(5)
+ 
+-#define SARADC2_CONV_CHANNELS GENMASK(15, 0)
++#define SARADC2_CONV_CHANNELS GENMASK(3, 0)
+ 
+ struct rockchip_saradc;
+ 
 
-Best regards,
 -- 
-~Vinod
-
+2.43.2
 
 
 _______________________________________________
