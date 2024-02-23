@@ -4,69 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50391C5478C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 13:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A457C54798
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Feb 2024 13:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wbFLMyrexkudO1KWrkqM/NR1efFu0ilisVticLJVCsw=; b=mopzquAixlsRFi
-	M7q2R3s6+VsccQHv7Dspz7miCmT6WAV1xMrVcGTZNvfev7QZE2vrDg1cxNw4EXAn4EaR0lgc+bQ2Z
-	drsjixqR03h/22h1Me4BOyVOwNaAPLv0ouv+RcS4XCxW8RNRnEhQ+/bbSaNroKriKcMvvyLUFKS+O
-	VPOn+UJniE0YMZ3PNQlb8HrFvG7PzGKY7I/9T6Zf7UJhRy12oej8UP7VepArizSFWFKNQ46jh0UMt
-	j6ced9RozSimthG+IK373er4DuwxLMm5gKFY5XNAJcKAmU1t5mT2yncQWvMj1olvLqsGZqI7pcwOV
-	M/4xt9O24FCdaoUprcwQ==;
+	List-Owner; bh=qjDbiMXTmiDQJdjRSgVPgfCQ7zlx4T5UKQnDOxWA8wc=; b=yjBnKnCb6SxBgm
+	QMCfLXFt/RXWUiKfqEtRrWEnaPIh1MKRqyyk/BuPjo7KDWvdBTV+gCSI8QH0kb0IrNZn8+Em3Ujrj
+	+bAnxg5K4x+rWrWZ4b8xVUVX8JW4NIJrs9C+rmZuVqT7vh79yJk/kmgtbVlVs2u0ZRGnqX2kl6mAg
+	0egwMHWRNe4mRr0JWaypNwGW8lbFBB0SV7pkkXp+03PAnnZtMcTRNwtAKl547q8X+l6hMo4VShQNh
+	ce1rjnlnKGi79Xdxjv3Jr0IGmKwiebelt5VRPFIRwDSbzaWXIK3lAsKl7MqqJ+/bR1B6BFYZylPtI
+	9BjsrZKatkB1KcvHcnDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdVYR-00000009Vz3-1CyA;
-	Fri, 23 Feb 2024 13:25:31 +0000
-Received: from out-174.mta0.migadu.com ([91.218.175.174])
+	id 1rdVo6-00000009cHq-0kfw;
+	Fri, 23 Feb 2024 13:41:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rdVY2-00000009VpB-0w7g
-	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Feb 2024 13:25:11 +0000
-Message-ID: <6163624c-4886-4cbe-a59f-e2f974f52c14@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1708694693;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8w/xnzKDUY29kKgSnBq6a+7mDu2LzuzIM6anbjgh4dI=;
-	b=XU8riCrAoQ45E2Ul70uO1XTWiHoPaIkBu5hEWZMG2t1+QkdtwUIssCE3zOUUoFwraB/E4y
-	6NghuzAmdf5jTKspXXDN+4Zflgvc7ev2hcpvKq97+9uYHrA9BKay5noeEvA2JzdpQligNq
-	lFlqsY0pQfKVWiIgITonQZ1lvQea6TY=
-Date: Fri, 23 Feb 2024 21:24:38 +0800
+	id 1rdVnd-00000009c4S-15tq;
+	Fri, 23 Feb 2024 13:41:16 +0000
+Received: from i53875b6c.versanet.de ([83.135.91.108] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rdVn4-0001FZ-Ou; Fri, 23 Feb 2024 14:40:38 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Shreeya Patel <shreeya.patel@collabora.com>, Simon Xue <xxm@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Quentin Schulz <foss+kernel@0leil.net>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-iio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+ Quentin Schulz <foss+kernel@0leil.net>
+Subject: Re: [PATCH 1/3] iio: adc: rockchip_saradc: fix bitmask for channels on
+ SARADCv2
+Date: Fri, 23 Feb 2024 14:40:37 +0100
+Message-ID: <4499105.Wku2Vz74k6@diego>
+In-Reply-To: <20240223-saradcv2-chan-mask-v1-1-84b06a0f623a@theobroma-systems.com>
+References: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+ <20240223-saradcv2-chan-mask-v1-1-84b06a0f623a@theobroma-systems.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH v7 36/36] drm/sun4i: hdmi: Switch to HDMI connector
-To: Maxime Ripard <mripard@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>,
- Sebastian Wick <sebastian.wick@redhat.com>,
- =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
- <20240222-kms-hdmi-connector-state-v7-36-8f4af575fce2@kernel.org>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Sui Jingfeng <sui.jingfeng@linux.dev>
-In-Reply-To: <20240222-kms-hdmi-connector-state-v7-36-8f4af575fce2@kernel.org>
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240223_052506_490992_A1A3D907 
-X-CRM114-Status: UNSURE (   5.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240223_054113_448292_6751B734 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,21 +65,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Am Freitag, 23. Februar 2024, 13:45:21 CET schrieb Quentin Schulz:
+> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> 
+> The SARADCv2 on RK3588 (the only SoC currently supported that has an
+> SARADCv2) selects the channel through the channel_sel bitfield which is
+> the 4 lowest bits, therefore the mask should be GENMASK(3, 0) and not
+> GENMASK(15, 0).
+> 
+> Fixes: 757953f8ec69 ("iio: adc: rockchip_saradc: Add support for RK3588")
+> Cc: Quentin Schulz <foss+kernel@0leil.net>
+> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-On 2024/2/23 02:14, Maxime Ripard wrote:
-> The new HDMI connector infrastructure allows to remove some boilerplate,
-> especially to generate infoframes. Let's switch to it.
->
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+after checking against the TRM
 
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 
 
 _______________________________________________
