@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3649C54E49
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Feb 2024 13:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD779C54E51
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Feb 2024 18:23:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=In1ODdv//VIngEhjP1MkwCpDwVjXPqjLR7I22UJBKMI=; b=Nh6dwg8ZcQwcTNLFfWJ2K5RBR2
-	EQnJ2ytoWJTIV5sP5DzFmmNe6Phi7rLqIhXXTx3jwvYCjjZrDg0vCTHGD8OLzbfOGXTy49sR17VYc
-	e+ZWAeYxMAqYfATVqZfUJ18p2u7BCWPUqUZjS6hdONN6WJYiYP9ne+QHeO9lmH248QrQ5mZUQKbnv
-	F3d7ZXe1s9m5jiuQCeMkNx2CcnsTRK6NLIoVVrhmmVdy0wPC88gWYp070LNCMRu5xwT+fN3xidms5
-	yDIl60JEcTRKwygKac9Wb5qjX9y5XyhgcQ7au0aeb9LPzR8vJhJAN6aciJke9mbg8kzOzKPQdBiBz
-	9WcGSODQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Kr58KSWEnRg+bN2YOyFXJsuLaZApDEWi9qb685F+1jc=; b=2/UMpIhDIUxq7W
+	ZOplOPqBahw7PerAMT8w/SvY04UsUAIHSBdjZq2nVvBeBum+dp5Hs2OuKfwf5gH6r8m6a4c5SiH7p
+	Oxfc0aarkm82h9nx3bKQVHXXkciFRqnbFQ1/iJzd2esjyTCWsDnI5voD5GphDPFyROysVbLGCHzMv
+	wbBPBhFXoK6KgMVxyrDoJpNEBsuFKwcoro2m6XnEz5d6HDE39GedJ5v6K0ovKq9SER0/7/QzLFJ0K
+	h58+xnsiC7UMeEWTX8vooRzBEtsiv197gORsqbs5411zNkr7ItqJ5D/FyVBfXeemi0bU3/lVn3lsv
+	+Hje01buXE3BGzp5fk3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reawE-00000000oKt-40sm;
-	Mon, 26 Feb 2024 13:22:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1refdW-00000002AEC-0Mn8;
+	Mon, 26 Feb 2024 18:23:34 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1reaw3-00000000oGi-0Enh;
-	Mon, 26 Feb 2024 13:22:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7668360F07;
-	Mon, 26 Feb 2024 13:22:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95020C433F1;
-	Mon, 26 Feb 2024 13:22:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1708953741;
-	bh=G1JpQCt7xBq5ZuFeLJZNzoswIp5s4ji8mVX2ZexQGro=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T7AtsCdA/xtJ3EoX6jQR+kZNHOFOCrlfIMbhsDkPVxZaFZDJ7k+mDvPE97EsH1I5j
-	 11eSiKoRYlcfxXOQtod9b/+Z9MbyB7yjT8cfEGIvAwfIFWPzxuLScojwy0Drly6vWl
-	 BBid2EkxGJOjOQqtgW+EsnX0VYbbPTPlD0LaJ6PUWq7B9/edORgGjPEBTAEp+5/UB4
-	 ON2tQLxpddAdmNp/OfI84j9G/sTSSzHKxN7PVuXp+H5XnFfOi6JB9s6aYYuLK6weNl
-	 r8k1uqO9gOBylOuHSFsHkE1TExdORSOZYl2QngI1QNiQddQ7PUVPWDslHUIaMRL94U
-	 s4POR6jF+Mklw==
-Date: Mon, 26 Feb 2024 14:22:18 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
-	Abhinav Kumar <quic_abhinavk@quicinc.com>, freedreno <freedreno@lists.freedesktop.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Wick <sebastian.wick@redhat.com>, 
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, Sui Jingfeng <sui.jingfeng@linux.dev>
-Subject: Re: [PATCH v7 00/36] drm/connector: Create HDMI Connector
- infrastructure
-Message-ID: <4mm45qddujasmbinalcyhjzu4iege3n2a7odbmqmcsnjifyleh@q3kdpjhvwhsq>
-References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
- <CAA8EJpqB+Mf4jp88__r5dfsRSuGdAB+Q3vK5MBfBXysvRB92iQ@mail.gmail.com>
+	id 1refdQ-00000002ACc-1WrB;
+	Mon, 26 Feb 2024 18:23:29 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1dc1ff3ba1aso28120345ad.3;
+        Mon, 26 Feb 2024 10:23:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1708971807; x=1709576607; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Oq9kS8EeuXsGUVpRBBrLiDhME6a4wGuEkqHoj3EbhjU=;
+        b=mDi1qSKtCOT8DJ6Gb7hpc4k73ojAmLj3nbp2ZQjaXuXqoTC7wi6wOS45jIc7d/XrmP
+         M+yk19BVARqnCTR1m/Qrs7zo4tR//QNy/l+v9YiGkxjuHCC+LTnVB5nehDnqBEV9L2Q0
+         KIhQLArC+PujAB+mflhmrEaJJB0IV6J+/txuWpWnk2iRFAAj1TA6LAhgIUev1oTq3d53
+         A2y9qEXHyV8NSXTodwVf+lD5mQ/IrLea5ob7ofPcZ4UbSPhAgyJuYXXPH+PFVhkH9wsR
+         7wnRpeJGFg6txStduKodMBYNwlgwybpfsbGR/y4i9nT3rTL1a4d3EeAH3pkNg+Ldf0X0
+         ZTIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1708971807; x=1709576607;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Oq9kS8EeuXsGUVpRBBrLiDhME6a4wGuEkqHoj3EbhjU=;
+        b=mBvd+tUj8UNlJr4mCy1y/Be5aWdAKc1Li6wC+f6m3kVk2byI63ZUVg+Bx7+M/6rWG+
+         Su4uf7d6Jq6yQl+VFtJYrbLyrmzD/6VaLfpOMTD/y8PwWx8KlsuTo6EGRxQRw9NHaetw
+         QWkEvGF7xTx21Hqg8yNhi0UTyRbec6ZULzJuW+K+JnVYrMs6l06QLT2DJoV6uu4rbeG6
+         JglT8zIiy93uNihaO0UWbUB6o4RoUfzVgKXxGmIQvoUZlzyo/k37QalRSvAAklrBS/aX
+         erzb1uKdSPh9RIiZnRUOMaVkBJ4V1HNXFD59ydUat3NgP+o3ZeJRbAmRDuspt7eKi9Hx
+         CQ6w==
+X-Forwarded-Encrypted: i=1; AJvYcCXaBVv7ACSFas17SiLE4NggnER0Qsa4OeR0rW+36ESeKe/1VMg/JfREPfPY3cmVLe//3gBM+HtgJDGdKFXynYczhQnsZAPtq/AdhY8FRe+w7kpL6/2mL6jy62n7qdlf9jPoclEoeqDwiMDuTFCbbJ8ILMqACFxPPJE=
+X-Gm-Message-State: AOJu0YzfljC43/SaHaWsHtDp7Z24WAIcL6vv1LP5p6Ux8gmaHYc10Ug7
+	nb4Sb4eQ9yyDXsjl4NFm5AOJ8pdbSj3OIF8efiXcUMN6JFic+KJi
+X-Google-Smtp-Source: AGHT+IGcMiAe18D+5u0jq2w+Qc6RGbcBVwo+6peup7V+MeX/rhw3iKmj2TOIPAmop9O04XOqDlG6/A==
+X-Received: by 2002:a17:902:e9c4:b0:1db:f23f:678e with SMTP id 4-20020a170902e9c400b001dbf23f678emr6781170plk.15.1708971806955;
+        Mon, 26 Feb 2024 10:23:26 -0800 (PST)
+Received: from localhost.localdomain ([113.30.217.222])
+        by smtp.gmail.com with ESMTPSA id v19-20020a170902d09300b001dba98889a3sm2353plv.71.2024.02.26.10.23.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Feb 2024 10:23:26 -0800 (PST)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1] arm64: dts: rockchip: Add cache information to the Rockchip RK3566 and RK3568 SoC
+Date: Mon, 26 Feb 2024 23:53:03 +0530
+Message-ID: <20240226182310.4032-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <CAA8EJpqB+Mf4jp88__r5dfsRSuGdAB+Q3vK5MBfBXysvRB92iQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_052225_591659_2D7A2930 
-X-CRM114-Status: GOOD (  41.67  )
+X-CRM114-CacheID: sfid-20240226_102328_426639_A0EE00F0 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,134 +90,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6545540323713654808=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+As per RK3568 Datasheet and TRM add missing cache information to
+the Rockchip RK3566 and RK3568 SoC.
 
---===============6545540323713654808==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hqmqlzbdpcfo2xan"
-Content-Disposition: inline
+- Each Cortex-A55 core has 32KB of L1 instruction cache available and
+	32KB of L1 data cache available with ECC.
+- Along with 512KB Unified L3 cache with ECC.
 
+With adding instruction cache and data cache and a write buffer to
+reduce the effect of main memory bandwidth and latency on data
+access performance.
 
---hqmqlzbdpcfo2xan
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+[0] http://www.rock-chips.com/uploads/pdf/2022.8.26/191/RK3568%20Brief%20Datasheet.pdf
+[1] https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part1%20V1.1-20210301.pdf
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 37 ++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-Hi Dmitry,
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index c19c0f1b3778..49235efefb6b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -56,6 +56,13 @@ cpu0: cpu@0 {
+ 			clocks = <&scmi_clk 0>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			d-cache-line-size = <32>;
++			d-cache-size = <0x8000>;
++			d-cache-sets = <32>;
++			i-cache-line-size = <32>;
++			i-cache-size = <0x8000>;
++			i-cache-sets = <32>;
++			next-level-cache = <&l2>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
+ 		};
+ 
+@@ -65,6 +72,13 @@ cpu1: cpu@100 {
+ 			reg = <0x0 0x100>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			d-cache-line-size = <32>;
++			d-cache-size = <0x8000>;
++			d-cache-sets = <32>;
++			i-cache-line-size = <32>;
++			i-cache-size = <0x8000>;
++			i-cache-sets = <32>;
++			next-level-cache = <&l2>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
+ 		};
+ 
+@@ -74,6 +88,13 @@ cpu2: cpu@200 {
+ 			reg = <0x0 0x200>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			d-cache-line-size = <32>;
++			d-cache-size = <0x8000>;
++			d-cache-sets = <32>;
++			i-cache-line-size = <32>;
++			i-cache-size = <0x8000>;
++			i-cache-sets = <32>;
++			next-level-cache = <&l2>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
+ 		};
+ 
+@@ -83,8 +104,24 @@ cpu3: cpu@300 {
+ 			reg = <0x0 0x300>;
+ 			#cooling-cells = <2>;
+ 			enable-method = "psci";
++			d-cache-line-size = <32>;
++			d-cache-size = <0x8000>;
++			d-cache-sets = <32>;
++			i-cache-line-size = <32>;
++			i-cache-size = <0x8000>;
++			i-cache-sets = <32>;
++			next-level-cache = <&l2>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
+ 		};
++
++		l2: l2-cache0 {
++			compatible = "cache";
++			cache-level = <3>;
++			cache-unified;
++			cache-size = <0x7d000>; /* L3. 512 KB */
++			cache-line-size = <64>;
++			cache-sets = <512>;
++		};
+ 	};
+ 
+ 	cpu0_opp_table: opp-table-0 {
+-- 
+2.43.0
 
-On Sun, Feb 25, 2024 at 04:50:00PM +0200, Dmitry Baryshkov wrote:
-> On Thu, 22 Feb 2024 at 20:14, Maxime Ripard <mripard@kernel.org> wrote:
-> > Here's a series that creates some extra infrastructure specifically
-> > targeted at HDMI controllers.
-> >
-> > The idea behind this series came from a recent discussion on IRC during
-> > which we discussed infoframes generation of i915 vs everything else.
-> >
-> > Infoframes generation code still requires some decent boilerplate, with
-> > each driver doing some variation of it.
-> >
-> > In parallel, while working on vc4, we ended up converting a lot of i915
-> > logic (mostly around format / bpc selection, and scrambler setup) to
-> > apply on top of a driver that relies only on helpers.
-> >
-> > While currently sitting in the vc4 driver, none of that logic actually
-> > relies on any driver or hardware-specific behaviour.
-> >
-> > The only missing piece to make it shareable are a bunch of extra
-> > variables stored in a state (current bpc, format, RGB range selection,
-> > etc.).
-> >
-> > The initial implementation was relying on some generic subclass of
-> > drm_connector to address HDMI connectors, with a bunch of helpers that
-> > will take care of all the "HDMI Spec" related code. Scrambler setup is
-> > missing at the moment but can easily be plugged in.
-> >
-> > The feedback was that creating a connector subclass like was done for
-> > writeback would prevent the adoption of those helpers since it couldn't
-> > be used in all situations (like when the connector driver can implement
-> > multiple output) and required more churn to cast between the
-> > drm_connector and its subclass. The decision was thus to provide a set
-> > of helper and to store the required variables in drm_connector and
-> > drm_connector_state. This what has been implemented now.
-> >
-> > Hans Verkuil also expressed interest in implementing a mechanism in v4l2
-> > to retrieve infoframes from HDMI receiver and implementing a tool to
-> > decode (and eventually check) infoframes. His current work on
-> > edid-decode to enable that based on that series can be found here:
-> > https://git.linuxtv.org/hverkuil/edid-decode.git/log/?h=3Dhverkuil
-> >
-> > And some more context here:
-> > https://lore.kernel.org/dri-devel/50db7366-cd3d-4675-aaad-b857202234de@=
-xs4all.nl/
-> >
-> > This series thus leverages the infoframe generation code to expose it
-> > through debugfs.
->=20
-> [...]
->=20
-> >
-> > Let me know what you think,
-> > Maxime
->=20
-> The overall idea looks great. I've started checking how I can use that
-> for our msm devices family, which makes use of bridges and
-> drm_bridge_connector.
-
-Yeah, I had that in mind for a while too. I think it would be valuable,
-but it's difficult as it is already so I didn't tackle it at first :)
-
-The format negociation especially seems to divert quite a lot from what
-i915 and vc4 have been doing, and that's user facing to some extent.
-
-> My current idea is to extend the drm_bridge_funcs with the new
-> callback to be called once the drm_connector has been instantiated.
-> This way all the bridges can influence new connector.
-> Another possibility is to follow drm_bridge_connector design closely
-> and let it call into drm_connector_hdmi code if it detects that the
-> last bridge is the HDMI one.
-> WDYT?
-
-I had the latter in mind, but I haven't really tried to reconcile the
-connector state output_format with the
-drm_atomic_helper_bridge_propagate_bus_fmt, and plug in the output_bpc
-count too.
-
-We would have to create the max_bpc properties from the HDMI connector,
-and then propagate that upstream along the bridges I guess (or we can
-just ignore it for now).
-
-So, yeah, I had the latter in mind but it might turn out that the former
-is actually easier. Both make sense to me at least.
-
-Maxime
-
---hqmqlzbdpcfo2xan
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZdyQigAKCRDj7w1vZxhR
-xbuAAP4tcqj0CCuj697zMFFK59Fkl+ntwJnDHJijUuztt43AQwD/fzLo/sHP+roN
-fQLUY+aBNymzblpBsRsstG3l6Zw2dgQ=
-=l8IQ
------END PGP SIGNATURE-----
-
---hqmqlzbdpcfo2xan--
-
-
---===============6545540323713654808==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6545540323713654808==--
-
