@@ -4,60 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C4C4C48BF6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Feb 2024 19:09:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC5DCC5478C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Feb 2024 20:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7meanWHXg5hE6ECh1U1QBEcdKts/VdZ/jlBE0yFxu7Y=; b=wUkH9/AcE4CCmfBt7cXxV5dqiU
-	/KJx2oPV3KtRVqkd+VOsbxy9iwqCd8jcYBoh5zJ2zkwr/SAqIIBPVIMuuKkNYnus/3lLZegLS3XQU
-	Qnz4l6axC75QiueyJjperfDi9ehQpE7PcKeGbsnqt1TeKyj3WdoNJp1CCshiaVf3CZMh+e6DuHXF9
-	hkszdMGazofGXCFEJ6LYMlUxrVJf0snlPEgfbguu+/QIFNMxn8uMhrqE+bMJgkGc9670Qbemz7zpV
-	V7ccPTXGDORtW5xF3xWeSvE72+u6mNTg6qhRPX2Ljlv6qQbqxwsqXKmtjoZSGOZGznit1DeufyZdR
-	zDK5N2Kg==;
+	bh=eIfe4v2uQ/8Cx9gSf5uULl9Ah4O+8KLYpyEw71Pm0mQ=; b=gfSIdQnYJMyAKz5tUFdMERqAjT
+	8HNSN/sSpjX3iKl8uRIeINeoaIHIkHBiyfe3UhLiiUHnxWVlZnRASu12qO6fFeHV5Fy2mX6keZIdx
+	sHjw7/XVhXo204vWEmBaEFmFfOjBl8pUaAUH0GW+d0TMEnIxGXt0m90r5LiSFqdF1OdvEbPn3rYMV
+	Jzxy4vJ6iG4q4bawDHSx62u6jQilOpo+o0U6OPwsQ/X8Ac1ELcHjboFh+PBYpSs7mm95nkXwPvWPF
+	e9tYATphC/zJ5xd+PcVJc9IOzOd5Spn8cYKeWvTlrMYcDedL1HebCfGxJOQtuXN3DYWE1bJFMspyz
+	UhVRRNiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1regM9-00000002Jpx-09wF;
-	Mon, 26 Feb 2024 19:09:41 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1rehdw-00000002XFZ-0xih;
+	Mon, 26 Feb 2024 20:32:08 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1regM4-00000002JnH-0gwQ;
-	Mon, 26 Feb 2024 19:09:38 +0000
+	id 1rehdl-00000002XDx-3aQz;
+	Mon, 26 Feb 2024 20:32:05 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1708974566;
+	t=1708979513;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MhPScaDHRZdhouzkoYyad3R9PfIyEE1nMSKg/JolwpQ=;
-	b=I9egwK4T0p5eJfARevw+aGPmERrw3GF5gjjW79/nE95wu9QItS2TbWjRXlRTj4HfZzW31w
-	Yaw8zlGTOSWMOlovsfFbnOIzVh5XFZDPSdA78Fvn4vMx7+yb+HwnxRPPk+OkpNDlYd8HoB
-	1zbPKHe8+raiZJt9WfpUUFzyw9uB4rtdlrw9HhCAjsWXaZU63W0XaZ9ZXEjLp50F9eGen0
-	gu8Lm/+hFZg3K1gC9PLBjqKAOshVEGLYMBUibpYrdkuj+gP0XmbSWMSdUmHid2ozYNc+dT
-	OrxUt278Ydtbg2X1HwGgh8a/EEoBrX0Qv8oEHkcbkCpIPhQkUwTyZvDsZAw0Jw==
-Date: Mon, 26 Feb 2024 20:09:26 +0100
+	bh=TgkhkzFTn7wBSSzufZLmACRcoMW2v8xqIcKy+t/APpQ=;
+	b=ebeCCNm46pYWMAGDQgJWbwV1W1KLshsDhPpoMisXIYeU6s13a1Bf7gH2L8/SzH+BCBgG8X
+	c5NRnUmtYcZhR105DjnCh8LhLeC6Hb8QSpiAtXFTm05Yj6JLG0aI812v+vQ4AW9Mp+b1fl
+	rukat8h10wEaX4T5LzJeN7ieYL4/+i1PkpEraYD4y4AGyXhByVTfQvPuMLjQmkm+BBVYJo
+	SMIRK/kd0LjunaCJfgHyTHJat6EASwf+5+QsrQcGacnlz3OWsKlRzzIk57ns9dPedYDTAe
+	ABBgOqBqPQTnfumdSHcCymlBIfgNyXxS5WrDhsDK5y99xavc7ChSRNiQlvo8/Q==
+Date: Mon, 26 Feb 2024 21:31:51 +0100
 From: Dragan Simic <dsimic@manjaro.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>, Quentin Schulz
+ <foss+kernel@0leil.net>, Jonathan Cameron <jic23@kernel.org>, Lars-Peter
+ Clausen <lars@metafoo.de>, Heiko Stuebner <heiko@sntech.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Shreeya Patel <shreeya.patel@collabora.com>, Simon Xue <xxm@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, linux-iio@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] arm64: dts: rockchip: Add cache information to the
- Rockchip RK3566 and RK3568 SoC
-In-Reply-To: <20240226182310.4032-1-linux.amoon@gmail.com>
-References: <20240226182310.4032-1-linux.amoon@gmail.com>
-Message-ID: <8ceea100f2ef7cce296943ce1397161a@manjaro.org>
+Subject: Re: [PATCH 3/3] iio: adc: rockchip_saradc: replace custom logic with
+ devm_reset_control_get_optional_exclusive
+In-Reply-To: <CAHp75Vft3kJEF9JiuEqVsS3biQ6YsuDXON_P3FOZRjtb8NaB2w@mail.gmail.com>
+References: <20240223-saradcv2-chan-mask-v1-0-84b06a0f623a@theobroma-systems.com>
+ <20240223-saradcv2-chan-mask-v1-3-84b06a0f623a@theobroma-systems.com>
+ <CAHp75VfVTJsQDwaPoPgGiT6jnymXAR3WpETqaKai8rXAC70iLw@mail.gmail.com>
+ <6f76ffab-69fe-4afb-9d7e-d3cdfe37c28c@theobroma-systems.com>
+ <CAHp75Vft3kJEF9JiuEqVsS3biQ6YsuDXON_P3FOZRjtb8NaB2w@mail.gmail.com>
+Message-ID: <d2a7954926e328cbf898aac0a42a6e24@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240226_110936_849847_CA17F333 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20240226_123204_325784_75E9F1E4 
+X-CRM114-Status: GOOD (  20.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,130 +77,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Anand,
-
-On 2024-02-26 19:23, Anand Moon wrote:
-> As per RK3568 Datasheet and TRM add missing cache information to
-> the Rockchip RK3566 and RK3568 SoC.
-> 
-> - Each Cortex-A55 core has 32KB of L1 instruction cache available and
-> 	32KB of L1 data cache available with ECC.
-> - Along with 512KB Unified L3 cache with ECC.
-> 
-> With adding instruction cache and data cache and a write buffer to
-> reduce the effect of main memory bandwidth and latency on data
-> access performance.
-> 
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-
-I was about to send my own patch that adds the same missing cache
-information, so please allow me to describe the proposed way to move
-forward.
-
-The way I see it, your commit summary and description need a rather
-complete rewrite, to be more readable, more accurate, and to avoid
-including an irrelevant (and slightly misleading) description of the
-general role of caches.
-
-Also, the changes to the dtsi file would benefit from small touch-ups
-here and there, for improved consistency, etc.
-
-With all that in mind, I propose that you withdraw your patch and let
-me send my patch that will addresses all these issues, of course with
-a proper tag that lists you as a co-developer.  I think that would
-save us a fair amount of time going back and forth.
-
-I hope you agree.
-
-
-> ---
-> [0] 
-> http://www.rock-chips.com/uploads/pdf/2022.8.26/191/RK3568%20Brief%20Datasheet.pdf
-> [1] 
-> https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part1%20V1.1-20210301.pdf
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 37 ++++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index c19c0f1b3778..49235efefb6b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -56,6 +56,13 @@ cpu0: cpu@0 {
->  			clocks = <&scmi_clk 0>;
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
-> +			d-cache-line-size = <32>;
-> +			d-cache-size = <0x8000>;
-> +			d-cache-sets = <32>;
-> +			i-cache-line-size = <32>;
-> +			i-cache-size = <0x8000>;
-> +			i-cache-sets = <32>;
-> +			next-level-cache = <&l2>;
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> 
-> @@ -65,6 +72,13 @@ cpu1: cpu@100 {
->  			reg = <0x0 0x100>;
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
-> +			d-cache-line-size = <32>;
-> +			d-cache-size = <0x8000>;
-> +			d-cache-sets = <32>;
-> +			i-cache-line-size = <32>;
-> +			i-cache-size = <0x8000>;
-> +			i-cache-sets = <32>;
-> +			next-level-cache = <&l2>;
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> 
-> @@ -74,6 +88,13 @@ cpu2: cpu@200 {
->  			reg = <0x0 0x200>;
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
-> +			d-cache-line-size = <32>;
-> +			d-cache-size = <0x8000>;
-> +			d-cache-sets = <32>;
-> +			i-cache-line-size = <32>;
-> +			i-cache-size = <0x8000>;
-> +			i-cache-sets = <32>;
-> +			next-level-cache = <&l2>;
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> 
-> @@ -83,8 +104,24 @@ cpu3: cpu@300 {
->  			reg = <0x0 0x300>;
->  			#cooling-cells = <2>;
->  			enable-method = "psci";
-> +			d-cache-line-size = <32>;
-> +			d-cache-size = <0x8000>;
-> +			d-cache-sets = <32>;
-> +			i-cache-line-size = <32>;
-> +			i-cache-size = <0x8000>;
-> +			i-cache-sets = <32>;
-> +			next-level-cache = <&l2>;
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> +
-> +		l2: l2-cache0 {
-> +			compatible = "cache";
-> +			cache-level = <3>;
-> +			cache-unified;
-> +			cache-size = <0x7d000>; /* L3. 512 KB */
-> +			cache-line-size = <64>;
-> +			cache-sets = <512>;
-> +		};
->  	};
-> 
->  	cpu0_opp_table: opp-table-0 {
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gQW5keSBhbmQgUXVlbnRpbiwKCk9uIDIwMjQtMDItMjMgMTU6MzksIEFuZHkgU2hldmNo
+ZW5rbyB3cm90ZToKPiBPbiBGcmksIEZlYiAyMywgMjAyNCBhdCAzOjEw4oCvUE0gUXVlbnRpbiBT
+Y2h1bHoKPiA8cXVlbnRpbi5zY2h1bHpAdGhlb2Jyb21hLXN5c3RlbXMuY29tPiB3cm90ZToKPj4g
+T24gMi8yMy8yNCAxNDowMCwgQW5keSBTaGV2Y2hlbmtvIHdyb3RlOgo+PiA+IE9uIEZyaSwgRmVi
+IDIzLCAyMDI0IGF0IDI6NDbigK9QTSBRdWVudGluIFNjaHVseiA8Zm9zcytrZXJuZWxAMGxlaWwu
+bmV0PiB3cm90ZToKPiAKPiAuLi4KPiAKPj4gPj4gQ2M6IFF1ZW50aW4gU2NodWx6IDxmb3NzK2tl
+cm5lbEAwbGVpbC5uZXQ+Cj4+ID4KPj4gPiBZb3UgbWF5IHVzZSB0aGUgLS1jYyBvcHRpb24gdG8g
+YGdpdCBzZW5kLWVtYWlsYCBpbnN0ZWFkIG9mIHBvbGx1dGluZwo+PiA+IGNvbW1pdCBtZXNzYWdl
+cywgb3IgbW92ZSB0aGlzIGFmdGVyIHRoZSAnLS0tJyBjdXR0ZXIgbGluZS4KPj4gCj4+IFRoZSB3
+aG9sZSBwb2ludCBpcyB0aGF0IG15IFNvQiBhbmQgYXV0aG9yc2hpcCBpcyBmcm9tIG15IHByb2Zl
+c3Npb25hbAo+PiBtYWlsIGFkZHJlc3Mgd2hpY2ggaXMgbGlrZWx5IHRvIGNoYW5nZSBvdmVyIHRp
+bWUsIHRoZSBDYyBpcyBteSAKPj4gcGVyc29uYWwKPj4gb25lIGZvciBkZXZlbG9wbWVudC4gQmFz
+aWNhbGx5LCBpbiB0aGUgZXZlbnQgdGhhdCBJIGNoYW5nZSBteSAKPj4gZW1wbG95ZXIsCj4+IEkg
+d291bGQgc3RpbGwgYmUgcmVhY2hhYmxlIGF0IHRoYXQgQ2MgYWRkcmVzcyB3aXRob3V0IGhhdmlu
+ZyB0byBtb2RpZnkKPj4gdGhlIC5tYWlsbWFwIGFmdGVyIHRoZSBmYWN0ICh3aGljaCB3b24ndCBt
+YWtlIGl0IHRvIGFuIGVhcmxpZXIgdmVyc2lvbgo+PiBvZiB0aGUga2VybmVsIGZvciBleGFtcGxl
+KS4gU29tZSBtYWludGFpbmVycyBkb24ndCByZWFsbHkgbGlrZSB0aGlzLAo+PiBzb21lIGRvbid0
+IG1pbmQsIHdlJ2xsIHNlZSBpbiB3aGljaCBjYXRlZ29yeSB0aGUgSUlPIG1haW50YWluZXIocykg
+Cj4+IGZhbGwKPj4gaW4gOikgKEkgZG9uJ3QgbWluZCBlaXRoZXIgd2F5IGp1c3QgdG8gYmUgY2xl
+YXIpLgo+IAo+IE15IHBvaW50IGlzIHRoYXQgQ2MgYW5kIG90aGVyIHNpbWlsYXIgKG5vbi1yZWFs
+LXRhZ3MpIHN0dWZmIGlzCj4gcG9sbHV0aW5nIGNvbW1pdCBtZXNzYWdlcy4gSXQgbWVhbnMgdGhh
+dCB0aGlzIHdpbGwgYmUgY29waWVkIHRvIHRoZQo+IEdpdCBpbmRleCB0byBhbGwga2VybmVsIGdp
+dCByZXBvc2l0b3JpZXMgaW4gdGhlIHdvcmxkIGZyb20gbm93IGFuZAo+IHRoZW4sIFRoaXMgaXMg
+YXQgYmFyZSBtaW5pbXVtIG1ha2VzIGFkZGl0aW9uYWwgYnVyZGVuIG9uIGdpdCBsb2cgKGFuZAo+
+IHBhcnNpbmcgYW5kIHNvIG9uKSBhbmQgbW9yZW92ZXIsIHdhc3RlcyByZXNvdXJjZXMgYmVjb21p
+bmcgbGVzcwo+IGVudmlyb25tZW50IGZyaWVuZGx5IChubyBqb2tlcykuIFVzaW5nIC0tY2Mgb3Ig
+bW92aW5nIHRvIHRoZSBiZWhpbmQKPiB0aGUgY29tbWl0IG1lc3NhZ2Ugd2lsbCBrZWVwIGVtYWls
+IGNvcGllZCB3aXRoIGNsZWFuZXIgY29tbWl0Cj4gbWVzc2FnZXMuIFlldCwgYWxsIGVtYWlsIHRh
+Z3MgYXJlIGF2YWlsYWJsZSBpbiBsb3JlIGFyY2hpdmUKPiAobG9yZS5rZXJuZWwub3JnKS4gUGxl
+YXNlLCByZWFsbHkgcmVjb25zaWRlciB0aGUgY29tbWl0IG1lc3NhZ2VzCj4gY29udGVudCBpbiB0
+aGUgTGludXgga2VybmVsIHByb2plY3QgYW5kIGVsc2V3aGVyZSwgaXQgd2lsbCBoZWxwIHRvCj4g
+bWFrZSB0aGUgd29ybGQgbW9yZSBmcmllbmRseS4KCkJlbGlldmUgaXQgb3Igbm90LCBJJ20gd29y
+a2luZyBvbiBzb21lIHBhdGNoZXMgZm9yIEdpdCB0aGF0LCBJIGJlbGlldmUsCnNob3VsZCBoZWxw
+IGEgbG90IHdoZW4gaXQgY29tZXMgdG8gaGFuZGxpbmcgQ2M6IGFkZHJlc3Nlcy4gIFdvdWxkIHlv
+dQpsaWtlIHRvIGJlIGluY2x1ZGVkIGluIHRoZSBsaXN0IG9mIHJlY2lwaWVudHMgZm9yIHRob3Nl
+IEdpdCBwYXRjaGVzLCBzbwp5b3UgY291bGQsIGhvcGVmdWxseSwgcHJvdmlkZSBzb21lIGZlZWJh
+Y2s/CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
