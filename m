@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25CD0C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F39C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vM7m38OfI3Ll4gIHRwEI4bMKxPiXamqTDbH9jTDaE1Q=; b=p3/ZyHdP9dytjQ
-	0YACaiLPh3N6RMvRXbAap0BKS3yW/nwuaOdgpbEwb8OWss6ocxpoMg6jocereHNoAM74c3pw15qHv
-	Z2xbuXMxr+d+9k3RWLjmok4ApW6WMnEWaCNZpxiqe21+5lmu4VFX6Sq4dWfbL5+MauBdxHqlZBbWN
-	A7i4LVKyuP0V/dCUztlbY5+BLpUz8/MiSXVOdVY9YLHDNYF8eaU8NeDTuiOr7ZZ1PNYHIyhWkpYfp
-	r25W10Drh+fBTOugOqWoQwRyBIlTCfluyCwUn8bw48bgsyGIBnAsO4qnCfP4DoSO73GRJU8w7rVk3
-	l2HN/D5Nzid/wc4HSt5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w8INEFigRaR+cTbZ5wEw9ZhMJBydqKq4iiKFTZcdFbU=; b=XAL9bxt4gp4Lju1bhMuDqwoa7b
+	4Vl4iwxQc27NM1FIJaLCfDS/6nKEyaD/O/xnMZFnbQONsdk0mQ+egv0Y1NrZ5/fX/bCu6u1fOEsOB
+	sX4+wOVlFQNjrxdePxDSg3fWyZFJZ7kVWOL/3fb57Pgki6JsLAaL/SgFF7/3rS+PaDfsdQJtlc84x
+	5pti+4Nzr+4IEpuKfJ+3PIpnJ1PsqJovRx4PrkZ2iO14wVz+GZb5Y74fL8zorIMqDRfZaj9DTsBq8
+	R3R/ni41WeQVOsgfvWEtAtDiQXIq3S70op2tx7PlxKHF3Et19H1MCOfBoyoDKKEg/s3p82F6m9BEs
+	XcqW+epA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4zl-00000006ugN-3Lcv;
-	Tue, 27 Feb 2024 21:28:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rf5BX-00000006wM9-1qD8;
+	Tue, 27 Feb 2024 21:40:23 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4zj-00000006uf2-1eLh
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Feb 2024 21:28:12 +0000
-Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rf4zg-0001JV-J8; Tue, 27 Feb 2024 22:28:08 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Stephen Boyd <sboyd@kernel.org>,
-	linux-clk@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Michael Turquette <mturquette@baylibre.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	andy.yan@rock-chips.com,
-	linux-rockchip@lists.infradead.org,
-	Kever Yang <kever.yang@rock-chips.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	huangtao@rock-chips.com,
-	devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH v8 0/7] rockchip: clk: improve GATE_LINK support
-Date: Tue, 27 Feb 2024 22:28:06 +0100
-Message-Id: <170906921352.760270.17022081132871097984.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240126182919.48402-1-sebastian.reichel@collabora.com>
-References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
+	id 1rf5BT-00000006wL2-3O7V;
+	Tue, 27 Feb 2024 21:40:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1709070009;
+	bh=tNDUIvOq6BAUo+1Fnc/47jT95I/fjfMb6fNIGDdHixw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MBNqgmJ3vTCayyccmsP4kU34XbRWodQwtQrIqNZ9M/xh3/+5RukYsGaMpH0/278Jk
+	 j2jEfU0YWSwbJ+wLmYR6O6rr80BbLyPGPi4pwfh5uk6O3hPuaNTuFEKX6OkNgDo4pT
+	 qm8Vr/rWb4EqMW72h0kbKM/z+LI+U/vIO/CxRXGVehu0iySxktIYRQQWhoNIXYQv/V
+	 AfGb2sc0lLkPrwS9ukUS9UlS1UO9vD+ohjRKnhVGk1q6oMWgIgVevoQiFv+7OdMgjV
+	 y6AXAoDCP4e6GYaHned1Gs4VW4WtPc+uCc/TiIncARJuPWoaCtW/4/GUhMLgFCTtxz
+	 8fOZKHzjVVgbg==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1751A3782051;
+	Tue, 27 Feb 2024 21:40:09 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id 846DB10606FC; Tue, 27 Feb 2024 22:40:08 +0100 (CET)
+Date: Tue, 27 Feb 2024 22:40:08 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add clock to vo1-grf syscon on
+ rk3588
+Message-ID: <np7rvqdvyaucomexi2ckmzkrqpgrxc22mvxnjrqhjm3nriybbq@xrvdzkpdkwwq>
+References: <20240227210521.724754-1-heiko@sntech.de>
 MIME-Version: 1.0
+In-Reply-To: <20240227210521.724754-1-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_132811_463661_BDB1FCB2 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20240227_134020_051339_9BD24BF3 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,45 +70,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0927552093528446401=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Jan 2024 19:18:21 +0100, Sebastian Reichel wrote:
-> This is a follow-up for Elaine's series. These patches are written from
-> scratch, though. There are two parts:
-> 
-> part 1:
-> Elaine's series used to contain patches for the VO1GRF handling, but they were
-> dropped at some point because of the CLK_NR_CLKS feedback from the DT
-> maintainers. I added some code, that should hopefully fix everyones concerns by
-> figuring out the right number at runtime. I also moved the correct handling of
-> pclk_vo0grf/pclk_vo1grf before proper handling of GATE_LINK clocks, so that it
-> can be merged ASAP. These patches are needed for HDMI RX/TX support on RK3588.
-> 
-> [...]
 
-Applied, thanks!
-
-[4/7] clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
-      commit: 326be62eaf2e89767b7b9223f88eaf3c041b98d2
-[5/7] clk: rockchip: rk3588: fix indent
-      commit: 2a6e4710672242281347103b64e01693aa823a29
-[6/7] clk: rockchip: rk3588: use linked clock ID for GATE_LINK
-      commit: dae3e57000fb2d6f491e3ee2956f5918326d6b72
-
-2nd part of the very easy and obvious clock patches that make
-sense on their own already.
-
-Now I just need to look at the final piece of the puzzle :-) .
+--===============0927552093528446401==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rgkle252hkhd7jgj"
+Content-Disposition: inline
 
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+--rgkle252hkhd7jgj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue, Feb 27, 2024 at 10:05:21PM +0100, Heiko Stuebner wrote:
+> The VO*-general-register-files need a clock, so add the correct one.
+>=20
+> Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> This goes on top of Sebastian's series [0] cleaning up the some VO clk-
+> handling.
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+> [0] https://lore.kernel.org/linux-rockchip/20240126182919.48402-4-sebasti=
+an.reichel@collabora.com
+>=20
+>  arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/=
+dts/rockchip/rk3588s.dtsi
+> index 36b1b7acfe6a1..7e40958b5174b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+> @@ -519,6 +519,7 @@ vop_grf: syscon@fd5a4000 {
+>  	vo1_grf: syscon@fd5a8000 {
+>  		compatible =3D "rockchip,rk3588-vo-grf", "syscon";
+>  		reg =3D <0x0 0xfd5a8000 0x0 0x100>;
+> +		clocks =3D <&cru PCLK_VO1GRF>;
+>  	};
+> =20
+>  	php_grf: syscon@fd5b0000 {
+> --=20
+> 2.39.2
+>=20
+
+--rgkle252hkhd7jgj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmXeVqwACgkQ2O7X88g7
++prWuA//dl6HoLZaafzCXgndDkiQHVQwpl01dAwXMxA7sJ04/6ODfw+R9SWnoVog
+lyTlrJy+9mUcmKAUktm+wJGbP/hncwu4+8TUQmjue14UOEEJ0CPJUAR8m2GJjyfH
+WKQJYFTnwtE7zaUz8dEUv5NnLodLre/DByZ81/Z66o7FT//uteD6+6NOojbgBY61
+T1BFarkl8F+GiOQLL74t00/i9fu1ZRkTGXAUXV9h2N34ipqW2mrkAtamN3Lv7fCv
+16WkelYDQZy/PiS0mJ0yoaFeCcpoX32KnuZypuw8Zjm+mwnlFKJ0MfGezKyo2olX
+hrWQd25zueU3DGUIifgW4+6dFWV+o44YNGzgTOnb6US4OwcuUN1sBMDweuW0MGAi
+WWLzDJYhnN+rEvIepOjiDXRNbJYzJigKmqZ8EMYM4ZWrgP6Yk0OOz8JNQas/HpCD
+nSJATRU4o3Z45sjjn9+mq9R96R1wCNZBxc3z2Pc0OvMu0KCH0dLoBlddmcM2L/up
+gCf1W5+Zv6auchzB6hzPnbO+harGqSJ1BWZBywrwWmOFxzxLJD0Tj4u+CooYHjy3
+D5NuaQrNKr8tJ5PUOaSx4TWCngmvVje24ILE7R0cQu5Muxz/vy5c6h1XEl1U0MpW
+qgquXfYOlT0J9BiHWKMx8MCyA0ao+oIwsSQKoS4kSqkqsF2D8Os=
+=6fLz
+-----END PGP SIGNATURE-----
+
+--rgkle252hkhd7jgj--
+
+
+--===============0927552093528446401==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0927552093528446401==--
+
