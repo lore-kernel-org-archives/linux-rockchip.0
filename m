@@ -4,47 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459C9C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:05:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7157C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Fh9BJLQMcmyoZAXdMbaocGoHe6zEeXEhi7cYNQxy5qA=; b=pw3X9b9fj0YcXb
-	Ol8rTsHZV09mrEOdmQ0GK8o/ANSjc2skKO9PmpIhtKNH7Bm8UCLal0wUoTmNDG2jE5EL9lGCLZoMs
-	pN9mUadAbU9Tv6kQW8pT+rBH3yZjOMcsT/Mv/wjaZt1SHna4utRGBdh3zOIyIcaTGPgVaz3AuGSm5
-	0uIyA4nfVwkTdQ+bq6NE+jq3M0xYn1yapOR3Es9KW3A7c5npqxYmerqDFLCficm1oAN5fZ0MRcRyz
-	JJR80T8EgnBelg+A8WU7vlgjTPfbah8doNi5GH3icm7DrR8zM3a8rYl5aNCC1IoVfbxycIhho9ORP
-	bUEUONcV2q2xze8YHZWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ILGddK8O+TJsUBlQNaqd3iqHJdLwxfxQlZYaJUKoiT0=; b=BdpYWS/GK2pvz8
+	UnC2HrJTdrYi+ntxxV4eZW1dVNyI4LTpANyKDSg5yI504qe5tSdzZrr/GMXwaRvq84ttIU++JyrhL
+	tHANVi+77wBO5qK5Og9e0LICQJJNiRI1Hx9Yz6Vp2zeU8WXaxPjXRkF53Ar4bLFolEf4+A+7Ub1Zc
+	pAROVsOsc0xvp+JFJHDNNQoSWZTYCOHWGboKyWJ8kqT4wxkOkYtvsaJ4MnGj0uNu5ugjy1+J/t41Z
+	tg+GykShfMSqzfvN10PkP3UvH5rFeAo5RSonrwxIIzsBV8J42BL1pvhSz9guHFfW3CFaJyH7uYP/x
+	IW+vLwNuXnULrUD9zpuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4e9-00000006qy2-0Ied;
-	Tue, 27 Feb 2024 21:05:53 +0000
+	id 1rf4oz-00000006s3l-3evz;
+	Tue, 27 Feb 2024 21:17:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4e6-00000006qx3-1Vu0;
-	Tue, 27 Feb 2024 21:05:51 +0000
+	id 1rf4ox-00000006s33-1JmX
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 Feb 2024 21:17:04 +0000
 Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rf4e4-00016v-TK; Tue, 27 Feb 2024 22:05:48 +0100
+	id 1rf4op-0001Cx-FU; Tue, 27 Feb 2024 22:16:55 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	heiko@sntech.de,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH] arm64: dts: rockchip: add clock to vo1-grf syscon on rk3588
-Date: Tue, 27 Feb 2024 22:05:21 +0100
-Message-Id: <20240227210521.724754-1-heiko@sntech.de>
+To: Stephen Boyd <sboyd@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-clk@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	kernel@collabora.com,
+	huangtao@rock-chips.com,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-rockchip@lists.infradead.org,
+	Rob Herring <robh+dt@kernel.org>,
+	andy.yan@rock-chips.com
+Subject: Re: (subset) [PATCH v8 0/7] rockchip: clk: improve GATE_LINK support
+Date: Tue, 27 Feb 2024 22:16:53 +0100
+Message-Id: <170906852031.753268.5145089861354297384.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240126182919.48402-1-sebastian.reichel@collabora.com>
+References: <20240126182919.48402-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_130550_419290_B5E37960 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20240227_131703_380178_72FEE972 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,34 +74,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VO*-general-register-files need a clock, so add the correct one.
+On Fri, 26 Jan 2024 19:18:21 +0100, Sebastian Reichel wrote:
+> This is a follow-up for Elaine's series. These patches are written from
+> scratch, though. There are two parts:
+> 
+> part 1:
+> Elaine's series used to contain patches for the VO1GRF handling, but they were
+> dropped at some point because of the CLK_NR_CLKS feedback from the DT
+> maintainers. I added some code, that should hopefully fix everyones concerns by
+> figuring out the right number at runtime. I also moved the correct handling of
+> pclk_vo0grf/pclk_vo1grf before proper handling of GATE_LINK clocks, so that it
+> can be merged ASAP. These patches are needed for HDMI RX/TX support on RK3588.
+> 
+> [...]
 
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-This goes on top of Sebastian's series [0] cleaning up the some VO clk-
-handling.
+Applied, thanks!
 
-[0] https://lore.kernel.org/linux-rockchip/20240126182919.48402-4-sebastian.reichel@collabora.com
+[1/7] clk: rockchip: rk3588: fix CLK_NR_CLKS usage
+      commit: 2dc66a5ab2c6fb532fbb16107ee7efcb0effbfa5
+[2/7] dt-bindings: clock: rk3588: drop CLK_NR_CLKS
+      commit: 11a29dc2e41ead2be78cfa9d532edf924b461acc
+[3/7] dt-bindings: clock: rk3588: add missing PCLK_VO1GRF
+      commit: c81798cf9dd2f324934585b2b52a0398caefb88e
 
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+First part that needs to be shared between clock-tree
+and the devicetree change I sent out some minutes ago [0]
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 36b1b7acfe6a1..7e40958b5174b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -519,6 +519,7 @@ vop_grf: syscon@fd5a4000 {
- 	vo1_grf: syscon@fd5a8000 {
- 		compatible = "rockchip,rk3588-vo-grf", "syscon";
- 		reg = <0x0 0xfd5a8000 0x0 0x100>;
-+		clocks = <&cru PCLK_VO1GRF>;
- 	};
- 
- 	php_grf: syscon@fd5b0000 {
+
+[0] https://lore.kernel.org/linux-rockchip/20240227210521.724754-1-heiko@sntech.de
+
+
+Best regards,
 -- 
-2.39.2
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
