@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 853C6C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 08:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF9FFC5478C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 10:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8EKYoh2WdA9/kX7xAXk/ejjao9qJiQsDPL7hHRWDfjA=; b=HfnVGIjlXORZHM
-	OgR/umlz/0L5OEuoSkeg/rBh1CYxOwUlZOufoupD6bcQSPVdIEuPfSeBH+xw0Iqq1zsMvrcw+EJtX
-	KCmkWLlfbTumw4b8YbHONS8zqPLVFsaP0m7/lEDx15PyMYfk+apkB6TOSG0/KzBHMU4LWNEqa1pT8
-	jGIJCPMzon9rDvQhL8RrfAWkAxJqz+0PCgMvO9RFIuGFF2k60XKc+mOAcAo7CGXY2S78zVuqCuQaC
-	bC10OEs4s27FDPWix0r4ct54dVAtMYTfS7aJ2Cz/b8yNYwq5CrMGHMhTcSx+Swvcqfb349QnDh/98
-	/nLuiwNvELurW9jZ/z/A==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:Mime-Version:To:From:Cc:Subject:Message-Id:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LislKgq3HVsQbgZG0qWpkSKTloLqfWbZBf9BOdrRA3k=; b=d5g92pUsb/vJCZ1i2NH9TYxQKe
+	6WzqH2VVwKK2l0mR5i/VkpKGjdJO9tzxmFvIfagFzQ/cxfZjumoYG5LFediQYX+dWaK51YczuWPcf
+	zD0nt+fSm0nyBtyjIZaY67EA10oC6bSAha9RfewKCessj+gsK3VO6G6QUcikyKAFjpwel/qjHyufI
+	bCAShrf5alJ7aINyT+Lvikd1Zf8eKcmCBai+ufhQ+wn0OjssD92qPUW9INYw8hjdyXAoomvgatcKr
+	xzz5wCvV0TgnyeecIroJU2ms5CtOZoeuun85ae8FaYQscg7gEjx1hM5EkcoBQScwRFgFc2KzWpphQ
+	ngomygNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1retAT-00000004OIH-2eLB;
-	Tue, 27 Feb 2024 08:50:29 +0000
-Received: from mail-m1973172.qiye.163.com ([220.197.31.72])
+	id 1reuRd-00000004fyy-45mR;
+	Tue, 27 Feb 2024 10:12:17 +0000
+Received: from www522.your-server.de ([195.201.215.122])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1retAR-00000004OHd-0v6k;
-	Tue, 27 Feb 2024 08:50:28 +0000
-DKIM-Signature: a=rsa-sha256;
-	b=JfxQE17C0+tPPdbIre1UrpAW99jtHGlRFJ76hL2jiHX9ksVzaus8M6fKMJ2agZxQ9DVWtgQObfFtEeS6cvWqQK9Jngcfu5sohyutB68b5BVLacn/xpLizfgW02Yn5KyaxghouB8Dtr+ivJn5/kI9tN9wrdsrPTemoJaR/AUwFy8=;
-	s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=wyOLext9QYbrj+jhISbZ3ki+UDJoGrp4z2eiMMU+Quk=;
-	h=date:mime-version:subject:message-id:from;
-Received: from [172.16.12.69] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 33F6C4604AB;
-	Tue, 27 Feb 2024 16:39:52 +0800 (CST)
-Message-ID: <fc35611f-21b4-448e-9861-a4d190006803@rock-chips.com>
-Date: Tue, 27 Feb 2024 16:39:51 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Chris Ruehl <chris.ruehl@gtsys.com.hk>,
- Brian Norris <briannorris@chromium.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Christopher Obbard <chris.obbard@collabora.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: add enable-strobe-pulldown to emmc
- phy on rk3399
-Content-Language: en-GB
-To: Alban Browaeys <alban.browaeys@gmail.com>,
- Doug Anderson <dianders@chromium.org>,
- Jensen Huang <jensenhuang@friendlyarm.com>
+	id 1reuRa-00000004fuI-0zBj;
+	Tue, 27 Feb 2024 10:12:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=folker-schwesinger.de; s=default2212; h=In-Reply-To:References:
+	Content-Transfer-Encoding:Mime-Version:To:From:Cc:Subject:Message-Id:Date:
+	Content-Type:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=DV0hhtLlv0q18AeIA77X31I3Oe8+chKq2Az9f3uPrR0=; b=HkhlJ2wuYDyg2CmhZG0ynsdxcv
+	Tcr467UnQkXegZVcKUIRvP3xlNfPEkXJqA7G+B5Nem70WrbOgI+opbkavcPe9/HFq7lJaO5CmYATj
+	ijcc8i/cBK8tJ12CnyGw76pSrf7MTWqnHyW67GhBhSUUCjLJMv3G0f4OmJ5WsqwQy3S/XMN2yPbBe
+	zZVMH8uDn3eugUI7Gaiw88vzrxhs/xwaipch6C4oBurPivAZYuCn1L9GBqe+/GMTYUclt2l3l8Bg7
+	maqZ2PRku/CRmR30wJ5gZnz3jyYP3Lr5+E8IaPZ7iK8EYw2aJGwkNMLfxvv2ssrqmx2NjHTjDRVlI
+	7LLrhbdg==;
+Received: from sslproxy02.your-server.de ([78.47.166.47])
+	by www522.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1reuRH-0004q3-AJ; Tue, 27 Feb 2024 11:11:55 +0100
+Received: from [141.24.82.26] (helo=localhost)
+	by sslproxy02.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <dev@folker-schwesinger.de>)
+	id 1reuRA-00EtiY-1v;
+	Tue, 27 Feb 2024 11:11:54 +0100
+Date: Tue, 27 Feb 2024 10:11:48 +0000
+Message-Id: <CZFS45VOLIKW.2VS3M3VOMBT8V@folker-schwesinger.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add enable-strobe-pulldown to
+ emmc phy on rk3399
+Cc: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Rob Herring"
+ <robh+dt@kernel.org>, "Krzysztof Kozlowski"
+ <krzysztof.kozlowski+dt@linaro.org>, "Vinod Koul" <vkoul@kernel.org>,
+ "Chris Ruehl" <chris.ruehl@gtsys.com.hk>, "Brian Norris"
+ <briannorris@chromium.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE
+ TREE BINDINGS" <devicetree@vger.kernel.org>, "Linux ARM"
+ <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..."
+ <linux-rockchip@lists.infradead.org>, "LKML"
+ <linux-kernel@vger.kernel.org>, "Kishon Vijay Abraham I"
+ <kishon@kernel.org>, "Christopher Obbard" <chris.obbard@collabora.com>
+From: "Folker Schwesinger" <dev@folker-schwesinger.de>
+To: "Alban Browaeys" <alban.browaeys@gmail.com>, "Doug Anderson"
+ <dianders@chromium.org>, "Jensen Huang" <jensenhuang@friendlyarm.com>
+Mime-Version: 1.0
+X-Mailer: aerc 0.17.0-67-g66bbc5303578
 References: <20220822074139.3810-1-jensenhuang@friendlyarm.com>
  <23552842.6Emhk5qWAg@diego>
  <CAD=FV=W-ajJDfYcP3P8Jyk_KgsUAbdTtmwiNXqJ=Ab2ojgrUGw@mail.gmail.com>
  <CAMpZ1qEe7xFr+XaXsS_hWDLnGGA8PfzQiToOjY1N_1ctyQ+KxA@mail.gmail.com>
  <CAD=FV=U-=2GpQTb0N1p3Qe2TAb=JhyZJw2V8T-qbLs5TYhW7qA@mail.gmail.com>
  <7873090c4aad382813a65e35157d8684e8842974.camel@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
 In-Reply-To: <7873090c4aad382813a65e35157d8684e8842974.camel@gmail.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh0eSlZMHUwZHktLThhLGRlVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
-	tLWQY+
-X-HM-Tid: 0a8de9b867cb03aekunm33f6c4604ab
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6KzY6Pgw4HzMWKQsOGhcBTBA8
-	HDkaCjNVSlVKTEtCS0lISkJITUlKVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
-	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUpKQk9JNwY+
+X-Authenticated-Sender: dev@folker-schwesinger.de
+X-Virus-Scanned: Clear (ClamAV 0.103.10/27197/Mon Feb 26 10:31:34 2024)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_005027_514110_6CC349C7 
-X-CRM114-Status: GOOD (  45.90  )
+X-CRM114-CacheID: sfid-20240227_021214_778672_EF24C37E 
+X-CRM114-Status: GOOD (  61.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,163 +90,330 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============1205256816583241854=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjQvMi8yNyAxMDowNSwgQWxiYW4gQnJvd2FleXMg5YaZ6YGTOgo+IExlIG1lcmNyZWRp
-IDI0IGFvw7t0IDIwMjIgw6AgMDc6NTcgLTA3MDAsIERvdWcgQW5kZXJzb24gYSDDqWNyaXTCoDoK
-Pj4gT24gVHVlLCBBdWcgMjMsIDIwMjIgYXQgODoxMSBQTSBKZW5zZW4gSHVhbmcKPj4gPGplbnNl
-bmh1YW5nQGZyaWVuZGx5YXJtLmNvbT4gd3JvdGU6Cj4+PiBJIHJlYWxpemVkIHRoYXQgb25seSBz
-b21lIGRldmljZXMgbWF5IGJlIGFmZmVjdGVkLCBzbyBJIGNvbnNpZGVyZWQKPj4+IG1vZGlmeWlu
-ZyByazMzOTktbmFub3BpNC5kdHNpIG9ubHksCj4+PiBidXQgb3RoZXIgYm9hcmRzIHdpdGhvdXQg
-ZXh0ZXJuYWwgcHVsbC1kb3duIHNob3VsZCBzdGlsbCBuZWVkIHRoaXMKPj4+IHBhdGNoLgo+PgoK
-PiAKPiAKPiAKPiAKPiBJIGJlbGlldmUgOTklIG9mIHRoZSBib2FyZHMgYXJlIG5vdyBicm9rZW4g
-d2l0aCB0aGlzIG5ldyBpbnRlcm5hbAo+IHB1bGxkb3duIGJlaGF2aW9yIChhbGwgIHRoZXNlIHdp
-dGggaW50ZXJuYWwgcHVsbGRvd24pLiBNb3JlIG9uIHRoYXQKCisxCgpKdXN0IGZpbmQgUkszMzk5
-IEVWQiB0byBiZSBicm9rZW4gd2hlbiBtb3ZpbmcgdG8gbmV3IGtlcm5lbCB0d28gbW9udGggCmFn
-by4gQW5kIEkgYmVsaWV2ZSBpdCB3aWxsIGJyZWFrIG1vcmUgY3VzdG9tIGJvYXJkcyB3aGljaCBm
-b2xsb3cgdGhlCnZlbmRvciBkZXNpZ24uCgo+IGxhdGVyIGJ1dCB0byBzdW0gdXAsIG5vYm9keSAg
-Y29tcGxhaW5lZCBiZWNhdXNlIGRvd25zdHJlYW0ga2VybmVscyBsaWtlCj4gQXJtYmlhbiBhbGwg
-ZGlzYWJsZWQgSFM0MDAgZm9yIGFsbCBib2FyZHMsIGF0IGxlYXN0IGZvciByazMzOTkuCj4gCj4g
-Cj4gRG8gd2UgcmVhbGx5IHdhbnQgdG8gYXNrIDk5JSBvZiB0aGUgYm9hcmQgZHRzIHRvIGFkZCB0
-aGlzICJlbmFibGUtCj4gc3Ryb2JlLXB1bGxkb3duIiBpbiB0aGVpciBkdHM/CgpJdCdzIHJlY29t
-bWVuZGVkIHRvIHVzZSBpbnRlcm5hbCBwdWxsZG93biwgc28gdGhlIGRlZmF1bHQgcmVnaXN0ZXIg
-dmFsdWUKYWxyZWFkeSByZWZsZWN0cyB0aGUgZmFjdC4gSXQgd2lsbCBsZXQgdGhlIGJvYXJkIHJ1
-bm5pbmcgSFM0MDAgYWxsIHRoZQp3YXkgZnJvbSBsb2FkZXIgdG8ga2VybmVsLiBJZiBleHRlcm5h
-bCBwdWxsZG93biBpcyBzdHVmZmVkIGZvciBjZXJ0YWluCmNhc2UsIHdoYXQgd2UgYWN0dWFsbHkg
-bmVlZCBpcyBkaXNhYmxlLXN0cm9iZS1wdWxsZG93biwgaXNuJ3QgaXQ/Cgo+IENocmlzLCB3YXMg
-eW91ciBjdXN0b20gYm9hcmQgbm90IHdvcmtpbmcgd2l0aCB0aGUgdmVuZGVyIGtlcm5lbCBkZWZh
-dWx0Cj4gdG8gZW5hYmxlIHVuY29uZGl0aW9uYWx5Pwo+IFdoYXQgd2FzIHRoZSByYXRpb25hbGUg
-dG8gIGNob29zZSB0aGUgb3Bwb3NpdGUgZGVmYXVsdCBmcm9tIHRoZSB2ZW5kb3IKPiBrZXJuZWwg
-b25lPwo+IAo+IAo+IEFzIHRvbGQgaW4gdGhlIGNvbW1pdCB0aGF0IGludHJvZHVjZWQgdGhpcyBu
-ZXcgYmVoYXZpb3IgdGhlIGRlZmF1bHQgZm9yCj4gdGhlIHZlbmRvciBrZXJuZWwgd2FzIHRoZSBv
-cHBvc2l0ZSBvZiB3aGF0IHdhcyBpbnRyb2R1Y2VkIGluIHRoZSBMaW51eAo+IGtlcm5lbDoKPiAi
-Cj4gaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2NvbW1pdC84YjVjMmI0NWI4ZjBh
-MTFjOTA3MmRhMGY3YmFmOWVlOTg2ZDMxNTFlCj4gCj4gY29tbWl0IDhiNWMyYjQ1YjhmMGExMWM5
-MDcyZGEwZjdiYWY5ZWU5ODZkMzE1MWUKPiBBdXRob3I6IENocmlzIFJ1ZWhsIDxjaHJpcy5ydWVo
-bEBndHN5cy5jb20uaGs+Cj4gRGF0ZTogICBTdW4gTm92IDI5IDEzOjQ0OjE0IDIwMjAgKzA4MDAK
-PiAKPiBwaHk6IHJvY2tjaGlwOiBzZXQgcHVsbGRvd24gZm9yIHN0cm9iZSBsaW5lIGluIGR0cwo+
-IAo+IFRoaXMgcGF0Y2ggYWRkIHN1cHBvcnQgdG8gc2V0IHRoZSBpbnRlcm5hbCBwdWxsZG93biB2
-aWEgZHQgcHJvcGVydHkKPiBhbmQgYWxsb3cgc2ltcGxpZnkgdGhlIGJvYXJkIGRlc2lnbiBmb3Ig
-dGhlIHRyYWNlIGZyb20gZW1tYy1waHkgdG8KPiB0aGUgZU1NQyBjaGlwc2V0Lgo+IERlZmF1bHQg
-dG8gbm90IHNldCB0aGUgcHVsbC1kb3duLgo+IAo+IFRoaXMgcGF0Y2ggd2FzIGluc3BpcmVkIGZy
-b20gdGhlIDQuNCB0cmVlIG9mIHRoZQo+IFJvY2tjaGlwIFNESywgd2hlcmUgaXQgaXMgZW5hYmxl
-ZCB1bmNvbmRpdGlvbmFsLgo+IFRoZSBwYXRjaCBoYWQgYmVlbiB0ZXN0ZWQgd2l0aCBvdXIgcmsz
-Mzk5IGN1c3RvbWl6ZWQgYm9hcmQuCj4gIgo+IAo+IAo+IAo+IEZvciBSSzM1ODggSSBzZWUgdGhp
-cyBjb21taXQgd2hpY2ggbWFrZXMgbWUgYmVsaWV2ZSB0aGUgaW50ZXJuYWwKPiBwdWxsZG93biBj
-YXNlIGlzIHRoZSBtb3N0IGNvbW1vbiAiCj4gY29tbWl0IDM3ZjNkNjEwODczMDcxM2M0MTE4Mjdh
-YjRhZjc2NDkwOWY0ZGZjNzgKPiBBdXRob3I6IFNhbSBFZHdhcmRzIDxjZnN3b3Jrc0BnbWFpbC5j
-b20+Cj4gRGF0ZTogICBUdWUgRGVjIDUgMTI6Mjk6MDAgMjAyMyAtMDgwMAo+IAo+IAo+IGFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBGaXggZU1NQyBEYXRhIFN0cm9iZSBQRCBvbiByazM1ODgKPiAKPiBK
-RURFQyBzdGFuZGFyZCBKRVNEODQtQjUxIGRlZmluZXMgdGhlIGVNTUMgRGF0YSBTdHJvYmUgbGlu
-ZSwgd2hpY2ggaXMKPiBjdXJyZW50bHkgdXNlZCBvbmx5IGluIEhTNDAwIG1vZGUsIGFzIGEgZGV2
-aWNlLT5ob3N0IGNsb2NrIHNpZ25hbCB0aGF0Cj4gImlzIHVzZWQgb25seSBpbiByZWFkIG9wZXJh
-dGlvbi4gVGhlIERhdGEgU3Ryb2JlIGlzIGFsd2F5cyBIaWdoLVogKG5vdAo+IGRyaXZlbiBieSB0
-aGUgZGV2aWNlIGFuZCBwdWxsZWQgZG93biBieSBSRFMpIG9yIERyaXZlbiBMb3cgaW4gd3JpdGUK
-PiBvcGVyYXRpb24sIGV4Y2VwdCBkdXJpbmcgQ1JDIHN0YXR1cyByZXNwb25zZS4iIFJEUyBpcyBh
-IHB1bGwtZG93bgo+IHJlc2lzdG9yIHNwZWNpZmllZCBpbiB0aGUgMTBLLTEwMEsgb2htIHJhbmdl
-LiBUaHVzIHBlciB0aGUgc3RhbmRhcmQsCj4gdGhlCj4gRGF0YSBTdHJvYmUgaXMgYWx3YXlzIHB1
-bGxlZCB0byBncm91bmQgKGJ5IHRoZSBlTU1DIGFuZC9vciBSRFMpIGR1cmluZwo+IHdyaXRlIG9w
-ZXJhdGlvbnMuCj4gCj4gRXZpZGVudGx5LCB0aGUgZU1NQyBob3N0IGNvbnRyb2xsZXIgaW4gdGhl
-IFJLMzU4OCBjb25zaWRlcnMgYW4gYWN0aXZlCj4gdm9sdGFnZSBvbiB0aGUgZU1NQy1EUyBsaW5l
-IGR1cmluZyBhIHdyaXRlIHRvIGJlIGFuIGVycm9yLgo+IAo+IFRoZSBkZWZhdWx0IChpLmUuIGhh
-cmR3YXJlIHJlc2V0LCBhbmQgUm9ja2NoaXAgQlNQKSBiZWhhdmlvciBmb3IgdGhlCj4gUkszNTg4
-IGlzIHRvIGFjdGl2YXRlIHRoZSBlTU1DLURTIHBpbidzIGJ1aWx0aW4gcHVsbC1kb3duLiBBcyBh
-IHJlc3VsdCwKPiBtYW55IFJLMzU4OCBib2FyZCBkZXNpZ25lcnMgZG8gbm90IGJvdGhlciBhZGRp
-bmcgYSBkZWRpY2F0ZWQgUkRTCj4gcmVzaXN0b3IsIGluc3RlYWQgcmVseWluZyBvbiB0aGUgUksz
-NTg4J3MgaW50ZXJuYWwgYmlhcy4gVGhlIGN1cnJlbnQKPiBkZXZpY2V0cmVlLCBob3dldmVyLCBk
-aXNhYmxlcyB0aGlzIGJpYXMgKGBwY2ZnX3B1bGxfbm9uZWApLCBicmVha2luZwo+IEhTNDAwLW1v
-ZGUgd3JpdGVzIGZvciBib2FyZHMgd2l0aG91dCBhIGRlZGljYXRlZCBSRFMsIGJ1dCB3aXRoIGFu
-IGVNTUMKPiBjaGlwIHRoYXQgY2hvb3NlcyB0byBIaWdoLVogKGluc3RlYWQgb2YgZHJpdmUtbG93
-KSB0aGUgZU1NQy1EUyBsaW5lLgo+IChUaGUgVHVyaW5nIFJLMSBpcyBvbmUgc3VjaCBib2FyZC4p
-Cj4gCj4gRml4IHRoaXMgYnkgY2hhbmdpbmcgdGhlIGJpYXMgaW4gdGhlIChjb21tb24pIGVtbWNf
-ZGF0YV9zdHJvYmUgY2FzZSB0bwo+IHJlZmxlY3QgdGhlIGV4cGVjdGVkIGhhcmR3YXJlL0JTUCBi
-ZWhhdmlvci4gVGhpcyBpcyB1bmxpa2VseSB0byBjYXVzZQo+IHJlZ3Jlc3Npb25zIGVsc2V3aGVy
-ZTogdGhlIHB1bGwtZG93biBpcyBvbmx5IHJlbGV2YW50IGZvciBIaWdoLVogZU1NQ3MsCj4gYW5k
-IGlmIHRoaXMgaXMgcmVkdW5kYW50IHdpdGggYSAoZGVkaWNhdGVkKSBSRFMgcmVzaXN0b3IsIHRo
-ZSBlZmZlY3RpdmUKPiByZXN1bHQgaXMgb25seSBhIGxvd2VyIHJlc2lzdGFuY2UgdG8gZ3JvdW5k
-IC0tIHdoZXJlIHRoZSByYW5nZSBvZgo+IHRvbGVyYW5jZSBpcyBxdWl0ZSBoaWdoLiBJZiBpdCBk
-b2VzLCBpdCdzIGJldHRlciBmaXhlZCBpbiB0aGUgc3BlY2lmaWMKPiBkZXZpY2V0cmVlcy4KPiAi
-Cj4gCj4gCj4gCj4gCj4gCj4gCj4gTGF0ZWx5IHR3byBvdGhlciB1cHN0cmVhbSBkdHMgZGlzYWJs
-ZWQgSFM0MDAgZHVlIHRvIHRoaXMgbmV3IGJlaGF2aW9yIEkKPiBiZWxpZXZlOgo+ICIKPiBodHRw
-czovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9zdGFibGUvbGludXgu
-Z2l0L2NvbW1pdC9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwP2lkPTJiZDFkMmRkODA4YzYw
-NTMyMjgzZTljZjA1MTEwYmYxYmYyZjkwNzkKPiBhdXRob3IJQ2hyaXN0b3BoZXIgT2JiYXJkIDxj
-aHJpcy5vYmJhcmRAY29sbGFib3JhLmNvbT4JMjAyMy0KPiAwNy0wNSAxNTo0Mjo1NSArMDEwMAo+
-IGNvbW1pdHRlcglIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgkyMDIzLTA3LTEwCj4g
-MTU6NDM6MjQgKzAyMDAKPiBjb21taXQJMmJkMWQyZGQ4MDhjNjA1MzIyODNlOWNmMDUxMTBiZjFi
-ZjJmOTA3OSAocGF0Y2gpCj4gdHJlZQk1N2NiZjdlYWE5MWRlYjY4ZjE0MzU3N2Q1ZDFkYmMwZDkx
-NDE0ODBlCj4gL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAKPiBwYXJlbnQJY2VlNTcyNzU2
-YWEyY2I0NmU5NTllOTc5N2FkNGI3MzBiNzhhMDUwYiAoZGlmZikKPiBkb3dubG9hZAlsaW51eC0y
-YmQxZDJkZDgwOGM2MDUzMjI4M2U5Y2YwNTExMGJmMWJmMmY5MDc5LnRhci5nego+IGFybTY0OiBk
-dHM6IHJvY2tjaGlwOiBEaXNhYmxlIEhTNDAwIGZvciBlTU1DIG9uIFJPQ0sgNEMrCj4gCj4gCj4g
-aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvc3RhYmxlL2xp
-bnV4LmdpdC9jb21taXQvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcD9pZD1jZWU1NzI3NTZh
-YTJjYjQ2ZTk1OWU5Nzk3YWQ0YjczMGI3OGEwNTBiCj4gYXV0aG9yCUNocmlzdG9waGVyIE9iYmFy
-ZCA8Y2hyaXMub2JiYXJkQGNvbGxhYm9yYS5jb20+CTIwMjMtCj4gMDctMDUgMTU6NDI6NTQgKzAx
-MDAKPiBjb21taXR0ZXIJSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4JMjAyMy0wNy0x
-MAo+IDE1OjQzOjI0ICswMjAwCj4gY29tbWl0CWNlZTU3Mjc1NmFhMmNiNDZlOTU5ZTk3OTdhZDRi
-NzMwYjc4YTA1MGIgKHBhdGNoKQo+IHRyZWUJY2YzZWQ4ZmY2MjMwY2JkZTA0MzUzNTAzNDE3YzFh
-NzViYTE1YzI0OQo+IC9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwCj4gcGFyZW50CTVjZTY5
-NzFlNTI3OWM1NjlkZWZjMmYyYWM4MDA2OTIwNDliYmFhOTAgKGRpZmYpCj4gZG93bmxvYWQJbGlu
-dXgtY2VlNTcyNzU2YWEyY2I0NmU5NTllOTc5N2FkNGI3MzBiNzhhMDUwYi50YXIuZ3oKPiBhcm02
-NDogZHRzOiByb2NrY2hpcDogRGlzYWJsZSBIUzQwMCBmb3IgZU1NQyBvbiBST0NLIFBpIDQKPiAi
-Cj4gCj4gCj4gQWxsIEFybWJpYW4gUkszMzk5IGJvYXJkcywgYXMgZmFyIGFzIEkga25vdywgaGFk
-IHRvIGRpc2FibGUgSFM0MDAsIEkKPiBhbHNvIGJlbGlldmUgZHVlIHRvIHRoaXMgY29tbWl0Lgo+
-IAo+IFlvdSBjYW4gYWxzbyBzZWFyY2ggZ29vZ2xlIGZvciAicnVubmluZyBjcWUgcmVjb3Zlcnkg
-cmszMzk5IGFybWJpYW4iLgo+IAo+IAo+IFRoaXMgd2FzIG5ldmVyIHJlcG9ydGVkIHVwc3RyZWFt
-IHRob3VnaC4gQnV0IGFzIEhTNDAwIGlzIGRpc2FibGVkCj4gZXZlcnl3aGVyZSBub2JvZHkgbm90
-aWNlIHRoZSByZWdyZXNzaW9uIG5vd2FkYXlzLgo+IAo+IAo+Pgo+Pj4gQlIsCj4+PiBKZW5zZW4K
-Pj4+Cj4+PiBPbiBUdWUsIEF1ZyAyMywgMjAyMiBhdCAxMDoxMyBQTSBEb3VnIEFuZGVyc29uCj4+
-PiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPiB3cm90ZToKPj4+Pgo+Pj4+IEhpLAo+Pj4+Cj4+Pj4g
-T24gVHVlLCBBdWcgMjMsIDIwMjIgYXQgNDo1MyBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPgo+Pj4+IHdyb3RlOgo+Pj4+Pgo+Pj4+PiBBbSBNb250YWcsIDIyLiBBdWd1c3QgMjAy
-MiwgMDk6NDE6MzkgQ0VTVCBzY2hyaWViIEplbnNlbiBIdWFuZzoKPj4+Pj4+IEludGVybmFsIHB1
-bGwtZG93biBmb3Igc3Ryb2JlIGxpbmUgKEdSRl9FTU1DUEhZX0NPTjJbOV0pIHdhcwo+Pj4+Pj4g
-ZGlzYWJsZWQKPj4+Pj4+IGJ5IGNvbW1pdCA4YjVjMmI0NWI4ZjAsIHdoaWNoIGNhdXNlcyBJL08g
-ZXJyb3IgaW4gSFM0MDAgbW9kZS4KPj4+Pj4+Cj4+Pj4+PiBUZXN0ZWQgb24gTmFub1BDLVQ0Lgo+
-Pj4+Pj4KPj4+Pj4+IEZpeGVzOiA4YjVjMmI0NWI4ZjAgKCJwaHk6IHJvY2tjaGlwOiBzZXQgcHVs
-bGRvd24gZm9yIHN0cm9iZQo+Pj4+Pj4gbGluZSBpbiBkdHMiKQo+Pj4+Pj4gU2lnbmVkLW9mZi1i
-eTogSmVuc2VuIEh1YW5nIDxqZW5zZW5odWFuZ0BmcmllbmRseWFybS5jb20+Cj4+Pj4+Cj4+Pj4+
-IG9rLCBzbyB0aGlzIGxvb2tzIGxpa2UgaXQgcmVzdG9yZXMgcHJldmlvdXMgZnVuY3Rpb25hbGl0
-eS4KPj4+Pj4KPj4+Pj4gSSdtIGp1c3Qgd29uZGVyaW5nIGFzIHRoZSAib2ZmZW5kaW5nIiBwYXRj
-aCBpcyBmcm9tIDIwMjAsIHdoeQo+Pj4+PiB0aGlzCj4+Pj4+IG9ubHkgdHVybnMgdXAgbm93LiBB
-bnkgaWRlYXM/Cj4+Pj4KPiAKPiBQcm9iYmFseSBiZWNhdXNlIHRoZSBpbnRyb2R1Y3Rpb24gb2Yg
-UFJPQkVfREVGRVJSRUQgaW4gcmVndWxhdG9yIGNvcmUKPiBiZWZvcmUgdGhhdCAoaW4gNS4xMC42
-MCkgYWxyZWFkeSBicm9rZSBhdCBsZWFzdCBteSBib2FyZCBIUzQwMCBkdWUgdG8KPiBkb3VibGUg
-aW5pdC4gVGh1cyB3aHkgaXQgdG9vayBtZSBzbyBsb25nIHRvIHNlZSB0aGlzIG5ldyBwdWxsZG93
-bgo+IGJlaGF2aW9yIGNvbW1pdC4gSSB3YXMgdGVzdGluZyBldmVyeSByZWd1bGF0b3IgY29yZSBk
-b3VibGUgaW5pdCBmaXh1cAo+IHBhdGNoc2V0IHdoaWxlIG5vdCB1bmRlcnN0YW5kaW5nIHdoeSBy
-ZXZlcnRpbmcgdGhlIFBST0JFX0RFRkVSUkVECj4gY29tbWl0IG9uIDUuMTAuNjAgd29ya2VkIGJ1
-dCBub3Qgb24gbmV3ZXIga2VybmVscyAoaWUgdGhpcyBuZXcgcHVsbGRvd24KPiBiZWhhdmlvciB3
-YXMgaW50cm9kdWNlZCBpbiA1LjExLi4uKS4KPiAKPiAKPiAKPiAKPj4+PiBBaCwgSSBzZWUuIFNv
-IGJlZm9yZSB0aGUgb2ZmZW5kaW5nIHBhdGNoIHdlIHVzZWQgdG8ganVzdCBsZWF2ZQo+Pj4+IHRo
-ZQo+Pj4+IHB1bGwgc3RhdGUgYXQgd2hhdGV2ZXIgdGhlIGRlZmF1bHQgd2FzIHdoZW4gdGhlIGtl
-cm5lbCB3YXMKPj4+PiBib290ZWQuCj4+Pj4gQWZ0ZXIgdGhlIG9mZmVuZGluZyBwYXRjaCB3ZSBj
-aG9zZSBhIGRlZmF1bHQuCj4+Pj4KPj4+PiBPbiBrZXZpbiBJIHNlZSBhbiBleHRlcm5hbCBwdWxs
-IGRvd24gb24gdGhpcyBsaW5lLiBFbmFibGluZyBib3RoCj4+Pj4gdGhlCj4+Pj4gaW50ZXJuYWwg
-YW5kIGV4dGVybmFsIGlzIHByb2JhYmx5IG5vdCBhIGh1Z2UgZGVhbCwgaXQnbGwganVzdAo+Pj4+
-IGFmZmVjdAo+Pj4+IHRoZSBzdHJlbmd0aCBvZiB0aGUgcHVsbC4KPj4+Pgo+Pj4+IE9uIGJvYiBJ
-IF90aGlua18gdGhlIGV4dGVybmFsIHB1bGwgZG93biBpcyBhbHNvIHN0dWZmZWQuCj4+Pj4KPj4+
-PiAuLi5zbyBJIGd1ZXNzIHRoYXQgd291bGQgZXhwbGFpbiB3aHkgaXQgZGlkbid0IGNhdXNlIGEg
-cHJvYmxlbQo+Pj4+IGZvciBhdAo+Pj4+IGxlYXN0IHRob3NlIHR3byBib2FyZHM/Cj4+Pj4KPj4+
-PiAtRG91Zwo+IAo+IAo+IEluIG15IG9waW5pb24gaXQgaXMgYWJvdXQgdGhlc2UgYm9hcmQgYWxy
-ZWFkeSBiZWluZyBicm9rZW4gYnkgdGhlCj4gcmVndWxhdG9yIGNvcmUgY2hhbmdlLCBzbyBub2Jv
-ZHkgbm90aWNlZCB0aGUgc2Vjb25kIHJlZ3Jlc3Npb24uIFdoZW4KPiB0aGUgZmlyc3QgcmVncmVz
-c2lvbiB3YXMgZml4ZWQsIGl0IHdhcyB2ZXJ5IGhhcmQgdG8gY29ycmVsYXRlIHRoZSBzdGlsbAo+
-IGJyb2tlbiBiZWhhdmlvciB0byB0aGUgc2Vjb25kIHJlZ3Jlc3Npb24uCj4gCj4gCj4gSSBjb25m
-aXJtIHRoYXQgb24gSGVsaW9zNjQsIHNldHRpbmcgImVuYWJsZS1zdHJvYmUtcHVsbGRvd24iIGZp
-eGVzIHRoZQo+IEVNTUMgZXJyb3IgSSBoYWQgd2hlbiB3cml0aW5nIHdpdGggSFM0MDBFUyBlbmFi
-bGVkOgo+IG1tYzE6IHJ1bm5pbmcgQ1FFIHJlY292ZXJ5Cj4gbW1jMTogY3FoY2k6IHNwdXJpb3Vz
-IFRDTiBmb3IgdGFnIDEyCj4gCj4gSXQgYWxzbyB0b29rIG1lIHNvIGxvbmcgdG8gcmVwb3J0IHVw
-c3RyZWFtIGFzIG15IGJvYXJkIGNvZGUgKHJrMzM5OS0KPiBrb2JvbC1oZWxpb3M2NC5kdHMpIGlz
-IG5vdCBjb21wbGV0ZWx5IHVwc3RyZWFtZWQgeWV0IHNvIEkgdXNlIGFuCj4gQXJtYmlhbiBwYXRj
-aGVkIGtlcm5lbC4KPiAKPiAKPiAKPiBBbGJhbgo+IAo+IAo+IAo+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============1205256816583241854==
+Content-Type: multipart/signed;
+ boundary=fb2c8dd55ef9719f9d11be5e04c0ac8d4ca5dd24af240fce5463600e99f0;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Transfer-Encoding: quoted-printable
+
+--fb2c8dd55ef9719f9d11be5e04c0ac8d4ca5dd24af240fce5463600e99f0
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+On Tue Feb 27, 2024 at 3:05 AM CET, Alban Browaeys wrote:
+> Le mercredi 24 ao=C3=BBt 2022 =C3=A0 07:57 -0700, Doug Anderson a =C3=A9c=
+rit=C2=A0:
+> > On Tue, Aug 23, 2022 at 8:11 PM Jensen Huang
+> > <jensenhuang@friendlyarm.com> wrote:
+> > > I realized that only some devices may be affected, so I considered
+> > > modifying rk3399-nanopi4.dtsi only,
+> > > but other boards without external pull-down should still need this
+> > > patch.
+> >=20
+> > I guess the other alternative would be to change how the dt property
+> > works. You could say:
+> >=20
+> > 1. If `enable-strobe-pulldown` is set then enable the strobe
+> > pulldown.
+> >=20
+> > 2. If `enable-strobe-pulldown` is not set then don't touch the pin in
+> > the kernel.
+> >=20
+> > 3. If someone later needs to explicitly disable the strobe pulldown
+> > they could add a new property like `disable-strobe-pulldown`.
+> >=20
+> >=20
+> > Obviously there are tradeoffs between that and what you've done and
+> > I'm happy to let others make the call of which they'd prefer.
+> >=20
+>
+> Christopher could you try "ROCK Pi 4" and "ROCK Pi 4+" with=20
+> "enable-strobe-pulldown" instead of disabling HS400 as you did in July
+> 2023?
+>
+
+with the following applied, the EMMC related errors are gone. dmesg only
+shows "Purging ... bytes" during my tests:
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm6=
+4/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index f2279aa6ca9e..ae0fb87e1a8b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -647,8 +647,10 @@ &saradc {
+ &sdhci {
+        max-frequency =3D <150000000>;
+        bus-width =3D <8>;
+-       mmc-hs200-1_8v;
++       mmc-hs400-1_8v;
++       mmc-hs400-enhanced-strobe;
+        non-removable;
++       rockchip,enable-strobe-pulldown;
+        status =3D "okay";
+ };
+
+For testing I ran dd three times in a row:
+
+dd if=3D/dev/zero of=3D./zero.bin bs=3D1M count=3D5000
+
+I tested this on both a Rock 4SE board and a Rock Pi 4B+ board with the
+same results.
+
+>
+> Could the behavior be reverted to let the vendor kernel default for the
+> default case (ie enable pulldown)?
+>
+>
+>
+>
+> I believe 99% of the boards are now broken with this new internal
+> pulldown behavior (all  these with internal pulldown). More on that
+> later but to sum up, nobody  complained because downstream kernels like
+> Armbian all disabled HS400 for all boards, at least for rk3399.
+>
+>
+> Do we really want to ask 99% of the board dts to add this "enable-
+> strobe-pulldown" in their dts?
+> Chris, was your custom board not working with the vender kernel default
+> to enable unconditionaly?
+> What was the rationale to  choose the opposite default from the vendor
+> kernel one?
+>
+>
+> As told in the commit that introduced this new behavior the default for
+> the vendor kernel was the opposite of what was introduced in the Linux
+> kernel:
+> "
+> https://github.com/torvalds/linux/commit/8b5c2b45b8f0a11c9072da0f7baf9ee9=
+86d3151e
+>
+> commit 8b5c2b45b8f0a11c9072da0f7baf9ee986d3151e
+> Author: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+> Date:   Sun Nov 29 13:44:14 2020 +0800
+>
+> phy: rockchip: set pulldown for strobe line in dts
+>
+> This patch add support to set the internal pulldown via dt property
+> and allow simplify the board design for the trace from emmc-phy to
+> the eMMC chipset.
+> Default to not set the pull-down.
+>
+> This patch was inspired from the 4.4 tree of the
+> Rockchip SDK, where it is enabled unconditional.
+> The patch had been tested with our rk3399 customized board.
+> "
+>
+>
+>
+> For RK3588 I see this commit which makes me believe the internal
+> pulldown case is the most common "
+> commit 37f3d6108730713c411827ab4af764909f4dfc78
+> Author: Sam Edwards <cfsworks@gmail.com>
+> Date:   Tue Dec 5 12:29:00 2023 -0800
+>
+>
+> arm64: dts: rockchip: Fix eMMC Data Strobe PD on rk3588
+>
+> JEDEC standard JESD84-B51 defines the eMMC Data Strobe line, which is
+> currently used only in HS400 mode, as a device->host clock signal that
+> "is used only in read operation. The Data Strobe is always High-Z (not
+> driven by the device and pulled down by RDS) or Driven Low in write
+> operation, except during CRC status response." RDS is a pull-down
+> resistor specified in the 10K-100K ohm range. Thus per the standard,
+> the
+> Data Strobe is always pulled to ground (by the eMMC and/or RDS) during
+> write operations.
+>
+> Evidently, the eMMC host controller in the RK3588 considers an active
+> voltage on the eMMC-DS line during a write to be an error.
+>
+> The default (i.e. hardware reset, and Rockchip BSP) behavior for the
+> RK3588 is to activate the eMMC-DS pin's builtin pull-down. As a result,
+> many RK3588 board designers do not bother adding a dedicated RDS
+> resistor, instead relying on the RK3588's internal bias. The current
+> devicetree, however, disables this bias (`pcfg_pull_none`), breaking
+> HS400-mode writes for boards without a dedicated RDS, but with an eMMC
+> chip that chooses to High-Z (instead of drive-low) the eMMC-DS line.
+> (The Turing RK1 is one such board.)
+>
+> Fix this by changing the bias in the (common) emmc_data_strobe case to
+> reflect the expected hardware/BSP behavior. This is unlikely to cause
+> regressions elsewhere: the pull-down is only relevant for High-Z eMMCs,
+> and if this is redundant with a (dedicated) RDS resistor, the effective
+> result is only a lower resistance to ground -- where the range of
+> tolerance is quite high. If it does, it's better fixed in the specific
+> devicetrees.
+> "
+>
+>
+>
+>
+>
+>
+> Lately two other upstream dts disabled HS400 due to this new behavior I
+> believe:
+> "
+> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/a=
+rch/arm64/boot/dts/rockchip?id=3D2bd1d2dd808c60532283e9cf05110bf1bf2f9079
+> author	Christopher Obbard <chris.obbard@collabora.com>	2023-
+> 07-05 15:42:55 +0100
+> committer	Heiko Stuebner <heiko@sntech.de>	2023-07-10
+> 15:43:24 +0200
+> commit	2bd1d2dd808c60532283e9cf05110bf1bf2f9079 (patch)
+> tree	57cbf7eaa91deb68f143577d5d1dbc0d9141480e
+> /arch/arm64/boot/dts/rockchip
+> parent	cee572756aa2cb46e959e9797ad4b730b78a050b (diff)
+> download	linux-2bd1d2dd808c60532283e9cf05110bf1bf2f9079.tar.gz
+> arm64: dts: rockchip: Disable HS400 for eMMC on ROCK 4C+
+>
+>
+> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/a=
+rch/arm64/boot/dts/rockchip?id=3Dcee572756aa2cb46e959e9797ad4b730b78a050b
+> author	Christopher Obbard <chris.obbard@collabora.com>	2023-
+> 07-05 15:42:54 +0100
+> committer	Heiko Stuebner <heiko@sntech.de>	2023-07-10
+> 15:43:24 +0200
+> commit	cee572756aa2cb46e959e9797ad4b730b78a050b (patch)
+> tree	cf3ed8ff6230cbde04353503417c1a75ba15c249
+> /arch/arm64/boot/dts/rockchip
+> parent	5ce6971e5279c569defc2f2ac800692049bbaa90 (diff)
+> download	linux-cee572756aa2cb46e959e9797ad4b730b78a050b.tar.gz
+> arm64: dts: rockchip: Disable HS400 for eMMC on ROCK Pi 4
+> "
+>
+>
+> All Armbian RK3399 boards, as far as I know, had to disable HS400, I
+> also believe due to this commit.
+>
+> You can also search google for "running cqe recovery rk3399 armbian".
+>
+>
+> This was never reported upstream though. But as HS400 is disabled
+> everywhere nobody notice the regression nowadays.
+>
+>
+> >=20
+> > > BR,
+> > > Jensen
+> > >=20
+> > > On Tue, Aug 23, 2022 at 10:13 PM Doug Anderson
+> > > <dianders@chromium.org> wrote:
+> > > >=20
+> > > > Hi,
+> > > >=20
+> > > > On Tue, Aug 23, 2022 at 4:53 AM Heiko St=C3=BCbner <heiko@sntech.de=
+>
+> > > > wrote:
+> > > > >=20
+> > > > > Am Montag, 22. August 2022, 09:41:39 CEST schrieb Jensen Huang:
+> > > > > > Internal pull-down for strobe line (GRF_EMMCPHY_CON2[9]) was
+> > > > > > disabled
+> > > > > > by commit 8b5c2b45b8f0, which causes I/O error in HS400 mode.
+> > > > > >=20
+> > > > > > Tested on NanoPC-T4.
+> > > > > >=20
+> > > > > > Fixes: 8b5c2b45b8f0 ("phy: rockchip: set pulldown for strobe
+> > > > > > line in dts")
+> > > > > > Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
+> > > > >=20
+> > > > > ok, so this looks like it restores previous functionality.
+> > > > >=20
+> > > > > I'm just wondering as the "offending" patch is from 2020, why
+> > > > > this
+> > > > > only turns up now. Any ideas?
+> > > >=20
+>
+> Probbaly because the introduction of PROBE_DEFERRED in regulator core
+> before that (in 5.10.60) already broke at least my board HS400 due to
+> double init. Thus why it took me so long to see this new pulldown
+> behavior commit. I was testing every regulator core double init fixup
+> patchset while not understanding why reverting the PROBE_DEFERRED
+> commit on 5.10.60 worked but not on newer kernels (ie this new pulldown
+> behavior was introduced in 5.11...).
+>
+>
+>
+>
+> > > > Ah, I see. So before the offending patch we used to just leave
+> > > > the
+> > > > pull state at whatever the default was when the kernel was
+> > > > booted.
+> > > > After the offending patch we chose a default.
+> > > >=20
+> > > > On kevin I see an external pull down on this line. Enabling both
+> > > > the
+> > > > internal and external is probably not a huge deal, it'll just
+> > > > affect
+> > > > the strength of the pull.
+> > > >=20
+> > > > On bob I _think_ the external pull down is also stuffed.
+> > > >=20
+> > > > ...so I guess that would explain why it didn't cause a problem
+> > > > for at
+> > > > least those two boards?
+> > > >=20
+> > > > -Doug
+>
+>
+> In my opinion it is about these board already being broken by the
+> regulator core change, so nobody noticed the second regression. When
+> the first regression was fixed, it was very hard to correlate the still
+> broken behavior to the second regression.
+>
+>
+> I confirm that on Helios64, setting "enable-strobe-pulldown" fixes the
+> EMMC error I had when writing with HS400ES enabled:
+> mmc1: running CQE recovery=20
+> mmc1: cqhci: spurious TCN for tag 12
+>
+> It also took me so long to report upstream as my board code (rk3399-
+> kobol-helios64.dts) is not completely upstreamed yet so I use an
+> Armbian patched kernel.
+>
+>
+>
+> Alban
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+--fb2c8dd55ef9719f9d11be5e04c0ac8d4ca5dd24af240fce5463600e99f0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJAEABYKADgWIQQFbmi0A2l3pTuK+esCQHEyPYq7fQUCZd21ZBocZGV2QGZvbGtl
+ci1zY2h3ZXNpbmdlci5kZQAKCRACQHEyPYq7ffAYAP468MofYR9FFvB2pB7XR7Fh
+73JXWpLb04W35HufTd50+gEArlC52Kj/w0WATTmOjmJN37mBeTIsw6b1ypE3dkFj
+KAU=
+=cvJ2
+-----END PGP SIGNATURE-----
+
+--fb2c8dd55ef9719f9d11be5e04c0ac8d4ca5dd24af240fce5463600e99f0--
+
+
+--===============1205256816583241854==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1205256816583241854==--
+
