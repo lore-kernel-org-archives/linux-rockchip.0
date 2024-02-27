@@ -4,55 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FED8C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 22:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC65BC54798
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 22:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XhQFaRc2prGEF3mNeRB7sx1ko4olOZ1wTkrG0WaRcrA=; b=3e/URMfeS4TIpo
-	5h7unWmV+ax7bF+HN7RgvzE7wXNio+v0zUWyHeqQxI8okO8kA/LG7ndS8wsV4FcBoA53ZdBi/jWmo
-	/3lvWb4fIEZAH4VM5Qz+M0RmsI7fWiUDdFK+vaudn13+8OkYhd9v9Q6Lomn+3cd0ckGY3wEdpXWC+
-	FfxeAGXBMhot7g5KaastE9V9RaJkVD8nK9gN1I3rTzZxoCAYyqRz6XUCzEpqigjZnqLroyauMnzcM
-	pyW2k1/xDMvPSfbDxncVdw8FU2w4WWvQuteNmmK83jk77VGTeCQ1vm9bFod8v+2Beq+Qs2bXntbav
-	IqyhtTB0yyD71+A9d79A==;
+	List-Owner; bh=NaMx1ZluyYOiclmBhPeQRQUD7KOMSCmEXY5EoYosjDE=; b=07+q0GSEtqzagh
+	rjnHazSHMdl/8toIPnfB9Zl2Rhu1OzCjUSb7P1Mw9efp6ZLEn1f+bRTR7vXimo+eJBXoWt9UO7qKr
+	7+Jfhm2JvN//UBdugXoOzcvNKF253dHs+8UxJ2QzqRV+F4oOrIUsSbC0jw31LMxXDC9q9Gs3BsOeT
+	qdo41UsNpnIBIAunVciHmok/Xr34PQ7rHzDLSyQt3Kc8PzW4/xcs/3MdCTpRwYXtxDpv6WZ7+Yzv9
+	Op/wnD5AIRiy1CswNW8/a9vaa2PTeg7svZutbqnMoxqPxAaSFSfxoFfcWw90Xc3LQyjN91TwpVoBP
+	T0p8rNhQGe/kwLJX4KyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf65G-000000076Bs-3eGk;
-	Tue, 27 Feb 2024 22:37:58 +0000
+	id 1rf65X-000000076Gk-3d70;
+	Tue, 27 Feb 2024 22:38:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf65E-000000076B9-1ROJ;
-	Tue, 27 Feb 2024 22:37:57 +0000
+	id 1rf65J-000000076CG-0dh1;
+	Tue, 27 Feb 2024 22:38:02 +0000
 Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rf656-0001zj-70; Tue, 27 Feb 2024 23:37:48 +0100
+	id 1rf655-0001zj-Lc; Tue, 27 Feb 2024 23:37:47 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Rob Herring <robh@kernel.org>
+To: Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
 	kernel@collabora.com,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add HDMI0 PHY to rk3588
-Date: Tue, 27 Feb 2024 23:37:46 +0100
-Message-Id: <170907346109.770500.8777873527393464298.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: defconfig: Enable Rockchip HDMI/eDP Combo PHY
+Date: Tue, 27 Feb 2024 23:37:45 +0100
+Message-Id: <170907346109.770500.16742913187559024297.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240219204626.284399-1-cristian.ciocaltea@collabora.com>
-References: <20240219204626.284399-1-cristian.ciocaltea@collabora.com>
+In-Reply-To: <20240219203725.283532-1-cristian.ciocaltea@collabora.com>
+References: <20240219203725.283532-1-cristian.ciocaltea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_143756_400808_5069001F 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240227_143801_222967_6DC99E0F 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,15 +66,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 Feb 2024 22:46:25 +0200, Cristian Ciocaltea wrote:
-> Add DT nodes for HDMI0 PHY and related syscon found on RK3588 SoC.
+On Mon, 19 Feb 2024 22:37:24 +0200, Cristian Ciocaltea wrote:
+> Enable support for the Rockchip HDMI/eDP Combo PHY, which is based on a
+> Samsung IP block. This is used by the RK3588 SoC family.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add HDMI0 PHY to rk3588
-      commit: 11d28971aaaf5de6f50790fb21f1113fee21d320
+[1/1] arm64: defconfig: Enable Rockchip HDMI/eDP Combo PHY
+      commit: 23ed255e74317b10b41b396d4af5b79b47b28c22
 
 Best regards,
 -- 
