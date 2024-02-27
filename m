@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D089C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 13:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28138C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 14:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dEY/ib1aCjoeZw6rFinrSlUeKApepV7OlClFLDM+RJo=; b=iA+j15uVApTQANrhp38jDCluUa
-	wjDm1YKlrsYQoM+Z91pTOJvcmsglG2+b1mtK6WaH3JYHr7t5uhjyv3qhiESHcG3wShcHyKEx9Hkmx
-	IYFdZZ8ZIFnylRIUNoNuEUMIdLepPuwLrsH9/JdPDC468CiRW13ArCs+PRZ0lX84iclsbnJtf+q26
-	+DfSLrm7xYIzfOaRXDPgslpbeM6fgwZwbajDkoEVivdIo2yKUf/SnYcNQyudz2WuzdaWI4AEQYq7Z
-	hEYcChovXnmMGHqWnFVoo2PpIx5jxa9MNTCIgGAWJHGR4jblodxXp1f69idlHbZL9xEauopN/uNP/
-	h0m9J9Yw==;
+	bh=YnKlAQiqT7EffII6hhgOttlGDy24Mm0oYQsiNHGjJBE=; b=Zs2oVLWuLzAMAknZeF7RN7Gd2F
+	rayfFXFpZa+j6BY+4+twLMIvc4Yd2B3WmeCqy9yph5OAzZCiotiac6ggOCbnGDYo0MwGiENUO+XJY
+	A7NdvJM1WmotX25cxB4KC4Op5A6dkD9ORhmFAoxLn+qLEUJQjPYXw3O8empuPl62UddYH7gMtXeJJ
+	GS4cQuYxbIo2AK0HyvximkXwSwdoGyE48zUc7kmuQgxGpvVQAFgvQvvpZ6nhr3WKJcsn0+1rAozsq
+	rsBaixY0uRODzjXt2OxNU3bJf+5H1asn9K+RyLxuCaSLwoOIf4qwSqinoIx02UljhZ6cM6AI7yyUN
+	P5QigbFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rexwH-00000005U2N-1iCk;
-	Tue, 27 Feb 2024 13:56:09 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rey1W-00000005V5v-1VsM;
+	Tue, 27 Feb 2024 14:01:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rexwE-00000005U0O-2d8N
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Feb 2024 13:56:08 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rexw6-0007Sa-Qs; Tue, 27 Feb 2024 14:55:58 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rexw6-003DBt-5D; Tue, 27 Feb 2024 14:55:58 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1rexw6-00CUO7-0D;
-	Tue, 27 Feb 2024 14:55:58 +0100
-Date: Tue, 27 Feb 2024 14:55:57 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Rob Herring <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 0/2] arm64: Add basic support for QNAP TS-433
-Message-ID: <2ifrk72uv2j27eukuxeekeuluzf4bu5335qk73gaaykg7tcq4d@uhkutnknqqd2>
-References: <cover.1709034476.git.ukleinek@debian.org>
- <170904127405.3703837.16422930909447111254.robh@kernel.org>
+	id 1rey1S-00000005V4O-0TwW;
+	Tue, 27 Feb 2024 14:01:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7C959612A3;
+	Tue, 27 Feb 2024 14:01:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C63BFC433A6;
+	Tue, 27 Feb 2024 14:01:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709042489;
+	bh=xCkbRrGm9KUzkhAwbM6To2Tg2wmXxpHrMpykco6RiTk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p33FKrElIhnO0+GzW7v95ecGNxi2xlWdfACIJ9+rCODu23YXF1i/U0loqeowLj84C
+	 qE6SLxpSV9oNwcGsiNZFQ1KKLRLf4YVyPfa7O8VkLxx5+QHXAgW0qJQhI6gFt6Ge+D
+	 lq4RhnOMlMc9FgPDkmsEo8IDRRGU6fUj7EMQxtBStiDAYmla5WXJ/TR5Sxj34h5M4q
+	 Cl6BpbMd0j+dw/8bgmrqiFRXIGt9LqPZcMTCh+n/OpI2oQIE9X/8ACIXU+CMXLEk24
+	 Z+CtdpBqZacoDkMufgdizq5qXbaPf/SVe3ShBuwFdeTffz1kc5436fwY+HOQXAPPRx
+	 OUhjcEXEF+prA==
+Date: Tue, 27 Feb 2024 15:01:26 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Alex Bee <knaerzche@gmail.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Sebastian Wick <sebastian.wick@redhat.com>, Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v7 19/36] drm/connector: hdmi: Compute bpc and format
+ automatically
+Message-ID: <vsetubfn5uvdczjrhyu6jprefdqqglpkgyw6ejbxbjypxqaxrs@u6g7cwbawrih>
+References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
+ <20240222-kms-hdmi-connector-state-v7-19-8f4af575fce2@kernel.org>
+ <67e9fbc5-ed7f-48b9-ae2a-e07c5fbd2218@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <170904127405.3703837.16422930909447111254.robh@kernel.org>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <67e9fbc5-ed7f-48b9-ae2a-e07c5fbd2218@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_055606_693318_E2E24D74 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20240227_060130_275302_43116312 
+X-CRM114-Status: GOOD (  41.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,66 +76,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6284404393633423399=="
+Content-Type: multipart/mixed; boundary="===============8825341720805290246=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6284404393633423399==
+--===============8825341720805290246==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iesqjog43iq3vvyl"
+	protocol="application/pgp-signature"; boundary="nj3gdbp5aimebgk5"
 Content-Disposition: inline
 
 
---iesqjog43iq3vvyl
-Content-Type: text/plain; charset=iso-8859-1
+--nj3gdbp5aimebgk5
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hello Rob,
+Hi Alex,
 
-On Tue, Feb 27, 2024 at 07:45:06AM -0600, Rob Herring wrote:
-> New warnings running 'make CHECK_DTBS=3Dy rockchip/rk3568-qnap-ts433.dtb'=
- for cover.1709034476.git.ukleinek@debian.org:
->=20
-> arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: video-codec@fdea0400:=
- 'interrupt-names' is a required property
-> 	from schema $id: http://devicetree.org/schemas/media/rockchip-vpu.yaml#
-> arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dtb: i2s@fe420000: reset-n=
-ames:0: 'm' is not one of ['tx-m', 'rx-m']
-> 	from schema $id: http://devicetree.org/schemas/sound/rockchip,i2s-tdm.ya=
-ml#
+On Sun, Feb 25, 2024 at 02:56:02PM +0100, Alex Bee wrote:
+> Am 22.02.24 um 19:14 schrieb Maxime Ripard:
+> > Now that we have all the infrastructure needed, we can add some code
+> > that will, for a given connector state and mode, compute the best output
+> > format and bpc.
+> >=20
+> > The algorithm is equivalent to the one already found in i915 and vc4.
+> >=20
+> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >   drivers/gpu/drm/drm_atomic_state_helper.c          | 184 ++++++++++++=
+++++++++-
+> >   .../gpu/drm/tests/drm_atomic_state_helper_test.c   |  25 ++-
+> >   2 files changed, 197 insertions(+), 12 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/drm_atomic_state_helper.c b/drivers/gpu/dr=
+m/drm_atomic_state_helper.c
+> > index 448b4a73d1c8..9f517599f117 100644
+> > --- a/drivers/gpu/drm/drm_atomic_state_helper.c
+> > +++ b/drivers/gpu/drm/drm_atomic_state_helper.c
+> > @@ -31,6 +31,7 @@
+> >   #include <drm/drm_connector.h>
+> >   #include <drm/drm_crtc.h>
+> >   #include <drm/drm_device.h>
+> > +#include <drm/drm_edid.h>
+> >   #include <drm/drm_framebuffer.h>
+> >   #include <drm/drm_plane.h>
+> >   #include <drm/drm_print.h>
+> > @@ -662,6 +663,96 @@ connector_state_get_mode(const struct drm_connecto=
+r_state *conn_state)
+> >   	return &crtc_state->mode;
+> >   }
+> > +static bool
+> > +sink_supports_format_bpc(const struct drm_connector *connector,
+> > +			 const struct drm_display_info *info,
+> > +			 const struct drm_display_mode *mode,
+> > +			 unsigned int format, unsigned int bpc)
+> > +{
+> > +	struct drm_device *dev =3D connector->dev;
+> > +	u8 vic =3D drm_match_cea_mode(mode);
+> > +
+> > +	if (vic =3D=3D 1 && bpc !=3D 8) {
+> > +		drm_dbg(dev, "VIC1 requires a bpc of 8, got %u\n", bpc);
+> > +		return false;
+> > +	}
+> > +
+> > +	if (!info->is_hdmi &&
+> > +	    (format !=3D HDMI_COLORSPACE_RGB || bpc !=3D 8)) {
+> > +		drm_dbg(dev, "DVI Monitors require an RGB output at 8 bpc\n");
+> > +		return false;
+> > +	}
+> > +
+> > +	if (!(connector->hdmi.supported_formats & BIT(format))) {
+> > +		drm_dbg(dev, "%s format unsupported by the connector.\n",
+> > +			drm_hdmi_connector_get_output_format_name(format));
+> > +		return false;
+> > +	}
+> > +
+> > +	switch (format) {
+> > +	case HDMI_COLORSPACE_RGB:
+> > +		drm_dbg(dev, "RGB Format, checking the constraints.\n");
+> > +
+> > +		if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444))
+> > +			return false;
+> > +
+> > +		if (bpc =3D=3D 10 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HD=
+MI_DC_30)) {
+> > +			drm_dbg(dev, "10 BPC but sink doesn't support Deep Color 30.\n");
+> > +			return false;
+> > +		}
+> > +
+> > +		if (bpc =3D=3D 12 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HD=
+MI_DC_36)) {
+> > +			drm_dbg(dev, "12 BPC but sink doesn't support Deep Color 36.\n");
+> > +			return false;
+> > +		}
+> > +
+> > +		drm_dbg(dev, "RGB format supported in that configuration.\n");
+> > +
+> > +		return true;
+> > +
+> > +	case HDMI_COLORSPACE_YUV422:
+> > +		drm_dbg(dev, "YUV422 format, checking the constraints.\n");
+> > +
+> > +		if (!(info->color_formats & DRM_COLOR_FORMAT_YCBCR422)) {
+> > +			drm_dbg(dev, "Sink doesn't support YUV422.\n");
+> > +			return false;
+> > +		}
+> > +
+> > +		if (bpc !=3D 12) {
+> > +			drm_dbg(dev, "YUV422 only supports 12 bpc.\n");
+> > +			return false;
+> > +		}
+> > +
+> I'm not sure this check is really necessary/helpful.
+> In [0] you are quoting HDMI specs which are saying that YUV422 is just
+> always 12 bpc - which I guess is correct. The problem I'm seeing here:
+> There are HDMI 1.4 controllers, like Rockchip Inno HDMI, that support
+> YUV422 but do not support any other color depth than 8 bpc for RGB or
+> YUV444. In drmm_connector_hdmi_init you are expecting to give the max bpc
+> as parameter and (if I'm getting it correctly) I'd had to set it to 12 to
+> also get YUV422 modes, but I'd also get RGB/YUV444 with bpc > 8 modes whi=
+ch
+> are not supported by this controller. I guess the same applies to other
+> HDMI 1.4 controllers that support YUV422. Or would I have to filter it out
+> myself?
+> So I guess the easiest way around is to drop the above check since it is
+> just always 12 bpc for YUV422 and there is no need to filter out anything.
+> (Same applies to the similar check in [0]).
 
-Yes, I saw these, too. But given that the added dts doesn't touch these
-two nodes, I thought this to be a problem of rk3568.dtsi that I can
-ignore for this series.
+So, let's tackle drm_connector_hdmi_compute_mode_clock() first, and then
+I'll try to answer most of your question there.
 
-Best regards
-Uwe
+If drm_connector_hdmi_compute_mode_clock() is called with the YCbCr422
+format and a bpc !=3D 12, what should we return if not an error?
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+It's the only bpc count allowed by the spec and for which we have a
+formula for. I just can't return the character rate of YCbCr422 with 8
+bpc, I have no idea what it should be.
 
---iesqjog43iq3vvyl
+And now pivoting to the block of code you commented on, there's two
+things to consider here. Eventually, the userspace is in charge of
+limiting the bpc count, and we have to take it into account.
+
+If the userspace limits us to below 12bpc, we fall back to the
+discussion above: we simply have no way to tell how it works out for
+YCbCr422, and RGB is the only solution we have.
+
+In your particular case, what you actually want is to prevent RGB 10 and
+12bpc to be used. I guess we could create a new driver hook or extend
+the one that checks for the code you pointed out to check whether the
+driver supports it (possibly turned into a helper), but there's no other
+way around it I think.
+
+Maxime
+
+--nj3gdbp5aimebgk5
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXd6e0ACgkQj4D7WH0S
-/k6skAf/dRZ20y6F1oQUou8Fu3bZZuCmLbZMoyvVb0SWNLJnVdwJWpAmv3LlO/Eo
-KC2WS0L7PP0szwrhVa06ihiVlZ26d6AaKoLz0+98H3ZozTBqcauZY43RItjzpb6T
-34wV14+1BpoadHtM536egD0FbHDcMANX9Yvt4uJ72VwAXNEFKElzzrhzmm0v0Cni
-QHNtZL5NN6x3wxHURvudfxp6emU7AuzhsQcpnylWk338czdTV3vvb7780cKclzWD
-v3G+Ru5KSKWN+ycp3xVw10bpT2z6Va7gfps3Rx+UKyCHksVlDX3KzbU3yIAQENOX
-lkxCRZyEuDhVkS6AI+ZFAMfr20DaFQ==
-=HVJi
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZd3rNQAKCRDj7w1vZxhR
+xSMeAQCznapx1KyjndzP2EVcJy12qE1B9F+D8X9w5siGsAvSoQD+M22Fg/bWZcFS
+1T5GE+QJEPAzWkUzJT1TOEwa3EPalAM=
+=YL5c
 -----END PGP SIGNATURE-----
 
---iesqjog43iq3vvyl--
+--nj3gdbp5aimebgk5--
 
 
---===============6284404393633423399==
+--===============8825341720805290246==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -141,5 +255,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6284404393633423399==--
+--===============8825341720805290246==--
 
