@@ -4,60 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0C7C54798
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459C9C5478C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 21:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5O/s5v2/6zjVNGo5pP1cZVpiExP9M8VUkh1o8/UvyBY=; b=AnHq9jDAzjRMbK
-	ZEpLMowP7YLoA+Ks61CEgACKVuEjHZ18apXfI1fGi46mm9Ir2xPAt4lHT8ZLz1b03TqBJ1kcCJnKg
-	Q/Sxni1mUqR/7iEABzXFpRjppnrdhTxBXmIeI+9d1lyzrXR8am3wGJp8fmr+NyiAwl0kuEbXSH4x7
-	6lda/SGOrPs1DDIuGTAo9a/a/cxKMgOEQ/CaZjx785x3mhcaqcL4H5xl7JKLP7B7THX5Y/8108lCL
-	mRbz6IXJlwTlD7FUsYaMdvMVpLLKdB/PymRjTCHvKCqSmeLd7pevyHKEUQaizEB0a3/wXyRPi9DYJ
-	pJ+Vwsl4HdlnNpZKB1wA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fh9BJLQMcmyoZAXdMbaocGoHe6zEeXEhi7cYNQxy5qA=; b=pw3X9b9fj0YcXb
+	Ol8rTsHZV09mrEOdmQ0GK8o/ANSjc2skKO9PmpIhtKNH7Bm8UCLal0wUoTmNDG2jE5EL9lGCLZoMs
+	pN9mUadAbU9Tv6kQW8pT+rBH3yZjOMcsT/Mv/wjaZt1SHna4utRGBdh3zOIyIcaTGPgVaz3AuGSm5
+	0uIyA4nfVwkTdQ+bq6NE+jq3M0xYn1yapOR3Es9KW3A7c5npqxYmerqDFLCficm1oAN5fZ0MRcRyz
+	JJR80T8EgnBelg+A8WU7vlgjTPfbah8doNi5GH3icm7DrR8zM3a8rYl5aNCC1IoVfbxycIhho9ORP
+	bUEUONcV2q2xze8YHZWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4ZD-00000006q6w-0qBi;
-	Tue, 27 Feb 2024 21:00:47 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rf4e9-00000006qy2-0Ied;
+	Tue, 27 Feb 2024 21:05:53 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf4Z9-00000006q4o-39h0;
-	Tue, 27 Feb 2024 21:00:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Rk9Vo0mBfgVKHqc4fUhHA256f+oW4rOARrZgd+9glVE=; b=B2NMJlbvJ6T41+c4sj3UExauga
-	5MQf7AvV1VrT99Hii+DiDMtxwseRhjT5BjxfMH/knu4QYblQlN7hJMep9Apz4Nt6lQBHp7pL2bRHr
-	ajp3Ep7YdsbmPOaL5ZNr3UCxEai31hBYSQH/oGCq3gV6D5XvpgBXZeZC7QQHMmAKp9ew=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rf4ZE-008t9w-TL; Tue, 27 Feb 2024 22:00:48 +0100
-Date: Tue, 27 Feb 2024 22:00:48 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	id 1rf4e6-00000006qx3-1Vu0;
+	Tue, 27 Feb 2024 21:05:51 +0000
+Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rf4e4-00016v-TK; Tue, 27 Feb 2024 22:05:48 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for QNAP
- TS-433
-Message-ID: <b48cde05-c583-4414-9424-fbb2db3a53ce@lunn.ch>
-References: <cover.1709034476.git.ukleinek@debian.org>
- <0d9fa5d730ac1cb91261b25b6809fcef3a12f03a.1709034476.git.ukleinek@debian.org>
+	heiko@sntech.de,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: add clock to vo1-grf syscon on rk3588
+Date: Tue, 27 Feb 2024 22:05:21 +0100
+Message-Id: <20240227210521.724754-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0d9fa5d730ac1cb91261b25b6809fcef3a12f03a.1709034476.git.ukleinek@debian.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_130043_819694_DED3FF16 
-X-CRM114-Status: UNSURE (   7.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240227_130550_419290_B5E37960 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,29 +61,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac0 {
-> +	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
-> +	assigned-clock-rates = <0>, <125000000>;
-> +	clock_in_out = "output";
-> +	phy-handle = <&rgmii_phy0>;
-> +	phy-mode = "rgmii";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac0_miim
-> +		     &gmac0_tx_bus2
-> +		     &gmac0_rx_bus2
-> +		     &gmac0_rgmii_clk
-> +		     &gmac0_rgmii_bus>;
-> +	rx_delay = <0x2f>;
-> +	tx_delay = <0x3c>;
+The VO*-general-register-files need a clock, so add the correct one.
 
-Have you tried phy-mode = "rgmii-id"; and not have these two _delay
-settings?
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+This goes on top of Sebastian's series [0] cleaning up the some VO clk-
+handling.
 
-In general, we try to have the PHY do the delay, not the MAC, so that
-all devices work the same.
+[0] https://lore.kernel.org/linux-rockchip/20240126182919.48402-4-sebastian.reichel@collabora.com
 
-	Andrew
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 36b1b7acfe6a1..7e40958b5174b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -519,6 +519,7 @@ vop_grf: syscon@fd5a4000 {
+ 	vo1_grf: syscon@fd5a8000 {
+ 		compatible = "rockchip,rk3588-vo-grf", "syscon";
+ 		reg = <0x0 0xfd5a8000 0x0 0x100>;
++		clocks = <&cru PCLK_VO1GRF>;
+ 	};
+ 
+ 	php_grf: syscon@fd5b0000 {
+-- 
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
