@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA97C5478C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 23:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F113C54E51
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 23:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LmhTbMLyfLIdTOaWERwfSCcUHpe7M1ldo7dkrisMNkg=; b=I1TM5SAjXMaizV
-	V3/KYBtN7UnO8+IdgvmS215kFrw4SXjJ4Zw9+TtsMdTBcA2voa/Wn1Qr7j35VLKe+3ZIJkdwdfAqa
-	/GDS/wEYDRZUO8ovNfQ0vbfp4mBHcQztYY3k/6sj5mj3397wv81uFaerNNwQ9aQ3nLtvcvOBqQy/M
-	kOZBSeOx8l1gzxV2YJtYbLyOK7eSV46SIgoFNdPBlos+5RQbwuqO/f2w49tlxO0qZZM9TZDGCNL4b
-	zTK4rsLD03rddccp90FbKlreb9mFB166bt3cAg9/l1scrGQN1ASLcWdUMbrj/sSoVK0zABVLejmEj
-	ZWPxxuOU0mUtSy/b1OhA==;
+	List-Owner; bh=m45ZdYl2s0QJ/JvzN5TfHph+yGeCQIDN0QKMDhzJeYY=; b=x4vri2mlR+aihw
+	6FzYGLgC422ZhZGss3XRpoIPt5o4f6VrnwQ/lX42jopNzZvIJFRKEOSc0kIMxySk5pbDtwWT1y5GK
+	JNH3UivHdVHLAAiURykhVAMa0/+LVObrpIlw+46tJ1S+4af1Uengd0Y61VWSYSyhpRcf3d8G02YfE
+	k9U65zzS1l1JjJx8J2mHXYGLXO7ahfPjfeQnzyETbooYCYsiYA8qdf5asucvssgna38Prw5tSjMc/
+	Kdy9j0M7WywtzG8nGCqh+F5cuMB0O/8rECCvPDEBx94z4T1gZ1mOH191O8KpAyAlJdadxLWnqqYKz
+	WscuMGDgww2Vi+Vtst/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf6dg-00000007Bza-0NWS;
-	Tue, 27 Feb 2024 23:13:32 +0000
+	id 1rf6dj-00000007C1A-2QDO;
+	Tue, 27 Feb 2024 23:13:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf6dd-00000007Bxs-0yiZ;
-	Tue, 27 Feb 2024 23:13:30 +0000
+	id 1rf6dd-00000007Bxx-3Vdw;
+	Tue, 27 Feb 2024 23:13:31 +0000
 Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rf6dX-0002LS-AB; Wed, 28 Feb 2024 00:13:23 +0100
+	id 1rf6dW-0002LS-Qq; Wed, 28 Feb 2024 00:13:22 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Tim Lunn <tim@feathertop.org>
+To: linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/2] dts fixes for Sonoff iHost
-Date: Wed, 28 Feb 2024 00:13:19 +0100
-Message-Id: <170907558762.800427.11245323145550658595.b4-ty@sntech.de>
+	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH] clk: rk3399: Allow to set rate of clk_i2s0_frac's parent
+Date: Wed, 28 Feb 2024 00:13:18 +0100
+Message-Id: <170907558758.800427.1636847983598079220.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240215110425.934740-1-tim@feathertop.org>
-References: <20240215110425.934740-1-tim@feathertop.org>
+In-Reply-To: <20240217193439.1762213-1-megi@xff.cz>
+References: <20240217193439.1762213-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_151329_300325_8A6A7AD6 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20240227_151329_920154_EE54A314 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,33 +61,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Feb 2024 22:04:23 +1100, Tim Lunn wrote:
-> A couple of tweaks to the dts for Sonoff iHost.
-> 
-> Add aliases for sdio and sdmmc to ensure consistent ordering of devices
-> on boot.
-> 
-> Tweak sdio properties to improve detection of the rtl8723ds sdio wifi module.
-> 
-> [...]
-
-Applied, thanks!
-
-[1/2] ARM: dts: rockchip: mmc aliases for Sonoff iHost
-      commit: eb246eaaa55aaa52c0c183f835157a56270ce81e
-[2/2] ARM: dts: rockchip: Wifi improvements for Sonoff iHost
-      commit: 391f46c775fa2108952c8f9a88b5bea2c3c74d1d
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCAxNyBGZWIgMjAyNCAyMDozNDozOCArMDEwMCwgT25kxZllaiBKaXJtYW4gd3JvdGU6
+Cj4gRnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Cj4gCj4gT3RoZXJ3aXNlIHdoZW4g
+d2hlbiBjbGtfaTJzMCBtdXhlcyB0byBjbGtfaTJzMF9kaXYgd2hpY2ggcmVxdWlyZXMKPiBzZXR0
+aW5nIGhpZ2ggZGl2aWRlciB2YWx1ZSBvbiBjbGtfaTJzMF9kaXYsIGFuZCB0aGVuIG11eGVzIGJh
+Y2sgdG8KPiBjbGtfaTJzMF9mcmFjLCBjbGtfaTJzMF9mcmFjIHdvdWxkIGhhdmUgbm8gd2F5IHRv
+IGNoYW5nZSB0aGUKPiBjbGtfaTJzMF9kaXYncyBkaXZpZGVyIHJhdGlvIGJhY2sgdG8gMSBzbyB0
+aGF0IGl0IGNhbiBzYXRpc2Z5IHRoZQo+IGNvbmRpdGlvbiBmb3IgbS9uID4gMjAgZm9yIGZyYWN0
+aW9uYWwgZGl2aXNpb24gdG8gd29yayBjb3JyZWN0bHkuCj4gCj4gWy4uLl0KCkFwcGxpZWQsIHRo
+YW5rcyEKClsxLzFdIGNsazogcmszMzk5OiBBbGxvdyB0byBzZXQgcmF0ZSBvZiBjbGtfaTJzMF9m
+cmFjJ3MgcGFyZW50CiAgICAgIGNvbW1pdDogMTM2MWQ3NTUwM2ZjY2MwZTZiM2VjYmNkNWJiNTNi
+YmRmZGM1MmYwYQoKQmVzdCByZWdhcmRzLAotLSAKSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
+aC5kZT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
