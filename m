@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954D7C54798
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 11:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA24C5478C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 12:08:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9WgFGyWgdo5ngsWRMzFFDk7RxpsI++N37HHDmxVEUiA=; b=1n1l7YdXmKHEbE
-	Mmv7i/sfu6AeXTvsprd75Yb1PjSBUGhEaiXtBbOXKLjLTTb885AhLWjegrDJqldaLObEnMGLe9aoN
-	XnVqK9w1W/+mbR81whvhbWTw/SayLY6oNTF5uLggS0erSaXLQE55Y6xOjDQXUlW26HTRxpndkkaLG
-	HKGa381xcfZkr1aKqfyMwI1NoK1MQNNd6uSgWLg9f/uuBEY/cGe5Xy2XNJen4pKizgYzNls4bT+Zg
-	9z0UitJg5PRja2D6cx+jgMb2sF359lCStls+YWP+bT01Dy0CuDq/PRZn+Wo1qks51AtBd0lXAgNfS
-	3+R95oAYKfX7/RTe8PSw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EfNSqjHTBwIIFiAJIw0VQ/inuMZq2WOzoNP3/6pVIW4=; b=Eb0kOebo4w6tcT/aU3azzmTOr8
+	Fyy8BLMrOJPuwHn9cILUza9x0In4HmEUARNwbDOqZ4N9uETs0kFYHswYKdwv6YqRFOU40BQzrD0Ej
+	3OVKd+3CqTco+l4DONN4R2MzqAsUFw5OjL5J2fJb+Wx4F7OdS5dDeKM3SNna3SUAAHS5AseROgd4L
+	UXWgipkv8Q4jwRzuCn/u35d/9hM5WfcdhVP4Ds5xAcKh8Z6dwL5M+NUWBgrDemzpQYCzJhg3hX75e
+	2z4RIF8iPsn9x06rSUOAOyt2FAIUzOxE3mayhR1z17FmBjTkX+vYFgPsfezTfV4uiTh8N06Ckovuy
+	WmoCK3gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rew5y-000000051yt-3flA;
-	Tue, 27 Feb 2024 11:58:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rewFy-000000053lK-3rcs;
+	Tue, 27 Feb 2024 12:08:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rew5u-000000051y8-3aYj;
-	Tue, 27 Feb 2024 11:58:00 +0000
-Received: from i53875b6c.versanet.de ([83.135.91.108] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rew5R-0003lO-WA; Tue, 27 Feb 2024 12:57:30 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Krzysztof =?utf-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Lei Chuanhua <lchuanhua@maxlinear.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Damien Le Moal <dlemoal@kernel.org>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <ukleinek@debian.org>
-Cc: Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Add error messages in .probe()s error paths
-Date: Tue, 27 Feb 2024 12:57:28 +0100
-Message-ID: <2949150.o0KrE1Onz3@diego>
-In-Reply-To: <20240227111837.395422-2-ukleinek@debian.org>
-References: <20240227111837.395422-2-ukleinek@debian.org>
+	id 1rewFu-000000053jj-345v;
+	Tue, 27 Feb 2024 12:08:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8D20661539;
+	Tue, 27 Feb 2024 12:08:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF9B4C43390;
+	Tue, 27 Feb 2024 12:08:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1709035697;
+	bh=ACaz7oj5ReqFoIR72ebNJXl994t4BOU7shgO5K8CUjs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rPcOhAiN2PtkNLYRBMqmRiMbDR6p59SbOgdUHY6MdY/GfepvdtHrN4RR9v1sZYqf6
+	 jGI2QQj99JWnXpmDj76LwUn5WOEnN2l8plI/Woy9JymhacQ8VopW5b3x8MDmW6BR3I
+	 1mhXEPNwYTypLA8EvT5QrKq5WyQSqfjz/WuF4zmZbFCzvBEEroimeIedS523uwhWc0
+	 uq2irP6Mmsab/1y0zyVOZI3iqcQ1Tt+elVYtsRMaL5qiHIHNgePfxDPrjcFVWcmbyP
+	 nzPJdHwMz3keyVrdNrECnvtckEFIcLNcawWXousAOSunIXQ/sdzf7RMhsqiuz0ENoH
+	 NKhxbGiV9gDEw==
+Date: Tue, 27 Feb 2024 13:08:14 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Sebastian Wick <sebastian.wick@redhat.com>, Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v7 25/36] drm/connector: hdmi: Add Infoframes generation
+Message-ID: <lxvyfigepzg4jhqub6lg6lmffen4puf477zjxmi766f3hu6trn@nnvg6htufsjn>
+References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org>
+ <20240222-kms-hdmi-connector-state-v7-25-8f4af575fce2@kernel.org>
+ <CAA8EJpri_whY8YfX2BsBjMN_4JvFsU-ogfr1W-KUKrasRoH-WQ@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAA8EJpri_whY8YfX2BsBjMN_4JvFsU-ogfr1W-KUKrasRoH-WQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_035758_998018_A4ACA041 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20240227_040818_889978_2BA58E40 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,106 +75,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============6727958300138140451=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 27. Februar 2024, 12:18:35 CET schrieb Uwe Kleine-K=F6nig:
-> Drivers that silently fail to probe provide a bad user experience and
-> make it unnecessarily hard to debug such a failure. Fix it by using
-> dev_err_probe() instead of a plain return.
-> =
 
-> Signed-off-by: Uwe Kleine-K=F6nig <ukleinek@debian.org>
-
-Looks like a much better behavior this way
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++++++-------
->  1 file changed, 15 insertions(+), 8 deletions(-)
-> =
-
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/=
-controller/dwc/pcie-dw-rockchip.c
-> index d6842141d384..4c16d8d2e178 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -225,11 +225,17 @@ static int rockchip_pcie_clk_init(struct rockchip_p=
-cie *rockchip)
->  =
-
->  	ret =3D devm_clk_bulk_get_all(dev, &rockchip->clks);
->  	if (ret < 0)
-> -		return ret;
-> +		return dev_err_probe(rockchip->pci.dev, ret,
-> +				     "failed to get clocks\n");
->  =
-
->  	rockchip->clk_cnt =3D ret;
->  =
-
-> -	return clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-> +	ret =3D clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-> +	if (ret)
-> +		return dev_err_probe(rockchip->pci.dev, ret,
-> +				     "failed to enable clocks\n");
-> +
-> +	return 0;
->  }
->  =
-
->  static int rockchip_pcie_resource_get(struct platform_device *pdev,
-> @@ -237,12 +243,14 @@ static int rockchip_pcie_resource_get(struct platfo=
-rm_device *pdev,
->  {
->  	rockchip->apb_base =3D devm_platform_ioremap_resource_byname(pdev, "apb=
-");
->  	if (IS_ERR(rockchip->apb_base))
-> -		return PTR_ERR(rockchip->apb_base);
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->apb_base),
-> +				     "failed to map apb registers\n");
->  =
-
->  	rockchip->rst_gpio =3D devm_gpiod_get_optional(&pdev->dev, "reset",
->  						     GPIOD_OUT_HIGH);
->  	if (IS_ERR(rockchip->rst_gpio))
-> -		return PTR_ERR(rockchip->rst_gpio);
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst_gpio),
-> +				     "failed to get reset gpio\n");
->  =
-
->  	rockchip->rst =3D devm_reset_control_array_get_exclusive(&pdev->dev);
->  	if (IS_ERR(rockchip->rst))
-> @@ -320,10 +328,9 @@ static int rockchip_pcie_probe(struct platform_devic=
-e *pdev)
->  		rockchip->vpcie3v3 =3D NULL;
->  	} else {
->  		ret =3D regulator_enable(rockchip->vpcie3v3);
-> -		if (ret) {
-> -			dev_err(dev, "failed to enable vpcie3v3 regulator\n");
-> -			return ret;
-> -		}
-> +		if (ret)
-> +			return dev_err_probe(dev, ret,
-> +					     "failed to enable vpcie3v3 regulator\n");
->  	}
->  =
-
->  	ret =3D rockchip_pcie_phy_init(rockchip);
-> =
-
-> base-commit: 6613476e225e090cc9aad49be7fa504e290dd33d
-> =
+--===============6727958300138140451==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ocit6yam46alzc5t"
+Content-Disposition: inline
 
 
+--ocit6yam46alzc5t
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Feb 25, 2024 at 05:02:51PM +0200, Dmitry Baryshkov wrote:
+> > @@ -476,6 +478,7 @@ EXPORT_SYMBOL(drmm_connector_init);
+> >   */
+> >  int drmm_connector_hdmi_init(struct drm_device *dev,
+> >                              struct drm_connector *connector,
+> > +                            const char *vendor, const char *product,
+> >                              const struct drm_connector_funcs *funcs,
+> >                              const struct drm_connector_hdmi_funcs *hdm=
+i_funcs,
+> >                              int connector_type,
+> > @@ -485,6 +488,13 @@ int drmm_connector_hdmi_init(struct drm_device *de=
+v,
+> >  {
+> >         int ret;
+> >
+> > +       if (!vendor || !product)
+> > +               return -EINVAL;
+> > +
+> > +       if ((strlen(vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
+> > +           (strlen(product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
+> > +               return -EINVAL;
+> > +
+> >         if (!(connector_type =3D=3D DRM_MODE_CONNECTOR_HDMIA ||
+> >               connector_type =3D=3D DRM_MODE_CONNECTOR_HDMIB))
+> >                 return -EINVAL;
+> > @@ -500,6 +510,12 @@ int drmm_connector_hdmi_init(struct drm_device *de=
+v,
+> >                 return ret;
+> >
+> >         connector->hdmi.supported_formats =3D supported_formats;
+> > +       strtomem_pad(connector->hdmi.vendor, vendor, 0);
+> > +       strtomem_pad(connector->hdmi.product, product, 0);
+> > +
+> > +       ret =3D drmm_mutex_init(dev, &connector->hdmi.infoframes.lock);
+>=20
+> I'd suggest moving this call to the generic __drm_connector_init().
+> This way no matter how the rest of the drm code (mis)uses the
+> connector, the lock is always present and valid.
+
+Yeah, that makes sense, I'll change it.
+
+Thanks!
+Maxime
+
+--ocit6yam46alzc5t
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZd3QrgAKCRDj7w1vZxhR
+xUw4AQDY/7kZ7wFpO+/Ak/W0YWywU3LNZ5pkN4Om9GBNtAUK6wD/YV9OiFjDhmlL
+sW/aBGeDNa/yzjkkc0NKa5D6dGQe5Qc=
+=FJc2
+-----END PGP SIGNATURE-----
+
+--ocit6yam46alzc5t--
 
 
-
+--===============6727958300138140451==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6727958300138140451==--
+
