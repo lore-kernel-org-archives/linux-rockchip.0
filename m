@@ -4,44 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18679C54E41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 08:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E65AC47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 09:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=k37Fx0f7pIKhO5MgpFdsJmD7pKutAN391bLV05lvEnk=; b=kY2keCKD/SGjwt
-	J51Qi6yOF9AjeSPmXN0Mn0nVBcLG13SgQt8G91z3wSVCo/IxJWTpZa2lqjPEln6TQc9T3QSm/yhJi
-	cQH6YB0gkbDOhePHaBYOLB2QIZXHRrO95ddjgrJadeMxno8dAf6P2ODIZ60ASJjUdBZFPCMQW6uWy
-	lG1eo9koYAZXdU+bbTTUbNiCoA2dmtDjhLMlr/xTyJONuRKmvW84+4/CdkdHxb5wSdvOLagSSVPST
-	pn9uytwLTR5vn021Bcrx3B1vtY8L6+TPnAHp2Rs7nyLK1wCph+JrPXmjFH62Ap9BaWDjPOLqGcwOS
-	A26OKvCtL+1rIz4ZT+Mg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C5r9UsOw+oRsWqs7q16B9tYTE2T0Ta+AK35xPIQnWDA=; b=PIgPSDasJ1jmiU
+	Cg+oZGM2VJdZkA5boym/9u9IUigZr4IDF68Lb9bgBLDDgw2uCNPYNbWc/on8TOlqMZRBiy9UTqzKq
+	pcs1DIuQp08PlI6yluDmYB138qszDTxFh3aKDXoNgS49IR2RoR1F1qZh/p2Ceh/AlE2sijnhF6DdZ
+	1Cr6qexryEa5bCAycS3JuqMKhmsqcAHApwLNfUOn6uWLKtFye7yTELH61IqrqQqImvVA4SwstpJlH
+	1lFYtSNTJIXaWP3sXImDqwiEk233BkvZ8P959MvgWa9RrRrqFmXBXZ/M7UR/9gxptmhqBNTMjtE0M
+	Gut3CS1kDXcJn4yH+ZZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfFNZ-00000008UJB-1i2G;
-	Wed, 28 Feb 2024 08:33:29 +0000
+	id 1rfG3L-00000008dUR-1RxW;
+	Wed, 28 Feb 2024 09:16:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfFNW-00000008UI1-2tyl
-	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Feb 2024 08:33:27 +0000
-Received: from i53875b6c.versanet.de ([83.135.91.108] helo=diego.localnet)
+	id 1rfG3I-00000008dTd-2qoz;
+	Wed, 28 Feb 2024 09:16:37 +0000
+Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rfFNO-0007e7-0U; Wed, 28 Feb 2024 09:33:18 +0100
+	id 1rfG3H-00084W-3t; Wed, 28 Feb 2024 10:16:35 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.9 #1
-Date: Wed, 28 Feb 2024 09:33:17 +0100
-Message-ID: <4130821.6PsWsQAL7t@diego>
+To: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	ukleinek@debian.org,
+	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add missing interrupt-names for rk356x vdpu
+Date: Wed, 28 Feb 2024 10:16:32 +0100
+Message-Id: <170911177587.875264.5357932973123944820.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240227173526.710056-1-heiko@sntech.de>
+References: <20240227173526.710056-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_003326_763338_89DE80B8 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20240228_011636_743045_6C18BA61 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,75 +65,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+On Tue, 27 Feb 2024 18:35:25 +0100, Heiko Stuebner wrote:
+> The video-codec@fdea0400 was missing the interrupt-names property that is
+> part of the binding. Add it.
+> 
+> 
 
-please find below a pull-request with some Rockchip clock changes for 6.9
+Applied, thanks!
 
-I guess the most interesting change is the removal of the CLK_NR_CLKS
-constant from the rk3588 binding. While it was nice to define the upper
-limit of clocks for array-search purposes, it was noted that changing this
-when adding new clocks actually breaks the ABI.
+[1/2] arm64: dts: rockchip: add missing interrupt-names for rk356x vdpu
+      commit: d1c44d9afa6f89aa0e10a191f30868eb12cd719f
+[2/2] arm64: dts: rockchip: fix reset-names for rk356x i2s2 controller
+      commit: 0fc19ab75acde78558bd0f6fe3e5f63cf8ee88b0
 
-Thankfully Sebastian invested the time to find a solution to not need that
-constant in the driver anymore.
-
-That change also got the needed review by dt-maintainers and people
-also checked the usage in i.e. u-boot, so it's better to do this now than
-later :-) .
-
-
-Please pull.
-
-Thanks
-Heiko
-
-
-The following changes since commit 6613476e225e090cc9aad49be7fa504e290dd33d:
-
-  Linux 6.8-rc1 (2024-01-21 14:11:32 -0800)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.9-rockchip-clk1
-
-for you to fetch changes up to 1361d75503fccc0e6b3ecbcd5bb53bbdfdc52f0a:
-
-  clk: rockchip: rk3399: Allow to set rate of clk_i2s0_frac's parent (2024-02-27 23:45:53 +0100)
-
-----------------------------------------------------------------
-New pll-rate for rk3568, i2s rate improvements for rk3399,
-rk3588 syscon clock fixes and removal of overall clock-number
-from the rk3588 binding header and a prerequisite for later
-improvements to the rk3588 linked clocks.
-
-----------------------------------------------------------------
-Chris Morgan (1):
-      clk: rockchip: rk3568: Add PLL rate for 128MHz
-
-Heiko Stuebner (1):
-      Merge branch 'v6.9-shared/clkids' into v6.9-clk/next
-
-Ondrej Jirman (1):
-      clk: rockchip: rk3399: Allow to set rate of clk_i2s0_frac's parent
-
-Sebastian Reichel (6):
-      clk: rockchip: rk3588: fix CLK_NR_CLKS usage
-      dt-bindings: clock: rk3588: drop CLK_NR_CLKS
-      dt-bindings: clock: rk3588: add missing PCLK_VO1GRF
-      clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
-      clk: rockchip: rk3588: fix indent
-      clk: rockchip: rk3588: use linked clock ID for GATE_LINK
-
- drivers/clk/rockchip/clk-rk3399.c               |  6 +--
- drivers/clk/rockchip/clk-rk3568.c               |  1 +
- drivers/clk/rockchip/clk-rk3588.c               | 55 +++++++++++++------------
- drivers/clk/rockchip/clk.c                      | 17 ++++++++
- drivers/clk/rockchip/clk.h                      |  2 +
- include/dt-bindings/clock/rockchip,rk3588-cru.h |  3 +-
- 6 files changed, 52 insertions(+), 32 deletions(-)
-
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
