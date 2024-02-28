@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3988DC54798
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Feb 2024 23:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D37EC54E41
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 07:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Ao7gt/mnDjQrdi3u7wOrc0E+vtGZ/Jyv7oZsS99U34=; b=AdvPj88/A+gi/I
-	iO/ivgO4QHkYD0cm+nnHexQDOY7Ya+RWNbimheetUB+lkJMzmRbUhA8Fl/OPhzX6vrGY9DpuuQF4a
-	n/vZrs0My4QqTOlKNwJfVuof+X6z5Eb+LdzttVXHAauqlESTHErmw8mejx5w++0IOTYbTYUHXFEen
-	QWSgoVpy5Z3BJDbwmVgmDb2Ojd08qD2Go8v8HLINzEMKRLOG6dSh9Na0xb5Rhv2iUqOgc3UzH0t9h
-	HQ3eOjGb1fPCAM8oyBrlQ20HTXsC0d8x1iezY51xYF4dzZa3K/STmzTppUzgsrmaNmdFeonWAzmMX
-	6EBYFoVkbY61WPmK3oSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ar8qFuj+ntsslXGiyKuPZ0EemdUdT7xeGHWOBaJ3PjQ=; b=49Cl8k4kNxHcxxGCZc+X7G0Cyp
+	6tWiOdCKlL/qtdTUEAs09Zlecbp9vvw9VHZMr0JETnBK2I3doLXX41MTnUzURb90gE6mhZ71MMyZm
+	98fQf1AtwJm+jGjuauuDeGfqhHwetWvZG5orlETxgJSnZt2w6t1XT0x3VbikBGehG8KT2eR2BFocS
+	nSz3W1n6BIiB4HQB4nZfA5ta7Un2VLJst8tbAHscmvGqhrP1UNeR6TN5RnHylAMfytOQfbMruDOMt
+	0CdL98PVxg7evfOgARpMVv1WOvDeRncP0qUCUT8ln8GzLouw5e8jDdCpuDemCvvcLdF1KPrz/FIAf
+	Hjsgx+0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf6e5-00000007CAd-0WCC;
-	Tue, 27 Feb 2024 23:13:57 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rfEIA-00000008I84-0Fzw;
+	Wed, 28 Feb 2024 07:23:50 +0000
+Received: from master.debian.org ([2001:41b8:202:deb:216:36ff:fe40:4001])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rf6do-00000007C3C-0RLp;
-	Tue, 27 Feb 2024 23:13:41 +0000
-Received: from i53875b6c.versanet.de ([83.135.91.108] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rf6dY-0002LS-1X; Wed, 28 Feb 2024 00:13:24 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Tim Lunn <tim@feathertop.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Andy Yan <andyshrk@163.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Ondrej Jirman <megi@xff.cz>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Tianling Shen <cnsztl@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	David Heidelberg <david@ixit.cz>,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: Re: [PATCH 0/4] Fix vendor strings on Rockchip boards
-Date: Wed, 28 Feb 2024 00:13:20 +0100
-Message-Id: <170907558762.800427.12078271862090822070.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240214040731.3069111-1-tim@feathertop.org>
-References: <20240214040731.3069111-1-tim@feathertop.org>
+	id 1rfEI6-00000008I63-1Vcj;
+	Wed, 28 Feb 2024 07:23:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
+	s=smtpauto.master; h=In-Reply-To:Content-Type:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description;
+	bh=q9H//BiI/ym0fKCLWzaI/cltEf13UeT/Rxb1Q8FD9Ro=; b=cA5AbS7FT2W+TtczbuXrokzsLh
+	gh9c0U16ZT+TQJAOJx7Wb2S7BYBfTVz8swofccvQG7Jdek3itaWF1lStLcxB5+zAkCrM+9qYabPqq
+	Qibul3Q09z1zXkuPojXp+41G/nYkMuOKmo24rWrW3Id7KOiC7wE6nUlfKta6N+FZILMU7ItnH3sFw
+	oUs/Yel6+2IpRU3Q5efTlGS2r3dNDqD32opLVj3z1t4K9QGFWMdWMMNDY0Cgra3FUQSSOvMy9T3NX
+	2mqm4rZS4QLKNXIwA+eg7YfyelCy1qFHBIA+FjNMei8+QgfBRJIQRbkAJ/8rzobBgZGdguCpfDE2Q
+	NgXRnMcw==;
+Received: from ukleinek by master.debian.org with local (Exim 4.94.2)
+	(envelope-from <ukleinek@master.debian.org>)
+	id 1rfEHv-006pgV-3P; Wed, 28 Feb 2024 07:23:35 +0000
+Date: Wed, 28 Feb 2024 08:23:33 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@debian.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for QNAP
+ TS-433
+Message-ID: <lcvokzcmifxl7skfz2h2shewuou7xpazuhtpnpkgtcyejcfgcy@vvdn5ypyklsx>
+References: <cover.1709034476.git.ukleinek@debian.org>
+ <0d9fa5d730ac1cb91261b25b6809fcef3a12f03a.1709034476.git.ukleinek@debian.org>
+ <b48cde05-c583-4414-9424-fbb2db3a53ce@lunn.ch>
 MIME-Version: 1.0
+In-Reply-To: <b48cde05-c583-4414-9424-fbb2db3a53ce@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240227_151340_163610_CB35DA0B 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20240227_232346_426086_961589FD 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,42 +68,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0261700666449729408=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 Feb 2024 15:07:27 +1100, Tim Lunn wrote:
-> A couple of rockchip boards incorrectly list their vendor as Rockchip
-> when they are in fact not manufactured by Rockchip.
-> 
-> Fix the vendor strings to correctly list the manufacturer
-> 
-> 
-> Tim Lunn (4):
->   dt-bindings: arm: rockchip: Correct vendor for Orange Pi RK3399 board
->   dt-bindings: arm: rockchip: Correct vendor for Banana Pi R2 Pro
->   arm64: dts: rockchip: adjust vendor on Banana Pi R2 Pro board
->   arm64: dts: rockchip: adjust vendor on orangepi rk3399 board
-> 
-> [...]
 
-Applied, thanks!
+--===============0261700666449729408==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2ujsyxbuinxttmqy"
+Content-Disposition: inline
 
-[1/4] dt-bindings: arm: rockchip: Correct vendor for Orange Pi RK3399 board
-      commit: db51e128df1010653aab71c07e06280e37fecaeb
-[2/4] dt-bindings: arm: rockchip: Correct vendor for Banana Pi R2 Pro
-      commit: a03fd4b3bebc9775c921a965c4c22b1a0d3a2503
-[3/4] arm64: dts: rockchip: adjust vendor on Banana Pi R2 Pro board
-      commit: 437644753208092f642b7669c69da606aa07dfb4
-[4/4] arm64: dts: rockchip: adjust vendor on orangepi rk3399 board
-      commit: 7ec958ed6a32daad36918d200b594f33cb4e0dd7
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+--2ujsyxbuinxttmqy
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Feb 27, 2024 at 10:00:48PM +0100, Andrew Lunn wrote:
+> > +&gmac0 {
+> > +	assigned-clocks =3D <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
+> > +	assigned-clock-parents =3D <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_M=
+AC0_2TOP>;
+> > +	assigned-clock-rates =3D <0>, <125000000>;
+> > +	clock_in_out =3D "output";
+> > +	phy-handle =3D <&rgmii_phy0>;
+> > +	phy-mode =3D "rgmii";
+> > +	pinctrl-names =3D "default";
+> > +	pinctrl-0 =3D <&gmac0_miim
+> > +		     &gmac0_tx_bus2
+> > +		     &gmac0_rx_bus2
+> > +		     &gmac0_rgmii_clk
+> > +		     &gmac0_rgmii_bus>;
+> > +	rx_delay =3D <0x2f>;
+> > +	tx_delay =3D <0x3c>;
+>=20
+> Have you tried phy-mode =3D "rgmii-id"; and not have these two _delay
+> settings?
+
+I didnt' up to now. I applied the following on top of my dts:
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm6=
+4/boot/dts/rockchip/rk3568-qnap-ts433.dts
+index ba7137f80075..a8747d9f36da 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+@@ -39,15 +39,13 @@ &gmac0 {
+ 	assigned-clock-rates =3D <0>, <125000000>;
+ 	clock_in_out =3D "output";
+ 	phy-handle =3D <&rgmii_phy0>;
+-	phy-mode =3D "rgmii";
++	phy-mode =3D "rgmii-id";
+ 	pinctrl-names =3D "default";
+ 	pinctrl-0 =3D <&gmac0_miim
+ 		     &gmac0_tx_bus2
+ 		     &gmac0_rx_bus2
+ 		     &gmac0_rgmii_clk
+ 		     &gmac0_rgmii_bus>;
+-	rx_delay =3D <0x2f>;
+-	tx_delay =3D <0x3c>;
+ 	status =3D "okay";
+ };
+=20
+and this makes the machine unable to complete dhcp. I see the requests
+and replies on the dhcp server side, but the machine tells me not to
+receive a dhcp reply. So the above patch breaks the receive path.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--2ujsyxbuinxttmqy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmXe33QACgkQj4D7WH0S
+/k7RGQf/VOOi8RQ6O6wC8HHbsx0rt4Zy1y7PhIMp+mIQTFYEZFeufAySXLSIKevd
+L54Bh9wF8pJrzoFEaq0bVcO7SWEL1Xmo0cni4FcKEHDemEUL+vvprP8OuzPUTY7v
+zVupTSIh9IW12dHekSxSqNHMkEwFyglKyyYFzDqTRTvJmh6QbjmZWdKqlAteMkxa
+Zq6j2Z8QKwqh5MGleAKlqeIiBXTrBL0zg7CgKxznv21cz9Pjqm0g7XiS2drixj2L
+JZ2XGkUmy0+X5MIEbaOEak3fjDMxYs9x6nOfSOmwizCuC9HwCrxtmM0ZE1Q7gwLg
+ngERLNaJtWI5y4lENFSrJUFLND68SQ==
+=jwME
+-----END PGP SIGNATURE-----
+
+--2ujsyxbuinxttmqy--
+
+
+--===============0261700666449729408==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0261700666449729408==--
+
