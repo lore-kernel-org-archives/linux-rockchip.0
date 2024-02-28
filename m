@@ -4,63 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3303DC54E41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 10:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BA73C54E49
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 10:43:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pnt0DoWJFlCbpjoQDe2t2IUqsa7q4/SwM6daRg3W3XI=; b=vHihjZS3fqWU2pQ7Fr6sKMKGcu
-	n1mz5LvwW1gpXcXQZSiW4pnOEegZWvEk3m98Bq/nrTOLbQ2FqI78YyKZ9WE+UV2U19iGqo5NAT0HY
-	pZ2tbUh6PHiZbSk8gFIddnJCsjf4rwnJsb04jGv38wssrWcCgPW141ybE2ZQPirdsivIc1BGm9Lro
-	FaXXLfSgi7GVLm5pm22Che68Fei4YsbI9Y0DK+IMkVOmwbsYb9cbY5v0b36ZaIJD/5nbvA7vAIQRU
-	Z4UnRkjkapCNY9Hf7WFNAyfJgrQ4dhNJJsNJ/MBWq7mHAuN1s2ubNlZHxD9Lt5lMMgo3hI9IokvQ9
-	XGUxEP4Q==;
+	bh=vfkuISv53gBtUwcb3zb6tb15NDGrtlM3BvhQ+45Q//E=; b=Q2QbmG3D8NVCKA4WDIdRhSz74a
+	CuUeQKnDTSDIhxvDmmo7PY1Geq2XhEUEJ0aGgh02TGypVkb5vRa5izvgCRP5peEOxOPJApqWHaIzC
+	fn2b3FM1kdceJwQnEXBpFlseWoO8RnaoCNM4h5qqrNdIx9nD+1c6JHxsfhjDV2pC/vn7el51XG5Dw
+	6pDIpgWm4q8e81BHGjuCdN+zAf7CAKR8Fp4J9g30TSINS43qJXuJX05b1jAcgc/dYt5oV3YHgCc+C
+	IJn+4XA7DHtUq1Ay9H7NU7bumYKlx9tvDj2TYoTdxF06hzx2lPJJWObern4Z3nR2nPiijG33iuTOL
+	wFqhhCow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfHOa-00000008rDG-1Q8i;
-	Wed, 28 Feb 2024 10:42:40 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rfHPR-00000008rRl-3DwE;
+	Wed, 28 Feb 2024 10:43:33 +0000
+Received: from mail-db3eur04on072b.outbound.protection.outlook.com ([2a01:111:f400:fe0c::72b] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfHOU-00000008rCM-4Bwm;
-	Wed, 28 Feb 2024 10:42:37 +0000
+	id 1rfHPO-00000008rNh-23oT;
+	Wed, 28 Feb 2024 10:43:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bWkocPU97z7JglHdVfFaqkW8126t+OgVQeUtyuwioU4OW/5xshdX5aBQ5wtwUqHchPAod6grajEduDBOHOuTlcD/u/kv9eOSVyIUsY8kzLBZ2TKvJytoGkR+amGJ7Y1DBHs9TPLvUXgpkUDAGVTRUE769Y93TUAKe4WeRDEXSkYLsDLUA9ZvLHFajYgZU0hhaTwHfSGck2ErcrMnBwH7K9sWBLIdqBJwkJAZW9tqLb5LcdEd3f8VQKcuuywGGcSo1LNcCnC6zgx94/COW1w2pj8U/5dkFFKhsYuE/9qev9DNTgZu52hoDi7efuJFSuifrKY0catsM0lihoobzZGkfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=k/0xdkz31xod5r+tRk4KWW0tljSKlsh2xLzYHwB8H4o=;
+ b=MoatYi1Jg9J2Orrum2FXqxkVvXzgOkt+W30R5dBGhEXLKTVSURb2Ji0JXu74K67OvP2H0GIbZKsKkiwuLq6rY/u9k5Zc3qzoHUGfv5A2dTH0rdwY59bsZsEa3FRdUvkccDHpYT+xjOzwEungQY4kqqxH7hRS3by7vf9XjlVL4YCXfrlXa9XtJQ56inLFpZEY4JuMGDfzNwtP/IccFXnDgmZucuEAxxaFC1eURfcIyXJ1MtP6Hr6OE00pNiLhSNxYf8n1y5beGaW2MWxoWbEy1B3aOa7chYgT/PBBtJQr4Nk+//qbERZiX/1OM3gqshpo3KDaquSo0feszBLyoQfiEA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=k/0xdkz31xod5r+tRk4KWW0tljSKlsh2xLzYHwB8H4o=;
+ b=CGJz2cPQzQf6tCaNri6hUzaZNVmboaqHk8G/AUhAwQtZE2gnp1K+NnwlvHZXjyWkeAkJI3D/CAJcGyIlE35ASKjHH5cFGJRxL/PndiipCcZBNECts4IHpEvU7N4jnQWYb4fh9ES34jbriln0LkhPl6Q5jGkOQMfpKrXeMEmxAfVW7H/4Rj5Vk6RJbSkiWtgozIaOvqQ/mMy637hCj2sQqpMlaeCZm2qh7b9B3kc5P0lVWxCQEtq9zsdId7rGag73eDvaouFDH1t90yfKW7Aok05Bk1+aeppyYSqgS8umpgYQK8nB8CI8E2D/HqeT74wyT/tWcRe18qfPwXxGpfCfTA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
+ by DU2PR04MB9129.eurprd04.prod.outlook.com (2603:10a6:10:2f4::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7316.39; Wed, 28 Feb
+ 2024 10:43:19 +0000
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::550d:ad96:e3cb:9a6e]) by DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::550d:ad96:e3cb:9a6e%5]) with mapi id 15.20.7316.039; Wed, 28 Feb 2024
+ 10:43:19 +0000
+Message-ID: <27011333-8fed-414f-a2e1-b49760f4c82f@theobroma-systems.com>
+Date: Wed, 28 Feb 2024 11:43:16 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] arm64: dts: rockchip: drop rockchip,trcm-sync-tx-only
+ from rk3588 i2s
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ Heiko Stuebner <heiko.stuebner@cherry.de>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+References: <20240227164659.705271-1-heiko@sntech.de>
+ <20240227164659.705271-2-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+In-Reply-To: <20240227164659.705271-2-heiko@sntech.de>
+X-ClientProxiedBy: FR4P281CA0052.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:cc::10) To DU2PR04MB8536.eurprd04.prod.outlook.com
+ (2603:10a6:10:2d7::10)
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1709116946;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PJcsp6UhNtSkpQqYGXeRXDOKtYxsPaRoMFG4CL1lZec=;
-	b=WNggj9gg3Nxhhmd0F7ETUb0dhwUkP3bZXHMRov7lvQYH1/+3n1+mz0OGxw1pqr+ASmR3un
-	ILzmd058Pjg3w5vRwU5+RKGHhwBKSOkX79WdccA2CV89OGwiPBQhQvPanzWXknQgg72mIG
-	iuw56VdlfPxmGS2QVQsVLSqoPNpTnNZVk6nv1QvCBYHibyo/y4jadWj4rA4odIhmU949AL
-	05yrUm+mlv6EYI5O4+bd6yEI8kjYJTQ1Rtq4ykU6sK34pZURNHbqviPl9juf8m0EHkhlsy
-	fkbCCPJkQN4lZ2a0oNxhL/LMfrhjIj4BrQJf6hlW6irt6CPn5WtiabzrbqSg3w==
-Date: Wed, 28 Feb 2024 11:42:25 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] arm64: dts: rockchip: Add cache information to the
- Rockchip RK3566 and RK3568 SoC
-In-Reply-To: <4676da62ec0fc0fe89318baea0678e0c@manjaro.org>
-References: <20240226182310.4032-1-linux.amoon@gmail.com>
- <8ceea100f2ef7cce296943ce1397161a@manjaro.org>
- <CANAwSgQnoBx+th6s254sML+Zw+RZQC6WU9TjfMoWgHxmCqbDcw@mail.gmail.com>
- <4676da62ec0fc0fe89318baea0678e0c@manjaro.org>
-Message-ID: <8eb17d05ff857d154169e62b1f04413f@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|DU2PR04MB9129:EE_
+X-MS-Office365-Filtering-Correlation-Id: 13e141bf-ce6d-4389-f830-08dc384a13b4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 2ZLfGbZS/wwjBeZCZpja7RecCa6/s0IGoiffCgudk5ylZYHLaFXcHLAfAG5PJbcOdaCdX2OI8xm0lfzGqWuTBFf8ouQi7WFopkPyMzvgc13VUKMNljWpvK4GhSSLKwUNy2wX5Ao28D1DhMUW/nAJfopxunB1uQprGQpY5kZYmtZpMuaa8GJd2xDWmerf/bXKq3Kda5E3IgS0OMH8VwAiuwIDBbCv0bbrEo+Z0LWoGZ3RHsmBDSElf9hQKJQpAP34VyijwTpEDTR8we2tSOgiObGntuyUh0do9BK29SzNWjVIYEcvEs8oHYt11pefifMzVH5KnKyDtfCtIe8e+F055zKHjBOPDayw7ULQxkC+pZN7vQSY0XZjmaiyIHKbLmS45jr9BMXI/X2OdkVIqd4gVs92z7ZG+dJFF3iGm/O8q+3bz0BUf9Y3u9W7w9cXlD5oGLrfvkiWFDhrQSytC86qHY6Q/PRmYZW0UIEarHtajhofTT+0nW97ZU9xz7K68JQ/zbQprhqwSepkLq4r53ZDFo97oL2Weh0dbH6DZEKpJU1o9W9or1LPdtve9rBZaXPRNve3ce8mOThiK+BlzIEqoca093CJdagnfGgzqbByicu2RV1i8wi7a5rgYOWvN8/M
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YnJMR1hwV2xsT1RvMC9OWGVFZTBHK1hTRTRLQk1WdmNjd3R2SzkwTm41MVFZ?=
+ =?utf-8?B?R0ZRTWlBc0xqVk0xdG5OYllJMWVySmxpU2hvem5NNTFNM2RxQ1ZaZlV5L2VQ?=
+ =?utf-8?B?ajE2UWRmbjlkY1c2WUN2RlFIWWFJTFZzeVZxZGxnMlhRK2JReWd6ZEZTd3N0?=
+ =?utf-8?B?MGppVElMbU94NUFrRG9KUnM5cHVnZlFGSDFQaEhjM1NoUFBCSnJ6OVlNS3lC?=
+ =?utf-8?B?K0ZFS2c2bzNGdEVneHFHdTNtdTgyV3NzZjgxUU5LS3hIbnN6bGRJM09hbVBG?=
+ =?utf-8?B?eXR3b0tHZmltaTc2L1NYc3dPblVxRHBRNVRuR3hKYnZRSlkxYmRqTCtVRjRs?=
+ =?utf-8?B?eU9vcGlNTk4yZlNLdmg4YjZzOUJtTVpnWkJBVXVUQzg3Q25oZWk3cktQaGlL?=
+ =?utf-8?B?WXppclkvRzJxNTlWZitxV2plcHA0dWM3a2h5dWxJazFtTVp4V1NNTjE0K3ZK?=
+ =?utf-8?B?RFo5Q3g2Kys4QTBSWG01cmNRRXN5SXNNaGRvMUpqWkRiNzEramdnb2RXazZl?=
+ =?utf-8?B?VWY5b1A1VUpBaDNFK0VVZmF1UThXYlEzY1c3bWlBdDZ6OGg1NGs5d2g4UUdT?=
+ =?utf-8?B?bDFGTDhCNUZBYkFzUzNEUVdKY3VrL2NwQUFMUmI2aVB2b0FYV1VzbEM4V3pr?=
+ =?utf-8?B?U3RRL1B3WHlqWjZxc25VaHk4YitFcGJBa0FFREdKRzl5RS9GWW1RR3ZhcWF0?=
+ =?utf-8?B?OTRmaW9xT0hJNUFzMXBIbmxvbVpOZW1abjg1VUFUc0x1K1hOM0c5NlVzbGox?=
+ =?utf-8?B?YnlzSHB0eHRqZTJrZlFuVU5JbzVQZWozRlNENjlva1JNUWdvZWt6Z0ZZT2Ir?=
+ =?utf-8?B?WUMzMStCekN5V1M0dHhDek1mY1BFYTdGS3p0cGRrM3NJbTl5d1Yxalg2N1VD?=
+ =?utf-8?B?a1B1eldyc3ZUYzNMd29yUkxERytVR0QxampHVWx0bjZtL29RYUNnMndvOHQ4?=
+ =?utf-8?B?K0NlWkI0OG5KTXZNTno5T0wrbG8yRTVCTmtoVlFVMS9BMmVDOGY5Y3YvTERy?=
+ =?utf-8?B?US9LVGwrbU4zTzJCK3Qvd05JSW1rZzhJd29oWEVESERBTVdBdzFqaVRHeFBy?=
+ =?utf-8?B?M1E3U1h4Um9YZmRiZDNxYXNRdVliUXN3K1V0djdYVkxXMFdjcm00eXFjcEc5?=
+ =?utf-8?B?NkE2R2dWd0I2bDBDcWtNaW5rUDdOT2Z2bHRyeS9mMDhUVE5qMDUyZzNvV041?=
+ =?utf-8?B?UnpsUzNnMXhxUVhTT3YzZEFDcVQ0L0F6bkpuemI2RTE5TUV5S01RalNvaVRF?=
+ =?utf-8?B?SjdSZFcvMTJ3d2xwU1BORzIvbjI0T2NTZU13czd0VUlnK2ZCN0pFNGVPclJ2?=
+ =?utf-8?B?OE9oYnFMMDRuK1JWU21hQ3JFS1Evd1FsNHBJN1kzdGJNZXdmeG16WFZyYldp?=
+ =?utf-8?B?cDRFT1BjdjRiWkFLYkx0YkIrZC9WbzBIVHoxOGFUN3dFbHYyZUpHWmszOTZ0?=
+ =?utf-8?B?TTJRa3p4SXVrUGNGUFVJMk1PUVVNU1BMVHEvZ3hBQ2NodS9yU2x3djhuSHFr?=
+ =?utf-8?B?YXRLMFNSbk1LSjcxTGxDS1hOeFB0NDB2Q3lRaGlyZU9PQ1RMSHZQdDBxdk1W?=
+ =?utf-8?B?SDlvWjl3bTQrTHdsd1dyeWZjb1UwNlhyYmFXeWF6VDZONkFnYzh2MjFmalF6?=
+ =?utf-8?B?SGZSN0M1NzgxU3hGMHpMblBPOUE2blZhQkNYOGlEdlV1dnROSXF6OCt4dHpm?=
+ =?utf-8?B?dU1Ld0FjRTlDMnE0SUdsQnZyTUhEeU5ScW1pNU9tZ0Y5MGZsaGFCK0I3MjYz?=
+ =?utf-8?B?b2M5YjJZazZTTUZBTmw1L2FqSTYydjVPWjRCSlROdUN6TGQrSC80RkxMUWRE?=
+ =?utf-8?B?RGdaZ3VpcVVYb0YvQ09SRE9leTg3ZVZSSGtuaUVnWERHRzh4cXFrQTVJWnhD?=
+ =?utf-8?B?aEx3TjNsTURwM1dTbUlPZldyZ2p4TDA4MW1qcWhuaUsvUDBQTUxwd1JLNFBU?=
+ =?utf-8?B?V0RQK2RHcGsveW5KN3lJaGMybUl3eUUrQllkRXgzb1ZqdmhNZU9oc1FrQVRw?=
+ =?utf-8?B?UmFKTDZidFRLNi82T09pRlVxZTFGaVRUNlQyeUFVeVFvRXFuNmt5NWxocG13?=
+ =?utf-8?B?UWgxWTYwSDloZnFPOFgwTi9MM0ZxZ3l0VVBsQnVvQWJNeVQ5RlBvZkFIWnVB?=
+ =?utf-8?B?c3pFS2hpcWRma2tuWmRIT0N4cnBCTndTcVRHNHgrT3hxVTg5UzlYck94Ritk?=
+ =?utf-8?B?eWdKeEhRZ2tvSzQ5TlZrOVVNeGI3YVYzVHdrOTlEVlR4MVQ2UGJHaUZNMDV0?=
+ =?utf-8?B?anZ3cjhwVVpqYnNadExBN2VKZHJBPT0=?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 13e141bf-ce6d-4389-f830-08dc384a13b4
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2024 10:43:19.0285
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: O3R3VlHJe8Et2xclyKuONxvm7RenOUajxypuASNJXmtR8/IzUbCbt7khC9bwPkXDWUTHVCSbv7J7qrSFvA8EyDPxaqnWNonIx7nHkcd1rAroyw14UrBX5+w8jO82tpj1
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB9129
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_024235_679380_59DD08EE 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20240228_024330_580931_302FB30E 
+X-CRM114-Status: GOOD (  22.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +151,67 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Anand,
+Hi Heiko,
 
-On 2024-02-27 15:58, Dragan Simic wrote:
-> On 2024-02-27 13:49, Anand Moon wrote:
->> On Tue, 27 Feb 2024 at 00:39, Dragan Simic <dsimic@manjaro.org> wrote:
->>> On 2024-02-26 19:23, Anand Moon wrote:
->>> > As per RK3568 Datasheet and TRM add missing cache information to
->>> > the Rockchip RK3566 and RK3568 SoC.
->>> >
->>> > - Each Cortex-A55 core has 32KB of L1 instruction cache available and
->>> >       32KB of L1 data cache available with ECC.
->>> > - Along with 512KB Unified L3 cache with ECC.
->>> >
->>> > With adding instruction cache and data cache and a write buffer to
->>> > reduce the effect of main memory bandwidth and latency on data
->>> > access performance.
->>> >
->>> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
->>> 
->>> I was about to send my own patch that adds the same missing cache
->>> information, so please allow me to describe the proposed way to move
->>> forward.
->>> 
->>> The way I see it, your commit summary and description need a rather
->>> complete rewrite, to be more readable, more accurate, and to avoid
->>> including an irrelevant (and slightly misleading) description of the
->>> general role of caches.
->>> 
->>> Also, the changes to the dtsi file would benefit from small touch-ups
->>> here and there, for improved consistency, etc.
->>> 
->>> With all that in mind, I propose that you withdraw your patch and let
->>> me send my patch that will addresses all these issues, of course with
->>> a proper tag that lists you as a co-developer.  I think that would
->>> save us a fair amount of time going back and forth.
->>> 
->>> I hope you agree.
->> 
->> I have no issue with this,.If you have a better version plz share 
->> this.
+On 2/27/24 17:46, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
 > 
-> Thank you, I'll send my patch within the next couple of days.
+> The rockchip,trcm-sync-tx-only property is at this time only documented
+> for the tdm variant of Rockchip i2s controllers.
+> 
+> While there was a series [0] adding code and binding for the property,
+> it doesn't seem to have gone forward back in 2021.
+> 
+> So for now fix the devicetree check by removing the property from rk3588
+> i2s controllers until support for it gets merged.
+> 
 
-Here's a brief update...  Basically, not all of the cache-size values
-found in your patch were correct, but I've got all of them calculated
-again, double-checked, and cross-compared with the way values in my
-earlier patch for the RK3399 SoC dtsi were calculated. [2]
-
-It all checked out just fine.  It's all based on the RK3566 and RK3568
-SoC datasheets and a couple of ARM specifications, which I'll describe
-in detail in my patch description.  I'll send the patch after I test
-it a bit, to make sure it all works as expected.
+It seems like tx-only should be supported if the dai_link has a 
+symmetric rate, c.f. 
+https://elixir.bootlin.com/linux/latest/source/sound/soc/rockchip/rockchip_i2s.c#L455 
+is doing the same as the patch from 3 years ago[1] was trying to do, 
+only in the probe.
 
 [1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=b72633ba5cfa932405832de25d0f0a11716903b4
+https://patchwork.kernel.org/project/linux-rockchip/patch/1629796734-4243-4-git-send-email-sugar.zhang@rock-chips.com/
+
+Considering that the RK3588 doesn't have RX only support according to 
+the documentation of that register....
+
+However, I have no clue how the dai_link would get the symmetrical rate 
+set, because the only place I could see it set is in set_link_flags if 
+SND_SOC_TPLG_LNK_FLGBIT_SYMMETRIC_RATES if set in the flag mask and the 
+flags, but my grep-fu returned nothing setting this flag anywhere... so 
+maybe that's just dead code?
+
+In any case, with the current code:
+
+I2S_CKR_TRCM_TXRX is put into I2S_CKR register, regardless of that DT 
+property. While the naming seems to suggest TX+RX should be possible, 
+its value is 0 (offset 28) and in the TRM it says:
+
+2'b00: Generates LRCK for TX only.
+
+Soooo... we are essentially in tx-only mode today with or without that 
+property. Some things to fix later on :)
+
+Which made me look for the same thing for the i2s_tdm driver and the 
+same mistake is made, though here there's no support for tx-only or 
+rx-only according to the TRM, and it is required to write 0b01 (offset 
+28)... which we do by abusing the tx-only DT property which writes 
+TRCM_TX whose value is 1 (offset 28). Considering that this is stored in 
+clk_trcm member in the struct and that we do checks on that member to 
+know in which situation we are (txrx, tx, rx), this seems very incorrect 
+to me as we would configure it in the only mode it knows (txrx) but make 
+the driver assume tx-only is selected. One more thing to fix later on :)
+
+In any case, this patch is for matching the dt-bindings so there's no 
+reason to not merge this, so:
+
+Reviewed-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+
+Thanks,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
