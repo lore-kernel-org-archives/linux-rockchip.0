@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B3FC5478C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 15:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298E7C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Feb 2024 15:41:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7+MT7blN9U+lgPWxmGDQjpPgLn21fMVaqxJWbHrRecE=; b=0COB0wwWtjYQiQ
-	yJWEidybdrIxhy11c1O3L+FE5CJfYBJKc4Dp7FkQQhTEz/cKLrhnwue2n4l7gEH8zAmnaOkEtlUH3
-	rkEkuoWimcMLOix5P/4XYZ79l8zqaIbjBBcvkACGTtZ+BTLMwKqRujpSLgf4AMMJIYhC1drSLZfU5
-	Xi/K5oN901CVCoICmXqW1ujaESqD4r/7Z4M6ZLFlglE9+nLmzC8uVBHE2J9qrhf01eZuB2kcUJLee
-	/s155Hdhofx3fwixVbgSD0v2fjpGnRCV/OzOQphqsj/qO++TFhPxKiig8kTPYtbR+lsG31KGeOzh4
-	IRSWhcQAHQBDLTtw8sDA==;
+	List-Owner; bh=+KZSna4E7r7pLPTgJdsCKEpBmGXFe8DNWxc2uCiuNW4=; b=hLCh6cAJvVAoaA
+	LQL9l0ipa68T8FN2ycNFNrcTNqgq01irwUvqodDEFQ+jIrGBrJSxvbB1j++EmYXZ1Mo++K5IRwoPS
+	7bCGSph41XPYJmmG/RKcExlAZHGtrdltnNbc1rcItkUqsyXAARslE3mq04yiP/JCA5Xj6XeuHBjXB
+	EIeQ3zbF6Nwtw+w5hh+Y7bgfiof2+LtnxWBwDXqucnRpCdCUiHaU4DAWPLsYv6G3nr85nt+o5aLZO
+	bf4xwszsJWAnjDfwkkFWNJenRaZE0RwHm8xy9z98sTzkfuLvjdcK9HkxEWQY+2gLWm03Eh7H9gzvu
+	ESHtKdv2J40sDKAcsrVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfM3N-00000009wGB-0Qov;
-	Wed, 28 Feb 2024 15:41:05 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rfM3s-00000009wVx-1dXE;
+	Wed, 28 Feb 2024 15:41:36 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfM2u-00000009vvf-1rpY;
-	Wed, 28 Feb 2024 15:40:39 +0000
+	id 1rfM2v-00000009vwz-0mCo;
+	Wed, 28 Feb 2024 15:40:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 2D487CE21AA;
-	Wed, 28 Feb 2024 15:40:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11DA2C433F1;
-	Wed, 28 Feb 2024 15:40:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 84282618DC;
+	Wed, 28 Feb 2024 15:40:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFE28C43394;
+	Wed, 28 Feb 2024 15:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709134833;
-	bh=tsYF06O0hUx6z4ZysguYUFGc6hPhoeQDqvJiBqFtdJ8=;
+	s=k20201202; t=1709134836;
+	bh=EdBXZWWZuhFQ2tBqeSWmQW8C9/3C6rfZGCgEINTeNPs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oc0UR0W52EEdg18ChVfUPfTObi+XvVwTxZAZCH0pYpvuH6Rkp35mP2PjYQsFADrls
-	 m1ezLLZ7tR5oWqiOAxAQRelAOAltWSIuPcaDMoxN+UVuJdSpvgFp6vwIGR/Vc1l8Ai
-	 iRgF4MnYtsQZsdsdcbZFF+LDY6lV5lN4GcHclccBBlheViyEExSKgTtkBQ9q/hisbG
-	 586XL4Z+RGP7nn5eE4Mx/B1kOEj/na4QsBOCC/I2odX0ikOs1PHi/kwcoJpH3Y6Z4Q
-	 K1rFK8gKXXSvRmcCyP/ctftY0FsQIr+ziGP7tk02F/ENhvL4ANxcDf0BImQmltQlW8
-	 RJCXawW2vMoMA==
+	b=nyAvpgawbjRhXN3/idGsieliKuBer1VZ4n5wUriSTJKwJKF5v4z6qteLWf9kwTt7S
+	 S3pjYTZZFoTyyx8U4OocIU5RbG8rpPhLwp3kEOnjggislmg9b8efSUJGaV0sOUmQUE
+	 hBYeEokykF1BjV5uWDsOYwM9UK0Ke1Mgr5TLXBeHwIgm37Wu+My+P/jWWcAOe/wlUx
+	 LkmgGkwW1txkgcjGcVCJEfNpUE3OPIr2DdJYtcCpIJY/fGzXsA+yKhGJurXVk6g/fk
+	 umk/ws+Zn43pmDM6KDbw6GKW8eof6L/aeqfuY/wwWb4TKxYekwi3QzvBappQ2F+nMR
+	 Nxkvw138GytBg==
 From: Maxime Ripard <mripard@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
@@ -63,16 +63,16 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sunxi@lists.linux.dev
-Subject: Re: (subset) [PATCH v7 04/36] drm/tests: Add helper to create mock crtc
-Date: Wed, 28 Feb 2024 16:40:17 +0100
-Message-ID: <170913481316.384117.15338048951068923035.b4-ty@kernel.org>
+Subject: Re: (subset) [PATCH v7 05/36] drm/tests: connector: Add tests for drmm_connector_init
+Date: Wed, 28 Feb 2024 16:40:18 +0100
+Message-ID: <170913481316.384117.11464006515273994691.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240222-kms-hdmi-connector-state-v7-4-8f4af575fce2@kernel.org>
-References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org> <20240222-kms-hdmi-connector-state-v7-4-8f4af575fce2@kernel.org>
+In-Reply-To: <20240222-kms-hdmi-connector-state-v7-5-8f4af575fce2@kernel.org>
+References: <20240222-kms-hdmi-connector-state-v7-0-8f4af575fce2@kernel.org> <20240222-kms-hdmi-connector-state-v7-5-8f4af575fce2@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240228_074037_307141_8EEB6A62 
-X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-CacheID: sfid-20240228_074037_647313_87C464D1 
+X-CRM114-Status: UNSURE (   8.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,15 +90,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Feb 2024 19:13:50 +0100, Maxime Ripard wrote:
-> We're going to need a full-blown, functional, KMS device to test more
-> components of the atomic modesetting infrastructure.
+On Thu, 22 Feb 2024 19:13:51 +0100, Maxime Ripard wrote:
+> drmm_connector_init is the preferred function to initialize a
+> drm_connector structure. Let's add a bunch of unit tests for it.
 > 
-> Let's add a new helper to create a dumb, mocked, CRTC. By default it
-> will create a CRTC relying only on the default helpers, but drivers are
-> free to deviate from that.
 > 
-> [...]
 
 Applied to drm/drm-misc (drm-misc-next).
 
