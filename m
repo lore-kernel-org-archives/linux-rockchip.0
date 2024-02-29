@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D39C48BF6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Feb 2024 19:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C83C54798
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Feb 2024 19:27:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FkV/rFihDceyAb9TvcXXTdCvtKHtIsJwi4hdMXS7oMs=; b=WlV04OFiYTEcZj
-	BlWVkizTAO/C2yWQ93Pz52hsuoSvchlHqfWTfqrO7sJRQYY0B2D2HWBmOKvRYUGAe07AmJA/xin22
-	YFsTrqRa/IlFYmyw4V+GFAG7AtnmNh+0CGgiiie00+UqVEsIuWs1by89DX/HRQBKlsxvu8D/zw/lg
-	u7PFOaJNPF16Bv4Q6vBOvt1IFzWhaxztlKhE4LvjTuVJTBdB0yuqbiqFr63Ng7vdg8qKsLfQJ/dA1
-	XbKqM1c1OoZBNwAmEsPm1/XIUYOlEZl7Qbzak9VbqZVPIfyW7PurtwZphR4f5ogHhya7PR5a1UF+O
-	c20sJPBoPZnQg3y+DXyQ==;
+	List-Owner; bh=GgLNPIsjHQhr2k5VBvGEwFlyTNPWcoBtcsCeFe0E/lw=; b=B+z55zFIu/QQu/
+	5ZOE+Cl1UzMDjjJAeN4Xm16esD3/RrEV6g2nxuUqkJ+qtgE8HyY64ml7S7bXfYeINHeWPrWpnwwik
+	/q22JXo6YPvwPGRuEQ2veLHULFxILbnwjEPkXdg6RkVkt8Py+B7o1mI5iKeQwSId/WUUUWc2eKfz3
+	Nd5bQLDX00LTOmcyEBPnrzbijGljMm/to0omji9KFuOodIhZ+waiWLxBvtl8LPS1kKtHCuNOqjxjb
+	hDDYeo5Mx0Wnqsmlkbg33BsqXfnwjiuVctq29e4SVE9FvueyuYwm1uji0OrdcvPlQCibZE3SISMS3
+	lbl1xNhmp2O4Usob3bUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfm47-0000000EsS2-2EKC;
-	Thu, 29 Feb 2024 19:27:35 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1rfm4I-0000000EsZ8-3RxF;
+	Thu, 29 Feb 2024 19:27:46 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfm3h-0000000Es47-0Yto;
-	Thu, 29 Feb 2024 19:27:10 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-412c3f4c6b9so1423355e9.0;
-        Thu, 29 Feb 2024 11:27:07 -0800 (PST)
+	id 1rfm3k-0000000Es7k-0umJ;
+	Thu, 29 Feb 2024 19:27:13 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5131a9b3d5bso1446217e87.0;
+        Thu, 29 Feb 2024 11:27:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709234826; x=1709839626; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1709234829; x=1709839629; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ZjF+Nm70GZV3EV5zT61+vVH9aCxdPSz8FYjQv588FDY=;
-        b=E/cPkm/+efQZ1BCMk+n2JUJzjCHYfxyiN1/PMxz5Q00lnHQCEZ6HwoUxYAwQHwIMwV
-         ptPrHEhbRb6VKHGmmfaobBdB+8eIo/eyVzYURpgiXBml/Rd/Rh8cE2LXZ+dNXKUOnMYs
-         KaxfibnVF2t5UA6IosPhXFhHWhPVYvYHnkFCPXbcBeWuKBgGu0w1SswlygyvVu5Cz0Cp
-         fR8bjwJmajAtJQyOTXNB/mtwvf3FZprmVQGI0ucURadfaii7LARR4HYoqMlaEKdeQY4o
-         YKvv02HTonsj0T8mvE1Zcbh3+q7F2lEyJFF+wjyZWte/sYZBFUhv08cN0V5RvEi0wgUx
-         yTyg==
+        bh=xRkrxLzAapN1oFv+RsuOX+L6Z3XPlb+lZYTxmPs/FuM=;
+        b=jehu6re45Kukx10cLv7qqjr9o97MYr7TkmnYOd0/TBVyzOaNgdTVlBIMEwRob3Td5Y
+         tddk53BYtSCuCMLE71dSiSR8Ff3K25v0SnB+pKBZW6OoDR3V5kP0B2o1j47Acm5fEEMV
+         I4OkvMzOhUXqyGOkw2oS7cLlvUG3qqwOSGS3tUKG0HRLBBx4qcjOIlAsf+Z8F6OHkJfT
+         FwxynaUBjKYMVkV2K/T6okw/GQ7q1bhJ4aYlsJaKbwimC+EmRChrmJxAL2COBtk5/Gdj
+         Plh6kmq6QkDRPf2Ck3dVr2GbL5vIsyDOtNLGSwuDqmNQ8R/jDWnbGAwt9DmdJuVu+ups
+         B8FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709234826; x=1709839626;
+        d=1e100.net; s=20230601; t=1709234829; x=1709839629;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZjF+Nm70GZV3EV5zT61+vVH9aCxdPSz8FYjQv588FDY=;
-        b=E/wHMOJJzNUnVwjH+nCEJw4h/72aOuhAXODWX32YT4BIpPvXw+QxKNF/mIWvDPT2RE
-         11mlfmxtjMO6p4MSzSNUruArF8a+2FhaNqXT9ESJZADeM0zdpqldhQ76ZVi0HMCAgbNp
-         9VKzND+yRfTgqi/nlb6wkDtveE/SXKtQ0WwymYg/HPWwpEeHIwqn6pS6CG0n5rsPnZNA
-         M2gFZJGCCU8G+Shg0t5H5rfbxHlKi7AMWKtUtJs6CwukzT392asm52vS/slMUJrQnL2a
-         v045Rj2OX0r2+X6XeJv7UrxW2Z7QdcyifBY44HXiQASotF+SqX+j+ieCKJtzTj2dZJnQ
-         I7iw==
-X-Forwarded-Encrypted: i=1; AJvYcCWBVj9So39rJ1qYfpjEWodAO9gSBE2ieCGGy9TjekAEUlwK257exYiVMcoO4UYwaItKmLvygHFfmoy2kPPzD68PwjlOqr1kZzG8nFznNVv//gVfbqgY4YbHk2Rrcfg0DWr+eW+RjaBJKEiy51wX8Zyy0oHwtjsRzEU=
-X-Gm-Message-State: AOJu0YzOdFLmREFFquHFl99BL2vKv4g8z1Al3yb24ziUdXjqCoeVz82N
-	KeV4ea95G6U3cmoRUa02jqoGQAJ0KL0/P+zvb+r569AXRh3NKXcA
-X-Google-Smtp-Source: AGHT+IE5LYJ+eH6qEYpCvW2Ade7RBhtp9koyNGFhLwrJlvKvIsvwEIqIjhWPVd3V+qWr7oNTqvsdJw==
-X-Received: by 2002:a05:600c:4fcc:b0:412:c1d4:995f with SMTP id o12-20020a05600c4fcc00b00412c1d4995fmr622wmq.13.1709234826323;
-        Thu, 29 Feb 2024 11:27:06 -0800 (PST)
+        bh=xRkrxLzAapN1oFv+RsuOX+L6Z3XPlb+lZYTxmPs/FuM=;
+        b=EAbysr1Tr1tPOVX6/KY3A1B2Kf4uaAMfPWloee51WnMXa51nnNUc3rdtRJ2w/fkFPe
+         tT9n/93emhmzWaxOma7zvfUX0I7YR8PMigL1MXqS0zVMt95fkHJ/9aXoVS82GOKCHmLd
+         X0KmLKAo4Zj577xju+QmtxnjrDBnzjPY4KDYGbhSzXrKFH5jCSLZV8ut/hxhHIn7TbdS
+         md8convtu4a6eYEiHSnsnjQaSFkeheoKUV5J+jc+oShAuEZp/W5ZKgmUnAJ/9ovFayAI
+         kDozLOjYfjQSx8Y2AUdmU6bIdSj31WV4goR/Bv9l/UKnt2SgbeJ+lMj4/cI0VGuw5Mk5
+         k7+A==
+X-Forwarded-Encrypted: i=1; AJvYcCWRwM8YP9u4awMIKTuKqqZkbWHKdXsDmWsa+cGe+lgw89nEg/eCHPSL2thRfSc9j+mf+Y69EjLLoqHOU6xFjBnY3JgHUI1co8DBxias2vlQine+XlzPw/3WBXBAxfq5XRVxfBgAOE8BAcCKJLrcemV6IpLr6C75bF0=
+X-Gm-Message-State: AOJu0Yyz87cM3N4Bc86AMHiNIutF71O8lltE12ehe45RE9D4ZKpXjWO9
+	ZMEQW9Hz31dsZPLx+4IBiBkjAKAhmunaranmuOtfM0gYnv/pgc4a
+X-Google-Smtp-Source: AGHT+IErVqjV3a+j6Yl9ulo0aeAHio/JIuZkEQoqds6hmzl54SAZ9JSyigSZr1dPGg7WfLjV5P15QA==
+X-Received: by 2002:a05:6512:acc:b0:512:c9bc:f491 with SMTP id n12-20020a0565120acc00b00512c9bcf491mr3108393lfu.47.1709234829291;
+        Thu, 29 Feb 2024 11:27:09 -0800 (PST)
 Received: from [172.30.32.188] ([2001:8f8:183b:6ebc::d35])
-        by smtp.gmail.com with ESMTPSA id j20-20020a05600c1c1400b00412bca49a5bsm2853944wms.42.2024.02.29.11.27.03
+        by smtp.gmail.com with ESMTPSA id j20-20020a05600c1c1400b00412bca49a5bsm2853944wms.42.2024.02.29.11.27.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Feb 2024 11:27:06 -0800 (PST)
+        Thu, 29 Feb 2024 11:27:09 -0800 (PST)
 From: Alexey Charkov <alchark@gmail.com>
-Date: Thu, 29 Feb 2024 23:26:33 +0400
-Subject: [PATCH v3 2/5] arm64: dts: rockchip: enable automatic active
- cooling on Rock 5B
+Date: Thu, 29 Feb 2024 23:26:34 +0400
+Subject: [PATCH v3 3/5] arm64: dts: rockchip: Add CPU/memory regulator
+ coupling for RK3588
 MIME-Version: 1.0
-Message-Id: <20240229-rk-dts-additions-v3-2-6afe8473a631@gmail.com>
+Message-Id: <20240229-rk-dts-additions-v3-3-6afe8473a631@gmail.com>
 References: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
 In-Reply-To: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, 
@@ -79,16 +79,16 @@ Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1709234816; l=1646;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1709234816; l=5927;
  i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
- bh=Ho/8fTxDDk0oY+T8PDaCqjRH1MRLd78jPjHkNM1Fiy8=;
- b=9He9zzAzOU9/Q78jwrKCrcpeg4Gshhw2MArhwDVEmmq1HYUzqs/CKJUbr0yRGn7xFOFd0mBCN
- JLwCXW4gkE3BpRCQQ0vWCiuoNuc0WT6D/kJPiQwMDD95/m5GOi347qA
+ bh=8H/tOXt2VM0cB2gFZgy5l9YIXKh951auxB3otM6qfCo=;
+ b=bqp+KXlto4YfmOpGe6God+ep8UDgtPadNyatqUfzq6lMupZbDME0CufrEW9xNpyE31Wam2SX7
+ J1KuN2GU9A2Cvl8qe+f5Wdzdby1BkpK2mKN3vmagirbWjZnfoPsS5RM
 X-Developer-Key: i=alchark@gmail.com; a=ed25519;
  pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_112709_222526_1C8E76DD 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20240229_112712_343571_E0256DFA 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,64 +105,145 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This links the PWM fan on Radxa Rock 5B as an active cooling device
-managed automatically by the thermal subsystem, with a target SoC
-temperature of 65C and a minimum-spin interval from 55C to 65C to
-ensure airflow when the system gets warm
+RK3588 chips allow for their CPU cores to be powered by a different
+supply vs. their corresponding memory interfaces, and two of the
+boards currently upstream do that (EVB1 and QuartzPro64).
+
+The voltage of the memory interface though has to match that of the
+CPU cores that use it, which downstream kernels achieve by the means
+of a custom cpufreq driver which adjusts both at the same time.
+
+It seems that regulator coupling is a more appropriate generic
+interface for it, so this patch introduces coupling to affected
+device trees to ensure that memory interface voltage is also updated
+whenever cpufreq switches between CPU OPPs.
+
+Note that other boards, such as Radxa Rock 5B, define both the CPU
+and memory interface regulators as aliases to the same DT node, so
+this doesn't apply there.
 
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 30 ++++++++++++++++++++++++-
- 1 file changed, 29 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts    | 12 ++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts | 12 ++++++++++++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index a0e303c3a1dc..3f7fb055c4dc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -52,7 +52,7 @@ led_rgb_b {
- 
- 	fan: pwm-fan {
- 		compatible = "pwm-fan";
--		cooling-levels = <0 95 145 195 255>;
-+		cooling-levels = <0 120 150 180 210 240 255>;
- 		fan-supply = <&vcc5v0_sys>;
- 		pwms = <&pwm1 0 50000 0>;
- 		#cooling-cells = <2>;
-@@ -173,6 +173,34 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
- };
- 
-+&package_thermal {
-+	polling-delay = <1000>;
-+
-+	trips {
-+		package_fan0: package-fan0 {
-+			temperature = <55000>;
-+			hysteresis = <2000>;
-+			type = "active";
-+		};
-+		package_fan1: package-fan1 {
-+			temperature = <65000>;
-+			hysteresis = <2000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map1 {
-+			trip = <&package_fan0>;
-+			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-+		};
-+		map2 {
-+			trip = <&package_fan1>;
-+			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+index de30c2632b8e..dfae67f1e9c7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -788,6 +788,8 @@ regulators {
+ 			vdd_cpu_big1_s0: dcdc-reg1 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big1_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -800,6 +802,8 @@ regulator-state-mem {
+ 			vdd_cpu_big0_s0: dcdc-reg2 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big0_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -812,6 +816,8 @@ regulator-state-mem {
+ 			vdd_cpu_lit_s0: dcdc-reg3 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_lit_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <950000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -836,6 +842,8 @@ regulator-state-mem {
+ 			vdd_cpu_big1_mem_s0: dcdc-reg5 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big1_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -849,6 +857,8 @@ regulator-state-mem {
+ 			vdd_cpu_big0_mem_s0: dcdc-reg6 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big0_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -873,6 +883,8 @@ regulator-state-mem {
+ 			vdd_cpu_lit_mem_s0: dcdc-reg8 {
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_lit_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <950000>;
+ 				regulator-ramp-delay = <12500>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+index 87a0abf95f7d..9c038450cd7c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+@@ -818,6 +818,8 @@ vdd_cpu_big1_s0: dcdc-reg1 {
+ 				regulator-name = "vdd_cpu_big1_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big1_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -831,6 +833,8 @@ vdd_cpu_big0_s0: dcdc-reg2 {
+ 				regulator-name = "vdd_cpu_big0_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big0_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -844,6 +848,8 @@ vdd_cpu_lit_s0: dcdc-reg3 {
+ 				regulator-name = "vdd_cpu_lit_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_lit_mem_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <550000>;
+ 				regulator-max-microvolt = <950000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -870,6 +876,8 @@ vdd_cpu_big1_mem_s0: dcdc-reg5 {
+ 				regulator-name = "vdd_cpu_big1_mem_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big1_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -884,6 +892,8 @@ vdd_cpu_big0_mem_s0: dcdc-reg6 {
+ 				regulator-name = "vdd_cpu_big0_mem_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_big0_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <1050000>;
+ 				regulator-ramp-delay = <12500>;
+@@ -910,6 +920,8 @@ vdd_cpu_lit_mem_s0: dcdc-reg8 {
+ 				regulator-name = "vdd_cpu_lit_mem_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
++				regulator-coupled-with = <&vdd_cpu_lit_s0>;
++				regulator-coupled-max-spread = <10000>;
+ 				regulator-min-microvolt = <675000>;
+ 				regulator-max-microvolt = <950000>;
+ 				regulator-ramp-delay = <12500>;
 
 -- 
 2.44.0
