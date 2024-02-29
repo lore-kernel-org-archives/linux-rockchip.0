@@ -4,68 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A36CC54E4A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Feb 2024 15:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 885CAC54798
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Feb 2024 19:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oNF52O+rDxCJk2v4vfm7aBl7I3GUrQKmGtIkgDDnwk0=; b=R+EkX3iXLq1NZA
-	NgAyFIbIPl1uGVJ9fZ9GO22jPVdxGvFsugzXIzX8hiCWQpPZEtq5h0ACUAMNue5z0E+nxB6RVflN9
-	OSQsPbIvyZfNASqLCjD6Gf26WSZ9uHP8T9C2jvCrnKZ4oXCjmoIEhtNpuysocclTAXXNn0/prM8/X
-	6f6/ds75d3LxAxn+/lcAqKPeTyHMc103Bjy8qOvLo5Kw1IGrm1jmno89tTKTgg5PcegN1qlcyYUCT
-	46K8dtCT8Ga4yBCe4oYV2pFJZ45uE6uLzZBmaaqRmvyqT7RtzGj4TZw0HlDuvGLSJ7Uz/ywQipg21
-	q4I9FtLTA0d6IHK8jCBw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LM855xCBPrfRVpvg14oAAdGz3EOBFTZI9ww3sRKRaOA=; b=nSQnkq2/OJSApi
+	DiX7W0sVmUXFEpk8PbpuWjXxujAk5lcbDeXn3BkVJ7+bJBoSdTF3hy3EZXtDZdkZ2iyVFylgqcE+l
+	uS4fyuqHnRkOPM+mqK6GnZdSAz8lltihBsLRM61GtIcKlOh14bOxQO2jyvBm0zM3LIegtsYq8dh41
+	B2fXDthNj6+zucmFQWgdpeV/ODEVpzG00Qib7J8Mcba45Os5ToUn7AYAyhME4tzc0uHYIFZi17jQF
+	llY3NmQuNiqqM940L0KtpnYF2L/M/LJ1MgWE9vzZyAj1ec7SVwYDIU3lJBSop1f/7CRJRWgjcEoFZ
+	KEyQVix+VP/kGX/d3TJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfigj-0000000E8KR-2v5m;
-	Thu, 29 Feb 2024 15:51:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rfm3g-0000000Es6x-3qjt;
+	Thu, 29 Feb 2024 19:27:08 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rfig9-0000000E7zn-1mff;
-	Thu, 29 Feb 2024 15:50:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B663460B2D;
-	Thu, 29 Feb 2024 15:50:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0837CC433A6;
-	Thu, 29 Feb 2024 15:50:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709221836;
-	bh=gm3JDmWm3Iv/jXg4yR5m/l3bvC4wQhLEHX/09mWS7TE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jUrQfwQdsynasV5FQwge2diTBQhz/eQf+PUmTy+iw7I7MmSceTG3O1Wv3KCY4fT+A
-	 mJTBN9xyU3t0ngDgGBMy0LonuqBuK0ovXveHj/gmJaAgBTEZ17R7XmtwCCRs7P5WU0
-	 iJBwUFkhcNP1af8ZgMBP7EG1wfJaubuuavgYzzvQqf7HZxi3K5H2xVvMW2hI/AVB+W
-	 5lwuVu2/nsWG7NjKSdBpRLKEDB/WEyO4OZmBlaXGRxrnHG85OY25I+xrS0ceQK9uDS
-	 tKiSth5SQA02gPNEWVSnVTq2PVXe74wxdIvgmMz5IrSqYaeROcL+Y2OrRRabLHzgFH
-	 S/XveYi7U8kQw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	dafna@fastmail.com,
-	heiko@sntech.de,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 02/12] media: rkisp1: Fix IRQ handling due to shared interrupts
-Date: Thu, 29 Feb 2024 10:50:19 -0500
-Message-ID: <20240229155032.2850566-2-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240229155032.2850566-1-sashal@kernel.org>
-References: <20240229155032.2850566-1-sashal@kernel.org>
+	id 1rfm3b-0000000Es1a-1eaR;
+	Thu, 29 Feb 2024 19:27:04 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-412c34a73aeso2807315e9.0;
+        Thu, 29 Feb 2024 11:27:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1709234820; x=1709839620; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tJOJyUFKE6vWJvYSz1LvG697rW0U88KqR4dAP+GyGq4=;
+        b=OsjhoCyuno0wtQ5HoxvIpf7RJsGb3zoo5hHaQB5YitETKlHNKVDMU0LDOZhdPdCyvT
+         Idmwc2CfRznz4FYq5wQtnVeR14MjvVCnVLRl8F5HfTzDl/fgtjt2pe6jDMHUuiNyCeJA
+         S+q0oKCMVpdJiuwa0NMikNIOndQ+rZaglA13rTcJ+kMwx3DXEkPSBM1d/MaFNx/p8dqB
+         rJ/atZ0VZomI4s/VruJGSkvaEVaY9s46Fr8A/p6msGG49XrHlIylNxMCn97Uc3uOjUFJ
+         UyUt0EtPRZT9FW5kEqUNpafXJF928FUnefdKi6TFvrbZ6uQFKMJ88Bc0P4oPqnfgDkLl
+         JOAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709234820; x=1709839620;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tJOJyUFKE6vWJvYSz1LvG697rW0U88KqR4dAP+GyGq4=;
+        b=Dc2MjbtRlByccc3gyGAK6puckkYJ/+USuHje2Og8WK8XOhD4CP5HFa6gdzJxhzvPmz
+         0T7YNyvdnQDogoL1woE+F8n4OMye1DZgjSLpjOBLAoHtENEQGzv+Ij9nx7GMQ8X/zGvl
+         zOmy1ySu2kiJTaEL8koJrIO8c4QUSo2wqZ9RG4cG8dMf5wWZkwOy3+Ps99YbQKJvDAeI
+         jKvZRfS68hB2z7zfitP2WkzderjViRgm+yRS19G7XYKt39aH+3tPtWmpz4yOCmqEag4I
+         1sNJ7z/KHv6TDoSUDHNcU7kEWyi9LFKUN9e1mk/hJIa8+xl0EcR9urTri0wZwkLmTNJp
+         iYoA==
+X-Forwarded-Encrypted: i=1; AJvYcCUnfKCc1LHcbaHaX2PPo0/bCXMINffCwE6KNxWXjcmxxEgm20trFYHMfhQHn/8me+47RhS8F4ohukKEVySE1j94lr0Bz2h+ExvpftsW79XWeeUhj2Erx2F1YUiGxsTzUGnLDA73UnFh16MON4Wui9mG3SDqPZV7SsA=
+X-Gm-Message-State: AOJu0YzwsRv1DdjBVyMWv18BXeFYlFKMzgeAEW5jAbWahAkIF3EGF/8N
+	ohRrD2STUpM1I0eRmpmtOQ/DSDf0w5gbxg96eTyNRW3pdhmANrGK
+X-Google-Smtp-Source: AGHT+IEmConaemKMtcTzN62uobZUuH1/Oz6g74N2+DYM6UgwDD8QkXzhIsYPJiHOQJ25qJEWxsvgdA==
+X-Received: by 2002:a05:600c:444e:b0:412:bd9b:2a55 with SMTP id v14-20020a05600c444e00b00412bd9b2a55mr2325602wmn.13.1709234820222;
+        Thu, 29 Feb 2024 11:27:00 -0800 (PST)
+Received: from [172.30.32.188] ([2001:8f8:183b:6ebc::d35])
+        by smtp.gmail.com with ESMTPSA id j20-20020a05600c1c1400b00412bca49a5bsm2853944wms.42.2024.02.29.11.26.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Feb 2024 11:26:59 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+Subject: [PATCH v3 0/5] RK3588 and Rock 5B dts additions: thermal, OPP and
+ fan
+Date: Thu, 29 Feb 2024 23:26:31 +0400
+Message-Id: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.79
+X-B4-Tracking: v=1; b=H4sIAGfa4GUC/23NwQ6CMAwG4FchOzszCmPgyfcwHmAd0KhgNrJoC
+ O9uITHR6K1/8/frLILz5II4JLPwLlKgceCQ7RJh+3ronCTkLEBBrlLIpb9InIKsEWniLk8Fmka
+ DKU1TCT67e9fSYyNPZ849hWn0z+1DTNftG9O/WEylkro0FRiNTVa0x+5W03Vvx5tYsQgfQKb+A
+ MCALQDA5taU+AUsy/IC2/+ckvEAAAA=
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, 
+ Dragan Simic <dsimic@manjaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
+ Chen-Yu Tsai <wens@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1709234816; l=4526;
+ i=alchark@gmail.com; s=20240125; h=from:subject:message-id;
+ bh=hAYEg69gGvrO2LTlkt7LFP2fOAof7WF6nmTQJr0yRQs=;
+ b=8Jd8dVO6bUfYp/U7rjYgPVzmRlNnRBnMSq82B8/2P2cj+d66afXQk6tm+K1xjrrxSTY/72ER6
+ hk5QZc0BWj4AS/b5yjnWVo+X0dTuTjtACCdHufZH5JGxxfXs5z/zs2w
+X-Developer-Key: i=alchark@gmail.com; a=ed25519;
+ pk=xRO8VeD3J5jhwe0za0aHt2LDumQr8cm0Ls7Jz3YGimk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240229_075037_860239_AC9E0C78 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20240229_112703_482434_0D368EC3 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,140 +106,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+This enables thermal monitoring and CPU DVFS on RK3588(s), as well as
+active cooling on Radxa Rock 5B via the provided PWM fan.
 
-[ Upstream commit ffb635bb398fc07cb38f8a7b4a82cbe5f412f08e ]
+Some RK3588 boards use separate regulators to supply CPUs and their
+respective memory interfaces, so this is handled by coupling those
+regulators in affected boards' device trees to ensure that their
+voltage is adjusted in step.
 
-The driver requests the interrupts as IRQF_SHARED, so the interrupt
-handlers can be called at any time. If such a call happens while the ISP
-is powered down, the SoC will hang as the driver tries to access the
-ISP registers.
+In this revision of the series I chose to enable TSADC for all boards
+at .dtsi level, because:
+ - The defaults already in .dtsi should work for all users, given that
+   the CRU based resets don't need any out-of-chip components, and
+   the CRU vs. PMIC reset is pretty much the only thing a board might
+   have to configure / override there
+ - The boards that have TSADC_SHUT signal wired to the PMIC reset line
+   can still choose to override the reset logic in their .dts. Or stay
+   with CRU based resets, as downstream kernels do anyway
+ - The on-by-default approach helps ensure thermal protections are in
+   place (emergency reset and throttling) for any board even with a
+   rudimentary .dts, and thus lets us introduce CPU DVFS with better
+   peace of mind
 
-This can be reproduced even without the platform sharing the IRQ line:
-Enable CONFIG_DEBUG_SHIRQ and unload the driver, and the board will
-hang.
+Fan control on Rock 5B has been split into two intervals: let it spin
+at the minimum cooling state between 55C and 65C, and then accelerate
+if the system crosses the 65C mark - thanks to Dragan for suggesting.
+This lets some cooling setups with beefier heatsinks and/or larger
+fan fins to stay in the quietest non-zero fan state while still
+gaining potential benefits from the airflow it generates, and
+possibly avoiding noisy speeds altogether for some workloads.
 
-Fix this by adding a new field, 'irqs_enabled', which is used to bail
-out from the interrupt handler when the ISP is not operational.
+OPPs help actually scale CPU frequencies up and down for both cooling
+and performance - tested on Rock 5B under varied loads. I've split
+the patch into two parts: the first containing those OPPs that seem
+to be no-regret with general consensus during v1 review [2], while
+the second contains OPPs that cause frequency reductions without
+accompanying decrease in CPU voltage. There seems to be a slight
+performance gain in some workload scenarios when using these, but
+previous discussion was inconclusive as to whether they should be
+included or not. Having them as separate patches enables easier
+comparison and partial reversion if people want to test it under
+their workloads, and also enables the first 'no-regret' part to be
+merged to -next while the jury is still out on the second one.
 
-Link: https://lore.kernel.org/r/20231218-rkisp-shirq-fix-v1-2-173007628248@ideasonboard.com
+[1] https://lore.kernel.org/linux-rockchip/1824717.EqSB1tO5pr@bagend/T/#ma2ab949da2235a8e759eab22155fb2bc397d8aea
+[2] https://lore.kernel.org/linux-rockchip/CABjd4YxqarUCbZ-a2XLe3TWJ-qjphGkyq=wDnctnEhdoSdPPpw@mail.gmail.com/T/#m49d2b94e773f5b532a0bb5d3d7664799ff28cc2c
 
-Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-capture.c |  3 +++
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 ++
- .../platform/rockchip/rkisp1/rkisp1-csi.c     |  3 +++
- .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 +++++++++++++++++++
- .../platform/rockchip/rkisp1/rkisp1-isp.c     |  3 +++
- 5 files changed, 33 insertions(+)
+Changes in v3:
+- Added regulator coupling for EVB1 and QuartzPro64
+- Enabled the TSADC for all boards in .dtsi, not just Rock 5B (thanks ChenYu)
+- Added comments regarding two passive cooling trips in each zone (thanks Dragan)
+- Fixed active cooling map numbering for Radxa Rock 5B (thanks Dragan)
+- Dropped Daniel's Acked-by tag from the Rock 5B fan patch, as there's been quite some
+  churn there since the version he acknowledged
+- Link to v2: https://lore.kernel.org/r/20240130-rk-dts-additions-v2-0-c6222c4c78df@gmail.com
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index d4540684ea9af..0bcb9db5ad190 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -701,6 +701,9 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
- 	unsigned int i;
- 	u32 status;
- 
-+	if (!rkisp1->irqs_enabled)
-+		return IRQ_NONE;
-+
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_MI_MIS);
- 	if (!status)
- 		return IRQ_NONE;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index f9ec1c6138947..5776292f914a4 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -467,6 +467,7 @@ struct rkisp1_debug {
-  * @debug:	   debug params to be exposed on debugfs
-  * @info:	   version-specific ISP information
-  * @irqs:          IRQ line numbers
-+ * @irqs_enabled:  the hardware is enabled and can cause interrupts
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
-@@ -488,6 +489,7 @@ struct rkisp1_device {
- 	struct rkisp1_debug debug;
- 	const struct rkisp1_info *info;
- 	int irqs[RKISP1_NUM_IRQS];
-+	bool irqs_enabled;
- };
- 
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-index e862f515cc6d3..95b6e41c48ec2 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-@@ -211,6 +211,9 @@ irqreturn_t rkisp1_csi_isr(int irq, void *ctx)
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
- 	u32 val, status;
- 
-+	if (!rkisp1->irqs_enabled)
-+		return IRQ_NONE;
-+
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
- 	if (!status)
- 		return IRQ_NONE;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 41abb18b00acb..7a3b69ba51b97 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -305,6 +305,24 @@ static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
- {
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
- 
-+	rkisp1->irqs_enabled = false;
-+	/* Make sure the IRQ handler will see the above */
-+	mb();
-+
-+	/*
-+	 * Wait until any running IRQ handler has returned. The IRQ handler
-+	 * may get called even after this (as it's a shared interrupt line)
-+	 * but the 'irqs_enabled' flag will make the handler return immediately.
-+	 */
-+	for (unsigned int il = 0; il < ARRAY_SIZE(rkisp1->irqs); ++il) {
-+		if (rkisp1->irqs[il] == -1)
-+			continue;
-+
-+		/* Skip if the irq line is the same as previous */
-+		if (il == 0 || rkisp1->irqs[il - 1] != rkisp1->irqs[il])
-+			synchronize_irq(rkisp1->irqs[il]);
-+	}
-+
- 	clk_bulk_disable_unprepare(rkisp1->clk_size, rkisp1->clks);
- 	return pinctrl_pm_select_sleep_state(dev);
- }
-@@ -321,6 +339,10 @@ static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
- 	if (ret)
- 		return ret;
- 
-+	rkisp1->irqs_enabled = true;
-+	/* Make sure the IRQ handler will see the above */
-+	mb();
-+
- 	return 0;
- }
- 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 00dca284c1222..2af5c1a48070b 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -1023,6 +1023,9 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
- 	u32 status, isp_err;
- 
-+	if (!rkisp1->irqs_enabled)
-+		return IRQ_NONE;
-+
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
- 	if (!status)
- 		return IRQ_NONE;
+Changes in v2:
+- Dropped the rfkill patch which Heiko has already applied
+- Set higher 'polling-delay-passive' (100 instead of 20)
+- Name all cooling maps starting from map0 in each respective zone
+- Drop 'contribution' properties from passive cooling maps
+- Link to v1: https://lore.kernel.org/r/20240125-rk-dts-additions-v1-0-5879275db36f@gmail.com
+
+---
+Alexey Charkov (5):
+      arm64: dts: rockchip: enable built-in thermal monitoring on RK3588
+      arm64: dts: rockchip: enable automatic active cooling on Rock 5B
+      arm64: dts: rockchip: Add CPU/memory regulator coupling for RK3588
+      arm64: dts: rockchip: Add OPP data for CPU cores on RK3588
+      arm64: dts: rockchip: Add further granularity in RK3588 CPU OPPs
+
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  12 +
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |  12 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  30 +-
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi          | 385 ++++++++++++++++++++-
+ 4 files changed, 437 insertions(+), 2 deletions(-)
+---
+base-commit: cf1182944c7cc9f1c21a8a44e0d29abe12527412
+change-id: 20240124-rk-dts-additions-a6d7b52787b9
+
+Best regards,
 -- 
-2.43.0
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
