@@ -4,59 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83DC4C48BF6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 13:15:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655FBC48BF6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 15:32:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6SlaJRIoQH9nUE3wflYqGNBnKTXgnPjvXbaK2hzjMY=; b=uOdppxhZ4JPNFMXtjjQQj8Liuk
-	JblVGeDF2j9Qs+D+c9SJpl6Fe9VX5YmRvPKTxIeeJazg7Vitxl+fBP3QIubWxPsgzL/bE0DCzRcDD
-	R0EkJHAhNjD7+S6odbnNWFgdgZDs4bGpKXaAAvNHI6GA/hKUGHwvFcsXA/exbgbhw/WA02GFumXL2
-	1jh+OK/OgFbNO00RIgNmlulRIVp7kgzYcTbgEC08Szry0FaEcBMewZU5j43snzaAKDl/Ee6WlKF24
-	gUvEEjEWu5LlQWiAyMfUjk+IitWq+dHSCf5Y5KzVj9E7X3Idc8rmeXtJMa3HSxnJYDR7I0LvLw+r7
-	VxuB/6yQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BioL50AAd3Ahlr9vVl3ntQdlrYlh77wKQA90cbAILA8=; b=qdM9D7M4Vyowi6ReQcPqC6678E
+	wZLc+qNx7ZXKWe0EPmGsjTaqrCYBrcD7AJ1wgl81XCq4lG39c3LQuZs/TDYbG6XFn/J6JfB7b7Km+
+	TsjsIpx3vzWYPU9FS+m/MBEAhJhh0EbEYOv2EhraSlNgwhEpbmzObSP/U+1ioeIALUPabW22/LJqG
+	JQkyffxdPB1BFC/Gq7Dpl4OtNInYMfa2Q10ZOxSrT2Jc0DBsllSC8zYjvuMubp8vdGelzQHCycsNd
+	5XcJ/01tgsQn8yq+4Mb835wgmxqd2tKYGbOR2WpjVWA/v+iZ7s2g0KZ/9WfA4Si6ddMSukeecVzaf
+	WOyrd73A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh8AD-000000097YG-3xkN;
-	Mon, 04 Mar 2024 13:15:30 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rhAIq-00000009bQu-3tEv;
+	Mon, 04 Mar 2024 15:32:32 +0000
+Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh8A8-000000097XI-3pBD;
-	Mon, 04 Mar 2024 13:15:27 +0000
-MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1709558122;
+	id 1rhAIj-00000009bNS-3Ngl
+	for linux-rockchip@lists.infradead.org;
+	Mon, 04 Mar 2024 15:32:29 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1709566339;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=CPolhdLfMtVVriDkvDQA6ST1/9YALzy4d2oX5mVIC/c=;
-	b=t0hrGqtIZaMFVXUpm4vTvUdtB++uMQCHMbFUyeRvJKC5ZSJl0YvGiRNlVIVxul+hTQM4AS
-	k6RNoHAsIiMBTda9r69b0Tv1pur4RdMUApU5AOp9VK9QgBW6Tk2VWjwwgmHf0W9j+ZmLFt
-	DTSsLsm5Psokdfpsi0qEEO4SGkPuoqwkZ5ybjSy+vbUyCZquw+XNxH+gXgoYMQbOPExMbS
-	8LVjE+gHJRNE3ppWT/xoGKXKVOqnwLtfj+3vbKiNDVVrgSqsHjXd5nfZqE7XrjfEWyHJcD
-	AHqHsr4CO4wyd1N1ii2DbftUPXrrjxHQwwK6b5GCAGDI66www0aYs8s5XeBkNQ==
-Date: Mon, 04 Mar 2024 14:15:21 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add cache information to the SoC
- dtsi for RK3328
-In-Reply-To: <CANAwSgRRHA=njnH5q8iiUvBn3Ogm75STEZseP7Z-pZYM-OzsTQ@mail.gmail.com>
-References: <e61173d87f5f41af80e6f87f8820ce8d06f7c20c.1709491127.git.dsimic@manjaro.org>
- <CANAwSgRRHA=njnH5q8iiUvBn3Ogm75STEZseP7Z-pZYM-OzsTQ@mail.gmail.com>
-Message-ID: <ec418d523345c4bd04d2a8a33205001a@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+	bh=Wqu+8C8GMaK6bDCk9aGSUCngS8D7qmdXKRr3pJsbYzU=;
+	b=r/U9ZzjPn0fMfmjS4kL0Kyo2EiyxBYMaJYIBtTKsAgufoOtx87HjO3ukmaFmd/1svqwPNg
+	DHV7v9SA3kFBaZgGQ92pNw7TW1/KePnB0TpVoAhZrtv3M20YrA6JNf+1u+bnl1tTkzX+2+
+	SBPsQFkEPk1Wf97Gp39a2Y8sPLGgsHk/LX77JY9BsYY0+gFTM4ktGhT46NO2u2wxvLFc+/
+	/NPOJQcC7Sjp6qpl9sSG33KXKYBWFT9Ne+/O5iOsEbAUhtSY9uD2isFgSIj1ql2RYSPIKQ
+	g19mpdc6Xt1GNK73R1fLWIkP9I0soTu2aUjnfU0D7bUr/0UKJJjQYO0Ja9tFow==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Chen-Yu Tsai <wens@kernel.org>, linux-rockchip@lists.infradead.org
+Cc: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <ukleinek@debian.org>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] arm64: dts: rockchip: qnap-ts433: Simplify network PHY connection
+Date: Mon, 04 Mar 2024 16:32:03 +0100
+Message-ID: <27139798.WhXITi6ROJ@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <0ed81fbf-cc25-4582-899e-4270932e897c@lunn.ch>
+References: <20240304084612.711678-2-ukleinek@debian.org>
+ <CAGb2v67xA0z3KWBo=ierkK9qxBAnaLuVkta05qEaFmMciB1-ng@mail.gmail.com>
+ <0ed81fbf-cc25-4582-899e-4270932e897c@lunn.ch>
+MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_051525_329981_B6888413 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20240304_073226_506175_0FFA3EDD 
+X-CRM114-Status: GOOD (  24.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,173 +72,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============0420635650314037649=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-03-04 10:22, Anand Moon wrote:
-> On Mon, 4 Mar 2024 at 00:35, Dragan Simic <dsimic@manjaro.org> wrote:
->> 
->> Add missing cache information to the Rockchip RK3328 SoC dtsi, to 
->> allow
->> the userspace, which includes /proc/cpuinfo and lscpu(1), to present 
->> proper
->> RK3328 cache information.
->> 
->> While there, use a more self-descriptive label for the L2 cache node, 
->> which
->> also makes it more consistent with other SoC dtsi files.
->> 
->> The cache parameters for the RK3328 dtsi were obtained and partially 
->> derived
->> by hand from the cache size and layout specifications found in the 
->> following
->> datasheets, official vendor websites, and technical reference manuals:
->> 
->>   - Rockchip RK3328 datasheet, version 1.4
->>   - https://opensource.rock-chips.com/wiki_RK3328, accessed on 
->> 2024-02-28
->>   - ARM Cortex-A53 revision r0p3 TRM, version E
->> 
->> For future reference, here's a brief summary of the documentation:
->> 
->>   - All caches employ the 64-byte cache line length
->>   - Each Cortex-A53 core has 32 KB of L1 2-way, set-associative 
->> instruction
->>     cache and 32 KB of L1 4-way, set-associative data cache
->>   - The entire SoC has 256 KB of unified L2 16-way, set-associative 
->> cache
->> 
->> The RK3328 SoC dtsi is also used for the single RK3318-based supported 
->> board.
->> Unfortunately, no datasheet is available for the RK3318, but some 
->> unofficial
->> sources state that its L2 cache size is the same as RK3328's, so it's 
->> perhaps
->> safe to assume the same for the L1 instruction and data cache sizes.
->> 
->> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
->> ---
-> 
-> Thanks. Please add my,
-> 
-> Reviewed-by: Anand Moon <linux.amoon@gmail.com>
+--===============0420635650314037649==
+Content-Type: multipart/signed; boundary="nextPart1786480.ieIM7KbnEy";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Thank you once again.
+--nextPart1786480.ieIM7KbnEy
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Chen-Yu Tsai <wens@kernel.org>, linux-rockchip@lists.infradead.org
+Date: Mon, 04 Mar 2024 16:32:03 +0100
+Message-ID: <27139798.WhXITi6ROJ@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <0ed81fbf-cc25-4582-899e-4270932e897c@lunn.ch>
+MIME-Version: 1.0
 
->>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 37 
->> ++++++++++++++++++++----
->>  1 file changed, 32 insertions(+), 5 deletions(-)
->> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi 
->> b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> index 7b4c15c4a9c3..ac2846c33dc9 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> @@ -46,47 +46,71 @@ cpu0: cpu@0 {
->>                         cpu-idle-states = <&CPU_SLEEP>;
->>                         dynamic-power-coefficient = <120>;
->>                         enable-method = "psci";
->> -                       next-level-cache = <&l2>;
->>                         operating-points-v2 = <&cpu0_opp_table>;
->> +                       i-cache-size = <0x8000>;
->> +                       i-cache-line-size = <64>;
->> +                       i-cache-sets = <256>;
->> +                       d-cache-size = <0x8000>;
->> +                       d-cache-line-size = <64>;
->> +                       d-cache-sets = <128>;
->> +                       next-level-cache = <&l2_cache>;
->>                 };
->> 
->>                 cpu1: cpu@1 {
->>                         device_type = "cpu";
->>                         compatible = "arm,cortex-a53";
->>                         reg = <0x0 0x1>;
->>                         clocks = <&cru ARMCLK>;
->>                         #cooling-cells = <2>;
->>                         cpu-idle-states = <&CPU_SLEEP>;
->>                         dynamic-power-coefficient = <120>;
->>                         enable-method = "psci";
->> -                       next-level-cache = <&l2>;
->>                         operating-points-v2 = <&cpu0_opp_table>;
->> +                       i-cache-size = <0x8000>;
->> +                       i-cache-line-size = <64>;
->> +                       i-cache-sets = <256>;
->> +                       d-cache-size = <0x8000>;
->> +                       d-cache-line-size = <64>;
->> +                       d-cache-sets = <128>;
->> +                       next-level-cache = <&l2_cache>;
->>                 };
->> 
->>                 cpu2: cpu@2 {
->>                         device_type = "cpu";
->>                         compatible = "arm,cortex-a53";
->>                         reg = <0x0 0x2>;
->>                         clocks = <&cru ARMCLK>;
->>                         #cooling-cells = <2>;
->>                         cpu-idle-states = <&CPU_SLEEP>;
->>                         dynamic-power-coefficient = <120>;
->>                         enable-method = "psci";
->> -                       next-level-cache = <&l2>;
->>                         operating-points-v2 = <&cpu0_opp_table>;
->> +                       i-cache-size = <0x8000>;
->> +                       i-cache-line-size = <64>;
->> +                       i-cache-sets = <256>;
->> +                       d-cache-size = <0x8000>;
->> +                       d-cache-line-size = <64>;
->> +                       d-cache-sets = <128>;
->> +                       next-level-cache = <&l2_cache>;
->>                 };
->> 
->>                 cpu3: cpu@3 {
->>                         device_type = "cpu";
->>                         compatible = "arm,cortex-a53";
->>                         reg = <0x0 0x3>;
->>                         clocks = <&cru ARMCLK>;
->>                         #cooling-cells = <2>;
->>                         cpu-idle-states = <&CPU_SLEEP>;
->>                         dynamic-power-coefficient = <120>;
->>                         enable-method = "psci";
->> -                       next-level-cache = <&l2>;
->>                         operating-points-v2 = <&cpu0_opp_table>;
->> +                       i-cache-size = <0x8000>;
->> +                       i-cache-line-size = <64>;
->> +                       i-cache-sets = <256>;
->> +                       d-cache-size = <0x8000>;
->> +                       d-cache-line-size = <64>;
->> +                       d-cache-sets = <128>;
->> +                       next-level-cache = <&l2_cache>;
->>                 };
->> 
->>                 idle-states {
->> @@ -102,10 +126,13 @@ CPU_SLEEP: cpu-sleep {
->>                         };
->>                 };
->> 
->> -               l2: l2-cache0 {
->> +               l2_cache: l2-cache {
->>                         compatible = "cache";
->>                         cache-level = <2>;
->>                         cache-unified;
->> +                       cache-size = <0x40000>;
->> +                       cache-line-size = <64>;
->> +                       cache-sets = <256>;
->>                 };
->>         };
->> 
->> 
->> _______________________________________________
->> linux-arm-kernel mailing list
->> linux-arm-kernel@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+On Monday, 4 March 2024 14:09:15 CET Andrew Lunn wrote:
+> > > Andrew already pointed out when I posted the patch introducing the gmac0
+> > > node that rgmii-id would be the preferred way to setup things. Back
+> > > then this didn't happen because this change broke reception of network
+> > > packets. However this only happend because I didn't have the right phy
+> > > driver loaded.
+> > 
+> > It could be that the PHY is strapped to not use its internal RX delay.
+> > And the PHY has some weird default TX delay, so having the driver
+> > put some sensible values in is probably better.
 > 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> It could also be the bootloader putting odd values into the PHY.
+> 
+> Anyway, it will work better with the correct PHY, and enable WoL
+> support.
+
+Not sure if this is the right place or way, but here we go...
+
+A few days ago on #debian-kernel@OFTC:
+[28.02 16:35] <ukleinek> u-boot should be out of the game
+[28.02 16:36] <diederik> I'm not so sure anymore. On Quartz64 Model A and B 
+(rk3566) I had massive packet loss and tracked it down to a change in u-boot
+[28.02 16:37] <ukleinek> diederik: sounds like the Linux network driver on 
+that machine could do something better
+[28.02 16:38] <diederik> yeah, probably
+
+I reported this about a month ago to Jonas Karlman as I bisected the problem 
+to a change in u-boot:
+
+> diederik@bagend:~/dev/u-boot/u-boot$ git bisect bad
+> 25f56459aebced8e4bb7d01061dcb1b765b197e2 is the first bad commit
+> commit 25f56459aebced8e4bb7d01061dcb1b765b197e2
+> Author: Jonas Karlman <jonas@kwiboo.se>
+> Date:   Sun Oct 1 19:17:21 2023 +0000
+> 
+>     configs: rockchip: Enable ethernet driver on RK356x boards
+>     
+>     Enable DWC_ETH_QOS_ROCKCHIP and related PHY driver on RK356x boards that
+>     have an enabled gmac node.
+
+I just checked and both Quartz64 Model A and B have `phy-mode = "rgmii";` and 
+set `tx_delay` and `rx_delay` to some (other) values.
+Without knowing nor understanding the details, this seem very much related?
+
+Cheers,
+  Diederik
+--nextPart1786480.ieIM7KbnEy
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZeXpcwAKCRDXblvOeH7b
+bmv2AQDC3ezAjgZekid7Sv/zN01j4p8v1AJm/VfZ1LXruWO2gAEAs/SOIp7zLJDJ
+RkD5rS7mQOiPttiummSZXlApHwUcnAc=
+=obWu
+-----END PGP SIGNATURE-----
+
+--nextPart1786480.ieIM7KbnEy--
+
+
+
+
+
+--===============0420635650314037649==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0420635650314037649==--
+
+
+
+
