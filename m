@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BECFC48BF6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 12:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8622FC5478C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 12:43:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sJErFORw9Akrx8P8xJdbWO1WiYOZ1oW+DLPRiwwPvqs=; b=cGAiBHyeD2wOYn
-	PJjo4VORHco8f18knM/r6A4Y6K0fjrdmQExv/peyNVcVpksfOHpWFlVxB7RjqO0R6iIMj0zer3kOV
-	inCXmqml73EQez2XV23Gco+QIDNbNM3duuXYGsfwqZN1Aanjj0qqIzuToV89cUhHcUHZUQAtrvX3K
-	1jP90/rJ3+Y5anooV+wdUl+MJ50BABlv4OErc0LCtjYzK7kYQ8nmFGCCpTZmw1lDvo/eHJgxcCq04
-	09KkieY0eP25lJKg2kSX3vt7OofaHE5XbTZNR03JeVMCYuL71kGGf3DnZ+4coH0uUj908+jP6vxuG
-	lMxfWtLv6atUKY4BXQoQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UmW6EFurZ+S3sBYYzEbG8RreaDY+mvFFwMb+kSx7Dxg=; b=ZCajR3UrL5TW+Q
+	ljVef2zVwdwcxSAeJJs9Ki5pTw6x9syUfLwdGzsyHj3but4C1Tpnsv/nupEhHezCpNsAS0b9rPAL2
+	LMv5J71UcvWz9Vp6ADEZngnD08tSysACYqthm7akRCwFahpk/hzH7XioH9k5kkrAdUeerUGjNf4BJ
+	hL7kH5Z70JuoxRFi3pGhESsEeRBh0YN+pUQ5BlLqcMtQUavILUnt0CJUMc8Cv5qR/m8s1u5ROldJO
+	Kbh8gB77iAe5vmffT3RIHcvoH3HTp9B2rNr9w2vzjjO4WLLaZhFwKAZaqQVA3+pB8JkKezTNPbshe
+	g8JGX/mEPs5+pEFSj/Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh7M0-00000008xxW-1FrM;
-	Mon, 04 Mar 2024 12:23:36 +0000
-Received: from mx1.t-argos.ru ([109.73.34.58])
+	id 1rh7fT-0000000921O-34HX;
+	Mon, 04 Mar 2024 12:43:43 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh7Lv-00000008xs3-44U6;
-	Mon, 04 Mar 2024 12:23:34 +0000
-Received: from mx1.t-argos.ru (localhost [127.0.0.1])
-	by mx1.t-argos.ru (Postfix) with ESMTP id 14559100002;
-	Mon,  4 Mar 2024 15:22:19 +0300 (MSK)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=t-argos.ru; s=mail;
-	t=1709554939; bh=YbTF9cKWyBV3OLPeCxcCiIlnH5+s0eWfsFAU6u80XD8=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
-	b=USsmf+aeiLQI1maKyJZCHhC3uyVMfHOojULGaFWYvhPTEoegbnXGOiaA+Wt+ckXQ8
-	 tsnL6RA1DUE7YrfOXx0ZPF30wRf+jNS4DyWPA4M/cIYXkc/ds9EA6GKlbzRCS30opr
-	 2ygKtaj6qi0qFya1KmnN20qfMsBDifLnRCZq2DVTsfEhwfSg8jzjwKYrnHsvCdyI0H
-	 PDD1E+nDLSTkp/rcc6nWYJBBnwhh3sRYf6+r2uSYXf4/RPQKopiFO8Ke8gMr51bYgH
-	 61D7azudCxIcFVJ45f2xvoUyHiqAzDIqqIjaV6aOd3a4Qsp93JLDTBwOF95RDxvAdH
-	 m1XXng71rCzfQ==
-Received: from mx1.t-argos.ru.ru (mail.t-argos.ru [172.17.13.212])
-	by mx1.t-argos.ru (Postfix) with ESMTP;
-	Mon,  4 Mar 2024 15:21:17 +0300 (MSK)
-Received: from localhost.localdomain (172.17.215.6) by ta-mail-02
- (172.17.13.212) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 4 Mar 2024
- 15:20:56 +0300
-From: Aleksandr Mishin <amishin@t-argos.ru>
-To: Corentin Labbe <clabbe@baylibre.com>
-CC: Aleksandr Mishin <amishin@t-argos.ru>, Herbert Xu
-	<herbert@gondor.apana.org.au>, "David S . Miller" <davem@davemloft.net>,
-	Heiko Stuebner <heiko@sntech.de>, <linux-crypto@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <lvc-project@linuxtesting.org>
-Subject: [PATCH] crypto: rockchip/rk3288 - Add dereference of NULL pointer check
-Date: Mon, 4 Mar 2024 15:20:31 +0300
-Message-ID: <20240304122031.25325-1-amishin@t-argos.ru>
-X-Mailer: git-send-email 2.30.2
+	id 1rh7fP-0000000920k-0z3O
+	for linux-rockchip@lists.infradead.org;
+	Mon, 04 Mar 2024 12:43:41 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 9D4871BF206;
+	Mon,  4 Mar 2024 12:43:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1709556211;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r8fiNaO/LNk/DNM1VzAkgWp6ITdQul2gPeq1Y3bECeA=;
+	b=l+rYMq8i1ZrXDZ7j4GG6hUKWiUTz4c2OxZ0Zh7RL7eZt20IUrzua9sbb3jjWrOYm8H/f8J
+	mxMqzOBB7VieWoXLAe1deacN3F2kQ95WeCmmIBniEaRCZAyoW7Fz33Vvkf1R0RNgQfsvVB
+	PnD2374It6Qi2zUVEriuK5Ooh/RKYJ/JtCvvqBclA6K3QIuTNnY/FSmPsH4NLuYCT6hjvJ
+	5IAnvIoKynI7xuLdn5zscM05sCKwebKTblF0gmIyR8WApbqnh4IfVHOkWh0ISmSAPrh2o9
+	gQhzBVZwSMOi0b0bbJwEeTK3zq/LP6eWCIxacFpI2IlTxh0FCU5uWA6Su1OdNw==
+Date: Mon, 4 Mar 2024 13:43:29 +0100
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Pavel Hofman <pavel.hofman@ivitera.com>
+Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ linux-rockchip@lists.infradead.org, Nicolas Frattaroli
+ <frattaroli.nicolas@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>,
+ linux-sound@vger.kernel.org
+Subject: Re: ASoC: rockchip_i2s_tdm calibration clocking problem
+Message-ID: <20240304134329.392c75bf@booty>
+In-Reply-To: <c590ff6e-e57e-a7f7-e47d-2e14261a782c@ivitera.com>
+References: <c590ff6e-e57e-a7f7-e47d-2e14261a782c@ivitera.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-Originating-IP: [172.17.215.6]
-X-ClientProxiedBy: ta-mail-02.ta.t-argos.ru (172.17.13.212) To ta-mail-02
- (172.17.13.212)
-X-KSMG-Rule-ID: 1
-X-KSMG-Message-Action: clean
-X-KSMG-AntiSpam-Lua-Profiles: 183922 [Mar 04 2024]
-X-KSMG-AntiSpam-Version: 6.1.0.3
-X-KSMG-AntiSpam-Envelope-From: amishin@t-argos.ru
-X-KSMG-AntiSpam-Rate: 0
-X-KSMG-AntiSpam-Status: not_detected
-X-KSMG-AntiSpam-Method: none
-X-KSMG-AntiSpam-Auth: dkim=none
-X-KSMG-AntiSpam-Info: LuaCore: 8 0.3.8 4a99897b35b48c45ee5c877607d26a2d9f419920, {Tracking_from_domain_doesnt_match_to}, t-argos.ru:7.1.1;mx1.t-argos.ru.ru:7.1.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1, FromAlignment: s
-X-MS-Exchange-Organization-SCL: -1
-X-KSMG-AntiSpam-Interceptor-Info: scan successful
-X-KSMG-AntiPhishing: Clean, bases: 2024/03/04 09:16:00
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 1.1.2.30, bases: 2024/03/04 08:11:00 #23960386
-X-KSMG-AntiVirus-Status: Clean, skipped
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_042332_609578_FF455247 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20240304_044339_755108_520FA876 
+X-CRM114-Status: GOOD (  21.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +75,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In rk_crypto_probe() crypto_engine_alloc_init() is assigned to
-crypto_info->engine and there is a dereference of it in
-clk_mt2712_top_init_early() which could lead to a NULL pointer
-dereference on failure of crypto_engine_alloc_init().
+Hello Pavel,
 
-Fix this bug by adding a check of crypto_info->engine.
+On Wed, 31 Jan 2024 09:25:41 +0100
+Pavel Hofman <pavel.hofman@ivitera.com> wrote:
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> Hi,
+> 
+> I am hitting a clock issue with rockchip_i2s_tdm.c + simple-audio-card 
+> (+ RK3308).
+> 
+> At boot the mclk clk_i2s0_8ch_tx is (somehow) initialized to some 
+> (unimportant?) value 50176000 Hz. Note that this frequency is not 
+> multiple of either 48kHz or 44.1kHz.
+> 
+> Method asoc_simple_parse_clk() reads this value and sets it to 
+> simple_dai->sysclk.
+> 
+> Subsequently at asoc_simple_dai_init this "random" initial value is 
+> stored to i2s_tdm->mclk_tx_freq:
+> 
+>     17.839330]  rockchip_i2s_tdm_set_sysclk+0x50/0xbc 
+> [snd_soc_rockchip_i2s_tdm]
+> [   17.839367]  snd_soc_dai_set_sysclk+0x38/0xb8 [snd_soc_core]
+> [   17.839596]  asoc_simple_init_dai+0x94/0xc0 [snd_soc_simple_card_utils]
+> [   17.839640]  asoc_simple_dai_init+0x130/0x230 [snd_soc_simple_card_utils]
+> [   17.839672]  snd_soc_link_init+0x28/0x90 [snd_soc_core]
+> [   17.839843]  snd_soc_bind_card+0x60c/0xbb4 [snd_soc_core]
+> 
+> 
+> When starting playback, called by rockchip_i2s_tdm_hw_params(), 
+> rockchip_i2s_tdm_calibrate_mclk() correctly switches parent of 
+> mclk_parent to correct root pll clock mclk_root0/1 for the given 
+> samplerate and correctly configures mclk_parent frequency.
+> 
+> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L862-L864
+> 
+> But right after that, the next line of rockchip_i2s_tdm_hw_params() 
+> calls rockchip_i2s_tdm_set_mclk()
+> 
+> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L866C9-L866C34
+> 
+> This method calls clk_set_rate(i2s_tdm->mclk_tx, i2s_tdm->mclk_tx_freq), 
+> which resets the clock and its parental chain to the original incorrect 
+> value stored in i2s_tdm->mclk_tx_freq from the dai initialization.
+> 
+> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L693
+> 
+> As a result, no matter what sample rate is being played, the i2s mclk 
+> clock always ends up configured incorrectly.
 
-Fixes: 57d67c6e8219 ("crypto: rockchip - rework by using crypto_engine")
+Thanks for the detailed report. I've also run in the same issue while
+working on the RK3308 internal audio codec and your analysis matches my
+findings.
 
-Signed-off-by: Aleksandr Mishin <amishin@t-argos.ru>
----
- drivers/crypto/rockchip/rk3288_crypto.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> DTS I2S sets all clocks, therefore the clk calibration in 
+> rockchip_i2s_tdm.c should be (and is) used:
+> 
+> 	i2s_8ch_0: i2s@ff300000 {
+> 		compatible = "rockchip,rk3308-i2s-tdm";
+> 		reg = <0x0 0xff300000 0x0 0x1000>;
+> 		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+> 		clocks = <&cru SCLK_I2S0_8CH_TX>, <&cru SCLK_I2S0_8CH_RX>, <&cru 
+> HCLK_I2S0_8CH>,  
+> 			 <&cru SCLK_I2S0_8CH_TX_SRC>,
+> 			 <&cru SCLK_I2S0_8CH_RX_SRC>,
+> 			 <&cru PLL_VPLL0>,
+> 			 <&cru PLL_VPLL1>;
+> 		clock-names = "mclk_tx", "mclk_rx", "hclk",
+> 			      "mclk_tx_src", "mclk_rx_src",
+> 			      "mclk_root0", "mclk_root1";
+> 		.........
+> 
+> 
+> It seems to me that the calibration code should also rewrite the 
+> initially incorrect i2s_tdm->mclk_tx_freq and i2s_tdm->mclk_rx_freq with 
+> correct values corresponding to the momentary hw_params rate, or maybe 
+> rockchip_i2s_tdm_set_mclk() should not be called if 
+> rockchip_i2s_tdm_calibrate_mclk() is called a line above (i.e. putting 
+> the call to rockchip_i2s_tdm_set_mclk() into "else" branch).
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 70edf40bc523..88cea1e36afa 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -371,6 +371,10 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	}
- 
- 	crypto_info->engine = crypto_engine_alloc_init(&pdev->dev, true);
-+	if (!crypto_info->engine) {
-+		dev_err(&pdev->dev, "memory allocation failed.\n");
-+		goto err_crypto;
-+	}
- 	crypto_engine_start(crypto_info->engine);
- 	init_completion(&crypto_info->complete);
- 
+In my latest v3 series I have implemented a different solution, so
+you way want to review and/or test it and give your feedback in that
+thread:
+
+https://lore.kernel.org/all/20240221-rk3308-audio-codec-v3-1-dfa34abfcef6@bootlin.com/
+
+Best regards,
+Luca
+
 -- 
-2.30.2
-
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
