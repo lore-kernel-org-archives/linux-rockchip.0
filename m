@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8622FC5478C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 12:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 975E8C48BF6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 13:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UmW6EFurZ+S3sBYYzEbG8RreaDY+mvFFwMb+kSx7Dxg=; b=ZCajR3UrL5TW+Q
-	ljVef2zVwdwcxSAeJJs9Ki5pTw6x9syUfLwdGzsyHj3but4C1Tpnsv/nupEhHezCpNsAS0b9rPAL2
-	LMv5J71UcvWz9Vp6ADEZngnD08tSysACYqthm7akRCwFahpk/hzH7XioH9k5kkrAdUeerUGjNf4BJ
-	hL7kH5Z70JuoxRFi3pGhESsEeRBh0YN+pUQ5BlLqcMtQUavILUnt0CJUMc8Cv5qR/m8s1u5ROldJO
-	Kbh8gB77iAe5vmffT3RIHcvoH3HTp9B2rNr9w2vzjjO4WLLaZhFwKAZaqQVA3+pB8JkKezTNPbshe
-	g8JGX/mEPs5+pEFSj/Uw==;
+	List-Owner; bh=0cCeW3AHsQJaZsBPbpBnrKQXhtT5XYijj8V/wdUFoHQ=; b=SF5NextRgHYTeW
+	i5oP+0o8yZDkzORi3GydofX7CsTqGVV1wsaNRMBDToTxws2pG4vlzYTV2Ah9OzKammdrUcfepS9eJ
+	tB6v1PTxZkLTdln6LvGFFnItKp2McuGEOQl/aGx6QLMA6uInW7Vq8JQiA4sAZgvuUBk4UPhPUzGea
+	nb409vHTopJLmgsN0BGeHDXuN37WzhQZVi0o/HIFFfTLKWiFuir5pF51T2rEz/RypdI0Ip8uLt3ZE
+	P8w3BI/18iwk6YxSIXFH0Qhpgqv/BZh8q1xyUuOWL9CuSko9/gvd42WiTcK5AFonL1aLvKVxT4nVR
+	PfHffA9g58h8pi5uD+9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh7fT-0000000921O-34HX;
-	Mon, 04 Mar 2024 12:43:43 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1rh84o-000000096BI-3BJz;
+	Mon, 04 Mar 2024 13:09:55 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh7fP-0000000920k-0z3O
-	for linux-rockchip@lists.infradead.org;
-	Mon, 04 Mar 2024 12:43:41 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 9D4871BF206;
-	Mon,  4 Mar 2024 12:43:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1709556211;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=r8fiNaO/LNk/DNM1VzAkgWp6ITdQul2gPeq1Y3bECeA=;
-	b=l+rYMq8i1ZrXDZ7j4GG6hUKWiUTz4c2OxZ0Zh7RL7eZt20IUrzua9sbb3jjWrOYm8H/f8J
-	mxMqzOBB7VieWoXLAe1deacN3F2kQ95WeCmmIBniEaRCZAyoW7Fz33Vvkf1R0RNgQfsvVB
-	PnD2374It6Qi2zUVEriuK5Ooh/RKYJ/JtCvvqBclA6K3QIuTNnY/FSmPsH4NLuYCT6hjvJ
-	5IAnvIoKynI7xuLdn5zscM05sCKwebKTblF0gmIyR8WApbqnh4IfVHOkWh0ISmSAPrh2o9
-	gQhzBVZwSMOi0b0bbJwEeTK3zq/LP6eWCIxacFpI2IlTxh0FCU5uWA6Su1OdNw==
-Date: Mon, 4 Mar 2024 13:43:29 +0100
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Pavel Hofman <pavel.hofman@ivitera.com>
-Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- linux-rockchip@lists.infradead.org, Nicolas Frattaroli
- <frattaroli.nicolas@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>,
- linux-sound@vger.kernel.org
-Subject: Re: ASoC: rockchip_i2s_tdm calibration clocking problem
-Message-ID: <20240304134329.392c75bf@booty>
-In-Reply-To: <c590ff6e-e57e-a7f7-e47d-2e14261a782c@ivitera.com>
-References: <c590ff6e-e57e-a7f7-e47d-2e14261a782c@ivitera.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1rh84O-000000095wx-48S9;
+	Mon, 04 Mar 2024 13:09:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=ntM3uHxRjzQ+a85JmcdPhuNDbTOvT+BdKRtXjZ66nIU=; b=dc
+	x6p8Dt/mT5e3kYST+11OqrzZTXyJv76VQ4AJHhbmoZrPDhnYBnhipz4IkorDaymU247CExHN0TmSx
+	IYYbgJ+90XYrBWPiEZWx47L4TCjwVT3+7BAhCE/EKQQ+2d2v6dij4RkNtW8grqMNo8n+YZZXD+bUt
+	8hW56F2SGHBGyfk=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rh84B-009K8q-DH; Mon, 04 Mar 2024 14:09:15 +0100
+Date: Mon, 4 Mar 2024 14:09:15 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Chen-Yu Tsai <wens@kernel.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@debian.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: qnap-ts433: Simplify network PHY
+ connection
+Message-ID: <0ed81fbf-cc25-4582-899e-4270932e897c@lunn.ch>
+References: <20240304084612.711678-2-ukleinek@debian.org>
+ <CAGb2v67xA0z3KWBo=ierkK9qxBAnaLuVkta05qEaFmMciB1-ng@mail.gmail.com>
 MIME-Version: 1.0
-X-GND-Sasl: luca.ceresoli@bootlin.com
+Content-Disposition: inline
+In-Reply-To: <CAGb2v67xA0z3KWBo=ierkK9qxBAnaLuVkta05qEaFmMciB1-ng@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_044339_755108_520FA876 
-X-CRM114-Status: GOOD (  21.89  )
+X-CRM114-CacheID: sfid-20240304_050929_284202_9E72988C 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,106 +70,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Pavel,
-
-On Wed, 31 Jan 2024 09:25:41 +0100
-Pavel Hofman <pavel.hofman@ivitera.com> wrote:
-
-> Hi,
-> 
-> I am hitting a clock issue with rockchip_i2s_tdm.c + simple-audio-card 
-> (+ RK3308).
-> 
-> At boot the mclk clk_i2s0_8ch_tx is (somehow) initialized to some 
-> (unimportant?) value 50176000 Hz. Note that this frequency is not 
-> multiple of either 48kHz or 44.1kHz.
-> 
-> Method asoc_simple_parse_clk() reads this value and sets it to 
-> simple_dai->sysclk.
-> 
-> Subsequently at asoc_simple_dai_init this "random" initial value is 
-> stored to i2s_tdm->mclk_tx_freq:
-> 
->     17.839330]  rockchip_i2s_tdm_set_sysclk+0x50/0xbc 
-> [snd_soc_rockchip_i2s_tdm]
-> [   17.839367]  snd_soc_dai_set_sysclk+0x38/0xb8 [snd_soc_core]
-> [   17.839596]  asoc_simple_init_dai+0x94/0xc0 [snd_soc_simple_card_utils]
-> [   17.839640]  asoc_simple_dai_init+0x130/0x230 [snd_soc_simple_card_utils]
-> [   17.839672]  snd_soc_link_init+0x28/0x90 [snd_soc_core]
-> [   17.839843]  snd_soc_bind_card+0x60c/0xbb4 [snd_soc_core]
-> 
-> 
-> When starting playback, called by rockchip_i2s_tdm_hw_params(), 
-> rockchip_i2s_tdm_calibrate_mclk() correctly switches parent of 
-> mclk_parent to correct root pll clock mclk_root0/1 for the given 
-> samplerate and correctly configures mclk_parent frequency.
-> 
-> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L862-L864
-> 
-> But right after that, the next line of rockchip_i2s_tdm_hw_params() 
-> calls rockchip_i2s_tdm_set_mclk()
-> 
-> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L866C9-L866C34
-> 
-> This method calls clk_set_rate(i2s_tdm->mclk_tx, i2s_tdm->mclk_tx_freq), 
-> which resets the clock and its parental chain to the original incorrect 
-> value stored in i2s_tdm->mclk_tx_freq from the dai initialization.
-> 
-> https://github.com/torvalds/linux/blob/master/sound/soc/rockchip/rockchip_i2s_tdm.c#L693
-> 
-> As a result, no matter what sample rate is being played, the i2s mclk 
-> clock always ends up configured incorrectly.
-
-Thanks for the detailed report. I've also run in the same issue while
-working on the RK3308 internal audio codec and your analysis matches my
-findings.
-
-> DTS I2S sets all clocks, therefore the clk calibration in 
-> rockchip_i2s_tdm.c should be (and is) used:
-> 
-> 	i2s_8ch_0: i2s@ff300000 {
-> 		compatible = "rockchip,rk3308-i2s-tdm";
-> 		reg = <0x0 0xff300000 0x0 0x1000>;
-> 		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
-> 		clocks = <&cru SCLK_I2S0_8CH_TX>, <&cru SCLK_I2S0_8CH_RX>, <&cru 
-> HCLK_I2S0_8CH>,  
-> 			 <&cru SCLK_I2S0_8CH_TX_SRC>,
-> 			 <&cru SCLK_I2S0_8CH_RX_SRC>,
-> 			 <&cru PLL_VPLL0>,
-> 			 <&cru PLL_VPLL1>;
-> 		clock-names = "mclk_tx", "mclk_rx", "hclk",
-> 			      "mclk_tx_src", "mclk_rx_src",
-> 			      "mclk_root0", "mclk_root1";
-> 		.........
-> 
-> 
-> It seems to me that the calibration code should also rewrite the 
-> initially incorrect i2s_tdm->mclk_tx_freq and i2s_tdm->mclk_rx_freq with 
-> correct values corresponding to the momentary hw_params rate, or maybe 
-> rockchip_i2s_tdm_set_mclk() should not be called if 
-> rockchip_i2s_tdm_calibrate_mclk() is called a line above (i.e. putting 
-> the call to rockchip_i2s_tdm_set_mclk() into "else" branch).
-
-In my latest v3 series I have implemented a different solution, so
-you way want to review and/or test it and give your feedback in that
-thread:
-
-https://lore.kernel.org/all/20240221-rk3308-audio-codec-v3-1-dfa34abfcef6@bootlin.com/
-
-Best regards,
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBNYXIgMDQsIDIwMjQgYXQgMDY6MDc6NTRQTSArMDgwMCwgQ2hlbi1ZdSBUc2FpIHdy
+b3RlOgo+IE9uIE1vbiwgTWFyIDQsIDIwMjQgYXQgNDo0N+KAr1BNIFV3ZSBLbGVpbmUtS8O2bmln
+IDx1a2xlaW5la0BkZWJpYW4ub3JnPiB3cm90ZToKPiA+Cj4gPiBXaGlsZSBpdCByZXF1aXJlcyB0
+byBoYXZlIHRoZSByaWdodCBwaHkgZHJpdmVyIGxvYWRlZCAoaS5lLiBtb3RvcmNvbW0pCj4gPiB0
+byBtYWtlIHRoZSBwaHkgYXNzZXJ0aW5nIHRoZSByaWdodCBkZWxheXMsIHRoaXMgaXMgZ2VuZXJh
+bGx5IHRoZQo+ID4gcHJlZmVycmVkIHdheSB0byBkZWZpbmUgdGhlIE1BQyA8LT4gUEhZIGNvbm5l
+Y3Rpb24uCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogVXdlIEtsZWluZS1Lw7ZuaWcgPHVrbGVpbmVr
+QGRlYmlhbi5vcmc+Cj4gPiAtLS0KPiA+IEhlbGxvLAo+ID4KPiA+IEFuZHJldyBhbHJlYWR5IHBv
+aW50ZWQgb3V0IHdoZW4gSSBwb3N0ZWQgdGhlIHBhdGNoIGludHJvZHVjaW5nIHRoZSBnbWFjMCBu
+b2RlCj4gPiB0aGF0IHJnbWlpLWlkIHdvdWxkIGJlIHRoZSBwcmVmZXJyZWQgd2F5IHRvIHNldHVw
+IHRoaW5ncy4gQmFjayB0aGVuIHRoaXMgZGlkbid0Cj4gPiBoYXBwZW4gYmVjYXVzZSB0aGlzIGNo
+YW5nZSBicm9rZSByZWNlcHRpb24gb2YgbmV0d29yayBwYWNrZXRzLiBIb3dldmVyIHRoaXMKPiA+
+IG9ubHkgaGFwcGVuZCBiZWNhdXNlIEkgZGlkbid0IGhhdmUgdGhlIHJpZ2h0IHBoeSBkcml2ZXIg
+bG9hZGVkLgo+IAo+IEl0IGNvdWxkIGJlIHRoYXQgdGhlIFBIWSBpcyBzdHJhcHBlZCB0byBub3Qg
+dXNlIGl0cyBpbnRlcm5hbCBSWCBkZWxheS4KPiBBbmQgdGhlIFBIWSBoYXMgc29tZSB3ZWlyZCBk
+ZWZhdWx0IFRYIGRlbGF5LCBzbyBoYXZpbmcgdGhlIGRyaXZlcgo+IHB1dCBzb21lIHNlbnNpYmxl
+IHZhbHVlcyBpbiBpcyBwcm9iYWJseSBiZXR0ZXIuCgpJdCBjb3VsZCBhbHNvIGJlIHRoZSBib290
+bG9hZGVyIHB1dHRpbmcgb2RkIHZhbHVlcyBpbnRvIHRoZSBQSFkuCgpBbnl3YXksIGl0IHdpbGwg
+d29yayBiZXR0ZXIgd2l0aCB0aGUgY29ycmVjdCBQSFksIGFuZCBlbmFibGUgV29MCnN1cHBvcnQu
+CgpSZXZpZXdlZC1ieTogQW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPgoKICAgIEFuZHJldwoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
