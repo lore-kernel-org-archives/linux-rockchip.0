@@ -4,59 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D88EC48BF6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 08:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 624AAC54E49
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Mar 2024 09:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=H3dE+8Sj2HQF3OfI8+0tvNVfybUZKMfrr6xYjw6pGI4=; b=BAlQDVY1yKFUiS
-	Wbni1gsIZ3Pp8GjH2gJBiprM9Ki/VOy7MP6BcsP9HDQ0QTPCHn+3Qv93NYfmsj1uwBr375CBWAvc+
-	p/aQw0aDyocTZK/QAVKoMGTRENa95XqPOOSGBWLnp1n3D0f8T/UZn9ySovHMiyuSDQACGv8dvkaTG
-	1xzL9TpLvtGSUgVbmVFuuCqj0JwLYcRBAuWtoskdNuw4Z1I3vFeADfQgpEjDfIbmQQzy8d/BwWyVe
-	j9fllfxBptTuBmz3BEjfnru8UkXWgaLH7IwfqS0VyjfW2USTZO3gAX9FL/R6Gj0uV3daUKkI0ndvH
-	qrZN5r1RPnlQZ2Ic/oBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6cxKNBTF6F9njgiZXk/T5Utyfop8iEs8MPmbftuy9KI=; b=SmTeCrrznzp5Tf
+	UbJy4wqONKR9mFkhc5NZy8FjOkQjrdM8lvFvdWbcxYQPR/dfYnvKQ7KQCuZwxUuQGx7uMwe19DKni
+	v1Mchv1qsRvtNQdBDCflMRc41kQiVvWy/WYiUs4aDyp1CjMJUDr4cD6DSA6F5xVffmz9AGc9TDXCW
+	4CvmZrrxBvRDjKAO5epzetU4iwYyeZitZXXotKvea3DIYYKV05ZFYtcF63BDWK6ognzTdVo4ZsPJ6
+	ggw0pQmBVE99ke9wjo8UdMGPp6yYQKIyE+RlvXBJCGqbTvbgHdlu6WNNM2JD9tbgUq/4K2z7hX92B
+	2ipiw5eOOcd6N1L4TVtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh3yO-00000008CSS-2GIm;
-	Mon, 04 Mar 2024 08:47:00 +0000
-Received: from master.debian.org ([2001:41b8:202:deb:216:36ff:fe40:4001])
+	id 1rh4Ix-00000008HgN-0Cyb;
+	Mon, 04 Mar 2024 09:08:15 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rh3yH-00000008CLm-1fzs;
-	Mon, 04 Mar 2024 08:46:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
-	s=smtpauto.master; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	In-Reply-To:References; bh=/im0PfNw74+d2oHRPxe0VBg20WnXI5E5dX4laaUfGjc=; b=qs
-	b3ekEoHliC0HokDfZFHQAZ6Qci+vj62POCI3UnrkLigZeNIFHxisQSlsLcVqtQl3ZiF4eDFqo4qpF
-	5eRv2LBKZ84nrQ+HA3b6T1vlfXBxsinN+78MFzOnxnvP5T5UfmRpgWg91BFEILYAl7cqJGJ60Tn/x
-	pAr5MJ+GGxvvtpb9hYQKI4ixHyv+gl/yBUz+Tu9PmfFKITzoyi1g5KcW8wBrczcq5RaNHF1W7ig7O
-	PkJFFXD0UyvzCsZ45BicG1WaYXoDe4Jwj6L/dDTF23FiF7HCpjwfq59KBnTJaCaVzBOFI0GYblc63
-	M1gJX+F6hrBIeOMNfs7r4byL7iW0AcgQ==;
-Received: from ukleinek by master.debian.org with local (Exim 4.94.2)
-	(envelope-from <ukleinek@master.debian.org>)
-	id 1rh3xm-00Ercc-Pg; Mon, 04 Mar 2024 08:46:22 +0000
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@debian.org>
+	id 1rh4It-00000008HfO-1qP1;
+	Mon, 04 Mar 2024 09:08:12 +0000
+Received: from i53875a9e.versanet.de ([83.135.90.158] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rh4Ij-0007Mu-6e; Mon, 04 Mar 2024 10:08:01 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] arm64: dts: rockchip: qnap-ts433: Simplify network PHY connection
-Date: Mon,  4 Mar 2024 09:46:11 +0100
-Message-ID: <20240304084612.711678-2-ukleinek@debian.org>
-X-Mailer: git-send-email 2.43.0
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <ukleinek@debian.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: qnap-ts433: Simplify network PHY connection
+Date: Mon, 04 Mar 2024 10:07:59 +0100
+Message-ID: <3082796.ktpJ11cQ8Q@diego>
+In-Reply-To: <20240304084612.711678-2-ukleinek@debian.org>
+References: <20240304084612.711678-2-ukleinek@debian.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1462; i=ukleinek@debian.org; h=from:subject; bh=4yrGMDvfZ9+wFWFoQHVCdF6NRcyP2vDf9cQK0UPreuE=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBl5YpVyKWkqJ+XYrrPILxhXJLzu3+lqUe07dKSE DJVTb+H9LKJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZeWKVQAKCRCPgPtYfRL+ TkfwB/9OEwVLPuRfXHMa79cH2RyS1gKFPEzOCbIZCxP/4+z14rScVrdyXrhAYdyFnBqM+KkrMih syJUAmdoeSLct5tuvFmCWsh7NHILU6aF28FtAnUSJkBMlK69ZvZYah0oK8HrktTYXCNQMa9O0Q+ wXvICBrKUyNp6JOvd/5a1YPyCFfNxPTp6lNTkmLmyRIQxIHGHJGuQCK4P+I8mG5IZQYMK+EC435 jPweMB8vz+OKrp1h7Owl1//JaNtp97Ecbdov5LlU4Cnv/m5BCjJ8usOnTMdNCOuuV6VmtkMXw4m JbKsBPux+6TsSME3hS+7xDrCOO1jW1U7tgEZvuihAx55OfxE
-X-Developer-Key: i=ukleinek@debian.org; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240304_004653_906362_87730B32 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20240304_010811_510624_EED17329 
+X-CRM114-Status: GOOD (  21.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,36 +58,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-V2hpbGUgaXQgcmVxdWlyZXMgdG8gaGF2ZSB0aGUgcmlnaHQgcGh5IGRyaXZlciBsb2FkZWQgKGku
-ZS4gbW90b3Jjb21tKQp0byBtYWtlIHRoZSBwaHkgYXNzZXJ0aW5nIHRoZSByaWdodCBkZWxheXMs
-IHRoaXMgaXMgZ2VuZXJhbGx5IHRoZQpwcmVmZXJyZWQgd2F5IHRvIGRlZmluZSB0aGUgTUFDIDwt
-PiBQSFkgY29ubmVjdGlvbi4KClNpZ25lZC1vZmYtYnk6IFV3ZSBLbGVpbmUtS8O2bmlnIDx1a2xl
-aW5la0BkZWJpYW4ub3JnPgotLS0KSGVsbG8sCgpBbmRyZXcgYWxyZWFkeSBwb2ludGVkIG91dCB3
-aGVuIEkgcG9zdGVkIHRoZSBwYXRjaCBpbnRyb2R1Y2luZyB0aGUgZ21hYzAgbm9kZQp0aGF0IHJn
-bWlpLWlkIHdvdWxkIGJlIHRoZSBwcmVmZXJyZWQgd2F5IHRvIHNldHVwIHRoaW5ncy4gQmFjayB0
-aGVuIHRoaXMgZGlkbid0CmhhcHBlbiBiZWNhdXNlIHRoaXMgY2hhbmdlIGJyb2tlIHJlY2VwdGlv
-biBvZiBuZXR3b3JrIHBhY2tldHMuIEhvd2V2ZXIgdGhpcwpvbmx5IGhhcHBlbmQgYmVjYXVzZSBJ
-IGRpZG4ndCBoYXZlIHRoZSByaWdodCBwaHkgZHJpdmVyIGxvYWRlZC4KCkJlc3QgcmVnYXJkcwpV
-d2UKCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1xbmFwLXRzNDMzLmR0cyB8
-IDQgKy0tLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAzIGRlbGV0aW9ucygtKQoK
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXFuYXAtdHM0
-MzMuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtcW5hcC10czQzMy5k
-dHMKaW5kZXggNmE5OTgxNjYwMDNjLi4zNmFkNDhkNDZiYzEgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXFuYXAtdHM0MzMuZHRzCisrKyBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXFuYXAtdHM0MzMuZHRzCkBAIC0yMCwxNSArMjAs
-MTMgQEAgJmdtYWMwIHsKIAlhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDwwPiwgPDEyNTAwMDAwMD47
-CiAJY2xvY2tfaW5fb3V0ID0gIm91dHB1dCI7CiAJcGh5LWhhbmRsZSA9IDwmcmdtaWlfcGh5MD47
-Ci0JcGh5LW1vZGUgPSAicmdtaWkiOworCXBoeS1tb2RlID0gInJnbWlpLWlkIjsKIAlwaW5jdHJs
-LW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmZ21hYzBfbWlpbQogCQkgICAgICZn
-bWFjMF90eF9idXMyCiAJCSAgICAgJmdtYWMwX3J4X2J1czIKIAkJICAgICAmZ21hYzBfcmdtaWlf
-Y2xrCiAJCSAgICAgJmdtYWMwX3JnbWlpX2J1cz47Ci0JcnhfZGVsYXkgPSA8MHgyZj47Ci0JdHhf
-ZGVsYXkgPSA8MHgzYz47CiAJc3RhdHVzID0gIm9rYXkiOwogfTsKIAoKYmFzZS1jb21taXQ6IDY3
-OTA4YmY2OTU0Yjc2MzVkMzM3NjBmZjZkZmMxODlmYzI2Y2NjODkKLS0gCjIuNDMuMAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Uwe,
+
+Am Montag, 4. M=E4rz 2024, 09:46:11 CET schrieb Uwe Kleine-K=F6nig:
+> While it requires to have the right phy driver loaded (i.e. motorcomm)
+> to make the phy asserting the right delays, this is generally the
+> preferred way to define the MAC <-> PHY connection.
+> =
+
+> Signed-off-by: Uwe Kleine-K=F6nig <ukleinek@debian.org>
+> ---
+> Hello,
+> =
+
+> Andrew already pointed out when I posted the patch introducing the gmac0 =
+node
+> that rgmii-id would be the preferred way to setup things. Back then this =
+didn't
+> happen because this change broke reception of network packets. However th=
+is
+> only happend because I didn't have the right phy driver loaded.
+
+trying to understand how the (not) loaded module fits into this :-)
+The mdio-bus is supposed to probe the phy and load the appropriate module.
+
+From your description it sounds like the correct phy module needs to be
+actually loaded? Or was that meant to be a "requires to have the right phy
+driver compiled" instead?
+
+
+Heiko
+
+
+
+> Best regards
+> Uwe
+> =
+
+>  arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> =
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/ar=
+m64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> index 6a998166003c..36ad48d46bc1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+> @@ -20,15 +20,13 @@ &gmac0 {
+>  	assigned-clock-rates =3D <0>, <125000000>;
+>  	clock_in_out =3D "output";
+>  	phy-handle =3D <&rgmii_phy0>;
+> -	phy-mode =3D "rgmii";
+> +	phy-mode =3D "rgmii-id";
+>  	pinctrl-names =3D "default";
+>  	pinctrl-0 =3D <&gmac0_miim
+>  		     &gmac0_tx_bus2
+>  		     &gmac0_rx_bus2
+>  		     &gmac0_rgmii_clk
+>  		     &gmac0_rgmii_bus>;
+> -	rx_delay =3D <0x2f>;
+> -	tx_delay =3D <0x3c>;
+>  	status =3D "okay";
+>  };
+>  =
+
+> =
+
+> base-commit: 67908bf6954b7635d33760ff6dfc189fc26ccc89
+> =
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
