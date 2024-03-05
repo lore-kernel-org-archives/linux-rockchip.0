@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16DFBC54E49
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 15:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C35C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 15:51:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WN54JnCP9OPbKVeVIrxew2rVtTvN+as2B/5mk6PDrM0=; b=SYTRw7eF2QRLie
-	Yc903F3t2AaM6Ac08QkfHFiatA0QtvwgJlvR7MHBAF3UbyX5mb44+u0BKopAIyXzGvwcbCELm98FB
-	nNyCaFTe9PADxAZVHmHVPW42X0il+mgenauY/WI713URA6iDcIcYF9ib1VoiDDN5ssctveK5Xp86w
-	oUsIe1KvytwlyRMzEDQaMw7ZNWXe8FXEVvKQ3OctSRBttDcp/btAJRBlIycxb6JhjbinQoPRo1uCC
-	NrhQdkGQRejGIS9ZXkwr7kOgWruYVhudm8dVWT3uQ4H9xXBQmAKaQlFxmFgvfHdf0vZDA0evIzYEe
-	I2W4u1pA59Ltn+8nLrYw==;
+	List-Owner; bh=oInwKdDPdlUWqUqGjkpbv/7zJJw9MFG88lKyhOvR0uU=; b=CixiD5it5fdgx5
+	iahOJk7dnCtU4NvMvcUD298l3IV2WlfCXqy973wHOBSDbIYsXyZCCpTG3Iyf0x7agODykcX9N8Di4
+	gJbD9nWQtyMvmu0vgoYpcu6BuvKMUv4p9t4ac4IhCTz5SBsHTxp4qhuDHc/G5gXh0pQA5uoSMSFsy
+	QHCUyMtA5tIcR6KhnCMVzg8/tyEom/tduO+1WIlGLcQNCBVL7CC+qcyL1nK1X4laFIOo1WhFxcNlH
+	Js+81/mBDja/mc+HGNhW3v/bg891+WwfVlCTToAitD3osqO3263fsLDnmftmohTEoyDRJM31uCI8G
+	dxMutDhfi5kWjf34Gh7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhX4X-0000000EKsc-06H5;
-	Tue, 05 Mar 2024 15:51:17 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1rhX4U-0000000EKrg-40pj;
+	Tue, 05 Mar 2024 15:51:14 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhVuk-0000000E3WO-01Xb;
-	Tue, 05 Mar 2024 14:37:11 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E4A82C0004;
-	Tue,  5 Mar 2024 14:37:02 +0000 (UTC)
+	id 1rhVuf-0000000E3Tl-22xd;
+	Tue, 05 Mar 2024 14:37:04 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8196EC0007;
+	Tue,  5 Mar 2024 14:36:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1709649424;
+	t=1709649419;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=p95wvDK9w0tJ9c5khPTqW4lIM1Qh7HWUU4fVk+JnuSQ=;
-	b=eodDd8yvaxNuiRMp7Tv0NwWtjikPDhLFjP8eCHJNS4nB3tqq1reg44GFcHAEQtTJL+ofia
-	Ox7/K6jikOHgr4UOllP/BbPnBMxcLp64T8eIiNRK5nWZG247VJtBeGZqASTmvutQ8kQHDA
-	xYW8pzH1dDIH06ZPP4kK6ERAeSn3wPzCPgIcBhdFaYQK4czS4yKN6qfXOf9yN8BSO5g6h3
-	E6Kaerzfl+C7EvmuNtlrwOBFEc3Ryf/EaCJO/8iNB6DDB22925QedgyzJLmevtg6pzfJJH
-	JwKAakhA/lo7+4XKOVYznKKmWDVV7W0mNLBBonPGUqy1rxUzAzhp0ttJ8xxBBQ==
+	bh=7nOGJSWM5DMTY+8OJI5pb0eawfVnNHkYI1yq5zzD180=;
+	b=JSYcxPM0+0rhLj26E5SZB3FUzzRurNnAaU1CH+3UgpdNQ6wPRIE4OKy7o/X9iaLQS3j6Ik
+	tBAcgFXvpizqQJAg+YN4CVZIQOOqM5lCOe/HFuyRx/Zvy1YV5hzi8HtYccvvlfWeiLx+Iy
+	IZZMkJfUurV8XVmYr+xZ/TujhXifNHOu9nfWPfUf7i/rIHGCbPAs8hhm+l6neQoES2mVT0
+	uO0myHxI/y0sLaBkTHNPD7OYbMPtpej+6lKHLfE9gDDt8ETFyZoy8mUyZtTFlcGaZRDv6Y
+	Zi4XdHThllDRIJ+ZZTGQTmwTserdcjXUUGC6N0ImwtGSnHVMycw38I4HHFZkzw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Tue, 05 Mar 2024 15:36:33 +0100
-Subject: [PATCH v4 6/7] arm64: dts: rockchip: add i2s_8ch_2 and i2s_8ch_3
+Date: Tue, 05 Mar 2024 15:36:30 +0100
+Subject: [PATCH v4 3/7] ASoC: core: add SOC_DOUBLE_RANGE_TLV() helper macro
 MIME-Version: 1.0
-Message-Id: <20240305-rk3308-audio-codec-v4-6-312acdbe628f@bootlin.com>
+Message-Id: <20240305-rk3308-audio-codec-v4-3-312acdbe628f@bootlin.com>
 References: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
 In-Reply-To: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
 To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
@@ -61,8 +61,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.13.0
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_063706_627970_4F875D26 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20240305_063701_813808_4DCD1779 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,75 +79,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These are I2S engines internally connected to the built-in audio codec.
+No macro currently allows handling a stereo control that has left and right
+in the same register and whose minimum register value is not zero. Add one
+that does that.
+
+Note that even though the snd_soc_*_volsw_range() look more appropriate
+given the _range suffix, they are not suitable because they don't honor the
+two shift values. The snd_soc_*_volsw() look more generic and are suitable
+for the task.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 ---
 
 Changed in v4: nothing
+Changed in v3: nothing
 
-Changed in v3:
- - removed the 4 optional clocks
-
-Changed in v2: nothing
+This patch is new in v2.
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 42 ++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ include/sound/soc.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index cfc0a87b5195..662c55fe9b77 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -578,6 +578,48 @@ dmac1: dma-controller@ff2d0000 {
- 		#dma-cells = <1>;
- 	};
- 
-+	/*
-+	 * - can be clock producer or consumer
-+	 * - up to 8 capture channels and 2 playback channels
-+	 * - connected internally to audio codec
-+	 */
-+	i2s_8ch_2: i2s@ff320000 {
-+		compatible = "rockchip,rk3308-i2s-tdm";
-+		reg = <0x0 0xff320000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk";
-+		clocks = <&cru SCLK_I2S2_8CH_TX>,
-+			 <&cru SCLK_I2S2_8CH_RX>,
-+			 <&cru HCLK_I2S2_8CH>;
-+		dmas = <&dmac1 5>, <&dmac1 4>;
-+		dma-names = "rx", "tx";
-+		resets = <&cru SRST_I2S2_8CH_TX_M>, <&cru SRST_I2S2_8CH_RX_M>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+	};
-+
-+	/*
-+	 * - can be clock consumer only
-+	 * - up to 4 capture channels, no playback
-+	 * - connected internally to audio codec
-+	 */
-+	i2s_8ch_3: i2s@ff330000 {
-+		compatible = "rockchip,rk3308-i2s-tdm";
-+		reg = <0x0 0xff330000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk";
-+		clocks = <&cru SCLK_I2S3_8CH_TX>,
-+			 <&cru SCLK_I2S3_8CH_RX>,
-+			 <&cru HCLK_I2S3_8CH>;
-+		dmas = <&dmac1 7>;
-+		dma-names = "rx";
-+		resets = <&cru SRST_I2S3_8CH_TX_M>, <&cru SRST_I2S3_8CH_RX_M>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+	};
-+
- 	i2s_2ch_0: i2s@ff350000 {
- 		compatible = "rockchip,rk3308-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff350000 0x0 0x1000>;
+diff --git a/include/sound/soc.h b/include/sound/soc.h
+index 6defc5547ff9..7492315ce0b8 100644
+--- a/include/sound/soc.h
++++ b/include/sound/soc.h
+@@ -149,6 +149,18 @@
+ 		{.reg = xreg, .rreg = xreg, \
+ 		.shift = shift_left, .rshift = shift_right, \
+ 		.max = xmax, .min = xmin} }
++#define SOC_DOUBLE_RANGE_TLV(xname, xreg, xshift_left, xshift_right, xmin, xmax, \
++			     xinvert, tlv_array) \
++{	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, .name = (xname),\
++	.access = SNDRV_CTL_ELEM_ACCESS_TLV_READ |\
++		  SNDRV_CTL_ELEM_ACCESS_READWRITE,\
++	.tlv.p = (tlv_array), \
++	.info = snd_soc_info_volsw, \
++	.get = snd_soc_get_volsw, .put = snd_soc_put_volsw, \
++	.private_value = (unsigned long)&(struct soc_mixer_control) \
++		{.reg = xreg, .rreg = xreg, \
++		 .shift = xshift_left, .rshift = xshift_right, \
++		 .min = xmin, .max = xmax, .invert = xinvert} }
+ #define SOC_DOUBLE_R_TLV(xname, reg_left, reg_right, xshift, xmax, xinvert, tlv_array) \
+ {	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, .name = (xname),\
+ 	.access = SNDRV_CTL_ELEM_ACCESS_TLV_READ |\
 
 -- 
 2.34.1
