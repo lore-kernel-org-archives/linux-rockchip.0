@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B393C54798
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 15:02:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02454C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 15:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wmpI9LJJldoSlfSs6lCqMSrofzpTsdPXqJtACETBMXA=; b=uJUvK+j6tIUmOK
-	efeBarzzVS7batypbMRAMIQG4OzSWPSjcrYbFHwNj2w8fGAL+H9x4UXBTrMgxYn1niQ4h1FGgXMsr
-	hiP7Ijakpp7FoldibytmsljQVaQ0PiyrvewIVEwFaKh4su4J9nOGHaBigkvZgUI8lOZn2q7THxD5F
-	WhQ6DXtBUU2LOfomJxmb8p9fNuPuQ4y1hnbExlMuSOkSr1+xw/IKTB/3XGnSc9i5mWwsfWe2wOG8s
-	hG8hSAizEUU+SWxAktWg1XyTq3ZQo0XZER7k7ct6byHoXVAWxFxaucuzRhn9e5vfBxI3EaoEoPP8l
-	F50Q6QOvs0KXyYvsrA7w==;
+	List-Owner; bh=XfjGImAtP/qvX5Pjd8zVsQEPLQ5jq39tDspdLEezBH4=; b=G2GT0rFyFANPi3
+	CiXXvf35UhBOgrbNjfup3ZeDvTAgPeD+kO1VprDHvocYI3mXI9/94EU9+jrNqLLkak3dDIW5fNbxm
+	N+ZgfO8EV7nY5k9e0H5khVlqoykuFQN10TARrDdOj1Om3Ri18oQmkTOtva1vIueDiurVp+U2qpae8
+	5JuINLP912PD+V2JkaMDmIvNXX8dMAaXF7ab7xojU5+hqdoA7IXVZYWp484mCG09HCm+FC6/hc9Re
+	rU005l3Cr1CnWCpnrOoUw0SwTA9skH9M/OTfOKCPYtSox6boG5z6svIqmj4rwyshKbKCZEet3UYeG
+	slR/vYm0NRNHk/QGhHFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhWJA-0000000EBT7-3DSO;
-	Tue, 05 Mar 2024 15:02:20 +0000
+	id 1rhWKf-0000000EBvl-0dV2;
+	Tue, 05 Mar 2024 15:03:53 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhWJ7-0000000EBSR-34GI;
-	Tue, 05 Mar 2024 15:02:19 +0000
+	id 1rhWKb-0000000EBtL-2JdK;
+	Tue, 05 Mar 2024 15:03:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 9D8ECCE1C4C;
-	Tue,  5 Mar 2024 15:02:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4680C433F1;
-	Tue,  5 Mar 2024 15:02:14 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 8C29ACE1C58;
+	Tue,  5 Mar 2024 15:03:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 908F3C43394;
+	Tue,  5 Mar 2024 15:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1709650934;
-	bh=nSWWFkWZffGoNnwURXuRLdlN9U+xWXsWoTFoIqMgRzY=;
+	s=k20201202; t=1709651026;
+	bh=7K1Q62MNa2I2tcivs5UpDzs/Q6BDZTp7gt5DMjXX6LA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZqacV4E2mAX8m3kka0wAt6DmLzjGVM6T6dyx3YJTi/F6B1PdXEtyvh2xhOdM5hZ+2
-	 NjKyuS5tMldxYOwyzMqTUurifImY7x1ztuV23+TPmycCLZs+RUCCTZMRRpY71TrA41
-	 MHTvmukwB8MI4oerUbbRswcZV/kgsGMhSHeENeny3oR+5y3M9GGF6wofhqrV0HClFU
-	 9wI5H8cn6/nzbjNfSi191lRDVWRv87Dau5c0q4qkgz0BGjsTxu8k1ormRV7GAVR+ld
-	 KUQbiJjaksVsIj6rzdT6/bi/waIC5WVYGICmc4TciR3zzOrLDzXlVpZRFJ9ull2TSF
-	 yZt3Rf0vyGk9A==
-Date: Tue, 5 Mar 2024 09:02:12 -0600
+	b=SzskPTw7LNMKes+5ala2+bPQLigTb/r1OPUxYscE2ahpKI1c0LygtEMrM7f83VcGY
+	 pf30SFCjSRsIyfu5Ip4N5zKEKDUKu6FFZWaLaVi3v26LhpQryO5IqXJA0cHCBwmiw9
+	 G/1DThwGzxpDW8kJqZ0VghYylzbyQCGbeA4aDHsaxEuVl/d62JCPerGXX8Wm5t/642
+	 /8YOv2u2zrvtOE6rQ7zbxc6qPY7GmlsZMIKdoRU6TApAr6AcV9lCQDJnKVoIGegC6p
+	 9QbTXmlND1+RWCLSpvvi7KyalLRUPEQDMZw6nKk3oGEsqXSJW884EPxsSA0OiC6duD
+	 sC8p/nDgcVj/A==
+Date: Tue, 5 Mar 2024 09:03:44 -0600
 From: Rob Herring <robh@kernel.org>
 To: Shreeya Patel <shreeya.patel@collabora.com>
-Cc: dmitry.osipenko@collabora.com, heiko@sntech.de,
-	linux-kernel@vger.kernel.org, nelson.costa@synopsys.com,
-	kernel@collabora.com, sboyd@kernel.org, mturquette@baylibre.com,
-	conor+dt@kernel.org, hverkuil@xs4all.nl,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, linux-media@vger.kernel.org,
-	p.zabel@pengutronix.de, linux-rockchip@lists.infradead.org,
-	linux-clk@vger.kernel.org, jose.abreu@synopsys.com,
-	devicetree@vger.kernel.org, linux-arm@lists.infradead.org,
-	shawn.wen@rock-chips.com, sebastian.reichel@collabora.com,
-	nicolas.dufresne@collabora.com, mchehab@kernel.org,
-	hverkuil-cisco@xs4all.nl
-Subject: Re: [PATCH v2 1/6] dt-bindings: reset: Define reset id used for HDMI
- Receiver
-Message-ID: <170965093218.3352342.18143623274015359038.robh@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	nelson.costa@synopsys.com, hverkuil-cisco@xs4all.nl,
+	hverkuil@xs4all.nl, mturquette@baylibre.com,
+	krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
+	sebastian.reichel@collabora.com, conor+dt@kernel.org,
+	heiko@sntech.de, dmitry.osipenko@collabora.com,
+	kernel@collabora.com, linux-kernel@vger.kernel.org,
+	mchehab@kernel.org, p.zabel@pengutronix.de,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-media@vger.kernel.org, linux-arm@lists.infradead.org,
+	jose.abreu@synopsys.com, shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com
+Subject: Re: [PATCH v2 3/6] dt-bindings: media: Document HDMI RX Controller
+Message-ID: <170965102379.3357317.10195104621246588504.robh@kernel.org>
 References: <20240305123648.8847-1-shreeya.patel@collabora.com>
- <20240305123648.8847-2-shreeya.patel@collabora.com>
+ <20240305123648.8847-4-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240305123648.8847-2-shreeya.patel@collabora.com>
+In-Reply-To: <20240305123648.8847-4-shreeya.patel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_070217_951509_3F9B1AD3 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240305_070349_781423_976EEC9B 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,20 +83,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 05 Mar 2024 18:06:43 +0530, Shreeya Patel wrote:
-> Add reset id used for HDMI Receiver in RK3588 SoCs
+On Tue, 05 Mar 2024 18:06:45 +0530, Shreeya Patel wrote:
+> Document bindings for the Synopsys DesignWare HDMI RX Controller.
 > 
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 > ---
 > Changes in v2 :-
->   - Move the dt-binding include file changes in a separate patch
->   - Improve the subject and commit message description
+>   - Add a description for the hardware
+>   - Rename resets, vo1 grf and HPD properties
+>   - Add a proper description for grf and vo1-grf phandles
+>   - Rename the HDMI Input node name to hdmi-receiver
+>   - Improve the subject line
+>   - Include gpio header file in example to fix dt_binding_check failure
 > 
->  include/dt-bindings/reset/rockchip,rk3588-cru.h | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../bindings/media/snps,dw-hdmi-rx.yaml       | 132 ++++++++++++++++++
+>  1 file changed, 132 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 
 _______________________________________________
