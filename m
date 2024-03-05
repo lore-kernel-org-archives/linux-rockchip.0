@@ -4,47 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC56EC54E41
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 19:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70455C54798
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 20:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CstV0JFpj3nbm8M52szqHrIcIF/aaB+LOLDLfgPjNUM=; b=BAOrNbrdIAZCzq
-	ZP7iGpFutG6QKDxsXv1MQrTG1krua5/oaox0LBe7B5X2qNjfPP1JYup7P9TqTkmIeiyebK715sZfX
-	gsFw72RolpSE06amy4THpPUluCWZLJBz80GOntmJSS5hEiC26EsnP3LtxKv/QOKufohSkv1UGPrpy
-	uiXD0JFtC14kwSoKOhk2Oda5QXW3GGjvzWeF/Jq1blcx5hLuKdCrVtrGdxkZN5j+2LhMgZPIa1YGQ
-	fOCTn3rhEjzn5toUEkd4QJiQ/SxgNYJpOtpLDGMu6pbme3Y6EX5NsLTB1kZOMczhKVvoLO2P/5QQJ
-	5TRUO8gElXgSSsFoNZcQ==;
+	List-Owner; bh=y17AiZm01ymj4q6EcFgegtKOH97RMNEKPRGq1KydgMA=; b=a/O/BGi17kCbvU
+	sB+U03u4XiA+x5bE8s+oo2H4Wp+6ji5/fbsiHI/LDw9tVSnc//ASsDnflRWM7wdLQ2sH8zHgrVMou
+	f3NvIWZoS2ctvfRVCSNXixaSb1yYC6XYOwm7bj8FFHLG9aijffnCvHgdTE33Ftdecdw41ILfpUMqf
+	upMsy6QqdhoMHGy5bYr19PEN1VWFeD19oeu5VNgIptE6cpNE5GVzm6YI/X58HHTsDjDXbL0V+pGEX
+	SmYXYniRPSxehcsI0vBuQnu044BbHdtRPHEj0vq+1lVYWSujQew+mJYaQeXuMnZIsxLxFm0sJkbyR
+	f88MceVcxkG65qMO6coA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rha6D-0000000ExeH-26nZ;
-	Tue, 05 Mar 2024 19:05:13 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rhbHv-0000000FAqn-4B6c;
+	Tue, 05 Mar 2024 20:21:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rha68-0000000ExcT-32wZ;
-	Tue, 05 Mar 2024 19:05:10 +0000
-Received: from harlem.collaboradmins.com (harlem.collaboradmins.com [IPv6:2a01:4f8:1c0c:5936::1])
-	by madrid.collaboradmins.com (Postfix) with ESMTP id 7262F378201D;
-	Tue,  5 Mar 2024 19:05:02 +0000 (UTC)
-From: "Shreeya Patel" <shreeya.patel@collabora.com>
-In-Reply-To: <7657358.31r3eYUQgx@diego>
-X-Forward: 127.0.0.1
+	id 1rhbHs-0000000FAmD-1Sm9;
+	Tue, 05 Mar 2024 20:21:21 +0000
+Received: from i53875a9e.versanet.de ([83.135.90.158] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rhbHV-0003er-CG; Tue, 05 Mar 2024 21:20:57 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Shreeya Patel <shreeya.patel@collabora.com>
+Cc: mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
+ dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com,
+ shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, hverkuil@xs4all.nl,
+ hverkuil-cisco@xs4all.nl, kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-arm@lists.infradead.org
+Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: Add device tree support for HDMI RX
+ Controller
+Date: Tue, 05 Mar 2024 21:20:55 +0100
+Message-ID: <6040170.44csPzL39Z@diego>
+In-Reply-To: <45138-65e76d00-9-580ee380@232156106>
 References: <20240305123648.8847-1-shreeya.patel@collabora.com>
- <20240305123648.8847-5-shreeya.patel@collabora.com> <7657358.31r3eYUQgx@diego>
-Date: Tue, 05 Mar 2024 19:05:02 +0000
-Cc: mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com, dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com, shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm@lists.infradead.org
-To: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+ <7657358.31r3eYUQgx@diego> <45138-65e76d00-9-580ee380@232156106>
 MIME-Version: 1.0
-Message-ID: <45138-65e76d00-9-580ee380@232156106>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2 4/6] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Add device tree support for HDMI RX Controller
-User-Agent: SOGoMail 5.10.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_110508_926128_C770BC56 
-X-CRM114-Status: GOOD (  28.96  )
+X-CRM114-CacheID: sfid-20240305_122120_395852_757FDB7F 
+X-CRM114-Status: GOOD (  38.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,103 +64,231 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlc2RheSwgTWFyY2ggMDUsIDIwMjQgMTk6NDEgSVNULCBIZWlrbyBTdMO8Ym5lciA8aGVp
-a29Ac250ZWNoLmRlPiB3cm90ZToKCj4gSGksCj4gCgpIaSBIZWlrbywKCj4gCj4gQW0gRGllbnN0
-YWcsIDUuIE3DpHJ6IDIwMjQsIDEzOjM2OjQ2IENFVCBzY2hyaWViIFNocmVleWEgUGF0ZWw6Cj4g
-PiBBZGQgZGV2aWNlIHRyZWUgc3VwcG9ydCBmb3IgU3lub3BzeXMgRGVzaWduV2FyZSBIRE1JIFJY
-Cj4gPiBDb250cm9sbGVyLgo+ID4gCj4gPiBSZXZpZXdlZC1ieTogRG1pdHJ5IE9zaXBlbmtvIDxk
-bWl0cnkub3NpcGVua29AY29sbGFib3JhLmNvbT4KPiA+IFRlc3RlZC1ieTogRG1pdHJ5IE9zaXBl
-bmtvIDxkbWl0cnkub3NpcGVua29AY29sbGFib3JhLmNvbT4KPiA+IENvLWRldmVsb3BlZC1ieTog
-RGluZ3hpYW4gV2VuIDxzaGF3bi53ZW5Acm9jay1jaGlwcy5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5
-OiBEaW5neGlhbiBXZW4gPHNoYXduLndlbkByb2NrLWNoaXBzLmNvbT4KPiA+IFNpZ25lZC1vZmYt
-Ynk6IFNocmVleWEgUGF0ZWwgPHNocmVleWEucGF0ZWxAY29sbGFib3JhLmNvbT4KPiA+IC0tLQo+
-ID4gQ2hhbmdlcyBpbiB2MiA6LQo+ID4gICAtIEZpeCBzb21lIG9mIHRoZSBjaGVja3BhdGNoIGVy
-cm9ycyBhbmQgd2FybmluZ3MKPiA+ICAgLSBSZW5hbWUgcmVzZXRzLCB2bzEtZ3JmIGFuZCBIUEQK
-PiA+ICAgLSBNb3ZlIGhkbWlyeF9jbWEgbm9kZSB0byB0aGUgcmszNTg4LmR0c2kgZmlsZQo+ID4g
-Cj4gPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1waW5jdHJsLmR0c2kgICAgIHwgNDEg
-KysrKysrKysrKysrKysKPiA+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC5k
-dHNpICAgICAgfCA1NSArKysrKysrKysrKysrKysrKysrCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA5
-NiBpbnNlcnRpb25zKCspCj4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1ODguZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
-LmR0c2kKPiA+IGluZGV4IDU1MTljMTQzMGNiNy4uOGFkYjk4Yjk5NzAxIDEwMDY0NAo+ID4gLS0t
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODguZHRzaQo+ID4gKysrIGIvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODguZHRzaQo+ID4gQEAgLTcsNiArNywyNCBA
-QAo+ID4gICNpbmNsdWRlICJyazM1ODgtcGluY3RybC5kdHNpIgo+ID4gIAo+ID4gIC8gewo+ID4g
-KwlyZXNlcnZlZC1tZW1vcnkgewo+ID4gKwkJI2FkZHJlc3MtY2VsbHMgPSA8Mj47Cj4gPiArCQkj
-c2l6ZS1jZWxscyA9IDwyPjsKPiA+ICsJCXJhbmdlczsKPiAKPiBhZGQgYmxhbmsgbGluZSBoZXJl
-Cj4gCj4gPiArCQkvKgo+ID4gKwkJICogVGhlIDRrIEhETUkgY2FwdHVyZSBjb250cm9sbGVyIHdv
-cmtzIG9ubHkgd2l0aCAzMmJpdAo+ID4gKwkJICogcGh5cyBhZGRyZXNzZXMgYW5kIGRvZXNuJ3Qg
-c3VwcG9ydCBJT01NVS4gSERNSSBSWCBDTUEKPiA+ICsJCSAqIG11c3QgYmUgcmVzZXJ2ZWQgYmVs
-b3cgNEdCLgo+ID4gKwkJICovCj4gPiArCQloZG1pcnhfY21hOiBoZG1pcnhfY21hIHsKPiAKPiBw
-aGFuZGxlcyB1c2UgIl8iLCBidXQgbm9kZS1uYW1lcyAiLSIKPiAKPiA+ICsJCQljb21wYXRpYmxl
-ID0gInNoYXJlZC1kbWEtcG9vbCI7Cj4gPiArCQkJYWxsb2MtcmFuZ2VzID0gPDB4MCAweDAgMHgw
-IDB4ZmZmZmZmZmY+Owo+ID4gKwkJCXNpemUgPSA8MHgwICgxNjAgKiAweDEwMDAwMCk+OyAvKiAx
-NjBNaUIgKi8KPiAKPiBUaGUgY29tbWVudCBhYm92ZSB0aGF0IG5vZGUsIGNvdWxkIGVsYWJvcmF0
-ZSB3aGVyZSB0aGUgdmFsdWUgb2YgMTYwTUIKPiBvcmlnaW5hdGVzIGZyb20uIEkgYXNzdW1lIGl0
-IGlzIHRvIGhvbGQgbi10aW1lcyBvZiA0SyBmcmFtZXMgb3Igd2hhdGV2ZXIsCj4gYnV0IGl0IHdv
-dWxkIGJlIGhlbHBmdWwgZm9yIHBlb3BsZSB0byBiZSBhYmxlIHRvIHJlYWQgdGhhdC4KPiAKCnJp
-Z2h0LCB3ZSBkaWQgdGhlIGZvbGxvd2luZyBjYWxjdWxhdGlvbiB0byBjb21lIHVwIHdpdGggdGhp
-cyB2YWx1ZSA6LQozODQwICogMjE2MCAqIDQgKGJ5dGVzL3BpeCkgKiAyIChmcmFtZXMvYnVmZmVy
-KSAvIDEwMDAgLyAxMDAwID0gNjZNCmFuZCB0aGVuIHdlIGRvIHRoZSAyeCB0aW1lcyBvZiB0aGlz
-IHZhbHVlIHRvIGJlIG9uIHRoZSBzYWZlciBzaWRlCmFuZCBzdXBwb3J0IGFsbCBwcmFjdGljYWwg
-dXNlLWNhc2VzLgoKSSdsbCBhZGQgc29tZSBtb3JlIGRldGFpbHMgdG8gdGhlIGNvbW1lbnQgaW4g
-djMuCgo+IAo+ID4gKwkJCW5vLW1hcDsKPiA+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4g
-KwkJfTsKPiA+ICsJfTsKPiA+ICsKPiA+ICAJcGNpZTMwX3BoeV9ncmY6IHN5c2NvbkBmZDViODAw
-MCB7Cj4gPiAgCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC1wY2llMy1waHktZ3JmIiwg
-InN5c2NvbiI7Cj4gPiAgCQlyZWcgPSA8MHgwIDB4ZmQ1YjgwMDAgMHgwIDB4MTAwMDA+Owo+ID4g
-QEAgLTg1LDYgKzEwMywzOCBAQCBpMnMxMF84Y2g6IGkyc0BmZGUwMDAwMCB7Cj4gPiAgCQlzdGF0
-dXMgPSAiZGlzYWJsZWQiOwo+ID4gIAl9Owo+ID4gIAo+ID4gKwloZG1pX3JlY2VpdmVyOiBoZG1p
-LXJlY2VpdmVyQGZkZWUwMDAwIHsKPiAKPiBNYXliZSByZW5hbWUgdGhlIGxhYmVsIHRvICJoZG1p
-cng6IiAuLi4gdGhhdCB3YXkgaW4gYSBib2FyZCBlbmFibGluZyB0aGUKPiBjbWEgcmVnaW9uLCBi
-b3RoIG5vZGVzIHdvdWxkIHN0YXkgY2xvc2UgdG8gZWFjaCBvdGhlcj8KPiAKClVtbSB3ZSBhbHJl
-YWR5IGhhdmUgcmVjZWl2ZXIgaW4gdGhlIG5hbWUgc28gSSBhbSBub3Qgc3VyZSBpZiBhZGRpbmcg
-cnggd2lsbCBiZQphIGdvb2QgaWRlYS4gSSB3YXMgdHJ5aW5nIHRvIGtlZXAgaXQgY29uc2lzdGVu
-dCB3aXRoIHRoZSBuYW1lcyB1c2VkIGluIG90aGVyIGRldmljZSB0cmVlIGZpbGVzLgpJbiBjYXNl
-IHlvdSBzdGlsbCBmZWVsIG90aGVyd2lzZSB0aGVuIGRvIGxldCBtZSBrbm93LCBJJ2xsIG1ha2Ug
-dGhlIGNoYW5nZS4KCj4gCj4gPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU4OC1oZG1p
-cngtY3RybGVyIiwgInNucHMsZHctaGRtaS1yeCI7Cj4gPiArCQlyZWcgPSA8MHgwIDB4ZmRlZTAw
-MDAgMHgwIDB4NjAwMD47Cj4gPiArCQlwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzM1ODhfUERf
-Vk8xPjsKPiA+ICsJCXJvY2tjaGlwLGdyZiA9IDwmc3lzX2dyZj47Cj4gPiArCQlyb2NrY2hpcCx2
-bzEtZ3JmID0gPCZ2bzFfZ3JmPjsKPiA+ICsJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNzcgSVJR
-X1RZUEVfTEVWRUxfSElHSCAwPiwKPiA+ICsJCQkgICAgIDxHSUNfU1BJIDQzNiBJUlFfVFlQRV9M
-RVZFTF9ISUdIIDA+LAo+ID4gKwkJCSAgICAgPEdJQ19TUEkgMTc5IElSUV9UWVBFX0xFVkVMX0hJ
-R0ggMD47Cj4gPiArCQlpbnRlcnJ1cHQtbmFtZXMgPSAiY2VjIiwgImhkbWkiLCAiZG1hIjsKPiA+
-ICsJCWNsb2NrcyA9IDwmY3J1IEFDTEtfSERNSVJYPiwKPiA+ICsJCQkgPCZjcnUgQ0xLX0hETUlS
-WF9BVUQ+LAo+ID4gKwkJCSA8JmNydSBDTEtfQ1JfUEFSQT4sCj4gPiArCQkJIDwmY3J1IFBDTEtf
-SERNSVJYPiwKPiA+ICsJCQkgPCZjcnUgQ0xLX0hETUlSWF9SRUY+LAo+ID4gKwkJCSA8JmNydSBQ
-Q0xLX1NfSERNSVJYPiwKPiA+ICsJCQkgPCZjcnUgSENMS19WTzE+Owo+ID4gKwkJY2xvY2stbmFt
-ZXMgPSAiYWNsayIsCj4gPiArCQkJICAgICAgImF1ZGlvIiwKPiA+ICsJCQkgICAgICAiY3JfcGFy
-YSIsCj4gPiArCQkJICAgICAgInBjbGsiLAo+ID4gKwkJCSAgICAgICJyZWYiLAo+ID4gKwkJCSAg
-ICAgICJoY2xrX3NfaGRtaXJ4IiwKPiA+ICsJCQkgICAgICAiaGNsa192bzEiOwo+IAo+IHRoZSBk
-cml2ZXIgdXNlcyBvZl9yZXNlcnZlZF9tZW1fZGV2aWNlX2luaXQoKSwgc28gZG9lc24ndCB0aGlz
-IG5vZGUgbmVlZAo+IGEgIm1lbW9yeS1yZWdpb24gPSA8JmhkbWlyeF9jbWE+OyBvciBzaW1pbGFy
-Pwo+IAoKeWVzLCB3ZSBzaG91bGQgaGF2ZSB0aGUgbWVtb3J5LXJlZ2lvbiBwcm9wZXJ0eSBoZXJl
-LiBNeSBiYWQsIEknbGwgY29ycmVjdCB0aGlzIGluIHYzLgoKPiAKPiA+ICsJCXJlc2V0cyA9IDwm
-Y3J1IFNSU1RfQV9IRE1JUlg+LCA8JmNydSBTUlNUX1BfSERNSVJYPiwKPiA+ICsJCQkgPCZjcnUg
-U1JTVF9IRE1JUlhfUkVGPiwgPCZjcnUgU1JTVF9BX0hETUlSWF9CSVU+Owo+ID4gKwkJcmVzZXQt
-bmFtZXMgPSAiYXhpIiwgImFwYiIsICJyZWYiLCAiYml1IjsKPiA+ICsJCXBpbmN0cmwtMCA9IDwm
-aGRtaW0xX3J4PjsKPiA+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gPiArCQlzdGF0
-dXMgPSAiZGlzYWJsZWQiOwo+ID4gKwl9Owo+ID4gKwo+ID4gIAlwY2llM3g0OiBwY2llQGZlMTUw
-MDAwIHsKPiA+ICAJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTg4LXBjaWUiLCAicm9ja2No
-aXAscmszNTY4LXBjaWUiOwo+ID4gIAkJI2FkZHJlc3MtY2VsbHMgPSA8Mz47Cj4gPiBAQCAtMzM5
-LDMgKzM4OSw4IEBAIHBjaWUzMHBoeTogcGh5QGZlZTgwMDAwIHsKPiA+ICAJCXN0YXR1cyA9ICJk
-aXNhYmxlZCI7Cj4gPiAgCX07Cj4gPiAgfTsKPiA+ICsKPiA+ICsmaGRtaXJ4X2NtYSB7Cj4gPiAr
-CXN0YXR1cyA9ICJva2F5IjsKPiA+ICt9Owo+IAo+IEknZCBhc3N1bWUgYSBib2FyZCB0aGF0IGVu
-YWJsZXMgJmhkbWlfcmVjZWl2ZXIgd291bGQgYWxzbyBlbmFibGUgaGRtaXJ4X2NtYQo+IGFuZCBu
-b3QgdGhlIHNvYyBkdHNpIGZvciBfYWxsXyBib2FyZHM/Cj4gCgpBY3R1YWxseSB0aGlzIG5vZGUg
-c2hvdWxkIGJlIGluIHRoZSByb2NrLTViLmR0cyBmaWxlIGluc3RlYWQgb2YgaGVyZS4KdjEgaGFk
-IGl0IGNvcnJlY3QgYnV0IEkgbWFkZSBhIG1pc3Rha2UgaW4gdjIgOigKVGhhbmtzIGZvciBwb2lu
-dGluZyB0aGlzIG91dCwgSSdsbCBmaXggdGhpcyBhbmQgc2VuZCBhIHYzIHNvb24uCgoKVGhhbmtz
-LApTaHJlZXlhIFBhdGVsCgo+IAo+IFRoYW5rcwo+IEhlaWtvCj4gCj4gCj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBLZXJuZWwgbWFpbGluZyBsaXN0
-IC0tIGtlcm5lbEBtYWlsbWFuLmNvbGxhYm9yYS5jb20KPiBUbyB1bnN1YnNjcmliZSBzZW5kIGFu
-IGVtYWlsIHRvIGtlcm5lbC1sZWF2ZUBtYWlsbWFuLmNvbGxhYm9yYS5jb20KPiBUaGlzIGxpc3Qg
-aXMgbWFuYWdlZCBieSBodHRwczovL21haWxtYW4uY29sbGFib3JhLmNvbQoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi again :-)
+
+Am Dienstag, 5. M=E4rz 2024, 20:05:02 CET schrieb Shreeya Patel:
+> On Tuesday, March 05, 2024 19:41 IST, Heiko St=FCbner <heiko@sntech.de> w=
+rote:
+> > Am Dienstag, 5. M=E4rz 2024, 13:36:46 CET schrieb Shreeya Patel:
+> > > Add device tree support for Synopsys DesignWare HDMI RX
+> > > Controller.
+> > > =
+
+> > > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> > > Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> > > Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> > > Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
+> > > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
+> > > ---
+> > > Changes in v2 :-
+> > >   - Fix some of the checkpatch errors and warnings
+> > >   - Rename resets, vo1-grf and HPD
+> > >   - Move hdmirx_cma node to the rk3588.dtsi file
+> > > =
+
+> > >  .../boot/dts/rockchip/rk3588-pinctrl.dtsi     | 41 ++++++++++++++
+> > >  arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 55 +++++++++++++++++=
+++
+> > >  2 files changed, 96 insertions(+)
+> > =
+
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/rk3588.dtsi
+> > > index 5519c1430cb7..8adb98b99701 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+> > > @@ -7,6 +7,24 @@
+> > >  #include "rk3588-pinctrl.dtsi"
+> > >  =
+
+> > >  / {
+> > > +	reserved-memory {
+> > > +		#address-cells =3D <2>;
+> > > +		#size-cells =3D <2>;
+> > > +		ranges;
+> > =
+
+> > add blank line here
+> > =
+
+> > > +		/*
+> > > +		 * The 4k HDMI capture controller works only with 32bit
+> > > +		 * phys addresses and doesn't support IOMMU. HDMI RX CMA
+> > > +		 * must be reserved below 4GB.
+> > > +		 */
+> > > +		hdmirx_cma: hdmirx_cma {
+> > =
+
+> > phandles use "_", but node-names "-"
+> > =
+
+> > > +			compatible =3D "shared-dma-pool";
+> > > +			alloc-ranges =3D <0x0 0x0 0x0 0xffffffff>;
+> > > +			size =3D <0x0 (160 * 0x100000)>; /* 160MiB */
+> > =
+
+> > The comment above that node, could elaborate where the value of 160MB
+> > originates from. I assume it is to hold n-times of 4K frames or whateve=
+r,
+> > but it would be helpful for people to be able to read that.
+> > =
+
+> =
+
+> right, we did the following calculation to come up with this value :-
+> 3840 * 2160 * 4 (bytes/pix) * 2 (frames/buffer) / 1000 / 1000 =3D 66M
+> and then we do the 2x times of this value to be on the safer side
+> and support all practical use-cases.
+> =
+
+> I'll add some more details to the comment in v3.
+
+thanks, that will be helpful for me and everybody reading the dts later on
+
+> =
+
+> > =
+
+> > > +			no-map;
+> > > +			status =3D "disabled";
+> > > +		};
+> > > +	};
+> > > +
+> > >  	pcie30_phy_grf: syscon@fd5b8000 {
+> > >  		compatible =3D "rockchip,rk3588-pcie3-phy-grf", "syscon";
+> > >  		reg =3D <0x0 0xfd5b8000 0x0 0x10000>;
+> > > @@ -85,6 +103,38 @@ i2s10_8ch: i2s@fde00000 {
+> > >  		status =3D "disabled";
+> > >  	};
+> > >  =
+
+> > > +	hdmi_receiver: hdmi-receiver@fdee0000 {
+> > =
+
+> > Maybe rename the label to "hdmirx:" ... that way in a board enabling the
+> > cma region, both nodes would stay close to each other?
+> > =
+
+> =
+
+> Umm we already have receiver in the name so I am not sure if adding rx wi=
+ll be
+> a good idea. I was trying to keep it consistent with the names used in ot=
+her device tree files.
+> In case you still feel otherwise then do let me know, I'll make the chang=
+e.
+
+I'm somewhat partial to the actual name, I was more getting at similar
+names to keep things together.
+
+General sorting rules are that &foo phandles are sorted alphabetically
+in board devicetrees.
+
+So having
+
+&hdmirx {
+	status =3D "okay";
+};
+
+&hdmirx_cma {
+	status =3D "okay";
+};
+
+in the board dt, makes them stay together automatically ;-)
+
+So if it's hdmirx + hdmirx_cma or hdmi_receiver + hdmi_receiver_cma
+doesn't matter that much, just that they share a common basename.
+
+
+I really want to stay away from allowing special rules for things as much
+as possible, because that becomes a neverending story, so it's
+alphabetical sorting.
+
+But nothing prevents us from naming phandles in an intelligent way ;-) .
+
+
+Thanks
+Heiko
+
+> > > +		compatible =3D "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
+> > > +		reg =3D <0x0 0xfdee0000 0x0 0x6000>;
+> > > +		power-domains =3D <&power RK3588_PD_VO1>;
+> > > +		rockchip,grf =3D <&sys_grf>;
+> > > +		rockchip,vo1-grf =3D <&vo1_grf>;
+> > > +		interrupts =3D <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
+> > > +			     <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
+> > > +			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +		interrupt-names =3D "cec", "hdmi", "dma";
+> > > +		clocks =3D <&cru ACLK_HDMIRX>,
+> > > +			 <&cru CLK_HDMIRX_AUD>,
+> > > +			 <&cru CLK_CR_PARA>,
+> > > +			 <&cru PCLK_HDMIRX>,
+> > > +			 <&cru CLK_HDMIRX_REF>,
+> > > +			 <&cru PCLK_S_HDMIRX>,
+> > > +			 <&cru HCLK_VO1>;
+> > > +		clock-names =3D "aclk",
+> > > +			      "audio",
+> > > +			      "cr_para",
+> > > +			      "pclk",
+> > > +			      "ref",
+> > > +			      "hclk_s_hdmirx",
+> > > +			      "hclk_vo1";
+> > =
+
+> > the driver uses of_reserved_mem_device_init(), so doesn't this node need
+> > a "memory-region =3D <&hdmirx_cma>; or similar?
+> > =
+
+> =
+
+> yes, we should have the memory-region property here. My bad, I'll correct=
+ this in v3.
+> =
+
+> > =
+
+> > > +		resets =3D <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
+> > > +			 <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
+> > > +		reset-names =3D "axi", "apb", "ref", "biu";
+> > > +		pinctrl-0 =3D <&hdmim1_rx>;
+> > > +		pinctrl-names =3D "default";
+> > > +		status =3D "disabled";
+> > > +	};
+> > > +
+> > >  	pcie3x4: pcie@fe150000 {
+> > >  		compatible =3D "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
+> > >  		#address-cells =3D <3>;
+> > > @@ -339,3 +389,8 @@ pcie30phy: phy@fee80000 {
+> > >  		status =3D "disabled";
+> > >  	};
+> > >  };
+> > > +
+> > > +&hdmirx_cma {
+> > > +	status =3D "okay";
+> > > +};
+> > =
+
+> > I'd assume a board that enables &hdmi_receiver would also enable hdmirx=
+_cma
+> > and not the soc dtsi for _all_ boards?
+> > =
+
+> =
+
+> Actually this node should be in the rock-5b.dts file instead of here.
+> v1 had it correct but I made a mistake in v2 :(
+> Thanks for pointing this out, I'll fix this and send a v3 soon.
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
