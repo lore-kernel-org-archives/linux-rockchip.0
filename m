@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D46EC54798
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 12:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24F77C54E41
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 12:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+IlFcTwGPaSccPZ4QX455LSo3Q3TKBeoxl6V89gTW+o=; b=miCNZFs82HQyX1
-	uarxBKwNanIuvmpp0a5cX1qJx0hE1KEqdRBVMxxs7uCcynoTs5+pqOPZCmaq9DymMduoi15GGJu/r
-	gmVp3TpPTA3vlMOmGty3SB4JBi36zp3F+MNjy7/yHKR8l9G1KA8JA3SbzlfAFTU7RHxVsYJYUZC2o
-	Dkg8gFmsazueIF5SfRXYpW0oD9Ua2XSBvmMS4GOAAGVHJ7g4BluTqCm7a7zVMAnSw+LyhGHtbtCfi
-	wRXq5hL17PkN2it+URQBzn6G1X4I3K16HfY9foWv1/d4uN0Je+mpMeOUhx0DyFHwEhc0di2flVdCd
-	VYacDL8crmpTUYqxjn2A==;
+	List-Owner; bh=yNCJNDurR8IzAxDth6lwFMcF5JCJL3XsVcH15jKVtCI=; b=b7QIQHUSiVtWdA
+	b+YO1ee30/9vUvjdTZtcB5FU7oblgrLX1y7XeKU+h5xNaOaEvKfMDrVE5hfofqA/PCuA+6KMe885Z
+	sNC9dTbQ2P+jDHlYCeBnEZDRNdcc6sDnPdyZvsUUl7LwKONyAqjSuoRtEfAZyfvMvUS91VSYJcWc4
+	UiWkcLiYUbkfWIKofmAeyMjiozJgVn98hcse6bKTYbQ/e16faVXTUhBd7A9BL5GbiBntAGYjzUBcX
+	4LcNvsgbgzokXwgJgbpXMjYZyIVAMCJCHlEMXtwuQLTG4aF12+5GGWmQ1D71tIGEoUT2bTTvU3aVM
+	q5h7t1S2przcwyrLZlWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhU3U-0000000DbEQ-3DhU;
-	Tue, 05 Mar 2024 12:38:00 +0000
+	id 1rhU3f-0000000DbKu-32p0;
+	Tue, 05 Mar 2024 12:38:11 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhU3Q-0000000DbCN-3VEn;
-	Tue, 05 Mar 2024 12:37:58 +0000
+	id 1rhU3b-0000000DbHk-1Gzn;
+	Tue, 05 Mar 2024 12:38:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709642274;
-	bh=86J1Y70nbFomIcZR+wldbHnAg/1d9IQlH/UukIiYDyk=;
+	s=mail; t=1709642286;
+	bh=h6HP2ARr+i3JkH4OP3lQ3xIj3IkGQJMVh2tIqY/xCXo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IRdF9bzcM6ILlptiG/sYaf4wbKpaQ7+/bQnNc0+rXKYnMpD9vq/IPBd+7Cmv/i8rd
-	 ZqSxxT8QIhJMvkgi64kqwdNgI20n23powjvHw1Isq32V/hW3suxe8NAXcwe5zi6wGA
-	 mOHmXd34sdxNTh5erKzeY8nCuSgkoyTnkYp57cLUX8Ktopu0UqiuTH4WpK9mqXhe/Z
-	 fj4wthmvMrqmRDZbwdmV/nMlDS/JOm9ivl6zf1OCT6LGbERjUmhv5l7Dc2LNhmtOI0
-	 mo8+9Q1duBtBJUZd4rcQaZLVmLst5TtodnLmWqOkwyCKDpPrQ/840oz/+ji/hz4Lb4
-	 ja17iNdq9t3ag==
+	b=4Hwq/G1PTBG0Wj0bUoNTFmaz0pb9k5TJEt+zmmHkLZ08fXx3Y8haCHSdzwaWpk9BV
+	 cBch06aBxaKhSCMyzZlyIP8Yp4Mi9BajrYma5QSmFix3DWVSr0OT0PnmbSWhxzfXsU
+	 Cyb2RcypXfdtrJ0r5FGM70+Q4dWlgqc0eH9uP+KWq9o8Mq19+HeGcbR4VTJbFEHR4j
+	 BJyPEskZqpS5V96SnEiKGYgV+mNx2PrkWJuRdVfC86mqqbHtRwCwBKkT4PLVnZ3PmJ
+	 Nd5eL2vWGPpbkNxNn0GJQRkgL442AXsnO+3Da6QQjokf5qBGaSIFOMfniT8Tu1Xe+i
+	 jhVnRQu8SDzuA==
 Received: from shreeya.shreeya (ec2-34-240-57-77.eu-west-1.compute.amazonaws.com [34.240.57.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: shreeya)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9BF9E378020D;
-	Tue,  5 Mar 2024 12:37:45 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 230BE37820EF;
+	Tue,  5 Mar 2024 12:37:57 +0000 (UTC)
 From: Shreeya Patel <shreeya.patel@collabora.com>
 To: heiko@sntech.de,
 	mchehab@kernel.org,
@@ -69,16 +69,16 @@ Cc: kernel@collabora.com,
 	linux-clk@vger.kernel.org,
 	linux-arm@lists.infradead.org,
 	Shreeya Patel <shreeya.patel@collabora.com>
-Subject: [PATCH v2 1/6] dt-bindings: reset: Define reset id used for HDMI Receiver
-Date: Tue,  5 Mar 2024 18:06:43 +0530
-Message-Id: <20240305123648.8847-2-shreeya.patel@collabora.com>
+Subject: [PATCH v2 2/6] clk: rockchip: rst-rk3588: Add reset line for HDMI Receiver
+Date: Tue,  5 Mar 2024 18:06:44 +0530
+Message-Id: <20240305123648.8847-3-shreeya.patel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240305123648.8847-1-shreeya.patel@collabora.com>
 References: <20240305123648.8847-1-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_043757_020622_54180916 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20240305_043807_493259_192F673B 
+X-CRM114-Status: UNSURE (   8.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,28 +96,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add reset id used for HDMI Receiver in RK3588 SoCs
+Export hdmirx_biu reset line required by the Synopsys
+DesignWare HDMIRX Controller.
 
 Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 ---
 Changes in v2 :-
-  - Move the dt-binding include file changes in a separate patch
-  - Improve the subject and commit message description
+  - Improve the subject line and commit message description.
 
- include/dt-bindings/reset/rockchip,rk3588-cru.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/clk/rockchip/rst-rk3588.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/dt-bindings/reset/rockchip,rk3588-cru.h b/include/dt-bindings/reset/rockchip,rk3588-cru.h
-index d4264db2a07f..e2fe4bd5f7f0 100644
---- a/include/dt-bindings/reset/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/reset/rockchip,rk3588-cru.h
-@@ -751,4 +751,6 @@
- #define SRST_P_TRNG_CHK			658
- #define SRST_TRNG_S			659
+diff --git a/drivers/clk/rockchip/rst-rk3588.c b/drivers/clk/rockchip/rst-rk3588.c
+index e855bb8d5413..c4ebc01f1c9c 100644
+--- a/drivers/clk/rockchip/rst-rk3588.c
++++ b/drivers/clk/rockchip/rst-rk3588.c
+@@ -577,6 +577,7 @@ static const int rk3588_register_offset[] = {
  
-+#define SRST_A_HDMIRX_BIU		660
-+
- #endif
+ 	/* SOFTRST_CON59 */
+ 	RK3588_CRU_RESET_OFFSET(SRST_A_HDCP1_BIU, 59, 6),
++	RK3588_CRU_RESET_OFFSET(SRST_A_HDMIRX_BIU, 59, 7),
+ 	RK3588_CRU_RESET_OFFSET(SRST_A_VO1_BIU, 59, 8),
+ 	RK3588_CRU_RESET_OFFSET(SRST_H_VOP1_BIU, 59, 9),
+ 	RK3588_CRU_RESET_OFFSET(SRST_H_VOP1_S_BIU, 59, 10),
 -- 
 2.39.2
 
