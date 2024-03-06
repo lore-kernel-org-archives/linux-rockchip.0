@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB94C54E5C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Mar 2024 03:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E39E9C54E55
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Mar 2024 03:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Q1o9ZlAQuPYaAIAkqPHOfafTzYBQPMwlBnDyuBU/1bE=; b=4lFes/wHyaqXvm
-	ziPQKpljRLIe9dY9Pu631OlNcfFc/UDmE3jr3VflgcpBv9key72AeasPhHsCSdv4Tf0oX104TB1M6
-	6cC/0LpjezUQCsYANXUNqmSh5/3thlxzsD9wL81z3rWyLlEXiLVy/nEHaRFFt8NA30t+v/PDopxtw
-	XHw75p+lwBvO/4EhIb00iZGPIPgx8fnegr3Ytve9lhbdMeGSjJKi1mBmlnXPoandAJuA5IOGFtCI9
-	iuc+Kx3VB3O0/hwY/6xI//Z1XZoRBInBuEhD9+syKWtvlRmPfJP14f6kIhrg17LpgDU2YwM419/Dx
-	d+kJxQDN7+S3lOlXXARw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LXG1nohr0E9gO0+WgDUuJLTiQrHpSvH8f3gqeJmFy8M=; b=HSu5JFUX4d1hW9
+	klrCYjEaQHCLhzaEjmmpww8EzaW2dCd3pPMAudtyyP3DCA5z35scKnqQJfZgds3lzVEoCMyUmMi9V
+	sH/Exv5Jxi1Yr00VF6eEEaX/ci9MWrOGvlGDoZG+yUTktoGeptf0Vmj61r0GAOsxO6DUmBUAbYKRM
+	uPla7swcqhPpJD4/0zKaDHyFbY+pAKUu+CV53HMw41hUrw9hXWb7/ex+SRNxAreqABzLagSlZbTvC
+	yKApnND3MQfWa3TLfIDhxcaiKwTizah5ce1g68pMSejPRjaEyxpCJcaBxRffu4xq4GjcLHsAwT89F
+	7WSGwCOTFmOSc3xVoS5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhhdQ-0000000G4xM-091U;
-	Wed, 06 Mar 2024 03:08:00 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rhhdc-0000000G58P-2o6a;
+	Wed, 06 Mar 2024 03:08:12 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhhdL-0000000G4v0-2I26;
-	Wed, 06 Mar 2024 03:07:57 +0000
+	id 1rhhdT-0000000G4zQ-3i9V;
+	Wed, 06 Mar 2024 03:08:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709694473;
-	bh=rQ4HSBtJq4l4wg78LRafhWAkcPU1REZOPCnYnWYSXBs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=WiG5bB372O0BYCJJfKRV5VbsJ5cz187TZ1XzzYVqx0fZBiHXyFzzK4DgSyY4fXWdA
-	 FNfoNY3vnbq5w7d0wMl3UXakJFeVpPqdxwZaiqnoi28WNQtjgZ4wm+F+InINmFxQQl
-	 2ZMEVdSxbSs+oXEDOkJevdMcromjFpPz9lWhig3E59PsM5+01xtztzS9EyI2Pdirlb
-	 cNkMpxfnTOc7QgqLo9Ms9So0Od4Y6KfkdVhbqU3QAoTw6LcqVzPVTqMUg+ApL5w/xW
-	 JR6Q6MVPnZnSsN+kE9GxH1gVpXr7uUlG31Q4XCIILvpZyk9EvD9esNJH6DWN7Udoii
-	 2xjVodD+s8mpQ==
+	s=mail; t=1709694482;
+	bh=9AGshVuqfSUV9LWFEfpfaYudsukU+NAf/iov2knBx5U=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=W5td+ZMnJ99xZ4wzKC9CQIT+HA3Vv5TEQPOaP2PiO6wxmyDYOMrJ08abn1VwISo4F
+	 yg03jDUcuqAsec4uhqBTrpVrjiqYL7rQM5/dVYHwFuAjR8gUJl4OQrtvBLOrEqc3pw
+	 kFgECyZMLKL0LTXGKdvSYQBVgQGVDiBWgyfccbl7b2jN5btMiXK7b1slbUd8KdtgIn
+	 m5wjONcI1YegVnrl3UbIP+no+h+mDHD4/Ta6MZnwO+cjrt7xsNZ3pqZEbf5g3V+1e+
+	 lehcGURz2bvqfiAbQfHwlPGk+05xv60imIiP7EGM/qliBRfUUaSjLXX4FqU7WIRyMQ
+	 fF6vdJwT1wfBw==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 31D5A3780624;
-	Wed,  6 Mar 2024 03:07:49 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4CE8437820C6;
+	Wed,  6 Mar 2024 03:07:58 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniels@collabora.com,
@@ -63,14 +63,17 @@ Cc: daniels@collabora.com,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 00/11] drm/ci: Add support for GPU and display testing
-Date: Wed,  6 Mar 2024 08:36:38 +0530
-Message-Id: <20240306030649.60269-1-vignesh.raman@collabora.com>
+Subject: [PATCH v4 02/11] drm/ci: uprev mesa version
+Date: Wed,  6 Mar 2024 08:36:40 +0530
+Message-Id: <20240306030649.60269-3-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240306030649.60269-1-vignesh.raman@collabora.com>
+References: <20240306030649.60269-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_190756_039589_31D48107 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20240305_190804_331160_986E6D43 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,107 +90,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some ARM SOCs have a separate display controller and GPU, each with
-different drivers. For mediatek mt8173, the GPU driver is powervr,
-and the display driver is mediatek. In the case of mediatek mt8183,
-the GPU driver is panfrost, and the display driver is mediatek.
-With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
-display driver is rockchip. For amlogic meson, the GPU driver is
-panfrost, and the display driver is meson.
+zlib.net is not allowing tarball download anymore and results
+in below error in kernel+rootfs_arm32 container build,
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+urllib.error.HTTPError: HTTP Error 415: Unsupported Media Type
 
-IGT tests run various tests with different xfails and can test both
-GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
-Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
-This leads to incomplete coverage since the display is never tested on
-these platforms. This commit series adds support in drm-ci to run tests
-for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
-Meson platforms.
+Uprev mesa which includes a fix for this issue.
+https://gitlab.freedesktop.org/mesa/mesa/-/commit/908f444e
 
-Uprev mesa and IGT in drm-ci and add amd, v3d, vc4 and vgem specific
-tests to testlist. Have testlist.txt per driver and include a base
-testlist so that the driver specific tests will run only on those hardware
-and add testlists to the MAINTAINERS file.
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
 
-This series also includes patch to add vkms testing to drm-ci.
+v3:
+  - New patch in series to uprev mesa.
 
-Working pipeline link,
-https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1119859
+v4:
+  - Fix checkpatch warning.
 
-Vignesh Raman (11):
-  drm/ci: arm64.config: Enable CONFIG_DRM_ANALOGIX_ANX7625
-  drm/ci: uprev mesa version
-  drm/ci: uprev IGT and update testlist
-  drm/ci: amdgpu: update xfails
-  drm/ci: mediatek: Refactor existing mediatek jobs
-  drm/ci: mediatek: Add job to test panfrost and powervr GPU driver
-  drm/ci: meson: Refactor existing meson jobs
-  drm/ci: meson: Add job to test panfrost GPU driver
-  drm/ci: rockchip: Refactor existing rockchip jobs
-  drm/ci: rockchip: Add job to test panfrost GPU driver
-  drm/ci: add tests on vkms
+---
+ drivers/gpu/drm/ci/container.yml  | 6 +++---
+ drivers/gpu/drm/ci/gitlab-ci.yml  | 6 +++---
+ drivers/gpu/drm/ci/image-tags.yml | 3 ++-
+ 3 files changed, 8 insertions(+), 7 deletions(-)
 
- MAINTAINERS                                   |  14 ++
- drivers/gpu/drm/ci/arm64.config               |   1 +
- drivers/gpu/drm/ci/build.sh                   |   1 -
- drivers/gpu/drm/ci/container.yml              |   6 +-
- drivers/gpu/drm/ci/gitlab-ci.yml              |  13 +-
- drivers/gpu/drm/ci/igt_runner.sh              |  28 ++--
- drivers/gpu/drm/ci/image-tags.yml             |   5 +-
- drivers/gpu/drm/ci/test.yml                   | 136 +++++++++++++---
- drivers/gpu/drm/ci/testlist-amdgpu.txt        | 151 ++++++++++++++++++
- drivers/gpu/drm/ci/testlist-msm.txt           |  50 ++++++
- drivers/gpu/drm/ci/testlist-panfrost.txt      |  17 ++
- drivers/gpu/drm/ci/testlist-v3d.txt           |  73 +++++++++
- drivers/gpu/drm/ci/testlist-vc4.txt           |  49 ++++++
- drivers/gpu/drm/ci/testlist.txt               |  84 ++++------
- drivers/gpu/drm/ci/x86_64.config              |   1 +
- .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  26 ++-
- .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  10 +-
- .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |  17 +-
- .../drm/ci/xfails/mediatek-mt8173-fails.txt   |  15 --
- .../drm/ci/xfails/mediatek-mt8173-flakes.txt  |  13 ++
- .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  21 ++-
- .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |   8 +
- .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   5 -
- .../gpu/drm/ci/xfails/panfrost-g12b-fails.txt |   1 +
- .../gpu/drm/ci/xfails/panfrost-g12b-skips.txt |   2 +
- .../drm/ci/xfails/panfrost-mt8183-fails.txt   |   1 +
- .../drm/ci/xfails/panfrost-mt8183-skips.txt   |   2 +
- .../drm/ci/xfails/panfrost-rk3288-fails.txt   |   1 +
- .../drm/ci/xfails/panfrost-rk3288-skips.txt   |   2 +
- .../drm/ci/xfails/panfrost-rk3399-fails.txt   |   1 +
- .../drm/ci/xfails/panfrost-rk3399-skips.txt   |   2 +
- .../drm/ci/xfails/rockchip-rk3288-fails.txt   |  58 ++-----
- .../drm/ci/xfails/rockchip-rk3288-flakes.txt  |  20 +++
- .../drm/ci/xfails/rockchip-rk3288-skips.txt   |  54 +------
- .../drm/ci/xfails/rockchip-rk3399-fails.txt   |  38 +++--
- .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  28 +++-
- .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   5 +-
- .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   1 -
- drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |  33 ++++
- .../gpu/drm/ci/xfails/vkms-none-flakes.txt    |  20 +++
- drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |  16 ++
- 41 files changed, 784 insertions(+), 245 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/testlist-amdgpu.txt
- create mode 100644 drivers/gpu/drm/ci/testlist-msm.txt
- create mode 100644 drivers/gpu/drm/ci/testlist-panfrost.txt
- create mode 100644 drivers/gpu/drm/ci/testlist-v3d.txt
- create mode 100644 drivers/gpu/drm/ci/testlist-vc4.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-mt8183-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-flakes.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
-
+diff --git a/drivers/gpu/drm/ci/container.yml b/drivers/gpu/drm/ci/container.yml
+index 9764e7921a4f..1060eb380b02 100644
+--- a/drivers/gpu/drm/ci/container.yml
++++ b/drivers/gpu/drm/ci/container.yml
+@@ -40,11 +40,11 @@ debian/x86_64_test-android:
+   rules:
+     - when: never
+ 
+-windows_build_vs2019:
++windows_build_msvc:
+   rules:
+     - when: never
+ 
+-windows_test_vs2019:
++windows_test_msvc:
+   rules:
+     - when: never
+ 
+@@ -56,7 +56,7 @@ rustfmt:
+    rules:
+     - when: never
+ 
+-windows_vs2019:
++windows_msvc:
+    rules:
+     - when: never
+ 
+diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+index 084e3ff8e3f4..bc8cb3420476 100644
+--- a/drivers/gpu/drm/ci/gitlab-ci.yml
++++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+@@ -1,6 +1,6 @@
+ variables:
+   DRM_CI_PROJECT_PATH: &drm-ci-project-path mesa/mesa
+-  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha 9d162de9a05155e1c4041857a5848842749164cf
++  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha c4b32f9e90b7204735e6adf1f60c178bf85752e7
+ 
+   UPSTREAM_REPO: git://anongit.freedesktop.org/drm/drm
+   TARGET_BRANCH: drm-next
+@@ -26,7 +26,7 @@ variables:
+   JOB_ARTIFACTS_BASE: ${PIPELINE_ARTIFACTS_BASE}/${CI_JOB_ID}
+   # default kernel for rootfs before injecting the current kernel tree
+   KERNEL_REPO: "gfx-ci/linux"
+-  KERNEL_TAG: "v6.6.4-for-mesa-ci-e4f4c500f7fb"
++  KERNEL_TAG: "v6.6.13-mesa-9916"
+   KERNEL_IMAGE_BASE: https://${S3_HOST}/mesa-lava/${KERNEL_REPO}/${KERNEL_TAG}
+   LAVA_TAGS: subset-1-gfx
+   LAVA_JOB_PRIORITY: 30
+@@ -98,6 +98,7 @@ include:
+ stages:
+   - sanity
+   - container
++  - code-validation
+   - git-archive
+   - build
+   - amdgpu
+@@ -107,7 +108,6 @@ stages:
+   - msm
+   - rockchip
+   - virtio-gpu
+-  - lint
+ 
+ # YAML anchors for rule conditions
+ # --------------------------------
+diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
+index 7ab4f2514da8..cf07c3e09b8c 100644
+--- a/drivers/gpu/drm/ci/image-tags.yml
++++ b/drivers/gpu/drm/ci/image-tags.yml
+@@ -1,5 +1,5 @@
+ variables:
+-   CONTAINER_TAG: "2023-10-11-mesa-uprev"
++   CONTAINER_TAG: "2022-01-29-mesa-uprev"
+    DEBIAN_X86_64_BUILD_BASE_IMAGE: "debian/x86_64_build-base"
+    DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
+ 
+@@ -7,6 +7,7 @@ variables:
+    DEBIAN_BUILD_TAG: "2023-10-08-config"
+ 
+    KERNEL_ROOTFS_TAG: "2023-10-06-amd"
++   PKG_REPO_REV: "67f2c46b"
+ 
+    DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
+    DEBIAN_X86_64_TEST_IMAGE_GL_PATH: "debian/x86_64_test-gl"
 -- 
 2.40.1
 
