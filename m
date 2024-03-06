@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70455C54798
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Mar 2024 20:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2511DC54E49
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Mar 2024 00:03:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y17AiZm01ymj4q6EcFgegtKOH97RMNEKPRGq1KydgMA=; b=a/O/BGi17kCbvU
-	sB+U03u4XiA+x5bE8s+oo2H4Wp+6ji5/fbsiHI/LDw9tVSnc//ASsDnflRWM7wdLQ2sH8zHgrVMou
-	f3NvIWZoS2ctvfRVCSNXixaSb1yYC6XYOwm7bj8FFHLG9aijffnCvHgdTE33Ftdecdw41ILfpUMqf
-	upMsy6QqdhoMHGy5bYr19PEN1VWFeD19oeu5VNgIptE6cpNE5GVzm6YI/X58HHTsDjDXbL0V+pGEX
-	SmYXYniRPSxehcsI0vBuQnu044BbHdtRPHEj0vq+1lVYWSujQew+mJYaQeXuMnZIsxLxFm0sJkbyR
-	f88MceVcxkG65qMO6coA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=93lcnbTrFP/Gv87yYZFC76MKqwrqP4bLB6RDp92RBgU=; b=wphpRkedistP7Tk2kWtPyIF74E
+	YOWiCxJOBA79WCqXwLZS9jwdZ28lmskLh3nfQTJFajlG0cZBB5MLdt5zQbQHWr55cbxzPk16iyfW7
+	+x4pKvuM+4j3REvCgaPJmVh/fXO3+Sj+NwCIzgTK97BulIlrXUu/yCwWpVFgYdOSo09qGg7WT0g3B
+	JQUEw6ZmcaLeqnsZZ8TvNFD6ZiMyzh/G9qhknRcIlmDAJubBIFbXh8r8Uzfb9SIxjrUjjRz4eNAEN
+	tNBp6JIPYuiAXiT7OX41HFLz6r69Gcw6LKergoRJInkNgnz3I4PmV+1UyU1AYQcoN0twqgW4QuurW
+	iQCLYHtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhbHv-0000000FAqn-4B6c;
-	Tue, 05 Mar 2024 20:21:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rhel2-0000000Fhiu-2bI6;
+	Wed, 06 Mar 2024 00:03:40 +0000
+Received: from out-187.mta1.migadu.com ([2001:41d0:203:375::bb])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rhbHs-0000000FAmD-1Sm9;
-	Tue, 05 Mar 2024 20:21:21 +0000
-Received: from i53875a9e.versanet.de ([83.135.90.158] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rhbHV-0003er-CG; Tue, 05 Mar 2024 21:20:57 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Shreeya Patel <shreeya.patel@collabora.com>
-Cc: mchehab@kernel.org, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
- p.zabel@pengutronix.de, jose.abreu@synopsys.com, nelson.costa@synopsys.com,
- dmitry.osipenko@collabora.com, sebastian.reichel@collabora.com,
- shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, hverkuil@xs4all.nl,
- hverkuil-cisco@xs4all.nl, kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm@lists.infradead.org
-Subject: Re: [PATCH v2 4/6] arm64: dts: rockchip: Add device tree support for HDMI RX
- Controller
-Date: Tue, 05 Mar 2024 21:20:55 +0100
-Message-ID: <6040170.44csPzL39Z@diego>
-In-Reply-To: <45138-65e76d00-9-580ee380@232156106>
-References: <20240305123648.8847-1-shreeya.patel@collabora.com>
- <7657358.31r3eYUQgx@diego> <45138-65e76d00-9-580ee380@232156106>
+	id 1rhekx-0000000Fhha-21Ii
+	for linux-rockchip@lists.infradead.org;
+	Wed, 06 Mar 2024 00:03:37 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1709683408;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=F0lEomRDVYpUwlEa/jFZCA/xqAS5OcKSK+D4gIRDum8=;
+	b=l4t4B25yF+XWCF24YnTlAbjxESkywJPk4ooKwjajJl7qU5wccGUUD2ayDyxuF7jwh82wNz
+	wkE0c+LBSY2gAdWbxvPAcBsGTR//FP1/QQROqCEIU7ugSaanRMzRmfWSOT9pMrOrW9qBy+
+	czTjKDfV7Bw4kKkSZY+BUlaVTB6P97VStFRohtcYr49PQYPneH2JMoa2XdVX3URQMa8ZRG
+	G4mj+z6izayx1iPXTznyHOarzzDG2EaaLtUp73QVPk0X1SX0VjCY3OUtopBrJzE1jaaICf
+	T028P5DAoo9t0z4xWKidGk8gMAKmBxHpFt0xT/nVo+FFeEGqoVTcecVVKUD5/w==
+From: Diederik de Haas <didi.debian@cknow.org>
+To: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Andrew Lunn <andrew@lunn.ch>, Chen-Yu Tsai <wens@kernel.org>,
+ linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] arm64: dts: rockchip: qnap-ts433: Simplify network PHY connection
+Date: Wed, 06 Mar 2024 01:03:14 +0100
+Message-ID: <3640614.1ifTrbWeP9@bagend>
+Organization: Connecting Knowledge
+In-Reply-To: <yumnuz5w5yw4pixruukeeh5pjdheiuuxkiazmke5oh3wxpfg7c@4l3rcxcgjfts>
+References: <20240304084612.711678-2-ukleinek@debian.org> <2662566.GSV3oLgti5@bagend>
+ <yumnuz5w5yw4pixruukeeh5pjdheiuuxkiazmke5oh3wxpfg7c@4l3rcxcgjfts>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240305_122120_395852_757FDB7F 
-X-CRM114-Status: GOOD (  38.18  )
+X-CRM114-CacheID: sfid-20240305_160335_938475_17C472C2 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,231 +70,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============5525473060339943483=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi again :-)
+--===============5525473060339943483==
+Content-Type: multipart/signed; boundary="nextPart2871586.EqBmKDtIha";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
 
-Am Dienstag, 5. M=E4rz 2024, 20:05:02 CET schrieb Shreeya Patel:
-> On Tuesday, March 05, 2024 19:41 IST, Heiko St=FCbner <heiko@sntech.de> w=
-rote:
-> > Am Dienstag, 5. M=E4rz 2024, 13:36:46 CET schrieb Shreeya Patel:
-> > > Add device tree support for Synopsys DesignWare HDMI RX
-> > > Controller.
-> > > =
+--nextPart2871586.EqBmKDtIha
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; protected-headers="v1"
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Diederik de Haas <didi.debian@cknow.org>
+Date: Wed, 06 Mar 2024 01:03:14 +0100
+Message-ID: <3640614.1ifTrbWeP9@bagend>
+Organization: Connecting Knowledge
+MIME-Version: 1.0
 
-> > > Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> > > Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> > > Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> > > Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
-> > > Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
-> > > ---
-> > > Changes in v2 :-
-> > >   - Fix some of the checkpatch errors and warnings
-> > >   - Rename resets, vo1-grf and HPD
-> > >   - Move hdmirx_cma node to the rk3588.dtsi file
-> > > =
+On Monday, 4 March 2024 23:44:48 CET Uwe Kleine-K=F6nig wrote:
+> > That was because it's actually a bug report (wrt Quartz64 A and B), but
+> > especially your remark made all the pieces I found earlier fall into
+> > place.
+> > Therefor I 'abused' this thread/patch to report it.
+> >=20
+> > I'm happy to test patches, but I lack the knowledge to come up with one
+> > myself.
+>=20
+> I guess that would be:
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts index
+> 59843a7a199c..f4d1deba3110 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> @@ -269,7 +269,7 @@ &gmac1 {
+>         assigned-clock-parents =3D <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru
+> SCLK_GMAC1>, <&gmac1_clkin>; clock_in_out =3D "input";
+>         phy-supply =3D <&vcc_3v3>;
+> -       phy-mode =3D "rgmii";
+> +       phy-mode =3D "rgmii-id";
+>         pinctrl-names =3D "default";
+>         pinctrl-0 =3D <&gmac1m0_miim
+>                      &gmac1m0_tx_bus2
+> @@ -281,8 +281,6 @@ &gmac1m0_clkinout
+>         snps,reset-active-low;
+>         /* Reset time is 20ms, 100ms for rtl8211f */
+>         snps,reset-delays-us =3D <0 20000 100000>;
+> -       tx_delay =3D <0x30>;
+> -       rx_delay =3D <0x10>;
+>         phy-handle =3D <&rgmii_phy1>;
+>         status =3D "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts index
+> 2d92713be2a0..ec1351a171d4 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> @@ -176,7 +176,7 @@ &gmac1 {
+>         assigned-clocks =3D <&cru SCLK_GMAC1_RX_TX>, <&cru
+> SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>; assigned-clock-parents =3D <&=
+cru
+> SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>; clock_in_out =
+=3D
+> "input";
+> -       phy-mode =3D "rgmii";
+> +       phy-mode =3D "rgmii-id";
+>         phy-supply =3D <&vcc_3v3>;
+>         pinctrl-names =3D "default";
+>         pinctrl-0 =3D <&gmac1m1_miim
+> @@ -189,8 +189,6 @@ &gmac1m1_clkinout
+>         snps,reset-active-low;
+>         /* Reset time is 20ms, 100ms for rtl8211f, also works well here */
+>         snps,reset-delays-us =3D <0 20000 100000>;
+> -       tx_delay =3D <0x4f>;
+> -       rx_delay =3D <0x24>;
+>         phy-handle =3D <&rgmii_phy1>;
+>         status =3D "okay";
+>  };
 
-> > >  .../boot/dts/rockchip/rk3588-pinctrl.dtsi     | 41 ++++++++++++++
-> > >  arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 55 +++++++++++++++++=
-++
-> > >  2 files changed, 96 insertions(+)
-> > =
+It turns out my research was incomplete. I already felt uneasy when I reali=
+zed=20
+that 'pgwipeout' had set it to rgmii and while I wasn't able to track the=20
+conversation down, I did have a vague recollection of there being a discuss=
+ion=20
+wrt rgmii vs rgmii-id. IOW: he must have set it to rgmii deliberately.
 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/bo=
-ot/dts/rockchip/rk3588.dtsi
-> > > index 5519c1430cb7..8adb98b99701 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > > @@ -7,6 +7,24 @@
-> > >  #include "rk3588-pinctrl.dtsi"
-> > >  =
+And then I found this:
+https://lore.kernel.org/all/20220606163023.3677147-1-pgwipeout@gmail.com/
 
-> > >  / {
-> > > +	reserved-memory {
-> > > +		#address-cells =3D <2>;
-> > > +		#size-cells =3D <2>;
-> > > +		ranges;
-> > =
+=46or Model B it was initially set to rgmii-id, but was later changed to rg=
+mii=20
+due to compatibility issues on the production Model B.
+I'm going to assume that it was (initially) set to rgmii on Model A for=20
+similar reasons.
 
-> > add blank line here
-> > =
+Cheers,
+  Diederik
+--nextPart2871586.EqBmKDtIha
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
 
-> > > +		/*
-> > > +		 * The 4k HDMI capture controller works only with 32bit
-> > > +		 * phys addresses and doesn't support IOMMU. HDMI RX CMA
-> > > +		 * must be reserved below 4GB.
-> > > +		 */
-> > > +		hdmirx_cma: hdmirx_cma {
-> > =
+-----BEGIN PGP SIGNATURE-----
 
-> > phandles use "_", but node-names "-"
-> > =
+iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZeeywgAKCRDXblvOeH7b
+bn44AQCusxtYWH7F674MckmTfw3+1/4K8VVZMEJB10NYR/R/BAEA/XIREPYtRY3Z
+oV+m0owJaGzI6IumbIb9O5+OZWLJdAY=
+=tznc
+-----END PGP SIGNATURE-----
 
-> > > +			compatible =3D "shared-dma-pool";
-> > > +			alloc-ranges =3D <0x0 0x0 0x0 0xffffffff>;
-> > > +			size =3D <0x0 (160 * 0x100000)>; /* 160MiB */
-> > =
-
-> > The comment above that node, could elaborate where the value of 160MB
-> > originates from. I assume it is to hold n-times of 4K frames or whateve=
-r,
-> > but it would be helpful for people to be able to read that.
-> > =
-
-> =
-
-> right, we did the following calculation to come up with this value :-
-> 3840 * 2160 * 4 (bytes/pix) * 2 (frames/buffer) / 1000 / 1000 =3D 66M
-> and then we do the 2x times of this value to be on the safer side
-> and support all practical use-cases.
-> =
-
-> I'll add some more details to the comment in v3.
-
-thanks, that will be helpful for me and everybody reading the dts later on
-
-> =
-
-> > =
-
-> > > +			no-map;
-> > > +			status =3D "disabled";
-> > > +		};
-> > > +	};
-> > > +
-> > >  	pcie30_phy_grf: syscon@fd5b8000 {
-> > >  		compatible =3D "rockchip,rk3588-pcie3-phy-grf", "syscon";
-> > >  		reg =3D <0x0 0xfd5b8000 0x0 0x10000>;
-> > > @@ -85,6 +103,38 @@ i2s10_8ch: i2s@fde00000 {
-> > >  		status =3D "disabled";
-> > >  	};
-> > >  =
-
-> > > +	hdmi_receiver: hdmi-receiver@fdee0000 {
-> > =
-
-> > Maybe rename the label to "hdmirx:" ... that way in a board enabling the
-> > cma region, both nodes would stay close to each other?
-> > =
-
-> =
-
-> Umm we already have receiver in the name so I am not sure if adding rx wi=
-ll be
-> a good idea. I was trying to keep it consistent with the names used in ot=
-her device tree files.
-> In case you still feel otherwise then do let me know, I'll make the chang=
-e.
-
-I'm somewhat partial to the actual name, I was more getting at similar
-names to keep things together.
-
-General sorting rules are that &foo phandles are sorted alphabetically
-in board devicetrees.
-
-So having
-
-&hdmirx {
-	status =3D "okay";
-};
-
-&hdmirx_cma {
-	status =3D "okay";
-};
-
-in the board dt, makes them stay together automatically ;-)
-
-So if it's hdmirx + hdmirx_cma or hdmi_receiver + hdmi_receiver_cma
-doesn't matter that much, just that they share a common basename.
-
-
-I really want to stay away from allowing special rules for things as much
-as possible, because that becomes a neverending story, so it's
-alphabetical sorting.
-
-But nothing prevents us from naming phandles in an intelligent way ;-) .
-
-
-Thanks
-Heiko
-
-> > > +		compatible =3D "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
-> > > +		reg =3D <0x0 0xfdee0000 0x0 0x6000>;
-> > > +		power-domains =3D <&power RK3588_PD_VO1>;
-> > > +		rockchip,grf =3D <&sys_grf>;
-> > > +		rockchip,vo1-grf =3D <&vo1_grf>;
-> > > +		interrupts =3D <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
-> > > +			     <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
-> > > +			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +		interrupt-names =3D "cec", "hdmi", "dma";
-> > > +		clocks =3D <&cru ACLK_HDMIRX>,
-> > > +			 <&cru CLK_HDMIRX_AUD>,
-> > > +			 <&cru CLK_CR_PARA>,
-> > > +			 <&cru PCLK_HDMIRX>,
-> > > +			 <&cru CLK_HDMIRX_REF>,
-> > > +			 <&cru PCLK_S_HDMIRX>,
-> > > +			 <&cru HCLK_VO1>;
-> > > +		clock-names =3D "aclk",
-> > > +			      "audio",
-> > > +			      "cr_para",
-> > > +			      "pclk",
-> > > +			      "ref",
-> > > +			      "hclk_s_hdmirx",
-> > > +			      "hclk_vo1";
-> > =
-
-> > the driver uses of_reserved_mem_device_init(), so doesn't this node need
-> > a "memory-region =3D <&hdmirx_cma>; or similar?
-> > =
-
-> =
-
-> yes, we should have the memory-region property here. My bad, I'll correct=
- this in v3.
-> =
-
-> > =
-
-> > > +		resets =3D <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
-> > > +			 <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
-> > > +		reset-names =3D "axi", "apb", "ref", "biu";
-> > > +		pinctrl-0 =3D <&hdmim1_rx>;
-> > > +		pinctrl-names =3D "default";
-> > > +		status =3D "disabled";
-> > > +	};
-> > > +
-> > >  	pcie3x4: pcie@fe150000 {
-> > >  		compatible =3D "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
-> > >  		#address-cells =3D <3>;
-> > > @@ -339,3 +389,8 @@ pcie30phy: phy@fee80000 {
-> > >  		status =3D "disabled";
-> > >  	};
-> > >  };
-> > > +
-> > > +&hdmirx_cma {
-> > > +	status =3D "okay";
-> > > +};
-> > =
-
-> > I'd assume a board that enables &hdmi_receiver would also enable hdmirx=
-_cma
-> > and not the soc dtsi for _all_ boards?
-> > =
-
-> =
-
-> Actually this node should be in the rock-5b.dts file instead of here.
-> v1 had it correct but I made a mistake in v2 :(
-> Thanks for pointing this out, I'll fix this and send a v3 soon.
+--nextPart2871586.EqBmKDtIha--
 
 
 
 
+
+--===============5525473060339943483==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5525473060339943483==--
+
+
+
+
