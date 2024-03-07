@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2AAFC54E4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Mar 2024 21:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE572C54798
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Mar 2024 22:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l3PiagdCxxP6XmmVwbZ5JoGRBczEawPteVUrh8qAg48=; b=lV74rVqITd0VMs
-	OFHGrS4/OsjHwt4hd5vawICFUXfFUWUsAh42qIV6x6F7iFwx6SEB3yhs9qKuXNH/zGt2phZcKR6WM
-	CHOeb5GBqcQrxmjMH7xuD/+9MSSTCs771PVHqXFyI5m6NWvs8r7zMY3Tno7NN04UgSGXsQez/EoXU
-	wtatJqvOClQJ+O8qt+AYxdwKObEfKRO5sZ0WHPjjnI0HEfhtXiHhBPp2ZZCPEP7dl/9yk7KMrZc6S
-	zcVbI2eBgk4xN2giZ9NqjPe5lNysX01UPTlae5+RmBK6J17yJCwb0lJxRmBXkFHKgZja0/OZLPYIX
-	kTbPrcnreTPBpCiVLnDA==;
+	List-Owner; bh=naWthLGHslCumLpeiFnftpvbgwAoDXdVAjEoBKKjbpU=; b=kBbAqcUhhr+pp9
+	4hOldkWq1uaQR4bdWLIU6lDg8z+WkuVgWPPv58Ts0zHJFvbfTsd6jxuG/7NDcwhX19F5eXA1yORC9
+	mFtzRctNHK1GZRRy/BAlP1Cv23FeqKCsQkiHsIqAAba9QQWsQ9eYnNfmHz/hM12QR7PqMbi12gwAb
+	VPhP6Lwc6kDeiOM1r1oyBV9SNQnpZm4WQ2wXa4G/tpYbOzLygTOsKLBlFWFvccZYm4t92YHqT4V8K
+	knGwor8s/U9fsBoUGkc9MV499wC/zotXEspVvcQhmB6XXA5EAcl1FTh6VLSBCM2SuJcmHRxV9Gt5X
+	L903Ieuw5uwiDpXSbD+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riLOD-00000006Thn-2Uci;
-	Thu, 07 Mar 2024 21:34:57 +0000
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+	id 1riLpe-00000006Z5E-2RN0;
+	Thu, 07 Mar 2024 22:03:18 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riLO8-00000006Tg3-2acb
+	id 1riLpY-00000006Z2e-3mhV
 	for linux-rockchip@lists.infradead.org;
-	Thu, 07 Mar 2024 21:34:55 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id 3f1490d57ef6-dcbd1d4904dso1422988276.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 07 Mar 2024 13:34:49 -0800 (PST)
+	Thu, 07 Mar 2024 22:03:15 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-609a773ec44so15432037b3.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 07 Mar 2024 14:03:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709847289; x=1710452089; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1709848991; x=1710453791; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=0/2XvFuAiyvZaIMiYL4oAu/qZ6xeRptB5Yl+Q3YU0fY=;
-        b=LLVh+MrpXJn2kIVm63Kl7hnI52Vh13qlLAb31gxbKZiILXVqIN529QLQsUlsts+gQG
-         QvQqqUrwsYSXED/GVDaJ6SEtXow+IXtAZiLQ0w4TA3pXqNQRYnRrTMf914iaiZ8raMvZ
-         FNcOLwIwxnXSLhxmes6fGJl1hTxyDScFdLLUegvIpn3HDpsDo/3jzNNibUtR5shRos9S
-         GOQ1/bIEuPUfD00uYQt1/iJwD7Iio0AkjS40aRlC26mRGzHgufGAmqTTie1fdZe//yjC
-         YzsGCZm8SNB7YFgoMmVocIbN4VdRjhNGwnygycrQjvXw4rx6lrxX1V8SlZbyuzV/dCjB
-         rtIQ==
+        bh=AizkXlmtZUCSstQR6OGH3QyFzWNfyCrG/9xzkrzNWR4=;
+        b=H1vD9wNHsAhUci1/mGWfIiPJ4n9KimSbM3zj638Snls2wCJZvPfWBv2d+otnq/Ic6/
+         +JWRipIM2teeyc0gnHEY7g3/mjJv8jA2So4bofe1CH3h0VTEE0lBalXPtVAq12qBSccC
+         LqHAcxiKeVozP7IjSJtwDIMsYnj4Pqn+fT2QAcGcuzxuItTR+qiKtdLfibrfNoQmV9Vj
+         NRynjzWwLiYuuOqffzrHrXXVKWVfWkBFqEds1kLFrlFZd2cYizb/6uRVcGyqtqgUDWRP
+         0DHU5T4EeR2GnjbLoQePb3RnqqXpCIqIdKlVn8apAh01nYaN/jo7NKoN7TpHxZY1VWZG
+         NQJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709847289; x=1710452089;
+        d=1e100.net; s=20230601; t=1709848991; x=1710453791;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=0/2XvFuAiyvZaIMiYL4oAu/qZ6xeRptB5Yl+Q3YU0fY=;
-        b=OpogpCWECoJiV/RT1FB/4fNAeJs1RUrVIuW94xQRF5SrURi7+nFidp4oJwOsyVnpwB
-         QjzK6aqc+6HeKgOtacBZ9Bvq0bkFsOJeZMSS196gKwu1c3x4YvZyMxiylhXRdgezF6KW
-         ZTD0X8U70VLjE1qXIGy8hdto1jjZOkQ6bJ3vVKWZbhZfjwiYAGjHgYf5BxH3quFOeXdo
-         aLNexNqDRqJoGXAzo7ZnLPnCcSqwcVjtQdEe0eilj6aHpzw3Sg5LGsStJ9AVGZn7cWWV
-         ArjrU1qAHL08+fQJyJCGhyRhEjeWBRpRf0/jKbpBcYsavoE60GhGyYca/Hhp+fgMbU0E
-         y1nw==
-X-Forwarded-Encrypted: i=1; AJvYcCXlMbAlZwVdnALn7VueN6Tm7sf3K1GULcAzqp7Zct/eHN8kuo5OFv//umGDSleI2P58wX77A9Gr9nYy7XIucRWiCCm+v2t5atTea+c8JFv8n2Mz
-X-Gm-Message-State: AOJu0Yx34cWXZUkxgzDuxCgNE/KZgh/9VdhYYPuiCdzWsVMiFJT+HUPP
-	LNDg4V0s7SGSwV3pyhjfizZvIGXIvYTYlTeFr1I14W5vnoTyxL/w1EUjEkrrymKEMCrM/dgh0BX
-	S74Ik/Tydq2FIjqiicDFNohsO3HPw/njMsVE88g==
-X-Google-Smtp-Source: AGHT+IGeTs1Ho4xT1vD0AtG1sUcXcPWckpX387Tbnox2NYhxA3B6vjqm2iUu6bzzPI7K/Q1ZanJhhYZPMa4ypePWBOs=
-X-Received: by 2002:a25:14d7:0:b0:dc2:65f4:1541 with SMTP id
- 206-20020a2514d7000000b00dc265f41541mr15310765ybu.41.1709847288971; Thu, 07
- Mar 2024 13:34:48 -0800 (PST)
+        bh=AizkXlmtZUCSstQR6OGH3QyFzWNfyCrG/9xzkrzNWR4=;
+        b=CiJ35AnkvK3BQjmYykjtZIPAQAQWBnlgkrXQEBVJ4p1eFYtq+/rQsvOfG5UiPG+nKB
+         jDL89U8UZpCXmX4rK5nGJ0mIs+KI9gVRPlYX5Z4kk21K2bxf6nPubB1FUyvzTLOMyz/6
+         aZZt6XMqaBFn0UDqRe0cGvkjFE1FlMzfEA5i4vl+LrOQJwj30cYiw91Eziw9i/mreqbW
+         2aIWshBds3HBraI3kBielaEE1RmcV7iD/c8j1LHCqVHIMgo4ZoNe1AKngc7UjMX2z5Qv
+         0hLhfhqfOhCidKx8WOv0DraJyCpMrU8/pvxFlDJfKr3h5bkK38rgSsNEA+8w0RjngjzR
+         GNpg==
+X-Forwarded-Encrypted: i=1; AJvYcCVu3/cgCjR8CEv4nPElkfmph0Gxd68nxHXk3C6r68tE8Dktxn73eLxaayUstDdlBQGWhZkoNY22ykZnm1WvnYmGsQQcOyOj21PwIQqzHNpHI7CK
+X-Gm-Message-State: AOJu0YyaMEe2volpvit1I5oNDmLy73A5vudTIvBWdpB/6jonLxEjpaw8
+	WxSrzMUCXDOvVVH5z44in9ZBhfBG1jneJHijrF0wHs0KzZ7C0kL0FYdvcS/bOBUQBNkd87tCr3U
+	gp8wauPxIA2ck7voi2kLvSS23UjaF6I/s1yxjiw==
+X-Google-Smtp-Source: AGHT+IEVOEju1iQyD9s82MYfyjvamBck51RQLph8mWBkLs97AfZ0UzWzQRt+IXP0+o9OTK3t73dsfq/vR6P5lUKlaPs=
+X-Received: by 2002:a81:5f0b:0:b0:608:dde5:ace6 with SMTP id
+ t11-20020a815f0b000000b00608dde5ace6mr22161539ywb.28.1709848990592; Thu, 07
+ Mar 2024 14:03:10 -0800 (PST)
 MIME-Version: 1.0
 References: <20240307-kms-hdmi-connector-state-v8-0-ef6a6f31964b@kernel.org> <20240307-kms-hdmi-connector-state-v8-20-ef6a6f31964b@kernel.org>
 In-Reply-To: <20240307-kms-hdmi-connector-state-v8-20-ef6a6f31964b@kernel.org>
 From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Thu, 7 Mar 2024 23:34:37 +0200
-Message-ID: <CAA8EJprSAzov9p92gscTxaKv+5Lc3rzm1NguqEeCKCArrEeV0A@mail.gmail.com>
+Date: Fri, 8 Mar 2024 00:02:58 +0200
+Message-ID: <CAA8EJppNWVGWYM0mGEJc_PaX=VqVv16=7RRB75EM_LzuK5BXtQ@mail.gmail.com>
 Subject: Re: [PATCH v8 20/27] drm/connector: hdmi: Add Infoframes generation
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -80,8 +80,8 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-sunxi@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_133452_731786_232C60BE 
-X-CRM114-Status: GOOD (  27.86  )
+X-CRM114-CacheID: sfid-20240307_140313_104897_409BEE06 
+X-CRM114-Status: GOOD (  29.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -270,6 +270,14 @@ On Thu, 7 Mar 2024 at 15:39, Maxime Ripard <mripard@kernel.org> wrote:
 > +
 > +       if (!info->has_hdmi_infoframe)
 > +               return 0;
+
+I tried enabling the infoframes generation for MSM HDMI bridge and I
+stumbled here.
+I think this condition is not fully correct. It should only guard
+generation of hdmi_vendor infoframe. AVI and SPD frame can be
+generated even if has_hdmi_infoframe is not set. Not sure about the
+HDR infoframe.
+
 > +
 > +       ret = hdmi_generate_avi_infoframe(connector, state);
 > +       if (ret)
@@ -873,9 +881,6 @@ On Thu, 7 Mar 2024 at 15:39, Maxime Ripard <mripard@kernel.org> wrote:
 > +        *
 > +        * This callback is invoked through
 > +        * @drm_atomic_helper_hdmi_connector_update_infoframes during a
-
-Nit: drm_atomic_helper_connector_hdmi_update_infoframes
-
 > +        * commit to clear the infoframes into the hardware. It will be
 > +        * called multiple times, once for every disabled infoframe
 > +        * type.
@@ -893,9 +898,6 @@ Nit: drm_atomic_helper_connector_hdmi_update_infoframes
 > +        *
 > +        * This callback is invoked through
 > +        * @drm_atomic_helper_hdmi_connector_update_infoframes during a
-
-And here
-
 > +        * commit to program the infoframes into the hardware. It will
 > +        * be called multiple times, once for every updated infoframe
 > +        * type.
@@ -1005,7 +1007,7 @@ And here
 >
 
 
--- 
+--
 With best wishes
 Dmitry
 
