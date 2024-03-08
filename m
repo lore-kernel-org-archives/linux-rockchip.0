@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2952C5475B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Mar 2024 12:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E407C54E41
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Mar 2024 12:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dlyayQ9Myvgx4ytqSagJSFP975y6Vwk4A7mhadtM7U8=; b=KBWb+qwGYYJBQn
-	4FYYnEa1AgpZbn9zGbxLB45+c2eFk6A7A9fcvjp7IHqEHks2klY8vADF1qr8jVCbzfcT3FIrdZiQz
-	aSarj8bznMAfo/QVEuXvqw1WOrBaaxmxLFDOnKlAXXRUqsuIKqZ9wghQcyBSZTas+kdSpBYAGBlSH
-	Y5FTU/L8j7vsg46/QjetMShNSYkpx16RtQAaVC7XfIUn/fZAtyVxTZMI19u00d22t/PZtUKe+6yYm
-	lJ8sEwPF1uuh3sumVTYuiJTD+kMg3Fo5HllhI6UaCZnKwsBhrGYbjkpE6onAO1lZb3DaRQikzb18Y
-	S8qpuPgZ6CLyGvtX2a9A==;
+	List-Owner; bh=fsyemcjm3u8n5xGAKKCc/hGWMARQVPhmgZR61VV5b0M=; b=QUgsvWFuSJZJf/
+	UdjsQoDkDk1eRGbEcORFRhOLZkRoIUUR3LTRLmEjADYzzs+AK253HMBls4/cJWDxs7YZxq0j7VgDq
+	pHy2rjpjfawjQepdNjKM6qAUai/5cSH/RI5O1cArMk8aM0unaE/ZpH0HkPiGFmYxSpyUfVDWpsV88
+	yJir1mBCsEOvf8pQ8X4D8SoGmnIcSq1fnS6RBoyIZYZ7MxWh6xYGxP3xntca1+nqZiQrKukzEC694
+	tu9A7UBpKXkPy5jyXasYnX6KX3JB5pboVJNlztrpM1/zfvqvUr2YBgd9WlXt2dJ2OAvxAAc4WKw5v
+	iFFYFwB/oWfJE/U4nS9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riZi4-00000009BZY-2nfj;
-	Fri, 08 Mar 2024 12:52:24 +0000
-Received: from smtp-8fa9.mail.infomaniak.ch ([2001:1600:7:10::8fa9])
+	id 1riZiC-00000009BcG-0c4E;
+	Fri, 08 Mar 2024 12:52:32 +0000
+Received: from smtp-42af.mail.infomaniak.ch ([2001:1600:7:10::42af])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riZi1-00000009BX4-0YjU
+	id 1riZi1-00000009BXA-2VCj
 	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Mar 2024 12:52:23 +0000
+	Fri, 08 Mar 2024 12:52:24 +0000
 Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4TrmKD6D1tzmYw;
-	Fri,  8 Mar 2024 13:52:16 +0100 (CET)
-Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4TrmKD1rMbzMppDS;
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4TrmKF3HfCztpY;
+	Fri,  8 Mar 2024 13:52:17 +0100 (CET)
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4TrmKD63f6zMppDY;
 	Fri,  8 Mar 2024 13:52:16 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 08 Mar 2024 13:52:09 +0100
-Subject: [PATCH 2/3] arm64: dts: rockchip: enable internal pull-up on
- PCIE_WAKE# for RK3399 Puma
+Date: Fri, 08 Mar 2024 13:52:10 +0100
+Subject: [PATCH 3/3] arm64: dts: rockchip: add regulators for PCIe on
+ RK3399 Puma Haikou
 MIME-Version: 1.0
-Message-Id: <20240308-puma-diode-pu-v1-2-2b38457bcdc0@theobroma-systems.com>
+Message-Id: <20240308-puma-diode-pu-v1-3-2b38457bcdc0@theobroma-systems.com>
 References: <20240308-puma-diode-pu-v1-0-2b38457bcdc0@theobroma-systems.com>
 In-Reply-To: <20240308-puma-diode-pu-v1-0-2b38457bcdc0@theobroma-systems.com>
 To: Rob Herring <robh+dt@kernel.org>, 
@@ -51,8 +51,8 @@ Cc: Klaus Goger <klaus.goger@theobroma-systems.com>,
 X-Mailer: b4 0.13.0
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_045221_364574_CC0CFC7A 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20240308_045221_938277_A902F2A0 
+X-CRM114-Status: UNSURE (   9.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,33 +72,80 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-The PCIE_WAKE# has a diode used as a level-shifter, and is used as an
-input pin. The SoC default for this pin is a pull-up, which is correct
-but the pinconf in the introducing commit missed that, so let's fix this
-oversight.
+The PCIe PHY requires two regulators and are present on the SoM
+directly, while the PCIe connector also exposes 3V3 and 12V power rails
+which are available on the baseboard.
 
-Fixes: 60fd9f72ce8a ("arm64: dts: rockchip: add Haikou baseboard with RK3399-Q7 SoM")
+Considering that 3/4 regulators are always-on on HW level and that the
+last one depends on a regulator from the PMIC that is specified as
+always on, this commit should be purely cosmetic and no change in
+behavior is expected.
+
+Let's add all regulators for PCIe on RK3399 Puma Haikou.
+
 Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  2 ++
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      | 26 ++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 18a98c4648eae..66ebb148bbc9a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -194,6 +194,8 @@ &pcie0 {
+ 	num-lanes = <4>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_clkreqn_cpm>;
++	vpcie3v3-supply = <&vcc3v3_baseboard>;
++	vpcie12v-supply = <&dc_12v>;
+ 	status = "okay";
+ };
+ 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index a51ebb8f8b80f..2484ad2bd86fc 100644
+index 2484ad2bd86fc..1113f57b09313 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -416,6 +416,11 @@ &io_domains {
+@@ -79,6 +79,26 @@ vcc5v0_sys: vcc5v0-sys {
+ 		regulator-max-microvolt = <5000000>;
+ 	};
+ 
++	vcca0v9: vcca0v9-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcca0v9";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc_1v8>;
++	};
++
++	vcca1v8: vcca1v8-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcca1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vdd_log: vdd-log {
+ 		compatible = "pwm-regulator";
+ 		pwms = <&pwm2 0 25000 1>;
+@@ -416,6 +436,12 @@ &io_domains {
  	gpio1830-supply = <&vcc_1v8>;
  };
  
-+&pcie_clkreqn_cpm {
-+	rockchip,pins =
-+		<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>;
++&pcie0 {
++	/* PCIe PHY supplies */
++	vpcie0v9-supply = <&vcca0v9>;
++	vpcie1v8-supply = <&vcca1v8>;
 +};
 +
- &pinctrl {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&q7_thermal_pin>;
+ &pcie_clkreqn_cpm {
+ 	rockchip,pins =
+ 		<2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>;
 
 -- 
 2.44.0
