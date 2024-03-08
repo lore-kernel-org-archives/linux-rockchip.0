@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E744C5475B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Mar 2024 13:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75EAC5475B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Mar 2024 14:00:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3o2Y2yJ5wNXiINaZmMmx3RCopHVzHCK39QYddNn979U=; b=2KSWJKEYyz7nYovlCwYXaAmOzN
-	Z/x0yaO2oymmRc7t/zmTkyDMhMGRor7zwpY3M0ewLo2JTiJHIKH249SoZmZnqiRBdBBG/uCR+kRQd
-	V13ghHzILwzFHhDpuyLT4r7ZuY4J4enE+OxFJx4tCbvCOyiNvDnRuG/E98Jd4CMAk1bq1BJJkXJeF
-	p1GOu3eb6Yttnv/XrstMGSPCeam7zvpUzcIIppN8uSiVVL3biICxqIG0U/xhc9Ibnnll83NwVfdlb
-	2SC2fNtA3D4H2Tg5ripTMCcib2TASHpsXrVLs4lZoqlmoXOo3Ald1sT3RIr8lKy9wHTIQ9LPHfWGu
-	lMDSVhbw==;
+	bh=C/Nbey+wSWLaxChgkbHVZLHYQ/u0YxQfwhdZ+t2WVBk=; b=bTYKtIdEujYWdINvyuC//kt9Z2
+	DS+M++aIRe57bTV0D339XBuL/Kzy9AFWJ9vFDlq3LxnKsUHNM7+LlBn0hbdYcsK/aJDxQYQjVJ3e4
+	zVrVzgnfW3N+N+PfPkh7WrZKO+4ZtPdFECNFk1XdCnYtv9kG1C3oSZL44f4s+PkLaVYJ4wNKlgbY4
+	fo7z/5xyNXd+MvdUxOt7nEIUq/dZSCedTSRlpMy5yfWBdI2vIO/akK3dqpa5+ZVdfgmu2cr4vVeiX
+	KRY0tHZGwZjgFyoaGdNpbvkta+qsjN2DC43C9f4rYB5n3Ec475uE2EYue2XgGKd9htnjcZscxQlpS
+	QvEd7TBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riaGL-00000009Iby-44fK;
-	Fri, 08 Mar 2024 13:27:49 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rialB-00000009QBa-1iVz;
+	Fri, 08 Mar 2024 13:59:41 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riaGJ-00000009Ib9-1nRb
+	id 1rial6-00000009Q95-3Zz9
 	for linux-rockchip@lists.infradead.org;
-	Fri, 08 Mar 2024 13:27:48 +0000
+	Fri, 08 Mar 2024 13:59:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709904465;
-	bh=FTRAWBTwymVL386fALtUwj3KhMPwR7HCTYICtzgjwg0=;
+	s=mail; t=1709906375;
+	bh=wSi4nzC0Vzt08/nuVCBCe2oCPowOBtKD5PTL8hk2eX8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=POVw4MKh2Jb3iCnepDbPEqn8uBO0+dBbZxwqHhLc0IyM9NYI39rs4y0hVslFaIrE0
-	 3o3Z9BJq2Pjw9l+/lQlCFkHrNvaANb327r6zwlhY+delZ3p9Cp24ArsSPxewnmAWYS
-	 xI3NrZHB8DNzvq+viZrnXcZi1hyyEuiwaOINvSvtG5kBYLaP/jort+mzMWXkNYIXye
-	 4ZGqYFZjE/yw936mYXJ1/P9hljmMU3hXIGl9LhJIk9K+TiKS5trxW6l5YqhCZUsMOb
-	 nsBpMpMbsPWDe7XvzChFarjTtK01qK24f4cqgiCZJhpUPBG88xUyF0m8P2gYJhLS59
-	 9e2KEujlpCwSQ==
+	b=DO5OmbA7WAJ/hucDDXeUDMSVsX5f2wVSGBCDfJb5/6S4uvD5LG9jc9nU9btKXMUfh
+	 2UdDujqwmY87UsHm5P2r8Etf33wzHsQZKeSvRaqO0O3/bd7PQkuNUqj89gXAdrCYB4
+	 1HnyCR+3AUsRqOxONFC6Zaf3dmLd1K31BZTm8tT/hE9d0U4Zh4Vwdnpbo1HrlY5wBt
+	 EM9cPPwMi3r9Kxy1vVXRVw1X/kY7fiHNnTSfSzIy8S6rzDk7IhVZy2LMRF0Ej5ogRs
+	 W/2vROjVYSkkWR3xcvmGTAZusk96kyTcY63Kc10AqV3vUoFZ1MoOrnJXliTi2dlYDV
+	 XPrUhwxljOx1g==
 Received: from mercury (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1F5AB37810F1;
-	Fri,  8 Mar 2024 13:27:45 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1F15437820E8;
+	Fri,  8 Mar 2024 13:59:35 +0000 (UTC)
 Received: by mercury (Postfix, from userid 1000)
-	id B363E1060B10; Fri,  8 Mar 2024 14:27:44 +0100 (CET)
-Date: Fri, 8 Mar 2024 14:27:44 +0100
+	id AE8CF1060B10; Fri,  8 Mar 2024 14:59:34 +0100 (CET)
+Date: Fri, 8 Mar 2024 14:59:34 +0100
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Ilya K <me@0upti.me>
 Cc: "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>, 
@@ -56,13 +56,15 @@ Cc: "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>,
 	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>, 
 	"sboyd@kernel.org" <sboyd@kernel.org>, "zhangqing@rock-chips.com" <zhangqing@rock-chips.com>
 Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
-Message-ID: <uwr335fla4nfvv3mdppcoly6hcsayav26r4r6txmbwrb25ftw7@rxwjtan7evww>
+Message-ID: <wzvv4x6lnb6caocrbt3zrwmeyszfzamvuiw4r4rbq4l5oigsni@ivkdrnkbqdtu>
 References: <1456131709882456@mail.yandex.ru>
+ <uwr335fla4nfvv3mdppcoly6hcsayav26r4r6txmbwrb25ftw7@rxwjtan7evww>
+ <20561709904626@c6cdvt45gvthiay5.myt.yp-c.yandex.net>
 MIME-Version: 1.0
-In-Reply-To: <1456131709882456@mail.yandex.ru>
+In-Reply-To: <20561709904626@c6cdvt45gvthiay5.myt.yp-c.yandex.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240308_052747_623227_05CADC03 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20240308_055937_115574_BAAA0AD3 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,77 +76,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2748222129135939088=="
+Content-Type: multipart/mixed; boundary="===============9037398716033042424=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2748222129135939088==
+--===============9037398716033042424==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="73sgraorjqr7grra"
+	protocol="application/pgp-signature"; boundary="i6ww3rv7vsc4trrr"
 Content-Disposition: inline
 
 
---73sgraorjqr7grra
-Content-Type: text/plain; charset=us-ascii
+--i6ww3rv7vsc4trrr
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[removed DT people from CC, since this is all about clocks now]
+Hi,
 
-Hello Ilya,
+On Fri, Mar 08, 2024 at 04:30:26PM +0300, Ilya K wrote:
+>>> This change seems to make my Orange Pi 5 (RK3588S) lock up on boot
+>>> :( Any suggestions on how to debug this? It doesn't really log
+>>> much...
+>>>
+>> I suppose with this change you explicitly mean the last patch, which
+>> has not yet been applied? That patch effectively allows some clocks
+>> to be disabled, that have previously been marked as critical (and
+>> thus always-on).
+>>=20
+>> If that results in a boot lockup, I expect you have a peripheral
+>> driver, that does not enable a required clock (e.g. because of a
+>> missing clock reference).
+>>=20
+>> I assume you have a bunch of other patches applied on top of
+>> upstream and not just this one? In that case it might be sensible to
+>> first apply this patch, do a test boot (it hopefully boots). Then
+>> step-by-step re-add the other patches and check which one breaks
+>> when being combined with this patch.
+>>
+> Thanks! I think the email bounced from most of the mailing lists anyway..=
+=2E The
+> exact tree I'm running is here:=A0https://github.com/K900/linux/commits/
+> rk3588-test/ and the last revert commit is what makes things boot again.
 
-On Fri, Mar 08, 2024 at 10:23:31AM +0300, Ilya K wrote:
-> This change seems to make my Orange Pi 5 (RK3588S) lock up on boot
-> :( Any suggestions on how to debug this? It doesn't really log
-> much...
+Please update your mailer to send plain text mails instead of HTML
+when working with the kernel mailing lists. Also please do not
+top-post.
 
-I suppose with this change you explicitly mean the last patch, which
-has not yet been applied? That patch effectively allows some clocks
-to be disabled, that have previously been marked as critical (and
-thus always-on).
+The tree seems to be more or less what is working on Rock 5B and
+EVB1. Please try a partial revert, which just undos the removal of
+RK3588_LINKED_CLK (the define and the usage of the define). If that
+works the next step would be to step-by-step remove usage of
+RK3588_LINKED_CLK again until finding the clock that needs to be
+critical.
 
-If that results in a boot lockup, I expect you have a peripheral
-driver, that does not enable a required clock (e.g. because of a
-missing clock reference).
-
-I assume you have a bunch of other patches applied on top of
-upstream and not just this one? In that case it might be sensible to
-first apply this patch, do a test boot (it hopefully boots). Then
-step-by-step re-add the other patches and check which one breaks
-when being combined with this patch.
-
-P.S.: I plan to send a v9 of this patch once 6.9-rc1 has been tagged
-and will split it, so that the removal of CLK_IS_CRITICAL is done in
-a separate patch.
-
-Greetings,
+Thanks,
 
 -- Sebastian
 
---73sgraorjqr7grra
+--i6ww3rv7vsc4trrr
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmXrEkYACgkQ2O7X88g7
-+poj8BAAkgTQTuX2gUF/opfF38TkGqXLmP9Lash+wOIGQaBo67HrPCb5ykmPiCAE
-SAY3oxobY4X/H9y3hMxCuOEK7hbh3hRF14LRcB9fc8Bc7cBtvmVnxAHAe5W/ZvMG
-f2IXHJah83GcWtt2lY1q2YYa+GBARW4dQ8lmdY6UJm7oRiMhrMr55XDe1Zl0VNjh
-53XwercpOLlA6CslzS/SYhmcSMw72Wad/KHjCgB5o6r+Gyk26FVfD/mcWxaFxa/u
-PPRYoLbueUxaPgh96RjO/FgXE8eWEI38fnykFSgBLJx+9qIHZZYPWLIyUSJrgZoN
-trZPcnz6JbWwQDRNE4Cpe2rFLJbGjDez20lJqQeCPJB5yW0l9JqR5x1+AkseWbMY
-rSJCNUL4/X6b4o9midFGwbr1ycE9pP/Rr2OpBftBmI3GwCWokrEVuCRSc83q8nkY
-8JGQcE9LHyQYA2P8gGQjFvdKB0eyF+m2xy9OgrYEGHDOttvA6U+vpDnXVZaN/Dqc
-nThjn0QulcTYnjyFxO6PynrVy5REVoPQLn5HrS8wvgXmKd7Cj8aoCOcuL9CNeCAc
-hOFWLdSzqDEKGwjTBJdgOtq6PorHwAajV+ZRPD7stYT5XGkNC6CAP0USgovLODXb
-4Ao2LokVxOcDEqIgFoGy14ye3HkPlTmC4h2eXprb2KdaXqPZxOE=
-=ekYF
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmXrGcAACgkQ2O7X88g7
++poVbg//UJ3XmMkd6xZv540xz36f77DgCd0fGZQ4aDs6BquhWebJOq0ZeYy/rKJp
+C+zZWWDTU3LMeOxd4AaNcPom3gxMcMNtq1iozq5lcLShj6iZF1i2MQkdKAD6SZu1
+aTWSIfcWgkb0hRVJsiDEh0rO1Dx1BZLTvDz8XoJXBjU3p1e9NTg0qo/Oexdrp/6U
+JSFA51qpZiBXKflT6WBWkS1WnqKtQxZaQPUHVpie2t0slipvibk8TH3YU2x6rFKr
+iX3mMjvGqZJajHWZpD6U2n8gWmmHkLYXE4/HZIWXpI+ZfzeXd2ztM+ok6szMzj0E
+RhuTKgQWgJw8MRXq3UnLnWSIpIVNTEVp4tUOixAEHfiQNtFeP63q7WPK7QCKKoEp
+JFoBf5tK6yE/2JAkocBceSUa3yP9hVwX8Cj5AWgqYODtJtKfpmDBUq9i0q9SABtW
+JgAGVXDa5DFl+uR5gpKb+NS4gj+JNvHutMvSYUdOv+kjdPeywjQ23hbWxzIYQ0sV
+Ixy0cIzSZAq5Yj4O7h+IRktdAiV9wRBGF4EY6NWKVInp5Ebgmu3yKgykWJUnU6jE
++DHdsH4daIF/kXG/fS7ZskGLbZjQxgATydpU2d+0q62JGNQMFClG5LIFTOGk56+4
+hx6rDthq1plpMB1AjI45SZJcbkMBg6bPLS2sXqwK3606HzBEdm4=
+=SQIQ
 -----END PGP SIGNATURE-----
 
---73sgraorjqr7grra--
+--i6ww3rv7vsc4trrr--
 
 
---===============2748222129135939088==
+--===============9037398716033042424==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -155,5 +168,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2748222129135939088==--
+--===============9037398716033042424==--
 
