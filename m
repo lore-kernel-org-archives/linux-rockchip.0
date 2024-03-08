@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C052C54E4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Mar 2024 22:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59DBC54E4A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Mar 2024 08:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QDKglTZa2reIpeKIctCUlMIMUCj5gHUhFAGXO/9HNcg=; b=hJNlAts2RsjBtow+kN6ncKVuql
-	ZQCN+2SURz/qPaLrco0VUmMpmK8wjN6tD4F4sJpSZC2gFvjzPo348VFH6aHZO8BqeiiS5gnbcCIBO
-	ZXDDKir24Es3eCCxhHWxWJS7NWSfoGGB1xle+MXSAlo4CoEPB1Ug3tBa4oE+PPEWE30w48niP6Oks
-	gXgzE1qPKwJrmUzpTyGYk9yvHppY1hNMxRomVn6S6NInPci7qMrDs8r+3Zaj/77JOuGc14Ne53swH
-	kZ9Xazb+Zeao2efKz/HQRwLplUGVoww3qc6x0pzCDD6uV961i9rqb2bAizPiM3y126W4vgNgOmI8g
-	0ubEhaJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DTOyq//8ozxJxChN40ShFeVuqTQovdjjIJsqgOD2prc=; b=XyhZxez8yLBEnF
+	qGkcMRe37KJBkcLYjbL0AkU3xMEY0UmXuTJJwf8XJpZplUuGMX4CV6+O+Crx56B+khe57MTZ0RHP5
+	uQQGmEabglRsBBHJvLUSLsr3m/9/Iq0tZLEcr+P0eFC7cv8rrfzJpvnPSkpmsO+GFuQuCez9ieqI0
+	ZWy8pRp3JgUunWzSpInTTmZ8xSB0UHdce8V+kB3Onsz8ZLRfSno5S47DO8Jihnz5k0utEqS+PHMUT
+	gJOQKVz1ho3IOa4E5tnHFcRnU3fij5G+b2qQ6GY40W864RTKlwpT1kLpFKTQHpjR3zBb1WJ8JTl/h
+	a2LXW3zWS1K4yN9tPu/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riM2Q-00000006cAM-0dM4;
-	Thu, 07 Mar 2024 22:16:30 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1riVlH-00000008MPK-0pav;
+	Fri, 08 Mar 2024 08:39:27 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1riM2L-00000006c6H-0hMF;
-	Thu, 07 Mar 2024 22:16:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1709849780;
-	bh=DpKv8+zh40mMKv9HsdZy62wSyncuoMvp0XHEDRkG/pM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=1ipGdxx9R/KM1YayByjAX69n3EZZ1SnPcRSpmdHGoZRBd/jWll+/OsRrlM5PnT1zp
-	 mYTGZchDIicAK5C1x17U+GFVBbuICU67P0FoLOIpTgtnubby/VI4PXbtHPk9Z/IGD9
-	 /VK4XiPDraxP2G5m2dMXs1LD5KyY0P1QvJvDKNXhhNmEuYLEApYh5D+T0RCnjTKV0R
-	 Qc5VByAGW0efIk3fQ21yEw0t7oIzkxbSa4qnxoKWJM8SDiNs7RmOYZ9FDxnP8RypdL
-	 fG4rdDNAhHny3oBBY1lxmv6F+BPh+Kp6eLnkgYnjQiF/fkr4Mwbq+kE8FrnFBzbpUR
-	 REBFpRtmf1tLA==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	id 1riVlC-00000008MMT-1uou;
+	Fri, 08 Mar 2024 08:39:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1709887162; x=1741423162;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=+0Zk9YrNAPHRCrDTW6MNWvjCjE1nDUbXvpf0eiRTAcI=;
+  b=DZ/RuT84EcmKHB/d5p40ERv+AijVFUxJfdmmzYWrhXasIdDj+V7w/guz
+   dTUv2qUNpMjEqk9J52rQU3vUm0JtbIyyW42t6ECk5gchvfJNUNZmH+q62
+   pLtuW4jqcvUZlf4FzFVpT3bo0GjLPAaTfKu+io6YhPmzK3jVtz+Jy/XOQ
+   aIpxPEHRI4RyYas6ESoXtYW70avxQXMCzrgZicNyBtWzWKL67MbSJdoBA
+   mCO//IuDBv3KfpqzYdmoBytdm1JjGs4jGisTMeh+bLF/pxcG57TxmOrKV
+   dmA3Af08OWzMB/iGu2FbW8YhNWvfBl2ru7bp7BP/sm0PGgsr8WKn4N/5D
+   g==;
+X-IronPort-AV: E=Sophos;i="6.07,109,1708383600"; 
+   d="scan'208";a="35803051"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 08 Mar 2024 09:39:17 +0100
+Received: from steina-w.localnet (steina-w.tq-net.de [10.123.53.25])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9822037804B2;
-	Thu,  7 Mar 2024 22:16:20 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 1B1BD1060B10; Thu,  7 Mar 2024 23:16:20 +0100 (CET)
-Date: Thu, 7 Mar 2024 23:16:20 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Dragan Simic <dsimic@manjaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Chen-Yu Tsai <wens@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/5] RK3588 and Rock 5B dts additions: thermal, OPP
- and fan
-Message-ID: <pkyne4g2cln27dcdu3jm7bqdqpmd2kwkbguiolmozntjuiajrb@gvq4nupzna4o>
-References: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
- <j3krazypdc7gsvnp4kcocaftxsbjrfhj6nr2kf2cieo4bjxbv7@bqdfbirk5tei>
- <CABjd4Yxs9b0XDXYfdnmT08BQnsJLonRy4X-g73J67yeGw3xL+w@mail.gmail.com>
- <CABjd4YzTL=5S7cS8ACNAYVa730WA3iGd5L_wP1Vn9=f83RCORA@mail.gmail.com>
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 4074628007C;
+	Fri,  8 Mar 2024 09:39:17 +0100 (CET)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Wick <sebastian.wick@redhat.com>, Ville =?ISO-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>
+Subject: Re: [PATCH v8 05/27] drm/tests: Add output bpc tests
+Date: Fri, 08 Mar 2024 09:39:18 +0100
+Message-ID: <1788224.VLH7GnMWUR@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <20240307-kms-hdmi-connector-state-v8-5-ef6a6f31964b@kernel.org>
+References: <20240307-kms-hdmi-connector-state-v8-0-ef6a6f31964b@kernel.org> <20240307-kms-hdmi-connector-state-v8-5-ef6a6f31964b@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <CABjd4YzTL=5S7cS8ACNAYVa730WA3iGd5L_wP1Vn9=f83RCORA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240307_141625_847486_662BDD74 
-X-CRM114-Status: GOOD (  87.81  )
+X-CRM114-CacheID: sfid-20240308_003922_926636_9A251C83 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,338 +73,169 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7923711106651122391=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime,
 
---===============7923711106651122391==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gfp7br4h7lphbhvl"
-Content-Disposition: inline
+Am Donnerstag, 7. M=E4rz 2024, 14:38:32 CET schrieb Maxime Ripard:
+> Now that we're tracking the output bpc count in the connector state,
+> let's add a few tests to make sure it works as expected.
+> =
 
+> Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/tests/Makefile                     |   1 +
+>  .../gpu/drm/tests/drm_atomic_state_helper_test.c   | 436 +++++++++++++++=
+++++++
+>  drivers/gpu/drm/tests/drm_connector_test.c         | 140 +++++++
+>  drivers/gpu/drm/tests/drm_kunit_edid.h             | 106 +++++
+>  4 files changed, 683 insertions(+)
+> =
 
---gfp7br4h7lphbhvl
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> [snip]
+> diff --git a/drivers/gpu/drm/tests/drm_kunit_edid.h b/drivers/gpu/drm/tes=
+ts/drm_kunit_edid.h
+> new file mode 100644
+> index 000000000000..2bba316de064
+> --- /dev/null
+> +++ b/drivers/gpu/drm/tests/drm_kunit_edid.h
+> @@ -0,0 +1,106 @@
+> +#ifndef DRM_KUNIT_EDID_H_
+> +#define DRM_KUNIT_EDID_H_
+> +
+> +/*
+> + * edid-decode (hex):
+> + *
+> + * 00 ff ff ff ff ff ff 00 31 d8 2a 00 00 00 00 00
+> + * 00 21 01 03 81 a0 5a 78 02 00 00 00 00 00 00 00
+> + * 00 00 00 20 00 00 01 01 01 01 01 01 01 01 01 01
+> + * 01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c
+> + * 45 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
+> + * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 32
+> + * 46 1e 46 0f 00 0a 20 20 20 20 20 20 00 00 00 10
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 92
+> + *
+> + * 02 03 1b 81 e3 05 00 20 41 10 e2 00 4a 6d 03 0c
+> + * 00 12 34 00 28 20 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> + * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 d0
+> + *
+> + * ----------------
+> + *
+> + * Block 0, Base EDID:
+> + *   EDID Structure Version & Revision: 1.3
+> + *   Vendor & Product Identification:
+> + *     Manufacturer: LNX
+> + *     Model: 42
+> + *     Made in: 2023
+> + *   Basic Display Parameters & Features:
+> + *     Digital display
+> + *     DFP 1.x compatible TMDS
+> + *     Maximum image size: 160 cm x 90 cm
+> + *     Gamma: 2.20
+> + *     Monochrome or grayscale display
+> + *     First detailed timing is the preferred timing
+> + *   Color Characteristics:
+> + *     Red  : 0.0000, 0.0000
+> + *     Green: 0.0000, 0.0000
+> + *     Blue : 0.0000, 0.0000
+> + *     White: 0.0000, 0.0000
+> + *   Established Timings I & II:
+> + *     DMT 0x04:   640x480    59.940476 Hz   4:3     31.469 kHz     25.1=
+75000 MHz
+> + *   Standard Timings: none
+> + *   Detailed Timing Descriptors:
+> + *     DTD 1:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.5000=
+00 MHz (1600 mm x 900 mm)
+> + *                  Hfront   88 Hsync  44 Hback  148 Hpol P
+> + *                  Vfront    4 Vsync   5 Vback   36 Vpol P
+> + *     Display Product Name: 'Test EDID'
+> + *     Display Range Limits:
+> + *       Monitor ranges (GTF): 50-70 Hz V, 30-70 kHz H, max dotclock 150=
+ MHz
+> + *     Dummy Descriptor:
+> + *   Extension blocks: 1
+> + * Checksum: 0x92
+> + *
+> + * ----------------
+> + *
+> + * Block 1, CTA-861 Extension Block:
+> + *   Revision: 3
+> + *   Underscans IT Video Formats by default
+> + *   Native detailed modes: 1
+> + *   Colorimetry Data Block:
+> + *     sRGB
+> + *   Video Data Block:
+> + *     VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.50=
+0000 MHz
+> + *   Video Capability Data Block:
+> + *     YCbCr quantization: No Data
+> + *     RGB quantization: Selectable (via AVI Q)
+> + *     PT scan behavior: No Data
+> + *     IT scan behavior: Always Underscanned
+> + *     CE scan behavior: Always Underscanned
+> + *   Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
+> + *     Source physical address: 1.2.3.4
+> + *     Maximum TMDS clock: 200 MHz
+> + *     Extended HDMI video details:
+> + * Checksum: 0xd0  Unused space in Extension Block: 100 bytes
+> + */
+> +const unsigned char test_edid_hdmi_1080p_rgb_max_200mhz[] =3D {
 
-Hi,
+Shouldn't this be a static one? It's defined in a header.
 
-On Thu, Mar 07, 2024 at 04:38:24PM +0400, Alexey Charkov wrote:
-> On Tue, Mar 5, 2024 at 12:06=E2=80=AFPM Alexey Charkov <alchark@gmail.com=
-> wrote:
-> > On Mon, Mar 4, 2024 at 9:51=E2=80=AFPM Sebastian Reichel
-> > <sebastian.reichel@collabora.com> wrote:
-> > > On Thu, Feb 29, 2024 at 11:26:31PM +0400, Alexey Charkov wrote:
-> > > > This enables thermal monitoring and CPU DVFS on RK3588(s), as well =
-as
-> > > > active cooling on Radxa Rock 5B via the provided PWM fan.
-> > > >
-> > > > Some RK3588 boards use separate regulators to supply CPUs and their
-> > > > respective memory interfaces, so this is handled by coupling those
-> > > > regulators in affected boards' device trees to ensure that their
-> > > > voltage is adjusted in step.
-> > > >
-> > > > In this revision of the series I chose to enable TSADC for all boar=
-ds
-> > > > at .dtsi level, because:
-> > > >  - The defaults already in .dtsi should work for all users, given t=
-hat
-> > > >    the CRU based resets don't need any out-of-chip components, and
-> > > >    the CRU vs. PMIC reset is pretty much the only thing a board mig=
-ht
-> > > >    have to configure / override there
-> > > >  - The boards that have TSADC_SHUT signal wired to the PMIC reset l=
-ine
-> > > >    can still choose to override the reset logic in their .dts. Or s=
-tay
-> > > >    with CRU based resets, as downstream kernels do anyway
-> > > >  - The on-by-default approach helps ensure thermal protections are =
-in
-> > > >    place (emergency reset and throttling) for any board even with a
-> > > >    rudimentary .dts, and thus lets us introduce CPU DVFS with better
-> > > >    peace of mind
-> > > >
-> > > > Fan control on Rock 5B has been split into two intervals: let it sp=
-in
-> > > > at the minimum cooling state between 55C and 65C, and then accelera=
-te
-> > > > if the system crosses the 65C mark - thanks to Dragan for suggestin=
-g.
-> > > > This lets some cooling setups with beefier heatsinks and/or larger
-> > > > fan fins to stay in the quietest non-zero fan state while still
-> > > > gaining potential benefits from the airflow it generates, and
-> > > > possibly avoiding noisy speeds altogether for some workloads.
-> > > >
-> > > > OPPs help actually scale CPU frequencies up and down for both cooli=
-ng
-> > > > and performance - tested on Rock 5B under varied loads. I've split
-> > > > the patch into two parts: the first containing those OPPs that seem
-> > > > to be no-regret with general consensus during v1 review [2], while
-> > > > the second contains OPPs that cause frequency reductions without
-> > > > accompanying decrease in CPU voltage. There seems to be a slight
-> > > > performance gain in some workload scenarios when using these, but
-> > > > previous discussion was inconclusive as to whether they should be
-> > > > included or not. Having them as separate patches enables easier
-> > > > comparison and partial reversion if people want to test it under
-> > > > their workloads, and also enables the first 'no-regret' part to be
-> > > > merged to -next while the jury is still out on the second one.
-> > > >
-> > > > [1] https://lore.kernel.org/linux-rockchip/1824717.EqSB1tO5pr@bagen=
-d/T/#ma2ab949da2235a8e759eab22155fb2bc397d8aea
-> > > > [2] https://lore.kernel.org/linux-rockchip/CABjd4YxqarUCbZ-a2XLe3TW=
-J-qjphGkyq=3DwDnctnEhdoSdPPpw@mail.gmail.com/T/#m49d2b94e773f5b532a0bb5d3d7=
-664799ff28cc2c
-> > > >
-> > > > Signed-off-by: Alexey Charkov <alchark@gmail.com>
-> > > > ---
-> > > > Changes in v3:
-> > > > - Added regulator coupling for EVB1 and QuartzPro64
-> > > > - Enabled the TSADC for all boards in .dtsi, not just Rock 5B (than=
-ks ChenYu)
-> > > > - Added comments regarding two passive cooling trips in each zone (=
-thanks Dragan)
-> > > > - Fixed active cooling map numbering for Radxa Rock 5B (thanks Drag=
-an)
-> > > > - Dropped Daniel's Acked-by tag from the Rock 5B fan patch, as ther=
-e's been quite some
-> > > >   churn there since the version he acknowledged
-> > > > - Link to v2: https://lore.kernel.org/r/20240130-rk-dts-additions-v=
-2-0-c6222c4c78df@gmail.com
-> > > >
-> > > > Changes in v2:
-> > > > - Dropped the rfkill patch which Heiko has already applied
-> > > > - Set higher 'polling-delay-passive' (100 instead of 20)
-> > > > - Name all cooling maps starting from map0 in each respective zone
-> > > > - Drop 'contribution' properties from passive cooling maps
-> > > > - Link to v1: https://lore.kernel.org/r/20240125-rk-dts-additions-v=
-1-0-5879275db36f@gmail.com
-> > > >
-> > > > ---
-> > > > Alexey Charkov (5):
-> > > >       arm64: dts: rockchip: enable built-in thermal monitoring on R=
-K3588
-> > > >       arm64: dts: rockchip: enable automatic active cooling on Rock=
- 5B
-> > > >       arm64: dts: rockchip: Add CPU/memory regulator coupling for R=
-K3588
-> > > >       arm64: dts: rockchip: Add OPP data for CPU cores on RK3588
-> > > >       arm64: dts: rockchip: Add further granularity in RK3588 CPU O=
-PPs
-> > > >
-> > > >  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |  12 +
-> > > >  .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |  12 +
-> > > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  30 +-
-> > > >  arch/arm64/boot/dts/rockchip/rk3588s.dtsi          | 385 +++++++++=
-+++++++++++-
-> > > >  4 files changed, 437 insertions(+), 2 deletions(-)
-> > >
-> > > I'm too busy to have a detailed review of this series right now, but
-> > > I pushed it to our CI and it results in a board reset at boot time:
-> > >
-> > > https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/=
--/jobs/300950
-> > >
-> > > I also pushed just the first three patches (i.e. without OPP /
-> > > cpufreq) and that boots fine:
-> > >
-> > > https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/=
--/jobs/300953
-> >
-> > Thank you for testing these! I've noticed in the boot log that the CI
-> > machine uses some u-boot 2023.07 - is that a downstream one? Any
-> > chance to compare it to 2023.11 or 2024.01 from your (Collabora)
-> > integration tree?
-> >
-> > I use 2023.11 from your integration tree, with a binary bl31, and I'm
-> > not getting those resets even under prolonged heavy load (I rebuild
-> > Chromium with 8 concurrent compilation jobs as the stress test -
-> > that's 14 hours of heavy CPU, memory and IO use). Would be interesting
-> > to understand if it's just a 'lucky' SoC specimen on my side, or if
-> > there is some dark magic happening differently on my machine vs. your
-> > CI machine.
-> >
-> > Thinking that maybe if your CI machine uses a downstream u-boot it
-> > might be leaving some extra hardware running (PVTM?) which might do
-> > weird stuff when TSADC/clocks/voltages get readjusted by the generic
-> > cpufreq driver?..
-> >
-> > > Note, that OPP / cpufreq works on the same boards in the CI when
-> > > using the ugly-and-not-for-upstream cpufreq driver:
-> > >
-> > > https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/=
--/commit/9c90c5032743a0419bf3fd2f914a24fd53101acd
-> > >
-> > > My best guess right now is, that this is related to the generic
-> > > driver obviously not updating the GRF read margin registers.
-> >
-> > If it was about memory read margins I believe I would have been
-> > unlikely to get my machine to work reliably under heavy load with the
-> > default ones, but who knows...
->=20
-> Sebastian's report led me to investigate further how all those things
-> are organized in the downstream code and in hardware, and what could
-> be a pragmatic way forward with upstream enablement. It turned out to
-> be quite a rabbit hole frankly, with multiple layers of abstraction
-> and intertwined code in different places.
->=20
-> Here's a quick summary for future reference:
->  - CPU clocks on RK3588 are ultimately managed by the ATF firmware,
-> which provides an SCMI service to expose them to the kernel
->  - ATF itself doesn't directly set any clock frequencies. Instead, it
-> accepts a target frequency via SCMI and converts it into an oscillator
-> ring length setting for the PVPLL hardware block (via a fixed table
-> lookup). At least that's how it's done in the recently released TF-A
-> bl31 code [1] - perhaps the binary bl31 does something similar
->  - U-boot doesn't seem to mess with CPU clocks, PVTM or PVPLL
->  - PVPLL produces a reference clock to feed to the CPUs, which depends
-> on the configured oscillator ring length but also on the supply
-> voltage, silicon quality and perhaps temperature too. ATF doesn't know
-> anything about voltages or temperatures, so it doesn't guarantee that
-> the requested frequency is matched by the hardware
->  - PVPLL frequency generation is bypassed for lower-frequency OPPs, in
-> which case the target frequency is directly fed by the ATF to the CRU.
-> This happens for both big-core and little-core frequencies below 816
-> MHz
->  - Given that requesting a particular frequency via SCMI doesn't
-> guarantee that it will be what the CPUs end up running at, the vendor
-> kernel also does a runtime voltage calibration for the supply
-> regulators, by adjusting the supply voltage in minimum regulator steps
-> until the frequency reported by PVPLL gets close to the requested one
-> [2]. It then overwrites OPP provided voltage values with the
-> calibrated ones
->  - There's also some trickery with preselecting OPP voltage sets using
-> the "-Lx" suffix based on silicon quality, as measured by a "leakage"
-> value stored in an NVMEM cell and/or the PVTM frequency generated at a
-> reference "midpoint" OPP [3]. Better performing silicon gets to run at
-> lower default supply voltages, thus saving power
->  - Once the OPPs are selected and calibrated, the only remaining
-> trickery is the two supply regulators per each CPU cluster (one for
-> the CPUs and the other for the memory interface)
->  - Another catch, as Sebastian points out, is that memory read margins
-> must be adjusted whenever the memory interface supply voltage crosses
-> certain thresholds [4]. This has little to do with CPUs or
-> frequencies, and is only tangentially related to them due to the
-> dependency chain between the target CPU frequency -> required CPU
-> supply voltage -> matching memory interface supply voltage -> required
-> read margins
->  - At reset the ATF switches all clocks to the lowest 408 MHz [6], so
-> setting it to anything in kernel code (as the downstream driver does)
-> seems redundant
->=20
-> All in all, it does indeed sound like Collabora's CI machine boot-time
-> resets are most likely caused by the missing memory read margin
-> settings in my patch series. Voltage values in the OPPs I used are the
-> most conservative defaults of what the downstream DT has, and PVPLL
-> should be able to generate reasonable clock speeds with those (albeit
-> likely suboptimal, due to them not being tuned to the particular
-> silicon specimen). And there is little else to differ frankly.
->=20
-> As for the way forward, it would be great to know the opinions from
-> the list. My thinking is as follows:
->  - I can introduce memory read margin updates as the first priority,
-> leaving voltage calibration and/or OPP preselection for later (as
-> those should not affect system stability at current default values,
-> perhaps only power efficiency to a certain extent)
->  - CPUfreq doesn't sound like the right place for those, given that
-> they have little to do with either CPU or freq :)
->  - I suggest a custom regulator config helper to plug into the OPP
-> layer, as is done for TI OMAP5 [6]. At first, it might be only used
-> for looking up and setting the correct memory read margin value
-> whenever the cluster supply voltage changes, and later the same code
-> can be extended to do voltage calibration. In fact, OMAP code is there
-> for a very similar purpose, but in their case optimized voltages are
-> pre-programmed in efuses and don't require runtime recalibration
->  - Given that all OPPs in the downstream kernel list identical
-> voltages for the memory supply as for the CPU supply, I don't think it
-> makes much sense to customize the cpufreq driver per se.
-> Single-regulator approach with the generic cpufreq-dt and regulator
-> coupling sounds much less invasive and thus lower-maintenance
+Best regards,
+Alexander
 
-Sorry for my late response.
+> +  0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x2a, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x01, 0x03, 0x81, 0xa0, 0x5a, 0x78,
+> +  0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20,
+> +  0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
+> +  0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x3a, 0x80, 0x18, 0x71, 0x38,
+> +  0x2d, 0x40, 0x58, 0x2c, 0x45, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
+> +  0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
+> +  0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x32,
+> +  0x46, 0x00, 0x00, 0xc4, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+> +  0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x41, 0x02, 0x03, 0x1b, 0x81,
+> +  0xe3, 0x05, 0x00, 0x20, 0x41, 0x10, 0xe2, 0x00, 0x4a, 0x6d, 0x03, 0x0c,
+> +  0x00, 0x12, 0x34, 0x00, 0x28, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +  0x00, 0x00, 0x00, 0xd0
+> +};
+> +
+> +#endif // DRM_KUNIT_EDID_H_
+> =
 
-When doing some more tests I noticed, that the CI never build the
-custom driver and thus never did any CPU frequency scaling at all.
-I only used it for my own tests (on RK3588 EVB1). When enabling the
-custom driver, the CI has the same issues as your series. So my
-message was completely wrong, sorry about that.
-
-Regarding U-Boot: The CI uses "U-Boot SPL 2023.07-rc4-g46349e27";
-the last part is the git hash. This is the exact U-Boot source tree
-being used:
-
-https://gitlab.collabora.com/hardware-enablement/rockchip-3588/u-boot/-/com=
-mits/46349e27/
-
-This was one of the first U-Boot trees with Rock 5B Ethernet support
-and is currently flashed to the SPI flash memory of the CI boards.
-The vendor U-Boot tree is a lot older. Also it is still using the
-Rockchip binary BL31. We have plans to also CI boot test U-Boot,
-but currently nobody has time to work on this. I don't think there should
-be any relevant changes between upstream 2023.07 and 2023.11 that could
-explain this. But it's the best lead now, so I will try to find some time
-for doing further tests related to this in the next days.
-
-Regarding the voltage calibration - One option would be to do this
-calibration at boot time (i.e. in U-Boot) and update the voltages
-in DT accordingly.
-
-Greetings,
-
--- Sebastian
-
-> Best regards,
-> Alexey
->=20
-> [1] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/truste=
-d-firmware-a/-/blob/rk3588/plat/rockchip/rk3588/drivers/scmi/rk3588_clk.c?r=
-ef_type=3Dheads#L303
-> [2] https://github.com/radxa/kernel/blob/c428536281d69aeb2b3480f65b2b2272=
-10b61535/drivers/soc/rockchip/rockchip_opp_select.c#L804
-> [3] https://github.com/radxa/kernel/blob/c428536281d69aeb2b3480f65b2b2272=
-10b61535/drivers/soc/rockchip/rockchip_opp_select.c#L1575
-> [4] https://github.com/radxa/kernel/blob/c428536281d69aeb2b3480f65b2b2272=
-10b61535/drivers/cpufreq/rockchip-cpufreq.c#L405
-> [5] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/truste=
-d-firmware-a/-/blob/rk3588/plat/rockchip/rk3588/drivers/scmi/rk3588_clk.c?r=
-ef_type=3Dheads#L2419
-> [6] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tr=
-ee/drivers/opp/ti-opp-supply.c#n275
-
---gfp7br4h7lphbhvl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmXqPKwACgkQ2O7X88g7
-+prZCw//ZaXCSSy30wflJefeTznZBivyMTnS5Rzh060piQw2tDGpV6F0cqW2hhth
-8x29EdKOZhhZSmwI8A6H58eXdikmWYKJj94e2NlrHfSXYLm/3smN1z4LsT9HQaEy
-xmouXQ8M73oG4n9qmaJP3dM1JZKkLfAENiSXI/HKnpyMgKR89JBp9wDU9u1MAwpw
-ziY+iAf8vY9ejaybG9rSOYH/Tp7lyi9bj5vGcBsc/W1Wd0OkYYB4Fp7YrAe+sS09
-zH6NI5DWznth6Z/k1YUGbT4yECZmhXWwOnSWrBlXbVXVe2e9zt1Cu3q8kGiB0McV
-ffOoMn6DE6JWOdGkSIkIdZzgzbsxdmn+zZkHYhl0kP61RUzWa6+dLPGzLHjHbuUj
-AjQkMIvqEp8HH6qbYXKxxOMJhcobAPcBRaGiD76EmqspI1Cop1M6CmmftjmKloX6
-aDWQJg1Z8OlP99XW28LPbh7m0UagwE/LwcWbCmHLbrjnove0qYfYAcNlI6KUJC54
-FWEn7ddZM5go/Hk1dBgIQZzv+WvTrQ2m6esc47uOhwNJxm4SRqt0na6BvOCE5oCN
-BkraDXBMs98RKxlIwXHCVVQcMXvTtDtaUiFqSY4qR845+N1ASiIQGSbxjWMd3d5I
-YmfxHRYvkdTVPvBaETdkBz1sVmmNXKSsiPDLQpoTzQXSSMv1ZQQ=
-=/5Kc
------END PGP SIGNATURE-----
-
---gfp7br4h7lphbhvl--
+> =
 
 
---===============7923711106651122391==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+-- =
+
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7923711106651122391==--
-
