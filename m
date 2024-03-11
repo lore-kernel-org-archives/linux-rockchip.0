@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A6DC54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Mar 2024 10:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D558BC54E60
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Mar 2024 14:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QIb/MIvYi9bogKjrPZHYI/78GlliUHzEdXiwHRvIYXY=; b=xXYGlcg2kijaVvVOMniCLo5f3/
-	ChQ/F93yAMFMaQrQbd1uyfx76Rs6Rt4S36y5sHdkwLoT1tjyS5ZlU8IqNAr0xOlfCfZoBalkRVF4V
-	t9MiRCQZa+QI+qpYOmKAWFLybKTHTBkSsIVTYpqPl59ji68PIgnRJG5R9J+vyKZhU5KKy2lhBF6cI
-	DTuU3aOzEZpA7PutrmTFtus3xhdz6aqSi7EvyRnK5Y7XwJWlNvkdXh2icUHPkXV0JFTZGudWbI80K
-	qfPqx6+vaTBZx/oXdbkuh3ybLTjeBUa1gzBtlLkmlRqFiCZdNyoczYhYNOutQ9jh+csuUzM8tkXyQ
-	EsU2v8vg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vcdy4UMxqryja8AgfLnhFnWSoubewqMw5EJHXZzL4WE=; b=DE8cBDmOeJ+gvr
+	R7r0oeEGEB59vV2a2Ll8B2mJqZn65m7nwaW/effcs/dgB4R1VZTETTHf2Doblrbp+ZclVioDby+iK
+	UJE1KJYXKF0epsAGLS4/4E/0ybLBnPbWSpXq0f/xP/TMjXdfBTT6vId+193nAPrGKeuf+vY3fEKEm
+	FAFF9/N1qnS7b/JGsPZAepyTtPyIPMH6K6KAeL7s++jH1mSjvcg5bu52ec8GAc0hUoVoT/lw1SAIl
+	w/UhllceN6h8N2dLdX9Mm/ta54dgxu4yPZni8txcyXE6LrafhXQBLZBFTzKkQePLk+1zlsVsFdqHC
+	s6vrHzjmPSOrgLOSNv7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjcq2-000000015eV-2vcn;
-	Mon, 11 Mar 2024 10:24:58 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rjgyz-00000001sOH-3c69;
+	Mon, 11 Mar 2024 14:50:30 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rjcpu-000000015aP-3Spn;
-	Mon, 11 Mar 2024 10:24:52 +0000
+	id 1rjgyg-00000001sCA-3ZKc;
+	Mon, 11 Mar 2024 14:50:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id AAD04CE1105;
+	Mon, 11 Mar 2024 14:50:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94002C43394;
+	Mon, 11 Mar 2024 14:50:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1710168603;
+	bh=uITNeO8iu5HQmM+XePNnDpEdGi4EM3JrAF8vMV6INqk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=moX67BX/RU8gfnyaIS/Z7bIbGxYt5vU6SN9IsTT4D+neOqyIc/IzMabBBxRhlqfHE
+	 OSL0oh+2QMYTeTqIlInO+xgAFyUymB+Fss9vDf0GLEDgse/ThPQJvo5C4MJQ6wVuwc
+	 tJzrfwfnQCbHiMWTNYe6alU3dXP3osvJb+gvk7JRgtkguwcmAKx9Ro0OMkuPJQ/lch
+	 ojnphbjBs12ZYAo16lbAXVYgl/dXKNCFpAPXNyRAPgxWB04+2UV55ulMsUScb45WlN
+	 NL0w9ldIeYVnvwi1xUgxNzlvbl8JCIA3gvcjRHLQDShHJKH+xQjqV/a8sG0SFTLA31
+	 yc7bZvqHFafsA==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Mon, 11 Mar 2024 15:49:29 +0100
+Subject: [PATCH v9 01/27] drm/connector: Introduce an HDMI connector
+ initialization function
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1710152684;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ea2sTiT8afFcKIn8ydC5cAZuUU4HxS2+XT6hhynUCM4=;
-	b=aZcFwatqGccBCoJ9Z6XrEHqnF05ETFlmmhxHizHc5IjaUU++yTBM+Cq2CkQER/44sCsbfF
-	fCaGno+etdltB5vbIF8HH6XohXi/gpJPkbRgHOQI9/9otUX4JsAzjGlqv3vwK56ndiXLVE
-	gXpPp8P2eJB4+AP/eOlByEPurMbGx9kDk3l9ZNqdQ4AIoBtBwImSXa05ez8wvF5zIlQmBa
-	iFiM1+UoVGrYiw/0oL50+wN/tEaobWtdeEXgtvkFH5jhwuDHGaaTTUl1lkHWwKcKE5Dnvo
-	Zqc3iVXSKXomK/2fQr534j02B7cJfOaddyj0yOkWj7eSrJWUzS3qpizu6+Thkw==
-Date: Mon, 11 Mar 2024 11:24:41 +0100
-From: Dragan Simic <dsimic@manjaro.org>
-To: Alexey Charkov <alchark@gmail.com>, Kever Yang
- <kever.yang@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Chen-Yu
- Tsai <wens@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Add CPU/memory regulator
- coupling for RK3588
-In-Reply-To: <7e4379931dc6e35ca79a0ec7d27cf590@manjaro.org>
-References: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
- <20240229-rk-dts-additions-v3-3-6afe8473a631@gmail.com>
- <7e4379931dc6e35ca79a0ec7d27cf590@manjaro.org>
-Message-ID: <6908d38e68a77fd3a5633484a97e2821@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Message-Id: <20240311-kms-hdmi-connector-state-v9-1-d45890323344@kernel.org>
+References: <20240311-kms-hdmi-connector-state-v9-0-d45890323344@kernel.org>
+In-Reply-To: <20240311-kms-hdmi-connector-state-v9-0-d45890323344@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, 
+ Sebastian Wick <sebastian.wick@redhat.com>, 
+ =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3792; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=uITNeO8iu5HQmM+XePNnDpEdGi4EM3JrAF8vMV6INqk=;
+ b=owGbwMvMwCX2+D1vfrpE4FHG02pJDKnvpViYZN6tfvotds+GhBv+cq8tnKW4z1cUb9AV5zl1N
+ /HKeVOXjlIWBjEuBlkxRZYYYfMlcadmve5k45sHM4eVCWQIAxenAEzkZAbDP90vD7k5vumc4lh/
+ /+8aLuGQ5vcdTvu+dy3hlJvs8/cY5x1GhiPVlbq3982sTo+bf2qnp3e1DHNW49SSIJWXDCw59Y+
+ usgIA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240311_032451_495815_5459EC1B 
-X-CRM114-Status: GOOD (  25.92  )
+X-CRM114-CacheID: sfid-20240311_075011_720692_DC64C5D4 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,194 +87,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Kever,
+A lot of the various HDMI drivers duplicate some logic that depends on
+the HDMI spec itself and not really a particular hardware
+implementation.
 
-Any chances, please, to have a look at my explanation below, and to
-possibly provide some further insights?  I'd really love to understand
-that better.
+Output BPC or format selection, infoframe generation are good examples
+of such areas.
 
+This creates a lot of boilerplate, with a lot of variations, which makes
+it hard for userspace to rely on, and makes it difficult to get it right
+for drivers.
 
-On 2024-03-01 09:13, Dragan Simic wrote:
-> On 2024-02-29 20:26, Alexey Charkov wrote:
->> RK3588 chips allow for their CPU cores to be powered by a different
->> supply vs. their corresponding memory interfaces, and two of the
->> boards currently upstream do that (EVB1 and QuartzPro64).
-> 
-> The only reasonable explanation, based on the Cortex-A55 and Cortex-A76
-> technical reference manuals (TRMs), and some other documents, including
-> the RK3588 hardware design guide (HDG), is that the 
-> VDD_CPU_BIG0_MEM_S0,
-> VDD_CPU_BIG1_MEM_S0 and VDD_CPU_LIT_MEM_S0 voltages are internally
-> used as the supplies for the SRAM used for the A76's and A55's L1 and
-> L2 caches, which are both per-core and private in the DynamIQ SoC 
-> layout
-> that the RK3588 is based on.
-> 
-> Sure, using "MEM" there is confusing, but actually, the Cortex-A55 and
-> Cortex-A76 refer to the L1 and L2 caches as "memory" in multiple 
-> places.
-> I'd say that's the reason for "MEM" (and "memory", in the RK3588 HDG) 
-> to
-> be used in the board schematics (and in the RK3588 HDG).
-> 
-> The RK3588 HDG specifically allows what the Rock 5B does there, i.e. to
-> basically short the RK3588's individual *_MEM_S0 power inputs to the
-> respective CPU core power supplies, which avoids the need to use 
-> separate
-> voltage regulators for the RK3588's *_MEM_S0 power inputs.
-> 
-> However, I'd really, _really_ love to know why did Rockchip opt to make
-> the power supply voltages separate for the RK3588's L1 and L2 caches,
-> which are, BTW, rated for up to 100 mA for each *_MEM_S0 input, meaning
-> that they present no large loads?  All that under the assumption that
-> my analysis is correct, of course.
-> 
->> The voltage of the memory interface though has to match that of the
->> CPU cores that use it, which downstream kernels achieve by the means
->> of a custom cpufreq driver which adjusts both at the same time.
->> 
->> It seems that regulator coupling is a more appropriate generic
->> interface for it, so this patch introduces coupling to affected
->> device trees to ensure that memory interface voltage is also updated
->> whenever cpufreq switches between CPU OPPs.
-> 
-> I'll verify this a bit later and provide a separate response.
-> 
->> Note that other boards, such as Radxa Rock 5B, define both the CPU
->> and memory interface regulators as aliases to the same DT node, so
->> this doesn't apply there.
-> 
-> Yup, they're actually shorted on the Rock 5B, as I described above.
-> 
->> Signed-off-by: Alexey Charkov <alchark@gmail.com>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts    | 12 ++++++++++++
->>  arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts | 12 ++++++++++++
->>  2 files changed, 24 insertions(+)
->> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
->> b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
->> index de30c2632b8e..dfae67f1e9c7 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
->> @@ -788,6 +788,8 @@ regulators {
->>  			vdd_cpu_big1_s0: dcdc-reg1 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big1_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -800,6 +802,8 @@ regulator-state-mem {
->>  			vdd_cpu_big0_s0: dcdc-reg2 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big0_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -812,6 +816,8 @@ regulator-state-mem {
->>  			vdd_cpu_lit_s0: dcdc-reg3 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_lit_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <950000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -836,6 +842,8 @@ regulator-state-mem {
->>  			vdd_cpu_big1_mem_s0: dcdc-reg5 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big1_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -849,6 +857,8 @@ regulator-state-mem {
->>  			vdd_cpu_big0_mem_s0: dcdc-reg6 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big0_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -873,6 +883,8 @@ regulator-state-mem {
->>  			vdd_cpu_lit_mem_s0: dcdc-reg8 {
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_lit_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <950000>;
->>  				regulator-ramp-delay = <12500>;
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
->> b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
->> index 87a0abf95f7d..9c038450cd7c 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
->> @@ -818,6 +818,8 @@ vdd_cpu_big1_s0: dcdc-reg1 {
->>  				regulator-name = "vdd_cpu_big1_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big1_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -831,6 +833,8 @@ vdd_cpu_big0_s0: dcdc-reg2 {
->>  				regulator-name = "vdd_cpu_big0_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big0_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -844,6 +848,8 @@ vdd_cpu_lit_s0: dcdc-reg3 {
->>  				regulator-name = "vdd_cpu_lit_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_lit_mem_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <550000>;
->>  				regulator-max-microvolt = <950000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -870,6 +876,8 @@ vdd_cpu_big1_mem_s0: dcdc-reg5 {
->>  				regulator-name = "vdd_cpu_big1_mem_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big1_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -884,6 +892,8 @@ vdd_cpu_big0_mem_s0: dcdc-reg6 {
->>  				regulator-name = "vdd_cpu_big0_mem_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_big0_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <1050000>;
->>  				regulator-ramp-delay = <12500>;
->> @@ -910,6 +920,8 @@ vdd_cpu_lit_mem_s0: dcdc-reg8 {
->>  				regulator-name = "vdd_cpu_lit_mem_s0";
->>  				regulator-always-on;
->>  				regulator-boot-on;
->> +				regulator-coupled-with = <&vdd_cpu_lit_s0>;
->> +				regulator-coupled-max-spread = <10000>;
->>  				regulator-min-microvolt = <675000>;
->>  				regulator-max-microvolt = <950000>;
->>  				regulator-ramp-delay = <12500>;
+In the next patches, we'll add a lot of infrastructure around the
+drm_connector and drm_connector_state structures, which will allow to
+abstract away the duplicated logic. This infrastructure comes with a few
+requirements though, and thus we need a new initialization function.
+
+Hopefully, this will make drivers simpler to handle, and their behaviour
+more consistent.
+
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+ drivers/gpu/drm/drm_connector.c | 39 +++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_connector.h     |  5 +++++
+ 2 files changed, 44 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index b0516505f7ae..d9961cce8245 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -450,10 +450,49 @@ int drmm_connector_init(struct drm_device *dev,
+ 
+ 	return 0;
+ }
+ EXPORT_SYMBOL(drmm_connector_init);
+ 
++/**
++ * drmm_connector_hdmi_init - Init a preallocated HDMI connector
++ * @dev: DRM device
++ * @connector: A pointer to the HDMI connector to init
++ * @funcs: callbacks for this connector
++ * @connector_type: user visible type of the connector
++ * @ddc: optional pointer to the associated ddc adapter
++ *
++ * Initialises a preallocated HDMI connector. Connectors can be
++ * subclassed as part of driver connector objects.
++ *
++ * Cleanup is automatically handled with a call to
++ * drm_connector_cleanup() in a DRM-managed action.
++ *
++ * The connector structure should be allocated with drmm_kzalloc().
++ *
++ * Returns:
++ * Zero on success, error code on failure.
++ */
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc)
++{
++	int ret;
++
++	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
++	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
++		return -EINVAL;
++
++	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++EXPORT_SYMBOL(drmm_connector_hdmi_init);
++
+ /**
+  * drm_connector_attach_edid_property - attach edid property.
+  * @connector: the connector
+  *
+  * Some connector types like DRM_MODE_CONNECTOR_VIRTUAL do not get a
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index fe88d7fc6b8f..4491c4c2fb6e 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1902,10 +1902,15 @@ int drm_connector_init_with_ddc(struct drm_device *dev,
+ int drmm_connector_init(struct drm_device *dev,
+ 			struct drm_connector *connector,
+ 			const struct drm_connector_funcs *funcs,
+ 			int connector_type,
+ 			struct i2c_adapter *ddc);
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc);
+ void drm_connector_attach_edid_property(struct drm_connector *connector);
+ int drm_connector_register(struct drm_connector *connector);
+ void drm_connector_unregister(struct drm_connector *connector);
+ int drm_connector_attach_encoder(struct drm_connector *connector,
+ 				      struct drm_encoder *encoder);
+
+-- 
+2.43.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
