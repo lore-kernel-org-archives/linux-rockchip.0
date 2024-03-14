@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F4ADC54E60
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Mar 2024 13:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B86BC54E67
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Mar 2024 14:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7NocgbkZn4bkLwOFGkObPYGaVmISlCZh85OAzzzlycU=; b=JLn0McyBxLU6ww
-	tQ8n7uVswZaTlvcjf3qVoYGQeG5knozeK44X6JLkip5eXSQbT0SPKOsgMFrMLN3YXqCrQ/J9CXzwj
-	Tnv306VeAuHI49rEQxkf7cfGYoOpYl3Vtj609Sm3L3VxC01VeciQUk+cvz3pQa9TXcMrFzlm2WFOu
-	LLDyejv+tlXCpEo+7o6UGhQaMHnLBuBtTYhuKeH8pLxArIfH5wu0X1P96gRoheH06pL1tSCB6M/kw
-	Ddnabh4atu7akkGINubM1R28hGmH8toWUgZaNNB0CaWimFYqx088qbsVIYGqH4da9ypuo7pOu4fno
-	yLnzIXUAd/AtPoDR1KUA==;
+	List-Owner; bh=zTeR1X0KkbyPx61YwiuULBQL1/MtDc2IGb7DrsLcEaI=; b=fV3PrEOyLMVr9m
+	vgGlGbc+5ljy8LPjawemKM84VWjAakskRh3zkjSgqFQ9QPBx3gEdoj5UyIKGC/xwui627+nY0zSrV
+	UeGhKO2zh/q+hF6WKrkIGcwL3kK5LwB2LbGZG3q+MQvxKzB9Rmc+Dq9NgGC0cYk8nv7ksd4I+e7IC
+	5fGnxeN7ttAV4x06F0QvFIwLhP+s1HmJilrOpHIQT9IeVgczcWMcEjRodRSHlfNjsZ6JLJ4xfiXbc
+	T5Xz0op5sRELQIiSZzDZ8snXRy/2ymPdbDuVcjMs16DEUV7jYMjNYySyuNyEALlplzlMMWeR8Uc34
+	7ILpMS5yzSxOs7/YDJqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rklbl-0000000EWAa-0QSc;
-	Thu, 14 Mar 2024 13:58:57 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rklqY-0000000EaN6-1Sk9;
+	Thu, 14 Mar 2024 14:14:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rklbh-0000000EW9N-0vfb
-	for linux-rockchip@lists.infradead.org;
-	Thu, 14 Mar 2024 13:58:54 +0000
+	id 1rklqT-0000000EaMc-3S3C;
+	Thu, 14 Mar 2024 14:14:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 35DE3CE1B2F;
-	Thu, 14 Mar 2024 13:58:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02C3FC433C7;
-	Thu, 14 Mar 2024 13:58:47 +0000 (UTC)
-Message-ID: <83051ba5-4e49-4d65-8d92-7d159dc5e328@xs4all.nl>
-Date: Thu, 14 Mar 2024 14:58:47 +0100
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9B5DD614ED;
+	Thu, 14 Mar 2024 14:14:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2362CC433C7;
+	Thu, 14 Mar 2024 14:14:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1710425648;
+	bh=lK23oJRJ/bA6d6jmZaBMLcWgOIERyQT1+j1cFBWNLd0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=UTZo4JrGlYJvjvkqbKP9KYF2NnJrppTbDm9iTLI+SxMt0v4M0gEk8c9z8+Yae+S42
+	 IGyjW+5xOoI/1FE9ZQf0er/hcFd/jhLCVnyzqKoFxXsQ+euUTlqFvpTb5ar0AzhqzI
+	 OFelPUMUGPO0aWcHEZUkdYjj7HCYQwEdQ6FwKyMawyC8UoYfUvRvbV0+Cy1i4F7n4K
+	 RajFBL3gIlgNOG5RtqYyRzQOEWrTLkCEBdRH/u+5/tpjGo2/cP+adQIpRiXNrMe/2Y
+	 7kT9CkjUhLs/L853OBPVpzGxRiHvEG0IqaUnUPJF/gBfmFU6yaiWL+0zMnPUXGvEqv
+	 mbEEATbnr4zyw==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ Rob Herring <robh@kernel.org>
+In-Reply-To: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
+References: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
+Subject: Re: (subset) [PATCH v4 0/7] Add support for the internal RK3308
+ audio codec
+Message-Id: <171042564484.33758.15956147423867309786.b4-ty@kernel.org>
+Date: Thu, 14 Mar 2024 14:14:04 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v20 8/9] media: v4l2: Add mem2mem helpers for REMOVE_BUFS
- ioctl
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, nicolas@ndufresne.ca
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-References: <20240221155435.100093-1-benjamin.gaignard@collabora.com>
- <20240221155435.100093-9-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20240221155435.100093-9-benjamin.gaignard@collabora.com>
+X-Mailer: b4 0.13-dev-a684c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_065853_721475_D9AD852E 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20240314_071410_056362_43D7ED70 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,125 +81,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/02/2024 4:54 pm, Benjamin Gaignard wrote:
-> Create v4l2-mem2mem helpers for VIDIOC_REMOVE_BUFS ioctl and
-> make test drivers use it.
+On Tue, 05 Mar 2024 15:36:27 +0100, Luca Ceresoli wrote:
+> This series adds a driver for the internal audio codec of the Rockchip
+> RK3308 SoC, along with some related patches. This codec is internally
+> connected to the I2S peripherals on the same chip, and it has some
+> peculiarities arising from that interconnection.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/media/test-drivers/vicodec/vicodec-core.c |  1 +
->  drivers/media/test-drivers/vim2m.c                |  1 +
->  drivers/media/test-drivers/vimc/vimc-capture.c    |  1 +
->  drivers/media/test-drivers/visl/visl-video.c      |  1 +
->  drivers/media/test-drivers/vivid/vivid-core.c     |  1 +
->  drivers/media/v4l2-core/v4l2-mem2mem.c            | 10 ++++++++++
->  include/media/v4l2-mem2mem.h                      |  2 ++
->  7 files changed, 17 insertions(+)
+> For proper bidirectional operation with the internal codec at any possible
+> combination of sampling rates, the I2S peripheral needs two clock sources
+> (tx and rx), while connection with an external codec commonly needs only
+> one.
 > 
-> diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
-> index e13f5452b927..3e011fe62ae1 100644
-> --- a/drivers/media/test-drivers/vicodec/vicodec-core.c
-> +++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
-> @@ -1345,6 +1345,7 @@ static const struct v4l2_ioctl_ops vicodec_ioctl_ops = {
->  	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
->  	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
->  	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
-> +	.vidioc_remove_bufs	= v4l2_m2m_ioctl_remove_bufs,
->  
->  	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
->  	.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
-> diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-> index 3e3b424b4860..14aff4ad576b 100644
-> --- a/drivers/media/test-drivers/vim2m.c
-> +++ b/drivers/media/test-drivers/vim2m.c
-> @@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
->  	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
->  	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
->  	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-> +	.vidioc_remove_bufs	= v4l2_m2m_ioctl_remove_bufs,
->  	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
->  
->  	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+> [...]
 
-Perhaps leave this vim2m driver without remove_bufs support? The reason
-you didn't catch the uninitialized capabilities bug is that now all test drivers
-support this new ioctl. I think at least one should not support it to
-catch such issues.
+Applied to
 
-Regards,
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-	Hans
+Thanks!
 
-> diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
-> index 97693561f1e4..ba7550b8ba7e 100644
-> --- a/drivers/media/test-drivers/vimc/vimc-capture.c
-> +++ b/drivers/media/test-drivers/vimc/vimc-capture.c
-> @@ -221,6 +221,7 @@ static const struct v4l2_ioctl_ops vimc_capture_ioctl_ops = {
->  	.vidioc_expbuf = vb2_ioctl_expbuf,
->  	.vidioc_streamon = vb2_ioctl_streamon,
->  	.vidioc_streamoff = vb2_ioctl_streamoff,
-> +	.vidioc_remove_bufs = vb2_ioctl_remove_bufs,
->  };
->  
->  static void vimc_capture_return_all_buffers(struct vimc_capture_device *vcapture,
-> diff --git a/drivers/media/test-drivers/visl/visl-video.c b/drivers/media/test-drivers/visl/visl-video.c
-> index b9a4b44bd0ed..f8d970319764 100644
-> --- a/drivers/media/test-drivers/visl/visl-video.c
-> +++ b/drivers/media/test-drivers/visl/visl-video.c
-> @@ -539,6 +539,7 @@ const struct v4l2_ioctl_ops visl_ioctl_ops = {
->  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
->  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
->  	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
-> +	.vidioc_remove_bufs		= v4l2_m2m_ioctl_remove_bufs,
->  
->  	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
->  	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
-> diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
-> index 11b8520d9f57..771392f67dda 100644
-> --- a/drivers/media/test-drivers/vivid/vivid-core.c
-> +++ b/drivers/media/test-drivers/vivid/vivid-core.c
-> @@ -769,6 +769,7 @@ static const struct v4l2_ioctl_ops vivid_ioctl_ops = {
->  	.vidioc_expbuf			= vb2_ioctl_expbuf,
->  	.vidioc_streamon		= vb2_ioctl_streamon,
->  	.vidioc_streamoff		= vb2_ioctl_streamoff,
-> +	.vidioc_remove_bufs		= vb2_ioctl_remove_bufs,
->  
->  	.vidioc_enum_input		= vivid_enum_input,
->  	.vidioc_g_input			= vivid_g_input,
-> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> index 75517134a5e9..ba21c60f1ed3 100644
-> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> @@ -1386,6 +1386,16 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
->  }
->  EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
->  
-> +int v4l2_m2m_ioctl_remove_bufs(struct file *file, void *priv,
-> +			       struct v4l2_remove_buffers *remove)
-> +{
-> +	struct v4l2_fh *fh = file->private_data;
-> +
-> +	return vb2_core_remove_bufs(v4l2_m2m_get_vq(fh->m2m_ctx, remove->type),
-> +				    remove->index, remove->count);
-> +}
-> +EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_remove_bufs);
-> +
->  int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
->  				struct v4l2_buffer *buf)
->  {
-> diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-> index 7f1af1f7f912..0af330cf91c3 100644
-> --- a/include/media/v4l2-mem2mem.h
-> +++ b/include/media/v4l2-mem2mem.h
-> @@ -867,6 +867,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
->  				struct v4l2_requestbuffers *rb);
->  int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
->  				struct v4l2_create_buffers *create);
-> +int v4l2_m2m_ioctl_remove_bufs(struct file *file, void *priv,
-> +			       struct v4l2_remove_buffers *d);
->  int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
->  				struct v4l2_buffer *buf);
->  int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
+[1/7] ASoC: rockchip: i2s-tdm: Fix inaccurate sampling rates
+      commit: 9e2ab4b18ebd46813fc3459207335af4d368e323
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
