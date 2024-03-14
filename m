@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02EC4C54E60
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Mar 2024 15:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096E6C54E60
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Mar 2024 15:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WRY7+JvZWvBgoe0gj8Ddy0XfAcFYiy47onX3xJkNJYM=; b=SykHgwS+ykuDMh
-	rK+YQ3WwxHCmnqOnEqmFjaIEkYvhYEFWrBz7zm3SspseFc1Szscv/Tl0tcySwxS7zqhivyh1XqucQ
-	fUvkb0BjERFQxQrxjD6tLe3TwaycoBHvbNTPfgcrzYcPldMqVJ6AdC2YHR+Q8C6Y6pOQ1vE+roFK7
-	eULezfRVW79kYnC+PH7WhEjQabEnd0Y5jLhrVxxiPaMa2jzIO6+8M4oiFxHcnrf8KH9igjWRVPzUZ
-	A7NnEA3kb/WBaMt612pOnhufYGOhO45NHCILWR6mpisJEaPoRyd3BED5P40KD2OT74RxIWqsa1t+c
-	o3eMYTSy/Heq1daLstxQ==;
+	List-Owner; bh=CPzyME0rgqS0VZEa3Q1U3sShxBUOsI9BALburgUw2hc=; b=AaZuWKmN89d6HT
+	8bYza0InDSZIDMAR72QvhnrdCPx76gJZM7OnNXfqnFsR+CXRhqechLSUVnvTmwj55KGqFaiW/tpZ3
+	3rmCH60KwNjF7s4J3exLZudFyMJd+GCM2FH5NfgGrjgcUnwF9DYMVW0OzLwMU4IZT1ZfZNQXIDWbj
+	aDpmbVdvMPfd5HNoWP6o7mM2UPVjHm10mGFFZDgGLXQg8umK71bnit+rn/r3Ue4Btat9GY4gbzRcM
+	VfVOByTRr72JNuaznmFpx0SeNTO3cBKKEB8En9MT/pfmBWN9RYsun3BYvcNRnpjW6zos5X08REFRC
+	XFt1bdv108AJiy/m9ywQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkn4k-0000000ErXA-42zN;
-	Thu, 14 Mar 2024 15:32:58 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rkn4r-0000000Eraw-1fau;
+	Thu, 14 Mar 2024 15:33:05 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rkn4S-0000000ErJD-45uK
+	id 1rkn4U-0000000ErLP-2sDz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 14 Mar 2024 15:32:45 +0000
+	Thu, 14 Mar 2024 15:32:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710430357;
-	bh=xBHj61ms77yh6TofIx3mWpzyvQ5wa//86PofqFg3BeI=;
+	s=mail; t=1710430359;
+	bh=S8BY+YnoHLjL4nNyT8UzD8yD98Cb9AAqKgtqpMGHJiE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=p7nYbKC3xSaooL0Nw/TKIywmhw4GrFuvAtutCivQm4yokjbdA9bEkmZO3zSURJ00L
-	 2jaMEd7N0qo9yFI2SFMB88xRbrqd0YSvJf5FeQMlILOa5PWuHfgCJedCA68OMJYQXt
-	 vJs454tzlVDwi32Tq9iSxnNJ3Vc7AtE1ZddXUkzGYoiSmnwps43JKdAAqm0x+8KM5B
-	 0MR0TBRGkr7zJE7LFpkKwlEIfqHee1cPy8YcJFRanralcsukd4Av/XEVZkTt5gSTSk
-	 SYQjYyBnLSh4y7egHB+h3SOlRbugk1btXz+uKPd8+kGrmoEWWVxEuxx7l+2PPWTiE5
-	 g0/18KKvuV9IQ==
+	b=mbqxPj3Hqp+HnBC/OztP1uSvHr3X9Hv0Oi2/teHC5NWUI9ab0Bk7eabZZNRw2mi+T
+	 L/HZpMkcc9RFLsXI7fLC1wY4HkHBlFFk52FViixLlXF8WdHV/3QUimRlEibzD12z88
+	 FF1FAFnJB53vfUhjBfGnqlQCGbGHoFqYQXtumQekq01+weHEsJ1cttw/1PhW9aIMEU
+	 Xfs1LQpO9pI2o43TSoCZJwYvku2gr7Ec5lYB0CfKmNga2rM9OfYCqKGRGA8XzNjRIl
+	 YJbwMS5/e19Fa5gNMo6+udn4THCuCy+3KVks0saPdxby53S86/7u1UtTNc/4Ky8t1h
+	 D6COXqgBgHD8g==
 Received: from benjamin-XPS-13-9310.. (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 1E40837820FF;
-	Thu, 14 Mar 2024 15:32:37 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 975B9378210F;
+	Thu, 14 Mar 2024 15:32:38 +0000 (UTC)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -57,16 +57,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v21 6/9] media: core: Free range of buffers
-Date: Thu, 14 Mar 2024 16:32:23 +0100
-Message-Id: <20240314153226.197445-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v21 8/9] media: v4l2: Add mem2mem helpers for REMOVE_BUFS ioctl
+Date: Thu, 14 Mar 2024 16:32:25 +0100
+Message-Id: <20240314153226.197445-9-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
 References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240314_083241_305998_EF48F2FD 
-X-CRM114-Status: GOOD (  19.13  )
+X-CRM114-CacheID: sfid-20240314_083243_262006_109C1E90 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,191 +83,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Improve __vb2_queue_free() and __vb2_free_mem() to free
-range of buffers and not only the last few buffers.
-Introduce starting index to be flexible on range and change the loops
-according to this parameter.
+Create v4l2-mem2mem helpers for VIDIOC_REMOVE_BUFS ioctl and
+make test drivers use it.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 56 +++++++++----------
- 1 file changed, 26 insertions(+), 30 deletions(-)
+changes in version 21:
+- In v4l2_m2m_ioctl_remove_bufs() check if the queue exists and
+  if it type macth request type.
+- Do not set vidioc_remove_bufs for vim2m driver.
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index ec81426d4d79..009cea95d662 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -540,17 +540,16 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ drivers/media/test-drivers/vicodec/vicodec-core.c |  1 +
+ drivers/media/test-drivers/vimc/vimc-capture.c    |  1 +
+ drivers/media/test-drivers/visl/visl-video.c      |  1 +
+ drivers/media/test-drivers/vivid/vivid-core.c     |  1 +
+ drivers/media/v4l2-core/v4l2-mem2mem.c            | 15 +++++++++++++++
+ include/media/v4l2-mem2mem.h                      |  2 ++
+ 6 files changed, 21 insertions(+)
+
+diff --git a/drivers/media/test-drivers/vicodec/vicodec-core.c b/drivers/media/test-drivers/vicodec/vicodec-core.c
+index e13f5452b927..3e011fe62ae1 100644
+--- a/drivers/media/test-drivers/vicodec/vicodec-core.c
++++ b/drivers/media/test-drivers/vicodec/vicodec-core.c
+@@ -1345,6 +1345,7 @@ static const struct v4l2_ioctl_ops vicodec_ioctl_ops = {
+ 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
++	.vidioc_remove_bufs	= v4l2_m2m_ioctl_remove_bufs,
+ 
+ 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
+index 97693561f1e4..ba7550b8ba7e 100644
+--- a/drivers/media/test-drivers/vimc/vimc-capture.c
++++ b/drivers/media/test-drivers/vimc/vimc-capture.c
+@@ -221,6 +221,7 @@ static const struct v4l2_ioctl_ops vimc_capture_ioctl_ops = {
+ 	.vidioc_expbuf = vb2_ioctl_expbuf,
+ 	.vidioc_streamon = vb2_ioctl_streamon,
+ 	.vidioc_streamoff = vb2_ioctl_streamoff,
++	.vidioc_remove_bufs = vb2_ioctl_remove_bufs,
+ };
+ 
+ static void vimc_capture_return_all_buffers(struct vimc_capture_device *vcapture,
+diff --git a/drivers/media/test-drivers/visl/visl-video.c b/drivers/media/test-drivers/visl/visl-video.c
+index b9a4b44bd0ed..f8d970319764 100644
+--- a/drivers/media/test-drivers/visl/visl-video.c
++++ b/drivers/media/test-drivers/visl/visl-video.c
+@@ -539,6 +539,7 @@ const struct v4l2_ioctl_ops visl_ioctl_ops = {
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
++	.vidioc_remove_bufs		= v4l2_m2m_ioctl_remove_bufs,
+ 
+ 	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
+ 	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
+diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+index 11b8520d9f57..771392f67dda 100644
+--- a/drivers/media/test-drivers/vivid/vivid-core.c
++++ b/drivers/media/test-drivers/vivid/vivid-core.c
+@@ -769,6 +769,7 @@ static const struct v4l2_ioctl_ops vivid_ioctl_ops = {
+ 	.vidioc_expbuf			= vb2_ioctl_expbuf,
+ 	.vidioc_streamon		= vb2_ioctl_streamon,
+ 	.vidioc_streamoff		= vb2_ioctl_streamoff,
++	.vidioc_remove_bufs		= vb2_ioctl_remove_bufs,
+ 
+ 	.vidioc_enum_input		= vivid_enum_input,
+ 	.vidioc_g_input			= vivid_g_input,
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 75517134a5e9..eb22d6172462 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -1386,6 +1386,21 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
  }
+ EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
  
- /*
-- * __vb2_free_mem() - release all video buffer memory for a given queue
-+ * __vb2_free_mem() - release video buffer memory for a given range of
-+ * buffers in a given queue
-  */
--static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
-+static void __vb2_free_mem(struct vb2_queue *q, unsigned int start, unsigned int count)
++int v4l2_m2m_ioctl_remove_bufs(struct file *file, void *priv,
++			       struct v4l2_remove_buffers *remove)
++{
++	struct v4l2_fh *fh = file->private_data;
++	struct vb2_queue *q = v4l2_m2m_get_vq(fh->m2m_ctx, remove->type);
++
++	if (!q)
++		return -EINVAL;
++	if (q->type != remove->type)
++		return -EINVAL;
++
++	return vb2_core_remove_bufs(q, remove->index, remove->count);
++}
++EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_remove_bufs);
++
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
+ 				struct v4l2_buffer *buf)
  {
--	unsigned int buffer;
-+	unsigned int i;
- 	struct vb2_buffer *vb;
--	unsigned int q_num_buffers = vb2_get_num_buffers(q);
- 
--	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
--	     ++buffer) {
--		vb = vb2_get_buffer(q, buffer);
-+	for (i = start; i < start + count; i++) {
-+		vb = vb2_get_buffer(q, i);
- 		if (!vb)
- 			continue;
- 
-@@ -565,35 +564,33 @@ static void __vb2_free_mem(struct vb2_queue *q, unsigned int buffers)
- }
- 
- /*
-- * __vb2_queue_free() - free buffers at the end of the queue - video memory and
-+ * __vb2_queue_free() - free @count buffers from @start index of the queue - video memory and
-  * related information, if no buffers are left return the queue to an
-  * uninitialized state. Might be called even if the queue has already been freed.
-  */
--static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
-+static void __vb2_queue_free(struct vb2_queue *q, unsigned int start, unsigned int count)
- {
--	unsigned int buffer;
--	unsigned int q_num_buffers = vb2_get_num_buffers(q);
-+	unsigned int i;
- 
- 	lockdep_assert_held(&q->mmap_lock);
- 
- 	/* Call driver-provided cleanup function for each buffer, if provided */
--	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
--	     ++buffer) {
--		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-+	for (i = start; i < start + count; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 
- 		if (vb && vb->planes[0].mem_priv)
- 			call_void_vb_qop(vb, buf_cleanup, vb);
- 	}
- 
- 	/* Release video buffer memory */
--	__vb2_free_mem(q, buffers);
-+	__vb2_free_mem(q, start, count);
- 
- #ifdef CONFIG_VIDEO_ADV_DEBUG
- 	/*
- 	 * Check that all the calls were balanced during the life-time of this
- 	 * queue. If not then dump the counters to the kernel log.
- 	 */
--	if (q_num_buffers) {
-+	if (vb2_get_num_buffers(q)) {
- 		bool unbalanced = q->cnt_start_streaming != q->cnt_stop_streaming ||
- 				  q->cnt_prepare_streaming != q->cnt_unprepare_streaming ||
- 				  q->cnt_wait_prepare != q->cnt_wait_finish;
-@@ -619,8 +616,8 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 		q->cnt_stop_streaming = 0;
- 		q->cnt_unprepare_streaming = 0;
- 	}
--	for (buffer = 0; buffer < vb2_get_num_buffers(q); buffer++) {
--		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-+	for (i = start; i < start + count; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 		bool unbalanced;
- 
- 		if (!vb)
-@@ -637,7 +634,7 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- 
- 		if (unbalanced) {
- 			pr_info("unbalanced counters for queue %p, buffer %d:\n",
--				q, buffer);
-+				q, i);
- 			if (vb->cnt_buf_init != vb->cnt_buf_cleanup)
- 				pr_info("     buf_init: %u buf_cleanup: %u\n",
- 					vb->cnt_buf_init, vb->cnt_buf_cleanup);
-@@ -671,9 +668,8 @@ static void __vb2_queue_free(struct vb2_queue *q, unsigned int buffers)
- #endif
- 
- 	/* Free vb2 buffers */
--	for (buffer = q_num_buffers - buffers; buffer < q_num_buffers;
--	     ++buffer) {
--		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
-+	for (i = start; i < start + count; i++) {
-+		struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 
- 		if (!vb)
- 			continue;
-@@ -713,7 +709,7 @@ EXPORT_SYMBOL(vb2_buffer_in_use);
- static bool __buffers_in_use(struct vb2_queue *q)
- {
- 	unsigned int buffer;
--	for (buffer = 0; buffer < vb2_get_num_buffers(q); ++buffer) {
-+	for (buffer = 0; buffer < q->max_num_buffers; ++buffer) {
- 		struct vb2_buffer *vb = vb2_get_buffer(q, buffer);
- 
- 		if (!vb)
-@@ -899,7 +895,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * queued without ever calling STREAMON.
- 		 */
- 		__vb2_queue_cancel(q);
--		__vb2_queue_free(q, q_num_bufs);
-+		__vb2_queue_free(q, 0, q->max_num_buffers);
- 		mutex_unlock(&q->mmap_lock);
- 
- 		q->is_busy = 0;
-@@ -1001,7 +997,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * from already queued buffers and it will reset q->memory to
- 		 * VB2_MEMORY_UNKNOWN.
- 		 */
--		__vb2_queue_free(q, allocated_buffers);
-+		__vb2_queue_free(q, first_index, allocated_buffers);
- 		mutex_unlock(&q->mmap_lock);
- 		return ret;
- 	}
-@@ -1126,7 +1122,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
- 		 * from already queued buffers and it will reset q->memory to
- 		 * VB2_MEMORY_UNKNOWN.
- 		 */
--		__vb2_queue_free(q, allocated_buffers);
-+		__vb2_queue_free(q, *first_index, allocated_buffers);
- 		mutex_unlock(&q->mmap_lock);
- 		return -ENOMEM;
- 	}
-@@ -1741,7 +1737,7 @@ static int vb2_start_streaming(struct vb2_queue *q)
- 		 * Forcefully reclaim buffers if the driver did not
- 		 * correctly return them to vb2.
- 		 */
--		for (i = 0; i < vb2_get_num_buffers(q); ++i) {
-+		for (i = 0; i < q->max_num_buffers; ++i) {
- 			vb = vb2_get_buffer(q, i);
- 
- 			if (!vb)
-@@ -2147,7 +2143,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
- 	 * to vb2 in stop_streaming().
- 	 */
- 	if (WARN_ON(atomic_read(&q->owned_by_drv_count))) {
--		for (i = 0; i < vb2_get_num_buffers(q); i++) {
-+		for (i = 0; i < q->max_num_buffers; i++) {
- 			struct vb2_buffer *vb = vb2_get_buffer(q, i);
- 
- 			if (!vb)
-@@ -2191,7 +2187,7 @@ static void __vb2_queue_cancel(struct vb2_queue *q)
- 	 * call to __fill_user_buffer() after buf_finish(). That order can't
- 	 * be changed, so we can't move the buf_finish() to __vb2_dqbuf().
- 	 */
--	for (i = 0; i < vb2_get_num_buffers(q); i++) {
-+	for (i = 0; i < q->max_num_buffers; i++) {
- 		struct vb2_buffer *vb;
- 		struct media_request *req;
- 
-@@ -2618,7 +2614,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
- 	__vb2_cleanup_fileio(q);
- 	__vb2_queue_cancel(q);
- 	mutex_lock(&q->mmap_lock);
--	__vb2_queue_free(q, vb2_get_num_buffers(q));
-+	__vb2_queue_free(q, 0, q->max_num_buffers);
- 	vb2_core_free_buffers_storage(q);
- 	q->is_busy = 0;
- 	mutex_unlock(&q->mmap_lock);
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index 7f1af1f7f912..0af330cf91c3 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -867,6 +867,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
+ 				struct v4l2_requestbuffers *rb);
+ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
+ 				struct v4l2_create_buffers *create);
++int v4l2_m2m_ioctl_remove_bufs(struct file *file, void *priv,
++			       struct v4l2_remove_buffers *d);
+ int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
+ 				struct v4l2_buffer *buf);
+ int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
 -- 
 2.40.1
 
