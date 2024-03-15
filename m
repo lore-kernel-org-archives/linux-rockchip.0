@@ -4,78 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24AD6C54E58
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Mar 2024 21:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B1C1C54E67
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Mar 2024 23:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7dbzaHPKK7XOHJsonSROgWyqpcqSPtXYn7j122l3g6c=; b=R27jE33IZ5UeRk
-	tj0J1QpQUeFXeCWzhM+aHzCoa0mhtJ6M9NMmxibJ/AqEvvpTQpYVzmbM/6CL0xCIpd8+KjiqBCG21
-	xwRqpZ19dRbaidwONDaBSu7nbnZ/8i9q2C8xNqyWOU0AihUVkZz9oHvQwTMFDL9yQ7qZjdsr2wceK
-	Kgv66ue9qTBB4SNfZSFan7S5r7kCXN/0mwq9PGtXAJajUbXkFXVsYSTQMy5rJPo11+9b7hWsMCQtL
-	hKgeShNqJhWayg5e3CKXMNbOcCUMKS78ooyPNqYS6z70r2HPjgehQ+ZX/rfgyVL+BuXjfZFFk7gqR
-	wZa5CrAbk+MO4Gyt0K0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=28U/2U7yWxwZl0vQrn4fyWxXOCMYTHc8YhiLRzF5AkY=; b=2IOlLhxZ4GE1k5
+	KQN00I8ElKGXT9J7AhZcddF/F6eVZ5Hk/14RG2du7vQmXZ3A8+b0o9eUPIvEYKofZM4ycaiKf11eS
+	U91FUsx4SnxFmLOzYfEgUTy3DFCynKuAvbiPwq3kkP6Pfp7GaIAsvnDzz6h2W9IasV6giyvkSOX6e
+	S7/puoQSWysFA/MJuTlJMl33I7XnTJXcx17Pcu8BO4iHrUlh2eLuNKKYgmUFdyOEn+2AolerrfOTo
+	n6HGYx0y7T1gHO3zA8ijxbSXSlC41nMSO3YzRpEzvXuy3xT8d+6g+jTb0V+Jm730KnCqD5mnelERr
+	eooDA2Yqgno9oqP67nWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlFUg-00000001gAY-0wrS;
-	Fri, 15 Mar 2024 21:53:38 +0000
-Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rlFUa-00000001g9A-1aYn
-	for linux-rockchip@lists.infradead.org;
-	Fri, 15 Mar 2024 21:53:36 +0000
-Received: from 8bytes.org (p4ffe0c3c.dip0.t-ipconnect.de [79.254.12.60])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 1C8531E2193;
-	Fri, 15 Mar 2024 22:53:22 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1710539602;
-	bh=jhM7ZU8FyIla2o0H5m42cLWxc85vKv1rzCK2ST8oj+E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ejWnM7JjNgo1Ys7WJ+duORdqNChXIKawPJHEGPvKzhkkfIAJlfXspOCr+eQiMME96
-	 tsTNs3axuK/FqxnqYzLYkhwGHhTDgI6Cdp6ZKqqXu7KW7v9HCNEeuqiwmAad9NsHgd
-	 lq+LllK57GAVJFVoam7Sf8tvQ9nx4V+81+F0a32IC+o8INOLldtxyrDbk2lIuD0/Iq
-	 tbEjEEqioSbWbO88Xjro/jyflz8JvdRxBIwvkrBbje7A/LU8xIgIDkO6vb/wAwlPza
-	 ylpM/bpodX485nATx/iDV9D/v0w1o7eJtSGgjBG0OqY6jWlAfbe2CebOkr+Ex3MpAg
-	 U7tplkqnSgVoQ==
-Date: Fri, 15 Mar 2024 22:53:20 +0100
-From: Joerg Roedel <joro@8bytes.org>
-To: David Rientjes <rientjes@google.com>
-Cc: Pasha Tatashin <pasha.tatashin@soleen.com>,
-	Andrew Morton <akpm@linux-foundation.org>, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com,
-	jonathanh@nvidia.com, krzysztof.kozlowski@linaro.org,
-	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com,
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
-	samuel@sholland.org, suravee.suthikulpanit@amd.com,
-	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org,
-	will@kernel.org, yu-cheng.yu@intel.com, bagasdotme@gmail.com,
-	mkoutny@suse.com
-Subject: Re: [PATCH v5 00/11] IOMMU memory observability
-Message-ID: <ZfTDUGSshZUbs13-@8bytes.org>
-References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
- <00555af4-8786-b772-7897-aef1e912b368@google.com>
+	id 1rlGZp-00000001nrK-0Zjk;
+	Fri, 15 Mar 2024 23:03:01 +0000
+Received: from vps.xff.cz ([195.181.215.36])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rlGZh-00000001npe-1J3f;
+	Fri, 15 Mar 2024 23:02:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1710543766; bh=7Ga9GsL3FjKm37mVZwSoCl7qdw/o5OzPS1w6PZASAHs=;
+	h=From:To:Cc:Subject:Date:From;
+	b=pwlJNKudPE8BIJ/FBv7exsVoV/mPu4SJlUgQnAYAJrO5KAtBVWpJJGw+8RAw/5bed
+	 B0BMK2qj+1T7/FthaRRqaChW51verab9otzLN3+DbDYGc+gK7+j4w0KSwnhBVUiZ5d
+	 fO3jdx5aP49MxXCtRdM33gMTkFrEqP50ctrPE6j0=
+From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
+To: linux-kernel@vger.kernel.org
+Cc: paul.elder@ideasonboard.com,
+	Ondrej Jirman <megi@xff.cz>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-media@vger.kernel.org (open list:ROCKCHIP ISP V1 DRIVER),
+	linux-rockchip@lists.infradead.org (open list:ROCKCHIP ISP V1 DRIVER),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support)
+Subject: [PATCH v2] media: rkisp1: Adapt to different SoCs having different size limits
+Date: Sat, 16 Mar 2024 00:02:41 +0100
+Message-ID: <20240315230245.1385902-1-megi@xff.cz>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <00555af4-8786-b772-7897-aef1e912b368@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_145332_582839_AA620A38 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20240315_160253_836644_3D097F83 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,29 +66,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi David,
+From: Ondrej Jirman <megi@xff.cz>
 
-On Fri, Mar 15, 2024 at 02:33:53PM -0700, David Rientjes wrote:
-> Joerg, is this series anticipated to be queued up in the core branch of 
-> git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git so it gets into 
-> linux-next?
-> 
-> This observability seems particularly useful so that we can monitor and 
-> alert on any unexpected increases (unbounded memory growth from this 
-> subsystem has in the past caused us issues before the memory is otherwise 
-> not observable by host software).
-> 
-> Or are we still waiting on code reviews from some folks that we should 
-> ping?
+- RK3399 has input/output limit of main path 4416 x 3312
+- PX30 has input/output limit of main path 3264 x 2448
+- i.MX8MP has input/output limit of main path 4096 x 3072
 
-A few more reviews would certainly help, but I will also do a review on
-my own. If things are looking good I can merge it into the iommu tree
-when 6.9-rc3 is released (which is the usual time I start merging new
-stuff).
+Use rkisp1_info struct to encode the limits.
 
-Regards,
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+---
+v2:
+- adapt to i.MX8MP merged for v6.9
 
-	Joerg
+ drivers/media/platform/rockchip/rkisp1/rkisp1-common.h  | 6 ++++--
+ drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c     | 5 +++--
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c     | 6 ++++++
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c     | 9 +++++----
+ drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c | 4 ++--
+ 5 files changed, 20 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 26573f6ae575..b4c958b93629 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -34,8 +34,6 @@ struct regmap;
+ #define RKISP1_ISP_SD_SINK			BIT(1)
+ 
+ /* min and max values for the widths and heights of the entities */
+-#define RKISP1_ISP_MAX_WIDTH			4032
+-#define RKISP1_ISP_MAX_HEIGHT			3024
+ #define RKISP1_ISP_MIN_WIDTH			32
+ #define RKISP1_ISP_MIN_HEIGHT			32
+ 
+@@ -140,6 +138,8 @@ enum rkisp1_feature {
+  * @isr_size: number of entries in the @isrs array
+  * @isp_ver: ISP version
+  * @features: bitmask of rkisp1_feature features implemented by the ISP
++ * @max_width: maximum input frame width
++ * @max_height: maximum input frame height
+  *
+  * This structure contains information about the ISP specific to a particular
+  * ISP model, version, or integration in a particular SoC.
+@@ -151,6 +151,8 @@ struct rkisp1_info {
+ 	unsigned int isr_size;
+ 	enum rkisp1_cif_isp_version isp_ver;
+ 	unsigned int features;
++	unsigned int max_width;
++	unsigned int max_height;
+ };
+ 
+ /*
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 4202642e0523..841e58c20f7f 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -307,6 +307,7 @@ static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
+ 			      struct v4l2_subdev_state *sd_state,
+ 			      struct v4l2_subdev_format *fmt)
+ {
++	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+ 	const struct rkisp1_mbus_info *mbus_info;
+ 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+ 
+@@ -326,10 +327,10 @@ static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
+ 
+ 	sink_fmt->width = clamp_t(u32, fmt->format.width,
+ 				  RKISP1_ISP_MIN_WIDTH,
+-				  RKISP1_ISP_MAX_WIDTH);
++				  csi->rkisp1->info->max_width);
+ 	sink_fmt->height = clamp_t(u32, fmt->format.height,
+ 				   RKISP1_ISP_MIN_HEIGHT,
+-				   RKISP1_ISP_MAX_HEIGHT);
++				   csi->rkisp1->info->max_height);
+ 
+ 	fmt->format = *sink_fmt;
+ 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index bb0202386c70..0535ce57e862 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -510,6 +510,8 @@ static const struct rkisp1_info px30_isp_info = {
+ 	.features = RKISP1_FEATURE_MIPI_CSI2
+ 		  | RKISP1_FEATURE_SELF_PATH
+ 		  | RKISP1_FEATURE_DUAL_CROP,
++	.max_width = 3264,
++	.max_height = 2448,
+ };
+ 
+ static const char * const rk3399_isp_clks[] = {
+@@ -531,6 +533,8 @@ static const struct rkisp1_info rk3399_isp_info = {
+ 	.features = RKISP1_FEATURE_MIPI_CSI2
+ 		  | RKISP1_FEATURE_SELF_PATH
+ 		  | RKISP1_FEATURE_DUAL_CROP,
++	.max_width = 4416,
++	.max_height = 3312,
+ };
+ 
+ static const char * const imx8mp_isp_clks[] = {
+@@ -551,6 +555,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
+ 	.isp_ver = RKISP1_V_IMX8MP,
+ 	.features = RKISP1_FEATURE_MAIN_STRIDE
+ 		  | RKISP1_FEATURE_DMA_34BIT,
++	.max_width = 4096,
++	.max_height = 3072,
+ };
+ 
+ static const struct of_device_id rkisp1_of_match[] = {
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index e45a213baf49..f787a7e91e3e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -517,6 +517,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
+ 				      struct v4l2_subdev_state *sd_state,
+ 				      struct v4l2_subdev_frame_size_enum *fse)
+ {
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 	const struct rkisp1_mbus_info *mbus_info;
+ 
+ 	if (fse->pad == RKISP1_ISP_PAD_SINK_PARAMS ||
+@@ -539,9 +540,9 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
+ 		return -EINVAL;
+ 
+ 	fse->min_width = RKISP1_ISP_MIN_WIDTH;
+-	fse->max_width = RKISP1_ISP_MAX_WIDTH;
++	fse->max_width = isp->rkisp1->info->max_width;
+ 	fse->min_height = RKISP1_ISP_MIN_HEIGHT;
+-	fse->max_height = RKISP1_ISP_MAX_HEIGHT;
++	fse->max_height = isp->rkisp1->info->max_height;
+ 
+ 	return 0;
+ }
+@@ -772,10 +773,10 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
+ 
+ 	sink_fmt->width = clamp_t(u32, format->width,
+ 				  RKISP1_ISP_MIN_WIDTH,
+-				  RKISP1_ISP_MAX_WIDTH);
++				  isp->rkisp1->info->max_width);
+ 	sink_fmt->height = clamp_t(u32, format->height,
+ 				   RKISP1_ISP_MIN_HEIGHT,
+-				   RKISP1_ISP_MAX_HEIGHT);
++				   isp->rkisp1->info->max_height);
+ 
+ 	/*
+ 	 * Adjust the color space fields. Accept any color primaries and
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+index 6f3931ca5b51..e22cc2db24cf 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+@@ -494,10 +494,10 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+ 
+ 	sink_fmt->width = clamp_t(u32, format->width,
+ 				  RKISP1_ISP_MIN_WIDTH,
+-				  RKISP1_ISP_MAX_WIDTH);
++				  rsz->rkisp1->info->max_width);
+ 	sink_fmt->height = clamp_t(u32, format->height,
+ 				   RKISP1_ISP_MIN_HEIGHT,
+-				   RKISP1_ISP_MAX_HEIGHT);
++				   rsz->rkisp1->info->max_height);
+ 
+ 	/*
+ 	 * Adjust the color space fields. Accept any color primaries and
+-- 
+2.44.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
