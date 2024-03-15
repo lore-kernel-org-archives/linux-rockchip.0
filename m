@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA8AC54E58
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Mar 2024 11:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA76EC54E67
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Mar 2024 11:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qthkihfp3eGM5VROiX2ZeIrr0TKnO7ODupyuPTAOOmg=; b=0I2fEsh6kDEW5q
-	aMEGpG+4hOFsjO9N8tI42Xgt6sBLdhv2h4tqQlFYeBx20GhfUw42lgb5N5q1EoH2fQS1oRAKZZc2S
-	a0r9TKIjBRKdWVig3xRMcLpKGpxpd5lQKSPHnJCXMMKfOhs1m/4mUyPv6xP5Zvas9bGHGbiCNb1nM
-	FgqF50I9bsn6tZ5D0Fuis6ZCUUh9NDo0Yn7lP3vay9Y0jZSLMiIjPZgMDtfCZrIm4qJlCoLpE3Qsg
-	TW2R1LAmXHrneAHCi31V+/mSzgmnjn2Ew1SUF+AlYSLLUJdZ45Fejjyw+fwbBTR2MSrY9yCGRbdmp
-	iu2vpdjFDYb9VpC4kN3Q==;
+	List-Owner; bh=cUbfn5BfyzK7IIFHgZQGqPZpQn0IZ4IJWykvGsUTqU0=; b=x7uIR0PpAjoSj0
+	zsVjfCjdJzDBUj8qwcPZJUwA9T07qLoM5IVVGajoVtvSzSHoShZtRy4G25enF9YW8ZmPZA5RboDKw
+	qo6UhgQcCprKfwOJJLbHKt7NeH1uAt9f4JmtwJzyaWx7C5OyPHCBwrScDKhFRUsmbK51fyVnzqPh1
+	ZFx/iAv3n0nLiAjxzItJjizGggHyNls3oJME+NS2vFEHRFT3k/phIoLMD74QQK6ktUOP1ERHYK+gR
+	ZOmBIJ84pkWtBgkvTKNQQursKIqacCpSAmAUc1Ff9VciyGzJpud0awaOZrqorOO3CygPpU4CPqMhD
+	WQVUeHcnzTj4NzfznSzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl5fS-000000001BO-1jVY;
-	Fri, 15 Mar 2024 11:24:06 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rl5sf-00000000369-1fTp;
+	Fri, 15 Mar 2024 11:37:45 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rl5fO-0000000019e-0kyj;
-	Fri, 15 Mar 2024 11:24:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710501840;
-	bh=uABvPXOqq/Tla+Cl257JwPcyrRf1VhVmEZ2NakP1f7Y=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MsfFOs2ZYu+BQgQDviu0tZEHVVU8he4yCSLf2PFK5ZcEkAh9y/w+V0kUvefrTlE+i
-	 BVQO+/8MmT/ZloAKZNC9kOl74Ju83Uk9kybn/K8qLVeA2yu8NI7/3IVTB1E14OMBGt
-	 FefOx23cfRZ1N095xm64zGX3ddp6IBx6j1MSebmoYWc1SKYt1T6izxYd2QuVNrk3JV
-	 Kblz3U7J4V9jPqFD9czrxC8wJkOP9ltogw5DLsG64OPzF/HEyM/qEWGUQyqB1Pgok/
-	 N9iXEeK15XZ7mmQibOUFVX66F18q1/X6yQMV5orY/j9oz7xsdZM53cW2Rj3qXnfbLS
-	 FWtHAJlrROiXg==
-Received: from [100.66.96.193] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D1575378105A;
-	Fri, 15 Mar 2024 11:23:56 +0000 (UTC)
-Message-ID: <1cbe364d-465a-ccba-a446-5f98b9e0efc4@collabora.com>
-Date: Fri, 15 Mar 2024 16:53:55 +0530
+	id 1rl5sb-00000000345-1zMf
+	for linux-rockchip@lists.infradead.org;
+	Fri, 15 Mar 2024 11:37:44 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-db3a09e96daso1726352276.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 Mar 2024 04:37:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710502656; x=1711107456; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=W1YjIjeqOSOzfGq2xXT4IYkQmnAHVepprgGXQRagfTY=;
+        b=PylynIzpUuMbvUvr6vIrP9+33rYEqLBTqlDM9adiLhAvjiwJvacb0TvM48SCuZv2Hh
+         xLNXIrG1T0YtEiTPSpyCOtwVjyktQ+PmmRMIjk5/6mGjJBlz4Lsvh1xWRsjgkNIkNwvy
+         /LqtDnQHbMUNny1tfmePF1eqKjIekkV9sBfVf6BHLFAv6T6WCryRPMCyPh+1Pzhe6v+v
+         r24ciHn3QqISDeeGJors3mQWyQspCTMEhaWyEfn6Uxw0Q+7AU+7nnd2SvwlyjfvrnRAp
+         pBVk9ZBsYcSyK2UKMCKLrbc/tzi/WNnO/T9Tw72oPqYawE5B7ofR28DXxPXVtekwISq8
+         clCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710502656; x=1711107456;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=W1YjIjeqOSOzfGq2xXT4IYkQmnAHVepprgGXQRagfTY=;
+        b=ljuJtuPBYqxfYlxucpHMxVD6w2NjuWwZeivypIO6WsRufm7MDPbD9OlYD3Rrp+6ku3
+         hQGGBi7rnnNnaVUFZYRlAn4My//FhzgPgb398h87YMSafO0C+VyB8AAI3bTjleyEST0l
+         wobOpA8NF0qvq2+oe15kXPHtLJaL4WhaF4bR+AHSrYYYGyWWx+vwJv7lfolCbK/YkeFG
+         qGxb5xt2ezVk/MqDu3zf3wQbj/U/ZlznkjWggS8p7BK8v1n98AGWpelcRL6O8Pee48dw
+         OfXcJ/SBFsRDtguko+1oEXw7Kounsi4b48vKQppFz6AiAHIgAcjRQw9ckkbwLpRWnCxk
+         hxlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX+fcxEZmNnQpsBuZUs49rAVawUcEWYk0Iwvv1aNIksrvjdrMBN9AFGsTH3nhvrPzPov4V78lpX8MkEM3IR0Dd+ShT5PaQiJtVWE2RSBqeHK/QP
+X-Gm-Message-State: AOJu0YztpSOOTOY6N4Hbxo6eOhHMI86OiFlqUEeQ6GG0KUFWz+GIRm75
+	0NaBDOFxPviya8V0DaAKczMTAy+/1Ftlt3UgLJ5tKiFYDrzQjbxyZr05bznhB2yw34dYqa6kKmf
+	JibLaSeQEnSJfcGnulJy7IQ35QgnuPynU2vMGUw==
+X-Google-Smtp-Source: AGHT+IGNjJToPdVH5hgnrzbo2/Y+N7SoBZsHPueEWHCi3sAAnAaUw/tww8bYLv5uKat8ny98eFlvnQEHDXDY2PazX2c=
+X-Received: by 2002:a25:c5cb:0:b0:dc6:c2b2:c039 with SMTP id
+ v194-20020a25c5cb000000b00dc6c2b2c039mr4303557ybe.41.1710502656113; Fri, 15
+ Mar 2024 04:37:36 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v4 00/11] drm/ci: Add support for GPU and display testing
-Content-Language: en-US
-To: Helen Koike <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, mairacanal@riseup.net, mcanal@igalia.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20240306030649.60269-1-vignesh.raman@collabora.com>
- <5559672d-4f62-4ad1-95b7-94f69b8bb9ac@collabora.com>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <5559672d-4f62-4ad1-95b7-94f69b8bb9ac@collabora.com>
+References: <20240306030649.60269-1-vignesh.raman@collabora.com> <20240306030649.60269-4-vignesh.raman@collabora.com>
+In-Reply-To: <20240306030649.60269-4-vignesh.raman@collabora.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Fri, 15 Mar 2024 13:37:25 +0200
+Message-ID: <CAA8EJpo=OXUitC+NPjZd5Kpq9dF04BSffvgsMYnn7LmmEoh09A@mail.gmail.com>
+Subject: Re: [PATCH v4 03/11] drm/ci: uprev IGT and update testlist
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	emma@anholt.net, robdclark@gmail.com, david.heidelberg@collabora.com, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	hamohammed.sa@gmail.com, rodrigosiqueiramelo@gmail.com, melissa.srw@gmail.com, 
+	mairacanal@riseup.net, mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240315_042402_417242_5F02E534 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20240315_043741_580594_8C684269 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,74 +90,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Helen,
+On Wed, 6 Mar 2024 at 05:08, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+>
+> Uprev IGT and add amd, v3d, vc4 and vgem specific
+> tests to testlist. Have testlist.txt per driver
+> and include a base testlist so that the driver
+> specific tests will run only on those hardware.
+> Also add testlists to the MAINTAINERS file.
 
-On 07/03/24 19:32, Helen Koike wrote:
-> 
-> 
-> On 06/03/2024 00:06, Vignesh Raman wrote:
->> Some ARM SOCs have a separate display controller and GPU, each with
->> different drivers. For mediatek mt8173, the GPU driver is powervr,
->> and the display driver is mediatek. In the case of mediatek mt8183,
->> the GPU driver is panfrost, and the display driver is mediatek.
->> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
->> display driver is rockchip. For amlogic meson, the GPU driver is
->> panfrost, and the display driver is meson.
->>
->> IGT tests run various tests with different xfails and can test both
->> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
->> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
->> This leads to incomplete coverage since the display is never tested on
->> these platforms. This commit series adds support in drm-ci to run tests
->> for both GPU and display drivers for MediaTek, Rockchip, and Amlogic
->> Meson platforms.
->>
->> Uprev mesa and IGT in drm-ci and add amd, v3d, vc4 and vgem specific
->> tests to testlist. Have testlist.txt per driver and include a base
->> testlist so that the driver specific tests will run only on those 
->> hardware
->> and add testlists to the MAINTAINERS file.
->>
->> This series also includes patch to add vkms testing to drm-ci.
->>
->> Working pipeline link,
->> https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1119859
-> 
-> Hi Vignesh, thanks for this patchset.
-> 
-> Just to confirm, the new convention is:
-> 
-> stages are named per DRIVER_NAME
+I think we should move away from specifying tests explicitly. They can
+easily get out of sync. A month ago I had to manually go through the
+list of the tests and update it to follow changes in the IGT.
 
-Yes correct.
+I think we should directly use testlist.txt from IGT and then filter
+it out using skips.
 
-> jobs are named DRIVER_NAME:GPU_VERSION
-
-Yes
-
-> xfails files and testlist files are named DRIVER_NAME-<xfails-suffix>.txt
-
-Base testlist is named as testlist.txt
-driver specific testlist is named as testlist-$DRIVER_NAME.txt
-
-xfails files are named as $DRIVER_NAME-$GPU_VERSION-<xfails-suffix>.txt 
-(mediatek-mt8183-fails.txt)
-
-> 
-> Looks good.
-> 
-> I just have some minor comments/questions in the series, please check.
-
-Will address those and send v5.
-
-Regards,
-Vignesh
-
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
