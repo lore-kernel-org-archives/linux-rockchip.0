@@ -4,54 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41402C54E5D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Mar 2024 13:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A86C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Mar 2024 13:37:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nkrib50cA9OzcteO6J9N6AXlgUIah1b/cDHF0qAOHuA=; b=g3wTnntUU2hhA3
-	0mhrfZ81OyQfKleqJzCtSY1z+Bdl7qwMGEwD7Fnj5DGZUoijqxD0nCH7QazWooRNUs3cmF9IX6epZ
-	rF7ZLhROWMrTk2zAZiIf9Vy8uEw2RPsgNfkWiiw9KoBNOfzsLNLirKKr2k6PfZfjIa0+pkCOYabmg
-	BdlJ520n61+Bbx0dlXjSmDdxfurwOQFHPTLncsZTl1KCSY+O+POOwZIi8E3Q1/5OyvFJn8nHNs9QP
-	fJ8OsA8PtN2h0vRxnNQIA4TIUSnFX1Ngx79yZqXLL9bOdxeIUxjpUmiZv9C0p3xJCugBhLh0RhP+N
-	dqLV28M3LT6TB5kBpMzA==;
+	List-Owner; bh=GGg590dWbs4APbBaxrG9Nt7xafbxnDNUAPkzIfxxE/E=; b=tCz27+wYBSWzj3
+	E6ODUN+xirJPSPmH3bE+upMDBctyN37kvkRa2v8Rcpum8tEqI6tbxZUqF+EB9mXx4GTPewFumqKKQ
+	RMVZDxAGWZZET1XvrlaAwZqr/MBaQtVc98OmAVMUNn5XXOZM4IhftJlkazmnVdvaN9UinKXxwGgLM
+	CFJYcmgWmbr+2DW0WVQ0qTD21H+ZQGi6Zf5q9MxwDe5nLmb5oTbfCMF3TpzvOZl5jgpXTVaZVrdlr
+	u9MbkIDfKAu6tJWhbNZW7wY1HCEb4etFZWz26+BWevOYkTy66t+vAKAW7DYshFbWWUMB7hlFaz4Eo
+	04mWWbrO3W/aW2bWBBmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmChP-00000008baB-208C;
-	Mon, 18 Mar 2024 13:06:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rmDB1-00000008gbe-0AFP;
+	Mon, 18 Mar 2024 13:37:19 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmChL-00000008bZK-1jRQ
-	for linux-rockchip@lists.infradead.org;
-	Mon, 18 Mar 2024 13:06:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C60D660C4B;
-	Mon, 18 Mar 2024 13:06:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03EA6C43390;
-	Mon, 18 Mar 2024 13:06:34 +0000 (UTC)
-Message-ID: <00fe576e-df97-4cae-9937-d8e9272cf5e0@xs4all.nl>
-Date: Mon, 18 Mar 2024 14:06:33 +0100
+	id 1rmDAy-00000008gag-0sxZ;
+	Mon, 18 Mar 2024 13:37:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1710769036; x=1742305036;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=u82l/MBNpObPyrd/rtRsi0HOp2zPMN16KTaVMbMuxec=;
+  b=YukdzySNC422o4qTKdjiuru78Ip8qyVKPzg3E77Kv/b25rc1OMz68KBA
+   r9kw/U5Dg55KUojG40ieeJx4325Rw3KKqwwvFIiTmP7CgO2Y9JtSh68lK
+   zNC7KIJ66wqAXcQQf3mpNx24CMZzhqFi8ICrlNRMPkh/QNWFnQmax9uBm
+   BgaC4pM8+5eUsHBxBSSdefu9RoNwfQQDzELY/Litgijx9mbLVMhB2ntni
+   WISkMfokBr2J2IT+3ub9gYDdTEUqfKKj0AFkDzDX3bJr5dhsXYrBeO/EP
+   ZCbJdoKkaqCUVJwSYYMr1pc8ncMi213smrsA5LPqcQY4nDHMFQbuXd9SG
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11016"; a="5765142"
+X-IronPort-AV: E=Sophos;i="6.07,134,1708416000"; 
+   d="scan'208";a="5765142"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 06:37:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,11016"; a="827781787"
+X-IronPort-AV: E=Sophos;i="6.07,134,1708416000"; 
+   d="scan'208";a="827781787"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
+  by orsmga001.jf.intel.com with SMTP; 18 Mar 2024 06:37:05 -0700
+Received: by stinkbox (sSMTP sendmail emulation); Mon, 18 Mar 2024 15:37:05 +0200
+Date: Mon, 18 Mar 2024 15:37:05 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Sebastian Wick <sebastian.wick@redhat.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v9 14/27] drm/connector: hdmi: Compute bpc and format
+ automatically
+Message-ID: <ZfhDgRcC6sdGmcmH@intel.com>
+References: <20240311-kms-hdmi-connector-state-v9-0-d45890323344@kernel.org>
+ <20240311-kms-hdmi-connector-state-v9-14-d45890323344@kernel.org>
+ <ZfQBPHoAvI1dquEY@intel.com>
+ <20240318-organic-debonair-beetle-b2817b@houat>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v21 3/9] media: test-drivers: Set REQBUFS minimum number
- of buffers
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, nicolas@ndufresne.ca
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com
-References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
- <20240314153226.197445-4-benjamin.gaignard@collabora.com>
- <43d27ed7-94ff-4916-b1f3-07204b2f54ab@xs4all.nl>
-In-Reply-To: <43d27ed7-94ff-4916-b1f3-07204b2f54ab@xs4all.nl>
+Content-Disposition: inline
+In-Reply-To: <20240318-organic-debonair-beetle-b2817b@houat>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_060639_589935_F53C2803 
-X-CRM114-Status: GOOD (  27.32  )
+X-CRM114-CacheID: sfid-20240318_063716_361991_FD0E148F 
+X-CRM114-Status: GOOD (  52.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,108 +93,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/03/2024 11:06 am, Hans Verkuil wrote:
-> Hi Benjamin,
-> 
-> On 14/03/2024 4:32 pm, Benjamin Gaignard wrote:
->> Instead of using 'min_queued_buffers' field to specify the
->> minimum number of buffers to be allocated when calling REQBUF
->> use 'min_reqbufs_allocation' field which is dedicated to this
->> purpose.
->>
->> While at it rename vivid_create_queue() parameter.
->>
->> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->> ---
->>  drivers/media/test-drivers/vimc/vimc-capture.c | 2 +-
->>  drivers/media/test-drivers/vivid/vivid-core.c  | 4 ++--
->>  2 files changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
->> index 2a2d19d23bab..97693561f1e4 100644
->> --- a/drivers/media/test-drivers/vimc/vimc-capture.c
->> +++ b/drivers/media/test-drivers/vimc/vimc-capture.c
->> @@ -432,7 +432,7 @@ static struct vimc_ent_device *vimc_capture_add(struct vimc_device *vimc,
->>  	q->mem_ops = vimc_allocator == VIMC_ALLOCATOR_DMA_CONTIG
->>  		   ? &vb2_dma_contig_memops : &vb2_vmalloc_memops;
->>  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
->> -	q->min_queued_buffers = 2;
->> +	q->min_reqbufs_allocation = 2;
->>  	q->lock = &vcapture->lock;
->>  	q->dev = v4l2_dev->dev;
->>  
->> diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
->> index 159c72cbb5bf..11b8520d9f57 100644
->> --- a/drivers/media/test-drivers/vivid/vivid-core.c
->> +++ b/drivers/media/test-drivers/vivid/vivid-core.c
->> @@ -861,7 +861,7 @@ static const struct media_device_ops vivid_media_ops = {
->>  static int vivid_create_queue(struct vivid_dev *dev,
->>  			      struct vb2_queue *q,
->>  			      u32 buf_type,
->> -			      unsigned int min_queued_buffers,
->> +			      unsigned int min_reqbufs_allocation,
->>  			      const struct vb2_ops *ops)
->>  {
->>  	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE && dev->multiplanar)
->> @@ -898,7 +898,7 @@ static int vivid_create_queue(struct vivid_dev *dev,
->>  	q->mem_ops = allocators[dev->inst] == 1 ? &vb2_dma_contig_memops :
->>  						  &vb2_vmalloc_memops;
->>  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
->> -	q->min_queued_buffers = supports_requests[dev->inst] ? 0 : min_queued_buffers;
->> +	q->min_reqbufs_allocation = min_reqbufs_allocation;
->>  	q->lock = &dev->mutex;
->>  	q->dev = dev->v4l2_dev.dev;
->>  	q->supports_requests = supports_requests[dev->inst];
-> 
-> How did you test this series? If I run the test-media script using the patch
-> v4l2-compliance (the v9 series) I get two failures. Both are traced to code
-> in vivid: meta_out_queue_setup() and touch_cap_queue_setup():
-> 
-> Both have this code:
-> 
->         if (*nplanes) {
->                 if (sizes[0] < size)
->                         return -EINVAL;
->         } else {
->                 sizes[0] = size;
->         }
-> 
->         if (q_num_bufs + *nbuffers < 2)
->                 *nbuffers = 2 - q_num_bufs;
-> 
->         *nplanes = 1;
->         return 0;
-> 
-> It's the *nbuffers assignment that is wrong. Looking at vivid-core.c I see
-> that vivid_create_queue() is called with min_reqbufs_allocation set to 1 for
-> these two devices. I think that should be 2, and then the code above can
-> be dropped.
-
-Note that if that 'if (q_num_bufs + *nbuffers < 2)' is dropped, then you
-should also drop the q_num_bufs assignment at the beginning of the function
-since that is now no longer used.
-
-Regards,
-
-	Hans
-
-> 
-> It is probably best to post a v21.1 3/9 patch only.
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> 
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBNYXIgMTgsIDIwMjQgYXQgMDE6MDU6MjJQTSArMDEwMCwgTWF4aW1lIFJpcGFyZCB3
+cm90ZToKPiBIaSBWaWxsZSwKPiAKPiBUaGFua3MgZm9yIHlvdXIgcmV2aWV3ICEKPiAKPiBPbiBG
+cmksIE1hciAxNSwgMjAyNCBhdCAxMDowNToxNkFNICswMjAwLCBWaWxsZSBTeXJqw6Rsw6Qgd3Jv
+dGU6Cj4gPiBPbiBNb24sIE1hciAxMSwgMjAyNCBhdCAwMzo0OTo0MlBNICswMTAwLCBNYXhpbWUg
+UmlwYXJkIHdyb3RlOgo+ID4gPiArc3RhdGljIGJvb2wKPiA+ID4gK3Npbmtfc3VwcG9ydHNfZm9y
+bWF0X2JwYyhjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+ID4gPiArCQkJ
+IGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9pbmZvICppbmZvLAo+ID4gPiArCQkJIGNvbnN0IHN0
+cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlLAo+ID4gPiArCQkJIHVuc2lnbmVkIGludCBmb3Jt
+YXQsIHVuc2lnbmVkIGludCBicGMpCj4gPiA+ICt7Cj4gPiA+ICsJc3RydWN0IGRybV9kZXZpY2Ug
+KmRldiA9IGNvbm5lY3Rvci0+ZGV2Owo+ID4gPiArCXU4IHZpYyA9IGRybV9tYXRjaF9jZWFfbW9k
+ZShtb2RlKTsKPiA+ID4gKwo+ID4gPiArCWlmICh2aWMgPT0gMSAmJiBicGMgIT0gOCkgewo+ID4g
+PiArCQlkcm1fZGJnKGRldiwgIlZJQzEgcmVxdWlyZXMgYSBicGMgb2YgOCwgZ290ICV1XG4iLCBi
+cGMpOwo+ID4gCj4gPiBVc2Ugb2YgZHJtX2RiZygpIGZvciBrbXMgc3R1ZmYgaXMgc3VycHJpc2lu
+Zy4KPiA+IAo+ID4gPiArCQlyZXR1cm4gZmFsc2U7Cj4gPiA+ICsJfQo+ID4gCj4gPiBJIGRvbid0
+IHRoaW5rIHdlIGhhdmUgdGhpcyBpbiBpOTE1LiBNeSBvcmlnaW5hbCBpbXByZXNzaW9uIHdhcyB0
+aGF0IHlvdQo+ID4gY2FuIHVzZSBoaWdoZXIgY29sb3IgZGVwdGggaWYgeW91IGNhbiBkZXRlcm1p
+bmUgdGhlIHNpbmsgY2FwYWJpbGl0aWVzLAo+ID4gYnV0IGFsbCBzaW5rcyBhcmUgcmVxdWlyZWQg
+dG8gYWNjZXB0IDY0MHg0ODBAOGJwYyBhcyBhIGZhbGxiYWNrLgo+ID4gCj4gPiBidXQgQ1RBLTg2
+MS1IIHNheXM6Cj4gPiAiNS40IENvbG9yIENvZGluZyAmIFF1YW50aXphdGlvbgo+ID4gIENvbXBv
+bmVudCBEZXB0aDogVGhlIGNvZGluZyBzaGFsbCBiZSBOLWJpdCwgd2hlcmUgTiA9IDgsIDEwLCAx
+Miwgb3IgMTYKPiA+ICBiaXRzL2NvbXBvbmVudCDigJQgZXhjZXB0IGluIHRoZSBjYXNlIG9mIHRo
+ZSBkZWZhdWx0IDY0MHg0ODAgVmlkZW8gVGltaW5nIDEsCj4gPiAgd2hlcmUgdGhlIHZhbHVlIG9m
+IE4gc2hhbGwgYmUgOC4iCj4gPiAKPiA+IFNvIHRoYXQgZG9lcyBzZWVtIHRvIGltcGx5IHRoYXQg
+eW91J3JlIHN1cHBvc2VkIHRvIHVzZSBleGFjdGx5IDhicGMuCj4gPiBUaG91Z2ggdGhlIHdvcmQg
+ImRlZmF1bHQiIGluIHRoZXJlIGlzIGNvbmZ1c2luZy4gQXJlIHRoZXkgc3BlY2lmaWNhbGx5Cj4g
+PiB1c2luZyB0aGF0IHRvIGluZGljYXRlIHRoYXQgdGhpcyBpcyBhYm91dCB0aGUgZmFsbGJhY2sg
+YmVoYXZpb3VyLCBvcgo+ID4gaXMgaXQganVzdCBpbmRpY2F0aW5nIHRoYXQgaXQgaXMgYSAiZGVm
+YXVsdCBtb2RlIHRoYXQgYWx3YXlzIGhhcyB0bwo+ID4gYmUgc3VwcG9ydGVkIi4gRHVubm8uIEkg
+Z3Vlc3Mgbm8gcmVhbCBoYXJtIGluIGZvcmNpbmcgOGJwYyBmb3IgNjQweDQ4MAo+ID4gc2luY2Ug
+bm8gb25lIGlzIGxpa2VseSB0byB1c2UgdGhhdCBmb3IgYW55IGhpZ2ggZmlkZWxpdHkgc3R1ZmYu
+Cj4gCj4gTXkgdW5kZXJzdGFuZGluZyB3YXMgdGhhdCBDVEEtODYxIG1hbmRhdGVzIHRoYXQgNjQw
+eDQ4MEA2MEh6IGlzCj4gc3VwcG9ydGVkLCBhbmQgbWVudGlvbnMgaXQgYmVpbmcgdGhlIGRlZmF1
+bHQgdGltaW5nIG9uIGEgZmV3IG9jY3VyZW5jZXMsCj4gbGlrZSBpbiBzZWN0aW9uIDQgLSBWaWRl
+byBGb3JtYXRzIGFuZCBXYXZlZm9ybSBUaW1pbmdzIHRoYXQgc3RhdGVzICJUaGlzCj4gc2VjdGlv
+biBkZXNjcmliZXMgdGhlIGRlZmF1bHQgSVQgNjQweDQ4MCBWaWRlbyBUaW1pbmcgYXMgd2VsbCBh
+cyBhbGwgb2YKPiB0aGUgc3RhbmRhcmQgQ0UgVmlkZW8gVGltaW5ncy4iLCBvciBTZWN0aW9uIDYu
+MiAtIERlc2NyaWJpbmcgVmlkZW8KPiBGb3JtYXRzIGluIEVESUQgIlRoZSA2NDB4NDgwQDYwSHog
+ZmxhZywgaW4gdGhlIEVzdGFibGlzaGVkIFRpbWluZ3MgYXJlYSwKPiBzaGFsbCBhbHdheXMgYmUg
+c2V0LCBzaW5jZSB0aGUgNjQweDQ4MHAgZm9ybWF0IGlzIGEgbWFuZGF0b3J5IGRlZmF1bHQKPiB0
+aW1pbmcuIgo+IAo+IFNvIG15IHVuZGVyc3RhbmRpbmcgaXMgdGhhdCBkZWZhdWx0IGhlcmUgYXBw
+bGllcyB0byB0aGUgdGltaW5nIGl0c2VsZiwKPiBhbmQgbm90IHRoZSBicGMsIGFuZCBpcyB0aHVz
+IHRoZSBzZWNvbmQgaW50ZXJwcmV0YXRpb24geW91IHN1Z2dlc3RlZC4KPiAKPiBJJ2xsIGFkZCBh
+IGNvbW1lbnQgdG8gbWFrZSBpdCBjbGVhcmVyLgo+IAo+ID4gPiArc3RhdGljIGludAo+ID4gPiAr
+aGRtaV9jb21wdXRlX2Zvcm1hdChjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9y
+LAo+ID4gPiArCQkgICAgc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKnN0YXRlLAo+ID4gPiAr
+CQkgICAgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCj4gPiA+ICsJCSAgICB1
+bnNpZ25lZCBpbnQgYnBjKQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYg
+PSBjb25uZWN0b3ItPmRldjsKPiA+ID4gKwo+ID4gPiArCWlmIChoZG1pX3RyeV9mb3JtYXRfYnBj
+KGNvbm5lY3Rvciwgc3RhdGUsIG1vZGUsIGJwYywgSERNSV9DT0xPUlNQQUNFX1JHQikpIHsKPiA+
+ID4gKwkJc3RhdGUtPmhkbWkub3V0cHV0X2Zvcm1hdCA9IEhETUlfQ09MT1JTUEFDRV9SR0I7Cj4g
+PiA+ICsJCXJldHVybiAwOwo+ID4gPiArCX0KPiA+ID4gKwo+ID4gPiArCWlmIChoZG1pX3RyeV9m
+b3JtYXRfYnBjKGNvbm5lY3Rvciwgc3RhdGUsIG1vZGUsIGJwYywgSERNSV9DT0xPUlNQQUNFX1lV
+VjQyMikpIHsKPiA+ID4gKwkJc3RhdGUtPmhkbWkub3V0cHV0X2Zvcm1hdCA9IEhETUlfQ09MT1JT
+UEFDRV9ZVVY0MjI7Cj4gPiA+ICsJCXJldHVybiAwOwo+ID4gPiArCX0KPiA+IAo+ID4gTG9va3Mg
+bGlrZSB5b3UncmUgcHJlZmVycmluZyBZQ2JDciA0OjI6MiBvdmVyIFJHQiA4YnBjLiBOb3Qgc3Vy
+ZQo+ID4gaWYgdGhhdCdzIGEgZ29vZCB0cmFkZW9mZiB0byBtYWtlLgo+IAo+IFllYWgsIGluZGVl
+ZC4gSSBndWVzcyBpdCdzIGEganVkZ2VtZW50IGNhbGwgb24gd2hldGhlciB3ZSBwcmlvcml0aXNl
+Cj4gbG93ZXJpbmcgdGhlIGJwYyBvdmVyIHNlbGVjdGluZyBZVVY0MjIsIGJ1dCBJIGd1ZXNzIEkg
+Y2FuIHRyeSBhbGwKPiBhdmFpbGFibGUgUkdCIGJwYyBiZWZvcmUgZmFsbGluZyBiYWNrIHRvIFlV
+VjQyMi4KPiAKPiA+IEluIGk5MTUgd2UgZG9uJ3QgY3VycmVudGx5IGV4cG9zZSA0OjI6MiBhdCBh
+bGwgYmVjYXVzZSBpdCBkb2Vzbid0Cj4gPiBoZWxwIGluIGdldHRpbmcgYSB3b3JraW5nIGRpc3Bs
+YXksIGFuZCB3ZSBoYXZlIG5vIHVhcGkgZm9yIHRoZQo+ID4gdXNlciB0byBmb3JjZSBpdCBpZiB0
+aGV5IHJlYWxseSB3YW50IDQ6MjoyIG92ZXIgUkdCLgo+IAo+IEkgZ3Vlc3MgaWYgdGhlIHByaW9y
+aXR5IGlzIGdpdmVuIHRvIGxvd2VyaW5nIGJwYywgdGhlbiBpdCBpbmRlZWQgZG9lc24ndAo+IG1h
+a2Ugc2Vuc2UgdG8gc3VwcG9ydCBZVVY0MjIsIHNpbmNlIHRoZSBsaW1pdGluZyBmYWN0b3IgaXMg
+bGlrZWx5IHRvIGJlCj4gdGhlIFRNRFMgY2hhciByYXRlIGFuZCBZVVY0MjIgMTIgYnBjIGlzIGVx
+dWl2YWxlbnQgdG8gUkdCIDhicGMgdGhlcmUuCj4gCj4gZHctaGRtaSBvbiB0aGUgb3RoZXIgaGFu
+ZCB3aWxsIGFsd2F5cyBwdXQgWVVWNDIyIGFuZCBZVVY0NDQgYmVmb3JlIFJHQgo+IGZvciBhIGdp
+dmVuIGJwYywgd2hpY2ggaXMgd2VpcmQgdG8gbWU6Cj4gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5j
+b20vbGludXgvbGF0ZXN0L3NvdXJjZS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
+LWhkbWkuYyNMMjY5Ngo+IAo+IFdoYXQgaXMgZXZlbiB3ZWlyZGVyIHRvIG1lIGlzIHRoYXQgWVVW
+NDIyIGlzIGV4cGxpY2l0bHkgc3RhdGVkIHRvIGJlCj4gMTJicGMgb25seSwgc28gdGhlcmUncyBz
+b21lIGludmFsaWQgY29uZmlndXJhdGlvbnMgdGhlcmUgKDggYW5kIDEwIGJwYykuCj4gCj4gQW5k
+IGdpdmVuIHRoYXQgaXQncyBvcmRlciBieSBkZWNyZWFzaW5nIG9yZGVyIG9mIHByZWZlcmVuY2Us
+IEknbSBwcmV0dHkKPiBzdXJlIGl0J2xsIG5ldmVyIGFjdHVhbGx5IHBpY2sgYW55IFlVViBvciBS
+R0IgPiA4YnBjIGZvcm1hdCBzaW5jZSBSR0IKPiA4YnBjIGlzIHN1cGVyIGxpa2VseSB0byBiZSBh
+bHdheXMgYXZhaWxhYmxlIGFuZCB0aHVzIHBpY2tlZCBmaXJzdC4KCjhicGMgUkdCIGlzIGluIGZh
+Y3QgbWFuZGF0b3J5LgoKPiAKPiBJZiB3ZSB3YW50IHRvIGNvbnZlcmdlLCBJIHRoaW5rIHdlIHNo
+b3VsZCBhbWVuZCB0aGlzIGNvZGUgdG8gc3VwcG9ydAo+IFlVVjQyMCBmb3IgWVVWNDIwLW9ubHkg
+bW9kZXMgZmlyc3QsIGFuZCB0aGVuIHRoZSBSR0Igb3B0aW9ucyBsaWtlIGk5MTUKPiBpcyBkb2lu
+Zy4gQW5kIHRoZW4gaWYgc29tZW9uZSBpcyBpbnRlcmVzdGVkIGluIG1vcmUsIHdlIGNhbiBhbHdh
+eXMKPiBleHBhbmQgaXQgdG8gb3RoZXIgZm9ybWF0cy4KPiAKPiA+ID4gKwo+ID4gPiArCWRybV9k
+YmcoZGV2LCAiRmFpbGVkLiBObyBGb3JtYXQgU3VwcG9ydGVkIGZvciB0aGF0IGJwYyBjb3VudC5c
+biIpOwo+ID4gPiArCj4gPiA+ICsJcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+
+ID4gK3N0YXRpYyBpbnQKPiA+ID4gK2hkbWlfY29tcHV0ZV9jb25maWcoY29uc3Qgc3RydWN0IGRy
+bV9jb25uZWN0b3IgKmNvbm5lY3RvciwKPiA+ID4gKwkJICAgIHN0cnVjdCBkcm1fY29ubmVjdG9y
+X3N0YXRlICpzdGF0ZSwKPiA+ID4gKwkJICAgIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2Rl
+ICptb2RlKQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYgPSBjb25uZWN0
+b3ItPmRldjsKPiA+ID4gKwl1bnNpZ25lZCBpbnQgbWF4X2JwYyA9IGNsYW1wX3QodW5zaWduZWQg
+aW50LAo+ID4gPiArCQkJCSAgICAgICBzdGF0ZS0+bWF4X2JwYywKPiA+ID4gKwkJCQkgICAgICAg
+OCwgY29ubmVjdG9yLT5tYXhfYnBjKTsKPiA+ID4gKwl1bnNpZ25lZCBpbnQgYnBjOwo+ID4gPiAr
+CWludCByZXQ7Cj4gPiA+ICsKPiA+ID4gKwlmb3IgKGJwYyA9IG1heF9icGM7IGJwYyA+PSA4OyBi
+cGMgLT0gMikgewo+ID4gPiArCQlkcm1fZGJnKGRldiwgIlRyeWluZyB3aXRoIGEgJWQgYnBjIG91
+dHB1dFxuIiwgYnBjKTsKPiA+ID4gKwo+ID4gPiArCQlyZXQgPSBoZG1pX2NvbXB1dGVfZm9ybWF0
+KGNvbm5lY3Rvciwgc3RhdGUsIG1vZGUsIGJwYyk7Cj4gPiAKPiA+IEhtbS4gQWN0dWFsbHkgSSdt
+IG5vdCBzdXJlIHlvdXIgNDoyOjIgc3R1ZmYgZXZlbiB3b3JrcyBzaW5jZSB5b3UgCj4gPiBjaGVj
+ayBmb3IgYnBjPT0xMiBpbiB0aGVyZSBhbmQgb25seSBjYWxsIHRoaXMgYmFzZWQgb24gdGhlIG1h
+eF9icGMuCj4gPiBJJ20gbm90IGNvbnZpbmNlZCBtYXhfYnBjIHdvdWxkIGFjdHVhbGx5IGJlIDEy
+IGZvciBhIHNpbmsgdGhhdAo+ID4gc3VwcG9ydHMgWUNiQ3IgNDoyOjIgYnV0IG5vdCAxMmJwYyBS
+R0IuCj4gCj4gSXQncyBhbm90aGVyIGRpc2N1c3Npb24gd2UgaGFkIGluIGFuIGVhcmxpZXIgdmVy
+c2lvbiwgYnV0IHllYWggd2UgbGFjawo+IHRoZSBpbmZyYXN0cnVjdHVyZSB0byBzdXBwb3J0IHRo
+b3NlIGZvciBub3cuIEkgc3RpbGwgYmVsaWV2ZSBpdCB3b3VsZAo+IHJlcXVpcmUgYW4gaW5jcmVh
+c2VkIG1heF9icGMgdG8gc2VsZWN0IFlVVjQyMiwgb3RoZXJ3aXNlIHRoaW5ncyB3b3VsZCBiZQo+
+IHByZXR0eSBpbmNvbnNpc3RlbnQgd2l0aCBvdGhlciBZVVYgZm9ybWF0cy4KCklkZWFsbHkgSSdk
+IGxpa2UgdG8ga25vdyB0aGUgYWN0dWFsIGNvbG9yIGRlcHRoIG9mIHRoZSBwYW5lbAppbmRlcGVu
+ZGVudGx5IG9mIHRoZSBzdXBwb3J0ZWQgc2lnbmFsIGNvbG9yIGRlcHRocy4gVW5mb3J0dW5hdGVs
+eQpJIGRvbid0IHRoaW5rIEVESUQgZ2l2ZXMgdXMgdGhhdC4gQ2FuJ3QgcmVjYWxsIGlmIERpc3Bs
+YXlJRCBtaWdodApoYXZlIHNvbWV0aGluZyBhIGJpdCBtb3JlIHNlbnNpYmxlLgoKR2l2ZW4gaG93
+IGluZm8tPmJwYyB3b3JrcyByaWdodCBub3csIEkgc3VwcG9zZSBpdCB3b3VsZCBtYWtlIHNlbnNl
+CnRvIGJ1bXAgaXQgdXAgdG8gMTIgd2hlbiA0OjI6MiBpcyBzdXBwb3J0ZWQuIEJ1dCBJJ3ZlIG5v
+dCB0aG91Z2h0CnRocm91Z2ggdGhlIGFjdHVhbCBpbXBsaWNhdGlvbnMgc3VjaCBhIGNoYW5nZS4K
+Cj4gQnV0IHllYWgsIHdlIG5lZWQgdG8gcHJvdmlkZSBhIGhvb2sgdG8gcmVwb3J0IHdlIGRvbid0
+IHN1cHBvcnQgUkdCID4KPiA4YnBjIGZvciBIRE1JIDEuNCBkZXZpY2VzLiBXaGljaCBnb2VzIGJh
+Y2sgdG8gdGhlIHByZXZpb3VzIHF1ZXN0aW9uCj4gYWN0dWFsbHksIEkgYmVsaWV2ZSBpdCB3b3Vs
+ZCBzdGlsbCBwcm92aWRlIHZhbHVlIHRvIHN1cHBvcnQgWVVWNDIyIG9uCj4gdGhvc2UgZGV2aWNl
+cywgd2l0aCBzb21ldGhpbmcgbGlrZToKPiAKPiBmb3IgKGJwYyA9IG1heF9icGM7IGJwYyA+PSA4
+OyBicGMgLT0gMikgewo+ICAgICBpZiAoIWNvbm5lY3Rvci0+aGRtaS0+ZnVuY3MtPnZhbGlkYXRl
+X2NvbmZpZyhtb2RlLCBSR0IsIGJwYykpCj4gICAgICAgIGNvbnRpbnVlOwo+IAo+ICAgICAvLyBT
+ZWxlY3QgUkdCIHdpdGggYnBjCj4gICAgIC4uLgo+IH0KPiAKPiBpZiAoY29ubmVjdG9yLT5oZG1p
+LT5mdW5jcy0+dmFsaWRhdGVfY29uZmlnKG1vZGUsIFlVVikgJiYKPiAgICAgaGRtaV90cnlfZm9y
+bWF0X2JwYyguLi4sIG1vZGUsIDEyLCBZVVY0MjIpIHsKPiAgICAvLyBTZWxlY3QgWVVWNDIyLCAx
+MiBicGMKPiAgICAuLi4KPiB9Cj4gCj4gV2hhdCBkbyB5b3UgdGhpbms/CgpTaW5jZSA4YnBjIFJH
+QiBtdXN0IGFsd2F5cyBiZSBzdXBwb3J0ZWQgdGhpcyBsb29rcwpsaWtlIGRlYWQgY29kZSB0byBt
+ZS4KCi0tIApWaWxsZSBTeXJqw6Rsw6QKSW50ZWwKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
