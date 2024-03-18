@@ -4,58 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34DF8C54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Mar 2024 08:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76677C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Mar 2024 10:06:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=btgaUZ4pzOtwE4Xj0l9Iz94PoSU+C68ekn618LjrfF0=; b=NOrC3/8Vi3deGF
-	rgwlIEXVSmJridWZr+g0roPA4z7lk7o3pHjypBBMbYaWQB9vNVot5mlSNy+xfNvWZI0z9APlOJOEq
-	Clm82PA36HtreZsLEI2iS3YxSy8GcXcIWImNbUaiLIuHBYH1wh8KjNOQoLMBowif3OeDwQDGi6QOM
-	qbrTFww5b/IGcGMY89xD8ZdFAB/u2ZIEceHCM9DN3/FGi4AJiikzCgMXY/Ei+2+duA96F4YMKJeiv
-	iNP6s9rDHgYtHScuBJ8ZhE0v7Qu0lQK/gLJ+7NC1s6paJPERQr3+D67Zx4ZLeCKm69qD2YAplItRf
-	BiJrh8K/ZqheVDhDw7sw==;
+	List-Owner; bh=AhcEuVxATTMIpdiIzR2O7ZdAkgMPM782wW6cbDvQt5Y=; b=rAiyY08m3tCQRj
+	D2V/tZxO/iRiJI9irbaruEhT5HJAkO8zDP/fiHTtZ89+OCt+R5TZbv2lCfzXUZmKv2tKyLzeZc1AU
+	IydSroN/EjrDAw/zSQTkeaT4qUyLR/DHTUGYhEWAVARctB8YZMah0YYysJjr0CJ6RwwDZBELeseyk
+	ATCHolWf3yXt8UU+RHkiPgcLE/9SowVn8f+dFufafZFsTMrBC/kqzydD8abIKt+xMFDYQaAA9doOC
+	Xta7Q6zKV+2TS7qiKL99YXr8JD9lwAAnmegxK9coq+d284uCij1HMTePg4dxB9/AXldcFut3v/GxW
+	nq/NTOgy1OyWfFlGatoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rm8ev-00000007naw-1Sz3;
-	Mon, 18 Mar 2024 08:47:53 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1rm9sp-000000083v4-3MiW;
+	Mon, 18 Mar 2024 10:06:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rm8er-00000007nXg-2zYM;
-	Mon, 18 Mar 2024 08:47:51 +0000
-Received: from pyrite.rasen.tech (h175-177-049-156.catv02.itscom.jp [175.177.49.156])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 745F7CC;
-	Mon, 18 Mar 2024 09:47:16 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1710751639;
-	bh=M+nAJgZSbHlik3v29OC83Fa+Gmr9WGGqm5p13HBc6PU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uWzEOyttmezRS4OYMkDvhaEOW6oIm0ByuXMlLm+F08YxFY+DFttNiV21tutoQXs7W
-	 Ig7rgx3AMBdcgNZlwiJhRqZcV9sVaEMmOib2vWgIVF1QiT7TKeQ/sulJPL7zQEusSR
-	 GIR3J/K8FHjlUbEcf2DABSwoDJVVXFlC/R/rNySU=
-Date: Mon, 18 Mar 2024 17:47:35 +0900
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-Cc: linux-kernel@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-media@vger.kernel.org>,
-	"open list:ROCKCHIP ISP V1 DRIVER" <linux-rockchip@lists.infradead.org>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v2] media: rkisp1: Adapt to different SoCs having
- different size limits
-Message-ID: <Zff_p_f39dwBATDB@pyrite.rasen.tech>
-References: <20240315230245.1385902-1-megi@xff.cz>
+	id 1rm9sn-000000083sf-0iV7
+	for linux-rockchip@lists.infradead.org;
+	Mon, 18 Mar 2024 10:06:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EDC7A60AB6;
+	Mon, 18 Mar 2024 10:06:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5867BC433F1;
+	Mon, 18 Mar 2024 10:06:09 +0000 (UTC)
+Message-ID: <43d27ed7-94ff-4916-b1f3-07204b2f54ab@xs4all.nl>
+Date: Mon, 18 Mar 2024 11:06:09 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240315230245.1385902-1-megi@xff.cz>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v21 3/9] media: test-drivers: Set REQBUFS minimum number
+ of buffers
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, nicolas@ndufresne.ca
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
+ <20240314153226.197445-4-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240314153226.197445-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240318_014749_967317_CEB30B2C 
-X-CRM114-Status: GOOD (  22.95  )
+X-CRM114-CacheID: sfid-20240318_030617_400733_7D7DA7D4 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,129 +62,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgT25kcmVqLAoKT24gU2F0LCBNYXIgMTYsIDIwMjQgYXQgMTI6MDI6NDFBTSArMDEwMCwgT25k
-xZllaiBKaXJtYW4gd3JvdGU6Cj4gRnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+Cj4g
-Cj4gLSBSSzMzOTkgaGFzIGlucHV0L291dHB1dCBsaW1pdCBvZiBtYWluIHBhdGggNDQxNiB4IDMz
-MTIKPiAtIFBYMzAgaGFzIGlucHV0L291dHB1dCBsaW1pdCBvZiBtYWluIHBhdGggMzI2NCB4IDI0
-NDgKPiAtIGkuTVg4TVAgaGFzIGlucHV0L291dHB1dCBsaW1pdCBvZiBtYWluIHBhdGggNDA5NiB4
-IDMwNzIKPiAKPiBVc2Ugcmtpc3AxX2luZm8gc3RydWN0IHRvIGVuY29kZSB0aGUgbGltaXRzLgo+
-IAo+IFNpZ25lZC1vZmYtYnk6IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6PgoKTG9va3MgZ29v
-ZCB0byBtZS4KClJldmlld2VkLWJ5OiBQYXVsIEVsZGVyIDxwYXVsLmVsZGVyQGlkZWFzb25ib2Fy
-ZC5jb20+Cgo+IC0tLQo+IHYyOgo+IC0gYWRhcHQgdG8gaS5NWDhNUCBtZXJnZWQgZm9yIHY2LjkK
-PiAKPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNvbW1v
-bi5oICB8IDYgKysrKy0tCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3Ax
-L3JraXNwMS1jc2kuYyAgICAgfCA1ICsrKy0tCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9j
-a2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYyAgICAgfCA2ICsrKysrKwo+ICBkcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtaXNwLmMgICAgIHwgOSArKysrKy0tLS0K
-PiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlc2l6ZXIu
-YyB8IDQgKystLQo+ICA1IGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyksIDEwIGRlbGV0
-aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlw
-L3JraXNwMS9ya2lzcDEtY29tbW9uLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlw
-L3JraXNwMS9ya2lzcDEtY29tbW9uLmgKPiBpbmRleCAyNjU3M2Y2YWU1NzUuLmI0Yzk1OGI5MzYy
-OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9y
-a2lzcDEtY29tbW9uLmgKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3Jr
-aXNwMS9ya2lzcDEtY29tbW9uLmgKPiBAQCAtMzQsOCArMzQsNiBAQCBzdHJ1Y3QgcmVnbWFwOwo+
-ICAjZGVmaW5lIFJLSVNQMV9JU1BfU0RfU0lOSwkJCUJJVCgxKQo+ICAKPiAgLyogbWluIGFuZCBt
-YXggdmFsdWVzIGZvciB0aGUgd2lkdGhzIGFuZCBoZWlnaHRzIG9mIHRoZSBlbnRpdGllcyAqLwo+
-IC0jZGVmaW5lIFJLSVNQMV9JU1BfTUFYX1dJRFRICQkJNDAzMgo+IC0jZGVmaW5lIFJLSVNQMV9J
-U1BfTUFYX0hFSUdIVAkJCTMwMjQKPiAgI2RlZmluZSBSS0lTUDFfSVNQX01JTl9XSURUSAkJCTMy
-Cj4gICNkZWZpbmUgUktJU1AxX0lTUF9NSU5fSEVJR0hUCQkJMzIKPiAgCj4gQEAgLTE0MCw2ICsx
-MzgsOCBAQCBlbnVtIHJraXNwMV9mZWF0dXJlIHsKPiAgICogQGlzcl9zaXplOiBudW1iZXIgb2Yg
-ZW50cmllcyBpbiB0aGUgQGlzcnMgYXJyYXkKPiAgICogQGlzcF92ZXI6IElTUCB2ZXJzaW9uCj4g
-ICAqIEBmZWF0dXJlczogYml0bWFzayBvZiBya2lzcDFfZmVhdHVyZSBmZWF0dXJlcyBpbXBsZW1l
-bnRlZCBieSB0aGUgSVNQCj4gKyAqIEBtYXhfd2lkdGg6IG1heGltdW0gaW5wdXQgZnJhbWUgd2lk
-dGgKPiArICogQG1heF9oZWlnaHQ6IG1heGltdW0gaW5wdXQgZnJhbWUgaGVpZ2h0Cj4gICAqCj4g
-ICAqIFRoaXMgc3RydWN0dXJlIGNvbnRhaW5zIGluZm9ybWF0aW9uIGFib3V0IHRoZSBJU1Agc3Bl
-Y2lmaWMgdG8gYSBwYXJ0aWN1bGFyCj4gICAqIElTUCBtb2RlbCwgdmVyc2lvbiwgb3IgaW50ZWdy
-YXRpb24gaW4gYSBwYXJ0aWN1bGFyIFNvQy4KPiBAQCAtMTUxLDYgKzE1MSw4IEBAIHN0cnVjdCBy
-a2lzcDFfaW5mbyB7Cj4gIAl1bnNpZ25lZCBpbnQgaXNyX3NpemU7Cj4gIAllbnVtIHJraXNwMV9j
-aWZfaXNwX3ZlcnNpb24gaXNwX3ZlcjsKPiAgCXVuc2lnbmVkIGludCBmZWF0dXJlczsKPiArCXVu
-c2lnbmVkIGludCBtYXhfd2lkdGg7Cj4gKwl1bnNpZ25lZCBpbnQgbWF4X2hlaWdodDsKPiAgfTsK
-PiAgCj4gIC8qCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAv
-cmtpc3AxL3JraXNwMS1jc2kuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtp
-c3AxL3JraXNwMS1jc2kuYwo+IGluZGV4IDQyMDI2NDJlMDUyMy4uODQxZTU4YzIwZjdmIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1j
-c2kuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNw
-MS1jc2kuYwo+IEBAIC0zMDcsNiArMzA3LDcgQEAgc3RhdGljIGludCBya2lzcDFfY3NpX3NldF9m
-bXQoc3RydWN0IHY0bDJfc3ViZGV2ICpzZCwKPiAgCQkJICAgICAgc3RydWN0IHY0bDJfc3ViZGV2
-X3N0YXRlICpzZF9zdGF0ZSwKPiAgCQkJICAgICAgc3RydWN0IHY0bDJfc3ViZGV2X2Zvcm1hdCAq
-Zm10KQo+ICB7Cj4gKwlzdHJ1Y3Qgcmtpc3AxX2NzaSAqY3NpID0gdG9fcmtpc3AxX2NzaShzZCk7
-Cj4gIAljb25zdCBzdHJ1Y3Qgcmtpc3AxX21idXNfaW5mbyAqbWJ1c19pbmZvOwo+ICAJc3RydWN0
-IHY0bDJfbWJ1c19mcmFtZWZtdCAqc2lua19mbXQsICpzcmNfZm10Owo+ICAKPiBAQCAtMzI2LDEw
-ICszMjcsMTAgQEAgc3RhdGljIGludCBya2lzcDFfY3NpX3NldF9mbXQoc3RydWN0IHY0bDJfc3Vi
-ZGV2ICpzZCwKPiAgCj4gIAlzaW5rX2ZtdC0+d2lkdGggPSBjbGFtcF90KHUzMiwgZm10LT5mb3Jt
-YXQud2lkdGgsCj4gIAkJCQkgIFJLSVNQMV9JU1BfTUlOX1dJRFRILAo+IC0JCQkJICBSS0lTUDFf
-SVNQX01BWF9XSURUSCk7Cj4gKwkJCQkgIGNzaS0+cmtpc3AxLT5pbmZvLT5tYXhfd2lkdGgpOwo+
-ICAJc2lua19mbXQtPmhlaWdodCA9IGNsYW1wX3QodTMyLCBmbXQtPmZvcm1hdC5oZWlnaHQsCj4g
-IAkJCQkgICBSS0lTUDFfSVNQX01JTl9IRUlHSFQsCj4gLQkJCQkgICBSS0lTUDFfSVNQX01BWF9I
-RUlHSFQpOwo+ICsJCQkJICAgY3NpLT5ya2lzcDEtPmluZm8tPm1heF9oZWlnaHQpOwo+ICAKPiAg
-CWZtdC0+Zm9ybWF0ID0gKnNpbmtfZm10Owo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jIGIvZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4gaW5kZXggYmIwMjAyMzg2Yzcw
-Li4wNTM1Y2U1N2U4NjIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2Nr
-Y2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9y
-b2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4gQEAgLTUxMCw2ICs1MTAsOCBAQCBzdGF0aWMg
-Y29uc3Qgc3RydWN0IHJraXNwMV9pbmZvIHB4MzBfaXNwX2luZm8gPSB7Cj4gIAkuZmVhdHVyZXMg
-PSBSS0lTUDFfRkVBVFVSRV9NSVBJX0NTSTIKPiAgCQkgIHwgUktJU1AxX0ZFQVRVUkVfU0VMRl9Q
-QVRICj4gIAkJICB8IFJLSVNQMV9GRUFUVVJFX0RVQUxfQ1JPUCwKPiArCS5tYXhfd2lkdGggPSAz
-MjY0LAo+ICsJLm1heF9oZWlnaHQgPSAyNDQ4LAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IGNo
-YXIgKiBjb25zdCByazMzOTlfaXNwX2Nsa3NbXSA9IHsKPiBAQCAtNTMxLDYgKzUzMyw4IEBAIHN0
-YXRpYyBjb25zdCBzdHJ1Y3Qgcmtpc3AxX2luZm8gcmszMzk5X2lzcF9pbmZvID0gewo+ICAJLmZl
-YXR1cmVzID0gUktJU1AxX0ZFQVRVUkVfTUlQSV9DU0kyCj4gIAkJICB8IFJLSVNQMV9GRUFUVVJF
-X1NFTEZfUEFUSAo+ICAJCSAgfCBSS0lTUDFfRkVBVFVSRV9EVUFMX0NST1AsCj4gKwkubWF4X3dp
-ZHRoID0gNDQxNiwKPiArCS5tYXhfaGVpZ2h0ID0gMzMxMiwKPiAgfTsKPiAgCj4gIHN0YXRpYyBj
-b25zdCBjaGFyICogY29uc3QgaW14OG1wX2lzcF9jbGtzW10gPSB7Cj4gQEAgLTU1MSw2ICs1NTUs
-OCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJraXNwMV9pbmZvIGlteDhtcF9pc3BfaW5mbyA9IHsK
-PiAgCS5pc3BfdmVyID0gUktJU1AxX1ZfSU1YOE1QLAo+ICAJLmZlYXR1cmVzID0gUktJU1AxX0ZF
-QVRVUkVfTUFJTl9TVFJJREUKPiAgCQkgIHwgUktJU1AxX0ZFQVRVUkVfRE1BXzM0QklULAo+ICsJ
-Lm1heF93aWR0aCA9IDQwOTYsCj4gKwkubWF4X2hlaWdodCA9IDMwNzIsCj4gIH07Cj4gIAo+ICBz
-dGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBya2lzcDFfb2ZfbWF0Y2hbXSA9IHsKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3Ax
-LWlzcC5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWlz
-cC5jCj4gaW5kZXggZTQ1YTIxM2JhZjQ5Li5mNzg3YTdlOTFlM2UgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWlzcC5jCj4gKysrIGIv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWlzcC5jCj4gQEAg
-LTUxNyw2ICs1MTcsNyBAQCBzdGF0aWMgaW50IHJraXNwMV9pc3BfZW51bV9mcmFtZV9zaXplKHN0
-cnVjdCB2NGwyX3N1YmRldiAqc2QsCj4gIAkJCQkgICAgICBzdHJ1Y3QgdjRsMl9zdWJkZXZfc3Rh
-dGUgKnNkX3N0YXRlLAo+ICAJCQkJICAgICAgc3RydWN0IHY0bDJfc3ViZGV2X2ZyYW1lX3NpemVf
-ZW51bSAqZnNlKQo+ICB7Cj4gKwlzdHJ1Y3Qgcmtpc3AxX2lzcCAqaXNwID0gdG9fcmtpc3AxX2lz
-cChzZCk7Cj4gIAljb25zdCBzdHJ1Y3Qgcmtpc3AxX21idXNfaW5mbyAqbWJ1c19pbmZvOwo+ICAK
-PiAgCWlmIChmc2UtPnBhZCA9PSBSS0lTUDFfSVNQX1BBRF9TSU5LX1BBUkFNUyB8fAo+IEBAIC01
-MzksOSArNTQwLDkgQEAgc3RhdGljIGludCBya2lzcDFfaXNwX2VudW1fZnJhbWVfc2l6ZShzdHJ1
-Y3QgdjRsMl9zdWJkZXYgKnNkLAo+ICAJCXJldHVybiAtRUlOVkFMOwo+ICAKPiAgCWZzZS0+bWlu
-X3dpZHRoID0gUktJU1AxX0lTUF9NSU5fV0lEVEg7Cj4gLQlmc2UtPm1heF93aWR0aCA9IFJLSVNQ
-MV9JU1BfTUFYX1dJRFRIOwo+ICsJZnNlLT5tYXhfd2lkdGggPSBpc3AtPnJraXNwMS0+aW5mby0+
-bWF4X3dpZHRoOwo+ICAJZnNlLT5taW5faGVpZ2h0ID0gUktJU1AxX0lTUF9NSU5fSEVJR0hUOwo+
-IC0JZnNlLT5tYXhfaGVpZ2h0ID0gUktJU1AxX0lTUF9NQVhfSEVJR0hUOwo+ICsJZnNlLT5tYXhf
-aGVpZ2h0ID0gaXNwLT5ya2lzcDEtPmluZm8tPm1heF9oZWlnaHQ7Cj4gIAo+ICAJcmV0dXJuIDA7
-Cj4gIH0KPiBAQCAtNzcyLDEwICs3NzMsMTAgQEAgc3RhdGljIHZvaWQgcmtpc3AxX2lzcF9zZXRf
-c2lua19mbXQoc3RydWN0IHJraXNwMV9pc3AgKmlzcCwKPiAgCj4gIAlzaW5rX2ZtdC0+d2lkdGgg
-PSBjbGFtcF90KHUzMiwgZm9ybWF0LT53aWR0aCwKPiAgCQkJCSAgUktJU1AxX0lTUF9NSU5fV0lE
-VEgsCj4gLQkJCQkgIFJLSVNQMV9JU1BfTUFYX1dJRFRIKTsKPiArCQkJCSAgaXNwLT5ya2lzcDEt
-PmluZm8tPm1heF93aWR0aCk7Cj4gIAlzaW5rX2ZtdC0+aGVpZ2h0ID0gY2xhbXBfdCh1MzIsIGZv
-cm1hdC0+aGVpZ2h0LAo+ICAJCQkJICAgUktJU1AxX0lTUF9NSU5fSEVJR0hULAo+IC0JCQkJICAg
-UktJU1AxX0lTUF9NQVhfSEVJR0hUKTsKPiArCQkJCSAgIGlzcC0+cmtpc3AxLT5pbmZvLT5tYXhf
-aGVpZ2h0KTsKPiAgCj4gIAkvKgo+ICAJICogQWRqdXN0IHRoZSBjb2xvciBzcGFjZSBmaWVsZHMu
-IEFjY2VwdCBhbnkgY29sb3IgcHJpbWFyaWVzIGFuZAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVzaXplci5jIGIvZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlc2l6ZXIuYwo+IGluZGV4IDZm
-MzkzMWNhNWI1MS4uZTIyY2MyZGIyNGNmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1yZXNpemVyLmMKPiArKysgYi9kcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVzaXplci5jCj4gQEAgLTQ5NCwx
-MCArNDk0LDEwIEBAIHN0YXRpYyB2b2lkIHJraXNwMV9yc3pfc2V0X3NpbmtfZm10KHN0cnVjdCBy
-a2lzcDFfcmVzaXplciAqcnN6LAo+ICAKPiAgCXNpbmtfZm10LT53aWR0aCA9IGNsYW1wX3QodTMy
-LCBmb3JtYXQtPndpZHRoLAo+ICAJCQkJICBSS0lTUDFfSVNQX01JTl9XSURUSCwKPiAtCQkJCSAg
-UktJU1AxX0lTUF9NQVhfV0lEVEgpOwo+ICsJCQkJICByc3otPnJraXNwMS0+aW5mby0+bWF4X3dp
-ZHRoKTsKPiAgCXNpbmtfZm10LT5oZWlnaHQgPSBjbGFtcF90KHUzMiwgZm9ybWF0LT5oZWlnaHQs
-Cj4gIAkJCQkgICBSS0lTUDFfSVNQX01JTl9IRUlHSFQsCj4gLQkJCQkgICBSS0lTUDFfSVNQX01B
-WF9IRUlHSFQpOwo+ICsJCQkJICAgcnN6LT5ya2lzcDEtPmluZm8tPm1heF9oZWlnaHQpOwo+ICAK
-PiAgCS8qCj4gIAkgKiBBZGp1c3QgdGhlIGNvbG9yIHNwYWNlIGZpZWxkcy4gQWNjZXB0IGFueSBj
-b2xvciBwcmltYXJpZXMgYW5kCj4gLS0gCj4gMi40NC4wCj4gCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Benjamin,
+
+On 14/03/2024 4:32 pm, Benjamin Gaignard wrote:
+> Instead of using 'min_queued_buffers' field to specify the
+> minimum number of buffers to be allocated when calling REQBUF
+> use 'min_reqbufs_allocation' field which is dedicated to this
+> purpose.
+> 
+> While at it rename vivid_create_queue() parameter.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/media/test-drivers/vimc/vimc-capture.c | 2 +-
+>  drivers/media/test-drivers/vivid/vivid-core.c  | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
+> index 2a2d19d23bab..97693561f1e4 100644
+> --- a/drivers/media/test-drivers/vimc/vimc-capture.c
+> +++ b/drivers/media/test-drivers/vimc/vimc-capture.c
+> @@ -432,7 +432,7 @@ static struct vimc_ent_device *vimc_capture_add(struct vimc_device *vimc,
+>  	q->mem_ops = vimc_allocator == VIMC_ALLOCATOR_DMA_CONTIG
+>  		   ? &vb2_dma_contig_memops : &vb2_vmalloc_memops;
+>  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+> -	q->min_queued_buffers = 2;
+> +	q->min_reqbufs_allocation = 2;
+>  	q->lock = &vcapture->lock;
+>  	q->dev = v4l2_dev->dev;
+>  
+> diff --git a/drivers/media/test-drivers/vivid/vivid-core.c b/drivers/media/test-drivers/vivid/vivid-core.c
+> index 159c72cbb5bf..11b8520d9f57 100644
+> --- a/drivers/media/test-drivers/vivid/vivid-core.c
+> +++ b/drivers/media/test-drivers/vivid/vivid-core.c
+> @@ -861,7 +861,7 @@ static const struct media_device_ops vivid_media_ops = {
+>  static int vivid_create_queue(struct vivid_dev *dev,
+>  			      struct vb2_queue *q,
+>  			      u32 buf_type,
+> -			      unsigned int min_queued_buffers,
+> +			      unsigned int min_reqbufs_allocation,
+>  			      const struct vb2_ops *ops)
+>  {
+>  	if (buf_type == V4L2_BUF_TYPE_VIDEO_CAPTURE && dev->multiplanar)
+> @@ -898,7 +898,7 @@ static int vivid_create_queue(struct vivid_dev *dev,
+>  	q->mem_ops = allocators[dev->inst] == 1 ? &vb2_dma_contig_memops :
+>  						  &vb2_vmalloc_memops;
+>  	q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
+> -	q->min_queued_buffers = supports_requests[dev->inst] ? 0 : min_queued_buffers;
+> +	q->min_reqbufs_allocation = min_reqbufs_allocation;
+>  	q->lock = &dev->mutex;
+>  	q->dev = dev->v4l2_dev.dev;
+>  	q->supports_requests = supports_requests[dev->inst];
+
+How did you test this series? If I run the test-media script using the patch
+v4l2-compliance (the v9 series) I get two failures. Both are traced to code
+in vivid: meta_out_queue_setup() and touch_cap_queue_setup():
+
+Both have this code:
+
+        if (*nplanes) {
+                if (sizes[0] < size)
+                        return -EINVAL;
+        } else {
+                sizes[0] = size;
+        }
+
+        if (q_num_bufs + *nbuffers < 2)
+                *nbuffers = 2 - q_num_bufs;
+
+        *nplanes = 1;
+        return 0;
+
+It's the *nbuffers assignment that is wrong. Looking at vivid-core.c I see
+that vivid_create_queue() is called with min_reqbufs_allocation set to 1 for
+these two devices. I think that should be 2, and then the code above can
+be dropped.
+
+It is probably best to post a v21.1 3/9 patch only.
+
+Regards,
+
+	Hans
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
