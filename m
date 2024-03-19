@@ -4,67 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136C0C54E5D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 10:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42CC1C54E5D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 12:41:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZZlZqfFezTSki+YGRkBGpispZVKNTmBpMa8TSOSkizU=; b=IqFmsX3vdPLKQcA2sjQuhx+ti8
-	t6NdJCFopoQTexAm3Wj8QdHvuXJ9dzR4y+BZIfQQLHmrjstjW05STdj686FrqL1aN7njjPVSZL9lG
-	tlzhJ9zMOA6wM0Syx4HWfAAy35Sy+yZdR7DPzo5moln+cDC0ifI4Yc9JP5tYs6362dOETmJDwMeBH
-	rB6UJOgJx+tJm2F/Spx7nGUd5of8xwMsFybxPSvlG6BmmgdEtBtl3LdGflZJ8DlSPNFr3Ws980Chc
-	bCsOuw4Jo51rEwPN+x0HQIRjgLbGox/6+psmdeV/hxlpwOh9xQburN2kDgS4K80X2FYkLpFJESqgE
-	jUm9NiaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+rNeXt5UgUi6oNg+dpKjBgT8ayKKms8hBWek6lksx54=; b=ljfY63lARd9r3P
+	O3ga0NPIRzC4apbUFV9f8I/4OxWbPTNBbOhMZaP7CpLFCS1clJLRGFDVwLkUoAjk9phKvx8YiqwGw
+	Z2cQHEIy5TAGtGU9IcpsfRArxYWlmkuzrd6bn/EnDC3VklAIvIATxnYyrbak5TA0P93A3bI43iOK9
+	RAQ1kDoO3MD7Xx+Fsu8tmgAuTqbRlJ5s63vUydApohX0O9IZX1DsM0iTvzh3HmVLZyTxMOkwYlnVx
+	Q6kqTfhsqMRokR3zew2+kNtoBazGZK0Mqi5tC50cQ+x+6NlZzho64gv4xPXMkt4UvBRqlJWP3H9TY
+	3CXP2ixTfSF5H2iw3SkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmWbU-0000000CHHK-0jVi;
-	Tue, 19 Mar 2024 10:21:56 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rmYmC-0000000CeLM-0vE9;
+	Tue, 19 Mar 2024 12:41:08 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmWbQ-0000000CHG4-1tHE;
-	Tue, 19 Mar 2024 10:21:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A5FC5CE0A36;
-	Tue, 19 Mar 2024 10:21:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61254C433F1;
-	Tue, 19 Mar 2024 10:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1710843709;
-	bh=LQRJqrShl8lL6hDmy7i+nFgigQ3aCd966E5AFrLN2Y8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X3dmr0PLHavDuoM68/QuGgElb/8kOvBtF0DTtpAK++OG8G164ABhe+f9jC45EszTB
-	 Vs1lefCt9oyU5P53WzxO3QHshXXtv0DYzuxaTfuKUo+8yKJQ5s3WwTPP2WAD+HqjRv
-	 B/z3pDeF6O8KyQVjgywEhI083KLegBTcQzcKkTVTAvnlIv7Lg9AiM/7A+vJfX9nRd6
-	 iUt809Kkyh5bAq53RcaGdWdbDAKjlJPHJB9pH/uKrMQRSOBVTAxA49r3QyH2WRUhVW
-	 vQP95iqFE5cfQF0mH+ztO7zlAIh22ObIDKMEDkw5G+UwINPxqHMp637HmBeEDvfqA9
-	 NMCi2hrdoNsmQ==
-Date: Tue, 19 Mar 2024 11:21:47 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Sebastian Wick <sebastian.wick@redhat.com>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v9 20/27] drm/connector: hdmi: Add Infoframes generation
-Message-ID: <20240319-gabby-marigold-poodle-c5a27f@houat>
-References: <20240311-kms-hdmi-connector-state-v9-0-d45890323344@kernel.org>
- <20240311-kms-hdmi-connector-state-v9-20-d45890323344@kernel.org>
- <ZfQFLR2xO6vUpAJ9@intel.com>
- <20240318-abstract-myna-of-exercise-adfcde@houat>
- <ZfhnsgYfwe_3mpWx@intel.com>
+	id 1rmYm7-0000000CeKA-49PP
+	for linux-rockchip@lists.infradead.org;
+	Tue, 19 Mar 2024 12:41:05 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2d28051376eso90222951fa.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Mar 2024 05:41:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710852062; x=1711456862; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=WRBSPouyZNepIb9OSrcHdTHsgsddW1COazPCcrBFhTo=;
+        b=A8+p2vglDVeUUobjX4UtQ0AO+mRbPxQG8s0a9jFdzi8yYiUXVM1hkQyBM4sKzw4oGe
+         Lf498iAKtrR50wiZTeU5hPZM38zyGYlLDEr835zcbmj24btjYEmwndPloEzIxkyTU6ES
+         MMKfsnRtHGB6lSG2rdkAZa6gjGmAHc2PDM9cEn0N1HQxFh17p7Q+uH/WugxsNba7KqJP
+         tluOFt15MXB+iT4fl1Bt63dfYQyVy1ViGsk7P05djAENep/LGDGaYkZRlEBNm/6FPKiv
+         WTKG5hStIqiMIe49xG4aL7WKBGGcGjXYsHY3x7A3cbGA/w6Z2akNhxA/pb5xKiHfPL6a
+         KtBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710852062; x=1711456862;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WRBSPouyZNepIb9OSrcHdTHsgsddW1COazPCcrBFhTo=;
+        b=w7Fk0inHisony64OuL3wSrgr1UR2cDJW6TZ6+dO8vkw8Nab9NIwALxLsjf4xieuWmF
+         6Qni9JL1wo7DLdHTXbeSLEwWB1PP1GsdGmmySQVULqddZtBk/g1c4kQSp8SwU9OWcBDS
+         VuVCxJ0FWDNhz93dkqliihGvo1fOTMKxULwMhjPKx4HIH2QQFmOsEcZIKRzdmDRnsGT0
+         1r2VdJOj/LeGNmRu4Pe0bjI4PStPDKDsB3zjidbRgI5E37c7sQ2VPPX6MesoCr8i4yrg
+         L0HBeRkdRCnvtxPVY7Y6fGyOKg9CWRwPAnFkJ9W0fINDvxgYZcljVCuwPBorz8UaVcRj
+         lv3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUjyAnH7KByFn8OKGaJ0dcajtumh7JtbKOQOvvROJdTABuIFqxaCLs6dKdGh//eihqPb3xog6l8M/2GZCOxl6AVej0I7XGemHTrJwXbt4vBSc/T
+X-Gm-Message-State: AOJu0YznAJhabM9wt5tRwY6Bky2wJfCILvpjTQUqNsjFMiQpNvDUGlHO
+	J7lnXVmFOq30XgRrEs4FwdBqeyYMY4FvkoHUdqYIn1vGto06OP1QE5/mtltOXjg=
+X-Google-Smtp-Source: AGHT+IHPsKr2x23kpUt5J7PZSHeRCwMXElORiE7lYuIw03+E+HKHRgPVb2cj8DNTcJx1R9oGY2SEYw==
+X-Received: by 2002:a2e:b8cb:0:b0:2d4:aa55:72db with SMTP id s11-20020a2eb8cb000000b002d4aa5572dbmr6019143ljp.19.1710852061747;
+        Tue, 19 Mar 2024 05:41:01 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.222.97])
+        by smtp.gmail.com with ESMTPSA id dn21-20020a17090794d500b00a465ee3d2cesm5971565ejc.218.2024.03.19.05.40.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Mar 2024 05:41:01 -0700 (PDT)
+Message-ID: <b4f4f8e3-9832-4789-b4fb-beeeeb5c859e@linaro.org>
+Date: Tue, 19 Mar 2024 13:40:58 +0100
 MIME-Version: 1.0
-In-Reply-To: <ZfhnsgYfwe_3mpWx@intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] arm64: dts: iesy: add support for iesy PX30 SoM OSM-S
+To: Dominik Poggel <pog@iesy.com>, robh+dt@kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Tianling Shen <cnsztl@gmail.com>, Chris Morgan <macromorgan@hotmail.com>,
+ Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240319095411.4112296-1-pog@iesy.com>
+ <20240319095411.4112296-2-pog@iesy.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20240319095411.4112296-2-pog@iesy.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_032152_930180_0E0D8826 
-X-CRM114-Status: GOOD (  47.25  )
+X-CRM114-CacheID: sfid-20240319_054104_095124_18BFC517 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,264 +139,235 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6035048185815411807=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 19/03/2024 10:54, Dominik Poggel wrote:
+> This adds support for the iesy SoM px30-iesy-osm-sf and the matching
+> evalboard px30-iesy-eva-mi V2.XX.
+> 
+> Signed-off-by: Dominik Poggel <pog@iesy.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/px30-iesy-eva-mi-v2.dts | 624 ++++++++++++++++++
+>  .../boot/dts/rockchip/px30-iesy-osm-sf.dtsi   | 346 ++++++++++
+>  3 files changed, 971 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-iesy-osm-sf.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index f906a868b71a..a46234ccbe15 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-edimm2.2.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-iesy-eva-mi-v2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts b/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
+> new file mode 100644
+> index 000000000000..be1d709bbab0
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
+> @@ -0,0 +1,624 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Device Tree for iesy RPX30 EVA-MI V2.xx (Eval Kit)
+> + *
+> + * Copyright (c) 2022 iesy GmbH
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include <dt-bindings/net/mscc-phy-vsc8531.h>
+> +#include "px30-iesy-osm-sf.dtsi"
+> +
+> +/ {
+> +	model = "iesy RPX30 EVA-MI V2.xx (Eval Kit)";
+> +	compatible = "iesy,rpx30-eva-mi-v2", "rockchip,px30";
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pinctrl_leds_bb138>;
+> +
+> +		/* BB138a: green user led (LD4) */
+> +		led@0 {
 
---===============6035048185815411807==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6n43iydiwru5gl6x"
-Content-Disposition: inline
+It does not look like you tested the DTS against bindings. Please run
+`make dtbs_check W=1` (see
+Documentation/devicetree/bindings/writing-schema.rst or
+https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+for instructions).
 
+> +			label = "USER_LED_00";
+> +			gpios = <&gpio3 RK_PA0 GPIO_ACTIVE_LOW>;
+> +			linux,default-trigger = "heartbeat";
+> +		};
+> +
+> +		/* BB138a: yellow user led (LD9)) */
+> +		led@1 {
+> +			label = "USER_LED_01";
+> +			gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_LOW>;
+> +			default-state = "off";
+> +		};
+> +	};
+> +
+> +	/* BB138a: MAX9867ETJ+ audio codec */
+> +	max9867-sound {
 
---6n43iydiwru5gl6x
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+sound {
 
-On Mon, Mar 18, 2024 at 06:11:30PM +0200, Ville Syrj=E4l=E4 wrote:
-> On Mon, Mar 18, 2024 at 02:49:47PM +0100, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Fri, Mar 15, 2024 at 10:22:05AM +0200, Ville Syrj=E4l=E4 wrote:
-> > > On Mon, Mar 11, 2024 at 03:49:48PM +0100, Maxime Ripard wrote:
-> > > > Infoframes in KMS is usually handled by a bunch of low-level helpers
-> > > > that require quite some boilerplate for drivers. This leads to
-> > > > discrepancies with how drivers generate them, and which are actually
-> > > > sent.
-> > > >=20
-> > > > Now that we have everything needed to generate them in the HDMI
-> > > > connector state, we can generate them in our common logic so that
-> > > > drivers can simply reuse what we precomputed.
-> > > >=20
-> > > > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > > > ---
-> > > >  drivers/gpu/drm/Kconfig                            |   1 +
-> > > >  drivers/gpu/drm/drm_atomic_state_helper.c          | 323 +++++++++=
-++++++++++++
-> > > >  drivers/gpu/drm/drm_connector.c                    |  14 +
-> > > >  .../gpu/drm/tests/drm_atomic_state_helper_test.c   |   1 +
-> > > >  drivers/gpu/drm/tests/drm_connector_test.c         |  12 +
-> > > >  include/drm/drm_atomic_state_helper.h              |   8 +
-> > > >  include/drm/drm_connector.h                        | 133 +++++++++
-> > > >  7 files changed, 492 insertions(+)
-> > > >=20
-> > > > diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-> > > > index 872edb47bb53..ad9c467e20ce 100644
-> > > > --- a/drivers/gpu/drm/Kconfig
-> > > > +++ b/drivers/gpu/drm/Kconfig
-> > > > @@ -97,10 +97,11 @@ config DRM_KUNIT_TEST
-> > > >  	  If in doubt, say "N".
-> > > > =20
-> > > >  config DRM_KMS_HELPER
-> > > >  	tristate
-> > > >  	depends on DRM
-> > > > +	select DRM_DISPLAY_HDMI_HELPER
-> > > >  	help
-> > > >  	  CRTC helpers for KMS drivers.
-> > > > =20
-> > > >  config DRM_DEBUG_DP_MST_TOPOLOGY_REFS
-> > > >          bool "Enable refcount backtrace history in the DP MST help=
-ers"
-> > > > diff --git a/drivers/gpu/drm/drm_atomic_state_helper.c b/drivers/gp=
-u/drm/drm_atomic_state_helper.c
-> > > > index e66272c0d006..2bf53666fc9d 100644
-> > > > --- a/drivers/gpu/drm/drm_atomic_state_helper.c
-> > > > +++ b/drivers/gpu/drm/drm_atomic_state_helper.c
-> > > > @@ -36,10 +36,12 @@
-> > > >  #include <drm/drm_plane.h>
-> > > >  #include <drm/drm_print.h>
-> > > >  #include <drm/drm_vblank.h>
-> > > >  #include <drm/drm_writeback.h>
-> > > > =20
-> > > > +#include <drm/display/drm_hdmi_helper.h>
-> > > > +
-> > > >  #include <linux/slab.h>
-> > > >  #include <linux/dma-fence.h>
-> > > > =20
-> > > >  /**
-> > > >   * DOC: atomic state reset and initialization
-> > > > @@ -912,10 +914,143 @@ hdmi_compute_config(const struct drm_connect=
-or *connector,
-> > > >  	}
-> > > > =20
-> > > >  	return -EINVAL;
-> > > >  }
-> > > > =20
-> > > > +static int hdmi_generate_avi_infoframe(const struct drm_connector =
-*connector,
-> > > > +				       struct drm_connector_state *state)
-> > > > +{
-> > > > +	const struct drm_display_mode *mode =3D
-> > > > +		connector_state_get_mode(state);
-> > > > +	struct drm_connector_hdmi_infoframe *infoframe =3D
-> > > > +		&state->hdmi.infoframes.avi;
-> > > > +	struct hdmi_avi_infoframe *frame =3D
-> > > > +		&infoframe->data.avi;
-> > > > +	bool is_full_range =3D state->hdmi.is_full_range;
-> > > > +	enum hdmi_quantization_range rgb_quant_range =3D
-> > > > +		is_full_range ? HDMI_QUANTIZATION_RANGE_FULL : HDMI_QUANTIZATION=
-_RANGE_LIMITED;
-> > > > +	int ret;
-> > > > +
-> > > > +	ret =3D drm_hdmi_avi_infoframe_from_display_mode(frame, connector=
-, mode);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	frame->colorspace =3D state->hdmi.output_format;
-> > > > +
-> > > > +	drm_hdmi_avi_infoframe_quant_range(frame, connector, mode, rgb_qu=
-ant_range);
-> > >=20
-> > > drm_hdmi_avi_infoframe_quant_range() doesn't handle YCbCr currently.
-> >=20
-> > I guess it's not really a problem anymore if we drop YUV422 selection,
-> > but I'll add a comment.
-> >=20
-> > > > +	drm_hdmi_avi_infoframe_colorimetry(frame, state);
-> > > > +	drm_hdmi_avi_infoframe_bars(frame, state);
-> > > > +
-> > > > +	infoframe->set =3D true;
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > <snip>
-> > > > +
-> > > > +#define UPDATE_INFOFRAME(c, os, ns, i)				\
-> > > > +	write_or_clear_infoframe(c,				\
-> > > > +				 &(c)->hdmi.infoframes.i,	\
-> > > > +				 &(os)->hdmi.infoframes.i,	\
-> > > > +				 &(ns)->hdmi.infoframes.i)
-> > >=20
-> > > This macro feels like pointless obfuscation to me.
-> >=20
-> > I'll remove it then.
-> >=20
-> > > <snip>
-> > > > @@ -1984,20 +2063,73 @@ struct drm_connector {
-> > > > =20
-> > > >  	/**
-> > > >  	 * @hdmi: HDMI-related variable and properties.
-> > > >  	 */
-> > > >  	struct {
-> > > > +#define DRM_CONNECTOR_HDMI_VENDOR_LEN	8
-> > > > +		/**
-> > > > +		 * @vendor: HDMI Controller Vendor Name
-> > > > +		 */
-> > > > +		unsigned char vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] __nonstring;
-> > > > +
-> > > > +#define DRM_CONNECTOR_HDMI_PRODUCT_LEN	16
-> > > > +		/**
-> > > > +		 * @product: HDMI Controller Product Name
-> > > > +		 */
-> > > > +		unsigned char product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] __nonstrin=
-g;
-> > > > +
-> > > >  		/**
-> > > >  		 * @supported_formats: Bitmask of @hdmi_colorspace
-> > > >  		 * supported by the controller.
-> > > >  		 */
-> > > >  		unsigned long supported_formats;
-> > > > =20
-> > > >  		/**
-> > > >  		 * @funcs: HDMI connector Control Functions
-> > > >  		 */
-> > > >  		const struct drm_connector_hdmi_funcs *funcs;
-> > > > +
-> > > > +		/**
-> > > > +		 * @infoframes: Current Infoframes output by the connector
-> > > > +		 */
-> > > > +		struct {
-> > > > +			/**
-> > > > +			 * @lock: Mutex protecting against concurrent access to
-> > > > +			 * the infoframes, most notably between KMS and ALSA.
-> > > > +			 */
-> > > > +			struct mutex lock;
-> > > > +
-> > > > +			/**
-> > > > +			 * @audio: Current Audio Infoframes structure. Protected
-> > > > +			 * by @lock.
-> > > > +			 */
-> > > > +			struct drm_connector_hdmi_infoframe audio;
-> > > > +
-> > > > +			/**
-> > > > +			 * @avi: Current AVI Infoframes structure. Protected by
-> > > > +			 * @lock.
-> > > > +			 */
-> > > > +			struct drm_connector_hdmi_infoframe avi;
-> > > > +
-> > > > +			/**
-> > > > +			 * @hdr_drm: Current DRM (Dynamic Range and Mastering)
-> > > > +			 * Infoframes structure. Protected by @lock.
-> > > > +			 */
-> > > > +			struct drm_connector_hdmi_infoframe hdr_drm;
-> > > > +
-> > > > +			/**
-> > > > +			 * @spd: Current SPD Infoframes structure. Protected by
-> > > > +			 * @lock.
-> > > > +			 */
-> > > > +			struct drm_connector_hdmi_infoframe spd;
-> > > > +
-> > > > +			/**
-> > > > +			 * @vendor: Current HDMI Vendor Infoframes structure.
-> > > > +			 * Protected by @lock.
-> > > > +			 */
-> > > > +			struct drm_connector_hdmi_infoframe hdmi;
-> > > > +		} infoframes;
-> > > >  	} hdmi;
-> > >=20
-> > > What's the deal with this bloat? These are already tracked in the
-> > > connector's state so this looks entirely redundant.
-> >=20
-> > The next patch in this series is about adding debugfs entries to read
-> > the infoframes, and thus we need to care about concurrency between
-> > debugfs files accesses and commits. Copying the things we care about
-> > from the state to the entity is the typical solution for that, but I
-> > guess we could also take the proper locks and access the current
-> > connector state.
->=20
-> Yeah, just lock and dump the latest state. That is the only thing
-> that should of interest to anyone in userspace.
->=20
-> Also are you actually adding some kind of ad-hoc state dump things
-> just for these? Why not do whatever is needed to include them in
-> the normal .atomic_state_print() stuff?
-
-Yeah, part of the reason for the whole thing is so we can make
-edid-decode check the sanity of generated infoframes, for both v4l2 and
-DRM. Hans has been working on it and has a prototype based on this work.
-
-But you're right, we should probably add them to atomic_state_print too
-
-Maxime
-
---6n43iydiwru5gl6x
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZflnOgAKCRDj7w1vZxhR
-xUAqAP9osiLRyY8KJXAT50DTQ35ZRT/BcFN/QtqCr8oS2BcaLgD6Ah6rT5bLm/2W
-gzaTbZzUgiazFZ2uVZtKSGrqf8eYswM=
-=afLz
------END PGP SIGNATURE-----
-
---6n43iydiwru5gl6x--
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
 
 
---===============6035048185815411807==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +		compatible = "simple-audio-card";
+> +		simple-audio-card,name = "rockchip,max9867-codec";
+> +		simple-audio-card,format = "i2s";
+> +
+> +		simple-audio-card,widgets =
+> +			"Speaker", "Jack",
+> +			"Microphone", "Mic";
+> +		simple-audio-card,routing =
+> +			"Jack", "LOUT",
+> +			"Jack", "ROUT",
+> +			"Mic", "DMICL",
+> +			"Mic", "DMICR";
+> +
+> +		simple-audio-card,frame-master = <&cpudai>;
+> +		simple-audio-card,bitclock-master = <&cpudai>;
+> +
+> +		status = "okay";
+> +
+> +		cpudai: simple-audio-card,cpu {
+> +			sound-dai = <&i2s1_2ch>;
+> +			dai-tdm-slot-num = <1>;
+> +			dai-tdm-slot-width = <16>;
+> +		};
+> +
+> +		simple-audio-card,codec {
+> +			sound-dai = <&max9867>;
+> +			clocks = <&cru SCLK_I2S1_OUT>;
+> +		};
+> +	};
+> +
+> +	/* regulator for USB OTG port */
+> +	usb_a_vbus_regulator: regulator@1 {
+
+Not a bus.
+
+It does not look like you tested the DTS against bindings. Please run
+`make dtbs_check W=1` (see
+Documentation/devicetree/bindings/writing-schema.rst or
+https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+for instructions).
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "usb_a_vbus_regulator";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +	};
+> +
+> +	/* regulator for USB host port */
+> +	usb_b_vbus_regulator: regulator@2 {
+
+It does not look like you tested the DTS against bindings. Please run
+`make dtbs_check W=1` (see
+Documentation/devicetree/bindings/writing-schema.rst or
+https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+for instructions).
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "usb_b_vbus_regulator";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+> +
+> +	user-buttons {
+> +		compatible = "gpio-keys";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+
+It does not look like you tested the DTS against bindings. Please run
+`make dtbs_check W=1` (see
+Documentation/devicetree/bindings/writing-schema.rst or
+https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
+for instructions).
+
+You are repeating the same mistakes we fixed long time ago. This means
+you started work from some downstream or old DTS. Don't. It's a waste of
+time, also mine to tell you that we fixed all this.
+
+Please start from scratch from upstream DTS and test your code before
+sending.
+
+...
+
+...
+
+> +/ {
+> +	aliases {
+> +		mmc0 = &emmc;
+> +		mmc1 = &sdmmc;
+> +		mmc2 = &sdio;
+> +	};
+> +
+> +	chosen {
+> +		bootargs = "earlycon=uart8250,mmio32,0xff160000 console=ttyFIQ0 rw root=PARTUUID=614e0000-0000 rootwait";
+
+That's not correct bootargs. earlyocon is debugging, so drop from
+mainline code. console goes to stdout property.
+root/PARTUIID is obviously not correct. My PARTUIID is different.
+
+Drop entire chosen.
+
+> +	};
+> +
+> +	fiq-debugger {
+> +		compatible = "rockchip,fiq-debugger";
+
+Undocumented. Please run scripts/checkpatch.pl and fix reported
+warnings. Some warnings can be ignored, but the code here looks like it
+needs a fix. Feel free to get in touch if the warning is not clear.
+
+You MUST run checkpatch on your submissions. All of them.
+
+> +		rockchip,serial-id = <2>;
+> +		rockchip,wake-irq = <0>;
+> +		/* If enable uart uses irq instead of fiq */
+> +		rockchip,irq-mode-enable = <1>;
+> +		rockchip,baudrate = <115200>;  /* Only 115200 and 1500000 */
+> +		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart2m1_xfer>;
+> +		status = "okay";
+
+Why? Was it disabled anywhere? Anyway, that's not even hardware.
+
+I am not going to review the rest. Please read submitting patches and
+carefully follow it. Run all standard tests on your code before sending
+patches. There is no point in reviewer telling you something which
+automated tools tell.
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6035048185815411807==--
-
