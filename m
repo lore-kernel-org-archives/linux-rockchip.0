@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42CC1C54E5D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 12:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A05B6C54E60
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 12:41:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+rNeXt5UgUi6oNg+dpKjBgT8ayKKms8hBWek6lksx54=; b=ljfY63lARd9r3P
-	O3ga0NPIRzC4apbUFV9f8I/4OxWbPTNBbOhMZaP7CpLFCS1clJLRGFDVwLkUoAjk9phKvx8YiqwGw
-	Z2cQHEIy5TAGtGU9IcpsfRArxYWlmkuzrd6bn/EnDC3VklAIvIATxnYyrbak5TA0P93A3bI43iOK9
-	RAQ1kDoO3MD7Xx+Fsu8tmgAuTqbRlJ5s63vUydApohX0O9IZX1DsM0iTvzh3HmVLZyTxMOkwYlnVx
-	Q6kqTfhsqMRokR3zew2+kNtoBazGZK0Mqi5tC50cQ+x+6NlZzho64gv4xPXMkt4UvBRqlJWP3H9TY
-	3CXP2ixTfSF5H2iw3SkA==;
+	List-Owner; bh=AIWDQUkiBXfhG9+jHJYxBqPjbsRfyajuKTLDeOlipEo=; b=OCrlng8h/ofDp7
+	+UP3Yeq1pKUkcFJGikhqc2CJTbSPJTGN/nPwf+hXnwqcz9scEdyLsk+jG5bRRsJ20Xwth7j3J1vQj
+	m/if7w5FI++kLBEA7SWGXX9n9SogNqBrvLl1R32mgNJf/E1DxBFd8X1kDvNASK7tN4EsqogGSE+W2
+	C2KOy1AsQci5mWeQ67IQXQZAXlb7Oux1BJa1McUG9REmSBK0b2UG/+NpiL9csydXXNjv6pGQBH4ve
+	BjudoPkwGxkvUc4MyJTEzCYOxb1uoqangLvCDtPGIjnKN0fYCarVXdZ1f6WVYNflS615NkKWUTGXT
+	gUZpdQcV9fr7pkDYP/xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmYmC-0000000CeLM-0vE9;
-	Tue, 19 Mar 2024 12:41:08 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1rmYmm-0000000Ceah-0Exo;
+	Tue, 19 Mar 2024 12:41:44 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmYm7-0000000CeKA-49PP
+	id 1rmYmi-0000000CeYd-0M7z
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Mar 2024 12:41:05 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2d28051376eso90222951fa.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 19 Mar 2024 05:41:03 -0700 (PDT)
+	Tue, 19 Mar 2024 12:41:41 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a466a1f9ea0so368486566b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Mar 2024 05:41:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710852062; x=1711456862; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1710852098; x=1711456898; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=WRBSPouyZNepIb9OSrcHdTHsgsddW1COazPCcrBFhTo=;
-        b=A8+p2vglDVeUUobjX4UtQ0AO+mRbPxQG8s0a9jFdzi8yYiUXVM1hkQyBM4sKzw4oGe
-         Lf498iAKtrR50wiZTeU5hPZM38zyGYlLDEr835zcbmj24btjYEmwndPloEzIxkyTU6ES
-         MMKfsnRtHGB6lSG2rdkAZa6gjGmAHc2PDM9cEn0N1HQxFh17p7Q+uH/WugxsNba7KqJP
-         tluOFt15MXB+iT4fl1Bt63dfYQyVy1ViGsk7P05djAENep/LGDGaYkZRlEBNm/6FPKiv
-         WTKG5hStIqiMIe49xG4aL7WKBGGcGjXYsHY3x7A3cbGA/w6Z2akNhxA/pb5xKiHfPL6a
-         KtBg==
+        bh=2JeFFmAxQgbjmIs+LQfatAmJVmrtvNfVCmg3meqBwCk=;
+        b=gx5Tezgodd4ClEqWsGGeg4+hAah3NIHfV/tuqagTo2YmUNno+UHW2XzzWAOY8i8Bkh
+         3UdRNOGmCRJbE7V/6woEYc4qFNfht+6h2uQTRm3WkBxmj2KvndoPreaLVbCrtpVNO/Mw
+         QllC03tKOOwjtke4o0vEY30c/O+26Rp8IMngsrrtof3Rn6HCOo7VJspWr61bLXdTVYjL
+         OuM01hMdTbLZ2n9ueDEMWtciAW2YwLJjS7ld+sjjHYBi4x8B+cVbBI/9NTp3HAA7Za12
+         jaEag8+ahDGJz4M4JcVtqYDjpgehO28z1AsR+6Z5PFPlRzu1ne4KqAn2LgRV61KiLVZ1
+         2oQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710852062; x=1711456862;
+        d=1e100.net; s=20230601; t=1710852098; x=1711456898;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=WRBSPouyZNepIb9OSrcHdTHsgsddW1COazPCcrBFhTo=;
-        b=w7Fk0inHisony64OuL3wSrgr1UR2cDJW6TZ6+dO8vkw8Nab9NIwALxLsjf4xieuWmF
-         6Qni9JL1wo7DLdHTXbeSLEwWB1PP1GsdGmmySQVULqddZtBk/g1c4kQSp8SwU9OWcBDS
-         VuVCxJ0FWDNhz93dkqliihGvo1fOTMKxULwMhjPKx4HIH2QQFmOsEcZIKRzdmDRnsGT0
-         1r2VdJOj/LeGNmRu4Pe0bjI4PStPDKDsB3zjidbRgI5E37c7sQ2VPPX6MesoCr8i4yrg
-         L0HBeRkdRCnvtxPVY7Y6fGyOKg9CWRwPAnFkJ9W0fINDvxgYZcljVCuwPBorz8UaVcRj
-         lv3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUjyAnH7KByFn8OKGaJ0dcajtumh7JtbKOQOvvROJdTABuIFqxaCLs6dKdGh//eihqPb3xog6l8M/2GZCOxl6AVej0I7XGemHTrJwXbt4vBSc/T
-X-Gm-Message-State: AOJu0YznAJhabM9wt5tRwY6Bky2wJfCILvpjTQUqNsjFMiQpNvDUGlHO
-	J7lnXVmFOq30XgRrEs4FwdBqeyYMY4FvkoHUdqYIn1vGto06OP1QE5/mtltOXjg=
-X-Google-Smtp-Source: AGHT+IHPsKr2x23kpUt5J7PZSHeRCwMXElORiE7lYuIw03+E+HKHRgPVb2cj8DNTcJx1R9oGY2SEYw==
-X-Received: by 2002:a2e:b8cb:0:b0:2d4:aa55:72db with SMTP id s11-20020a2eb8cb000000b002d4aa5572dbmr6019143ljp.19.1710852061747;
-        Tue, 19 Mar 2024 05:41:01 -0700 (PDT)
+        bh=2JeFFmAxQgbjmIs+LQfatAmJVmrtvNfVCmg3meqBwCk=;
+        b=lkSHLliKJaXT3X6BlFd+pAIjkRecPsS2Qb/92E1BmzOs0rov9JMVhlbedNonBF8Vdn
+         7PshdbqG+mYHIRwjZuWg4Zmz9NoTbJ073bZv38LbcDhxLaKqxF/g3vy/ta4ta0x12UV8
+         Ge6jQ41mVPuqrmkmwkS9RNPWhxYMsRsCRbVM0pE9Qc7QgzCc+lqf2ttFP+ZvOFrMfF/b
+         JiFdNhHzwN4YQlJtV38MoIiO9VoYO66LbD2fhBf0rx3chRO10dMkzw1PNqH8pz2JGFnC
+         NZ2qLAS27veMHw+SC6g0OeloBrp/ug62GpaN1O+dy5elPvJO4zQw09CWTALa+lKKpfEH
+         8wiw==
+X-Forwarded-Encrypted: i=1; AJvYcCWUPGODl1GpMTvUp93v5z0kavnIOH+baNrkTiC+PpQ/VzazbkNTnoB7fZMGueX+CC/s9NFOCW6qS4fLfERg63TCPBL+jVqeQylBHkXU7Rk+rcpx
+X-Gm-Message-State: AOJu0Yzl+otNzUp7OnDZwFznrrWQ8f+BOOGs9NRNq0io22o6+dxK2G9t
+	2z4c8+DHPPrT7X5tvx1jJnLfgp+xnuLaFo7xWq7d8pospf9YLxpouBl7njEnfS0=
+X-Google-Smtp-Source: AGHT+IGuIcDbiRk7X0Snu8UKVjYYfiyxcuD3N8LmYYzKcnRENPQjhqfN6c00Srof0ur67+i4Oz1ssg==
+X-Received: by 2002:a05:6402:5d0:b0:565:6e34:da30 with SMTP id n16-20020a05640205d000b005656e34da30mr10171630edx.21.1710852098184;
+        Tue, 19 Mar 2024 05:41:38 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.222.97])
-        by smtp.gmail.com with ESMTPSA id dn21-20020a17090794d500b00a465ee3d2cesm5971565ejc.218.2024.03.19.05.40.59
+        by smtp.gmail.com with ESMTPSA id v25-20020aa7dbd9000000b00568c3c54613sm3507510edt.31.2024.03.19.05.41.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Mar 2024 05:41:01 -0700 (PDT)
-Message-ID: <b4f4f8e3-9832-4789-b4fb-beeeeb5c859e@linaro.org>
-Date: Tue, 19 Mar 2024 13:40:58 +0100
+        Tue, 19 Mar 2024 05:41:37 -0700 (PDT)
+Message-ID: <2e992e97-b526-411b-99ed-29099da2bf0b@linaro.org>
+Date: Tue, 19 Mar 2024 13:41:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] arm64: dts: iesy: add support for iesy PX30 SoM OSM-S
+Subject: Re: [PATCH 2/3] dt-bindings: vendor-prefixes: add iesy
 To: Dominik Poggel <pog@iesy.com>, robh+dt@kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Tianling Shen <cnsztl@gmail.com>, Chris Morgan <macromorgan@hotmail.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>, Sebastian Reichel <sre@kernel.org>,
+ Hugo Villeneuve <hvilleneuve@dimonoff.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Tianling Shen <cnsztl@gmail.com>,
  Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 References: <20240319095411.4112296-1-pog@iesy.com>
- <20240319095411.4112296-2-pog@iesy.com>
+ <20240319095411.4112296-3-pog@iesy.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -124,10 +127,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240319095411.4112296-2-pog@iesy.com>
+In-Reply-To: <20240319095411.4112296-3-pog@iesy.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_054104_095124_18BFC517 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20240319_054140_172723_8BD32EED 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,223 +148,27 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 19/03/2024 10:54, Dominik Poggel wrote:
-> This adds support for the iesy SoM px30-iesy-osm-sf and the matching
-> evalboard px30-iesy-eva-mi V2.XX.
+> Add iesy GmbH
 > 
 > Signed-off-by: Dominik Poggel <pog@iesy.com>
 > ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/px30-iesy-eva-mi-v2.dts | 624 ++++++++++++++++++
->  .../boot/dts/rockchip/px30-iesy-osm-sf.dtsi   | 346 ++++++++++
->  3 files changed, 971 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/px30-iesy-osm-sf.dtsi
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index f906a868b71a..a46234ccbe15 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-edimm2.2.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-iesy-eva-mi-v2.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts b/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
-> new file mode 100644
-> index 000000000000..be1d709bbab0
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/px30-iesy-eva-mi-v2.dts
-> @@ -0,0 +1,624 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Device Tree for iesy RPX30 EVA-MI V2.xx (Eval Kit)
-> + *
-> + * Copyright (c) 2022 iesy GmbH
-> + */
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/net/mscc-phy-vsc8531.h>
-> +#include "px30-iesy-osm-sf.dtsi"
-> +
-> +/ {
-> +	model = "iesy RPX30 EVA-MI V2.xx (Eval Kit)";
-> +	compatible = "iesy,rpx30-eva-mi-v2", "rockchip,px30";
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pinctrl_leds_bb138>;
-> +
-> +		/* BB138a: green user led (LD4) */
-> +		led@0 {
+> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> index 04505cb0b640..ffb2abb5edc2 100644
+> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> @@ -656,6 +656,8 @@ patternProperties:
+>      description: International Business Machines (IBM)
+>    "^icplus,.*":
+>      description: IC Plus Corp.
+> +  "^iesy,.*":
+> +    description: iesy GmbH
 
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check W=1` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
+Just look at the code and its placement. Wrong order.
 
-> +			label = "USER_LED_00";
-> +			gpios = <&gpio3 RK_PA0 GPIO_ACTIVE_LOW>;
-> +			linux,default-trigger = "heartbeat";
-> +		};
-> +
-> +		/* BB138a: yellow user led (LD9)) */
-> +		led@1 {
-> +			label = "USER_LED_01";
-> +			gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_LOW>;
-> +			default-state = "off";
-> +		};
-> +	};
-> +
-> +	/* BB138a: MAX9867ETJ+ audio codec */
-> +	max9867-sound {
-
-sound {
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,name = "rockchip,max9867-codec";
-> +		simple-audio-card,format = "i2s";
-> +
-> +		simple-audio-card,widgets =
-> +			"Speaker", "Jack",
-> +			"Microphone", "Mic";
-> +		simple-audio-card,routing =
-> +			"Jack", "LOUT",
-> +			"Jack", "ROUT",
-> +			"Mic", "DMICL",
-> +			"Mic", "DMICR";
-> +
-> +		simple-audio-card,frame-master = <&cpudai>;
-> +		simple-audio-card,bitclock-master = <&cpudai>;
-> +
-> +		status = "okay";
-> +
-> +		cpudai: simple-audio-card,cpu {
-> +			sound-dai = <&i2s1_2ch>;
-> +			dai-tdm-slot-num = <1>;
-> +			dai-tdm-slot-width = <16>;
-> +		};
-> +
-> +		simple-audio-card,codec {
-> +			sound-dai = <&max9867>;
-> +			clocks = <&cru SCLK_I2S1_OUT>;
-> +		};
-> +	};
-> +
-> +	/* regulator for USB OTG port */
-> +	usb_a_vbus_regulator: regulator@1 {
-
-Not a bus.
-
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check W=1` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "usb_a_vbus_regulator";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
-> +		enable-active-high;
-> +	};
-> +
-> +	/* regulator for USB host port */
-> +	usb_b_vbus_regulator: regulator@2 {
-
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check W=1` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "usb_b_vbus_regulator";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		gpio = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
-> +		enable-active-high;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
-> +
-> +	user-buttons {
-> +		compatible = "gpio-keys";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check W=1` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
-
-You are repeating the same mistakes we fixed long time ago. This means
-you started work from some downstream or old DTS. Don't. It's a waste of
-time, also mine to tell you that we fixed all this.
-
-Please start from scratch from upstream DTS and test your code before
-sending.
-
-...
-
-...
-
-> +/ {
-> +	aliases {
-> +		mmc0 = &emmc;
-> +		mmc1 = &sdmmc;
-> +		mmc2 = &sdio;
-> +	};
-> +
-> +	chosen {
-> +		bootargs = "earlycon=uart8250,mmio32,0xff160000 console=ttyFIQ0 rw root=PARTUUID=614e0000-0000 rootwait";
-
-That's not correct bootargs. earlyocon is debugging, so drop from
-mainline code. console goes to stdout property.
-root/PARTUIID is obviously not correct. My PARTUIID is different.
-
-Drop entire chosen.
-
-> +	};
-> +
-> +	fiq-debugger {
-> +		compatible = "rockchip,fiq-debugger";
-
-Undocumented. Please run scripts/checkpatch.pl and fix reported
-warnings. Some warnings can be ignored, but the code here looks like it
-needs a fix. Feel free to get in touch if the warning is not clear.
-
-You MUST run checkpatch on your submissions. All of them.
-
-> +		rockchip,serial-id = <2>;
-> +		rockchip,wake-irq = <0>;
-> +		/* If enable uart uses irq instead of fiq */
-> +		rockchip,irq-mode-enable = <1>;
-> +		rockchip,baudrate = <115200>;  /* Only 115200 and 1500000 */
-> +		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&uart2m1_xfer>;
-> +		status = "okay";
-
-Why? Was it disabled anywhere? Anyway, that's not even hardware.
-
-I am not going to review the rest. Please read submitting patches and
-carefully follow it. Run all standard tests on your code before sending
-patches. There is no point in reviewer telling you something which
-automated tools tell.
+Also, all bindings come *BEFORE* users.
 
 Best regards,
 Krzysztof
