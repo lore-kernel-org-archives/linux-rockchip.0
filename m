@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A05B6C54E60
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 12:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25BCBC54E60
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Mar 2024 12:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AIWDQUkiBXfhG9+jHJYxBqPjbsRfyajuKTLDeOlipEo=; b=OCrlng8h/ofDp7
-	+UP3Yeq1pKUkcFJGikhqc2CJTbSPJTGN/nPwf+hXnwqcz9scEdyLsk+jG5bRRsJ20Xwth7j3J1vQj
-	m/if7w5FI++kLBEA7SWGXX9n9SogNqBrvLl1R32mgNJf/E1DxBFd8X1kDvNASK7tN4EsqogGSE+W2
-	C2KOy1AsQci5mWeQ67IQXQZAXlb7Oux1BJa1McUG9REmSBK0b2UG/+NpiL9csydXXNjv6pGQBH4ve
-	BjudoPkwGxkvUc4MyJTEzCYOxb1uoqangLvCDtPGIjnKN0fYCarVXdZ1f6WVYNflS615NkKWUTGXT
-	gUZpdQcV9fr7pkDYP/xg==;
+	List-Owner; bh=NQRUx3+NC9UOmT2JRmVyEqk64uQU0lvi+pgBRv30OU0=; b=1HScmTDvtKBwMu
+	1hvvos4Zq+aUiX7WbRJ/gSvwJhtbR+vv1zi7ouhggoV/vvACJBP3l1kV83GmoHrNQGRmMxOLcC8vG
+	DpgBelHhqZz2enheaq3hhuCM8w/VVukojyt0yZuh8gQSB7pV9i9i5hrSGxlBFHVLDxNMnKaXUcW16
+	TxN59NYVhVtNSynqKhUuj0kZ/34QJ+7dP003yfiD7eTewuoNA2Jy/B+m9qoTLpb291N9DyyqlvJM3
+	GVrt933QOnu2AlPvikSx2A/snZR+JZ//BfpCBHDnOX0NUgyvNYj/Ub8pHIBmuIII5X7XbuwebXoJW
+	QaIQq/B1yuuwJsXTDoZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmYmm-0000000Ceah-0Exo;
-	Tue, 19 Mar 2024 12:41:44 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1rmYnb-0000000Ceq2-0ym4;
+	Tue, 19 Mar 2024 12:42:35 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmYmi-0000000CeYd-0M7z
+	id 1rmYnX-0000000Ceov-2Bdl
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 Mar 2024 12:41:41 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-a466a1f9ea0so368486566b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 19 Mar 2024 05:41:39 -0700 (PDT)
+	Tue, 19 Mar 2024 12:42:33 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a46cd9e7fcaso215477466b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 Mar 2024 05:42:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710852098; x=1711456898; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1710852148; x=1711456948; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=2JeFFmAxQgbjmIs+LQfatAmJVmrtvNfVCmg3meqBwCk=;
-        b=gx5Tezgodd4ClEqWsGGeg4+hAah3NIHfV/tuqagTo2YmUNno+UHW2XzzWAOY8i8Bkh
-         3UdRNOGmCRJbE7V/6woEYc4qFNfht+6h2uQTRm3WkBxmj2KvndoPreaLVbCrtpVNO/Mw
-         QllC03tKOOwjtke4o0vEY30c/O+26Rp8IMngsrrtof3Rn6HCOo7VJspWr61bLXdTVYjL
-         OuM01hMdTbLZ2n9ueDEMWtciAW2YwLJjS7ld+sjjHYBi4x8B+cVbBI/9NTp3HAA7Za12
-         jaEag8+ahDGJz4M4JcVtqYDjpgehO28z1AsR+6Z5PFPlRzu1ne4KqAn2LgRV61KiLVZ1
-         2oQA==
+        bh=aTCcKrDyZV/VE20k5CxghomHj3uJ8QFCRB9EkJC2C6M=;
+        b=Stx2lQ3OSYrhHgIgTtfBlqvLHg1jZOq/LziNpS81GuG0ucnTFdfuq0jdI1VXRaELGJ
+         EqWIBBsmharDIoLBbuwQ6awP5n4VtFamfIDpZJf62rgvSP0EioqWH6ZIcRfSXs24UMYt
+         s+/A5w7zkouf/8jrGBGfSKu7xqnWVXogrCleYbw13dxGqpsFlFVm7mUqTlp86uojLcGf
+         qgPu8YjtNrA90Rk7XW18zwh7+scy7oO4Dht/1jtYH8CxnMmqXkxwuB4Bfz85W5BOTJUn
+         SgEb2gTH+T40stzWMPjybYjZnoh2dTaaFa9X1gIhxW/xQ+z5lux3IjhzM2rEqef0bYZM
+         cK+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710852098; x=1711456898;
+        d=1e100.net; s=20230601; t=1710852148; x=1711456948;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2JeFFmAxQgbjmIs+LQfatAmJVmrtvNfVCmg3meqBwCk=;
-        b=lkSHLliKJaXT3X6BlFd+pAIjkRecPsS2Qb/92E1BmzOs0rov9JMVhlbedNonBF8Vdn
-         7PshdbqG+mYHIRwjZuWg4Zmz9NoTbJ073bZv38LbcDhxLaKqxF/g3vy/ta4ta0x12UV8
-         Ge6jQ41mVPuqrmkmwkS9RNPWhxYMsRsCRbVM0pE9Qc7QgzCc+lqf2ttFP+ZvOFrMfF/b
-         JiFdNhHzwN4YQlJtV38MoIiO9VoYO66LbD2fhBf0rx3chRO10dMkzw1PNqH8pz2JGFnC
-         NZ2qLAS27veMHw+SC6g0OeloBrp/ug62GpaN1O+dy5elPvJO4zQw09CWTALa+lKKpfEH
-         8wiw==
-X-Forwarded-Encrypted: i=1; AJvYcCWUPGODl1GpMTvUp93v5z0kavnIOH+baNrkTiC+PpQ/VzazbkNTnoB7fZMGueX+CC/s9NFOCW6qS4fLfERg63TCPBL+jVqeQylBHkXU7Rk+rcpx
-X-Gm-Message-State: AOJu0Yzl+otNzUp7OnDZwFznrrWQ8f+BOOGs9NRNq0io22o6+dxK2G9t
-	2z4c8+DHPPrT7X5tvx1jJnLfgp+xnuLaFo7xWq7d8pospf9YLxpouBl7njEnfS0=
-X-Google-Smtp-Source: AGHT+IGuIcDbiRk7X0Snu8UKVjYYfiyxcuD3N8LmYYzKcnRENPQjhqfN6c00Srof0ur67+i4Oz1ssg==
-X-Received: by 2002:a05:6402:5d0:b0:565:6e34:da30 with SMTP id n16-20020a05640205d000b005656e34da30mr10171630edx.21.1710852098184;
-        Tue, 19 Mar 2024 05:41:38 -0700 (PDT)
+        bh=aTCcKrDyZV/VE20k5CxghomHj3uJ8QFCRB9EkJC2C6M=;
+        b=MrD10nMesRV7x9YH6tnCGZCWuib2DMqBAaKOGrcdjuBRrf0EGJm4fFLXhDFc/kmaPG
+         1d0rv0IA+i8PzbgbQKh7waFP/Yvy1lA29mYfrvw9kQosoiyDw+V5+x66Yx+BGep1ESxm
+         TRUmn8O70UU3uuo40/MuMTpCn2YRa569s/hasCSwVde+9Ork8UorSkLn5kcRZZ0dHx7o
+         UTdvN61k2Inz0N+eGD/19slFjes3nXT5yDMiK8MMWoeL0pZPeKUOY+UaHl4p0DytIba/
+         RClIzxHiuIOBAqjq8gz8oSMIxDZ29dI3nYZDaOPJsEevjZU4vzwYBt1tpJvL78j9i8R1
+         v9dg==
+X-Forwarded-Encrypted: i=1; AJvYcCWNz5N7OFYHjUXJ4xdhfjUEWhsnyuqHr9F0j7drcP8ISZ74TQeAlnRUubBnOoqy8heVE4knEpS85JCTUOYnfE5VnXAzZE0ftBU8meSoXgBs41qI
+X-Gm-Message-State: AOJu0Yzs6y0+RLKOwIedFoP7B4foZciL2zt8iC+IxE3IDS/eXdoS5RoB
+	jRKhHL4KA61sjFXDDSdaJjOWwCxgCWn6FbW0gaLmLdzyvPQCI/AKjkKMnCP0Vbo=
+X-Google-Smtp-Source: AGHT+IHcG/0AcklTyrIjXvHAHx/CFXgKd5Zd8KREBD0avXzjH7Ps2xKivaQv32xOCsJiS8g0t4Fq7g==
+X-Received: by 2002:a17:906:794:b0:a46:da57:6ee4 with SMTP id l20-20020a170906079400b00a46da576ee4mr1535310ejc.73.1710852148534;
+        Tue, 19 Mar 2024 05:42:28 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.222.97])
-        by smtp.gmail.com with ESMTPSA id v25-20020aa7dbd9000000b00568c3c54613sm3507510edt.31.2024.03.19.05.41.34
+        by smtp.gmail.com with ESMTPSA id ml16-20020a170906cc1000b00a4666866d02sm6060270ejb.97.2024.03.19.05.42.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Mar 2024 05:41:37 -0700 (PDT)
-Message-ID: <2e992e97-b526-411b-99ed-29099da2bf0b@linaro.org>
-Date: Tue, 19 Mar 2024 13:41:32 +0100
+        Tue, 19 Mar 2024 05:42:28 -0700 (PDT)
+Message-ID: <b43f6dd8-221d-40b1-bbc9-d5f778fe1954@linaro.org>
+Date: Tue, 19 Mar 2024 13:42:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: vendor-prefixes: add iesy
+Subject: Re: [PATCH 1/3] arm64: dts: iesy: add support for iesy PX30 SoM OSM-S
 To: Dominik Poggel <pog@iesy.com>, robh+dt@kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>, Sebastian Reichel <sre@kernel.org>,
- Hugo Villeneuve <hvilleneuve@dimonoff.com>,
- Linus Walleij <linus.walleij@linaro.org>, Tianling Shen <cnsztl@gmail.com>,
+ Tianling Shen <cnsztl@gmail.com>, Chris Morgan <macromorgan@hotmail.com>,
  Ondrej Jirman <megi@xff.cz>, Andy Yan <andyshrk@163.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240319095411.4112296-1-pog@iesy.com>
- <20240319095411.4112296-3-pog@iesy.com>
+ <20240319095411.4112296-2-pog@iesy.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -127,10 +124,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240319095411.4112296-3-pog@iesy.com>
+In-Reply-To: <20240319095411.4112296-2-pog@iesy.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240319_054140_172723_8BD32EED 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20240319_054231_686929_B5939B94 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,27 +146,34 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 19/03/2024 10:54, Dominik Poggel wrote:
-> Add iesy GmbH
+> This adds support for the iesy SoM px30-iesy-osm-sf and the matching
+> evalboard px30-iesy-eva-mi V2.XX.
 > 
 > Signed-off-by: Dominik Poggel <pog@iesy.com>
-> ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index 04505cb0b640..ffb2abb5edc2 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -656,6 +656,8 @@ patternProperties:
->      description: International Business Machines (IBM)
->    "^icplus,.*":
->      description: IC Plus Corp.
-> +  "^iesy,.*":
-> +    description: iesy GmbH
 
-Just look at the code and its placement. Wrong order.
 
-Also, all bindings come *BEFORE* users.
+> +
+> +	/* BB138a: MAX9867ETJ+ audio codec */
+> +	max9867-sound {
+> +		compatible = "simple-audio-card";
+> +		simple-audio-card,name = "rockchip,max9867-codec";
+> +		simple-audio-card,format = "i2s";
+> +
+> +		simple-audio-card,widgets =
+> +			"Speaker", "Jack",
+> +			"Microphone", "Mic";
+> +		simple-audio-card,routing =
+> +			"Jack", "LOUT",
+> +			"Jack", "ROUT",
+> +			"Mic", "DMICL",
+> +			"Mic", "DMICR";
+> +
+> +		simple-audio-card,frame-master = <&cpudai>;
+> +		simple-audio-card,bitclock-master = <&cpudai>;
+> +
+> +		status = "okay";
+
+One more: Drop it. The same applies in all other places when not needed.
 
 Best regards,
 Krzysztof
