@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF99C54E58
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Mar 2024 16:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC8DBC6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Mar 2024 17:21:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+ctemp5L6P17Q217LcPAt97ophyjtdgTOFjmk3Rr+Vw=; b=nQUVlx9iqOJkTTPbULpHUcqKWS
-	vp6Ok7A0JUmFLDMYHc/SltcdbzfDw1Z6wuiXhwiMw/0tvOcfkKUI54cm2NMCaARguP0yff52KgfuQ
-	8u5CqZ9Uiyz3f1IfWz3IOEPs1xKFQvucm5t16NSbRvsujk249r4g7csbDLrT9R4J/diUdERGGgHBk
-	SLz8WlLZdPCGGAzf+ahFQA9R/FMcHUPM7PjKmuNVfQXAXfls7TQGZc9tZ+acDjAbr05SpGGz43zuj
-	qFxXavwYNT8uwK4JnlubvA4EVn46A8oQgBJDZ2cr5cwvXFlIqbaQrWqdnY8fQABkakXwe8f2xZTNU
-	2MvAlsAQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1kLO2n90+xzJUqn4buVN9ID9MQnyLgzj5s2Zj7PeCDw=; b=wdgQXHx69zRTEL
+	BWgiWq2w3nUuU5Lvbd9H9PzdG+/kcXNlyPBen0G1hl8upxfUzHZ+JS+O7Nr6AqATchfnVWJCuI9kN
+	GXmLumjj+NicbY4AobEmZblZyRfTDOSl/XTmHC3xjXhbEVxwN0kOUhxkZHBPRrjZ+Nz+V1jH7MRfa
+	AKamjBLT4QqGIqLEu3fyqduC0UnqTWlSLfGRNWJG0cY2BlmxKlS9gmHvYaKLiX/FuT43boQZhWQJi
+	T+RTsiAHvEpctftIqIfxh+CobHQ3QK/7ESd8/nS3s6S/mbap1y1zhbowZciSSxo4v3bekZDvJpLMT
+	LCCP6zLrIS0+aglSeZlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmyvZ-00000000Ks4-0VdE;
-	Wed, 20 Mar 2024 16:36:33 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rmzcZ-00000000T0O-41MP;
+	Wed, 20 Mar 2024 17:20:59 +0000
+Received: from forward500b.mail.yandex.net ([2a02:6b8:c02:900:1:45:d181:d500])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rmyvV-00000000Kp7-2VWD
+	id 1rmzcV-00000000Sxr-3o0Y
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 Mar 2024 16:36:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710952586;
-	bh=xybm8h9ENSovS3Z9xQSOa7CY9hfUogGRVXw/fY6PZY4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UzClaZX11OAbCZpCs4NjAYXkIcIkvhJjEOPNKRDN+kNUyLSsrGuezQiva5qcm6Vyg
-	 k4tMLRWIQo8OfV+4MDsfF7MXYqjNfvglPwWZ/z7Fd4sLClXSHBVZFmbiMCnSOoeZLq
-	 bNp/E4GEMllaFYJODvkhXGII8vLPD3FzBULjgPMuu8IUqZTzL67NT2b0zn3Uf56w96
-	 tz3f6FNMT0T/Mfur531hxjWHX9KI00TLT+tPymwVL/pLi8NXv5lDRa/xRg+rxqXuoy
-	 7plYUjTWlju3IdOE5qoUCKZ+GNwym7NAxoR71tVcggtABwJWX0nDf+nCBcn5KuXYnp
-	 JzqyNG6iE+muA==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id DF6DF37804B2;
-	Wed, 20 Mar 2024 16:36:25 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 7D39710604B9; Wed, 20 Mar 2024 17:36:25 +0100 (CET)
-Date: Wed, 20 Mar 2024 17:36:25 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chad LeClair <leclair@gmail.com>
-Cc: Ilya K <me@0upti.me>, 
-	"andy.yan@rock-chips.com" <andy.yan@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>, 
-	"huangtao@rock-chips.com" <huangtao@rock-chips.com>, "kernel@collabora.com" <kernel@collabora.com>, 
-	"kever.yang@rock-chips.com" <kever.yang@rock-chips.com>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>, 
-	"sboyd@kernel.org" <sboyd@kernel.org>, "zhangqing@rock-chips.com" <zhangqing@rock-chips.com>
+	Wed, 20 Mar 2024 17:20:58 +0000
+Received: from mail-nwsmtp-smtp-production-main-54.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-54.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:410d:0:640:81ab:0])
+	by forward500b.mail.yandex.net (Yandex) with ESMTPS id D1B9061609;
+	Wed, 20 Mar 2024 20:20:43 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-54.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id dKJCmv6OkGk0-AoiXGOs0;
+	Wed, 20 Mar 2024 20:20:42 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1710955242; bh=hc1vbtlKdrSBHuAxPHv4xGyYQrXCyDJSzItdrBoYHy8=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=QOlslN2NiDix2xstfFgVflxTHo9jBFlOrLm5otc5urFdaA6PIjokcPatKucPJlIpZ
+	 RnOZwTjeG8g/k1Q8eoNB72R2dl9rKg2IggPBB2l54RIyXZvw506b8/AEIorOXOa425
+	 i6ssmQKVLuphPhT6HlfDwp52oJ6C2cHDwsArQ7ho=
+Authentication-Results: mail-nwsmtp-smtp-production-main-54.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Message-ID: <1a83c0b8-2831-4b05-b29a-1ff6ed9a7c70@0upti.me>
+Date: Wed, 20 Mar 2024 20:20:38 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
-Message-ID: <2rsu6qa3pwbqic6b7ej6txa34jw4ztrnybzcfcfysue2mky37h@dyrdefbimzdn>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Chad LeClair <leclair@gmail.com>
+Cc: "andy.yan@rock-chips.com" <andy.yan@rock-chips.com>,
+ "heiko@sntech.de" <heiko@sntech.de>,
+ "huangtao@rock-chips.com" <huangtao@rock-chips.com>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "kever.yang@rock-chips.com" <kever.yang@rock-chips.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "zhangqing@rock-chips.com" <zhangqing@rock-chips.com>
 References: <1456131709882456@mail.yandex.ru>
  <uwr335fla4nfvv3mdppcoly6hcsayav26r4r6txmbwrb25ftw7@rxwjtan7evww>
  <7f4b3f38-50ee-480f-a341-ab577e19bb32@gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <7f4b3f38-50ee-480f-a341-ab577e19bb32@gmail.com>
+ <2rsu6qa3pwbqic6b7ej6txa34jw4ztrnybzcfcfysue2mky37h@dyrdefbimzdn>
+Content-Language: en-US
+From: Ilya K <me@0upti.me>
+In-Reply-To: <2rsu6qa3pwbqic6b7ej6txa34jw4ztrnybzcfcfysue2mky37h@dyrdefbimzdn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_093629_939895_EE65584E 
-X-CRM114-Status: GOOD (  43.94  )
+X-CRM114-CacheID: sfid-20240320_102056_172264_8E647F6A 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,161 +78,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4369120979826398638=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 2024-03-20 19:36, Sebastian Reichel wrote:
+> Can you test again using rk3588-test [0] (which is based on today's
+> master branch) from today as base? Ideally it should work with your
+> Orange Pi 5, since it contains "clk: rockchip: rk3588: mark hclk_nvm
+> critical".
+> 
+> I also worked on a cleaner solution for the issue you described and
+> integrated it in the patch adding proper gate clock support. So
+> please also test with HCLK_NVM not being marked as CRITICAL.
+> 
+> [0] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-test
+> 
+> If everything is fine I will prepare a v9.
+>
 
---===============4369120979826398638==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ss3wrzxn4s74hez7"
-Content-Disposition: inline
+Tested this on my end, and I'm getting the same SFC issue, so there's probably another clock that's missing somewhere. Building with ROCKCHIP_SFC=y (instead of =m) removes the error message, but any access to the flash just locks up, so it's probably placebo, unless there's a second, unrelated issue.
 
-
---ss3wrzxn4s74hez7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hello Chad,
-
-On Sun, Mar 17, 2024 at 07:34:41PM -0400, Chad LeClair wrote:
-> On 3/8/24 08:27, Sebastian Reichel wrote:
-> > [removed DT people from CC, since this is all about clocks now]
-> >=20
-> > Hello Ilya,
-> >=20
-> > On Fri, Mar 08, 2024 at 10:23:31AM +0300, Ilya K wrote:
-> >> This change seems to make my Orange Pi 5 (RK3588S) lock up on boot
-> >> :( Any suggestions on how to debug this? It doesn't really log
-> >> much...
-> >=20
-> > I suppose with this change you explicitly mean the last patch, which
-> > has not yet been applied? That patch effectively allows some clocks
-> > to be disabled, that have previously been marked as critical (and
-> > thus always-on).
-> >=20
-> > If that results in a boot lockup, I expect you have a peripheral
-> > driver, that does not enable a required clock (e.g. because of a
-> > missing clock reference).
->=20
-> Another Orange Pi 5 owner here...  I likewise ran into trouble with
-> this patch.  I have been playing with your rk3588 branch from the
-> Collabora gitlab and was also experiencing hangs on boot on my OPi5.  I
-> bisected your branch and found that the GATE_LINK support commit was the
-> problem for me.
-
-Ok.
-
-> Digging in, I found that the problem behind the hang was that I was not
-> getting the aclk_nvm_root
-
-That matches what Ilya found (there were some more off-list messages
-because of HTML mail issues). I suspected, that HCLK_SD (which is
-sourced from SCMI) might need HCLK_NVM.
-
-> which in turn caused DMA transactions to the SFC driver to hang.
->=20
-> ...
-> [   2.804519] rockchip-sfc fe2b0000.spi: DMA wait for transfer finish
-> timeout
-> [   2.805127] rockchip-sfc fe2b0000.spi: xfer data failed ret -110 dir 1
-> ...
->=20
-> Setting aclk_nvm_root to critical allows the system to boot.  However
-> not all is well as I do get errors like the following which also seem to
-> indicate further clock problems:
-> [   6.296554] rockchip-pm-domain
-> fd8d8000.power-management:power-controller: failed to set idle on domain
-> 'vo0', val=3D0
-
-I see the same message for AV1 and I've also seen failed idle
-message with the rockchip kernel. I have not yet debugged what is
-going on with that.
-
-> I assume that the con-ops of your patch is analogous to the downstream
-> "clock-link" driver.  (ie. you are looking for PM events to cause the
-> pm_clk_suspend()/pm_clk_resume() routines to enable/disable the linked
-> (second parent) clocks).  This wasn't happening for me.  Unlike in the
-> downstream implementation, the gate_link devices' dev->driver pointer
-> was null. So that when rpm_resume() was being called, it would make its
-> way to pm_generic_runtime_resume() which then would do nothing.  The end
-> result is that I would have a prepare count of 1 on aclk_nvm_root, but
-> an enable count of 0 so it would get disabled (orig patch w/o marking
-> this critical).
->=20
-> I did a quick hacky proof of concept where I set up the pm ops on the
-> clk-rk3588 driver to point to the pm_clk_suspend/pm_clk_resume routines
-> like downstream did.  I used device_bind_driver() to forceably bind the
-> clk-rk3588 driver to the gate link devices it was setting up.
->=20
-> This worked for me.  With those changes I then was able to boot without
-> needing to set aclk_nvm_root as critical.  Further, it cleaned up the
-> power-controller error messages on the sdio and vo0 domains.
->=20
-> The force bind I did doesn't feel like a particularly clean solution to
-> me.  However, I am not knowledgeable enough in the (platform) device
-> model to know what the right way to do this is without fully doing what
-> downstream did and having DT nodes for the various gate link devices.
-> But it seems to prove out that having the driver bound to the devices
-> with the relevant runtime pm ops is the missing piece in my use case on
-> the OPi5.
-
-Can you test again using rk3588-test [0] (which is based on today's
-master branch) from today as base? Ideally it should work with your
-Orange Pi 5, since it contains "clk: rockchip: rk3588: mark hclk_nvm
-critical".
-
-I also worked on a cleaner solution for the issue you described and
-integrated it in the patch adding proper gate clock support. So
-please also test with HCLK_NVM not being marked as CRITICAL.
-
-[0] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/=
-commits/rk3588-test
-
-If everything is fine I will prepare a v9.
-
-> Hope this additional data point helps!
-
-Thanks for the detailed analysis.
-
-Greetings,
-
--- Sebastian
-
---ss3wrzxn4s74hez7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmX7EIEACgkQ2O7X88g7
-+pq8vw//ZEdKtWkUxEHABpc+L0MHtSBH9gRNtkOgzBwhoSVmcRm60HtZNT/z6nNh
-L9tLXDeBchaLtwexZ6LY+0D7l9yjCA89YyGoq2RPjdQ0ejUCFXHmlxMoUJM8aooR
-lp5Hxa7aU+Qx7fqibdfCT5zamKqWtWu30PGgCsQlv8YWgJA/oQFxrw8xPJb9THv3
-AWaRmbt+amYEHZpVHG7+xzcU9b3eGJnfJlcypGhZ7NtdHQSgonTAtgWNkUGkxYzn
-HlNQsPi8vAwxql8ZQr4YryJe6wK1uTrDn5uSFasx90/nA8ORnoeZPJqJx/JbzNfj
-Y1s+UyJJTJkIL51Lh6ypyI6z0/FyUDpk6KyGHPA2qn3ADnlwBY4t1zKCIp6BY5br
-AeblqeaNSJExntCEx4PUiMIv5SmVKHYsyFsTL6cnHmqAA2VVH9ktH/9IZLqXbZLZ
-uMBqCe+pffAVAjdjIJ87PTLB27HgV6zM4zObw20BAG30QSYNjfDluE4cCK9/7OyD
-HRwFwMEqTMyXTAXFhLvYhKmSkRUkyVtCrRA7fgHgUyDbS+prevC8bt1zspE0a5au
-G8FwiJt5ipkXYt4mY4PzqeG13+Hvy8faxudbhGZLCVLXM2zAAgcFo19eaqyacuGp
-ZinpPgHW458lNt/hbG6NTbhpB1qwLp5oK56ry2/hQwPsfAKDGbg=
-=Eg1E
------END PGP SIGNATURE-----
-
---ss3wrzxn4s74hez7--
-
-
---===============4369120979826398638==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4369120979826398638==--
-
