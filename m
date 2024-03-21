@@ -4,70 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 296F2C54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Mar 2024 20:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCE4AC54E58
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Mar 2024 02:51:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8fmGF+aqqoG/nDTUmnihuoLYYZT02Su23qVMJadckKw=; b=HTDQXe26N05yvsiapMRMtoFCtt
-	9I0i6hqBRvsrqcj3x6TfpdAkvkOXdMDDxtSDnggzJ8U7exdbCZfL3NL4Iq9p5EKcod8mdmi+uRZcT
-	k3RDGPYuHRX3VKas6mM6z++eZYzoPw0v8oq8jeJhv77ba+FNUKesdREklm3/xyBqYfrxTxQhVsGG7
-	qNhYtyiVZ6uLedWKZCXP1hqzJKtxYrw8hypPfFrUjNHJBfClEcJHQ+Tx0DVdBjncj3a9jYdpAoy1g
-	mZwZZCmYDKXZcB+Xe6wUa4UpMl6TnqUziZOmrnsicvMxvP8qPNtMma/E+wh+Ux1NqIPk8Rl2jAIZU
-	LNyG8YbA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TyUOe6/0Wt6d/ZQf5vrHivbM+bvlsFRx3eYpBtH464o=; b=vv6ZtbwUMCBcvh
+	kBDAgR4xFxHorjAWexMdWu4NkrLbletAcWaQ19E62aQ4LpbbFWrMA28Xy8Q3o0evg1LAIL/MB2vGa
+	BaDncPC8DQ+ydrmNIvkKqmr4JBP6Cnc7+DqYDtx/XHQ9HKS5i0aNomNxzvB3jrnSWgtMLB1lR+/WB
+	ff+iqmusb8aN3qB6bl3fXA+BtZYNdapREupozMzpJQ7FwIXeRz3NxH1cUWwhuZJqeTgiT6FO5FaZB
+	x4TD+jmhyPDmQG50Kehu1JF0xGZ17Hm+4gKV7rt7avsxwwr97yEg6sq1bWHf0e5o78r1ov7pn3MzO
+	nOB/XVJinS4352dcEGxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rn2N0-00000000sCG-47vt;
-	Wed, 20 Mar 2024 20:17:06 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rn8WC-00000001cly-0Xzy;
+	Thu, 21 Mar 2024 02:51:00 +0000
+Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rn2Mx-00000000sBG-3WWs;
-	Wed, 20 Mar 2024 20:17:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1710965817;
-	bh=nj7MzyFExeNZhnwzBI8kDS3G0ZyqJ2Qb0WQL/c4YNTQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=xR4qmmjmVsPHZiwnD1RdLOW7zqjrJdorBZiwzDr7tAN4XceB3s8mavvGGo/RQpYbq
-	 NErdndNsfObCsEajJM53XCuwRLGcmy53XT9RFdZTSH4PbU0himWp5bJ6ziSE6/gwZP
-	 C+3wBjpB+7JYKlT9V2UvkOAawuOAjtG47Vn/INijwJydYJtYlKn1YjaMJ9KMRhBYOi
-	 0gexHeXZAZViBT6JVTZzrmy3WYVRDysem/ZwN1/lwkMbWa5LfMAOOKPzCA7feecy/A
-	 gzWzdXJxx9r6eEj1gU7PBa9Hud6lVpNwRFiE+hXGibLtyr3PO+MHEey9XOkFsgFNhO
-	 cgoeR/01S4SaQ==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 762FA37814A4;
-	Wed, 20 Mar 2024 20:16:57 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id F3F9B1060704; Wed, 20 Mar 2024 21:16:56 +0100 (CET)
-Date: Wed, 20 Mar 2024 21:16:56 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-Cc: linux-kernel@vger.kernel.org, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
-	Dragan Simic <dsimic@manjaro.org>, Shreeya Patel <shreeya.patel@collabora.com>, 
-	Chris Morgan <macromorgan@hotmail.com>, Andy Yan <andy.yan@rock-chips.com>, 
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev
-Subject: Re: [PATCH 2/4] media: dt-binding: media: Document =?utf-8?Q?rk35?=
- =?utf-8?B?ODjigJlz?= vepu121
-Message-ID: <uxdndbyetuxxt6icjw7ptlsq6h2ltup7dc35vwbs2i3qvmid2c@33gztzqf7ehm>
-References: <20240320173736.2720778-1-linkmauve@linkmauve.fr>
- <20240320173736.2720778-3-linkmauve@linkmauve.fr>
+	id 1rn8W7-00000001ckg-1u0Z
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 Mar 2024 02:50:59 +0000
+Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-6962950c6bfso5034166d6.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 20 Mar 2024 19:50:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710989450; x=1711594250; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tDDe9OS1xTeoPX5iiKtUDiky31WpE/pim88cOHUf8Zo=;
+        b=focqQSGwtbWeq8wfjWelqP7nE1pfuVH5xCSbBX2UJ6PHq+rsygkKw6bdaQwwynTQJF
+         +rRFReHFf8BY3b1S96PdSCsTQdZcvdbKFQa3Mh/WSXexmLaL7Zkq7aq75NU8G2+0XNOW
+         2N8Tk7EOn7KN+kz4NLzvfNeXfxRwCJcbrT30GqhS4d6b8p3q4tQEn45rjprY7CpinQSo
+         cjX+z8MzYoxGiNCbCvaGZBgWZFkUiepx6DrOLoCjCr85bSu3tpCqWyGS13m/KL5KJX04
+         aRoEFLSTaT6MrjFm/XUlIhEDu+yIxhCFd7g4nAbE8McG0PC2mwqOYCGRmMuqy9Qhat/Q
+         mBuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710989450; x=1711594250;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tDDe9OS1xTeoPX5iiKtUDiky31WpE/pim88cOHUf8Zo=;
+        b=lgvjgCofkmhINzJi1BUjtZt9r5kB1WD67u5cIyui3gTNtPwspfdHj6MbGZv/C9SthU
+         gqWqjkCf5/K8ZELwZZmAFGa5CLr1sJtZXMMZ7RCGTPsveKIZOArx2ju/Jeu1suGk43bS
+         45x4cd5+kLX+OtZ9Y8Y/GxbUG5XsMONr8o62M6J2gycHFSQOEfvDhHXeCTMSmM5xTZdf
+         ndLVE4XZc72fXZjgnE9ZT0nvzicf/PG3WkyIbz6wWflLUsGCOpet9MWd1+zLgrPaYhiA
+         1bycRrX5Un2j6R9jlU4GXZjOE/FtHUQXfpNHApsSsVmiYPitNVggkfcbdTovRip+xMAx
+         c4Mg==
+X-Forwarded-Encrypted: i=1; AJvYcCUp2gCM5mNrrPgRNsvJ/CI7LmcxGwwWUbWvuQDhTI0o+Tg/7mZJaiLXwfohnSYL6E/T8v+UPsGkt5K+lAaa9OqdWiNj7meJ7Erv+8gIxXFybiwY
+X-Gm-Message-State: AOJu0Yy12v81hawVr1J+mAP0rZ/kgAvjwJkGWqFcSKrMrlmajrmNFlrx
+	YdwCkKB7U9TrkliwrNwrZpuBkgiIXzlt/T0JxQju65P5ZOtQlLac
+X-Google-Smtp-Source: AGHT+IFlvOZFQvtjt6LVKrlDVfAoBlkTQ6kW3LNR3jbbwBLxVKKVMkDubLpL3E89nMFwrovIq4omgQ==
+X-Received: by 2002:a05:6214:21a9:b0:691:639:2ddb with SMTP id t9-20020a05621421a900b0069106392ddbmr882062qvc.21.1710989450430;
+        Wed, 20 Mar 2024 19:50:50 -0700 (PDT)
+Received: from ?IPV6:2606:29c0:1000:2088:8b84:ea3:7f3d:8a76? ([2606:29c0:1000:2088:8b84:ea3:7f3d:8a76])
+        by smtp.gmail.com with ESMTPSA id jz5-20020a0562140e6500b006961cdc3f7csm4386261qvb.85.2024.03.20.19.50.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Mar 2024 19:50:49 -0700 (PDT)
+Message-ID: <97f8b9e7-983c-435e-8fad-11e71be158b8@gmail.com>
+Date: Wed, 20 Mar 2024 22:50:48 -0400
 MIME-Version: 1.0
-In-Reply-To: <20240320173736.2720778-3-linkmauve@linkmauve.fr>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 7/7] clk: rockchip: implement proper GATE_LINK support
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Ilya K <me@0upti.me>, "andy.yan@rock-chips.com"
+ <andy.yan@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>,
+ "huangtao@rock-chips.com" <huangtao@rock-chips.com>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "kever.yang@rock-chips.com" <kever.yang@rock-chips.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "zhangqing@rock-chips.com" <zhangqing@rock-chips.com>
+References: <1456131709882456@mail.yandex.ru>
+ <uwr335fla4nfvv3mdppcoly6hcsayav26r4r6txmbwrb25ftw7@rxwjtan7evww>
+ <7f4b3f38-50ee-480f-a341-ab577e19bb32@gmail.com>
+ <2rsu6qa3pwbqic6b7ej6txa34jw4ztrnybzcfcfysue2mky37h@dyrdefbimzdn>
+From: Chad LeClair <leclair@gmail.com>
+In-Reply-To: <2rsu6qa3pwbqic6b7ej6txa34jw4ztrnybzcfcfysue2mky37h@dyrdefbimzdn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240320_131704_027957_3D2421A2 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20240320_195055_613685_790475C1 
+X-CRM114-Status: GOOD (  18.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,100 +100,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7527991183304255357=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Sebastian,
 
---===============7527991183304255357==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="h5b2n4ltpigo6emq"
-Content-Disposition: inline
+On 3/20/24 12:36, Sebastian Reichel wrote:
 
-
---h5b2n4ltpigo6emq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Wed, Mar 20, 2024 at 06:37:31PM +0100, Emmanuel Gil Peyrot wrote:
-> This encoder-only device is present four times on this SoC, and should
-> support everything the rk3568 vepu supports (so JPEG, H.264 and VP8
-> encoding).
->=20
-> Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-> ---
->  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml          | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu=
-=2Eyaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-> index 9d90d8d0565a..947ad699cc5e 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-> @@ -17,6 +17,7 @@ properties:
->    compatible:
->      enum:
->        - rockchip,rk3568-vepu
-> +      - rockchip,rk3588-vepu121
-
-Looks like they are fully compatible. In that case it's better to
-use a fallback compatible (i.e. like the iommu binding), which does
-not need any drivers changes. So binding should be like this:
-
-compatible:
-  oneOf:
-    - const: rockchip,rk3568-vepu
-    - items:
-      - enum:
-          - rockchip,rk3588-vepu121
-      - const: rockchip,rk3568-vepu
-
-Then in DT (i.e. the following patch) you use
-
-compatible =3D "rockchip,rk3588-vepu121", "rockchip,rk3568-vepu";
-
-And patch 4/4 can be dropped.
-
-Greetings,
-
--- Sebastian
-
---h5b2n4ltpigo6emq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmX7RC4ACgkQ2O7X88g7
-+pq/5g/+IlGV2VBxSGO7OhBFSPRfHCOwTmN5HMpgyVmMQ0b/V+5c4KFuNR5EJJL/
-X0ysDd35GBI8qi8M9h3SziSkGjMqyW+HEWKvsTX+nk+AiQav93ze2cVJdcbbHvh8
-HGJc1Wu3FxvjIpTGResLeDEPxYxJLtABD+jUE7/897Ra15JBmVRkhutCMljxKZve
-lu4/9vWD2D0gDLOlo3Foxrt4zPrGzQuRQQ+0ATrc+auWQmxgXqztnNJXjDBvOfoo
-+6822tBJH03S0dp1/i+rmkZO9qPSqh2dcLURkAThhr5YI7fmHhjGjKfo/aDXvmBD
-olNJcBjTtkswotDHN/i/arBcQIgPyYAZgoKSwVGR9yq+PbRJyliF63pFVlXZSfIc
-rOEU3+5j5ydliUe8VKV1mVJBzvTB47xnccHSS89CjhhrovYl2u8wDNexy9YWo4WN
-tB2msuOHWH+m3YbVAln6IYRt5OxX0MF5rhoFiB5HFWY9xpfmhUFAaUKPfwCibWDp
-WjH4S2VHQh2kFfyjPvTMSZME6QPCKkgCaxOkyEJFVUABge2Bb/fZHx2yekNghF7i
-GpEYx+FuzFMkli7dcJ+gPX4rEQLkb4wEiUnW0+yIvB+5L660JARx7i+uDakR/C9Z
-59dOdJSv6tFDkvu/rqTeQBKssjO5505TiDVwYcn55iFKCMGcUk0=
-=pn+0
------END PGP SIGNATURE-----
-
---h5b2n4ltpigo6emq--
+> I also worked on a cleaner solution for the issue you described and
+> integrated it in the patch adding proper gate clock support. So
+> please also test with HCLK_NVM not being marked as CRITICAL.
+> 
+> [0] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rk3588-test
+> 
+> If everything is fine I will prepare a v9.
+> 
+>> Hope this additional data point helps!
+> 
+> Thanks for the detailed analysis.
+> 
+> Greetings,
+> 
+> -- Sebastian
 
 
---===============7527991183304255357==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+No luck unfortunately.  I still see the SFC dma timeouts.  It looks like
+aclk_nvm_root is still getting disabled.  It now has both an enable count of 0
+and a prepare count of 0.
+
+Unlike your previous version, I _do_ see the driver bound to the device and
+the rpm_resume() call finds its way to pm_clk_resume().  So it looks like
+you resolved the original issue I was seeing.
+
+However, when I reach __pm_clk_enable() it looks like the clock entry (ce)
+is not in a good state:
+  (gdb) print *ce
+  $3 = {node = {next = 0xffff0001f0ce1930, prev = 0xffff0001f0ce1930}, con_id =
+  0xffff0001f0a214f0 "aclk_nvm_root", clk = 0xfffffffffffffffe, status =
+  PCE_STATUS_ERROR, enabled_when_prepared = false}
+
+The immediate problem at hand is that ce->status is PCE_STATUS_ERROR so the 
+switch statement will take the default case and return without doing anything. 
+Also the ce->clk pointer looks like some sort of error pointer value so I'm
+wondering if something went wrong in the setup you were doing in 
+clk_gate_link_probe().
+
+Note: I ran to that same __pm_clk_enable() breakpoint for a number of of 
+GATE_LINK clocks.  They all looked to be in that same bad state.  I put the 
+"aclk_nvm_root" one in the message here since that is the one that is most 
+relevant to the discussion, but they all look to be broken in the same way.
+
+Hopefully this gives you a hint as to what is going on.
+
+BTW, In case it is of interest to you or Ilya, I have my "working" tree
+available here: 
+  https://github.com/sesca128/linux-rk3588/tree/v6.8-rk3588-test
+
+My quick and dirty hack is at the tip of the branch. The rest is pretty 
+much your rk3588-test branch from a few days ago. 
+
+--
+Chad LeClair
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7527991183304255357==--
-
