@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BAFC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 13:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09838C54E71
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 14:30:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zIzxAc9kgU4c9gXhkeczUWr0lUCCtqDYlI0RiqEPegI=; b=AwvaRBh/UCZjZu
-	GWPfPcP499PE1NmzTUNuF31Xx1y/WGRMDdDAsZlgdDSBTZMPLdqFGyOTAQ3Z8DwgBcC45avKIiDPK
-	6ed+ARVdlpQfEMIh9TB8wB5IEWdHbPJ71oLvppCd+WzjA8JOutG7E4R+FhxZPaaFuoB5t09D9ouUC
-	foPw242UKceaGqs/e59TTYpnJF4rEctKYK7wLP3f9epkCowtDn5vKOfsmbtRv7X/D4b9Plwq/ulWL
-	j9Cy5nAQjEmu2Dh3Y7ZkklNcwHZEIBppOuZKLHXVadEINZIokaYXwErvyCEtaVueFJqnFLRqjVRX/
-	nzwIPiaVH3yw2dzm2KEA==;
+	List-Owner; bh=U7luNgrhJlpt3uIwsIF4zD40ufLw478EMLoEECTR8Fc=; b=wrvS6EV6D6n7fN
+	QKrDpxwCSKFl3C30h/V2GuD1MlnSvo/fMN+qdae5oy8ObyPTs78lp09rrwnfSyMg4ZiN9wydHc1nd
+	gUhbg4O4ex6DFmHzFEJCJSoT/sJIznleUxlmxNx2ApiXNtLeWR5I6JJYCTVrtKeydCxGgEFFyL4Xb
+	2v3S9HVrBTAcnaetw/0hTGD41xTg45JtIwTcjzigp05LOHWMb9s6fOPAZh2yXlyVxZyKWBDZxGNEK
+	6D1vodWgSXE7hRuDAFL8c0Lq7uw+s3HSaP4prwvjt4J9QmBOfemAFiU2kye0valiNaMzUhw3tVV3b
+	W7RRVmlJbmEuVMuVoEFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnfIr-00000007QSb-2Nrw;
-	Fri, 22 Mar 2024 13:51:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rnfuu-00000007YKa-1Hhc;
+	Fri, 22 Mar 2024 14:30:44 +0000
+Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnfIc-00000007QHC-0yzC;
-	Fri, 22 Mar 2024 13:51:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Nz3ke1VyQ3/nrBgkJo48Kejptb8i6Qi/LKRDybpRcrE=; b=hIi0hE0iJYPJ4OywSrUW5BKdN3
-	XFtEDvjIULNr8SHvymhuq6ISAnoB/45EOckv1HffIYQG3FFqxlGVtSZCSlCtUemfEvGhGwx82c3mi
-	51kHrJS0a4svLfBH75vKtih3Hy6lsVyGJaolj1Fhd7E4FwQlx0rHwGt4UFIbvCGkGDCtB23lI4erK
-	c45x82yO2FuPWt/exVlGlImPKilb85kcweAgjPEUHSMd3y6OMlUdE2wJ5hPvSK0CGycmOMRjXLbpY
-	AYONtW9YaZKgDaTJ+lJqA7k2NsOGfc3tntWrHZmHQ3VtenpAGkvVcn0dmAHzQZrLiJtMIcBpZ0Ft2
-	phbYtKAw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnfIY-0000000EoXT-3Yn2;
-	Fri, 22 Mar 2024 13:51:08 +0000
-Received: from i53875a9e.versanet.de ([83.135.90.158] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rnfIT-0002tt-Sm; Fri, 22 Mar 2024 14:51:01 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-i2c@vger.kernel.org, Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Andi Shyti <andi.shyti@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 47/64] i2c: rk3x: reword according to newest specification
-Date: Fri, 22 Mar 2024 14:51:00 +0100
-Message-ID: <13914065.RDIVbhacDa@diego>
-In-Reply-To: <20240322132619.6389-48-wsa+renesas@sang-engineering.com>
-References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
- <20240322132619.6389-48-wsa+renesas@sang-engineering.com>
+	id 1rnfuq-00000007YG0-39QB
+	for linux-rockchip@lists.infradead.org;
+	Fri, 22 Mar 2024 14:30:42 +0000
+Message-ID: <fe4ea866-5485-4041-9a06-5441c429b150@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1711117835;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=IllocFnwNiXVGU+HouNFbx0kAsYD151iYbY5EqUrK60=;
+	b=vb2tIA0mE3RjQRmFtwRGeRNWtPVle8xwPuGz3k0mXmPbxA9+rb6RH0etsFkHhWQAK0DPpa
+	g5mehHDk0VOcMpylaYKuk/GPkLTeV+eLrTyDxbPhCe5wLBDOUZZwHJnSVNO/KTYtRNTvk5
+	0YVP778XwUltNtoGBLyTwJ0FFHUEiCo=
+Date: Fri, 22 Mar 2024 22:30:20 +0800
 MIME-Version: 1.0
+Subject: Re: [v10,20/27] drm/connector: hdmi: Add Infoframes generation
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Sebastian Wick <sebastian.wick@redhat.com>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+References: <20240321-kms-hdmi-connector-state-v10-20-e6c178361898@kernel.org>
+ <07125064-2a78-4515-bb48-655f2aec140f@linux.dev>
+ <20240322-loose-resourceful-bullmastiff-92cfaf@houat>
+ <7835e928-7d09-446e-91dd-13a0fa549bc2@linux.dev>
+ <20240322-steadfast-tanuki-from-mars-b5ea5f@houat>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sui Jingfeng <sui.jingfeng@linux.dev>
+In-Reply-To: <20240322-steadfast-tanuki-from-mars-b5ea5f@houat>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_135107_100405_C5E7C7A8 
-X-CRM114-Status: GOOD (  26.46  )
+X-CRM114-CacheID: sfid-20240322_073041_098784_3F9FF1FE 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,103 +80,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 22. M=E4rz 2024, 14:25:40 CET schrieb Wolfram Sang:
-> Match the wording of this driver wrt. the newest I2C v7, SMBus 3.2, I3C
-> specifications and replace "master/slave" with more appropriate terms.
-> They are also more specific because we distinguish now between a remote
-> entity ("client") and a local one ("target").
-> =
-
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-> ---
->  drivers/i2c/busses/i2c-rk3x.c | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
-> =
-
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 086fdf262e7b..01febd886bdd 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -28,8 +28,8 @@
->  /* Register Map */
->  #define REG_CON        0x00 /* control register */
->  #define REG_CLKDIV     0x04 /* clock divisor register */
-> -#define REG_MRXADDR    0x08 /* slave address for REGISTER_TX */
-> -#define REG_MRXRADDR   0x0c /* slave register address for REGISTER_TX */
-> +#define REG_MRXADDR    0x08 /* client address for REGISTER_TX */
-> +#define REG_MRXRADDR   0x0c /* client register address for REGISTER_TX */
->  #define REG_MTXCNT     0x10 /* number of bytes to be transmitted */
->  #define REG_MRXCNT     0x14 /* number of bytes to be received */
->  #define REG_IEN        0x18 /* interrupt enable */
-> @@ -68,8 +68,8 @@ enum {
->  /* REG_IEN/REG_IPD bits */
->  #define REG_INT_BTF       BIT(0) /* a byte was transmitted */
->  #define REG_INT_BRF       BIT(1) /* a byte was received */
-> -#define REG_INT_MBTF      BIT(2) /* master data transmit finished */
-> -#define REG_INT_MBRF      BIT(3) /* master data receive finished */
-> +#define REG_INT_MBTF      BIT(2) /* host data transmit finished */
-> +#define REG_INT_MBRF      BIT(3) /* host data receive finished */
->  #define REG_INT_START     BIT(4) /* START condition generated */
->  #define REG_INT_STOP      BIT(5) /* STOP condition generated */
->  #define REG_INT_NAKRCV    BIT(6) /* NACK received */
-> @@ -184,7 +184,7 @@ struct rk3x_i2c_soc_data {
->   * @wait: the waitqueue to wait for i2c transfer
->   * @busy: the condition for the event to wait for
->   * @msg: current i2c message
-> - * @addr: addr of i2c slave device
-> + * @addr: addr of i2c client device
->   * @mode: mode of i2c transfer
->   * @is_last_msg: flag determines whether it is the last msg in this tran=
-sfer
->   * @state: state of i2c transfer
-> @@ -979,7 +979,7 @@ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struc=
-t i2c_msg *msgs, int num)
->  	/*
->  	 * The I2C adapter can issue a small (len < 4) write packet before
->  	 * reading. This speeds up SMBus-style register reads.
-> -	 * The MRXADDR/MRXRADDR hold the slave address and the slave register
-> +	 * The MRXADDR/MRXRADDR hold the client address and the client register
->  	 * address in this case.
->  	 */
->  =
-
-> @@ -1016,7 +1016,7 @@ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, str=
-uct i2c_msg *msgs, int num)
->  			addr |=3D 1; /* set read bit */
->  =
-
->  			/*
-> -			 * We have to transmit the slave addr first. Use
-> +			 * We have to transmit the client addr first. Use
->  			 * MOD_REGISTER_TX for that purpose.
->  			 */
->  			i2c->mode =3D REG_CON_MOD_REGISTER_TX;
-> @@ -1162,8 +1162,8 @@ static u32 rk3x_i2c_func(struct i2c_adapter *adap)
->  }
->  =
-
->  static const struct i2c_algorithm rk3x_i2c_algorithm =3D {
-> -	.master_xfer		=3D rk3x_i2c_xfer,
-> -	.master_xfer_atomic	=3D rk3x_i2c_xfer_polling,
-> +	.xfer		=3D rk3x_i2c_xfer,
-> +	.xfer_atomic	=3D rk3x_i2c_xfer_polling,
->  	.functionality		=3D rk3x_i2c_func,
->  };
->  =
-
-> =
+Hi,
 
 
+On 2024/3/22 20:31, Maxime Ripard wrote:
+> On Fri, Mar 22, 2024 at 07:13:54PM +0800, Sui Jingfeng wrote:
+>> Hi,
+>>
+>>
+>> On 2024/3/22 18:31, Maxime Ripard wrote:
+>>> Which default config are you talking about? This compiles fine with all
+>>> drm-misc defconfig, x86 defconfig and allmodconfig.
+>> The drm_hdmi_avi_infoframe_colorimetry() function is belong to the drm_display_helper.ko
+>> kernel module, it get called from hdmi_generate_avi_infoframe() in drm_atomic_state_helper.c.
+>> While drm_atomic_state_helper.c belongs to drm_kms_helper.ko. Therefore drm_kms_helper.ko
+>> is dependent on drm_display_helper.ko implicitly. So we probably should select it.
+> Right. I was asking which config are you using to generate that build error
 
 
+I'm using the arch/riscv/configs/defconfig, with the following module de-selected.
+
+CONFIG_DRM_RADEON
+CONFIG_DRM_NOUVEAU
+CONFIG_DRM_SUN4I
+
+  
+
+> Maxime
+
+-- 
+Best regards,
+Sui
 
 
 _______________________________________________
