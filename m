@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4A0C54E71
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 15:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65495C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 17:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KLiKbYhyZT9khO9oDPdoqcpdhHKKRq7rAx9VUnthKl4=; b=0w/X6bSGtcfBJc
-	G22ZVU+cv8CtSBjWBjCpUWgPL5p/Dty1xZcgkZomaWzFZjIQtqHTmNgYO9Pp8Qkzz8bvP5E2mS8Yt
-	qks/lsQcCgxwuDuP1bRCsHRzMDVXAbZNY6yg+KMlwdOe/DnraxjcP/mrWivFU13vrnPeRmSgYfI4Z
-	amPKZUWNRzXZiLmQqfbMGeMoRB1XUG8IhJ6n6w5MQevcuJnL2DD+dZoP00fXRaH1zVjU4qeVFf9yS
-	OEi6fsjYhKPr+wO9HPl7YgrlaSK/XDXPg37w657F3VktuRPfyoo1NvIGGGo7l3lCL7yex/ZyjB8S3
-	nXJz7V/dzoOIY/3GmqGw==;
+	List-Owner; bh=f7DS93xVRgQxifXjtCDOJBjGToQj9s/brMQcK3LBkRo=; b=QCDu2q0sXxlmjx
+	78aIBqsoiMNizuSp6+p73waZU3aATkcQdJGiDyeWT9OAUvJL95vC5AuaW/0tp9fQQMpFvLxi37u18
+	pe208JjmJH2FhylpF1ZIFgDutbkKw6FYvfeO5kxxbwwFImzIXd5de0prSGKuXVaLVybLeqzKWKRNH
+	uJb3VIrrb+BYLxo+b6zGYeGiGL8G+6yruzyrJd5QFLLSfvuuBfEcI21n3qGHZMIiKI44fo+ECwEiA
+	WR4JUqlW66r4Orqn8kbd5OJb0J/SSTj/fvTsJjgl42ckPxPpmbJ6/YpVjJxpaOwZqiYsQCp0mXRqT
+	htzHpaNr4V63EYB57lLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnh6W-00000007npY-1Ydy;
-	Fri, 22 Mar 2024 15:46:48 +0000
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+	id 1rnjAC-00000008GJO-1q9T;
+	Fri, 22 Mar 2024 17:58:44 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnh6S-00000007nob-3Rtb;
-	Fri, 22 Mar 2024 15:46:46 +0000
-Received: by mail-oo1-xc30.google.com with SMTP id 006d021491bc7-5a4e0859b65so311285eaf.0;
-        Fri, 22 Mar 2024 08:46:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711122402; x=1711727202; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=96lv65PomJczPVcbCEzC4lSgtrlAVKdXmUyJYVWOjwA=;
-        b=SdFFUZVulzjoyW6EWUQgIS9335MbSS9veR7ZAhOvF+meIDnyaoiplBHsIEbSvoqHux
-         7aRrd2CPAgYvoJDTSrEZ7SS2/9mBBQnt0xIk3sOKcsIdWmrf787e1Vvjn9Zwebojr29n
-         kB8b0OFenh+mzdbCtWMBrO5FG+PRNKw6QNb52fYolHF3vZkruaiQ1+1cIksHoYa506yS
-         69X7ZFryZ5YOhf8m83rjuLq44DSSn1eQmX4q1g6DhAsDE5H/aC4e9YrktQrqIYo6mDOe
-         oTVhDVW/M32e9GblDOWm/r1Dw/Lh6Hl4/DXIA9Ucv23S1gqW3t+tz3H5j72a9x2fGR81
-         X8aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711122402; x=1711727202;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=96lv65PomJczPVcbCEzC4lSgtrlAVKdXmUyJYVWOjwA=;
-        b=f2k0HzagE8OM+J9APOSugTF6wypvGjRkmA0Nd9ffp8gHzFpAO0nQvgi9uAIAVLdQXK
-         NL4g1uETaTGs35M+JPJFwUlUmx1olif97fEvSWZG9OY/K5jsfg/F5vUATrXilpj+iBL6
-         MWbbaAzBt5ICYTdibmurchF+ZAbBTI3Ql1djMBWSnstTabfAp2dIVIO2NQU8+ilseKkC
-         7Q8GAY0IsjZmanXfidaXuTIUslrCS6FuwmF9Z3XdxBeypeYt5ZkLpt/wVMT3ekWbICAC
-         /vP89s+nisi+uqtWYh2UlnGdKrkJDDzjyWC8/YPx4ogHt0yuwlc58oKB5/13UetN3PaZ
-         ctVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVCIPrjj5PNhf1hOqqq1FzzK8i8JPVGrXwARLm85+nq/g5M7jkfIOGJ+8YQ0gwB+5Mhf7K4h/QZGPljHiY/HfB1RE3GW6/4gNbigBtHBKYjXrJr79szf1jTtJWRDPq7VzC3unZmz1Yu5A+oOSKdEodjM0a/XwHOT+M=
-X-Gm-Message-State: AOJu0Yx7TwA9rdzCXmYV9XU5UdRcDLhqpC3uLp/yKWpVXa/I6NVtiqNl
-	usWyMxeEOp1ZD+/27KnOAbqrBC35itp1l43V74m0OrKHaFIcze3K
-X-Google-Smtp-Source: AGHT+IEv9ZxKcchGYyFvYPBWCNnIlMIW7NCeS2Ho7P/n+lG0Zf7uCRvbt7IEmfN0wg3auiwaxWph5g==
-X-Received: by 2002:a05:6808:158c:b0:3c3:b109:4e9e with SMTP id t12-20020a056808158c00b003c3b1094e9emr54438oiw.5.1711122401778;
-        Fri, 22 Mar 2024 08:46:41 -0700 (PDT)
-Received: from SDF-ThinkCentre-M93p.localdomain (c-76-17-255-148.hsd1.mn.comcast.net. [76.17.255.148])
-        by smtp.googlemail.com with ESMTPSA id ff19-20020a05622a4d9300b004312563cbb0sm971950qtb.83.2024.03.22.08.46.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Mar 2024 08:46:41 -0700 (PDT)
-From: Shimrra Shai <shimmyshai00@gmail.com>
-To: jonathan.cameron@huawei.com
-Cc: heiko@sntech.de,
+	id 1rnjA7-00000008GF5-336o;
+	Fri, 22 Mar 2024 17:58:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1711130319; x=1742666319;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Fg2DTIIIhUQNFpW2Iw3rokXpLJlP9QgdMt0GMxWljz4=;
+  b=Yj+AZyIC6sfiuo5byCMqursWkjPn/zxlaN7X+cnKnBHNn0p97H5r5EVY
+   +NIqSg3gGxKjMOfIo2ZlehGPxLyrxpzbJ+yKqyapwv/5mvAMvQo7GfKlk
+   Wrmt3dags9IEGsOFMDhlOIg+9vXqSJixNL9q/D0l9zFC46dDf9wHXmiYw
+   YG+gdfAhMv6uAs8rAOoLKVf9gnNhZBLGjAU/bM1InR+v+fLQ2ORezwQ7m
+   Gkwm+4vkEU15DONVE2m08Me2280Qc8oIHftvUh129vERi9ddWvId+Dg5n
+   W77ydMwCik6UxUgas7neqRAixMx3HNcBltzoFH1v+mdbo3D5WoI9HdzGc
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11020"; a="6308431"
+X-IronPort-AV: E=Sophos;i="6.07,146,1708416000"; 
+   d="scan'208";a="6308431"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Mar 2024 10:58:37 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,146,1708416000"; 
+   d="scan'208";a="19551738"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+  by fmviesa003.fm.intel.com with ESMTP; 22 Mar 2024 10:58:33 -0700
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rnj9y-000KVr-2a;
+	Fri, 22 Mar 2024 17:58:30 +0000
+Date: Sat, 23 Mar 2024 01:58:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Alex Bee <knaerzche@gmail.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	max.schwarz@online.de,
-	niyas.sait@huawei.com,
-	shimmyshai00@gmail.com
-Subject: Re: Re: [PATCH 0/0] (proposed?) Add ACPI binding to Rockchip RK3xxx I2C bus
-Date: Fri, 22 Mar 2024 10:51:46 -0500
-Message-Id: <20240322155146.22755-1-shimmyshai00@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240322103521.00001a12@Huawei.com>
-References: <20240322103521.00001a12@Huawei.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org, Alex Bee <knaerzche@gmail.com>
+Subject: Re: [PATCH 2/5] mfd: rk8xx: Add RK816 support
+Message-ID: <202403230131.AhHTZiEx-lkp@intel.com>
+References: <20240321143911.90210-5-knaerzche@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240321143911.90210-5-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_084644_902468_87476C8A 
-X-CRM114-Status: GOOD (  33.64  )
+X-CRM114-CacheID: sfid-20240322_105839_947657_F5B0A491 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,130 +93,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+Hi Alex,
 
-For
+kernel test robot noticed the following build warnings:
 
-> It would be good to highlight in this description what is missing for
-> doing a standard ACPI binding and not using any specific hacks in the
-> driver (get clocks as normal etc).
-> 
-> There are ACPI clock bindings, but Linux doesn't support the yet (I think?)
-> See ACPICA commit
-> https://github.com/acpica/acpica/commit/661feab5ee01a34af95a389a18c82e79f1aba05a
-> 
-> I've seen prototype code but was a while back.  I'd like to see that
-> work compled rather than having every driver need to paper over the hole.
-> 
-> The alias is a different question that needs to be addressed.
-> If this is a common pattern, push it up in to the i2c core, not
-> a specific driver.  I see there is already code related to that
-> in i2c_add_adapter - that just wants an ACPI option.
-> 
-> Jonathan
+[auto build test WARNING on lee-mfd/for-mfd-next]
+[also build test WARNING on lee-mfd/for-mfd-fixes broonie-regulator/for-next robh/for-next linus/master v6.8 next-20240322]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-and
+url:    https://github.com/intel-lab-lkp/linux/commits/Alex-Bee/dt-bindings-mfd-Add-rk816-binding/20240321-224318
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
+patch link:    https://lore.kernel.org/r/20240321143911.90210-5-knaerzche%40gmail.com
+patch subject: [PATCH 2/5] mfd: rk8xx: Add RK816 support
+config: i386-randconfig-062-20240322 (https://download.01.org/0day-ci/archive/20240323/202403230131.AhHTZiEx-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240323/202403230131.AhHTZiEx-lkp@intel.com/reproduce)
 
-> That implies that the kernel can cope with the device tree wrapped up in
-> ACPI path.  If that's the case, why do you need RKCP3001 as you can
-> match on the compatible?
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202403230131.AhHTZiEx-lkp@intel.com/
 
-This was all based on how the people working on the firmware project wrote
-the ACPI binding. That said, since I've got a foot in it too I can 
-definitely submit them an updated binding. The binding for the I2C in the
-project looks like this:
+sparse warnings: (new ones prefixed by >>)
+>> drivers/mfd/rk8xx-core.c:573:24: sparse: sparse: incorrect type in initializer (different modifiers) @@     expected unsigned int ( *get_irq_reg )( ... ) @@     got unsigned int ( const * )( ... ) @@
+   drivers/mfd/rk8xx-core.c:573:24: sparse:     expected unsigned int ( *get_irq_reg )( ... )
+   drivers/mfd/rk8xx-core.c:573:24: sparse:     got unsigned int ( const * )( ... )
 
-  Device (I2C1) {
-    Name (_HID, "RKCP3001")
-    Name (_CID, "PRP0001")
-    Name (_UID, 1)
-    Name (_CCA, 0)
+vim +573 drivers/mfd/rk8xx-core.c
 
-    Method (_CRS, 0x0, Serialized) {
-      Name (RBUF, ResourceTemplate() {
-        Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
-        Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
-      })
-      Return (RBUF)
-    }
-    Name (_DSD, Package () {
-      ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
-      Package () {
-        Package (2) { "i2c,clk-rate", 198000000 },
-        Package (2) { "rockchip,bclk", 198000000 },
-        Package (2) { "#address-cells", 1 },
-        Package (2) { "#size-cells", 0 },
-      }
-    })
-  }
-  
-(there are others, e.g. I2C2, I2C3, etc. one for each I2C bus, with
-correspondingly different _UID and some different numbers for interrupts
-etc.)
+   567	
+   568	static const struct regmap_irq_chip rk816_irq_chip = {
+   569		.name = "rk816",
+   570		.irqs = rk816_irqs,
+   571		.num_irqs = ARRAY_SIZE(rk816_irqs),
+   572		.num_regs = 3,
+ > 573		.get_irq_reg = rk816_get_irq_reg,
+   574		.status_base = RK816_INT_STS_REG1,
+   575		.mask_base = RK816_INT_STS_MSK_REG1,
+   576		.ack_base = RK816_INT_STS_REG1,
+   577		.init_ack_masked = true,
+   578	};
+   579	
 
-From what I'm gathering from reading the documentation at
-https://uefi.org/specs/ACPI/6.5/19_ASL_Reference.html
-which is admittedly quite terse and doesn't provide nearly enough examples
-for my liking, and given I have not been able to find a "in the wild" ACPI
-using ClockInput, I presume a better binding would be like this, correct?:
-
-  Device (I2C1) {
-    Name (_HID, "RKCP3001")
-    /* _CID is gone now because we are no longer assuming mirror of DT */
-    Name (_UID, 1)
-    Name (_CCA, 0)
-
-    Method (_CRS, 0x0, Serialized) {
-      Name (RBUF, ResourceTemplate() {
-        Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
-        Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
-        ClockInput (198000000, 1, Hz, Fixed, "PCLK", 0)
-        ClockInput (198000000, 1, Hz, Fixed, "BCLK", 0)
-      })
-      Return (RBUF)
-    }
-    Name (_DSD, Package () {
-      ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
-      Package () {
-        Package (2) { "#address-cells", 1 },
-        Package (2) { "#size-cells", 0 },
-      }
-    })
-
-    Device (PCLK) {
-      Name (_ADR, 0x0)
-    }
-
-    Device (BCLK) {
-      Name (_ADR, 0x1)
-    }
-  }
-
-Note now I added two device nodes for the clocks and use ClockInput to
-describe the frequencies. I'm unsure though about the device node part,
-however; I know that the .DTB has a central node for the CRU (the actual
-clock generator on the RK3588), so should we instead have a top-level
-Device node "CRU_" and reference the ClockInputs to that, e.g. something
-like
-
-        ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_PCLK)
-        ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_BCLK)
-
-? (Note the obvious analogy to rk3588s.dtsi for the labels, which would be
-#defined constants.) Though in this case I'd ask if someone here would be
-kind enough to supply the structure for the top-level CRU binding so that I
-don't have to guess the "best" form for the kernel like the makers of the
-firmware were doing which is what led to this disagreement in the first
-place.
-
-FWIW, I'd also be willing to help lend a hand to finish out the support for
-the ClockInput binding in the ACPI reader subsystem. There already seems to
-be some support, e.g. in drivers/acpi/acpica/rsinfo.c and a few other
-places, but I'm not sure what else is needed to get it going and would need
-to study that subsystem in much more depth.
-
-- Shimmy
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
