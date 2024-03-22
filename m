@@ -4,133 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BEFAC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 07:07:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108E3C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 07:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KO/SdWWbIdNX4dwG+AexkeSxUGNNx5cl/5R73gJxwHs=; b=ncVKXKnu2BmbYS
-	d7Z0WUIF+yypH5FKGz+s+5fz3PlV8wAV3LIK5Umr8HRIz9UQtWz/WN+Q4JhlNEA4n06E4Yep+V6fu
-	tsWk9vG4TiO10A8hJ5Srzc6Yz70+dFmnBjvJRkOgS6kL5i1qeLW73T695rZdeYMxouLpyLJEiBumE
-	tQJUTsU/sF3pVshve3R1y1TdYfCdWAxTIDn5iuH+ntBRAFTFvOgYJN7IKTVMNRCjhaOVBLWEDU480
-	DWDcvpTkZOQzSh48jJrIDFDmjQ8+CapQhcKgTbSwQbzJB3m8gpb089jnMuXBvslgUXpKN2R9a1u47
-	sr7nu1fB71f9ekCO9TpQ==;
+	List-Owner; bh=j7VXVkj8pzCI27R3F6JpjZCs0SaigphFXtu2C33zlUI=; b=j8ySwHJ7Pm64bR
+	5ozXr/VqYh3VAKu4kI69+h+y2me0CRjTxTQPK8nLjgDJ7jkbmnWGTdT1ZUMU6RJNB9+vpoV4T+BzV
+	C2PJIRRVZIVslxgqsQm/X+fxl1+DxeHEvS+d7JQyRH9foTYTnR14ELMqsB/5mH7XcjqASsB3m+iPH
+	8NEnzXJ9GeQzY+7dA/JMC5r1MgL13sr2XvBwrj/fBDpY02MhIz5uinl066BroHURajeQilpwP7tI0
+	bT85rvXI2ZV2VY0V3ihQ2YZrBkT1bloozfz1pYw+6Ng32AYps+gT2NNHkboytflEiCFPvMKY+DGgu
+	KYoXdbml9LvKQEZBIboQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnZ05-0000000695Q-0OfJ;
-	Fri, 22 Mar 2024 07:07:37 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1rnZk1-00000006GQL-2TXX;
+	Fri, 22 Mar 2024 07:55:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnZ00-0000000693R-0udi
+	id 1rnZjx-00000006GOJ-31Tq
 	for linux-rockchip@lists.infradead.org;
-	Fri, 22 Mar 2024 07:07:35 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-56b8e4f38a2so2250643a12.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 22 Mar 2024 00:07:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711091248; x=1711696048; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=+IqxYSznSF0dOGEo3eRAT53h2zWat2EDnZFz5bA1NmU=;
-        b=ilZtXcQf60fZJ6NnkPzejWP/37orgKlss8R88cRFua92lVR9TbXhUdXRjPV8CZzD2Q
-         YOuA763Pn/X6/vcYZOuXYk65Qn40rsqyR03QbuWmPjEmW1eiFMtdvL5ykpCf1T1iy7OJ
-         CYSytz1waQdEUQoxj10YV0ioRdC3ak5j0DIEV4pQqLFJssZan1ArdkI8Li2hY+bT0VBy
-         JDfVYDThm08lfod0RraE9uTz96oIsJcadOK+qA1cNYJPD/f2HrIx3LSgMrf/bB0NuKWN
-         mm2IzOrrGcL1cDmo/POwd9fNB7puC7vBKozOTF2QiOeGLuLa4Pnx3kPrv5Y8bjpcL0Ks
-         Jymg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711091248; x=1711696048;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+IqxYSznSF0dOGEo3eRAT53h2zWat2EDnZFz5bA1NmU=;
-        b=qH/9fLerd18gD2AY6wNncMv6dXWxJbsDyAmJ7s9mUtEw1ncszCi1NL/8zmBfrn7BLS
-         LFiMF/qZLXeUtiY8D85Md68tkrCXEXyKe2mR0Ztudd+mYBEha9o6BQX5OEyjwe0XudsO
-         Jp3Y8GtgfevU9ZhWSArq986EAh9r03b3ocfFjPXlFL5PLfgnHM1ZdBOiwnSIj+of7BWK
-         YrWnWjU2+KnPNiKQXsLHXFW0Jfsl0T2caONU1ON5JoAKjvPfngwjpNeZn/lUbQOs9qQB
-         VJKEBnqoGarvavaFJTxElIjt0bmbcBATz39qrw4mOdWQ8j6M8QEfzRFYkQRtxHp/494n
-         JiLA==
-X-Forwarded-Encrypted: i=1; AJvYcCWRO23hqKjzC80qdIcDQnTSl3v/2+8SlFvEscrkNpKdAy/5s1uX3ObrsHxNyWAEWHNR2YfoWJpV4oHmQhRr6ji8jiMnyman65yq/FAsrFW+NT9W
-X-Gm-Message-State: AOJu0YyrM1gUUxva7NNv0tLiobG3ksSi2x8OhFwLQh6c+2Vzo4dLfxR3
-	2BLgEhJJLzWKrp75s8DiRgBJPDDajB6VykBylTMnVU+K7yp7PYKbLl5DMc/cBYA=
-X-Google-Smtp-Source: AGHT+IEnFRcf8NA34JzX7H+NXLIfCDHydjoDSkAEynbOJCarizdc+au3qNpI2J4YN4RK8akreuQcaA==
-X-Received: by 2002:a50:9e65:0:b0:565:7b61:4c82 with SMTP id z92-20020a509e65000000b005657b614c82mr849247ede.5.1711091248066;
-        Fri, 22 Mar 2024 00:07:28 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.222.97])
-        by smtp.gmail.com with ESMTPSA id ig3-20020a056402458300b00568b6d731e1sm699630edb.4.2024.03.22.00.07.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Mar 2024 00:07:27 -0700 (PDT)
-Message-ID: <f2b2ecd2-7df7-4265-a022-655bffc7ac61@linaro.org>
-Date: Fri, 22 Mar 2024 08:07:25 +0100
+	Fri, 22 Mar 2024 07:55:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3EB726132F;
+	Fri, 22 Mar 2024 07:55:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 773DBC433F1;
+	Fri, 22 Mar 2024 07:54:57 +0000 (UTC)
+Message-ID: <35a00be5-26d6-457a-82ca-01d882720f17@xs4all.nl>
+Date: Fri, 22 Mar 2024 08:54:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: Add rk816 binding
-To: Alex Bee <knaerzche@gmail.com>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Linus Walleij <linus.walleij@linaro.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org
-References: <20240321143911.90210-2-knaerzche@gmail.com>
- <20240321143911.90210-4-knaerzche@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240321143911.90210-4-knaerzche@gmail.com>
+Subject: Re: [PATCH v21 7/9] media: v4l2: Add REMOVE_BUFS ioctl
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: tfiga@chromium.org, m.szyprowski@samsung.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, nicolas@ndufresne.ca,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20240314153226.197445-1-benjamin.gaignard@collabora.com>
+ <20240314153226.197445-8-benjamin.gaignard@collabora.com>
+ <20240321151442.0487b53f@coco.lan>
+ <2bcbe941-ffc8-4b95-a5d1-0bcb9c2ddcb6@xs4all.nl>
+ <20240321160320.1b7f5e64@coco.lan>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20240321160320.1b7f5e64@coco.lan>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_000732_282803_1893DCF2 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20240322_005502_338505_4CE76826 
+X-CRM114-Status: GOOD (  33.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,142 +70,522 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 21/03/2024 15:39, Alex Bee wrote:
-> Add DT binding document for Rockchip's RK816 PMIC
+Hi Benjamin,
+
+I added the one additional sentence to vidioc-remove-bufs.rst as suggested
+by Mauro, and added his Reviewed/Acked-by lines.
+
+I'll merge this series on Monday after 6.9-rc1 has been released and then
+I will also merge the v4l-utils patches.
+
+No need for you to do anything.
+
+Thank you for all your work on this!
+
+	Hans
+
+On 21/03/2024 4:03 pm, Mauro Carvalho Chehab wrote:
+> Em Thu, 21 Mar 2024 15:24:43 +0100
+> Hans Verkuil <hverkuil-cisco@xs4all.nl> escreveu:
 > 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
-> new file mode 100644
-> index 000000000000..b46de99f60ff
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
-> @@ -0,0 +1,259 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/rockchip,rk816.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: RK816 Power Management Integrated Circuit
-> +
-> +maintainers:
-> +  - Chris Zhong <zyw@rock-chips.com>
-> +  - Zhang Qing <zhangqing@rock-chips.com>
-> +
-> +description: |
-
-Do not need '|' unless you need to preserve formatting.
-
-> +  Rockchip RK816 series PMIC. This device consists of an i2c controlled MFD
-> +  that includes regulators, a RTC, a gpio controller, and a power button.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk816
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    description: |
-
-Do not need '|' unless you need to preserve formatting.
-
-> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
-> +    const: 1
-> +
-> +  clock-output-names:
-> +    description:
-> +      From common clock binding to override the default output clock name.
-
-Drop description, it's obvious.
-
-> +    maxItems: 2
-> +
-> +  gpio-controller: true
-> +
-> +  '#gpio-cells':
-> +    const: 2
-> +
-> +  system-power-controller:
-> +    type: boolean
-> +    description:
-> +      Telling whether or not this PMIC is controlling the system power.
-> +
-> +  wakeup-source:
-> +    type: boolean
-> +    description:
-> +      Device can be used as a wakeup source.
-
-Drop description, it's obvious. It's considered generic property, even
-if we did not document it in dtschema yet.
-
-> +
-> +  vcc1-supply:
-> +    description:
-> +      The input supply for DCDC_REG1.
-> +
-> +  vcc2-supply:
-> +    description:
-> +      The input supply for DCDC_REG2.
-> +
-> +  vcc3-supply:
-> +    description:
-> +      The input supply for DCDC_REG3.
-> +
-> +  vcc4-supply:
-> +    description:
-> +      The input supply for DCDC_REG4.
-> +
-> +  vcc5-supply:
-> +    description:
-> +      The input supply for LDO_REG1, LDO_REG2, and LDO_REG3.
-> +
-> +  vcc6-supply:
-> +    description:
-> +      The input supply for LDO_REG4, LDO_REG5, and LDO_REG6.
-> +
-> +  vcc7-supply:
-> +    description:
-> +      The input supply for BOOST.
-> +
-> +  vcc8-supply:
-> +    description:
-> +      The input supply for OTG_SWITCH.
-> +
-> +  regulators:
-> +    type: object
-> +    patternProperties:
-> +      "^(DCDC_REG[1-4]|LDO_REG[1-6]|BOOST|OTG_SWITCH)$":
-
-Lowercase. No underscores allowed, use hyphens.
-
-> +        type: object
-> +        $ref: ../regulator/regulator.yaml#
-
-Full path, so /schemas/regulator/
-
-> +        unevaluatedProperties: false
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - "#clock-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-
-
-Best regards,
-Krzysztof
+>> On 21/03/2024 3:14 pm, Mauro Carvalho Chehab wrote:
+>>> Em Thu, 14 Mar 2024 16:32:24 +0100
+>>> Benjamin Gaignard <benjamin.gaignard@collabora.com> escreveu:
+>>>   
+>>>> VIDIOC_REMOVE_BUFS ioctl allows to remove buffers from a queue.
+>>>> The number of buffers to remove in given by count field of
+>>>> struct v4l2_remove_buffers and the range start at the index
+>>>> specified in the same structure.
+>>>>
+>>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>>>> ---
+>>>> changes in version 21:
+>>>> - Be more careful about checking remove_bufs type field vs queue type.
+>>>> - Add documentation about type checking error.
+>>>> - Always set capabilities flags field.
+>>>>
+>>>>  .../userspace-api/media/v4l/user-func.rst     |  1 +
+>>>>  .../media/v4l/vidioc-remove-bufs.rst          | 85 +++++++++++++++++++
+>>>>  .../media/v4l/vidioc-reqbufs.rst              |  1 +
+>>>>  .../media/common/videobuf2/videobuf2-core.c   | 38 +++++++++
+>>>>  .../media/common/videobuf2/videobuf2-v4l2.c   | 20 ++++-
+>>>>  drivers/media/v4l2-core/v4l2-dev.c            |  3 +
+>>>>  drivers/media/v4l2-core/v4l2-ioctl.c          | 30 +++++++
+>>>>  include/media/v4l2-ioctl.h                    |  4 +
+>>>>  include/media/videobuf2-core.h                | 10 +++
+>>>>  include/media/videobuf2-v4l2.h                |  2 +
+>>>>  include/uapi/linux/videodev2.h                | 17 ++++
+>>>>  11 files changed, 210 insertions(+), 1 deletion(-)
+>>>>  create mode 100644 Documentation/userspace-api/media/v4l/vidioc-remove-bufs.rst
+>>>>
+>>>> diff --git a/Documentation/userspace-api/media/v4l/user-func.rst b/Documentation/userspace-api/media/v4l/user-func.rst
+>>>> index 15ff0bf7bbe6..6f661138801c 100644
+>>>> --- a/Documentation/userspace-api/media/v4l/user-func.rst
+>>>> +++ b/Documentation/userspace-api/media/v4l/user-func.rst
+>>>> @@ -62,6 +62,7 @@ Function Reference
+>>>>      vidioc-query-dv-timings
+>>>>      vidioc-querystd
+>>>>      vidioc-reqbufs
+>>>> +    vidioc-remove-bufs
+>>>>      vidioc-s-hw-freq-seek
+>>>>      vidioc-streamon
+>>>>      vidioc-subdev-enum-frame-interval
+>>>> diff --git a/Documentation/userspace-api/media/v4l/vidioc-remove-bufs.rst b/Documentation/userspace-api/media/v4l/vidioc-remove-bufs.rst
+>>>> new file mode 100644
+>>>> index 000000000000..0cbc8c7313b7
+>>>> --- /dev/null
+>>>> +++ b/Documentation/userspace-api/media/v4l/vidioc-remove-bufs.rst
+>>>> @@ -0,0 +1,85 @@
+>>>> +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
+>>>> +.. c:namespace:: V4L
+>>>> +
+>>>> +.. _VIDIOC_REMOVE_BUFS:
+>>>> +
+>>>> +************************
+>>>> +ioctl VIDIOC_REMOVE_BUFS
+>>>> +************************
+>>>> +
+>>>> +Name
+>>>> +====
+>>>> +
+>>>> +VIDIOC_REMOVE_BUFS - Removes buffers from a queue
+>>>> +
+>>>> +Synopsis
+>>>> +========
+>>>> +
+>>>> +.. c:macro:: VIDIOC_REMOVE_BUFS
+>>>> +
+>>>> +``int ioctl(int fd, VIDIOC_REMOVE_BUFS, struct v4l2_remove_buffers *argp)``
+>>>> +
+>>>> +Arguments
+>>>> +=========
+>>>> +
+>>>> +``fd``
+>>>> +    File descriptor returned by :c:func:`open()`.
+>>>> +
+>>>> +``argp``
+>>>> +    Pointer to struct :c:type:`v4l2_remove_buffers`.
+>>>> +
+>>>> +Description
+>>>> +===========
+>>>> +
+>>>> +Applications can optionally call the :ref:`VIDIOC_REMOVE_BUFS` ioctl to
+>>>> +remove buffers from a queue.
+>>>> +:ref:`VIDIOC_CREATE_BUFS` ioctl support is mandatory to enable :ref:`VIDIOC_REMOVE_BUFS`.
+>>>> +This ioctl is available if the ``V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS`` capability
+>>>> +is set on the queue when :c:func:`VIDIOC_REQBUFS` or :c:func:`VIDIOC_CREATE_BUFS`
+>>>> +are invoked.
+>>>> +
+>>>> +.. c:type:: v4l2_remove_buffers
+>>>> +
+>>>> +.. tabularcolumns:: |p{4.4cm}|p{4.4cm}|p{8.5cm}|
+>>>> +
+>>>> +.. flat-table:: struct v4l2_remove_buffers
+>>>> +    :header-rows:  0
+>>>> +    :stub-columns: 0
+>>>> +    :widths:       1 1 2
+>>>> +
+>>>> +    * - __u32
+>>>> +      - ``index``
+>>>> +      - The starting buffer index to remove. This field is ignored if count == 0.
+>>>> +    * - __u32
+>>>> +      - ``count``
+>>>> +      - The number of buffers to be removed with indices 'index' until 'index + count - 1'.
+>>>> +        All buffers in this range must be valid and in DEQUEUED state.
+>>>> +        :ref:`VIDIOC_REMOVE_BUFS` will always check the validity of ``type`, if it is
+>>>> +        invalid it returns ``EINVAL`` error code.
+>>>> +        If count is set to 0 :ref:`VIDIOC_REMOVE_BUFS` will do nothing and return 0.
+>>>> +    * - __u32
+>>>> +      - ``type``
+>>>> +      - Type of the stream or buffers, this is the same as the struct
+>>>> +	:c:type:`v4l2_format` ``type`` field. See
+>>>> +	:c:type:`v4l2_buf_type` for valid values.
+>>>> +    * - __u32
+>>>> +      - ``reserved``\ [13]
+>>>> +      - A place holder for future extensions. Drivers and applications
+>>>> +	must set the array to zero.
+>>>> +
+>>>> +Return Value
+>>>> +============
+>>>> +
+>>>> +On success 0 is returned, on error -1 and the ``errno`` variable is set
+>>>> +appropriately. The generic error codes are described at the
+>>>> +:ref:`Generic Error Codes <gen-errors>` chapter.  
+>>>
+>>> It is not enough to just return an error code. it should also describe
+>>> what will be the expected behavior after the call. Something like:
+>>>
+>>> 	If an error occurs, no buffers will be freed and one of the
+>>> 	error codes below will be returned:  
+>>
+>> That's good to have. That is indeed not stated explicitly.
+>>
+>>>   
+>>>> +
+>>>> +EBUSY
+>>>> +    File I/O is in progress.
+>>>> +    One or more of the buffers in the range ``index`` to ``index + count - 1`` are not
+>>>> +    in DEQUEUED state.
+>>>> +
+>>>> +EINVAL
+>>>> +    One or more of the buffers in the range ``index`` to ``index + count - 1`` do not
+>>>> +    exist in the queue.
+>>>> +    The buffer type (``type`` field) is not valid.  
+>>>
+>>> IMO, it needs also another error code: as there's a minimal number of
+>>> buffers to be queued (let's say, 2), what happens if there are currently
+>>> 3 buffers allocated and an ioctl is called to free 2 buffers?
+>>>
+>>> IMO, it shall return an error code and not free any buffers.  
+>>
+>> Note the requirement that all buffers you want to remove have to be in dequeued
+>> state. So you can never remove buffers that are still in flight. An attempt to
+>> do that results in EBUSY.
+>>
+>> So there is no need for an other error code.
+>>
+>>>
+>>> The best would be to return a code different than EINVAL. Maybe E2BIG?
+>>>   
+>>>> diff --git a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>>>> index 0b3a41a45d05..bbc22dd76032 100644
+>>>> --- a/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>>>> +++ b/Documentation/userspace-api/media/v4l/vidioc-reqbufs.rst
+>>>> @@ -121,6 +121,7 @@ aborting or finishing any DMA in progress, an implicit
+>>>>  .. _V4L2-BUF-CAP-SUPPORTS-M2M-HOLD-CAPTURE-BUF:
+>>>>  .. _V4L2-BUF-CAP-SUPPORTS-MMAP-CACHE-HINTS:
+>>>>  .. _V4L2-BUF-CAP-SUPPORTS-MAX-NUM-BUFFERS:
+>>>> +.. _V4L2-BUF-CAP-SUPPORTS-REMOVE-BUFS:
+>>>>  
+>>>>  .. raw:: latex
+>>>>  
+>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+>>>> index 009cea95d662..0b2b48e1b2df 100644
+>>>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+>>>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+>>>> @@ -1691,6 +1691,44 @@ int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+>>>>  }
+>>>>  EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
+>>>>  
+>>>> +int vb2_core_remove_bufs(struct vb2_queue *q, unsigned int start, unsigned int count)
+>>>> +{
+>>>> +	unsigned int i, ret = 0;
+>>>> +	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+>>>> +
+>>>> +	if (count == 0)
+>>>> +		return 0;
+>>>> +
+>>>> +	if (count > q_num_bufs)
+>>>> +		return -EINVAL;  
+>>>
+>>> It also needs:
+>>>
+>>> 	if (q_num_bufs - count < q->min_reqbufs_allocation && q_num_bufs != count)
+>>> 		return <some error code>;
+>>>
+>>> e. g. it shall not accept keeping, for instance, just one buffer allocated.  
+>>
+>> That's perfectly fine. The min_reqbufs_allocation is specific to VIDIOC_REQBUFS
+>> (hence the name). If you use CREATE_BUFS/REMOVE_BUFS, then you are fully responsible
+>> for allocating and removing buffers.
+>>
+>> This is something that was discussed in earlier revisions of this series.
+>>
+>> It is actually rather ugly that REQBUFS does this, but we need to keep that behavior
+>> since that's how REQBUFS worked historically.
+>>
+>> VIDIOC_CREATE_BUFS was never affected by this, so if you want to allocate N
+>> buffers with CREATE_BUFS, then you'll never get more than N buffers (you might get
+>> less, of course).
+> 
+> OK.
+> 
+> So, after doing the documentation change, feel free to add:
+> 
+> Reviewed-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> 
+>>
+>> Regards,
+>>
+>> 	Hans
+>>
+>>>   
+>>>> +
+>>>> +	if (start > q->max_num_buffers - count)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	mutex_lock(&q->mmap_lock);
+>>>> +
+>>>> +	/* Check that all buffers in the range exist */
+>>>> +	for (i = start; i < start + count; i++) {
+>>>> +		struct vb2_buffer *vb = vb2_get_buffer(q, i);
+>>>> +
+>>>> +		if (!vb) {
+>>>> +			ret = -EINVAL;
+>>>> +			goto unlock;
+>>>> +		}
+>>>> +		if (vb->state != VB2_BUF_STATE_DEQUEUED) {
+>>>> +			ret = -EBUSY;
+>>>> +			goto unlock;
+>>>> +		}
+>>>> +	}
+>>>> +	__vb2_queue_free(q, start, count);
+>>>> +	dprintk(q, 2, "%u buffers removed\n", count);
+>>>> +
+>>>> +unlock:
+>>>> +	mutex_unlock(&q->mmap_lock);
+>>>> +	return ret;
+>>>> +}
+>>>> +EXPORT_SYMBOL_GPL(vb2_core_remove_bufs);
+>>>> +
+>>>>  /*
+>>>>   * vb2_start_streaming() - Attempt to start streaming.
+>>>>   * @q:		videobuf2 queue
+>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>>>> index 03e8080a68a8..293f3d5f1c4e 100644
+>>>> --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>>>> +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
+>>>> @@ -685,7 +685,7 @@ static void vb2_set_flags_and_caps(struct vb2_queue *q, u32 memory,
+>>>>  		*flags &= V4L2_MEMORY_FLAG_NON_COHERENT;
+>>>>  	}
+>>>>  
+>>>> -	*caps = V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
+>>>> +	*caps |= V4L2_BUF_CAP_SUPPORTS_ORPHANED_BUFS;
+>>>>  	if (q->io_modes & VB2_MMAP)
+>>>>  		*caps |= V4L2_BUF_CAP_SUPPORTS_MMAP;
+>>>>  	if (q->io_modes & VB2_USERPTR)
+>>>> @@ -1001,6 +1001,24 @@ EXPORT_SYMBOL_GPL(vb2_poll);
+>>>>  
+>>>>  /* vb2 ioctl helpers */
+>>>>  
+>>>> +int vb2_ioctl_remove_bufs(struct file *file, void *priv,
+>>>> +			  struct v4l2_remove_buffers *d)
+>>>> +{
+>>>> +	struct video_device *vdev = video_devdata(file);
+>>>> +
+>>>> +	if (vdev->queue->type != d->type)
+>>>> +		return -EINVAL;
+>>>> +
+>>>> +	if (d->count == 0)
+>>>> +		return 0;
+>>>> +
+>>>> +	if (vb2_queue_is_busy(vdev->queue, file))
+>>>> +		return -EBUSY;
+>>>> +
+>>>> +	return vb2_core_remove_bufs(vdev->queue, d->index, d->count);
+>>>> +}
+>>>> +EXPORT_SYMBOL_GPL(vb2_ioctl_remove_bufs);
+>>>> +
+>>>>  int vb2_ioctl_reqbufs(struct file *file, void *priv,
+>>>>  			  struct v4l2_requestbuffers *p)
+>>>>  {
+>>>> diff --git a/drivers/media/v4l2-core/v4l2-dev.c b/drivers/media/v4l2-core/v4l2-dev.c
+>>>> index d13954bd31fd..e39e9742fdb5 100644
+>>>> --- a/drivers/media/v4l2-core/v4l2-dev.c
+>>>> +++ b/drivers/media/v4l2-core/v4l2-dev.c
+>>>> @@ -722,6 +722,9 @@ static void determine_valid_ioctls(struct video_device *vdev)
+>>>>  		SET_VALID_IOCTL(ops, VIDIOC_PREPARE_BUF, vidioc_prepare_buf);
+>>>>  		SET_VALID_IOCTL(ops, VIDIOC_STREAMON, vidioc_streamon);
+>>>>  		SET_VALID_IOCTL(ops, VIDIOC_STREAMOFF, vidioc_streamoff);
+>>>> +		/* VIDIOC_CREATE_BUFS support is mandatory to enable VIDIOC_REMOVE_BUFS */
+>>>> +		if (ops->vidioc_create_bufs)
+>>>> +			SET_VALID_IOCTL(ops, VIDIOC_REMOVE_BUFS, vidioc_remove_bufs);
+>>>>  	}
+>>>>  
+>>>>  	if (is_vid || is_vbi || is_meta) {
+>>>> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+>>>> index 6e7b8b682d13..5aeff5519407 100644
+>>>> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+>>>> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+>>>> @@ -489,6 +489,14 @@ static void v4l_print_create_buffers(const void *arg, bool write_only)
+>>>>  	v4l_print_format(&p->format, write_only);
+>>>>  }
+>>>>  
+>>>> +static void v4l_print_remove_buffers(const void *arg, bool write_only)
+>>>> +{
+>>>> +	const struct v4l2_remove_buffers *p = arg;
+>>>> +
+>>>> +	pr_cont("type=%s, index=%u, count=%u\n",
+>>>> +		prt_names(p->type, v4l2_type_names), p->index, p->count);
+>>>> +}
+>>>> +
+>>>>  static void v4l_print_streamparm(const void *arg, bool write_only)
+>>>>  {
+>>>>  	const struct v4l2_streamparm *p = arg;
+>>>> @@ -2092,6 +2100,7 @@ static int v4l_overlay(const struct v4l2_ioctl_ops *ops,
+>>>>  static int v4l_reqbufs(const struct v4l2_ioctl_ops *ops,
+>>>>  				struct file *file, void *fh, void *arg)
+>>>>  {
+>>>> +	struct video_device *vfd = video_devdata(file);
+>>>>  	struct v4l2_requestbuffers *p = arg;
+>>>>  	int ret = check_fmt(file, p->type);
+>>>>  
+>>>> @@ -2100,6 +2109,10 @@ static int v4l_reqbufs(const struct v4l2_ioctl_ops *ops,
+>>>>  
+>>>>  	memset_after(p, 0, flags);
+>>>>  
+>>>> +	p->capabilities = 0;
+>>>> +	if (is_valid_ioctl(vfd, VIDIOC_REMOVE_BUFS))
+>>>> +		p->capabilities = V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS;
+>>>> +
+>>>>  	return ops->vidioc_reqbufs(file, fh, p);
+>>>>  }
+>>>>  
+>>>> @@ -2133,6 +2146,7 @@ static int v4l_dqbuf(const struct v4l2_ioctl_ops *ops,
+>>>>  static int v4l_create_bufs(const struct v4l2_ioctl_ops *ops,
+>>>>  				struct file *file, void *fh, void *arg)
+>>>>  {
+>>>> +	struct video_device *vfd = video_devdata(file);
+>>>>  	struct v4l2_create_buffers *create = arg;
+>>>>  	int ret = check_fmt(file, create->format.type);
+>>>>  
+>>>> @@ -2143,6 +2157,10 @@ static int v4l_create_bufs(const struct v4l2_ioctl_ops *ops,
+>>>>  
+>>>>  	v4l_sanitize_format(&create->format);
+>>>>  
+>>>> +	create->capabilities = 0;
+>>>> +	if (is_valid_ioctl(vfd, VIDIOC_REMOVE_BUFS))
+>>>> +		create->capabilities = V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS;
+>>>> +
+>>>>  	ret = ops->vidioc_create_bufs(file, fh, create);
+>>>>  
+>>>>  	if (create->format.type == V4L2_BUF_TYPE_VIDEO_CAPTURE ||
+>>>> @@ -2161,6 +2179,17 @@ static int v4l_prepare_buf(const struct v4l2_ioctl_ops *ops,
+>>>>  	return ret ? ret : ops->vidioc_prepare_buf(file, fh, b);
+>>>>  }
+>>>>  
+>>>> +static int v4l_remove_bufs(const struct v4l2_ioctl_ops *ops,
+>>>> +			   struct file *file, void *fh, void *arg)
+>>>> +{
+>>>> +	struct v4l2_remove_buffers *remove = arg;
+>>>> +
+>>>> +	if (ops->vidioc_remove_bufs)
+>>>> +		return ops->vidioc_remove_bufs(file, fh, remove);
+>>>> +
+>>>> +	return -ENOTTY;
+>>>> +}
+>>>> +
+>>>>  static int v4l_g_parm(const struct v4l2_ioctl_ops *ops,
+>>>>  				struct file *file, void *fh, void *arg)
+>>>>  {
+>>>> @@ -2910,6 +2939,7 @@ static const struct v4l2_ioctl_info v4l2_ioctls[] = {
+>>>>  	IOCTL_INFO(VIDIOC_ENUM_FREQ_BANDS, v4l_enum_freq_bands, v4l_print_freq_band, 0),
+>>>>  	IOCTL_INFO(VIDIOC_DBG_G_CHIP_INFO, v4l_dbg_g_chip_info, v4l_print_dbg_chip_info, INFO_FL_CLEAR(v4l2_dbg_chip_info, match)),
+>>>>  	IOCTL_INFO(VIDIOC_QUERY_EXT_CTRL, v4l_query_ext_ctrl, v4l_print_query_ext_ctrl, INFO_FL_CTRL | INFO_FL_CLEAR(v4l2_query_ext_ctrl, id)),
+>>>> +	IOCTL_INFO(VIDIOC_REMOVE_BUFS, v4l_remove_bufs, v4l_print_remove_buffers, INFO_FL_PRIO | INFO_FL_QUEUE | INFO_FL_CLEAR(v4l2_remove_buffers, type)),
+>>>>  };
+>>>>  #define V4L2_IOCTLS ARRAY_SIZE(v4l2_ioctls)
+>>>>  
+>>>> diff --git a/include/media/v4l2-ioctl.h b/include/media/v4l2-ioctl.h
+>>>> index edb733f21604..bdbb7e542321 100644
+>>>> --- a/include/media/v4l2-ioctl.h
+>>>> +++ b/include/media/v4l2-ioctl.h
+>>>> @@ -163,6 +163,8 @@ struct v4l2_fh;
+>>>>   *	:ref:`VIDIOC_CREATE_BUFS <vidioc_create_bufs>` ioctl
+>>>>   * @vidioc_prepare_buf: pointer to the function that implements
+>>>>   *	:ref:`VIDIOC_PREPARE_BUF <vidioc_prepare_buf>` ioctl
+>>>> + * @vidioc_remove_bufs: pointer to the function that implements
+>>>> + *	:ref:`VIDIOC_REMOVE_BUFS <vidioc_remove_bufs>` ioctl
+>>>>   * @vidioc_overlay: pointer to the function that implements
+>>>>   *	:ref:`VIDIOC_OVERLAY <vidioc_overlay>` ioctl
+>>>>   * @vidioc_g_fbuf: pointer to the function that implements
+>>>> @@ -422,6 +424,8 @@ struct v4l2_ioctl_ops {
+>>>>  				  struct v4l2_create_buffers *b);
+>>>>  	int (*vidioc_prepare_buf)(struct file *file, void *fh,
+>>>>  				  struct v4l2_buffer *b);
+>>>> +	int (*vidioc_remove_bufs)(struct file *file, void *fh,
+>>>> +				  struct v4l2_remove_buffers *d);
+>>>>  
+>>>>  	int (*vidioc_overlay)(struct file *file, void *fh, unsigned int i);
+>>>>  	int (*vidioc_g_fbuf)(struct file *file, void *fh,
+>>>> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+>>>> index b9333e2c7797..955237ac503d 100644
+>>>> --- a/include/media/videobuf2-core.h
+>>>> +++ b/include/media/videobuf2-core.h
+>>>> @@ -870,6 +870,16 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+>>>>   */
+>>>>  int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+>>>>  
+>>>> +/**
+>>>> + * vb2_core_remove_bufs() -
+>>>> + * @q:		pointer to &struct vb2_queue with videobuf2 queue.
+>>>> + * @start:	first index of the range of buffers to remove.
+>>>> + * @count:	number of buffers to remove.
+>>>> + *
+>>>> + *  Return: returns zero on success; an error code otherwise.
+>>>> + */
+>>>> +int vb2_core_remove_bufs(struct vb2_queue *q, unsigned int start, unsigned int count);
+>>>> +
+>>>>  /**
+>>>>   * vb2_core_qbuf() - Queue a buffer from userspace
+>>>>   *
+>>>> diff --git a/include/media/videobuf2-v4l2.h b/include/media/videobuf2-v4l2.h
+>>>> index 5a845887850b..77ce8238ab30 100644
+>>>> --- a/include/media/videobuf2-v4l2.h
+>>>> +++ b/include/media/videobuf2-v4l2.h
+>>>> @@ -334,6 +334,8 @@ int vb2_ioctl_streamon(struct file *file, void *priv, enum v4l2_buf_type i);
+>>>>  int vb2_ioctl_streamoff(struct file *file, void *priv, enum v4l2_buf_type i);
+>>>>  int vb2_ioctl_expbuf(struct file *file, void *priv,
+>>>>  	struct v4l2_exportbuffer *p);
+>>>> +int vb2_ioctl_remove_bufs(struct file *file, void *priv,
+>>>> +			  struct v4l2_remove_buffers *p);
+>>>>  
+>>>>  /* struct v4l2_file_operations helpers */
+>>>>  
+>>>> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+>>>> index a8015e5e7fa4..2663213b76a4 100644
+>>>> --- a/include/uapi/linux/videodev2.h
+>>>> +++ b/include/uapi/linux/videodev2.h
+>>>> @@ -1036,6 +1036,7 @@ struct v4l2_requestbuffers {
+>>>>  #define V4L2_BUF_CAP_SUPPORTS_M2M_HOLD_CAPTURE_BUF	(1 << 5)
+>>>>  #define V4L2_BUF_CAP_SUPPORTS_MMAP_CACHE_HINTS		(1 << 6)
+>>>>  #define V4L2_BUF_CAP_SUPPORTS_MAX_NUM_BUFFERS		(1 << 7)
+>>>> +#define V4L2_BUF_CAP_SUPPORTS_REMOVE_BUFS		(1 << 8)
+>>>>  
+>>>>  /**
+>>>>   * struct v4l2_plane - plane info for multi-planar buffers
+>>>> @@ -2624,6 +2625,20 @@ struct v4l2_create_buffers {
+>>>>  	__u32			reserved[5];
+>>>>  };
+>>>>  
+>>>> +/**
+>>>> + * struct v4l2_remove_buffers - VIDIOC_REMOVE_BUFS argument
+>>>> + * @index:	the first buffer to be removed
+>>>> + * @count:	number of buffers to removed
+>>>> + * @type:	enum v4l2_buf_type
+>>>> + * @reserved:	future extensions
+>>>> + */
+>>>> +struct v4l2_remove_buffers {
+>>>> +	__u32			index;
+>>>> +	__u32			count;
+>>>> +	__u32			type;
+>>>> +	__u32			reserved[13];
+>>>> +};
+>>>> +
+>>>>  /*
+>>>>   *	I O C T L   C O D E S   F O R   V I D E O   D E V I C E S
+>>>>   *
+>>>> @@ -2723,6 +2738,8 @@ struct v4l2_create_buffers {
+>>>>  #define VIDIOC_DBG_G_CHIP_INFO  _IOWR('V', 102, struct v4l2_dbg_chip_info)
+>>>>  
+>>>>  #define VIDIOC_QUERY_EXT_CTRL	_IOWR('V', 103, struct v4l2_query_ext_ctrl)
+>>>> +#define VIDIOC_REMOVE_BUFS	_IOWR('V', 104, struct v4l2_remove_buffers)
+>>>> +
+>>>>  
+>>>>  /* Reminder: when adding new ioctls please add support for them to
+>>>>     drivers/media/v4l2-core/v4l2-compat-ioctl32.c as well! */  
+>>>
+>>>
+>>>
+>>> Thanks,
+>>> Mauro  
+>>
+> 
+> 
+> 
+> Thanks,
+> Mauro
+> 
 
 
 _______________________________________________
