@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38401C54E71
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 10:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C008FC54E71
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Mar 2024 11:14:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R4czl/fRsh4u1uZZR9+ST38Q8Wq6Hnlje0Rv9MTzxCw=; b=j4lpHtdBdvsTqXD9ay3ojtnl/2
-	O8TMBD+HLgCj5Xj6+p0G3GBkarXXNmwaGdi8PVLYfITj0rXVXFCVUUyMz5cS2HVvP/Q+cdCX/owXD
-	d/EuK9DLIV8t3kJiyRQj6PuuEzj3hbt7Hc6kQaLNct8/YL7REhv67iW73yHP+/kAAWvlAaLoC5bTC
-	uv2fQycGRRdkwt34YY77uUUisLR2+e9r8z8XrxuDzr1YPP+fuOGittAhYk0XUroAmhFBiVc/rGqcr
-	0SXSlCO7UfFwnTZz7GPJeCOzjBsckTHKvmii9a9m0vOW0T1gK4brmoyFQCpqt3Njuxy/nUpcTsYIg
-	TDhhn3sA==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2IawvmLYEwkyrYar8VaBrbF23OMJMuikeRZpWONGr2o=; b=iFD4E/dT+0P0Fw
+	0vckXLD9asWTevE2OazMzvbDnorHaguJzbD/WIzWNuSdt5u5RLHG3nMQgnZPoBXr7cXqvaL25mKOx
+	trdflgDzJq+KDCyALjOucfRpdwiOtB6kVzGLHi+sB6u5f58EJGzV+No4H6XjWJ72qYF3xNDQDq0om
+	KyxbxnpgP0rl6kD2yUGV8x1kDtW+vvezH8y0AtyLat/G/mfCxlfJIMVec6Dxt8tpFt0GFsolYKPvQ
+	bQS4YdGluuZ49sM/rJq1c/CTsTMmaGQCDjZzeoaHLAcEvrM8lo5cDp6DU9xQ3gKXDf5uDMRaX9eVV
+	L7ZR0bYqPRIbpd7BRrxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rncb2-00000006sD5-3uXC;
-	Fri, 22 Mar 2024 10:58:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rncqn-00000006vzS-1GxM;
+	Fri, 22 Mar 2024 11:14:17 +0000
+Received: from out-172.mta1.migadu.com ([95.215.58.172])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rncaz-00000006sCH-2qWV;
-	Fri, 22 Mar 2024 10:57:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E9D3A6120C;
-	Fri, 22 Mar 2024 10:57:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45857C433F1;
-	Fri, 22 Mar 2024 10:57:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711105076;
-	bh=nlaETEiIGQ2eTWX7oKqL74fXDifhnhPwROBUgVdqU3c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WpA6X1LoXT1snLrEBUrv47M4O+WPR1M1LSXUKZTKa7BviiI5MfgnUuEJ6uLymJngV
-	 SvMs2KzBEf1XJrTAdpCwLwLzsvO6rZP4C/Mup2j5bb50a7peYF5b9rigdIigmfJTCw
-	 x22flsf8LNzqlu2TPnGKoHlzRXcnvy7/kbFaAzWZj1PY2xlXBDWtIiKQ5LpjhGFWGb
-	 zDPPY1CKcX0T1MKMmwwyc+j6Oy/g+LisuATN6Lqd7NeaeWrYlv6xV9DLxeC+JMwXwj
-	 F9oaSkOyNOe5SCtc35wwS5an8ku2gHo6udRMm55JpxeArLi6VkFSW/wVgqvm4BFlVs
-	 5spXkcfvxXDNQ==
-Date: Fri, 22 Mar 2024 11:57:53 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Sui Jingfeng <sui.jingfeng@linux.dev>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Jonathan Corbet <corbet@lwn.net>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, Sebastian Wick <sebastian.wick@redhat.com>, 
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+	id 1rncqk-00000006vyk-0Z9W
+	for linux-rockchip@lists.infradead.org;
+	Fri, 22 Mar 2024 11:14:15 +0000
+Message-ID: <7835e928-7d09-446e-91dd-13a0fa549bc2@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1711106049;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KVrZlsfAwR9SjnoRF84YRfe9+qscAKx0nrI06ciuH9c=;
+	b=PtMU3Q0cvYRQSQ6fk18jXYKy3ve8Mbjtd9mf2dz9UKl4mud33fmF/ENJr/CzbKp7d26ZdJ
+	qnW8UuW8jmd28bzqyVNqHsB/S1TGAzHgUsi87OOXbPjUVf47Fmw3yuw3Hz7U2xntYvHIe/
+	rbWZnZjx0V3TfxXvN0Eekge4UzQtCP4=
+Date: Fri, 22 Mar 2024 19:13:54 +0800
+MIME-Version: 1.0
 Subject: Re: [v10,20/27] drm/connector: hdmi: Add Infoframes generation
-Message-ID: <20240322-petite-fabulous-bustard-b168ec@houat>
+Content-Language: en-US
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Sebastian Wick <sebastian.wick@redhat.com>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
 References: <20240321-kms-hdmi-connector-state-v10-20-e6c178361898@kernel.org>
  <07125064-2a78-4515-bb48-655f2aec140f@linux.dev>
- <87sf0iliyh.fsf@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <87sf0iliyh.fsf@intel.com>
+ <20240322-loose-resourceful-bullmastiff-92cfaf@houat>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sui Jingfeng <sui.jingfeng@linux.dev>
+In-Reply-To: <20240322-loose-resourceful-bullmastiff-92cfaf@houat>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240322_035758_000905_A556244B 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20240322_041414_567022_A264C287 
+X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,104 +78,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0834078666690523816=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============0834078666690523816==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jkqjvw553wk4yfqo"
-Content-Disposition: inline
+Hi,
 
 
---jkqjvw553wk4yfqo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2024/3/22 18:31, Maxime Ripard wrote:
+> Which default config are you talking about? This compiles fine with all
+> drm-misc defconfig, x86 defconfig and allmodconfig.
 
-On Fri, Mar 22, 2024 at 11:22:14AM +0200, Jani Nikula wrote:
-> On Fri, 22 Mar 2024, Sui Jingfeng <sui.jingfeng@linux.dev> wrote:
-> > Hi,
-> >
-> >
-> > On 2024/3/21 23:29, Maxime Ripard wrote:
-> >> Infoframes in KMS is usually handled by a bunch of low-level helpers
-> >> that require quite some boilerplate for drivers. This leads to
-> >> discrepancies with how drivers generate them, and which are actually
-> >> sent.
-> >>
-> >> Now that we have everything needed to generate them in the HDMI
-> >> connector state, we can generate them in our common logic so that
-> >> drivers can simply reuse what we precomputed.
-> >>
-> >> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> >> ---
-> >>   drivers/gpu/drm/Kconfig                            |   1 +
-> >>   drivers/gpu/drm/drm_atomic_state_helper.c          | 338 +++++++++++=
-++++++++++
-> >>   drivers/gpu/drm/drm_connector.c                    |  14 +
-> >>   .../gpu/drm/tests/drm_atomic_state_helper_test.c   |   1 +
-> >>   drivers/gpu/drm/tests/drm_connector_test.c         |  12 +
-> >>   include/drm/drm_atomic_state_helper.h              |   8 +
-> >>   include/drm/drm_connector.h                        | 109 +++++++
-> >>   7 files changed, 483 insertions(+)
-> >>
-> >> diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-> >> index 16029435b750..3d3193c7aa5f 100644
-> >> --- a/drivers/gpu/drm/Kconfig
-> >> +++ b/drivers/gpu/drm/Kconfig
-> >> @@ -97,10 +97,11 @@ config DRM_KUNIT_TEST
-> >>   	  If in doubt, say "N".
-> >>  =20
-> >>   config DRM_KMS_HELPER
-> >>   	tristate
-> >>   	depends on DRM
-> >> +	select DRM_DISPLAY_HDMI_HELPER
-> >
-> > Should we select DRM_DISPLAY_HELPER here? Otherwise there will have som=
-e compile error
-> > emerged with default config.
->=20
-> Can we stop abusing select instead of adding more selects to paper over
-> the issues?
->=20
-> Use select only for non-visible symbols (no prompts anywhere) and for
-> symbols with no dependencies.
-
-I don't really have an opinion there, but it looks like all the other
-helpers Kconfig symbols are using select everywhere, and I don't really
-see how we could turn them into visible symbols with depends on without
-breaking a number of defconfig.
-
-Could you expand a bit what you have in mind here?
-
-Maxime
-
---jkqjvw553wk4yfqo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZf1kMQAKCRDj7w1vZxhR
-xc/HAQDR4BAgJekMdSngCGLSGAIwvYKEqlQRiRUN6fMwNgtn8AD/ZP+T1gMMLHE4
-j3QwJraA/yFE8keMCRsPbgZVFnq1UQk=
-=gyOa
------END PGP SIGNATURE-----
-
---jkqjvw553wk4yfqo--
+The drm_hdmi_avi_infoframe_colorimetry() function is belong to the drm_display_helper.ko
+kernel module, it get called from hdmi_generate_avi_infoframe() in drm_atomic_state_helper.c.
+While drm_atomic_state_helper.c belongs to drm_kms_helper.ko. Therefore drm_kms_helper.ko
+is dependent on drm_display_helper.ko implicitly. So we probably should select it.
 
 
---===============0834078666690523816==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+-- 
+Best regards,
+Sui
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0834078666690523816==--
-
