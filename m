@@ -4,67 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF770C54E58
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 17:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71EE1C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 17:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:
-	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gxSRQQodL0G4idgkjr1GvnuDa8/x39uiAd8FJ2nzcvI=; b=ghSXN8H4bFTz/I
-	bkDi/nFskBRT2DGFVIrl51eMwMvWJ7CZq0ErekMS98wLWmy+OCGxJGxZvyX2E91z52dEPbKLR+Z9z
-	3NnZnKxsqE+Pb/jQaxBH9gOTJ/BeO6BbzLRrbsvTuuKpKGbJ/wuwZAoY225KjAVTfrBB8voU1MTbd
-	v0DXP5xmJXL7IU5QZ+OD1SZzKq7zLTbHZOjQqoYPvR7MFjEkctqeKjQPG6ABbB2Ol4hi2qk56tBDA
-	QL4wNxItUujKKM8kf2ZQz9cL6en8D9PsnZbc2QeViIKJOhD/ZqbEE5BBOGgZ60w2bkaJpGyi1FBXj
-	wwsYXtDz09RPa2mMT2Xg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:To:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OzC/xzzEND/R7+jFFDgMm5FrPhWdOiZI4rFZNBXUJi4=; b=c7E2LRWD8kfe7M8eOQfARFFju8
+	5r930A3tUQGOC7BwGwEJOuJMIudvI96qfhrtqwIfZzxQnK2Pbz+Nb7O4s4M1CS4rH40FIfv1jXA1H
+	k8LbqwCyf6gTEAkSR+gxZWwgQYZjhA3crkhanidcb3gMR2eBeWW/ZcBDGO8qLv+hYKeGco9Fy8xv2
+	0G45RmWKJ22s4RQyCh/U6lT6QQs21ZQq56pPJ57aV9ONGG89XZiR48rPlZGueTeS5Fr1/ZDiPklFI
+	m3RHD/nBxgyMyUVY55BM+W8gw63A5C7KC7n+Yuyu7u+Exn6401l1OkackL5+l81jjpJcQrQqKTJ7b
+	xCIRIhDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro50B-0000000AoCf-310L;
-	Sat, 23 Mar 2024 17:17:51 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1ro56B-0000000AouA-1uU9;
+	Sat, 23 Mar 2024 17:24:03 +0000
+Received: from mail-4018.proton.ch ([185.70.40.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro506-0000000AoAt-3ayv;
-	Sat, 23 Mar 2024 17:17:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	In-Reply-To:References; bh=bJ/40L52EMuGnORgpe1TjrWvCrigiJKMPJYJJOTHF8g=;
-	t=1711214266; x=1711646266; b=YAHhSmBUeuy3/OOWX9BxPCEslGm3YybDifFQnZIGs/PHs2V
-	E7vJnW81vORSpfqJqm2T+B0INhauP5hQhS+HeoDeHsQlaYhzx/af0uQdB1y6Lhmu0WnID3eaXGWQp
-	XTnVwfDFp1ZsQjco+lEhm+ufOJzAWyrYNGZmnxP7vaoR0KGaVZu2NM8sTKHsWKPAWvwHjerrvoAX+
-	jcgzQfpzxqiZMSud2I+uqDRLkJQpEwuBqs1ILJ0F5pOrpAHVnG6Ljd2fNHLe7nA33UVQGXSBh0/tA
-	EXUzsVb17kSUrB61hXxlOvl9qtsf2/SW3Y04gD8A74SBiv7PMo5LXNdN0J7Q5hCQ==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1ro4zz-0008P9-Ok; Sat, 23 Mar 2024 18:17:39 +0100
-Message-ID: <092a7c4c-0a75-4b27-acec-385fdcfb9f7a@leemhuis.info>
-Date: Sat, 23 Mar 2024 18:17:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1ro567-0000000Aosn-1vbh
+	for linux-rockchip@lists.infradead.org;
+	Sat, 23 Mar 2024 17:24:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thefossguy.com;
+	s=protonmail; t=1711214635; x=1711473835;
+	bh=hLd9g0J+arhug+21RAMsKmSEAuU65lTeZKlInmYv/o0=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=q8pqdrayecYfqrEuANc8LK9O5kKn9h5cphBj9UumlvrDAVHKSrVxzDyJE2t5F9b5U
+	 Aoe807R7CUJOlv+pR641GkAk/wGuHw7meGMLJ8NaMEhV4Ioy9ZqOMXRlCmENkIR4kx
+	 wQ1PREruEKOtR/cuJpiK3T1YjVqs2XTlJsp1Zb4yaHWnxK8G7ef9ZhOsDYPDevV0YN
+	 eCAPYjydSRmeXZQHdKCl14AACNpfJQ2z2bvbscO93RsszIIHZyE/VbP7x64/fisf5B
+	 bL5eQRQCWVvObycGUmNrwGekIkkQ2xdxsv6RCs2dgNNj2tbqOMFYmotGoFOZ2M2KTe
+	 8+NbVT+9gnO9A==
+Date: Sat, 23 Mar 2024 17:23:38 +0000
+To: Linux regressions mailing list <regressions@lists.linux.dev>
+From: Pratham Patel <prathampatel@thefossguy.com>
+Cc: "sebastian.reichel@collabora.com" <sebastian.reichel@collabora.com>, "saravanak@google.com" <saravanak@google.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "stable@vger.kernel.org" <stable@vger.kernel.org>
 Subject: Re: Fixing the devicetree of Rock 5 Model B (and possibly others)
-Content-Language: en-US, de-DE
-To: Pratham Patel <prathampatel@thefossguy.com>,
- "sebastian.reichel@collabora.com" <sebastian.reichel@collabora.com>,
- "saravanak@google.com" <saravanak@google.com>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
-References: <tQ0L3-34g4t-mzfQIP6KDe5OYelGnEo6Udzq6Kb_nEcljppSQUXOktpE__nL-CdLOu9gW-4tIIbjtSbqrdCrjEkdhZLPiiHTqRcCB6WORuM=@thefossguy.com>
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-In-Reply-To: <tQ0L3-34g4t-mzfQIP6KDe5OYelGnEo6Udzq6Kb_nEcljppSQUXOktpE__nL-CdLOu9gW-4tIIbjtSbqrdCrjEkdhZLPiiHTqRcCB6WORuM=@thefossguy.com>
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1711214266;751fba16;
-X-HE-SMSGID: 1ro4zz-0008P9-Ok
+Message-ID: <28S1EMw5YOnQIBpQ8_qaZZ6c9Go-j6-lLuWWbRpe6-MtRUd7Ay-uXq8JHbVVtJv3LzpxjI8jYg7ukNntbN22PVV-hOWbuTY8FNWgvM4zSwI=@thefossguy.com>
+In-Reply-To: <092a7c4c-0a75-4b27-acec-385fdcfb9f7a@leemhuis.info>
+References: <tQ0L3-34g4t-mzfQIP6KDe5OYelGnEo6Udzq6Kb_nEcljppSQUXOktpE__nL-CdLOu9gW-4tIIbjtSbqrdCrjEkdhZLPiiHTqRcCB6WORuM=@thefossguy.com> <092a7c4c-0a75-4b27-acec-385fdcfb9f7a@leemhuis.info>
+Feedback-ID: 104309535:user:proton
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_101747_092074_1F94D45E 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20240323_102400_154441_F5E61E4F 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +63,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8946565757040935244=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23.03.24 18:02, Pratham Patel wrote:
-> Since the introduction of the `of: property: fw_devlink: Fix stupid bug in remote-endpoint parsing` patch,
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============8946565757040935244==
+Content-Type: multipart/signed; protocol="application/pgp-signature"; micalg=pgp-sha512; boundary="------f1e788887cf9d788045acc7ae71ae8322eea6a98cb58be5654c24d039bf47d68"; charset=utf-8
 
-There is an earlier bug report asking for a revert of that patch:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------f1e788887cf9d788045acc7ae71ae8322eea6a98cb58be5654c24d039bf47d68
+Content-Type: multipart/mixed;boundary=---------------------ae8a0b7b1b36c345004b08b7de4976a5
 
-https://lore.kernel.org/all/ZfvN5jDrftG-YRG4@titan/
+-----------------------ae8a0b7b1b36c345004b08b7de4976a5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;charset=utf-8
 
-> an issue 
+On Saturday, March 23rd, 2024 at 22:47, Linux regression tracking (Thorste=
+n Leemhuis) <regressions@leemhuis.info> wrote:
 
-Is your problem maybe similar to the one above?
+> =
 
-Ciao, Thorsten
 
-> with the device-tree of the Rock 5 Model B has been detected. All the stable kernels (6.7.y and 6.8.y) work on the Orange Pi 5, which has the Rockchip RK3588S SoC (same as the RK3588, but less I/O basically). So, being an owner of only two SBCs which use the RK3588* SoC, it appears that the Rock 5 Model B's DT is incorrect.
-> 
-> I looked at the patch and tried several things, neither resulted in anything that would point me to the core issue. Then I tried this:
-> 
-> ```
-> $ grep -C 3 remote-endpoint arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> 
->                 port {
->                         es8316_p0_0: endpoint {
->                                 remote-endpoint = <&i2s0_8ch_p0_0>;
->                         };
->                 };
->         };
-> --
->                 i2s0_8ch_p0_0: endpoint {
->                         dai-format = "i2s";
->                         mclk-fs = <256>;
->                         remote-endpoint = <&es8316_p0_0>;
->                 };
->         };
-> };
-> ```
-> 
-> So, from a cursory look, the issue seems to be related to either the DT node for the audio codec or related to the es8316's binding itself. Though I doubt that the later is the issue because if that were the issue, _someone_ with a Pine64 Pinebook Pro would've raised alarms. So far, this seems to be related to the `rk3588-rock-5b.dts` and possibly with the `rk3588s-rock-5a.dts` too.
-> 
-> I would **love** to help but I'm afraid I device-trees are not something that I am at-all familiar with. That said, I am open to methods of debugging this issue to provide a fix myself.
-> 
-> I would have replied to the patch's link but unfortunately, I haven't yet setup neomutt and my email provider's web UI doesn't have a [straightforward] way to reply using the 'In-Reply-To' header, hence a new thread. Apologies for the inconvenience caused.
-> 
->   -- Pratham Patel
+> =
+
+
+> On 23.03.24 18:02, Pratham Patel wrote:
+> =
+
+
+> > Since the introduction of the `of: property: fw_devlink: Fix stupid bu=
+g in remote-endpoint parsing` patch,
+> =
+
+
+> =
+
+
+> There is an earlier bug report asking for a revert of that patch:
+> =
+
+
+> https://lore.kernel.org/all/ZfvN5jDrftG-YRG4@titan/
+> =
+
+
+> > an issue
+> =
+
+
+> =
+
+
+> Is your problem maybe similar to the one above?
+
+I don't get that exact message in the boot log but yes.
+
+> Ciao, Thorsten
+
+ -- Pratham Patel
+-----------------------ae8a0b7b1b36c345004b08b7de4976a5
+Content-Type: application/pgp-keys; filename="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"; name="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"; name="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"
+
+LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tCgp4ak1FWmZjR2RSWUpLd1lCQkFI
+YVJ3OEJBUWRBa2VYM3NrdFI1R0lZQTM5VXhoRTlZcitZMy8zd0ZXUmwKZlZ5T1hsaWdnS2ZOT1hC
+eVlYUm9ZVzF3WVhSbGJFQjBhR1ZtYjNOelozVjVMbU52YlNBOGNISmhkR2hoCmJYQmhkR1ZzUUhS
+b1pXWnZjM05uZFhrdVkyOXRQc0tNQkJBV0NnQStCWUpsOXdaMUJBc0pCd2dKa01lcApYbTlkS2Er
+V0F4VUlDZ1FXQUFJQkFoa0JBcHNEQWg0QkZpRUU4dDNsVFJRTDQ4NE9oNDE3eDZsZWIxMHAKcjVZ
+QUFDYlFBUDlMc1NwUlQwSTV2TC8ycHpBa2F2UVhLdStWR1BRMk44RUVYZGpSVkRseGl3RUFwMVpS
+ClB0M2k5RG9qcXg1OE9MQ2R3N2xHMlVwdkJGZ2dCeGVrV216d1dRbk9PQVJsOXdaMUVnb3JCZ0VF
+QVpkVgpBUVVCQVFkQXJlOWp5aVR3VFBGSjNaazJvTVd0ZDVxSi9zcWNKRUZrckZxNUpVVzRWalVE
+QVFnSHduZ0UKR0JZS0FDb0ZnbVgzQm5VSmtNZXBYbTlkS2ErV0Fwc01GaUVFOHQzbFRSUUw0ODRP
+aDQxN3g2bGViMTBwCnI1WUFBRFRGQVA5WUZIL0FxKzVFd3pHQ0xJZWhNNGJsUW5hK2t0cnNPRWlw
+VllVTVZMd0tjQUQvVktHQwo0eFRtTENUQUNDcFNqRjdVRzBVY2NNOVU0T21ZV2RlVU9HUk1hd1k9
+Cj01cTBtCi0tLS0tRU5EIFBHUCBQVUJMSUMgS0VZIEJMT0NLLS0tLS0K
+-----------------------ae8a0b7b1b36c345004b08b7de4976a5--
+
+--------f1e788887cf9d788045acc7ae71ae8322eea6a98cb58be5654c24d039bf47d68
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: ProtonMail
+
+wnUEARYKACcFgmX/D/UJkMepXm9dKa+WFiEE8t3lTRQL484Oh417x6leb10p
+r5YAAHYlAP9lfb3BSFKYtWm/S0bfoj6e7K4Y+l8y9pnmg7U4pWoPkQEAjxWI
+9LvXFmeUGLD2Z2Lu+WoJ7RU/hCOljmBRtQHtEgU=
+=V9PA
+-----END PGP SIGNATURE-----
+
+
+--------f1e788887cf9d788045acc7ae71ae8322eea6a98cb58be5654c24d039bf47d68--
+
+
+
+--===============8946565757040935244==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8946565757040935244==--
+
+
