@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E90CD11BF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 13:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4067ACD11BF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 13:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mS+5pPfZdqZoK95WC92mAB3WaPIpxiyloJcVy+cGs9M=; b=lJNC1nnnZh+9ja
-	Dwh1bNMfYahwYFFcgk41FjPNK4SaARzyIXWNwBXVvNDs3xHTtCFNk8HdEEHie2Vksq6aDISjEqGAQ
-	GqO5ULwYBj9WNqKN9yK7a5f7BsyOVeHVuqqXSqUGmbys0GJRn5sQS7enOCEm4n4HrFEbaHlkELIU9
-	IgPQmXBx4mU6JCw/rOkrMxlt5q3n9pNZFQxzW8osMMi8FArl3IxpmKsZjc8d4DYQeQDRccb+zELZ3
-	rfllRgLXVu7h8AalD8HdxBwlHnhlGI6Vf/cdw5+ZldXmXa0ZOSXGH8OUHW4rNwB54IxBC18M1Mwso
-	ybTv3X06zhJhi8eFUnqQ==;
+	List-Owner; bh=stn+OO0dsQmoKE9bngTNYweX5U2C9+lCG0JvGHS8EG0=; b=Z+FrjAVmXlv2dw
+	753G6iFVv26wJMdra+t6YaaaTB/gZMAEX0KOOeQEwsQWTQoyj34hF51kq+5wOkrnr7Ps3fxo1uKnJ
+	003iJsDgS8CPw9iiKEJkbb6zAcUkU8Ij9L3/WkmaY6jz6NB1tu3PzCa8bwnf0gKMY9lnTX5IjH0g+
+	zVAu7yS8r0VMr+XAuhh4oYRdZQTLY/KzlhNsdqwzHxuBxrJaSQhOCRs0D2n01UFlfQfzACVQyoYXJ
+	hoIArLN3ZKIscv3TcEJRpY0W8kyjDqAryLiNEBFlwi+vnyKzL1ocqDrJ4J9vEQge/R9QJPuRIt8+S
+	wZmMMC81gdFErX6Fgf0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro1Qn-0000000ASm5-0Kuu;
-	Sat, 23 Mar 2024 13:29:05 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1ro1RA-0000000ASyU-2L53;
+	Sat, 23 Mar 2024 13:29:28 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro1Qa-0000000ASeM-1CJJ;
-	Sat, 23 Mar 2024 13:28:54 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-41484f67d07so1162535e9.2;
-        Sat, 23 Mar 2024 06:28:51 -0700 (PDT)
+	id 1ro1Qg-0000000ASiC-147C;
+	Sat, 23 Mar 2024 13:29:03 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4148581945fso290205e9.2;
+        Sat, 23 Mar 2024 06:28:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711200530; x=1711805330; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1711200537; x=1711805337; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=aUiCR1svhxxRL5lsxc2pQcGa6DHnWjaA4pAZ506382o=;
-        b=Ii6ZEt1dwPuOBYFiu7eOLP3Zf5ZMqvso/oEXdmbn3SRP1+l6vR0onnLEhN/zxFFULo
-         0XJL3b/kxF75Yx08IU+xTb9P9RwHifIiGut8ODKE3YL+FPd2IlErqQH4Qd3Qjt8AuqzG
-         fnhCBMiR1vLOs0xVOcgBvkrAy7l6gVWZ4/c16/zUieqdajyEer9TXPURO1FfPPhYc1xD
-         Me++cavC1yVnI3cu4mrwlsYSUud239btm0Tq7cquj8vmzHa0J9dqqjLNfIVv25DNkDjk
-         xY7JFmrsWKSq2lzwRRtRSAuCAKH+YOBBWtoLDEvazKSOW3eyfN+p75thaeN17kfGgZpo
-         RWEA==
+        bh=8zwG1vyYusOfDUs/yU9E4qQ9XIYsM0NPCoK6QrfbLsc=;
+        b=UXxyfAok4qfCVG5RDnsG0KpxyWSyn6lwZxwK0t23SzN6RnAnc9dq21cNF8S1wRb732
+         QMgsGCrlTTdu8Wt3ixz/u4Pb95f3tIYvot19BJ+8fngOpSHsf0xWgg1n3B6a3zwWH54g
+         Jp6BPn50K7m2N+YNI6J5WH6EUF0kWfwr3st0x1qpbe6qsnH27KkJdiwCb6g7xHuYHgWr
+         HEjJZWCOBZhLT4Ys+N1ny064mLQRruipqh9T12Yutq/syGSnM7+ZN5Ogh05U9zl5X8Tq
+         RZj52dhvG8x/VuctEy5+2K7VEo5y3MkkXPhKcmvg0c+jRw5K+DUmkDesjUL35irdMFCF
+         WpFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711200530; x=1711805330;
+        d=1e100.net; s=20230601; t=1711200537; x=1711805337;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=aUiCR1svhxxRL5lsxc2pQcGa6DHnWjaA4pAZ506382o=;
-        b=cu9rSPpBqpf6r8FSJa4LPQO3SXuab8fQVbne8//qR2tmj7fzGn3K6AGdIiMZDw8TcU
-         A4Q7mCU/S28kfZ683tshc/fmog0lt/6TOQpfwV1W7B260i+TnSNKAVMirk62TpGwEI+Z
-         7frmEhircQyxWRnivHwYa+7pfOPEufIAUPATQeRXFIPu0tHWYigHGCgAfBJyJ0c+omjY
-         6k7OKqK1B9Gnc93dfnTIgdkF2cLVPlaWau9WRCoIBU45zmryRRcMASgePRG1Fa/NzPRF
-         pR/BUfaZeyraqmCv5dB4YI2JBkrtf9NsnW0NIe+jc8eArKrO01u/xVfWgCTAzzTHM2En
-         ubqw==
-X-Forwarded-Encrypted: i=1; AJvYcCUb7LxjuKg3fFstZO3FqrQM5sumiB0NIm3JCb1LfJYvpb6Z4JTJZn51qH7vd/BiWsQ7Pz2GMnXJ358o+bMgADRiCiAQVgTfmB8R4G6Mxau/RsIIJy6/hrIhbINYmka/MWxA+OtKpjNA+dWAZtoi3Xht4V12bi0mcbU=
-X-Gm-Message-State: AOJu0Yy9SOllJXx5u0bUlGgM//6qPzf7d1O/Hse01F9iFoGuqoK/KvlI
-	GAEybLxDis8Jd2wm15yhkrjCIw9iJ9VHje0MWzsutqZNfKZhH9E=
-X-Google-Smtp-Source: AGHT+IHzQSMFL9RPxcJ9QjzOAZc3/V8flkS2jnnKJRQJaTuRc4ShAzjt4kpGZ1Lo0ud05wW1Xfo0SQ==
-X-Received: by 2002:a05:600c:1554:b0:414:63c2:23cc with SMTP id f20-20020a05600c155400b0041463c223ccmr1881222wmg.2.1711200529952;
-        Sat, 23 Mar 2024 06:28:49 -0700 (PDT)
+        bh=8zwG1vyYusOfDUs/yU9E4qQ9XIYsM0NPCoK6QrfbLsc=;
+        b=n/Oo/H1qziJrsTMQZWRbt6Bd6hAnFfNxix4NvO6ULQYsC6/5CZEtrzK8NTulx9CK9K
+         2pv20ZiuGSLeoTUnlWqsKwwxRVliheP8PCQyPoqoKyxLxZW3BdunJyGB77giTLgCB4a3
+         bNTAL920bX8dfB9aUAwMPu3Z2iacdeuxigkXPMTiqwtae76l2Ok+ZVKc5+p00o4LOzdJ
+         wMb9jlNWjOGrxez/VAaLheI/lUYIOaBo2+mRLvrULqCTptdRxbrMOKaJMiouQMHCZ/g7
+         ihzROKXZXi5q8iecQGUYQbMGS0eL+7YfMGQ0wNbhcvQOHherrC2JRJMl0ThEaz7Ussh3
+         Nr6g==
+X-Forwarded-Encrypted: i=1; AJvYcCVaYEp7rbKTs6kQJU6BNqZTaHaTcS+Gt2OmwAcIt28HbwQVU5i3iJ8iBSxvnv1qMlfY58qxzoRmRLZCmC+hD//NaPGUkpzxkdhMGkoZPgVTnFIskv+6nILJT6dFrd0EXkqTQJ8iycriX/wx3LnXiFCwAIg39/uduUk=
+X-Gm-Message-State: AOJu0YxxbeSfA0cqaZnJqeYzK0+lk7VhE1EG1VwLPULBbTvpXb15u1y0
+	mQ/NfhuW6Yht0oBetJ1+0kZ+W8CNQnRaB5gS7VCS67iWzq6JLEk=
+X-Google-Smtp-Source: AGHT+IENR8QMP5qQWKeIGQ/4dPn3qxLpYPx925ZdrXpFlIgCRoyh0lnIm76I/c23VHjVPV1Fe41R9g==
+X-Received: by 2002:a5d:5486:0:b0:33e:d461:6c1c with SMTP id h6-20020a5d5486000000b0033ed4616c1cmr1316456wrv.21.1711200536763;
+        Sat, 23 Mar 2024 06:28:56 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:fbb8:7547:139d:a40f])
-        by smtp.gmail.com with ESMTPSA id x17-20020adfffd1000000b00341babb8af0sm3076061wrs.7.2024.03.23.06.28.49
+        by smtp.gmail.com with ESMTPSA id x17-20020adfffd1000000b00341babb8af0sm3076061wrs.7.2024.03.23.06.28.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Mar 2024 06:28:49 -0700 (PDT)
+        Sat, 23 Mar 2024 06:28:56 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -79,16 +79,16 @@ Cc: Chris Zhong <zyw@rock-chips.com>,
 	linux-kernel@vger.kernel.org,
 	linux-gpio@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 3/5] pinctrl: rk805: Add rk816 pinctrl support
-Date: Sat, 23 Mar 2024 14:27:59 +0100
-Message-ID: <20240323132757.141861-8-knaerzche@gmail.com>
+Subject: [PATCH v3 4/5] regulator: rk808: Support apply_bit for rk808_set_suspend_voltage_range
+Date: Sat, 23 Mar 2024 14:28:01 +0100
+Message-ID: <20240323132757.141861-10-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240323132757.141861-2-knaerzche@gmail.com>
 References: <20240323132757.141861-2-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_062852_828202_6F03F263 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20240323_062858_506630_165F9F8A 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,159 +105,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds support for RK816 to the exising rk805 pinctrl driver
+rk808_set_suspend_voltage_range currently does not account the existence of
+apply_bit/apply_reg.
 
-It has a single pin which can be configured as input from a thermistor (for
-instance in an attached battery) or as a gpio.
+This adds support for those in same way it is done in
+regulator_set_voltage_sel_regmap and is required for the upcoming RK816
+support
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes since v1:
-  - rename pin-function names according to the updated binding
-  - added missing fun_reg for rk816_gpio_cfgs
+  - none
 
-changes since v2:
-  - aligned pin-function names with binding (dropped "pin_fun"-prefix)
+ drivers/regulator/rk808-regulator.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
- drivers/pinctrl/pinctrl-rk805.c | 69 +++++++++++++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
-index 56d916f2cee6..c42f1bf93404 100644
---- a/drivers/pinctrl/pinctrl-rk805.c
-+++ b/drivers/pinctrl/pinctrl-rk805.c
-@@ -93,6 +93,11 @@ enum rk806_pinmux_option {
- 	RK806_PINMUX_FUN5,
- };
- 
-+enum rk816_pinmux_option {
-+	RK816_PINMUX_THERMISTOR,
-+	RK816_PINMUX_GPIO,
-+};
-+
- enum {
- 	RK805_GPIO0,
- 	RK805_GPIO1,
-@@ -104,6 +109,10 @@ enum {
- 	RK806_GPIO_DVS3
- };
- 
-+enum {
-+	RK816_GPIO0,
-+};
-+
- static const char *const rk805_gpio_groups[] = {
- 	"gpio0",
- 	"gpio1",
-@@ -115,6 +124,10 @@ static const char *const rk806_gpio_groups[] = {
- 	"gpio_pwrctrl3",
- };
- 
-+static const char *const rk816_gpio_groups[] = {
-+	"gpio0",
-+};
-+
- /* RK805: 2 output only GPIOs */
- static const struct pinctrl_pin_desc rk805_pins_desc[] = {
- 	PINCTRL_PIN(RK805_GPIO0, "gpio0"),
-@@ -128,6 +141,11 @@ static const struct pinctrl_pin_desc rk806_pins_desc[] = {
- 	PINCTRL_PIN(RK806_GPIO_DVS3, "gpio_pwrctrl3"),
- };
- 
-+/* RK816 */
-+static const struct pinctrl_pin_desc rk816_pins_desc[] = {
-+	PINCTRL_PIN(RK816_GPIO0, "gpio0"),
-+};
-+
- static const struct rk805_pin_function rk805_pin_functions[] = {
- 	{
- 		.name = "gpio",
-@@ -176,6 +194,21 @@ static const struct rk805_pin_function rk806_pin_functions[] = {
- 	},
- };
- 
-+static const struct rk805_pin_function rk816_pin_functions[] = {
-+	{
-+		.name = "gpio",
-+		.groups = rk816_gpio_groups,
-+		.ngroups = ARRAY_SIZE(rk816_gpio_groups),
-+		.mux_option = RK816_PINMUX_GPIO,
-+	},
-+	{
-+		.name = "thermistor",
-+		.groups = rk816_gpio_groups,
-+		.ngroups = ARRAY_SIZE(rk816_gpio_groups),
-+		.mux_option = RK816_PINMUX_THERMISTOR,
-+	},
-+};
-+
- static const struct rk805_pin_group rk805_pin_groups[] = {
- 	{
- 		.name = "gpio0",
-@@ -207,6 +240,14 @@ static const struct rk805_pin_group rk806_pin_groups[] = {
- 	}
- };
- 
-+static const struct rk805_pin_group rk816_pin_groups[] = {
-+	{
-+		.name = "gpio0",
-+		.pins = { RK816_GPIO0 },
-+		.npins = 1,
-+	},
-+};
-+
- #define RK805_GPIO0_VAL_MSK	BIT(0)
- #define RK805_GPIO1_VAL_MSK	BIT(1)
- 
-@@ -255,6 +296,20 @@ static struct rk805_pin_config rk806_gpio_cfgs[] = {
- 	}
- };
- 
-+#define RK816_FUN_MASK		BIT(2)
-+#define RK816_VAL_MASK		BIT(3)
-+#define RK816_DIR_MASK		BIT(4)
-+
-+static struct rk805_pin_config rk816_gpio_cfgs[] = {
-+	{
-+		.fun_reg = RK818_IO_POL_REG,
-+		.fun_msk = RK816_FUN_MASK,
-+		.reg = RK818_IO_POL_REG,
-+		.val_msk = RK816_VAL_MASK,
-+		.dir_msk = RK816_DIR_MASK,
-+	},
-+};
-+
- /* generic gpio chip */
- static int rk805_gpio_get(struct gpio_chip *chip, unsigned int offset)
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index d89ae7f16d7a..a6a563e402d0 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -534,15 +534,25 @@ static int rk808_set_suspend_voltage_range(struct regulator_dev *rdev, int uv)
  {
-@@ -439,6 +494,8 @@ static int rk805_pinctrl_gpio_request_enable(struct pinctrl_dev *pctldev,
- 		return _rk805_pinctrl_set_mux(pctldev, offset, RK805_PINMUX_GPIO);
- 	case RK806_ID:
- 		return _rk805_pinctrl_set_mux(pctldev, offset, RK806_PINMUX_FUN5);
-+	case RK816_ID:
-+		return _rk805_pinctrl_set_mux(pctldev, offset, RK816_PINMUX_GPIO);
- 	}
+ 	unsigned int reg;
+ 	int sel = regulator_map_voltage_linear_range(rdev, uv, uv);
++	int ret;
  
- 	return -ENOTSUPP;
-@@ -588,6 +645,18 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
- 		pci->pin_cfg = rk806_gpio_cfgs;
- 		pci->gpio_chip.ngpio = ARRAY_SIZE(rk806_gpio_cfgs);
- 		break;
-+	case RK816_ID:
-+		pci->pins = rk816_pins_desc;
-+		pci->num_pins = ARRAY_SIZE(rk816_pins_desc);
-+		pci->functions = rk816_pin_functions;
-+		pci->num_functions = ARRAY_SIZE(rk816_pin_functions);
-+		pci->groups = rk816_pin_groups;
-+		pci->num_pin_groups = ARRAY_SIZE(rk816_pin_groups);
-+		pci->pinctrl_desc.pins = rk816_pins_desc;
-+		pci->pinctrl_desc.npins = ARRAY_SIZE(rk816_pins_desc);
-+		pci->pin_cfg = rk816_gpio_cfgs;
-+		pci->gpio_chip.ngpio = ARRAY_SIZE(rk816_gpio_cfgs);
-+		break;
- 	default:
- 		dev_err(&pdev->dev, "unsupported RK805 ID %lu\n",
- 			pci->rk808->variant);
+ 	if (sel < 0)
+ 		return -EINVAL;
+ 
+ 	reg = rdev->desc->vsel_reg + RK808_SLP_REG_OFFSET;
+ 
+-	return regmap_update_bits(rdev->regmap, reg,
+-				  rdev->desc->vsel_mask,
+-				  sel);
++	ret = regmap_update_bits(rdev->regmap, reg,
++				 rdev->desc->vsel_mask,
++				 sel);
++	if (ret)
++		return ret;
++
++	if (rdev->desc->apply_bit)
++		ret = regmap_update_bits(rdev->regmap, rdev->desc->apply_reg,
++					 rdev->desc->apply_bit,
++					 rdev->desc->apply_bit);
++
++	return ret;
+ }
+ 
+ static int rk805_set_suspend_enable(struct regulator_dev *rdev)
 -- 
 2.43.2
 
