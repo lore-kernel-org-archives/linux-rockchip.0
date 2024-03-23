@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3B9CC54E58
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 09:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDE0C54E67
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 10:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DkQeCwLurNjO5oZc3AiTd8lEoMzmJHORQOathrp0sIQ=; b=WNo4AQosoYol9J
-	WgT7j5+oFeqiekQwIc57cdUbjSov1vlhO6/DkIDHxVqr5PFwha9uNM/ACf7XeIyoZBWtQwDQtQyxw
-	Gmf8kHmlI77IDHWXEsUGHTNvtdXnNGxg7KTvCt1OaAVzl9MOGpamaGkMV43q/fdiAQ3HyoDK3nPJx
-	pVvzAd4+qNH4xG41X/LQ3UGDn05NFru/2FhpnkeCNiinc3OqiSoiNtf8KjXdAyWMsUkx9w0dIR3On
-	7QT1S/cRpKmx1gSciWqdVKdheAVaWTkY7czDJcmdT7pnKBssetioeIY3W/qr1e/uS4Pg6o76uCgo4
-	o7WXwAJr3cbF5tH5itNA==;
+	List-Owner; bh=OMU77TJRAePfrsE+SSw7Z8HKvUSTpsaia111NS4Rweg=; b=biFpQnpj/Q6nPu
+	84zo+w6RMQk4qbQeTnl5nkQ30mIrVQjyzgpVQ60MXQkLSIuWZ161UxbwWwFHDWfsj9QtGygANs8HY
+	OjyaoMO/0SBVzAJ6JHp/VGAVssQNz+ClPmGIA1Gbmk2gzo5SiF0CNAKNcExe7T0YA1f/GT061dVwR
+	bbGjbGe0MG0TgTYS5otTizu6ukjhDb+jRwK3nLHOqCoL33WOe1jiOKBSkqJYnFXmJTh2l3r9YcCAM
+	RBe1fNFrGU8UNg0ymcKaWrJJaq/ckv2lo8KYbYXqV+6LcfwasEtOr6yzgH/5/HYBTAZmDZYz3EYxL
+	fyVq7ECxN9LDiisl2eVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnxYU-0000000A3fv-3I2B;
-	Sat, 23 Mar 2024 09:20:46 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rnyL5-0000000A8PO-1qr2;
+	Sat, 23 Mar 2024 10:10:59 +0000
+Received: from mail-m6036.netease.com ([210.79.60.36])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnxYO-0000000A3e6-2AEG;
-	Sat, 23 Mar 2024 09:20:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 352B7CE0959;
-	Sat, 23 Mar 2024 09:20:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D51C0C433F1;
-	Sat, 23 Mar 2024 09:20:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711185636;
-	bh=aGTQuZy7vZpxuhlc2uWM1FWO2cNVLUpXYHPr+30NYM4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AmGkF125xegySFWAiHvPntmZ+07s8hZQPC/0IVIftdkxYeMJTqDHDoBaq087Sl4Ry
-	 qKx2QcAVw6S410SG7j4biAqt4/h5dTjc1vKUs5R8LJBjxtJSQyMNE1PxZTAhzLwpa+
-	 ZvDOHlqhfPGo+3K1JP9tq5K11rxRL31gNRIYe4fcfJjyAcpNQmozM0AzDwGqt7aAAm
-	 vL1bo7yWAyyXHWJXICav98Il7syCI5t9aEO0HLvfyTQ7cJVQX5WfpHiaD8JmvRG1Zm
-	 VmI4taBLphr2uo/nVmCk1uj3x3TE6/IYqaCXMkAcTk/3yvQe9KoaZIneVeSaGY4Thk
-	 hCCXd6I1k2Bcg==
-Date: Sat, 23 Mar 2024 10:20:32 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-i2c@vger.kernel.org, asahi@lists.linux.dev, 
-	chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-actions@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	openbmc@lists.ozlabs.org, virtualization@lists.linux.dev
-Subject: Re: [PATCH 00/64] i2c: reword i2c_algorithm according to newest
- specification
-Message-ID: <ug266trshvhhbsln3eoh53fmsuj3l63ziz6gavcl7rv2jhjr5t@3av5givh5n7m>
-References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
+	id 1rnyL1-0000000A8ON-0YQX;
+	Sat, 23 Mar 2024 10:10:57 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=eiaz3UiV0uPVF2QFBinLXWWWvz2WaL40BQXlEdwQrk7Q6yHgnLRWJnPTMAynR0C6BcmSXnBxv6ublAjKBN5I1Yyz8/PdCga067rseDQQTELTkIAzb98hELqkyHWPeDf3DAbDNRXfST+X6BMOTspz4eOj9iC4vmjoFMr6Dkihoow=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=F4JueNQpmRpoZ37/dDuh/QnjrtryA6hyAuvn6ICYLVY=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 1CDA884017E;
+	Sat, 23 Mar 2024 18:10:35 +0800 (CST)
+Message-ID: <38d576a3-0f4e-4410-aa9b-74e06e1fceb1@rock-chips.com>
+Date: Sat, 23 Mar 2024 18:10:24 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: vop2: Remove AR30 and AB30 format support
+To: Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20240304100952.3592984-1-andyshrk@163.com>
+ <ZeWlAWLvlW3NdKS_@pengutronix.de>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <ZeWlAWLvlW3NdKS_@pengutronix.de>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx5OSFYZSkIaShodGBlJGE5VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8e6aca6f4c03a4kunm1cda884017e
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pgg6Ghw4HjMVEgg*Ii5OUSlI
+	Ci4aFBVVSlVKTEpKSkNDTUhOTENNVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSU1OSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_022041_074435_A061D9D8 
-X-CRM114-Status: GOOD (  19.86  )
+X-CRM114-CacheID: sfid-20240323_031055_778935_34EF1A01 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,64 +72,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Wolfram,
+Hi Heiko,
 
-On Fri, Mar 22, 2024 at 02:24:53PM +0100, Wolfram Sang wrote:
-> Okay, we need to begin somewhere...
+Could you please  to take a look at this patch?
+
+On 3/4/24 18:40, Sascha Hauer wrote:
+> On Mon, Mar 04, 2024 at 06:09:52PM +0800, Andy Yan wrote:
+>> From: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> The Alpha blending for 30 bit RGB/BGR are not
+>> functioning properly for rk3568/rk3588, so remove
+>> it from the format list.
+>>
+>> Fixes: bfd8a5c228fa ("drm/rockchip: vop2: Add more supported 10bit formats")
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>> ---
 > 
-> Start changing the wording of the I2C main header wrt. the newest I2C
-> v7, SMBus 3.2, I3C specifications and replace "master/slave" with more
-> appropriate terms. This first step renames the members of struct
-> i2c_algorithm. Once all in-tree users are converted, the anonymous union
-> will go away again. All this work will also pave the way for finally
-> seperating the monolithic header into more fine-grained headers like
-> "i2c/clients.h" etc. So, this is not a simple renaming-excercise but
-> also a chance to update the I2C core to recent Linux standards.
-
-yes, very good! It's clearly stated in all three documentations
-that Target replaces Slave and Controller replaces Master (i3c is
-at the 1.1.1 version).
-
-> My motivation is to improve the I2C core API, in general. My motivation
-> is not to clean each and every driver. I think this is impossible
-> because register names based on official documentation will need to stay
-> as they are. But the Linux-internal names should be updated IMO.
-
-Also because some drivers have been written based on previous
-specifications where master/slave was used.
-
-> That being said, I worked on 62 drivers in this series beyond plain
-> renames inside 'struct i2c_algorithm' because the fruits were so
-> low-hanging. Before this series, 112 files in the 'busses/' directory
-> contained 'master' and/or 'slave'. After the series, only 57. Why not?
+> Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
 > 
-> Next step is updating the drivers outside the 'i2c'-folder regarding
-> 'struct i2c_algorithm' so we can remove the anonymous union ASAP. To be
-> able to work on this with minimal dependencies, I'd like to apply this
-> series between -rc1 and -rc2.
+> Sascha
 > 
-> I hope this will work for you guys. The changes are really minimal. If
-> you are not comfortable with changes to your driver or need more time to
-> review, please NACK the patch and I will drop the patch and/or address
-> the issues separeately.
+>>
+>>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 --
+>>   1 file changed, 2 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> index 48170694ac6b..18efb3fe1c00 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>> @@ -17,9 +17,7 @@
+>>   
+>>   static const uint32_t formats_cluster[] = {
+>>   	DRM_FORMAT_XRGB2101010,
+>> -	DRM_FORMAT_ARGB2101010,
+>>   	DRM_FORMAT_XBGR2101010,
+>> -	DRM_FORMAT_ABGR2101010,
+>>   	DRM_FORMAT_XRGB8888,
+>>   	DRM_FORMAT_ARGB8888,
+>>   	DRM_FORMAT_XBGR8888,
+>> -- 
+>> 2.34.1
+>>
+>>
 > 
-> @Andi: are you okay with this approach? It means you'd need to merge
-> -rc2 into your for-next branch. Or rebase if all fails.
-
-I think it's a good plan, I'll try to support you with it.
-
-> Speaking of Andi, thanks a lot to him taking care of the controller
-> drivers these days. His work really gives me the freedom to work on I2C
-> core issues again.
-
-Thank you, Wolfram!
-
-Andi
 
 _______________________________________________
 Linux-rockchip mailing list
