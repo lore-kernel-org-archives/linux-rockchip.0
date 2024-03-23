@@ -4,134 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC0EC54E58
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 14:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39587C54E58
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 17:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cYJDmu1l+HgaGNli/XcHaSU6Z0+5dV2CJy66zVi5I64=; b=Lgx5yzuEqY8bCZ
-	FhnjnghvYa2Obm05jM1yzV7BqMLGPW01leVZJpkWSaaH1TJSqBi/d7b78+emj5b5mK7USwz1S3+Hc
-	1Zm7PAVLl6+Zkd5O9QTfSD2EJhuFjNfWukM1qYMdUfM82rflYk6fCBStzDDb92YRCM4ZaGUTHGth0
-	Q22FdYctLvUKyW8tqKjsod9DV2CECwGjBDD30+kTsA3igL7uCcx+iPYegWBDxGxIB/kGUR37yLXP8
-	whRdut6NSOxJNm0CueRbQnIoKyf1ZTXdEYSaC4IHiIFwYrKn17I945ue8WcGp72WIQLsFv8lb6Chw
-	SVMnnViqVkBo/dMNPwyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=xHCgAPW0NzypYdCBcmB9Ai56aqBxwzL3u0RmI0lLG1E=; b=3op
+	r0wjSEgncks4mnlmUrmDBHu1rfZS5He4bRol6ZzmJQpp/qtACDzYLESsSzBOnf0B0y0ZNknGZ0t+7
+	n/mG/ScaSJabdXwMTmEyF6oOZFX2Yzh96dISzsa76KXtW+qS03E6MqWTb0sM2z7Riy5V6O0xkX6ME
+	+iP8ChhL9ALvc0lnY55ihNbhI0TWWHXxkfodZLJGcbk8LURQyKzkaYoYn7AjrPWJAlwRDLJIfOyti
+	cHmQldwhiyPmXD3BzGntWYoXm5ALwWtFylwrTZmMw3zD6r3NKPs4hKl8avHT4RgbgYSnNzTUWnypE
+	FoU46XP021sJxIKnC7mTh4UMnquiqjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro2Q7-0000000AYbk-2eN9;
-	Sat, 23 Mar 2024 14:32:27 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1ro4lg-0000000AmI7-0KlX;
+	Sat, 23 Mar 2024 17:02:52 +0000
+Received: from mail-4022.proton.ch ([185.70.40.22])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ro2Q3-0000000AYaf-1FGn
+	id 1ro4lb-0000000AmGH-3bfT
 	for linux-rockchip@lists.infradead.org;
-	Sat, 23 Mar 2024 14:32:24 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-56bc5a3aeb9so3950574a12.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 23 Mar 2024 07:32:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711204340; x=1711809140; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=/pS4Fkjp9//RInN6U3WNGuPYIypJd83TLg5JczCky6s=;
-        b=WELAFPCNyPcjqEoQSG3PPXPkxquxa/UWKeMj2nxiFK/Tg92koFOt+E+KeNcu6nb4ZX
-         H3DvtkGpCq3RxpJo+rlaj9F1aiyo6imcW8QKBwewmmleASnEe3n9gnUJw5/7BujjaQnl
-         BkaTe5eBU8dxrERma7KYu88B7WjNw9R+v0ww1gGH7E0xQ4t7Ffqxwp7KZIZg1vBi11jW
-         dKQomjQLNJ7MJskaMVMvxpuuJBVU/HNGo9j35iFEG0C3Q2hp6fhwwD5CHsbNNsZJBGv4
-         MhrFndnrUn1192JOQiRO39nh4epX0qT00eGvFyqA1dlQaPKwdLwUCKJAHdbIHXgFPwNP
-         iVmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711204340; x=1711809140;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/pS4Fkjp9//RInN6U3WNGuPYIypJd83TLg5JczCky6s=;
-        b=VO1w4BNsygAKUzNgp8f4lqpeJ1duQmlqJVVgy2mAwX1hkQJalt+DWMO0uGm2z6tg0a
-         dSiJKTNblQ8pYYMX4pwce270JNdGjL4NlqgeD5m4am8zzdteiK6iU4hKdPzUK3a5TMu5
-         K/zb0minjDWe31gzXwUTssf2ocO9/rU0ZWFTQ170Ogj7jua15RbCkqEGE9XbVD4/2ij9
-         ReH3woSgkGZ/jvqelHs2ZYyvDR6HWNiU1lGXESrlUvMUGJu2TgyoRicFvotTrGT6SyET
-         ALZWlsx7HSmqQMhLDFRIEAx8tgwI6a7+NkEkOyIpJafTxZwhyoWeiiOLuFNWUQjJqkQ+
-         Fp3w==
-X-Forwarded-Encrypted: i=1; AJvYcCXwn0TzYbhfL2EoP36HOTxeZqgrUToFmdZO4esRpBZ1r/hgWxO1MsD0ptZZeP6qK0vXpqVQIKrTDdgxsBwJip89MNNRddrLqK6466P6YJo0S0+L
-X-Gm-Message-State: AOJu0YwmFmYxH1HYpqs1dYr4qko22AfXSyJ720uEFY1yLbxRBJ2fXz1z
-	VcMvskRmTnkP+zvkDdbxLrxRqvTCsQRQVWh91HvglH0R3WFZaRoJEG2eXYWNjMc=
-X-Google-Smtp-Source: AGHT+IFuesNiwfdlhTfyO82tzlzS3jtn4uHl/DjqTAJbv1F8hkMkwhF1jdCCbyte3ZN97MKgybI0YA==
-X-Received: by 2002:a50:8701:0:b0:568:b41b:afd7 with SMTP id i1-20020a508701000000b00568b41bafd7mr1468753edb.29.1711204340196;
-        Sat, 23 Mar 2024 07:32:20 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.222.97])
-        by smtp.gmail.com with ESMTPSA id ig4-20020a056402458400b00568b6d731e1sm924600edb.4.2024.03.23.07.32.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 23 Mar 2024 07:32:19 -0700 (PDT)
-Message-ID: <368eb339-4f0f-4471-9367-9263caa3fab7@linaro.org>
-Date: Sat, 23 Mar 2024 15:32:17 +0100
+	Sat, 23 Mar 2024 17:02:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thefossguy.com;
+	s=protonmail; t=1711213358; x=1711472558;
+	bh=MOWxTE0LblY9DjHp6xvHXR+dNjwb9gyrT6Bdl3jULYM=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=O1vMnH14S9ECDduacDf1d5GXHglynF4vpqGjZ4VPv78aikkbNCNtwnYcbxzLxwkTn
+	 Ch+L8mISP8PYSya9toKglHel3tOn3RysBd73aKFcWtJDyqblvLdbQwNJ5k3h3EadFn
+	 0krL9oB83e0e76NnACDphttEP5ollFB4KKvspfJgasZ4JLheUcaY2+DDpOn4vNu68N
+	 mX/1tFCCGIFJK+RpEJeDb6Kb2c2BFa4QpD0iuv+QZAkF2UmlpWaqMx8XKmrOmd8wAa
+	 XBGupi7aO193oWcjMrUyUpLDUbUV6I6L8QSG0Vqzb1eZo6I2HJckRtMVPwaFAwf19V
+	 Us4jjW8dG5oyw==
+Date: Sat, 23 Mar 2024 17:02:19 +0000
+To: "sebastian.reichel@collabora.com" <sebastian.reichel@collabora.com>, "saravanak@google.com" <saravanak@google.com>
+From: Pratham Patel <prathampatel@thefossguy.com>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "regressions@lists.linux.dev" <regressions@lists.linux.dev>, "stable@vger.kernel.org" <stable@vger.kernel.org>
+Subject: Fixing the devicetree of Rock 5 Model B (and possibly others)
+Message-ID: <tQ0L3-34g4t-mzfQIP6KDe5OYelGnEo6Udzq6Kb_nEcljppSQUXOktpE__nL-CdLOu9gW-4tIIbjtSbqrdCrjEkdhZLPiiHTqRcCB6WORuM=@thefossguy.com>
+Feedback-ID: 104309535:user:proton
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/5] dt-bindings: mfd: Add rk816 binding
-To: Alex Bee <knaerzche@gmail.com>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Linus Walleij <linus.walleij@linaro.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org
-References: <20240323132757.141861-2-knaerzche@gmail.com>
- <20240323132757.141861-4-knaerzche@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240323132757.141861-4-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_073223_469053_77476D6C 
-X-CRM114-Status: UNSURE (   6.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240323_100248_241903_6CD226A8 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,42 +60,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0996292864012823081=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/03/2024 14:27, Alex Bee wrote:
-> Add DT binding document for Rockchip's RK816 PMIC
-> 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0996292864012823081==
+Content-Type: multipart/signed; protocol="application/pgp-signature"; micalg=pgp-sha512; boundary="------9fbc6d827d5b25b8ec5d0d21b3f1f4a54ca515d16ca64f730918341a8d911348"; charset=utf-8
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------9fbc6d827d5b25b8ec5d0d21b3f1f4a54ca515d16ca64f730918341a8d911348
+Content-Type: multipart/mixed;boundary=---------------------87a844869beee976bdc9af190bfad2e7
+
+-----------------------87a844869beee976bdc9af190bfad2e7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;charset=utf-8
+
+Since the introduction of the `of: property: fw_devlink: Fix stupid bug in=
+ remote-endpoint parsing` patch, an issue with the device-tree of the Rock=
+ 5 Model B has been detected. All the stable kernels (6.7.y and 6.8.y) wor=
+k on the Orange Pi 5, which has the Rockchip RK3588S SoC (same as the RK35=
+88, but less I/O basically). So, being an owner of only two SBCs which use=
+ the RK3588* SoC, it appears that the Rock 5 Model B's DT is incorrect.
+
+I looked at the patch and tried several things, neither resulted in anythi=
+ng that would point me to the core issue. Then I tried this:
+
+```
+$ grep -C 3 remote-endpoint arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dt=
+s
+
+                port {
+                        es8316_p0_0: endpoint {
+                                remote-endpoint =3D <&i2s0_8ch_p0_0>;
+                        };
+                };
+        };
+--
+                i2s0_8ch_p0_0: endpoint {
+                        dai-format =3D "i2s";
+                        mclk-fs =3D <256>;
+                        remote-endpoint =3D <&es8316_p0_0>;
+                };
+        };
+};
+```
+
+So, from a cursory look, the issue seems to be related to either the DT no=
+de for the audio codec or related to the es8316's binding itself. Though I=
+ doubt that the later is the issue because if that were the issue, _someon=
+e_ with a Pine64 Pinebook Pro would've raised alarms. So far, this seems t=
+o be related to the `rk3588-rock-5b.dts` and possibly with the `rk3588s-ro=
+ck-5a.dts` too.
+
+I would **love** to help but I'm afraid I device-trees are not something t=
+hat I am at-all familiar with. That said, I am open to methods of debuggin=
+g this issue to provide a fix myself.
+
+I would have replied to the patch's link but unfortunately, I haven't yet =
+setup neomutt and my email provider's web UI doesn't have a [straightforwa=
+rd] way to reply using the 'In-Reply-To' header, hence a new thread. Apolo=
+gies for the inconvenience caused.
+
+  -- Pratham Patel
+-----------------------87a844869beee976bdc9af190bfad2e7
+Content-Type: application/pgp-keys; filename="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"; name="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"; name="publickey - prathampatel@thefossguy.com - 0xF2DDE54D.asc"
+
+LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tCgp4ak1FWmZjR2RSWUpLd1lCQkFI
+YVJ3OEJBUWRBa2VYM3NrdFI1R0lZQTM5VXhoRTlZcitZMy8zd0ZXUmwKZlZ5T1hsaWdnS2ZOT1hC
+eVlYUm9ZVzF3WVhSbGJFQjBhR1ZtYjNOelozVjVMbU52YlNBOGNISmhkR2hoCmJYQmhkR1ZzUUhS
+b1pXWnZjM05uZFhrdVkyOXRQc0tNQkJBV0NnQStCWUpsOXdaMUJBc0pCd2dKa01lcApYbTlkS2Er
+V0F4VUlDZ1FXQUFJQkFoa0JBcHNEQWg0QkZpRUU4dDNsVFJRTDQ4NE9oNDE3eDZsZWIxMHAKcjVZ
+QUFDYlFBUDlMc1NwUlQwSTV2TC8ycHpBa2F2UVhLdStWR1BRMk44RUVYZGpSVkRseGl3RUFwMVpS
+ClB0M2k5RG9qcXg1OE9MQ2R3N2xHMlVwdkJGZ2dCeGVrV216d1dRbk9PQVJsOXdaMUVnb3JCZ0VF
+QVpkVgpBUVVCQVFkQXJlOWp5aVR3VFBGSjNaazJvTVd0ZDVxSi9zcWNKRUZrckZxNUpVVzRWalVE
+QVFnSHduZ0UKR0JZS0FDb0ZnbVgzQm5VSmtNZXBYbTlkS2ErV0Fwc01GaUVFOHQzbFRSUUw0ODRP
+aDQxN3g2bGViMTBwCnI1WUFBRFRGQVA5WUZIL0FxKzVFd3pHQ0xJZWhNNGJsUW5hK2t0cnNPRWlw
+VllVTVZMd0tjQUQvVktHQwo0eFRtTENUQUNDcFNqRjdVRzBVY2NNOVU0T21ZV2RlVU9HUk1hd1k9
+Cj01cTBtCi0tLS0tRU5EIFBHUCBQVUJMSUMgS0VZIEJMT0NLLS0tLS0K
+-----------------------87a844869beee976bdc9af190bfad2e7--
+
+--------9fbc6d827d5b25b8ec5d0d21b3f1f4a54ca515d16ca64f730918341a8d911348
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: ProtonMail
+
+wnUEARYKACcFgmX/CwEJkMepXm9dKa+WFiEE8t3lTRQL484Oh417x6leb10p
+r5YAAKA/AQCkw7cy5Xleb1CszXzbi/+SMY/azZf3PhmHDQSDAXlD7AD/bGg/
+Hgdzv+VyRF3bwym4zEmt0uIwU8vj74qgQCGsaw8=
+=kvaJ
+-----END PGP SIGNATURE-----
 
 
-> +  regulators:
-> +    type: object
-> +    patternProperties:
-> +      '^(boost|dcdc[1-4]|ldo[1-6]|otg-switch)$':
-> +        type: object
-> +        $ref: /schemas/regulator/regulator.yaml#
-> +        unevaluatedProperties: false
-
-This is good.
-
-> +    unevaluatedProperties: false
-
-I missed it last time, apologies. This (second) unevaluated should be
-"additionalProperties: false" instead.
-
-With this fixed:
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+--------9fbc6d827d5b25b8ec5d0d21b3f1f4a54ca515d16ca64f730918341a8d911348--
 
 
-Best regards,
-Krzysztof
 
+--===============0996292864012823081==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0996292864012823081==--
+
+
