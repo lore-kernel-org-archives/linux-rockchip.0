@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4796C54E67
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 08:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90342C54E67
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 08:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NnsAlOeadtwj7FofXHyRGyitPXjwbQ2NdaSEbY3i/wI=; b=RPTPum05avEGa1
-	Knm7xCRNQK/x0SQj2iSXL9Vi+AWhrPPLU9QTIXvWluFTqn59UjA80s28U3CMKW4qrPo2r8fQarR5t
-	JyIOJFKHOBCiRuGGlSHe3ZXY4Aiu/yaH6eh9I7+28LWlgC5OXBaShcbjM7dh9I4Yg0yR0oOpnQoQr
-	pXvSIkw7Kduokpi+Ivk2fv9gHHLq5kSFTjIf3dQaIjz/ZZAPvUaTeTlmhcERYUx0l2wLOUcczyP58
-	4QLLmios3FxFj2dUscVT9H4hFr1jTYr1Teg+oo+SkMd4ipCsh2FD6KuaPiujF86f0nN4GFo5jIWxH
-	p+sadI8J3+OczkaybW0Q==;
+	List-Owner; bh=/Qvhiz8xgHbbc5otip+4niTaCCCLv6VgTquZSNJd5pA=; b=vcVl4d4+W7lKqB
+	SWRp/lFiSXChs+EqX3+TIjadqt3XKoc6HZUWdf/epS+Ff4T6TV/G9+l6lJdgJ5wASDVRk3ax5L7Mk
+	fmgfAm7LXy0hJsUxBvNqbwxFz7ZH5GBWbB+dhiA71EF+6N+V0/oEmxCwHlM1NxCuOeTA8cgj6gFSp
+	Ko62yeLEN4+Ba/MH74Pft1XbELgNFFoiXdGsK3Wu2jzyl4aYOYjb8dZRNLcMk2pIdChKsydlkQXci
+	+QZHvbqnazPh0LNtg42BKoad1Zg2JIrUzFgvSs6LjDEb18Yvg65VLA39hux10Ek6qhbVaC1L+DQon
+	NbFzlJwgTXJHU1OezngQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnxE7-0000000A1Bl-22UC;
-	Sat, 23 Mar 2024 08:59:43 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1rnxEG-0000000A1Hg-3AeF;
+	Sat, 23 Mar 2024 08:59:52 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnxDd-0000000A0sl-0tQ3;
+	id 1rnxDc-0000000A0rz-17EK;
 	Sat, 23 Mar 2024 08:59:15 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-33e285a33bdso1347035f8f.2;
-        Sat, 23 Mar 2024 01:59:12 -0700 (PDT)
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-33d90dfe73cso1550130f8f.0;
+        Sat, 23 Mar 2024 01:59:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711184351; x=1711789151; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1711184348; x=1711789148; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=kwxxoovN4u1+4DsDbntI4M1SVvSsXRN0Avi5P47WEck=;
-        b=ex29q4qIRuCq9kafwYsVLH+bf4TaPzMHlaE7+/Zacig4GpWawAP1yKJFj2ml8gP9j/
-         yJTU16FTO/zBVmHpVGR7A54ycTLvjIQkP3Z9MP48jobQhW6YgzUdUo8r4Lt2EhSoa4ea
-         PD3r4JzHhTr52ZZm+GxOYGjkdgfh37IJlQMgOrQWZYHzBzMcDNZJyvGy6KM2Yo+ohgPg
-         VGRU2ckNJpOdn42mExpPXlemxd+cB21LAA34W1gm9KZNn+FHHFpfqOSfCUPYuBtKOquh
-         hJrzSxHp5zmv6pQ0NN1cQE5weZ/cC5IKtX0oiBnjoHBpoyGV+6AIV3izA+3eOTT4lt9q
-         vyeA==
+        bh=oeiDpdLt3OHpoJFzv4AowOVwoakno99KYbuX0Mq1LqI=;
+        b=PST5eaAterOxlSJTCscp5xONvhq+Od1dlyntsng7OHLDyiBWm+3bL+WeNfX+EiR1mp
+         /WZe7i75Q1YdRqI2HsZfV2uLMq/Mj/ZIz+t7UknG76oXNmgPPLvnF7Sr3A62LZmr+siO
+         sz1sDqgdmxaYGo73luNz+TAjlGkwQNun+z4qgGI9WQt9/KKnJBmWcjSFxfjxom7MUskN
+         2bH9JBRP64vfjfmzkgtfrmjL50UYrcb9pEnZxh+8JdGwtRwHfpy0JVt7KforRuN5d09e
+         C6h6FtZXxwoIREft+qx5hxEvTswIp8hj//HllgAmiDbnYJYmT8D7TQh4z0nOsvKLEmqW
+         BTHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711184351; x=1711789151;
+        d=1e100.net; s=20230601; t=1711184348; x=1711789148;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=kwxxoovN4u1+4DsDbntI4M1SVvSsXRN0Avi5P47WEck=;
-        b=A/DWzcvkG9E0XoDMNoj4yJFSkO+3tQmUTDcTYlq+8wrlMqPkf0Hq85E3/5KJUR+NDo
-         6THqkxj0FOmXiXAGeL61mnLoJ6GgPqMgbt+1AVn2pNNGncVoFj580K5HQ8KlDzAL+PlG
-         1vptYzdo8TrD+RR8Zzix8+6/KhYBRpdzNImJMapTnLuNV2hiP+qXgA4biBQ7XTjoNYTw
-         Zahq6bFfi1JI1na2tI6qJJm67q3wS7KQ0a1Egx34kNL9/GYLe7hNBP8iuSB9cku0XZkP
-         9wUvzWXzIG5dWA4KFj/io5MYu5n50BRYEfBSBfbGEa6aLnfT3+aTeBlmGSN1ToMbbfWX
-         vUtA==
-X-Forwarded-Encrypted: i=1; AJvYcCWsf1N8yhg13akWFHkSbNG+It/IjHxkj0QyusZk45k+lJheJ0Ce5z7rFapbobvki1L2W35WhYlnTuD+R0ICm1aVTIXPW7lVlRLIwdaJw6jSctEzkSadhFPCMXeMnWD4L2VhkkVBGDYeSLM7ltVgWY+dGon26hEjVtM=
-X-Gm-Message-State: AOJu0YytY+AZBTZ9iuXO3qizvtEra5QuIztznZgSkFgUWgg3VOXfdwdv
-	pU7s+FvTl+ZsOqTDPDM4GkyvshS0ml07pT8w0Qm6+NGwPXFTLSg=
-X-Google-Smtp-Source: AGHT+IFF17xjDy+ptXcgihz83Sv4sxZrl9Ftth0tW9FhON1w6JdemKQL5SiIfYCqfiBtAnwfPC13fw==
-X-Received: by 2002:a5d:624d:0:b0:341:bdd4:aedf with SMTP id m13-20020a5d624d000000b00341bdd4aedfmr1121650wrv.25.1711184351252;
-        Sat, 23 Mar 2024 01:59:11 -0700 (PDT)
+        bh=oeiDpdLt3OHpoJFzv4AowOVwoakno99KYbuX0Mq1LqI=;
+        b=LVKGgtFxf/ysB0LK9wtPdzo+acQyxcm5sQolf3OEIU4Adfh7YGmOXvL+wUn+/o6Fke
+         F4SMHxr5shzzVhzH1DNUY58//0NKTFEbVbcYtzXZXiyTAlCmwsftpBm5087Alyr5jeF/
+         8FUbEOU9Uj69mbENvF0NbS41ZcX84HKmA5k3ugHgxGVEhwW4tvYgdOB9MhOJH8iCW+FU
+         DlxJcZfG38nYhMdu5OKmoxMz7Du6OHnkqSsEkqbynGXaULIhZTO4Q3t8U43eTBPg+b1T
+         VXESYb92eCOeon6c5OS68OmZ72/bBdCbAayL7aTNfQ5nURz8mh4s1WnZGOnu+gFVUu7s
+         CIOg==
+X-Forwarded-Encrypted: i=1; AJvYcCUeVtoRakUncc7/nUsA6qHGT9eEn9ChSrhEsqa9Si7LGLibdVokkOrIN3eJpt4U8IGj/ssjogYzgsFNALV8TVbdLYK3QEbiEsgb4rp1qAaw0+YfLBcPLDgRzSY18YNyZT0CJ88NU/Tn77rb2cn1EeQa+Xe6qoGfKLw=
+X-Gm-Message-State: AOJu0YwNZsCCTFf9Z3U6dSiX21E/UU5BPUymPZK0S/wRSY3QANLsuvKq
+	T0AtG2HaAPegFF9FiwL7DcwA89qMOVELbigJZQW7N6El9mox/LQ=
+X-Google-Smtp-Source: AGHT+IFOvXxg88CSUJQXEc5P5ooxQCKvpLZAAZkdRjM2xnjqNZ3oVD3uh0QNymxTTgJ4P35FSGROAQ==
+X-Received: by 2002:a5d:6acf:0:b0:341:c487:fb44 with SMTP id u15-20020a5d6acf000000b00341c487fb44mr285574wrw.11.1711184348345;
+        Sat, 23 Mar 2024 01:59:08 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:fbb8:7547:139d:a40f])
-        by smtp.gmail.com with ESMTPSA id x16-20020a5d6b50000000b0033e93e00f68sm3965031wrw.61.2024.03.23.01.59.10
+        by smtp.gmail.com with ESMTPSA id x16-20020a5d6b50000000b0033e93e00f68sm3965031wrw.61.2024.03.23.01.59.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Mar 2024 01:59:11 -0700 (PDT)
+        Sat, 23 Mar 2024 01:59:08 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -79,16 +79,16 @@ Cc: Chris Zhong <zyw@rock-chips.com>,
 	linux-kernel@vger.kernel.org,
 	linux-gpio@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 5/5] regulator: rk808: Add RK816 support
-Date: Sat, 23 Mar 2024 09:58:52 +0100
-Message-ID: <20240323085852.116756-6-knaerzche@gmail.com>
+Subject: [PATCH v2 1/5] dt-bindings: mfd: Add rk816 binding
+Date: Sat, 23 Mar 2024 09:58:48 +0100
+Message-ID: <20240323085852.116756-2-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240323085852.116756-1-knaerzche@gmail.com>
 References: <20240323085852.116756-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_015913_463403_8F03AA70 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20240323_015912_472903_FA0CBB22 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,270 +105,299 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for rk816 to the existing rk808 regulator driver.
-
-The infrastructure of the driver can be re-used as is. A peculiarity for
-this version is, that BUCK1/BUCK2 have a (common) bit which needs to
-toggled after a voltage change to confirm the change. Regulator regmap
-takes care of that by defining a apply_bit and apply_reg for those
-regulators.
+Add DT binding document for Rockchip's RK816 PMIC
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 changes since v1:
-  - align regulator's .name and .of_match with updated binding
+  - lowercase/hyphens for regulator node names
+  - rename "-reg" to "-regulator" to make node names generic
+  - dropped superfluous description for clock-output-names and
+    wakeup-source
+  - dropped "|" for text blocks that don't require to preserve formatting
+  - use full path for `$ref`s
+  - added pins description to the binding
+  - added charger function to description
+ 
+ .../bindings/mfd/rockchip,rk816.yaml          | 269 ++++++++++++++++++
+ 1 file changed, 269 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
 
- drivers/regulator/rk808-regulator.c | 202 +++++++++++++++++++++++++++-
- 1 file changed, 201 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index a6a563e402d0..9f69b4d483d0 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -158,6 +158,11 @@
- 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
- 	_vmask, _ereg, _emask, 0, 0, _etime, &rk808_reg_ops)
- 
-+#define RK816_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
-+	_vmask, _ereg, _emask, _disval, _etime)				\
-+	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
-+	_vmask, _ereg, _emask, _emask, _disval, _etime, &rk816_reg_ops)
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+new file mode 100644
+index 000000000000..9664162f4f75
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+@@ -0,0 +1,269 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk816.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- #define RK817_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
- 	_vmask, _ereg, _emask, _disval, _etime)				\
- 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
-@@ -258,7 +263,7 @@ static const unsigned int rk808_buck1_2_ramp_table[] = {
- 	2000, 4000, 6000, 10000
- };
- 
--/* RK817 RK809 */
-+/* RK817/RK809/RK816 (buck 1/2 only) */
- static const unsigned int rk817_buck1_4_ramp_table[] = {
- 	3000, 6300, 12500, 25000
- };
-@@ -640,6 +645,38 @@ static int rk808_set_suspend_disable(struct regulator_dev *rdev)
- 				  rdev->desc->enable_mask);
- }
- 
-+static const struct rk8xx_register_bit rk816_suspend_bits[] = {
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 0),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 1),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 2),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 3),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 0),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 1),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 2),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 3),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 4),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG2, 5),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 5),
-+	RK8XX_REG_BIT(RK818_SLEEP_SET_OFF_REG1, 6),
-+};
++title: RK816 Power Management Integrated Circuit
 +
-+static int rk816_set_suspend_enable(struct regulator_dev *rdev)
-+{
-+	int rid = rdev_get_id(rdev);
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
 +
-+	return regmap_update_bits(rdev->regmap, rk816_suspend_bits[rid].reg,
-+				  rk816_suspend_bits[rid].bit,
-+				  rk816_suspend_bits[rid].bit);
-+}
++description:
++  Rockchip RK816 series PMIC. This device consists of an i2c controlled MFD
++  that includes regulators, a RTC, a GPIO controller, a power button, and a
++  battery charger manager with fuel gauge.
 +
-+static int rk816_set_suspend_disable(struct regulator_dev *rdev)
-+{
-+	int rid = rdev_get_id(rdev);
++properties:
++  compatible:
++    enum:
++      - rockchip,rk816
 +
-+	return regmap_update_bits(rdev->regmap, rk816_suspend_bits[rid].reg,
-+				  rk816_suspend_bits[rid].bit, 0);
-+}
++  reg:
++    maxItems: 1
 +
- static int rk817_set_suspend_enable_ctrl(struct regulator_dev *rdev,
- 					 unsigned int en)
- {
-@@ -913,6 +950,54 @@ static const struct regulator_ops rk809_buck5_ops_range = {
- 	.set_suspend_disable	= rk817_set_suspend_disable,
- };
- 
-+static const struct regulator_ops rk816_buck1_2_ops_ranges = {
-+	.list_voltage		= regulator_list_voltage_linear_range,
-+	.map_voltage		= regulator_map_voltage_linear_range,
-+	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
-+	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= regulator_is_enabled_regmap,
-+	.set_mode		= rk8xx_set_mode,
-+	.get_mode		= rk8xx_get_mode,
-+	.set_suspend_mode	= rk8xx_set_suspend_mode,
-+	.set_ramp_delay		= regulator_set_ramp_delay_regmap,
-+	.set_suspend_voltage	= rk808_set_suspend_voltage_range,
-+	.set_suspend_enable	= rk816_set_suspend_enable,
-+	.set_suspend_disable	= rk816_set_suspend_disable,
-+};
++  interrupts:
++    maxItems: 1
 +
-+static const struct regulator_ops rk816_buck4_ops_ranges = {
-+	.list_voltage		= regulator_list_voltage_linear_range,
-+	.map_voltage		= regulator_map_voltage_linear_range,
-+	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
-+	.set_voltage_time_sel	= regulator_set_voltage_time_sel,
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= regulator_is_enabled_regmap,
-+	.set_mode		= rk8xx_set_mode,
-+	.get_mode		= rk8xx_get_mode,
-+	.set_suspend_mode	= rk8xx_set_suspend_mode,
-+	.set_suspend_voltage	= rk808_set_suspend_voltage_range,
-+	.set_suspend_enable	= rk816_set_suspend_enable,
-+	.set_suspend_disable	= rk816_set_suspend_disable,
-+};
++  '#clock-cells':
++    description:
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
 +
-+static const struct regulator_ops rk816_reg_ops = {
-+	.list_voltage		= regulator_list_voltage_linear,
-+	.map_voltage		= regulator_map_voltage_linear,
-+	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= rk8xx_is_enabled_wmsk_regmap,
-+	.set_suspend_voltage	= rk808_set_suspend_voltage,
-+	.set_suspend_enable	= rk816_set_suspend_enable,
-+	.set_suspend_disable	= rk816_set_suspend_disable,
-+};
++  clock-output-names:
++    maxItems: 2
 +
- static const struct regulator_ops rk817_reg_ops = {
- 	.list_voltage		= regulator_list_voltage_linear,
- 	.map_voltage		= regulator_map_voltage_linear,
-@@ -1392,6 +1477,117 @@ static const struct regulator_desc rk809_reg[] = {
- 			  DISABLE_VAL(3)),
- };
- 
-+static const struct linear_range rk816_buck_4_voltage_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(800000, 0, 26, 100000),
-+	REGULATOR_LINEAR_RANGE(3500000, 27, 31, 0),
-+};
++  gpio-controller: true
 +
-+static const struct regulator_desc rk816_reg[] = {
-+	{
-+		.name = "dcdc1-regulator",
-+		.supply_name = "vcc1",
-+		.of_match = of_match_ptr("dcdc1-regulator"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK816_ID_DCDC1,
-+		.ops = &rk816_buck1_2_ops_ranges,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 64,
-+		.linear_ranges = rk805_buck_1_2_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk805_buck_1_2_voltage_ranges),
-+		.vsel_reg = RK818_BUCK1_ON_VSEL_REG,
-+		.vsel_mask = RK818_BUCK_VSEL_MASK,
-+		.apply_reg = RK816_DCDC_EN_REG2,
-+		.apply_bit = RK816_BUCK_DVS_CONFIRM,
-+		.enable_reg = RK816_DCDC_EN_REG1,
-+		.enable_mask = BIT(4) | BIT(0),
-+		.enable_val = BIT(4) | BIT(0),
-+		.disable_val = BIT(4),
-+		.ramp_reg = RK818_BUCK1_CONFIG_REG,
-+		.ramp_mask = RK808_RAMP_RATE_MASK,
-+		.ramp_delay_table = rk817_buck1_4_ramp_table,
-+		.n_ramp_values = ARRAY_SIZE(rk817_buck1_4_ramp_table),
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "dcdc2-regulator",
-+		.supply_name = "vcc2",
-+		.of_match = of_match_ptr("dcdc2-regulator"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK816_ID_DCDC2,
-+		.ops = &rk816_buck1_2_ops_ranges,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 64,
-+		.linear_ranges = rk805_buck_1_2_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk805_buck_1_2_voltage_ranges),
-+		.vsel_reg = RK818_BUCK2_ON_VSEL_REG,
-+		.vsel_mask = RK818_BUCK_VSEL_MASK,
-+		.apply_reg = RK816_DCDC_EN_REG2,
-+		.apply_bit = RK816_BUCK_DVS_CONFIRM,
-+		.enable_reg = RK816_DCDC_EN_REG1,
-+		.enable_mask = BIT(5) | BIT(1),
-+		.enable_val = BIT(5) | BIT(1),
-+		.disable_val = BIT(5),
-+		.ramp_reg = RK818_BUCK2_CONFIG_REG,
-+		.ramp_mask = RK808_RAMP_RATE_MASK,
-+		.ramp_delay_table = rk817_buck1_4_ramp_table,
-+		.n_ramp_values = ARRAY_SIZE(rk817_buck1_4_ramp_table),
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "dcdc3-regulator",
-+		.supply_name = "vcc3",
-+		.of_match = of_match_ptr("dcdc3-regulator"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK816_ID_DCDC3,
-+		.ops = &rk808_switch_ops,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 1,
-+		.enable_reg = RK816_DCDC_EN_REG1,
-+		.enable_mask = BIT(6) | BIT(2),
-+		.enable_val =  BIT(6) | BIT(2),
-+		.disable_val = BIT(6),
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "dcdc4-regulator",
-+		.supply_name = "vcc4",
-+		.of_match = of_match_ptr("dcdc4-regulator"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK816_ID_DCDC4,
-+		.ops = &rk816_buck4_ops_ranges,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 32,
-+		.linear_ranges = rk816_buck_4_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk816_buck_4_voltage_ranges),
-+		.vsel_reg = RK818_BUCK4_ON_VSEL_REG,
-+		.vsel_mask = RK818_BUCK4_VSEL_MASK,
-+		.enable_reg = RK816_DCDC_EN_REG1,
-+		.enable_mask = BIT(7) | BIT(3),
-+		.enable_val = BIT(7) | BIT(3),
-+		.disable_val = BIT(7),
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.owner = THIS_MODULE,
-+	},
-+	RK816_DESC(RK816_ID_LDO1, "ldo1-regulator", "vcc5", 800, 3400, 100,
-+		   RK818_LDO1_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG1, ENABLE_MASK(0), DISABLE_VAL(0), 400),
-+	RK816_DESC(RK816_ID_LDO2, "ldo2-regulator", "vcc5", 800, 3400, 100,
-+		   RK818_LDO2_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG1, ENABLE_MASK(1), DISABLE_VAL(1), 400),
-+	RK816_DESC(RK816_ID_LDO3, "ldo3-regulator", "vcc5", 800, 3400, 100,
-+		   RK818_LDO3_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG1, ENABLE_MASK(2), DISABLE_VAL(2), 400),
-+	RK816_DESC(RK816_ID_LDO4, "ldo4-regulator", "vcc6", 800, 3400, 100,
-+		   RK818_LDO4_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG1, ENABLE_MASK(3), DISABLE_VAL(3), 400),
-+	RK816_DESC(RK816_ID_LDO5, "ldo5-regulator", "vcc6", 800, 3400, 100,
-+		   RK818_LDO5_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG2, ENABLE_MASK(0), DISABLE_VAL(0), 400),
-+	RK816_DESC(RK816_ID_LDO6, "ldo6-regulator", "vcc6", 800, 3400, 100,
-+		   RK818_LDO6_ON_VSEL_REG, RK818_LDO_VSEL_MASK,
-+		   RK816_LDO_EN_REG2, ENABLE_MASK(1), DISABLE_VAL(1), 400),
-+};
++  '#gpio-cells':
++    const: 2
 +
- static const struct regulator_desc rk817_reg[] = {
- 	{
- 		.name = "DCDC_REG1",
-@@ -1714,6 +1910,10 @@ static int rk808_regulator_probe(struct platform_device *pdev)
- 		regulators = rk809_reg;
- 		nregulators = RK809_NUM_REGULATORS;
- 		break;
-+	case RK816_ID:
-+		regulators = rk816_reg;
-+		nregulators = ARRAY_SIZE(rk816_reg);
-+		break;
- 	case RK817_ID:
- 		regulators = rk817_reg;
- 		nregulators = RK817_NUM_REGULATORS;
++  system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++
++  vcc1-supply:
++    description:
++      The input supply for dcdc1-regulator.
++
++  vcc2-supply:
++    description:
++      The input supply for dcdc2-regulator.
++
++  vcc3-supply:
++    description:
++      The input supply for dcdc3-regulator.
++
++  vcc4-supply:
++    description:
++      The input supply for dcdc4-regulator.
++
++  vcc5-supply:
++    description:
++      The input supply for ldo1-regulator, ldo2-regulator, and ldo3-regulator.
++
++  vcc6-supply:
++    description:
++      The input supply for ldo4-regulator, ldo5-regulator, and ldo6-regulator.
++
++  vcc7-supply:
++    description:
++      The input supply for boost.
++
++  vcc8-supply:
++    description:
++      The input supply for otg-switch.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(boost|dcdc[1-4]-regulator|ldo[1-6]-regulator|otg-switch)$":
++        type: object
++        $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
++    unevaluatedProperties: false
++
++patternProperties:
++  '-pins$':
++    type: object
++    additionalProperties: false
++    $ref: /schemas/pinctrl/pinmux-node.yaml
++
++    properties:
++      function:
++        enum: [pin_fun_gpio, pin_fun_thermistor]
++
++      pins:
++        $ref: /schemas/types.yaml#/definitions/string
++        const: gpio0
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/pinctrl/rockchip.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/gpio/gpio.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        rk816: pmic@1a {
++            compatible = "rockchip,rk816";
++            reg = <0x1a>;
++            interrupt-parent = <&gpio0>;
++            interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
++            clock-output-names = "xin32k", "rk816-clkout2";
++            pinctrl-names = "default";
++            pinctrl-0 = <&pmic_int_l>;
++            gpio-controller;
++            system-power-controller;
++            wakeup-source;
++            #clock-cells = <1>;
++            #gpio-cells = <2>;
++
++            vcc1-supply = <&vcc_sys>;
++            vcc2-supply = <&vcc_sys>;
++            vcc3-supply = <&vcc_sys>;
++            vcc4-supply = <&vcc_sys>;
++            vcc5-supply = <&vcc33_io>;
++            vcc6-supply = <&vcc_sys>;
++
++            regulators {
++                vdd_cpu: dcdc1-regulator {
++                    regulator-name = "vdd_cpu";
++                    regulator-min-microvolt = <750000>;
++                    regulator-max-microvolt = <1450000>;
++                    regulator-ramp-delay = <6001>;
++                    regulator-initial-mode = <1>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                    };
++                };
++
++                vdd_logic: dcdc2-regulator {
++                    regulator-name = "vdd_logic";
++                    regulator-min-microvolt = <800000>;
++                    regulator-max-microvolt = <1250000>;
++                    regulator-ramp-delay = <6001>;
++                    regulator-initial-mode = <1>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1000000>;
++                    };
++                };
++
++                vcc_ddr: dcdc3-regulator {
++                    regulator-name = "vcc_ddr";
++                    regulator-initial-mode = <1>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                    };
++                };
++
++                vcc33_io: dcdc4-regulator {
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vcc33_io";
++                    regulator-initial-mode = <1>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vccio_pmu: ldo1-regulator {
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vccio_pmu";
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_tp: ldo2-regulator {
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vcc_tp";
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                    };
++                };
++
++                vdd_10: ldo3-regulator {
++                    regulator-min-microvolt = <1000000>;
++                    regulator-max-microvolt = <1000000>;
++                    regulator-name = "vdd_10";
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1000000>;
++                    };
++                };
++
++                vcc18_lcd: ldo4-regulator {
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <1800000>;
++                    regulator-name = "vcc18_lcd";
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1800000>;
++                    };
++                };
++
++                vccio_sd: ldo5-regulator {
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vccio_sd";
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vdd10_lcd: ldo6-regulator {
++                    regulator-min-microvolt = <1000000>;
++                    regulator-max-microvolt = <1000000>;
++                    regulator-name = "vdd10_lcd";
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1000000>;
++                    };
++                };
++            };
++        };
++    };
 -- 
 2.43.2
 
