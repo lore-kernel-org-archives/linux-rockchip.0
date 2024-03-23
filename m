@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D7ACD11BF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 11:16:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6952CD11BF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Mar 2024 13:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VPL/WR4V4uE2dMjTm2EmiypQn8Fgiyfvw6ZufcrVRIk=; b=qvvDlDba5b136p
-	ROdHJnub4woK4I12ZgHt3QKpbouKPWsDewqpoSZLAE4NSzHiJSxo0wkTQTXg0Iv+5BUb1de9GOt54
-	4uZdRfjQIZMvFx+HCa933a0doVhgTkHB8aO7lJ7EhgnTj4PqI4LPWW2nN8ETQe8YK+C4US8qEs6JX
-	i7WpzZg9Q3FuaZ3n6R2GOlRFY9cisSDiSxVdLg4UulUZjppNIxV3jtq8Y8ULlFjxEkXd3nK31PAWh
-	TTRqmBWB4YONhiVzTxbYNMgMZTtmYTGNuIDz9IZOv2kjHUZkfj/E4bVNGumrtaaGnAB5YJdYK7KeP
-	yuUF15Gdq5MVxDBHmJRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fn8dY1YF9TCOtkFvj6BeEc2Hq2a17aEjyW26ASHPCzc=; b=mZh39O+cB/b+Vr
+	P4zHhAGIt6dDB3kCnDRCm9vVKpxuhXYyzzmrj5syK0PuOYqM0qyh8vmA2XYK1nmPvDp0bWwmhDwA9
+	uxlpKlOqELaHnqxIYVU3etCRVvcllVSV9N23TNkMtJRzVDRfjHFDa4Q6ms7mQKICVzp5MKU0UOu+4
+	cnNUfY+PQKsu6ghrqOr4B+0Qv8dbsZyZoR3gT6ZgEX7CDj4Q5xsEol9gsKmbf07xTGiLWlAzPSd1y
+	OiukJs2N0Hgf1FC0XERxzUSqxDXLbcL7TP5JIpsRB9f3jlIih71tdMTnsxHwYl+5tZwHV6RkC9SeW
+	uWg7Rk0qYtnWVzKxW70g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnzLt-0000000AFR1-3oz1;
-	Sat, 23 Mar 2024 11:15:53 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1ro1QA-0000000ASRf-3C5F;
+	Sat, 23 Mar 2024 13:28:26 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rnzLq-0000000AFQQ-3ymC;
-	Sat, 23 Mar 2024 11:15:52 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-513e25afabaso3424617e87.2;
-        Sat, 23 Mar 2024 04:15:50 -0700 (PDT)
+	id 1ro1Q6-0000000ASQl-0VoS;
+	Sat, 23 Mar 2024 13:28:23 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-34175878e30so1851195f8f.3;
+        Sat, 23 Mar 2024 06:28:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711192549; x=1711797349; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tGt+1+8Qbh/ugUeIyE1gvLzQWC5suhsgLzpxGXFTGCg=;
-        b=VjagDgfCrZyFKfd0c1JxpHdbrJ70aoMzb1Tf3X6YAFicC7iRyTBaH5Wmi2ZZRWEgcs
-         dmmGLnFz7yQq/p8ygk4o4KEY6ivFsI4jI7fDyqUtJtl7bFLz6KNHeuD5vL22/V1Fp+GJ
-         0wygdn9pruN7dclOrcg3MuH1xgmZiICE5UBeFwDF+UAoDMc54c20ta+5pkkvmD/egFdV
-         IyD64R+sZquT6fof22NWcCm6sOF58gMYSC1wocsDg8OoHZcMcgxKkfSyICrq1jdEyOCK
-         +Cq2jApopKFZDUQngOaI88/qc1jlPwUwtYFowwSgnFdl8RGBL+ruX+RSGPno1HrEpeZg
-         ar1w==
+        d=gmail.com; s=20230601; t=1711200498; x=1711805298; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=EZ1pELuVvPRDiO8S0zv+ldR/r8hfFaunbVkRqdzuPe4=;
+        b=B1NbbPWjWyonJIu1t56YVprKitLwFhpsTCQtStRmoT5lCXoa5sFz0moG01fHSvQXsg
+         UeO5BWkqrOgIWWLtwHoRcciFZv+8bWFfONcxkgiXIGhd9xuBYEe+Q/STZVSBM8GJ9vJs
+         H6yowRqGbgZ50RhLAVLK0ZIC78Q0BxEqSLZ/Jm21CWw2u/9xcQApmq4jKwVM1R6UP7Ce
+         qagjXf31mO8fohrsWL4qBW9s34cdVT4y2824Swxo8BlZkz/s+CtXKbqlG/H1//GT72UJ
+         SM+nnskLsMIA3n8AoI8ZZMArh7/yy/bu/o69cXR9SRolDDHhTZzQLm1VkJbU3OC0xDXd
+         rshQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711192549; x=1711797349;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tGt+1+8Qbh/ugUeIyE1gvLzQWC5suhsgLzpxGXFTGCg=;
-        b=LToHrQGi8tUiF1kSX8ORp2f2XmbUWY7+CKsChlH1NojsTtjQJGmW+iEQ9yJNSRdGuo
-         fpmjyqVVN7hIk+r2cde+opFbKKiNrW7QmRGP7hAPvaPbBWrqzjzknNDRnkRnMrT6ium2
-         Pb2ZraTdp8NcwVFRdEzWDOYtUdwdP4EnSL24gdZ1UZJXdn1MDJGWjTbmX9TBb/iLPnyW
-         lKHX6Zqdpd28IC4+Mn9JOafarCP2ufnMfeQxFB6cvzYt0LAkozryQozB62CYdvxvjMYr
-         2kVhlvD3Cg7pEWh63HrE95902SpF5GfqUY0zQ74syFBYeJ2f3kw1NYBf5vmxcdvrLoM/
-         zf1g==
-X-Forwarded-Encrypted: i=1; AJvYcCWl8CKo4wmgwsHkUrBZ256KQjWU2UbI600AMuAm5G8qoc67Am43QCjo79uNts1kakAXKeVYUd7ybLEHMpi3f6Pkr+MLM/HbUdagRTmj5LuuSFly/8lsJeQnkmtE4bm61rr4unN6EdwMQ9Vkhvy1ge1U1sHSJpqPHWg=
-X-Gm-Message-State: AOJu0YyJ8EO3+EV0QqhMcwORka2OApQW7URqAVDSjk0nnEJhFtI3xAt/
-	qFqgjBxyi6l1z4PobIHxlJ0TO1U89/+Np1O3AmnamemXROjy+no=
-X-Google-Smtp-Source: AGHT+IGjVr55U4jHXGz6ZpweB8ZoYcMpl2oUuYMLI43fUq46mUuU2xCwzJ3sMXFuDeF2mrP7xizlAQ==
-X-Received: by 2002:a19:8c19:0:b0:515:a25f:396f with SMTP id o25-20020a198c19000000b00515a25f396fmr883821lfd.36.1711192548444;
-        Sat, 23 Mar 2024 04:15:48 -0700 (PDT)
-Received: from ?IPV6:2a02:810b:f40:4600:fbb8:7547:139d:a40f? ([2a02:810b:f40:4600:fbb8:7547:139d:a40f])
-        by smtp.gmail.com with ESMTPSA id cw10-20020a056000090a00b0033e7a102cfesm4222385wrb.64.2024.03.23.04.15.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 23 Mar 2024 04:15:48 -0700 (PDT)
-Message-ID: <63c6caac-536e-49e9-aad2-a0c1f8b783d8@gmail.com>
-Date: Sat, 23 Mar 2024 12:15:47 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] dt-bindings: mfd: Add rk816 binding
-Content-Language: en-US, de-DE
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Lee Jones <lee@kernel.org>, Chris Zhong <zyw@rock-chips.com>,
- Zhang Qing <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>,
- Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>
-References: <20240323085852.116756-1-knaerzche@gmail.com>
- <20240323085852.116756-2-knaerzche@gmail.com>
- <bfe79f3d-1615-45a4-81f7-7e30740308d7@linaro.org>
- <3c0d5aa2-55fb-4827-bcd4-256e6ae55ee9@gmail.com>
- <f892767c-7e01-4099-b674-0eca6edf7bba@linaro.org>
+        d=1e100.net; s=20230601; t=1711200498; x=1711805298;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EZ1pELuVvPRDiO8S0zv+ldR/r8hfFaunbVkRqdzuPe4=;
+        b=eqFP6qhdX+MRYlv34v+ar6lmvEBBYOjz2gvdUJJzAWxoj4ogbEIsMYVqMbuaXVcTpG
+         KZmDrGyduRKsrrJm03Hhxz2cRMwQujbypYuq3KYbCnP7/dp8oabjzlDKOVFmCd1u3vy4
+         o701PKxj6aznHzKc3iYZtE8PVrtB8tFte3lN8IWNMefkAZpmOEf2NtS1lsw7bZLcgUvJ
+         sco1dQuPEi7Bpia3lZIameyF/zGxSFUxoVbMMUji7pXXfUS5m8sMGDWW+jpfJKMzARMj
+         DWN1V9CD85s9lH7SLpQwSp6ehxbF/9su44mYE3rV4nzxKS67S7QXbro4y/vFY1FL4y53
+         LYmQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWg8e+eSl+SZ7Kf7jU1Fm0YSbyOsKkWvSXcbYRoNRuOe+nVwmi+g3AkzNQqywXIIFXS1MzsjqP+lWmYdU896hOETGo4s0yeiLsafmGApyFdkWb5eENZAzckJwrHYmbu9wEvtZQqge7dvtHv1Yr5VN0wUCmjBuQiLl8=
+X-Gm-Message-State: AOJu0YzPD/7kre+nNzZgDrvgvkaA2UNQcf0SuzvKp9CkYXqaGgV+o08G
+	Za+nZ1rNs55MnSSN7FaKgHYxKXJanrpVOXdsNTVd8UmFlnOK0oo=
+X-Google-Smtp-Source: AGHT+IHWBxgXRVeLan1IbXLwr5IkdNxnlpfI/0AVMaa+FFCBgQFF1+WMjd7RRQ9wtNDRtuN2vh/s0Q==
+X-Received: by 2002:a5d:40cb:0:b0:33e:1f2a:d88a with SMTP id b11-20020a5d40cb000000b0033e1f2ad88amr1468113wrq.69.1711200497586;
+        Sat, 23 Mar 2024 06:28:17 -0700 (PDT)
+Received: from U4.lan ([2a02:810b:f40:4600:fbb8:7547:139d:a40f])
+        by smtp.gmail.com with ESMTPSA id x17-20020adfffd1000000b00341babb8af0sm3076061wrs.7.2024.03.23.06.28.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 23 Mar 2024 06:28:17 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
-In-Reply-To: <f892767c-7e01-4099-b674-0eca6edf7bba@linaro.org>
+To: Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH v3 0/5] Add RK816 PMIC support
+Date: Sat, 23 Mar 2024 14:27:53 +0100
+Message-ID: <20240323132757.141861-2-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.43.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240323_041551_047680_C26B30A5 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240323_062822_192000_B5220998 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,41 +97,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This series aims to add support for Rockchip RK816 PMIC series. As per
+datasheet it's targeted for RK3126/RK3128 (RK816-1), RK1108 (RK816-2) and
+PX3-SE (RK816-3) but might be used for other SoCs as well. The MFD consists
+of an integrated RTC, a GPIO controller, two 32k clock outputs, a power
+key, 3 buck- and 6 ldo regulators, 3 regulator-switches, and charger with
+integrated fuel gauge. Charger and fuel gauge are not part of this series.
+Two of the switches (otg/boost) are part of the binding, but not of
+the driver. They must only ever be enabled if no battery charging is
+happening, but it will be enabled automatically if a battery is attached
+and an external power source is connected. Thus that needs some
+incorporation of a yet to be added charger driver.
+Integration in the existing rk8xx-infrastructure was pretty straightforward
+and only needed very little tweaking. In order to not further bloat the
+driver(s) too much with additional `#define`s I tried to re-use existing
+ones wherever possible.
 
-Am 23.03.24 um 12:02 schrieb Krzysztof Kozlowski:
-> On 23/03/2024 11:56, Alex Bee wrote:
->> Hi Krzysztof,
->>
->> Am 23.03.24 um 11:32 schrieb Krzysztof Kozlowski:
->>> On 23/03/2024 09:58, Alex Bee wrote:
->>>> Add DT binding document for Rockchip's RK816 PMIC
->>>>
->>>> Signed-off-by: Alex Bee <knaerzche@gmail.com>
->>>> ---
->>>> changes since v1:
->>>>     - lowercase/hyphens for regulator node names
->>>>     - rename "-reg" to "-regulator" to make node names generic
->>> I don't understand why did you do it. I did not ask for it. If you want
->>> to rename, drop redundant regulator or reg suffix from node names.
->> You didn't ask for that, thats true.
->>
->> I did it regardless, since node names should be generic and the "-reg"
-> device node names, here you do not have devices.
-OK. I wasn't aware there's a difference between device nodes and 
-devices. I'll drop the suffix from the regulators.
-> You did not respond to rest of my comments, so I assume you agree 100%
-> with them.
+The patches are loosely based on the vendor's implementation, verified
+against the datasheet and tested/measured on a RK3126 board. As they are
+touching several subsystems I'm sending them (very) early for the
+6.10.-cycle.
 
-I do.
+changes since v1:
+  - integrated Krzysztof's feedback for the bindings and the resulting
+    driver changes
+  - fixed a sparse warning 
 
-Alex.
+link to v1:
+https://lore.kernel.org/lkml/20240321143911.90210-2-knaerzche@gmail.com/
 
->
+changes since v2:
+  - integrated Krzysztof's feedback to v2 of the bindings and the resulting
+    driver changes
+
+link to v2:
+https://lore.kernel.org/lkml/20240323085852.116756-1-knaerzche@gmail.com/
+
+Please see individual patches for details about the changes.
+
+Alex Bee (5):
+  dt-bindings: mfd: Add rk816 binding
+  mfd: rk8xx: Add RK816 support
+  pinctrl: rk805: Add rk816 pinctrl support
+  regulator: rk808: Support apply_bit for
+    rk808_set_suspend_voltage_range
+  regulator: rk808: Add RK816 support
+
+ .../bindings/mfd/rockchip,rk816.yaml          | 274 ++++++++++++++++++
+ drivers/mfd/Kconfig                           |   4 +-
+ drivers/mfd/rk8xx-core.c                      | 103 +++++++
+ drivers/mfd/rk8xx-i2c.c                       |  45 ++-
+ drivers/pinctrl/pinctrl-rk805.c               |  69 +++++
+ drivers/regulator/rk808-regulator.c           | 218 +++++++++++++-
+ include/linux/mfd/rk808.h                     | 141 +++++++++
+ 7 files changed, 847 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+
+-- 
+2.43.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
