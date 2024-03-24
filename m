@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C4EDC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 11:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F233FC47DD9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 11:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/oZPoC43G4w9ru6dCvGCQKZT8mlP+gasHP14/m9p9M=; b=qN3Fze+UXWQC1A
-	8Gddj5ThK9rPlEoafwW3J5JEED/tBEcaByjbVqoQun8AjEG5Gfaq6ChRHrDU85XDsqdNkwGGgXhgm
-	x6P2Z8o6c2febtYnK4J3InZoGKBZd9xNVtjvIdGr3g0NWUUqxMPjCtJZLHslchLdbnDmBBllZKpUk
-	ijD0LIGuu41pGmzMVE5K1cA7003nU709HQlQnzMUVITifUKqS7npAgAN6U6pQcraW8u/32m6IlsmV
-	VqIBz8P3nJ+qICM3pzt/imgyE1gMwn4EpPRitmboozKt/5+65B76CvBrYK1mR3ptnH9Y63GtU7vxx
-	jTrqWofz++F+WsCxnRqA==;
+	List-Owner; bh=FjM6/+mnobL/1Fl5z5uGkZTExX9iVbYirt9ZeIhlbKA=; b=vEiQOvdtVZ0uvI
+	n/TUcbHgqgjyRewSO1PLQaJn0PrXxN5ZrhxJ1cuzcIMiFCs2GBuV76DgFk3DkjGnPFaM8ka6rQiC6
+	n72OjK0ONfEtKjgEBxQWH+YYGcRrfNwShgUlx0tpDAzz7mUvZJV5MSEPA4ZhE6Sv6VNCkWHN9ShSM
+	jEtDJFpJ2+y2OlM66bPHBcb4kqg6+CIJ0/2+3IMkNK5RC0bFbk2sxsm3mKB7AzrVGgeNJI0eFplnb
+	iL+foiqdX0ZqH3MsP8DUenOGgmYIVlXn96166QkkZThh4N8k3iwuJgtk/dGmSFopSW1DYbHZFu6TS
+	z3leppUecNa+bzTL/+Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roLvN-0000000CRRD-0y9b;
-	Sun, 24 Mar 2024 11:22:01 +0000
+	id 1roMGP-0000000CTLE-1qUk;
+	Sun, 24 Mar 2024 11:43:45 +0000
 Received: from mail-4317.proton.ch ([185.70.43.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roLvJ-0000000CRPx-0Tbc
-	for linux-rockchip@lists.infradead.org;
-	Sun, 24 Mar 2024 11:21:59 +0000
+	id 1roMGL-0000000CTJa-1lvr;
+	Sun, 24 Mar 2024 11:43:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thefossguy.com;
-	s=protonmail; t=1711279308; x=1711538508;
-	bh=CHiCwMJx97a7aFumYdhFFpr0BdNcgHlVnJDNYCZsuPM=;
+	s=protonmail; t=1711280619; x=1711539819;
+	bh=U56PTdG5kVIRjFB+Qp4FUEnuUZCtrRVmQdRXbMzwT3I=;
 	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
 	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
 	 Message-ID:BIMI-Selector;
-	b=eg84ZX3UbyCWGStzmB+0bD9GjZ4fgn606vz6QIfuD/mQdedzWjM1fPiCFs9FZGStY
-	 XjL4X7RfBy10J554SUUVuqDECeCmSDw1lIVcGGnobLQw/38l+yS9ArM9a5Jfx0fSWo
-	 f3V6zmmgDXQ2PRcz8GivkibgkC/Dr/ZSl+QBeh7zgRGfBFSRH5+jthYV6cw8LJtbIG
-	 jpr1ZB8XX8yQRvxTna40ASXtf8+JD3DorFCB3EK1ogRJNOQM/J5KftxDxDHYO6tNau
-	 UZMb0XZhw28aBJjTjILCDze3lF//FGIz1IjXaOoRRjh8CS5hBNRsgHV9pI+qTsMUnc
-	 SRECmoe9eVr8Q==
-Date: Sun, 24 Mar 2024 11:21:38 +0000
+	b=DV0x0Dd3iR7acnHcgt5Q1LTSbNqx8UfKkN/marhrakfZClTR90noGq9Xm9Lka4YKx
+	 4r0WDV4P0nYS9Q4WjiOEOpGDyqE2BjUuv+ku9+J1f1iKnQOfZzkTin8Cq8yTUznP80
+	 Pq1fuX+8JuQwZE7RrOO9pzNuCrArt/4gYL9e055bvp6SUH51zxW5KoKAl1mOwkza5q
+	 BCW3P3gELQ79PrvsRZt7j0E5Kc1XtdtpqQhWNs5ymFCmRqO333190E+eacclP+V//n
+	 zsmOWscdECvAgEIHUCMB50UPCreUMUTCHLjzPfpywgNrDQOUmZu0SuraSFQ9ELhrXh
+	 eiq+x460ZS6TA==
+Date: Sun, 24 Mar 2024 11:43:16 +0000
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 From: Pratham Patel <prathampatel@thefossguy.com>
 Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 1/1] arm64: dts: rockchip: disable analog audio for rock-5b
-Message-ID: <TbQeSy-AWAKVHo2Alb8hXUvplVNvohDJ2ztRM1x3Fo5PMmGLMsJxtHR-OIms9FlUshfUD9x45EghBCB9gVtcUPlxeMRUJQ_C95DVhu3AJrk=@thefossguy.com>
-In-Reply-To: <0005257d-8022-4a66-a802-0c920d259ccd@linaro.org>
-References: <20240324062816.145858-1-prathampatel@thefossguy.com> <0005257d-8022-4a66-a802-0c920d259ccd@linaro.org>
+Message-ID: <XJ_dGL-0X07dJ8GOKvrXbRD2FAHN1A7keAtohcSaU41DEF0FbeWwswLEqkrYiwwulyXDwJ6SZHfWukhHO3t3tOWX7ZGM7ya9lwXfn8Xh1nU=@thefossguy.com>
+In-Reply-To: <TbQeSy-AWAKVHo2Alb8hXUvplVNvohDJ2ztRM1x3Fo5PMmGLMsJxtHR-OIms9FlUshfUD9x45EghBCB9gVtcUPlxeMRUJQ_C95DVhu3AJrk=@thefossguy.com>
+References: <20240324062816.145858-1-prathampatel@thefossguy.com> <0005257d-8022-4a66-a802-0c920d259ccd@linaro.org> <TbQeSy-AWAKVHo2Alb8hXUvplVNvohDJ2ztRM1x3Fo5PMmGLMsJxtHR-OIms9FlUshfUD9x45EghBCB9gVtcUPlxeMRUJQ_C95DVhu3AJrk=@thefossguy.com>
 Feedback-ID: 104309535:user:proton
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_042157_812688_35345105 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20240324_044342_139708_9585DA5C 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,40 +68,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, March 24th, 2024 at 16:15, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
+On Sunday, March 24th, 2024 at 16:51, Pratham Patel <prathampatel@thefossguy.com> wrote:
 
+> On Sunday, March 24th, 2024 at 16:15, Krzysztof Kozlowski krzysztof.kozlowski@linaro.org wrote:
 > 
+> > > + /*
+> > > + *analog-sound {
+> > > + * compatible = "audio-graph-card";
+> > > + * label = "rk3588-es8316";
+> > 
+> > Do not comment out code. Instead disable the nodes and provide
+> > appropriate comment describing reason.
 > 
-> On 24/03/2024 07:28, Pratham Patel wrote:
-> 
-> > The addition of `of: property: fw_devlink: Fix stupid bug in remote-endpoint parsing`
-> 
-> 
-> Please refer to commits using commit sha () syntax, as mentioned in
-> submitting patches.
+> I tried changing the status from okay to disabled. That didn't work. The SBC
+> still locked up during boot.
 
-Noticed that in the wiki but didn't do that since the commit hash for the commit
-was different in each branch (of the stable tree). Maybe I should have copied the SHA
-from Linus' tree. I will do that.
-
-> > + /*
-> > + *analog-sound {
-> > + * compatible = "audio-graph-card";
-> > + * label = "rk3588-es8316";
-> 
-> 
-> Do not comment out code. Instead disable the nodes and provide
-> appropriate comment describing reason.
-
-I tried changing the status from okay to disabled. That didn't work. The SBC
-still locked up during boot.
-
-> Anyway, this does not look like correct solution. DTS is independent of
-> OS, so bug in fwlink does not matter for DTS. Either DTS is a correct
-> hardware representation or not.
-
-I agree, it's not the correct solution. It is a temporary workaround for the regression
-caused. I will send more patches once I receive a few more RK3588-based SBCs and investigate.
+I think setting the status to fail should do the trick, instead of setting it to disabled.
+Will try that and be back with a v2.
 
  -- Pratham Patel
 
