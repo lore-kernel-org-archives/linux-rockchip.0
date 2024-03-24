@@ -4,54 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F233FC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 11:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4AE2C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 11:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FjM6/+mnobL/1Fl5z5uGkZTExX9iVbYirt9ZeIhlbKA=; b=vEiQOvdtVZ0uvI
-	n/TUcbHgqgjyRewSO1PLQaJn0PrXxN5ZrhxJ1cuzcIMiFCs2GBuV76DgFk3DkjGnPFaM8ka6rQiC6
-	n72OjK0ONfEtKjgEBxQWH+YYGcRrfNwShgUlx0tpDAzz7mUvZJV5MSEPA4ZhE6Sv6VNCkWHN9ShSM
-	jEtDJFpJ2+y2OlM66bPHBcb4kqg6+CIJ0/2+3IMkNK5RC0bFbk2sxsm3mKB7AzrVGgeNJI0eFplnb
-	iL+foiqdX0ZqH3MsP8DUenOGgmYIVlXn96166QkkZThh4N8k3iwuJgtk/dGmSFopSW1DYbHZFu6TS
-	z3leppUecNa+bzTL/+Zg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iaah7+A+yUd9JQsiQS+KmAQHTPE+P6ujrJDaQ1F7pco=; b=jtN+iGpUlic7wC
+	O7RJK8BAVKYAtqDSkY3I8oDCiVYARFaCzoP3F/CydQLLYAfcXDdEIZR68Q+3ELQ0zpU/haES5nVx/
+	fp+wfk+mRDTsFTvv6epH7+VuZyJ6zGYGK7Zqd0lf9CL419rbzTqWdcngzmiVlo4KKbIsNnnrOnsUX
+	R6de1v8prl1dkrajvi7zlzpfYhQkrftZ93A1tdX3YaRUTDmwe1RzcoWLKmFM/+4yEYWn7hM098ZUG
+	hDMzf46+wHuKHQIywtLxiAW4DetzJNG2Fva6CjZHW7H3LU/RpwuFTB3yRaqNgDBkLPHBxk56EvmKS
+	VtelYbOIY8TiIEvnMpDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roMGP-0000000CTLE-1qUk;
-	Sun, 24 Mar 2024 11:43:45 +0000
-Received: from mail-4317.proton.ch ([185.70.43.17])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roMGL-0000000CTJa-1lvr;
-	Sun, 24 Mar 2024 11:43:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thefossguy.com;
-	s=protonmail; t=1711280619; x=1711539819;
-	bh=U56PTdG5kVIRjFB+Qp4FUEnuUZCtrRVmQdRXbMzwT3I=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=DV0x0Dd3iR7acnHcgt5Q1LTSbNqx8UfKkN/marhrakfZClTR90noGq9Xm9Lka4YKx
-	 4r0WDV4P0nYS9Q4WjiOEOpGDyqE2BjUuv+ku9+J1f1iKnQOfZzkTin8Cq8yTUznP80
-	 Pq1fuX+8JuQwZE7RrOO9pzNuCrArt/4gYL9e055bvp6SUH51zxW5KoKAl1mOwkza5q
-	 BCW3P3gELQ79PrvsRZt7j0E5Kc1XtdtpqQhWNs5ymFCmRqO333190E+eacclP+V//n
-	 zsmOWscdECvAgEIHUCMB50UPCreUMUTCHLjzPfpywgNrDQOUmZu0SuraSFQ9ELhrXh
-	 eiq+x460ZS6TA==
-Date: Sun, 24 Mar 2024 11:43:16 +0000
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-From: Pratham Patel <prathampatel@thefossguy.com>
-Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: disable analog audio for rock-5b
-Message-ID: <XJ_dGL-0X07dJ8GOKvrXbRD2FAHN1A7keAtohcSaU41DEF0FbeWwswLEqkrYiwwulyXDwJ6SZHfWukhHO3t3tOWX7ZGM7ya9lwXfn8Xh1nU=@thefossguy.com>
-In-Reply-To: <TbQeSy-AWAKVHo2Alb8hXUvplVNvohDJ2ztRM1x3Fo5PMmGLMsJxtHR-OIms9FlUshfUD9x45EghBCB9gVtcUPlxeMRUJQ_C95DVhu3AJrk=@thefossguy.com>
-References: <20240324062816.145858-1-prathampatel@thefossguy.com> <0005257d-8022-4a66-a802-0c920d259ccd@linaro.org> <TbQeSy-AWAKVHo2Alb8hXUvplVNvohDJ2ztRM1x3Fo5PMmGLMsJxtHR-OIms9FlUshfUD9x45EghBCB9gVtcUPlxeMRUJQ_C95DVhu3AJrk=@thefossguy.com>
-Feedback-ID: 104309535:user:proton
+	id 1roMIf-0000000CTjL-2GUx;
+	Sun, 24 Mar 2024 11:46:05 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1roMIa-0000000CTiZ-18WG;
+	Sun, 24 Mar 2024 11:46:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=JT3mh
+	3pBXUE1j0Z7V6vKd0YcvAz/Tmr/5mTxbrnRMLI=; b=N71CAqrtACJ/fESGQSwmd
+	0scqgszXr2/ABusiso1N2CE3W8RFaIuxRWQ0fz9r44rDC+jU6x99sCe9UVEY3mdD
+	Psite649DIgfNm90mR4Ei52bDRgEGjOb/ulKDYTlSe3iqMS9ipBXo4QQp80jAwP/
+	R700ke9v8fRpbnxcBWPRcs=
+Received: from ProDesk.. (unknown [103.29.142.67])
+	by gzga-smtp-mta-g2-0 (Coremail) with SMTP id _____wD3f6xjDgBmCswnBw--.40872S2;
+	Sun, 24 Mar 2024 19:28:42 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	devicetree@vger.kernel.org,
+	dsimic@manjaro.org,
+	conor+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andyshrk@163.com>
+Subject: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi CM5
+Date: Sun, 24 Mar 2024 19:28:33 +0800
+Message-Id: <20240324112833.2181961-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-CM-TRANSID: _____wD3f6xjDgBmCswnBw--.40872S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Ar4kCF48Zr43ZrWDurWfKrg_yoW8GFW8pa
+	13ua9xGr18ur4FqayqqanxWFsrCrnIqFs5Cr17GFyxtr45XryktrnrWryfCryjgF13Za18
+	uF45Zr1DKa1qvaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pi89NxUUUUU=
+X-Originating-IP: [103.29.142.67]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAarXmVOC9d6HgABsx
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_044342_139708_9585DA5C 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240324_044600_743258_E65EA6C8 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,25 +76,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, March 24th, 2024 at 16:51, Pratham Patel <prathampatel@thefossguy.com> wrote:
+According to the hardware design, the i2c address of audio codec es8316
+on Cool Pi CM5 is 0x10.
 
-> On Sunday, March 24th, 2024 at 16:15, Krzysztof Kozlowski krzysztof.kozlowski@linaro.org wrote:
-> 
-> > > + /*
-> > > + *analog-sound {
-> > > + * compatible = "audio-graph-card";
-> > > + * label = "rk3588-es8316";
-> > 
-> > Do not comment out code. Instead disable the nodes and provide
-> > appropriate comment describing reason.
-> 
-> I tried changing the status from okay to disabled. That didn't work. The SBC
-> still locked up during boot.
+This fix the read/write error like bellow:
+es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x0000000c] -6
+es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x00000003] -6
+es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
+es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
 
-I think setting the status to fail should do the trick, instead of setting it to disabled.
-Will try that and be back with a v2.
+Fixes: 791c154c3982 ("arm64: dts: rockchip: Add support for rk3588 based board Cool Pi CM5 EVB")
+Signed-off-by: Andy Yan <andyshrk@163.com>
+---
 
- -- Pratham Patel
+ arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+index cce1c8e83587..ea8de76b9214 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi
+@@ -218,7 +218,7 @@ &i2c7 {
+ 
+ 	es8316: audio-codec@11 {
+ 		compatible = "everest,es8316";
+-		reg = <0x11>;
++		reg = <0x10>;
+ 		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
+ 		assigned-clock-rates = <12288000>;
+ 		clocks = <&cru I2S0_8CH_MCLKOUT>;
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
