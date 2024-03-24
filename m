@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FAA1CD1280
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 22:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11EF9CD11DD
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Mar 2024 22:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SVdQvMblSxTkJ97kxQwiSAbfYDIZBvGIomWvBwjtWA4=; b=ej1ijdY/WnUh1x
-	7zXSx6HbYJShWoyFBGgXJWUJu9vgkltFqeAUtldrPpSgqasLTtf4+/pRb6T/LBXpIu/eZAEhyknM5
-	mnsRtr7asKnPLMSjlraJ8EiR4C6AM/vxwmWVDdeTLNskpBY2ahKGtgK1/Y1CmMNNGrSPWRd5FUnsV
-	FOXF7pF4mEmucEqS9e2L7NokqLgWJf8rUBeSYFz2hpg/6fjiSwDook9vBY9h5XmL0ieA3XGXToSs/
-	v2C3ByJtaysBNnp8loQW6gLx2lb5F1eb1oKj7McCS/PmLmnGLI1p9jMZe4j/13kt3SfeKeUQqAfqD
-	GVH/nQ8c4PoI55C6IGNw==;
+	List-Owner; bh=aOHiYFZnvJ2YUkT8RCIEONa8idP6TGtaoVQcVHgl/9A=; b=v96Xp5oEYpu3Zk
+	NrHZEy+O7T8udmLvOr5a5HjMCNX6LiHwemVuyYAkmXmu+fXWd9fJWgAzkCz7j7EGZ6BnDTsBj0faz
+	dNIyBEhjkn1ZihKVrWmlbKujlLI5RS7iO2guxAd2qR1sgGk1KWPD6k2fYtpPu8eBwyPcuQ1nwgwgX
+	CJxcXd3mLR4ETMkTjkGOF1yhRNPIwwIPxHL07icD7DtJ7gwuKjuiHxoehx1jafAniAkIn9L6uvqWV
+	cqIfZ8sBkAQtTJW/B3VANsEAVx24PGn28uUxeK+0veHrXi2pQsYf8LdzsGs5CZVgs4L24Tup7RCvK
+	4+ou4rYUUZr3/QvVI6mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roWUw-0000000Dd5y-3X5J;
-	Sun, 24 Mar 2024 22:39:26 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1roWV6-0000000DdEV-40mQ;
+	Sun, 24 Mar 2024 22:39:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roWUn-0000000Dczg-1Ldk;
-	Sun, 24 Mar 2024 22:39:20 +0000
+	id 1roWV4-0000000DdBB-1U3R;
+	Sun, 24 Mar 2024 22:39:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=wrjn6GnIBGNgflJsIGoneCMmBCncRDqkZF4ct1Z/6HQ=; b=XiJcV/1p/6+8+na/d05AJpvn2H
+	wxO86kFPsQiVgoDDUgAtcPdBX9s0jbbmKQ3DQip4tawyNUMPC8M1ftyahAELep/iO2d0Ae9F+zsfB
+	2o2lBfq3dPSDm2hANHn26Qns+W7nZzUDN4lG5ep3C3rfmPLQJAYufnLCRw6QkA0ub/qzyLQfDnQtI
+	fxOk4AR4A4GIc4yGxqi/0s4YN76ZPV6R6c/SHzj07Tn8Hc1ER6dmgzlPY0SrRNkLwnxAu5dizJdvv
+	2/9GqHO4BHWcvd52XsMefzouSFHv96gB/9V+mFXipH6bRyhTGHI+gJioTTwWYoyhaSpJoQ3vKkgRN
+	u6LZiRUA==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1roWUu-0000000GG9x-0C5p;
+	Sun, 24 Mar 2024 22:39:32 +0000
 Received: from i53875a9e.versanet.de ([83.135.90.158] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1roWUV-0007sn-00; Sun, 24 Mar 2024 23:38:59 +0100
+	id 1roWUX-0007sn-4U; Sun, 24 Mar 2024 23:39:01 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Quentin Schulz <foss+kernel@0leil.net>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	krzysztof.kozlowski+dt@linaro.org,
+	Dragan Simic <dsimic@manjaro.org>,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
 	linux-arm-kernel@lists.infradead.org,
-	dsimic@manjaro.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi CM5
-Date: Sun, 24 Mar 2024 23:38:51 +0100
-Message-Id: <171131986744.918919.780341855295080644.b4-ty@sntech.de>
+	Klaus Goger <klaus.goger@theobroma-systems.com>
+Subject: Re: [PATCH v2 0/3] rockchip: small DTS fixes for RK3399 Puma
+Date: Sun, 24 Mar 2024 23:38:55 +0100
+Message-Id: <171131986744.918919.9548916004778456551.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240324112833.2181961-1-andyshrk@163.com>
-References: <20240324112833.2181961-1-andyshrk@163.com>
+In-Reply-To: <20240308-puma-diode-pu-v2-0-309f83da110a@theobroma-systems.com>
+References: <20240308-puma-diode-pu-v2-0-309f83da110a@theobroma-systems.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_153917_415758_6F5C40BB 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20240324_223924_603764_A27A5481 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,25 +84,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 24 Mar 2024 19:28:33 +0800, Andy Yan wrote:
-> According to the hardware design, the i2c address of audio codec es8316
-> on Cool Pi CM5 is 0x10.
+On Fri, 08 Mar 2024 16:46:06 +0100, Quentin Schulz wrote:
+> There's a pull-up missing on a pin that is used as GPIO input for PCIe
+> which will make the diode/level-shifter not let voltage pass and thus
+> not allowing the state of the pin to change.
 > 
-> This fix the read/write error like bellow:
-> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x0000000c] -6
-> es8316 7-0011: ASoC: error at soc_component_write_no_lock on es8316.7-0011 for register: [0x00000003] -6
-> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
-> es8316 7-0011: ASoC: error at soc_component_read_no_lock on es8316.7-0011 for register: [0x00000016] -6
+> Also add the missing regulators for the PCIe PHY+connector though this
+> is purely cosmetic.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix the i2c address of es8316 on Cool Pi CM5
-      commit: 64da060dd4eb625646970d7c96a16de617412ec5
-
-I've also adapted the node-name accordingly.
-I.e. audio-codec@10 to reflect the fixed address.
+[1/3] arm64: dts: rockchip: enable internal pull-up on Q7_USB_ID for RK3399 Puma
+      commit: e6b1168f37e3f86d9966276c5a3fff9eb0df3e5f
+[2/3] arm64: dts: rockchip: enable internal pull-up on PCIE_WAKE# for RK3399 Puma
+      commit: 945a7c8570916650a415757d15d83e0fa856a686
+[3/3] arm64: dts: rockchip: add regulators for PCIe on RK3399 Puma Haikou
+      commit: d7ed698abc28b2886c9fc71d17ca6b023fcf47f3
 
 Best regards,
 -- 
