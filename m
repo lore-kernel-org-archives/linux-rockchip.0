@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 135F0C54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 16:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFBC4C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 17:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n+4SiROqIRgaI9769LNsv5yKmOl5bzgTIys+xYLrHB4=; b=OXdEsDaxEQxYvF
-	krQYNpnYRXmmmLw1/srLtYg8p2ge69ePIGRIaYNPGwT8LhUIIII6CQzvHCER4PGNZOKBWXJ0kvNsd
-	tZHBZHxSOKNhylXDy3IOzFH1PBXqm9CznGXieBMzKA4vUnuDKGyNmd2qioglvgbS/624aW3wNv2tI
-	DQk2UWa2QGKOLfM23FV91ibv5aZ/JHM+lRFT8TjrAS2pI8EZxWvxZ56QgGIXvOpSUWTQaMKCRnknR
-	SG05bMYP495qBRy+cfsfNBrfSJzq52l4jJJLWkJbGnLO6lUzHs0GhVAZMOysvlaYO66/dqzowyP7G
-	8U4SNrETZkVfR3q54ULA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g7mYdn+c0OPTfNN7LODa3EH5DB9mnnznxy5wEsCxgB8=; b=zINe0KvNcTyglM
+	fcQC8ZWlhVJdsY3C7ELdlee3iuti1dcICOgfAziV8GOX/I9k8fHxHD9VD8RkHWkXVWwL596780WM4
+	xxA8d0RA6cGmS9krAjY+668wzx2cw+j2sSWYdbwLkHkWszcN6K/QeP6LSHUUOFQqJjVgyMh9nAWhN
+	N/BVIxUQpcTRkEWPv6eZYucnntjBbM9UYgc3z0bDBwt4v7/VTe5RV1tESTYehTWujhpy8I3Ps9a75
+	iqVl/tojLh24hiw8FHWmAh/7G1EnSrXOokWXZMWXkRhjNeJozdxUM9yLEK7sB16KGPfS4mPB6oU3x
+	+D1HOhc5p/twC7ITssgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ron2d-00000000idy-2XfX;
-	Mon, 25 Mar 2024 16:19:19 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1ronhO-00000000vC4-2AW4;
+	Mon, 25 Mar 2024 17:01:26 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ron2Y-00000000ic2-1vO5;
-	Mon, 25 Mar 2024 16:19:17 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1711383550;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=eeOca0jbpn3vxiTcP6H4it2Gf901TrwEixbj2YXQxJc=;
-	b=usN4vTLw2BTrm1ZtUsYd9bMu8sefjTpAeJQxdnBsko2UADgccF2naLIgLbsHe/sx/pY5Sf
-	aFhOhb/fgrWjEiEhhi9d7PdhjtFpWi50o4dmgS5XE8SNwSrkhCdyKs6dLOt/XEYoX7A8CR
-	UgyD1T6d3HsvPK9S6eD1KNYNNbDoM6qq3HmN8bG4GHTYukr8aO8YCXScC0bpbqM87D0yCg
-	n6QJOqEwGGkcdF92uy8qsQGXw/Tm5590pjAKU/t2FgECrkXxTfTG1FkVPZOGro7sw1kkH6
-	SLF3EoI0XnRcTS8CZjkjRCKqUj+hn4YDFKb0gfiYJzwObEejr/q+xitu2sr/xA==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	boris.brezillon@collabora.com,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	sebastian.reichel@collabora.com
-Subject: [PATCH] arm64: dts: rockchip: quartzpro64: Enable the GPU
-Date: Mon, 25 Mar 2024 17:19:04 +0100
-Message-Id: <0f3759ee390f245dac447bbee038445ddfecbec0.1711383286.git.dsimic@manjaro.org>
+	id 1ronhK-00000000v8h-2SI3
+	for linux-rockchip@lists.infradead.org;
+	Mon, 25 Mar 2024 17:01:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711386079;
+	bh=J65GG3qBBSnWUcbMSJgEcFyXxA8qwEWeK8c+V32sdPk=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=HVnyuDHnc+yeAIvf6f4BgaiUKTqwveBDuAHewSzDfehGNtTWgFvi9HHkYe4poG3d2
+	 aMk3M2gVgAH0oOWxeJaYHmdmK4/xNzs9Z20IPWiq4V/mBtEMQx1D2RDT043Uq42W0M
+	 fiBpin06pwJv0c7BSdI9LDnlr8vHFPJf8eO04IWMSM/z8iO/i1HqkgLfN5STnoXdH6
+	 y+Zs2t6cv5vjfog2PSPj279F4ofNvIPbLalnwUYHavrI29Zp2NaOzQDu2tN+4vr5AY
+	 nk/NOMZPm6H5R/GUxpzFejsuonOVIQY/EglTHfsmPycijd+FSXvVGjtwEBTVEQAVjO
+	 sIayP/IXBvgbQ==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D353837820E1;
+	Mon, 25 Mar 2024 17:01:18 +0000 (UTC)
+Date: Mon, 25 Mar 2024 18:01:17 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v1 3/4] arm64: dts: rockchip: rk3588-rock5b: Enable GPU
+Message-ID: <20240325180117.39d72749@collabora.com>
+In-Reply-To: <a6uu7b3y7d4nirxbplc5cj4oeuyblx2grpvvldeovofhx3tnqc@dlse3vixhpws>
+References: <20240325153850.189128-1-sebastian.reichel@collabora.com>
+	<20240325153850.189128-4-sebastian.reichel@collabora.com>
+	<20240325164441.1dab4018@collabora.com>
+	<a6uu7b3y7d4nirxbplc5cj4oeuyblx2grpvvldeovofhx3tnqc@dlse3vixhpws>
+Organization: Collabora
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_091914_987241_C75339A3 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20240325_100123_520722_BF09325C 
+X-CRM114-Status: GOOD (  26.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,72 +81,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Following the approach used to enable the Mali GPU on the rk3588-evb1, [1]
-do the same for the Pine64 QuartzPro64, which uses nearly identical hardware
-design as the RK3588 EVB1.
+On Mon, 25 Mar 2024 16:58:47 +0100
+Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
 
-The slight disadvantage is that the regulator coupling logic requires the
-regulators to be always on, which is also noted in the comments.  This is
-obviously something to be improved at some point in the future, but should
-be fine for now, especially because the QuartzPro64 isn't a battery-powered
-board, so low power consumption isn't paramount.
+> Hi,
+> 
+> On Mon, Mar 25, 2024 at 04:44:41PM +0100, Boris Brezillon wrote:
+> > On Mon, 25 Mar 2024 16:37:20 +0100
+> > Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+> >   
+> > > From: Boris Brezillon <boris.brezillon@collabora.com>
+> > > 
+> > > Enable the Mali GPU in the Rock 5B.
+> > > 
+> > > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>  
+> > 
+> > I don't remember writing this patch ;-), maybe I screwed authorship at
+> > some point, dunno.  
+> 
+> mh, I cherry-picked the DT patches from your branch before
+> cleaning them up.
 
-[1] https://lore.kernel.org/linux-rockchip/20240325153850.189128-5-sebastian.reichel@collabora.com/
+Yep,  I probably wrote this patch and asked someone else to test. I
+couldn't find any traces of this patch where I'm not flagged as the
+author in any of my local branches.
 
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+> 
+> > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 ++++++
+> > >  1 file changed, 6 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > > index 1fe8b2a0ed75..096ee7a98b89 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> > > @@ -180,6 +180,11 @@ &cpu_l3 {
+> > >  	cpu-supply = <&vdd_cpu_lit_s0>;
+> > >  };
+> > >  
+> > > +&gpu {
+> > > +	mali-supply = <&vdd_gpu_s0>;
+> > > +	status = "okay";
+> > > +};
+> > > +
+> > >  &i2c0 {
+> > >  	pinctrl-names = "default";
+> > >  	pinctrl-0 = <&i2c0m2_xfer>;
+> > > @@ -470,6 +475,7 @@ rk806_dvs3_null: dvs3-null-pins {
+> > >  
+> > >  		regulators {
+> > >  			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
+> > > +				regulator-always-on;  
+> > 
+> > Hm, should we mention why the regulator is always on here?  
+> 
+> In case of the EVB1 it's needed because the generic coupler driver
+> cannot handle regulators that are not always on.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-index 67414d72e2b6..68d432c61ea5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-@@ -285,6 +285,12 @@ &gmac0_rgmii_clk
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	sram-supply = <&vdd_gpu_mem_s0>;
-+	status = "okay";
-+};
-+
- &i2c2 {
- 	status = "okay";
- 
-@@ -491,11 +497,15 @@ rk806_dvs3_null: dvs3-null-pins {
- 		regulators {
- 			vdd_gpu_s0: dcdc-reg1 {
- 				regulator-name = "vdd_gpu_s0";
-+				/* regulator coupling requires always-on */
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-min-microvolt = <550000>;
- 				regulator-max-microvolt = <950000>;
- 				regulator-ramp-delay = <12500>;
-+				regulator-coupled-with = <&vdd_gpu_mem_s0>;
-+				regulator-coupled-max-spread = <10000>;
- 
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
-@@ -545,11 +555,15 @@ regulator-state-mem {
- 
- 			vdd_gpu_mem_s0: dcdc-reg5 {
- 				regulator-name = "vdd_gpu_mem_s0";
-+				/* regulator coupling requires always-on */
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-min-microvolt = <675000>;
- 				regulator-max-microvolt = <950000>;
- 				regulator-ramp-delay = <12500>;
-+				regulator-coupled-with = <&vdd_gpu_s0>;
-+				regulator-coupled-max-spread = <10000>;
- 
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
+Ah, okay. I thought I added that for a different reason.
+
+> I'm not sure why
+> it was added for the Rock 5B. I will check if it works without that
+> flag.
 
 _______________________________________________
 Linux-rockchip mailing list
