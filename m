@@ -4,70 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63326C54E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5B22C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k22cc+RaWNkXSRL62rDDlfK9i+2wMG+XJq/XvLliPYA=; b=K/jsIuESVqgDvG
-	vcte4K4GTs1Qe9KI1nf6mRqYDh2KZY2UnxJoDGgxQQ7gANhasUBqFhmabmaWSs3dV6z5YNop9neX9
-	2lCn4tIIWa6uehtn7GPYZE5NzYz7S/cGLf+1HCgmmROm844n4PQWG0IG3jZR4df16rEj7i7hBaYGK
-	97paNOCziNDyK82cEpGVYvqE7pIHUZnVMp118i1R3urAxycImSODgiXI4U6hskW02MBcWWNYFUd6Q
-	yv2qFlm9q/RNifAZVsO5CtdO01Ab1Eyljy2Bv8mukRWiTKrdRtKb14d5IZZ/defOHEohn3FtrAMTQ
-	Zs46qdqyZXDaNYgAeUyA==;
+	List-Owner; bh=ZZ6IGTSY5HyfEQJIqZ+V+NayDGETSwY9LQtWDrl1930=; b=bRK8Aww2i/TXb6
+	8KCfcYSDtOSBqPV0pHJiC8jEDzIIJBK+V79hLlC/3bgaMTGqycIiSOwKKMmz9nJMDLH4WxYCeIk9h
+	ut/ybqQVwd8DlqVgCtFsldtrS3MuQ/9YSTj3paLIP8KAe+5PuWxTJ8VScgNGqZVd5yhqQoU72bPUi
+	1V1MPTu8DVqe6LUFWgHArWodv92+ro5ssKAS6cPGsn4ZpmuSJgbrWLFQuAnB41Op//BkCndf1Mn+9
+	j6pRieNCjxhi+B5PRyOFN/vSxi6pWNtl4vVQ9AfZmod4NPwqybJ5IfV0zibVKOeIlmIcuK731LqEe
+	lrmpnxmZHOzuVHMhPNuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romPu-00000000XeL-42p6;
-	Mon, 25 Mar 2024 15:39:18 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1romQA-00000000XoA-44cb;
+	Mon, 25 Mar 2024 15:39:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romPq-00000000Xav-4AX0
+	id 1romQ7-00000000Xm0-3u7x
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 15:39:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711381147;
-	bh=/Nxs6FstrASPGXaLg5JYRLWZbQzXEV2qtmeifS1oC4A=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KuxxvBjY/VL9GvrsKl94GyItaw4fp7KEaQoKAYxA0loCP3BpEZADWDMzWi6SYqIhR
-	 JgRpOZDTX7IgtUvOEdsAXNYVaolBK6k0Ea9xOqFt09YnCZNI0rAnqXQIPiphUeD1me
-	 Wno6O442U9mF1jx3XJ3+6knlbwkkssTyeFoiR/llDw+ykaR0U7n1XRzsALjuCR51sA
-	 ivYrR2dtLhVuFkkZIBAqq0DyYZNAJflSVaO2f82CEtKi1UI1GYOwYw/6vy97KL+l8q
-	 fFK2BScpau+xVhPj0ZOA4Y37aMZPL8SyzR+j5WgYo9SUWdQwSsPQXyNMr4o8482UeL
-	 scny7TgeMKTcA==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CA40137820BB;
-	Mon, 25 Mar 2024 15:39:07 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7121B4800CF; Mon, 25 Mar 2024 16:39:07 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v1 2/4] arm64: dts: rockchip: rk3588: Add GPU nodes
-Date: Mon, 25 Mar 2024 16:37:19 +0100
-Message-ID: <20240325153850.189128-3-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240325153850.189128-1-sebastian.reichel@collabora.com>
-References: <20240325153850.189128-1-sebastian.reichel@collabora.com>
+	Mon, 25 Mar 2024 15:39:33 +0000
+Received: from i53875aaf.versanet.de ([83.135.90.175] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1romQ5-0000qv-C2; Mon, 25 Mar 2024 16:39:29 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, robh@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Correct RGxx3 SDMMC ordering
+Date: Mon, 25 Mar 2024 16:39:28 +0100
+Message-ID: <2963425.VdNmn5OnKV@diego>
+In-Reply-To: <20240325143729.83852-4-macroalpha82@gmail.com>
+References: <20240325143729.83852-1-macroalpha82@gmail.com>
+ <20240325143729.83852-4-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_083915_217636_83135E69 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240325_083932_211187_D2F87178 
+X-CRM114-Status: GOOD (  17.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,91 +58,211 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Boris Brezillon <boris.brezillon@collabora.com>
+Hmm,
 
-Add Mali GPU Node to the RK3588 SoC DT including GPU clock
-operating points
+Am Montag, 25. M=E4rz 2024, 15:37:28 CET schrieb Chris Morgan:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> =
 
-Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 56 +++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+> Make the order of SDMMC predictable across the entire device lineup.
+> This allows userspace to always know that sdmmc0 is the eMMC (when
+> present), sdmmc1 is always the first sd card slot, sdmmc2 is always
+> the 2nd sd card slot (when present), and sdmmc3 is always the wifi
+> (when present).
+> =
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 87b83c87bd55..89d40cff635f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -501,6 +501,62 @@ usb_host2_xhci: usb@fcd00000 {
- 		status = "disabled";
- 	};
- 
-+	gpu: gpu@fb000000 {
-+		compatible = "rockchip,rk3588-mali", "arm,mali-valhall-csf";
-+		reg = <0x0 0xfb000000 0x0 0x200000>;
-+		#cooling-cells = <2>;
-+		assigned-clocks = <&scmi_clk SCMI_CLK_GPU>;
-+		assigned-clock-rates = <200000000>;
-+		clocks = <&cru CLK_GPU>, <&cru CLK_GPU_COREGROUP>,
-+			 <&cru CLK_GPU_STACKS>;
-+		clock-names = "core", "coregroup", "stacks";
-+		dynamic-power-coefficient = <2982>;
-+		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "job", "mmu", "gpu";
-+		operating-points-v2 = <&gpu_opp_table>;
-+		power-domains = <&power RK3588_PD_GPU>;
-+		status = "disabled";
-+
-+		gpu_opp_table: opp-table {
-+			compatible = "operating-points-v2";
-+
-+			opp-300000000 {
-+				opp-hz = /bits/ 64 <300000000>;
-+				opp-microvolt = <675000 675000 850000>;
-+			};
-+			opp-400000000 {
-+				opp-hz = /bits/ 64 <400000000>;
-+				opp-microvolt = <675000 675000 850000>;
-+			};
-+			opp-500000000 {
-+				opp-hz = /bits/ 64 <500000000>;
-+				opp-microvolt = <675000 675000 850000>;
-+			};
-+			opp-600000000 {
-+				opp-hz = /bits/ 64 <600000000>;
-+				opp-microvolt = <675000 675000 850000>;
-+			};
-+			opp-700000000 {
-+				opp-hz = /bits/ 64 <700000000>;
-+				opp-microvolt = <700000 700000 850000>;
-+			};
-+			opp-800000000 {
-+				opp-hz = /bits/ 64 <800000000>;
-+				opp-microvolt = <750000 750000 850000>;
-+			};
-+			opp-900000000 {
-+				opp-hz = /bits/ 64 <900000000>;
-+				opp-microvolt = <800000 800000 850000>;
-+			};
-+			opp-1000000000 {
-+				opp-hz = /bits/ 64 <1000000000>;
-+				opp-microvolt = <850000 850000 850000>;
-+			};
-+		};
-+	};
-+
- 	pmu1grf: syscon@fd58a000 {
- 		compatible = "rockchip,rk3588-pmugrf", "syscon", "simple-mfd";
- 		reg = <0x0 0xfd58a000 0x0 0x10000>;
--- 
-2.43.0
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+
+this is really really difficult.
+
+For example, you added the rg353p, rk503 nad rg353vs and their aliases
+two years ago for 6.1 , the rg353ps for 6.5.  So someone might actually
+rely on those already in their userspace setup.
+
+So reorganizing the aliases to point to different devices might actually
+break userspace, which as you might know, is sort of a big deal ;-) .
+
+Userspace programs can determine the mmc mapping via the board-compatible
+though.
+
+
+Heiko
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts | 7 -------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts | 6 ------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts   | 7 -------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts  | 6 ------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts   | 7 -------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts  | 6 ------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts    | 6 ------
+>  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi   | 7 +++++++
+>  8 files changed, 7 insertions(+), 45 deletions(-)
+> =
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts b/=
+arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
+> index ab83e8a61615..d239a8452957 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
+> @@ -10,13 +10,6 @@
+>  / {
+>  	model =3D "Anbernic RG ARC-D";
+>  	compatible =3D "anbernic,rg-arc-d", "rockchip,rk3566";
+> -
+> -	aliases {
+> -		mmc0 =3D &sdhci;
+> -		mmc1 =3D &sdmmc0;
+> -		mmc2 =3D &sdmmc1;
+> -		mmc3 =3D &sdmmc2;
+> -	};
+>  };
+>  =
+
+>  &i2c2 {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts b/=
+arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
+> index 6264a8c78d0b..4bb13d94a759 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
+> @@ -10,10 +10,4 @@
+>  / {
+>  	model =3D "Anbernic RG ARC-S";
+>  	compatible =3D "anbernic,rg-arc-s", "rockchip,rk3566";
+> -
+> -	aliases {
+> -		mmc1 =3D &sdmmc0;
+> -		mmc2 =3D &sdmmc1;
+> -		mmc3 =3D &sdmmc2;
+> -	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/ar=
+ch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+> index 8aa93c646bec..94c678c44d3a 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+> @@ -11,13 +11,6 @@ / {
+>  	model =3D "RG353P";
+>  	compatible =3D "anbernic,rg353p", "rockchip,rk3566";
+>  =
+
+> -	aliases {
+> -		mmc0 =3D &sdhci;
+> -		mmc1 =3D &sdmmc0;
+> -		mmc2 =3D &sdmmc1;
+> -		mmc3 =3D &sdmmc2;
+> -	};
+> -
+>  	battery: battery {
+>  		compatible =3D "simple-battery";
+>  		charge-full-design-microamp-hours =3D <3472000>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts b/a=
+rch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
+> index b211973e36c2..25edd81ce26b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
+> @@ -11,12 +11,6 @@ / {
+>  	model =3D "RG353PS";
+>  	compatible =3D "anbernic,rg353ps", "rockchip,rk3566";
+>  =
+
+> -	aliases {
+> -		mmc0 =3D &sdmmc0;
+> -		mmc1 =3D &sdmmc1;
+> -		mmc2 =3D &sdmmc2;
+> -	};
+> -
+>  	battery: battery {
+>  		compatible =3D "simple-battery";
+>  		charge-full-design-microamp-hours =3D <3472000>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/ar=
+ch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+> index f49ce29ba597..5354c5958df2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+> @@ -11,13 +11,6 @@ / {
+>  	model =3D "RG353V";
+>  	compatible =3D "anbernic,rg353v", "rockchip,rk3566";
+>  =
+
+> -	aliases {
+> -		mmc0 =3D &sdhci;
+> -		mmc1 =3D &sdmmc0;
+> -		mmc2 =3D &sdmmc1;
+> -		mmc3 =3D &sdmmc2;
+> -	};
+> -
+>  	battery: battery {
+>  		compatible =3D "simple-battery";
+>  		charge-full-design-microamp-hours =3D <3151000>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts b/a=
+rch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+> index a7dc462fe21f..02653b59f6c2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+> @@ -11,12 +11,6 @@ / {
+>  	model =3D "RG353VS";
+>  	compatible =3D "anbernic,rg353vs", "rockchip,rk3566";
+>  =
+
+> -	aliases {
+> -		mmc0 =3D &sdmmc0;
+> -		mmc1 =3D &sdmmc1;
+> -		mmc2 =3D &sdmmc2;
+> -	};
+> -
+>  	battery: battery {
+>  		compatible =3D "simple-battery";
+>  		charge-full-design-microamp-hours =3D <3151000>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arc=
+h/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+> index 94e6dd61a2db..e7161a86a9f1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+> @@ -11,12 +11,6 @@ / {
+>  	model =3D "RG503";
+>  	compatible =3D "anbernic,rg503", "rockchip,rk3566";
+>  =
+
+> -	aliases {
+> -		mmc0 =3D &sdmmc0;
+> -		mmc1 =3D &sdmmc1;
+> -		mmc2 =3D &sdmmc2;
+> -	};
+> -
+>  	adc-joystick {
+>  		compatible =3D "adc-joystick";
+>  		io-channels =3D <&adc_mux 0>,
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi b/ar=
+ch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
+> index 233eade30f21..47c8fdc7c843 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
+> @@ -12,6 +12,13 @@
+>  / {
+>  	chassis-type =3D "handset";
+>  =
+
+> +	aliases {
+> +		mmc0 =3D &sdhci;
+> +		mmc1 =3D &sdmmc0;
+> +		mmc2 =3D &sdmmc1;
+> +		mmc3 =3D &sdmmc2;
+> +	};
+> +
+>  	chosen: chosen {
+>  		stdout-path =3D "serial2:1500000n8";
+>  	};
+> =
+
+
+
+
 
 
 _______________________________________________
