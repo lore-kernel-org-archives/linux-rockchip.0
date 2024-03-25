@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A31C54E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16319C54E64
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VDCF+qz0yPzmmYPWujleCX/d6g/m2ZmdcepZBqwWzHg=; b=gnZA855UOSP0A1
-	SaIICc45y7+XzCVn8ZXUMDAOnhuC84PWNRESJwdvh56GvrNoTjjtjnycbZjL4FI1ZxcgzUhvr/k7k
-	yoagtM+exUxyF7BaO9VE+Fkr+P1bdflQLojLdt3fPWwXcpdrdfkC1yTlTlnClu1AbqrQtUW5FoRTn
-	44eiKj92cr7l6nATbe0W2pvfNw1um2uCXhyWvVaFgE+Qvi/Qiq+6PEMUpXb2FmjYN1ZVn6/mxbqiu
-	o8opC79ILzYQ3GZT0g2HWYg9fthAM0n0+QlPDLl0gg8D8FQtuum7VDYogoAKDlq3XJY750/64BaKs
-	Yd17TQmftoxmeJLk347g==;
+	List-Owner; bh=o6hzXJDdEP3zUsbMYkx8hR4Wh8DDqRxJnFJ0k9lWAso=; b=14siO+wh6GWWp9
+	e/S9hfscnBgKDFIv+UIUKRPPoULnsTH3UpcRezrvktssKLahfUJa/CnLHGUFeEv+NVVRf0ESnKNA5
+	yktEp7jzBtaklxJf5VmcDYHSb14I0HyRAOsjxTn4qVmVWztPHvSOKGjdMQ0AHl0D11flro0thMa0f
+	/IktvAqPGRJ6cF0nh0PQgiijFwwCfC2NhkyGwDVpegX04tc3BOL+ScXm6zOS6DsoF82qHlvxIk3Yf
+	oWjGrWFhj5iyCEg/IJm/5sj/mZdjiwb0d6DnSZUPNZf6MjfwTZ06Df3GJ3z3zwaeNRTWx7P+kV59g
+	WyMrHgRT/uBogM9GY9bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romSc-00000000YSV-19S8;
-	Mon, 25 Mar 2024 15:42:06 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1romVL-00000000ZL9-03zJ;
+	Mon, 25 Mar 2024 15:44:55 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romSX-00000000YQ2-2WCk;
-	Mon, 25 Mar 2024 15:42:03 +0000
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4V3H9z469xz6K9T0;
-	Mon, 25 Mar 2024 23:37:27 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 01EF9140B39;
-	Mon, 25 Mar 2024 23:41:52 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 25 Mar
- 2024 15:41:51 +0000
-Date: Mon, 25 Mar 2024 15:41:50 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Shimrra Shai <shimmyshai00@gmail.com>
-CC: <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<max.schwarz@online.de>, <niyas.sait@huawei.com>
-Subject: Re: [PATCH 0/0] (proposed?) Add ACPI binding to Rockchip RK3xxx I2C
- bus
-Message-ID: <20240325154150.00003bde@Huawei.com>
-In-Reply-To: <20240322155146.22755-1-shimmyshai00@gmail.com>
-References: <20240322103521.00001a12@Huawei.com>
-	<20240322155146.22755-1-shimmyshai00@gmail.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1romVC-00000000ZHQ-49x6
+	for linux-rockchip@lists.infradead.org;
+	Mon, 25 Mar 2024 15:44:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711381484;
+	bh=p6elCi+U91QoAFAv5OeSOQpHEUSS0AUEz76zcbg2hA0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=PYdCrYRPfIizad0x8XJj4QyrkCvECXuEjXXWbP0AvprmmFOzPOap5u9xcrwYZDysS
+	 yPpSyA85aJfTBU4XzfhA+CJDo3mX2S4aiNSlZdVEBhua1kJhCmLEJoXOJotemXE6gm
+	 OHtw1pGPBMTfl+Mp38Fv7BFU7jwPEaAbbb9O6g+r2JdXsMtZLFtAOEzUvjglnlw5rp
+	 lF0ysROvSqj4yonmLH2KAknuStT9vGsOB2LkHK0HDFbdn9A97TnWVcvZ+GWPH7Lk78
+	 vgnSN0Zr61wN3O7/eCyX1XD2x1EMW6WIaFQkkGWgektmkkCQZBYqK3s/IACjsJINrO
+	 h4YbokDZkcmaQ==
+Received: from localhost (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 6617A37813B7;
+	Mon, 25 Mar 2024 15:44:43 +0000 (UTC)
+Date: Mon, 25 Mar 2024 16:44:41 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v1 3/4] arm64: dts: rockchip: rk3588-rock5b: Enable GPU
+Message-ID: <20240325164441.1dab4018@collabora.com>
+In-Reply-To: <20240325153850.189128-4-sebastian.reichel@collabora.com>
+References: <20240325153850.189128-1-sebastian.reichel@collabora.com>
+	<20240325153850.189128-4-sebastian.reichel@collabora.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_084201_987114_D51D4229 
-X-CRM114-Status: GOOD (  46.42  )
+X-CRM114-CacheID: sfid-20240325_084447_782876_20EC4EF6 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,148 +79,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Mar 2024 10:51:46 -0500
-Shimrra Shai <shimmyshai00@gmail.com> wrote:
+On Mon, 25 Mar 2024 16:37:20 +0100
+Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
 
-> Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> From: Boris Brezillon <boris.brezillon@collabora.com>
 > 
-> For
+> Enable the Mali GPU in the Rock 5B.
 > 
-> > It would be good to highlight in this description what is missing for
-> > doing a standard ACPI binding and not using any specific hacks in the
-> > driver (get clocks as normal etc).
-> > 
-> > There are ACPI clock bindings, but Linux doesn't support the yet (I think?)
-> > See ACPICA commit
-> > https://github.com/acpica/acpica/commit/661feab5ee01a34af95a389a18c82e79f1aba05a
-> > 
-> > I've seen prototype code but was a while back.  I'd like to see that
-> > work compled rather than having every driver need to paper over the hole.
-> > 
-> > The alias is a different question that needs to be addressed.
-> > If this is a common pattern, push it up in to the i2c core, not
-> > a specific driver.  I see there is already code related to that
-> > in i2c_add_adapter - that just wants an ACPI option.
-> > 
-> > Jonathan  
-> 
-> and
-> 
-> > That implies that the kernel can cope with the device tree wrapped up in
-> > ACPI path.  If that's the case, why do you need RKCP3001 as you can
-> > match on the compatible?  
-> 
-> This was all based on how the people working on the firmware project wrote
-> the ACPI binding. That said, since I've got a foot in it too I can 
-> definitely submit them an updated binding. The binding for the I2C in the
-> project looks like this:
-> 
->   Device (I2C1) {
->     Name (_HID, "RKCP3001")
->     Name (_CID, "PRP0001")
->     Name (_UID, 1)
->     Name (_CCA, 0)
-> 
->     Method (_CRS, 0x0, Serialized) {
->       Name (RBUF, ResourceTemplate() {
->         Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
->         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
->       })
->       Return (RBUF)
->     }
->     Name (_DSD, Package () {
->       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
->       Package () {
->         Package (2) { "i2c,clk-rate", 198000000 },
->         Package (2) { "rockchip,bclk", 198000000 },
->         Package (2) { "#address-cells", 1 },
->         Package (2) { "#size-cells", 0 },
->       }
->     })
->   }
->   
-> (there are others, e.g. I2C2, I2C3, etc. one for each I2C bus, with
-> correspondingly different _UID and some different numbers for interrupts
-> etc.)
-> 
-> From what I'm gathering from reading the documentation at
-> https://uefi.org/specs/ACPI/6.5/19_ASL_Reference.html
-> which is admittedly quite terse and doesn't provide nearly enough examples
-> for my liking, and given I have not been able to find a "in the wild" ACPI
-> using ClockInput, I presume a better binding would be like this, correct?:
+> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
 
-Niyas is in the CC but is OoO for next few days I think.
-He wrote the ACPICA patches for this and can provide better answers than me.
+I don't remember writing this patch ;-), maybe I screwed authorship at
+some point, dunno.
 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
->   Device (I2C1) {
->     Name (_HID, "RKCP3001")
->     /* _CID is gone now because we are no longer assuming mirror of DT */
->     Name (_UID, 1)
->     Name (_CCA, 0)
-> 
->     Method (_CRS, 0x0, Serialized) {
->       Name (RBUF, ResourceTemplate() {
->         Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
->         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
->         ClockInput (198000000, 1, Hz, Fixed, "PCLK", 0)
->         ClockInput (198000000, 1, Hz, Fixed, "BCLK", 0)
->       })
->       Return (RBUF)
->     }
->     Name (_DSD, Package () {
->       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
->       Package () {
->         Package (2) { "#address-cells", 1 },
->         Package (2) { "#size-cells", 0 },
->       }
->     })
-> 
->     Device (PCLK) {
->       Name (_ADR, 0x0)
->     }
-> 
->     Device (BCLK) {
->       Name (_ADR, 0x1)
->     }
->   }
-> 
-> Note now I added two device nodes for the clocks and use ClockInput to
-> describe the frequencies. I'm unsure though about the device node part,
-> however; I know that the .DTB has a central node for the CRU (the actual
-> clock generator on the RK3588), so should we instead have a top-level
-> Device node "CRU_" and reference the ClockInputs to that, e.g. something
-> like
-> 
->         ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_PCLK)
->         ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_BCLK)
-> 
-> ? (Note the obvious analogy to rk3588s.dtsi for the labels, which would be
-> #defined constants.) Though in this case I'd ask if someone here would be
-> kind enough to supply the structure for the top-level CRU binding so that I
-> don't have to guess the "best" form for the kernel like the makers of the
-> firmware were doing which is what led to this disagreement in the first
-> place.
-> 
-> FWIW, I'd also be willing to help lend a hand to finish out the support for
-> the ClockInput binding in the ACPI reader subsystem. There already seems to
-> be some support, e.g. in drivers/acpi/acpica/rsinfo.c and a few other
-> places, but I'm not sure what else is needed to get it going and would need
-> to study that subsystem in much more depth.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index 1fe8b2a0ed75..096ee7a98b89 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -180,6 +180,11 @@ &cpu_l3 {
+>  	cpu-supply = <&vdd_cpu_lit_s0>;
+>  };
+>  
+> +&gpu {
+> +	mali-supply = <&vdd_gpu_s0>;
+> +	status = "okay";
+> +};
+> +
+>  &i2c0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&i2c0m2_xfer>;
+> @@ -470,6 +475,7 @@ rk806_dvs3_null: dvs3-null-pins {
+>  
+>  		regulators {
+>  			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
+> +				regulator-always-on;
 
-That would be great. It's been on my backlog to take a better look at this, but
-it won't happen any time soon.
+Hm, should we mention why the regulator is always on here?
 
-Niyas, could you forward what you had to Shimrra? (I can find
-it if you don't have it any more).
-
-Thanks,
-
-Jonathan
-
-> 
-> - Shimmy
-> 
+>  				regulator-boot-on;
+>  				regulator-min-microvolt = <550000>;
+>  				regulator-max-microvolt = <950000>;
 
 
 _______________________________________________
