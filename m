@@ -4,49 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5B22C54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:39:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A31C54E64
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZZ6IGTSY5HyfEQJIqZ+V+NayDGETSwY9LQtWDrl1930=; b=bRK8Aww2i/TXb6
-	8KCfcYSDtOSBqPV0pHJiC8jEDzIIJBK+V79hLlC/3bgaMTGqycIiSOwKKMmz9nJMDLH4WxYCeIk9h
-	ut/ybqQVwd8DlqVgCtFsldtrS3MuQ/9YSTj3paLIP8KAe+5PuWxTJ8VScgNGqZVd5yhqQoU72bPUi
-	1V1MPTu8DVqe6LUFWgHArWodv92+ro5ssKAS6cPGsn4ZpmuSJgbrWLFQuAnB41Op//BkCndf1Mn+9
-	j6pRieNCjxhi+B5PRyOFN/vSxi6pWNtl4vVQ9AfZmod4NPwqybJ5IfV0zibVKOeIlmIcuK731LqEe
-	lrmpnxmZHOzuVHMhPNuA==;
+	List-Owner; bh=VDCF+qz0yPzmmYPWujleCX/d6g/m2ZmdcepZBqwWzHg=; b=gnZA855UOSP0A1
+	SaIICc45y7+XzCVn8ZXUMDAOnhuC84PWNRESJwdvh56GvrNoTjjtjnycbZjL4FI1ZxcgzUhvr/k7k
+	yoagtM+exUxyF7BaO9VE+Fkr+P1bdflQLojLdt3fPWwXcpdrdfkC1yTlTlnClu1AbqrQtUW5FoRTn
+	44eiKj92cr7l6nATbe0W2pvfNw1um2uCXhyWvVaFgE+Qvi/Qiq+6PEMUpXb2FmjYN1ZVn6/mxbqiu
+	o8opC79ILzYQ3GZT0g2HWYg9fthAM0n0+QlPDLl0gg8D8FQtuum7VDYogoAKDlq3XJY750/64BaKs
+	Yd17TQmftoxmeJLk347g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romQA-00000000XoA-44cb;
-	Mon, 25 Mar 2024 15:39:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1romSc-00000000YSV-19S8;
+	Mon, 25 Mar 2024 15:42:06 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romQ7-00000000Xm0-3u7x
-	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 15:39:33 +0000
-Received: from i53875aaf.versanet.de ([83.135.90.175] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1romQ5-0000qv-C2; Mon, 25 Mar 2024 16:39:29 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Correct RGxx3 SDMMC ordering
-Date: Mon, 25 Mar 2024 16:39:28 +0100
-Message-ID: <2963425.VdNmn5OnKV@diego>
-In-Reply-To: <20240325143729.83852-4-macroalpha82@gmail.com>
-References: <20240325143729.83852-1-macroalpha82@gmail.com>
- <20240325143729.83852-4-macroalpha82@gmail.com>
+	id 1romSX-00000000YQ2-2WCk;
+	Mon, 25 Mar 2024 15:42:03 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4V3H9z469xz6K9T0;
+	Mon, 25 Mar 2024 23:37:27 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 01EF9140B39;
+	Mon, 25 Mar 2024 23:41:52 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 25 Mar
+ 2024 15:41:51 +0000
+Date: Mon, 25 Mar 2024 15:41:50 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Shimrra Shai <shimmyshai00@gmail.com>
+CC: <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<max.schwarz@online.de>, <niyas.sait@huawei.com>
+Subject: Re: [PATCH 0/0] (proposed?) Add ACPI binding to Rockchip RK3xxx I2C
+ bus
+Message-ID: <20240325154150.00003bde@Huawei.com>
+In-Reply-To: <20240322155146.22755-1-shimmyshai00@gmail.com>
+References: <20240322103521.00001a12@Huawei.com>
+	<20240322155146.22755-1-shimmyshai00@gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_083932_211187_D2F87178 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20240325_084201_987114_D51D4229 
+X-CRM114-Status: GOOD (  46.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,211 +68,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hmm,
+On Fri, 22 Mar 2024 10:51:46 -0500
+Shimrra Shai <shimmyshai00@gmail.com> wrote:
 
-Am Montag, 25. M=E4rz 2024, 15:37:28 CET schrieb Chris Morgan:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> =
+> Jonathan Cameron <Jonathan.Cameron@Huawei.com> wrote:
+> 
+> For
+> 
+> > It would be good to highlight in this description what is missing for
+> > doing a standard ACPI binding and not using any specific hacks in the
+> > driver (get clocks as normal etc).
+> > 
+> > There are ACPI clock bindings, but Linux doesn't support the yet (I think?)
+> > See ACPICA commit
+> > https://github.com/acpica/acpica/commit/661feab5ee01a34af95a389a18c82e79f1aba05a
+> > 
+> > I've seen prototype code but was a while back.  I'd like to see that
+> > work compled rather than having every driver need to paper over the hole.
+> > 
+> > The alias is a different question that needs to be addressed.
+> > If this is a common pattern, push it up in to the i2c core, not
+> > a specific driver.  I see there is already code related to that
+> > in i2c_add_adapter - that just wants an ACPI option.
+> > 
+> > Jonathan  
+> 
+> and
+> 
+> > That implies that the kernel can cope with the device tree wrapped up in
+> > ACPI path.  If that's the case, why do you need RKCP3001 as you can
+> > match on the compatible?  
+> 
+> This was all based on how the people working on the firmware project wrote
+> the ACPI binding. That said, since I've got a foot in it too I can 
+> definitely submit them an updated binding. The binding for the I2C in the
+> project looks like this:
+> 
+>   Device (I2C1) {
+>     Name (_HID, "RKCP3001")
+>     Name (_CID, "PRP0001")
+>     Name (_UID, 1)
+>     Name (_CCA, 0)
+> 
+>     Method (_CRS, 0x0, Serialized) {
+>       Name (RBUF, ResourceTemplate() {
+>         Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
+>         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
+>       })
+>       Return (RBUF)
+>     }
+>     Name (_DSD, Package () {
+>       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+>       Package () {
+>         Package (2) { "i2c,clk-rate", 198000000 },
+>         Package (2) { "rockchip,bclk", 198000000 },
+>         Package (2) { "#address-cells", 1 },
+>         Package (2) { "#size-cells", 0 },
+>       }
+>     })
+>   }
+>   
+> (there are others, e.g. I2C2, I2C3, etc. one for each I2C bus, with
+> correspondingly different _UID and some different numbers for interrupts
+> etc.)
+> 
+> From what I'm gathering from reading the documentation at
+> https://uefi.org/specs/ACPI/6.5/19_ASL_Reference.html
+> which is admittedly quite terse and doesn't provide nearly enough examples
+> for my liking, and given I have not been able to find a "in the wild" ACPI
+> using ClockInput, I presume a better binding would be like this, correct?:
 
-> Make the order of SDMMC predictable across the entire device lineup.
-> This allows userspace to always know that sdmmc0 is the eMMC (when
-> present), sdmmc1 is always the first sd card slot, sdmmc2 is always
-> the 2nd sd card slot (when present), and sdmmc3 is always the wifi
-> (when present).
-> =
+Niyas is in the CC but is OoO for next few days I think.
+He wrote the ACPICA patches for this and can provide better answers than me.
 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> 
+>   Device (I2C1) {
+>     Name (_HID, "RKCP3001")
+>     /* _CID is gone now because we are no longer assuming mirror of DT */
+>     Name (_UID, 1)
+>     Name (_CCA, 0)
+> 
+>     Method (_CRS, 0x0, Serialized) {
+>       Name (RBUF, ResourceTemplate() {
+>         Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
+>         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
+>         ClockInput (198000000, 1, Hz, Fixed, "PCLK", 0)
+>         ClockInput (198000000, 1, Hz, Fixed, "BCLK", 0)
+>       })
+>       Return (RBUF)
+>     }
+>     Name (_DSD, Package () {
+>       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+>       Package () {
+>         Package (2) { "#address-cells", 1 },
+>         Package (2) { "#size-cells", 0 },
+>       }
+>     })
+> 
+>     Device (PCLK) {
+>       Name (_ADR, 0x0)
+>     }
+> 
+>     Device (BCLK) {
+>       Name (_ADR, 0x1)
+>     }
+>   }
+> 
+> Note now I added two device nodes for the clocks and use ClockInput to
+> describe the frequencies. I'm unsure though about the device node part,
+> however; I know that the .DTB has a central node for the CRU (the actual
+> clock generator on the RK3588), so should we instead have a top-level
+> Device node "CRU_" and reference the ClockInputs to that, e.g. something
+> like
+> 
+>         ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_PCLK)
+>         ClockInput (198000000, 1, Hz, Fixed, "CRU_", I2C1_BCLK)
+> 
+> ? (Note the obvious analogy to rk3588s.dtsi for the labels, which would be
+> #defined constants.) Though in this case I'd ask if someone here would be
+> kind enough to supply the structure for the top-level CRU binding so that I
+> don't have to guess the "best" form for the kernel like the makers of the
+> firmware were doing which is what led to this disagreement in the first
+> place.
+> 
+> FWIW, I'd also be willing to help lend a hand to finish out the support for
+> the ClockInput binding in the ACPI reader subsystem. There already seems to
+> be some support, e.g. in drivers/acpi/acpica/rsinfo.c and a few other
+> places, but I'm not sure what else is needed to get it going and would need
+> to study that subsystem in much more depth.
 
-this is really really difficult.
+That would be great. It's been on my backlog to take a better look at this, but
+it won't happen any time soon.
 
-For example, you added the rg353p, rk503 nad rg353vs and their aliases
-two years ago for 6.1 , the rg353ps for 6.5.  So someone might actually
-rely on those already in their userspace setup.
+Niyas, could you forward what you had to Shimrra? (I can find
+it if you don't have it any more).
 
-So reorganizing the aliases to point to different devices might actually
-break userspace, which as you might know, is sort of a big deal ;-) .
+Thanks,
 
-Userspace programs can determine the mmc mapping via the board-compatible
-though.
+Jonathan
 
-
-Heiko
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts | 7 -------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts | 6 ------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts   | 7 -------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts  | 6 ------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts   | 7 -------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts  | 6 ------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts    | 6 ------
->  arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi   | 7 +++++++
->  8 files changed, 7 insertions(+), 45 deletions(-)
-> =
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts b/=
-arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-> index ab83e8a61615..d239a8452957 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-d.dts
-> @@ -10,13 +10,6 @@
->  / {
->  	model =3D "Anbernic RG ARC-D";
->  	compatible =3D "anbernic,rg-arc-d", "rockchip,rk3566";
-> -
-> -	aliases {
-> -		mmc0 =3D &sdhci;
-> -		mmc1 =3D &sdmmc0;
-> -		mmc2 =3D &sdmmc1;
-> -		mmc3 =3D &sdmmc2;
-> -	};
->  };
->  =
-
->  &i2c2 {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts b/=
-arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
-> index 6264a8c78d0b..4bb13d94a759 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg-arc-s.dts
-> @@ -10,10 +10,4 @@
->  / {
->  	model =3D "Anbernic RG ARC-S";
->  	compatible =3D "anbernic,rg-arc-s", "rockchip,rk3566";
-> -
-> -	aliases {
-> -		mmc1 =3D &sdmmc0;
-> -		mmc2 =3D &sdmmc1;
-> -		mmc3 =3D &sdmmc2;
-> -	};
->  };
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/ar=
-ch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> index 8aa93c646bec..94c678c44d3a 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
-> @@ -11,13 +11,6 @@ / {
->  	model =3D "RG353P";
->  	compatible =3D "anbernic,rg353p", "rockchip,rk3566";
->  =
-
-> -	aliases {
-> -		mmc0 =3D &sdhci;
-> -		mmc1 =3D &sdmmc0;
-> -		mmc2 =3D &sdmmc1;
-> -		mmc3 =3D &sdmmc2;
-> -	};
-> -
->  	battery: battery {
->  		compatible =3D "simple-battery";
->  		charge-full-design-microamp-hours =3D <3472000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts b/a=
-rch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-> index b211973e36c2..25edd81ce26b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
-> @@ -11,12 +11,6 @@ / {
->  	model =3D "RG353PS";
->  	compatible =3D "anbernic,rg353ps", "rockchip,rk3566";
->  =
-
-> -	aliases {
-> -		mmc0 =3D &sdmmc0;
-> -		mmc1 =3D &sdmmc1;
-> -		mmc2 =3D &sdmmc2;
-> -	};
-> -
->  	battery: battery {
->  		compatible =3D "simple-battery";
->  		charge-full-design-microamp-hours =3D <3472000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/ar=
-ch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> index f49ce29ba597..5354c5958df2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
-> @@ -11,13 +11,6 @@ / {
->  	model =3D "RG353V";
->  	compatible =3D "anbernic,rg353v", "rockchip,rk3566";
->  =
-
-> -	aliases {
-> -		mmc0 =3D &sdhci;
-> -		mmc1 =3D &sdmmc0;
-> -		mmc2 =3D &sdmmc1;
-> -		mmc3 =3D &sdmmc2;
-> -	};
-> -
->  	battery: battery {
->  		compatible =3D "simple-battery";
->  		charge-full-design-microamp-hours =3D <3151000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts b/a=
-rch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-> index a7dc462fe21f..02653b59f6c2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
-> @@ -11,12 +11,6 @@ / {
->  	model =3D "RG353VS";
->  	compatible =3D "anbernic,rg353vs", "rockchip,rk3566";
->  =
-
-> -	aliases {
-> -		mmc0 =3D &sdmmc0;
-> -		mmc1 =3D &sdmmc1;
-> -		mmc2 =3D &sdmmc2;
-> -	};
-> -
->  	battery: battery {
->  		compatible =3D "simple-battery";
->  		charge-full-design-microamp-hours =3D <3151000>;
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arc=
-h/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-> index 94e6dd61a2db..e7161a86a9f1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
-> @@ -11,12 +11,6 @@ / {
->  	model =3D "RG503";
->  	compatible =3D "anbernic,rg503", "rockchip,rk3566";
->  =
-
-> -	aliases {
-> -		mmc0 =3D &sdmmc0;
-> -		mmc1 =3D &sdmmc1;
-> -		mmc2 =3D &sdmmc2;
-> -	};
-> -
->  	adc-joystick {
->  		compatible =3D "adc-joystick";
->  		io-channels =3D <&adc_mux 0>,
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi b/ar=
-ch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> index 233eade30f21..47c8fdc7c843 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-> @@ -12,6 +12,13 @@
->  / {
->  	chassis-type =3D "handset";
->  =
-
-> +	aliases {
-> +		mmc0 =3D &sdhci;
-> +		mmc1 =3D &sdmmc0;
-> +		mmc2 =3D &sdmmc1;
-> +		mmc3 =3D &sdmmc2;
-> +	};
-> +
->  	chosen: chosen {
->  		stdout-path =3D "serial2:1500000n8";
->  	};
-> =
-
-
-
-
+> 
+> - Shimmy
+> 
 
 
 _______________________________________________
