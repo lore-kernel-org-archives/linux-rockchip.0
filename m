@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B73FC54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 14:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972B5CD11DD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 14:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3PSXIr2HzPe2u0Ji/hxrZ6r36/3ZGmcpIEikflTnP8Q=; b=Iqbc6ou54Nspyp
-	HgCvjF+2Torut8Kuixq8mYXtr2bnbfZljwRuYuRP7kRQmleMrLdjFB1VPP+NdTV1aaIkpJ40JWnq+
-	jdhlTOVD8z5tmWRm8DUdihf8+GwxJ1eEFV0atl3pnX9bG3AB5rVsSAif+KYc4MWS8kRkt/XSirsoD
-	Mvp8xmFh1K8fMNC/ovuLvzSr4FaDzFq8uXLeskKDt4EE1vQgDJASCFdY4T32PGo9GTUWMk5cT0hSn
-	q9m6rxW8GrOJn00NMH1lwblCsO9MNJETh1HQcUsyGzfG+EuJWLaw2YCzYUBVrzAJs15L6Y0XXuEx6
-	LaxCZlhrenf34bKnKvjQ==;
+	List-Owner; bh=EtABwX+I70rqV6dxYz/iXAsklG2ryBGkBhyvtP4whTc=; b=tIfD8i4K7eUbBx
+	YDGid71E237VCsxPXrD2aa4Y615S9O3LzMg3Pt9axaghY+d6qHR91ezfE0KEQc5I55VSBPq5hWFDS
+	A3aWJjbCR4xtI8UYtDiA/S4XSf7NgOM8H+vAT0e3PG8B24jSwgpz3jUvPk5edDEg1+LX//26zKtqd
+	ZObMOStVPtSM1KlqOkx1lVLot1ASMaQpt9bMZkuvCed7WseT3WAec4hQneZ0B8WySkRkH7xYFvvvK
+	T+pilCLf6vOMvbZY8X62kXT6xRCRq4KL9ahKTWzSBiBkUbv+U8vefwotmjET2zSbVH0iOCoIppsgQ
+	EayGhsIE88uGVo69Nf4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rol8k-00000000Ab0-3gaa;
-	Mon, 25 Mar 2024 14:17:30 +0000
+	id 1rol99-00000000Ajo-0kXS;
+	Mon, 25 Mar 2024 14:17:55 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rol8N-00000000AMt-39wO;
+	id 1rol8N-00000000AMu-3AVs;
 	Mon, 25 Mar 2024 14:17:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1711376217;
-	bh=czCfbCIPjGP9pvjr6UIUI+9KpI2JwNoa8jr1BZd0FOw=;
+	bh=wiEnxwe82TmRvgNDZ6E4uS/rMyY8NbaFBv7UCAOXX94=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TEuYmlieIurR7QkMGQV2W5zESDLchoqp7x4uEhP+k89BWsqodu3OaJk5Q22ap60ST
-	 +/eL+LrTZj0MmmJ44lFQztTg3+W+BSWhMo4i4nphJ6x9Chd7Zx2+U7scWb2ASpovfC
-	 +pJ+1Ee+MwncbmvX+dhwIi95QWORjdvtwit/OdGznVp+6HHR2C5O7baDxZ9UA9OJXw
-	 rYujz0/946o/5sA2YbHfW8w+GlNRhAajOLanMeRZd+xmDA4yoOSTGxGKeIwW930CfR
-	 7X7QTWPrItcyzCvLvOdnbN684GbqYr5bJksqLgJibsOfW3AtiRN6B459qHk2Xf1gYp
-	 V9bZKjEAzBAtQ==
+	b=cqwTJNetQBlwZs3RCJtbdBb2h2n7MQt5A/GGgqJ9iP7BzhInyzFp67LXpXuVuoXkv
+	 4ZhnZsdaX1u7NvVedENnKRSQ0udszgZMmqrLWcq8SZD/zdbv3CCimomAWA2CT1gmTK
+	 LfcnXNsv5DTCT8F3WhQ+PTjVAzzulKERyAyEeKYzMctsNHDHRCpBiAIchNTft45U0Z
+	 CwrkvvDpoHaP1JeIAo9MLGbQ8s80KpHXnKRRjUuaQh2matVprGPj7XtqOo2hFdmraS
+	 Ptg2XMp1S3Cryyh3+H1ck3LTVAyYupvkrXq41OUXEGiagdvF8+Y1k9i5Ne1z51cVrU
+	 W3Wkedi+DthEA==
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id B3DA737820E7;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id A4C2F37820E4;
 	Mon, 25 Mar 2024 14:16:57 +0000 (UTC)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id A1F504800D6; Mon, 25 Mar 2024 15:16:56 +0100 (CET)
+	id 9E4D44800D4; Mon, 25 Mar 2024 15:16:56 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Vinod Koul <vkoul@kernel.org>,
@@ -60,16 +60,16 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v4 09/10] arm64: dts: rockchip: add upper USB3 port to rock-5a
-Date: Mon, 25 Mar 2024 15:15:39 +0100
-Message-ID: <20240325141653.84910-10-sebastian.reichel@collabora.com>
+Subject: [PATCH v4 07/10] arm64: dts: rockchip: add USB3 DRD controllers on rk3588
+Date: Mon, 25 Mar 2024 15:15:37 +0100
+Message-ID: <20240325141653.84910-8-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240325141653.84910-1-sebastian.reichel@collabora.com>
 References: <20240325141653.84910-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_071708_174871_7CFD2267 
-X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-CacheID: sfid-20240325_071708_146322_AA58CFA3 
+X-CRM114-Status: UNSURE (   9.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,57 +87,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable full support (XHCI, EHCI, OHCI) for the upper USB3 port from
-Radxa Rock 5 Model A. The lower one is already supported.
+Add both USB3 dual-role controllers to the RK3588 devicetree.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../boot/dts/rockchip/rk3588s-rock-5a.dts      | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi  | 20 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 22 ++++++++++++++++++++++
+ 2 files changed, 42 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 00afb90d4eb1..b8ca3ee4c89a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -697,6 +697,14 @@ regulator-state-mem {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+index 4fdd047c9eb9..5984016b5f96 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
+@@ -7,6 +7,26 @@
+ #include "rk3588-pinctrl.dtsi"
+ 
+ / {
++	usb_host1_xhci: usb@fc400000 {
++		compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
++		reg = <0x0 0xfc400000 0x0 0x400000>;
++		interrupts = <GIC_SPI 221 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru REF_CLK_USB3OTG1>, <&cru SUSPEND_CLK_USB3OTG1>,
++			 <&cru ACLK_USB3OTG1>;
++		clock-names = "ref_clk", "suspend_clk", "bus_clk";
++		dr_mode = "otg";
++		phys = <&u2phy1_otg>, <&usbdp_phy1 PHY_TYPE_USB3>;
++		phy-names = "usb2-phy", "usb3-phy";
++		phy_type = "utmi_wide";
++		power-domains = <&power RK3588_PD_USB>;
++		resets = <&cru SRST_A_USB3OTG1>;
++		snps,dis_enblslpm_quirk;
++		snps,dis-u2-freeclk-exists-quirk;
++		snps,dis-del-phy-power-chg-quirk;
++		snps,dis-tx-ipgap-linecheck-quirk;
++		status = "disabled";
++	};
++
+ 	pcie30_phy_grf: syscon@fd5b8000 {
+ 		compatible = "rockchip,rk3588-pcie3-phy-grf", "syscon";
+ 		reg = <0x0 0xfd5b8000 0x0 0x10000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 3a4f433cef5c..a8f14a74d471 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -436,6 +436,28 @@ scmi_shmem: sram@0 {
+ 		};
  	};
- };
  
-+&u2phy0 {
-+	status = "okay";
-+};
++	usb_host0_xhci: usb@fc000000 {
++		compatible = "rockchip,rk3588-dwc3", "snps,dwc3";
++		reg = <0x0 0xfc000000 0x0 0x400000>;
++		interrupts = <GIC_SPI 220 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru REF_CLK_USB3OTG0>, <&cru SUSPEND_CLK_USB3OTG0>,
++			 <&cru ACLK_USB3OTG0>;
++		clock-names = "ref_clk", "suspend_clk", "bus_clk";
++		dr_mode = "otg";
++		phys = <&u2phy0_otg>, <&usbdp_phy0 PHY_TYPE_USB3>;
++		phy-names = "usb2-phy", "usb3-phy";
++		phy_type = "utmi_wide";
++		power-domains = <&power RK3588_PD_USB>;
++		resets = <&cru SRST_A_USB3OTG0>;
++		snps,dis_enblslpm_quirk;
++		snps,dis-u1-entry-quirk;
++		snps,dis-u2-entry-quirk;
++		snps,dis-u2-freeclk-exists-quirk;
++		snps,dis-del-phy-power-chg-quirk;
++		snps,dis-tx-ipgap-linecheck-quirk;
++		status = "disabled";
++	};
 +
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
- &u2phy2 {
- 	status = "okay";
- };
-@@ -720,6 +728,11 @@ &uart2 {
- 	status = "okay";
- };
- 
-+&usbdp_phy0 {
-+	status = "okay";
-+	rockchip,dp-lane-mux = <2 3>;
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- 	pinctrl-names = "default";
-@@ -730,6 +743,11 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
- &usb_host1_ehci {
- 	status = "okay";
- };
+ 	usb_host0_ehci: usb@fc800000 {
+ 		compatible = "rockchip,rk3588-ehci", "generic-ehci";
+ 		reg = <0x0 0xfc800000 0x0 0x40000>;
 -- 
 2.43.0
 
