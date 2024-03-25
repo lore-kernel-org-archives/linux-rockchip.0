@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4EEC54E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 13:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD655C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 13:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DyiEcRT0BvTPSWoTAeIWRQKwiD7vhUrraGwo0CBfpOk=; b=gW+I2emdz324ug
-	0noU6oJQ/2L4XND348fSko7ienaBs78aoGlMCLBdIc5K3K71rTeMe/wvYmoCWAd+ymABQXTaTSBSl
-	7CE3O1HINbrryigzoURuKg8xhOWCWFEAMB/naRqVs+The3Whsr6GSBERTjNYunw9jgIaK/JDIK/E2
-	WiD9qmM6yx7SS/OvlwS/FFJCAQFkWL/aOZhfmxq5TM0M8MF+6FAatstt2BhVfqA7hhE1wBYNx9Upa
-	WUjNHociua08aWTPeTzP3ZEaCEHPzP8Nr/4q82hGEqWadhAxpMCjVuHouB+2J6OjKTWTAptPG3RLK
-	lTJW4YFoSzfes+jliFiA==;
+	List-Owner; bh=2pUbpsADGlXDPj1+nxBB+s/7JmgPKMHIZ/TDJji5EkE=; b=iydAcc6xyVAFx/
+	l1NS8+IqYQcjYhVyOPsXGQTGEwddK76LpXGwyp3RZIzC3pcmNjn+srnmzIS8UJhjOC44A1hJ4G2iR
+	ETko34qMc76vNt4+0jJXmbpYpjzVder7GZS2GbJYdsly5BV0ucxmiCluIPv/gYOZt0JOkUdNh47AI
+	5ODYcuqqmok4THznREiKoE3PwU9mHAm/IGJ0FmEbmyq/ywKR41oo1hzjGqQjeLpMs0c3zXS8ehKTd
+	7hJQt49qhpvMQPj0839wa3+bvDZ8KNWQO4STw4wh+F8jpB16S0ilFVznIcz6ClbLaXc58ZUp5LXPz
+	tFn8MJlN2ltl51FwaD4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rokiU-000000003nq-1oQa;
-	Mon, 25 Mar 2024 13:50:22 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1rokiW-000000003pR-22lm;
+	Mon, 25 Mar 2024 13:50:24 +0000
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rokiL-000000003g5-3P6J
+	id 1rokiN-000000003ge-14vw
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 13:50:15 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-6e50e8dcc72so1798461a34.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 06:50:10 -0700 (PDT)
+	Mon, 25 Mar 2024 13:50:18 +0000
+Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-6e6a1d24770so2620991a34.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 06:50:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711374609; x=1711979409; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1711374611; x=1711979411; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NZ8I/B+6mEM+116M4DIyR6SirHqDJuaLw9lcy//WX3A=;
-        b=CuSbzbnjQSG252iJWa2OLYQujW27b5RcKaSdzrVahGc2DU290/mBHQ7ktyHc54+RtU
-         l8ew8HzJeZxAuAICUs7jfnpbFDFjmtnAQdjoA6+zzOeQcQkfIzIya0Bvh2RyaIYRFkjN
-         TaEkMDL6aWqp0c3A+2itnrid7+U5QKduN/BjGv1zx/7VweBdtgCpAzpaFG2heQK9Gg0Z
-         vm4nZDdXMScpXNyspptWvPdjxkUk1EEJbYCG+jcKrQYBHdSMYcWV77BVlD7jD1QGzCA7
-         iW1imtChvBwTdA+bARFhwzwByY51IovNOCkAhF7kvU0aRNG2Id2Z7R/Fnscsbj6Wru/D
-         n+JQ==
+        bh=1Myxzqa3EkVTS56GMqlhd0l8iTPqf0adbaLrmdDa0/Q=;
+        b=feroESWwGO0mblVEu6xH3r3X/Y+5DT5AgSjPObbcjTW08tBFUUmiwh3A5ltiE8uuM2
+         tTnhTmZqd/pqRJz8tCchUnGcUy95UexHIK/lrexRAAgVGm9LJ88jLbjyz22be9++LcoI
+         rudEUt5JXa1JuZyEYY6ZlCcof5EK6gBQ59J04pKgq8Fi+NtsgGhmAaR6qbP3E8oxExHq
+         WRSR4FqIXHLDC8MGYGPWB98sxJd5O3nWz6SqO9bkRHgFjlS3wNVdvzyGZNjUphYLtTNq
+         NLIACFazLZmTwQMjBuHn2QLFrvCnd2GvpBLz8QULg1ktJtMXN8pxq6fAgB1rrCMWh9Te
+         t9Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711374609; x=1711979409;
+        d=1e100.net; s=20230601; t=1711374611; x=1711979411;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NZ8I/B+6mEM+116M4DIyR6SirHqDJuaLw9lcy//WX3A=;
-        b=ezQsn0G/4Z8i/Bg7Zu7ZACdUCqwcPz5vyAEfHxLFlpQEUoLBMj/VhKJqnnjQkk50mJ
-         +DaX5xfeLVMrWW1ziU5mYj6NfMzBEZO3JOQ1VWrfPYX9RvPHhqHFSfh/r/oGqKrmS/q6
-         jGVbEyubCQfMfOnkCcEmGZ5OZkV+69SXgfmwwxSF3G3JUtX06QEIoJSOq4S+E9/Hihpr
-         yyqUxHrj1y3kbfEFm1NNkTUV+tvz0SI/KriGzkhhV9LQjuEPpUEuJVEPJYIqX4qm6GYD
-         zwP29VcGMHleoCRDAByy/tG1s9+72JsL5bVXhUDpWH1QB83uulKu22lYaLSMdODh+NLA
-         75mw==
-X-Gm-Message-State: AOJu0Yxn/SgN3aj173GKYXvN9+TMEP+WnhERiAwCjz2yZp0Y808N81Na
-	7JELnF9DfTlLIxFfLNcQINorzqACgD7bbLDXQVS0YleIS3aWkTP/N2zluQUO
-X-Google-Smtp-Source: AGHT+IFw0aRgzuj/ozXB1DR5+V3PMgi7I/Nei+XmYatRDtf2qOj6MyvsNUYaAak5CZgDTgQCqoq5Bw==
-X-Received: by 2002:a9d:4e97:0:b0:6e4:e483:863f with SMTP id v23-20020a9d4e97000000b006e4e483863fmr7712698otk.23.1711374609412;
-        Mon, 25 Mar 2024 06:50:09 -0700 (PDT)
+        bh=1Myxzqa3EkVTS56GMqlhd0l8iTPqf0adbaLrmdDa0/Q=;
+        b=JEURjU4jkbTLk79rJJjskvOC8wdXzVoOiTKusFPfAxZvT6tpAuCL21vKluZpU7GTJA
+         bSf5BNt8dW372VX+XatXpIoIE4VDlJ/WkttGeOg5iTpZGm26XAyyEKyDkyMo7uBUqbCb
+         1o5dWRB5LFaBBPng6e3ClbGr5fNYWele5BwZ75UGpb4NGwGuCdIUuZSpjZdNyftaD8xR
+         Hncu0Jcw85Q1JBwWl76gb7SW8SMzay0aw3/rR60I2wGUnk2IZBypMAiO5pQNA2b6KeQj
+         Fs0AmQaL6UEj8iUxLvsugB52uGvZBX7sEvbcPCx0TwiitoaDCXs/7AxoTpsjR/07f32e
+         wv2w==
+X-Gm-Message-State: AOJu0YzFc6+e3dZJCvKvaNIXfroAIQJNWR5rI4dfJDtYa+Iu2e8FAmzo
+	4aTaSE72ClWfIP1kAaAT5V4KUtUtIdXVmGM1NfI70Y+Uj2BMITsmEJ52rIKC
+X-Google-Smtp-Source: AGHT+IHmddrSZZB2SCJRUO3C2MC0iOFn7e2y/reQwi23NtKWTFC2Zrjz6D9vdouSjoyKsapManJtTg==
+X-Received: by 2002:a05:6830:4426:b0:6e6:e19e:387 with SMTP id q38-20020a056830442600b006e6e19e0387mr905007otv.34.1711374610727;
+        Mon, 25 Mar 2024 06:50:10 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id z8-20020a05683010c800b006e673e2d2a3sm1118250oto.77.2024.03.25.06.50.08
+        by smtp.gmail.com with ESMTPSA id z8-20020a05683010c800b006e673e2d2a3sm1118250oto.77.2024.03.25.06.50.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Mar 2024 06:50:09 -0700 (PDT)
+        Mon, 25 Mar 2024 06:50:10 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -79,16 +79,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 3/5] drm/panel: st7703: Add GameForce Chi Panel Support
-Date: Mon, 25 Mar 2024 08:49:57 -0500
-Message-Id: <20240325134959.11807-4-macroalpha82@gmail.com>
+Subject: [PATCH 5/5] arm64: dts: rockchip: Add GameForce Chi
+Date: Mon, 25 Mar 2024 08:49:59 -0500
+Message-Id: <20240325134959.11807-6-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240325134959.11807-1-macroalpha82@gmail.com>
 References: <20240325134959.11807-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_065013_896115_039D4D35 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20240325_065015_643967_103F910E 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,119 +107,859 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-The GameForce Chi is a handheld device with a 3.5" 640x480 ST7703 based
-display panel.
+Add support for the GameForce Chi, which is a handheld gaming console
+from GameForce with a Rockchip RK3326 SoC. The device has a 640x480
+3.5" dual-lane DSI display, one analog joystick connected to the SoC
+SARADC controller and a second analog joystick connected to an unknown
+UART based ADC, a single SD card slot, a single USB-C port for
+charging, and onboard RTL8723BS WiFi/Bluetooth combo, multiple face
+buttons, and an array of R/G/B LEDs used for key backlighting.
+
+The vendor was unable to provide details on the unknown UART based
+ADC which I have documented via a comment in the device-tree, and
+the vendor also does not have available Bluetooth firmware (the BT
+was not previously working on the vendor's OS, this has also been
+noted in a device-tree comment).
+
+Aside from the right analog ADC joystick and bluetooth all hardware has
+been tested and is working as expected.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- drivers/gpu/drm/panel/panel-sitronix-st7703.c | 87 +++++++++++++++++++
- 1 file changed, 87 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3326-gameforce-chi.dts     | 811 ++++++++++++++++++
+ 2 files changed, 812 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
 
-diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-index a3e142f156d5..7d8302cca091 100644
---- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-+++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-@@ -612,6 +612,92 @@ static const struct st7703_panel_desc rgb10max3_panel_desc = {
- 	.init_sequence = rgb10max3_panel_init_sequence,
- };
- 
-+static int gameforcechi_init_sequence(struct st7703 *ctx)
-+{
-+	struct mipi_dsi_device *dsi = to_mipi_dsi_device(ctx->dev);
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index f906a868b71a..584ee35da180 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -10,6 +10,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351m.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-anbernic-rg351v.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-gameforce-chi.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2-v11.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go3.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts b/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
+new file mode 100644
+index 000000000000..f7a9e763fba0
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3326-gameforce-chi.dts
+@@ -0,0 +1,811 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2024 Chris Morgan <macromorgan@hotmail.com>
++ */
 +
-+	/*
-+	 * Init sequence was supplied by the panel vendor. Panel will not
-+	 * respond to commands until it is brought out of sleep mode first.
-+	 */
++/dts-v1/;
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include "rk3326.dtsi"
 +
-+	mipi_dsi_dcs_exit_sleep_mode(dsi);
-+	msleep(250);
++/ {
++	model = "GameForce Chi";
 +
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETEXTC, 0xf1, 0x12, 0x83);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETMIPI, 0x31, 0x81, 0x05, 0xf9,
-+			       0x0e, 0x0e, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x00, 0x00, 0x44, 0x25, 0x00, 0x91, 0x0a, 0x00,
-+			       0x00, 0x02, 0x4f, 0xd1, 0x00, 0x00, 0x37);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPOWER_EXT, 0x25);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_UNKNOWN_BF, 0x02, 0x11, 0x00);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETRGBIF, 0x0c, 0x10, 0x0a,
-+			       0x50, 0x03, 0xff, 0x00, 0x00, 0x00, 0x00);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETSCR, 0x73, 0x73, 0x50, 0x50,
-+			       0x00, 0x00, 0x08, 0x70, 0x00);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETVDC, 0x46);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPANEL, 0x0b);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETCYC, 0x80);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETDISP, 0x00, 0x13, 0xf0);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETEQ, 0x07, 0x07, 0x0b, 0x0b,
-+			       0x03, 0x0b, 0x00, 0x00, 0x00, 0x00, 0xff, 0x00,
-+			       0xc0, 0x10);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETPOWER, 0x53, 0x00, 0x1e,
-+			       0x1e, 0x77, 0xe1, 0xcc, 0xdd, 0x67, 0x77, 0x33,
-+			       0x33);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETBGP, 0x10, 0x10);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETVCOM, 0x6c, 0x7c);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGIP1, 0x08, 0x00, 0x0e, 0x00,
-+			       0x00, 0xb0, 0xb1, 0x11, 0x31, 0x23, 0x28, 0x10,
-+			       0xb0, 0xb1, 0x27, 0x08, 0x00, 0x04, 0x02, 0x00,
-+			       0x00, 0x00, 0x00, 0x04, 0x02, 0x00, 0x00, 0x00,
-+			       0x88, 0x88, 0xba, 0x60, 0x24, 0x08, 0x88, 0x88,
-+			       0x88, 0x88, 0x88, 0x88, 0x88, 0xba, 0x71, 0x35,
-+			       0x18, 0x88, 0x88, 0x88, 0x88, 0x88, 0x00, 0x00,
-+			       0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x00, 0x00, 0x00);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGIP2, 0x97, 0x0a, 0x82, 0x02,
-+			       0x13, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x80, 0x88, 0xba, 0x17, 0x53, 0x88, 0x88, 0x88,
-+			       0x88, 0x88, 0x88, 0x81, 0x88, 0xba, 0x06, 0x42,
-+			       0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x23, 0x10,
-+			       0x00, 0x02, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+			       0x00);
-+	mipi_dsi_dcs_write_seq(dsi, ST7703_CMD_SETGAMMA, 0x00, 0x07, 0x0b,
-+			       0x27, 0x2d, 0x3f, 0x3b, 0x37, 0x05, 0x0a, 0x0b,
-+			       0x0f, 0x11, 0x0f, 0x12, 0x12, 0x18, 0x00, 0x07,
-+			       0x0b, 0x27, 0x2d, 0x3f, 0x3b, 0x37, 0x05, 0xa0,
-+			       0x0b, 0x0f, 0x11, 0x0f, 0x12, 0x12, 0x18);
++	compatible = "gameforce,chi", "rockchip,rk3326";
 +
-+	return 0;
-+}
++	chassis-type = "handset";
 +
-+static const struct drm_display_mode gameforcechi_mode = {
-+	.hdisplay	= 640,
-+	.hsync_start	= 640 + 40,
-+	.hsync_end	= 640 + 40 + 2,
-+	.htotal		= 640 + 40 + 2 + 80,
-+	.vdisplay	= 480,
-+	.vsync_start	= 480 + 17,
-+	.vsync_end	= 480 + 17 + 5,
-+	.vtotal		= 480 + 17 + 5 + 13,
-+	.clock		= 23546,
-+	.flags		= DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
-+	.width_mm	= 71,
-+	.height_mm	= 53,
++	aliases {
++		mmc0 = &sdmmc;
++		mmc1 = &sdio;
++	};
++
++	chosen {
++		stdout-path = "serial2:115200n8";
++	};
++
++	adc_joystick: adc-joystick {
++		compatible = "adc-joystick";
++		io-channels = <&saradc 0>,
++			      <&saradc 1>;
++		poll-interval = <100>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		axis@0 {
++			reg = <0>;
++			abs-flat = <10>;
++			abs-fuzz = <10>;
++			abs-range = <850 175>;
++			linux,code = <ABS_Y>;
++		};
++
++		axis@1 {
++			reg = <1>;
++			abs-flat = <10>;
++			abs-fuzz = <10>;
++			abs-range = <800 190>;
++			linux,code = <ABS_X>;
++		};
++	};
++
++	adc_keys: adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 2>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <60>;
++
++		button-1 {
++			label = "HAPPY1";
++			linux,code = <BTN_TRIGGER_HAPPY1>;
++			press-threshold-microvolt = <15000>;
++		};
++
++		button-2 {
++			label = "HAPPY2";
++			linux,code = <BTN_TRIGGER_HAPPY2>;
++			press-threshold-microvolt = <300000>;
++		};
++	};
++
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		power-supply = <&vcc_bl>;
++		pwms = <&pwm1 0 25000 0>;
++	};
++
++	battery: battery {
++		compatible = "simple-battery";
++		charge-full-design-microamp-hours = <3000000>;
++		charge-term-current-microamp = <300000>;
++		constant-charge-current-max-microamp = <1500000>;
++		constant-charge-voltage-max-microvolt = <4200000>;
++		factory-internal-resistance-micro-ohms = <180000>;
++		voltage-max-design-microvolt = <4250000>;
++		voltage-min-design-microvolt = <3400000>;
++
++		ocv-capacity-celsius = <20>;
++		ocv-capacity-table-0 =  <4106000 100>, <4071000 95>, <4018000 90>, <3975000 85>,
++					<3946000 80>, <3908000 75>, <3877000 70>, <3853000 65>,
++					<3834000 60>, <3816000 55>, <3802000 50>, <3788000 45>,
++					<3774000 40>, <3760000 35>, <3748000 30>, <3735000 25>,
++					<3718000 20>, <3697000 15>, <3685000 10>, <3625000 5>,
++					<3400000 0>;
++	};
++
++	gpio_leds: gpio-leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&led_pins>;
++
++		red_led: led-0 {
++			color = <LED_COLOR_ID_RED>;
++			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
++		};
++
++		green_led: led-1 {
++			color = <LED_COLOR_ID_GREEN>;
++			gpios = <&gpio3 RK_PC5 GPIO_ACTIVE_HIGH>;
++		};
++
++		blue_led: led-2 {
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
++		};
++
++		white_led: led-3 {
++			color = <LED_COLOR_ID_WHITE>;
++			function = LED_FUNCTION_STATUS;
++			gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_HIGH>;
++		};
++
++		chg_led: led-4 {
++			color = <LED_COLOR_ID_RED>;
++			function = LED_FUNCTION_CHARGING;
++			gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_HIGH>;
++		};
++
++	};
++
++	gpio_keys: gpio-keys {
++		compatible = "gpio-keys";
++		pinctrl-0 = <&btn_pins_ctrl>;
++		pinctrl-names = "default";
++
++		button-a {
++			gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
++			label = "EAST";
++			linux,code = <BTN_EAST>;
++		};
++
++		button-b {
++			gpios = <&gpio2 RK_PB1 GPIO_ACTIVE_LOW>;
++			label = "SOUTH";
++			linux,code = <BTN_SOUTH>;
++		};
++
++		button-down {
++			gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_LOW>;
++			label = "DPAD-DOWN";
++			linux,code = <BTN_DPAD_DOWN>;
++		};
++
++		button-home {
++			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
++			label = "HOME";
++			linux,code = <BTN_MODE>;
++		};
++
++		button-l1 {
++			gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_LOW>;
++			label = "TL";
++			linux,code = <BTN_TL>;
++		};
++
++		button-l2 {
++			gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_LOW>;
++			label = "TL2";
++			linux,code = <BTN_TL2>;
++		};
++
++		button-left {
++			gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_LOW>;
++			label = "DPAD-LEFT";
++			linux,code = <BTN_DPAD_LEFT>;
++		};
++
++		button-r1 {
++			gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_LOW>;
++			label = "TR";
++			linux,code = <BTN_TR>;
++		};
++
++		button-r2 {
++			gpios = <&gpio2 RK_PA5 GPIO_ACTIVE_LOW>;
++			label = "TR2";
++			linux,code = <BTN_TR2>;
++		};
++
++		button-right {
++			gpios = <&gpio1 RK_PB7 GPIO_ACTIVE_LOW>;
++			label = "DPAD-RIGHT";
++			linux,code = <BTN_DPAD_RIGHT>;
++		};
++
++		button-select {
++			gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_LOW>;
++			label = "SELECT";
++			linux,code = <BTN_SELECT>;
++		};
++
++		button-start {
++			gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
++			label = "START";
++			linux,code = <BTN_START>;
++		};
++
++		button-up {
++			gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_LOW>;
++			label = "DPAD-UP";
++			linux,code = <BTN_DPAD_UP>;
++		};
++
++		button-x {
++			gpios = <&gpio2 RK_PB3 GPIO_ACTIVE_LOW>;
++			label = "NORTH";
++			linux,code = <BTN_NORTH>;
++		};
++
++		button-y {
++			gpios = <&gpio2 RK_PB2 GPIO_ACTIVE_LOW>;
++			label = "WEST";
++			linux,code = <BTN_WEST>;
++		};
++	};
++
++	multi-led {
++		compatible = "leds-group-multicolor";
++		color = <LED_COLOR_ID_RGB>;
++		function = LED_FUNCTION_KBD_BACKLIGHT;
++		leds = <&red_led>, <&green_led>, <&blue_led>;
++	};
++
++	sound {
++		compatible = "simple-audio-card";
++		pinctrl-0 = <&hp_det>;
++		pinctrl-names = "default";
++		simple-audio-card,name = "rk817_ext";
++		simple-audio-card,aux-devs = <&spk_amp>;
++		simple-audio-card,format = "i2s";
++		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
++		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,widgets =
++			"Microphone", "Mic Jack",
++			"Headphone", "Headphones",
++			"Speaker", "Internal Speakers";
++		simple-audio-card,routing =
++			"MICL", "Mic Jack",
++			"Headphones", "HPOL",
++			"Headphones", "HPOR",
++			"Internal Speakers", "Speaker Amp OUTL",
++			"Internal Speakers", "Speaker Amp OUTR",
++			"Speaker Amp INL", "HPOL",
++			"Speaker Amp INR", "HPOR";
++		simple-audio-card,pin-switches = "Internal Speakers";
++
++		simple-audio-card,codec {
++			sound-dai = <&rk817>;
++		};
++
++		simple-audio-card,cpu {
++			sound-dai = <&i2s1_2ch>;
++		};
++	};
++
++	spk_amp: audio-amplifier {
++		compatible = "simple-audio-amplifier";
++		enable-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&spk_amp_enable_h>;
++		pinctrl-names = "default";
++		sound-name-prefix = "Speaker Amp";
++	};
++
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&rk817 1>;
++		clock-names = "ext_clock";
++		pinctrl-0 = <&wifi_enable_h>;
++		pinctrl-names = "default";
++		post-power-on-delay-ms = <200>;
++		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
++	};
++
++	vccsys: vccsys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v8_sys";
++		regulator-always-on;
++		regulator-min-microvolt = <3800000>;
++		regulator-max-microvolt = <3800000>;
++	};
++
++	vibrator_left: pwm-vibrator-l {
++		compatible = "pwm-vibrator";
++		pwm-names = "enable";
++		pwms = <&pwm4 0 25000 0>;
++	};
++
++	vibrator_right: pwm-vibrator-r {
++		compatible = "pwm-vibrator";
++		pwm-names = "enable";
++		pwms = <&pwm5 0 25000 0>;
++	};
 +};
 +
-+static const struct st7703_panel_desc gameforcechi_desc = {
-+	.mode = &gameforcechi_mode,
-+	.lanes = 2,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-+		      MIPI_DSI_MODE_NO_EOT_PACKET | MIPI_DSI_MODE_LPM,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.init_sequence = gameforcechi_init_sequence,
++&cpu0 {
++	cpu-supply = <&vdd_arm>;
 +};
 +
- static int st7703_enable(struct drm_panel *panel)
- {
- 	struct st7703 *ctx = panel_to_st7703(panel);
-@@ -887,6 +973,7 @@ static void st7703_remove(struct mipi_dsi_device *dsi)
- 
- static const struct of_device_id st7703_of_match[] = {
- 	{ .compatible = "anbernic,rg353v-panel-v2", .data = &rg353v2_desc },
-+	{ .compatible = "gameforce,chi-panel", .data = &gameforcechi_desc },
- 	{ .compatible = "powkiddy,rgb10max3-panel", .data = &rgb10max3_panel_desc },
- 	{ .compatible = "powkiddy,rgb30-panel", .data = &rgb30panel_desc },
- 	{ .compatible = "rocktech,jh057n00900", .data = &jh057n00900_panel_desc },
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&display_subsystem {
++	status = "okay";
++};
++
++&dsi {
++	status = "okay";
++
++	ports {
++		mipi_out: port@1 {
++			reg = <1>;
++
++			mipi_out_panel: endpoint {
++				remote-endpoint = <&mipi_in_panel>;
++			};
++		};
++	};
++
++	internal_display: panel@0 {
++		reg = <0>;
++		compatible = "gameforce,chi-panel";
++		backlight = <&backlight>;
++		iovcc-supply = <&vcc_lcd>;
++		vcc-supply = <&vcc_lcd>;
++		reset-gpios = <&gpio3 RK_PA0 GPIO_ACTIVE_LOW>;
++
++		port {
++			mipi_in_panel: endpoint {
++				remote-endpoint = <&mipi_out_panel>;
++			};
++		};
++	};
++};
++
++&dsi_dphy {
++	status = "okay";
++};
++
++&gpu {
++	mali-supply = <&vdd_logic>;
++	status = "okay";
++};
++
++&i2c0 {
++	clock-frequency = <400000>;
++	i2c-scl-falling-time-ns = <16>;
++	i2c-scl-rising-time-ns = <280>;
++	status = "okay";
++
++	rk817: pmic@20 {
++		compatible = "rockchip,rk817";
++		reg = <0x20>;
++		#clock-cells = <1>;
++		clock-names = "mclk";
++		clock-output-names = "rk808-clkout1", "xin32k";
++		clocks = <&cru SCLK_I2S1_OUT>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PC1 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
++		pinctrl-names = "default";
++		#sound-dai-cells = <0>;
++		system-power-controller;
++		wakeup-source;
++
++		vcc1-supply = <&vccsys>;
++		vcc2-supply = <&vccsys>;
++		vcc3-supply = <&vccsys>;
++		vcc4-supply = <&vccsys>;
++		vcc5-supply = <&vccsys>;
++		vcc6-supply = <&vccsys>;
++		vcc7-supply = <&vcc_3v0>;
++		vcc8-supply = <&vccsys>;
++		vcc9-supply = <&dcdc_boost>;
++
++		regulators {
++			vdd_logic: DCDC_REG1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <1150000>;
++				regulator-min-microvolt = <950000>;
++				regulator-name = "vdd_logic";
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vdd_arm: DCDC_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <1350000>;
++				regulator-min-microvolt = <950000>;
++				regulator-name = "vdd_arm";
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vcc_ddr";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_3v0: DCDC_REG4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <3000000>;
++				regulator-min-microvolt = <3000000>;
++				regulator-name = "vcc_3v0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++
++			vcc_1v8: LDO_REG2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <1800000>;
++				regulator-min-microvolt = <1800000>;
++				regulator-name = "vcc_1v8";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdd_1v0: LDO_REG3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <1000000>;
++				regulator-min-microvolt = <1000000>;
++				regulator-name = "vdd_1v0";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++
++			vcc_3v0_pmu: LDO_REG4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <3000000>;
++				regulator-min-microvolt = <3000000>;
++				regulator-name = "vcc_3v0_pmu";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++
++			vccio_sd: LDO_REG5 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <3300000>;
++				regulator-min-microvolt = <1800000>;
++				regulator-name = "vccio_sd";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_sd: LDO_REG6 {
++				regulator-boot-on;
++				regulator-max-microvolt = <3300000>;
++				regulator-min-microvolt = <3300000>;
++				regulator-name = "vcc_sd";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_bl: LDO_REG7 {
++				regulator-max-microvolt = <3300000>;
++				regulator-min-microvolt = <3300000>;
++				regulator-name = "vcc_bl";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_lcd: LDO_REG8 {
++				regulator-max-microvolt = <2800000>;
++				regulator-min-microvolt = <2800000>;
++				regulator-name = "vcc_lcd";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <2800000>;
++				};
++			};
++
++			vcc_wifi: LDO_REG9 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-max-microvolt = <3300000>;
++				regulator-min-microvolt = <3300000>;
++				regulator-name = "vcc_wifi";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			dcdc_boost: BOOST {
++				regulator-max-microvolt = <5000000>;
++				regulator-min-microvolt = <5000000>;
++				regulator-name = "dcdc_boost";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			otg_switch: OTG_SWITCH {
++				regulator-name = "otg_switch";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++		};
++
++		rk817_charger: charger {
++			monitored-battery = <&battery>;
++			rockchip,resistor-sense-micro-ohms = <10000>;
++			rockchip,sleep-enter-current-microamp = <300000>;
++			rockchip,sleep-filter-current-microamp = <100000>;
++		};
++	};
++};
++
++&i2s1_2ch {
++	status = "okay";
++};
++
++&io_domains {
++	vccio1-supply = <&vcc_3v0_pmu>;
++	vccio2-supply = <&vccio_sd>;
++	vccio3-supply = <&vcc_3v0>;
++	vccio4-supply = <&vcc_3v0>;
++	vccio5-supply = <&vcc_3v0>;
++	vccio6-supply = <&vcc_3v0>;
++	status = "okay";
++};
++
++&pinctrl {
++	bluetooth-pins {
++		bt_reset: bt-reset {
++			rockchip,pins =
++				<0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		bt_wake_dev: bt-wake-dev {
++			rockchip,pins =
++				<0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_host: bt-wake-host {
++			rockchip,pins =
++				<0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	headphone {
++		hp_det: hp-det {
++			rockchip,pins =
++				<2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	gpio-btns {
++		btn_pins_ctrl: btn-pins-ctrl {
++			rockchip,pins =
++				<1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
++				<1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>,
++				<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>,
++				<1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
++				<2 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	gpio-leds {
++		led_pins: led-pins {
++			rockchip,pins =
++				<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>,
++				<3 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>,
++				<3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>,
++				<3 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>,
++				<3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pmic {
++		pmic_int: pmic-int {
++			rockchip,pins =
++				<0 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		soc_slppin_gpio: soc_slppin_gpio {
++			rockchip,pins =
++				<0 RK_PA4 RK_FUNC_GPIO &pcfg_output_low>;
++		};
++
++		soc_slppin_rst: soc_slppin_rst {
++			rockchip,pins =
++				<0 RK_PA4 2 &pcfg_pull_none>;
++		};
++
++		soc_slppin_slp: soc_slppin_slp {
++			rockchip,pins =
++				<0 RK_PA4 1 &pcfg_pull_none>;
++		};
++	};
++
++	sdio-pwrseq {
++		wifi_enable_h: wifi-enable-h {
++			rockchip,pins =
++				<0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	speaker {
++		spk_amp_enable_h: spk-amp-enable-h {
++			rockchip,pins =
++				<2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&pmu_io_domains {
++	pmuio1-supply = <&vcc_1v8>;
++	pmuio2-supply = <&vcc_3v0_pmu>;
++	status = "okay";
++};
++
++&pwm1 {
++	status = "okay";
++};
++
++&pwm4 {
++	status = "okay";
++};
++
++&pwm5 {
++	status = "okay";
++};
++
++&saradc {
++	vref-supply = <&vcc_1v8>;
++	status = "okay";
++};
++
++&sdio {
++	bus-width = <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	disable-wp;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	no-mmc;
++	no-sd;
++	non-removable;
++	sd-uhs-sdr104;
++	status = "okay";
++};
++
++&sdmmc {
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	no-sdio;
++	sd-uhs-sdr12;
++	sd-uhs-sdr25;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_sd>;
++	vqmmc-supply = <&vccio_sd>;
++	status = "okay";
++};
++
++&sfc {
++	#address-cells = <1>;
++	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
++	pinctrl-names = "default";
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <108000000>;
++		spi-rx-bus-width = <2>;
++		spi-tx-bus-width = <1>;
++	};
++};
++
++&tsadc {
++	status = "okay";
++};
++
++&u2phy {
++	status = "okay";
++
++	u2phy_otg: otg-port {
++		status = "okay";
++	};
++};
++
++&usb20_otg {
++	status = "okay";
++};
++
++/*
++ * The right ADC joystick exists connected to an unknown ADC
++ * controller which can be communicated with via uart0. This ADC device
++ * is an 8-pin SOIC with no markings located right next to the left ADC
++ * joystick ribbon cable. The pinout for this ADC controller appears to
++ * be pin 1 - VCC (2.8v), pin 2 - 1.8v (clk maybe?), pin 3 - GPIO 10,
++ * pin 4 - unknown, pin 5 - unknown, pin 6 - analog in, pin 7 - analog in,
++ * pin 8 - ground. There is currently a userspace UART driver for this
++ * device but it only works with the BSP joystick driver.
++ */
++&uart0 {
++	status = "okay";
++};
++
++/* Bluetooth was not working on BSP and is not currently working on
++ * mainline due to missing firmware. Bluetooth requires removal of DMA
++ * or else it will not probe.
++ */
++&uart1 {
++	/delete-property/ dma-names;
++	/delete-property/ dmas;
++	uart-has-rtscts;
++	status = "okay";
++
++	bluetooth: bluetooth {
++		compatible = "realtek,rtl8723ds-bt";
++		device-wake-gpios = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
++		enable-gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
++		host-wake-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&bt_reset>, <&bt_wake_dev>, <&bt_wake_host>;
++		pinctrl-names = "default";
++	};
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m1_xfer>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&vopb {
++	status = "okay";
++};
++
++&vopb_mmu {
++	status = "okay";
++};
 -- 
 2.34.1
 
