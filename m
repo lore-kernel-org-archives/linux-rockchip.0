@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92867CD1281
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 04:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C25F0C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 04:17:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9kQOHei2Dexrl7iOgSF5Wf7WIythRq8sp67dpP7Z0o=; b=CZE0VSdIeAs9be
-	rzKNVoUlRAiQ8bnRDFzlqCTPbQNQfAbtUCFYFJdnmFIB7eRY93n7h7XzHMocHlfrCqo4W/IIPMXVQ
-	EDV17yMAfsvJxZK1G3o8oA7+plpeHfOIkqnTizhs48dVtMGTqHr3G0YztGsNTS9gM5HSVeyA1u95Z
-	uxkRbpn2zWkkB3YxKsswfumGggIrZOmLSbxi5SxpmbrLNQ6PWLT4DnMS6HJW2vONaDoQPRO2Y6a5P
-	n/9fmD5tuwX8cICCfS4yG5wtWDe8TQaLgNAcaaMhpvbLgXdzkTPKm09/b2RvxwzMm3bZ+ENdrx0Vk
-	89wW/BEx5MOke+oYMv6A==;
+	List-Owner; bh=fajhgCqemFkU+swRjeI2AOovUfuUOOY/WkOv+93Qn1k=; b=kU3lknHMWALS7s
+	t42k4LfBv2R5R9dcaSJRrYvM5hBeAyb5JDD6nRjgUT4IX/hDsSBmw2RUDUlNLcF+rpHn8wQAAVRpq
+	dA/51y+xGOxBuKF64Rpj/62o9/nei3m0ctoYVwee+c+hTmq0Srqjmr4kJPKZujjB/3IeiItfm4CyX
+	YCo0ITQObGRUhPEgLltiICOHnoDfUm0GhOfjv2QWSkfqycDP16TMEu7o5UcmAqeW8fowvVsvrH/9t
+	egOhlLOe0ZSQkFdMeQpJtVxuujrN8nUY4DiisptEyX3iz01W6frHWdtT5ExZ+lu8aw1ctAWTK1LYj
+	jYc9v5ShFDDhGnW9m/xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1robls-0000000F8Ca-3Aqo;
-	Mon, 25 Mar 2024 04:17:16 +0000
-Received: from mail-m17233.xmail.ntesmail.com ([45.195.17.233])
+	id 1roblv-0000000F8Dv-0peW;
+	Mon, 25 Mar 2024 04:17:19 +0000
+Received: from mail-m25490.xmail.ntesmail.com ([103.129.254.90])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roblo-0000000F88b-2bwK;
-	Mon, 25 Mar 2024 04:17:14 +0000
+	id 1roblr-0000000F8Af-04pd;
+	Mon, 25 Mar 2024 04:17:17 +0000
 DKIM-Signature: a=rsa-sha256;
-	b=S9r0f+9FN3LtZ3BxW8+zASeX2mJRD5y9BDprcwER3SnJ+xFG9rwhIRCxSklTmFpxIhFxx3/CToiQVri3c/rLKgrUMobOgAKPhktClxFkhN+0UzbaWTXUcCzQjLK7fv7dw26KEKu8an/FIxniRKoc+pLV46mgUfNRnO5gREEqELY=;
+	b=G8hd7UzZoAdbA1wHmMGafPZkMMNd476Dw1t4XSX3Yv3G1NYOQryEFaXBLj4d+eXjS7R4Y3ypOxtTyS0vv2PkMV/FKUodn5Gyy66Ah8kSlgQzdC6Az/nU0yaiHbUxNy+jrjGEe7ZRze86al36eDaqhwZGUJofvHmhj3AAe2mhd2g=;
 	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=RTrYQS6npXaXjhs3epbhBAkTBe1y8Ij/m1SJhYUQASY=;
+	bh=qNWQ0E2o06XH4CPhJnC+MNCo7SgW7ENaUR/eOaQ2c7o=;
 	h=date:mime-version:subject:message-id:from;
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 4C7647C044A;
-	Mon, 25 Mar 2024 12:16:50 +0800 (CST)
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 119807C0194;
+	Mon, 25 Mar 2024 12:16:57 +0800 (CST)
 From: Sugar Zhang <sugar.zhang@rock-chips.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Michael Turquette <mturquette@baylibre.com>,
+	Rob Herring <robh@kernel.org>,
 	Stephen Boyd <sboyd@kernel.org>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-clk@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 1/2] clk: rockchip: Add support for clk input / output switch
-Date: Mon, 25 Mar 2024 12:16:29 +0800
-Message-Id: <20240325121537.v1.1.Ibe8286bb98ea1fc3bc6421c30f6e46fc0b1b0d88@changeid>
+Subject: [PATCH v1 2/2] dt-bindings: clock: rockchip: Add support for clk input / output switch
+Date: Mon, 25 Mar 2024 12:16:30 +0800
+Message-Id: <1711340191-69588-2-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1711340191-69588-1-git-send-email-sugar.zhang@rock-chips.com>
 References: <1711340191-69588-1-git-send-email-sugar.zhang@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkIZTFZKGR4aTk1ISB8aTx5VEwETFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkJNT1ZJGklCS05ITR9DHR5VEwETFh
 	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5DTUtIVUpLS1VKQl
 	kG
-X-HM-Tid: 0a8e73d34a1109d2kunm4c7647c044a
+X-HM-Tid: 0a8e73d3653b09d2kunm119807c0194
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OhA6UTo*HTMSOA0ZFQgKNBI3
-	GBRPCx5VSlVKTEpKSE9LSUpKSE9CVTMWGhIXVQgOHBoJVQETGhUcOwkUGBBWGBMSCwhVGBQWRVlX
-	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBQk9DSjcG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NxA6Gjo5FDMIFg02FQg2NEki
+	IwpPCVFVSlVKTEpKSE9LSUpDSU9CVTMWGhIXVQgOHBoJVQETGhUcOwkUGBBWGBMSCwhVGBQWRVlX
+	WRILWUFZTkNVSUlVTFVKSk9ZV1kIAVlBQk9MSzcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240324_211713_262062_79B097F3 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20240324_211715_396891_2A6B6E9E 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,142 +204,123 @@ PNAME(clk_sai0_p) = { "clk_sai0_src", "clk_sai0_frac", "xin_osc0_half", "mclk_sa
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 ---
 
- drivers/clk/rockchip/Kconfig   |  6 +++
- drivers/clk/rockchip/Makefile  |  2 +
- drivers/clk/rockchip/clk-out.c | 99 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 107 insertions(+)
- create mode 100644 drivers/clk/rockchip/clk-out.c
+ .../bindings/clock/rockchip,clk-out.yaml           | 107 +++++++++++++++++++++
+ 1 file changed, 107 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
 
-diff --git a/drivers/clk/rockchip/Kconfig b/drivers/clk/rockchip/Kconfig
-index 9aad869..0e7eee8 100644
---- a/drivers/clk/rockchip/Kconfig
-+++ b/drivers/clk/rockchip/Kconfig
-@@ -107,4 +107,10 @@ config CLK_RK3588
- 	help
- 	  Build the driver for RK3588 Clock Driver.
- 
-+config ROCKCHIP_CLK_OUT
-+	tristate "Rockchip Clk Out / Input Switch"
-+	default y
-+	help
-+	  Say y here to enable clk out / input switch.
-+
- endif
-diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
-index 36894f6..30d6060 100644
---- a/drivers/clk/rockchip/Makefile
-+++ b/drivers/clk/rockchip/Makefile
-@@ -29,3 +29,5 @@ obj-$(CONFIG_CLK_RK3368)        += clk-rk3368.o
- obj-$(CONFIG_CLK_RK3399)        += clk-rk3399.o
- obj-$(CONFIG_CLK_RK3568)	+= clk-rk3568.o
- obj-$(CONFIG_CLK_RK3588)	+= clk-rk3588.o rst-rk3588.o
-+
-+obj-$(CONFIG_ROCKCHIP_CLK_OUT)  += clk-out.o
-diff --git a/drivers/clk/rockchip/clk-out.c b/drivers/clk/rockchip/clk-out.c
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml b/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
 new file mode 100644
-index 0000000..22dcd98
+index 0000000..6582605
 --- /dev/null
-+++ b/drivers/clk/rockchip/clk-out.c
-@@ -0,0 +1,99 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (c) 2023 Rockchip Electronics Co., Ltd
-+ */
++++ b/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
+@@ -0,0 +1,107 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,clk-out.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/clk-provider.h>
-+#include <linux/io.h>
-+#include <linux/module.h>
-+#include <linux/of_address.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
++title: Rockchip Clock Out Control Module Binding
 +
-+static DEFINE_SPINLOCK(clk_out_lock);
++maintainers:
++  - Sugar Zhang <sugar.zhang@rock-chips.com>
 +
-+static int rockchip_clk_out_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = pdev->dev.of_node;
-+	struct clk_hw *hw;
-+	struct resource *res;
-+	const char *clk_name = node->name;
-+	const char *parent_name;
-+	void __iomem *reg;
-+	u32 shift = 0;
-+	u8 clk_gate_flags = CLK_GATE_HIWORD_MASK;
-+	int ret;
++description: |
++  This add support switch for clk-bidirection which located
++  at GRF, such as SAIx_MCLK_{IN OUT} which share the same pin.
++  and these config maybe located in many pieces of GRF,
++  which hard to addressed in one single clk driver. so, we add
++  this simple helper driver to address this situation.
 +
-+	ret = device_property_read_string(dev, "clock-output-names", &clk_name);
-+	if (ret)
-+		return ret;
++  In order to simplify implement and usage, and also for safety
++  clk usage (avoid high freq glitch), we set all clk out as disabled
++  (which means Input default for clk-bidrection) in the pre-stage,
++  such boot-loader or init by HW default. And then set a safety freq
++  before enable clk-out, such as "assign-clock-rates" or clk_set_rate
++  in drivers.
 +
-+	ret = device_property_read_u32(dev, "rockchip,bit-shift", &shift);
-+	if (ret)
-+		return ret;
++properties:
++  compatible:
++    enum:
++      - rockchip,clk-out
 +
-+	if (device_property_read_bool(dev, "rockchip,bit-set-to-disable"))
-+		clk_gate_flags |= CLK_GATE_SET_TO_DISABLE;
++  reg:
++    maxItems: 1
 +
-+	ret = of_clk_parent_fill(node, &parent_name, 1);
-+	if (ret != 1)
-+		return -EINVAL;
++  "#clock-cells":
++    const: 1
 +
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	if (!res)
-+		return -ENOMEM;
++  clocks:
++    maxItems: 1
++    description: parent clocks.
 +
-+	reg = devm_ioremap(dev, res->start, resource_size(res));
-+	if (!reg)
-+		return -ENOMEM;
++  power-domains:
++    maxItems: 1
 +
-+	pm_runtime_enable(dev);
++  clock-output-names:
++    maxItems: 1
 +
-+	hw = clk_hw_register_gate(dev, clk_name, parent_name, CLK_SET_RATE_PARENT,
-+				  reg, shift, clk_gate_flags, &clk_out_lock);
-+	if (IS_ERR(hw)) {
-+		ret = -EINVAL;
-+		goto err_disable_pm_runtime;
-+	}
++  rockchip,bit-shift:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: Defines the bit shift of clk out enable.
 +
-+	of_clk_add_hw_provider(node, of_clk_hw_simple_get, hw);
++  rockchip,bit-set-to-disable:
++    type: boolean
++    description: |
++      By default this clock sets the bit at bit-shift to enable the clock.
++      Setting this property does the opposite: setting the bit disable
++      the clock and clearing it enables the clock.
 +
-+	return 0;
++required:
++  - compatible
++  - reg
++  - clocks
++  - "#clock-cells"
++  - clock-output-names
++  - rockchip,bit-shift
 +
-+err_disable_pm_runtime:
-+	pm_runtime_disable(dev);
++additionalProperties: false
 +
-+	return ret;
-+}
++examples:
++  # Clock Provider node:
++  - |
++    mclkin_sai0: mclkin-sai0 {
++        compatible = "fixed-clock";
++        #clock-cells = <0>;
++        clock-frequency = <12288000>;
++        clock-output-names = "mclk_sai0_from_io";
++    };
 +
-+static int rockchip_clk_out_remove(struct platform_device *pdev)
-+{
-+	struct device_node *node = pdev->dev.of_node;
++    mclkout_sai0: mclkout-sai0@ff040070 {
++        compatible = "rockchip,clk-out";
++        reg = <0 0xff040070 0 0x4>;
++        clocks = <&cru MCLK_SAI0_OUT2IO>;
++        #clock-cells = <0>;
++        clock-output-names = "mclk_sai0_to_io";
++        rockchip,bit-shift = <4>;
++    };
 +
-+	of_clk_del_provider(node);
-+	pm_runtime_disable(&pdev->dev);
++  # Clock mclkout Consumer node:
++  - |
++    ext_codec {
++        clocks = <&mclkout_sai0>;
++        clock-names = "mclk";
++        assigned-clocks = <&mclkout_sai0>;
++        assigned-clock-rates = <12288000>;
++        pinctrl-names = "default";
++        pinctrl-0 = <&i2s0m0_mclk>;
++    };
 +
-+	return 0;
-+}
-+
-+static const struct of_device_id rockchip_clk_out_match[] = {
-+	{ .compatible = "rockchip,clk-out", },
-+	{},
-+};
-+
-+static struct platform_driver rockchip_clk_out_driver = {
-+	.driver = {
-+		.name = "rockchip-clk-out",
-+		.of_match_table = rockchip_clk_out_match,
-+	},
-+	.probe = rockchip_clk_out_probe,
-+	.remove = rockchip_clk_out_remove,
-+};
-+
-+module_platform_driver(rockchip_clk_out_driver);
-+
-+MODULE_DESCRIPTION("Rockchip Clock Input-Output-Switch");
-+MODULE_AUTHOR("Sugar Zhang <sugar.zhang@rock-chips.com>");
-+MODULE_LICENSE("GPL");
-+MODULE_DEVICE_TABLE(of, rockchip_clk_out_match);
++  # Clock mclkin Consumer node:
++  - |
++    ext_codec {
++        clocks = <&mclkin_sai0>;
++        clock-names = "mclk";
++        assigned-clocks = <&cru CLK_SAI0>;
++        assigned-clock-parents = <&mclkin_sai0>;
++        pinctrl-names = "default";
++        pinctrl-0 = <&i2s0m0_mclk>;
++    };
 -- 
 2.7.4
 
