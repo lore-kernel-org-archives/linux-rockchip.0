@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D62C54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 14:37:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B570ECD11BF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 14:37:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DO9yMHPAOwzwJgORKVhwSs1JB0T31RUJfw/7wtSnBXk=; b=Rd6TogN0C0t+oO
-	7dWyrKCyjyrybfJOoI5h5fz6rKLZcwS7AoDdaLldXkUgfnd+dJA3M1vjJTlvV9kIvNgxAlClZjCRa
-	ddLXEAjbQ5l+wYF/1XjkQwzRVG+vQjV+qsUw+59UwOAYUb6WKfTkdrWnYiHm3rVGucRnBrF9gzbTS
-	xoTqWvWnCwRojt0mAjhPN9CIesGermosBgFp6WgZpPNtXJAopv3UzH4mZj6RZElMFVV3xA5flSYP+
-	SHgIwu25zDpWyU3uTtzIZw/R0MuckGXeTBhusN/r92czW9Okm4YY+WhBtI1ytBo1v7taYIy6rxJGc
-	f6TretUKFH/L+07qio9w==;
+	List-Owner; bh=UrxUvz4y5l/0mGQglHeCunc5Sk2X9t+VD5ko6pHlq3k=; b=OEaSBPjZ3+qd95
+	eyRzCEJoFBtPB9eXWKTa13M3iy/eP6kgz+XEtXY/ZbxdLBpHs6KjUAeZyTjHAsIW3gK1d1VdbWf8z
+	bE8FGd+GtslUeuPqHSeEfCV3LgbKU+Id+d9rXr4rNX7vGvhBxlOiv3gjOwNF7uYbki/8wu6vXO285
+	lXEfZhFuZRd0D4xbeh+F2ZG2SUgryKHMcYXq7zdxeO9De9uSAqLf4MYzFgaSNAnABjNqq0IuTM4zV
+	Uw+Oj3jk4SoBuGOgTcAVvH0om5c3q4s0+JvDVQzKYLlI1weyLJT+MRhdy8oA4ls/GbqvZTLPryJ/z
+	EJxhfop3xr3VVmnelywA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rolSG-00000000GpA-2UdE;
-	Mon, 25 Mar 2024 14:37:40 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+	id 1rolSS-00000000Guv-1edK;
+	Mon, 25 Mar 2024 14:37:52 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rolSB-00000000GmY-19TR
+	id 1rolSJ-00000000Gn4-1y1n
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 14:37:36 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-22a353217c3so587527fac.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 07:37:35 -0700 (PDT)
+	Mon, 25 Mar 2024 14:37:45 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-22988692021so1875860fac.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 07:37:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711377454; x=1711982254; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1711377455; x=1711982255; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QNg/lAN0ji1lgkv8ICJBH5shfYt5KAq0z8UCo+AIPcY=;
-        b=Z7ka8yRjL7w7eycKnbbHkJ4xmAdAZE2GmIfK4j+1bLJZOqh5J28ah5ioWYU3jOnDlu
-         g+MfM06GvQWnJExGuBr12ABJr3z1e0yQd2eqV9is4Vk1dyNdhvPeR5ZFefmdJDGhQ2uY
-         yxGB8/VyoJauK7SpHd1LT5NP/gVumhzap85b2DzJh5WMLRygbt79O5vZWSKHgS++2lG8
-         0524fjAjHz2zNXwFeyzdI/v+yzq4wSYhUUaSfRwSg9if9SurPZJA2oPQePhRlX0qtyCc
-         4pUw+KTEAgEw1ZPARqzogiTIg6YPWamjERuMbhxATTMwrVOqJ3Q2A2GDR6jTHWeGxjYR
-         Vb3Q==
+        bh=aCswsN7FdkVodfTM0bhOmSxk9PJOmJSqCfqeMtR+9hA=;
+        b=mBywuWC5DaBfAkjg0WS3i6FfHAw1jdlbalTC9xQZH5JOePiLevO2VFEiF9lRrzoS4P
+         jexQ0Bmh2r7QZvE9Bf1EKk0BI4H7HYTXO037dClb8+4sMPOiLQ+YzY61fMHHpFBnDGN7
+         oCH0jHKHuMfolTF0Q9LL7XvJvh/ADci2hK5SxXlyPdTFbjunQvMMyIgd2uxPhQY93ekk
+         FbsXvOuRpPws62Lta623mQeLFMJNrlEMfxurZo5J9fMI3znYlbpIGZ6z/X6h02d4qSOE
+         DLKKWhKLlEir+hi4qXSfm0/Cl7+VBgPEX0ax90KbVP973nBZcNDapOH/BKcTVAyFiIK+
+         Kakg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711377454; x=1711982254;
+        d=1e100.net; s=20230601; t=1711377455; x=1711982255;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QNg/lAN0ji1lgkv8ICJBH5shfYt5KAq0z8UCo+AIPcY=;
-        b=VRVYF4vCcGe2EzSYzHsJK8+pZ6ILJZSjypoKFP/07mHH8cN8S7/3/Oif96g+L5+G3v
-         Uz8cVkQ+zTbjfMpw+XY09mT/Le70YFsiOOogyVQTdBEEOzrx1OvB1FrbcDhKmdBGPJ0w
-         Bjg0QkD+rJ/WiPP9mgLnIl0Fx4HSXbs15QOLM34KMnUhXTuqSSnSHdkkkYjH47dsFz5K
-         qfQMQiBQZowpOcsmJ1vzfC/0dMeGM29UYmsmq/szcKO2wRERsKtzZalZSwaZrPCpQMrw
-         21Qrsc8Zgvr5iQOSD6DmakvRaYHH3CG4b3EHjLylqdxwq0DOQt1pzBIYtjMjTfATcOnm
-         bbig==
-X-Gm-Message-State: AOJu0Yw5P+D82Uim5umVJsRr/SSOZ5iSM/LGkSkzH2dwGW2u6ofs4tli
-	hyaG+MgRjVxxmwpqKgE673biQuhbm4GrWLGvV9yQAnQctK7+TFFT94QndJjO
-X-Google-Smtp-Source: AGHT+IGv5f1B1VUhDqe1XP+drjOwefd9ldyERXeymiDRfWRwlw9KWkzHtMzZZeYxxYj4oZ42RPBt6g==
-X-Received: by 2002:a05:6871:31af:b0:229:800f:3ed6 with SMTP id lv47-20020a05687131af00b00229800f3ed6mr6315397oac.36.1711377454257;
-        Mon, 25 Mar 2024 07:37:34 -0700 (PDT)
+        bh=aCswsN7FdkVodfTM0bhOmSxk9PJOmJSqCfqeMtR+9hA=;
+        b=sfoqZGP8Azd+TYblIKUNo0ACOl2AN3IuV3HzCh6jg5icAOoAzOPVDFOQNx41QEZ/HA
+         iSlVEVjSdxSzN0getmhqCvLyfoY90ngxnbkokJtRx/HI9Qu9Tn+vg7QJl0YZ8jmt3UEk
+         1TFCkeayEwBMv8kzKIJOz/lElIMuDqt6GPyZfJdR4emoQ9DAXOawBEcPGJUDhN3Hh8cL
+         ptJVHJQY8tUMx/MNAFOo3BK+CYYSZVhlksCFk+YuEnaBkGOrLjm2gcbp9GIGazi/iYc9
+         I9oGXfO3IqfZq6mK0i9uJr+AZcXwuVUl5teceICaFXyGier46Ge33Tuxu49UhXvhIuo+
+         JTfg==
+X-Gm-Message-State: AOJu0YwWW1en1cha6umKFalN4VOb+bNmB8UrY4fyrrhvvOqaCkUYCSqS
+	hclRXEcse3XWlQ5R8kH3yxtUEUEqotZhyZ69VQ+/uiu2E7r92Q6/nypdHqLd
+X-Google-Smtp-Source: AGHT+IF15hJ/tYtP/YPhos0TSN5AF90nlbwnLe+gFG5FFOw3TAp2QzxMRddVXxnIHduPKnzh0crI5Q==
+X-Received: by 2002:a05:6870:702c:b0:221:9cf3:8ae5 with SMTP id u44-20020a056870702c00b002219cf38ae5mr2674242oae.24.1711377455394;
+        Mon, 25 Mar 2024 07:37:35 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id xb22-20020a056870cd9600b0022a0ff98f9bsm1417180oab.4.2024.03.25.07.37.33
+        by smtp.gmail.com with ESMTPSA id xb22-20020a056870cd9600b0022a0ff98f9bsm1417180oab.4.2024.03.25.07.37.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Mar 2024 07:37:33 -0700 (PDT)
+        Mon, 25 Mar 2024 07:37:35 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -70,16 +70,16 @@ Cc: devicetree@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 2/4] arm64: dts: rockchip: rgxx3: Add optional node for chasis-type
-Date: Mon, 25 Mar 2024 09:37:27 -0500
-Message-Id: <20240325143729.83852-3-macroalpha82@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: Correct model name for Anbernic RGxx3 Devices
+Date: Mon, 25 Mar 2024 09:37:29 -0500
+Message-Id: <20240325143729.83852-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240325143729.83852-1-macroalpha82@gmail.com>
 References: <20240325143729.83852-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_073735_334612_8C6B0B7C 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20240325_073743_814734_4AA8E76C 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,26 +98,84 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add optional node for chasis-type defining this device as a handset.
+Some Anbernic model names begin with the company "Anbernic" and others
+simply list the model number. Make this consistent across the device
+lineup by including the manufacturer in the model name.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts  | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts  | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts   | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-index c8fdb1b817f5..233eade30f21 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi
-@@ -10,6 +10,8 @@
- #include "rk3566.dtsi"
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+index 94c678c44d3a..0df1254f89af 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353p.dts
+@@ -8,7 +8,7 @@
+ #include "rk3566-anbernic-rg353x.dtsi"
  
  / {
-+	chassis-type = "handset";
-+
- 	chosen: chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
+-	model = "RG353P";
++	model = "Anbernic RG353P";
+ 	compatible = "anbernic,rg353p", "rockchip,rk3566";
+ 
+ 	battery: battery {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
+index 25edd81ce26b..b1fd2b0f6719 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353ps.dts
+@@ -8,7 +8,7 @@
+ #include "rk3566-anbernic-rg353x.dtsi"
+ 
+ / {
+-	model = "RG353PS";
++	model = "Anbernic RG353PS";
+ 	compatible = "anbernic,rg353ps", "rockchip,rk3566";
+ 
+ 	battery: battery {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+index 5354c5958df2..9fa68cc53015 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353v.dts
+@@ -8,7 +8,7 @@
+ #include "rk3566-anbernic-rg353x.dtsi"
+ 
+ / {
+-	model = "RG353V";
++	model = "Anbernic RG353V";
+ 	compatible = "anbernic,rg353v", "rockchip,rk3566";
+ 
+ 	battery: battery {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+index 02653b59f6c2..78adac9fff58 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg353vs.dts
+@@ -8,7 +8,7 @@
+ #include "rk3566-anbernic-rg353x.dtsi"
+ 
+ / {
+-	model = "RG353VS";
++	model = "Anbernic RG353VS";
+ 	compatible = "anbernic,rg353vs", "rockchip,rk3566";
+ 
+ 	battery: battery {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+index e7161a86a9f1..b7e029a7039a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-anbernic-rg503.dts
+@@ -8,7 +8,7 @@
+ #include "rk3566-anbernic-rgxx3.dtsi"
+ 
+ / {
+-	model = "RG503";
++	model = "Anbernic RG503";
+ 	compatible = "anbernic,rg503", "rockchip,rk3566";
+ 
+ 	adc-joystick {
 -- 
 2.34.1
 
