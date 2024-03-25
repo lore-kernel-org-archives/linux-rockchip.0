@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B41D8C54E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 17:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA17C54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 17:52:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mrouah6hoYyzR+rkXB6XqNp+wKcsk3f787ds6aN2t1w=; b=y3ff6LJ9nmY5Vl
-	EV+ZiBRfsPWP5317A6h63Rzlm0F3ZGBrw7cEyqgw9NnAWyBnPCE6gACSPcBRV7KAcNETbCtmt7cOo
-	TZX6EyUP6mPd3+LnbChMabjUl1VBX3g9sfTBmfRRW42e09r7f6Ol87VQUO+SIy0cqMql6JsFHB1/S
-	BMV4t7Raz7490wA098+351o9E70yNxpblel4dU9rP4VstT4QWK5nMqP8KX6muzxuoCkB77RwNWsD3
-	W78QxBh+IEk3zPNDJG+8pT6xjrBhpxjAFo/XdQ3xYD5G2In4Iq99FoNUNuE0sf8WfoaGKjOTiaAsL
-	PJrUBf/1uEeTS95gGTeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lvt9nxajFaFglWVA1IAuQdoStzXtv13fvwtCr1Zwj0Y=; b=JfIbrhEQ6COYub
+	Un6z8OdoZoTBfoCEuPWUjxF5O1nTS+LwciAvc9I/Ry8TCCwlU7HNFvB4g7a165l5o1eJgnCIzNyq4
+	8opKLnm4EZQ4DISeFP0e9N+PNeqq/12nhlILjEtgxoaqLW2n/uUh8ihM7mlBBlcH7vA2eONYk9sxl
+	8BaCTokmhyQ0egS5a1zkAeY4aewCayMlmExfDJDP6g+/sNe6BqevVwxfYHqFIQIKp2Fo5n88ENxa/
+	Td5HOSQmi6ggPAwzfdwTVyALuFW/ZQ7lDOUhLmC6OgNeXlPzZ2IZvoIK+CipeWeJXqyNdatzhBPR+
+	s1SdJl7PWbyshUSGxBzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rooUC-000000019N2-0Dyy;
-	Mon, 25 Mar 2024 17:51:52 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1rooUN-000000019QV-3YZy;
+	Mon, 25 Mar 2024 17:52:03 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rooU6-000000019JN-0huO
+	id 1rooU6-000000019KG-0iW7
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 17:51:48 +0000
-Received: by mail-oi1-x233.google.com with SMTP id 5614622812f47-3c37e87756dso2828055b6e.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 10:51:42 -0700 (PDT)
+	Mon, 25 Mar 2024 17:51:49 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3c3d67db82aso214103b6e.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 25 Mar 2024 10:51:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711389101; x=1711993901; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=/r8vljI0U/6T7iQFumI3En0jSQqfhVb0aBnuodSXerk=;
-        b=JamrjxS0pyH9CsuuijQiw9Yryt4FXiKtYY1IMaxOpBhQNjqy2q/WjlSHgcqzxpfT5X
-         8WLPh1RuJjufi5rWUb0BA41D/UwJeD01W9GMy0O1YmB6jgMjV01WcT8UTd5p/i715lAX
-         aUIppMl6KaBuQIBz+7yoJ4pOloejbHubp9yG6G6DrjbwM+YzuSzdVEgS7nJ8jXYdGCUb
-         C25+AhhvY+Gih6LCS1YitYSadREQxfudtoOh+Zs6kFk6ltyR5uAz6H1sN8EkIa9UMwc2
-         HFnmuzJNwnTlF5bWLVs+T1n1PMZuE1gkM0p3Vo3iEBz4tpUGI2yMJDNBr+cEbyHB7+Jm
-         anFg==
+        d=gmail.com; s=20230601; t=1711389103; x=1711993903; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mI1JEJNBBcWDVRcoev8h23jzy4M+ePchT8VllK3tA1Q=;
+        b=JWj6hqnM9FbuULBhg0cPxnR+pYzFVRQCqIQU9YqBQP08Z/+OixEhJVzK83OxOeFUwA
+         ZD53w7Tc1ZFhvVxic8PYfCnrXdZXcJhwWmp/hqV43T1bvyxIARupkW90nUBtbcku+2dM
+         vQGn6N4apZ3ESv+y6S9k4x0RyMjOjMLWjTaZhvXEwsKPPxFPHAwHDitSfDk5OF5MSAaq
+         x0tVqoWmNpqB2wCR7vbM6CjN4oqDmt3ki+seiGYx89/bn6U4P8D82g2QhYYVUBECHcj6
+         fSHIBwS6o7ois+NZrWmNR63arWcnKGgfWnahM5krcptO7q4+yZM+P9ZVHj4v1rHyvWpM
+         mmeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711389101; x=1711993901;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/r8vljI0U/6T7iQFumI3En0jSQqfhVb0aBnuodSXerk=;
-        b=chshvlOHs6Tnpcf8LaTqvWYOMoZ1UdHjphe0NC4opyrOU/8XdPQgMkUm0Geqa14UAL
-         nbswFgLqZ0DG4DRN28mtoDD3iwuirWTXmWGhjdpMJccJfZ/qOrnVBMB3LYI79MSAMXw1
-         6vXE8jjPLeiGne4FGJYJDGGsDhmhFnY3ltMIbFNcXYiXQr3XjpkJiu/xhMYKLtN2yUN9
-         xiYRmvq5seyKj92DcK/HvLpSRsjJBQW8oFHVv3oheYR/PclbetoChDFAgIeRgHK6+IZc
-         +KTlW5dPCbbc5HSGjvSkv9U4xKmrzoy7A65mvkpt0AE5XT5lqvpt/f99PkehvPMCO+mp
-         JH6Q==
-X-Gm-Message-State: AOJu0YxRvYG7dhadlab/99I/TM6KD0l1OIhzfuKNU5pTnM6xpTJUkgD4
-	tyu0XTEidD4Qe4Y3YkRrhNYpFg3ajuleX+N/V4d9nyrtIjLlHtUUaJbeRJ/N
-X-Google-Smtp-Source: AGHT+IGQhBj0/vZKeDLja/qFooAeE9BRme6iskuqmtEcG8UmUih+LrVCq8mb2vqEH9Xyw9PtPAys9g==
-X-Received: by 2002:a05:6808:1209:b0:3c3:b392:4b87 with SMTP id a9-20020a056808120900b003c3b3924b87mr9100054oil.53.1711389101079;
-        Mon, 25 Mar 2024 10:51:41 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1711389103; x=1711993903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mI1JEJNBBcWDVRcoev8h23jzy4M+ePchT8VllK3tA1Q=;
+        b=KFMy0sdgxFQpoeB1JSozXPRfUiEVSah2MRlqsN1KjitJfaDw9rdeLoYxnCYrLN+RM+
+         AIh23uDTYH4MEH2AE8JN9Lj739Fkl4GarlIhYFdTpbOB51yzZPz4EGUBLAA9Eauy7K73
+         K2DoDDgCgFWHyDGmJ4o/3bOL1ULSpAFl+3fm5y9NR+f2nzk7ck12DKyIME0GyVpyxbwJ
+         6gmWfduU6t/JROE3d8D2RMaInsiB3nIELRNwD3Tu/aEh6UW7rb7UudNYs4FIhXICEJsP
+         LX6p2fR9nvaT5LcW0hKfNG7cKk251u6M10x3lrQ72H+T7kSdc6zC49z9LhmRYd/AqbLK
+         n4zg==
+X-Gm-Message-State: AOJu0Yxn7Q2KfAiMF+jYK9aFU0Cu5gXIJRknZXurLuyuCJHnq5OpaCs+
+	hFSoGvpa+njBgN7y0mNzVXB5BCriNxvGbCXlcPVUTZ2HoTse0MzydprkyWMi
+X-Google-Smtp-Source: AGHT+IFPLvYp9Eg0ptpvOzBFhYZ6KuQ//I1wLNdwe7iaBA9xy7lqx91AxR1NMY+41M30xZK2tcc8BA==
+X-Received: by 2002:a05:6808:bd2:b0:3c3:d2dd:f8df with SMTP id o18-20020a0568080bd200b003c3d2ddf8dfmr2287224oik.52.1711389103720;
+        Mon, 25 Mar 2024 10:51:43 -0700 (PDT)
 Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id u17-20020a056808151100b003c3d3fc607csm212505oiw.26.2024.03.25.10.51.40
+        by smtp.gmail.com with ESMTPSA id u17-20020a056808151100b003c3d3fc607csm212505oiw.26.2024.03.25.10.51.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Mar 2024 10:51:40 -0700 (PDT)
+        Mon, 25 Mar 2024 10:51:43 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -69,14 +70,16 @@ Cc: devicetree@vger.kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 0/4] User Requested Fixes for Powkiddy RK3566 Devices
-Date: Mon, 25 Mar 2024 12:51:29 -0500
-Message-Id: <20240325175133.19393-1-macroalpha82@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: Describe Alternate Regulator Config on RGB30
+Date: Mon, 25 Mar 2024 12:51:33 -0500
+Message-Id: <20240325175133.19393-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240325175133.19393-1-macroalpha82@gmail.com>
+References: <20240325175133.19393-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_105146_832292_F041C2F6 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20240325_105146_834001_4F871404 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +98,53 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Users have requested fixes for Powkiddy devices to help with some
-intermittent WiFi issues by adding additional properties to the
-SDMMC2 node. They have also requested that the model name be
-represented consistently with both the manufacturer name and model
-name. Lastly, there exists a second configuration of the RGB30 with
-a slightly different regulator layout we need to describe.
+Describe a possible secondary regulator configuration for the RGB30.
+At some point Powkiddy altered the CPU regulator for the RGB30 without
+creating a new model revision. Note this in the device-tree in the
+hopes that it may alleviate a user's confusion (or possibly allow a
+bootloader to manipulate the tree to swap out the regulators when the
+alternate configuration is detected).
 
-I have added the new/additional property of "chasis-type" as well.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3566-powkiddy-rgb30.dts    | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-Chris Morgan (4):
-  dts: rockchip: Add chasis-type for Powkiddy rk3566 devices
-  arm64: dts: rockchip: Update sdmmc node for wifi on powkiddy rk3566
-  arm64: dts: rockchip: Correct model name for Powkiddy RK3566 Devices
-  arm64: dts: rockchip: Describe Alternate Regulator Config on RGB30
-
- .../dts/rockchip/rk3566-powkiddy-rgb30.dts    | 30 ++++++++++++++++++-
- .../dts/rockchip/rk3566-powkiddy-rk2023.dts   |  6 +++-
- .../dts/rockchip/rk3566-powkiddy-rk2023.dtsi  |  4 +++
- .../boot/dts/rockchip/rk3566-powkiddy-x55.dts |  4 +++
- 4 files changed, 42 insertions(+), 2 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+index e359465eebe9..484f097e9f11 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+@@ -54,6 +54,30 @@ regulator-state-mem {
+ 			regulator-off-in-suspend;
+ 		};
+ 	};
++
++	/*
++	 * Some RGB30 devices use a different CPU regulator. These
++	 * devices have no external markings to denote a different
++	 * model revision.
++	 */
++	vdd_cpu_alt: regulator@40 {
++		compatible = "tcs,tcs4525";
++		reg = <0x40>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1390000>;
++		regulator-name = "vdd_cpu_alt";
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc_sys>;
++
++		status = "disabled";
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
+ };
+ 
+ &sdmmc2 {
 -- 
 2.34.1
 
