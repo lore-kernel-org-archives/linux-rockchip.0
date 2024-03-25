@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B9F5CD11DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 19:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CFECD11DD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 19:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wXX2i4wDLMlhYDt0pmQWGeIg8OLGtZB5mcf4/c5pVDg=; b=jf8C8wCUc6OJ6Z
-	w+vVsLpwD751QstvX1oV6XajOb0eLrPNiiZMUYtVmGFJw5kuVFLUlErWH47ZqzA4/bRV9HIyNxU3A
-	zi/N85dotDjJQnjDM9wE9PVfFNtJVc4xOchx1lrLnhXx06ozSerRFQxMD9a4d3n3dvlYRWOsdCH56
-	Tx7H+vTxe+9Mujwpt+REiuq0L0frIXbu5EdiYpG9sd7yuPpjfEgMvKL1zyYVQBrLNEiz1qF8gzrq1
-	eon5wM0xjuEKBro3WFVWSuqmzdkZWslF21ywe6N8UtA0Wkn7Fcyqc8ThTkC5YE4Ek8s+AvCofY2qh
-	cRNEKa7aBiQl5JCeExMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/HU1bGHu9dl2pwkEhpICAohFCnFcLQuAmoEmuHVPIGI=; b=ee2I3YfTxgejvz
+	5CHOXw0qitys0zwD919j1LVVgvC2R8S5A9VPkvkcGZiSAAOa6k45SEfZ4MUil29PNyQIW/ZRnDvS5
+	Eqb8hElox3esEEgkUn7glqJvXCrkLq1LN4y5JtynrCArJKDraiVIwmvC47X038j7wpAsnT3UUQDWW
+	ukP0mR5Y/k2YrM7eeY8BdASYspcn3l5Ydeg6Yd22KIpi9TNHquubss/UiML/Xzie72G/fuVH6e5F5
+	OOPqkPvWyfldTn/lPSEGZzcfrY2N+0aRdcDufFHBBGUx5UA7hbjNPEOn5/KzzodDcjkn2imGHLxtk
+	YTN/e31zqyCx/3bTktTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roq7J-00000001cpf-2vcj;
-	Mon, 25 Mar 2024 19:36:21 +0000
+	id 1roq7G-00000001coH-2GRW;
+	Mon, 25 Mar 2024 19:36:18 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roq7D-00000001clD-1bPC
+	id 1roq7D-00000001clL-1bCz
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 19:36:18 +0000
+	Mon, 25 Mar 2024 19:36:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1711395371;
-	bh=ns2j/1xbq6BTPWqUJG3b2GwBYjyqRHljKR5mnkkMGU8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=B697wduiQcwgu9tNrSJ7sTGIjT+DrQVFCSufUafFKE2l1bNs/SwCIOwGpK2q5XNip
-	 9b25E+JFedcQ40kDC4v94I1hmIt74wohUdwEzrdmAHCbiNG9cTTbgmHtzNSBASHHYz
-	 7jGaiXmdQN+r92OptRwr/6U2zTnbXHCf4uBFBNZFwgueG21yfhClv1hU9EBcr6YUuO
-	 hlb1uK3eGr51f5Q2gUAFwbvjeWzEjZmYXBbAsOLcO7yUOkvUxQI1Yg+aPXE/qm8xMQ
-	 0zdfwS/6/vJ5lrFb1rhcMyYNA+0mNYWvJfpcpWT9NnRt7iLsbIW1w7Rf0ksA5Zfinr
-	 DWW5uQpqEXEnA==
+	bh=hIbZvUZlHw7fmj6qBOn3/XbqSdr2jxJFNOopoKSQ+O8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=pzA2ubbSxhbGt88YQybkILlXt3nGcctaKpJwrmh4Jc51bAu5wq/TqdpP8/FMYptav
+	 WD4/faLH8aKlhRxRzg/EOzJO9BJu7jH8umvhscIGUpOAOAk0BKbkzfH2vuWXjDm5GF
+	 7cutM4QVBUj7s2d2z99u0SYgh7i+j/zM/ZjsZ/v0O1SpMhqZ1DaZwY6pG50NpqwblX
+	 YTD1HFOCWaUgVMV/hMoiebK0dgDVDw0nktQcpS0hl0lla4EYmsprMGm4ZWt1rjzwMM
+	 3MNtC/dV+6lKN/jq2YGMJryT9YX8wj7tfMFaHs+FWEH+gxNTHKY+dVi4FwGuupcBAh
+	 67uyheEaGJEpg==
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 66AC83782082;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 7CE1037820EE;
 	Mon, 25 Mar 2024 19:36:11 +0000 (UTC)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 0F4364800CD; Mon, 25 Mar 2024 20:36:11 +0100 (CET)
+	id 144F24800D0; Mon, 25 Mar 2024 20:36:11 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -65,14 +65,16 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH v9 0/7] rockchip: clk: add GATE_LINK support
-Date: Mon, 25 Mar 2024 20:33:31 +0100
-Message-ID: <20240325193609.237182-1-sebastian.reichel@collabora.com>
+Subject: [PATCH v9 3/7] clk: rockchip: rk3588: register GATE_LINK later
+Date: Mon, 25 Mar 2024 20:33:34 +0100
+Message-ID: <20240325193609.237182-4-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240325193609.237182-1-sebastian.reichel@collabora.com>
+References: <20240325193609.237182-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_123615_621618_DC7B9811 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20240325_123615_601005_A6965B53 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,51 +91,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The proper GATE_LINK implementation will use runtime PM to handle the
+linked gate clocks, which requires device context. Currently all clocks
+are registered early via CLK_OF_DECLARE, which is before the kernel
+knows about devices.
 
-This implements proper GATE_LINK support following the suggestion from Stephen
-Boyd to use clk PM operations by creating MFD dynamically. This required some
-restructuring, since CLK_OF_DECLARE() is called before devices are available.
+Moving the full clocks registration to the probe routine does not work,
+since the clocks needed for timers must be registered early.
 
-Apart from improved power consumption, this fixes the runtime errors from the
-pmdomain driver (failed to set idle on domain '%s').
+To work around this issue, most of the clock tree is registered early,
+but GATE_LINK clocks are handled in the probe routine. Since the resets
+are not needed early either, they have also been moved to the probe
+routine.
 
-Changes since PATCHv8:
- * https://lore.kernel.org/linux-rockchip/20240126182919.48402-1-sebastian.reichel@collabora.com/
- * rebased to v6.9-rc1
- * dropped all merged patches (i.e. all but the last one)
- * rewrote and split the final patch
-   - should be easier to review
-   - properly calls pm_clk_suspend/pm_clk_resume
-   - now works on Orange Pi
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/clk/rockchip/clk-rk3588.c | 64 +++++++++++++++++++++++++++----
+ 1 file changed, 56 insertions(+), 8 deletions(-)
 
-Changes since PATCHv7:
- * https://lore.kernel.org/all/20231213185114.47565-1-sebastian.reichel@collabora.com/
- * rebased to v6.8-rc1
- * Collected Reviewed-by/Acked-by from Krzysztof Kozlowski for DT binding patches
- * support nr_clk=0 in rockchip_clk_find_max_clk_id() for smatch
-
-Greetings,
-
--- Sebstian
-
-Sebastian Reichel (7):
-  clk: rockchip: rk3588: drop unused code
-  clk: rockchip: handle missing clocks with -EPROBE_DEFER
-  clk: rockchip: rk3588: register GATE_LINK later
-  clk: rockchip: expose rockchip_clk_set_lookup
-  clk: rockchip: fix error for unknown clocks
-  clk: rockchip: implement linked gate clock support
-  clk: rockchip: rk3588: drop RK3588_LINKED_CLK
-
- drivers/clk/rockchip/Makefile     |   1 +
- drivers/clk/rockchip/clk-rk3588.c | 124 +++++++++++++-----------------
- drivers/clk/rockchip/clk.c        |  71 ++++++++++++++---
- drivers/clk/rockchip/clk.h        |  37 +++++++++
- drivers/clk/rockchip/gate-link.c  |  99 ++++++++++++++++++++++++
- 5 files changed, 251 insertions(+), 81 deletions(-)
- create mode 100644 drivers/clk/rockchip/gate-link.c
-
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 74051277ecea..29f31a5526fa 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -266,6 +266,8 @@ static struct rockchip_pll_rate_table rk3588_pll_rates[] = {
+ 	},							\
+ }
+ 
++static struct rockchip_clk_provider *early_ctx;
++
+ static struct rockchip_cpuclk_rate_table rk3588_cpub0clk_rates[] __initdata = {
+ 	RK3588_CPUB01CLK_RATE(2496000000, 1),
+ 	RK3588_CPUB01CLK_RATE(2400000000, 1),
+@@ -694,7 +696,7 @@ static struct rockchip_pll_clock rk3588_pll_clks[] __initdata = {
+ 		     RK3588_MODE_CON0, 10, 15, 0, rk3588_pll_rates),
+ };
+ 
+-static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
++static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	/*
+ 	 * CRU Clock-Architecture
+ 	 */
+@@ -2428,7 +2430,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(68), 5, GFLAGS),
+ 	GATE(ACLK_AV1, "aclk_av1", "aclk_av1_pre", 0,
+ 			RK3588_CLKGATE_CON(68), 2, GFLAGS),
++};
+ 
++static struct rockchip_clk_branch rk3588_clk_branches[] = {
+ 	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", ACLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
+ 	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", HCLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
+ 	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
+@@ -2453,14 +2457,18 @@ static struct rockchip_clk_branch rk3588_clk_branches[] __initdata = {
+ 	GATE_LINK(PCLK_VO1GRF, "pclk_vo1grf", "pclk_vo1_root", HCLK_VO1, CLK_IGNORE_UNUSED, RK3588_CLKGATE_CON(59), 12, GFLAGS),
+ };
+ 
+-static void __init rk3588_clk_init(struct device_node *np)
++static void __init rk3588_clk_early_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
+-	unsigned long clk_nr_clks;
++	unsigned long clk_nr_clks, max_clk_id1, max_clk_id2;
+ 	void __iomem *reg_base;
+ 
+-	clk_nr_clks = rockchip_clk_find_max_clk_id(rk3588_clk_branches,
+-					ARRAY_SIZE(rk3588_clk_branches)) + 1;
++	max_clk_id1 = rockchip_clk_find_max_clk_id(rk3588_clk_branches,
++					ARRAY_SIZE(rk3588_clk_branches));
++	max_clk_id2 = rockchip_clk_find_max_clk_id(rk3588_early_clk_branches,
++					ARRAY_SIZE(rk3588_early_clk_branches));
++	clk_nr_clks = max(max_clk_id1, max_clk_id2) + 1;
++
+ 	reg_base = of_iomap(np, 0);
+ 	if (!reg_base) {
+ 		pr_err("%s: could not map cru region\n", __func__);
+@@ -2473,6 +2481,7 @@ static void __init rk3588_clk_init(struct device_node *np)
+ 		iounmap(reg_base);
+ 		return;
+ 	}
++	early_ctx = ctx;
+ 
+ 	rockchip_clk_register_plls(ctx, rk3588_pll_clks,
+ 				   ARRAY_SIZE(rk3588_pll_clks),
+@@ -2491,14 +2500,53 @@ static void __init rk3588_clk_init(struct device_node *np)
+ 			&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
+ 			ARRAY_SIZE(rk3588_cpub1clk_rates));
+ 
++	rockchip_clk_register_branches(ctx, rk3588_early_clk_branches,
++				       ARRAY_SIZE(rk3588_early_clk_branches));
++
++	rockchip_clk_of_add_provider(np, ctx);
++}
++CLK_OF_DECLARE_DRIVER(rk3588_cru, "rockchip,rk3588-cru", rk3588_clk_early_init);
++
++static int clk_rk3588_probe(struct platform_device *pdev)
++{
++	struct rockchip_clk_provider *ctx = early_ctx;
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++
+ 	rockchip_clk_register_branches(ctx, rk3588_clk_branches,
+ 				       ARRAY_SIZE(rk3588_clk_branches));
+ 
+-	rk3588_rst_init(np, reg_base);
+-
++	rk3588_rst_init(np, ctx->reg_base);
+ 	rockchip_register_restart_notifier(ctx, RK3588_GLB_SRST_FST, NULL);
+ 
++	/*
++	 * Re-add clock provider, so that the newly added clocks are also
++	 * re-parented and get their defaults configured.
++	 */
++	of_clk_del_provider(np);
+ 	rockchip_clk_of_add_provider(np, ctx);
++
++	return 0;
+ }
+ 
+-CLK_OF_DECLARE(rk3588_cru, "rockchip,rk3588-cru", rk3588_clk_init);
++static const struct of_device_id clk_rk3588_match_table[] = {
++	{
++		.compatible = "rockchip,rk3588-cru",
++	},
++	{ }
++};
++
++static struct platform_driver clk_rk3588_driver = {
++	.probe		= clk_rk3588_probe,
++	.driver		= {
++		.name	= "clk-rk3588",
++		.of_match_table = clk_rk3588_match_table,
++		.suppress_bind_attrs = true,
++	},
++};
++
++static int __init rockchip_clk_rk3588_drv_register(void)
++{
++	return platform_driver_register(&clk_rk3588_driver);
++}
++core_initcall(rockchip_clk_rk3588_drv_register);
 -- 
 2.43.0
 
