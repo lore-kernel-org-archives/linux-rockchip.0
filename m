@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FCCC54E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 19:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB900C54E64
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 20:11:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HY+phSx4vhWFfeHDUbKjRF3Bpt5xBfS2MaHUhVSdxB4=; b=HNZcaFDIFRUdKM
-	JGlBFyjlowRCJ7eqrdkfkjL9LF/ggWX3OysvkcUu+OU92sgSOP0BeW0ijPdRphnNoDTLLhsq/xFM0
-	zJK/5+RVmeaH/FPdl4JGEf10l2MDQEcQMaLEpQ6/2j2vA0udy3JA4yN5DZgcTcHtwKstC1ghmEI9e
-	OjfF2kdtqmR1P1VvCqH/OBvtcCV+cuavqQ8ApQlb0DoRKeQzXCKg7tVbwxt0piXub+O16+a8zCuo9
-	z5SelgrHRyqPoq8pbl49IVZojUkvmRS009gB223uqJ0Ph8yWzsoa2s1+/aWppT2/d5+LTUf8aiJCK
-	7LyjDCIPPnrgZiqbjmpA==;
+	List-Owner; bh=RWNm+D/FB4TaaItRG/VPpLqfp9fhI7u6wDgZH/Ki0Bw=; b=lSedw3lTYJK9qX
+	2lcZjEdSnnEA0jbQ1Ji3LIVWZ/BqAu1zUdWSUvGB9HFZS66bBSYPfuYaZsePuPhwznjg5Sbns7gfP
+	ViwXa8D7jAB6+gFIYs5QRaH3dLX3m/iuJdo0TkXui26apkq09oyvev6SvQbJf6xa/7OJ4IG5SVYzw
+	p7Q+9gTMgI8CTQqbwkgsMtHQdg++fOQwyiq8y1F8LSssVcGdBpHywgBoNtw6xgCZ+534No7UMDxYk
+	bkkn3n6aGhLlGxEDDp6uMiS1/5Lw9Oy3Qb86el1Nvh6xzqxG+xTag/8Fngtl+HObWN+8PuXIQ6wjR
+	BnfAhVGrSU3eHY8ZXGsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roq7T-00000001cx6-0LMq;
-	Mon, 25 Mar 2024 19:36:31 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1roqf9-00000001k0F-2pcg;
+	Mon, 25 Mar 2024 20:11:19 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1roq7G-00000001cnq-3ixc
-	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 19:36:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711395372;
-	bh=cCY5rBf1NxO2H9TLDfyhyNt5POVE99CBz7Zh8pAM/3Q=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=3Mle9Xj/PmZZ38JqgNyYrU0YnzB3I5cgn7lCjqw3Yab1rptkH8BVlkRyeuG598BjT
-	 iX8sayGVmDcY1oYLwWG0KWn/F3rm+VYgjgpQUeehkkE52/xOq4s2n7nTrD4pn0eJ63
-	 Xtd82ND/LHFjHyfj7u2e+NJI+FkHJvqNi4uL+u60ztNCVp12FQVpiiLJalh7fVerP6
-	 JlVfLeAkqY3LLy2Mww/s3/2WsRkkpvwCMLzFR1dlPQQ/XJceYXZLqieB5xoopORiY8
-	 ffx9Xqfc4KVYSa4oM2cZSkBzuUnK7OpheUm9/9ozbt4hWUCz46sqVKLlFDI6Mm9oI8
-	 r3POxgKT3pv3A==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0E5EA3782110;
-	Mon, 25 Mar 2024 19:36:12 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1C1174800D4; Mon, 25 Mar 2024 20:36:11 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	linux-clk@vger.kernel.org
-Cc: Elaine Zhang <zhangqing@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	huangtao@rock-chips.com,
-	andy.yan@rock-chips.com,
-	Michal Tomek <mtdev79b@gmail.com>,
-	Ilya K <me@0upti.me>,
-	Chad LeClair <leclair@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH v9 7/7] clk: rockchip: rk3588: drop RK3588_LINKED_CLK
-Date: Mon, 25 Mar 2024 20:33:38 +0100
-Message-ID: <20240325193609.237182-8-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240325193609.237182-1-sebastian.reichel@collabora.com>
-References: <20240325193609.237182-1-sebastian.reichel@collabora.com>
+	id 1roqf3-00000001jvM-2tCs;
+	Mon, 25 Mar 2024 20:11:16 +0000
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4V3PDj3HrVz6K5Yf;
+	Tue, 26 Mar 2024 04:10:13 +0800 (CST)
+Received: from lhrpeml100003.china.huawei.com (unknown [7.191.160.210])
+	by mail.maildlp.com (Postfix) with ESMTPS id BCB1A140A35;
+	Tue, 26 Mar 2024 04:11:01 +0800 (CST)
+Received: from lhrpeml500002.china.huawei.com (7.191.160.78) by
+ lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Mon, 25 Mar 2024 20:11:01 +0000
+Received: from lhrpeml500002.china.huawei.com ([7.191.160.78]) by
+ lhrpeml500002.china.huawei.com ([7.191.160.78]) with mapi id 15.01.2507.035;
+ Mon, 25 Mar 2024 20:11:01 +0000
+From: Niyas Sait <niyas.sait@huawei.com>
+To: Jonathan Cameron <jonathan.cameron@huawei.com>, Shimrra Shai
+	<shimmyshai00@gmail.com>
+CC: "heiko@sntech.de" <heiko@sntech.de>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "max.schwarz@online.de"
+	<max.schwarz@online.de>
+Subject: RE: [PATCH 0/0] (proposed?) Add ACPI binding to Rockchip RK3xxx I2C
+ bus
+Thread-Topic: [PATCH 0/0] (proposed?) Add ACPI binding to Rockchip RK3xxx I2C
+ bus
+Thread-Index: AQHafsr0Wl6sT07ewk2P4IUJwaVt4bFI4A9w
+Importance: high
+X-Priority: 1
+Date: Mon, 25 Mar 2024 20:11:01 +0000
+Message-ID: <78763d69bae04204b2af37201b09f8b5@huawei.com>
+References: <20240322103521.00001a12@Huawei.com>
+	<20240322155146.22755-1-shimmyshai00@gmail.com>
+ <20240325154150.00003bde@Huawei.com>
+In-Reply-To: <20240325154150.00003bde@Huawei.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.48.158.103]
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_123619_172172_DFCAD477 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20240325_131114_148955_011FB19E 
+X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,115 +87,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the proper GATE_LINK support, we no longer need to keep the
-linked clocks always on. Thus it's time to drop the CLK_IS_CRITICAL
-flag for them.
+> Niyas, could you forward what you had to Shimrra? (I can find it if you don't have it any more).
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/clk/rockchip/clk-rk3588.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+I am on holiday so only had a chance to skim through the email. By the way, the half-baked patch is here [1]. 
 
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 1bf84ac44e85..42579b6f74b4 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -12,9 +12,6 @@
- #include <dt-bindings/clock/rockchip,rk3588-cru.h>
- #include "clk.h"
- 
--#define RK3588_LINKED_CLK		CLK_IS_CRITICAL
--
--
- #define RK3588_GRF_SOC_STATUS0		0x600
- #define RK3588_PHYREF_ALT_GATE		0xc38
- 
-@@ -1439,7 +1436,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	COMPOSITE_NODIV(HCLK_NVM_ROOT,  "hclk_nvm_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(77), 0, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(31), 0, GFLAGS),
--	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_NVM_ROOT, "aclk_nvm_root", gpll_cpll_p, 0,
- 			RK3588_CLKSEL_CON(77), 7, 1, MFLAGS, 2, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(31), 1, GFLAGS),
- 	GATE(ACLK_EMMC, "aclk_emmc", "aclk_nvm_root", 0,
-@@ -1668,13 +1665,13 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(42), 9, GFLAGS),
- 
- 	/* vdpu */
--	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_VDPU_ROOT, "aclk_vdpu_root", gpll_cpll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(98), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(44), 0, GFLAGS),
- 	COMPOSITE_NODIV(ACLK_VDPU_LOW_ROOT, "aclk_vdpu_low_root", mux_400m_200m_100m_24m_p, 0,
- 			RK3588_CLKSEL_CON(98), 7, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(44), 1, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VDPU_ROOT, "hclk_vdpu_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(98), 9, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(44), 2, GFLAGS),
- 	COMPOSITE(ACLK_JPEG_DECODER_ROOT, "aclk_jpeg_decoder_root", gpll_cpll_aupll_spll_p, 0,
-@@ -1725,9 +1722,9 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	COMPOSITE(ACLK_RKVENC0_ROOT, "aclk_rkvenc0_root", gpll_cpll_npll_p, 0,
- 			RK3588_CLKSEL_CON(102), 7, 2, MFLAGS, 2, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(47), 1, GFLAGS),
--	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", RK3588_LINKED_CLK,
-+	GATE(HCLK_RKVENC0, "hclk_rkvenc0", "hclk_rkvenc0_root", 0,
- 			RK3588_CLKGATE_CON(47), 4, GFLAGS),
--	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", RK3588_LINKED_CLK,
-+	GATE(ACLK_RKVENC0, "aclk_rkvenc0", "aclk_rkvenc0_root", 0,
- 			RK3588_CLKGATE_CON(47), 5, GFLAGS),
- 	COMPOSITE(CLK_RKVENC0_CORE, "clk_rkvenc0_core", gpll_cpll_aupll_npll_p, 0,
- 			RK3588_CLKSEL_CON(102), 14, 2, MFLAGS, 9, 5, DFLAGS,
-@@ -1737,10 +1734,10 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 			RK3588_CLKGATE_CON(48), 6, GFLAGS),
- 
- 	/* vi */
--	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, RK3588_LINKED_CLK,
-+	COMPOSITE(ACLK_VI_ROOT, "aclk_vi_root", gpll_cpll_npll_aupll_spll_p, 0,
- 			RK3588_CLKSEL_CON(106), 5, 3, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(49), 0, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(106), 8, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(49), 1, GFLAGS),
- 	COMPOSITE_NODIV(PCLK_VI_ROOT, "pclk_vi_root", mux_100m_50m_24m_p, 0,
-@@ -1910,10 +1907,10 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	COMPOSITE(ACLK_VOP_ROOT, "aclk_vop_root", gpll_cpll_dmyaupll_npll_spll_p, 0,
- 			RK3588_CLKSEL_CON(110), 5, 3, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(52), 0, GFLAGS),
--	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(ACLK_VOP_LOW_ROOT, "aclk_vop_low_root", mux_400m_200m_100m_24m_p, 0,
- 			RK3588_CLKSEL_CON(110), 8, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(52), 1, GFLAGS),
--	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, RK3588_LINKED_CLK,
-+	COMPOSITE_NODIV(HCLK_VOP_ROOT, "hclk_vop_root", mux_200m_100m_50m_24m_p, 0,
- 			RK3588_CLKSEL_CON(110), 10, 2, MFLAGS,
- 			RK3588_CLKGATE_CON(52), 2, GFLAGS),
- 	COMPOSITE_NODIV(PCLK_VOP_ROOT, "pclk_vop_root", mux_100m_50m_24m_p, 0,
-@@ -2416,7 +2413,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- static struct rockchip_clk_branch rk3588_clk_branches[] = {
- 	GATE_LINK(ACLK_ISP1_PRE, "aclk_isp1_pre", "aclk_isp1_root", ACLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 6, GFLAGS),
- 	GATE_LINK(HCLK_ISP1_PRE, "hclk_isp1_pre", "hclk_isp1_root", HCLK_VI_ROOT, 0, RK3588_CLKGATE_CON(26), 8, GFLAGS),
--	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(31), 2, GFLAGS),
-+	GATE_LINK(HCLK_NVM, "hclk_nvm", "hclk_nvm_root", ACLK_NVM_ROOT, 0, RK3588_CLKGATE_CON(31), 2, GFLAGS),
- 	GATE_LINK(ACLK_USB, "aclk_usb", "aclk_usb_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 2, GFLAGS),
- 	GATE_LINK(HCLK_USB, "hclk_usb", "hclk_usb_root", HCLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(42), 3, GFLAGS),
- 	GATE_LINK(ACLK_JPEG_DECODER_PRE, "aclk_jpeg_decoder_pre", "aclk_jpeg_decoder_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(44), 7, GFLAGS),
-@@ -2428,9 +2425,9 @@ static struct rockchip_clk_branch rk3588_clk_branches[] = {
- 	GATE_LINK(HCLK_RKVDEC1_PRE, "hclk_rkvdec1_pre", "hclk_rkvdec1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 4, GFLAGS),
- 	GATE_LINK(ACLK_RKVDEC1_PRE, "aclk_rkvdec1_pre", "aclk_rkvdec1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(41), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP0_PRE, "aclk_hdcp0_pre", "aclk_vo0_root", ACLK_VOP_LOW_ROOT, 0, RK3588_CLKGATE_CON(55), 9, GFLAGS),
--	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(55), 5, GFLAGS),
-+	GATE_LINK(HCLK_VO0, "hclk_vo0", "hclk_vo0_root", HCLK_VOP_ROOT, 0, RK3588_CLKGATE_CON(55), 5, GFLAGS),
- 	GATE_LINK(ACLK_HDCP1_PRE, "aclk_hdcp1_pre", "aclk_hdcp1_root", ACLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(59), 6, GFLAGS),
--	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, RK3588_LINKED_CLK, RK3588_CLKGATE_CON(59), 9, GFLAGS),
-+	GATE_LINK(HCLK_VO1, "hclk_vo1", "hclk_vo1_root", HCLK_VO1USB_TOP_ROOT, 0, RK3588_CLKGATE_CON(59), 9, GFLAGS),
- 	GATE_LINK(ACLK_AV1_PRE, "aclk_av1_pre", "aclk_av1_root", ACLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 1, GFLAGS),
- 	GATE_LINK(PCLK_AV1_PRE, "pclk_av1_pre", "pclk_av1_root", HCLK_VDPU_ROOT, 0, RK3588_CLKGATE_CON(68), 4, GFLAGS),
- 	GATE_LINK(HCLK_SDIO_PRE, "hclk_sdio_pre", "hclk_sdio_root", HCLK_NVM, 0, RK3588_CLKGATE_CON(75), 1, GFLAGS),
--- 
-2.43.0
+The patch only supports fixed clock sources and require further changes to support multiple clock sources.
+
+I will have a look at the discussions when I am back. Hopefully the patch gives some idea. Feel free to take up the patch and fill any missing bits.
+
+[1] https://github.com/niyas-sait/linux-acpi/blob/main/0001-acpi-add-clock-bindings-for-fixed-clock-resources.patch
+
+Thanks
+Niyas
 
 
 _______________________________________________
