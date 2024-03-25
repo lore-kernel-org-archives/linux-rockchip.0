@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D306AC54E58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 15:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72C7FC54E58
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Mar 2024 16:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7/NjyKSyOkDZygR+0RmN5X1QiPTRw5tV3GYMZd+Opo=; b=442luIUZo5jGVq5QNq5CkFYFzI
-	jPCad0EX9L9EdPZiZ2fUsCVIm5mIBsXmbc+WZ6kxXv4HeCZhJ9t7txLR+2pjXqNAfXJ3KJmD85q1z
-	2rN4xWhZdhEtE8h8yD3F/5WVFb9zEyF/YxQ8gBHsi8juM2SD0dyHzOpN2YJSou2xZbrx9ify/RRrJ
-	s4nl3BjPGRYjKz10KRHImKumegILvoWP39PCwgbPhWIaWwbbqwmK515ADvsRbHdyvCtN/eIzk8Gf8
-	Rwscg72csZB3TJb6z4+MSz6KSxks7VpuhYhzoJPQx2sJR//rR08KnQv0abMXUQ4qHoiqmd/qTR+cD
-	EQWkk//Q==;
+	bh=HXRXCifZNKaxBZlvKf5xc/1m1Iu4OJX4NaS8ijy8q1Y=; b=FB6UR0jB2X1mEu/4TsoVzIlp2w
+	VvC/Yi/iYeNEDFlaGAdzcesDvh6/043db4Y1tUAcZNLDvyAm1aDFkEkMR4nUVlulxph71jzaM9X5Q
+	nTSno3jFpvfPtZGp2CVgtSs8TgiRLTn5JY9dEvP5UVmv9yODpsPeBtdVlHFGmvXhXSxyU62eByI8R
+	PTuKersXZM92mIMQ6vYTt0eUEAu3qSKgEOm9USGGQ/aUH3pGE4QGVuGOJR6l5H2u6JzOpdXghMnsj
+	Cexqhq5hDitjBzz+oUgZWap1CU5YP5Ikr5pOR0e35mHY+GtcqtXMIiYBTIWC2Q67asCVmXm2ucrC7
+	6r3fCbVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romjC-00000000dFZ-2L2g;
-	Mon, 25 Mar 2024 15:59:14 +0000
+	id 1romqO-00000000fFC-2qkM;
+	Mon, 25 Mar 2024 16:06:40 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1romj7-00000000dEI-1Mzv
+	id 1romqI-00000000fBK-0Jcn
 	for linux-rockchip@lists.infradead.org;
-	Mon, 25 Mar 2024 15:59:11 +0000
+	Mon, 25 Mar 2024 16:06:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711382347;
-	bh=z6TktM9oeZYfD2iw3BnLyXq0E5TG0XoAbr6D5qI8LfY=;
+	s=mail; t=1711382792;
+	bh=6R/YDODy0mvmEaE7xbmqBZ9G0H9VSOniImpYBdZb5us=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d2JaH/4tV0LyVi0uyRz3byEOEifMu162pRb26KxjcEUxZ5VvtYxVsHk/rmSVV57bD
-	 7byKasfozdy+2czFVurHQ7KjR4IltkaPUvLq6P3evAaYL6i4pG5bXSAHBlY2/0O6hP
-	 q26QHHeeOTN3SPezNEI90RM8dn3ZGJiVYxyodSkuv2Myr+nAcMkx+GY0E4/Fwyrpnr
-	 w+DkvDV/oof3kyfGe/O+rCGFKivV6YNPkSXUqsxx9W4nnXrL91mI3/eO1fBG0L5CTH
-	 HdLeM6/ZS4PgqjBuBxFSIgNAx6p/qJK4IRUedivCsRs7V+aTWYjWASZWvpAem//4ff
-	 OXQRIwFVCUHYw==
+	b=BhsgGyDX6O6ycfg4PMeg1+RsPU7ckHPQRIpR9JBaqzCP/pmXEMBSgs13FxK5M3kNU
+	 y6zJwVvFX6HaeTUS04E324dpHPhuWJL7QmCyTIKuyNUg2kRZo7Mo4pzWBa8ZQYvf5G
+	 bGyzQgeDlRSgb/YAW0Y+vT2O0oElGuHIGUQrK9Zyuz0TMJi6s5jXV2og/9REZlS9gK
+	 hWr43W7GD4m+KJ5ZyuKUaLNATFbrrjbW2cJJvOnj4TOJZXyhd//ConRtHHJGppqY8q
+	 HylaBPtGx2wPyiKsHUFVGCXsmv5yOSLn5QXM0Hv1v3Yk6GSyi5QvZXK94L0wUNu3Qm
+	 scxifwE4k6I4g==
 Received: from mercury (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 3D48337813B7;
-	Mon, 25 Mar 2024 15:59:07 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 8176A37820BB;
+	Mon, 25 Mar 2024 16:06:32 +0000 (UTC)
 Received: by mercury (Postfix, from userid 1000)
-	id 769C3106074E; Mon, 25 Mar 2024 16:58:47 +0100 (CET)
-Date: Mon, 25 Mar 2024 16:58:47 +0100
+	id 152DF106074E; Mon, 25 Mar 2024 17:06:32 +0100 (CET)
+Date: Mon, 25 Mar 2024 17:06:32 +0100
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Boris Brezillon <boris.brezillon@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
 	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
 	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	kernel@collabora.com
-Subject: Re: [PATCH v1 3/4] arm64: dts: rockchip: rk3588-rock5b: Enable GPU
-Message-ID: <a6uu7b3y7d4nirxbplc5cj4oeuyblx2grpvvldeovofhx3tnqc@dlse3vixhpws>
+Subject: Re: [PATCH v1 4/4] arm64: dts: rockchip: rk3588-evb1: Enable GPU
+Message-ID: <dskay7po64y7fewkf32yhfolxxwdubihdib54ytvg2senovum7@6v6qf3waija5>
 References: <20240325153850.189128-1-sebastian.reichel@collabora.com>
- <20240325153850.189128-4-sebastian.reichel@collabora.com>
- <20240325164441.1dab4018@collabora.com>
+ <20240325153850.189128-5-sebastian.reichel@collabora.com>
+ <20240325165308.483b01b3@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20240325164441.1dab4018@collabora.com>
+In-Reply-To: <20240325165308.483b01b3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_085909_532922_1F823D55 
-X-CRM114-Status: GOOD (  24.93  )
+X-CRM114-CacheID: sfid-20240325_090634_283481_A43C9E21 
+X-CRM114-Status: GOOD (  19.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,103 +74,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0585288483464703245=="
+Content-Type: multipart/mixed; boundary="===============0295924126020807419=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0585288483464703245==
+--===============0295924126020807419==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="rdf73uqhcgedopzb"
+	protocol="application/pgp-signature"; boundary="6t2fecdpx4yxkblu"
 Content-Disposition: inline
 
 
---rdf73uqhcgedopzb
+--6t2fecdpx4yxkblu
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-On Mon, Mar 25, 2024 at 04:44:41PM +0100, Boris Brezillon wrote:
-> On Mon, 25 Mar 2024 16:37:20 +0100
-> Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
->=20
-> > From: Boris Brezillon <boris.brezillon@collabora.com>
-> >=20
-> > Enable the Mali GPU in the Rock 5B.
-> >=20
-> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
->=20
-> I don't remember writing this patch ;-), maybe I screwed authorship at
-> some point, dunno.
-
-mh, I cherry-picked the DT patches from your branch before
-cleaning them up.
-
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> >=20
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm=
-64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > index 1fe8b2a0ed75..096ee7a98b89 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-> > @@ -180,6 +180,11 @@ &cpu_l3 {
-> >  	cpu-supply =3D <&vdd_cpu_lit_s0>;
-> >  };
-> > =20
-> > +&gpu {
-> > +	mali-supply =3D <&vdd_gpu_s0>;
-> > +	status =3D "okay";
-> > +};
-> > +
-> >  &i2c0 {
-> >  	pinctrl-names =3D "default";
-> >  	pinctrl-0 =3D <&i2c0m2_xfer>;
-> > @@ -470,6 +475,7 @@ rk806_dvs3_null: dvs3-null-pins {
+On Mon, Mar 25, 2024 at 04:53:08PM +0100, Boris Brezillon wrote:
+> [...]
+> > @@ -484,12 +490,15 @@ rk806_dvs3_null: dvs3-null-pins {
 > > =20
 > >  		regulators {
-> >  			vdd_gpu_s0: vdd_gpu_mem_s0: dcdc-reg1 {
+> >  			vdd_gpu_s0: dcdc-reg1 {
 > > +				regulator-always-on;
 >=20
-> Hm, should we mention why the regulator is always on here?
+> IIRC, this is only needed because of some bug in the power-domain
+> driver (or elsewhere). Is there any other reason to flag those as
+> always-on? I mean, it's working but probably not ideal from a PM
+> standpoint, as that means the regulators will stay on even when the GPU
+> is idle.
 
-In case of the EVB1 it's needed because the generic coupler driver
-cannot handle regulators that are not always on. I'm not sure why
-it was added for the Rock 5B. I will check if it works without that
-flag.
+EVB1 needs it for the generic coupler infrastructure. The Linux
+coupler code cannot handle non always-on regulators at the moment.
+That's something, which could be improved, but I think for now we
+can just make the regulator always-on for the EVB1. The EVB1 is not
+running from a battery anyways.
 
-Greetings,
+Greetings
 
 -- Sebastian
 
---rdf73uqhcgedopzb
+--6t2fecdpx4yxkblu
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmYBny4ACgkQ2O7X88g7
-+poZyQ/9G9QEr+2KbYk/fyuDkbFekDi5Glgsc2BnOzUb7Fc/xRgFCjcxrHlYKwgO
-PiNmoQd3mtYg5dV9LXrAk6CCSwMulGLpYvPbeb2CWrSRz2GdzKFuSbSz1Cu8QcUi
-taJwzSCCIkKA6yp6KJU8zasTVOhfOMuuWymfKomL6nE/4UqoLCMWNurt5IAuyWQw
-ygipqVELxmkDFoS2yx3s2wDi/MrvG5jWVTeX8d4WWyfAyl4SIeiHlpwFNZ1QjFBr
-39RxnW7Z/OxyASUHg6YV5ysoxd4Mo07XBxEEzjsMCvUxoc6PvQxsQjZYJ330Qa7c
-vbGsrlG3359jmybiFZyJnAcXgwyA9Ly5AtRP+XcO20gCDBe55pTuAr5zMQe2943c
-6jApERBuQTbMSsQHoUXFi6zDKhfs2I8GM4vKmk1zOk5slDCWnYHfrG7qMtkzAKN6
-R7hPsj7DuBdNP0i6kiepHUqhU3G+LzsyqxD0Jh4VxiRiNiRUcOAyQT0JY29AkXhT
-hYyF5n8Q5Y7DvtqH2NKGRoXsLhI/jo6FXU9aBeuTVxYCdCNe4gkDkCWtHLSmMIu3
-wdPwJy2lq9GLaNd0Z9IHc06ymM5Uy9RyzhhHcrWJvPKDeAKfl264bcqJbwySjmug
-jvvGSbwi1CX+a+6iKqfXAvYwxUBJ1pLI/Jxqeyz0Ml/zMeREsAY=
-=Gono
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmYBoQcACgkQ2O7X88g7
++pp+rQ/8CbVqn3AIkLQp1cGlyaXbLIeiuWKBDLqqm+uO9zJIPLjt05HgBd2I9ULk
+WYiqvzNlhjoFZG6a6NR7psLECc/PPhy2R+de5q5K7YZT+I4YpMgR2dc8KQkzAJMw
+vDbq+WTPXshiKoNpcg4Snz6IUUFghFJygNbYD2GYD0RF0nBu1HNAVDAFOu/U6u5h
+d8VWeJVJNYK23ak8Gf8cLvk6hpBw0GuijpH4nmundM2ZbWpIMniRj5N80zgBa6Dq
+rPmfM0b29Ki1nYIcDtZH1p/EpOWKx0FE0xtBaQ54cd6i1q4mK5uBDJRFQVHE08bi
+K/66sWZI0Mx5jFZyV8BLBIWArbX/8Lc4g2U4rDNq5bUehAiPfb/VAxR6m83dGR0W
+4qTJIMoVbnq0ifJBHkecN9tYrbNoHcnL367ZwYfvvjk6dtWUKmJm4Wo4LbwaWUXz
+meeH1p8OgOqueyW5x9kWBvGDG75MU6Wdu3cBvhyKlccQJuAocAUNf41GKKTpmUBz
+Hk82Qj6XhsriaxGoiYKXb98sd7LnIzscQsNQpSNy50x0p8xqPIRL43QvW2FakCsv
+ydhlocwajYAk66x12LHbD7TxE8TMreKVTeAuAv2wqbcdzRe7eL3lAjbGGIl+iLd0
+BbANZL9w1VnEe8ck2U6U4WKslKyd5bFQj2kVsdynXau1FsMGirc=
+=3mNC
 -----END PGP SIGNATURE-----
 
---rdf73uqhcgedopzb--
+--6t2fecdpx4yxkblu--
 
 
---===============0585288483464703245==
+--===============0295924126020807419==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,5 +150,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0585288483464703245==--
+--===============0295924126020807419==--
 
