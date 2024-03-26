@@ -4,50 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDDEC54E67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:33:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E56C54E67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xxXLUtIQWo7DCpVpKuzZjcDPLBq0qC5OAIF8CxDN1nc=; b=I999/N0YpcKL4m
-	ho/ELQR1vNfFSYB8tYb861+b2rG8HAwMq2g24EEJnfJkPm8+jDyuwhwol3pYW6Qa1MRy8C6Gb3mI1
-	ceb9nM6YN/lZtbqBMK5R1K9KhpxvlvHZLlIMG31vJMR69EOBayr4UfV/bWwIDOphtLEUtSETJK/AH
-	IbF55772FZYOIHmU24kjLxrsz3mMOez3+vmzOjdU1t47/uagKL/Vxio5cKcEvOdoHmKaBzI2v1ZRw
-	9jkxCsWJ3HN2xK8i4LWHxLs6eYZO2LB3I1/Qs01NGFboW33O6QrZVqWBN2xzQVFdWY27SUHqxcAZy
-	JUCA7zi/upCobFdaAbZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RmfH17o3ja+ReMpm7aAbuXRb638MQVvqYzojAQSv7Q0=; b=sN1sgQuJwWvc6RTumEWbaZc04v
+	zaazqdP0tQvXoTSEFevIPHl6j46C39LyoTHTNS+k+dsRysCR3Yhc7/xuDET0Md5fs58VjwZINbgV0
+	/no7rXhLCOSCiGPl74dB/ddPv058/qCxXlb+3bPWhbT+OK0Api+fLfIa2YlaOEzD/tjZ+25RdbRhX
+	Q34AhRv78kMGUDRJLPbAPRpd3SUKPLa8cGOxj9MNT2Ajz1EwvO2xu8orSK4b94mfmiDHLVwU5kyFp
+	CJ5MJUGbWkHbxHg0Z0OnuYVY28Bv4jde5+mSCrenZ/N8aHWl5kkUsgjiOLUHSWFW5Hu9XGgBNQyUI
+	pK2cIAFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCYS-00000006Ajx-2qPD;
-	Tue, 26 Mar 2024 19:33:52 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rpCZe-00000006B0R-40zx;
+	Tue, 26 Mar 2024 19:35:06 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCYO-00000006AiV-1Ukp;
-	Tue, 26 Mar 2024 19:33:50 +0000
-Received: from i53875aaf.versanet.de ([83.135.90.175] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rpCYM-00076I-Oh; Tue, 26 Mar 2024 20:33:46 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- Rob Herring <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 0/4] arm64: dts: rockchip: add wolfvision pf5 mainboard
-Date: Tue, 26 Mar 2024 20:33:45 +0100
-Message-ID: <2672576.Isy0gbHreE@diego>
-In-Reply-To: <171148006579.3222626.4177463381080253015.robh@kernel.org>
-References: <20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net>
- <171148006579.3222626.4177463381080253015.robh@kernel.org>
+	id 1rpCZa-00000006Ayj-3zF9;
+	Tue, 26 Mar 2024 19:35:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id AA7D1CE2303;
+	Tue, 26 Mar 2024 19:35:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C90AC433F1;
+	Tue, 26 Mar 2024 19:34:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1711481699;
+	bh=dd88q1ZEU6vWFMFdtX0JYBknro/QldP57SoW9UmINfU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=d4yxmGjC0N+zEn19fH/1bM+s9IgFIlwD+J2ali8Up/WQDOgW2t8N6shOD8Dr2B2W0
+	 JoDYxTsIEhUlST2ScUZ1Gn7FDik/5JaR+YLrAwSIkmGDb4sfL6xXf6nj7NkAm/igc6
+	 TtxtqWpfUeiJsgTTGid0GDvzTxNBqWsjcRUW1to55B0RNTMzCM+4v18rR2BWivsiOX
+	 x1WcmLakDJOZiLSrqQPUG2QQBv8/+wLw5OvKfl1QjzzPBO5rg2vW8leX4b/77EwWQa
+	 IA1XOQ+7kIkeMy1hOpKn5lU9Fx07ky5ntFqTwYVfPdJyGGFFzlC3Prnimvhl4nAGrf
+	 MVaYQjC2SHQzQ==
+Date: Tue, 26 Mar 2024 19:34:54 +0000
+From: Conor Dooley <conor@kernel.org>
+To: dev@folker-schwesinger.de
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Ruehl <chris.ruehl@gtsys.com.hk>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Alban Browaeys <alban.browaeys@gmail.com>,
+	Doug Anderson <dianders@chromium.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Jensen Huang <jensenhuang@friendlyarm.com>,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 2/3] devicetree: phy: rockchip-emmc: Document changed
+ strobe-pulldown property
+Message-ID: <20240326-shortage-portly-a3ae475b2f78@spud>
+References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de>
+ <20240326-rk-default-enable-strobe-pulldown-v1-2-f410c71605c0@folker-schwesinger.de>
 MIME-Version: 1.0
+In-Reply-To: <20240326-rk-default-enable-strobe-pulldown-v1-2-f410c71605c0@folker-schwesinger.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_123348_531564_65680460 
-X-CRM114-Status: GOOD (  25.92  )
+X-CRM114-CacheID: sfid-20240326_123503_385366_C683E6D5 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,113 +80,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============1669238282871081054=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 26. M=E4rz 2024, 20:11:58 CET schrieb Rob Herring:
-> =
 
-> On Mon, 25 Mar 2024 15:22:30 +0100, Michael Riesch wrote:
-> > Habidere,
-> > =
+--===============1669238282871081054==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="rZWP/rtpsRtp/vzL"
+Content-Disposition: inline
 
-> > This series adds the device tree for the WolfVision PF5 mainboard, which
-> > serves as base for recent WolfVision products. It features the Rockchip
-> > RK3568 and can be extended with several different extension boards.
-> > =
 
-> > The WolfVision PF5 IO Expander is one example of such an extension boar=
+--rZWP/rtpsRtp/vzL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Mar 26, 2024 at 07:54:36PM +0100, Folker Schwesinger via B4 Relay w=
+rote:
+> From: Folker Schwesinger <dev@folker-schwesinger.de>
+
+The prefix is "dt-bindings" not "devicetree" FYI.
+
+>=20
+> Document the changes regarding the optional strobe-pulldown property.
+> These changes are necessary as the default behavior of the driver was
+> restored to the Rockchip kernel behavior of enabling the internal
+> pulldown by default.
+
+I don't think this is a valid justification, but it'll be easier for me
+to explain this on the driver patch.
+
+Thanks,
+Conor.
+
+>=20
+> Fixes: f34e43f12382 ("devicetree: phy: rockchip-emmc: pulldown property")
+> Signed-off-by: Folker Schwesinger <dev@folker-schwesinger.de>
+> ---
+>  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt =
+b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> index 57d28c0d5696..10c05437f7ab 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> @@ -16,8 +16,8 @@ Optional properties:
+>   - drive-impedance-ohm: Specifies the drive impedance in Ohm.
+>                          Possible values are 33, 40, 50, 66 and 100.
+>                          If not set, the default value of 50 will be appl=
+ied.
+> - - rockchip,enable-strobe-pulldown: Enable internal pull-down for the st=
+robe
+> -                                    line.  If not set, pull-down is not =
+used.
+> + - rockchip,disable-strobe-pulldown: Disable internal pull-down for the =
+strobe
+> +                                     line.  If not set, pull-down is use=
 d.
-> > The corresponding device tree overlay is also included in this series.
-> > =
+>   - rockchip,output-tapdelay-select: Specifies the phyctrl_otapdlysec reg=
+ister.
+>                                      If not set, the register defaults to=
+ 0x4.
+>                                      Maximum value 0xf.
+>=20
+> --=20
+> 2.44.0
+>=20
+>=20
 
-> > May this be the beginning of a beautiful friendship :-)
-> > =
+--rZWP/rtpsRtp/vzL
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> > Looking forward to your comments!
-> > =
+-----BEGIN PGP SIGNATURE-----
 
-> > Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> > ---
-> > Michael Riesch (4):
-> >       dt-bindings: add wolfvision vendor prefix
-> >       dt-bindings: arm: rockchip: add wolfvision pf5 mainboard
-> >       arm64: dts: rockchip: add wolfvision pf5 mainboard
-> >       arm64: dts: rockchip: add wolfvision pf5 io expander board
-> > =
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgMjXgAKCRB4tDGHoIJi
+0gDXAQDsnJ2l1e9/GqPRLAJofwCMnAL+WPP/kMag/2lxXFb3sgD8DaHfe8Mk5FsS
+FcEt/njhjF1n6zYpqFuyWccUhJQdUwc=
+=f9q9
+-----END PGP SIGNATURE-----
 
-> >  .../devicetree/bindings/arm/rockchip.yaml          |   5 +
-> >  .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
-> >  arch/arm64/boot/dts/rockchip/Makefile              |   2 +
-> >  .../rk3568-wolfvision-pf5-io-expander.dtso         | 137 ++++++
-> >  .../boot/dts/rockchip/rk3568-wolfvision-pf5.dts    | 528 +++++++++++++=
-++++++++
-> >  5 files changed, 674 insertions(+)
-> > ---
-> > base-commit: 4cece764965020c22cff7665b18a012006359095
-> > change-id: 20240325-feature-wolfvision-pf5-5c1924c0389c
-> > =
-
-> > Best regards,
-> > --
-> > Michael Riesch <michael.riesch@wolfvision.net>
-> > =
-
-> > =
-
-> > =
-
-> =
-
-> =
-
-> My bot found new DTB warnings on the .dts files added or changed in this
-> series.
-> =
-
-> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-> are fixed by another series. Ultimately, it is up to the platform
-> maintainer whether these warnings are acceptable or not. No need to reply
-> unless the platform maintainer has comments.
-> =
-
-> If you already ran DT checks and didn't see these error(s), then
-> make sure dt-schema is up to date:
-> =
-
->   pip3 install dtschema --upgrade
-> =
-
-> =
-
-> New warnings running 'make CHECK_DTBS=3Dy rockchip/rk3568-wolfvision-pf5.=
-dtb' for 20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net:
-> =
-
-> arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5.dtb: hdmi@fe0a0000: Un=
-evaluated properties are not allowed ('#sound-dai-cells' was unexpected)
-> 	from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip=
-,dw-hdmi.yaml#
-
-just for the record, this is not the fault of the Wolfvision board,
-but caused by an undocumented property in the core hdmi node.
-
-I've prepared a fix for the binding in [0], but as Krzysztof noted,
-this patch needs a v2 with a change.
+--rZWP/rtpsRtp/vzL--
 
 
-Heiko
-
-
-
-[0] https://lore.kernel.org/dri-devel/20240326172801.1163200-1-heiko@sntech=
-.de/
-
-
+--===============1669238282871081054==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1669238282871081054==--
+
