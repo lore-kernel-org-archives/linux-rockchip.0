@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29480C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:55:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B608CC6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:57:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
 	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ySYGzOfeRKN48lZziPbsrF2SnE3nRJhy10voJKPyR4E=; b=t4rk9TDb2sEZ7RpOJMj/ZJCK4K
-	jo8i0+bWI8dFXqjbxOFtBY8g+S+bCzMrgOgPQsuu0PFBkCvAiYEdp5wXM3sxIm8jUXWD+q4VcqhMi
-	twaQBOsVy6+LZkuKTW34pMk/zTi/30jCddDXGdaXh/rfEO9eBGOiBwh1RKeFVyC04WeZIaNI2wA2G
-	7dE9Z7gAFloOiE5judmUOqRb9rZn0j+Zz4esTQczRI6JlurDnBMZuChsne8Hxa/VCh0NIkQM4ukVh
-	qdKhOdGZG42NAFJkpkwg5ysAldC6c8mbU3p0zxcxhGHLBGzEgaEa99uTQtpidVKpSQI+7mxNN+aTk
-	og3mHAAA==;
+	bh=qgk3lPgllycmWy6G6LZbecTAxT2AiDgSb4Ykw/+tiHQ=; b=sdkGdP54tdtmziwvNzRrTOygfp
+	fUFPZcoIcSWdS/8lSX0dAdar3FiZpX6wxePriADJIlrnTasEqweXipPgRTEZqy0SI1Xtiuu0Ovuch
+	kz7yH/p/KEiInOGPzmLgQEj1rVVR9X5w/J4nGwcS9rMbvx/58m7qdxreINlQQBHw3CoRTJxw0cN/E
+	hzM7bX7uVu34YEjOEcJEX8UrzJObRRe75jMraDbgzCafEegVltZsYE72RdMXgPOlU3OFb+/V3aZCo
+	URn1m+XbCWAG5nxAzcwlCJkiJtOhvjNOAoYDzBIczk1DL6Ri2tebDzunvY8C0ihIm/c8AvkyxNvfV
+	/Wyw9vpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCth-00000006DoF-2uxD;
-	Tue, 26 Mar 2024 19:55:49 +0000
+	id 1rpCvD-00000006EFl-1WnJ;
+	Tue, 26 Mar 2024 19:57:23 +0000
 Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCtd-00000006Dn4-3ka4;
-	Tue, 26 Mar 2024 19:55:47 +0000
+	id 1rpCv9-00000006EEu-0VLg;
+	Tue, 26 Mar 2024 19:57:20 +0000
 MIME-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1711482942;
+	t=1711483036;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=aK+zeuu0YN/Z0DLh3IdinoCfvuQvS+27+MOgeO9A3HQ=;
-	b=Wt6eF98SDxyLQr6Okc4sm2GV6BQH6/hFW+ovHSF7ID+oEYB+hSbXCUwv8qlAudRJWUJDNE
-	6GR41G9zyKwulpPei60k3pZQnzVMT3BBtHyVOlG6QuGEZ5ApyGFSmrYREdTdK8wIT2Je1T
-	i8u0oNVqFaIO3kSocywO16HTO/Gvc16y04SoyEqSlGA70SbHFTc2HwirwTqwvfBHBacHPk
-	kcIjW2tzvbT+b6BlDMELsbPOy1KYJJHt1HVL0+tvLOiMMB0+JV+qGBHgkGidlEjdD7UuIZ
-	EQoq34KPbf4Qblp/MsrgH2fejtnuN+/ZRHVa3fsp/cy4MmNfpB+Yr5evKbCtpg==
-Date: Tue, 26 Mar 2024 20:55:40 +0100
+	bh=Xdxbt16Q0f6CqU6yeOFhWB+1nByjcjx4pNUNCjrto2I=;
+	b=aJw4UsDYDzSEQygSUSOl+p5ZjX2WL0g3w7qrdlsdnjGGmLl5td1BeQILUAgqHoT4SYOHnb
+	P2qKgWLD/ZtCAEgsyRlh/3fUxi9Wv3fBXOcQgUvWNXEv8RdFE0rbGOL2iOZmjl2DVqFvye
+	+IyvoDdB3JzxESeirCP6yFu4jiikr8olKy/z5v9T/hrlspxzVw6Gofk2f6+I5f121xHbhd
+	+AWmf2XQN3CCjYY977zAKlgdLVOi6r8t21XG3DUC9erQKwFEMiBBWj4zOdix3ubI4tsK0I
+	O4cpwLlYjbX0Bel7vir7n9dvBM23ZqmDlX5wItxFhMk6Bd9BIlyRclyffVklSA==
+Date: Tue, 26 Mar 2024 20:57:16 +0100
 From: Dragan Simic <dsimic@manjaro.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: dev@folker-schwesinger.de, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
- Abraham I <kishon@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Chris Ruehl
- <chris.ruehl@gtsys.com.hk>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Christopher Obbard <chris.obbard@collabora.com>,
- Alban Browaeys <alban.browaeys@gmail.com>, Doug Anderson
- <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Jensen
- Huang <jensenhuang@friendlyarm.com>, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/3] phy: rockchip: emmc: Enable pulldown for strobe line
-In-Reply-To: <20240326-tactical-onlooker-3df8d2352dc2@spud>
-References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de>
- <20240326-rk-default-enable-strobe-pulldown-v1-1-f410c71605c0@folker-schwesinger.de>
- <20240326-tactical-onlooker-3df8d2352dc2@spud>
-Message-ID: <436f78a981ecba441a0636912ddd1cf2@manjaro.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ boris.brezillon@collabora.com, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Subject: Re: [PATCH] arm64: dts: rockchip: quartzpro64: Enable the GPU
+In-Reply-To: <jbyqey5y5ngr7mkrrmdxrwyw5ogd7rq56af6mrmhsckboanvyp@tcaav2tridos>
+References: <0f3759ee390f245dac447bbee038445ddfecbec0.1711383286.git.dsimic@manjaro.org>
+ <jbyqey5y5ngr7mkrrmdxrwyw5ogd7rq56af6mrmhsckboanvyp@tcaav2tridos>
+Message-ID: <78f5ee0cc543aa4406c15fcafa50f2e8@manjaro.org>
 X-Sender: dsimic@manjaro.org
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_125546_374330_20FF6024 
-X-CRM114-Status: GOOD (  26.62  )
+X-CRM114-CacheID: sfid-20240326_125719_585268_75DBF3DB 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,103 +74,92 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Conor and Folker,
+Hello Sebastian,
 
-On 2024-03-26 20:46, Conor Dooley wrote:
-> On Tue, Mar 26, 2024 at 07:54:35PM +0100, Folker Schwesinger via B4 
-> Relay wrote:
->> From: Folker Schwesinger <dev@folker-schwesinger.de>
+On 2024-03-26 20:54, Sebastian Reichel wrote:
+> On Mon, Mar 25, 2024 at 05:19:04PM +0100, Dragan Simic wrote:
+>> Following the approach used to enable the Mali GPU on the rk3588-evb1, 
+>> [1]
+>> do the same for the Pine64 QuartzPro64, which uses nearly identical 
+>> hardware
+>> design as the RK3588 EVB1.
 >> 
->> Restore the behavior of the Rockchip kernel that undconditionally
->> enables the internal strobe pulldown.
-> 
-> What do you mean "restore the behaviour of the rockchip kernel"? Did
-> mainline behave the same as the rockchip kernel previously? If not,
-> using "restore" here is misleading. "Unconditionally" is also 
-> incorrect,
-> because you have a property that disables it.
-> 
->> As the DT property rockchip,enable-strobe-pulldown is obsolete now,
->> replace it with a property to disable the internal pulldown.
+>> The slight disadvantage is that the regulator coupling logic requires 
+>> the
+>> regulators to be always on, which is also noted in the comments.  This 
+>> is
+>> obviously something to be improved at some point in the future, but 
+>> should
+>> be fine for now, especially because the QuartzPro64 isn't a 
+>> battery-powered
+>> board, so low power consumption isn't paramount.
 >> 
->> This fixes I/O errors observed on various Rock Pi 4 and NanoPi4 series
->> boards with some eMMC modules. Other boards may also be affected.
+>> [1] 
+>> https://lore.kernel.org/linux-rockchip/20240325153850.189128-5-sebastian.reichel@collabora.com/
 >> 
->> An example of these errors is as follows:
->> 
->> [  290.060817] mmc1: running CQE recovery
->> [  290.061337] blk_update_request: I/O error, dev mmcblk1, sector 
->> 1411072 op 0x1:(WRITE) flags 0x800 phys_seg 36 prio class 0
->> [  290.061370] EXT4-fs warning (device mmcblk1p1): ext4_end_bio:348: 
->> I/O error 10 writing to inode 29547 starting block 176466)
->> [  290.061484] Buffer I/O error on device mmcblk1p1, logical block 
->> 172288
->> 
->> Fixes: 8b5c2b45b8f0 ("phy: rockchip: set pulldown for strobe line in 
->> dts")
->> Signed-off-by: Folker Schwesinger <dev@folker-schwesinger.de>
+>> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
 >> ---
->>  drivers/phy/rockchip/phy-rockchip-emmc.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->> 
->> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c 
->> b/drivers/phy/rockchip/phy-rockchip-emmc.c
->> index 20023f6eb994..6e637f3e1b19 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
->> @@ -376,14 +376,14 @@ static int rockchip_emmc_phy_probe(struct 
->> platform_device *pdev)
->>  	rk_phy->reg_offset = reg_offset;
->>  	rk_phy->reg_base = grf;
->>  	rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
->> -	rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_DISABLE;
->> +	rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_ENABLE;
->>  	rk_phy->output_tapdelay_select = PHYCTRL_OTAPDLYSEL_DEFAULT;
->> 
->>  	if (!of_property_read_u32(dev->of_node, "drive-impedance-ohm", 
->> &val))
->>  		rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
->> 
->> -	if (of_property_read_bool(dev->of_node, 
->> "rockchip,enable-strobe-pulldown"))
->> -		rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_ENABLE;
->> +	if (of_property_read_bool(dev->of_node, 
->> "rockchip,disable-strobe-pulldown"))
->> +		rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_DISABLE;
 > 
-> Unfortunately you cannot do this.
-> Previously no property at all meant disabled and a property was 
-> required
-> to enable it. With this change the absence of a property means that it
-> will be enabled.
-> An old devicetree is that wanted this to be disabled would have no
-> property and will now end up with it enabled. This is an ABI break and 
-> is
-> clearly not backwards compatible, that's a NAK unless it is 
-> demonstrable
-> that noone actually wants to disable it at all.
-
-Moreover, as I already explained some time ago, [1] some boards and
-devices are unfortunately miswired, and we don't want to enable the
-DATA STROBE pull-down on such boards.
-
-[1] 
-https://lore.kernel.org/linux-rockchip/ca5b7cad01f645c7c559ab26a8db8085@manjaro.org/#t
-
-> If this patch fixes a problem on a board that you have, I would suggest
-> that you add the property to enable it, as the binding tells you to.
+> FWIW
 > 
-> Thanks,
-> Conor.
-> 
->>  	if (!of_property_read_u32(dev->of_node, 
->> "rockchip,output-tapdelay-select", &val)) {
->>  		if (val <= PHYCTRL_OTAPDLYSEL_MAXVALUE)
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Great, thanks for your review!
+
+>>  .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts | 14 
+>> ++++++++++++++
+>>  1 file changed, 14 insertions(+)
 >> 
->> --
->> 2.44.0
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts 
+>> b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+>> index 67414d72e2b6..68d432c61ea5 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
+>> @@ -285,6 +285,12 @@ &gmac0_rgmii_clk
+>>  	status = "okay";
+>>  };
 >> 
+>> +&gpu {
+>> +	mali-supply = <&vdd_gpu_s0>;
+>> +	sram-supply = <&vdd_gpu_mem_s0>;
+>> +	status = "okay";
+>> +};
+>> +
+>>  &i2c2 {
+>>  	status = "okay";
 >> 
+>> @@ -491,11 +497,15 @@ rk806_dvs3_null: dvs3-null-pins {
+>>  		regulators {
+>>  			vdd_gpu_s0: dcdc-reg1 {
+>>  				regulator-name = "vdd_gpu_s0";
+>> +				/* regulator coupling requires always-on */
+>> +				regulator-always-on;
+>>  				regulator-boot-on;
+>>  				regulator-enable-ramp-delay = <400>;
+>>  				regulator-min-microvolt = <550000>;
+>>  				regulator-max-microvolt = <950000>;
+>>  				regulator-ramp-delay = <12500>;
+>> +				regulator-coupled-with = <&vdd_gpu_mem_s0>;
+>> +				regulator-coupled-max-spread = <10000>;
+>> 
+>>  				regulator-state-mem {
+>>  					regulator-off-in-suspend;
+>> @@ -545,11 +555,15 @@ regulator-state-mem {
+>> 
+>>  			vdd_gpu_mem_s0: dcdc-reg5 {
+>>  				regulator-name = "vdd_gpu_mem_s0";
+>> +				/* regulator coupling requires always-on */
+>> +				regulator-always-on;
+>>  				regulator-boot-on;
+>>  				regulator-enable-ramp-delay = <400>;
+>>  				regulator-min-microvolt = <675000>;
+>>  				regulator-max-microvolt = <950000>;
+>>  				regulator-ramp-delay = <12500>;
+>> +				regulator-coupled-with = <&vdd_gpu_s0>;
+>> +				regulator-coupled-max-spread = <10000>;
+>> 
+>>  				regulator-state-mem {
+>>  					regulator-off-in-suspend;
 > 
 > _______________________________________________
 > Linux-rockchip mailing list
