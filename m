@@ -4,69 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D05CD11DD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 16:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4672C54E67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 17:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H9RWKD/zKqW6hXQd8m7oLLvlof7zTRzaXPrbXPmugyQ=; b=FxE7wjLnDP1F5S
-	RhBNFv0nb7QKk5yN2spOg7QxonQJoEWgNpewrFcyOa+oLO173xqrJx5MEWF8f7P0utl5GQuzK0vVZ
-	2glQtTyMo+v3ae22PfT+YQApF6hf14+RC5YPiXYLu7Lz7K/66RzCqQpoMC4gfIHlyLWvda/pQTKa6
-	nKcQCylBk0xc6kHZineyxOHFen0EWT1Pw3XD0Yo894rN4rE85OyiThliqV2zSYxH1ivfy7gJGZfjp
-	ESZLpD+nd7AjmWWi4jyxmAfG+C/X2woAAxBAK//CIx+3V355CGoqCP85PefaO9CPOjoSYBx4sn2Se
-	SsdN2a4fS4RqU0iU2QIQ==;
+	List-Owner; bh=mca7vsfDUfTm2hfxKdfRstKIZsBS7MDVtNFz0UFQydk=; b=y3WJXMMHjiLM8J
+	yY6Ij4Jk9mOxv2cpcAjRhpAYk4ZoBt7QuAFauM1W+BcsMBtEO8EGHkrxfGdwBXrf8565ruPJScLz1
+	w4RrtDFBBBdlNqNh+psuR6spDdK+9c53JzFRoOkIh+VAv9MteZWP+oRiyBL5RiBPVpFmtUwz3IkGz
+	NOXheZEDjr15JpzI4molv3/BvFROxs10PkhvNbmrz+IXatDkqKWuwMyZMCnM0S0kLLqj6ve8tw/7a
+	zNsc1+gAZLN8Y8fqwjzIlGXdY2+aXOvFSWMNhej48DftTPKEFISC14S2BSw5RSG0ajtFoga22EHKS
+	AN3sRKabCtPQVU2emHWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpA2X-00000005aHg-0pVN;
-	Tue, 26 Mar 2024 16:52:45 +0000
-Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
+	id 1rpAYm-00000005iVN-03Ud;
+	Tue, 26 Mar 2024 17:26:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpA2P-00000005aDB-3EZ2
-	for linux-rockchip@lists.infradead.org;
-	Tue, 26 Mar 2024 16:52:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711471953;
-	bh=bnU0rBb9ounSPduviQn9sL9EO0sU2ngM/C/AFvHMEVA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=vxNBhGCZXpjB9GTJKtO4QIbWJeutrVm5FOMLOmgmXxO07oQiqhlLGMbbTceJNnkJ2
-	 3VWaqzBSn/Wda0VQ2KqyJ4espaZEfyfNRwxh8TrlC4imoxk1DxGdlJPwz9eE2UumE3
-	 HOkt3UQKn5YTkKXatZ6nMR/yo6ppCsnQN0U0HjD1xvK9T80DsQ4jI2feYmo9z+f7jh
-	 8bPE55Ir7buo4MDillgSiLXuz4RhFAoSURVseKrByaan56fe8wzX1xQhOln8BOAyUU
-	 aHTJo7vFAp6MLdhHbcjf9zUG6cJqCmJJIVV9s1BXALdQMWdXRQkShX9q1MJM7Z+ME+
-	 NQ72+wj4dh10A==
-Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 80A3C37820E4;
-	Tue, 26 Mar 2024 16:52:33 +0000 (UTC)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 170D14800D1; Tue, 26 Mar 2024 17:52:33 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>,
+	id 1rpAYf-00000005iRM-46QJ;
+	Tue, 26 Mar 2024 17:26:00 +0000
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rpAYb-000658-AE; Tue, 26 Mar 2024 18:25:53 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Boris Brezillon <boris.brezillon@collabora.com>,
-	devicetree@vger.kernel.org,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: rk3588-evb1: Enable GPU
-Date: Tue, 26 Mar 2024 17:52:08 +0100
-Message-ID: <20240326165232.73585-5-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240326165232.73585-1-sebastian.reichel@collabora.com>
-References: <20240326165232.73585-1-sebastian.reichel@collabora.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 0/4] arm64: dts: rockchip: add wolfvision pf5 mainboard
+Date: Tue, 26 Mar 2024 18:25:51 +0100
+Message-Id: <171147393347.1162935.10169333694073762099.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net>
+References: <20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_095238_181881_D5FBCD24 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20240326_102558_045836_08691A5D 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,80 +67,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Boris Brezillon <boris.brezillon@collabora.com>
+On Mon, 25 Mar 2024 15:22:30 +0100, Michael Riesch wrote:
+> Habidere,
+> 
+> This series adds the device tree for the WolfVision PF5 mainboard, which
+> serves as base for recent WolfVision products. It features the Rockchip
+> RK3568 and can be extended with several different extension boards.
+> 
+> The WolfVision PF5 IO Expander is one example of such an extension board.
+> The corresponding device tree overlay is also included in this series.
+> 
+> [...]
 
-Enable the Mali GPU in the RK3588 EVB1.
+Applied, thanks!
 
-This marks the GPU regulators as always-on, because the generic
-coupler regulator logic from the kernel can only handle them
-when they are marked as always-on. Technically it's okay to
-disable the regulators, when the GPU is not used.
+[1/4] dt-bindings: add wolfvision vendor prefix
+      commit: 37a6d5864fb8226c97eefa59a79de57571e1fee8
+[2/4] dt-bindings: arm: rockchip: add wolfvision pf5 mainboard
+      commit: 6be2ad17acb76c47e544864467680a7b738d7eb8
+[3/4] arm64: dts: rockchip: add wolfvision pf5 mainboard
+      commit: 0be29f76633a447e15fc58066ea47688974e68d9
+[4/4] arm64: dts: rockchip: add wolfvision pf5 io expander board
+      commit: 28799a7734a0e1a38d01b511ca08d33d8cf91b6c
 
-Considering the RK3588 EVB1 is not battery powered, the slightly
-increased power consumption for keeping the regulator always
-enabled is not a big deal. Thus it's better to enable GPU support
-than wait for a better solution.
-
-Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index de30c2632b8e..56c019b25fa8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-@@ -281,6 +281,12 @@ &gmac0_rgmii_clk
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	sram-supply = <&vdd_gpu_mem_s0>;
-+	status = "okay";
-+};
-+
- &i2c2 {
- 	status = "okay";
- 
-@@ -484,12 +490,16 @@ rk806_dvs3_null: dvs3-null-pins {
- 
- 		regulators {
- 			vdd_gpu_s0: dcdc-reg1 {
-+				/* regulator coupling requires always-on */
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <550000>;
- 				regulator-max-microvolt = <950000>;
- 				regulator-ramp-delay = <12500>;
- 				regulator-name = "vdd_gpu_s0";
- 				regulator-enable-ramp-delay = <400>;
-+				regulator-coupled-with = <&vdd_gpu_mem_s0>;
-+				regulator-coupled-max-spread = <10000>;
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
- 				};
-@@ -534,12 +544,16 @@ regulator-state-mem {
- 			};
- 
- 			vdd_gpu_mem_s0: dcdc-reg5 {
-+				/* regulator coupling requires always-on */
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <675000>;
- 				regulator-max-microvolt = <950000>;
- 				regulator-ramp-delay = <12500>;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-name = "vdd_gpu_mem_s0";
-+				regulator-coupled-with = <&vdd_gpu_s0>;
-+				regulator-coupled-max-spread = <10000>;
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
- 				};
+Best regards,
 -- 
-2.43.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
