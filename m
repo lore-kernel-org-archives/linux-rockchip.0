@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F63DCD11DC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 00:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D83C3C54E58
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 06:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2bWHyjTeCFaQCYLmOZlSyUjY/Lv2WYeCmDu2frOMDyo=; b=i30taPBkVfLx5O
-	1a2biMWDiw4Xrc2fbkbDGfm71R6yDAslTrewkANI5TNKEEhJoqZVnQDia6tWxz+QWdUOKhMdMQpWt
-	QaXWCY4pLbVTuiKvzuuZuMuL6RLws19QHSdGzQv1y9NTNx+qDolmo7whXX+cdIfFi0aU9YmZ7DfyD
-	wTI7IDC2FlBgaF8UesRrn86Q/ufr42Sy6yBUuz7X+JTlVE012cJ83xJeBI3a7dZ/nyL2h9GLpYk3f
-	t54lbyp37HnTSPlBQ5G8hUggMWg24wKj33AaWMh2AI6z6IepOnmBjbsj2SK5SZeUpYlDSwhavyaZW
-	l4zOhDe5AKGWk+bLj5tg==;
+	List-Owner; bh=pd73lgFGbdlcwfA+ic006USRQNyPF1VeZOCDDniG0OM=; b=uNZXdUG4z8p9JX
+	RFLmsj1luPkg2i7GAiXThKj3V4aGXjbZkJe3Hfu9mXjRhsU1fVZ/fNm+wE3kWbX4FgheksaKo9MO6
+	s7i3lqXTg3qTIalQbdrBfeO51CfgBAjwFQgaO+lkhI3iYhgHOvkqMEvRFjLiC7F7nva9jApxkJO/2
+	64cdnkzDNMoO78GCId289PF5LjW1gJV/he//zt1TTv9PUHDvwaBJEfS2YOGpus43L1Tzz8Kwlb37x
+	3SDRcbwZQC6U6kQlinkDPEFAOhoyhM8EdbMZCBxxBLyDncym44IpCF8yS3/YthWk612R2oeeWI3fR
+	mazzKAIITXIih500/aDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rouo9-00000002VqB-25ei;
-	Tue, 26 Mar 2024 00:36:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rp0h4-00000003LWk-3CDu;
+	Tue, 26 Mar 2024 06:53:58 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rouo2-00000002Vob-1J2w;
-	Tue, 26 Mar 2024 00:36:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B7113611D1;
-	Tue, 26 Mar 2024 00:36:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84803C433C7;
-	Tue, 26 Mar 2024 00:36:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711413405;
-	bh=r6ja1S3WkmxWys+sE3KabUy5bKAQKHZGyKXel35g+zY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RFOy9SckrUmOjcVY80p+Bpxbe+5dpDJq+JeaQvIywXepTed1YRXnEepoqUkHhDLDv
-	 KZQ8orGHJmcfhxU4yqXzvKwkkh03GuDsm5VknrzWZxwAeC8moegodFxeAFmHcguP3V
-	 MvMXRlBgmBX55pjBPgOUTWQbK7zrjPHUR7Ivk7miBmPv+gpyP5Ja8S02vD6UZnj61n
-	 CqfQ4NXy/CKPT7KniveufUJdSfosIbl7mM5+gISfC65C9eTYs21OyRMfhMeYTy9MAj
-	 ov2d24lOwn4Oj/ZJVUPrXNuEHsLe2pES4uVY1T8XSrKZegQunB7Zn3qmkn816MOaQo
-	 yZPbuVAYSRHAg==
-Date: Tue, 26 Mar 2024 01:36:41 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-i2c@vger.kernel.org, asahi@lists.linux.dev, 
-	chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-actions@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	openbmc@lists.ozlabs.org, virtualization@lists.linux.dev
-Subject: Re: [PATCH 00/64] i2c: reword i2c_algorithm according to newest
- specification
-Message-ID: <j2l7tu24itjelylrgwe6gdsy3mfrw3dnve4rdofmri3z7xdroc@se56t5ylmdak>
-References: <20240322132619.6389-1-wsa+renesas@sang-engineering.com>
- <ug266trshvhhbsln3eoh53fmsuj3l63ziz6gavcl7rv2jhjr5t@3av5givh5n7m>
+	id 1rp0h1-00000003LW0-2TO9;
+	Tue, 26 Mar 2024 06:53:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1711436036; x=1742972036;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=T93oDLJVqmXjMft3p/o0gcTvmzd4o0CYgIVWkB1+goo=;
+  b=KAEuHzfUNT8bRKy1QoAJvztgV7P84uNZhb4JZ/NnlnOJx2dv0IVqk1Jc
+   6haH1SygadQfWyPHlRGOlZexEN2ulfMiTGa5s+if3Sngd+ruk6HSHrNQE
+   KeXC8+lGf5L0vSVcL9B79vk+etaxrQt08sGokc5rnBNhk5CzuQbOiw7tk
+   55SyeaxWumWHGn71OuZ0x5AcZkf7lWVnHo9RbjlCb+H9Zg2fOY+zEuUxa
+   EkMW1fKc71gfY8BiQ5kNBE1izvTHPNyx06nEkEEE38eWsuDsL2kXFKHeL
+   I01bsGHS8JTG8+aIcTzvR6UNE0HnSlSS8XB6a/UMjLPCk4YcckGhfnGMz
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="10264707"
+X-IronPort-AV: E=Sophos;i="6.07,155,1708416000"; 
+   d="scan'208";a="10264707"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Mar 2024 23:53:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,155,1708416000"; 
+   d="scan'208";a="46870214"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 25 Mar 2024 23:53:51 -0700
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rp0gu-000NBW-0N;
+	Tue, 26 Mar 2024 06:53:48 +0000
+Date: Tue, 26 Mar 2024 14:53:26 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sugar Zhang <sugar.zhang@rock-chips.com>, heiko@sntech.de
+Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Rob Herring <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 2/2] dt-bindings: clock: rockchip: Add support for clk
+ input / output switch
+Message-ID: <202403261442.9P6rk3Wk-lkp@intel.com>
+References: <1711340191-69588-2-git-send-email-sugar.zhang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ug266trshvhhbsln3eoh53fmsuj3l63ziz6gavcl7rv2jhjr5t@3av5givh5n7m>
+In-Reply-To: <1711340191-69588-2-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240325_173646_599075_32BD0A40 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240325_235355_701310_1BC20641 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,20 +90,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Wolfram,
+Hi Sugar,
 
-> > @Andi: are you okay with this approach? It means you'd need to merge
-> > -rc2 into your for-next branch. Or rebase if all fails.
-> 
-> I think it's a good plan, I'll try to support you with it.
+kernel test robot noticed the following build warnings:
 
-Do you feel more comfortable if I take the patches as soon as
-they are reviewd?
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on linus/master v6.9-rc1 next-20240325]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-So far I have tagged patch 1-4 and I can already merge 2,3,4 as
-long as you merge patch 1.
+url:    https://github.com/intel-lab-lkp/linux/commits/Sugar-Zhang/clk-rockchip-Add-support-for-clk-input-output-switch/20240325-212211
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/1711340191-69588-2-git-send-email-sugar.zhang%40rock-chips.com
+patch subject: [PATCH v1 2/2] dt-bindings: clock: rockchip: Add support for clk input / output switch
+compiler: loongarch64-linux-gcc (GCC) 13.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20240326/202403261442.9P6rk3Wk-lkp@intel.com/reproduce)
 
-Andi
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202403261442.9P6rk3Wk-lkp@intel.com/
+
+dtcheck warnings: (new ones prefixed by >>)
+>> Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml: title: 'Rockchip Clock Out Control Module Binding' should not be valid under {'pattern': '([Bb]inding| [Ss]chema)'}
+   	hint: Everything is a binding/schema, no need to say it. Describe what hardware the binding is for.
+   	from schema $id: http://devicetree.org/meta-schemas/base.yaml#
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
