@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 143F2CD11DD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 15:41:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE18CD1283
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 15:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3EnDcd2LjIKMkmhNQcTxyQ3g8YEesiUTo0sGR6l8yS8=; b=RB1bn6EpyuGzuo
-	NwebNA/usJ9Gd5BrI+9DmkU4k5phHxMtjSYPyht/OYlpX3J7tYH2kEIDdlGkocTZhcSbTHeo3yYY/
-	O9gQOfgqLjsfDJ66jv1XhqJiRO0JsJYJRLD4/qB3aMU39D1RTZ7q3PS3gXgfF9nI85jE6LADVsOfw
-	ak1GHhh8ibxOMtg4jFifcn5TK3tI5WM7qW2BS0o4r/kLGBkxaJdoE6e5LCeDz0d3LaNdtBZVtSO6X
-	ae1g014gCdAJ2fJzJr1cxNVz21l5e7jwr5la+3gbZfWUNNzFFsSL628i0W/kfqfuoLvgjSxr0/IZn
-	udLTE5bp80m2g5nobqzA==;
+	List-Owner; bh=2ouRpV4CTgK7JolxgJr4CbYt9/AkI0IGDCIcwYFAMXM=; b=ZUPgiua62BGgLz
+	/Q5Lv2+5uKhJlW7oFPpvkan+zjshtRWKm5/1oHBQgRLaUKbDoPBfgIL9/DmULYgIC9T1YU/3K8ZRi
+	vdJx2pLv3tZwFAdDWVlwcFdSp4ewXkub8Ow5qZlC+VnRb3nyAazinWRy7wnPRetGhLzYwNYB7CyzI
+	nXuBxd7Jdv8HLo3OWjF66i+h1tpGC172oZW7U5bHKNpN6RoK8DOSjO1tedD3YixrZH7WvkQfoECmB
+	u/F9qMNHsnzR3ibVUcXTIpvPycsvLeKXp+QdP3bkJSVBMwNB4eNxHXHRlv5u7PfNLaU0mJf4ySEtw
+	tfcHSRFXEUV1Di20qeOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp8vc-00000005FuO-4A7P;
-	Tue, 26 Mar 2024 15:41:33 +0000
+	id 1rp8vg-00000005FxJ-2ilo;
+	Tue, 26 Mar 2024 15:41:36 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rp8ui-00000005FPj-1xX1;
-	Tue, 26 Mar 2024 15:40:39 +0000
+	id 1rp8ur-00000005FRS-0Xii;
+	Tue, 26 Mar 2024 15:40:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 7558ECE222B;
-	Tue, 26 Mar 2024 15:40:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B8D6C433C7;
-	Tue, 26 Mar 2024 15:40:33 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 64584CE1F8A;
+	Tue, 26 Mar 2024 15:40:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49490C433F1;
+	Tue, 26 Mar 2024 15:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711467633;
-	bh=fUzqY0ouRur7PJeAXKsb/9zPUDH+Gpv/H3MTr507Vho=;
+	s=k20201202; t=1711467636;
+	bh=SKkWaDyRJNnmKFGJ+c/iBRlTwh6T1Qu0u8sWad+h6/I=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oEKqVZGSrF+WMoYW2NrOGE4Q/8syFDMCpmLdAQ8EnEXT4PWGs3npl0jr+515W2XQw
-	 nFzgXExfUc1rn2bs/f4sjJGMCe902WRRRncqoBNKRF+5d/UEQGGnykVAm8kbXgpwNe
-	 o3lB1c+teZenRvPU7fXOoWKUmyFp9sXVvoPpJ0Jrxjap0yvNYOEph9RFFMfI6Ly3rD
-	 J3hdM1jMNxw+vM3/H0I23q5gMBGZpn9+HGmFR3oGUIAa0RPxVOL/o+XnfTDB5lysXu
-	 pm0cAcK+duVxU+yCFOhm/BXN3o6MGpt33tnv4zecd6LEccRx7h+D2unKn5o5UodKWR
-	 F6q5LOP2m/1EQ==
+	b=CBMoK6RMx6DSEaWX2vSEnWKycHWZga5NuQ+WgvbIuEqLl75kW5fnMQvjwo+OE5QVI
+	 TufROT/ALBUR9XEw2o5BsQ4rCYbMKFK4LuxRwp3WulzFU3ZM4rWWXL8F/om9yL1Pg2
+	 r/3asOECVjQ4Ts5o48UuTZOSmstQq7QGEAa0XZWZYk8TOKTdWUXNJkjCSugBqGqZs7
+	 epffRHi/oeROqm6bqlHuXu5VMmPatsbj7TVTtUX5Elu/0T8Yul+GgSgEsZ1Mh8AaSJ
+	 l4YUttprqD3D7w0oyneoEZP7oi1kTCeFSJ4x0ysN5edi3N/7c+i+5+7yqmwisWK+CT
+	 c/1dv4F98P+0w==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 26 Mar 2024 16:40:05 +0100
-Subject: [PATCH v11 01/28] drm/connector: Introduce an HDMI connector
- initialization function
+Date: Tue, 26 Mar 2024 16:40:06 +0100
+Subject: [PATCH v11 02/28] drm/mode_object: Export
+ drm_mode_obj_find_prop_id for tests
 MIME-Version: 1.0
-Message-Id: <20240326-kms-hdmi-connector-state-v11-1-c5680ffcf261@kernel.org>
+Message-Id: <20240326-kms-hdmi-connector-state-v11-2-c5680ffcf261@kernel.org>
 References: <20240326-kms-hdmi-connector-state-v11-0-c5680ffcf261@kernel.org>
 In-Reply-To: <20240326-kms-hdmi-connector-state-v11-0-c5680ffcf261@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,21 +62,20 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Sui Jingfeng <sui.jingfeng@linux.dev>
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
 X-Mailer: b4 0.12.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3844; i=mripard@kernel.org;
- h=from:subject:message-id; bh=fUzqY0ouRur7PJeAXKsb/9zPUDH+Gpv/H3MTr507Vho=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlMb+ISp3a4qzp5PDt2XXGxqDKrXVBXIUtg25s+sSpmj
- 7fm2zM7prIwCHMyyIopsjyRCTu9vH1xlYP9yh8wc1iZQIYwcHEKwETuqzE2fGlTWpBn5pUQsFLt
- Btufaz+d3r/UOPRE1fsRt42V8xTjy29+NXca7vmXb2vhGGtQKS3J2PCkxlsk+7jo5NeLd08JE7T
- a2nqicnlXa9MhXqMtf8NqYqxKZc2lV/UmXH6y7GDDaR4eYwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=937; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=SKkWaDyRJNnmKFGJ+c/iBRlTwh6T1Qu0u8sWad+h6/I=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGlMb+Jf9vrF35txeseRw3v8RPWT7C+fOcj1yPjKMr0LV
+ +oa9nOJdUxlYRDmZJAVU2R5IhN2enn74ioH+5U/YOawMoEMYeDiFICJuO9hbJi39eCj1v6SUN2k
+ Vad0a7bpheiGaV7qcLDo77PbJvti28SWi3PPh8pw2wQJnlrH8Kl4DmPDGW7RFdtEZqxa8UnR5qN
+ M/1rmptDyq5cWmHR9fLSiZ7ailddni+11VtlpM53cFn+UYLsGAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_084036_988290_6C19163E 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20240326_084045_998835_D408E514 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,107 +92,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A lot of the various HDMI drivers duplicate some logic that depends on
-the HDMI spec itself and not really a particular hardware
-implementation.
+We'll need to use drm_mode_obj_find_prop_id() for kunit tests to make
+sure a given property has been properly created. Let's export it for
+tests only.
 
-Output BPC or format selection, infoframe generation are good examples
-of such areas.
-
-This creates a lot of boilerplate, with a lot of variations, which makes
-it hard for userspace to rely on, and makes it difficult to get it right
-for drivers.
-
-In the next patches, we'll add a lot of infrastructure around the
-drm_connector and drm_connector_state structures, which will allow to
-abstract away the duplicated logic. This infrastructure comes with a few
-requirements though, and thus we need a new initialization function.
-
-Hopefully, this will make drivers simpler to handle, and their behaviour
-more consistent.
-
-Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/drm_connector.c | 39 +++++++++++++++++++++++++++++++++++++++
- include/drm/drm_connector.h     |  5 +++++
- 2 files changed, 44 insertions(+)
+ drivers/gpu/drm/drm_mode_object.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index b0516505f7ae..d9961cce8245 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -450,10 +450,49 @@ int drmm_connector_init(struct drm_device *dev,
+diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
+index 0e8355063eee..df4cc0e8e263 100644
+--- a/drivers/gpu/drm/drm_mode_object.c
++++ b/drivers/gpu/drm/drm_mode_object.c
+@@ -476,10 +476,11 @@ struct drm_property *drm_mode_obj_find_prop_id(struct drm_mode_object *obj,
+ 		if (obj->properties->properties[i]->base.id == prop_id)
+ 			return obj->properties->properties[i];
  
- 	return 0;
+ 	return NULL;
  }
- EXPORT_SYMBOL(drmm_connector_init);
++EXPORT_SYMBOL_FOR_TESTS_ONLY(drm_mode_obj_find_prop_id);
  
-+/**
-+ * drmm_connector_hdmi_init - Init a preallocated HDMI connector
-+ * @dev: DRM device
-+ * @connector: A pointer to the HDMI connector to init
-+ * @funcs: callbacks for this connector
-+ * @connector_type: user visible type of the connector
-+ * @ddc: optional pointer to the associated ddc adapter
-+ *
-+ * Initialises a preallocated HDMI connector. Connectors can be
-+ * subclassed as part of driver connector objects.
-+ *
-+ * Cleanup is automatically handled with a call to
-+ * drm_connector_cleanup() in a DRM-managed action.
-+ *
-+ * The connector structure should be allocated with drmm_kzalloc().
-+ *
-+ * Returns:
-+ * Zero on success, error code on failure.
-+ */
-+int drmm_connector_hdmi_init(struct drm_device *dev,
-+			     struct drm_connector *connector,
-+			     const struct drm_connector_funcs *funcs,
-+			     int connector_type,
-+			     struct i2c_adapter *ddc)
-+{
-+	int ret;
-+
-+	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-+	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
-+		return -EINVAL;
-+
-+	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(drmm_connector_hdmi_init);
-+
- /**
-  * drm_connector_attach_edid_property - attach edid property.
-  * @connector: the connector
-  *
-  * Some connector types like DRM_MODE_CONNECTOR_VIRTUAL do not get a
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index fe88d7fc6b8f..4491c4c2fb6e 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -1902,10 +1902,15 @@ int drm_connector_init_with_ddc(struct drm_device *dev,
- int drmm_connector_init(struct drm_device *dev,
- 			struct drm_connector *connector,
- 			const struct drm_connector_funcs *funcs,
- 			int connector_type,
- 			struct i2c_adapter *ddc);
-+int drmm_connector_hdmi_init(struct drm_device *dev,
-+			     struct drm_connector *connector,
-+			     const struct drm_connector_funcs *funcs,
-+			     int connector_type,
-+			     struct i2c_adapter *ddc);
- void drm_connector_attach_edid_property(struct drm_connector *connector);
- int drm_connector_register(struct drm_connector *connector);
- void drm_connector_unregister(struct drm_connector *connector);
- int drm_connector_attach_encoder(struct drm_connector *connector,
- 				      struct drm_encoder *encoder);
+ static int set_property_legacy(struct drm_mode_object *obj,
+ 			       struct drm_property *prop,
+ 			       uint64_t prop_value)
+ {
 
 -- 
 2.44.0
