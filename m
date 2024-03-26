@@ -4,53 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4672C54E67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 17:26:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6823CD11DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 17:26:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mca7vsfDUfTm2hfxKdfRstKIZsBS7MDVtNFz0UFQydk=; b=y3WJXMMHjiLM8J
-	yY6Ij4Jk9mOxv2cpcAjRhpAYk4ZoBt7QuAFauM1W+BcsMBtEO8EGHkrxfGdwBXrf8565ruPJScLz1
-	w4RrtDFBBBdlNqNh+psuR6spDdK+9c53JzFRoOkIh+VAv9MteZWP+oRiyBL5RiBPVpFmtUwz3IkGz
-	NOXheZEDjr15JpzI4molv3/BvFROxs10PkhvNbmrz+IXatDkqKWuwMyZMCnM0S0kLLqj6ve8tw/7a
-	zNsc1+gAZLN8Y8fqwjzIlGXdY2+aXOvFSWMNhej48DftTPKEFISC14S2BSw5RSG0ajtFoga22EHKS
-	AN3sRKabCtPQVU2emHWw==;
+	List-Owner; bh=oPdZvup1UuWb2Z5CoK806bbmskTMKewvw0aaOennLN8=; b=f7uKMI/0XfiZQG
+	KlI+JX3zUQo9oMD19HcelZH966XURJSmEsGJqvj57O4u2S3MNjFXVHJxpYocP5nqJ94yK5JfYfTPK
+	0HUiW9H6gbh78FHF+iqSXe2O5Me4fPBHSpxN/MMYDHYaf3A+MYVsEogu91UFk9q8B/PdIOsPTqFk6
+	4rXNvdrKG9j3AG8azhroAu11rkcIbRZL6kcNxQml8HMr+ONtnEOcZixCtWPMLo/S6RvEQIC4GMTvU
+	ZX02Mrhnanx0G1+GBA0IeMvk+cyLy57P02+v4VUt9NlSCVeVzE0Vf9kJSLHfFDTfkbmxt0vRQT9nn
+	3wUk8NgMgE8wEzErliLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpAYm-00000005iVN-03Ud;
-	Tue, 26 Mar 2024 17:26:04 +0000
+	id 1rpAYx-00000005iZm-3BOg;
+	Tue, 26 Mar 2024 17:26:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpAYf-00000005iRM-46QJ;
-	Tue, 26 Mar 2024 17:26:00 +0000
+	id 1rpAYj-00000005iTZ-26vK;
+	Tue, 26 Mar 2024 17:26:03 +0000
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rpAYb-000658-AE; Tue, 26 Mar 2024 18:25:53 +0100
+	id 1rpAYb-000658-2p; Tue, 26 Mar 2024 18:25:53 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Jaroslav Kysela <perex@perex.cz>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Conor Dooley <conor+dt@kernel.org>
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 0/4] arm64: dts: rockchip: add wolfvision pf5 mainboard
-Date: Tue, 26 Mar 2024 18:25:51 +0100
-Message-Id: <171147393347.1162935.10169333694073762099.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	alsa-devel@alsa-project.org,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Subject: Re: (subset) [PATCH v4 0/7] Add support for the internal RK3308 audio codec
+Date: Tue, 26 Mar 2024 18:25:50 +0100
+Message-Id: <171147393346.1162935.3469121716836265382.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net>
-References: <20240325-feature-wolfvision-pf5-v1-0-5725445f792a@wolfvision.net>
+In-Reply-To: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
+References: <20240305-rk3308-audio-codec-v4-0-312acdbe628f@bootlin.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_102558_045836_08691A5D 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20240326_102601_857078_0C84F4DF 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,28 +77,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Mar 2024 15:22:30 +0100, Michael Riesch wrote:
-> Habidere,
+On Tue, 05 Mar 2024 15:36:27 +0100, Luca Ceresoli wrote:
+> This series adds a driver for the internal audio codec of the Rockchip
+> RK3308 SoC, along with some related patches. This codec is internally
+> connected to the I2S peripherals on the same chip, and it has some
+> peculiarities arising from that interconnection.
 > 
-> This series adds the device tree for the WolfVision PF5 mainboard, which
-> serves as base for recent WolfVision products. It features the Rockchip
-> RK3568 and can be extended with several different extension boards.
-> 
-> The WolfVision PF5 IO Expander is one example of such an extension board.
-> The corresponding device tree overlay is also included in this series.
+> For proper bidirectional operation with the internal codec at any possible
+> combination of sampling rates, the I2S peripheral needs two clock sources
+> (tx and rx), while connection with an external codec commonly needs only
+> one.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] dt-bindings: add wolfvision vendor prefix
-      commit: 37a6d5864fb8226c97eefa59a79de57571e1fee8
-[2/4] dt-bindings: arm: rockchip: add wolfvision pf5 mainboard
-      commit: 6be2ad17acb76c47e544864467680a7b738d7eb8
-[3/4] arm64: dts: rockchip: add wolfvision pf5 mainboard
-      commit: 0be29f76633a447e15fc58066ea47688974e68d9
-[4/4] arm64: dts: rockchip: add wolfvision pf5 io expander board
-      commit: 28799a7734a0e1a38d01b511ca08d33d8cf91b6c
+[5/7] arm64: defconfig: enable Rockchip RK3308 internal audio codec driver
+      commit: 9fdd7b45da18b84d5e7d5a6b8b4b0167910f2d13
+[6/7] arm64: dts: rockchip: add i2s_8ch_2 and i2s_8ch_3
+      commit: b5ffc424360eaced41f405f0e38bcabe61fecf39
+[7/7] arm64: dts: rockchip: add the internal audio codec
+      commit: 30d72458624bb1ba7bab1c7a1d5f4c42f512010c
 
 Best regards,
 -- 
