@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E56C54E67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:35:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C34C54E67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Mar 2024 19:46:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RmfH17o3ja+ReMpm7aAbuXRb638MQVvqYzojAQSv7Q0=; b=sN1sgQuJwWvc6RTumEWbaZc04v
-	zaazqdP0tQvXoTSEFevIPHl6j46C39LyoTHTNS+k+dsRysCR3Yhc7/xuDET0Md5fs58VjwZINbgV0
-	/no7rXhLCOSCiGPl74dB/ddPv058/qCxXlb+3bPWhbT+OK0Api+fLfIa2YlaOEzD/tjZ+25RdbRhX
-	Q34AhRv78kMGUDRJLPbAPRpd3SUKPLa8cGOxj9MNT2Ajz1EwvO2xu8orSK4b94mfmiDHLVwU5kyFp
-	CJ5MJUGbWkHbxHg0Z0OnuYVY28Bv4jde5+mSCrenZ/N8aHWl5kkUsgjiOLUHSWFW5Hu9XGgBNQyUI
-	pK2cIAFA==;
+	bh=YPy5QDn1ApMHQr56BBmL+yucUmnVpn9SHoe+Jup8Rfw=; b=01bO6q+94d2wBycFfvqxG5oqq8
+	n+xJx1v5yIq/o+pyPchvjwBlz6XTzY37/RWyA70aY1zeSXeHQWbjbNPrkuL1Vw7AsmZ7PXjf0HNG0
+	ZosuPStZk2YXhG40qM3SqdiNhj7WUrF/px6X/EfGyu5OEBlydilwjnmDRhyoCT38ynaX/D+PLv/hK
+	/Q4/o04UfS4DH+/L1ebgvFr872VvJvEWpcj5KGZ14BMfH4Je0x1z66KNw89p4yrn/vL+UFHq13kAo
+	upu0T8Sm73kszT8NLizROcPwXzNIesk9msQOGlY0BK2pG4jrSutTahZ0ilXZYKom2aC8O53r2HAGs
+	U1IYIMdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCZe-00000006B0R-40zx;
-	Tue, 26 Mar 2024 19:35:06 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rpCkP-00000006CJD-40Ad;
+	Tue, 26 Mar 2024 19:46:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpCZa-00000006Ayj-3zF9;
-	Tue, 26 Mar 2024 19:35:04 +0000
+	id 1rpCkM-00000006CI9-0tta;
+	Tue, 26 Mar 2024 19:46:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id AA7D1CE2303;
-	Tue, 26 Mar 2024 19:35:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C90AC433F1;
-	Tue, 26 Mar 2024 19:34:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 599D86124A;
+	Tue, 26 Mar 2024 19:46:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A1A2C43390;
+	Tue, 26 Mar 2024 19:46:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711481699;
-	bh=dd88q1ZEU6vWFMFdtX0JYBknro/QldP57SoW9UmINfU=;
+	s=k20201202; t=1711482369;
+	bh=06TMEEjhODfbSDjv9gFoX7ubkfnnvLL8Xxq82XPPGcI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d4yxmGjC0N+zEn19fH/1bM+s9IgFIlwD+J2ali8Up/WQDOgW2t8N6shOD8Dr2B2W0
-	 JoDYxTsIEhUlST2ScUZ1Gn7FDik/5JaR+YLrAwSIkmGDb4sfL6xXf6nj7NkAm/igc6
-	 TtxtqWpfUeiJsgTTGid0GDvzTxNBqWsjcRUW1to55B0RNTMzCM+4v18rR2BWivsiOX
-	 x1WcmLakDJOZiLSrqQPUG2QQBv8/+wLw5OvKfl1QjzzPBO5rg2vW8leX4b/77EwWQa
-	 IA1XOQ+7kIkeMy1hOpKn5lU9Fx07ky5ntFqTwYVfPdJyGGFFzlC3Prnimvhl4nAGrf
-	 MVaYQjC2SHQzQ==
-Date: Tue, 26 Mar 2024 19:34:54 +0000
+	b=g6x15P3T/1D5cok+wB8MT33wgFRF7mj3MaVE+NxPaxiptp+GDXhe0NySVkbdXvMuj
+	 Nnetdt5zPMSGu27jzoTrcmqjvHcFMyam0f6IWtDW06MbdtPtxOU3T6syrf/EXAqtRb
+	 wgnXiTgDv05AORB+BUBYkg4gkySnDZh9CTseRoQATOXjcYOi8ACqd2/WcCG2JgT3Sj
+	 BcaY8o2uSLOxS/q9AEBUbDzJNd1ZStJzr+pr3TFo9oLuaqwwWIn1H1uQ9L+N4CxfP0
+	 v5JOTyC2yW+rB6tzapYc3JdRwQwwxYT09dX2AR3l5G7eoaXoee2lzzu+4h390IcePs
+	 07qP2iF5zKEpQ==
+Date: Tue, 26 Mar 2024 19:46:03 +0000
 From: Conor Dooley <conor@kernel.org>
 To: dev@folker-schwesinger.de
 Cc: Vinod Koul <vkoul@kernel.org>,
@@ -59,16 +59,15 @@ Cc: Vinod Koul <vkoul@kernel.org>,
 	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH 2/3] devicetree: phy: rockchip-emmc: Document changed
- strobe-pulldown property
-Message-ID: <20240326-shortage-portly-a3ae475b2f78@spud>
+Subject: Re: [PATCH 1/3] phy: rockchip: emmc: Enable pulldown for strobe line
+Message-ID: <20240326-tactical-onlooker-3df8d2352dc2@spud>
 References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de>
- <20240326-rk-default-enable-strobe-pulldown-v1-2-f410c71605c0@folker-schwesinger.de>
+ <20240326-rk-default-enable-strobe-pulldown-v1-1-f410c71605c0@folker-schwesinger.de>
 MIME-Version: 1.0
-In-Reply-To: <20240326-rk-default-enable-strobe-pulldown-v1-2-f410c71605c0@folker-schwesinger.de>
+In-Reply-To: <20240326-rk-default-enable-strobe-pulldown-v1-1-f410c71605c0@folker-schwesinger.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_123503_385366_C683E6D5 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20240326_124610_567191_82A5BB1D 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,91 +79,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1669238282871081054=="
+Content-Type: multipart/mixed; boundary="===============5455001323670899287=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1669238282871081054==
+--===============5455001323670899287==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="rZWP/rtpsRtp/vzL"
+	protocol="application/pgp-signature"; boundary="zYLJU3bUGFnj+RDa"
 Content-Disposition: inline
 
 
---rZWP/rtpsRtp/vzL
+--zYLJU3bUGFnj+RDa
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Mar 26, 2024 at 07:54:36PM +0100, Folker Schwesinger via B4 Relay w=
+On Tue, Mar 26, 2024 at 07:54:35PM +0100, Folker Schwesinger via B4 Relay w=
 rote:
 > From: Folker Schwesinger <dev@folker-schwesinger.de>
-
-The prefix is "dt-bindings" not "devicetree" FYI.
-
 >=20
-> Document the changes regarding the optional strobe-pulldown property.
-> These changes are necessary as the default behavior of the driver was
-> restored to the Rockchip kernel behavior of enabling the internal
-> pulldown by default.
+> Restore the behavior of the Rockchip kernel that undconditionally
+> enables the internal strobe pulldown.
 
-I don't think this is a valid justification, but it'll be easier for me
-to explain this on the driver patch.
+What do you mean "restore the behaviour of the rockchip kernel"? Did
+mainline behave the same as the rockchip kernel previously? If not,
+using "restore" here is misleading. "Unconditionally" is also incorrect,
+because you have a property that disables it.
+
+> As the DT property rockchip,enable-strobe-pulldown is obsolete now,
+> replace it with a property to disable the internal pulldown.
+>=20
+> This fixes I/O errors observed on various Rock Pi 4 and NanoPi4 series
+> boards with some eMMC modules. Other boards may also be affected.
+>=20
+> An example of these errors is as follows:
+>=20
+> [  290.060817] mmc1: running CQE recovery
+> [  290.061337] blk_update_request: I/O error, dev mmcblk1, sector 1411072=
+ op 0x1:(WRITE) flags 0x800 phys_seg 36 prio class 0
+> [  290.061370] EXT4-fs warning (device mmcblk1p1): ext4_end_bio:348: I/O =
+error 10 writing to inode 29547 starting block 176466)
+> [  290.061484] Buffer I/O error on device mmcblk1p1, logical block 172288
+>=20
+> Fixes: 8b5c2b45b8f0 ("phy: rockchip: set pulldown for strobe line in dts")
+> Signed-off-by: Folker Schwesinger <dev@folker-schwesinger.de>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-emmc.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockc=
+hip/phy-rockchip-emmc.c
+> index 20023f6eb994..6e637f3e1b19 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+> @@ -376,14 +376,14 @@ static int rockchip_emmc_phy_probe(struct platform_=
+device *pdev)
+>  	rk_phy->reg_offset =3D reg_offset;
+>  	rk_phy->reg_base =3D grf;
+>  	rk_phy->drive_impedance =3D PHYCTRL_DR_50OHM;
+> -	rk_phy->enable_strobe_pulldown =3D PHYCTRL_REN_STRB_DISABLE;
+> +	rk_phy->enable_strobe_pulldown =3D PHYCTRL_REN_STRB_ENABLE;
+>  	rk_phy->output_tapdelay_select =3D PHYCTRL_OTAPDLYSEL_DEFAULT;
+> =20
+>  	if (!of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val))
+>  		rk_phy->drive_impedance =3D convert_drive_impedance_ohm(pdev, val);
+> =20
+> -	if (of_property_read_bool(dev->of_node, "rockchip,enable-strobe-pulldow=
+n"))
+> -		rk_phy->enable_strobe_pulldown =3D PHYCTRL_REN_STRB_ENABLE;
+> +	if (of_property_read_bool(dev->of_node, "rockchip,disable-strobe-pulldo=
+wn"))
+> +		rk_phy->enable_strobe_pulldown =3D PHYCTRL_REN_STRB_DISABLE;
+
+Unfortunately you cannot do this.
+Previously no property at all meant disabled and a property was required
+to enable it. With this change the absence of a property means that it
+will be enabled.
+An old devicetree is that wanted this to be disabled would have no
+property and will now end up with it enabled. This is an ABI break and is
+clearly not backwards compatible, that's a NAK unless it is demonstrable
+that noone actually wants to disable it at all.
+
+If this patch fixes a problem on a board that you have, I would suggest
+that you add the property to enable it, as the binding tells you to.
 
 Thanks,
 Conor.
 
->=20
-> Fixes: f34e43f12382 ("devicetree: phy: rockchip-emmc: pulldown property")
-> Signed-off-by: Folker Schwesinger <dev@folker-schwesinger.de>
-> ---
->  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt =
-b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> index 57d28c0d5696..10c05437f7ab 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> @@ -16,8 +16,8 @@ Optional properties:
->   - drive-impedance-ohm: Specifies the drive impedance in Ohm.
->                          Possible values are 33, 40, 50, 66 and 100.
->                          If not set, the default value of 50 will be appl=
-ied.
-> - - rockchip,enable-strobe-pulldown: Enable internal pull-down for the st=
-robe
-> -                                    line.  If not set, pull-down is not =
-used.
-> + - rockchip,disable-strobe-pulldown: Disable internal pull-down for the =
-strobe
-> +                                     line.  If not set, pull-down is use=
-d.
->   - rockchip,output-tapdelay-select: Specifies the phyctrl_otapdlysec reg=
-ister.
->                                      If not set, the register defaults to=
- 0x4.
->                                      Maximum value 0xf.
+>  	if (!of_property_read_u32(dev->of_node, "rockchip,output-tapdelay-selec=
+t", &val)) {
+>  		if (val <=3D PHYCTRL_OTAPDLYSEL_MAXVALUE)
 >=20
 > --=20
 > 2.44.0
 >=20
 >=20
 
---rZWP/rtpsRtp/vzL
+--zYLJU3bUGFnj+RDa
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgMjXgAKCRB4tDGHoIJi
-0gDXAQDsnJ2l1e9/GqPRLAJofwCMnAL+WPP/kMag/2lxXFb3sgD8DaHfe8Mk5FsS
-FcEt/njhjF1n6zYpqFuyWccUhJQdUwc=
-=f9q9
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgMl+wAKCRB4tDGHoIJi
+0hvVAP45y61fo87t2o+BbHPCKNKWjbNdW5YeWmPG1yoleN6xBAEA68Hda2BEZnjb
+dTtJLh0pxzAEeDUfwrA4rNAjq5p49g8=
+=CH3R
 -----END PGP SIGNATURE-----
 
---rZWP/rtpsRtp/vzL--
+--zYLJU3bUGFnj+RDa--
 
 
---===============1669238282871081054==
+--===============5455001323670899287==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -175,5 +201,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1669238282871081054==--
+--===============5455001323670899287==--
 
