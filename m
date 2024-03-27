@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C6A2C47DD9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 17:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B8BC54E67
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 17:23:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WNo+HB0oBv00UyitZbnXY6sa/Spq0ufR7sI/egRlf7U=; b=MZfN6v0gWZ5w9ns1TzPtpJg57n
-	pXKnVB4OoRH/kxmQ1ae1oTHi5KwWQio5pjZpGHvrNTJGq0lTs524zJG8pw08bcBxNlM/5ZczEQiZZ
-	lYYT5XikEs0yRjgv6VanHKFX68gUl2QUXOd1799wd0qO5bw4x4pjJKWIUOi+jtVuOJYJggYLeA1IF
-	JHPHBRjpoq57w+WnKuEQ6y37lsewN0IVWbh6W5CKjksUEHDaACGEt2vBvYPgdH1k5SMk+Qy7ChEjx
-	dmyxcvI5QzdGhJknBatkUHAdFYpxDItHfrRGj7KZwrUpmIkwyRCmCAV/iiNY5HX44tvr7rchwOMJu
-	W+84CM/w==;
+	bh=VyAQEIOovOGN6rZZZ5fjvGGfsleRtL/LpzOCHQxa3Ds=; b=oOQ8Ob/lGtbNdXb+WbzWPkKjN/
+	C3gjyLVmHbP8YRYyKieVZqJXNJYDKijaS6rpO+QPhXRfdtIByCcLBHzLs59+d133Ze1XQKPDBXvTp
+	mSuk0dhRCUdJfcoqcBFOID0xlLUf8z6X9QTUHPbPi+waGb/b8ZJDJHPtx21eZZGiCs7VEsbly818c
+	9FMchs3O5/XxpqUfiBFuMCRWKmEG35fTCWBO7syznJxKZ9x7/zv/mzJzx0qIvj1oRtyNAV4HR5GTv
+	Q55VASxcnqEPTIqLBY63AtYsfWGBhkyp+D0AujGFe0F22Ejb1RHY0KkSZxi0gT5p5bidtA//Om2ZR
+	qWH1RBuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpWyH-0000000AH7U-0KIr;
-	Wed, 27 Mar 2024 17:21:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rpX02-0000000AHmY-10QZ;
+	Wed, 27 Mar 2024 17:23:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpWyB-0000000AH5Q-3lIu;
-	Wed, 27 Mar 2024 17:21:49 +0000
+	id 1rpWzu-0000000AHjm-0EWk;
+	Wed, 27 Mar 2024 17:23:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1A1AF60C44;
-	Wed, 27 Mar 2024 17:21:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BB83C433F1;
-	Wed, 27 Mar 2024 17:21:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1A52360C3E;
+	Wed, 27 Mar 2024 17:23:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FA95C433C7;
+	Wed, 27 Mar 2024 17:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711560106;
-	bh=xROqHGua4j6HcszJt7ZG/hqG8TaOs2PmwN195yXx6hI=;
+	s=k20201202; t=1711560212;
+	bh=IVW7vlTiLrTDILy6sOFcmkVPU3+mDVNBvceJINH+rOM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RkImE1FJHLz0Xv9jw+4vLwPD8Oq+E3m9s1Im/KSpkWfV5O3b3fs1Wx2oQmZ8jY7SM
-	 vOPzxfL5oLH4VnEC9nvuwnjMM/3vkesrI9CxY2eJkgSbsmwVcuBzwBV2gY0D0WNE4T
-	 9/AtNS0r+mJhHpMjMKxAqxBOplYBMo7+NcpOCZQbVCEXHB+lQZPCr7S5a31aB1bEVH
-	 Pb6sNCHY9W2OhkVIP5svVIa40CCJXyb+3KXjJi9WEzLQMv63gDNV36olH6RKwwkXvg
-	 fw79W+Ko4rNsLJ6hqCA/6agFzRl4EVzUiZJbkNxCVTBmGaSTV1RAxQ4CaezxEHa5J8
-	 fllbgdiEyUiAw==
-Date: Wed, 27 Mar 2024 17:21:40 +0000
+	b=XloCsd3HB0EhyIQa5CzYWfgKyeewc6Oqo0by9UfFEbxWZIexiepINomz0U7NH5PpD
+	 F7bO68lQDu8aBGYCYKPh66JaFzTlN2DyebgDzfYB4hNllLQDTQQJxjeyQ5rsGCWop3
+	 NY2JuvbsjVzpVoLUX2m4D3n/TPYD45DL2vRUvg0QtaVGIeoGYg/860IfICZRzrBHmW
+	 swdOfcf5VB1xJkpsYGQ4LUKJzG0fsn5jzUqOvxKvJVukcS+rdwwTX6aVBmNFHsvWrP
+	 UykPBL0SCRFrQXScdsu6Vh8CVXQmMixz4lSY0QfeN8TIFNjWADxiNWPKZsetBKIVXd
+	 wUw//P4t3xOXQ==
+Date: Wed, 27 Mar 2024 17:23:26 +0000
 From: Conor Dooley <conor@kernel.org>
-To: Folker Schwesinger <dev@folker-schwesinger.de>
-Cc: Dragan Simic <dsimic@manjaro.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chris Ruehl <chris.ruehl@gtsys.com.hk>,
+To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+Cc: linux-kernel@vger.kernel.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Christopher Obbard <chris.obbard@collabora.com>,
-	Alban Browaeys <alban.browaeys@gmail.com>,
-	Doug Anderson <dianders@chromium.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Jensen Huang <jensenhuang@friendlyarm.com>,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/3] phy: rockchip: emmc: Enable pulldown for strobe line
-Message-ID: <20240327-reopen-subsoil-4b8434cbb41e@spud>
-References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de>
- <20240326-rk-default-enable-strobe-pulldown-v1-1-f410c71605c0@folker-schwesinger.de>
- <20240326-tactical-onlooker-3df8d2352dc2@spud>
- <436f78a981ecba441a0636912ddd1cf2@manjaro.org>
- <D04O57YQHYI4.1QNGSVKVT44CS@folker-schwesinger.de>
+	Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	iommu@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] media: =?utf-8?Q?dt-bin?=
+ =?utf-8?Q?ding=3A_media=3A_Document_rk3588=E2=80=99s?= VEPU121
+Message-ID: <20240327-doze-uncheck-475f3feaee57@spud>
+References: <20240327134115.424846-1-linkmauve@linkmauve.fr>
+ <20240327134115.424846-2-linkmauve@linkmauve.fr>
 MIME-Version: 1.0
-In-Reply-To: <D04O57YQHYI4.1QNGSVKVT44CS@folker-schwesinger.de>
+In-Reply-To: <20240327134115.424846-2-linkmauve@linkmauve.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_102148_242008_9E863742 
-X-CRM114-Status: GOOD (  26.01  )
+X-CRM114-CacheID: sfid-20240327_102334_347999_5A3EA1B0 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,80 +84,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0834698822772943617=="
+Content-Type: multipart/mixed; boundary="===============3248226203199302184=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0834698822772943617==
+--===============3248226203199302184==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BktBpU3GHnzCWrgO"
+	protocol="application/pgp-signature"; boundary="4zuSRA0OEooBf1eF"
 Content-Disposition: inline
 
 
---BktBpU3GHnzCWrgO
+--4zuSRA0OEooBf1eF
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Mar 27, 2024 at 04:21:45PM +0000, Folker Schwesinger wrote:
-> Hi Conor and Dragan,
+On Wed, Mar 27, 2024 at 02:41:11PM +0100, Emmanuel Gil Peyrot wrote:
+> This encoder-only device is present four times on this SoC, and should
+> support everything the rk3568 vepu supports (so JPEG, H.264 and VP8
+> encoding).
 >=20
-> thanks for your feedback!
+> According to the TRM[1], there is also the VEPU580 encoder which
+> supports H.264 and H.265, and various VDPU* decoders, of which only the
+> VDPU981 is currently supported.  This patch describes only the VEPU121.
 >=20
-> On Tue Mar 26, 2024 at 8:55 PM CET, Dragan Simic wrote:
-> > On 2024-03-26 20:46, Conor Dooley wrote:
-> > > On Tue, Mar 26, 2024 at 07:54:35PM +0100, Folker Schwesinger via B4
-> > > Relay wrote:
-> > >> From: Folker Schwesinger <dev@folker-schwesinger.de>
-> > >>
-> > >> Restore the behavior of the Rockchip kernel that undconditionally
-> > >> enables the internal strobe pulldown.
-> > >
-> > > What do you mean "restore the behaviour of the rockchip kernel"? Did
-> > > mainline behave the same as the rockchip kernel previously? If not,
-> > > using "restore" here is misleading. "Unconditionally" is also
-> > > incorrect,
-> > > because you have a property that disables it.
+> [1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
 >=20
-> Apologizes for the misleading commit message. Prior to 5.11 the Linux
-> kernel did not touch the pull-down registers. However, it seems the
-> register's (factory?) default was set to enable the pull-down. As it
-> was mentioned elsewhere that was the configuration recommended by
-> Rockchip. The 4.4 vendor (Rockchip) kernel reflects that by enabling the
-> pull-down in its kernel.
+> Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-Yeah, seems like a bit of a sticky situation. Probably the wrong
-polarity was chosen when the property was implemented and the property
-should have been the one you wanted to switch to given the default
-before it existed was the factory defaults.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-> Of course, this has nothing to do with the Linux kernel, so "restore"
-> was a bad choice here.
->
-> I previously had split the driver patch into two separate patches, one
-> for changing the default (unconditionally at that point), the other for
-> adding the disable property. As both changes were minimal I decided to
-> squash the commits. I updated the cover letter, but forgot to update the
-> commit message. Sorry.
+Thanks,
+Conor.
 
-No worries. Squashing them was probably the right thing to do anyway.
+> ---
+>  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml   | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu=
+=2Eyaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+> index 9d90d8d0565a..4c6cb21da041 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+> @@ -15,8 +15,12 @@ description:
+> =20
+>  properties:
+>    compatible:
+> -    enum:
+> -      - rockchip,rk3568-vepu
+> +    oneOf:
+> +      - const: rockchip,rk3568-vepu
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-vepu121
+> +          - const: rockchip,rk3568-vepu
+> =20
+>    reg:
+>      maxItems: 1
+> --=20
+> 2.44.0
+>=20
 
---BktBpU3GHnzCWrgO
+--4zuSRA0OEooBf1eF
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgRVowAKCRB4tDGHoIJi
-0vZBAQCa7Y4ALYnndw09ojj/rscvv2/ascq71lwrZORFc7LgWwEA2fBPIlz+6yb+
-Su6b6pt5k4wywnxerLOAC3N/zmJbEwY=
-=lcb4
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgRWDgAKCRB4tDGHoIJi
+0lutAP9RUO+UBR6Pi5FROQ2xaLNqi5TaQoaK43MSDUy1PTIC0AEA7wsfYNyJUltg
+R8OsUeBnoheFQXxeCQ5knEZaXqMNKQ0=
+=eiO7
 -----END PGP SIGNATURE-----
 
---BktBpU3GHnzCWrgO--
+--4zuSRA0OEooBf1eF--
 
 
---===============0834698822772943617==
+--===============3248226203199302184==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -166,5 +171,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0834698822772943617==--
+--===============3248226203199302184==--
 
