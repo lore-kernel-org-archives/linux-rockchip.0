@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEE0C54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 06:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 008C8C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 06:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wy1IRMZR3e8xOBtDtj/AwpsAVJYmWJc/ZztDpRw2R2U=; b=Vtfy2+Xmd8gxZm
-	m3CYK7fhOHx8v91j7Juz0F9aVJCpQxae0LP1hmtdiyLwYFbwYYTrIWKKEhO/VM0J9u60FSmFF/CKR
-	/KAYUADufCO4QjuJAXcausakn4QYsHxQXozPpoDntgaDlfReAJIDWKk1sYFZgdTmx60McyrFrwcR9
-	BMcNKbWM/HqJcI+RkIRGertOI/rB28RgnNtE+cDD2VHzph+rt7kzekfLFkCLltkTCP7pv/Upu3dSr
-	Tn/QbN0hMokWwqQW9+kzqrs0ErkFGW8Xc9OTyf4ZdsZaLwIHLX/BC3WPqRhV7J5l9zEOAzliOOG5A
-	KCalDMdGo55KeAl7XIFg==;
+	List-Owner; bh=4V9u53P7C3M0D43qD4A0vy5A/broy6zYlsQjagv5IYM=; b=kxXpvD0OwXfz+w
+	Fhmm9zR+zxjiVYw3oDsYR6OOLIwMorMnLvdkGjEAI4BxNfwYAbb16G/5yZQLRygS/BYnsF7sMyEIy
+	N6FIFMgxuqvsj4crFnRMaXPwxrWEjCCJNOBdIX2ElWuPYI4/0iyCvsP9de3pfOirlsM1W7+CUmB6y
+	2+Wcuo2bNKnQqf87DTvJe3MvlCKizx8L/QsbmPiF2SbT+iYcILx2rX0nGu2b7hah7LedbU0IRhPw4
+	mdlnmTqf4qRvg69uLfZnzwefxoityAhp8Q/oCzMkZY7GlikJI+i1NQvHgJmD54cXypZuW+B4zSzRk
+	ZsEy14rk49idZknraiEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMu0-00000007g2j-1DTl;
-	Wed, 27 Mar 2024 06:36:48 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1rpMuP-00000007gEq-3bcT;
+	Wed, 27 Mar 2024 06:37:13 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMtx-00000007g0R-1Byn
+	id 1rpMuL-00000007gBy-41XB
 	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Mar 2024 06:36:46 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1e034607879so50652215ad.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Mar 2024 23:36:45 -0700 (PDT)
+	Wed, 27 Mar 2024 06:37:11 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1e0411c0a52so47941435ad.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Mar 2024 23:37:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711521405; x=1712126205; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711521425; x=1712126225; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ms4/cCoO9t4kQQ5ANCu4uj6Ldb1VzG42n8OC1+sLfgU=;
-        b=uXr2qhwKFemG6kGjDSHxOimy2vrsd3Obpbq97eH65rELZwGPPhuqDUl1eOxOd0/aaF
-         dn5tRA+zMuVX0heQIuFMKcIR9bXgD4piVbIlvcROed71KDiiutJKQxZgFHmwkWxSxgKp
-         Hd91bYU70x2U+FKLAkyQN9tRZLBIHpLQ6wkfD5fEtzJ2XULnsJ2fK2z5DeV2J/5245pk
-         IyUlsDmELV5D278xfLTnbyD7Ay2xCrdNkrf2/5ApBWsRSe+ABKLTSiHeFl2jJ401EnQQ
-         HRq74mG7X3UqM/sOfxf9zaeCeBA6uo/bpcNow/Xw6KBPXA/P/izMs47M79BUQ7VQuq13
-         vGIg==
+        bh=vSuAzm3XlMTAAcdumCZGFConMRf5KMVdOQSvok+2c9Q=;
+        b=F9/gz+3a7ugIIMfG9Qp96Q1pL7RUsCy8SKi1Rb06wNPjdcOFMOp2d0qkrK//wzyEpu
+         s9EqR3jQw+703tTvTpIq0o1pe2bq/h7wQmC95XsJBz1JKluv0HA895xV2tvRXYSMYQSs
+         o2k9mbuw++/m8hAx8+SWAONT69Az6bV/EUetyokyl4vQZ9W/hZ5pjzPC+VpMybKyH/+Q
+         9+Kx1QJRQTFVKT0BMJSWsoFfMfr2sBxLe3M6+aMWiD5qZElkz30GDyOi6dcG/IZkOg+O
+         UiGWw5SRZDq8WWT3JkMwQeevSftCEVO7z9hTt1nC//7gFbjOBr2h3LS0uE75wy/RwnRP
+         6/kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711521405; x=1712126205;
+        d=1e100.net; s=20230601; t=1711521425; x=1712126225;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ms4/cCoO9t4kQQ5ANCu4uj6Ldb1VzG42n8OC1+sLfgU=;
-        b=cSuIDUsQIXuLyTYrzx4uruKw2n+e/qa2WcJg7oaq6q6GqQazWbpKjvUQww7rYgHByX
-         1YmiIaQ2QxMwAb83MD3jGHbgD1dzXyvF9feQvv7fUT4C4F4cPz94c0qdNygvEW1O4Y/D
-         j2XWA33sII2OmMnB3osAr2qa2S94WZUxmCXnJ5nhZ0OVHw6guygSRV108CIwaYDUge0d
-         P4RIB8P6Q6anBLETaOa6PZ0gRS1IMTmBGDU9N8s1kHGlj/yBKfULOoXtpGc8zj17Kjwg
-         cnoSQ5wOCpgKh0hWJyVo6g4vO42mCVnBEDWgELy5ubFkiMwiayHWeZ72mZwobNKyGTJ1
-         Y6nw==
-X-Forwarded-Encrypted: i=1; AJvYcCWo6Brw6XvT8BG3PYIbzlU5KuiFWUx8V1dar8YknfEMdqp44zXFa0eoX8ypwlBK/8kvGx8DPvaBqBRFnyM3dyqRyJH5xV9IKWU+/AENHgvW/Pgi
-X-Gm-Message-State: AOJu0YxZKXXlSGyv5msHv0zXYbVybwqR1FUEo8z0xZGiboVnRhdIcQt0
-	i1KknR3kB9YGUoAo7qK+79HHZ7DUAuzcRMsHvoy79J+2KQU0Rin6LFGHOh917A==
-X-Google-Smtp-Source: AGHT+IGfb/5qpheudJAFQDoQ+Y66yU71tsgjR+uPsTCQEqq4JR9dsREPelKP5MBglXDbwKKL8InnkA==
-X-Received: by 2002:a17:902:f707:b0:1e0:2344:e8fa with SMTP id h7-20020a170902f70700b001e02344e8famr507533plo.66.1711521404473;
-        Tue, 26 Mar 2024 23:36:44 -0700 (PDT)
+        bh=vSuAzm3XlMTAAcdumCZGFConMRf5KMVdOQSvok+2c9Q=;
+        b=tVzG9yOO2YRqMZaIB+QnWkY0mRtVf+K0IJ00uROVkge/8JuGcC8w6Ibtb5VgBKVsBX
+         XzxcX8LqudXzhTMtfXmpgQTFt2XJgKAr/XaMCdHCpfgDNc1CrKQSoO0Cq6eVhXsBMFhg
+         6sASSK2canTcmMIa8DJSBtMkfxEoB1KDIbNrvSmdoybrFJIgt0kUGFVD/WC66Am7hwfJ
+         svA1rXTF0WXthwb7YmKyeXWmsXqkfuj++QnlD88lJ9mc0OdVb2nKvFPcLvDE4t6kDEBp
+         eY3lpE7VYh3Bq4eyAkEHGdJsafsrd/nwe3HE/Qyw6as3H2TR0FJZAFYcEqW1HRDvYwoR
+         gMdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCULORx79xSSqrG2dFFYWbg0QHexKwE7ClhZkBqMoSR5NApEeNqWWSSC1J+AppPt+S8AZN4k5+mG8JEs9gyJLDJ+PbjJsDzUNdcdH0Ue3AUSTgsc
+X-Gm-Message-State: AOJu0Yzu9wgsw7+OgZS8LYJZqo0w6xEfUin3WAy55qUbl5TPGEWqQEaA
+	9NE+G4Z9eT+bO4ae8oTfamSFBKLS8TYXvGYXsCkLeymWoXR0hF6ZaKaOC5zgCg==
+X-Google-Smtp-Source: AGHT+IE9haQycs9Q8Q91eSl39u1OR+cHsQ599mlCpTtsFK7kXWvuJosCxsQnSUeW61EadHaElyNhsg==
+X-Received: by 2002:a17:902:ce05:b0:1dd:de1a:bd02 with SMTP id k5-20020a170902ce0500b001ddde1abd02mr364190plg.41.1711521425358;
+        Tue, 26 Mar 2024 23:37:05 -0700 (PDT)
 Received: from [127.0.1.1] ([117.207.28.168])
-        by smtp.gmail.com with ESMTPSA id r9-20020a170902be0900b001e14807c7dfsm602553pls.86.2024.03.26.23.36.27
+        by smtp.gmail.com with ESMTPSA id r9-20020a170902be0900b001e14807c7dfsm602553pls.86.2024.03.26.23.36.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Mar 2024 23:36:43 -0700 (PDT)
+        Tue, 26 Mar 2024 23:37:04 -0700 (PDT)
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Date: Wed, 27 Mar 2024 12:05:47 +0530
-Subject: [PATCH v11 1/8] PCI: dwc: ep: Fix DBI access failure for drivers
- requiring refclk from host
+Date: Wed, 27 Mar 2024 12:05:48 +0530
+Subject: [PATCH v11 2/8] PCI: dwc: ep: Add Kernel-doc comments for APIs
 MIME-Version: 1.0
-Message-Id: <20240327-pci-dbi-rework-v11-1-6f5259f90673@linaro.org>
+Message-Id: <20240327-pci-dbi-rework-v11-2-6f5259f90673@linaro.org>
 References: <20240327-pci-dbi-rework-v11-0-6f5259f90673@linaro.org>
 In-Reply-To: <20240327-pci-dbi-rework-v11-0-6f5259f90673@linaro.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -103,21 +102,21 @@ Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
  Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
  Frank Li <Frank.Li@nxp.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7480;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5382;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=DDCZoLHduZCUgXgmwVWPg1p7qsh6fab55IAmfI5Ain8=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBmA75VejBfr07ROuibuxbZqYO8QEep5hEFy1PLd
- iQo+IXhdMqJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZgO+VQAKCRBVnxHm/pHO
- 9dHbB/4pmhskP37BwSxqMzzmK2lo7rBUUac8PcmWoW8wwynl21raO/S4FPL7awE92Kf/WrDW9BR
- RZvUM9Z4LMenjrVKVui+wJ6/tXWnQ+OJAeMwrj/Yz1GsRPwAEAUvkAMg+StfG2iV93wlJTBUanW
- arD6jN7mVq4BqqBzlVqTWlsen0TVvepRtKLV0AyM/797EF5q1s46EdEJiVrA/B9ld+hUV+yc4+H
- 7fbrLIoiKbMxJ3DzLmoLHrI+Xkw/bIOdJDr5Sej93a5n2mLLQqKRLhm/Wt+/flW0zD7h1E7MpsG
- I8lAs1e/d+QJDIVXKO1XqFNTIZfS7zW6wx+IgFuCMfjw6Y4Y
+ bh=11bvpB29WOEPsNZgWi/F9cZ0k6NdPLVZ7xUwINuLjH8=;
+ b=owGbwMvMwMUYOl/w2b+J574ynlZLYkhj3hcaXnph73rNP0ZBckdVuTJ6wtnYXU8tFizlnrzqI
+ /PWRsZJnYzGLAyMXAyyYoos6UudtRo9Tt9YEqE+HWYQKxPIFAYuTgGYSNB99n+WZk42NTGsZ+e/
+ 27L+l5q25olUvTrdnU//mVhcWnFwQ+/zLOlbi16JXdd9/ZrhaeJv/m/l8404Nk4QqNSvc+xpqNh
+ of+1bjXHCpDUMwfWWl6OW506Of8OcM+uNLPO56HnLBItd2Tf4zv3ipcN5+8tkx88F7FZdymL3hW
+ +n5bSzCvadyEl+qXCn8YzvHhv/mvDfNQxz1VeFmlxkeeT4eaK1QkV7/roTe098UL90sNxU2+zbi
+ 5jZC/PenZPpL4vysrf14Zj2pa7k7OUEh1B9dTc7/0S56NrtbD9W1im7Bhh8aVw03yeIRcyt8eXB
+ Y6FNHwU3MbGL164uMM5cnhsnwjNvkjafeFZUTn78H7klAA==
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_233645_460559_D0063F7D 
-X-CRM114-Status: GOOD (  22.96  )
+X-CRM114-CacheID: sfid-20240326_233710_046286_A18889B2 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,236 +133,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DWC glue drivers requiring an active reference clock from the PCIe host
-for initializing their PCIe EP core, set a flag called 'core_init_notifier'
-to let DWC driver know that these drivers need a special attention during
-initialization. In these drivers, access to the hw registers (like DBI)
-before receiving the active refclk from host will result in access failure
-and also could cause a whole system hang.
+All of the APIs are missing the Kernel-doc comments. Hence, add them.
 
-But the current DWC EP driver doesn't honor the requirements of the drivers
-setting 'core_init_notifier' flag and tries to access the DBI registers
-during dw_pcie_ep_init(). This causes the system hang for glue drivers such
-as Tegra194 and Qcom EP as they depend on refclk from host and have set the
-above mentioned flag.
-
-To workaround this issue, users of the affected platforms have to maintain
-the dependency with the PCIe host by booting the PCIe EP after host boot.
-But this won't provide a good user experience, since PCIe EP is _one_ of
-the features of those platforms and it doesn't make sense to delay the
-whole platform booting due to PCIe requiring active refclk.
-
-So to fix this issue, let's move all the DBI access from
-dw_pcie_ep_init() in the DWC EP driver to the dw_pcie_ep_init_complete()
-API. This API will only be called by the drivers setting
-'core_init_notifier' flag once refclk is received from host. For the rest
-of the drivers that gets the refclk locally, this API will be called
-within dw_pcie_ep_init().
-
-Fixes: e966f7390da9 ("PCI: dwc: Refactor core initialization code for EP mode")
-Co-developed-by: Vidya Sagar <vidyas@nvidia.com>
-Signed-off-by: Vidya Sagar <vidyas@nvidia.com>
 Reviewed-by: Frank Li <Frank.Li@nxp.com>
 Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/dwc/pcie-designware-ep.c | 120 ++++++++++++++----------
- 1 file changed, 71 insertions(+), 49 deletions(-)
+ drivers/pci/controller/dwc/pcie-designware-ep.c | 77 +++++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
 
 diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-index 5befed2dc02b..c05304eabb89 100644
+index c05304eabb89..c2a7653b7b9f 100644
 --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
 +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-@@ -602,11 +602,16 @@ static unsigned int dw_pcie_ep_find_ext_capability(struct dw_pcie *pci, int cap)
+@@ -14,6 +14,10 @@
+ #include <linux/pci-epc.h>
+ #include <linux/pci-epf.h>
+ 
++/**
++ * dw_pcie_ep_linkup - Notify EPF drivers about Link Up event
++ * @ep: DWC EP device
++ */
+ void dw_pcie_ep_linkup(struct dw_pcie_ep *ep)
+ {
+ 	struct pci_epc *epc = ep->epc;
+@@ -22,6 +26,10 @@ void dw_pcie_ep_linkup(struct dw_pcie_ep *ep)
+ }
+ EXPORT_SYMBOL_GPL(dw_pcie_ep_linkup);
+ 
++/**
++ * dw_pcie_ep_init_notify - Notify EPF drivers about EPC initialization complete
++ * @ep: DWC EP device
++ */
+ void dw_pcie_ep_init_notify(struct dw_pcie_ep *ep)
+ {
+ 	struct pci_epc *epc = ep->epc;
+@@ -30,6 +38,14 @@ void dw_pcie_ep_init_notify(struct dw_pcie_ep *ep)
+ }
+ EXPORT_SYMBOL_GPL(dw_pcie_ep_init_notify);
+ 
++/**
++ * dw_pcie_ep_get_func_from_ep - Get the struct dw_pcie_ep_func corresponding to
++ *				 the endpoint function
++ * @ep: DWC EP device
++ * @func_no: Function number of the endpoint device
++ *
++ * Return: struct dw_pcie_ep_func if success, NULL otherwise.
++ */
+ struct dw_pcie_ep_func *
+ dw_pcie_ep_get_func_from_ep(struct dw_pcie_ep *ep, u8 func_no)
+ {
+@@ -60,6 +76,11 @@ static void __dw_pcie_ep_reset_bar(struct dw_pcie *pci, u8 func_no,
+ 	dw_pcie_dbi_ro_wr_dis(pci);
+ }
+ 
++/**
++ * dw_pcie_ep_reset_bar - Reset endpoint BAR
++ * @pci: DWC PCI device
++ * @bar: BAR number of the endpoint
++ */
+ void dw_pcie_ep_reset_bar(struct dw_pcie *pci, enum pci_barno bar)
+ {
+ 	u8 func_no, funcs;
+@@ -439,6 +460,13 @@ static const struct pci_epc_ops epc_ops = {
+ 	.get_features		= dw_pcie_ep_get_features,
+ };
+ 
++/**
++ * dw_pcie_ep_raise_intx_irq - Raise INTx IRQ to the host
++ * @ep: DWC EP device
++ * @func_no: Function number of the endpoint
++ *
++ * Return: 0 if success, errono otherwise.
++ */
+ int dw_pcie_ep_raise_intx_irq(struct dw_pcie_ep *ep, u8 func_no)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+@@ -450,6 +478,14 @@ int dw_pcie_ep_raise_intx_irq(struct dw_pcie_ep *ep, u8 func_no)
+ }
+ EXPORT_SYMBOL_GPL(dw_pcie_ep_raise_intx_irq);
+ 
++/**
++ * dw_pcie_ep_raise_msi_irq - Raise MSI IRQ to the host
++ * @ep: DWC EP device
++ * @func_no: Function number of the endpoint
++ * @interrupt_num: Interrupt number to be raised
++ *
++ * Return: 0 if success, errono otherwise.
++ */
+ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 			     u8 interrupt_num)
+ {
+@@ -498,6 +534,15 @@ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
+ }
+ EXPORT_SYMBOL_GPL(dw_pcie_ep_raise_msi_irq);
+ 
++/**
++ * dw_pcie_ep_raise_msix_irq_doorbell - Raise MSI-X to the host using Doorbell
++ *					method
++ * @ep: DWC EP device
++ * @func_no: Function number of the endpoint device
++ * @interrupt_num: Interrupt number to be raised
++ *
++ * Return: 0 if success, errno otherwise.
++ */
+ int dw_pcie_ep_raise_msix_irq_doorbell(struct dw_pcie_ep *ep, u8 func_no,
+ 				       u16 interrupt_num)
+ {
+@@ -517,6 +562,14 @@ int dw_pcie_ep_raise_msix_irq_doorbell(struct dw_pcie_ep *ep, u8 func_no,
+ 	return 0;
+ }
+ 
++/**
++ * dw_pcie_ep_raise_msix_irq - Raise MSI-X to the host
++ * @ep: DWC EP device
++ * @func_no: Function number of the endpoint device
++ * @interrupt_num: Interrupt number to be raised
++ *
++ * Return: 0 if success, errno otherwise.
++ */
+ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 			      u16 interrupt_num)
+ {
+@@ -564,6 +617,13 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 	return 0;
+ }
+ 
++/**
++ * dw_pcie_ep_exit - Deinitialize the endpoint device
++ * @ep: DWC EP device
++ *
++ * Deinitialize the endpoint device. EPC device is not destroyed since that will
++ * be taken care by Devres.
++ */
+ void dw_pcie_ep_exit(struct dw_pcie_ep *ep)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+@@ -599,6 +659,14 @@ static unsigned int dw_pcie_ep_find_ext_capability(struct dw_pcie *pci, int cap)
+ 	return 0;
+ }
+ 
++/**
++ * dw_pcie_ep_init_complete - Complete DWC EP initialization
++ * @ep: DWC EP device
++ *
++ * Complete the initialization of the registers (CSRs) specific to DWC EP. This
++ * API should be called only when the endpoint receives an active refclk (either
++ * from host or generated locally).
++ */
  int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
  {
  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-+	struct dw_pcie_ep_func *ep_func;
-+	struct device *dev = pci->dev;
-+	struct pci_epc *epc = ep->epc;
- 	unsigned int offset, ptm_cap_base;
- 	unsigned int nbars;
- 	u8 hdr_type;
-+	u8 func_no;
-+	int i, ret;
-+	void *addr;
- 	u32 reg;
--	int i;
- 
- 	hdr_type = dw_pcie_readb_dbi(pci, PCI_HEADER_TYPE) &
- 		   PCI_HEADER_TYPE_MASK;
-@@ -617,6 +622,58 @@ int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
- 		return -EIO;
- 	}
- 
-+	dw_pcie_version_detect(pci);
-+
-+	dw_pcie_iatu_detect(pci);
-+
-+	ret = dw_pcie_edma_detect(pci);
-+	if (ret)
-+		return ret;
-+
-+	if (!ep->ib_window_map) {
-+		ep->ib_window_map = devm_bitmap_zalloc(dev, pci->num_ib_windows,
-+						       GFP_KERNEL);
-+		if (!ep->ib_window_map)
-+			goto err_remove_edma;
-+	}
-+
-+	if (!ep->ob_window_map) {
-+		ep->ob_window_map = devm_bitmap_zalloc(dev, pci->num_ob_windows,
-+						       GFP_KERNEL);
-+		if (!ep->ob_window_map)
-+			goto err_remove_edma;
-+	}
-+
-+	if (!ep->outbound_addr) {
-+		addr = devm_kcalloc(dev, pci->num_ob_windows, sizeof(phys_addr_t),
-+				    GFP_KERNEL);
-+		if (!addr)
-+			goto err_remove_edma;
-+		ep->outbound_addr = addr;
-+	}
-+
-+	for (func_no = 0; func_no < epc->max_functions; func_no++) {
-+
-+		ep_func = dw_pcie_ep_get_func_from_ep(ep, func_no);
-+		if (ep_func)
-+			continue;
-+
-+		ep_func = devm_kzalloc(dev, sizeof(*ep_func), GFP_KERNEL);
-+		if (!ep_func)
-+			goto err_remove_edma;
-+
-+		ep_func->func_no = func_no;
-+		ep_func->msi_cap = dw_pcie_ep_find_capability(ep, func_no,
-+							      PCI_CAP_ID_MSI);
-+		ep_func->msix_cap = dw_pcie_ep_find_capability(ep, func_no,
-+							       PCI_CAP_ID_MSIX);
-+
-+		list_add_tail(&ep_func->list, &ep->func_list);
-+	}
-+
-+	if (ep->ops->init)
-+		ep->ops->init(ep);
-+
- 	offset = dw_pcie_ep_find_ext_capability(pci, PCI_EXT_CAP_ID_REBAR);
- 	ptm_cap_base = dw_pcie_ep_find_ext_capability(pci, PCI_EXT_CAP_ID_PTM);
- 
-@@ -651,14 +708,17 @@ int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
- 	dw_pcie_dbi_ro_wr_dis(pci);
- 
- 	return 0;
-+
-+err_remove_edma:
-+	dw_pcie_edma_remove(pci);
-+
-+	return ret;
+@@ -716,6 +784,15 @@ int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
  }
  EXPORT_SYMBOL_GPL(dw_pcie_ep_init_complete);
  
++/**
++ * dw_pcie_ep_init - Initialize the endpoint device
++ * @ep: DWC EP device
++ *
++ * Initialize the endpoint device. Allocate resources and create the EPC
++ * device with the endpoint framework.
++ *
++ * Return: 0 if success, errno otherwise.
++ */
  int dw_pcie_ep_init(struct dw_pcie_ep *ep)
  {
  	int ret;
--	void *addr;
--	u8 func_no;
- 	struct resource *res;
- 	struct pci_epc *epc;
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-@@ -666,7 +726,6 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct device_node *np = dev->of_node;
- 	const struct pci_epc_features *epc_features;
--	struct dw_pcie_ep_func *ep_func;
- 
- 	INIT_LIST_HEAD(&ep->func_list);
- 
-@@ -684,26 +743,6 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 	if (ep->ops->pre_init)
- 		ep->ops->pre_init(ep);
- 
--	dw_pcie_version_detect(pci);
--
--	dw_pcie_iatu_detect(pci);
--
--	ep->ib_window_map = devm_bitmap_zalloc(dev, pci->num_ib_windows,
--					       GFP_KERNEL);
--	if (!ep->ib_window_map)
--		return -ENOMEM;
--
--	ep->ob_window_map = devm_bitmap_zalloc(dev, pci->num_ob_windows,
--					       GFP_KERNEL);
--	if (!ep->ob_window_map)
--		return -ENOMEM;
--
--	addr = devm_kcalloc(dev, pci->num_ob_windows, sizeof(phys_addr_t),
--			    GFP_KERNEL);
--	if (!addr)
--		return -ENOMEM;
--	ep->outbound_addr = addr;
--
- 	epc = devm_pci_epc_create(dev, &epc_ops);
- 	if (IS_ERR(epc)) {
- 		dev_err(dev, "Failed to create epc device\n");
-@@ -717,23 +756,6 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 	if (ret < 0)
- 		epc->max_functions = 1;
- 
--	for (func_no = 0; func_no < epc->max_functions; func_no++) {
--		ep_func = devm_kzalloc(dev, sizeof(*ep_func), GFP_KERNEL);
--		if (!ep_func)
--			return -ENOMEM;
--
--		ep_func->func_no = func_no;
--		ep_func->msi_cap = dw_pcie_ep_find_capability(ep, func_no,
--							      PCI_CAP_ID_MSI);
--		ep_func->msix_cap = dw_pcie_ep_find_capability(ep, func_no,
--							       PCI_CAP_ID_MSIX);
--
--		list_add_tail(&ep_func->list, &ep->func_list);
--	}
--
--	if (ep->ops->init)
--		ep->ops->init(ep);
--
- 	ret = pci_epc_mem_init(epc, ep->phys_base, ep->addr_size,
- 			       ep->page_size);
- 	if (ret < 0) {
-@@ -749,25 +771,25 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 		goto err_exit_epc_mem;
- 	}
- 
--	ret = dw_pcie_edma_detect(pci);
--	if (ret)
--		goto err_free_epc_mem;
--
- 	if (ep->ops->get_features) {
- 		epc_features = ep->ops->get_features(ep);
- 		if (epc_features->core_init_notifier)
- 			return 0;
- 	}
- 
-+	/*
-+	 * NOTE:- Avoid accessing the hardware (Ex:- DBI space) before this
-+	 * step as platforms that implement 'core_init_notifier' feature may
-+	 * not have the hardware ready (i.e. core initialized) for access
-+	 * (Ex: tegra194). Any hardware access on such platforms result
-+	 * in system hang.
-+	 */
- 	ret = dw_pcie_ep_init_complete(ep);
- 	if (ret)
--		goto err_remove_edma;
-+		goto err_free_epc_mem;
- 
- 	return 0;
- 
--err_remove_edma:
--	dw_pcie_edma_remove(pci);
--
- err_free_epc_mem:
- 	pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
- 			      epc->mem->window.page_size);
 
 -- 
 2.25.1
