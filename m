@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 505D2C54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 06:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA46C54E67
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 06:38:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pWLbJQJyLGaED8sAZCLkGO2GKM8ZBL6Kv0hEKA9MQXA=; b=zFhJ83rB0zBi4o
-	uCdrmGN4yU6QUhm28JVJ/CM6uBvfcHYftcZGXUrK8k6LdJ6TORVMdY796zKDsOlDWXkBGc/UtPHCU
-	RjrHsbxiEcUI9FrEYUbc1gmsAM28JuEC41ZYMeY8NmUA9C2dD/zqDG7uoWwnqUJ/xTK+QnvIsdiqi
-	hShzIf/yBZj2paT3KuuetXK2Br0IhGbTrMOiWNEmQYmorIjfY2AGlLacvAkoJw8ntxUzc70E2Ol36
-	8b50f8gebqkdYvV8hk9UJPnFOyGKzRxyS3Dg0cbGVlPHUR/MeHY3RhFBwp3xkCww4P5FnQqzZVsyR
-	g9MWJix0+kRgDwX6ZzHw==;
+	List-Owner; bh=UNMLcmTy1AXJiVJoxofoqP3rBzBm1Ydi5WXCLU+p3P0=; b=gcUrG0d3qnOdsn
+	Akc4nUtg3y7z6HogWV8MPhfgUhVqBRauJT1+z18kvhRK6fY7URZ1vBAcFT80ZtGzlmAytFCj02NAu
+	n9WcBf4eWYXuIpRkHycKXzBFbkO4m2+XV0jBrIPYO38/1p4DIEUcU3OHc+n7ZVtXGD3TaBK4IrxOr
+	jY2LsPKH7yojcWit0LHC8kHD4hTCOlTljLgPeQHjIZHZqT5bL+wZcPwguZViYuADqYzg/wVgxNqhb
+	GtccHOvG1l0ootwFdxCQWNrZ0j5bMeH889quZE/jEO+Y6CQrBdpHIFUaSJwkcSlHGQxva3DMRCIDx
+	zzKsAoy8ABTSnsrGjtOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMvG-00000007gdQ-44ii;
-	Wed, 27 Mar 2024 06:38:06 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1rpMvh-00000007gqn-0Hwc;
+	Wed, 27 Mar 2024 06:38:33 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpMvE-00000007gc4-0nbh
+	id 1rpMvd-00000007goF-0jlt
 	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Mar 2024 06:38:05 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1e0edd0340fso14793835ad.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Mar 2024 23:38:04 -0700 (PDT)
+	Wed, 27 Mar 2024 06:38:30 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-1e0f2798b47so3886695ad.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Mar 2024 23:38:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711521483; x=1712126283; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711521508; x=1712126308; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=mivPPYHKcOKy4Ao8y34XOU96LcUYepuBhGKc2WiBoys=;
-        b=bnSe3RoJs8jal+6mvkgm/C+qe2XCc6z8tLWxgUQrIRRVljTFk4tc9YWvecXeEUGiKY
-         GioUcYJSJQ2PGhWFNbcBXNhGIy3VgPz4xMASKfA9nvgh/L/hy9RKdC4kHhdEaT3220cl
-         OXKr/xLke3Hv4qdfw5ak3Scp0NXOcIgqx+c4AWDEPOKHiUQRZYVcW3ee0G8ETbNpCb+h
-         3h3Txp38TIxtW1bAKx0iaEe7iuEVGYbtWmItxmOWWA5CDIf5MwyQm9JipVMcdKwzrdMy
-         SjQ+tBZVs/kqnGay8g6jVLj+weixngxwxuDmGieRjthlu85xJMTJHqVAyCnxiefcTkdz
-         wQ2Q==
+        bh=2FJnclAUZyQM4WBVprXIqrY113PIuX3eACzO2IL03gI=;
+        b=odIND09Gztfk/oH6yyqmBF0mDfuDirAX3QfVkyMc66EXd9O5lUgrYcQ5pFr80fIMMn
+         hk1tryrAipUHCiNnh52lyMZcegZsk4nBSptPnZ2LDoegy7D0V/aVRoMP5d9N9NzENNea
+         NQ3ehBkGsR3uBH3rQ9wvioWB5QbRGqdV0tRnaaOLuGYAgFmwnkvt/P9xhr7+Op9wV0vb
+         YdK5AhZ0MHC+S2Cv9hDaWzS6FaZsLgPm3wp3hTyPiHYgClnpz9nipFAdWPk3JGlfZyXN
+         J2gO2XoSAAXRgFjmnm2d2r7vXz9SxK1P2dOz/rdJUrSjH8RXKMYuqjIIBmdMetI8DiWl
+         6N0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711521483; x=1712126283;
+        d=1e100.net; s=20230601; t=1711521508; x=1712126308;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mivPPYHKcOKy4Ao8y34XOU96LcUYepuBhGKc2WiBoys=;
-        b=V9yCZrKWgvAjhGAlQEeK0Flcu/KMAohCqNwf54BdIOsx4ChUFB+SsfXTp0y0E5EyBn
-         TlUQ569AdxzRGLTxRCw6XrBQrWDKT7lrUoSpddxNS2z8ybiapJNYUm8I55haa9kLcGbH
-         oQou2t7dZZO/LXQa5pWu2OvJkS4O8n/+anw9P+X5o1T2ts+RC2Mc7Bc1thLx/ZQyd/Gl
-         AXdmy9X5tC9Pq0LScgZURSVo4+sdUzO0O5KTpLWHBq7k29QgiSOZzrg7C3Yy8GTyqry0
-         du7IgkU/aCaFLwl3nVfD804ltBnpVGiQg8tdIoUhBKQjMsGX7UVkbJSSU5RIoXWR5Kik
-         DgVA==
-X-Forwarded-Encrypted: i=1; AJvYcCXWlOqHCY0AHUEVtCmMzgzFqm+GMK+dz2eOC/HEEYWNhsyl3xR0frQfvh05x06o4ufWMuczmCBEvJlACeYFF4J9U+y1GAYlfGBdXIzSzdxZZQja
-X-Gm-Message-State: AOJu0YwjRcD87tGO8OFAT1VL4DNmmeV7PhYBtr6hiPlM7UAaC5FvMlgT
-	RXwc1TMnvW0ekyPWhsmE7dNqfS0fg9mklh8nkqyJHdHtPZLBPgN1Ned7gOarzA==
-X-Google-Smtp-Source: AGHT+IEuNX01LcBtzwtH1ZI1Dnk/TQQT/XSxPGrtDLuR/pAohoCQdzccf1w7VRPss1JRAfOGZf94TQ==
-X-Received: by 2002:a17:902:ea09:b0:1e0:bd8e:5a66 with SMTP id s9-20020a170902ea0900b001e0bd8e5a66mr442911plg.8.1711521483320;
-        Tue, 26 Mar 2024 23:38:03 -0700 (PDT)
+        bh=2FJnclAUZyQM4WBVprXIqrY113PIuX3eACzO2IL03gI=;
+        b=HM5GjmDFCD4mvay/GvI6ovP7XdpfldlmLnl/+fXrUS5s3v3vCL43oujD92wz4IPauH
+         dOrjYJT+e0JXepEZXi7M0UtSMIsNLz2/GgMFECAdeSxZ0bhKw1r23LSuuPFR16Sep5ON
+         uegFL3z0mvtEtS71TaDE3y+uNdz9bY2R/ODCcBN0dYb8WQeS0u+eYK68i9RaW90wUEq2
+         RkMBNOcyBpNC8iXJYTnkst62aaRqdM8AuH4hA8YojHHHLXW8a4WQANF4IJsQ/9ZLgYf5
+         2uhG0F6n0M5nPIM0DwiPZ99Cp+mZzDP1jsH/h6dPo+ayesFSiVtTmzJiBB8Ez0XOKc7C
+         kcsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWWp9rNiB0MBr7YV2fjFYuFnhUwbtULYFjyxuUNT5lbP4OLVbvmhhbiMDKhk3mo3ZGRbdm24RnkRB8I75s6Ah+vRPEleKJ+bq6K+0bLGX/Fc+Al
+X-Gm-Message-State: AOJu0YzJubJGOXXrYOG9c/iPCRMxGymYyJ42TjfiwpKrPzueOYjzMMY9
+	715guUxzLmRzKovPb05FVDNfC1cwPD3OFjoQr/SeuhflE+d3vlYtDbGxDux1HA==
+X-Google-Smtp-Source: AGHT+IEdbYtFtcbyHCagT0tulvq/fnfaauxWjj9+6ItfB4oMcnI44QtrD2op3MsUl7pRVNsXpGCnKg==
+X-Received: by 2002:a17:902:f687:b0:1e0:30ca:62c with SMTP id l7-20020a170902f68700b001e030ca062cmr5739334plg.1.1711521508266;
+        Tue, 26 Mar 2024 23:38:28 -0700 (PDT)
 Received: from [127.0.1.1] ([117.207.28.168])
-        by smtp.gmail.com with ESMTPSA id r9-20020a170902be0900b001e14807c7dfsm602553pls.86.2024.03.26.23.37.45
+        by smtp.gmail.com with ESMTPSA id r9-20020a170902be0900b001e14807c7dfsm602553pls.86.2024.03.26.23.38.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Mar 2024 23:38:02 -0700 (PDT)
+        Tue, 26 Mar 2024 23:38:27 -0700 (PDT)
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Date: Wed, 27 Mar 2024 12:05:51 +0530
-Subject: [PATCH v11 5/8] PCI: dwc: ep: Introduce dw_pcie_ep_cleanup() API
- for drivers supporting PERST#
+Date: Wed, 27 Mar 2024 12:05:52 +0530
+Subject: [PATCH v11 6/8] PCI: dwc: ep: Rename dw_pcie_ep_init_complete() to
+ dw_pcie_ep_init_registers()
 MIME-Version: 1.0
-Message-Id: <20240327-pci-dbi-rework-v11-5-6f5259f90673@linaro.org>
+Message-Id: <20240327-pci-dbi-rework-v11-6-6f5259f90673@linaro.org>
 References: <20240327-pci-dbi-rework-v11-0-6f5259f90673@linaro.org>
 In-Reply-To: <20240327-pci-dbi-rework-v11-0-6f5259f90673@linaro.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -103,21 +103,21 @@ Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
  Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
  Frank Li <Frank.Li@nxp.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4250;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4791;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=qsrXEYDJ7iRM5G49lWMuNsUTn79ZQLOBCbqctpAd/Xc=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBmA75WoMjoLUGDerPhNIv6VyZTOayQ0uU/PY+4B
- kAPbZoTMMyJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZgO+VgAKCRBVnxHm/pHO
- 9ZymB/42xHgi+oA0QmT/QC4mzKmaeoOjY/JSPU1j3L93vbjOssxOJeezhE7Swp/n6lyaHPxoY+r
- ZUoL9JO8pKFg9cX69Kz2fjso7GFmQTr+32IhNeaQjJKvCFAgudmbh1oJodl/NyDHnbqkGnprS2d
- L5o+eAB6f4MmYT6ecfcpzH4aHPJzkjC5Tn8H16P4w7vjT63h0WZCZe2RRRTaI5ieaRGE2Gm1H49
- /tjWHhmjJlptTfyF0MFN9Qfy2Bba9LzKYjsPZrWo/d1ip0fYBaYxDBHdlShr0Ea4mHZRVM+gOn8
- W6QF6ehLfXxKTDiMLCJ3CLVqU3YxefS9Wy+lpHGuCAJcVkzG
+ bh=T8xd9IMBFSLqtO7yLwds3AzXZKOw4i14aXO5E4koQK8=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBmA75Wra5tRW8Nw7bBfF+BFzZWHyO11z6ZN9VCf
+ OejVTU+NguJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZgO+VgAKCRBVnxHm/pHO
+ 9Sw4B/0cG0if7rjvc14GX7fjtgymOBawKRqjqWuIiyrLkA54CiZVvzsE/IpNvUIhlsWUd8pIOlu
+ ZhbNlhxvM0G8y308wRV63OFx88YZSsq2IxDhPXE7+OsyMSzD8cXrLygoh8s4OWx2vjiLPt/RkHA
+ zYFQ4X1LaSDBmLCPsvx7NzACE76JUnQlZIWh1MchAYfaorwLlPJxnLHKkmbVExNIgaLtCU16y3w
+ zDSzNOz+lArWNplhM3ABClsRdDruM5+0RRZ1dUb3/eYKLV6w60V0wrhAw46S/TrLFACTfv60ZxC
+ EzyEUDgMrYur1CdaVpy4m55hoRprOCA6mk33KyCtuzeFrLn3
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240326_233804_314728_89404F6C 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20240326_233829_343688_1FD961E5 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,113 +134,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For DWC glue drivers supporting PERST# (currently Qcom and Tegra194), some
-of the DWC resources like eDMA should be cleaned up during the PERST#
-assert time.
+The goal of the dw_pcie_ep_init_complete() API is to initialize the DWC
+specific registers post registering the controller with the EP framework.
 
-So let's introduce a dw_pcie_ep_cleanup() API that could be called by these
-drivers to cleanup the DWC specific resources. Currently, it just removes
-eDMA.
+But the naming doesn't reflect its functionality and causes confusion. So,
+let's rename it to dw_pcie_ep_init_registers() to make it clear that it
+initializes the DWC specific registers.
 
-Reported-by: Niklas Cassel <cassel@kernel.org>
-Closes: https://lore.kernel.org/linux-pci/ZWYmX8Y%2F7Q9WMxES@x1-carbon
 Reviewed-by: Frank Li <Frank.Li@nxp.com>
 Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/dwc/pcie-designware-ep.c | 19 +++++++++++++++++--
- drivers/pci/controller/dwc/pcie-designware.h    |  5 +++++
- drivers/pci/controller/dwc/pcie-qcom-ep.c       |  1 +
- drivers/pci/controller/dwc/pcie-tegra194.c      |  2 ++
- 4 files changed, 25 insertions(+), 2 deletions(-)
+ drivers/pci/controller/dwc/pcie-designware-ep.c | 14 +++++++-------
+ drivers/pci/controller/dwc/pcie-designware.h    |  4 ++--
+ drivers/pci/controller/dwc/pcie-qcom-ep.c       |  2 +-
+ drivers/pci/controller/dwc/pcie-tegra194.c      |  2 +-
+ 4 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-index 7ff2015736ef..7509fa1d1e7d 100644
+index 7509fa1d1e7d..0c13fdb8554e 100644
 --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
 +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-@@ -617,6 +617,22 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
- 	return 0;
+@@ -672,14 +672,14 @@ static unsigned int dw_pcie_ep_find_ext_capability(struct dw_pcie *pci, int cap)
  }
  
-+/**
-+ * dw_pcie_ep_cleanup - Cleanup DWC EP resources after fundamental reset
-+ * @ep: DWC EP device
-+ *
-+ * Cleans up the DWC EP specific resources like eDMA etc... after fundamental
-+ * reset like PERST#. Note that this API is only applicable for drivers
-+ * supporting PERST# or any other methods of fundamental reset.
-+ */
-+void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep)
-+{
-+	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-+
-+	dw_pcie_edma_remove(pci);
-+}
-+EXPORT_SYMBOL_GPL(dw_pcie_ep_cleanup);
-+
  /**
-  * dw_pcie_ep_deinit - Deinitialize the endpoint device
+- * dw_pcie_ep_init_complete - Complete DWC EP initialization
++ * dw_pcie_ep_init_registers - Initialize DWC EP specific registers
   * @ep: DWC EP device
-@@ -626,10 +642,9 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+  *
+- * Complete the initialization of the registers (CSRs) specific to DWC EP. This
+- * API should be called only when the endpoint receives an active refclk (either
+- * from host or generated locally).
++ * Initialize the registers (CSRs) specific to DWC EP. This API should be called
++ * only when the endpoint receives an active refclk (either from host or
++ * generated locally).
   */
- void dw_pcie_ep_deinit(struct dw_pcie_ep *ep)
+-int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
++int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
  {
--	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	struct pci_epc *epc = ep->epc;
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+ 	struct dw_pcie_ep_func *ep_func;
+@@ -794,7 +794,7 @@ int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
  
--	dw_pcie_edma_remove(pci);
-+	dw_pcie_ep_cleanup(ep);
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(dw_pcie_ep_init_complete);
++EXPORT_SYMBOL_GPL(dw_pcie_ep_init_registers);
  
- 	pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
- 			      epc->mem->window.page_size);
+ /**
+  * dw_pcie_ep_init - Initialize the endpoint device
+@@ -873,7 +873,7 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	 * (Ex: tegra194). Any hardware access on such platforms result
+ 	 * in system hang.
+ 	 */
+-	ret = dw_pcie_ep_init_complete(ep);
++	ret = dw_pcie_ep_init_registers(ep);
+ 	if (ret)
+ 		goto err_free_epc_mem;
+ 
 diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index 61465203bb60..351d2fe3ea4d 100644
+index 351d2fe3ea4d..f8e5431a207b 100644
 --- a/drivers/pci/controller/dwc/pcie-designware.h
 +++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -672,6 +672,7 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep);
- int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep);
+@@ -669,7 +669,7 @@ static inline void __iomem *dw_pcie_own_conf_map_bus(struct pci_bus *bus,
+ #ifdef CONFIG_PCIE_DW_EP
+ void dw_pcie_ep_linkup(struct dw_pcie_ep *ep);
+ int dw_pcie_ep_init(struct dw_pcie_ep *ep);
+-int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep);
++int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep);
  void dw_pcie_ep_init_notify(struct dw_pcie_ep *ep);
  void dw_pcie_ep_deinit(struct dw_pcie_ep *ep);
-+void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep);
- int dw_pcie_ep_raise_intx_irq(struct dw_pcie_ep *ep, u8 func_no);
- int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
- 			     u8 interrupt_num);
-@@ -705,6 +706,10 @@ static inline void dw_pcie_ep_deinit(struct dw_pcie_ep *ep)
- {
+ void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep);
+@@ -693,7 +693,7 @@ static inline int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	return 0;
  }
  
-+static inline void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep)
-+{
-+}
-+
- static inline int dw_pcie_ep_raise_intx_irq(struct dw_pcie_ep *ep, u8 func_no)
+-static inline int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
++static inline int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
  {
  	return 0;
+ }
 diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-index 36e5e80cd22f..59b1c0110288 100644
+index 59b1c0110288..3697b4a944cc 100644
 --- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
 +++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-@@ -507,6 +507,7 @@ static void qcom_pcie_perst_assert(struct dw_pcie *pci)
- 		return;
- 	}
+@@ -463,7 +463,7 @@ static int qcom_pcie_perst_deassert(struct dw_pcie *pci)
+ 	      PARF_INT_ALL_LINK_UP | PARF_INT_ALL_EDMA;
+ 	writel_relaxed(val, pcie_ep->parf + PARF_INT_ALL_MASK);
  
-+	dw_pcie_ep_cleanup(&pci->ep);
- 	qcom_pcie_disable_resources(pcie_ep);
- 	pcie_ep->link_status = QCOM_PCIE_EP_LINK_DISABLED;
- }
+-	ret = dw_pcie_ep_init_complete(&pcie_ep->pci.ep);
++	ret = dw_pcie_ep_init_registers(&pcie_ep->pci.ep);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to complete initialization: %d\n", ret);
+ 		goto err_disable_resources;
 diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-index 7afa9e9aabe2..68bfeed3429b 100644
+index 68bfeed3429b..264ee76bf008 100644
 --- a/drivers/pci/controller/dwc/pcie-tegra194.c
 +++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-@@ -1715,6 +1715,8 @@ static void pex_ep_event_pex_rst_assert(struct tegra_pcie_dw *pcie)
- 	if (ret)
- 		dev_err(pcie->dev, "Failed to go Detect state: %d\n", ret);
+@@ -1897,7 +1897,7 @@ static void pex_ep_event_pex_rst_deassert(struct tegra_pcie_dw *pcie)
+ 	val = (upper_32_bits(ep->msi_mem_phys) & MSIX_ADDR_MATCH_HIGH_OFF_MASK);
+ 	dw_pcie_writel_dbi(pci, MSIX_ADDR_MATCH_HIGH_OFF, val);
  
-+	dw_pcie_ep_cleanup(&pcie->pci.ep);
-+
- 	reset_control_assert(pcie->core_rst);
- 
- 	tegra_pcie_disable_phy(pcie);
+-	ret = dw_pcie_ep_init_complete(ep);
++	ret = dw_pcie_ep_init_registers(ep);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to complete initialization: %d\n", ret);
+ 		goto fail_init_complete;
 
 -- 
 2.25.1
