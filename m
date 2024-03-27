@@ -4,47 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C27C54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 11:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DCF8C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 11:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IRTuJys8kw29lDjQmEtdkTc56kp2OocECRHTlEB/Hx0=; b=dAhheGoiPZrjGA
-	F5qshJYNcjmIoaN9rQqUUPbegXm42D0+4+YR1h5dJ+GoTt6QFVcXIceeabLKwdLXFGk8Y7lt169Tk
-	44j5+5s4IBxXNEQ1OZWwNdQLvTujYQh7EgL2jXW9NpSR9AtfXLX0I5NYoOVzDAdzebrGrrUawtSPl
-	v/5r4D0Ri0N4mIh2H7R3mqoJghj2c2JD+xrYUD5CJtNkfeg6ds8vUIkt9PP8ufDUqOEzeFw5n0yRC
-	1A7BazeEVPr7BhnEANWqQEqNf/D5DcWWFPqEmHpk7fFGY0SpAU5leJtkFRFlXunXjHfgrHFZMO0Ev
-	Me5emyJDdICbPIID72WA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qlu5wiWCwT3FObxPX65QwVSHCFXLKHLkkkVCkw/lGuo=; b=ddbM0ZQjWMP+hJ
+	S96Iiq9kK6IxNx/6hQ8aoshM5AjP2pF7FSShCMNrR3Pa8aJ05ZB+UgLCwANhU5iHqww1TZDAi32EC
+	ZNsy9Fu8YSjQwzUW+gDcItFgXg8m0lyD5UwRZrjxaj4CKw6WQ5vo6GeQY7KmVCVb7Z0YbifwoTDr1
+	hEObkNb9LvasHQpWbO61Db/64bnPJK/QC2M4cYExpP83iXUHF9INyTLoVrE0YbInQhcntdinumHNu
+	INfQ8nO2rCKmqmNiPHF3sA7TYMsmTftT5j9oARFuPBNK1XaxZ3XNLcHS5bO8D06DdgEzr62n8XQ03
+	NzW632RtqE5uQ834+FjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpRLi-00000008aro-069C;
-	Wed, 27 Mar 2024 11:21:42 +0000
+	id 1rpRLj-00000008asX-3Oxj;
+	Wed, 27 Mar 2024 11:21:43 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpRLe-00000008apu-0JWT;
+	id 1rpRLe-00000008apv-0mDn;
 	Wed, 27 Mar 2024 11:21:39 +0000
 Received: from i53875aaf.versanet.de ([83.135.90.175] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rpRLc-0006Vr-IZ; Wed, 27 Mar 2024 12:21:36 +0100
+	id 1rpRLc-0006Vr-TT; Wed, 27 Mar 2024 12:21:36 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	quentin.schulz@theobrona-systems.com,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/2] arm64: dts: rockchip: enable gpu on rk3588-jaguar
-Date: Wed, 27 Mar 2024 12:21:19 +0100
-Message-Id: <20240327112120.1181570-1-heiko@sntech.de>
+Subject: [PATCH 2/2] arm64: dts: rockchip: enable gpu on rk3588-tiger
+Date: Wed, 27 Mar 2024 12:21:20 +0100
+Message-Id: <20240327112120.1181570-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240327112120.1181570-1-heiko@sntech.de>
+References: <20240327112120.1181570-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_042138_151185_F1B5CACC 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240327_042138_451160_39871DF8 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,19 +65,19 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Enable the mali gpu node and add the board-specific supply-regulator.
+Enable the mali gpu node and add the som-specific supply-regulator.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 5 +++++
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index b564c7494878..d422bab41b82 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -253,6 +253,11 @@ mdot2e-w-disable2-n-hog {
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index 6417c24f2e8e..78f5bbddabba 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -155,6 +155,11 @@ &eth0_pins
+ 	snps,reset-delays-us = <0 10000 100000>;
  };
  
 +&gpu {
@@ -83,9 +85,9 @@ index b564c7494878..d422bab41b82 100644
 +	status = "okay";
 +};
 +
- &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
- 	status = "okay";
+ &i2c1 {
+ 	pinctrl-0 = <&i2c1m0_xfer>;
+ };
 -- 
 2.39.2
 
