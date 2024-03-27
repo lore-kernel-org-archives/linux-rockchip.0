@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B8BC54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 17:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D20C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 17:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VyAQEIOovOGN6rZZZ5fjvGGfsleRtL/LpzOCHQxa3Ds=; b=oOQ8Ob/lGtbNdXb+WbzWPkKjN/
-	C3gjyLVmHbP8YRYyKieVZqJXNJYDKijaS6rpO+QPhXRfdtIByCcLBHzLs59+d133Ze1XQKPDBXvTp
-	mSuk0dhRCUdJfcoqcBFOID0xlLUf8z6X9QTUHPbPi+waGb/b8ZJDJHPtx21eZZGiCs7VEsbly818c
-	9FMchs3O5/XxpqUfiBFuMCRWKmEG35fTCWBO7syznJxKZ9x7/zv/mzJzx0qIvj1oRtyNAV4HR5GTv
-	Q55VASxcnqEPTIqLBY63AtYsfWGBhkyp+D0AujGFe0F22Ejb1RHY0KkSZxi0gT5p5bidtA//Om2ZR
-	qWH1RBuA==;
+	bh=5ZL4KWvUhsJ39mP13+z6QmhczWtX9OphFxkkyfYUVIY=; b=oyRBbrKvmyfhKAnqBfWPS1iwH1
+	8C79eYYRW640EVjqyVU2SfJyLMzD8kTzOws/tQdSprkfqGvYpBTDgx3NtOT3Uk64OLd+f64J/Sa8f
+	bO1bvQMZhjlF8a2fIIZBSunmkQCnU970KUr1+GANMx3wE9aIGtsszfJoWYVp7IUqF3jo9u7m+Ax56
+	9VCNe2Ycz9gyyVcEg+5TApZn6ORsrRskT37k2oaGZw81OQdc2f4x31DpyMxNMI22tBLmDQkLpBzqa
+	HM+CVv7DpshPx8URvV2Uo6GY45IpCWCfN9ncm1G/pzeINvl5tleeqWp3WQXj+LG6LQzb75PWh1dAI
+	N2IaYcAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpX02-0000000AHmY-10QZ;
-	Wed, 27 Mar 2024 17:23:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rpXKU-0000000ALZt-2Vg7;
+	Wed, 27 Mar 2024 17:44:50 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpWzu-0000000AHjm-0EWk;
-	Wed, 27 Mar 2024 17:23:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1A52360C3E;
-	Wed, 27 Mar 2024 17:23:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FA95C433C7;
-	Wed, 27 Mar 2024 17:23:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711560212;
-	bh=IVW7vlTiLrTDILy6sOFcmkVPU3+mDVNBvceJINH+rOM=;
+	id 1rpXKQ-0000000ALYX-2EtR;
+	Wed, 27 Mar 2024 17:44:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711561481;
+	bh=CXkByOqBPbKZe9eVXPJpPOkJ1DM+X1hSruvjT3Mg1VE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XloCsd3HB0EhyIQa5CzYWfgKyeewc6Oqo0by9UfFEbxWZIexiepINomz0U7NH5PpD
-	 F7bO68lQDu8aBGYCYKPh66JaFzTlN2DyebgDzfYB4hNllLQDTQQJxjeyQ5rsGCWop3
-	 NY2JuvbsjVzpVoLUX2m4D3n/TPYD45DL2vRUvg0QtaVGIeoGYg/860IfICZRzrBHmW
-	 swdOfcf5VB1xJkpsYGQ4LUKJzG0fsn5jzUqOvxKvJVukcS+rdwwTX6aVBmNFHsvWrP
-	 UykPBL0SCRFrQXScdsu6Vh8CVXQmMixz4lSY0QfeN8TIFNjWADxiNWPKZsetBKIVXd
-	 wUw//P4t3xOXQ==
-Date: Wed, 27 Mar 2024 17:23:26 +0000
-From: Conor Dooley <conor@kernel.org>
+	b=d8ARsdobC7J6xJrdjCncvaR+KU/sXFNu6mJhI5mDtxctuZu9QudjRK2BmK8ZtnH7T
+	 p0Q3c8kSjTVaeWztANfGa5XdFaEaIoB6UK1Oe3Tsg7BUl5qTTkpcXneyDBBRGQzNHr
+	 kwAr6/51FLy9NKOdXxDZhgNvhDjv/rRWVnPpmbHbczYs6r+HRP3N2TEfe50ivZkXq2
+	 v86WUfr46Sin8Jwe3Hew/vIfpapkgAL0M1DNL8NI0S9I6QRYF7bBva+Aj4TgP2MZSr
+	 OQbvV/jG5Iv1UymaCsE9/lLxhkA//H2quyB5y4DrD+jZrceJO0VZVp1cfs8WQj5mrz
+	 bS2sRQVe8YVbA==
+Received: from mercury (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id C206F3780C13;
+	Wed, 27 Mar 2024 17:44:41 +0000 (UTC)
+Received: by mercury (Postfix, from userid 1000)
+	id 61A9810608D9; Wed, 27 Mar 2024 18:44:41 +0100 (CET)
+Date: Wed, 27 Mar 2024 18:44:41 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-Cc: linux-kernel@vger.kernel.org,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Shreeya Patel <shreeya.patel@collabora.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	iommu@lists.linux.dev
-Subject: Re: [PATCH v2 1/2] media: =?utf-8?Q?dt-bin?=
- =?utf-8?Q?ding=3A_media=3A_Document_rk3588=E2=80=99s?= VEPU121
-Message-ID: <20240327-doze-uncheck-475f3feaee57@spud>
+Cc: linux-kernel@vger.kernel.org, 
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+	Dragan Simic <dsimic@manjaro.org>, Shreeya Patel <shreeya.patel@collabora.com>, 
+	Chris Morgan <macromorgan@hotmail.com>, Andy Yan <andy.yan@rock-chips.com>, 
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] media: dt-binding: media: Document =?utf-8?Q?r?=
+ =?utf-8?B?azM1ODjigJlz?= VEPU121
+Message-ID: <slcatcuemy67vzpffpkfae3nl6cspl2i552reg5kfb2kiqizph@6mizgczdxaoq>
 References: <20240327134115.424846-1-linkmauve@linkmauve.fr>
  <20240327134115.424846-2-linkmauve@linkmauve.fr>
 MIME-Version: 1.0
 In-Reply-To: <20240327134115.424846-2-linkmauve@linkmauve.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_102334_347999_5A3EA1B0 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20240327_104446_922311_37F71D6B 
+X-CRM114-Status: GOOD (  18.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +79,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3248226203199302184=="
+Content-Type: multipart/mixed; boundary="===============1238601225298297486=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3248226203199302184==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="4zuSRA0OEooBf1eF"
+--===============1238601225298297486==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mtzkc6b6fd7hw3mr"
 Content-Disposition: inline
 
 
---4zuSRA0OEooBf1eF
+--mtzkc6b6fd7hw3mr
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+
+Hi,
 
 On Wed, Mar 27, 2024 at 02:41:11PM +0100, Emmanuel Gil Peyrot wrote:
 > This encoder-only device is present four times on this SoC, and should
@@ -112,13 +109,12 @@ On Wed, Mar 27, 2024 at 02:41:11PM +0100, Emmanuel Gil Peyrot wrote:
 > [1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
 >=20
 > Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Thanks,
-Conor.
-
 > ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
 >  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml   | 8 ++++++--
 >  1 file changed, 6 insertions(+), 2 deletions(-)
 >=20
@@ -146,21 +142,30 @@ Conor.
 > 2.44.0
 >=20
 
---4zuSRA0OEooBf1eF
+--mtzkc6b6fd7hw3mr
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZgRWDgAKCRB4tDGHoIJi
-0lutAP9RUO+UBR6Pi5FROQ2xaLNqi5TaQoaK43MSDUy1PTIC0AEA7wsfYNyJUltg
-R8OsUeBnoheFQXxeCQ5knEZaXqMNKQ0=
-=eiO7
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmYEWwEACgkQ2O7X88g7
++ppeUw/7BmJGGQaOaqtdWI5UfDshWNPMP1M3soxWvm414UxmhcM70ho2GpVfXy5H
+d3d9z6cviDdZpV/n5/jKxIX6V3HQRfiErMOuRuXNucF5xhclurKvjEPAOlHF7iJD
+wc1JGWXHTNeIiQTHQrXy5xtXoNOPkasAZlJhl94HTCdwWCUPTMzIT/XRHZctHw76
+gl7XK72P+Zf0a01iwoeMuT7mRwc2GPq7wG/tHCHKH9b5rjc4PsIIbCTvZqFnNvGT
+XaSLv51JJrv4r1L5h90ztEPfpzmSJzjT8nCMRaCardIVyWmBVZqRyRvu6XBZBuTn
+AwpevquLQ0K8ic73rmR0jSRJkYVG9pCuH4gtk9F39+Qe3f3p9oT6ZBi33cdpGdgh
+nD28w6nH2QETds93j8EzMiBeZnTClEz+xgmaxYFCEk4Nuaok8qWfzIzg5iFvKIDw
+rOxHoozydZvj9eQvt7lVUeuTzedT+JAZkn3XTSw9QudfzvY+TRE4nY4aJnUpxUEe
+D0VFzsVn45/zBTsxTUFLw8XFYyW5KEujj5m+vRbACQpYfhk53Vf5r/jZzHKjB9gZ
+AIUH3rEuDo82oAnYPrYhjGOKbNNSX74lpOCienrfJu2OjLE/4suGKRGkW7TbFU8C
+9Qqv38fDYHS5BEMbLzY790wtqJBYL5NDDEtTncDqR4HcllE12m0=
+=2t0W
 -----END PGP SIGNATURE-----
 
---4zuSRA0OEooBf1eF--
+--mtzkc6b6fd7hw3mr--
 
 
---===============3248226203199302184==
+--===============1238601225298297486==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -171,5 +176,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3248226203199302184==--
+--===============1238601225298297486==--
 
