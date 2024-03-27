@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA75C54E67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 09:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CE0C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 09:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DJGYLRQ4aaEwzPl6qF5fX6b6EdhS4hKPx02IoPLhpFI=; b=Wi3KZfeOp3Ck8A
-	liAc2aPsy0flsYKBPoQk4GFEfcCNy/UMmLLDgtN8F+/FQdwmegoYMX62P9YRaAdTH4S/hIdVJCuJl
-	fV55qZw0NJYa8jqOovb0a8qImXhKifv6jxSvjtysB8Hvm92NXWlf7wk5qSyAOOzgPa9Bq7rOUrmoC
-	52kBaKkwN7etMWUv8cRmzRPUWd8mwTfebEadNSPuwrjRAu8e2s51pu+c4QZyobdnfjJiJ+vqVHqA1
-	78FufgctH+bnGLfoZq1ClOe7VwWIJ8UrxWamKMOwWaG1wm4IHR/ZLWfHL1VoQUV/u5zU9W7bVANgk
-	KfVwQBdRy8w/O2DTvKZQ==;
+	List-Owner; bh=GNbDjv4OiE9YnG9DjSV8XgAvX9d4dYdKib7PJ8KfxhY=; b=eyGJa28nkKSNtv
+	HiCeGiF/gwWSwftApwChqcqhaKw5Aoo8dX2o6oGYxg1HJrD0aioKABe/XnAEOYlFIiecKbmcIMYRr
+	qSNfa4XJa5Il3jpoAnyhTHSDHJZG1p4TlqOQimyLQWj/d/ecM9QUock0Z4jsLtoU4Ia4PFoZ6a9L9
+	j2vZE4drKQ8aeIcPjJkoYvuAEzGl98jWQE4DkuwvtG2A1lIsvYC++6lE6U3BN+KYqEbiShm7JFlCS
+	TS63x0j9kYEuK81uERosqh6UdU63ah+vkvNdtws8GUd4Z4FeKPNx27JpFAAJcVUNYwxF/B6tHmzkY
+	sjytdRYlskgcXJ5AT5Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPNl-00000008Be8-2uKW;
-	Wed, 27 Mar 2024 09:15:41 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1rpPO3-00000008BoA-0bgh;
+	Wed, 27 Mar 2024 09:15:59 +0000
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpPNQ-00000008BTz-1Si2
+	id 1rpPNs-00000008Bh7-0Aiw
 	for linux-rockchip@lists.infradead.org;
-	Wed, 27 Mar 2024 09:15:22 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6ea8a0d1a05so439890b3a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 27 Mar 2024 02:15:20 -0700 (PDT)
+	Wed, 27 Mar 2024 09:15:51 +0000
+Received: by mail-il1-x12f.google.com with SMTP id e9e14a558f8ab-3662feb90a8so46003735ab.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 27 Mar 2024 02:15:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711530920; x=1712135720; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1711530946; x=1712135746; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4+s99ic6a4xby36ko4cSNl1g4BMNR39F6N7WDhYUFLA=;
-        b=ZU4UGx4PH3pMTYL/ExW4gXeSclNBCSIhb6JcY36G3M+c9YY17lOwUyJm1Qqtq0YxV5
-         w4LHonBHpvoQVz72v4OS8rWgwn5g6OL1IQrdagQwp/Og4I4i9tVsxGtWAGMr6Qo1iD1r
-         0nD0f+XYEjZBjLSLnOB27E80BfgROX07khZw/aECdYjzLCWpdmaQjNxixQncOU0H+/kS
-         1TU1iAqhrRpWrkbZo5I58MTsCsG9FvLENRdhvnBiNDzUwUq6Ocye2sgTZCLYCl/IWQUK
-         DA7b7Cawz+QrJqnwsnuP+mQodPTRdh/aBHsBXwofdXgorjfMx+bPeUDW5B+0qW1d5otZ
-         X6ew==
+        bh=oDRwBHiRbqQEPbqIMMuwLPfNBgzS7ecnVO7qDgoOiM4=;
+        b=S8+9/ej052pSlYIUwSdql0TDVFwJ8JY32F9LG/wvlwu5EhlQ3z1qfczCoUpTfFGjcF
+         0qv7FyfNZUjf1eilWeILOsCjM/2FkRnayP1lrpPd6pO/1OHcT/amv7q/KIvhoUv9+fYq
+         yl5Uij8LCgVGFciDRUkgln4xdF6H+WKJZRyDgdAq6JtY8ubxDyIbck1aGrFFbn5R5wdr
+         CqHsC84QHmXgt6V1v4qh5JQAlXOUswQoJGEmdpmuEvtyHwXVPscszRFpHHEHcGnRcrU4
+         So792xN0qV5anOMN3rDv9i/MDnMKqTZfXQJ5PSJ19HGCZCDQBgbM5n7MggndtZApAGkG
+         d1uA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711530920; x=1712135720;
+        d=1e100.net; s=20230601; t=1711530946; x=1712135746;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4+s99ic6a4xby36ko4cSNl1g4BMNR39F6N7WDhYUFLA=;
-        b=RcSKwjkFmd9dPgAtPPKK14FnqeVBeavou4MShrBQUaYp6JJIFQNcbNzHgTHwzXEYHw
-         Z1+z3Zwo3qV20CJg0Xdw2ev0dwKOwHemTqpGs3GKzAgu2mcq/wZ+47iX+UFJySF9xJtH
-         kJRUqYe8nFRg6r2BliTLdwhyYrWVOoQSokAZSVGUyR2hcot4wD6ym3StGT3hUd/XIRS0
-         ts4eVMs/5h4upz2UmH/uXhqY3dtzkkuCSpv5JiwMULiMzWQw1Rx4rkgTPfhKbgF0IeLD
-         ufXr1djbkQCV5dD1+CaI3XPXppKbv524aTbduB9eDf259mEsgiCQLAVYx6/y6pDqwcwU
-         kB8g==
-X-Forwarded-Encrypted: i=1; AJvYcCVgnHVCHURcaxuUrvKqEsLBMyBMQ0PGawSwcAnBIh9tiItubI3OtY/Kjzqq39EyHqgoHB64XraYK5zJugLBKNvFK6NJ2LLJjafwwGNLIRchIgTX
-X-Gm-Message-State: AOJu0Yz1F9wnonTYIGxB7BJ3gwXz7GGskcHbyOPKs1/c5alOVOlTUgn2
-	Mckj0tOQvjsvV6dPkiEJTrFqGcT7KHx0Syq3tT0N5+wiYG4FzfdgaqOtZ7h7xw==
-X-Google-Smtp-Source: AGHT+IGGlNwqqhJyPDs53FUp8HnF8MxmatY5hAsgpFI+AE8YxYjYhWVdUxUP+eXF583iNe5GoKe6mw==
-X-Received: by 2002:a05:6a21:32a4:b0:1a3:63cd:5262 with SMTP id yt36-20020a056a2132a400b001a363cd5262mr5531403pzb.26.1711530919209;
-        Wed, 27 Mar 2024 02:15:19 -0700 (PDT)
+        bh=oDRwBHiRbqQEPbqIMMuwLPfNBgzS7ecnVO7qDgoOiM4=;
+        b=esOQwz7WVYnZqjfxJvkws7FrRyiktNK/UKZ4RqVbulPTd43MU7N5rd7JfZYQLNUt6d
+         K/qfnWRy7C8rW9sYsF9r/UisDKThNiud15LfH3ugh7TrXKrwZiyaQlMibZyU/VSMKnbe
+         aivxCfnGd0rK7dORdlL23d33agvFY5Egg+sDc8bEvrIJyrnnsateDLdsAJT39Tvtne+n
+         sL1KjahyBv4NVqv3Gms1kVbeY4xLsxK2FyGIuckRCJ87Ip9DnVEGgYey/x64gkz0Kt7P
+         Er4p9Xo1wBw3fZ9LyWmMbV53rrziEaFU+ybyUdtolh+jMoPbb3bhXcZmhQzIT8GJ32nC
+         jx5w==
+X-Forwarded-Encrypted: i=1; AJvYcCVrH7OUUv/J7RrNB0rdHwejklpu+95jJX8qeetFgPJHE4YWy5dLR36bPMCd3GFffjFzLFOZByTZlVIRU6PwJsNxfHCF1pOjc4zz+6oyLxQ8oGll
+X-Gm-Message-State: AOJu0YzcQ0JPRlEACNN9OL6rUBCktiSVPbpzZfIglZNsBaofXNEaNDVP
+	o+lSNwt62pdjoYW9BSw/ZSNZ3xpkGPaoJ7muw00Opyfu0q+C4eHmua0M2bZcRw==
+X-Google-Smtp-Source: AGHT+IEufUNP1l3Yj4uUlYleyaGx50CKkBEG8OSB8cxTtNznEki2vTEQUdAKopuRntEIfoYHhGsePw==
+X-Received: by 2002:a92:c8d0:0:b0:368:959d:e19b with SMTP id c16-20020a92c8d0000000b00368959de19bmr3243682ilq.18.1711530945705;
+        Wed, 27 Mar 2024 02:15:45 -0700 (PDT)
 Received: from [127.0.1.1] ([120.60.52.77])
-        by smtp.gmail.com with ESMTPSA id h190-20020a6383c7000000b005dc4fc80b21sm8673871pge.70.2024.03.27.02.15.01
+        by smtp.gmail.com with ESMTPSA id h190-20020a6383c7000000b005dc4fc80b21sm8673871pge.70.2024.03.27.02.15.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 02:15:18 -0700 (PDT)
+        Wed, 27 Mar 2024 02:15:44 -0700 (PDT)
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Date: Wed, 27 Mar 2024 14:43:35 +0530
-Subject: [PATCH v12 6/8] PCI: dwc: ep: Rename dw_pcie_ep_init_complete() to
- dw_pcie_ep_init_registers()
+Date: Wed, 27 Mar 2024 14:43:36 +0530
+Subject: [PATCH v12 7/8] PCI: dwc: ep: Call dw_pcie_ep_init_registers() API
+ directly from all glue drivers
 MIME-Version: 1.0
-Message-Id: <20240327-pci-dbi-rework-v12-6-082625472414@linaro.org>
+Message-Id: <20240327-pci-dbi-rework-v12-7-082625472414@linaro.org>
 References: <20240327-pci-dbi-rework-v12-0-082625472414@linaro.org>
 In-Reply-To: <20240327-pci-dbi-rework-v12-0-082625472414@linaro.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -99,24 +99,23 @@ Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, 
  Niklas Cassel <cassel@kernel.org>, linux-arm-kernel@axis.com, 
  linux-rockchip@lists.infradead.org, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Frank Li <Frank.Li@nxp.com>
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4791;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=10284;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=V0Mzth2vl1K0DFypRpWN9TY0MnmoC5wp8l5W1GdqahU=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBmA+NJlxhtcI5x9HWzPDSMHMbS7UUf3ccej2MOr
- Gzs0KQ0lNqJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZgPjSQAKCRBVnxHm/pHO
- 9RqICACXtyJ4U4bh9LLyWGD3MnW+UaIlaEoKFtd4l7YOpLPXe+ZOCiCG2SqP2VwPGBQB0AYX3Xi
- 0wPUXq/TdoUXUgXkKzNjY2AdItwj+kDbJPVrMu6Wf4VyxDfNwM/X53E7QMmUBynilnn6s4wTATg
- o/NhZDNTBFFSDkRrLYdPeZdAG+TryXFOBkadhD1Phx/6iy4GOTCQajvuGi9yvDHWu0YTtffO47l
- ixzD8lGfiQBguL3irb2Oi4TIbZSdC2YOVYto+eG7SU/TTU8cH6O7xzgNj1EmVpx0lwqRohk01PL
- oc0BF2SEjA/fL1yk3YTlMDuWlzBOmS0ZGJTw6wchBfxS/Wxy
+ bh=IONhCw0ebndFj0D0FHcgfPfYalCU00+jRBsWXR5KqGc=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBmA+NKRIxoOZAmhOTG3obk72yNOH9WGwAGM6Eoo
+ 1dkTQ7/BT6JATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZgPjSgAKCRBVnxHm/pHO
+ 9RbMB/48Y8jv1OxN1gIaWLcu/uaKFJBY4CHxlIh9i3mebEFZsvWoNV8G1PORQcVluBv5mQah3I/
+ fU4JJxS59jAOW+fFQLAomBCJ+mx1GUePHTUtV0dTYufmGDLC7SCarj2XiNAV4ZeVaN+qS2Vjhoy
+ ugrzVz7Amwa/BOvwg+o72nOizguiOf46jvBL0Fo4iNxijFnASV2ZhuE5o4vgCQdut2F8VM9g1nB
+ lA8Nh3fSXhkYwIs5cJQga2Sh2t9bTMDs9whZJv5WB7sEwm5mUgrtIY4McS0ljTBdo+nXkSzHj8d
+ 97B1h11bPrN9Ws7Ha5tb/eEeg+B8L5EQYvnYSMdoGyBKNaTo
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_021520_560240_5E3F395E 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20240327_021548_263799_FDCC1B70 
+X-CRM114-Status: GOOD (  20.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,113 +132,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The goal of the dw_pcie_ep_init_complete() API is to initialize the DWC
-specific registers post registering the controller with the EP framework.
+Currently, dw_pcie_ep_init_registers() API is directly called by the glue
+drivers requiring active refclk from host. But for the other drivers, it is
+getting called implicitly by dw_pcie_ep_init(). This is due to the fact
+that this API initializes DWC EP specific registers and that requires an
+active refclk (either from host or generated locally by endpoint itsef).
 
-But the naming doesn't reflect its functionality and causes confusion. So,
-let's rename it to dw_pcie_ep_init_registers() to make it clear that it
-initializes the DWC specific registers.
+But, this causes a discrepancy among the glue drivers. So to avoid this
+confusion, let's call this API directly from all glue drivers irrespective
+of refclk dependency. Only difference here is that the drivers requiring
+refclk from host will call this API only after the refclk is received and
+other drivers without refclk dependency will call this API right after
+dw_pcie_ep_init().
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+With this change, the check for 'core_init_notifier' flag can now be
+dropped from dw_pcie_ep_init() API. This will also allow us to remove the
+'core_init_notifier' flag completely in the later commits.
+
+Reviewed-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/pci/controller/dwc/pcie-designware-ep.c | 14 +++++++-------
- drivers/pci/controller/dwc/pcie-designware.h    |  4 ++--
- drivers/pci/controller/dwc/pcie-qcom-ep.c       |  2 +-
- drivers/pci/controller/dwc/pcie-tegra194.c      |  2 +-
- 4 files changed, 11 insertions(+), 11 deletions(-)
+ drivers/pci/controller/dwc/pci-dra7xx.c           |  7 +++++++
+ drivers/pci/controller/dwc/pci-imx6.c             |  8 ++++++++
+ drivers/pci/controller/dwc/pci-keystone.c         |  9 +++++++++
+ drivers/pci/controller/dwc/pci-layerscape-ep.c    |  7 +++++++
+ drivers/pci/controller/dwc/pcie-artpec6.c         | 13 ++++++++++++-
+ drivers/pci/controller/dwc/pcie-designware-ep.c   | 22 ----------------------
+ drivers/pci/controller/dwc/pcie-designware-plat.c |  9 +++++++++
+ drivers/pci/controller/dwc/pcie-keembay.c         | 16 +++++++++++++++-
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c       | 12 +++++++++++-
+ drivers/pci/controller/dwc/pcie-uniphier-ep.c     | 13 ++++++++++++-
+ 10 files changed, 90 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-index eeff7f1ff8f1..761d3012a073 100644
---- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-@@ -674,14 +674,14 @@ static unsigned int dw_pcie_ep_find_ext_capability(struct dw_pcie *pci, int cap)
+diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
+index 0e406677060d..395042b29ffc 100644
+--- a/drivers/pci/controller/dwc/pci-dra7xx.c
++++ b/drivers/pci/controller/dwc/pci-dra7xx.c
+@@ -467,6 +467,13 @@ static int dra7xx_add_pcie_ep(struct dra7xx_pcie *dra7xx,
+ 		return ret;
+ 	}
+ 
++	ret = dw_pcie_ep_init_registers(ep);
++	if (ret) {
++		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++		dw_pcie_ep_deinit(ep);
++		return ret;
++	}
++
+ 	return 0;
  }
  
- /**
-- * dw_pcie_ep_init_complete - Complete DWC EP initialization
-+ * dw_pcie_ep_init_registers - Initialize DWC EP specific registers
-  * @ep: DWC EP device
-  *
-- * Complete the initialization of the registers (CSRs) specific to DWC EP. This
-- * API should be called only when the endpoint receives an active refclk (either
-- * from host or generated locally).
-+ * Initialize the registers (CSRs) specific to DWC EP. This API should be called
-+ * only when the endpoint receives an active refclk (either from host or
-+ * generated locally).
-  */
--int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
-+int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
+diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+index 99a60270b26c..8d28ecc381bc 100644
+--- a/drivers/pci/controller/dwc/pci-imx6.c
++++ b/drivers/pci/controller/dwc/pci-imx6.c
+@@ -1123,6 +1123,14 @@ static int imx6_add_pcie_ep(struct imx6_pcie *imx6_pcie,
+ 		dev_err(dev, "failed to initialize endpoint\n");
+ 		return ret;
+ 	}
++
++	ret = dw_pcie_ep_init_registers(ep);
++	if (ret) {
++		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++		dw_pcie_ep_deinit(ep);
++		return ret;
++	}
++
+ 	/* Start LTSSM. */
+ 	imx6_pcie_ltssm_enable(dev);
+ 
+diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+index 844de4418724..81ebac520650 100644
+--- a/drivers/pci/controller/dwc/pci-keystone.c
++++ b/drivers/pci/controller/dwc/pci-keystone.c
+@@ -1286,6 +1286,13 @@ static int ks_pcie_probe(struct platform_device *pdev)
+ 		ret = dw_pcie_ep_init(&pci->ep);
+ 		if (ret < 0)
+ 			goto err_get_sync;
++
++		ret = dw_pcie_ep_init_registers(&pci->ep);
++		if (ret) {
++			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++			goto err_ep_init;
++		}
++
+ 		break;
+ 	default:
+ 		dev_err(dev, "INVALID device type %d\n", mode);
+@@ -1295,6 +1302,8 @@ static int ks_pcie_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
++err_ep_init:
++	dw_pcie_ep_deinit(&pci->ep);
+ err_get_sync:
+ 	pm_runtime_put(dev);
+ 	pm_runtime_disable(dev);
+diff --git a/drivers/pci/controller/dwc/pci-layerscape-ep.c b/drivers/pci/controller/dwc/pci-layerscape-ep.c
+index 1f6ee1460ec2..9eb2233e3d7f 100644
+--- a/drivers/pci/controller/dwc/pci-layerscape-ep.c
++++ b/drivers/pci/controller/dwc/pci-layerscape-ep.c
+@@ -279,6 +279,13 @@ static int __init ls_pcie_ep_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
++	ret = dw_pcie_ep_init_registers(&pci->ep);
++	if (ret) {
++		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++		dw_pcie_ep_deinit(&pci->ep);
++		return ret;
++	}
++
+ 	return ls_pcie_ep_interrupt_init(pcie, pdev);
+ }
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-artpec6.c b/drivers/pci/controller/dwc/pcie-artpec6.c
+index 9ed0a9ba7619..a6095561db4a 100644
+--- a/drivers/pci/controller/dwc/pcie-artpec6.c
++++ b/drivers/pci/controller/dwc/pcie-artpec6.c
+@@ -441,7 +441,18 @@ static int artpec6_pcie_probe(struct platform_device *pdev)
+ 
+ 		pci->ep.ops = &pcie_ep_ops;
+ 
+-		return dw_pcie_ep_init(&pci->ep);
++		ret = dw_pcie_ep_init(&pci->ep);
++		if (ret)
++			return ret;
++
++		ret = dw_pcie_ep_init_registers(&pci->ep);
++		if (ret) {
++			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++			dw_pcie_ep_deinit(&pci->ep);
++			return ret;
++		}
++
++		break;
+ 	default:
+ 		dev_err(dev, "INVALID device type %d\n", artpec6_pcie->mode);
+ 	}
+diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
+index 761d3012a073..2063cf2049e5 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-ep.c
++++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
+@@ -821,7 +821,6 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	struct device *dev = pci->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct device_node *np = dev->of_node;
+-	const struct pci_epc_features *epc_features;
+ 
+ 	INIT_LIST_HEAD(&ep->func_list);
+ 
+@@ -867,29 +866,8 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 		goto err_exit_epc_mem;
+ 	}
+ 
+-	if (ep->ops->get_features) {
+-		epc_features = ep->ops->get_features(ep);
+-		if (epc_features->core_init_notifier)
+-			return 0;
+-	}
+-
+-	/*
+-	 * NOTE:- Avoid accessing the hardware (Ex:- DBI space) before this
+-	 * step as platforms that implement 'core_init_notifier' feature may
+-	 * not have the hardware ready (i.e. core initialized) for access
+-	 * (Ex: tegra194). Any hardware access on such platforms result
+-	 * in system hang.
+-	 */
+-	ret = dw_pcie_ep_init_registers(ep);
+-	if (ret)
+-		goto err_free_epc_mem;
+-
+ 	return 0;
+ 
+-err_free_epc_mem:
+-	pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
+-			      epc->mem->window.page_size);
+-
+ err_exit_epc_mem:
+ 	pci_epc_mem_exit(epc);
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-designware-plat.c b/drivers/pci/controller/dwc/pcie-designware-plat.c
+index 778588b4be70..ca9b22e654cd 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-plat.c
++++ b/drivers/pci/controller/dwc/pcie-designware-plat.c
+@@ -145,6 +145,15 @@ static int dw_plat_pcie_probe(struct platform_device *pdev)
+ 
+ 		pci->ep.ops = &pcie_ep_ops;
+ 		ret = dw_pcie_ep_init(&pci->ep);
++		if (ret)
++			return ret;
++
++		ret = dw_pcie_ep_init_registers(&pci->ep);
++		if (ret) {
++			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++			dw_pcie_ep_deinit(&pci->ep);
++		}
++
+ 		break;
+ 	default:
+ 		dev_err(dev, "INVALID device type %d\n", dw_plat_pcie->mode);
+diff --git a/drivers/pci/controller/dwc/pcie-keembay.c b/drivers/pci/controller/dwc/pcie-keembay.c
+index 5e8e54f597dd..b2556dbcffb5 100644
+--- a/drivers/pci/controller/dwc/pcie-keembay.c
++++ b/drivers/pci/controller/dwc/pcie-keembay.c
+@@ -396,6 +396,7 @@ static int keembay_pcie_probe(struct platform_device *pdev)
+ 	struct keembay_pcie *pcie;
+ 	struct dw_pcie *pci;
+ 	enum dw_pcie_device_mode mode;
++	int ret;
+ 
+ 	data = device_get_match_data(dev);
+ 	if (!data)
+@@ -430,11 +431,24 @@ static int keembay_pcie_probe(struct platform_device *pdev)
+ 			return -ENODEV;
+ 
+ 		pci->ep.ops = &keembay_pcie_ep_ops;
+-		return dw_pcie_ep_init(&pci->ep);
++		ret = dw_pcie_ep_init(&pci->ep);
++		if (ret)
++			return ret;
++
++		ret = dw_pcie_ep_init_registers(&pci->ep);
++		if (ret) {
++			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++			dw_pcie_ep_deinit(&pci->ep);
++			return ret;
++		}
++
++		break;
+ 	default:
+ 		dev_err(dev, "Invalid device type %d\n", pcie->mode);
+ 		return -ENODEV;
+ 	}
++
++	return 0;
+ }
+ 
+ static const struct keembay_pcie_of_data keembay_pcie_rc_of_data = {
+diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+index de4bdfaecab3..e155a905fb4f 100644
+--- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
++++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+@@ -416,6 +416,7 @@ static const struct dw_pcie_ep_ops pcie_ep_ops = {
+ static int rcar_gen4_add_dw_pcie_ep(struct rcar_gen4_pcie *rcar)
  {
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	struct dw_pcie_ep_func *ep_func;
-@@ -801,7 +801,7 @@ int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
+ 	struct dw_pcie_ep *ep = &rcar->dw.ep;
++	struct device *dev = rcar->dw.dev;
+ 	int ret;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_RCAR_GEN4_EP))
+@@ -424,8 +425,17 @@ static int rcar_gen4_add_dw_pcie_ep(struct rcar_gen4_pcie *rcar)
+ 	ep->ops = &pcie_ep_ops;
+ 
+ 	ret = dw_pcie_ep_init(ep);
+-	if (ret)
++	if (ret) {
+ 		rcar_gen4_pcie_ep_deinit(rcar);
++		return ret;
++	}
++
++	ret = dw_pcie_ep_init_registers(ep);
++	if (ret) {
++		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++		dw_pcie_ep_deinit(ep);
++		rcar_gen4_pcie_ep_deinit(rcar);
++	}
  
  	return ret;
  }
--EXPORT_SYMBOL_GPL(dw_pcie_ep_init_complete);
-+EXPORT_SYMBOL_GPL(dw_pcie_ep_init_registers);
+diff --git a/drivers/pci/controller/dwc/pcie-uniphier-ep.c b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+index 639bc2e12476..0e5e7344de48 100644
+--- a/drivers/pci/controller/dwc/pcie-uniphier-ep.c
++++ b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+@@ -399,7 +399,18 @@ static int uniphier_pcie_ep_probe(struct platform_device *pdev)
+ 		return ret;
  
- /**
-  * dw_pcie_ep_init - Initialize the endpoint device
-@@ -880,7 +880,7 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 	 * (Ex: tegra194). Any hardware access on such platforms result
- 	 * in system hang.
- 	 */
--	ret = dw_pcie_ep_init_complete(ep);
-+	ret = dw_pcie_ep_init_registers(ep);
- 	if (ret)
- 		goto err_free_epc_mem;
- 
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index 351d2fe3ea4d..f8e5431a207b 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -669,7 +669,7 @@ static inline void __iomem *dw_pcie_own_conf_map_bus(struct pci_bus *bus,
- #ifdef CONFIG_PCIE_DW_EP
- void dw_pcie_ep_linkup(struct dw_pcie_ep *ep);
- int dw_pcie_ep_init(struct dw_pcie_ep *ep);
--int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep);
-+int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep);
- void dw_pcie_ep_init_notify(struct dw_pcie_ep *ep);
- void dw_pcie_ep_deinit(struct dw_pcie_ep *ep);
- void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep);
-@@ -693,7 +693,7 @@ static inline int dw_pcie_ep_init(struct dw_pcie_ep *ep)
- 	return 0;
+ 	priv->pci.ep.ops = &uniphier_pcie_ep_ops;
+-	return dw_pcie_ep_init(&priv->pci.ep);
++	ret = dw_pcie_ep_init(&priv->pci.ep);
++	if (ret)
++		return ret;
++
++	ret = dw_pcie_ep_init_registers(&priv->pci.ep);
++	if (ret) {
++		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
++		dw_pcie_ep_deinit(&priv->pci.ep);
++		return ret;
++	}
++
++	return 0;
  }
  
--static inline int dw_pcie_ep_init_complete(struct dw_pcie_ep *ep)
-+static inline int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
- {
- 	return 0;
- }
-diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-index 59b1c0110288..3697b4a944cc 100644
---- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-@@ -463,7 +463,7 @@ static int qcom_pcie_perst_deassert(struct dw_pcie *pci)
- 	      PARF_INT_ALL_LINK_UP | PARF_INT_ALL_EDMA;
- 	writel_relaxed(val, pcie_ep->parf + PARF_INT_ALL_MASK);
- 
--	ret = dw_pcie_ep_init_complete(&pcie_ep->pci.ep);
-+	ret = dw_pcie_ep_init_registers(&pcie_ep->pci.ep);
- 	if (ret) {
- 		dev_err(dev, "Failed to complete initialization: %d\n", ret);
- 		goto err_disable_resources;
-diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-index 26ea2f8313eb..db043f579fbe 100644
---- a/drivers/pci/controller/dwc/pcie-tegra194.c
-+++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-@@ -1897,7 +1897,7 @@ static void pex_ep_event_pex_rst_deassert(struct tegra_pcie_dw *pcie)
- 	val = (upper_32_bits(ep->msi_mem_phys) & MSIX_ADDR_MATCH_HIGH_OFF_MASK);
- 	dw_pcie_writel_dbi(pci, MSIX_ADDR_MATCH_HIGH_OFF, val);
- 
--	ret = dw_pcie_ep_init_complete(ep);
-+	ret = dw_pcie_ep_init_registers(ep);
- 	if (ret) {
- 		dev_err(dev, "Failed to complete initialization: %d\n", ret);
- 		goto fail_init_complete;
+ static const struct uniphier_pcie_ep_soc_data uniphier_pro5_data = {
 
 -- 
 2.25.1
