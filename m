@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B36CC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 22:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8DDC54E67
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Mar 2024 22:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dIRAnI8PRuq/vegKenCsr+WVh4SAQ9/7SI2MdazA59s=; b=XPSnE33FKQGfH8
-	igPVoRL3ir1+D/Lex0513GukxrGjL/lnNHLso8/wTYS6BM8I3PxemDQ/tlFuwuQWJnviPDdi2yjAO
-	nTwDKd1Tq0MsGiTHHz/W0/zy539NE4c6HD9NxPS7O5StHb+wdkPEeXT1Ffbo99kQp38MAfNVLeSt9
-	8qieRmkhe/aw7BqTHhDEKymjprSvuGmk7Uv/sbJDa021nylFYy10s9dw7GLyOcJDP9hQiWoqVr1kH
-	OWnnpkcoZVz53sWeZqUrOZpPpFoAD3YvvJGW4N3gfqsyiTRnaeyyLws6FQdd8XBE2l8WZ/WhVMvSX
-	PAtIMUPElrocIC4Am1zg==;
+	List-Owner; bh=SWktDBN1u6hdPZ9BsDAA/50E0Ee+3CRO5ayiVIzHaDw=; b=2is0MZbYBVglh4
+	87rOp0x33Np8DTb4uiIte/sPnxuSt7TSRPojH4GxM6l/iw1FeN1ie6CWwE2Q/nEqD7nUeF0NqodKd
+	fu9NnUU5JOipeggCs9SkCp3zzr+/U9w57jQBFsSY47SFEFJziXijDctkb/UaWMKTTdAPL817TTTVq
+	6/PfeLuODhwaaUqroSZyj33mM8X/VuQrTCqY2sBJe8/LUmRBeNr5F2I5J/VVCu/pictvRqkgVsQ1h
+	uGQCm3pSVV4MFsH+BUG9ykPRGwb4bYdpete0UMJLiIvAqgmt99s6Ghx7dz2Perufv6ZqDP0m9fpRR
+	aOj2STrtc6rXeye1zVaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpc8Y-0000000BUDW-2dT9;
-	Wed, 27 Mar 2024 22:52:50 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rpc90-0000000BUTg-3GzS;
+	Wed, 27 Mar 2024 22:53:18 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rpc8J-0000000BU22-1uVx;
-	Wed, 27 Mar 2024 22:52:37 +0000
+	id 1rpc8p-0000000BUMo-3KnW;
+	Wed, 27 Mar 2024 22:53:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711579954;
-	bh=rwhs272FowK95SxyC91CTrbbo09Um+krIKee4Vn5TJg=;
+	s=mail; t=1711579986;
+	bh=sqhN02+ZEO+ko6LtC5zADXfc7A3LE/qm9zqb38Oaq8A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B19C45ztFV0AJt+YTkr6+YDXLX1CmjdgfbOO2aE/qBCw3p2P1DhImc9aPe70/deDj
-	 R/1e6B/i4kbrbH7HWR+VxQaazoBzkz/a/ezcjpGlTKxQOd4LQAbQu1602F7tFQktJs
-	 cyvhQnbE9y7jsPrRYV1mVoSKli+QGf8DtcN2wGtsbXkpN3OKHu/3Bmawj1Phk7835N
-	 DN8RpaMrL9TdJCeftz3QW+4bnrfiQHS9qMnvO0YmctNPKoU7f3j5YV5oqMZAw4wqCK
-	 dpZQ5pj0nOwq7WjQTZPfP2THL7hv1A8ZhzVHb68/kUSwKJrnyzPvRa23qz8dPpKjAQ
-	 a/0H7wPG8eJSQ==
+	b=caTsXPowXDRb4G9GIbmJvN/vTrUemSmke8KD9L2ybhniat5DqxfWRaB9xxS8PMsWF
+	 9CHi3Njx7ES35Vz8Y168f5r13bkzbMQaGt7IMq+4gpCbA4o+RAgFce9ClMJ9v+LZl7
+	 yXPHmQDfJ49Pxye2SubKl4jKeuOc1ZaHaEFB9viDGuNhAI4wPefPENjO/ZAOrnq90u
+	 6DofX0sKa7feG7JhNW3oJHv6RpGExf65bKu9NEsd5Z4KkQosaq5ZNhwTmOLKcx/KtF
+	 N2j9LPLECVUZK7xjEpq/QASY1Yv0JAx6HaGMyfjY+KB3Syrq2qMk3H8JA6kapuVNzm
+	 A51xkdbtiR7Pg==
 Received: from shreeya.shreeya (ec2-34-240-57-77.eu-west-1.compute.amazonaws.com [34.240.57.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: shreeya)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 4C6233782111;
-	Wed, 27 Mar 2024 22:52:21 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id BCE6B3782115;
+	Wed, 27 Mar 2024 22:52:57 +0000 (UTC)
 From: Shreeya Patel <shreeya.patel@collabora.com>
 To: heiko@sntech.de,
 	mchehab@kernel.org,
@@ -69,16 +69,17 @@ Cc: kernel@collabora.com,
 	linux-clk@vger.kernel.org,
 	linux-arm@lists.infradead.org,
 	Shreeya Patel <shreeya.patel@collabora.com>
-Subject: [PATCH v3 4/6] arm64: dts: rockchip: Add device tree support for HDMI RX Controller
-Date: Thu, 28 Mar 2024 04:20:55 +0530
-Message-Id: <20240327225057.672304-5-shreeya.patel@collabora.com>
+Subject: [PATCH v3 6/6] MAINTAINERS: Add entry for Synopsys DesignWare HDMI RX Driver
+Date: Thu, 28 Mar 2024 04:20:57 +0530
+Message-Id: <20240327225057.672304-7-shreeya.patel@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240327225057.672304-1-shreeya.patel@collabora.com>
 References: <20240327225057.672304-1-shreeya.patel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240327_155235_705836_25CF2881 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20240327_155308_896577_F9717B3B 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,193 +96,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add device tree support for Synopsys DesignWare HDMI RX
-Controller.
+Add an entry for Synopsys DesignWare HDMI Receiver Controller
+Driver.
 
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Co-developed-by: Dingxian Wen <shawn.wen@rock-chips.com>
-Signed-off-by: Dingxian Wen <shawn.wen@rock-chips.com>
 Signed-off-by: Shreeya Patel <shreeya.patel@collabora.com>
 ---
 Changes in v3 :-
-  - Rename cma node and phandle names
-  - Elaborate the comment to explain 160MiB calculation
-  - Move &hdmi_receiver_cma to the rock5b dts file
+  - No change
 
 Changes in v2 :-
-  - Fix some of the checkpatch errors and warnings
-  - Rename resets, vo1-grf and HPD
-  - Move hdmirx_cma node to the rk3588.dtsi file
+  - Add a patch for MAINTAINERS file changes
 
- .../boot/dts/rockchip/rk3588-pinctrl.dtsi     | 41 ++++++++++++++
- .../boot/dts/rockchip/rk3588-rock-5b.dts      | 19 +++++++
- arch/arm64/boot/dts/rockchip/rk3588.dtsi      | 56 +++++++++++++++++++
- 3 files changed, 116 insertions(+)
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi
-index 244c66faa161..4fbe194d96b1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-pinctrl.dtsi
-@@ -169,6 +169,47 @@ hdmim0_tx1_sda: hdmim0-tx1-sda {
- 				/* hdmim0_tx1_sda */
- 				<2 RK_PB4 4 &pcfg_pull_none>;
- 		};
-+
-+		/omit-if-no-ref/
-+		hdmim1_rx: hdmim1-rx {
-+			rockchip,pins =
-+				/* hdmim1_rx_cec */
-+				<3 RK_PD1 5 &pcfg_pull_none>,
-+				/* hdmim1_rx_scl */
-+				<3 RK_PD2 5 &pcfg_pull_none_smt>,
-+				/* hdmim1_rx_sda */
-+				<3 RK_PD3 5 &pcfg_pull_none_smt>,
-+				/* hdmim1_rx_hpdin */
-+				<3 RK_PD4 5 &pcfg_pull_none>;
-+		};
-+
-+		/omit-if-no-ref/
-+		hdmim1_rx_cec: hdmim1-rx-cec {
-+			rockchip,pins =
-+				/* hdmim1_rx_cec */
-+				<3 RK_PD1 5 &pcfg_pull_none>;
-+		};
-+
-+		/omit-if-no-ref/
-+		hdmim1_rx_hpdin: hdmim1-rx-hpdin {
-+			rockchip,pins =
-+				/* hdmim1_rx_hpdin */
-+				<3 RK_PD4 5 &pcfg_pull_none>;
-+		};
-+
-+		/omit-if-no-ref/
-+		hdmim1_rx_scl: hdmim1-rx-scl {
-+			rockchip,pins =
-+				/* hdmim1_rx_scl */
-+				<3 RK_PD2 5 &pcfg_pull_none>;
-+		};
-+
-+		/omit-if-no-ref/
-+		hdmim1_rx_sda: hdmim1-rx-sda {
-+			rockchip,pins =
-+				/* hdmim1_rx_sda */
-+				<3 RK_PD3 5 &pcfg_pull_none>;
-+		};
- 	};
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3a534e344737..05bbb58c2a41 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21492,6 +21492,14 @@ F:	drivers/net/pcs/pcs-xpcs.c
+ F:	drivers/net/pcs/pcs-xpcs.h
+ F:	include/linux/pcs/pcs-xpcs.h
  
- 	i2c0 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 1fe8b2a0ed75..b96ed7dea39a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -180,6 +180,18 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_lit_s0>;
- };
- 
-+&hdmi_receiver {
-+	status = "okay";
-+	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
-+	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl
-+		     &hdmim1_rx_sda &hdmirx_5v_detection>;
-+	pinctrl-names = "default";
-+};
++SYNOPSYS DESIGNWARE HDMI RX CONTROLLER DRIVER
++M:	Shreeya Patel <shreeya.patel@collabora.com
++L:	linux-media@vger.kernel.org
++L:	kernel@collabora.com
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
++F:	drivers/media/platform/synopsys/hdmirx/*
 +
-+&hdmi_receiver_cma {
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0m2_xfer>;
-@@ -303,6 +315,13 @@ &pcie3x4 {
- };
- 
- &pinctrl {
-+
-+	hdmirx {
-+		hdmirx_5v_detection: hdmirx-5v-detection {
-+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	hym8563 {
- 		hym8563_int: hym8563-int {
- 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-index 5519c1430cb7..51b04d826e8f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-@@ -7,6 +7,29 @@
- #include "rk3588-pinctrl.dtsi"
- 
- / {
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		/*
-+		 * The 4k HDMI capture controller works only with 32bit
-+		 * phys addresses and doesn't support IOMMU. HDMI RX CMA
-+		 * must be reserved below 4GB.
-+		 * The size of 160MB was determined as follows:
-+		 * (3840 * 2160 pixels) * (4 bytes/pixel) * (2 frames/buffer) / 10^6 = 66MB
-+		 * To ensure sufficient support for practical use-cases,
-+		 * we doubled the 66MB value.
-+		 */
-+		hdmi_receiver_cma: hdmi-receiver-cma {
-+			compatible = "shared-dma-pool";
-+			alloc-ranges = <0x0 0x0 0x0 0xffffffff>;
-+			size = <0x0 (160 * 0x100000)>; /* 160MiB */
-+			no-map;
-+			status = "disabled";
-+		};
-+	};
-+
- 	pcie30_phy_grf: syscon@fd5b8000 {
- 		compatible = "rockchip,rk3588-pcie3-phy-grf", "syscon";
- 		reg = <0x0 0xfd5b8000 0x0 0x10000>;
-@@ -85,6 +108,39 @@ i2s10_8ch: i2s@fde00000 {
- 		status = "disabled";
- 	};
- 
-+	hdmi_receiver: hdmi-receiver@fdee0000 {
-+		compatible = "rockchip,rk3588-hdmirx-ctrler", "snps,dw-hdmi-rx";
-+		reg = <0x0 0xfdee0000 0x0 0x6000>;
-+		power-domains = <&power RK3588_PD_VO1>;
-+		rockchip,grf = <&sys_grf>;
-+		rockchip,vo1-grf = <&vo1_grf>;
-+		interrupts = <GIC_SPI 177 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 179 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "cec", "hdmi", "dma";
-+		clocks = <&cru ACLK_HDMIRX>,
-+			 <&cru CLK_HDMIRX_AUD>,
-+			 <&cru CLK_CR_PARA>,
-+			 <&cru PCLK_HDMIRX>,
-+			 <&cru CLK_HDMIRX_REF>,
-+			 <&cru PCLK_S_HDMIRX>,
-+			 <&cru HCLK_VO1>;
-+		clock-names = "aclk",
-+			      "audio",
-+			      "cr_para",
-+			      "pclk",
-+			      "ref",
-+			      "hclk_s_hdmirx",
-+			      "hclk_vo1";
-+		resets = <&cru SRST_A_HDMIRX>, <&cru SRST_P_HDMIRX>,
-+			 <&cru SRST_HDMIRX_REF>, <&cru SRST_A_HDMIRX_BIU>;
-+		reset-names = "axi", "apb", "ref", "biu";
-+		memory-region = <&hdmi_receiver_cma>;
-+		pinctrl-0 = <&hdmim1_rx>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	pcie3x4: pcie@fe150000 {
- 		compatible = "rockchip,rk3588-pcie", "rockchip,rk3568-pcie";
- 		#address-cells = <3>;
+ SYNOPSYS DESIGNWARE I2C DRIVER
+ M:	Jarkko Nikula <jarkko.nikula@linux.intel.com>
+ R:	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 -- 
 2.39.2
 
