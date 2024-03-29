@@ -4,83 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C39CD128D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 16:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AAC6CD1283
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 19:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d3GfPSwmw1fX5c1Vaj20EmVufRhg9wKVNJV7927XVyc=; b=w3uJAyJNlI8P+w
-	IVnnOgdrDprNYH0/sbkOI6vRSYKAHGUQzONsw5YnVkgEyJwkRxROVY+K8jefy6N2vdFomKdL06qSi
-	Y0GAIEFzSgXZ/E/EyHVA2X4u9caEAKoItO/A+CFog2EQZbaJhl513dMCB/lfZxiuic75qBmdIzlWi
-	E4/8wLAsNdkroa+j39NY8O5pao3CihkEKK5LZUqoqQ2wRV2SiiWOBNS1ogiIM2F+Y8sRGW35xdPdS
-	BKRJckUExkH7SpBneJPDfpXl8xQMHDOz3aulQcCRIvWzKQ77u9ti4RFMFdQZL7c6qpNY4+s2AIqgi
-	dbm1dh+mi1QI002vWW6g==;
+	List-Owner; bh=g97BovtI5Mxx9rv7YFilJI3++rU+xc7BXL+OFLOn4HA=; b=zz1q//ZHCGgkbK
+	mZsY/DPR/nTF1hADgAMxt0OiWgh4KdQnRJD9OLYa8TjN5TOi91kzh9JNe2e2SjPUD3auFUCo+keDn
+	zQwqnsciWODqMd2L6PPmMn21Q30du2/gbrKWRO01GMGA0LwoQA9Mk+LIaQdll/kPn56OvFVDTeo5B
+	7mGvfPf68lrjHk9+gXxIULxyacTw+CyVnY5MGO2c2WiFi1zIKJt4y1ExB1zGQPGdw2BCHvX0HH66k
+	QG6VH8yqqEwbdB+yiqlKDk4FxcAzMv8TGgTz57ixaLMEjUKMs1isHT6cefhbkqFnt8SgYgKP79HLj
+	/Ti/HgCt/b683nqb4vkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqFEy-00000001Koc-2lgW;
-	Fri, 29 Mar 2024 16:38:04 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1rqHiI-00000001joR-2Ozy;
+	Fri, 29 Mar 2024 19:16:30 +0000
+Received: from mail-am0eur02on20701.outbound.protection.outlook.com ([2a01:111:f403:2606::701] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqFEu-00000001KmV-1hao
-	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Mar 2024 16:38:02 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-41549a9dcbaso10265065e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 Mar 2024 09:38:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711730279; x=1712335079; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UwLmF2g9SeFgO0qE9J71WGfItvHTsnplXOGpXDPoZl0=;
-        b=VnPxY6TL0p4spAt8fTda3WCZhJv8jZvKW6E6qtI7xgiX23/sjgU9LdDi0uBBG+1mCN
-         g1xt8rSGxF4gH0DkN4u1W36oJ+X/d/2W3JRCH0Dss0whklw00Ua5sVDFIZKF8NQYJPp7
-         RaNpd2HBCE5F7lGbtroxL9kca8mS6Ick28i1YUUtOdS4kMQquySrMjw6aEHUOB/NasIt
-         XbUj7WYL2C+rrBonFzVD+lz52vmbwidesbFs5tTQ6G2cuzaF1D+peU3UDBSDiZsInziH
-         ZBROX6052ph+ah850yEBFot98LwtpTbps/3bG824qCaFw7CkOOOKnLEelwxvLtXBt2qD
-         MTCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711730279; x=1712335079;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=UwLmF2g9SeFgO0qE9J71WGfItvHTsnplXOGpXDPoZl0=;
-        b=bFEvTfRaOsyzbWce81SXDFaraYWgh4pPE6kZfNywA6Xi2JXlGHi10c4Q69pYYoCvT9
-         UZbuOpa9Gkmtux0W25wEgKM8pHC032acsGy4Dw+UigGIJVIo2BkiUpiKP4FPtQVzGmGZ
-         mdLV5PPJEdOSIiusvD4D0oDj8TZtSqj9UN4zxBcZNSO3XTuQ2hEUc9LkMI3G0LrSApk9
-         GHzS03AxpqxhCmAeOMYGIeC28WaSiHbXjapszFiEyM/lxblL5mM82a6w/gdzebzt8OxQ
-         6cygMvUjYsLDXVUuE4YbO0q69gaNve6NMncPQpssf+ZQ+uSQxK22xKy7MLJI18HUnoXq
-         WCkw==
-X-Gm-Message-State: AOJu0YxCVKjqhP5xCaEH2Up7OAA1s8Fj4vlyF+NwL1ZG3dG7t/Mkt2ct
-	b8ev1D/8FbCgp/lDisS7zTyrNoa0cZsPADCQfnnfDy35ikoMxRtcAw8czk2eG28=
-X-Google-Smtp-Source: AGHT+IFxR9kCg8wK1tdVBWU2BipcSmXFIAMRH1mlDRbii8iRl38mOAwB9CBqVsbED9XR994yGHrUNw==
-X-Received: by 2002:a05:600c:4f0c:b0:414:85f:1f72 with SMTP id l12-20020a05600c4f0c00b00414085f1f72mr1763054wmq.6.1711730279018;
-        Fri, 29 Mar 2024 09:37:59 -0700 (PDT)
-Received: from arrakeen.starnux.net ([2a01:e0a:982:cbb0:52eb:f6ff:feb3:451a])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05600c4f4400b004146bcdde06sm5958736wmq.6.2024.03.29.09.37.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Mar 2024 09:37:58 -0700 (PDT)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: linux-rockchip@lists.infradead.org, 
- Chris Morgan <macroalpha82@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, 
- quic_jesszhan@quicinc.com, megi@xff.cz, kernel@puri.sm, agx@sigxcpu.org, 
- heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
- robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-In-Reply-To: <20240325134959.11807-1-macroalpha82@gmail.com>
-References: <20240325134959.11807-1-macroalpha82@gmail.com>
-Subject: Re: (subset) [PATCH 0/5] Add Support for RK3326 GameForce Chi
-Message-Id: <171173027816.1500306.363820748335291439.b4-ty@linaro.org>
-Date: Fri, 29 Mar 2024 17:37:58 +0100
+	id 1rqHiE-00000001jnK-424z;
+	Fri, 29 Mar 2024 19:16:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YtKDypFkFICJCHuAiZORDG//MnVNwUl7Mb7OWNdpxovo0QkFeRSJ0mpERdBaOuSwCwppKcX/W2u96EDwgHyhAdkD9r2wBcKuCqPX7Z3Cjg/6faoBTxO5gwJcHekjV1NL4O+x/hf+nMiW4SToPtIrYTHvYjufs3AyEGSFo7wsSm6hAfXxsPn7eroZ8WrID95D3F6yscxQrS+PeSqdEAjdKrWpZiHErYaqsRjHFr21iXCmtdZCA0woB5tBH5AlGLZGVu776sDgek0GJKz9RlOtqlcEcFCDNq9Zu4/j+3HF1bz8AtpS6LdCg1fiiG7LeZGiYr/dpbZ+WYTQA8GqHVGmSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A8AYQ6FZplMeVwqAs4M+y7QWehTbEKcT9XNZyNNZmow=;
+ b=MRipVClNMyjpfQolRPhkXHgGNvEBReIuqUU/fY1WwsSnLnmrqI6SLEZVz3lqw/DwkebHOs8DLvxpvyelEgG/gnnPxgqGTf0YssC5/eo36u5D0T4OMsfCvrV4dBptUSiFM5b7u2wsA6MXOpZTwc3j8uw4iStOe/x4lXWxaPwvUo6c54k2+/qWQWnrmZWiDEgPB54SSaiTB2FFMAbm6I9lUp7+Z9Ji0Cu85mk7px2mmdH21TQLia5QIXsF80weJ5MdRaPMkOnkulwN9ioM1nBYjmOovc4rPUrBrzVp2OSmyylkYTH7cU01cad6nKTaKy1GKLRXQeJrn8wrfXTTMQfTEA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A8AYQ6FZplMeVwqAs4M+y7QWehTbEKcT9XNZyNNZmow=;
+ b=oiNfQ6d0D3lkXeO4i+yLib/tIBD5/2EgfLbip400D4SXOZlQFQ2iEGLoGfckwgHMDKGq7UfCIjGO+ENupZXi0Q0FJrwYYovdwhgZhlOpaBWXUCr7qYD0/s+nB2vxnHPNatQa6iMnFdBphUyApBSpE81fLyZNmh8oYkUQhoN+ER0=
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com (2603:10a6:102:240::14)
+ by AS8PR04MB8578.eurprd04.prod.outlook.com (2603:10a6:20b:425::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.42; Fri, 29 Mar
+ 2024 19:16:16 +0000
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::3168:91:27c6:edf6]) by PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::3168:91:27c6:edf6%3]) with mapi id 15.20.7409.039; Fri, 29 Mar 2024
+ 19:16:16 +0000
+Date: Fri, 29 Mar 2024 15:16:03 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Vidya Sagar <vidyas@nvidia.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, Niklas Cassel <cassel@kernel.org>,
+	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v12 7/8] PCI: dwc: ep: Call dw_pcie_ep_init_registers()
+ API directly from all glue drivers
+Message-ID: <ZgcTc9q4I9K9GA4c@lizhi-Precision-Tower-5810>
+References: <20240327-pci-dbi-rework-v12-0-082625472414@linaro.org>
+ <20240327-pci-dbi-rework-v12-7-082625472414@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <20240327-pci-dbi-rework-v12-7-082625472414@linaro.org>
+X-ClientProxiedBy: SJ0PR03CA0147.namprd03.prod.outlook.com
+ (2603:10b6:a03:33c::32) To PAXPR04MB9642.eurprd04.prod.outlook.com
+ (2603:10a6:102:240::14)
 MIME-Version: 1.0
-X-Mailer: b4 0.12.4
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXPR04MB9642:EE_|AS8PR04MB8578:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 74KJ7diYFNJ7dZE7jQAbFYmWwy30vNLSUk8kjps95bKr9HtxnN4fQ02pyQHd3dBhzTp3gwEoiYoNeFzK2T/1GJbGYotytXyoG6u78JKhp4f/hGrJLi34ANXsHXqf2v7s4EHp/NXI6zcLx2j7D3wOuImAvHuX+wPG3CbfqA6HDoygYxQdGDI28eTTzV9QZyHfAyRVaqCyEVmOC18jJEayzVT6mOd3ZVfRoMCfDBwzovtITlrFD5ogxayapAYD3GgnbXgqCzdkgsi0FCub6Be+SNWkUnZwM7eASOoewbsJV95bLRu4IQiQXfrwzXTZ7lm3BQhC6CzeOooS0oZ1BWaVN59Y6tv3aUVAb05/Nwe70LJO8bBtL08msRoSDHkQXmTKhS4H3/9Iu7cZk3ah7pluaJcKh8jAw/fT9hBhlphYh/IA+BCd1T57rqIGVzEfzTXwnDl4n+1JytgEuWmVpcczJHE0L/w70Hc7Mh/15mfCDfs4ur4Qzg/KnQ3FXrOTDG8GI2UAqYpwA3zW1KLvyAcDuxcRsGW2DYV4ZU04nhqFq06GhVZ7gtyTn5F421KClIU3V08pSWE4g+DcLowwe0e0QzzIIsu3AAolWVrG50dkFLqg4XjbsBPbIFWNXk1HObs39pjJ/07wBxgmhvS45JvW6zqdfK3FGFbbPhQoHKANou9Oq36kjjQiO7U6OE3LBOwrWHAkkh5vJyoaOIoOpuPU8ARSFXz/tSbhYXaoddBXimw=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB9642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(7416005)(52116005)(366007)(38350700005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pZMtGtcmg/RJTeMNebUdoZq1RBQx+5EGyM4jJLU0o/babCZBVP/rE5B1aWvv?=
+ =?us-ascii?Q?QQAgLd0ig5znGEaqqfJjpiHY45JqVEeKPPDm3mCWyRvS2tHr4VdxvMFqgcoo?=
+ =?us-ascii?Q?6dXRO9xpgV/V7SNk7l7RYfyx7zXcVLC9q2yMsPvdPW0p2zs30Riq0FZkh087?=
+ =?us-ascii?Q?RVkHB3bx4icK88ckpoC83I13dvspHu6smvmsQ0wOnOHrBhbNhvcYezpBTgGu?=
+ =?us-ascii?Q?c5Pe1UZDFAdK3oMpWO91QvQI2K6mSDEs/8AppOMhC7PPz7evWGEmiuNyf1ud?=
+ =?us-ascii?Q?inPGZT/48Z493UiLj9DPLeJIzHIJI92nMTGSCKpeBiUkCntICqNevn6ntvKX?=
+ =?us-ascii?Q?tdnpHHXpL0Sag/tKkPhoCFzzG9RA53r7COLeUDdFp7iPLSY0UW8/KnA2ZuWI?=
+ =?us-ascii?Q?M9mJ1/pjMUMCuAUv1sPEysLvMu9pRekcKTLO+VFpzw8SdYF9vIQu2MVCG7+3?=
+ =?us-ascii?Q?V7piLmZHuO0d/he+Xc9NtV6EFA07cvVzBKOFCR5j3axoGjXH0xvaajuQ45ER?=
+ =?us-ascii?Q?iygxgFlUqaztkGsqpMkh4INaS60ZkGKqqNJBvRJHFGJ9mP9GMz/LnnAYbGnO?=
+ =?us-ascii?Q?xJvPOERgWuv2HPAbkfp3ILmh9Gy0lgAoZhNUQL3OKnNFMzp0Gd2LXcSAfYFl?=
+ =?us-ascii?Q?i7yUWb9LIFJPAXImzmWqwIyhMxYJXXoQUZwHqPrdJdLYzJMWhoZw6kssdh6D?=
+ =?us-ascii?Q?gZs7mCxI/fNcTwMjSPmSAnvuy2Bg9XvKBGaYrCCG2a9oNvpnbibqyviQxh6Y?=
+ =?us-ascii?Q?/+9PKYjye1CRoFF95DwEADn6omOFvvSjoMKFxpPNGnMLqMo8NtIuJvXtj3+P?=
+ =?us-ascii?Q?H4zNyHUjiWXVqlhpHIeZ3dkmwZY60QxX1MfINxCcCJxowoImUeUt/W5xNwMy?=
+ =?us-ascii?Q?cRdKDZOtrn+L7GCv3SEZo7d+vOoKUhAzyXiA5BNeySgRUQyn5qez4VBclfPC?=
+ =?us-ascii?Q?q3jpX3+AbbENMZWC+rY8y1GreAiwJna5amOEUnoMKapYGGM4VXfuyAR+sdmc?=
+ =?us-ascii?Q?GzCKi+XwSwWZPJ3ooGkiSE9DilVZh+V4n2cK38Mbf+DycJNdw60NNrQJgpwq?=
+ =?us-ascii?Q?rqkkpQnWoqlsqX/bcKZmBBYKIjQycRmpmNaf5kJzyEjvJb/SB9qPuIC9cu4g?=
+ =?us-ascii?Q?iZNOhAhyd3MiyYFaBh7EHbCSjfLMD1j45BPvNS+OehfGrPxSkyiEdBvwxbTf?=
+ =?us-ascii?Q?KC7WTUarXOpXi6R4f16b90A3XFZrtLyh2GgvUPuAZuMELjeI7meb4JZlFuD3?=
+ =?us-ascii?Q?EIHSTASy+xkhtA4qovCPYVNQhdV8SW+4pRXBOzZuPF/6ZCjFY9IWaTvLiqgE?=
+ =?us-ascii?Q?6HdyZqNfXQGeAh4FMBEH1EweMK7ChrDIXSEaD66dlc8njaQzIeyTeHXHvBj4?=
+ =?us-ascii?Q?UcUniWzkKRSq4Q6tXjYySJ3V39RfxoCq/tI555e0Bjms2zydRjDlkQIw+Bw7?=
+ =?us-ascii?Q?E0R2iv6rD166LigBaTj9ndNOFIk1JGq0XVrKcY3gsasrN3oPv3z5ObeTYKw6?=
+ =?us-ascii?Q?443KemyJ/HAyBIUjVLODkcECxGtalGGCdn/NTcY1hS8c7vvoWP5ihIoInI7m?=
+ =?us-ascii?Q?9lYaLyAdj8/aB0k2jPjV055x1D0fF+cCMJdbhPhU?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6ea6d61e-e4dd-4f41-86f3-08dc5024b4db
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB9642.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2024 19:16:16.4965
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ovFnF/n1lV31r4SNNbvkuiVgp6NKYZ6fT/S1cGcHzbY8X8StkbzuXvTmx3k1Q02OKXOFFCpG7VafoAjSuTSfdQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8578
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_093800_507192_25E9E278 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240329_121627_304630_95072E50 
+X-CRM114-Status: GOOD (  28.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,38 +159,308 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, 25 Mar 2024 08:49:54 -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Wed, Mar 27, 2024 at 02:43:36PM +0530, Manivannan Sadhasivam wrote:
+> Currently, dw_pcie_ep_init_registers() API is directly called by the glue
+> drivers requiring active refclk from host. But for the other drivers, it is
+> getting called implicitly by dw_pcie_ep_init(). This is due to the fact
+> that this API initializes DWC EP specific registers and that requires an
+> active refclk (either from host or generated locally by endpoint itsef).
 > 
-> Add support for the GameForce Chi [1].
+> But, this causes a discrepancy among the glue drivers. So to avoid this
+> confusion, let's call this API directly from all glue drivers irrespective
+> of refclk dependency. Only difference here is that the drivers requiring
+> refclk from host will call this API only after the refclk is received and
+> other drivers without refclk dependency will call this API right after
+> dw_pcie_ep_init().
 > 
-> The GameForce Chi has the following hardware:
-> Tested:
->  - 3.5" dual lane 640x480 DSI display.
->  - 15 GPIO based face buttons.
->  - 2 ADC based face buttons.
->  - 1 ADC joystick (left) connected to internal SARADC.
->  - RGB LED arrays for key backlighting
->  - Dual internal speakers.
->  - Realtek RTL8723BS SDIO WiFi.
->  - Single SDMMC slot.
+> With this change, the check for 'core_init_notifier' flag can now be
+> dropped from dw_pcie_ep_init() API. This will also allow us to remove the
+> 'core_init_notifier' flag completely in the later commits.
 > 
-> [...]
+> Reviewed-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Reviewed-by: Niklas Cassel <cassel@kernel.org>
 
-Thanks, Applied to https://gitlab.freedesktop.org/drm/misc/kernel.git (drm-misc-next)
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
 
-[1/5] dt-bindings: vendor-prefix: Add prefix for GameForce
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/59237fc04ee1c4cdf62ad5dba18244713970e36f
-[2/5] dt-bindings: display: Add GameForce Chi Panel
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/387974a21a63b1c7efcbc19c48b9930f6ef5ac63
-[3/5] drm/panel: st7703: Add GameForce Chi Panel Support
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/4c4f33be7e4d476566246e7166c54ef175287e00
-
--- 
-Neil
-
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+>  drivers/pci/controller/dwc/pci-dra7xx.c           |  7 +++++++
+>  drivers/pci/controller/dwc/pci-imx6.c             |  8 ++++++++
+>  drivers/pci/controller/dwc/pci-keystone.c         |  9 +++++++++
+>  drivers/pci/controller/dwc/pci-layerscape-ep.c    |  7 +++++++
+>  drivers/pci/controller/dwc/pcie-artpec6.c         | 13 ++++++++++++-
+>  drivers/pci/controller/dwc/pcie-designware-ep.c   | 22 ----------------------
+>  drivers/pci/controller/dwc/pcie-designware-plat.c |  9 +++++++++
+>  drivers/pci/controller/dwc/pcie-keembay.c         | 16 +++++++++++++++-
+>  drivers/pci/controller/dwc/pcie-rcar-gen4.c       | 12 +++++++++++-
+>  drivers/pci/controller/dwc/pcie-uniphier-ep.c     | 13 ++++++++++++-
+>  10 files changed, 90 insertions(+), 26 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
+> index 0e406677060d..395042b29ffc 100644
+> --- a/drivers/pci/controller/dwc/pci-dra7xx.c
+> +++ b/drivers/pci/controller/dwc/pci-dra7xx.c
+> @@ -467,6 +467,13 @@ static int dra7xx_add_pcie_ep(struct dra7xx_pcie *dra7xx,
+>  		return ret;
+>  	}
+>  
+> +	ret = dw_pcie_ep_init_registers(ep);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +		dw_pcie_ep_deinit(ep);
+> +		return ret;
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+> index 99a60270b26c..8d28ecc381bc 100644
+> --- a/drivers/pci/controller/dwc/pci-imx6.c
+> +++ b/drivers/pci/controller/dwc/pci-imx6.c
+> @@ -1123,6 +1123,14 @@ static int imx6_add_pcie_ep(struct imx6_pcie *imx6_pcie,
+>  		dev_err(dev, "failed to initialize endpoint\n");
+>  		return ret;
+>  	}
+> +
+> +	ret = dw_pcie_ep_init_registers(ep);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +		dw_pcie_ep_deinit(ep);
+> +		return ret;
+> +	}
+> +
+>  	/* Start LTSSM. */
+>  	imx6_pcie_ltssm_enable(dev);
+>  
+> diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+> index 844de4418724..81ebac520650 100644
+> --- a/drivers/pci/controller/dwc/pci-keystone.c
+> +++ b/drivers/pci/controller/dwc/pci-keystone.c
+> @@ -1286,6 +1286,13 @@ static int ks_pcie_probe(struct platform_device *pdev)
+>  		ret = dw_pcie_ep_init(&pci->ep);
+>  		if (ret < 0)
+>  			goto err_get_sync;
+> +
+> +		ret = dw_pcie_ep_init_registers(&pci->ep);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +			goto err_ep_init;
+> +		}
+> +
+>  		break;
+>  	default:
+>  		dev_err(dev, "INVALID device type %d\n", mode);
+> @@ -1295,6 +1302,8 @@ static int ks_pcie_probe(struct platform_device *pdev)
+>  
+>  	return 0;
+>  
+> +err_ep_init:
+> +	dw_pcie_ep_deinit(&pci->ep);
+>  err_get_sync:
+>  	pm_runtime_put(dev);
+>  	pm_runtime_disable(dev);
+> diff --git a/drivers/pci/controller/dwc/pci-layerscape-ep.c b/drivers/pci/controller/dwc/pci-layerscape-ep.c
+> index 1f6ee1460ec2..9eb2233e3d7f 100644
+> --- a/drivers/pci/controller/dwc/pci-layerscape-ep.c
+> +++ b/drivers/pci/controller/dwc/pci-layerscape-ep.c
+> @@ -279,6 +279,13 @@ static int __init ls_pcie_ep_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = dw_pcie_ep_init_registers(&pci->ep);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +		dw_pcie_ep_deinit(&pci->ep);
+> +		return ret;
+> +	}
+> +
+>  	return ls_pcie_ep_interrupt_init(pcie, pdev);
+>  }
+>  
+> diff --git a/drivers/pci/controller/dwc/pcie-artpec6.c b/drivers/pci/controller/dwc/pcie-artpec6.c
+> index 9ed0a9ba7619..a6095561db4a 100644
+> --- a/drivers/pci/controller/dwc/pcie-artpec6.c
+> +++ b/drivers/pci/controller/dwc/pcie-artpec6.c
+> @@ -441,7 +441,18 @@ static int artpec6_pcie_probe(struct platform_device *pdev)
+>  
+>  		pci->ep.ops = &pcie_ep_ops;
+>  
+> -		return dw_pcie_ep_init(&pci->ep);
+> +		ret = dw_pcie_ep_init(&pci->ep);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = dw_pcie_ep_init_registers(&pci->ep);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +			dw_pcie_ep_deinit(&pci->ep);
+> +			return ret;
+> +		}
+> +
+> +		break;
+>  	default:
+>  		dev_err(dev, "INVALID device type %d\n", artpec6_pcie->mode);
+>  	}
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
+> index 761d3012a073..2063cf2049e5 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
+> @@ -821,7 +821,6 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+>  	struct device *dev = pci->dev;
+>  	struct platform_device *pdev = to_platform_device(dev);
+>  	struct device_node *np = dev->of_node;
+> -	const struct pci_epc_features *epc_features;
+>  
+>  	INIT_LIST_HEAD(&ep->func_list);
+>  
+> @@ -867,29 +866,8 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+>  		goto err_exit_epc_mem;
+>  	}
+>  
+> -	if (ep->ops->get_features) {
+> -		epc_features = ep->ops->get_features(ep);
+> -		if (epc_features->core_init_notifier)
+> -			return 0;
+> -	}
+> -
+> -	/*
+> -	 * NOTE:- Avoid accessing the hardware (Ex:- DBI space) before this
+> -	 * step as platforms that implement 'core_init_notifier' feature may
+> -	 * not have the hardware ready (i.e. core initialized) for access
+> -	 * (Ex: tegra194). Any hardware access on such platforms result
+> -	 * in system hang.
+> -	 */
+> -	ret = dw_pcie_ep_init_registers(ep);
+> -	if (ret)
+> -		goto err_free_epc_mem;
+> -
+>  	return 0;
+>  
+> -err_free_epc_mem:
+> -	pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
+> -			      epc->mem->window.page_size);
+> -
+>  err_exit_epc_mem:
+>  	pci_epc_mem_exit(epc);
+>  
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-plat.c b/drivers/pci/controller/dwc/pcie-designware-plat.c
+> index 778588b4be70..ca9b22e654cd 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-plat.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-plat.c
+> @@ -145,6 +145,15 @@ static int dw_plat_pcie_probe(struct platform_device *pdev)
+>  
+>  		pci->ep.ops = &pcie_ep_ops;
+>  		ret = dw_pcie_ep_init(&pci->ep);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = dw_pcie_ep_init_registers(&pci->ep);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +			dw_pcie_ep_deinit(&pci->ep);
+> +		}
+> +
+>  		break;
+>  	default:
+>  		dev_err(dev, "INVALID device type %d\n", dw_plat_pcie->mode);
+> diff --git a/drivers/pci/controller/dwc/pcie-keembay.c b/drivers/pci/controller/dwc/pcie-keembay.c
+> index 5e8e54f597dd..b2556dbcffb5 100644
+> --- a/drivers/pci/controller/dwc/pcie-keembay.c
+> +++ b/drivers/pci/controller/dwc/pcie-keembay.c
+> @@ -396,6 +396,7 @@ static int keembay_pcie_probe(struct platform_device *pdev)
+>  	struct keembay_pcie *pcie;
+>  	struct dw_pcie *pci;
+>  	enum dw_pcie_device_mode mode;
+> +	int ret;
+>  
+>  	data = device_get_match_data(dev);
+>  	if (!data)
+> @@ -430,11 +431,24 @@ static int keembay_pcie_probe(struct platform_device *pdev)
+>  			return -ENODEV;
+>  
+>  		pci->ep.ops = &keembay_pcie_ep_ops;
+> -		return dw_pcie_ep_init(&pci->ep);
+> +		ret = dw_pcie_ep_init(&pci->ep);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = dw_pcie_ep_init_registers(&pci->ep);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +			dw_pcie_ep_deinit(&pci->ep);
+> +			return ret;
+> +		}
+> +
+> +		break;
+>  	default:
+>  		dev_err(dev, "Invalid device type %d\n", pcie->mode);
+>  		return -ENODEV;
+>  	}
+> +
+> +	return 0;
+>  }
+>  
+>  static const struct keembay_pcie_of_data keembay_pcie_rc_of_data = {
+> diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+> index de4bdfaecab3..e155a905fb4f 100644
+> --- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+> +++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+> @@ -416,6 +416,7 @@ static const struct dw_pcie_ep_ops pcie_ep_ops = {
+>  static int rcar_gen4_add_dw_pcie_ep(struct rcar_gen4_pcie *rcar)
+>  {
+>  	struct dw_pcie_ep *ep = &rcar->dw.ep;
+> +	struct device *dev = rcar->dw.dev;
+>  	int ret;
+>  
+>  	if (!IS_ENABLED(CONFIG_PCIE_RCAR_GEN4_EP))
+> @@ -424,8 +425,17 @@ static int rcar_gen4_add_dw_pcie_ep(struct rcar_gen4_pcie *rcar)
+>  	ep->ops = &pcie_ep_ops;
+>  
+>  	ret = dw_pcie_ep_init(ep);
+> -	if (ret)
+> +	if (ret) {
+>  		rcar_gen4_pcie_ep_deinit(rcar);
+> +		return ret;
+> +	}
+> +
+> +	ret = dw_pcie_ep_init_registers(ep);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +		dw_pcie_ep_deinit(ep);
+> +		rcar_gen4_pcie_ep_deinit(rcar);
+> +	}
+>  
+>  	return ret;
+>  }
+> diff --git a/drivers/pci/controller/dwc/pcie-uniphier-ep.c b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+> index 639bc2e12476..0e5e7344de48 100644
+> --- a/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+> +++ b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
+> @@ -399,7 +399,18 @@ static int uniphier_pcie_ep_probe(struct platform_device *pdev)
+>  		return ret;
+>  
+>  	priv->pci.ep.ops = &uniphier_pcie_ep_ops;
+> -	return dw_pcie_ep_init(&priv->pci.ep);
+> +	ret = dw_pcie_ep_init(&priv->pci.ep);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = dw_pcie_ep_init_registers(&priv->pci.ep);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize DWC endpoint registers\n");
+> +		dw_pcie_ep_deinit(&priv->pci.ep);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+>  }
+>  
+>  static const struct uniphier_pcie_ep_soc_data uniphier_pro5_data = {
+> 
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
