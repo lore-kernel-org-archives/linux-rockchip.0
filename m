@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C044CD128E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 09:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10373CD1288
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 09:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0VqnfwXEaS7kRYhjF1NyuooZFKZg39txS528dvQicj0=; b=pv99gWwu1WONW0
-	EgDJNaWI3cMbFojZnPsxjkXcU9pdEcKnApZpjI0q7W4PqtmzQ5ofvP2bSvf9TOnDneIfgvdhXuuMx
-	qWR+sJtDzSyWN5qeguj8quACcjOILLTQ30SSp3kprDSPzqAD4oVrhwVosxe02/pQ+5VezS7LgtZWn
-	tzLeXPJEaxzVaiR96PVDbOdKZn6k6OZd9cDF4rE1pzyWXcJnlA3eeEkWAkplzMWaLef4BTAWyeuPh
-	rocWnxTYMbTw68GUnYKuRrTGzGetOxDLC9No/NtxPcqEBT5GNluOUXKnb6NPXOViamYmynUdmDc+G
-	SrHnf8ROaC0IF6pyUefQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZQLZJgue7eG33JZuSb5cGo52UdBRHfv9e0zAjuuAKZM=; b=hdQVD4cSyXyUnV
+	ecG5VKeJwx5x9SG1VafB9/feT2VZj9nv/dltFH7j2y06BqKbEc0+VMrpR5eLF32GlWQFUc1Eo0pvs
+	hFOZ/w0mNrdsU5NhqHnFr3ITYSbFgkoyVEM82j7DGYOYIS6SWhsYlQbgc5qOzOShewxz1GFdhNal8
+	rvJuiZTfUp/XfqKPnIerKKOCeWxRj6JKr0d9aCrf2gL7n9RM/ctnH00LCIrM+y6280yIsSd58VSuO
+	u3rUbCJU86O3Hx09uY5gbJOX/A4DD8wxMihayyxVBhl26hnxHlOk3hDzWmDiP63FkCASwZPLxpkzq
+	PqzvU8yBA96XSA7oH9YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rq8FE-0000000HQ2T-3a0F;
-	Fri, 29 Mar 2024 09:09:52 +0000
+	id 1rq8FI-0000000HQ5E-0y2Z;
+	Fri, 29 Mar 2024 09:09:56 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rq8FB-0000000HQ0C-0PhC
+	id 1rq8FE-0000000HQ1O-03EA
 	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Mar 2024 09:09:50 +0000
+	Fri, 29 Mar 2024 09:09:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 843E1618CC;
-	Fri, 29 Mar 2024 09:09:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07566C433F1;
-	Fri, 29 Mar 2024 09:09:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 7178961710;
+	Fri, 29 Mar 2024 09:09:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12B86C433F1;
+	Fri, 29 Mar 2024 09:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711703388;
-	bh=Dns6q7IizAxpZ6/WuC6UXLxjt1Ab4FRhj9skuvhtcic=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Veru5V0jW0B9aV4qODEM6vLN3soCI9Vs2g3Gaxwt4l7zuJcqOjKHrDfdil0lv0aiq
-	 kn3v2M2GTxvzWo1/T5sNi+MMvamoSqEFtRnAOCINLltfftE8THGQRADmfQanGUIjjN
-	 RVoOcqVpPFqWfM/bLAbLNMIYAVoDGxQUfTZznMod8pOTBHss8slIb2OLWkxprMzPPt
-	 haP+Wviagu6j0Rj/rhXNWfWhY203vmFJfzE14bbVsTQl6FKKw1keBdZ+5JGhCEkU/l
-	 gy5Bu5eDhw+T3+hCDzisMRWR4CjBa7yVUpzWmjwa6nEcp37bod3lCsQ6eRCIbKWS+D
-	 WLr2zo8wJvscA==
+	s=k20201202; t=1711703391;
+	bh=qCEbulFduSNumMtAvNmv8e5o53wv9ou11qaVvfYDl1I=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=cUcoX29lxqP3o/uu5GkmylQ2N850ka0wERjw1dqVGb49wl7di7Chx0LGV2MOCRhbf
+	 YqKB3lJs/srqXgJ5ESNp6dZ3FaLEnHfd+pvParjPRNtUsxYI28M4he6fNjxH8gGHLU
+	 H7df1HYmk4+ztyZJNKs1EjUUKhQczPTNjirJVWAMAuMHc9MeH93nnv3IyBo0uDnm+s
+	 7EqxmefJG217c4x1jln5dUCW03VRDdAiYRD3BQ7Z75YOdfz5LvQ0dKDfKTyiedV1+N
+	 4wQszNQW/LElYGRNMZr9hT4j6WO/z4uUWXtfYFpRQxIxUnLDx4ZraHS11pnJymWiy3
+	 9ywVSWSZXFotQ==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -51,14 +51,16 @@ To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	linux-pci@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org
-Subject: [PATCH 00/19] Improve PCI memory mapping API
-Date: Fri, 29 Mar 2024 18:09:26 +0900
-Message-ID: <20240329090945.1097609-1-dlemoal@kernel.org>
+Subject: [PATCH 02/19] PCI: endpoint: Improve pci_epc_mem_alloc_addr()
+Date: Fri, 29 Mar 2024 18:09:28 +0900
+Message-ID: <20240329090945.1097609-3-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240329090945.1097609-1-dlemoal@kernel.org>
+References: <20240329090945.1097609-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_020949_267667_C615C752 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20240329_020952_153860_B270FAE5 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,75 +77,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series introduces the new functions pci_epc_map_align(),
-pci_epc_mem_map() and pci_epc_mem_unmap() to improve handling of the
-PCI address mapping alignment constraints of endpoint controllers in a
-controller independent manner.
+There is no point in attempting to allocate memory from an endpoint
+controller memory window if the requested size is larger than the window
+size. Add a check to skip bitmap_find_free_region() calls for such case.
+Also change the final return to return NULL to simplify the code.
 
-The issue fixed is that the fixed alignment defined by the "align" field
-of struct pci_epc_features assumes that the alignment of the endpoint
-memory used to map a RC PCI address range is independent of the PCI
-address being mapped. But that is not the case for the rk3399 SoC
-controller: in endpoint mode, this controller uses the lower bits of the
-local endpoint memory address as the lower bits for the PCI addresses
-for data transfers. That is, when mapping local memory, one must take
-into account the number of bits of the RC PCI address that change from
-the start address of the mapping.
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+---
+ drivers/pci/endpoint/pci-epc-mem.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-To fix this, the new endpoint controller method .map_align is introduced
-and called from pci_epc_map_align(). This method is optional and for
-controllers that do not define it, the mapping information returned
-is based of the fixed alignment constraint as defined by the align
-feature.
-
-The functions pci_epc_mem_map() is a helper function which obtains
-mapping information, allocates endpoint controller memory according to
-the mapping size obtained and maps the memory. pci_epc_mem_map() unmaps
-and frees the endpoint memory.
-
-This series is organized as follows:
- - Patch 1 and 2 tidy up the epc core code
- - Patch 3 and 4 introduces the new endpoint controller method and epc
-   functions.
- - Patch 5 to 7 modify the test endpoint driver to use these new
-   functions and improve the code of this driver.
- - Finally, Patch 8 to 19 fix the rk3399 endpoint driver, defining a
-   .map_align method for it and improving its overall code readability
-   and features.
-
-Damien Le Moal (18):
-  PCI: endpoint: Introduce pci_epc_check_func()
-  PCI: endpoint: Improve pci_epc_mem_alloc_addr()
-  PCI: endpoint: Introduce pci_epc_map_align()
-  PCI: endpoint: Introduce pci_epc_mem_map()/unmap()
-  PCI: endpoint: test: Use pci_epc_mem_map/unmap()
-  PCI: endpoint: test: Synchronously cancel command handler work
-  PCI: endpoint: test: Implement link_down event operation
-  PCI: rockchip-ep: Fix address translation unit programming
-  PCI: rockchip-ep: use macro to define EP controller .align feature
-  PCI: rockchip-ep: Improve rockchip_pcie_ep_unmap_addr()
-  PCI: rockchip-ep: Improve rockchip_pcie_ep_map_addr()
-  PCI: rockchip-ep: Implement the map_info endpoint controller operation
-  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() memory allocations
-  PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSIX hiding
-  PCI: rockchip-ep: Refactor endpoint link training enable
-  PCI: rockship-ep: Introduce rockchip_pcie_ep_stop()
-  PCI: rockchip-ep: Improve link training
-  PCI: rockchip-ep: Handle PERST signal in endpoint mode
-
-Wilfred Mallawa (1):
-  dt-bindings: pci: rockchip,rk3399-pcie-ep: Add ep-gpios property
-
- .../bindings/pci/rockchip,rk3399-pcie-ep.yaml |   3 +
- drivers/pci/controller/pcie-rockchip-ep.c     | 395 ++++++++++++++----
- drivers/pci/controller/pcie-rockchip.c        |  17 +-
- drivers/pci/controller/pcie-rockchip.h        |  22 +
- drivers/pci/endpoint/functions/pci-epf-test.c | 390 +++++++++--------
- drivers/pci/endpoint/pci-epc-core.c           | 212 +++++++---
- drivers/pci/endpoint/pci-epc-mem.c            |   9 +-
- include/linux/pci-epc.h                       |  39 ++
- 8 files changed, 774 insertions(+), 313 deletions(-)
-
+diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+index a9c028f58da1..218a60e945db 100644
+--- a/drivers/pci/endpoint/pci-epc-mem.c
++++ b/drivers/pci/endpoint/pci-epc-mem.c
+@@ -178,7 +178,7 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+ 				     phys_addr_t *phys_addr, size_t size)
+ {
+-	void __iomem *virt_addr = NULL;
++	void __iomem *virt_addr;
+ 	struct pci_epc_mem *mem;
+ 	unsigned int page_shift;
+ 	size_t align_size;
+@@ -188,10 +188,13 @@ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+ 
+ 	for (i = 0; i < epc->num_windows; i++) {
+ 		mem = epc->windows[i];
+-		mutex_lock(&mem->lock);
++		if (size > mem->window.size)
++			continue;
++
+ 		align_size = ALIGN(size, mem->window.page_size);
+ 		order = pci_epc_mem_get_order(mem, align_size);
+ 
++		mutex_lock(&mem->lock);
+ 		pageno = bitmap_find_free_region(mem->bitmap, mem->pages,
+ 						 order);
+ 		if (pageno >= 0) {
+@@ -211,7 +214,7 @@ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+ 		mutex_unlock(&mem->lock);
+ 	}
+ 
+-	return virt_addr;
++	return NULL;
+ }
+ EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+ 
 -- 
 2.44.0
 
