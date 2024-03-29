@@ -4,122 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102E0C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 15:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C39CD128D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 16:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6XX34weJS/JCOlLlyqHRkCK7nnzNoNLc1yC+W0qrTko=; b=45z8IuQ5pFNvIb
-	LpjKTYVAKERkUhSEbJ8XkdBJnmdK22DuOBinijuV/KKfJhDOjYhuCvZb1cTvI0bLF+EROXIcJHyTt
-	3nuocT23V1v9GWM+KX0k/dDTOhyQEzdr1N5iQ0p0lKeFSYHKFQkJ7iSc72LB4rsQTliGjbM9gp7DV
-	FzwElPTjGI3+GUEwhtj1kicsK0mjm6nvM4u5wMQL+66D719f76P7Yz/6V/frcMLwo/AAptg3kaBs4
-	/H7x1U9sL+/aThiA6kx7ac6dj+ixHP4MgBAAMAEG8my+XtYYoxEEwoKqVInbFJcNYckfz93VoopVN
-	THo8ZmN4TZy609JkCUpw==;
+	List-Owner; bh=d3GfPSwmw1fX5c1Vaj20EmVufRhg9wKVNJV7927XVyc=; b=w3uJAyJNlI8P+w
+	IVnnOgdrDprNYH0/sbkOI6vRSYKAHGUQzONsw5YnVkgEyJwkRxROVY+K8jefy6N2vdFomKdL06qSi
+	Y0GAIEFzSgXZ/E/EyHVA2X4u9caEAKoItO/A+CFog2EQZbaJhl513dMCB/lfZxiuic75qBmdIzlWi
+	E4/8wLAsNdkroa+j39NY8O5pao3CihkEKK5LZUqoqQ2wRV2SiiWOBNS1ogiIM2F+Y8sRGW35xdPdS
+	BKRJckUExkH7SpBneJPDfpXl8xQMHDOz3aulQcCRIvWzKQ77u9ti4RFMFdQZL7c6qpNY4+s2AIqgi
+	dbm1dh+mi1QI002vWW6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqEIr-00000001BM7-0NsT;
-	Fri, 29 Mar 2024 15:38:01 +0000
-Received: from mail-dbaeur03on20700.outbound.protection.outlook.com ([2a01:111:f403:260d::700] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
+	id 1rqFEy-00000001Koc-2lgW;
+	Fri, 29 Mar 2024 16:38:04 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqEIo-00000001BL3-3i2k
+	id 1rqFEu-00000001KmV-1hao
 	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Mar 2024 15:38:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BiHmfM62qF6oGdKrOuqnf2womDux93Szx8GQ00nKdNjFPMfSEbbEq3rv5Ckkt0KUlTbVAaIZwaiiAc8RJSdCBZfUkCPWxBGK5azKllRZckyF9SRQ1xO80xjCsaX55UaRfaJOyqoGeKaOLvX7O+7NBwUlSldPuG8lPbOJu5XTEOQNAozMxI4b9bErqtuCpyS0NSTOE+gTljvKil/R4IGeoYNGObqu/7RmNTIZNTbknDSj9tNJHb7wgTZ0SDkyIP+VnOZ2iuNqazO/xqsK7mnduppXyPgns7zvRMHdhiWJVBCYUc4zjgiBA3bMy2kPv/Wf8mLl04zZ1EGo0xdYWeJ/kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xiRUWqOayQyrFcX+48QEy62co2jWYfNTO47CRs0/F6Y=;
- b=lu8aXg8IBsiLR96cB9rU4Q/as9AsItFtU3O/fI6RsP5OCAPlqTfUvfOcV9AVkNd/JoBAyt5ZOhhEGwPGNefSFkrDhUfIZCm9CDH5GNGTSeaWVKxMvoYEsKIoSMkUIUpmiJE/sz7eMmuVmAz7c40cKC9aeYPL9aDLPCR1DVIdlznqCOmlat4nBj6C6TgIWePn/TxkYwGlZXcG2RfVzKD6WgYW5arSYK70KI5uD6F7c98sEdoB3zUGW7T7EyDFzD4JBxxaqldRZ/C2zvFeJmVHgYLOMy5vMQli8d3ZOZs6m2Xmh3VE7zHnIRbc/9ez2onuwz/BxUMOVEEevKJhQpSTgQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xiRUWqOayQyrFcX+48QEy62co2jWYfNTO47CRs0/F6Y=;
- b=A5suY5E4fg+2a2sjlzn8TBHhdc63zVbejaCDp7WfSjQCaW0QpeT1Uphx+3CQ1Jha8iKUNTMhIsq3BC8BMhPMASr+naH9BdTJX6OIWeMfN7Op7OE7IDAXdxx9dx+Tfk/udyS0gwEXxcUmto6IpD1jRxlssLTrPyzNvCf01VQg3aE=
-Received: from PAXPR04MB9642.eurprd04.prod.outlook.com (2603:10a6:102:240::14)
- by DBBPR04MB8059.eurprd04.prod.outlook.com (2603:10a6:10:1e9::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.40; Fri, 29 Mar
- 2024 15:37:53 +0000
-Received: from PAXPR04MB9642.eurprd04.prod.outlook.com
- ([fe80::3168:91:27c6:edf6]) by PAXPR04MB9642.eurprd04.prod.outlook.com
- ([fe80::3168:91:27c6:edf6%3]) with mapi id 15.20.7409.039; Fri, 29 Mar 2024
- 15:37:53 +0000
-Date: Fri, 29 Mar 2024 11:37:45 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Damien Le Moal <dlemoal@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 07/19] PCI: endpoint: test: Implement link_down event
- operation
-Message-ID: <ZgbgSdeojLxDdbZZ@lizhi-Precision-Tower-5810>
-References: <20240329090945.1097609-1-dlemoal@kernel.org>
- <20240329090945.1097609-8-dlemoal@kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20240329090945.1097609-8-dlemoal@kernel.org>
-X-ClientProxiedBy: SJ0PR05CA0195.namprd05.prod.outlook.com
- (2603:10b6:a03:330::20) To PAXPR04MB9642.eurprd04.prod.outlook.com
- (2603:10a6:102:240::14)
+	Fri, 29 Mar 2024 16:38:02 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-41549a9dcbaso10265065e9.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 Mar 2024 09:38:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1711730279; x=1712335079; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UwLmF2g9SeFgO0qE9J71WGfItvHTsnplXOGpXDPoZl0=;
+        b=VnPxY6TL0p4spAt8fTda3WCZhJv8jZvKW6E6qtI7xgiX23/sjgU9LdDi0uBBG+1mCN
+         g1xt8rSGxF4gH0DkN4u1W36oJ+X/d/2W3JRCH0Dss0whklw00Ua5sVDFIZKF8NQYJPp7
+         RaNpd2HBCE5F7lGbtroxL9kca8mS6Ick28i1YUUtOdS4kMQquySrMjw6aEHUOB/NasIt
+         XbUj7WYL2C+rrBonFzVD+lz52vmbwidesbFs5tTQ6G2cuzaF1D+peU3UDBSDiZsInziH
+         ZBROX6052ph+ah850yEBFot98LwtpTbps/3bG824qCaFw7CkOOOKnLEelwxvLtXBt2qD
+         MTCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711730279; x=1712335079;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UwLmF2g9SeFgO0qE9J71WGfItvHTsnplXOGpXDPoZl0=;
+        b=bFEvTfRaOsyzbWce81SXDFaraYWgh4pPE6kZfNywA6Xi2JXlGHi10c4Q69pYYoCvT9
+         UZbuOpa9Gkmtux0W25wEgKM8pHC032acsGy4Dw+UigGIJVIo2BkiUpiKP4FPtQVzGmGZ
+         mdLV5PPJEdOSIiusvD4D0oDj8TZtSqj9UN4zxBcZNSO3XTuQ2hEUc9LkMI3G0LrSApk9
+         GHzS03AxpqxhCmAeOMYGIeC28WaSiHbXjapszFiEyM/lxblL5mM82a6w/gdzebzt8OxQ
+         6cygMvUjYsLDXVUuE4YbO0q69gaNve6NMncPQpssf+ZQ+uSQxK22xKy7MLJI18HUnoXq
+         WCkw==
+X-Gm-Message-State: AOJu0YxCVKjqhP5xCaEH2Up7OAA1s8Fj4vlyF+NwL1ZG3dG7t/Mkt2ct
+	b8ev1D/8FbCgp/lDisS7zTyrNoa0cZsPADCQfnnfDy35ikoMxRtcAw8czk2eG28=
+X-Google-Smtp-Source: AGHT+IFxR9kCg8wK1tdVBWU2BipcSmXFIAMRH1mlDRbii8iRl38mOAwB9CBqVsbED9XR994yGHrUNw==
+X-Received: by 2002:a05:600c:4f0c:b0:414:85f:1f72 with SMTP id l12-20020a05600c4f0c00b00414085f1f72mr1763054wmq.6.1711730279018;
+        Fri, 29 Mar 2024 09:37:59 -0700 (PDT)
+Received: from arrakeen.starnux.net ([2a01:e0a:982:cbb0:52eb:f6ff:feb3:451a])
+        by smtp.gmail.com with ESMTPSA id m4-20020a05600c4f4400b004146bcdde06sm5958736wmq.6.2024.03.29.09.37.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 29 Mar 2024 09:37:58 -0700 (PDT)
+From: Neil Armstrong <neil.armstrong@linaro.org>
+To: linux-rockchip@lists.infradead.org, 
+ Chris Morgan <macroalpha82@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ daniel@ffwll.ch, airlied@gmail.com, sam@ravnborg.org, 
+ quic_jesszhan@quicinc.com, megi@xff.cz, kernel@puri.sm, agx@sigxcpu.org, 
+ heiko@sntech.de, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+ robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+In-Reply-To: <20240325134959.11807-1-macroalpha82@gmail.com>
+References: <20240325134959.11807-1-macroalpha82@gmail.com>
+Subject: Re: (subset) [PATCH 0/5] Add Support for RK3326 GameForce Chi
+Message-Id: <171173027816.1500306.363820748335291439.b4-ty@linaro.org>
+Date: Fri, 29 Mar 2024 17:37:58 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXPR04MB9642:EE_|DBBPR04MB8059:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qDMLFrqHJi62pktypPBTyLNqTa2ZTdO0e82HXxbO6C8qQwBVqgBKJ/kG8/Psw3cICAIO+ZJwxr8W+76RYmMUxu4ntJnUlLkB7weLjurVIbzhOvYqoPTemXpLsu6JYHQeUJhr0Ncsy/V1Z9jrTJhCapKI8j1/8t0EGyGFrGYOJtlzMQScKq4ro1SGIYCTzyrY9YHL0rf7s7+yabmiWLrziijO3dEt9lwQ9SXT/Yq3jjmKZHMk9FohV3d75rqJ5DzC/vVehEMJm3vLuegN2iQuOEVCiRM2LXan7v4sop8bh7VgaaH6AApyDN2qLTJkUTM35jnXAGRTGYCMz0AIKD/FoCbDUDU1PWyhi+AwStmMWBAiOyCiQfp2llIpJ1PpQCcUvPzEhs8hpi6MU+fOEhKWQnD1XCPiN6x5O/aSUyNNeSt8qebaIMfuxM7/xsRwa3/NKEuHclkCDdA6romf/WMM7YISnP5M+mOeIrh/OM3VJv7E5qG1YvVl2HjtRQAm9O4a+S+Eeb4QPFMEON97qjX7V28MxLlnp1N6PD+dZ5DxwKa0if3J5E6clyE5FCqrERgop54QbUI8NGoOrklPM7mNY4/qqWDf6KMbeuPOybBDloalCuMujipx+Ah0aheWz3sn3pOTgSXjwf3E84BfcznZCt3OXnlJPfE0crOEaKXTv1ln4//cnpuEjmxZ/rbXI3J044QwY5sczG0TDyxqGD8Zk63R1Inra1ROLUdxaCFGbwA=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB9642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(376005)(1800799015)(52116005)(38350700005);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+wLviarO37gsirIbdjVoX/qmJyC122DhFZRKQFAxL829y+xthDWOwSo4hoKc?=
- =?us-ascii?Q?Qb2sv7k7F9VbSUMs9Y6flFAoELZeWHP+roZQsw9ndTO5LXZy/+WehamzMYb0?=
- =?us-ascii?Q?zWPrw7T0pRw0uEnPZG0ysyZaQm3ckaEhM/+m246xwVFGePF2oQU4Qd0wzokf?=
- =?us-ascii?Q?CkBvx2gDJs1TKArfgNbutkUMVJm1Y1moWgDTUXvYb0mZqrokskc6JOnpPrbd?=
- =?us-ascii?Q?36amEVHx2FhOOoO9RpCuJYMgpnEeVxt2xnvmiCw/wwbVQnLAN5zKyxf1bi6n?=
- =?us-ascii?Q?sR1gSiEbQXShs5tT6qB8e6T3AsmfiNt2Q+/FRWL5Azi2Jjm7yXy3MOwuRTk0?=
- =?us-ascii?Q?GrXg8nCkK6YXEjZaNDuyawhXXIeR3ZaPglhiVMXJ82rPUTNzZMocXuO8d8OW?=
- =?us-ascii?Q?+sufrPmeCM5LYqZUddAU7o4VKYKbjLI6P0/tdelhGAmwPenBNF5NrAsnxpb4?=
- =?us-ascii?Q?kgLPyv70/oy9S5j5YUBr3qB5ZYNUVNeQgJId4gl0iVgOXy1VuAo5/S4GQykq?=
- =?us-ascii?Q?Nrcz7R40ezT3z7tZaoyzyLkHW5xEGWoYQ0ng0nx3UDl73PpM9tJkGiMNEYsR?=
- =?us-ascii?Q?nZ/NTQ15wnHEUSmvN1K7torhS+cNB2mOFp6awBLgyIdtz2JEzyfJk/cxOBHn?=
- =?us-ascii?Q?85sM3MH4GcGc5NmvjHPnD9RH1ndhpMhCZXRUxcTndhw3Heg4CtlVuxlbW9S3?=
- =?us-ascii?Q?jbreUU3OXVnIyCaMaOi5hglXZ/ueDUEEViw/6AGN6mA78T+rTMda7tAa8TIm?=
- =?us-ascii?Q?3Rn0J9GUjAjE+mLHhJdP8ib6FoFqHYluSbGpWYi7CqbkBluYt5DbQ7hPdyI9?=
- =?us-ascii?Q?OJpOAwEbbfFCSdl813Elb6KOHBdWe93ifRN9al5AtBqzKXB4hHzgFobmI/xM?=
- =?us-ascii?Q?btY9uyUzDV3P73fQY9NruCG6ci3avH7WK0RwCXxRZNrRZ9kVNHqOvMWUuYa0?=
- =?us-ascii?Q?ujWSSBhByJA6ujTcU6voqKNw1fe0loHu/0HQPt8zD024HvyXtwGIwMJ4ov6k?=
- =?us-ascii?Q?FUh8oBvx5mEJKwSaAnHotBEehHmj+D154E/KKP/8GS3uDHus5tYx6t2JsWoQ?=
- =?us-ascii?Q?UNe64huairtwM0g2r0ONiDZr7ZKGWwCvJELlgBkBgGdg/kM94ltq23k9Jwby?=
- =?us-ascii?Q?5QJ8Wkc/Jnn8no+cbAP0Y8RDvlL59xP395HdMDcZwdISwlmrh8CWkrK1pvJu?=
- =?us-ascii?Q?yvd1T2fEMVPwUCwlOWUy7QWUMxqTylcSV/YIIxQx0Gx4RLJbX88btskBwTQk?=
- =?us-ascii?Q?UO8qGye0MfXr97puzUG63g4GK24rhfK6HshUP92OVxKum/6QTpgTx0BvUUa3?=
- =?us-ascii?Q?mKkOp2rVwhsIsrNogANiYnPrfAxrXk8KYQjflKRbKfd7zT0xkLnUJhz4vlMa?=
- =?us-ascii?Q?wCIkm8AqZRgOOzu0EzvSupnbmlctqr2A2bjFRVCrEe+6CQsnLF2Axs6RVv7o?=
- =?us-ascii?Q?c5/AZftEMbdu0w+SnLwHEIVCTQsRClJjyABQuSIjaZDW46sjU3zLTMxQNdOk?=
- =?us-ascii?Q?1/nM0vBgoBk3F/H0SJI63Vm6SazylwaB67nvUaE1oRZZy7ziuG1IpCyn7IAr?=
- =?us-ascii?Q?QpTfCNcA6XUkLuJ3wCm8Gut6N4jC0AS73pguNF/R?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e88688c5-2a30-417d-e65e-08dc500632f2
-X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB9642.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2024 15:37:53.5724
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: yQ5Do+SJpDgtHidHunNs4WoCwoBAghcg5o8zL8CKAUInfm9UXpW1HITtGe9qbjS8yeZLpB1bLcu2IKGMQxmb+A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB8059
+X-Mailer: b4 0.12.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_083758_950346_6E53CD1B 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20240329_093800_507192_25E9E278 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,45 +97,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 29, 2024 at 06:09:33PM +0900, Damien Le Moal wrote:
-> Implement the link_down event operation to stop the command execution
-> delayed work when the endpoint controller notifies a link down event.
-> 
-> Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+Hi,
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+On Mon, 25 Mar 2024 08:49:54 -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add support for the GameForce Chi [1].
+> 
+> The GameForce Chi has the following hardware:
+> Tested:
+>  - 3.5" dual lane 640x480 DSI display.
+>  - 15 GPIO based face buttons.
+>  - 2 ADC based face buttons.
+>  - 1 ADC joystick (left) connected to internal SARADC.
+>  - RGB LED arrays for key backlighting
+>  - Dual internal speakers.
+>  - Realtek RTL8723BS SDIO WiFi.
+>  - Single SDMMC slot.
+> 
+> [...]
 
-> ---
->  drivers/pci/endpoint/functions/pci-epf-test.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-> index ab40c3182677..e6d4e1747c9f 100644
-> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
-> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-> @@ -824,9 +824,19 @@ static int pci_epf_test_link_up(struct pci_epf *epf)
->  	return 0;
->  }
->  
-> +static int pci_epf_test_link_down(struct pci_epf *epf)
-> +{
-> +	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
-> +
-> +	cancel_delayed_work_sync(&epf_test->cmd_handler);
-> +
-> +	return 0;
-> +}
-> +
->  static const struct pci_epc_event_ops pci_epf_test_event_ops = {
->  	.core_init = pci_epf_test_core_init,
->  	.link_up = pci_epf_test_link_up,
-> +	.link_down = pci_epf_test_link_down,
->  };
->  
->  static int pci_epf_test_alloc_space(struct pci_epf *epf)
-> -- 
-> 2.44.0
-> 
+Thanks, Applied to https://gitlab.freedesktop.org/drm/misc/kernel.git (drm-misc-next)
+
+[1/5] dt-bindings: vendor-prefix: Add prefix for GameForce
+      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/59237fc04ee1c4cdf62ad5dba18244713970e36f
+[2/5] dt-bindings: display: Add GameForce Chi Panel
+      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/387974a21a63b1c7efcbc19c48b9930f6ef5ac63
+[3/5] drm/panel: st7703: Add GameForce Chi Panel Support
+      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/4c4f33be7e4d476566246e7166c54ef175287e00
+
+-- 
+Neil
+
 
 _______________________________________________
 Linux-rockchip mailing list
