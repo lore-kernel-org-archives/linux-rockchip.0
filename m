@@ -4,82 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CCC1CD1291
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 158F8CD1290
 	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 12:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Rv6dntkN53UrJOscOSVJbIVloxaVu1ZAg0mJw8Jr8c=; b=u5yrlRejGVqwF5
-	Wr/YhnHL55t52e3/H6YDVnN4ZM5UWkyartbVJzwFiIOZOsasMJDFQx5jF7/cYGPZV1oiyKgEAH22W
-	8OCPakVcmURXgHVhMFVT1BcjiOVTLFI7rLxO7rxtCZ6UceJcAoONNnWHbLEBGZ7nNpdF6Gq9Byh7o
-	+LyqYY6zTncqzhOMp9gfWbr674RMEppeuDpV+zdA96Q+ZQlQn4zy+nuRxAyUdHgL3gJqkUfRDXaqS
-	sJpYTEZt06w7Y5eQyzgw0zfT6i3Fb5nXPgtJPu2N36dLD5RAc0yIrvdVsph/LPm43E1+FS6AnQeSU
-	SmcwWHbiVQt852ap+jWA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=9NtlUinMN/S55DLtGal0h+q2Jx/nVvhwk/gp9kmp330=; b=ZJ2gIEr+5W6NGn
+	gTlll0gddXGE2oevhw1A8H414+mYQn8XcNOf6n68d3P63a+0v2oWw5B/hiYk0Arlt5DyJCXtCVrfI
+	e6bE5aAyCtNGxJgXlDkq8182b7V+ziXK/xZL0mzYj5lmiGCrEFDWFfhP3P6bQl0GTRT84R992ztmu
+	CjWJS6jAVhCw9OVSc55jIZ6wJmyiKgxaT59cGbPh3EnuTvl4+YT8ZSYBV/PPRB0Sg10pfJyNSye1x
+	4JbltHppYYdp/Pezt0r0eGWi6ZMWqn1CuvyG9IbWnsIg4X4Z4KrYQmPyay/ZQ5QZ1U5tka1DMCq//
+	9H0itazRiugelP8PyPLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBau-00000000RMJ-3plY;
-	Fri, 29 Mar 2024 12:44:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rqBaw-00000000RNw-3Wsp;
+	Fri, 29 Mar 2024 12:44:31 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXV-00000000QRI-3RBh;
-	Fri, 29 Mar 2024 12:41:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=+PbmcYmws1FuyqvZq0U1ow7i9vIekepGTc5x0eMFkNs=; b=mnp3nF2nXQQUweD8J7I8qAvVzp
-	QjeS4k0e0cJRlvHWWCpRGavH71Eu8UqrwRUEwXDfDD7Oi47tTu4RZYoa1YC1TNpp1SGMisbC+q8Uw
-	l9DvWjfbR8Dg96QHCLJn0AGEZC0Q9lw4qhItFht7P7w9W4KFUg4GrPXhk0c/a905OrhPXaQwEkZ6h
-	NBnFVi0KTAnFjLXB8drTRrCcqp1Sz3am8jPpCwpyTytfV/nhDOQ/acJZAelZ7va35KeH2tziiz7RK
-	bogjWn/6Bv1+Dz4slF3/+YcSHBdJLKqc2CZ5nc/W8CUbu6nqnWgrB2/ESHcbnyAXVS1LaloFCJMqQ
-	0sujqQWw==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXR-00000001Yr3-3vu5;
-	Fri, 29 Mar 2024 12:40:56 +0000
+	id 1rqBYI-00000000Qcg-470P
+	for linux-rockchip@lists.infradead.org;
+	Fri, 29 Mar 2024 12:41:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BFBB061926;
-	Fri, 29 Mar 2024 12:40:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64AC9C433C7;
-	Fri, 29 Mar 2024 12:40:51 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 2F12DCE2DCF;
+	Fri, 29 Mar 2024 12:41:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0E4AC43394;
+	Fri, 29 Mar 2024 12:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711716052;
-	bh=4RMOa72KKzmhh+jE1nxP1CER4E3Wa2YBrXuinwX99So=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IDNvvYaGt85WtS0aS6x1+gXs3VD10W/Zpfj15uAOIk11ees/m2jV72MsThhWDi+NN
-	 Hh7TYVOxzMCtwwnarZxv/FGALIyTEDzEX2pMJ7hSNAMEfPkwkDUnYOOEWrFp7s1IwJ
-	 Sm0A0QOKB814fhFsNxzV4QsBlEbxRouDiL0cWmkQ8OPrgh4oXfPFYw9i3YQ7kZq6Bq
-	 OcnMjxoQbLmKC6OXKYkIBILhbiwkwEK98iRGqWCQSZRnimpFrKRdsFiKH2Rkh49Ftf
-	 UdMNAKOyS7IP1Z/3jwANv2etA2gZwcxLsZFJzTU8ao/nc2RCD3kIzL1RqRGtxM/76x
-	 tVxv3C/jH9xaQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	s=k20201202; t=1711716104;
+	bh=MGQMjrN3E2cMAmaQFYgStNUss/TX0AOz9m6LyxdKvac=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=LBrJM5JjwDG56aGa3eKVxxOz/QbYBaYP6BylgRJi3X1JlzXptSeS9sKqcpqzSSp6e
+	 9Oljam7968p/0jUwr+I9B3KEw7kWlzf0Crv5MxzeclSUU/+VGgfzqt9JY+t8QlFlh6
+	 QWwPLRi4ONjICITTlZuKhA2qUIeN+/O2OM6zjgM6tswWoA7Kpuj4e0SXG54pYvE0Hf
+	 IOPh5DKl4MLubbYr95z/nd3/goz6ok6LFxSnQKYkLkSPz2yHtzGm6i95nBgYv9yZKd
+	 PlGbXyTuRO/9OVQdcG6BnigfB0V1HDdgAAYCEq87aPkyhoNaKjSZxuWOgzg083TayI
+	 DoUeyd78ldTLA==
+Date: Fri, 29 Mar 2024 07:41:43 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 29/98] ARM: dts: rockchip: fix rk3288 hdmi ports node
-Date: Fri, 29 Mar 2024 08:37:00 -0400
-Message-ID: <20240329123919.3087149-29-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240329123919.3087149-1-sashal@kernel.org>
-References: <20240329123919.3087149-1-sashal@kernel.org>
+Subject: Re: [PATCH 00/19] Improve PCI memory mapping API
+Message-ID: <20240329124143.GA1638894@bhelgaas>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.8.2
+Content-Disposition: inline
+In-Reply-To: <20240329090945.1097609-1-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_124054_157020_A0F5F86A 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20240329_054147_569091_72238995 
+X-CRM114-Status: UNSURE (   6.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,71 +77,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+On Fri, Mar 29, 2024 at 06:09:26PM +0900, Damien Le Moal wrote:
+> This series introduces the new functions pci_epc_map_align(),
+> pci_epc_mem_map() and pci_epc_mem_unmap() to improve handling of the
+> PCI address mapping alignment constraints of endpoint controllers in a
+> controller independent manner.
 
-[ Upstream commit 585e4dc07100a6465b3da8d24e46188064c1c925 ]
+>   PCI: rockchip-ep: use macro to define EP controller .align feature
 
-Fix rk3288 hdmi ports node so that it matches the
-rockchip,dw-hdmi.yaml binding with some reordering
-to align with the (new) documentation about
-property ordering.
+s/use/Use/
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/cc3a9b4f-076d-4660-b464-615003b6a066@gmail.com
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm/boot/dts/rockchip/rk3288.dtsi | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+>   PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSIX hiding
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-index ead343dc3df10..3f1d640afafae 100644
---- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-@@ -1240,27 +1240,37 @@ hdmi: hdmi@ff980000 {
- 		compatible = "rockchip,rk3288-dw-hdmi";
- 		reg = <0x0 0xff980000 0x0 0x20000>;
- 		reg-io-width = <4>;
--		#sound-dai-cells = <0>;
--		rockchip,grf = <&grf>;
- 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
- 		clock-names = "iahb", "isfr", "cec";
- 		power-domains = <&power RK3288_PD_VIO>;
-+		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
- 
- 		ports {
--			hdmi_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			hdmi_in: port@0 {
-+				reg = <0>;
- 				#address-cells = <1>;
- 				#size-cells = <0>;
-+
- 				hdmi_in_vopb: endpoint@0 {
- 					reg = <0>;
- 					remote-endpoint = <&vopb_out_hdmi>;
- 				};
-+
- 				hdmi_in_vopl: endpoint@1 {
- 					reg = <1>;
- 					remote-endpoint = <&vopl_out_hdmi>;
- 				};
- 			};
-+
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
- 	};
- 
--- 
-2.43.0
-
+s/MSIX/MSI-X/ (also in commit log)
 
 _______________________________________________
 Linux-rockchip mailing list
