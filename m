@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1378BC6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 12:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAC05CD11DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 12:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yScAqKscPwbmfcxdymMnWUxtPR7yeLjg6iXa2qMw2Ck=; b=RIOBjp52eJvlL8
-	2ryAHowSfa/6hZme1+uHkjdtyj1VlayrzmtuzWNAHkWbTpMT5GRvK5J/C7fwu3FsFEE9SAmMDtJiu
-	uYGxHqUzKJQImBK7jPCPdOHWQnKQxSGnjLMwZdfupGuB2Sx+pwj+M5BPp9bsZ3DIWQdJSaimQeD+Z
-	WVtCPDetEnqYQC0ePcJFVRw5BdlQafdUk4KSeKsskq+j8ybdlVRHdzP/C3oFl0wDt/zDb1qAG3h/E
-	LEE7kbqjRZMY5LnzuFGZk1xU+Cjd55/tCqONTKmrQSgCMEIpk7uE3tBQsdSC5EtdJnGePjhSI1NVN
-	WqcXIfWm1Obhdzcxwhrw==;
+	List-Owner; bh=6MYPTZuoC4ctWJuqniJ+OSlS5sCpcnHC/h6dYWDYqAk=; b=1fosXdzylPNjhs
+	bW5Z16KBToEkLw3F6hYAYk4tEoEQZ/BJ3PxpzZMeuAW6cdZ/H1tyVYur5S4Zuuqd407Tn60GPjIb0
+	VoJaWeqFR9RK6yEiaKoh98//w09qUO9Y+qHOg/bn0hhQG8QHgYqrOjMtvRtbwLZEK6TIinlPuRiJI
+	BCtAHDG0EifJ5HC3eCaSmSg/LzFZ0lm/UFTUZuxYayyFyPr2n1cA/fNQMZSVSsPTEtpL437+kntWX
+	SGsNU20R8eQKuR3wQKdFos81tzjH3yzX57qnmvChmOkk44BIGKNoDcRQapOO9eq5rA93mJjNxmQLj
+	uBGstEUtGPicUm08pgYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBNS-00000000MIq-1rGI;
-	Fri, 29 Mar 2024 12:30:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rqBNl-00000000MVv-1bOp;
+	Fri, 29 Mar 2024 12:30:53 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBNH-00000000MAw-2Sj5;
-	Fri, 29 Mar 2024 12:30:26 +0000
+	id 1rqBNM-00000000MDR-1cyn;
+	Fri, 29 Mar 2024 12:30:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0B56261931;
+	by sin.source.kernel.org (Postfix) with ESMTP id 291EFCE2F76;
+	Fri, 29 Mar 2024 12:30:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3961C433F1;
 	Fri, 29 Mar 2024 12:30:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81452C43394;
-	Fri, 29 Mar 2024 12:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711715422;
-	bh=oZR3S+5IeA9tysyQbtacehydjMfZh62c3cUc0dDLAYk=;
+	s=k20201202; t=1711715425;
+	bh=1O8WeNlxDS48rttxgb2bRu0jWhzK9FcC7muewo1Lu1I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ngUloVlBi3aUKwy0LOQQSrMR8nLz/HYoQWtiZQzq0iShFbOQ+4ZLyq9nqKLkBl/MA
-	 hzdYyt/Xk+2G/RqfHyYIB/E49gsOLFyclUK0Q0lJWki/MrmhcFuk3351ZG4Ht5r+Ax
-	 jPppydryEh6DXEZmCeH05aZ3Nj8o6XKmHx5ad3Aq7DcgXZl0e93FXEghMCxj9c/+PF
-	 cjkTtdPXI3eCjHfstXL//umw2xUZV2J2iv/MRrYP8S5Osl/n/v4UlP3A2OwyowGX8T
-	 WZ4wCi4RsifnJ95M14HA5HoWfUJR4B9LU6RMN8KpAEqq3Tbjs8mFfKNfycotQMXDka
-	 ARavgJKd+Unjg==
+	b=c7Ql4rgTcgACTJ/x0mAz2QyBNy9eWOAmL1czWkM92WYDnAqt0zHiTVtYmxFRyuKuG
+	 Ipv4t8COY4STTPIEnzO9+D/Eqy07bPw7zZu4uVeWiODqVdKnbmMf3mhR8yCVX2mdO+
+	 ASZQcDt1R/Rzwkg73lmtEQdAxxJSNmxx8pWAdwLDK66nPbg8f3HfNmaYAxrryS7TCk
+	 TaHo26aib4uFQsXvAY6jkPNKdz4aQ7kjTi/tbxbzxbLoPrAnN5QhsFvNuiRBq0M2TC
+	 3raKe478TrXPtLKOgN5Pzjc7tgpIHubl60ozXHoBCTTNDhiGN/59dQUrWgyAoX1ekc
+	 yN4kgJykOgFHQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -50,12 +50,16 @@ Cc: Johan Jonker <jbx6244@gmail.com>,
 	robh@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	conor+dt@kernel.org,
+	dsimic@manjaro.org,
+	jay.xu@rock-chips.com,
+	jonas@kwiboo.se,
+	shironeko@tesaguri.club,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 16/52] ARM: dts: rockchip: fix rk322x hdmi ports node
-Date: Fri, 29 Mar 2024 08:28:46 -0400
-Message-ID: <20240329122956.3083859-16-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 17/52] arm64: dts: rockchip: fix rk3328 hdmi ports node
+Date: Fri, 29 Mar 2024 08:28:47 -0400
+Message-ID: <20240329122956.3083859-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240329122956.3083859-1-sashal@kernel.org>
 References: <20240329122956.3083859-1-sashal@kernel.org>
@@ -64,8 +68,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.6.23
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_053023_883231_B0D18114 
-X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-CacheID: sfid-20240329_053028_739954_6C3230C0 
+X-CRM114-Status: UNSURE (   9.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,39 +89,35 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 15a5ed03000cf61daf87d14628085cb1bc8ae72c ]
+[ Upstream commit 1d00ba4700d1e0f88ae70d028d2e17e39078fa1c ]
 
-Fix rk322x hdmi ports node so that it matches the
+Fix rk3328 hdmi ports node so that it matches the
 rockchip,dw-hdmi.yaml binding.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/9b84adf0-9312-47fd-becc-cadd06941f70@gmail.com
+Link: https://lore.kernel.org/r/e5dea3b7-bf84-4474-9530-cc2da3c41104@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rockchip/rk322x.dtsi | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk322x.dtsi b/arch/arm/boot/dts/rockchip/rk322x.dtsi
-index ffc16d6b97e1b..03d9baddcbaba 100644
---- a/arch/arm/boot/dts/rockchip/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk322x.dtsi
-@@ -732,14 +732,20 @@ hdmi: hdmi@200a0000 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index cc8209795c3e5..3778fe5c42a4b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -743,11 +743,20 @@ hdmi: hdmi@ff3c0000 {
  		status = "disabled";
  
  		ports {
 -			hdmi_in: port {
--				#address-cells = <1>;
--				#size-cells = <0>;
--				hdmi_in_vop: endpoint@0 {
--					reg = <0>;
 +			#address-cells = <1>;
 +			#size-cells = <0>;
 +
 +			hdmi_in: port@0 {
 +				reg = <0>;
 +
-+				hdmi_in_vop: endpoint {
+ 				hdmi_in_vop: endpoint {
  					remote-endpoint = <&vop_out_hdmi>;
  				};
  			};
