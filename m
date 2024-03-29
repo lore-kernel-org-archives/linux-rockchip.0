@@ -4,83 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 550BDCD128D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 13:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1DCCD11DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 15:32:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TybuicpEKv6IfTgDoQVIK99db7GE5T1YnhIPPGzxhMs=; b=lKXdY4wvpklbw6
-	p5F9Ynmrcq8pRpjn9tApzuRchyQNDuFlYbtVfGK2sr3Jp13VsV3bcJ/fPzLcXy+ympSg0tZd+QAFD
-	I7wOC9+m0cjgK43AiEcuBXEij6fak8nFZHBfj+cuj1FZbbZfp4lplZslfJb+2TnhQZp7Eow02Tko0
-	zDgVM1udljMHVHVPNEg38VXaT20SIVinkQyQU0eFGlfMJppfydALptY35sdFd6e2sk0Snt99x7UWK
-	dtegEKQuTh+iRx739vcwadqyQLjbuMjlLh1GMhjdDoMR9nYV81nWZFHjcF0b2W7wSvrdwufxnI/qJ
-	5WVl01CJYxprxWSWkJZQ==;
+	List-Owner; bh=CDipRLcWwn99R19ORkKd+6kdVPBoq6JkSXrnynCg+dY=; b=nVwV/gaL5+FxPP
+	f1gWNvcPTU1maLUOXzKz6/Qd4PaHCGtRVKK8r/El96DEJ1Gx3Y/b92wTb9RYWcKX0t/rlbtpUg6Xm
+	tIPtcCiwnJQ3mUc/YnXKnf6Q5f8lAcDA52ZX8hZFrLGjhFa9pwVJa95S5nvzaGMU/SxfEq/D7VwaY
+	+eR3IQehwmcTQTQAnlWkCvzyyO8KoDVHGLgWIl9hUYN0LbpF4D7wS1uMvM/VvOXmUqINVjiktUDcd
+	ZGSZRPNNFU+rdgDKSlaqshfWBVY4smpDxMM0KNw4xwTAcJVKyEezP10k5ELDnV4OBEv+nUZw49qJ2
+	g51KvcUdgEkLuewxzePQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqCbl-00000000jpl-1jhD;
-	Fri, 29 Mar 2024 13:49:25 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rqEDg-00000001APx-1kRC;
+	Fri, 29 Mar 2024 15:32:40 +0000
+Received: from mail-am0eur02on20700.outbound.protection.outlook.com ([2a01:111:f403:2606::700] helo=EUR02-AM0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXX-00000000QRi-0exz;
-	Fri, 29 Mar 2024 12:41:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Y3faioi6YkyM6qDvMnrvhb/wgKNPVVuF4bC98344lL0=; b=GRdNmPCF9bi95YZDqgMAxrkf1d
-	Ne5xNhUQwgHWCDEH3U79WRffOUWJP+pFiuaKleLOsHDD2Odd3UxJ9pcQoIPj0m1TnUBn+Qr74ZJYc
-	SpKVo+1Vq2Wiqxi+K2vkXM5FRLcyHEY0pKND0d0XLzrhGqN7aEQcbcB7kGb+RfQqpsTe6yXBfNGaY
-	HHwaDpXpigAFfNEJRvmt7mh36fZmtPathfBsZvsiv+bR/5oy/v6FQ8/O4jva2V5Sj19WvzpajmilB
-	ARGWg3f4SGGp8teQGH+2BLukCLwC1aa7gwaAehMli6Q32qM+oIZkXjAR0IWJ7da5cMqlqNfLLK9CN
-	D6Hn+qMw==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqBXT-00000001Ys0-3xMK;
-	Fri, 29 Mar 2024 12:40:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7672961902;
-	Fri, 29 Mar 2024 12:40:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F32D3C433F1;
-	Fri, 29 Mar 2024 12:40:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711716054;
-	bh=h5vXU9ZnXCMzgReS3qgBCF4yclyS3UuPVOjxSyLz5eQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X6XxjRDXymGspaC2jtiK9YL53Jb4utJi2W1c1aOaJoqC49ll4NZ1vFi0CnJa2O8Dd
-	 lCTCJNWiGAvPPnz4z+MUgDYglxe2Enm0yKEr5pbLFekZpKxAU2vrROQAojv8kyxRWw
-	 H2gApS4Xik3bREfeSS/g96c+8b3PLyry4NzyOgvfHBo4St5afAcpfpaC0glDgbMaT9
-	 D4zsfqiQjcTm+/j1/s0SXFJaIbqGiNo4tE8WgDbyCZa5fWBdb0ixWEGjf9kDcmhJ6B
-	 PfA9c1tBpwGYa43PIaB+l3JZR4FBSK24MBS4SkmWQYZ9sSdUd8V4xXccL63EwYObkh
-	 +kujA2vct+0dg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sasha Levin <sashal@kernel.org>,
-	robh@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1rqEDc-00000001AOx-0dqf
+	for linux-rockchip@lists.infradead.org;
+	Fri, 29 Mar 2024 15:32:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OWsleGnvekRYSkSKS+W9f+KF+QosANamQXcm9Q09ixzAv1YwLvaQLYeGOeT2qt6MwY0Wcyl+5r8V5hTu+WAq2qp/cjMl+DCIrpASyNXK+8q8S7NtzkPeLb2IiGtRv8nar5s7C6Ndjp0VxCOpAbXDr2ReZcM21CeM8EVxIjsnot2ZxPjZ8SuANOl6r6PTjOErhn6uY5PE/zSUU/IEH5og7I4h2DbUNV35o6VNWyI21i3m5XiSgucQ2trHNyADX/UNGy5xHmnMnCBNITBb8/Y9jPfuW++KFa8aOyBfaEt95dWLrde6d8y/AplPxB3k9hh9tzG9xlhOnLVm2o/b0Kb0Tg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rbdHFxCuVWgEmELCsEQd05dRdmXC9QCElIKsJTTlaeQ=;
+ b=lEu6w2JdmZErZMbatXkNx7/Snhr6i+bQh/zIvsaUXr85fHM7nz2pl5i1AUlOgWE+fwQYbgMbhdUT1rqZtELpSDl3vxK586RbBWnb9mog0qoE/x6ZVq+RJ8EE60KSiKlHE6s0ShzpOv5qvaYWDmeayHcAcUagLsV9gaNdErYGfDDVG27qivztyvkXds68UpcVUZXjDry4JpDN6+ap6W4iTO8Z1oFq4zTBDKA1UrvxHlbRXyCC0aJ2EAXQx+vv0pA2+DWWXOyz69W8B+4EsjUKVR3SklKpgWBOCg7afd8AkgVI4zUQH7JXcjnsqbMB9rUZjj6aKWFIT6wlg+kZ2tGJ+A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rbdHFxCuVWgEmELCsEQd05dRdmXC9QCElIKsJTTlaeQ=;
+ b=hvRp5GOVqOC4LQCE2CmMyiwfIv5XlEqmcz5gIzLKmoJLS1/gfj+mHSFW6rsEbj54AkGNytUeNTUQz6rs86DYk8neo6N04ojZ2elrJoiixfyRXyuiFGOUrQcLaMnY6YfB9Dd76hjNCWxSudvfpxPYNt6RhTOCfsazAoJPT8BN//I=
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com (2603:10a6:102:240::14)
+ by PA2PR04MB10309.eurprd04.prod.outlook.com (2603:10a6:102:41f::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.38; Fri, 29 Mar
+ 2024 15:32:26 +0000
+Received: from PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::3168:91:27c6:edf6]) by PAXPR04MB9642.eurprd04.prod.outlook.com
+ ([fe80::3168:91:27c6:edf6%3]) with mapi id 15.20.7409.039; Fri, 29 Mar 2024
+ 15:32:26 +0000
+Date: Fri, 29 Mar 2024 11:32:19 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Damien Le Moal <dlemoal@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.8 30/98] ARM: dts: rockchip: fix rk322x hdmi ports node
-Date: Fri, 29 Mar 2024 08:37:01 -0400
-Message-ID: <20240329123919.3087149-30-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240329123919.3087149-1-sashal@kernel.org>
-References: <20240329123919.3087149-1-sashal@kernel.org>
+Subject: Re: [PATCH 02/19] PCI: endpoint: Improve pci_epc_mem_alloc_addr()
+Message-ID: <ZgbfA2BcVSsDX8t4@lizhi-Precision-Tower-5810>
+References: <20240329090945.1097609-1-dlemoal@kernel.org>
+ <20240329090945.1097609-3-dlemoal@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20240329090945.1097609-3-dlemoal@kernel.org>
+X-ClientProxiedBy: SJ0PR03CA0247.namprd03.prod.outlook.com
+ (2603:10b6:a03:3a0::12) To PAXPR04MB9642.eurprd04.prod.outlook.com
+ (2603:10a6:102:240::14)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.8.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXPR04MB9642:EE_|PA2PR04MB10309:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: aAIwvoQ+/MhiuwlqW5Lg/c4f82uawEATeIeCjD7VgG3ri2gPoqXeZNZNactkcLj0jhf+hlJ6b+UTyoZVbnSpcKtR8gscAjalsSvuCc9KDrqjkXfjJaxHRxm6jYKJjn9xGFll9PPExWLTz+df0A7yfZukEEuHfS1DbN1eEcVibzJo1o8XgCJ3IC+0jlfbl0zZBXYH8hhgHVdaUALJLhIcD2qdF7Y0z/OlnvPqciAP4nIySf4BTH/mAcwXk4SYvbxdPRg3SSjrVbYWG6qgWSaZ/PpYb3GA7UJJLuogGbzLT4i85aI++3P7R+dXVkbzDhRZPR4DtezCEeMPjTqtQDtCtcU/iOHbpLOXs57RdAA1NgDzKDnmJL1KHf5n4szSdIbeozdb2Jv2G1n4tUHgw81pA5tL5FXcaqgNcVKEPowCMhO5y9trnkvwBJOJ/j/z7M9N6ynM6qHaiVNzYTYmUi6l1nD+WF6AstHX75vzPrPV8InJhNCXFeYhib362tdCef+2yVllL8ZuovQv0L8VVYeJxTDH8pNF7Nh6mrswV87flBv1Wg8l+UOhxY8BDAKIe6c9g7IxWM4CJTNmIGbDXLUz+O1xqMksxIEQHIgpXEvOGJgmN1l1SRxu/CB7u/vyJbc5u3Lh5URpH44VwYjgNnwtsZH8DbosFd04CjBWdYnVDmE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB9642.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(52116005)(1800799015)(376005)(366007)(38350700005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Mv70sQa/LwtYFt73rX6RT2st+s2+/ClOOO/Fm+LCbX+OTG+Cos/afCx+SamA?=
+ =?us-ascii?Q?T0fQbdRhO5s2Xq8DE7befEsqzYcaFBsybcvQG8Wq6yGp8LxuVNihx4J9+uHn?=
+ =?us-ascii?Q?i7n/bPOdgOSqbYFJpzf4zDrMW2rdqbDNEMwaQ98t+mZf6gW+iZT8uEifKNwm?=
+ =?us-ascii?Q?yrK7RuJpdpbNfL/QHZZRuxWQrrk8H/121z3f2SqHbDDtGqzOth0t1O8TVkdR?=
+ =?us-ascii?Q?pb6p3RWFX76tjiSmS1wRCbx8YsVVFRXip6j2EkZP7fPDrluNcDxBbRRow2cL?=
+ =?us-ascii?Q?UZhS5otEsvWJ7Tq+uMYPMazAjJ5AHIHKr3d6kgMHhyJUDVgUfLF2pOSjX4kM?=
+ =?us-ascii?Q?2vpEFT2koKuIsCtc2BcEZ/uVV80TKN7/AWytEeA8LeyZqKylB/WAMD7p799J?=
+ =?us-ascii?Q?0WNiipDovqrYUq/Hb48Kis8ioLIb65BsXXbwngJLWEJJgx0JzK9jdAmVqusE?=
+ =?us-ascii?Q?LnPNJ8KGzdbWHVUSg/4CRTLhwS8pfLInONiu+bTAIKOkhOi4Nrrehlt6ItrS?=
+ =?us-ascii?Q?g4kPounOBWLxIveKNzSh91Ic6BEsEnqq56vwZ9g7jyx0hwRgvFhbOwRbE5iZ?=
+ =?us-ascii?Q?SftuKLWEWYeeJEUD298cIKw6cP1VBUyuf/usbzdAOQrrifmr5O+ZU1xu3RW5?=
+ =?us-ascii?Q?1mkQHcD9v+eR2BMG/gkitwBnwPiOur7iogsCssCMf1/Vh0NLRXkAcjFBwGxB?=
+ =?us-ascii?Q?eeR8A5Det80MilZTsogVnur5ZbsA2KfFyT9faiggPoBQeFetcrP3jiXE38EJ?=
+ =?us-ascii?Q?R4w5ZjWj1W0UeemO4QqX7O312jQvOaVpNfcFFa5wq1za0xbqglbsNjvd3Yug?=
+ =?us-ascii?Q?kadnr9WJDwxrC8LheQeJIX+3fFeplEmhFkPHwUrP9xl0acV8rTnRbCSV7Qop?=
+ =?us-ascii?Q?onZbUyyzQQAK5RHkHv1ykm3Teh7V8COYzTmDq8qW3R4zL9NtomS4lIZN6mcd?=
+ =?us-ascii?Q?4iOfHeHfz9yxv7YU1mr2dj6LwJI7mJ5wKLAtZaF100OkN2IJ9XAKQNTtihh/?=
+ =?us-ascii?Q?KzbmvJBqU6DH9vn/+jHV1d1FCk0U9Hsxb9mh6lxtdACTjUKI8XC3F1BuVx44?=
+ =?us-ascii?Q?BIyymrX3cWJEGderNHVpgGa3U+kEPNOma8hQGTPpzw8qyY+bRoO0i/O/jt+r?=
+ =?us-ascii?Q?mLM+OT1SuRZRluZVq31gFu8B/uKohgB8Mk4is0Rhpf96Bige+edIlGT9SjIQ?=
+ =?us-ascii?Q?d1/RrJjBdqdKLn0ZiuCszjC5dOaJad0H/C9V4sKw4qwxof+gjnd7x45lJj+3?=
+ =?us-ascii?Q?5DTl070VLe/mZ4g14ggngJLhAe0/L8/wITPc9zdDoXulb7WRGVtx2eRY2C2t?=
+ =?us-ascii?Q?+Tl0inKKyB8mTZY6UTiF338wvgimntYd+1cIio9KpfdHbBbctSVnz2MiAT2s?=
+ =?us-ascii?Q?Aa00Ncm4C1nSNBEAVZy0LXcSQzM8LHQXm5O1kQQ5SlFcSo28y96oBwkQy7yl?=
+ =?us-ascii?Q?xhX9TjGgMiEaOGrPUOUcjnlKh7mkXH65xjrrml+Nu2wMLn8CwBl/SknIo9Rw?=
+ =?us-ascii?Q?l0Ygn1h4DQa8g5jgb+WezSdaqkFszeV33b/1/1BMHDvXv7TgqZUpw58i6LXF?=
+ =?us-ascii?Q?e3GeZiuAz67OSr88NirVY5SxNQc6qtWpFJfUzjJT?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2f50867-7957-447b-96e8-08dc50056fe4
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB9642.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2024 15:32:26.3102
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: kezIL4mGQY6KRGXFhUS3k7INs5yasp9fOmihQ4fsAiME3hdQBf6IpI6K+0sOeZ7pCk2FrPDhg+FmMbcfyXrebA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA2PR04MB10309
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_124056_245584_70CF1CEE 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240329_083236_323753_F2D72A9A 
+X-CRM114-Status: GOOD (  20.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,54 +135,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+On Fri, Mar 29, 2024 at 06:09:28PM +0900, Damien Le Moal wrote:
+> There is no point in attempting to allocate memory from an endpoint
+> controller memory window if the requested size is larger than the window
+> size. Add a check to skip bitmap_find_free_region() calls for such case.
+> Also change the final return to return NULL to simplify the code.
+> 
+> Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+> ---
+>  drivers/pci/endpoint/pci-epc-mem.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+> index a9c028f58da1..218a60e945db 100644
+> --- a/drivers/pci/endpoint/pci-epc-mem.c
+> +++ b/drivers/pci/endpoint/pci-epc-mem.c
+> @@ -178,7 +178,7 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+>  void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+>  				     phys_addr_t *phys_addr, size_t size)
 
-[ Upstream commit 15a5ed03000cf61daf87d14628085cb1bc8ae72c ]
+Mani is working to change alloc to genalloc:
 
-Fix rk322x hdmi ports node so that it matches the
-rockchip,dw-hdmi.yaml binding.
+https://lore.kernel.org/linux-pci/20240317-pci-ep-genalloc-v1-1-70fe52a3b9be@linaro.org/
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/9b84adf0-9312-47fd-becc-cadd06941f70@gmail.com
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm/boot/dts/rockchip/rk322x.dtsi | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+Could you please wait it?
 
-diff --git a/arch/arm/boot/dts/rockchip/rk322x.dtsi b/arch/arm/boot/dts/rockchip/rk322x.dtsi
-index 831561fc18146..96421355c2746 100644
---- a/arch/arm/boot/dts/rockchip/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk322x.dtsi
-@@ -736,14 +736,20 @@ hdmi: hdmi@200a0000 {
- 		status = "disabled";
- 
- 		ports {
--			hdmi_in: port {
--				#address-cells = <1>;
--				#size-cells = <0>;
--				hdmi_in_vop: endpoint@0 {
--					reg = <0>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			hdmi_in: port@0 {
-+				reg = <0>;
-+
-+				hdmi_in_vop: endpoint {
- 					remote-endpoint = <&vop_out_hdmi>;
- 				};
- 			};
-+
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
- 	};
- 
--- 
-2.43.0
+Frank
 
+>  {
+> -	void __iomem *virt_addr = NULL;
+> +	void __iomem *virt_addr;
+>  	struct pci_epc_mem *mem;
+>  	unsigned int page_shift;
+>  	size_t align_size;
+> @@ -188,10 +188,13 @@ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+>  
+>  	for (i = 0; i < epc->num_windows; i++) {
+>  		mem = epc->windows[i];
+> -		mutex_lock(&mem->lock);
+> +		if (size > mem->window.size)
+> +			continue;
+> +
+>  		align_size = ALIGN(size, mem->window.page_size);
+>  		order = pci_epc_mem_get_order(mem, align_size);
+>  
+> +		mutex_lock(&mem->lock);
+>  		pageno = bitmap_find_free_region(mem->bitmap, mem->pages,
+>  						 order);
+>  		if (pageno >= 0) {
+> @@ -211,7 +214,7 @@ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+>  		mutex_unlock(&mem->lock);
+>  	}
+>  
+> -	return virt_addr;
+> +	return NULL;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+>  
+> -- 
+> 2.44.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
