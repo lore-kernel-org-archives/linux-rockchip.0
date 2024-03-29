@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 224A1CD1288
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 10:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB77C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Mar 2024 12:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JNVCAigrLNtOsSehupnIUdzCnQGFGC7dx7uWevDj2ME=; b=U5u82z2jQE20i+
-	pg56wxLy+VRzrJha7JjgRefPQ2eZzVwogSxEuVETB39JGDrJMwHpkE6WGvDB1QP1S/Pt3mzNihInv
-	o/xvEuLw/wmIAEKSHJvqJEUqCepT5iRb+6lbSzrDFxtipVUVrWRSNwWlS4wwtVO6py0cgN8NyZQbf
-	+ZDjJIjo1tzDrdoXJfyvEURhmnvMNC6+fsI2GAsL0FrsFfulQgEZMu9tS08EpJziH5hpsHrKvAvbF
-	8qHU5PIaAivIAZ1V6TdBoqWdPYbx4jwNo5LhcYsXKw6m0CBQ0AtXHqCDDobuaACfD5tLBy1kXmmKl
-	ClMoWsWtAsjFz/Nei3vQ==;
+	List-Owner; bh=/Rv6dntkN53UrJOscOSVJbIVloxaVu1ZAg0mJw8Jr8c=; b=Ni40EjBbXBXiOU
+	STRs8tQ/mOONLn5znjRfAVciwecXUvasw2ul1KO6CELTMp2DiEFtbKcARjTBndbc5g8VldqVuNvUJ
+	LZTGF4mmVvW18pQp8XaA950E1DDxRM38kIxI/ua+I3D0z5ma2ErK/0gx9Wtjw5oACeNS0RZz2lhxT
+	ggybyo+b65oLDFB2Fe5/I9YNhBQgokHNwzlvOT23wWR8eKuI2m8aTiAtXvPNl4EGZzyfNpGHy13Rq
+	+RypMvQjnhydysbwg3zjaxY/GzBaUA3oL5Ze1w4aoQSoYfxKE4KWUKlKVeOCcIU5anwgRk5MKuAGA
+	OPowRRdopeAR9Xiz5HUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rq9KF-000000000yi-1o46;
-	Fri, 29 Mar 2024 10:19:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rqBKg-00000000KXs-3pzA;
+	Fri, 29 Mar 2024 12:27:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rq8FS-0000000HQBr-2gLI
-	for linux-rockchip@lists.infradead.org;
-	Fri, 29 Mar 2024 09:10:10 +0000
+	id 1rqBKc-00000000KV4-0cdf;
+	Fri, 29 Mar 2024 12:27:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6FF88618E2;
-	Fri, 29 Mar 2024 09:10:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A04FC433C7;
-	Fri, 29 Mar 2024 09:10:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9FF3E61927;
+	Fri, 29 Mar 2024 12:27:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42F70C433F1;
+	Fri, 29 Mar 2024 12:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711703406;
-	bh=V/9fC8s68KTcgM87C93vvKDSr1AEhX43ztr6Cblt1Bo=;
+	s=k20201202; t=1711715257;
+	bh=4RMOa72KKzmhh+jE1nxP1CER4E3Wa2YBrXuinwX99So=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AJM32OjRFBqas7mhpEPychf3nDO84Ubo2u42bDESbXQuOlxLwUp6RLdI357rKZRNq
-	 62iP2luSYr1ipoaMrzC3lk+0lxEMoBiJz2/6X6wUoasK5gJb14ekLOsifRA6QpsW4b
-	 OtnSgtbjPSEzcgi8jG9Wi1ZOnS5YTOvMT+ifVnNTLITanqMHw68oOmZSHeVSWNHSw8
-	 xzulxAfvh1J/z1xZFM0eOPEBUkwFkUh1lNyPiPPWj12mGsAJzAELj/3T64lLVedAgq
-	 fMijtuHto5Ph0Zmn99L5gtBnJECH/W72OB/U0eDotAXddwiLvJrsZ0oPBXKSGcz/1u
-	 LaoCHSo/1+WAQ==
-From: Damien Le Moal <dlemoal@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
+	b=lPjUdAmEriM855Ul0btdSvZ2q4ZRtaPt9u96eKiJzO1w84loRrMfdSBSJ9HMiBqCf
+	 kqOoXOJrZjiJybBcMXt7CiLNBgwkCpVmV1NbptAFkNvTxgDiV44vCY3lDEQgGYcagg
+	 iDTFogYifSfY2JQt3aafHInm0YaB61qwRioGsZ0ieu2D9aUAGQnjjGZh8pWwyFpRqn
+	 3JbiTdUfiOquQY1XLh7ujP0MCh5S5dhEhmFTZ6ZMP+4xr6EsT7OawF3YFdFqMJ5oBn
+	 IuCEPGfrNn2rT4H2oo3xcEgdsTrx03dxdziy67+Sqg4H51wR/iU7om/iuC21vEsz9D
+	 yhT7jlXToaKRA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Johan Jonker <jbx6244@gmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	linux-pci@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Subject: [PATCH 12/19] PCI: rockchip-ep: Implement the map_info endpoint controller operation
-Date: Fri, 29 Mar 2024 18:09:38 +0900
-Message-ID: <20240329090945.1097609-13-dlemoal@kernel.org>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240329090945.1097609-1-dlemoal@kernel.org>
-References: <20240329090945.1097609-1-dlemoal@kernel.org>
+	Sasha Levin <sashal@kernel.org>,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.8 24/68] ARM: dts: rockchip: fix rk3288 hdmi ports node
+Date: Fri, 29 Mar 2024 08:25:20 -0400
+Message-ID: <20240329122652.3082296-24-sashal@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240329122652.3082296-1-sashal@kernel.org>
+References: <20240329122652.3082296-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.8.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_021007_026026_FBFFF6ED 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20240329_052738_252136_F397DB3A 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,90 +83,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rockchip PCIe endpoint controller handles PCIe transfers addresses
-by masking the lower bits of the programmed PCI address and using the
-same number of lower bits from the CPU address space used for the
-mapping. For a PCI mapping of size bytes starting from pci_addr, the
-number of bits masked is the number of address bits changing in the
-address range [pci_addr..pci_addr + size - 1], up to 20 bits, that is,
-up to 1MB mappings.
+From: Johan Jonker <jbx6244@gmail.com>
 
-This means that when preparing a PCI address mapping, an endpoint
-function driver must use an offset into the allocated controller
-memory region that is equal to the mask of the starting PCI address
-over rockchip_pcie_ep_ob_atu_num_bits() bits. This offset also
-determines the maximum size of the mapping given the starting PCI
-address and the fixed 1MB controller memory window size.
+[ Upstream commit 585e4dc07100a6465b3da8d24e46188064c1c925 ]
 
-Implement the ->map_info() endpoint controller operation to allow this
-mapping information to be transparently used by endpoint function
-drivers through the function pci_epc_map_info().
+Fix rk3288 hdmi ports node so that it matches the
+rockchip,dw-hdmi.yaml binding with some reordering
+to align with the (new) documentation about
+property ordering.
 
-Co-developed-by: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/cc3a9b4f-076d-4660-b464-615003b6a066@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 22 ++++++++++++++++++++++
- drivers/pci/controller/pcie-rockchip.h    |  5 +++++
- 2 files changed, 27 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3288.dtsi | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index c2ca7878cee3..223132acc787 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -237,6 +237,27 @@ static inline u32 rockchip_ob_region(phys_addr_t addr)
- 	return (addr >> ilog2(SZ_1M)) & 0x1f;
- }
+diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+index ead343dc3df10..3f1d640afafae 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+@@ -1240,27 +1240,37 @@ hdmi: hdmi@ff980000 {
+ 		compatible = "rockchip,rk3288-dw-hdmi";
+ 		reg = <0x0 0xff980000 0x0 0x20000>;
+ 		reg-io-width = <4>;
+-		#sound-dai-cells = <0>;
+-		rockchip,grf = <&grf>;
+ 		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
+ 		clock-names = "iahb", "isfr", "cec";
+ 		power-domains = <&power RK3288_PD_VIO>;
++		rockchip,grf = <&grf>;
++		#sound-dai-cells = <0>;
+ 		status = "disabled";
  
-+static int rockchip_pcie_ep_map_align(struct pci_epc *epc, u8 fn, u8 vfn,
-+				      struct pci_epc_map *map)
-+{
-+	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-+	int num_bits;
+ 		ports {
+-			hdmi_in: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
 +
-+	num_bits = rockchip_pcie_ep_ob_atu_num_bits(&ep->rockchip,
-+						map->pci_addr, map->pci_size);
++			hdmi_in: port@0 {
++				reg = <0>;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
 +
-+	map->map_pci_addr = map->pci_addr & ~((1ULL << num_bits) - 1);
-+	map->map_ofst = map->pci_addr - map->map_pci_addr;
+ 				hdmi_in_vopb: endpoint@0 {
+ 					reg = <0>;
+ 					remote-endpoint = <&vopb_out_hdmi>;
+ 				};
 +
-+	if (map->map_ofst + map->pci_size > SZ_1M)
-+		map->pci_size = SZ_1M - map->map_ofst;
+ 				hdmi_in_vopl: endpoint@1 {
+ 					reg = <1>;
+ 					remote-endpoint = <&vopl_out_hdmi>;
+ 				};
+ 			};
 +
-+	map->map_size = ALIGN(map->map_ofst + map->pci_size,
-+			      ROCKCHIP_PCIE_AT_SIZE_ALIGN);
-+
-+	return 0;
-+}
-+
- static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
- 				     phys_addr_t addr, u64 pci_addr,
- 				     size_t size)
-@@ -460,6 +481,7 @@ static const struct pci_epc_ops rockchip_pcie_epc_ops = {
- 	.write_header	= rockchip_pcie_ep_write_header,
- 	.set_bar	= rockchip_pcie_ep_set_bar,
- 	.clear_bar	= rockchip_pcie_ep_clear_bar,
-+	.map_align	= rockchip_pcie_ep_map_align,
- 	.map_addr	= rockchip_pcie_ep_map_addr,
- 	.unmap_addr	= rockchip_pcie_ep_unmap_addr,
- 	.set_msi	= rockchip_pcie_ep_set_msi,
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 02368ce9bd54..30398156095f 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -241,6 +241,11 @@
- #define   ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK		GENMASK(15, 8)
- #define ROCKCHIP_PCIE_EP_DUMMY_IRQ_ADDR				0x1
- #define ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR		0x3
-+
-+#define ROCKCHIP_PCIE_AT_MIN_NUM_BITS	8
-+#define ROCKCHIP_PCIE_AT_MAX_NUM_BITS	20
-+#define ROCKCHIP_PCIE_AT_SIZE_ALIGN	(1UL << ROCKCHIP_PCIE_AT_MIN_NUM_BITS)
-+
- #define ROCKCHIP_PCIE_EP_FUNC_BASE(fn) \
- 	(PCIE_EP_PF_CONFIG_REGS_BASE + (((fn) << 12) & GENMASK(19, 12)))
- #define ROCKCHIP_PCIE_EP_VIRT_FUNC_BASE(fn) \
++			hdmi_out: port@1 {
++				reg = <1>;
++			};
+ 		};
+ 	};
+ 
 -- 
-2.44.0
+2.43.0
 
 
 _______________________________________________
