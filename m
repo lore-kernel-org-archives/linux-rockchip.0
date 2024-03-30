@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07615C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CBBC47DD9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9FURwleL+a94XmJHzMO9DxTyDFjQzS86KRaiW7UubRc=; b=YyLZQlVGoBuVqA
-	XipqoOsD4mRWnowe/Whj1TO+9sJnfSsMkC3EqjWWGHE6ZDvPFcTLAcN/friPIQJ0LHfW7RKo0oBFi
-	WjHk0qTzb/h3E+uRYORJs124O02Zi/geOHf+/Q4D7KdRDN4ojGELH+NJ4tejchIu7WivySBqoT5Pc
-	LkQAkJ33qGHeL8VCDmTqPcMjd9oSaTdiVjajYOknbzfPM8+1n3HE4YbSn4W0V/YbBoiVV4CttJrlq
-	VWpL3c9E3QgWuvvAbfFd8/QM6nDaTDPZTUKRmLJ1AusAHYq+DfqWJzVeLKWVl1mMU8Ep90eB0H5kh
-	6krd/mma/VmXUr664v4g==;
+	List-Owner; bh=/PdWw0u+qNjvE//jA/SwT0g4aTBx11TeoWz69TPeLpI=; b=Y0xdTuzeYPb6XI
+	Rs8x9IFSarTxESdX+0F2OR0zoSlESHJmybiweIS2BUmdEU01U5b5cA6zsfUZT+FTPRErPeQpUXw+I
+	Au8NK5Xa83TVKg8Ei3p1G1C8NjtMxTwoi+9LhmP7D/bvPQjmSM93ljRTKJsTGz1WPb7RPU5MNqD9X
+	eLOu1oYPmbYuRPZU3+Rl5IZpMI6W8qTvmeMpOjohoxd80/wgSJEkm54a2Mfcc2qNjoL/eAZzrpM3s
+	wGaSujtxTgitufWfAoj6VhkDCK64YBJFBbH8M1Z32bHeFuEK3QuHnmYkaZTEBOZDprxq2tEKwSx3y
+	8BuYGGHIfY27iX0WKxNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQD2-00000002kMk-12zd;
-	Sat, 30 Mar 2024 04:20:48 +0000
+	id 1rqQDC-00000002kRa-1dri;
+	Sat, 30 Mar 2024 04:20:58 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQCF-00000002jpb-04LF;
-	Sat, 30 Mar 2024 04:19:59 +0000
+	id 1rqQCI-00000002jsB-16gS;
+	Sat, 30 Mar 2024 04:20:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=IuxqquyX9/Xvnhvy7HRY7o5XAsru05+AXFTYeYRV/1A=; b=IzcXuCLU3TifK9g0vVq/2UG+9z
-	3/TbckeZEQymSZ+OCduVk3rbIjGfsosX/73sQP6elmCYtleqxdFX72k44jNgBnVzOUfaBTEGEq30P
-	Q6IWNQrgYbvhRqCXOEBTCahyjUEvM5HHlf0Nwsve+b9zJM1fWnpU0uyosN719O0Noiwlsglr84F79
-	p2pmiDDXGf8eIWtrupd3aVtv8J4ZvBeRQfjTTYfhUNv6sLRZw04OtEP8xn4QUGrpR/iVNH1MmOxT6
-	noxf4EncbrW2rtkaksoJH1WE3R3SOgajuvoVRyPSX1xcNqIuFugh3DwKJSfql5HvaPqps7WjaWu05
-	3NscLinA==;
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	bh=6DPu4dRhx3Ba2eYLg5ICK/sN7eJ2h179yvpPB0nyULQ=; b=Rz7uxXN6iEa2rqBcmzckcJPM/d
+	nfADkVHnp1J+EO54z9VTT7Z9kOj60VAInhQEAiXAlsab8pIrWGUJqmFdi7B8mIrG4MVn6Rb1A5Hnz
+	1rveYdWqKvWpST9RMlokDzV13xnHgaQZc3wVXPdEk9J27MSFofgQQsbVS4xx8KDv+SoWT/1DIZAka
+	ER3H0pS4gCb9GRGEXHuExvZnyPBUj//PAdrbNGR1QBULfaRT2Pg7Ci0xOevTkZDG3yCoymvra29UW
+	88N+75Kfn+xSLFu4u4KMJdOxEWyufQ8hlXSR/Yb5j0UqQtj+37HCihBgeabqPrIe4t7nBVVmKqmB6
+	aD441oXQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQCA-00000001uMH-2tc3;
-	Sat, 30 Mar 2024 04:19:57 +0000
+	id 1rqQCE-00000001uNo-3y9z;
+	Sat, 30 Mar 2024 04:20:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 6A67FCE319E;
-	Sat, 30 Mar 2024 04:19:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06708C433B2;
-	Sat, 30 Mar 2024 04:19:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 306476028C;
+	Sat, 30 Mar 2024 04:19:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27860C43601;
+	Sat, 30 Mar 2024 04:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711772390;
-	bh=7Csd0n7kv5QXdaAzg91Mtj2IgQHbVhJebQ8xA5NsDJs=;
+	s=k20201202; t=1711772396;
+	bh=0vCO9UEww6LmblGgZZ5zmiHkjMZnubOns2C7wQhVNS8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HhUxeh/UoT/YQhTuYt6KJtbteVy+/KnhJ2v/zGKS5C9UfPfA311npSI+qTeVV3veU
-	 vINHMF2FHveAHt7qWXXPha5EL0DE8gBuVMg7ZKdFAMJl9ERQp1I8txkig671PxQqSB
-	 ARYxkJ5CTbwQLeJe9A5qcMZgRLSgzg0r/FV+EE9XfCqDgP1aUAXG0/3EXxkJQCV9eN
-	 KsTX78SMG8dJdK3+lvWiuhi4DNz1IOhitT3ERABCdj7qrxeorF8wu5MGnhf6+oPLTc
-	 gkWwaLzgbn/ynIFk1v93uwNK6qjg1f4noL6dh5AhQJrGCaGVD7R3V0tgtXiWR58L1P
-	 mchOjcl0kYzqg==
+	b=ddhKCogdN5hRET7t2XDCJfuQJG3YyW01fPcToBf6GLu4B/ncikP9Xxmssjegmb1Cx
+	 UCy+A7tcM8Tgs1coCN1MGiML4wlmag2sy/mNkLnec6ZpwjsdsDc6ibXOH5Fq8KoiMf
+	 VPxJoPipUy+/VDepBi4BmnvH5rRVYsnBNLTTUWN4mrTR2YyS0fsBohnULd2Vo0pSSM
+	 qzgPJ/P0EAOjXqoQ3xDU077OgHtCFm/qciry57J3pT9JH52Ht27Yr5S1OhZ3tSq0nr
+	 wRCXY6TVgbqO8lwPRMSlUhFCoC1dzjhEkR29euv3UNl3aPvXTd9M9UjFAaOz6xr7lH
+	 MJNNYKjjHlxRA==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -73,17 +73,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v2 06/18] PCI: endpoint: test: Implement link_down event operation
-Date: Sat, 30 Mar 2024 13:19:16 +0900
-Message-ID: <20240330041928.1555578-7-dlemoal@kernel.org>
+Subject: [PATCH v2 08/18] PCI: rockchip-ep: Use a macro to define EP controller .align feature
+Date: Sat, 30 Mar 2024 13:19:18 +0900
+Message-ID: <20240330041928.1555578-9-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240330041928.1555578-1-dlemoal@kernel.org>
 References: <20240330041928.1555578-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_041955_143174_314BA951 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240330_041959_400637_81250309 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,39 +99,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Implement the link_down event operation to stop the command execution
-delayed work when the endpoint controller notifies a link down event.
+Introduce the macro ROCKCHIP_PCIE_AT_SIZE_ALIGN defined using
+ROCKCHIP_PCIE_AT_MIN_NUM_BITS to initialize the .align field of the
+controller epc_features structure, avoiding using the "magic" value 8
+directly.
 
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
 ---
- drivers/pci/endpoint/functions/pci-epf-test.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
+ drivers/pci/controller/pcie-rockchip.h    | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-index ab40c3182677..e6d4e1747c9f 100644
---- a/drivers/pci/endpoint/functions/pci-epf-test.c
-+++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-@@ -824,9 +824,19 @@ static int pci_epf_test_link_up(struct pci_epf *epf)
- 	return 0;
- }
- 
-+static int pci_epf_test_link_down(struct pci_epf *epf)
-+{
-+	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
-+
-+	cancel_delayed_work_sync(&epf_test->cmd_handler);
-+
-+	return 0;
-+}
-+
- static const struct pci_epc_event_ops pci_epf_test_event_ops = {
- 	.core_init = pci_epf_test_core_init,
- 	.link_up = pci_epf_test_link_up,
-+	.link_down = pci_epf_test_link_down,
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index 786efd918b3f..f8c26606df58 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -448,7 +448,7 @@ static const struct pci_epc_features rockchip_pcie_epc_features = {
+ 	.linkup_notifier = false,
+ 	.msi_capable = true,
+ 	.msix_capable = false,
+-	.align = 256,
++	.align = ROCKCHIP_PCIE_AT_SIZE_ALIGN,
  };
  
- static int pci_epf_test_alloc_space(struct pci_epf *epf)
+ static const struct pci_epc_features*
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index 15ee949f2485..02368ce9bd54 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -248,6 +248,7 @@
+ 
+ #define ROCKCHIP_PCIE_AT_MIN_NUM_BITS  8
+ #define ROCKCHIP_PCIE_AT_MAX_NUM_BITS  20
++#define ROCKCHIP_PCIE_AT_SIZE_ALIGN    (1UL << ROCKCHIP_PCIE_AT_MIN_NUM_BITS)
+ 
+ #define ROCKCHIP_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar) \
+ 	(PCIE_CORE_AXI_CONF_BASE + 0x0828 + (fn) * 0x0040 + (bar) * 0x0008)
 -- 
 2.44.0
 
