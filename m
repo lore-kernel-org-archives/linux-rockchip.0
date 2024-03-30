@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 204CBC47DD9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F06C6FD1F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q2aR5MZkkaSsvlu6TIjThvAzTEMwamiw8W3aE+lg7c4=; b=4hjveuN7Rrakcq
-	jnv5PtGvhFMML/tdelYIdp32yhWHH6ys2J29swJ03rgwBZYe8FSMum4+EgfSIOQ8u8UNb40H6ZP8z
-	BX0ed6hKhgA0kXkE3rRnJhdong7jhbhUUbGbO6kmL38my1hmdu936Wnfa0YvZGmZp54kj4ZG5FUe5
-	Rb5viYx6H/cNYE0zcvm9JBf+59iYwxHnUUPjcqg2Maru3I4dohmNs7yfSIcNT60uLqk62R6xg2ZCd
-	mkWkFifCE9PrHKiiEweOQZzD/oe3Bac84/db7Ij+BAirhjLmcG8vN2TIsQURBD8EaHTB9pOPa/ym/
-	S2XnHbe77TQuU8i+MwJg==;
+	List-Owner; bh=zCw0QO0KDGQlnU9ybPZ/wJdYcYC6sOCY6WXedrlXw0Y=; b=b2wLKO9Ysui8sl
+	XTAk3+OH+r52vlCePiQ3LuYv5AvjBWu8zi+gGYjfA3NajGKADkwFybIOTLvUZROLSWHXVKmug1BH9
+	0KkSOJiPUolKHOlH6cY1JliL1qsrj3ssbxpQ+lcwve7HZDp8M73CsJMzMTERmhrDq6iq1qctYrpPU
+	njbf7l9xM6RhA+HFh1Ecfh8U19zFAQbTQ8+4Darfn3pyFUguAnr/t7C39HszxBswJJ4HRJSW1iY98
+	SSWTyzor4I9Kj43MnFk57gz2O/Ofp/xg060Rc9xJuCe/2NY4ih4Ja2AKvTBKTomN13BbNjQEGnl++
+	BboT7UgkypZtEf6lrDTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQEF-00000002kor-0adR;
-	Sat, 30 Mar 2024 04:22:03 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rqQER-00000002kue-32Q9;
+	Sat, 30 Mar 2024 04:22:15 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQCc-00000002k5K-2Bjk;
-	Sat, 30 Mar 2024 04:20:25 +0000
+	id 1rqQCf-00000002k6g-0Ika;
+	Sat, 30 Mar 2024 04:20:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 25D50CE31A2;
-	Sat, 30 Mar 2024 04:20:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFDA5C433B2;
-	Sat, 30 Mar 2024 04:20:15 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 35E17CE314B;
+	Sat, 30 Mar 2024 04:20:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C288BC433B1;
+	Sat, 30 Mar 2024 04:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711772418;
-	bh=1pkm8EJkDV8JLNfXadYBTmhaHEtJmAs5GElm0tmZClk=;
+	s=k20201202; t=1711772421;
+	bh=M/NmnF6pL3bP8Rop02w/SkXToANI5cEEojUUDlc+JGE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lTt6Pu1NPT5ncZn8NqBACv8mckbzPFXXzema+DA4DpgU/KtUjqo+k9kItim70/IkR
-	 JKEo0aNd85eFcU14EHdQ8z9CV/lT+vXKgDXj+GMmA00bosZO1fr7eAYzn8lV3lnmEg
-	 tvqaGELag5oAiKH6++az7jT2PUQBx9/cdhi+ipL+APez70a9rJS4h/F8sSisKKEq+W
-	 svUZFGwCq9zPQce73nzF1mf75b9fj44tzsjri1zkwZok35fcrQ1u2vt9nSDViaZ0IH
-	 bfOOPLuRsDpX5Fn3bhVds339vPpHY6pypfzEvGGefX8AySQLi8zRDxG66BO+jyfHA/
-	 QXP/Q31zq2LNw==
+	b=oyKjhTVvkJhSv1e2h5vbaQBt1s4vaTpx3ZEUwDJm+FxlR2YWbp1uWrBCgJod66cqd
+	 AiLP/aEQ0E9xeuhQ7tQ/BwNUr0xvvZ8u5ijsg4gCYFVes+Zm6ATdwg39RoY11Ne2AU
+	 93F//6imC2VMWPUe6R0RyqQeak5LMZ8Cs8ycIC91VeTSyNxpI1h5e/Y5FvGz8tHo/r
+	 grJmFOC6COfpLNTACsVmibI3tPMUPRoyI59SR/67kPv1IgSn4vn7f205Df48AU4Rko
+	 dyT54FRzur7ll8bKEJzTH5Ov/jNTVQT53aPp/FpDDggDAxY0sskhOBvjxQGrBnDeD8
+	 4TTv/26vPiYjA==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -59,16 +59,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v2 15/18] PCI: rockship-ep: Introduce rockchip_pcie_ep_stop()
-Date: Sat, 30 Mar 2024 13:19:25 +0900
-Message-ID: <20240330041928.1555578-16-dlemoal@kernel.org>
+Subject: [PATCH v2 16/18] PCI: rockchip-ep: Improve link training
+Date: Sat, 30 Mar 2024 13:19:26 +0900
+Message-ID: <20240330041928.1555578-17-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240330041928.1555578-1-dlemoal@kernel.org>
 References: <20240330041928.1555578-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_212023_770569_C73E89DD 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20240329_212025_671706_AB892D11 
+X-CRM114-Status: GOOD (  23.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +85,216 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Define the EPC operation ->stop for the rockchip endpoint driver with
-the function rockchip_pcie_ep_stop(). This function disables link
-training and the controller configuration, as the reverse to what
-the start operation defined with rockchip_pcie_ep_start() does.
+The Rockchip rk339 technical reference manual describe the endpoint mode
+link training process clearly and states that:
+  Insure link training completion and success by observing link_st field
+  in PCIe Client BASIC_STATUS1 register change to 2'b11. If both side
+  support PCIe Gen2 speed, re-train can be Initiated by asserting the
+  Retrain Link field in Link Control and Status Register. The software
+  should insure the BASIC_STATUS0[negotiated_speed] changes to "1", that
+  indicates re-train to Gen2 successfully.
+This procedure is very similar to what is done for the root-port mode in
+rockchip_pcie_host_init_port().
+
+Implement this link training procedure for the endpoint mode as well.
+Given that the rk3399 SoC does not have an interrupt signaling link
+status changes, training is implemented as a delayed work which is
+rescheduled until the link training completes or the endpoint controller
+is stopped. The link training work is first scheduled in
+rockchip_pcie_ep_start() when the endpoint function is started. Link
+training completion is signaled to the function using pci_epc_linkup().
+Accordingly, the linkup_notifier field of the rockchip pci_epc_features
+structure is changed to true.
 
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 13 +++++++++++++
- drivers/pci/controller/pcie-rockchip.h    |  1 +
- 2 files changed, 14 insertions(+)
+ drivers/pci/controller/pcie-rockchip-ep.c | 79 ++++++++++++++++++++++-
+ drivers/pci/controller/pcie-rockchip.h    | 11 ++++
+ 2 files changed, 89 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 9215cac91f61..2767e8f1771d 100644
+index 2767e8f1771d..4006e7dee71a 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -470,6 +470,18 @@ static int rockchip_pcie_ep_start(struct pci_epc *epc)
+@@ -16,6 +16,8 @@
+ #include <linux/platform_device.h>
+ #include <linux/pci-epf.h>
+ #include <linux/sizes.h>
++#include <linux/workqueue.h>
++#include <linux/iopoll.h>
+ 
+ #include "pcie-rockchip.h"
+ 
+@@ -48,6 +50,7 @@ struct rockchip_pcie_ep {
+ 	u64			irq_pci_addr;
+ 	u8			irq_pci_fn;
+ 	u8			irq_pending;
++	struct delayed_work	link_training;
+ };
+ 
+ static void rockchip_pcie_clear_ep_ob_atu(struct rockchip_pcie *rockchip,
+@@ -467,6 +470,8 @@ static int rockchip_pcie_ep_start(struct pci_epc *epc)
+ 			    PCIE_CLIENT_CONF_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+ 
++	schedule_delayed_work(&ep->link_training, 0);
++
  	return 0;
  }
  
-+static void rockchip_pcie_ep_stop(struct pci_epc *epc)
-+{
-+	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-+	struct rockchip_pcie *rockchip = &ep->rockchip;
+@@ -475,6 +480,8 @@ static void rockchip_pcie_ep_stop(struct pci_epc *epc)
+ 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+ 	struct rockchip_pcie *rockchip = &ep->rockchip;
+ 
++	cancel_delayed_work_sync(&ep->link_training);
 +
-+	/* Stop link training and disable configuration */
-+	rockchip_pcie_write(rockchip,
-+			    PCIE_CLIENT_CONF_DISABLE |
-+			    PCIE_CLIENT_LINK_TRAIN_DISABLE,
-+			    PCIE_CLIENT_CONFIG);
+ 	/* Stop link training and disable configuration */
+ 	rockchip_pcie_write(rockchip,
+ 			    PCIE_CLIENT_CONF_DISABLE |
+@@ -482,8 +489,77 @@ static void rockchip_pcie_ep_stop(struct pci_epc *epc)
+ 			    PCIE_CLIENT_CONFIG);
+ }
+ 
++static void rockchip_pcie_ep_retrain_link(struct rockchip_pcie *rockchip)
++{
++	u32 status;
++
++	status = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_LCS);
++	status |= PCI_EXP_LNKCTL_RL;
++	rockchip_pcie_write(rockchip, status, PCIE_EP_CONFIG_LCS);
++}
++
++static bool rockchip_pcie_ep_link_up(struct rockchip_pcie *rockchip)
++{
++	u32 val = rockchip_pcie_read(rockchip, PCIE_CLIENT_BASIC_STATUS1);
++
++	return PCIE_LINK_UP(val);
++}
++
++static void rockchip_pcie_ep_link_training(struct work_struct *work)
++{
++	struct rockchip_pcie_ep *ep =
++		container_of(work, struct rockchip_pcie_ep, link_training.work);
++	struct rockchip_pcie *rockchip = &ep->rockchip;
++	struct device *dev = rockchip->dev;
++	u32 val;
++	int ret;
++
++	/* Enable Gen1 training and wait for its completion */
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
++				 val, PCIE_LINK_TRAINING_DONE(val), 50,
++				 LINK_TRAIN_TIMEOUT);
++	if (ret)
++		goto again;
++
++	/* Make sure that the link is up */
++	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_BASIC_STATUS1,
++				 val, PCIE_LINK_UP(val), 50,
++				 LINK_TRAIN_TIMEOUT);
++	if (ret)
++		goto again;
++
++	/* Check the current speed */
++	val = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
++	if (!PCIE_LINK_IS_GEN2(val) && rockchip->link_gen == 2) {
++		/* Enable retrain for gen2 */
++		rockchip_pcie_ep_retrain_link(rockchip);
++		readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
++				   val, PCIE_LINK_IS_GEN2(val), 50,
++				   LINK_TRAIN_TIMEOUT);
++	}
++
++	/* Check again that the link is up */
++	if (!rockchip_pcie_ep_link_up(rockchip))
++		goto again;
++
++	val = rockchip_pcie_read(rockchip, PCIE_CLIENT_BASIC_STATUS0);
++	dev_info(dev,
++		 "Link UP (Negociated speed: %sGT/s, width: x%lu)\n",
++		 (val & PCIE_CLIENT_NEG_LINK_SPEED) ? "5" : "2.5",
++		 ((val & PCIE_CLIENT_NEG_LINK_WIDTH_MASK) >>
++		  PCIE_CLIENT_NEG_LINK_WIDTH_SHIFT) << 1);
++
++	/* Notify the function */
++	pci_epc_linkup(ep->epc);
++
++	return;
++
++again:
++	schedule_delayed_work(&ep->link_training, msecs_to_jiffies(5));
 +}
 +
  static const struct pci_epc_features rockchip_pcie_epc_features = {
- 	.linkup_notifier = false,
+-	.linkup_notifier = false,
++	.linkup_notifier = true,
  	.msi_capable = true,
-@@ -494,6 +506,7 @@ static const struct pci_epc_ops rockchip_pcie_epc_ops = {
- 	.get_msi	= rockchip_pcie_ep_get_msi,
- 	.raise_irq	= rockchip_pcie_ep_raise_irq,
- 	.start		= rockchip_pcie_ep_start,
-+	.stop		= rockchip_pcie_ep_stop,
- 	.get_features	= rockchip_pcie_ep_get_features,
- };
+ 	.msix_capable = false,
+ 	.align = ROCKCHIP_PCIE_AT_SIZE_ALIGN,
+@@ -644,6 +720,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	rockchip = &ep->rockchip;
+ 	rockchip->is_rc = false;
+ 	rockchip->dev = dev;
++	INIT_DELAYED_WORK(&ep->link_training, rockchip_pcie_ep_link_training);
  
+ 	epc = devm_pci_epc_create(dev, &rockchip_pcie_epc_ops);
+ 	if (IS_ERR(epc)) {
 diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 30398156095f..0263f158ee8d 100644
+index 0263f158ee8d..3963b7097a91 100644
 --- a/drivers/pci/controller/pcie-rockchip.h
 +++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -32,6 +32,7 @@
- #define   PCIE_CLIENT_CONF_ENABLE	  HIWORD_UPDATE_BIT(0x0001)
- #define   PCIE_CLIENT_CONF_DISABLE       HIWORD_UPDATE(0x0001, 0)
- #define   PCIE_CLIENT_LINK_TRAIN_ENABLE	  HIWORD_UPDATE_BIT(0x0002)
-+#define   PCIE_CLIENT_LINK_TRAIN_DISABLE  HIWORD_UPDATE(0x0002, 0)
- #define   PCIE_CLIENT_ARI_ENABLE	  HIWORD_UPDATE_BIT(0x0008)
- #define   PCIE_CLIENT_CONF_LANE_NUM(x)	  HIWORD_UPDATE(0x0030, ENCODE_LANES(x))
- #define   PCIE_CLIENT_MODE_RC		  HIWORD_UPDATE_BIT(0x0040)
+@@ -26,6 +26,7 @@
+ #define MAX_LANE_NUM			4
+ #define MAX_REGION_LIMIT		32
+ #define MIN_EP_APERTURE			28
++#define LINK_TRAIN_TIMEOUT		(5000 * USEC_PER_MSEC)
+ 
+ #define PCIE_CLIENT_BASE		0x0
+ #define PCIE_CLIENT_CONFIG		(PCIE_CLIENT_BASE + 0x00)
+@@ -50,6 +51,10 @@
+ #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
+ #define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
+ #define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
++#define PCIE_CLIENT_BASIC_STATUS0	(PCIE_CLIENT_BASE + 0x44)
++#define   PCIE_CLIENT_NEG_LINK_WIDTH_MASK	GENMASK(7, 6)
++#define   PCIE_CLIENT_NEG_LINK_WIDTH_SHIFT	6
++#define   PCIE_CLIENT_NEG_LINK_SPEED		BIT(5)
+ #define PCIE_CLIENT_BASIC_STATUS1	(PCIE_CLIENT_BASE + 0x48)
+ #define   PCIE_CLIENT_LINK_STATUS_UP		0x00300000
+ #define   PCIE_CLIENT_LINK_STATUS_MASK		0x00300000
+@@ -87,6 +92,8 @@
+ 
+ #define PCIE_CORE_CTRL_MGMT_BASE	0x900000
+ #define PCIE_CORE_CTRL			(PCIE_CORE_CTRL_MGMT_BASE + 0x000)
++#define   PCIE_CORE_PL_CONF_LS_MASK		0x00000001
++#define   PCIE_CORE_PL_CONF_LS_READY		0x00000001
+ #define   PCIE_CORE_PL_CONF_SPEED_5G		0x00000008
+ #define   PCIE_CORE_PL_CONF_SPEED_MASK		0x00000018
+ #define   PCIE_CORE_PL_CONF_LANE_MASK		0x00000006
+@@ -144,6 +151,7 @@
+ #define PCIE_RC_CONFIG_BASE		0xa00000
+ #define PCIE_EP_CONFIG_BASE		0xa00000
+ #define PCIE_EP_CONFIG_DID_VID		(PCIE_EP_CONFIG_BASE + 0x00)
++#define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_RID_CCR		(PCIE_RC_CONFIG_BASE + 0x08)
+ #define PCIE_RC_CONFIG_DCR		(PCIE_RC_CONFIG_BASE + 0xc4)
+ #define   PCIE_RC_CONFIG_DCR_CSPL_SHIFT		18
+@@ -155,6 +163,7 @@
+ #define PCIE_RC_CONFIG_LINK_CAP		(PCIE_RC_CONFIG_BASE + 0xcc)
+ #define   PCIE_RC_CONFIG_LINK_CAP_L0S		BIT(10)
+ #define PCIE_RC_CONFIG_LCS		(PCIE_RC_CONFIG_BASE + 0xd0)
++#define PCIE_EP_CONFIG_LCS		(PCIE_EP_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+ #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
+ #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK	GENMASK(31, 20)
+@@ -192,6 +201,8 @@
+ #define ROCKCHIP_VENDOR_ID			0x1d87
+ #define PCIE_LINK_IS_L2(x) \
+ 	(((x) & PCIE_CLIENT_DEBUG_LTSSM_MASK) == PCIE_CLIENT_DEBUG_LTSSM_L2)
++#define PCIE_LINK_TRAINING_DONE(x) \
++	(((x) & PCIE_CORE_PL_CONF_LS_MASK) == PCIE_CORE_PL_CONF_LS_READY)
+ #define PCIE_LINK_UP(x) \
+ 	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
+ #define PCIE_LINK_IS_GEN2(x) \
 -- 
 2.44.0
 
