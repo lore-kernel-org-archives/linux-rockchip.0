@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C29CD128E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 10:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD88ECD1288
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 10:32:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gdyNJ0qtMO9/0mqF+FRCTkmkNzxzJAKMSGgn0uKYFEI=; b=PmqiaDwJ2DgdNq
-	cs//GBMhY7VDaSGUS8tayjAlAtGK5EwdnbeSxd0yMkQCLbcZvimvtPWR5kwEzJr6g28NQAFAIUPFq
-	6UDojfBtMBuTPpR4+d6CoNkFr09aLevwQVIZzUWuT0yAzRCgRrNcQ5WZW4kZwLSbOlMqICI8fXbF8
-	f9YVX+BbRTxTZcEaiLkYf52rjIeyMLG5QX2Qv8dfSq2A0c19/PTSqBbW4WEkzSRGtXs/EceuLLSq5
-	6NZkioOVBwQzBZ6H0DUan1cgObSW2BqJbgWBQAdtFTZC3Jw8hf+hJp8fFqeDtalMmHkkYdZnRmwg+
-	h8ZGQfG3WcLpGXpmS2KQ==;
+	List-Owner; bh=3tcocarwJg+p4dIYFX978tGQY299BxIgePhVeB2Nacc=; b=4KJ8iU2/TcTVSG
+	GsHXcVRLAceD67MGHhrWKy50I5CqHfeGHdl1AfWC7zqYaQNBLHjNviyLbScHisj/TyJL9B1ZoIFTY
+	vE1dW+BkZtyWlO4w5rNfqUu4fP1ocmGBS3aSXppI9Dr5io8iegBFVxjFyae9IHX91BRrSwnWCbIKX
+	EPZAefDZ6e1BQ7MaHIVz886WBIyDZHqX4PJp4m5xUi7RuAG5b0J+ayWD0LdrF0XfyfbdPV+yUg8IR
+	1KCPM3dmfXAWp527QgTHEwYX1rodJa6jAezPvODT7WV+NbCgofBDBl20tWFb9s7Fv2nTu7INYy9Hk
+	4LbgIp96znk9PTN9eonw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqVXl-00000003Df3-1NT6;
-	Sat, 30 Mar 2024 10:02:33 +0000
-Received: from m15.mail.163.com ([45.254.50.220])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqVXh-00000003DdI-056N;
-	Sat, 30 Mar 2024 10:02:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=M7Tok
-	/UBCV8rcegKEQ5Q2x/dUQ7SH8Wy3obY8/nLX2I=; b=jayC3L4HemKkYUi9rT638
-	IxD++P3skxnLCiQMmM4aEuQCFLhjz42xVV2lgo1OS/YpG3H7iP3rfSOmTuuxCDOz
-	zoxlkQsshbtQdjuDRnXl2uuatcjKWyT0eqDUAc5EFRIuQS8VA43C1Iy+jLXVlATx
-	ydCyWb2uMbBWbmLJnNqitE=
-Received: from ProDesk.. (unknown [58.22.7.114])
-	by gzga-smtp-mta-g0-0 (Coremail) with SMTP id _____wD3_3H_4gdmq7XiCg--.34374S3;
-	Sat, 30 Mar 2024 18:01:41 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org,
-	dsimic@manjaro.org,
-	conor+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	sebastian.reichel@collabora.com,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Enable gpu on Cool Pi 4B
-Date: Sat, 30 Mar 2024 18:01:34 +0800
-Message-Id: <20240330100134.3588223-2-andyshrk@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240330100134.3588223-1-andyshrk@163.com>
-References: <20240330100134.3588223-1-andyshrk@163.com>
+	id 1rqW0o-00000003GpW-2HOo;
+	Sat, 30 Mar 2024 10:32:34 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rqW0m-00000003Gom-0DUj
+	for linux-rockchip@lists.infradead.org;
+	Sat, 30 Mar 2024 10:32:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1711794752; x=1743330752;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=XtM/Gfmk+g0ebxAIgyQGRPZgpW6mCp/0GRoMXkTZgn4=;
+  b=KQBYoe/eOrUWGkfEQkDA14+pfZN6mbSWMtHjjEX1MYgUmy6sQU4Kf2qM
+   SnDfCEZnoYwe3beZoLvEvwAou2JrTAiA7R3+k/zHE8oQrLGlUYfp2soyO
+   tmbHGirtEnZG9wFgT1XJbJFOkS90u/5R0Bl44jVMno+5CuohBEtM2fQY1
+   lqtTzh48KvJJd9hR9yOouTFBlQB2c2mcvrOOkD1tCC4+coRqG1OiV1FHk
+   nVHJqA/abN29t3lrq+cd2TijQLzQCxlLJx7f7Pk3Ea7SRf6waN9XJerzg
+   WeT4ypyMb29tB/YZpEFCSj6tai3pJfD/7h38kxtPJ0+Jgl6o0WvGoxxim
+   g==;
+X-CSE-ConnectionGUID: KpewstFWS3O7RytEan0p5A==
+X-CSE-MsgGUID: TYfElGwoQgCEhl10BKUCRQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11028"; a="18117914"
+X-IronPort-AV: E=Sophos;i="6.07,166,1708416000"; 
+   d="scan'208";a="18117914"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2024 03:32:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,166,1708416000"; 
+   d="scan'208";a="21871653"
+Received: from lkp-server01.sh.intel.com (HELO be39aa325d23) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 30 Mar 2024 03:32:27 -0700
+Received: from kbuild by be39aa325d23 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1rqW0f-0004AM-1U;
+	Sat, 30 Mar 2024 10:32:25 +0000
+Date: Sat, 30 Mar 2024 18:31:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Damien Le Moal <dlemoal@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <helgaas@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 19/19] PCI: rockchip-ep: Handle PERST signal in endpoint
+ mode
+Message-ID: <202403301809.VzsJsDFL-lkp@intel.com>
+References: <20240329090945.1097609-20-dlemoal@kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wD3_3H_4gdmq7XiCg--.34374S3
-X-Coremail-Antispam: 1Uf129KBjvdXoW7XFyDZry5Kw1DCryxArW5Wrg_yoW3JFb_tF
-	yxWF1rJF4fCr1aq3s5ta4UGa4xK3y8KF4xtFWYvFZxJFnI9a18JayrJay293srGFWjkw4x
-	Jw45AFyUArnI9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRJKsUUUUUUU==
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0h2xXmWXw3f-GwACsA
+Content-Disposition: inline
+In-Reply-To: <20240329090945.1097609-20-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_030229_535708_E7D4F487 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240330_033232_251203_BE29F0B0 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,33 +93,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable mali gpu node and add the board specific supply-regulator.
+Hi Damien,
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
----
+kernel test robot noticed the following build errors:
 
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+[auto build test ERROR on pci/next]
+[also build test ERROR on pci/for-linus linus/master v6.9-rc1 next-20240328]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index e037bf9db75a..25a2ae7d4827 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -203,6 +203,11 @@ &cpu_b2 {
- 	cpu-supply = <&vdd_cpu_big1_s0>;
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
- 	status = "okay";
+url:    https://github.com/intel-lab-lkp/linux/commits/Damien-Le-Moal/PCI-endpoint-Introduce-pci_epc_check_func/20240329-171158
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/20240329090945.1097609-20-dlemoal%40kernel.org
+patch subject: [PATCH 19/19] PCI: rockchip-ep: Handle PERST signal in endpoint mode
+config: i386-buildonly-randconfig-005-20240330 (https://download.01.org/0day-ci/archive/20240330/202403301809.VzsJsDFL-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240330/202403301809.VzsJsDFL-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202403301809.VzsJsDFL-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/pci/controller/pcie-rockchip-ep.c:633:2: error: call to undeclared function 'irq_set_irq_type'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     633 |         irq_set_irq_type(ep->perst_irq,
+         |         ^
+   drivers/pci/controller/pcie-rockchip-ep.c:633:2: note: did you mean 'irq_set_irq_wake'?
+   include/linux/interrupt.h:482:12: note: 'irq_set_irq_wake' declared here
+     482 | extern int irq_set_irq_wake(unsigned int irq, unsigned int on);
+         |            ^
+>> drivers/pci/controller/pcie-rockchip-ep.c:657:2: error: call to undeclared function 'irq_set_status_flags'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     657 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
+         |         ^
+>> drivers/pci/controller/pcie-rockchip-ep.c:657:38: error: use of undeclared identifier 'IRQ_NOAUTOEN'
+     657 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
+         |                                             ^
+   3 errors generated.
+
+
+vim +/irq_set_irq_type +633 drivers/pci/controller/pcie-rockchip-ep.c
+
+   620	
+   621	static irqreturn_t rockchip_pcie_ep_perst_irq_thread(int irq, void *data)
+   622	{
+   623		struct pci_epc *epc = data;
+   624		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+   625		struct rockchip_pcie *rockchip = &ep->rockchip;
+   626		u32 perst = gpiod_get_value(rockchip->ep_gpio);
+   627	
+   628		if (perst)
+   629			rockchip_pcie_ep_perst_assert(ep);
+   630		else
+   631			rockchip_pcie_ep_perst_deassert(ep);
+   632	
+ > 633		irq_set_irq_type(ep->perst_irq,
+   634				 (perst ? IRQF_TRIGGER_HIGH : IRQF_TRIGGER_LOW));
+   635	
+   636		return IRQ_HANDLED;
+   637	}
+   638	
+   639	static int rockchip_pcie_ep_setup_irq(struct pci_epc *epc)
+   640	{
+   641		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+   642		struct rockchip_pcie *rockchip = &ep->rockchip;
+   643		struct device *dev = rockchip->dev;
+   644		int ret;
+   645	
+   646		if (!rockchip->ep_gpio)
+   647			return 0;
+   648	
+   649		/* PCIe reset interrupt */
+   650		ep->perst_irq = gpiod_to_irq(rockchip->ep_gpio);
+   651		if (ep->perst_irq < 0) {
+   652			dev_err(dev, "No corresponding IRQ for PERST GPIO\n");
+   653			return ep->perst_irq;
+   654		}
+   655	
+   656		ep->perst_asserted = true;
+ > 657		irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
+   658		ret = devm_request_threaded_irq(dev, ep->perst_irq, NULL,
+   659						rockchip_pcie_ep_perst_irq_thread,
+   660						IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
+   661						"pcie-ep-perst", epc);
+   662		if (ret) {
+   663			dev_err(dev, "Request PERST GPIO IRQ failed %d\n", ret);
+   664			return ret;
+   665		}
+   666	
+   667		return 0;
+   668	}
+   669	
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
