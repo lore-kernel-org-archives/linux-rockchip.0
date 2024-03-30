@@ -4,43 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2032CD1288
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:22:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2400C47DD9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 04:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/piEX1O5P9KxuNUeWsXWKz/tGoOfrQ+kIYNu4il3cs=; b=tm5UYfdRy4mV5t
-	b7dmkNCno1WoQpBnCyjzUa+w/ZU5xogfaUQRT6akWMBc7z8xUiJk5/mLBR2o9S4lvGJM6C4KSRSOd
-	rHFLdUaV3ipG+SsTDFFOoYdIxbcjm969YSpzqlQJwxEIdJanQCaXMOcl4ZpojHbOngnbPXlmXZM0l
-	qh7tlJkqsRfwMEQVK4bZyFyCt3JiVaEHoCVvE0AdccJEqOe4SRuo+ypva4rHXAnhSYhxtdOEc1ag3
-	l/g/BvIKN2x/tpydjXBHNtbhafSWU/lnBDEwT6+YmUG6dWA/PpYnXyFW0gyyohqPnIojuTl09LucL
-	Pg0LnKytPm0Tg0nvZkBw==;
+	List-Owner; bh=yukLreFGw2uCeYH3BrrMQ1Na/7NzQS5MYEoD6E8N2Vs=; b=OaFD1FsYVAGVwu
+	fZ77zaONlfmmsxRDODGkxXfnHDt2y80OmpMM2yH7hTzeYSSrL/ieguzjFeZqjkWXapmIdIdDOI1OT
+	S3Hv4Rbz9Guc7FyPdrqAZ1gtnoW3Qo9mIBRlx/scBiKqx6FVB1q/2HfLvasEL/TI+WZDY++vNnkmC
+	Ru6uptepSwJELAyvz24ylDmnsy3KaJlovlXeoY0MfmzsZbXnBl829o+aPGjQaNhriWvfDCpd0od7a
+	eqd186ObK3JvAfEQtg6kaKb7+pLEVi6RKpU4axzD6inTRp4Gp+ktZ4neUGnTjG2BJ7DZM/DdjqAH1
+	ZK9I0xRW1q56MFRPjmFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQET-00000002kwG-3kEU;
-	Sat, 30 Mar 2024 04:22:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rqQEb-00000002l2K-3hXJ;
+	Sat, 30 Mar 2024 04:22:25 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqQCi-00000002kB0-2MWS;
-	Sat, 30 Mar 2024 04:20:30 +0000
+	id 1rqQCo-00000002kF5-1jD7;
+	Sat, 30 Mar 2024 04:20:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=ACB6cLwM+hZHr+rgiIDi6Rjh3NgUMMyubysLz8k5W1Q=; b=JpPHd8jdfzfc2BnO/SI1Iw82IH
+	0rRCd0erUnL143vg3eO2R3SlQefOVjQeTAlY+5fsTROtWlwqKQzIyu2bAiGP7ok37/KzHO+qA7NM5
+	tSlVkmrU/Yn0rEyB1EWFjBUNnLbQUXeG2vGmAwJt6NeL5kYIHNqZEeIlYJyTOkEmxutSg59Iq9IqQ
+	h1ya3n5LE1cpgD+1OZY5EkTOiCdlLbDuvEeEe9H50ds4yNt1hVUtMBsmuSkrny4JjTLMbp4cxw6Qi
+	N1RV8BqfFNj2RHIZHDyO2gDiBvm/pzjbjl80IE8KeIDRUkr9uD7zlm0Le3mSaEcAdmgn6937kANKX
+	16p7s3GQ==;
+Received: from sin.source.kernel.org ([145.40.73.55])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rqQCW-00000001uRC-3jaA;
+	Sat, 30 Mar 2024 04:20:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E3A576023A;
-	Sat, 30 Mar 2024 04:20:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDB43C433C7;
-	Sat, 30 Mar 2024 04:20:24 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id F3E76CE253C;
+	Sat, 30 Mar 2024 04:20:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A3C4C43601;
+	Sat, 30 Mar 2024 04:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711772427;
-	bh=1t0jdbxFDf1tbV2RmYerTpuKKJAQm3L4Ecrn9VCA2uE=;
+	s=k20201202; t=1711772412;
+	bh=HPoVVjcVe6HIOPN/k8oM/fkWmZU5+6y/P1eSH7nj+qE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MUy8iFCErHCg8kZvCf3enafxPYDuNpzeJ1SOS/lFtGYYve0i1qyMwYaqaC/05vFKD
-	 9ChSG90z/+t2vuHxcnvlQyTRVBMJhE1uXhdT3hWAl+QNeN1TJi/YOuZ/0LhUkxKvwv
-	 WutQRPY0KanIw+5MCtR69Plvw4s9mIGnk0MK2XvUiI60YXeuLjka9LoBKapvPa8Ive
-	 kCFp/BiG3D2wyxIedGrqpDUMsSPooATmWwLTBboxdzJDwci5vhd50txUGRuSVefSkf
-	 2G5qMHMbSbYxNgQgrLv+A7yJVOUPg4689+WcRZH3+hriorFUho1nurUuPpp3xMmz9+
-	 1xPbrwF3qw6sg==
+	b=Ho9P7M3BXucw3ZE+1SB8u6uuIupk7Hl9KZIANwe958z2nPmtKzua0S08ZXn21l8qM
+	 8IxFUT36raIbQim6C3TTW5XjCGyBQROhZhdw8cz42lvMVO3WKcwov2LUaXX1Yt2ZMF
+	 8Z5dNTP9sZAUy9Y3o9AjoUi7g4T/7NRU/f7VxQ0BruAxfxuz2UiLOBBbaG5TRwTyd+
+	 BDfswS8T4myiIcwiCKWir2qVlDC5qVeYFDLZQk4YLb4sFzzOymbOWP6ips9UScbAwl
+	 sOBXHAeIM9QkE0vyzEX6KO7DM2V3whj9SHgjF03Y02ptC3XaVEWLA4+Cg50y1vs4hr
+	 LQ5jiTEHR4/Pw==
 From: Damien Le Moal <dlemoal@kernel.org>
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -59,16 +73,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
 	Niklas Cassel <cassel@kernel.org>
-Subject: [PATCH v2 18/18] PCI: rockchip-ep: Handle PERST# signal in endpoint mode
-Date: Sat, 30 Mar 2024 13:19:28 +0900
-Message-ID: <20240330041928.1555578-19-dlemoal@kernel.org>
+Subject: [PATCH v2 13/18] PCI: rockchip-ep: Refactor rockchip_pcie_ep_probe() MSI-X hiding
+Date: Sat, 30 Mar 2024 13:19:23 +0900
+Message-ID: <20240330041928.1555578-14-dlemoal@kernel.org>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240330041928.1555578-1-dlemoal@kernel.org>
 References: <20240330041928.1555578-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240329_212028_753996_62D4D9C4 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20240330_042029_349471_B7B224DA 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,245 +99,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, the Rockchip PCIe endpoint controller driver does not handle
-PERST# signal, which prevents detecting when link training should
-actually be started or if the host reset the device. This however can
-be supported using the controller ep_gpio, set as an input GPIO for
-endpoint mode.
-
-Modify the endpoint rockchip driver to get the ep_gpio and its
-associated interrupt which is serviced using a threaded IRQ with the
-function rockchip_pcie_ep_perst_irq_thread() as handler.
-
-This handler function notifies a link down event corresponding to the RC
-side asserting the PERST# signal using pci_epc_linkdown() when the gpio
-is high. Once the gpio value goes down, corresponding to the RC
-de-asserting the PERST# signal, link training is started. The polarity
-of the gpio interrupt trigger is changed from high to low after the RC
-asserted PERST#, and conversely changed from low to high after the RC
-de-asserts PERST#.
+Move the code in rockchip_pcie_ep_probe() to hide the MSI-X capability
+to its own function, rockchip_pcie_ep_hide_msix_cap(). No functional
+changes.
 
 Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 118 +++++++++++++++++++++-
- drivers/pci/controller/pcie-rockchip.c    |  12 +--
- 2 files changed, 122 insertions(+), 8 deletions(-)
+ drivers/pci/controller/pcie-rockchip-ep.c | 54 +++++++++++++----------
+ 1 file changed, 30 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 4006e7dee71a..e098c5fb6d59 100644
+index 17d9fe48c621..a7d008d95a8a 100644
 --- a/drivers/pci/controller/pcie-rockchip-ep.c
 +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -18,6 +18,7 @@
- #include <linux/sizes.h>
- #include <linux/workqueue.h>
- #include <linux/iopoll.h>
-+#include <linux/gpio/consumer.h>
- 
- #include "pcie-rockchip.h"
- 
-@@ -50,6 +51,9 @@ struct rockchip_pcie_ep {
- 	u64			irq_pci_addr;
- 	u8			irq_pci_fn;
- 	u8			irq_pending;
-+	int			perst_irq;
-+	bool			perst_asserted;
-+	bool			link_up;
- 	struct delayed_work	link_training;
- };
- 
-@@ -464,13 +468,17 @@ static int rockchip_pcie_ep_start(struct pci_epc *epc)
- 
- 	rockchip_pcie_write(rockchip, cfg, PCIE_CORE_PHY_FUNC_CFG);
- 
-+	if (rockchip->ep_gpio)
-+		enable_irq(ep->perst_irq);
-+
- 	/* Enable configuration and start link training */
- 	rockchip_pcie_write(rockchip,
- 			    PCIE_CLIENT_LINK_TRAIN_ENABLE |
- 			    PCIE_CLIENT_CONF_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
- 
--	schedule_delayed_work(&ep->link_training, 0);
-+	if (!rockchip->ep_gpio)
-+		schedule_delayed_work(&ep->link_training, 0);
- 
- 	return 0;
+@@ -583,6 +583,34 @@ static void rockchip_pcie_ep_release_resources(struct rockchip_pcie_ep *ep)
+ 	pci_epc_mem_exit(ep->epc);
  }
-@@ -480,6 +488,11 @@ static void rockchip_pcie_ep_stop(struct pci_epc *epc)
- 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
  
-+	if (rockchip->ep_gpio) {
-+		ep->perst_asserted = true;
-+		disable_irq(ep->perst_irq);
-+	}
++static void rockchip_pcie_ep_hide_msix_cap(struct rockchip_pcie *rockchip)
++{
++	u32 cfg_msi, cfg_msix_cp;
 +
- 	cancel_delayed_work_sync(&ep->link_training);
- 
- 	/* Stop link training and disable configuration */
-@@ -542,6 +555,13 @@ static void rockchip_pcie_ep_link_training(struct work_struct *work)
- 	if (!rockchip_pcie_ep_link_up(rockchip))
- 		goto again;
- 
 +	/*
-+	 * If PERST was asserted while polling the link, do not notify
-+	 * the function.
++	 * MSI-X is not supported but the controller still advertises the MSI-X
++	 * capability by default, which can lead to the Root Complex side
++	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
++	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
++	 * the next pointer from the MSI-X entry and set that in the MSI
++	 * capability entry (which is the previous entry). This way the MSI-X
++	 * entry is skipped (left out of the linked-list) and not advertised.
 +	 */
-+	if (ep->perst_asserted)
-+		return;
++	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
++				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
 +
- 	val = rockchip_pcie_read(rockchip, PCIE_CLIENT_BASIC_STATUS0);
- 	dev_info(dev,
- 		 "Link UP (Negociated speed: %sGT/s, width: x%lu)\n",
-@@ -551,6 +571,7 @@ static void rockchip_pcie_ep_link_training(struct work_struct *work)
- 
- 	/* Notify the function */
- 	pci_epc_linkup(ep->epc);
-+	ep->link_up = true;
- 
- 	return;
- 
-@@ -558,6 +579,94 @@ static void rockchip_pcie_ep_link_training(struct work_struct *work)
- 	schedule_delayed_work(&ep->link_training, msecs_to_jiffies(5));
- }
- 
-+static void rockchip_pcie_ep_perst_assert(struct rockchip_pcie_ep *ep)
-+{
-+	struct rockchip_pcie *rockchip = &ep->rockchip;
-+	struct device *dev = rockchip->dev;
++	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
 +
-+	dev_dbg(dev, "PERST asserted, link down\n");
++	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
++					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
++					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
 +
-+	if (ep->perst_asserted)
-+		return;
++	cfg_msi |= cfg_msix_cp;
 +
-+	ep->perst_asserted = true;
-+
-+	cancel_delayed_work_sync(&ep->link_training);
-+
-+	if (ep->link_up) {
-+		pci_epc_linkdown(ep->epc);
-+		ep->link_up = false;
-+	}
++	rockchip_pcie_write(rockchip, cfg_msi,
++			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
 +}
 +
-+static void rockchip_pcie_ep_perst_deassert(struct rockchip_pcie_ep *ep)
-+{
-+	struct rockchip_pcie *rockchip = &ep->rockchip;
-+	struct device *dev = rockchip->dev;
-+
-+	dev_dbg(dev, "PERST de-asserted, starting link training\n");
-+
-+	if (!ep->perst_asserted)
-+		return;
-+
-+	ep->perst_asserted = false;
-+
-+	/* Enable link re-training */
-+	rockchip_pcie_ep_retrain_link(rockchip);
-+
-+	/* Start link training */
-+	schedule_delayed_work(&ep->link_training, 0);
-+}
-+
-+static irqreturn_t rockchip_pcie_ep_perst_irq_thread(int irq, void *data)
-+{
-+	struct pci_epc *epc = data;
-+	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-+	struct rockchip_pcie *rockchip = &ep->rockchip;
-+	u32 perst = gpiod_get_value(rockchip->ep_gpio);
-+
-+	if (perst)
-+		rockchip_pcie_ep_perst_assert(ep);
-+	else
-+		rockchip_pcie_ep_perst_deassert(ep);
-+
-+	irq_set_irq_type(ep->perst_irq,
-+			 (perst ? IRQF_TRIGGER_HIGH : IRQF_TRIGGER_LOW));
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int rockchip_pcie_ep_setup_irq(struct pci_epc *epc)
-+{
-+	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-+	struct rockchip_pcie *rockchip = &ep->rockchip;
-+	struct device *dev = rockchip->dev;
-+	int ret;
-+
-+	if (!rockchip->ep_gpio)
-+		return 0;
-+
-+	/* PCIe reset interrupt */
-+	ep->perst_irq = gpiod_to_irq(rockchip->ep_gpio);
-+	if (ep->perst_irq < 0) {
-+		dev_err(dev, "No corresponding IRQ for PERST GPIO\n");
-+		return ep->perst_irq;
-+	}
-+
-+	ep->perst_asserted = true;
-+	irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-+	ret = devm_request_threaded_irq(dev, ep->perst_irq, NULL,
-+					rockchip_pcie_ep_perst_irq_thread,
-+					IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
-+					"pcie-ep-perst", epc);
-+	if (ret) {
-+		dev_err(dev, "Request PERST GPIO IRQ failed %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static const struct pci_epc_features rockchip_pcie_epc_features = {
- 	.linkup_notifier = true,
- 	.msi_capable = true,
-@@ -721,6 +830,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
- 	rockchip->is_rc = false;
- 	rockchip->dev = dev;
- 	INIT_DELAYED_WORK(&ep->link_training, rockchip_pcie_ep_link_training);
-+	ep->link_up = false;
+ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -590,7 +618,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	struct rockchip_pcie *rockchip;
+ 	struct pci_epc *epc;
+ 	int err;
+-	u32 cfg_msi, cfg_msix_cp;
  
- 	epc = devm_pci_epc_create(dev, &rockchip_pcie_epc_ops);
- 	if (IS_ERR(epc)) {
-@@ -748,7 +858,13 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+ 	if (!ep)
+@@ -621,6 +648,8 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto err_disable_clocks;
+ 
++	rockchip_pcie_ep_hide_msix_cap(rockchip);
++
+ 	/* Establish the link automatically */
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+@@ -628,29 +657,6 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
  	/* Only enable function 0 by default */
  	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
  
-+	err = rockchip_pcie_ep_setup_irq(epc);
-+	if (err < 0)
-+		goto err_uninit_port;
-+
- 	return 0;
-+err_uninit_port:
-+	rockchip_pcie_deinit_phys(rockchip);
- err_release_resources:
- 	rockchip_pcie_ep_release_resources(ep);
- err_disable_clocks:
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index dbec700ba9f9..3938c0b6b5a9 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -119,13 +119,11 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 		return PTR_ERR(rockchip->aclk_rst);
- 	}
+-	/*
+-	 * MSI-X is not supported but the controller still advertises the MSI-X
+-	 * capability by default, which can lead to the Root Complex side
+-	 * allocating MSI-X vectors which cannot be used. Avoid this by skipping
+-	 * the MSI-X capability entry in the PCIe capabilities linked-list: get
+-	 * the next pointer from the MSI-X entry and set that in the MSI
+-	 * capability entry (which is the previous entry). This way the MSI-X
+-	 * entry is skipped (left out of the linked-list) and not advertised.
+-	 */
+-	cfg_msi = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
+-				     ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
+-
+-	cfg_msi &= ~ROCKCHIP_PCIE_EP_MSI_CP1_MASK;
+-
+-	cfg_msix_cp = rockchip_pcie_read(rockchip, PCIE_EP_CONFIG_BASE +
+-					 ROCKCHIP_PCIE_EP_MSIX_CAP_REG) &
+-					 ROCKCHIP_PCIE_EP_MSIX_CAP_CP_MASK;
+-
+-	cfg_msi |= cfg_msix_cp;
+-
+-	rockchip_pcie_write(rockchip, cfg_msi,
+-			    PCIE_EP_CONFIG_BASE + ROCKCHIP_PCIE_EP_MSI_CTRL_REG);
+-
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_CONF_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
  
--	if (rockchip->is_rc) {
--		rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep",
--							    GPIOD_OUT_HIGH);
--		if (IS_ERR(rockchip->ep_gpio))
--			return dev_err_probe(dev, PTR_ERR(rockchip->ep_gpio),
--					     "failed to get ep GPIO\n");
--	}
-+	rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep",
-+				rockchip->is_rc ? GPIOD_OUT_HIGH : GPIOD_IN);
-+	if (IS_ERR(rockchip->ep_gpio))
-+		return dev_err_probe(dev, PTR_ERR(rockchip->ep_gpio),
-+				     "failed to get ep GPIO\n");
- 
- 	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
- 	if (IS_ERR(rockchip->aclk_pcie)) {
 -- 
 2.44.0
 
