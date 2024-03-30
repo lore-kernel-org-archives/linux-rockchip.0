@@ -4,55 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB6FCD1288
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 13:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA78CD1288
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Mar 2024 15:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4rj5STpaotKuB0MDxVpULrrz2EOiSWOGLHXGbMG6ljo=; b=HqOoJwrvtuyQdS
-	9I4JZCHT2I2LRxYfXtkqPnbm6w8wW5kWq6Fi1et61DCUiiU1PWq/mDwa4YP1yDy9+tBvHWHIJOPNr
-	9GMSiokCYdXjXs9pDaCjGOZSsZ2lV8Whu03V3r+AFAwcRevdExnELRngmOnsS6dqFwr16VvKZ7ZRM
-	ZyH4LTeamP7f3G8VgY6bSUxBp/kYZtZUX+v1bn/d15j9mPkvhasNIba3gFxoki8MlqCqZtD0f6Ri4
-	6RlCog4PoVxDjKHNO7Uo+I8GROzrXtJd6HhnyS2RVG+jr+RzrwqRH82iDR/RevF7VWoHVnfnInBGh
-	6Kui59mFsZr71couw4aA==;
+	List-Owner; bh=0H7Z4wjDzVigdkz4lxGyn9UjQXpSiSb8LBc4K6iX9Cg=; b=sO/IVSgqQkinmt
+	rd7JIdlxrfeZ+MOV7I6w6BUVyh55E4K/NcEptASIzeP/Op/B86ILDZoAokfr3X42PsIJJc0N/1NEV
+	n6pAkZCHbrIvlZDC0YBRFNmdMYn9n1vcHhKhqKXnNNevC07go74azJbCb0Aduef39uvSyB/6IlljY
+	ZrJrl4hu/+Wu2246lyfUi/Bt2gn2XucEXnU5tKe4AQCQO3MA9eTuJSIOb1SkjD2QNv94mMxQRnWuC
+	hMlcWBAqsCW0q0Rwbo6Ui1eHXK46CQQSAeyDJCbWHik928Zppm3eOqR4sMCjRC3d8aHMKYYQrHEnG
+	J2P6lVulzYVui03WlRag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqYWK-00000003Wti-18CD;
-	Sat, 30 Mar 2024 13:13:16 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rqaxW-00000003jZk-1Vw9;
+	Sat, 30 Mar 2024 15:49:30 +0000
+Received: from mail-centralusazolkn190140001.outbound.protection.outlook.com ([2a01:111:f403:d107::1] helo=DM5PR21CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqYWG-00000003Wsc-0DlG
+	id 1rqaxT-00000003jZB-11Qn
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 Mar 2024 13:13:14 +0000
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <a.fatoum@pengutronix.de>)
-	id 1rqYWC-00075P-7J; Sat, 30 Mar 2024 14:13:08 +0100
-Message-ID: <7c7138f8-b0b7-46c3-b7b2-84e01467f368@pengutronix.de>
-Date: Sat, 30 Mar 2024 14:13:05 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	Sat, 30 Mar 2024 15:49:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QjpwL7za6tTcTNVcy27g3IYm/rBHRnk2wXyOY/DNckEMZwWyfdgEwac8o65tdxUEux/w2lZ4XEXnEJLyLwyrsVZP2IyirLYqlxN6a1oM2fLBhlVGqYwqVdiu2prBq81fgXa3KTC+OImMUYq7QglAHCKLd15EGpjyAh+w6xcyyLGYMqBt/uQdy0NUYV9dQPRBWtSmi7Y2HwbIvK6GMJHIork/NYI7xnFTWtVBT8UVSRxiVlYfeRpUk1LDdTdv98GC5CE87jt1wBSn3Vy2ngp3VcPYyP+bjVniPOf1Ce87zq4P6RqOg3Gh4UufJivUcbDvRP/KRslF+lSiNE6khPklAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3II3f+vXdd+9kOJ04zgY0eP/3l98Mdffb1qeJcSX6Xg=;
+ b=RPnwD+aTMZBY0OTpOlKQ9QFxOasqUxQDugNKyHPLXIlyU6TLCNfHODTapn5A9OU4aRbzHjEAjQIvmbBSrmec4cxjYluRjy5GR8IRQElv5StGKxgVZkPQ/5edRCCyFi72T5AG/jBQt8x9dFZ5M6KBGNyPTj+IglTqqWFxFn7Q+DA6SFTzaP634H+opCXirsc+X2vMVcs4vfEXRMRfFaUrBRPf1lujDTPTDPS+NIcvTBoFlwET7CnmOaTdvG0OrGf8uib/DrIS/X0c4v0FSSxUzrSAtk7qQvNq9jVKXbcKNCkpATZVq5rSPC5ubdct5q2XNWmqEs4ckudcMzvqvVL1kQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3II3f+vXdd+9kOJ04zgY0eP/3l98Mdffb1qeJcSX6Xg=;
+ b=nUgQb5fV8ulRcA+qhc6OQLoq/vrJEHiFp6b0t+xyDAIvv79bKd1Qq7wNgM7ZJj7nVqYJ0Z+tB9v8wxHIL/YP0LS9hLjB8rlCrK+44r3L54WHkVwNODc7yC5VMG5rj+VF1VsoDdAgFzELN7g3eKhPYFdWy7ZnQuJtAFHcECGXiA8bS8Gcyw4W/XG38JmfBAOGe/ydnzt4Z89814S/BuF2tWIkU9nCsQjUmMIpJjSxvrz4CEsEQ+6DK3KfHypfr1pwUHjvpEWTo3gEqx9DHKqQ46Z5ndHQt9NNSa995LGihTRL8TpnfhreJKZR4itmaDq9I+Z2nxDpVDfPjZmb2k1dWQ==
+Received: from DM4PR05MB9229.namprd05.prod.outlook.com (2603:10b6:8:88::20) by
+ DS0PR05MB9125.namprd05.prod.outlook.com (2603:10b6:8:ca::13) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7409.43; Sat, 30 Mar 2024 15:34:53 +0000
+Received: from DM4PR05MB9229.namprd05.prod.outlook.com
+ ([fe80::148f:6016:501b:93f4]) by DM4PR05MB9229.namprd05.prod.outlook.com
+ ([fe80::148f:6016:501b:93f4%3]) with mapi id 15.20.7409.031; Sat, 30 Mar 2024
+ 15:34:53 +0000
+Date: Sat, 30 Mar 2024 10:34:50 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Ahmad Fatoum <a.fatoum@pengutronix.de>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, sboyd@kernel.org,
+	mturquette@baylibre.com, heiko@sntech.de, conor+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
 Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Remove UART2 from RGB30
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, sboyd@kernel.org,
- mturquette@baylibre.com, heiko@sntech.de, conor+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
+Message-ID: <DM4PR05MB9229E56DE3F587BD222E1402A5392@DM4PR05MB9229.namprd05.prod.outlook.com>
 References: <20231018153357.343142-1-macroalpha82@gmail.com>
  <20231018153357.343142-4-macroalpha82@gmail.com>
-From: Ahmad Fatoum <a.fatoum@pengutronix.de>
-In-Reply-To: <20231018153357.343142-4-macroalpha82@gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: a.fatoum@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+ <7c7138f8-b0b7-46c3-b7b2-84e01467f368@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <7c7138f8-b0b7-46c3-b7b2-84e01467f368@pengutronix.de>
+X-TMN: [QHqgOvd+5oEJ1Q3qlJv2Tel1reD6y0jz]
+X-ClientProxiedBy: SA9P221CA0016.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:806:25::21) To DM4PR05MB9229.namprd05.prod.outlook.com
+ (2603:10b6:8:88::20)
+X-Microsoft-Original-Message-ID: <ZggxGkPVxnMSyVYb@wintermute.localhost.fail>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR05MB9229:EE_|DS0PR05MB9125:EE_
+X-MS-Office365-Filtering-Correlation-Id: 69eb00d7-6565-46e4-5fcb-08dc50cef211
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: RUFltxKZY1+dgrZoqZsuBP8au07JsAMIMlQ6z3o18JnpwAS0G7qq/iikTyGsmLfOQRHGe9DYgg5jdl4YT7n5lSXDi+7iHUspcOyyKKuQGlrfYQ0T4smAVfgb4cnio+Yg5e8L76681egWBSZGtm1ldMXiZzMFjm535yqnj0V7Eva93oMHBEU5XtwNZrQlu/88WdVdJ94mHtyK2PnXn8V4X7CqjbKMYSKcU0JIrk97fbCjSd7nhG30k1SDw4VCQfRYy9VTgDvYUU8nLTczIRuWagQgZD/iv6QISMjwD9c/fDFdCNr0aDgIlfkHqkUfD26Ams4CCmpXiV0YvZ5Y3uWvk/EF1qBtBCX6mAi7iXEdwR8ZoCJR3h8xVhKmI47BdyR6MwjbuqWpE0/fXKw3cRPoUfDJ0xc3dEUvN1r3HEflaVKiC2ty6LsYF8ewUqrGn5oMvd4fpSNETsTDT2cML/O13bIGy5aecLXR4aWgwCLmYh108gTWSkfLron+Iy19Ku06A1CVoRSa3xh2yxoTsiciqccCHYomFTa52tCinF8OjFdBp0jNK7zdjDMGwxzL+zPYdnGsBLzHaCNdy3HMp/BMpZiPZW59TY1qef0hfFImF5LrnZOVnuHnBjXH0pNKx6v5JhtitWi/cP0HnWG7wn4V9a/0+4tV6kSknHTkTonzdZY=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?dde1Jyglx5yuAmmC/K9xySuuzsAfkl2ThBWC/0E1Wzp2amdKVnak2ohQk7Gw?=
+ =?us-ascii?Q?MOCkWnYK7DfS9iQCYZljNtWHc3W9VqlC1vbeXyILLBdiijUqWhtHuJy4NsOH?=
+ =?us-ascii?Q?ZHvHjuWEnVI7pvcPikXy1MlPg48lDg2YDlN0YaevTa7mRerKsic/jruSrd4H?=
+ =?us-ascii?Q?KsTWDzW8CATrVO+pSNIQ4nz4YY+VXhwNoNMKQEK7BMuvOx8RDBbruSl1klcq?=
+ =?us-ascii?Q?mhfBbG7PlX6P1CncDC4UyG6lDNxdDDn5bTEmcIM87VV86t9Ig9GlfZLykdeQ?=
+ =?us-ascii?Q?fXk0Ft/Hc9n8utGAqtTJMHtI0Zi474jLgBovzKQ/lzwJo/J4h+mB0JShg1Z/?=
+ =?us-ascii?Q?DmLrBSxwCrcpvyNMa+mAImZHkTmAmXqfu+fhlVnJS3kQ26o2xu32bf32YBTD?=
+ =?us-ascii?Q?X7O8IMygPtecKgKQ2vI+cGcs7nd5xJfIvJwO71Y9A3ky9KHDWVdlcwa2Odr8?=
+ =?us-ascii?Q?GagEKuvBiAoMtGRdKFS/mjog/u6UdXTxmpsdPpMjDkOMHYBtarTcqd57pzqe?=
+ =?us-ascii?Q?fJswGL1AcARqaJyblZcX4keHAq/w9dTNXsX7qjDgVbJRFKWaCR4N6znWAdKM?=
+ =?us-ascii?Q?qKzC4gtna06pal2YtOQarOpRhCftuUaY+ZT0de3yQh8MYEk6tpxzC57bVQiz?=
+ =?us-ascii?Q?gP7NNZ4HNQCcyxfu8mF8EmAYetxfoGIX6F8UAmV3w6+N4g7X7cOFrmHxQtUo?=
+ =?us-ascii?Q?27kSyXZfxXmRaqNiRw7wzfljjM85061t9J0MxL/+1kjftUr4VV2i0AIMUVJ+?=
+ =?us-ascii?Q?tziK4faUbc1WV5f7oRaT5nF8j6loD89Qqe7f4JMauKQn1gUJBB63gCO1Gakp?=
+ =?us-ascii?Q?74f3UmIuNxHp3FeDrFRovoqzlIETUG7veM2XzgqlorteOOWYzXH6TtFJ2imF?=
+ =?us-ascii?Q?lCeezVLApnk5tAI85uNzdrixu/h50SBwW/RAKnCevOayOmsygfh3rRIPgMkz?=
+ =?us-ascii?Q?ERw5kmx2UJht1/oU7JIRl68XtaJUtaS6RHji7Axz+hlB4Zo5v4jqtjKerB8R?=
+ =?us-ascii?Q?g1OEkJbxfy0IvQErbWlCuOi/VpkIpHZkcSov8u1315vrjWrig+vsgMNSeTu2?=
+ =?us-ascii?Q?VxvDx4MQSW5ngNahaPFC1bw47si5shfQD2vVACh+KwNgk/R8sfjNV0hgvXew?=
+ =?us-ascii?Q?qWW7LWmKJDzYdAOqLtGrJIlstf3oSXJYT8Zt5LFlGj8TR3GRODK0aKjr+CQF?=
+ =?us-ascii?Q?0oJ7KSIEAKHw2l2SH8PF5mW2sqrljXC5x/poVsMPI1cRfAEtcmKUnYCD5sY?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: sct-15-20-4823-7-msonline-outlook-84f76.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 69eb00d7-6565-46e4-5fcb-08dc50cef211
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR05MB9229.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2024 15:34:53.7638
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR05MB9125
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_061312_259403_71377298 
-X-CRM114-Status: GOOD (  20.36  )
+X-CRM114-CacheID: sfid-20240330_084927_308229_8C2D8968 
+X-CRM114-Status: GOOD (  27.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,61 +128,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Chris,
-
-On 18.10.23 17:33, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Sat, Mar 30, 2024 at 02:13:05PM +0100, Ahmad Fatoum wrote:
+> Hello Chris,
 > 
-> The Powkiddy RGB30 has no onboard UART header, so remove the reference
-> to it in the device tree. This was left on by mistake in the initial
-> commit.
+> On 18.10.23 17:33, Chris Morgan wrote:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > The Powkiddy RGB30 has no onboard UART header, so remove the reference
+> > to it in the device tree. This was left on by mistake in the initial
+> > commit.
+> 
+> Do you know if the UART is perhaps available over testpoints?
 
-Do you know if the UART is perhaps available over testpoints?
+There is not one as best I can tell on either the RGB30 or RK2023. The
+Powkiddy X55 does have UART, however. I was able to exploit the fact
+that the RGB30 is extremely similar to all of the Anbernic devices
+(such as the RG353 series) for the purposes of low-level development.
+Once I got a network connection I performed the rest of development
+over SSH, but prior to that I just developed on a different device.
 
-If yes, having a DT-overlay upstream enabling it along with documentation could be useful.
-If not, how do you do low-level debugging on the RBG30 in absence of the serial console?
-
-Thanks,
-Ahmad 
+Thank you,
+Chris.
 
 > 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts | 9 +++++++++
->  1 file changed, 9 insertions(+)
+> If yes, having a DT-overlay upstream enabling it along with documentation could be useful.
+> If not, how do you do low-level debugging on the RBG30 in absence of the serial console?
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-> index 3ebc21608213..1ead3c5c24b3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
-> @@ -64,6 +64,10 @@ simple-audio-card,cpu {
->  
->  /delete-node/ &adc_keys;
->  
-> +&chosen {
-> +	/delete-property/ stdout-path;
-> +};
-> +
->  &cru {
->  	assigned-clocks = <&pmucru CLK_RTC_32K>, <&cru PLL_GPLL>,
->  			  <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
-> @@ -149,4 +153,9 @@ rk817_charger: charger {
->  	};
->  };
->  
-> +/* There is no UART header visible on the board for this device. */
-> +&uart2 {
-> +	status = "disabled";
-> +};
-> +
->  /delete-node/ &vibrator;
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
+> Thanks,
+> Ahmad 
+> 
+> > 
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+> > index 3ebc21608213..1ead3c5c24b3 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-powkiddy-rgb30.dts
+> > @@ -64,6 +64,10 @@ simple-audio-card,cpu {
+> >  
+> >  /delete-node/ &adc_keys;
+> >  
+> > +&chosen {
+> > +	/delete-property/ stdout-path;
+> > +};
+> > +
+> >  &cru {
+> >  	assigned-clocks = <&pmucru CLK_RTC_32K>, <&cru PLL_GPLL>,
+> >  			  <&pmucru PLL_PPLL>, <&cru PLL_VPLL>;
+> > @@ -149,4 +153,9 @@ rk817_charger: charger {
+> >  	};
+> >  };
+> >  
+> > +/* There is no UART header visible on the board for this device. */
+> > +&uart2 {
+> > +	status = "disabled";
+> > +};
+> > +
+> >  /delete-node/ &vibrator;
+> 
+> -- 
+> Pengutronix e.K.                           |                             |
+> Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+> 31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
