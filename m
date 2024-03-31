@@ -4,78 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 266BBCD1288
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Mar 2024 05:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F8ACD1284
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Mar 2024 08:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2tFCW2UDpTOZV5DzXpZRzhUOm3b+C0lgGfmWPShsPp0=; b=yywqPFZS7hOnJT
-	GkODwEsCiiG7zHZbzb/2DtrTs5QWeJ7j2sJUE6QWEd5V6BPe7WcoNfZ5MT6q4GehfXWhq/nDQPDU5
-	5H76HSyAy59LyuowW0xViqtJSqbXKVCNstR03+PK6Cfnp0l2f6P3c2Io3lkqlR/NyRumuXlJalVWT
-	4+j5X1J5bzhicyO8jISDEUeN53URLxjXXBlJgA3V8jO1SzzKYCV34jr7ZFG/0WWhj20L/HJO3jwyy
-	50ShxVgWTtBJsJDZnx4C6xUaNYonbdRq+ySsh8OUuTLyBm/vlpVRfB/e3rOQddMvBGrgWqu6lBKtG
-	CWdgJOUXCzYo8s+bJZRQ==;
+	List-Owner; bh=mGnbSW99v9Z1sQM7/faJe1DGOYoWUJ+xA0s0ZC5azzU=; b=nBUZyCrj2KvVzq
+	mCrsBb+IM3KX2F2b2+kGUp6JWBDVs0Lnib+UQ9hg+xFIqg6TtJHdTkmMkSBjMe131oolN0C40K+1R
+	MOa4E+szVSZsGV3ODIs3kvolbwCteZKyUdkzMN1Gsy3lX9bOPcAWaP8GqU5/ub37uj70S+dR8s0Zw
+	1p9R+oL9YaGvyB/wb6vWebJMgA8F+O6ItwuQVmEQuG62kX2ktNgZmMgJ6ucl+iBs74fkA15r9qKV8
+	elIoEaML899OouNXDfglNPi3NOv7EGaU+cd8KukfIglyJMOWm90TtONnVWbfPrZZhrSKIia9c3c8A
+	Es46IEvsMk/bXSl1TChA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqnwj-00000004ptv-2abA;
-	Sun, 31 Mar 2024 05:41:33 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1rqqUr-000000051Qb-1New;
+	Sun, 31 Mar 2024 08:24:57 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rqnwd-00000004psz-3UUd
+	id 1rqqUk-000000051PO-0u9u
 	for linux-rockchip@lists.infradead.org;
-	Sun, 31 Mar 2024 05:41:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1711863688; x=1743399688;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=rgBxQWb018sUA1O77Ck6hkUHlAofNm8E+53lqjOtZa0=;
-  b=WK4ad/M4ckkdRzSuodNc9ixANj3Ui4JZ545H3yozizxRaoR4e8JyxBEY
-   yKtdT97/hrZPh+dI6j3qlnQLIyf8ny1+uxwgK8p5ttkSxlpSLXuSVjELe
-   XfsKoj4PCuJbNfDYhtuY74MGXu8Okd7LWfv1bdY6SO3XTF6C3IrJ8tm98
-   ikNs1Rq/JxVlFg6Kw/buTsLqxtl37tblZ2ixQZrL8fIpsl7zHsgAkCQ48
-   SGpzHR0eacb9fzFIx8WrFbSQrY1kxeY00SZfeoLCCPH1rFqyAa4NzNL4w
-   7uNVC8zek7yAH/FoGPSCmfuD+ZZK7/Ikj5DRgc3wIzzOhEK0oGI6p80xS
-   w==;
-X-CSE-ConnectionGUID: EPI4QR4tSVadamjX0Cp1ig==
-X-CSE-MsgGUID: ijs7L3uQQdOfFgX+0VPDsg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11029"; a="10793225"
-X-IronPort-AV: E=Sophos;i="6.07,169,1708416000"; 
-   d="scan'208";a="10793225"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2024 22:41:20 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,169,1708416000"; 
-   d="scan'208";a="17830104"
-Received: from lkp-server01.sh.intel.com (HELO 3d808bfd2502) ([10.239.97.150])
-  by orviesa006.jf.intel.com with ESMTP; 30 Mar 2024 22:41:17 -0700
-Received: from kbuild by 3d808bfd2502 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1rqnwQ-0000py-1f;
-	Sun, 31 Mar 2024 05:41:14 +0000
-Date: Sun, 31 Mar 2024 13:40:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Damien Le Moal <dlemoal@kernel.org>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Bjorn Helgaas <helgaas@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 19/19] PCI: rockchip-ep: Handle PERST signal in endpoint
- mode
-Message-ID: <202403311327.3pGGy6Qm-lkp@intel.com>
-References: <20240329090945.1097609-20-dlemoal@kernel.org>
+	Sun, 31 Mar 2024 08:24:52 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-33edbc5932bso2386927f8f.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 31 Mar 2024 01:24:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1711873487; x=1712478287; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=LfF2AWzOpcaxDOJ1YdJ2lEu+CGC5rZNnn1Szy1XXYow=;
+        b=AWDPJ1VgsnYCsErCCLPqdvIh4Fc3010PBUb3CXbol3EQIjbXzYCQKaUQgFwiAYr4et
+         QLJdslBn1UyOt0H+vlz/AfT2R9NXwPWZGFl+QEGq04hIomiz3sVIt7OjMRfkqXGq50hn
+         D0hQkNMQd2xo0Eekwg3FB1eVRcsSqWomVVMDovNMoRDEebyDOJBNj28iRW6c80adI0dR
+         lDr7m+JP28B/97pC8SNpDBCiiC1D0iA2rgMsfvWMxQTm6peiCed40EBME+aiuBYdEiB0
+         Sk2CxREOBRLnPhR8Bdl5PUtwTMsG/bkmYhyqUNRsuOFc3mXbkKiGQYEMTmaAKaBSZuwu
+         Srsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711873487; x=1712478287;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LfF2AWzOpcaxDOJ1YdJ2lEu+CGC5rZNnn1Szy1XXYow=;
+        b=Qfni9CWWx08P/gb5NS2rlWQOxwbDxfBSNLUFA4oCF+b8d4AgtHO3ZDHOvPi0fBjos3
+         14qPa0S3eLUKRoZFwgozHgsMQvljQx8IL6ECL6cQk2B2bNVvYoVMYECYrIjjLgXNsCnW
+         TBbfkeuVLXDOxOrxxgO+ZXfAFfbvGNQHAYE2SxadojCkqxuXopykZlagA4JgB/jYqDog
+         OZ22k04v2Orqp8wMKlLgg9eysuSJ2cwHsmHxEMP7xynIIZM80FfSJzVCRe8pSDIBJpj+
+         5n4grr9k1TeivDEvzqKo7UBeSitKqe/ZLlLGbeAY7gyeVMFmm9vL7F7k6C0XG4uIsRbX
+         B03Q==
+X-Gm-Message-State: AOJu0YygKPNE0eubi0uuCVZp74QRYUjMNDfSmvkzf1yAP4slM05Dc6xX
+	lIM3pm8buSHbdL9tRf6ceQCzo6Nm5J/lyqVdmWkXA5NJGePLS2MlWQEbVL14fw0=
+X-Google-Smtp-Source: AGHT+IFouvjoeAD0x5HdsoICIKkc9ag1AyS8bP3QuqxCXXa5StSTtO/IFAjAFyL2wYCLYNDuygKz0Q==
+X-Received: by 2002:a05:6000:1ac7:b0:341:cf94:3fce with SMTP id i7-20020a0560001ac700b00341cf943fcemr4588572wry.10.1711873486942;
+        Sun, 31 Mar 2024 01:24:46 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.16])
+        by smtp.gmail.com with ESMTPSA id h18-20020adff192000000b00341c6778171sm8343195wro.83.2024.03.31.01.24.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 31 Mar 2024 01:24:46 -0700 (PDT)
+Message-ID: <654826d6-5fd8-4876-a0a5-8738e14eb06e@linaro.org>
+Date: Sun, 31 Mar 2024 10:24:44 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240329090945.1097609-20-dlemoal@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/2] dt-bindings: clock: rockchip: Add support for clk
+ input / output switch
+To: Sugar Zhang <sugar.zhang@rock-chips.com>, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <1711340191-69588-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1711340191-69588-2-git-send-email-sugar.zhang@rock-chips.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <1711340191-69588-2-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240330_224127_953869_1AA86297 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20240331_012450_435113_A1D02EAA 
+X-CRM114-Status: GOOD (  28.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,104 +144,303 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Damien,
+On 25/03/2024 05:16, Sugar Zhang wrote:
+> This patch add support switch for clk-bidirection which located
 
-kernel test robot noticed the following build errors:
+Please do not use "This commit/patch/change", but imperative mood. See
+longer explanation here:
+https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
 
-[auto build test ERROR on pci/next]
-[also build test ERROR on pci/for-linus linus/master v6.9-rc1 next-20240328]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> at GRF, such as SAIx_MCLK_{IN OUT} which share the same pin.
+> and these config maybe located in many pieces of GRF,
+> which hard to addressed in one single clk driver. so, we add
+> this simple helper driver to address this situation.
+> 
+> In order to simplify implement and usage, and also for safety
+> clk usage (avoid high freq glitch), we set all clk out as disabled
+> (which means Input default for clk-bidrection) in the pre-stage,
+> such boot-loader or init by HW default. And then set a safety freq
+> before enable clk-out, such as "assign-clock-rates" or clk_set_rate
+> in drivers.
+> 
+> e.g.
+> 
+> 1. mclk{out,in}_sai0 define:
+> 
+>   mclkin_sai0: mclkin-sai0 {
+>       compatible = "fixed-clock";
+>       #clock-cells = <0>;
+>       clock-frequency = <12288000>;
+>       clock-output-names = "mclk_sai0_from_io";
+>   };
+> 
+>   mclkout_sai0: mclkout-sai0@ff040070 {
+>       compatible = "rockchip,clk-out";
+>       reg = <0 0xff040070 0 0x4>;
+>       clocks = <&cru MCLK_SAI0_OUT2IO>;
+>       #clock-cells = <0>;
+>       clock-output-names = "mclk_sai0_to_io";
+>       rockchip,bit-shift = <4>;
+>       //example with PD if reg access needed
+>       power-domains = <&power RK3562_PD_VO>;
+>   };
+> 
+> Note:
+> 
+> clock-output-names of mclkin_sai0 should equal to strings in drivers. such as:
+> 
+> drivers/clk/rockchip/clk-rk3562.c:
+> PNAME(clk_sai0_p) = { "clk_sai0_src", "clk_sai0_frac", "xin_osc0_half", "mclk_sai0_from_io" };
+> 
+> 2. mclkout_sai0 usage:
+> 
+>   &ext_codec {
+>       clocks = <&mclkout_sai0>;
+>       clock-names = "mclk";
+>       assigned-clocks = <&mclkout_sai0>;
+>       assigned-clock-rates = <12288000>;
+>       pinctrl-names = "default";
+>       pinctrl-0 = <&i2s0m0_mclk>;
+>   };
+> 
+>   clk_summary on sai0 work:
+> 
+>   cat /sys/kernel/debug/clk/clk_summary | egrep "pll|sai0"
+> 
+>   clk_sai0_src                1        1        0  1188000000          0     0  50000
+>     clk_sai0_frac             1        1        0    12288000          0     0  50000
+>       clk_sai0                1        1        0    12288000          0     0  50000
+>         mclk_sai0             1        1        0    12288000          0     0  50000
+>           mclk_sai0_out2io    1        1        0    12288000          0     0  50000
+>             mclk_sai0_to_io   1        1        0    12288000          0     0  50000
+> 
+>   example with PD if reg access needed:
+> 
+>   * PD status when mclk_sai0_to_io on:
+> 
+>   cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+> 
+>   domain                          status          children
+>     /device                                                runtime status
+>   ----------------------------------------------------------------------
+>   ...
+> 
+>   vo                              on
+>     /devices/platform/clocks/ff040070.mclkout-sai0         active
+>   ...
+> 
+>   * PD status when mclk_sai0_to_io off:
+> 
+>   cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+> 
+>   domain                          status          children
+>     /device                                                runtime status
+>   ----------------------------------------------------------------------
+>   ...
+> 
+>   vo                              off-0
+>     /devices/platform/clocks/ff040070.mclkout-sai0         suspended
+>   ...
+> 
+> 3. mclkin_sai0 usage:
+> 
+>   please override freq of mclkin as the real external clkin, such as:
+> 
+>   &mclkin_sai0 {
+>       clock-frequency = <24576000>;
+>   }
+> 
+>   &ext_codec {
+>       clocks = <&mclkin_sai0>;
+>       clock-names = "mclk";
+>       assigned-clocks = <&cru CLK_SAI0>;
+>       assigned-clock-parents = <&mclkin_sai0>;
+>       pinctrl-names = "default";
+>       pinctrl-0 = <&i2s0m0_mclk>;
+>   };
+> 
+>   clk_summary on sai0 work:
+> 
+>   cat /sys/kernel/debug/clk/clk_summary | egrep "pll|sai0"
+> 
+>   mclk_sai0_from_io          1        1        0    12288000          0     0  50000
+>     clk_sai0                 1        1        0    12288000          0     0  50000
+>       mclk_sai0              1        1        0    12288000          0     0  50000
+>         mclk_sai0_out2io     0        0        0    12288000          0     0  50000
+>           mclk_sai0_to_io    0        0        0    12288000          0     0  50000
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Damien-Le-Moal/PCI-endpoint-Introduce-pci_epc_check_func/20240329-171158
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/20240329090945.1097609-20-dlemoal%40kernel.org
-patch subject: [PATCH 19/19] PCI: rockchip-ep: Handle PERST signal in endpoint mode
-config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20240331/202403311327.3pGGy6Qm-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240331/202403311327.3pGGy6Qm-lkp@intel.com/reproduce)
+None of this long commit msg is a description of hardware. Please remove
+all unnecessary information and instead describe the problem you are
+solving or the hardware.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202403311327.3pGGy6Qm-lkp@intel.com/
+> 
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> ---
+> 
+>  .../bindings/clock/rockchip,clk-out.yaml           | 107 +++++++++++++++++++++
+>  1 file changed, 107 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml b/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
+> new file mode 100644
+> index 0000000..6582605
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,clk-out.yaml
+> @@ -0,0 +1,107 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/rockchip,clk-out.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Clock Out Control Module Binding
 
-All errors (new ones prefixed by >>):
+It does not look like you tested the bindings, at least after quick
+look. Please run `make dt_binding_check` (see
+Documentation/devicetree/bindings/writing-schema.rst for instructions).
+Maybe you need to update your dtschema and yamllint.
 
-   drivers/pci/controller/pcie-rockchip-ep.c: In function 'rockchip_pcie_ep_perst_irq_thread':
->> drivers/pci/controller/pcie-rockchip-ep.c:633:9: error: implicit declaration of function 'irq_set_irq_type'; did you mean 'irq_set_irq_wake'? [-Werror=implicit-function-declaration]
-     633 |         irq_set_irq_type(ep->perst_irq,
-         |         ^~~~~~~~~~~~~~~~
-         |         irq_set_irq_wake
-   drivers/pci/controller/pcie-rockchip-ep.c: In function 'rockchip_pcie_ep_setup_irq':
->> drivers/pci/controller/pcie-rockchip-ep.c:657:9: error: implicit declaration of function 'irq_set_status_flags' [-Werror=implicit-function-declaration]
-     657 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-         |         ^~~~~~~~~~~~~~~~~~~~
->> drivers/pci/controller/pcie-rockchip-ep.c:657:45: error: 'IRQ_NOAUTOEN' undeclared (first use in this function); did you mean 'IRQF_NO_AUTOEN'?
-     657 |         irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-         |                                             ^~~~~~~~~~~~
-         |                                             IRQF_NO_AUTOEN
-   drivers/pci/controller/pcie-rockchip-ep.c:657:45: note: each undeclared identifier is reported only once for each function it appears in
-   cc1: some warnings being treated as errors
+> +
+> +maintainers:
+> +  - Sugar Zhang <sugar.zhang@rock-chips.com>
+> +
+> +description: |
+> +  This add support switch for clk-bidirection which located
+
+No, "this does not add". This is description of hardware, thus describe
+hardware.
+
+> +  at GRF, such as SAIx_MCLK_{IN OUT} which share the same pin.
+> +  and these config maybe located in many pieces of GRF,
+> +  which hard to addressed in one single clk driver. so, we add
+> +  this simple helper driver to address this situation.
+
+Bindings are for hardware, not drivers. Rephrase EVERYTHING to focus on
+hardware, not driver. Otherwise it looks like you wrote it for drivers,
+which is a NAK.
+
+> +
+> +  In order to simplify implement and usage, and also for safety
+> +  clk usage (avoid high freq glitch), we set all clk out as disabled
+> +  (which means Input default for clk-bidrection) in the pre-stage,
+> +  such boot-loader or init by HW default. And then set a safety freq
+> +  before enable clk-out, such as "assign-clock-rates" or clk_set_rate
+> +  in drivers.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,clk-out
+
+Missing SoC compatible. See writing bindings.
 
 
-vim +633 drivers/pci/controller/pcie-rockchip-ep.c
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +    description: parent clocks.
 
-   620	
-   621	static irqreturn_t rockchip_pcie_ep_perst_irq_thread(int irq, void *data)
-   622	{
-   623		struct pci_epc *epc = data;
-   624		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-   625		struct rockchip_pcie *rockchip = &ep->rockchip;
-   626		u32 perst = gpiod_get_value(rockchip->ep_gpio);
-   627	
-   628		if (perst)
-   629			rockchip_pcie_ep_perst_assert(ep);
-   630		else
-   631			rockchip_pcie_ep_perst_deassert(ep);
-   632	
- > 633		irq_set_irq_type(ep->perst_irq,
-   634				 (perst ? IRQF_TRIGGER_HIGH : IRQF_TRIGGER_LOW));
-   635	
-   636		return IRQ_HANDLED;
-   637	}
-   638	
-   639	static int rockchip_pcie_ep_setup_irq(struct pci_epc *epc)
-   640	{
-   641		struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-   642		struct rockchip_pcie *rockchip = &ep->rockchip;
-   643		struct device *dev = rockchip->dev;
-   644		int ret;
-   645	
-   646		if (!rockchip->ep_gpio)
-   647			return 0;
-   648	
-   649		/* PCIe reset interrupt */
-   650		ep->perst_irq = gpiod_to_irq(rockchip->ep_gpio);
-   651		if (ep->perst_irq < 0) {
-   652			dev_err(dev, "No corresponding IRQ for PERST GPIO\n");
-   653			return ep->perst_irq;
-   654		}
-   655	
-   656		ep->perst_asserted = true;
- > 657		irq_set_status_flags(ep->perst_irq, IRQ_NOAUTOEN);
-   658		ret = devm_request_threaded_irq(dev, ep->perst_irq, NULL,
-   659						rockchip_pcie_ep_perst_irq_thread,
-   660						IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
-   661						"pcie-ep-perst", epc);
-   662		if (ret) {
-   663			dev_err(dev, "Request PERST GPIO IRQ failed %d\n", ret);
-   664			return ret;
-   665		}
-   666	
-   667		return 0;
-   668	}
-   669	
+Drop useless description.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clock-output-names:
+> +    maxItems: 1
+> +
+> +  rockchip,bit-shift:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: Defines the bit shift of clk out enable.
+
+No, this is deduced from compatible.
+
+> +
+> +  rockchip,bit-set-to-disable:
+> +    type: boolean
+> +    description: |
+> +      By default this clock sets the bit at bit-shift to enable the clock.
+> +      Setting this property does the opposite: setting the bit disable
+> +      the clock and clearing it enables the clock.
+
+No, this is deduced from compatible.
+
+Binding looks really poor, like written for some debug driver.
+
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - "#clock-cells"
+> +  - clock-output-names
+> +  - rockchip,bit-shift
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  # Clock Provider node:
+> +  - |
+> +    mclkin_sai0: mclkin-sai0 {
+> +        compatible = "fixed-clock";
+> +        #clock-cells = <0>;
+> +        clock-frequency = <12288000>;
+> +        clock-output-names = "mclk_sai0_from_io";
+> +    };
+
+Drop, unrelated.
+
+> +
+> +    mclkout_sai0: mclkout-sai0@ff040070 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+
+> +        compatible = "rockchip,clk-out";
+> +        reg = <0 0xff040070 0 0x4>;
+> +        clocks = <&cru MCLK_SAI0_OUT2IO>;
+> +        #clock-cells = <0>;
+> +        clock-output-names = "mclk_sai0_to_io";
+> +        rockchip,bit-shift = <4>;
+> +    };
+> +
+> +  # Clock mclkout Consumer node:
+> +  - |
+> +    ext_codec {
+
+Drop, not related, incorrect name.
+
+> +        clocks = <&mclkout_sai0>;
+> +        clock-names = "mclk";
+> +        assigned-clocks = <&mclkout_sai0>;
+> +        assigned-clock-rates = <12288000>;
+> +        pinctrl-names = "default";
+> +        pinctrl-0 = <&i2s0m0_mclk>;
+> +    };
+> +
+> +  # Clock mclkin Consumer node:
+> +  - |
+> +    ext_codec {
+
+Drop.
+
+Don't upstream poor quality downstream code, but fix it first to match
+upstream style. Read carefully writing bindings and DTS coding style.
+
+
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
