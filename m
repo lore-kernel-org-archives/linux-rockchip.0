@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2214FCD1288
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Apr 2024 16:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F42CD128A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Apr 2024 16:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rdRMBYT4QrxvpzH0BCiiumS3QZlhhjvAQHKlx3zRM2w=; b=VzNMV4VsByM8ia
-	P2WPSjPkJUm/HqQIT5yYb4Nt5CQuoR3qotm4TBGEoMAXO0E8CA+bjACWm2Nl+wSp9gbV9r8V1kYw1
-	NasQNZ/xFB9qb8gSRZ3gXfsSNsHS/6vEt+4oM90g+9MgsAx1YvB5jilieCETLgsBeNJRx8Gc8nqeJ
-	dztmEj4ITk9++Hs/3saq9JsM6YGXSQ4HZAyP+SWsDZkGW5PXHcAOMDCtQcl6kogcpoczoWCEM/Fr6
-	NZf5Ix9mXod/2aVJiOLSMHbr1sVuNRRSPcpC+bmDVPL7ErJbrkaAjxVBap13ZKSCjxzHGfp5NBExo
-	VfmEdDgp3gY3PfGYH4iQ==;
+	List-Owner; bh=g4gfBdfuwI6yzjo6zggO7zsJ+l9p+5CDxr6vb8IeC2Q=; b=porJT5SZFcGm+g
+	nqXKiogs06qBAFiTbWWddUv56x6x6ns7znXEWcvyEsudKzeYk//uXiOf0A5mE18eakxkXwnXMkbWD
+	jrGINXZX/61Cyc/nIiY2fhhTRDNEu5Cv6fsw0Ejzc6YQLaOs6c34Bw8nOCR4zn+HC/vAauylWZ7BS
+	h9Wh7h3bjHvfaxnJsW8whE69uv8xlhOR5vrhBzXwe9XhsnPPmJEZt5TeWlFwlYl36Vncp73T4V2nW
+	LutRj5kzDiCaVyhAARI+Qk4uDKq1qUy8F/Akcqe9IbuMlLJPrFaq6thZ2QlszH+gDW6miDbcpeERI
+	nKwzKRb32PfD3hnPWBTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrKkH-00000008MLB-0lYp;
-	Mon, 01 Apr 2024 16:42:53 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rrKkr-00000008MWc-0bhk;
+	Mon, 01 Apr 2024 16:43:29 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrKkC-00000008MIm-0h55;
-	Mon, 01 Apr 2024 16:42:49 +0000
+	id 1rrKkm-00000008MUX-3uKn;
+	Mon, 01 Apr 2024 16:43:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1711989766;
-	bh=rf+9gU+rgHvHJUsWo+FAi96Dw6JhGte2wcuY71kOctM=;
+	s=mail; t=1711989803;
+	bh=jj/7JBEtwmOllBv+V+90Ub0Tp6aGpKsq0JrqIiVbE5I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UM1YiwuO/tuhCuB5c/VEVrEptNQ+rQcuebpqijmIAG2FZX47Sls8Kj4uW3ZwGvbQE
-	 gCai4P1sUwVp7UfE11xWid0dFsS9GR7AT++1J/hNqqTUqzzulfmekUxBQp6IpihQPB
-	 VyRHg751/LoL0zWPYUYq04cV7ZRxeamt+OzdU9U4rI6+82xOaeKd4ZTnzZj8O/vkpC
-	 b7kZDzIwxjnfLwNM95ihROmVGfBLvFxMu3N9Wr0qnf3gm3Vug+5ay25aFLaemf7Ddr
-	 c9SG7JnA4IfeqVHJFvVwILZIrUoc3yJUBMcCy1FV2Kk3/AnoBxW8JoPCGl8J/J9P9o
-	 m54faGdoPsS/g==
+	b=h9xlKKWyIwllQPpM8f6+Y5/WphYZoXQfOLS6XWg0Uleb9GaZuPBov4eBYJY9bYmz2
+	 DLDzL7pItuSboJs3hA4CGcbnahRoRp8E1bhEatXhMzhcF5Fwd0aBKFEPgyjf6X9cHz
+	 le0sb8OPhfDZ4BTUOzjp+E5bhPeMrLZ0MpPUaZuewWIHPvDE4jaAVvilALNm96GonT
+	 ksvs9C1RguUVPhcrplQ4eYd0CMqHpjyudl2hmzywqn8ql1G77WL8Mxd/lHyY5UAr6X
+	 bLwtpaVLIM/+g6jP2uNz39xSrtDLZaGC6OVNYMYwWtBgxGXGRykLGI2Mr1SH2zdz5Y
+	 WG6+b61r1Z6wg==
 Received: from [100.95.196.25] (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: koike)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 0AFE0378143B;
-	Mon,  1 Apr 2024 16:42:40 +0000 (UTC)
-Message-ID: <9133098c-dbfa-4be6-815d-d2cd5ea4b9f3@collabora.com>
-Date: Mon, 1 Apr 2024 13:42:40 -0300
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 557AA378143B;
+	Mon,  1 Apr 2024 16:43:17 +0000 (UTC)
+Message-ID: <c0d9a271-7454-4e5d-8f53-f3b3cd0830ef@collabora.com>
+Date: Mon, 1 Apr 2024 13:43:17 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 06/10] drm/ci: meson: Refactor existing meson jobs
+Subject: Re: [PATCH v5 07/10] drm/ci: meson: Add job to test panfrost GPU
+ driver
 Content-Language: en-US
 To: Vignesh Raman <vignesh.raman@collabora.com>,
  dri-devel@lists.freedesktop.org
@@ -59,12 +60,12 @@ Cc: daniels@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
  linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240401061235.192713-1-vignesh.raman@collabora.com>
- <20240401061235.192713-7-vignesh.raman@collabora.com>
+ <20240401061235.192713-8-vignesh.raman@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20240401061235.192713-7-vignesh.raman@collabora.com>
+In-Reply-To: <20240401061235.192713-8-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240401_094248_532744_43FD2B61 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20240401_094325_138654_08AFBB5B 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +85,14 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 On 01/04/2024 03:12, Vignesh Raman wrote:
-> For Amlogic Meson SOC the display driver is meson. Currently,
-> in drm-ci for meson, only the display driver is tested.
-> Refactor the existing meson jobs so that gpu driver testing
-> jobs can be added later and update xfails accordingly.
+> For amlogic meson SOC the GPU driver is panfrost. So add
+> support in drm-ci to test panfrost driver for amlogic meson
+> SOC and update xfails. Skip KMS tests for panfrost driver since
+> it is not a not a KMS driver and skip driver-specific tests.
 > 
 > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
->    - Refactor the patch to rename job to indicate display driver testing,
->      rename the existing xfail files.
-> 
-> v3:
->    - Add the job name in GPU_VERSION and use it for xfail file names instead
->      of using DRIVER_NAME.
-> 
-> v4:
->    - Remove the display suffix in job and rename xfails accordingly.
->      Remove the change adding job name in GPU_VERSION.
-> 
-> v5:
->    - Add meson-display job.
-> 
-> ---
->   drivers/gpu/drm/ci/test.yml                    | 14 +++++++++++---
->   drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt |  5 -----
->   2 files changed, 11 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-> index adeb05bdb440..505733069995 100644
-> --- a/drivers/gpu/drm/ci/test.yml
-> +++ b/drivers/gpu/drm/ci/test.yml
-> @@ -357,14 +357,17 @@ panfrost:mt8183:
->   .meson:
 
-I also would rename this to .meson-device, so we don't confuse with the 
-driver name, what do you think?
+Nit: Maybe squash this with previous commit.
 
 With or without this change:
 
@@ -129,53 +101,67 @@ Acked-by: Helen Koike <helen.koike@collabora.com>
 Thanks
 Helen
 
->     extends:
->       - .lava-igt:arm64
-> -  stage: meson
->     variables:
-> -    DRIVER_NAME: meson
->       DTB: ${DEVICE_TYPE}
->       BOOT_METHOD: u-boot
->       KERNEL_IMAGE_TYPE: "image"
+> ---
+> 
+> v2:
+>    - Add panfrost GPU jobs for amlogic meson SOC with new xfails.
+> 
+> v3:
+>    - Skip KMS tests for panfrost driver since it is not a not a KMS
+>      driver and update xfails. Add the job name in GPU_VERSION and use
+>      it for xfail file names instead of using DRIVER_NAME.
+> 
+> v4:
+>    - Remove the gpu suffix in job and rename xfails accordingly.
+> 
+> v5:
+>    - Use panfrost-gpu job and skip driver-specific tests.
+> 
+> ---
+>   drivers/gpu/drm/ci/test.yml                       | 5 +++++
+>   drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt | 1 +
+>   drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt | 8 ++++++++
+>   3 files changed, 14 insertions(+)
+>   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+>   create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+> 
+> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> index 505733069995..d1d42ff7df2d 100644
+> --- a/drivers/gpu/drm/ci/test.yml
+> +++ b/drivers/gpu/drm/ci/test.yml
+> @@ -381,6 +381,11 @@ meson:g12b:
+>       - .g12b
+>       - .meson-display
 >   
-> -meson:g12b:
-> +.meson-display:
-> +  stage: meson
-> +  variables:
-> +    DRIVER_NAME: meson
-> +
-> +.g12b:
->     extends:
->       - .meson
->     parallel: 3
-> @@ -373,6 +376,11 @@ meson:g12b:
->       GPU_VERSION: g12b
->       RUNNER_TAG: mesa-ci-x86-64-lava-meson-g12b-a311d-khadas-vim3
->   
-> +meson:g12b:
+> +panfrost:g12b:
 > +  extends:
 > +    - .g12b
-> +    - .meson-display
+> +    - .panfrost-gpu
 > +
 >   virtio_gpu:none:
 >     stage: virtio-gpu
 >     variables:
-> diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
-> index 56a2ae7047b4..029b4ade21f6 100644
-> --- a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
-> +++ b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
-> @@ -5,11 +5,6 @@ kms_cursor_legacy@single-bo,Fail
->   kms_cursor_legacy@single-move,Fail
->   kms_cursor_legacy@torture-bo,Fail
->   kms_cursor_legacy@torture-move,Fail
-> -kms_force_connector_basic@force-edid,Fail
-> -kms_hdmi_inject@inject-4k,Fail
-> -kms_plane_cursor@overlay,Fail
-> -kms_plane_cursor@primary,Fail
-> -kms_plane_cursor@viewport,Fail
->   kms_properties@connector-properties-atomic,Fail
->   kms_properties@connector-properties-legacy,Fail
->   kms_properties@get_properties-sanity-atomic,Fail
+> diff --git a/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+> new file mode 100644
+> index 000000000000..6f5e760d5ec0
+> --- /dev/null
+> +++ b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+> @@ -0,0 +1 @@
+> +panfrost_prime@gem-prime-import,Fail
+> diff --git a/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+> new file mode 100644
+> index 000000000000..41a846a59644
+> --- /dev/null
+> +++ b/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+> @@ -0,0 +1,8 @@
+> +# Panfrost is not a KMS driver, so skip the KMS tests
+> +kms_.*
+> +
+> +# Skip driver specific tests
+> +msm_.*
+> +^amdgpu.*
+> +v3d_.*
+> +vc4_.*
 
 _______________________________________________
 Linux-rockchip mailing list
