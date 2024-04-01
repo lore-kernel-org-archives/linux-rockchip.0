@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE88CD128A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Apr 2024 07:00:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC3AFCD1283
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Apr 2024 07:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EUc5FU6g4yNizFczVAdccegSNY5okhMXnUBO9V6nLtg=; b=fEnbjqJhpcHup2
-	Q9S0k9aNCfGBaGHS18w5/SaLWMMdU93RdEg0yPRViSmizagy35nklIQup3yJL7/sPVt2iK+htxC5d
-	EDVs74f5BFPbRna9uQ4hBddgsJ2/R2Aaz1C8ZsVjh6VyqnRfTff8m0aAysYyPK5koJhjCL84hBZjo
-	c3Z0u+I7vrDJL1M4B+qQ8xEREUYjnk6V4PeRrZmmhdZV9E1KdKFrblMbWq/xScDo/HmQzd2HZYla1
-	PZ2s5fcloMHq/4wxaTs9bUzHqiFpzlkq5V91Ks0XSJCFmgwwpB6nC/esym4VOazgbXJnMYnjmz/VV
-	MoaNTFBP/rk5ETfYOUaA==;
+	List-Owner; bh=h10d++VoS2/PaEr/e8G/rdWDypapEBO36Kd71ojTSok=; b=ga8SeAl7P5NYtL
+	K0Vn/d5W7Ry54vpHR8mRpBKfbKqVNxMtwC5MmXkfsO46rJ2qv+OPRt+ioaD50Z+sRRZ/C5twN4Vll
+	ogGg776bK2SKX84VeEyp3gpzVGHHD/JG9laHlS/VBLIal6ExSyzdlLA9kod1EE9LISdU6a90X8pr1
+	p53er42horjIAGLG/y1KfoVCXVch0BcnNwqfYFcP1+VGy4ihqL4BEc+UNwvtCiihtibJ5hMYEI/G+
+	N7sV6BhlwADwRgssAFbsLeG5APT602VkpF7vRutvVw3HPdWEp4fduooMgYynxUo2zLCnC14jYKfz9
+	FA9geT4cIoySisKVRoNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrBe6-0000000767Y-2pHC;
-	Mon, 01 Apr 2024 06:59:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rrBuK-000000077vE-3yZt;
+	Mon, 01 Apr 2024 07:16:40 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrBe1-0000000766P-40md;
-	Mon, 01 Apr 2024 06:59:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 20BB760ACE;
-	Mon,  1 Apr 2024 06:59:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FA0BC433C7;
-	Mon,  1 Apr 2024 06:59:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1711954788;
-	bh=BO4iEbJ+EDNgglvq3pj+mwN8DBXIKP7Kmy2BunCGATA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FGqRYffX7Mv/eeLxf0LkcvIAqyQu4gv1B05jBvXz2sa0pL9iIS6uqBuo49RptEPb7
-	 JITpYYt8nKks+EsoVlU64PpRthDQjqJLltI0qoRChRbw2MWVtiX2Y6yT8JOP9pCb7z
-	 6VF9FPmE09mv3SNaoOC2pRjC3sMpEsjH5WOI3ZZ8FGi4w6w0HOVh23t0QiFjlSx9en
-	 XOqyyefruVdEVWBEN/UIJtj8xQoJLh6WygZFqK+lso95kYUXjcRozGGUhPfPPd0J/N
-	 +WPdzlYmPXnlWvEW4/veweKx7VYNr6vG2V2TyAUvxOUOJylVmUab7F+o7WFM93ow2V
-	 A6ff7Ehehg1JA==
-Message-ID: <89eb3414-38ba-4397-9ed7-aebebbdadd07@kernel.org>
-Date: Mon, 1 Apr 2024 15:59:45 +0900
+	id 1rrAve-000000071X3-3WIO;
+	Mon, 01 Apr 2024 06:14:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1711952037;
+	bh=E2aghGpQK92An1ZuPhL1vFyz1L4o8jK/Gv/KB0mTOfc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Rpt+mpCcvI4BrBXMmH0MmkLCykedyO2xVlGSExe8lfeRK0LYHIejnsMXD+IAIneFU
+	 1/gWi1q59vtqRtZb5OdlMtEeGKbp5CoKLn4V5beViSnCRyPYWh+M9/Ln7qgrRYBpdY
+	 8kwybmMANSO7y/3BbU9dnzTeGsG1+m49AIE6HK634o4Nf+jtgC3s01M6fUerrd48Hw
+	 QDZfzPfxR6oxouPiQlUnlG3Z+knh4P9WXJn2NbPEycuObWP88KaASPzIPJz6KAxpVu
+	 Dtl1IgJCxYIy1Sgl25OnBXnXYsWpvMdqtLUwKUMO4xN9Zz2WT0Pq2X3CooekROWD/T
+	 CGIhcdKLZek8w==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E08603782121;
+	Mon,  1 Apr 2024 06:13:53 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	emma@anholt.net,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	hamohammed.sa@gmail.com,
+	rodrigosiqueiramelo@gmail.com,
+	melissa.srw@gmail.com,
+	mairacanal@riseup.net,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 07/10] drm/ci: meson: Add job to test panfrost GPU driver
+Date: Mon,  1 Apr 2024 11:42:32 +0530
+Message-Id: <20240401061235.192713-8-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240401061235.192713-1-vignesh.raman@collabora.com>
+References: <20240401061235.192713-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] PCI: rockchip-host: Fix rockchip_pcie_host_init_port()
- PERST# handling
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-pci@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20240330035043.1546087-1-dlemoal@kernel.org>
- <d1ed4a0bf702d9927d4e9279f19bcf7b@manjaro.org>
-Content-Language: en-US
-From: Damien Le Moal <dlemoal@kernel.org>
-Organization: Western Digital Research
-In-Reply-To: <d1ed4a0bf702d9927d4e9279f19bcf7b@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240331_235950_221890_8A9B2688 
-X-CRM114-Status: GOOD (  19.41  )
+X-CRM114-CacheID: sfid-20240331_231359_463876_D82BC447 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,90 +89,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/1/24 04:34, Dragan Simic wrote:
-> Hello Damien,
-> 
-> Please see my comments below.
-> 
-> On 2024-03-30 04:50, Damien Le Moal wrote:
->> The PCIe specifications (PCI Express Electromechanical Specification 
->> rev
->> 2.0, section 2.6.2) mandate that the PERST# signal must remain asserted
->> for at least 100 usec (Tperst-clk) after the PCIe reference clock
->> becomes stable (if a reference clock is supplied), for at least 100 
->> msec
->> after the power is stable (Tpvperl).
->>
->> In addition, the PCI Express Base SPecification Rev 2.0, section 6.6.1
->> state that the host should wait for at least 100 msec from the end of a
->> conventional reset (PERST# is de-asserted) before accessing the
->> configuration space of the attached device.
->>
->> Modify rockchip_pcie_host_init_port() by adding two 100ms sleep, one
->> before and after bringing back PESRT signal to high using the ep_gpio
->> GPIO. Comments are also added to clarify this behavior.
->>
->> Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
->> ---
->>
->> Changes from v1:
->>  - Add more specification details to the commit message.
->>  - Add missing msleep(100) after PERST# is deasserted.
->>
->>  drivers/pci/controller/pcie-rockchip-host.c | 12 ++++++++++++
->>  1 file changed, 12 insertions(+)
->>
->> diff --git a/drivers/pci/controller/pcie-rockchip-host.c
->> b/drivers/pci/controller/pcie-rockchip-host.c
->> index 300b9dc85ecc..ff2fa27bd883 100644
->> --- a/drivers/pci/controller/pcie-rockchip-host.c
->> +++ b/drivers/pci/controller/pcie-rockchip-host.c
->> @@ -294,6 +294,7 @@ static int rockchip_pcie_host_init_port(struct
->> rockchip_pcie *rockchip)
->>  	int err, i = MAX_LANE_NUM;
->>  	u32 status;
->>
->> +	/* Assert PERST */
->>  	gpiod_set_value_cansleep(rockchip->ep_gpio, 0);
->>
->>  	err = rockchip_pcie_init_port(rockchip);
->> @@ -322,8 +323,19 @@ static int rockchip_pcie_host_init_port(struct
->> rockchip_pcie *rockchip)
->>  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
->>  			    PCIE_CLIENT_CONFIG);
->>
->> +	/*
->> +	 * PCIe CME specifications mandate that PERST be asserted for at
->> +	 * least 100ms after power is stable.
->> +	 */
->> +	msleep(100);
-> 
-> Perhaps it would be slightly better to use usleep_range()
-> instead of msleep().
+For amlogic meson SOC the GPU driver is panfrost. So add
+support in drm-ci to test panfrost driver for amlogic meson
+SOC and update xfails. Skip KMS tests for panfrost driver since
+it is not a not a KMS driver and skip driver-specific tests.
 
-I can do that, but I fail to see the advantage. Why do you say that it may be
-better ?
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
 
-> 
->>  	gpiod_set_value_cansleep(rockchip->ep_gpio, 1);
->>
->> +	/*
->> +	 * PCIe base specifications rev 2.0 mandate that the host wait for
->> +	 * 100ms after completion of a conventional reset.
->> +	 */
->> +	msleep(100);
-> 
-> Obviously, the same comment as above applies here.
-> 
->> +
->>  	/* 500ms timeout value should be enough for Gen1/2 training */
->>  	err = readl_poll_timeout(rockchip->apb_base + 
->> PCIE_CLIENT_BASIC_STATUS1,
->>  				 status, PCIE_LINK_UP(status), 20,
+v2:
+  - Add panfrost GPU jobs for amlogic meson SOC with new xfails.
 
+v3:
+  - Skip KMS tests for panfrost driver since it is not a not a KMS
+    driver and update xfails. Add the job name in GPU_VERSION and use
+    it for xfail file names instead of using DRIVER_NAME.
+
+v4:
+  - Remove the gpu suffix in job and rename xfails accordingly.
+
+v5:
+  - Use panfrost-gpu job and skip driver-specific tests.
+
+---
+ drivers/gpu/drm/ci/test.yml                       | 5 +++++
+ drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt | 1 +
+ drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt | 8 ++++++++
+ 3 files changed, 14 insertions(+)
+ create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index 505733069995..d1d42ff7df2d 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -381,6 +381,11 @@ meson:g12b:
+     - .g12b
+     - .meson-display
+ 
++panfrost:g12b:
++  extends:
++    - .g12b
++    - .panfrost-gpu
++
+ virtio_gpu:none:
+   stage: virtio-gpu
+   variables:
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+new file mode 100644
+index 000000000000..6f5e760d5ec0
+--- /dev/null
++++ b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+@@ -0,0 +1 @@
++panfrost_prime@gem-prime-import,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+new file mode 100644
+index 000000000000..41a846a59644
+--- /dev/null
++++ b/drivers/gpu/drm/ci/xfails/panfrost-g12b-skips.txt
+@@ -0,0 +1,8 @@
++# Panfrost is not a KMS driver, so skip the KMS tests
++kms_.*
++
++# Skip driver specific tests
++msm_.*
++^amdgpu.*
++v3d_.*
++vc4_.*
 -- 
-Damien Le Moal
-Western Digital Research
+2.40.1
 
 
 _______________________________________________
