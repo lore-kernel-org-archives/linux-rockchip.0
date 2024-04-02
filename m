@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F1C9C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Apr 2024 07:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B18ACD1284
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Apr 2024 07:39:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w99q/6I8OZGveaUopkpmkgTTz0jJIrJnK52h896e6Hc=; b=Bc+IF5bpeWmJ/k
-	P3+El56+aw9pelAekQDi4WTdfo6x6XN+u8UzohVZKJWu7PGqHsdaZ+82zQHrMN+I4CoyoZ41wwCu9
-	4R8umLHqJCKoMZ/zPKyxFjs+GUCmQOFmG9l5HZ0OHz2AOaqZ1BjUXwcmtBS9R5CqEUJTpWdIEn8Hq
-	JH3z7kJDYosnqI5XKVxlM9rKvpGYMvY3hGnn1+/IFYxXhTBsndYqMjT5PKLxHbW8IRQyr4YVbcM1w
-	AivZOiNQcKCHbLZa+hPwyZGTJbTCznd0hLIq2tDrB6XJgeI03BowBSEs+yfUOs0ipUqIooB3N2z3r
-	JYVjvtPigK7uZ2ximnfA==;
+	List-Owner; bh=FXZ3ODwOZ2JLFFpTKAJ9T7X0yJ3o/ZJPdsrA/nawfuE=; b=LrjP+gAi2tDiO8
+	8xtlPW9QINWokRMTLJLGSZZ16VQJJ/CiaZdZ+uasGnwIci8ArQhVXDjcNsVRwNZ36lh/BeJc2r4gT
+	6xEeqZny7GSwdXtcfbNYx01StaA3M2kf54m4XsQUYRJ4plGrxdul1rH4LTlLAeIQlIoHoQqflVx/Z
+	xNfzXX5rQ7Ykshw78BsNgjfUEqJoED92eDxTDNtOwQf7l8OmdJUhH4DV0ocqtLvwN0aQ4wgdbxSEm
+	0TBl7pUys1WvOlSNBdsXP3ZO9lDKewkD0FCcWNmqBSgoFGaE3ioC6TtDvSiHwNbAeSjHBxFjA0pWY
+	+mArxhTvkt5VFQdi5gHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrYiq-0000000A6D6-3hgG;
-	Tue, 02 Apr 2024 07:38:20 +0000
+	id 1rrYjZ-0000000A6O9-1U9u;
+	Tue, 02 Apr 2024 07:39:05 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrYim-0000000A6B1-1FhG;
-	Tue, 02 Apr 2024 07:38:17 +0000
+	id 1rrYjW-0000000A6NG-084z;
+	Tue, 02 Apr 2024 07:39:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7765B60B4F;
-	Tue,  2 Apr 2024 07:38:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C703C433F1;
-	Tue,  2 Apr 2024 07:38:13 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 754ED60EF3;
+	Tue,  2 Apr 2024 07:39:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1F45C433F1;
+	Tue,  2 Apr 2024 07:38:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712043495;
-	bh=TfkRnq5Iex/rUtVkNVsPycE3pm25lH41VYxu3rMQUOA=;
+	s=k20201202; t=1712043541;
+	bh=rwUKp8tQcJWIw6WN1+oxtX5t7MIf+fHokhs2hygHdDU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V7S6CQI93E3zwLQFAHvPkTOZroqxnXZLv+j98cTwbl0BfjL5riHoJJlkAWmqd/RzX
-	 QMGelJ3/TmSzX16VOatTUkmy/KgJ4pFHEMvETHPBid9Ud93Icownw9abE3svYuvIYF
-	 4feje6sQtbq3Gl1YyBy1YA5xCyYLY8skgtD52QNgIS19gijoD9rCPvxdXDAAD8KOcS
-	 BBL8jMywvaTotqTRcIM48kKaFZYieUm7CwUSaYwblGSxXFVO511ITLIFcZtfgEvZFC
-	 EEie4rNsP8Q8SEcQLtqKg6gZIdANxMQTWe8OHLcY7d361v9PDIyWJbmDRbEUJ6Qf59
-	 uQtLfckete3pQ==
-Message-ID: <80c4c37b-8c5c-4628-a455-fcccfc3b3730@kernel.org>
-Date: Tue, 2 Apr 2024 16:38:12 +0900
+	b=ZhiT1Q/PVpVwQjGY9RnAZHycKG9jiSCWsIR0PQfL/q705TDjyeUdY54e7vaGUKQR0
+	 BHjhkYUVZaBxKzSjLwN93AJgB1nNFYJdL7+GFD/30gEkwcc1Z23BIAWQSiuUF1yp2P
+	 bsNY+AWxzEbldxixwQVWE5Yp8i3h6My487UX9PECjHRB9QPq1ifOXhiPUsaG4YJJvs
+	 HYmPDSKkv/likU74S7nei7nhptKJ/LfwNeAhn7ymLccKqlKlSJhYglkjUswBOvydPm
+	 9XYs3ODk+yK1WwzUMeAVOqDiorKnam/4kW9TqCm8XAgGpJ7xyF0uO0wjH3Bn38omte
+	 txAncUFpLeYow==
+Message-ID: <ae0544bc-c5e1-4705-8917-0d69d24f06b1@kernel.org>
+Date: Tue, 2 Apr 2024 16:38:57 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 17/18] dt-bindings: pci: rockchip,rk3399-pcie-ep: Add
@@ -72,8 +72,8 @@ From: Damien Le Moal <dlemoal@kernel.org>
 Organization: Western Digital Research
 In-Reply-To: <57d5d6ea-5fef-423c-9f85-5f295bfa4c5f@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240402_003816_461896_A53B7B5D 
-X-CRM114-Status: GOOD (  19.68  )
+X-CRM114-CacheID: sfid-20240402_003902_469599_E28C27AC 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,16 +147,12 @@ On 4/2/24 16:33, Krzysztof Kozlowski wrote:
 > have code for this in the driver yet (nothing is shared between ep and
 > host), then maybe let's go with perst to match the actual name.
 
-That works for me. The other simple solution would be to move the RC node
-ep-gpios description to the common schema pci/rockchip,rk3399-pcie-common.yaml,
-maybe ? Otherwise, perst-gpios like the Qualcomm schemas would be nice too.
+Forgot to add: the driver code for the EP PERST gpio handling is added in patch
+18 of the series, after this one.
 
 > 
 > Anyway, you need maxItems. I sent a patch for the other binding:
 > https://lore.kernel.org/all/20240401100058.15749-1-krzysztof.kozlowski@linaro.org/
-
-Thanks for that.
-
 > 
 > Best regards,
 > Krzysztof
