@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BF51C6FD1F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 07:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F160CD1288
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 07:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MQ54iJsHc+Y2toh4UMxHs93wqJpEKLFfzHvtXnejkOU=; b=kLdNU3XJE1scqp
-	Ijex2pcXxYpftUpMddRt9vFKqSprfWX5r81spkDQY5ccdJDjqKueGPF7U391IvwDQdgCspe74vNNt
-	qubIBow9GHoTMdIpRG0rFnJGOw9BBpoOhgIGmpdcmEs43oo8yQxSGmRFF2ohz0tVkDS0NPwJ/Xxk8
-	oy8DpOIoIVo9Gr/Slz1/Fiq9yG8xDLU8W+HOmjcP64P7e2lS7DdII8BiHrowbaQmhHWO5g6KcYPIu
-	sej+NdOULKDagCfQfXJUMtGOmqJk+kBfTVfHKTcK+FujCNZuTdKaBvArWXBGKeMgZtEhA7GCmp8Kf
-	K2CQAnTDUJnzb5yQr0rg==;
+	List-Owner; bh=e5w+FOjYdhKMMBl+g6dlgzafSl4+6qosc2bj5x4i44M=; b=3oUZy2hacMP+dE
+	CX5cjulmcqJiY4SHsHNgYh+5n0OVl4pl8WSTNR8sQhVPC3zDmgymlk+RdA3WhZHHzyJvpCKQSiQgv
+	MmROrHLWwM2LdICSMf/7RDY6Q3EWTcX3gnSb1LFfTrUWUSvJaFtRlZ2OF/61A7Jqu5CQIGtwZTttv
+	nAsdoiJ/wrEIjWtiS/lt1szYycHBCvyhx0S/jHhfKNRUVCX+fNBqTztc2S59UtGPoI9gllON2QA23
+	xB+389uEbQro+Eqva1+G6fgeWM84OXYJ7ic1vDKAW7lvWqqipHvv1QGUUCExT/YDSGIPPramJGpHL
+	e51DDAnH2F4HQsUrt3rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrvSQ-0000000EfoT-21ck;
-	Wed, 03 Apr 2024 07:54:54 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rrvWG-0000000EgiV-3eIO;
+	Wed, 03 Apr 2024 07:58:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrvSA-0000000EfkO-1mSQ;
-	Wed, 03 Apr 2024 07:54:40 +0000
+	id 1rrvWB-0000000Egeu-1XuX;
+	Wed, 03 Apr 2024 07:58:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BA9FFCE20F3;
-	Wed,  3 Apr 2024 07:54:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1E62C433F1;
-	Wed,  3 Apr 2024 07:54:33 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CBB3461295;
+	Wed,  3 Apr 2024 07:58:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD8A6C433F1;
+	Wed,  3 Apr 2024 07:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712130876;
-	bh=ohHul4K7Pgm4EOjX61t9xdDjDL1x620XVzPfPILMOrs=;
+	s=k20201202; t=1712131126;
+	bh=rff1smmYpqyVpVVfAiWjpMpTYNbLSpbWFwSmqO/3U4g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=qWTzfv1/yq5V8VS0HIJBVsUeGbKPBMh22QdR9lqj8ZG9TEqNxsqOmBG/8g2BFwKV2
-	 jzh6U242LWI4ZxItIs/0qnwNhszOwfGeCcgnfaFHPmLVEMPFOnuQFJdtTCzPp+mWZ0
-	 Vy0hX8NoGsYMPipG11vJ/3TG/wHjQm08Yj0uDKRGd5WK9Y9L3sKMYqc617T1XV+efV
-	 5puQ5S/WfbWBcDyQoYRLMrsPAIWNlkTABKUJzO76n8rVJmFyNw2BvHWWvqZWUb8tCX
-	 TEe7MSutEYEaVvtxCWoiHvH/5LIxn7yVTn25CB+79B/3YXQQSbutjPlcKEXjUH7ACK
-	 o8YJEzHccVDcg==
-Message-ID: <eb580d64-1110-479a-9a0b-c2f1eacd23e7@kernel.org>
-Date: Wed, 3 Apr 2024 16:54:32 +0900
+	b=Mxf93bp6wDizDIACTo4UdoDT5pg99FD2NqYFnuCZMDNdqh6VsEeWgF+VKKwu1x43i
+	 P+5tYJSLJWqv/gy7hxE/lNOQ4Suik163ZcbxSP+RBZdHCnvBxikA4xXjnb8QSt5taY
+	 hkG+omhxKCxYgQrZxOWXEZ2a92soCc2fzkeX84hURgDFbHp2+qn78zUVmNmvBG32VB
+	 oKJgyXLeDksYFuH71EZaIGxi5LD+bQq49jT2P3J3owdEL+h0oaXAvZXh2oiHM67OQH
+	 JG1z2uIMMMtW5pHoz1BEGR3CfY2/+14nsN1ZdqW6Zk65aSOgttY35xhGInQ5L2x69Z
+	 W2+sPk5raT2CQ==
+Message-ID: <2cdc7045-e277-4d1f-ad7c-66e4ac819a41@kernel.org>
+Date: Wed, 3 Apr 2024 16:58:42 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/18] PCI: endpoint: Introduce pci_epc_map_align()
+Subject: Re: [PATCH v2 00/18] Improve PCI memory mapping API
 To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
  Kishon Vijay Abraham I <kishon@kernel.org>,
@@ -59,15 +59,14 @@ Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
  Rick Wertenbroek <rick.wertenbroek@gmail.com>,
  Wilfred Mallawa <wilfred.mallawa@wdc.com>, Niklas Cassel <cassel@kernel.org>
 References: <20240330041928.1555578-1-dlemoal@kernel.org>
- <20240330041928.1555578-3-dlemoal@kernel.org>
- <20240403074520.GC25309@thinkpad>
+ <20240403075034.GF25309@thinkpad>
 Content-Language: en-US
 From: Damien Le Moal <dlemoal@kernel.org>
 Organization: Western Digital Research
-In-Reply-To: <20240403074520.GC25309@thinkpad>
+In-Reply-To: <20240403075034.GF25309@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_005438_920691_ADB03185 
-X-CRM114-Status: GOOD (  26.57  )
+X-CRM114-CacheID: sfid-20240403_005847_557624_DF4F5D13 
+X-CRM114-Status: GOOD (  20.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +83,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/3/24 16:45, Manivannan Sadhasivam wrote:
-> On Sat, Mar 30, 2024 at 01:19:12PM +0900, Damien Le Moal wrote:
->> Some endpoint controllers have requirements on the alignment of the
->> controller physical memory address that must be used to map a RC PCI
->> address region. For instance, the rockchip endpoint controller uses
->> at most the lower 20 bits of a physical memory address region as the
->> lower bits of an RC PCI address. For mapping a PCI address region of
->> size bytes starting from pci_addr, the exact number of address bits
->> used is the number of address bits changing in the address range
->> [pci_addr..pci_addr + size - 1].
+On 4/3/24 16:50, Manivannan Sadhasivam wrote:
+> On Sat, Mar 30, 2024 at 01:19:10PM +0900, Damien Le Moal wrote:
+>> This series introduces the new functions pci_epc_map_align(),
+>> pci_epc_mem_map() and pci_epc_mem_unmap() to improve handling of the
+>> PCI address mapping alignment constraints of endpoint controllers in a
+>> controller independent manner.
 >>
->> For this example, this creates the following constraints:
->> 1) The offset into the controller physical memory allocated for a
->>    mapping depends on the mapping size *and* the starting PCI address
->>    for the mapping.
->> 2) A mapping size cannot exceed the controller windows size (1MB) minus
->>    the offset needed into the allocated physical memory, which can end
->>    up being a smaller size than the desired mapping size.
+>> The issue fixed is that the fixed alignment defined by the "align" field
+>> of struct pci_epc_features assumes that the alignment of the endpoint
+>> memory used to map a RC PCI address range is independent of the PCI
+>> address being mapped. But that is not the case for the rk3399 SoC
+>> controller: in endpoint mode, this controller uses the lower bits of the
+>> local endpoint memory address as the lower bits for the PCI addresses
+>> for data transfers. That is, when mapping local memory, one must take
+>> into account the number of bits of the RC PCI address that change from
+>> the start address of the mapping.
 >>
->> Handling these constraints independently of the controller being used in
->> a PCI EP function driver is not possible with the current EPC API as
->> it only provides the ->align field in struct pci_epc_features.
->> Furthermore, this alignment is static and does not depend on a mapping
->> pci address and size.
+>> To fix this, the new endpoint controller method .map_align is introduced
+>> and called from pci_epc_map_align(). This method is optional and for
+>> controllers that do not define it, the mapping information returned
+>> is based of the fixed alignment constraint as defined by the align
+>> feature.
 >>
->> Solve this by introducing the function pci_epc_map_align() and the
->> endpoint controller operation ->map_align to allow endpoint function
->> drivers to obtain the size and the offset into a controller address
->> region that must be used to map an RC PCI address region. The size
->> of the physical address region provided by pci_epc_map_align() can then
->> be used as the size argument for the function pci_epc_mem_alloc_addr().
->> The offset into the allocated controller memory can be used to
->> correctly handle data transfers. Of note is that pci_epc_map_align() may
->> indicate upon return a mapping size that is smaller (but not 0) than the
->> requested PCI address region size. For such case, an endpoint function
->> driver must handle data transfers in fragments.
+>> The functions pci_epc_mem_map() is a helper function which obtains
+>> mapping information, allocates endpoint controller memory according to
+>> the mapping size obtained and maps the memory. pci_epc_mem_map() unmaps
+>> and frees the endpoint memory.
 >>
+>> This series is organized as follows:
+>>  - Patch 1 tidy up the epc core code
+>>  - Patch 2 and 3 introduce the new map_align endpoint controller method
+>>    and related epc functions.
+>>  - Patch 4 to 6 modify the test endpoint driver to use these new
+>>    functions and improve the code of this driver.
 > 
-> Is there any incentive in exposing pci_epc_map_align()? I mean, why can't it be
-> hidden inside the new alloc() API itself?
+> While posting the next version, please split the endpoint patches into a
+> separate series. It helps in code review and can be applied separately.
 
-I could drop pci_epc_map_align(), but the idea here was to have an API that is
-not restrictive. E.g., a function driver could allocate memory, keep it and
-repetedly use map_align and map() function to remap it to different PCI
-addresses. With your suggestion, that would not be possible.
+Which patches ? They are all endpoint related:
+ (1) Core code
+ (2) test function driver
+ (3) rockchip rk3399 controller
 
-> 
-> Furthermore, is it possible to avoid the map_align() callback and handle the
-> alignment within the EPC driver?
-
-I am not so sure that this is possible because handling the alignment can
-potentially result in changing the amount of memory to allocate, based on the
-PCI address also. So the allocation API would need to change, a lot.
-
->> +	/*
->> +	 * Assume a fixed alignment constraint as specified by the controller
->> +	 * features.
->> +	 */
->> +	features = pci_epc_get_features(epc, func_no, vfunc_no);
->> +	if (!features || !features->align) {
->> +		map->map_pci_addr = pci_addr;
->> +		map->map_size = size;
->> +		map->map_ofst = 0;
-> 
-> These values are overwritten anyway below.
-
-Looks like "return" got dropped. Bug. Will re-add it.
-
+(2) and (3) depend on the patches in (1), so splitting the series is a big
+possible only if (1) is applied first, so that is a source of delays and breaks
+the context of the patches...
 
 -- 
 Damien Le Moal
