@@ -4,58 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4467CA0EC1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D124CA0EC0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Aug 2025 10:43:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WgqcLSr3En7nKvv6WqtfYlVObEeziKYTYxeCXm95epw=; b=Da6WnWRhtBeyAQ
-	HSZt9Y/jrBteZlsM2r1sZ6Lqb621NN7kceriv5+oLfKaUhkTasmaNil28v2yAUYSgKurVPLyrvgnW
-	bb6T6fRx9gVgjM3d92kTOFpTByT9XvSv1s2X+FaVoHGrSBX8zOvECvlQ2cXp5udPPUxwHNr/0z/nT
-	MlphkBlvesLxy2tq0IqH3jHnPwQIZJWcdO7auEqQ1AkyZ1chB1Vqtw1aW+EY9cgzmJwQ2/QfBqI6S
-	nb3+mLR8FMCm5vGlQUGRs/FB+euqY7kRhrD+PuA7M2/cmQrTduokZG6ZFv3WrI2nZipv3FidafB1Q
-	1t80lTEUqhbRGRGMU8Dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g5LNNCqtksoChR9qrDMsmdNrsLS1L0qngKk4/Rhd4Sg=; b=BM9LK/LbOKui+L
+	90aR7LoqBIaPndDKiUibfaJBfvQ5m0sP2piXPm1Nsg8JHW+mrBwRdz+EiUNEa8ME8C8h8aUvZyWyc
+	KfAyynjsQ9qcfRG1uAP0qwv9yEtb7O/W4PCVYooevJ6Zx1RdqZCSDa0zc2YY2D+J9hz1BvRHD1LC2
+	iRo42cVPkilBy4JDt8y/0z5jVZ0YbGSlIvUfZXtdrFiptSMMerwX0rf73h9B0NOdBvnYPZYKUOEAu
+	rKmPIfEXvDgAWoKbn45f8hTEUgoJ8AAIbM/WBnvknkXplxMxDnH6W+RH8BPEF0AiKVOsZez8/uxGS
+	TtECgxK/lu16CL9jUZyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ujbbr-0000000EvPK-19ZT;
-	Wed, 06 Aug 2025 10:43:03 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1ujbbm-0000000EvMo-1GEW;
+	Wed, 06 Aug 2025 10:42:58 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sEUPu-00000002Xkr-3l6Z;
-	Tue, 04 Jun 2024 13:41:36 +0000
+	id 1rrvee-0000000EkNi-2XAb;
+	Wed, 03 Apr 2024 08:07:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 29380CE1160;
-	Tue,  4 Jun 2024 13:41:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BE38C2BBFC;
-	Tue,  4 Jun 2024 13:41:29 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id A376DCE210F;
+	Wed,  3 Apr 2024 08:07:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9555FC433C7;
+	Wed,  3 Apr 2024 08:07:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1717508491;
-	bh=FArcXwplL8wN1ALhCuGpUD+BoCuPOB8+aNe29ijJswU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bXYkUdIM5G5RAUoPD7MJYr//S1oqHl+LJ3fxfw7lfSFuBw8JhGTBW9PLufCUqHKjY
-	 OJVFk7K+rOrq9HuH76qkiJL0A/sTi2rTQodn+TKkQocB/tbQHZeZKu3m3G2lM5wcf0
-	 VD97GRCGMBes8MaOHcg8KM5fvFeye/FAQg9SKZN6tpIn5+9U5FE+VZJf0uRZu8AxbF
-	 xrs4Rlqn5YOUS7D0btNT9APFrOK0n1Q8HZ/ji58Sj2kGEhPit3yyT7IaR0HjrbKKbe
-	 82WAiCP1NrKaOO3384inkZ8fhbN5SYnrWSCyMgS7pEXOOMKSO77chS2wlgGdCmIr5c
-	 AAtt4MysOip3g==
-Date: Tue, 4 Jun 2024 14:41:26 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Corey Minyard <minyard@acm.org>, Allen Pais <apais@linux.microsoft.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Perry Yuan <perry.yuan@amd.com>, Giovanni Cabiddu <giovanni.cabiddu@intel.com>, Herbert Xu <herbert@gondor.apana.org.au>, Nuno Sa <nuno.sa@analog.com>, Guenter Roeck <linux@roeck-us.net>, Randy Dunlap <rdunlap@infradead.org>, Heiner Kallweit <hkallweit1@gmail.com>, Lee Jones <lee@kernel.org>, Samuel Holland <samuel@sholland.org>, Elad Nachman <enachman@marvell.com>, Arseniy Krasnov <AVKrasnov@sberdevices.ru>, Johannes Berg <johannes.berg@intel.com>, Gregory Greenman <gregory.greenman@intel.com>, Benjamin Berg <benjamin.berg@intel.com>, Bjorn Helgaas <bhelgaas@google.com>, Robert Richter <rrichter@amd.com>, Vinod Koul <vkoul@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Nikita Kravets <teackot@gmail.com>, Jiri Slaby <jirislaby@kernel.org>, Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Stanley Chang <stanley_chang@realtek.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Abdel Alkuor <abdelalkuor@geotab.com>, Kent Overstreet <kent.overstreet@linux.dev>, Eric Biggers <ebiggers@google.com>, Kees Cook <keescook@chromium.org>, Ingo Molnar <mingo@kernel.org>, "Steven Rostedt (Google)" <rostedt@goodmis.org>, Daniel Bristot de Oliveira <bristot@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, Hugh Dickins <hughd@google.com>, Abel Wu <wuyun.abel@bytedance.com>, John Johansen <john.johansen@canonical.com>, Mimi Zohar <zohar@linux.ibm.com>, Stefan Berger <stefanb@linux.ibm.com>, Roberto Sassu <roberto.sassu@huawei.com>, Eric Snowberg <eric.snowberg@oracle.com>, Takashi Iwai <tiwai@suse.de>, Takashi Sakamoto <o-takashi@sakamocchi.jp>, Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, Mark Brown <broonie@kernel.org>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org, keyrings@vger.kernel.org, linux-crypto@vger.kernel.org, linux-acpi@vger.kernel.org, linux-ide@vger.kernel.org, openipmi-developer@lists.sourceforge.net, linux-clk@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, qat-linux@intel.com, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, nouveau@lists.freedesktop.org, linux-hwmon@vger.kernel.org, linux-i2c@vger.kernel.org, linux-leds@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, linux-gpio@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-staging@lists.linux.dev, linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-bcachefs@vger.kernel.org, linux-hardening@vger.kernel.org, cgroups@vger.kernel.org, linux-trace-kernel@vger.kernel.org, linux-mm@kvack.org, apparmor@lists.ubuntu.com, linux-security-module@vger.kernel.org, linux-integrity@vger.kernel.org, alsa-devel@alsa-project.org, linux-sound@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, "Naveen N. Rao" <naveen.n.rao@linux.ibm.com>, Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>, Dave Hansen <dave.hansen@linux.intel.com>, x86@kernel.org, "H. Peter Anvin" <hpa@zytor.com>, David Howells <dhowells@redhat.com>, "David S. Miller" <davem@davemloft.net>, "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <lenb@kernel.org>, Sergey Shtylyov <s.shtylyov@omp.ru>, Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
- Daniel Scally <djrscally@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Heiko Stuebner <heiko@sntech.de>, Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Huang Rui <ray.huang@amd.com>, "Gautham R. Shenoy" <gautham.shenoy@amd.com>, Mario Limonciello <mario.limonciello@amd.com>, Viresh Kumar <viresh.kumar@linaro.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, Karol Herbst <kherbst@redhat.com>, Lyude Paul <lyude@redhat.com>, Danilo Krummrich <dakr@redhat.com>, Jean Delvare <jdelvare@suse.com>, Alexander Shishkin <alexander.shishkin@linux.intel.com>, Pavel Machek <pavel@ucw.cz>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Tony Lindgren <tony@atomide.com>, Adrian Hunter <adrian.hunter@intel.com>, Hu Ziji <huziji@marvell.com>, Ulf Hansson <ulf.hansson@linaro.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Potnuri Bharat Teja <bharat@chelsio.com>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Miri Korenblit <miriam.rachel.korenblit@intel.com>, Kalle Valo <kvalo@kernel.org>, Mahesh J Salgaonkar <mahesh@linux.ibm.com>, Oliver O'Halloran <oohall@gmail.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, JC Kuo <jckuo@nvidia.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Sebastian Reichel <sre@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Helge Deller <deller@gmx.de>, Brian Foster <bfoster@redhat.com>, Zhihao Cheng <chengzhihao1@huawei.com>, Tejun Heo <tj@kernel.org>, Zefan Li <lizefan.x@bytedance.com>, Johannes Weiner <hannes@cmpxchg.org>, Peter Zijlstra <peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>, Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>, Valentin Schneider <vschneid@redhat.com>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Jason Baron <jbaron@akamai.com>, Jim Cromie <jim.cromie@gmail.com>, Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>, Dmitry Kasatkin <dmitry.kasatkin@gmail.com>, Clemens Ladisch <clemens@ladisch.de>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Linus Torvalds <torvalds@linux-foundation.org>
-Subject: Re: [PATCH v1 1/1] treewide: Align match_string() with
- sysfs_match_string()
-Message-ID: <3ojs6btxgava4dcasys5tnrg5vsrqlshagcg7otvrdgfcwwje4@lcrd3r6gkfcs>
-References: <20240603211538.289765-1-andriy.shevchenko@linux.intel.com>
+	s=k20201202; t=1712131648;
+	bh=K2ePQOaggCQbp9MAuVhX6tyGJTkfITqYlV3FRyD1b2w=;
+	h=From:To:Cc:Subject:Date:From;
+	b=i9S2rWNSxBnVceX/PhEYHUL/8obuw7YBD3dJv3NpxgtqFmbZ6YmcytIk5F3iE5aJR
+	 I5RYRukVlaohxFlUlx3DoVo8ioTOKPq24ESuwErVo02d8QkqEyqWnOCLJPy3IIKQQU
+	 hPSJJJ28UFYnjJaOw9nBVZfRfW9z44J6zH3uuTF5it8w/Z071qPjEqTUM2WnMMrizN
+	 fO98GSAxPEoZV8r5mdONzcx9Bk+cWCKiyR3aI2XXY3Z1B5LcdC6almvWr6dDKTwDko
+	 dlyuak8JP+s7GrNn1iYACGO+Vywch0Qm7yXwZNXpNcwyBGG5wOlDd55NN/VlxGiFO6
+	 vEIx/q6HxkU2Q==
+From: Arnd Bergmann <arnd@kernel.org>
+To: linux-kernel@vger.kernel.org
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Jiri Kosina <jikos@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Corey Minyard <minyard@acm.org>,
+	Peter Huewe <peterhuewe@gmx.de>,
+	Jarkko Sakkinen <jarkko@kernel.org>,
+	Tero Kristo <kristo@kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Ian Abbott <abbotti@mev.co.uk>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Len Brown <lenb@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	John Allen <john.allen@amd.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Vinod Koul <vkoul@kernel.org>,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Moritz Fischer <mdf@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Peter Rosin <peda@axentia.se>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Markuss Broks <markuss.broks@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Lee Jones <lee@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+	Iyappan Subramanian <iyappan@os.amperecomputing.com>,
+	Yisen Zhuang <yisen.zhuang@huawei.com>,
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	Kalle Valo <kvalo@kernel.org>,
+	Sebastian Reichel <sre@kernel.org>,
+	Tony Lindgren <tony@atomide.com>,
+	Mark Brown <broonie@kernel.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Xiang Chen <chenxiang66@hisilicon.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
+	Alex Elder <elder@kernel.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Jacky Huang <ychuang3@nuvoton.com>,
+	Helge Deller <deller@gmx.de>,
+	Christoph Hellwig <hch@lst.de>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Kees Cook <keescook@chromium.org>,
+	Trond Myklebust <trond.myklebust@hammerspace.com>,
+	Anna Schumaker <anna@kernel.org>,
+	Masahiro Yamada <masahiroy@kernel.org>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-ide@vger.kernel.org,
+	openipmi-developer@lists.sourceforge.net,
+	linux-integrity@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-crypto@vger.kernel.org,
+	dmaengine@vger.kernel.org,
+	linux-efi@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-fpga@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-input@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-leds@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	linux-rtc@vger.kernel.org,
+	linux-scsi@vger.kernel.org,
+	linux-spi@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-serial@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	linux-fbdev@vger.kernel.org,
+	iommu@lists.linux.dev,
+	linux-trace-kernel@vger.kernel.org,
+	kasan-dev@googlegroups.com,
+	linux-hardening@vger.kernel.org,
+	linux-nfs@vger.kernel.org,
+	linux-kbuild@vger.kernel.org,
+	alsa-devel@alsa-project.org,
+	linux-sound@vger.kernel.org
+Subject: [PATCH 00/34] address all -Wunused-const warnings
+Date: Wed,  3 Apr 2024 10:06:18 +0200
+Message-Id: <20240403080702.3509288-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240603211538.289765-1-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240604_064135_319664_535C42AA 
-X-CRM114-Status: GOOD (  32.09  )
+X-CRM114-CacheID: sfid-20240403_010733_257544_84FFAEA6 
+X-CRM114-Status: GOOD (  26.49  )
 X-Mailman-Approved-At: Wed, 06 Aug 2025 03:42:49 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,236 +172,254 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+From: Arnd Bergmann <arnd@arndb.de>
 
-On Sun, Jun 02, 2024 at 06:57:12PM +0300, Andy Shevchenko wrote:
-> Make two APIs look similar. Hence convert match_string() to be
-> a 2-argument macro. In order to avoid unneeded churn, convert
-> all users as well. There is no functional change intended.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Compilers traditionally warn for unused 'static' variables, but not
+if they are constant. The reason here is a custom for C++ programmers
+to define named constants as 'static const' variables in header files
+instead of using macros or enums.
 
-nice patch, I checked some (maybe most) of your changes. There
-are a few unrelated changes which I don't mind, but there are two
-errors where the error value changes from ENODEV to EINVAL.
+In W=1 builds, we get warnings only static const variables in C
+files, but not in headers, which is a good compromise, but this still
+produces warning output in at least 30 files. These warnings are
+almost all harmless, but also trivial to fix, and there is no
+good reason to warn only about the non-const variables being unused.
 
-Find the comments through the line.
+I've gone through all the files that I found using randconfig and
+allmodconfig builds and created patches to avoid these warnings,
+with the goal of retaining a clean build once the option is enabled
+by default.
 
-...
+Unfortunately, there is one fairly large patch ("drivers: remove
+incorrect of_match_ptr/ACPI_PTR annotations") that touches
+34 individual drivers that all need the same one-line change.
+If necessary, I can split it up by driver or by subsystem,
+but at least for reviewing I would keep it as one piece for
+the moment.
 
-> diff --git a/drivers/cpufreq/amd-pstate.c b/drivers/cpufreq/amd-pstate.c
-> index 1b7e82a0ad2e..b6f52f44625f 100644
-> --- a/drivers/cpufreq/amd-pstate.c
-> +++ b/drivers/cpufreq/amd-pstate.c
-> @@ -1117,9 +1117,9 @@ static ssize_t store_energy_performance_preference(
->  	if (ret != 1)
->  		return -EINVAL;
->  
-> -	ret = match_string(energy_perf_strings, -1, str_preference);
-> +	ret = __match_string(energy_perf_strings, -1, str_preference);
->  	if (ret < 0)
-> -		return -EINVAL;
-> +		return ret;
+Please merge the individual patches through subsystem trees.
+I expect that some of these will have to go through multiple
+revisions before they are picked up, so anything that gets
+applied early saves me from resending.
 
-a bit of unrelated changes here, but I guess no one will complain :-)
+        Arnd
 
->  
->  	mutex_lock(&amd_pstate_limits_lock);
->  	ret = amd_pstate_set_energy_pref_index(cpudata, ret);
+Arnd Bergmann (31):
+  powerpc/fsl-soc: hide unused const variable
+  ubsan: fix unused variable warning in test module
+  platform: goldfish: remove ACPI_PTR() annotations
+  i2c: pxa: hide unused icr_bits[] variable
+  3c515: remove unused 'mtu' variable
+  tracing: hide unused ftrace_event_id_fops
+  Input: synaptics: hide unused smbus_pnp_ids[] array
+  power: rt9455: hide unused rt9455_boost_voltage_values
+  efi: sysfb: don't build when EFI is disabled
+  clk: ti: dpll: fix incorrect #ifdef checks
+  apm-emulation: hide an unused variable
+  sisfb: hide unused variables
+  dma/congiguous: avoid warning about unused size_bytes
+  leds: apu: remove duplicate DMI lookup data
+  iio: ad5755: hook up of_device_id lookup to platform driver
+  greybus: arche-ctrl: move device table to its right location
+  lib: checksum: hide unused expected_csum_ipv6_magic[]
+  sunrpc: suppress warnings for unused procfs functions
+  comedi: ni_atmio: avoid warning for unused device_ids[] table
+  iwlegacy: don't warn for unused variables with DEBUG_FS=n
+  drm/komeda: don't warn for unused debugfs files
+  firmware: qcom_scm: mark qcom_scm_qseecom_allowlist as __maybe_unused
+  crypto: ccp - drop platform ifdef checks
+  usb: gadget: omap_udc: remove unused variable
+  isdn: kcapi: don't build unused procfs code
+  cpufreq: intel_pstate: hide unused intel_pstate_cpu_oob_ids[]
+  net: xgbe: remove extraneous #ifdef checks
+  Input: imagis - remove incorrect ifdef checks
+  sata: mv: drop unnecessary #ifdef checks
+  ASoC: remove incorrect of_match_ptr/ACPI_PTR annotations
+  spi: remove incorrect of_match_ptr annotations
+  drivers: remove incorrect of_match_ptr/ACPI_PTR annotations
+  kbuild: always enable -Wunused-const-variable
 
-...
+Krzysztof Kozlowski (1):
+  Input: stmpe-ts - mark OF related data as maybe unused
 
-> diff --git a/drivers/mmc/host/sdhci-xenon-phy.c b/drivers/mmc/host/sdhci-xenon-phy.c
-> index cc9d28b75eb9..1865e26ae736 100644
-> --- a/drivers/mmc/host/sdhci-xenon-phy.c
-> +++ b/drivers/mmc/host/sdhci-xenon-phy.c
-> @@ -135,15 +135,14 @@ struct xenon_emmc_phy_regs {
->  	u32 logic_timing_val;
->  };
->  
-> -static const char * const phy_types[] = {
-> -	"emmc 5.0 phy",
-> -	"emmc 5.1 phy"
-> -};
-> -
->  enum xenon_phy_type_enum {
->  	EMMC_5_0_PHY,
->  	EMMC_5_1_PHY,
-> -	NR_PHY_TYPES
-> +};
-> +
-> +static const char * const phy_types[] = {
-> +	[EMMC_5_0_PHY] = "emmc 5.0 phy",
-> +	[EMMC_5_1_PHY] = "emmc 5.1 phy",
->  };
+ arch/powerpc/sysdev/fsl_msi.c                 |  2 +
+ drivers/ata/sata_mv.c                         | 64 +++++++++----------
+ drivers/char/apm-emulation.c                  |  5 +-
+ drivers/char/ipmi/ipmb_dev_int.c              |  2 +-
+ drivers/char/tpm/tpm_ftpm_tee.c               |  2 +-
+ drivers/clk/ti/dpll.c                         | 10 ++-
+ drivers/comedi/drivers/ni_atmio.c             |  2 +-
+ drivers/cpufreq/intel_pstate.c                |  2 +
+ drivers/crypto/ccp/sp-platform.c              | 14 +---
+ drivers/dma/img-mdc-dma.c                     |  2 +-
+ drivers/firmware/efi/Makefile                 |  3 +-
+ drivers/firmware/efi/sysfb_efi.c              |  2 -
+ drivers/firmware/qcom/qcom_scm.c              |  2 +-
+ drivers/fpga/versal-fpga.c                    |  2 +-
+ .../gpu/drm/arm/display/komeda/komeda_dev.c   |  8 ---
+ drivers/hid/hid-google-hammer.c               |  6 +-
+ drivers/i2c/busses/i2c-pxa.c                  |  2 +-
+ drivers/i2c/muxes/i2c-mux-ltc4306.c           |  2 +-
+ drivers/i2c/muxes/i2c-mux-reg.c               |  2 +-
+ drivers/iio/dac/ad5755.c                      |  1 +
+ drivers/input/mouse/synaptics.c               |  2 +
+ drivers/input/touchscreen/imagis.c            |  4 +-
+ drivers/input/touchscreen/stmpe-ts.c          |  2 +-
+ drivers/input/touchscreen/wdt87xx_i2c.c       |  2 +-
+ drivers/isdn/capi/Makefile                    |  3 +-
+ drivers/isdn/capi/kcapi.c                     |  7 +-
+ drivers/leds/leds-apu.c                       |  3 +-
+ drivers/mux/adg792a.c                         |  2 +-
+ drivers/net/ethernet/3com/3c515.c             |  3 -
+ drivers/net/ethernet/amd/xgbe/xgbe-platform.c |  8 ---
+ drivers/net/ethernet/apm/xgene-v2/main.c      |  2 +-
+ drivers/net/ethernet/hisilicon/hns_mdio.c     |  2 +-
+ drivers/net/wireless/intel/iwlegacy/4965-rs.c | 15 +----
+ drivers/net/wireless/intel/iwlegacy/common.h  |  2 -
+ drivers/platform/goldfish/goldfish_pipe.c     |  2 +-
+ drivers/power/supply/rt9455_charger.c         |  2 +
+ drivers/regulator/pbias-regulator.c           |  2 +-
+ drivers/regulator/twl-regulator.c             |  2 +-
+ drivers/regulator/twl6030-regulator.c         |  2 +-
+ drivers/rtc/rtc-fsl-ftm-alarm.c               |  2 +-
+ drivers/scsi/hisi_sas/hisi_sas_v1_hw.c        |  2 +-
+ drivers/scsi/hisi_sas/hisi_sas_v2_hw.c        |  2 +-
+ drivers/spi/spi-armada-3700.c                 |  2 +-
+ drivers/spi/spi-img-spfi.c                    |  2 +-
+ drivers/spi/spi-meson-spicc.c                 |  2 +-
+ drivers/spi/spi-meson-spifc.c                 |  2 +-
+ drivers/spi/spi-orion.c                       |  2 +-
+ drivers/spi/spi-pic32-sqi.c                   |  2 +-
+ drivers/spi/spi-pic32.c                       |  2 +-
+ drivers/spi/spi-rockchip.c                    |  2 +-
+ drivers/spi/spi-s3c64xx.c                     |  2 +-
+ drivers/spi/spi-st-ssc4.c                     |  2 +-
+ drivers/staging/greybus/arche-apb-ctrl.c      |  1 +
+ drivers/staging/greybus/arche-platform.c      |  9 +--
+ drivers/staging/pi433/pi433_if.c              |  2 +-
+ drivers/tty/serial/amba-pl011.c               |  6 +-
+ drivers/tty/serial/ma35d1_serial.c            |  2 +-
+ drivers/usb/gadget/udc/omap_udc.c             | 10 +--
+ drivers/video/fbdev/sis/init301.c             |  3 +-
+ kernel/dma/contiguous.c                       |  2 +-
+ kernel/trace/trace_events.c                   |  4 ++
+ lib/checksum_kunit.c                          |  2 +
+ lib/test_ubsan.c                              |  2 +-
+ net/sunrpc/cache.c                            | 10 +--
+ scripts/Makefile.extrawarn                    |  1 -
+ sound/soc/atmel/sam9x5_wm8731.c               |  2 +-
+ sound/soc/codecs/rt5514-spi.c                 |  2 +-
+ sound/soc/qcom/lpass-sc7280.c                 |  2 +-
+ sound/soc/samsung/aries_wm8994.c              |  2 +-
+ 69 files changed, 121 insertions(+), 169 deletions(-)
 
-Another unrelated cleanup, but I don't complain
+-- 
+2.39.2
 
->  enum soc_pad_ctrl_type {
-
-...
-
-> -	tablet_found = match_string(tablet_chassis_types,
-> -				    ARRAY_SIZE(tablet_chassis_types),
-> -				    chassis_type) >= 0;
-> -	if (!tablet_found)
-> -		return -ENODEV;
-> +	ret = match_string(tablet_chassis_types, chassis_type);
-> +	if (ret < 0)
-> +		return ret;
-
-This is a logical change though, because we are changing from
--ENODEV to -EINVAL. Even if it might look the right thing, but
-still, it's a logical change.
-
->  
->  	ret = hp_wmi_perform_query(HPWMI_SYSTEM_DEVICE_MODE, HPWMI_READ,
->  				   system_device_mode, zero_if_sup(system_device_mode),
-> @@ -490,9 +487,7 @@ static bool is_omen_thermal_profile(void)
->  	if (!board_name)
->  		return false;
->  
-> -	return match_string(omen_thermal_profile_boards,
-> -			    ARRAY_SIZE(omen_thermal_profile_boards),
-> -			    board_name) >= 0;
-> +	return match_string(omen_thermal_profile_boards, board_name) >= 0;
->  }
->  
->  static int omen_get_thermal_policy_version(void)
-
-...
-
-> diff --git a/drivers/thermal/intel/int340x_thermal/processor_thermal_rfim.c b/drivers/thermal/intel/int340x_thermal/processor_thermal_rfim.c
-> index e56db75a94fb..dbd176b0fb1f 100644
-> --- a/drivers/thermal/intel/int340x_thermal/processor_thermal_rfim.c
-> +++ b/drivers/thermal/intel/int340x_thermal/processor_thermal_rfim.c
-> @@ -111,7 +111,7 @@ static ssize_t suffix##_show(struct device *dev,\
->  		match_strs = (const char **)fivr_strings;\
->  		mmio_regs = tgl_fivr_mmio_regs;\
->  	} \
-> -	ret = match_string(match_strs, -1, attr->attr.name);\
-> +	ret = __match_string(match_strs, -1, attr->attr.name);\
->  	if (ret < 0)\
->  		return ret;\
->  	reg_val = readl((void __iomem *) (proc_priv->mmio_base + mmio_regs[ret].offset));\
-> @@ -145,7 +145,7 @@ static ssize_t suffix##_store(struct device *dev,\
->  		mmio_regs = tgl_fivr_mmio_regs;\
->  	} \
->  	\
-> -	ret = match_string(match_strs, -1, attr->attr.name);\
-> +	ret = __match_string(match_strs, -1, attr->attr.name);\
->  	if (ret < 0)\
->  		return ret;\
->  	if (mmio_regs[ret].read_only)\
-> diff --git a/drivers/thermal/intel/int340x_thermal/processor_thermal_wt_req.c b/drivers/thermal/intel/int340x_thermal/processor_thermal_wt_req.c
-> index f298e7442662..57f456befb34 100644
-> --- a/drivers/thermal/intel/int340x_thermal/processor_thermal_wt_req.c
-> +++ b/drivers/thermal/intel/int340x_thermal/processor_thermal_wt_req.c
-> @@ -50,7 +50,7 @@ static ssize_t workload_type_store(struct device *dev,
->  	if (ret != 1)
->  		return -EINVAL;
->  
-> -	ret = match_string(workload_types, -1, str_preference);
-> +	ret = __match_string(workload_types, -1, str_preference);
-
-We could even thing of a "match_string_terminated" (or a better
-name), but maybe it's too much?
-
->  	if (ret < 0)
->  		return ret;
->  
-
-...
-
-> -	c->auth_hash_algo = match_string(hash_algo_name, HASH_ALGO__LAST,
-> -					 c->auth_hash_name);
-> -	if ((int)c->auth_hash_algo < 0) {
-> +	err = __match_string(hash_algo_name, HASH_ALGO__LAST, c->auth_hash_name);
-> +	if (err < 0) {
->  		ubifs_err(c, "Unknown hash algo %s specified",
->  			  c->auth_hash_name);
-> -		return -EINVAL;
-> +		return err;
-
-This is correct!
-
->  	}
-> +	c->auth_hash_algo = err;
->  
->  	snprintf(hmac_name, CRYPTO_MAX_ALG_NAME, "hmac(%s)",
->  		 c->auth_hash_name);
-
-...
-
-> +int __match_string(const char * const *array, size_t n, const char *string);
-> +
-> +/**
-> + * match_string - matches given string in an array
-> + * @_a: array of strings
-> + * @_s: string to match with
-> + *
-> + * Helper for __match_string(). Calculates the size of @a automatically.
-
-/@a/@_a/
-
-> + */
-> +#define match_string(_a, _s) __match_string(_a, ARRAY_SIZE(_a), _s)
-> +
-
-...
-
-> diff --git a/security/apparmor/lsm.c b/security/apparmor/lsm.c
-> index 6239777090c4..e3fc94b4c7e5 100644
-> --- a/security/apparmor/lsm.c
-> +++ b/security/apparmor/lsm.c
-> @@ -1820,9 +1820,9 @@ static int param_set_audit(const char *val, const struct kernel_param *kp)
->  	if (apparmor_initialized && !aa_current_policy_admin_capable(NULL))
->  		return -EPERM;
->  
-> -	i = match_string(audit_mode_names, AUDIT_MAX_INDEX, val);
-> +	i = __match_string(audit_mode_names, AUDIT_MAX_INDEX, val);
-
-pity here... this could have been a match_string, but the
-MAX_INDEX is hardcoded outside the enum.
-
->  	if (i < 0)
-> -		return -EINVAL;
-> +		return i;
->  
->  	aa_g_audit = i;
->  	return 0;
-
-...
-
-> diff --git a/sound/soc/soc-dapm.c b/sound/soc/soc-dapm.c
-> index 16dad4a45443..7064f4cae549 100644
-> --- a/sound/soc/soc-dapm.c
-> +++ b/sound/soc/soc-dapm.c
-> @@ -769,14 +769,13 @@ static int dapm_connect_mux(struct snd_soc_dapm_context *dapm,
->  		item = 0;
->  	}
->  
-> -	i = match_string(e->texts, e->items, control_name);
-> +	i = __match_string(e->texts, e->items, control_name);
->  	if (i < 0)
-> -		return -ENODEV;
-> +		return i;
-
-Also this return value is wrong.
-
-Andi
-
->  
->  	path->name = e->texts[i];
->  	path->connect = (i == item);
->  	return 0;
-> -
->  }
->  
->  /* set up initial codec paths */
-> -- 
-> 2.43.0.rc1.1336.g36b5255a03ac
-> 
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Christophe Leroy <christophe.leroy@csgroup.eu>
+Cc: Damien Le Moal <dlemoal@kernel.org>
+Cc: Jiri Kosina <jikos@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Corey Minyard <minyard@acm.org>
+Cc: Peter Huewe <peterhuewe@gmx.de>
+Cc: Jarkko Sakkinen <jarkko@kernel.org>
+Cc: Tero Kristo <kristo@kernel.org>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Cc: Ian Abbott <abbotti@mev.co.uk>
+Cc: H Hartley Sweeten <hsweeten@visionengravers.com>
+Cc: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+Cc: Len Brown <lenb@kernel.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+Cc: John Allen <john.allen@amd.com>
+Cc: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: Vinod Koul <vkoul@kernel.org>
+Cc: Ard Biesheuvel <ardb@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>
+Cc: Moritz Fischer <mdf@kernel.org>
+Cc: Liviu Dudau <liviu.dudau@arm.com>
+Cc: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+Cc: Andi Shyti <andi.shyti@kernel.org>
+Cc: Michael Hennerich <michael.hennerich@analog.com>
+Cc: Peter Rosin <peda@axentia.se>
+Cc: Lars-Peter Clausen <lars@metafoo.de>
+Cc: Jonathan Cameron <jic23@kernel.org>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Markuss Broks <markuss.broks@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: Lee Jones <lee@kernel.org>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+Cc: Iyappan Subramanian <iyappan@os.amperecomputing.com>
+Cc: Yisen Zhuang <yisen.zhuang@huawei.com>
+Cc: Stanislaw Gruszka <stf_xl@wp.pl>
+Cc: Kalle Valo <kvalo@kernel.org>
+Cc: Sebastian Reichel <sre@kernel.org>
+Cc: Tony Lindgren <tony@atomide.com>
+Cc: Mark Brown <broonie@kernel.org>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Xiang Chen <chenxiang66@hisilicon.com>
+Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Vaibhav Hiremath <hvaibhav.linux@gmail.com>
+Cc: Alex Elder <elder@kernel.org>
+Cc: Jiri Slaby <jirislaby@kernel.org>
+Cc: Jacky Huang <ychuang3@nuvoton.com>
+Cc: Helge Deller <deller@gmx.de>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: Steven Rostedt <rostedt@goodmis.org>
+Cc: Masami Hiramatsu <mhiramat@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Kees Cook <keescook@chromium.org>
+Cc: Trond Myklebust <trond.myklebust@hammerspace.com>
+Cc: Anna Schumaker <anna@kernel.org>
+Cc: Masahiro Yamada <masahiroy@kernel.org>
+Cc: Nathan Chancellor <nathan@kernel.org>
+Cc: Takashi Iwai <tiwai@suse.com>
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-ide@vger.kernel.org
+Cc: openipmi-developer@lists.sourceforge.net
+Cc: linux-integrity@vger.kernel.org
+Cc: linux-omap@vger.kernel.org
+Cc: linux-clk@vger.kernel.org
+Cc: linux-pm@vger.kernel.org
+Cc: linux-crypto@vger.kernel.org
+Cc: dmaengine@vger.kernel.org
+Cc: linux-efi@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org
+Cc: linux-fpga@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org
+Cc: linux-input@vger.kernel.org
+Cc: linux-i2c@vger.kernel.org
+Cc: linux-iio@vger.kernel.org
+Cc: linux-stm32@st-md-mailman.stormreply.com
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: netdev@vger.kernel.org
+Cc: linux-leds@vger.kernel.org
+Cc: linux-wireless@vger.kernel.org
+Cc: linux-rtc@vger.kernel.org
+Cc: linux-scsi@vger.kernel.org
+Cc: linux-spi@vger.kernel.org
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: greybus-dev@lists.linaro.org
+Cc: linux-staging@lists.linux.dev
+Cc: linux-serial@vger.kernel.org
+Cc: linux-usb@vger.kernel.org
+Cc: linux-fbdev@vger.kernel.org
+Cc: iommu@lists.linux.dev
+Cc: linux-trace-kernel@vger.kernel.org
+Cc: kasan-dev@googlegroups.com
+Cc: linux-hardening@vger.kernel.org
+Cc: linux-nfs@vger.kernel.org
+Cc: linux-kbuild@vger.kernel.org
+Cc: alsa-devel@alsa-project.org
+Cc: linux-sound@vger.kernel.org
 
 _______________________________________________
 Linux-rockchip mailing list
