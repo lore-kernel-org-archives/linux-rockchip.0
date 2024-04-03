@@ -4,90 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFF2CD1297
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 10:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 504C8CD1294
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 10:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qb6bTd4u1KxgmTMokj7WfmMcIh8oW7jfFSx5wGvGvCs=; b=j7DnNv3/fKzT9+
-	HF/8wC+P9ZpUiFDCtKREQzgaG1TyDk+44dy6NmaGvwS3F++yTXLzA5z16eezH9jxkYQAAzfwSiPof
-	um616g9GpH/PONiGby/5KB4FVqqlmnVqdBES10dxY0B9PnOpAkgYwRNxhgDCWRsmE1Ot7c/66Ynnw
-	iCPjLeV34XVrSV+3t9olXBVyoUWqZpRAs0K03AEL9UuKNAfRcK/XGWFICzhnRujj68rzYG0Z18/8W
-	xLCUw1epxltlBrsBb/2Kl+KjbgwScXAqJ7v0kxEUxr8lSkDx9EZI8kW/HZZ2hp6rSpKQlgFNDCYmP
-	5VM+13QI3f30qIjk7kbw==;
+	List-Owner; bh=4vW5KO5TWYo5v+lUdQXGOON5JWhpHFl5oeQ/YGlD550=; b=s0OlMSKnNuS71W
+	zz3KoiRKbhOkF+xHdY5EZDEgUhoJvtv+KWxUc71M+1imjilgh5EHjxCMWaZBUG5+yt/3HkYDPFxRl
+	mwpbOqYYFwWFP8rLX+JC7l3GXSnlzMCPZV1XWvCGwWcRaCHQZ41Rg+XbSyhyVeO8V0mR3GdfnjFcq
+	GPaKNldrXR261eYoW9n5eZVuj6HaP4mm5a2813ckrhS1NcUee25uXuexznUAdsaQ2M6H88n6cdv7v
+	UUUU+V1peaMk+VSBUOWd6JSicVb7Wr2J7OEAeGHpBp9wx8xJpEjIowmJtDNXWo7l96qWmeOn+YnXb
+	12wn9VaFjBdKqO931cyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrxhy-0000000FRse-2sRe;
-	Wed, 03 Apr 2024 10:19:06 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1rrxk2-0000000FSgC-1rOp;
+	Wed, 03 Apr 2024 10:21:14 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrwYZ-0000000F6ao-3VTo
+	id 1rrxjy-0000000FSdM-1oIR
 	for linux-rockchip@lists.infradead.org;
-	Wed, 03 Apr 2024 09:05:23 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a4e62f3e63dso384038666b.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 03 Apr 2024 02:05:18 -0700 (PDT)
+	Wed, 03 Apr 2024 10:21:11 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a44665605f3so703256866b.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 03 Apr 2024 03:21:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712135117; x=1712739917; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712139668; x=1712744468; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=/BsUDXr+H/gy9dW7d8tv9OH5McclwdwB4w6WnKYu8n8=;
-        b=moGFhNogqLeT5PbJ0oPJD3BWqW+EA90JnZuOkyX8Mp9IklAbLrY4O/3fbVd4soX6Ia
-         mIDp+HcBWcwUVIMSP8bZ/OESVuKa7WYDd0rTBjhHajBXZJimzZoj23kxU+0kdoPRDFuo
-         1T8mWMMNUQykOYB8Y18MgJyt3Nc9NCDWq3rEhwHkfk6L5bsSsIbwjaAneVC2dY/coxqB
-         lgp+PjH1fVMJd18ZbKcE/VRmVp0ftzDZw+kVvN7l72IR6/PSB6JdEiuhOrg+jVcFWyH7
-         FOGFLGqe9V077lEc4xzpDQBYvvXd9JvagV8MecQjKJLqqt7avZW2DHbWajGu+F+BbKD4
-         hwfA==
+        bh=4lrg9u1DWO3N7iNCPwEbpDmzDHx9LenQFb2AaTvmxYY=;
+        b=cXIEC1zb0P4GrplwmLYvlO3KxDDY3r5/wEj9ZsjIXPku/Jh++UPAgK812XUBWGaWCc
+         f0ZU5IByLBjF9TAX5BNEpD+H9zgt8pAzQj9AoxLaggHzqY2a/XYRios7BocSb6mCLsXb
+         P9NRCzao0GBkV0Ei7/2DfUegyoQRHamU/VlmonghiPVbWr+quOAOYRgBIgf3euylJqaH
+         Gwtd81pxHycqJfE611vfWZG6uMSKSZZN9FKk/o5LMOi5uEXGRCOeltkO55Hyb12novSk
+         hlbVOS368TVgWa4oumXA48SjnOQ+Z0MtgSflCj54XAEswVy9g8GtR42NSLCQih2fSVuT
+         Ty1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712135117; x=1712739917;
+        d=1e100.net; s=20230601; t=1712139668; x=1712744468;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/BsUDXr+H/gy9dW7d8tv9OH5McclwdwB4w6WnKYu8n8=;
-        b=WalsMJuZes/24Hdb9+QO6Y6En2/ht4KdLDp1POEYhGC6TF/dCe0qDdfjuxeRqbijvH
-         Et2IbmEbYWPf+hZ1P9/ep3AVKNnrqPkuJOIGszq2vp5pUguCLhzgGyF0/h0PlLSpWXzR
-         RUtVRK3LI7DasdHKBTfb+DCxQzh7nZHGSGaiBn9KqCQk4nawa8veHYtK7LDrXdDyrYz6
-         9VEdjR/g/QYrwTO/cYwHA+HYmFPfaZNI9ZwBwOJlk3o9NqoGBIkLHRMS4dAosCDuU8/f
-         YI9HOxEK0xx8xuVMHvUfUP6EVeSM77hT53b965mj/zzBmfoIF82IaH+RKKsPcp7JlumU
-         0YoA==
-X-Forwarded-Encrypted: i=1; AJvYcCWEMhayH9XWlthga315Pyx1dONUB6QhCe32Cgj5fpuGwAJ18ek+GqJnrZODvAS3edbUd9Fx1FhESoMzKEW3Nyr+gUKRyzLVTdH9PGKkIp/NHAUV
-X-Gm-Message-State: AOJu0YxqibJxamVAquEKZrKJUNUy3khuHLc1IUNb4eI9REJCdHKOZ2uT
-	N3Q/ZuMq3bKiyq3sdkTtr5vBK178AEkD1xZDIIYDVDsbU6ZNyW6HtuD8LAg+yls=
-X-Google-Smtp-Source: AGHT+IHVq9lYEk7UtFMIn02Wn0/ICwDsN6x4+XcyxkuO2QBbXrRH3akEBlRHMp6+dgGPFZhIiXQY7Q==
-X-Received: by 2002:a17:906:796:b0:a4e:8998:57bc with SMTP id l22-20020a170906079600b00a4e899857bcmr3164139ejc.41.1712135116682;
-        Wed, 03 Apr 2024 02:05:16 -0700 (PDT)
+        bh=4lrg9u1DWO3N7iNCPwEbpDmzDHx9LenQFb2AaTvmxYY=;
+        b=AjUuUIzrAMZ9mdKYhaqs2QL76jGq1mpjHn5ZSkBCBz/AGpCgKteVfitE2RxLseHV5F
+         AT0fWZuMpqnwEiI3xwN90mH5I6x5F6db42I0/Yc1/d1PdKzNMSP3rSg60sMtt7Th0Jt/
+         IJnZjecILDNWs6q3BXpP1PT7xvNdTr5MYPHUwdVy6VHa3WQhsI9uPtt+OFcKd7bYC2vv
+         aaIzQDYuEsv7Kis1eEB4VSdwk2IEOmKwZU/RGLYEWVtp38q+sI1C2kQXQzX2AHQQuz3D
+         eLtqAIxasEWuMLzElqaVWJn2sI6nwKlwNXx3OOVrt8AUAAUFIK8/D/3o29DIJyHwkTX7
+         WgrA==
+X-Forwarded-Encrypted: i=1; AJvYcCWmr9Q1Ql7Ch4tFbQ36p+23lb2ccM9oYmCXIomZgjgr8dwrc1u9OaoWRzOAqvNKF985BUX348LGenJ+MO3ZJE5z2A9vzEHYeM3xhoert256SwG2
+X-Gm-Message-State: AOJu0YyoKABN71Ivst99bt86SGAUijDW2JdJwerZ3C8ooil6bfeAmFhz
+	zpSyt3dZo5Z3R/WlyOZBtss8BCh7UFaxJftVW9cQ5R1a7THx1BNJmiZqpCOYM6M=
+X-Google-Smtp-Source: AGHT+IEP4Gm/j49EiS5w8Osi5IxulbUu7dmYZSs8UZrCWXoYjgFHKV6WkLihgHu5HCaYyGuLMqf+SQ==
+X-Received: by 2002:a17:907:11cd:b0:a4e:2d1e:6914 with SMTP id va13-20020a17090711cd00b00a4e2d1e6914mr9439566ejb.11.1712139667716;
+        Wed, 03 Apr 2024 03:21:07 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id bw11-20020a170907928b00b00a4e6cbbc28dsm3313851ejc.22.2024.04.03.02.05.14
+        by smtp.gmail.com with ESMTPSA id bj7-20020a17090736c700b00a4e696e613esm3583799ejc.153.2024.04.03.03.21.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Apr 2024 02:05:16 -0700 (PDT)
-Message-ID: <4a0b3d53-5a28-4ccd-9df3-bf3e82ed760c@linaro.org>
-Date: Wed, 3 Apr 2024 11:05:13 +0200
+        Wed, 03 Apr 2024 03:21:07 -0700 (PDT)
+Message-ID: <a2f88176-b4e1-4202-843c-a00c5a2b1622@linaro.org>
+Date: Wed, 3 Apr 2024 12:21:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 31/34] spi: remove incorrect of_match_ptr annotations
-To: Arnd Bergmann <arnd@kernel.org>, linux-kernel@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Heiko Stuebner <heiko@sntech.de>,
- Andi Shyti <andi.shyti@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Li Zetao <lizetao1@huawei.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>, Rob Herring
- <robh@kernel.org>, Yang Yingliang <yangyingliang@huawei.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Luis de Arquer <luis.dearquer@inertim.com>,
- Tudor Ambarus <tudor.ambarus@linaro.org>,
- Sam Protsenko <semen.protsenko@linaro.org>,
- Peter Griffin <peter.griffin@linaro.org>,
- Jaewon Kim <jaewon02.kim@samsung.com>, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
-References: <20240403080702.3509288-1-arnd@kernel.org>
- <20240403080702.3509288-32-arnd@kernel.org>
+Subject: Re: [PATCH v3 0/6] Add Synopsys DesignWare HDMI RX Controller
+To: Shreeya Patel <shreeya.patel@collabora.com>, mchehab@kernel.org,
+ hverkuil@xs4all.nl, hverkuil-cisco@xs4all.nl
+Cc: heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ p.zabel@pengutronix.de, shawn.wen@rock-chips.com, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-arm@lists.infradead.org
+References: <20240327225057.672304-1-shreeya.patel@collabora.com>
+ <35e566-660d2080-1-7eb9eb00@16488675>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -134,10 +126,11 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240403080702.3509288-32-arnd@kernel.org>
+In-Reply-To: <35e566-660d2080-1-7eb9eb00@16488675>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_020519_962040_CBCAB5F6 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240403_032110_482442_B9B3FAEA 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,31 +147,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 03/04/2024 10:06, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
+On 03/04/2024 11:24, Shreeya Patel wrote:
+> On Thursday, March 28, 2024 04:20 IST, Shreeya Patel <shreeya.patel@collabora.com> wrote:
 > 
-> When building with CONFIG_OF  disabled but W=1 extra warnings enabled,
-> a couple of driver cause a warning about an unused ID table:
+>> This series implements support for the Synopsys DesignWare
+>> HDMI RX Controller, being compliant with standard HDMI 1.4b
+>> and HDMI 2.0.
+>>
 > 
-> drivers/spi/spi-armada-3700.c:806:34: error: unused variable 'a3700_spi_dt_ids' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-orion.c:614:34: error: unused variable 'orion_spi_of_match_table' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-pic32-sqi.c:673:34: error: unused variable 'pic32_sqi_of_ids' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-pic32.c:850:34: error: unused variable 'pic32_spi_of_match' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-rockchip.c:1020:34: error: unused variable 'rockchip_spi_dt_match' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-s3c64xx.c:1642:34: error: unused variable 's3c64xx_spi_dt_match' [-Werror,-Wunused-const-variable]
-> drivers/spi/spi-st-ssc4.c:439:34: error: unused variable 'stm_spi_match' [-Werror,-Wunused-const-variable]
+> Hi Mauro and Hans,
 > 
-> These appear to all be copied from the same original driver, so fix them at the
-> same time by removing the unnecessary of_match_ptr() annotation. As far as I
-> can tell, all these drivers are only actually used on configurations that
-> have CONFIG_OF enabled.
+> I haven't received any reviews so far. Hence, this is just a gentle reminder to review this patch series.
 
-I think I already tried to fix all of these, but Mark rejected my patches:
+Why did you put clk changes here? These go via different subsystem. That
+might be one of obstacles for your patchset.
 
-https://lore.kernel.org/all/7a65d775-cf07-4393-8b10-2cef4d5266ab@sirena.org.uk/
+Also, you sent it just a week ago and you already ping. Please relax,
+and help out by reviewing other patches on the mailing lists in order to
+relieve the burden of maintainers and move your patches higher up the list.
 
-All of the changes here look the same as my patchset, I also got there
-some Acks.
 
 Best regards,
 Krzysztof
