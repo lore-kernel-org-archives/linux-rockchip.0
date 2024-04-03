@@ -4,81 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6DCDCD128A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 11:54:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF778CD128A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Apr 2024 12:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oulEJYzkL5gnBgQhShGs46/Z6ItvonFGGPjvTtYmvoA=; b=FNgoyXGhxxyRMp
-	8AywOe8ZKtiQ/cElZqCFDtH4AWtqZYhyX5LJgUM5LbAndakuwj34VXzgjGDDSESpJ1w/AnqnNcqTt
-	Y0+GAiW3pi/FcnMtNxEhtH6pZnQawloCbtYBEEtOfSfgALHYv6dzGXcOPWyZj/KJJASYGaks+jG6o
-	Lsda+a+A3/umuOo/rbCEDnG4QZni3r3QiswikXf5+anTSZUXz6l+9E60aKPs1VCbuZaLpdTBhYFSN
-	gVMHtGlehF3ls4WoMXbt0ogaphSydjZzvTSglzlXGheZ87aeWhEl/caTkTYaNlDf3b2pJP7X0Pqax
-	eDgR54r1Qckdy/4pLxpA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Cc:To:Subject:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h4qlu1ZLO+KxwKHgk89G8YhJJaEdJGAyDIDwxWdOSUc=; b=CEfeE/DufDMXRqn2ljy6U+YJFy
+	bFJQVlSrO/1dzPTtSCtwvgNDyaMCks0wv8BUvWJAXjODS4wkdHZNwhBMLSkwqcp+umIdjmXUPAiaH
+	nAL2FYS7Zo6ixH9i5kijiksaIXK8dIsCWSefm2RKgTFZdNhxC9A08MGR1p76Qo20FIq5xYldGj2HB
+	5qVlx95ewnPMxJM+P8HqE7SpgHnL9/mVhRxZHBe2RBogXPCCSgq5LnNAxgpAohCHTQ52nERZdHs6v
+	ykgb1/L+BBkTKRxxjPUwIIOM53jRPBfoZJn7z9oUipPtT+vyvYubgjxnHPEq1Jzz3CjlfgZNdCBe6
+	rylCw/5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrzCb-0000000Fr9W-0Enq;
-	Wed, 03 Apr 2024 11:54:49 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1rrzoL-0000000FxLa-1EKc;
+	Wed, 03 Apr 2024 12:33:49 +0000
+Received: from mail-dm6nam11on20701.outbound.protection.outlook.com ([2a01:111:f403:2415::701] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rrzCY-0000000Fr8V-0cAa;
-	Wed, 03 Apr 2024 11:54:47 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6151d2489b4so20520197b3.0;
-        Wed, 03 Apr 2024 04:54:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712145283; x=1712750083; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Z3OMqqHc20XH2HsRVb93SWbt27U70ABLovLC1aJbLMA=;
-        b=QsN48LvOE923nlLazK8TdUGCQIXQwGyNmcX78xug8OFvZUf5bmgKj37XRpUQgESlnT
-         wXOgJRsPA/zAdOQyhLK5LrWvnnw5lv5FuQIsuqsqgksHH0Wzpt/mrsGpyOsA3WfG1BNF
-         DODi3NVTVqH4Qw3V8V8jp9ZUH7l/KuJ2cbVSdBwLptGT0zbBp1ZbrBG+DUWMWjNdDFZ3
-         hjbiJ91PYZAnq9MMyN2UdNXq6ra1xtl2TJBgieVJM2OvmeSotFUiHTBLYLwJB3jTblxu
-         oL+Axr9hOlULWCod1FSKDuyWX9tuVRHhOnrn/6DOGzppKlDEefUQioUYcV2l87+7ri0b
-         df2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712145283; x=1712750083;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Z3OMqqHc20XH2HsRVb93SWbt27U70ABLovLC1aJbLMA=;
-        b=ezrxEsiuL3PMoP/uFBVLUchu2w2wKa49jfvj93Ui+2txyD7EwiGrE5Hi/eypV8B2Y5
-         n51UVi2bPlRTvcK7nO+K/VdAR+EUwXEJAGf4StIxiVbP5i3FU5rCOqdpV9zNbDILT/zP
-         V4OlumyniajLDsinH4h8qftwT1TD8sWtdoY3GG2Cd+wL6GuZ32qFRPk/1w3JNmkLxFCY
-         E5hQX3Gezff8P8LznQz0VjbfmYR4J5YJ5PkY+HQNzPYEfMpoz7l4b8MPwq4oLSwE7zyf
-         BKHi9lghpNNiDUBLGFsSouXWEpHoiU3/9zJUC4gRFlrdKaOSnppa6ufqRSubQgrNkKlf
-         DvsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWId2ynRtpyL7kTctSYWGvRLMjuBJbl7th52j++xqRFa+wxKnQeCJaZjFXCQRV4rgWRlR8iU1EEXsazZ0XrKJfVo91n1y0KZJOSHLMewgiiclbSguEmN6+BLwMt34Hx0lggRSBK7dvgULZgK+6UK4UAcgf4d7AlBG8=
-X-Gm-Message-State: AOJu0Yxwkw/VKTDA4mCu0s678gqblUjQ/AsI2FmowXhj6ivrVh0GvCTz
-	NUR0qArPwe5Yi6LgojpC8C9tRISzcvrUfmCn8llLcy4Mz2dy1Zr0XG9CWyWTDhWwXRPs9x3P3E7
-	Rgl4NVRcZT92/t3OYxJLLJ5I9aTY=
-X-Google-Smtp-Source: AGHT+IEILTPe7mFJEwRJujc3oIZAHLgSGGg1VcuWXbGgibtwvJMedN/dQArliawCeis1beZnNOr20qVSxmbrnCneal8=
-X-Received: by 2002:a05:6902:20c4:b0:dcc:d3ab:2fc0 with SMTP id
- dj4-20020a05690220c400b00dccd3ab2fc0mr741170ybb.23.1712145283378; Wed, 03 Apr
- 2024 04:54:43 -0700 (PDT)
+	id 1rrzoG-0000000FxK6-3mJj;
+	Wed, 03 Apr 2024 12:33:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lId1XXOO3ZCLlIs0UtIBJlUuXUIo4id4UlSgg0H4VSwh9ic+8xO/hZ4pZfMaHsj3238aZGzq5yJyOQSFuGKuu2L/4dEOdBMsQLsw/r5YC2U2BOj4LAQdwFk3vFFUJKpaeYIF7TSvKo7lGT4vFcCdmozxkXS3YM1o0wgNaZ0b5hfZ6EmSk7tvVrxtIsrwwOzTbXP63uN7ag23aC057t5skv46/pM8Wdq29cvUxb/BLKjE95960BUvnM3Xj/jovX0DGHPGxCpDpJ5kVAItTteICuPJP6g+VcodkzZAKGe88Cw1ADwiw76XkldRBa4naPetLdfIjrmZOgIK/pEIob8xsg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=h+8Rn//KvzkhPpEux8BovMmmfPQxkICCvCdU9LzpOtI=;
+ b=DpWPhM2uobQNk1/PaQY7l4I4DDrXL39EW3kjDi1p2vNAkGnZkZXHXpM2EyIDLB+Cv6BvE2LIifgB6Li8+rLNLNnXjq8wMaRx9VqvVAOdkdtC3Ipp7nIAgJ8gj4rSNx93G8znuOQYZM16rKlJ6YKU4qxkvyWQBkLML+PHIRfLLBo3/ogPHNbmpC/9gxg3oePWgxZlecQK4rCeORv75wrzYtBWrlp7DhuzYHQOhMTbid028buHGqqpgzzYADiK2ICodsCpamyNprWm8obRIGiKYdjviwlktYhSjhiStqkR4k5i7Q+MIoWXNwH77adSZsjkzB+PgzaFQzTUo3EvQ8jjbQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=h+8Rn//KvzkhPpEux8BovMmmfPQxkICCvCdU9LzpOtI=;
+ b=vzJj53Y3GFrYPv0AvmfazB+qiqOH8xYjJfg6JJs8fu+rcBgg1jWsmDWfp75Hio1xVdQwifmjz5QA5zh711f/XQnNH2laby53b4qzOsQscutDM53Gj+xXYFDoTOG200bAaxWGD+typSwCTpSWavNkfnzv6sqgvVT61nyMeUKofGw=
+Received: from BL1PR12MB5827.namprd12.prod.outlook.com (2603:10b6:208:396::19)
+ by PH8PR12MB7301.namprd12.prod.outlook.com (2603:10b6:510:222::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Wed, 3 Apr
+ 2024 12:33:36 +0000
+Received: from BL1PR12MB5827.namprd12.prod.outlook.com
+ ([fe80::ad43:48cb:df1c:c72f]) by BL1PR12MB5827.namprd12.prod.outlook.com
+ ([fe80::ad43:48cb:df1c:c72f%6]) with mapi id 15.20.7409.042; Wed, 3 Apr 2024
+ 12:33:35 +0000
+Message-ID: <dccb87db-d826-43fa-a499-cf36ea9b10d5@amd.com>
+Date: Wed, 3 Apr 2024 18:03:25 +0530
+User-Agent: Mozilla Thunderbird Beta
+From: Kishon Vijay Abraham I <kvijayab@amd.com>
+Subject: Re: [PATCH v2 02/18] PCI: endpoint: Introduce pci_epc_map_align()
+To: Damien Le Moal <dlemoal@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>, Niklas Cassel <cassel@kernel.org>
+References: <20240330041928.1555578-1-dlemoal@kernel.org>
+ <20240330041928.1555578-3-dlemoal@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20240330041928.1555578-3-dlemoal@kernel.org>
+X-ClientProxiedBy: PN2PR01CA0189.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:c01:e8::10) To BL1PR12MB5827.namprd12.prod.outlook.com
+ (2603:10b6:208:396::19)
 MIME-Version: 1.0
-References: <20240330041928.1555578-1-dlemoal@kernel.org> <20240330041928.1555578-17-dlemoal@kernel.org>
-In-Reply-To: <20240330041928.1555578-17-dlemoal@kernel.org>
-From: Rick Wertenbroek <rick.wertenbroek@gmail.com>
-Date: Wed, 3 Apr 2024 13:54:07 +0200
-Message-ID: <CAAEEuhrbx2NfKP2L4A4Rxyxk05hN2VwoRG6CBOZFUufsQasH7w@mail.gmail.com>
-Subject: Re: [PATCH v2 16/18] PCI: rockchip-ep: Improve link training
-To: Damien Le Moal <dlemoal@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>, Niklas Cassel <cassel@kernel.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5827:EE_|PH8PR12MB7301:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: +UJ46gRG37mOCGpQnEQDRgVOvI9ownDHQmNef6PakeRwaH/uxIUegbLVTpIpiyfHP53YrHzUV4pN1rJ1SJT7z3sbkFTxsmw7rEXf6BKt+xABmgAmVbKHpdLp2yZ1WoclNKaaG+MRdYamDH41mgzcicgEegTMThZawlrKWn/YaxzfTss3L8tJ4IktuD7NlxVJOt+FUignwC+aAm+LQdXVY8xBzCg5+eFIcPY9P7ctYiR2oUi83s4xrKzJDoYWcI2CekXk/c+wgmrtZkH7rbICvhQnFb+4DG2VmMdr6lAJ/AlxyxwAfaH4HMh/l0L0C2QKtGMQV5impQnANGqI9nrUKY5SYNLsn5Kd3lhucrFe04yAz9ZCZynYVXCgrzeWHA9RdNcK9F3Zqn6BUkIaX67JR6zppAMqhsVsGdQ5HxNbKZoPRliZHxVjV6OS37RW7587CHQT28GKfdLT91aeG4/95H3qnWDQ/91S53kpX/GXmT6GtN+gvWPIYTn5VInWBtiFTzFIV9wNcgSq5lmSabylBa/GKBkCqKbVPxA0xBG66lYobM5UhrEfgIym8/ZPfjlZoDljRppuPTvyJp2aY/0qOZyn4nzI1btETNfk/ckofNsCBy2NbXQ+BF3+g19ZqZbvpJEs8Sxvpwr+oSp4lUu0R8iAaGlm9631lcob11LkKhQ=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR12MB5827.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(7416005)(1800799015)(376005)(921011);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QXZjSGZiamljbXBJYnFsdERlaVZmTTZrcy9JOHVaSzRCWko1Vmd3ZktmZkFm?=
+ =?utf-8?B?bmlIeDJxendjUnZIOWNUMk5HdWJDaHVCb0FBSm1OeXl5cWhHQjRIT2ZCZHJL?=
+ =?utf-8?B?MEtwbUN1RVJxdmxsWDBQaENEM3pVeENxdDUwOHhQbWRjV1Q1eGdJVzBTQ2V4?=
+ =?utf-8?B?bUJJbm1HU29Kd29UdjYvN0pyRlIyQzlnQXZueUFHbGNUcjdpNGJpUlpnRThy?=
+ =?utf-8?B?eFVQRWJPdjZmNW8xTXBFeGg1Q2p5ZkU4UmFWK1FXL3Y1eThJSnBLVHp1T2Ri?=
+ =?utf-8?B?ZmdrMU5UMHdjRHVBUW5FVHhuckpSaldDamRsY0hrajVUdE8rd242RzF3eFVX?=
+ =?utf-8?B?dDhkcDM2ckhWTjBRRWc2RFQrZ0kzSE1uVXM0SnpRZ3VJWVdSVVRObWo3ZEE0?=
+ =?utf-8?B?TndncE9yUWczb21PanRvazdTTU1YMVBkdlFKa0NORmZ0UWZPNldISjhMTzRF?=
+ =?utf-8?B?RmM3WEordHBENkZud2xjME04ZHlFa1ZBSVFqaDl2azVhMWowTERqZThhSjQr?=
+ =?utf-8?B?cDlBQ0hHRGFuOUQ5WVRnMGI4TkNzdTdxN082TkgzSWtPQ3pFcWorOTA0RGpu?=
+ =?utf-8?B?MHdLcWRxYUg3ZU9aTzF5RlFXZUdLQktXYjdFZUt5TSsxK29DazJOUURhNWlw?=
+ =?utf-8?B?M0NPQ1AydjM3Tmc1MXpkVmdTTVh2VXJ2L051WlNHNUYxaE13VHRiblVLWEJQ?=
+ =?utf-8?B?RFJUTDVCVjFkUDZ0Q2E2V3FiTUFqV011N3cyQktBM1FmTXdLZVowcDlLNmp2?=
+ =?utf-8?B?OWhOSkNtUThNN3ErRkgwYjhiR2dEb0lnQnVmSnRINGpFVzF1cFR0RXEvMUND?=
+ =?utf-8?B?UFFsYzJsWHFhMFpGQUNIeVhXQURvMnhVMGRkdENvNWVHbnB1YktvWGdaeU8r?=
+ =?utf-8?B?eXFKWWEwNDVTQzRpSEc3THBLSmpWelZoQm1laW5ndUl1Rk0xUThxZGhqaWhj?=
+ =?utf-8?B?TDdNMS9kOGl6QVYrMDVjWVFrUE91UE9UY3lmN2hqZFhvTHRDcThGSUw4aHp3?=
+ =?utf-8?B?bytKMUZNcGE2U2pOaDdqQkxnTHFkRkxZYkxSbVoxWEtlbkd2T1VmTWhzZ2ZK?=
+ =?utf-8?B?QjJSZmFSSi91QmFHOGhBZTJEUnNhb2hrRWlkaUduVTJ6bVAvSUhwWTNsVmRE?=
+ =?utf-8?B?Sm9RN0xERDFYdVovMzRETGNVeTM5ZE9nRVoxbUp3YkgxdUdtUzVMRjNuTjB3?=
+ =?utf-8?B?RzRRRnU2MXNKQXMvSEZ3RTVqVmtxa0NGVmJMUFdqZFB3TmtMbEdKakMzSlpI?=
+ =?utf-8?B?aEVjY0xyRUZNakZYakhsekdVc1p1K2xvODA2cVRmVHNuakhSRVlweDRZc3JG?=
+ =?utf-8?B?ajA0RXowS3VRengvV3BRaWJTVk5ndkxVQ3Uvclo1WGxDOUg2VUVQdmUrTkRh?=
+ =?utf-8?B?N1VwblFyK2RaYW9GTWZvYWhqYUV3SlhUeTZ2aUJoQXNxOUQrVUdHSTg0ZU10?=
+ =?utf-8?B?Wkcya1dXVWttNkFMcG1GUi9yR2VQdVRFWnVRR2dtZjFyRGNqM3MyYUpMb3RI?=
+ =?utf-8?B?UTlFT1VmKzVpdmo3Y3l4Q1ovZEFnN2FTNHBlWkcwb0gvQzFlb2dKQmM2S3Iv?=
+ =?utf-8?B?ZWJCOWdPR2MvRmdiUU9hcFgvc2UwbDE4dFdCMFpmT0tYS1oyZWNBT1czRXJU?=
+ =?utf-8?B?K09SdXpSQkZtdzJsSFJLNFA5OUlsMHgyNzVLMkNqcGVhb1BvWnI1cndBdXJa?=
+ =?utf-8?B?NEMxK3pwdWhyNXpwRy9PeEFya0FmMnpIeXZCQk5rVGNUalUwOFpvTnVXeklu?=
+ =?utf-8?B?a1pSWUk3VXNBOXJNaC9ldU1DaFRqQlg5UzVlcGZTWTZLd2tjR1ZxcFd5VmlQ?=
+ =?utf-8?B?TjFrd1ZJRVpkTExERWFFck5DRlZvWTNBYnhnK2FXdjM3S1pWbjBNQ3o5cFJK?=
+ =?utf-8?B?OVFpS0VqUHpyR1NpdW1nandPWm51aW1walNTckZxYjZYR1Nabys4S0Q3bTR2?=
+ =?utf-8?B?eWhrb0d2eHhXSWZ2cW02TG45YkExR1lmSHp0V0NwSTJpRUxsT3dYa3dMa2VZ?=
+ =?utf-8?B?cThxSHVBUDRIRzJKdzZnMEEyeEovTXNkNGZ3UGdPNW9NMC80QWdmakorTmZu?=
+ =?utf-8?B?aU1lNlRLWTlXR3M0NjlxblN2dlJqYkdvOUkwaDlhalJURnFubmdTMkV0NWJq?=
+ =?utf-8?Q?qKtYCCs539RbyLpOcg7QBSy7H?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d3157dd4-8513-4ce9-c1b3-08dc53da47f9
+X-MS-Exchange-CrossTenant-AuthSource: BL1PR12MB5827.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Apr 2024 12:33:35.8758
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zF2W8au1ROuc3Hu+9BhwjwPbMKdLy9tZ4Smgo9ZOrHZCp02Wkk9zotL82ExckmzU+9SlU6K4YbgJXwDI70ifRA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7301
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240403_045446_223605_39C334EE 
-X-CRM114-Status: GOOD (  32.46  )
+X-CRM114-CacheID: sfid-20240403_053345_158351_F569611C 
+X-CRM114-Status: GOOD (  43.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,192 +144,233 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBNYXIgMzAsIDIwMjQgYXQgNToyMOKAr0FNIERhbWllbiBMZSBNb2FsIDxkbGVtb2Fs
-QGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gVGhlIFJvY2tjaGlwIHJrMzM5IHRlY2huaWNhbCByZWZl
-cmVuY2UgbWFudWFsIGRlc2NyaWJlIHRoZSBlbmRwb2ludCBtb2RlCj4gbGluayB0cmFpbmluZyBw
-cm9jZXNzIGNsZWFybHkgYW5kIHN0YXRlcyB0aGF0Ogo+ICAgSW5zdXJlIGxpbmsgdHJhaW5pbmcg
-Y29tcGxldGlvbiBhbmQgc3VjY2VzcyBieSBvYnNlcnZpbmcgbGlua19zdCBmaWVsZAo+ICAgaW4g
-UENJZSBDbGllbnQgQkFTSUNfU1RBVFVTMSByZWdpc3RlciBjaGFuZ2UgdG8gMidiMTEuIElmIGJv
-dGggc2lkZQo+ICAgc3VwcG9ydCBQQ0llIEdlbjIgc3BlZWQsIHJlLXRyYWluIGNhbiBiZSBJbml0
-aWF0ZWQgYnkgYXNzZXJ0aW5nIHRoZQo+ICAgUmV0cmFpbiBMaW5rIGZpZWxkIGluIExpbmsgQ29u
-dHJvbCBhbmQgU3RhdHVzIFJlZ2lzdGVyLiBUaGUgc29mdHdhcmUKPiAgIHNob3VsZCBpbnN1cmUg
-dGhlIEJBU0lDX1NUQVRVUzBbbmVnb3RpYXRlZF9zcGVlZF0gY2hhbmdlcyB0byAiMSIsIHRoYXQK
-PiAgIGluZGljYXRlcyByZS10cmFpbiB0byBHZW4yIHN1Y2Nlc3NmdWxseS4KPiBUaGlzIHByb2Nl
-ZHVyZSBpcyB2ZXJ5IHNpbWlsYXIgdG8gd2hhdCBpcyBkb25lIGZvciB0aGUgcm9vdC1wb3J0IG1v
-ZGUgaW4KPiByb2NrY2hpcF9wY2llX2hvc3RfaW5pdF9wb3J0KCkuCj4KPiBJbXBsZW1lbnQgdGhp
-cyBsaW5rIHRyYWluaW5nIHByb2NlZHVyZSBmb3IgdGhlIGVuZHBvaW50IG1vZGUgYXMgd2VsbC4K
-PiBHaXZlbiB0aGF0IHRoZSByazMzOTkgU29DIGRvZXMgbm90IGhhdmUgYW4gaW50ZXJydXB0IHNp
-Z25hbGluZyBsaW5rCj4gc3RhdHVzIGNoYW5nZXMsIHRyYWluaW5nIGlzIGltcGxlbWVudGVkIGFz
-IGEgZGVsYXllZCB3b3JrIHdoaWNoIGlzCj4gcmVzY2hlZHVsZWQgdW50aWwgdGhlIGxpbmsgdHJh
-aW5pbmcgY29tcGxldGVzIG9yIHRoZSBlbmRwb2ludCBjb250cm9sbGVyCj4gaXMgc3RvcHBlZC4g
-VGhlIGxpbmsgdHJhaW5pbmcgd29yayBpcyBmaXJzdCBzY2hlZHVsZWQgaW4KPiByb2NrY2hpcF9w
-Y2llX2VwX3N0YXJ0KCkgd2hlbiB0aGUgZW5kcG9pbnQgZnVuY3Rpb24gaXMgc3RhcnRlZC4gTGlu
-awo+IHRyYWluaW5nIGNvbXBsZXRpb24gaXMgc2lnbmFsZWQgdG8gdGhlIGZ1bmN0aW9uIHVzaW5n
-IHBjaV9lcGNfbGlua3VwKCkuCj4gQWNjb3JkaW5nbHksIHRoZSBsaW5rdXBfbm90aWZpZXIgZmll
-bGQgb2YgdGhlIHJvY2tjaGlwIHBjaV9lcGNfZmVhdHVyZXMKPiBzdHJ1Y3R1cmUgaXMgY2hhbmdl
-ZCB0byB0cnVlLgo+Cj4gU2lnbmVkLW9mZi1ieTogRGFtaWVuIExlIE1vYWwgPGRsZW1vYWxAa2Vy
-bmVsLm9yZz4KPiAtLS0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWVw
-LmMgfCA3OSArKysrKysrKysrKysrKysrKysrKysrLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVy
-L3BjaWUtcm9ja2NoaXAuaCAgICB8IDExICsrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA4OSBpbnNl
-cnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29u
-dHJvbGxlci9wY2llLXJvY2tjaGlwLWVwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUt
-cm9ja2NoaXAtZXAuYwo+IGluZGV4IDI3NjdlOGYxNzcxZC4uNDAwNmU3ZGVlNzFhIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1lcC5jCj4gKysrIGIv
-ZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWVwLmMKPiBAQCAtMTYsNiArMTYs
-OCBAQAo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxs
-aW51eC9wY2ktZXBmLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zaXplcy5oPgo+ICsjaW5jbHVkZSA8
-bGludXgvd29ya3F1ZXVlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9pb3BvbGwuaD4KPgo+ICAjaW5j
-bHVkZSAicGNpZS1yb2NrY2hpcC5oIgo+Cj4gQEAgLTQ4LDYgKzUwLDcgQEAgc3RydWN0IHJvY2tj
-aGlwX3BjaWVfZXAgewo+ICAgICAgICAgdTY0ICAgICAgICAgICAgICAgICAgICAgaXJxX3BjaV9h
-ZGRyOwo+ICAgICAgICAgdTggICAgICAgICAgICAgICAgICAgICAgaXJxX3BjaV9mbjsKPiAgICAg
-ICAgIHU4ICAgICAgICAgICAgICAgICAgICAgIGlycV9wZW5kaW5nOwo+ICsgICAgICAgc3RydWN0
-IGRlbGF5ZWRfd29yayAgICAgbGlua190cmFpbmluZzsKPiAgfTsKPgo+ICBzdGF0aWMgdm9pZCBy
-b2NrY2hpcF9wY2llX2NsZWFyX2VwX29iX2F0dShzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2No
-aXAsCj4gQEAgLTQ2Nyw2ICs0NzAsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfZXBfc3Rh
-cnQoc3RydWN0IHBjaV9lcGMgKmVwYykKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUENJ
-RV9DTElFTlRfQ09ORl9FTkFCTEUsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIFBDSUVf
-Q0xJRU5UX0NPTkZJRyk7Cj4KPiArICAgICAgIHNjaGVkdWxlX2RlbGF5ZWRfd29yaygmZXAtPmxp
-bmtfdHJhaW5pbmcsIDApOwo+ICsKPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4KPiBAQCAtNDc1
-LDYgKzQ4MCw4IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfZXBfc3RvcChzdHJ1Y3QgcGNp
-X2VwYyAqZXBjKQo+ICAgICAgICAgc3RydWN0IHJvY2tjaGlwX3BjaWVfZXAgKmVwID0gZXBjX2dl
-dF9kcnZkYXRhKGVwYyk7Cj4gICAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXAg
-PSAmZXAtPnJvY2tjaGlwOwo+Cj4gKyAgICAgICBjYW5jZWxfZGVsYXllZF93b3JrX3N5bmMoJmVw
-LT5saW5rX3RyYWluaW5nKTsKPiArCj4gICAgICAgICAvKiBTdG9wIGxpbmsgdHJhaW5pbmcgYW5k
-IGRpc2FibGUgY29uZmlndXJhdGlvbiAqLwo+ICAgICAgICAgcm9ja2NoaXBfcGNpZV93cml0ZShy
-b2NrY2hpcCwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUENJRV9DTElFTlRfQ09ORl9E
-SVNBQkxFIHwKPiBAQCAtNDgyLDggKzQ4OSw3NyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2ll
-X2VwX3N0b3Aoc3RydWN0IHBjaV9lcGMgKmVwYykKPiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgUENJRV9DTElFTlRfQ09ORklHKTsKPiAgfQo+Cj4gK3N0YXRpYyB2b2lkIHJvY2tjaGlwX3Bj
-aWVfZXBfcmV0cmFpbl9saW5rKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiArewo+
-ICsgICAgICAgdTMyIHN0YXR1czsKPiArCj4gKyAgICAgICBzdGF0dXMgPSByb2NrY2hpcF9wY2ll
-X3JlYWQocm9ja2NoaXAsIFBDSUVfRVBfQ09ORklHX0xDUyk7Cj4gKyAgICAgICBzdGF0dXMgfD0g
-UENJX0VYUF9MTktDVExfUkw7Cj4gKyAgICAgICByb2NrY2hpcF9wY2llX3dyaXRlKHJvY2tjaGlw
-LCBzdGF0dXMsIFBDSUVfRVBfQ09ORklHX0xDUyk7Cj4gK30KPiArCj4gK3N0YXRpYyBib29sIHJv
-Y2tjaGlwX3BjaWVfZXBfbGlua191cChzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4g
-K3sKPiArICAgICAgIHUzMiB2YWwgPSByb2NrY2hpcF9wY2llX3JlYWQocm9ja2NoaXAsIFBDSUVf
-Q0xJRU5UX0JBU0lDX1NUQVRVUzEpOwo+ICsKPiArICAgICAgIHJldHVybiBQQ0lFX0xJTktfVVAo
-dmFsKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgcm9ja2NoaXBfcGNpZV9lcF9saW5rX3RyYWlu
-aW5nKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiArewo+ICsgICAgICAgc3RydWN0IHJvY2tj
-aGlwX3BjaWVfZXAgKmVwID0KPiArICAgICAgICAgICAgICAgY29udGFpbmVyX29mKHdvcmssIHN0
-cnVjdCByb2NrY2hpcF9wY2llX2VwLCBsaW5rX3RyYWluaW5nLndvcmspOwo+ICsgICAgICAgc3Ry
-dWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwID0gJmVwLT5yb2NrY2hpcDsKPiArICAgICAgIHN0
-cnVjdCBkZXZpY2UgKmRldiA9IHJvY2tjaGlwLT5kZXY7Cj4gKyAgICAgICB1MzIgdmFsOwo+ICsg
-ICAgICAgaW50IHJldDsKPiArCj4gKyAgICAgICAvKiBFbmFibGUgR2VuMSB0cmFpbmluZyBhbmQg
-d2FpdCBmb3IgaXRzIGNvbXBsZXRpb24gKi8KPiArICAgICAgIHJldCA9IHJlYWRsX3BvbGxfdGlt
-ZW91dChyb2NrY2hpcC0+YXBiX2Jhc2UgKyBQQ0lFX0NPUkVfQ1RSTCwKPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB2YWwsIFBDSUVfTElOS19UUkFJTklOR19ET05FKHZhbCksIDUw
-LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIExJTktfVFJBSU5fVElNRU9VVCk7
-Cj4gKyAgICAgICBpZiAocmV0KQo+ICsgICAgICAgICAgICAgICBnb3RvIGFnYWluOwo+ICsKPiAr
-ICAgICAgIC8qIE1ha2Ugc3VyZSB0aGF0IHRoZSBsaW5rIGlzIHVwICovCj4gKyAgICAgICByZXQg
-PSByZWFkbF9wb2xsX3RpbWVvdXQocm9ja2NoaXAtPmFwYl9iYXNlICsgUENJRV9DTElFTlRfQkFT
-SUNfU1RBVFVTMSwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YWwsIFBDSUVf
-TElOS19VUCh2YWwpLCA1MCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBMSU5L
-X1RSQUlOX1RJTUVPVVQpOwo+ICsgICAgICAgaWYgKHJldCkKPiArICAgICAgICAgICAgICAgZ290
-byBhZ2FpbjsKPiArCj4gKyAgICAgICAvKiBDaGVjayB0aGUgY3VycmVudCBzcGVlZCAqLwo+ICsg
-ICAgICAgdmFsID0gcm9ja2NoaXBfcGNpZV9yZWFkKHJvY2tjaGlwLCBQQ0lFX0NPUkVfQ1RSTCk7
-Cj4gKyAgICAgICBpZiAoIVBDSUVfTElOS19JU19HRU4yKHZhbCkgJiYgcm9ja2NoaXAtPmxpbmtf
-Z2VuID09IDIpIHsKPiArICAgICAgICAgICAgICAgLyogRW5hYmxlIHJldHJhaW4gZm9yIGdlbjIg
-Ki8KPiArICAgICAgICAgICAgICAgcm9ja2NoaXBfcGNpZV9lcF9yZXRyYWluX2xpbmsocm9ja2No
-aXApOwo+ICsgICAgICAgICAgICAgICByZWFkbF9wb2xsX3RpbWVvdXQocm9ja2NoaXAtPmFwYl9i
-YXNlICsgUENJRV9DT1JFX0NUUkwsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB2YWwsIFBDSUVfTElOS19JU19HRU4yKHZhbCksIDUwLAo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgTElOS19UUkFJTl9USU1FT1VUKTsKPiArICAgICAgIH0KPiArCj4gKyAg
-ICAgICAvKiBDaGVjayBhZ2FpbiB0aGF0IHRoZSBsaW5rIGlzIHVwICovCj4gKyAgICAgICBpZiAo
-IXJvY2tjaGlwX3BjaWVfZXBfbGlua191cChyb2NrY2hpcCkpCj4gKyAgICAgICAgICAgICAgIGdv
-dG8gYWdhaW47Cj4gKwo+ICsgICAgICAgdmFsID0gcm9ja2NoaXBfcGNpZV9yZWFkKHJvY2tjaGlw
-LCBQQ0lFX0NMSUVOVF9CQVNJQ19TVEFUVVMwKTsKPiArICAgICAgIGRldl9pbmZvKGRldiwKPiAr
-ICAgICAgICAgICAgICAgICJMaW5rIFVQIChOZWdvY2lhdGVkIHNwZWVkOiAlc0dUL3MsIHdpZHRo
-OiB4JWx1KVxuIiwKPiArICAgICAgICAgICAgICAgICh2YWwgJiBQQ0lFX0NMSUVOVF9ORUdfTElO
-S19TUEVFRCkgPyAiNSIgOiAiMi41IiwKPiArICAgICAgICAgICAgICAgICgodmFsICYgUENJRV9D
-TElFTlRfTkVHX0xJTktfV0lEVEhfTUFTSykgPj4KPiArICAgICAgICAgICAgICAgICBQQ0lFX0NM
-SUVOVF9ORUdfTElOS19XSURUSF9TSElGVCkgPDwgMSk7Cj4gKwoKVGhpcyBkb2VzIG5vdCBwcmlu
-dCB0aGUgY29ycmVjdCBsaW5rIHdpZHRoIGZvciB4MSA6CgojIFsgICA2MC41MTgzMzldIHJvY2tj
-aGlwLXBjaWUtZXAgZmQwMDAwMDAucGNpZS1lcDogTGluayBVUAooTmVnb2NpYXRlZCBzcGVlZDog
-NUdUL3MsIHdpZHRoOiB4MCkKClRoaXMgaXMgYmVjYXVzZSA6CgooKHZhbCAmIFBDSUVfQ0xJRU5U
-X05FR19MSU5LX1dJRFRIX01BU0spID4+CiBQQ0lFX0NMSUVOVF9ORUdfTElOS19XSURUSF9TSElG
-VCkgPDwgMQp3aWxsIHByaW50IDAgaWYgdGhlIGxpbmsgd2lkdGggaXMgMSwgYmVjYXVzZSBiaXRz
-IDc6NiBhcmUgMGIwMCwgYW5kCjBiMDAgPDwgMSBpcyBzdGlsbCAwLiAoMGIwMCA9PiB4MCwgMGIw
-MSA9PiB4MiwgMGIxMCA9PiB4NCkKClRoZXJlZm9yZSB0aGUgZm9ybXVsYSBzaG91bGQgYmUgOgox
-IDw8ICgodmFsICYgUENJRV9DTElFTlRfTkVHX0xJTktfV0lEVEhfTUFTSykgPj4KIFBDSUVfQ0xJ
-RU5UX05FR19MSU5LX1dJRFRIX1NISUZUKQpUaGlzIHNob3dzIHRoZSBjb3JyZWN0IGxpbmsgd2lk
-dGggZm9yIGFsbCBjYXNlcyAoMGIwMCA9PiB4MSwgMGIwMSA9Pgp4MiwgMGIxMCA9PiB4NCkuCgpS
-ZWZlcmVuY2UgOiBSSzMzOTkgVFJNIFYxLjMgcGFnZXMgNzY4LTc2OSBQQ0lFX0NMSUVOVF9CQVNJ
-Q19TVEFUVVMwCnJlZ2lzdGVyIGRlc2NyaXB0aW9uCgoKPiArICAgICAgIC8qIE5vdGlmeSB0aGUg
-ZnVuY3Rpb24gKi8KPiArICAgICAgIHBjaV9lcGNfbGlua3VwKGVwLT5lcGMpOwo+ICsKPiArICAg
-ICAgIHJldHVybjsKPiArCj4gK2FnYWluOgo+ICsgICAgICAgc2NoZWR1bGVfZGVsYXllZF93b3Jr
-KCZlcC0+bGlua190cmFpbmluZywgbXNlY3NfdG9famlmZmllcyg1KSk7Cj4gK30KPiArCj4gIHN0
-YXRpYyBjb25zdCBzdHJ1Y3QgcGNpX2VwY19mZWF0dXJlcyByb2NrY2hpcF9wY2llX2VwY19mZWF0
-dXJlcyA9IHsKPiAtICAgICAgIC5saW5rdXBfbm90aWZpZXIgPSBmYWxzZSwKPiArICAgICAgIC5s
-aW5rdXBfbm90aWZpZXIgPSB0cnVlLAo+ICAgICAgICAgLm1zaV9jYXBhYmxlID0gdHJ1ZSwKPiAg
-ICAgICAgIC5tc2l4X2NhcGFibGUgPSBmYWxzZSwKPiAgICAgICAgIC5hbGlnbiA9IFJPQ0tDSElQ
-X1BDSUVfQVRfU0laRV9BTElHTiwKPiBAQCAtNjQ0LDYgKzcyMCw3IEBAIHN0YXRpYyBpbnQgcm9j
-a2NoaXBfcGNpZV9lcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgICAg
-ICAgcm9ja2NoaXAgPSAmZXAtPnJvY2tjaGlwOwo+ICAgICAgICAgcm9ja2NoaXAtPmlzX3JjID0g
-ZmFsc2U7Cj4gICAgICAgICByb2NrY2hpcC0+ZGV2ID0gZGV2Owo+ICsgICAgICAgSU5JVF9ERUxB
-WUVEX1dPUksoJmVwLT5saW5rX3RyYWluaW5nLCByb2NrY2hpcF9wY2llX2VwX2xpbmtfdHJhaW5p
-bmcpOwo+Cj4gICAgICAgICBlcGMgPSBkZXZtX3BjaV9lcGNfY3JlYXRlKGRldiwgJnJvY2tjaGlw
-X3BjaWVfZXBjX29wcyk7Cj4gICAgICAgICBpZiAoSVNfRVJSKGVwYykpIHsKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmggYi9kcml2ZXJzL3BjaS9j
-b250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+IGluZGV4IDAyNjNmMTU4ZWU4ZC4uMzk2M2I3MDk3
-YTkxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5o
-Cj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmgKPiBAQCAtMjYs
-NiArMjYsNyBAQAo+ICAjZGVmaW5lIE1BWF9MQU5FX05VTSAgICAgICAgICAgICAgICAgICA0Cj4g
-ICNkZWZpbmUgTUFYX1JFR0lPTl9MSU1JVCAgICAgICAgICAgICAgIDMyCj4gICNkZWZpbmUgTUlO
-X0VQX0FQRVJUVVJFICAgICAgICAgICAgICAgICAgICAgICAgMjgKPiArI2RlZmluZSBMSU5LX1RS
-QUlOX1RJTUVPVVQgICAgICAgICAgICAgKDUwMDAgKiBVU0VDX1BFUl9NU0VDKQo+Cj4gICNkZWZp
-bmUgUENJRV9DTElFTlRfQkFTRSAgICAgICAgICAgICAgIDB4MAo+ICAjZGVmaW5lIFBDSUVfQ0xJ
-RU5UX0NPTkZJRyAgICAgICAgICAgICAoUENJRV9DTElFTlRfQkFTRSArIDB4MDApCj4gQEAgLTUw
-LDYgKzUxLDEwIEBACj4gICNkZWZpbmUgICBQQ0lFX0NMSUVOVF9ERUJVR19MVFNTTV9NQVNLICAg
-ICAgICAgR0VOTUFTSyg1LCAwKQo+ICAjZGVmaW5lICAgUENJRV9DTElFTlRfREVCVUdfTFRTU01f
-TDEgICAgICAgICAgIDB4MTgKPiAgI2RlZmluZSAgIFBDSUVfQ0xJRU5UX0RFQlVHX0xUU1NNX0wy
-ICAgICAgICAgICAweDE5Cj4gKyNkZWZpbmUgUENJRV9DTElFTlRfQkFTSUNfU1RBVFVTMCAgICAg
-IChQQ0lFX0NMSUVOVF9CQVNFICsgMHg0NCkKPiArI2RlZmluZSAgIFBDSUVfQ0xJRU5UX05FR19M
-SU5LX1dJRFRIX01BU0sgICAgICBHRU5NQVNLKDcsIDYpCj4gKyNkZWZpbmUgICBQQ0lFX0NMSUVO
-VF9ORUdfTElOS19XSURUSF9TSElGVCAgICAgNgo+ICsjZGVmaW5lICAgUENJRV9DTElFTlRfTkVH
-X0xJTktfU1BFRUQgICAgICAgICAgIEJJVCg1KQo+ICAjZGVmaW5lIFBDSUVfQ0xJRU5UX0JBU0lD
-X1NUQVRVUzEgICAgICAoUENJRV9DTElFTlRfQkFTRSArIDB4NDgpCj4gICNkZWZpbmUgICBQQ0lF
-X0NMSUVOVF9MSU5LX1NUQVRVU19VUCAgICAgICAgICAgMHgwMDMwMDAwMAo+ICAjZGVmaW5lICAg
-UENJRV9DTElFTlRfTElOS19TVEFUVVNfTUFTSyAgICAgICAgIDB4MDAzMDAwMDAKPiBAQCAtODcs
-NiArOTIsOCBAQAo+Cj4gICNkZWZpbmUgUENJRV9DT1JFX0NUUkxfTUdNVF9CQVNFICAgICAgIDB4
-OTAwMDAwCj4gICNkZWZpbmUgUENJRV9DT1JFX0NUUkwgICAgICAgICAgICAgICAgIChQQ0lFX0NP
-UkVfQ1RSTF9NR01UX0JBU0UgKyAweDAwMCkKPiArI2RlZmluZSAgIFBDSUVfQ09SRV9QTF9DT05G
-X0xTX01BU0sgICAgICAgICAgICAweDAwMDAwMDAxCj4gKyNkZWZpbmUgICBQQ0lFX0NPUkVfUExf
-Q09ORl9MU19SRUFEWSAgICAgICAgICAgMHgwMDAwMDAwMQo+ICAjZGVmaW5lICAgUENJRV9DT1JF
-X1BMX0NPTkZfU1BFRURfNUcgICAgICAgICAgIDB4MDAwMDAwMDgKPiAgI2RlZmluZSAgIFBDSUVf
-Q09SRV9QTF9DT05GX1NQRUVEX01BU0sgICAgICAgICAweDAwMDAwMDE4Cj4gICNkZWZpbmUgICBQ
-Q0lFX0NPUkVfUExfQ09ORl9MQU5FX01BU0sgICAgICAgICAgMHgwMDAwMDAwNgo+IEBAIC0xNDQs
-NiArMTUxLDcgQEAKPiAgI2RlZmluZSBQQ0lFX1JDX0NPTkZJR19CQVNFICAgICAgICAgICAgMHhh
-MDAwMDAKPiAgI2RlZmluZSBQQ0lFX0VQX0NPTkZJR19CQVNFICAgICAgICAgICAgMHhhMDAwMDAK
-PiAgI2RlZmluZSBQQ0lFX0VQX0NPTkZJR19ESURfVklEICAgICAgICAgKFBDSUVfRVBfQ09ORklH
-X0JBU0UgKyAweDAwKQo+ICsjZGVmaW5lIFBDSUVfRVBfQ09ORklHX0xDUyAgICAgICAgICAgICAo
-UENJRV9FUF9DT05GSUdfQkFTRSArIDB4ZDApCj4gICNkZWZpbmUgUENJRV9SQ19DT05GSUdfUklE
-X0NDUiAgICAgICAgIChQQ0lFX1JDX0NPTkZJR19CQVNFICsgMHgwOCkKPiAgI2RlZmluZSBQQ0lF
-X1JDX0NPTkZJR19EQ1IgICAgICAgICAgICAgKFBDSUVfUkNfQ09ORklHX0JBU0UgKyAweGM0KQo+
-ICAjZGVmaW5lICAgUENJRV9SQ19DT05GSUdfRENSX0NTUExfU0hJRlQgICAgICAgICAgICAgICAg
-MTgKPiBAQCAtMTU1LDYgKzE2Myw3IEBACj4gICNkZWZpbmUgUENJRV9SQ19DT05GSUdfTElOS19D
-QVAgICAgICAgICAgICAgICAgKFBDSUVfUkNfQ09ORklHX0JBU0UgKyAweGNjKQo+ICAjZGVmaW5l
-ICAgUENJRV9SQ19DT05GSUdfTElOS19DQVBfTDBTICAgICAgICAgIEJJVCgxMCkKPiAgI2RlZmlu
-ZSBQQ0lFX1JDX0NPTkZJR19MQ1MgICAgICAgICAgICAgKFBDSUVfUkNfQ09ORklHX0JBU0UgKyAw
-eGQwKQo+ICsjZGVmaW5lIFBDSUVfRVBfQ09ORklHX0xDUyAgICAgICAgICAgICAoUENJRV9FUF9D
-T05GSUdfQkFTRSArIDB4ZDApCj4gICNkZWZpbmUgUENJRV9SQ19DT05GSUdfTDFfU1VCU1RBVEVf
-Q1RSTDIgKFBDSUVfUkNfQ09ORklHX0JBU0UgKyAweDkwYykKPiAgI2RlZmluZSBQQ0lFX1JDX0NP
-TkZJR19USFBfQ0FQICAgICAgICAgKFBDSUVfUkNfQ09ORklHX0JBU0UgKyAweDI3NCkKPiAgI2Rl
-ZmluZSAgIFBDSUVfUkNfQ09ORklHX1RIUF9DQVBfTkVYVF9NQVNLICAgICBHRU5NQVNLKDMxLCAy
-MCkKPiBAQCAtMTkyLDYgKzIwMSw4IEBACj4gICNkZWZpbmUgUk9DS0NISVBfVkVORE9SX0lEICAg
-ICAgICAgICAgICAgICAgICAgMHgxZDg3Cj4gICNkZWZpbmUgUENJRV9MSU5LX0lTX0wyKHgpIFwK
-PiAgICAgICAgICgoKHgpICYgUENJRV9DTElFTlRfREVCVUdfTFRTU01fTUFTSykgPT0gUENJRV9D
-TElFTlRfREVCVUdfTFRTU01fTDIpCj4gKyNkZWZpbmUgUENJRV9MSU5LX1RSQUlOSU5HX0RPTkUo
-eCkgXAo+ICsgICAgICAgKCgoeCkgJiBQQ0lFX0NPUkVfUExfQ09ORl9MU19NQVNLKSA9PSBQQ0lF
-X0NPUkVfUExfQ09ORl9MU19SRUFEWSkKPiAgI2RlZmluZSBQQ0lFX0xJTktfVVAoeCkgXAo+ICAg
-ICAgICAgKCgoeCkgJiBQQ0lFX0NMSUVOVF9MSU5LX1NUQVRVU19NQVNLKSA9PSBQQ0lFX0NMSUVO
-VF9MSU5LX1NUQVRVU19VUCkKPiAgI2RlZmluZSBQQ0lFX0xJTktfSVNfR0VOMih4KSBcCj4gLS0K
-PiAyLjQ0LjAKPgoKVGVzdGVkLWJ5OiBSaWNrIFdlcnRlbmJyb2VrIDxyaWNrLndlcnRlbmJyb2Vr
-QGdtYWlsLmNvbT4KCkJlc3QgcmVnYXJkcywKUmljawoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Damien,
+
+On 3/30/2024 9:49 AM, Damien Le Moal wrote:
+> Some endpoint controllers have requirements on the alignment of the
+> controller physical memory address that must be used to map a RC PCI
+> address region. For instance, the rockchip endpoint controller uses
+> at most the lower 20 bits of a physical memory address region as the
+> lower bits of an RC PCI address. For mapping a PCI address region of
+> size bytes starting from pci_addr, the exact number of address bits
+> used is the number of address bits changing in the address range
+> [pci_addr..pci_addr + size - 1].
+> 
+> For this example, this creates the following constraints:
+> 1) The offset into the controller physical memory allocated for a
+>     mapping depends on the mapping size *and* the starting PCI address
+>     for the mapping.
+> 2) A mapping size cannot exceed the controller windows size (1MB) minus
+>     the offset needed into the allocated physical memory, which can end
+>     up being a smaller size than the desired mapping size.
+> 
+> Handling these constraints independently of the controller being used in
+> a PCI EP function driver is not possible with the current EPC API as
+> it only provides the ->align field in struct pci_epc_features.
+> Furthermore, this alignment is static and does not depend on a mapping
+> pci address and size.
+> 
+> Solve this by introducing the function pci_epc_map_align() and the
+> endpoint controller operation ->map_align to allow endpoint function
+> drivers to obtain the size and the offset into a controller address
+> region that must be used to map an RC PCI address region. The size
+> of the physical address region provided by pci_epc_map_align() can then
+> be used as the size argument for the function pci_epc_mem_alloc_addr().
+> The offset into the allocated controller memory can be used to
+> correctly handle data transfers. Of note is that pci_epc_map_align() may
+> indicate upon return a mapping size that is smaller (but not 0) than the
+> requested PCI address region size. For such case, an endpoint function
+> driver must handle data transfers in fragments.
+> 
+> The controller operation ->map_align is optional: controllers that do
+> not have any address alignment constraints for mapping a RC PCI address
+> region do not need to implement this operation. For such controllers,
+> pci_epc_map_align() always returns the mapping size as equal
+> to the requested size and an offset equal to 0.
+> 
+> The structure pci_epc_map is introduced to represent a mapping start PCI
+> address, size and the size and offset into the controller memory needed
+> for mapping the PCI address region.
+> 
+> Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+> ---
+>   drivers/pci/endpoint/pci-epc-core.c | 66 +++++++++++++++++++++++++++++
+>   include/linux/pci-epc.h             | 33 +++++++++++++++
+>   2 files changed, 99 insertions(+)
+> 
+> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+> index 754afd115bbd..37758ca91d7f 100644
+> --- a/drivers/pci/endpoint/pci-epc-core.c
+> +++ b/drivers/pci/endpoint/pci-epc-core.c
+> @@ -433,6 +433,72 @@ void pci_epc_unmap_addr(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   }
+>   EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
+>   
+> +/**
+> + * pci_epc_map_align() - Get the offset into and the size of a controller memory
+> + *			 address region needed to map a RC PCI address region
+> + * @epc: the EPC device on which address is allocated
+> + * @func_no: the physical endpoint function number in the EPC device
+> + * @vfunc_no: the virtual endpoint function number in the physical function
+> + * @pci_addr: PCI address to which the physical address should be mapped
+> + * @size: the size of the mapping starting from @pci_addr
+> + * @map: populate here the actual size and offset into the controller memory
+> + *       that must be allocated for the mapping
+> + *
+> + * Invoke the controller map_align operation to obtain the size and the offset
+> + * into a controller address region that must be allocated to map @size
+> + * bytes of the RC PCI address space starting from @pci_addr.
+> + *
+> + * The size of the mapping that can be handled by the controller is indicated
+> + * using the pci_size field of @map. This size may be smaller than the requested
+> + * @size. In such case, the function driver must handle the mapping using
+> + * several fragments. The offset into the controller memory for the effective
+> + * mapping of the @pci_addr..@pci_addr+@map->pci_size address range is indicated
+> + * using the map_ofst field of @map.
+> + */
+> +int pci_epc_map_align(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+> +		      u64 pci_addr, size_t size, struct pci_epc_map *map)
+> +{
+> +	const struct pci_epc_features *features;
+> +	size_t mask;
+> +	int ret;
+> +
+> +	if (!pci_epc_function_is_valid(epc, func_no, vfunc_no))
+> +		return -EINVAL;
+> +
+> +	if (!size || !map)
+> +		return -EINVAL;
+> +
+> +	memset(map, 0, sizeof(*map));
+> +	map->pci_addr = pci_addr;
+> +	map->pci_size = size;
+> +
+> +	if (epc->ops->map_align) {
+> +		mutex_lock(&epc->lock);
+> +		ret = epc->ops->map_align(epc, func_no, vfunc_no, map);
+> +		mutex_unlock(&epc->lock);
+> +		return ret;
+> +	}
+> +
+> +	/*
+> +	 * Assume a fixed alignment constraint as specified by the controller
+> +	 * features.
+> +	 */
+> +	features = pci_epc_get_features(epc, func_no, vfunc_no);
+> +	if (!features || !features->align) {
+> +		map->map_pci_addr = pci_addr;
+> +		map->map_size = size;
+> +		map->map_ofst = 0;
+> +	}
+
+The 'align' of pci_epc_features was initially added only to address the 
+inbound ATU constraints. This is also added as comment in [1]. The PCI 
+address restrictions (only fixed alignment constraint) were handled by 
+the host side driver and depends on the connected endpoint device 
+(atleast it was like that for pci_endpoint_test.c [2]).
+So pci-epf-test.c used the 'align' in pci_epc_features only as part of 
+pci_epf_alloc_space().
+
+Though I have abused 'align' of pci_epc_features in pci-epf-ntb.c using 
+it out of pci_epf_alloc_space(), I think we should keep the 'align' of 
+pci_epc_features only within pci_epf_alloc_space() and controllers with 
+any PCI address restrictions to implement ->map_align(). This could as 
+well be done in a phased manner to let controllers implement 
+->map_align() and then remove using  pci_epc_features in 
+pci_epc_map_align(). Let me know what you think?
+
+Thanks,
+Kishon
+
+[1] -> 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/pci-epc.h?h=v6.9-rc2#n187
+
+[2] -> 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/misc/pci_endpoint_test.c?h=v6.9-rc2#n127
+> +
+> +	mask = features->align - 1;
+> +	map->map_pci_addr = map->pci_addr & ~mask;
+> +	map->map_ofst = map->pci_addr & mask;
+> +	map->map_size = ALIGN(map->map_ofst + map->pci_size, features->align);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(pci_epc_map_align);
+> +
+>   /**
+>    * pci_epc_map_addr() - map CPU address to PCI address
+>    * @epc: the EPC device on which address is allocated
+> diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+> index cc2f70d061c8..8cfb4aaf2628 100644
+> --- a/include/linux/pci-epc.h
+> +++ b/include/linux/pci-epc.h
+> @@ -32,11 +32,40 @@ pci_epc_interface_string(enum pci_epc_interface_type type)
+>   	}
+>   }
+>   
+> +/**
+> + * struct pci_epc_map - information about EPC memory for mapping a RC PCI
+> + *                      address range
+> + * @pci_addr: start address of the RC PCI address range to map
+> + * @pci_size: size of the RC PCI address range to map
+> + * @map_pci_addr: RC PCI address used as the first address mapped
+> + * @map_size: size of the controller memory needed for the mapping
+> + * @map_ofst: offset into the controller memory needed for the mapping
+> + * @phys_base: base physical address of the allocated EPC memory
+> + * @phys_addr: physical address at which @pci_addr is mapped
+> + * @virt_base: base virtual address of the allocated EPC memory
+> + * @virt_addr: virtual address at which @pci_addr is mapped
+> + */
+> +struct pci_epc_map {
+> +	phys_addr_t	pci_addr;
+> +	size_t		pci_size;
+> +
+> +	phys_addr_t	map_pci_addr;
+> +	size_t		map_size;
+> +	phys_addr_t	map_ofst;
+> +
+> +	phys_addr_t	phys_base;
+> +	phys_addr_t	phys_addr;
+> +	void __iomem	*virt_base;
+> +	void __iomem	*virt_addr;
+> +};
+> +
+>   /**
+>    * struct pci_epc_ops - set of function pointers for performing EPC operations
+>    * @write_header: ops to populate configuration space header
+>    * @set_bar: ops to configure the BAR
+>    * @clear_bar: ops to reset the BAR
+> + * @map_align: operation to get the size and offset into a controller memory
+> + *             window needed to map an RC PCI address region
+>    * @map_addr: ops to map CPU address to PCI address
+>    * @unmap_addr: ops to unmap CPU address and PCI address
+>    * @set_msi: ops to set the requested number of MSI interrupts in the MSI
+> @@ -61,6 +90,8 @@ struct pci_epc_ops {
+>   			   struct pci_epf_bar *epf_bar);
+>   	void	(*clear_bar)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   			     struct pci_epf_bar *epf_bar);
+> +	int	(*map_align)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+> +			    struct pci_epc_map *map);
+>   	int	(*map_addr)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   			    phys_addr_t addr, u64 pci_addr, size_t size);
+>   	void	(*unmap_addr)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+> @@ -234,6 +265,8 @@ int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   		    struct pci_epf_bar *epf_bar);
+>   void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   		       struct pci_epf_bar *epf_bar);
+> +int pci_epc_map_align(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+> +		      u64 pci_addr, size_t size, struct pci_epc_map *map);
+>   int pci_epc_map_addr(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>   		     phys_addr_t phys_addr,
+>   		     u64 pci_addr, size_t size);
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
