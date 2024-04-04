@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F87ACD1284
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 08:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6806ECD1292
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 08:50:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0mBCKeAT8lzp18RZeO2M/Q+kMxy4RTBqOHtpW/CZ9Js=; b=xD34kP1jqqLkRp
-	ypOL+03b68IkIdUHqIV2gfjZgUoMOtew/xYerpv5ZQmD8ur2IiUh/hmtU0yBVQ/qleVmasqaDVLID
-	xfWMa8DvFu2J9ggHBO4cPzkJx0WNjzWQgxuKwe2uCf2HrGAdJIqkWOVwfDWRANcwOb+LXFtgpOODE
-	pNOigOQgqlf9BcCxJh/j2Fr+TmYNf4yOQZ9MTdAvrnwV5MMJbd7mTptGyCNXE8s6ojcUNh254pyMQ
-	Q2JqhxVw+Zi2h+K4e/oL0EbnI+x6fAg8e6/upVEz/F2eZVNiOirbb69ryHVA6FE5QmbZzLRfVmm0G
-	jDQSPy2ja1YhulseM4ew==;
+	List-Owner; bh=bPr4NlvyLU1ph345+TVWYZEhYn3oA+66PPV0HYyBMd4=; b=BbNxYK9/gESkQM
+	FQWkIe/J7XEHO1q8JTlOisimGIaL+a5A9lbSoMsW1cpj0w5Gf/VbG3P7eDhbqgkxOICjPUh4jzHv4
+	ziJBm4Exelx65BlIYv+TFhradqeO4izmEbUTsPDO2OvGTn7pzF/m+qkwHASocq+AapYOc8xf7wpcE
+	5yOz5vQoaQO5vZPXF0y7CtK1J5pURZn75jWsUU1SQL54NH3b0ceTQsuOGVCx8OYx6ZWOB+BUKU/0v
+	T0T2pCmv3L2G9KzsT5NGBV8KKv2xIsdNpqKinUjUUt2ECrgJP/I4b0wqNSu/mB49HvOjHnZj3X6jj
+	XwCBiN34rUrjxSRKj5sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIl8-00000001uG6-3W1q;
-	Thu, 04 Apr 2024 08:47:46 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1rsInH-00000001ukx-1bpD;
+	Thu, 04 Apr 2024 08:49:59 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsIl4-00000001uEH-2vcz
+	id 1rsInE-00000001ukF-0RId
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Apr 2024 08:47:45 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a44ad785a44so86246566b.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Apr 2024 01:47:41 -0700 (PDT)
+	Thu, 04 Apr 2024 08:49:57 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-56e0f359240so886311a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Apr 2024 01:49:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712220460; x=1712825260; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1712220594; x=1712825394; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=YrzVYVP8q/U3ZosOBymFI/cFRWUhncJf+rR2Gav5/xQ=;
-        b=Zt6A8yoIW+CBGJfayy3RcjUlxjzHQlXWWnsh2kgs5h1hYJQJsIx+LH/Fu+GbyS76p2
-         wkTyjsYACQEA9MUfKkLNvKV1xc32FD4piP4dYHJL0XSfqBdGftYjBaLpyWrLMlpIgwlw
-         jTZ25teMGrU468WYFboFWDYvOhmyQ0Tj5kjzh5TIRVKmmzEgcWjVhSx7nCSbNqf+h3lY
-         TOBJVIVyL0QUVwewqUrEM93JP6nrr09NX/n6PK7piqiukixrwr3hyEA8M/+ANEZAeLnd
-         1OVP5ULD9L5iKmADWFyE6PS+R9FAZ91DKkPzMAKL6VHL8VE+pF++uszjXwaQ3Gu4/f2t
-         wtAw==
+        bh=AS9fYR9zGwUoTL7HF1cQrTKYZ55L5s5/uAAu0jS8KbY=;
+        b=ViM55VdsOGjm9FfrrUa2YOnjUr1dYs9xReTqfsFLwfrxG0j7l6LMXpwQ7/VPKdXWWK
+         omjnhM+SlD7Krq8UyDWHbRQVt7xlDD5AEDHRsi3xi0qiUBXOlpQqH2lIxh50x4oHeHSv
+         Awk0Haw8VGh7pSwgB7ceZkSChs3dOZmnsb340S6yEtTl7wk3yJBbYspm4lyP7L5TH8Lb
+         zzR4HANVE3PVomfm/WEASP7ZnDPY9+KHd7IYSq8T0R4qzbcngC9vsHAuEy8If7eIo/uz
+         dpmaMtB7SmyjEE12QLTJSdLWBBFoIjHCy1AfyJ3U+gj+EQ9A+qPZ08pxjFszLrGHhNha
+         0uMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712220460; x=1712825260;
+        d=1e100.net; s=20230601; t=1712220594; x=1712825394;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YrzVYVP8q/U3ZosOBymFI/cFRWUhncJf+rR2Gav5/xQ=;
-        b=QQM4bsx/R6UdIHu/7pVyf9L1HnMS5BK5rikxyX3I0aYpL/keUN5V7F4CPFqtiw7Y6r
-         xSN6y8IeFxBUpndlWl2AZrosL13gziWtPSh3G1hbavAqu7izALWkwAFpNLM/P0Lfq+iW
-         QnjEg2WJhwApU+f52XAbmKT3lq7xFOFX62My8CsW5dpXgHaIncjnsoRdaK+v8xD9mgUc
-         CuZGhFUA0DWwEikVDTrG3Jwgi5dZa0yNI0Mea+SfWTlacrgpAFfJwbvDOIMtYIsC9xR4
-         y6FePXEfgIMcWaLmDk0xowQ/dJs/faTJb/1f39yNhvg3hJNVWBAW41FfQTpgBXtU3566
-         nnPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWr0FkKuxMh3rMVJ50Yh2Yq83p/5Sj+34WDrZkSNneXJyMOV7BZ3vCPijm4xXos3vU0mpPm4Rvhu0QXGL+M5oRCOV+0sRwH46YT41GO/aG0tKyW
-X-Gm-Message-State: AOJu0YxBljvrvoTILqkWhrAq78ptSdJ3SWjTkDszXpuETg42JG0HD3t7
-	T4HUlf1XcwijJR3btw4sXQOsAOH5khzg49mEiQrH99xhIEqwuZe/njqd7eGn8xg=
-X-Google-Smtp-Source: AGHT+IGp7fdVTn/hyG/IBdw5CngK/Sr7bNYz1hC80z29CsR8dJetLg2tifWoZau3sKzkj0pWeYGP/A==
-X-Received: by 2002:a17:906:7947:b0:a47:3b6a:a29b with SMTP id l7-20020a170906794700b00a473b6aa29bmr1402476ejo.13.1712220460237;
-        Thu, 04 Apr 2024 01:47:40 -0700 (PDT)
+        bh=AS9fYR9zGwUoTL7HF1cQrTKYZ55L5s5/uAAu0jS8KbY=;
+        b=Joa4+7pE+Rc7rEhElKbUEySo/OONWyRRHsLDMAxSQlxWJOYxxnBqpsz1QHRkLOuQ99
+         /r7gzue4jgq7/ufjQYfW9gToAzhfX6PUPAxNNBnIoP126mZEKuovi/S8ljS/9rJUBRoq
+         E4nuQtEk7WCDY61Pcc42LEUdgci8IVRz/WRwq80c0s8ruQ+uLqgHULD3VBOI63h1TEO/
+         64mci3/zSCYRxbk0csfHUZriOLfrWOJGiQlZekwg1yCmR0FD7jBnruqJr1/K8NHrwHZY
+         xRouQCZA8k29onC99nt3f1cHaDIzvBUJpmMWQjAQ6vpJbRJbjTOIQaB58SWbCPYSwT5d
+         4iUA==
+X-Forwarded-Encrypted: i=1; AJvYcCXj0qD3WwzxVyexCP3vwum1OdjdI2O062+L0/pvrZXa3tN8/4SiOyAVw5cFvZPWu+pYTa0ADn01s+e/MEcwFPA4x3SItET9j6SntVF20SnTTg8q
+X-Gm-Message-State: AOJu0YxT33fkLRmIJ6bAQ1hqflSpQ/vDyoj2npPBVyuBvHWi35gof0yd
+	kqp8x2mBp8Tpx8PotvDmCjIe6CWDP8CX40L2TlpFtfBds+o+G2X4q8DfaLY6XvPcIycSHrZ0cNv
+	4
+X-Google-Smtp-Source: AGHT+IE0w7r90llaKzKBlkqLljImjMknml3WfcjzFyt+g/JhEOvEQF0sCUyI7jAYIKqD1ORuYTMriw==
+X-Received: by 2002:a17:907:9693:b0:a4e:6622:8797 with SMTP id hd19-20020a170907969300b00a4e66228797mr1394954ejc.68.1712220594434;
+        Thu, 04 Apr 2024 01:49:54 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id b22-20020a170906d11600b00a46f95f5849sm8755487ejz.106.2024.04.04.01.47.38
+        by smtp.gmail.com with ESMTPSA id l9-20020a1709060cc900b00a4e24d259edsm8414223ejh.167.2024.04.04.01.49.52
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 Apr 2024 01:47:39 -0700 (PDT)
-Message-ID: <e0358933-4aa1-4e40-9bb9-19b4785e8407@linaro.org>
-Date: Thu, 4 Apr 2024 10:47:38 +0200
+        Thu, 04 Apr 2024 01:49:53 -0700 (PDT)
+Message-ID: <e215fa4b-e777-454e-9b04-e704285050af@linaro.org>
+Date: Thu, 4 Apr 2024 10:49:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Protonic MECSBC board
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add Protonic MECSBC device-tree
 To: Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -76,7 +77,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  David Jander <david@protonic.nl>
 References: <20240404-protonic-mecsbc-v1-0-ad5b42ade6c6@pengutronix.de>
- <20240404-protonic-mecsbc-v1-1-ad5b42ade6c6@pengutronix.de>
+ <20240404-protonic-mecsbc-v1-2-ad5b42ade6c6@pengutronix.de>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -123,11 +124,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240404-protonic-mecsbc-v1-1-ad5b42ade6c6@pengutronix.de>
+In-Reply-To: <20240404-protonic-mecsbc-v1-2-ad5b42ade6c6@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_014742_851070_A844377A 
-X-CRM114-Status: UNSURE (   7.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240404_014956_274919_83351EEA 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,14 +145,132 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 04/04/2024 10:34, Sascha Hauer wrote:
+> From: David Jander <david@protonic.nl>
+> 
 > MECSBC is a single board computer for blood analysis machines from
 > RR-Mechatronics, designed and manufactured by Protonic Holland, based on
 > the Rockchip RK3568 SoC.
 > 
+> Signed-off-by: David Jander <david@protonic.nl>
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+...
+
+> +	vdd_gpu: regulator-vdd-gpu {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm1 0 5000 PWM_POLARITY_INVERTED>;
+> +		regulator-name = "vdd_gpu";
+> +		regulator-min-microvolt = <915000>;
+> +		regulator-max-microvolt = <1000000>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-settling-time-up-us = <250>;
+> +		pwm-dutycycle-range = <0 100>; /* dutycycle inverted 0% => 0.915V */
+> +	};
+> +
+> +	vdd_npu: regulator-vdd-npu {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm2 0 5000 PWM_POLARITY_INVERTED>;
+> +		regulator-name = "vdd_npu";
+> +		regulator-min-microvolt = <915000>;
+> +		regulator-max-microvolt = <1000000>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-settling-time-up-us = <250>;
+> +		pwm-dutycycle-range = <0 100>; /* dutycycle inverted 0% => 0.915V */
+> +	};
+> +
+> +	p3v3: p3v3-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "p3v3";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +	};
+> +
+> +	p1v8: p1v8-regulator {
+
+Please keep consistent naming - your other regulators are
+"regulator-foo", not "foo-regulator". The "regulator-foo" is preferred
+usually, because it groups devices nicely.
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "p1v8";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +	};
+
+
+...
+
+> +&i2c3 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c3m0_xfer>;
+> +	status = "okay";
+> +
+> +	tas2562: tas2562@4c {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+e.g. audio-codec, speaker, amplifier
+
+> +		compatible = "ti,tas2562";
+> +		reg = <0x4c>;
+> +		#sound-dai-cells = <0>;
+> +		shutdown-gpios = <&gpio1 RK_PD4 GPIO_ACTIVE_HIGH>;
+> +		interrupt-parent = <&gpio1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pinctrl_tas2562>;
+> +		interrupts = <RK_PD1 IRQ_TYPE_LEVEL_LOW>;
+> +		ti,imon-slot-no = <0>;
+> +	};
+> +};
+> +
+> +&i2c5 {
+> +	status = "okay";
+> +
+> +	tmp1075n@48 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+
+> +		compatible = "ti,tmp1075";
+> +		reg = <0x48>;
+> +	};
+> +
+> +	pcf8563: rtc@51 {
+> +		compatible = "nxp,pcf85363";
+> +		reg = <0x51>;
+> +		#clock-cells = <0>;
+> +		clock-output-names = "rtcic_32kout";
+> +	};
+> +};
+> +
+
+...
+
+> +&pcie3x2 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie30x2m1_pins>;
+> +	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
+> +	vpcie3v3-supply = <&p3v3>;
+> +	status = "okay";
+> +};
+> +
+> +&pinctrl {
+> +	ethernet {
+> +		eth_phy1_rst: eth_phy1_rst {
+
+No underscores in node names.
+
+
 
 Best regards,
 Krzysztof
