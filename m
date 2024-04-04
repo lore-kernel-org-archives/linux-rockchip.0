@@ -4,87 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA37BCD1292
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 13:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1ED4CD1284
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 13:52:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tVYyywcX4ZAv0tYDVQXoWv+AVMy8CE5t2qqYV25KRK0=; b=dNbBBN5WDEY7Tg
-	tFq7AsxU8hGmSg/unF8PCWxUZmwbY8WZYBBPg6Me7LjRD3zG8V7gCUUO/mKft7tFyzYyM2sZNN/tM
-	3EvLNjOI0QiWkzSvz3clpTbF/5+G8KOEQGz8CcG+n+xQq/cbLCFIlz8cY+lG5Yfni1gRzQkskCFnX
-	U9JVZv1heuKM3oqP9ZFszzz75Cgyb6os/6x8PP9TTdL49peLlH0gu8xNiC02PJnldnbJmpMMNuZeZ
-	/Nrti0Qou9esfqiyZsGD05SDpOOogOHa9B/NA8OE80CU03KZThDAaHfIZKgQCehRcKmdrsHXLf81H
-	/qzJ2pkFoMud7NcvGB7g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9qR40ZlpO+zSVQtUXhJK0FWjjIhwMpBk5FYk6znYNWk=; b=vvlJJ4fnOSF+QZ
+	Sw2tMqS2P+iJj4fT1w6RrZm5JF6aw2t5YPDVkjIOEU1GVoBOBOAFM8e7bFJ1SJdwveBzyiTEyVNuu
+	Y24/qEhT8mzY8OjRxaI30/JD+LeTbIpA185PqnvbMdYLke3K0LwmcskaF//9Oib0dyOPArQ7+Qd7V
+	SWcTwwUQSgrFJUnx+kJLGvOqOD3IEYbwbFo71k6zlpDyNhyIWf1P/FkMH7ONE29oFcQ/2+AjZqb4T
+	D/UsWqPyoFVgY7EcXEFCg+Fj0R3GAf2HLTi4MBwF6KtrfMVIG4sGbQw0QszO6+noNY51TOtCeE0G2
+	TPU5iWwMAdnunbeSN1pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsNTf-00000002t8O-45p4;
-	Thu, 04 Apr 2024 13:50:04 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1rsNVZ-00000002u4k-44mF;
+	Thu, 04 Apr 2024 13:52:01 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsMPA-00000002gSF-2gGl;
-	Thu, 04 Apr 2024 12:41:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=tHDQDmJitbb/N0kPctu5DXR/JQJ0j5Tz7GRPxiVT2hY=; b=rZBM6otyMgWIFTin7L+Qffgx52
-	CG7HOHsIN9t7n1wKWjOFLydMY5HI84fP3AOMSjEC4W3GSmlFNlpwckPTgzp7WbKleXj+XAHuNSjhS
-	lG6g9LE6p+EwmU7XoyADT5gQMP/An0MvVT5V1+2md4c0K1W8icUJ9ci1FhU0QLTtffXy7FH488RaO
-	2PGezmfjxjdOcQvN805B2GQH8FDwiC8g1bCKHA9NVYo76JROlQ9zPqymuh3zaenGhxPVy5aEaVHBZ
-	2InYLukY+UzLmGbOgGRSXkJ+v/8XuZHFqjAxI0UJ1naR88SbdfwhUIoD4L8++OIUvGqXXa+/CioqL
-	ESA2Y43A==;
-Received: from sin.source.kernel.org ([145.40.73.55])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsMP5-000000053Lj-0bbC;
-	Thu, 04 Apr 2024 12:41:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id AD8B1CE2A56;
-	Thu,  4 Apr 2024 12:41:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4576C433C7;
-	Thu,  4 Apr 2024 12:41:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712234468;
-	bh=1+ARrgqOwE2kiq3eGjR0xYk+TKFwqS1s+JPGIlCRzrg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=M1wILHmzWdiOAp7d8xIOgHHXhrz/7TiyaIV1N2+o2verXTbHYiqK0wiSsSsod5n86
-	 YbzkiBrkwthA4pFginyMapp29V66ueImtirbBSyRioo09xy5hhd7gYbfsy25QqkVSt
-	 uJODYi4DD/IJ1X0yu7ZUKpcc8qPAIjnyRgJxkD9LmBecKcvVN1Hnbao5N096v1ikp5
-	 llsQNqn9J+qKXXmzj+55bcTNNXm6Kg9wv5/mBPX/7bEy9vwng9+/gxQLNZzKJLUyFE
-	 0uGjsV5Ci0rgCkwpXuFYzqAgepspQCK/1lkFCHdbZvU7BSUcJD8CC2cTSM6XuF5vI6
-	 9RNZ4CHYRj8lA==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jani Nikula <jani.nikula@intel.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] drm: fix DRM_DISPLAY_DP_HELPER dependencies
-Date: Thu,  4 Apr 2024 14:40:51 +0200
-Message-Id: <20240404124101.2988099-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	id 1rsNVD-00000002tyi-2ix7
+	for linux-rockchip@lists.infradead.org;
+	Thu, 04 Apr 2024 13:52:00 +0000
+Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-4317fbb669dso4051901cf.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Apr 2024 06:51:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1712238697; x=1712843497; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=GEhrf+Xnwdm4P0BoHyd6IIElLQSsz5Bym9Fr83GNG8o=;
+        b=KxhA9xvaFFqFUc4ldQfsTN8b5+9MF5UwSU1n6RLONWiRgj8tk+8vtHZTKSaMQqizz3
+         Y7lszYz7hbMXKBA4ynSu+syZlXWPRWQVG25C5Ge6GzNH/IKa6PgoNBMcP7aeHiNbfXsj
+         lz23YyUFyQp4U/VhrnbipGhVSydLx9sjQGNrfvCLDALa5TiGyF8mcRIBxNHIyYVZoCWa
+         UsaCzV/BM8QlgRoT77ZCKm1562+nFClKr98BRqbAqNIg/3p8lKXo3Ks0WNzZzTrkVhdO
+         nk/ZxoYAaagOvM92teDztkko1jbJxEU5z/awRZCFvoJoDHRUOqNToQVvvojDKEilCSO0
+         JVAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712238697; x=1712843497;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GEhrf+Xnwdm4P0BoHyd6IIElLQSsz5Bym9Fr83GNG8o=;
+        b=WdlGvti48ABqfireqeIt2mu6xvdHFI2XqudYrzL1VkArB/+BV5Ze6fuIp+/ExRqu6q
+         RnHWACSyiKba8L2YjmYxA9EMVseItc3/ciaau4ZJSEJFOMzAUPOChErCXLCujUEmoSQz
+         sNrWZ6FtfX7TsGAbPpHB3Bf8CKoaBvZGvdN27ELI7FGpaSoF4SU2JbBpXRkqrJOwLLkj
+         FoPX2m8Ky/kFqnYIZCW+81+3+QtNeh4a9A+ZDOvAvC5DcVYKsh/dSKZfoERU0a+CPipY
+         olM4t12krqd2mITPeAJhw0Cc45uomkGpD3PPTMQHIB+wXmFaq9p4Xkmg4j+71gCiX2G3
+         1TpA==
+X-Forwarded-Encrypted: i=1; AJvYcCVvHpdOC5e2IdxXBvuJa1wXP1i6MdGqn4IOk1x+7zdHmR94bYX9t2drHAabHxTahOBmdfg20vZibhvpbL7wWz7rTLDblxGJTUXIGHhZx5shLMiE
+X-Gm-Message-State: AOJu0YztXX6eahF6tORW8cU4Re2tC68ggXkBvJjuWf5tOdE3eFYkW2zV
+	FEAKOPSbgOJa+oQqdhFILt6HCxaCF4Hd38z+hlGp9stn9iLrdhxEND9YHRcGcsWA1yRTqabZPOn
+	JS9tWb1bE5eLtrvgQ/gYPnef26oyN+5iT2hrMgw==
+X-Google-Smtp-Source: AGHT+IG34VfsrO/bFBQm1+tAdMAMjkEMbTIL7Igt83TuV9+7PUf7aasZynC6bg9Q2hezj4QPdzlhPGGLCOEcmSFudGM=
+X-Received: by 2002:a05:622a:20d:b0:431:8135:6fa9 with SMTP id
+ b13-20020a05622a020d00b0043181356fa9mr2490307qtx.61.1712238696692; Thu, 04
+ Apr 2024 06:51:36 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240222173942.1481394-1-pasha.tatashin@soleen.com> <20240404005803.GA102637@hyd1403.caveonetworks.com>
+In-Reply-To: <20240404005803.GA102637@hyd1403.caveonetworks.com>
+From: Pasha Tatashin <pasha.tatashin@soleen.com>
+Date: Thu, 4 Apr 2024 09:50:59 -0400
+Message-ID: <CA+CK2bAiM_eC6k2EVL93uuOwB+hhV1WkDDK0YROo9-wAh=ju-w@mail.gmail.com>
+Subject: Re: [PATCH v5 00/11] IOMMU memory observability
+To: Linu Cherian <lcherian@marvell.com>
+Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
+	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
+	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
+	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
+	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
+	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
+	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
+	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
+	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
+	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
+	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com, 
+	bagasdotme@gmail.com, mkoutny@suse.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_134116_141518_FE2E29B3 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20240404_065140_084464_56A20E21 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,66 +103,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+> > Description
+> > ----------------------------------------------------------------------
+> > IOMMU subsystem may contain state that is in gigabytes. Majority of that
+> > state is iommu page tables. Yet, there is currently, no way to observe
+> > how much memory is actually used by the iommu subsystem.
+> >
+> > This patch series solves this problem by adding both observability to
+> > all pages that are allocated by IOMMU, and also accountability, so
+> > admins can limit the amount if via cgroups.
+> >
+> > The system-wide observability is using /proc/meminfo:
+> > SecPageTables:    438176 kB
+> >
+> > Contains IOMMU and KVM memory.
+>
+> Can you please clarify what does KVM memory refers to here ?
+> Does it mean the VFIO map / virtio-iommu invoked ones for a guest VM?
 
-Both the exynos and rockchip drivers ran into link failures after
-a Kconfig cleanup:
+This means that nested page tables that are managed by KVM, and device
+page tables that are managed by IOMMU are all accounted in
+SecPageTables (secondary page tables). The decision to account them
+both in one field of meminfo was made at LPC'23.
 
-aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_resume':
-exynos_dp.c:(.text+0xc0): undefined reference to `analogix_dp_resume'
-aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_suspend':
-exynos_dp.c:(.text+0xf4): undefined reference to `analogix_dp_suspend'
-
-x86_64-linux-ld: drivers/gpu/drm/rockchip/cdn-dp-core.o: in function `cdn_dp_connector_mode_valid':
-cdn-dp-core.c:(.text+0x13a): undefined reference to `drm_dp_bw_code_to_link_rate'
-x86_64-linux-ld: cdn-dp-core.c:(.text+0x148): undefined reference to `drm_dp_bw_code_to_link_rate'
-x86_64-linux-ld: drivers/gpu/drm/rockchip/cdn-dp-core.o: in function `cdn_dp_check_link_status':
-cdn-dp-core.c:(.text+0x1396): undefined reference to `drm_dp_channel_eq_ok'
-
-In both cases, the problem is that ROCKCHIP_CDN_DP and DRM_EXYNOS_DP
-are 'bool' symbols that depend on the the 'tristate' DRM_DISPLAY_HELPER
-symbol, but end up not working when the SoC specific part is built-in
-but the helper is in a loadable module.
-
-Use the same trick that DRM_ROCKCHIP already uses for the EXTCON
-dependency and disallow DP support when it would not work.
-
-Fixes: 0323287de87d ("drm: Switch DRM_DISPLAY_DP_HELPER to depends on")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/gpu/drm/exynos/Kconfig   | 2 +-
- drivers/gpu/drm/rockchip/Kconfig | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/exynos/Kconfig b/drivers/gpu/drm/exynos/Kconfig
-index 6a26a0b8eff2..58cd77220741 100644
---- a/drivers/gpu/drm/exynos/Kconfig
-+++ b/drivers/gpu/drm/exynos/Kconfig
-@@ -68,7 +68,7 @@ config DRM_EXYNOS_DP
- 	bool "Exynos specific extensions for Analogix DP driver"
- 	depends on DRM_EXYNOS_FIMD || DRM_EXYNOS7_DECON
- 	depends on DRM_DISPLAY_DP_HELPER
--	depends on DRM_DISPLAY_HELPER
-+	depends on DRM_DISPLAY_HELPER=y || (DRM_DISPLAY_HELPER=m && DRM_EXYNOS=m)
- 	select DRM_ANALOGIX_DP
- 	default DRM_EXYNOS
- 	select DRM_PANEL
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 4b49a14758fe..4b4ad75032fd 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -46,7 +46,7 @@ config ROCKCHIP_ANALOGIX_DP
- config ROCKCHIP_CDN_DP
- 	bool "Rockchip cdn DP"
- 	depends on DRM_DISPLAY_DP_HELPER
--	depends on DRM_DISPLAY_HELPER
-+	depends on DRM_DISPLAY_HELPER=y || (DRM_DISPLAY_HELPER=m && DRM_ROCKCHIP=m)
- 	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
- 	help
- 	  This selects support for Rockchip SoC specific extensions
--- 
-2.39.2
-
+Pasha
 
 _______________________________________________
 Linux-rockchip mailing list
