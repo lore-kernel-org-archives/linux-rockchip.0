@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B4DCD1284
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 13:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5E83CD1299
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 14:23:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+argAsh932WueCWSgcXYQ0ci971SWnFwMl9+k0CCHzw=; b=d6Yn2M+EjbSAFk
-	J9ceI97JIMws9CfSq81Vp+dom//lfn4ViLG7/PFOmYrw+6+SRSkOZWos0U6JdYjUg4KKy/UI0EiCV
-	nLaRPI2a/ylUQMq+rbWbhcXcRNpOHv/xIi21dRjiiOYDUj/8dZhY8sXkpl0IxpHIv+e+FeUC3Wftv
-	xlSOf7+P0n5Yd/3NEr2KCgzLl8aqpalFFuEyqoo+aErUZ1OJwXQuSH3saoDOCdiHuRxXnYL23KVho
-	edr71a/RHgWlVlqgQp54Kh+izTJP/u3C59/bSmUa3T7cYNSMv9X5diQ26Pj8wUkbrk/B83mSIxksA
-	4eHssNKTIk1FwGuJatzw==;
+	List-Owner; bh=H7irRCkQHnxS6Yva3ICxa3m8jN4jVRJ/CHFCqCj8vCs=; b=LORXQ11FpGTv3B
+	vqBPwUnGj2Wd4kl3RE+q2Ai+GxFJxCkE3SHDHJo8bmrfStkItUoggUIEV2jK+Qgc/YhuAD+iLBbGD
+	iQHQZXFJz3FAR4v2LbtOd4fE8cbX9FCcbQB9w1QZGAlmWwupYj46LryT9KvUz8AQfCXP3QVcvqTeM
+	Lq/jcpwK0S8m0uwDZTce7vre00lir4LAz/e8VJ6r7plIsrm13k2Mrg2VwqTW+MVg/p8HXmeJTRfnL
+	oWYvDFf5fpdLKvZOfG4/NezEkd/vwIedQ5OeAar/ijvLxi6OVQXEgcmUyFEN337hNSULN8HrYP7PA
+	4phBARElnmcIn0gLv1ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsNaV-00000002v7p-1z2D;
-	Thu, 04 Apr 2024 13:57:07 +0000
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+	id 1rsNzv-000000030t8-0nN0;
+	Thu, 04 Apr 2024 14:23:23 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsNaR-00000002v3D-1ruK
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Apr 2024 13:57:05 +0000
-Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-430ad286ab8so5173041cf.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Apr 2024 06:56:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=soleen-com.20230601.gappssmtp.com; s=20230601; t=1712239013; x=1712843813; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=msc9tQgMq343nFV4/DBdPcJS7hGm3uD+5fv8GwkMOjA=;
-        b=eq6olRuuIyBw9GuuGQSyNGLNZOIfI3VSyUPtyzRVIvp3DpaaU8lqwt00HY8+YJxvb7
-         eGozlurSr8xxmr1yolXqs43tUcqbLAQMkW4E0gK8zF3vfgmc//o9KurRrKEOgaFzi8bT
-         Bu0GXgYf0hUkpr9LRx7FXoIPntvmjGC9wiAVU06boreS9k/8kFq6fVIyisl7HJULZyZV
-         KqzH4zD9zn1gwN9l1AKpBh/FAqcX0BMranwfF/3s5jOJqnp6perjUn4i1/3j1TPuUtII
-         V4QAaDZH8zT7fyQSyHgxGheoBx490OBjTpn6efYKFTi5Uo8c6FaA4fs/mlI1u2SJlOvm
-         CZmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712239013; x=1712843813;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=msc9tQgMq343nFV4/DBdPcJS7hGm3uD+5fv8GwkMOjA=;
-        b=CCnT5NooO3vMyacMHtezNfO+Qp5Ucfh2JegGHPZ2n1K+tu1yTtTRB/Z6svufKGIGHa
-         2hLkxY7bDMq2SYp0P1db1gyy7yrZz6qk621Q0orfi/1YBSQVqf2TcR+x/h99zxp6sdd4
-         1lDw+9jryzf8rpGH8jQL5VKzxIEo4npUpw2Mb1iCneiZyNKMWc/mwBREN2SaVW+kzJRF
-         TnJ1pHfPcG9wLwPaK8VKTG9AFy00NDcNQjldaFFu441CpkawTjowIKpILUJLMFkyjezA
-         1eqNa4EyZXPB+e8YJRPefe8HYjwR9H+v3y79aZ1TOHrxPkLn8fGvdnWX4VzLbi5VHAUv
-         o6GA==
-X-Forwarded-Encrypted: i=1; AJvYcCV74K+IWZsmH4tkpoRbjRhXbtWyHPq7/kWmtK+COT5sZIIj+P1f4ZrC/pVfjEg3+V8P9GmulZuOvulAagid630oVq5tzR2T9V/uZoPSvixfT/Tm
-X-Gm-Message-State: AOJu0YzodQMG3t4Q7R7QVb5sDt4RK4sLzyColfdjVFUrGPJh+t72To8d
-	W6xG+f52RfueU0pCCGmaqPhJjDIAQiXLl2z+itRMOWiOxFpixZ+roGNC83fOHqReGHZR19OQkqS
-	6DZzxjwK+HHl8XvcTTEc10IT6jqNdfDOEJQAEXA==
-X-Google-Smtp-Source: AGHT+IH9S7DU2DIf+z4/lTa3f7DcyJz1Y9kNOGjz2IQr7tohPqSHHhqayAGWHjuk7zhrLKiTZ6wb5Cu4ZzpulPIDrg0=
-X-Received: by 2002:a05:622a:2:b0:431:378d:afa with SMTP id
- x2-20020a05622a000200b00431378d0afamr2733138qtw.34.1712239013126; Thu, 04 Apr
- 2024 06:56:53 -0700 (PDT)
+	id 1rsNzs-000000030rW-1GM0;
+	Thu, 04 Apr 2024 14:23:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E614ACE3152;
+	Thu,  4 Apr 2024 14:23:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A946EC433C7;
+	Thu,  4 Apr 2024 14:23:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712240597;
+	bh=b3EY+mNSXgIdLMY9ITw3WfxFk9HC0dMLqxJZU09hjE8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=DBDBAMHM+iUVP8sdLO6xyOXK5QN4LOaKEBdtm96HhyodtSg4mQFfkEzbHYhFfdhPU
+	 jWu5uizAHYxisLUzLoDFXQSD3omyacqUGqDFvwlwbumzMxwdZPrI6WsijMaWTi5964
+	 AcQypyAXYTaT3fSWw2oNDopr3HQ6uH+bCxXMTQ+fUxVdDfUW83kLQbTC4179qAoqnX
+	 YV5epJlTJ8QvH0uJO7VQOwTb0SJJZURvkKkHeZyAqRh0XMQ2kPFdTfRbrCvOtVE0Qf
+	 pUFwWJO/y5OXAKcM8geNdbOS2KM3EjNZQCiZCk0KEU6I7moGYRAN33r+qS//XcFs35
+	 uders58eF6Fbg==
+From: Maxime Ripard <mripard@kernel.org>
+To: Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzk@kernel.org>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, 
+ Jani Nikula <jani.nikula@intel.com>, Arnd Bergmann <arnd@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Alim Akhtar <alim.akhtar@samsung.com>, 
+ Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20240404124101.2988099-1-arnd@kernel.org>
+References: <20240404124101.2988099-1-arnd@kernel.org>
+Subject: Re: [PATCH] drm: fix DRM_DISPLAY_DP_HELPER dependencies
+Message-Id: <171224059404.143870.12869649896294820835.b4-ty@kernel.org>
+Date: Thu, 04 Apr 2024 16:23:14 +0200
 MIME-Version: 1.0
-References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
- <20240222173942.1481394-2-pasha.tatashin@soleen.com> <20240404121625.GB102637@hyd1403.caveonetworks.com>
-In-Reply-To: <20240404121625.GB102637@hyd1403.caveonetworks.com>
-From: Pasha Tatashin <pasha.tatashin@soleen.com>
-Date: Thu, 4 Apr 2024 09:56:16 -0400
-Message-ID: <CA+CK2bDmya+768tOvF0N-BYq8E+RwBw4xS8vC+MmbU9eoOv_3g@mail.gmail.com>
-Subject: Re: [PATCH v5 01/11] iommu/vt-d: add wrapper functions for page allocations
-To: Linu Cherian <lcherian@marvell.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com, alyssa@rosenzweig.io, 
-	asahi@lists.linux.dev, baolu.lu@linux.intel.com, bhelgaas@google.com, 
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com, 
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de, 
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com, jonathanh@nvidia.com, 
-	joro@8bytes.org, krzysztof.kozlowski@linaro.org, linux-doc@vger.kernel.org, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mm@kvack.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com, marcan@marcan.st, 
-	mhiramat@kernel.org, m.szyprowski@samsung.com, paulmck@kernel.org, 
-	rdunlap@infradead.org, robin.murphy@arm.com, samuel@sholland.org, 
-	suravee.suthikulpanit@amd.com, sven@svenpeter.dev, thierry.reding@gmail.com, 
-	tj@kernel.org, tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org, 
-	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com, 
-	bagasdotme@gmail.com, mkoutny@suse.com
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_065703_679944_425A8943 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20240404_072320_550863_5791F647 
+X-CRM114-Status: UNSURE (   6.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,77 +82,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Few minor nits.
+On Thu, 04 Apr 2024 14:40:51 +0200, Arnd Bergmann wrote:
+> Both the exynos and rockchip drivers ran into link failures after
+> a Kconfig cleanup:
+> 
+> aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_resume':
+> exynos_dp.c:(.text+0xc0): undefined reference to `analogix_dp_resume'
+> aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_suspend':
+> exynos_dp.c:(.text+0xf4): undefined reference to `analogix_dp_suspend'
+> 
+> [...]
 
-Hi Linu,
+Applied to misc/kernel.git (drm-misc-next).
 
-Thank you for taking a look at this patch, my replies below.
+Thanks!
+Maxime
 
-> > +/*
-> > + * All page allocations that should be reported to as "iommu-pagetables" to
-> > + * userspace must use on of the functions below.  This includes allocations of
-> > + * page-tables and other per-iommu_domain configuration structures.
->
-> /s/use on/use one/?
-
-I will correct in the next version (if there is going to be one).
-
-> > + *
-> > + * This is necessary for the proper accounting as IOMMU state can be rather
-> > + * large, i.e. multiple gigabytes in size.
-> > + */
-> > +
-> > +/**
-> > + * __iommu_alloc_pages - allocate a zeroed page of a given order.
-> > + * @gfp: buddy allocator flags
->
-> Shall we keep the comments generic here(avoid reference to allocator
-> algo)  ?
-
-There are no references to allocator algorithm. I specify the zero
-page because this function adds __GFP_ZERO. The order and gfp
-arguments are provided by the caller, therefore, should be mentioned.
-
-> > + * @order: page order
-> > + *
-> > + * returns the head struct page of the allocated page.
-> > + */
-> > +static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
-> > +{
-> > +     struct page *page;
-> > +
-> > +     page = alloc_pages(gfp | __GFP_ZERO, order);
-> > +     if (unlikely(!page))
-> > +             return NULL;
-> > +
-> > +     return page;
-> > +}
-> > +
-> > +/**
-> > + * __iommu_free_pages - free page of a given order
-> > + * @page: head struct page of the page
-> > + * @order: page order
-> > + */
-> > +static inline void __iommu_free_pages(struct page *page, int order)
-> > +{
-> > +     if (!page)
-> > +             return;
-> > +
-> > +     __free_pages(page, order);
-> > +}
-> > +
-> > +/**
-> > + * iommu_alloc_pages_node - allocate a zeroed page of a given order from
-> > + * specific NUMA node.
-> > + * @nid: memory NUMA node id
-> > + * @gfp: buddy allocator flags
->
-> Same here for this one and other references below.
-
-ditto.
-
-Thank you,
-Pasha
 
 _______________________________________________
 Linux-rockchip mailing list
