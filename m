@@ -4,67 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5E83CD1299
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 14:23:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C2FCD1284
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 15:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H7irRCkQHnxS6Yva3ICxa3m8jN4jVRJ/CHFCqCj8vCs=; b=LORXQ11FpGTv3B
-	vqBPwUnGj2Wd4kl3RE+q2Ai+GxFJxCkE3SHDHJo8bmrfStkItUoggUIEV2jK+Qgc/YhuAD+iLBbGD
-	iQHQZXFJz3FAR4v2LbtOd4fE8cbX9FCcbQB9w1QZGAlmWwupYj46LryT9KvUz8AQfCXP3QVcvqTeM
-	Lq/jcpwK0S8m0uwDZTce7vre00lir4LAz/e8VJ6r7plIsrm13k2Mrg2VwqTW+MVg/p8HXmeJTRfnL
-	oWYvDFf5fpdLKvZOfG4/NezEkd/vwIedQ5OeAar/ijvLxi6OVQXEgcmUyFEN337hNSULN8HrYP7PA
-	4phBARElnmcIn0gLv1ww==;
+	List-Owner; bh=rJp/JJyZTGWEZRucSohZ273fP2O6llUHHQOFII2r2JE=; b=NLoBsiv6k3Fiur
+	kzWIu6PGaAekQd80ajAR7uJvjmXG5tzpB2jCfjZ/GnsvQeETF8iH0ebLQsC5yYWW0keGJdOh8SmbN
+	oJfpsFkf5zD7UaMcVofPqF9Rm9mq9ZpqMm1SMlOeGE0aJHdE6KOe4dfDUTOqo6byBGWaO93Jbs4H5
+	ruwueLjYQ4eCDnGa1PhVt6ieRUyqX4xZyJ1wARC80AyyPOR11GlObF1HbvzUe27irXj3Ei/we1/My
+	9NuSTfBbNdYERop0PGj4a+e0rYIlKTNu1Tu0S4/stm38IhX4x5etmjPkNmoxR5Ngoo6poEhgrU84C
+	KfaLNAVtguygsoSapHBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsNzv-000000030t8-0nN0;
-	Thu, 04 Apr 2024 14:23:23 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rsOju-00000003B5i-1iKm;
+	Thu, 04 Apr 2024 15:10:54 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsNzs-000000030rW-1GM0;
-	Thu, 04 Apr 2024 14:23:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E614ACE3152;
-	Thu,  4 Apr 2024 14:23:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A946EC433C7;
-	Thu,  4 Apr 2024 14:23:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712240597;
-	bh=b3EY+mNSXgIdLMY9ITw3WfxFk9HC0dMLqxJZU09hjE8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=DBDBAMHM+iUVP8sdLO6xyOXK5QN4LOaKEBdtm96HhyodtSg4mQFfkEzbHYhFfdhPU
-	 jWu5uizAHYxisLUzLoDFXQSD3omyacqUGqDFvwlwbumzMxwdZPrI6WsijMaWTi5964
-	 AcQypyAXYTaT3fSWw2oNDopr3HQ6uH+bCxXMTQ+fUxVdDfUW83kLQbTC4179qAoqnX
-	 YV5epJlTJ8QvH0uJO7VQOwTb0SJJZURvkKkHeZyAqRh0XMQ2kPFdTfRbrCvOtVE0Qf
-	 pUFwWJO/y5OXAKcM8geNdbOS2KM3EjNZQCiZCk0KEU6I7moGYRAN33r+qS//XcFs35
-	 uders58eF6Fbg==
-From: Maxime Ripard <mripard@kernel.org>
-To: Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, Krzysztof Kozlowski <krzk@kernel.org>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, 
- Jani Nikula <jani.nikula@intel.com>, Arnd Bergmann <arnd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Alim Akhtar <alim.akhtar@samsung.com>, 
- Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-In-Reply-To: <20240404124101.2988099-1-arnd@kernel.org>
-References: <20240404124101.2988099-1-arnd@kernel.org>
-Subject: Re: [PATCH] drm: fix DRM_DISPLAY_DP_HELPER dependencies
-Message-Id: <171224059404.143870.12869649896294820835.b4-ty@kernel.org>
-Date: Thu, 04 Apr 2024 16:23:14 +0200
+	id 1rsOjr-00000003B3w-0yhB;
+	Thu, 04 Apr 2024 15:10:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=s98YOMLip/viIAxMH0MZuJz4Cxd3gdWcic10eltssBY=; b=ILKd5cbzcuFB5csUzEM688wtcZ
+	gM85mlwHCTKiS1EtgUIeftyAozV/j2FYv6T0fDkWvjjMNrtiGCg6Yy0YEPZw9LnCX/LRaLAynjzDU
+	ogZEG/XF4yVRPzx9pTZ0o5AhfYNSpNTAofzdWEyopqvGCOKD1cpfm2eDcYK6fwwBv2F8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rsOjh-00CC5o-Ue; Thu, 04 Apr 2024 17:10:41 +0200
+Date: Thu, 4 Apr 2024 17:10:41 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	David Jander <david@protonic.nl>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add Protonic MECSBC device-tree
+Message-ID: <9d325b4e-031c-4f6c-9788-fa5a68470efa@lunn.ch>
+References: <20240404-protonic-mecsbc-v1-0-ad5b42ade6c6@pengutronix.de>
+ <20240404-protonic-mecsbc-v1-2-ad5b42ade6c6@pengutronix.de>
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
+Content-Disposition: inline
+In-Reply-To: <20240404-protonic-mecsbc-v1-2-ad5b42ade6c6@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_072320_550863_5791F647 
-X-CRM114-Status: UNSURE (   6.24  )
+X-CRM114-CacheID: sfid-20240404_081051_324665_093B8772 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,22 +74,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 04 Apr 2024 14:40:51 +0200, Arnd Bergmann wrote:
-> Both the exynos and rockchip drivers ran into link failures after
-> a Kconfig cleanup:
-> 
-> aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_resume':
-> exynos_dp.c:(.text+0xc0): undefined reference to `analogix_dp_resume'
-> aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_suspend':
-> exynos_dp.c:(.text+0xf4): undefined reference to `analogix_dp_suspend'
-> 
-> [...]
+> +&gmac1 {
+> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
+> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii";
+> +	clock_in_out = "output";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac1m1_miim
+> +		     &gmac1m1_tx_bus2
+> +		     &gmac1m1_rx_bus2
+> +		     &gmac1m1_rgmii_clk
+> +		     &gmac1m1_clkinout
+> +		     &gmac1m1_rgmii_bus>;
+> +	status = "okay";
+> +	tx_delay = <0x30>;
+> +	rx_delay = <0x10>;
+> +};
 
-Applied to misc/kernel.git (drm-misc-next).
+There was a discussion about phy-mode = "rgmii"; and these
+tx/rx_delays last month. Please could you go read that discussion and
+them make use of rgmii-id, and change the delays.
 
-Thanks!
-Maxime
+Also, where did you copy this from? If possible, it would be good to
+fix the example everybody copies into new DT blobs.
 
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
