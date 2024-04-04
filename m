@@ -4,100 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 495F7CD1284
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 12:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA37BCD1292
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Apr 2024 13:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=snb23lBbZn4Zp2jTBBqRrGH/gDb5GZb8Frn9eyqVT+s=; b=uI6tat2jVbWysv
-	DhUWIKGbrlHVQtN+sXAP96tNjFUPcugtCzqMYVze3wGysqixe6/zPai1r7E+TyH1e/WQDY5nCtNtG
-	coLEqtmrVN21odW++ja9Km61E+UYeRkJh8XJ0TTvPrBeUYbVCywBiO0d5riWDWigXyG5EriBg0Ufq
-	8MxjPdQfpQOA48Pd2O/z5+v/y+IlJlQrQ73kXQju19o6rvWKHdswTakg5lRZ+nPC+e+WIgeUZ26Fs
-	fXSS1FHN2FR6iUjhc1fuhde9kAOd+hACT2C6fiZU54SBbso1VrtXLpeSr/vTtdeWxDlrR6uMuW98s
-	EZA3dyMR8FeGAl34UQ0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tVYyywcX4ZAv0tYDVQXoWv+AVMy8CE5t2qqYV25KRK0=; b=dNbBBN5WDEY7Tg
+	tFq7AsxU8hGmSg/unF8PCWxUZmwbY8WZYBBPg6Me7LjRD3zG8V7gCUUO/mKft7tFyzYyM2sZNN/tM
+	3EvLNjOI0QiWkzSvz3clpTbF/5+G8KOEQGz8CcG+n+xQq/cbLCFIlz8cY+lG5Yfni1gRzQkskCFnX
+	U9JVZv1heuKM3oqP9ZFszzz75Cgyb6os/6x8PP9TTdL49peLlH0gu8xNiC02PJnldnbJmpMMNuZeZ
+	/Nrti0Qou9esfqiyZsGD05SDpOOogOHa9B/NA8OE80CU03KZThDAaHfIZKgQCehRcKmdrsHXLf81H
+	/qzJ2pkFoMud7NcvGB7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsM20-00000002Y1i-3fdr;
-	Thu, 04 Apr 2024 12:17:24 +0000
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173])
+	id 1rsNTf-00000002t8O-45p4;
+	Thu, 04 Apr 2024 13:50:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsM1w-00000002XzX-49DV
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Apr 2024 12:17:23 +0000
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
-	by mx0b-0016f401.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 434A6eFr001681;
-	Thu, 4 Apr 2024 05:16:42 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=pfpt0220; bh=WFNH2xqWyxV1VpCkW8vjvZ
-	z0yWgDDXkQw2ZrEetuygg=; b=fxrtnFAZsRo3LBMg9SekQ8XXVsKvxh4ys+Gtxs
-	7IrhPd+UqS5JjF/1Ub6DhFlH0oMyExmad9ElCxqajXghzvYSFib+hjlWLS4OcZXY
-	wSnm3Cs55EEUBqcw2oq2p4vI9Wr9pfETFNUJtVmHsI6621SDNhBPyKSv9U4eefcx
-	7I6zX6CowwxBhZ63KIWQqMFuJ2/Y00YU5RJVHhJPc4cMg2mDpGVyUEbQ2FlNBkTo
-	RcuDqOanfEGSnx8+Fr3IxmZhqvaLtrowxakBZO8mInlYYICsI6B724skjI+Mo8b5
-	n127RaqaMdnC1ryIw0qrbMIAeKpojpD2fs+t23znUNKHbUVA==
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 3x9em6j8b9-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 04 Apr 2024 05:16:41 -0700 (PDT)
-Received: from m0045851.ppops.net (m0045851.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.24/8.17.1.24) with ESMTP id 434CGFI5029994;
-	Thu, 4 Apr 2024 05:16:41 -0700
-Received: from dc6wp-exch02.marvell.com ([4.21.29.225])
-	by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 3x9em6j8b7-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 04 Apr 2024 05:16:41 -0700 (PDT)
-Received: from DC6WP-EXCH02.marvell.com (10.76.176.209) by
- DC6WP-EXCH02.marvell.com (10.76.176.209) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.4; Thu, 4 Apr 2024 05:16:40 -0700
-Received: from maili.marvell.com (10.69.176.80) by DC6WP-EXCH02.marvell.com
- (10.76.176.209) with Microsoft SMTP Server id 15.2.1544.4 via Frontend
- Transport; Thu, 4 Apr 2024 05:16:40 -0700
-Received: from hyd1403.caveonetworks.com (unknown [10.29.37.84])
-	by maili.marvell.com (Postfix) with SMTP id 473A53F7071;
-	Thu,  4 Apr 2024 05:16:26 -0700 (PDT)
-Date: Thu, 4 Apr 2024 17:46:25 +0530
-From: Linu Cherian <lcherian@marvell.com>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-CC: <akpm@linux-foundation.org>, <alim.akhtar@samsung.com>,
-        <alyssa@rosenzweig.io>, <asahi@lists.linux.dev>,
-        <baolu.lu@linux.intel.com>, <bhelgaas@google.com>,
-        <cgroups@vger.kernel.org>, <corbet@lwn.net>, <david@redhat.com>,
-        <dwmw2@infradead.org>, <hannes@cmpxchg.org>, <heiko@sntech.de>,
-        <iommu@lists.linux.dev>, <jernej.skrabec@gmail.com>,
-        <jonathanh@nvidia.com>, <joro@8bytes.org>,
-        <krzysztof.kozlowski@linaro.org>, <linux-doc@vger.kernel.org>,
-        <linux-fsdevel@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-mm@kvack.org>, <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-        <linux-tegra@vger.kernel.org>, <lizefan.x@bytedance.com>,
-        <marcan@marcan.st>, <mhiramat@kernel.org>, <m.szyprowski@samsung.com>,
-        <paulmck@kernel.org>, <rdunlap@infradead.org>, <robin.murphy@arm.com>,
-        <samuel@sholland.org>, <suravee.suthikulpanit@amd.com>,
-        <sven@svenpeter.dev>, <thierry.reding@gmail.com>, <tj@kernel.org>,
-        <tomas.mudrunka@gmail.com>, <vdumpa@nvidia.com>, <wens@csie.org>,
-        <will@kernel.org>, <yu-cheng.yu@intel.com>, <rientjes@google.com>,
-        <bagasdotme@gmail.com>, <mkoutny@suse.com>
-Subject: Re: [PATCH v5 01/11] iommu/vt-d: add wrapper functions for page
- allocations
-Message-ID: <20240404121625.GB102637@hyd1403.caveonetworks.com>
-References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
- <20240222173942.1481394-2-pasha.tatashin@soleen.com>
+	id 1rsMPA-00000002gSF-2gGl;
+	Thu, 04 Apr 2024 12:41:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=tHDQDmJitbb/N0kPctu5DXR/JQJ0j5Tz7GRPxiVT2hY=; b=rZBM6otyMgWIFTin7L+Qffgx52
+	CG7HOHsIN9t7n1wKWjOFLydMY5HI84fP3AOMSjEC4W3GSmlFNlpwckPTgzp7WbKleXj+XAHuNSjhS
+	lG6g9LE6p+EwmU7XoyADT5gQMP/An0MvVT5V1+2md4c0K1W8icUJ9ci1FhU0QLTtffXy7FH488RaO
+	2PGezmfjxjdOcQvN805B2GQH8FDwiC8g1bCKHA9NVYo76JROlQ9zPqymuh3zaenGhxPVy5aEaVHBZ
+	2InYLukY+UzLmGbOgGRSXkJ+v/8XuZHFqjAxI0UJ1naR88SbdfwhUIoD4L8++OIUvGqXXa+/CioqL
+	ESA2Y43A==;
+Received: from sin.source.kernel.org ([145.40.73.55])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rsMP5-000000053Lj-0bbC;
+	Thu, 04 Apr 2024 12:41:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id AD8B1CE2A56;
+	Thu,  4 Apr 2024 12:41:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4576C433C7;
+	Thu,  4 Apr 2024 12:41:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712234468;
+	bh=1+ARrgqOwE2kiq3eGjR0xYk+TKFwqS1s+JPGIlCRzrg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=M1wILHmzWdiOAp7d8xIOgHHXhrz/7TiyaIV1N2+o2verXTbHYiqK0wiSsSsod5n86
+	 YbzkiBrkwthA4pFginyMapp29V66ueImtirbBSyRioo09xy5hhd7gYbfsy25QqkVSt
+	 uJODYi4DD/IJ1X0yu7ZUKpcc8qPAIjnyRgJxkD9LmBecKcvVN1Hnbao5N096v1ikp5
+	 llsQNqn9J+qKXXmzj+55bcTNNXm6Kg9wv5/mBPX/7bEy9vwng9+/gxQLNZzKJLUyFE
+	 0uGjsV5Ci0rgCkwpXuFYzqAgepspQCK/1lkFCHdbZvU7BSUcJD8CC2cTSM6XuF5vI6
+	 9RNZ4CHYRj8lA==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Jani Nikula <jani.nikula@intel.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] drm: fix DRM_DISPLAY_DP_HELPER dependencies
+Date: Thu,  4 Apr 2024 14:40:51 +0200
+Message-Id: <20240404124101.2988099-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240222173942.1481394-2-pasha.tatashin@soleen.com>
-X-Proofpoint-ORIG-GUID: ml5ER6014kXSnT0Ebw1dOx2QJIXx5OyA
-X-Proofpoint-GUID: 9OBRWJvB46jCkAc7cBBSeZFwPQdY4s0e
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-04_08,2024-04-04_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240404_051721_173780_D167F144 
-X-CRM114-Status: GOOD (  27.04  )
+X-CRM114-CacheID: sfid-20240404_134116_141518_FE2E29B3 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,626 +101,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Pasha,
+From: Arnd Bergmann <arnd@arndb.de>
 
-On 2024-02-22 at 23:09:27, Pasha Tatashin (pasha.tatashin@soleen.com) wrote:
-> In order to improve observability and accountability of IOMMU layer, we
-> must account the number of pages that are allocated by functions that
-> are calling directly into buddy allocator.
-> 
-> This is achieved by first wrapping the allocation related functions into a
-> separate inline functions in new file:
-> 
-> drivers/iommu/iommu-pages.h
-> 
-> Convert all page allocation calls under iommu/intel to use these new
-> functions.
-> 
-> Signed-off-by: Pasha Tatashin <pasha.tatashin@soleen.com>
-> Acked-by: David Rientjes <rientjes@google.com>
-> Tested-by: Bagas Sanjaya <bagasdotme@gmail.com>
-> ---
->  drivers/iommu/intel/dmar.c          |  16 +--
->  drivers/iommu/intel/iommu.c         |  47 +++------
->  drivers/iommu/intel/iommu.h         |   2 -
->  drivers/iommu/intel/irq_remapping.c |  16 +--
->  drivers/iommu/intel/pasid.c         |  18 ++--
->  drivers/iommu/intel/svm.c           |  11 +-
->  drivers/iommu/iommu-pages.h         | 154 ++++++++++++++++++++++++++++
->  7 files changed, 201 insertions(+), 63 deletions(-)
->  create mode 100644 drivers/iommu/iommu-pages.h
+Both the exynos and rockchip drivers ran into link failures after
+a Kconfig cleanup:
 
+aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_resume':
+exynos_dp.c:(.text+0xc0): undefined reference to `analogix_dp_resume'
+aarch64-linux-ld: drivers/gpu/drm/exynos/exynos_dp.o: in function `exynos_dp_suspend':
+exynos_dp.c:(.text+0xf4): undefined reference to `analogix_dp_suspend'
 
-Few minor nits.
+x86_64-linux-ld: drivers/gpu/drm/rockchip/cdn-dp-core.o: in function `cdn_dp_connector_mode_valid':
+cdn-dp-core.c:(.text+0x13a): undefined reference to `drm_dp_bw_code_to_link_rate'
+x86_64-linux-ld: cdn-dp-core.c:(.text+0x148): undefined reference to `drm_dp_bw_code_to_link_rate'
+x86_64-linux-ld: drivers/gpu/drm/rockchip/cdn-dp-core.o: in function `cdn_dp_check_link_status':
+cdn-dp-core.c:(.text+0x1396): undefined reference to `drm_dp_channel_eq_ok'
 
-> 
-> diff --git a/drivers/iommu/intel/dmar.c b/drivers/iommu/intel/dmar.c
-> index 23cb80d62a9a..ff6045ae8e97 100644
-> --- a/drivers/iommu/intel/dmar.c
-> +++ b/drivers/iommu/intel/dmar.c
-> @@ -32,6 +32,7 @@
->  
->  #include "iommu.h"
->  #include "../irq_remapping.h"
-> +#include "../iommu-pages.h"
->  #include "perf.h"
->  #include "trace.h"
->  #include "perfmon.h"
-> @@ -1185,7 +1186,7 @@ static void free_iommu(struct intel_iommu *iommu)
->  	}
->  
->  	if (iommu->qi) {
-> -		free_page((unsigned long)iommu->qi->desc);
-> +		iommu_free_page(iommu->qi->desc);
->  		kfree(iommu->qi->desc_status);
->  		kfree(iommu->qi);
->  	}
-> @@ -1731,7 +1732,8 @@ static void __dmar_enable_qi(struct intel_iommu *iommu)
->  int dmar_enable_qi(struct intel_iommu *iommu)
->  {
->  	struct q_inval *qi;
-> -	struct page *desc_page;
-> +	void *desc;
-> +	int order;
->  
->  	if (!ecap_qis(iommu->ecap))
->  		return -ENOENT;
-> @@ -1752,19 +1754,19 @@ int dmar_enable_qi(struct intel_iommu *iommu)
->  	 * Need two pages to accommodate 256 descriptors of 256 bits each
->  	 * if the remapping hardware supports scalable mode translation.
->  	 */
-> -	desc_page = alloc_pages_node(iommu->node, GFP_ATOMIC | __GFP_ZERO,
-> -				     !!ecap_smts(iommu->ecap));
-> -	if (!desc_page) {
-> +	order = ecap_smts(iommu->ecap) ? 1 : 0;
-> +	desc = iommu_alloc_pages_node(iommu->node, GFP_ATOMIC, order);
-> +	if (!desc) {
->  		kfree(qi);
->  		iommu->qi = NULL;
->  		return -ENOMEM;
->  	}
->  
-> -	qi->desc = page_address(desc_page);
-> +	qi->desc = desc;
->  
->  	qi->desc_status = kcalloc(QI_LENGTH, sizeof(int), GFP_ATOMIC);
->  	if (!qi->desc_status) {
-> -		free_page((unsigned long) qi->desc);
-> +		iommu_free_page(qi->desc);
->  		kfree(qi);
->  		iommu->qi = NULL;
->  		return -ENOMEM;
-> diff --git a/drivers/iommu/intel/iommu.c b/drivers/iommu/intel/iommu.c
-> index 6fb5f6fceea1..2c676f46e38c 100644
-> --- a/drivers/iommu/intel/iommu.c
-> +++ b/drivers/iommu/intel/iommu.c
-> @@ -28,6 +28,7 @@
->  #include "../dma-iommu.h"
->  #include "../irq_remapping.h"
->  #include "../iommu-sva.h"
-> +#include "../iommu-pages.h"
->  #include "pasid.h"
->  #include "cap_audit.h"
->  #include "perfmon.h"
-> @@ -224,22 +225,6 @@ static int __init intel_iommu_setup(char *str)
->  }
->  __setup("intel_iommu=", intel_iommu_setup);
->  
-> -void *alloc_pgtable_page(int node, gfp_t gfp)
-> -{
-> -	struct page *page;
-> -	void *vaddr = NULL;
-> -
-> -	page = alloc_pages_node(node, gfp | __GFP_ZERO, 0);
-> -	if (page)
-> -		vaddr = page_address(page);
-> -	return vaddr;
-> -}
-> -
-> -void free_pgtable_page(void *vaddr)
-> -{
-> -	free_page((unsigned long)vaddr);
-> -}
-> -
->  static int domain_type_is_si(struct dmar_domain *domain)
->  {
->  	return domain->domain.type == IOMMU_DOMAIN_IDENTITY;
-> @@ -473,7 +458,7 @@ struct context_entry *iommu_context_addr(struct intel_iommu *iommu, u8 bus,
->  		if (!alloc)
->  			return NULL;
->  
-> -		context = alloc_pgtable_page(iommu->node, GFP_ATOMIC);
-> +		context = iommu_alloc_page_node(iommu->node, GFP_ATOMIC);
->  		if (!context)
->  			return NULL;
->  
-> @@ -647,17 +632,17 @@ static void free_context_table(struct intel_iommu *iommu)
->  	for (i = 0; i < ROOT_ENTRY_NR; i++) {
->  		context = iommu_context_addr(iommu, i, 0, 0);
->  		if (context)
-> -			free_pgtable_page(context);
-> +			iommu_free_page(context);
->  
->  		if (!sm_supported(iommu))
->  			continue;
->  
->  		context = iommu_context_addr(iommu, i, 0x80, 0);
->  		if (context)
-> -			free_pgtable_page(context);
-> +			iommu_free_page(context);
->  	}
->  
-> -	free_pgtable_page(iommu->root_entry);
-> +	iommu_free_page(iommu->root_entry);
->  	iommu->root_entry = NULL;
->  }
->  
-> @@ -795,7 +780,7 @@ static struct dma_pte *pfn_to_dma_pte(struct dmar_domain *domain,
->  		if (!dma_pte_present(pte)) {
->  			uint64_t pteval;
->  
-> -			tmp_page = alloc_pgtable_page(domain->nid, gfp);
-> +			tmp_page = iommu_alloc_page_node(domain->nid, gfp);
->  
->  			if (!tmp_page)
->  				return NULL;
-> @@ -807,7 +792,7 @@ static struct dma_pte *pfn_to_dma_pte(struct dmar_domain *domain,
->  
->  			if (cmpxchg64(&pte->val, 0ULL, pteval))
->  				/* Someone else set it while we were thinking; use theirs. */
-> -				free_pgtable_page(tmp_page);
-> +				iommu_free_page(tmp_page);
->  			else
->  				domain_flush_cache(domain, pte, sizeof(*pte));
->  		}
-> @@ -920,7 +905,7 @@ static void dma_pte_free_level(struct dmar_domain *domain, int level,
->  		      last_pfn < level_pfn + level_size(level) - 1)) {
->  			dma_clear_pte(pte);
->  			domain_flush_cache(domain, pte, sizeof(*pte));
-> -			free_pgtable_page(level_pte);
-> +			iommu_free_page(level_pte);
->  		}
->  next:
->  		pfn += level_size(level);
-> @@ -944,7 +929,7 @@ static void dma_pte_free_pagetable(struct dmar_domain *domain,
->  
->  	/* free pgd */
->  	if (start_pfn == 0 && last_pfn == DOMAIN_MAX_PFN(domain->gaw)) {
-> -		free_pgtable_page(domain->pgd);
-> +		iommu_free_page(domain->pgd);
->  		domain->pgd = NULL;
->  	}
->  }
-> @@ -1046,7 +1031,7 @@ static int iommu_alloc_root_entry(struct intel_iommu *iommu)
->  {
->  	struct root_entry *root;
->  
-> -	root = alloc_pgtable_page(iommu->node, GFP_ATOMIC);
-> +	root = iommu_alloc_page_node(iommu->node, GFP_ATOMIC);
->  	if (!root) {
->  		pr_err("Allocating root entry for %s failed\n",
->  			iommu->name);
-> @@ -1718,7 +1703,7 @@ static void domain_exit(struct dmar_domain *domain)
->  		LIST_HEAD(freelist);
->  
->  		domain_unmap(domain, 0, DOMAIN_MAX_PFN(domain->gaw), &freelist);
-> -		put_pages_list(&freelist);
-> +		iommu_put_pages_list(&freelist);
->  	}
->  
->  	if (WARN_ON(!list_empty(&domain->devices)))
-> @@ -2452,7 +2437,7 @@ static int copy_context_table(struct intel_iommu *iommu,
->  			if (!old_ce)
->  				goto out;
->  
-> -			new_ce = alloc_pgtable_page(iommu->node, GFP_KERNEL);
-> +			new_ce = iommu_alloc_page_node(iommu->node, GFP_KERNEL);
->  			if (!new_ce)
->  				goto out_unmap;
->  
-> @@ -3385,7 +3370,7 @@ static int intel_iommu_memory_notifier(struct notifier_block *nb,
->  					start_vpfn, mhp->nr_pages,
->  					list_empty(&freelist), 0);
->  			rcu_read_unlock();
-> -			put_pages_list(&freelist);
-> +			iommu_put_pages_list(&freelist);
->  		}
->  		break;
->  	}
-> @@ -3816,7 +3801,7 @@ static int md_domain_init(struct dmar_domain *domain, int guest_width)
->  	domain->max_addr = 0;
->  
->  	/* always allocate the top pgd */
-> -	domain->pgd = alloc_pgtable_page(domain->nid, GFP_ATOMIC);
-> +	domain->pgd = iommu_alloc_page_node(domain->nid, GFP_ATOMIC);
->  	if (!domain->pgd)
->  		return -ENOMEM;
->  	domain_flush_cache(domain, domain->pgd, PAGE_SIZE);
-> @@ -3960,7 +3945,7 @@ int prepare_domain_attach_device(struct iommu_domain *domain,
->  		pte = dmar_domain->pgd;
->  		if (dma_pte_present(pte)) {
->  			dmar_domain->pgd = phys_to_virt(dma_pte_addr(pte));
-> -			free_pgtable_page(pte);
-> +			iommu_free_page(pte);
->  		}
->  		dmar_domain->agaw--;
->  	}
-> @@ -4107,7 +4092,7 @@ static void intel_iommu_tlb_sync(struct iommu_domain *domain,
->  				      start_pfn, nrpages,
->  				      list_empty(&gather->freelist), 0);
->  
-> -	put_pages_list(&gather->freelist);
-> +	iommu_put_pages_list(&gather->freelist);
->  }
->  
->  static phys_addr_t intel_iommu_iova_to_phys(struct iommu_domain *domain,
-> diff --git a/drivers/iommu/intel/iommu.h b/drivers/iommu/intel/iommu.h
-> index d02f916d8e59..9fe04cea29c4 100644
-> --- a/drivers/iommu/intel/iommu.h
-> +++ b/drivers/iommu/intel/iommu.h
-> @@ -1069,8 +1069,6 @@ void domain_update_iommu_cap(struct dmar_domain *domain);
->  
->  int dmar_ir_support(void);
->  
-> -void *alloc_pgtable_page(int node, gfp_t gfp);
-> -void free_pgtable_page(void *vaddr);
->  void iommu_flush_write_buffer(struct intel_iommu *iommu);
->  struct iommu_domain *intel_nested_domain_alloc(struct iommu_domain *parent,
->  					       const struct iommu_user_data *user_data);
-> diff --git a/drivers/iommu/intel/irq_remapping.c b/drivers/iommu/intel/irq_remapping.c
-> index 566297bc87dd..39cd9626eb8d 100644
-> --- a/drivers/iommu/intel/irq_remapping.c
-> +++ b/drivers/iommu/intel/irq_remapping.c
-> @@ -22,6 +22,7 @@
->  
->  #include "iommu.h"
->  #include "../irq_remapping.h"
-> +#include "../iommu-pages.h"
->  #include "cap_audit.h"
->  
->  enum irq_mode {
-> @@ -527,7 +528,7 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
->  	struct ir_table *ir_table;
->  	struct fwnode_handle *fn;
->  	unsigned long *bitmap;
-> -	struct page *pages;
-> +	void *ir_table_base;
->  
->  	if (iommu->ir_table)
->  		return 0;
-> @@ -536,9 +537,9 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
->  	if (!ir_table)
->  		return -ENOMEM;
->  
-> -	pages = alloc_pages_node(iommu->node, GFP_KERNEL | __GFP_ZERO,
-> -				 INTR_REMAP_PAGE_ORDER);
-> -	if (!pages) {
-> +	ir_table_base = iommu_alloc_pages_node(iommu->node, GFP_KERNEL,
-> +					       INTR_REMAP_PAGE_ORDER);
-> +	if (!ir_table_base) {
->  		pr_err("IR%d: failed to allocate pages of order %d\n",
->  		       iommu->seq_id, INTR_REMAP_PAGE_ORDER);
->  		goto out_free_table;
-> @@ -573,7 +574,7 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
->  	else
->  		iommu->ir_domain->msi_parent_ops = &dmar_msi_parent_ops;
->  
-> -	ir_table->base = page_address(pages);
-> +	ir_table->base = ir_table_base;
->  	ir_table->bitmap = bitmap;
->  	iommu->ir_table = ir_table;
->  
-> @@ -622,7 +623,7 @@ static int intel_setup_irq_remapping(struct intel_iommu *iommu)
->  out_free_bitmap:
->  	bitmap_free(bitmap);
->  out_free_pages:
-> -	__free_pages(pages, INTR_REMAP_PAGE_ORDER);
-> +	iommu_free_pages(ir_table_base, INTR_REMAP_PAGE_ORDER);
->  out_free_table:
->  	kfree(ir_table);
->  
-> @@ -643,8 +644,7 @@ static void intel_teardown_irq_remapping(struct intel_iommu *iommu)
->  			irq_domain_free_fwnode(fn);
->  			iommu->ir_domain = NULL;
->  		}
-> -		free_pages((unsigned long)iommu->ir_table->base,
-> -			   INTR_REMAP_PAGE_ORDER);
-> +		iommu_free_pages(iommu->ir_table->base, INTR_REMAP_PAGE_ORDER);
->  		bitmap_free(iommu->ir_table->bitmap);
->  		kfree(iommu->ir_table);
->  		iommu->ir_table = NULL;
-> diff --git a/drivers/iommu/intel/pasid.c b/drivers/iommu/intel/pasid.c
-> index 3239cefa4c33..d46f661dd971 100644
-> --- a/drivers/iommu/intel/pasid.c
-> +++ b/drivers/iommu/intel/pasid.c
-> @@ -20,6 +20,7 @@
->  
->  #include "iommu.h"
->  #include "pasid.h"
-> +#include "../iommu-pages.h"
->  
->  /*
->   * Intel IOMMU system wide PASID name space:
-> @@ -38,7 +39,7 @@ int intel_pasid_alloc_table(struct device *dev)
->  {
->  	struct device_domain_info *info;
->  	struct pasid_table *pasid_table;
-> -	struct page *pages;
-> +	struct pasid_dir_entry *dir;
->  	u32 max_pasid = 0;
->  	int order, size;
->  
-> @@ -59,14 +60,13 @@ int intel_pasid_alloc_table(struct device *dev)
->  
->  	size = max_pasid >> (PASID_PDE_SHIFT - 3);
->  	order = size ? get_order(size) : 0;
-> -	pages = alloc_pages_node(info->iommu->node,
-> -				 GFP_KERNEL | __GFP_ZERO, order);
-> -	if (!pages) {
-> +	dir = iommu_alloc_pages_node(info->iommu->node, GFP_KERNEL, order);
-> +	if (!dir) {
->  		kfree(pasid_table);
->  		return -ENOMEM;
->  	}
->  
-> -	pasid_table->table = page_address(pages);
-> +	pasid_table->table = dir;
->  	pasid_table->order = order;
->  	pasid_table->max_pasid = 1 << (order + PAGE_SHIFT + 3);
->  	info->pasid_table = pasid_table;
-> @@ -97,10 +97,10 @@ void intel_pasid_free_table(struct device *dev)
->  	max_pde = pasid_table->max_pasid >> PASID_PDE_SHIFT;
->  	for (i = 0; i < max_pde; i++) {
->  		table = get_pasid_table_from_pde(&dir[i]);
-> -		free_pgtable_page(table);
-> +		iommu_free_page(table);
->  	}
->  
-> -	free_pages((unsigned long)pasid_table->table, pasid_table->order);
-> +	iommu_free_pages(pasid_table->table, pasid_table->order);
->  	kfree(pasid_table);
->  }
->  
-> @@ -146,7 +146,7 @@ static struct pasid_entry *intel_pasid_get_entry(struct device *dev, u32 pasid)
->  retry:
->  	entries = get_pasid_table_from_pde(&dir[dir_index]);
->  	if (!entries) {
-> -		entries = alloc_pgtable_page(info->iommu->node, GFP_ATOMIC);
-> +		entries = iommu_alloc_page_node(info->iommu->node, GFP_ATOMIC);
->  		if (!entries)
->  			return NULL;
->  
-> @@ -158,7 +158,7 @@ static struct pasid_entry *intel_pasid_get_entry(struct device *dev, u32 pasid)
->  		 */
->  		if (cmpxchg64(&dir[dir_index].val, 0ULL,
->  			      (u64)virt_to_phys(entries) | PASID_PTE_PRESENT)) {
-> -			free_pgtable_page(entries);
-> +			iommu_free_page(entries);
->  			goto retry;
->  		}
->  		if (!ecap_coherent(info->iommu->ecap)) {
-> diff --git a/drivers/iommu/intel/svm.c b/drivers/iommu/intel/svm.c
-> index 40edd282903f..a691f917456c 100644
-> --- a/drivers/iommu/intel/svm.c
-> +++ b/drivers/iommu/intel/svm.c
-> @@ -23,6 +23,7 @@
->  #include "pasid.h"
->  #include "perf.h"
->  #include "../iommu-sva.h"
-> +#include "../iommu-pages.h"
->  #include "trace.h"
->  
->  static irqreturn_t prq_event_thread(int irq, void *d);
-> @@ -64,16 +65,14 @@ svm_lookup_device_by_dev(struct intel_svm *svm, struct device *dev)
->  int intel_svm_enable_prq(struct intel_iommu *iommu)
->  {
->  	struct iopf_queue *iopfq;
-> -	struct page *pages;
->  	int irq, ret;
->  
-> -	pages = alloc_pages(GFP_KERNEL | __GFP_ZERO, PRQ_ORDER);
-> -	if (!pages) {
-> +	iommu->prq = iommu_alloc_pages(GFP_KERNEL, PRQ_ORDER);
-> +	if (!iommu->prq) {
->  		pr_warn("IOMMU: %s: Failed to allocate page request queue\n",
->  			iommu->name);
->  		return -ENOMEM;
->  	}
-> -	iommu->prq = page_address(pages);
->  
->  	irq = dmar_alloc_hwirq(IOMMU_IRQ_ID_OFFSET_PRQ + iommu->seq_id, iommu->node, iommu);
->  	if (irq <= 0) {
-> @@ -118,7 +117,7 @@ int intel_svm_enable_prq(struct intel_iommu *iommu)
->  	dmar_free_hwirq(irq);
->  	iommu->pr_irq = 0;
->  free_prq:
-> -	free_pages((unsigned long)iommu->prq, PRQ_ORDER);
-> +	iommu_free_pages(iommu->prq, PRQ_ORDER);
->  	iommu->prq = NULL;
->  
->  	return ret;
-> @@ -141,7 +140,7 @@ int intel_svm_finish_prq(struct intel_iommu *iommu)
->  		iommu->iopf_queue = NULL;
->  	}
->  
-> -	free_pages((unsigned long)iommu->prq, PRQ_ORDER);
-> +	iommu_free_pages(iommu->prq, PRQ_ORDER);
->  	iommu->prq = NULL;
->  
->  	return 0;
-> diff --git a/drivers/iommu/iommu-pages.h b/drivers/iommu/iommu-pages.h
-> new file mode 100644
-> index 000000000000..35bfa369b134
-> --- /dev/null
-> +++ b/drivers/iommu/iommu-pages.h
-> @@ -0,0 +1,154 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2024, Google LLC.
-> + * Pasha Tatashin <pasha.tatashin@soleen.com>
-> + */
-> +
-> +#ifndef __IOMMU_PAGES_H
-> +#define __IOMMU_PAGES_H
-> +
-> +#include <linux/vmstat.h>
-> +#include <linux/gfp.h>
-> +#include <linux/mm.h>
-> +
-> +/*
-> + * All page allocations that should be reported to as "iommu-pagetables" to
-> + * userspace must use on of the functions below.  This includes allocations of
-> + * page-tables and other per-iommu_domain configuration structures.
+In both cases, the problem is that ROCKCHIP_CDN_DP and DRM_EXYNOS_DP
+are 'bool' symbols that depend on the the 'tristate' DRM_DISPLAY_HELPER
+symbol, but end up not working when the SoC specific part is built-in
+but the helper is in a loadable module.
 
-/s/use on/use one/?
+Use the same trick that DRM_ROCKCHIP already uses for the EXTCON
+dependency and disallow DP support when it would not work.
 
-> + *
-> + * This is necessary for the proper accounting as IOMMU state can be rather
-> + * large, i.e. multiple gigabytes in size.
-> + */
-> +
-> +/**
-> + * __iommu_alloc_pages - allocate a zeroed page of a given order.
-> + * @gfp: buddy allocator flags
+Fixes: 0323287de87d ("drm: Switch DRM_DISPLAY_DP_HELPER to depends on")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/gpu/drm/exynos/Kconfig   | 2 +-
+ drivers/gpu/drm/rockchip/Kconfig | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Shall we keep the comments generic here(avoid reference to allocator
-algo)  ?
+diff --git a/drivers/gpu/drm/exynos/Kconfig b/drivers/gpu/drm/exynos/Kconfig
+index 6a26a0b8eff2..58cd77220741 100644
+--- a/drivers/gpu/drm/exynos/Kconfig
++++ b/drivers/gpu/drm/exynos/Kconfig
+@@ -68,7 +68,7 @@ config DRM_EXYNOS_DP
+ 	bool "Exynos specific extensions for Analogix DP driver"
+ 	depends on DRM_EXYNOS_FIMD || DRM_EXYNOS7_DECON
+ 	depends on DRM_DISPLAY_DP_HELPER
+-	depends on DRM_DISPLAY_HELPER
++	depends on DRM_DISPLAY_HELPER=y || (DRM_DISPLAY_HELPER=m && DRM_EXYNOS=m)
+ 	select DRM_ANALOGIX_DP
+ 	default DRM_EXYNOS
+ 	select DRM_PANEL
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 4b49a14758fe..4b4ad75032fd 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -46,7 +46,7 @@ config ROCKCHIP_ANALOGIX_DP
+ config ROCKCHIP_CDN_DP
+ 	bool "Rockchip cdn DP"
+ 	depends on DRM_DISPLAY_DP_HELPER
+-	depends on DRM_DISPLAY_HELPER
++	depends on DRM_DISPLAY_HELPER=y || (DRM_DISPLAY_HELPER=m && DRM_ROCKCHIP=m)
+ 	depends on EXTCON=y || (EXTCON=m && DRM_ROCKCHIP=m)
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+-- 
+2.39.2
 
-> + * @order: page order
-> + *
-> + * returns the head struct page of the allocated page.
-> + */
-> +static inline struct page *__iommu_alloc_pages(gfp_t gfp, int order)
-> +{
-> +	struct page *page;
-> +
-> +	page = alloc_pages(gfp | __GFP_ZERO, order);
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page;
-> +}
-> +
-> +/**
-> + * __iommu_free_pages - free page of a given order
-> + * @page: head struct page of the page
-> + * @order: page order
-> + */
-> +static inline void __iommu_free_pages(struct page *page, int order)
-> +{
-> +	if (!page)
-> +		return;
-> +
-> +	__free_pages(page, order);
-> +}
-> +
-> +/**
-> + * iommu_alloc_pages_node - allocate a zeroed page of a given order from
-> + * specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-
-Same here for this one and other references below.
-
-> + * @order: page order
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_pages_node(int nid, gfp_t gfp, int order)
-> +{
-> +	struct page *page = alloc_pages_node(nid, gfp | __GFP_ZERO, order);
-> +
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page_address(page);
-> +}
-> +
-> +/**
-> + * iommu_alloc_pages - allocate a zeroed page of a given order
-> + * @gfp: buddy allocator flags
-> + * @order: page order
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_pages(gfp_t gfp, int order)
-> +{
-> +	struct page *page = __iommu_alloc_pages(gfp, order);
-> +
-> +	if (unlikely(!page))
-> +		return NULL;
-> +
-> +	return page_address(page);
-> +}
-> +
-> +/**
-> + * iommu_alloc_page_node - allocate a zeroed page at specific NUMA node.
-> + * @nid: memory NUMA node id
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_page_node(int nid, gfp_t gfp)
-> +{
-> +	return iommu_alloc_pages_node(nid, gfp, 0);
-> +}
-> +
-> +/**
-> + * iommu_alloc_page - allocate a zeroed page
-> + * @gfp: buddy allocator flags
-> + *
-> + * returns the virtual address of the allocated page
-> + */
-> +static inline void *iommu_alloc_page(gfp_t gfp)
-> +{
-> +	return iommu_alloc_pages(gfp, 0);
-> +}
-> +
-> +/**
-> + * iommu_free_pages - free page of a given order
-> + * @virt: virtual address of the page to be freed.
-> + * @order: page order
-> + */
-> +static inline void iommu_free_pages(void *virt, int order)
-> +{
-> +	if (!virt)
-> +		return;
-> +
-> +	__iommu_free_pages(virt_to_page(virt), order);
-> +}
-> +
-> +/**
-> + * iommu_free_page - free page
-> + * @virt: virtual address of the page to be freed.
-> + */
-> +static inline void iommu_free_page(void *virt)
-> +{
-> +	iommu_free_pages(virt, 0);
-> +}
-> +
-> +/**
-> + * iommu_put_pages_list - free a list of pages.
-> + * @page: the head of the lru list to be freed.
-> + *
-> + * There are no locking requirement for these pages, as they are going to be
-> + * put on a free list as soon as refcount reaches 0. Pages are put on this LRU
-> + * list once they are removed from the IOMMU page tables. However, they can
-> + * still be access through debugfs.
-> + */
-> +static inline void iommu_put_pages_list(struct list_head *page)
-> +{
-> +	while (!list_empty(page)) {
-> +		struct page *p = list_entry(page->prev, struct page, lru);
-> +
-> +		list_del(&p->lru);
-> +		put_page(p);
-> +	}
-> +}
-> +
-> +#endif	/* __IOMMU_PAGES_H */
-> -- 
-> 2.44.0.rc0.258.g7320e95886-goog
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
