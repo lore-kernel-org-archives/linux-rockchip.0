@@ -4,54 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDEEACD11C2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Apr 2024 08:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED21CD1296
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Apr 2024 08:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n93adrJeUTnMWJoHwGB2Cg3+4YtszEfpZFCU5rFzTnw=; b=Y+oov7+8Nk3JHz
-	OmvgWR5EhO34yY1ctlWE4mm/f1H8hDgCcwnupu3Kg4WDuGVIANTQF8Wu27fNivyZICOaLQgB1EGYw
-	bpwG4ZSvdLzhYcSNvasrOor4E39tnrlHXluyM1cAx/OKUNYQWjn3+DKm4gbUT3yUsSSdDHuRJZbDL
-	TpQt+MSNjSpcSMtLX7kuOU0Joz8SENum01Z+laBC0uqrO6EUzfjhOcOtLCTNis2Trzpyf7c1XjHxF
-	Ub2pxoIF9phYaIRjn0jc/JBq7C0+kjZq7rPsDMjbcK2Jgd+o86yMponmlX2ghORxag9468MGc2dyQ
-	0X60DFxjhzPwHlgj0Euw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=b9BqP+YNVkdHoooGXLe92h1Fp3slO6ORvDhaVdxZG4c=; b=Jg7m/1K0DhQzzQ
+	soalDd//aakypLIF+M3OuNQpMg9iUJe8JMkGVFXgx7olyx52RauPkkIF45Gz6D7ZnNV0VV9PhRZqY
+	p3JJ9OcnetA6LAxk/0lxoSxClj8RdbVjxX560k6ODXHamxzpTohIeDGl0LYO9FJJmcMCHegn5YiC8
+	8wGo3M3RXOO6lYIz79KQjoxLVNJOLi2j2YQEs0jCSZzdqNtrPQZrl5kSKyTKFChvE3YvCj6PeAZkN
+	k0ARr2N3aDn7YkvYInO8P3B4Rr9KGyxwFSEx1tSZOu6zNfOiS3SuQvXjA9Mm0Gt21o2JUosp5tlDb
+	Sirgx6/3JqZtx5Fp4jow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsezl-00000005wbJ-074W;
-	Fri, 05 Apr 2024 08:32:21 +0000
-Received: from mail-40136.proton.ch ([185.70.40.136])
+	id 1rsf61-00000005yXa-3C6E;
+	Fri, 05 Apr 2024 08:38:49 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsezh-00000005wa6-2ykv
+	id 1rsf5x-00000005yTG-3x1a
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Apr 2024 08:32:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thefossguy.com;
-	s=protonmail; t=1712305932; x=1712565132;
-	bh=NALxV+zs5Tnjgphk/TpkK7zxaU7vpIhcOCwZW6f35is=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=tM5Z4qbOnuDyhJmzm7Iqonyk3hz9cJ1q0eVMFcprGM5Adx5wfRTd2MSQgRoIB16k4
-	 wCJD5FWeZv2sph+EMZPLCBWYwPbz3MIo7p7LnOwstEw1xX6Tn62LTm2yWtjcJ2Mvwh
-	 IE3R2EEVAaF5mQKAyTeClc1l6JctSa8QcHOFHpOqv17HOodFID44p7mHbm6Qs0RjSa
-	 xjjRoGuoJRxhy6fCcYFs3hoSdqxtQSUDUnrhIdNvVw4K20l37hgLJnJSXaXxQQAoKN
-	 wsEn21ph5v9wM2SpHo/DmZW5Xu8sd8dOFyaw0KUv94Gz6DHVXj9I1A6QEmhNWvVm8A
-	 TMX4k9EP74VUw==
-Date: Fri, 05 Apr 2024 08:32:08 +0000
-To: Saravana Kannan <saravanak@google.com>
-From: Pratham Patel <prathampatel@thefossguy.com>
-Cc: Dragan Simic <dsimic@manjaro.org>, sebastian.reichel@collabora.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, regressions@lists.linux.dev, stable@vger.kernel.org
-Subject: Re: Fixing the devicetree of Rock 5 Model B (and possibly others)
-Message-ID: <Z6J7NF8AKNHDzwd1lbld1obVJZrKq0UKLSzKVtoL0TmOzpdyM8PRMvel8IUyhwsphxBg1bjku4ZaeQcwMhfKagEM2lRYtMChYv6VNPK5Tvg=@thefossguy.com>
-In-Reply-To: <D0A2ZL6S8UG6.2BQKIBQWYB36D@thefossguy.com>
-References: <tQ0L3-34g4t-mzfQIP6KDe5OYelGnEo6Udzq6Kb_nEcljppSQUXOktpE__nL-CdLOu9gW-4tIIbjtSbqrdCrjEkdhZLPiiHTqRcCB6WORuM=@thefossguy.com> <ac4246bf3786230eb9ca85b329e7d0df@manjaro.org> <CAGETcx89V5CJrAq6XwuGiusQnkR804pTgYAtS94v7Q+v=Cv+qA@mail.gmail.com> <D0A122WK7CB9.33B2TP6UCMJBJ@thefossguy.com> <CAGETcx_ToHsp_c+Yt0qqST4Zd-GC7dPn_j=PpB1n1xpZtOnMfg@mail.gmail.com> <D0A2ZL6S8UG6.2BQKIBQWYB36D@thefossguy.com>
-Feedback-ID: 104309535:user:proton
+	Fri, 05 Apr 2024 08:38:47 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a4702457ccbso259557666b.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 05 Apr 2024 01:38:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1712306320; x=1712911120; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ubTb0fgVnrfBS5bggRD1QN9w4aDFQXkPd91AMrgys1Q=;
+        b=Z/Dq8ZSDlBw04SF9RpwvxP42MM/tootGf2yergabugnqP+Ar2LTuj2Sj6bWb/uIkra
+         IpOu7HPdX1tVFvnlI4RF8eL3d1nIerUyVfgA6mTHfJBIvVNfFfIvIiZ/YQMZP/aM5M0n
+         BirYt+vscZ54MPSG9+yPLBrVSHoKSgTXRB+LKw/jqjtOp1ABeJt20fwSkb+BQzCPKLUT
+         /bwhYp0XBzirPDAvPVl7LJJqAeBFpE1YCxTqLQpoHfTi53airkrGWVLdjYp6bJniqNvz
+         GjaM/pIP2jetyTT00Avb3QU0+VWEMA66V3jT4UXrtt8T+ZpilsrfB3sLQ7Bt1RBU+Pfl
+         yhqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712306320; x=1712911120;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ubTb0fgVnrfBS5bggRD1QN9w4aDFQXkPd91AMrgys1Q=;
+        b=E8qG02dyPQZx7JJkfgCS6H12N7BeuXBIQ7HKdg3A/S7nyWsA0kYpSom13RWJfslrFb
+         OD4B7Vo9eULzTRuwIyBvMz+3gMxn9ISX14rIfk+Vo1FHs/L3EJ4w9D0r4l3Z5QEyix+F
+         OIjbITJgEhinlcnKm2tUmT+A4CrpbFU+sX6wuKXnvVc1OhYZYSgPlB51XVlXjnzyZu8x
+         Nz6E+/vI6sVaJMDSYKdl2X1x5aFvnZXQhab45/TS3DWdCLbz1tGS7RhTJJ7ImReaT6Nk
+         u/8I/snUAovedCdZBqNLwOJ+Fi+2gl8qdeqGRQcnN9PAbcafUjVdGpvxOwchF5vVw67D
+         v5eA==
+X-Forwarded-Encrypted: i=1; AJvYcCWKiaqqt0HrJxSPBtPIbXDs0MAEfW6U/rgoTltjHyyKE5ZCZhWigbLmO+qDbj4pNohakSFWgeJoGd+AOlVkBIKsfhVZblXvRdoJv3f4GKqNoi1z
+X-Gm-Message-State: AOJu0YxuKeSyWtzmaU8PptuFt5gCei6RvbPWYbUipvfv2U9YyzLkqVOv
+	FE0RyeFSKI6vfVldLzfm4yR5K/LMkc7Gy1TgGdbFtqJdHfbMS67EiWU1b8JPKhc=
+X-Google-Smtp-Source: AGHT+IEbsXOh/N7WNWmlYpCZzHx5wkzHFgy5SzPZtE5tZZGTZhrkAvGSYXBlZD3FtsmRpsA6biQgGQ==
+X-Received: by 2002:a17:906:2798:b0:a45:e3ab:152f with SMTP id j24-20020a170906279800b00a45e3ab152fmr499838ejc.21.1712306319804;
+        Fri, 05 Apr 2024 01:38:39 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id ci25-20020a170906c35900b00a4e2ad2cef0sm570122ejb.203.2024.04.05.01.38.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Apr 2024 01:38:39 -0700 (PDT)
+Date: Fri, 5 Apr 2024 11:38:35 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Damien Le Moal <dlemoal@kernel.org>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <helgaas@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Rick Wertenbroek <rick.wertenbroek@gmail.com>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: Re: [PATCH v2 02/18] PCI: endpoint: Introduce pci_epc_map_align()
+Message-ID: <2b9ad9b2-c5df-4364-99cb-c2b41cdfee52@moroto.mountain>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240330041928.1555578-3-dlemoal@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240405_013218_086519_63D79D24 
-X-CRM114-Status: GOOD (  34.28  )
+X-CRM114-CacheID: sfid-20240405_013846_069858_1949BEAA 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,87 +101,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkbmVzZGF5LCBBcHJpbCAzcmQsIDIwMjQgYXQgMDY6MzMsIFByYXRoYW0gUGF0ZWwgPHBy
-YXRoYW1wYXRlbEB0aGVmb3NzZ3V5LmNvbT4gd3JvdGU6Cgo+IAo+IAo+IE9uIFdlZCBBcHIgMywg
-MjAyNCBhdCA2OjE2IEFNIElTVCwgU2FyYXZhbmEgS2FubmFuIHdyb3RlOgo+IAo+ID4gT24gVHVl
-LCBBcHIgMiwgMjAyNCBhdCA0OjMy4oCvUE0gUHJhdGhhbSBQYXRlbAo+ID4gcHJhdGhhbXBhdGVs
-QHRoZWZvc3NndXkuY29tIHdyb3RlOgo+ID4gCj4gPiA+IE9uIFR1ZSBBcHIgMiwgMjAyNCBhdCA0
-OjU0IEFNIElTVCwgU2FyYXZhbmEgS2FubmFuIHdyb3RlOgo+ID4gPiAKPiA+ID4gPiBPbiBTYXQs
-IE1hciAyMywgMjAyNCBhdCAxMDoxMOKAr0FNIERyYWdhbiBTaW1pYyBkc2ltaWNAbWFuamFyby5v
-cmcgd3JvdGU6Cj4gPiA+ID4gCj4gPiA+ID4gPiBIZWxsbyBQcmF0aGFtLAo+ID4gPiA+ID4gCj4g
-PiA+ID4gPiBPbiAyMDI0LTAzLTIzIDE4OjAyLCBQcmF0aGFtIFBhdGVsIHdyb3RlOgo+ID4gPiA+
-ID4gCj4gPiA+ID4gPiA+IEkgbG9va2VkIGF0IHRoZSBwYXRjaCBhbmQgdHJpZWQgc2V2ZXJhbCB0
-aGluZ3MsIG5laXRoZXIgcmVzdWx0ZWQgaW4KPiA+ID4gPiA+ID4gYW55dGhpbmcgdGhhdCB3b3Vs
-ZCBwb2ludCBtZSB0byB0aGUgY29yZSBpc3N1ZS4gVGhlbiBJIHRyaWVkIHRoaXM6Cj4gPiA+ID4g
-PiAKPiA+ID4gPiA+IENvdWxkIHlvdSwgcGxlYXNlLCBjbGFyaWZ5IGEgYml0IHdoYXQncyB0aGUg
-YWN0dWFsIGlzc3VlIHlvdSdyZQo+ID4gPiA+ID4gZXhwZXJpZW5jaW5nIG9uIHlvdXIgUm9jayA1
-Qj8KPiA+ID4gPiAKPiA+ID4gPiBQcmF0aGFtLCBjYW4geW91IHJlcGx5IHRvIHRoaXMgcGxlYXNl
-PyBJIGRvbid0IHJlYWxseSB1bmRlcnN0YW5kIHdoYXQKPiA+ID4gPiB5b3VyIGlzc3VlIGlzIGZv
-ciBtZSB0byBiZSBhYmxlIHRvIGhlbHAuCj4gPiA+IAo+ID4gPiBIaSwKPiA+ID4gCj4gPiA+IEkg
-YXBvbG9naXplIGZvciBub3QgcmVwbHlpbmcuIFNvbWVob3csIEkgZGlkIG5vdCBub3RpY2UgdGhl
-IHJlcGx5IGZyb20KPiA+ID4gRHJhZ2FuLiA6KAo+ID4gPiAKPiA+ID4gU2luY2UgdGhpcyBwYXRj
-aCB3YXMgYXBwbGllZCwgYW4gaXNzdWUgaW4gdGhlIFJvY2sgNUIncyBEVCBoYXMgYmVlbgo+ID4g
-PiB1bmVhcnRoZWQgd2hpY2ggbm93IHJlc3VsdHMgaW4gdGhlIGtlcm5lbCBiZWluZyB1bmFibGUg
-dG8gYm9vdCBwcm9wZXJseS4KPiA+ID4gCj4gPiA+IEZvbGxvd2luZyBpcyB0aGUgcmVsZXZhbnQg
-Y2FsbCB0cmFjZSBmcm9tIHRoZSBVQVJUIGNhcHR1cmU6Cj4gPiA+IAo+ID4gPiBbIDIxLjU5NTA2
-OF0gQ2FsbCB0cmFjZToKPiA+ID4gWyAyMS41OTUyODhdIHNtcF9jYWxsX2Z1bmN0aW9uX21hbnlf
-Y29uZCsweDE3NC8weDVmOAo+ID4gPiBbIDIxLjU5NTcyOF0gb25fZWFjaF9jcHVfY29uZF9tYXNr
-KzB4MmMvMHg0MAo+ID4gPiBbIDIxLjU5NjEwOV0gY3B1aWRsZV9yZWdpc3Rlcl9kcml2ZXIrMHgy
-OTQvMHgzMTgKPiA+ID4gWyAyMS41OTY1MjRdIGNwdWlkbGVfcmVnaXN0ZXIrMHgyNC8weDEwMAo+
-ID4gPiBbIDIxLjU5Njg3NV0gcHNjaV9jcHVpZGxlX3Byb2JlKzB4MmU0LzB4NDkwCj4gPiA+IFsg
-MjEuNTk3MjQ3XSBwbGF0Zm9ybV9wcm9iZSsweDcwLzB4ZDAKPiA+ID4gWyAyMS41OTc1NzVdIHJl
-YWxseV9wcm9iZSsweDE4Yy8weDNkOAo+ID4gPiBbIDIxLjU5NzkwNV0gX19kcml2ZXJfcHJvYmVf
-ZGV2aWNlKzB4ODQvMHgxODAKPiA+ID4gWyAyMS41OTgyOTRdIGRyaXZlcl9wcm9iZV9kZXZpY2Ur
-MHg0NC8weDEyMAo+ID4gPiBbIDIxLjU5ODY2OV0gX19kZXZpY2VfYXR0YWNoX2RyaXZlcisweGM0
-LzB4MTY4Cj4gPiA+IFsgMjEuNTk5MDYzXSBidXNfZm9yX2VhY2hfZHJ2KzB4OGMvMHhmMAo+ID4g
-PiBbIDIxLjU5OTQwOF0gX19kZXZpY2VfYXR0YWNoKzB4YTQvMHgxYzAKPiA+ID4gWyAyMS41OTk3
-NDhdIGRldmljZV9pbml0aWFsX3Byb2JlKzB4MWMvMHgzMAo+ID4gPiBbIDIxLjYwMDExOF0gYnVz
-X3Byb2JlX2RldmljZSsweGI0LzB4YzAKPiA+ID4gWyAyMS42MDA0NjJdIGRldmljZV9hZGQrMHg2
-OGMvMHg4ODgKPiA+ID4gWyAyMS42MDA3NzVdIHBsYXRmb3JtX2RldmljZV9hZGQrMHgxOWMvMHgy
-NzAKPiA+ID4gWyAyMS42MDExNTRdIHBsYXRmb3JtX2RldmljZV9yZWdpc3Rlcl9mdWxsKzB4ZGMv
-MHgxNzgKPiA+ID4gWyAyMS42MDE2MDJdIHBzY2lfaWRsZV9pbml0KzB4YTAvMHhjOAo+ID4gPiBb
-IDIxLjYwMTkzNF0gZG9fb25lX2luaXRjYWxsKzB4NjAvMHgyOTAKPiA+ID4gWyAyMS42MDIyNzVd
-IGtlcm5lbF9pbml0X2ZyZWVhYmxlKzB4MjBjLzB4M2UwCj4gPiA+IFsgMjEuNjAyNjY0XSBrZXJu
-ZWxfaW5pdCsweDJjLzB4MWY4Cj4gPiA+IFsgMjEuNjAyOTc5XSByZXRfZnJvbV9mb3JrKzB4MTAv
-MHgyMAo+ID4gCj4gPiBUaGlzIGRvZXNuJ3QgbWFrZSBhIGxvdCBvZiBzZW5zZS4gInJlbW90ZS1l
-bmRwb2ludCIgc2hvdWxkbid0IGJlCj4gPiByZWxhdGVkIHRvIGFueXRoaW5nIHRvIGRvIHdpdGgg
-cHNjaSBjcHVpZGxlLiBJJ20gZ3Vlc3Npbmcgc29tZXRoaW5nCj4gPiBlbHNlIGlzIGZhaWxpbmcg
-bXVjaCBlYXJsaWVyIGluIGJvb3QgdGhhdCdzIGluZGlyZWN0bHkgY2F1c2luZyB0aGlzCj4gPiBz
-b21laG93PyBDYW4geW91IHBsZWFzZSB0YWtlIGEgbG9vayBhdCB3aGF0J3MgZmFpbGluZyBlYXJs
-aWVyIGFuZCBsZXQKPiA+IHVzIGtub3c/IE9yIHNlZSB3aGF0IGRyaXZlciBwcm9iZSBpcyBmYWls
-aW5nIHVwIHRvIHRoaXMgcG9pbnQgYnV0IHVzZWQKPiA+IHRvIHdvcmsgaW4gdGhlIGdvb2QgY2Fz
-ZS4KPiAKPiAKPiBJJ20gcHJldHR5IG5ldyB0byB0aGlzLCAianVzdCBzdGFydGluZyIuIEknbSBu
-b3Qgc3VyZSBob3cgdG8gZG8gdGhhdCwKPiBzaW5jZSB0aGUga2VybmVsIGRvZXNuJ3QgcmVhbGx5
-ICJtb3ZlIGZvcndhcmQiLiBJIHdpbGwgdmVyaWZ5IGlmCj4gYTgwMzdjZWI4OTY0IGZpeGVzIGl0
-IG9yIG5vdCBhbmQgZ2V0IGJhY2sgYnkgdGhlIGVuZCBvZiB0aGlzIHdlZWsuCj4gCj4gPiBBbHNv
-LCB3aGVyZSBpcyB0aGUgZHRzIGZpbGUgdGhhdCBjb3JyZXNwb25kcyB0byB0aGlzIGJvYXJkIGlu
-IHVwc3RyZWFtPyBJcyBpdAo+ID4gYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgt
-cm9jay01Yi5kdHMKPiAKPiAKPiBZZXMuCj4gCj4gPiA+ID4gQWxzbywgY2FuIHlvdSBnaXZlIHRo
-ZSBvdXRwdXQgb2YgPGRlYnVnZnM+L2RldmljZXNfZGVmZXJyZWQgZm9yIHRoZQo+ID4gPiA+IGdv
-b2QgdnMgYmFkIGNhc2U/Cj4gPiA+IAo+ID4gPiBJIGNhbid0IHByb3ZpZGUgeW91IHdpdGggcmVx
-dWVzdGVkIG91dHB1dCBmcm9tIHRoZSBiYWQgY2FzZSwgc2luY2UgdGhlCj4gPiA+IGtlcm5lbCBu
-ZXZlciBtb3ZlcyBwYXN0IHRoaXMgdG8gYW4gaW5pdHJhbWZzIHJlc2N1ZSBzaGVsbCwgYnV0IGZv
-bGxvd2luZwo+ID4gPiBpcyB0aGUgb3V0cHV0IGZyb20gdjYuOC4xICh3aXRoIGFmb3JlbWVudGlv
-bmVkIHBhdGNoIHJldmVydGVkKS4KPiA+ID4gCj4gPiA+ICMgY2F0IC9zeXMva2VybmVsL2RlYnVn
-L2RldmljZXNfZGVmZXJyZWQKPiA+ID4gZmM0MDAwMDAudXNiIHBsYXRmb3JtOiB3YWl0IGZvciBz
-dXBwbGllciAvcGh5QGZlZDkwMDAwL3VzYjMtcG9ydAo+ID4gPiAxLTAwMjIgdHlwZWNfZnVzYjMw
-MjogY2Fubm90IHJlZ2lzdGVyIHRjcG0gcG9ydAo+ID4gPiBmYzAwMDAwMC51c2IgcGxhdGZvcm06
-IHdhaXQgZm9yIHN1cHBsaWVyIC9waHlAZmVkODAwMDAvdXNiMy1wb3J0Cj4gPiA+IAo+ID4gPiBJ
-dCBzZWVtcyB0aGF0IHY2LjguMiB3b3JrcyB3aXRob3V0IG5lZWRpbmcgdG8gcmV2ZXJ0IHRoZSBw
-YXRjaC4gSSB3aWxsCj4gPiA+IGhhdmUgdG8gbG9vayBpbnRvIHRoaXMgc29tZXRpbWUgdGhpcyB3
-ZWVrIGJ1dCBpdCBzZWVtcyBsaWtlCj4gPiA+IGE4MDM3Y2ViODk2NCAoYXJtNjQ6IGR0czogcm9j
-a2NoaXA6IGRyb3Agcm9ja2NoaXAsdHJjbS1zeW5jLXR4LW9ubHkgZnJvbSByazM1ODggaTJzKQo+
-ID4gPiBzZWVtcyB0byBiZSB0aGUgb25lIHRoYXQgZml4ZWQgdGhlIHJvb3QgaXNzdWUuIEkgd2ls
-bCBoYXZlIHRvIHRlc3QgaXQKPiA+ID4gc29tZXRpbWUgbGF0ZXIgdGhpcyB3ZWVrLgo+ID4gCj4g
-PiBPaywgb25jZSB5b3UgZmluZCB0aGUgcGF0Y2ggdGhhdCBmaXhlcyB0aGluZ3MsIGxldCBtZSBr
-bm93IHRvby4KCkkgY29uZmlybSB0aGF0IGE4MDM3Y2ViODk2NCBmaXhlZCB0aGlzIGlzc3VlIGZv
-ciBtZS4gTm93LCB2Ni44LjIrIGJvb3RzIG9uIG15IFJvY2sgNUIsCndpdGggbXkgZGlzdHJvJ3Mg
-Y29uZmlnIGFuZCB0aGUgYXJtNjQgZGVmY29uZmlnLgoKIC0tIFByYXRoYW0gUGF0ZWwKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Damien,
+
+kernel test robot noticed the following build warnings:
+
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Damien-Le-Moal/PCI-endpoint-Introduce-pci_epc_function_is_valid/20240330-122311
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/20240330041928.1555578-3-dlemoal%40kernel.org
+patch subject: [PATCH v2 02/18] PCI: endpoint: Introduce pci_epc_map_align()
+config: parisc-randconfig-r071-20240405 (https://download.01.org/0day-ci/archive/20240405/202404051508.hvNRDVZq-lkp@intel.com/config)
+compiler: hppa-linux-gcc (GCC) 13.2.0
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202404051508.hvNRDVZq-lkp@intel.com/
+
+smatch warnings:
+drivers/pci/endpoint/pci-epc-core.c:493 pci_epc_map_align() error: we previously assumed 'features' could be null (see line 487)
+
+vim +/features +493 drivers/pci/endpoint/pci-epc-core.c
+
+9d2f10d2ace040 Damien Le Moal         2024-03-30  458  int pci_epc_map_align(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+9d2f10d2ace040 Damien Le Moal         2024-03-30  459  		      u64 pci_addr, size_t size, struct pci_epc_map *map)
+9d2f10d2ace040 Damien Le Moal         2024-03-30  460  {
+9d2f10d2ace040 Damien Le Moal         2024-03-30  461  	const struct pci_epc_features *features;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  462  	size_t mask;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  463  	int ret;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  464  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  465  	if (!pci_epc_function_is_valid(epc, func_no, vfunc_no))
+9d2f10d2ace040 Damien Le Moal         2024-03-30  466  		return -EINVAL;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  467  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  468  	if (!size || !map)
+9d2f10d2ace040 Damien Le Moal         2024-03-30  469  		return -EINVAL;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  470  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  471  	memset(map, 0, sizeof(*map));
+9d2f10d2ace040 Damien Le Moal         2024-03-30  472  	map->pci_addr = pci_addr;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  473  	map->pci_size = size;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  474  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  475  	if (epc->ops->map_align) {
+9d2f10d2ace040 Damien Le Moal         2024-03-30  476  		mutex_lock(&epc->lock);
+9d2f10d2ace040 Damien Le Moal         2024-03-30  477  		ret = epc->ops->map_align(epc, func_no, vfunc_no, map);
+9d2f10d2ace040 Damien Le Moal         2024-03-30  478  		mutex_unlock(&epc->lock);
+9d2f10d2ace040 Damien Le Moal         2024-03-30  479  		return ret;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  480  	}
+9d2f10d2ace040 Damien Le Moal         2024-03-30  481  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  482  	/*
+9d2f10d2ace040 Damien Le Moal         2024-03-30  483  	 * Assume a fixed alignment constraint as specified by the controller
+9d2f10d2ace040 Damien Le Moal         2024-03-30  484  	 * features.
+9d2f10d2ace040 Damien Le Moal         2024-03-30  485  	 */
+9d2f10d2ace040 Damien Le Moal         2024-03-30  486  	features = pci_epc_get_features(epc, func_no, vfunc_no);
+9d2f10d2ace040 Damien Le Moal         2024-03-30 @487  	if (!features || !features->align) {
+                                                            ^^^^^^^^^
+Check for NULL
+
+9d2f10d2ace040 Damien Le Moal         2024-03-30  488  		map->map_pci_addr = pci_addr;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  489  		map->map_size = size;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  490  		map->map_ofst = 0;
+
+Missing return 0?
+
+9d2f10d2ace040 Damien Le Moal         2024-03-30  491  	}
+9d2f10d2ace040 Damien Le Moal         2024-03-30  492  
+9d2f10d2ace040 Damien Le Moal         2024-03-30 @493  	mask = features->align - 1;
+                                                               ^^^^^^^^^^
+
+9d2f10d2ace040 Damien Le Moal         2024-03-30  494  	map->map_pci_addr = map->pci_addr & ~mask;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  495  	map->map_ofst = map->pci_addr & mask;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  496  	map->map_size = ALIGN(map->map_ofst + map->pci_size, features->align);
+9d2f10d2ace040 Damien Le Moal         2024-03-30  497  
+9d2f10d2ace040 Damien Le Moal         2024-03-30  498  	return 0;
+9d2f10d2ace040 Damien Le Moal         2024-03-30  499  }
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
