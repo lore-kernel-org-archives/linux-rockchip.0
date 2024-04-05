@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF27CD11C2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Apr 2024 16:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE4CCD1284
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Apr 2024 17:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k7sYHTzwurct+FgHF54zpSNNwKP3dT7kgu5aYSNXEYM=; b=22BVMZEl5gE2kZ
-	fL4FyclE2jA9HhWBJWbvVPNqWnVyPKpNPQGxCsiwIiPXalmU0h3sU78IGxjZlzm8g6PpTI4H9aMUV
-	5pwtB7EoQia2uUKDdzmUS3NGrrE6CdIJjKDg4NT0T4BeFvULcnNQdM6hcdRYtW1C+CxFkDre9+cA6
-	VOa/ASRAschCgEQoXa1K23N7c1k8HBt7wQs2YAD6saBlMaVl3AROHuXWXWTJIAhX2OpcpHJCyBxWr
-	2KkJZWw5EbT2nkcyrTkI8c5clE06Cnhx/tfNITOL+zrnlD/oJiONE6nRaiDiC0d2En5INK9wxqNRe
-	4JaompekR/3qGyzAu9GQ==;
+	List-Owner; bh=LCbY8vYSnoU7ezJHMFPOu2C/6K4QEMdEBXgjJgq2dXY=; b=TeBj6RmjZyIJUx
+	ZZcH2yYbP/2UM+tVcPsMUQ6GYWlWr2n+we+Zo2VqDpkYjn2imiW/CgZJu7XcW0TQGy38B7L7gs0qU
+	vcLp9XBdzi+eISiB74H/yE3hO6vLrrSVz/DLdZ+XR+xdFueVtx1GdEbl7aSdT2WVWnL7ie52vxcEm
+	sBfnrBpG9MzXTkc5tPbhsD0vNSp5WeoT+V+Xa5wXd3bYrSZjwEhztGnRdvrCSEpotiClEdJxfSxSB
+	uJTW+rEPRco8x0KQcpykLxvXV8KbeWOdaTLvdDruebMygnVP6W9oLyX8VrSfZuRmKJHmDSuuXuoBc
+	KI39h/cUWK86ITbDeVvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsmBn-00000007wfV-2mY7;
-	Fri, 05 Apr 2024 16:13:15 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rsn3y-000000089jy-3tuz;
+	Fri, 05 Apr 2024 17:09:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rsmBk-00000007wac-2paY;
-	Fri, 05 Apr 2024 16:13:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=ociFhFa0cP7BJBgogyzRy65MXmUjnTulpYz1ZIcD8Qk=; b=0CNFw485XFrXYeKEmy3hSstO6K
-	AHEV+xcniM7r9J5PAkHzeCOQH2WD6Pk46Yo6kriGExUqaVr2nxJG8YZOVj62SAEeDLAkKxpvLAOGJ
-	OX7dKSZsbKPDXB2cEzBweCRemhHP5yRj4gFEHFlkpUzhyEvm7iVABd1NFVV+BtQRg8yo=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rsmBX-00CJs8-BP; Fri, 05 Apr 2024 18:12:59 +0200
-Date: Fri, 5 Apr 2024 18:12:59 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	David Jander <david@protonic.nl>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: add Protonic MECSBC
- device-tree
-Message-ID: <a94e76b0-a1dc-4800-b0bb-c621b1364b0b@lunn.ch>
-References: <20240405-protonic-mecsbc-v2-0-0a6fedc78b9f@pengutronix.de>
- <20240405-protonic-mecsbc-v2-2-0a6fedc78b9f@pengutronix.de>
+	id 1rsn3u-000000089gT-0kXE;
+	Fri, 05 Apr 2024 17:09:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B0D91618CC;
+	Fri,  5 Apr 2024 17:09:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E99DC433F1;
+	Fri,  5 Apr 2024 17:09:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712336949;
+	bh=vMESqORx/RA9w4d/QSXK1eOJoSKOP0cUct1lvNlW1F4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Vu6sAsBkgXNJbd8lq1II7NYJ9WhiuBjf3HWQGqCKHhmm3W0G1gxePoxaERv+VuRM5
+	 aU9+7cLg9SB+z6f36HhOH/5Y+GzothUZ/wuSvUxbQFjdNhxJFVli4zDA8z/WKhDYIF
+	 Cl1nide42Rbr704RhLJdyalaV9BcnX/zjx7YdH7olqGqGMFqsV0BxOTzX4hNb6gRju
+	 F+husBsR6oAXCLdfcRkSbpLjjDHOPbqqOeDp+F6bE/FdcnDLlHfwN/m0k14jpaHH3a
+	 DrzmNacmZD+dviVAdBemZ0SRZjPepVS2AX6FmtZ4ffhAQJkcl/aqnp23hFa8k9vSKE
+	 /PBuyn8DqpP2Q==
+From: Vinod Koul <vkoul@kernel.org>
+To: rick.wertenbroek@heig-vd.ch, 
+ Rick Wertenbroek <rick.wertenbroek@gmail.com>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20240307095318.3651498-1-rick.wertenbroek@gmail.com>
+References: <20240307095318.3651498-1-rick.wertenbroek@gmail.com>
+Subject: Re: [PATCH] phy: rockchip: Fix typo in function names
+Message-Id: <171233694670.304553.7633655553349926405.b4-ty@kernel.org>
+Date: Fri, 05 Apr 2024 22:39:06 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240405-protonic-mecsbc-v2-2-0a6fedc78b9f@pengutronix.de>
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240405_091312_781546_D87B89A4 
-X-CRM114-Status: UNSURE (   6.73  )
+X-CRM114-CacheID: sfid-20240405_100910_294393_E3FE6F27 
+X-CRM114-Status: UNSURE (   4.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,27 +75,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
-> +	phy-handle = <&rgmii_phy1>;
-> +	phy-mode = "rgmii-id";
-> +	clock_in_out = "output";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		     &gmac1m1_tx_bus2
-> +		     &gmac1m1_rx_bus2
-> +		     &gmac1m1_rgmii_clk
-> +		     &gmac1m1_clkinout
-> +		     &gmac1m1_rgmii_bus>;
-> +	status = "okay";
-> +};
 
-Thank for changing it.
+On Thu, 07 Mar 2024 10:53:18 +0100, Rick Wertenbroek wrote:
+> Several functions had "rochchip" instead of "rockchip" in their name.
+> Replace "rochchip" by "rockchip".
+> 
+> 
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Applied, thanks!
 
-    Andrew
+[1/1] phy: rockchip: Fix typo in function names
+      commit: 9b6bfad9070a95d19973be17177e5d9220cbbf1f
+
+Best regards,
+-- 
+~Vinod
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
