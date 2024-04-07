@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE066CD11C2
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Apr 2024 10:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32302CD128A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Apr 2024 10:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hI2ZJ0z93gRILYw6FiZBJ9sSQG3MYfh9J2JGJUOmZTQ=; b=B/sbBpYMa6qDY2
-	ZFCjQ2X4mWfiwHVXNlyfRjGIS3V5Kl313UEprTBnYPs7jihAdcIZvBBLgS8kCWo6RPObG/mk86ydP
-	LFd8QrQPc5fi5zvuR+IOpV9hZInOZzBqrek5Bem4M5qXNB+soL8hdNllFZPzpmQVA9/A9oWRP9Gwp
-	W/tKkrRzKpSWOM3tefAhfxwxfE+0fB2Rp7wpcmo4VdI1/Ws89XEj1xoPgSfCA/wXeV4o+Qd1Aktht
-	MGsnojV9Wk/UtONZ3NiNSqvJND1mMtMxp839gwxGJ+6QSf6ZpPM+yEKqDizlsyBTdFJr4ydQd1KJi
-	GthdaEM+/db59a4efB0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Se0bbDiDWes7tAv49oJPQRaHPOPlpB7j5LkuXnt4TmI=; b=Xr2JOklahPbTMU
+	ntH5gf3qUeU5/T4DZCp7F8GAAKwTVAugEDqRNjme1PocvGHufT6mxVcqBqnYP+QJ3QcM9bVZnvHxj
+	/0cYkIHI7aMbKj1cLkPPlLoJmDahPaBbGmre9i+RNhLirThXjiwIV3St0hsevPIXjVY5m7DDa5o9A
+	0YR8YXSgYuDfvkcqHWNCjP1yzO3NSFVQBrWXBo/si4tcw/IIXiZlVnujhE6miO8o29zE1BGyY6YI6
+	PlC2jQXhCivPh3GbCFIkZ8vMg8rz5CcbcKMsGFsqNwZoEpa4dA5yGNYH4d4pNEkPzIAqyWjchbJ0C
+	2jE1FAWOSFeqwxEWpn4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtPdI-0000000CK7R-1193;
-	Sun, 07 Apr 2024 10:20:16 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1rtPdX-0000000CKE3-1aax;
+	Sun, 07 Apr 2024 10:20:31 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtPdE-0000000CK4Y-1QrI
+	id 1rtPdF-0000000CK4e-1kvf
 	for linux-rockchip@lists.infradead.org;
-	Sun, 07 Apr 2024 10:20:14 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4162b8cb3e9so30403735e9.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 07 Apr 2024 03:20:08 -0700 (PDT)
+	Sun, 07 Apr 2024 10:20:16 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2d4a8bddc21so46621631fa.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 07 Apr 2024 03:20:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712485207; x=1713090007; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=11Tiq4ypNUErXvEpc5K8WLl8hiInc4dHhElWuTzssUM=;
-        b=MZuuVA3tO0E+7OUvW8N94M8gyU8fE3bLN9ST0ydYNxCAH09CrzniAikPv0+O8v3n8M
-         ka7htMACnAXXx5SiUeV2Rjb3yNnpeT9/qOWgl5G64YIMTKxfpHPIOFNYLE9NjI/X8QlW
-         cXu9EVFKRF/cH9a13tBiE9zOl7Twh2bI9++EounysL2tsVCD5cjDvH1E0/cERhupbbXV
-         4iMdlGs6+ORw4HA7e3Q0dJGGNbUPnL9VE4n7ix6/QQeD8CTa0RQFt1tUoQP5jr2XTl0M
-         jms5HG4mFU6344kxr7E6BLZxXJ9TZQhrxInxF0QBjEe8QpnDzTOcoBSo7RP8k+8q56Vo
-         /e/Q==
+        d=linaro.org; s=google; t=1712485211; x=1713090011; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Zm0CQFK2zv7ApnNYT3L03j1/+cA4iy8BnGCrLtvzqTo=;
+        b=KgJZX4ebU28dgQOEcjbNzFJ+VBfMkc4i2ktdqA9wQAvdUfPCRznvWbJmnkU2Wzdh8q
+         bTCuH71iWrMbKJ0SxzipT+Ghy0YvC+VvSamFsGPAlH9a3n1efy9/AkQUOaxkk+RgIBxq
+         lfyqqrr6/JrhT4A+lEkndD242iVjrPFr3T7w3VRG7Za2NlJejdHspJwjSUlrx+xBzNik
+         mbM6KnIP6lhol+OOpOh/CW2XBOnbDX7Tx3HpK8lYRDs0W7IVUtlpUf8ClF5tiQQHEhna
+         BvC1SjiP8irs+NKxWSkm9PHnB1m5g643f/1842pl3L0NszBMg9sZ0mp2dDGDn71JPs1g
+         qwEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712485207; x=1713090007;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=11Tiq4ypNUErXvEpc5K8WLl8hiInc4dHhElWuTzssUM=;
-        b=O3Mwu0zMMfvaeClQ5CRb3UIcYxl4Wnqu/NjoYFZV4uOF9hyhbr2i52IfM1IlYVc+eu
-         rof3Qx35U0YEiNSteQIUkqdNYH6hZ+YMbDcLyDcM2zIfDy44VZfx2P5NtPQhZxAvOWMV
-         Oa8prUDQ7BZ5qLIYBxDXakrJaWF/FE782zSnzM2lM7wKIhmQfCbmhi16IT/d3CBb+4uZ
-         FUWMyj3NG5PcY/xIEgu6zmBgxdsf+Ps/UNQPIOp7Hh8NbFP4Gt7LbwNPYifvdSfyX4u/
-         nYOggTi7khh4kbgG5TFZi+/vKpfhHq33VtZHj5uyfF2jimxYRcwhGS9LFZPYAnxSGDa2
-         BgVg==
-X-Forwarded-Encrypted: i=1; AJvYcCVIja7hdGZUQPIS9ZX7TUUPWAJKAuIpQNervTgZmWy/IAn1uUaPaElkDtuTxYxgrIcBJPOsuHSSKHQrytweoZqLMlgKpdsg2CI6as8e8WW5xIx2
-X-Gm-Message-State: AOJu0YyhDoH+uuzz9KMR8QUYUvnZFl862ifpjfwuddn7vsQYUTzlPh2H
-	8UFFtrxmMylTeEey2zrBnxOiBQZLV7dzPMjpgQvxf6gIB1DDXVce87mQavh9f7A=
-X-Google-Smtp-Source: AGHT+IFIU1jOBpcjYd9g1ytjU4Sh0w9UXvYPRaXVoXA0dFkiv+NuQmTaiBxAo39r6aQx6O2BMQCGZw==
-X-Received: by 2002:a05:600c:c0e:b0:416:5327:ced with SMTP id fm14-20020a05600c0c0e00b0041653270cedmr1409027wmb.33.1712485207320;
-        Sun, 07 Apr 2024 03:20:07 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1712485211; x=1713090011;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Zm0CQFK2zv7ApnNYT3L03j1/+cA4iy8BnGCrLtvzqTo=;
+        b=kuv99QCzyiA4aYMPGsTXuWWiEYG3Ow1SmXdSQDgz2h8DTNPxtiKfWpq5Ey6m2VMYCR
+         ia4PG68ZQrMYZW9LYKsAxqV08Vw/FkStAeDIQTP8lr8YHj1SuZReiWt57JAEZfaK0vmP
+         6MFIHuHyKqf2m0W1Z2z0O4yyQqCmEGdglMJcevAwgcp94z04Ks+YC2997id+mY5+d8T0
+         GMLaG1Qtb4cEHBiZbz+XnwiRmvxOj6jvpy2+yvshg2p9AFqQn7ARmM5MqwzqcI/otYu9
+         Wxz4zQTgaiXkpxS6St0SvkDTs5+lf+2wCyGyYy3G8tYgAxkBqIpMogl8lpbjBDYmVrT0
+         hV7w==
+X-Forwarded-Encrypted: i=1; AJvYcCVz66Epfo952YDAA/Vm5FRW3MYmfigKJEkMaoHZp1vsmX5mmIZxRhXNN6O0/h2S4Aa4QBf4PbkOabx1Cke6X8NGX/Gp90VPye5as5r8wlCdQY9K
+X-Gm-Message-State: AOJu0Yw0Ct4+DrZ5jPCsgTSyKXe2CY6OBFOnCMqELmbxeW1yodkN6QMN
+	XuUxKix2tiscWT1uATKJlsNLuhASDWy7pTC1qZqDzyFp6gT+bf+YlLO1MjH1GIc=
+X-Google-Smtp-Source: AGHT+IEgAjSogfT+sOyuptAU4z+kLewM7d8oyVlExMI6z9adAX4hTN2911WGxmZGRduXlgbWJAsiIQ==
+X-Received: by 2002:a2e:9045:0:b0:2d8:681:dc9e with SMTP id n5-20020a2e9045000000b002d80681dc9emr3876638ljg.41.1712485211048;
+        Sun, 07 Apr 2024 03:20:11 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id f5-20020a5d58e5000000b0033ec9ddc638sm6354395wrd.31.2024.04.07.03.20.03
+        by smtp.gmail.com with ESMTPSA id f5-20020a5d58e5000000b0033ec9ddc638sm6354395wrd.31.2024.04.07.03.20.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 07 Apr 2024 03:20:06 -0700 (PDT)
+        Sun, 07 Apr 2024 03:20:10 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -118,15 +119,16 @@ To: Bjorn Helgaas <bhelgaas@google.com>,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 1/3] dt-bindings: PCI: cdns,cdns-pcie-host: drop redundant msi-parent and pci-bus.yaml
-Date: Sun,  7 Apr 2024 12:19:58 +0200
-Message-Id: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 2/3] dt-bindings: PCI: mediatek,mt7621: add missing child node reg
+Date: Sun,  7 Apr 2024 12:19:59 +0200
+Message-Id: <20240407102000.37213-2-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
+References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240407_032012_409193_66AD10AA 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240407_032013_517873_8AC91FB8 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,36 +145,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The binding reference common cdns-pcie-host.yaml, which already defines
-msi-parent and has a reference to pci-bus.yaml schema.  Drop redundant
-pieces here to make it a bit smaller.
+MT7621 PCI host bridge has children which apparently are also PCI host
+bridges, at least that's what the binding suggest.  The children have
+"reg" property, but do not explicitly define it.  Instead they rely on
+pci-bus.yaml schema, but that one has "reg" without any constraints.
+
+Define the "reg" for the children, so the binding will be more specific
+and later will allow dropping reference to deprecated pci-bus.yaml
+schema.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.yaml | 3 ---
- 1 file changed, 3 deletions(-)
+ .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml          | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.yaml b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.yaml
-index bc3c48f60fff..a8190d9b100f 100644
---- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.yaml
-+++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.yaml
-@@ -10,7 +10,6 @@ maintainers:
-   - Tom Joseph <tjoseph@cadence.com>
+diff --git a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
+index e63e6458cea8..61d027239910 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek,mt7621-pcie.yaml
+@@ -36,6 +36,9 @@ patternProperties:
+     $ref: /schemas/pci/pci-bus.yaml#
  
- allOf:
--  - $ref: /schemas/pci/pci-bus.yaml#
-   - $ref: cdns-pcie-host.yaml#
+     properties:
++      reg:
++        maxItems: 1
++
+       resets:
+         maxItems: 1
  
- properties:
-@@ -25,8 +24,6 @@ properties:
-       - const: reg
-       - const: cfg
- 
--  msi-parent: true
--
- required:
-   - reg
-   - reg-names
 -- 
 2.34.1
 
