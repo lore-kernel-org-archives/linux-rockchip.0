@@ -4,50 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37C91C67861
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 15:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE0CC67861
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 15:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/WF5Z6l8rrmSMdY2sdpKheC13HdEsGZPjz0eN26kcSk=; b=n+0g46iCTJT17+
-	NFBXrVgand3MqKkYyfKgBdI8U7PM4Lw6APoXtoneotFWkyfHTsaaNcn17I3evuWHBQWeavbDVqH3s
-	H4NDyGaJa/YF/imO0m+aW3mvHyXP8wsx040BSlc33cJL2vqKCQ2iHVb/G6w62NUeX/RNe9alSBhZT
-	RHILDKzEIWxIH45noTD9lPimDXHY7Oabvlmp6RxeLeiUllnJ9ax5o3bu29FJIbhw1p4WODdgk5V4q
-	WrzsaCLm5BVgKnqAQcgKpRBDy44dbEiMoDByaFb475jA2OApDNlMOIzueK94B6anDj/KcZsY4sOMo
-	4L7fAgvnQSMEpC0zU9Kg==;
+	List-Owner; bh=JVS4SlUOLzaUFfoDEmnNJScNbPmL1FZmVjxonXC9NL0=; b=EYqc2YMS7gWKnc
+	cvBkOvFhJsf/AXDFN8TUeMjVBXLG4g5Qujz5sLDL+Zb0XHoT1Ecp9Nv16fDjNRZOkaZVnrTWRbUF6
+	OJtXXsuclhWfw0y86cKb7CIN3qo+ph4MQX+ms8Vbzo4nxZ9wct+HI596HFbDbBOtNImqrnvSoOWEo
+	+qfiuLbEQP2giIQtkRKTLaJJ078enAmw5OUNPQjlWVyun9OXjKUoyndWzB/zMfPicEWqV2OHMrEBC
+	WxYesf6g8AgTzF0/dtErzbZRbCIxqMj5qPkJbe0wAqn76/x5NuRUC6mUaiIYZIjAlDUl6kt8UA5pX
+	Vu7RR6Q7njpPZQG9HcVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtqYf-0000000FyGK-1hNk;
-	Mon, 08 Apr 2024 15:05:17 +0000
+	id 1rtqZJ-0000000FyUp-27kJ;
+	Mon, 08 Apr 2024 15:05:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtqYZ-0000000FyES-37Ih;
-	Mon, 08 Apr 2024 15:05:14 +0000
+	id 1rtqZF-0000000FyT5-1WDM;
+	Mon, 08 Apr 2024 15:05:54 +0000
 Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rtqYK-0007Xz-Fd; Mon, 08 Apr 2024 17:04:56 +0200
+	id 1rtqZ4-0007Yf-1a; Mon, 08 Apr 2024 17:05:42 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>
-Cc: Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+To: "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, David Wu <david.wu@rock-chips.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable onboard spi flash for rock-3a
-Date: Mon, 08 Apr 2024 17:04:55 +0200
-Message-ID: <3066222.xgJ6IN8ObU@diego>
-In-Reply-To: <b32c284e-f3ec-44b0-abbd-7fa403bc9870@kwiboo.se>
-References: <20240408124005.182565-1-amadeus@jmu.edu.cn>
- <421ab43b-ff92-41c6-9904-3c7681c926be@kwiboo.se>
- <b32c284e-f3ec-44b0-abbd-7fa403bc9870@kwiboo.se>
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
+Date: Mon, 08 Apr 2024 17:05:40 +0200
+Message-ID: <12148577.zAa99ISigo@diego>
+In-Reply-To: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_080511_997819_9F8DC6FE 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20240408_080553_467519_4C15734F 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,53 +67,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 8. April 2024, 16:56:59 CEST schrieb Jonas Karlman:
-> On 2024-04-08 16:44, Jonas Karlman wrote:
-> > On 2024-04-08 14:40, Chukun Pan wrote:
-> >> There is a mx25u12835f spi flash on this board, enable it.
-> >>
-> >> [    2.525805] spi-nor spi4.0: mx25u12835f (16384 Kbytes)
-> >>
-> >> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> >> ---
-> >>  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 12 ++++++++++++
-> >>  1 file changed, 12 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> >> index a5e974ea659e..d8738cc47c73 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> >> @@ -757,6 +757,18 @@ &sdmmc2 {
-> >>  	status = "okay";
-> >>  };
-> >>  
-> >> +&sfc {
-> > 
-> > This is missing:
-> > 
-> > 	#address-cells = <1>;
-> > 	#size-cells = <0>;
-> > 
-> >> +	status = "okay";
-> >> +
-> >> +	flash@0 {
-> >> +		compatible = "jedec,spi-nor";
-> >> +		reg = <0x0>;
-> >> +		spi-max-frequency = <50000000>;
-> > 
-> > At least in U-Boot the spi clock only support 24, 100 or 200 mhz and I
-> > am pretty sure the spi flash support 100mhz, so I would suggest you test
-> > with 100mhz, same as used on other rk356x boards.
+Am Montag, 8. April 2024, 08:44:10 CEST schrieb Sascha Hauer:
+> The dwmac supports specifying the RGMII clock delays, but it is
+> recommended to use rgmii-id and to specify the delays in the phy node
+> instead [1].
 > 
-> Sorry, looked at spi clock instead of sfc clock.
-> sfc clock support 24, 50, 75, 100, 125 and 150 mhz.
+> Change the example accordingly to no longer promote this undesired
+> setting.
+> 
+> [1] https://lore.kernel.org/all/1a0de7b4-f0f7-4080-ae48-f5ffa9e76be3@lunn.ch/
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-I think in some previous discussion the agreement was that the node
-should specify the max frequency the flash supports and have the
-controller worry about its own clock ranges.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Though in this case the 50MHz for the flash even matches the clock
-frequency supported by the sfc
+> ---
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> index 70bbc4220e2ac..6bbe96e352509 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> @@ -137,8 +137,6 @@ examples:
+>          assigned-clock-parents = <&ext_gmac>;
+>  
+>          rockchip,grf = <&grf>;
+> -        phy-mode = "rgmii";
+> +        phy-mode = "rgmii-id";
+>          clock_in_out = "input";
+> -        tx_delay = <0x30>;
+> -        rx_delay = <0x10>;
+>      };
+> 
+> ---
+> base-commit: 39cd87c4eb2b893354f3b850f916353f2658ae6f
+> change-id: 20240408-rockchip-dwmac-rgmii-id-binding-6166af659845
+> 
+> Best regards,
+> 
+
+
 
 
 
