@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C9CCD1297
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 22:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B458CD1292
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 22:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IFYrW/gXMA43YTUtGBFhXp9wms1Dt/QZ3QINnDTGu/I=; b=bTOu5GqhBxH1gB
-	4fkiKXlMQUygU6KR91nWovbKfuQSxIKcFWAl2/VybuGy5Qy6oxTqMzIVBwdcEU2WlVIZntFyityf4
-	mmevU1CTxITBxrp3+dU9J3tVHvjDdWlDrXtPpJ7bQsFsJ3ZrN3dALp7ieRAnHLMURe5SbFqv/xQph
-	yX+yKaNbzdUn1fkunwoRg4npNNRQwUPYutNMHaP2hOsGXZpcsNBnO5BBUaKt58CefY+nNPeJzjZ7J
-	8Tx6FYrHMVNhZawu+qNnBGO1RRGpyHu1xKUmzmnAjALbDXXYsnAXBBZF3gmqYku820zcQSYaf5ujs
-	Y+5q+9LMBn9S9+xscmYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L7jThM+I5vhMILL7+iw980CdJo46GaJlGi5oYFogXK0=; b=yOh4FTHgf4ji8C
+	qI55/we9wONJn0J3HH/Qou3rCnyvlf/ZP2/35XNK7oRRC6tIifEASZQZ2DSmYuIfL1sCQXhPq0T4l
+	sgXs+q8Hj/YxwrtoFEpWrMXRF5sXzADY6xIR/d2/JPiMMU62rXNtDBuKC00RGNVHl2tKoG7W4Q3VE
+	M60hPUOADu/cPVlElC8hf4BwQ5dzL4q+jHVdbX4GuWWIp6pLRuJPikv6Mk8fpxUICQCoQzY/aLgUu
+	cl8o+vKXxS4R1YMVhFCFdIZrOsveBJn7fy4vLFf9N9Lf2IIJH/+2aed4haqB+bAe3tiDfKcZ1KOoI
+	YHMIwpiredRTnCzKpjKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtxpe-0000000H44t-2R1N;
-	Mon, 08 Apr 2024 22:51:18 +0000
+	id 1rtxpf-0000000H45i-2OLd;
+	Mon, 08 Apr 2024 22:51:19 +0000
 Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtxpZ-0000000H416-2xkL;
+	id 1rtxpZ-0000000H415-32I8;
 	Mon, 08 Apr 2024 22:51:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1712616670;
-	bh=ev+tQTr8gTQ2A1HrDcPurjzutrjaEUDxOmoQnwQqNLg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=P1ruVL0slV7WpN8Hw7KU5BRFqHZL1ahW6UdWeDRtk0aIQOr9+HB95bpMWTdUPWLX7
-	 VBLn3meCDKSiKDww7vnjElKojLHFFXKEzur66Zt+yrLXLpszhDrW+E3e5xl5OEHLgF
-	 QIXRgYb4DiTSlszmQFrfqXiXVO98HO1CM7X+saBXxvELOlY2kyK1J/uj2fa3CAYsa0
-	 ZuN9kBCHaM3zmpim190HU1SAWC4fteVNuhfAJESUjHptjX4tGlTz7tpiTakoSpmkis
-	 DZrT32VLbM2cthgcHNpmQmQcHbFvTKVxq+kRsHUt6oUTccrFKsjjQTUoeQOFhLcMPF
-	 Yh16fI2H1T5pQ==
+	bh=dhsop9SQlPpsgm4YRI8kzGbaMb8E3L8hiOp2tMvdQfA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Toxv8jP5cpKntaUO0B6jcxi4bdmqYLovvAe7TVECbyUD6OVgPGmJ/o470IgiZ5E/S
+	 VbwjEC8zO5B87pyr4RnDFt/60e6D6cgiK2AHwmk5ADuDAfimUKZyMfVPgrxWJpUEIH
+	 cwBuRQMC32kCegpGd511/lve4qJ2RhM25iie0DBZlGBQ9BIjv1ZjZsociwuJDExc0A
+	 PCIhpVTFnimJCXk+yIkNUUTkOifAK/pVjXo9wc3oAU49WUZ14qiQxlJICmWZsYPV4I
+	 gWJvF6ycib4ypQoIPfdA1QxulVX3CcfgWKu4fo9DbBJHO5K3EsSnmKCUNvIS6lx13u
+	 R2VpbtqCN9eUw==
 Received: from jupiter.universe (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9E5AB37820A4;
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9739037809CE;
 	Mon,  8 Apr 2024 22:51:10 +0000 (UTC)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 3B3534800CB; Tue,  9 Apr 2024 00:51:10 +0200 (CEST)
+	id 3A1DE4800CD; Tue,  9 Apr 2024 00:51:10 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Vinod Koul <vkoul@kernel.org>,
@@ -59,18 +59,15 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v5 01/10] dt-bindings: phy: add rockchip usbdp combo phy document
-Date: Tue,  9 Apr 2024 00:50:28 +0200
-Message-ID: <20240408225109.128953-2-sebastian.reichel@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v5 00/10] RK3588 USBDP support
+Date: Tue,  9 Apr 2024 00:50:27 +0200
+Message-ID: <20240408225109.128953-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240408225109.128953-1-sebastian.reichel@collabora.com>
-References: <20240408225109.128953-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_155113_908674_055F321F 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240408_155113_920210_835780EC 
+X-CRM114-Status: GOOD (  17.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,183 +79,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add device tree binding document for Rockchip USBDP Combo PHY
-with Samsung IP block.
-
-Co-developed-by: Frank Wang <frank.wang@rock-chips.com>
-Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- .../bindings/phy/phy-rockchip-usbdp.yaml      | 148 ++++++++++++++++++
- 1 file changed, 148 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-new file mode 100644
-index 000000000000..1f1f8863b80d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-@@ -0,0 +1,148 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/phy-rockchip-usbdp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip USBDP Combo PHY with Samsung IP block
-+
-+maintainers:
-+  - Frank Wang <frank.wang@rock-chips.com>
-+  - Zhang Yubing <yubing.zhang@rock-chips.com>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3588-usbdp-phy
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#phy-cells":
-+    description: |
-+      Cell allows setting the type of the PHY. Possible values are:
-+      - PHY_TYPE_USB3
-+      - PHY_TYPE_DP
-+    const: 1
-+
-+  clocks:
-+    maxItems: 4
-+
-+  clock-names:
-+    items:
-+      - const: refclk
-+      - const: immortal
-+      - const: pclk
-+      - const: utmi
-+
-+  resets:
-+    maxItems: 5
-+
-+  reset-names:
-+    items:
-+      - const: init
-+      - const: cmn
-+      - const: lane
-+      - const: pcs_apb
-+      - const: pma_apb
-+
-+  rockchip,dp-lane-mux:
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+    minItems: 2
-+    maxItems: 4
-+    items:
-+      maximum: 3
-+    description:
-+      An array of physical Type-C lanes indexes. Position of an entry
-+      determines the DisplayPort (DP) lane index, while the value of an entry
-+      indicates physical Type-C lane. The supported DP lanes number are 2 or 4.
-+      e.g. for 2 lanes DP lanes map, we could have "rockchip,dp-lane-mux = <2,
-+      3>;", assuming DP lane0 on Type-C phy lane2, DP lane1 on Type-C phy
-+      lane3. For 4 lanes DP lanes map, we could have "rockchip,dp-lane-mux =
-+      <0, 1, 2, 3>;", assuming DP lane0 on Type-C phy lane0, DP lane1 on Type-C
-+      phy lane1, DP lane2 on Type-C phy lane2, DP lane3 on Type-C phy lane3. If
-+      DP lanes are mapped by DisplayPort Alt mode, this property is not needed.
-+
-+  rockchip,u2phy-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the 'usb2 phy general register files'.
-+
-+  rockchip,usb-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the 'usb general register files'.
-+
-+  rockchip,usbdpphy-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the 'usbdp phy general register files'.
-+
-+  rockchip,vo-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the 'video output general register files'.
-+      When select the DP lane mapping will request its phandle.
-+
-+  sbu1-dc-gpios:
-+    description:
-+      GPIO connected to the SBU1 line of the USB-C connector via a big resistor
-+      (~100K) to apply a DC offset for signalling the connector orientation.
-+    maxItems: 1
-+
-+  sbu2-dc-gpios:
-+    description:
-+      GPIO connected to the SBU2 line of the USB-C connector via a big resistor
-+      (~100K) to apply a DC offset for signalling the connector orientation.
-+    maxItems: 1
-+
-+  orientation-switch:
-+    description: Flag the port as possible handler of orientation switching
-+    type: boolean
-+
-+  mode-switch:
-+    description: Flag the port as possible handler of altmode switching
-+    type: boolean
-+
-+  port:
-+    $ref: /schemas/graph.yaml#/properties/port
-+    description:
-+      A port node to link the PHY to a TypeC controller for the purpose of
-+      handling orientation switching.
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - resets
-+  - reset-names
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
-+
-+    usbdp_phy0: phy@fed80000 {
-+      compatible = "rockchip,rk3588-usbdp-phy";
-+      reg = <0xfed80000 0x10000>;
-+      #phy-cells = <1>;
-+      clocks = <&cru CLK_USBDPPHY_MIPIDCPPHY_REF>,
-+               <&cru CLK_USBDP_PHY0_IMMORTAL>,
-+               <&cru PCLK_USBDPPHY0>,
-+               <&u2phy0>;
-+      clock-names = "refclk", "immortal", "pclk", "utmi";
-+      resets = <&cru SRST_USBDP_COMBO_PHY0_INIT>,
-+               <&cru SRST_USBDP_COMBO_PHY0_CMN>,
-+               <&cru SRST_USBDP_COMBO_PHY0_LANE>,
-+               <&cru SRST_USBDP_COMBO_PHY0_PCS>,
-+               <&cru SRST_P_USBDPPHY0>;
-+      reset-names = "init", "cmn", "lane", "pcs_apb", "pma_apb";
-+      rockchip,u2phy-grf = <&usb2phy0_grf>;
-+      rockchip,usb-grf = <&usb_grf>;
-+      rockchip,usbdpphy-grf = <&usbdpphy0_grf>;
-+      rockchip,vo-grf = <&vo0_grf>;
-+    };
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpUaGlzIGFkZHMgUm9ja2NoaXAgUkszNTg4IFVTQkRQIFBIWSBzdXBwb3J0LCB3aGljaCBp
+cyB1c2VkIGZvciB0d28gb2YgdGhlIHRocmVlClVTQjMgY29udHJvbGxlcnMgaW4gdGhlIFJLMzU4
+OCAodGhlIHRoaXJkIG9uZSB1c2VzIGEgZGlmZmVyZW50IFBIWSwgd2hpY2ggaXMKYWxyZWFkeSBz
+dXBwb3J0ZWQpLiBUaGUgVVNCRFAgUEhZIG9mZmVycyBVU0IzIGR1YWwtcm9sZSBhbmQgRGlzcGxh
+eVBvcnQuIFRoZQpkcml2ZXIgYW5kIGJpbmRpbmdzIGJlaW5nIHVwc3RyZWFtZWQgY29udGFpbnMg
+dGhlIERQIHBhcnRzLCBidXQgb25seSBVU0IzIGhhcwpiZWVuIHRlc3RlZCBieSBtZSAodXBzdHJl
+YW0gZG9lcyBub3QgeWV0IGhhdmUgYSBEUk0gRFAgYnJpZGdlIGRyaXZlciBmb3IgdGhpcwpwbGF0
+Zm9ybSkuCgpXaGF0IGhhcyBiZWVuIHRlc3RlZDoKIC0gVVNCMyBUeXBlIEEgcG9ydHMgb24gUm9j
+ayA1QSwgUm9jayA1QiwgRVZCMQogLSBVU0IgVHlwZSBDIHBvcnQgb24gRVZCMSBpbiBIb3N0IG1v
+ZGUKCkkgZGlkIG5vdCB5ZXQgaW5jbHVkZSBhIHBhdGNoIHRvIGVuYWJsZSB0aGUgVHlwZS1DIGZy
+b20gdGhlIFJvY2sgNUIsIHNpbmNlIHRoYXQKcmVxdWlyZXMgZW5hYmxpbmcgcHJvcGVyIHN1cHBv
+cnQgZm9yIHRoZSBmdXNiMzAyLiBTaW5jZSB0aGUgc3lzdGVtIGlzIHVzdWFsbHkKc3VwcGxpZWQg
+dmlhIFVTQi1DIGFuZCB3aXRob3V0IGFueSBiYXR0ZXJ5IGJhY2t1cCwgdGhpcyBlYXNpbHkgcmVz
+dWx0cyBpbgpzeXN0ZW0gcmVzZXQgd2hlbiB0aGUgcG93ZXItZGVsaXZlcnkgbmVnb3RpYXRpb24g
+aGFwcGVucy4gQXMgdGhpcyBpc3N1ZSBpcwppbmRlcGVuZGVudCBmcm9tIHRoZSBVU0JEUCBQSFks
+IEkgc2tpcHBlZCBlbmFibGluZyB0aGF0IHBvcnQgb24gUm9jayA1QiBmb3IKbm93LgoKWW91IGNh
+biBmaW5kIGEgYnJhbmNoIHdpdGggdGhlc2UgcGF0Y2hlcyBoZXJlOgoKaHR0cHM6Ly9naXRsYWIu
+Y29sbGFib3JhLmNvbS9oYXJkd2FyZS1lbmFibGVtZW50L3JvY2tjaGlwLTM1ODgvbGludXgvLS9j
+b21taXRzL3JrMzU4OC11c2JkcAoKQ2hhbmdlcyBzaW5jZSBQQVRDSHY0OgogKiBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9hbGwvMjAyNDAzMjUxNDE2NTMuODQ5MTAtMS1zZWJhc3RpYW4ucmVpY2hl
+bEBjb2xsYWJvcmEuY29tLwogKiB1cGRhdGUgY29weXJpZ2h0CiAqIGRyb3AgbGludXgvY2xrLXBy
+b3ZpZGVyLmggaW5jbHVkZQogKiByZXBsYWNlIG9mLmggd2l0aCBtb2RfZGV2aWNldGFibGUuaAog
+KiByZS1jaGVjayBuZWNlc3NpdHkgb2Ygb3RoZXIgaW5jbHVkZWQgaGVhZGVycwogKiBya191ZHBo
+eV9zZXR1cCwgcmtfdWRwaHlfdXNiM19waHlfaW5pdDogcmVtb3ZlIHJlZHVuZGFudCBpbml0IG9m
+IHJldCB2YXJpYWJsZQogKiBya191ZHBoeV9wYXJzZV9kdDogZGlyZWN0bHkgcmV0dXJuIHJrX3Vk
+cGh5X3Jlc2V0X2luaXQoKQoKQ2hhbmdlcyBzaW5jZSBQQVRDSHYzOgogKiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9hbGwvMjAyNDAyMTYxNzA1MTQuNzUyMDAtMS1zZWJhc3RpYW4ucmVpY2hlbEBj
+b2xsYWJvcmEuY29tLwogKiBSZWJhc2UgdG8gdjYuOS1yYzEKICogQ29sbGVjdCBSZXZpZXdlZC1i
+eSBhbmQgVGVzdGVkLWJ5IGZyb20gSGVpa28gZm9yIHBhdGNoIDEgKyAyCgpDaGFuZ2VzIHNpbmNl
+IFBBVENIdjI6CiAqIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI0MDIxMzE2MzYwOS40
+NDkzMC0xLXNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20vCiAqIERyb3AgcGF0Y2ggMSsy
+IChHUkYgRFQgYmluZGluZ3MgZ290IG1lcmdlZCBieSBIZWlrbyBTdMO8Ym5lcikKICogVVNCRFAg
+UEhZIERUIGJpbmRpbmc6IG1vcmUgc3BlbGxpbmcgZml4ZXMKICogVVNCRFAgUEhZIERUIGJpbmRp
+bmc6IGFkZCBSZXZpZXdlZC1ieSBmcm9tIENvbm9yIERvb2xleQogKiBVU0JEUCBQSFkgRFQgYmlu
+ZGluZzogc3BlY2lmeSAzIGFzIG1heGltdW0gdmFsdWUgZm9yIHJvY2tjaGlwLGRwLWxhbmUtbXV4
+IGl0ZW1zCiAqIGFsbCBwYXRjaGVzOiByZW1vdmUgY2hpbGQgbm9kZXMgZm9yIHVzYjMtcG9ydCBh
+bmQgZHAtcG9ydCBhbmQgdXNlIFBIWSBjZWxsIGluc3RlYWQKICogVVNCRFAgUEhZIGRyaXZlcjog
+ZHJvcCBzb21lIGhlYWRlciBpbmNsdWRlcwogKiBVU0JEUCBQSFkgZHJpdmVyOiByZXdvcmsgcmtf
+dWRwaHlfZ3JmcmVnX3dyaXRlIHRvIHVzZSBGSUVMRF9QUkVQX0NPTlNUCiAqIFVTQkRQIFBIWSBk
+cml2ZXI6IGFkZCBuZXdsaW5lIGFmdGVyIGJyZWFrOyBpbiBzd2l0Y2ggY2FzZXMKICogVVNCRFAg
+UEhZIGRyaXZlcjogbWFrZSBzb21lIGZ1bmN0aW9ucyB2b2lkCgpDaGFuZ2VzIHNpbmNlIFBBVENI
+djE6CiAqIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI0MDIwOTE4MTgzMS4xMDQ2ODct
+MS1zZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tLwogKiBWTyBHUkYgRFQgYmluZGluZzog
+Q29sbGVjdCBBY2tlZC1ieSBmcm9tIENvbm9yIERvb2xleQogKiBVU0IzIHN5c2NvbiBEVCBiaW5k
+aW5nOiBDb2xsZWN0IEFja2VkLWJ5IGZyb20gQ29ub3IgRG9vbGV5CiAqIFVTQkRQIFBIWSBEVCBi
+aW5kaW5nOiBmaXggc3BlbGxpbmcKICogVVNCRFAgUEhZIERUIGJpbmRpbmc6IGFkZCBtYXhJdGVt
+czogMSB0byBncGlvcwogKiBVU0JEUCBQSFkgZHJpdmVyOiB1c2UgcmtfdWRwaHlfIHByZWZpeCBl
+dmVyeXdoZXJlCiAqIFVTQkRQIFBIWSBEVCBhZGRpdGlvbjogZml4IG5vZGVuYW1lcyBhbmQgcHJv
+cGVydHkgb3JkZXIKICogVVNCRFAgUEhZIERUIGFkZGl0aW9uOiBmaXggcG9zaXRpb24gb2YgdGhl
+IEdSRiBub2RlcwogKiBhZGQgbmV3IHBhdGNoZXMgZml4aW5nIGV4aXN0aW5nIFVTQjIgUEhZIG5v
+ZGVuYW1lcy9wcm9wZXJ0eSBvcmRlcgpOb3QgY2hhbmdlZDoKICogcm9ja2NoaXAsZHAtbGFuZS1t
+dXg6IFdoeSAibXV4IiBhbmQgbm90ICJtYXAiPwogIC0gVGhpcyBpcyBhYm91dCBtdXhpbmcgRFAg
+bGFuZXMgdnMgVVNCMyBsYW5lcy4gSSBrZXB0IG11eCBpbnN0ZWFkCiAgICBvZiBtYXAsIHNpbmNl
+IHRoYXQncyB1c2VkIGRvd25zdHJlYW0gYW5kIHRoZXJlIGRvZXMgbm90IHNlZW0gdG8KICAgIGJl
+IGEgZ29vZCByZWFzb24gdG8gZGl2ZXJnZT8KCi0tIFNlYmFzdGlhbgoKU2ViYXN0aWFuIFJlaWNo
+ZWwgKDEwKToKICBkdC1iaW5kaW5nczogcGh5OiBhZGQgcm9ja2NoaXAgdXNiZHAgY29tYm8gcGh5
+IGRvY3VtZW50CiAgcGh5OiByb2NrY2hpcDogYWRkIHVzYmRwIGNvbWJvIHBoeSBkcml2ZXIKICBh
+cm02NDogZGVmY29uZmlnOiBlbmFibGUgUm9ja2NoaXAgU2Ftc3VuZyBVU0JEUCBQSFkKICBhcm02
+NDogZHRzOiByb2NrY2hpcDogZml4IHVzYjJwaHkgbm9kZW5hbWUgZm9yIHJrMzU4OAogIGFybTY0
+OiBkdHM6IHJvY2tjaGlwOiByZW9yZGVyIHVzYjJwaHkgcHJvcGVydGllcyBmb3IgcmszNTg4CiAg
+YXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCBVU0JEUCBwaHlzIG9uIHJrMzU4OAogIGFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBhZGQgVVNCMyBEUkQgY29udHJvbGxlcnMgb24gcmszNTg4CiAgYXJtNjQ6
+IGR0czogcm9ja2NoaXA6IGFkZCBVU0IzIHRvIHJrMzU4OC1ldmIxCiAgYXJtNjQ6IGR0czogcm9j
+a2NoaXA6IGFkZCB1cHBlciBVU0IzIHBvcnQgdG8gcm9jay01YQogIGFybTY0OiBkdHM6IHJvY2tj
+aGlwOiBhZGQgbG93ZXIgVVNCMyBwb3J0IHRvIHJvY2stNWIKCiAuLi4vYmluZGluZ3MvcGh5L3Bo
+eS1yb2NrY2hpcC11c2JkcC55YW1sICAgICAgfCAgMTQ4ICsrCiAuLi4vYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTg4LWV2YjEtdjEwLmR0cyAgICAgfCAgMTQzICsrCiAuLi4vYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTg4LXJvY2stNWIuZHRzICAgICAgfCAgIDE3ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTg4LmR0c2kgICAgICB8ICAgNzIgKwogLi4uL2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzU4OHMtcm9jay01YS5kdHMgICAgIHwgICAxOCArCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzU4OHMuZHRzaSAgICAgfCAgMTA1ICstCiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVm
+Y29uZmlnICAgICAgICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMvcGh5L3JvY2tjaGlwL0tj
+b25maWcgICAgICAgICAgICAgICAgICB8ICAgMTIgKwogZHJpdmVycy9waHkvcm9ja2NoaXAvTWFr
+ZWZpbGUgICAgICAgICAgICAgICAgIHwgICAgMSArCiBkcml2ZXJzL3BoeS9yb2NrY2hpcC9waHkt
+cm9ja2NoaXAtdXNiZHAuYyAgICAgfCAxNjA4ICsrKysrKysrKysrKysrKysrCiAxMCBmaWxlcyBj
+aGFuZ2VkLCAyMTE1IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUg
+MTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcGh5LXJvY2tjaGlw
+LXVzYmRwLnlhbWwKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3BoeS9yb2NrY2hpcC9waHkt
+cm9ja2NoaXAtdXNiZHAuYwoKLS0gCjIuNDMuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
