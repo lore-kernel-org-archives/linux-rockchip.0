@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B777C67861
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 12:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4382CCD128A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 14:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=N2O2MpDhVEu/RCdn5VJpAxKYW0OYfhpKasqjuaD3d5g=; b=tKGgZ/8Pf+ab1Q
-	0DhjjjX7nX8CSUoAWYYJRytNFbokRGyymr6lYTdTHx6rBtSbCJrQiHCJITe27lMX/TLlBW9vTSpj0
-	8e2Mtvd6PK+qU2hX8OQQluacfPG5D3q486BmLSVCXCw0MaaRsPjYi8QCjduEakXrlOuQjtmXT6sDD
-	fF6nTkswcc0vfJ9xG/uau8bEHJFneslCoROm/K9fQLlvfqabsztpeWQGs45am/mHqohmAgNeELKPa
-	hjYAPchSQDwd2lR2736ye7Uk6MJ4fObDfQwcn75bhGKnmbm7SwTBBUdhj2KBKcEjMlP8gbG06Wzkl
-	k6sMERwtPp2GaHEQJtxQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v16FgsaA43tTH+bUdv7qNSmsUABytSMtHJcqj5xS3fg=; b=NPWD7BfwelCFmt
+	euBeiaIacmuKIxLnd8T3T1Tg7FQRgsKdrsRVS1EBtIEako59DTAra/q6CjQZgidqV06Jh1sPFqQWr
+	iEXV90cV3RTvilsgKQaehtyib5cfPkY9kM5wITql3SnCiPxmJMM9ZWzzSIr0JvRkHshtqwYGgO9Sj
+	qkoTUQMRH6cHS88YL7PWNcz055uYgwWJPQUnQ937zuBHcOm1V+mEzyM1Lc9fj07X2w12LwyUfbNH8
+	VjsnJ5hCTce53eg1aaIjNzvwyjgeu1M9+jvCxS9XBNbeQYvvfLvOTMBF1EmNBdqKS7uPkfzNkaNuc
+	bFpKsY+9LHN3/bnmHQQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtoIh-0000000FXfc-1gJ8;
-	Mon, 08 Apr 2024 12:40:39 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1rtpav-0000000FoKY-2iF7;
+	Mon, 08 Apr 2024 14:03:36 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtoId-0000000FXd5-0U1B;
-	Mon, 08 Apr 2024 12:40:37 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:8840:aaa3:4cf8:b210:c09d])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 446BB7E013A;
-	Mon,  8 Apr 2024 20:40:10 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1rtpae-0000000FoHV-0edA;
+	Mon, 08 Apr 2024 14:03:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=1qOq8XoQxyzzDTfs8K+aQZKQnMgZY9GLpqbLu4JmADs=; b=KK72Uy1HmQJkO5LLJcSkB9FfF5
+	aJ5Vj48TarjfqiVcw0bFbV01ebaIksfSldas+x19/+tViz6tQzGGQIgrSZ4JrgMPr3E/OU8jlN+39
+	ZzhdrG1xfRFJNEsaPT/GdP1GcS6JUM+ljNH33QPm7SMJD6mc08MKsnZMFXkCBF8xtcwY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1rtpaL-00CUtB-4d; Mon, 08 Apr 2024 16:02:57 +0200
+Date: Mon, 8 Apr 2024 16:02:57 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 1/1] arm64: dts: rockchip: enable onboard spi flash for rock-3a
-Date: Mon,  8 Apr 2024 20:40:05 +0800
-Message-Id: <20240408124005.182565-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
+Message-ID: <74c77199-a885-406f-8af0-477956beae59@lunn.ch>
+References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGBpIVksaGENPHUlJHUtNT1UTARMWGhIXJBQOD1
-	lXWRgSC1lBWUlPSx5BSBlIQUkYS0tBQ0NPS0EaGhpIQU8YHUNBGUlKS0EYS0IfWVdZFhoPEhUdFF
-	lBWU9LSFVKSktISkNVSktLVUtZBg++
-X-HM-Tid: 0a8ebdb921fc03a2kunm446bb7e013a
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nyo6CRw*SzMRSiIhDCIWLDot
-	HT8KFAxVSlVKTEpJTkNLS0pLQ05MVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS0tBQ0NPS0EaGhpIQU8YHUNBGUlKS0EYS0IfWVdZCAFZQUlLT083Bg++
+Content-Disposition: inline
+In-Reply-To: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_054035_395173_434398A4 
-X-CRM114-Status: UNSURE (   7.13  )
+X-CRM114-CacheID: sfid-20240408_070316_462946_4B729352 
+X-CRM114-Status: UNSURE (   9.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,41 +76,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a mx25u12835f spi flash on this board, enable it.
+On Mon, Apr 08, 2024 at 08:44:10AM +0200, Sascha Hauer wrote:
+> The dwmac supports specifying the RGMII clock delays, but it is
+> recommended to use rgmii-id and to specify the delays in the phy node
+> instead [1].
+> 
+> Change the example accordingly to no longer promote this undesired
+> setting.
+> 
+> [1] https://lore.kernel.org/all/1a0de7b4-f0f7-4080-ae48-f5ffa9e76be3@lunn.ch/
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-[    2.525805] spi-nor spi4.0: mx25u12835f (16384 Kbytes)
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index a5e974ea659e..d8738cc47c73 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -757,6 +757,18 @@ &sdmmc2 {
- 	status = "okay";
- };
- 
-+&sfc {
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0x0>;
-+		spi-max-frequency = <50000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
-+	};
-+};
-+
- &tsadc {
- 	rockchip,hw-tshut-mode = <1>;
- 	rockchip,hw-tshut-polarity = <0>;
--- 
-2.25.1
-
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
