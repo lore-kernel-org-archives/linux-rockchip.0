@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D677C67861
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 15:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CEFFCD1296
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 17:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EfoWwuhJOm6EHkAkooeM+VAYnIoJB10u9BIsiLSV8q0=; b=vYjy2onf4aVCzg
-	fKZY8drg/NoXYMylSNll9OraMq/ivmDV93oRoQzwkWwt3wSZIU/nteLhtuKF2uADFxyEHicLQivUI
-	XazFy7mSDaY7rzIfY+9sN5HM0tJXFGO5UT+QJKT+BWvZcjYfRIsYwGuA6JbQw7+7/hVxh+KNoHfDF
-	kj5lrE4wuCiCpCONZlgfWkwfzD8IEdAX1y5fSy+dtBnolLNXOXKyb3NUfME+ZvhMXr04sXiFjV9cd
-	tOy9zBUwUKmRTGZFtjTp665bOvHTlQGpRPPQVijgEeCj9FHxqZIUu48WUclM9P5hbisk0cuLqUu0o
-	Vg0pKzix0k1gw3fSsXfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kcr4+zp3Ev+SQV1lUY/aQn27kFyX2N+06fEiwN2RLNc=; b=Yp+2BzU1UhyyOFb8O0ZakgJLAQ
+	r3cfPZzOFt9C/1844zWIuYQIrVI2sMIAHExGwofB4Klk9VkSHOVqXSDw7dMcJX6/R5Vfstn/XeCTe
+	BK4Pdd68HZn9SKGYsk5GkELHo4NqOUmG8HIpEnuhHQbtau0TNwXlAgOuV1h6UkmR6ZzrpC0jgCZVN
+	h6TGX8ZGQQVN8kuKtE0tP7W82xk068tSWqNqWQTD9kcWg26ovNWdLTBox1Fg4sS6Drf1uqKL2YFVl
+	U4tCu9PLTyrn19plyy8sqc/u9dIOZDT34m/GmANufm2J91HNhxiIK3YNEtK45TtXLotii777NBr6H
+	4xMbDqaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtqi2-0000000Fznp-3Fua;
-	Mon, 08 Apr 2024 15:14:58 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1rtsQE-0000000GHhW-1C15;
+	Mon, 08 Apr 2024 17:04:42 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtqi0-0000000Fzmt-2Phe
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Apr 2024 15:14:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1712589287;
- bh=4Z0LBlRO9DzPCsRdqe9rsbK3UJ8PBblYy0Cmk5n/lz0=;
- b=As/SAD4HXF91//0fKggr1TGq+grPgujAJk7MYEagQNIoLbcfcp9Hedu8VfM12QmaKk4vH1mfX
- yFNC8l32zugzKq/QTO7Pcq0XMlTRzNsqjexMFwNm+0lLW7RCh7SsW4PLoLkQc7Q0Qw07nnJ0h5R
- Xi/b82kks3ZXaMsnxjYUoiitkNkLKNGDQ0NsvAs8UedNnXS4zSdY01qU8jdJjJs/IIWckImuKN7
- Z+/PJ3kJK3Yk3dxrXDejogFvk/vx4hBuebytqAF4xP7Ob+H8Y0sx2QA9QProjyMggza6rlxWToO
- oPGT0Qu5Sd3Y8nD8yVaRa73U8eFmpEYwpbejH4hO03zw==
-Message-ID: <fb57172e-2517-498c-9412-76f62929d24a@kwiboo.se>
-Date: Mon, 8 Apr 2024 17:14:40 +0200
+	id 1rtsPw-0000000GHbi-1m1u;
+	Mon, 08 Apr 2024 17:04:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B8B66CE140E;
+	Mon,  8 Apr 2024 17:04:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC845C433F1;
+	Mon,  8 Apr 2024 17:04:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712595862;
+	bh=dy3oPXhtT+DA8A9ZwN7rVbw8cVMFMCW5FtsQNnUysX8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sta3/99x+vUdccGZVczBTBP2IyoYbfDmqeeDUdY7Igf2g9XzJMbYpi1zPYOhZwnoq
+	 9foZTZRBqSHD5TRDoiePadF4JgdwjTSO6Bs0pgQ0OKy0lLDyKLnf9qOAtowOOxGgYV
+	 EydTrUD4xfnyaU0vi6OsqNjuQnWHCcnW0KDMiYlr+vD+k4yqqWkKTT3kicerOKnSSh
+	 ZeoT0sKIcvA4rejXW1WnXiIiZRqolPMoIbhqALDOI8FLeTdjJA/lANXcrIaIRgJo0i
+	 tYI+rs1wULoLQdbI8DAPdDpBAtz1ZabgSuX60NEav5/D7AP7GRh2gpYSvNFhuNLAy7
+	 Wb/eoFp9E73dQ==
+Date: Mon, 8 Apr 2024 18:04:16 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
+Message-ID: <20240408-handpick-scouting-b04de6bec84a@spud>
+References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable onboard spi flash for
- rock-3a
-To: "=?UTF-8?Q?Heiko_St=C3=BCbner?=" <heiko@sntech.de>, Chukun Pan
- <amadeus@jmu.edu.cn>
-Cc: Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20240408124005.182565-1-amadeus@jmu.edu.cn>
- <421ab43b-ff92-41c6-9904-3c7681c926be@kwiboo.se>
- <b32c284e-f3ec-44b0-abbd-7fa403bc9870@kwiboo.se> <3066222.xgJ6IN8ObU@diego>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <3066222.xgJ6IN8ObU@diego>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 661409e594faae8761be3e7a
+In-Reply-To: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_081456_681929_9AE31860 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20240408_100430_849697_3596A141 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +74,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8848280909354536863=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNC0wNC0wOCAxNzowNCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gTW9udGFnLCA4
-LiBBcHJpbCAyMDI0LCAxNjo1Njo1OSBDRVNUIHNjaHJpZWIgSm9uYXMgS2FybG1hbjoKPj4gT24g
-MjAyNC0wNC0wOCAxNjo0NCwgSm9uYXMgS2FybG1hbiB3cm90ZToKPj4+IE9uIDIwMjQtMDQtMDgg
-MTQ6NDAsIENodWt1biBQYW4gd3JvdGU6Cj4+Pj4gVGhlcmUgaXMgYSBteDI1dTEyODM1ZiBzcGkg
-Zmxhc2ggb24gdGhpcyBib2FyZCwgZW5hYmxlIGl0Lgo+Pj4+Cj4+Pj4gWyAgICAyLjUyNTgwNV0g
-c3BpLW5vciBzcGk0LjA6IG14MjV1MTI4MzVmICgxNjM4NCBLYnl0ZXMpCj4+Pj4KPj4+PiBTaWdu
-ZWQtb2ZmLWJ5OiBDaHVrdW4gUGFuIDxhbWFkZXVzQGptdS5lZHUuY24+Cj4+Pj4gLS0tCj4+Pj4g
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2EuZHRzIHwgMTIgKysr
-KysrKysrKysrCj4+Pj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspCj4+Pj4KPj4+
-PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0z
-YS5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1yb2NrLTNhLmR0cwo+
-Pj4+IGluZGV4IGE1ZTk3NGVhNjU5ZS4uZDg3MzhjYzQ3YzczIDEwMDY0NAo+Pj4+IC0tLSBhL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2EuZHRzCj4+Pj4gKysrIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0zYS5kdHMKPj4+PiBAQCAt
-NzU3LDYgKzc1NywxOCBAQCAmc2RtbWMyIHsKPj4+PiAgCXN0YXR1cyA9ICJva2F5IjsKPj4+PiAg
-fTsKPj4+PiAgCj4+Pj4gKyZzZmMgewo+Pj4KPj4+IFRoaXMgaXMgbWlzc2luZzoKPj4+Cj4+PiAJ
-I2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+PiAJI3NpemUtY2VsbHMgPSA8MD47Cj4+Pgo+Pj4+ICsJ
-c3RhdHVzID0gIm9rYXkiOwo+Pj4+ICsKPj4+PiArCWZsYXNoQDAgewo+Pj4+ICsJCWNvbXBhdGli
-bGUgPSAiamVkZWMsc3BpLW5vciI7Cj4+Pj4gKwkJcmVnID0gPDB4MD47Cj4+Pj4gKwkJc3BpLW1h
-eC1mcmVxdWVuY3kgPSA8NTAwMDAwMDA+Owo+Pj4KPj4+IEF0IGxlYXN0IGluIFUtQm9vdCB0aGUg
-c3BpIGNsb2NrIG9ubHkgc3VwcG9ydCAyNCwgMTAwIG9yIDIwMCBtaHogYW5kIEkKPj4+IGFtIHBy
-ZXR0eSBzdXJlIHRoZSBzcGkgZmxhc2ggc3VwcG9ydCAxMDBtaHosIHNvIEkgd291bGQgc3VnZ2Vz
-dCB5b3UgdGVzdAo+Pj4gd2l0aCAxMDBtaHosIHNhbWUgYXMgdXNlZCBvbiBvdGhlciByazM1Nngg
-Ym9hcmRzLgo+Pgo+PiBTb3JyeSwgbG9va2VkIGF0IHNwaSBjbG9jayBpbnN0ZWFkIG9mIHNmYyBj
-bG9jay4KPj4gc2ZjIGNsb2NrIHN1cHBvcnQgMjQsIDUwLCA3NSwgMTAwLCAxMjUgYW5kIDE1MCBt
-aHouCj4gCj4gSSB0aGluayBpbiBzb21lIHByZXZpb3VzIGRpc2N1c3Npb24gdGhlIGFncmVlbWVu
-dCB3YXMgdGhhdCB0aGUgbm9kZQo+IHNob3VsZCBzcGVjaWZ5IHRoZSBtYXggZnJlcXVlbmN5IHRo
-ZSBmbGFzaCBzdXBwb3J0cyBhbmQgaGF2ZSB0aGUKPiBjb250cm9sbGVyIHdvcnJ5IGFib3V0IGl0
-cyBvd24gY2xvY2sgcmFuZ2VzLgoKSW50ZXJlc3RpbmcsIHNvdW5kcyBsaWtlIHRoZXJlIGlzIGEg
-bmVlZCB0byBkbyBzb21lIG1vZGlmaWNhdGlvbiB0byBzcGkKYW5kIGNsayBkcml2ZXJzIGluIFUt
-Qm9vdCB0byBzdXBwb3J0IHRoYXQuCgo+IAo+IFRob3VnaCBpbiB0aGlzIGNhc2UgdGhlIDUwTUh6
-IGZvciB0aGUgZmxhc2ggZXZlbiBtYXRjaGVzIHRoZSBjbG9jawo+IGZyZXF1ZW5jeSBzdXBwb3J0
-ZWQgYnkgdGhlIHNmYwoKSSB0aGluayB0aGUgb24tYm9hcmQgc3BpIG5vciBmbGFzaCBzdXBwb3J0
-IDEwNC8xMDgvMTMzIG1oeiBzbyA1MCBtaHogaXMKd3JvbmcgaW4gYW55IGNhc2UuCgpSZWdhcmRz
-LApKb25hcwoKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+
+--===============8848280909354536863==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="whOycmADd1NrPPmb"
+Content-Disposition: inline
+
+
+--whOycmADd1NrPPmb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 08, 2024 at 08:44:10AM +0200, Sascha Hauer wrote:
+> The dwmac supports specifying the RGMII clock delays, but it is
+> recommended to use rgmii-id and to specify the delays in the phy node
+> instead [1].
+>=20
+> Change the example accordingly to no longer promote this undesired
+> setting.
+>=20
+> [1] https://lore.kernel.org/all/1a0de7b4-f0f7-4080-ae48-f5ffa9e76be3@lunn=
+=2Ech/
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+--whOycmADd1NrPPmb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZhQjkAAKCRB4tDGHoIJi
+0vZaAQCzEUq832WzZ37GUbKIrB0V8uvvHYrxPBDcsr17McinxAEA4If1pTgFZfkX
+zWzresFYoT+wuXAVCB7RoeelxHJHWg4=
+=8IjP
+-----END PGP SIGNATURE-----
+
+--whOycmADd1NrPPmb--
+
+
+--===============8848280909354536863==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8848280909354536863==--
+
