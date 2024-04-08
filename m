@@ -4,130 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEF7C67861
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 07:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4472ECD128A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 08:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8XxqrE2zTKCx57YHO6OG4zJwq85BX0IO35SepEUejQE=; b=DiBz6N2ljxxK+ahj8phg8x8RGP
-	URtauTGIbh/2q7Pguho0+0nv8zgTulQgS/Og9XDFZj1lGhSahPDSPU4+O42ojk3oJGtWWU7klCmSK
-	THuPBCI/dXp88zWImDcT27OnkCTo8g9tZ3GMr2LDdDyUwYitV16mjdq3S3KAT2gumqPWCE08lwyyA
-	UcJSvf4IQck+4Omef0LUtDly2pAi1RAJbAF38ob8BJ3zd8y2A9LXOLO+JwfSpsMJcdNsylixhYa/z
-	SW64+WKDBxyLJQ8x0CGn73T6d8L5Rcf6hu72pz63aPustgmF61ia0toQykXN5zcAQhU/CoVjNI649
-	c3Mwndjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aIX8QVDd+r3PTl445hJKCfQmqW46LemFCrD7ASSn/YI=; b=KOQLchD6o6LsLe
+	HQnqnJ1Tb/v1urBzQwqePB5lURibGrFdyXnCR5EqZCUoaWOVOi9vXfeEjnBGE7M5zkiLp/3nrch6A
+	T7UHNLVhuQbPznyxmPkcPkT5KjmXxdK5HuXu7b9mY3Xo36FnVsCErk9/7BAmQSRaWyppkp0lKM3iz
+	n4YgjvmpZ54RjLnzkCTrcV40ZlANLAs/K2Aqcqjz0bNwUxlvdvB8gGrZpegHp76S9UIBO+jJdHvC8
+	3VDpjPX+z3Bs4HdtbU046oXLjh8npn5BIJ4IMaBQpXqFUANO6eJ0yjvcBiVNYqr4HIwhK7x0Y2uew
+	xyRiGyBs3hiaYvHlnr/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtju0-0000000EndY-1JV5;
-	Mon, 08 Apr 2024 07:58:52 +0000
-Received: from mail-co1nam11on20700.outbound.protection.outlook.com ([2a01:111:f403:2416::700] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1rtkM0-0000000EtZG-2NuG;
+	Mon, 08 Apr 2024 08:27:48 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtjtw-0000000EnZ4-09vf
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Apr 2024 07:58:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KT1opqsX2r8zAPEHjsbxUOlOsxsKGMz5+KHx3E0u+fXc/vANDRh8kd4z7smqMby8HireuD/l8Q5YcK8QOnFrDpEODjirw6wGB1h9rOCGHMcH31DuP2/NqlYMrDf8Tnd5hiAvSyNRcepcUY/07bMYjxUW8fx8TopLBuSrugwtbGz9bYtFQ9jInuesvesnoSCmO/DqCz6evw5APYbIghHvXbQOLm9HWM3rA0wGnvn5kNrkP3IQMdColPJbuxA0j2n6syHzsrDVzrp+9DUVMD2IGfvwqptD/8xneLXRZk/NG8g29ReBbC+Zr1+Lgfv432H/b5kf/MZyMFu7UUwYC1+pNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fkcDmAPfup8CpG1p+PrBQyJXTMqX896i1J+H3Qzq5PE=;
- b=erSh4tZ6JzNMQKM7FxWsH2P+75xaiRfbMVBZjioucGYGc03bi3i/q8Y76HAsTFEidP7ONECkhlQtfKSSHCgrK8ETW8OQiwDcv/RmpX2J/G346ZEm7sJ9tNLhB1SWMsyC3oGAbEgH6XossT2QzNFPxdkvlQAjucl+eCR90OYQfVX+y879zjzZwXSbiLYEw+Tki+YqT5gvLikXVQN2xbj3x3XyY+gf5ZFD1iVyo8B2NUjStLQNCsClTEY2Wq0EvNK/TIh5SGNveUJST84Rmom8iI1rxp43jWCqNLZV9RdbUc7/wQRzHOIN8JnZQ0DrU+s8B8jqXUp0K5P5aJilnLaXaA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fkcDmAPfup8CpG1p+PrBQyJXTMqX896i1J+H3Qzq5PE=;
- b=xomvOSOfcXKgZ/8foWt+4W6VB6yCzY4vk4jbbmLVLDViL3Oc8cbtcw0gMx4+DPkCtOTf6P66TyuSMmUMq1ip4HvWz+HmgukiBwaW6O765tn08S7KFrj52sXLHJ7tHiT8MQhNVwgvR/2/7Q+rfdj6vlaxjBvSpAnDhed/GrihSuw=
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com (2603:10b6:510:13c::22)
- by SA1PR12MB6824.namprd12.prod.outlook.com (2603:10b6:806:25f::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Mon, 8 Apr
- 2024 07:58:39 +0000
-Received: from PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::f2b6:1034:76e8:f15a]) by PH7PR12MB5685.namprd12.prod.outlook.com
- ([fe80::f2b6:1034:76e8:f15a%6]) with mapi id 15.20.7409.042; Mon, 8 Apr 2024
- 07:58:39 +0000
-Message-ID: <9e6f1f52-db49-43bb-a0c2-b0ad12c28aa1@amd.com>
-Date: Mon, 8 Apr 2024 09:58:34 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dma-buf: add DMA_BUF_IOCTL_SYNC_PARTIAL support
-To: Rong Qianfeng <rongqianfeng@vivo.com>, Jianqun Xu
- <jay.xu@rock-chips.com>, sumit.semwal@linaro.org
-Cc: pekka.paalanen@collabora.com, daniel.vetter@ffwll.ch,
- jason@jlekstrand.net, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20211113062222.3743909-1-jay.xu@rock-chips.com>
- <1da5cdf0-ccb8-3740-cf96-794c4d5b2eb4@amd.com>
- <3175d41a-fc44-4741-91ac-005c8f21abb8@vivo.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-In-Reply-To: <3175d41a-fc44-4741-91ac-005c8f21abb8@vivo.com>
-X-ClientProxiedBy: VI1P195CA0055.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:802:5a::44) To PH7PR12MB5685.namprd12.prod.outlook.com
- (2603:10b6:510:13c::22)
+	id 1rtkLs-0000000EtUM-14CJ;
+	Mon, 08 Apr 2024 08:27:42 +0000
+Received: by mail-io1-f45.google.com with SMTP id ca18e2360f4ac-7d5db134badso72833339f.2;
+        Mon, 08 Apr 2024 01:27:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712564858; x=1713169658;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mduMjCqjA7drDw2lEIoqwW5oGXEwTzrsNz9VmuPIKQw=;
+        b=bFw3SDs9pey4FZTeFwhODGyNokj8+wm9fZhzlq36XESQ+N3OoQz2/G7tmFRf3Xdsxs
+         vgVIpvQG8LB9dlTQ4gSNWy5MbkbBMr6LzCBYkmQ5M9m82JPTftWeWBZh/AwUulx9Z32x
+         s1Jb40ydjDKZAhHPlohRL1kuYDYbwtHvDgQD6n/nDgSOtd9hIIS0+OgPkXdQeAyFw1Kh
+         bfBiYYUhpxNaFYezmo0vhC1dxTfLaHaIRToMFTDFer0bZbb/GUF+o1blhWwylx5wyBmz
+         ao5Q0CqnrIXMhUjH0O4xLQJAnOQJ11YVDUpi+KayyCu2dwFiE0eCN4P3MA51rCPtCJSg
+         w2LA==
+X-Forwarded-Encrypted: i=1; AJvYcCXoGhMkTCT7t7eaPtQuMwvU4UCMpuB6HLshlWNEkjOOwvcwvoFTH3HG4jP+PvBAfL3IqIhnQ+jd2sdONGZ7QUm+vH46RZYYRegkWqkfnhJc6dCo0jTprKM6yMlIWTWLDWP6ILu1bO1rFEY5gk21/Zyy0CFFszeGfutugnLG3uaRpDCVGHIrSFnn50rtjaRwL1GGxSVLuRjgilFHsPtjqpWT0DLMvKX5J1emrPiSyEqWIQ//QmbwMYNKGeYQqpny8xlHQg==
+X-Gm-Message-State: AOJu0Yxx1hhpDQxKVrboo5qXvw5TFbB8kgpGNC9R+Z1e0e8fbrikCNyH
+	n4gfayFPACzzy3zZoriWCtmbmswlnvIXPuPhIUfzODfdlPGwklmCpcd/rdh4PmQ=
+X-Google-Smtp-Source: AGHT+IGZtCH1ekKjgpS4rVl6xMEGMlEboHAbq9c5osU+CR4l2s6XEPhrGZgHC23qDf5djDFCQiebLA==
+X-Received: by 2002:a05:6602:4897:b0:7d6:87:b3b1 with SMTP id ee23-20020a056602489700b007d60087b3b1mr23801iob.5.1712564857796;
+        Mon, 08 Apr 2024 01:27:37 -0700 (PDT)
+Received: from mail-il1-f170.google.com (mail-il1-f170.google.com. [209.85.166.170])
+        by smtp.gmail.com with ESMTPSA id x25-20020a6b6a19000000b007d35949850asm2211333iog.26.2024.04.08.01.27.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 08 Apr 2024 01:27:37 -0700 (PDT)
+Received: by mail-il1-f170.google.com with SMTP id e9e14a558f8ab-36a1b0777b7so5046555ab.0;
+        Mon, 08 Apr 2024 01:27:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXcQRGI6p3yNYL4hm4K76CCW2eGLAf26bEKMUmxWzmHDT5gAETBBM23/lBPpkcvSSjyWL/X19p6OwMyCsL8XJXfuoAFqbefRIUy4dLC5gdYlmMkQ/GKmBgaMIPybP9PS0iW3mkPnl7KI+thn7Wilma4DzkLxGUU8P3WKfQlH6EGUR51pFzI4jONfvWwyAIMSuj+KoUSP+b7truBOjtuhCP4tS4xT1QI+FvYBXJ4mR2GZUw3bHCMaQS+ApQBFIzdPojoCA==
+X-Received: by 2002:a25:7406:0:b0:de0:e7f2:a03d with SMTP id
+ p6-20020a257406000000b00de0e7f2a03dmr2539436ybc.3.1712564836998; Mon, 08 Apr
+ 2024 01:27:16 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5685:EE_|SA1PR12MB6824:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: lHS5s2dK5PiKysCxd8VIeA9i15oxR+Lzzc7QJrxG4hifCMOjgEx3LVGpyG55olbmVkAoZcqdmKQi/YmiGYl4P0A/z07W6kjn60N4XTZl6+B83OcspJ5Q946A3T8uw5lgscFjULOB7oHdWuHsJxsiE6BhV1XZKOosNhbLD7nneLuPbLxlmeAXWb2BlctdaadAE9NRLs75Vq2wCZitEpCyOsKR2wszmEm8qdfX/4E2rmptygE3hqA0BvLeqCdPTl1o5TwmUPGsqG6ABonvOriEvm+8f8+Fg5qjeDdHB713lFPSIpCrS2Z58c9kSTqPK1i8bwzXhklJn9jS3HfPpR3WHB573oFCKIv7ddnc/+kVGA4BGR3N7+kY5a/5HajQmJdptwfph8q1M52fYk/E4qJocNSTOsXWpTqo1+3D3Ov0otNwiEZY/semVqv53GvYHSb3ImQSsXWgoX5yj8HYR6kwHuVSWvSO3zhKX4E5XIDrsAYM9dfsbxKDjhDdO7OA+VV/LRURrQ5t26PV0xaZPNv91rLM7Qq+8h1bjqktnIWheqkrk/CmKbyuWpB0AfbZkcak15R5ze54tWhTk+JHJhbPYiLAY3gPYUQkTt1nsJThA2aJ4fIuseYUB/tOUCjJJM54UgwoOztW3U7HNTV3Rm7ByqM1ZwgDCXUR6qjZ4lC4y+s=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5685.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(7416005)(1800799015)(366007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WlVIZWZ4V2JEZlVGTE9uY29aVGxIMjl5YUFyRXBNT3V2YUQrQWRMWDRUT3or?=
- =?utf-8?B?NXBLYmx6V1V5Y2dwNFc3RE9Xa2ZBWGMrcW8wOWMwcU9lOWV6TE9uaDRkUmt2?=
- =?utf-8?B?ZzluczNRNmZtYysvcy9MOEkxcGJLaGpiTEZmWFQ5RWRVVlJMLzdubzNuRlBi?=
- =?utf-8?B?YVB5ald4WjFjTlZKaHBxRjgreUhxSUx4TXBlVXVhU1NjRUJJK3lCVTBLSFdr?=
- =?utf-8?B?ZTlScFhpQWtPaDVlZlNYeVhXVGZBUjU5Yk9MVGVISFkrK3BLSUFTenF0ZExy?=
- =?utf-8?B?NE16YnN6NEFPWUV3K1FCTVVZd3VIVnNpMUpoWVhTejc3MWlqbHNHS0s0dEY3?=
- =?utf-8?B?Rnhzb2dpMTNDVHFWOEhJd1Y0OG95VmE3QVg5cmVkdU9MMlhZVkpNM0tVbG1x?=
- =?utf-8?B?MDBpcXM1aW1JREZOSzRJZEhxV3BDSVNmdnJ4TEZVQ0MwVzFkWXA1SndEbS9E?=
- =?utf-8?B?ZzEvRkVPaEdZQ1BISnBadWVPU2xxcTFyMlhxUEhNZVRTai9wQkY1MWxsRUpT?=
- =?utf-8?B?MWxOR0pZaFNEbnJsdFhYMmsybDlxazdGK2luc04vaDlKQ1ZYWjhWdldiL1hB?=
- =?utf-8?B?Z2xJRlI0OUI4czV6UFMxSUdwTFhUbnVsaDR3dno3MU8rS1VBOEp4QUVsY1Nz?=
- =?utf-8?B?REJ6c1Fzd0Z6ZzJxdTNzcXlMWUNYTWpoZmVhWTJmcHk2cUp6b1hDdDFhR0Mv?=
- =?utf-8?B?WDFmdlkyc3JwQTZjODZxVmEySUxzLzNDYmdHWHN4Y3BXdVlmeTc2NGlyQWRs?=
- =?utf-8?B?aDVBaEhjUlFMUmRxa0U2QXB2NVZCdlNjbVZ5VlhGU3RrS0h6TjhzaHB3bWNk?=
- =?utf-8?B?TVErbVZQUGZROEV6Mk40MHk3Zi8xenJLSFJOSVBOaW9ONkZaS2d2cnROKzBj?=
- =?utf-8?B?MVBES1dpOUlJc082ck5qakIwRWtaTkN6K1pSSnFXN1B4SFdzS2J6SkdPZmxw?=
- =?utf-8?B?eTlxbW5GS1hsTyt5WWk1dGRVOGwzL0tTb0F5TnB0SU5CK01vaktLUHNta2hn?=
- =?utf-8?B?WFZTODFDZFE1cVMwMGtaKzBJYjVsUHJ5YU1laDlhbU5qRDhDbEtrVFNhcW9H?=
- =?utf-8?B?RFhrM3lOd0RMZkpkZ2FYNVR5bUZNU1N2d3NFVU84Nmhqb013Wjc0TVRlY2pv?=
- =?utf-8?B?VXJNaTM4M1BhcFhYV3lzVFo2WXdSdldQcjZ6Z1g2WGcwRU1YMGhkL0RJZUZn?=
- =?utf-8?B?dG1JT0lWMzEydkNDUjNzczFVU0RZTkJhRVBsRmkreU9sSTY4VndJSThFcjJ5?=
- =?utf-8?B?UEpCSFdtRnJObFVHdVFzekp3dXZaZEJvOXpOSEdvTkQ3RFR4VjI5YUc3QU12?=
- =?utf-8?B?cG9jTEF3eWdoYUQ2dnpxTis1RnNZQXRrK3IvVHZsbm4yWW9xVU5hWjYvK3dh?=
- =?utf-8?B?YmxZWVF3M3Q0ZnFXUU5RN0F2N3A3Um14ekl5SkI5MjZZUzg3UllsbnpFeE4z?=
- =?utf-8?B?bFpCc21WYzBJL3dGZXRNSFFhRHFiL3U5ODliVGt1TmhmL1ppU0VYc1RySEEy?=
- =?utf-8?B?NWhPS2tQeGJKWHdDNnVhbW9TM3RKazJUbFY4UzlzSXFzdXczelF3TFZKdWFQ?=
- =?utf-8?B?c0M4Ymk1L3NFNjkxZmRtR202U0lGMWZvNmUxQ0FjbUJrMjVSbDJFbmRDaEc2?=
- =?utf-8?B?bjZVektUMkJ4aFozUHJIMThycnBFQ29NdktES3oyejBYYTY1cDFuTlpsa2M3?=
- =?utf-8?B?dGhDNVg2T3g0ckhKYjBDSTRxKzcvL1BiM0ZRKzBvQXJpaU5NZ2FVaVJ4YWY4?=
- =?utf-8?B?aWtWb1haMkF3ZGFlTFFiSU1iekZQOENDUHVVN0k4NDF3NVE4Q0huRTZuUjVZ?=
- =?utf-8?B?REhMQjJHenFmYzFCY0VWeEl3L1RjdVhXcFBpbmJsL0toOUtzUFFDM1huVXdM?=
- =?utf-8?B?RGRaaW9tY3JKdFpTREhtSlJZc0hpQjFzSmx1bW9vU2VKbkxSQjB6cmJpSFZu?=
- =?utf-8?B?RkJPaE10M3ZjaFVTVnY3NTZ5OS9Qd2RJcWhyZDFLRWhTMUFyTld2ZFdKR2h1?=
- =?utf-8?B?U0k0WFlZZFQzajVVRGg2QzN5WHk5NEtOQis3ZkVNamtVT1pFM0g5MUVFUlpQ?=
- =?utf-8?B?TnJyUWZVNjBjdFRGU0J0d1Vncy8xV2xyUkVaM1FDQlVOU2FQdkYvcDJGWmdF?=
- =?utf-8?Q?3Yao3I+CBwlkIS22PSK64Qj7o?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b1d45e26-6daa-46b5-d02a-08dc57a1b346
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5685.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2024 07:58:39.3462
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LY9Pr9mjmc0UQFiFA6NAKx8aMRZTs5iZsbVtWTAWA2MwO0OGzMOor4A4l72wkGrO
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6824
+References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org> <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 8 Apr 2024 10:27:05 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdWjWLdu9c7=OhFLsY+jSZXspb6jPHxVai2GcbJoS7MDLg@mail.gmail.com>
+Message-ID: <CAMuHMdWjWLdu9c7=OhFLsY+jSZXspb6jPHxVai2GcbJoS7MDLg@mail.gmail.com>
+Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
+ deprecated pci-bus.yaml
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Jim Quinlan <jim2101024@gmail.com>, 
+	Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Will Deacon <will@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Srikanth Thokala <srikanth.thokala@intel.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Jianjun Wang <jianjun.wang@mediatek.com>, 
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, 
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Michal Simek <michal.simek@amd.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Mark Kettenis <kettenis@openbsd.org>, 
+	Tom Joseph <tjoseph@cadence.com>, Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>, linux-pci@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_005848_204419_8873E225 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20240408_012740_584167_CA02EEAC 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,51 +110,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am 07.04.24 um 09:50 schrieb Rong Qianfeng:
-> [SNIP]
->> Am 13.11.21 um 07:22 schrieb Jianqun Xu:
->>> Add DMA_BUF_IOCTL_SYNC_PARTIAL support for user to sync dma-buf with
->>> offset and len.
->>
->> You have not given an use case for this so it is a bit hard to 
->> review. And from the existing use cases I don't see why this should 
->> be necessary.
->>
->> Even worse from the existing backend implementation I don't even see 
->> how drivers should be able to fulfill this semantics.
->>
->> Please explain further,
->> Christian.
-> Here is a practical case:
-> The user space can allocate a large chunk of dma-buf for 
-> self-management, used as a shared memory pool.
-> Small dma-buf can be allocated from this shared memory pool and 
-> released back to it after use, thus improving the speed of dma-buf 
-> allocation and release.
-> Additionally, custom functionalities such as memory statistics and 
-> boundary checking can be implemented in the user space.
-> Of course, the above-mentioned functionalities require the 
-> implementation of a partial cache sync interface.
-
-Well that is obvious, but where is the code doing that?
-
-You can't send out code without an actual user of it. That will 
-obviously be rejected.
-
-Regards,
-Christian.
-
->
-> Thanks
-> Rong Qianfeng.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCBBcHIgNywgMjAyNCBhdCAxMjoyMOKAr1BNIEtyenlzenRvZiBLb3psb3dza2kKPGty
+enlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4gd3JvdGU6Cj4gZHRzY2hlbWEgcGFja2FnZSB3
+aXRoIGNvcmUgc2NoZW1hcyBkZXByZWNhdGVkIHBjaS1idXMueWFtbCBzY2hlbWEgaW4KPiBmYXZv
+ciBvZiBwY2ktaG9zdC1icmlkZ2UueWFtbC4gIFVwZGF0ZSBhbGwgYmluZGluZ3MgdG8gdXNlIHRo
+ZSBsYXR0ZXIKPiBvbmUuCj4KPiBUaGUgZGlmZmVyZW5jZSBiZXR3ZWVuIHBjaS1idXMueWFtbCBh
+bmQgcGNpLWhvc3QtYnJpZGdlLnlhbWwgaXMgb25seSBpbgo+IGxhY2sgb2YgInJlZyIgcHJvcGVy
+dHkgZGVmaW5lZCBieSB0aGUgbGF0dGVyLCB3aGljaCBzaG91bGQgbm90IGhhdmUgYW55Cj4gZWZm
+ZWN0IGhlcmUsIGJlY2F1c2UgYWxsIHRoZXNlIGJpbmRpbmdzIGRlZmluZSB0aGUgInJlZyIuCj4K
+PiBUaGUgY2hhbmdlIGlzIHRoZXJlZm9yZSBxdWl0ZSB0cml2aWFsLCBleGNlcHQgbWVkaWF0ZWss
+bXQ3NjIxLXBjaWUueWFtbAo+IGJpbmRpbmcgd2hpY2ggaGF2ZSBjaGlsZHJlbiBub2RlcyBiZWlu
+ZyBhbHNvIGhvc3QgYnJpZGdlcywgYXBwYXJlbnRseS4KPgo+IFNpZ25lZC1vZmYtYnk6IEtyenlz
+enRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4KCj4gIERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wY2kvcmNhci1wY2ktaG9zdC55YW1sICAgICAg
+fCAyICstCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yZW5lc2FzLHBjaS1yY2FyLWdl
+bjIueWFtbCAgICAgICAgfCAyICstCgpMR1RNLCBzbwpSZXZpZXdlZC1ieTogR2VlcnQgVXl0dGVy
+aG9ldmVuIDxnZWVydCtyZW5lc2FzQGdsaWRlci5iZT4KCkdye29ldGplLGVldGluZ31zLAoKICAg
+ICAgICAgICAgICAgICAgICAgICAgR2VlcnQKCi0tIApHZWVydCBVeXR0ZXJob2V2ZW4gLS0gVGhl
+cmUncyBsb3RzIG9mIExpbnV4IGJleW9uZCBpYTMyIC0tIGdlZXJ0QGxpbnV4LW02OGsub3JnCgpJ
+biBwZXJzb25hbCBjb252ZXJzYXRpb25zIHdpdGggdGVjaG5pY2FsIHBlb3BsZSwgSSBjYWxsIG15
+c2VsZiBhIGhhY2tlci4gQnV0CndoZW4gSSdtIHRhbGtpbmcgdG8gam91cm5hbGlzdHMgSSBqdXN0
+IHNheSAicHJvZ3JhbW1lciIgb3Igc29tZXRoaW5nIGxpa2UgdGhhdC4KICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAtLSBMaW51cyBUb3J2YWxkcwoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
