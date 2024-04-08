@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4382CCD128A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 14:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD803CD1296
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Apr 2024 14:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v16FgsaA43tTH+bUdv7qNSmsUABytSMtHJcqj5xS3fg=; b=NPWD7BfwelCFmt
-	euBeiaIacmuKIxLnd8T3T1Tg7FQRgsKdrsRVS1EBtIEako59DTAra/q6CjQZgidqV06Jh1sPFqQWr
-	iEXV90cV3RTvilsgKQaehtyib5cfPkY9kM5wITql3SnCiPxmJMM9ZWzzSIr0JvRkHshtqwYGgO9Sj
-	qkoTUQMRH6cHS88YL7PWNcz055uYgwWJPQUnQ937zuBHcOm1V+mEzyM1Lc9fj07X2w12LwyUfbNH8
-	VjsnJ5hCTce53eg1aaIjNzvwyjgeu1M9+jvCxS9XBNbeQYvvfLvOTMBF1EmNBdqKS7uPkfzNkaNuc
-	bFpKsY+9LHN3/bnmHQQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0TyOcB4HT8KIp65bXIb+kjNjHag2pF//02jjNiy4hQM=; b=YgRVTdgK3o8kRAYsFv+jWN9X0U
+	CULKuO/NK6SpAsN54yebmY8msJPS/T6/rV9btSvEWjpwU5Vwm8ukl22QI7Wioj/btWwd2oG5CL/v8
+	M6MpxiT4gSXdpNMKq5F75lwUSs54JhXeCizY4mJw0Ly2ZmyhUROAkmnDzCr42uABUAdJxAGvhWsWA
+	wyzrNIyC1G3Xrp8j8XWWcyY2WukA5oypbHXNv3Rhas01fuMME1cWYPDSgDIkWAq29QJ0os+WztcyR
+	wzW+dSX1rVWrYsAhSXRp0p4Ua7UgbIfqtRPB3dvFNZmtehp2ILqBY+INfPO1eAkE3Prt1uWASCXTc
+	jIhMWNaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtpav-0000000FoKY-2iF7;
-	Mon, 08 Apr 2024 14:03:36 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1rtplA-0000000FpsW-2yDv;
+	Mon, 08 Apr 2024 14:14:08 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rtpae-0000000FoHV-0edA;
-	Mon, 08 Apr 2024 14:03:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=1qOq8XoQxyzzDTfs8K+aQZKQnMgZY9GLpqbLu4JmADs=; b=KK72Uy1HmQJkO5LLJcSkB9FfF5
-	aJ5Vj48TarjfqiVcw0bFbV01ebaIksfSldas+x19/+tViz6tQzGGQIgrSZ4JrgMPr3E/OU8jlN+39
-	ZzhdrG1xfRFJNEsaPT/GdP1GcS6JUM+ljNH33QPm7SMJD6mc08MKsnZMFXkCBF8xtcwY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1rtpaL-00CUtB-4d; Mon, 08 Apr 2024 16:02:57 +0200
-Date: Mon, 8 Apr 2024 16:02:57 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
-Message-ID: <74c77199-a885-406f-8af0-477956beae59@lunn.ch>
-References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+	id 1rtpkg-0000000Fpmy-0CUX;
+	Mon, 08 Apr 2024 14:13:58 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1712585611;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SHS6uqBrOTBI5KsbzQzo9xNfjnvV1fyVq/BSuRh+mhA=;
+	b=DNK1tnJ0vcDT/7vE5fbelUYIRr4NcVehjQRk/vhVFQEQ4nKScZVebfGcGI2xLWf9NyV8JE
+	2g+j1dFx7ldSSQNViXIxjoLKQ/INonNVN47sl16mrZ6khJx33KOrFhGCWR9p1cIci6b14N
+	hy2tX6ZSF1qisr7kgPFfsUzh/Ajpyp1mW4z6qi0mnEkPFo/AiULzrP6pKGN9a1bWn9DfH3
+	bvr/hgHZQHnNROuFRQoziq1XGVCRWCibMMICzsz5GzMWEygsFf7XSOp9/4pdmsNs+kBPW3
+	1Cffz6DUFmyQ8CjdTS/AXHQY4YN0jv2LDpJV78V5LRhDHFX6OadH2Pp1GgDVfQ==
+Date: Mon, 08 Apr 2024 16:13:29 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
 In-Reply-To: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+Message-ID: <6d06c3e3f59f26e16fe1f02dc3225d9e@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240408_070316_462946_4B729352 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240408_071346_344644_1F283386 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,12 +71,14 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 08, 2024 at 08:44:10AM +0200, Sascha Hauer wrote:
+Hello Sascha,
+
+On 2024-04-08 08:44, Sascha Hauer wrote:
 > The dwmac supports specifying the RGMII clock delays, but it is
 > recommended to use rgmii-id and to specify the delays in the phy node
 > instead [1].
@@ -84,13 +86,46 @@ On Mon, Apr 08, 2024 at 08:44:10AM +0200, Sascha Hauer wrote:
 > Change the example accordingly to no longer promote this undesired
 > setting.
 > 
-> [1] https://lore.kernel.org/all/1a0de7b4-f0f7-4080-ae48-f5ffa9e76be3@lunn.ch/
+> [1] 
+> https://lore.kernel.org/all/1a0de7b4-f0f7-4080-ae48-f5ffa9e76be3@lunn.ch/
 > 
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+I'd suggest that the following link is also added to the patch
+description as a reference, because it contains rather useful
+information:
 
-    Andrew
+https://lore.kernel.org/linux-rockchip/2973a2cb1f478031ae6d478c853c33ae@manjaro.org/
+
+Otherwise,
+
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+> ---
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> index 70bbc4220e2ac..6bbe96e352509 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> @@ -137,8 +137,6 @@ examples:
+>          assigned-clock-parents = <&ext_gmac>;
+> 
+>          rockchip,grf = <&grf>;
+> -        phy-mode = "rgmii";
+> +        phy-mode = "rgmii-id";
+>          clock_in_out = "input";
+> -        tx_delay = <0x30>;
+> -        rx_delay = <0x10>;
+>      };
+> 
+> ---
+> base-commit: 39cd87c4eb2b893354f3b850f916353f2658ae6f
+> change-id: 20240408-rockchip-dwmac-rgmii-id-binding-6166af659845
+> 
+> Best regards,
 
 _______________________________________________
 Linux-rockchip mailing list
