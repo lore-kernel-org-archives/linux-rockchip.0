@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07A4C67861
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Apr 2024 10:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3118CD1284
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Apr 2024 11:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UBLUmp/BKEQ9AWcJq5zSFaoXQ68SMZy+n00w6qF6k0w=; b=Y+neSLIPx9/5Ad
-	/XwDd2KkZ96An43gBXA6JvMSB953nCMS0tHBNEe15sC9UiGqC4H9k9r8Wzqg94s2UhVblKkLiiRzo
-	qQ3e9jCRjC3EzzH4dcmrfJucyOu2ylCGaO0LW277PjHdeFvZKfawrpeGiutKBAYei5+PyBXvoAR9z
-	o+fmqjSBDiK7M1AEz60Zga593Be2cIkGo+7k3U9fpLlkD2eTzpoJR4xvbkB+16eZ22SMj/GLzs1bX
-	TjyA17VPGr4uBOXoKm9jLYJ1zCznjQQYt7VhTCWPFjs3IaWJSk7VHBOiN/VR5NbP/oaX7xrCzJ51S
-	RHtxt4slxzAEtVOJtj7Q==;
+	List-Owner; bh=UA1HXPuc2c6J472IFsdB1falHi5TiUawcF3CeWeGyPQ=; b=vkqr2aQfcr9qxe
+	H/c/n30LaKcoZKeYaBqiCSOGoixpQayM8UKgyHqIwWjwAWpzZwWonTu1h4CwqbJLOvz+N+hikbM3Q
+	aVO3qjUFvEQUQBmC5aziX+oO2ncWZXgigVorNlAcYzS0/0Az0PrpU8Af7BqwD5Rk0JNQ5AhCL8yn4
+	DdvZK3i1Ig+JvmG/4RpUoIMas+fuI4CJPn5MJIZ1kZS+sjIuPkNnRctj04vBGoie75RIv4m7DG0Ck
+	SHXXnqdX/oQFRkcRDNCTd4tTqAOXh89mqnI5vVtWcl4JUTXJk1PHmAyUuntMehspHM3Qzcgip8DUE
+	iWdvhKTJIueSJNgfFIhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru8mz-00000001TiA-2Su2;
-	Tue, 09 Apr 2024 10:33:17 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1ru9q5-00000001jzS-3VJ2;
+	Tue, 09 Apr 2024 11:40:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru8ms-00000001Tai-1biQ;
-	Tue, 09 Apr 2024 10:33:14 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-2a53a4a283eso1267491a91.0;
-        Tue, 09 Apr 2024 03:32:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712658772; x=1713263572; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=IfKFDBLlzi9VPnikm5bTXrOl3CHU8r8CdsogC4TOvLA=;
-        b=Qj13IL2nFLlvmNU+A3kc5S6lfedXS5CDlfLO8jff2+Iv+BkEkrH5DZVqC4LV5iBk9V
-         bRNdST+0uLiBJiocu9GKvrI8j1oAROY8km3S+PxJ+/+yowf3D9vrRjt1RZ9aUUBAy3YP
-         zjQbrI3rrQD9s+swHyy7ovgxPzw1wCBGS2zO6GcMr/b/HM2v0hRGg390TkcRqTtFBnjj
-         2qDdlTsHYTsmDxUahO8l1B0NmYLpDjJfuBN7V2aIltP6bG2vl3Aw3N7gVPBSeuXnOC81
-         YtGPbw6pgPoW5G6aJxQHD5efqicRBc4kGnlVxsv4eNlwTOYp0xtW0PW533j9NrivanuI
-         tNIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712658772; x=1713263572;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=IfKFDBLlzi9VPnikm5bTXrOl3CHU8r8CdsogC4TOvLA=;
-        b=tDVaP/n38msg6BEG4uQjC6d4xjiN+6y8bJV4eiGLhIDlBgUDBeDQGHEMq+PY7rqzJU
-         5dxg0lnHfH2A8kXAVS0w64tQ8SQWCVcu/ZQzXsh03ZhGM4APKHD0/GB2TitLRSudLi0/
-         JxWbEkTR8POcvkoBWhzhkYEbBUOrpQLme5bXm0Tpqj3DLsQ2jQXEhiZlBv1zKoEWewu7
-         ztTiQQYE6aKR0LhUsaFYozfRLYktY2+4pO8Rsy5iSKPu+M3t4XSL4Uo1yNK9DW/00qvr
-         t9LsuDVUNQwAHkepwPeUqQMul+uq7S7L24TNt2HlaRRU98jDCAyd/BIbQZA1tWAf9EUj
-         ROTg==
-X-Forwarded-Encrypted: i=1; AJvYcCXTTZac+m7Vt35Sj7rJktZFstlc5e27W9Ij7ZHLiJYQ65fbI2RNtcU3ioP6EDsfBKWURNGvlfD83yV3oybfSviWNjJN4pn0fxPhPRJbqkUYSIrts49o+IaBoBLZE5UJN+VdGELhXlayyKycAEgv7YvOSjgZ0CnOceM=
-X-Gm-Message-State: AOJu0Yy7wfHtyELumsypPQoFxmN0Xs8EdrYgdQbZ2S9aWBpJh4PPnURY
-	36yW0QMoRaWShHSfi+73BLiKv4oPBpBFZrRHPXBPQc6Gr/6hoWVwj+VFGVIBPh4MBPfK
-X-Google-Smtp-Source: AGHT+IFquuwc8TpE2J4AXzmuDJ/293GQ1bZRzsZtYME1+K8tbEzMq456Hq3Ygvoa4KWXJJ7e96ErWA==
-X-Received: by 2002:a17:90a:ac0e:b0:2a4:d43d:1617 with SMTP id o14-20020a17090aac0e00b002a4d43d1617mr6609927pjq.37.1712658772217;
-        Tue, 09 Apr 2024 03:32:52 -0700 (PDT)
-Received: from localhost.localdomain ([221.220.133.103])
-        by smtp.gmail.com with ESMTPSA id ge22-20020a17090b0e1600b002a574ab7f5esm956337pjb.53.2024.04.09.03.32.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 03:32:51 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: liujianfeng1994@gmail.com
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	sfr@canb.auug.org.au
-Subject: Re: [PATCH] arm64: dts: rockchip: remove startup-delay-us from vcc3v3_pcie2x1l0 on rock-5b
-Date: Tue,  9 Apr 2024 18:32:44 +0800
-Message-Id: <20240409103244.47813-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240401081302.942742-1-liujianfeng1994@gmail.com>
-References: <20240401081302.942742-1-liujianfeng1994@gmail.com>
+	id 1ru9q0-00000001jwe-2HOV;
+	Tue, 09 Apr 2024 11:40:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id ED38D616A9;
+	Tue,  9 Apr 2024 11:40:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 859F1C433C7;
+	Tue,  9 Apr 2024 11:40:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712662827;
+	bh=MDm0KRglBzo5PbbZbHHd+NCNNsHxXViVQ+IbGUpzics=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=pzL+6kJaDdYmTmRlcOvJ2z5VrVEFabYiYR/bxbdw6mPCztSRaxTjlVXSELOVjzSuF
+	 h3Ui2P3fLh2PL3460wQDcaEKnZNHS64gKULMQ/ywho9MwUqniWuDm/s4VIdiNDudi5
+	 RK47zeRtn45sYzkLQxJzUvFCsehKRdkBf0m4b4hk/0tlSqhnMXWRt++b8nypQwXGvv
+	 e/ecFRCO606xd8j/7j2rxNpoWpyHVOx1wLQ2rHH5Gdd7f+E/lJmt26F5VAgEYOPggM
+	 s5y3MOuf9E+8Wm5Cm8zwvqIEtTr2MDOqKxuQv12El8ExSf+A8tcExN6leXFEefb53h
+	 X02ogHi+iqlJg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 73C10C395F6;
+	Tue,  9 Apr 2024 11:40:27 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH] dt-bindings: net: rockchip-dwmac: use rgmii-id in example
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <171266282747.30909.11983889718535172879.git-patchwork-notify@kernel.org>
+Date: Tue, 09 Apr 2024 11:40:27 +0000
+References: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+In-Reply-To: <20240408-rockchip-dwmac-rgmii-id-binding-v1-1-3886d1a8bd54@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, heiko@sntech.de, david.wu@rock-chips.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, andrew@lunn.ch
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_033310_536064_77658D49 
-X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-CacheID: sfid-20240409_044028_672533_93F31514 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,11 +78,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After removing this property I still meet the wifi card missing issue
-today. So this fix doesn't hit the root cause. But this property from
-rockchip's sdk kernel will definitely make the situation worse.
+Hello:
 
-Jianfeng
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
+
+On Mon, 08 Apr 2024 08:44:10 +0200 you wrote:
+> The dwmac supports specifying the RGMII clock delays, but it is
+> recommended to use rgmii-id and to specify the delays in the phy node
+> instead [1].
+> 
+> Change the example accordingly to no longer promote this undesired
+> setting.
+> 
+> [...]
+
+Here is the summary with links:
+  - dt-bindings: net: rockchip-dwmac: use rgmii-id in example
+    https://git.kernel.org/netdev/net-next/c/220d63f249ec
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
