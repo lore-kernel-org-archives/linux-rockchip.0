@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AC2BCD1297
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Apr 2024 08:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE73FC67861
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Apr 2024 08:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y8LeG0Jo3GKJZ8Jpu3JYKjrh90Mb8iF1swmIspm1uxU=; b=WojBOHTVQXAu9f
-	3vMFZMj7oxnmi2sNchYX3WqAfnbU7cXN/IftelPP8TrfCki8HWfvQVmUumlhWE1YHDGGca9KZjo0V
-	7OkOh9gTuQlF6nrQt4QCYb8gRQL4cd9NxI1T1dGFN1qlJyDVbxEjyqXjE/Cj3vbhiEWx3H0GO5cEp
-	mrlbVGyGtl9ppKBUhHUsX+dVTtJ4zNmREMTAvm3nhd34rc+xsKHAWqeC5MJf73m0HZNf3xQ4PbEFI
-	SEeLy14k3M4qTEwzdaKbDOkNZI40xJ1vBety1jdFwnEneYFT6gX3yKmnphDUOUw3A9S+Dny5rgPxx
-	rCxFRBndYvLKwIs6li5Q==;
+	List-Owner; bh=LKAzrjet3a9CYfi+BewzD0D7IzSk2iJ22EkQBhZRdO0=; b=roy50OhRnQRxs4
+	6am+7Tf4NMJE0RCDS8HcuW5VOGj70Zzc3mgUVKR+9AMKYwq7Ody4rVMTkmeWDsUh8mGxUoqpYUig0
+	9jsldyniZqfvMZAs1OLM2q0X5mMqH0cnamt4l0XkDBSA1jiFVh+Y5Ed4kz9s61rIdyX1owJmQeaBX
+	74lwBhcDV465HFSBwwz7EWO04ofwmcC0u8ytXnKXbiEXCD5WJ7+2NkWF8/jaKS9hMJted2F2easj1
+	NnULUAkQn/Qqt4vAzfmcLkGCJZYnrbM1cC1KOIMZvI5LfFd4V8HW0wq6PPoNxAIXP0SfNSBNZ/sc5
+	P+5CVPx0e6UK5cpVrJqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru6dV-00000000u9t-2hRK;
-	Tue, 09 Apr 2024 08:15:21 +0000
+	id 1ru6db-00000000uDk-1umi;
+	Tue, 09 Apr 2024 08:15:27 +0000
 Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ru6cy-00000000tjc-1mlx;
-	Tue, 09 Apr 2024 08:14:55 +0000
+	id 1ru6d3-00000000tmQ-12MM;
+	Tue, 09 Apr 2024 08:15:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1712650487;
-	bh=myg+rJGKzDzUq3HGuP9WcyNPU0FNUmcZxqkQzmD7zD0=;
+	s=mail; t=1712650491;
+	bh=sN/o5aQ9LNKUZVHTbcsSX5RLGlDnthy7tx/cHs1xyUQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MV2n6VXyCEwymLeR8ylBWjcSt2o8ulfY+917gmfyfgaVukBNqjRa1UBYm1TaFGQ9c
-	 ERmjekmbI6RkzjUkpvhO6zuLsSaxcXu1s/EIABPPeMtwZdEMkyTq7pv/6pNMAIAnk0
-	 3mbmsGD0Cykwfs/PxWS68DlRoiqywahg9kZca9bu/WvbXMXeBLxITTBKpIYVXfWnjT
-	 JEzBNMGkteBeu1/IOOs5KMry08hE40tWS8VGOmxQOoqXn8oylf4Xq7EWHgXQ9qEcTq
-	 mxPA3mMuJ49kyNbdbQ03yc8Rr2lvp0Tw3NMM+IUJFUpTzyy6VBmRm8ksGSOefFaocp
-	 YzI0cn/szombg==
+	b=TwsH+Mcv9xVdmcyBETemeSRSg9FDWLm5Oa4ydbLMZtF1mlzSpCr9waQez1Gj3NQI4
+	 AviMSUHyPAOhKun1/zVdyw20xSK+WCKVGYbVCVFYvpRinrDAMMoAPPV+5Lc2NDsy3E
+	 sMU8qXefb8HS61ziPk/2ThdMOG6fDHlgCZU2vdGDEpsYkAkhuEpyCnqfbq3nCZG7Kq
+	 Eu4Mo2oPAQEu4OgJLPbDWQOekEPXDx7UIXs5ASQc2LWUXzXvMMo+ravv65QHTF7lpe
+	 GRyJ+SPPwT6kigxTmBNHAaPKM67971vNUOSNodPaXxl5gvWgClLsiFjmVa2d0Z2ADC
+	 gHoCG3fKPsx6w==
 Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 854BD37820F8;
-	Tue,  9 Apr 2024 08:14:43 +0000 (UTC)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 9BD1A37820E2;
+	Tue,  9 Apr 2024 08:14:47 +0000 (UTC)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniels@collabora.com,
@@ -63,16 +63,16 @@ Cc: daniels@collabora.com,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v6 7/8] drm/ci: rockchip: add tests for rockchip display driver
-Date: Tue,  9 Apr 2024 13:43:28 +0530
-Message-Id: <20240409081329.472463-8-vignesh.raman@collabora.com>
+Subject: [PATCH v6 8/8] drm/ci: add tests on vkms
+Date: Tue,  9 Apr 2024 13:43:29 +0530
+Message-Id: <20240409081329.472463-9-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240409081329.472463-1-vignesh.raman@collabora.com>
 References: <20240409081329.472463-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_011449_554985_63943AAB 
-X-CRM114-Status: GOOD (  20.33  )
+X-CRM114-CacheID: sfid-20240409_011453_825584_B3065EB1 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,419 +84,178 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For rockchip rk3288 and rk3399, the display driver is rockchip
-and gpu driver is panfrost. Currently, in drm-ci for rockchip
-rk3288 and rk3399, only the gpu driver is tested. Refactor
-the existing rockchip jobs to test both display and gpu driver
-and update xfails.
-
-Since the correct driver name is passed from the job to test gpu
-and display driver, remove the check to set IGT_FORCE_DRIVER
-based on driver name for rockchip jobs.
-
-Skip kms tests for panfrost driver since it is not a kms driver and
-skip driver-specific tests.
-
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
-
-v2:
-  - Refactor the patch to rename job to indicate display driver testing,
-    rename the existing xfail files.
-
-v3:
-  - Add the job name in GPU_VERSION and use it for xfail file names
-    instead of using DRIVER_NAME. Also update xfails.
-
-v4:
-  - Remove the display suffix in job and rename xfails accordingly.
-    Remove the change adding job name in GPU_VERSION.
-
-v5:
-  - Add rockchip-display job and skip driver-specfic tests.
-
-v6:
-  - Squash commits for display and gpu driver testing. Reword the commit message.
-
----
- drivers/gpu/drm/ci/igt_runner.sh              |  3 --
- drivers/gpu/drm/ci/test.yml                   | 48 ++++++++++++++-----
- .../drm/ci/xfails/panfrost-rk3288-fails.txt   |  1 +
- .../drm/ci/xfails/panfrost-rk3288-skips.txt   |  8 ++++
- .../drm/ci/xfails/panfrost-rk3399-fails.txt   |  1 +
- .../drm/ci/xfails/panfrost-rk3399-skips.txt   |  8 ++++
- .../drm/ci/xfails/rockchip-rk3288-fails.txt   | 35 --------------
- .../drm/ci/xfails/rockchip-rk3288-flakes.txt  | 21 ++++++++
- .../drm/ci/xfails/rockchip-rk3288-skips.txt   |  7 +++
- .../drm/ci/xfails/rockchip-rk3399-fails.txt   | 30 ++----------
- .../drm/ci/xfails/rockchip-rk3399-flakes.txt  | 28 +++++++++--
- .../drm/ci/xfails/rockchip-rk3399-skips.txt   |  5 ++
- 12 files changed, 115 insertions(+), 80 deletions(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-
-diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-index 1762b8870948..ce6e22369d4d 100755
---- a/drivers/gpu/drm/ci/igt_runner.sh
-+++ b/drivers/gpu/drm/ci/igt_runner.sh
-@@ -20,9 +20,6 @@ cat /sys/kernel/debug/dri/*/state
- set -e
- 
- case "$DRIVER_NAME" in
--    rockchip)
--        export IGT_FORCE_DRIVER="panfrost"
--        ;;
-     amdgpu)
-         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
-         mv /install/modules/lib/modules/* /lib/modules/.
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index a453876509e9..02d6779c456d 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -155,33 +155,57 @@ msm:sdm845:
-   script:
-     - ./install/bare-metal/cros-servo.sh
- 
--rockchip:rk3288:
--  extends:
--    - .lava-igt:arm32
-+.rockchip-device:
-+  variables:
-+    DTB: ${DEVICE_TYPE}
-+    BOOT_METHOD: depthcharge
-+
-+.rockchip-display:
-   stage: rockchip
-   variables:
-     DRIVER_NAME: rockchip
-+
-+.rk3288:
-+  extends:
-+    - .lava-igt:arm32
-+    - .rockchip-device
-+  variables:
-     DEVICE_TYPE: rk3288-veyron-jaq
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
--    KERNEL_IMAGE_TYPE: "zimage"
-     GPU_VERSION: rk3288
-+    KERNEL_IMAGE_TYPE: "zimage"
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3288-veyron-jaq
- 
--rockchip:rk3399:
-+.rk3399:
-   extends:
-     - .lava-igt:arm64
--  stage: rockchip
-+    - .rockchip-device
-   parallel: 2
-   variables:
--    DRIVER_NAME: rockchip
-     DEVICE_TYPE: rk3399-gru-kevin
--    DTB: ${DEVICE_TYPE}
--    BOOT_METHOD: depthcharge
--    KERNEL_IMAGE_TYPE: ""
-     GPU_VERSION: rk3399
-+    KERNEL_IMAGE_TYPE: ""
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
- 
-+rockchip:rk3288:
-+  extends:
-+    - .rk3288
-+    - .rockchip-display
-+
-+panfrost:rk3288:
-+  extends:
-+    - .rk3288
-+    - .panfrost-gpu
-+
-+rockchip:rk3399:
-+  extends:
-+    - .rk3399
-+    - .rockchip-display
-+
-+panfrost:rk3399:
-+  extends:
-+    - .rk3399
-+    - .panfrost-gpu
-+
- .i915:
-   extends:
-     - .lava-igt:x86_64
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-new file mode 100644
-index 000000000000..abd35a8ef6f4
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
-@@ -0,0 +1 @@
-+panfrost_prime@gem-prime-import,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-new file mode 100644
-index 000000000000..41a846a59644
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-skips.txt
-@@ -0,0 +1,8 @@
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip driver specific tests
-+msm_.*
-+^amdgpu.*
-+v3d_.*
-+vc4_.*
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-new file mode 100644
-index 000000000000..6f5e760d5ec0
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
-@@ -0,0 +1 @@
-+panfrost_prime@gem-prime-import,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-new file mode 100644
-index 000000000000..41a846a59644
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-skips.txt
-@@ -0,0 +1,8 @@
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip driver specific tests
-+msm_.*
-+^amdgpu.*
-+v3d_.*
-+vc4_.*
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-index 282817a22cf8..80c23ca3d79d 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
-@@ -1,55 +1,20 @@
- kms_3d,Crash
- kms_bw@linear-tiling-2-displays-1920x1080p,Fail
- kms_bw@linear-tiling-2-displays-2560x1440p,Fail
--kms_bw@linear-tiling-2-displays-3840x2160p,Fail
- kms_bw@linear-tiling-3-displays-1920x1080p,Fail
--kms_bw@linear-tiling-3-displays-2560x1440p,Fail
--kms_bw@linear-tiling-3-displays-3840x2160p,Fail
- kms_flip@flip-vs-modeset-vs-hang,Crash
- kms_flip@flip-vs-panning-vs-hang,Crash
--kms_force_connector_basic@force-load-detect,Fail
- kms_invalid_mode@int-max-clock,Crash
- kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Crash
- kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Crash
- kms_pipe_crc_basic@read-crc-frame-sequence,Crash
- kms_plane@pixel-format,Crash
- kms_plane@pixel-format-source-clamping,Crash
--kms_plane@plane-position-hole,Crash
--kms_plane@plane-position-hole-dpms,Crash
- kms_plane_cursor@overlay,Crash
--kms_plane_cursor@pipe-A-overlay-size-128,Fail
--kms_plane_cursor@pipe-A-overlay-size-256,Fail
--kms_plane_cursor@pipe-A-overlay-size-64,Fail
--kms_plane_cursor@pipe-A-primary-size-128,Fail
--kms_plane_cursor@pipe-A-primary-size-256,Fail
--kms_plane_cursor@pipe-A-primary-size-64,Fail
--kms_plane_cursor@pipe-A-viewport-size-128,Fail
--kms_plane_cursor@pipe-A-viewport-size-256,Fail
--kms_plane_cursor@pipe-A-viewport-size-64,Fail
--kms_plane_cursor@pipe-B-overlay-size-128,Fail
--kms_plane_cursor@pipe-B-overlay-size-256,Fail
--kms_plane_cursor@pipe-B-overlay-size-64,Fail
--kms_plane_cursor@pipe-B-primary-size-128,Fail
--kms_plane_cursor@pipe-B-primary-size-256,Fail
--kms_plane_cursor@pipe-B-primary-size-64,Fail
--kms_plane_cursor@pipe-B-viewport-size-128,Fail
--kms_plane_cursor@pipe-B-viewport-size-256,Fail
--kms_plane_cursor@pipe-B-viewport-size-64,Fail
- kms_plane_cursor@primary,Crash
- kms_plane_cursor@viewport,Crash
--kms_plane_lowres@tiling-none,Fail
--kms_plane_scaling@downscale-with-modifier-factor-0-25,Fail
--kms_plane_scaling@downscale-with-rotation-factor-0-25,Fail
--kms_plane_scaling@upscale-with-modifier-20x20,Fail
--kms_plane_scaling@upscale-with-modifier-factor-0-25,Fail
--kms_plane_scaling@upscale-with-pixel-format-20x20,Fail
--kms_plane_scaling@upscale-with-pixel-format-factor-0-25,Fail
--kms_plane_scaling@upscale-with-rotation-20x20,Fail
--kms_prime@basic-crc,Fail
- kms_properties@connector-properties-atomic,Crash
- kms_properties@connector-properties-legacy,Crash
- kms_properties@get_properties-sanity-atomic,Crash
- kms_properties@get_properties-sanity-non-atomic,Crash
- kms_rmfb@close-fd,Crash
--kms_setmode@invalid-clone-single-crtc,Crash
--panfrost_prime@gem-prime-import,Crash
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-new file mode 100644
-index 000000000000..f1f22e8aecd3
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
-@@ -0,0 +1,21 @@
-+# Board Name: rk3288-veyron-jaq.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# Failure Rate: 50
-+# IGT Version: 1.28-gd2af13d9f
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_cursor_crc@cursor-offscreen-64x21
-+kms_cursor_legacy@flip-vs-cursor-legacy
-+kms_cursor_legacy@flip-vs-cursor-atomic
-+kms_plane@plane-panning-top-left
-+kms_cursor_crc@cursor-alpha-opaque
-+kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@plain-flip-ts-check-interruptible
-+kms_universal_plane@universal-plane-functional
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_cursor_crc@cursor-size-change
-+core_setmaster_vs_auth
-+kms_flip@modeset-vs-vblank-race
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-index 3e99106e50e0..0866028d095c 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt
-@@ -54,5 +54,12 @@ kms_pipe_crc_basic@disable-crc-after-crtc
- # Skip driver specific tests
- msm_.*
- ^amdgpu.*
-+panfrost_.*
- v3d_.*
- vc4_.*
-+
-+# Machine is hanging in this test with linux kernel version 6.7.0-rc4, so skip it
-+kms_cursor_crc@cursor-onscreen-32x32
-+kms_pipe_crc_basic@disable-crc-after-crtc
-+kms_pipe_crc_basic@pipe-A-eDP-1
-+kms_bw@linear-tiling-3-displays-2560x1440
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-index 32ca7f29472e..cbb5d4a88cba 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
-@@ -1,12 +1,12 @@
--kms_color@gamma,Fail
-+kms_atomic_transition@modeset-transition,Fail
-+kms_atomic_transition@modeset-transition-fencing,Fail
-+kms_atomic_transition@plane-toggle-modeset-transition,Fail
- kms_color@legacy-gamma,Fail
--kms_color@pipe-A-legacy-gamma,Fail
--kms_color@pipe-B-legacy-gamma,Fail
- kms_cursor_crc@cursor-alpha-opaque,Fail
- kms_cursor_crc@cursor-alpha-transparent,Fail
- kms_cursor_crc@cursor-dpms,Fail
- kms_cursor_crc@cursor-offscreen-32x10,Fail
--kms_cursor_crc@cursor-offscreen-32x32,Fail
-+kms_cursor_crc@cursor-offscreen-64x21,Fail
- kms_cursor_crc@cursor-offscreen-64x64,Fail
- kms_cursor_crc@cursor-onscreen-32x10,Fail
- kms_cursor_crc@cursor-onscreen-32x32,Fail
-@@ -26,9 +26,7 @@ kms_cursor_crc@cursor-sliding-64x21,Fail
- kms_cursor_crc@cursor-sliding-64x64,Fail
- kms_flip@basic-flip-vs-wf_vblank,Fail
- kms_flip@blocking-wf_vblank,Fail
--kms_flip@dpms-vs-vblank-race,Fail
- kms_flip@flip-vs-absolute-wf_vblank,Fail
--kms_flip@flip-vs-absolute-wf_vblank-interruptible,Fail
- kms_flip@flip-vs-blocking-wf-vblank,Fail
- kms_flip@flip-vs-modeset-vs-hang,Fail
- kms_flip@flip-vs-panning,Fail
-@@ -40,10 +38,8 @@ kms_flip@plain-flip-fb-recreate-interruptible,Fail
- kms_flip@plain-flip-ts-check,Fail
- kms_flip@plain-flip-ts-check-interruptible,Fail
- kms_flip@wf_vblank-ts-check,Fail
--kms_flip@wf_vblank-ts-check-interruptible,Fail
- kms_invalid_mode@int-max-clock,Fail
- kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
--kms_pipe_crc_basic@compare-crc-sanitycheck-xr24,Fail
- kms_pipe_crc_basic@disable-crc-after-crtc,Fail
- kms_pipe_crc_basic@nonblocking-crc,Fail
- kms_pipe_crc_basic@nonblocking-crc-frame-sequence,Fail
-@@ -56,21 +52,5 @@ kms_plane@plane-panning-top-left,Fail
- kms_plane@plane-position-covered,Fail
- kms_plane@plane-position-hole,Fail
- kms_plane@plane-position-hole-dpms,Fail
--kms_plane_cursor@overlay,Fail
--kms_plane_cursor@pipe-B-overlay-size-128,Fail
--kms_plane_cursor@pipe-B-overlay-size-256,Fail
--kms_plane_cursor@pipe-B-overlay-size-64,Fail
--kms_plane_cursor@pipe-B-primary-size-128,Fail
--kms_plane_cursor@pipe-B-primary-size-256,Fail
--kms_plane_cursor@pipe-B-primary-size-64,Fail
--kms_plane_cursor@pipe-B-viewport-size-128,Fail
--kms_plane_cursor@pipe-B-viewport-size-256,Fail
--kms_plane_cursor@pipe-B-viewport-size-64,Fail
--kms_plane_cursor@primary,Fail
--kms_plane_cursor@viewport,Fail
--kms_plane_multiple@atomic-pipe-B-tiling-none,Fail
--kms_plane_multiple@tiling-none,Fail
--kms_prime@basic-crc,Fail
- kms_rmfb@close-fd,Fail
--kms_universal_plane@universal-plane-pipe-B-functional,Fail
--panfrost_prime@gem-prime-import,Fail
-+kms_universal_plane@universal-plane-functional,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-index c9fdc623ab91..5126a849bf4a 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-@@ -1,7 +1,25 @@
--kms_bw@linear-tiling-2-displays-1920x1080p
--kms_cursor_crc@cursor-offscreen-64x21
-+# Board Name: rk3399-gru-kevin.dtb
-+# Bug Report: https://lore.kernel.org/dri-devel/bdb53650-1888-30b8-93ee-2290d020af4a@collabora.com/T/#u
-+# IGT Version: 1.28-gd2af13d9f
-+# Failure Rate: 50
-+# Linux Version: 6.7.0-rc3
-+
-+# Reported by deqp-runner
-+kms_bw@linear-tiling-1-displays-1920x1080p
-+kms_color@gamma
-+kms_cursor_legacy@cursorA-vs-flipA-toggle
-+kms_cursor_legacy@nonblocking-modeset-vs-cursor-atomic
-+kms_flip@dpms-vs-vblank-race
- kms_flip@dpms-vs-vblank-race-interruptible
-+kms_flip@flip-vs-absolute-wf_vblank-interruptible
- kms_flip@flip-vs-wf_vblank-interruptible
--kms_plane_cursor@overlay
--kms_plane_cursor@primary
--kms_plane_cursor@viewport
-+kms_flip@modeset-vs-vblank-race-interruptible
-+kms_pipe_crc_basic@compare-crc-sanitycheck-xr24
-+kms_setmode@basic
-+
-+# The below test shows inconsistency across multiple runs, giving
-+# results of Pass and Crash alternately.
-+kms_bw@linear-tiling-2-displays-1920x1080p
-+kms_bw@linear-tiling-3-displays-2560x1440p
-+kms_cursor_crc@cursor-rapid-movement-32x10
-+kms_flip@wf_vblank-ts-check-interruptible
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-index bd0bba0d8477..f309aeca857a 100644
---- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-skips.txt
-@@ -7,5 +7,10 @@ kms_cursor_legacy.*
- # Skip driver specific tests
- msm_.*
- ^amdgpu.*
-+panfrost_.*
- v3d_.*
- vc4_.*
-+
-+# Machine ends up hanging after lots of Oopses with linux version 6.7.0-rc4
-+# rockchip-dp ff970000.dp: AUX CH error happened: 0x2
-+kms_plane_multiple.*
--- 
-2.40.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QWRkIGpvYiB0aGF0IHJ1bnMgaWd0IG9uIHRvcCBvZiB2a21zLgoKQWNrZWQtYnk6IE1hw61yYSBD
+YW5hbCA8bWNhbmFsQGlnYWxpYS5jb20+CkFja2VkLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4ua29p
+a2VAY29sbGFib3JhLmNvbT4KU2lnbmVkLW9mZi1ieTogVmlnbmVzaCBSYW1hbiA8dmlnbmVzaC5y
+YW1hbkBjb2xsYWJvcmEuY29tPgpBY2tlZC1ieTogSmVzc2ljYSBaaGFuZyA8cXVpY19qZXNzemhh
+bkBxdWljaW5jLmNvbT4KVGVzdGVkLWJ5OiBKZXNzaWNhIFpoYW5nIDxxdWljX2plc3N6aGFuQHF1
+aWNpbmMuY29tPgpBY2tlZC1ieTogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgpT
+aWduZWQtb2ZmLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4ua29pa2VAY29sbGFib3JhLmNvbT4KLS0t
+Cgp2NDoKICAtIE5ldyBwYXRjaCBpbiB0aGUgc2VyaWVzLgogICAgaHR0cHM6Ly9sb3JlLmtlcm5l
+bC5vcmcvbGttbC8yMDI0MDIwMTA2NTM0Ni44MDEwMzgtMS12aWduZXNoLnJhbWFuQGNvbGxhYm9y
+YS5jb20vCgp2NToKICAtIFNraXAgZHJpdmVyLXNwZWNmaWMgdGVzdHMuCgp2NjoKICAtIE5vIGNo
+YW5nZXMuCgotLS0KIE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAyICsrCiBkcml2ZXJzL2dwdS9kcm0vY2kvYnVpbGQuc2ggICAgICAgICAgICAgICAgICAg
+fCAgMSAtCiBkcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbCAgICAgICAgICAgICAgfCAg
+MSArCiBkcml2ZXJzL2dwdS9kcm0vY2kvaWd0X3J1bm5lci5zaCAgICAgICAgICAgICAgfCAgNiAr
+Ky0tCiBkcml2ZXJzL2dwdS9kcm0vY2kvaW1hZ2UtdGFncy55bWwgICAgICAgICAgICAgfCAgMiAr
+LQogZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3QueW1sICAgICAgICAgICAgICAgICAgIHwgMjQgKysr
+KysrKysrKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9jaS94ODZfNjQuY29uZmlnICAgICAgICAgICAg
+ICB8ICAxICsKIC4uLi9kcm0vY2kveGZhaWxzL3ZpcnRpb19ncHUtbm9uZS1mYWlscy50eHQgICB8
+ICAxIC0KIGRyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25lLWZhaWxzLnR4dCB8IDMz
+ICsrKysrKysrKysrKysrKysrKysKIC4uLi9ncHUvZHJtL2NpL3hmYWlscy92a21zLW5vbmUtZmxh
+a2VzLnR4dCAgICB8IDIwICsrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3Zr
+bXMtbm9uZS1za2lwcy50eHQgfCAyMyArKysrKysrKysrKysrCiAxMSBmaWxlcyBjaGFuZ2VkLCAx
+MDcgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3ZrbXMtbm9uZS1mYWlscy50eHQKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3ZrbXMtbm9uZS1mbGFrZXMudHh0CiBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3hmYWlscy92a21zLW5vbmUtc2tpcHMu
+dHh0CgpkaWZmIC0tZ2l0IGEvTUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCA5MmFmYTdi
+NGYzZGMuLjBhYTYzZmQ5YTA5MiAxMDA2NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRB
+SU5FUlMKQEAgLTY5NjIsNiArNjk2Miw4IEBAIEw6CWRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKIFM6CU1haW50YWluZWQKIFQ6CWdpdCBnaXQ6Ly9hbm9uZ2l0LmZyZWVkZXNrdG9wLm9y
+Zy9kcm0vZHJtLW1pc2MKIEY6CURvY3VtZW50YXRpb24vZ3B1L3ZrbXMucnN0CitGOglkcml2ZXJz
+L2dwdS9kcm0vY2kvdGVzdGxpc3QudHh0CitGOglkcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3Zr
+bXMqCiBGOglkcml2ZXJzL2dwdS9kcm0vdmttcy8KIAogRFJNIERSSVZFUiBGT1IgVklSVFVBTEJP
+WCBWSVJUVUFMIEdQVQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL2J1aWxkLnNoIGIv
+ZHJpdmVycy9ncHUvZHJtL2NpL2J1aWxkLnNoCmluZGV4IDhhM2JhYTAwMzkwNC4uOTU0OTNkZjlj
+ZGMyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kvYnVpbGQuc2gKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL2NpL2J1aWxkLnNoCkBAIC0xNTYsNyArMTU2LDYgQEAgZmkKIAogbWtkaXIgLXAg
+YXJ0aWZhY3RzL2luc3RhbGwvbGliCiBtdiBpbnN0YWxsLyogYXJ0aWZhY3RzL2luc3RhbGwvLgot
+cm0gLXJmIGFydGlmYWN0cy9pbnN0YWxsL21vZHVsZXMKIGxuIC1zIGNvbW1vbiBhcnRpZmFjdHMv
+aW5zdGFsbC9jaS1jb21tb24KIGNwIC5jb25maWcgYXJ0aWZhY3RzLyR7Q0lfSk9CX05BTUV9X2Nv
+bmZpZwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbCBiL2Ry
+aXZlcnMvZ3B1L2RybS9jaS9naXRsYWItY2kueW1sCmluZGV4IDUzNDVhOTcwZjBiNS4uZGY3NjJk
+MDM1MzNmIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbAorKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbApAQCAtMTE0LDYgKzExNCw3IEBAIHN0
+YWdlczoKICAgLSBwYW5mcm9zdAogICAtIHBvd2VydnIKICAgLSB2aXJ0aW8tZ3B1CisgIC0gc29m
+dHdhcmUtZHJpdmVyCiAKICMgWUFNTCBhbmNob3JzIGZvciBydWxlIGNvbmRpdGlvbnMKICMgLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9jaS9pZ3RfcnVubmVyLnNoIGIvZHJpdmVycy9ncHUvZHJtL2NpL2lndF9ydW5uZXIuc2gKaW5k
+ZXggY2U2ZTIyMzY5ZDRkLi5jODlhY2I5NzQ2NDUgMTAwNzU1Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9jaS9pZ3RfcnVubmVyLnNoCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS9pZ3RfcnVubmVyLnNo
+CkBAIC0yMCwxMCArMjAsMTAgQEAgY2F0IC9zeXMva2VybmVsL2RlYnVnL2RyaS8qL3N0YXRlCiBz
+ZXQgLWUKIAogY2FzZSAiJERSSVZFUl9OQU1FIiBpbgotICAgIGFtZGdwdSkKKyAgICBhbWRncHV8
+dmttcykKICAgICAgICAgIyBDYW5ub3QgdXNlIEhXQ0lfS0VSTkVMX01PRFVMRVMgYXMgYXQgdGhh
+dCBwb2ludCB3ZSBkb24ndCBoYXZlIHRoZSBtb2R1bGUgaW4gL2xpYgotICAgICAgICBtdiAvaW5z
+dGFsbC9tb2R1bGVzL2xpYi9tb2R1bGVzLyogL2xpYi9tb2R1bGVzLy4KLSAgICAgICAgbW9kcHJv
+YmUgYW1kZ3B1CisgICAgICAgIG12IC9pbnN0YWxsL21vZHVsZXMvbGliL21vZHVsZXMvKiAvbGli
+L21vZHVsZXMvLiB8fCB0cnVlCisgICAgICAgIG1vZHByb2JlIC0tZmlyc3QtdGltZSAkRFJJVkVS
+X05BTUUKICAgICAgICAgOzsKIGVzYWMKIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Np
+L2ltYWdlLXRhZ3MueW1sIGIvZHJpdmVycy9ncHUvZHJtL2NpL2ltYWdlLXRhZ3MueW1sCmluZGV4
+IGNmMDdjM2UwOWI4Yy4uYmY4NjFhYjhiOWMyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+Y2kvaW1hZ2UtdGFncy55bWwKKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL2ltYWdlLXRhZ3MueW1s
+CkBAIC00LDcgKzQsNyBAQCB2YXJpYWJsZXM6CiAgICBERUJJQU5fQkFTRV9UQUc6ICIke0NPTlRB
+SU5FUl9UQUd9IgogCiAgICBERUJJQU5fWDg2XzY0X0JVSUxEX0lNQUdFX1BBVEg6ICJkZWJpYW4v
+eDg2XzY0X2J1aWxkIgotICAgREVCSUFOX0JVSUxEX1RBRzogIjIwMjMtMTAtMDgtY29uZmlnIgor
+ICAgREVCSUFOX0JVSUxEX1RBRzogIjIwMjQtMDEtMjktdmttcyIKIAogICAgS0VSTkVMX1JPT1RG
+U19UQUc6ICIyMDIzLTEwLTA2LWFtZCIKICAgIFBLR19SRVBPX1JFVjogIjY3ZjJjNDZiIgpkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3QueW1sIGIvZHJpdmVycy9ncHUvZHJtL2Np
+L3Rlc3QueW1sCmluZGV4IDAyZDY3NzljNDU2ZC4uYjQ3YmY3OThmNGMwIDEwMDY0NAotLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vY2kvdGVzdC55bWwKKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3Rlc3Qu
+eW1sCkBAIC00MTEsNyArNDExLDcgQEAgcGFuZnJvc3Q6ZzEyYjoKICAgICAtIC5wYW5mcm9zdC1n
+cHUKIAogdmlydGlvX2dwdTpub25lOgotICBzdGFnZTogdmlydGlvLWdwdQorICBzdGFnZTogc29m
+dHdhcmUtZHJpdmVyCiAgIHZhcmlhYmxlczoKICAgICBDUk9TVk1fR0FMTElVTV9EUklWRVI6IGxs
+dm1waXBlCiAgICAgRFJJVkVSX05BTUU6IHZpcnRpb19ncHUKQEAgLTQzMSwzICs0MzEsMjUgQEAg
+dmlydGlvX2dwdTpub25lOgogICAgIC0gZGViaWFuL3g4Nl82NF90ZXN0LWdsCiAgICAgLSB0ZXN0
+aW5nOng4Nl82NAogICAgIC0gaWd0Ong4Nl82NAorCit2a21zOm5vbmU6CisgIHN0YWdlOiBzb2Z0
+d2FyZS1kcml2ZXIKKyAgdmFyaWFibGVzOgorICAgIERSSVZFUl9OQU1FOiB2a21zCisgICAgR1BV
+X1ZFUlNJT046IG5vbmUKKyAgZXh0ZW5kczoKKyAgICAtIC50ZXN0LWdsCisgICAgLSAudGVzdC1y
+dWxlcworICB0YWdzOgorICAgIC0ga3ZtCisgIHNjcmlwdDoKKyAgICAtIGxuIC1zZiAkQ0lfUFJP
+SkVDVF9ESVIvaW5zdGFsbCAvaW5zdGFsbAorICAgIC0gbXYgaW5zdGFsbC9iekltYWdlIC9sYXZh
+LWZpbGVzL2J6SW1hZ2UKKyAgICAtIG1rZGlyIC1wIC9saWIvbW9kdWxlcworICAgIC0gbWtkaXIg
+LXAgJENJX1BST0pFQ1RfRElSL3Jlc3VsdHMKKyAgICAtIGxuIC1zZiAkQ0lfUFJPSkVDVF9ESVIv
+cmVzdWx0cyAvcmVzdWx0cworICAgIC0gLi9pbnN0YWxsL2Nyb3N2bS1ydW5uZXIuc2ggLi9pbnN0
+YWxsL2lndF9ydW5uZXIuc2gKKyAgbmVlZHM6CisgICAgLSBkZWJpYW4veDg2XzY0X3Rlc3QtZ2wK
+KyAgICAtIHRlc3Rpbmc6eDg2XzY0CisgICAgLSBpZ3Q6eDg2XzY0CmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vY2kveDg2XzY0LmNvbmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ODZfNjQu
+Y29uZmlnCmluZGV4IDFjYmQ0OWE1YjIzYS4uOGVhYmEzODhiMTQxIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vY2kveDg2XzY0LmNvbmZpZworKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kveDg2
+XzY0LmNvbmZpZwpAQCAtMjQsNiArMjQsNyBAQCBDT05GSUdfRFJNPXkKIENPTkZJR19EUk1fUEFO
+RUxfU0lNUExFPXkKIENPTkZJR19QV01fQ1JPU19FQz15CiBDT05GSUdfQkFDS0xJR0hUX1BXTT15
+CitDT05GSUdfRFJNX1ZLTVM9bQogCiAjIFN0cmlwIG91dCBzb21lIHN0dWZmIHdlIGRvbid0IG5l
+ZWQgZm9yIGdyYXBoaWNzIHRlc3RpbmcsIHRvIHJlZHVjZQogIyB0aGUgYnVpbGQuCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3ZpcnRpb19ncHUtbm9uZS1mYWlscy50eHQg
+Yi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3ZpcnRpb19ncHUtbm9uZS1mYWlscy50eHQKaW5k
+ZXggNWI4Y2JiMjhiMjVjLi44YzQ1MDVkMDc0ZWIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9jaS94ZmFpbHMvdmlydGlvX2dwdS1ub25lLWZhaWxzLnR4dAorKysgYi9kcml2ZXJzL2dwdS9k
+cm0vY2kveGZhaWxzL3ZpcnRpb19ncHUtbm9uZS1mYWlscy50eHQKQEAgLTQxLDcgKzQxLDYgQEAg
+a21zX2ZsaXBAZmxpcC12cy1hYnNvbHV0ZS13Zl92YmxhbmssRmFpbAoga21zX2ZsaXBAZmxpcC12
+cy1hYnNvbHV0ZS13Zl92YmxhbmstaW50ZXJydXB0aWJsZSxGYWlsCiBrbXNfZmxpcEBmbGlwLXZz
+LWJsb2NraW5nLXdmLXZibGFuayxGYWlsCiBrbXNfZmxpcEBmbGlwLXZzLWV4cGlyZWQtdmJsYW5r
+LEZhaWwKLWttc19mbGlwQGZsaXAtdnMtZXhwaXJlZC12YmxhbmstaW50ZXJydXB0aWJsZSxGYWls
+CiBrbXNfZmxpcEBmbGlwLXZzLW1vZGVzZXQtdnMtaGFuZyxGYWlsCiBrbXNfZmxpcEBmbGlwLXZz
+LXBhbm5pbmctdnMtaGFuZyxGYWlsCiBrbXNfZmxpcEBmbGlwLXZzLXdmX3ZibGFuay1pbnRlcnJ1
+cHRpYmxlLEZhaWwKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1u
+b25lLWZhaWxzLnR4dCBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25lLWZhaWxz
+LnR4dApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAuLmVmNjEwMWQyYzM1
+NgotLS0gL2Rldi9udWxsCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25l
+LWZhaWxzLnR4dApAQCAtMCwwICsxLDMzIEBACitrbXNfY3Vyc29yX2NyY0BjdXJzb3ItcmFwaWQt
+bW92ZW1lbnQtMTI4eDEyOCxGYWlsCitrbXNfY3Vyc29yX2NyY0BjdXJzb3ItcmFwaWQtbW92ZW1l
+bnQtMTI4eDQyLEZhaWwKK2ttc19jdXJzb3JfY3JjQGN1cnNvci1yYXBpZC1tb3ZlbWVudC0yNTZ4
+MjU2LEZhaWwKK2ttc19jdXJzb3JfY3JjQGN1cnNvci1yYXBpZC1tb3ZlbWVudC0yNTZ4ODUsRmFp
+bAora21zX2N1cnNvcl9jcmNAY3Vyc29yLXJhcGlkLW1vdmVtZW50LTMyeDEwLEZhaWwKK2ttc19j
+dXJzb3JfY3JjQGN1cnNvci1yYXBpZC1tb3ZlbWVudC0zMngzMixGYWlsCitrbXNfY3Vyc29yX2Ny
+Y0BjdXJzb3ItcmFwaWQtbW92ZW1lbnQtNTEyeDE3MCxGYWlsCitrbXNfY3Vyc29yX2NyY0BjdXJz
+b3ItcmFwaWQtbW92ZW1lbnQtNTEyeDUxMixGYWlsCitrbXNfY3Vyc29yX2NyY0BjdXJzb3ItcmFw
+aWQtbW92ZW1lbnQtNjR4MjEsRmFpbAora21zX2N1cnNvcl9jcmNAY3Vyc29yLXJhcGlkLW1vdmVt
+ZW50LTY0eDY0LEZhaWwKK2ttc19jdXJzb3JfbGVnYWN5QGJhc2ljLWZsaXAtYmVmb3JlLWN1cnNv
+ci1hdG9taWMsRmFpbAora21zX2N1cnNvcl9sZWdhY3lAYmFzaWMtZmxpcC1iZWZvcmUtY3Vyc29y
+LWxlZ2FjeSxGYWlsCitrbXNfY3Vyc29yX2xlZ2FjeUBjdXJzb3ItdnMtZmxpcC1hdG9taWMsRmFp
+bAora21zX2N1cnNvcl9sZWdhY3lAY3Vyc29yLXZzLWZsaXAtbGVnYWN5LEZhaWwKK2ttc19jdXJz
+b3JfbGVnYWN5QGN1cnNvci12cy1mbGlwLXRvZ2dsZSxGYWlsCitrbXNfY3Vyc29yX2xlZ2FjeUBj
+dXJzb3ItdnMtZmxpcC12YXJ5aW5nLXNpemUsRmFpbAora21zX2N1cnNvcl9sZWdhY3lAZmxpcC12
+cy1jdXJzb3ItYXRvbWljLEZhaWwKK2ttc19jdXJzb3JfbGVnYWN5QGZsaXAtdnMtY3Vyc29yLWNy
+Yy1hdG9taWMsRmFpbAora21zX2N1cnNvcl9sZWdhY3lAZmxpcC12cy1jdXJzb3ItY3JjLWxlZ2Fj
+eSxGYWlsCitrbXNfY3Vyc29yX2xlZ2FjeUBmbGlwLXZzLWN1cnNvci1sZWdhY3ksRmFpbAora21z
+X2ZsaXBAZmxpcC12cy1tb2Rlc2V0LXZzLWhhbmcsRmFpbAora21zX2ZsaXBAZmxpcC12cy1wYW5u
+aW5nLXZzLWhhbmcsRmFpbAora21zX3BpcGVfY3JjX2Jhc2ljQG5vbmJsb2NraW5nLWNyYyxGYWls
+CitrbXNfcGlwZV9jcmNfYmFzaWNAbm9uYmxvY2tpbmctY3JjLWZyYW1lLXNlcXVlbmNlLEZhaWwK
+K2ttc19waXBlX2NyY19iYXNpY0BzdXNwZW5kLXJlYWQtY3JjLEZhaWwKK2ttc19wbGFuZUBwbGFu
+ZS1wYW5uaW5nLWJvdHRvbS1yaWdodC1zdXNwZW5kLEZhaWwKK2ttc191bml2ZXJzYWxfcGxhbmVA
+dW5pdmVyc2FsLXBsYW5lLXBpcGUtQS1zYW5pdHksRmFpbAora21zX3VuaXZlcnNhbF9wbGFuZUB1
+bml2ZXJzYWwtcGxhbmUtc2FuaXR5LEZhaWwKK2ttc192YmxhbmtAcGlwZS1BLXRzLWNvbnRpbnVh
+dGlvbi1kcG1zLXN1c3BlbmQsRmFpbAora21zX3dyaXRlYmFja0B3cml0ZWJhY2stY2hlY2stb3V0
+cHV0LEZhaWwKK2ttc193cml0ZWJhY2tAd3JpdGViYWNrLWZiLWlkLEZhaWwKK2ttc193cml0ZWJh
+Y2tAd3JpdGViYWNrLWludmFsaWQtcGFyYW1ldGVycyxGYWlsCitrbXNfd3JpdGViYWNrQHdyaXRl
+YmFjay1waXhlbC1mb3JtYXRzLEZhaWwKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94
+ZmFpbHMvdmttcy1ub25lLWZsYWtlcy50eHQgYi9kcml2ZXJzL2dwdS9kcm0vY2kveGZhaWxzL3Zr
+bXMtbm9uZS1mbGFrZXMudHh0Cm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAw
+MC4uN2I1MmRhYjQ1NDU3Ci0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9ncHUvZHJtL2NpL3hm
+YWlscy92a21zLW5vbmUtZmxha2VzLnR4dApAQCAtMCwwICsxLDIwIEBACisjIEJvYXJkIE5hbWU6
+IHZrbXMKKyMgQnVnIFJlcG9ydDogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsLzAw
+NWRhOGYxLTgwNTAtYmZmZC02NTNjLTJhODdhZTYzNzZmN0Bjb2xsYWJvcmEuY29tL1QvI3UKKyMg
+SUdUIFZlcnNpb246IDEuMjgtZ2IwY2M4MTYwZQorIyBMaW51eCBWZXJzaW9uOiA2LjcuMC1yYzMK
+KyMgRmFpbHVyZSBSYXRlOiA1MAorCisjIFJlcG9ydGVkIGJ5IGRlcXAtcnVubmVyCitrbXNfY3Vy
+c29yX2xlZ2FjeUBjdXJzb3JBLXZzLWZsaXBBLWxlZ2FjeQora21zX2N1cnNvcl9sZWdhY3lAY3Vy
+c29yQS12cy1mbGlwQS12YXJ5aW5nLXNpemUKK2ttc19mbGlwQGZsaXAtdnMtZXhwaXJlZC12Ymxh
+bmstaW50ZXJydXB0aWJsZQora21zX2ZsaXBAZmxpcC12cy1leHBpcmVkLXZibGFuawora21zX2Zs
+aXBAcGxhaW4tZmxpcC1mYi1yZWNyZWF0ZQora21zX2ZsaXBAcGxhaW4tZmxpcC1mYi1yZWNyZWF0
+ZS1pbnRlcnJ1cHRpYmxlCitrbXNfZmxpcEBwbGFpbi1mbGlwLXRzLWNoZWNrLWludGVycnVwdGli
+bGUKKworIyBUaGUgYmVsb3cgdGVzdCBzaG93cyBpbmNvbnNpc3RlbmN5IGFjcm9zcyBtdWx0aXBs
+ZSBydW5zLAorIyBnaXZpbmcgcmVzdWx0cyBvZiBQYXNzIGFuZCBGYWlsIGFsdGVybmF0ZWx5Lgor
+a21zX2N1cnNvcl9sZWdhY3lAY3Vyc29yQS12cy1mbGlwQS10b2dnbGUKK2ttc19waXBlX2NyY19i
+YXNpY0Bub25ibG9ja2luZy1jcmMKK2ttc19mbGlwQHBsYWluLWZsaXAtdHMtY2hlY2sKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25lLXNraXBzLnR4dCBiL2Ry
+aXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25lLXNraXBzLnR4dApuZXcgZmlsZSBtb2Rl
+IDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAuLjcyM2RlOTIwZGMzNwotLS0gL2Rldi9udWxsCisr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9jaS94ZmFpbHMvdmttcy1ub25lLXNraXBzLnR4dApAQCAtMCww
+ICsxLDIzIEBACisjIEhpdHM6CisjIHJjdTogSU5GTzogcmN1X3ByZWVtcHQgZGV0ZWN0ZWQgc3Rh
+bGxzIG9uIENQVXMvdGFza3M6CisjIHJjdTogCVRhc2tzIGJsb2NrZWQgb24gbGV2ZWwtMCByY3Vf
+bm9kZSAoQ1BVcyAwLTEpOiBQNzQ5LzE6Yi4ubAora21zX3Byb3BfYmxvYkBpbnZhbGlkLWdldC1w
+cm9wCisKKyMga2VlcHMgcHJpbnRpbmcgdmttc192Ymxhbmtfc2ltdWxhdGU6IHZibGFuayB0aW1l
+ciBvdmVycnVuIGFuZCBuZXZlciBlbmRzCitrbXNfaW52YWxpZF9tb2RlQGludC1tYXgtY2xvY2sK
+KworIyBTdXNwZW5kIHNlZW1zIHRvIGJlIGJyb2tlbgorLipzdXNwZW5kLioKKworIyBIYW5ncyBt
+YWNoaW5lIGFuZCB0aW1lb3V0IG9jY3Vycwora21zX2ZsaXBAZmxpcC12cy1hYnNvbHV0ZS13Zl92
+YmxhbmstaW50ZXJydXB0aWJsZQora21zX2ludmFsaWRfbW9kZUB6ZXJvLWhkaXNwbGF5CitrbXNf
+aW52YWxpZF9tb2RlQGJhZC12dG90YWwKK2ttc19jdXJzb3JfY3JjLioKKworIyBTa2lwIGh3IHNw
+ZWNpZmljIHRlc3RzCittc21fLioKK2FtZGdwdS9hbWRfLioKK3BhbmZyb3N0Xy4qCit2M2RfLioK
+K3ZjNF8uKgotLSAKMi40MC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
