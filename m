@@ -4,105 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09EDACD128A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 17:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC8B6CD128A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 17:55:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ahvRiXhGnQoQsGj/40Rjq/YaR2kTjqOXcgkfPWBhMGc=; b=aD4xFVmUR8/wIr
-	G8xiKnw0GQ7tu81H7AqD65mSH+csuSCJZUzVEKhH0QQ5l3OXSelL+hu+urHQp4bRURGqmo/RYes+J
-	XrNKCNjTn7Qk1YTZx2MviyruKOPintI5JesuEbb1VcW3YtkEyzX755YxWgOgtpePh7kRZdxZb/dvN
-	vjkb51EvtnmuPa1GRacGgnR/4FvUSPDH3jvHTgsATx8i2EjqaWd5XgkduZW3ExnEexhNJL0LiN6XS
-	/vGJnFiHoTeK+7c1AzLfVBmjcPSGF6PqFgafMBkRUR0NQ2xJXqtD8WlNn92hFgvzYs9PJcV6ZOlAD
-	8rX73BpVs/vnCZhlkwGw==;
+	List-Owner; bh=poZ7ZABQoitBkXf0060UkeS7+ZdjrF78G9jTAXVL2I4=; b=B74NGJ62aGJ7Hm
+	bB8XZiGpzdXU040RUODAo+IiQlV2Qxs2rq8BupznZKp2o3rKKGOxL0gW9yi5oiNaRjOB0/0q4lGuF
+	LBEaRviFTxrhw8koUjgEAYX5BrUvhFerdQ12/ht5zc8N8M+t2tPLkwwe2s3cqtktsa/CoEnmbvqm1
+	jweaq3E7IDksRddXOXVK6PvgQvlbH0QbqYr+nOo35FczwDG1Y/btWniIi1lMXOMiExAMA+kfWPTTO
+	BJEYwJphu/kuRi0b09lZF6VVUdkg7o2aqyaAU/QXLs9kPdKK6u3a0um+hc4lCDQsGjcQ34UgaEsNL
+	ggKoVZPoPc2AnhgHzArw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruc3f-00000008L8N-2ry4;
-	Wed, 10 Apr 2024 17:48:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rucAr-00000008NJG-1tI2;
+	Wed, 10 Apr 2024 17:55:53 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruc3b-00000008L4X-15QF;
-	Wed, 10 Apr 2024 17:48:24 +0000
+	id 1rucAi-00000008NDB-1XWc;
+	Wed, 10 Apr 2024 17:55:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 44D2E61DF9;
-	Wed, 10 Apr 2024 17:48:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9BB69C433F1;
-	Wed, 10 Apr 2024 17:48:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 37D6361E0A;
+	Wed, 10 Apr 2024 17:55:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8713FC433C7;
+	Wed, 10 Apr 2024 17:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712771300;
-	bh=yraIdNTO6tiXi9E0FDT+Fjq60vBK1HqRdRv+vDkxg+Q=;
+	s=k20201202; t=1712771742;
+	bh=dn3s9v+ugyPIbkJ82h/zTt6Aiku1UOONkbAxvrR7jyA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tFHVDTDPKZMb2q84GZ0sXW0RYG6KlHuL45NUV8ZtdnLdl60bN/oumeIIDWSt/mGbg
-	 X16w4k7tV2pXwykGVn+4VE+FruftDxrHN9RWNiTD5vSt17nxaQZwoQ1Iwqmekb1C0U
-	 KWhbio/pToZy8jpKK3TkO8MlICuFCMy6C3gpwjoQLqY7CS5lkNkMvI+zLiPu5KtsMb
-	 R3l7jO48UHgkJydDoiEDiIpYVSQgaLrVrMvolcmuAUo0nYmLLcqBPHf8RIr19KFMpo
-	 l9EdQP9Cj/q6NZB+bTOPxIhmHEZjemysvEJWH57UOd2hvi7krT4l+OVmC4Dt1sO4WV
-	 PBb3iYh55we8g==
-Date: Wed, 10 Apr 2024 12:48:18 -0500
+	b=YpUzsLSGnL5sS1FPnbAHM+SupDJSYxEEhgxEXj/LIJrVoazOecimqvkwlMp/t5gpz
+	 o91wT8i8WD1ZZbuBSACUvKLBe6clAAnDzFYVDT6fk7nxnaGOgy/lXWLfQH+fi0lJLB
+	 z8hmwmaKhAiBHMSC0vAR4C7GuRooP4Z33TKH0BUGNCxbnqltNkzFfk7y3VMzTIMXfe
+	 PI/XPibfx+hhhGRQumNTUvoPYuff9ZgSlCnUjG6Kav98xRFY6exPQd4ScbYn4tdJIY
+	 LHHOXgAjpI6EUH5zBHSbyoOlKWZzoKUTt5K4Tjb7Go4tL3CrnVYgvvNd1GF3z7kBQg
+	 MHLNVbkrGV+oA==
+Date: Wed, 10 Apr 2024 12:55:40 -0500
 From: Rob Herring <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Mark Kettenis <kettenis@openbsd.org>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Scott Branden <sbranden@broadcom.com>,
-	linux-mediatek@lists.infradead.org,
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Sven Peter <sven@svenpeter.dev>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	Ryder Lee <ryder.lee@mediatek.com>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, devicetree@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Tom Joseph <tjoseph@cadence.com>, Will Deacon <will@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	linux-arm-msm@vger.kernel.org,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Will Deacon <will@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
-	Hector Martin <marcan@marcan.st>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>, asahi@lists.linux.dev
-Subject: Re: [PATCH 2/3] dt-bindings: PCI: mediatek,mt7621: add missing child
- node reg
-Message-ID: <171277129685.801730.14400180887790805749.robh@kernel.org>
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Mark Kettenis <kettenis@openbsd.org>,
+	Tom Joseph <tjoseph@cadence.com>,
+	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/3] dt-bindings: PCI: host-bridges: switch from
+ deprecated pci-bus.yaml
+Message-ID: <20240410175540.GA802090-robh@kernel.org>
 References: <20240407102000.37213-1-krzysztof.kozlowski@linaro.org>
- <20240407102000.37213-2-krzysztof.kozlowski@linaro.org>
+ <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240407102000.37213-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240407102000.37213-3-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240410_104823_412078_E9B0E810 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20240410_105544_599168_81EDF319 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,25 +118,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sun, 07 Apr 2024 12:19:59 +0200, Krzysztof Kozlowski wrote:
-> MT7621 PCI host bridge has children which apparently are also PCI host
-> bridges, at least that's what the binding suggest.  The children have
-> "reg" property, but do not explicitly define it.  Instead they rely on
-> pci-bus.yaml schema, but that one has "reg" without any constraints.
+On Sun, Apr 07, 2024 at 12:20:00PM +0200, Krzysztof Kozlowski wrote:
+> dtschema package with core schemas deprecated pci-bus.yaml schema in
+> favor of pci-host-bridge.yaml.  Update all bindings to use the latter
+> one.
 > 
-> Define the "reg" for the children, so the binding will be more specific
-> and later will allow dropping reference to deprecated pci-bus.yaml
-> schema.
+> The difference between pci-bus.yaml and pci-host-bridge.yaml is only in
+> lack of "reg" property defined by the latter, which should not have any
+> effect here, because all these bindings define the "reg".
+> 
+> The change is therefore quite trivial, except mediatek,mt7621-pcie.yaml
+> binding which have children nodes being also host bridges, apparently.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml          | 3 +++
->  1 file changed, 3 insertions(+)
-> 
+>  Documentation/devicetree/bindings/pci/amlogic,axg-pcie.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/apple,pcie.yaml         | 2 +-
+>  Documentation/devicetree/bindings/pci/brcm,iproc-pcie.yaml    | 2 +-
+>  Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml      | 2 +-
+>  Documentation/devicetree/bindings/pci/cdns-pcie-host.yaml     | 2 +-
+>  Documentation/devicetree/bindings/pci/faraday,ftpci100.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/host-generic-pci.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/intel,ixp4xx-pci.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/intel,keembay-pcie.yaml | 2 +-
+>  Documentation/devicetree/bindings/pci/loongson.yaml           | 2 +-
+>  .../devicetree/bindings/pci/mediatek,mt7621-pcie.yaml         | 4 ++--
+>  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 2 +-
+>  .../devicetree/bindings/pci/microchip,pcie-host.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/qcom,pcie-common.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/qcom,pcie.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/rcar-pci-host.yaml      | 2 +-
+>  .../devicetree/bindings/pci/renesas,pci-rcar-gen2.yaml        | 2 +-
+>  .../devicetree/bindings/pci/rockchip,rk3399-pcie.yaml         | 2 +-
+>  Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml       | 2 +-
+>  Documentation/devicetree/bindings/pci/ti,am65-pci-host.yaml   | 2 +-
+>  Documentation/devicetree/bindings/pci/versatile.yaml          | 2 +-
+>  Documentation/devicetree/bindings/pci/xilinx-versal-cpm.yaml  | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,axi-pcie-host.yaml | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,nwl-pcie.yaml      | 2 +-
+>  Documentation/devicetree/bindings/pci/xlnx,xdma-host.yaml     | 2 +-
+>  25 files changed, 26 insertions(+), 26 deletions(-)
 
-Acked-by: Rob Herring <robh@kernel.org>
+This implicitly bumps the minimum version for dtschema. That's fine, but 
+it should be explicit since we set it explicitly.
 
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
