@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D637BCD11C2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 05:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99B98CD11C2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 06:37:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gIT3jIbkl/7HMMKDP39n8GfqT8c+uJI6IiV2X+9Nmsc=; b=PA27DiUyThudz64YfTB+yAcFer
-	AouCdULB2JVU/ic02C3c5Rp2zWFl1nfZN2HrLc8yBX+d0viihUqYd9Ck4HbkjEEv6MDkoqRjUK6CY
-	ElMVWnbqYIAFuaL5RHVHp3PjWa6YP19NZxS8CL41P+vGMjWfY6Ci2jtbrU7v44nkgjdeNqsyMv3xm
-	cFkefxW9bKhfaPhMhmcSietIqainL+neknAXUMhwo/DoGA5KQNFHXQfxs7uAlhraED2aUJUMBi7lj
-	RCvMcXDqW2MgmKzM3fVODWRiUyUPfFWBzpcy9ta9+DkbAj9JlJSiFR7Nb3SEnEiOFaMrk7R/buw3e
-	b4M3nO0Q==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BQXs+bSlG/X+WFjhyxccXlbLRFxWIs/qID/hkC6E+/8=; b=3hkUS2ffEvWtCn
+	KVOgbXHFzAknQnY4+eEx2msZVLpKr3nDIoYZ96pagTVqsjxND7jbKe5ZyTqzQM8rRIgBezv/On72i
+	RH5xMppr/DY3hJL8GVRQOmMjz7P3/LV7iZ4PdY9OywZqs8jk9EbiM9RgvHuJItoOIWaAT8tqUoIN2
+	8zeD8l8RmuIDQJxQhZ3drdmWQQpvaSScVA/VZEuvYwarTRPPLrmpefwfjEh0fw1aOeOJ9l09NhImW
+	BbBkZn4FHeFLfI0qPUIm84qszvKwnOgpScrstzrkAmJuLolSlv7sTMYM9yDkzhX/Ugqmv31+J3JD+
+	m0FIxQTMWXEUt+4u6KZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruQRp-00000005BQp-3fRP;
-	Wed, 10 Apr 2024 05:24:37 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1ruRaN-00000005Qa8-3vpV;
+	Wed, 10 Apr 2024 06:37:31 +0000
+Received: from mail-m24123.xmail.ntesmail.com ([45.195.24.123])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruQRl-00000005BPO-167V;
-	Wed, 10 Apr 2024 05:24:35 +0000
+	id 1ruRaJ-00000005QXB-0qGQ;
+	Wed, 10 Apr 2024 06:37:29 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=fuzoyrPGx8fUdZlpdp3unmisLPz6WB0BLKButewC27WNIhv4xGsS26ly9usLHFO6RDvJAs5w4u9LC0OF9PclhGZiSeD1xLJ17wzSFN1O25knPyKJjm9zOqujpFTxCKKNcRsrLnAgsv0F/bjPLaztSFw8czESdeVD5J6JP7DUL88=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=2DiFiEPKTIb4dIbL4HzejQd26iq2642UkcYkMtQkGes=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.69] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id CC4D44605A2;
+	Wed, 10 Apr 2024 14:30:15 +0800 (CST)
+Message-ID: <432000a6-1de9-4452-beb7-6954677e34c8@rock-chips.com>
+Date: Wed, 10 Apr 2024 14:30:16 +0800
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1712726667;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=GRp2XHxjjL0oPdAnwj+GE/FeGz7oZPrX9tVo9HNUQug=;
-	b=dRCvWeMQY6aMFslHJzQe1GCqWfIWV8b2DaYBSCtwbeS7i46TIf6kYZ+PSwjRFeVAtDJ7WG
-	+pMZ46ViAI2xUWzCyQ2/rZQ5a6T6l8iKp6+vk1v43QU0oGHdH2m57AvgOlAurhMrRJoCqq
-	8Mf24+2cSghQGkCpSrgCZQlZWevGTpCqPF1W7N/i+F3W2rXYzatSJdTAprT8VQh+LSTr4b
-	+zIsWXDA6BHMdf8wV6UO43Gaio2qZ5WWhgG3a/3KIDzfXv37GWusu0eB2v7qTeb63k8fhW
-	QjoIj0KqqWYr5KUGTDSX4QTByEL8wAMxmsiL/h+O/INRNVYpINmrd0u+7knLTQ==
-Date: Wed, 10 Apr 2024 07:24:27 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, conor+dt@kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Designate the system power
- controller on QuartzPro64
-In-Reply-To: <171272604789.1867483.1717225065687252209.b4-ty@sntech.de>
-References: <c602dfb3972a0844f2a87b6245bdc5c3378c5989.1712512497.git.dsimic@manjaro.org>
- <171272604789.1867483.1717225065687252209.b4-ty@sntech.de>
-Message-ID: <231f154d66369b5c204684ee9f47b3ce@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, robh@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, heiko@sntech.de,
+ sfr@canb.auug.org.au, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: remove startup-delay-us from
+ vcc3v3_pcie2x1l0 on rock-5b
+Content-Language: en-GB
+To: Jianfeng Liu <liujianfeng1994@gmail.com>
+References: <20240401081302.942742-1-liujianfeng1994@gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20240401081302.942742-1-liujianfeng1994@gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkJOGlZOT0lNHkIeSU1KSk1VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8ec6b3367703aekunmcc4d44605a2
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ogg6Pgw4DjMJLx9NSzwPUTdD
+	Aw0KFDpVSlVKTEpJTEhLTUpMQkxJVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQU9PTEM3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_222433_880155_5CE02033 
-X-CRM114-Status: UNSURE (   6.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240409_233727_698028_2E1BED16 
+X-CRM114-Status: GOOD (  25.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +78,84 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-04-10 07:15, Heiko Stuebner wrote:
-> On Sun, 7 Apr 2024 19:56:24 +0200, Dragan Simic wrote:
->> Designate the primary RK806 PMIC on the Pine64 QuartzPro64 as the 
->> system
->> power controller, so the board shuts down properly on poweroff(8).
-> 
-> Applied, thanks!
-> 
-> [1/1] arm64: dts: rockchip: Designate the system power controller on 
-> QuartzPro64
->       commit: c2b6d3a2bbf6352f7cddff2abe81dc4af4887672
-> 
-> Added a Fixes-tag
+Hi Jianfeng,
 
-Great, thanks!
+On 2024/4/1 16:13, Jianfeng Liu wrote:
+> Property startup-delay-us is copied from vendor dts and it will
+> make kernel not detect pcie wifi device. If I run command:
+> "echo 1 > /sys/bus/pci/rescan", pcie wifi device is detected, but
+> my wifi device RTL8822CE failed to load driver. Another device
+> RTL8723BE can load driver but no wifi signal is detected.
+> 
+> Removing this property will fix issues above.
+> 
+> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 
+startup-delay-us just make sure the power rail is stable before
+any action is taken to start the link, preventing the device from
+unable to work stably. So it shouldn't be the root cause I think.
+
+Could you help try this patch to checkout if it works for you?
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c 
+b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index d684214..df30127 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -167,7 +167,7 @@ static int rockchip_pcie_start_link(struct dw_pcie *pci)
+         struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+
+         /* Reset device */
+-       gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
++       //gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
+
+         rockchip_pcie_enable_ltssm(rockchip);
+
+@@ -180,7 +180,7 @@ static int rockchip_pcie_start_link(struct dw_pcie *pci)
+          * We need more extra time as before, rather than setting just
+          * 100us as we don't know how long should the device need to reset.
+          */
+-       msleep(100);
++       msleep(300);
+         gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
+
+         return 0;
+@@ -311,6 +311,8 @@ static int rockchip_pcie_probe(struct 
+platform_device *pdev)
+         if (ret)
+                 return ret;
+
++       gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
++
+         /* DON'T MOVE ME: must be enable before PHY init */
+         rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+
+
+
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> index d6bf2ee07..a9af654a0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+> @@ -76,7 +76,6 @@ vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
+>   		regulator-boot-on;
+>   		regulator-min-microvolt = <3300000>;
+>   		regulator-max-microvolt = <3300000>;
+> -		startup-delay-us = <50000>;
+>   		vin-supply = <&vcc5v0_sys>;
+>   	};
+> 
+> --
+> 2.34.1
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
