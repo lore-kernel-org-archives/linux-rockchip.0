@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F806CD11C2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 05:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18BC2CD1299
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Apr 2024 05:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YR6VR08tUwGeix1OVbyG+qdZvsTIS/1OWKzFRG/xFxI=; b=wIU3DaTEFer2Kn
-	mP7JeT17ous5OGs2vP6VUMQ1auFvJJqBWoKc+LzJzA+sfg5wxKb1Zer03RPdu/eCy5/Tg+0BXIT5Z
-	L+USFZU68EMr9bns1Otj3novKyDhut/TZwBenvGdFT2Ng3nOXiJtiJOg+4mQnZEOAF3cAo8z/mirV
-	nS8TPw+vasBfbclNts7iBdlp8e6zN1RBEXle9VlLha/h93kOzk5WYUzWWD5AAqYVaJnD+mV/5nMKb
-	R39ppHec7p+U+AqYCvz5YmW4CU9GDjtoprfmtT9/Pd2zEj3Cx2iXW9ZlMAOu9q9AiM2quqiY9Yn9G
-	HAM9p7al59VmuIWG+NDg==;
+	List-Owner; bh=MIFc6b/3v9lyDw1VmfFMBzZednapXolIrGnBkQ5AkHY=; b=PcLcZIi6X47rpi
+	a5FXrynX+KARS/utuZrs2MOyrYQlIVsTegZrAWznS0UegZDhLY5Ys2xx/bHg69TwLiKRFlYmRSNWl
+	kgr2RrjA3SdmIf583b+tkZfg6ObxH+iMwqHQ2c+oMY2oa3Ht3zIoRVrf0kDWRZeXJ2jhAM+A+iNX0
+	lsJUqbitONNHy+bUpAmvO2WHnUrpLnBfE0D+zfY6mArmxQkXrpPAurtRwGLVQu6psKnQLi1wWzucI
+	fh4EWF4xbiyP2qpt0peRBmaBJa56s8aJTfHnUsiYOMSudtKKeYe8gkXvw6dsjmw4SfI+1s0pWCfVb
+	H36cH8/KiBNj4BnxuHNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruQJ3-000000058zP-1U2M;
-	Wed, 10 Apr 2024 05:15:33 +0000
+	id 1ruQJG-000000059Ae-1GCB;
+	Wed, 10 Apr 2024 05:15:46 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruQIp-000000058oJ-3FiU;
-	Wed, 10 Apr 2024 05:15:20 +0000
+	id 1ruQIq-000000058pP-45Ct;
+	Wed, 10 Apr 2024 05:15:22 +0000
 Received: from ip-185-104-138-50.ptr.icomera.net ([185.104.138.50] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ruQIj-0008Ut-Kq; Wed, 10 Apr 2024 07:15:13 +0200
+	id 1ruQIl-0008Ut-Sa; Wed, 10 Apr 2024 07:15:16 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	efectn@6tel.net
+To: Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Michael Turquette <mturquette@baylibre.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
-	conor+dt@kernel.org,
-	robh+dt@kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-clk@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
-	sebastian.reichel@collabora.com,
-	Muhammed Efe Cetin <efectn@protonmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: mark system power controller and fix typo on orangepi-5-plus
-Date: Wed, 10 Apr 2024 07:15:02 +0200
-Message-Id: <171272604790.1867483.16170217183416866311.b4-ty@sntech.de>
+	David Jander <david@protonic.nl>
+Subject: Re: [PATCH 0/2] clk: rockchip: clk-rk3568.c: Add missing USB480M_PHY mux
+Date: Wed, 10 Apr 2024 07:15:05 +0200
+Message-Id: <171272604794.1867483.1180962337998524101.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240407173210.372585-1-efectn@6tel.net>
-References: <20240407173210.372585-1-efectn@6tel.net>
+In-Reply-To: <20240405-clk-rk3568-usb480m-phy-mux-v1-0-6c89de20a6ff@pengutronix.de>
+References: <20240405-clk-rk3568-usb480m-phy-mux-v1-0-6c89de20a6ff@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240409_221519_849259_668D785B 
-X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-CacheID: sfid-20240409_221521_133353_89046EB2 
+X-CRM114-Status: UNSURE (   8.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,18 +72,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 7 Apr 2024 20:32:10 +0300, efectn@6tel.net wrote:
-> From: Muhammed Efe Cetin <efectn@protonmail.com>
-> 
-> Mark the PMIC as system power controller, so the board will shut-down
-> properly and fix the typo on rk806_dvs1_null pins property.
+On Fri, 05 Apr 2024 09:38:35 +0200, Sascha Hauer wrote:
+> This series adds a missing clock for the Rockchip RK3568.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: mark system power controller and fix typo on orangepi-5-plus
-      commit: 08cd20bdecd9cfde5c1aec6146fa22ca753efea1
+[1/2] dt-bindings: clock: rockchip: add USB480M_PHY mux
+      commit: 575bc7b477e3f6c505f49c3d99d7be965594d640
+[2/2] clk: rockchip: clk-rk3568.c: Add missing USB480M_PHY mux
+      commit: 007bd99669eae90f23817023dc78dbb38e76437d
 
 Best regards,
 -- 
