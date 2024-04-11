@@ -4,105 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FDC0C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Apr 2024 14:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEA29C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Apr 2024 15:42:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LwkIcdmh5NbxIH+C1KLcEPk+TYvVjDAAti66itLmgCQ=; b=WWlZlrWgtuqACp
-	WlTiPIFEYr2O42p5iS94SiSHs0HxG6JYLamS5JntM+4i2nOjmsWfvhZUIqnGJMixXDt3mtXRbI9ho
-	6a3Yn9QNB2CRie2Zu2SlCVS2E2XtbT7dCrKiq4CBsLriabW9ACg2BfxvBpF4576e3+D/DCXoII0AJ
-	ucAVEUwZUlGb5n2Ylon/O0Ygbg+jlm48Ra2Cp/IO6rhNsxbkJrCreIGXTDD8S95rN4hCdoWsleuOE
-	YcZbeLYdFH2L2IggoMEkcvNHEDNPF4a8WyT9T8kXY1NQi9pa84ZTvJb03YIAffzGDgGJxlksl8JUE
-	Fj84AqrazRaCJefXdJ5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2/bNJuHN3aBbOPIBY+VhuCmIuy7By7wMIVP8zwjzuFU=; b=udp37dvcf8R1GX3qeAh000fu/V
+	yc4yQJ4QTQ5RL28gaEAMwqDypnohBb70nUTjg/mTQb7MoEWrtcgJb6b3SbNqLPzs7Sy48mGcuB3bA
+	VpuJ9VctU4X+2V2+UoiRJnArDPgulAnrPA4MPCajYJIiOgTgkuCiy5pwiFRF3lVjRJ/YBzFWJgfDq
+	J/HiONwCgz6Yf+G1+XF6XNCNsDwEXq36iyfJhQTsfggjrVBOEV88iX4ngC7YdMV/Splx/q/jk1gck
+	8DEU72U9pZECJ1hTVoYBg943buqEU0UxvpzN8fGFkkQSFdaQuPxZGuLnoQQ0VVBpWD9+22+Brwmhz
+	lPXQOgYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruvIj-0000000CQab-14Kh;
-	Thu, 11 Apr 2024 14:21:17 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ruwZQ-0000000CoJH-054c;
+	Thu, 11 Apr 2024 15:42:36 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruvId-0000000CQYE-2iDd;
-	Thu, 11 Apr 2024 14:21:13 +0000
+	id 1ruwZL-0000000CoGs-2MAL;
+	Thu, 11 Apr 2024 15:42:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8F1F760347;
-	Thu, 11 Apr 2024 14:21:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07DE0C2BD10;
-	Thu, 11 Apr 2024 14:21:09 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E31B16209C;
+	Thu, 11 Apr 2024 15:42:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20728C072AA;
+	Thu, 11 Apr 2024 15:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712845270;
-	bh=RDt5jlNMS3ucSwKcH7tgpvFGKzTFvccMBgH0b+eayeM=;
+	s=k20201202; t=1712850150;
+	bh=+nZnGEmZrNB3s5CE4OLicwn7PuejwQracpvWJM0WbEA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FmnqtmXmyodJdgHKHjF/o9qh0gQ3yPVudJEayUfxMetCRKixf7MadURZeFX5r6J9F
-	 KZO4x26OQWLGTjpaYAKntJwCodgLP+aDt47OO2TKPR3PsJ4isKj268a8KfvYJVeiUA
-	 xIhTuT3AZ/SJc2XgyX2Qg7zwimd9QfG4T/XfpBUGwOjo3qoholwNk1YikECUI0aeJ3
-	 JKccakGSkbBD0N+gV6mcpbFZG4UhhKtCGsuBFNPpBXQ3yDfgtOIize3x3mLBOom0s0
-	 clIRJHM0xExk3YKLWu8DH34d19gGTvnMgL6DQhTuO1wpS9k189rIpVZjfDsQEG42r9
-	 nLPeassxXKhKg==
-Date: Thu, 11 Apr 2024 09:21:07 -0500
-From: Rob Herring <robh@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Will Deacon <will@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>,
-	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Mark Kettenis <kettenis@openbsd.org>,
-	Tom Joseph <tjoseph@cadence.com>,
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	b=jzu3g4H8bnBM0ZLCtVvhes9KXW6ycau1nmlbhhYlXWT2j0ilPWJ/qM0/B/a3giiCh
+	 roAK28frU9Qv9qSJJRQOzNv1QB9xbjjrAoK3Ov1REgGCsEkfS6hg/yNltpusDo4GhM
+	 ZoHORWasJM9lg7DYIeXNzLCn1IEJIs7yu49wSTfNf5cPQNOQeLG0JVagQyanMueyCg
+	 G8JYW/aCJr3R6nm6kX+J1N3qHvaAK+Qk1KHpu6o4j6qwpt2wbDfPfA1OOJ7PfC5TUw
+	 TdodwJdFigXYmcZSSiJG13GWlBiyOqhhMaRO/6mgBqgwpEmVioA+tHKb1770XIOjuP
+	 u7TN4Lyvn8V8A==
+Date: Thu, 11 Apr 2024 16:42:24 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Alban Browaeys <alban.browaeys@gmail.com>
+Cc: dev@folker-schwesinger.de, Vinod Koul <vkoul@kernel.org>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Thippeswamy Havalige <thippeswamy.havalige@amd.com>,
-	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/4] dt-bindings: PCI: mediatek,mt7621: add missing
- child node reg
-Message-ID: <20240411142107.GA3537062-robh@kernel.org>
-References: <CAMhs-H82Ymc=isxu6AX4_s1QnNpSSNt74--ED1j7JxpzE=eCRg@mail.gmail.com>
- <20240411123917.GA2180141@bhelgaas>
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Ruehl <chris.ruehl@gtsys.com.hk>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Christopher Obbard <chris.obbard@collabora.com>,
+	Doug Anderson <dianders@chromium.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Jensen Huang <jensenhuang@friendlyarm.com>,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/3] phy: rockchip: emmc: Enable pulldown for strobe line
+Message-ID: <20240411-mushily-pucker-732583c1d340@spud>
+References: <20240326-rk-default-enable-strobe-pulldown-v1-0-f410c71605c0@folker-schwesinger.de>
+ <20240326-rk-default-enable-strobe-pulldown-v1-1-f410c71605c0@folker-schwesinger.de>
+ <20240326-tactical-onlooker-3df8d2352dc2@spud>
+ <871f0b24a38208d9c5d6abc87d83b067162c103e.camel@gmail.com>
+ <20240328-unnatural-unsorted-e53a13f5e87e@spud>
+ <313d5a24b6cffa1a9160e624bb6855aa7f66589e.camel@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240411123917.GA2180141@bhelgaas>
+In-Reply-To: <313d5a24b6cffa1a9160e624bb6855aa7f66589e.camel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_072111_881122_B2A382F3 
-X-CRM114-Status: GOOD (  30.44  )
+X-CRM114-CacheID: sfid-20240411_084231_743153_A2C02ADF 
+X-CRM114-Status: GOOD (  76.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,97 +82,269 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8413697892246729522=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBBcHIgMTEsIDIwMjQgYXQgMDc6Mzk6MTdBTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
-cm90ZToKPiBPbiBUaHUsIEFwciAxMSwgMjAyNCBhdCAwODoxMzoxOEFNICswMjAwLCBTZXJnaW8g
-UGFyYWN1ZWxsb3Mgd3JvdGU6Cj4gPiBPbiBUaHUsIEFwciAxMSwgMjAyNCBhdCA4OjAx4oCvQU0g
-S3J6eXN6dG9mIEtvemxvd3NraQo+ID4gPGtyenlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4g
-d3JvdGU6Cj4gPiA+IE9uIDEwLzA0LzIwMjQgMjM6MjYsIEJqb3JuIEhlbGdhYXMgd3JvdGU6Cj4g
-PiA+ID4gT24gV2VkLCBBcHIgMTAsIDIwMjQgYXQgMDg6MTU6MTlQTSArMDIwMCwgS3J6eXN6dG9m
-IEtvemxvd3NraSB3cm90ZToKPiA+ID4gPj4gTVQ3NjIxIFBDSSBob3N0IGJyaWRnZSBoYXMgY2hp
-bGRyZW4gd2hpY2ggYXBwYXJlbnRseSBhcmUgYWxzbyBQQ0kgaG9zdAo+ID4gPiA+PiBicmlkZ2Vz
-LCBhdCBsZWFzdCB0aGF0J3Mgd2hhdCB0aGUgYmluZGluZyBzdWdnZXN0Lgo+ID4gPiA+Cj4gPiA+
-ID4gV2hhdCBkb2VzIGl0IGV2ZW4gbWVhbiBmb3IgYSBQQ0kgaG9zdCBicmlkZ2UgdG8gaGF2ZSBh
-IGNoaWxkIHRoYXQgaXMKPiA+ID4gPiBhbHNvIGEgUENJIGhvc3QgYnJpZGdlPwoKSXQgc2hvdWxk
-IHNheSAncm9vdCBwb3J0JyBpbnN0ZWFkIGFzIHRoZSBiaW5kaW5nIGRlc2NyaXB0aW9uIGNvcnJl
-Y3RseSAKc2F5cy4KCj4gPiA+ID4KPiA+ID4gPiBEb2VzIHRoaXMgbWVhbiBhIGRyaXZlciBiaW5k
-cyB0byB0aGUgInBhcmVudCIgaG9zdCBicmlkZ2UsIGVudW1lcmF0ZXMKPiA+ID4gPiB0aGUgUENJ
-IGRldmljZXMgYmVsb3cgaXQsIGFuZCBmaW5kcyBhICJjaGlsZCIgaG9zdCBicmlkZ2U/Cj4gPiAK
-PiA+IFllcywgdGhhdCBpcyBleGFjdGx5IHdoYXQgeW91IGNhbiBzZWUgb24gZW51bWVyYXRpb24u
-Cj4gPiAKPiA+IFRoZSBmb2xsb3dpbmcgaXMgYSB0eXBpY2FsIGJvb3QgdHJhY2Ugd2hlcmUgYWxs
-IGJyaWRnZXMgaGFzIGEgZGV2aWNlIGFsc28gYmVsb3c6Cj4gPiAKPiA+IG10NzYyMS1wY2kgMWUx
-NDAwMDAucGNpZTogaG9zdCBicmlkZ2UgL3BjaWVAMWUxNDAwMDAgcmFuZ2VzOgo+ID4gbXQ3NjIx
-LXBjaSAxZTE0MDAwMC5wY2llOiAgIE5vIGJ1cyByYW5nZSBmb3VuZCBmb3IgL3BjaWVAMWUxNDAw
-MDAsIHVzaW5nIFtidXMgMDAtZmZdCj4gPiBtdDc2MjEtcGNpIDFlMTQwMDAwLnBjaWU6ICAgICAg
-TUVNIDB4MDA2MDAwMDAwMC4uMHgwMDZmZmZmZmZmIC0+IDB4MDA2MDAwMDAwMAo+ID4gbXQ3NjIx
-LXBjaSAxZTE0MDAwMC5wY2llOiAgICAgICBJTyAweDAwMWUxNjAwMDAuLjB4MDAxZTE2ZmZmZiAt
-PiAweDAwMDAwMDAwMDAKPiA+IG10NzYyMS1wY2kgMWUxNDAwMDAucGNpZTogUENJRTAgZW5hYmxl
-ZAo+ID4gbXQ3NjIxLXBjaSAxZTE0MDAwMC5wY2llOiBQQ0lFMSBlbmFibGVkCj4gPiBtdDc2MjEt
-cGNpIDFlMTQwMDAwLnBjaWU6IFBDSUUyIGVuYWJsZWQKPiA+IG10NzYyMS1wY2kgMWUxNDAwMDAu
-cGNpZTogUENJIGhvc3QgYnJpZGdlIHRvIGJ1cyAwMDAwOjAwCj4gCj4gMWUxNDAwMDAucGNpZSBp
-cyBhIGhvc3QgYnJpZGdlLiAgSXQgaGFzIHNvbWUgQ1BVLXNwZWNpZmljIGJ1cyBvbiB0aGUKPiB1
-cHN0cmVhbSBzaWRlLCBzdGFuZGFyZCBQQ0kgKGRvbWFpbiAwMDAwLCBidXNlcyAwMC1mZikgb24g
-dGhlCj4gZG93bnN0cmVhbSBzaWRlLgo+IAo+ID4gcGNpIDAwMDA6MDA6MDAuMDogWzBlOGQ6MDgw
-MV0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMAo+ID4gcGNpIDAwMDA6MDA6MDEuMDogWzBlOGQ6MDgw
-MV0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMAo+ID4gcGNpIDAwMDA6MDA6MDIuMDogWzBlOGQ6MDgw
-MV0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMAo+IAo+ID4gcGNpIDAwMDA6MDE6MDAuMDogWzFiMjE6
-MDYxMV0gdHlwZSAwMCBjbGFzcyAweDAxMDE4NQo+IAo+ID4gcGNpIDAwMDA6MDA6MDAuMDogUENJ
-IGJyaWRnZSB0byBbYnVzIDAxLWZmXQo+ID4gcGNpIDAwMDA6MDA6MDAuMDogICBicmlkZ2Ugd2lu
-ZG93IFtpbyAgMHgwMDAwLTB4MGZmZl0KPiA+IHBjaSAwMDAwOjAwOjAwLjA6ICAgYnJpZGdlIHdp
-bmRvdyBbbWVtIDB4MDAwMDAwMDAtMHgwMDBmZmZmZl0KPiA+IHBjaSAwMDAwOjAwOjAwLjA6ICAg
-YnJpZGdlIHdpbmRvdyBbbWVtIDB4MDAwMDAwMDAtMHgwMDBmZmZmZiBwcmVmXQo+IAo+IDAwOjAw
-LjAgbG9va3MgbGlrZSBhIFBDSWUgUm9vdCBQb3J0IHRvIGJ1cyAwMS4gIFRoaXMgaXMgbm90IGEg
-aG9zdAo+IGJyaWRnZTsgaXQncyBqdXN0IGEgc3RhbmRhcmQgUENJLXRvLVBDSSBicmlkZ2Ugd2l0
-aCBQQ0kgb24gYm90aCB0aGUKPiB1cHN0cmVhbSBhbmQgZG93bnN0cmVhbSBzaWRlcy4KPiAKPiA+
-IHBjaSAwMDAwOjAyOjAwLjA6IFsxYjIxOjA2MTFdIHR5cGUgMDAgY2xhc3MgMHgwMTAxODUKPiAK
-PiA+IHBjaSAwMDAwOjAwOjAxLjA6IFBDSSBicmlkZ2UgdG8gW2J1cyAwMi1mZl0KPiA+IHBjaSAw
-MDAwOjAwOjAxLjA6ICAgYnJpZGdlIHdpbmRvdyBbaW8gIDB4MDAwMC0weDBmZmZdCj4gPiBwY2kg
-MDAwMDowMDowMS4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweDAwMDAwMDAwLTB4MDAwZmZmZmZd
-Cj4gPiBwY2kgMDAwMDowMDowMS4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweDAwMDAwMDAwLTB4
-MDAwZmZmZmYgcHJlZl0KPiAKPiAwMDowMS4wIGlzIGFub3RoZXIgUm9vdCBQb3J0IHRvIGJ1cyAw
-Mi4KPiAKPiA+IHBjaSAwMDAwOjAzOjAwLjA6IFsxYjIxOjA2MTFdIHR5cGUgMDAgY2xhc3MgMHgw
-MTAxODUKPiAKPiA+IHBjaSAwMDAwOjAwOjAyLjA6IFBDSSBicmlkZ2UgdG8gW2J1cyAwMy1mZl0K
-PiA+IHBjaSAwMDAwOjAwOjAyLjA6ICAgYnJpZGdlIHdpbmRvdyBbaW8gIDB4MDAwMC0weDBmZmZd
-Cj4gPiBwY2kgMDAwMDowMDowMi4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweDAwMDAwMDAwLTB4
-MDAwZmZmZmZdCj4gPiBwY2kgMDAwMDowMDowMi4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweDAw
-MDAwMDAwLTB4MDAwZmZmZmYgcHJlZl0KPiA+IHBjaV9idXMgMDAwMDowMzogYnVzbl9yZXM6IFti
-dXMgMDMtZmZdIGVuZCBpcyB1cGRhdGVkIHRvIDAzCj4gCj4gQW5kIDAwOjAyLjAgaXMgYSB0aGly
-ZCBSb290IFBvcnQgdG8gYnVzIDAzLgo+IAo+ID4gcGNpIDAwMDA6MDA6MDAuMDogUENJIGJyaWRn
-ZSB0byBbYnVzIDAxXQo+ID4gcGNpIDAwMDA6MDA6MDAuMDogICBicmlkZ2Ugd2luZG93IFtpbyAg
-MHgwMDAwLTB4MGZmZl0KPiA+IHBjaSAwMDAwOjAwOjAwLjA6ICAgYnJpZGdlIHdpbmRvdyBbbWVt
-IDB4NjAwMDAwMDAtMHg2MDBmZmZmZl0KPiA+IHBjaSAwMDAwOjAwOjAwLjA6ICAgYnJpZGdlIHdp
-bmRvdyBbbWVtIDB4NjAxMDAwMDAtMHg2MDFmZmZmZiBwcmVmXQo+ID4gcGNpIDAwMDA6MDA6MDEu
-MDogUENJIGJyaWRnZSB0byBbYnVzIDAyXQo+ID4gcGNpIDAwMDA6MDA6MDEuMDogICBicmlkZ2Ug
-d2luZG93IFtpbyAgMHgxMDAwLTB4MWZmZl0KPiA+IHBjaSAwMDAwOjAwOjAxLjA6ICAgYnJpZGdl
-IHdpbmRvdyBbbWVtIDB4NjAyMDAwMDAtMHg2MDJmZmZmZl0KPiA+IHBjaSAwMDAwOjAwOjAxLjA6
-ICAgYnJpZGdlIHdpbmRvdyBbbWVtIDB4NjAzMDAwMDAtMHg2MDNmZmZmZiBwcmVmXQo+ID4gcGNp
-IDAwMDA6MDA6MDIuMDogUENJIGJyaWRnZSB0byBbYnVzIDAzXQo+ID4gcGNpIDAwMDA6MDA6MDIu
-MDogICBicmlkZ2Ugd2luZG93IFtpbyAgMHgyMDAwLTB4MmZmZl0KPiA+IHBjaSAwMDAwOjAwOjAy
-LjA6ICAgYnJpZGdlIHdpbmRvdyBbbWVtIDB4NjA0MDAwMDAtMHg2MDRmZmZmZl0KPiA+IAo+ID4g
-PiBJIHRoaW5rIHRoZSBxdWVzdGlvbiBzaG91bGQgYmUgdG93YXJkcyBNZWRpYXRlayBmb2xrcy4g
-SSBkb24ndCBrbm93IHdoYXQKPiA+ID4gdGhpcyBoYXJkd2FyZSBpcyBleGFjdGx5LCBqdXN0IGxv
-b2tzIGxpa2UgcGNpLXBjaS1icmlkZ2UuIFRoZSBkcml2ZXIKPiA+ID4gY2FsbHMgdGhlIGNoaWxk
-cmVuIGhvc3QgYnJpZGdlcyBhcyAicG9ydHMiLgo+ID4gCj4gPiBZb3UgY2FuIHNlZSB0aGUgdG9w
-b2xvZ3kgaGVyZSBpbiBteSBmaXJzdCBkcml2ZXIgc3VibWl0IGNvdmVyIGxldHRlcgo+ID4gbWVz
-c2FnZSBbMF0uCj4gPiAKPiA+ICBbMF06IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC9DQU1o
-cy1ILUJBK0t6RXd1RFB6Y21yRFBkZ0pCRkEyWGRZVEJ2VDRSNE1FT1VCPVdRMWdAbWFpbC5nbWFp
-bC5jb20vdC8KPiAKPiBOb3RoaW5nIHVudXN1YWwgaGVyZSwgdGhpcyBsb29rcyBsaWtlIHRoZSBz
-dGFuZGFyZCBQQ0llIHRvcG9sb2d5Lgo+IAo+IFdoYXQgKm1pZ2h0KiBiZSB1bnVzdWFsIGlzIGRl
-c2NyaWJpbmcgdGhlIFJvb3QgUG9ydHMgaW4gRFQuICBTaW5jZQo+IHRoZXkgYXJlIHN0YW5kYXJk
-IFBDSSBkZXZpY2VzLCB0aGV5IHNob3VsZG4ndCBuZWVkIERUIGRlc2NyaXB0aW9uCj4gdW5sZXNz
-IHRoZXJlJ3Mgc29tZSB1bnVzdWFsIHBvd2VyL2Nsb2NrL3Jlc2V0IGNvbnRyb2wgb3Igc29tZXRo
-aW5nCj4gdGhhdCBpcyBub3QgZGlzY292ZXJhYmxlIHZpYSBQQ0kgZW51bWVyYXRpb24uCgpJdCdz
-IG9ubHkgdW51c3VhbCBiZWNhdXNlIHR5cGljYWxseSB0aGVyZSdzIG9ubHkgMSBSUCBwZXIgaG9z
-dCBicmlkZ2UgCmFuZCBwcm9wZXJ0aWVzIHdoaWNoIHJlYWxseSBhcHBseSB0byB0aGUgUlAgZ2V0
-IHN0dWNrIGluIHRoZSBob3N0IGJyaWRnZSAKbm9kZSBiZWNhdXNlIHdlIGRvbid0IGhhdmUgYSBS
-UCBub2RlLiBBbiBleGFtcGxlIGlzIHBlcnN0LWdwaW9zLiBUaGF0J3MgCm5vdCBhIHByb3BlcnR5
-IG9mIHRoZSBSUCBlaXRoZXIsIGJ1dCB0aGUgUlAgaXMgdGhlIHVwc3RyZWFtIHNpZGUgb2YgYSAK
-c2xvdCBhbmQgd2Ugb2Z0ZW4gZG9uJ3QgaGF2ZSBhIG5vZGUgZm9yIHRoZSBkZXZpY2UgZWl0aGVy
-LgoKUm9iCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+
+--===============8413697892246729522==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="aLBybTFZShsDA3p/"
+Content-Disposition: inline
+
+
+--aLBybTFZShsDA3p/
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Apr 10, 2024 at 08:28:57PM +0200, Alban Browaeys wrote:
+> Le jeudi 28 mars 2024 =E0 18:01 +0000, Conor Dooley a =E9crit=A0:
+> > On Thu, Mar 28, 2024 at 06:00:03PM +0100, Alban Browaeys wrote:
+> > > Le mardi 26 mars 2024 =E0 19:46 +0000, Conor Dooley a =E9crit=A0:
+> > > > On Tue, Mar 26, 2024 at 07:54:35PM +0100, Folker Schwesinger via
+> > > > B4
+> > > > Relay wrote:
+> > > > > From: Folker Schwesinger <dev@folker-schwesinger.de>
+> > > > > -	if (of_property_read_bool(dev->of_node,
+> > > > > "rockchip,enable-
+> > > > > strobe-pulldown"))
+> > > > > -		rk_phy->enable_strobe_pulldown =3D
+> > > > > PHYCTRL_REN_STRB_ENABLE;
+> > > > > +	if (of_property_read_bool(dev->of_node,
+> > > > > "rockchip,disable-
+> > > > > strobe-pulldown"))
+> > > > > +		rk_phy->enable_strobe_pulldown =3D
+> > > > > PHYCTRL_REN_STRB_DISABLE;
+> > > >=20
+> > > > Unfortunately you cannot do this.
+> > > > Previously no property at all meant disabled and a property was
+> > > > required
+> > > > to enable it. With this change the absence of a property means
+> > > > that
+> > > > it
+> > > > will be enabled.
+> > > > An old devicetree is that wanted this to be disabled would have
+> > > > no
+> > > > property and will now end up with it enabled. This is an ABI
+> > > > break
+> > > > and is
+> > > > clearly not backwards compatible, that's a NAK unless it is
+> > > > demonstrable
+> > > > that noone actually wants to disable it at all.
+> > >=20
+> > >=20
+> > > But the patch that introduced the new default to disable the
+> > > pulldown
+> > > explicitely introduced a regression for at least 4 boards.
+> > > It took time to sort out that the default to disable pulldown was
+> > > the
+> > > culprit but still.
+> > > Will we carry this new behavor that breaks the default design for
+> > > rk3399 because since the regression was introduced new board
+> > > definition
+> > > might have expceted this new behavior.
+> > >=20
+> > > Could the best option be to revert to =E9not set a default
+> > > enable/disable
+> > > pulldown" (as before the commit that introduced the regression) and
+> > > allow one to force the pulldown via the enable/disable pulldown
+> > > property?
+> > > I mean the commit that introduced a default value for the pulldown
+> > > did
+> > > not seem to be about fixing anything. But it broke a lot. ANd it
+> > > was
+> > > really really hard to find the description of this commit to
+> > > understand
+> > > that one had to enable pulldown to restore hs400.
+> > >=20
+> > > In more than 3 years, only one board maintainer noticed that this
+> > > property was required to get back HS400=A0 and thanks to a user
+> > > telling
+> > > me that this board was working I found from this board that this
+> > > property was "missing" from most board definitions (while it was
+> > > not
+> > > required before).
+> > >=20
+> > >=20
+> > > I am all for not breaking ABI. But what about not reverting a patch
+> > > that already broke ABI because this patch introduced a new ABI that
+> > > we
+> > > don't want to break?
+> > > I mean shouldn't a new commit with a new ABI that regressed the
+> > > kernel
+> > > be reverted?
+> >=20
+> > I think I said it after OP replied to me yesterday, but this is a
+> > pretty
+> > shitty situation in that the original default picked for the property
+> > was actually incorrect. Given it's been like this for four years
+> > before
+> > anyone noticed, and others probably depend on the current behaviour,
+> > that's hard to justify.
+> >=20
+>=20
+> A lot of people noticed fast that HS400 was broken in the 5.10 branch
+> but due to another commit (more later, ie double regulator init that
+> messed up emmc) this second breakage was not detected. But mostly
+> downstream. And most if not all rk3399 boards in Armbian had HS400
+> disabled.
+>=20
+>=20
+> It took 3 years to detect that HS400 was broken on a few boards like
+> Rock Pi4 in the upstream kernel. Any might still be broken.
+> I would not count on the fact that keeping the current behavior equals
+> no more broken boards.
+>=20
+> From the previous exchanges the boards that requires the pulldown to be
+> disabled seems well known.
+>=20
+> Though I am fine with adding a property to set enable pulldown to any
+> board definition file where that is required.
+>=20
+> Only I do not believe keeping the statu quo equal everything works
+> because it has been 3 years.
+
+FWIW, I didn't say this. Clearly if that was the case, this patch would
+never have arrived.
+
+> In fact this commit reached the downstream kernels way later. Any
+> stayed with the 5.10 branch for years.
+>=20
+> But on the other side the disable pulldown by default is alraedy in
+> stable/linux-rolling-lts .
+>=20
+> > > Mind fixing the initial regression 8b5c2b45b8f0 "phy: rockchip: set
+> > > pulldown for strobe line in dts" does not necessarily mean changing
+> > > the
+> > > default to the opposite value but could also be reverting to not
+> > > setting a default.
+> >=20
+> > That's also problematic, as the only way to do this is make setting
+> > one of the enabled or disabled properties required, which is also an
+> > ABI
+> > break, since you'd then be rejecting probe if one is not present.
+>=20
+>=20
+> I don't understand.
+> How reverting to not set either pulldown enabled or disabled by default
+> force all board to set either enabled or disabled.
+> I was telling about making the pulldown set by kernel optional be it
+> enabled or disabled to revert to the previous behavior.=20
+>=20
+> I mean before the patch to set a default pulldown value (to disabled)
+> there were no forced value.
+
+Ah, maybe I misunderstood what the code originally did. Did the original
+code leave the bit however the bootloader or reset value had left it?
+In that case, probe wouldn't be rejected and you'd not have the sort of
+issue that I mentioned above.
+
+> > > Though I don't know if there are pros to setting a default.
+> >=20
+> > What you probably have to weigh up is the cons of each side. If what
+> > you
+> > lose is HS400 mode with what's in the kernel right now but switching
+> > to
+> > what's been proposed would entirely break some boards, I know which
+> > I think the lesser of two evils is.
+>=20
+> More boards (even if not the most wide spread it seems) are broken by
+> the current behavior.
+>=20
+> I agree that only HS400 is broken by keeping the status quo. But as far
+> as I understand only HS400 will be broken either way.
+> Be that by keeping the current disable pulldown which break the boards
+> based on the rockchip default design or the boards that are non-
+> standard or have a broken design.
+> Both case this lead to data corruption on boot to eMMC.
+>=20
+> The only pro of keeping the current value the default is that most
+> board broken by the new default introduced in 2020 "might" already be
+> fixed (but that is just a guess).
+>=20
+> > It's probably up to the platform maintainer to weigh in at this
+> > point.
+>=20
+> I am not knowledged into the delegation scope. You mean that from now
+> on it is up to the rockchip maintainer?
+> I am fine with it either way.
+
+Yes, I meant the rockchip maintainer. I'm only a lowly bindings
+maintainer, without any knowledge of rockchip specfics or the type of
+boards we're talking about being broken here. Someone has to make a
+judgement call about which "no property" behaviour is used going forward
+and I don't want that to be me!
+
+> I just wanted to point out that maybe we don't have to set a pulldown
+> value after all. And that then all boards will be fine as before
+> setting the pulldown explicitly was introduced.
+
+By "all boards will be fine" you mean "all boards that expected the
+kernel didn't touch this bit will be fine". The boards that need the
+kernel to set this bit because it {comes out of reset,is set by firmware}
+incorrectly are going to need a property added if we revert the default
+behaviour to not touching the bit.
+
+> In fact I am more eager to get this fixed be it by adding a enable-
+> pulldown property to the board definitions, than to change the current
+> behavior.
+> Just wanted to sort out if that was not the wrong way to fix this
+> issue. (ie if adding a setting on most boards was wrong).
+
+> During more than 2 years, I tried various patches and discussed on
+> forums about the HS400 breakage. I had bisected the regulator init
+> issue in the 5.10 branch. Sadly it took so much time for this issue to
+> be understood that when the force pulldown to disable commit was
+> introduced downstream before the first issue go fixed.
+> This only made the matter worse because when one fixed the double
+> regulator init issue HS400 was still broken, this time because the
+> pulldown was forced to disable. But nobody noticed this commit that
+> forced a default pulldown state (that was older than the regulator
+> commit from 5.13 backported to the 5.10 stable branch commit, but that
+> reached downstream later due to not having been backported to 5.10 from
+> 5.11).
+> Otherwise we would have emailed immeditaly.
+> Bisecting was only able to catch the first breakage (as it was only
+> fixed after the second breakage was introduced).
+>=20
+> Maybe the problem is that me and others did not complained to the
+> kernel upstream ML because we were using heavily patched downstream
+> kernels (like most if not all downstream ARM kernels). So sadly, the
+> forums from back then are filled with complaints but nothing seemed to
+> have reached the Linux ML.
+
+Aye, and all I can really say there is to buy boards from a vendor that
+doesn't use some horribly hacked downstream kernel, which I know is
+clearly an unsatisfactory suggestion. That said, we probably should have
+caught that the new default behaviour when the changes were made was not
+the default before. There was only one DT maintainer then though, and
+things just slip by :/
+
+--aLBybTFZShsDA3p/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZhgE4AAKCRB4tDGHoIJi
+0vZnAP0TIt845yAiy0oBXp77jO++qGtE1WNNLRxIX6CYf3M/3QEAgrVA1XfZbrbH
+qEbevdZeVvM96FmZexF+UTJAHmwC2wo=
+=AiwS
+-----END PGP SIGNATURE-----
+
+--aLBybTFZShsDA3p/--
+
+
+--===============8413697892246729522==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8413697892246729522==--
+
