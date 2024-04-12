@@ -4,76 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86582C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 10:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFE6C4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 11:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5VGy6qbLA4ht7BWxrn8Q62wbxujwYbHcbtFdMk7Uajs=; b=gC+QaQrNpiOkBf
-	/3NMGrWyyZHkATE+TTaNlP8wRO0xsIYo4Sw53S1hFV03PdvXIo0HcYxXozTus0jPnpaDq0bRIqCeG
-	9Ss9zAVtRg1+NKShlknXVTpmDxjh9sRUOCwiZVDBX06/ZhWd8M/wzPcVF242RHxI0rjveQ7VTbrwW
-	CSVMD6Asw0Yk6m3E81Xvi6FzZjf/7YoyUEB/1TL3Ej3yEt7o6CtgtDbI8Bv92HmdAzRe6fGmXNjQO
-	lvphCCvRZP7mHpWcs/GeeY9l95taBTdljo30rEKlxc8+YtEVdwGLXFAunI04kGxt5EYIokOWyDuO5
-	34kjvHkWpGa4rRISQpow==;
+	List-Owner; bh=gngVXCjoflH3abP9Bo2OY/PRk2IeCn8GaL2VA14Ce74=; b=iduaO9BkkvFuUc
+	5AS2B0IF0RUN9elhaoqiDH6Cs/FMoBWNJpkflacE5/rSBzz9k5bMPRu8C803vmoKFRUbdxEgfigLh
+	cfPGX9/i2eQ82TTbbR1UjMZXabc43Jssgb9y1DGw6dIz0eB38bjPdWhRm4Xtpwc91yYGPzLJEqrXZ
+	p/0dHvMV4oKFo81HOMlqW5S9UDj6N6Ysz+EAQZ0YMdZwehfT6j+FMKD2A4uWGOhZFs4PPgTOUP5mf
+	XhQvHKb/D5U6tHv9rxrPcG8TQm9AEozf0dYNu3DQGPKnwoRX37TecpbDDg0brk3N1mP6SgT4O/pJp
+	/LlFkUNSzZQufyYKNZBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvDrS-0000000GavT-0300;
-	Fri, 12 Apr 2024 10:10:22 +0000
-Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvDrO-0000000Gau0-44Se
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Apr 2024 10:10:20 +0000
-Received: from 8bytes.org (p4ffe0bdf.dip0.t-ipconnect.de [79.254.11.223])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 51047281A38;
-	Fri, 12 Apr 2024 12:10:16 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1712916616;
-	bh=E+iVkylCqaTgNVotthxWDOOoCqml/4nGJOpaARXTjK0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LuZbLWJPGCLZJPltogQTsk4oQ9NTj4Tsj7ifX4XmlHt9dm9BjBk7wNSRnJEGBBLX0
-	 RR1K295opyq8KNseqPbA6/RWBABghoCfLVi53gLBIUssvvge/FC7qptmqVDcplhzTo
-	 XuBmaDg9QBQ/vnZqdaxAREDkzJpp0Wy4QVBWKVDHOT7296ofu/w9sV3sUJl9A78VIT
-	 Q8HYmCNyUOwMBct7Se9mdxxPDMr4hl0kzCGipNnFTmrP6p8lRL075rML4+cOeADLWK
-	 3bfKf9EbMlshGtJnw/aGnFdGxYsmOkfVQGWHlFj/MJ94e75Lh2o+bnyCKL3btAMYV6
-	 t2ODbB7AbBEpQ==
-Date: Fri, 12 Apr 2024 12:10:14 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Pasha Tatashin <pasha.tatashin@soleen.com>
-Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com,
-	alyssa@rosenzweig.io, asahi@lists.linux.dev,
-	baolu.lu@linux.intel.com, bhelgaas@google.com,
-	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
-	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
-	iommu@lists.linux.dev, jernej.skrabec@gmail.com,
-	jonathanh@nvidia.com, krzysztof.kozlowski@linaro.org,
-	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
-	marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com,
-	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
-	samuel@sholland.org, suravee.suthikulpanit@amd.com,
-	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
-	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org,
-	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com,
-	bagasdotme@gmail.com, mkoutny@suse.com
-Subject: Re: [PATCH v5 00/11] IOMMU memory observability
-Message-ID: <ZhkIhtTCWg6bgl1o@8bytes.org>
-References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
+	id 1rvFBt-0000000Gx2C-3kWL;
+	Fri, 12 Apr 2024 11:35:33 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rvFBo-0000000Gwwm-02Bi;
+	Fri, 12 Apr 2024 11:35:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 4780FCE1FE2;
+	Fri, 12 Apr 2024 11:35:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A243C2BD11;
+	Fri, 12 Apr 2024 11:35:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712921725;
+	bh=cXvZH8jSB3R6/ZybERQXRn0CWZL55MbU8i6nLdnfYHQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=nN05y6vDJlP7k0Qzi/nEsn6vBPvcRhGe6spgWP5Mb7GW4wXi7xqfHI7zYUO604vi+
+	 YCvEibefwHapVeAZA/zGhCQO4BauGaj25ImmfCyXUHAuhf1sBK4wizM8oahLPlp+iI
+	 ZJcguxRyk+Y+RpwKQPzOxfQsFH29voqlzWXnp78KozySJSSyk1xRPhSzl8DtrHY7eI
+	 RUm4balZ2QbEWVf3GEVK9rIJg3YhNbY7BeacfSmutKjuQ0xanPMlw02UmOvHTXZuDE
+	 enZ6luky5LkUO2iiFo9JLuYUsMtaC8hAHpxaasyf1gs0PCBt3UNiEiWynjZLsfVKUW
+	 A30aMF+vYZwoQ==
+From: Vinod Koul <vkoul@kernel.org>
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, kernel test robot <lkp@intel.com>
+In-Reply-To: <20240408222926.32708-1-cristian.ciocaltea@collabora.com>
+References: <20240408222926.32708-1-cristian.ciocaltea@collabora.com>
+Subject: Re: [PATCH] phy: phy-rockchip-samsung-hdptx: Select
+ CONFIG_RATIONAL
+Message-Id: <171292172181.599648.17726910504244082480.b4-ty@kernel.org>
+Date: Fri, 12 Apr 2024 17:05:21 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_031019_426198_19841E6F 
-X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-CacheID: sfid-20240412_043528_340469_10913DBE 
+X-CRM114-Status: UNSURE (   6.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,36 +76,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Pasha,
 
-On Thu, Feb 22, 2024 at 05:39:26PM +0000, Pasha Tatashin wrote:
-> Pasha Tatashin (11):
->   iommu/vt-d: add wrapper functions for page allocations
->   iommu/dma: use iommu_put_pages_list() to releae freelist
->   iommu/amd: use page allocation function provided by iommu-pages.h
->   iommu/io-pgtable-arm: use page allocation function provided by
->     iommu-pages.h
->   iommu/io-pgtable-dart: use page allocation function provided by
->     iommu-pages.h
->   iommu/exynos: use page allocation function provided by iommu-pages.h
->   iommu/rockchip: use page allocation function provided by iommu-pages.h
->   iommu/sun50i: use page allocation function provided by iommu-pages.h
->   iommu/tegra-smmu: use page allocation function provided by
->     iommu-pages.h
->   iommu: observability of the IOMMU allocations
->   iommu: account IOMMU allocated memory
+On Tue, 09 Apr 2024 01:29:25 +0300, Cristian Ciocaltea wrote:
+> Ensure CONFIG_RATIONAL is selected in order to fix the following link
+> error with some kernel configurations:
+> 
+> drivers/phy/rockchip/phy-rockchip-samsung-hdptx.o: in function `rk_hdptx_ropll_tmds_cmn_config':
+> phy-rockchip-samsung-hdptx.c:(.text+0x950): undefined reference to `rational_best_approximation'
+> 
+> 
+> [...]
 
-Some problems with this:
+Applied, thanks!
 
-  1. I get DKIM failures when downloading this patch-set with b4, can
-     you please send them via a mailserver with working DKIM?
+[1/1] phy: phy-rockchip-samsung-hdptx: Select CONFIG_RATIONAL
+      commit: e1c9216bec2793d051f83d77d93d3d6a899d06d1
 
-  2. They don't apply to v6.9-rc3. Please rebase to that version and
-     are-send.
+Best regards,
+-- 
+~Vinod
 
-Thanks,
 
-	Joerg
 
 _______________________________________________
 Linux-rockchip mailing list
