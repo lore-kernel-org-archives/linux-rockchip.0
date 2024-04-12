@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1102C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 15:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C9BC00A94
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 15:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kmA0oEUWWd7vUVl6IsPUd7pw/1hjU74kKjewnhXX39Y=; b=h0iS0o5d32Ilf7
-	ffioCz+ULykgQluSyiBHlihH6tNlXys84PemHR/sHvnDP4lkFZVxWBXhJtj/E9kxyXssQAQ0FOzYf
-	1hLHGW28TgGamF0WOM4gjeMJWFIM//nAw7dPGXq2EX3UaNG9CDDpNQ67IPUozhU4AHfnuzGggv4TH
-	LaDFBgJZ1x0CUKHwCLKS3T0u/V6ncSzQ3Q9f3o+FYH1BMnHKsd4HacdqY5dKNdS0yacC6+38+Ree5
-	B4jQmQ1XH5Q17fERKWOGS+KHXmC4gbmhgj9NGOdPO6VEZp+2Yvr1tnEufxQIx9v4jEjsqq18Kwe9o
-	WpVsZLDFx3Nh10YHY8yA==;
+	List-Owner; bh=nkXU/nuGaJiL39LYalFvQzR+NZ3hKEfoS2hX4FnzFrw=; b=tfaxSNUS9eAwLN
+	YfqjZPAC3aX0hYiP0ivLMCb54tPcOAqIUBXARGBEiTmSxnNRJF6Ej4IvbRrXXOsSspwgbDwtKpKBe
+	ppaJj+JleQqvsLc0LA/4zoMy2iV+4HA8Z1hakbKcoJaSAucut1SnLF7VIbcoiuVA9ggaOqiSaJyfF
+	DApMZruQd2R/HIk6um9yraRtQynGX6wphasvFaed1NLVQ+Sz3Eu4eLCBr48a3X+eMNZzJqYNcKbqH
+	Mtrs4Wf3WmkxDJS1E0RUd9TBO1+dyh+StXlI4doAjqcCoaLDtGpxIOHjnZwoR/GpAbn59xQ8Rha++
+	7a5Be9RzQCSAiHl+hqlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIV2-000000008xj-2OVU;
-	Fri, 12 Apr 2024 15:07:32 +0000
+	id 1rvIcd-00000000AaK-1M6p;
+	Fri, 12 Apr 2024 15:15:23 +0000
 Received: from luna.linkmauve.fr ([82.65.109.163])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIUx-000000008w0-1MdQ;
-	Fri, 12 Apr 2024 15:07:29 +0000
+	id 1rvIcZ-00000000AXJ-0HAT;
+	Fri, 12 Apr 2024 15:15:21 +0000
 Received: by luna.linkmauve.fr (Postfix, from userid 1000)
-	id 4EDA110A25E8; Fri, 12 Apr 2024 17:07:19 +0200 (CEST)
-Date: Fri, 12 Apr 2024 17:07:19 +0200
-From: Link Mauve <linkmauve@linkmauve.fr>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Link Mauve <linkmauve@linkmauve.fr>, linux-kernel@vger.kernel.org,
+	id 7773A10A2677; Fri, 12 Apr 2024 17:15:17 +0200 (CEST)
+From: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+To: linux-kernel@vger.kernel.org
+Cc: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
 	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Dragan Simic <dsimic@manjaro.org>,
@@ -47,22 +48,21 @@ Cc: Link Mauve <linkmauve@linkmauve.fr>, linux-kernel@vger.kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	iommu@lists.linux.dev
-Subject: Re: [PATCH v2 0/2] Enable JPEG encoding on rk3588
-Message-ID: <ZhlOJ4gOuO9k-A37@desktop>
-References: <20240327134115.424846-1-linkmauve@linkmauve.fr>
- <bbcb66e9499120a86b367e7abdac2d8e2e704bfb.camel@ndufresne.ca>
- <ZhAI6tQZTD7BTosI@desktop>
- <ed0b32ec6da10f46ff5d820612bfe700388fae1e.camel@ndufresne.ca>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add one VEPU121 to rk3588
+Date: Fri, 12 Apr 2024 17:15:11 +0200
+Message-ID: <20240412151515.837824-3-linkmauve@linkmauve.fr>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240412151515.837824-1-linkmauve@linkmauve.fr>
+References: <20240412151515.837824-1-linkmauve@linkmauve.fr>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ed0b32ec6da10f46ff5d820612bfe700388fae1e.camel@ndufresne.ca>
-Jabber-ID: linkmauve@linkmauve.fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_080727_634832_30864B57 
-X-CRM114-Status: GOOD (  48.94  )
+X-CRM114-CacheID: sfid-20240412_081519_367085_5DCDB8AF 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,96 +74,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBBcHIgMDcsIDIwMjQgYXQgMTA6MDg6NThBTSArMDIwMCwgTmljb2xhcyBEdWZyZXNu
-ZSB3cm90ZToKPiBMZSB2ZW5kcmVkaSAwNSBhdnJpbCAyMDI0IMOgIDE2OjIxICswMjAwLCBMaW5r
-IE1hdXZlIGEgw6ljcml0wqA6Cj4gPiBPbiBUaHUsIEFwciAwNCwgMjAyNCBhdCAwMTo0MToxNVBN
-IC0wNDAwLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+ID4gPiBIaSwKPiA+IAo+ID4gSGksCj4g
-PiAKPiA+ID4gCj4gPiA+IExlIG1lcmNyZWRpIDI3IG1hcnMgMjAyNCDDoCAxNDo0MSArMDEwMCwg
-RW1tYW51ZWwgR2lsIFBleXJvdCBhIMOpY3JpdMKgOgo+ID4gPiA+IE9ubHkgdGhlIEpQRUcgZW5j
-b2RlciBpcyBhdmFpbGFibGUgZm9yIG5vdywgYWx0aG91Z2ggdGhlcmUgYXJlIHBhdGNoZXMKPiA+
-ID4gPiBmb3IgdGhlIHVuZG9jdW1lbnRlZCBWUDggZW5jb2RlciBmbG9hdGluZyBhcm91bmRbMF0u
-Cj4gPiA+IAo+ID4gPiBbMF0gc2VlbXMgbGlrZSBhIGJyb2tlbiBsaW5rLiBUaGUgVlA4IGVuY29k
-ZXIgUkZDIGlzIGZvciBSSzMzOTkgKGFuZCBIYW50cm8gSDEKPiA+ID4gcG9zdGVkIGJ5IFNUIG1v
-cmUgcmVjZW50bHkpLiBUaGUgVFJNIHNheXMgIlZFUFUxMjEoSlBFRyBlbmNvZGVyIG9ubHkpIiwg
-d2hpY2gKPiA+ID4gc3VnZ2VzdCB0aGF0IHRoZSBILjI2NCBhbmQgVlA4IGVuY29kZXJzIHVzdWFs
-bHkgZm91bmQgb24gdGhlIFZFUFUxMjEgYXJlCj4gPiA+IHJlbW92ZWQuIEFzIFJvY2tjaGlwIGhh
-dmUgcmVtb3ZlIHRoZSBzeW50aGVzaXplIHJlZ2lzdGVyIHdoaWxlIG1vZGlmeWluZyB0aGUgSDEK
-PiA+ID4gSVAsIGl0IGlzIGRpZmZpY3VsdCB0byB2ZXJpZnkuIENvbmZ1c2luZ2x5IHRoZSBILjI2
-NCBzcGVjaWZpYyByZWdpc3RlcnMgYXJlCj4gPiA+IGRvY3VtZW50ZWQgaW4gdGhlIFRSTSBhcm91
-bmQgVkVQVTEyMS4KPiA+IAo+ID4gQWgsIHRoZSBsaW5rIGJlY2FtZSwgYW5kIHdhcyBpbmRlZWQg
-U1TigJlzIHNlcmllczoKPiA+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9s
-aW51eC1yb2NrY2hpcC9saXN0Lz9zZXJpZXM9Nzg5ODg1JmFyY2hpdmU9Ym90aAo+ID4gCj4gPiBC
-dXQgdGhlIFRSTSBwYXJ0IDEgc2F5cyB0aGUgVkVQVTEyMSBzdXBwb3J0cyBILjI2NCBlbmNvZGlu
-ZyAocGFnZSAzNjcpLAo+ID4gYW5kIGl04oCZcyBsaWtlbHkgdGhleSBkaWRu4oCZdCByZW1vdmUg
-anVzdCBWUDggc3VwcG9ydCBzaW5jZSB0aGUgY29kZWMKPiA+IGZlYXR1cmVzIGFyZSBwcmV0dHkg
-Y2xvc2UgdG8gSC4yNjTigJlzLgo+ID4gCj4gPiA+IAo+ID4gPiA+IAo+ID4gPiA+IFRoaXMgaGFz
-IGJlZW4gdGVzdGVkIG9uIGEgcm9jay01YiwgcmVzdWx0aW5nIGluIGZvdXIgL2Rldi92aWRlbyoK
-PiA+ID4gPiBlbmNvZGVycy4gIFRoZSB1c2Vyc3BhY2UgcHJvZ3JhbSBJ4oCZdmUgYmVlbiB1c2lu
-ZyB0byB0ZXN0IHRoZW0gaXMKPiA+ID4gPiBPbml4WzFdLCB1c2luZyB0aGUganBlZy1lbmNvZGVy
-IGV4YW1wbGUsIGl0IHdpbGwgcGljayBvbmUgb2YgdGhlc2UgZm91cgo+ID4gPiA+IGF0IHJhbmRv
-bSAoYnV0IGRpc3BsYXlzIHRoZSBvbmUgaXQgcGlja2VkKToKPiA+ID4gPiAlIGZmbXBlZyAtaSA8
-aW5wdXQgaW1hZ2U+IC1waXhfZm10IHl1dmo0MjBwIHRlbXAueXV2Cj4gPiA+ID4gJSBqcGVnLWVu
-Y29kZXIgdGVtcC55dXYgPHdpZHRoPiA8aGVpZ2h0PiBOVjEyIDxxdWFsaXR5PiBvdXRwdXQuanBl
-Zwo+ID4gPiAKPiA+ID4gSSBkb24ndCBsaWtlIHRoYXQgd2UgZXhwb3NpbmcgZWFjaCBpZGVudGlj
-YWwgY29yZXMgYSBzZXBhcmF0ZSB2aWRlbyBub2Rlcy4gSQo+ID4gPiB0aGluayB3ZSBzaG91bGQg
-YWltIGZvciAxIGRldmljZSwgYW5kIHRoZW4gbXVsdGktcGxleCBhbmQgc2NoZWR1bGUgZGUgY29y
-ZXMgZnJvbQo+ID4gPiBpbnNpZGUgdGhlIExpbnV4IGtlcm5lbC4KPiA+IAo+ID4gSSBhZ3JlZSwg
-YnV0IHRoaXMgc2hvdWxkIGJlIGhhbmRsZWQgaW4gdGhlIGRyaXZlciBub3QgaW4gdGhlIGRldmlj
-ZQo+ID4gdHJlZSwgYW5kIGl0IGNhbiBiZSBkb25lIGxhdGVyLgo+IAo+IEFzIHRoZSBiZWhhdmlv
-dXIgd2Ugd2FudCBpcyB0aGF0IHRoZXNlIGNvcmVzIGJlY29tZXMgYSBncm91cCBhbmQgZ2V0IHNj
-aGVkdWxlCj4gdG9nZXRoZXIsIGl0cyBjZXJ0YWlubHkgYSBnb29kIHRpbWUgdG8gc2xvdyBkb3du
-IGFuZCBldmFsdWF0ZSBpZiB0aGF0IHBhcnQgbmVlZHMKPiB0byBiZSBpbXByb3ZlIGluIHRoZSBE
-VCB0b28uCj4gCj4gSGFudHJvIEcxL0gxIGFuZCBWRVBVL1ZEUFUxMjEgY29tYm9zIG9yaWdpbmFs
-bHkgc2hhcmVkIHRoZSBzYW1lIHNyYW0gcmVnaW9uLiBJdHMKPiBub3QgY2xlYXIgaWYgYW55IG9m
-IHRoZXNlIGNvcmVzIGhhdmUgdGhpcyBsaW1pdGF0aW9uIGFuZCBpZiB0aGlzIHNob3VsZCBiZQo+
-IGV4cHJlc3NlZCBpbiB0aGUgRFQgLyBkcml2ZXIuCgpUaGUgVFJNIG9uIHBhZ2UgMzY5IG1lbnRp
-b25zIHRoYXQ6Cj4gUGxlYXNlIG5vdGUgdGhhdCBWRFBVMTIxIGFuZCBWRFBVMzgxIGFuZCBWRFBV
-NzIwIGFuZCBBVjEgYW5kIFZFUFUxMjEgYW5kIFZFUFU1ODAKPiBpcyBkaWZmZXJlbnQgSVAgY29y
-ZXMsIHNvIHRoZXNlIHByb2Nlc3NpbmcgY29yZSBjYW4gYmUgd29yayB0b2dldGhlci4KCkkgdW5k
-ZXJzdGFuZCB0aGF0IGFzIHRoZW0gbm90IHNoYXJpbmcgYW55IG1lbW9yeSBhbmQgYmVpbmcgYWJs
-ZSB0byB3b3JrCmluZGVwZW5kZW50bHkuCgo+IAo+ID4gCj4gPiA+IAo+ID4gPiBOb3QgZG9pbmcg
-dGhpcyBub3cgbWVhbnMgd2UnbGwgbmV2ZXIgaGF2ZSBhbiBvcHRpbWFsIGhhcmR3YXJlIHVzYWdl
-Cj4gPiA+IGRpc3RyaWJ1dGlvbi4gSnVzdCBjb25zaWRlciB0d28gdXNlcnNwYWNlIHNvZnR3YXJl
-IHdhbnRpbmcgdG8gZG8ganBlZyBlbmNvZGluZy4KPiA+ID4gSWYgdGhleSBib3RoIHRha2UgYSBn
-dWVzcywgdGhleSBtYXkgZW5kdXAgdXNpbmcgYSBzaW5nbGUgY29yZS4gV2hlcmUgd2l0aCBwcm9w
-ZXIKPiA+ID4gc2NoZWR1bGluZyBpbiBWNEwyLCB0aGUga2VybmVsIHdpbGwgYmUgYWJsZSB0byBw
-cm9wZXJseSBkaXN0cmlidXRlIHRoZSBsb2FkLiBJCj4gPiA+IGluc2lzdCBvbiB0aGlzLCBzaW5j
-ZSBpZiB3ZSBtZXJnZSB5b3UgY2hhbmdlcyBpdCBiZWNvbWVzIGFuIEFCSSBhbmQgd2UgY2FuJ3QK
-PiA+ID4gY2hhbmdlIGl0IGFueW1vcmUuCj4gPiAKPiA+IFdpbGwgaXQgcmVhbGx5IGJlY29tZSBB
-QkkganVzdCBsaWtlIHRoYXQ/ICBVc2Vyc3BhY2Ugc2hvdWxkIGFsd2F5cwo+ID4gZGlzY292ZXIg
-dGhlIHZpZGVvIG5vZGVzIGFuZCB0aGVpciBjYXBhYmlsaXRpZXMgYW5kIG5vdCBoYXJkY29kZSBl
-LmcuIGEKPiA+IHNwZWNpZmljIC9kZXYvdmlkZW9OIGZpbGUgZm9yIGEgc3BlY2lmaWMgY29kZWMu
-ICBJIHdvdWxkIGFyZ3VlIHRoYXQgdGhpcwo+ID4gc2VyaWVzIHdvdWxkIGxldCB1c2Vyc3BhY2Ug
-ZG8gSlBFRyBlbmNvZGluZyByaWdodCBhd2F5LCBldmVuIGlmIGluIGEKPiA+IGxlc3Mgb3B0aW1h
-bCB3YXkgdGhhbiBpZiB0aGUgZHJpdmVyIHdvdWxkIHJvdW5kLXJvYmluIHRoZW0gdGhyb3VnaCBh
-Cj4gPiBzaW5nbGUgdmlkZW8gbm9kZSwgYnV0IHRoYXQgY2FuIGFsd2F5cyBiZSBhZGRlZCBpbiBh
-IGZ1dHVyZSB2ZXJzaW9uLgo+IAo+IE1pZ2h0IGJlIG9uIHRoZSBncmF5IHNpZGUsIGJ1dCB0aGVy
-ZSBpcyBnb29kIGNoYW5jZXMgc29mdHdhcmUgd3JpdHRlbiBmb3IgeW91cgo+IHNwZWNpZmljIGJv
-YXJkIGNhbiBzdG9wIHdvcmtpbmcgYWZ0ZXIgdGUgZ3JvdXBpbmcgaXMgZG9uZS4KCkkgd2lsbCBz
-ZW5kIGEgbmV3IHNlcmllcyBzaG9ydGx5IHdoaWNoIGVuYWJsZXMgb25seSBvbmUgb2YgdGhlc2Ug
-Zm91cgpjb3JlcywgdGhlIGZ1bmN0aW9uYWxpdHkgc2hvdWxkIGJlIHRoZSBzYW1lLCBpdCB3aWxs
-IGp1c3QgZXhwb3NlIG9ubHkKb25lIHZpZGVvIG5vZGUgd2hpY2ggY2FuIGdldCBhIGZvdXIgdGlt
-ZXMgdGhyb3VnaHB1dCB1cGdyYWRlIGxhdGVyIG9uY2UKd2UgaW1wbGVtZW50IG11bHRpLWNvcmUg
-c3VwcG9ydCBpbiB0aGUgZHJpdmVyLgoKPiAKPiA+IAo+ID4gPiAKPiA+ID4gSSB1bmRlcnN0YW5k
-IHRoYXQgdGhpcyBpbXBvc2UgYSByZXdvcmsgb2YgdGhlIG1lbTJtZW0gZnJhbWV3b3JrIHNvIHRo
-YXQgd2UgY2FuCj4gPiA+IHJ1biBtdWx0aXBsZSBqb2JzLCBidXQgdGhpcyB3aWxsIGJlIG5lZWRl
-ZCBhbnl3YXkgb24gUkszNTg4LCBzaW5jZSB0aGUgcmt2ZGVjMiwKPiA+ID4gd2hpY2ggd2UgZG9u
-J3QgaGF2ZSBhIGRyaXZlciB5ZXQgaXMgYWxzbyBtdWx0aS1jb3JlLCBidXQgeW91IG5lZWQgdG8g
-dXNlIDIgY29yZXMKPiA+ID4gd2hlbiB0aGUgcmVzb2x1dGlvbiBpcyBjbG9zZSB0byA4Sy4KPiA+
-IAo+ID4gSSB0aGluayB0aGUgbWVkaWF0ZWsgSlBFRyBkcml2ZXIgYWxyZWFkeSBzdXBwb3J0cyB0
-aGF0LCB3b3VsZCBpdCBiZSBvawo+ID4gdG8gZG8gaXQgdGhlIHNhbWUgd2F5Pwo+IAo+IEkgZG9u
-J3Qga25vdyBmb3IgSlBFRywgdGhlIE1USyB2Y29kZXIgZG8gc3VwcG9ydCBjYXNjYWRpbmcgY29y
-ZXMuIFRoaXMgaXMKPiBkaWZmZXJlbnQgZnJvbSBjb25jdXJyZW50IGNvcmVzLiBJbiBNVEsgYXJj
-aGl0ZWN0dXJlLCBmb3Igc29tZSBvZiB0aGUgY29kZWMsCj4gdGhlcmUgaXMgTEFUIChlbnRyb3B5
-IGRlY29kZXIpIGFuZCBDT1JFICh0aGUgcmVjb25zdHJ1Y3Rpb24gYmxvY2spIHRoYXQgYXJlCj4g
-c3BsaXQuCgpBaCwgdGhhdOKAmXMgZGlmZmVyZW50IHRoZW4sIEkgb25seSBoYWQgYSBjdXJzb3J5
-IGxvb2sgYXQgdGhlbSBiYWNrIHdoZW4gSQppbXBsZW1lbnRlZCB0aGUgSlBFRyBkZWNvZGVyIGZv
-ciBzdW54aS4KCj4gCj4gTmljb2xhcwoKLS0gCkxpbmsgTWF1dmUKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The TRM (version 1.0 page 385) lists five VEPU121 cores, but only four
+interrupts are listed (on page 24), and the driver would expose them all
+as different video nodes so only one of them is exposed for now.
+
+Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 29 +++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 87b83c87bd55..5c6cc4cd81df 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -2488,6 +2488,35 @@ gpio4: gpio@fec50000 {
+ 		};
+ 	};
+ 
++	/*
++	 * Currently only one of the four JPEG encoders is exposed, this
++	 * reduces the optimal throughput by four.
++	 *
++	 * Once the driver is made to expose all four devices as a single video
++	 * node, the rest can be enabled again, see the full patch here:
++	 * https://lore.kernel.org/linux-media/20240327134115.424846-1-linkmauve@linkmauve.fr/T/#m3a6df0ba15e4af40b998b0ff2a02b0dd0d730c8e
++	 */
++
++	jpeg_enc0: video-codec@fdba0000 {
++		compatible = "rockchip,rk3588-vepu121", "rockchip,rk3568-vepu";
++		reg = <0x0 0xfdba0000 0x0 0x800>;
++		interrupts = <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_JPEG_ENCODER0>, <&cru HCLK_JPEG_ENCODER0>;
++		clock-names = "aclk", "hclk";
++		iommus = <&jpeg_enc0_mmu>;
++		power-domains = <&power RK3588_PD_VDPU>;
++	};
++
++	jpeg_enc0_mmu: iommu@fdba0800 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdba0800 0x0 0x40>;
++		interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_JPEG_ENCODER0>, <&cru HCLK_JPEG_ENCODER0>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_VDPU>;
++		#iommu-cells = <0>;
++	};
++
+ 	av1d: video-codec@fdc70000 {
+ 		compatible = "rockchip,rk3588-av1-vpu";
+ 		reg = <0x0 0xfdc70000 0x0 0x800>;
+-- 
+2.44.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
