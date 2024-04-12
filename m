@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B146C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 11:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E6DC4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 12:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8AChWjnQPPJTzY9doJsjkdY4t8vHRW47BDkGruCNq1E=; b=Vhqil+CU8Xdmv3
-	EZ0yDvjFVIusiK8OWjqyl4T9qqBUmN2+RLDaJVsApuhuUXR/qHvinvGDhzWMv7yQDh7NOFCK1NF6B
-	U4Wf/fYzVQ1DlHRkJPfgIkFmqiG3Y/s7/Sacf5B4AT0E+0R4XlkHRII3QYubUptK7vw0e58dMk4e7
-	OYnypTo7nJDy5qKwWO0C67jMOrBdh0yG+RXzyChgz1KoCUyC2MrhWbFlKXztbZpr/PL8NRjgQFBF1
-	md7y7RiXstVVxfoBJtKdyFJv0Aab0VXCiHaHOaRm23fAuzF2elk36d7X/WM7tzxzxw1BASaG0eyW0
-	Y8Fy69QPTbuU0od5Di7A==;
+	List-Owner; bh=gZ5LVybOYb5TpiMEjJTH+/qyk5SC6j+NC+8hYBoCXX0=; b=Hex5l2XePcqLR+
+	T5cNd7iFwTAqai/jb73ZVJ4O13Agb86iR0hQ5pDDYwPWuS56nMFdvNSMn90weIBvnDDzRpkwZ+4o0
+	bjeW0D3cgeKkZ88VdGfYoqel4tBAcsNKAibQQzS66I6fjgrNGL0tKxuaZb64ZMu8rHqVHZ47heJGQ
+	JpqlsfnoA8hRv6zuzI67yi/mqYFRt9hAMCGYogdRk28B9hmL65LaQhEApPEIP99IatD26vRQckX7d
+	EOirs7gOMzv0SkENa+A8bwH6FNWXqBb+6GUjxTvwci9dHW8dmaZOntRbaYGuoMZ3Wp4S8lCXDK+Lk
+	jx+N+72mnL776V5Y0LAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvFCw-0000000GxhC-2sag;
-	Fri, 12 Apr 2024 11:36:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rvGF4-0000000H9pi-0Ojo;
+	Fri, 12 Apr 2024 12:42:54 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvFCg-0000000GxXT-1agj;
-	Fri, 12 Apr 2024 11:36:26 +0000
+	id 1rvGF0-0000000H9o4-0ZYm;
+	Fri, 12 Apr 2024 12:42:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 60CCD62230;
-	Fri, 12 Apr 2024 11:36:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB5DCC2BD11;
-	Fri, 12 Apr 2024 11:36:16 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E057ACE38AB;
+	Fri, 12 Apr 2024 12:42:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19F31C113CC;
+	Fri, 12 Apr 2024 12:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712921781;
-	bh=SKyjWHd+tVc2A4+hwCP2t2bgzxmSvGBlmggLzxosv+M=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=qIaWQ8NczYgf3PaOoQztrWP5AuN5wOvfXJhhIg6YZtgW1Skk8AdSOjylb3cXZHUIB
-	 ZDdbd/xFz7yyqlT0P5p3dbKggDcmVufHALGjG9ao9i1eXs0iX4GyFE87lPVOqwH9gM
-	 MS5OLIBWPZ2FlGtXcbSDUDaVp9ofmr+66rZUO0k99Qbxupl+UmMi8rdTxvnwKvIOKy
-	 /YQTba3t/JlY0s0R3nBHyobijKuaNfd7hSnp2sY3keILfr5QwOosI/uDpTn4HA0kn/
-	 k20BpRch0BosRVCOzPx5dWNSEocHxNId5Vvab/xCJgPSdAJSYJcaPH/n0y24ohlC3X
-	 PhKdp29SfzZrA==
-From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, Frank Wang <frank.wang@rock-chips.com>, 
- Kever Yang <kever.yang@rock-chips.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com
-In-Reply-To: <20240408225109.128953-1-sebastian.reichel@collabora.com>
-References: <20240408225109.128953-1-sebastian.reichel@collabora.com>
-Subject: Re: (subset) [PATCH v5 00/10] RK3588 USBDP support
-Message-Id: <171292177636.599803.10340214164260431529.b4-ty@kernel.org>
-Date: Fri, 12 Apr 2024 17:06:16 +0530
+	s=k20201202; t=1712925767;
+	bh=RFZZ+mGFrMvvzGP+Wwx3ZJjWKuRdZUpn09zEfdGc7P0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=f4nYe/em6FK0f+oAwuh0E1rMXQ1OyU4HGcc0d3wGEkQs8c01qL+qYZXK7o533Ysy4
+	 12FEaeYNYxLWiGTQZbgfQMmJRnPAIosXSS6Zww3JQkROF0SrSm9b1ggXg6zLAYYwKO
+	 odOnXedPol5+Z1ADVvnwDXI7aPmAXVzsYC7lgNGgKqiSH+rgcBS7HfOj6+CsmkRYZw
+	 DRCJo2Rlk4oN1rmCBnunXTTJfaA9Nl+2iXXwuyCohy8+z6igI07gVChSGzHOp3wIZa
+	 JaY092JRKQkFik2TB+OLe0WFl/4PQtSCz8HtXg7oFHfb6dT/JeAcwQkYR72H3Olyk3
+	 ns6WGTbpiZsiA==
+Date: Fri, 12 Apr 2024 14:42:41 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Michal Tomek <mtdev79b@gmail.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Jon Lin <jon.lin@rock-chips.com>, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/2] rockchip pcie3-phy separate refclk support
+Message-ID: <ZhksQc1kNDWHAfWw@ryzen>
+References: <20240411130150.128107-1-cassel@kernel.org>
+ <ZhkAB6goB4TmcmWu@matsya>
 MIME-Version: 1.0
-X-Mailer: b4 0.12.3
+Content-Disposition: inline
+In-Reply-To: <ZhkAB6goB4TmcmWu@matsya>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_043622_960200_8327A8B6 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240412_054250_380450_47895976 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +81,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 09 Apr 2024 00:50:27 +0200, Sebastian Reichel wrote:
-> This adds Rockchip RK3588 USBDP PHY support, which is used for two of the three
-> USB3 controllers in the RK3588 (the third one uses a different PHY, which is
-> already supported). The USBDP PHY offers USB3 dual-role and DisplayPort. The
-> driver and bindings being upstreamed contains the DP parts, but only USB3 has
-> been tested by me (upstream does not yet have a DRM DP bridge driver for this
-> platform).
+On Fri, Apr 12, 2024 at 03:03:59PM +0530, Vinod Koul wrote:
+> Hi Niklas,
 > 
-> [...]
+> On 11-04-24, 15:01, Niklas Cassel wrote:
+> > This series is based on: linux-phy phy/fixes
+> > (Since there are other rockchip,pcie3-phy changes there that have not
+> > yet reached mainline and which would otherwise have caused conflicts.)
+> 
+> I merged the fixes into next and tried to apply this patch but second
+> one fails for me. I guess it needs to be rebased.
+> 
+> Always based these changes on phy/next or phy/fixes+next (which is what
+> I will end up with to resolve)
 
-Applied, thanks!
+I based it on phy/fixes since there were commits for this driver in phy/fixes
+that were not in phy/next, so I did it for you to not get conflicts :)
 
-[01/10] dt-bindings: phy: add rockchip usbdp combo phy document
-        commit: a75d8056e9fefa82ca2bd75a32febc44411cc5c0
-[02/10] phy: rockchip: add usbdp combo phy driver
-        commit: 2f70bbddeb457580cef3ceb574506083b9272188
+Since this still gave you conflicts, there must have been other changes in
+phy/next for this driver. I must have missed that, sorry.
 
-Best regards,
--- 
-~Vinod
+I see that you have now merged phy/fixes into phy/next, that will make things
+easier, thank you. I will send out a V2 based on phy/next shortly.
 
 
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
