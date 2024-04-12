@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0439C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 18:59:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2243BC4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 19:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=YlXTvzAEWyK6JKlituAoak6pqCYazqv3R/Oba0HIlVE=; b=BxUJJb/JXJkLJQ
-	f5rXbs+MpGTqgnE0nN0Iee0j9f7nCxixCcmhzYZchbIRJwbnIdGp8ZrPzfIv4Dk7g1gpNgegdgqgK
-	oemJoJXPFpckznWsIF4TRRf4rJapHBTegPoGhxHP+Qs/45v1KbezuDH8k413E/wOOBX+xSw0qD44k
-	TGduuTavuIryEW0RV6h7DjL71C1H7sABBq8JVjf8rTc09gxThKWMHSFY5or7bZDzYycjri6DFpKjM
-	O24AtmCC8YW6+TB3vN3izexyddpHBB1pOYGMj4vDwcFnDBUO3xoOmPrXCZ7L/8ENgjFKfNHwp+uxL
-	LDRpEa6nmVuDemnxud1w==;
+	List-Owner; bh=NJkWE6g2M5PGnAoPYOUofx0/KBLJg2DfQ8X6y1cQXFE=; b=2bwMR3Z90Eex9y
+	dLGUNn2FXI/vRd/lQn1nQnn63eEi2GcpBhiUGSTIy9pjFls5DdF7RwtoRDXBu6txD2UOFSXbILR2n
+	G+wL4i+t+9tipu3HLHBC7a9wfqsNzhMaRlzP1Vrd8Tv9ZVb6mZEginElcaOH0sl3v3p1iBIvTeSro
+	yX/i6tOfSQPtS+Z+1WcOJl4n95PDEnzvkjFWcGEUkAsypvX9le8JC3UPWSnRZZSwG/1TczCCCMxCL
+	S3XlZW1pndwdWNbQkGduBDtvNASkiiqMyhcx8VKPrtvJ80WdtvWwg4lkGsp+HqMpJ7XZi+zOwlqMp
+	ks+gKBiWk1muyU8NEV/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvM7D-00000000xqb-1qll;
-	Fri, 12 Apr 2024 18:59:11 +0000
+	id 1rvN2s-000000017Oe-185O;
+	Fri, 12 Apr 2024 19:58:46 +0000
 Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvM79-00000000xpB-20Z0;
-	Fri, 12 Apr 2024 18:59:08 +0000
+	id 1rvN2o-000000017NN-04Es;
+	Fri, 12 Apr 2024 19:58:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id E91BFCE3A94;
-	Fri, 12 Apr 2024 18:59:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D41C7C113CC;
-	Fri, 12 Apr 2024 18:59:03 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 1194ECE3AC3;
+	Fri, 12 Apr 2024 19:58:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECFEAC113CC;
+	Fri, 12 Apr 2024 19:58:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712948344;
-	bh=37C1C4f8sh6Sv4UkKghlBLhlizZj4K22kLsB/RNSa/4=;
+	s=k20201202; t=1712951918;
+	bh=9HYoa2q9zbdAwhkuDRDtehEu+C2d3K7WfVfQ1MwY5ts=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=puZdoiB5ez8mf1zOE1eKGW0ybXjGY8UCbYIvmw1QK8unfZ/zbjpFsW7+9mCOUSdTA
-	 ErrK2jr87zTzNDEiMBaj/N/EeSCn/s9KpC1tEQdG+VIh8dEdhU5D8Ca5k/HBMDKVZK
-	 pAAwc+lWKPioH9X2Q+mjpj+8sMwa6XtJNDItbGJ+z8EEmwKvZm0jH1kqDsC3KO3Mjm
-	 PMtsD6X3n4HTNCI33XBqA2YGYb2/jlJmEHXOkINO26ZyqrtXXWEKJclW5rHYMOcFrc
-	 i+D86AF3JVbnL819BisrI3vPRKSjgYyqhtbP/PpYItS//WzNfIu8fd8390zrYEuuiw
-	 IVYwFBIL8I0JA==
-Date: Fri, 12 Apr 2024 13:59:01 -0500
+	b=SGLpNFOblQMeIbaJAa2RR1y9xP1A4VwRPfNvrMemMrQdH7DFIEqXfWjED1/QhvtxO
+	 hJwupFe0Zppd9Hx7FQ6sAD9A8zlkGNqxCKL93Lgv+HM/Tlv2ihysEEhBSMme0WU/xZ
+	 RmyWk2LZ0EfMI6v7/A50srEd/rQl8GV6TNI7lhloC7ZsNkN79QdcezoDxDudu48TlU
+	 6yeJb0nSJDsOMZYNoTJ//yRoBGLYAUywwOLqZRW1kYosaZ/FAmRG8UQ0qWOU9fuvNj
+	 MUvOqI6C3if4nm0zgjmb2nXTx/fQpWCIEwE1QW09jgPv9Q7AQOn6hkEUrmUqhOGaI4
+	 DTF2TST3dsEgA==
+Date: Fri, 12 Apr 2024 14:58:36 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shradha Todi <shradha.t@samsung.com>,
-	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 8/9] PCI: rockchip-ep: Set a 64-bit BAR if requested
-Message-ID: <20240412185901.GA10301@bhelgaas>
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Vidya Sagar <vidyas@nvidia.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, Niklas Cassel <cassel@kernel.org>,
+	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
+	Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH v12 2/8] PCI: dwc: ep: Add Kernel-doc comments for APIs
+Message-ID: <20240412195836.GA13344@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240313105804.100168-9-cassel@kernel.org>
+In-Reply-To: <20240327-pci-dbi-rework-v12-2-082625472414@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_115907_722912_7BE7E024 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20240412_125842_265648_338E3D71 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,50 +101,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 13, 2024 at 11:58:00AM +0100, Niklas Cassel wrote:
-> ...
+On Wed, Mar 27, 2024 at 02:43:31PM +0530, Manivannan Sadhasivam wrote:
+> All of the APIs are missing the Kernel-doc comments. Hence, add them.
 
-> --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -153,7 +153,7 @@ static int rockchip_pcie_ep_set_bar(struct pci_epc *epc, u8 fn, u8 vfn,
->  		ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_IO_32BITS;
->  	} else {
->  		bool is_prefetch = !!(flags & PCI_BASE_ADDRESS_MEM_PREFETCH);
-> -		bool is_64bits = sz > SZ_2G;
-> +		bool is_64bits = !!(flags & PCI_BASE_ADDRESS_MEM_TYPE_64);
->  
->  		if (is_64bits && (bar & 1))
->  			return -EINVAL;
+> + * dw_pcie_ep_reset_bar - Reset endpoint BAR
 
-Completely unrelated to *these* patches, but the BAR_CFG_CTRL
-definitions in both cadence and rockchip lead to some awkward case
-analysis:
+Apparently this resets @bar for every function of the device, so it's
+not just a single BAR?
 
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM_32BITS              0x4
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH_MEM_32BITS     0x5
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM_64BITS              0x6
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH_MEM_64BITS     0x7
+> + * dw_pcie_ep_raise_intx_irq - Raise INTx IRQ to the host
+> + * @ep: DWC EP device
+> + * @func_no: Function number of the endpoint
+> + *
+> + * Return: 0 if success, errono otherwise.
 
-  if (is_64bits && is_prefetch)
-          ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH_MEM_64BITS;
-  else if (is_prefetch)
-          ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH_MEM_32BITS;
-  else if (is_64bits)
-          ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM_64BITS;
-  else
-          ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM_32BITS;
+s/errono/errno/ (another instance below)
 
-that *could* be just something like this:
-
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM           0x4
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_64BITS        0x2
-  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH      0x1
-
-  ctrl = ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM;
-  if (is_64bits)
-    ctrl |= ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_64BITS;
-  if (is_prefetch)
-    ctrl |= ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_PREFETCH;
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
