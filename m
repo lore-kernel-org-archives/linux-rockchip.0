@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 857D6C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 09:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86582C4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 10:10:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tAtYszWswPtlfh2PA+k5woW4p0TxQXkBM9eQyl3WRjM=; b=118XVcHAa34bUT
-	/SgluIsavo1J9R5eo/f+JcCMQKXj8UG38wZPX7SrZWD5U3sAwgLIxUUec/Nb5depvedlBE1QBcnOy
-	ZoiuAj0tzeEfzzU4sWsd8FJkcBHQNVHBaK6wXs5vnfIUGGyAktwiqtbErAduWFdexEXNfxlY/Dezc
-	QMLWnMI9jtfT6MYEcvbt5BJ7cjCJyUuJp3ZKuj5l/Tf/qpBeiNPzW2e3M6g8XM4wNytfnLHBTWcy/
-	4wTgH8mKA1DtR4uDdMP9pC7P5Imc9Gg5iK4RGftaj5HxKvKJcsZkkDu/nZkvkUTvcN5MZ54Je/Jz1
-	8yfIHFuwdbzwMJyJZ25Q==;
+	List-Owner; bh=5VGy6qbLA4ht7BWxrn8Q62wbxujwYbHcbtFdMk7Uajs=; b=gC+QaQrNpiOkBf
+	/3NMGrWyyZHkATE+TTaNlP8wRO0xsIYo4Sw53S1hFV03PdvXIo0HcYxXozTus0jPnpaDq0bRIqCeG
+	9Ss9zAVtRg1+NKShlknXVTpmDxjh9sRUOCwiZVDBX06/ZhWd8M/wzPcVF242RHxI0rjveQ7VTbrwW
+	CSVMD6Asw0Yk6m3E81Xvi6FzZjf/7YoyUEB/1TL3Ej3yEt7o6CtgtDbI8Bv92HmdAzRe6fGmXNjQO
+	lvphCCvRZP7mHpWcs/GeeY9l95taBTdljo30rEKlxc8+YtEVdwGLXFAunI04kGxt5EYIokOWyDuO5
+	34kjvHkWpGa4rRISQpow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvDIX-0000000GSvv-44oH;
-	Fri, 12 Apr 2024 09:34:17 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvDIU-0000000GSul-1NNK;
-	Fri, 12 Apr 2024 09:34:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 4B7F7CE383C;
-	Fri, 12 Apr 2024 09:34:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD6D5C113CC;
-	Fri, 12 Apr 2024 09:34:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712914449;
-	bh=xLQra8oyKWr2gJU0/Rk9xTiOnKsb7illFI7gIOIzVhk=;
+	id 1rvDrS-0000000GavT-0300;
+	Fri, 12 Apr 2024 10:10:22 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rvDrO-0000000Gau0-44Se
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 Apr 2024 10:10:20 +0000
+Received: from 8bytes.org (p4ffe0bdf.dip0.t-ipconnect.de [79.254.11.223])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 51047281A38;
+	Fri, 12 Apr 2024 12:10:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1712916616;
+	bh=E+iVkylCqaTgNVotthxWDOOoCqml/4nGJOpaARXTjK0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fJiKmBLZyThS4o9klLsG7k+vRZefWZMLLZABuOXb5bUE1cPPFvBXXNdV2C4WRrOvT
-	 e9RrDQdRrfqh5BDLf5swFSPw+jn23s0PAJcyzpdIrVjUM1N99OyXOZLn87p4SDAXsT
-	 sAwWzd3ADkFRcqxaTy9ed5p4t6QDiXcWdRp9M04NS7fp1NNGE4P9mIkkVfnBAeqthh
-	 ii4NDHpReUI7f39KyrrhqDF3ZCwTmpCgKtq3+DNYD37Pm2g6RN2I1Im2hlaL1QQOwF
-	 jINB6EGVNQCSWjel5G+8v9NNihP9mmWjSPZU6xatq8YpHx5WzjqmmT6hSgq6Zm/2Rt
-	 07zW+ALIjeVfw==
-Date: Fri, 12 Apr 2024 15:03:59 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Michal Tomek <mtdev79b@gmail.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Jon Lin <jon.lin@rock-chips.com>, linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 0/2] rockchip pcie3-phy separate refclk support
-Message-ID: <ZhkAB6goB4TmcmWu@matsya>
-References: <20240411130150.128107-1-cassel@kernel.org>
+	b=LuZbLWJPGCLZJPltogQTsk4oQ9NTj4Tsj7ifX4XmlHt9dm9BjBk7wNSRnJEGBBLX0
+	 RR1K295opyq8KNseqPbA6/RWBABghoCfLVi53gLBIUssvvge/FC7qptmqVDcplhzTo
+	 XuBmaDg9QBQ/vnZqdaxAREDkzJpp0Wy4QVBWKVDHOT7296ofu/w9sV3sUJl9A78VIT
+	 Q8HYmCNyUOwMBct7Se9mdxxPDMr4hl0kzCGipNnFTmrP6p8lRL075rML4+cOeADLWK
+	 3bfKf9EbMlshGtJnw/aGnFdGxYsmOkfVQGWHlFj/MJ94e75Lh2o+bnyCKL3btAMYV6
+	 t2ODbB7AbBEpQ==
+Date: Fri, 12 Apr 2024 12:10:14 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Pasha Tatashin <pasha.tatashin@soleen.com>
+Cc: akpm@linux-foundation.org, alim.akhtar@samsung.com,
+	alyssa@rosenzweig.io, asahi@lists.linux.dev,
+	baolu.lu@linux.intel.com, bhelgaas@google.com,
+	cgroups@vger.kernel.org, corbet@lwn.net, david@redhat.com,
+	dwmw2@infradead.org, hannes@cmpxchg.org, heiko@sntech.de,
+	iommu@lists.linux.dev, jernej.skrabec@gmail.com,
+	jonathanh@nvidia.com, krzysztof.kozlowski@linaro.org,
+	linux-doc@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, lizefan.x@bytedance.com,
+	marcan@marcan.st, mhiramat@kernel.org, m.szyprowski@samsung.com,
+	paulmck@kernel.org, rdunlap@infradead.org, robin.murphy@arm.com,
+	samuel@sholland.org, suravee.suthikulpanit@amd.com,
+	sven@svenpeter.dev, thierry.reding@gmail.com, tj@kernel.org,
+	tomas.mudrunka@gmail.com, vdumpa@nvidia.com, wens@csie.org,
+	will@kernel.org, yu-cheng.yu@intel.com, rientjes@google.com,
+	bagasdotme@gmail.com, mkoutny@suse.com
+Subject: Re: [PATCH v5 00/11] IOMMU memory observability
+Message-ID: <ZhkIhtTCWg6bgl1o@8bytes.org>
+References: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240411130150.128107-1-cassel@kernel.org>
+In-Reply-To: <20240222173942.1481394-1-pasha.tatashin@soleen.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_023414_575397_B93E3CBD 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20240412_031019_426198_19841E6F 
+X-CRM114-Status: UNSURE (   7.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,21 +91,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Niklas,
+Pasha,
 
-On 11-04-24, 15:01, Niklas Cassel wrote:
-> This series is based on: linux-phy phy/fixes
-> (Since there are other rockchip,pcie3-phy changes there that have not
-> yet reached mainline and which would otherwise have caused conflicts.)
+On Thu, Feb 22, 2024 at 05:39:26PM +0000, Pasha Tatashin wrote:
+> Pasha Tatashin (11):
+>   iommu/vt-d: add wrapper functions for page allocations
+>   iommu/dma: use iommu_put_pages_list() to releae freelist
+>   iommu/amd: use page allocation function provided by iommu-pages.h
+>   iommu/io-pgtable-arm: use page allocation function provided by
+>     iommu-pages.h
+>   iommu/io-pgtable-dart: use page allocation function provided by
+>     iommu-pages.h
+>   iommu/exynos: use page allocation function provided by iommu-pages.h
+>   iommu/rockchip: use page allocation function provided by iommu-pages.h
+>   iommu/sun50i: use page allocation function provided by iommu-pages.h
+>   iommu/tegra-smmu: use page allocation function provided by
+>     iommu-pages.h
+>   iommu: observability of the IOMMU allocations
+>   iommu: account IOMMU allocated memory
 
-I merged the fixes into next and tried to apply this patch but second
-one fails for me. I guess it needs to be rebased.
+Some problems with this:
 
-Always based these changes on phy/next or phy/fixes+next (which is what
-I will end up with to resolve)
+  1. I get DKIM failures when downloading this patch-set with b4, can
+     you please send them via a mailserver with working DKIM?
 
--- 
-~Vinod
+  2. They don't apply to v6.9-rc3. Please rebase to that version and
+     are-send.
+
+Thanks,
+
+	Joerg
 
 _______________________________________________
 Linux-rockchip mailing list
