@@ -4,49 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31F02C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Apr 2024 19:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC57C4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 02:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z2W+XV7Cyvt4iqH4eqb+P0cBiqNc90DgOLs6sdcVvyo=; b=JZHkr0Jjuthkg0
-	tz1MaUXOTXtpp8DiGbBmmQFnQSCik01LDWXAFD3pcdIixOgle9WAtmdobplbWBBVg5xqAopPsjikw
-	kdNWboFJwONl78d0H4dxToKG6FZ+ycs5Kk/av4CfZQoYRj2teVy1dd3ojhVKC5rQ1VSIRDM1J/7A3
-	hfdvbQAiovKCovzaMkW0U9bduPdh9GJpLhr8g581Yp/HP8ohj3k5lwJx2l067pTSvaxy9LDq+hoDf
-	LDDoEbgmhfQB6z7I08RKAtQjDJvOV1j/8owMyud53t+FoDnw2YLQMBxLfhdQYVNYTo+4SThTsH/HP
-	2kJxPfOxNGHDJaRuTBbA==;
+	List-Owner; bh=nto6Pa9ooZAMy25Di5YSqbmz5OCIPG2mXynSXg7fG78=; b=o5SO8hMxm16zbp
+	j1OBM+xz6G0B9FqjNpVdEhW33wBWqKEba6ebTZEhMIQYqo3mM2fWAasc2wsfUghQsuhO58S517IqI
+	Zdsmo5aBnfuM9thkjj6CjOpEdyLVy35uhuC/y9g1P0JceIVGWKXcy3tLenCw1sXi5Lw7WyNwoT1m1
+	1M7ZFMjDGilvX0bppD59PD6AdsXM04QwulfYUh6Kd9b08lC/caDs6z6ql0RIHW3jD2xC8Tqypg0KW
+	3lAHXoukgBz+qfIp1UxK6sg2MbCmv1uJAk0lQOBsqqyLogd5r+WvYJTFFJH16W11aaoHqp9m+2R6K
+	S18/dMXaxdSFsKPnjlig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruzif-0000000DoMa-0TtK;
-	Thu, 11 Apr 2024 19:04:21 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rv6nC-0000000Evhp-2ZVd;
+	Fri, 12 Apr 2024 02:37:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ruzia-0000000DoLX-0xSz;
-	Thu, 11 Apr 2024 19:04:17 +0000
-Received: from ip-185-104-138-67.ptr.icomera.net ([185.104.138.67] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ruziS-0002HW-BR; Thu, 11 Apr 2024 21:04:08 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Algea Cao <algea.cao@rock-chips.com>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH] phy: phy-rockchip-samsung-hdptx: Select CONFIG_RATIONAL
-Date: Thu, 11 Apr 2024 21:03:44 +0200
-Message-ID: <114516975.nniJfEyVGO@phil>
-In-Reply-To: <20240408222926.32708-1-cristian.ciocaltea@collabora.com>
-References: <20240408222926.32708-1-cristian.ciocaltea@collabora.com>
+	id 1rv6n9-0000000Evfq-15CA;
+	Fri, 12 Apr 2024 02:37:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6A3426212B;
+	Fri, 12 Apr 2024 02:37:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 046D5C2BD10;
+	Fri, 12 Apr 2024 02:37:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1712889446;
+	bh=2Pm+KvVtx+Rp3GxiSajmnx2imcEuNTM/DMGG9mYaQDw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mtw3AC77hdVPhPhnSGFX+Pq+rVHdX4/izbfWTNrU7/ZYbJ/1FYg64KF8PuxTQNIMI
+	 3V3YgKHQp/hP3iwZGGSFMYNkzZ/WqsIw8UusWKoR5RNBM+ASRVz86WMXO25EfUEpL0
+	 oa0RAhZtMjfK7gN1r21bv80bZsTNNjoaBe9nQy4VP98M+jteI66g4CxUE+wkVJ18F0
+	 WJac1DWu2pA6FrC/Jgxe0SBu52L4soK29D6wnMQJoXfXf4Jq6XXAqKw59waF9HFr1F
+	 AXJ7sAdhhSqNXpXKn7dNFZb6hM0CoOYAtHY2IHM+efrGw3Yx4YY7w7PxZcxIlyxrNX
+	 qQ2NT7OOn3SMQ==
+From: Damien Le Moal <dlemoal@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-pci@vger.kernel.org
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v3 1/2] PCI: rockchip-host: Fix rockchip_pcie_host_init_port() PERST# handling
+Date: Fri, 12 Apr 2024 11:37:20 +0900
+Message-ID: <20240412023721.1049303-2-dlemoal@kernel.org>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240412023721.1049303-1-dlemoal@kernel.org>
+References: <20240412023721.1049303-1-dlemoal@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240411_120416_302179_7F26F35B 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20240411_193727_370479_3D0E44BB 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,40 +76,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 9. April 2024, 00:29:25 CEST schrieb Cristian Ciocaltea:
-> Ensure CONFIG_RATIONAL is selected in order to fix the following link
-> error with some kernel configurations:
-> 
-> drivers/phy/rockchip/phy-rockchip-samsung-hdptx.o: in function `rk_hdptx_ropll_tmds_cmn_config':
-> phy-rockchip-samsung-hdptx.c:(.text+0x950): undefined reference to `rational_best_approximation'
-> 
-> Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202404090540.2l1TEkDF-lkp@intel.com/
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+The PCIe specifications (PCI Express Electromechanical Specification rev
+2.0, section 2.6.2) mandate that the PERST# signal must remain asserted
+for at least 100 usec (Tperst-clk) after the PCIe reference clock
+becomes stable (if a reference clock is supplied), and for at least
+100 msec after the power is stable (Tpvperl, defined by the macro
+PCIE_T_PVPERL_MS).
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Modify rockchip_pcie_host_init_port() to satisfy these constraints by
+adding a sleep period before bringing back PESRT# signal to high using
+the ep_gpio GPIO. Since Tperst-clk is the shorter wait time, add an
+msleep() call for the longer PCIE_T_PVPERL_MS milliseconds to handle
+both timing requirements.
 
-> ---
->  drivers/phy/rockchip/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index a34f67bb7e61..b60a4b60451e 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -87,6 +87,7 @@ config PHY_ROCKCHIP_SAMSUNG_HDPTX
->  	tristate "Rockchip Samsung HDMI/eDP Combo PHY driver"
->  	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
->  	select GENERIC_PHY
-> +	select RATIONAL
->  	help
->  	  Enable this to support the Rockchip HDMI/eDP Combo PHY
->  	  with Samsung IP block.
-> 
+Signed-off-by: Damien Le Moal <dlemoal@kernel.org>
+---
+ drivers/pci/controller/pcie-rockchip-host.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-
-
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 300b9dc85ecc..fc868251e570 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -322,6 +322,7 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+ 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+ 			    PCIE_CLIENT_CONFIG);
+ 
++	msleep(PCIE_T_PVPERL_MS);
+ 	gpiod_set_value_cansleep(rockchip->ep_gpio, 1);
+ 
+ 	/* 500ms timeout value should be enough for Gen1/2 training */
+-- 
+2.44.0
 
 
 _______________________________________________
