@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E670C41513
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B896C04FF8
 	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 15:15:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Br/uqUdjL9dCS/MUdja7N99DhTOEdC73r90g0+X4azU=; b=A4ixCsdJFxjOaF
-	9CWY4i7NTVEt7gpMNEPfWNw1S6KO8E4S0DjgGabGhJpQKguqNeTCc3KCjOXyzwxf8m8heIqiX8PdQ
-	hQVyj8phkiuijsmSuL7FkB920YfYpoHtSwXpFFB0/zQezj0F/flOf9QCqU2Bx67ehJjnMCxPGO7QL
-	kyiIacXcegQeIVGCBzeXxVomC7fAl1WaGo5nNIVaJg7PexHWs2fl12zX4r6pwy5WXFdx8liBJEFvd
-	go0k+z6TeNEOKcla25RhbbnFZVRuNgc2PIKbU1/1bvr91GqJaR/l9bxSJq4IAcoTymWJLtKAUM0jM
-	mjV/fhFJYYbTZeuuWecw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vavpRHE67U6oH64LRWweR+bOZ5GM2kHYYAyDOMhTerc=; b=cg2xur+celYzfG
+	NbCrDDGVQGqEcloowT/ewY2Bi3WlmrnX8oibx1gDo2rBpPtUNtCVsrKqsAXZ6iTkJBM0uCwWiD3Fq
+	U/7TYhbhsFc0BvG+zd8UIWg4blj6y0dCus+XjB5QKTGoxg7uXmq/D3fLG0LUbn6wWvL7oty5NnAjw
+	STsbeexhYkL7HeJ8dC/eGE7GxQ1B04xmjZq3RHaWey8WI/eb33WTpnJJK5Lyv1c3ybkgyomwMCI/o
+	3NIgLp2d7/HkhAuyT+6U7LsETS0YUeVM6bb4iSYYIWMds5yKdj5m5mZl57d10yNFqXxTXfQ6NYQTQ
+	Vu3bv1wGWgSO/v7rN/4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIck-00000000Aeg-3LZu;
-	Fri, 12 Apr 2024 15:15:30 +0000
+	id 1rvIcl-00000000AfU-48Dy;
+	Fri, 12 Apr 2024 15:15:31 +0000
 Received: from [2a01:e0a:828:c7c0:e2d5:5eff:fe2d:8e8] (helo=luna.linkmauve.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIca-00000000AXM-2mi4;
+	id 1rvIca-00000000AXI-2mVS;
 	Fri, 12 Apr 2024 15:15:22 +0000
 Received: by luna.linkmauve.fr (Postfix, from userid 1000)
-	id 73A2C10A2675; Fri, 12 Apr 2024 17:15:17 +0200 (CEST)
+	id 7066A10A2673; Fri, 12 Apr 2024 17:15:17 +0200 (CEST)
 From: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 To: linux-kernel@vger.kernel.org
 Cc: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
@@ -53,16 +53,14 @@ Cc: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	iommu@lists.linux.dev
-Subject: [PATCH v3 1/2] =?UTF-8?q?media:=20dt-binding:=20media:=20Document?= =?UTF-8?q?=20rk3588=E2=80=99s=20VEPU121?=
-Date: Fri, 12 Apr 2024 17:15:10 +0200
-Message-ID: <20240412151515.837824-2-linkmauve@linkmauve.fr>
+Subject: [PATCH v3 0/2] Enable JPEG encoding on rk3588
+Date: Fri, 12 Apr 2024 17:15:09 +0200
+Message-ID: <20240412151515.837824-1-linkmauve@linkmauve.fr>
 X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240412151515.837824-1-linkmauve@linkmauve.fr>
-References: <20240412151515.837824-1-linkmauve@linkmauve.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_081520_858649_6B96BA6D 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20240412_081520_858668_42DE8222 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,50 +72,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This encoder-only device is present four times on this SoC, and should
-support everything the rk3568 vepu supports (so JPEG, H.264 and VP8
-encoding).
-
-According to the TRM[1], there is also the VEPU580 encoder which
-supports H.264 and H.265, and various VDPU* decoders, of which only the
-VDPU981 is currently supported.  This patch describes only the VEPU121.
-
-[1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
-
-Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
----
- .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml   | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-index 9d90d8d0565a..4c6cb21da041 100644
---- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-@@ -15,8 +15,12 @@ description:
- 
- properties:
-   compatible:
--    enum:
--      - rockchip,rk3568-vepu
-+    oneOf:
-+      - const: rockchip,rk3568-vepu
-+      - items:
-+          - enum:
-+              - rockchip,rk3588-vepu121
-+          - const: rockchip,rk3568-vepu
- 
-   reg:
-     maxItems: 1
--- 
-2.44.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T25seSB0aGUgSlBFRyBlbmNvZGVyIGlzIGF2YWlsYWJsZSBmb3Igbm93LCBhbHRob3VnaCB0aGVy
+ZSBhcmUgcGF0Y2hlcwpmb3IgdGhlIHVuZG9jdW1lbnRlZCBWUDggZW5jb2RlciBmbG9hdGluZyBh
+cm91bmRbMF0uCgpUaGlzIGhhcyBiZWVuIHRlc3RlZCBvbiBhIHJvY2stNWIsIHJlc3VsdGluZyBp
+biBmb3VyIC9kZXYvdmlkZW8qCmVuY29kZXJzLiAgVGhlIHVzZXJzcGFjZSBwcm9ncmFtIEnigJl2
+ZSBiZWVuIHVzaW5nIHRvIHRlc3QgdGhlbSBpcwpPbml4WzFdLCB1c2luZyB0aGUganBlZy1lbmNv
+ZGVyIGV4YW1wbGUsIGl0IHdpbGwgcGljayBvbmUgb2YgdGhlc2UgZm91cgphdCByYW5kb20gKGJ1
+dCBkaXNwbGF5cyB0aGUgb25lIGl0IHBpY2tlZCk6CiUgZmZtcGVnIC1pIDxpbnB1dCBpbWFnZT4g
+LXBpeF9mbXQgeXV2ajQyMHAgdGVtcC55dXYKJSBqcGVnLWVuY29kZXIgdGVtcC55dXYgPHdpZHRo
+PiA8aGVpZ2h0PiBOVjEyIDxxdWFsaXR5PiBvdXRwdXQuanBlZwoKWzBdIGh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9saXN0Lz9zZXJpZXM9Nzg5ODg1
+ClsxXSBodHRwczovL2NyYXRlcy5pby9jcmF0ZXMvb25peAoKQ2hhbmdlcyBzaW5jZSB2MjoKLSBP
+bmx5IGV4cG9zZSBhIHNpbmdsZSBWRVBVMTIxLCBzaW5jZSB0aGUgZHJpdmVyIGRvZXNu4oCZdCB5
+ZXQgc3VwcG9ydAogIGV4cG9zaW5nIHRoZW0gYWxsIGFzIGEgc2luZ2xlIHZpZGVvIG5vZGUgdG8g
+dXNlcnNwYWNlLgoKQ2hhbmdlcyBzaW5jZSB2MToKLSBEcm9wcGVkIHBhdGNoZXMgMSBhbmQgNC4K
+LSBVc2UgdGhlIHByb3BlciBjb21wYXRpYmxlIGZvcm0sIHNpbmNlIHRoaXMgZGV2aWNlIHNob3Vs
+ZCBiZSBmdWxseQogIGNvbXBhdGlibGUgd2l0aCB0aGUgVkVQVSBvZiByazM1NnguCi0gRGVzY3Jp
+YmUgd2hlcmUgdGhlIFZFUFUxMjEgbmFtZSBjb21lcyBmcm9tLCBhbmQgbGlzdCBvdGhlciBlbmNv
+ZGVycwogIGFuZCBkZWNvZGVycyBwcmVzZW50IGluIHRoaXMgU29DLgotIFByb3Blcmx5IHRlc3Qg
+dGhlIGRldmljZSB0cmVlIGNoYW5nZXMsIEkgcHJldmlvdXNseSBjb3VsZG7igJl0IHNpbmNlIEkK
+ICB3YXMgdXNpbmcgYSB0b28gcmVjZW50IHZlcnNpb24gb2YgcHl0aG9uLWpzb25zY2hlbWHigKYK
+CkVtbWFudWVsIEdpbCBQZXlyb3QgKDIpOgogIG1lZGlhOiBkdC1iaW5kaW5nOiBtZWRpYTogRG9j
+dW1lbnQgcmszNTg44oCZcyBWRVBVMTIxCiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBvbmUg
+VkVQVTEyMSB0byByazM1ODgKCiAuLi4vYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAscmszNTY4LXZl
+cHUueWFtbCAgfCAgOCArKystLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhz
+LmR0c2kgICAgIHwgMjkgKysrKysrKysrKysrKysrKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAzNSBp
+bnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKLS0gCjIuNDQuMAoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
