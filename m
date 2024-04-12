@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C9BC00A94
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 15:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E670C41513
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Apr 2024 15:15:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nkXU/nuGaJiL39LYalFvQzR+NZ3hKEfoS2hX4FnzFrw=; b=tfaxSNUS9eAwLN
-	YfqjZPAC3aX0hYiP0ivLMCb54tPcOAqIUBXARGBEiTmSxnNRJF6Ej4IvbRrXXOsSspwgbDwtKpKBe
-	ppaJj+JleQqvsLc0LA/4zoMy2iV+4HA8Z1hakbKcoJaSAucut1SnLF7VIbcoiuVA9ggaOqiSaJyfF
-	DApMZruQd2R/HIk6um9yraRtQynGX6wphasvFaed1NLVQ+Sz3Eu4eLCBr48a3X+eMNZzJqYNcKbqH
-	Mtrs4Wf3WmkxDJS1E0RUd9TBO1+dyh+StXlI4doAjqcCoaLDtGpxIOHjnZwoR/GpAbn59xQ8Rha++
-	7a5Be9RzQCSAiHl+hqlQ==;
+	List-Owner; bh=Br/uqUdjL9dCS/MUdja7N99DhTOEdC73r90g0+X4azU=; b=A4ixCsdJFxjOaF
+	9CWY4i7NTVEt7gpMNEPfWNw1S6KO8E4S0DjgGabGhJpQKguqNeTCc3KCjOXyzwxf8m8heIqiX8PdQ
+	hQVyj8phkiuijsmSuL7FkB920YfYpoHtSwXpFFB0/zQezj0F/flOf9QCqU2Bx67ehJjnMCxPGO7QL
+	kyiIacXcegQeIVGCBzeXxVomC7fAl1WaGo5nNIVaJg7PexHWs2fl12zX4r6pwy5WXFdx8liBJEFvd
+	go0k+z6TeNEOKcla25RhbbnFZVRuNgc2PIKbU1/1bvr91GqJaR/l9bxSJq4IAcoTymWJLtKAUM0jM
+	mjV/fhFJYYbTZeuuWecw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIcd-00000000AaK-1M6p;
-	Fri, 12 Apr 2024 15:15:23 +0000
-Received: from luna.linkmauve.fr ([82.65.109.163])
+	id 1rvIck-00000000Aeg-3LZu;
+	Fri, 12 Apr 2024 15:15:30 +0000
+Received: from [2a01:e0a:828:c7c0:e2d5:5eff:fe2d:8e8] (helo=luna.linkmauve.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvIcZ-00000000AXJ-0HAT;
-	Fri, 12 Apr 2024 15:15:21 +0000
+	id 1rvIca-00000000AXM-2mi4;
+	Fri, 12 Apr 2024 15:15:22 +0000
 Received: by luna.linkmauve.fr (Postfix, from userid 1000)
-	id 7773A10A2677; Fri, 12 Apr 2024 17:15:17 +0200 (CEST)
+	id 73A2C10A2675; Fri, 12 Apr 2024 17:15:17 +0200 (CEST)
 From: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 To: linux-kernel@vger.kernel.org
 Cc: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
@@ -53,16 +53,16 @@ Cc: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	iommu@lists.linux.dev
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add one VEPU121 to rk3588
-Date: Fri, 12 Apr 2024 17:15:11 +0200
-Message-ID: <20240412151515.837824-3-linkmauve@linkmauve.fr>
+Subject: [PATCH v3 1/2] =?UTF-8?q?media:=20dt-binding:=20media:=20Document?= =?UTF-8?q?=20rk3588=E2=80=99s=20VEPU121?=
+Date: Fri, 12 Apr 2024 17:15:10 +0200
+Message-ID: <20240412151515.837824-2-linkmauve@linkmauve.fr>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240412151515.837824-1-linkmauve@linkmauve.fr>
 References: <20240412151515.837824-1-linkmauve@linkmauve.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_081519_367085_5DCDB8AF 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20240412_081520_858649_6B96BA6D 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +79,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The TRM (version 1.0 page 385) lists five VEPU121 cores, but only four
-interrupts are listed (on page 24), and the driver would expose them all
-as different video nodes so only one of them is exposed for now.
+This encoder-only device is present four times on this SoC, and should
+support everything the rk3568 vepu supports (so JPEG, H.264 and VP8
+encoding).
+
+According to the TRM[1], there is also the VEPU580 encoder which
+supports H.264 and H.265, and various VDPU* decoders, of which only the
+VDPU981 is currently supported.  This patch describes only the VEPU121.
+
+[1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
 
 Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 29 +++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml   | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index 87b83c87bd55..5c6cc4cd81df 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -2488,6 +2488,35 @@ gpio4: gpio@fec50000 {
- 		};
- 	};
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+index 9d90d8d0565a..4c6cb21da041 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+@@ -15,8 +15,12 @@ description:
  
-+	/*
-+	 * Currently only one of the four JPEG encoders is exposed, this
-+	 * reduces the optimal throughput by four.
-+	 *
-+	 * Once the driver is made to expose all four devices as a single video
-+	 * node, the rest can be enabled again, see the full patch here:
-+	 * https://lore.kernel.org/linux-media/20240327134115.424846-1-linkmauve@linkmauve.fr/T/#m3a6df0ba15e4af40b998b0ff2a02b0dd0d730c8e
-+	 */
-+
-+	jpeg_enc0: video-codec@fdba0000 {
-+		compatible = "rockchip,rk3588-vepu121", "rockchip,rk3568-vepu";
-+		reg = <0x0 0xfdba0000 0x0 0x800>;
-+		interrupts = <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_JPEG_ENCODER0>, <&cru HCLK_JPEG_ENCODER0>;
-+		clock-names = "aclk", "hclk";
-+		iommus = <&jpeg_enc0_mmu>;
-+		power-domains = <&power RK3588_PD_VDPU>;
-+	};
-+
-+	jpeg_enc0_mmu: iommu@fdba0800 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdba0800 0x0 0x40>;
-+		interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_JPEG_ENCODER0>, <&cru HCLK_JPEG_ENCODER0>;
-+		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_VDPU>;
-+		#iommu-cells = <0>;
-+	};
-+
- 	av1d: video-codec@fdc70000 {
- 		compatible = "rockchip,rk3588-av1-vpu";
- 		reg = <0x0 0xfdc70000 0x0 0x800>;
+ properties:
+   compatible:
+-    enum:
+-      - rockchip,rk3568-vepu
++    oneOf:
++      - const: rockchip,rk3568-vepu
++      - items:
++          - enum:
++              - rockchip,rk3588-vepu121
++          - const: rockchip,rk3568-vepu
+ 
+   reg:
+     maxItems: 1
 -- 
 2.44.0
 
