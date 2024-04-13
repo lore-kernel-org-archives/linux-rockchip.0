@@ -4,103 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1CB4C4345F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 07:46:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 153A9C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 07:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pte1UubNIgACY0nvpJWxH9ERvdTSRhjERnw6vGdLT8M=; b=n33rBW5jQ9rroz
-	1WvRL3OJ7C2yzKXebmhyNqEib5xsTWaLsm7sFl984KO1KJune8YWQC6VeaQrs3lKNvbB4Z1VhkItb
-	EwC4+7qC6f2XLpGDzNN6NfJJrOwoumz5C+IaE3ME7sQrYE8mXlpg6xudFMapJ3cfs6lDH89FxSeUz
-	RdZp8ZQOe3NLzTp99LGhwJNNwI8kbtGxjM/joWdznPxdL3z8eJNY+y0M3qKebU/EYu8II50oerK5a
-	Z6cAeID/jnSbt2THVUCA1XNFQi+DWcB6sLHY6jk/7XxNAL0LFEvQlwyOmjCwXdJ1dGdoKJ5ZAoY5S
-	Lznw+msJEFAcBl85t8eQ==;
+	List-Owner; bh=0VX5aQ22b888p+gcpHPxPOw9rqYCI7GMQ3XnPEV4caA=; b=gT5q/Y2ITjTzR7
+	mu50RVTRmJozZU/vDxAigIEeLokoiZQYsSs2h+by1ebNfllrKMGw3SCxEad9tYLXW6sNXnRrSxirV
+	GK4BajDzgx80OaYYPGyUxtQxH1cgNm92Hku+CaP+AxDZe/4kHfzKjkq1QPVKMLpIZ8YqsLJTQjMLV
+	Zq9J6URJeHHqFE42whZDyjSlVCv3XVMSK5hhcPJGi0YIsPXcz/dNTvLzLM1cPgSJbgbn+zQZ5ZdRv
+	WWqmv4B30yrQvrEpj+Xy4M3tP2U1UT4CMMIXmr4CjJN57itRFL2hOyZepxTOx4lzNMIpk1v/GEX8x
+	kCc1UfExkA/fMtrqoW5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvY5m-00000002fSi-1YOc;
-	Sat, 13 Apr 2024 07:46:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rvYHB-00000002gdT-43Kd;
+	Sat, 13 Apr 2024 07:58:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvY5i-00000002fRV-2EgT;
-	Sat, 13 Apr 2024 07:46:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0A901611F9;
-	Sat, 13 Apr 2024 07:46:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 217B9C113CD;
-	Sat, 13 Apr 2024 07:46:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712994385;
-	bh=EFG57ur6VM2fF5I1LlhEiqOAY8BW8ZGEjVQbtumsv7o=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KcV0yQZq8BBvz+6/2T+U0noNlNdEpC1m8O9RsB5po3ycjFSDXHknKojiLQ5nSor9e
-	 aSS3vRBDaJsXfjW0E9EpjbZVjqCJFenjSbzSQwloiyc6zdvPvveywKIQLkckf9/Z1X
-	 joksWKHBW6FlSBaNe1d1iw9cP7JRowjrsK8q9OaRcX0i73oVomKxUtQrZy+jrMgx0u
-	 6SzubZSJrmhQaDHpJn4tJNXKbvWLSHCoApkrzGr1yFUFOXwOf2e7mO086lc/fgp93O
-	 ebJ1ImK/G7pnqjr15/Acb16tvMphJF7ETtZMP1FMa4nkO3rhh6SSKcmBaXubEcuEYD
-	 wpGtACdf7JZGA==
-Message-ID: <a3c8ae52-fd6e-49e3-9733-43a1927fdb94@kernel.org>
-Date: Sat, 13 Apr 2024 09:46:19 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add ArmSom Sige7 board
-To: Jianfeng Liu <liujianfeng1994@gmail.com>, devicetree@vger.kernel.org,
+	id 1rvYH7-00000002gbn-49ee;
+	Sat, 13 Apr 2024 07:58:15 +0000
+Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rvYGx-0001CH-RG; Sat, 13 Apr 2024 09:58:03 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Dragan Simic <dsimic@manjaro.org>, Dragan Simic <dsimic@manjaro.org>
+Cc: linux-i2c@vger.kernel.org, Andi Shyti <andi.shyti@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- heiko@sntech.de, sfr@canb.auug.org.au, weizhao.ouyang@arm.com
-References: <20240413032328.784142-1-liujianfeng1994@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240413032328.784142-1-liujianfeng1994@gmail.com>
+Subject: Re: [PATCH 13/18] i2c: rk3x: remove printout on handled timeouts
+Date: Sat, 13 Apr 2024 09:58:02 +0200
+Message-ID: <8358604.T7Z3S40VBb@diego>
+In-Reply-To: <af8ac48f10a1636ab2486aef91e01c3f@manjaro.org>
+References: <20240410112418.6400-20-wsa+renesas@sang-engineering.com>
+ <hgdhrf2jiovfxcppdtsq32sfbk4xuq7ewiwq4awwztj4mp3yez@kj6ixihkcxhe>
+ <af8ac48f10a1636ab2486aef91e01c3f@manjaro.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240413_004626_690196_E61860D3 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20240413_005814_064522_68865357 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,70 +58,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTMvMDQvMjAyNCAwNToyMywgSmlhbmZlbmcgTGl1IHdyb3RlOgo+IFNwZWNpZmljYXRpb246
-Cj4gICAgICAgICBSb2NrY2hpcCBSazM1ODggU29DCj4gICAgICAgICA0eCBBUk0gQ29ydGV4LUE3
-NiwgNHggQVJNIENvcnRleC1BNTUKPiAgICAgICAgIDgvMTYvMzJHQiBNZW1vcnkgTFBERFI0L0xQ
-RERSNHgKPiAgICAgICAgIE1hbGkgRzYxME1QNCBHUFUKPiAgICAgICAgIDLDlyBNSVBJLUNTSSBD
-b25uZWN0b3IKPiAgICAgICAgIDHDlyBNSVBJLURTSSBDb25uZWN0b3IKPiAgICAgICAgIDF4IE0u
-MiBLZXkgTSAoUENJZSAzLjAgNC1sYW5lcykKPiAgICAgICAgIDJ4IFJUTDgxMjUgMi41RyBFdGhl
-cm5ldAo+ICAgICAgICAgT25ib2FyZCBBUDYyNzVQIGZvciBXSUZJNi9CVDUKPiAgICAgICAgIDMy
-R0IvNjRHQi8xMjhHQiBlTU1DCj4gICAgICAgICBNaWNyb1NEIGNhcmQgc2xvdAo+ICAgICAgICAg
-MXggVVNCMi4wLCAxeCBVU0IzLjAgVHlwZS1BLCAxeCBVUzMuMCBUeXBlLUMKPiAgICAgICAgIDF4
-IEhETUkgT3V0cHV0LCAxeCB0eXBlLUMgRFAgT3V0cHV0Cj4gCj4gRnVuY3Rpb25zIHdvcmsgbm9y
-bWFsbHk6Cj4gICAgICAgICBVU0IyLjAgSG9zdAo+ICAgICAgICAgVVNCMy4wIFR5cGUtQSBIb3N0
-IChkZXBlbmQgb24ganVzdCBhcHBsaWVkIFVTQkRQIGRyaXZlclsxXSkKPiAgICAgICAgIE0uMiBL
-ZXkgTSAoUENJZSAzLjAgNC1sYW5lcykKPiAgICAgICAgIDJ4IFJUTDgxMjUgMi41RyBFdGhlcm5l
-dAo+ICAgICAgICAgZU1NQwo+ICAgICAgICAgTWljcm9TRCBjYXJkCj4gCj4gTW9yZSBpbmZvcm1h
-dGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgZm9sbG93aW5nIHdlYnNpdGUKPiAgICAgICAg
-IGh0dHBzOi8vZG9jcy5hcm1zb20ub3JnL2FybXNvbS1zaWdlNwo+IAo+IFsxXSBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9hbGwvMjAyNDA0MDgyMjUxMDkuMTI4OTUzLTEtc2ViYXN0aWFuLnJlaWNo
-ZWxAY29sbGFib3JhLmNvbS8KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaWFuZmVuZyBMaXUgPGxpdWpp
-YW5mZW5nMTk5NEBnbWFpbC5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvTWFrZWZpbGUgICAgICAgICB8ICAgMSArCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1
-ODgtYXJtc29tLXNpZ2U3LmR0cyB8IDcyNSArKysrKysrKysrKysrKysrKysKPiAgMiBmaWxlcyBj
-aGFuZ2VkLCA3MjYgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYXJtc29tLXNpZ2U3LmR0cwo+IAo+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+IGluZGV4IDdkYTE5OGJlOC4uMDYyNGM3Mjg0IDEw
-MDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPiArKysg
-Yi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gQEAgLTExMSw2ICsxMTEs
-NyBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTY4LXJvYy1wYy5kdGIKPiAg
-ZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU2OC1yb2NrLTNhLmR0Ygo+ICBkdGIt
-JChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTY4LXdvbGZ2aXNpb24tcGY1LmR0Ygo+ICBk
-dGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTY4LXdvbGZ2aXNpb24tcGY1LWlvLWV4
-cGFuZGVyLmR0Ym8KPiArZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1hcm1z
-b20tc2lnZTcuZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtY29v
-bHBpLWNtNS1ldmIuZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgt
-ZWRnZWJsZS1uZXU2YS1pby5kdGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJr
-MzU4OC1lZGdlYmxlLW5ldTZhLXdpZmkuZHRibwo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1hcm1zb20tc2lnZTcuZHRzIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazM1ODgtYXJtc29tLXNpZ2U3LmR0cwo+IG5ldyBmaWxlIG1vZGUgMTAw
-NjQ0Cj4gaW5kZXggMDAwMDAwMDAwLi5hYTQ1ZTYwYmIKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYXJtc29tLXNpZ2U3LmR0cwo+IEBA
-IC0wLDAgKzEsNzI1IEBACj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsg
-T1IgTUlUKQo+ICsKPiArL2R0cy12MS87Cj4gKwo+ICsjaW5jbHVkZSA8ZHQtYmluZGluZ3MvZ3Bp
-by9ncGlvLmg+Cj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9sZWRzL2NvbW1vbi5oPgo+ICsjaW5j
-bHVkZSAicmszNTg4LmR0c2kiCj4gKwo+ICsvIHsKPiArCW1vZGVsID0gIkFybVNvTSBTaWdlNyI7
-Cj4gKwljb21wYXRpYmxlID0gImFybXNvbSxzaWdlNyIsICJyb2NrY2hpcCxyazM1ODgiOwoKQmlu
-ZGluZ3MgY29tZSBiZWZvcmUgdXNlcnMuCgo+ICsKPiArCWFsaWFzZXMgewo+ICsJCW1tYzAgPSAm
-c2RoY2k7Cj4gKwkJbW1jMSA9ICZzZG1tYzsKPiArCX07Cj4gKwo+ICsJY2hvc2VuIHsKPiArCQlz
-dGRvdXQtcGF0aCA9ICJzZXJpYWwyOjE1MDAwMDBuOCI7Cj4gKwl9Owo+ICsKPiArCWFuYWxvZy1z
-b3VuZCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJhdWRpby1ncmFwaC1jYXJkIjsKPiArCQlsYWJlbCA9
-ICJyazM1ODgtZXM4MzE2IjsKPiArCj4gKwkJd2lkZ2V0cyA9ICJNaWNyb3Bob25lIiwgIk1pYyBK
-YWNrIiwKPiArCQkJICAiSGVhZHBob25lIiwgIkhlYWRwaG9uZXMiOwo+ICsKPiArCQlyb3V0aW5n
-ID0gIk1JQzIiLCAiTWljIEphY2siLAo+ICsJCQkgICJIZWFkcGhvbmVzIiwgIkhQT0wiLAo+ICsJ
-CQkgICJIZWFkcGhvbmVzIiwgIkhQT1IiOwo+ICsKPiArCQlkYWlzID0gPCZpMnMwXzhjaF9wMD47
-Cj4gKwkJaHAtZGV0LWdwaW8gPSA8JmdwaW8xIFJLX1BENSBHUElPX0FDVElWRV9ISUdIPjsKPiAr
-CQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJCXBpbmN0cmwtMCA9IDwmaHBfZGV0ZWN0
-PjsKPiArCX07Cj4gKwo+ICsJbGVkcyB7Cj4gKwkJY29tcGF0aWJsZSA9ICJncGlvLWxlZHMiOwo+
-ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZsZWRfcmdi
-X2c+Owo+ICsKPiArCQlsZWRfcmdiX2cgewoKTm8gdW5kZXJzY29yZXMgaW4gbm9kZSBuYW1lcy4K
-CkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Samstag, 13. April 2024, 08:44:41 CEST schrieb Dragan Simic:
+> On 2024-04-13 08:38, Wolfram Sang wrote:
+> >> Maybe it would be good to turn it into a debug message, instead of
+> >> simply removing it?  Maybe not all client drivers handle it correctly,
+> >> in which case having an easy way for debugging would be beneficial.
+> > 
+> > Hmm, but it still returns -ETIMEDOUT to distinguish cases?
+> 
+> Sure, but I think that having such an additional debug facility
+> can only help and save the people from adding temporary printk()s
+> while debugging.
+
+Also we're talking about two lines of code, I wouldn't call that bloat ;-)
+I was thinking about dev_dbg vs. removal too, but hadn't a clear
+favorite.
+
+So essentially Dragan is tipping the scale and I guess dev_dbg might be
+the nicer way to go.
+
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
