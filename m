@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F09BBC4345F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 06:06:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5EFC4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 06:06:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8zoJJ0GjBPiITIM1BKTJdf0RfmJ2cZel0X0h9kBtSn8=; b=fGKT4VSDPyviCv
-	tt57SRkWdKWwamCjAhyPTgTk7PF4O+3bc/xMaXLShplTlTK1jbat83yaQDTq6QMPr2wxjdT941XZM
-	upOmDqFFOPwZAPGoFr/6GgqYsMV1ghOy3zBswobrRELNyI/ju81VU7xY0pEO/xCPFyseqZlLAvuXw
-	GXroRIxMTxMtA6z4mmJ6Uo/UElEcJLkMQDDzlRAiOZMUo58I0a7wxNyFlydcpA2I7+giwsl7qp8y+
-	mdLyUfLrx9Uzq6lSCWd27XzOsKNFLkNTmCNf3Q1ashxx01ufA8kVbyaer11jNAFlvNWqrwNQymQt2
-	Bynu1Tzmqz9vG+0SAsmg==;
+	List-Owner; bh=xbfl+7MvDrPyurndLzJhBQhR5L7TtQn6Pm1JLISJQGY=; b=yj7hO/Ue2cVZHg
+	DCW7niCLxt8TR0YHxf3/jyaZI7HDPWLql1kpcWeP9nBMa35f3XW7zv7YqpSofOPWpAzJAviM7Eb10
+	Sb+ipmI6RJObgwZ8Eo5kY0Fw0AzCUJvnMu9iNnezN8oe9xRWjlY7deITCx3BRmSV/5mggmdDnub3y
+	DSyMFtsvcrb1jnJ0GP/vv08jkrwtK57F+ED5SDnaDkA4mTMon8veChGzu/nOTN03aadKtI4u7n6O6
+	gi1lYkfECKojXjTLVy0Sjb4MmjtC2wkojTcWoJyfuV9A/c74ZTnvWrcOjhAcu3/dGvVd8FlXqEUcL
+	1D4Nj/8ybGtxuOdOyCYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvWXA-00000002V7P-0xAb;
-	Sat, 13 Apr 2024 06:06:40 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rvWXI-00000002VAx-1I6T;
+	Sat, 13 Apr 2024 06:06:48 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvWX6-00000002V5r-2Ajn;
-	Sat, 13 Apr 2024 06:06:38 +0000
+	id 1rvWXC-00000002V7u-3bf5;
+	Sat, 13 Apr 2024 06:06:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 95430CE3C2D;
+	by sin.source.kernel.org (Postfix) with ESMTP id 749C5CE3C2D;
+	Sat, 13 Apr 2024 06:06:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80F6EC2BD11;
 	Sat, 13 Apr 2024 06:06:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B58EC113CD;
-	Sat, 13 Apr 2024 06:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1712988392;
-	bh=uRsytWM+Wij6OaLhlah01nbnk2oNUTDKgra0gaiRkC8=;
+	s=k20201202; t=1712988399;
+	bh=/zX5Xm2L8b+VZra1dDyJSa/ceyZK2JOrdzFqnq8r2HI=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Y0FvY6jIDOoTtXdioDPivFQs7D004ThZPfcnd8DDcbiLb7mu0HzfZpdsXWdx6pets
-	 A2oalL+1SRLIoW+SNGtKEtrkpiQnDV6s8aMn0fEnbNRVc+FRl6l6ElrRGHls6kkBhl
-	 DhdWA0NsvrVUgw0Pi6p1vP1VFQbK80gIl/8nJiTj/Q/C9jWzmrcHScOCgvAzC3ca8c
-	 7DbbrImRi3jqJxsK8TlN2QXDQke3Ya0Kkzgy5w+a5zFVhnfg9lMqyovyxH6GYKUQL2
-	 pJzBnA07gPU1bTUjIEdUH5RcG7Ebt1nLs6qEkiWTsbNoY4/Xk2qupbOOxAp/9m75W1
-	 YwwU7W9ADQF2Q==
+	b=arWYMHYpTj6Yp1ZCDS0ClfxXkjXkBhrfIuSxX3lORccNe1FA37EE0jEj2J3OMPC/P
+	 2xzgZ/1AX5Wo+pbH1K92h3fqm4DBAGswUfvgT1ZGsRowdkVqMyax89RlgLj4XgvceL
+	 PFpk/meyNfyYLWgQr1KFfA1dbtyPrHzepEgj8bSv7zogFBzzzu/OHsnj4aSb6GgMVh
+	 2I6J//Ddua5dWW75BzMUXG1C22IDScBhScN9GF/aqGW4yWQKnEMnldAKkOxHIdEBtH
+	 c/iNVI2ql/q7yTEhmhFL97kabOtChMZ+LroS0Ae5pliUYsWFN9uj5kaxknq5+o9wHb
+	 yYhiih+vMpa/A==
 From: Vinod Koul <vkoul@kernel.org>
 To: Kishon Vijay Abraham I <kishon@kernel.org>, 
  Rob Herring <robh@kernel.org>, 
@@ -52,16 +52,16 @@ Cc: devicetree@vger.kernel.org,
  Michal Tomek <mtdev79b@gmail.com>, Damien Le Moal <dlemoal@kernel.org>, 
  Jon Lin <jon.lin@rock-chips.com>, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-In-Reply-To: <20240411130150.128107-1-cassel@kernel.org>
-References: <20240411130150.128107-1-cassel@kernel.org>
-Subject: Re: [PATCH 0/2] rockchip pcie3-phy separate refclk support
-Message-Id: <171298838693.603171.15268474242938067689.b4-ty@kernel.org>
-Date: Sat, 13 Apr 2024 11:36:26 +0530
+In-Reply-To: <20240412125818.17052-1-cassel@kernel.org>
+References: <20240412125818.17052-1-cassel@kernel.org>
+Subject: Re: [PATCH v2 0/2] rockchip pcie3-phy separate refclk support
+Message-Id: <171298839307.603171.17043839494902342365.b4-ty@kernel.org>
+Date: Sat, 13 Apr 2024 11:36:33 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240412_230636_779439_C5E3CBB6 
-X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-CacheID: sfid-20240412_230643_146692_F47CC819 
+X-CRM114-Status: UNSURE (   6.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,10 +80,8 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 11 Apr 2024 15:01:46 +0200, Niklas Cassel wrote:
-> This series is based on: linux-phy phy/fixes
-> (Since there are other rockchip,pcie3-phy changes there that have not
-> yet reached mainline and which would otherwise have caused conflicts.)
+On Fri, 12 Apr 2024 14:58:14 +0200, Niklas Cassel wrote:
+> This series is based on: linux-phy phy/next
 > 
 > Hello all,
 > 
