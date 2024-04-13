@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04AA9C4345F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 15:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA81C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 15:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=xZDq8iL1/4/8WysKu1Y9K6HzMc7yQElF0MJhhp5ujfs=; b=LuRN5lRK627efJXOiG3ZTCcAJC
-	cwiv5ncdDcphlcFu4MbN4nL3fr3onQiZNDls7PJKLK5+2i7oYvn/xWJrnbgmwJBQjfgB2bFpIxTKv
-	cR/o6XP9JOm4WzqqHoOnP6koMPHg7vtxkjE0/3desQUvuTloegU3cpzMDP5hHvZ/NTHg2qBbsjHZ4
-	UTHfImpJhHGIeTLHe/Jsx0s43yjc04ytCCviBvDZ0saI6kUW7RrIdjcyyNWS/IeuZ560fDbToIvQJ
-	xG+jhuT+n4nh/EK4A2NdhXpmB/KKg/zixMk8bUdQuiRqUaMyuZOQtUOmypIYXc7q02T41ZozLTp6C
-	KtoO7Qyw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=maTWCKXr9SFZrRQgmaQ2wH0+BbHiw+q/xgPxIKkeTNA=; b=38NFrMGwpIgXm2
+	EIy3igA2NKdgyGj/M9ci1zYpi133UGlJSwO6eqWDsacAR6slnNpiI55BMDKQu3AKIHIsZe+nleOgt
+	ZNM1H306euqDtrzLh9aZztNhEN/TMc5KT6i+ijQ4QSeaBBqZfoRBr2pnEgxvjmoEyq30LXPGGR5hN
+	Fu3MoQmTms6plzsT1IHbwbt2muOr/FloSa+BM65vHYEa4Ya7wWzRIXYA9/gaeKJrcboLRRcQdBmqY
+	BMjuMfLtfMo8N3zPc6D0c9vEviWxNE8F3ORtCwMh+H37lBJfSk4+5AEpMcuDWkkXOeknVYF7bB/vY
+	YDaGqs/kytcK1B5XD5dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvfBg-00000003QUj-1Uq3;
-	Sat, 13 Apr 2024 15:21:04 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rvfFd-00000003R99-2MsN;
+	Sat, 13 Apr 2024 15:25:09 +0000
+Received: from smtp2-g21.free.fr ([212.27.42.2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvfBd-00000003QTT-2PKA;
-	Sat, 13 Apr 2024 15:21:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A4657CE0200;
-	Sat, 13 Apr 2024 15:20:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49BCFC113CD;
-	Sat, 13 Apr 2024 15:20:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713021651;
-	bh=e9sE+dyxMVm/wZqrlIHJYPdoNQMkHpKh3LVnji1NKjI=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=UPqPPQGsT44tnV1v64hDHxQL7MTvJtHYutVf0Z1GXK2weBYVXMUZFeq9DyZ6nZ7wv
-	 YqUH3CMUsWktkQrCtRpzOsQmp9Zytyn0bmgShOf4zdyCVKVLaM0IwOrY8yuttHwAZ3
-	 ejXiwByZgKTxL4q/ivOBrfhzuDKczp9qyhGUzkXbdP2msWtPRVE6n7gONhbRlEXvXx
-	 Wi8bHE6xLBBD8BZ6piTuvV8rD2I3BgAzIbRu0Oycg4zqv33qJlzE3wsGV+KYlpmSK8
-	 A/O9u+ifMeM/9Ndk2TRZ0X5CdyFW7Uik/1JS4RVSZmq4zXkge0ovdFBjJzrHN4pAiq
-	 mcQRc+/T1KuUg==
-Date: Sat, 13 Apr 2024 10:20:50 -0500
-MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Etienne Buira <etienne.buira@free.fr>
-Cc: Johan Jonker <jbx6244@gmail.com>, Conor Dooley <conor+dt@kernel.org>, 
- Dragan Simic <dsimic@manjaro.org>, shironeko <shironeko@tesaguri.club>, 
- Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
- linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, 
- linux-gpio@vger.kernel.org, Bartosz Golaszewski <brgl@bgdev.pl>
-In-Reply-To: <ZhqO-DEmh-6TeHrt@Z926fQmE5jqhFMgp6>
-References: <ZhqO-DEmh-6TeHrt@Z926fQmE5jqhFMgp6>
-Message-Id: <171302164916.1347779.204678982671031418.robh@kernel.org>
+	id 1rvfFZ-00000003R8T-04gx;
+	Sat, 13 Apr 2024 15:25:06 +0000
+Received: from localhost.localdomain (unknown [82.64.135.138])
+	by smtp2-g21.free.fr (Postfix) with ESMTPS id 7E63920039F;
+	Sat, 13 Apr 2024 17:24:44 +0200 (CEST)
+Received: by localhost.localdomain (Postfix, from userid 1000)
+	id DA82C40039; Sat, 13 Apr 2024 17:23:50 +0200 (CEST)
+Date: Sat, 13 Apr 2024 17:23:50 +0200
+From: Etienne Buira <etienne.buira@free.fr>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	shironeko <shironeko@tesaguri.club>,
+	Etienne Buira <etienne.buira@free.fr>,
+	Jonas Karlman <jonas@kwiboo.se>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] Avoid error message on rk3328 use
+Message-ID: <Zhqjhvq38oNH5-sR@Z926fQmE5jqhFMgp6>
+Mail-Followup-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	shironeko <shironeko@tesaguri.club>,
+	Etienne Buira <etienne.buira@free.fr>,
+	Jonas Karlman <jonas@kwiboo.se>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <ZhqO-DEmh-6TeHrt@Z926fQmE5jqhFMgp6>
+ <f245966c-267f-4159-a9ca-2561693d24d9@linaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f245966c-267f-4159-a9ca-2561693d24d9@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240413_082101_804032_01D6B72D 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20240413_082505_233108_CC94122E 
+X-CRM114-Status: GOOD (  23.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,45 +83,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
-On Sat, 13 Apr 2024 15:56:08 +0200, Etienne Buira wrote:
-> rockchip,rk3328-grf-gpio is handled as syscon, but syscon mandates
-> presence of gpio,syscon-dev node (or it will call dev_err() when probed).
-> Correct rk3328.dtsi and related documentation to follow syscon's
-> expectations.
+On Sat, Apr 13, 2024 at 05:09:33PM +0200, Krzysztof Kozlowski wrote:
+> On 13/04/2024 15:56, Etienne Buira wrote:
+> > rockchip,rk3328-grf-gpio is handled as syscon, but syscon mandates
 > 
-> Signed-off-by: Etienne Buira <etienne.buira@free.fr>
-> ---
->  .../devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml      | 2 ++
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi                        | 1 +
->  2 files changed, 3 insertions(+)
+> syscon does not need such property. I see it in gpio-syscon, but not in
+> syscon.
+
+gpio-syscon, indeed.
+
+> > presence of gpio,syscon-dev node (or it will call dev_err() when probed).
+> > Correct rk3328.dtsi and related documentation to follow syscon's
+> > expectations.
 > 
+> No, look at gpio-syscon driver. Parent is used.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Parent is used, but the next lines are:
+ret = of_property_read_u32_index(np, "gpio,syscon-dev", 1, &priv->dreg_offset);
+if (ret)
+	dev_err(...)
 
-yamllint warnings/errors:
+So if gpio,syscon-dev does not have at least 2 items (or is missing),
+dev_err will be called, 3 items for dev_dbg.
+Current tree displays a spurious "can't read the data register offset"
+message.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.example.dtb: gpio: 'gpio,syscon-dev' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/gpio/rockchip,rk3328-grf-gpio.yaml#
+> > 
+> > Signed-off-by: Etienne Buira <etienne.buira@free.fr>
+> > ---
+> >  .../devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml      | 2 ++
+> 
+> Please run scripts/checkpatch.pl and fix reported warnings. Then please
+> run `scripts/checkpatch.pl --strict` and (probably) fix more warnings.
+> Some warnings can be ignored, especially from --strict run, but the code
+> here looks like it needs a fix. Feel free to get in touch if the warning
+> is not clear.
 
-doc reference errors (make refcheckdocs):
+Will do, if we agree on the interest of patch.
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/ZhqO-DEmh-6TeHrt@Z926fQmE5jqhFMgp6
+> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi                        | 1 +
+> >  2 files changed, 3 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
+> > index d8cce73ea0ae..2c878e7db900 100644
+> > --- a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
+> > +++ b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
+> > @@ -38,6 +38,7 @@ required:
+> >    - compatible
+> >    - gpio-controller
+> >    - "#gpio-cells"
+> > +  - gpio,syscon-dev
+> 
+> No, not needed. And also incomplete - where is the property defined?
+> 
+> It does not look like you tested the bindings, at least after quick
+> look. Please run `make dt_binding_check` (see
+> Documentation/devicetree/bindings/writing-schema.rst for instructions).
+> Maybe you need to update your dtschema and yamllint.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+ditto
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Regards
 
 _______________________________________________
 Linux-rockchip mailing list
