@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 079A3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 13:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DBDC4345F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 13:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rlzQs7zFQUKVxh6+cbgWX/8q7UMCabHqKCrfRsFU26w=; b=qt5lPVdyRQ9O/M
-	IUGLq66cWX6Ovt2+Lvf0cgqwc2O2IdX528jZRtyQRG9s0eJie6EaZz7q44/L4+wFCRG2Su+AO6Rvv
-	yOV5mXKjsFRTmeRzatlG3ajiCkkUp7HhHKlwYWDyyFNPB0zrooMg01/K9r8AXiZ/6Osg7PzqUEWst
-	entB1+855qoUkpNEHOxHI6nqTGQr9DPZoOKFLVQodC5SNrVivk92T3BCk7yH93EMq1arwUHrL5j1U
-	58Bg8gRjFf+umLw4eBBOvFTueuL0Y5uMXr2m0IpIjF6UMmRYsUdIVTW8So0mDBCvPEDH3N7WFCiXP
-	HeAu4H8r8OHvONHqt+IQ==;
+	List-Owner; bh=i1q/eBN3UAfYV7ReUGbIdHh+rxI4DxMtiAS+OjBu21o=; b=Q7R3wzN0/u+gNx
+	FJaaOSu7mS2A1IVRpnVFBk91xbhny4UmrcUecbgEFC0Mx0dV+otVtCl1o8grsUZv+kxLB0U7ukgt8
+	wyCjbfL+gldLNEgUEr/jhpz06P7w8x9uiFjcXOyzNvbjr0MTwufZLXr1gfepRyoceMS9djHRtxwgE
+	taVfmsCO5z9QvgyC6XY8+2iFkTslLSkJESzYmE8ghdSY16ubvX8940LP5NjGMMUqoWVRgnQmVC0db
+	RnJZGpg5w9gOtWdo9nYUKutjiE/PEN4bDH/+LbrXev41BMUsQkUOPhis8efn4a0tsQBU88gnzjukg
+	DsJUfeGpcsb3JZfmUogg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvzyy-00000005XYQ-1GFa;
-	Sun, 14 Apr 2024 13:33:20 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1rvzzg-00000005Xg7-3s2Y;
+	Sun, 14 Apr 2024 13:34:04 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvzyv-00000005XVI-2Dov
+	id 1rvzze-00000005Xev-0DlK
 	for linux-rockchip@lists.infradead.org;
-	Sun, 14 Apr 2024 13:33:19 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a526a200879so10157166b.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 14 Apr 2024 06:33:07 -0700 (PDT)
+	Sun, 14 Apr 2024 13:34:03 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2d8a2cbe1baso26230541fa.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 14 Apr 2024 06:34:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713101585; x=1713706385; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1713101639; x=1713706439; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tnz2Ub9YHRcyx+OTx0bhxWC9MSKU9cWV4v6zit2//m0=;
-        b=IvUb98nOrrcrad66ZKgbwytKcB95bmCFqi7w1zO3yxbykoRoNjX4CiH9m+ho6JQfLP
-         VWHt/volpeoUMXODzcDtuwVC1xZ3+tUBkKYCAzFX7kxW+6y7iDejraKZlOP2rOPGVqxI
-         FDi37MK1lW1wDpenQoJYvmo1HIXnH6XxyZ9vzwuQ7Fd3N77bJQxG9GhM8Gxjaaef8jwF
-         hgoYRfH2PQ4vDiJL0MqU1N6ttLEE6zeQIlM8ouCfOtBZ410bbXce1mjG1SCwcnVboQjO
-         H3ICRw4NGt2Z6HVSPTw1TRvegzDf5jwaU9actOvcrLJlkqnMJVen/gW9GsxsMbmI76VJ
-         Z6jQ==
+        bh=Zmx2K7nXKGr1mb31pDUL/AUJ3uwpgGyg9CR68PwOhTU=;
+        b=HBKamd/fT6h4tYvxaZ+wwgb/UYMoDKfTgfUugtrBzcl1dkoKDUDXPXQTbMWhM1FQT4
+         qo9HdaHtEjieu2Ffkc5g8jsATreB0YqLVIbCwsdO1QdqmkW4ulshwu/7nDMEEU6lBiPm
+         4BJhswQRdr8aQmN+sel/QvvKRf7vxYrW1NqHg8oSUZLXFac9tnai4+BVbxWb8Nbe+jpc
+         pinAf6J6lAWKHklHXpk3heiA1jzaIe0yT7CWTFBvm1P/ijZD86hzpoxIMkM5RP8jByZs
+         /oDt1wbweGxlhHYNMs4rKzzi7/j4ZsCO1MpsjXH9DhqJyISEIBQEoV4E9/u7g259xV0K
+         77SQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713101585; x=1713706385;
+        d=1e100.net; s=20230601; t=1713101639; x=1713706439;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Tnz2Ub9YHRcyx+OTx0bhxWC9MSKU9cWV4v6zit2//m0=;
-        b=QxbWOBrF3TK6iT2g58/qnI0PbFd8osi7I0wRW/Env/xHoUKGxGREGfkwsymlQDZOVf
-         OB/79xWA4mFeik+6HntojLVpR/EFxtZfFlVjqlrQ7GrghrVOmKXATP51cdBSLNcMiMwP
-         Q0+T4cVxUDUcGMmxE1IoA8xi1SFRCEnYegTHe7s3PzltvGvmK5kGkjt7P6E9pq1zC15L
-         d4aaBQsvSIiyjMtZTxdtucXUNCz8vj5q+To8BXEMxtgEjTB4sfUPy0rkwTnRn1DJ4hkr
-         /IK8C3Z5FnJRLTVuKkz3nVx1etqVeDMC/EB6DDcp1w5jUQ8C5a7MWiKE6uweZb1zPGjp
-         2x3g==
-X-Forwarded-Encrypted: i=1; AJvYcCWsBPAbtbSJvVFApksqhHwL1wE+x+S4t7lxAUuFQw3W5xPb3Ui4pZNFUNoEHwdTqlFmxvC9YXVOCqjcrTNu/h5u8QYCyTMoLSJsv3nRWJ5mdZAI
-X-Gm-Message-State: AOJu0YzgP6ZO9QI8IRLIftTvHd3oWl/t4gcxcmeru1vqJ4qgzMeHvgib
-	iwcWs0s6QYdTpX386RBo6Hhy3+cVgbcZP+FVAj5NBYH/J9MlvwttxSlO+EkOTCo=
-X-Google-Smtp-Source: AGHT+IEJdQEMXrX7+ib29PFiYSciihOFHgT5L3QfI75G1ws6jpvAjzBzQvbITHRCnun6+1TlduP/EA==
-X-Received: by 2002:a17:906:d932:b0:a52:223e:2d33 with SMTP id rn18-20020a170906d93200b00a52223e2d33mr4428762ejb.25.1713101585464;
-        Sun, 14 Apr 2024 06:33:05 -0700 (PDT)
+        bh=Zmx2K7nXKGr1mb31pDUL/AUJ3uwpgGyg9CR68PwOhTU=;
+        b=FsZ4NwbOZPMH+ItUDPbVrpgCezR9U9FwEIc+PMZPuQ8QfFUb6VZS4yLVSSFH8vEgQX
+         V2MehOdx//Gzbl1SopN1dbvtuw/+bDI2+oR2+l7S623HfYUfYM4v+h+prrasfmAPyHRH
+         kCbIdVHRBrclBdUegEh2U122mIlg6pP8GAp7WgXRPQGMObOQVVW8s2mNqPhTB6aRPIts
+         3Q0T528WwO41dxhxMli2x2v8A5wjSyiFk/autlt8N0FLBK3GJdDVw8Rrxp+G8PPvS6Jz
+         eNrRu/xg9bhkRp02TWhkpFP1Vpc8X8CSrT9/qDI0XJv0KHI/T2jGGBW3BWihvQ9UUTXb
+         1vEg==
+X-Forwarded-Encrypted: i=1; AJvYcCW0Q/3u+k3WcIz71S4xg3R6A1XPddcYaZQSa8pYNJYNbNetqa6gK7bh6BCNhheUWk9yaJjpTQjtDXNDmzHddOLaljZIbgI8nYZFFbu8A4xU94ci
+X-Gm-Message-State: AOJu0YzliZ61Vp4sdv9prVQD7y9A943S7Chi35UsvQbC0vABlgIr6qyW
+	Lrp10ZA83YmLjrNM6Cxu8E/JKVbbRbrmtT7WLMTUHm6fS5lLEvIAciGAbiKci3c=
+X-Google-Smtp-Source: AGHT+IHfC+76QQeWUT3awNBpD0AM4a8Ggq96foJ1q82UG0m/rymsBQ09VdSFbNOMQlhCAGu25I3U+w==
+X-Received: by 2002:a19:5f50:0:b0:513:cf5e:f2ad with SMTP id a16-20020a195f50000000b00513cf5ef2admr5030718lfj.60.1713101638816;
+        Sun, 14 Apr 2024 06:33:58 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id h14-20020a1709070b0e00b00a518c69c4e3sm4193934ejl.23.2024.04.14.06.33.04
+        by smtp.gmail.com with ESMTPSA id du6-20020a17090772c600b00a4e40e48f8dsm4207702ejc.185.2024.04.14.06.33.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 14 Apr 2024 06:33:05 -0700 (PDT)
-Message-ID: <efd1eb32-afd6-4383-be45-89b0f71f118f@linaro.org>
-Date: Sun, 14 Apr 2024 15:33:02 +0200
+        Sun, 14 Apr 2024 06:33:58 -0700 (PDT)
+Message-ID: <b52410ae-878d-4c99-aaad-81d6cd61dd72@linaro.org>
+Date: Sun, 14 Apr 2024 15:33:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
 To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
  Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -76,7 +76,7 @@ To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240414131529.1730506-1-jonas@kwiboo.se>
- <20240414131529.1730506-3-jonas@kwiboo.se>
+ <20240414131529.1730506-2-jonas@kwiboo.se>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -123,10 +123,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240414131529.1730506-3-jonas@kwiboo.se>
+In-Reply-To: <20240414131529.1730506-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_063317_860480_F1BA7E87 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20240414_063402_194977_C26F2A2E 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,32 +144,34 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 14/04/2024 15:15, Jonas Karlman wrote:
+> Add devicvetree binding documentation for Radxa ZERO 3W/3E boards.
+> 
 > The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
 > computer based on the Rockchip RK3566, with a compact form factor and
 > rich interfaces.
 > 
-> The ZERO 3W and ZERO 3E are basically the same size and model, but
-> differ only in storage and network interfaces.
-> 
-> - eMMC (3W)
-> - SD-card (both)
-> - Ethernet (3E)
-> - WiFi/BT (3W)
-> 
-> This adds initial support for eMMC, SD-card, Ethernet, HDMI and USB.
-> 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->  .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
->  .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  26 +
->  .../boot/dts/rockchip/rk3566-radxa-zero3.dtsi | 443 ++++++++++++++++++
->  3 files changed, 510 insertions(+)
 
-How do you build your patches? That's rhetorical, because they cannot be
-built... Missing Makefile.
 
-Are you sure therefore that your dts pass dtbs_check? If this is not in
-Makefile, how did you run the command?
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+---
+
+This is an automated instruction, just in case, because many review tags
+are being ignored. If you know the process, you can skip it (please do
+not feel offended by me posting it here - no bad intentions intended).
+If you do not know the process, here is a short explanation:
+
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions, under or above your Signed-off-by tag. Tag is "received", when
+provided in a message replied to you on the mailing list. Tools like b4
+can help here. However, there's no need to repost patches *only* to add
+the tags. The upstream maintainer will do that for tags received on the
+version they apply.
+
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
 
 Best regards,
 Krzysztof
