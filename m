@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E028CC4345F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 18:37:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B58C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 18:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v+cVnuyMvMcxXs2Sy5VqvgLHDW7qS2BhC+tDJLhlNGA=; b=Mqw5WMrXfcNGovwM76QLLMeNfy
-	MFrCgFNyUZIDSNwLT4Bv5J9Xy5AO3OWgG0mdnEclhd0RTYFxH+mJL22KmP5XxZo2iNwX/our59ets
-	JAmogI0NZDPUUkSWNx9cVIZhjlm/GTdCiZtqGxC1O7vErWDoJWCZF1uncEcbthOLjlp+6VgRkna5l
-	QmMKWS9wdpRd7lyRLfbei9p7xzkg/P10O1aUvrhmNDTifzbB3lE7rDer+Rpe1IKXBD8LD6N98EQO1
-	5v+Qn7D8Dgdye/RBF2KJVd0VK37yr8zJeFa4sAnNgumraENCYurbwznolP9KYt5Xv9mg/+KZEknJI
-	zo04Em4A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=58yBy7sjZzjiY5ymxvCgLGZLIU1Orz/Rtg8OW5pxedA=; b=BvTnG8fhqUNOMP
+	vkp9kmBxHsX0HiiHaGtpn00xXdD/eQhgBoOOEEc9yTprzQXJsLX/p4CyYM9nJptVJ7dyaGu/gaaG4
+	BgeaDhgU7/QFDFe7cv5IFHRW0wa3d6OkDQ9XOMcRr/LcgYQ0NSlgkRprVZ6UZL7rcbzG44BbT0dr8
+	SNm0Ez2LJwJGwis19vu3WDggGDayzGCLeVPzH71ED5cb52l8o9HtbCv59m48KGCU0mc6B/je/zaIM
+	26n0T/cDFNUX3L82Gm62w8avSlvvAt3phkbH2rembtn+FPQKWN1G8I3yEWN2QrdSY2gdYHaEPU8yy
+	tumJgg49yOOuDQ+aZ5TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4jU-000000066Yf-0c0B;
-	Sun, 14 Apr 2024 18:37:40 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1rw4tR-000000067ef-32wV;
+	Sun, 14 Apr 2024 18:47:57 +0000
+Received: from forward500c.mail.yandex.net ([2a02:6b8:c03:500:1:45:d181:d500])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw4jQ-000000066Xk-3kxF;
-	Sun, 14 Apr 2024 18:37:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1713119855;
-	bh=j+w4fKNpU6T4aF5Mgw+E1TM+E5nsSpnjLA9+Ti3MC78=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=I5YBCHBZ/EUBkTOGjcoSw0qj3MxowkxRV8yVbzSLdsvh6mL64dfxGVnAtJPMmzKDw
-	 q9MbzHd5a+9HZZtqNlO6nwHQgh0yN1yfn9YjrQsyLf61/3Sm75SfXF8Ur+OJ037ibF
-	 nbRp0yi89f5y4xxPKVGNXXdq6gxUdCI3JDaZ0d2vPo4P0T6xlxDP9Pu39KUwlgib9D
-	 EwfjvUssXYkp+59esgTwuUQD0GWM1Sm0ec+dMrKFmH/jegvzfDh8ltd7Jo3udZIp+F
-	 Ah94KlTUcDIPLuN8K8ci8oKyn9TJAMnmz+qKytK2KAG0ZUSuEhnf+B9dhZnzPdriNu
-	 Y3K3EnPSvTPzQ==
-Received: from mercury (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id CA66437814A4;
-	Sun, 14 Apr 2024 18:37:34 +0000 (UTC)
-Received: by mercury (Postfix, from userid 1000)
-	id 656A1106134A; Sun, 14 Apr 2024 20:37:25 +0200 (CEST)
-Date: Sun, 14 Apr 2024 20:37:25 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org, sfr@canb.auug.org.au
-Subject: Re: [PATCH v5 2/2] dt-bindings: media: rockchip-vpu: Add rk3588
- vdpu121 compatible string
-Message-ID: <yixa62wexs2334p4splrm7ps3ck6jwzm5apjsrrixvgi72lpds@326nldsvg7nw>
-References: <20240413064608.788561-1-liujianfeng1994@gmail.com>
- <20240413064608.788561-3-liujianfeng1994@gmail.com>
+	id 1rw4tL-000000067bG-3qlf;
+	Sun, 14 Apr 2024 18:47:55 +0000
+Received: from mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:3e2b:0:640:4907:0])
+	by forward500c.mail.yandex.net (Yandex) with ESMTPS id 50D5D60DB6;
+	Sun, 14 Apr 2024 21:41:43 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id bfj4CAaOquQ0-YSWkSvTO;
+	Sun, 14 Apr 2024 21:41:41 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1713120101; bh=ncgw3ctShNCfiFpi/FXlW6n3ZHZ090VzmVPeVuJ4WG8=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=hx/WIMirvaFCrgVKL514C7kSdfwgUCLT9g1KU9X+RNRMBLfFYw8R3sVG8zDqFCx8M
+	 2UyesONdvD5RNSKLbPJ5/tefVCpL7ghXTyPJdfumJxC0wRlEiR77wKffMwVmc68QZe
+	 3NET90A/Xs/tX3c0BUmffpYeKTHkWj1L9Hp7HU2Y=
+Authentication-Results: mail-nwsmtp-smtp-production-main-37.myt.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <0facfa2a-bff7-4cf1-b43a-349bba2f2342@yandex.com>
+Date: Sun, 14 Apr 2024 20:41:37 +0200
 MIME-Version: 1.0
-In-Reply-To: <20240413064608.788561-3-liujianfeng1994@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] dt-bindings: display: rockchip,dw-hdmi: Fix
+ sound-dai-cells warning
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Mark Yao <markyao0591@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20240414151135.1774981-1-jonas@kwiboo.se>
+ <20240414151135.1774981-4-jonas@kwiboo.se>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <20240414151135.1774981-4-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_113737_097726_4BD7C920 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20240414_114752_151783_4B768684 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,92 +76,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1873720435909617172=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1873720435909617172==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="eab5rplsmu4hk3si"
-Content-Disposition: inline
 
+On 4/14/24 17:11, Jonas Karlman wrote:
+> The rockchip,dw-hdmi node can be used as a sound dai codec, however,
+> dtbs_check may report the following issue:
+> 
+>   hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
+>   from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+> 
+> Add a reference to dai-common.yaml and add the #sound-dai-cells prop to
+> resolve this warning.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
 
---eab5rplsmu4hk3si
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> v2: New patch to fix #sound-dai-cells warning
 
 Hi,
 
-On Sat, Apr 13, 2024 at 02:46:08PM +0800, Jianfeng Liu wrote:
-> Add Hantro G1 VPU compatible string for RK3588.
-> RK3588 has the same Hantro G1 ip as RK3568, which are both
-> known as VDPU121 in TRM of RK3568 and RK3588.
->=20
-> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+You are #4 that does an attempt on this subject.
+Coincidence with my patches??
+If other notifications could be fixed with the same amount of interest?
+Please be welcome to pick some other random Rockchip related ones.
+
+Johan
+
+===
+
+[PATCH v1 1/3] dt-bindings: display: add #sound-dai-cells property to rockchip dw hdmi
+https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
+
+[PATCH] dt-bindings: display: rockchip: add missing #sound-dai-cells to dw-hdmi
+https://lore.kernel.org/linux-rockchip/20240326172801.1163200-1-heiko@sntech.de/
+
+[PATCH 6/6] dt-bindings: display: rockchip: dw-hdmi: Add missing sound-dai-cells property
+https://lore.kernel.org/linux-rockchip/20231222-pinetab2-v1-6-e148a7f61bd1@mecka.net/
+
 > ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
->  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 3 +++
->  1 file changed, 3 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/=
-Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> index c57e1f488..4f667db91 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> @@ -31,6 +31,9 @@ properties:
->        - items:
->            - const: rockchip,rk3228-vpu
->            - const: rockchip,rk3399-vpu
-> +      - items:
-> +          - const: rockchip,rk3588-vdpu121
-> +          - const: rockchip,rk3568-vpu
-> =20
->    reg:
->      maxItems: 1
-> --=20
-> 2.34.1
->=20
->=20
-
---eab5rplsmu4hk3si
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmYcImQACgkQ2O7X88g7
-+poRKA/+KteRS0wlK8SQDVyHFdHTQnYvGGa05SYjADBfLtDGk+VS/gV/mcY31a+Q
-bXEjlVfIammDm6Psp5GVvcUthBkUfo2Vjnvdv+uVeERo0SDrY2ATTdoXUdjxKmaG
-XLLUybB9mYyFybFk+AbUYBikIgs86f3OL0rX/nSriP7p6imL9t/HQJ1lQCKDIqKo
-HVw+VhqBizOQgx6BVdCgga4hyR0zGRZ8mQKsMbrVo08t4UOLac2oSsA1HR7uGHrj
-Nm4uoAKjf8mU8I5VzpJqVquB7HfpOoz6T84kyLxTTMwpdckdh14UkAlBLWgS78Oj
-LoYoXRS76gLo9EgIpGzu/CIc2O5q+cvB24qbmI61Z4BbwRQHCgNNwExW/00c77AJ
-t409XUa7A65Sogki7woha9tCzdiprnVfXrzEyOrnXELIfKj5Z+Ygab/x/7R2vqLA
-2YtCL3NtRmhPVBOzthEVohQFiB/mD6WQQoNBo2Bl7yQcsr1VhEkhzIoFIBrvS4J5
-tJ1hPExlSFD3btUllmNtkDXnVGiqEXdi1D7kzpvZva/WnNhrG6Pb8gzi6z/mQhiM
-JGI7tcIyXE1fjAuKasuQZUNeDIJ6pbkt4DtQb6bgKetlPp3dKe8IMDLCvvqzTBwz
-9aXHEz9GImTaEvOIgeHZANmqRZ7RFWcpaulzfAXrrNAFgyPxa7Y=
-=g+at
------END PGP SIGNATURE-----
-
---eab5rplsmu4hk3si--
-
-
---===============1873720435909617172==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  .../bindings/display/rockchip/rockchip,dw-hdmi.yaml           | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> index af638b6c0d21..3285fff54416 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> @@ -15,6 +15,7 @@ description: |
+>  
+>  allOf:
+>    - $ref: ../bridge/synopsys,dw-hdmi.yaml#
+> +  - $ref: /schemas/sound/dai-common.yaml#
+>  
+>  properties:
+>    compatible:
+> @@ -124,6 +125,9 @@ properties:
+>      description:
+>        phandle to the GRF to mux vopl/vopb.
+>  
+> +  "#sound-dai-cells":
+> +    const: 0
+> +
+>  required:
+>    - compatible
+>    - reg
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1873720435909617172==--
-
