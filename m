@@ -4,142 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA8C1C04FF6
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 21:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672E0C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Apr 2024 23:57:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D+pqOTdZzrQKxwxjSTXR6ts4qoU36EoJQTn9VockIPY=; b=e199uJtNSAvtNf
-	vCkKmHQycNlIvMR/nz2ZEbqrZgFUIO447Uq81KKW+R/9fUqo19M8EU6fwq0dzhGXiAW1nyW2rnTpc
-	yDzKl7ak8TJ/71igEyI0cub4doX4DT7eb/qDn4VJ5RBtV+Mu2xqB702RqyYcy9od/q3ogezk+Z/MV
-	C76A2CdqszykKRcOfwM27+zONkB4uCojJXqL+NOXqEuTzVVfA9ExLx/jLzb501iVxHeUChWxGLPkn
-	yxaWTDbb0o35KAv4KS1p2xitclZKxjHodb3XkarjvWUoRsYYHzUQR5ppooOn3IJ+DRlXftN6OVgCi
-	vYHcA1LVklCi89+0zkaw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hi5ydbT29Dp0Q2EhU/T0qGwtXcH0bLu5i5gTa2yBHw0=; b=Kh3Xe/Nh7fgJOL
+	/tQsuY8TjGEQ+poIEhrZKbjAN/kiEf2Vo4oGLc0QoCfpkoUHnjcgZZd4Bzwh3zNdUzO+R8ASiavWR
+	yA0E+ltmZsdoY+Eyr7w3OGYDv1pzVN/1eHe5mygzl8EfdLxO5BuGomoeV2YfX0AlSqZ1m/IOHDuKh
+	GI83T3FtbQFFo+Lq+ECLFKU3R7/de8HFEqJqg4GIDNXlHLlYjmVm+C6kvW54Bgxy6ae4mOxVrpZCz
+	rPM3P3122jY2/eHv82bDQmFNuPU67pyQd4ehIJTxdDgkvcJ9wAF1t4z6I60EoOcMFUAeU8mCEg07Z
+	ccF3kgtrGNi64CG9QAcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvkq0-00000003xwe-0Tzf;
-	Sat, 13 Apr 2024 21:23:04 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1rvnET-00000004Doi-0kqV;
+	Sat, 13 Apr 2024 23:56:29 +0000
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rvkpv-00000003xv9-24jg
-	for linux-rockchip@lists.infradead.org;
-	Sat, 13 Apr 2024 21:23:02 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-516d727074eso2631026e87.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 13 Apr 2024 14:22:55 -0700 (PDT)
+	id 1rvnEQ-00000004Dnk-1uwf;
+	Sat, 13 Apr 2024 23:56:28 +0000
+Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-5a4930d9c48so1033208eaf.1;
+        Sat, 13 Apr 2024 16:56:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713043374; x=1713648174; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=fQGJpaWsjUM7AHqikTaGEm8A9+HIjPT53LC7Bj6lY+U=;
-        b=cU5CWKFMwY/ZmInxNqVYRag7a48P87jiX4TLlaWF5mTq7uDbHJzYP71i6gbWqdrT4w
-         80JvQeaibDc82W7dzByFp7hYb1DtDF1WQ6EedU3z3CYlGojs5MRQHdhxac17Zaiu8t23
-         UIThgT/FeVBFUhV9Ek4l3EvZ0STFy0pPalq3D8Cwwsq1L9qTVMO+/MV52Ureh7iC5q4E
-         byXnQVSgHsgCdKG4X3YkzPVSdKethjDnuzRD5iaUjoTpSZN4Ve0mGeGaXgp8E09I0Ez2
-         8pZloBuY2sqfXu7q57LIqSrzvonYHaNl5mJjKFEdaJufTzr4uehG9Rcf5OvXJrajX6Ws
-         G1gg==
+        d=gmail.com; s=20230601; t=1713052581; x=1713657381; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qlo8iiW9XzNbwgCxhCI3oz9F/KupitoTXB2VwtVn9QI=;
+        b=DJEk4n0e9umtnRvQswam1SmOKrisWuc3sxWXE509K6a7zORAu2Suk7HqGZO78KW9R1
+         6pIV9qkYcTePnZPLg+0KD+RGy6qzpL+EF6fYGXkRLmk0oLvXtOGBM1Wpy4XFNqW2tf4C
+         nUMDFzuwzxriWflanADOrGhONik63YNZ1EKAYA0zEJVv1MNqDd4htHi7vO4u8WdspPIc
+         ccGTR7fY65p4xeng+Eyb3/6MCO1rved2jNw+H2Wjt16Zjj02lMU4cBZbqWpJBvq37+80
+         ZvCqTE66d5L4/cf8lCRfOGaxbqkTKatQIOMD5Dao88THiblZ8iJHOaoIUwzp50V5BobM
+         D8VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713043374; x=1713648174;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fQGJpaWsjUM7AHqikTaGEm8A9+HIjPT53LC7Bj6lY+U=;
-        b=UCmTcpcEjzPsR6nfuMVsaA6xqpbnpEFj4b6VVE6UaCe1lPxoF7seTgrg7L9ak+M8B1
-         CQJUesHcq0bL1O6SYlzO5xRCwyYfzX44keW/cRTWvRyDMidSW1KO52BfrLizO99XpHRU
-         h7P8YoJRuQK2vXFNJb4AvhIYE3Qep62wXfBunnVv6P4vgEkp9jeg9S65Ifqy/irdq0cA
-         P8L3VQ6evzm+e8Yie1E4W6p+CbTLHfEnC1MSaIluv3je08e3LMMwjwpVOk3AiKAgqXbI
-         cBHvZZMApE8mLYC4WbFKne0PkzYICbGOhH8u+SkKMExIL8FDIeyC1iKabRXVkVgQIceG
-         urPA==
-X-Forwarded-Encrypted: i=1; AJvYcCXWUrMoNtJKZY4lJTGJDT5H2P+HIfts5od8pnJtGjaU69pppf+wAQR/Oqkd1mFEZx1quvGLH1WFdQ7/qeBsCsdSTi332oAP1OyyrFNH/XbzYd4U
-X-Gm-Message-State: AOJu0Yyi7r+vHeqC1wxe4/jpYiGbhVgz/rMmG/TyIUw8IhTrS99s7IGf
-	3jeqhMeKWhZstB+wstad+WM/fs2bcHYzqmiV3qvBp6r6FxKPGgrv/vTmQIwXuok=
-X-Google-Smtp-Source: AGHT+IEpkgGV4cfM8OxwVMC43mCKJlrDMrXOzRC0ZAFr0X9Vk8KLbuzMNlMAoySsyCTi3Vc2bDE5xg==
-X-Received: by 2002:a05:6512:3d19:b0:518:6ee7:b988 with SMTP id d25-20020a0565123d1900b005186ee7b988mr3837518lfv.55.1713043374088;
-        Sat, 13 Apr 2024 14:22:54 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id bq3-20020a170906d0c300b00a522f867697sm2533293ejb.132.2024.04.13.14.22.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 13 Apr 2024 14:22:53 -0700 (PDT)
-Message-ID: <d0839eec-7a92-4834-b47a-be0ba1908c1a@linaro.org>
-Date: Sat, 13 Apr 2024 23:22:51 +0200
+        d=1e100.net; s=20230601; t=1713052581; x=1713657381;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qlo8iiW9XzNbwgCxhCI3oz9F/KupitoTXB2VwtVn9QI=;
+        b=rZQKlwM7dYZA9lVf4l3/VxgqvAaucdc1ciPlXx2X/LaMIx8JWcwo6QEE72HtfEaLZA
+         VNouRJUvGPyxXfrDPNo1h4ukeIeUzswfqpkpNpSd7cUjVabJBRTBihRbQ2ujostk+TUT
+         vmXVvY1IHLFqd1ys0tV0pONW8avHGM7SSm6p9C5A1GYxslQPmLGD45Y7iLCw71gvwLyk
+         EhAIS5sjy+P9ntXnsgIQTUjfErPfPK5CsjWV9ytzohtQY0iWsTDUAMJCeTvcZtSlJ1Og
+         HTo+e/EfbLs4V739NiMg22dJz4jRdpUHiFtAkoJJCWGfW+0vJhatHsv3wig3NOFGa4if
+         pORQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVsW8BTQmxikWKJ4aNY6AlcVpcfQwmUuYvACV24TSTbMBWUm7Sh1vnGb84H1RimV4ACSy9LOyPchg8ZL5VWwsDKujt3gyXqi3QwMDu9O/oUA/whznY=
+X-Gm-Message-State: AOJu0YxlQckIPpdIn3UDnlPOK6kZYBYdJ8pq0CV1YNK+Ke4emaFjvAS0
+	hVraeh99aR8IseLN40HLzfAULEunjom08M84XXHJbuqUjtI4jYRq
+X-Google-Smtp-Source: AGHT+IHZLfmH4vSy+8/9v9lUfqHzU8MYj0rSF/HuiKH+LCO8N1xSWPVyVEi/YRDpE7ZqFqyuslnwGw==
+X-Received: by 2002:a05:6808:2204:b0:3c6:394:2334 with SMTP id bd4-20020a056808220400b003c603942334mr7431610oib.2.1713052580988;
+        Sat, 13 Apr 2024 16:56:20 -0700 (PDT)
+Received: from SDF-ThinkCentre-M93p.localdomain (c-76-17-255-148.hsd1.mn.comcast.net. [76.17.255.148])
+        by smtp.googlemail.com with ESMTPSA id x64-20020a25ce43000000b00dc74258241fsm1375829ybe.45.2024.04.13.16.56.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 13 Apr 2024 16:56:20 -0700 (PDT)
+From: Shimrra Shai <shimmyshai00@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>,
+	Max Schwarz <max.schwarz@online.de>,
+	Paul Diefenbaugh <paul.s.diefenbaugh@intel.com>,
+	Niyas Sait <niyas.sait@huawei.com>,
+	Shimrra Shai <shimmyshai00@gmail.com>
+Subject: [PATCH 0/0] [v2] Add ACPI binding to Rockchip RK3xxx I2C bus
+Date: Sat, 13 Apr 2024 19:03:55 -0500
+Message-Id: <20240414000355.10984-1-shimmyshai00@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: =?UTF-8?Q?Re=3A_=5BPATCH_v3_1/2=5D_media=3A_dt-binding=3A_media=3A_?=
- =?UTF-8?Q?Document_rk3588=E2=80=99s_VEPU121?=
-To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>, linux-kernel@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Dragan Simic <dsimic@manjaro.org>,
- Shreeya Patel <shreeya.patel@collabora.com>,
- Chris Morgan <macromorgan@hotmail.com>, Andy Yan <andy.yan@rock-chips.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux.dev
-References: <20240412151515.837824-1-linkmauve@linkmauve.fr>
- <20240412151515.837824-2-linkmauve@linkmauve.fr>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
- 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
- D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240412151515.837824-2-linkmauve@linkmauve.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240413_142259_659692_E16494AC 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240413_165626_545404_BEDE4A9D 
+X-CRM114-Status: GOOD (  37.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,27 +94,444 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/04/2024 17:15, Emmanuel Gil Peyrot wrote:
-> This encoder-only device is present four times on this SoC, and should
-> support everything the rk3568 vepu supports (so JPEG, H.264 and VP8
-> encoding).
-> 
-> According to the TRM[1], there is also the VEPU580 encoder which
-> supports H.264 and H.265, and various VDPU* decoders, of which only the
-> VDPU981 is currently supported.  This patch describes only the VEPU121.
-> 
-> [1] https://github.com/FanX-Tek/rk3588-TRM-and-Datasheet
-> 
-> Signed-off-by: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+Hi,
 
-So you ignored all the tags? No one will pick up your patch if you are
-going to keep ignoring them...
+This is a second version of the patch that I submitted a few weeks ago for
+adding an ACPI binding for I2C bringup on the Rockchip RK3xxx
+(specifically, RK3588) platforms for compatibility with the newfangled
+TianoCore EDK2 firmwares. This was previously discussed here:
 
-Subject: drop the second, redundant "media".
+https://lore.kernel.org/linux-kernel/20240321173447.15660-1-shimmyshai00@gmail.com/
 
-Best regards,
-Krzysztof
+After some convo with the maintainer of the firmware, it was suggested I
+should have a kernel patch ready and approvable here before he can amend
+the ACPI tables in it. The following patch accepts an ACPI table entry for
+the I2C busses that looks like this:
 
+  Device (I2Cx) {
+    Name (_HID, "RKCP3001")
+    Name (_CID, "PRP0001")
+    Name (_UID, x)
+    Name (_CCA, 0)
+
+    Method (_CRS, 0x0, Serialized) {
+      Name (RBUF, ResourceTemplate() {
+        Memory32Fixed (ReadWrite, 0xfea90000, 0x1000)
+        Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 350 }
+        ClockInput (198000000, 1, Hz, Fixed, "\\_SB_.CRU_", PCLK_I2Cx)
+        ClockInput (198000000, 1, Hz, Fixed, "\\_SB_.CRU_", BCLK_I2Cx)
+      })
+      Return (RBUF)
+    }
+    Name (_DSD, Package () {
+      ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+      Package () {
+        Package (2) { "compatible", Package (2) { "rockchip,rk3588-i2c", "rockchip,rk3399-i2c" } },
+        Package (2) { "i2c,clk-rate", 198000000 },
+        Package (2) { "rockchip,bclk", 198000000 },
+        Package (2) { "#address-cells", 1 },
+        Package (2) { "#size-cells", 0 },
+      }
+    })
+  }
+
+where "x" above in the name, _UID, and bindings should be replaced with the
+bus number (0..8). There was some debate about how to specify the clock
+rates in the first proposed version of this patch - in particular,
+regarding the inclusion of the "i2c,clk-rate" and "rockchip,bclk" settings
+in the _DSD section above. It was determined through correspondence with
+the firmware team that the reason for the inclusion of these settings was
+for compatibility with Microsoft Windows, but the kernel team here
+suggested it would be better to use ClockInput bindings, introduced as of
+ACPI 6.5. Hence, this patch is based on the assumption such bindings are
+available and is designed to fetch the clock rates from them. Note how the
+above example maintains both methods of specifying rates in parallel; this
+is also documented in the patch and it is noted that the _DSD settings
+should NOT be used in the kernel. The code to use ClockInput bindings is
+based off a base patch suggested by Niyas Sait, as in the linked thread.
+
+Signed-off-by: Shimrra Shai <shimmyshai00@gmail.com>
+---
+
+ Documentation/firmware-guide/acpi/dsd/soc/general.rst | 32 +++++++++
+ Documentation/firmware-guide/acpi/dsd/soc/soc-i2c.rst | 59 +++++++++++++++++
+ drivers/acpi/Makefile                                 |  1 +
+ drivers/acpi/acpi_clk.c                               | 93 +++++++++++++++++++++++++++
+ drivers/i2c/busses/i2c-rk3x.c                         | 79 ++++++++++++++++++++---
+ include/linux/acpi.h                                  |  8 +++
+ 6 files changed, 262 insertions(+), 10 deletions(-)
+ 
+diff --git a/Documentation/firmware-guide/acpi/dsd/soc/general.rst b/Documentation/firmware-guide/acpi/dsd/soc/general.rst
+new file mode 100644
+index 000000000..9c287e838
+--- /dev/null
++++ b/Documentation/firmware-guide/acpi/dsd/soc/general.rst
+@@ -0,0 +1,32 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++==========================================
++System-on-Chip (SoC) facility descriptions
++==========================================
++
++These documents describe how to create ACPI profiles for devices composed into
++system-on-chip (SoC) architectures. Currently, we only describe the options
++availed in the _DSD block for select platforms; other considerations are not
++yet applied. The inspiration for these documents are based around the advent
++(as of March 2024) of hefty, non-Apple ARM SoC systems such as the Rockchip
++RK3588 and newer chips that have desktop-like performance and thus are prime
++candidates for a UEFI-based desktop-like boot system with the goal being to
++deliver the same user-friendly ease of loading operating systems as on the
++Intel x86 sphere. Open-source UEFI-based firmware engines, such as TianoCore
++[1], mean it is possible on such platforms for the open-source developer to
++control both firmware and kernel simultaneously, which is not the case for
++the situation with Intel-based PC boards where boards are provided with pre-
++baked, vendor-selected and opaque firmwares.
++
++The description of ACPI usage here is not meant to suggest that ACPI replace
++Device Tree altogether for such SoCs; rather, we recognize that given they
++often will have a variety of applications that may include embedded usage where
++that more hard-wired boot loader setups such as U-Boot still shine, the
++maintenance of ACPI and DTB-based configuration options should be in parallel,
++and it may be possible for the same firmware to deploy both options.
++
++References
++==========
++
++[1] EDK2-RK3588 port of TianoCore EDK2 firmware.
++    https://github.com/edk2-porting/edk2-rk3588
+diff --git a/Documentation/firmware-guide/acpi/dsd/soc/soc-i2c.rst b/Documentation/firmware-guide/acpi/dsd/soc/soc-i2c.rst
+new file mode 100644
+index 000000000..0e6c5df65
+--- /dev/null
++++ b/Documentation/firmware-guide/acpi/dsd/soc/soc-i2c.rst
+@@ -0,0 +1,59 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=================
++I2C buses on SoCs
++=================
++
++This document describes the ACPI _DSD parameters currently being employed for
++Inter-Integrated Circuit (I2C) buses in the Linux kernel. It is based off the
++conventions used in the Rockchip RK3588 firmware project [1], which is also the
++first SoC documented here.
++
++General considerations
++======================
++
++For general use, we recommend indicating I2C busses in the ACPI firmware table
++in the following manner. First, they should be named I2Cx, where "x" is the bus
++index, and that index should also be used for the _UID component, e.g. on
++Rockchip RK3588 (see below), we use:
++
++  Device (I2Cx) {
++    Name (_HID, "RKCP3001")
++    Name (_CID, "PRP0001")
++    Name (_UID, x)
++    Name (_CCA, 0)
++
++    ...
++  }
++
++Interrupts should be specified in the usual ACPI manner. Likewise, as of ACPI
++6.5, clock rates should be given in ClockInput resources. Parameters specific to
++the Rockchip and I2C devices are indicated in the _DSD block as given below.
++The parameters are a curated selection from the Device Tree Blob (DTB)
++representation.
++
++_DSD parameters for different SoCs
++==================================
++
++Rockchip RK3588
++---------------
++
++The following parameters are indicated here for the I2C on Rockchip RK3588.
++
++- i2c,clk-rate 	Describe the pclk rate for the I2C bus, in Hz.
++- rockchip,bclk	Describe the bclk rate for the I2C bus, in Hz.
++
++These two parameters describe the peripheral (pclk) and bus (bclk) clock rates
++for the I2C bus. It is NOT recommended to use these clock rate parameters in the
++kernel, as they are intended for compatibility with Microsoft Windows. They are
++ONLY mentioned here for documentation's sake. Instead, the method mentioned
++earlier should be used to provide the clock rates; in the current revisions of
++the i2c-rk3x driver, the first clock resource appearing (resource 0) will be
++treated as giving the bclk rate, and the second clock resource (resource 1)
++appearing will be treated as giving the pclk rate.
++
++References
++==========
++
++[1] EDK2-RK3588 port of TianoCore EDK2 firmware.
++    https://github.com/edk2-porting/edk2-rk3588
+diff --git a/drivers/acpi/Makefile b/drivers/acpi/Makefile
+index 8cc8c0d9c..26343ffce 100644
+--- a/drivers/acpi/Makefile
++++ b/drivers/acpi/Makefile
+@@ -48,6 +48,7 @@ acpi-$(CONFIG_PCI)		+= pci_root.o pci_link.o pci_irq.o
+ obj-$(CONFIG_ACPI_MCFG)		+= pci_mcfg.o
+ acpi-$(CONFIG_PCI)		+= acpi_lpss.o
+ acpi-y				+= acpi_apd.o
++acpi-y				+= acpi_clk.o
+ acpi-y				+= acpi_platform.o
+ acpi-y				+= acpi_pnp.o
+ acpi-y				+= power.o
+diff --git a/drivers/acpi/acpi_clk.c b/drivers/acpi/acpi_clk.c
+new file mode 100644
+index 000000000..fbb1c4a4a
+--- /dev/null
++++ b/drivers/acpi/acpi_clk.c
+@@ -0,0 +1,93 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * drivers/acpi/acpi_clk.c - ACPI device clock resources support.
++ *
++ * (C) 2023 Niyas Sait <niyas.sait@huawei.com>
++ * (C) 2024 Shimrra Shai <shimmyshai00@gmail.com>
++ *
++ */
++
++#include <linux/acpi.h>
++#include <linux/clk-provider.h>
++#include <linux/clkdev.h>
++
++struct acpi_clk_lookup {
++	u16 freq_div;
++	u32 freq_num;
++	u8 scale;
++	u8 mode;
++	int index;
++	bool found;
++	int n;
++};
++
++static uint64_t calc_clock_rate(u32 freq_num, u16 freq_denom, u8 scale)
++{
++	uint32_t scale_factor[3] = { 1, 1000, 1000000 };
++	uint64_t rate = 0;
++
++	if (scale < ARRAY_SIZE(scale_factor))
++		rate = DIV_ROUND_UP(freq_num * scale_factor[scale], freq_denom);
++
++	return rate;
++}
++
++static int acpi_populate_clk_lookup(struct acpi_resource *ares, void *data)
++{
++	struct acpi_clk_lookup *lookup = data;
++	struct acpi_resource_clock_input *resource = &ares->data.clock_input;
++
++	if (ares->type != ACPI_RESOURCE_TYPE_CLOCK_INPUT)
++		return 1;
++
++	if (lookup->n++ != lookup->index)
++		return 1;
++
++	lookup->mode = resource->mode;
++	lookup->freq_div = resource->frequency_divisor;
++	lookup->freq_num = resource->frequency_numerator;
++	lookup->scale = resource->scale;
++	lookup->found = true;
++
++	return 1;
++}
++
++struct clk *acpi_clk_register(struct acpi_device *adev, int index,
++			      const char *name)
++{
++	struct acpi_clk_lookup lookup;
++	struct list_head list;
++	struct clk *clk;
++	uint64_t rate;
++	int ret;
++
++	INIT_LIST_HEAD(&list);
++
++	memset(&lookup, 0, sizeof(lookup));
++	lookup.index = index;
++
++	ret = acpi_dev_get_resources(adev, &list, acpi_populate_clk_lookup,
++				     &lookup);
++	if (ret < 0)
++		return ERR_PTR(-ENODEV);
++
++	acpi_dev_free_resource_list(&list);
++
++	/* register fixed clocks only */
++	if (!lookup.found || lookup.mode != 0)
++		return ERR_PTR(-EINVAL);
++
++	rate = calc_clock_rate(lookup.freq_num, lookup.freq_div, lookup.scale);
++
++	const char *regname = name;
++
++	if (name == NULL)
++		regname = dev_name(&adev->dev);
++
++	clk = clk_register_fixed_rate(&adev->dev, regname, NULL, 0, rate);
++	clk_register_clkdev(clk, regname, NULL);
++
++	return clk;
++}
++EXPORT_SYMBOL_GPL(acpi_clk_register);
++
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 086fdf262..1aaf2daba 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -17,6 +17,7 @@
+ #include <linux/io.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
++#include <linux/acpi.h>
+ #include <linux/spinlock.h>
+ #include <linux/clk.h>
+ #include <linux/wait.h>
+@@ -1235,6 +1236,15 @@ static const struct of_device_id rk3x_i2c_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rk3x_i2c_match);
+ 
++#ifdef CONFIG_ACPI
++/* for RK3588 and at least when loaded with EDK2-RK3588 Tianocore firmware */
++static const struct acpi_device_id rk3x_i2c_acpi_match[] = {
++	{ .id = "RKCP3001", .driver_data = (kernel_ulong_t)&rk3399_soc_data },
++	{ },
++};
++MODULE_DEVICE_TABLE(acpi, rk3x_i2c_acpi_match);
++#endif
++
+ static int rk3x_i2c_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+@@ -1243,6 +1253,8 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 	int ret = 0;
+ 	int bus_nr;
+ 	u32 value;
++	u64 value64;
++	char name[64];
+ 	int irq;
+ 	unsigned long clk_rate;
+ 
+@@ -1250,8 +1262,12 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 	if (!i2c)
+ 		return -ENOMEM;
+ 
+-	match = of_match_node(rk3x_i2c_match, np);
+-	i2c->soc_data = match->data;
++	if (acpi_disabled) {
++		match = of_match_node(rk3x_i2c_match, np);
++		i2c->soc_data = match->data;
++	} else {
++		i2c->soc_data = device_get_match_data(&pdev->dev);
++	}
+ 
+ 	/* use common interface to get I2C timing properties */
+ 	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
+@@ -1266,6 +1282,9 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 
+ 	i2c->dev = &pdev->dev;
+ 
++	if (!acpi_disabled)
++		ACPI_COMPANION_SET(&i2c->adap.dev, ACPI_COMPANION(&pdev->dev));
++
+ 	spin_lock_init(&i2c->lock);
+ 	init_waitqueue_head(&i2c->wait);
+ 
+@@ -1273,8 +1292,25 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 	if (IS_ERR(i2c->regs))
+ 		return PTR_ERR(i2c->regs);
+ 
+-	/* Try to set the I2C adapter number from dt */
+-	bus_nr = of_alias_get_id(np, "i2c");
++	if (acpi_disabled) {
++		/* Try to set the I2C adapter number from dt */
++		bus_nr = of_alias_get_id(np, "i2c");
++	} else {
++		ret = acpi_dev_uid_to_integer(ACPI_COMPANION(&pdev->dev),
++					      &value64);
++		if (ret) {
++			dev_err(&pdev->dev, "Cannot retrieve UID\n");
++			return ret;
++		}
++
++		if (value64 < INT_MAX) {
++			bus_nr = (int) value64;
++		} else {
++			/* shouldn't happen!!! */
++			dev_err(&pdev->dev, "Too big UID\n");
++			return -EINVAL;
++		}
++	}
+ 
+ 	/*
+ 	 * Switch to new interface if the SoC also offers the old one.
+@@ -1325,13 +1361,36 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, i2c);
+ 
+-	if (i2c->soc_data->calc_timings == rk3x_i2c_v0_calc_timings) {
+-		/* Only one clock to use for bus clock and peripheral clock */
+-		i2c->clk = devm_clk_get(&pdev->dev, NULL);
+-		i2c->pclk = i2c->clk;
++	if (acpi_disabled) {
++		if (i2c->soc_data->calc_timings == rk3x_i2c_v0_calc_timings) {
++			/* Only one clock to use for bus clock and peripheral
++			 * clock
++			 */
++			i2c->clk = devm_clk_get(&pdev->dev, NULL);
++			i2c->pclk = i2c->clk;
++		} else {
++			i2c->clk = devm_clk_get(&pdev->dev, "i2c");
++			i2c->pclk = devm_clk_get(&pdev->dev, "pclk");
++		}
+ 	} else {
+-		i2c->clk = devm_clk_get(&pdev->dev, "i2c");
+-		i2c->pclk = devm_clk_get(&pdev->dev, "pclk");
++		if (i2c->soc_data->calc_timings != rk3x_i2c_v0_calc_timings) {
++			snprintf(name, sizeof(name), "rk3x-i2c[%d].bclk",
++				 bus_nr);
++			i2c->clk = acpi_clk_register(ACPI_COMPANION(&pdev->dev),
++						     0, name);
++
++			snprintf(name, sizeof(name), "rk3x-i2c[%d].pclk",
++				 bus_nr);
++			i2c->pclk = acpi_clk_register(ACPI_COMPANION(&pdev->dev),
++						      1, name);
++		} else {
++			/* NB: currently not expected w/UEFI firmware given
++			 * these are not super performant RK3xxx
++			 */
++			dev_err(&pdev->dev,
++				"ACPI not supported for this RK3xxx\n");
++			return -EINVAL;
++		}
+ 	}
+ 
+ 	if (IS_ERR(i2c->clk))
+diff --git a/include/linux/acpi.h b/include/linux/acpi.h
+index 34829f2c5..13ca67d2c 100644
+--- a/include/linux/acpi.h
++++ b/include/linux/acpi.h
+@@ -32,6 +32,7 @@ struct irq_domain_ops;
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/fw_table.h>
++#include <linux/clk-provider.h>
+ 
+ #include <acpi/acpi_bus.h>
+ #include <acpi/acpi_drivers.h>
+@@ -1569,4 +1570,11 @@ static inline bool acpi_node_backed_by_real_pxm(int nid)
+ }
+ #endif
+ 
++/* Clock support */
++
++#ifdef CONFIG_ACPI
++struct clk *acpi_clk_register(struct acpi_device *adev, int index,
++			      const char *name);
++#endif
++
+ #endif	/*_LINUX_ACPI_H*/
 
 _______________________________________________
 Linux-rockchip mailing list
