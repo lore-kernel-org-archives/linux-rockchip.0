@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F629C001CC
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 15:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B547C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Apr 2024 18:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v/gva8Nj4VhK4nK6RG46USe4cxGGxLRz8F0usj+vKG4=; b=flGafPOU6yjKq4
-	sh9WLu+2arU5JF2hxfwnQeMAUmVhE1xrmMPYmAjJBZJ1bfKExpiGlWAFJsdXSItpHvAhGutq7vfV7
-	u4a77pWOK4Gs/3FJ3wkjUAU7ZgHz6oai2H94rhpaztjDKGmti7Ftnvqpn9G1jgY0LSKC0uhlgeo7z
-	B/IXTJ8mmJf5J8BTMsux33C43SMa4YCZmb/3yDMhF884Fn9Pz0l21YBd8y89WQCmHGJWp5I+1+ixa
-	yBfK+UKhKk0lu1AtthjMTgM28ZZYsdLiUKUKt1UOtcAb2DXCVd4yJM06ivpkdojGw2gt+V+AzB80W
-	zK1Ke5JdhYpZ6odIp0Sw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3aSNMp5XUKcnDaEBNEmdw6hhSje6dNC32K4Lg6UpFGg=; b=uE7I7l50P7vSV5
+	10HPyA+08QNhhrxZPNCYwwHYBSnNQtmhm4PC2KYkXTBIiH7DhUBJq05gKtNWcB1Upteh0UlOisEYi
+	p0M1V7GAcih1hrHQg2Xk0gkgNK3I99IO55w10ZZ69O4NvpGQkyly0L7oOJU8XN31Ti5VbTAgx8dlI
+	e113/6pDx4WhQ7lJDN6LdP8qPhxQShaG5rgoVn0LerJcT4Jz00V1+srvCXakTjcM4TNmbtqlqkFS5
+	4Du/lD1/lcSBsUvbYCgtCWHzL0ZlqF0FstfjlJueq4JAOebS6+Vu6biPHwfnU2D03kogvSYq5hXM6
+	eodZ+b9Jo54Lw/WnQUAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw1X9-00000005iN0-3AJx;
-	Sun, 14 Apr 2024 15:12:43 +0000
-Received: from smtp.forwardemail.net ([167.172.40.54])
+	id 1rw4Zo-000000065dw-3g8a;
+	Sun, 14 Apr 2024 18:27:40 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rw1X1-00000005iH5-3ZRI
-	for linux-rockchip@lists.infradead.org;
-	Sun, 14 Apr 2024 15:12:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1713107519; bh=gGzIdCw12QXG2TxloTRvkWREcbVU89z7DbBLoR6ZGJA=;
- b=PXAcft8C5jzX1iBhgHoO3sH5Sh38isq/WaBouSiFCichcZtGpGTY/aQGbVj5ipft69r/pC/do
- 5sGEqgLnKJ+0604bVB+v68DBqRi32QgGLrYrwuh3EjeCxxY1S7Ot66PjU2FY6NK5w4y75W1yAxd
- qf5kDWV7lkJ0G55VUXFpLB/ZYc10Dp1M+xZAw9WVT72kQDLYO16WVZTfefmGaPguXCwoHEvRGs7
- UUd1yfg4kkilAtT3VmoIaxVSuzzJ2lh7Vfb30MDi0g4Ak3Kv2dNQ6X9tMHHScMJJcsm9JhKqAhg
- lNqAJnlcORxKgv5+K8DqcFV1unePIxvkkAV6kFHSCRMA==
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Andy Yan
- <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>, Daniel Vetter
- <daniel@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann
- <tzimmermann@suse.de>, Mark Yao <markyao0591@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>, dri-devel@lists.freedesktop.org
-Subject: [PATCH v2 3/3] dt-bindings: display: rockchip,dw-hdmi: Fix sound-dai-cells warning
-Date: Sun, 14 Apr 2024 15:11:29 +0000
-Message-ID: <20240414151135.1774981-4-jonas@kwiboo.se>
+	id 1rw4Zk-000000065cP-1UN9;
+	Sun, 14 Apr 2024 18:27:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713119250;
+	bh=QOsx3aQu/JriRpOCWq7oChskggSlT2VJlcFd2Ll+Mhg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VhEMgyE8Gf9QvuAUzrkmaBrGtDA8hduJZgqT7CwAHCXIHLZnkP2VSlD0s216FmZVE
+	 +MHBS3Hx9I+uZeFIkq94PXewGaWCKUPa1T7dSQful+bAx8otwca00fncoACRkeZmmU
+	 GDcy1+QB++0TOobBHEP0UhP+DobpschWhcCM6GVTqifx5rW+6LLNLSAxGEx3fniUSp
+	 2xJVQvnhvvM2OL1dkV0aRNwxPzxoxOIwKLE2u/fCa2N6xYk34bVNAcmhGn78nrTDaU
+	 eNLCHIKpRcoeiUDCwYHnt4rnJsFRXWYbmUoW+ezvxyGvkUbDeziP1BqbqOV2ge8t0/
+	 npME9ki1ps2uQ==
+Received: from arisu.hitronhub.home (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id F2D7337814A4;
+	Sun, 14 Apr 2024 18:27:26 +0000 (UTC)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stubner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH] drm: vop2: Do not divide height twice for YUV
+Date: Sun, 14 Apr 2024 14:27:06 -0400
+Message-ID: <20240414182706.655270-1-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240414151135.1774981-1-jonas@kwiboo.se>
-References: <20240414151135.1774981-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 167.172.40.54
-X-ForwardEmail-ID: 661bf23c99ce03c87699d74d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240414_081236_353524_022F4959 
-X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-CacheID: sfid-20240414_112736_722251_45D0D411 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,44 +82,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rockchip,dw-hdmi node can be used as a sound dai codec, however,
-dtbs_check may report the following issue:
+For the cbcr format, gt2 and gt4 are computed again after src_h has been
+divided by vsub.
 
-  hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
-  from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+As src_h as already been divided by 2 before, introduce cbcr_src_h and
+cbcr_src_w to keep a copy of those values to be used for cbcr gt2 and
+gt4 computation.
 
-Add a reference to dai-common.yaml and add the #sound-dai-cells prop to
-resolve this warning.
+This fixes yuv planes being unaligned vertically when down scaling to
+1080 pixels from 2160.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
 ---
-v2: New patch to fix #sound-dai-cells warning
----
- .../bindings/display/rockchip/rockchip,dw-hdmi.yaml           | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 22 +++++++++++---------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index af638b6c0d21..3285fff54416 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -15,6 +15,7 @@ description: |
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index fdd768bbd487c..62ebbdb16253d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -706,6 +706,8 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+ 	const struct drm_format_info *info;
+ 	u16 hor_scl_mode, ver_scl_mode;
+ 	u16 hscl_filter_mode, vscl_filter_mode;
++	uint16_t cbcr_src_w = src_w;
++	uint16_t cbcr_src_h = src_h;
+ 	u8 gt2 = 0;
+ 	u8 gt4 = 0;
+ 	u32 val;
+@@ -763,27 +765,27 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+ 	vop2_win_write(win, VOP2_WIN_YRGB_VSCL_FILTER_MODE, vscl_filter_mode);
  
- allOf:
-   - $ref: ../bridge/synopsys,dw-hdmi.yaml#
-+  - $ref: /schemas/sound/dai-common.yaml#
+ 	if (info->is_yuv) {
+-		src_w /= info->hsub;
+-		src_h /= info->vsub;
++		cbcr_src_w /= info->hsub;
++		cbcr_src_h /= info->vsub;
  
- properties:
-   compatible:
-@@ -124,6 +125,9 @@ properties:
-     description:
-       phandle to the GRF to mux vopl/vopb.
+ 		gt4 = 0;
+ 		gt2 = 0;
  
-+  "#sound-dai-cells":
-+    const: 0
-+
- required:
-   - compatible
-   - reg
+-		if (src_h >= (4 * dst_h)) {
++		if (cbcr_src_h >= (4 * dst_h)) {
+ 			gt4 = 1;
+-			src_h >>= 2;
+-		} else if (src_h >= (2 * dst_h)) {
++			cbcr_src_h >>= 2;
++		} else if (cbcr_src_h >= (2 * dst_h)) {
+ 			gt2 = 1;
+-			src_h >>= 1;
++			cbcr_src_h >>= 1;
+ 		}
+ 
+-		hor_scl_mode = scl_get_scl_mode(src_w, dst_w);
+-		ver_scl_mode = scl_get_scl_mode(src_h, dst_h);
++		hor_scl_mode = scl_get_scl_mode(cbcr_src_w, dst_w);
++		ver_scl_mode = scl_get_scl_mode(cbcr_src_h, dst_h);
+ 
+-		val = vop2_scale_factor(src_w, dst_w);
++		val = vop2_scale_factor(cbcr_src_w, dst_w);
+ 		vop2_win_write(win, VOP2_WIN_SCALE_CBCR_X, val);
+ 
+-		val = vop2_scale_factor(src_h, dst_h);
++		val = vop2_scale_factor(cbcr_src_h, dst_h);
+ 		vop2_win_write(win, VOP2_WIN_SCALE_CBCR_Y, val);
+ 
+ 		vop2_win_write(win, VOP2_WIN_VSD_CBCR_GT4, gt4);
 -- 
 2.43.2
 
