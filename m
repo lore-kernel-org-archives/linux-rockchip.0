@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4150C00A94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 14:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94283C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 14:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FE9miXl+2bscz12IiEowg+MJ5vurvS0dCCz/gWT6OJ8=; b=iYfCS6EAW5Kvb7
-	DdDZwsleGwWQsThRbIWi1+ms979SEESqvKhOZT7c73CQDcA5NnaEx57m64plQnUGwmo12ndmcrJGi
-	wodZkJanCNU2CfBzPd3taLDkuIddevVLvrUgwdXtPYX5t7C64vZqnQIDwdZw0RtdP4QwSHwvKja9U
-	Sb+GeI1AFWRb8z4SBFLGpeUJu1cCYdeSMddXFEwbuP/6vM0d+MxzndLGXA55uIhqbwMh8bRG1ns5e
-	YE29eyoQgCJdbK+K2UIP+tTJVpakYw5vtSxrYA8pkPj21w4L+dXsK/vX6s5MFVWVsIjjHvA8kDsM2
-	7LrlC81MKhPwqQ0i8wqw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=7SCJ7ZYxAVos4eKNDkCdVKCS4chDhZ++oYwBYkkFwdo=; b=lOJQZb6alL2IvC
+	ocpbFb0dev7t0rX3H3PIIbDzvB6yIfjpoWxuV5aF2ou+2Cn5STVZ6nrNKKYpOrVCi72/AvU4Kk++Z
+	VIfmxlnrGieji37m8rjsIxEwpAZBEUdSWk66/7RI5gtGl3zdakqyPqAIeefMzYX0O3sRgOc+OwsKU
+	PddFw6R3ZKB6dCiexzNTKe9SB+/B5Juy59EUEE2pKiH1zDfpX0NyjsSrK05lGo3oL4gmLMP/Wh6Qf
+	EENcSVr1WCxsgMvmHrxVpp4mpEkdt4u1UTkh8KCA6uhnOr0zXa19hjEqtQ8zRYez7zhSVTdXmZfJx
+	uge+MD9Za2Rfpz12U+Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwMsx-00000008br3-0vxR;
-	Mon, 15 Apr 2024 14:00:39 +0000
+	id 1rwNQO-00000008iTW-364o;
+	Mon, 15 Apr 2024 14:35:12 +0000
 Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwMsr-00000008bpx-1338;
-	Mon, 15 Apr 2024 14:00:37 +0000
+	id 1rwNQH-00000008iRM-3rPa;
+	Mon, 15 Apr 2024 14:35:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8EC41CE0C68;
-	Mon, 15 Apr 2024 14:00:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EE32C113CC;
-	Mon, 15 Apr 2024 14:00:18 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 78965CE0DFC;
+	Mon, 15 Apr 2024 14:35:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 707A5C113CC;
+	Mon, 15 Apr 2024 14:35:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713189629;
-	bh=vUMXX+OgsKDFjriUPXzBwg0hyHz5um7sSrP3ByWxMtA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FSbVVUT/4O8CWWGyMHoZTZGbTja7KlLC+eTrlDIe7uQpHmiMUwxOMo9nNqqNtBHCM
-	 f0Yik9mTfrz/vmnMcHyrxCQ8WhYFMxN3fxIkqRNqPWxu0ZeIfqNcNEdZkkeMeGTOLX
-	 jIOWZp/+dDcXG/znc304kX2D2TjXDBJqVy9pI4MMQVSnG+1UX8FTfk96Gq7795b6Kx
-	 3EX6QiFGVPh0YCWMK+1VL8vr2s8cVUePkED2SMZYXUSRR/8Dlh3GDq1uk1fWqrdoCl
-	 fTSUvxJf/lxnj1lCskcjF47NmnYnbl9ztuqRhAZxknTZhTHnFDz4Qh56YhqQiNh48J
-	 7GQtk7v8ri9Ew==
-Date: Mon, 15 Apr 2024 19:30:15 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
+	s=k20201202; t=1713191700;
+	bh=iY4lgc0Rhhg0QzocM/HxB+V+JgnIN6Pz/U6ay5f9MVA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=h8ux2kJ9VPc31EUKRstPFxlBtLqgAikyAAiDVJYFMkbo8mtxrOyOOK3NcACc+y8Ud
+	 iXpqVF0MEx6sJdy9lY0wvSVKeeW8uxfxRN67mmZIVLth3xLTpCnMe7hyPn5vAXAEap
+	 YJVO2lf3xgNEtO0oSJyygdI7v9QUj7HOXxZHY9dCiUhkDO7nzPi891PYd/BxHxCsHv
+	 UyVxwOClfOgHueSz5EuCeCSIoFui/BN6bMZkuezCEt2p/LTzprmU9aAAuHUtmtAdXW
+	 zFxLHFLFtq8kkv6xT1YhX19MuFUhTUT9zOppzKw1mDSETuxGYDPKQceVsXviKNPbDv
+	 gZmkSaNAV4YtQ==
+Date: Mon, 15 Apr 2024 09:34:58 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
 Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	Jingoo Han <jingoohan1@gmail.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -78,15 +78,13 @@ Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
 	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
 	Frank Li <Frank.Li@nxp.com>
 Subject: Re: [PATCH v12 2/8] PCI: dwc: ep: Add Kernel-doc comments for APIs
-Message-ID: <20240415140015.GJ7537@thinkpad>
-References: <20240327-pci-dbi-rework-v12-2-082625472414@linaro.org>
- <20240412195836.GA13344@bhelgaas>
+Message-ID: <20240415143458.GA111010@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240412195836.GA13344@bhelgaas>
+In-Reply-To: <20240415140015.GJ7537@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_070033_496626_4EAA384C 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20240415_073506_192070_D1381D72 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +96,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBBcHIgMTIsIDIwMjQgYXQgMDI6NTg6MzZQTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
-cm90ZToKPiBPbiBXZWQsIE1hciAyNywgMjAyNCBhdCAwMjo0MzozMVBNICswNTMwLCBNYW5pdmFu
-bmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiBBbGwgb2YgdGhlIEFQSXMgYXJlIG1pc3NpbmcgdGhl
-IEtlcm5lbC1kb2MgY29tbWVudHMuIEhlbmNlLCBhZGQgdGhlbS4KPiAKPiA+ICsgKiBkd19wY2ll
-X2VwX3Jlc2V0X2JhciAtIFJlc2V0IGVuZHBvaW50IEJBUgo+IAo+IEFwcGFyZW50bHkgdGhpcyBy
-ZXNldHMgQGJhciBmb3IgZXZlcnkgZnVuY3Rpb24gb2YgdGhlIGRldmljZSwgc28gaXQncwo+IG5v
-dCBqdXN0IGEgc2luZ2xlIEJBUj8KPiAKClJpZ2h0LiBJdCBzaG91bGQndmUgYmVlbiAnUmVzZXQg
-ZW5kcG9pbnQgQkFScycuIEFuZCB0aGUgQVBJIG5hbWUgaXMgYWxzbwptaXNsZWFkaW5nLCBidXQg
-dGhhdCBpcyBub3QgdGhlIHNjb3BlIG9mIHRoaXMgc2VyaWVzLgoKPiA+ICsgKiBkd19wY2llX2Vw
-X3JhaXNlX2ludHhfaXJxIC0gUmFpc2UgSU5UeCBJUlEgdG8gdGhlIGhvc3QKPiA+ICsgKiBAZXA6
-IERXQyBFUCBkZXZpY2UKPiA+ICsgKiBAZnVuY19ubzogRnVuY3Rpb24gbnVtYmVyIG9mIHRoZSBl
-bmRwb2ludAo+ID4gKyAqCj4gPiArICogUmV0dXJuOiAwIGlmIHN1Y2Nlc3MsIGVycm9ubyBvdGhl
-cndpc2UuCj4gCj4gcy9lcnJvbm8vZXJybm8vIChhbm90aGVyIGluc3RhbmNlIGJlbG93KQo+IAoK
-YWgsIHRoYW5rcyBmb3Igc3BvdHRpbmcuIFNpbmNlIHRoaXMgc2VyaWVzIGlzIGFscmVhZHkgbWVy
-Z2VkLCBJIGhvcGUgS3J6eXN6dG9mCmNhbiBhbW1lbmQgdGhpcy4KCi0gTWFuaQoKLS0gCuCuruCu
-o+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, Apr 15, 2024 at 07:30:15PM +0530, Manivannan Sadhasivam wrote:
+> On Fri, Apr 12, 2024 at 02:58:36PM -0500, Bjorn Helgaas wrote:
+> > On Wed, Mar 27, 2024 at 02:43:31PM +0530, Manivannan Sadhasivam wrote:
+> > > All of the APIs are missing the Kernel-doc comments. Hence, add them.
+> > 
+> > > + * dw_pcie_ep_reset_bar - Reset endpoint BAR
+> > 
+> > Apparently this resets @bar for every function of the device, so it's
+> > not just a single BAR?
+> 
+> Right. It should've been 'Reset endpoint BARs'. And the API name is also
+> misleading, but that is not the scope of this series.
+
+Maybe just this for now:
+
+s/Reset endpoint BAR/Reset @bar of every function/
+
+> > > + * dw_pcie_ep_raise_intx_irq - Raise INTx IRQ to the host
+> > > + * @ep: DWC EP device
+> > > + * @func_no: Function number of the endpoint
+> > > + *
+> > > + * Return: 0 if success, errono otherwise.
+> > 
+> > s/errono/errno/ (another instance below)
+> 
+> ah, thanks for spotting. Since this series is already merged, I hope
+> Krzysztof can ammend this.
+
+Sounds good, thanks!
+
+Bjorn
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
