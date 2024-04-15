@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E35C00A94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DF5C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HHjkWBV4rZHJbI3YshdC51Qyv/tLZTJFQCojoX2UoCU=; b=JkLwPuBYRaZXXu
-	od2yj39MMrwxtiYWcmCV1QVwmxy2kXdDY+b3/SSK8B+vJxToUbM+gAVtCMCQhMlW6RYIFX32cSMKo
-	vrzKgaVvSSmQkPpCuDYDJn+yY742f66FVe3rRBMI7fEgyAtch1nLEIteEBDJsNYaU/KN0aA3veETt
-	HVYHn8lEBS6zwzDfjqRQi4JZUhCNgIE/QIK/AD0ZprH5jBo2O1RhU6KA56legAd63aSU48roUgZky
-	GRm9d/Z/k56eftNN7o2QtDIG7nnBUs773ZtHW8KollbcilP57GpdnMtZS3/bqz66jUDgFrzX58Gng
-	sSavTUlx6WCa54PcK0Bg==;
+	List-Owner; bh=eb4RjYc5x98H1yn2gVfDq58Zm053jf7PTSLp6ly5uVI=; b=llIHdyCJLui64w
+	lw2BdMJZh/q0QONx/ESipS1bWgHj7aw4QHdUBHEoMIGVdDZeRuL0CIug9y+fUPfY3+rVy1NuDbN8H
+	0MNqCk0BV6iu0feVpS4jtpGBHRp42VsRVm1Qg4XhYm58Faq3SBBNBoNLdKvIAT59mVnxfGZcwW6zk
+	Zmg1fTsbRRBdjx7F/rawfElK31aLHIwna6mBRbUDIvm90D/t4yKy0HTM4wQJvUc1X6hwBQ4NJ+0WQ
+	crWvQEZsfmCduV0XZ20Lx0ldEcVOcYr/FwR5kAcvALXhGFKjfN2PC4UsmgKPqYftTsFhMbuvLCgEX
+	nEMRJHTCV1ap4IX7iwWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHFr-00000007RXQ-3ATW;
-	Mon, 15 Apr 2024 07:59:55 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rwHKG-00000007SdL-16yd;
+	Mon, 15 Apr 2024 08:04:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHFn-00000007RVS-3CSt;
-	Mon, 15 Apr 2024 07:59:53 +0000
+	id 1rwHK7-00000007SZX-0gtp;
+	Mon, 15 Apr 2024 08:04:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 0DCABCE0A6A;
-	Mon, 15 Apr 2024 07:59:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B32DAC113CC;
-	Mon, 15 Apr 2024 07:59:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9EB1960C02;
+	Mon, 15 Apr 2024 08:04:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C86CAC4AF0A;
+	Mon, 15 Apr 2024 08:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713167989;
-	bh=OCFHUEJzQqIvQbhGEuMI7coBUcSnUd6YBPKNngEKrQo=;
+	s=k20201202; t=1713168258;
+	bh=02XS78kOeC4BvdCppGzDA2dmEXYXQsSxj+2gfEv+FZU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GsayHtGCCu4N9qrWLVdE0Ai1rZvT6MykztciJc/J6VpwRtL55uGYkW8XZMcFPQyes
-	 zN7/5V+Bm6yGmswH90tSX0AeADAtHkbCU62lPdC0UqKHHRT9p6qhBQjMz+JxuTqpjZ
-	 YaadAh3vDxW3hxdzgszjjgVZgexC4H480ZReR6zv6Diel74d8YGTuykgjf68UzX+CU
-	 pS7HNEQ/y34cLscKDVusCxZ91zx6BjCUVkYu3Buft2qyMNHcnOdOkGoAlJRxtWVZn7
-	 mxoDA0jPNxRD/eQMJlRbYqLYlr2PDV3UaMH/6UfSfGpwO+Fa2qmT19lc8sGGM17O6S
-	 28fM4YUQkd1zw==
-Message-ID: <9641e5b7-09e5-4346-a295-533b05585fb3@kernel.org>
-Date: Mon, 15 Apr 2024 09:59:44 +0200
+	b=jAnhH0GFY6O1f23O9v7nai3wlGsd1NsTJrhZZjSE/JT+GFTVvxLSBPC9iCpF/M4hS
+	 Jmh8Sw+n286LM4fSDgO5u/hLKvTEc/PdavPHsCSygoKcN4YzuWaClrCP+TUKhznVrS
+	 o7bj7xAg5mE+5bjBWvY4oK6fXA5GShex36nRLPDzPk2tGduRIMls5j/ZXhXaJ3FNcp
+	 rvhDAqf7eTwWTyYB2DxAtwjpZPrpx6gle57JMUpufjrQW31fanNWsEZSYTF86KCYRE
+	 29x2K/xGz7/BDOv6yhMqlV94VvyGzUa7SfvQfbjABOZtgKpIr6sQ3TujOHFVCWwUJa
+	 TM3ix5byqkKkg==
+Message-ID: <dcda2991-90bc-41eb-afa3-14a2071a6d19@kernel.org>
+Date: Mon, 15 Apr 2024 10:04:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add ArmSoM Sige7
+Subject: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: add ArmSoM
 To: Jianfeng Liu <liujianfeng1994@gmail.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  heiko@sntech.de, sfr@canb.auug.org.au, weizhao.ouyang@arm.com
 References: <20240413153633.801759-1-liujianfeng1994@gmail.com>
- <20240413153633.801759-3-liujianfeng1994@gmail.com>
+ <20240413153633.801759-2-liujianfeng1994@gmail.com>
 Content-Language: en-US
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,11 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240413153633.801759-3-liujianfeng1994@gmail.com>
+In-Reply-To: <20240413153633.801759-2-liujianfeng1994@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_005952_195077_ED5A8500 
-X-CRM114-Status: UNSURE (   5.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_010419_355915_ACB6D400 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,13 +119,35 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 13/04/2024 17:36, Jianfeng Liu wrote:
-> Add devicetree binding for ArmSoM Sige7 board
+> Add vendor prefix for ArmSoM (https://www.armsom.org)
+
+I feel some lawsuits coming...
+
+
 > 
 > Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
 > ---
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> index e4aeeb5fe..c6af4da94 100644
+> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> @@ -151,6 +151,8 @@ patternProperties:
+>      description: ARM Ltd.
+>    "^armadeus,.*":
+>      description: ARMadeus Systems SARL
+> +  "^armsom,.*":
+> +    description: ArmSoM
+
+Website says different name. Please use name from the website.
 
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+
+>    "^arrow,.*":
+>      description: Arrow Electronics
+>    "^artesyn,.*":
 
 Best regards,
 Krzysztof
