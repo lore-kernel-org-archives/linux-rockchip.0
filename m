@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA45C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9586AC4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O4HGT6gDiOzxjOFajvmTYBIZsxS17AqEu1ZhEO6rdP4=; b=s7UmXdQuWtqX4S
-	SvuHxlqivnhspcwSPLok2iQvq1yVT76154mB6NWnPbHpZEVV63xh7oMdD+ZyXZIn7eKre0vBZ5KTR
-	089e1FO94CNjej2cYWM/VekGMbdRl56FUYt9y/jhJPR7x4VdrYvUPMwTwBJgeFYerORSmbxpnTK6R
-	w77dMg81RD9XHrEAqZncNidYG5Gd+J+mtdFTD3v+1UyMZ12XUwSQ3+tjhE6Fpqug0ZOUkChdSj4B+
-	PVHCVuYonUR86Q2uLm5vA/oo9lTLO2P83B8S4nB2opGSouQ6OJ/Tiaxke/Gx2F90c6pT8VfLkqcZy
-	q8PlOq92x+wGzs6AcNfQ==;
+	List-Owner; bh=1S9uVYNSasMOEm5aNsfSpHkYMSA3SFejG1NgZyh/V4U=; b=0vaBc1sT8Z3Evw
+	W+zYioFGU1+4l+E4kOp3vJXGHd2IiAtbftQ03bBCSomTQRPbEytEIFD9GicRtqfTruRCwk9NUH7OG
+	IJPgdkc84VDq6XvFoR6ccp4Oj/Li5OXlKS0TBdPYELZL5g0IzY2ACq2+FSfBXjUW26OcUXNQ0bf9y
+	lXLuGG6lGEflM+q/h82I8Ne1T40iW5y58W4z5crNuZq+3MpM57uvz9kxRVcBwWqhVzBYxO5WOkiPx
+	6O4QUiB+u8MZloflkx7eNzslEP8TMCy2IxaVBBW50iMbsZAl8/I6QN3yjb0r6Z8Uluoi/qqPXghrS
+	aveAie9eN1YmSOgCQBDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwI6m-00000007ci6-3Lzu;
-	Mon, 15 Apr 2024 08:54:36 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwI6i-00000007cgR-1zEk;
-	Mon, 15 Apr 2024 08:54:33 +0000
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6ea1a55b0c0so1650609a34.3;
-        Mon, 15 Apr 2024 01:54:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713171270; x=1713776070; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=s40uCXQURYbe0UBuprud/njSs0ZIWjKApDAezTTAv5A=;
-        b=CdCtsT2PPn2Mu+gYzec6YVMuWg51T9Ahu98chT49OhSPSVUqV9PUeUmwbj2xnzrRC8
-         iJJcQBO9cNip7O41Rv6+FPu0dvo7Vweu0GsXlkyb90pOkbWrXppJFX4bFhbd/cb1+DGu
-         xzCDmApfUq1PIu3UZPV08J59ziGrhR7CM2/iyGwFDTjMufD7hW4yWILHZak0xCWJLkfr
-         XrSPBUQ1sD2W41gZsyAFT2e3MyscvU6nEcB2IZFTDifNbpvAZ4sgK76toDao7FIT7phs
-         QWRZkOJSmAzUx3veP5z4FOJkAhENwLuJ6HAo2LVQwYCeEptz6OfqU47ncp71JdSuxyTR
-         rUhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713171270; x=1713776070;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=s40uCXQURYbe0UBuprud/njSs0ZIWjKApDAezTTAv5A=;
-        b=k7o7uaPJolv+mGrubb6Ye0jPYDOhpQ7xn4ZBB1XdEH2WDgh6uHzVFGG62Cx6jHTq1L
-         Q9nl4lQYG8qJK2ctsiLjy1WQBdjsXTUvO2jcoMZ8ZmP7/lzeMIR5cZ2kuZn/QpLroSTw
-         tp46cXqy3dbCfgnsCBCVbjS5/ZuX6C8MJlL4tIp02PEXIc0qWWZ0id/7RbbLq1NqNNtz
-         F1Upt8q80yUgsWK/96CNtAn6wWg+kRHvKvhUXWdB2EJEzF93RiWZW6h55pDeZK2O8Wr4
-         tlg6mmnZxbkAG0HO6g9Yut9QRB8hSqf2js+tgTPe7+0mybDb4Cm3xMFlGUjtKpINNuRe
-         HNcw==
-X-Forwarded-Encrypted: i=1; AJvYcCXKdqdSVIIC3WfjPiOxItuJ6z4y+Vw4rC2Lg+jqCqLJP23/Q5JEZpP/SRqwou2fyTgXZm0hflv5qzbYXpl1F1fUzc7w0Xr5sHi9HWVUEcTaMjvCMjE8LPXJqXSzVtnbwrLMfoZh7V0ksYq/qO9leWYBICHYjPdwj60=
-X-Gm-Message-State: AOJu0YxeOkMovjeXFGcP5Jfdm5qpZuPq7a/qZ3zH71P6OmVqhl277xk0
-	yYvyFiqnmt0kUqgNEgzlI060AbhdqPgubWF//V+166MVdsxpKheE
-X-Google-Smtp-Source: AGHT+IFLGktyFceX77eS/EWTNIy/C/EEkP/6Uwj0JtLUM5Gch3gRYxudIsXV7Uwh5tX3uhb6kSATHw==
-X-Received: by 2002:a05:6870:818b:b0:229:7f9f:adee with SMTP id k11-20020a056870818b00b002297f9fadeemr11347247oae.30.1713171270183;
-        Mon, 15 Apr 2024 01:54:30 -0700 (PDT)
-Received: from localhost.localdomain ([221.220.135.251])
-        by smtp.gmail.com with ESMTPSA id h11-20020aa786cb000000b006eadc87233dsm6786293pfo.165.2024.04.15.01.54.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 01:54:29 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: krzk@kernel.org
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1rwIA6-00000007dCy-1FYi;
+	Mon, 15 Apr 2024 08:58:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rwIA0-00000007dBM-1X0E;
+	Mon, 15 Apr 2024 08:57:57 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8D38C2F;
+	Mon, 15 Apr 2024 01:58:22 -0700 (PDT)
+Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5E68D3F64C;
+	Mon, 15 Apr 2024 01:57:48 -0700 (PDT)
+Date: Mon, 15 Apr 2024 09:57:45 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Rob Herring <robh@kernel.org>
+Cc: soc@kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Robert Richter <rric@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+	Li Yang <leoyang.li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	"Paul J. Murphy" <paul.j.murphy@intel.com>,
+	Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, linux-fsd@tesla.com,
+	Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-realtek-soc@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	liujianfeng1994@gmail.com,
-	robh@kernel.org,
-	sfr@canb.auug.org.au,
-	weizhao.ouyang@arm.com
-Subject: Re: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: add ArmSoM
-Date: Mon, 15 Apr 2024 16:54:19 +0800
-Message-Id: <20240415085419.6107-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <dcda2991-90bc-41eb-afa3-14a2071a6d19@kernel.org>
-References: <dcda2991-90bc-41eb-afa3-14a2071a6d19@kernel.org>
+	linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
+Message-ID: <ZhzsCYu4PEYaQFaF@bogus>
+References: <20240412222857.3873079-1-robh@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_015432_531155_B2F3EFD5 
-X-CRM114-Status: UNSURE (   7.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_015756_583410_08FAC051 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,24 +101,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Mon, 15 Apr 2024 10:04:14 +0200, Krzysztof Kozlowski wrote:
->> Add vendor prefix for ArmSoM (https://www.armsom.org)
+On Fri, Apr 12, 2024 at 05:28:51PM -0500, Rob Herring wrote:
+> The "arm,armv8-pmuv3" compatible is intended only for s/w models. Primarily,
+> it doesn't provide any detail on uarch specific events.
+> 
+> There's still remaining cases for CPUs without any corresponding PMU
+> definition and for big.LITTLE systems which only have a single PMU node
+> (there should be one per core type).
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> SoC Maintainers, Can you please apply this directly.
+> ---
+>  arch/arm/boot/dts/broadcom/bcm2711.dtsi              | 4 ++--
+>  arch/arm64/boot/dts/altera/socfpga_stratix10.dtsi    | 2 +-
+>  arch/arm64/boot/dts/amazon/alpine-v2.dtsi            | 2 +-
+>  arch/arm64/boot/dts/apm/apm-storm.dtsi               | 2 +-
+>  arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts | 2 +-
+>  arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi     | 2 +-
+>  arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi  | 2 +-
+>  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi         | 2 +-
+>  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi        | 2 +-
+>  arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi       | 2 +-
+>  arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi       | 2 +-
+>  arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi       | 7 +++++++
+>  arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi       | 7 +++++++
+>  arch/arm64/boot/dts/freescale/fsl-ls208xa.dtsi       | 5 -----
+>  arch/arm64/boot/dts/freescale/imx8dxl.dtsi           | 2 +-
+>  arch/arm64/boot/dts/intel/keembay-soc.dtsi           | 2 +-
+>  arch/arm64/boot/dts/intel/socfpga_agilex.dtsi        | 2 +-
+>  arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi        | 2 +-
+>  arch/arm64/boot/dts/marvell/armada-37xx.dtsi         | 2 +-
+>  arch/arm64/boot/dts/mediatek/mt8516.dtsi             | 2 +-
+>  arch/arm64/boot/dts/nvidia/tegra210.dtsi             | 2 +-
+>  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
+>  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
+>  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
+>  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
+>  arch/arm64/boot/dts/realtek/rtd16xx.dtsi             | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi             | 2 +-
+>  arch/arm64/boot/dts/sprd/sc9860.dtsi                 | 2 +-
+>  arch/arm64/boot/dts/sprd/sc9863a.dtsi                | 2 +-
+>  arch/arm64/boot/dts/synaptics/berlin4ct.dtsi         | 2 +-
+>  arch/arm64/boot/dts/tesla/fsd.dtsi                   | 2 +-
+>  arch/arm64/boot/dts/xilinx/zynqmp.dtsi               | 2 +-
+>  32 files changed, 44 insertions(+), 35 deletions(-)
 >
->I feel some lawsuits coming...
 
-The brand name "ArmSoM" was first registered on 10 December 2021, which
-means "System-on-Module of ARM". Would you please explan it further
-about the risk of law? We are working with ARM for the SystemReady
-certification.
+[...]
 
->Website says different name. Please use name from the website.
+> diff --git a/arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts b/arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts
+> index 8db4243a4947..9115c99d0dc0 100644
+> --- a/arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts
+> +++ b/arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts
+> @@ -102,7 +102,7 @@ timer {
+>  	};
+>
+>  	pmu {
+> -		compatible = "arm,armv8-pmuv3";
+> +		compatible = "arm,cortex-a53-pmu";
+>  		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>,
+>  			     <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+>  	};
 
-Sure, I will change it to "ArmSoM Technology Co., Ltd." in v3.
+(For vexpress related change)
 
-Best regards,
-Jianfeng
+Acked-by: Sudeep Holla <sudeep.holla@arm.com>
+
+--
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-rockchip mailing list
