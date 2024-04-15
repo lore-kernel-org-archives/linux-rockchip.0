@@ -4,141 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BAFDC00A94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 13:45:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4150C00A94
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 14:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tF8YxcA3a4t+8OMKcakoA8jEDDlHo5SA10/KukWg/P0=; b=zJaNMaeR5qpE8V
-	oGCNtfmZnqtvz8nZEgYAmDOkRbTIYlUsBdJYkIrQQr2NoYCT860RaeYGOxcR8w96L8qkz5NHwcp9+
-	dX0JCE8g2+wBi++oUC/IcVPGRDkq9igbtFThHhg03I1bCE+HL+dFnENaLRtIARMENYIW/GQBiUxoq
-	Bf/qf2aWQsM23mFS4RotocNiTsdEaYFHVzxYNCO/CQd2b2TSwAmnnxVG/pS3ImU/8dEfzbdjjChFi
-	pakWmHzDNvx/zg07fypIoFG9Kue+2Age6iJnnOhZCLNKsnQ3jR9YdEV6X29X0bgDs0RyuWSyJdsFT
-	b8ClK2SHHhRDj3p6BFuw==;
+	List-Owner; bh=FE9miXl+2bscz12IiEowg+MJ5vurvS0dCCz/gWT6OJ8=; b=iYfCS6EAW5Kvb7
+	DdDZwsleGwWQsThRbIWi1+ms979SEESqvKhOZT7c73CQDcA5NnaEx57m64plQnUGwmo12ndmcrJGi
+	wodZkJanCNU2CfBzPd3taLDkuIddevVLvrUgwdXtPYX5t7C64vZqnQIDwdZw0RtdP4QwSHwvKja9U
+	Sb+GeI1AFWRb8z4SBFLGpeUJu1cCYdeSMddXFEwbuP/6vM0d+MxzndLGXA55uIhqbwMh8bRG1ns5e
+	YE29eyoQgCJdbK+K2UIP+tTJVpakYw5vtSxrYA8pkPj21w4L+dXsK/vX6s5MFVWVsIjjHvA8kDsM2
+	7LrlC81MKhPwqQ0i8wqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwMe1-00000008YTR-4BYs;
-	Mon, 15 Apr 2024 13:45:14 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1rwMsx-00000008br3-0vxR;
+	Mon, 15 Apr 2024 14:00:39 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwMdv-00000008YNC-3Op7
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Apr 2024 13:45:09 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.24/8.17.1.24) with ESMTP id 43FDgHLp032713;
-	Mon, 15 Apr 2024 13:45:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=qcppdkim1; bh=yhE0N2GTjzloNk8jSE6bL
-	1E7cB8XApNZKK5EefZJ4P4=; b=Dy752KncX+0qPUtwl62xGFwJu/DOlByTMSyRV
-	RwDnVwOE2JbPaOKtAnnuZ4KDvEtt96WpkJdEuSqG3Z81yMGtE1tR/JZg0/65ba+L
-	uxKdfeWJY5EYSG7hct3G3MU/VXT0J5qwUObOKD72jcfdItNgQITAWAaQiyLD3wtU
-	qTZa0QlwsrBItBOEfCjUkZos6vP8ZSmi37nZEqU/sC5G1kLjpyRWmFF4oeoVU9+u
-	tZ6b38LS+iFCIGmf+tCxaaDJD/Hsiyzo7vaanv75QPxJjYuzAcmgMxIKlKlnH+e3
-	zVS2p75tmrlqh/enbvxgsTGVThcfHpx2me1Ug9jnaB1kKNFJA==
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3xh5bsr05j-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 15 Apr 2024 13:45:05 +0000 (GMT)
-Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
-	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 43FDj3v4031752
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 15 Apr 2024 13:45:03 GMT
-Received: from hu-bjorande-lv.qualcomm.com (10.49.16.6) by
- nalasex01c.na.qualcomm.com (10.47.97.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.9; Mon, 15 Apr 2024 06:45:03 -0700
-Date: Mon, 15 Apr 2024 06:45:02 -0700
-From: Bjorn Andersson <quic_bjorande@quicinc.com>
-To: Rob Herring <robh@kernel.org>
-CC: <soc@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Florian Fainelli
-	<florian.fainelli@broadcom.com>,
-        Broadcom internal kernel review list
-	<bcm-kernel-feedback-list@broadcom.com>,
-        Dinh Nguyen <dinguyen@kernel.org>,
-        Tsahee Zidenberg <tsahee@annapurnalabs.com>,
-        Antoine Tenart
-	<atenart@kernel.org>,
-        Khuong Dinh <khuong@os.amperecomputing.com>,
-        Liviu
- Dudau <liviu.dudau@arm.com>,
-        Sudeep Holla <sudeep.holla@arm.com>,
-        Lorenzo
- Pieralisi <lpieralisi@kernel.org>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden
-	<sbranden@broadcom.com>,
-        Robert Richter <rric@kernel.org>, Shawn Guo
-	<shawnguo@kernel.org>,
-        Li Yang <leoyang.li@nxp.com>, Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        "Paul J. Murphy"
-	<paul.j.murphy@intel.com>,
-        Daniele Alessandrelli
-	<daniele.alessandrelli@intel.com>,
-        Andrew Lunn <andrew@lunn.ch>,
-        Gregory
- Clement <gregory.clement@bootlin.com>,
-        Sebastian Hesselbarth
-	<sebastian.hesselbarth@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Thierry
- Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio
-	<konrad.dybcio@linaro.org>,
-        Andreas =?iso-8859-1?Q?F=E4rber?=
-	<afaerber@suse.de>,
-        Heiko Stuebner <heiko@sntech.de>, Orson Zhai
-	<orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan
- Zhang <zhang.lyra@gmail.com>,
-        Jisheng Zhang <jszhang@kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>, <linux-fsd@tesla.com>,
-        Michal Simek
-	<michal.simek@amd.com>, <devicetree@vger.kernel.org>,
-        <linux-rpi-kernel@lists.infradead.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <imx@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-        <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-realtek-soc@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>
-Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-Message-ID: <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
-References: <20240412222857.3873079-1-robh@kernel.org>
+	id 1rwMsr-00000008bpx-1338;
+	Mon, 15 Apr 2024 14:00:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 8EC41CE0C68;
+	Mon, 15 Apr 2024 14:00:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EE32C113CC;
+	Mon, 15 Apr 2024 14:00:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713189629;
+	bh=vUMXX+OgsKDFjriUPXzBwg0hyHz5um7sSrP3ByWxMtA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FSbVVUT/4O8CWWGyMHoZTZGbTja7KlLC+eTrlDIe7uQpHmiMUwxOMo9nNqqNtBHCM
+	 f0Yik9mTfrz/vmnMcHyrxCQ8WhYFMxN3fxIkqRNqPWxu0ZeIfqNcNEdZkkeMeGTOLX
+	 jIOWZp/+dDcXG/znc304kX2D2TjXDBJqVy9pI4MMQVSnG+1UX8FTfk96Gq7795b6Kx
+	 3EX6QiFGVPh0YCWMK+1VL8vr2s8cVUePkED2SMZYXUSRR/8Dlh3GDq1uk1fWqrdoCl
+	 fTSUvxJf/lxnj1lCskcjF47NmnYnbl9ztuqRhAZxknTZhTHnFDz4Qh56YhqQiNh48J
+	 7GQtk7v8ri9Ew==
+Date: Mon, 15 Apr 2024 19:30:15 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Vidya Sagar <vidyas@nvidia.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, Niklas Cassel <cassel@kernel.org>,
+	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
+	Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH v12 2/8] PCI: dwc: ep: Add Kernel-doc comments for APIs
+Message-ID: <20240415140015.GJ7537@thinkpad>
+References: <20240327-pci-dbi-rework-v12-2-082625472414@linaro.org>
+ <20240412195836.GA13344@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
- nalasex01c.na.qualcomm.com (10.47.97.35)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: anep3cOZZbefLkEXjJhwpqdl-o9hjFoO
-X-Proofpoint-GUID: anep3cOZZbefLkEXjJhwpqdl-o9hjFoO
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-15_11,2024-04-15_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=522
- priorityscore=1501 spamscore=0 clxscore=1011 malwarescore=0 adultscore=0
- phishscore=0 bulkscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2404010003
- definitions=main-2404150089
+In-Reply-To: <20240412195836.GA13344@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_064508_048094_D162373F 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_070033_496626_4EAA384C 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,24 +98,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 12, 2024 at 05:28:51PM -0500, Rob Herring wrote:
-[..]
->  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
->  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
-
-Acked-by: Bjorn Andersson <andersson@kernel.org>
-
-Regards,
-Bjorn
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBBcHIgMTIsIDIwMjQgYXQgMDI6NTg6MzZQTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
+cm90ZToKPiBPbiBXZWQsIE1hciAyNywgMjAyNCBhdCAwMjo0MzozMVBNICswNTMwLCBNYW5pdmFu
+bmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiBBbGwgb2YgdGhlIEFQSXMgYXJlIG1pc3NpbmcgdGhl
+IEtlcm5lbC1kb2MgY29tbWVudHMuIEhlbmNlLCBhZGQgdGhlbS4KPiAKPiA+ICsgKiBkd19wY2ll
+X2VwX3Jlc2V0X2JhciAtIFJlc2V0IGVuZHBvaW50IEJBUgo+IAo+IEFwcGFyZW50bHkgdGhpcyBy
+ZXNldHMgQGJhciBmb3IgZXZlcnkgZnVuY3Rpb24gb2YgdGhlIGRldmljZSwgc28gaXQncwo+IG5v
+dCBqdXN0IGEgc2luZ2xlIEJBUj8KPiAKClJpZ2h0LiBJdCBzaG91bGQndmUgYmVlbiAnUmVzZXQg
+ZW5kcG9pbnQgQkFScycuIEFuZCB0aGUgQVBJIG5hbWUgaXMgYWxzbwptaXNsZWFkaW5nLCBidXQg
+dGhhdCBpcyBub3QgdGhlIHNjb3BlIG9mIHRoaXMgc2VyaWVzLgoKPiA+ICsgKiBkd19wY2llX2Vw
+X3JhaXNlX2ludHhfaXJxIC0gUmFpc2UgSU5UeCBJUlEgdG8gdGhlIGhvc3QKPiA+ICsgKiBAZXA6
+IERXQyBFUCBkZXZpY2UKPiA+ICsgKiBAZnVuY19ubzogRnVuY3Rpb24gbnVtYmVyIG9mIHRoZSBl
+bmRwb2ludAo+ID4gKyAqCj4gPiArICogUmV0dXJuOiAwIGlmIHN1Y2Nlc3MsIGVycm9ubyBvdGhl
+cndpc2UuCj4gCj4gcy9lcnJvbm8vZXJybm8vIChhbm90aGVyIGluc3RhbmNlIGJlbG93KQo+IAoK
+YWgsIHRoYW5rcyBmb3Igc3BvdHRpbmcuIFNpbmNlIHRoaXMgc2VyaWVzIGlzIGFscmVhZHkgbWVy
+Z2VkLCBJIGhvcGUgS3J6eXN6dG9mCmNhbiBhbW1lbmQgdGhpcy4KCi0gTWFuaQoKLS0gCuCuruCu
+o+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
