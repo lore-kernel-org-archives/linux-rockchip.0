@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C36F2C00A94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 15:04:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E61C04FF8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 15:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fZIenvbDLZlotRlWQphqYt7y0yCZTwM9UvAOva1DSs4=; b=cKxdL0Eo6Wif5n
-	q/vTsjkPq+5pQnkF3c3gPhMOAMBUCmEOMVaTMv0QxDO5/4ib9M/p8sw3Ggq5l+zglT4FLgWeIH37X
-	fhtd+Kq7CFSUXDaQPTVCYFqtFJzOEsYO96ZspI49IL5614CJmeIxq9lkGajHaW4dS/ACIzQyrQACY
-	Vn9zbD5++/2gLxyRNrhUa2hm5vrfoiiLLa9tv7PMXn+8GNRYWdW5SKy42T1UonSvjheMJ/wm8zU9n
-	5n6N5xZULbwOY//dfMUfUrRTwnmTJVdmOOoTUD+pLhP2wd3MF6r0UX9enrDgBOh6DiZRetx9Eujx9
-	8zWhWtfgAE0oS3U66iVQ==;
+	List-Owner; bh=aqWgSc3ga1q5dAZCSivmnM/n3wkOyYkQXipj7Iw9/No=; b=J2Tgn0MsIm4+9N
+	SL0Zmr1GydoXNmDiO6zwiQk6QkjgVLETSC5FX8wWcysF850zCXy60OiIO2IJEJYucxBrR2qGaAN4g
+	fpisXBOFh6T53aFJerUWTMLUS26eD6ei2XHzFk4SMAgx24uH3ltzYhUa+owmk7DLqAZa1FsaJSM35
+	w9NW4PBvRdq+Wa3gEW80rvO++ZjiLlG2o67klSS5FtxpjJX1n0tcxyq8PIZK0FK6fwP+gJfesQ4jY
+	tcdORfSugWeNMw6i/7UjjRSw7IhaY2PUmL2FkdZLlNvwjeAA6OD4rF872hEGQ4A+fMLJmagFEWhrR
+	xfGZO4+1GonoQnv9BLsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwNsu-00000008o70-1osz;
-	Mon, 15 Apr 2024 15:04:40 +0000
+	id 1rwNsy-00000008o9Z-3HqD;
+	Mon, 15 Apr 2024 15:04:44 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwNsl-00000008o3F-3XkJ
+	id 1rwNsl-00000008o2w-3Xv3
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Apr 2024 15:04:39 +0000
+	Mon, 15 Apr 2024 15:04:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1713193454; bh=Br1cPb612nXVCftZVJlVuBeRaWk4BxyFB/Atx/U13WQ=;
- b=eIK1Sm5ClMgXjK+b+HhMIoudcQd/O2ozoDcWV61cSBWjzCwbnNZpG4smbOBHMbbBr4JOjSqKI
- xdlY6gXi+xP63HPNyqVw59XxiJSHjfyuLMam6OGALKfyqt0ETkeviqegLK7KddTgpbkKxd8NL/W
- ZyYscjuFiN+TctcnKr3i0J7KT9fU+ybjgiJld+vQplthvGpoC1xhWzkyy5P+yDojmxblcqG6Yu3
- Mmia+kveaYr8veqhRzM/HPZXg4mMVHBoKfJuZjsKWBA45xb9wlisenieT/9WopR5Tq5CohssL1j
- oxhNi7rodvbF9SbUWEYlR2UAWkA78UomiAKrVX513N2A==
+ t=1713193459; bh=UilC9OCAXFeG1AIKKADdM+nKqFBTwDI8oJka53wTa84=;
+ b=R4+bO91MxDIfubvqIV+OKonPMu6kotATJojbwzrf/XDPU4X+8v0H/kmy2Pl/2A6DJxYpQbDWq
+ 51606dALGuIlmkz9pjbbDwH4LNwTVACHNyEFdlcJRTVzFensnA7d/puriOv8ENHH/qWFqadxOxL
+ HHrFkGMZ0aMIOoOHvOe9SyPEYrCV6dShWpizYP28U/ZGItpc4/Dk1DUSc8UCZUhQgVPPcmrqPYm
+ WBWubFdOkhI3s9wRjrR2/He3tgRffwNn3ElnUw5UNGMr3neWfw+cJP3oh9zrcys1FPh2Pt0drdX
+ cS3knE8lixjbWU7fuPtivdU1baAYjPGwmyAUR4EpsakQ==
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
  <conor+dt@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas
- Karlman <jonas@kwiboo.se>, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E
-Date: Mon, 15 Apr 2024 15:03:43 +0000
-Message-ID: <20240415150349.2207075-2-jonas@kwiboo.se>
+ Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
+Date: Mon, 15 Apr 2024 15:03:44 +0000
+Message-ID: <20240415150349.2207075-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240415150349.2207075-1-jonas@kwiboo.se>
 References: <20240415150349.2207075-1-jonas@kwiboo.se>
@@ -57,11 +56,10 @@ X-Complaints-To: abuse@forwardemail.net
 X-ForwardEmail-Version: 0.4.40
 X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
-X-ForwardEmail-ID: 661d41eefc656ac01cb4646c
+X-ForwardEmail-ID: 661d41f3fc656ac01cb4647e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_080431_981187_E534D8C3 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_080431_995049_55DC5061 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,39 +76,584 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding documentation for Radxa ZERO 3W/3E boards.
-
 The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
 computer based on the Rockchip RK3566, with a compact form factor and
 rich interfaces.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
-v2: Collect acked-by tag
-v3: Fix devicetree spelling
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+The ZERO 3W and ZERO 3E are basically the same size and model, but
+differ only in storage and network interfaces.
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 4bd033adeee4..2d43729bebab 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -804,6 +804,13 @@ properties:
-           - const: radxa,rock-5b
-           - const: rockchip,rk3588
- 
-+      - description: Radxa ZERO 3W/3E
-+        items:
-+          - enum:
-+              - radxa,zero-3e
-+              - radxa,zero-3w
-+          - const: rockchip,rk3566
+- eMMC (3W)
+- SD-card (both)
+- Ethernet (3E)
+- WiFi/BT (3W)
+
+This adds initial support for eMMC, SD-card, Ethernet, HDMI and USB.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: Add to Makefile
+v3: Sort hdmi-con and leds nodes alphabetically
+v3: Sort pmic@20 and regulator@40 nodes by reg
+v3: Change to regulator-off-in-suspend for vdd_logic
+
+Following issue is reported by dtbs_check and is fixed by patch at [1]:
+
+  hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
+  from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+
+[1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
+ .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  26 +
+ .../boot/dts/rockchip/rk3566-radxa-zero3.dtsi | 443 ++++++++++++++++++
+ 4 files changed, 512 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 7da198be8787..ab534e7f993f 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -90,6 +90,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-powkiddy-x55.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-radxa-cm3-io.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-radxa-zero-3e.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-radxa-zero-3w.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-blade.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
+new file mode 100644
+index 000000000000..0826f7e99a81
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
+@@ -0,0 +1,41 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
-       - description: Rikomagic MK808 v1
-         items:
-           - const: rikomagic,mk808
++/dts-v1/;
++
++#include "rk3566-radxa-zero3.dtsi"
++
++/ {
++	model = "Radxa ZERO 3E";
++	compatible = "radxa,zero-3e", "rockchip,rk3566";
++
++	aliases {
++		ethernet0 = &gmac1;
++	};
++};
++
++&gmac1 {
++	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
++	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
++	assigned-clock-rates = <0>, <125000000>;
++	clock_in_out = "output";
++	phy-handle = <&rgmii_phy1>;
++	phy-mode = "rgmii-id";
++	pinctrl-names = "default";
++	pinctrl-0 = <&gmac1m1_miim
++		     &gmac1m1_tx_bus2
++		     &gmac1m1_rx_bus2
++		     &gmac1m1_rgmii_clk
++		     &gmac1m1_rgmii_bus
++		     &gmac1m1_clkinout>;
++	status = "okay";
++};
++
++&mdio1 {
++	rgmii_phy1: ethernet-phy@0 {
++		compatible = "ethernet-phy-ieee802.3-c22";
++		reg = <0x0>;
++		reset-assert-us = <20000>;
++		reset-deassert-us = <100000>;
++		reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+new file mode 100644
+index 000000000000..be4ddce78378
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+@@ -0,0 +1,26 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include "rk3566-radxa-zero3.dtsi"
++
++/ {
++	model = "Radxa ZERO 3W";
++	compatible = "radxa,zero-3w", "rockchip,rk3566";
++
++	aliases {
++		mmc1 = &sdhci;
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	mmc-hs200-1_8v;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
++	vmmc-supply = <&vcc_3v3>;
++	vqmmc-supply = <&vcc_1v8>;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+new file mode 100644
+index 000000000000..ea8ade3a4c99
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+@@ -0,0 +1,443 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
++#include "rk3566.dtsi"
++
++/ {
++	aliases {
++		mmc0 = &sdmmc0;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "d";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		led-green {
++			color = <LED_COLOR_ID_GREEN>;
++			default-state = "on";
++			function = LED_FUNCTION_HEARTBEAT;
++			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&user_led2>;
++		};
++	};
++
++	vcc_sys: vcc-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vcc_1v8: vcc-1v8-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_1v8_p>;
++	};
++
++	vcc_3v3: vcc-3v3-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_3v3";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
++	vcca_1v8: vcca-1v8-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcca_1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_1v8_p>;
++	};
++
++	vcca1v8_image: vcca1v8-image-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcca1v8_image";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_1v8_p>;
++	};
++};
++
++&combphy1 {
++	status = "okay";
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&gpu {
++	mali-supply = <&vdd_gpu_npu>;
++	status = "okay";
++};
++
++&hdmi {
++	avdd-0v9-supply = <&vdda_0v9>;
++	avdd-1v8-supply = <&vcca1v8_image>;
++	status = "okay";
++};
++
++&hdmi_in {
++	hdmi_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi>;
++	};
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
++&hdmi_sound {
++	status = "okay";
++};
++
++&i2c0 {
++	status = "okay";
++
++	rk817: pmic@20 {
++		compatible = "rockchip,rk817";
++		reg = <0x20>;
++		#clock-cells = <1>;
++		clock-output-names = "rk817-clkout1", "rk817-clkout2";
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int_l>;
++		system-power-controller;
++		wakeup-source;
++
++		vcc1-supply = <&vcc_sys>;
++		vcc2-supply = <&vcc_sys>;
++		vcc3-supply = <&vcc_sys>;
++		vcc4-supply = <&vcc_sys>;
++		vcc5-supply = <&vcc_sys>;
++		vcc6-supply = <&vcc_sys>;
++		vcc7-supply = <&vcc_sys>;
++
++		regulators {
++			vdd_logic: DCDC_REG1 {
++				regulator-name = "vdd_logic";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-initial-mode = <0x2>;
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <900000>;
++				};
++			};
++
++			vdd_gpu_npu: DCDC_REG2 {
++				regulator-name = "vdd_gpu_npu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-initial-mode = <0x2>;
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-initial-mode = <0x2>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc3v3_sys: DCDC_REG4 {
++				regulator-name = "vcc3v3_sys";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-initial-mode = <0x2>;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcca1v8_pmu: LDO_REG1 {
++				regulator-name = "vcca1v8_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdda_0v9: LDO_REG2 {
++				regulator-name = "vdda_0v9";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdda0v9_pmu: LDO_REG3 {
++				regulator-name = "vdda0v9_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <900000>;
++				};
++			};
++
++			vccio_acodec: LDO_REG4 {
++				regulator-name = "vccio_acodec";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vccio_sd: LDO_REG5 {
++				regulator-name = "vccio_sd";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc3v3_pmu: LDO_REG6 {
++				regulator-name = "vcc3v3_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_1v8_p: LDO_REG7 {
++				regulator-name = "vcc_1v8_p";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc1v8_dvp: LDO_REG8 {
++				regulator-name = "vcc1v8_dvp";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc2v8_dvp: LDO_REG9 {
++				regulator-name = "vcc2v8_dvp";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++		};
++	};
++
++	vdd_cpu: regulator@40 {
++		compatible = "silergy,syr827";
++		reg = <0x40>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_cpu";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1390000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++};
++
++&i2s0_8ch {
++	status = "okay";
++};
++
++&pinctrl {
++	leds {
++		user_led2: user-led2 {
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&pmu_io_domains {
++	pmuio1-supply = <&vcc3v3_pmu>;
++	pmuio2-supply = <&vcca1v8_pmu>;
++	vccio1-supply = <&vccio_acodec>;
++	vccio2-supply = <&vcc_1v8>;
++	vccio3-supply = <&vccio_sd>;
++	vccio4-supply = <&vcc_1v8>;
++	vccio5-supply = <&vcc_3v3>;
++	vccio6-supply = <&vcc_3v3>;
++	vccio7-supply = <&vcc_3v3>;
++	status = "okay";
++};
++
++&saradc {
++	vref-supply = <&vcca_1v8>;
++	status = "okay";
++};
++
++&sdmmc0 {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	disable-wp;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
++	vmmc-supply = <&vcc3v3_sys>;
++	vqmmc-supply = <&vccio_sd>;
++	status = "okay";
++};
++
++&tsadc {
++	rockchip,hw-tshut-mode = <1>;
++	rockchip,hw-tshut-polarity = <0>;
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&usb2phy0 {
++	status = "okay";
++};
++
++&usb2phy0_host {
++	status = "okay";
++};
++
++&usb2phy0_otg {
++	status = "okay";
++};
++
++&usb_host0_xhci {
++	dr_mode = "peripheral";
++	status = "okay";
++};
++
++&usb_host1_xhci {
++	status = "okay";
++};
++
++&vop {
++	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
++	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi_in_vp0>;
++	};
++};
 -- 
 2.43.2
 
