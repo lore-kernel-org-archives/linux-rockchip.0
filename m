@@ -4,104 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DF5C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1002C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 08:13:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eb4RjYc5x98H1yn2gVfDq58Zm053jf7PTSLp6ly5uVI=; b=llIHdyCJLui64w
-	lw2BdMJZh/q0QONx/ESipS1bWgHj7aw4QHdUBHEoMIGVdDZeRuL0CIug9y+fUPfY3+rVy1NuDbN8H
-	0MNqCk0BV6iu0feVpS4jtpGBHRp42VsRVm1Qg4XhYm58Faq3SBBNBoNLdKvIAT59mVnxfGZcwW6zk
-	Zmg1fTsbRRBdjx7F/rawfElK31aLHIwna6mBRbUDIvm90D/t4yKy0HTM4wQJvUc1X6hwBQ4NJ+0WQ
-	crWvQEZsfmCduV0XZ20Lx0ldEcVOcYr/FwR5kAcvALXhGFKjfN2PC4UsmgKPqYftTsFhMbuvLCgEX
-	nEMRJHTCV1ap4IX7iwWQ==;
+	List-Owner; bh=Eri0jNL37t/ByboBJU88t2DBUYumALNsogTcXmFQcv4=; b=m5DQLpDdSiRl33
+	CK9MZwzthxkJMMnMI49FM9y/Kh7yQ4W7+QkE/n0Sp1pG4iXw00YeF04XkRGTA+d7o768tCUble2g2
+	atqDHfbh3jL2JC53mYwoQNzx1PZ4OJ83Ezxq69SNLu9BiGRUOjSAAwcZg+kAX5WuzbJManr6aWKoU
+	uHc0f2+bDS67zzaR9vsgonO5cZGl1UoyUHvCXI3cxXJhQhxiOR159YBqXWfHsEiWDuzjjXqyrxMqQ
+	X6bFP8+hY1lG5vWJ6uJFanbhtC2OXMHwoP5fZ/w3ZxZZfA6Ojgd2cZZ04Q63RjLhPMjR9QfEslaw4
+	FrfTGh6risjowUQDjgTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHKG-00000007SdL-16yd;
-	Mon, 15 Apr 2024 08:04:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rwHSy-00000007UOP-2WSl;
+	Mon, 15 Apr 2024 08:13:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwHK7-00000007SZX-0gtp;
-	Mon, 15 Apr 2024 08:04:25 +0000
+	id 1rwHSu-00000007ULP-1urU;
+	Mon, 15 Apr 2024 08:13:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9EB1960C02;
-	Mon, 15 Apr 2024 08:04:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C86CAC4AF0A;
-	Mon, 15 Apr 2024 08:04:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5EBAB60C07;
+	Mon, 15 Apr 2024 08:13:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3273C32786;
+	Mon, 15 Apr 2024 08:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713168258;
-	bh=02XS78kOeC4BvdCppGzDA2dmEXYXQsSxj+2gfEv+FZU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jAnhH0GFY6O1f23O9v7nai3wlGsd1NsTJrhZZjSE/JT+GFTVvxLSBPC9iCpF/M4hS
-	 Jmh8Sw+n286LM4fSDgO5u/hLKvTEc/PdavPHsCSygoKcN4YzuWaClrCP+TUKhznVrS
-	 o7bj7xAg5mE+5bjBWvY4oK6fXA5GShex36nRLPDzPk2tGduRIMls5j/ZXhXaJ3FNcp
-	 rvhDAqf7eTwWTyYB2DxAtwjpZPrpx6gle57JMUpufjrQW31fanNWsEZSYTF86KCYRE
-	 29x2K/xGz7/BDOv6yhMqlV94VvyGzUa7SfvQfbjABOZtgKpIr6sQ3TujOHFVCWwUJa
-	 TM3ix5byqkKkg==
-Message-ID: <dcda2991-90bc-41eb-afa3-14a2071a6d19@kernel.org>
-Date: Mon, 15 Apr 2024 10:04:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: add ArmSoM
-To: Jianfeng Liu <liujianfeng1994@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	s=k20201202; t=1713168803;
+	bh=yNPyaoE+1YD2n6GMJmfwIULv/0PA81dmRmXg2JvJ6yM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=gnq6zfL47dW3bC/D+/fHSKBjwzPTKNZVXoSF/k/3LYrKSqevWXQ6zZAmlE9xcF9T6
+	 iQG3dwp7oGhtjr/XDAEKcgYR3Tt8vVum9TmQDCGXM0AW8cx2tjYIIMBNhgsMlxBc7i
+	 Syc5MhpbougAAjW3MJh3EYfByTz1MHScd+w+Sm5kfns6Q/Pe0OJoMyPAxl/v66PLtv
+	 FZ8aX/rbZfK+DXQ/qrfMbKIH7ZJmoXxCyaZq6DW/L6sHt+fcvmpHjeKEZNUlwLZWfc
+	 MiL12hlC8QW2TMknwHhn2TM/5dG8rZVee0IKJ33QwwxYx3IzJtRWcLhUzg8r4rYrxd
+	 IADiDi6+sTxLg==
+From: Maxime Ripard <mripard@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Jani Nikula <jani.nikula@intel.com>, 
+ Lucas De Marchi <lucas.demarchi@intel.com>, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- heiko@sntech.de, sfr@canb.auug.org.au, weizhao.ouyang@arm.com
-References: <20240413153633.801759-1-liujianfeng1994@gmail.com>
- <20240413153633.801759-2-liujianfeng1994@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240413153633.801759-2-liujianfeng1994@gmail.com>
+In-Reply-To: <20240405143531.925589-1-arnd@kernel.org>
+References: <20240405143531.925589-1-arnd@kernel.org>
+Subject: Re: (subset) [PATCH] drm: fix DRM_DISPLAY_DP_HELPER dependencies,
+ part 2
+Message-Id: <171316880026.200641.2717784608814103660.b4-ty@kernel.org>
+Date: Mon, 15 Apr 2024 10:13:20 +0200
+MIME-Version: 1.0
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_010419_355915_ACB6D400 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20240415_011324_613379_0A907A48 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,39 +83,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/04/2024 17:36, Jianfeng Liu wrote:
-> Add vendor prefix for ArmSoM (https://www.armsom.org)
-
-I feel some lawsuits coming...
-
-
+On Fri, 05 Apr 2024 16:35:10 +0200, Arnd Bergmann wrote:
+> After my fix yesterday, I ran into another problem of the same kind:
 > 
-> Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-> ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+> aarch64-linux-ld: drivers/gpu/drm/bridge/analogix/analogix_dp_core.o: in function `drm_dp_dpcd_readb':
+> analogix_dp_core.c:(.text+0x194): undefined reference to `drm_dp_dpcd_read'
+> aarch64-linux-ld: drivers/gpu/drm/bridge/analogix/analogix_dp_core.o: in function `drm_dp_dpcd_writeb':
+> analogix_dp_core.c:(.text+0x214): undefined reference to `drm_dp_dpcd_write'
+> aarch64-linux-ld: drivers/gpu/drm/bridge/analogix/analogix_dp_core.o: in function `analogix_dp_stop_crc':
+> analogix_dp_core.c:(.text+0x4b0): undefined reference to `drm_dp_stop_crc'
+> aarch64-linux-ld: drivers/gpu/drm/bridge/analogix/analogix_dp_core.o: in function `analogix_dp_start_crc':
+> analogix_dp_core.c:(.text+0xbe8): undefined reference to `drm_dp_start_crc'
 > 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index e4aeeb5fe..c6af4da94 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -151,6 +151,8 @@ patternProperties:
->      description: ARM Ltd.
->    "^armadeus,.*":
->      description: ARMadeus Systems SARL
-> +  "^armsom,.*":
-> +    description: ArmSoM
+> [...]
 
-Website says different name. Please use name from the website.
+Applied to misc/kernel.git (drm-misc-next).
 
-
-
->    "^arrow,.*":
->      description: Arrow Electronics
->    "^artesyn,.*":
-
-Best regards,
-Krzysztof
+Thanks!
+Maxime
 
 
 _______________________________________________
