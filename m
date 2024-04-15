@@ -4,101 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69288C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 16:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666BCC4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 17:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3u1GOJNf42t0F6BZuv88VU76YKMRp2lt29libOMUpwE=; b=HRBzOscNTE8L2P
-	ZLUjYbFKPdhKXJaWZc8qZVD0UggP2ZHjUNW/Qi0uaG3fRIsPQxVR5IcgQKCPlYO4w3vCo5jdThpUz
-	3N4e5hU8hB4jEvdg7O31NzYgw4KHdsBzOy3eggoEeWidwfRZ+AEVxzxw5xVon6PF9DkYMmKFFUqad
-	9neX4AQRKVrpx/VewPbchX/8PD+TlHWeRjR6UGBgNhF3tlLgNC2NGVuJlgMEY1sEH2r9MFK0M3Z1K
-	0sdyih7xQsEfobDHRakhBmrZTiVUB75R8vwcpEXIDznYkTdls0aBlpw1wICy3iq+meEp/GkmB0ghc
-	iUjh4tnAqy7qNPAy5G6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=h31MsRLrim9fwDuK+29AnmPRV+RkblUhQGXWgbz3a4I=; b=BKAbZNj+8QNEux
+	uCLNaYkNa/VidOLsIuDmvBZGqLVksP/c/6jEYPyafzG2HkF7bD9AZgMxc4xBi0cQOpEY4Bv3J0XAc
+	gRQ1Kab/8d0dohxbEKYmtzJYSjGVFbe2ayKrH1NkQCYHZlDvaW82oDoxbJdMZiRSjeBsnEonKbRdS
+	tKMKuQ8v+54muPUwQB7vJ9cUdpYAeIporYbMI5KT82hCLx4FRm+p+CsAD8SEi/HpsBXyKxeG2j3LS
+	cJ6zbexeDc8pUgHzwLEQrEls3cEao4m3A1Fmw9dN1BioNLupauQmC7+ChGwK+wfSOTxkY4MLhnqML
+	ZS5UpZVqJrBe/c92nY8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPZ2-000000099f7-1ak0;
-	Mon, 15 Apr 2024 16:52:16 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1rwPnO-00000009FCZ-0Tp9;
+	Mon, 15 Apr 2024 17:07:06 +0000
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwPYu-000000099c8-2ukG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Apr 2024 16:52:10 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-ddda842c399so3639378276.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Apr 2024 09:52:08 -0700 (PDT)
+	id 1rwPkQ-00000009Cx9-36PN;
+	Mon, 15 Apr 2024 17:04:13 +0000
+Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-23333ef4a02so2453786fac.1;
+        Mon, 15 Apr 2024 10:03:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713199927; x=1713804727; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=u5nj7t3vt2EbEPLlkWSc/ywApSrSPp8k4DfqheemWX4=;
-        b=B92KLJkpQFEcR/Anb2ROM740/JbtbyyzlD22jogb6H5hzFKcPQxBF8EtKaBa3bCtvh
-         E1YX9LfIqZeeBwHZ4gVCD5GEyothgk84MVz9WbCRmMbwJGxjD6jNHLUJ8txJYzc4LBqR
-         ZWuO4u7XkPWBQkC+F91U7QzSeJ58+aKwJedKs4sdHanI6S2DkF7n/t2d/9TGFaOQHc6l
-         pS2HgEc+n7R9QIO2i0fUk6Mwp7xgklielyi8KqcVjMtSt62CitUCxsb2fsKjAkDKbG4e
-         g20QzpOYbyLQA9y2XuFCzIre+wH/MEn5yJIUGQvyY8EkD2n/MNZnZHLUNY+SZD4Pgw74
-         JNPQ==
+        d=gmail.com; s=20230601; t=1713200638; x=1713805438; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=IUu9JIJNTBO3wAIzxGe2cXxPg4i1coQGYK14NtOWgy8=;
+        b=KXV+uOxxgG8J1X5k8oJnDw34c1VXyx558gXrwT/78ZGTTahx4Fq0HDuZx98HHkKPmm
+         J6oQ4hZ+a9fXmRVQXUOhM2CWAPHF6CQjySro3mX8DiD6WNmSqvvlOzrB0sZVCjxA3UVJ
+         to9HBLoemeRxNE88iAFVMhnts09kww5UOp+X1K+APydbq6ZyTz02Ucks2RsPAlzJ3hTi
+         atdQhW5s99f+9m0FejZjxVcNF7ujR20URybiqcGe1OKC8B6rGPr59kdtk0NTd+l/u29A
+         BjI3FHis1PcNtbeMdv618qNnnwXz33/uyiNc+vBvF+ocyTpEHX2Qgaug9XJPJjhj5q7c
+         iAag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713199927; x=1713804727;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1713200638; x=1713805438;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=u5nj7t3vt2EbEPLlkWSc/ywApSrSPp8k4DfqheemWX4=;
-        b=tNjD780s5CvxU9Te1iuVDkoXVv7sBWNeOjfgMm0UJPS8uvxSGeucnLHY4p8YnZvfMQ
-         99eiBvev3WFBuA7W+gip0k7b8m8dlPzvSXygn1UU6puZ8GtQWfI+0tNKMfZ3DIwerYkh
-         v4HeC2/RxM+OLJOC5vdf0lV/pewO+6hvBoxW0LrQeeBgnJBamd4/QxskKwjkiGq6JRQa
-         5ZMB7q5Z/gazkM6M8jVjK7qcRR1xcwQt2qQWBR9sn8nqk0wVRZFmxuWMHpjMIGPZhLFo
-         7nzE13T8BxzChMVIznLcEIc1yJTaz5+kpot8XsvjWJzTAv+pwku3njlQIp+tNwydRNiR
-         RZ9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWY8nzqwwzaxwQg+RQeq2AEeSC/s4YjWueWJQlHlkbTnArxUF1v6EcheZlz/F0tYn/Ql7FeFRLhApT3xpSQhoksz1rKHe1KNUDR4VftRzn3Or2E
-X-Gm-Message-State: AOJu0YwJiCTBqX40uYxqYmUPreM/X2DcdO9fnHTMFdWAE3/FNdTnTixm
-	J9db7QBKIoalSgneQYAkZDHYw+lTuQQa6Qq28Sm06Pc8CXTEwci42SQUUOa+f9ymaXkWpGbxh2v
-	O0JHwr88vaYZlfoKJ/s1mmB7skUjHlfnZNLI8UA==
-X-Google-Smtp-Source: AGHT+IFUQH4ONlkcS0+01CEMOIrS9D3xuTmTIKe0INOXof2d+fsMqiJVzA1ER/VV0S5Vp3kzkSBLhneirq6dUQh4r9c=
-X-Received: by 2002:a25:9e0b:0:b0:de0:df15:b372 with SMTP id
- m11-20020a259e0b000000b00de0df15b372mr9733585ybq.63.1713199925395; Mon, 15
- Apr 2024 09:52:05 -0700 (PDT)
+        bh=IUu9JIJNTBO3wAIzxGe2cXxPg4i1coQGYK14NtOWgy8=;
+        b=jCJJVlomvzMQn9glm2g4WS0A9iRYxcG666UiNfrMgi2OIy/WkOF60k/dGx6ieoJgUw
+         bD9T0slAY+EqVr76EidSh4z41l1s3qODqCTRd0mR6qYUFCOuLg6BZjtDR3X1C2oZ83Fd
+         sVxXK4pOGUeN4TKotocWturwmVWwTTVTIoCqur2ncjbd1d4p+1o7Kxq0bpAJwPJPyiV4
+         ceEaYKfKQOFjYiP064ryzU+aIdeYRCWi18Ugh+oOuReSYU7BEEcy6HLdH8NjdGuwWMvs
+         2DCI6jU2wYBE8xLxJ0C8kDJwrTbVT4tg6e4oq5iHyHNBvp52UUWUjgsyRoN3E1z4dDyW
+         tRhA==
+X-Forwarded-Encrypted: i=1; AJvYcCW7Z6tnSPvl63rZXlLM3xrSGG5BHEsLNcGga5PQ/Wvq67BJuHx0FqoemK+4byJ4iwe6LXGy1a1AnT4wvkuLHH71225R1vGzkeOv07S3BwbxtBYcDow=
+X-Gm-Message-State: AOJu0YwNXUHwwCq4n7FN7UxKdtRzwtzNfFfl5ksxOn2NsTHD8umC70+z
+	UhPM56/2FfKS+4XmZfs+MJ9zJvw5S4TWm9c8VUgDgGNPjwDM3YVG
+X-Google-Smtp-Source: AGHT+IF/7GW4NP7SLxvDDVnRXo+EqSGMi+DeAm1mqpjE/dB+trvgMiBTEWlX9fEacaHnJzW2rlkxsg==
+X-Received: by 2002:a05:6870:3290:b0:22a:9edb:27f0 with SMTP id q16-20020a056870329000b0022a9edb27f0mr12682871oac.3.1713200638035;
+        Mon, 15 Apr 2024 10:03:58 -0700 (PDT)
+Received: from tower.cjhon.com ([2603:8081:ad40:11:da43:aeff:fe57:b03a])
+        by smtp.gmail.com with ESMTPSA id qa12-20020a056871e70c00b002331322bbb6sm2328465oac.29.2024.04.15.10.03.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Apr 2024 10:03:57 -0700 (PDT)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: rk3588s-orangepi-5: add USB-C support
+Date: Mon, 15 Apr 2024 12:03:31 -0500
+Message-ID: <20240415170331.1587-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-References: <20240412222857.3873079-1-robh@kernel.org> <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
-In-Reply-To: <Zh0vXinxy7woerJQ@hu-bjorande-lv.qualcomm.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Mon, 15 Apr 2024 19:51:54 +0300
-Message-ID: <CAA8EJpqL2T4bJZqtZ9KF=V2NLnFxUjouA6_Hu_H07DofifZaoQ@mail.gmail.com>
-Subject: Re: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-To: Bjorn Andersson <quic_bjorande@quicinc.com>
-Cc: Rob Herring <robh@kernel.org>, soc@kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dinh Nguyen <dinguyen@kernel.org>, 
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
-	Khuong Dinh <khuong@os.amperecomputing.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	Robert Richter <rric@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, "Paul J. Murphy" <paul.j.murphy@intel.com>, 
-	Daniele Alessandrelli <daniele.alessandrelli@intel.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Jisheng Zhang <jszhang@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-fsd@tesla.com, 
-	Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-realtek-soc@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_095208_865352_9B135F2D 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240415_100403_126635_6B4C4AEA 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,29 +90,162 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Apr 2024 at 16:46, Bjorn Andersson <quic_bjorande@quicinc.com> wrote:
->
-> On Fri, Apr 12, 2024 at 05:28:51PM -0500, Rob Herring wrote:
-> [..]
-> >  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
-> >  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
-> >  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
-> >  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
->
-> Acked-by: Bjorn Andersson <andersson@kernel.org>
+Add support for using the Orange Pi 5 USB-C port for USB in OHCI, EHCI
+or XHCI mode. Displayport AltMode is not yet supported.
 
-Note, we'd need to override PMU compatibles in sdm636.dtsi and
-sdm660.dtsi. Ideally it should come as the same patch.
+Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+---
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 106 ++++++++++++++++++
+ 1 file changed, 106 insertions(+)
 
->
-> Regards,
-> Bjorn
->
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+index 25de4362af38..8d1a75844673 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+ 
+ / {
+@@ -212,6 +213,64 @@ &i2c6 {
+ 	pinctrl-0 = <&i2c6m3_xfer>;
+ 	status = "okay";
+ 
++	usbc0: usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usbc0_int>;
++		vbus-supply = <&vbus_typec>;
++		status = "okay";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++
++				usbc0_role_sw: endpoint@0 {
++					remote-endpoint = <&dwc3_0_role_switch>;
++				};
++			};
++		};
++
++		usb_con: connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			data-role = "dual";
++			op-sink-microwatt = <1000000>;
++			power-role = "dual";
++			sink-pdos =
++				<PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
++			source-pdos =
++				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
++			try-power-role = "source";
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc0_orien_sw: endpoint {
++						remote-endpoint = <&usbdp_phy0_orientation_switch>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					dp_altmode_mux: endpoint {
++						remote-endpoint = <&usbdp_phy0_dp_altmode_mux>;
++					};
++				};
++			};
++		};
++	};
++
+ 	hym8563: rtc@51 {
+ 		compatible = "haoyu,hym8563";
+ 		reg = <0x51>;
+@@ -625,6 +684,14 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
++&u2phy0 {
++	status = "okay";
++};
++
++&u2phy0_otg {
++	status = "okay";
++};
++
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -646,6 +713,29 @@ &uart2 {
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
++	mode-switch;
++	orientation-switch;
++	sbu1-dc-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
++	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		usbdp_phy0_orientation_switch: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_orien_sw>;
++		};
++
++		usbdp_phy0_dp_altmode_mux: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&dp_altmode_mux>;
++		};
++	};
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -654,6 +744,22 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
+ 
++&usb_host0_xhci {
++	dr_mode = "otg";
++	usb-role-switch;
++	status = "okay";
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		dwc3_0_role_switch: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&usbc0_role_sw>;
++		};
++	};
++};
++
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
 -- 
-With best wishes
-Dmitry
+2.44.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
