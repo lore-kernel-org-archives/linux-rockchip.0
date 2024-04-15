@@ -4,161 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 964EDC4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 11:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A80C5C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Apr 2024 12:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
-	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VEqYxYbpZgLeiD5rpfBk1sR5R0e74B/GCPSivm/XqTg=; b=IzEHfcJn9iRqQC
-	ahykDlNmkw3JIN7CZmbKrBAd1ps1wvXdaGZISxWKhxELNCqKbMHX3vLMRskuk3jJBaJNJmULcquoL
-	hTaYOgIE9MQ1FNScc9H12o18EjrmtaD9BMBTufqJnMd9YV4ubh8N6GXJ/O2RRTNENNodzKbtu06OQ
-	7q6ELbdh1PUqO3/OkIYih1NUGsmQMClhNAc8s+/lZ+q7vJ2J6xf8lgg9v29ZgoguDTiJVmOfNlrwl
-	wl21xGhDFdgbUSEOabZbuLOM9d63vD8noQaRWQt/G5/ldHmEFmpYCBBVD+FcyQktHDXaURNeL9smI
-	AFIq3PXIocnZm/Cg2e9g==;
+	List-Owner; bh=5r1BeAwjWPJnQiuF6ATrpRwKJo13JSpCXQzwjjQvoRs=; b=Mm4dXLqnb/dpBW
+	YqH6aGsHml+xhW5XsUyEBNBwJMFYV9epZqff5y5C+bvFaU2NiYdvFI9h0Xs4rwIk8hs8nIi/H2iF/
+	3UtCDZuqeu7xsUocEn/YkQDCZyyz7z4GUHvXv0PqLhBnMR5/fNrqpWsu1ZhGV4u7TSvMI0yQDi2QD
+	zVkwhh+y428CAvBam85dUOrrf7nwDBNz1AgBF9CFwLaA2pRhiuBaFesNp3Hwp99kTwGMqGDGlF0Gj
+	OTJkDh2RTFcAIsqdCAokW4JK4oKJcbvp6jF3f19do6Ayn0kvy/jIDL4pmdo3qTwQZxzowPEKNuiay
+	8hGaicZXncusjx2WKKlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwKpt-000000085Ft-0ogU;
-	Mon, 15 Apr 2024 11:49:21 +0000
-Received: from mailout4.samsung.com ([203.254.224.34])
+	id 1rwLV7-00000008CoW-2SNz;
+	Mon, 15 Apr 2024 12:31:57 +0000
+Received: from mail-m49221.qiye.163.com ([45.254.49.221])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwKpm-000000085B2-0yOf;
-	Mon, 15 Apr 2024 11:49:17 +0000
-Received: from epcas5p2.samsung.com (unknown [182.195.41.40])
-	by mailout4.samsung.com (KnoxPortal) with ESMTP id 20240415114905epoutp047ec76ae33f35546306f3645b8a63e6d3~GcbiXPQqs2027520275epoutp04F;
-	Mon, 15 Apr 2024 11:49:05 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com 20240415114905epoutp047ec76ae33f35546306f3645b8a63e6d3~GcbiXPQqs2027520275epoutp04F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1713181745;
-	bh=xiCoQ88Z4aGkr+U0s3cjc/8zyNw/xshgaY2fZquL++8=;
-	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
-	b=mVNncCu/4q324nre0zv4OS2gPOdqkPVfQgxQVb0C8k9GPKF30WlBMBu8+LVObanpl
-	 ZtaDf7es8zp8wDqChl6ATSV8N5a0br+8bdEhggjd+z5puL/NAe2NNZ4aReN17AIx6L
-	 3Dnl8gALewtz09KtOzW2dFOTuL5ILBztMYs0doIE=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
-	epcas5p4.samsung.com (KnoxPortal) with ESMTP id
-	20240415114905epcas5p4eacaaad84bb05b4fd2bf1ff9eca4400f~Gcbhyt3Pj1794217942epcas5p4M;
-	Mon, 15 Apr 2024 11:49:05 +0000 (GMT)
-Received: from epsmges5p1new.samsung.com (unknown [182.195.38.181]) by
-	epsnrtp4.localdomain (Postfix) with ESMTP id 4VJ56l4Ylwz4x9Pw; Mon, 15 Apr
-	2024 11:49:03 +0000 (GMT)
-Received: from epcas5p3.samsung.com ( [182.195.41.41]) by
-	epsmges5p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	A2.EE.09666.F241D166; Mon, 15 Apr 2024 20:49:03 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
-	epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
-	20240415114903epcas5p47c4eeb90c7407377878f6a6bd2bc1458~Gcbfxdu7t1794217942epcas5p4K;
-	Mon, 15 Apr 2024 11:49:03 +0000 (GMT)
-Received: from epsmgms1p2new.samsung.com (unknown [182.195.42.42]) by
-	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20240415114903epsmtrp190d3f7c835c3802c90fd5f7e320072df~GcbfvzlT40122301223epsmtrp1R;
-	Mon, 15 Apr 2024 11:49:03 +0000 (GMT)
-X-AuditID: b6c32a49-cefff700000025c2-6f-661d142f157f
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
-	epsmgms1p2new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	65.57.08390.E241D166; Mon, 15 Apr 2024 20:49:02 +0900 (KST)
-Received: from INBRO000447 (unknown [107.122.12.5]) by epsmtip2.samsung.com
-	(KnoxPortal) with ESMTPA id
-	20240415114855epsmtip20375f57d0f3c7972dd46af099f38f3dd~GcbYxrnY92898028980epsmtip2b;
-	Mon, 15 Apr 2024 11:48:55 +0000 (GMT)
-From: "Alim Akhtar" <alim.akhtar@samsung.com>
-To: "'Rob Herring'" <robh@kernel.org>, <soc@kernel.org>, "'Krzysztof
- Kozlowski'" <krzysztof.kozlowski+dt@linaro.org>, "'Conor Dooley'"
-	<conor+dt@kernel.org>, "'Florian Fainelli'" <florian.fainelli@broadcom.com>,
-	"'Broadcom internal kernel review list'"
-	<bcm-kernel-feedback-list@broadcom.com>, "'Dinh Nguyen'"
-	<dinguyen@kernel.org>, "'Tsahee Zidenberg'" <tsahee@annapurnalabs.com>,
-	"'Antoine Tenart'" <atenart@kernel.org>, "'Khuong Dinh'"
-	<khuong@os.amperecomputing.com>, "'Liviu	Dudau'" <liviu.dudau@arm.com>,
-	"'Sudeep Holla'" <sudeep.holla@arm.com>, "'Lorenzo	Pieralisi'"
-	<lpieralisi@kernel.org>, "'Ray Jui'" <rjui@broadcom.com>, "'Scott	Branden'"
-	<sbranden@broadcom.com>, "'Robert Richter'" <rric@kernel.org>, "'Shawn Guo'"
-	<shawnguo@kernel.org>, "'Li Yang'" <leoyang.li@nxp.com>, "'Sascha Hauer'"
-	<s.hauer@pengutronix.de>, "'Pengutronix Kernel Team'"
-	<kernel@pengutronix.de>, "'Fabio Estevam'" <festevam@gmail.com>, "'Paul J.
- Murphy'" <paul.j.murphy@intel.com>, "'Daniele Alessandrelli'"
-	<daniele.alessandrelli@intel.com>, "'Andrew Lunn'" <andrew@lunn.ch>,
-	"'Gregory	Clement'" <gregory.clement@bootlin.com>, "'Sebastian Hesselbarth'"
-	<sebastian.hesselbarth@gmail.com>, "'Matthias Brugger'"
-	<matthias.bgg@gmail.com>, "'AngeloGioacchino Del Regno'"
-	<angelogioacchino.delregno@collabora.com>, "'Thierry Reding'"
-	<thierry.reding@gmail.com>, "'Jonathan Hunter'" <jonathanh@nvidia.com>,
-	"'Bjorn	Andersson'" <andersson@kernel.org>, "'Konrad Dybcio'"
-	<konrad.dybcio@linaro.org>, =?utf-8?Q?'Andreas_F=C3=A4rber'?=
-	<afaerber@suse.de>, "'Heiko Stuebner'" <heiko@sntech.de>, "'Orson Zhai'"
-	<orsonzhai@gmail.com>, "'Baolin Wang'" <baolin.wang@linux.alibaba.com>,
-	"'Chunyan Zhang'" <zhang.lyra@gmail.com>, "'Jisheng Zhang'"
-	<jszhang@kernel.org>, <linux-fsd@tesla.com>, "'Michal Simek'"
-	<michal.simek@amd.com>
-Cc: <devicetree@vger.kernel.org>, <linux-rpi-kernel@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<imx@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-realtek-soc@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>
-In-Reply-To: <20240412222857.3873079-1-robh@kernel.org>
-Subject: RE: [PATCH] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible usage
-Date: Mon, 15 Apr 2024 17:18:54 +0530
-Message-ID: <0b3b01da8f2a$e9560ca0$bc0225e0$@samsung.com>
+	id 1rwLV3-00000008ClZ-2Xqt;
+	Mon, 15 Apr 2024 12:31:56 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=SbJFW4qVuEaI4qcFvFthxSYZN4hPn7MyUoKzRBmeQfFIm3SP37qsqNN4ILlu0sJO5R/nhczUDH9lh3KNsJEJ83P6HwmxII+KR1Hfj1Kezs+6y5/oxgE8vrbbFOvbUFWAG49vJ/AXVl9zgXIDSuDca/M4nY+XqL+wCmz22kDKU3o=;
+	s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=7fFzxdWwdQyIeDGK8d/RTm034/Lv0WNsN5Qi/0l6TgI=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 370E2840680;
+	Mon, 15 Apr 2024 20:31:18 +0800 (CST)
+Message-ID: <0bc127b7-ef34-49f6-92d5-03ec3633f694@rock-chips.com>
+Date: Mon, 15 Apr 2024 20:31:03 +0800
 MIME-Version: 1.0
-X-Mailer: Microsoft Outlook 16.0
-Thread-Index: AQLY8iYk/Bpt/dsaN0W9BEDsUNhRuQIeG7qZr1t/T6A=
-Content-Language: en-us
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta1CUZRT2/a67MujHxXijtHUdLTUuK7eDeUkj/FRUZpp0pqlwg2+BAXbX
-	3cXSsNBdEUSwrUBYAeWSFBKriwMLQuqKGk1KeEFHxEDAARFSbCoEpYVPy3/POed53uec98yR
-	kO4lEm9JvNog6NTKRDkzlao5O3++j5/nTJV/VuqrYLTpoSZ9CbR0OEi4/AOGh4VHEYw3nkfw
-	Y9Y5CiobLxFw6+4ZBIeaLtFwruUkAV3XNkBVzW0SCr7fBuN3BmjIv72bAZOlhALjeSsDFTl1
-	FBR/XUND+je1FGT3dZHgMJ4mwNbdRoP51EUWuu5tgiv1BQxcMbYisOZeZWC4c5wEc/sxFvJa
-	fiIg408LA6e/20OBacxEwS5TADReaKXhwIODCEYdwzT05lczMN5gZ+FMxXECntTaKBg62oPg
-	j5EV0HfCC7qvjzFQ/oudgpH6IgqqSvNZKO+sZ98O4HdffsLwTwetLF9ZVIn4osrPecvvFxne
-	3lGG+DpLB8uXNvQTvK0ig+FvtTUwfF1XKF9d9iXfV53vJNgfEXyWcYjhjw/ZiciXPkhYEico
-	YwSdTFBHa2Li1bFL5Wvfi3onKijYX+GjCIUQuUytTBKWysMiIn3C4xOd65DLtioTk52pSKVe
-	L/dbtkSnSTYIsjiN3rBULmhjErWBWl+9MkmfrI71VQuGxQp//0VBTuLmhLjiMzZa+9jjs/Z9
-	D9lUlD59L5JKMBeIK27lob1oqsSdO4lwRkfrs2AY4YM3TLQY/IXw/cdt9HPJ5dxsViw0Ipzr
-	MJNi0IfwaPd9ZoLFcD7YXpo2iT25hmn4dlHSBInkMkmcZ901WZByIbi5+ubksx5cBC7sy3Zi
-	iYTi5uL92asm0q5cKK5qbEAidsPN+T3UBCa513DtYAEpdiTDI71HaNFrMS4prSJEjhfuP9c0
-	2SnmTC54fMDIiIIwfDTb+GwcD3zvwglWxN64f38aO9ED5nhcMuYtpuPwYLkViXg5Pn21gJqg
-	kNx8bK33E62m4azRHkJUuuL0NHeRPRcbh65RIn4FmzMzn5nyuKf+EfkVmm15YTDLC4NZXhjA
-	8r/ZYURVoJcFrT4pVtAHaRVq4dP/9h2tSbKhyWNdsNqOOjof+DoQIUEOhCWk3NPV5DFT5e4a
-	o9y2XdBponTJiYLegYKcn20mvWdEa5zXrjZEKQJD/QODg4MDQwOCFXIv14HdhTHuXKzSICQI
-	glbQPdcREql3KhFgyFPVDB9zq2sqkW1+PWDGRunH0dJThd0kzTbNaouY58txUZHW1avLFh2S
-	jm3esH6Dm2rtlLwpNR5JZetD3l/Xdac3U4h7mLZmTur1NS3Fs2Yc/luzx7Di7saIdpXL8mvL
-	MsprvVaMyqokWp0uxXhz589FK2fteGo3bwrp8FzYnhO+5UBnqNFkowJUZ0cevKXS0Tc08WMU
-	77OwLTV6zuzh7i0qs094wkDKu6kVndMPTAtbmZAT/m1znefesSPSugs72eaCN1q+aNru6VJU
-	qe4VloX4058UZ6zre7N/lV6m/XD/jhEXWc5gYXFwWPJ2P0dI6zyHmyl5/Ld/AlO2rmk++9Gv
-	uyLklD5OqVhA6vTKfwGghwx2NQUAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTdxTH97u9vfeCYdbCyg8IU7sHA6TiVDwom2Oa7C5bxJgZE9wyyygv
-	KZAWx8oeENoiqCDVQG3lDcqoCKMQKNhu0EkXNnmIz03rqFKFIQyZYWOoTChL+O+b8/meT84f
-	h+Hwj1G+TGJKukSWIk4WUu5k24/C1SEiL/+40KKcraA0yqEtLwIG7FYODNVjeFR2DsG8xYbg
-	fEEPCQ2WfgJu3+9GUHGxnws9AxcIcFyLgsa2Oxwo/VYB83fHuaC7o6ZApa8mQWlrosBQ3EFC
-	1Yk2LuSdbCehcNTBAauyiwDjvetc0PzQR4Pjj31wpbOUgivKywiaSq5SMD08zwHNre9oODXw
-	PQH5j/UUdJ05TILqiYqEHNVGsPx0mQvaqdMI5qzTXHDqWiiYN5to6DY0E/C03UjC5LkRBH/O
-	RsJoqzfcu/GEgrqfTSTMdpaT0Fijo6FuuJN+ZyOrHnpKsc8mmmi2obwBseUNX7L63/so1mSv
-	RWyH3k6zNeYxgjUa8in29nUzxXY4wtmW2ix2tEX3vGD6i2ALlJMU2zxpInYLot0jYiXJiZ9L
-	ZOvfPuCeUNVt5Kb96/nFrWOP6GyUt/IIcmMwbxMeKimkjyB3hs+7gLBGOUa7gB++0Vy0lD1x
-	/bMHS6X7COeevoQWAMULwaaaXGoBePGuvohbLEruAuDwijm4cmKnayMP4f65CWoBuPG24N6W
-	3xZLnrwPcdlo4fPMMCTvNXy88L2FsQcvHDdazMiVV+Fe3QjpcgZj56/Opbwat0+UclzXrcGz
-	zrOLSi/eVlxd00i4Ot54rOciXYQ89ctU+mUq/TKVftlKJSINyEeSJpfGS+Ub0t5MkWSI5GKp
-	/FBKvOizVKkRLT5sUJAJmQ1TIisiGGRFmOEIvTxUnv5xfI9YsSJTIkv9VHYoWSK3Ij+GFHp7
-	zIwXxPJ58eJ0yUGJJE0i+58SjJtvNlEXOJ9QOWywz6y69m7YgbW0qlZg6RisEEhTE6tPVO4p
-	2TWnLiZPapPf2h2y+WyIIylAvR32p6tTAmzBigeZr7w6BLHSCCbjkjDpqzUPNzd/sG58TKP9
-	2jlyvnrl66Lsvds7Fdu8oxIc4/z346YeZ4mQ+e+d8tCsaajRBAfm9gZzTYXRD1eE2bZp1QG/
-	vJBxtzeZ2KdsVZxJDA/00UaumOEOygYqBfGN/HrnJy9rhTGWikhvwQ7fw5tiQtfGrEMvdflH
-	55wK6oY02/oOza4o9ug3HyWV7b95VKr4J8LuI2jt24Jse4fsNwdbParyD+pwSBmaKN3hV5Xz
-	cWaBfY8g7A0hKU8QbwjiyOTi/wBJ6xsTHwQAAA==
-X-CMS-MailID: 20240415114903epcas5p47c4eeb90c7407377878f6a6bd2bc1458
-X-Msg-Generator: CA
-CMS-TYPE: 105P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20240412222916epcas5p4eaf4b2eeb34e8fad4634d8fca9196e98
-References: <CGME20240412222916epcas5p4eaf4b2eeb34e8fad4634d8fca9196e98@epcas5p4.samsung.com>
-	<20240412222857.3873079-1-robh@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm: vop2: Do not divide height twice for YUV
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stubner <heiko@sntech.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20240414182706.655270-1-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20240414182706.655270-1-detlev.casanova@collabora.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhgfSFZKHklJTBhIQ05MHR1VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8ee1bd892703a4kunm370e2840680
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MiI6Lzo4STMKLwkiTj8VQ0NI
+	TQhPCypVSlVKTEpISkNPSUxCSUlLVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT09LQjcG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_044915_330411_3176C6E6 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20240415_053154_261710_9F044438 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,62 +74,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
+On 4/15/24 02:27, Detlev Casanova wrote:
+> For the cbcr format, gt2 and gt4 are computed again after src_h has been
+> divided by vsub.
+> 
+> As src_h as already been divided by 2 before, introduce cbcr_src_h and
+> cbcr_src_w to keep a copy of those values to be used for cbcr gt2 and
+> gt4 computation.
+> 
+> This fixes yuv planes being unaligned vertically when down scaling to
+> 1080 pixels from 2160.
+> 
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
 
-> -----Original Message-----
-> 
-> The "arm,armv8-pmuv3" compatible is intended only for s/w models.
-> Primarily, it doesn't provide any detail on uarch specific events.
-> 
-> There's still remaining cases for CPUs without any corresponding PMU
-> definition and for big.LITTLE systems which only have a single PMU node
-> (there should be one per core type).
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Acked-by: Andy Yan <andy.yan@rock-chips.com>
 > ---
-> SoC Maintainers, Can you please apply this directly.
-> ---
->  arch/arm/boot/dts/broadcom/bcm2711.dtsi              | 4 ++--
->  arch/arm64/boot/dts/altera/socfpga_stratix10.dtsi    | 2 +-
->  arch/arm64/boot/dts/amazon/alpine-v2.dtsi            | 2 +-
->  arch/arm64/boot/dts/apm/apm-storm.dtsi               | 2 +-
->  arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts | 2 +-
->  arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi     | 2 +-
->  arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi  | 2 +-
->  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls208xa.dtsi       | 5 -----
->  arch/arm64/boot/dts/freescale/imx8dxl.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/keembay-soc.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/socfpga_agilex.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/armada-37xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/mediatek/mt8516.dtsi             | 2 +-
->  arch/arm64/boot/dts/nvidia/tegra210.dtsi             | 2 +-
->  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/sdm630.dtsi                 | 2 +-
->  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
->  arch/arm64/boot/dts/realtek/rtd16xx.dtsi             | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi             | 2 +-
->  arch/arm64/boot/dts/sprd/sc9860.dtsi                 | 2 +-
->  arch/arm64/boot/dts/sprd/sc9863a.dtsi                | 2 +-
->  arch/arm64/boot/dts/synaptics/berlin4ct.dtsi         | 2 +-
->  arch/arm64/boot/dts/tesla/fsd.dtsi                   | 2 +-
-
-For FSD SoC,
-
-Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
-
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 22 +++++++++++---------
+>   1 file changed, 12 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index fdd768bbd487c..62ebbdb16253d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -706,6 +706,8 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+>   	const struct drm_format_info *info;
+>   	u16 hor_scl_mode, ver_scl_mode;
+>   	u16 hscl_filter_mode, vscl_filter_mode;
+> +	uint16_t cbcr_src_w = src_w;
+> +	uint16_t cbcr_src_h = src_h;
+>   	u8 gt2 = 0;
+>   	u8 gt4 = 0;
+>   	u32 val;
+> @@ -763,27 +765,27 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+>   	vop2_win_write(win, VOP2_WIN_YRGB_VSCL_FILTER_MODE, vscl_filter_mode);
+>   
+>   	if (info->is_yuv) {
+> -		src_w /= info->hsub;
+> -		src_h /= info->vsub;
+> +		cbcr_src_w /= info->hsub;
+> +		cbcr_src_h /= info->vsub;
+>   
+>   		gt4 = 0;
+>   		gt2 = 0;
+>   
+> -		if (src_h >= (4 * dst_h)) {
+> +		if (cbcr_src_h >= (4 * dst_h)) {
+>   			gt4 = 1;
+> -			src_h >>= 2;
+> -		} else if (src_h >= (2 * dst_h)) {
+> +			cbcr_src_h >>= 2;
+> +		} else if (cbcr_src_h >= (2 * dst_h)) {
+>   			gt2 = 1;
+> -			src_h >>= 1;
+> +			cbcr_src_h >>= 1;
+>   		}
+>   
+> -		hor_scl_mode = scl_get_scl_mode(src_w, dst_w);
+> -		ver_scl_mode = scl_get_scl_mode(src_h, dst_h);
+> +		hor_scl_mode = scl_get_scl_mode(cbcr_src_w, dst_w);
+> +		ver_scl_mode = scl_get_scl_mode(cbcr_src_h, dst_h);
+>   
+> -		val = vop2_scale_factor(src_w, dst_w);
+> +		val = vop2_scale_factor(cbcr_src_w, dst_w);
+>   		vop2_win_write(win, VOP2_WIN_SCALE_CBCR_X, val);
+>   
+> -		val = vop2_scale_factor(src_h, dst_h);
+> +		val = vop2_scale_factor(cbcr_src_h, dst_h);
+>   		vop2_win_write(win, VOP2_WIN_SCALE_CBCR_Y, val);
+>   
+>   		vop2_win_write(win, VOP2_WIN_VSD_CBCR_GT4, gt4);
 
 _______________________________________________
 Linux-rockchip mailing list
