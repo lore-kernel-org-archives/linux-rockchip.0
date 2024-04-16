@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DF6C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 03:47:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15CABC4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 03:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vPwbPT3xcATj9Xhjtxlnn3PUVZw1KG3W7Jfq1w2dugo=; b=isex1oXfBDtfJ0
-	MHGS0wTSKui82cdx/o5dy2mUsy9P4MI8thfSQxjY05GUZStA3iztHvLtMZQxwuYSNqM8vZcE9JJ5T
-	8WRXHxK28+c5GK1Tex55lTHktDM7yI1ReK+kZO4FEn49JIUlApYvh7Q7Sm9RLKQ6LRR1wpm3RUWSk
-	+4J9vXhJq0EljHXi9EmyaXQ8Y6tQYuVWR2+LV5rsekUakcnWc6SyUC8bB6oAHvvYwSQWsiXWQ1P67
-	0uKRPTEUpTFQ89hGqCgeiho27Ftn4SBr6WaDDFydSOSuWscBiMa1zllPtXl3Ec4kijqMAO2axbWSK
-	riWtEG+Iohb7bocgiQbg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dc6hByEfrGO6q4wwqSZAN9BHMj15R4UsdL890Ft3Kv4=; b=SGUgWdjodrSRR0
+	/cIxF6yp+3r0Snl6WtPlOEOYu5TNtfVuozhJDxvVcbEB9lMhx09JW9/k3DmnbX1PDru8/dJVnDw10
+	43o5RaHUYvWFFIzUzC38QLSKd7gjYriPlf8tmn0FaWiRBeUme9u2fQPKOqBSHHkzab8xo97cS5S1u
+	J+U6UDOGHE3PqTu8jQNJGk4Vv0yo2KBG9qOKSkHYad2+RTPyKC6OEVQYHTOzs6R+YOqHG5mBUtI6R
+	5WPKXl7v+OZC7TOnL2pyIgvX0L/CZCFBMnMCuhIR8SyFuNMLiAoazLzRmSbj9ovg8KP03LzRUglYO
+	YiG5l/D1ooNc1Hem7kNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwZnJ-0000000AhSx-30RY;
-	Tue, 16 Apr 2024 03:47:41 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1rwZnS-0000000AhWo-2a5B;
+	Tue, 16 Apr 2024 03:47:50 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwZnF-0000000AhSP-0BM7;
-	Tue, 16 Apr 2024 03:47:38 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-2a475bdd4a6so2225759a91.2;
-        Mon, 15 Apr 2024 20:47:36 -0700 (PDT)
+	id 1rwZnK-0000000AhT1-2TZJ;
+	Tue, 16 Apr 2024 03:47:44 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-2aa67da7a1dso701507a91.3;
+        Mon, 15 Apr 2024 20:47:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713239256; x=1713844056; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vE9TehhVe5dLLae17iDDbi7HMgNctUCXygXG9Azr2QY=;
-        b=hwI6pxHhlNTqvwPXFxoZL/tTdcn9R/eUJxMXKcb/4lfmPSttTrneb8ZHwHiwRvX+D3
-         RcGGV9aicY4a/jYS09ydSIMN5vG9LC+dco5o7uTqIxfwXd3WTuLzY/cQGm1nhD77rGyT
-         +EUUmAkO/4QWpWfmMk0BDSazoWionmiRjDYhCpCuVsYSIPTaOhiJSTsrX/7U52T/a0i+
-         8z6gcrQwF9yauqVNAuexkimCCXdzWX11Mtw9i4Fm/rImuG1ewagtuNVuZn4+86/wAs2B
-         k58wlfLrIazJN5fDLmrXejpZnLHBrH2x38cKPlsRFxWEcWtuhJooiR7IZ+VT661QTXQP
-         PxuA==
+        d=gmail.com; s=20230601; t=1713239261; x=1713844061; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JxqWvddsK3MTcsP5PP2zajM9rLezNvqOsmF2usnJs6U=;
+        b=JP/Qt58tB7vLsu4298SABsPc1fTxizLipNIahO1YNHftsZ3dEMAeQAB1V/CL7T89x2
+         MPWe91JqGoZr/XS+97zSopDIRjESPdqQ3njs218XeYi9V7NPgujFtoH6PeWNDac4FMu/
+         0CCilu0Hz7JUOMYLVjuF8nhCGoLt94DU1/wQPmoxDgc56Wd5pbetsYDTpAdhsXYZvat1
+         bNiVRTlm8Zl8z+UclY3nDtVcf1bwpN9TYXV9O8Zxg7Z8SskJ+ObOQ/woPTTVlhLqw6z+
+         vnmEAFCLsPA7bMKV3hHbuxu2wErOgr6vVp3gZj0IDKk2GsKNRzfBHsS7kQVOz/Uf9oHN
+         Lz1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713239256; x=1713844056;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vE9TehhVe5dLLae17iDDbi7HMgNctUCXygXG9Azr2QY=;
-        b=MYdJxulsYAbdOydt74dTlCBloJc2seBveqiGE1xVlRBoqieEc43uWVoA+9ValLhozK
-         fpUNTMX39ir7PsfHZ08tLLTZreptN/NBrABUUD+vvXrlyDKBooGuEm5MaI0VbGGkAWOu
-         tlpQ9O+6aLPNal4TJEQFrIDM81vvHCq7nG7KGZYbhUJ8L+PP4Y68kh+Vj5Qaylhoj9eJ
-         fxnsaEEaKuEFy7FqZ6SvI6cuiEV/DHKC1aKcWbV+zzjFisPi/snqC97lLMc0xZTWmtrN
-         Ep8Mr00SHmkREaL9zcBBOJ9CmCmAd7/tmyhen4fd3fLAzuCinDtHV7Svg93NveKHX76b
-         SxOw==
-X-Forwarded-Encrypted: i=1; AJvYcCUtHWzZC62kHfOLwM9JRLi1bp9Ekg+xF4liPywkOI7RmMir1Kzn3tUIu8ofG0j3vmu7fxnoGEgT1UQh2x9GBy+0gBqKWi0rETsvyTYI0UkeVTM4OuOcRR5wNrdk249/doBI0i2sO4YxLzdYOUsa5hh3h5GZiEdEN48=
-X-Gm-Message-State: AOJu0YyA8aBoMXsiuX9XyjREuvSzhXiJw9S7bMMza1tYUdSAzf1+UkWC
-	U5/03EIAHRJpuJoTQav98wm5KtllC4Fv8QXMQORbEqA9NtHAvUulO0L1Rmjr4bM=
-X-Google-Smtp-Source: AGHT+IHdEVPnQTq33bviY1bVGMyNJ/KKptNJC1+Zy+9wn58hubkabul9+m1Or3B9SXi3oG6bpmAvrQ==
-X-Received: by 2002:a17:90b:164c:b0:2a2:c16:d673 with SMTP id il12-20020a17090b164c00b002a20c16d673mr12161559pjb.36.1713239255888;
-        Mon, 15 Apr 2024 20:47:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1713239261; x=1713844061;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=JxqWvddsK3MTcsP5PP2zajM9rLezNvqOsmF2usnJs6U=;
+        b=boyg13bojEi9ExBzTC21kQsx2e7ixK5FaYRbx/Q2UdzxliZ0ycwmyS4sYPqEBNz3UF
+         Q3ggCDghy3LGs3ykSaGHQ2ZpzWPrS8VM9yc5iG7/zw8t6N9iSVsYk27so5B5y8UKkcEs
+         DcupiiNhWpG6bSfzruYg89+XXHRVBMHs8tj89kgvZJcn/ZUQz8yXjBBBFudJoVzFjeMN
+         kizrJyHc2Vt7+2bO2YaxqOERdtO8KMPF/v1+x6WJ5inbS601Gpwv28TliJxSdJ6egcKs
+         tv/1zHs+X/Tt7OM869aNnTQlGQ3EwwW03TfsP7ltREEkLt5Ud3tSex92eqvEY242ucqx
+         bVDw==
+X-Forwarded-Encrypted: i=1; AJvYcCVQmxgCPQY5rBk0dJWF41Ed5hh4byX/Zm44DRnH8zSnA2t1GO0pJADijnhV8f7Qm9V0bhA9Cd95N/c61k+m6RL/vwVp7IMhlmFogPy1Wm3iKR8/d8ci5mRVtF3t0WzTj4HE5hrq4f/hmISyXp9aP4KBM3H91a6eTbU=
+X-Gm-Message-State: AOJu0Yz+DiGaTkGQCzYfuklbK4CHCvhPftE83Z0cKOM0itbZsyD0cVIw
+	pDySzKPkECGSajKqAE1IJx0kshdkGf8y+thfaBr87Nq6g568tn9L
+X-Google-Smtp-Source: AGHT+IFSAyh/H7N2ICssOfQ2GAq52mPe+DM5mYfpzUlOiwseqH3p2hzoggxEx5ubCtHWFUkP0rvWIg==
+X-Received: by 2002:a17:90a:de92:b0:2a5:52c3:4ca9 with SMTP id n18-20020a17090ade9200b002a552c34ca9mr11313420pjv.29.1713239261470;
+        Mon, 15 Apr 2024 20:47:41 -0700 (PDT)
 Received: from localhost.localdomain ([221.220.135.251])
-        by smtp.gmail.com with ESMTPSA id u6-20020a17090adb4600b002a51dcecc49sm7748815pjx.38.2024.04.15.20.47.30
+        by smtp.gmail.com with ESMTPSA id u6-20020a17090adb4600b002a51dcecc49sm7748815pjx.38.2024.04.15.20.47.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 20:47:35 -0700 (PDT)
+        Mon, 15 Apr 2024 20:47:41 -0700 (PDT)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
 To: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
@@ -73,14 +74,16 @@ Cc: robh@kernel.org,
 	liujianfeng1994@gmail.com,
 	sfr@canb.auug.org.au,
 	weizhao.ouyang@arm.com
-Subject: [PATCH v4 0/3] Add ArmSom Sige7 board
-Date: Tue, 16 Apr 2024 11:46:23 +0800
-Message-Id: <20240416034626.317823-1-liujianfeng1994@gmail.com>
+Subject: [PATCH v4 1/3] dt-bindings: vendor-prefixes: add ArmSoM
+Date: Tue, 16 Apr 2024 11:46:24 +0800
+Message-Id: <20240416034626.317823-2-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240416034626.317823-1-liujianfeng1994@gmail.com>
+References: <20240416034626.317823-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_204737_126047_9A085A3E 
-X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-CacheID: sfid-20240415_204742_641766_0BADF101 
+X-CRM114-Status: UNSURE (   8.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,37 +101,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Changes in v4:
- - Fix dtb check error/warning with command
-"make CHECK_DTBS=y rockchip/rk3588-armsom-sige7.dtb":
-  - Change led lable name to fix duplicate label with pinctrl node.
-  - Remove useless property "pinctrl-names" from "&pcie3x4".
-  - Change red led trigger to "none".
- - Link to v3: https://lore.kernel.org/all/20240415170737.49350-1-liujianfeng1994@gmail.com/
+Add vendor prefix for ArmSoM (https://www.armsom.org)
 
-Changes in v3:
- - Update vendor description in vendor-prefixes
- - Link to v2: https://lore.kernel.org/all/20240413153633.801759-1-liujianfeng1994@gmail.com/
+Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
- - Add ArmSoM to vendor-prefixes
- - Commit dt-bindings change first
- - Fix commit message for dt-bindings
- - Fix wrong devicetree node name "led_rgb_g" and "led_rgb_r"
- - Link to v1: https://lore.kernel.org/all/20240413032328.784142-1-liujianfeng1994@gmail.com/
-
-Jianfeng Liu (3):
-  dt-bindings: vendor-prefixes: add ArmSoM
-  dt-bindings: arm: rockchip: Add ArmSoM Sige7
-  arm64: dts: rockchip: Add ArmSom Sige7 board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3588-armsom-sige7.dts | 724 ++++++++++++++++++
- 4 files changed, 732 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index e4aeeb5fe..e47405535 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -151,6 +151,8 @@ patternProperties:
+     description: ARM Ltd.
+   "^armadeus,.*":
+     description: ARMadeus Systems SARL
++  "^armsom,.*":
++    description: ArmSoM Technology Co., Ltd.
+   "^arrow,.*":
+     description: Arrow Electronics
+   "^artesyn,.*":
 -- 
 2.34.1
 
