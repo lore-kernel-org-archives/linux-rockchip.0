@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F0A1C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 06:50:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E31FAC04FF6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 08:05:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=52ZrRnUOq4pVjjKqHi4z+iS3AzsDH9xm9hYQqvhok4Y=; b=nhbcoT88BHSc96
-	gSafsfwPX/KQd++6fdYKRo/rzGeOAbbKds/tXMplt0+RrxCZciDv+1zgQQQqmr9f0b0cWlY+bTneP
-	zu15ds3vUId9z3gHPhq8MwVkynG78zw2mfkF62S4oHb6dMeZ5nAafp2U08+sxJQS5ZEyHDyZzh1j4
-	gFnXojDXhJYepIA18r7QxQwQzU9Wx+KqBqSOSyOvzebHsYNL5ff4gGOEkMIU4lMGuRwNu18ntPZb3
-	uaK73zFzyE8J3zTEniEI4iQQIIAA0gfevIWub7F1lZjVhZ1/1nGaBNysg13gS1AvvNsI5p59KslJt
-	ZjAm9uozE9WfHcgRWQIg==;
+	List-Owner; bh=5jJXsV7xjsNwyR2Z60InpDpMDTp5k5lcBah5TBFOzT4=; b=JYSdtAzLlFNGX4
+	0gWtyIFcm5sgV+tFLUM+8tg2eATsPJMgK6LH63Fkoyhxc7D2Ca6LYWM7nH/As8BynKxV5tXV3cnoM
+	t321sCeHatf2AcS7u5DcisHhrNE4bvlt3JvlIMGPopoRylMj8MDwQcB+1hBaV2w2S80siOUWKcH8q
+	Jl0tUKKhMcsFkgeDqDOZO3HxGYomG6gulzWIpW3iP79lWoAke7HRXhqYiJ5u+ibfnuXMhXh65p01l
+	ZOl5U2or9jFeWEvs/TW1QnExDvf4IoDLxrBTsnCQReG7jnnu17jbtfohij0BfiGZKHJ/dp8yWo7nF
+	N2EUfC+8rPkOyzDht4lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwcdr-0000000B8ji-1ATI;
-	Tue, 16 Apr 2024 06:50:07 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rwdoz-0000000BN4k-40kS;
+	Tue, 16 Apr 2024 08:05:41 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwcdn-0000000B8iF-0SeA;
-	Tue, 16 Apr 2024 06:50:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 61ED4CE000E;
-	Tue, 16 Apr 2024 06:50:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DD27C113CE;
-	Tue, 16 Apr 2024 06:49:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713250199;
-	bh=yfX5SuJiKsjZz5T4krQC0RPDEuHfvs/zvmFjAxx/zlY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LzS40nkMJsIBoNMyiBYU1dZiU1GtglSAeoOK9Wcywa3dOY58e3mqlh5jo9Uo3Wg2F
-	 bgDK0tl59DTrBOygg0MimxmV2SmnnMK3sWaXBhFO/CJhjGPCxtnk5Ia76in1UYvUBK
-	 vckfRAEjG0RHpNWyty6mmMfUa+d70IPhKPL2FQaHhubHznn8lySE+KogwTaJ59l1It
-	 NTQM+YyatNBircIy0BD3jOigDDKO2b0E8+exBqLDcMGDsa4gWo9HVGWxSrZL8T2Vfr
-	 2sQ0oHzwEEpUKvd/TIIKAKi7z/0bxlEuMynqeleZ7TqaBos8awEksUEIqjQ87iO0QI
-	 DAkcQpckpO54w==
-Date: Tue, 16 Apr 2024 08:49:53 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Brian Norris <briannorris@chromium.org>, linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	mhi@lists.linux.dev, stable@vger.kernel.org,
-	Slark Xiao <slark_xiao@163.com>
-Subject: Re: [PATCH] PCI: rockchip: Use GPIOD_OUT_LOW flag while requesting
- ep_gpio
-Message-ID: <Zh4fkbQTh0Z1GNGK@ryzen>
-References: <20240416-pci-rockchip-perst-fix-v1-1-4800b1d4d954@linaro.org>
+	id 1rwdoq-0000000BN1m-1r5N
+	for linux-rockchip@lists.infradead.org;
+	Tue, 16 Apr 2024 08:05:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1713254714;
+ bh=9v28hOIUE9GkM0a76qA4AwgtWDjyV1OaSvUjBLLAPY8=;
+ b=HWK+CtFdqlfcCh0mmfXdyKbDIxtifX9DA2Yz5T+Gtbu9xskeu/1MKoki1WMnCWovx89Vt4HDm
+ wJcO+eEraJWf65BgmA+UAqFk16FkoQpAgMRIQ3CNrH/waHhO9vmO1deULXy7FLvBCnkxMCn/sFK
+ KvXQn0su+k89Y9o+Rf6egTtIwREkdfRsCp7QvOjO0qyiKHlb5G4fxUaRZb+f52APvzs3e/Ob9On
+ wrorhEaE7dKDxBlB/oW354NUEIFhE11JDrhzPQcM3Zq5zrvOrZcZevy55MyMYww3UMG85+iZCxG
+ L/quX65XN8qTqznAw9W5c2StwlhAWjjY7z8+WLT8sLLw==
+Message-ID: <f5a9e7c0-1d8c-462b-bf7a-d6aa73f63afa@kwiboo.se>
+Date: Tue, 16 Apr 2024 10:05:09 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240416-pci-rockchip-perst-fix-v1-1-4800b1d4d954@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240415150349.2207075-1-jonas@kwiboo.se>
+ <20240415150349.2207075-3-jonas@kwiboo.se>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20240415150349.2207075-3-jonas@kwiboo.se>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 661e313a0360d053efe603b4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240415_235003_541808_0466FBD8 
-X-CRM114-Status: GOOD (  23.88  )
+X-CRM114-CacheID: sfid-20240416_010532_868392_C774D118 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,72 +78,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 16, 2024 at 11:12:35AM +0530, Manivannan Sadhasivam wrote:
-> Rockchip platforms use 'GPIO_ACTIVE_HIGH' flag in the devicetree definition
-> for ep_gpio. This means, whatever the logical value set by the driver for
-> the ep_gpio, physical line will output the same logic level.
+On 2024-04-15 17:03, Jonas Karlman wrote:
+> The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
+> computer based on the Rockchip RK3566, with a compact form factor and
+> rich interfaces.
 > 
-> For instance,
+> The ZERO 3W and ZERO 3E are basically the same size and model, but
+> differ only in storage and network interfaces.
 > 
-> 	gpiod_set_value_cansleep(rockchip->ep_gpio, 0); --> Level low
-> 	gpiod_set_value_cansleep(rockchip->ep_gpio, 1); --> Level high
+> - eMMC (3W)
+> - SD-card (both)
+> - Ethernet (3E)
+> - WiFi/BT (3W)
 > 
-> But while requesting the ep_gpio, GPIOD_OUT_HIGH flag is currently used.
-> Now, this also causes the physical line to output 'high' creating trouble
-> for endpoint devices during host reboot.
+> This adds initial support for eMMC, SD-card, Ethernet, HDMI and USB.
 > 
-> When host reboot happens, the ep_gpio will initially output 'low' due to
-> the GPIO getting reset to its POR value. Then during host controller probe,
-> it will output 'high' due to GPIOD_OUT_HIGH flag. Then during
-> rockchip_pcie_host_init_port(), it will first output 'low' and then 'high'
-> indicating the completion of controller initialization.
-> 
-> On the endpoint side, each output 'low' of ep_gpio is accounted for PERST#
-> assert and 'high' for PERST# deassert. With the above mentioned flow during
-> host reboot, endpoint will witness below state changes for PERST#:
-> 
-> 	(1) PERST# assert - GPIO POR state
-> 	(2) PERST# deassert - GPIOD_OUT_HIGH while requesting GPIO
-> 	(3) PERST# assert - rockchip_pcie_host_init_port()
-> 	(4) PERST# deassert - rockchip_pcie_host_init_port()
-> 
-> Now the time interval between (2) and (3) is very short as both happen
-> during the driver probe(), and this results in a race in the endpoint.
-> Because, before completing the PERST# deassertion in (2), endpoint got
-> another PERST# assert in (3).
-> 
-> A proper way to fix this issue is to change the GPIOD_OUT_HIGH flag in (2)
-> to GPIOD_OUT_LOW. Because the usual convention is to request the GPIO with
-> a state corresponding to its 'initial/default' value and let the driver
-> change the state of the GPIO when required.
-> 
-> As per that, the ep_gpio should be requested with GPIOD_OUT_LOW as it
-> corresponds to the POR value of '0' (PERST# assert in the endpoint). Then
-> the driver can change the state of the ep_gpio later in
-> rockchip_pcie_host_init_port() as per the initialization sequence.
-> 
-> This fixes the firmware crash issue in Qcom based modems connected to
-> Rockpro64 based board.
-> 
-> Cc:  <stable@vger.kernel.org> # 4.9
-> Reported-by: Slark Xiao <slark_xiao@163.com>
-> Closes: https://lore.kernel.org/mhi/20240402045647.GG2933@thinkpad/
-> Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
-> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
+> v2: Add to Makefile
+> v3: Sort hdmi-con and leds nodes alphabetically
+> v3: Sort pmic@20 and regulator@40 nodes by reg
+> v3: Change to regulator-off-in-suspend for vdd_logic
+> 
+> Following issue is reported by dtbs_check and is fixed by patch at [1]:
+> 
+>   hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
+>   from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+> 
+> [1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>  .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
+>  .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  26 +
+>  .../boot/dts/rockchip/rk3566-radxa-zero3.dtsi | 443 ++++++++++++++++++
+>  4 files changed, 512 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+> 
 
-Reviewed-by: Niklas Cassel <cassel@kernel.org>
+[snip]
 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+> new file mode 100644
+> index 000000000000..ea8ade3a4c99
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
 
-I sent a similar fix for the DWC-based rockchip driver a few weeks ago:
-https://lore.kernel.org/linux-pci/20240327152531.814392-1-cassel@kernel.org/
+[snip]
 
-If your fix is picked up, it would be nice if mine got picked up as well,
-such that both drivers get fixed.
+> +
+> +&i2c0 {
+> +	status = "okay";
+> +
 
+[snip]
 
-Kind regards,
-Niklas
+> +	vdd_cpu: regulator@40 {
+> +		compatible = "silergy,syr827";
+
+After checking once more on schematic and inspecting the board this is
+actually a RK860-0 regulator and should use following:
+
+  compatible = "rockchip,rk8600";
+
+Will send a v4 with this change later this week.
+
+Regards,
+Jonas
+
+> +		reg = <0x40>;
+> +		fcs,suspend-voltage-selector = <1>;
+> +		regulator-name = "vdd_cpu";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <712500>;
+> +		regulator-max-microvolt = <1390000>;
+> +		regulator-ramp-delay = <2300>;
+> +		vin-supply = <&vcc_sys>;
+> +
+> +		regulator-state-mem {
+> +			regulator-off-in-suspend;
+> +		};
+> +	};
+> +};
+
+[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
