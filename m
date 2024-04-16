@@ -4,64 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E31FAC04FF6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 08:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D68B9C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 08:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5jJXsV7xjsNwyR2Z60InpDpMDTp5k5lcBah5TBFOzT4=; b=JYSdtAzLlFNGX4
-	0gWtyIFcm5sgV+tFLUM+8tg2eATsPJMgK6LH63Fkoyhxc7D2Ca6LYWM7nH/As8BynKxV5tXV3cnoM
-	t321sCeHatf2AcS7u5DcisHhrNE4bvlt3JvlIMGPopoRylMj8MDwQcB+1hBaV2w2S80siOUWKcH8q
-	Jl0tUKKhMcsFkgeDqDOZO3HxGYomG6gulzWIpW3iP79lWoAke7HRXhqYiJ5u+ibfnuXMhXh65p01l
-	ZOl5U2or9jFeWEvs/TW1QnExDvf4IoDLxrBTsnCQReG7jnnu17jbtfohij0BfiGZKHJ/dp8yWo7nF
-	N2EUfC+8rPkOyzDht4lg==;
+	List-Owner; bh=yOVm6CnqJDY5QSbnOHWveka9TFp3+htqmBkuIHDX4Rk=; b=GBheGrKMwLWe3A
+	hmD68fcfrcPZF2dP6tvPrg468HD8LLNYLTVDxj4MsMrJ/B4qxoi/KK+OpvtiSUxl332rGaE9R+ShX
+	HWAvv2ZTlFxnOtMm6o72gCnKDj0+PoKKxrYOGeqjh0+IVGhKvM6VwAjelR16v4o7P3z2qPWwb4HOg
+	9kzgxf6mwfcVSOU4xA80oaYQqr41Uzh9GlXmRAG9PIgXXv2jvjx5ENXkPKWcj53jtrVrNvLbjwsX2
+	P1kO+zZdLM4ARQF8VeOTb6kE/GlL5xk8IlCqhLy3DgpMQdMHg5HTZmC7p9v6W5PzeTNK7pVNpsgo2
+	0xPQTkeNN62SROq9le0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdoz-0000000BN4k-40kS;
-	Tue, 16 Apr 2024 08:05:41 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1rwe69-0000000BQxC-309n;
+	Tue, 16 Apr 2024 08:23:25 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwdoq-0000000BN1m-1r5N
-	for linux-rockchip@lists.infradead.org;
-	Tue, 16 Apr 2024 08:05:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1713254714;
- bh=9v28hOIUE9GkM0a76qA4AwgtWDjyV1OaSvUjBLLAPY8=;
- b=HWK+CtFdqlfcCh0mmfXdyKbDIxtifX9DA2Yz5T+Gtbu9xskeu/1MKoki1WMnCWovx89Vt4HDm
- wJcO+eEraJWf65BgmA+UAqFk16FkoQpAgMRIQ3CNrH/waHhO9vmO1deULXy7FLvBCnkxMCn/sFK
- KvXQn0su+k89Y9o+Rf6egTtIwREkdfRsCp7QvOjO0qyiKHlb5G4fxUaRZb+f52APvzs3e/Ob9On
- wrorhEaE7dKDxBlB/oW354NUEIFhE11JDrhzPQcM3Zq5zrvOrZcZevy55MyMYww3UMG85+iZCxG
- L/quX65XN8qTqznAw9W5c2StwlhAWjjY7z8+WLT8sLLw==
-Message-ID: <f5a9e7c0-1d8c-462b-bf7a-d6aa73f63afa@kwiboo.se>
-Date: Tue, 16 Apr 2024 10:05:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>
+	id 1rwe66-0000000BQvz-0FlK;
+	Tue, 16 Apr 2024 08:23:23 +0000
+Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rwe5z-0006fs-Ci; Tue, 16 Apr 2024 10:23:15 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add Radxa ZERO 3W/3E
+Date: Tue, 16 Apr 2024 10:23:14 +0200
+Message-ID: <5772116.DvuYhMxLoT@diego>
+In-Reply-To: <f5a9e7c0-1d8c-462b-bf7a-d6aa73f63afa@kwiboo.se>
 References: <20240415150349.2207075-1-jonas@kwiboo.se>
  <20240415150349.2207075-3-jonas@kwiboo.se>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20240415150349.2207075-3-jonas@kwiboo.se>
-X-Report-Abuse-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-ForwardEmail-Version: 0.4.40
-X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-ForwardEmail-ID: 661e313a0360d053efe603b4
+ <f5a9e7c0-1d8c-462b-bf7a-d6aa73f63afa@kwiboo.se>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_010532_868392_C774D118 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20240416_012322_250891_919A11D7 
+X-CRM114-Status: GOOD (  25.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +64,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-04-15 17:03, Jonas Karlman wrote:
-> The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
-> computer based on the Rockchip RK3566, with a compact form factor and
-> rich interfaces.
+Am Dienstag, 16. April 2024, 10:05:09 CEST schrieb Jonas Karlman:
+> On 2024-04-15 17:03, Jonas Karlman wrote:
+> > The Radxa ZERO 3W/3E is an ultra-small, high-performance single board
+> > computer based on the Rockchip RK3566, with a compact form factor and
+> > rich interfaces.
+> > 
+> > The ZERO 3W and ZERO 3E are basically the same size and model, but
+> > differ only in storage and network interfaces.
+> > 
+> > - eMMC (3W)
+> > - SD-card (both)
+> > - Ethernet (3E)
+> > - WiFi/BT (3W)
+> > 
+> > This adds initial support for eMMC, SD-card, Ethernet, HDMI and USB.
+> > 
+> > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > ---
+> > v2: Add to Makefile
+> > v3: Sort hdmi-con and leds nodes alphabetically
+> > v3: Sort pmic@20 and regulator@40 nodes by reg
+> > v3: Change to regulator-off-in-suspend for vdd_logic
+> > 
+> > Following issue is reported by dtbs_check and is fixed by patch at [1]:
+> > 
+> >   hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
+> >   from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+> > 
+> > [1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+> >  .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
+> >  .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  26 +
+> >  .../boot/dts/rockchip/rk3566-radxa-zero3.dtsi | 443 ++++++++++++++++++
+> >  4 files changed, 512 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+> > 
 > 
-> The ZERO 3W and ZERO 3E are basically the same size and model, but
-> differ only in storage and network interfaces.
+> [snip]
 > 
-> - eMMC (3W)
-> - SD-card (both)
-> - Ethernet (3E)
-> - WiFi/BT (3W)
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+> > new file mode 100644
+> > index 000000000000..ea8ade3a4c99
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
 > 
-> This adds initial support for eMMC, SD-card, Ethernet, HDMI and USB.
+> [snip]
 > 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> v2: Add to Makefile
-> v3: Sort hdmi-con and leds nodes alphabetically
-> v3: Sort pmic@20 and regulator@40 nodes by reg
-> v3: Change to regulator-off-in-suspend for vdd_logic
+> > +
+> > +&i2c0 {
+> > +	status = "okay";
+> > +
 > 
-> Following issue is reported by dtbs_check and is fixed by patch at [1]:
+> [snip]
 > 
->   hdmi@fe0a0000: Unevaluated properties are not allowed ('#sound-dai-cells' was unexpected)
->   from schema $id: http://devicetree.org/schemas/display/rockchip/rockchip,dw-hdmi.yaml#
+> > +	vdd_cpu: regulator@40 {
+> > +		compatible = "silergy,syr827";
 > 
-> [1] https://lore.kernel.org/linux-rockchip/3a035c16-75b5-471d-aa9d-e91c2bb9f8d0@gmail.com/
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
->  .../dts/rockchip/rk3566-radxa-zero-3e.dts     |  41 ++
->  .../dts/rockchip/rk3566-radxa-zero-3w.dts     |  26 +
->  .../boot/dts/rockchip/rk3566-radxa-zero3.dtsi | 443 ++++++++++++++++++
->  4 files changed, 512 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3e.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+> After checking once more on schematic and inspecting the board this is
+> actually a RK860-0 regulator and should use following:
 > 
+>   compatible = "rockchip,rk8600";
+> 
+> Will send a v4 with this change later this week.
 
-[snip]
+ok, will wait for that then.
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
-> new file mode 100644
-> index 000000000000..ea8ade3a4c99
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero3.dtsi
+Heiko
 
-[snip]
 
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +
-
-[snip]
-
-> +	vdd_cpu: regulator@40 {
-> +		compatible = "silergy,syr827";
-
-After checking once more on schematic and inspecting the board this is
-actually a RK860-0 regulator and should use following:
-
-  compatible = "rockchip,rk8600";
-
-Will send a v4 with this change later this week.
-
-Regards,
-Jonas
-
-> +		reg = <0x40>;
-> +		fcs,suspend-voltage-selector = <1>;
-> +		regulator-name = "vdd_cpu";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1390000>;
-> +		regulator-ramp-delay = <2300>;
-> +		vin-supply = <&vcc_sys>;
-> +
-> +		regulator-state-mem {
-> +			regulator-off-in-suspend;
-> +		};
-> +	};
-> +};
-
-[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
