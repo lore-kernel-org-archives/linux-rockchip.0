@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E47C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 10:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2261CC4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 11:12:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FGDFMY7aF34Fgnzi74MjkyzVttOkcwEqqrAgVlkgz9g=; b=0IrujDV6TKbORI
-	u1YbKdHPvMHYzkpMzzdFiUJXKFWIDE5WXBI8AGUttHFfuCCsxLuLaFF0n55voyIgdMlNiZkjyHFj5
-	6yU+cE/n3NutyvLqFyI1k5zCdgHG4x0eZnv0/CdWP3czsF79T9vqhPZAUfIApsMWJMoMHsnvX+xmk
-	yEu2ze9YiVlshUoaA/zzGm1GY/Y7VG6lWKVxD/dWxMGOK+0c1Zrt2w3guMZk12lDAOPn0J/YPYeLA
-	cSPINgBHhbRyfAoc7W5zwENE8DPfKXbNTg/efNf9iFbxCKg7FbRrTffvjgUhvWakxr0F7iZsOQl3Y
-	PNqzHCK8rjHRKupi1jJg==;
+	List-Owner; bh=fK++kvSeYIlG6+9sPKzpHnCFqMbHKHT9ftoPxii3zfg=; b=iUJEPNfTJooxEz
+	t2kN7Z33LgcVTjqOPTHKua9w5Z10gi2o2czz2ZF6nYT5oGQJeZn/2t3fpl2/b9Si8e0d8XKtUed+4
+	IdjiRd72m4HXL2IeLqQwMJyQmCGhEbIlvIVIxjNUiNUgZxZl5GP4Z5DNlapRdlZC5oGOZYnVcNHx8
+	+AmQSl/xqO2mFPlJ/9yHnwhnUz1DtIUV1wm7vU8mLI7+nZqzxbMwmO9syXjZhz5oeLAiUGhSfO8kR
+	H0BXCQxUMHxbKLrmK/vf+Rf3KiX1TBRCojh8YNIQmahjW+TQRLDH62IcndxUGccJWjGmLI0vIMD6h
+	xTNUPogCo/fglFqzekXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwgA1-0000000BpG2-3Grq;
-	Tue, 16 Apr 2024 10:35:33 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1rwgjD-0000000BvxO-2STI;
+	Tue, 16 Apr 2024 11:11:55 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwg9y-0000000BpFG-0oa5;
-	Tue, 16 Apr 2024 10:35:31 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-6eb7d1a5d39so1425175a34.2;
-        Tue, 16 Apr 2024 03:35:28 -0700 (PDT)
+	id 1rwgj9-0000000BvvK-1DSU;
+	Tue, 16 Apr 2024 11:11:53 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-570441bc23bso639612a12.0;
+        Tue, 16 Apr 2024 04:11:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713263727; x=1713868527; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1713265906; x=1713870706; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cY42OW8UeSirFeqsOJxYe5yMqVTg3yFG09RL5cMYF+A=;
-        b=cXY1qNeGQFxzlPLbaXUwWNvdv0AR1E72Lr5NxJjQvm50bu56aNbsZ2ixl76V6Rcbuc
-         mCN6ubhGU4nbiT4y5wDBKy+NSh9Bp2PeiHz9E+FoKMDcQyXm9C4N7UZ8lbxi5unp3hAS
-         UKSprzQpMcnpMDKU0DhjdlnAtD0jfxkZ/Bjr5SMj82Pc5/eEQKdufAHlIUPECgIp6IZT
-         AQUWfhxf3cKAhLgD0dg/ylrqZj4RCsaV8VoImKw97xBAXJG7suDJdeI7FIB1vmf/ztCc
-         Kq+nH4dyz1xfM0bsQaIE/trNkfYYVZS+jQX13Vq1JqUFWEAcXkPCRzvq+OpZ4I0M5tQS
-         O8XQ==
+        bh=C5RqFUtxcsDcdbF79TlWq+jdC6PmCQermSazbSgPd6I=;
+        b=ntNhX4SiDL+TmM/EePmeFnUbQ0abHM0hLmVpMCzNxiyLmv0bwh8Sx4+inqMT1NUxoa
+         Negn0gopJX1QBI+g1cMhN9Ymq8jiWk5/32zpas55hokp8XqnHRV7+0lkEcWqb0qILAqo
+         OIT8yuFEZLczfKDaz2yuc8SxhqRK7bKorXYaLcfaTFBw5QUl21y0e/5geYZvdfVDZv6s
+         w8jvCu238yvjEjb6lxUmPPbi08yRy2mlZNxW34T7aTnEFHQxqT4zv0QuCYTalSQzqWDV
+         ONWXCvk72qfDyQtTCkGtd44SxHBiYeSx29rcWBisjZq7QyF8pSZWHsCUc6F/kHTu1QYB
+         1CYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713263727; x=1713868527;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1713265906; x=1713870706;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cY42OW8UeSirFeqsOJxYe5yMqVTg3yFG09RL5cMYF+A=;
-        b=gtVAxra0/LjUHnTEI2uiM0ZmKSKuF/7cqA5TXxR/SGBE/sgM65k3/dDrtNzfYa/Cke
-         jNVevesup3oLJhiF3f9wcct7MwNDdmVQ2D5J903S0iU2oB1/qGxVQ3cT7V1hxjZUIKLI
-         QKjfrLmw1iD/5IioH634hIDmN8I+kjgSLs0nocopAjEuYk4LAH1yXdHhCmcV3W26cLdy
-         byI1AEbgTilqpCdRyMJbYlvBL7viminhSu8AQW9BwpCPGjx3cTtn1irBfWZILZfw6PO1
-         y42qfXojl/5kJFmyo4P3os7+v7aznIYC/U2iiBsExZw60PC9TV9UZsGhy+Wj8Iag24bl
-         4RYA==
-X-Forwarded-Encrypted: i=1; AJvYcCX9zvVAoXJjx+7jHOwaDoRMkJeXmPgfm+ugAwpZ6edOg3IBrCUqwR1G3X2CZbnJ+UAryeErjKj9eJPvNJdV01RZGzAOjrHSK5/nY+tQVO5sFyj1LWGlFcParHeR1uDLt8aSvwhuu4n/1Ebguns7z8/ZP3rPpl461e4=
-X-Gm-Message-State: AOJu0YwwmCThWN8YASh6AeNplCbZ3w/S+9jvVmeqW4OhWPzSUWz/qxOA
-	NvO9XIJZHAVuQWxcHjk5huXiE4vIlL2go7iVmKo/msr2Kjdd8OXF
-X-Google-Smtp-Source: AGHT+IEw9cmwM2hIAoklpoZ7SS+Np/6aL4HkLZt9UHslpEDKjbR9asrxOOJl5iBbyhftJP409IHk2A==
-X-Received: by 2002:a05:6830:1147:b0:6eb:7260:cbd with SMTP id x7-20020a056830114700b006eb72600cbdmr7828300otq.4.1713263727617;
-        Tue, 16 Apr 2024 03:35:27 -0700 (PDT)
-Received: from localhost.localdomain ([221.220.135.251])
-        by smtp.gmail.com with ESMTPSA id o65-20020a634144000000b005dc36761ad1sm8677293pga.33.2024.04.16.03.35.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 03:35:27 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: cassel@kernel.org
-Cc: bhelgaas@google.com,
-	dlemoal@kernel.org,
-	heiko@sntech.de,
-	kw@linux.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	lpieralisi@kernel.org,
-	robh@kernel.org,
-	sebastian.reichel@collabora.com,
-	shawn.lin@rock-chips.com,
-	Jianfeng Liu <liujianfeng1994@gmail.com>
-Subject: Re: [PATCH] PCI: dw-rockchip: Fix GPIO initialization flag
-Date: Tue, 16 Apr 2024 18:35:12 +0800
-Message-Id: <20240416103512.330489-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240327152531.814392-1-cassel@kernel.org>
-References: <20240327152531.814392-1-cassel@kernel.org>
+        bh=C5RqFUtxcsDcdbF79TlWq+jdC6PmCQermSazbSgPd6I=;
+        b=qMxtwtvRgRuu7kBbV9ez9QEboI/xXDTnFUszcIKIX9Tf5KkBZ7jrPOounRfzrwSGc6
+         upffzz2nz6q0YGZ8Ijs/0gDfcIhQh6QkB6o5c1NfiEWzGRDnd8/c3KvJzfHBx6GW8bfM
+         UZuk/yFM6sNkkVcPn+02kpHZnZ9/tHJVTy35Ymv6z1jqYdzvWlJFPOTke3+WnYKmM7g9
+         m0d8p4e28USshYmqGWcZogu34Ty6RcD3gSQIdqAyvkk0v8kHxOX3n0wlALJLBhnOSCuL
+         H5GbH6h5DAaEW2MCtoMbTIm6vApRkmGAA3mcAeenJTvEXLUd8Dl3AR4W08qIswsMsVRI
+         XuXA==
+X-Forwarded-Encrypted: i=1; AJvYcCX4rgAAm92EGd9ozdGCJgSfAXGacdf2WCcPkH8B6rInzvj7TVPNMlWpGNxkfAUq0cdoi4+dRm6CEMNTN9iUi1PRKCKPjsy0Kjqam4HUuSsVn/Do0uiB59xLKk0WdnsaBB9n8iKTpknX4rNeH+d2Mqu1iSFGL85rpuA=
+X-Gm-Message-State: AOJu0YyNRWfJnVfpqoPne0mWxQcWzxKplt6Lkgc3wuwGLLFEvuU6yLrd
+	+KfuDUlg+WhWGNNyIaEN4OQZkFQjzItstdVGDDSm+jt3Zm+U97j0QWCyyg+Std7GtQQtUoVoHXJ
+	zFk2NnadefrKLWKjMJStf1dHZwfkftNDMJFY=
+X-Google-Smtp-Source: AGHT+IH1PsRPyaXxP/K5Ox5QKG71lmTEr1SSzwErbC5T+EwPNkfxjV4mnP6QemY+YNWTendRU0/IMWW+eQMyDy5FlyQ=
+X-Received: by 2002:a50:d6db:0:b0:56e:2cbc:db77 with SMTP id
+ l27-20020a50d6db000000b0056e2cbcdb77mr8541856edj.33.1713265905965; Tue, 16
+ Apr 2024 04:11:45 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240416034626.317823-1-liujianfeng1994@gmail.com> <20240416034626.317823-2-liujianfeng1994@gmail.com>
+In-Reply-To: <20240416034626.317823-2-liujianfeng1994@gmail.com>
+From: Weizhao Ouyang <o451686892@gmail.com>
+Date: Tue, 16 Apr 2024 19:11:34 +0800
+Message-ID: <CAHk0HovT_4UdPhoNSR74WvFi-HZhFfdBqib1OM6q_jXAxTgUgA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: vendor-prefixes: add ArmSoM
+To: Jianfeng Liu <liujianfeng1994@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
+	sfr@canb.auug.org.au, weizhao.ouyang@arm.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_033530_279076_D3ED0176 
-X-CRM114-Status: UNSURE (   6.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240416_041151_358197_A73F89D1 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,22 +86,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Test on rock5b with RTL8822CE connected to M.2 E slot.
-Before this patch RTL8822CE is not detected sometimes, and I tried to
-fix it by a patch[1] but that could not solve it. And in that thread
-Sebastian mentioned this fix. Now with this patch my pcie wifi can get
-detected normally.
-
-[1] https://lore.kernel.org/all/20240401081302.942742-1-liujianfeng1994@gmail.com/
-
-Tested-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBBcHIgMTYsIDIwMjQgYXQgMTE6NDbigK9BTSBKaWFuZmVuZyBMaXUgPGxpdWppYW5m
+ZW5nMTk5NEBnbWFpbC5jb20+IHdyb3RlOgo+Cj4gQWRkIHZlbmRvciBwcmVmaXggZm9yIEFybVNv
+TSAoaHR0cHM6Ly93d3cuYXJtc29tLm9yZykKPgo+IFNpZ25lZC1vZmYtYnk6IEppYW5mZW5nIExp
+dSA8bGl1amlhbmZlbmcxOTk0QGdtYWlsLmNvbT4KClJldmlld2VkLWJ5OiBXZWl6aGFvIE91eWFu
+ZyA8d2Vpemhhby5vdXlhbmdAYXJtLmNvbT4KCkJSLApXZWl6aGFvCgo+IC0tLQo+ICBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwgfCAyICsrCj4g
+IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwgYi9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKPiBpbmRleCBl
+NGFlZWI1ZmUuLmU0NzQwNTUzNSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKPiBAQCAtMTUxLDYgKzE1MSw4
+IEBAIHBhdHRlcm5Qcm9wZXJ0aWVzOgo+ICAgICAgZGVzY3JpcHRpb246IEFSTSBMdGQuCj4gICAg
+Il5hcm1hZGV1cywuKiI6Cj4gICAgICBkZXNjcmlwdGlvbjogQVJNYWRldXMgU3lzdGVtcyBTQVJM
+Cj4gKyAgIl5hcm1zb20sLioiOgo+ICsgICAgZGVzY3JpcHRpb246IEFybVNvTSBUZWNobm9sb2d5
+IENvLiwgTHRkLgo+ICAgICJeYXJyb3csLioiOgo+ICAgICAgZGVzY3JpcHRpb246IEFycm93IEVs
+ZWN0cm9uaWNzCj4gICAgIl5hcnRlc3luLC4qIjoKPiAtLQo+IDIuMzQuMQo+CgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
