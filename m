@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42023C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 16:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF23C04FF6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Apr 2024 16:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EcDc/AlvW3w0kSeVddXBNuFM9Z6V5Mcx7l3zQYPznpE=; b=R/u9exuCyT/Dua
-	DiXS+3JXnuuDJTWy3YST9Xq7Ish1CmXmUETbvYNOvd7u8XoLQqZP+GVYt29TLBNtp/2Nq1082bVKO
-	IVlGvqO7xXafqT9ylmOy7FVHmPTwDJo77WtcepOhplg/A6iZFaxAJHFd2d0m0PmeY8kt3rQLfA9nU
-	/Nr5Tb6Yg3WmkCzeu7GCmsO+Y+0S8GVCIiIE97MmB6+jQwJVKpqz2cr98xp2cc2F4SyxHin1WAs0M
-	vwNo3WfZffB+tNih27S7lvplG0zvgl3yI3avqwqw7/hEAsYQ9IMMqzgRytt2f+UHOfIwsUUc4LLJx
-	zMBgo4l5rcOPlen+/Brw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MERM+BrqRW8CtnKhnRZwF/qdWUCKcwiP4EqAF8SzEPY=; b=iyphzOQ7vY45gX
+	DsyWM8lUdf/VtpsE9gQPNDh8XNVSiWjuNmzncu6jLpHZ/eG7/xmEFKpOcjY73aNrjFy9zyFwM9kM4
+	64OD3ifDLR91tz39AmX9YapA9FlFpk9jzuw5fjiRj6YxvuinAq10dkoJ9FuzXESWpG9dcfAjbdCgy
+	/uttg+VPkDwPUt6lcdOQS9gJ1jxOvHX/waYErkOrloVznIihkzdUCZj6b0XlFaj4vm/lytXW6YUeH
+	EhA+4XwLoZOE0KE/t2qebq55ICOSQv1qUDgVcvxckKbPnSQBC1antLvVbUpcrlyqvNj8QWOriuEzQ
+	HSE/bLbSNWEVPQ3LLfew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlQa-0000000Cwed-33m7;
-	Tue, 16 Apr 2024 16:13:00 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1rwlQk-0000000Cwm1-1QSY;
+	Tue, 16 Apr 2024 16:13:13 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rwlQW-0000000Cwbu-2XMQ;
-	Tue, 16 Apr 2024 16:12:58 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-343f1957ffcso2772746f8f.0;
-        Tue, 16 Apr 2024 09:12:54 -0700 (PDT)
+	id 1rwlQX-0000000CwcE-0hj4;
+	Tue, 16 Apr 2024 16:12:59 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-516cdb21b34so5914262e87.1;
+        Tue, 16 Apr 2024 09:12:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713283973; x=1713888773; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=lE0iIAKwN26IHZrOzJQ+UkxUYWi8S6bm+npmiEEpfoU=;
-        b=KEkCSDTFdztjhwHQBjbxbKx4d1DG476T2JTCFcCbMfhZLaTOBp5CuByMzNcr10Okto
-         V2Ngq84oHxyPKBpmmg99Pc0Eo4iZuxPjxdk4I6POAhAG9bXnl7mb8ZznOmmQraEj+sU7
-         mJC9QCCFNlWQ6r46EVz6q8herB8pdGb76mwjJwuoYRhVSIxlJvy/XBorcHlNJmHD/404
-         /4iAClLVZ6pu+Hgf63UaU8iOsjWaaC/XGYlkkhWVNs9dgC1lHQ1HRx6dfDPGYR9B84Wa
-         G+3kJeKoS+lWLiyHEAUiRcePBlRQ/ZuudRBemmSbk1zhMgQicJ2yvv1Xqubd/izJuvcH
-         jlRQ==
+        d=gmail.com; s=20230601; t=1713283975; x=1713888775; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RyjcZ7Ps+RXFowKfk2vATtyZC05RbQS1gGvcTGHcGmI=;
+        b=FOdX1BpsPSzqpb2C/R90rIM+nEL4d82Ll4KLu2CBlNlvtmiEeyaS0XaP6DcpPz+swm
+         PH6Fj4Sx8TB26yBIXes4z1F8m02XqLt2GgfxxjcvU8tpN78GZYmKXJmfa1zXR3/Gn06z
+         YdhyNlADv/ti9bgl9P4XRV9J+dmppyM51/5dg7EIsmM0hVSezOMMBv+sXB0BFFahXkBq
+         7w0fzClLlyQOTjNUWRy4U1284kxtcoOAKYYsZSuZ/xqmREL5kXTgp8RLfpm66yvoKcy3
+         HpgWkGx8oCy6Jju/t4KVJmNae5tnOUZQv2nJy+AhZAUeoWtwiyltoWll+kvxzoa2BPmL
+         9pRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713283973; x=1713888773;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lE0iIAKwN26IHZrOzJQ+UkxUYWi8S6bm+npmiEEpfoU=;
-        b=L36Vq86fare2GW2Y2pZjiBSbg4Tk48riPIHWOE0cIFGDIhlsVcXF0WhxgEcDwr8ray
-         XopsFyVOkkoDBBp4qMlPAE7H6Lkzdk9l/EFs7N+ZvXkGSmAHTC9dko0ycR38+Zk/+sYs
-         TK4qIVObHdtuNxfKqrNCv1PT52YDQ0DnI32IsTZTzmCUCNZ+YY/Be+iyuUkKCr9V90D1
-         WhaQxnEVld40Woa6ObU+zK3Oc3W/RJiCtb5lQAzeVPdXzF/KdzlIE1N9NIedf2xQ3hdK
-         Tuv09O/5ZU6cM8dxwasfAGdLcB4JgxsjecGwbCKpdM1ajehNsPhGNWinorHRt5OSmabX
-         R0vg==
-X-Forwarded-Encrypted: i=1; AJvYcCWAdnSD9rk3PHflfQeM7trjK5zH66RBhtQFbc0nUtKacZrmZElb7i2CjUlHkT3lCm2/3li8YOVdXDGBK/3PFRmBbD4/dfNw5CmuBPnf414+bFCD8wEcQ6Kk15FqaM9kf2R8+5tL2w/3dkAb7EeQ/rs1KkLy5SRKwEY=
-X-Gm-Message-State: AOJu0YyCwpa/Vm0h+up7EslsX0N0oRNT/OgPb41B1y2+q8DNQJ0M/MTL
-	40uFAv0wq4R7L2bKruZoNttn8yssQDOtMaeDLLzUFBLrMY8PP/E=
-X-Google-Smtp-Source: AGHT+IG9ARM425fPZMKoPQYcOH+P46IbQ6VFXNx/9g39D202o1HbwRny8IvK1x5SH0HBZINbFbyuOg==
-X-Received: by 2002:a05:6000:1041:b0:33e:d139:412c with SMTP id c1-20020a056000104100b0033ed139412cmr2499659wrx.30.1713283972768;
-        Tue, 16 Apr 2024 09:12:52 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1713283975; x=1713888775;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RyjcZ7Ps+RXFowKfk2vATtyZC05RbQS1gGvcTGHcGmI=;
+        b=Yu3f49anv8dqALxR56ezZTj+JRL6cii7s/gvUa2IWlT7b4F6VaHsh42DLunHgrtHH8
+         Ya9xO77MEeQKcsxj3e1UfOI3lDJXi/QedT1DR492ypFZVr5j8mfLxC+PNbExBcFbJ6xO
+         8xCCl/hlgnIyznS7t8x7jpkhqg7iKEfX8Av6NGvrNaf0YlCzvWoBoXviMc1K71efARHB
+         Fb3RYYGWOvAPAw/fE4wQyOy0pmpDqA5hcSrxU7HJ3jcJpRA1H3vmuQlPLr1pWGwbA4M8
+         3AkzN7XgMRirI0lWy5Gie0jQsXztj3Imk0nDjSIFZYDx1o1kPpf9aiuAEZCY8vAmrYF4
+         c40w==
+X-Forwarded-Encrypted: i=1; AJvYcCVKnsi2jEToTlKIV6EbxZev283C9lMjLhL6QmWP3eLnQQTWOLxadNgAk2L615xHuGHYoieS5VgSczTp5cW3XlH/b/RAfjhIAps1fztf5zK7i+hvMQ/U7uE1Ns1l81/I6PDR4VwyYCUQ/uujXOK/YeYWsGZdn2Uc77I=
+X-Gm-Message-State: AOJu0YwE3qXbt9H0G0ySjiYzbtwJ0M5RJyJlN4B+9XQHguv9rrVUIQR7
+	UkW2l0GVwwunnhlnmTg8YbzkX3/BdOqS9bzwmH4toghlHWwr2eo=
+X-Google-Smtp-Source: AGHT+IE3rfQDM9RTH+MgWTp2kDfxiIwlhn7GrmgJtqu4cEj+UQw7ClCc6S0NAeqp47HnN4JokqjZCA==
+X-Received: by 2002:a05:6512:3c8e:b0:518:dae7:cc2d with SMTP id h14-20020a0565123c8e00b00518dae7cc2dmr6786165lfv.5.1713283974807;
+        Tue, 16 Apr 2024 09:12:54 -0700 (PDT)
 Received: from U4.lan ([91.66.160.190])
-        by smtp.gmail.com with ESMTPSA id t7-20020adfe447000000b00343eac2acc4sm15350743wrm.111.2024.04.16.09.12.52
+        by smtp.gmail.com with ESMTPSA id t7-20020adfe447000000b00343eac2acc4sm15350743wrm.111.2024.04.16.09.12.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 09:12:52 -0700 (PDT)
+        Tue, 16 Apr 2024 09:12:54 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -79,14 +80,16 @@ Cc: Chris Zhong <zyw@rock-chips.com>,
 	linux-kernel@vger.kernel.org,
 	linux-gpio@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v4 0/5] Add RK816 PMIC support
-Date: Tue, 16 Apr 2024 18:12:32 +0200
-Message-ID: <20240416161237.2500037-1-knaerzche@gmail.com>
+Subject: [PATCH v4 2/5] mfd: rk8xx: Add RK816 support
+Date: Tue, 16 Apr 2024 18:12:34 +0200
+Message-ID: <20240416161237.2500037-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240416161237.2500037-1-knaerzche@gmail.com>
+References: <20240416161237.2500037-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240416_091256_667227_912F7C9B 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20240416_091257_253269_E11B9675 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,71 +106,459 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series aims to add support for Rockchip RK816 PMIC series. As per
-datasheet it's targeted for RK3126/RK3128 (RK816-1), RK1108 (RK816-2) and
-PX3-SE (RK816-3) but might be used for other SoCs as well. The MFD consists
-of an integrated RTC, a GPIO controller, two 32k clock outputs, a power
-key, 3 buck- and 6 ldo regulators, 3 regulator-switches, and charger with
-integrated fuel gauge. Charger and fuel gauge are not part of this series.
-Two of the switches (otg/boost) are part of the binding, but not of
-the driver. They must only ever be enabled if no battery charging is
-happening, but it will be enabled automatically if a battery is attached
-and an external power source is connected. Thus that needs some
-incorporation of a yet to be added charger driver.
-Integration in the existing rk8xx-infrastructure was pretty straightforward
-and only needed very little tweaking. In order to not further bloat the
-driver(s) too much with additional `#define`s I tried to re-use existing
-ones wherever possible.
+This integrates RK816 support in the this existing rk8xx mfd driver.
 
-The patches are loosely based on the vendor's implementation, verified
-against the datasheet and tested/measured on a RK3126 board.
+This version has unaligned interrupt registers, which requires to define a
+separate get_irq_reg callback for the regmap. Apart from that the
+integration is straightforward and the existing structures can be used as
+is. The initialization sequence has been taken from vendor kernel.
 
-I'd like to gently ping pinctrl and regulator maintainers: please have a
-look at this series. I've now added Sebastian Reichel to the recipients, as
-he recently added RK806 support and re-worked parts of the rk8xx drivers.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+chnages since v1:
+  - un-constify rk816_get_irq_reg's return type
 
-changes since v1:
-  - integrated Krzysztof's feedback for the bindings and the resulting
-    driver changes
-  - fixed a sparse warning 
+chnages since v3:
+  - added RK816_IRQ_STS_OFFSET/RK816_IRQ_MSK_OFFSET macros
+  - codestyle fix
 
-link to v1:
-https://lore.kernel.org/lkml/20240321143911.90210-2-knaerzche@gmail.com/
+ drivers/mfd/Kconfig       |   4 +-
+ drivers/mfd/rk8xx-core.c  | 104 +++++++++++++++++++++++++++
+ drivers/mfd/rk8xx-i2c.c   |  45 +++++++++++-
+ include/linux/mfd/rk808.h | 144 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 294 insertions(+), 3 deletions(-)
 
-changes since v2:
-  - integrated Krzysztof's feedback to v2 of the bindings and the resulting
-    driver changes
-
-link to v2:
-https://lore.kernel.org/lkml/20240323085852.116756-1-knaerzche@gmail.com/
-
-changes since v3:
-  - integrated Krzysztof's feedback to the bindings of v3 
-  - integrated Lee's feedback to the mfd part of v3 
-
-link to v3:
-https://lore.kernel.org/lkml/20240323132757.141861-2-knaerzche@gmail.com/
-
-Please see individual patches for details about the changes.
-
-Alex Bee (5):
-  dt-bindings: mfd: Add rk816 binding
-  mfd: rk8xx: Add RK816 support
-  pinctrl: rk805: Add rk816 pinctrl support
-  regulator: rk808: Support apply_bit for
-    rk808_set_suspend_voltage_range
-  regulator: rk808: Add RK816 support
-
- .../bindings/mfd/rockchip,rk816.yaml          | 274 ++++++++++++++++++
- drivers/mfd/Kconfig                           |   4 +-
- drivers/mfd/rk8xx-core.c                      | 104 +++++++
- drivers/mfd/rk8xx-i2c.c                       |  45 ++-
- drivers/pinctrl/pinctrl-rk805.c               |  69 +++++
- drivers/regulator/rk808-regulator.c           | 218 +++++++++++++-
- include/linux/mfd/rk808.h                     | 144 +++++++++
- 7 files changed, 851 insertions(+), 7 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
-
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index 00fd388a9205..266b4f54af60 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -1225,7 +1225,7 @@ config MFD_RK8XX
+ 	select MFD_CORE
+ 
+ config MFD_RK8XX_I2C
+-	tristate "Rockchip RK805/RK808/RK809/RK817/RK818 Power Management Chip"
++	tristate "Rockchip RK805/RK808/RK809/RK816/RK817/RK818 Power Management Chip"
+ 	depends on I2C && OF
+ 	select MFD_CORE
+ 	select REGMAP_I2C
+@@ -1233,7 +1233,7 @@ config MFD_RK8XX_I2C
+ 	select MFD_RK8XX
+ 	help
+ 	  If you say yes here you get support for the RK805, RK808, RK809,
+-	  RK817 and RK818 Power Management chips.
++	  RK816, RK817 and RK818 Power Management chips.
+ 	  This driver provides common support for accessing the device
+ 	  through I2C interface. The device supports multiple sub-devices
+ 	  including interrupts, RTC, LDO & DCDC regulators, and onkey.
+diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+index e2261b68b844..5eda3c0dbbdf 100644
+--- a/drivers/mfd/rk8xx-core.c
++++ b/drivers/mfd/rk8xx-core.c
+@@ -28,6 +28,10 @@ static const struct resource rtc_resources[] = {
+ 	DEFINE_RES_IRQ(RK808_IRQ_RTC_ALARM),
+ };
+ 
++static const struct resource rk816_rtc_resources[] = {
++	DEFINE_RES_IRQ(RK816_IRQ_RTC_ALARM),
++};
++
+ static const struct resource rk817_rtc_resources[] = {
+ 	DEFINE_RES_IRQ(RK817_IRQ_RTC_ALARM),
+ };
+@@ -87,6 +91,22 @@ static const struct mfd_cell rk808s[] = {
+ 	},
+ };
+ 
++static const struct mfd_cell rk816s[] = {
++	{ .name = "rk805-pinctrl", },
++	{ .name = "rk808-clkout", },
++	{ .name = "rk808-regulator", },
++	{
++		.name = "rk805-pwrkey",
++		.num_resources = ARRAY_SIZE(rk805_key_resources),
++		.resources = rk805_key_resources,
++	},
++	{
++		.name = "rk808-rtc",
++		.num_resources = ARRAY_SIZE(rk816_rtc_resources),
++		.resources = rk816_rtc_resources,
++	},
++};
++
+ static const struct mfd_cell rk817s[] = {
+ 	{ .name = "rk808-clkout", },
+ 	{ .name = "rk808-regulator", },
+@@ -148,6 +168,17 @@ static const struct rk808_reg_data rk808_pre_init_reg[] = {
+ 						    VB_LO_SEL_3500MV },
+ };
+ 
++static const struct rk808_reg_data rk816_pre_init_reg[] = {
++	{ RK818_BUCK1_CONFIG_REG, RK817_RAMP_RATE_MASK,
++				  RK817_RAMP_RATE_12_5MV_PER_US },
++	{ RK818_BUCK2_CONFIG_REG, RK817_RAMP_RATE_MASK,
++				  RK817_RAMP_RATE_12_5MV_PER_US },
++	{ RK818_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_250MA },
++	{ RK808_THERMAL_REG, TEMP_HOTDIE_MSK, TEMP105C},
++	{ RK808_VB_MON_REG, VBAT_LOW_VOL_MASK | VBAT_LOW_ACT_MASK,
++			    RK808_VBAT_LOW_3V0 | EN_VABT_LOW_SHUT_DOWN },
++};
++
+ static const struct rk808_reg_data rk817_pre_init_reg[] = {
+ 	{RK817_RTC_CTRL_REG, RTC_STOP, RTC_STOP},
+ 	/* Codec specific registers */
+@@ -350,6 +381,59 @@ static const struct regmap_irq rk808_irqs[] = {
+ 	},
+ };
+ 
++static const unsigned int rk816_irq_status_offsets[] = {
++	RK816_IRQ_STS_OFFSET(RK816_INT_STS_REG1),
++	RK816_IRQ_STS_OFFSET(RK816_INT_STS_REG2),
++	RK816_IRQ_STS_OFFSET(RK816_INT_STS_REG3),
++};
++
++static const unsigned int rk816_irq_mask_offsets[] = {
++	RK816_IRQ_MSK_OFFSET(RK816_INT_STS_MSK_REG1),
++	RK816_IRQ_MSK_OFFSET(RK816_INT_STS_MSK_REG2),
++	RK816_IRQ_MSK_OFFSET(RK816_INT_STS_MSK_REG3),
++};
++
++static unsigned int rk816_get_irq_reg(struct regmap_irq_chip_data *data,
++				      unsigned int base, int index)
++{
++	unsigned int irq_reg = base;
++
++	switch (base) {
++	case RK816_INT_STS_REG1:
++		irq_reg += rk816_irq_status_offsets[index];
++		break;
++	case RK816_INT_STS_MSK_REG1:
++		irq_reg += rk816_irq_mask_offsets[index];
++		break;
++	}
++
++	return irq_reg;
++};
++
++static const struct regmap_irq rk816_irqs[] = {
++	/* INT_STS_REG1 IRQs */
++	REGMAP_IRQ_REG(RK816_IRQ_PWRON_FALL, 0, RK816_INT_STS_PWRON_FALL),
++	REGMAP_IRQ_REG(RK816_IRQ_PWRON_RISE, 0, RK816_INT_STS_PWRON_RISE),
++
++	/* INT_STS_REG2 IRQs  */
++	REGMAP_IRQ_REG(RK816_IRQ_VB_LOW, 1, RK816_INT_STS_VB_LOW),
++	REGMAP_IRQ_REG(RK816_IRQ_PWRON, 1, RK816_INT_STS_PWRON),
++	REGMAP_IRQ_REG(RK816_IRQ_PWRON_LP, 1, RK816_INT_STS_PWRON_LP),
++	REGMAP_IRQ_REG(RK816_IRQ_HOTDIE, 1, RK816_INT_STS_HOTDIE),
++	REGMAP_IRQ_REG(RK816_IRQ_RTC_ALARM, 1, RK816_INT_STS_RTC_ALARM),
++	REGMAP_IRQ_REG(RK816_IRQ_RTC_PERIOD, 1, RK816_INT_STS_RTC_PERIOD),
++	REGMAP_IRQ_REG(RK816_IRQ_USB_OV, 1, RK816_INT_STS_USB_OV),
++
++	/* INT_STS3 IRQs */
++	REGMAP_IRQ_REG(RK816_IRQ_PLUG_IN, 2, RK816_INT_STS_PLUG_IN),
++	REGMAP_IRQ_REG(RK816_IRQ_PLUG_OUT, 2, RK816_INT_STS_PLUG_OUT),
++	REGMAP_IRQ_REG(RK816_IRQ_CHG_OK, 2, RK816_INT_STS_CHG_OK),
++	REGMAP_IRQ_REG(RK816_IRQ_CHG_TE, 2, RK816_INT_STS_CHG_TE),
++	REGMAP_IRQ_REG(RK816_IRQ_CHG_TS, 2, RK816_INT_STS_CHG_TS),
++	REGMAP_IRQ_REG(RK816_IRQ_CHG_CVTLIM, 2, RK816_INT_STS_CHG_CVTLIM),
++	REGMAP_IRQ_REG(RK816_IRQ_DISCHG_ILIM, 2, RK816_INT_STS_DISCHG_ILIM),
++};
++
+ static const struct regmap_irq rk818_irqs[] = {
+ 	/* INT_STS */
+ 	[RK818_IRQ_VOUT_LO] = {
+@@ -482,6 +566,18 @@ static const struct regmap_irq_chip rk808_irq_chip = {
+ 	.init_ack_masked = true,
+ };
+ 
++static const struct regmap_irq_chip rk816_irq_chip = {
++	.name = "rk816",
++	.irqs = rk816_irqs,
++	.num_irqs = ARRAY_SIZE(rk816_irqs),
++	.num_regs = 3,
++	.get_irq_reg = rk816_get_irq_reg,
++	.status_base = RK816_INT_STS_REG1,
++	.mask_base = RK816_INT_STS_MSK_REG1,
++	.ack_base = RK816_INT_STS_REG1,
++	.init_ack_masked = true,
++};
++
+ static struct regmap_irq_chip rk817_irq_chip = {
+ 	.name = "rk817",
+ 	.irqs = rk817_irqs,
+@@ -530,6 +626,7 @@ static int rk808_power_off(struct sys_off_data *data)
+ 		reg = RK817_SYS_CFG(3);
+ 		bit = DEV_OFF;
+ 		break;
++	case RK816_ID:
+ 	case RK818_ID:
+ 		reg = RK818_DEVCTRL_REG;
+ 		bit = DEV_OFF;
+@@ -637,6 +734,13 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 		cells = rk808s;
+ 		nr_cells = ARRAY_SIZE(rk808s);
+ 		break;
++	case RK816_ID:
++		rk808->regmap_irq_chip = &rk816_irq_chip;
++		pre_init_reg = rk816_pre_init_reg;
++		nr_pre_init_regs = ARRAY_SIZE(rk816_pre_init_reg);
++		cells = rk816s;
++		nr_cells = ARRAY_SIZE(rk816s);
++		break;
+ 	case RK818_ID:
+ 		rk808->regmap_irq_chip = &rk818_irq_chip;
+ 		pre_init_reg = rk818_pre_init_reg;
+diff --git a/drivers/mfd/rk8xx-i2c.c b/drivers/mfd/rk8xx-i2c.c
+index 75b5cf09d5a0..69a6b297d723 100644
+--- a/drivers/mfd/rk8xx-i2c.c
++++ b/drivers/mfd/rk8xx-i2c.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Rockchip RK808/RK818 Core (I2C) driver
++ * Rockchip RK805/RK808/RK816/RK817/RK818 Core (I2C) driver
+  *
+  * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
+  * Copyright (C) 2016 PHYTEC Messtechnik GmbH
+@@ -49,6 +49,35 @@ static bool rk808_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	return false;
+ }
+ 
++static bool rk816_is_volatile_reg(struct device *dev, unsigned int reg)
++{
++	/*
++	 * Technically the ROUND_30s bit makes RTC_CTRL_REG volatile, but
++	 * we don't use that feature.  It's better to cache.
++	 */
++
++	switch (reg) {
++	case RK808_SECONDS_REG ... RK808_WEEKS_REG:
++	case RK808_RTC_STATUS_REG:
++	case RK808_VB_MON_REG:
++	case RK808_THERMAL_REG:
++	case RK816_DCDC_EN_REG1:
++	case RK816_DCDC_EN_REG2:
++	case RK816_INT_STS_REG1:
++	case RK816_INT_STS_REG2:
++	case RK816_INT_STS_REG3:
++	case RK808_DEVCTRL_REG:
++	case RK816_SUP_STS_REG:
++	case RK816_GGSTS_REG:
++	case RK816_ZERO_CUR_ADC_REGH:
++	case RK816_ZERO_CUR_ADC_REGL:
++	case RK816_GASCNT_REG(0) ... RK816_BAT_VOL_REGL:
++		return true;
++	}
++
++	return false;
++}
++
+ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
+ {
+ 	/*
+@@ -100,6 +129,14 @@ static const struct regmap_config rk808_regmap_config = {
+ 	.volatile_reg = rk808_is_volatile_reg,
+ };
+ 
++static const struct regmap_config rk816_regmap_config = {
++	.reg_bits = 8,
++	.val_bits = 8,
++	.max_register = RK816_DATA_REG(18),
++	.cache_type = REGCACHE_MAPLE,
++	.volatile_reg = rk816_is_volatile_reg,
++};
++
+ static const struct regmap_config rk817_regmap_config = {
+ 	.reg_bits = 8,
+ 	.val_bits = 8,
+@@ -123,6 +160,11 @@ static const struct rk8xx_i2c_platform_data rk809_data = {
+ 	.variant = RK809_ID,
+ };
+ 
++static const struct rk8xx_i2c_platform_data rk816_data = {
++	.regmap_cfg = &rk816_regmap_config,
++	.variant = RK816_ID,
++};
++
+ static const struct rk8xx_i2c_platform_data rk817_data = {
+ 	.regmap_cfg = &rk817_regmap_config,
+ 	.variant = RK817_ID,
+@@ -161,6 +203,7 @@ static const struct of_device_id rk8xx_i2c_of_match[] = {
+ 	{ .compatible = "rockchip,rk805", .data = &rk805_data },
+ 	{ .compatible = "rockchip,rk808", .data = &rk808_data },
+ 	{ .compatible = "rockchip,rk809", .data = &rk809_data },
++	{ .compatible = "rockchip,rk816", .data = &rk816_data },
+ 	{ .compatible = "rockchip,rk817", .data = &rk817_data },
+ 	{ .compatible = "rockchip,rk818", .data = &rk818_data },
+ 	{ },
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 78e167a92483..69cbea78b430 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -113,6 +113,148 @@ enum rk808_reg {
+ #define RK808_INT_STS_MSK_REG2	0x4f
+ #define RK808_IO_POL_REG	0x50
+ 
++/* RK816 */
++enum rk816_reg {
++	RK816_ID_DCDC1,
++	RK816_ID_DCDC2,
++	RK816_ID_DCDC3,
++	RK816_ID_DCDC4,
++	RK816_ID_LDO1,
++	RK816_ID_LDO2,
++	RK816_ID_LDO3,
++	RK816_ID_LDO4,
++	RK816_ID_LDO5,
++	RK816_ID_LDO6,
++	RK816_ID_BOOST,
++	RK816_ID_OTG_SW,
++};
++
++enum rk816_irqs {
++	/* INT_STS_REG1 */
++	RK816_IRQ_PWRON_FALL,
++	RK816_IRQ_PWRON_RISE,
++
++	/* INT_STS_REG2 */
++	RK816_IRQ_VB_LOW,
++	RK816_IRQ_PWRON,
++	RK816_IRQ_PWRON_LP,
++	RK816_IRQ_HOTDIE,
++	RK816_IRQ_RTC_ALARM,
++	RK816_IRQ_RTC_PERIOD,
++	RK816_IRQ_USB_OV,
++
++	/* INT_STS_REG3 */
++	RK816_IRQ_PLUG_IN,
++	RK816_IRQ_PLUG_OUT,
++	RK816_IRQ_CHG_OK,
++	RK816_IRQ_CHG_TE,
++	RK816_IRQ_CHG_TS,
++	RK816_IRQ_CHG_CVTLIM,
++	RK816_IRQ_DISCHG_ILIM,
++};
++
++/* power channel registers */
++#define RK816_DCDC_EN_REG1		0x23
++
++#define RK816_DCDC_EN_REG2		0x24
++#define	RK816_BOOST_EN			BIT(1)
++#define RK816_OTG_EN			BIT(2)
++#define	RK816_BOOST_EN_MSK		BIT(5)
++#define RK816_OTG_EN_MSK		BIT(6)
++#define RK816_BUCK_DVS_CONFIRM		BIT(7)
++
++#define RK816_LDO_EN_REG1		0x27
++
++#define RK816_LDO_EN_REG2		0x28
++
++/* interrupt registers and irq definitions */
++#define RK816_INT_STS_REG1		0x49
++#define RK816_INT_STS_MSK_REG1		0x4a
++#define RK816_INT_STS_PWRON_FALL	BIT(5)
++#define RK816_INT_STS_PWRON_RISE	BIT(6)
++
++#define RK816_INT_STS_REG2		0x4c
++#define RK816_INT_STS_MSK_REG2		0x4d
++#define RK816_INT_STS_VB_LOW		BIT(1)
++#define RK816_INT_STS_PWRON		BIT(2)
++#define RK816_INT_STS_PWRON_LP		BIT(3)
++#define RK816_INT_STS_HOTDIE		BIT(4)
++#define RK816_INT_STS_RTC_ALARM		BIT(5)
++#define RK816_INT_STS_RTC_PERIOD	BIT(6)
++#define RK816_INT_STS_USB_OV		BIT(7)
++
++#define RK816_INT_STS_REG3		0x4e
++#define RK816_INT_STS_MSK_REG3		0x4f
++#define RK816_INT_STS_PLUG_IN		BIT(0)
++#define RK816_INT_STS_PLUG_OUT		BIT(1)
++#define RK816_INT_STS_CHG_OK		BIT(2)
++#define RK816_INT_STS_CHG_TE		BIT(3)
++#define RK816_INT_STS_CHG_TS		BIT(4)
++#define RK816_INT_STS_CHG_CVTLIM	BIT(6)
++#define RK816_INT_STS_DISCHG_ILIM	BIT(7)
++
++#define RK816_IRQ_STS_OFFSET(x)		((x) - RK816_INT_STS_REG1)
++#define RK816_IRQ_MSK_OFFSET(x)		((x) - RK816_INT_STS_MSK_REG1)
++
++/* charger, boost and OTG registers */
++#define RK816_OTG_BUCK_LDO_CONFIG_REG	0x2a
++#define RK816_CHRG_CONFIG_REG		0x2b
++#define RK816_BOOST_ON_VESL_REG		0x54
++#define RK816_BOOST_SLP_VSEL_REG	0x55
++#define RK816_CHRG_BOOST_CONFIG_REG	0x9a
++#define RK816_SUP_STS_REG		0xa0
++#define RK816_USB_CTRL_REG		0xa1
++#define RK816_CHRG_CTRL(x)		(0xa3 + (x))
++#define RK816_BAT_CTRL_REG		0xa6
++#define RK816_BAT_HTS_TS_REG		0xa8
++#define RK816_BAT_LTS_TS_REG		0xa9
++
++/* adc and fuel gauge registers */
++#define RK816_TS_CTRL_REG		0xac
++#define RK816_ADC_CTRL_REG		0xad
++#define RK816_GGCON_REG			0xb0
++#define RK816_GGSTS_REG			0xb1
++#define RK816_ZERO_CUR_ADC_REGH		0xb2
++#define RK816_ZERO_CUR_ADC_REGL		0xb3
++#define RK816_GASCNT_CAL_REG(x)		(0xb7 - (x))
++#define RK816_GASCNT_REG(x)		(0xbb - (x))
++#define RK816_BAT_CUR_AVG_REGH		0xbc
++#define RK816_BAT_CUR_AVG_REGL		0xbd
++#define RK816_TS_ADC_REGH		0xbe
++#define RK816_TS_ADC_REGL		0xbf
++#define RK816_USB_ADC_REGH		0xc0
++#define RK816_USB_ADC_REGL		0xc1
++#define RK816_BAT_OCV_REGH		0xc2
++#define RK816_BAT_OCV_REGL		0xc3
++#define RK816_BAT_VOL_REGH		0xc4
++#define RK816_BAT_VOL_REGL		0xc5
++#define RK816_RELAX_ENTRY_THRES_REGH	0xc6
++#define RK816_RELAX_ENTRY_THRES_REGL	0xc7
++#define RK816_RELAX_EXIT_THRES_REGH	0xc8
++#define RK816_RELAX_EXIT_THRES_REGL	0xc9
++#define RK816_RELAX_VOL1_REGH		0xca
++#define RK816_RELAX_VOL1_REGL		0xcb
++#define RK816_RELAX_VOL2_REGH		0xcc
++#define RK816_RELAX_VOL2_REGL		0xcd
++#define RK816_RELAX_CUR1_REGH		0xce
++#define RK816_RELAX_CUR1_REGL		0xcf
++#define RK816_RELAX_CUR2_REGH		0xd0
++#define RK816_RELAX_CUR2_REGL		0xd1
++#define RK816_CAL_OFFSET_REGH		0xd2
++#define RK816_CAL_OFFSET_REGL		0xd3
++#define RK816_NON_ACT_TIMER_CNT_REG	0xd4
++#define RK816_VCALIB0_REGH		0xd5
++#define RK816_VCALIB0_REGL		0xd6
++#define RK816_VCALIB1_REGH		0xd7
++#define RK816_VCALIB1_REGL		0xd8
++#define RK816_FCC_GASCNT_REG(x)		(0xdc - (x))
++#define RK816_IOFFSET_REGH		0xdd
++#define RK816_IOFFSET_REGL		0xde
++#define RK816_SLEEP_CON_SAMP_CUR_REG	0xdf
++
++/* general purpose data registers 0xe0 ~ 0xf2 */
++#define RK816_DATA_REG(x)		(0xe0 + (x))
++
+ /* RK818 */
+ #define RK818_DCDC1			0
+ #define RK818_LDO1			4
+@@ -791,6 +933,7 @@ enum rk806_dvs_mode {
+ #define VOUT_LO_INT	BIT(0)
+ #define CLK32KOUT2_EN	BIT(0)
+ 
++#define TEMP105C			0x08
+ #define TEMP115C			0x0c
+ #define TEMP_HOTDIE_MSK			0x0c
+ #define SLP_SD_MSK			(0x3 << 2)
+@@ -1191,6 +1334,7 @@ enum {
+ 	RK806_ID = 0x8060,
+ 	RK808_ID = 0x0000,
+ 	RK809_ID = 0x8090,
++	RK816_ID = 0x8160,
+ 	RK817_ID = 0x8170,
+ 	RK818_ID = 0x8180,
+ };
 -- 
 2.43.2
 
