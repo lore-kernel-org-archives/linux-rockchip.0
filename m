@@ -4,48 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC5CFC4345F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 14:16:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836EBC4345F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 14:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Hq9LzOxHwynSk7xxsX2Dc263gJ7UMuI5Lgzljmv5gMc=; b=zFJ2JRG9q1zufw
-	HA5Ulku+C5dGXj2XNGLt9/K6vSVD1M4KuhEx75sX0z6wrPIzRp6dHpFB9S3HnyMS1Y0F2Oc0gAR5j
-	9c7oXdSlqOEi0lRu1H6QsCjtxQzkqs9elg5twrUw84x6YKXhXHK03xMa9IdVt7DaOIqNK4BxCxXUm
-	zBAVC1K19uV+t4LKnCwvWeIK55QcCP4KwCdFndQ9I8T4b54OSlOMosHWCxiZ1ANpT5Oy0eKcH7Zuu
-	Bfuoe18anvNSSfW3eVnmQqdUXkTSlFyOFop7Jyf5wSfUa/IZbCr2H9ey9WXUjXdAiUySiTd5myPQT
-	6T8s9/7lTjeYDDH4sjUg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wWrP18d6Jke8X1mE1HYckWe6wd1H23QKgnyIss5qLOs=; b=acvbqZ+Ug3hUV5
+	Xhx0Iiu7LefWGXACPjS9lAMRWKFqmsqtcU5Zdzs8msvoKccvo80z7Gb3P4CzadZvqJzhBu7UbnLmK
+	Bv51AhSEHIHnJ+eFDgTOIBaGZS1+qYnmkfI7tFqHMbdkPC9j5/Ht3B/iDI9HTn8NGwNQMLEqMhbY5
+	DrfAEaZ/HHKm0n0xiHFrYGaWad5BpGDcVRv+TGeYLqrh7DXNvpB4H3jZxbtlrJVTF8JloQzgyomNO
+	Vf0YpVCtMsoLb88XhxOsPn7hq4hZDGnxX9hOZjJQcULnNXncNa78C4ZFAGimhAh+16kE+2kk7Hsya
+	Z+UPk3C2qlRvwA0C0yvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx65i-0000000GJ86-23vf;
-	Wed, 17 Apr 2024 14:16:50 +0000
+	id 1rx6Nj-0000000GMsr-3bY8;
+	Wed, 17 Apr 2024 14:35:27 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx65f-0000000GJ6M-05B1;
-	Wed, 17 Apr 2024 14:16:48 +0000
-Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=phil.lan)
+	id 1rx6Ng-0000000GMs3-0q7G;
+	Wed, 17 Apr 2024 14:35:25 +0000
+Received: from i5e8616c3.versanet.de ([94.134.22.195] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rx65c-0003sM-KV; Wed, 17 Apr 2024 16:16:44 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@theobroma-systems.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH] arm64: dts: rockchip: add PCIe3 support on rk3588-jaguar
-Date: Wed, 17 Apr 2024 16:16:42 +0200
-Message-Id: <20240417141642.2243193-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
+	id 1rx6NP-0003y3-HQ; Wed, 17 Apr 2024 16:35:07 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?utf-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Simon Xue <xxm@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Niklas Cassel <cassel@kernel.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>,
+ Jianfeng Liu <liujianfeng1994@gmail.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ stable@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Fix GPIO initialization flag
+Date: Wed, 17 Apr 2024 16:35:06 +0200
+Message-ID: <3292185.44csPzL39Z@diego>
+In-Reply-To: <20240416121522.269972-1-cassel@kernel.org>
+References: <20240416121522.269972-1-cassel@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_071647_087178_8C0E38D3 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20240417_073524_275025_20D9D6A4 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,90 +67,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+Am Dienstag, 16. April 2024, 14:15:22 CEST schrieb Niklas Cassel:
+> PERST is active low according to the PCIe specification.
+> 
+> However, the existing pcie-dw-rockchip.c driver does:
+> gpiod_set_value(..., 0); msleep(100); gpiod_set_value(..., 1);
+> When asserting + deasserting PERST.
+> 
+> This is of course wrong, but because all the device trees for this
+> compatible string have also incorrectly marked this GPIO as ACTIVE_HIGH:
+> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3568*
+> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3588*
+> 
+> The actual toggling of PERST is correct.
+> (And we cannot change it anyway, since that would break device tree
+> compatibility.)
+> 
+> However, this driver does request the GPIO to be initialized as
+> GPIOD_OUT_HIGH, which does cause a silly sequence where PERST gets
+> toggled back and forth for no good reason.
+> 
+> Fix this by requesting the GPIO to be initialized as GPIOD_OUT_LOW
+> (which for this driver means PERST asserted).
+> 
+> This will avoid an unnecessary signal change where PERST gets deasserted
+> (by devm_gpiod_get_optional()) and then gets asserted
+> (by rockchip_pcie_start_link()) just a few instructions later.
+> 
+> Before patch, debug prints on EP side, when booting RC:
+> [  845.606810] pci: PERST asserted by host!
+> [  852.483985] pci: PERST de-asserted by host!
+> [  852.503041] pci: PERST asserted by host!
+> [  852.610318] pci: PERST de-asserted by host!
+> 
+> After patch, debug prints on EP side, when booting RC:
+> [  125.107921] pci: PERST asserted by host!
+> [  132.111429] pci: PERST de-asserted by host!
+> 
+> This extra, very short, PERST assertion + deassertion has been reported
+> to cause issues with certain WLAN controllers, e.g. RTL8822CE.
+> 
+> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
+> Tested-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
-The Jaguar SBC provides a M.2 slot connected to the pcie3 controller.
-In contrast to a number of other boards the pcie-refclk is gpio-controlled,
-so the necessary clock is added to the list of pcie3 clocks.
+On rk3588-jaguar
+Tested-by: Heiko Stuebner <heiko@sntech.de>
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 53 +++++++++++++++++++
- 1 file changed, 53 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 5002105dc78e..908fbabd8b00 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -72,6 +72,25 @@ led-1 {
- 		};
- 	};
- 
-+	/*
-+	 * 100MHz reference clock for PCIe peripherals from PI6C557-05BLE
-+	 * clock generator.
-+	 * The clock output is gated via the OE pin on the clock generator.
-+	 * This is modeled as a fixed-clock plus a gpio-gate-clock.
-+	 */
-+	pcie_refclk_gen: pcie-refclk-gen-clock {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <1000000000>;
-+	};
-+
-+	pcie_refclk: pcie-refclk-clock {
-+		compatible = "gpio-gate-clock";
-+		clocks = <&pcie_refclk_gen>;
-+		#clock-cells = <0>;
-+		enable-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_LOW>; /* PCIE30X4_CLKREQN_M0 */
-+	};
-+
- 	pps {
- 		compatible = "pps-gpio";
- 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-@@ -466,6 +485,40 @@ &pcie2x1l0 {
- 	status = "okay";
- };
- 
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie30x4m0_pins {
-+	/*
-+	 * pcie30x4_clkreqn_m0 is used by the refclk generator
-+	 * pcie30x4_perstn_m0 is used as via the reset-gpio
-+	 */
-+	rockchip,pins =
-+		/* pcie30x4_waken_m0 */
-+		<0 RK_PC7 12 &pcfg_pull_none>;
-+};
-+
-+&pcie3x4 {
-+	/*
-+	 * The board has a gpio-controlled "pcie_refclk" generator,
-+	 * so add it to the list of clocks.
-+	 */
-+	clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+		 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+		 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
-+		 <&pcie_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie30x4m0_pins>;
-+	reset-gpios = <&gpio0 RK_PD0 GPIO_ACTIVE_HIGH>; /* PCIE30X4_PERSTN_M0 */
-+	vpcie3v3-supply = <&vcc3v3_mdot2>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	emmc {
- 		emmc_reset: emmc-reset {
--- 
-2.39.2
 
 
 _______________________________________________
