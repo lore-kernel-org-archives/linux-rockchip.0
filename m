@@ -4,107 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F55C001CC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 13:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9271AC4345F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 13:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=64bhAXrbSFEvsoiQKP3uORKf3Lk89kg3JHTBa2IXZpk=; b=z7xfZxmWvzbN95
-	Kg6HmpL8EO4p9v/0AN4As8FnQGLY8ITmPxTxAhgxpewmmpENH8TFwoIjQgiNeRHdMezCtYT9+f7QU
-	d5SeYIgqACZrVpSrl1o64/T7u1or0UKjCcS/CHoHn2Uu+bzGw7cG0ssXRRaZzskB4YVnjsveuoYNS
-	KHbnaMYP/VmujFwZRDSH8I1+aHh6kP6LqrqOnscmIMPBVmKYMGDLsZItigHxa3hrrkSd2pnhhqxLJ
-	kyvsTBzlnn4x3ZmjJA9sFw+eQ1ANnPNeh4htT80L/WFggWP1YNeGJdXfYw4vuSO9DdKclNESFO30R
-	/frXHDH5ugJq6RDZFL9g==;
+	List-Owner; bh=a2aEB5FDRkIHxyDWWUxow7nFh7mjYIW29WtcPZ/tXE8=; b=DFOgwoA+MEIzAQ
+	BD/GjvvNMfljhRxWC9k8ItXTZfDi5PiRbCDrPitAM+lz0ecoqIwQlBxAYKxQqIokEe2oRHbOwXkL+
+	nH7Tr1EgVeQcJxjkmTg/RGgfOqWHi85Ufc6eRkTRPovHqa8kfGQXfvkX/MgF1mgOjObaKSKp2IS6y
+	GylUDgpjGOKbUmaihscANnVmutoDMUDha40zCNsMfJ/MS7c/8JIjJVBUWl+CaCpbvKzI9zQfX9FgX
+	KJeDWknmxbPytwm1n7iQg/Vxijo1u9AbXzQheedCr3t91AQ6W1R41FzY+NYBYCCbbzVqFJ08z+Nbm
+	05oH3Hwn+9WZQS9hnQCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5Hb-0000000G7zI-1LGd;
-	Wed, 17 Apr 2024 13:25:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1rx5NI-0000000G9wf-2ONW;
+	Wed, 17 Apr 2024 13:30:56 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx5HV-0000000G7wA-3HLq;
-	Wed, 17 Apr 2024 13:24:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 47903614C9;
-	Wed, 17 Apr 2024 13:24:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B44A7C072AA;
-	Wed, 17 Apr 2024 13:24:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713360296;
-	bh=uphtWyL4Vdav4pHrPyDm5t6wcResh5pkONc4k4dfnNY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bl1V080Z/Brh3SaLd7k+Y5SGafjuopXU3nAM/f117Ci08cbKMC8KFvVqlwlN05Ffs
-	 sDkqMlqP8AmpUM4YjhHdo5Azq9DMwCs7mGe1jqHrMZ9IcTjHpKJkU6QSOBThHUvGCA
-	 YGN+vKls8antpHp56mo/wBLqd5rnwziAIU1Ho04kVVcZaWhhya28hDGHom2catEFW9
-	 ZDrW4+JiHws719yvCpF2AtmciaIW3BFY7xRy/oxhdT7HwUt0h444YCjWYGqp6YToM8
-	 KU6zf7627hmrHmIXLv5DHgJkqGxiRajwn4wJdpxqeD1HuPJCasgXPSwCAIXPtdhmff
-	 ilHlMz0MRcXYA==
-Message-ID: <81f692c1-87cb-4bd8-8bff-db50ccd9e16c@kernel.org>
-Date: Wed, 17 Apr 2024 15:24:56 +0200
+	id 1rx5NE-0000000G9tT-38MC;
+	Wed, 17 Apr 2024 13:30:55 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [58.61.140.80])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id F21EA7E0125;
+	Wed, 17 Apr 2024 21:30:20 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: jonas@kwiboo.se
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Radxa ROCK3 Model C
+Date: Wed, 17 Apr 2024 21:30:16 +0800
+Message-Id: <20240417133016.62753-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <d7de2213-8dd2-42ec-9a30-a569ac71be3e@kwiboo.se>
+References: <d7de2213-8dd2-42ec-9a30-a569ac71be3e@kwiboo.se>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] dt-bindings: arm: rockchip: Add ArmSoM Sige7
-To: Weizhao Ouyang <o451686892@gmail.com>,
- Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- sfr@canb.auug.org.au, weizhao.ouyang@arm.com
-References: <20240416034626.317823-1-liujianfeng1994@gmail.com>
- <20240416034626.317823-3-liujianfeng1994@gmail.com>
- <CAHk0Hosivk8=2LNC6Pz1qAGFg1791z12tYRf-cEZNLZb7HaQVQ@mail.gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <CAHk0Hosivk8=2LNC6Pz1qAGFg1791z12tYRf-cEZNLZb7HaQVQ@mail.gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZH09NVklOSBgZGEofQhoYTVUTARMWGhIXJBQOD1
+	lXWRgSC1lBWU5DVU1KVUpPS1VDS1lXWRYaDxIVHRRZQVlPS0hVSkpLSEpDVUpLS1VLWQY+
+X-HM-Tid: 0a8eec404ea403a2kunmf21ea7e0125
+X-HM-MType: 10
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6KzY6KTo4QzMQFQFWPjwCCC46
+	SyJPCShVSlVKTEpISE1LTUlKTUJLVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWU5D
+	VU1KVUpPS1VDS1lXWQgBWUFPT0xINwY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_062457_927075_2585E017 
-X-CRM114-Status: UNSURE (   6.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240417_063053_133533_13522BBE 
+X-CRM114-Status: GOOD (  21.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,19 +69,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTYvMDQvMjAyNCAxMzoxMSwgV2VpemhhbyBPdXlhbmcgd3JvdGU6Cj4gT24gVHVlLCBBcHIg
-MTYsIDIwMjQgYXQgMTE6NDbigK9BTSBKaWFuZmVuZyBMaXUgPGxpdWppYW5mZW5nMTk5NEBnbWFp
-bC5jb20+IHdyb3RlOgo+Pgo+PiBBZGQgZGV2aWNldHJlZSBiaW5kaW5nIGZvciBBcm1Tb00gU2ln
-ZTcgYm9hcmQKPj4KPj4gU2lnbmVkLW9mZi1ieTogSmlhbmZlbmcgTGl1IDxsaXVqaWFuZmVuZzE5
-OTRAZ21haWwuY29tPgo+PiBBY2tlZC1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJu
-ZWwub3JnPgo+IAo+IFJldmlld2VkLWJ5OiBXZWl6aGFvIE91eWFuZyA8d2Vpemhhby5vdXlhbmdA
-YXJtLmNvbT4KClRoaXMgZG9lcyBub3QgbWF0Y2ggeW91ciBlbWFpbC4gV2hhdCBkaWQgeW91IGV4
-YWN0bHkgcmV2aWV3IGhlcmU/CgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Jonas,
+>> +	model = "Radxa ROCK3 Model C";
+>
+> The marketing name seems to be "Radxa ROCK 3C" according to the product
+> page at [1].
+>
+> [1] https://radxa.com/products/rock3/3c
+
+According to https://wiki.radxa.com/Rock3/3c , it should be called
+"Radxa ROCK 3 Model C". I copied rock3a here without paying attention.
+
+>> +	compatible = "radxa,rock3c", "rockchip,rk3566";
+>
+> A personal preference would be to match the product name and the dtb
+> filename, e.g. "radxa,rock-3c".
+
+I thought so too, here is also copied from rock3a.
+I think rock3a needs fixing too?
+
+>> +		led_user: led-0 {
+> This is called user_led2 in the schematic, in case we want the symbol
+> to match the schematic.
+
+>> +		regulator-name = "vcc5v0_usb_host";
+> This regulator is named vcc5v0_usb30_host in schematic.
+
+Thanks, I will fix it.
+
+>> +		#clock-cells = <1>;
+>> +		clock-names = "mclk";
+>> +		clocks = <&cru I2S1_MCLKOUT_TX>;
+>
+> I think clock-output-names may be missing? Something like:
+>
+>  clock-output-names = "rk809-clkout1", "rk809-clkout2";
+
+Thanks, I'll add it in the next patch.
+
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&pmic_int_l>, <&i2s1m0_mclk>;
+>> +		rockchip,system-power-controller;
+
+> I think this prop is deprecated and system-power-controller
+> should be used instead.
+
+>> +				regulator-state-mem {
+>> +					regulator-on-in-suspend;
+>> +					regulator-suspend-microvolt = <900000>;
+
+> Not sure we need this in suspend to ram and this can probably use:
+>
+>  regulator-off-in-suspend
+>
+> That is also what vendor kernel does.
+
+Will be corrected in the next patch.
+
+>> +			vcc3v3_sd: SWITCH_REG2 {
+>> +				regulator-name = "vcc3v3_sd";
+>> +				regulator-always-on;
+>> +				regulator-boot-on;
+>
+> If I am reading the schematic correctly this is not connected.
+
+Yes, I didn't notice it was NC, thanks.
+
+>> +&sdhci {
+>> +	bus-width = <8>;
+>> +	max-frequency = <200000000>;
+> This board support HS200, please add:
+>
+>  mmc-hs200-1_8v
+
+Will be added in the next patch.
+
+>> +&sdmmc0 {
+>> +	bus-width = <4>;
+>> +	cap-sd-highspeed;
+>> +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+>
+> Please drop the cd-gpios prop, sdmmc0_det is used below and
+> works fine on this board.
+
+Do other rk356x boards also need this change?
+
+>> +	sd-uhs-sdr50;
+>
+> Why limit to sdr50? and not use sd-uhs-sdr104?
+
+The sdr104 mode is not stable on the rk356x platform.
+This problem has been reported on both rock3a and e25 boards.
+
+>> +	vmmc-supply = <&vcc3v3_sd>;
+>
+> If I read the scematics correctly this is using the
+> vcc3v3_sys regulator and not the vcc3v3_sd.
+
+Yes, you are right. I didn't notice it, thanks.
+
+>> +&sfc {
+>
+> This is missing pinctrl:
+>
+>  pinctrl-names = "default";
+>  pinctrl-0 = <&fspi_pins>;
+
+This is already defined on rk356x.dtsi:
+
+	sfc: spi@fe300000 {
+		compatible = "rockchip,sfc";
+		......
+		pinctrl-0 = <&fspi_pins>;
+		pinctrl-names = "default";
+		status = "disabled";
+	};
+
+>> +		spi-max-frequency = <104000000>;
+>
+> My board is using a GD25LQ128EWIGR same as mentioned in the schematic,
+> and datasheet for this flash chip menion 120 mhz and not 104 mhz.
+
+Will be corrected in the next patch, thanks.
+
+Thanks,
+Chukun
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
