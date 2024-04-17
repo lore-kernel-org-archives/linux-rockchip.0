@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66ACEC001CC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 14:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70055C4345F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Apr 2024 15:03:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AX6sFqRQoLIJMonU+mgQ2cNIBc7uGDjt45Oze4dx+u4=; b=D/vmKXlUgAVQND
-	P0jHm/vQMxiZmR8JUicyAkCrJAPgZBiZcYUUBH+cDa1jnB9MXlCOFsvoIkbclHY9I3dr7fOHYF217
-	pFso76ZfKsLECh8jkNeU4cJTbvte9mHOvTYYzcdArJFuFl4+ehEn9MqjsDvS6QTC8Dc+O5gSHyWzl
-	wbL7kMKeP0JrjmQ+9XcqT+bTvIaZ9qCkO36pNWvvhP+6r9WhG4vtow1TgEPISfufzcMpTHHnvDshM
-	V69lx2sbj9VDnkF9LhB2g2mHk/xWQNKdpOu8SslkFRam3PsS3UTkqaI6RE20mwqIdhJvTdFKYyVS4
-	uyGGPo45AZaPC1g3vsSQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Yd5VF7ydMctDoz3G33eX3KGGwZ83DQLrwz1Z6P/sKw=; b=R9ysbWbad3IAS9u4V7XyGo8KLG
+	01JWUFirq20AYz/k089eeIgo85Y0eRDDkzclwYcMYLMtLx4WYUfnOL4vcVFkHzbhsmEnoYEODekKl
+	4o+iI4urT8tPYXrpHhOtX4faSS+PACLZ59jZfAU9GBGZ5nyIpNP/Ca5vwhK+tpKk/FIL9SuHoqdtu
+	l4c2MQuCN/ksiNaBmdXgjHcsgcq1gRzeu5tXLGkCsPDA0sB+AlcbLI0eaN9i+QgZnRgz6idWUIkVl
+	vdoZagpHCXHCM/rKa0ImG06Zw7cG819Ga7piMdfbbgXuVHIAj4LBzQMXtyXcgnprwFeB+b2HSZR70
+	NkvOcOjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6SC-0000000GNn9-2d7y;
-	Wed, 17 Apr 2024 14:40:04 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1rx6p5-0000000GU6M-0UbK;
+	Wed, 17 Apr 2024 15:03:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rx6S8-0000000GNim-01m9;
-	Wed, 17 Apr 2024 14:40:01 +0000
+	id 1rx6ox-0000000GU40-0Pvd;
+	Wed, 17 Apr 2024 15:03:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 49DF5CE139E;
-	Wed, 17 Apr 2024 14:39:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC817C3277B;
-	Wed, 17 Apr 2024 14:39:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6B970614FC;
+	Wed, 17 Apr 2024 15:03:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF288C072AA;
+	Wed, 17 Apr 2024 15:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713364790;
-	bh=oaCCmN1lVY7S22xF8rXCzmvkdga+euN0QD+4m2z6Dyo=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=N9T5SOC+NMSEd5N/rF7+d0rirtIHxnH0pfW/aWxODxkFbFoLmGJMeNvlvRaa4HIep
-	 IkAXvRoCEIok1DNwroeIhBg1HcneeYdbzqfFqTPm+Xu3U8ZZBV4nedLHanOaG4YG+k
-	 VYdBQac5Ej11UCqlhgW89uqGXhk0gnE0e5GLRmb1AFS4p9thvidA0ideyU/xBNJTzx
-	 ZPONBtJT72/hLBe6Z/ZZ/9fGB+6LAFISnu6DGxDSJRxGGIfwd1P2LBNERtrDPKE2El
-	 igCKkt6UT7+BAeLj1aiAUiZxXfTG3s9/vDNNv9wKY9TKHkIS6n8/OPn+amBm3PHSvg
-	 TZ7klaPze8uzA==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Arnd Bergmann <arnd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Heiko Stuebner <heiko@sntech.de>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
- Zhang Yubing <yubing.zhang@rock-chips.com>, 
- Frank Wang <frank.wang@rock-chips.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20240415174241.77982-1-arnd@kernel.org>
-References: <20240415174241.77982-1-arnd@kernel.org>
-Subject: Re: [PATCH] phy: rockchip: fix CONFIG_TYPEC dependency
-Message-Id: <171336478653.736784.62229019778133904.b4-ty@kernel.org>
-Date: Wed, 17 Apr 2024 20:09:46 +0530
+	s=k20201202; t=1713366213;
+	bh=V2N7AMDuz9jYWqc6c9z+U9bVhSANzB8iVmzvJstXz54=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oDUVvfqDXkPFZHs5kX/STB9snvKkCQHuYgtX9Rq67q1sPgoY+IwTmpP3Aw7mYM63F
+	 wucJybP+iLeqZZ46M1z4wB+WE/HMrsLAcmipEY9QQfGq3IYX4rQP8BRLMXjsiiHbm6
+	 As/WgUi+j4LNNHu2tRyS3/XXuK7E6lLwmc7YSKScgof6ArrM8Ek3E3+saxUSygp9PA
+	 AEyGWNy42dXB7jaLhn0wb3Qtt2ipz0uGEQAHT4Dqf8IaZri3bx1ByWDD2IeNfeObdp
+	 moTWjTBvcfvTTIWjHN3wVTrjWL7xHMmynPdnOfPiXBKQvt/G9wQUTDJGov8f3ydGke
+	 7uz+ttz8/U07g==
+Date: Wed, 17 Apr 2024 16:03:28 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jianfeng Liu <liujianfeng1994@gmail.com>, conor+dt@kernel.org,
+	robh@kernel.org, krzk+dt@kernel.org, sfr@canb.auug.org.au,
+	weizhao.ouyang@arm.com
+Subject: Re: [PATCH v4 1/3] dt-bindings: vendor-prefixes: add ArmSoM
+Message-ID: <20240417-carefully-unknowing-418254f3e951@spud>
+References: <20240416034626.317823-1-liujianfeng1994@gmail.com>
+ <20240416034626.317823-2-liujianfeng1994@gmail.com>
+ <13494460.uLZWGnKmhe@diego>
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
+In-Reply-To: <13494460.uLZWGnKmhe@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240417_074000_247038_C19192E7 
-X-CRM114-Status: UNSURE (   4.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240417_080335_204910_98B1028B 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,35 +71,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8053079516859501353=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 15 Apr 2024 19:42:25 +0200, Arnd Bergmann wrote:
-> The newly added driver causes a warning about missing dependencies
-> by selecting CONFIG_TYPEC unconditionally:
-> 
-> WARNING: unmet direct dependencies detected for TYPEC
->   Depends on [n]: USB_SUPPORT [=n]
->   Selected by [y]:
->   - PHY_ROCKCHIP_USBDP [=y] && ARCH_ROCKCHIP [=y] && OF [=y]
-> 
-> [...]
-
-Applied, thanks!
-
-[1/1] phy: rockchip: fix CONFIG_TYPEC dependency
-      commit: 9c79b779643e56d4253bd3ba6998c58c819943af
-
-Best regards,
--- 
-~Vinod
+--===============8053079516859501353==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="g9rem694lJ5oQ4tu"
+Content-Disposition: inline
 
 
+--g9rem694lJ5oQ4tu
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Apr 17, 2024 at 10:21:17AM +0200, Heiko St=FCbner wrote:
+> Am Dienstag, 16. April 2024, 05:46:24 CEST schrieb Jianfeng Liu:
+> > Add vendor prefix for ArmSoM (https://www.armsom.org)
+> >=20
+> > Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+>=20
+> [PATCH v3 1/3] dt-bindings: vendor-prefixes: add ArmSoM
+> yesterday got a
+>=20
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+>=20
+> in
+> https://lore.kernel.org/r/20240416-choosing-boney-33cf206d0f38@spud
+
+Too many versions in a short space of time, guess I picked not the most
+recent to respond to as it arrived in the <24h period that it usually
+takes me to clear a patch from my queue.
+
+--g9rem694lJ5oQ4tu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZh/kwAAKCRB4tDGHoIJi
+0uHBAQCilZ3Gz5HIzFcim0yBLi4A8H51cTC9y0FJsztZxMzcFAD+NnNntnnK2Pny
+VoYLwSxda8vNGpxqNVEhSU2O0ISRlQk=
+=fxib
+-----END PGP SIGNATURE-----
+
+--g9rem694lJ5oQ4tu--
+
+
+--===============8053079516859501353==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8053079516859501353==--
+
