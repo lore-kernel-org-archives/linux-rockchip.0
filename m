@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7CE3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 15:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D48DC4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 16:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BHNFOV95/U1NAT3p/J0dY6qNEoQJKwuNnmuufWkNKD0=; b=w+T0wFeolBRj7PYrVMVAwOnt8d
-	ddXoT/lPBIk5H/yPy5ShdeblF9uVmumqFdJUjVRULE5yZjtsZtzvHQSwVDylSfv2Bazgqd26ynGlp
-	80ZZ8zO/Sf4mYJ5T+iNEfGxOzRpUdrBjjeID+zeeNdrTCT5Y9s3ws2yq7UTxuBdi56ydoM0UpEHSB
-	YX4iIJTmy+Og2EO6Kg2NBpxRPYbsYWIUwVvHv62MFjqdHd8ZUFFIDBdoPpQ4BHy1Zr5/bZEsi5Yrb
-	xPv/TIpzLtaiteWPW1Hnsb7b1NcEfKboxSESbedzzgJEmNPQjNFwLMams8N0kp9QlUZf5f/1y30ll
-	1Nfji6dA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WBLHvDM5tUQnrq814Ef2JvmzfMMhtYoSxIvYeokyjJM=; b=05Zm9bPin4LZnfGrNudG00XmB0
+	XHBu7aiqx/+3qr+jFxPTXJ374VhMnvLb4o4NtiZSlSMFJAP9YtEDlSMeiIJT+Ct06uniUNYJmIq6h
+	uAOSsnI3SQCYTzO7rkiCDkz7KGKW9CW8PP708Q2Y7VOajor6hF4TioYq+3agssKRpvNN5V+cCt4YQ
+	hqgFN+TzDc0q7ybu00WksthTrl66ehzQFkfEdkMfga0zSpPkHQ2tSe3sfSKHzBSLPT5nCrBT+lb/9
+	HHHbq50QLmont/d+TaFkb1TTrmm2apylgs+6M3p+tXgVB8nIo/M5svSlrSJCTepjGArGdBMvDeQeb
+	Sb1GYuww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUA8-00000002v6i-2rHp;
-	Thu, 18 Apr 2024 15:59:00 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rxUJ8-00000002x3E-0eJX;
+	Thu, 18 Apr 2024 16:08:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUA5-00000002v5A-1ZXI;
-	Thu, 18 Apr 2024 15:58:58 +0000
+	id 1rxUJ4-00000002x2P-2vlP;
+	Thu, 18 Apr 2024 16:08:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1CCF261821;
+	Thu, 18 Apr 2024 16:08:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C54FC113CC;
+	Thu, 18 Apr 2024 16:08:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713456493;
+	bh=rkrTpsLO+50r5ibEQOEvU3vQMmfUVtgFiQ5k83m5StM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TftbM3dOE3svEIaqrs8h/enmkXGrctoHLiseUF3xQMbQvYuNBYPYXtIAbtEonZ5b1
+	 41TO3gaVUdFt3J52keySYXF+cB4AfcNmvXY4z2m/R31WbwOFgffs3GuPoagJqG+PWk
+	 1YDt8QAR76YXXN5ZOy6B5Q9TXC3cX+UBFZSHUb2RAVsYzUREmpv3qGMzyCizDLjUi8
+	 F6O9Pyj0boTNTgetVQOl58vEVR/ZoQshLTyHAIbiibz/7uC61KyIy1tfU+Mfe4TcMV
+	 AheGu7QrCaOrVlc+1rBv1za5Y03RUdUGODesrbMktYMEdOOiHdGZzmh+lvBP1YJne2
+	 hgJ2wfppFkKZg==
+Date: Thu, 18 Apr 2024 17:08:08 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: liujianfeng1994@gmail.com, krzk@kernel.org,
+	linux-rockchip@lists.infradead.org, conor+dt@kernel.org,
+	devicetree@vger.kernel.org, ezequiel@vanguardiasur.com.ar,
+	heiko@sntech.de, krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, mchehab@kernel.org,
+	p.zabel@pengutronix.de, robh@kernel.org, sfr@canb.auug.org.au,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v5 2/2] dt-bindings: media: rockchip-vpu: Add rk3588
+ vdpu121 compatible string
+Message-ID: <20240418-tipoff-neon-8c1fa60385cb@spud>
+References: <2a516484-ea87-444e-a89d-9fe33d08148f@kernel.org>
+ <20240413155709.802362-1-liujianfeng1994@gmail.com>
+ <1774986.o0yEF5yP89@bagend>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1713455935;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kiW4f7FdjCXio2Csij/Fy9C8DuPPxHwY5d9PSj9jra0=;
-	b=gVWBrhR9O0t7sklMHJuPowAW1JBqpbiO8lYTO9h8bpzXNPbNpEZdPVIS0hj2+p5LfHdJOG
-	I/PfMNf3g7pxY8TQwqMpGH90aMbSRxhvdkQzFn3G5WlSf0S91lQ1KtzXThs2wTkAo1enCv
-	XvXUkinDb5WOjpTzU0S/EMCIXP8juYJ1+wwRyPSoEyGI0Ua7CauQ4tk8KIXbcrUucwqs6d
-	HBzhMKQBZ9JslLFCX+S+Iair2HZbq73twNykIJ1RNkF4vsMHXI6Jz7AFwFwmr5wFoKUmwr
-	/bDSyBEIk3eXXFsFPZDZ/z4rz9HhoMwbMsEEPFH2ovHUO0yBIVt7X6zQxRgX/Q==
-Date: Thu, 18 Apr 2024 17:58:54 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, FUKAUMI Naoki
- <naoki@radxa.com>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: correct the model name
- for Radxa ROCK 3A
-In-Reply-To: <20240418-skinless-aptitude-245665a7c757@spud>
-References: <20240418130120.67663-1-amadeus@jmu.edu.cn>
- <d00953aab0f1c978e3720885a6844caa@manjaro.org>
- <20240418-drove-boasting-d189ee3e22e0@spud>
- <7fec3e2f4e16b1aca6cd08e1882bd885@manjaro.org>
- <20240418-skinless-aptitude-245665a7c757@spud>
-Message-ID: <865d70eea51c18570d94a4fc86dcb5b5@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <1774986.o0yEF5yP89@bagend>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_085857_618087_70185003 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20240418_090814_905405_C93AE7C9 
+X-CRM114-Status: GOOD (  25.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,43 +74,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============5377942350784664811=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2024-04-18 17:57, Conor Dooley wrote:
-> On Thu, Apr 18, 2024 at 05:46:30PM +0200, Dragan Simic wrote:
->> On 2024-04-18 17:37, Conor Dooley wrote:
->> > On Thu, Apr 18, 2024 at 05:21:18PM +0200, Dragan Simic wrote:
->> > > On 2024-04-18 15:01, Chukun Pan wrote:
->> > > > According to https://radxa.com/products/rock3/3a,
->> > > > the name of this board should be "Radxa ROCK 3A".
->> > > > Also update compatible to match the model name.
->> > > >
->> > > > Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
->> > > > Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
->> > >
->> > > Looking good to me.  I'll send the remaining naming cleanup patches
->> > > a bit later.
->> >
->> > What remaining patches?
->> 
->> The same naming cleanups need to be performed for the Radxa
->> ROCK 5 boards. [1]  I had some more cleanups for the ROCK 4
->> boards in mind, but I'll drop them after your NAK. [2]
->> 
->> Though, I'm not really sure why the NAK?  Those names aren't
->> used anywhere, neither in the Linux kernel, nor in U-Boot.
-> 
-> There may well be other users outside of those two projects that are
-> actually looking at it - I don't think that adding a hyphen is worth
-> disrupting anyone for, it seems perfectly clear without it what board
-> this is.
 
-I see, it's perhaps better to stay on the safe side.
+--===============5377942350784664811==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="sKET8aOPU1iKBZV1"
+Content-Disposition: inline
+
+
+--sKET8aOPU1iKBZV1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Apr 18, 2024 at 11:19:56AM +0200, Diederik de Haas wrote:
+> On Saturday, 13 April 2024 17:57:09 CEST Jianfeng Liu wrote:
+> > I'm sorry for my unkonwing about the kernel patching process. And I'm
+> > sorry to let maintainers do extra work. Thank you for teaching me this.
+> > I will do this right in future patches.
+> >=20
+> > I did received a Acked-by tag from Conor in v4:
+> > Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> >=20
+> > I note it here in case someone forgets this tag.
+>=20
+> I think it's beneficial to send a v6 with the following changes:
+> 1) Make this dt-bindings patch the first in the series
+> 2) Make sure you've collected all the tags you've received to all the pat=
+ches
+> 3) Specify the base commit
+>=20
+> ad 1) I don't know if it's a hard rule, but I've seen a consistent patter=
+n=20
+> where the dt-binding changes come before those changes being applied to=
+=20
+> DeviceTree files. It also makes sense as when the dt-binding change hasn'=
+t been=20
+> applied, then the DT file is technically invalid.
+
+It is definitely preferred, since there is tooling that checks for
+undocumented compatibles etc that would see spurious errors during
+bisection, were that to be done. Generally I wouldn't suggest resending
+for the order though if it were the only thing amiss.
+
+> ad 2) You shouldn't make maintainers do extra work to get your patch(es)=
+=20
+> merged; you want to make their work as easy as possible. Thus you do the=
+=20
+> (extra) work and provide a new version of the patch(es).
+> Sending multiple versions in a single day is generally not recommended as=
+ you=20
+> should give reviewers some time to do the review. But it should be fine n=
+ow as=20
+> several days have past without new reviews.
+
+I dunno, the best way to save our time is to not omit the tags in the
+first place (or give a reason as to why you did) as we'll likely pull up
+the previous version of the series to see if all comments were
+addressed, if made by another maintainer (at least I do that and Krzysztof
+must have here). In my workflow sending another ack takes much less time
+than looking up previous versions and checking to see if things were
+dealt with - probably that's in-part to me lacking automation for dfn:
+lore search from mutt though..
+
+>=20
+> ad 3) The `git format-patch` command has a `--base=3D<commit>` parameter =
+with=20
+> which you can make explicit upon which commit the patch is based.
+> That works a lot better/easier then a textual description.
+>=20
+> HTH
+
+
+
+--sKET8aOPU1iKBZV1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZiFFaAAKCRB4tDGHoIJi
+0o0pAP9fk55H5h1zSZnxIKk23cdN+HBXKww/TkXCqriIsMnC6gD9F54oAW2uS2/S
+BilcF9zkehoRlEKSh4CiiY5wD9hLGAM=
+=YI8b
+-----END PGP SIGNATURE-----
+
+--sKET8aOPU1iKBZV1--
+
+
+--===============5377942350784664811==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5377942350784664811==--
+
