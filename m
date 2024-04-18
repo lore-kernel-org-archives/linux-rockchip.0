@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F4DC04FFE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 16:26:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F007C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 16:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5lyjgZoK3oW8bqIjBiIeO0lL67JOlAwxXmtJPUahxYE=; b=sncfRaspZoVFbG
-	fjRDDKZMxdp9rU96bRn6zRTcebYa0KiGSEBKc1q+3QBFoj7WcJiv8r3wcW+Y0GEGbfB+guVGQscki
-	xi32x+Uj9jcBUCI8kpBgNI1pYq+pw5dLl+xmYGphLxw8PWd0js17SDY6mQJsxDHYWJlP63g+wZN9R
-	Ml5K32GYf/EXojoJ759EKp9MtE9RzysGZc4C/DPxrbCdGSAQwAiXAK0cMDyPWhOPZm10Lk5ahh0pl
-	pOUAZQC5yqIBJBBAq1wzBOlNgFI48jL7QfigMN78j7Fl2Fwgudzz66pMKkK04bOKz0Z1zHbkrNMu8
-	SfBMFvseZc7FlSuU54QQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DQB+yfbCwnFd9EmGVlSKWkwBjmQWV6ChQrhoFekE/5w=; b=YPQn9JKoiv9x51XPV9YBirI1zG
+	NSlCfh4ulnsQcQdNWJiaaD8WfsAz3ih1s+I57HWo/jsiAOiMNjQEOyyf5pi63rVHyrvWMMrDub3fM
+	himf9KPTnKY5EI93H2zbPvWYSQDDETrwCWNqUWbPXXs7OHIXqtGmLKDxkVdspBkCR/3WyU/l8kZQC
+	RgwRUeuw4o21XEEwy/gX9MbtXoCy4uNxEPaJ5dNIlHilsIt6Y4qeXOOzjOPwSet8hT+JtD/xSKxiE
+	g2rMHiIFoIi8H8VfNxRJjA1asQKnCsBM+m+Z8EknDzlFLNYrn0pNPCIWTwvXrfWD5VOnXxUkapMIu
+	72Ticbbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUaq-000000030OB-0npi;
-	Thu, 18 Apr 2024 16:26:36 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1rxUi2-0000000327q-1Bqs;
+	Thu, 18 Apr 2024 16:34:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUak-000000030Mk-3BVS;
-	Thu, 18 Apr 2024 16:26:32 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1713457589;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1u55PLCGxci9bAUfKmtYNqOEwbkf8Uc9rj3DWZzS4F8=;
-	b=KzjIZxknxJVEM1S6yX44gD7YfP4LBCul7mlUz+mzLX5Hp3KZuJSA5pk6mtr5eUuhRSJVQk
-	XLyp6jcbNPdwRUlUiCdkMG6LJhwKjx7xsJHJF6A2Od2JxWoSayt66y2EE0WiCBzyDo2ImH
-	FScHbOVnQ56BPk24k8n090UVhK4BIXgwmwfHYz/T07f0m2F1s02lgiwgAynIAAwReAC3h9
-	QTqNa4UCcYsMAlReKSYVamlxVNmiRQDYU4XbXZBsUrjj9zwiJ7iA7LRyfu/4oKTghgH5u7
-	DUraFnOgSMYfdm+kyMd7w+BoqHXZvW3A87l7boKivq5gyynGF7tkBKp42NBtMA==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-kernel@vger.kernel.org,
-	amadeus@jmu.edu.cn,
-	FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Correct the model names for Radxa ROCK 5 boards
-Date: Thu, 18 Apr 2024 18:26:20 +0200
-Message-Id: <6931289a252dc2d6c7bfd2388835c5e98ba0d8c9.1713457260.git.dsimic@manjaro.org>
-In-Reply-To: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
-References: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
+	id 1rxUhy-0000000325t-1gGb;
+	Thu, 18 Apr 2024 16:34:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 55DD261735;
+	Thu, 18 Apr 2024 16:33:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A046BC113CC;
+	Thu, 18 Apr 2024 16:33:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713458037;
+	bh=lArloNKVKGEPKb6sLd3btLeNdS79IuMsK6F6Ge4DTP4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SmzhN8RYacSUvgmQeoSoei5bqe+spnwnlZfh3M/5/2LphAsoTy3X4yDNKUr+kZjOP
+	 nI0GUpxnlrDcVtXz+2C2GDMRMcaYoupRC+vwqbixVNYW4O5NZRoV9ROmQp6WigP2Fl
+	 t9vpZxB85aIoGbE8IH878QDLPSg7WdqjGxSQKAsQmNervesyvQvVJdtcVT92gND8Hp
+	 OrEs566wYq0tBLwzGRcI7M9vwdTElQ+NWCqgQTLv19g7AafiALvoigjgN73I3vj8eC
+	 5h8fooNygIBvJ6jTi9EYpXgRpuQDti2BMJsvmDnne0PGqJSFdCPbNGETCdelbl4o+J
+	 /I4Qof48Leebw==
+Date: Thu, 18 Apr 2024 18:33:54 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Sebastian Wick <sebastian.wick@redhat.com>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>
+Subject: Re: [PATCH v11 09/28] drm/display: hdmi: Add HDMI compute clock
+ helper
+Message-ID: <20240418-spiritual-loyal-hornet-2fbbfd@houat>
+References: <20240326-kms-hdmi-connector-state-v11-0-c5680ffcf261@kernel.org>
+ <20240326-kms-hdmi-connector-state-v11-9-c5680ffcf261@kernel.org>
+ <Zh6Ars8z1ESz-LQO@intel.com>
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <Zh6Ars8z1ESz-LQO@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_092631_347539_5A34B091 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240418_093358_559196_F1752184 
+X-CRM114-Status: GOOD (  31.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,52 +76,181 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4849878395606194778=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Correct the descriptions of a few Radxa boards, according to the up-to-date
-documentation from Radxa and the detailed explanation from Naoki. [1]  To sum
-it up, the short naming, as specified by Radxa, is preferred.
 
-[1] https://lore.kernel.org/linux-rockchip/B26C732A4DCEA9B3+282b8775-601b-4d4a-a513-4924b7940076@radxa.com/
+--===============4849878395606194778==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="wahmhb7ukfwggb5k"
+Content-Disposition: inline
 
-Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts  | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 1fe8b2a0ed75..1c26f04cbfcb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -7,7 +7,7 @@
- #include "rk3588.dtsi"
- 
- / {
--	model = "Radxa ROCK 5 Model B";
-+	model = "Radxa ROCK 5B";
- 	compatible = "radxa,rock-5b", "rockchip,rk3588";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 00afb90d4eb1..4c7f2a2fdb11 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -8,7 +8,7 @@
- #include "rk3588s.dtsi"
- 
- / {
--	model = "Radxa ROCK 5 Model A";
-+	model = "Radxa ROCK 5A";
- 	compatible = "radxa,rock-5a", "rockchip,rk3588s";
- 
- 	aliases {
+--wahmhb7ukfwggb5k
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Apr 16, 2024 at 04:44:14PM +0300, Ville Syrj=E4l=E4 wrote:
+> On Tue, Mar 26, 2024 at 04:40:13PM +0100, Maxime Ripard wrote:
+> > A lot of HDMI drivers have some variation of the formula to calculate
+> > the TMDS character rate from a mode, but few of them actually take all
+> > parameters into account.
+> >=20
+> > Let's create a helper to provide that rate taking all parameters into
+> > account.
+> >=20
+> > Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >  drivers/gpu/drm/display/drm_hdmi_helper.c | 70 +++++++++++++++++++++++=
+++++++++
+> >  include/drm/display/drm_hdmi_helper.h     |  4 ++
+> >  2 files changed, 74 insertions(+)
+> >=20
+> > diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/dr=
+m/display/drm_hdmi_helper.c
+> > index faf5e9efa7d3..2518dd1a07e7 100644
+> > --- a/drivers/gpu/drm/display/drm_hdmi_helper.c
+> > +++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
+> > @@ -193,5 +193,75 @@ void drm_hdmi_avi_infoframe_content_type(struct hd=
+mi_avi_infoframe *frame,
+> >  	}
+> > =20
+> >  	frame->itc =3D conn_state->content_type !=3D DRM_MODE_CONTENT_TYPE_NO=
+_DATA;
+> >  }
+> >  EXPORT_SYMBOL(drm_hdmi_avi_infoframe_content_type);
+> > +
+> > +/**
+> > + * drm_hdmi_compute_mode_clock() - Computes the TMDS Character Rate
+> > + * @mode: Display mode to compute the clock for
+> > + * @bpc: Bits per character
+> > + * @fmt: Output Pixel Format used
+> > + *
+> > + * Returns the TMDS Character Rate for a given mode, bpc count and out=
+put format.
+> > + *
+> > + * RETURNS:
+> > + * The TMDS Character Rate, in Hertz, or 0 on error.
+>=20
+> Everything generally uses kHz. Sticking to common units
+> would be better.
+
+Not everything, no. The clock framework is using Hz for example, and on
+drm-misc drivers it's usually going to be the consumer of that field.
+
+And there's almost 200 hits on mode->clock * 1000 in drivers/gpu/drm as
+of today, including some in i915. This is a bit less than a third of all
+the mode->clock usage, including the one that are unit-neutral (like
+comparisons between two mode->clock fields).
+
+Given how the rest of the DRM code is structured, yes, there's going to
+be some impedance mismatch, but it's really not as clear cut as you make
+it to be.
+
+> > + */
+> > +unsigned long long
+> > +drm_hdmi_compute_mode_clock(const struct drm_display_mode *mode,
+> > +			    unsigned int bpc, enum hdmi_colorspace fmt)
+> > +{
+> > +	unsigned long long clock =3D mode->clock * 1000ULL;
+> > +	unsigned int vic =3D drm_match_cea_mode(mode);
+> > +
+> > +	/*
+> > +	 * CTA-861-G Spec, section 5.4 - Color Coding and Quantization
+> > +	 * mandates that VIC 1 always uses 8 bpc.
+> > +	 */
+> > +	if (vic =3D=3D 1 && bpc !=3D 8)
+> > +		return 0;
+> > +
+> > +	/*
+> > +	 * HDMI 2.0 Spec, section 7.1 - YCbCr 4:2:0 Pixel Encoding
+> > +	 * specifies that YUV420 encoding is only available for those
+> > +	 * VICs.
+> > +	 */
+> > +	if (fmt =3D=3D HDMI_COLORSPACE_YUV420 &&
+> > +	    !(vic =3D=3D 96 || vic =3D=3D 97 || vic =3D=3D 101 ||
+> > +	      vic =3D=3D 102 || vic =3D=3D 106 || vic =3D=3D 107))
+> > +		return 0;
+>=20
+> I believe that is already outdated. I would just rip this out since the=
+=20
+> sink is anyway required to declare for which timings it will support
+> 4:2:0 via the Y420CMDB/VDB data blocks (see
+> drm_mode_is_420_{only,also}().
+
+Should we use drm_mode_is_420() then or rip it out entirely?
+
+> > +
+> > +	if (fmt =3D=3D HDMI_COLORSPACE_YUV422) {
+> > +		/*
+> > +		 * HDMI 1.4b Spec, section 6.2.3 - Pixel Encoding Requirements
+> > +		 * specifies that YUV422 is 36-bit only.
+> > +		 */
+> > +		if (bpc !=3D 12)
+> > +			return 0;
+> > +
+> > +		/*
+> > +		 * HDMI 1.0 Spec, section 6.5 - Pixel Encoding
+> > +		 * specifies that YUV422 requires two 12-bits components per
+> > +		 * pixel clock, which is equivalent in our calculation to three
+> > +		 * 8-bits components
+> > +		 */
+> > +		bpc =3D 8;
+> > +	}
+> > +
+> > +	/*
+> > +	 * HDMI 2.0 Spec, Section 7.1 - YCbCr 4:2:0 Pixel Encoding
+> > +	 * specifies that YUV420 encoding is carried at a TMDS Character Rate
+> > +	 * equal to half the pixel clock rate.
+> > +	 */
+> > +	if (fmt =3D=3D HDMI_COLORSPACE_YUV420)
+> > +		clock =3D clock / 2;
+> > +
+> > +	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
+> > +		clock =3D clock * 2;
+> > +
+> > +	clock =3D clock * bpc;
+> > +	do_div(clock, 8);
+>=20
+> IMO one shouldn't use bare do_div(). There are
+> more sensible wrappers for it.
+>=20
+> In this case I would use DIV_ROUND_CLOSEST_ULL().
+
+Ack.
+
+Thanks!
+Maxime
+
+
+--wahmhb7ukfwggb5k
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZiFLagAKCRAnX84Zoj2+
+dlldAX9qCzh/RA7mK7FqSsjMey+9M1jDrHEO4/u17NwCJ+/AYaHi+wppWxmtK+K+
+sLdIITcBgOE4oCoHKzJp+1JalYFdUKenCg0IWTcdxL0i3zyaXi9LePr+JzQS6ptm
+EHgy3onxJA==
+=/Ryj
+-----END PGP SIGNATURE-----
+
+--wahmhb7ukfwggb5k--
+
+
+--===============4849878395606194778==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4849878395606194778==--
+
