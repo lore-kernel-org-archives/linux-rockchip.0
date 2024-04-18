@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2326C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 15:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE29C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 15:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N180XYS2vqdgcY+UUDlG2hOLKelSJJ3wFGzG2h0aoQU=; b=sl/VAGbXrOoNhlsP9E1QTxw0im
-	X/R0GDX0ohR35wD6OiBVYlcRk5C8gIq3SIegMJNchH0SzMDARDzMijPOwZbu2zIZ6yl5iv7Cysg/P
-	/HUV4DRtGqlPsJw4ALS/K8xoK31QIZSSfSLqy8tx8jRXtnTnk3rMIXeHa15Uqk5l3eeVh9nk9jwhE
-	do6+fc3J24Chn7o98XEMth/ASmhDu4Vuqmm2ceHNOazGoQSbjGkGF81sVWM1N5nSiLBsD4DOERFTc
-	GCvoA7TR5AvZtATln6uYNUOd4heOPjnosFhHjDkhYNY17cZBoUsCiW53zNjE6y8jGx0JRQ5qEl5aZ
-	7X6TycOA==;
+	bh=MA2sYeiQ4hKhhwagtW2ot5oPqFEmia92ym3xa3F/qPc=; b=yMfDfcbnSXZ2vyeFGINneHnp5x
+	9IcDtRuTHEuLISBboNzPoyklAhhLofcXwXMWfoss6umcGBrssPqAypX8R3o7n2j3XJkbEN0I/ddL7
+	m/6w+lCk2Wmzv6IirPQi+7Zgt5wYxtj33oH0oNN2dU1/JpOwSYq6JR86666evUhDOKqEEUecm84Iw
+	HdPeRSEO31n21ax/l6FEJeU30QEbp0cgpL6BsfeztX4On7V5WwEP7ssZXmYflWzWr3Mhu9CeA5tcb
+	VzylebkSQ6kUL4BUkPuMKkPiCMkknZNkwQv/HT8EhnRX3/BCcoKqgZNFGHBdSm1VcAkCS83woT+nB
+	yfZttSZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxToG-00000002pE9-1Ouk;
-	Thu, 18 Apr 2024 15:36:24 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1rxTpE-00000002pV5-3rAy;
+	Thu, 18 Apr 2024 15:37:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxToC-00000002pDO-2GWa;
-	Thu, 18 Apr 2024 15:36:22 +0000
+	id 1rxTp1-00000002pOX-19kW;
+	Thu, 18 Apr 2024 15:37:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8DD05CE188F;
-	Thu, 18 Apr 2024 15:36:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F655C113CC;
-	Thu, 18 Apr 2024 15:36:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BDDE46188D;
+	Thu, 18 Apr 2024 15:37:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5121BC113CC;
+	Thu, 18 Apr 2024 15:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713454577;
-	bh=iX5QaTNtU1cJXLRSsSLOTU8Vc2xkKeqLNQsQzn49fRM=;
+	s=k20201202; t=1713454630;
+	bh=4OpUb2FGqt1dYv8qJb6rtIUYmk6NT4v+mrxt2BlJs78=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=o8oGWQZcyO1SbI+PQ38bMnv1TS2PY9pUBmGOVXp3ZmdlHuJFxggE0LI9RaTsizwLT
-	 UmaVtbq5HS5UFlQFPzXQzEq8Cnft33ONJiWsKLPBsdv5gtK1s7vAFATFr/Tm7J0Of8
-	 qgU/aVm+OjZjEDEDnbqnMyqOUtKoQ+9xOzZpaCQRSMbf9Y45kQKosWpmtZWwt1m/Fg
-	 aL6KSOvMn+McZYcfhAqpfUbQTinAXQbDE5c731YyEKo7707lCulnb9PdVDT7TjEqlP
-	 qVmU6L/WMDoPvLTB8bfuepac7rGw/ecmY4WNBIuXUy9dLy70iu7rGb/NHKxupxPk1a
-	 bstzE4Fe4p0kw==
-Date: Thu, 18 Apr 2024 16:36:13 +0100
+	b=AC0bbyN8qV2IAikf/ipz2Ymd6XBcB8nhdeM6bs18urmr+z6s3Nb3gVwxKNeZKieVp
+	 9q6OLQdESUN0YQ4SKdMAa9T/COjE1ccZPsd3nbF/cz5eH9XxBrFFYTXVErNKuBLOef
+	 XBsNcOAfQZKDLfNzsFvUi/Z9F7tNQFD2dSK89+zEYFzThtjUCeFo2zFPeIReUSTbHu
+	 AguAM3e62UFn3HX4OEf/y2xLYz50GqzNK14c1VyTBzauPXVsS3RDLJyt4dPFyF57KA
+	 Zm1TwVzx6iMC1qPzI/OZRt/zFw06Z59zJ4l8AUsnaO02Fe5yTctChRo5hlLUEiyozk
+	 7j/oY6mzOTodQ==
+Date: Thu, 18 Apr 2024 16:37:06 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
@@ -52,13 +52,14 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>
 Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: correct the model name
  for Radxa ROCK 3A
-Message-ID: <20240418-liberty-pry-d270065a544f@spud>
+Message-ID: <20240418-drove-boasting-d189ee3e22e0@spud>
 References: <20240418130120.67663-1-amadeus@jmu.edu.cn>
+ <d00953aab0f1c978e3720885a6844caa@manjaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20240418130120.67663-1-amadeus@jmu.edu.cn>
+In-Reply-To: <d00953aab0f1c978e3720885a6844caa@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_083620_785990_FC7E924E 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20240418_083711_384530_67327227 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,78 +71,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0315525503865976590=="
+Content-Type: multipart/mixed; boundary="===============2499894520425357990=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0315525503865976590==
+--===============2499894520425357990==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vgqi5H0ybv66eynq"
+	protocol="application/pgp-signature"; boundary="aWQtx0wMEbSR6BGU"
 Content-Disposition: inline
 
 
---vgqi5H0ybv66eynq
+--aWQtx0wMEbSR6BGU
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Apr 18, 2024 at 09:01:19PM +0800, Chukun Pan wrote:
-> According to https://radxa.com/products/rock3/3a,
-> the name of this board should be "Radxa ROCK 3A".
-> Also update compatible to match the model name.
+On Thu, Apr 18, 2024 at 05:21:18PM +0200, Dragan Simic wrote:
+> On 2024-04-18 15:01, Chukun Pan wrote:
+> > According to https://radxa.com/products/rock3/3a,
+> > the name of this board should be "Radxa ROCK 3A".
+> > Also update compatible to match the model name.
+> >=20
+> > Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
+> > Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 >=20
-> Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
-ntation/devicetree/bindings/arm/rockchip.yaml
-> index 99bd5e2c76a0..88e9e0011953 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -772,9 +772,9 @@ properties:
->            - const: radxa,rock2-square
->            - const: rockchip,rk3288
-> =20
-> -      - description: Radxa ROCK3 Model A
-> +      - description: Radxa ROCK 3A
+> Looking good to me.  I'll send the remaining naming cleanup patches
+> a bit later.
 
-This is fine, but...
+What remaining patches?
 
->          items:
-> -          - const: radxa,rock3a
-> +          - const: radxa,rock-3a
 
-=2E..this was added 2 years ago, I think it's too late to change it, NAK.
-
-Cheers,
-Conor.
-
->            - const: rockchip,rk3568
-> =20
->        - description: Radxa ROCK 5 Model A
-> --=20
-> 2.25.1
->=20
-
---vgqi5H0ybv66eynq
+--aWQtx0wMEbSR6BGU
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZiE97QAKCRB4tDGHoIJi
-0nPHAP42ecBP8384x+tVEb65jCrg5kE5XHUGHae4JCUIFDeTQwEAu/8S4FsNJBlg
-gTDgwIn/8IrTGdDnnLwIAomhvsjcXwk=
-=OSj/
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZiE+IgAKCRB4tDGHoIJi
+0hSWAP9n75/NyOZRQmE4r2XfXbMCGpbQiFM8gRerTvqrwaYz3QEA6x0msj4+h3m/
+29tKpAiONgsDMh+3LtGHhE1FmBnTBwg=
+=+i2f
 -----END PGP SIGNATURE-----
 
---vgqi5H0ybv66eynq--
+--aWQtx0wMEbSR6BGU--
 
 
---===============0315525503865976590==
+--===============2499894520425357990==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -152,5 +127,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0315525503865976590==--
+--===============2499894520425357990==--
 
