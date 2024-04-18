@@ -4,40 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C5DC4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 16:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F4DC04FFE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 16:26:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uSedFZtNwxmL6GMmc5PR+I90eliejL7SVy4q+PYvWWQ=; b=Tqz8qOdduDZzna
-	gFGoni5ILj8Z/dw7bmUiFPh9k+Y86ubJN6HHH6hxCpk2E6aAIzLGByuMnvSvty8zyMjXbbeP92l54
-	lNuPxEJlkXODMz0FQFk9P7mNGYw3etB8khwNvInwWuKqqGdKazQQ6BDQzXdCGPAvFYJYEnWhMJ9o4
-	CDpIgFfDbKidmH2OEFq6M7HJLOCAM32JkGbUGNg1JwdS23ZgyKnuXNWxKzDlGnLSZPXX8rvAOMPW8
-	+C5zruyFpCX02tDVEP8JibfiBNB8URfWdFwPQb2uGoQ2XjSzY+Vk32g0G7JbxnDk7xkiQragBlsWs
-	w3Rir0W8WqdFRgx6c4Rw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5lyjgZoK3oW8bqIjBiIeO0lL67JOlAwxXmtJPUahxYE=; b=sncfRaspZoVFbG
+	fjRDDKZMxdp9rU96bRn6zRTcebYa0KiGSEBKc1q+3QBFoj7WcJiv8r3wcW+Y0GEGbfB+guVGQscki
+	xi32x+Uj9jcBUCI8kpBgNI1pYq+pw5dLl+xmYGphLxw8PWd0js17SDY6mQJsxDHYWJlP63g+wZN9R
+	Ml5K32GYf/EXojoJ759EKp9MtE9RzysGZc4C/DPxrbCdGSAQwAiXAK0cMDyPWhOPZm10Lk5ahh0pl
+	pOUAZQC5yqIBJBBAq1wzBOlNgFI48jL7QfigMN78j7Fl2Fwgudzz66pMKkK04bOKz0Z1zHbkrNMu8
+	SfBMFvseZc7FlSuU54QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUap-000000030O6-3HkA;
-	Thu, 18 Apr 2024 16:26:35 +0000
+	id 1rxUaq-000000030OB-0npi;
+	Thu, 18 Apr 2024 16:26:36 +0000
 Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxUak-000000030Mj-3Bln;
+	id 1rxUak-000000030Mk-3BVS;
 	Thu, 18 Apr 2024 16:26:32 +0000
 From: Dragan Simic <dsimic@manjaro.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1713457588;
+	t=1713457589;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=+wupbNxZE2H0FG5W1L+OSoGIdCRs9gwAXKL8/dQ4bBI=;
-	b=d+hweNz2MFNfIGPfIJwYe2SfDIOZv9CjJ+tUb959aS3GJD28OEwC18sAR/gSblhcHzzMrd
-	DqvVobSD8PxrL9ix0bVqd9uqh/Qix+NbFLocoLWP7Fw0MJ8YwcTogr5/rxss7SgOlzIIMJ
-	gCNseL6X4XdtrMukk3eXn8a6JnfvEkxpN8fW8rSPQzFdZAZg1lzY04Oq+1svL2qQIQwceS
-	DM/mhWKqjJu65gbShouULkP+j+FMQ9SBRJZuZsRXoWRPQRkpzz67PHexpxWex04uuwRPVA
-	D2tTnuh2dNBMxcnTcbQhD0Z91g4gCOUmWsUbVg0Phe9X6rJCeApC2TVE8tbFhA==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1u55PLCGxci9bAUfKmtYNqOEwbkf8Uc9rj3DWZzS4F8=;
+	b=KzjIZxknxJVEM1S6yX44gD7YfP4LBCul7mlUz+mzLX5Hp3KZuJSA5pk6mtr5eUuhRSJVQk
+	XLyp6jcbNPdwRUlUiCdkMG6LJhwKjx7xsJHJF6A2Od2JxWoSayt66y2EE0WiCBzyDo2ImH
+	FScHbOVnQ56BPk24k8n090UVhK4BIXgwmwfHYz/T07f0m2F1s02lgiwgAynIAAwReAC3h9
+	QTqNa4UCcYsMAlReKSYVamlxVNmiRQDYU4XbXZBsUrjj9zwiJ7iA7LRyfu/4oKTghgH5u7
+	DUraFnOgSMYfdm+kyMd7w+BoqHXZvW3A87l7boKivq5gyynGF7tkBKp42NBtMA==
 To: linux-rockchip@lists.infradead.org
 Cc: heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
@@ -48,15 +49,17 @@ Cc: heiko@sntech.de,
 	linux-kernel@vger.kernel.org,
 	amadeus@jmu.edu.cn,
 	FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Correct the descriptions for Radxa boards
-Date: Thu, 18 Apr 2024 18:26:19 +0200
-Message-Id: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Correct the model names for Radxa ROCK 5 boards
+Date: Thu, 18 Apr 2024 18:26:20 +0200
+Message-Id: <6931289a252dc2d6c7bfd2388835c5e98ba0d8c9.1713457260.git.dsimic@manjaro.org>
+In-Reply-To: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
+References: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 Authentication-Results: ORIGINATING;
 	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_092631_373303_410F7904 
-X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-CacheID: sfid-20240418_092631_347539_5A34B091 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,48 +86,36 @@ it up, the short naming, as specified by Radxa, is preferred.
 Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
 Signed-off-by: Dragan Simic <dsimic@manjaro.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts  | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index fcf7316ecd74..ae58e25c29ec 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -705,7 +705,7 @@ properties:
-           - const: qnap,ts433
-           - const: rockchip,rk3568
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+index 1fe8b2a0ed75..1c26f04cbfcb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
+@@ -7,7 +7,7 @@
+ #include "rk3588.dtsi"
  
--      - description: Radxa Compute Module 3(CM3)
-+      - description: Radxa Compute Module 3 (CM3)
-         items:
-           - enum:
-               - radxa,cm3-io
-@@ -767,22 +767,22 @@ properties:
-           - const: radxa,rockpis
-           - const: rockchip,rk3308
+ / {
+-	model = "Radxa ROCK 5 Model B";
++	model = "Radxa ROCK 5B";
+ 	compatible = "radxa,rock-5b", "rockchip,rk3588";
  
--      - description: Radxa Rock2 Square
-+      - description: Radxa Rock 2 Square
-         items:
-           - const: radxa,rock2-square
-           - const: rockchip,rk3288
+ 	aliases {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index 00afb90d4eb1..4c7f2a2fdb11 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -8,7 +8,7 @@
+ #include "rk3588s.dtsi"
  
-       - description: Radxa ROCK3 Model A
-         items:
-           - const: radxa,rock3a
-           - const: rockchip,rk3568
+ / {
+-	model = "Radxa ROCK 5 Model A";
++	model = "Radxa ROCK 5A";
+ 	compatible = "radxa,rock-5a", "rockchip,rk3588s";
  
--      - description: Radxa ROCK 5 Model A
-+      - description: Radxa ROCK 5A
-         items:
-           - const: radxa,rock-5a
-           - const: rockchip,rk3588s
- 
--      - description: Radxa ROCK 5 Model B
-+      - description: Radxa ROCK 5B
-         items:
-           - const: radxa,rock-5b
-           - const: rockchip,rk3588
+ 	aliases {
 
 _______________________________________________
 Linux-rockchip mailing list
