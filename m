@@ -4,58 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B696C04FF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 18:29:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FAAC04FFF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 21:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=zVPGHftQU64tcqx0Xbo3MtSxDVGNridAZDoDdd92on4=; b=ySs54R2XwG8lmdQPDTd7iaOJ73
-	23qjv/94utANv/AOCgr9jv6sbqnymU5bznTrCKGnysu+SN7qzSmYM4irp8ATOJqvm5RBiYvQMqg7K
-	yJRkE6S2XL4t3/tLEjvbKKB73vSQypGbgVX918Uy1+hMcHdLR2d0Bn9zkCTGQdJ0tbRxRtPa9sKuf
-	6SIsilFfAecU8CUFgs78b25eCTPeOtp5j8H6p2u/rzbAsDgR2bZPTecn9GOCFdGm5YN+/+lj5ioIW
-	5YW9tcwUxTr8h2My7TJK5R0T0R70yI2zEPP8HN3vbAdin8FrJNZTlFPyI41hKyzUViup5QeCCFfik
-	Z1YLLtLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dgE8xmv2Rb/k6EHq795DcuhSqvNGQ3f4UGFIos65NfQ=; b=P5VDY99CvSLF+r
+	A42vAEFDPp+n7FMXGAgvVGW8RB70PnVJAL/bryfXt9jJb44b2J/c4Fey105o4CZyJ22No8jcBVyIj
+	C0KCSHKj8Hn5S/0ci4blnmQTKnHVMXEOxBTuRkBnMbQXM1WNOiWPNFKAj4Xjq6PZdmp0SyGj9mzWt
+	UwchsE9sFlYDW1uLa+OIjmJmPTQOBs/fih3RxWGEuIkGxK/l9GKZKYROL9iLMysB5kWlyLrobUUTh
+	PBRPppI7rqM7JtEYXog6YTjGsNfkjAP/y0UdwFgd1p8rYIflLQGQme9LDVxCINCFPiq3OxWDHB+Le
+	kJEwlluuL+KhlS3hsQ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxWW2-00000003L8r-2Y49;
-	Thu, 18 Apr 2024 18:29:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rxYv4-00000003iIH-2MVD;
+	Thu, 18 Apr 2024 21:03:46 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxWVy-00000003L8C-2cYk;
-	Thu, 18 Apr 2024 18:29:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1EBD06183B;
-	Thu, 18 Apr 2024 18:29:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95E1CC113CC;
-	Thu, 18 Apr 2024 18:29:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713464981;
-	bh=deLnIs4DG1KjLOKw2aX1JllHPjN9a4zOsTElzS3zg0Y=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=i7brIqOQKawp513lTJ6hZFNKVnbeze5AeWLK0oXNXB8wJNbfevhc2ZkSF+RKAotDw
-	 V7l7VpF4JnjmkLVc6SfPTRdgGEJt5j8ECN2rxs6ohnCBGimITWSLiNUhRoqVGJezRz
-	 MTSGPT2U0O7WheOWp4VOLMfAdwsxI6ps1MJZO2+Msz9gUM1yV4jxJt1J7eiVHQ46FW
-	 yzYdEjHRAXDyudO5uGJlXPW0R1BtJGD70d5/QJ1rT7l4u6gK1ZL5jm4f5TH7dGPz0b
-	 PzyTjc+zu9DDabCpOyC0nKiF8XX2JqXR43MHNbp4IeaBM2KAD/ZnA+ninTOZci5E9b
-	 esm7itxyRyBvw==
-Date: Thu, 18 Apr 2024 13:29:40 -0500
+	id 1rxYuv-00000003iCN-0pjR;
+	Thu, 18 Apr 2024 21:03:40 +0000
+Received: from i5e861917.versanet.de ([94.134.25.23] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1rxYus-0002jJ-GS; Thu, 18 Apr 2024 23:03:34 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@theobroma-systems.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] Add support for the dual-role dwc3 controllers on rk3588-tiger
+Date: Thu, 18 Apr 2024 23:03:30 +0200
+Message-Id: <20240418210332.2394871-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, 
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20240418035232.35344-2-honyuenkwun@gmail.com>
-References: <20240418035232.35344-2-honyuenkwun@gmail.com>
-Message-Id: <171346492555.2679631.1826619691769514446.robh@kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: rk3588s-orangepi-5: add USB-C
- support
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_112942_726892_83B12249 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20240418_140337_329711_8A27975E 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,42 +62,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+A comment fix and then the addition of the nodes for the dwc3 controllers
+using the newly merged usbdp phys.
 
-On Wed, 17 Apr 2024 22:52:33 -0500, Jimmy Hon wrote:
-> Add support for using the Orange Pi 5 USB-C port for USB in OHCI, EHCI
-> or XHCI mode. Displayport AltMode is not yet supported.
-> 
-> Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
-> ---
-> v2: change ports section to follow typec convention of hs/ss/sbu
-> 
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 94 +++++++++++++++++++
->  1 file changed, 94 insertions(+)
-> 
+Heiko Stuebner (2):
+  arm64: dts: rockchip: fix comment for upper usb3 port
+  arm64: dts: rockchip: add dual-role usb3 hosts to rk3588 Tiger-Haikou
 
+ .../boot/dts/rockchip/rk3588-tiger-haikou.dts | 60 ++++++++++++++++++-
+ .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 15 +++++
+ 2 files changed, 74 insertions(+), 1 deletion(-)
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb' for 20240418035232.35344-2-honyuenkwun@gmail.com:
-
-arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 231]], 'phandle': [[239]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-
-
-
-
+-- 
+2.39.2
 
 
 _______________________________________________
