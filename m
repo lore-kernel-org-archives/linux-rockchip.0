@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C0E1C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 17:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15D8C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 17:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tppNMuBss9CbslasYrHfu4p1BBx+g2havzPT8rOisew=; b=KXzuMGMqo+f2nj
-	9XMBJ5LF/6XgNwTvlH9LJDYIQ3a4CIFG0HGGD6mpwS4/Nrka+DOKWCKcAAVOdxqWslkza45WLZeOj
-	c7h5AZsdCCB5tqh3vIt79yU3PoHkcUGBspoJIg+zLlFiIugWaCz26pM6lZDlXz5vmOWNmcuCBEHdO
-	jdZ4xUkOiMJDRz4VaEUqCSRm44LFFny4Dyu0syXnaV+7aM8q2/GH4DrUVai23S7UwHy2u2pd3mhER
-	dTRwMnSMtTNyMLPpg0CHLiocHOqdsIYP/FKIpvO1UfH1owGO1Yte1Ec444T7ZBt1znUCcpz1fZ0Gc
-	kEuSXhcORcRK1SzBg/tw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3ede2IMxX+sJe2qg5lDQfSFCyoD+cLUxHlH7Lo9H/wU=; b=YWwmHuIiQRwdAu
+	s0+ZN8WwzeB8CACNnK3zkT7HJLG8ydFUB5mwmozesAxlbbtWfRQZLIm7UGzehlzDusR1lrCR4g2rY
+	CdIDfRSqiz9pyz5CebXP4XlOirsFMaqCECQgpf6zO4X8Mzz8WJXCo+5WsDLMWzKco87Wd21SMG3LI
+	Ubf1v/LELgy4rRA+mpqrXgEIkaWhv2uw+ts0FnrqYBKFC+cofJG/AHa6O3+FFKAvVGG5eVsQbi6Ip
+	EJ8g6anGOzhWJLpMpT8uOhArjrhJ1pnf6eBDtSjacPlpZaQgsdkV9LQL+k4K6rY4n2ruMsJWxymW/
+	pQ3JQEnP8sIT/1ePOT2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxVgd-00000003Day-1AO1;
-	Thu, 18 Apr 2024 17:36:39 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1rxVsO-00000003FUG-36Zx;
+	Thu, 18 Apr 2024 17:48:48 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxVga-00000003DaT-3cwL
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Apr 2024 17:36:38 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3bbc649c275so508610b6e.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Apr 2024 10:36:34 -0700 (PDT)
+	id 1rxVsL-00000003FTb-1fEf;
+	Thu, 18 Apr 2024 17:48:47 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-56e477db7fbso1935520a12.3;
+        Thu, 18 Apr 2024 10:48:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713461793; x=1714066593; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=9s/UYXkRAqUbyw8b08g/psbp7A/UX2Z54fvlcgOFZUA=;
-        b=a2Z0adH9frzKC5hHxM9XV11/bvkh0lAZxuHr3pieXLmiCJdOJ/uul+WxrapYSndtaF
-         XDxTkwUY+4x11+m16YmPvHdDZ1ztTSSPJbVfWZYPNL+dQAsjo1G0xpzzwjt1sfi965UP
-         dlHrURq7DPoNf9n4NS5BNlQc3Ve+pgFpH5McaD5YdpBLR7CbO9DhpUPbxE/wpujVrtDG
-         0C0hNxjD511Bv06l5tcV2+txcvuwVSSVCR2TvezYfBlcJOihvWCy63n/E7pkrB0zu4K1
-         ifsgoSd23PJUKcrEhSnn1CJFzRUhzu81gupYzEYRsWFwq5jrj6Ixzajijc9yclnkhJCB
-         V1Ig==
+        d=gmail.com; s=20230601; t=1713462520; x=1714067320; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Y3ZdflAu0Ob9/HKHivhZRCDoMprpPAWFGSlHtfCLBBE=;
+        b=CnyJlGfDp2l9sM02ZEHl1FQqZQ4eG8uvsHVi3KfCUKYFRPPDRpmgiDUQPq4XVQ8Sur
+         Gz1CvsJRkL6/Gm47Fbwoy9rLUnvjmWh/hGYXTdV55uHzbsfkftQrvzpzBh9OFJfo7fS2
+         dKuD2k3+woLBdPmlX2dlu3bPvFka/QbYO8q272yWf7QTbZI//vGo1dcv21aV1tkCUFHg
+         qpLrxss4CL+0mjqx6wBVDobhyI3dXsWyBKtwoiwivADNj4z4DgNtSnyNOLRL2QdvuN+4
+         2nm37Erljb6erZcxYoCqD/GKi35Vm/nnTGGZdYSgB4B/p1SaTjtyWZG/80QY7wn8qpZY
+         yZ6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713461793; x=1714066593;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9s/UYXkRAqUbyw8b08g/psbp7A/UX2Z54fvlcgOFZUA=;
-        b=h04PEa6mGpGS5zPFWbRYQfUunm35i9g+0glib0NwjZzZbCr1PLuqOZvkhhwqxk08HN
-         qzT14tjr2R1jzPQDCGxv07fgpbM7j553hCBhHPWsoxoI5jnnFmg8mJPaWKFtpaWUl/wD
-         PujNRJRKWKD1PPbfWcL1+Xn2OXAasRcdRXoHmWeEWLNPifol0Ya1M9HoaPM25MG1erW0
-         40IVKfUF4MNt9JqVkMJhtcE58Z5iP/RZMRQRwPQcrNTWE0XJgnedbA/i1AZbAXIicYT6
-         jBoozFDCOqnD5qx+sRLqCnIkvascMpWq94FPywmzLxk7m17dClwm6pJYsr1jMYf5NndF
-         2kmg==
-X-Gm-Message-State: AOJu0YzB/F+zhx0ga1b2+dkAhc7vYKt8mOEjSYIFXDHgX4Gj6nV4MC7S
-	yK/0ybZP0TfwOMOL8OLkXND2r5C2xzujgefyY1RsqzNi9IcN3eUiOeT5zw==
-X-Google-Smtp-Source: AGHT+IEm09Nxnky8x6T+XRV8ZSzBAPNwb27lsqg0uURWiSAplocKaUDUJ6wl4yTJqxiJ9ca2owyrKA==
-X-Received: by 2002:a05:6808:211f:b0:3c7:443c:96d7 with SMTP id r31-20020a056808211f00b003c7443c96d7mr1022109oiw.31.1713461793170;
-        Thu, 18 Apr 2024 10:36:33 -0700 (PDT)
-Received: from localhost.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id o17-20020a544791000000b003c5f54d014dsm329792oic.51.2024.04.18.10.36.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 10:36:32 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Add USB-C Support for rk3588s-indiedroid-nova
-Date: Thu, 18 Apr 2024 12:36:27 -0500
-Message-Id: <20240418173627.1368494-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1713462520; x=1714067320;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Y3ZdflAu0Ob9/HKHivhZRCDoMprpPAWFGSlHtfCLBBE=;
+        b=eygg/t/lC7+qKQfXZpRCGvfCeh9Gff+C9rPtokNFzmiv2f/68swolt3NYmojxMgLDF
+         eT3JEA1tm9BIQBgB10iera+22dWJjDyFJEKxd9m3Em+9mETEMyRAIU7UAJDq1LtuIk97
+         WOWPt0DtyC3T00JI1bDQKLjyaO8FPkMPFk/sB+RFrdIgdE+zGo8pJLXH4BKa8O1TrSn7
+         VvQHtEXxbwCQv0gPp1FBB5veA6vSAYPfwMfXOVYtrAD9WfNF4TtZZ13wNfZr6/ldUnGl
+         rw6rhA1mGTTZGHC11DSFFovtcrAvrd0d7IlpE4KFskH2WhOgka4GNHbQlS12crNskRMk
+         SXEg==
+X-Forwarded-Encrypted: i=1; AJvYcCVCIsm//BCZ8BsxGoFmFRJABIq+GITYXrFXF6LdaHlBTK/JuZtRxuHBmG2T3+tm/kiPqoNf0vSZdeOXRxmZHFUcUXOa660AAtCahUoZiIGqVviqese8qd1gwCbX4AsEGeWphttcrwjIr657PZo2N9YNvrSvUF4eZjE=
+X-Gm-Message-State: AOJu0Yw83LTO1pfgaArA1ZP2W6OSyhpX8w3lVKFuNYI/U3H5jGyF2JhC
+	35ly1YhAisYPHhclbOfXErARIxEsu2LNyRsFXS+SxZlmkPy5p8KGj6no
+X-Google-Smtp-Source: AGHT+IGrql4DRoEYWEVf0Y01BkNRtnQCtazPpJmoysmDk+TVKvk+4dGzYbR0/fAgoan3Y6zvVx4FeQ==
+X-Received: by 2002:a17:906:2989:b0:a52:61b9:be48 with SMTP id x9-20020a170906298900b00a5261b9be48mr2321377eje.35.1713462520360;
+        Thu, 18 Apr 2024 10:48:40 -0700 (PDT)
+Received: from ?IPV6:2a02:810b:f40:4600:956c:b9da:b8bf:bdbc? ([2a02:810b:f40:4600:956c:b9da:b8bf:bdbc])
+        by smtp.gmail.com with ESMTPSA id p8-20020a17090653c800b00a51a259fa60sm1167494ejo.118.2024.04.18.10.48.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Apr 2024 10:48:40 -0700 (PDT)
+Message-ID: <177ca573-db4a-4106-b7b2-5ef82df64e03@gmail.com>
+Date: Thu, 18 Apr 2024 19:48:39 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/5] pinctrl: rk805: Add rk816 pinctrl support
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org
+References: <20240416161237.2500037-1-knaerzche@gmail.com>
+ <20240416161237.2500037-4-knaerzche@gmail.com>
+ <CACRpkdYMZ7bBxKCSPJ74QYhtEPHV8cPARioGrg5ySj9j7nPE1g@mail.gmail.com>
+Content-Language: en-US, de-DE
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <CACRpkdYMZ7bBxKCSPJ74QYhtEPHV8cPARioGrg5ySj9j7nPE1g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_103636_936297_5DD47A13 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20240418_104845_534412_14DEFDFB 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,134 +97,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add support for the USB-C port on the Indiedroid Nova board. This
-port supports USB-C DP Alt mode (not implemented yet in drivers),
-but works as a USB XHCI/EHCI/OHCI port.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 71 ++++++++++++++++++-
- 1 file changed, 70 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index ce8119cbb824..0acfac2313b1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -316,7 +316,7 @@ fusb302: typec-portc@22 {
- 		pinctrl-names = "default";
- 		vbus-supply = <&vbus5v0_typec>;
- 
--		connector {
-+		usb_con: connector {
- 			compatible = "usb-c-connector";
- 			data-role = "dual";
- 			label = "USB-C";
-@@ -325,6 +325,32 @@ connector {
- 			source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
- 			sink-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
- 			op-sink-microwatt = <1000000>;
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					usbc0_orien_sw: endpoint {
-+						remote-endpoint = <&usbdp_phy0_orientation_switch>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+					usbc0_role_sw: endpoint {
-+						remote-endpoint = <&dwc3_0_role_switch>;
-+					};
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+					dp_altmode_mux: endpoint {
-+						remote-endpoint = <&usbdp_phy0_dp_altmode_mux>;
-+					};
-+				};
-+			};
- 		};
- 	};
- 
-@@ -788,6 +814,14 @@ &tsadc {
- 	status = "okay";
- };
- 
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
- &u2phy2 {
- 	status = "okay";
- };
-@@ -839,6 +873,17 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	usb-role-switch;
-+	status = "okay";
-+
-+	port {
-+		dwc3_0_role_switch: endpoint {
-+			remote-endpoint = <&usbc0_role_sw>;
-+		};
-+	};
-+};
-+
- &usb_host1_ehci {
- 	status = "okay";
- };
-@@ -850,3 +895,27 @@ &usb_host1_ohci {
- &usb_host2_xhci {
- 	status = "okay";
- };
-+
-+&usbdp_phy0 {
-+	orientation-switch;
-+	mode-switch;
-+	sbu1-dc-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_HIGH>;
-+	rockchip,dp-lane-mux = <2 3>;
-+	status = "okay";
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usbdp_phy0_orientation_switch: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&usbc0_orien_sw>;
-+		};
-+
-+		usbdp_phy0_dp_altmode_mux: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&dp_altmode_mux>;
-+		};
-+	};
-+};
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTGludXMKCkFtIDE3LjA0LjI0IHVtIDEwOjU3IHNjaHJpZWIgTGludXMgV2FsbGVpajoKPiBP
+biBUdWUsIEFwciAxNiwgMjAyNCBhdCA2OjEy4oCvUE0gQWxleCBCZWUgPGtuYWVyemNoZUBnbWFp
+bC5jb20+IHdyb3RlOgo+Cj4+IFRoaXMgYWRkcyBzdXBwb3J0IGZvciBSSzgxNiB0byB0aGUgZXhp
+c2luZyByazgwNSBwaW5jdHJsIGRyaXZlcgo+Pgo+PiBJdCBoYXMgYSBzaW5nbGUgcGluIHdoaWNo
+IGNhbiBiZSBjb25maWd1cmVkIGFzIGlucHV0IGZyb20gYSB0aGVybWlzdG9yIChmb3IKPj4gaW5z
+dGFuY2UgaW4gYW4gYXR0YWNoZWQgYmF0dGVyeSkgb3IgYXMgYSBncGlvLgo+Pgo+PiBTaWduZWQt
+b2ZmLWJ5OiBBbGV4IEJlZSA8a25hZXJ6Y2hlQGdtYWlsLmNvbT4KPiBMb29rcyBnb29kIHRvIG1l
+LCBpcyB0aGlzIHBhdGNoIHNvbWV0aGluZyBJIGNhbiBqdXN0IG1lcmdlCj4gb25jZSB0aGUgbWFp
+bnRhaW5lcnMgaGF2ZSByZXZpZXdlZCBpdD8KVGhpcyBwYXRjaCBkZXBlbmRzIG9uIHRoZSBtZmQg
+cGF0Y2ggYXMgaXQgaW5jbHVkZXMgc29tZSBkZWZpbml0aW9ucyB3aGljaAphcmUgdXNlZCBoZXJl
+LiBTYW1lIGlzIHRydWUgZm9yIHRoZSByZWd1bGF0b3IgcGF0Y2guIFNvIEkgZ3Vlc3MgdGhpcyB3
+aG9sZQpzZXJpZXMgaGFzIHRvIGdvIHZpYSB0aGUgbWZkIHRyZWUgYW5kIGl0IHdvdWxkIGJlIHBy
+b2JhYmx5IHRoZSBiZXN0IGlmIHRoZQpvdGhlciBzdWJzeXN0ZW0gbWFpbnRhaW5lcnMgY291bGQg
+YWNrL3JldmlldyB0aGUgb3RoZXIgcGF0Y2hlcy4KClJlZ2FyZHMsCkFsZXgKCj4KPiBZb3VycywK
+PiBMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
