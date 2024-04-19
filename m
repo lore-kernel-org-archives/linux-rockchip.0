@@ -4,44 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F95C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 11:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1ED9C4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 11:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xu0qtqZPVBXEV86aLlJ4UC61iuInUjduutnKdBFd8dQ=; b=0tiLe36Skpa4na
-	s6PLQHA++BOOA+Zuwf9e6a3C1e1rbVPcyLT4053teJfx0t28ABS3odMLVrsw+9a/zBDTY4BuwbYt6
-	TboMn1n6Gg5ht92O+3xVa4ul0np/0RFnbEzOVnBuGox1VdHs4ESkMB7ep7CFGPrf/J/rZeaCgSijm
-	s23XljQ3GS+IXvJ8g7YSSZF1ivR4OEszat3z0KPpUGJcGdtmVPR+DJ5KYpiRBJgymLVDcKx8ecqxY
-	h+6yM9iYrl5jT1wJuWaWFgBOkeRiPE/+2ToYvTDkjOBDn+exN7LG9AIfycZ+4mmmnzcnCSlnPuMTY
-	ahGFN6e+UOPaLqVmGbHw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sWzFmlRJ7b3lukqefTKZ7td4Tjuq8K/PZCKBtgtLZWQ=; b=vAYG+qUMaHpQX/KlYt4LdUjbXQ
+	gEwUpHkxfvuWlDwMLXmH5f+19SbrDd3W6ixKaALOIxqGlm9HXlckINd2XZlzp1eK+OzymdeB1nlW2
+	CyD4pkznJuVDC2G7G2ydZ7JB5axV7agLFLzTv7RrKVi3bn7Kaql60Wri4TEe57JILixGer85wr431
+	UZ9/7/lIzyKukDKfr17peZbsuwPSIuIHR9Tq+J/cAr4A1bSBP+UB8iyCa2QN3RNO5xiUicSRbXO/P
+	//y9udahAsOPCIF5xF1AXzqlYpqO58Egg+T4FxIH2ubDvz42vrZykoMJ0Ocyl0jtlrQBLmP0q2pn/
+	13bMqugg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmVo-00000005TdH-35vD;
-	Fri, 19 Apr 2024 11:34:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1rxmXs-00000005TuR-2dl1;
+	Fri, 19 Apr 2024 11:36:44 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmVm-00000005Tcg-0PE4;
-	Fri, 19 Apr 2024 11:34:35 +0000
-Received: from [213.70.33.226] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rxmVk-0000YD-5A; Fri, 19 Apr 2024 13:34:32 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 6.9
-Date: Fri, 19 Apr 2024 13:34:30 +0200
-Message-ID: <3413596.CbtlEUcBR6@phil>
+	id 1rxmXo-00000005TtV-17cu;
+	Fri, 19 Apr 2024 11:36:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 39103CE1A28;
+	Fri, 19 Apr 2024 11:36:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E67CAC072AA;
+	Fri, 19 Apr 2024 11:36:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713526597;
+	bh=RGBSiE3AtLVUYHvusd2OokOMgXmKs1k7wH7HEVhiQfg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SpnoKl85z8PRUnvUV94bspdas7JkiksyoW1AUSsd8W5fmoKjOprRdlJzjtY6JkGDo
+	 F0P+F3/zUJxWmjy8oa50ws3MIqDHtYzGjVrG1jzikp5TGwnUoJn1cHGzczVzY7/vLn
+	 a/6Bo33zheUhgEgSIl9SJk7FV/aPdJQByPCu0l97+mJU3etiiUh2gM4qLtPLgq+Hwx
+	 /NVNq7ikFh7ooDTrQjG6s6bh766F3Lxjm8nHQEGC3zZR5LHt+dGGkyO3T7J68mVyU4
+	 hlmj5QeaA/+KjRDCsa3scXjCF6fBijP+eJ79KqrxYBIPcMjklOk3F+BeHm/FiCn7jA
+	 71LTAmbS+VjBQ==
+Date: Fri, 19 Apr 2024 13:36:34 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Sebastian Wick <sebastian.wick@redhat.com>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, Pekka Paalanen <pekka.paalanen@collabora.com>
+Subject: Re: [PATCH v11 17/28] drm/connector: hdmi: Add Broadcast RGB property
+Message-ID: <20240419-intrepid-enthusiastic-spoonbill-3fb9f2@houat>
+References: <20240326-kms-hdmi-connector-state-v11-0-c5680ffcf261@kernel.org>
+ <20240326-kms-hdmi-connector-state-v11-17-c5680ffcf261@kernel.org>
+ <Zh6EevKDKt60E8e9@intel.com>
 MIME-Version: 1.0
+In-Reply-To: <Zh6EevKDKt60E8e9@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_043434_171987_E0E1B3E8 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20240419_043640_509420_13F4D50A 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -53,63 +75,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7937052200807167906=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQXJuZCwgS2V2aW4sIE9sb2YsCgpwbGVhc2UgZmluZCBhIGJlbG93IGEgY29sbGVjdGlvbiBv
-ZiBmaXhlcyBmb3IgdGhlIGN1cnJlbnQgcmVsZWFzZSA2LjkKY3ljbGUuCgpQbGVhc2UgcHVsbAoK
-VGhhbmtzCkhlaWtvCgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA0Y2VjZTc2
-NDk2NTAyMGMyMmNmZjc2NjViMThhMDEyMDA2MzU5MDk1OgoKICBMaW51eCA2LjktcmMxICgyMDI0
-LTAzLTI0IDE0OjEwOjA1IC0wNzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRv
-cnkgYXQ6CgogIGdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9t
-bWluZC9saW51eC1yb2NrY2hpcC5naXQgdjYuOS1hcm1zb2MvZHRzZml4ZXMKCmZvciB5b3UgdG8g
-ZmV0Y2ggY2hhbmdlcyB1cCB0byA5M2IzNmUxZDM3NDhjMzUyYTcwYzY5YWEzNzg3MTVlNjU3MmU1
-MWQxOgoKICBhcm02NDogZHRzOiByb2NrY2hpcDogRml4IFVTQiBpbnRlcmZhY2UgY29tcGF0aWJs
-ZSBzdHJpbmcgb24ga29ib2wtaGVsaW9zNjQgKDIwMjQtMDQtMTcgMjM6MTQ6NDQgKzAyMDApCgot
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tCkFuZHkgWWFuICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCB0aGUg
-aTJjIGFkZHJlc3Mgb2YgZXM4MzE2IG9uIENvb2wgUGkgQ001CgpBcsSxbsOnIMOcTkFMICgxKToK
-ICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IHNldCBQSFkgYWRkcmVzcyBvZiBNVDc1MzEgc3dp
-dGNoIHRvIDB4MWYKCkRyYWdhbiBTaW1pYyAoMik6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlw
-OiBSZW1vdmUgdW5zdXBwb3J0ZWQgbm9kZSBmcm9tIHRoZSBQaW5lYm9vayBQcm8gZHRzCiAgICAg
-IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBEZXNpZ25hdGUgdGhlIHN5c3RlbSBwb3dlciBjb250cm9s
-bGVyIG9uIFF1YXJ0elBybzY0CgpJc2thbmRlciBBbWFyYSAoMik6CiAgICAgIGFybTY0OiBkdHM6
-IHJvY2tjaGlwOiBlbmFibGUgaW50ZXJuYWwgcHVsbC11cCBmb3IgUTdfVEhSTSMgb24gUkszMzk5
-IFB1bWEKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGZpeCBhbHBoYWJldGljYWwgb3JkZXJp
-bmcgUkszMzk5IHB1bWEKCkpvc2UgSWduYWNpbyBUb3Jub3MgTWFydGluZXogKDEpOgogICAgICBh
-cm02NDogZHRzOiByb2NrY2hpcDogcmVndWxhdG9yIGZvciBzZCBuZWVkcyB0byBiZSBhbHdheXMg
-b24gZm9yIEJQSS1SMlBybwoKS3J6eXN6dG9mIEtvemxvd3NraSAoNCk6CiAgICAgIGFybTY0OiBk
-dHM6IHJvY2tjaGlwOiBkcm9wIHBhbmVsIHBvcnQgdW5pdCBhZGRyZXNzIGluIEdSVSBTY2FybGV0
-CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBkcm9wIHJlZHVuZGFudCBwY2llLXJlc2V0LXN1
-c3BlbmQgaW4gU2NhcmxldCBEdW1vCiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBkcm9wIHJl
-ZHVuZGFudCBkaXNhYmxlLWdwaW9zIGluIEx1YmFuY2F0IDEKICAgICAgYXJtNjQ6IGR0czogcm9j
-a2NoaXA6IGRyb3AgcmVkdW5kYW50IGRpc2FibGUtZ3Bpb3MgaW4gTHViYW5jYXQgMgoKTXVoYW1t
-ZWQgRWZlIENldGluICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IG1hcmsgc3lzdGVt
-IHBvd2VyIGNvbnRyb2xsZXIgYW5kIGZpeCB0eXBvIG9uIG9yYW5nZXBpLTUtcGx1cwoKUXVlbnRp
-biBTY2h1bHogKDMpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIGludGVybmFs
-IHB1bGwtdXAgb24gUTdfVVNCX0lEIGZvciBSSzMzOTkgUHVtYQogICAgICBhcm02NDogZHRzOiBy
-b2NrY2hpcDogZW5hYmxlIGludGVybmFsIHB1bGwtdXAgb24gUENJRV9XQUtFIyBmb3IgUkszMzk5
-IFB1bWEKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCByZWd1bGF0b3JzIGZvciBQQ0ll
-IG9uIFJLMzM5OSBQdW1hIEhhaWtvdQoKUm9iIEhlcnJpbmcgKDIpOgogICAgICBkdC1iaW5kaW5n
-czogcm9ja2NoaXA6IGdyZjogQWRkIG1pc3NpbmcgdHlwZSB0byAncGNpZS1waHknIG5vZGUKICAg
-ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCBVU0IgaW50ZXJmYWNlIGNvbXBhdGlibGUgc3Ry
-aW5nIG9uIGtvYm9sLWhlbGlvczY0CgogLi4uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tj
-aGlwL2dyZi55YW1sICAgICAgfCAgMSArCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdy
-dS1zY2FybGV0LmR0c2kgICAgICB8ICAzICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LWtvYm9sLWhlbGlvczY0LmR0cyAgICB8ICAyICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-Mzk5LXBpbmVib29rLXByby5kdHMgICAgICB8ICAxIC0KIC4uLi9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMzOTktcHVtYS1oYWlrb3UuZHRzIHwgIDIgKwogYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktcHVtYS5kdHNpICAgICAgfCA1MyArKysrKysrKysrKysrKysrKysrLS0t
-CiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1sdWJhbmNhdC0xLmR0cyB8ICAx
-IC0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWJwaS1yMi1wcm8uZHRzIHwg
-IDYgKystCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1sdWJhbmNhdC0yLmR0
-cyB8ICAxIC0KIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtY29vbHBpLWNtNS5k
-dHNpIHwgIDQgKy0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS1wbHVz
-LmR0cyAgIHwgIDMgKy0KIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcXVhcnR6
-cHJvNjQuZHRzIHwgIDEgKwogMTIgZmlsZXMgY2hhbmdlZCwgNjEgaW5zZXJ0aW9ucygrKSwgMTcg
-ZGVsZXRpb25zKC0pCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+
+--===============7937052200807167906==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="twt2bamgclgwo5q2"
+Content-Disposition: inline
+
+
+--twt2bamgclgwo5q2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Apr 16, 2024 at 05:00:26PM +0300, Ville Syrj=E4l=E4 wrote:
+> On Tue, Mar 26, 2024 at 04:40:21PM +0100, Maxime Ripard wrote:
+> > The i915 driver has a property to force the RGB range of an HDMI output.
+> > The vc4 driver then implemented the same property with the same
+> > semantics. KWin has support for it, and a PR for mutter is also there to
+> > support it.
+>=20
+> Is there a i915 patch to switch over to hdmi.broadcast_rgb? Though
+> the "hdmi" name is perhaps not the best idea given this is also a
+> thing for DP.
+
+No, there's none yet. I can try to cook one as a follow-up, but I have
+no way to test it
+
+Maxime
+
+--twt2bamgclgwo5q2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZiJXPQAKCRAnX84Zoj2+
+dqW3AX4z9SPfNEYqLIrzCMiper2UznzSiItRQraVPOKwQb/7kJbeWynLWAgun2KI
+ipBCYTIBgNmPOT2WW4J8MjsQTegdqZL5wVAo0erF9fB7LiOU6HNZ9VZCiYz2cjwl
+d06WM355Fw==
+=BZv7
+-----END PGP SIGNATURE-----
+
+--twt2bamgclgwo5q2--
+
+
+--===============7937052200807167906==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7937052200807167906==--
+
