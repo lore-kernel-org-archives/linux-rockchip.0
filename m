@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D14C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 11:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F95C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 11:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2lzMb9WKcQcvJJjq/3vYXW/d+pdcjOpGV4tUWkPIao4=; b=EGI7S6JZUF2fBy
-	mmMcP7IOng8GJxif9uVFhF5GNk46mXHnZAxAySym9UgnMhiFZp4sPj4+VR+1HcrWKfNbM/glBhEWi
-	jC3z6gGOqZtlaw/pP/0Uset/EzReIBROnnNFSsHJXhVE0CKY0ogI405PprW7CRjeyxRfT78WCduiF
-	Zp1LpOAjLAlIEi5+t5Qx92KLIB5VOi3FQNvbZeGuNAIlkVaaiuu8HRIn+RVw9gCaKY+JoZgkoZVeY
-	MtMiqOE+qH5dJWnYVmVW7IQzuK5lRcZ+QQ7KNzDhL8Yl2uucvTp+KMhL3ZyFY6eMVq6cnUnK0sWRh
-	y2djv4Tq3vr03mnGzHbg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xu0qtqZPVBXEV86aLlJ4UC61iuInUjduutnKdBFd8dQ=; b=0tiLe36Skpa4na
+	s6PLQHA++BOOA+Zuwf9e6a3C1e1rbVPcyLT4053teJfx0t28ABS3odMLVrsw+9a/zBDTY4BuwbYt6
+	TboMn1n6Gg5ht92O+3xVa4ul0np/0RFnbEzOVnBuGox1VdHs4ESkMB7ep7CFGPrf/J/rZeaCgSijm
+	s23XljQ3GS+IXvJ8g7YSSZF1ivR4OEszat3z0KPpUGJcGdtmVPR+DJ5KYpiRBJgymLVDcKx8ecqxY
+	h+6yM9iYrl5jT1wJuWaWFgBOkeRiPE/+2ToYvTDkjOBDn+exN7LG9AIfycZ+4mmmnzcnCSlnPuMTY
+	ahGFN6e+UOPaLqVmGbHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmHJ-00000005RHw-46rk;
-	Fri, 19 Apr 2024 11:19:37 +0000
+	id 1rxmVo-00000005TdH-35vD;
+	Fri, 19 Apr 2024 11:34:36 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmGz-00000005R3v-1qq0;
-	Fri, 19 Apr 2024 11:19:19 +0000
-Received: from [213.70.33.226] (helo=phil.intern)
+	id 1rxmVm-00000005Tcg-0PE4;
+	Fri, 19 Apr 2024 11:34:35 +0000
+Received: from [213.70.33.226] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rxmGk-0000RL-88; Fri, 19 Apr 2024 13:19:02 +0200
+	id 1rxmVk-0000YD-5A; Fri, 19 Apr 2024 13:34:32 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	Daniel Vetter <daniel@ffwll.ch>,
-	David Airlie <airlied@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	dri-devel@lists.freedesktop.org,
-	Maxime Ripard <mripard@kernel.org>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] drm: vop2: Do not divide height twice for YUV
-Date: Fri, 19 Apr 2024 13:18:56 +0200
-Message-Id: <171352551020.2525344.5153295478231203220.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240414182706.655270-1-detlev.casanova@collabora.com>
-References: <20240414182706.655270-1-detlev.casanova@collabora.com>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.9
+Date: Fri, 19 Apr 2024 13:34:30 +0200
+Message-ID: <3413596.CbtlEUcBR6@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_041917_662804_D7B3C859 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240419_043434_171987_E0E1B3E8 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,35 +53,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 14 Apr 2024 14:27:06 -0400, Detlev Casanova wrote:
-> For the cbcr format, gt2 and gt4 are computed again after src_h has been
-> divided by vsub.
-> 
-> As src_h as already been divided by 2 before, introduce cbcr_src_h and
-> cbcr_src_w to keep a copy of those values to be used for cbcr gt2 and
-> gt4 computation.
-> 
-> [...]
-
-Applied, thanks!
-
-[1/1] drm: vop2: Do not divide height twice for YUV
-      commit: e80c219f52861e756181d7f88b0d341116daac2b
-
-But changed the subject to
-    drm/rockchip: vop2: .....
-
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQXJuZCwgS2V2aW4sIE9sb2YsCgpwbGVhc2UgZmluZCBhIGJlbG93IGEgY29sbGVjdGlvbiBv
+ZiBmaXhlcyBmb3IgdGhlIGN1cnJlbnQgcmVsZWFzZSA2LjkKY3ljbGUuCgpQbGVhc2UgcHVsbAoK
+VGhhbmtzCkhlaWtvCgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA0Y2VjZTc2
+NDk2NTAyMGMyMmNmZjc2NjViMThhMDEyMDA2MzU5MDk1OgoKICBMaW51eCA2LjktcmMxICgyMDI0
+LTAzLTI0IDE0OjEwOjA1IC0wNzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRv
+cnkgYXQ6CgogIGdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9t
+bWluZC9saW51eC1yb2NrY2hpcC5naXQgdjYuOS1hcm1zb2MvZHRzZml4ZXMKCmZvciB5b3UgdG8g
+ZmV0Y2ggY2hhbmdlcyB1cCB0byA5M2IzNmUxZDM3NDhjMzUyYTcwYzY5YWEzNzg3MTVlNjU3MmU1
+MWQxOgoKICBhcm02NDogZHRzOiByb2NrY2hpcDogRml4IFVTQiBpbnRlcmZhY2UgY29tcGF0aWJs
+ZSBzdHJpbmcgb24ga29ib2wtaGVsaW9zNjQgKDIwMjQtMDQtMTcgMjM6MTQ6NDQgKzAyMDApCgot
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tCkFuZHkgWWFuICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCB0aGUg
+aTJjIGFkZHJlc3Mgb2YgZXM4MzE2IG9uIENvb2wgUGkgQ001CgpBcsSxbsOnIMOcTkFMICgxKToK
+ICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IHNldCBQSFkgYWRkcmVzcyBvZiBNVDc1MzEgc3dp
+dGNoIHRvIDB4MWYKCkRyYWdhbiBTaW1pYyAoMik6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlw
+OiBSZW1vdmUgdW5zdXBwb3J0ZWQgbm9kZSBmcm9tIHRoZSBQaW5lYm9vayBQcm8gZHRzCiAgICAg
+IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBEZXNpZ25hdGUgdGhlIHN5c3RlbSBwb3dlciBjb250cm9s
+bGVyIG9uIFF1YXJ0elBybzY0CgpJc2thbmRlciBBbWFyYSAoMik6CiAgICAgIGFybTY0OiBkdHM6
+IHJvY2tjaGlwOiBlbmFibGUgaW50ZXJuYWwgcHVsbC11cCBmb3IgUTdfVEhSTSMgb24gUkszMzk5
+IFB1bWEKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGZpeCBhbHBoYWJldGljYWwgb3JkZXJp
+bmcgUkszMzk5IHB1bWEKCkpvc2UgSWduYWNpbyBUb3Jub3MgTWFydGluZXogKDEpOgogICAgICBh
+cm02NDogZHRzOiByb2NrY2hpcDogcmVndWxhdG9yIGZvciBzZCBuZWVkcyB0byBiZSBhbHdheXMg
+b24gZm9yIEJQSS1SMlBybwoKS3J6eXN6dG9mIEtvemxvd3NraSAoNCk6CiAgICAgIGFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBkcm9wIHBhbmVsIHBvcnQgdW5pdCBhZGRyZXNzIGluIEdSVSBTY2FybGV0
+CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBkcm9wIHJlZHVuZGFudCBwY2llLXJlc2V0LXN1
+c3BlbmQgaW4gU2NhcmxldCBEdW1vCiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBkcm9wIHJl
+ZHVuZGFudCBkaXNhYmxlLWdwaW9zIGluIEx1YmFuY2F0IDEKICAgICAgYXJtNjQ6IGR0czogcm9j
+a2NoaXA6IGRyb3AgcmVkdW5kYW50IGRpc2FibGUtZ3Bpb3MgaW4gTHViYW5jYXQgMgoKTXVoYW1t
+ZWQgRWZlIENldGluICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IG1hcmsgc3lzdGVt
+IHBvd2VyIGNvbnRyb2xsZXIgYW5kIGZpeCB0eXBvIG9uIG9yYW5nZXBpLTUtcGx1cwoKUXVlbnRp
+biBTY2h1bHogKDMpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIGludGVybmFs
+IHB1bGwtdXAgb24gUTdfVVNCX0lEIGZvciBSSzMzOTkgUHVtYQogICAgICBhcm02NDogZHRzOiBy
+b2NrY2hpcDogZW5hYmxlIGludGVybmFsIHB1bGwtdXAgb24gUENJRV9XQUtFIyBmb3IgUkszMzk5
+IFB1bWEKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCByZWd1bGF0b3JzIGZvciBQQ0ll
+IG9uIFJLMzM5OSBQdW1hIEhhaWtvdQoKUm9iIEhlcnJpbmcgKDIpOgogICAgICBkdC1iaW5kaW5n
+czogcm9ja2NoaXA6IGdyZjogQWRkIG1pc3NpbmcgdHlwZSB0byAncGNpZS1waHknIG5vZGUKICAg
+ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCBVU0IgaW50ZXJmYWNlIGNvbXBhdGlibGUgc3Ry
+aW5nIG9uIGtvYm9sLWhlbGlvczY0CgogLi4uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tj
+aGlwL2dyZi55YW1sICAgICAgfCAgMSArCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdy
+dS1zY2FybGV0LmR0c2kgICAgICB8ICAzICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
+LWtvYm9sLWhlbGlvczY0LmR0cyAgICB8ICAyICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+Mzk5LXBpbmVib29rLXByby5kdHMgICAgICB8ICAxIC0KIC4uLi9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTktcHVtYS1oYWlrb3UuZHRzIHwgIDIgKwogYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazMzOTktcHVtYS5kdHNpICAgICAgfCA1MyArKysrKysrKysrKysrKysrKysrLS0t
+CiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1sdWJhbmNhdC0xLmR0cyB8ICAx
+IC0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWJwaS1yMi1wcm8uZHRzIHwg
+IDYgKystCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1sdWJhbmNhdC0yLmR0
+cyB8ICAxIC0KIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtY29vbHBpLWNtNS5k
+dHNpIHwgIDQgKy0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS1wbHVz
+LmR0cyAgIHwgIDMgKy0KIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcXVhcnR6
+cHJvNjQuZHRzIHwgIDEgKwogMTIgZmlsZXMgY2hhbmdlZCwgNjEgaW5zZXJ0aW9ucygrKSwgMTcg
+ZGVsZXRpb25zKC0pCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
