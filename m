@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6F7C04FF8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Apr 2024 21:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7D84C4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 08:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hkM0t4irB7H6jcml9aUwjcZgK2V9FX+l9h0r6y9Nt68=; b=znRJvTw4psMFGJ
-	QMJBlTKavwXynnPaOTjKhI1R0d7LF8zDYdl6B5hTOpzRzQC3DwFsydSdVHnvVAsWEbE/nw/iyUS25
-	jqtakBWKEWNB9AARQ/c7MjjusdB9qM8xE/xWMJn4WQ7XdraZCTmXrP8QUr7k7cWN0pVUS9eE9DsAR
-	XPkt8GYWyGIvRYTFMqcJOAeIcDbPugZhGe/gEwEdJ1EmZBFwfyrrcvFw0s7oDBtXQ+V70piKoTugx
-	TeOmxUVMpWJhez/4PaLtYS5lLx05om0gYW74kLlL4+sY2OoSX9LOr3gH/0tPJ+vMKMoGnUpjNYjXT
-	UdlFh8qGq0JA63YgptWA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6RY2gZsx/6CHP2jH2JJopiIi/5qMGDJQyLcPDUqI4BM=; b=nU236RAw8VrtMK
+	cLxMO0c40QKEeHr1jFtsWaMp3Pc6FMDWOLWyIdN+4QEyfbvcrlYuai/As/Kuq0zoir+Z9n23W9l4g
+	1aW11yC+Ydh6Q3s4GfViLKaXiAF2jNsaJa2fIuhYQKu+Mb/qMuYFA9Y2OfWhZCDCDaWFgMdruJFDv
+	p5zanQzViP3UtXhJAWg6L69kDkoSft8i0Liqds2AeK13TExHbEzF0+tG+vR27OlF/zqi8KIMFIiOR
+	KRxC8+XNaZcVAJbd9IWsjPoom3ajePoYQXIh0PpTDrUHnwET9TkdWRTxYqPdoyGF8VsqE4ENbcsMJ
+	G8+J7BQqB2gP/td98sVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxYv5-00000003iIo-1hAK;
-	Thu, 18 Apr 2024 21:03:47 +0000
+	id 1rxjDN-00000004sLD-2suq;
+	Fri, 19 Apr 2024 08:03:21 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxYuv-00000003iCQ-0ojW;
-	Thu, 18 Apr 2024 21:03:40 +0000
+	id 1rxjDG-00000004sI6-0pkq;
+	Fri, 19 Apr 2024 08:03:19 +0000
 Received: from i5e861917.versanet.de ([94.134.25.23] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rxYus-0002jJ-Rq; Thu, 18 Apr 2024 23:03:34 +0200
+	id 1rxjDC-0007e3-87; Fri, 19 Apr 2024 10:03:10 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: quentin.schulz@theobroma-systems.com,
@@ -38,16 +38,14 @@ Cc: quentin.schulz@theobroma-systems.com,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/2] arm64: dts: rockchip: fix comment for upper usb3 port
-Date: Thu, 18 Apr 2024 23:03:31 +0200
-Message-Id: <20240418210332.2394871-2-heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: move uart2 pinmux to dtsi on rk3588-tiger
+Date: Fri, 19 Apr 2024 10:03:03 +0200
+Message-Id: <20240419080303.2402184-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240418210332.2394871-1-heiko@sntech.de>
-References: <20240418210332.2394871-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240418_140337_417757_3D3DDB04 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20240419_010314_259475_D65C5B8A 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,28 +64,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The comment for the host2_xhci points to the wrong port on the board.
-The upper usb3 port is the correct one, so fix the comment to prevent
-confusion.
+The association of uart2 to the q7-uart pins is part of the module
+itself and not the baseboard used. Therefore move the pinctrl over
+to the tiger dtsi.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 1 -
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi       | 4 ++++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-index d672198c6b64..214f8258af68 100644
+index d6e30d5697bd..ce38ebda5fd5 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-@@ -260,7 +260,7 @@ &usb_host1_ohci {
+@@ -269,7 +269,6 @@ &u2phy3_host {
+ };
+ 
+ &uart2 {
+-	pinctrl-0 = <&uart2m2_xfer>;
  	status = "okay";
  };
  
--/* host2 on Q7_USB_P2, lower usb3 port */
-+/* host2 on Q7_USB_P2, upper usb3 port */
- &usb_host2_xhci {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index 78f5bbddabba..48a3cbca38d0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -711,6 +711,10 @@ &tsadc {
  	status = "okay";
  };
+ 
++&uart2 {
++	pinctrl-0 = <&uart2m2_xfer>;
++};
++
+ /* Mule-ATtiny UPDI */
+ &uart4 {
+ 	pinctrl-0 = <&uart4m2_xfer>;
 -- 
 2.39.2
 
