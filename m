@@ -4,108 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3564EC4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 11:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1AB0C04FF6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Apr 2024 13:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PQyJK9tCyS+YurrF/L2pkjsZo3Ngh6gZcHbDUQbxL9Y=; b=29EyfzBCzNjLsz1ZnzcvVprMFF
-	p8pkC7Bw0Z/iGxGl57bJ0XdUgLp0q1P44zDQOpj+y7xuh3JjhfFpiEwZUb/8TceVMc0uwl2YPBRa7
-	If0LZkJa9kbmIwzEDi7ymO9B9SkXlk6vnkktfs9AXnTwyTgzMAq9tve0nuZM/Iy59uqjhb7egWK72
-	IPJi5JSNMxDzkLG8KUvwE+EDQzQ3Adh2Em50EcWCZwluN52cu1fZxoqBhQSwiv3DaqV2tn/4YLEaV
-	Bs6sdFrsMlftouWsy5JaSEIU7XMOV+b846j9jIw3tjWJHfnQy9WfgDAtEdUcknMeFukusvzE09nN2
-	p1Wq40Iw==;
+	bh=EeXoNbgpnb9uaUl7GoJCdkSKuOFSgVGbnnYgeeLDAnM=; b=XsOq6fnSJKxCXk2JdRtP+KCGg3
+	RPI17bnA2PW/XA0ddlebO8lHx2XygiPNn0RVFDL2osLapMc8w/IFu1PVt6GrXDp6sBnNSYJVi5VV2
+	O3wutepl9qNyatVZHJkl8NorqKffX04rXU59XNobuUd+0ODVCFffpS+WBDZYmyW4tLp7jPCGiUc+I
+	Al2BA7vZByk535E3OAw2FjgiYK/IhRBCzSQgJO1SaWqZQKsmv6R7KbyzPv4z2vbyEKAmwPQ09HbuM
+	2i8+ZebWbiJGV8+UhMJ9mA22fwDxhf9/D1SaouyHsC8a+uwwzNFQ4WvkrHw7lA7y6FtlbBSETwXMe
+	sZ5ag+2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmdx-00000005V4r-0EsZ;
-	Fri, 19 Apr 2024 11:43:01 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1rxnsT-00000005gzc-2NEz;
+	Fri, 19 Apr 2024 13:02:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rxmdr-00000005V3F-1kId;
-	Fri, 19 Apr 2024 11:42:56 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-56e2c1650d8so1925394a12.0;
-        Fri, 19 Apr 2024 04:42:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1713526972; x=1714131772; darn=lists.infradead.org;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vtm/qtvswOnFXXfebYKskz6/e32yJZ1ZzR1vI0Fp9dI=;
-        b=OIeKLKiWSvvRkKuMXCl0EVM0viugGcXhiZw0PS/cs6zlgahvKdX3etJo/KvJz+jM9n
-         xvkdaRdvzMTS7bpYP60FeH1Rvxet/P6D/QRlub75Ytl9Q4RqOF6TjnnNbogEMHlF66Er
-         Ew/gWD7GGbEnNKrjJB/FeGSZaeqQH08hinJWe2YA1EUb0RfgHZu5HZS5ymAXHzw5InLd
-         LJ1hfaE+yZKFOfj/ud4PipUiSf6UMjc/3vE1F3NEJjdX4i/aZJ9xhokSjPAF98p5+ZEz
-         OfCiZZkHT5rXvSCVVJJtIxMRubJVLyrGbzzR/UzEw2wweuNKbaJap88nM72C1+farpub
-         cAPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713526972; x=1714131772;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vtm/qtvswOnFXXfebYKskz6/e32yJZ1ZzR1vI0Fp9dI=;
-        b=nnxMkYfXpeWjBldR7Kqrm9MkxXqIxuz+4dkXF8YbJoIMKjlieXqGopsCI9LkI4c2p/
-         CgWqmAWiXel+OBS19xL63nY32/E0HcSwmJDTF9S/VkIoyTQCZd9lN2fxIflGhQy5SkhK
-         PWhkuM20SxDpkjIbZcws/FpRSoWg3CQ93puVTrutUb1mxoqs71mQhFBQlpqnmBZ1ZXMQ
-         vFNhAWLfM4De8VFzgwoTEzmSVGS2A53Y7d6u7qVaVFKntcmL6G89bRCy4A0iceT1vGLp
-         XwzO20V366zBeERLXTJonP5Ngu8tW65BpkkSu+YWNGr6kfENktLvNocG3+uS28o0IiWc
-         FImA==
-X-Forwarded-Encrypted: i=1; AJvYcCUs5iAO/9SkdQHSMRZ7/0BKNPMw1bsOQGRprkMxOcl8UrgWvnV21lEo8XJa586DP6GkzVxtV0qFQKpFGQemvAUf0sxJiqq2M7cFgeCLj3prqNFA70HhOCdfhg7SkjpjT43XSs2/l52dphN8OtSLpRG36c9dHBwujw7dCjgm+ldkG+37QaijDsNhnzRj+1Be0BGts8dTrsd90pAaqcAh7Id9Nq320dtCuVDlOIV1L59l0Oxgu6WxA6nVI2CGyEFmyVNr8Qc4RO+MX80K1f/MY/znili1dBTtgvDxH0dMtc0qPTGHrr+CkEGPKA==
-X-Gm-Message-State: AOJu0YzbiYlOLMDqC8Odb8baoev/5f2f1t5jPD9jW47Nk0VnJWGROczu
-	zyombwVnhEJlNKA0M9WmyNAp+azCQCwpWH7HjQTYMiytx25qVkFE
-X-Google-Smtp-Source: AGHT+IEwLsjbBwvBlONApjs+36NUlgAVIroqpndgR5Yohi7VmGBl9cWXP/CC/Cs/xZloP3RIelGMIw==
-X-Received: by 2002:a50:a416:0:b0:56e:f64:aaf6 with SMTP id u22-20020a50a416000000b0056e0f64aaf6mr1348117edb.5.1713526972237;
-        Fri, 19 Apr 2024 04:42:52 -0700 (PDT)
-Received: from localhost (p200300e41f162000f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f16:2000:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id t16-20020aa7d4d0000000b005701f033da5sm2034565edr.79.2024.04.19.04.42.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Apr 2024 04:42:51 -0700 (PDT)
-Mime-Version: 1.0
-Date: Fri, 19 Apr 2024 13:42:50 +0200
-Message-Id: <D0O2M756FW2M.2XMFVYGKJ1O7W@gmail.com>
-Cc: <devicetree@vger.kernel.org>, <linux-rpi-kernel@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <imx@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
- <linux-tegra@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
- <linux-realtek-soc@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>
-Subject: Re: [PATCH v2] arm/arm64: dts: Drop "arm,armv8-pmuv3" compatible
- usage
-From: "Thierry Reding" <thierry.reding@gmail.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>, <soc@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Florian Fainelli" <florian.fainelli@broadcom.com>,
- "Broadcom internal kernel review list"
- <bcm-kernel-feedback-list@broadcom.com>, "Dinh Nguyen"
- <dinguyen@kernel.org>, "Tsahee Zidenberg" <tsahee@annapurnalabs.com>,
- "Antoine Tenart" <atenart@kernel.org>, "Khuong Dinh"
- <khuong@os.amperecomputing.com>, "Liviu Dudau" <liviu.dudau@arm.com>,
- "Sudeep Holla" <sudeep.holla@arm.com>, "Lorenzo Pieralisi"
- <lpieralisi@kernel.org>, "Ray Jui" <rjui@broadcom.com>, "Scott Branden"
- <sbranden@broadcom.com>, "Robert Richter" <rric@kernel.org>, "Shawn Guo"
- <shawnguo@kernel.org>, "Li Yang" <leoyang.li@nxp.com>, "Sascha Hauer"
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Paul J.
- Murphy" <paul.j.murphy@intel.com>, "Daniele Alessandrelli"
- <daniele.alessandrelli@intel.com>, "Andrew Lunn" <andrew@lunn.ch>, "Gregory
- Clement" <gregory.clement@bootlin.com>, "Sebastian Hesselbarth"
- <sebastian.hesselbarth@gmail.com>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Jonathan Hunter"
- <jonathanh@nvidia.com>, "Bjorn Andersson" <andersson@kernel.org>, "Konrad
- Dybcio" <konrad.dybcio@linaro.org>, =?utf-8?q?Andreas_F=C3=A4rber?=
- <afaerber@suse.de>, "Heiko Stuebner" <heiko@sntech.de>, "Orson Zhai"
- <orsonzhai@gmail.com>, "Baolin Wang" <baolin.wang@linux.alibaba.com>,
- "Chunyan Zhang" <zhang.lyra@gmail.com>, "Jisheng Zhang"
- <jszhang@kernel.org>, "Alim Akhtar" <alim.akhtar@samsung.com>,
- <linux-fsd@tesla.com>, "Michal Simek" <michal.simek@amd.com>
-X-Mailer: aerc 0.16.0-1-0-g560d6168f0ed-dirty
-References: <20240417203853.3212103-1-robh@kernel.org>
-In-Reply-To: <20240417203853.3212103-1-robh@kernel.org>
+	id 1rxnre-00000005gUw-0xby;
+	Fri, 19 Apr 2024 13:01:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EE808619D6;
+	Fri, 19 Apr 2024 13:01:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47E96C3277B;
+	Fri, 19 Apr 2024 13:01:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713531672;
+	bh=EfEgmbr1ktf8i8gBDSOo61C9Hr8ROwzxRco0v2/O6p0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ptQj5J08aVwRnk47dfnXt/VPP/OEroo0Ee3+LnY69c9iZQT0W4DMNG9ylpWGszuZB
+	 gEu3xNS/DD8Gqoid0m2dxfvDVwpDFkfD0hY6j8cWwrVepuhzb7rXz4nWuc36LeAdKu
+	 OLnbmOYR91KYbBuPRyF9z6RpmQJeWmQO0ZhrGIFP/dZDNdUuafj8uN/QEEaYInB95u
+	 s5okAtlwaotbluwnSOh4f/zLc7tkY5q2lGgKSGSYWOVA1RlpeHbdyu0i02voCfwRGg
+	 5uLLK/yQ374jR5e/ncIen4j1LbZTQ8eAx1GfgHVV5em2SudjN0fSJEjkML8EcUJH3U
+	 1hXX1OTWS/04g==
+Date: Fri, 19 Apr 2024 15:01:10 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
+	Sebastian Wick <sebastian.wick@redhat.com>, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v11 15/28] drm/connector: hdmi: Compute bpc and format
+ automatically
+Message-ID: <20240419-illegal-rose-heron-e2ff64@houat>
+References: <20240326-kms-hdmi-connector-state-v11-0-c5680ffcf261@kernel.org>
+ <20240326-kms-hdmi-connector-state-v11-15-c5680ffcf261@kernel.org>
+ <Zh6CQhD-2Yl5LUVb@intel.com>
+MIME-Version: 1.0
+In-Reply-To: <Zh6CQhD-2Yl5LUVb@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240419_044255_496814_BAA14EE8 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20240419_060114_619263_95D148B4 
+X-CRM114-Status: GOOD (  32.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,104 +75,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4956077618899278473=="
+Content-Type: multipart/mixed; boundary="===============8927266028891887673=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4956077618899278473==
-Content-Type: multipart/signed;
- boundary=028f56741d52f91b0bec672921ccea60e74b58ce9c1c05854f65f7d060c2;
- micalg=pgp-sha256; protocol="application/pgp-signature"
 
---028f56741d52f91b0bec672921ccea60e74b58ce9c1c05854f65f7d060c2
-Mime-Version: 1.0
+--===============8927266028891887673==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="27joxh4slrq34bs4"
+Content-Disposition: inline
+
+
+--27joxh4slrq34bs4
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
 
-On Wed Apr 17, 2024 at 10:38 PM CEST, Rob Herring (Arm) wrote:
-> The "arm,armv8-pmuv3" compatible is intended only for s/w models. Primari=
-ly,
-> it doesn't provide any detail on uarch specific events.
+On Tue, Apr 16, 2024 at 04:50:58PM +0300, Ville Syrj=E4l=E4 wrote:
+> On Tue, Mar 26, 2024 at 04:40:19PM +0100, Maxime Ripard wrote:
+> > Now that we have all the infrastructure needed, we can add some code
+> > that will, for a given connector state and mode, compute the best output
+> > format and bpc.
+> >=20
+> > The algorithm is equivalent to the one already found in i915 and vc4.
+> >=20
+> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c    | 197 +++++++++++++=
++++++++-
+> >  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c |  25 ++-
+> >  2 files changed, 210 insertions(+), 12 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/=
+gpu/drm/display/drm_hdmi_state_helper.c
+> > index 063421835dba..b9bc0fb027ea 100644
+> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > @@ -1,9 +1,11 @@
+> >  // SPDX-License-Identifier: MIT
+> > =20
+> >  #include <drm/drm_atomic.h>
+> >  #include <drm/drm_connector.h>
+> > +#include <drm/drm_edid.h>
+> > +#include <drm/drm_print.h>
+> > =20
+> >  #include <drm/display/drm_hdmi_helper.h>
+> >  #include <drm/display/drm_hdmi_state_helper.h>
+> > =20
+> >  /**
+> > @@ -46,10 +48,110 @@ connector_state_get_mode(const struct drm_connecto=
+r_state *conn_state)
+> >  		return NULL;
+> > =20
+> >  	return &crtc_state->mode;
+> >  }
+> > =20
+> > +static bool
+> > +sink_supports_format_bpc(const struct drm_connector *connector,
+> > +			 const struct drm_display_info *info,
+> > +			 const struct drm_display_mode *mode,
+> > +			 unsigned int format, unsigned int bpc)
+> > +{
+> > +	struct drm_device *dev =3D connector->dev;
+> > +	u8 vic =3D drm_match_cea_mode(mode);
+> > +
+> > +	/*
+> > +	 * CTA-861-F, section 5.4 - Color Coding & Quantization states
+> > +	 * that the bpc must be 8, 10, 12 or 16 except for the default
+> > +	 * 640x480 VIC1 where the value must be 8.
+> > +	 *
+> > +	 * The definition of default here is ambiguous but the spec
+> > +	 * refers to VIC1 being the default timing in several occasions
+> > +	 * so our understanding is that for the default timing (ie,
+> > +	 * VIC1), the bpc must be 8.
+> > +	 */
+> > +	if (vic =3D=3D 1 && bpc !=3D 8) {
+> > +		drm_dbg_kms(dev, "VIC1 requires a bpc of 8, got %u\n", bpc);
+> > +		return false;
+> > +	}
+> > +
+> > +	if (!info->is_hdmi &&
+> > +	    (format !=3D HDMI_COLORSPACE_RGB || bpc !=3D 8)) {
+> > +		drm_dbg_kms(dev, "DVI Monitors require an RGB output at 8 bpc\n");
+> > +		return false;
+> > +	}
+> > +
+> > +	if (!(connector->hdmi.supported_formats & BIT(format))) {
+>=20
+> These are the capabilities of the souce I take it?
 >
-> There's still remaining cases for CPUs without any corresponding PMU
-> definition and for big.LITTLE systems which only have a single PMU node
-> (there should be one per core type).
+> > +		drm_dbg_kms(dev, "%s format unsupported by the connector.\n",
+> > +			    drm_hdmi_connector_get_output_format_name(format));
+> > +		return false;
+> > +	}
+> > +
+> > +	switch (format) {
+> > +	case HDMI_COLORSPACE_RGB:
+> > +		drm_dbg_kms(dev, "RGB Format, checking the constraints.\n");
+> > +
+> > +		if (!(info->color_formats & DRM_COLOR_FORMAT_RGB444))
+> > +			return false;
+>=20
+> and this is the sink.
 >
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Acked-by: Sudeep Holla <sudeep.holla@arm.com>
-> Acked-by: Dinh Nguyen <dinguyen@kernel.org>
-> Acked-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Jisheng Zhang <jszhang@kernel.org>
-> Acked-by: Bjorn Andersson <andersson@kernel.org>
-> Acked-by: Florian Fainelli <florian.fainelli@broadcom.com>
-> Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
-> ---
-> SoC Maintainers, Can you please apply this directly.
->
-> v2:
->  - Drop QCom sdm630 change
-> ---
->  arch/arm/boot/dts/broadcom/bcm2711.dtsi              | 4 ++--
->  arch/arm64/boot/dts/altera/socfpga_stratix10.dtsi    | 2 +-
->  arch/arm64/boot/dts/amazon/alpine-v2.dtsi            | 2 +-
->  arch/arm64/boot/dts/apm/apm-storm.dtsi               | 2 +-
->  arch/arm64/boot/dts/arm/vexpress-v2f-1xv7-ca53x2.dts | 2 +-
->  arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi     | 2 +-
->  arch/arm64/boot/dts/broadcom/stingray/stingray.dtsi  | 2 +-
->  arch/arm64/boot/dts/cavium/thunder-88xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1012a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls1043a.dtsi       | 2 +-
->  arch/arm64/boot/dts/freescale/fsl-ls2080a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls2088a.dtsi       | 7 +++++++
->  arch/arm64/boot/dts/freescale/fsl-ls208xa.dtsi       | 5 -----
->  arch/arm64/boot/dts/freescale/imx8dxl.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/keembay-soc.dtsi           | 2 +-
->  arch/arm64/boot/dts/intel/socfpga_agilex.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/ac5-98dx25xx.dtsi        | 2 +-
->  arch/arm64/boot/dts/marvell/armada-37xx.dtsi         | 2 +-
->  arch/arm64/boot/dts/mediatek/mt8516.dtsi             | 2 +-
->  arch/arm64/boot/dts/nvidia/tegra210.dtsi             | 2 +-
->  arch/arm64/boot/dts/qcom/qcm2290.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/qdu1000.dtsi                | 2 +-
->  arch/arm64/boot/dts/qcom/sdx75.dtsi                  | 2 +-
->  arch/arm64/boot/dts/realtek/rtd16xx.dtsi             | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi             | 2 +-
->  arch/arm64/boot/dts/sprd/sc9860.dtsi                 | 2 +-
->  arch/arm64/boot/dts/sprd/sc9863a.dtsi                | 2 +-
->  arch/arm64/boot/dts/synaptics/berlin4ct.dtsi         | 2 +-
->  arch/arm64/boot/dts/tesla/fsd.dtsi                   | 2 +-
->  arch/arm64/boot/dts/xilinx/zynqmp.dtsi               | 2 +-
->  31 files changed, 43 insertions(+), 34 deletions(-)
+> Maybe we should use the same bits for both? Anyways, that seems like
+> material for a followup series.
 
-Acked-by: Thierry Reding <treding@nvidia.com>
+Ack
 
---028f56741d52f91b0bec672921ccea60e74b58ce9c1c05854f65f7d060c2
+> > +
+> > +		if (bpc =3D=3D 10 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HD=
+MI_DC_30)) {
+> > +			drm_dbg_kms(dev, "10 BPC but sink doesn't support Deep Color 30.\n"=
+);
+> > +			return false;
+> > +		}
+> > +
+> > +		if (bpc =3D=3D 12 && !(info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HD=
+MI_DC_36)) {
+> > +			drm_dbg_kms(dev, "12 BPC but sink doesn't support Deep Color 36.\n"=
+);
+> > +			return false;
+> > +		}
+> > +
+> > +		drm_dbg_kms(dev, "RGB format supported in that configuration.\n");
+> > +
+> > +		return true;
+> > +
+> > +	case HDMI_COLORSPACE_YUV422:
+> > +		drm_dbg_kms(dev, "YUV422 format, checking the constraints.\n");
+> > +
+> > +		if (!(info->color_formats & DRM_COLOR_FORMAT_YCBCR422)) {
+> > +			drm_dbg_kms(dev, "Sink doesn't support YUV422.\n");
+> > +			return false;
+> > +		}
+> > +
+> > +		if (bpc !=3D 12) {
+> > +			drm_dbg_kms(dev, "YUV422 only supports 12 bpc.\n");
+> > +			return false;
+> > +		}
+>=20
+> Did something change around here from the last time?
+
+The format selection code now prefers to select a lower bpc rather than
+another format, which is what you asked for in the previous version.
+
+
+--27joxh4slrq34bs4
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmYiWLsACgkQ3SOs138+
-s6HVMg//Z1vpOVfPGexT+l41R4BiEbrkDCVeBZnbDapafPEWSkvhzVK3ncQk6yUO
-y7l7yTq0l1PHP6Qh8orKSY6xO/Ui6eLRHnpIXJMhSj0l8hfPEYeiRlc8MSzEWhMH
-ame927kd5iiRpnjhVpRVhthE/gwH8diAIvay/Rx9PULbdsQvF8YsWAPff3+AFtVB
-mBz41wbhUOjDOhIW96UmbH8dwkfse0fNv5sYCuLvS1NtkvUIScL6TYHwTazMDYz0
-npHZJ8XNjGttSj7QCuSGoC7chz4GB3LKTcvYWIvL9he9wxN/CQX4BAFGqv0mx+nK
-FyU9Pva3xbjf6S8f48LhsIa2hbkhhET9km3FLZGftAkYivkD+0wBPFRHo8DRBx4P
-p9Lbo4mpG4QTPs1UV0bvglTGlBXW5YzZkuuuc0P2eMFAkpS4SVZXNfjPzKoSXqA7
-/PWBHccFqXCo64zLeJ8Ls0zhWBfC86BRQquxy/HO+WgsWdDjYNTrjp05bZ+QKkr3
-CjmyXxWDg2ANMnZB/o1Z1Q0B3t2LOou3diBKCp9ez3Cr1oKnarzM1jOZXS8ahnof
-ujUahheBul/NG2JO05EOV6BOabip6CrXH2B/NbfqjmYZM24kTJ+n6hBRcx07/6HJ
-9ARHNqLTLCFSGnbml4wZ68W8+bNiCXuB2BYKniHguyk+zpu5YMw=
-=sTJr
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZiJrFQAKCRAnX84Zoj2+
+dm//AYDBcbHF1j+MBygRYjzArO/7IC8ROQ0TnbdGU1QgBsuY7d6sseYpeJlG6wy4
+nb4N4n8BgNUIdF8BxMB0oSpFmbipxEdz7fBTk7U7cq968A6gd9ZS3VCDFSZ+M67f
+FOZCYGxFQQ==
+=tQ9L
 -----END PGP SIGNATURE-----
 
---028f56741d52f91b0bec672921ccea60e74b58ce9c1c05854f65f7d060c2--
+--27joxh4slrq34bs4--
 
 
---===============4956077618899278473==
+--===============8927266028891887673==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -225,5 +247,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4956077618899278473==--
+--===============8927266028891887673==--
 
