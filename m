@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC56C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Apr 2024 17:54:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF74C4345F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Apr 2024 13:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2PHB3Po8LDJVW1j7vavN3Y7JCX3OlV1W0cT/Kw5Ush4=; b=SvUmLsi4R0870HdLUDRuA7aeTi
-	EyStg3l92PWpIhO3PtZN3uEWMJr9HQCj9+dzG97Tgih7/EBi7notuklizTnDott1YpREg34cba5T2
-	OAiPcm+2nKSTEjM0T/sg/U1Y+Z7jgw3MBJBurjDywux7ALkARpCwrqTfIxBbb8GioQmKogFcC5H33
-	OnNR0/jyt8e8P8MU/kq6DmgJQqk1x2Qrzrl8Ml3CpKzhWKr2oSRjcBJucL3FE8d/RqspITv9gHUef
-	SpPiCtVxck0OJkQrqN1eG8LOxhb7uBpiM+nm//H+kxnpNGXk/tsX3Ax3RBuTZkk7DyUa84QMd7u8F
-	EN9jOtNQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ugs/x32TzHCjdxxCJm/jR5ggxpl+H1H5GPCzOKPVQHQ=; b=AOJKbkwEM3WeP1sWSoeAAsAq65
+	8k/FnkzbC1wVRrBtDNCfCs0bns0QBHFoaYZoB5kY6PbjVRaiQw0J6B2VQlBq5cf5Oyf2FowvRc7Iq
+	25tNnXNxJXJBE5c/gBVo6j4c6RYXlnRfI981Im9q2lPLTPEgrMI2U9+xdo8FFEraify8DsNEkhml7
+	OrymHy3pbDSjnH2I4vwiAp+1M92v2KfZ6nlhBfU/Dh08A+2Zd7RXsayKGJZDH7uOF7gFS1w0VXA9B
+	hqqhkkS3TGREz7MEOUTUb6pcwcWTAb1/C2K6PwdkN9sugBuFyT5v013Y+2xYIz8ajulgQjVH6IcXD
+	/nKCF02g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryEuo-00000008vQD-3U19;
-	Sat, 20 Apr 2024 17:54:18 +0000
-Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
+	id 1ryXeb-0000000AbqN-0GxI;
+	Sun, 21 Apr 2024 13:54:49 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryEul-00000008vOv-17gc
-	for linux-rockchip@lists.infradead.org;
-	Sat, 20 Apr 2024 17:54:17 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1713635650;
+	id 1ryXeW-0000000Aboi-1oI2;
+	Sun, 21 Apr 2024 13:54:46 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1713707675;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Gx2Uh2+mS9jVrYQNKT1y5m3Fmt99nDwzwE4O30Is9Gg=;
-	b=r3Y3TEG94336SUOJ2uer6SBieQ+Kp4JYl9HpcLNqIyHZodtUPS7dimhdv1JdI5GGS0sYq7
-	RC/NnOJ5a2JduO5/sLiYslkC6FV//cGLjGEGJW7S/t3kbHlHm1EfpzadZBwJ8Z6twEtSCX
-	wFq8ffi7xn9KB13glsOVZ49Si4N4zWqML2oAKpk2ZgSj+wtdmvpltUsKqoT9CeDsEpHfoM
-	fPKIZtiYOjCoBZGh/gC6LrdrcAMYzrHtSp60Q3NXvYfplBTrJ06kvf9WQxe/OscGLbQFOt
-	xHDrF+QR9ELKNSyZFo8BK8qkjXCK4IIzC1lM1Dn0OpSOsLh/my/d/byyYGf9aw==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Dragan Simic <dsimic@manjaro.org>, Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Chen-Yu Tsai <wens@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/5] RK3588 and Rock 5B dts additions: thermal,
- OPP and fan
-Date: Sat, 20 Apr 2024 19:53:58 +0200
-Message-ID: <3068718.7t0mGDVaCv@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <9f4c7615a6685ac42dccdbe35e57c357@manjaro.org>
-References: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
- <66689051.MzlzmSNrL9@bagend> <9f4c7615a6685ac42dccdbe35e57c357@manjaro.org>
-MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
+	bh=/4ooY+dJBDon3+uBiWdkfQ49raa8NLkoa8U8AjhBhvA=;
+	b=C4CWtl+DvcM0SmFngK7FHkT2L/ZMtfaY6AswksaDF51yPAlkJLOg7sc9j+mRdNRjlt4Qqp
+	IdmaYM6OJN8IGQaaHdfUybveyzIOgkjYQPTcaG46wuE2lZWRmWtxb8HmM1NGAgWJ3pM9JQ
+	wKNk6Gn+OA5IDp+jcm0Fk3f+lI/aoQAcK3eEOLZG9KSbl88ppMwjFMyfYedDFfWDrSQ9A8
+	roWBJ2bmEE3Ch2WLVybA4EBG02vYlB8Z+ajPSDL1A0Vrq/a0ngbUlL1cSJvgHHA/c8CEfm
+	lckgPzXyZyoU65b/4Pb2yAR8GuPL2rV2qBCKp/02SE7qECbYyBMywyIlizS12Q==
+Date: Sun, 21 Apr 2024 15:54:32 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-kernel@vger.kernel.org, amadeus@jmu.edu.cn,
+ FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Correct the descriptions
+ for Radxa boards
+In-Reply-To: <20240419-triumph-cheddar-77fc2f6948b0@spud>
+References: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
+ <1888572.CQOukoFCf9@diego> <20240418-attach-tigress-bc2b9f844fc7@spud>
+ <c3c4a6ad48fbd62b44991c9bfd81570a@manjaro.org>
+ <20240419-triumph-cheddar-77fc2f6948b0@spud>
+Message-ID: <a3930b26634a78888c9fe3013284563c@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240420_105415_758507_98245641 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20240421_065445_081466_1D1B1711 
+X-CRM114-Status: GOOD (  16.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,194 +72,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2693278492680190554=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============2693278492680190554==
-Content-Type: multipart/signed; boundary="nextPart2278925.Y8TTUSuLqC";
- micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart2278925.Y8TTUSuLqC
-Content-Type: multipart/mixed; boundary="nextPart1975143.ijBsUvVnos";
- protected-headers="v1"
-Content-Transfer-Encoding: 7Bit
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Sat, 20 Apr 2024 19:53:58 +0200
-Message-ID: <3068718.7t0mGDVaCv@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <9f4c7615a6685ac42dccdbe35e57c357@manjaro.org>
-MIME-Version: 1.0
-
-This is a multi-part message in MIME format.
-
---nextPart1975143.ijBsUvVnos
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
-
-Hi Dragan and Alexey,
-
-On Wednesday, 10 April 2024 11:28:09 CEST Dragan Simic wrote:
-> > Can you rebase this patch set on Heiko's for-next branch [1]?
-> > And then also fix the ordering of the nodes and the elements within
-> > those nodes so that they match the current conventions?
-> 
-> Ah, thanks, this is a good reminder about the proposal for the plan
-> for moving forward, which I promised to send a while ago. :)
-> 
-> > [1]
-> > https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/l
-> > og/?h=for-next
-
-I build a (Debian) kernel based off 6.9-rc4 + a whole bunch of patches, 
-including this patch series. I got someone on #debian-arm to try it out on a 
-Rock 5B and the dmesg output showed a number of items wrt thermal and OPP.
-
-Some items that I filtered out from that dmesg output:
-
-[    3.211716] hwmon hwmon0: temp1_input not attached to any thermal zone
-[    3.908339] panthor fb000000.gpu: EM: OPP:900000 is inefficient
-[   10.473061] cpu cpu0: EM: OPP:600000 is inefficient
-[   10.473233] energy_model: Accessing cpu4 policy failed
-[   10.585236] rockchip-thermal fec00000.tsadc: Missing rockchip,grf property
-
-Attached is the full list of items I collected from that dmesg output which 
-seem worth investigating. 
-
-Maybe useful to investigate when moving forward?
-
-Cheers,
-  Diederik
---nextPart1975143.ijBsUvVnos
-Content-Disposition: attachment; filename="rock-5b-dmesg-issues.txt"
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="x-UTF_8J"; name="rock-5b-dmesg-issues.txt"
-
-Radxa 5B issues (dmesg on https://termbin.com/e170):
-
-[    2.863508] rockchip-spi feb20000.spi: Runtime PM usage count underflow!
-
-[    2.915650] rtc-hym8563 6-0051: no valid clock/calendar values available
-[    2.915949] rtc-hym8563 6-0051: registered as rtc0
-[    2.916945] rtc-hym8563 6-0051: no valid clock/calendar values available
-[    2.916950] rtc-hym8563 6-0051: hctosys: unable to read the hardware clock
-
-[    2.994580] rockchip-drm display-subsystem: [drm:rockchip_drm_platform_probe [rockchipdrm]] *ERROR* No available vop found for display-subsystem.
-[    3.101020] rockchip-dw-pcie a40000000.pcie: PCIe Gen.3 x4 link up
-[    3.101308] rockchip-dw-pcie a40000000.pcie: PCI host bridge to bus 0000:00
-[    3.101316] pci_bus 0000:00: root bus resource [bus 00-0f]
-[    3.101324] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0xf0100000-0xf01fffff])
-[    3.101329] pci_bus 0000:00: root bus resource [mem 0xf0200000-0xf0ffffff]
-[    3.101335] pci_bus 0000:00: root bus resource [mem 0x900000000-0x93fffffff] (bus address [0x40000000-0x7fffffff])
-[    3.101357] pci 0000:00:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-[    3.101369] pci 0000:00:00.0: BAR 0 [mem 0x00000000-0x3fffffff]
-[    3.101377] pci 0000:00:00.0: BAR 1 [mem 0x00000000-0x3fffffff]
-[    3.101384] pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-[    3.101389] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-[    3.101396] pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-[    3.101402] pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    3.101410] pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    3.101452] pci 0000:00:00.0: supports D1 D2
-[    3.101457] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-[    3.103848] pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f] (conflicts with (null) [bus 00-0f])
-[    3.103921] pci 0000:01:00.0: [144d:a809] type 00 class 0x010802 PCIe Endpoint
-[    3.103987] pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-[    3.116969] pci 0000:00:00.0: BAR 0 [mem 0x900000000-0x93fffffff]: assigned
-[    3.116983] pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: can't assign; no space
-[    3.116990] pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: failed to assign
-[    3.116995] pci 0000:00:00.0: bridge window [mem 0xf0200000-0xf02fffff]: assigned
-[    3.117001] pci 0000:00:00.0: ROM [mem 0xf0300000-0xf030ffff pref]: assigned
-[    3.117009] pci 0000:01:00.0: BAR 0 [mem 0xf0200000-0xf0203fff 64bit]: assigned
-[    3.117042] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-[    3.117048] pci 0000:00:00.0:   bridge window [mem 0xf0200000-0xf02fffff]
-
-[    3.211716] hwmon hwmon0: temp1_input not attached to any thermal zone
-[    3.211775] hwmon hwmon0: temp2_input not attached to any thermal zone
-[    3.211823] hwmon hwmon0: temp3_input not attached to any thermal zone
-
-[    3.327532] pci 0002:20:00.0: bridge configuration invalid ([bus 01-ff]), reconfiguring
-
-[    3.908339] panthor fb000000.gpu: EM: OPP:900000 is inefficient
-[    3.908349] panthor fb000000.gpu: EM: OPP:800000 is inefficient
-[    3.908354] panthor fb000000.gpu: EM: OPP:700000 is inefficient
-[    3.908358] panthor fb000000.gpu: EM: OPP:600000 is inefficient
-[    3.908361] panthor fb000000.gpu: EM: OPP:500000 is inefficient
-[    3.908365] panthor fb000000.gpu: EM: OPP:400000 is inefficient
-[    3.908369] panthor fb000000.gpu: EM: OPP:300000 is inefficient
-
-[    3.920149] [drm] Initialized panthor 1.0.0 20230801 for fb000000.gpu on minor 0
-
-[    4.483910] dwmmc_rockchip fe2d0000.mmc: Busy; trying anyway
-[    5.213383] mmc_host mmc2: Timeout sending command (cmd 0x202000 arg 0x0 status 0x80202000)
-[    5.228057] mmc_host mmc2: Bus speed (slot 0) = 300000Hz (slot req 300000Hz, actual 300000HZ div = 0)
-
-[    7.072323] dwmmc_rockchip fe2d0000.mmc: Busy; trying anyway
-[    7.801690] mmc_host mmc2: Timeout sending command (cmd 0x202000 arg 0x0 status 0x80202000)
-[    7.816350] mmc_host mmc2: Bus speed (slot 0) = 187500Hz (slot req 187500Hz, actual 187500HZ div = 0)
-[    8.369904] dwmmc_rockchip fe2d0000.mmc: Busy; trying anyway
-[    9.099376] mmc_host mmc2: Timeout sending command (cmd 0x202000 arg 0x0 status 0x80202000)
-[    9.101395] mmc2: Failed to initialize a non-removable card
-
-[   10.473061] cpu cpu0: EM: OPP:600000 is inefficient
-[   10.473075] cpu cpu0: EM: OPP:408000 is inefficient
-[   10.473227] cpu cpu0: EM: created perf domain
-[   10.473233] energy_model: Accessing cpu4 policy failed
-[   10.483901] cpu cpu4: EM: OPP:2352000 is inefficient
-[   10.483914] cpu cpu4: EM: OPP:2304000 is inefficient
-[   10.483918] cpu cpu4: EM: OPP:2256000 is inefficient
-[   10.483923] cpu cpu4: EM: OPP:1008000 is inefficient
-[   10.483926] cpu cpu4: EM: OPP:816000 is inefficient
-[   10.483930] cpu cpu4: EM: OPP:600000 is inefficient
-[   10.483934] cpu cpu4: EM: OPP:408000 is inefficient
-[   10.484193] cpu cpu4: EM: created perf domain
-[   10.484199] energy_model: Accessing cpu6 policy failed
-[   10.488907] cpu cpu6: EM: OPP:2352000 is inefficient
-[   10.488917] cpu cpu6: EM: OPP:2304000 is inefficient
-[   10.488921] cpu cpu6: EM: OPP:2256000 is inefficient
-[   10.488925] cpu cpu6: EM: OPP:1008000 is inefficient
-[   10.488928] cpu cpu6: EM: OPP:816000 is inefficient
-[   10.488932] cpu cpu6: EM: OPP:600000 is inefficient
-[   10.488936] cpu cpu6: EM: OPP:408000 is inefficient
-[   10.489175] cpu cpu6: EM: created perf domain
-[   10.489179] energy_model: updating cpu0 cpu_cap=397 old capacity=530
-[   10.489186] cpu cpu0: EM: OPP:816000 is inefficient
-[   10.489190] cpu cpu0: EM: OPP:600000 is inefficient
-[   10.489194] cpu cpu0: EM: OPP:408000 is inefficient
-[   10.585236] rockchip-thermal fec00000.tsadc: Missing rockchip,grf property
---nextPart1975143.ijBsUvVnos--
-
---nextPart2278925.Y8TTUSuLqC
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCZiQBNgAKCRDXblvOeH7b
-bm9nAP9oyg2gMlYJQz+CTtHWFhf1KPqWPuu9eQjci3eJVHMLAQD+KB738LRB0U0Z
-gN0e8/UkAudwoqAC8Gp6ME0SBzLXPw0=
-=Pc21
------END PGP SIGNATURE-----
-
---nextPart2278925.Y8TTUSuLqC--
-
-
-
-
-
---===============2693278492680190554==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2693278492680190554==--
-
-
-
-
+T24gMjAyNC0wNC0xOSAxNjowOSwgQ29ub3IgRG9vbGV5IHdyb3RlOgo+IE9uIFRodSwgQXByIDE4
+LCAyMDI0IGF0IDA3OjEyOjM1UE0gKzAyMDAsIERyYWdhbiBTaW1pYyB3cm90ZToKPj4gT24gMjAy
+NC0wNC0xOCAxOTowNCwgQ29ub3IgRG9vbGV5IHdyb3RlOgo+PiA+IE9uIFRodSwgQXByIDE4LCAy
+MDI0IGF0IDA2OjU5OjQyUE0gKzAyMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiA+ID4gQW0g
+RG9ubmVyc3RhZywgMTguIEFwcmlsIDIwMjQsIDE4OjI2OjE5IENFU1Qgc2NocmllYiBEcmFnYW4g
+U2ltaWM6Cj4+ID4gPiA+IENvcnJlY3QgdGhlIGRlc2NyaXB0aW9ucyBvZiBhIGZldyBSYWR4YSBi
+b2FyZHMsIGFjY29yZGluZyB0byB0aGUgdXAtdG8tZGF0ZQo+PiA+ID4gPiBkb2N1bWVudGF0aW9u
+IGZyb20gUmFkeGEgYW5kIHRoZSBkZXRhaWxlZCBleHBsYW5hdGlvbiBmcm9tIE5hb2tpLiBbMV0g
+IFRvIHN1bQo+PiA+ID4gPiBpdCB1cCwgdGhlIHNob3J0IG5hbWluZywgYXMgc3BlY2lmaWVkIGJ5
+IFJhZHhhLCBpcyBwcmVmZXJyZWQuCj4+ID4gPiA+Cj4+ID4gPiA+IFsxXSBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC9CMjZDNzMyQTREQ0VBOUIzKzI4MmI4Nzc1LTYwMWIt
+NGQ0YS1hNTEzLTQ5MjRiNzk0MDA3NkByYWR4YS5jb20vCj4+ID4gPiA+Cj4+ID4gPiA+IFN1Z2dl
+c3RlZC1ieTogRlVLQVVNSSBOYW9raSA8bmFva2lAcmFkeGEuY29tPgo+PiA+ID4gPiBTaWduZWQt
+b2ZmLWJ5OiBEcmFnYW4gU2ltaWMgPGRzaW1pY0BtYW5qYXJvLm9yZz4KPj4gPiA+ID4gLS0tCj4+
+ID4gPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlh
+bWwgfCA4ICsrKystLS0tCj4+ID4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCsp
+LCA0IGRlbGV0aW9ucygtKQo+PiA+ID4gPgo+PiA+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sCj4+ID4gPiA+IGluZGV4IGZj
+ZjczMTZlY2Q3NC4uYWU1OGUyNWMyOWVjIDEwMDY0NAo+PiA+ID4gPiAtLS0gYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPj4gPiA+ID4gKysrIGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sCj4+ID4g
+PiA+IEBAIC03NjcsMjIgKzc2NywyMiBAQCBwcm9wZXJ0aWVzOgo+PiA+ID4gPiAgICAgICAgICAg
+IC0gY29uc3Q6IHJhZHhhLHJvY2twaXMKPj4gPiA+ID4gICAgICAgICAgICAtIGNvbnN0OiByb2Nr
+Y2hpcCxyazMzMDgKPj4gPiA+ID4KPj4gPiA+ID4gLSAgICAgIC0gZGVzY3JpcHRpb246IFJhZHhh
+IFJvY2syIFNxdWFyZQo+PiA+ID4gPiArICAgICAgLSBkZXNjcmlwdGlvbjogUmFkeGEgUm9jayAy
+IFNxdWFyZQo+PiA+ID4KPj4gPiA+IEkgbWF5IGJlIGp1c3QgYmxpbmQsIGJ1dCB3aGF0IGNoYW5n
+ZWQgaGVyZT8KPj4gPgo+PiA+IFRoZXJlJ3Mgbm93IGEgc3BhY2UgYmVmb3JlIHRoZSAyLgo+PiAK
+Pj4gRXhhY3RseS4gIFRoYXQncyBwYXJ0IG9mIHRoZSBSYWR4YSdzIG5hbWluZyBjb252ZW50aW9u
+LCB3aGljaCBtYXkgYmUKPj4gc2VlbiBhcyBzb21ld2hhdCBzaW1pbGFyIHRvIHRoZSBnZW5lcmFs
+IHJ1bGUgb2Ygc3BhY2luZyBvdXQgdmFsdWVzIGFuZAo+PiB0aGVpciBhc3NvY2lhdGVkIHVuaXRz
+LCBlLmcuICIyIE1CIiBpcyBpbiBnZW5lcmFsIHByZWZlcnJlZCBvdmVyICIyTUIiCj4+IGluIG5l
+YXJseSBhbnkga2luZCBvZiBhIGZvcm1hbGx5IGNvcnJlY3QgZG9jdW1lbnQuCj4gCj4+IEFzIGEg
+c2lkZSBub3RlLCB0aGVyZSdzIGV2ZW4gc28tY2FsbGVkICJoYWxmIHNwYWNlIiBhcyBhIHR5cG9n
+cmFwaGljYWwKPj4gY29udmVudGlvbiBmb3Igc3BhY2luZyBvdXQgdGhlIHZhbHVlcyBhbmQgdGhl
+IGFzc29jaWF0ZWQgdW5pdHMuICBUaGF0Cj4+IG1ha2VzIGZvcm1hdHRlZCB0ZXh0IHdpdGggc3Vj
+aCBzcGFjaW5nIGEgYml0IG5pY2VyLiA6KQo+IAo+IExldCdzIG5vdCBpbnRyb2R1Y2UgaGFsZiBz
+cGFjZXMgaW50byB0aGUgYmluZGluZ3MgdGhvdWdoIDopCgpPZiBjb3Vyc2UuIDopCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
