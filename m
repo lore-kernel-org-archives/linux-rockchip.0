@@ -4,64 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27549C4345F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Apr 2024 16:07:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683C4C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 08:30:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LnDfYk14ruyQI4RTAFq47OmCQv1Ki4ej02llc4Pe98U=; b=XrCpUH+xT4lUvnVX7kk74LCfas
-	lt/4bCMlFmue6cQXyPVivGG6yIqu0/Ua0O7IZkbeDMzVczaoF8bVS1SgAJLSh3sfuhy8Ng5W+WT6r
-	nVuuGA4/bZEDeLjVhWcUSnWpyAguqXV7wvn8Dv7GgenxzUOZ4kLN/WCaWKfhqm4r1dL2kEBYRBLwf
-	b4dxENKTwO3VmfI9hkVPU5vf6DtOb6Z4reR532veleLlPLAcGzX/RuVXlNavi4v3iQY6jOyiBmAG6
-	XlmAwhlSZ/1MmXpsusfZ02frC30fQjjL/oVNfso23PcerBxc2e3y0TvRqx8GmgExAc3Va4mp6u89l
-	IZyQjsmQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W9rpBb0h42i4SRz5ZvwnPG7UKluCiogNq9yMwwHYAkw=; b=0JQ6TCtldecV7R
+	74/U5EP6lwcqK3aYjUAWg54dM2UKamWL7SC5eqsUSuhsjmjtMzOC6je9mhv4VyODeEqANM+ARFBdD
+	+MP3L11vazUWVBLGigVLrI9Zkx9+DH7o5VaNGtGZCf6jfBgRDFuiIq6OUO/ycvfsYs2aQbjPEzvJU
+	OaGAMz+4Z2TkGRYfyr7YXxG4WO44OYXfh/RzOXWUDK7GU3Xk+Xg6gqJGK4vyiVezBTq1/BpOD8VCX
+	aEgckkU9vUnwgwZJLxFBngMAOP02zZp8PUexQOUd4GGVvSp0op6+AMh6zrcjt3I2kffSMrAMmty1d
+	/TEmZn65c6A682HhcklA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryZjC-0000000An47-3LsL;
-	Sun, 21 Apr 2024 16:07:42 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1ryp4a-0000000CewU-0OU1;
+	Mon, 22 Apr 2024 08:30:48 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryZj8-0000000Amzh-1q59;
-	Sun, 21 Apr 2024 16:07:40 +0000
+	id 1ryp4W-0000000CevN-1QpG;
+	Mon, 22 Apr 2024 08:30:45 +0000
+Received: from i5e861d85.versanet.de ([94.134.29.133] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ryp4H-0000f8-Cv; Mon, 22 Apr 2024 10:30:29 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, quentin.schulz@theobroma-systems.com
+Subject: Re: [PATCH 0/2] Add support for the dual-role dwc3 controllers on
+ rk3588-tiger
+Date: Mon, 22 Apr 2024 09:43:12 +0200
+Message-ID: <2108948.KlZ2vcFHjT@diego>
+In-Reply-To: <171356537191.48026.7238978785873260892.robh@kernel.org>
+References: <20240418210332.2394871-1-heiko@sntech.de>
+ <171356537191.48026.7238978785873260892.robh@kernel.org>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1713715655;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VsbWtpJGTpVE59gMLUthsI5owfAuS8vpivZIQQQ1eIA=;
-	b=Bdvv0JdpiuYrX4w/mGLWCWpiWk0/76kKVfTbP11g+yKcyKSMt7DoVECfFRf//g1f8moZcs
-	zoUj0XNxDvp4JjNqPwYHHPCMHtc1N+2wRJnV20rCigi2zj1UQu+Eo7Oft2hGEwr39zGhQq
-	X6l4ak3NsRp9S2N1ZYxHk3BmSao95pAqBwIpiA9uom9q24Hwfazaejk8IRRUDy9T6NaXEB
-	DxECT69Kpvyu8V5ICo/ChhcwEM4+kCKxnMUo3/Ybr8Jb/6tGWSLSppykuRAaNLlxI1DB4O
-	VGgVrLNgUFF+4YXZg+Atf7LJqZPr9GBEdJvHqZHhnYtAeW2/7A9+qnAcOQ08UA==
-Date: Sun, 21 Apr 2024 18:07:34 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Diederik de Haas <didi.debian@cknow.org>
-Cc: Alexey Charkov <alchark@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Chen-Yu
- Tsai <wens@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/5] RK3588 and Rock 5B dts additions: thermal, OPP and
- fan
-In-Reply-To: <3068718.7t0mGDVaCv@bagend>
-References: <20240229-rk-dts-additions-v3-0-6afe8473a631@gmail.com>
- <66689051.MzlzmSNrL9@bagend> <9f4c7615a6685ac42dccdbe35e57c357@manjaro.org>
- <3068718.7t0mGDVaCv@bagend>
-Message-ID: <51b07f627c5e16461d9c38dc41c0b957@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240421_090738_866732_AE89843E 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20240422_013044_417393_CEFADD0D 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,58 +57,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
+Hi Rob,
 
-On 2024-04-20 19:53, Diederik de Haas wrote:
-> On Wednesday, 10 April 2024 11:28:09 CEST Dragan Simic wrote:
->> > Can you rebase this patch set on Heiko's for-next branch [1]?
->> > And then also fix the ordering of the nodes and the elements within
->> > those nodes so that they match the current conventions?
->> 
->> Ah, thanks, this is a good reminder about the proposal for the plan
->> for moving forward, which I promised to send a while ago. :)
->> 
->>> [1] 
->>> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/log/?h=for-next
+Am Samstag, 20. April 2024, 00:24:23 CEST schrieb Rob Herring:
+> On Thu, 18 Apr 2024 23:03:30 +0200, Heiko Stuebner wrote:
+> > A comment fix and then the addition of the nodes for the dwc3 controllers
+> > using the newly merged usbdp phys.
+> > 
+> > Heiko Stuebner (2):
+> >   arm64: dts: rockchip: fix comment for upper usb3 port
+> >   arm64: dts: rockchip: add dual-role usb3 hosts to rk3588 Tiger-Haikou
+> > 
+> >  .../boot/dts/rockchip/rk3588-tiger-haikou.dts | 60 ++++++++++++++++++-
+> >  .../arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 15 +++++
+> >  2 files changed, 74 insertions(+), 1 deletion(-)
+> > 
+> > --
+> > 2.39.2
+> > 
+> > 
+> > 
 > 
-> I build a (Debian) kernel based off 6.9-rc4 + a whole bunch of patches,
-> including this patch series. I got someone on #debian-arm to try it out 
-> on a
-> Rock 5B and the dmesg output showed a number of items wrt thermal and 
-> OPP.
 > 
-> Some items that I filtered out from that dmesg output:
+> My bot found new DTB warnings on the .dts files added or changed in this
+> series.
 > 
-> [    3.211716] hwmon hwmon0: temp1_input not attached to any thermal 
-> zone
-> [    3.908339] panthor fb000000.gpu: EM: OPP:900000 is inefficient
-> [   10.473061] cpu cpu0: EM: OPP:600000 is inefficient
-> [   10.473233] energy_model: Accessing cpu4 policy failed
-> [   10.585236] rockchip-thermal fec00000.tsadc: Missing rockchip,grf 
-> property
+> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> are fixed by another series. Ultimately, it is up to the platform
+> maintainer whether these warnings are acceptable or not. No need to reply
+> unless the platform maintainer has comments.
 > 
-> Attached is the full list of items I collected from that dmesg output 
-> which
-> seem worth investigating.
+> If you already ran DT checks and didn't see these error(s), then
+> make sure dt-schema is up to date:
 > 
-> Maybe useful to investigate when moving forward?
+>   pip3 install dtschema --upgrade
+> 
+> 
+> New warnings running 'make CHECK_DTBS=y rockchip/rk3588-tiger-haikou.dtb' for 20240418210332.2394871-1-heiko@sntech.de:
+> 
+> arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dtb: /extcon-usb3: failed to match any schema with compatible: ['linux,extcon-usb-gpio']
 
-This is a nice report, thanks!
+This follows the txt-binding from
+	https://www.kernel.org/doc/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
+so in mainline there is no yaml binding yet for the usb-id-extcon.
 
-I'm not sure what's going on with the mmc2 issues.  Regarding the 
-hym8563,
-hwmon, energy_model and rockchip-spi issues, I'll have a look into them
-and come back with an update.
+Though I did find a still pending yaml conversion for it in
+	https://lore.kernel.org/linux-arm-kernel/20240215093214.796821-1-alexander.stein@ew.tq-group.com/T/
 
-Regarding the multiple "OPP:<frequency> is inefficient" warnings, it's
-already on my TO-DO list to perform a detailed (and repeatable) testing.
-My suspicion is that declaring the OPPs as inefficient actually isn't
-warranted, but we'll see what will be the test results.
+Though not sure what the holdup is there as it got a Review from you?
+Can you just pick this for the main dt-tree?
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
