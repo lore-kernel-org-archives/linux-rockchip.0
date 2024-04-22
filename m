@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5266FC10F1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2074C41513
 	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 16:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,25 +12,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zO2ZWJecAPNP9yV4fpxQ8UToNwDoE8vwkXn4feR4Uuo=; b=SfynkzNTiGSAX1
-	sFgENYVmHaEeAe9Xrt9fUPRynhjWJi05WoED6feUxrHxwnJcczIlDf3PV7Idduzd6RGbtfL7VrB4U
-	qOUt+wtEfawuqKivwNsiP2KFwjXTLdlQFiH9j3FVtNBL5qaQr3+clEYXHbYnpxNRNMX+JuttyMGna
-	YScqqI454oEAoXKnyQh8wcIgiezQhf8Vifb3A0M5xPtEA/1++WzXGM/2yKW3GY9GRJ0kXXlkFZumw
-	CWopt1HhkB1xJs6h9HKmQSUZ7HlMia6A//+iGIix2I+lcnu4YadUMKoM/RBxPpXWvtUZS93oDK1Mz
-	pUijTs6HNIw7z5l2AJhw==;
+	List-Owner; bh=TOrKx9Wl5wa/QvtNG6mGzUu0NfnAOkmdvAzstJP2bps=; b=cGDVEIMinkZ3C9
+	pGnd3EUn3WbYwly9M8XkTm4IKBfq4XOQDU2z9QkHQ4Ql9H7met7n4i/El9dYD0YF1DApBPdk3Lo5p
+	mRgWBqTpClerlO0WeMU/NtSnrZcew8hJYjt7yhr+JbHLifxZbLBeSo9faFIfZeJIcDn1n4e5DldTT
+	URQvjcdEwiG7p3hMPYYXNgSgl9e3kXdMpCSteSKvFpLjxNYLquIlud64+z1PYDG05h8NvcvUwsydf
+	hSKifSqK0ren28tKxxYY+jw9aWWltU81p5WLV61j/redCNPRvnlvd2043AuvZkxpRMxhvg28p6n0P
+	XE8AeDNAS5iB+3Pttpxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rywi1-0000000EJsB-2B48;
-	Mon, 22 Apr 2024 16:40:01 +0000
+	id 1rywi4-0000000EJuk-14n8;
+	Mon, 22 Apr 2024 16:40:04 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rywhw-0000000EJnh-1QuX;
-	Mon, 22 Apr 2024 16:39:57 +0000
+	id 1rywhw-0000000EJnU-1QgZ;
+	Mon, 22 Apr 2024 16:39:58 +0000
 Received: from i5e861d85.versanet.de ([94.134.29.133] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rywhu-0004gq-B1; Mon, 22 Apr 2024 18:39:54 +0200
+	id 1rywhu-0004gq-0t; Mon, 22 Apr 2024 18:39:54 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: quentin.schulz@theobroma-systems.com,
@@ -38,16 +38,16 @@ Cc: quentin.schulz@theobroma-systems.com,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v2 2/3] arm64: dts: rockchip: add usb-id extcon on rk3588 tiger
-Date: Mon, 22 Apr 2024 18:39:50 +0200
-Message-Id: <20240422163951.2604273-3-heiko@sntech.de>
+Subject: [PATCH v2 1/3] arm64: dts: rockchip: fix comment for upper usb3 port
+Date: Mon, 22 Apr 2024 18:39:49 +0200
+Message-Id: <20240422163951.2604273-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240422163951.2604273-1-heiko@sntech.de>
 References: <20240422163951.2604273-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_093956_419615_56FDDACE 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20240422_093956_444969_BA6DA43C 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,51 +66,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The Q7 standard specifies a usb-id pin on the connector to distiuish
-between host and device mode. Model this via the usb-id extcon binding.
-
-While the pin is part of the Q7 standard, so part of the module, the
-extcon stays disabled in the som dtsi and will only be enabled in a
-baseboard using it.
+The comment for the host2_xhci points to the wrong port on the board.
+The upper usb3 port is the correct one, so fix the comment to prevent
+confusion.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-index 4984e36a8c2d..cafb40283882 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-@@ -23,6 +23,14 @@ emmc_pwrseq: emmc-pwrseq {
- 		reset-gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_HIGH>;
- 	};
- 
-+	extcon_usb3: extcon-usb3 {
-+		compatible = "linux,extcon-usb-gpio";
-+		id-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb3_id>;
-+		status = "disabled";
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -327,6 +335,13 @@ module_led_pin: module-led-pin {
- 			rockchip,pins = <1 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usb3 {
-+		usb3_id: usb3-id {
-+			rockchip,pins =
-+			  <3 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+index 9bdd14799eff..2aa43e7430e5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+@@ -239,12 +239,12 @@ &uart5 {
+ 	status = "okay";
  };
  
- &saradc {
+-/* host0 on Q7_USB_P2, lower usb3 port */
++/* host0 on Q7_USB_P2, upper usb3 port */
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+ 
+-/* host0 on Q7_USB_P2, lower usb3 port */
++/* host0 on Q7_USB_P2, upper usb3 port */
+ &usb_host0_ohci {
+ 	status = "okay";
+ };
+@@ -259,7 +259,7 @@ &usb_host1_ohci {
+ 	status = "okay";
+ };
+ 
+-/* host2 on Q7_USB_P2, lower usb3 port */
++/* host2 on Q7_USB_P2, upper usb3 port */
+ &usb_host2_xhci {
+ 	status = "okay";
+ };
 -- 
 2.39.2
 
