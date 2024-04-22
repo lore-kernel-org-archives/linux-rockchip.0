@@ -4,48 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BEC5C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 13:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977FEC07C79
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 14:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5edeRBWRxjnkmLJ1tQ0CwT7pXwtzo+Iqt0sqrqcuKg4=; b=XMrXlvOCe2syVT
-	yX7ibQVF0PmmCygCRLppgBvrzT9yBV147uvnU0BZNEZ0V+2ExeIZ0yilwTOtX+v+gq0hZg52TtyXX
-	YMSGL8mlD9eOKyOFqj+F020exD+d++Ix1Bnyau/17zjKgzASVohdLIkT1GHN2FfIdXNotGeQlTVUX
-	We/iPw81m5Yz79nW7Wlb4ygkj2Yf+EIEqjMVxtlQUIo5Mv3N7jJtU3f9QjkG/7aIziIB6oZW2Zja5
-	luqeBWWl1bcUOZPcHd7NBCU24rBTmDhIGxPq9fp0ZMxRKigwOUjJIBdACqfU/nSJLb4ZUKHvH4vrs
-	v8FIhqfdgb9kK+Gz4OxA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nZR4T8V6MfTzoTQGC7geqX6pZwIXXpb4A8+PyRzOqn8=; b=JB6XN/EOiHyq4o
+	uYkwUP/MqvJ3dbtJIlTrZINbukIMY6Mjct/EEafg4iGnZo0/gn08CVJGfHJBKDyf1IHAkrlxZ5UAF
+	PTHFejVvUSkk00U1taW8rjRja/a+P5qL4A2FxP8q86ynC+MsMoiJOqLVMZF8/Pv9Gin5fHhBCs7hM
+	DnlCmq2HJSxU/hD7641kECTTD3GGIvoBKziiojL0fmdX+FAbaUlGJUD63/u2iaUhfSb+3oQWQV2HZ
+	dfO4gGyTPx7IDeEL7jRErdNw96e7wgJuSPmkNwuXCP7StDPVY9kv2BWQrh5SIClJEAnA3F2jwDf/f
+	TwQw5O8g+gSsdyyN4IJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytpB-0000000DlNF-3Xkn;
-	Mon, 22 Apr 2024 13:35:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ryuiV-0000000Dveo-3Jiy;
+	Mon, 22 Apr 2024 14:32:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rytp7-0000000DlKW-3vpF;
-	Mon, 22 Apr 2024 13:35:11 +0000
-Received: from i5e861d85.versanet.de ([94.134.29.133] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1rytp3-0003PX-SH; Mon, 22 Apr 2024 15:35:05 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@theobroma-systems.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v3] arm64: dts: rockchip: add PCIe3 support on rk3588-jaguar
-Date: Mon, 22 Apr 2024 15:35:02 +0200
-Message-Id: <20240422133502.2592975-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.39.2
+	id 1ryuiS-0000000DvdQ-0P4E;
+	Mon, 22 Apr 2024 14:32:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AD39B60EAD;
+	Mon, 22 Apr 2024 14:32:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21D4AC32781;
+	Mon, 22 Apr 2024 14:32:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1713796338;
+	bh=UZIxVFEW74eS+zx3QNO5SuI2uGg45s9QOS50Qqh4CEc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZAdGzVxkEz0GXl6OGmaEd/zSorzSR3q6hPLVkaU8f0vm5JffzM4Xnd0vifqLHhn3E
+	 Zv4PP8L2+NxZ3xdtxxuezgsBKEmZ4GibOSHoCzu2A0gkKuVi9ppN58A7NQ5qbaVkWM
+	 9qHzPchBo1ktsPqSDO7UYWvzywlUjPP7MPDKxdzh0dpeRsW/z41MggAGRDizSYeKAU
+	 0u6KgXciKXiAUNDkThKE7Nek5zgqvgbVJ2GY4qpQz5WNfhiYDuCIOY9JZLUhtaiu8R
+	 Gfmzkou7PyBq8+WPlIkLChxDxFzXZP1kbNYjVA3E2vBMDI2XvGdobNQgrhROQ3pePt
+	 iAq0llisZPs0Q==
+Date: Mon, 22 Apr 2024 09:32:15 -0500
+From: Rob Herring <robh@kernel.org>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: amadeus@jmu.edu.cn, conor+dt@kernel.org, krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org, heiko@sntech.de,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Correct the descriptions
+ for Radxa boards
+Message-ID: <171379340485.1139142.4385224897520028554.robh@kernel.org>
+References: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1e148d6cd4486b31b5e7f3824cf6bccf536b74c0.1713457260.git.dsimic@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_063510_003626_FA2BECB7 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20240422_073220_195945_7A9876CA 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,113 +76,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The Jaguar SBC provides an M.2 slot connected to the pcie3 controller.
-In contrast to a number of other boards the pcie-refclk is gpio-controlled,
-so the necessary clock and is added to the list of pcie3 clocks.
+On Thu, 18 Apr 2024 18:26:19 +0200, Dragan Simic wrote:
+> Correct the descriptions of a few Radxa boards, according to the up-to-date
+> documentation from Radxa and the detailed explanation from Naoki. [1]  To sum
+> it up, the short naming, as specified by Radxa, is preferred.
+> 
+> [1] https://lore.kernel.org/linux-rockchip/B26C732A4DCEA9B3+282b8775-601b-4d4a-a513-4924b7940076@radxa.com/
+> 
+> Suggested-by: FUKAUMI Naoki <naoki@radxa.com>
+> Signed-off-by: Dragan Simic <dsimic@manjaro.org>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Reviewed-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
----
-changes in v3:
-- drop unnecessary pinctrl comment (Quentin)
-- add Quentin's review
-
-changes in v2:
-- "an" M.2 slot (Dragan)
-- pinctrl for refclk-en and reset pin (Quentin)
-- don't repurpose the pcie30x4_pins pinctrl entry for only wake (Quentin)
-
- .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 59 +++++++++++++++++++
- 1 file changed, 59 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 4076c92668ba..0ad53d7768a3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -72,6 +72,27 @@ led-1 {
- 		};
- 	};
- 
-+	/*
-+	 * 100MHz reference clock for PCIe peripherals from PI6C557-05BLE
-+	 * clock generator.
-+	 * The clock output is gated via the OE pin on the clock generator.
-+	 * This is modeled as a fixed-clock plus a gpio-gate-clock.
-+	 */
-+	pcie_refclk_gen: pcie-refclk-gen-clock {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <1000000000>;
-+	};
-+
-+	pcie_refclk: pcie-refclk-clock {
-+		compatible = "gpio-gate-clock";
-+		clocks = <&pcie_refclk_gen>;
-+		#clock-cells = <0>;
-+		enable-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_LOW>; /* PCIE30X4_CLKREQN_M0 */
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie30x4_clkreqn_m0>;
-+	};
-+
- 	pps {
- 		compatible = "pps-gpio";
- 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-@@ -358,6 +379,30 @@ &pcie2x1l0 {
- 	status = "okay";
- };
- 
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x4 {
-+	/*
-+	 * The board has a gpio-controlled "pcie_refclk" generator,
-+	 * so add it to the list of clocks.
-+	 */
-+	clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-+		 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-+		 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
-+		 <&pcie_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk",
-+		      "aux", "pipe",
-+		      "ref";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie30x4_waken_m0 &pcie30x4_perstn_m0>;
-+	reset-gpios = <&gpio0 RK_PD0 GPIO_ACTIVE_HIGH>; /* PCIE30X4_PERSTN_M0 */
-+	vpcie3v3-supply = <&vcc3v3_mdot2>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	emmc {
- 		emmc_reset: emmc-reset {
-@@ -376,6 +421,20 @@ led1_pin: led1-pin {
- 			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	pcie30x4 {
-+		pcie30x4_clkreqn_m0: pcie30x4-clkreqn-m0 {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie30x4_perstn_m0: pcie30x4-perstn-m0 {
-+			rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie30x4_waken_m0: pcie30x4-waken-m0 {
-+			rockchip,pins = <0 RK_PC7 12 &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &saradc {
--- 
-2.39.2
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
