@@ -4,69 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 817CCC4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 12:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BEC5C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Apr 2024 13:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=acpWzVFec/fwokRcc8s1sXXdVv3KfcS6T9W963vtmnM=; b=g6mlG2czLf7yHB
-	v3Fua2mXzW5IHgHcx8M2NjhMjP/Gi8cfO/fWp/7DmhmfLGj2eJZannMp409YPyZ/CqTq3a93EQdPC
-	Rfw9m9/KVkc8XNhtxCAiSAKv2ZWO8wD/Hj0Czat+dea1zCsJUYJSFGM4ohafO/YeHI1r5aaIi4Oyz
-	Ww5ABoIjtPHw2+ZFK3xx3Ic/xbvAex1Fmm7SaUF3cdtTPjQAK7UKo8wmupP5wHZFsSbWOJWesvNRK
-	648pNVi2aAC+7IvCKQlnr1nQGrgARI1aU7hc6EdJe54o9Xre+g19rlB/VFUJCZpgTgJUzij4js7Tq
-	oHBOU+30toCTOkSbgYuQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5edeRBWRxjnkmLJ1tQ0CwT7pXwtzo+Iqt0sqrqcuKg4=; b=XMrXlvOCe2syVT
+	yX7ibQVF0PmmCygCRLppgBvrzT9yBV147uvnU0BZNEZ0V+2ExeIZ0yilwTOtX+v+gq0hZg52TtyXX
+	YMSGL8mlD9eOKyOFqj+F020exD+d++Ix1Bnyau/17zjKgzASVohdLIkT1GHN2FfIdXNotGeQlTVUX
+	We/iPw81m5Yz79nW7Wlb4ygkj2Yf+EIEqjMVxtlQUIo5Mv3N7jJtU3f9QjkG/7aIziIB6oZW2Zja5
+	luqeBWWl1bcUOZPcHd7NBCU24rBTmDhIGxPq9fp0ZMxRKigwOUjJIBdACqfU/nSJLb4ZUKHvH4vrs
+	v8FIhqfdgb9kK+Gz4OxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryst6-0000000DVrb-0lqx;
-	Mon, 22 Apr 2024 12:35:12 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1rytpB-0000000DlNF-3Xkn;
+	Mon, 22 Apr 2024 13:35:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1ryst2-0000000DVqZ-3KCF
-	for linux-rockchip@lists.infradead.org;
-	Mon, 22 Apr 2024 12:35:10 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1ryssp-0005Bq-G4; Mon, 22 Apr 2024 14:34:55 +0200
-Received: from [2a0a:edc0:2:b01:1d::c5] (helo=pty.whiteo.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	id 1rytp7-0000000DlKW-3vpF;
+	Mon, 22 Apr 2024 13:35:11 +0000
+Received: from i5e861d85.versanet.de ([94.134.29.133] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <sha@pengutronix.de>)
-	id 1ryssl-00Dh4a-6t; Mon, 22 Apr 2024 14:34:51 +0200
-Received: from sha by pty.whiteo.stw.pengutronix.de with local (Exim 4.96)
-	(envelope-from <sha@pengutronix.de>)
-	id 1ryssl-0088Ib-0N;
-	Mon, 22 Apr 2024 14:34:51 +0200
-Date: Mon, 22 Apr 2024 14:34:51 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, tzimmermann@suse.de, mripard@kernel.org,
-	hjc@rock-chips.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	(envelope-from <heiko@sntech.de>)
+	id 1rytp3-0003PX-SH; Mon, 22 Apr 2024 15:35:05 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: quentin.schulz@theobroma-systems.com,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH 1/1] drm/rockchip: vop2: Fix the port mux of VP2
-Message-ID: <ZiZZaxr1KTmWc9CM@pengutronix.de>
-References: <20240422101905.32703-1-andyshrk@163.com>
- <20240422101905.32703-2-andyshrk@163.com>
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v3] arm64: dts: rockchip: add PCIe3 support on rk3588-jaguar
+Date: Mon, 22 Apr 2024 15:35:02 +0200
+Message-Id: <20240422133502.2592975-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240422101905.32703-2-andyshrk@163.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_053508_842567_520D7D40 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20240422_063510_003626_FA2BECB7 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +62,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 22, 2024 at 06:19:05PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> The port mux of VP2 should be RK3568_OVL_PORT_SET__PORT2_MUX.
-> 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
+The Jaguar SBC provides an M.2 slot connected to the pcie3 controller.
+In contrast to a number of other boards the pcie-refclk is gpio-controlled,
+so the necessary clock and is added to the list of pcie3 clocks.
 
-Sascha
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Reviewed-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+---
+changes in v3:
+- drop unnecessary pinctrl comment (Quentin)
+- add Quentin's review
 
-> 
-> ---
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 97b0ab4b6db8..1f4250de570f 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -2377,7 +2377,7 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
->  		port_sel |= FIELD_PREP(RK3568_OVL_PORT_SET__PORT2_MUX,
->  			(vp2->nlayers + vp1->nlayers + vp0->nlayers - 1));
->  	else
-> -		port_sel |= FIELD_PREP(RK3568_OVL_PORT_SET__PORT1_MUX, 8);
-> +		port_sel |= FIELD_PREP(RK3568_OVL_PORT_SET__PORT2_MUX, 8);
->  
->  	layer_sel = vop2_readl(vop2, RK3568_OVL_LAYER_SEL);
->  
-> -- 
-> 2.34.1
-> 
-> 
+changes in v2:
+- "an" M.2 slot (Dragan)
+- pinctrl for refclk-en and reset pin (Quentin)
+- don't repurpose the pcie30x4_pins pinctrl entry for only wake (Quentin)
 
+ .../arm64/boot/dts/rockchip/rk3588-jaguar.dts | 59 +++++++++++++++++++
+ 1 file changed, 59 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+index 4076c92668ba..0ad53d7768a3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+@@ -72,6 +72,27 @@ led-1 {
+ 		};
+ 	};
+ 
++	/*
++	 * 100MHz reference clock for PCIe peripherals from PI6C557-05BLE
++	 * clock generator.
++	 * The clock output is gated via the OE pin on the clock generator.
++	 * This is modeled as a fixed-clock plus a gpio-gate-clock.
++	 */
++	pcie_refclk_gen: pcie-refclk-gen-clock {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <1000000000>;
++	};
++
++	pcie_refclk: pcie-refclk-clock {
++		compatible = "gpio-gate-clock";
++		clocks = <&pcie_refclk_gen>;
++		#clock-cells = <0>;
++		enable-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_LOW>; /* PCIE30X4_CLKREQN_M0 */
++		pinctrl-names = "default";
++		pinctrl-0 = <&pcie30x4_clkreqn_m0>;
++	};
++
+ 	pps {
+ 		compatible = "pps-gpio";
+ 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
+@@ -358,6 +379,30 @@ &pcie2x1l0 {
+ 	status = "okay";
+ };
+ 
++&pcie30phy {
++	status = "okay";
++};
++
++&pcie3x4 {
++	/*
++	 * The board has a gpio-controlled "pcie_refclk" generator,
++	 * so add it to the list of clocks.
++	 */
++	clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
++		 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
++		 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>,
++		 <&pcie_refclk>;
++	clock-names = "aclk_mst", "aclk_slv",
++		      "aclk_dbi", "pclk",
++		      "aux", "pipe",
++		      "ref";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie30x4_waken_m0 &pcie30x4_perstn_m0>;
++	reset-gpios = <&gpio0 RK_PD0 GPIO_ACTIVE_HIGH>; /* PCIE30X4_PERSTN_M0 */
++	vpcie3v3-supply = <&vcc3v3_mdot2>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+@@ -376,6 +421,20 @@ led1_pin: led1-pin {
+ 			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	pcie30x4 {
++		pcie30x4_clkreqn_m0: pcie30x4-clkreqn-m0 {
++			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie30x4_perstn_m0: pcie30x4-perstn-m0 {
++			rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie30x4_waken_m0: pcie30x4-waken-m0 {
++			rockchip,pins = <0 RK_PC7 12 &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &saradc {
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.39.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
