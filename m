@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97AAAC4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 09:39:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE653C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 10:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,152 +13,153 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=6gnMk6+saaqpnlvBbnCyqDw0uwpGikOm+hxRiCoUAgc=; b=WZUqF7/2PhDcpRHTSU/Jefkkex
-	vhx78jKdQL65zJRNIi2U1wo017TMN2mHgvXwRTa1xG8gXq60KGwERdkAX1MNKdjWTZhtOdCdvDLX9
-	BnCAteqbfnXl4on9PTtgnc9BTziPRNsr24yW9Jha2pxbTI8kXfZww/2vUmtJBap3QE5bRFMlYFgIX
-	KIETq9eLfFBuJhmFLyRV475An7sq3JtpnEKL8w7fuQ2QqDwlFWUfpoE4KoNXEtDoZWBq/wJN+auuM
-	X0eW5Hig3EffzVzcsuJOEjC7k/XpZAL9ZfqSYk15Igsf7HlxKL8do/VzGm0oQbDlwJuW0AHS0n2/B
-	uDVPxxTg==;
+	bh=nqrwavAADIrAkZ/t8d7KHCGlGRrPvvHDqlZkbNZSu30=; b=Uv5W3OOUHB2PATzbTwF1gX+4jP
+	Myw8/ho1O/DydL/ujMFd6hDewCd3MhOczxKwKeXXEjeyExZsIHgpeU62Tnjyn+rgnDSGLt6GXHhFm
+	A+qx35GJ0kScFgHTqxFf7mfXZ552QBAnnIt2SMAjl6fJK5CX7JuZLAC9bzWoPr7N0CgLgSW00pvfU
+	7xIyHVZxVIdoN8LanqybtPv+rlKsXE1ato1SBDW6eC/1pWJks2ClqpcJJKAxzxd1YAenFY6FBgmF6
+	6bmV0o5L4oNhqBLqR+jLJoynitY2pBk16dgnko1pgt76Tta+7/J58Amaw3tcxR70DbdUX2pAB1IbG
+	52jFSsQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCcq-0000000GhIw-3NZY;
-	Tue, 23 Apr 2024 09:39:47 +0000
-Received: from mail-db8eur05on20702.outbound.protection.outlook.com ([2a01:111:f400:7e1a::702] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1rzD4M-0000000Gmlj-19cz;
+	Tue, 23 Apr 2024 10:08:10 +0000
+Received: from mail-db5eur01on0719.outbound.protection.outlook.com ([2a01:111:f400:fe02::719] helo=EUR01-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzCci-0000000GhGv-4Bj5;
-	Tue, 23 Apr 2024 09:39:38 +0000
+	id 1rzD4J-0000000GmkC-1pr9
+	for linux-rockchip@lists.infradead.org;
+	Tue, 23 Apr 2024 10:08:09 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cwFcMyQD/pqUrt1nwyRR5vIFgMcDmfnKC5T1H2oGRftaOXzXyCCbZf8uOBtXETDDgJjTB138Dfk4Vik6F52c4y7MvMQRSJuMgU2u/16gCnCuxtWJu+HPpt6Sf/YQl4Y0QiJCXWd+v29+xWSM3JNSWqyb34bDYWlJ1rDdSjYlnwjNuGemrGrnAjrIwAH+ySKr3whYsMRvBMnNIe9SuXzRGt2qajsvv7uC919EbmnZfwZr6cEQ4WP1rQjn/PIpCHPaiXEtYXzSrDJZAnp8FAy6JSPtrWFx8JDzVweBblDf5SQNvb9SiSN6jvm354Y6XnQNj/DvhAVz3q9duD/pbTutOA==
+ b=SffKbzu4LWBxHnKYmr7/c8WZlTd0b2tdwgj9LLtp8/sZupZrdRlCHOKkZ5CoYdkGU8T8eap4R9VAKJybFJDFcbQNBh68ZxeYJYKfrZrzHwBUmK/63zV4I7Hk23nB4Y2e9brF5wVW18wGzp7UBUgQmG+4sYqdx7X51tF9jUoRACJs1n7M30ZcLvJtI/PvOjBzD0ayMbSPvgEFn6DwnFyUNckVvKQWXekJ9aQ4SI2faX0uRSaL7pgaQsC0qNmEZ013GHcTaOFdX4GoCtTCH0uGTAeuDgaATyfBl56yFzfUT5Bjw57Z9cGBUAA60IkAGtp1AujpqJh2cu4PzGR/BtBIMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iglarcSymAQ/s+SXFcIUFzuT/Iab7HVwkRoSu3j8u98=;
- b=k0rxM5uHnkauAxO0cDdiCpS36Tm8AfMjpQSWvHvQyEeQsP71WSj28vVoQemdo/o3iuL3TosdS2EtlwmdDXWhtHYsKJOglpJ7qNTocdthm0R0ABfBqRUVClEvW5c0FRgExTYKLvFR2iYrR61K+uPi6Y9Fh5/6JVRHMR8NOoaRfd6sVRNk5wZ/6C8K2I+L8tscO63xKMjaMNdL0UKi7YtiRB1Z06f6ZunXCcw1B2HHBNlsHUsvojF/BKx/uBZoTP09dvoze+YV6E/h7K0hhWuNgkICPlL9Cn0nzXOHYu9rcQHm2ALLekkcGqPu723tBl6T/0HwCxcQc1MvdfsU6bRZVA==
+ bh=qMyGNQzVOmIMIqTB23ckJ2irVpgFmkVsX7BKdDR7s0Q=;
+ b=B2BwM89Q5TznDJ68SCKEMWiexZXwALj9ypzl8VNMlLHJ1zXFT3S8g+1LEom9EpmJ50tIXJf9Fdw3tMiLoE0lgvPHtklDB63hcvAeUct7QDZhSAeIsxl6BBvHm4qA1Jgl8/Wj+7Btu0Jptmbysyg2ZOGzY7t+9F69uA4hIQ1K+krhL1M0QiY37NdBBif0YtIsNuGxinhi1pOiSQZTY7Bl+z2HW1JM4T2tZC+2XPExeUUtg4JVDxCLmpZdyo9r59tPISIb8Gjz6mN/SD2MnDvVOfBAaX8lFbmKsAutpJ0G+MtxPIqWscFZzHIZqGrFJYL3ie5Wa/KA18LnV6wBOIio7Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iglarcSymAQ/s+SXFcIUFzuT/Iab7HVwkRoSu3j8u98=;
- b=D4tGC4qukx7BD5ofs7NRNPn823VHqeL9AP+hnhiNEAH3tDuqVStBKwD+ycNjYDtVMCW6xEWIGFLuAy7Ba8J09uJrgdqjhXFXLaJXXoACVlLn23DC516Nxn29tQ5rP/kIstriXiO61Q4OjI2GvlugZoBNgKPF0TlvIT1Vy4U5q8M=
+ bh=qMyGNQzVOmIMIqTB23ckJ2irVpgFmkVsX7BKdDR7s0Q=;
+ b=Q5y2ztsAYXqzodQuMRB/xB82KSUBSyeHtGMW68U1qvNWsGYrXqKVU7IY1EWyccfFYSMHce1nMUUc2QVgUoPgNwjd3WCXQitkJ10I0hC2BMukBEAM51DNYURXEVl1kuJYMFUftSN5nWV7VuHBjuBMqtMmd7T0Tu1MgEFptaXJ6ZA=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=wolfvision.net;
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by DB9PR08MB6730.eurprd08.prod.outlook.com (2603:10a6:10:2a2::5) with
+ by AS2PR08MB9048.eurprd08.prod.outlook.com (2603:10a6:20b:5fe::7) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.22; Tue, 23 Apr
- 2024 09:39:29 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.44; Tue, 23 Apr
+ 2024 10:07:55 +0000
 Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::224e:39b5:5107:43de]) by DU0PR08MB9155.eurprd08.prod.outlook.com
  ([fe80::224e:39b5:5107:43de%3]) with mapi id 15.20.7472.044; Tue, 23 Apr 2024
- 09:39:29 +0000
-Message-ID: <3f93ecb0-a649-4492-8798-a00de26236c8@wolfvision.net>
-Date: Tue, 23 Apr 2024 11:39:26 +0200
+ 10:07:55 +0000
+Message-ID: <d7938a36-6607-46c4-9934-895fe268358a@wolfvision.net>
+Date: Tue, 23 Apr 2024 12:07:52 +0200
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: fix nodename warning on
- wolfvision-pf5-display
+Subject: Re: [PATCH v4 1/7] ASoC: rockchip: Add support for rv1126 pdm
 Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
- devicetree <devicetree@vger.kernel.org>
-References: <20240423082941.2626102-1-heiko@sntech.de>
+To: Sugar Zhang <sugar.zhang@rock-chips.com>, broonie@kernel.org,
+ heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ alsa-devel@alsa-project.org
+References: <1630675357-3286-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1630675410-3354-1-git-send-email-sugar.zhang@rock-chips.com>
 From: Michael Riesch <michael.riesch@wolfvision.net>
 Organization: WolfVision GmbH
-In-Reply-To: <20240423082941.2626102-1-heiko@sntech.de>
-X-ClientProxiedBy: VI1PR0102CA0034.eurprd01.prod.exchangelabs.com
- (2603:10a6:802::47) To DU0PR08MB9155.eurprd08.prod.outlook.com
+In-Reply-To: <1630675410-3354-1-git-send-email-sugar.zhang@rock-chips.com>
+X-ClientProxiedBy: VI1PR06CA0179.eurprd06.prod.outlook.com
+ (2603:10a6:803:c8::36) To DU0PR08MB9155.eurprd08.prod.outlook.com
  (2603:10a6:10:416::5)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|DB9PR08MB6730:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6e68c026-1160-4b7e-5ce1-08dc63794598
+X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|AS2PR08MB9048:EE_
+X-MS-Office365-Filtering-Correlation-Id: e8906b31-e9f8-4e6d-7eec-08dc637d3eba
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|1800799015|366007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?L2JRajg3dFh1eHowNEpaQjVXZkVGbVdXYnRUSkZYYWpMcExTZ2hzSnFvUFBQ?=
- =?utf-8?B?cWJVWTM3S09UdHZiUEJjNWNINHJYeVo3YjQyRlQrZ0VFMXVyeWtnRXY1T05s?=
- =?utf-8?B?eHo2VkZId3JuL0VRaGZsVFJ3a0pWQVNKQzZRbzF6YjAwQVV1bFFCZ3Uvd1pU?=
- =?utf-8?B?SVpzTTNXTms5UGlvZEtZeC9ITjI3N0ZLTHRDNVc1eEgyUGhka1BkOXR5Nkhh?=
- =?utf-8?B?emlCUGZMSGhKOHpHRVR1MW5BRFpsUS80d1NKNDR6R3JmaXNNYUJpMDNEWkdO?=
- =?utf-8?B?TUV6Q2htRTllaFQvNmRDdzdVbU9ITFdRRm8yeUhrR1U1TWxvYy9wNHlzbldw?=
- =?utf-8?B?UHl1QzV3RnRLTEQzd2VzTEE0cGx4R0pYcWFJbUJ6bUhZZzJ0UE8zNjEwY29r?=
- =?utf-8?B?Ly9pM3VuS1F4Yitvdkh3WGI2WCs1anZBRm1zT2djQjEzMEdOQ05oekpsMExY?=
- =?utf-8?B?VzA5U0RqbjdySnVOTDBVcU1lV01JVWdtSEt6c0RVNHdyK2pOclFxelhqMkpa?=
- =?utf-8?B?SkVqM0dWem0wWVI1amxvc3RFdW8wVHV0ZTNpVExSQ21wV2l0bFkzbVZ1dkV0?=
- =?utf-8?B?dmxoOXZadDQ3NHUrWWhjSnIrcWdzL3JZa2VqWUZ3L2RaTXh6LzU1Q0NyTUdn?=
- =?utf-8?B?aVVyUkVLeXNXSVcrc0llMm83Tm54SkFQcStJUG9uNG9JQndUUGpZMXR0Y2Ra?=
- =?utf-8?B?SlZWQ1k1UllIOEVheG1mMFdBbVNTMUZOZ1hncENmaW9aMTRrbnRJcmZkSkpm?=
- =?utf-8?B?b0tGR1d5bzBoMlgyK3gxeVJRZ1FUSmpGY2RCK1pmdEx6NkU3VGpPMFRDM3pz?=
- =?utf-8?B?MExodDFJaFRHTklJT2x5QURjV3ZSNklHNUpib1J5U2IvZGFmWDNaOE5OMW8z?=
- =?utf-8?B?K3lLZkxTNWp6aWZDZEhGbUJGU1NmdklZeE01UUVwWDBpNHE2YkNGTUgyNXdH?=
- =?utf-8?B?Y0NjL1QrbmVWaVFUSXlpVEIxMTVhblFOVWYxdTQvakVmcWMwaHFKNWpDdmFs?=
- =?utf-8?B?Mng1U3FzQUdHS2tFbSt4TStnRjdaQU5XZno2SnZ3U0c2WUdIajhxUFJ1eTE5?=
- =?utf-8?B?eWZZU1BuY3Y2R3VuYlE4WVAzcUc1bHltL0dNYWNTcmZIY25tNnNNelBtMStG?=
- =?utf-8?B?SFF5MGNSdThhYjhtMkZZQkprckxwdkJ3cGhBZkRYLzVON3RXeDNmRXp3ZHg0?=
- =?utf-8?B?cU83cjByQ3hGK3F5UXhpQUd4VWZKZ3RiVHlpTExiT3d5RkcxWHNHMkwrNW9a?=
- =?utf-8?B?ZzdnY09BVGVhaTR0bHBFTUpMMFBUZ0QwMUNtSkk0bmdoNFpiQzg2YjV2Ymhp?=
- =?utf-8?B?U2c3aFpHcXgyY2JpRUZiQ0lEckozSExpNm04ckMrNVhzVzAzRkFGekd6RmRr?=
- =?utf-8?B?ajBEWTBseHlUcVkxUitjbmxEanhZQ2dOcjhvR3Qwb2hEcHcvdXF2RTlsaStk?=
- =?utf-8?B?MWF6NWpjakVyZEloa2ZLb2FPcnNOaDRZcnFaa1dBNmppR3M0R2p1OHhnYmxS?=
- =?utf-8?B?UXBqRWovUFRWQlBBTVFVY1FNdVpoUmk0TFM3VXRaVU9Wc0JHTWpkSlpibWJV?=
- =?utf-8?B?MmtuaUx2MDRqTXQ0UEdXeXdqcm9Majdrd0U2QVJPQWU5K1ZSeHNUWXdvN0l1?=
- =?utf-8?B?QjVNN3JMTExRSkIvWXhtNGhWK0Z6SkhGcURSY3N5ZlF4N1FBNWF0N2lCMjBE?=
- =?utf-8?B?cDV5Tml6SzJTR1Y0SGxjZGI1UFNVSExpNTN1bVhiV2JHQUpMQ3BQT2F3PT0=?=
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?YWxRdC81M1VTbzRteElJOUhHTHhmc2NiNVJSUjFmSXlBYkpVNkNyVkdhTHhN?=
+ =?utf-8?B?U1RaOGs0dUJUZzJheEh0bDFId1M3V2k3U2ZUeGdsdE9iZFk3QVlWYzU3R3RT?=
+ =?utf-8?B?ZC9XckszS2xPYVUwWkdabXBQOUUwRUtSOW91UmgzeVhJRjNLcWxZc3hWR1F1?=
+ =?utf-8?B?cXlydjZLUDB3T2NxUWk1MnM2MlVlVW5vRVM0VFJieG5aY3FkTEdPWUV2dUo0?=
+ =?utf-8?B?a0w2TWNFY0Jta3J2WTJ3ZU9SQUFWaDMyWkc0eXdhbUNyc210c2FYTVY2eENH?=
+ =?utf-8?B?L3B4dG5hZGlicURrZTJhM3FMbEhBNU5zK1JYck1ZcCtmY08vamloYzdBWDFL?=
+ =?utf-8?B?VTExdThvTzVLWlRiOUpWVzZJVEZXaS9yRFpYcTVBZDE2YkQ0cHJqM0FqOWlw?=
+ =?utf-8?B?b3NJZ0R4cER1TStoaWd0V0ZMQWp6ajhjYXpYaHIyR3B6TW9ISTZPUTNiSG5S?=
+ =?utf-8?B?UENxNFV1STY2RXhOU0ZBS0hNMnI2RkQ2eHdrY0NTT2VhOVJqQnB1MWEzcHYz?=
+ =?utf-8?B?OFJXVkJNYUo1RnZ0ODRIRUVsekdLUGhObDFaZjBsQ1BvR0xOSlhydWZXVC9t?=
+ =?utf-8?B?WlpKbUdQQVYzNHdoRWIzTFdEZFE5YllGWnNJSHI5eS94ckhOdDNHV2NubVJu?=
+ =?utf-8?B?NHh3ME50dVViS0hxUllNUHlJUWozSCtNUERXMVVJQ016cHBVMktQWXFKNXVY?=
+ =?utf-8?B?YU1aV1p5MHNmZWRneXk4ZmFqZHRMNzJpeTBFdjdDQ29mcjR4QzhTdUZOM0kr?=
+ =?utf-8?B?Y0hZYmg2WmltaXBlTzRJbVkvUXhnSzZGWHA5ZXRDN3pZb09BU2ZOOXVtelB2?=
+ =?utf-8?B?bWZnVHJ3OG1nMnJGMkJMRTlMVWxmMmt2T0pJSkFjb0FOUjVXc0psYkhlck9M?=
+ =?utf-8?B?UE9PdEdkQ2I0OGFXZFl2ZFhWd2EyMXRRWFJwY3dDR09zaFpicTFCbm95TWph?=
+ =?utf-8?B?YXNpRy9GbVN3cDBlUnpXczdmRmpma3NSSUNuRzFnaW95U2xQaFU0VHdnQ0hT?=
+ =?utf-8?B?aGJtd0p0enhtL3BuTG83MDlKbDlocVZiNW5valBTU0VRa3FHS3ZxTmNUanVh?=
+ =?utf-8?B?b1MyUGJ1R1NsZlhFbVRReG9oRGkrb0lXNkxYdHBuRDdHcmZMb0p2S3FNV1ha?=
+ =?utf-8?B?NElpalNBV2NrVHd6SE5WRURQbG9MYU9vOVVTa2dkaXRPbHhJckRHcXdJM2JE?=
+ =?utf-8?B?MFdTM0dDYnV6TDd5bkVucGg3SlZGWWw5RVNEWW0zN2FwVTVyelByNlZXdmVh?=
+ =?utf-8?B?M294OFN3QkRHSkI5ME1sRFJpWFU0SUdOeEF0MHZ0djJHM1orZVUyTVpyT21O?=
+ =?utf-8?B?NnVVZWJtakdzWm5Gdlo3Ny9EVC83T2dQby9tU0JXWTk3eFord1g3MlFFTWZr?=
+ =?utf-8?B?ZFJtZTRtUmZ6R0hVaVRUYWlNYms5NkFSdGRCQzZXNSs5SjBHSDh4c091dTB6?=
+ =?utf-8?B?TUNSaFU4ZDdraEIzOEVZNXB0YlUxZHlHL3JKbXNDT2tmaHBUaytHek5RMXFv?=
+ =?utf-8?B?bkJ6VVRWUHgvdFhqZDFSNkVRTTZ1emh6Nk1JQUZDYTRodThNMitPeUh6THFL?=
+ =?utf-8?B?djRrL2c5NFZzS3hrWStQQ2lNUVNuaEhHSHZyYzZTZkRsSGhJQkczcHFIMkZ2?=
+ =?utf-8?B?cUtBN3BVdU85aUIzblU5cDBCSTMzT1hSU3B5SkJJL3F1Y1ZkdCtySERyY2Fo?=
+ =?utf-8?B?MWtUeVlPcFk0cWVUZDFDM0RNS1YrU0NuajhySVBFUVdKbVkvMVlqY2VBPT0=?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(1800799015)(366007);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VDU0R2UyVS85N2JiV0J0VFVTWVQvN3lMYXdSY3lZUm1sYkt3cXV2aWZVMjE2?=
- =?utf-8?B?VEtTUXVJRVpZdzhYa2t3Y1loTWZaR0lXRlpDWTI5ejdoQnhxOTFMb3hFeG52?=
- =?utf-8?B?NjlielFWKzg5RkVtOWlHZmdwZElFc1RzYkpUVHp5dG5hdUd0bSt5U25oNW93?=
- =?utf-8?B?N05PMTRNd0VTTnNyLzVFV3NiNHBkbmFaNXhiOVUwaytNWmNOM2JkNEJTVk45?=
- =?utf-8?B?THc1ZW1RS09xV1Bnb1lRRFNyN2U4MTlSVHZCWDJhUHBiREIzRnZDdmdYcjkz?=
- =?utf-8?B?Z0VpNjErbFgxNCtSZE15SzZrZEJxU2FRRkxONkJ2STdKNHBiRXNXdW1Wcjgw?=
- =?utf-8?B?SldkYmw5djFDaW9NNUlGZ0xHQysxcnRRc25Na3VRd0RLdFc3WldubkJDeGg2?=
- =?utf-8?B?V1dXZ251bTJmT3JFQi9HSzYyTzZXbEhmUUhvbVhGVUxGbkljT0duYmo2SWJo?=
- =?utf-8?B?ZG9FNFhiSkE2b08vZmhmUmdHUE5veVhUak1lREhlazE4RXVuaXBIQU1OcktT?=
- =?utf-8?B?R0Qrb3UxZkQ2THcwTU84MWVFR2dZc2tieExHaFFvM3JRRHYzbVFrN09zODE3?=
- =?utf-8?B?NkNrUDR3eDRqbXdwZXR2bzFFNEg0YzRralI1eVAxOVRlZjhaYU8zbVNOeXRl?=
- =?utf-8?B?dURrNTYwd3RPQngzeGtYVk5OK3R6ODg4SXdSL1RkTEoweUVXUXllSVFzVCtY?=
- =?utf-8?B?QmREY3RJOEJ5NkoyOWhLSzdzSURYZWZKZTN6WFNCT2x4VHZYYTEvUklaYnlM?=
- =?utf-8?B?QWVTWW5mK1p3N2ZQdldZeG9WQkc4SVc0eFNKSERSZVVvVDJLZDd2bElod24r?=
- =?utf-8?B?TzFXN0xQN0gyeDFaT1ZUaG9lY0NGczV1NU16enplR0p3bzlDeUNIMnFNY1pY?=
- =?utf-8?B?STcyZGZONTlTdUR3SDh5YnBMam40cmt5OFVCOVJDN3N6VXdiNitMM0Z1VUVZ?=
- =?utf-8?B?VzlqTkRNTlExYndtcTFsYVd3OS9qWDBEOGd4d29JTG5SamYxdlM0b3hkYzdQ?=
- =?utf-8?B?bmdiVkpKY29RTFZIa1krUUZueDdGQklySGdDYXlRdjFWUzVSTFdtWDBNbnBT?=
- =?utf-8?B?Z2MxMjdMNDRjUm5WekZqci84NkNpc1M5UGowTExPVTdkZjFCM3hpeVhyendi?=
- =?utf-8?B?RmhFS0ozeEdtV3JUdzc2aWVuRDg5MThqMSswOHJzeExYY09hdTVBakVMSUdN?=
- =?utf-8?B?S0tmdEREQUJYT2l6UktlODI5eDVXTVlrclFaZzlrQU5CNkJmb004VEpvNWVu?=
- =?utf-8?B?aU80SmlneXJhRDRSdDJZR040aUNpVkFWdzhZY2lJd2pvWGxNT29OSEJnM2dk?=
- =?utf-8?B?RlZ1RjBSM2d3b3orTXB2cXVCeUtid3ZNTDV6clJsZFArTEoreGp3cm82M1dE?=
- =?utf-8?B?RmtwKzdFQlNUZysvaXYvMElIbUhTTFFrQWJDR1Z3QUlrbjl3L1JPL3prdzIx?=
- =?utf-8?B?aGRjMDNxMWdVMFRXaS85MHpaZXlpd1JmK3E0R0xNNk91VkU3K251ZEpYZ0M1?=
- =?utf-8?B?dGl1cUNEUGVSUzRmYXJ2Q2l0eUtpNmNZWG9iY1VEK0Jsb0Q3SThOZ0tPUmZR?=
- =?utf-8?B?MEtSUUVTMS9zamJPNGhWU0lsTGhINW9kTU9vMGVMZ05vK21WbnVrWDhyOXVG?=
- =?utf-8?B?M1JENnlnUVhtUzZTalczSC8yR21PODVkRk95L08vOThoOW0vUnFUd3VpcE9Q?=
- =?utf-8?B?ME9LUzVvSzVlR091czZVZ0JNcDBkRE9ORU9XTzF2L3Ric0xvK002TVk5cHg2?=
- =?utf-8?B?aTJhbDJNZmRGdExDbmRjNzNZclhWZkJQMUFCL1VoVjNBMjlXaGZxbjlrY0hv?=
- =?utf-8?B?MVBnQzJaQ0ZQQjNsNTloRU9IdkxJWU9kbkMxRHE1OVQzTW8zc0p3SkJQeERS?=
- =?utf-8?B?M0p4MEtUam5FSm1BVkYvdEZud2Z0NGRBMlRSelBXalRJYWgrT0c1T0RVdXda?=
- =?utf-8?B?eVZkUFVIaFA0VmR1bWVCWWcyVFhrblU3K2Q3Z0FvdHluM3k1eE1KbHVCMjRo?=
- =?utf-8?B?NzBIRFNNTU52VVVkRC9vRUtSK1lpY3Fab3AwQU5CLzlEY0xRUStweUQxRUpV?=
- =?utf-8?B?Y0RtRzRrY0xHZnppYUNWeWh5M2R5N2gvMnBpQjBsekVGa282cUpDMnVhWXh1?=
- =?utf-8?B?citZNGZNTWtRZVpDMDFrMnZOTmRSZzdaT1pZNXgxUjlVMDFseXdLRGlDN1Fm?=
- =?utf-8?B?Q1E9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WHdLQ1NwYUhXWkxhNHljNW1Xbmh0YzJSTW1jSTFDSUgrNHN4UW8rVm5xS3pr?=
+ =?utf-8?B?aEhaUmVjTmJtOTJ4YktKWlpZMEdTdXdNd0tGQ0orTWVLeTYyM0RwditLZHlN?=
+ =?utf-8?B?QzlWdzVhUGpLR0xwb0dHeTFLU1hZV2hhMUdFSkc1b1dsN2Z0YktnV1laNlFB?=
+ =?utf-8?B?ZDF5TVZFSHVzRHpVa0FNWUhIREQ5UUxIMTdIT2tBQ1dyMVJEZHVhMmlOWE9X?=
+ =?utf-8?B?NVJkWHVIVGxuOEdybFVFanFMQ2ZGbWRlNTFKcm5ud1AyT3BEVjcvVUJPQ2NE?=
+ =?utf-8?B?SmJidnAxZVVPWVZScnZ5NWY2Q0Z3cU1aNFNiQkk2K3d2bkw0UG12V0Z3OXVa?=
+ =?utf-8?B?NVYxdmpYWlp2UCtYU0pXdDZTWWdHeDlydGVJbUZaT0hqVDZacVRCeUlyemMz?=
+ =?utf-8?B?REhCTjV2RGxFZjVoMnYwTWllVHU1TFhBK0tTUlZlMDArdkY2VlF2K3F6WmFq?=
+ =?utf-8?B?SnZFQUtXcUhNdDl6VWVTK3RZQ2dJakZCQ3lRNmJXV1lLcXVzQXE0VU1VMUhL?=
+ =?utf-8?B?Z00va0RSM0h1MjQrMUM0UTZyYURlY1FMR1VkQUxySHVJNGl2ZTNoa050MkZh?=
+ =?utf-8?B?WHpkMjgzVE5MUmJWR2JOTTh0Z3EvOGhjUW50UTd3a05hc3FYdVQ2dCswdDlt?=
+ =?utf-8?B?YWpGQnd2TTVrcG9uVkZzTzZtZnFkSUptQWZQVUI1bkZBdWpQTVo3bkYrc0h4?=
+ =?utf-8?B?Q1I2L1pkR1lVSldaZzNkdlpsTkcrTzNmc0c0a0ZNQXpKcnhXTGx3dTZDQjhV?=
+ =?utf-8?B?SnpWTVVLSENQRGhmUjRrcWRCM0IvZzRwbFNRenlPbElGUWxSSC9adTNZL29Q?=
+ =?utf-8?B?K3o0alg2RFdoRWZ5b09TQXBYWFg3Nmh6dGlxbHRRK1ZLZVVyWFVidmtlZjZH?=
+ =?utf-8?B?S0pBL0VEK0VseFViN1BxZjFFU0hHMWdPQlhKZEhZRUJNZHRPcGc2Q0E1cUlt?=
+ =?utf-8?B?UFp5ZzQzbDhvZGVBL1ByYndzZkswb1k3Yi9Za292Z0ZDZzhScDZPQnBpbG9u?=
+ =?utf-8?B?Z3BVOEptaHl5Q0hUV2pKU0JwUW8wMUtvMkYwT29tQTdMOE5mRGlxNTllblJI?=
+ =?utf-8?B?b1lQK283WUp6RVYwMTE0SWJpRWlrcnNUUSs3ZEhac2dhejVFdWZ6NGVvUSty?=
+ =?utf-8?B?eGMxWWx3cWMxRE5teG1ra0tSbCs1cDRlWWdDbmRHSzNsTVVSNU5wQXkwKzJy?=
+ =?utf-8?B?T3ZCTDFNeTNUU1E5eUlHNURrU1E1alViSDYwNDFNT2pkNThibmdFNnpEUXYw?=
+ =?utf-8?B?VFI0Q1I1bmdKaVhqY3JXWjYrS1lQVk52emdsaCt2eVdTVjZZYk1qV0pvZXZz?=
+ =?utf-8?B?RSthclpjbi94bnhxYVFpbk45c2k0KzUyR3YzZTVQL0VUNEtxaUwranh5eWxY?=
+ =?utf-8?B?azNEMllWOEwyS0JyK2RjelRvOFVJOEQ0QURNdVFJcTJhcXlyelFsL21HYUZm?=
+ =?utf-8?B?YXUzZExLSHQ5S3pxNXA3UXhGSXRLelNIYW56TnRiUUFPbDhxKzlDUXhtM1Vq?=
+ =?utf-8?B?ek5HM2RtR2JMQ3hubkplV1c3V2VxZE1Ld1lzQzRZa3I1RzV4Yy9oa08zNmd1?=
+ =?utf-8?B?K0tqandFOW5sWUI0SWwvdGZObUdTRmtVSjRFbjdLRG5CalhvSWRrbHM3UE9O?=
+ =?utf-8?B?ckUwRWtINDZSdmV1QTBMY0dzbGxOWHpFV3pTV2lVK1Z6Uk50VUlUOE1NV0ov?=
+ =?utf-8?B?UjFYVHI5VWJtb252QnJyOXpKSWh1dkYwcHR1WnVxazZLZnp5bHVJVGNSSjhk?=
+ =?utf-8?B?SHJkZFA1K1AwY2dRTE9hZWl4U1R1ZkEzWCtXSjFUK25LMEVwdEpveGRubkVm?=
+ =?utf-8?B?a0UwOGhxWXpGRXdOQlpVd1paYkNUYzRPWFhabnZDMi9XL2YyY0pZKzNCVmtV?=
+ =?utf-8?B?QkJGY0cwbjNmVEpHWWhhQlppNDFneWtRNU81QU5mdCt2WTJyMm9mcVhkSWha?=
+ =?utf-8?B?d1JZcFFpUzJRZllTbGtHSHlEbnFJUFFLZklreTFvK0ZwVFZWb3M5L3FaN25R?=
+ =?utf-8?B?THo0VDdqcGI1ZHJ2SDA0VHRJUGRxSXBnWmpzandIbkJKdVovV3NBVWhxTVpt?=
+ =?utf-8?B?S0NaN1ZYZ0dtTk9yTWNPSkgzSTAvSzhlQkttckVqMnJITHcyRzNGemRqR3cy?=
+ =?utf-8?B?amZQVWQyY2Z6VDcwZkovT1hDY0xSeGQyazZTNFM0UjFQc2lkNzZtZ0p1b3RZ?=
+ =?utf-8?B?Mmc9PQ==?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e68c026-1160-4b7e-5ce1-08dc63794598
+X-MS-Exchange-CrossTenant-Network-Message-Id: e8906b31-e9f8-4e6d-7eec-08dc637d3eba
 X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2024 09:39:29.0615
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2024 10:07:55.6396
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LfXCokUrISGTgHc5C4EueMsWf7mILqyc1RUmOaxjYDwKQRt3CcNDmGVQoA5lxSnzu2hOUjJqvg4kxBqDgaYBOb70+55SpYkDd6n+lOl0CIc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR08MB6730
+X-MS-Exchange-CrossTenant-UserPrincipalName: vqori3FSWHSeI7tpDkdCL9aGLMd30AwB/VPPJ8Rt0Y39dE9RtcHBijRUe0EZFAkR1HZoywvpAbks6kxHOOcntqd9onr2XIMGK7Fn7rsj/ZQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB9048
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_023937_103399_91A6403C 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20240423_030807_678970_4C032FAB 
+X-CRM114-Status: GOOD (  24.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -175,83 +176,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Hi Sugar Zhang,
 
-First of all, thanks a lot for doing this!
+Sorry to dig out this old thread, but I have two questions. Please see
+below:
 
-On 4/23/24 10:29, Heiko Stuebner wrote:
-> The dtbs check throws a warning about node naming with the recently
-> added pf5-display-overlay:
-> rockchip/rk3568-wolfvision-pf5-display.dtsi:113.6-121.3: Warning (graph_port): /fragment@4/__overlay__: graph port node name should be 'port'
+On 9/3/21 15:23, Sugar Zhang wrote:
+> This patch adds support for rv1126 pdm controller which
+> redesign cic filiter for better performance.
 > 
-> This comes from the overlay just referencing the vp2-port-node via
-> its phandle and then adding an endpoint beneath it.
-> 
-> While this is possible something to handle inside the dtbs check,
-> carrying around the warning is not pretty, so change the description
-> to go around it.
-
-What is the rationale behind that check? Describing a port in a SoC dtsi
-or board dts and using the reference in an overlay is quite convenient
-and above all concise.
-
-Cc: device tree list
-> Starting from the vop_out phandle and then referencing the port
-> via its generic port@2 nodename will satisfy the port<->endpoint
-> naming dependency while keeping the same structure once the overlay
-> is applied.
-> 
-> Reported-by: Arnd Bergmann <arnd@kernel.org>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 > ---
->  .../rockchip/rk3568-wolfvision-pf5-display.dtsi    | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display.dtsi
-> index b22bb543ecbb..18c807c39e56 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display.dtsi
-> @@ -110,12 +110,14 @@ &pwm10 {
->  	status = "okay";
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  sound/soc/rockchip/rockchip_pdm.c | 76 +++++++++++++++++++++++++++++++++++----
+>  sound/soc/rockchip/rockchip_pdm.h |  3 ++
+>  2 files changed, 73 insertions(+), 6 deletions(-)
+> 
+> diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
+> index 38bd603..67634d1 100644
+> --- a/sound/soc/rockchip/rockchip_pdm.c
+> +++ b/sound/soc/rockchip/rockchip_pdm.c
+> @@ -24,6 +24,7 @@
+>  enum rk_pdm_version {
+>  	RK_PDM_RK3229,
+>  	RK_PDM_RK3308,
+> +	RK_PDM_RV1126,
 >  };
 >  
-> -&vp2 {
-> -	#address-cells = <1>;
-> -	#size-cells = <0>;
-> +&vop_out {
-> +	port@2 {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
+>  struct rk_pdm_dev {
+> @@ -121,6 +122,55 @@ static unsigned int get_pdm_ds_ratio(unsigned int sr)
+>  	return ratio;
+>  }
 >  
-> -	vp2_out_rgb: endpoint@ROCKCHIP_VOP2_EP_RGB0 {
-> -		reg = <ROCKCHIP_VOP2_EP_RGB0>;
-> -		remote-endpoint = <&panel_in_vp2>;
-> +		vp2_out_rgb: endpoint@ROCKCHIP_VOP2_EP_RGB0 {
-> +			reg = <ROCKCHIP_VOP2_EP_RGB0>;
-> +			remote-endpoint = <&panel_in_vp2>;
-> +		};
->  	};
+> +static unsigned int get_pdm_cic_ratio(unsigned int clk)
+> +{
+> +	switch (clk) {
+> +	case 4096000:
+> +	case 5644800:
+> +	case 6144000:
+> +		return 0;
+> +	case 2048000:
+> +	case 2822400:
+> +	case 3072000:
+> +		return 1;
+> +	case 1024000:
+> +	case 1411200:
+> +	case 1536000:
+> +		return 2;
+> +	default:
+> +		return 1;
+> +	}
+> +}
+> +
+> +static unsigned int samplerate_to_bit(unsigned int samplerate)
+> +{
+> +	switch (samplerate) {
+> +	case 8000:
+> +	case 11025:
+> +	case 12000:
+> +		return 0;
+> +	case 16000:
+> +	case 22050:
+> +	case 24000:
+> +		return 1;
+> +	case 32000:
+> +		return 2;
+> +	case 44100:
+> +	case 48000:
+> +		return 3;
+> +	case 64000:
+> +	case 88200:
+> +	case 96000:
+> +		return 4;
+> +	case 128000:
+> +	case 176400:
+> +	case 192000:
+> +		return 5;
+> +	default:
+> +		return 1;
+> +	}
+> +}
+> +
+>  static inline struct rk_pdm_dev *to_info(struct snd_soc_dai *dai)
+>  {
+>  	return snd_soc_dai_get_drvdata(dai);
+> @@ -166,7 +216,8 @@ static int rockchip_pdm_hw_params(struct snd_pcm_substream *substream,
+>  	if (ret)
+>  		return -EINVAL;
+>  
+> -	if (pdm->version == RK_PDM_RK3308) {
+> +	if (pdm->version == RK_PDM_RK3308 ||
+> +	    pdm->version == RK_PDM_RV1126) {
+>  		rational_best_approximation(clk_out, clk_src,
+>  					    GENMASK(16 - 1, 0),
+>  					    GENMASK(16 - 1, 0),
+> @@ -194,8 +245,18 @@ static int rockchip_pdm_hw_params(struct snd_pcm_substream *substream,
+>  				   PDM_CLK_FD_RATIO_MSK,
+>  				   val);
+>  	}
+> -	val = get_pdm_ds_ratio(samplerate);
+> -	regmap_update_bits(pdm->regmap, PDM_CLK_CTRL, PDM_DS_RATIO_MSK, val);
+> +
+> +	if (pdm->version == RK_PDM_RV1126) {
+> +		val = get_pdm_cic_ratio(clk_out);
+> +		regmap_update_bits(pdm->regmap, PDM_CLK_CTRL, PDM_CIC_RATIO_MSK, val);
+> +		val = samplerate_to_bit(samplerate);
+> +		regmap_update_bits(pdm->regmap, PDM_CTRL0,
+> +				   PDM_SAMPLERATE_MSK, PDM_SAMPLERATE(val));
+> +	} else {
+> +		val = get_pdm_ds_ratio(samplerate);
+> +		regmap_update_bits(pdm->regmap, PDM_CLK_CTRL, PDM_DS_RATIO_MSK, val);
+> +	}
+> +
+>  	regmap_update_bits(pdm->regmap, PDM_HPF_CTRL,
+>  			   PDM_HPF_CF_MSK, PDM_HPF_60HZ);
+>  	regmap_update_bits(pdm->regmap, PDM_HPF_CTRL,
+> @@ -441,9 +502,10 @@ static bool rockchip_pdm_precious_reg(struct device *dev, unsigned int reg)
+>  }
+>  
+>  static const struct reg_default rockchip_pdm_reg_defaults[] = {
+> -	{0x04, 0x78000017},
+> -	{0x08, 0x0bb8ea60},
+> -	{0x18, 0x0000001f},
+> +	{ PDM_CTRL0, 0x78000017 },
+> +	{ PDM_CTRL1, 0x0bb8ea60 },
+> +	{ PDM_CLK_CTRL, 0x0000e401 },
+> +	{ PDM_DMA_CTRL, 0x0000001f },
 >  };
+>  
+>  static const struct regmap_config rockchip_pdm_regmap_config = {
+> @@ -469,6 +531,8 @@ static const struct of_device_id rockchip_pdm_match[] __maybe_unused = {
+>  	  .data = (void *)RK_PDM_RK3308 },
+>  	{ .compatible = "rockchip,rk3308-pdm",
+>  	  .data = (void *)RK_PDM_RK3308 },
+> +	{ .compatible = "rockchip,rv1126-pdm",
+> +	  .data = (void *)RK_PDM_RV1126 },
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, rockchip_pdm_match);
+> diff --git a/sound/soc/rockchip/rockchip_pdm.h b/sound/soc/rockchip/rockchip_pdm.h
+> index 8e5bbaf..13bfbc2 100644
+> --- a/sound/soc/rockchip/rockchip_pdm.h
+> +++ b/sound/soc/rockchip/rockchip_pdm.h
+> @@ -41,6 +41,8 @@
+>  #define PDM_PATH1_EN		BIT(28)
+>  #define PDM_PATH0_EN		BIT(27)
+>  #define PDM_HWT_EN		BIT(26)
+> +#define PDM_SAMPLERATE_MSK	GENMASK(7, 5)
+> +#define PDM_SAMPLERATE(x)	((x) << 5)
+>  #define PDM_VDW_MSK		(0x1f << 0)
+>  #define PDM_VDW(X)		((X - 1) << 0)
 
-With this patch applied the DTC warning "Warning (graph_port):
-/fragment@4/__overlay__: graph port node name should be 'port'"
-vanishes, but a different DTC warning "Warning (unit_address_vs_reg):
-/fragment@4/__overlay__/port@2: node has a unit name, but no reg or
-ranges property" appears. Can you reproduce this?
+The TRM of RV1126 and RK3568 both state that sample resolutions from 16
+up to 24 bits are supported. However, I don't see anything in this patch
+that restricts the capture formats accordingly. In fact, the driver
+offers SNDRV_PCM_FMTBIT_S32_LE in my setup and via this PDM_VDW macro 31
+is written to PDM_CTRL0, which is undefined behavior according to the TRM.
 
-I tried to fix that by adding the reg property, but then DTC complained
-about "Warning (graph_port): /fragment@9/__overlay__/ports/port@0: graph
-node '#size-cells' is -1, must be 0"
+Are 32 bit samples supported by the RK3568/RV1126 PDM block?
 
-Then, I added the #size-cells property to avoid this. However, DTC
-complained about this property not being necessary as there is only one
-port. I stopped at this point.
+> @@ -66,6 +68,7 @@
+>  #define PDM_CLK_1280FS		(0x2 << 0)
+>  #define PDM_CLK_2560FS		(0x3 << 0)
+>  #define PDM_CLK_5120FS		(0x4 << 0)
+> +#define PDM_CIC_RATIO_MSK	(0x3 << 0)
+>  
+>  /* PDM HPF CTRL */
+>  #define PDM_HPF_LE		BIT(3)
 
-I would say the real question is how this hardware should look like in
-the device tree (overlay). Then, the compiler and/or build scripts can
-be adjusted to tolerate this.
+Also, I noticed that the number of channels must be an even number.
+Shouldn't it be possible to use a single mono PDM microphone with this
+PDM block (i.e., having one channel)?
 
-Thanks and best regards,
+Thanks a lot and best regards,
 Michael
 
 _______________________________________________
