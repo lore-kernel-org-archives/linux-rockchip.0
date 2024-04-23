@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250F5C4345F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D95C16B13
 	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 12:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,41 +12,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2ouRpV4CTgK7JolxgJr4CbYt9/AkI0IGDCIcwYFAMXM=; b=1Rq9MvOcFshiV3
-	P/JOptRBJqy/EhqZqINr9pru+oNkwWiz8qeWXxBIVGFTWxuUNS7oUPiu4rsnFgaPi4rhqRS3czZcY
-	8cK4NkyRN5oa0BphBC9m7E8zg+06v7f4q3FNax/VtM30i4VR+PlXSz3QSuhrqNe0R7jhPvUMB89Z3
-	k9tG70gGHBBD86AVU6WmFDvtdsuLpppFnzRHQRfUl2/Q/OiGB8E3CtQMrmP/oMUHVsxkJgKqjPRZw
-	UiDw/Gs560lMdOhVt3Wy0hUHxXcnh8v2noZZX9ksV7B+qY4utFVCk+a0dFAOvDCo/tF3A3HmdoYKc
-	e8Xgkrnk/8SOGxeNaQEw==;
+	List-Owner; bh=3EnDcd2LjIKMkmhNQcTxyQ3g8YEesiUTo0sGR6l8yS8=; b=uuiG01SHi+kLfP
+	AWifl9iyXhxzn3DvolpQHLpKIsugbcHYs6LA9DROtfSfJ4U7aztNXkuY6FCNS96M1XNTqGU/OSHU6
+	fXEKLgH1U9eWll9LOrmX2IZgbO3VaC425kOjIbamOFBoHk2QM4EjoDbr2AqfEWBlHzhMWooskqo6z
+	h4bgGbprrphTcf+VhoHA8zD+j5a1e4BSPYJMhAm1DQooHStx+FogBB2hh3kNODg9bgO0L5Ld2Hk6j
+	lVZz0pe4iQeM6CSvW68a+lmlG77A6s9xsszUFkdrDgKN1h/bNxZZIs8lQVnITEomhJyE4f3W8tGVm
+	dBP4qM+QDKUcX4c6uOMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzEp6-0000000HFkU-2YXG;
-	Tue, 23 Apr 2024 12:00:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1rzEp5-0000000HFkJ-1eyW;
+	Tue, 23 Apr 2024 12:00:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzDer-0000000Gtng-1ved;
-	Tue, 23 Apr 2024 10:45:55 +0000
+	id 1rzDeo-0000000Gtm8-27S2;
+	Tue, 23 Apr 2024 10:45:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C0E406136A;
-	Tue, 23 Apr 2024 10:45:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FC45C4AF07;
-	Tue, 23 Apr 2024 10:45:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9D17C612FE;
+	Tue, 23 Apr 2024 10:45:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE31FC3277B;
+	Tue, 23 Apr 2024 10:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1713869152;
-	bh=SKkWaDyRJNnmKFGJ+c/iBRlTwh6T1Qu0u8sWad+h6/I=;
+	s=k20201202; t=1713869149;
+	bh=fUzqY0ouRur7PJeAXKsb/9zPUDH+Gpv/H3MTr507Vho=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=rDsW3ZW84snUYVaIDg/CIDZZuOWPCLi/XsXzkkoHlYAli9XrlY0I/hg4vVaAmjWbI
-	 TSTgmhJco50fUGDtCLaAxFoFwn17SeQPMkOSFNg3rA5fhKlVUaWEGH+848sXI8l57J
-	 Io/Tooivr5a6c8bIcpM7l6nJyVMRLeivBxLTvByJwfXncB/bwRKaA7P6QhvTp9PWhq
-	 0U7zUqK+5lMQHOGr2RvFBLzHD3ohz5WPPo3dfX/negfccHjDW/QnVJ8uEAGrr7ff0A
-	 pHeWZpX8xztj5i/1PN4cB56Zz9rCLd+ZylDu43PmXDm2RVfPIACgTVPFXeq12FrPhi
-	 O0YGHnuXKlLDQ==
+	b=qTykdAJ23eQtuaqFVfNK9vZ8fJEoTvPC2z0WNWSsz30Ab7d68i+DTe3YMbwIlP090
+	 Yz7P25i6iDyAboouSyYHWIpLRtULn0ahBTAXMpEuWmFIs2y0bCujpfRnSM1CEMC42e
+	 4RvmeE0lfVhg12+AHfwOA/3DzT8jyRJAnbkTx3P+DirB0y3oD2gYR8wrNjWrnty4SA
+	 YpXMzKIE8inMY/LNiIzIrRU9SulGekeMoc/VK0T6QWCPCH6RJBSvB2GWo6wCfpfkO9
+	 sOjrlDcIBNW+ZnamAyC4m9O8A/+kyHZPOXZggtmUBvUUhMpTge4rnK7R8Amfh3Mk/8
+	 Q5+Ht2LPi2o4g==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 23 Apr 2024 12:45:31 +0200
-Subject: [PATCH v12 02/28] drm/mode_object: Export
- drm_mode_obj_find_prop_id for tests
+Date: Tue, 23 Apr 2024 12:45:30 +0200
+Subject: [PATCH v12 01/28] drm/connector: Introduce an HDMI connector
+ initialization function
 MIME-Version: 1.0
-Message-Id: <20240423-kms-hdmi-connector-state-v12-2-3338e4c0b189@kernel.org>
+Message-Id: <20240423-kms-hdmi-connector-state-v12-1-3338e4c0b189@kernel.org>
 References: <20240423-kms-hdmi-connector-state-v12-0-3338e4c0b189@kernel.org>
 In-Reply-To: <20240423-kms-hdmi-connector-state-v12-0-3338e4c0b189@kernel.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,20 +62,21 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>,
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>
+ linux-sunxi@lists.linux.dev, Maxime Ripard <mripard@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=937; i=mripard@kernel.org;
- h=from:subject:message-id; bh=SKkWaDyRJNnmKFGJ+c/iBRlTwh6T1Qu0u8sWad+h6/I=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGnqE71nJhYLv1rX9s18+qI71qx57l6zb3Tene/owG18y
- KHi1R+9jqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARoW+MdQpprxdsXLb+QnbT
- rOkpX+yeuZsvOKmZn2T+5PifW9MTbc7tFr3Yzs/us+T+nrb9amWXPBnrA7O/Hvb22vKDkydz05Z
- H51pPOBmcPJ272YvRed5CGbb/6TqXrjI3rDAP5f08/aqpbaYMAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3844; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=fUzqY0ouRur7PJeAXKsb/9zPUDH+Gpv/H3MTr507Vho=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDGnqE70+z157UP/HM829C59ZclcE7n+oObv8rNKJk7P+m
+ mm+CXa40jGVhUGYk0FWTJHliUzY6eXti6sc7Ff+gJnDygQyhIGLUwAmElfN2HDVzNGJ55FhmN1n
+ xQ9CEbrltsFTNl94ISKnazbj/YvL22v///n1UIZ9AuvjO/8fhT5S12Ss4ShbsPX5CbMavh+7GwJ
+ cORY+Y/fq595llB356x1n8fP8XxFxZ6/17Us3/MSuLLFWaVMjAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_034553_605960_6040A11D 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240423_034550_669490_14FC631E 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,31 +93,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We'll need to use drm_mode_obj_find_prop_id() for kunit tests to make
-sure a given property has been properly created. Let's export it for
-tests only.
+A lot of the various HDMI drivers duplicate some logic that depends on
+the HDMI spec itself and not really a particular hardware
+implementation.
 
+Output BPC or format selection, infoframe generation are good examples
+of such areas.
+
+This creates a lot of boilerplate, with a lot of variations, which makes
+it hard for userspace to rely on, and makes it difficult to get it right
+for drivers.
+
+In the next patches, we'll add a lot of infrastructure around the
+drm_connector and drm_connector_state structures, which will allow to
+abstract away the duplicated logic. This infrastructure comes with a few
+requirements though, and thus we need a new initialization function.
+
+Hopefully, this will make drivers simpler to handle, and their behaviour
+more consistent.
+
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Reviewed-by: Sui Jingfeng <sui.jingfeng@linux.dev>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/drm_mode_object.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/drm_connector.c | 39 +++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_connector.h     |  5 +++++
+ 2 files changed, 44 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
-index 0e8355063eee..df4cc0e8e263 100644
---- a/drivers/gpu/drm/drm_mode_object.c
-+++ b/drivers/gpu/drm/drm_mode_object.c
-@@ -476,10 +476,11 @@ struct drm_property *drm_mode_obj_find_prop_id(struct drm_mode_object *obj,
- 		if (obj->properties->properties[i]->base.id == prop_id)
- 			return obj->properties->properties[i];
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index b0516505f7ae..d9961cce8245 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -450,10 +450,49 @@ int drmm_connector_init(struct drm_device *dev,
  
- 	return NULL;
+ 	return 0;
  }
-+EXPORT_SYMBOL_FOR_TESTS_ONLY(drm_mode_obj_find_prop_id);
+ EXPORT_SYMBOL(drmm_connector_init);
  
- static int set_property_legacy(struct drm_mode_object *obj,
- 			       struct drm_property *prop,
- 			       uint64_t prop_value)
- {
++/**
++ * drmm_connector_hdmi_init - Init a preallocated HDMI connector
++ * @dev: DRM device
++ * @connector: A pointer to the HDMI connector to init
++ * @funcs: callbacks for this connector
++ * @connector_type: user visible type of the connector
++ * @ddc: optional pointer to the associated ddc adapter
++ *
++ * Initialises a preallocated HDMI connector. Connectors can be
++ * subclassed as part of driver connector objects.
++ *
++ * Cleanup is automatically handled with a call to
++ * drm_connector_cleanup() in a DRM-managed action.
++ *
++ * The connector structure should be allocated with drmm_kzalloc().
++ *
++ * Returns:
++ * Zero on success, error code on failure.
++ */
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc)
++{
++	int ret;
++
++	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
++	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
++		return -EINVAL;
++
++	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++EXPORT_SYMBOL(drmm_connector_hdmi_init);
++
+ /**
+  * drm_connector_attach_edid_property - attach edid property.
+  * @connector: the connector
+  *
+  * Some connector types like DRM_MODE_CONNECTOR_VIRTUAL do not get a
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index fe88d7fc6b8f..4491c4c2fb6e 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1902,10 +1902,15 @@ int drm_connector_init_with_ddc(struct drm_device *dev,
+ int drmm_connector_init(struct drm_device *dev,
+ 			struct drm_connector *connector,
+ 			const struct drm_connector_funcs *funcs,
+ 			int connector_type,
+ 			struct i2c_adapter *ddc);
++int drmm_connector_hdmi_init(struct drm_device *dev,
++			     struct drm_connector *connector,
++			     const struct drm_connector_funcs *funcs,
++			     int connector_type,
++			     struct i2c_adapter *ddc);
+ void drm_connector_attach_edid_property(struct drm_connector *connector);
+ int drm_connector_register(struct drm_connector *connector);
+ void drm_connector_unregister(struct drm_connector *connector);
+ int drm_connector_attach_encoder(struct drm_connector *connector,
+ 				      struct drm_encoder *encoder);
 
 -- 
 2.44.0
