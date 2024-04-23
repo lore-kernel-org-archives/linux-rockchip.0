@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB0EC10F16
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 00:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2BB8C1746D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 04:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IIguYbF5cnVdKqbx1CbxlUOKhs/8Ftcf16ldFhX5v9s=; b=ahtjzpxp6GGI6r
-	Guds/vh5SIYuZDlAw94rUwqqXsklFBHJH7HX+2kImVQKWOViQc2tAiHN8IJ6LFxFOd01mbtc4II/Z
-	ZgOJueXTTtuNoLjzZzvTh6GzdVHAezrQVCN1PouW2M0GAcEE+eHCmit7mgMcmXFjwNjMV38TrqNPb
-	4rwjhPoPD/1PVvRasF4QCI39oNjipxxin8BkVC6wzn7e3Kr41p1RhIHEQV3lJjIZrJujtpJiYhIM5
-	6ZTOokHU5es0pAh1/rYNaD42GphC4In5FfThHzFR7NfrkbOdLcOraiH85k/F29qLZ49DaRQE1Sew7
-	7ttF1cT9lFnbRfBKG8iQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=97iiB4MmAhYjO3GacdwsSGfJI8iZ1A5WdPltYEGAM1k=; b=WZMBu4GumDAyfn
+	7lvrFU8FF0Skcb3hdOMrq5P8NAeCbq/NJeA9qGYMApWLN/H5mpPfBuIEEGw/wUCSX8cwW5zx2HDKB
+	+4dzchXNLodKTSKGSqB7hknIck8hdpZdl3l75TmpuZjWHfFzy34IGoz0OEPfBWYAuWm2xABMxJhn6
+	pEP8saOUMeqVZDsI7fkDakCes/OLl32Vn9l9cOPOUGEl50mu1QoHDZ/2BjJoAF9ahxOhz3fNtLoiR
+	ESsx3rHs08BabKLDe2F5yqbNvSWw9f3Xg/9QO2f4kDPP9K3K5n3NTZZUvu/FJXO9lGBwGYYld0emu
+	/F29E05/Svu3MuBFWRvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz4GR-0000000FbPL-1I4B;
-	Tue, 23 Apr 2024 00:44:03 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1rz7NY-0000000FtpP-04D2;
+	Tue, 23 Apr 2024 04:03:36 +0000
+Received: from madrid.collaboradmins.com ([46.235.227.194])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rz4GM-0000000FbKt-1jDq;
-	Tue, 23 Apr 2024 00:44:00 +0000
-From: Dragan Simic <dsimic@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1713833030;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4TC68yymP75Ak5L5NmW4Ic8c+OFYL0ZiXlhMXToNWT0=;
-	b=b5YDzs2qPHOpGi0lWbwotcXXHGEdno2XCkWbu0DdQLgiAG7C/Si7U8DsWyX3ND6MgMr+Ae
-	dZKls3h11dutdJnnjNCxUgl/nr6nf7YN1T+abFqyEFBB3Q2s+N8O0DCFHrG67b5RPAd1GZ
-	zgx83enO5AwUd7UcT23VyvwZxrqLeAMj7PEzGUL7luCfl9QfX+2lC8s2y3Z8oI6PJP4ByT
-	nwcHUgOmBfZyC9VY5dSsV2mSEeDmtmDxJFImBMOuHm0A8GLQ9iqC8gV2YvXAs9APaGecAz
-	fBJZCbNpQmvR8UvAqbpCPpfFNC80Xd1ZnSgPvNUuzWZtTtyxqA7sL4CnkZruDg==
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-kernel@vger.kernel.org,
-	didi.debian@cknow.org,
-	Marek Kraus <gamiee@pine64.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Correct the model names for Pine64 boards
-Date: Tue, 23 Apr 2024 02:43:44 +0200
-Message-Id: <06ce014a1dedff11a785fe523056b3b8ffdf21ee.1713832790.git.dsimic@manjaro.org>
-In-Reply-To: <ec124dab2b1a8776aa39177ecce34babca3a50e2.1713832790.git.dsimic@manjaro.org>
-References: <ec124dab2b1a8776aa39177ecce34babca3a50e2.1713832790.git.dsimic@manjaro.org>
+	id 1rz7NR-0000000Ftna-3xE9;
+	Tue, 23 Apr 2024 04:03:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1713845006;
+	bh=goF/fTNE8wl6AsxxGJwpUshDKR4pSsFtLXytgcbYEpc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=pzeWLW4MCujJs/GAp2jdHGWku8MU/8lFZnetCkkQJYGcsExtYo+WOp6uQR4b4YNAO
+	 fD/dz5wUIe0Dp00hWDfhOypem64p/TWXNDMcblcFN/tFl0ekLsgQt5K4qlAE09Iqc/
+	 0tGxE7Egs1RKPBzrqCJ+dyoeBNOMrOGyLX+97Cfgw6HZ+ERKqweCwTxl5ymRVKDEQb
+	 KL0F29j9bOqWv7GLG9oac+Z5qYK7le8tKeNsOQwCsCCEvbcFxXMW1ITaR/gEgDBcNF
+	 RNJEnjCvmWczgzWSDjkoEJedNFxdKll0tUGVdndK0HswnuvIFX/qNvL5Ltm44Ro/AZ
+	 TRYsLI1YLm/kw==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E96DA378000B;
+	Tue, 23 Apr 2024 04:03:22 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 0/4] Uprev mesa and IGT
+Date: Tue, 23 Apr 2024 09:32:39 +0530
+Message-Id: <20240423040243.448091-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240422_174358_954159_1F1CEA18 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240422_210330_287279_1AAD5DDE 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,140 +87,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Correct the model names of a few Pine64 boards and devices, according
-to their official names used on the Pine64 wiki.  This ensures consistency
-between the officially used names and the names in the source code.
+Uprev mesa and IGT to the latest version. Stop vendoring the
+testlist into the kernel. Instead, use the testlist from the
+IGT build to ensure we do not miss renamed or newly added tests.
+Update the xfails with the latest testlist run.
 
-Cc: Marek Kraus <gamiee@pine64.org>
-Signed-off-by: Dragan Simic <dsimic@manjaro.org>
----
+Also build virtual GPU driver for virtio as module.
+This series also includes patch to add vkms testing to drm-ci.
 
-Notes:
-    This continues the model naming cleanup started with Radxa boards. [1]
-    
-    These improvements may cause certain issues if some scripts misuse
-    /proc/device-tree/model to detect the board they're executed on.  Though,
-    the right way to detect a board is to use /proc/device-tree/compatible
-    instead, because its contents is part of the ABI.  Such scripts, if they
-    actually exist in the field, should be improved to use the right way to
-    detect the board model.
-    
-    [1] https://lore.kernel.org/linux-rockchip/6931289a252dc2d6c7bfd2388835c5e98ba0d8c9.1713457260.git.dsimic@manjaro.org/
+The flakes list needs to be updated upsteam. Will send it
+after this series is reviewed.
 
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts       | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts       | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-soquartz-blade.dts   | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts     | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-soquartz-model-a.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi        | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts      | 2 +-
- 8 files changed, 8 insertions(+), 8 deletions(-)
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1161026
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 61f3fec5a8b1..e5709c7ee06a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -16,7 +16,7 @@
- #include "rk3399-opp.dtsi"
- 
- / {
--	model = "Pine64 PinePhonePro";
-+	model = "Pine64 PinePhone Pro";
- 	compatible = "pine64,pinephone-pro", "rockchip,rk3399";
- 	chassis-type = "handset";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 59843a7a199c..0b191d8462ad 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -8,7 +8,7 @@
- #include "rk3566.dtsi"
- 
- / {
--	model = "Pine64 RK3566 Quartz64-A Board";
-+	model = "Pine64 Quartz64 Model A";
- 	compatible = "pine64,quartz64-a", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-index 2d92713be2a0..26322a358d91 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-@@ -8,7 +8,7 @@
- #include "rk3566.dtsi"
- 
- / {
--	model = "Pine64 RK3566 Quartz64-B Board";
-+	model = "Pine64 Quartz64 Model B";
- 	compatible = "pine64,quartz64-b", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-blade.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-blade.dts
-index fdbf1c783242..fdbb4a6a19d8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-blade.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-blade.dts
-@@ -10,7 +10,7 @@
- #include "rk3566-soquartz.dtsi"
- 
- / {
--	model = "PINE64 RK3566 SOQuartz on Blade carrier board";
-+	model = "Pine64 SOQuartz on Blade carrier board";
- 	compatible = "pine64,soquartz-blade", "pine64,soquartz", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-index 6ed3fa4aee34..2b6f0df477b6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-@@ -5,7 +5,7 @@
- #include "rk3566-soquartz.dtsi"
- 
- / {
--	model = "Pine64 RK3566 SoQuartz with CM4-IO Carrier Board";
-+	model = "Pine64 SOQuartz on CM4-IO carrier board";
- 	compatible = "pine64,soquartz-cm4io", "pine64,soquartz", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-model-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-model-a.dts
-index f2095dfa4eaf..9a6a63277c3d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-model-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-model-a.dts
-@@ -5,7 +5,7 @@
- #include "rk3566-soquartz.dtsi"
- 
- / {
--	model = "PINE64 RK3566 SOQuartz on Model A carrier board";
-+	model = "Pine64 SOQuartz on Model A carrier board";
- 	compatible = "pine64,soquartz-model-a", "pine64,soquartz", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-index bfb7b952f4c5..dd4e9c1893c6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-@@ -8,7 +8,7 @@
- #include "rk3566.dtsi"
- 
- / {
--	model = "Pine64 RK3566 SoQuartz SOM";
-+	model = "Pine64 SOQuartz system on module";
- 	compatible = "pine64,soquartz", "rockchip,rk3566";
- 
- 	aliases {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-index 67414d72e2b6..e1deb9c13ad0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-quartzpro64.dts
-@@ -13,7 +13,7 @@
- #include "rk3588.dtsi"
- 
- / {
--	model = "PINE64 QuartzPro64";
-+	model = "Pine64 QuartzPro64";
- 	compatible = "pine64,quartzpro64", "rockchip,rk3588";
- 
- 	aliases {
+Vignesh Raman (4):
+  drm/ci: uprev mesa version
+  drm/ci: build virtual GPU driver as module
+  drm/ci: uprev IGT and generate testlist from build
+  drm/ci: add tests on vkms
+
+ MAINTAINERS                                   |    1 +
+ drivers/gpu/drm/ci/build-igt.sh               |   23 +
+ drivers/gpu/drm/ci/build.sh                   |    2 +-
+ drivers/gpu/drm/ci/container.yml              |   12 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |   14 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |   15 +-
+ drivers/gpu/drm/ci/image-tags.yml             |    7 +-
+ drivers/gpu/drm/ci/test.yml                   |   33 +-
+ drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
+ drivers/gpu/drm/ci/x86_64.config              |    3 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   45 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |   15 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   30 +-
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   27 +
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    9 +
+ drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   47 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   24 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   37 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   20 +
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   37 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   21 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   29 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |    1 -
+ drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   34 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   27 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   28 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   57 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   21 +-
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   47 +-
+ .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   13 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   18 +-
+ .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |    6 +
+ .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   15 +
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   20 +-
+ .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |    7 +
+ .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   15 +
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   25 +-
+ .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |    7 +
+ .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   15 +
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    6 +-
+ .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    6 +
+ .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |  117 +-
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   |   40 +-
+ .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    6 +
+ .../msm-sc7180-trogdor-kingoftown-skips.txt   |   16 +
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   41 +-
+ ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |   11 +
+ ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   16 +
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   76 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   26 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   16 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   54 -
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   60 +-
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   79 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |   13 +-
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   17 +-
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   99 +-
+ .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   19 +-
+ drivers/gpu/drm/ci/xfails/vkms-none-fails.txt |   46 +
+ .../gpu/drm/ci/xfails/vkms-none-flakes.txt    |   21 +
+ drivers/gpu/drm/ci/xfails/vkms-none-skips.txt |   30 +
+ 64 files changed, 1109 insertions(+), 3308 deletions(-)
+ delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-tgl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
+
+-- 
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
