@@ -4,49 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 945DEC4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 15:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E98AC4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Apr 2024 15:39:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4p48NJg1z5sBAhYfaln4+Ejpcg0RDt0AvmqGjBl2knI=; b=YTmRt2jEu9o7aV
-	aANn78+p0oJuAjrmoA6wgtf2UKBvrPy3tFN6SUJnyVxqRCDvLPy0Se5kkPzNzXcN0M0iXcrQVZS7M
-	RyFqKbCBNEfsFTyb/jMsnwJzZZooH2WzrbweB8U0xCfDrrp2fGIOIN0d5SXbMRGvG7JL9ysgi/5Ck
-	/6/g3qArTfCIXhGlmMqdthkjxaKQLhldkHsnpwC5Mk0i6wTqZCKNp75UhG/R2DxXXcO53PyzRp5x1
-	d8F+9PaGjw0VDB9BHTRyS2kO65GBjakesTRovjJqloLk1wYIxwjkx3PBQKDsfc5nUt1d8BKchhMTc
-	tsqAi8v1XxXCIbdRdPCw==;
+	List-Owner; bh=nhzH1M8L5HmnHfLQl3ZFxqAEDh0kasO7BlEbZ25ZzKk=; b=bkCzTRwR6go2B8
+	sUXPVM3QsQGRr28ZfohDXo1SIxTsBcomnbH1NFRx9vHwWNxXaeO1T9SUGTTL6rB9JRKrAUfe4PKIf
+	xPTWAKpMIMDPL+lU/X3PBWIDq75JFEV3pSRGOVsBo+qyJ6KK933i31/MzHGmak+wsUJwtWQ2Cp4dI
+	HR2T3aJG0AJsgE4jydxnYasLcBkFGx+dDwrHCivFqFRPcW4ri1vsAsB0bq54lP7q5qcuXTK4P43No
+	lTYPNfNGqI/gxcra9OWZSg/H1HF2FHN8wtz8/7kJylFwN6ED/y2jHVmJ9OU7puQlQEJEQb+lz5a0h
+	O0aUE0ylgF1gltPot+pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzIEu-00000000ZJ9-3cVO;
-	Tue, 23 Apr 2024 15:39:24 +0000
+	id 1rzIF6-00000000ZO2-0ENW;
+	Tue, 23 Apr 2024 15:39:36 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzIEq-00000000ZHW-1pd5;
-	Tue, 23 Apr 2024 15:39:22 +0000
+	id 1rzIEq-00000000ZHa-3cry
+	for linux-rockchip@lists.infradead.org;
+	Tue, 23 Apr 2024 15:39:23 +0000
 Received: from i5e861d9e.versanet.de ([94.134.29.158] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1rzIEn-0007h9-G7; Tue, 23 Apr 2024 17:39:17 +0200
+	id 1rzIEo-0007h9-3X; Tue, 23 Apr 2024 17:39:18 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: quentin.schulz@theobroma-systems.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+To: Jing Luo <jing@jing.rocks>,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 0/3] Add support for the dual-role dwc3 controllers on rk3588-tiger
-Date: Tue, 23 Apr 2024 17:39:14 +0200
-Message-Id: <171388674746.2655666.4254972955805866845.b4-ty@sntech.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	sebastian.reichel@collabora.com,
+	jagan@edgeble.ai,
+	cfsworks@gmail.com,
+	robh+dt@kernel.org,
+	conor+dt@kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: correct gpio_pwrctrl1 typos on rk3588(s) boards
+Date: Tue, 23 Apr 2024 17:39:15 +0200
+Message-Id: <171388674748.2655666.197923029393759084.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240422163951.2604273-1-heiko@sntech.de>
-References: <20240422163951.2604273-1-heiko@sntech.de>
+In-Reply-To: <20240420130355.639406-1-jing@jing.rocks>
+References: <20240420130355.639406-1-jing@jing.rocks>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240423_083920_527625_78D16C10 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20240423_083921_666568_DD636928 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,24 +71,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 22 Apr 2024 18:39:48 +0200, Heiko Stuebner wrote:
-> A comment fix and then the addition of the nodes for the dwc3 controllers
-> using the newly merged usbdp phys.
+On Sat, 20 Apr 2024 22:03:55 +0900, Jing Luo wrote:
+> gpio_pwrctrl2 gets duplicated by both rk806_dvs1_null and rk806_dvs2_null
+> gpio_pwrctrl1 is unset. This typo appears in multiple files. Let's fix them.
 > 
-> changes in v2:
-> - split out extcon addition into separate patch
-> - fix comments in patch1 to cover all affected controllers
+> Note: I haven't had the chance to test them all because I don't own all
+> of these boards (obviously). Please test if it's needed.
+> 
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: fix comment for upper usb3 port
-      commit: 3482efee1144262dc839792103e6a9e29defecbc
-[2/3] arm64: dts: rockchip: add usb-id extcon on rk3588 tiger
-      commit: eabb53f5dacfd643b5255f35bad30b8f914decdc
-[3/3] arm64: dts: rockchip: add dual-role usb3 hosts to rk3588 Tiger-Haikou
-      commit: d7b83921d098bd76623381f75f5cd2296f1315cc
+[1/1] arm64: dts: rockchip: correct gpio_pwrctrl1 typos on rk3588(s) boards
+      commit: d7f2039e5321636069baa77ef2f1e5d22cb69a88
 
 Best regards,
 -- 
