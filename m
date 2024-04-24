@@ -4,63 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E7E3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Apr 2024 09:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D378C07E8E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Apr 2024 09:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HH/LEV7JcF+EfAkTxxR2x6oYezM8EIeWqj1h1TsLSJA=; b=IgEMHiUjttfWuP2le/h11d7Qn8
-	MkgACJuIjSop+5bmVldABBGNdEpJdtUzTOdJQwkBWY+EYrTNjTMh87j53/BaKwsFVed6wdZwxvWTm
-	gvg6PUFn+/16muvXqmeRdMPnXuEQVHxLeBw8vMjqrQW09oKrN4zfRV7zhtqXD9eqaW4whmbgHWw9R
-	R2xh7EkyONFqmhVbQpyWaaDhPPBhEYpUYt7EoLxNzK7Zu6wq131Y+mGOWWXSe1Ws3jvp7jz15BRcy
-	YntP43FzUX6uxN0OKcDhWOFjJ/dlot6OUJIU6bmAC9/1YLrx2S+2X/pjmwuSUfuM17pgvJVOrI2I8
-	Ssmb8SPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TXE7b+oZl2DxbRr6xcVD+VX+1RJtgXDoJsgQKtLfjOE=; b=iB5pwnPofMGzbz
+	ZHB11Iva8+tkU73PRDnq45TsI8ZRFSJiDft99hCKEDW0loixbLeTw84TR9LWr/0tiCconxTPOGVlo
+	DK6o/KsBan0b2EM7FMdcPrGhdAAqLI/48weWW8Bv2MMVmAt0WoDG2L40j7CvErQm6uW+6ynFU0D3p
+	11XMJMFTMQiSgnSBG1R6yqcts7jkQPF+QbyrWLev4iFrA7D2jxKOGahMeAn7JxUlroapVtJfaQo2R
+	wYyX0+3DvE2L4hLa0LrcxZDRvKiAykAMjmtZ9olqb+fR3D20VnCe5tTr1quUQBn+V4ZySq/TmLlVa
+	qms4D/QQw3jg7e5ysplA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzYV6-00000003O8c-3ypt;
-	Wed, 24 Apr 2024 09:01:12 +0000
-Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1rzYUv-00000003O4W-0Str
-	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Apr 2024 09:01:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=F/rZ
-	bYMw94pfUTMXvodaO2dpVGh5mtleHLV+nawJR/g=; b=WHhiHQrPoBK5rpd5VA86
-	giFZK/WK5QrP+Scmd3x1x3hLwHAF5BGRil3N9lSCG/OkS7EjhlOb3KHy5j81KxIJ
-	XaXBUVIuMGaM18HHTUgJRkx01WQ3RabIM3Zz5b5JakCGhRZrb6kOTPWQedekx4RO
-	R/H8oUjWLc1AF8CuHTrkFFdjh3jDINTYXczzFDoJQUKxUfdADEEN+AIaDHbZTkHW
-	svfje4hrAL8SZZycmdvgqYPnU2K6Cm4h1DkYBcpDF9Erlb7TJw1UvXCdUwuDhFWg
-	KO3RQsxqrhiqKIfhkyCrfRinbr1jsOR+GIFjr58RNV1q4R9FpRfaOVQoxeJtDkMu
-	uw==
-Received: (qmail 501040 invoked from network); 24 Apr 2024 11:00:53 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 24 Apr 2024 11:00:53 +0200
-X-UD-Smtp-Session: l3s3148p1@L6tq6NMWFsgujntt
-Date: Wed, 24 Apr 2024 11:00:53 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 00/18] i2c: remove printout on handled timeouts
-Message-ID: <sbkymvjmrufouqqscpmrui5kcd466gj6yn2bqwf3lhfk55mjos@n4ydx6wzyq4k>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Andy Shevchenko <andy.shevchenko@gmail.com>, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
-References: <20240410112418.6400-20-wsa+renesas@sang-engineering.com>
- <ZihNbtiVDkxgUDGk@surfacebook.localdomain>
+	id 1rzZ7m-00000003XIb-2hAY;
+	Wed, 24 Apr 2024 09:41:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1rzZ7h-00000003XGB-3Nbj;
+	Wed, 24 Apr 2024 09:41:07 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2F415339;
+	Wed, 24 Apr 2024 02:41:29 -0700 (PDT)
+Received: from donnerap.manchester.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3BF7F3F64C;
+	Wed, 24 Apr 2024 02:40:56 -0700 (PDT)
+Date: Wed, 24 Apr 2024 10:40:48 +0100
+From: Andre Przywara <andre.przywara@arm.com>
+To: Joy Chakraborty <joychakr@google.com>
+Cc: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Srinivas Kandagatla
+ <srinivas.kandagatla@linaro.org>, Shawn Guo <shawnguo@kernel.org>, Sascha
+ Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome
+ Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Claudiu Beznea
+ <claudiu.beznea@tuxon.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bjorn
+ Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, Baolin
+ Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Vincent Shih <vincent.sunplus@gmail.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Rafal Milecki <rafal@milecki.pl>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu
+ <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ manugautam@google.com
+Subject: Re: [PATCH v2 1/1] nvmem: Change return type of reg read/write to
+ ssize_t
+Message-ID: <20240424104048.1b02b07e@donnerap.manchester.arm.com>
+In-Reply-To: <20240424074242.519895-2-joychakr@google.com>
+References: <20240424074242.519895-1-joychakr@google.com>
+	<20240424074242.519895-2-joychakr@google.com>
+Organization: ARM
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <ZihNbtiVDkxgUDGk@surfacebook.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240424_020106_187513_212C2C3A 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20240424_024106_012173_A7B27D0F 
+X-CRM114-Status: GOOD (  29.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,100 +84,290 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2501246160568853090=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, 24 Apr 2024 07:42:42 +0000
+Joy Chakraborty <joychakr@google.com> wrote:
 
---===============2501246160568853090==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tk743gnx4tnmnqhg"
-Content-Disposition: inline
+> Change return type of reg_read() and reg_write() callback to ssize_t for
+> nvmem suppliers to return number of bytes read/written to the nvmem core.
+> 
+> Currently nvmem core assumes the amount of data read/written is equal
+> to what it has requested from the supplier, this return code facilitates
+> better error handling in the nvmem core.
+> 
+> Signed-off-by: Joy Chakraborty <joychakr@google.com>
 
+There are two problems in the sunxi driver:
 
---tk743gnx4tnmnqhg
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> ---
+>  drivers/nvmem/apple-efuses.c        |  7 +--
+>  drivers/nvmem/bcm-ocotp.c           | 12 ++---
+>  drivers/nvmem/brcm_nvram.c          | 10 ++--
+>  drivers/nvmem/core.c                | 83 +++++++++++++----------------
+>  drivers/nvmem/imx-iim.c             |  6 +--
+>  drivers/nvmem/imx-ocotp-ele.c       |  4 +-
+>  drivers/nvmem/imx-ocotp-scu.c       | 12 ++---
+>  drivers/nvmem/imx-ocotp.c           | 10 ++--
+>  drivers/nvmem/jz4780-efuse.c        |  7 +--
+>  drivers/nvmem/lan9662-otpc.c        | 12 ++---
+>  drivers/nvmem/layerscape-sfp.c      | 11 ++--
+>  drivers/nvmem/lpc18xx_eeprom.c      | 14 ++---
+>  drivers/nvmem/lpc18xx_otp.c         |  6 +--
+>  drivers/nvmem/meson-efuse.c         | 22 +++++---
+>  drivers/nvmem/meson-mx-efuse.c      |  6 +--
+>  drivers/nvmem/microchip-otpc.c      |  6 +--
+>  drivers/nvmem/mtk-efuse.c           |  6 +--
+>  drivers/nvmem/mxs-ocotp.c           |  7 +--
+>  drivers/nvmem/nintendo-otp.c        |  6 +--
+>  drivers/nvmem/qcom-spmi-sdam.c      | 12 ++---
+>  drivers/nvmem/qfprom.c              | 14 ++---
+>  drivers/nvmem/qoriq-efuse.c         |  6 +--
+>  drivers/nvmem/rave-sp-eeprom.c      | 18 +++----
+>  drivers/nvmem/rmem.c                |  4 +-
+>  drivers/nvmem/rockchip-efuse.c      | 19 +++----
+>  drivers/nvmem/rockchip-otp.c        | 19 +++----
+>  drivers/nvmem/sc27xx-efuse.c        |  3 +-
+>  drivers/nvmem/sec-qfprom.c          |  4 +-
+>  drivers/nvmem/snvs_lpgpr.c          | 17 +++---
+>  drivers/nvmem/sprd-efuse.c          |  8 +--
+>  drivers/nvmem/stm32-bsec-optee-ta.c | 12 ++---
+>  drivers/nvmem/stm32-bsec-optee-ta.h | 20 +++----
+>  drivers/nvmem/stm32-romem.c         | 26 ++++-----
+>  drivers/nvmem/sunplus-ocotp.c       |  4 +-
+>  drivers/nvmem/sunxi_sid.c           | 15 +++---
+>  drivers/nvmem/u-boot-env.c          |  6 +--
+>  drivers/nvmem/uniphier-efuse.c      |  6 +--
+>  drivers/nvmem/vf610-ocotp.c         |  7 +--
+>  drivers/nvmem/zynqmp_nvmem.c        | 13 ++---
+>  include/linux/nvmem-provider.h      |  4 +-
+>  40 files changed, 253 insertions(+), 231 deletions(-)
 
-Hi Andy,
+[ ... ]
 
-On Wed, Apr 24, 2024 at 03:08:14AM +0300, Andy Shevchenko wrote:
-> Wed, Apr 10, 2024 at 01:24:14PM +0200, Wolfram Sang kirjoitti:
-> > While working on another cleanup series, I stumbled over the fact that
-> > some drivers print an error on I2C or SMBus related timeouts. This is
-> > wrong because it may be an expected state. The client driver on top
-> > knows this, so let's keep error handling on this level and remove the
-> > prinouts from controller drivers.
-> >=20
-> > Looking forward to comments,
->=20
-> I do not see an equivalent change in I=C2=B2C core.
+> 
+> diff --git a/drivers/nvmem/sunxi_sid.c b/drivers/nvmem/sunxi_sid.c
+> index ba14a76208ab..0133263d2adb 100644
+> --- a/drivers/nvmem/sunxi_sid.c
+> +++ b/drivers/nvmem/sunxi_sid.c
+> @@ -36,8 +36,8 @@ struct sunxi_sid {
+>  	u32			value_offset;
+>  };
+>  
+> -static int sunxi_sid_read(void *context, unsigned int offset,
+> -			  void *val, size_t bytes)
+> +static ssize_t sunxi_sid_read(void *context, unsigned int offset,
+> +			      void *val, size_t bytes)
+>  {
+>  	struct sunxi_sid *sid = context;
+>  	u32 word;
+> @@ -56,7 +56,7 @@ static int sunxi_sid_read(void *context, unsigned int offset,
 
-There shouldn't be. The core neither knows if it is okay or not. The
-client driver knows.
+	(adding more context here)
 
-> IIRC in our case (DW or i801 or iSMT) we often have this message as the o=
-nly
+>
+>	val += round_down(bytes, 4);
+>	offset += round_down(bytes, 4);
+>	bytes = bytes % 4;
+>
+>	if (!bytes)
+>		return 0;
+>
+>	/* Handle any trailing bytes */
+>  	word = readl_relaxed(sid->base + sid->value_offset + offset);
+>  	memcpy(val, &word, bytes);
+>  
+> -	return 0;
+> +	return bytes;
 
-Often? How often?
+So this is only the code path in case the read request was not 4 byte
+aligned, so the "return 0;" above must also be changed. But please note
+that the bytes parameter is changed, so we either need to save that, or
+derive the amount read from something else.
 
-> one that points to the issues (on non-debug level), it will be much harde=
-r to
-> debug for our customers with this going away.
+Cheers,
+Andre
 
-The proper fix is to print the error in the client driver. Maybe this
-needs a helper for client drivers which they can use like:
+>  }
+>  
+>  static int sun8i_sid_register_readout(const struct sunxi_sid *sid,
+> @@ -90,10 +90,11 @@ static int sun8i_sid_register_readout(const struct sunxi_sid *sid,
+>   * to be not reliable at all.
+>   * Read by the registers instead.
+>   */
+> -static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
+> -				 void *val, size_t bytes)
+> +static ssize_t sun8i_sid_read_by_reg(void *context, unsigned int offset,
+> +				     void *val, size_t bytes)
+>  {
+>  	struct sunxi_sid *sid = context;
+> +	size_t bytes_read = bytes;
+>  	u32 word;
+>  	int ret;
+>  
+> @@ -109,7 +110,7 @@ static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
+>  	}
+>  
+>  	if (!bytes)
+> -		return 0;
+> +		return bytes_read;
+>  
+>  	/* Handle any trailing bytes */
+>  	ret = sun8i_sid_register_readout(sid, offset, &word);
+> @@ -118,7 +119,7 @@ static int sun8i_sid_read_by_reg(void *context, unsigned int offset,
+>  
+>  	memcpy(val, &word, bytes);
+>  
+> -	return 0;
+> +	return bytes_read;
+>  }
+>  
+>  static int sunxi_sid_probe(struct platform_device *pdev)
+> diff --git a/drivers/nvmem/u-boot-env.c b/drivers/nvmem/u-boot-env.c
+> index befbab156cda..2288a2891bb2 100644
+> --- a/drivers/nvmem/u-boot-env.c
+> +++ b/drivers/nvmem/u-boot-env.c
+> @@ -47,8 +47,8 @@ struct u_boot_env_image_broadcom {
+>  	DECLARE_FLEX_ARRAY(uint8_t, data);
+>  } __packed;
+>  
+> -static int u_boot_env_read(void *context, unsigned int offset, void *val,
+> -			   size_t bytes)
+> +static ssize_t u_boot_env_read(void *context, unsigned int offset, void *val,
+> +			       size_t bytes)
+>  {
+>  	struct u_boot_env *priv = context;
+>  	struct device *dev = priv->dev;
+> @@ -66,7 +66,7 @@ static int u_boot_env_read(void *context, unsigned int offset, void *val,
+>  		return -EIO;
+>  	}
+>  
+> -	return 0;
+> +	return bytes_read;
+>  }
+>  
+>  static int u_boot_env_read_post_process_ethaddr(void *context, const char *id, int index,
+> diff --git a/drivers/nvmem/uniphier-efuse.c b/drivers/nvmem/uniphier-efuse.c
+> index 6ad3295d3195..a6c28e03adc2 100644
+> --- a/drivers/nvmem/uniphier-efuse.c
+> +++ b/drivers/nvmem/uniphier-efuse.c
+> @@ -16,8 +16,8 @@ struct uniphier_efuse_priv {
+>  	void __iomem *base;
+>  };
+>  
+> -static int uniphier_reg_read(void *context,
+> -			     unsigned int reg, void *_val, size_t bytes)
+> +static ssize_t uniphier_reg_read(void *context,
+> +				 unsigned int reg, void *_val, size_t bytes)
+>  {
+>  	struct uniphier_efuse_priv *priv = context;
+>  	u8 *val = _val;
+> @@ -26,7 +26,7 @@ static int uniphier_reg_read(void *context,
+>  	for (offs = 0; offs < bytes; offs += sizeof(u8))
+>  		*val++ = readb(priv->base + reg + offs);
+>  
+> -	return 0;
+> +	return bytes;
+>  }
+>  
+>  static int uniphier_efuse_probe(struct platform_device *pdev)
+> diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+> index ee9c61ae727d..4e2bdb38305d 100644
+> --- a/drivers/nvmem/vf610-ocotp.c
+> +++ b/drivers/nvmem/vf610-ocotp.c
+> @@ -143,11 +143,12 @@ static int vf610_get_fuse_address(int base_addr_offset)
+>  	return -EINVAL;
+>  }
+>  
+> -static int vf610_ocotp_read(void *context, unsigned int offset,
+> -			void *val, size_t bytes)
+> +static ssize_t vf610_ocotp_read(void *context, unsigned int offset,
+> +				void *val, size_t bytes)
+>  {
+>  	struct vf610_ocotp *ocotp = context;
+>  	void __iomem *base = ocotp->base;
+> +	size_t bytes_read = bytes;
+>  	u32 reg, *buf = val;
+>  	int fuse_addr;
+>  	int ret;
+> @@ -193,7 +194,7 @@ static int vf610_ocotp_read(void *context, unsigned int offset,
+>  		offset += 4;
+>  	}
+>  
+> -	return 0;
+> +	return bytes_read;
+>  }
+>  
+>  static struct nvmem_config ocotp_config = {
+> diff --git a/drivers/nvmem/zynqmp_nvmem.c b/drivers/nvmem/zynqmp_nvmem.c
+> index 8682adaacd69..1502d4998159 100644
+> --- a/drivers/nvmem/zynqmp_nvmem.c
+> +++ b/drivers/nvmem/zynqmp_nvmem.c
+> @@ -56,8 +56,8 @@ struct xilinx_efuse {
+>  	u32 pufuserfuse;
+>  };
+>  
+> -static int zynqmp_efuse_access(void *context, unsigned int offset,
+> -			       void *val, size_t bytes, enum efuse_access flag,
+> +static ssize_t zynqmp_efuse_access(void *context, unsigned int offset,
+> +				   void *val, size_t bytes, enum efuse_access flag,
+>  			       unsigned int pufflag)
+>  {
+>  	struct device *dev = context;
+> @@ -140,10 +140,10 @@ static int zynqmp_efuse_access(void *context, unsigned int offset,
+>  	dma_free_coherent(dev, sizeof(struct xilinx_efuse),
+>  			  efuse, dma_addr);
+>  
+> -	return ret;
+> +	return ret < 0 ? ret : bytes;
+>  }
+>  
+> -static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
+> +static ssize_t zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size_t bytes)
+>  {
+>  	struct device *dev = context;
+>  	int ret;
+> @@ -166,6 +166,7 @@ static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size
+>  
+>  		dev_dbg(dev, "Read chipid val %x %x\n", idcode, version);
+>  		*(int *)val = version & SILICON_REVISION_MASK;
+> +		ret = SOC_VER_SIZE;
+>  		break;
+>  	/* Efuse offset starts from 0xc */
+>  	case EFUSE_START_OFFSET ... EFUSE_END_OFFSET:
+> @@ -182,8 +183,8 @@ static int zynqmp_nvmem_read(void *context, unsigned int offset, void *val, size
+>  	return ret;
+>  }
+>  
+> -static int zynqmp_nvmem_write(void *context,
+> -			      unsigned int offset, void *val, size_t bytes)
+> +static ssize_t zynqmp_nvmem_write(void *context,
+> +				  unsigned int offset, void *val, size_t bytes)
+>  {
+>  	int pufflag = 0;
+>  
+> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+> index 3ebeaa0ded00..f7e83a59aa2f 100644
+> --- a/include/linux/nvmem-provider.h
+> +++ b/include/linux/nvmem-provider.h
+> @@ -16,9 +16,9 @@
+>  #include <linux/gpio/consumer.h>
+>  
+>  struct nvmem_device;
+> -typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+> +typedef ssize_t (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+>  				void *val, size_t bytes);
+> -typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+> +typedef ssize_t (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+>  				 void *val, size_t bytes);
+>  /* used for vendor specific post processing of cell data */
+>  typedef int (*nvmem_cell_post_process_t)(void *priv, const char *id, int index,
 
-	i2c_report_error(client, retval, flags);
-
-The other thing which is also more helpful IMO is that we have
-trace_events for __i2c_transfer. There, you can see what was happening
-on the bus before the timeout. It can easily be that, if device X
-times out, it was because of the transfer before to device Y which locks
-up the bus. A simple "Bus timed out" message will not help you a lot
-there.
-
-And, keep in mind the false positives I mentioned in the coverletter.
-
-All the best,
-
-   Wolfram
-
-
---tk743gnx4tnmnqhg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmYoykAACgkQFA3kzBSg
-KbbLuBAAjzqZT2iFY7Av9H0s+wlzFx3PbOQR9XN1fKqU/9jvT5vumaPsTH+2fUZY
-sOMPYFZUeYiZIcZqbWOUYa5Gkg5oZyrnNIbFOpV97VM9nHq5tMBrn80hdTccNBcn
-dga0E8zizsjSv80+pRwrfrfzzAALZnRZ8pPCPf6NjfnhVuhVbM3nfTJ1cDKPzYLw
-d0+t0YJKs0J2Ez92HZh4sxYyhELQ2hNFKLFcJqLBQI194Y6AQ/SP376ZTWRzaRCr
-KTLHH/wpuWERvzrQBBm+MOpZ14LKy+oKzOYKUndYCFw1dZOART808i/5Zcaqzop7
-FRZpqfJzwLh/JtT9GiunHLkHbLIRI59otzBHejzX/oCkIRylcxrn5DEkTFsKsdZ+
-Ay1VMdtxGSVMkha8uFlq51uW06MqpDdiEqbtjkOsNBepk8hbt0trJOkGuezlNOGp
-wmZeJ62f5JVrHxHHpjQwSkIy8Cm+vMtEKmJZ6exv7LRyAx2FhXFDzqwOAkNBZzNx
-H2P24MVMK31rQMLcQGBQavb7O4d3Jsq1glbLHShaHkQeZYBu4aFj/zQfe+meCak/
-HIpzWTFHiM2a8pAM/AnFy/Na/pUKFyE6Pwsk5cQg95VqC6sJzywwVI9AH1WaZ+cL
-tED/pttmbdvulRljvoIXXsYWtCy+ENKqygemMVgNK26O1aANdr4=
-=g/wq
------END PGP SIGNATURE-----
-
---tk743gnx4tnmnqhg--
-
-
---===============2501246160568853090==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2501246160568853090==--
-
