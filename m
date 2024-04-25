@@ -4,64 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FE3C10F15
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Apr 2024 16:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B0BEC4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Apr 2024 16:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PEKmClkBV21iEMcUAGZaaO752DNGXIACy3O11k0a7U0=; b=JAGL3fGBPOOJdm
-	QZCDhXGeNZCsSeYwADZxU+If/yPBskxgVivbPcwQ3mUEqB45ybQ/DvU/tdMqR6DxXfUbfCf7Xh4qp
-	bs3EQhLQ9Fe3Z0ZRugGTyQ2MmRy/s4M6Plr1lf2i6nFObEoU4rFt46CT29xC5Be69ji0jXMjEP4A/
-	SGHs7xdZWBHY0qF+mqyE2M82/PoNLNjwzT83ObZ5PsqRf0Y2VbR3ZCu711D3PM7xQkhaYJYx6jeQa
-	RJaxkPH9BTNaR6UHBX9e2Yy4DYmyqR2TPftAb4tpZhAVjBN5WOMm41KD8q/ospZ86R1+KWhihd2fL
-	RNhW9S10u+HFU5Bf4S9A==;
+	List-Owner; bh=KXYvgHipKRNT3ViTiJ06rirLFalJH5bI4l1hW3vG/zQ=; b=Ws050oRp3TlRIp
+	P3Ghzti41/+mLgh0GlTLUPBd3j0j61RKp3QpyO3u7vDYnQdaRn2cVWfv979cFgtnBp8JFBkTCWxTQ
+	WFlWVXPDB5B9vGKH6nx66IjpaCvRyHFQuvZZELHiIGRmN81NAmWSqjufF7xalChlcpex2w2jgM3VS
+	LeHVMpVXoiG5+4D6unCn47mUZLIesqWIdMASqwhQJz+woKlgGFlkvyuF+km9ZD/X7fpJQGs53fZ77
+	WRTp+hF3ZDlLO5z8YSyY2lfHjXPMQmetqug66VysPGPRUjTZSPq46QD7rZ4HrXMSJGHo93xWTUOe6
+	axf8cvbBJJr8b9OQvkUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s01XK-00000009H8p-0jAu;
-	Thu, 25 Apr 2024 16:01:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1s01dy-00000009Ijs-11HT;
+	Thu, 25 Apr 2024 16:08:18 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s00SN-00000008woR-14pd;
-	Thu, 25 Apr 2024 14:52:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Z5m0Kx+MV8klc/BDvTFFzfRjbPECME29KyhNnCUxQEw=; b=OPL977YsPOJYrgdiriV7WSFDHw
-	GssuALceu86kYJwFDuusE3oEGx8khLeX6mmAzvR70+DT7GfZjbi89oM0rfOlydNZLYxotRT9tXWoN
-	bFU0IHLNR+XSJb4PX9KEXu1eyXTm5FyEciVN/NPaR+Ps+jFGpWj34GZoTmDnsb/gXnFkPe1eb9Q/1
-	ysiWW9X1Ty06hUfz0SiK4m5VjEnaLYd6n8PbVVBpIyTxHS9Z7PZ51FWomUuEyB7Fh+khdjJXzIW/v
-	pyOGM5DbYeUHLZ9LnaVVnpo6bUeSJXM5/dV0e4dEOg4pOY0rOB4LlE4e2inMIjfjZHvMr2cHikHFM
-	JejsWONA==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s00SK-0000000ExcC-0GEs;
-	Thu, 25 Apr 2024 14:52:13 +0000
-Received: from i5e861d82.versanet.de ([94.134.29.130] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1s00S1-0003Vg-2q; Thu, 25 Apr 2024 16:51:53 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: tzimmermann@suse.de, mripard@kernel.org, hjc@rock-chips.com,
- s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH 1/1] drm/rockchip: vop2: Fix the port mux of VP2
-Date: Thu, 25 Apr 2024 16:51:52 +0200
-Message-ID: <3237003.e9J7NaK4W3@diego>
-In-Reply-To: <20240422101905.32703-2-andyshrk@163.com>
-References: <20240422101905.32703-1-andyshrk@163.com>
- <20240422101905.32703-2-andyshrk@163.com>
+	id 1s01du-00000009Ihw-14wz
+	for linux-rockchip@lists.infradead.org;
+	Thu, 25 Apr 2024 16:08:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 4F563CE1ADE;
+	Thu, 25 Apr 2024 16:08:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C9DCC113CC;
+	Thu, 25 Apr 2024 16:08:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714061291;
+	bh=oIgWqDe6+nieD7h1CLyTm0mDgOApEatpXGoBJXAWIJo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pGc5UEd7PUsxYbMazTYm6EfUQGBt013WyZPHhyUdnjGlUG4dp9+xxZ6WZAYIUIOHQ
+	 0h4KrxvhHNot1z9iLEgFlIMArOHzsONYUmpUpjJjEBuzunAgR10uWhyju/ygH71lGM
+	 xbE41drSISXbD4WqMdMdRSkTdvDDzSOXhOBl8JXU3lKX/abUNnA1xXclgbjtg9EDHT
+	 Ibra4HkK4KBJrFxKuOPF5vdGzEgeUB7JLl1m1iZb2Czb61h+iSsTD0bxlVPzwuqu6s
+	 koh4kGVKAsTwdhkX53SVDF0Eh1cCJOmc1WYCL/qCcKy4y0p9ANNo9nF7Utvndp+/jb
+	 oICjWdFdEJDdw==
+Date: Thu, 25 Apr 2024 11:08:09 -0500
+From: Rob Herring <robh@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>, Damien Le Moal <dlemoal@kernel.org>,
+	Jon Lin <jon.lin@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 04/12] dt-bindings: rockchip: Add DesignWare based PCIe
+ Endpoint controller
+Message-ID: <20240425160809.GA2613935-robh@kernel.org>
+References: <20240424-rockchip-pcie-ep-v1-v1-0-b1a02ddad650@kernel.org>
+ <20240424-rockchip-pcie-ep-v1-v1-4-b1a02ddad650@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240424-rockchip-pcie-ep-v1-v1-4-b1a02ddad650@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240425_155212_244586_E9F22797 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240425_090814_901029_F1B9310D 
+X-CRM114-Status: GOOD (  22.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +86,235 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 22. April 2024, 12:19:05 CEST schrieb Andy Yan:
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Wed, Apr 24, 2024 at 05:16:22PM +0200, Niklas Cassel wrote:
+> Document DT bindings for PCIe Endpoint controller found in Rockchip SoCs.
 > 
-> The port mux of VP2 should be RK3568_OVL_PORT_SET__PORT2_MUX.
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie-ep.yaml          | 192 +++++++++++++++++++++
+>  1 file changed, 192 insertions(+)
 > 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+> new file mode 100644
+> index 000000000000..57a6c542058f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+> @@ -0,0 +1,192 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: DesignWare based PCIe Endpoint controller on Rockchip SoCs
+> +
+> +maintainers:
+> +  - Niklas Cassel <cassel@kernel.org>
+> +
+> +description: |+
+> +  RK3588 SoC PCIe Endpoint controller is based on the Synopsys DesignWare
+> +  PCIe IP and thus inherits all the common properties defined in
+> +  snps,dw-pcie-ep.yaml.
+> +
+> +allOf:
+> +  - $ref: /schemas/pci/snps,dw-pcie-ep.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: rockchip,rk3588-pcie-ep
 
-on a rk3588 with VP3 connected to a DSI display
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+3568 doesn't support endpoint mode? It would be good to keep the 
+bindings aligned.
 
+> +
+> +  reg:
+> +    items:
+> +      - description: Data Bus Interface (DBI) registers
+> +      - description: Data Bus Interface (DBI) shadow registers
+> +      - description: Rockchip designed configuration registers
+> +      - description: Memory region used to map remote RC address space
+> +      - description: Address Translation Unit (ATU) registers
+> +
+> +  reg-names:
+> +    items:
+> +      - const: dbi
+> +      - const: dbi2
+> +      - const: apb
+> +      - const: addr_space
+> +      - const: atu
+> +
+> +  clocks:
+> +    minItems: 6
+> +    items:
+> +      - description: AHB clock for PCIe master
+> +      - description: AHB clock for PCIe slave
+> +      - description: AHB clock for PCIe dbi
+> +      - description: APB clock for PCIe
+> +      - description: Auxiliary clock for PCIe
+> +      - description: PIPE clock
+> +      - description: Reference clock for PCIe
+> +
+> +  clock-names:
+> +    minItems: 6
+> +    items:
+> +      - const: aclk_mst
+> +      - const: aclk_slv
+> +      - const: aclk_dbi
+> +      - const: pclk
+> +      - const: aux
+> +      - const: pipe
+> +      - const: ref
+> +
+> +  interrupts:
+> +    items:
+> +      - description:
+> +          Combined system interrupt, which is used to signal the following
+> +          interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme,
+> +          hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi,
+> +          edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app
+> +      - description:
+> +          Combined PM interrupt, which is used to signal the following
+> +          interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2,
+> +          linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2,
+> +          linkst_out_l0s, pm_dstate_update
+> +      - description:
+> +          Combined message interrupt, which is used to signal the following
+> +          interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi,
+> +          pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active
+> +      - description:
+> +          Combined legacy interrupt, which is used to signal the following
+> +          interrupts - tx_inta, tx_intb, tx_intc, tx_intd
+> +      - description:
+> +          Combined error interrupt, which is used to signal the following
+> +          interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
+> +          tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
+> +          nf_err_rx, f_err_rx, radm_qoverflow
+> +      - description:
+> +          eDMA write channel 0 interrupt
+> +      - description:
+> +          eDMA write channel 1 interrupt
+> +      - description:
+> +          eDMA read channel 0 interrupt
+> +      - description:
+> +          eDMA read channel 1 interrupt
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: sys
+> +      - const: pmc
+> +      - const: msg
+> +      - const: legacy
+> +      - const: err
+> +      - const: dma0
+> +      - const: dma1
+> +      - const: dma2
+> +      - const: dma3
+> +
+> +  num-lanes: true
+> +
+> +  phys:
+> +    maxItems: 1
+> +
+> +  phy-names:
+> +    const: pcie-phy
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 2
+> +
+> +  reset-names:
+> +    items:
+> +      - const: pwr
+> +      - const: pipe
 
+Most of this is all duplicated from rockchip-dw-pcie.yaml. Pull out the 
+common bits to a separate schema file and reference it from the RC and 
+endpoint schemas.
 
+You'll need to add to interrupts/interrupt-names in the common schema 
+and then restrict the number of items here and in the RC schema.
+
+> +
+> +  vpcie3v3-supply: true
+
+This doesn't make sense for endpoint mode. At least in the sense this 
+is supposed to be a standard slot voltage driven from the host side.
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - clocks
+> +  - clock-names
+> +  - interrupts
+> +  - interrupt-names
+> +  - num-lanes
+> +  - phys
+> +  - phy-names
+> +  - power-domains
+> +  - resets
+> +  - reset-names
+
+A bunch or all? of these can be in the common schema too.
+
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/power/rk3588-power.h>
+> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> +
+> +    bus {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        pcie3x4_ep: pcie-ep@fe150000 {
+> +            compatible = "rockchip,rk3588-pcie-ep";
+> +            clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
+> +                     <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
+> +                     <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>;
+> +            clock-names = "aclk_mst", "aclk_slv",
+> +                          "aclk_dbi", "pclk",
+> +                          "aux", "pipe";
+> +            interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 271 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                         <GIC_SPI 270 IRQ_TYPE_LEVEL_HIGH 0>;
+> +            interrupt-names = "sys", "pmc", "msg", "legacy", "err",
+> +                              "dma0", "dma1", "dma2", "dma3";
+> +            max-link-speed = <3>;
+> +            num-lanes = <4>;
+> +            phys = <&pcie30phy>;
+> +            phy-names = "pcie-phy";
+> +            power-domains = <&power RK3588_PD_PCIE>;
+> +            reg = <0xa 0x40000000 0x0 0x00100000>,
+> +                  <0xa 0x40100000 0x0 0x00100000>,
+> +                  <0x0 0xfe150000 0x0 0x00010000>,
+> +                  <0x9 0x00000000 0x0 0x40000000>,
+> +                  <0xa 0x40300000 0x0 0x00100000>;
+> +            reg-names = "dbi", "dbi2", "apb", "addr_space", "atu";
+> +            resets = <&cru SRST_PCIE0_POWER_UP>, <&cru SRST_P_PCIE0>;
+> +            reset-names = "pwr", "pipe";
+> +        };
+> +    };
+> +...
+> 
+> -- 
+> 2.44.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
