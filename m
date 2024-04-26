@@ -4,57 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B02C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Apr 2024 14:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60BAC4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Apr 2024 16:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=td7PyPgu1etKDU54A2kCNgYlce5+Y9HZXblIRbozi2A=; b=xQFgVJrLtrWszGGaMyPHRzIJNO
-	tOqikF36kGxe6QFQqPUx/p2tBHyfb8mACHLwCJBQiYt/RUKHnNQFsXhfe295ZAZRK0WJlyTGP2Sdu
-	1sNPkBmbsjzfZZJuv4nONCCeMtST5aSSwj7cGMAwjdc+7JrdpUI2Iiu6DVVWfHfr7GmunSQ2lGuMU
-	3PDCxklO6uKRFDBeGr1TtL+NZ5TNWu6LojtN3hndIwCodeWzmsWptz4S9qs+v7V3WUaDKRS1svDOP
-	bsUdHz2oSfJLaHKq6i/3k/NvZbhLnCzYn2a1OU5D19KEHHwenjRhxHpp9ag+lAYVFDpXPz7MOMq40
-	S2ul7acw==;
+	bh=Y5eTds5m9zQUsAoEIHpmiw5IQwdoWzw9nMGE9TzZx7U=; b=H9IgKGbmUQ3tNV3c0ZAsr9LWKN
+	UCJW/DWwMRzwnbHMd8Jx8u2BxyOXBA2i8yxxYzLGmrk1+I5J7uBvLe9mXpEXKJgmJXk5rrrYSoDRD
+	S17TrQbtwNbBeip426Amttq482MoMNKb7Z7Hl7hSlZG9gxqtDnSsr9qdZSXs1Y2KPVhTje8SBuN+/
+	g1HkueXjsDaw1E/Vs/6+2kEGGERGuU290npFqqGqC1KW46c0ZUE2QNqSFR7yMNLrjGf/3mPbdsgPe
+	qIQsTEYPGWh5VrPv1zg5gaSB/OP8PpF/gaAGrTJw5Tnolxr1YOLTACYCt9adiGFIAdMS8ar8UDkeH
+	dW7arzUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0MTN-0000000ColE-2eBk;
-	Fri, 26 Apr 2024 14:22:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s0OmW-0000000DJf7-14iC;
+	Fri, 26 Apr 2024 16:50:40 +0000
+Received: from mail-db3eur04on072a.outbound.protection.outlook.com ([2a01:111:f400:fe0c::72a] helo=EUR04-DB3-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0MTJ-0000000Coiy-3gHg;
-	Fri, 26 Apr 2024 14:22:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AAA8861FEC;
-	Fri, 26 Apr 2024 14:22:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E41AC116B1;
-	Fri, 26 Apr 2024 14:22:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714141360;
-	bh=xGYIK2uR0EjIwE5no8i0D9XaiNxJC0ttk/gjb20gsdc=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=rZ/+T1Rey2/rnm0hF7gKkJvSwZwb5L3AldmnN9/pnv4Vm7iIrwtHPGfIqwoEeBNCo
-	 w4ydI0ThNZKAiO/0xem87hoGYvUA/BqrSX1yf7tUwDNZEe9Yb4Efol5pWJoOhCfyNu
-	 5Qd0AXTauG83F93r1UkEJus+aEFsa1vvBA8xvPk+GXq1bAvLm9dblYbtEcBdO3lqMQ
-	 qUPwlQIwNpDACn+B1fqryP2U28+Xe/YGJbqcGphiSk072ljxIZG0No5SpJkcHbzmdP
-	 roD0SQWyB6RbyDOe/jVMmLq45CQ4ghBLDeX+3I01ugVFriWr6hpsEuTjlB9Ll2S8+Y
-	 3TFsqCe1j1LjQ==
-Date: Fri, 26 Apr 2024 09:22:38 -0500
+	id 1s0OmT-0000000DJdc-0bKP;
+	Fri, 26 Apr 2024 16:50:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VWCcHj8Z22PM5c5O1CjJFcHSrwPqaCgR48MwnFENNSHYu88G3OkrFr2Nr00AYGUxLS6XcdDxQgUBiFgt57rd3n3bMXTRTSHMQySBCH2Zn7SA7Ea8F90AJm+PLVibNKnOKepNMkVV1Z33aGJ4PCur/FnFk+iG6KBT0rUTQVdROPB6KOu/BMrDu4f0xpbNsz+lXsHZZfiCThwIk1D9G03VmfX+GIxyO2SzHdSDVHFAv45HBfBdPJAbQsKEUkGQJFVGBfVFqURD8aYefVVpchSUIOpnxpKVyUA50Ub8eDPcixX39IzK0R/4hhFWraMr+NLM/2fm4uD5H0GiIm8f+jItGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BOZ4y9LpmO3SIsxBmkTLzn2Xo1D8twp3LSzmvFtE+a0=;
+ b=nrk0RqR7KD0syFtm48tRnOnPluZVC84PE2cdjwetFIZ+vq2CK0c1yvy6G5Xl+/riEP0tnrqeT95NWl42F4gCqLd0QDPSRvMVKY1vQzTZhgPctpesO+2JPW8swp5TXxiI0RCNYDkGBSxvcbbHIbEO4dGrJidRo2N3h15lGX3WFc9jMf0eVQBAwdreDWaMCCrk7tRU712NTFrWGCTvV9cRu/n8CeX2STH1KFarDUzJAGxPcSHM48QM7Ur9+BTf4lEGq8ppkeyKmHQUWr5VT2kM1wCWDYL+BnjJ9ygysgYNp4Y/jAQdSxGck1nfVwUAj9O0aV55fV39sUfKV1yyc09ZHg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BOZ4y9LpmO3SIsxBmkTLzn2Xo1D8twp3LSzmvFtE+a0=;
+ b=jLIE7gozIYwukbmwqUCzdK6/FIjGr+M0zoQWm+DN7Quvnj6DeZeOrBzxLJtD0P2SKd2zNRR1PwZ3Nve2i7Pz7yKpZReHwS6SlZ5LWkN+0YC4VjhuLiG7oM9876jLabVJacOnp5FViSBuNPjJprDJ1xOWrsT+p4sCeEACXLnXmXP5CvQgLvrtqteJioQ/aUGtca3p/UgzR4wO8szDMYcBI9mmNw+vAI+t6/eBtEUbIYtCqxn5YO++pIGyU75Rflo4u/vpeSIDJYRHOpO+FT87VW5pwHmZ37vnJE8fq6drhLAItAg7v4YV/Jm2ZtkxA0ikxxkPJjlBtRLGZcsCbKAihA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from VE1PR04MB6382.eurprd04.prod.outlook.com (2603:10a6:803:122::31)
+ by VI0PR04MB10230.eurprd04.prod.outlook.com (2603:10a6:800:240::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.44; Fri, 26 Apr
+ 2024 16:50:25 +0000
+Received: from VE1PR04MB6382.eurprd04.prod.outlook.com
+ ([fe80::59d9:878d:65f0:3936]) by VE1PR04MB6382.eurprd04.prod.outlook.com
+ ([fe80::59d9:878d:65f0:3936%4]) with mapi id 15.20.7472.044; Fri, 26 Apr 2024
+ 16:50:25 +0000
+From: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+Date: Fri, 26 Apr 2024 18:49:32 +0200
+Subject: [PATCH 1/7] i2c: mux: add the ability to share mux-address with
+ child nodes
+Message-Id: <20240426-dev-mule-i2c-mux-v1-1-045a482f6ffb@theobroma-systems.com>
+References: <20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com>
+In-Reply-To: <20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+ Peter Rosin <peda@axentia.se>, Andi Shyti <andi.shyti@kernel.org>, 
+ Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+X-Mailer: b4 0.13.0
+X-ClientProxiedBy: VI1PR08CA0261.eurprd08.prod.outlook.com
+ (2603:10a6:803:dc::34) To VE1PR04MB6382.eurprd04.prod.outlook.com
+ (2603:10a6:803:122::31)
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Jimmy Hon <honyuenkwun@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, 
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20240425222913.1760-1-honyuenkwun@gmail.com>
-References: <20240425222913.1760-1-honyuenkwun@gmail.com>
-Message-Id: <171414068069.1496351.4140242282948810329.robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable GPU on Orange Pi 5
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: VE1PR04MB6382:EE_|VI0PR04MB10230:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01dcd41a-a324-4c5a-b457-08dc6610f831
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aE1tc0hDcm85bkI2RUNUdnVlNyt4MDZUaWJRT0pYY0FCU3U2dXJ4aUE0VlF4?=
+ =?utf-8?B?azIxYjdzd2EzNUFWa0R3NDVIZlA1aXVIb0greWxsK1RtdWVuR2JRNGdSbGdS?=
+ =?utf-8?B?Qm1UcUtNV3ZSc1pRa2VsR3o3VTZFaC9wenZuR3JYa1VGc0ZpdVBuRWdXTXZl?=
+ =?utf-8?B?R3dEQjI2enRJUHFWdDlka0xVTU9zSktxaUNPb0pNd0xabVd4R0svTnJsT3h1?=
+ =?utf-8?B?SDJuNWdSMlNEeFlHam10eE54SVk0UmdGcENMZkdPSDFORysreHEvVDVRYTF0?=
+ =?utf-8?B?L0xBay9zMWRHak9ES25GTWZhRW11RU8yRjNWK2lReHhwU1RENjJlU1crUUoy?=
+ =?utf-8?B?TmErQUpudVF4M0hLbUgxWkYrYlloRVlsOStwM3FSa1didk1JcHJJNk5DVTJu?=
+ =?utf-8?B?ZHNBRWxRUkFPVUtoVzJaaVdzSWNoTmlxQ2hnT1dDQ0VFSGpidlVGanpaeGJH?=
+ =?utf-8?B?MEhYWThLeHVpdEFxZHhLdHRTbVNpQm5PR1hFaWVMZG9kcWFRdHBlWUl3ZEJT?=
+ =?utf-8?B?Mk9HbFpTcit0QWtUMExxa3ppbGpBMkV5NTBtdkJKNGtwOTdzb2Q1emJrKy9x?=
+ =?utf-8?B?OU9YTjNUdDF3N2lRTnRpR2J6R1EyNkwyOHU4a0xaeFZDQTd2cHVuUDFQZ0Iz?=
+ =?utf-8?B?OU9DRFRVNnFDNGNiR1dTaHNoMUljQkt0aDhCU1FFVTJhVUlrNkJ2dzhpMnl5?=
+ =?utf-8?B?R0xjWFNJeXQ2MFd4RmlDa2JwQ0VNUW5yam1jeUd1Y1BlbGtjZkFjL3RKSkRm?=
+ =?utf-8?B?SThJeTE2UVJEYXdQTHFMMWs5cFBjbUFJZmdpV0Y1RUIveGYrbGJ2MmFtNHNQ?=
+ =?utf-8?B?dFZZQWhnanlDSFB6SmQrSGJzYTdYdyswU09qcUtwMU43NWFwUTNWU1BOM1dZ?=
+ =?utf-8?B?U01wSWZwU0UySDA5TWNQQ0JkSlZFcWdhK0RWZGpleFRLV3A2Y0J6U1R5WEZx?=
+ =?utf-8?B?emthWld4Yno0My95STNZU3pqaFN3V1pYK3F0VlZFbVU3RnVkVGZ6TENrUXBy?=
+ =?utf-8?B?ODZ0M2UzbTVIVGR1V0x2SVJJcHZDUUl1SkUvZTVyS05HYjVlT0ZNdjBwNGpw?=
+ =?utf-8?B?RWJiVVZENDhENFBWQUFFNWxkOURMVlg1Y0wvQVo1SldTVzlXZWpVdEpRTTUz?=
+ =?utf-8?B?STQvUkdjazFESzBiZGg3WGVOV0RQYXpmVUNIRXpjVWNqeEVtd0xieEJzenNT?=
+ =?utf-8?B?SUNGZFgvUUdnd1NEaXRrUkErZ2JXRW10S0ZCSHduWGg5TFo5ZFZFNDd6UXhD?=
+ =?utf-8?B?Q0JxTHRHeFNKdk9RbmM1ekdhUURFS3VMK2Z0M3huRjFiUmh6SVFxcytIVzdt?=
+ =?utf-8?B?U0NDckF6c05DeFRvaTh3cTE2QUpjeis4cWo5ZXRsSVlkc2Z5Zy9rOGVkT2px?=
+ =?utf-8?B?MkJCZ3BKWWt1YjI3V2V6c0d1d1FVUkdTdXZYYWhnMVZmbDFaSkZ0M3owNnJB?=
+ =?utf-8?B?V29COGxmdjJ4OENKcERZV25WeE9SODVuazY1VWpQWVZpTEJGdWZ4Wjh6VlBB?=
+ =?utf-8?B?YWtFSEI5STl4QXdXUFdKOTJxbEg2RHhSVkxnYXhYSEQ5NS8wbjdsUHV3bkZB?=
+ =?utf-8?B?NndqcHBONi9zR3RhU2V0Z2ZRU0dmb0Y2MzcxQXl1d3JsQ1E3ejd3dy9SUmFW?=
+ =?utf-8?B?ZTNpclNETlNGd04vakRpSkVVYjR1S054RXdqM1BVZGp2TURnVmU1d3hyVGJs?=
+ =?utf-8?B?eW9oaHlhV0ZiNjV3RVJRZCtKTFFGWnRNM3JlN3FVU0JKbkxnc2FodU5ucjhH?=
+ =?utf-8?B?SDA4VkNPTnFuN29OUERmellEazVnc1J0UWp1cVZaaG1PYWdHcFdjTHhoL000?=
+ =?utf-8?B?Si9qSmYvSlE1U3gxZVdMZz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB6382.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(52116005)(7416005)(1800799015)(366007)(38350700005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ejBFUTlBWEY0MHBhcG5ZZkdaMVk3YmxIZ3BGdUFaZEhna2hoaDg4QVRETUJz?=
+ =?utf-8?B?WTk2Vm0yQXBRMGt3WUE2VU45Qy9ZZUFvSTdRbkkzcHo1eDE3QTkzQWNHRDBn?=
+ =?utf-8?B?amRicDVxZFpDcFNlTzcvSGM2dG0veStROFVoZElrZUovTmo0c3Q2Y2RtcFdn?=
+ =?utf-8?B?cms4KzhDV3NLSzN0NHlQNCtBV3VCcnAwVU1iYWFKZFpwcXdVdGU4NlJ6Y0VO?=
+ =?utf-8?B?R1k5cXgrS1NBYzFJbi92UzRKR2V5NjV6S1BRbUpZNVpJV3dRM3Bod2k3VUVi?=
+ =?utf-8?B?UkVrekRQQ2JKUVVsTmQzVEM4c05FcVZUdlUwQmtLY0hoQzFVcVJqVTAyZmpK?=
+ =?utf-8?B?SVRPSkNZZTdPVk5EOVNyVk01OWlJMnhDVFVEQ3FQWVJiS05vVng1SEpVVDJL?=
+ =?utf-8?B?dDdHaXRrbGY3eXhoZmRVTDZHdXNoNXExSjNpN2pNK0hPNWFBaGNRNFFDTjFZ?=
+ =?utf-8?B?SkI2YTZPdngwbFhwRC90VzRQQkIzMVJUMGoxWkIzL3RYcUVad0xkUFZSSUZo?=
+ =?utf-8?B?YmF6YkVOdC9nSGZMUHg4cUFKclpZaDhvM0NYL1ZxRjlJQXUrMUVJcVNDUWt6?=
+ =?utf-8?B?NFVaRXFyRFVSdTdNMG1WRnBzZ3p3R01hSldkS054bkNxVG9Oc25paWJNY3Q4?=
+ =?utf-8?B?am82N3hTNGN5akw1NlhyNTMzSWtwUGlYa2pkem83QVhyam43K04wZ253R1FH?=
+ =?utf-8?B?SFRnZzlGRGlNM2hjcERoWGw3K3ZnVVJmRkhpZjYzT1FZa0JNNDZhL213NzIz?=
+ =?utf-8?B?R1NRR2JYRGJuOHNpUmV3aWRFZ0ZCeWpkYVpuRE9DaHdPb0tDaWx4aVM0T2Jp?=
+ =?utf-8?B?MG5Rb1dqSUZuWFFoeXJQV0xLTk14RHhNdTZEREc1VzcxcEwvb05DWTN4TkdB?=
+ =?utf-8?B?ZUNBTDFFR2Y5cy8ycmRKclNNT2ovNHpCMlM3L2w1KzJzR2VYenBZNElsOTA0?=
+ =?utf-8?B?eFJiMlpzODB1YUxqRzBtYVNPQ3VOM0xqYmFxYXhXV3pDckFKVHc2T0RxZjJi?=
+ =?utf-8?B?VzBGYVNKYmRTbW4xYVhCVCtsR3lhQmNJdmRXVERQKzBCTXBlYnhQb2toOTZt?=
+ =?utf-8?B?ekxiSE1NRm1heW1HZTZBTm9Za1VNUEMrSC8rWXJSRFQ0R2pqSHhWaDc3d0Ju?=
+ =?utf-8?B?UmIzZTd6NitjNzJudjJMZmZPWmJSdmczcW0wcjhZeER3VnFvd2dvR09FQTFp?=
+ =?utf-8?B?RkQ5aDhVL2ttalMxU1ZIeUpxQmVtdVRGc29ITDJoVWxZQU1uTndkTjRpY3RP?=
+ =?utf-8?B?UXdIWTEwR1NpZkhWSXkrT0RXRmtKNVpnZ205Y3BPVlFpSXpUdCtrdjRuZmhz?=
+ =?utf-8?B?LzQ1bWxWMk9HVHpaWlZFYXU2a2RNVy9EdUNETldOY0ZlS3g4YUtsakJJWk1a?=
+ =?utf-8?B?eHZmd284ejQxQTVCazlxL1Bjc0tlQ0dkTVJncktIaEZ1ZnhJNHROTGkrV2J0?=
+ =?utf-8?B?amdhVlJGbStXdXJMb1pwRWh4d2lXWGpnRGo4S1I3RWhKY0k3SStXS1VZMkxQ?=
+ =?utf-8?B?VkVaK2VyQkxOZmJEcGxVZmpteVNibUVuMlRucDVwTEJBWXcydjh2QlJWeWVm?=
+ =?utf-8?B?cURmaFprcm9yRnF3YkVPVDlQN20rME1WV1B3WSt0QTErdVpJN2JZZnpxUytp?=
+ =?utf-8?B?ZUZZaUg3V1hUY1IvK3lPVUh4c0p4YmsrZHVUR2RIWGNrTGpDdHFEUHJiMkFl?=
+ =?utf-8?B?NnowUG8vbk1lVEI5YmVvVnJiTzRWQ0ZtQ245SThVb1VtVWQ5V3FnY2cza0hP?=
+ =?utf-8?B?cU5yVW1ONkJyL0FLWjdJSWRFSDN0WEw3Y2h6elFHKzA1dHpxOVcveHIvWnlG?=
+ =?utf-8?B?L01HeGUrTzBzOWZxZ1V1MEhqWEk4U2RHNWRKM0RoendkOXVoNTMwR01WN3g0?=
+ =?utf-8?B?Q1NnSFNIZFVVSFpBcUVZNnZpR2M1bElGQXdhbHlxRjZvR0JWUS9jSjZHank5?=
+ =?utf-8?B?eC9UQXFiZnlZOEhTYnlUVnB4SHVPMzdRRzRHVzg5Um8zRFIraEdib0NYWVBk?=
+ =?utf-8?B?cm1lRnI4VWRLdURkSnBmaFpxMzVlVG9rTFdvc2hFRHFUWnRJT2N3djJxVWJk?=
+ =?utf-8?B?WHU2NDlNOXBFQVJUbU9aajBySXBEZzgzcktGQjl4TEZ2OXY4UHJGY1o5Rlk3?=
+ =?utf-8?B?QVd6VW5hSk5ncWxBRnpiaURTMEc4Z1FWOHFKUUVJQlFqb3pZMUMyS0pZQ0Vs?=
+ =?utf-8?Q?HzCIaR8PoTwse4NQTTuyqQI=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01dcd41a-a324-4c5a-b457-08dc6610f831
+X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB6382.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Apr 2024 16:50:25.1088
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: s31FsMxDOfV7owdLmFX60Fksqy+dhoPm+0I5FmeNv1h6Y2P1UPM2FD25PXg6OSI0A7K/V1PCMCy4vq76ABHWvnKu/W2074f4SMgPtC69b2XZaoJdip3iFUUIx/py5FS9
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10230
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240426_072241_983109_09CBEA9A 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20240426_095037_232540_FA049F78 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,39 +183,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Allow the mux to have the same address as a child device. This is useful
+when the mux can only use an i2c-address that is used by a child device
+because no other addresses are free to use. eg. the mux can only use
+address 0x18 which is used by amc6821 connected to the mux.
 
-On Thu, 25 Apr 2024 17:29:13 -0500, Jimmy Hon wrote:
-> Enable the Mali GPU in the Orange Pi 5
-> 
-> Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
+---
+ drivers/i2c/i2c-mux.c   | 10 +++++++++-
+ include/linux/i2c-mux.h |  1 +
+ 2 files changed, 10 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/i2c/i2c-mux.c b/drivers/i2c/i2c-mux.c
+index 57ff09f18c37..f5357dff8cc5 100644
+--- a/drivers/i2c/i2c-mux.c
++++ b/drivers/i2c/i2c-mux.c
+@@ -331,7 +331,6 @@ int i2c_mux_add_adapter(struct i2c_mux_core *muxc,
+ 	priv->adap.owner = THIS_MODULE;
+ 	priv->adap.algo = &priv->algo;
+ 	priv->adap.algo_data = priv;
+-	priv->adap.dev.parent = &parent->dev;
+ 	priv->adap.retries = parent->retries;
+ 	priv->adap.timeout = parent->timeout;
+ 	priv->adap.quirks = parent->quirks;
+@@ -348,6 +347,15 @@ int i2c_mux_add_adapter(struct i2c_mux_core *muxc,
+ 	else
+ 		priv->adap.class = class;
+ 
++	/*
++	 * When creating the adapter, the node devices are checked for i2c address
++	 * match with other devices on the parent adapter, among which is the mux itself.
++	 * If a match is found the node device is not probed successfully.
++	 * Allow the mux to have the same address as a child device by skipping this check.
++	 */
++	if (!(muxc->share_addr_with_children))
++		priv->adap.dev.parent = &parent->dev;
++
+ 	/*
+ 	 * Try to populate the mux adapter's of_node, expands to
+ 	 * nothing if !CONFIG_OF.
+diff --git a/include/linux/i2c-mux.h b/include/linux/i2c-mux.h
+index 98ef73b7c8fd..17ac68bf1703 100644
+--- a/include/linux/i2c-mux.h
++++ b/include/linux/i2c-mux.h
+@@ -21,6 +21,7 @@ struct i2c_mux_core {
+ 	unsigned int mux_locked:1;
+ 	unsigned int arbitrator:1;
+ 	unsigned int gate:1;
++	unsigned int share_addr_with_children:1;
+ 
+ 	void *priv;
+ 
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-New warnings running 'make CHECK_DTBS=y rockchip/rk3588s-orangepi-5.dtb' for 20240425222913.1760-1-honyuenkwun@gmail.com:
-
-arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtb: gpio-func: leds-gpio: {'rockchip,pins': [[0, 2, 0, 223]], 'phandle': [[231]]} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml#
-
-
-
-
+-- 
+2.34.1
 
 
 _______________________________________________
