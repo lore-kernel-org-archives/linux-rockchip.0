@@ -4,102 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A7F3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Apr 2024 07:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948ADC4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Apr 2024 10:14:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0CHeTtkcjmwBMVdfksQYGiBfSBltRFt6g1duQjwTpwQ=; b=1w01lS98UYqzSk
-	gpcyEbOSV9Um0D18NPvqcdAdB7uPDHILcn3U+gnpyv3SANg9jqgpWIa0jPLSWlpdUAKJahPp8gQwt
-	Fpv0FRKPl6eXAzKZl2qjIgGsO4ACfYHdAypYOtErBMy33Fxnc+fdEJ7JsCxlzjMthq/hsjGi+/ewJ
-	Wb09LoG5vLrJGjPUfpG4FHXbJDjzf5BWDRaVyB8wd9vyzFPnIjll3WVDaE85LNefH9jldzifGN2Vt
-	y/Vmh95GtMocF9KKmzgR8FSovL9aDMccNU2WvLMSBvmLTsNrWxZeSjS0skPqzC+IH4KWz/d/aYlH5
-	wuboQpxehwjtUbERZuAw==;
+	List-Owner; bh=tOxic3kWn3NLb2G5NKAeTvcy719kq726DogwzYRwwaI=; b=zlkGuAqHG2yqlB
+	8IOIOnYxSUHXRocrPYzA0qdQBrQCAkehUwmmJRuPcWjna3BoCUOkXITGL6QWVT4swX4eS170u/AcJ
+	ouoPwErEO45Bpew9L3tcSau/D88DErhSctljTcnJ5BPJ+SW7ZaSjhx2Pj8q0mohIdBKm2ZeRU61gY
+	2vwo/5qcZ4LJzizbE4arjo4xBa0Ixzlnl3dE5RXGWiHyg6M/DzndPGaHB5rITb/ys4fCQR7GD05uq
+	nRxwR9mNqK848AGgfzU1NETcJfrl3OpMlyb3vnreDn6sbXIUfF9iqwOfP9QSnqBwYQpIaMuxpm+ns
+	IMql8RX6P6vof+ziQADg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0cJa-0000000F2U9-3sQO;
-	Sat, 27 Apr 2024 07:17:42 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1s0f4V-0000000FILO-3Uz6;
+	Sat, 27 Apr 2024 10:14:19 +0000
+Received: from mail-m6035.netease.com ([210.79.60.35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0cJX-0000000F2Rz-0MGs;
-	Sat, 27 Apr 2024 07:17:40 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-5e4f79007ffso1847665a12.2;
-        Sat, 27 Apr 2024 00:17:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714202255; x=1714807055; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=X8kCB3I1nqc74i13dcnZcbSCBOzeY8bK9si08l2dEgE=;
-        b=Qslyn0RGu8njG5idbhRTl2ZlEyUbZmSbepGh87vleJUQsoS6D9kWrm2Bu4MpVEGiyf
-         iJYJAq3TmCOHRGzIyzxDjRj91xG/s/m6Kuc/QQpGNZRuUNo3/mjHObE6td32h9NCMIq5
-         50rQ0YdNmXHxSaPy8DKB5+nIWiyVRsFB4nQo9HhhgEHa3P2r/wfHKX90BnvgPjUyq8cL
-         8H8E0HzPf5MbxT34sCC3FeqSDsFBBUWpmkG71ka5fOPO5XnOqvCiAqCnjNSeOTGxD218
-         Nf05xNLJNVMsHn9VGgZvBgy2mMGP18ro2rgdUxgMhOmomKs2kfzXHWMdZrPalQ22LTs3
-         10AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714202255; x=1714807055;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=X8kCB3I1nqc74i13dcnZcbSCBOzeY8bK9si08l2dEgE=;
-        b=vwFqkdoWZ8pUlMWZSgv0Gp8U2nnn3uqyQUDNsux1xiGlrpVlzs87g1G9pPKTHl+eAF
-         ldZmzCu4fcArFIs2Vi5Kwa8JZGfkDUuW/hzuwT/69yPqS54U+05GHhzwgc0Iga0neHIn
-         6x2NsEnx0TcvUPw/eaM9hrOoyAy5KxJ9DMgDHKgXHMiOkzrY8pKZq3iVE76xN48QY8aO
-         +A0Fg3Bx7FzDop2he5ztmRqcBv1MOaARKds//oC6xl7X0XXixg3kvx4qXKo2GKu5SmpJ
-         f67MKaKUDgcCR/Azar7w+of1c55sE9ZezZ4Si7GXlDBUGkTb4FUIBxVhb0IN89ZPXl6Z
-         xx9g==
-X-Forwarded-Encrypted: i=1; AJvYcCWL+qMJVNCUD9hQu5dgOzGQWKoWOtY39aKXAjOvtJNNfRkdqh7SKZCy2+Bb3DcTd/pgXEk2CvaAPS70C6VkG1zh0Y6J2LJWGfpAWIkdzIPL6iWueCj99pNycFrR6ZoYGfocsvX8s77vetVoZoLStHrQCBAYJuMswQs=
-X-Gm-Message-State: AOJu0YzHE/EeJtp00+i76EqjHUOF6HJZPYXbgmxZD9vmdqoRjqaq8CoH
-	Rw8wg1zVV6I/y/MiCLeuqK/ldj5U7Jpj+9RRA7eVxagonp0WoomF
-X-Google-Smtp-Source: AGHT+IHWfWgdcQqxoTVmFJIu2SLzNm3A0qQRERzEXLa7neH1QrNrTJ0T8DF6bh4XJ6eY6mQO553c/Q==
-X-Received: by 2002:a17:90b:1d01:b0:2a2:bd4b:764f with SMTP id on1-20020a17090b1d0100b002a2bd4b764fmr4481541pjb.3.1714202255374;
-        Sat, 27 Apr 2024 00:17:35 -0700 (PDT)
-Received: from toyko-2.5 ([45.32.55.39])
-        by smtp.gmail.com with ESMTPSA id e14-20020a17090ab38e00b002a03456ccabsm17233086pjr.30.2024.04.27.00.16.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Apr 2024 00:17:34 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: linkmauve@linkmauve.fr
-Cc: andy.yan@rock-chips.com,
-	conor+dt@kernel.org,
-	cristian.ciocaltea@collabora.com,
-	devicetree@vger.kernel.org,
-	dsimic@manjaro.org,
-	ezequiel@vanguardiasur.com.ar,
-	frattaroli.nicolas@gmail.com,
-	heiko@sntech.de,
-	iommu@lists.linux.dev,
-	joro@8bytes.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	macromorgan@hotmail.com,
-	mchehab@kernel.org,
-	p.zabel@pengutronix.de,
-	robh@kernel.org,
-	robin.murphy@arm.com,
-	sebastian.reichel@collabora.com,
-	shreeya.patel@collabora.com,
-	will@kernel.org,
-	sigmaris@gmail.com,
-	nicolas@ndufresne.ca
-Subject: Re: [PATCH v4 0/2] Enable JPEG encoding on rk3588
-Date: Sat, 27 Apr 2024 15:16:38 +0800
-Message-Id: <20240427071638.79915-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240418141509.2485053-1-linkmauve@linkmauve.fr>
-References: <20240418141509.2485053-1-linkmauve@linkmauve.fr>
+	id 1s0f4S-0000000FIIo-0pLN;
+	Sat, 27 Apr 2024 10:14:18 +0000
+DKIM-Signature: a=rsa-sha256;
+	b=D8x5Epf5ktoQyzGdUGpoIlypfthN/Y75Bgoz4fqy6yYzNignZM7/BlBCTlg/LT1lqlyCQ9JRC8B1MQxMidXe6cI6rr1NiFJaPYQWyM1WKhy5pBVX+GdzRdr/NX3PAYTbpEPZPqWQPLbuTSMT4OJnuMWfT/LCSB3Iog4Opy8YKbg=;
+	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=41zTvRE2jVBg29HAtbvVhLPeaBIa2sv0X5Jp+BcE0Wc=;
+	h=date:mime-version:subject:message-id:from;
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 9D9C184021D;
+	Sat, 27 Apr 2024 18:12:27 +0800 (CST)
+Message-ID: <bab90a27-b742-4587-aec6-e4e1fdf2d186@rock-chips.com>
+Date: Sat, 27 Apr 2024 18:12:26 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 27/28] drm/rockchip: inno_hdmi: Switch to HDMI
+ connector
+To: Maxime Ripard <mripard@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>,
+ Sebastian Wick <sebastian.wick@redhat.com>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+References: <20240423-kms-hdmi-connector-state-v12-0-3338e4c0b189@kernel.org>
+ <20240423-kms-hdmi-connector-state-v12-27-3338e4c0b189@kernel.org>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20240423-kms-hdmi-connector-state-v12-27-3338e4c0b189@kernel.org>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx8ZGVZKSx0YSk5CS0JKTEtVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
+	kG
+X-HM-Tid: 0a8f1f0abd8f03a4kunm9d9c184021d
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRQ6SSo*FzNLLikcGlFNLjcf
+	ER4KCixVSlVKTEpPSUpJTE9CSkxIVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSk1JS0I3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240427_001739_203061_DBBA7357 
-X-CRM114-Status: UNSURE (   8.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240427_031416_659968_2FA54136 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,23 +83,365 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRW1tYW51ZWwsCgpPbiBUaHUsIDE4IEFwciAyMDI0IDE2OjE1OjA0ICswMjAwLCBFbW1hbnVl
-bCBHaWwgUGV5cm90IHdyb3RlOgo+LSBPbmx5IGV4cG9zZSBhIHNpbmdsZSBWRVBVMTIxLCBzaW5j
-ZSB0aGUgZHJpdmVyIGRvZXNu4oCZdCB5ZXQgc3VwcG9ydAo+ICBleHBvc2luZyB0aGVtIGFsbCBh
-cyBhIHNpbmdsZSB2aWRlbyBub2RlIHRvIHVzZXJzcGFjZS4KSSdtIGFsc28gZG9pbmcgd29yayB3
-aXRoIHRoZSBoYW50cm8gbm9kZSBvbiByazM1ODggd2hpY2ggaGFzIGJvdGggdmRwdQphbmQgdmVw
-dS4gRGlzY3Vzc2lvbnMgY2FuIGJlIGZvdW5kIGhlcmVbMV0uIElmIEkgZW5hYmxlIHRoZSBqcGVn
-IGVuY29kZXIKYXQgZmViNTAwMDAsIHdvdWxkIGl0IGNhdXNlIGFueSBzaWRlIGVmZmVjdHMgaWYg
-b3RoZXIganBlZyBlbmNvZGVycyBpbgp5b3VyIHBhdGNoIGFyZSBlbmFibGVkPyBBbmQgd2hhdCdz
-IHRoZSBkaXNhZHZhbnRhZ2Ugb2YgZW5hYmxpbmcgbXVsdGkKanBlZyBlbmRvZXJzIGluIGRldmlj
-ZXRyZWU/CgpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXJv
-Y2tjaGlwL3BhdGNoLzIwMjQwNDE4MTExMDAyLjgzMDE1LTMtbGl1amlhbmZlbmcxOTk0QGdtYWls
-LmNvbS8KCkJlc3QgcmVnYXJkcywKSmlhbmZlbmcKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Maxime,
+
+On 4/23/24 18:45, Maxime Ripard wrote:
+> The new HDMI connector infrastructure allows to remove some boilerplate,
+> especially to generate infoframes. Let's switch to it.
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>   drivers/gpu/drm/rockchip/Kconfig     |   1 +
+>   drivers/gpu/drm/rockchip/inno_hdmi.c | 143 +++++++++++++----------------------
+>   2 files changed, 53 insertions(+), 91 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+> index 4c7072e6e34e..e2ec20c2e2eb 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -72,10 +72,11 @@ config ROCKCHIP_DW_MIPI_DSI
+>   	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
+>   	  select this option.
+>   
+>   config ROCKCHIP_INNO_HDMI
+>   	bool "Rockchip specific extensions for Innosilicon HDMI"
+> +	depends on 
+
+Is this supposed to be  DRM_DISPLAY_HDMI_STATE_HELPER whith you introduced in PATCH 04/28?
+I couldn't find any place where  DRM_HDMI_STATE_HELPER is defined.
+
+>   	help
+>   	  This selects support for Rockchip SoC specific extensions
+>   	  for the Innosilicon HDMI driver. If you want to enable
+>   	  HDMI on RK3036 based SoC, you should select this option.
+>   
+> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+> index 1d2261643743..3756259bfb10 100644
+> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
+> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+> @@ -65,13 +65,11 @@ struct inno_hdmi {
+>   	const struct inno_hdmi_variant *variant;
+>   };
+>   
+>   struct inno_hdmi_connector_state {
+>   	struct drm_connector_state	base;
+> -	unsigned int			enc_out_format;
+>   	unsigned int			colorimetry;
+> -	bool				rgb_limited_range;
+>   };
+>   
+>   static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
+>   {
+>   	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
+> @@ -255,90 +253,53 @@ static void inno_hdmi_reset(struct inno_hdmi *hdmi)
+>   	hdmi_modb(hdmi, HDMI_SYS_CTRL, msk, val);
+>   
+>   	inno_hdmi_standby(hdmi);
+>   }
+>   
+> -static void inno_hdmi_disable_frame(struct inno_hdmi *hdmi,
+> -				    enum hdmi_infoframe_type type)
+> +static int inno_hdmi_disable_frame(struct drm_connector *connector,
+> +				   enum hdmi_infoframe_type type)
+>   {
+> -	struct drm_connector *connector = &hdmi->connector;
+> -
+> -	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+> -		drm_err(connector->dev,
+> -			"Unsupported infoframe type: %u\n", type);
+> -		return;
+> -	}
+> -
+> -	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
+> -}
+> -
+> -static int inno_hdmi_upload_frame(struct inno_hdmi *hdmi,
+> -				  union hdmi_infoframe *frame, enum hdmi_infoframe_type type)
+> -{
+> -	struct drm_connector *connector = &hdmi->connector;
+> -	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
+> -	ssize_t rc, i;
+> +	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
+>   
+>   	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+>   		drm_err(connector->dev,
+>   			"Unsupported infoframe type: %u\n", type);
+>   		return 0;
+>   	}
+>   
+> -	inno_hdmi_disable_frame(hdmi, type);
+> +	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
+>   
+> -	rc = hdmi_infoframe_pack(frame, packed_frame,
+> -				 sizeof(packed_frame));
+> -	if (rc < 0)
+> -		return rc;
+> +	return 0;
+> +}
+>   
+> -	for (i = 0; i < rc; i++)
+> +static int inno_hdmi_upload_frame(struct drm_connector *connector,
+> +				  enum hdmi_infoframe_type type,
+> +				  const u8 *buffer, size_t len)
+> +{
+> +	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
+> +	u8 packed_frame[HDMI_MAXIMUM_INFO_FRAME_SIZE];
+> +	ssize_t i;
+> +
+> +	if (type != HDMI_INFOFRAME_TYPE_AVI) {
+> +		drm_err(connector->dev,
+> +			"Unsupported infoframe type: %u\n", type);
+> +		return 0;
+> +	}
+> +
+> +	inno_hdmi_disable_frame(connector, type);
+> +
+> +	for (i = 0; i < len; i++)
+>   		hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_ADDR + i,
+>   			    packed_frame[i]);
+>   
+>   	return 0;
+>   }
+>   
+> -static int inno_hdmi_config_video_avi(struct inno_hdmi *hdmi,
+> -				      struct drm_display_mode *mode)
+> -{
+> -	struct drm_connector *connector = &hdmi->connector;
+> -	struct drm_connector_state *conn_state = connector->state;
+> -	struct inno_hdmi_connector_state *inno_conn_state =
+> -					to_inno_hdmi_conn_state(conn_state);
+> -	union hdmi_infoframe frame;
+> -	int rc;
+> -
+> -	rc = drm_hdmi_avi_infoframe_from_display_mode(&frame.avi,
+> -						      &hdmi->connector,
+> -						      mode);
+> -	if (rc) {
+> -		inno_hdmi_disable_frame(hdmi, HDMI_INFOFRAME_TYPE_AVI);
+> -		return rc;
+> -	}
+> -
+> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444)
+> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV444;
+> -	else if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV422)
+> -		frame.avi.colorspace = HDMI_COLORSPACE_YUV422;
+> -	else
+> -		frame.avi.colorspace = HDMI_COLORSPACE_RGB;
+> -
+> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_RGB) {
+> -		drm_hdmi_avi_infoframe_quant_range(&frame.avi,
+> -						   connector, mode,
+> -						   inno_conn_state->rgb_limited_range ?
+> -						   HDMI_QUANTIZATION_RANGE_LIMITED :
+> -						   HDMI_QUANTIZATION_RANGE_FULL);
+> -	} else {
+> -		frame.avi.quantization_range = HDMI_QUANTIZATION_RANGE_DEFAULT;
+> -		frame.avi.ycc_quantization_range =
+> -			HDMI_YCC_QUANTIZATION_RANGE_LIMITED;
+> -	}
+> -
+> -	return inno_hdmi_upload_frame(hdmi, &frame, HDMI_INFOFRAME_TYPE_AVI);
+> -}
+> +static const struct drm_connector_hdmi_funcs inno_hdmi_hdmi_connector_funcs = {
+> +	.clear_infoframe	= inno_hdmi_disable_frame,
+> +	.write_infoframe	= inno_hdmi_upload_frame,
+> +};
+>   
+>   static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
+>   {
+>   	struct drm_connector *connector = &hdmi->connector;
+>   	struct drm_connector_state *conn_state = connector->state;
+> @@ -359,12 +320,12 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
+>   	value = v_VIDEO_INPUT_BITS(VIDEO_INPUT_8BITS) |
+>   		v_VIDEO_OUTPUT_COLOR(0) |
+>   		v_VIDEO_INPUT_CSP(0);
+>   	hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL2, value);
+>   
+> -	if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_RGB) {
+> -		if (inno_conn_state->rgb_limited_range) {
+> +	if (conn_state->hdmi.output_format == HDMI_COLORSPACE_RGB) {
+> +		if (conn_state->hdmi.is_limited_range) {
+>   			csc_mode = CSC_RGB_0_255_TO_RGB_16_235_8BIT;
+>   			auto_csc = AUTO_CSC_DISABLE;
+>   			c0_c2_change = C0_C2_CHANGE_DISABLE;
+>   			csc_enable = v_CSC_ENABLE;
+>   
+> @@ -378,18 +339,18 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
+>   				  v_VIDEO_C0_C2_SWAP(C0_C2_CHANGE_DISABLE));
+>   			return 0;
+>   		}
+>   	} else {
+>   		if (inno_conn_state->colorimetry == HDMI_COLORIMETRY_ITU_601) {
+> -			if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444) {
+> +			if (conn_state->hdmi.output_format == HDMI_COLORSPACE_YUV444) {
+>   				csc_mode = CSC_RGB_0_255_TO_ITU601_16_235_8BIT;
+>   				auto_csc = AUTO_CSC_DISABLE;
+>   				c0_c2_change = C0_C2_CHANGE_DISABLE;
+>   				csc_enable = v_CSC_ENABLE;
+>   			}
+>   		} else {
+> -			if (inno_conn_state->enc_out_format == HDMI_COLORSPACE_YUV444) {
+> +			if (conn_state->hdmi.output_format == HDMI_COLORSPACE_YUV444) {
+>   				csc_mode = CSC_RGB_0_255_TO_ITU709_16_235_8BIT;
+>   				auto_csc = AUTO_CSC_DISABLE;
+>   				c0_c2_change = C0_C2_CHANGE_DISABLE;
+>   				csc_enable = v_CSC_ENABLE;
+>   			}
+> @@ -460,14 +421,16 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
+>   
+>   	return 0;
+>   }
+>   
+>   static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+> -			   struct drm_display_mode *mode)
+> +			   struct drm_crtc_state *new_crtc_state,
+> +			   struct drm_connector_state *new_conn_state)
+>   {
+> -	struct drm_display_info *display = &hdmi->connector.display_info;
+> -	unsigned long mpixelclock = mode->clock * 1000;
+> +	struct drm_connector *connector = &hdmi->connector;
+> +	struct drm_display_info *display = &connector->display_info;
+> +	struct drm_display_mode *mode = &new_crtc_state->adjusted_mode;
+>   
+>   	/* Mute video and audio output */
+>   	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
+>   		  v_AUDIO_MUTE(1) | v_VIDEO_MUTE(1));
+>   
+> @@ -477,26 +440,26 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
+>   
+>   	inno_hdmi_config_video_timing(hdmi, mode);
+>   
+>   	inno_hdmi_config_video_csc(hdmi);
+>   
+> -	if (display->is_hdmi)
+> -		inno_hdmi_config_video_avi(hdmi, mode);
+> +	drm_atomic_helper_connector_hdmi_update_infoframes(connector,
+> +							   new_conn_state->state);
+>   
+>   	/*
+>   	 * When IP controller have configured to an accurate video
+>   	 * timing, then the TMDS clock source would be switched to
+>   	 * DCLK_LCDC, so we need to init the TMDS rate to mode pixel
+>   	 * clock rate, and reconfigure the DDC clock.
+>   	 */
+> -	inno_hdmi_i2c_init(hdmi, mpixelclock);
+> +	inno_hdmi_i2c_init(hdmi, new_conn_state->hdmi.tmds_char_rate);
+>   
+>   	/* Unmute video and audio output */
+>   	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
+>   		  v_AUDIO_MUTE(0) | v_VIDEO_MUTE(0));
+>   
+> -	inno_hdmi_power_up(hdmi, mpixelclock);
+> +	inno_hdmi_power_up(hdmi, new_conn_state->hdmi.tmds_char_rate);
+>   
+>   	return 0;
+>   }
+>   
+>   static enum drm_mode_status inno_hdmi_display_mode_valid(struct inno_hdmi *hdmi,
+> @@ -544,11 +507,11 @@ static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
+>   
+>   	crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
+>   	if (WARN_ON(!crtc_state))
+>   		return;
+>   
+> -	inno_hdmi_setup(hdmi, &crtc_state->adjusted_mode);
+> +	inno_hdmi_setup(hdmi, crtc_state, conn_state);
+>   }
+>   
+>   static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
+>   				      struct drm_atomic_state *state)
+>   {
+> @@ -561,11 +524,10 @@ static int
+>   inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+>   			       struct drm_crtc_state *crtc_state,
+>   			       struct drm_connector_state *conn_state)
+>   {
+>   	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
+> -	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
+>   	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
+>   	u8 vic = drm_match_cea_mode(mode);
+>   	struct inno_hdmi_connector_state *inno_conn_state =
+>   					to_inno_hdmi_conn_state(conn_state);
+>   
+> @@ -578,16 +540,11 @@ inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
+>   	    vic == 17 || vic == 18)
+>   		inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_601;
+>   	else
+>   		inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
+>   
+> -	inno_conn_state->enc_out_format = HDMI_COLORSPACE_RGB;
+> -	inno_conn_state->rgb_limited_range =
+> -		drm_default_rgb_quant_range(mode) == HDMI_QUANTIZATION_RANGE_LIMITED;
+> -
+> -	return  inno_hdmi_display_mode_valid(hdmi,
+> -				&crtc_state->adjusted_mode) == MODE_OK ? 0 : -EINVAL;
+> +	return 0;
+>   }
+>   
+>   static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
+>   	.atomic_check	= inno_hdmi_encoder_atomic_check,
+>   	.atomic_enable	= inno_hdmi_encoder_enable,
+> @@ -660,14 +617,13 @@ static void inno_hdmi_connector_reset(struct drm_connector *connector)
+>   	inno_conn_state = kzalloc(sizeof(*inno_conn_state), GFP_KERNEL);
+>   	if (!inno_conn_state)
+>   		return;
+>   
+>   	__drm_atomic_helper_connector_reset(connector, &inno_conn_state->base);
+> +	__drm_atomic_helper_connector_hdmi_reset(connector, connector->state);
+>   
+>   	inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
+> -	inno_conn_state->enc_out_format = HDMI_COLORSPACE_RGB;
+> -	inno_conn_state->rgb_limited_range = false;
+>   }
+>   
+>   static struct drm_connector_state *
+>   inno_hdmi_connector_duplicate_state(struct drm_connector *connector)
+>   {
+> @@ -696,10 +652,11 @@ static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
+>   	.atomic_duplicate_state = inno_hdmi_connector_duplicate_state,
+>   	.atomic_destroy_state = inno_hdmi_connector_destroy_state,
+>   };
+>   
+>   static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
+> +	.atomic_check = drm_atomic_helper_connector_hdmi_check,
+>   	.get_modes = inno_hdmi_connector_get_modes,
+>   	.mode_valid = inno_hdmi_connector_mode_valid,
+>   };
+>   
+>   static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+> @@ -723,14 +680,18 @@ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+>   
+>   	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
+>   
+>   	drm_connector_helper_add(&hdmi->connector,
+>   				 &inno_hdmi_connector_helper_funcs);
+> -	drm_connector_init_with_ddc(drm, &hdmi->connector,
+> -				    &inno_hdmi_connector_funcs,
+> -				    DRM_MODE_CONNECTOR_HDMIA,
+> -				    hdmi->ddc);
+> +	drmm_connector_hdmi_init(drm, &hdmi->connector,
+> +				 "Rockchip", "Inno HDMI",
+> +				 &inno_hdmi_connector_funcs,
+> +				 &inno_hdmi_hdmi_connector_funcs,
+> +				 DRM_MODE_CONNECTOR_HDMIA,
+> +				 hdmi->ddc,
+> +				 BIT(HDMI_COLORSPACE_RGB),
+> +				 8);
+>   
+>   	drm_connector_attach_encoder(&hdmi->connector, encoder);
+>   
+>   	return 0;
+>   }
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
