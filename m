@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948ADC4345F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Apr 2024 10:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A9DC4345F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Apr 2024 10:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tOxic3kWn3NLb2G5NKAeTvcy719kq726DogwzYRwwaI=; b=zlkGuAqHG2yqlB
-	8IOIOnYxSUHXRocrPYzA0qdQBrQCAkehUwmmJRuPcWjna3BoCUOkXITGL6QWVT4swX4eS170u/AcJ
-	ouoPwErEO45Bpew9L3tcSau/D88DErhSctljTcnJ5BPJ+SW7ZaSjhx2Pj8q0mohIdBKm2ZeRU61gY
-	2vwo/5qcZ4LJzizbE4arjo4xBa0Ixzlnl3dE5RXGWiHyg6M/DzndPGaHB5rITb/ys4fCQR7GD05uq
-	nRxwR9mNqK848AGgfzU1NETcJfrl3OpMlyb3vnreDn6sbXIUfF9iqwOfP9QSnqBwYQpIaMuxpm+ns
-	IMql8RX6P6vof+ziQADg==;
+	List-Owner; bh=R6nknRNdPKaTFT7Panj9cYg0yk7qoP1qna4qX0JaZn0=; b=U+1BI2XR59eVhL
+	ascm3A6rKd3keuGqHlNv6WLSrM7VAlrfHpvKuexUBoh9n70tyNjNx7KDbao9KuRmCXbeQrg9utKPD
+	Snw1b1aGovPDGbanSEcxgSsSME9469+XKOE5k1rfDvdtynWLdKuF8jCYNK1SekK6moxecTez1iCeJ
+	mq3gmvbY+OyZrw7fq1DBwaryYMRExa9u4Imn1Rg/23OADEFmBRjcDqYrTYWsNPSQJ/8yvSjNP/dCu
+	qje8c2CDNycR4DhxAQ/+m5zy8cALrHt4TI1UETGrzQ5IiYugfle+ElnaKVPBpYKC0pecRrjgd/8d7
+	ja6wn8JHomwikbQ8o2Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0f4V-0000000FILO-3Uz6;
-	Sat, 27 Apr 2024 10:14:19 +0000
-Received: from mail-m6035.netease.com ([210.79.60.35])
+	id 1s0fZZ-0000000FLGh-1dhO;
+	Sat, 27 Apr 2024 10:46:25 +0000
+Received: from mail-m12818.netease.com ([103.209.128.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s0f4S-0000000FIIo-0pLN;
-	Sat, 27 Apr 2024 10:14:18 +0000
+	id 1s0fZV-0000000FLFy-2SPJ;
+	Sat, 27 Apr 2024 10:46:24 +0000
 DKIM-Signature: a=rsa-sha256;
-	b=D8x5Epf5ktoQyzGdUGpoIlypfthN/Y75Bgoz4fqy6yYzNignZM7/BlBCTlg/LT1lqlyCQ9JRC8B1MQxMidXe6cI6rr1NiFJaPYQWyM1WKhy5pBVX+GdzRdr/NX3PAYTbpEPZPqWQPLbuTSMT4OJnuMWfT/LCSB3Iog4Opy8YKbg=;
+	b=ENHryBFRQ4aCyvtieRGb6DXfSVh9F9/fbSSLIharXG7pCWkF2FfOX4va3dp7ekNYizAlb583eS8FK17NZZOO0TiW2dHn11yOoatcswaE0s6vdLOnxO49yLfuo3381SAETarhCvmcZKKNIfAuQWT260OP6LtcG/RxxV/zqRXdk0c=;
 	c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=41zTvRE2jVBg29HAtbvVhLPeaBIa2sv0X5Jp+BcE0Wc=;
+	bh=MFHvEQxvuWiIZUy27EMlytieIefflDA+IcGdm224ubE=;
 	h=date:mime-version:subject:message-id:from;
 Received: from [172.16.12.141] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id 9D9C184021D;
-	Sat, 27 Apr 2024 18:12:27 +0800 (CST)
-Message-ID: <bab90a27-b742-4587-aec6-e4e1fdf2d186@rock-chips.com>
-Date: Sat, 27 Apr 2024 18:12:26 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTPA id 01E2B840219;
+	Sat, 27 Apr 2024 18:44:54 +0800 (CST)
+Message-ID: <68eba0ec-bf9c-4d76-a362-5304a4cb61d5@rock-chips.com>
+Date: Sat, 27 Apr 2024 18:44:54 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v12 27/28] drm/rockchip: inno_hdmi: Switch to HDMI
@@ -61,17 +61,17 @@ Content-Language: en-US
 From: Andy Yan <andy.yan@rock-chips.com>
 In-Reply-To: <20240423-kms-hdmi-connector-state-v12-27-3338e4c0b189@kernel.org>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx8ZGVZKSx0YSk5CS0JKTEtVEwETFh
-	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk5MSUpJVUpLS1VKQl
-	kG
-X-HM-Tid: 0a8f1f0abd8f03a4kunm9d9c184021d
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhPGFZPQkNPHklKSh1PSBhVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8f1f28744d03a4kunm01e2b840219
 X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MRQ6SSo*FzNLLikcGlFNLjcf
-	ER4KCixVSlVKTEpPSUpJTE9CSkxIVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
-	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSk1JS0I3Bg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MCI6LAw4LDNLSSk1Nx0YNBVC
+	GBAaFChVSlVKTEpPSUpPTUJNTkhNVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSkNNSkI3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240427_031416_659968_2FA54136 
-X-CRM114-Status: GOOD (  28.06  )
+X-CRM114-CacheID: sfid-20240427_034622_455716_6DADBC08 
+X-CRM114-Status: GOOD (  28.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,11 +112,7 @@ On 4/23/24 18:45, Maxime Ripard wrote:
 >   
 >   config ROCKCHIP_INNO_HDMI
 >   	bool "Rockchip specific extensions for Innosilicon HDMI"
-> +	depends on 
-
-Is this supposed to be  DRM_DISPLAY_HDMI_STATE_HELPER whith you introduced in PATCH 04/28?
-I couldn't find any place where  DRM_HDMI_STATE_HELPER is defined.
-
+> +	depends on DRM_HDMI_STATE_HELPER
 >   	help
 >   	  This selects support for Rockchip SoC specific extensions
 >   	  for the Innosilicon HDMI driver. If you want to enable
@@ -130,6 +126,10 @@ I couldn't find any place where  DRM_HDMI_STATE_HELPER is defined.
 >   	const struct inno_hdmi_variant *variant;
 >   };
 >   
+
+I think we should include <drm/display/drm_hdmi_state_helper.h>, or the compile will complain about:
+implicit decalaration of funciont drm_atomic_helper_connector_hdmi_update_infoframes
+
 >   struct inno_hdmi_connector_state {
 >   	struct drm_connector_state	base;
 > -	unsigned int			enc_out_format;
@@ -434,12 +434,40 @@ I couldn't find any place where  DRM_HDMI_STATE_HELPER is defined.
 > +				 hdmi->ddc,
 > +				 BIT(HDMI_COLORSPACE_RGB),
 > +				 8);
+     This function call will failed as inno_hdmi_connector_funcs has a destory callback.
+     drmm_connector_init have the check:
+     if (drm_WARN_ON(dev, funcs && funcs->destory))
+         return -EINVAL.
+
+I think the patch for sun4i has the same issue.
+
 >   
 >   	drm_connector_attach_encoder(&hdmi->connector, encoder);
 >   
 >   	return 0;
 >   }
 > 
+
+And after this whole series applied on linux 6.9-rc4, the display on rk3036 kylin is lost, I get
+the following error:
+[  178.999421] rockchip-drm display-subsystem: [drm:drm_atomic_check_only] checking 87b7fbde
+[  178.999471] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] mode changed
+[  178.999498] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] enable changed
+[  178.999521] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] active changed
+[  178.999547] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] Updating routing for [CONNECTOR:37:HDMI-A-1]
+[  178.999575] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CONNECTOR:37:HDMI-A-1] using [ENCODER:36:TMDS-36] on [CRTC:35:crtc-0]
+[  178.999604] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Trying with a 8 bpc output
+[  178.999636] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Trying RGB output format
+[  178.999730] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] RGB Format, checking the constraints.
+[  178.999757] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] RGB output format not supported with 8 bpc
+[  178.999783] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Failed. No Format Supported for that bpc count.
+[  178.999810] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CONNECTOR:37:HDMI-A-1] driver check failed
+[  178.999836] rockchip-drm display-subsystem: [drm:drm_atomic_check_only] atomic driver check for 87b7fbde failed: -22
+[  178.999868] rockchip-drm display-subsystem: [drm:drm_atomic_state_default_clear] Clearing atomic state 87b7fbde
+[  178.999898] [drm:drm_mode_object_put] OBJ ID: 37 (4)
+[  178.999922] [drm:drm_mode_object_put] OBJ ID: 37 (3)
+[  178.999944] [drm:drm_mode_object_put] OBJ ID: 40 (1)
+[  178.999971] [drm:drm_mode_object_put] OBJ ID: 39 (2)
 
 _______________________________________________
 Linux-rockchip mailing list
