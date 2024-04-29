@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AA0AC4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Apr 2024 06:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80D9C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Apr 2024 06:33:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+7e1qDW9lm6EghVRVR7bNaqWmIZ2WXnyuPpewjxaZTM=; b=Ay2+lmprEPDlBM
-	zIGxhUjb1bbD0w9PgqG3cBzPM8Szjwu2HFrErFB0WJTWHObXVNnAAONFjfBKqZODI46llEtwqgrsp
-	8Kjk775NcDeM39oRtg2Es9rDejeDKsyWX05t+sQsedsUbihg6qQl/za5Z1wxxZA9e6fQd6IfTgDqn
-	lae5zIfRodqM+fyY2/5UvpDJURQtLiP7+H608clnWLES+Enhp3I3YLO9VoowRJEjpKul3LcODzR5D
-	KJ4zOyz88ZavfMMAUGsMkLaDKBYFvB2+VAg9VKaAteajJ0Jhi0554RzO3ymTB5Z228g71lZJsAlBc
-	htPquHyRyfUzZQQ2AiiA==;
+	List-Owner; bh=aX9RygzLt5JpafXbhAl3TylseuvQnoiGH/kJ0WddKak=; b=m0qFAiQcUqGgPG
+	3qBTwwPxo8Oje8V/66ez8UGn8l4/fYynjO/4dWMJgr3AJrqajLtADUFVd3d8b7r8nZw5s3DzNwJ50
+	KIk7siImjTH3tmn9jA9CD4+Vl1G2XQ27SLBk4LnQ/H3mY3ZLHrk9nVJHOV87qBkfeRM5lgOz4EGgM
+	JVGn8lJQEukR/+7HLm/q8spGvyEbKZshNciRhRUfcigOlShmM0Db3X9+vKj/1pOsQCJd9XkMtc/md
+	eEQG3jc+rsVfPuaHbs1Vr5Ct7+1hkW3drHWz2ibRiOgH3VgTOcuZLebUkczh7/LkF9kdHkRQAcxEc
+	JC2vkhhwAFa/VMpttijQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1KUX-00000001fGP-3ztd;
-	Mon, 29 Apr 2024 06:27:57 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1s1Ka6-00000001gcF-1Kxu;
+	Mon, 29 Apr 2024 06:33:42 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1KUU-00000001fEW-0h8q
+	id 1s1Ka3-00000001gZC-0tE1
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Apr 2024 06:27:55 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-56e1baf0380so4979848a12.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 28 Apr 2024 23:27:48 -0700 (PDT)
+	Mon, 29 Apr 2024 06:33:40 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-56e1baf0380so4984679a12.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 28 Apr 2024 23:33:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714372067; x=1714976867; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1714372414; x=1714977214; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=qA1Mq+BKArwz7aZn7XQgiZHHBtYnA3j8xSFLJOCXWzY=;
-        b=GashoalFNbo2rMyQbRTzIBBz4NREKHCvFZ5E1dOpamCR2vdOsjZw0VEp7IQmzJ+huU
-         AoFKqphzrC1sGb5t/DWjsCEtgQ0btQ9lnCpPNcR2thQ/8vGERHPDkL/kqpu7XY7ToXGH
-         igSsctoag8qhXtU/vuYrN8a+BBbKfqPHaSwM/5TLi91qlxVs8o/yQYpCADrumvyhFGJx
-         Bnr81ZikzJu5mVRAEUGB/vsE6ZDf9csQgMdNYcxMa7ryixcNmuhmq4hxp64+dZyFAAMp
-         yQV7Zlw4DURJH0f82Y7CcfHYZi/4iRzZla6nGkf36BWff+OrqyG2EooAjY/b6g8x+Y3m
-         i8Eg==
+        bh=H1tmeGPRsKgr01+Hna3ZLZEaqrTdXl0tdVgdsAtbRbg=;
+        b=m7KeST4vOg5qxKM5CYE3ysDLIORuoRTDhb+lg2qg6YTVbLMdUUWp1Zxwi0R3/m6/ir
+         sJ0BhJpfqiIqCk1xWqO8u4QXfIbLoGsBGcHpE4PGhb9EO4OxDhMM/7Eptf4SHjlpQru1
+         Al5XwrAahcytzUodAQzdNPL1WvFiCLj/rkMgN9W1ubqrBAp0/cRsth6qkd08E6kqakZV
+         wYsvZcnBKkcMpzr+eoJGSGDu7O1zcuHA7o6d5uFQ0ZIv8B5Mf3TGSVHZT6Nrn5ooya97
+         xBj+ALLV301d4MKAgBwArezd8nb7wmhUFn9YNX79/sfLZNgdpGZg8gvmx001GJzwsaHB
+         p8LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714372067; x=1714976867;
+        d=1e100.net; s=20230601; t=1714372414; x=1714977214;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qA1Mq+BKArwz7aZn7XQgiZHHBtYnA3j8xSFLJOCXWzY=;
-        b=hWgqG4YadkoaxYApazU7V9IsFXEfHvJBUDlAT0cEDeo5j2s9Bg7AXB0iaC+kky5EbN
-         qtwPjGDdtDI3ocs/aSMBWN1mT3w2lymwwbtaU8Zy6/mEJyeyLBFOM36tFGzgNv3xAq3W
-         CekVz3t1+IHVoflS4daEk4baeh1TS6yTQhdwBGnPZqhpKZ+aJ4aCaXkHs2qG2hBPyQFN
-         8FLmA56LKNVkhKV/wQCzH3QB0xLI+STs9miqVPVJeCEosX0AmzWSz0x8deE2y3PFx4nn
-         dWMucUDjpH6/sfxDqJjine2fm69pG1rEqgba0StlmPN8u7LtpKaLeuJYeBvggIld/Q98
-         Kbaw==
-X-Forwarded-Encrypted: i=1; AJvYcCUnIAoAQEQtTUPMO9OepagkLtk+QNj3uNenilOpEzVMi3EdtYbM8K1zdTsJG0YcZpMqJBhhPFWZ+gJavzpI47JZ2/nZbOL1F1LbABUYuPxcrOTU
-X-Gm-Message-State: AOJu0YzXk8aLjXmIu8uyyY2XhwkvlcPFE+kRufm38a146laEQP4dL2X3
-	kC6TPPG0XdURpx30B214ToSsQaYHTJpQSofP7RGgWimegf/qP2YmmG6SJz7OGtR3/MUtGqBxhWD
-	Js+g=
-X-Google-Smtp-Source: AGHT+IESUXN7I7fO318PxM8X0XDcywLSdQf4htvE8HhqgqMtYThdRx/pY4Ue7USfJXLXKoE92r5Sog==
-X-Received: by 2002:a50:8acd:0:b0:56e:3774:749b with SMTP id k13-20020a508acd000000b0056e3774749bmr4907398edk.42.1714372067101;
-        Sun, 28 Apr 2024 23:27:47 -0700 (PDT)
+        bh=H1tmeGPRsKgr01+Hna3ZLZEaqrTdXl0tdVgdsAtbRbg=;
+        b=lWAulHY/QcWBG9wMcJTqShOMZfT0PAKr68xMBiThNQbpBDSSzQuJ7jfG8lRhpHNi9z
+         6TTHbr33oa1XofWiElKSOPCTZlLoA4o6J95Y5Reslmb1LWh2hXw9tqx+I2xm8PX7qPOf
+         /XQK1F1zOGWOzcB8xa8TnVpNDHjEYr+7EQJKPMa+OqJrwyM2iA8MD7mbifDaIg7TBfC1
+         e51j1IRInojdTpx7PiZB7L7ioI+48rjuEau/UdoTvKt7jtGua1seh04ZDxyoVbxz9hzt
+         Zyvx77GDdzIiXO4AlNk90ZkDFkYN2Xlwdve05lR3cfTiRUc0OcDvHe+EMhiknv+dzgXa
+         iSDg==
+X-Forwarded-Encrypted: i=1; AJvYcCUJdp3d+Hx3as2GC303AnGb/BtbjznOttIhM/fYi3lbClQOelZ+WsWqqtmxmImw3d1zIYn8AXQeT71EHuX8zmZEMc4PtW8Znxvfx8bVbXvhOjlO
+X-Gm-Message-State: AOJu0Yx1sI4mnKmwqGMrQbU4QVucAf3MAauLnt+oGJ9Qi0hCs95RxZX1
+	hwnaaZMX5gpRe2Ri2qcDqjG4cxQMdRDZjogg4dpLd1bJy23R9AbZwH/XK7cmGvvM0Njhmy1jMVp
+	gNWQ=
+X-Google-Smtp-Source: AGHT+IG/1NM9hUHGik2NjLOZfisA/b6fFn8v5z38DB20x7mgyzkcafLOU/i261hJlp0O1Y0ut+vVzg==
+X-Received: by 2002:a50:aaca:0:b0:572:78df:c606 with SMTP id r10-20020a50aaca000000b0057278dfc606mr2705343edc.26.1714372413874;
+        Sun, 28 Apr 2024 23:33:33 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.16])
-        by smtp.gmail.com with ESMTPSA id a13-20020aa7d74d000000b005726ee95a38sm2183591eds.88.2024.04.28.23.27.45
+        by smtp.gmail.com with ESMTPSA id h8-20020aa7c948000000b0057204902580sm8677922edt.48.2024.04.28.23.33.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 28 Apr 2024 23:27:46 -0700 (PDT)
-Message-ID: <1613d7e3-a5cc-4b8e-a905-3699779476fe@linaro.org>
-Date: Mon, 29 Apr 2024 08:27:44 +0200
+        Sun, 28 Apr 2024 23:33:33 -0700 (PDT)
+Message-ID: <d074880a-14dd-46e4-852c-0bb068154603@linaro.org>
+Date: Mon, 29 Apr 2024 08:33:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/7] dt-bindings: i2c: mux: mule: add dt-bindings for mule
- i2c multiplexer
+Subject: Re: [PATCH 3/7] i2c: muxes: add support for mule i2c multiplexer
 To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
  Wolfram Sang <wsa+renesas@sang-engineering.com>,
  Peter Rosin <peda@axentia.se>, Andi Shyti <andi.shyti@kernel.org>,
@@ -83,7 +82,7 @@ Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com>
- <20240426-dev-mule-i2c-mux-v1-2-045a482f6ffb@theobroma-systems.com>
+ <20240426-dev-mule-i2c-mux-v1-3-045a482f6ffb@theobroma-systems.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -130,10 +129,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240426-dev-mule-i2c-mux-v1-2-045a482f6ffb@theobroma-systems.com>
+In-Reply-To: <20240426-dev-mule-i2c-mux-v1-3-045a482f6ffb@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240428_232754_304514_EAC182A6 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20240428_233339_376028_C7E60E1C 
+X-CRM114-Status: GOOD (  33.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,94 +149,227 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Except that this was not fully tested few comments.
-
-A nit, subject: drop second/last, redundant "dt-bindings for". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
-
-
 On 26/04/2024 18:49, Farouk Bouabid wrote:
-> This patch adds support for the Mule I2C multiplexer.
-
-Please do not use "This commit/patch/change", but imperative mood. See
-longer explanation here:
-https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
-
-> 
 > Mule is an mcu that emulates a set of i2c devices which are reacheable
 > through an i2c-mux.
 > 
 > The emulated devices share a single i2c address with the mux itself where
 > the requested register is what determines which logic is executed (mux or
-> device).
+> device):
+> 
+> 1- The devices on the mux can be selected (mux function) by writing the
+> appropriate device number to an i2c config register (0xff) that is not
+> used by any device logic.
+> 
+> 2- Any access to a register other than the config register will be
+> handled by the previously selected device.
 > 
 > Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
 > ---
->  .../devicetree/bindings/i2c/i2c-mux-mule.yaml      | 80 ++++++++++++++++++++++
->  1 file changed, 80 insertions(+)
+>  drivers/i2c/muxes/Kconfig        |  11 +++
+>  drivers/i2c/muxes/Makefile       |   1 +
+>  drivers/i2c/muxes/i2c-mux-mule.c | 157 +++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 169 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mux-mule.yaml b/Documentation/devicetree/bindings/i2c/i2c-mux-mule.yaml
+> diff --git a/drivers/i2c/muxes/Kconfig b/drivers/i2c/muxes/Kconfig
+> index db1b9057612a..593a20a6ac51 100644
+> --- a/drivers/i2c/muxes/Kconfig
+> +++ b/drivers/i2c/muxes/Kconfig
+> @@ -119,4 +119,15 @@ config I2C_MUX_MLXCPLD
+>  	  This driver can also be built as a module.  If so, the module
+>  	  will be called i2c-mux-mlxcpld.
+>  
+> +config I2C_MUX_MULE
+> +	tristate "Mule I2C device multiplexer"
+> +	depends on OF
+> +	help
+> +	  If you say yes to this option, support will be included for a
+> +	  Mule I2C device multiplexer. This driver provides access to
+> +	  I2C devices connected on the Mule I2C mux.
+
+Describe what is Mule. Here and in bindings documentation.
+
+> +
+> +	  This driver can also be built as a module.  If so, the module
+> +	  will be called i2c-mux-mule.
+> +
+>  endmenu
+> diff --git a/drivers/i2c/muxes/Makefile b/drivers/i2c/muxes/Makefile
+> index 6d9d865e8518..4b24f49515a7 100644
+> --- a/drivers/i2c/muxes/Makefile
+> +++ b/drivers/i2c/muxes/Makefile
+> @@ -10,6 +10,7 @@ obj-$(CONFIG_I2C_MUX_GPIO)	+= i2c-mux-gpio.o
+>  obj-$(CONFIG_I2C_MUX_GPMUX)	+= i2c-mux-gpmux.o
+>  obj-$(CONFIG_I2C_MUX_LTC4306)	+= i2c-mux-ltc4306.o
+>  obj-$(CONFIG_I2C_MUX_MLXCPLD)	+= i2c-mux-mlxcpld.o
+> +obj-$(CONFIG_I2C_MUX_MULE)	+= i2c-mux-mule.o
+>  obj-$(CONFIG_I2C_MUX_PCA9541)	+= i2c-mux-pca9541.o
+>  obj-$(CONFIG_I2C_MUX_PCA954x)	+= i2c-mux-pca954x.o
+>  obj-$(CONFIG_I2C_MUX_PINCTRL)	+= i2c-mux-pinctrl.o
+> diff --git a/drivers/i2c/muxes/i2c-mux-mule.c b/drivers/i2c/muxes/i2c-mux-mule.c
 > new file mode 100644
-> index 000000000000..458e4661cbc8
+> index 000000000000..da2a9526522e
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mux-mule.yaml
+> +++ b/drivers/i2c/muxes/i2c-mux-mule.c
+> @@ -0,0 +1,157 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Mule I2C device multiplexer
+> + *
+> + * Copyright (C) 2024 Theobroma Systems Design und Consulting GmbH
+> + */
+> +
+> +#include <linux/i2c-mux.h>
+> +#include <linux/i2c.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/property.h>
+> +#include <linux/regmap.h>
+> +
+> +#define MUX_CONFIG_REG	0xff
+> +#define MUX_DEFAULT_DEV	0x0
+> +
+> +struct mule_i2c_reg_mux {
+> +	struct regmap *regmap;
+> +};
+> +
+> +static const struct regmap_config mule_regmap_config = {
+> +	.reg_bits = 8,
+> +	.val_bits = 8,
+> +};
+> +
+> +static const struct of_device_id mule_i2c_mux_of_match[] = {
+> +	{.compatible = "tsd,mule-i2c-mux",},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mule_i2c_mux_of_match);
 
-Use compatible as filename.
+This goes after or before probe. Don't introduce unusual coding style.
 
-> @@ -0,0 +1,80 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/i2c/i2c-mux-mule.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Mule I2C multiplexer
-> +
-> +maintainers:
-> +  - Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-> +  - Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> +
-> +description: |
-> +  Mule is an mcu that emulates a set of i2c devices which are reacheable
 
-typo, reachable
+...
 
-> +  through an i2c-mux.
+> +static void mux_remove(void *data)
+> +{
+> +	struct i2c_mux_core *muxc = data;
 > +
-> +  The emulated devices share a single i2c address with the mux itself where
-> +  the requested register is what determines which logic is executed (mux or
-> +  device)
+> +	i2c_mux_del_adapters(muxc);
 > +
-> +      +--------------------------------------------------+
-> +      | Mule                                             |
-> +      |    +---------------+                             |
-> +  ------+->|Config register|----+                        |
-> +      | |  +---------------+    |                        |
-> +      | |                       V_                       |
-> +      | |                      |  \          +--------+  |
-> +      | |                      |   \-------->| dev #0 |  |
-> +      | |                      |   |         +--------+  |
-> +      | |                      | M |-------->| dev #1 |  |
-> +      | +--------------------->| U |         +--------+  |
-> +      |                        | X |-------->| dev #2 |  |
-> +      |                        |   |         +--------+  |
-> +      |                        |   /-------->| dev #3 |  |
-> +      |                        |__/          +--------+  |
-> +      +--------------------------------------------------+
+> +	mux_deselect(muxc, MUX_DEFAULT_DEV);
+> +}
 > +
+> +static int mule_i2c_mux_probe(struct i2c_client *client)
+> +{
+> +	struct i2c_adapter *adap = client->adapter;
+> +	struct mule_i2c_reg_mux *priv;
+> +	struct i2c_mux_core *muxc;
+> +	struct device_node *dev;
+> +	unsigned int readback;
+> +	bool old_fw;
+> +	int ndev, ret;
 > +
-> +allOf:
-> +  - $ref: /schemas/i2c/i2c-mux.yaml#
+> +	/* Count devices on the mux */
+> +	ndev = of_get_child_count(client->dev.of_node);
+> +	dev_dbg(&client->dev, "%u devices on the mux\n", ndev);
 > +
-> +properties:
-> +  compatible:
-> +    const: tsd,mule-i2c-mux
+> +	muxc = i2c_mux_alloc(adap, &client->dev,
+> +						 ndev, sizeof(*priv),
+> +						 I2C_MUX_LOCKED,
+> +						 mux_select, mux_deselect);
+
+Very odd alignment. This is absolutely unreadable.
+
+Please properly align with opening (.
+
+> +	if (!muxc)
+> +		return -ENOMEM;
 > +
-> +  reg:
-> +    maxItems: 1
+> +	muxc->share_addr_with_children = 1;
+> +	priv = i2c_mux_priv(muxc);
 > +
+> +	priv->regmap = devm_regmap_init_i2c(client, &mule_regmap_config);
+> +	if (IS_ERR(priv->regmap))
+> +		return dev_err_probe(&client->dev, PTR_ERR(priv->regmap),
+> +							 "Failed to allocate i2c register map\n");
+> +
+> +	i2c_set_clientdata(client, muxc);
+> +
+> +	/*
+> +	 * Mux 0 is guaranteed to exist on all old and new mule fw.
+> +	 * mule fw without mux support will accept write ops to the
+> +	 * config register, but readback returns 0xff (register not updated).
+> +	 */
+> +	ret = mux_select(muxc, 0);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_read(priv->regmap, MUX_CONFIG_REG, &readback);
+> +	if (ret)
+> +		return ret;
+> +
+> +	old_fw = (readback == 0);
+> +
+> +	ret = devm_add_action_or_reset(&client->dev, mux_remove, muxc);
+
+This is really odd. Why do you call remove callback as devm action?
+
+I have serious doubts this was really tested.
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Create device adapters */
+> +	for_each_child_of_node(client->dev.of_node, dev) {
+> +		u32 reg;
+> +
+> +		ret = of_property_read_u32(dev, "reg", &reg);
+> +		if (ret) {
+> +			dev_err(&client->dev, "No reg property found for %s: %d\n",
+> +					of_node_full_name(dev), ret);
+
+Very odd alignment. Please properly align with opening (.
+
+> +			return ret;
+> +		}
+> +
+> +		if (!old_fw && reg != 0) {
+> +			dev_warn(&client->dev,
+> +					 "Mux %d not supported, please update Mule FW\n", reg);
+> +			continue;
+> +		}
+> +
+> +		ret = mux_select(muxc, reg);
+> +		if (ret) {
+> +			dev_warn(&client->dev,
+> +					 "Mux %d not supported, please update Mule FW\n", reg);
+> +			continue;
+> +		}
+> +
+> +		ret = i2c_mux_add_adapter(muxc, 0, reg, 0);
+> +		if (ret) {
+> +			dev_err(&client->dev, "Failed to add i2c mux adapter %d: %d\n", reg, ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	mux_deselect(muxc, MUX_DEFAULT_DEV);
+> +
+> +	return 0;
+> +}
+> +
+> +static struct i2c_driver mule_i2c_mux_driver = {
+> +	.driver		= {
+> +		.name	= "mule-i2c-mux",
+> +		.of_match_table = mule_i2c_mux_of_match,
+> +	},
+> +	.probe		= mule_i2c_mux_probe,
+> +};
+> +
+
+Anyway, all this looks like i2c-mux-reg. Please provide rationale in
+commit msg WHY you need one more driver.
+
 
 Best regards,
 Krzysztof
