@@ -4,91 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1577C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 16:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAEBEC10F16
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 19:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zAEqaS79KZ3AW0izHkTMIXmfUbWc9obn9P/r2Imi2kU=; b=3Od83YCX33p9if
-	RbR0uXqyX116csxX+T8+eZBS8NRCT4pFtMRxb7W3MVVm4NAMyHLIuMHyksu9HhBNOWDb6iK2huOkB
-	m5dVHabGGk2IxgevPeE6lHIelIm57LDKNJqkQ5mKjcZxZvZPxru81xZnaf7lh4X2/iP9dkoW1VOmL
-	hoOpcpcZxO9Rby8/O1S+4V+I5wdLaMKN1YbZtMGo0m88S68l6vrCz+w1SKWp9d1jAgdrmsVbW7fHK
-	HuipG8x+rnMgHjq8/chsrh4h2BG+27UJNedo0HWVdOxDlzGyIMZz+A1++0H6n5QsgU2qhR61wOcJx
-	eLaqZxCNk1jaIjEiXACA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=E+YLk0jJxSSBlqj9eWAv97VqbtVHIpb83mKoKaEi9K0=; b=GdJfzgZqBkRLvE
+	hlVPgE7SBOOgKX9U3EuUnZmiCBFunHZPUqAzgZ7IAPqs7AdFbOQwtiZo7gDlvJ8lO688A4BGb0D1I
+	+1sOYnq35xJJHCgLRVbSV8DSf7HLuxoE3g7t2S46btxi1lIdlAOCgJPSlCqIN8no+zLtdojjrI1MN
+	y0MlAlYjgQZ7py2oq/29ezV7apbI6HWAdoffdwP2j/ej1ryLGu0WtNUH8Ifr3Gzzf65puhDQuOjdB
+	uXurNu6C7QGaKXl6jbJ9SX4bOsTH3PxSw40Xa9biBXepdRViG/jFHvajwirFmMqPlR2rQhg3AXkOW
+	fSSv1Gvey9t6lOk6mULA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1qJu-00000007DNE-1hty;
-	Tue, 30 Apr 2024 16:27:06 +0000
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+	id 1s1t3G-00000007hmL-3yHT;
+	Tue, 30 Apr 2024 19:22:08 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1qJr-00000007DMD-29G9
-	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Apr 2024 16:27:05 +0000
-Received: by mail-qt1-x82b.google.com with SMTP id d75a77b69052e-436ee76c3b8so46268011cf.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Apr 2024 09:27:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1714494421; x=1715099221; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ZC7KljP54si9I/OvR7p1QytBPv8oCv3FFtdLpBVVIEM=;
-        b=NmPA04TJyHh1u+CIucgIZLw06MVSlaIX4O/XYHBzvy6WMpSURxX83vcYsUdDdEX8MA
-         jg1Go4n9aZkLJ3k3E4sFzxZ9tGXro8lmPSJP2zGHoGwKXsRSJ5KotT/iKWum3a/UWreX
-         iJsGHw6HxI8NeOGkXxI8gw+LdiN0G9P18FHZ7zyAb1sNKwu4cv4QXkUtwJkiJmfzTW46
-         VWP6CXYsZsC2qEWf+9cMHekbxMgx8dP+tGMReqYH6DbK1WPvBQrcEhJ63jh4A5eKnks5
-         L7bdfSOGhQZaIJki7x18yf/Iw8B0zQDOMoPanpOVxeXgvqVZeL7hpZ602/GalQPlQeCi
-         3LFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714494421; x=1715099221;
-        h=mime-version:user-agent:content-transfer-encoding:autocrypt
-         :references:in-reply-to:date:cc:to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZC7KljP54si9I/OvR7p1QytBPv8oCv3FFtdLpBVVIEM=;
-        b=v1n4M8p/VbdBG+MAgdn/ABeN2v4f+6ZxqlNXZUQ01ESsXECfFPakNsFvATbHVQQTe4
-         EtmII9zk0aT/qTMUGmxYLL7KYGxgxhEYiGZKlmx9e+FcVlCYn28p1kOC14D8d8zEDNW9
-         0/I8SQ/OmyZo3U43nWi8bdh7oCkJUXeDRXJ78A7TbiS9mVB5UX9AuQdtsNyCq4ZAb4iV
-         ngwQWNhvxo6fYq3S4dH9AKD7Fq5wM6W4qjln5z6Vrr80atQN7UllBb0OhVyX/FT2mWBC
-         1wACcounI1yLV+fhv147k8QZycP+d6+SC890dUeHgypjrgtzE9P0Yy4aEsRIE6v8ALx3
-         lizQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEmSd2kGxH9YEe7A4qmHh+pz5INbcHmsf1l2QhYVlCan9KXtsKDwnIhmA2OnkLXq7tfl98p1m5ZoxLIAmAhbHrtCZhQ1YiTF/qUKoaNHDsw3lw
-X-Gm-Message-State: AOJu0YzgZuN2EreDughKO9eL9Y49X3D7joMkAag4S6ZB3CbB86uuKMGR
-	1866VW/HFe9MXHcsfWVnA7eBDfYfYZnqQ3rbmciX1jRlSg9GLfjZ9S6Eh/p4gyY=
-X-Google-Smtp-Source: AGHT+IH4i4XqXX+ome3EmdELyywbvX6TD934yBgrF6DZ4ror/4GM3Vhte1p+vjOEJwXaTd3AlXGjSg==
-X-Received: by 2002:a05:622a:491:b0:43b:a44:f83c with SMTP id p17-20020a05622a049100b0043b0a44f83cmr5414263qtx.56.1714494420540;
-        Tue, 30 Apr 2024 09:27:00 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:17:6448::7a9])
-        by smtp.gmail.com with ESMTPSA id o15-20020ac8428f000000b0042f04e421d2sm11469789qtl.24.2024.04.30.09.26.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Apr 2024 09:27:00 -0700 (PDT)
-Message-ID: <1ce1bcf60d8540f867b800816acecfff610ee948.camel@ndufresne.ca>
-Subject: Re: [PATCH v7 1/2] dt-bindings: media: rockchip-vpu: Add rk3588
- vpu121 compatible string
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jianfeng Liu <liujianfeng1994@gmail.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- mchehab@kernel.org,  robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de,  sebastian.reichel@collabora.com,
- sfr@canb.auug.org.au, sigmaris@gmail.com,  linkmauve@linkmauve.fr, Conor
- Dooley <conor.dooley@microchip.com>
-Date: Tue, 30 Apr 2024 12:26:58 -0400
-In-Reply-To: <59899cfa3d3245309ce6952ae1028dceae27b488.camel@ndufresne.ca>
-References: <20240430024002.708227-1-liujianfeng1994@gmail.com>
-	 <20240430024002.708227-2-liujianfeng1994@gmail.com>
-	 <59899cfa3d3245309ce6952ae1028dceae27b488.camel@ndufresne.ca>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual; keydata=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
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+	id 1s1t39-00000007hlR-1yAF;
+	Tue, 30 Apr 2024 19:22:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id A5BE461691;
+	Tue, 30 Apr 2024 19:21:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 148FAC2BBFC;
+	Tue, 30 Apr 2024 19:21:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714504918;
+	bh=9uH838bGBhtsxWjwYC5ZUO6ofF47IyznjlfHd2isjAQ=;
+	h=From:List-Id:To:Cc:Subject:Date:From;
+	b=AYvPCvZVa5oChSnb7EODSOuLmauguENJCLdrz/Xhhs0mz0aSaS37EeP/txvzdNao2
+	 lNDLsR8yZQugbmt2rgkB9yMXJZIYI0pPQ6+OtxeRu8iAfrO6HMBFxQqCHOmDIhQy1F
+	 EGal4bJL5Zt0a8epkruq+P9YEhVJ1jlvi/OkDdiHIEvLbRXDTHgiQlCQPxr5V7YvCr
+	 dru9YzwPcZXKguy+a0CXptr1yPW8KmFQ6lk4RsSVQGsD3Vy59vLqh+gKStWxMMAgTs
+	 4EftAS4aON7u4xGm10KIxzqLctfkTbvhInKb9FYJ7+N2koEbh/NiEqdrwMT/eq9BRH
+	 p/3Bj9CfwDYFQ==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: soc@kernel.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Robert Richter <rric@kernel.org>,
+	Chanho Min <chanho.min@lge.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-actions@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org,
+	linux-tegra@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: Add/fix /memory node unit-addresses
+Date: Tue, 30 Apr 2024 14:18:54 -0500
+Message-ID: <20240430191856.874600-2-robh@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_092703_623947_0C10B8A9 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240430_122159_647519_6ACD0D3B 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,26 +99,236 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Sorry,
+'/memory' nodes always have a 'reg' property, and therefore should have
+a unit-address with just plain hex (i.e. no commas). Fix all the arm64
+'/memory' nodes.
 
+It's possible that some bootloader depends on /memory (arm32 ATAG to DT
+code does for example). If so, the memory node should be commented with
+that requirement.
 
-[...]
-> > +          - const: rockchip,rk3568-vpu
-> 
-> Sorry to come that late, but I'm noticing a big mistake here. You said you are
-> enabling VDPU121, the JPEG decoder. But we don't have a JPEG decoder driver
-> mainline, is there some patches missing ?
-> 
-> Nicolas
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+SoC maintainers, please take this directly.
 
-Ignore this part, just didn't read carefully. This is about getting H264, VP8
-and MPEG2 out of these extra cores of course. I still would like to know how we
-will express the grouping of these four cores, so a driver can know they are
-identical G1 cores and not bound to be time sliced with an H1 core like the
-fifth one? I want to see a plan that will work and will not cause headache for
-future work on fully utilizing the HW resources.
+arm32 is much worse, but the platforms using ATAG to DT code can't be 
+changed and I don't know which ones those are.
 
-Nicolas
+ arch/arm64/boot/dts/actions/s700-cubieboard7.dts       | 2 +-
+ arch/arm64/boot/dts/apm/apm-merlin.dts                 | 2 +-
+ arch/arm64/boot/dts/apm/apm-mustang.dts                | 2 +-
+ arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dts    | 2 +-
+ arch/arm64/boot/dts/broadcom/northstar2/ns2-xmc.dts    | 2 +-
+ arch/arm64/boot/dts/cavium/thunder2-99xx.dts           | 2 +-
+ arch/arm64/boot/dts/lg/lg1312-ref.dts                  | 2 +-
+ arch/arm64/boot/dts/lg/lg1313-ref.dts                  | 2 +-
+ arch/arm64/boot/dts/nuvoton/nuvoton-npcm845-evb.dts    | 2 +-
+ arch/arm64/boot/dts/nvidia/tegra210-smaug.dts          | 2 +-
+ arch/arm64/boot/dts/qcom/ipq8074-hk10.dtsi             | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi           | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts            | 2 +-
+ arch/arm64/boot/dts/sprd/sp9860g-1h10.dts              | 2 +-
+ 15 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/actions/s700-cubieboard7.dts b/arch/arm64/boot/dts/actions/s700-cubieboard7.dts
+index 63e375cd9eb4..bd54b5165129 100644
+--- a/arch/arm64/boot/dts/actions/s700-cubieboard7.dts
++++ b/arch/arm64/boot/dts/actions/s700-cubieboard7.dts
+@@ -24,7 +24,7 @@ memory@0 {
+ 		reg = <0x0 0x0 0x0 0x80000000>;
+ 	};
+ 
+-	memory@1,e0000000 {
++	memory@1e0000000 {
+ 		device_type = "memory";
+ 		reg = <0x1 0xe0000000 0x0 0x0>;
+ 	};
+diff --git a/arch/arm64/boot/dts/apm/apm-merlin.dts b/arch/arm64/boot/dts/apm/apm-merlin.dts
+index 2e8069002ec1..6e05cf1a3df6 100644
+--- a/arch/arm64/boot/dts/apm/apm-merlin.dts
++++ b/arch/arm64/boot/dts/apm/apm-merlin.dts
+@@ -15,7 +15,7 @@ / {
+ 
+ 	chosen { };
+ 
+-	memory {
++	memory@100000000 {
+ 		device_type = "memory";
+ 		reg = < 0x1 0x00000000 0x0 0x80000000 >;
+ 	};
+diff --git a/arch/arm64/boot/dts/apm/apm-mustang.dts b/arch/arm64/boot/dts/apm/apm-mustang.dts
+index 033e10e12b18..e7644cddf06f 100644
+--- a/arch/arm64/boot/dts/apm/apm-mustang.dts
++++ b/arch/arm64/boot/dts/apm/apm-mustang.dts
+@@ -15,7 +15,7 @@ / {
+ 
+ 	chosen { };
+ 
+-	memory {
++	memory@100000000 {
+ 		device_type = "memory";
+ 		reg = < 0x1 0x00000000 0x0 0x80000000 >; /* Updated by bootloader */
+ 	};
+diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dts b/arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dts
+index dec5a110f1e8..f43cfe66b6af 100644
+--- a/arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dts
++++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dts
+@@ -50,7 +50,7 @@ chosen {
+ 		bootargs = "earlycon=uart8250,mmio32,0x66130000";
+ 	};
+ 
+-	memory {
++	memory@80000000 {
+ 		device_type = "memory";
+ 		reg = <0x00000000 0x80000000 0x00000000 0x40000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2-xmc.dts b/arch/arm64/boot/dts/broadcom/northstar2/ns2-xmc.dts
+index 1d314f17bbdd..c50df1d02797 100644
+--- a/arch/arm64/boot/dts/broadcom/northstar2/ns2-xmc.dts
++++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2-xmc.dts
+@@ -47,7 +47,7 @@ chosen {
+ 		bootargs = "earlycon=uart8250,mmio32,0x66130000";
+ 	};
+ 
+-	memory {
++	memory@80000000 {
+ 		device_type = "memory";
+ 		reg = <0x00000000 0x80000000 0x00000001 0x00000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/cavium/thunder2-99xx.dts b/arch/arm64/boot/dts/cavium/thunder2-99xx.dts
+index d005e1e79c3d..89fc4107a0c4 100644
+--- a/arch/arm64/boot/dts/cavium/thunder2-99xx.dts
++++ b/arch/arm64/boot/dts/cavium/thunder2-99xx.dts
+@@ -14,7 +14,7 @@ / {
+ 	model = "Cavium ThunderX2 CN99XX";
+ 	compatible = "cavium,thunderx2-cn9900", "brcm,vulcan-soc";
+ 
+-	memory {
++	memory@80000000 {
+ 		device_type = "memory";
+ 		reg = <0x00000000 0x80000000 0x0 0x80000000>,  /* 2G @ 2G  */
+ 		      <0x00000008 0x80000000 0x0 0x80000000>;  /* 2G @ 34G */
+diff --git a/arch/arm64/boot/dts/lg/lg1312-ref.dts b/arch/arm64/boot/dts/lg/lg1312-ref.dts
+index 260a2c5b19e5..cdd10f138098 100644
+--- a/arch/arm64/boot/dts/lg/lg1312-ref.dts
++++ b/arch/arm64/boot/dts/lg/lg1312-ref.dts
+@@ -22,7 +22,7 @@ aliases {
+ 		serial2 = &uart2;
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x00000000 0x20000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/lg/lg1313-ref.dts b/arch/arm64/boot/dts/lg/lg1313-ref.dts
+index e89ae853788a..6ace977ff4cf 100644
+--- a/arch/arm64/boot/dts/lg/lg1313-ref.dts
++++ b/arch/arm64/boot/dts/lg/lg1313-ref.dts
+@@ -22,7 +22,7 @@ aliases {
+ 		serial2 = &uart2;
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x00000000 0x20000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/nuvoton/nuvoton-npcm845-evb.dts b/arch/arm64/boot/dts/nuvoton/nuvoton-npcm845-evb.dts
+index a5ab2bc0f835..eeceb5b292a8 100644
+--- a/arch/arm64/boot/dts/nuvoton/nuvoton-npcm845-evb.dts
++++ b/arch/arm64/boot/dts/nuvoton/nuvoton-npcm845-evb.dts
+@@ -16,7 +16,7 @@ chosen {
+ 		stdout-path = &serial0;
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		reg = <0x0 0x0 0x0 0x40000000>;
+ 	};
+ };
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts b/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
+index 9ebb7369256e..2e5b6b2c1f56 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
+@@ -25,7 +25,7 @@ chosen {
+ 		stdout-path = "serial0:115200n8";
+ 	};
+ 
+-	memory {
++	memory@80000000 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x80000000 0x0 0xc0000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/qcom/ipq8074-hk10.dtsi b/arch/arm64/boot/dts/qcom/ipq8074-hk10.dtsi
+index 1b8379ba87f9..34e2f80514a3 100644
+--- a/arch/arm64/boot/dts/qcom/ipq8074-hk10.dtsi
++++ b/arch/arm64/boot/dts/qcom/ipq8074-hk10.dtsi
+@@ -16,7 +16,7 @@ chosen {
+ 		stdout-path = "serial0";
+ 	};
+ 
+-	memory {
++	memory@40000000 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x40000000 0x0 0x20000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
+index b48b98c13705..e5c0dbf794ae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
+@@ -17,7 +17,7 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x0 0x0 0x40000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+index dcee2e28916f..23ae2d9de382 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+@@ -21,7 +21,7 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x0 0x0 0x80000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+index b16b7ca02379..7f14206d53c3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+@@ -21,7 +21,7 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
+-	memory {
++	memory@0 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x0 0x0 0x40000000>;
+ 	};
+diff --git a/arch/arm64/boot/dts/sprd/sp9860g-1h10.dts b/arch/arm64/boot/dts/sprd/sp9860g-1h10.dts
+index 6b95fd94cee3..5724cac87e53 100644
+--- a/arch/arm64/boot/dts/sprd/sp9860g-1h10.dts
++++ b/arch/arm64/boot/dts/sprd/sp9860g-1h10.dts
+@@ -24,7 +24,7 @@ aliases {
+ 		spi0 = &adi_bus;
+ 	};
+ 
+-	memory{
++	memory@80000000 {
+ 		device_type = "memory";
+ 		reg = <0x0 0x80000000 0 0x60000000>,
+ 		      <0x1 0x80000000 0 0x60000000>;
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
