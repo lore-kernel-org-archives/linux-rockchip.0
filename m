@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C319C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 10:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC8C2C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 10:15:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D/DfotUOP2HG80pp0Yg3tJid6vd9F+303dYfVBW9qO8=; b=KdNnm7XsdnawcK
-	vDsqa1/WsmDplPRSwKWt7mgUG3Wid2van6pTGCRkg3C7hL9B/sHM7xI5AURkfGPaccCjQe5UuiIvF
-	iI+cEf4qlFK6u/SQyjpse34cQiwInVScrtIjSI8tUliPiiMengpUGj/vPwgW+hmhRDMo+ewKH35/5
-	Ov5/OqcB8UKc4+OroGT7aXlQgg+8G02Rj/8ERKFZB21rHc7IMyPgw2NpeQi3zKVNNNi6eA3LYaXnc
-	8HeJKGwcBjEkHMKzTsydiX1BtmLPtEsuDcJ0a845al6Ps6fgzkO9dITaFmjRjKqa/gPNhh9ec87aj
-	AN7dL91cc1k/M0NFGJLw==;
+	List-Owner; bh=Z3kbtGdAat+95OZgCP+LDifr/2faftTm7R+ffOTV7sQ=; b=hwy9520Pi+TyxA
+	I+xQQPgYvXySTWfL++hRk801emZ7ZOcA9XTsicYD+KLLuDL7tPGz8R3s3bEB3QD94fKlHrwaGoAOk
+	a8iuv05+oUyNgHRjIEx6jcK89BzdYQafblK13VI7raT9OId7C5jZpvXEBGdNeijC+aEmN4lRc+9JC
+	jd6AFpN+Vm4+P2tbKj6S6Yr6zr4Rebg0M6z+fJScZJlT3Mb6up4HkkYWDZOCFMCZPTgMujMi7olc1
+	xO7LpGyD109Cc6FEtGrqzXxi3zKkuK3bb00MeZMaWLLdN2RIqsKJSoC85yeY0xmki9Aip49e4dLsP
+	XOBhKpVCFUPjh6kQ1Q7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1kW3-00000005yIC-13Pi;
-	Tue, 30 Apr 2024 10:15:15 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1s1kWN-00000005yPk-1TD7;
+	Tue, 30 Apr 2024 10:15:35 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1kVz-00000005yGh-3LJD
-	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Apr 2024 10:15:13 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-51ca95db667so5120751e87.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Apr 2024 03:15:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714472110; x=1715076910; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dIx1dFfAcpeKO8TErHh7vGY1lorqPiA5UlnTCSzH2HY=;
-        b=o6K0W/O/mrX+dEy9VOW0FHvUpriLDDGBtaSTM21kEzkxxra/w7FknU9EQGhW2X4+TX
-         Fx7ABLMn+AQUq6+2rEAi9pC/pXFjQj0cqDTtovtPur97+8tjMyNzvaxjl64ZUziULrr3
-         2RlKiTo/U+ekE9C2rfs3XXTPpNsD/0BjxurmRw03VYp7ypvdwFkixaatZhgdyB7YyLsh
-         7UyWpjf5tdfzFcWXwnQM4tQGwNnKFL3KgDF+Gw96NJ5KWCMN7+Vn/T/rj9c1MDf7KkjX
-         B+lbl/V2DdldwxIqZw39URXDpTa/h7G1TWYpDtrCOdEwN5/glwLdtYWw/6ZaLxM3B0xU
-         SIHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714472110; x=1715076910;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dIx1dFfAcpeKO8TErHh7vGY1lorqPiA5UlnTCSzH2HY=;
-        b=khiCqHtTGivXYkMYFyMAuc44Z8Ber8YWg0xC0f6AmHS8cW4+lVkr0lIoR5/V9rYgOb
-         rM0Sv0SJexs2ecoZDMEPygVkUpgCInJPw3HQiA4cFMPw95rF7Iyz6MGS4ijN/BJShg4G
-         LHpMB8oE89tUkcMAzrUnPhdMQi8Jdx+baG2T28zjMxDDzTy/epiHZYMu+SkFIqg/c6X3
-         kdB0p2VGt6Le1f0+/QDMbo3qhlnJf6ni6kXEf3hw2XldGOeA+O6MGcFDmXk1mjzrJ0AK
-         4xSXVx+9ZSXO1G6HDeAeloNYkyJATQX7aYeFkHzEQ+lmIZayERR63pRd4pXMMse4zbhQ
-         tl9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWRkR1lVlLKEfMFt7oI123Sx94CxCsfyI+SpdgzWIuYdllQefhPAuuplQ9ukamx0eJ4vs/jvo4LLDRhnNY6UqoHTjevPu0e5xpWI71278hwpRr5
-X-Gm-Message-State: AOJu0YyE/1p68tYIzNaC+2bKIe4qzqnd3y1KmXuwO5XDjiapTd2SZyRQ
-	ST0uAu12Uubxnk5lsJeITINmOvV4COPxEDBrSKn/7w3yi4LaMzF+7Q0eLg9cQ7A=
-X-Google-Smtp-Source: AGHT+IEeZGVbkW3UvagFGYDQZ5bMmN4VdL24N9F8cduZig7xQbulffwe9LBCfuUp6MPaqlZqlp0YPw==
-X-Received: by 2002:ac2:4945:0:b0:516:cf23:588 with SMTP id o5-20020ac24945000000b00516cf230588mr10156881lfi.27.1714472109993;
-        Tue, 30 Apr 2024 03:15:09 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
-        by smtp.gmail.com with ESMTPSA id g29-20020a0565123b9d00b0051d807addd7sm884156lfv.60.2024.04.30.03.15.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Apr 2024 03:15:09 -0700 (PDT)
-Date: Tue, 30 Apr 2024 13:15:08 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
-	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com, 
-	david.heidelberg@collabora.com, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	mcanal@igalia.com, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	virtualization@lists.linux-foundation.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 5/5] drm/ci: update xfails for the new testlist
-Message-ID: <hon4klkoaouuxhtvm3qb3qstsrdcibihksyrmvxkt3taijl6wb@ubitr6namryw>
+	id 1s1jXO-00000005lX0-1VTG;
+	Tue, 30 Apr 2024 09:12:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714468353;
+	bh=yGWtLhOg9rXYGVIqPnH38wrd3zStgRvrszhnXoRklaU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=uzFOfq1c/puNW82FwsVpgAt7fR8o3jls8amU2Tbn2xx4cnm9y9xR32ZV+TU6NdX2I
+	 9FQRrCxowqqbRW4eGxIprnFk2AF7oJJnoPUxTNgHJr1Y1T6bsyoAo1ytzr0eDn0myI
+	 OISla6CO/o81PV3mQnaDvKz5tXTdPkgmCldH+dPEmJyhMrcfaOxI3wiat4o0sGcCoQ
+	 JCKgXlLPcSkIjxETs8WfyZ81RIQviEFTgmhjiARtrrdbg5EUIICc+Lq+IyWtO15yDz
+	 grqyclRNMBDiX87C/8+xgfW1AMMpXrLOByBf4C7TIAEz92lgBqqpob6GKQxc7OFn2R
+	 MKFnl5gLoAdTg==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id D5AB13782165;
+	Tue, 30 Apr 2024 09:12:28 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 3/5] drm/ci: build virtual GPU driver as module
+Date: Tue, 30 Apr 2024 14:41:19 +0530
+Message-Id: <20240430091121.508099-4-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240430091121.508099-1-vignesh.raman@collabora.com>
 References: <20240430091121.508099-1-vignesh.raman@collabora.com>
- <20240430091121.508099-6-vignesh.raman@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240430091121.508099-6-vignesh.raman@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_031511_865528_3D6DA7CD 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20240430_021234_874607_74005214 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,127 +89,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 30, 2024 at 02:41:21PM +0530, Vignesh Raman wrote:
-> Now the testlist is used from IGT build, so update
-> xfails with the new testlist.
-> 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
->  .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt | 47 +++++++----
->  .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  8 +-
->  .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt | 15 ++++
->  drivers/gpu/drm/ci/xfails/i915-amly-fails.txt | 22 ++++-
->  .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |  8 ++
->  drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |  8 ++
->  drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  | 45 +++++-----
->  drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |  5 ++
->  drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  | 12 +++
->  drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  | 26 +++++-
->  drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |  6 ++
->  drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |  8 ++
->  drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  | 28 +++++--
->  drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  | 12 +++
->  drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  | 39 ++++-----
->  drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt | 10 ++-
->  drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  | 21 +++++
->  drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  | 75 +++++++++--------
->  drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  | 13 +++
->  drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  | 46 +++++------
->  drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |  8 ++
->  .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 47 +++--------
->  .../drm/ci/xfails/mediatek-mt8183-fails.txt   | 17 +---
->  .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |  5 ++
->  .../gpu/drm/ci/xfails/meson-g12b-fails.txt    | 20 +----
->  .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |  5 ++
->  .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   | 26 ++----
->  .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |  5 ++
->  .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |  5 +-
->  .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |  5 ++
->  .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   | 67 +++++++++++++++
->  .../msm-sc7180-trogdor-kingoftown-fails.txt   | 34 ++++----
->  .../msm-sc7180-trogdor-kingoftown-flakes.txt  |  5 ++
->  ...sm-sc7180-trogdor-lazor-limozeen-fails.txt | 34 ++++----
->  ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |  5 ++
->  .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    | 75 ++++-------------
->  .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   | 26 ++----
->  .../drm/ci/xfails/rockchip-rk3288-fails.txt   | 54 ------------
->  .../drm/ci/xfails/rockchip-rk3399-fails.txt   | 80 ++----------------
->  .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |  7 --
->  .../drm/ci/xfails/virtio_gpu-none-fails.txt   | 82 +++++++++++++------
->  .../drm/ci/xfails/virtio_gpu-none-skips.txt   |  3 +
->  42 files changed, 574 insertions(+), 495 deletions(-)
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
->  create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
->  delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
->  delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
-> 
+With latest IGT, the tests tries to load the module and it
+fails. So build the virtual GPU driver for virtio as module.
 
-[skipped]
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+---
+ drivers/gpu/drm/ci/build.sh       | 1 -
+ drivers/gpu/drm/ci/igt_runner.sh  | 6 +++---
+ drivers/gpu/drm/ci/image-tags.yml | 4 ++--
+ drivers/gpu/drm/ci/test.yml       | 1 +
+ drivers/gpu/drm/ci/x86_64.config  | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-> diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> index 44a5c62dedad..96e9faf0e607 100644
-> --- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-> @@ -1,19 +1,9 @@
-> +core_setmaster_vs_auth,Fail
-> +device_reset,Fail
-> +dumb_buffer,Fail
-
-This doesn't look correct, core tests should be passing.
-
->  kms_3d,Fail
-> -kms_addfb_basic@addfb25-bad-modifier,Fail
-> -kms_cursor_legacy@all-pipes-forked-bo,Fail
-> -kms_cursor_legacy@all-pipes-forked-move,Fail
-> -kms_cursor_legacy@all-pipes-single-bo,Fail
-> -kms_cursor_legacy@all-pipes-single-move,Fail
-> -kms_cursor_legacy@all-pipes-torture-bo,Fail
-> -kms_cursor_legacy@all-pipes-torture-move,Fail
-> -kms_cursor_legacy@pipe-A-forked-bo,Fail
-> -kms_cursor_legacy@pipe-A-forked-move,Fail
-> -kms_cursor_legacy@pipe-A-single-bo,Fail
-> -kms_cursor_legacy@pipe-A-single-move,Fail
-> -kms_cursor_legacy@pipe-A-torture-bo,Fail
-> -kms_cursor_legacy@pipe-A-torture-move,Fail
-> -kms_force_connector_basic@force-edid,Fail
-> -kms_hdmi_inject@inject-4k,Fail
-> -kms_selftest@drm_format,Timeout
-> -kms_selftest@drm_format_helper,Timeout
-
-Fine, kms_cursor_legacy tests were migrated to -flakes. But what
-happened with the rest of the failures?
-
-> -msm_mapping@ring,Fail
-> +kms_force_connector_basic,Fail
-> +kms_lease,Fail
-> +msm_mapping,Fail
-> +msm_submit,Fail
-> +tools_test,Fail
-> diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-> new file mode 100644
-> index 000000000000..3cc361b3d3b3
-> --- /dev/null
-> +++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
-> @@ -0,0 +1,5 @@
-> +# Board Name: apq8016-sbc-usb-host
-> +# Bug Report: TBD
-> +# IGT Version: 1.28-gd2af13d9f
-> +# Linux Version: 6.9.0-rc4
-> +kms_cursor_legacy
-
-It looks like one of the scripts has lost subtest granularity. It should
-be fixed before the patchset can be merged.
-
+diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+index 8a3baa003904..95493df9cdc2 100644
+--- a/drivers/gpu/drm/ci/build.sh
++++ b/drivers/gpu/drm/ci/build.sh
+@@ -156,7 +156,6 @@ fi
+ 
+ mkdir -p artifacts/install/lib
+ mv install/* artifacts/install/.
+-rm -rf artifacts/install/modules
+ ln -s common artifacts/install/ci-common
+ cp .config artifacts/${CI_JOB_NAME}_config
+ 
+diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
+index 20026612a9bd..55532f79fbdc 100755
+--- a/drivers/gpu/drm/ci/igt_runner.sh
++++ b/drivers/gpu/drm/ci/igt_runner.sh
+@@ -30,10 +30,10 @@ case "$DRIVER_NAME" in
+             export IGT_FORCE_DRIVER="panfrost"
+         fi
+         ;;
+-    amdgpu)
++    amdgpu|virtio_gpu)
+         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
+-        mv /install/modules/lib/modules/* /lib/modules/.
+-        modprobe amdgpu
++        mv /install/modules/lib/modules/* /lib/modules/. || true
++        modprobe --first-time $DRIVER_NAME
+         ;;
+ esac
+ 
+diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
+index d8f72b82c938..fd1cb6061166 100644
+--- a/drivers/gpu/drm/ci/image-tags.yml
++++ b/drivers/gpu/drm/ci/image-tags.yml
+@@ -4,9 +4,9 @@ variables:
+    DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
+ 
+    DEBIAN_X86_64_BUILD_IMAGE_PATH: "debian/x86_64_build"
+-   DEBIAN_BUILD_TAG: "2023-10-08-config"
++   DEBIAN_BUILD_TAG: "2024-04-22-virtio"
+ 
+-   KERNEL_ROOTFS_TAG: "2023-10-06-amd"
++   KERNEL_ROOTFS_TAG: "2024-04-22-virtio"
+    PKG_REPO_REV: "3cc12a2a"
+ 
+    DEBIAN_X86_64_TEST_BASE_IMAGE: "debian/x86_64_test-base"
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index 612c9ede3507..864ac3809d84 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -350,6 +350,7 @@ virtio_gpu:none:
+   script:
+     - ln -sf $CI_PROJECT_DIR/install /install
+     - mv install/bzImage /lava-files/bzImage
++    - mkdir -p /lib/modules
+     - mkdir -p $CI_PROJECT_DIR/results
+     - ln -sf $CI_PROJECT_DIR/results /results
+     - install/crosvm-runner.sh install/igt_runner.sh
+diff --git a/drivers/gpu/drm/ci/x86_64.config b/drivers/gpu/drm/ci/x86_64.config
+index 1cbd49a5b23a..78479f063e8e 100644
+--- a/drivers/gpu/drm/ci/x86_64.config
++++ b/drivers/gpu/drm/ci/x86_64.config
+@@ -91,7 +91,7 @@ CONFIG_KVM=y
+ CONFIG_KVM_GUEST=y
+ CONFIG_VIRT_DRIVERS=y
+ CONFIG_VIRTIO_FS=y
+-CONFIG_DRM_VIRTIO_GPU=y
++CONFIG_DRM_VIRTIO_GPU=m
+ CONFIG_SERIAL_8250_CONSOLE=y
+ CONFIG_VIRTIO_NET=y
+ CONFIG_VIRTIO_CONSOLE=y
 -- 
-With best wishes
-Dmitry
+2.40.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
