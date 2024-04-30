@@ -4,53 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D8EC10F16
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 08:38:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81473C10F16
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 09:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vzjfD3/qD5OiZlYttg19XmkToW1XoWfHmdtR525YehI=; b=INYIWCfI2iL7cX
-	JJIJCgKuCcCGharS2UEtfP6wPracEwq4gnBWVWZN56ydQknnv3on2DAiNHRJqkoLXPIOtbYrc+dzR
-	E3gVLbudx1j95B5QIuUpTX+E2846B9s6cSa9J5gFWGhYsk276Y9ZQzW36GNSGXVcauXesOpVKMJux
-	fdhaF5WNEsP85XMDPvtIeVyQAIl1JIa25uuSCgUkwXww8a0qZ6iksRh614cVDDOUek2+pHCpxoBfE
-	SO2YedA+9hbcWNZwtIkwpyDQiYB6G9W385BX7E4YsPeFd1NYtefRm+3tRVYuo1lRKWTS63RoEvLre
-	2F6/lZTO5gXG5hMiF6/w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=he8ibedsur81OQAep0XjES+tfK7moN//JYNkXaPlUeg=; b=abYr4d+/O6w0WW
+	Dv+0UHZ11W/aafzkckWbESM/lCaK4a/BWXbAtMIuqhzDM1EVklsMq56fot6+mD/hwdcyxvQZjlpUA
+	o2Oh2En/1jAe08HzZVaugw/L2nd9qtgaYjEpybit2i6GiGxbrEDmpGAxdOGlGK2c+5pCtfujJVD72
+	6DcFn1LUPZZunZxlgaAqR/ISTruZ4RK5XDKJRYp6B55LhXKTtOTHrZrnBzMpPECVZQjt32kMFApsH
+	0DJgIJXXGmB/91Q1DTyskEBxvMExeT/Lk8nJrfAoYaNU/LD+E1JUTmepGuXxlS0vyvws87GG796lk
+	kM9HV4owUNd14MpWfBnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1j0W-00000005d7m-27Aq;
-	Tue, 30 Apr 2024 08:38:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1s1jXG-00000005lTJ-2PjW;
+	Tue, 30 Apr 2024 09:12:26 +0000
+Received: from madrid.collaboradmins.com ([2a00:1098:ed:100::25])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1j0S-00000005d5n-3RtS;
-	Tue, 30 Apr 2024 08:38:34 +0000
-Received: from i53875b01.versanet.de ([83.135.91.1] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1s1j06-0007i9-Ie; Tue, 30 Apr 2024 10:38:10 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Krzysztof =?utf-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Simon Xue <xxm@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>,
- Niklas Cassel <cassel@kernel.org>
-Cc: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>,
- Jianfeng Liu <liujianfeng1994@gmail.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- stable@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Fix initial PERST# GPIO value
-Date: Tue, 30 Apr 2024 10:38:09 +0200
-Message-ID: <2493811.Mh6RI2rZIc@diego>
-In-Reply-To: <20240417164227.398901-1-cassel@kernel.org>
-References: <20240417164227.398901-1-cassel@kernel.org>
+	id 1s1jXB-00000005lOH-4C6x;
+	Tue, 30 Apr 2024 09:12:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1714468335;
+	bh=Q6up+U23E5APYIMETLmfiB1ibki5YAl7MpYr3vD7xLE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KE5WpSPbzhjMWvlaKe8+wAl5amqx/bo+kGu0nR8qV0BnT+EpHef2nFuLTNyuV/FUG
+	 OXpRrnwMw0UusKK2qo2ccvla2/MnwHsXXViKbFIU4DVI9bgWcvF7BrypK/E88QMIps
+	 rdZcASyjzRKYXiKVE3dp/I6f7PDihykSPDSyfLLC57JF9XN8KO9V2BLtL/YW7vESVq
+	 td7cUTrvNX/lZgp9E0jndbl9NKdAxHOlJevkfK4U3P6PVYbMCbY3+oGnDCmfxGf9Lq
+	 SCZG8TAY0vrh76a6z+gUYV/jdriHAZQwzAlVfLDGy3e3skmZF3EvWxop+G6+DSlx+v
+	 C6OVGbLdQR+Gg==
+Received: from localhost.localdomain (cola.collaboradmins.com [195.201.22.229])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madrid.collaboradmins.com (Postfix) with ESMTPSA id 53E3D3782165;
+	Tue, 30 Apr 2024 09:12:11 +0000 (UTC)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	david.heidelberg@collabora.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	dmitry.baryshkov@linaro.org,
+	mcanal@igalia.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 0/5] drm/ci: uprev mesa and generate testlist
+Date: Tue, 30 Apr 2024 14:41:16 +0530
+Message-Id: <20240430091121.508099-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_013832_911491_D5C883D1 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20240430_021222_251988_C580C462 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,57 +87,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 17. April 2024, 18:42:26 CEST schrieb Niklas Cassel:
-> PERST# is active low according to the PCIe specification.
-> 
-> However, the existing pcie-dw-rockchip.c driver does:
-> gpiod_set_value(..., 0); msleep(100); gpiod_set_value(..., 1);
-> When asserting + deasserting PERST#.
-> 
-> This is of course wrong, but because all the device trees for this
-> compatible string have also incorrectly marked this GPIO as ACTIVE_HIGH:
-> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3568*
-> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3588*
-> 
-> The actual toggling of PERST# is correct.
-> (And we cannot change it anyway, since that would break device tree
-> compatibility.)
-> 
-> However, this driver does request the GPIO to be initialized as
-> GPIOD_OUT_HIGH, which does cause a silly sequence where PERST# gets
-> toggled back and forth for no good reason.
-> 
-> Fix this by requesting the GPIO to be initialized as GPIOD_OUT_LOW
-> (which for this driver means PERST# asserted).
-> 
-> This will avoid an unnecessary signal change where PERST# gets deasserted
-> (by devm_gpiod_get_optional()) and then gets asserted
-> (by rockchip_pcie_start_link()) just a few instructions later.
-> 
-> Before patch, debug prints on EP side, when booting RC:
-> [  845.606810] pci: PERST# asserted by host!
-> [  852.483985] pci: PERST# de-asserted by host!
-> [  852.503041] pci: PERST# asserted by host!
-> [  852.610318] pci: PERST# de-asserted by host!
-> 
-> After patch, debug prints on EP side, when booting RC:
-> [  125.107921] pci: PERST# asserted by host!
-> [  132.111429] pci: PERST# de-asserted by host!
-> 
-> This extra, very short, PERST# assertion + deassertion has been reported
-> to cause issues with certain WLAN controllers, e.g. RTL8822CE.
-> 
-> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-> Tested-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Cc: stable@vger.kernel.org	# 5.15+
+Uprev mesa to the latest version and stop vendoring the
+testlist into the kernel. Instead, use the testlist from the
+IGT build to ensure we do not miss renamed or newly added tests.
+Update the xfails with the latest testlist run.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Also build virtual GPU driver for virtio as module.
 
-it also matches what the vendor kernel does.
+The flakes list needs to be reported upsteam. Will send it
+after this series is reviewed.
 
+https://gitlab.freedesktop.org/vigneshraman/linux/-/pipelines/1166575
+
+Vignesh Raman (5):
+  drm/ci: uprev mesa version
+  drm/ci: generate testlist from build
+  drm/ci: build virtual GPU driver as module
+  drm/ci: skip driver specific tests
+  drm/ci: update xfails for the new testlist
+
+ drivers/gpu/drm/ci/build-igt.sh               |   23 +
+ drivers/gpu/drm/ci/build.sh                   |    2 +-
+ drivers/gpu/drm/ci/container.yml              |   12 +-
+ drivers/gpu/drm/ci/gitlab-ci.yml              |   11 +-
+ drivers/gpu/drm/ci/igt_runner.sh              |   15 +-
+ drivers/gpu/drm/ci/image-tags.yml             |    7 +-
+ drivers/gpu/drm/ci/test.yml                   |    3 +
+ drivers/gpu/drm/ci/testlist.txt               | 2761 -----------------
+ drivers/gpu/drm/ci/x86_64.config              |    2 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |   47 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |    8 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-skips.txt |   29 +-
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |   22 +-
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |    8 +
+ drivers/gpu/drm/ci/xfails/i915-amly-skips.txt |   22 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |   45 +-
+ drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |    5 +
+ drivers/gpu/drm/ci/xfails/i915-apl-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt |    6 +
+ drivers/gpu/drm/ci/xfails/i915-cml-skips.txt  |   20 +
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |   28 +-
+ drivers/gpu/drm/ci/xfails/i915-glk-skips.txt  |   26 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |   39 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-flakes.txt |   10 +-
+ drivers/gpu/drm/ci/xfails/i915-kbl-skips.txt  |   35 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  |   75 +-
+ drivers/gpu/drm/ci/xfails/i915-tgl-skips.txt  |   27 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |   46 +-
+ drivers/gpu/drm/ci/xfails/i915-whl-skips.txt  |   22 +-
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   |   47 +-
+ .../drm/ci/xfails/mediatek-mt8173-skips.txt   |   12 +
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |   17 +-
+ .../drm/ci/xfails/mediatek-mt8183-flakes.txt  |    5 +
+ .../drm/ci/xfails/mediatek-mt8183-skips.txt   |   14 +
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |   20 +-
+ .../gpu/drm/ci/xfails/meson-g12b-flakes.txt   |    5 +
+ .../gpu/drm/ci/xfails/meson-g12b-skips.txt    |   14 +
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |   26 +-
+ .../gpu/drm/ci/xfails/msm-apq8016-flakes.txt  |    5 +
+ .../gpu/drm/ci/xfails/msm-apq8016-skips.txt   |   14 +
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |    5 +-
+ .../gpu/drm/ci/xfails/msm-apq8096-flakes.txt  |    5 +
+ .../gpu/drm/ci/xfails/msm-apq8096-skips.txt   |   81 +-
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   |   34 +-
+ .../msm-sc7180-trogdor-kingoftown-flakes.txt  |    5 +
+ .../msm-sc7180-trogdor-kingoftown-skips.txt   |   15 +
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt |   34 +-
+ ...m-sc7180-trogdor-lazor-limozeen-flakes.txt |    5 +
+ ...sm-sc7180-trogdor-lazor-limozeen-skips.txt |   15 +
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |   75 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   |   26 +-
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |   15 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   |   54 -
+ .../drm/ci/xfails/rockchip-rk3288-skips.txt   |   17 +-
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |   80 +-
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  |    7 -
+ .../drm/ci/xfails/rockchip-rk3399-skips.txt   |   15 +
+ .../drm/ci/xfails/virtio_gpu-none-fails.txt   |   82 +-
+ .../drm/ci/xfails/virtio_gpu-none-skips.txt   |   18 +-
+ 60 files changed, 886 insertions(+), 3289 deletions(-)
+ delete mode 100644 drivers/gpu/drm/ci/testlist.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8173-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/mediatek-mt8183-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/meson-g12b-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8016-skips.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-apq8096-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-flakes.txt
+ create mode 100644 drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-flakes.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+ delete mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
+
+-- 
+2.40.1
 
 
 _______________________________________________
