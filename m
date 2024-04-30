@@ -4,50 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88FEEC19F53
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66169C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7nICfAxnpTitUukPy/RfRlVhxqtfwECAWqUzGaJjFq0=; b=nqueJ3T5jGl7Hi
-	ieX9fQiawGm7zSLCL1EevC3111//JMQfDhJeOnGS2JR8C42+QCijK6EI5Hw675SvWSK+PaLCv5ZOD
-	xTrCfkkBp53w5njOxPw6jhESe5IKYI3yC7M1rtDg8gy1+/jc3w6Ia0jTalH4VCttCDfXdnKXlzViE
-	oH5la6twgGtkceZwtcGlIRnU5gBirZVUNdqMINmHOGlpFeyhddQnHYXwiddfJkl6TemC+AKGBOGpj
-	FT92EiEznbcn5gYWzHNCWbWyAihTVtpTSb/TwgGDEQrw2qKkqUySbJ74j2wYgVPu2nUt/T/ydDfyE
-	iVN4V8dO5ontR6zShuTg==;
+	List-Owner; bh=6uR7/d/Wg/csB6PTrG38rnYY/zDjR4cgLIVXwR3YhG4=; b=yNiV2/l3TKVk2E
+	DLdckSqOORvsF84n6IxyZm+HVN+yXlsTGEGY08qKSFCEUilIRiRgEXOFJem1WV/UJHfD/0ee9rQ8i
+	xsbCMMObPDR1ZSzO8FKNb1tQUzLxBkWsH1kl3mL+2MYXRN2qyIk62LieuEuW39qESsDu60trPjcDz
+	t/oJ3CjS+wCGMauOWCwwxNXxd3kNJi6tkEZ0IMwzMxm8pSTZhc25+PYBaz6Ga7th0crIpLgBEFmZ8
+	bFSUbFytn6b6LL7tv2nF1IM2m4Fl3I4duAJOY4YsWvEW1+K21YNO+Pvy16ZkpIdKIIytqu4m6eUzz
+	dE9NZgyKipFUKiS4v8ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mBg-00000006Ggh-16Px;
-	Tue, 30 Apr 2024 12:02:20 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s1mBi-00000006Ghp-1hII;
+	Tue, 30 Apr 2024 12:02:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mBc-00000006Gcd-4B9R
+	id 1s1mBf-00000006Gfe-1tnS
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 30 Apr 2024 12:02:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=eVbb3bW6AfEVUBMoqm3Hyuz4iSTbBNkUeL3un6g+fvU=; b=HFfrfNJfE65yvWlp/AF9kv04Hn
+	GpVVYCEts5KrVhREMs/B82bitLgh3I6nX+FJ3wR5IXmr0Q0vsj14XG+yQ+3jjk5X7MfkPhSXpba8+
+	rKaGrwvK4bUoxmGIenSI1XvSjlaXjUye5/4ASGXIkVG8odX66L3OYpv/OF313RwKBzW7srArWtAhe
+	Uz9BCLZxejdmnecb/UstX0xxHMAdUDR36PJLg0XK7lBxVtK8RKonRAu+Exf4iVTee+Vs0dNvoPnvA
+	DBQk5ztBp6dw2WhtGrUfCmAiFYxpgfD8Rgcb4BOS7MJhVWnL872xn+oWW2w1uVqh1qpgM8jDGDTop
+	qWLEYs/w==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s1mBZ-0000000Gvz7-3Psw
 	for linux-rockchip@lists.infradead.org;
 	Tue, 30 Apr 2024 12:02:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C8151CE1021;
-	Tue, 30 Apr 2024 12:02:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3596CC4AF1A;
-	Tue, 30 Apr 2024 12:02:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 97B9061475;
+	Tue, 30 Apr 2024 12:02:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7ED08C4AF53;
+	Tue, 30 Apr 2024 12:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714478534;
-	bh=FN05hy9jvB+E6GTH6BA3O2fKOPPC2nQRvjx6DsGtqeY=;
+	s=k20201202; t=1714478521;
+	bh=2auuQGe9uHpx39X2DRGeyL4wn09dTQhuOpMdAqllMYs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pJWb5KQFQVbxuxIhHSuHiCd8i/KXkK06fvflLzA+2p1+o/7qpvTaoogdiazefxPpV
-	 0AK4lMA3vNDC9Mt7cmW3Vq+gszJ0u4Sou+jRAVYeW7WMjz4le4L/s2iCzrxQ6oHphx
-	 hFj+42lvSLYkAsOKajB2c8hLwiMfjef6eusdM7GZEfsJS+TbDNAJsfZDZuxJjI6IZp
-	 uqKOLQKUgvHL+yBQgQTv/W1EFo0u+U312/IN/FoGsi44NXTRUe3It9d0XSGxg2Usia
-	 JN3nudu8KkSEpnabqcNhObPYuYz2/8LZrUvlmJOyftHXcP85g8uRlfb2K3ng1kAR4L
-	 Z+ImHV1aAqWhQ==
+	b=EosXEdTek2E40smXhuEIGDxUvmmW9wEsWePza5cW+B9qJbPla0yG6LphRr07y/ypt
+	 YP5BI19dzXKR4VzkA2sqkEghrbFNEHcgYAjVJ9PGmTPjdRPRz58mrgtv5D775EeEVT
+	 KCCpirt/XxvDnp3Uvv5tQF2FFMJtJz7/SZ35wW6jd85pSEyWJz0iu7JKucmUCkhutM
+	 mPCVXt8m0+ZnIU+Maeh2otyBzLX6AW5LcZOMEPi3IISrST12b0MDZe8tVfSdWjh7XD
+	 yqs+jlMKUb4Zk2wkgOmPmWa92HuyxqqRDCqDx2KIWo/rhbYwpTyNJ5OG9NZQqnYN/7
+	 yiYZajI2Befkw==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Tue, 30 Apr 2024 14:01:01 +0200
-Subject: [PATCH v2 04/14] dt-bindings: PCI: rockchip-dw-pcie: Prepare for
- Endpoint mode support
+Date: Tue, 30 Apr 2024 14:00:58 +0200
+Subject: [PATCH v2 01/14] dt-bindings: PCI: snps,dw-pcie-ep: Add vendor
+ specific reg-name
 MIME-Version: 1.0
-Message-Id: <20240430-rockchip-pcie-ep-v1-v2-4-a0f5ee2a77b6@kernel.org>
+Message-Id: <20240430-rockchip-pcie-ep-v1-v2-1-a0f5ee2a77b6@kernel.org>
 References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -64,17 +79,17 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8019; i=cassel@kernel.org;
- h=from:subject:message-id; bh=FN05hy9jvB+E6GTH6BA3O2fKOPPC2nQRvjx6DsGtqeY=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m44vtpKIPD/esaFfBnTbjuF7Du9IvNRyLGYBeXGV
- b3TlnRc7ChlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBE7oUwMpxle2t6e7Wq3Z6w
- o/rNj7XSrhdJBX+dpOFV6RLvxpTDepGR4YXC9HMn4nRMzdJ7Unfw9tvOFvyiWzwrz//ryz1ZDZx
- hDAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1296; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=2auuQGe9uHpx39X2DRGeyL4wn09dTQhuOpMdAqllMYs=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m54EhHDfYpZSPL3KQkrk0aO9Vm8vs+1ea82a8kG5
+ 8+emHqlo5SFQYyLQVZMkcX3h8v+4m73KccV79jAzGFlAhnCwMUpABPJV2D4X7T+/puP6Y6remsl
+ 3aVC1mbc7vhpNVP50OS+y3WSgfzP/BkZuluDGAVWfLg2d9fvRZEBbgdcjbZN3pR+8VViy5Rzs04
+ 94QIA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_050217_452053_23AC67C0 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20240430_130214_182616_D9512F9A 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,272 +106,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Refactor the rockchip-dw-pcie binding to move generic properties to a new
-rockchip-dw-pcie-common binding that can be shared by both RC and EP mode.
+Considering that some drivers (e.g. pcie-dw-rockchip.c) already use the
+reg-name "apb" for the device tree binding in Root Complex mode
+(snps,dw-pcie.yaml), it doesn't make sense that those drivers should use a
+different reg-name when running in Endpoint mode (snps,dw-pcie-ep.yaml).
 
-No functional change intended.
+Therefore, since "apb" is already defined in snps,dw-pcie.yaml, add it
+also for snps,dw-pcie-ep.yaml.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../bindings/pci/rockchip-dw-pcie-common.yaml      | 111 +++++++++++++++++++++
- .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  |  93 +----------------
- 2 files changed, 114 insertions(+), 90 deletions(-)
+ Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-new file mode 100644
-index 000000000000..60d190a77580
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml
-@@ -0,0 +1,111 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-common.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: DesignWare based PCIe RC/EP controller on Rockchip SoCs
-+
-+maintainers:
-+  - Shawn Lin <shawn.lin@rock-chips.com>
-+  - Simon Xue <xxm@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description: |+
-+  Generic properties for the DesignWare based PCIe RC/EP controller on Rockchip
-+  SoCs.
-+
-+properties:
-+  clocks:
-+    minItems: 5
-+    items:
-+      - description: AHB clock for PCIe master
-+      - description: AHB clock for PCIe slave
-+      - description: AHB clock for PCIe dbi
-+      - description: APB clock for PCIe
-+      - description: Auxiliary clock for PCIe
-+      - description: PIPE clock
-+      - description: Reference clock for PCIe
-+
-+  clock-names:
-+    minItems: 5
-+    items:
-+      - const: aclk_mst
-+      - const: aclk_slv
-+      - const: aclk_dbi
-+      - const: pclk
-+      - const: aux
-+      - const: pipe
-+      - const: ref
-+
-+  interrupts:
-+    items:
-+      - description:
-+          Combined system interrupt, which is used to signal the following
-+          interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme,
-+          hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi,
-+          edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app
-+      - description:
-+          Combined PM interrupt, which is used to signal the following
-+          interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2,
-+          linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2,
-+          linkst_out_l0s, pm_dstate_update
-+      - description:
-+          Combined message interrupt, which is used to signal the following
-+          interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi,
-+          pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active
-+      - description:
-+          Combined legacy interrupt, which is used to signal the following
-+          interrupts - inta, intb, intc, intd
-+      - description:
-+          Combined error interrupt, which is used to signal the following
-+          interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
-+          tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
-+          nf_err_rx, f_err_rx, radm_qoverflow
-+
-+  interrupt-names:
-+    items:
-+      - const: sys
-+      - const: pmc
-+      - const: msg
-+      - const: legacy
-+      - const: err
-+
-+  num-lanes: true
-+
-+  phys:
-+    maxItems: 1
-+
-+  phy-names:
-+    const: pcie-phy
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    minItems: 1
-+    maxItems: 2
-+
-+  reset-names:
-+    oneOf:
-+      - const: pipe
-+      - items:
-+          - const: pwr
-+          - const: pipe
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+  - num-lanes
-+  - phys
-+  - phy-names
-+  - power-domains
-+  - resets
-+  - reset-names
-+
-+additionalProperties: true
-+
-+...
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 5f719218c472..550d8a684af3 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -4,7 +4,7 @@
- $id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: DesignWare based PCIe controller on Rockchip SoCs
-+title: DesignWare based PCIe Root Complex controller on Rockchip SoCs
- 
- maintainers:
-   - Shawn Lin <shawn.lin@rock-chips.com>
-@@ -12,12 +12,13 @@ maintainers:
-   - Heiko Stuebner <heiko@sntech.de>
- 
- description: |+
--  RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
-+  RK3568 SoC PCIe Root Complex controller is based on the Synopsys DesignWare
-   PCIe IP and thus inherits all the common properties defined in
-   snps,dw-pcie.yaml.
- 
- allOf:
-   - $ref: /schemas/pci/snps,dw-pcie.yaml#
-+  - $ref: /schemas/pci/rockchip-dw-pcie-common.yaml#
- 
- properties:
-   compatible:
-@@ -40,61 +41,6 @@ properties:
-       - const: apb
-       - const: config
- 
--  clocks:
--    minItems: 5
--    items:
--      - description: AHB clock for PCIe master
--      - description: AHB clock for PCIe slave
--      - description: AHB clock for PCIe dbi
--      - description: APB clock for PCIe
--      - description: Auxiliary clock for PCIe
--      - description: PIPE clock
--      - description: Reference clock for PCIe
--
--  clock-names:
--    minItems: 5
--    items:
--      - const: aclk_mst
--      - const: aclk_slv
--      - const: aclk_dbi
--      - const: pclk
--      - const: aux
--      - const: pipe
--      - const: ref
--
--  interrupts:
--    items:
--      - description:
--          Combined system interrupt, which is used to signal the following
--          interrupts - phy_link_up, dll_link_up, link_req_rst_not, hp_pme,
--          hp, hp_msi, link_auto_bw, link_auto_bw_msi, bw_mgt, bw_mgt_msi,
--          edma_wr, edma_rd, dpa_sub_upd, rbar_update, link_eq_req, ep_elbi_app
--      - description:
--          Combined PM interrupt, which is used to signal the following
--          interrupts - linkst_in_l1sub, linkst_in_l1, linkst_in_l2,
--          linkst_in_l0s, linkst_out_l1sub, linkst_out_l1, linkst_out_l2,
--          linkst_out_l0s, pm_dstate_update
--      - description:
--          Combined message interrupt, which is used to signal the following
--          interrupts - ven_msg, unlock_msg, ltr_msg, cfg_pme, cfg_pme_msi,
--          pm_pme, pm_to_ack, pm_turnoff, obff_idle, obff_obff, obff_cpu_active
--      - description:
--          Combined legacy interrupt, which is used to signal the following
--          interrupts - inta, intb, intc, intd
--      - description:
--          Combined error interrupt, which is used to signal the following
--          interrupts - aer_rc_err, aer_rc_err_msi, rx_cpl_timeout,
--          tx_cpl_timeout, cor_err_sent, nf_err_sent, f_err_sent, cor_err_rx,
--          nf_err_rx, f_err_rx, radm_qoverflow
--
--  interrupt-names:
--    items:
--      - const: sys
--      - const: pmc
--      - const: msg
--      - const: legacy
--      - const: err
--
-   legacy-interrupt-controller:
-     description: Interrupt controller node for handling legacy PCI interrupts.
-     type: object
-@@ -119,47 +65,14 @@ properties:
- 
-   msi-map: true
- 
--  num-lanes: true
--
--  phys:
--    maxItems: 1
--
--  phy-names:
--    const: pcie-phy
--
--  power-domains:
--    maxItems: 1
--
-   ranges:
-     minItems: 2
-     maxItems: 3
- 
--  resets:
--    minItems: 1
--    maxItems: 2
--
--  reset-names:
--    oneOf:
--      - const: pipe
--      - items:
--          - const: pwr
--          - const: pipe
--
-   vpcie3v3-supply: true
- 
- required:
--  - compatible
--  - reg
--  - reg-names
--  - clocks
--  - clock-names
-   - msi-map
--  - num-lanes
--  - phys
--  - phy-names
--  - power-domains
--  - resets
--  - reset-names
- 
- unevaluatedProperties: false
- 
+diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
+index bbdb01d22848..00dec01f1f73 100644
+--- a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
++++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
+@@ -100,7 +100,7 @@ properties:
+             for new bindings.
+           oneOf:
+             - description: See native 'elbi/app' CSR region for details.
+-              enum: [ link, appl ]
++              enum: [ apb, link, appl ]
+             - description: See native 'atu' CSR region for details.
+               enum: [ atu_dma ]
+     allOf:
 
 -- 
 2.44.0
