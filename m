@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DB1C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 10:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED0DCC4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 11:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UMLUcX2A7+Jjyk18EIM9+lMET637IUwB8EL96PiFHUU=; b=lmCZ5TGHo5B5Qw
-	EcpiuxPcOF84lvfc2/aYtf6CCwBgCKwhnNNvrpB4knog+fYipQQJZyc+2QbT9UNL029p4qQWU6aBI
-	MF9ITGwTwUj5M+W2GaaPc4EC7dvg4C7ARVHouLP5OZDbF7J8hH1RmpgTLD9lnIjEs0eP9cbqnBPHC
-	N/OKHu301cdezz6FGVoHPFi14OTPgRgiJDELe5s40aelG8J+qNLpChgxwJMl6fakSJFNb3kEoXtuy
-	1A+Y4XzW29Y6AVFx55tAW934hTt4tR67C8nzxGX4S1fkdbuwysL+YYOquNAay+4ONWq7gil8ibKpk
-	+tkhQaWoMltMP4bWBM+w==;
+	List-Owner; bh=6i5VahfZLughI3n88pL/Zy6SHa2hKjIUwHa+ZKHPUBo=; b=zKD4B0HcgnaThK
+	NfuUHuVQWOHYd5xJXaadrr6o556yNR4RtIip70jnPue/fArb3GG14ILZpG4i6+Vk2Dw7f3tJs9yUK
+	VjSWssuHEp+W00PZVKzYajSH5mtAyb+gnLVqN8fYnKC0Ge5dduJKBphf8BXcbfQT+RmIuO27RXcw4
+	h4dcsptr9CpA6SUngpuMsK1xVNoV23x5dk5jVrNN8hxaG/p/2HGBmAirSRoslNa5DWAxfU+DbRNC1
+	w9l9Gh1xz6WhsyOhfZCy+MNcfUSwjdDH3Xq9iFnIZZ6y2Igxmi3vVvrmNHql4Xoc6Lwag0qvqSe11
+	hsEWZwVaaG8OWTgIa6VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1kr0-0000000621N-2Hbh;
-	Tue, 30 Apr 2024 10:36:54 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1s1llR-00000006Bu1-4BAP;
+	Tue, 30 Apr 2024 11:35:14 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1kqx-000000061zr-1uJy;
-	Tue, 30 Apr 2024 10:36:53 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [IPV6:240e:3b3:2c00:6c50:5089:6cd8:506a:48e6])
-	by smtp.qiye.163.com (Hmail) with ESMTPA id CEF5A7E015B;
-	Tue, 30 Apr 2024 18:36:21 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: krzk@kernel.org
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: add Radxa ROCK 3C
-Date: Tue, 30 Apr 2024 18:36:15 +0800
-Message-Id: <20240430103615.1626648-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <d6004beb-2e7d-4f26-a202-0c5baabd4023@kernel.org>
-References: <d6004beb-2e7d-4f26-a202-0c5baabd4023@kernel.org>
+	id 1s1llN-00000006Bre-44kR
+	for linux-rockchip@lists.infradead.org;
+	Tue, 30 Apr 2024 11:35:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 4BC7ECE0F7F;
+	Tue, 30 Apr 2024 11:35:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3966C2BBFC;
+	Tue, 30 Apr 2024 11:35:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714476905;
+	bh=sxELeoveQyBre7ysa3POtgLGQh7DXaFQ4aIvHwFGZhk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TWPDVOBzUKxdgbVU/EzK2z365JwEkd273wG6jpr0AscMPIDuyLKa3lvcS0qHNglRX
+	 Qr/viURln37ItxVtuRsv8KCJJ1jdyA4973LiWMRtsIQY85W8buB/ebiY4QmlM9u284
+	 E7Qr3fVf1zF5TKXXsb9vW767PxP+RcegNHm9m9s4kx8Adpsh1O2ZaCkCKChA3cuOqI
+	 e5fabNHp/kd7iv9PRbAJ6WefdVtewcDJ0sJZpkdLkSliwpXN67HRFfRoHS72A0U9MX
+	 Ff5/5IqDARkSFlcqNWjBrTGz2aZySBunwGFRf+KWsCpgoRmGqYWuZu2cL5daV6e77A
+	 SnWM2UKlAfNjQ==
+Date: Tue, 30 Apr 2024 13:34:58 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>, Damien Le Moal <dlemoal@kernel.org>,
+	Jon Lin <jon.lin@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 04/12] dt-bindings: rockchip: Add DesignWare based PCIe
+ Endpoint controller
+Message-ID: <ZjDXYguzuhnJAcfg@ryzen.lan>
+References: <20240424-rockchip-pcie-ep-v1-v1-0-b1a02ddad650@kernel.org>
+ <20240424-rockchip-pcie-ep-v1-v1-4-b1a02ddad650@kernel.org>
+ <20240425160809.GA2613935-robh@kernel.org>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSh0aVk8ZHx1CTR1LGUpMH1UTARMWGhIXJBQOD1
-	lXWRgSC1lBWUlPSx5BSBlIQUkYS0tBTRhOS0FOS0NCQU0YH0NBTktNGkFPQx5NWVdZFhoPEhUdFF
-	lBWU9LSFVKSktISkNVSktLVUtZBg++
-X-HM-Tid: 0a8f2e93b0dd03a2kunmcef5a7e015b
-X-HM-MType: 10
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ohw6MBw*FjNLHBk5Fg1OSx8P
-	NSIaCSNVSlVKTEpPT0xISENJT0NKVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlP
-	Sx5BSBlIQUkYS0tBTRhOS0FOS0NCQU0YH0NBTktNGkFPQx5NWVdZCAFZQUpDTk03Bg++
+Content-Disposition: inline
+In-Reply-To: <20240425160809.GA2613935-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_033651_691866_6980C3D0 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240430_043510_412403_6E74E02B 
+X-CRM114-Status: GOOD (  31.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,29 +87,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
->> The Radxa ROCK 3C is a similar board to the
->> Radxa ROCK 3A with the Rockchip RK3566 SoC.
->> Add devicetree binding documentation for it.
+On Thu, Apr 25, 2024 at 11:08:09AM -0500, Rob Herring wrote:
+> On Wed, Apr 24, 2024 at 05:16:22PM +0200, Niklas Cassel wrote:
+> > Document DT bindings for PCIe Endpoint controller found in Rockchip SoCs.
+> > 
+> > Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> > ---
+> >  .../bindings/pci/rockchip-dw-pcie-ep.yaml          | 192 +++++++++++++++++++++
+> >  1 file changed, 192 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+> > new file mode 100644
+> > index 000000000000..57a6c542058f
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+> > @@ -0,0 +1,192 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie-ep.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: DesignWare based PCIe Endpoint controller on Rockchip SoCs
+> > +
+> > +maintainers:
+> > +  - Niklas Cassel <cassel@kernel.org>
+> > +
+> > +description: |+
+> > +  RK3588 SoC PCIe Endpoint controller is based on the Synopsys DesignWare
+> > +  PCIe IP and thus inherits all the common properties defined in
+> > +  snps,dw-pcie-ep.yaml.
+> > +
+> > +allOf:
+> > +  - $ref: /schemas/pci/snps,dw-pcie-ep.yaml#
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - const: rockchip,rk3588-pcie-ep
+> 
+> 3568 doesn't support endpoint mode? It would be good to keep the 
+> bindings aligned.
 
-> For future:
->
-> Please wrap commit message according to Linux coding style / submission
-> process (neither too early nor over the limit)
+It does.
+However, it does not have the dedicated IRQ lines for the eDMA interrupts.
+I will add rk3568 to the DT binding and to the driver.
+If someone wants eDMA functional for rk3568, there is further code needed,
+but EP mode without eDMA should work on rk3568 as is.
 
-Should I compress these three lines into two?
 
-> There was some big renaming of these boards. I assume you are using
-> correct naming?
+> > +  phys:
+> > +    maxItems: 1
+> > +
+> > +  phy-names:
+> > +    const: pcie-phy
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  resets:
+> > +    maxItems: 2
+> > +
+> > +  reset-names:
+> > +    items:
+> > +      - const: pwr
+> > +      - const: pipe
+> 
+> Most of this is all duplicated from rockchip-dw-pcie.yaml. Pull out the 
+> common bits to a separate schema file and reference it from the RC and 
+> endpoint schemas.
 
-According to the link below, the model name is now correct:
-https://lore.kernel.org/lkml/B26C732A4DCEA9B3+282b8775-601b-4d4a-a513-4924b7940076@radxa.com/
+Ok, will fix in V2.
 
-Thanks,
-Chukun
 
--- 
-2.25.1
+> You'll need to add to interrupts/interrupt-names in the common schema 
+> and then restrict the number of items here and in the RC schema.
 
+Remember that eDMA can be used also in RC mode.
+Even if the RC binding doesn't allow it right now, these interrupts could
+be optional also for RC mode, in case someone actually wants to use them
+in the future.
+
+
+> > +
+> > +  vpcie3v3-supply: true
+> 
+> This doesn't make sense for endpoint mode. At least in the sense this 
+> is supposed to be a standard slot voltage driven from the host side.
+
+I tried not supplying the regulator for the EP side on my rock5b
+(rk3588 based) platform.
+The driver (in EP mode) probes correctly, but does not work without this,
+regardless of how I try. Boot EP first, boot RC first.
+
+Looking at the rock5b schematic:
+https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock_5b_v1423_sch.pdf
+Page 7, specifically VCC3V3_PCIE30.
+It does seem to only support sourcing VIN from a regulator on the local
+board (VCC5V0_SYS).
+
+(Looking at a vendor using this SoC in a board that supports EP mode
+(Mixtile Blade 3), they do supply the regulator also for the EP-mode
+DT node.)
+
+I will drop the "vpcie3v3-supply" from the EP binding and keep it
+only in the RC binding. (As perhaps some other rk3588 based board can
+actually source the 3.3v from the PCIe slot in EP mode.)
+
+I will keep it in the rock5b (a rk3588 based board) DT overlay,
+as it is obviously needed for rock5b.
+
+
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - reg-names
+> > +  - clocks
+> > +  - clock-names
+> > +  - interrupts
+> > +  - interrupt-names
+> > +  - num-lanes
+> > +  - phys
+> > +  - phy-names
+> > +  - power-domains
+> > +  - resets
+> > +  - reset-names
+> 
+> A bunch or all? of these can be in the common schema too.
+
+Ok, will fix in V2.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
