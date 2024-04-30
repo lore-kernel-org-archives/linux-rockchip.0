@@ -4,71 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFF7C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 05:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D8EC10F16
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 08:38:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=myk+zzFKzI5/xDkIiFPo6rTjQFfzTibqRYO1JHIBgnY=; b=IOXYqZrYtst1+3
-	KjL8Km5O8XY92GM3AyYbltH5bzmNmNa+f5dIzg4RGH/8E3JMxrbKZwLZYrMKjakfzNY5tatdUL+4M
-	xf8r2xepLLKa7DF5n194ALdbCCNzVaFa0PzXKte8JkG9O8Fgc2XXrQFxQuaHdlMTDqZL+NxZ8Fkry
-	jD1bkRTT9Gw0KJSfme8/QSnjCt0eVY7vzSsOFa0iCXBHA7HexbYf6vdvqI9Cg9IJkpGX3xYUy6Cii
-	ei8jvez+5+KqdMfI4FTvxLN83h0Kyjjt2UkpquJ1ydIvJU1Yt57GbfNT9dLTlqX48wZTxUBAGWRlh
-	n7kTf5jjlfMQfofnB1LQ==;
+	List-Owner; bh=vzjfD3/qD5OiZlYttg19XmkToW1XoWfHmdtR525YehI=; b=INYIWCfI2iL7cX
+	JJIJCgKuCcCGharS2UEtfP6wPracEwq4gnBWVWZN56ydQknnv3on2DAiNHRJqkoLXPIOtbYrc+dzR
+	E3gVLbudx1j95B5QIuUpTX+E2846B9s6cSa9J5gFWGhYsk276Y9ZQzW36GNSGXVcauXesOpVKMJux
+	fdhaF5WNEsP85XMDPvtIeVyQAIl1JIa25uuSCgUkwXww8a0qZ6iksRh614cVDDOUek2+pHCpxoBfE
+	SO2YedA+9hbcWNZwtIkwpyDQiYB6G9W385BX7E4YsPeFd1NYtefRm+3tRVYuo1lRKWTS63RoEvLre
+	2F6/lZTO5gXG5hMiF6/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1gGf-00000005AnU-00Uz;
-	Tue, 30 Apr 2024 05:43:05 +0000
-Received: from www522.your-server.de ([195.201.215.122])
+	id 1s1j0W-00000005d7m-27Aq;
+	Tue, 30 Apr 2024 08:38:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1gGb-00000005AmX-0T9c;
-	Tue, 30 Apr 2024 05:43:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=folker-schwesinger.de; s=default2212; h=In-Reply-To:References:To:From:Cc:
-	Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:Mime-Version:
-	Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=YW2t+Uyy5JF6+HVc5XVOdFTIDcJXXBz01l/hz5M5h+E=; b=RFzzKtqEIfkcbwU9s3vkm6rEkn
-	z9kFRqXkyZlhK7yRyTDnWqG7sDyTDpsbL9QD81sD537u7yBvW7W4PDPFUDTtcWtLvA10vqahiOeXg
-	UgafH36gq7N+sHSKNrQg4LMLMvhzOnOIHGzsAUDnTJEchrXtr0V50INDzB6osSVpZ6pL6ZZbWG12d
-	qIxcnm6xb7Vc2ia0P7zZCJIJjMoSAlxekpO5bEL9PVaeNQuon1PbBPmQ+52b0ybFfi7wc5C8oPJh4
-	qqQR6dt0+s3xhuGvPRdKy1kcfxOHgif1oX0kLR/LSmIStTSLVUppdvtQb006goD1dMKjn99UO3/FB
-	UKnk4a5A==;
-Received: from sslproxy05.your-server.de ([78.46.172.2])
-	by www522.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	id 1s1j0S-00000005d5n-3RtS;
+	Tue, 30 Apr 2024 08:38:34 +0000
+Received: from i53875b01.versanet.de ([83.135.91.1] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <dev@folker-schwesinger.de>)
-	id 1s1gGQ-000KCY-FG; Tue, 30 Apr 2024 07:42:50 +0200
-Received: from [185.213.155.203] (helo=localhost)
-	by sslproxy05.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <dev@folker-schwesinger.de>)
-	id 1s1gGP-000Opj-2L;
-	Tue, 30 Apr 2024 07:42:49 +0200
-Mime-Version: 1.0
-Date: Tue, 30 Apr 2024 05:42:49 +0000
-Message-Id: <D0X7UJELGST3.2IL1AFDJ89N07@folker-schwesinger.de>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3C
-Cc: "Conor Dooley" <conor+dt@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Rob Herring" <robh@kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>
-From: "Folker Schwesinger" <dev@folker-schwesinger.de>
-To: "Chukun Pan" <amadeus@jmu.edu.cn>, "Heiko Stuebner" <heiko@sntech.de>
-X-Mailer: aerc 0.17.0-118-g0a1af14fd916
-References: <20240428123618.72170-1-amadeus@jmu.edu.cn>
- <20240428123618.72170-3-amadeus@jmu.edu.cn>
-In-Reply-To: <20240428123618.72170-3-amadeus@jmu.edu.cn>
-X-Authenticated-Sender: dev@folker-schwesinger.de
-X-Virus-Scanned: Clear (ClamAV 0.103.10/27260/Mon Apr 29 10:23:47 2024)
+	(envelope-from <heiko@sntech.de>)
+	id 1s1j06-0007i9-Ie; Tue, 30 Apr 2024 10:38:10 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?utf-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Simon Xue <xxm@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Niklas Cassel <cassel@kernel.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>,
+ Jianfeng Liu <liujianfeng1994@gmail.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ stable@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Fix initial PERST# GPIO value
+Date: Tue, 30 Apr 2024 10:38:09 +0200
+Message-ID: <2493811.Mh6RI2rZIc@diego>
+In-Reply-To: <20240417164227.398901-1-cassel@kernel.org>
+References: <20240417164227.398901-1-cassel@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_224301_461652_CDB50FE1 
-X-CRM114-Status: UNSURE (   5.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240430_013832_911491_D5C883D1 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,24 +67,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun Apr 28, 2024 at 2:36 PM CEST, Chukun Pan wrote:
-> [...]
-> +&sdhci {
-> +	bus-width = <8>;
-> +	max-frequency = <200000000>;
-> +	mmc-hs200-1_8v;
+Am Mittwoch, 17. April 2024, 18:42:26 CEST schrieb Niklas Cassel:
+> PERST# is active low according to the PCIe specification.
+> 
+> However, the existing pcie-dw-rockchip.c driver does:
+> gpiod_set_value(..., 0); msleep(100); gpiod_set_value(..., 1);
+> When asserting + deasserting PERST#.
+> 
+> This is of course wrong, but because all the device trees for this
+> compatible string have also incorrectly marked this GPIO as ACTIVE_HIGH:
+> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3568*
+> $ git grep -B 10 reset-gpios arch/arm64/boot/dts/rockchip/rk3588*
+> 
+> The actual toggling of PERST# is correct.
+> (And we cannot change it anyway, since that would break device tree
+> compatibility.)
+> 
+> However, this driver does request the GPIO to be initialized as
+> GPIOD_OUT_HIGH, which does cause a silly sequence where PERST# gets
+> toggled back and forth for no good reason.
+> 
+> Fix this by requesting the GPIO to be initialized as GPIOD_OUT_LOW
+> (which for this driver means PERST# asserted).
+> 
+> This will avoid an unnecessary signal change where PERST# gets deasserted
+> (by devm_gpiod_get_optional()) and then gets asserted
+> (by rockchip_pcie_start_link()) just a few instructions later.
+> 
+> Before patch, debug prints on EP side, when booting RC:
+> [  845.606810] pci: PERST# asserted by host!
+> [  852.483985] pci: PERST# de-asserted by host!
+> [  852.503041] pci: PERST# asserted by host!
+> [  852.610318] pci: PERST# de-asserted by host!
+> 
+> After patch, debug prints on EP side, when booting RC:
+> [  125.107921] pci: PERST# asserted by host!
+> [  132.111429] pci: PERST# de-asserted by host!
+> 
+> This extra, very short, PERST# assertion + deassertion has been reported
+> to cause issues with certain WLAN controllers, e.g. RTL8822CE.
+> 
+> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
+> Tested-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Cc: stable@vger.kernel.org	# 5.15+
 
-Out of curiosity, does this board also support HS400? From a very brief
-look this board seems quite similar to Rock 4 series boards, that do
-support HS400.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
-> +	vmmc-supply = <&vcc_3v3>;
-> +	vqmmc-supply = <&vcc_1v8>;
-> +	status = "okay";
-> +};
+it also matches what the vendor kernel does.
+
 
 
 _______________________________________________
