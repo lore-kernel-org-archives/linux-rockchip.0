@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D82A3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E668C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c+6l9S2Zh/arUM9ogs+/BpQowBLrFi48zSMNXmNHxSk=; b=rvjIXkzTVflnH0
-	9rRLM9cFR1uyDnpvf5q+UFU4ktQlD0MsW9A6zAQ7G9BmOSZ/clH6TGh9ZWRN2LtTWckaKKcXYPWrm
-	0dIXMXFTsoLcYnvDENp6zishCma3kJwvVzh2gJh0HqCzK1NsCdqUObclvrTHo4QicVgtEEuhB03i7
-	kGHSHtMp2Bnel4qYzY0/mN4r/lXKCaM1dkurbZMMZpxMKPkDYvGb1YbJaAdHbnyPR8P/ZVhmla+es
-	K0se7uuGku4PjXvtrkySOpkuOZwwi+dvv7mS0+P6JxPIKw9MzoF+jPPMncVMU/GMHQfYSqL1V/bQd
-	8Lou9eA5mWGeBEHiMbyg==;
+	List-Owner; bh=+2wwfItC21P+OG79JLqII9uBkZnvJ2TZryQaXrXedLY=; b=wUAkl5rvzI0NQm
+	VUKrbf0x70w2uZK4vjy6NTTLNHyvL9Uecjm/AdAZ+hqGDjY+x5RTP5Wan199eTw15fvLqYTi1S2Vz
+	PkKo7ozW4esA2QftCnxqur4HkKkcx316pFR+FQBByDa/je9sCWrRZkNR/RjWYDv9T1IfwfN4Ep7zl
+	gKC+cvuH6k+bsudiAQqu7IBJYl7y2wuiuHd81RLPEV21Ee1JarOMkf8pnWsZmYTMZ4/fLT+0ohsjf
+	iWQ32AkAV1VRoPCNlLNY6TnYku8s5kDvSydZBVFQu8b+iZK7TET/yOYQMxdrt4IDgCAq8Ilyw0dqu
+	ZsuD9VYwynVU5ZLeA/JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mBU-00000006GZu-2r5e;
-	Tue, 30 Apr 2024 12:02:08 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s1mBa-00000006GcO-3HBd;
+	Tue, 30 Apr 2024 12:02:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mBS-00000006GZ7-1nuS
+	id 1s1mBX-00000006Gaa-0mfs
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Apr 2024 12:02:07 +0000
+	Tue, 30 Apr 2024 12:02:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D29C661423;
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1D80D614FF;
+	Tue, 30 Apr 2024 12:02:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1CF0C4AF19;
 	Tue, 30 Apr 2024 12:02:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9693C4AF1B;
-	Tue, 30 Apr 2024 12:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714478525;
-	bh=dazCN/iT/MHdY+ckymlAcfBjUpa3OmMTl+4+NDKJR2A=;
+	s=k20201202; t=1714478529;
+	bh=MgvdOL0gkl34L22gpJGsJpktQEWaY6MRdjg4t+pKTZ4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GmLBbkco7H+9TF70s3xCJzzCfE+wdzetILLrSRfKajcLXOUyneNVwNAo2N0wW/2Qu
-	 JVs/Y6Zk1mr5uKcN1+7av/t5pKjBiAGS+brI7STdhgcZS/XTDp2OJLEiMwMRHcWmQV
-	 itYQP8UD5ZA/mI7VxSN6Wc3ekS5uXsvw68IsM31imleh37XZzmyORiXqbxZlEOBQ7B
-	 jEtwHGzrjebJBmyCAcJpV8WeIOZm1n8sHSB9iX230DK7X9H7V9qHWjBeTMVlsXLjnS
-	 ptfChZylMwPiEjKjertC235sJDxMHxsiaE+ChLcxr9nEgMdJaKPdsemMK+36b6yVeB
-	 cvISqnHavpxtA==
+	b=cI1UUdyJQ6nyysGSO+1CFiMo62exm3q0sFo04KTrjpmYiOW67SwkDuj9cRNXEN11s
+	 wSnF0O7y79kXJwkUWHGrELr5bH+QlrU5yMipuuudfpGgSb3vA7GpSV9rzrzVBDAluN
+	 VmdlApL/NjvYILsWii/g6Eye6VHZAoAeV0PeYnH1sQOLQdnag8tbSPXgpp3INP8QX+
+	 PIRR2tYDbGz+bGoavGTRKAeEUj+Fq1PtCMjKfxdM4iE4ZORcpGVLyhaIqQtIRsd56I
+	 77Bbcn4BowgktzugL1IPpW+k0v+9ZglQVHXFROw/sBoGUQoHvyNPhYq2OC8BeQU3Ok
+	 ogZ7mR+B9cDIQ==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Tue, 30 Apr 2024 14:00:59 +0200
-Subject: [PATCH v2 02/14] dt-bindings: PCI: snps,dw-pcie-ep: Add vendor
- specific interrupt-names
+Date: Tue, 30 Apr 2024 14:01:00 +0200
+Subject: [PATCH v2 03/14] dt-bindings: PCI: snps,dw-pcie-ep: Add
+ tx_int{a,b,c,d} legacy irqs
 MIME-Version: 1.0
-Message-Id: <20240430-rockchip-pcie-ep-v1-v2-2-a0f5ee2a77b6@kernel.org>
+Message-Id: <20240430-rockchip-pcie-ep-v1-v2-3-a0f5ee2a77b6@kernel.org>
 References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -64,17 +64,18 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1267; i=cassel@kernel.org;
- h=from:subject:message-id; bh=dazCN/iT/MHdY+ckymlAcfBjUpa3OmMTl+4+NDKJR2A=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m5wV9fa+ca2plhz546ct3//n9v0lXNZ8tKMOcf2h
- /1s2zxjQkcpC4MYF4OsmCKL7w+X/cXd7lOOK96xgZnDygQyhIGLUwAmYjmFkeHQvPVe1rsP/PMS
- bLy9+FVcTWhc8HJ1/d7c+1ueJzRus2hh+Gd1jdEjKMfuqtt3B50n1vb6QedjFq6Uf2W3ZFWKDWd
- WFRsA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1672; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=MgvdOL0gkl34L22gpJGsJpktQEWaY6MRdjg4t+pKTZ4=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m74LT61fuHJ1GeOp0xSvxu7LDd9d7BFXTVe+2UK6
+ 42p3lLGHaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZjIp80M/x3+/Im7ezlCNc/5
+ x4Hi/z/zby/I6tylEpLMzsH59UMq11OGP/zr778T9bgTftz889UJtwrNwlkSfU4FMEx4raB5fAJ
+ rGxsA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_050206_573437_A8ACEF3A 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20240430_050211_356855_B5FC187A 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,34 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Considering that some drivers (e.g. pcie-dw-rockchip.c) already use the
-interrupt-names "sys", "pmc", "msg", "err" for the device tree binding in
-Root Complex mode (snps,dw-pcie.yaml), it doesn't make sense that those
-drivers should use different interrupt-names when running in Endpoint mode
-(snps,dw-pcie-ep.yaml).
+The DWC core has four interrupt signals: tx_inta, tx_intb, tx_intc, tx_intd
+that are triggered when the PCIe controller (when running in Endpoint mode)
+has sent an Assert_INTA Message to the upstream device.
 
-Therefore, since "sys", "pmc", "msg", "err" are already defined in
-snps,dw-pcie.yaml, add them also for snps,dw-pcie-ep.yaml.
+Some DWC controllers have these interrupt in a combined interrupt signal.
+
+Add the description of these interrupts to the device tree binding.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
-index 00dec01f1f73..f5f12cbc2cb3 100644
+index f5f12cbc2cb3..f474b9e3fc7e 100644
 --- a/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
 +++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie-ep.yaml
-@@ -156,7 +156,7 @@ properties:
+@@ -151,6 +151,15 @@ properties:
+             Application-specific IRQ raised depending on the vendor-specific
+             events basis.
+           const: app
++        - description:
++            Interrupts triggered when the controller itself (in Endpoint mode)
++            has sent an Assert_INT{A,B,C,D}/Desassert_INT{A,B,C,D} message to
++            the upstream device.
++          pattern: "^tx_int(a|b|c|d)$"
++        - description:
++            Combined interrupt signal raised when the controller has sent an
++            Assert_INT{A,B,C,D} message. See "^tx_int(a|b|c|d)$" for details.
++          const: legacy
+         - description:
+             Vendor-specific IRQ names. Consider using the generic names above
              for new bindings.
-           oneOf:
-             - description: See native "app" IRQ for details
--              enum: [ intr ]
-+              enum: [ intr, sys, pmc, msg, err ]
- 
-   max-functions:
-     maximum: 32
 
 -- 
 2.44.0
