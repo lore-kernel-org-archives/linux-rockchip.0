@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3EA3C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8822C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 12:02:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tFDhkRNb4/zThH9G2X9j80eZPthUwddSNpajfcMKTN4=; b=i4i38mdCgvdkdQ
-	06zbDJSOYnG0IaJtsVJajsskN5UqahwkOC0zFBNNWiavrdI/3CGo6pziCs36h721e6RfQZiOyl49H
-	ShQfnKr6F/mv6g/+57prJ4DvHkDGLwcCKmVI0av3mFEIa/krj48fLg5LRGLr7Ccnkd75k+7MNYwmi
-	VJAXt64BYg0XcGm7s25EofQbZnmppBTbJAnl605QPvHZmuulThJVqi0sKQKmeP87WlielAZ5ML6ty
-	PrDM7rG8r/YgIKKnKPtxM/pNVLFLUJYqmF0Nws2KXd8PKK+sKC6QBcto4fGUE9PrNHPErMQAvbQ/k
-	3NoCkFEP+CBqv7IDbCIw==;
+	List-Owner; bh=CG12oRIJzC+EEkq+/yPgTn09Qd+/YJChLhUz4C4sqWg=; b=F8WgLPOWUZUKgu
+	YnNGN1fVfgpEZiyeU3d3xvLhV/RQWHp9kT4TSCB8ZTnjrsEYAqDyhIrTTwxg56errLV3A5LhP1I0o
+	FQadHQPAxWd7Pg3GCCgnGvujvh/F5n4vxPPQAy6T5pvXoHwUIDiP+06tC6yUp5GXFVjvmHY6z/zrf
+	CkgAqkzYCog2+tgLzFAS340O3ivEzqfpe8U06aEbE9V+p5AGB4V9Y9bPE7ibfWObcitiMf85X0NiV
+	qdNPeQWRu8uJp44zJ1yyuFme0PxBprnAd0guOdmcMTIkyWw/6IPITVx7cYc5tWpxnSdj+NCizjezh
+	46xwAJjyfNntdQBgikOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mC2-00000006Gx2-09Kh;
-	Tue, 30 Apr 2024 12:02:42 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1s1mC5-00000006Gzx-2bzG;
+	Tue, 30 Apr 2024 12:02:45 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1mBx-00000006Gsk-2yke
+	id 1s1mC1-00000006Gw6-0yDy
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Apr 2024 12:02:39 +0000
+	Tue, 30 Apr 2024 12:02:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 129C5CE100F;
-	Tue, 30 Apr 2024 12:02:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73288C2BBFC;
-	Tue, 30 Apr 2024 12:02:31 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C8019614FC;
+	Tue, 30 Apr 2024 12:02:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAD3DC4AF18;
+	Tue, 30 Apr 2024 12:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714478555;
-	bh=T2rCqCvWqvq9XcLiSqbgVvv2b58vZBopULJOizrdRIQ=;
+	s=k20201202; t=1714478559;
+	bh=58kdoqhkMWSvOTNRnkUL+Dx7X57eBg3JtCaWStyIDvY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nyemq8Xg8LIN3Ba/QYifHGONhN4tpetFkTFyAEgIAVm9VDMuqGkB76eq0VNxYPIy7
-	 KR3g+l+SSemiE+gw8tf0Zl1uC4t5bfIg/qdzlkS/2/0SLi/yMfRnvhsd4rC6eu3rK4
-	 PRaqHI0TrBNgPRbYi5f0uaZwL6FKG/vGXhKRwcpGH90WT4adSL1eA1b8aeFDn6k0Hd
-	 yW/BRXiR1wRYQV5v/7G6clFzzGN+Hx82AUSxc5jbVuVUcDtO2bsiQbZCPhA6QAPs4w
-	 m8BJCQTdy4+pe+am1mGHL7lNIWQ4i6gbzqm6Ux3T98A1g/AHTFKZ44uOlL9iqymCwH
-	 Hnen86+2P9msA==
+	b=RPhfPTWzDlztDQhqRthOfAZP5enmulZUPfQ2XfzPMNkCldQmz7hZ244X+v5M1kanl
+	 ioN+QUU1hSr2ap8Ij27km+2oQAbN34D1mnn4CoqqF7IlD9MeFdWe8VtTrQkxy6W8iL
+	 e5eolMVPfHUxatLCwJ3gBO7/Veg58A2bV4XnQDmW7VU91fgETCv0O20wyZHaNaRJhB
+	 0KBfj1x1Hz5vmAi5NUf9LkVyehZP3NScze1ZJQ4voXpFOlR68iDfbBN5sQEWJlyZIH
+	 2uU+tUcL2CmnFwzdJFmXLqMZWFWNm75Z9OV6sBJiqUY4aQJul6dg7oDjGskmbnXq+x
+	 K46+ywLPCskYA==
 From: Niklas Cassel <cassel@kernel.org>
-Date: Tue, 30 Apr 2024 14:01:06 +0200
-Subject: [PATCH v2 09/14] PCI: dw-rockchip: Refactor the driver to prepare
- for EP mode
+Date: Tue, 30 Apr 2024 14:01:07 +0200
+Subject: [PATCH v2 10/14] PCI: dw-rockchip: Add explicit
+ rockchip,rk3588-pcie compatible
 MIME-Version: 1.0
-Message-Id: <20240430-rockchip-pcie-ep-v1-v2-9-a0f5ee2a77b6@kernel.org>
+Message-Id: <20240430-rockchip-pcie-ep-v1-v2-10-a0f5ee2a77b6@kernel.org>
 References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
 To: Jingoo Han <jingoohan1@gmail.com>, 
@@ -64,17 +64,17 @@ To: Jingoo Han <jingoohan1@gmail.com>,
 Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4417; i=cassel@kernel.org;
- h=from:subject:message-id; bh=T2rCqCvWqvq9XcLiSqbgVvv2b58vZBopULJOizrdRIQ=;
- b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m6wPnf3Tq/wPr/nMTLG/+oW6U3lYt9Y+2jZ9A0ah
- ryRj7c1dZSyMIhxMciKKbL4/nDZX9ztPuW44h0bmDmsTCBDGLg4BWAixVcYGe4Kqdx/8lzVqZBV
- 9PrSSQLLZG+I+jX9efai5miAD+Nk4ccM/2x+pv1I+FTNoXz43xb5lW32DFc59A7Mcm93cDlQ8nB
- HCg8A
+X-Developer-Signature: v=1; a=openpgp-sha256; l=941; i=cassel@kernel.org;
+ h=from:subject:message-id; bh=58kdoqhkMWSvOTNRnkUL+Dx7X57eBg3JtCaWStyIDvY=;
+ b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNIM7m4wuHXfeubc5mtHJD8yafyV/aSwM7bsRsTCj4Lt/
+ 69NXm3ytaOUhUGMi0FWTJHF94fL/uJu9ynHFe/YwMxhZQIZwsDFKQATORjKyDCxXuNKxnc/63/N
+ U5zCNzdlZUzSXxoYJncy9nNQ5IRz53sY/spGWOaEBnBw6qfvN14iuGhuo5nT3bLXavV7JF77nxM
+ MZQQA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp;
  fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240430_050238_216531_8B6EA86E 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20240430_050241_464780_14D2AC48 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,147 +91,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This refactors the driver to prepare for EP mode.
-Add of-match data to the existing compatible, and explicitly define it as
-DW_PCIE_RC_TYPE. This way, we will be able to add EP mode in a follow-up
-patch in a much less intrusive way, which makes the follup-up patches
-much easier to review.
+The rockchip-dw-pcie.yaml device tree binding already defines
+rockchip,rk3588-pcie as a supported compatible string.
 
-No functional change intended.
+Add an explicit rockchip,rk3588-pcie entry to make it easier to find the
+driver that implements this compatible string.
 
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 72 +++++++++++++++++++++------
- 1 file changed, 57 insertions(+), 15 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 4023fd86176f..f985539fb00a 100644
+index f985539fb00a..f38d267e4e64 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -58,6 +58,11 @@ struct rockchip_pcie {
- 	struct gpio_desc		*rst_gpio;
- 	struct regulator                *vpcie3v3;
- 	struct irq_domain		*irq_domain;
-+	enum dw_pcie_device_mode	mode;
-+};
-+
-+struct rockchip_pcie_of_data {
-+	enum dw_pcie_device_mode mode;
- };
- 
- static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip, u32 reg)
-@@ -195,7 +200,6 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
- 	struct device *dev = rockchip->pci.dev;
--	u32 val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
- 	int irq, ret;
- 
- 	irq = of_irq_get_byname(dev->of_node, "legacy");
-@@ -209,12 +213,6 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
--	/* LTSSM enable control mode */
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
--
--	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
--				 PCIE_CLIENT_GENERAL_CONTROL);
--
- 	return 0;
- }
- 
-@@ -288,13 +286,41 @@ static const struct dw_pcie_ops dw_pcie_ops = {
- 	.start_link = rockchip_pcie_start_link,
- };
- 
-+static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
-+{
-+	struct dw_pcie_rp *pp;
-+	u32 val;
-+
-+	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
-+		return -ENODEV;
-+
-+	/* LTSSM enable control mode */
-+	val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-+	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-+
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
-+				 PCIE_CLIENT_GENERAL_CONTROL);
-+
-+	pp = &rockchip->pci.pp;
-+	pp->ops = &rockchip_pcie_host_ops;
-+
-+	return dw_pcie_host_init(pp);
-+}
-+
- static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_pcie *rockchip;
--	struct dw_pcie_rp *pp;
-+	const struct rockchip_pcie_of_data *data;
-+	enum dw_pcie_device_mode mode;
- 	int ret;
- 
-+	data = of_device_get_match_data(dev);
-+	if (!data)
-+		return -EINVAL;
-+
-+	mode = (enum dw_pcie_device_mode)data->mode;
-+
- 	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
- 	if (!rockchip)
- 		return -ENOMEM;
-@@ -303,9 +329,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	rockchip->pci.dev = dev;
- 	rockchip->pci.ops = &dw_pcie_ops;
--
--	pp = &rockchip->pci.pp;
--	pp->ops = &rockchip_pcie_host_ops;
-+	rockchip->mode = mode;
- 
- 	ret = rockchip_pcie_resource_get(pdev, rockchip);
- 	if (ret)
-@@ -342,10 +366,21 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto deinit_phy;
- 
--	ret = dw_pcie_host_init(pp);
--	if (!ret)
--		return 0;
-+	switch (rockchip->mode) {
-+	case DW_PCIE_RC_TYPE:
-+		ret = rockchip_pcie_configure_rc(rockchip);
-+		if (ret)
-+			goto deinit_clk;
-+		break;
-+	default:
-+		dev_err(dev, "INVALID device type %d\n", rockchip->mode);
-+		ret = -EINVAL;
-+		goto deinit_clk;
-+	}
- 
-+	return 0;
-+
-+deinit_clk:
- 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
- deinit_phy:
- 	rockchip_pcie_phy_deinit(rockchip);
-@@ -356,8 +391,15 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data = {
-+	.mode = DW_PCIE_RC_TYPE,
-+};
-+
- static const struct of_device_id rockchip_pcie_of_match[] = {
--	{ .compatible = "rockchip,rk3568-pcie", },
+@@ -400,6 +400,10 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
+ 		.compatible = "rockchip,rk3568-pcie",
+ 		.data = &rockchip_pcie_rc_of_data,
+ 	},
 +	{
-+		.compatible = "rockchip,rk3568-pcie",
++		.compatible = "rockchip,rk3588-pcie",
 +		.data = &rockchip_pcie_rc_of_data,
 +	},
  	{},
