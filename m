@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 992B6C4345F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 02:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDE5C4345F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 02:41:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KpGtfwYbADtii7AaU+5Ee9Cvt5qSguw5L4Q/9GHpz0k=; b=tHSvLib5tGujzv
-	2Z17qPB0N90flqw3ddkBXoBhQoSFPO4p0WKB9ZPIH5ly4myoyaQEYAuAfVQJ7bC4d37KXrL6Q26IM
-	uJwYERsn/VNuJ/ak6k9JtvemlAsWIvLC8HnGDKCG/bxkmfYD1YolDG1YvKAORSEaKPXpwzOaot3fK
-	DbveHHQ6s5xzrTq5GKALPdRSjRF6cojA2bkQ3BNkU6N9/4pvXZn1Bz1N9YZMzBnConZDIW2f6YjO+
-	10TZ1xEDLHV7BiKnMeM5wTbYc7mDyGxWqrtdtKQi/MI7NfZhZmx7ssGHF89b5ZlOGjbiZiJwE1OJf
-	cLpXBX2FK7Wl/gz3ubpw==;
+	List-Owner; bh=JTZ9zd1lGaa3OG77nf9cjHUwOEsOiTtL9nRd3T0Ix6k=; b=FUYu8tOkKYlepH
+	XfLlxc1B6uWzi8cT3oUAbY9r4j6ZV/Ng+l2pZuRchEDgYDYNO0fVJ48bmhEsFZWRP2PzimMssgmKC
+	OEtYKa3b++YzrCf2aLv6WgB+gG0iXYth/rFFyBQzF4/yKalqy6rVjcQ6uEN93VJ87IuoOYdOQsnBD
+	BBV1a9kp4PjX3hEEK4j9oq3GgWmlSoS8xxeF/KBhwnhWM4s5DfzxKMvkuFDjMfIHEY9TbTOYneXVF
+	UB9TDkNtGz4R6TU+fzbLbBVgF09NrZMSowfpqV6uSRh0stp4Hxw3AMnu7gZR/SO6oDmaMdcq7WCxn
+	TJOImOkhQTxzji3lil8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1dQO-00000004ooX-031n;
-	Tue, 30 Apr 2024 02:40:56 +0000
+	id 1s1dQe-00000004owu-47dO;
+	Tue, 30 Apr 2024 02:41:12 +0000
 Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1dQL-00000004omh-0y07;
-	Tue, 30 Apr 2024 02:40:54 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1ec486198b6so365455ad.1;
-        Mon, 29 Apr 2024 19:40:52 -0700 (PDT)
+	id 1s1dQb-00000004ovW-1zNJ;
+	Tue, 30 Apr 2024 02:41:10 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-1eb24e3a2d9so30018655ad.1;
+        Mon, 29 Apr 2024 19:41:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714444852; x=1715049652; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1714444869; x=1715049669; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8nmwy26EmAitH/BFdPVZTkin3CZniJ1hlTGeJE7IE+E=;
-        b=UxoEOqZmgpvsTe4V9Zupa0BNWJYTAvkpQ2HM4crDj9RxGiDY40FrlahhrhIffeITU/
-         QC05jmeQtq3/LhoYsRzYkXX/QypkJMpm89zCivUMDmOJr4Ez7joHODnNoj899zAG0HQ5
-         hEEaT4NnpKMVPx+m8laoC+134tqgZMq6wA4OHnyQKO4K0HWXv9I1oEt2vRtSg3HEKsRM
-         8ACaxq5JEgU8+ZeLWyt3T71eHl8TMN9LNnj1WWDlzCXgSuHoPEL5Ujuee+3bcjll6oZm
-         aQnD8B5fSqCbHE3x8RHN8w9+Bnc1aN2AgLdmMUKDdPZTJBYB0PKcEkkfUdrlYHl4fYDj
-         6Zsw==
+        bh=Eso4ARCm72QdAVSfiatUmFnG0dBC92pYQJkl3ko9Fxc=;
+        b=HpVPLK7STj6dPQYyVsjrnuFVqXh4M+9upBXzNNJ+/FtUPre9LaF4pzFSHaIfWG7Twq
+         2c7RRrar4yoKjYz3MXSOEhLSZJu4vfQWJDqFaReZfzmfMJZXJ/Veby1EymdFzAQXglxk
+         sV6/JtzPHPOW7uWjs8dR1CwFt7/WMXybBpNqVlVuWigrdV0Df8ZKVxd+RpO+/WLSuHEI
+         rZSXiVSH6bqdUt+1LkhL5h2TjVIxLTcYGz+IIJX3VdBFTEomYVBYYTJKe2UhVspZa/0X
+         DOTw2nxhLfhpZk/0zz2+x8NVxGeXu87ygpTnSFt5z0Z5Y8CdXxygGOQO6dcuwZxjTP0+
+         o+RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714444852; x=1715049652;
+        d=1e100.net; s=20230601; t=1714444869; x=1715049669;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=8nmwy26EmAitH/BFdPVZTkin3CZniJ1hlTGeJE7IE+E=;
-        b=A1ERF/m3IaA02KVgFgv2cnLIHAqduu4yRrVN2hZ4LLsNPACYksMo71VW+Mp1db4U40
-         VSHT72zkkGmjyPOCUOOFKmwXwsXSL8eMnR6Z82NZ95dGw6X5k8AOE9mpFSyUa78/OxIj
-         VG5j97VojtqWNx3RwCkl01TdRRaAPMuOy7un7Ffxxp8VeAHZHqp7yw+4pRUTJ3/7cRFl
-         B5PS6zhYKhTD2PIlPZ3TW6W2SdMgewe8DOsyWJp3iILW02AccJ5IC6KnoVrjrubu6mie
-         Sh23Zb1OBEZt3AxCOIDtjqvk70DhHlhDHxaxHmE0I/FPJuF5NkssQXmEpH4pfSptd5pX
-         04zA==
-X-Forwarded-Encrypted: i=1; AJvYcCUgjJFIgbFYPw/2OYfwUgdEHkjwhZiV1LDiRj22q2XDC2dydhJ+Ki7ZJkvZgJG28nIPM5crq5pFvCSRlu3L19sJ0lx6LewvaM1pKu1TC5hSuFA3F6UtCaBohP4MtH3Od71GgX7KUn9e/uSi3piFMTR4tbk6nIHKNPY=
-X-Gm-Message-State: AOJu0YzyFiBdKEZoAAYxHbcfe2N8NBRgi4/jFqgBpECu6K7MUc13ele/
-	dqD8G12Hyz18MfVav/YSETm/hO1DE6jB17UL8rVjwwuFqARIkm6E
-X-Google-Smtp-Source: AGHT+IEsmmNWKwQpbrpKs2CI4HNEKEDXMhVL2Qq1ROslbOo8hS7d1ywEZ35rRyYM/8dSQq44wEa60Q==
-X-Received: by 2002:a17:902:c412:b0:1e0:b62a:c0a2 with SMTP id k18-20020a170902c41200b001e0b62ac0a2mr10977884plk.51.1714444852140;
-        Mon, 29 Apr 2024 19:40:52 -0700 (PDT)
+        bh=Eso4ARCm72QdAVSfiatUmFnG0dBC92pYQJkl3ko9Fxc=;
+        b=jdOhezN+zbUxRaTbsRNhwyXHfvoC7d2EUSKO767mPNAWx4R+E5R3u34/CEvq57gwu+
+         W3zYtEfgfA/Hng+eUVuSmF5th5Lf+Ghov8uwUmndJo3JP+8Iexyj8K2hpTiqO9nDVPbf
+         PoLFg6NSjRF/gfmcKMqCjBBhugp8/MT6VsFsjDP+pHvBYAlMsA1xwl9MAkWfPsMFGdB4
+         vCwTB3yjOq3ZHBKLnne9sl5CLBsjAGqkqRSG5GtIs5NMqcpA7vfsUYTK9uXypPsO3bD9
+         ffhPBU5Irc923Ex1+pc+aLAAzlNTyXFqXWLSu0cqlP12g0+3sA+MgnNr4mpqTwaG7t8K
+         NgyA==
+X-Forwarded-Encrypted: i=1; AJvYcCWxhPxIWQfxXCPeXMvIL0ZZC7XRZAWH5iHgI2ifLwa3r+5FNibGRfTvfKd8w5rDjo0PXy/hX/D//ZiVHg3jA5q5SchV+GzuaObQRI/JTdmhL5ovVzvRg7iA9fbXoTAzGQ5yQx63MkQf/egSjo2CkWEJ3MBpVJUVdNw=
+X-Gm-Message-State: AOJu0YzEpVcFDjwjwap+/8I1YKegmgbyBLRDfsnPuxasFLpHd8+AceJN
+	PRPovn2u/QYXmDsvhlYPVVZyj+0BK3rTOLIKzMjXL/55dEDwPk+S
+X-Google-Smtp-Source: AGHT+IFcX43HEpbg0J5y68Nceakg6ZWP+vZGNSqE6JNf4XEeKnHfyk4h8JG/DM/CW+eONVEaJV2mcQ==
+X-Received: by 2002:a17:902:f648:b0:1eb:7ba:a4c3 with SMTP id m8-20020a170902f64800b001eb07baa4c3mr16274996plg.48.1714444868887;
+        Mon, 29 Apr 2024 19:41:08 -0700 (PDT)
 Received: from toyko-2.5 ([45.32.55.39])
-        by smtp.gmail.com with ESMTPSA id x12-20020a170902ec8c00b001eac94472f6sm8400379plg.93.2024.04.29.19.40.34
+        by smtp.gmail.com with ESMTPSA id x12-20020a170902ec8c00b001eac94472f6sm8400379plg.93.2024.04.29.19.40.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Apr 2024 19:40:51 -0700 (PDT)
+        Mon, 29 Apr 2024 19:41:08 -0700 (PDT)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
 To: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
@@ -80,18 +80,18 @@ Cc: ezequiel@vanguardiasur.com.ar,
 	sfr@canb.auug.org.au,
 	sigmaris@gmail.com,
 	nicolas@ndufresne.ca,
-	linkmauve@linkmauve.fr,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v7 1/2] dt-bindings: media: rockchip-vpu: Add rk3588 vpu121 compatible string
-Date: Tue, 30 Apr 2024 10:40:01 +0800
-Message-Id: <20240430024002.708227-2-liujianfeng1994@gmail.com>
+	linkmauve@linkmauve.fr
+Subject: [PATCH v7 2/2] arm64: dts: rockchip: Add Hantro G1 VPU support for RK3588
+Date: Tue, 30 Apr 2024 10:40:02 +0800
+Message-Id: <20240430024002.708227-3-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240430024002.708227-1-liujianfeng1994@gmail.com>
 References: <20240430024002.708227-1-liujianfeng1994@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_194053_300116_18D04156 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20240429_194109_543750_7612E662 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,42 +108,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Hantro G1 VPU compatible string for RK3588.
-RK3588 has the same Hantro G1 ip as RK3568, which are both
-known as VDPU121 in TRM of RK3568 and RK3588.
+Enable Hantro G1 video decoder in RK3588's devicetree.
 
-Note that this VPU also has a jpeg encoder, which is one part of
-the five VEPU121 jpeg encoders on RK3588. So this VPU121 shoud be
-the same as vpu@ff650000 on RK3399. But we don't use the compatible
-string rk3399-vpu because of two reasons:
-1, rk3399-vpu has disabled H264 decoding because RK3399 also has
-rkvdec to support 4K H264 decoding. And we need H264 decoding because
-rkvdec2 on rk3588 for H264 decoding is not supported now.
-2, There are five VEPU121 jpeg encoders, but the kernel driver can't
-do scheduling. So it's better to disable the VEPU121 jpeg encoder
-at the moment.
+Tested with FFmpeg v4l2_request code taken from [1]
+with MPEG2, H.264 and VP8 samples.
+
+[1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
 
 Signed-off-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Tested-by: Hugh Cole-Baker <sigmaris@gmail.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-index c57e1f488..2710bb2fb 100644
---- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-@@ -31,6 +31,9 @@ properties:
-       - items:
-           - const: rockchip,rk3228-vpu
-           - const: rockchip,rk3399-vpu
-+      - items:
-+          - const: rockchip,rk3588-vpu121
-+          - const: rockchip,rk3568-vpu
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index b0a59ec51..da10df7d6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1135,6 +1135,27 @@ power-domain@RK3588_PD_SDMMC {
+ 		};
+ 	};
 
-   reg:
-     maxItems: 1
++	vpu: video-codec@fdb50000 {
++		compatible = "rockchip,rk3588-vpu121", "rockchip,rk3568-vpu";
++		reg = <0x0 0xfdb50000 0x0 0x800>;
++		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vdpu";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		clock-names = "aclk", "hclk";
++		iommus = <&vpu_mmu>;
++		power-domains = <&power RK3588_PD_VDPU>;
++	};
++
++	vpu_mmu: iommu@fdb50800 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdb50800 0x0 0x40>;
++		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
++		clock-names = "aclk", "iface";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		power-domains = <&power RK3588_PD_VDPU>;
++		#iommu-cells = <0>;
++	};
++
+ 	av1d: video-codec@fdc70000 {
+ 		compatible = "rockchip,rk3588-av1-vpu";
+ 		reg = <0x0 0xfdc70000 0x0 0x800>;
 --
 2.34.1
 
