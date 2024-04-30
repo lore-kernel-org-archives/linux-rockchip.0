@@ -4,167 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61692C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Apr 2024 15:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B68FBC04FFE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Apr 2024 00:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=k5uMdxoT5lDhsiquXb3laNMGolKdS3uJXpBCRrvN85w=; b=QxwFzgIYhXM41+2jItlJIdBLRn
-	lv1gfTJdb20GvMLYvOMpEc8prp16/s3OFf/xY8S2CKfk3FlERQvpQlvSxTBnmj0BRcJcBhn7n2wO2
-	RRUVuZgu7llNR5cxoEYVY9QaoMMoKFEnBYCF7nsb8BkvrjZ4E/d64SULYIsQ7cmbqQDsu3esjctNS
-	zW9lJi0pFzaMwP4BIqKE2QVFcIOZmHqZs/lYrtI5P282c2DvgxYUaeBK+HUkl2uAb+mhcICWvZBm2
-	U/Scg0WwT2TSsY7n3GlWi2R8n1H+CSSdBOkujwy9zlgGKesIWC9dLHxoB2PS0RxWB8SVXZnwvcNR2
-	v12voRuQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d5AZLB6cj3BhMh8//5Qg5oG9k+G0sopypodP3YpNJas=; b=Iivi89Q0t2CbjM
+	Erz1v6RnVTdFNSNglen1fbz1Ftr7B0caeMKjUJsGt9OgDcLOsVO79C6od9wPZqAsgmI2F+lnXs3FG
+	CN5HNGcW80nMoKoZ5m4bqlwsfB/K45YiMCYNaR8IaquRQgX0UpJ11MFmouTwFo4DjcGJOANI8dYQK
+	TG71dwA/wkssc/m+YNiWJl4b4PVMucVwtbsKUQdY65GObFY3GN6Ng1mm8DQg8nwTLKEKnYqVINHs+
+	ikuFofSSLbGNsOWhhqdISUXjen2pepARjIYa+ImvY5HLirIo/pCXK4D7Q54x096/L2rM4zVUslDpd
+	WQq/HUJrArrYQyngamgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1TDi-00000003SyU-2nIV;
-	Mon, 29 Apr 2024 15:47:10 +0000
-Received: from mail-vi1eur02on20701.outbound.protection.outlook.com ([2a01:111:f403:2607::701] helo=EUR02-VI1-obe.outbound.protection.outlook.com)
+	id 1s1b2K-00000004XKk-33S2;
+	Tue, 30 Apr 2024 00:07:56 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s1TDe-00000003SxV-3nia;
-	Mon, 29 Apr 2024 15:47:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IWRgZXtSR7bEfGwZ27ttgH2Dc8xb7sHIYD+Cd7wgYAxJXp68wLpWiamdko9xchPResjqSeT6muAe2kkboCufVeIA4kifSMkHmJmrLdzB4Cm4mgaXb+AASMJlaSbVwCPjwRr84939yQgUKs5xBJ+5gm30H4XDHxMZ/FSZDuNMA7AKe7U3z/3Dy988TZ6BFBkqFKzAtKPBPvFTEBvcNFAzilp0yETTaFd0a+HVu1pZCj44wuGFHR4PnJwGLOazcCXEwyfEpW77djwpHHk2hlTp5g0a2D1UDEFxhSvhYkObtvmRS8xmWxw+s1VxVe+2QVWZ5F8aKei8E/Pue/acnsQSiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=De9QzribIa9LbsfGZUabvrmYQ2NGdB7+6Gyh4H/B1Lg=;
- b=hBMDR2qwurdI/WIYTh4ub8uscXiWZKaCy2AmZetnoZxcbDAt6EChKTVb07Ks8oRUDey19mDYgiYp7GnSho7/mxO2KokiLhl6SWI1EOjy6cW79yyFw/f9uFBCcfkbeSekfYDywR0wxIO5jp2CvBsVnjy7pirsK95sGyQ0UNc9MbrdFp4pDtcE2UBj4oKpzM/0kK4rV6uO6UhNwzcIstc3v5LGlEXAeMasbftwQXkGXejbWBK5uap9278i6mcpgZsZ4nGwVAbKXTxfU2gSynPj20E6MNZzeFgTh9krWrr8pWH4zRODpYFonuHQTRcl9uHdZiAJ9nKLGYK9JfI0Cq6llw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=axentia.se; dmarc=pass action=none header.from=axentia.se;
- dkim=pass header.d=axentia.se; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axentia.se;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=De9QzribIa9LbsfGZUabvrmYQ2NGdB7+6Gyh4H/B1Lg=;
- b=L520uDBTO0HeoLr3H/b39G+zRDhhsrljCkS4oQWHnI9jQu6HN6Jn6JHgWGBdVXPy+S0XB+ncmihx+7TvFEpM/ufRrq1QaXBJeaLB/XUit+DG0ophAzMVXhUUlkxLa0rszM/kg7UlZvGsNHrru7RLpVwex0hf42IoMy2rzUkM0pg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axentia.se;
-Received: from DU0PR02MB8500.eurprd02.prod.outlook.com (2603:10a6:10:3e3::8)
- by GV1PR02MB10622.eurprd02.prod.outlook.com (2603:10a6:150:15d::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.34; Mon, 29 Apr
- 2024 15:46:52 +0000
-Received: from DU0PR02MB8500.eurprd02.prod.outlook.com
- ([fe80::aff4:cbc7:ff18:b827]) by DU0PR02MB8500.eurprd02.prod.outlook.com
- ([fe80::aff4:cbc7:ff18:b827%4]) with mapi id 15.20.7519.031; Mon, 29 Apr 2024
- 15:46:52 +0000
-Message-ID: <f7ddc503-21c6-10b8-3326-398de65bd6a8@axentia.se>
-Date: Mon, 29 Apr 2024 17:46:50 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH 1/7] i2c: mux: add the ability to share mux-address with
- child nodes
-Content-Language: sv-SE, en-US
-To: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com>
- <20240426-dev-mule-i2c-mux-v1-1-045a482f6ffb@theobroma-systems.com>
-From: Peter Rosin <peda@axentia.se>
-In-Reply-To: <20240426-dev-mule-i2c-mux-v1-1-045a482f6ffb@theobroma-systems.com>
-X-ClientProxiedBy: GV3PEPF00002BBC.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:144:1:0:6:0:16) To DU0PR02MB8500.eurprd02.prod.outlook.com
- (2603:10a6:10:3e3::8)
+	id 1s1b2G-00000004XKB-1xgw;
+	Tue, 30 Apr 2024 00:07:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id EFED3CE09B8;
+	Tue, 30 Apr 2024 00:07:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79B9BC113CD;
+	Tue, 30 Apr 2024 00:07:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714435668;
+	bh=vhMJowDwRuHTlntrjfGcVCQMNqbpSZQLuzucFeDjBg8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YCQ7Y/lGUacL2IZijCKBlGObESxVjjzsNASBP6BpxH7vYi0yR/wJ2unwlXZKOgThD
+	 Bq45bgnTPaVF7espT+Nhd5rEHV2F1W1XQ9W3pUqNK7HsrhdCigz5URD9um1NcrO07A
+	 9Rru4vTA2LWW2s0BlH+12gPtJCa4vWrNjg//+P5CooPJo1vEZWZRaw561F6OuM5n9B
+	 HptYENweRlTg8pMcX2pRffTkhIH4rQCk7KUu4bLw5KlYtCMK4LKva2NYtjvccX2h9y
+	 bCa2bYiIjdF3covsdemMsir4FU94t25zzA82/eE7zzn5O+wmQGg1yi3ETGyQAfGXFt
+	 MPE8NlBvInCdA==
+Date: Tue, 30 Apr 2024 02:07:45 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 00/15] i2c: use 'time_left' with wait_for_*
+Message-ID: <cscisecgo547dngzcpmcvertywekxtctyxv6hwhnmi5dq4azh2@4lpq6a4qga3s>
+References: <20240427203611.3750-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR02MB8500:EE_|GV1PR02MB10622:EE_
-X-MS-Office365-Filtering-Correlation-Id: b9691d7f-de97-461f-8b36-08dc686396f2
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|7416005|1800799015|366007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ODNuL3VGbEpVZ1E3dU1aOVpUek01d29NOFdqL0JRMGhSZ2tOWVBHeUd0TzN3?=
- =?utf-8?B?UnRsakwxU1lVQ3BlUlE5OWtNb3U1YkZsOHloUW5YMGkzR252Uk1FNU1jb0tE?=
- =?utf-8?B?cTFRY2lqOUVlL204ZXRoY1FSalBpNVFEY1pIVmtmdnQ5MlRncGVmSHZFT0tu?=
- =?utf-8?B?b1NyWEV1aEhKYlJzeUhwSC9rdklhOU0rT0tpOTBoRkxnKzVBeGdaYTBFUVlN?=
- =?utf-8?B?UzZzdzFHaDB5Y0xDSUk3eEwzZkNraTJmdysyNWFuVEQ0VjlKQ2NYRllVcWJw?=
- =?utf-8?B?U3E0cWhiVHlxTWdOSlBvRWM5TklYSzBYLysxbDM5aWJiNHhoeks2K1hlbVVZ?=
- =?utf-8?B?L1g2UXViaU8zV2ptRnVBbXNNejZhUm5DRkZsSEdwNFdQM0dqV1RuTDJMUThR?=
- =?utf-8?B?SjlJdmdWeWhjWU9oNzdwTHZwbFVQQkpUQ3Znc2dYcFV0MFJGc1lmUEx0Um4x?=
- =?utf-8?B?SjlRaTFDcHltK2JrM3orL2wvcDBrRUVBeExrQURyVUpyQndLR0NueTQ3dks1?=
- =?utf-8?B?N3hvSVJ1MXoxMVlsQXBqb2xHQ2M2dW81dUhFSkU0dEcxZE8zUWY0Qk5QL1Bw?=
- =?utf-8?B?bksxaFlqUkFuOHFnT0o4U0tqbmhKbUJ6WFB1UXZ3eHppbEZIOEFuUE1uTW5K?=
- =?utf-8?B?NXk3NVpCejVZeVIvbmZXVzVmT1FXYk9WMk1ySW9iTmpsMXlGUEhLQjhVM2py?=
- =?utf-8?B?MHVTMXFZa3lZQTMrZm9KUTFuTnVTdnpXNS9DRjhUbStMeEt2b3RPaXFzWlZI?=
- =?utf-8?B?RldHQkMwV1Vkb0pGSFJXaGtkdXk0R2J5Uyt3eHowY3ZtUENXWktWNDZReWNZ?=
- =?utf-8?B?OE9tczV4MkVnUlk5cHRlNkdTTWd3SHI1OSs3Q24zMDJvWjlTOU11eTdOZG5q?=
- =?utf-8?B?YzB0VVExVFg5SDJKRTJmUkg3Z2pCZFRIeEhLcEg1bUViL0xjQmpwTU13eWI2?=
- =?utf-8?B?cFVpaUNVNUV2N1ZpTXRjK241bmRpMTEvalhydDhXTmxkUzRDZXgyeW1scmVk?=
- =?utf-8?B?SkF1dnJLTmVpZklNOEQ2OVRkcSt6eTk0Vms1QkxSUHZJanlicjFlL0h5WldU?=
- =?utf-8?B?M1FWc2lMYlIwQ0ZOL00yK2E2dDY4eXE3aXp3RnAyekJQZXl6VU02QUx2dDRy?=
- =?utf-8?B?Z2VXRmUzYTRLaFlWbEI2NWpoN0FOTzRuS2FKVGVFYjF4djgrTEptUE1LZ2Er?=
- =?utf-8?B?QzNaaTR0bGIwMi82WVlLTFhaNDM0SkN5VzhWWUpNN3d4QzRhOHNoaElUcGJM?=
- =?utf-8?B?RUtlbk5IS1BsUlJGZ3lQaThYb0JOaFdtVTU5SEIwN3ExK0gzaCtsRFFORDhM?=
- =?utf-8?B?aVV6Y1puNm4vUFZ4VHNiQXFVZlNOWUpqNEpQQTJabURIWG9OVkxDZVNYVEJG?=
- =?utf-8?B?eTJMZm9iL0xVc0xRUUF5U0FzVFF6cHZHVE83bVhMek5WeGJUNmFLa2JCeGFi?=
- =?utf-8?B?SzBFckxWb3ZJOXZWTGJLTFBwNzVYR2xPWlRVcXdNcjlYdVRsYWdzbzZrd3hL?=
- =?utf-8?B?NUlRMmRzMEduYlZKODJOTXdwNktwbUhsK2daREJWdUtMSEZKWngyMVRXRE0w?=
- =?utf-8?B?RjVNN3dNamY0bktja2FEYndubWdJUDNmTmtkZkVIQ3VMdzh6bFEyUTRwTDdQ?=
- =?utf-8?B?TnN6bUNGSXQ0eUdST2VxTGcrY0NaeXFxbVNNY2NLTEd1K240aEJvNmpVMEo0?=
- =?utf-8?B?NVc1RDhCUEZ0TWZTS3hYR0lGcmhtblZOTVVRcTNEVGRMUkJLSmhXbm1RPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR02MB8500.eurprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(7416005)(1800799015)(366007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RHdSSE1GZmcwM2UydDZhem5zaFZHTm5BQ0JnSFQya2xnMmJiRmRaUFVEci9y?=
- =?utf-8?B?RFpmS0k4bUxFM3lxZmo0N3pkeFlMVWFNWnFJK2xGUGdEQW4rM0k0RkgrWGNj?=
- =?utf-8?B?c090WFFyUmdIM25CNXpVU0JOM2lObnV1elF5NndtekFJMXJOYlZ6ZktpSHRm?=
- =?utf-8?B?QXRxdnRVSVFnM1Bzamo0alRqdktDVFluRkxFMEpySkgyQ3czWEhlbVIyb29C?=
- =?utf-8?B?bEUzS2lEbHZjdDlNeng3bkFFa0szckh4bkpwMnVzNTJ5VVdKa3U2NGhhQTVB?=
- =?utf-8?B?a3Fsa2NZOUlsMWJNY0pTaWpmSjJWbHZjaUpLaC9tODNZVzlEeUVBY0VKa3U2?=
- =?utf-8?B?a1Y1a21Nc2kra05QVitMbGpZWWdEdkttenVqbFFsbnRlcE5XRXRXOXRSM1Iv?=
- =?utf-8?B?OTJEZ1dqeTVwUGNxMHlDUjRJazFZQzl2aCtLWTRzNjBySi91cUdudW5YR2Z5?=
- =?utf-8?B?VWdkZG4zSDF1d1hDQmZNYVFDMXIyTm1KQlM1SU9NekJ1QlB4K0ZneWY3QXR1?=
- =?utf-8?B?cTVNQ2FvSlRyZ09nbmxzQWI3UXB4aXhRQkVaUnNnTFZwbVQrcTI1cHNXVEE5?=
- =?utf-8?B?NzRjK2Yvc05TS0ZMb1VkdVAwakFtaHg4NUluaHBJNW9UZVJLczgzck5QdVlN?=
- =?utf-8?B?bmxiUUVmU0g1WjZudUhGVm9CSy9mdW9vZVluK2orbXNrTU9nTHBzcm5PdmRH?=
- =?utf-8?B?L0VkeXlXd1MycFFuZlYyZmJuaG44MnBjZklpMldKRC9NeXAza2lySGxaQkRR?=
- =?utf-8?B?VTFrREgrUFY1bjhGL2FSQndBN2VDK1E5MDRsOGdQQVF5MXhGWklkUFFpM1B1?=
- =?utf-8?B?YXEzV3JsaWFOclFzNWNZKzh3YUJqdURPU0RiNHAzaGhabnhMaTdzSjBzcHdv?=
- =?utf-8?B?RmZsMEc3bDBFVUk3MkthQ0ltbEkxdFl0SlZaRmN2VGRvRS95RnE0VENHdUhh?=
- =?utf-8?B?dGZWMmhPREZtT3p1U0JlTnhvcDVDOUExRlh2S3FWZEJmYy9BQng5Mjlwd2Rl?=
- =?utf-8?B?QlFVTzNhUjEzaVNwVEU0Mkp4YXVXK0VSeWtRQkZnQ0t5YVRDenVnb0J2bVdw?=
- =?utf-8?B?bDF2TzJCMnBjUHpaTmlIcmpzcDI0YWhOd3FwRFE3WWQzd3BWSWxMVnRZRURX?=
- =?utf-8?B?V3VVNHp0NlN6UWpoMTRvTGdjaHpFZzhrTTgvSTI2TlpIS0xXMUxIKytpdGR6?=
- =?utf-8?B?a0p3QmZpNjZQdEl2Wmt1b2NQWlVnQWU4aysyUGFpOEthczVPTloyMzVzaUdK?=
- =?utf-8?B?c3hrTjBkMVBUT3pHVjYwd1FEejh0SkVLOWZYZW9zL2RjSnBBYVJ5VDlqWmV2?=
- =?utf-8?B?bGVGampQOXdac1ArMXowLytJN3lNRDNoQUdrcG53TmxLREVCSzUwUUdMV2s4?=
- =?utf-8?B?ZjVuYXMyZTduRTRyNUI1RGlxdXdXK25RYmFDSzlRT1JEbUhtaXZlR1pkSVdi?=
- =?utf-8?B?VEZSSVFyMkdDRWR3eWcyUjMwV1BNSGhUcnE4cXRRNnU1U3cySzNkbDE5UXBl?=
- =?utf-8?B?U01mU2hycDNLT2ZIZk5hWWJqTHovM3FVNndTK1doRmwrWVlRcjdEbkdMQkg5?=
- =?utf-8?B?eXpiVU44NHVlWDZFRHFQVCswWlppbko3ZW8rZ0pXMEdiVU5aL0dDMldWWkcy?=
- =?utf-8?B?b0xkU2tuVjlLWDNxYTZNVnBrTDRrbXpyNldCcGFYclZOM3dhV0xmc1Eyb3h0?=
- =?utf-8?B?V3U1VWlTTVk5WmhCQlowanNhMHJ4U05jL0FNSVp6OUdwK3FpRm4yTDZ3Wmtv?=
- =?utf-8?B?L3Z3TFNwWEgvTDkyZkorL3hvb1M5S200ODZwMEVpbXNsUVJUaDFOZlBNS3JU?=
- =?utf-8?B?YjE3TksrYnZycXNyMC95S2JrbTQ1cnVqeVJnenZYZ0JtU0dHUzI2alhYRUpa?=
- =?utf-8?B?cnFTQUtwbWxVcjFNTlBOMlpSZ1ltZVNMNUo2L2djenRSWWlaZVN4eUI4bHJw?=
- =?utf-8?B?ejlNMlJsRDNaenUvd24xM0ZpdkllejgyaHJlaGhsbGZ0UmFlell3clRGUzFT?=
- =?utf-8?B?N2s3UzZTc3JtYTBodTFDR2M1dENZTjF0dENJZ05maDJZMnBLYWRjUEkzTWwx?=
- =?utf-8?B?bFp1VENxdjBRTWgzdWlHSHFCaU1Pb2JETFhvaEJLZXllWHhrSmg4cWhKbkRy?=
- =?utf-8?Q?w1BJD7L39gPEexh8BQeMTkpAJ?=
-X-OriginatorOrg: axentia.se
-X-MS-Exchange-CrossTenant-Network-Message-Id: b9691d7f-de97-461f-8b36-08dc686396f2
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR02MB8500.eurprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Apr 2024 15:46:52.5379
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4ee68585-03e1-4785-942a-df9c1871a234
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Ae0UUO9e3zu7b7S4bYPWSkaOWLM65vvfUXMQMiBCjimK2TnAyKr7gW0j6kP3MS9B
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR02MB10622
+Content-Disposition: inline
+In-Reply-To: <20240427203611.3750-1-wsa+renesas@sang-engineering.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240429_084707_476819_0E648D2A 
-X-CRM114-Status: GOOD (  22.16  )
+X-CRM114-CacheID: sfid-20240429_170752_715676_BB09C4D4 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,74 +73,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Hi Wolfram,
 
-2024-04-26 at 18:49, Farouk Bouabid wrote:
-> Allow the mux to have the same address as a child device. This is useful
-> when the mux can only use an i2c-address that is used by a child device
-> because no other addresses are free to use. eg. the mux can only use
-> address 0x18 which is used by amc6821 connected to the mux.
+On Sat, Apr 27, 2024 at 10:35:52PM +0200, Wolfram Sang wrote:
+> There is a confusing pattern in the kernel to use a variable named 'timeout' to
+> store the result of wait_for_*() causing patterns like:
 > 
-> Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-> ---
->  drivers/i2c/i2c-mux.c   | 10 +++++++++-
->  include/linux/i2c-mux.h |  1 +
->  2 files changed, 10 insertions(+), 1 deletion(-)
+>         timeout = wait_for_completion_timeout(...)
+>         if (!timeout) return -ETIMEDOUT;
 > 
-> diff --git a/drivers/i2c/i2c-mux.c b/drivers/i2c/i2c-mux.c
-> index 57ff09f18c37..f5357dff8cc5 100644
-> --- a/drivers/i2c/i2c-mux.c
-> +++ b/drivers/i2c/i2c-mux.c
-> @@ -331,7 +331,6 @@ int i2c_mux_add_adapter(struct i2c_mux_core *muxc,
->  	priv->adap.owner = THIS_MODULE;
->  	priv->adap.algo = &priv->algo;
->  	priv->adap.algo_data = priv;
-> -	priv->adap.dev.parent = &parent->dev;
->  	priv->adap.retries = parent->retries;
->  	priv->adap.timeout = parent->timeout;
->  	priv->adap.quirks = parent->quirks;
-> @@ -348,6 +347,15 @@ int i2c_mux_add_adapter(struct i2c_mux_core *muxc,
->  	else
->  		priv->adap.class = class;
->  
-> +	/*
-> +	 * When creating the adapter, the node devices are checked for i2c address
-> +	 * match with other devices on the parent adapter, among which is the mux itself.
-> +	 * If a match is found the node device is not probed successfully.
-> +	 * Allow the mux to have the same address as a child device by skipping this check.
-> +	 */
-> +	if (!(muxc->share_addr_with_children))
-> +		priv->adap.dev.parent = &parent->dev;
-
-This is a dirty hack that will not generally do the right thing.
-
-The adapter device parent is not there solely for the purpose of
-detecting address clashes, so the above has other implications
-that are not desirable.
-
-Therefore, NACK on this approach. It simply needs to be more involved.
-Sorry.
-
-Cheers,
-Peter
-
-> +
->  	/*
->  	 * Try to populate the mux adapter's of_node, expands to
->  	 * nothing if !CONFIG_OF.
-> diff --git a/include/linux/i2c-mux.h b/include/linux/i2c-mux.h
-> index 98ef73b7c8fd..17ac68bf1703 100644
-> --- a/include/linux/i2c-mux.h
-> +++ b/include/linux/i2c-mux.h
-> @@ -21,6 +21,7 @@ struct i2c_mux_core {
->  	unsigned int mux_locked:1;
->  	unsigned int arbitrator:1;
->  	unsigned int gate:1;
-> +	unsigned int share_addr_with_children:1;
->  
->  	void *priv;
->  
+> with all kinds of permutations. Use 'time_left' as a variable to make the code
+> self explaining.
 > 
+> This is the I2C part of a tree-wide series. The rest of the patches can
+> be found here (slightly WIP):
+> 
+> git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux.git i2c/time_left
+> 
+> Because these patches are generated, they need manual audit. So, I will
+> send them step by step. This is part 1 and also a call for opinions if
+> this is a desirable change. But at least in the I2C realm, I really want
+> to have it proper.
+> 
+> Build bot is happy with these patches and I also compile tested them
+> (except two). No functional changes intended.
+
+It all looks good, I will give people a few days more for reviews
+and comments and then I'll take it in.
+
+Andi
 
 _______________________________________________
 Linux-rockchip mailing list
