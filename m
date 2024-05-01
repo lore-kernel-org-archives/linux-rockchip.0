@@ -4,125 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCADCC25B10
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 May 2024 13:33:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67361C4345F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 May 2024 14:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ob6zpZWiKnxch+cH2IZdLlRfHeCtpAiglYayt3ortuY=; b=roNXYKsuiK1aY6
-	qbpezbE8j/RM2rTRwLZMaE7Ubq2SG81LLs8F7oxSm1rTxwOrswcyYGZwO6AGuZNsvAfgbTCiUej95
-	KIQXOrtDDPKbd5kzntgAK/+/YDk4t+AojTgKQPNJ9J+HTKUb0kSrq06up4s1tdo+SWyinFj+Bp6jb
-	iv/+zdyv3RhvdIqsPTZsF3Tlf3prd0ZjRMNF+eoe9RGhU7y2qLq5cvkTiUdkb46LYsnRIFsSk/Iqj
-	5vMoAma3rxjhDok9/zmxOct7WBqcpt8Cik8CzyzgVREWqAE1aLRRYMcEOcbiiqviQXJs1Guq+4wWX
-	nFphUOc+cKFs4ynPf7Hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fgbJUlEZJNrrK9pVZd1WMXdCTu5PP4xD2sFyfnoC4a4=; b=s/7osO0dd1I8kt
+	dy676kklOqgWbk7e1Ct9DXgOCh4mQxse29eQO8hXTYWFmDmrQcxPCMc0XOqN4VCVvdRfjE7wjaOpI
+	WwjRxPfQNuAfqLjGVJVKitcTxrnJnvlNYt1OG3R/tharimfAg44kat6ZSGFcq/yskM4X0BnNhIlLF
+	luzxah5DazlLmuU/ARgYl0q+MuYDThu4HFa3pPOyS+if8QFwbCxhiIFytPKDc//FImWKpBRs8MBYz
+	7Ii5lCfTu8w/FkLqZyhKTU4IqGiuqtK0Vj0G/HvqT5bOT5g59h2VrBK57ntByd/tcsAMfS8RxqaXA
+	DrB8/+P0nT6LlghGUxAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2A4v-00000009gfz-09dS;
-	Wed, 01 May 2024 13:32:57 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1s2AsD-00000009nIS-2IPw;
+	Wed, 01 May 2024 14:23:53 +0000
+Received: from forward202b.mail.yandex.net ([178.154.239.155])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2A4r-00000009gdy-3Cls
-	for linux-rockchip@lists.infradead.org;
-	Wed, 01 May 2024 13:32:55 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-34dc9065606so334675f8f.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 01 May 2024 06:32:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714570370; x=1715175170; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ior2gPFVlEOyeV8FJQcXfdx4VXM0R/609sKh6Of53VM=;
-        b=QXQFgiX0B6dtjeORXjynNw8zGdnw+BcZoDFX4HOiEJx0LE64vx895r5x4x9l93u/lK
-         YoRV+ACJXi4kuIDSzwRvCeKjNTYl7Q7MrulVTqkH9jUyeJ/pAUH9VEJ+3QNjdhxGnsZW
-         DbNZwYhFHlFD0ywgpt1iYqqed9xHjmvoIfYhTOtZwVkbRUDdkFNUhrU4KIFzZEWDOUye
-         jEliuPyiQQLLHi8Z7O+7WDjrdawbrNniSzKeelX5Tm+wETUJb1wa4qfkNwbFD2GcTZk6
-         +07cFodpf5k536oofHZbVY6YwmyOLpKtumr9/f/VGWb+OPqScY9KyicVu2g/xc2vEPR0
-         /cSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714570370; x=1715175170;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ior2gPFVlEOyeV8FJQcXfdx4VXM0R/609sKh6Of53VM=;
-        b=eXK7EDnAckSOwIfifj04CK8S8CVmn9GBTkhSDYi2a/y1ds4UwCrStgIFGIvl8X6gHM
-         Tsv9p0JkIMyG9ZInwFmtszTYOzCoKsjzyHeRBzwjiu8bN47DpnGjyX9MN5AvbUz1H4tE
-         tg+Jb5FRNxvg2N0Gbt1LlyixuSLUVxmTRvo2O/xl1DkXvJ5otOLldMPg8fau6u8IVNPR
-         QeAGRuu4k9ze1Y7hrjVigpz4rIxCx7P+u1Osr58xZ2kb6KZ3WgcJKGov4JeogICmG/CW
-         Ldmnk1jOpnU+xPtS+EWf4LgLrOzE6C0ep6whX+ZUfjVSFNjjjX3uxkL90j4uLH3Xbk1y
-         OCOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV64aJEnCsQcjKUswN4deXpDKfPAq8W6L3FVoZcCc+00MAGr3ICcHBEmCuAt9sAUBakD9ylawHiqvj7689zjLKXML1gNDVnFiesxrszAyIcPSuh
-X-Gm-Message-State: AOJu0Yw5Fv3EzM80jCldWhTV/UK7DvcNnDs/IATdYlh+7iqoCGPu7Igf
-	UQ4ZiWDIwC0FbU80g3fYI7Afy/J/RbIh1m6KccVuoBN2asUV7tLAe4BW1jw9SB8=
-X-Google-Smtp-Source: AGHT+IHuNu3c35RsAkvpJAfWqKVWQhv6Z4Ac0yjTjDmpBKt12bv5Zna3drXEkGYfHrENBoZl/SwOjw==
-X-Received: by 2002:a05:6000:24f:b0:34c:bf22:73f9 with SMTP id m15-20020a056000024f00b0034cbf2273f9mr2265612wrz.28.1714570369370;
-        Wed, 01 May 2024 06:32:49 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id d4-20020adfe2c4000000b0034a3a0a753asm32876234wrj.100.2024.05.01.06.32.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 May 2024 06:32:49 -0700 (PDT)
-Date: Wed, 1 May 2024 16:32:40 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Jianlong Huang <jianlong.huang@starfivetech.com>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Chester Lin <chester62515@gmail.com>,
-	Matthias Brugger <mbrugger@suse.com>,
-	Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Joel Stanley <joel@jms.id.au>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
+	id 1s2As6-00000009nG1-2X3J;
+	Wed, 01 May 2024 14:23:50 +0000
+Received: from forward103b.mail.yandex.net (forward103b.mail.yandex.net [IPv6:2a02:6b8:c02:900:1:45:d181:d103])
+	by forward202b.mail.yandex.net (Yandex) with ESMTPS id A46E962FEC;
+	Wed,  1 May 2024 17:23:35 +0300 (MSK)
+Received: from mail-nwsmtp-smtp-production-main-73.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-73.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:20a:0:640:b4fe:0])
+	by forward103b.mail.yandex.net (Yandex) with ESMTPS id 9F156608FA;
+	Wed,  1 May 2024 17:23:32 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-73.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id pMTR1wbCbKo0-AkbDrtjk;
+	Wed, 01 May 2024 17:23:31 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6tel.net; s=mail;
+	t=1714573411; bh=JYZVhcK+PoryVRvDM0TzuUIYo20LFhMUXXZ/JuqXKJ4=;
+	h=Message-ID:Date:Cc:Subject:To:From;
+	b=MDM/JrOaV8jDNkSaMqmaW+vH8ySq1GYfsWJIzPE6MqYXEvoDz7S31zneJfUH/ez9I
+	 evy2BKGJUWdiGAJTHYHhNVkJGoku5DODSiYRLg4xPf+xqS5GwiI+0gf0JHhj+PCLUm
+	 NE+dZUO1HvhQGApNHftwgHE+NuP3XIdIrNCYyuGA=
+Authentication-Results: mail-nwsmtp-smtp-production-main-73.iva.yp-c.yandex.net; dkim=pass header.i=@6tel.net
+From: efectn@6tel.net
+To: heiko@sntech.de,
+	linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-samsung-soc@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-	Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 01/21] pinctrl: ti: iodelay: Use scope based
- of_node_put() cleanups
-Message-ID: <ee5c8637-b8b2-491b-b011-e399942691dc@moroto.mountain>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-1-797ceca46e5c@nxp.com>
+	linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	sebastian.reichel@collabora.com,
+	Muhammed Efe Cetin <efectn@protonmail.com>
+Subject: [PATCH 1/1] arm64: dts: rockchip: enable GPU on khadas-edge2
+Date: Wed,  1 May 2024 17:22:41 +0300
+Message-ID: <20240501142241.98554-1-efectn@6tel.net>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240501-pinctrl-cleanup-v1-1-797ceca46e5c@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_063253_858390_B96A17F0 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20240501_072346_828922_746E893D 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,74 +78,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 01, 2024 at 08:55:59PM +0800, Peng Fan (OSS) wrote:
-> @@ -879,16 +874,12 @@ static int ti_iodelay_probe(struct platform_device *pdev)
->  	ret = pinctrl_register_and_init(&iod->desc, dev, iod, &iod->pctl);
->  	if (ret) {
->  		dev_err(dev, "Failed to register pinctrl\n");
-> -		goto exit_out;
-> +		return ret;
->  	}
->  
->  	platform_set_drvdata(pdev, iod);
->  
->  	return pinctrl_enable(iod->pctl);
-> -
-> -exit_out:
-> -	of_node_put(np);
-> -	return ret;
->  }
+From: Muhammed Efe Cetin <efectn@protonmail.com>
 
-This will call of_node_put() on the success path so it's a behavior
-change.  The original code is buggy, it's supposed to call of_node_put()
-on the success path here or in ti_iodelay_remove().
+Enable the Mali GPU node on Khadas Edge 2.
 
-If it's supposed to call of_node_put() here, then fine, this is bugfix
-but if it's supposed to call it in ti_iodelay_remove() then we need to
-save the pointer somewhere using no_free_ptr().  Probably saving ->np
-is the safest choice?
+Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-The original code is already a little bit buggy because it doesn't
-check for pinctrl_enable() errors and cleanup.
-
-
-diff --git a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-index 040f2c46a868..f40a1476e4ff 100644
---- a/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-+++ b/drivers/pinctrl/ti/pinctrl-ti-iodelay.c
-@@ -156,6 +156,7 @@ struct ti_iodelay_device {
- 
- 	const struct ti_iodelay_reg_data *reg_data;
- 	struct ti_iodelay_reg_values reg_init_conf_values;
-+	struct device_node *np;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+index ea085abb98ec..dbddfc3bb464 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
+@@ -176,6 +176,11 @@ &combphy2_psu {
+ 	status = "okay";
  };
  
- /**
-@@ -884,7 +885,12 @@ static int ti_iodelay_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, iod);
- 
--	return pinctrl_enable(iod->pctl);
-+	ret = pinctrl_enable(iod->pctl);
-+	if (ret)
-+		goto exit_out;
++&gpu {
++	mali-supply = <&vdd_gpu_s0>;
++	status = "okay";
++};
 +
-+	iod->np = no_free_ptr(np);
-+	return 0;
- 
- exit_out:
- 	of_node_put(np);
-@@ -903,6 +909,7 @@ static void ti_iodelay_remove(struct platform_device *pdev)
- 		pinctrl_unregister(iod->pctl);
- 
- 	ti_iodelay_pinconf_deinit_dev(iod);
-+	of_node_put(iod->np);
- 
- 	/* Expect other allocations to be freed by devm */
- }
-
-
-
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0m2_xfer>;
+-- 
+2.44.0
 
 
 _______________________________________________
