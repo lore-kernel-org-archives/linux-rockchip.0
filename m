@@ -4,167 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD05C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 12:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B725C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 12:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SlTgpSBsesOdaYO3qWR+VxcMt4JLWIJia7f4URp3ZGY=; b=hRMgLbo+XhUC7kPw/WtBnOa1rX
-	t++98fdkHEPxmQ4ZwSJmkzOLfYZeGz+qMNTNo5kQTaWlZJKIMAZY+HpHiOSbK+KjK0JZRRbg+iywv
-	rKMqx9NOOSsqekecNN1dOwQ5H6IqRL+XS9SFYho0H0KUigybXMIA3vKSqDbUo9POaR1wAgVZlq8L8
-	1pwCnzWgDhp+KLpf+1WZwQP9jUZL+QRqdRXgwYesv0dQWl5Qu4q1rx8PK5wGsf5P4HmgE+Dujw7RZ
-	/ZghhElAX+xekHkHUykgzV485I/Hw88sW0S1aOkuH/5atszYMIQlOWxFKP/jI1NCFsvY13FX+o091
-	sgV1+AQw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BHX/dNsq3bt7ZxYCbGDj3vTnJZLtdIttv5QZkJxVeio=; b=AJIqCe/JIBkrDI
+	FreLqbocacA1DVIXqEgm7z6yuovagAWHpmpuTvVaWW5e3m/P0/kteEUCa7m/dVwqfwFoOv0E8A1Xj
+	4rz3Ix1qLoT6WW5AQSY6Xr0knHBcdie1XnPBe5p4vdVt4digSbiW52g/WD6UGusMk66DonB2Arpng
+	t/xf3u1QXXTJCIYjdWveM75Ctt9XSmbWgJxWXosCwaSAn9EQRMh7N8DbTtLzpJWr8/XJYF1kguNk3
+	pG6cBJiPRy4DcP43XK3f2DXtSgk8kVXEJ3wHlydzvOBxNIxiSPqoJ0zzIs/OeHUnj6raw+4IWSR7L
+	HwKjUHj8p9YXrFO5MJNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Vap-0000000CfJ8-3tpk;
-	Thu, 02 May 2024 12:31:19 +0000
-Received: from mail-vi1eur05on20701.outbound.protection.outlook.com ([2a01:111:f403:2613::701] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1s2Vyv-0000000CiY9-4Aif;
+	Thu, 02 May 2024 12:56:13 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Vam-0000000CfI0-2XYu;
-	Thu, 02 May 2024 12:31:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TwzqH6BRmqbD9y35bLQT9LL8u6+Ud0H2a0Sop+aeR0acIq/UV6WV/DGssGze6LjBPyT/QAsEdHEsNXhfNEyV4fOEHP2WZkUYDbkmZOC91FOpxOD0y43JqqMrxJehGeIAgjYSTUlGLY/IZWGYjSI0Imw/vi1MeZoxEp/WC5Veg0UQShSNAULNS6k9cPv2AuswSubf9nUdDg2f0rMerzuIxtFA/BIz5azbJ0Og3i6rgMOsE56ayXXeRmh4e51c9da+jaihue3fv3V2L+rs176uyZM2/C45jCUolgkEL1bit6b1zmJ6YlceQ31uBAsQxCBWTejg/+XjCRu+37w25gC+uQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=R5wHRI9a8rcu1Bbl6RXaApRJZAb6Ps12W8zcGtX2hSU=;
- b=eMl7d+AB3cc94ap98bsdTh+IBhrPBN1EBKWIqs/caBi5T92yV0g9sQLToT+3hFO6XEt5IfySudfOVzrunhJulQL8W8jaljvKa2x1hDKlYUPOpvn6ICdRfHclPgSThpcuUcprEQZK+LJ8Pr6kk0y6PN7u9CvOx2vfKufmmTQgyhBaPS6lb38xut5Vui2GdRL1PUYBbeZ3CXriVB/EceuibZNddQSwpW5wYr0m7rIYhU3XphlBXXfVnuKXw+OINBeEgomF+WcmaElf9rVVyja1nMjXRjxHuFCiwMLpRZTKx7Vbazc5IpeL+phGuOsluadPeEGwnlij1utnernniIIUtA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=R5wHRI9a8rcu1Bbl6RXaApRJZAb6Ps12W8zcGtX2hSU=;
- b=AO1UzFmehw5Kwk9z8LB9ykqGuSwHStAt6TLCxBc5aR6LfEfV7q9HKozLy1LRgvWIR5egnSHpDM7fMRDYa3/QlDDz1gvEyHbgNZ8OBNZTFIBI2VMXSihF54vlS12RO2e8HTtoshDU3cqEs0IcA92yxdNTnfZpEH/c4zLUndpYk/z7unqk/9hxZdTc82ff4EF6flV+lbn46os41I6tIWQS5+ZR3w6LsySZEqi35zSH7eV6bbdGdY8kQ9oerGgCIcRT8qZkrwJUP6ePYIjxw4q2X53nGv90YvRGST6B14qpE09St/PmyfDCu6KJ5Gs3796nTE3I2aVjR8abAtcv0fMnpw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from VE1PR04MB6382.eurprd04.prod.outlook.com (2603:10a6:803:122::31)
- by GVXPR04MB10184.eurprd04.prod.outlook.com (2603:10a6:150:1bf::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.36; Thu, 2 May
- 2024 12:31:08 +0000
-Received: from VE1PR04MB6382.eurprd04.prod.outlook.com
- ([fe80::59d9:878d:65f0:3936]) by VE1PR04MB6382.eurprd04.prod.outlook.com
- ([fe80::59d9:878d:65f0:3936%4]) with mapi id 15.20.7544.029; Thu, 2 May 2024
- 12:31:08 +0000
-Message-ID: <4d45e2e7-1130-4348-991d-cf97a04e6125@theobroma-systems.com>
-Date: Thu, 2 May 2024 14:31:06 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] i2c: muxes: add support for mule i2c multiplexer
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Peter Rosin <peda@axentia.se>, Andi Shyti <andi.shyti@kernel.org>,
- Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com>
- <20240426-dev-mule-i2c-mux-v1-3-045a482f6ffb@theobroma-systems.com>
- <d074880a-14dd-46e4-852c-0bb068154603@linaro.org>
-Content-Language: en-US
-From: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
-In-Reply-To: <d074880a-14dd-46e4-852c-0bb068154603@linaro.org>
-X-ClientProxiedBy: WA2P291CA0031.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::12) To VE1PR04MB6382.eurprd04.prod.outlook.com
- (2603:10a6:803:122::31)
+	id 1s2Vyo-0000000CiWG-3K8w
+	for linux-rockchip@lists.infradead.org;
+	Thu, 02 May 2024 12:56:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1714654564;
+ bh=ZheNXb4kFiyFslkWqYIOhADWuSoeRFTlaYHNccaMueg=;
+ b=pZE+GLa3dRahzDY9N2VRRd+/1/UJLQdIxlkwumNfh+qi23IKCdK7ANSH/KGQvgEzzZPnOnn/m
+ 4L8rwA1ZlBAWo9GcbA/4PgiPKU8ZOuwPxhgs/BvAkY2ENH78JPSxZ22fptA/d3+tamH6ZkzpEgg
+ xP3nLAky0jLptFzWgF3jRxJDq0aNAe2VWEM1FHneo7G06aGG8zQYtmUNVRh2sxakpCDlx14P/Q7
+ kr8FAdDdHXDzP9yRayZOTUDrBW4lqK1/AwfUR3lH9x+GQPmqoIS9bltnV6Np2uLUgj7J4qUy/aF
+ EP9iRACeHS589mrhM0kAJ1HjMhCiHYS22kCt+ls6vXxQ==
+Message-ID: <75cc31d9-beb2-456b-a9e8-8f7ec4711029@kwiboo.se>
+Date: Thu, 2 May 2024 14:45:21 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: VE1PR04MB6382:EE_|GVXPR04MB10184:EE_
-X-MS-Office365-Filtering-Correlation-Id: ad2be678-e7f3-42c5-4bc0-08dc6aa3be02
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|1800799015|376005|366007|7416005;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WGJJMGZKTnFjdVo2T3JxOTducU84UTNQRjlnY2ZTblEyenlTZ3Q2YWhxSXlC?=
- =?utf-8?B?aHJVbEloalJmR29HQ1didWc3VXJuS3U3K0ZCWlR0OTh3WE9hTExHb0ZSL214?=
- =?utf-8?B?eFgrTThqc2pCS0lZWGRLWFh0SkxTbWU0ODFlVkFkclhkbjJIQzdPWHRhMGNR?=
- =?utf-8?B?dDU4ZXVJNnJGMHN0dE9VN2R2KzJaVVAyTUp1clV6UUswRjcyaXdyanVFZlJD?=
- =?utf-8?B?dm5yQXhqL0ZCZC9kV0RWVXZOdElySUQxTGJXak8wVjgzWkR4c1NJU1ArVVd1?=
- =?utf-8?B?elNjYm5JZU83Y282elZWN2dKUWg4d3dhS1RrTnpyd09seFk0RXNxZGRiS3dy?=
- =?utf-8?B?SHRiTWo5ajcwdHRWbVJQU2JlWHlUZ1kvc1ZBbUpOUm9HWUZvN3puOEpxMEpk?=
- =?utf-8?B?LzkvVUl6UmRZQUl6Q2RmU2toUmVNQTB5NkFHTUIwVk9nMGRtbDB6Z3BmeFhL?=
- =?utf-8?B?cVhSYXg3ZFI2cjFLVjFTNFlkUzVXRDhqTXo3QWh1R1hUZHZwSWVKeHRHNWpi?=
- =?utf-8?B?UlFTcnVZWFdVRnpWMnhIelVzQjRlb3JLOElPeVRydjFCekcyLzh0ajJsazdQ?=
- =?utf-8?B?ZXJ1Zkt5YWhWdUtmd3JENnJsdnNRUUhIK3BZZ1ZUL0hhaURmRzNaQU1lZnpv?=
- =?utf-8?B?d3AzeUhNbjZGRnhEaGhTaS8wb1UvVHU1Q0tZaUp1LzA0cFA5ZEN5d0hPSGVM?=
- =?utf-8?B?bkNaT2RrQkdERUkwaW40eG5VaVJQNE9sT2FMM1UvU0lidjl3N1hyaEtwR0NU?=
- =?utf-8?B?NGJnR08xUEpvc2s5TndKUklqcUlIWG5LQ2JHa2VORGVlQ25wOEhlMFRUcXFS?=
- =?utf-8?B?SktPV0piM3NkVlVvTFJXajN2ejhhVjhDN0w4WDRBa3pJOGllcHBtbHBML001?=
- =?utf-8?B?MnZDWTllK3dpTHV0Mi8yVXIvcWkzRnZyalI4Z2J3d1pibXhmektFc2FoSTRZ?=
- =?utf-8?B?T2hVTEZoalFUbCtTZkd5TjRYdm55WjFEcWI5UVZxem5QOHdiYVdvNFhFKzBy?=
- =?utf-8?B?TVRCbGhHTFdoSzFIRHRyRHRXbUhDS0ZqajVCOGpFQ3htVmVLaklYdnhVOUdN?=
- =?utf-8?B?TkdqaGRtSnpVQnN3RHNJbEF0dXZ5OWhuZUVaN29WYTFsZ0M0M1kwRGp6bWFT?=
- =?utf-8?B?a3VIYUprZHZzU2diSjNZeWJoNEd3WVI2cThWTndOQS9KSmJmeTJoQkhSdFFy?=
- =?utf-8?B?THYxeVBtbk1lcWVOd0NEMUt1cjFRbzBURCtLVTU4dGRnOVArYTFZQktRK1l1?=
- =?utf-8?B?WUI3dnFrdWprcWNPY05MekFydHdTU1VUUU1pRkxZYW5qKzBFRTRlRHYwaFVZ?=
- =?utf-8?B?bGZSbytUREdnV1l4bThmcEJydWgzUlRTUUN0WlRjYStzYnl5WURjTnZsQ3Vi?=
- =?utf-8?B?M05sSmlzQlVwRjlSQWRsMXBDTk8yRkVJTVFGUUQrTWovV08wVTlIdHNUWU9J?=
- =?utf-8?B?ajRWZjZsQkwvRitMSzRBdVRudlhpUzRhOUZrMng5S1plREZPUlEyb0M1SVVk?=
- =?utf-8?B?MDlscERtTjVTTFgwb2xNZi9wek1BenJhaW1MM3ljYm1IandwbjRtaUdqYnRS?=
- =?utf-8?B?c1FlajBRUEtqdzJFU0QwRHhLZWV4ZWw5T002Yy9MQlhqV1NuVmREdmlNdHJi?=
- =?utf-8?Q?9VUEH/+NPi3Jo9eOebFZDQ2Yx6qORToIAG5WL+Xvm+Us=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VE1PR04MB6382.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(1800799015)(376005)(366007)(7416005);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TklDeFNRVVRwWk5xYzlKWTYrZzM2ODJaRzdzb0x5L1pHWFh4aE13V2FHMmFO?=
- =?utf-8?B?ajNYK2pDNGt3OU9RQlltTWJPZlJ5WlUyODdLcTZzY1VUVDVSUHZTTmZlMDdw?=
- =?utf-8?B?eUluaklPZndzYXR0Wm5mcE96b3NmYnQ1SlpBZSswQ1cxWEQvTGIxWGdUY1hE?=
- =?utf-8?B?K09YeWV0OGFyRW12SFVwY1BqVDJvMnc3eDhqdng3NVp2Zkgya2FzVmhBcHR3?=
- =?utf-8?B?cmU1a1VpUW0xWHFjRlk1am5pRmZXaDBYbmJDWWl5Tk9obkRCUThDcjRoRlJo?=
- =?utf-8?B?VkFZbXJ6dWU0RWl4alRaL1MxbU1wUm04bUVsbVJDMzhzUzZBdk1ZcUZCUjBY?=
- =?utf-8?B?WEY0TU5tT1l3Sno2K0xXQ1JsSkNnQVB3MzNETkd1cUFZa2pSTmhrY3F1ZHc3?=
- =?utf-8?B?d05FSDhjcUx1aGw3bWdvS2Z0dHlaVVJWaEJPczBjS0MxUU5yVUUyQXVGL2JM?=
- =?utf-8?B?TGpEdFFCUWJsNUVlVkZDMTFZcC9uaFcyeWNSQ3hyeWhWQUV3eHBjcVg1Zng4?=
- =?utf-8?B?eU9RQTFqQ3hFZ2hFNkgvRlRPbVRYZHV1NTZEakZoZnBDcDlZUklzMHVCRDlD?=
- =?utf-8?B?NWRrTTNLMFRGYU1hSHJJUE9HU00vdkVZL252d2hUNWhmMVQwL1pyMjVhcTdN?=
- =?utf-8?B?RlVUWk5XTjZ6aVNwZnBPalJLaVV2Yy9zTUZpMlZXRUFwUzN3YUVDeU5UZ1FR?=
- =?utf-8?B?YnlhZStMUTJIajdCdzhUQVFqdEo3YU9Mb1pxS1V1eEI2UjNVNVhXbDhkUVd3?=
- =?utf-8?B?clBKR210dTBqSDZYOWVFVm5udDhlV2lWWUJWNjZGREN3QzdEWFBnWlZLMFNX?=
- =?utf-8?B?Wkh1ZUJMcnNNVk5EYytPNk5SbzlFVVd3anpOWmlNRHN4VVNBMUZNUS9wdExL?=
- =?utf-8?B?YnpZTTRxVk1ibUVxTFI2Nm5WaWlHNVp4d0ZKRWlNcXVCNTNZaXN4dUExNnFp?=
- =?utf-8?B?U0oyTEdLQVZwRUM3RjZLajRCRytGc01Cc0NuaTU3Wnh2bGVPdDBRc09YRk9v?=
- =?utf-8?B?SHRMOUtIMFJJbWg2bkhvLytIeFhzZ3NxQlltemhvK1BKZTZyNUlqRXBZR29U?=
- =?utf-8?B?TTBtSmxLWjVqeUxUMEdzREYzOVJ3RUdYdW5ZS1VuV1RBVGUxN0xTUVJPaUl4?=
- =?utf-8?B?VGZzZ0s5SCtxbDkySDEwSFl0Q0g4SHk4RWFVM2Q4YjByVFpyOXhNUFVQcTNG?=
- =?utf-8?B?KzFpZDY5WGhlUWJ5OVFsbGVPRHVNcHJrTXc0MURMMFFHRTM3R2I4VE5GUGJJ?=
- =?utf-8?B?ekd5c2FHN2dBVlJiTEdBVTlIeHcyUmprNDd0N0UrZlg3QUVwdTU1UFVDTUJC?=
- =?utf-8?B?SEE0eEllYWNEYmdYNlYySEt6NUIyNzhIaGp4dEZUZWZyR3dRZy9zL1NHNVVD?=
- =?utf-8?B?QU9YbXE4NkxTcEMvN3JvUEtuSWYvUDdwcWtSMzBNWXZLK3BVSTB2RWdVWVo3?=
- =?utf-8?B?TFg3bWtkR0szcFZ6N3VhaHQ4UU9kdzhva2FYR0FFZnJkUUUyNWpaOFVGeEdl?=
- =?utf-8?B?ejUvbU5wMFlNQUJWa2t3WGJSV0dVS2VmaStpM1lOOCtBQ0s5K01uUUlGZWp4?=
- =?utf-8?B?NEQ1OUpMaE5ndWhIWTBiNmFMYkF5Nm55QTlqaU1PNFpUaGxVTGVRbnVHQnoy?=
- =?utf-8?B?NmlmNVpkMEo0WU9XODc4eU83ZXJPZHRRZHJtSkFpUjEvNVhMQ00zaUdnYlpl?=
- =?utf-8?B?dWhwMTNKa05NNnJtclozaTF0Z1FmLzcxUEtrM1BWYUtIWUxzZXh5aE5rUmlX?=
- =?utf-8?B?RkU2bmI5bFMxeGtjWkx1aUpoaVQ4T0J4S2xCR3QvNHl4MmE4cGhvdEQ4RHJ3?=
- =?utf-8?B?QVVEYzBvNjRSTVRwY0JpcERicjZaQWdseXVjRXJLV2ZRQkVrMkdaSGFjeDZN?=
- =?utf-8?B?MWJjZ2sva3diOUltUmRHNHUva3R5QmR4Z2RTMWNvNTc3bTJWVzBOOTFlU2Nl?=
- =?utf-8?B?Z3d5L1phQm0xeXMxYU53cVU4UTN3eXhScGFxNmM0YlN2M3RIYjNNOGgwYnZs?=
- =?utf-8?B?cU1RNmVsOUV2TGJ1L3d0eTRVZzcyQllKRytsQ1JLaThCSEFCZzFUY3FseUhv?=
- =?utf-8?B?N1NEWVlkYkZQL2ExR3ZEU3ZsR2NoeWJXNzNBalcvUlNsQ0NwK2FscGZnWS8y?=
- =?utf-8?B?RGNyMWk5Y0l5anIwUGh6RUY1a2V5TDFXd3hER0xFdEpVNjVSYVpKTldkRzFB?=
- =?utf-8?B?bEE9PQ==?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad2be678-e7f3-42c5-4bc0-08dc6aa3be02
-X-MS-Exchange-CrossTenant-AuthSource: VE1PR04MB6382.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 May 2024 12:31:08.1232
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KG4zoblwvRMIK2iM15UXrvaC8fRe4+hXedIb2HwOeXk5NBa6iiootxFdQacWg0yEF14sSRp+NM2oTQmFP2hC743yRjms9ZOsWDrbbYeOVR0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10184
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Radxa ROCK3 Model C
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh@kernel.org
+References: <d7de2213-8dd2-42ec-9a30-a569ac71be3e@kwiboo.se>
+ <20240417133016.62753-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20240417133016.62753-1-amadeus@jmu.edu.cn>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 66338ae5f48eecfc8b9e844c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_053116_697410_6EE1A0B4 
-X-CRM114-Status: GOOD (  28.19  )
+X-CRM114-CacheID: sfid-20240502_055607_207664_B566C1F7 
+X-CRM114-Status: GOOD (  35.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,127 +73,191 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Hi Chukun,
 
-On 29.04.24 08:33, Krzysztof Kozlowski wrote:
-> [You don't often get email from krzysztof.kozlowski@linaro.org. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
->
-> On 26/04/2024 18:49, Farouk Bouabid wrote:
->> Mule is an mcu that emulates a set of i2c devices which are reacheable
->> through an i2c-mux.
+Sorry for late reply, I will test and review your v2 later today :-)
+
+On 2024-04-17 15:30, Chukun Pan wrote:
+> Hi Jonas,
+>>> +	model = "Radxa ROCK3 Model C";
 >>
->> The emulated devices share a single i2c address with the mux itself where
->> the requested register is what determines which logic is executed (mux or
->> device):
+>> The marketing name seems to be "Radxa ROCK 3C" according to the product
+>> page at [1].
 >>
->> 1- The devices on the mux can be selected (mux function) by writing the
->> appropriate device number to an i2c config register (0xff) that is not
->> used by any device logic.
+>> [1] https://radxa.com/products/rock3/3c
+> 
+> According to https://wiki.radxa.com/Rock3/3c , it should be called
+> "Radxa ROCK 3 Model C". I copied rock3a here without paying attention.
+> 
+>>> +	compatible = "radxa,rock3c", "rockchip,rk3566";
 >>
->> 2- Any access to a register other than the config register will be
->> handled by the previously selected device.
+>> A personal preference would be to match the product name and the dtb
+>> filename, e.g. "radxa,rock-3c".
+> 
+> I thought so too, here is also copied from rock3a.
+> I think rock3a needs fixing too?
+> 
+>>> +		led_user: led-0 {
+>> This is called user_led2 in the schematic, in case we want the symbol
+>> to match the schematic.
+> 
+>>> +		regulator-name = "vcc5v0_usb_host";
+>> This regulator is named vcc5v0_usb30_host in schematic.
+> 
+> Thanks, I will fix it.
+> 
+>>> +		#clock-cells = <1>;
+>>> +		clock-names = "mclk";
+>>> +		clocks = <&cru I2S1_MCLKOUT_TX>;
 >>
->> Signed-off-by: Farouk Bouabid <farouk.bouabid@theobroma-systems.com>
->> ---
->>   drivers/i2c/muxes/Kconfig        |  11 +++
->>   drivers/i2c/muxes/Makefile       |   1 +
->>   drivers/i2c/muxes/i2c-mux-mule.c | 157 +++++++++++++++++++++++++++++++++++++++
->>   3 files changed, 169 insertions(+)
+>> I think clock-output-names may be missing? Something like:
 >>
->> diff --git a/drivers/i2c/muxes/Kconfig b/drivers/i2c/muxes/Kconfig
->> index db1b9057612a..593a20a6ac51 100644
->> --- a/drivers/i2c/muxes/Kconfig
->> +++ b/drivers/i2c/muxes/Kconfig
->> @@ -119,4 +119,15 @@ config I2C_MUX_MLXCPLD
->>          This driver can also be built as a module.  If so, the module
->>          will be called i2c-mux-mlxcpld.
+>>  clock-output-names = "rk809-clkout1", "rk809-clkout2";
+> 
+> Thanks, I'll add it in the next patch.
+> 
+>>> +		pinctrl-names = "default";
+>>> +		pinctrl-0 = <&pmic_int_l>, <&i2s1m0_mclk>;
+>>> +		rockchip,system-power-controller;
+> 
+>> I think this prop is deprecated and system-power-controller
+>> should be used instead.
+> 
+>>> +				regulator-state-mem {
+>>> +					regulator-on-in-suspend;
+>>> +					regulator-suspend-microvolt = <900000>;
+> 
+>> Not sure we need this in suspend to ram and this can probably use:
 >>
->> +config I2C_MUX_MULE
->> +     tristate "Mule I2C device multiplexer"
->> +     depends on OF
->> +     help
->> +       If you say yes to this option, support will be included for a
->> +       Mule I2C device multiplexer. This driver provides access to
->> +       I2C devices connected on the Mule I2C mux.
-> Describe what is Mule. Here and in bindings documentation.
+>>  regulator-off-in-suspend
+>>
+>> That is also what vendor kernel does.
+> 
+> Will be corrected in the next patch.
+> 
+>>> +			vcc3v3_sd: SWITCH_REG2 {
+>>> +				regulator-name = "vcc3v3_sd";
+>>> +				regulator-always-on;
+>>> +				regulator-boot-on;
+>>
+>> If I am reading the schematic correctly this is not connected.
+> 
+> Yes, I didn't notice it was NC, thanks.
+> 
+>>> +&sdhci {
+>>> +	bus-width = <8>;
+>>> +	max-frequency = <200000000>;
+>> This board support HS200, please add:
+>>
+>>  mmc-hs200-1_8v
+> 
+> Will be added in the next patch.
+> 
+>>> +&sdmmc0 {
+>>> +	bus-width = <4>;
+>>> +	cap-sd-highspeed;
+>>> +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+>>
+>> Please drop the cd-gpios prop, sdmmc0_det is used below and
+>> works fine on this board.
+> 
+> Do other rk356x boards also need this change?
 
+Yes, I think in general on Rockchip platform it is preferred to
+configure the pin for sd-card detect function instead of using the
+cd-gpios prop (pin configured to use gpio function) when the default
+pin is used and correctly wired to sd-slot.
 
-Is the description in bindings documentation good enough to be copied 
-here ? If not, any suggestions?
+The RK3566 HW design guide also mention following:
 
+"""
+RK3566 reuses JTAG function and SDMMC function together to reduce IO pin
+count and take into account the convenience of the complete machine
+debugging. The SDMMC0_DET pin is used to switch the output function.
+Therefore, this pin must be configured before power-on. Otherwise, the
+debugging during the boot period will be affected if JTAG has no output,
+and SDMMC0 has no output will affects SDMMC boot.
+- SDMMC0_DET pin detects that the level is high, the IO switches to the
+  JTAG function;
+- SDMMC0_DET detects that the level is low (normal state of SD card
+  insertion, and the PIN is pulled down by SD card slot), the IO
+  function is switched to SDMMC;
+"""
 
-[snip]
+And similar was changed on RK3588 boards in:
 
+arm64: dts: rockchip: rk3588: remove redundant cd-gpios in sdmmc node
+https://lore.kernel.org/linux-rockchip/20240201034621.1970279-1-kever.yang@rock-chips.com/
 
->> +     if (!muxc)
->> +             return -ENOMEM;
->> +
->> +     muxc->share_addr_with_children = 1;
->> +     priv = i2c_mux_priv(muxc);
->> +
->> +     priv->regmap = devm_regmap_init_i2c(client, &mule_regmap_config);
->> +     if (IS_ERR(priv->regmap))
->> +             return dev_err_probe(&client->dev, PTR_ERR(priv->regmap),
->> +                                                      "Failed to allocate i2c register map\n");
->> +
->> +     i2c_set_clientdata(client, muxc);
->> +
->> +     /*
->> +      * Mux 0 is guaranteed to exist on all old and new mule fw.
->> +      * mule fw without mux support will accept write ops to the
->> +      * config register, but readback returns 0xff (register not updated).
->> +      */
->> +     ret = mux_select(muxc, 0);
->> +     if (ret)
->> +             return ret;
->> +
->> +     ret = regmap_read(priv->regmap, MUX_CONFIG_REG, &readback);
->> +     if (ret)
->> +             return ret;
->> +
->> +     old_fw = (readback == 0);
->> +
->> +     ret = devm_add_action_or_reset(&client->dev, mux_remove, muxc);
-> This is really odd. Why do you call remove callback as devm action?
->
-> I have serious doubts this was really tested.
+> 
+>>> +	sd-uhs-sdr50;
+>>
+>> Why limit to sdr50? and not use sd-uhs-sdr104?
+> 
+> The sdr104 mode is not stable on the rk356x platform.
+> This problem has been reported on both rock3a and e25 boards.
 
+Do you have any references for these issues?
 
-This was tested in both scenarios where the probe fails and while 
-removing the driver. The remove function is added as devm action to the 
-unwinding path, which will basically be called when removing the driver 
-OR when the probe fails after this call.
+When I tested on Radxa ZERO 3W/3E there was an issue executing tuning
+that resulted in a not working sdr104 mode. However, after the card is
+removed and re-inserted the tuning works and the card can use sdr104
+mode.
 
-https://elixir.bootlin.com/linux/latest/source/drivers/base/devres.c#L734
+That issue seems to be related to the io-domain driver not being notified
+about the voltage change when mmc driver is probed during boot. When the
+card is removed and re-inserted the io-domain driver gets notified and
+re-configure the io-domain.
 
+Testing on a RK3328 board (Rock64) the io-domain driver gets notified
+about the voltage change during boot and the tuning is successful for
+sdr104 mode.
 
-[snip]
+Will re-run tests on my ROCK 3C boards to validate is that is the same
+issue, guessing it may affect multiple RK356x boards.
 
+Regards,
+Jonas
 
-> Anyway, all this looks like i2c-mux-reg. Please provide rationale in
-> commit msg WHY you need one more driver.
-
-
-We are basically using an i2c device (mux) and an i2c register to handle 
-the devices behind the mux which is not what the "i2c-mux-reg" offers, 
-where the mux is a platform device and the register used is part of the 
-io-memory.
-
-Also to check that backward compatibility is valid on older Mule 
-versions, we perform some tests in the probe function that are specific 
-to Mule.
-
-Did I miss something?
-
-
-Best regards
-
-Farouk
+> 
+>>> +	vmmc-supply = <&vcc3v3_sd>;
+>>
+>> If I read the scematics correctly this is using the
+>> vcc3v3_sys regulator and not the vcc3v3_sd.
+> 
+> Yes, you are right. I didn't notice it, thanks.
+> 
+>>> +&sfc {
+>>
+>> This is missing pinctrl:
+>>
+>>  pinctrl-names = "default";
+>>  pinctrl-0 = <&fspi_pins>;
+> 
+> This is already defined on rk356x.dtsi:
+> 
+> 	sfc: spi@fe300000 {
+> 		compatible = "rockchip,sfc";
+> 		......
+> 		pinctrl-0 = <&fspi_pins>;
+> 		pinctrl-names = "default";
+> 		status = "disabled";
+> 	};
+> 
+>>> +		spi-max-frequency = <104000000>;
+>>
+>> My board is using a GD25LQ128EWIGR same as mentioned in the schematic,
+>> and datasheet for this flash chip menion 120 mhz and not 104 mhz.
+> 
+> Will be corrected in the next patch, thanks.
+> 
+> Thanks,
+> Chukun
 
 
 _______________________________________________
