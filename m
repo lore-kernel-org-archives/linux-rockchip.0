@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7151AC4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 01:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 444C3C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 05:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m1dz/t/4rOWXJ5aL3Q3y5+PIWVCptUSTHCWI7Q8zG34=; b=kLFepMSpZraULaqwT4Req71vFE
-	x26D0K5P55pxf1oEjIRGMMEoO86A/lgLfhN7eXik8FYFhz6ElJPV8pmSc62/OCqApt9M+mya9Aasb
-	tafnGsopFRH4GNnbRbL63tCzh6zqnjPNrIbQ83Dr/k10VlEhPvT54t70QY4nEMXrB0T+9ZOaKDL99
-	Ow60Ml5sUdXO4+BlzqwT0anBOfscOGUyhKwLei6Hog7nKP0JKMDGe93WjrYFybJ1P4Hof+7DeN3qn
-	surScgfHxvpnOPAlEb4zsnZAENIQE8gVoiHlici4lfq3GHgXHN8PDgIFNaVcFQhiAztCacCOQRUs3
-	xESRItOw==;
+	bh=rbHXJxzlNhSmDQ525Y1SEX3BMGajsxKK+CO7f2cigcQ=; b=G6zByD5dvFbLVUOA2u9IBhgFE5
+	b9uOqJhZkdMwbOLrwukGItjhuQDNWVcSg9QUra6njh1j1Jru2B8DARZHzjtpHVmIgj3uzxMKHECW5
+	doMxYRG1Y5z+0OkCx8H2QVc0Epvo8O1th/TD4GFTN+EDtA+5kVY2VJswm12hs6kQGETyED+mQOwLb
+	AlFUidr8QbrvEqXzUQMDF5j8VSiYqQPRhufflQAWG+M1GuxF6xoPQEcNfwI0BViedPimC3jYetI6f
+	5DgJv8aiixBtHz47T6+908tGDtKV05zrrzp43z0T/N8bPwgXXIAXIpXs5zloHvoWlc63qA/Eo+d4o
+	oKj6r+tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2LFj-0000000B7Kr-2wBN;
-	Thu, 02 May 2024 01:28:51 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2LFf-0000000B7J2-0BUP;
-	Thu, 02 May 2024 01:28:49 +0000
+	id 1s2OZC-0000000BTmI-3mEn;
+	Thu, 02 May 2024 05:01:10 +0000
+Received: from lgeamrelo11.lge.com ([156.147.23.51])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s2OZ6-0000000BTjJ-1XlM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 02 May 2024 05:01:09 +0000
+Received: from unknown (HELO lgeamrelo02.lge.com) (156.147.1.126)
+	by 156.147.23.51 with ESMTP; 2 May 2024 14:00:48 +0900
+X-Original-SENDERIP: 156.147.1.126
+X-Original-MAILFROM: chanho.min@lge.com
+Received: from unknown (HELO ?10.178.36.63?) (10.178.36.63)
+	by 156.147.1.126 with ESMTP; 2 May 2024 14:00:48 +0900
+X-Original-SENDERIP: 10.178.36.63
+X-Original-MAILFROM: chanho.min@lge.com
+Subject: Re: [PATCH] arm64: dts: Add/fix /memory node unit-addresses
+To: "Rob Herring (Arm)" <robh@kernel.org>, soc@kernel.org,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Khuong Dinh <khuong@os.amperecomputing.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Robert Richter <rric@kernel.org>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20240430191856.874600-2-robh@kernel.org>
+From: Chanho Min <chanho.min@lge.com>
+Message-ID: <a5a4063c-9ae9-9d3d-de28-51e4220ef139@lge.com>
+Date: Thu, 2 May 2024 14:00:47 +0900
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1714613322;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iVCWMANqUJGySV0avp2OJDbEbFh/XAZgzAZxpawRdKA=;
-	b=AL6BY7bAhPHkOUh/+ThY+7AZ5Jy5l+EvAzMP9wr0i+3216C2W4rpKxBVinnuSxVtDqsChK
-	sMvXNdslzPHl7YUbKXn+LVadBR+hDI8OgN/OdQb3H0YduRIAbcqKf0PgQZWOOQiBEB19uH
-	UfScHmX5ia5a2cTj+qv1+ZhO9NAkQnp1cPA8ih4gykdcV2zU/FO2QLLBrk5TAFuQJ3fYcz
-	ya2nPd6YI5/DI0Glo+4Pa3w91d1SIX+wOS+Bf/DRaoFoAoimH93Mw/bOlWTfJ31mg3JW+z
-	0Kt3d3tix75+sZLQeLohycCaGMh2spEzpj4vODhAUB8wPNk8Ex/KiOBxfot84A==
-Date: Thu, 02 May 2024 03:28:39 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Folker Schwesinger <dev@folker-schwesinger.de>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>, Conor
- Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob
- Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3C
-In-Reply-To: <D0X7UJELGST3.2IL1AFDJ89N07@folker-schwesinger.de>
-References: <20240428123618.72170-1-amadeus@jmu.edu.cn>
- <20240428123618.72170-3-amadeus@jmu.edu.cn>
- <D0X7UJELGST3.2IL1AFDJ89N07@folker-schwesinger.de>
-Message-ID: <ded928414323ef4be51f2575d00ba7d1@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <20240430191856.874600-2-robh@kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240501_182847_749331_5398BB06 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240501_220104_790786_517D5C56 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +86,20 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Folker,
-
-On 2024-04-30 07:42, Folker Schwesinger wrote:
-> On Sun Apr 28, 2024 at 2:36 PM CEST, Chukun Pan wrote:
->> [...]
->> +&sdhci {
->> +	bus-width = <8>;
->> +	max-frequency = <200000000>;
->> +	mmc-hs200-1_8v;
+On 5/1/24 4:18, Rob Herring (Arm) wrote:
+> '/memory' nodes always have a 'reg' property, and therefore should have
+> a unit-address with just plain hex (i.e. no commas). Fix all the arm64
+> '/memory' nodes.
 > 
-> Out of curiosity, does this board also support HS400? From a very brief
-> look this board seems quite similar to Rock 4 series boards, that do
-> support HS400.
+> It's possible that some bootloader depends on /memory (arm32 ATAG to DT
+> code does for example). If so, the memory node should be commented with
+> that requirement.
 
-In a word, no, unfortunately.  In more detail, the Rockchip RK3566
-and RK3568 SoCs support the eMMC modes up to and including HS200, but
-not the HS400 mode.
+>   arch/arm64/boot/dts/lg/lg1312-ref.dts                  | 2 +-
+>   arch/arm64/boot/dts/lg/lg1313-ref.dts                  | 2 +-
 
->> +	non-removable;
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
->> +	vmmc-supply = <&vcc_3v3>;
->> +	vqmmc-supply = <&vcc_1v8>;
->> +	status = "okay";
->> +};
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Reviewed-by: Chanho Min <chanho.min@lge.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
