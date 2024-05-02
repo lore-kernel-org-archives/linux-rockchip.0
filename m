@@ -4,86 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72656C25B10
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 09:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6F1C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 09:45:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o57kgIvb8z+B2Mnh0wnjpsUPSl0VZBt2AtxUcVmy780=; b=LMHat3JfkO3syA
-	SoP9h/Mejk78XCIplaarsjabudDzXWAYfyoTkDl6kqY2jRZnmo5wSScZzgCOLeE+kq9fPNwCj1e+d
-	SJAqSXhReoKMI0gGnFNTexcHSu9quSdRW12d8qL6AvK6ROHFXsTOLBELfK9/XCJJSIKV3hNN5dKwD
-	8mhOOPtv0MBDethN41aJKz3Zd7i+dNW6FeZ97lsVzNvNo4OFY7YT6157/rlXRvaKpQPuXOwi1nlX3
-	+/PnqepXsn3Lf/RaDV9yBWsP8byhZgjtbhYBg30BGN3yTGoxtMnM6ChaGoi2TC1rv1q9N1ddNPUKU
-	znFKZ20Vc6yRf2ZfEO3w==;
+	List-Owner; bh=4SJaMR12m2zR069WKilKWZAZB4aN25KDecYwNb9s7NM=; b=PxNXdmpIZrY/OM
+	1ZoUsHO5/xhbMa9KDRY2Uvux3EAAkdBfSI3eX3cz3kyn4QsMG2gM/amM5p7ptR+suPHoRt8DMa5HW
+	SgEJ6hH0s2Cf5FQi4qcz3AHxUI04ZHOobS4XPRm6Jtz6Tk3n1cmcd9bINFG31iE+kkT+q4xwY/uVQ
+	n5rUqGKtPWRw/tvxFlxXIxNz2JtfT5WKdnNDvrTEo3DWWvurBXfemkj0jz0TvcLAn4CPCXZFzxKlx
+	SYwQGt6Kl+pE/7qtGcv1vLOOvee8SIOprAu1AJaSNAApwK3Ujaj2bNmwf1b29Pt5O3kvY9J37AG36
+	Xnhtiytr6X88z9pjrRog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2SyR-0000000CCU4-1sGt;
-	Thu, 02 May 2024 09:43:31 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1s2T0I-0000000CCpU-0nSR;
+	Thu, 02 May 2024 09:45:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2SyO-0000000CCS3-1Glt
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 May 2024 09:43:29 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-2ad8fb779d2so6222659a91.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 02 May 2024 02:43:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1714643007; x=1715247807; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NafZmSgbMWHkPxYUCANWhCGG1sZpE0RVMkcek4g8Q64=;
-        b=CHQzaMQL0z5vRiGjyL2AjI0GalI/6fPo81OIUX+SghJkz6e0+ImGmhhUDHAp8SJwL6
-         +NNSMEVt2MURH3xgQU37bCObF01rn/YzRYKp9zMhf09PFREnNh2tYfPqXF7T8Otr3o5y
-         9XBf9x3+qfcOSxFLJhL/KieyQZWy/E06vqPg96zt9zRih/xQr2s+hJ4zsZoqVpAA3VA5
-         cOgxoisib+dZouoynUYrmIPsolydarBsw/LG6chU6xOwCDEL24hdD1mJH+WkUAAnjo4O
-         vKOFIrSVDbCV1cQx0u5/X6gKy8yyROEOtXIbtGHnKdI1MkCvL404zVvN0qbQFD5IT6Xx
-         4Gow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714643007; x=1715247807;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NafZmSgbMWHkPxYUCANWhCGG1sZpE0RVMkcek4g8Q64=;
-        b=OIQGyFZP+BD3kcHVvtJyD2AaJHIC5ejUl5SS5wfZUFHZJFCYjDSjYW7SC6N+6V6UUv
-         kDCdP6WFayDj8ANdEtvSTzJtAzkhflpMN7fhWhQtJ4GzFZc07NK0KqK6mOR0CsR2f3/7
-         JZ/hFrMk69i+VZoXcTLnIQQhaG00YbIkG1R6Yb8DXtJ2bC/jZ29kCPOiHBuf3z+c9mGB
-         KdpFw57vqcTSx8NHvMABxp6VKAuu0grhbN5UJsBD/YOeVbRy+qd92O6S8+HjV0AOW8CA
-         BPxX/WDSmEwoCZkqh1DzxaAeoplW1s3xH/oI1qQIxg6lW6/hRyESpWqKt3WA/fF4RehV
-         XxNg==
-X-Forwarded-Encrypted: i=1; AJvYcCXByqyD27dayr2Yrxb98Wqr1tVi2FR5ZynxOTtVYsDqyPdXNx+O5UrZ3PqtBcMmclUWfmjJPL/ENSikwHFpUDhpfsrilEVznr39eXDiIcFdrUVU
-X-Gm-Message-State: AOJu0Yw267jEIXv/zxkt5AWCfn90ej7MVtsKygVbkcZtT8tfGqUEQzkc
-	Mgrec2/D7Dt7i0y7SZmJ22WJpo0htZRUlsYWDEKDXo++Z4WHJF6Q8DlFA6E4xn8=
-X-Google-Smtp-Source: AGHT+IHvUulvyLLuIR2ixjTdxZDCwMu9zOKpV98sFsG+9Kb5SZEbV1Ur8C3Ke6fQgfW3uB1Cl9G0qg==
-X-Received: by 2002:a17:90b:690:b0:29c:582d:bade with SMTP id m16-20020a17090b069000b0029c582dbademr4530071pjz.2.1714643007228;
-        Thu, 02 May 2024 02:43:27 -0700 (PDT)
-Received: from localhost.localdomain ([113.30.217.222])
-        by smtp.gmail.com with ESMTPSA id p11-20020a17090a428b00b002a42d247a93sm782603pjg.36.2024.05.02.02.43.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 May 2024 02:43:26 -0700 (PDT)
-From: Anand Moon <anand@edgeble.ai>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Anand Moon <anand@edgeble.ai>,
-	Jagan Teki <jagan@edgeble.ai>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/2] arm64: dts: rockchip: Add USB3 on Edgeble NCM6A-IO board
-Date: Thu,  2 May 2024 09:42:38 +0000
-Message-ID: <20240502094246.4695-2-anand@edgeble.ai>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240502094246.4695-1-anand@edgeble.ai>
-References: <20240502094246.4695-1-anand@edgeble.ai>
+	id 1s2T0D-0000000CCoU-2Np7;
+	Thu, 02 May 2024 09:45:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 063AE61283;
+	Thu,  2 May 2024 09:45:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC6A9C113CC;
+	Thu,  2 May 2024 09:45:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714643119;
+	bh=KMKmbjNxDjaQW/0y4bty5ahkkoXZGQdtL8KqJYUhwyE=;
+	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
+	b=oAfQwcFEFQ4YSvMqY1Xbh/lsc5LPNSzumgD/oGqD14ngGgVPaEs7MibpgzzKx9oki
+	 Zagn8sEO8gj46WZhp4lLi4tBXFTB+pnYiA73nYZaFmp60rxFnqFwc6JU+DjWzL67dG
+	 /MZ0o36PB32nJVFZyZuANe63Rb2438n1oBk0vqlifHQrplthsktdyd/SJ9MqUjTqSh
+	 S4MhcJVVnSWRNuZQtI579Q7AgypadRVel2Bn/9DPwLpuM9kooXWaDgrnlLnFOcgFi9
+	 WcmGesxwuIsoxe8I2o27QKIei0xaWcNAItuJ4mp51iYpDI3BxfZTFiHOR9LfE7YUv9
+	 8qqWoV1TVGUXg==
+Message-ID: <dfde41a3-9d7d-4253-8297-c7684372f6f0@kernel.org>
+Date: Thu, 2 May 2024 18:45:09 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/21] pinctrl: k210: Use scope based of_node_put()
+ cleanups
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>,
+ Wells Lu <wellslutw@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Emil Renner Berthing <kernel@esmil.dk>,
+ Jianlong Huang <jianlong.huang@starfivetech.com>,
+ Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Chester Lin <chester62515@gmail.com>, Matthias Brugger <mbrugger@suse.com>,
+ Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
+ Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Dan Carpenter <dan.carpenter@linaro.org>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+ openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
+References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
+ <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
+From: Damien Le Moal <dlemoal@kernel.org>
+Content-Language: en-US
+Organization: Western Digital Research
+In-Reply-To: <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_024328_383596_6BE25348 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20240502_024521_735555_E6DB0A94 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,40 +111,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the proper nodes to activate the USB 3.0 ports on the
-Edgeble NCM6A-IO board.
+On 5/1/24 21:56, Peng Fan (OSS) wrote:
+> From: Peng Fan <peng.fan@nxp.com>
+> 
+> Use scope based of_node_put() cleanup to simplify code.
+> 
+> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> ---
+>  drivers/pinctrl/pinctrl-k210.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-k210.c b/drivers/pinctrl/pinctrl-k210.c
+> index b6d1ed9ec9a3..2753e14c3e38 100644
+> --- a/drivers/pinctrl/pinctrl-k210.c
+> +++ b/drivers/pinctrl/pinctrl-k210.c
+> @@ -849,7 +849,6 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  				       unsigned int *num_maps)
+>  {
+>  	unsigned int reserved_maps;
+> -	struct device_node *np;
+>  	int ret;
+>  
+>  	reserved_maps = 0;
+> @@ -861,13 +860,11 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  	if (ret < 0)
+>  		goto err;
+>  
+> -	for_each_available_child_of_node(np_config, np) {
+> +	for_each_available_child_of_node_scoped(np_config, np) {
+>  		ret = k210_pinctrl_dt_subnode_to_map(pctldev, np, map,
+>  						     &reserved_maps, num_maps);
+> -		if (ret < 0) {
+> -			of_node_put(np);
 
-Cc: Jagan Teki <jagan@edgeble.ai>
-Signed-off-by: Anand Moon <anand@edgeble.ai>
----
- arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Personally, I am really not a fan of things that hide code like that scoped
+thing... If I want a language that hides code, I would be doing C++ :)
+That said, I am not opposed to this so I will let Linus (Walleij) decide.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-index 963e880ccc12..7b1317898358 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-io.dtsi
-@@ -68,6 +68,10 @@ &combphy1_ps {
- 	status = "okay";
- };
- 
-+&combphy2_psu {
-+	status = "okay";
-+};
-+
- &i2c6 {
- 	status = "okay";
- 
-@@ -230,3 +234,7 @@ &usb_host1_ehci {
- &usb_host1_ohci {
- 	status = "okay";
- };
-+
-+&usb_host2_xhci {
-+	status = "okay";
-+};
+Also, I think that "for_each_available_child_of_node" is a bad name... It really
+should be something like for_each_available_child_of_node_get() to make it clear
+that a of_node_put() is needed.
+
+> +		if (ret < 0)
+>  			goto err;
+> -		}
+>  	}
+>  	return 0;
+>  
+> 
+
 -- 
-2.44.0
+Damien Le Moal
+Western Digital Research
 
 
 _______________________________________________
