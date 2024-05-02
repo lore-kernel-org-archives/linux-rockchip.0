@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77226C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 13:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4A9FC4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 14:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xn0KSOikOFvQpd3HKVxloRxOlFdtiLNxj4eWDkZc3MY=; b=5GNuAjJ4UPoZi9DoQ4sKqR8sAo
-	uSBGAnY5wQmdj6KMR8ugDFiF4uUe4kzD2wVijs0ykRQUIQUyFj2Kx92Ejp5/AWDkmgRW7HR4JwuKL
-	j6Ut1F4YJPswYHn62RXG+XcwEWG6VylB/hiXc/Yek8fHU2dbsqOU8tdd/Id9kOV2pkI4pO1lI/ARp
-	w3A3c9J9KvJ2YndhPZ0FZ2o/AGuXcK8LhDAqwjJcti6XO7BSBT5jKzH9CXeHr5A858pyoiEXNeveg
-	VXl33apXWXX4pe1VNub5l185YiGf2bSJj4Aq3MiLS9lkHFq2PykkkWFYWte5oi3aREwSOb5PiormC
-	8A2eJfPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ux3nmu+Q65zQKO+0DjjfwlfPjprqo9hfrKjQvSOokOU=; b=p1iVLrooMC+3wM
+	l4f2nX6TbOgUbxKl8lLZx6CKy8iR18akePX9SEm8qaFFmcEvNXA3e39JT/HALmPVjUcAzdk3GE8Ag
+	mp4SQh5+9ejPXtxWjwDgmMYYtquxQccdFUciacblOFkB2TSProlFcpHwexz1xAYVanLd5fTfXMoZU
+	mJMxgbSUgJc1w5GQ2ii9CGKJAZMZuuuxvvhY4sv+etyAjusqQRsneyL15tSgOstiR0wLEzJCp+ktD
+	6xSl3MlWgJzf5/pgVZX6PrHf2IbwJdaQbTZ6V3E+9EA0nwe47vt5O9VvfhsRS5S7GvIN+b+mXoS+M
+	mSMUPIiE7Qh2tWId2Z1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2WnP-0000000CqOp-1juE;
-	Thu, 02 May 2024 13:48:23 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1s2X1R-0000000CrvG-26k3;
+	Thu, 02 May 2024 14:02:53 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2WnJ-0000000CqNk-2qgZ;
-	Thu, 02 May 2024 13:48:20 +0000
+	id 1s2X1N-0000000Crta-3qCq;
+	Thu, 02 May 2024 14:02:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 80ABB61A25;
+	Thu,  2 May 2024 14:02:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6C00C113CC;
+	Thu,  2 May 2024 14:02:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1714658565;
+	bh=+HwR5bHMntTZYTp+bozxMQeT0vh+3PiCz9q8t56GhL4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Q7d3AT//EiibcCizWOsAk8niX0aavjwjPDAt8Q4gRWVStGtP17/vRPJHqeEQY0DEW
+	 QWIzQ/hF3PmtGNLUHHxIjKNvhx4Q8b5LCtvd5pe/6lWAbTm358l1fnyZU73yp8leJe
+	 ue26ZPRk6tS5sDa+XtDwv4inN94rAUy7Nve/VhrT1L5zM6L/ltYWWRvTKziXGWU4A7
+	 XUE0fKXyXpHlOKXq8nVYxFD1Tf9clFlMWjgCjm5mj8tw1eGJt/hm7bbCcW9/6zLIu4
+	 2M5hPwkYO90ucDh1CIlAcRTYb8LHSuy3Ph7X1ntPvATCqJif8v9sbcPSKQaBj6Td2p
+	 JA2830q9xA1hA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Damien Le Moal <dlemoal@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: add rk3588 IOMMUs
+Date: Thu,  2 May 2024 16:02:32 +0200
+Message-ID: <20240502140231.477049-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1714657694;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LEqxNv/ZEWBiZkoBrhIM8aPkJu0KWOsw1ID/dBB65tg=;
-	b=L7qM0YehjtUFSjdsa58JGuf67lT/LgsRo+SnwLmVUAMtYfNhGU6+yCYcuael2rf3nes9hG
-	cXsFKLRIXvDezfO42WqVeDJp4Amob1ZuUvkRMJUoJLhQoW/FH687xnPKvsHCM9Ph48pkNn
-	qa+w3eUZd90UfecMfb0k0tEfgGLYZ2UI4PevXFXo/SV8bw5Pxlo1N15nCrELahXO2Om/Lq
-	icahHzdrzA39F/izxMeItIC6R0wCCjx3jzixI7IWXwfaWlpdz+uPXFK0DRr09YoxX26WLH
-	8kc8GgUzimVuXZOMzDK5I4fIBYwrNCITx5MM9jfdyen2grhWwO4x08kzTkBwsg==
-Date: Thu, 02 May 2024 15:48:09 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Folker Schwesinger <dev@folker-schwesinger.de>, Chukun Pan
- <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>, Conor Dooley
- <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring
- <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK 3C
-In-Reply-To: <832d6c37-a6c5-4468-9a23-1637b2affb90@kwiboo.se>
-References: <20240428123618.72170-1-amadeus@jmu.edu.cn>
- <20240428123618.72170-3-amadeus@jmu.edu.cn>
- <D0X7UJELGST3.2IL1AFDJ89N07@folker-schwesinger.de>
- <ded928414323ef4be51f2575d00ba7d1@manjaro.org>
- <832d6c37-a6c5-4468-9a23-1637b2affb90@kwiboo.se>
-Message-ID: <afa32c669ded2d37a4c11a54f1fc05b0@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2797; i=cassel@kernel.org; h=from:subject; bh=+HwR5bHMntTZYTp+bozxMQeT0vh+3PiCz9q8t56GhL4=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGNKM53xvv7Oy3+Rfx5NHm9ZzbdtWHKLZd4T1uuw+YR2fu wFHXH6od5SyMIhxMciKKbL4/nDZX9ztPuW44h0bmDmsTCBDGLg4BWAiQusYfrN/ODBrFW/J7yuN DUslG+PXP7bZvf3oofoFOi7BokdXWu5g+J8ezhW+ZD+vsiN3Coftdnv1i9WxfgVxQVtstp1NFU/ awQgA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_064818_207472_E9248E72 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20240502_070250_115638_87AD5FD2 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,56 +73,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jonas,
+The mmu600_pcie is connected with the five PCIe controllers.
+The mmu600_php is connected with the USB3 controller, the GMAC
+controllers, and the SATA controllers.
 
-On 2024-05-02 14:17, Jonas Karlman wrote:
-> On 2024-05-02 03:28, Dragan Simic wrote:
->> On 2024-04-30 07:42, Folker Schwesinger wrote:
->>> On Sun Apr 28, 2024 at 2:36 PM CEST, Chukun Pan wrote:
->>>> [...]
->>>> +&sdhci {
->>>> +	bus-width = <8>;
->>>> +	max-frequency = <200000000>;
->>>> +	mmc-hs200-1_8v;
->>> 
->>> Out of curiosity, does this board also support HS400? From a very 
->>> brief
->>> look this board seems quite similar to Rock 4 series boards, that do
->>> support HS400.
->> 
->> In a word, no, unfortunately.  In more detail, the Rockchip RK3566
->> and RK3568 SoCs support the eMMC modes up to and including HS200, but
->> not the HS400 mode.
-> 
-> The datasheet for RK3568 only mention HS200 mode, however, HS400 mode 
-> is
-> working in U-Boot after adjusting tap number for transmit clock [1].
-> Linux may need similar adjustment to make HS400 mode work on RK3568.
-> 
-> RK3566 that this board use only support HS200, as specified in 
-> datasheet.
+See 8.2 Block Diagram, in rk3588 TRM (Technical Reference Manual).
 
-Oh, that's very interesting, thanks for pointing it out!
+The IOMMUs are disabled by default, as further patches are needed to
+program the SID/SSIDs in to the IOMMUs.
 
-What makes me a bit worried about enabling the undocumented HS400 mode
-on the RK3568 is that neither the RK3568 Hardware Design Guide (HDG),
-version 1.2, [2] mentions HS400 support.  I mean, the RK3568 datasheet
-may be wrong about not mentioning HS400, but what are the chances for
-the RK3568 HDG to also be wrong there?
+iommu: Default domain type: Translated
+iommu: DMA domain TLB invalidation policy: strict mode
+arm-smmu-v3 fc900000.iommu: ias 48-bit, oas 48-bit (features 0x001c1eaf)
+arm-smmu-v3 fc900000.iommu: allocated 65536 entries for cmdq
+arm-smmu-v3 fc900000.iommu: allocated 32768 entries for evtq
+arm-smmu-v3 fc900000.iommu: msi_domain absent - falling back to wired irqs
 
-In other words, maybe there are some hard-to-trigger hardware issues
-in the RK3568 that made the HS400 mode, although actually present in
-hardware, officially unsupported for the RK3568?  Maybe there's even
-some non-public errata from Rockchip, who knows.
+Additionally, the IOMMU correctly triggers an IOMMU fault when
+a PCIe device performs a write (since the device hasn't been
+assigned a SID/SSID):
+arm-smmu-v3 fc900000.iommu: event 0x02 received:
+arm-smmu-v3 fc900000.iommu:      0x0000010000000002
+arm-smmu-v3 fc900000.iommu:      0x0000000000000000
+arm-smmu-v3 fc900000.iommu:      0x0000000000000000
+arm-smmu-v3 fc900000.iommu:      0x0000000000000000
 
-[1] 
-https://source.denx.de/u-boot/u-boot/-/commit/5c053f3adc69eaf83645b5d44c6adbb2d49a3fa7
-[2] https://dl.xkwy2018.com/downloads/RK3568/RK356X/Hardware/
+While this doesn't provide much value as is, having the devices as
+disabled in the device tree will allow developers to see that the rk3588
+actually has IOMMUs on the SoC.
+
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi | 24 +++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index 87b83c87bd55..aaea48a19e26 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -501,6 +501,30 @@ usb_host2_xhci: usb@fcd00000 {
+ 		status = "disabled";
+ 	};
+ 
++	mmu600_pcie: iommu@fc900000 {
++		compatible = "arm,smmu-v3";
++		reg = <0x0 0xfc900000 0x0 0x200000>;
++		interrupts = <GIC_SPI 369 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 371 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 374 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 367 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
++		#iommu-cells = <1>;
++		status = "disabled";
++	};
++
++	mmu600_php: iommu@fcb00000 {
++		compatible = "arm,smmu-v3";
++		reg = <0x0 0xfcb00000 0x0 0x200000>;
++		interrupts = <GIC_SPI 381 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 383 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 386 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 379 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
++		#iommu-cells = <1>;
++		status = "disabled";
++	};
++
+ 	pmu1grf: syscon@fd58a000 {
+ 		compatible = "rockchip,rk3588-pmugrf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xfd58a000 0x0 0x10000>;
+-- 
+2.44.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
