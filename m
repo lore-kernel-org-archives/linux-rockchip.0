@@ -4,46 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38196C4345F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 08:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D71F1C4345F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 09:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:To:From:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/WLPhSL6V0bRTll16gZGIknyuWqM5OW04r/YLu/tvNI=; b=gpKO6T0mcDqH+a
-	vb9OedTPXdhInyH+wDBuYdlI8JZs0X30zYHnQ6dMtHAHtwSHiT+8lg/dRWbnhE5PiLhVbD3IL509V
-	Cfc6u8xDCGcemKFP6wFa+IzTq4xQ7I1WJUG0/uz1AQACr8Z4NxOA2jJ4jrRJ1hRr9UrYBLxoFkQyZ
-	mjC+NMhLKq1Mv1qDFpT3dxayU8l84DitKRd3ZHqcQ0ttqnXo13Op6uhRWdmdCZYPJwlNyNNMEX2ja
-	wDtaQYQ83S/xXGgP5VGxC7aPA3gGZfXFYWt0U7WFFpO1Aeh/vyjzLi18+ZQrYikNWB6sYHZT3AIEc
-	wlYwlY89EEXmuAD2uvhg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L5fRI6vxu5D1/0pXU+06uZ9cy2JMngaNzY76ClEwubQ=; b=mML1lrl0y7Bstu
+	m/dxNGhCf+YRJbVI0kXjmAZkN4OGR2t9pz0XeoMvmIsRSKC6Hfj4mx6ZTDFeWr1zMaKfjw0bL3liz
+	tWklC1eLEqXE1ozES8R+fU8fuAYRVNZnjQCOH1dx8gRlTnHEvCKjl/OAZ+wrykrIxwvCC9YEGYB0R
+	Fmd3PhbO8Ksez1jHm8tmHyuB5uoyiGdlcsRtn1ugYxwSk/R/geO973dXkwo4uYI5dRlhJtRmnxB3X
+	ZudF62FuytUpCVTxq6bS6uAGaVzraRK1GRbEsgyedxUsdKq7R4KYSYrOAI0a8XBK+jnpRJc7suylf
+	U5EX/ZRFcf4Q4KH5ccgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Rk6-0000000ByXr-0FnE;
-	Thu, 02 May 2024 08:24:38 +0000
-Received: from [137.220.233.92] (helo=mail0.gey970.com)
+	id 1s2SyM-0000000CCRq-1Hed;
+	Thu, 02 May 2024 09:43:26 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2Rk2-0000000ByXI-35hR
+	id 1s2SyJ-0000000CCR1-07lc
 	for linux-rockchip@lists.infradead.org;
-	Thu, 02 May 2024 08:24:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=gey970.com;
- h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=no-reply@gey970.com;
- bh=SQPtC+DXG2r8fkjKo6tmowka8DvSSkXYNyqsnMIBNxY=;
- b=kdcYe6CPCgjkUS0OdKk57mPCtU585sWObv8iiBrxITSxv/FYqCp+krIiXVB+3Fmu46f/QQTiv0gd
-   TMml+Kb0uqX80JHakRCCyfjJGNSl5TQtjvKwWKNKGql6VvefMgVduQIgzWdi6SSkNHyqW+68+Jmq
-   GSSUjxSH7wbhzeJFOds=
-Message-ID: <1c2fcc7271ab4831393b7d192def3768@gey970.com>
-From: =?utf-8?B?6Ieq5YuV44Oh44O844Or6YCB5L+h?= <no-reply@gey970.com>
-To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: =?utf-8?B?44CQ5LiJ5LqV5L2P5Y+LIOOCq+ODvOODieOAkSDjgYrmlK8=?=
-	=?utf-8?B?5omV44GE5LqI5a6a6YeR6aGN44Gu44GU5qGI5YaF?=
-Date: Thu, 02 May 2024 16:14:20 +0800
+	Thu, 02 May 2024 09:43:24 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-60585faa69fso1187770a12.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 02 May 2024 02:43:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20230601.gappssmtp.com; s=20230601; t=1714643001; x=1715247801; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QiEinpzKbejXcwmY8FTfMGWznHTz6FpYxSICSjLHhRQ=;
+        b=S+7U/6VuZhVAOZQaVNOYUng2gM9Z4zK3aPrK9++ld5XAyJvVngwLW7OMaOeKF4epBr
+         EsQcX2pyXw8f4jv5wc2EOH5Y56jiFbT+oWvH0E+1UIEKCvmkacVwsDYT1bLkpXOh+Ik/
+         Sx5QcjyNPaelx0MHZeFCT5cTc0UQsHmyak3S2Gl5BHuJ3uIeeaQPRMNWBNnkn2S+FWON
+         htNjFXOMr2UHAONwsIQX57KQeBYoPaocuLrtWhZAHFgLooEuvJZ0zwxbaz44TdEDQoso
+         WqiNTN9n54OKsgc0PKeo3/vv0+mN3hBXzP9BsuFcb4Sl+Dl9Q5MmeRAzXYDOTiVC94xW
+         +sow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714643001; x=1715247801;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QiEinpzKbejXcwmY8FTfMGWznHTz6FpYxSICSjLHhRQ=;
+        b=eUGauCXzuDgnB3MVbiQmqGSdW3M+rDHOBszp7NSD2fBfs6/4/Zy5zFVsLVzbcUKLgz
+         j4GZaQzZ4F1U10w6E9JNk5GDvruK1jg1UrJl7tyzghH8kNcwUE5MBeyN+RV592539s73
+         s7cnjR+VpGEn6WUVVjrzUQUnauFvVqO2rpCa4yE1G+6GdeAyvVGneQ8Js+FDX/bzuj7n
+         CH0P8IZBwYCa+LYGVehU2qO63tQv6aG5599EMj3boLw3FYGiV5E12TtzZEDiovF9YDo8
+         6cFLaJWWw3VBP9LDMno0I2preTxzrhKu4WAtcSI4laFAIDiXkyz5+ga5vOpYap5SkYUh
+         eZnw==
+X-Forwarded-Encrypted: i=1; AJvYcCXlruyHGpvByaSAMC8pyS+cghuvmH7IwsJqAqFO5vE45kvLl/SXcJRuLSmclgEHQoZxM9pcOfU1jB3zu343k0WmDDR44xZw+X9fvRwShQsYkRRK
+X-Gm-Message-State: AOJu0YwMDseerXm/ouNm4Z4mbqDBC2FFUGOX2yrZPt8rZr2URkHGpvZP
+	7wwp7Qs2FiJrEDlZyLxIOVZQogAgXV/dGHuBpBv2qceySPREevQQpvkB3GBMAQ4=
+X-Google-Smtp-Source: AGHT+IE4mfyNAbGwKZ9nME3G59fwEPSFuQ5t8lhGdVZqMqD7QdZb6qTs8RtEfmX0fhNqSYkO+HDsBw==
+X-Received: by 2002:a17:90a:c24b:b0:2ab:8e59:9da9 with SMTP id d11-20020a17090ac24b00b002ab8e599da9mr3471747pjx.6.1714643001041;
+        Thu, 02 May 2024 02:43:21 -0700 (PDT)
+Received: from localhost.localdomain ([113.30.217.222])
+        by smtp.gmail.com with ESMTPSA id p11-20020a17090a428b00b002a42d247a93sm782603pjg.36.2024.05.02.02.43.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 May 2024 02:43:20 -0700 (PDT)
+From: Anand Moon <anand@edgeble.ai>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Anand Moon <anand@edgeble.ai>,
+	Jagan Teki <jagan@edgeble.ai>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 1/2] arm64: dts: rockchip: Support poweroff on Edgeble Neural Compute Module
+Date: Thu,  2 May 2024 09:42:37 +0000
+Message-ID: <20240502094246.4695-1-anand@edgeble.ai>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_012435_273436_E62C2208 
-X-CRM114-Status: UNSURE (  -0.00  )
+X-CRM114-CacheID: sfid-20240502_024323_311820_CED4AAA8 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -56,35 +93,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5LiJIOS6lSDkvY8g5Y+LIOOCqyDjg7wg44OJ44KS44GU5Yip55So44Gu44GK5a6i5qeY44G4DQoN
-CuOBk+OBruOBn+OBs+OBr+S4iSDkupUg5L2PIOWPiyDjgqsg44O8IOODieOCkuOBlOWIqeeUqOOB
-hOOBn+OBoOOBjeOAgeiqoOOBq+OBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgg0K5LiL
-6KiY44Gu44GU5Yip55So54Wn5Lya44GM44GU44GW44GE44G+44GX44Gf44Gu44Gn44CB44GK55+l
-44KJ44Gb44GE44Gf44GX44G+44GZ44CCDQoNCuKAu+acrOODoeODvOODq+OBr+OAgeOBlOWIqeeU
-qOODu+iri+axguOCkueiuuWumuOBmeOCi+OCguOBruOBp+OBr+OBguOCiuOBvuOBm+OCk+OAgg0K
-44GU5Yip55So5pel5pmC77yaMjAyNCAvIDA1IC8gMDEgICAgICAyMyA6IDE4DQrjgZTliKnnlKjl
-oLTmiYDvvJrjgrvjg5bjg7Mt44Kk44Os44OW44OzIOWNg+S7o+eUsOS4gOODhOapiyAxIOS4geeb
-ruW6lw0K44GU5Yip55So6YeR6aGN77yaOSwgNTgw5YaGDQoNCuOCq+ODvOODieOCkuS9v+eUqOOB
-l+OBn+immuOBiOOBjOOBquOBhOWgtOWQiOOBr+OAgeS7peS4iyDjga4g44OqIOODsyDjgq8g44KS
-44Kv44OqIOODgyDjgq8g44GXIOOBpuOCqyDjg7wg44OJ5L2/55So44Gu6Kmz57Sw44KS56K66KqN
-44GX44Gm44GP44Gg44GV44GE44CCDQpodHRwczovL3ByaW50ZXJvcmRlci5jb20NCg0K77yc44GU
-5rOo5oSP54K577yeDQrigLvvvJHvvI7mnKzjgrXjg7zjg5Pjgrnjga/jgIHjgYrlrqLmp5jjga7k
-uIkg5LqVIOS9jyDlj4sg44KrIOODvCDjg4njga7jgZTliKnnlKjnhafkvJrjgYzooYzjgo/jgozj
-gZ/loLTlkIjjgIENCuS4iSDkupUg5L2PIOWPiyBORVTjgavjgZTnmbvpjLLjgYTjgZ/jgaDjgYTj
-gabjgYTjgovjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgbjjgYrnn6XjgonjgZvjgZnjgovjgrXjg7zj
-g5PjgrnjgafjgZnjgIINCuKAu++8ku+8juOBlOWlkee0hOOCreODo+ODs+OCu+ODq+OBqOOBquOB
-o+OBn+WgtOWQiOOBruOBiuWPlua2iOOBl+aDheWgseOBr+mFjeS/oeOBleOCjOOBvuOBm+OCk+OA
-gg0K4oC777yT77yO5LiJIOS6lSDkvY8g5Y+LIFZpc2Hjg5fjg6rjg5rjgqTjg4njgqvjg7zjg4nl
-j4rjgbPkuInkupXkvY/lj4vjg5Djg7zjg4Hjg6Pjg6vjgqsg44O8IOODieOBruOBlOWIqeeUqOWI
-huOCguWQq+OBv+OBvuOBmeOAgg0K4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU
-4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCUDQrilqDnmbog6KGMIOiAheKWoA0K5LiJIOS6
-lSDkvY8g5Y+LIOOCqyDjg7wg44OJ5qCq5byP5Lya56S+DQrjgJIxMzUtMDA2MQ0K5p2x5Lqs6YO9
-5rGf5p2x5Yy66LGK5rSyMuS4geebrjLnlaozMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Edgeble Neural Compute Module add system-power-controller
+property to RK806 pmic so that these chips can power off the device.
+
+Cc: Jagan Teki <jagan@edgeble.ai>
+Signed-off-by: Anand Moon <anand@edgeble.ai>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
+index c0d4a15323e2..2c23e89dd2d8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-edgeble-neu6a-common.dtsi
+@@ -162,6 +162,8 @@ pmic@0 {
+ 		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+ 			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
+ 
++		system-power-controller;
++
+ 		vcc1-supply = <&vcc5v0_sys>;
+ 		vcc2-supply = <&vcc5v0_sys>;
+ 		vcc3-supply = <&vcc5v0_sys>;
+-- 
+2.44.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
