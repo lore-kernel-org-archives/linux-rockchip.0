@@ -4,97 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6F1C04FFE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 09:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67AD4C04FFE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 May 2024 11:29:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SJaMR12m2zR069WKilKWZAZB4aN25KDecYwNb9s7NM=; b=PxNXdmpIZrY/OM
-	1ZoUsHO5/xhbMa9KDRY2Uvux3EAAkdBfSI3eX3cz3kyn4QsMG2gM/amM5p7ptR+suPHoRt8DMa5HW
-	SgEJ6hH0s2Cf5FQi4qcz3AHxUI04ZHOobS4XPRm6Jtz6Tk3n1cmcd9bINFG31iE+kkT+q4xwY/uVQ
-	n5rUqGKtPWRw/tvxFlxXIxNz2JtfT5WKdnNDvrTEo3DWWvurBXfemkj0jz0TvcLAn4CPCXZFzxKlx
-	SYwQGt6Kl+pE/7qtGcv1vLOOvee8SIOprAu1AJaSNAApwK3Ujaj2bNmwf1b29Pt5O3kvY9J37AG36
-	Xnhtiytr6X88z9pjrRog==;
+	List-Owner; bh=CogMij7eTFWU73t7lPLQRoyTk8rxCPlFQ0W8fO5HO4c=; b=CMiUG5Rtq0OQ5r
+	S0bO+V1K6flgovtBLS3xRf9+YWbe6WUTMqFbc4DKqs9sVaA5RR13yzLr8RVqJTZOMMcZYfa1FIOtB
+	zThToJg8unfc0I2xWqajHoiNV41oMh6UuvC0/bzpCy3dU0yB7pG8cXT2m6ZwKC4L1O22ZINaolsyf
+	kpd5hDoJAwyy14JsCoUbR6gj9EGr42lDKUnY0EyYbUsFRLJdCKmsO1s4Kw8XPO+rxmzXvn4F31gc5
+	k85CpO1EyzjXgqQ2WzthxIK8MqB1gWwGkw8PNtLGcb0hQQKGrnfRXrG0i2m1IqwSTGImRxMaYhIaA
+	JssyK1B85xhNrOfs+8bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2T0I-0000000CCpU-0nSR;
-	Thu, 02 May 2024 09:45:26 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1s2UdG-0000000CWi5-2Vq8;
+	Thu, 02 May 2024 11:29:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2T0D-0000000CCoU-2Np7;
-	Thu, 02 May 2024 09:45:23 +0000
+	id 1s2UdD-0000000CWh5-2QCB;
+	Thu, 02 May 2024 11:29:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 063AE61283;
-	Thu,  2 May 2024 09:45:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC6A9C113CC;
-	Thu,  2 May 2024 09:45:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6931461A14;
+	Thu,  2 May 2024 11:29:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8390CC113CC;
+	Thu,  2 May 2024 11:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714643119;
-	bh=KMKmbjNxDjaQW/0y4bty5ahkkoXZGQdtL8KqJYUhwyE=;
-	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
-	b=oAfQwcFEFQ4YSvMqY1Xbh/lsc5LPNSzumgD/oGqD14ngGgVPaEs7MibpgzzKx9oki
-	 Zagn8sEO8gj46WZhp4lLi4tBXFTB+pnYiA73nYZaFmp60rxFnqFwc6JU+DjWzL67dG
-	 /MZ0o36PB32nJVFZyZuANe63Rb2438n1oBk0vqlifHQrplthsktdyd/SJ9MqUjTqSh
-	 S4MhcJVVnSWRNuZQtI579Q7AgypadRVel2Bn/9DPwLpuM9kooXWaDgrnlLnFOcgFi9
-	 WcmGesxwuIsoxe8I2o27QKIei0xaWcNAItuJ4mp51iYpDI3BxfZTFiHOR9LfE7YUv9
-	 8qqWoV1TVGUXg==
-Message-ID: <dfde41a3-9d7d-4253-8297-c7684372f6f0@kernel.org>
-Date: Thu, 2 May 2024 18:45:09 +0900
+	s=k20201202; t=1714649382;
+	bh=sFaNlOmGEeVD3nYHw0uf/YVM65vnE+n2alDOQR8Xux8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ESlSRyPfuggpHlVgObOH64jFR9a8f9GIZCEhVT8gPmkobRlLYwAUiNRPfLbKhZwzW
+	 v7ynMJzCeC3YDHZQGy1Q/mS6f3TG5Qn8hnFAIHQSm32cuRdykxx6YOM7yco+HfAKf4
+	 SHaKiTPRAfmytRm0NPO+SKEUr04uz4iJG4jgPSVoxiiZTOrGtBPL9YTrVMvZjbNoNA
+	 hpfZSUbfu5x4dgJf3pv98nxFDT5uDOnpz3xK1za+KYGS+AiHdyoHiFFSauA8N8KIVL
+	 WWTfVYzc0t6o6VrvByrKuloKxF38CiRBT0qqJVhTi3bXJyhPvG5z1dB5AGwXshKh5j
+	 kw6XFUPZ5oEXg==
+Date: Thu, 2 May 2024 13:29:38 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-i2c@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 00/15] i2c: use 'time_left' with wait_for_*
+Message-ID: <6zrly2hk2vqljiuo3niehym74pqdgfv77fzjb63shgg4iiwhnt@zcnrqrke663b>
+References: <20240427203611.3750-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/21] pinctrl: k210: Use scope based of_node_put()
- cleanups
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Dvorkin Dmitry <dvorkin@tibbo.com>,
- Wells Lu <wellslutw@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Emil Renner Berthing <kernel@esmil.dk>,
- Jianlong Huang <jianlong.huang@starfivetech.com>,
- Hal Feng <hal.feng@starfivetech.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Chester Lin <chester62515@gmail.com>, Matthias Brugger <mbrugger@suse.com>,
- Ghennadi Procopciuc <ghennadi.procopciuc@oss.nxp.com>,
- Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, Peng Fan <peng.fan@nxp.com>
-References: <20240501-pinctrl-cleanup-v1-0-797ceca46e5c@nxp.com>
- <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
-From: Damien Le Moal <dlemoal@kernel.org>
-Content-Language: en-US
-Organization: Western Digital Research
-In-Reply-To: <20240501-pinctrl-cleanup-v1-12-797ceca46e5c@nxp.com>
+Content-Disposition: inline
+In-Reply-To: <20240427203611.3750-1-wsa+renesas@sang-engineering.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240502_024521_735555_E6DB0A94 
-X-CRM114-Status: GOOD (  18.60  )
+X-CRM114-CacheID: sfid-20240502_042943_738855_2D8B190A 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,59 +73,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/1/24 21:56, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
+Hi Wolfram,
+
+On Sat, Apr 27, 2024 at 10:35:52PM +0200, Wolfram Sang wrote:
+> There is a confusing pattern in the kernel to use a variable named 'timeout' to
+
+there was a little checkpatch warning here for the line being
+over 75 characters, but I went ahead anyway and pushed the whole
+series to i2c/i2c-host.
+
+Thanks,
+Andi
+
+> store the result of wait_for_*() causing patterns like:
 > 
-> Use scope based of_node_put() cleanup to simplify code.
+>         timeout = wait_for_completion_timeout(...)
+>         if (!timeout) return -ETIMEDOUT;
 > 
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
-> ---
->  drivers/pinctrl/pinctrl-k210.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+> with all kinds of permutations. Use 'time_left' as a variable to make the code
+> self explaining.
 > 
-> diff --git a/drivers/pinctrl/pinctrl-k210.c b/drivers/pinctrl/pinctrl-k210.c
-> index b6d1ed9ec9a3..2753e14c3e38 100644
-> --- a/drivers/pinctrl/pinctrl-k210.c
-> +++ b/drivers/pinctrl/pinctrl-k210.c
-> @@ -849,7 +849,6 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
->  				       unsigned int *num_maps)
->  {
->  	unsigned int reserved_maps;
-> -	struct device_node *np;
->  	int ret;
->  
->  	reserved_maps = 0;
-> @@ -861,13 +860,11 @@ static int k210_pinctrl_dt_node_to_map(struct pinctrl_dev *pctldev,
->  	if (ret < 0)
->  		goto err;
->  
-> -	for_each_available_child_of_node(np_config, np) {
-> +	for_each_available_child_of_node_scoped(np_config, np) {
->  		ret = k210_pinctrl_dt_subnode_to_map(pctldev, np, map,
->  						     &reserved_maps, num_maps);
-> -		if (ret < 0) {
-> -			of_node_put(np);
-
-Personally, I am really not a fan of things that hide code like that scoped
-thing... If I want a language that hides code, I would be doing C++ :)
-That said, I am not opposed to this so I will let Linus (Walleij) decide.
-
-Also, I think that "for_each_available_child_of_node" is a bad name... It really
-should be something like for_each_available_child_of_node_get() to make it clear
-that a of_node_put() is needed.
-
-> +		if (ret < 0)
->  			goto err;
-> -		}
->  	}
->  	return 0;
->  
+> This is the I2C part of a tree-wide series. The rest of the patches can
+> be found here (slightly WIP):
 > 
-
--- 
-Damien Le Moal
-Western Digital Research
-
+> git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux.git i2c/time_left
+> 
+> Because these patches are generated, they need manual audit. So, I will
+> send them step by step. This is part 1 and also a call for opinions if
+> this is a desirable change. But at least in the I2C realm, I really want
+> to have it proper.
+> 
+> Build bot is happy with these patches and I also compile tested them
+> (except two). No functional changes intended.
+> 
+> Wolfram Sang (15):
+>   i2c: amd-mp2-plat: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: digicolor: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: exynos5: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: hix5hd2: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: imx-lpi2c: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: omap: use 'time_left' variable with wait_for_completion_timeout()
+>   i2c: st: use 'time_left' variable with wait_for_completion_timeout()
+>   i2c: stm32f4: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: stm32f7: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: synquacer: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: jz4780: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: qcom-geni: use 'time_left' variable with
+>     wait_for_completion_timeout()
+>   i2c: rk3x: use 'time_left' variable with wait_event_timeout()
+>   i2c: s3c2410: use 'time_left' variable with wait_event_timeout()
+>   i2c: pxa: use 'time_left' variable with wait_event_timeout()
+> 
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
