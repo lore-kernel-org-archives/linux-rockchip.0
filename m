@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82E7C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 07:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D875BC4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 08:02:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3zsFdKq3ldprWKE5xeYqAShdt35JGOhZP1Y1rmfhGAw=; b=KqHqA4oil2Fj0++MAnRYCZYI2D
-	FO/tu4DO9UgyCHVy+fgy7Eey6OCoUUtPUKEsQV4+ZZLlGjNpJERXZydPMc+XGs9lwlIK6HVh3TYp/
-	Un99y+CNLiqPwPImjak5KssDjUnFId4UHjXhCh8qakdTd0Z7kZViyc795eAclqHAz914w0uZdoZ+h
-	atyL4zDevvFHgMw7IIrneXBQn+hEGhJITrooK8bTvTPyYxqQOmH0dEGze5SbgqGRY5w/aCYTxdsZo
-	QQ7zvEi/FYRZPO+7XNa6ATm4KGdD2Jtf/LAw04lUoydY3LUp7EcgKsqPppU1hfkD3NR0rtwbRlnyp
-	65tZZEGQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2ui9Vo06CQ7biaAqs1qevXOlyiuLi5sYlnik+DObNPQ=; b=B5ZoBLBEyOH+Rx
+	ddqSI8meKPV0G5hiO0Iv741TSmNKWTpMZpdSmeCj3GRkZUmzauHDsRO7ln9IyA8RwZmppsbX9IpnS
+	+T2tMl8i8V3x9B234OJdbOx9HePplcjUQ1bVnRWALwHQG83lN+urFoiII5KQjrlOe+8MbTdPokMpn
+	8JKkJ6UTMz67n++eIEBkJiSR5KxTxY09bNjAlQg8HDd22wqS1GdeXll8uz2Aoc8njs2rLw2vsy4Jj
+	Sc4kuk/jVzWzoOP93vpSwE8kY3xQRQWbHXNEWLuOu/lPvnnnH3UNhwTaQ779jDtR2v+tICLRbCSPG
+	oer5oc2dDmkvFZcKNIlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2nOj-0000000FTcE-1Aqb;
-	Fri, 03 May 2024 07:32:01 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1s2ns1-0000000FZB1-0s4X;
+	Fri, 03 May 2024 08:02:17 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2nOf-0000000FTZv-2upy;
-	Fri, 03 May 2024 07:31:58 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-51f300b318cso1785572e87.3;
-        Fri, 03 May 2024 00:31:50 -0700 (PDT)
+	id 1s2nrw-0000000FZ96-1Re3;
+	Fri, 03 May 2024 08:02:15 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-a598e483ad1so92760266b.1;
+        Fri, 03 May 2024 01:02:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714721509; x=1715326309; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20230601; t=1714723323; x=1715328123; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=8nIAbUzFZ0W2jGneqHDrLTTJJlX3iJTnQjqRXAlljl4=;
-        b=kHDE8K0Z07UHJ3x+ljLrqpXkIPP58bVoFh0hDkA6710JDKRBoQ3Hk/tKl341CbCqhB
-         f4SqzLV8N8HeiDZXPpS/6n04BOhbITchRLl8Zr9NzISZMVjbjMmiZ36nnCr88/NuZF4M
-         XfIgiQraIGKQwjmSAAiJLq5JbLr4ypsnpW5vxt14MTBQwrYGJK6z3yV1VFLwFQcKQjm7
-         hz6BCxUfulyw2ClJwwDvRYtL/Jg4sZEBrFE+5vgYFFiGdEVquKuYWlmPHNqgFudwdFZj
-         ai7DAtMjjaDYjmv8G3Zgz9oTGAHLvRSCFyJkQgH03NdItRu+TdmFwmZB37X8zJ7lu7ip
-         ro5A==
+        bh=O7VR0R6Dd9Cls/yOVc31au9glBIGmfh65HkhEJCpmCM=;
+        b=Nda8CfZj8OhxqEZIQ8LImSU7/Mz4r79F+JRMEejgeNKsvRGTT4w3LI2R85bcYqz5cQ
+         6LEnLWShsM1rj9k2e43+7XimFcMiOlUz2/1ebbYmQ6Zb716FikkrpuBUnTwYbSLgEdUG
+         dVXm3Mc05zdWt3d6A4vRmAEk8KMKGy50ehWptrcqUEMWvVsLLV72LqWwG5F8W1V3ycvi
+         kHKAl8EXavs2fxjXtiM+9thoChOiZL5NwpqJpa4csoc0d6G7iKiaiSS8tNpMQ857mwYG
+         gN6uMeKMtfQjmDbkL5QDXaWbsK0a4Qy/5be+AfGBlo2jt87un937plgGk3x+lIFTp2j0
+         9D0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714721509; x=1715326309;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1714723323; x=1715328123;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8nIAbUzFZ0W2jGneqHDrLTTJJlX3iJTnQjqRXAlljl4=;
-        b=w5UaiohU/eWYYqQTGW5bRqrQlNSpk7xzmD5m1f8LMTriBVCCepAoiA8B148bcXIfEM
-         c/ZPTRQV9Q8v65H3f3aQOhepbvCdynLQunq/uzBLswfl5Lyxl6lsRmUkpzLmEb+x/rmv
-         8aelH1uRyh8+hSX86f6q+94S2ueFn7I9Qp5JQWC3nO5iw3YYBwscdzBqWZIxHuaEdvD8
-         JVJv46qt3KmR2mnB09ccTpbOT5e0exXJ92VeNaw0U9iQ43TVbEJDmBx2+a4UDZizAZIg
-         arS6pgeXinygUFdSABebGLulAWPzzdydMRBRNaGGmcTsedzryeH9u9u5SY78Tf//OMNQ
-         dC2w==
-X-Forwarded-Encrypted: i=1; AJvYcCXaGbUZ2kzr+VdsVwEvsj0F+Gz2d7+Hzdd1y5iyTQ4g9205X1ydArzTR0id4BykgNbud5uE2OfkeZu3ZaPVlzTTH3/xmH9fZw42V0xDHv/lSseqrN72qL3vqicbUBlUwKELQjO/l+FqCGCqJOd9b2R/ZfP307+KbkGExJo4jqhIveJ2IAIl+foauACjENbEXUtvE/T7T38h0g4=
-X-Gm-Message-State: AOJu0YwAW7DXypnxu3XhfNcV+w2DMf3gSybgX+HGWgwrK1Kz84NG2C0S
-	1+xAeAwwzbYzS8GOcf8WJ1F5DMpZzP11yPW7Xlf8nuPiSXN1Ygr5
-X-Google-Smtp-Source: AGHT+IFsUViOgQWBfed0iW3it0Tz8tCjvrW37J5LJ5nqlT1r2qRnsl694GKdCGtShTdCqT/cBC7gsQ==
-X-Received: by 2002:a05:6512:3ba:b0:51c:d528:c333 with SMTP id v26-20020a05651203ba00b0051cd528c333mr570067lfp.20.1714721508677;
-        Fri, 03 May 2024 00:31:48 -0700 (PDT)
-Received: from [172.16.183.82] ([213.255.186.46])
-        by smtp.gmail.com with ESMTPSA id x27-20020ac259db000000b0051d71292d5bsm450650lfn.74.2024.05.03.00.31.46
+        bh=O7VR0R6Dd9Cls/yOVc31au9glBIGmfh65HkhEJCpmCM=;
+        b=kd38grJZodB9h8REV9iS0PMOhplyF/KQWqR8Si22dv5gsoMXXLnhLOE9W6FYOp3STj
+         FVTBFhQSoXa/N92y62woIKrsRauxe8lij1bPsd6VLjjLvk+9QTl8HoU5tO4WlowzDKjk
+         OjUKS2gCDO7wn86IQJlf6NKFd+x67iqsVW7QBZisxE3HhaDLj3BUcoNCzi1qjtQny9n6
+         /BQ3kFaeTXIrbH3kDnxgHkEFf5tMqgbOBhhZVNibh4MQ4SEgve0n84qjnBi+g9ZDrTkq
+         iU8xxsrzWYBJu6QqApF4PgHeQNCQCEDgp12O5/hiPJfYnqzVuIDMQfaE54lk9LfWHxJp
+         G/cQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU2GGSO30O9A4a87T7yhAeVJ2c3uSWif5iWPbvwb7Z+R2vm1HvCqbreQOfo/28EXlpq5fncIpW+3Ib5GnZN7YJNtJn59cWX4+9IxAxLfqOxfup301G39A2aWxVHmNPdWPDHb9QwnVxlJyJkpuKomVqGO41/j3qTJCs=
+X-Gm-Message-State: AOJu0YxGnWwyt31McPkFSsY2cB+Mq1L00T7ce40za+oP2gWcTMGgwoxz
+	tZLHnX6t2CCF1xTdEQlG6ZRE2MXKjpPm7EVtHkLbmEnsAW2TwgWLu7Kw
+X-Google-Smtp-Source: AGHT+IFT/vjg3gQPLCM/xYelNdutZZJSVCcpo9b91OQ0v+WPciUzGBo+JPLz0QP130mkuAxdvHOSdg==
+X-Received: by 2002:a17:906:29d4:b0:a58:c559:3d06 with SMTP id y20-20020a17090629d400b00a58c5593d06mr1105060eje.55.1714723323134;
+        Fri, 03 May 2024 01:02:03 -0700 (PDT)
+Received: from ?IPV6:2a02:810b:f40:4600:3a49:8f56:d30a:65e? ([2a02:810b:f40:4600:3a49:8f56:d30a:65e])
+        by smtp.gmail.com with ESMTPSA id kt1-20020a170906aac100b00a52295e014bsm1440683ejb.92.2024.05.03.01.02.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 May 2024 00:31:47 -0700 (PDT)
-Message-ID: <017b2462-f9c9-42c0-bfd9-1a0e76d2ea3d@gmail.com>
-Date: Fri, 3 May 2024 10:31:46 +0300
+        Fri, 03 May 2024 01:02:02 -0700 (PDT)
+Message-ID: <69945c53-1fa5-4fde-b488-6056c5471095@gmail.com>
+Date: Fri, 3 May 2024 10:01:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: mfd: Use full path to other schemas
-Content-Language: en-US, en-GB
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-References: <20240503072116.12430-1-krzysztof.kozlowski@linaro.org>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-In-Reply-To: <20240503072116.12430-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 0/5] Add RK816 PMIC support
+To: Lee Jones <lee@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20240416161237.2500037-1-knaerzche@gmail.com>
+Content-Language: en-US
+From: Alex Bee <knaerzche@gmail.com>
+In-Reply-To: <20240416161237.2500037-1-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_003157_774401_ABC0793C 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240503_010212_426941_E787B4C8 
+X-CRM114-Status: GOOD (  26.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,60 +100,88 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/3/24 10:21, Krzysztof Kozlowski wrote:
-> When referencing other schema, it is preferred to use an absolute path
-> (/schemas/....), which allows also an seamless move of particular schema
-> out of Linux kernel to dtschema.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->   .../bindings/mfd/actions,atc260x.yaml         |  6 +--
->   .../devicetree/bindings/mfd/brcm,cru.yaml     |  8 ++--
->   .../devicetree/bindings/mfd/brcm,misc.yaml    |  2 +-
->   .../bindings/mfd/canaan,k210-sysctl.yaml      |  6 +--
->   .../bindings/mfd/delta,tn48m-cpld.yaml        |  4 +-
->   .../devicetree/bindings/mfd/iqs62x.yaml       |  4 +-
->   .../bindings/mfd/kontron,sl28cpld.yaml        | 10 ++--
->   .../devicetree/bindings/mfd/max77650.yaml     |  8 ++--
->   .../bindings/mfd/maxim,max77686.yaml          |  2 +-
->   .../bindings/mfd/maxim,max77693.yaml          |  2 +-
->   .../bindings/mfd/richtek,rt4831.yaml          |  4 +-
->   .../bindings/mfd/ricoh,rn5t618.yaml           |  6 +--
->   .../bindings/mfd/rockchip,rk805.yaml          |  2 +-
->   .../bindings/mfd/rockchip,rk808.yaml          |  2 +-
->   .../bindings/mfd/rockchip,rk817.yaml          |  2 +-
->   .../bindings/mfd/rockchip,rk818.yaml          |  2 +-
->   .../bindings/mfd/rohm,bd71815-pmic.yaml       |  2 +-
->   .../bindings/mfd/rohm,bd71828-pmic.yaml       |  4 +-
->   .../bindings/mfd/rohm,bd71837-pmic.yaml       |  2 +-
->   .../bindings/mfd/rohm,bd9571mwv.yaml          |  2 +-
->   .../bindings/mfd/rohm,bd9576-pmic.yaml        |  2 +-
+Hi Lee,
 
-For the ROHM stuff,
-Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
+it looks like all patches except the MFD ones have been reviewed/acked by
+now. I hope I integrated your feedback to v3 [0] in a way you were
+expecting. Also I was hoping this whole series could be go though the MFD
+tree, since all the none-MFD patches depend on the changes mfd-header.
 
->   .../bindings/mfd/samsung,s2mpa01.yaml         |  2 +-
->   .../bindings/mfd/samsung,s2mps11.yaml         | 12 ++---
->   .../bindings/mfd/samsung,s5m8767.yaml         |  4 +-
->   .../devicetree/bindings/mfd/st,stmfx.yaml     |  2 +-
->   .../devicetree/bindings/mfd/st,stpmic1.yaml   |  4 +-
->   .../bindings/mfd/stericsson,ab8500.yaml       | 48 +++++++++----------
->   .../bindings/mfd/stericsson,db8500-prcmu.yaml | 40 ++++++++--------
->   .../devicetree/bindings/mfd/ti,tps65086.yaml  |  4 +-
->   29 files changed, 99 insertions(+), 99 deletions(-)
+Please let me know if there is anything left for me to do.
+
+Thanks,
+
+Alex
+
+[0] 
+https://lore.kernel.org/lkml/20240323132757.141861-2-knaerzche@gmail.com/T/#m1bb23196c192289f898aebc64ccf62edb9ef5b5a
+
+Am 16.04.24 um 18:12 schrieb Alex Bee:
+> This series aims to add support for Rockchip RK816 PMIC series. As per
+> datasheet it's targeted for RK3126/RK3128 (RK816-1), RK1108 (RK816-2) and
+> PX3-SE (RK816-3) but might be used for other SoCs as well. The MFD consists
+> of an integrated RTC, a GPIO controller, two 32k clock outputs, a power
+> key, 3 buck- and 6 ldo regulators, 3 regulator-switches, and charger with
+> integrated fuel gauge. Charger and fuel gauge are not part of this series.
+> Two of the switches (otg/boost) are part of the binding, but not of
+> the driver. They must only ever be enabled if no battery charging is
+> happening, but it will be enabled automatically if a battery is attached
+> and an external power source is connected. Thus that needs some
+> incorporation of a yet to be added charger driver.
+> Integration in the existing rk8xx-infrastructure was pretty straightforward
+> and only needed very little tweaking. In order to not further bloat the
+> driver(s) too much with additional `#define`s I tried to re-use existing
+> ones wherever possible.
 >
-Thanks!
-
-Yours,
-	-- Matti
-
--- 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
-
+> The patches are loosely based on the vendor's implementation, verified
+> against the datasheet and tested/measured on a RK3126 board.
+>
+> I'd like to gently ping pinctrl and regulator maintainers: please have a
+> look at this series. I've now added Sebastian Reichel to the recipients, as
+> he recently added RK806 support and re-worked parts of the rk8xx drivers.
+>
+> changes since v1:
+>    - integrated Krzysztof's feedback for the bindings and the resulting
+>      driver changes
+>    - fixed a sparse warning
+>
+> link to v1:
+> https://lore.kernel.org/lkml/20240321143911.90210-2-knaerzche@gmail.com/
+>
+> changes since v2:
+>    - integrated Krzysztof's feedback to v2 of the bindings and the resulting
+>      driver changes
+>
+> link to v2:
+> https://lore.kernel.org/lkml/20240323085852.116756-1-knaerzche@gmail.com/
+>
+> changes since v3:
+>    - integrated Krzysztof's feedback to the bindings of v3
+>    - integrated Lee's feedback to the mfd part of v3
+>
+> link to v3:
+> https://lore.kernel.org/lkml/20240323132757.141861-2-knaerzche@gmail.com/
+>
+> Please see individual patches for details about the changes.
+>
+> Alex Bee (5):--
+>    dt-bindings: mfd: Add rk816 binding
+>    mfd: rk8xx: Add RK816 support
+>    pinctrl: rk805: Add rk816 pinctrl support
+>    regulator: rk808: Support apply_bit for
+>      rk808_set_suspend_voltage_range
+>    regulator: rk808: Add RK816 support
+>
+>   .../bindings/mfd/rockchip,rk816.yaml          | 274 ++++++++++++++++++
+>   drivers/mfd/Kconfig                           |   4 +-
+>   drivers/mfd/rk8xx-core.c                      | 104 +++++++
+>   drivers/mfd/rk8xx-i2c.c                       |  45 ++-
+>   drivers/pinctrl/pinctrl-rk805.c               |  69 +++++
+>   drivers/regulator/rk808-regulator.c           | 218 +++++++++++++-
+>   include/linux/mfd/rk808.h                     | 144 +++++++++
+>   7 files changed, 851 insertions(+), 7 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+>
 
 _______________________________________________
 Linux-rockchip mailing list
