@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7653FC4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C61C25B10
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8pt0hMwUq1SF3Prb8p4M4J9Oebe7Sd1g2K8TLlnIh+s=; b=ZwLgyaJ0qhr/JQ
-	1B1JByKvWP8ILzaAh+BrrqVMRZQEaykznQ+1p0iqAzEkBju+w41hZsbe7Qqsto03Mvff3y8G+reoM
-	nj+QZ03KwIVnTcuBKDqQgFui3Cd6QahAtCNwE6ucJmWCEZyX+5MlK7G20UT+PCqBhz6h8zbg5Hki0
-	klFCpiOusvwn5eN5kUt4KRLL6WOzNc59TYxgX+JiqZDEszWb5VF5Dv9pyYY/kKaMNXYvXOZkJjTOJ
-	9Un8Ju+rDTQ9aR2qpwatbv73TmM5fAK0yrlzCV4zlGumK5N8n5Cam2DILEcuOGeTo2Rs+Ee54KzJ/
-	07Nq6iRQ37g9GE7uB6cA==;
+	List-Owner; bh=gYCiGtQA41KDx5absUIM30s92tIBgAmMUzfh7XcCRvE=; b=Cvb/j1dPIcd3Fg
+	wZR5X2HSc1E4SO4R5JzRWneoRATjmloHSFWQWtDsCWUapD+Ap3OTO8g65u6EFsnQRrLefTRoBVhld
+	LcgfK0c1fNWOk5UnApAzQTkZEbroeL27CzywX1omZnMolbFAoA2eXNJ1SdVvEB+9IVHbK8pB9XN+m
+	JsSz+rt0NR81G5kkry115Bvj7WycMV04gaFrZoOe84FQXtJnhdz3h4LXEoEpR0WW/RwZaLXMxa43p
+	uQ3aOuQ5FNGbGCDiPKVqAyTiLumNQj3siZyu4C0RJAEnVerxDZuUVrA+g+8G+fUbg2u3qqGiotWmi
+	wfbfJ7hin4/cc6jLE4qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2ubE-0000000H06a-0lG2;
-	Fri, 03 May 2024 15:13:24 +0000
+	id 1s2ubC-0000000H04V-2DEA;
+	Fri, 03 May 2024 15:13:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uaa-0000000GzXm-1vll
+	id 1s2uaZ-0000000GzWy-2ZFb
 	for linux-rockchip@bombadil.infradead.org;
-	Fri, 03 May 2024 15:12:44 +0000
+	Fri, 03 May 2024 15:12:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=zf0dqjD4dfqKNu9+EdRW3LJyR8GJgh/WtPQWwik3etw=; b=pJf7FTeBW0WHOSGaTB6fPJVYnQ
-	BgkRzty4kDZpFHUz1SsxcqgQBL5w1me5v/32urHPJoVKydXm52Eq27Ur16+fmrdLwkfdtgapbgR+k
-	5qjfVLT5PvMuA31VVsypa3PW87nmEoLnTcrnBu43qDQK6QBxHvA0g4g3CA9g8uH9E1F3BdDddu1pp
-	3xKrHFje1ZOq7QmpXVGxXexMHMhZe9R/RC517jAKhSxXuGtvpZGH5wXlWb2MOT22Yam2gdyJQUDoq
-	AoGwytnIFeBIEyxE4bGpP8ZoIqOWMeOubIlazMZoFVNhbM1Zh1y8nUx+L0jx+JhbLjgM4WexHAI3i
-	Gz01+YIQ==;
+	bh=gRb6/O32DoNFBc4odrUqVsDbmoKjFNO6cRM/p1lr/oY=; b=Wc+SGvoSM8XzVKunUSJnpa7NAN
+	4tJEDF8bWEF1gw9/LV70TgmOeM3e7rgc6IzBsmLJXaRQS63y3iELSd61oQ3/F9xFPXo6DkRXuvgqp
+	ScBUovvSboGeYuDrcLIPq5DjVeULl4qdoK+ULLUCnv7zhV3Lp+q4avlBU6IQq4pYsn/aAT2XPY6Km
+	e/fxjYhxKq9KpzsqMYtuYs6AAAf/jxi9nywRsZ121JOJSgEJvseCwg6MKuJ0KFWXM50m9M6PoB+yr
+	B5talMmiCWP1hbL0atcKr14bDhz58/CpJ34VQvcG5bSiOSvQUB9UI8Mx7YP5VWhLf8HtdlrdjxxgW
+	B9m6vc+A==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uaW-00000000ae3-12Q9
+	id 1s2uaV-00000000adX-3K5t
 	for linux-rockchip@lists.infradead.org;
 	Fri, 03 May 2024 15:12:42 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uaL-0004xn-Bt; Fri, 03 May 2024 17:12:29 +0200
+	id 1s2uaK-0004wr-Kz; Fri, 03 May 2024 17:12:28 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZO-00FjHY-FX; Fri, 03 May 2024 17:11:30 +0200
+	id 1s2uZO-00FjHY-KM; Fri, 03 May 2024 17:11:30 +0200
 From: Lucas Stach <l.stach@pengutronix.de>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
@@ -71,9 +71,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@pengutronix.de,
 	patchwork-lst@pengutronix.de
-Subject: [PATCH 11/14] drm/bridge: analogix_dp: don't wait for PLL lock too early
-Date: Fri,  3 May 2024 17:11:26 +0200
-Message-Id: <20240503151129.3901815-12-l.stach@pengutronix.de>
+Subject: [PATCH 13/14] drm/bridge: analogix_dp: only read AUX status when an error occured
+Date: Fri,  3 May 2024 17:11:28 +0200
+Message-Id: <20240503151129.3901815-14-l.stach@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240503151129.3901815-1-l.stach@pengutronix.de>
 References: <20240503151129.3901815-1-l.stach@pengutronix.de>
@@ -83,8 +83,8 @@ X-SA-Exim-Mail-From: l.stach@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_161240_399903_26DBBB70 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20240503_161239_920120_5ABC15D5 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,48 +101,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PLL will be reconfigured later, which may cause it to go out of lock
-anyways, so there is no point in waiting for the PLL to lock here. Instead
-we can continue execution of the link setup, which will properly set the
-PLL parameters and will wait for the PLL to lock at the appropriate times.
+All AUX error responses raise the AUX_ERR interrupt, so there is no
+need to read the AUX status register in normal operation. Only read
+the status when an error occured and we can expect a different status
+than OK.
 
 Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 14 +-------------
- 1 file changed, 1 insertion(+), 13 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index d267cf05cbca..e9c643a8b6fc 100644
+index 143a78b1d156..0f016dca9f3d 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -356,7 +356,6 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
+@@ -924,7 +924,6 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
+ 			     struct drm_dp_aux_msg *msg)
  {
  	u32 reg;
--	int timeout_loop = 0;
+-	u32 status_reg;
+ 	u8 *buffer = msg->buffer;
+ 	unsigned int i;
+ 	int ret;
+@@ -1011,12 +1010,14 @@ ssize_t analogix_dp_transfer(struct analogix_dp_device *dp,
  
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 0);
+ 	/* Clear interrupt source for AUX CH access error */
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
+-	status_reg = readl(dp->reg_base + ANALOGIX_DP_AUX_CH_STA);
+-	if ((reg & AUX_ERR) || (status_reg & AUX_STATUS_MASK)) {
++	if ((reg & AUX_ERR)) {
++		u32 aux_status = readl(dp->reg_base + ANALOGIX_DP_AUX_CH_STA) &
++				 AUX_STATUS_MASK;
++
+ 		writel(AUX_ERR, dp->reg_base + ANALOGIX_DP_INT_STA);
  
-@@ -368,18 +367,7 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
- 	writel(reg, dp->reg_base + ANALOGIX_DP_DEBUG_CTL);
+ 		dev_warn(dp->dev, "AUX CH error happened: %#x (%d)\n",
+-			 status_reg & AUX_STATUS_MASK, !!(reg & AUX_ERR));
++			 aux_status, !!(reg & AUX_ERR));
+ 		goto aux_error;
+ 	}
  
- 	/* Power up PLL */
--	if (analogix_dp_get_pll_lock_status(dp) == PLL_UNLOCKED) {
--		analogix_dp_set_pll_power_down(dp, 0);
--
--		while (analogix_dp_get_pll_lock_status(dp) == PLL_UNLOCKED) {
--			timeout_loop++;
--			if (DP_TIMEOUT_LOOP_COUNT < timeout_loop) {
--				dev_err(dp->dev, "failed to get pll lock status\n");
--				return -ETIMEDOUT;
--			}
--			usleep_range(10, 20);
--		}
--	}
-+	analogix_dp_set_pll_power_down(dp, 0);
- 
- 	/* Enable Serdes FIFO function and Link symbol clock domain module */
- 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_2);
 -- 
 2.39.2
 
