@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18CEC41513
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5787C25B10
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9TDz8GhPUJYjnF4SQluyLhP0wDvVUISUYOLj2VJYvE=; b=w9Z+jyeooRuoM+
-	5g67GgY0MMz+rkshmWtK8+SCEGda4fBrfNo2PfyeOo0NCrTC5ug+aFKuaebQEYsBIgtmfF62JT+gq
-	i9RKwI1QoclRqTy7BsGViay5oXt/+yiZC9iA5Sa3Ao5Cd0l1Rc/HWzEb4ckIjZ3G/pxleb9c6jbs0
-	yZPF6zjaJcvT70NfkzaEkvy/IzM3Z56eqdLve0iRJXeQ4M2UcRTxSQKcMtd8MXqqVnfx2uJv7CIuu
-	B+ZSUAi9Ns8oizvV/qs+dCI50LfwRZy94s4IO1f6pLXubsczLjRQgQDB773ct3/NyudfEy3KgP+oe
-	PELnAY2b8m+B1trrB3rQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=t4nOK/U41XGX6tqkHBsAXAV6skFfmivKakE56I6Poyc=; b=QqRdoh0iV9k0sl
+	nvJDLsBGINc9Dl4KtfSMyT5wQJ6Y/j2JG/dFHrcZ9pjw00tGQ+BjRT/sK91FZZkORHBqqf6U98UH0
+	rTHOqoA8mupjorYl5EwDa+B3r4IXR6Ck+Cg0w17Uj3H44qdf5W0YTpEaF5rVrrS9cmNP+Fj2WYFwY
+	UmfktbFOicDwxUXSuZSWHRJLNyjTybJlL2Z9eAVXwMvvWT9DK9tVuzorls04sCJ0oAkqvBs+zzf05
+	4pSTi+2384QrhS7IKWAeGdsyMgyq3N2EhnF72N5Kp3QbEaZzDnN46Dgl+6u9otGrk+bIhmoV4qqBO
+	w0RyJ8mnjVuuXoijBaKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2ua6-0000000Gz66-3toQ;
-	Fri, 03 May 2024 15:12:14 +0000
+	id 1s2ua5-0000000Gz5W-1fbw;
+	Fri, 03 May 2024 15:12:13 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2ua0-0000000GyzD-2WPS
+	id 1s2ua0-0000000Gz2j-2VpQ
 	for linux-rockchip@bombadil.infradead.org;
 	Fri, 03 May 2024 15:12:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=SwFg1uY48j7bSNrPla658SHM0feOd57zBuhiaE/NP1Q=; b=mHmnv/JG3OTHU3H3bsoI6eJYYr
-	4575+r57n8vS9qMvzHLteG9KvU/IBQPL7I0Hxx25lILZHHTdErowCCaWumEqlHJC9uQHSUP1Un9J1
-	3Xv/wSo9b8GXzfSE4AmYjGRR0avP4QU9sYu/a9TjCfHC2yQqmj+r6Wb6lzLUI3RpGozZC2P16a9lX
-	PHwnclvrz0VcfMYlG09jyHvG4TFYerFjZcQXqEDPlOehcjUDFKkH6s/aDoJpo+MICxlm+1aW2vJ4i
-	W8zB4GEUFANEKFpVIi1Lf8i9O0aeXF6qZoz+J9ewnAe6Fv6vwvgP9UKwbieMKKSoegWiB/wcLi2Ie
-	rTjp9Nqw==;
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=pcSPZAO81RcCFcDpkzcFgFYRBVA3CVUiHcweI+A2Y30=; b=T413F/kxfDlqQtzAchTagQ1M1+
+	hjAgx5EoucKpO34JUiceNKLL0Wg6ZnwDZBe37tFIox4moCZ0zGoq6mWByp7e4ECebR5Vs0/GfWHeh
+	iO1YXmDqnSQeIE+VpOJTWFMiB3XfxJBA+/QXH/ju9s/teaEZfMHUoe1ul1LWfepNXKsp7Ox4nA4Zu
+	XNBZpzT1irAOIWE0y594z79d0qYn6ripaibrzxBLDA9Nunz4uhJN/FJel0T1ZZn3RTk4aFlb9kmrw
+	G/Kcbr/VqHIbM3uz7cNgrXqzOUiiy1aRzjVVSARTuSoG3zhUi1jT81SM/2GdndW7lHoOFjzTp2vWh
+	UaHUp0+Q==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uZu-00000000aaX-0Gpo
+	id 1s2uZu-00000000aaW-0aK3
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 May 2024 15:12:04 +0000
+	Fri, 03 May 2024 15:12:06 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZR-0004Cg-K5; Fri, 03 May 2024 17:11:33 +0200
+	id 1s2uZR-0004Br-K7; Fri, 03 May 2024 17:11:33 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZN-00FjHY-Ud; Fri, 03 May 2024 17:11:29 +0200
+	id 1s2uZN-00FjHY-C5; Fri, 03 May 2024 17:11:29 +0200
 From: Lucas Stach <l.stach@pengutronix.de>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
@@ -71,21 +71,18 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@pengutronix.de,
 	patchwork-lst@pengutronix.de
-Subject: [PATCH 06/14] drm/bridge: analogix_dp: remove clk handling from analogix_dp_set_bridge
-Date: Fri,  3 May 2024 17:11:21 +0200
-Message-Id: <20240503151129.3901815-7-l.stach@pengutronix.de>
+Subject: [PATCH 00/14] improve Analogix DP AUX channel handling
+Date: Fri,  3 May 2024 17:11:15 +0200
+Message-Id: <20240503151129.3901815-1-l.stach@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240503151129.3901815-1-l.stach@pengutronix.de>
-References: <20240503151129.3901815-1-l.stach@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: l.stach@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_161202_264854_B5F10415 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240503_161202_366274_D8C6E89D 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,51 +99,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clock is already managed by runtime PM, which is properly invoked
-from the analogix_dp_set_bridge function, so there is no need for an
-additional reference.
+Currently the AUX channel support in the Analogix DP driver is severely
+limited as the AUX block of the bridge is only initialized when the video
+link is to be enabled. This is okay for the purposes of link training,
+but does not allow to detect displays by probing for EDID. This series
+reworks the driver to allow AUX transactions before the video link is
+active.
 
-Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+As this requires to rework some of the controller initialization and
+also handling of both internal and external clocks, the series includes
+quite a few changes to add better runtime PM handling.
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 9f1dfa6f2175..311e1e67486d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1258,12 +1258,6 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 
- 	pm_runtime_get_sync(dp->dev);
- 
--	ret = clk_prepare_enable(dp->clock);
--	if (ret < 0) {
--		DRM_ERROR("Failed to prepare_enable the clock clk [%d]\n", ret);
--		goto out_dp_clk_pre;
--	}
--
- 	if (dp->plat_data->power_on)
- 		dp->plat_data->power_on(dp->plat_data);
- 
-@@ -1297,8 +1291,7 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 	phy_power_off(dp->phy);
- 	if (dp->plat_data->power_off)
- 		dp->plat_data->power_off(dp->plat_data);
--	clk_disable_unprepare(dp->clock);
--out_dp_clk_pre:
-+
- 	pm_runtime_put_sync(dp->dev);
- 
- 	return ret;
-@@ -1367,8 +1360,6 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
- 	phy_power_off(dp->phy);
- 
--	clk_disable_unprepare(dp->clock);
--
- 	pm_runtime_put_sync(dp->dev);
- 
- 	ret = analogix_dp_prepare_panel(dp, false, true);
+Lucas Stach (14):
+  drm/bridge: analogix_dp: remove unused platform power_on_end callback
+  drm/rockchip: analogix_dp: add runtime PM handling
+  drm/bridge: analogix_dp: register AUX bus after enabling runtime PM
+  drm/bridge: analogix_dp: handle clock via runtime PM
+  drm/bridge: analogix_dp: remove unused analogix_dp_remove
+  drm/bridge: analogix_dp: remove clk handling from
+    analogix_dp_set_bridge
+  drm/bridge: analogix_dp: move platform and PHY power handling into
+    runtime PM
+  drm/bridge: analogix_dp: move basic controller init into runtime PM
+  drm/bridge: analogix_dp: remove PLL lock check from
+    analogix_dp_config_video
+  drm/bridge: analogix_dp: move macro reset after link bandwidth setting
+  drm/bridge: analogix_dp: don't wait for PLL lock too early
+  drm/bridge: analogix_dp: simplify and correct PLL lock checks
+  drm/bridge: analogix_dp: only read AUX status when an error occured
+  drm/bridge: analogix_dp: handle AUX transfer timeouts
+
+ .../drm/bridge/analogix/analogix_dp_core.c    | 196 ++++++++----------
+ .../drm/bridge/analogix/analogix_dp_core.h    |   7 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  38 ++--
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.h |   9 +
+ drivers/gpu/drm/exynos/exynos_dp.c            |   5 +-
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  26 +--
+ include/drm/bridge/analogix_dp.h              |   4 +-
+ 7 files changed, 120 insertions(+), 165 deletions(-)
+
 -- 
 2.39.2
 
