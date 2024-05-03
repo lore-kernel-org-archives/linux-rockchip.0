@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56881C25B5C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136F2C41513
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=utubCtHAKRqQY1EVcXR1nTlIMrM1A0wUjkvXMF4b+NA=; b=UDJ9P7u/vRxhBL
-	ljzIgU+SvC4w2L/hU+N8grjZjNkCGz511cggaUBb2xmMHw5K+orZHwQWqUqxzqRz8ld3Kys6AUIDt
-	sRuTEYWxioL58OsaTnBXs4rHlVgipw+SZDNy+5gw2Tuy3AzdRWNn5Sne2etBTWeAb9ba8xAX0wL71
-	rL3Y/tODYwxTzOE+40Ll8ZFazKnHbqpmc3oouBMZKJ4ndOZXtdPgbOozCHFveRdkenmROkJm9mqoC
-	nBvgBA6UFzgN/epxOO66iV0iRqzVJ/5zuboi0MK+cE6Clr7IsbINLBCCVJGejPu0mWqBCynlqfZZN
-	c8W0tJoiZrc6FLj7xsUA==;
+	List-Owner; bh=qtV8mKS1yXf+THvct2k2GPW3zUZb951txWVneKfKKgs=; b=2YU8AnIdcmzHFe
+	MhPPfmA2blVKE1yMuLsizFKTB421pthV5gwfGIOF6CeXQeRkmW6C8kuKyFhgbp1dugflihY1OIieK
+	z+KSWCdc2znwCTQ+ti5NLbfOtaZuUBVt2UtMMdxLSpcUCMmO9l5BstnsXA4oT/5BlsxG6Yk4KzDiC
+	etT816+HFHl0uhTiDSM/Jy5w8AUG6wihF4oquElQ/s2xbVK5Z6eDo6hb15WnB8mkzLqwxKMvRQygo
+	tFDgyfuQclNIhD7gNqsSprdocHvtMBSxI8kAeUPWF/QLS3uxSHNrfk3i1OW4KaOK3JVDnsfR7xrbo
+	bX/gR6/H+1YLunklygwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uaW-0000000GzTj-1IA4;
-	Fri, 03 May 2024 15:12:40 +0000
+	id 1s2uaS-0000000GzQo-3Sf7;
+	Fri, 03 May 2024 15:12:37 +0000
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uZx-0000000GyyU-0Wvp
+	id 1s2uZx-0000000GyyX-0TqL
 	for linux-rockchip@lists.infradead.org;
 	Fri, 03 May 2024 15:12:11 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZR-0004C0-K6; Fri, 03 May 2024 17:11:33 +0200
+	id 1s2uZR-0004Ck-K7; Fri, 03 May 2024 17:11:33 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZN-00FjHY-Qs; Fri, 03 May 2024 17:11:29 +0200
+	id 1s2uZO-00FjHY-4X; Fri, 03 May 2024 17:11:30 +0200
 From: Lucas Stach <l.stach@pengutronix.de>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
@@ -56,9 +56,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@pengutronix.de,
 	patchwork-lst@pengutronix.de
-Subject: [PATCH 05/14] drm/bridge: analogix_dp: remove unused analogix_dp_remove
-Date: Fri,  3 May 2024 17:11:20 +0200
-Message-Id: <20240503151129.3901815-6-l.stach@pengutronix.de>
+Subject: [PATCH 08/14] drm/bridge: analogix_dp: move basic controller init into runtime PM
+Date: Fri,  3 May 2024 17:11:23 +0200
+Message-Id: <20240503151129.3901815-9-l.stach@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240503151129.3901815-1-l.stach@pengutronix.de>
 References: <20240503151129.3901815-1-l.stach@pengutronix.de>
@@ -68,8 +68,8 @@ X-SA-Exim-Mail-From: l.stach@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_081205_261609_59A8C99A 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20240503_081205_372983_405CF5D4 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,88 +86,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that the clock is handled dynamically through
-analogix_dp_resume/suspend and it isn't statically enabled in the
-driver probe routine, there is no need for the remove function anymore.
+Make sure the controller is in a basic working state after runtime
+resume. Keep the analog function enable in the mode set path as this
+enables parts of the PHY that are only required to be powered when
+there is a data stream being sent out.
 
 Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 -----
- drivers/gpu/drm/exynos/exynos_dp.c                 | 3 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 9 +--------
- include/drm/bridge/analogix_dp.h                   | 1 -
- 4 files changed, 1 insertion(+), 17 deletions(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 9e3308257586..9f1dfa6f2175 100644
+index 3281c00a39cd..fdb2c2a2b69a 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1813,11 +1813,6 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
- }
- EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+@@ -41,10 +41,8 @@ struct bridge_init {
+ 	struct device_node *node;
+ };
  
--void analogix_dp_remove(struct analogix_dp_device *dp)
--{
--}
--EXPORT_SYMBOL_GPL(analogix_dp_remove);
--
- int analogix_dp_start_crc(struct drm_connector *connector)
+-static int analogix_dp_init_dp(struct analogix_dp_device *dp)
++static void analogix_dp_init_dp(struct analogix_dp_device *dp)
  {
- 	struct analogix_dp_device *dp = to_dp(connector);
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 30c8750187ad..097f8c4617de 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -251,10 +251,7 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 
- static void exynos_dp_remove(struct platform_device *pdev)
- {
--	struct exynos_dp_device *dp = platform_get_drvdata(pdev);
+-	int ret;
 -
- 	component_del(&pdev->dev, &exynos_dp_ops);
--	analogix_dp_remove(dp->adp);
+ 	analogix_dp_reset(dp);
+ 
+ 	analogix_dp_swreset(dp);
+@@ -56,13 +54,9 @@ static int analogix_dp_init_dp(struct analogix_dp_device *dp)
+ 	analogix_dp_enable_sw_function(dp);
+ 
+ 	analogix_dp_config_interrupt(dp);
+-	ret = analogix_dp_init_analog_func(dp);
+-	if (ret)
+-		return ret;
+ 
+ 	analogix_dp_init_hpd(dp);
+ 	analogix_dp_init_aux(dp);
+-	return 0;
  }
  
- static int exynos_dp_suspend(struct device *dev)
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 8214265f1497..362c7951ca4a 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -414,21 +414,14 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
+@@ -1258,9 +1252,9 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
  
- 	ret = component_add(dev, &rockchip_dp_component_ops);
+ 	pm_runtime_get_sync(dp->dev);
+ 
+-	ret = analogix_dp_init_dp(dp);
++	ret = analogix_dp_init_analog_func(dp);
  	if (ret)
--		goto err_dp_remove;
+-		goto out_dp_init;
 +		return ret;
  
+ 	/*
+ 	 * According to DP spec v1.3 chap 3.5.1.2 Link Training,
+@@ -1726,6 +1720,8 @@ int analogix_dp_resume(struct analogix_dp_device *dp)
+ 
+ 	phy_power_on(dp->phy);
+ 
++	analogix_dp_init_dp(dp);
++
  	return 0;
--
--err_dp_remove:
--	analogix_dp_remove(dp->adp);
--	return ret;
  }
- 
- static void rockchip_dp_remove(struct platform_device *pdev)
- {
--	struct rockchip_dp_device *dp = platform_get_drvdata(pdev);
--
- 	component_del(&pdev->dev, &rockchip_dp_component_ops);
--	analogix_dp_remove(dp->adp);
- }
- 
- static int rockchip_dp_suspend(struct device *dev)
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 8709b6a74c0f..6002c5666031 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -44,7 +44,6 @@ struct analogix_dp_device *
- analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data);
- int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev);
- void analogix_dp_unbind(struct analogix_dp_device *dp);
--void analogix_dp_remove(struct analogix_dp_device *dp);
- 
- int analogix_dp_start_crc(struct drm_connector *connector);
- int analogix_dp_stop_crc(struct drm_connector *connector);
+ EXPORT_SYMBOL_GPL(analogix_dp_resume);
 -- 
 2.39.2
 
