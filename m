@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5933FC25B76
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B904AC25B10
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xx+rsVQJtAurmibNF4t+qO0to7YMiV31w8iwJgI1n9I=; b=q9JkEdJRmTz7EW
-	pCOTvzRdTiojO3OjzRBfXGaVeqANYOGXv2SJATWs6vmLytAVDZOBMLHULVKPQULqppi2JDA4fUe7/
-	NIB4Cc0dM4ccriQfsd+i6+BxTn734XUlUhyncOlV/ASYr9ORHmEDKaN5f/1pU+e+Cj44LamCQBSQr
-	dNb/c7uqmoB3nZ/rS5k3yRPUPShkWPEv7/a01aN98W32ymKS1RXF85lewv0ym7kfcb+qHjuhYKcd+
-	4npJcLpqZmNXTAF/GVTBT/ROE8AyGeCvKs9yuxL0iZxW3niiKLqbQovorWN25SYcguEciOsS6CrKD
-	N+WyMnF8Ybip5Oeh+fYg==;
+	List-Owner; bh=KKKcIJ2oB64BZsNTKPCFzcM/BnsAvWe68VHk8RBX2Bg=; b=U8+XqBfeaifbVC
+	urA4xzK/jKj6RLo/IZf5ExJRSzxVWH8oJEJaW1B1OwZu6RLXO9Qtf4I0PKv7lS7k5OvMdyFwjN/wO
+	u9B7LwBY5Uo3+N19xc/13p3RLjeJ8xqyb/SfOYJqKYs5cCMVJMc+r8ZvYEsTxPZS6TztoQQKhhyH7
+	a/nMvnzNu5hCN5+BSTVOIdTiv1Zm286oqFNDqnf0JHnf6qj7PS7Nl/oL45pZzcbTWc+KvOnIInr5I
+	s+oE2K4aEPmq7KcKvS+ZnWZZK7PnLUzzlj0fyTUviFViveLe5etZL17WqXw2D0FlojjFAmzzleykp
+	y5ele81xzq73pl3cO5pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2ua7-0000000Gz6A-1M1i;
-	Fri, 03 May 2024 15:12:15 +0000
+	id 1s2ua6-0000000Gz5u-1XZO;
+	Fri, 03 May 2024 15:12:14 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2ua0-0000000Gz2k-2Vna
+	id 1s2ua0-0000000GyzC-2VXV
 	for linux-rockchip@bombadil.infradead.org;
 	Fri, 03 May 2024 15:12:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=VkoHrFstI+415bBLUj24We7/FvwJwLc+VJWctnGNU3Y=; b=g4Jy2/h1dJdvnJBDAr513NUO45
-	NB4PQLpwLkAnNMXvimGHM2PlnVcVLw7IN6OVwoZwdNNqkpaot5qdS9iMiMR7ba2qmU8plpa3RHtsF
-	Inzc/79wtLc02fULLv1dbvJwFc2ePY01D473oAL/EHIzMEBDNGffsoDDnk1cu5H9hJ/w2NHKTpLjM
-	uDD0ZMBwswD051V28H2fSbd9aKmNSYbcQNx9Xb48PGr8iucc7/UXK4yirRSOTWeQymAdgm2eKjKfk
-	wnmallvGeZ0P+wEoXOY5R4n7veumkGD+aYD6uVPKkULiiejPJwHMAf02RX8UY5tg5VGRlH7Lc0y9g
-	6trv8fBg==;
+	bh=ew5B0UrcRsUBQPbdNqEHDDEexKlaTLRffEcM2ZRHKl4=; b=MK0AbneforSdw6p+4G4iRhZ80d
+	ToyD8IUoJ32psWUD5V5YnNXPIPAx+LW1lAwzUzMBlce4c4IhgHDhnT8CSuMSpk7TSua/YWTA9nTxw
+	cZJVM5InhmFILkr2NLWcMpfFYKQeApapMTREL0dpmM0EO3wE+oXA0DXP+nD8Lb6JzBboCgLUiYof0
+	mBHBL998h5FQYzwqQcF1mbn73kxP8Jm6kV8I5zmkifovazgeyLCioLb/3f6mXVdxedcttX2d2AC3a
+	MiTlS6DWaFJ9zd+FsEZnOdffrl//ZI7JoYXMxmFVa2JuD1t8vFIlpaykv1fGQG7vNoZeW7e1aDTa6
+	CjPPSuQA==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uZu-00000000aaZ-11hT
+	id 1s2uZt-00000000aab-432Q
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 May 2024 15:12:06 +0000
+	Fri, 03 May 2024 15:12:04 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZR-0004Bs-K5; Fri, 03 May 2024 17:11:33 +0200
+	id 1s2uZR-0004Bu-K6; Fri, 03 May 2024 17:11:33 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZN-00FjHY-EW; Fri, 03 May 2024 17:11:29 +0200
+	id 1s2uZN-00FjHY-JD; Fri, 03 May 2024 17:11:29 +0200
 From: Lucas Stach <l.stach@pengutronix.de>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
@@ -71,9 +71,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@pengutronix.de,
 	patchwork-lst@pengutronix.de
-Subject: [PATCH 01/14] drm/bridge: analogix_dp: remove unused platform power_on_end callback
-Date: Fri,  3 May 2024 17:11:16 +0200
-Message-Id: <20240503151129.3901815-2-l.stach@pengutronix.de>
+Subject: [PATCH 03/14] drm/bridge: analogix_dp: register AUX bus after enabling runtime PM
+Date: Fri,  3 May 2024 17:11:18 +0200
+Message-Id: <20240503151129.3901815-4-l.stach@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240503151129.3901815-1-l.stach@pengutronix.de>
 References: <20240503151129.3901815-1-l.stach@pengutronix.de>
@@ -83,8 +83,9 @@ X-SA-Exim-Mail-From: l.stach@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_161202_414625_06349B37 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20240503_161202_141133_F2243DF0 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,92 +102,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This isn't used, but gives the impression of the power on and power off
-platform calls being non-symmetrical. Remove the unused callback and
-rename the power_on_start to simplay power_on.
+AUX transactions require the controller to be in working state and
+take a runtime PM reference. To avoid potential races beween the
+first transactions on the bus and runtime PM being set up, move the
+AUX registration behind the runtime PM setup.
 
 Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 7 ++-----
- drivers/gpu/drm/exynos/exynos_dp.c                 | 2 +-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 4 ++--
- include/drm/bridge/analogix_dp.h                   | 3 +--
- 4 files changed, 6 insertions(+), 10 deletions(-)
+ .../drm/bridge/analogix/analogix_dp_core.c    | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 98454f0af90e..b39721588980 100644
+index b39721588980..0af2a70ae5bf 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1264,8 +1264,8 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_clk_pre;
- 	}
+@@ -1728,31 +1728,34 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+ 	dp->drm_dev = drm_dev;
+ 	dp->encoder = dp->plat_data->encoder;
  
--	if (dp->plat_data->power_on_start)
--		dp->plat_data->power_on_start(dp->plat_data);
-+	if (dp->plat_data->power_on)
-+		dp->plat_data->power_on(dp->plat_data);
++	pm_runtime_use_autosuspend(dp->dev);
++	pm_runtime_set_autosuspend_delay(dp->dev, 100);
++	pm_runtime_enable(dp->dev);
++
+ 	dp->aux.name = "DP-AUX";
+ 	dp->aux.transfer = analogix_dpaux_transfer;
+ 	dp->aux.dev = dp->dev;
+ 	dp->aux.drm_dev = drm_dev;
  
- 	phy_power_on(dp->phy);
- 
-@@ -1290,9 +1290,6 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
- 		goto out_dp_init;
- 	}
- 
--	if (dp->plat_data->power_on_end)
--		dp->plat_data->power_on_end(dp->plat_data);
+ 	ret = drm_dp_aux_register(&dp->aux);
+-	if (ret)
+-		return ret;
 -
- 	enable_irq(dp->irq);
+-	pm_runtime_use_autosuspend(dp->dev);
+-	pm_runtime_set_autosuspend_delay(dp->dev, 100);
+-	pm_runtime_enable(dp->dev);
++	if (ret) {
++		DRM_ERROR("failed to register AUX (%d)\n", ret);
++		goto err_disable_pm_runtime;
++	}
+ 
+ 	ret = analogix_dp_create_bridge(drm_dev, dp);
+ 	if (ret) {
+ 		DRM_ERROR("failed to create bridge (%d)\n", ret);
+-		goto err_disable_pm_runtime;
++		goto err_unregister_aux;
+ 	}
+ 
  	return 0;
  
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index f48c4343f469..30c8750187ad 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -233,7 +233,7 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	/* The remote port can be either a panel or a bridge */
- 	dp->plat_data.panel = panel;
- 	dp->plat_data.dev_type = EXYNOS_DP;
--	dp->plat_data.power_on_start = exynos_dp_poweron;
-+	dp->plat_data.power_on = exynos_dp_poweron;
- 	dp->plat_data.power_off = exynos_dp_poweroff;
- 	dp->plat_data.attach = exynos_dp_bridge_attach;
- 	dp->plat_data.get_modes = exynos_dp_get_modes;
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 7069a3d4d581..baeb41875a4b 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -92,7 +92,7 @@ static int rockchip_dp_pre_init(struct rockchip_dp_device *dp)
- 	return 0;
++err_unregister_aux:
++	drm_dp_aux_unregister(&dp->aux);
+ err_disable_pm_runtime:
+ 	pm_runtime_dont_use_autosuspend(dp->dev);
+ 	pm_runtime_disable(dp->dev);
+-	drm_dp_aux_unregister(&dp->aux);
+ 
+ 	return ret;
  }
- 
--static int rockchip_dp_poweron_start(struct analogix_dp_plat_data *plat_data)
-+static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
- {
- 	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
- 	int ret;
-@@ -397,7 +397,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 	dp->data = dp_data;
- 	dp->plat_data.panel = panel;
- 	dp->plat_data.dev_type = dp->data->chip_type;
--	dp->plat_data.power_on_start = rockchip_dp_poweron_start;
-+	dp->plat_data.power_on = rockchip_dp_poweron;
- 	dp->plat_data.power_off = rockchip_dp_powerdown;
- 	dp->plat_data.get_modes = rockchip_dp_get_modes;
- 
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index b0dcc07334a1..8709b6a74c0f 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -29,8 +29,7 @@ struct analogix_dp_plat_data {
- 	struct drm_connector *connector;
- 	bool skip_connector;
- 
--	int (*power_on_start)(struct analogix_dp_plat_data *);
--	int (*power_on_end)(struct analogix_dp_plat_data *);
-+	int (*power_on)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
- 	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
- 		      struct drm_connector *);
 -- 
 2.39.2
 
