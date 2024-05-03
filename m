@@ -4,38 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4B7C25B10
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C00C25B10
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 15:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fTdt/5DtIfLCd9e6HVhodRd7yYxTLJ3dc1nG4YJALXA=; b=d4g7yXBAhWPAc4
-	OS9986A1x4Zf/oSdKw961CwdBVTIPbNg38B63HTeWQTzEgEn95V3HHoCRNkF/dJm3jZiFYC2jQ3XU
-	/7ojHlTDP5yXIF8v7YkaYCF/OKQrXmgDOC3x7nog6knpC0fpnm6gNpkr7Ms+/6G9jcdY/EDQrvtJV
-	PXbqePFWbxmvv6fswYXQvAz/FShZveWSIxRLc7WA8RcDzplzt3tEsujiNebolCITVIIkiVRVyOcPd
-	/tcBDNb1x29fMEX9Qy+l+6aCQYhK1LZeVRvJguqbYXQ0H7w1Qr0l61tQ7PIkaVH/QoNETFi269kLS
-	fWKEpXTjY2hCgtwzfnuw==;
+	List-Owner; bh=aXTBCtCVApgod1esdAhjVUCJ/0EpGcxktr8iC+QtIM0=; b=YMSa6De82hOkkh
+	zeMRNRwG6f3oTfZn/VB2LhEBZ1FcNDeojfuQtKJowmcW9TLtaJnHM1pNwb+2+3q3K/YamEVIX3Asg
+	iXfmraebQlQYtvvV5ooRPk2gj0C66f9CSQ5yOCQcowrs6AYIMjGPozsDYcHPhXyzzjnZQaJyX0gOY
+	q1g3ioGUve9af3B328vPrVaSzsVKynvAA0T9Gdh5ccRrHBg5NYvFT1C5JBKQXPKHwwrhOcWJMrTWC
+	7CGYVUx/8JB/TmQKluAdPRCNbCTw2k6U7Bi3U/davYm68J6137pTt9WH/bLZXtm7tfNyo1bezF47q
+	S7QjUxOaallEsukbnOAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uam-0000000GzjT-3ykw;
-	Fri, 03 May 2024 15:12:56 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1s2ub6-0000000GzzC-0bYm;
+	Fri, 03 May 2024 15:13:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2uZx-0000000GyyV-0TLv
+	id 1s2uaY-0000000GzW8-43tj
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 03 May 2024 15:12:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=dW0F2LDMJiTZ+GHL9rtI/E36tdA6UKhObPocWL9Ndjk=; b=YXalQOze+MOfF4no0pknazZLvr
+	GhwtLGE+QKrKivqoq2qB6DY0Nb4QqCrJnrI0ekEmu2z6W+7LbuCuCtDif/7Yo3Acn6iIy5xPWEfLD
+	l5C6w0lyx2kdGi0hZZ5q12AdypvqGIL/wQN9h8dzg8y6YAQKaz/9kk4lpmcZAg1aUcylzIyX1VdhL
+	WV8dpV6ofwYX2lIqdMLjtJkrHP1IGuQtyYZxm7VEkycsf2CFI//2nxacxsKCHMQDHCExLrmohjLcn
+	fEIZ/+C+4JuODPOG0j39ruIw81fSPzr/rGhD+XoPbjoRYooc2Q5mBuZHeVsNE/Ac5aM3jGjpCHaZM
+	ALbhytFA==;
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1s2uaV-00000000adT-297n
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 May 2024 15:12:13 +0000
+	Fri, 03 May 2024 15:12:41 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZR-0004Cl-K8; Fri, 03 May 2024 17:11:33 +0200
+	id 1s2uaK-0004vQ-6W; Fri, 03 May 2024 17:12:28 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <l.stach@pengutronix.de>)
-	id 1s2uZO-00FjHY-8R; Fri, 03 May 2024 17:11:30 +0200
+	id 1s2uZO-00FjHY-Bq; Fri, 03 May 2024 17:11:30 +0200
 From: Lucas Stach <l.stach@pengutronix.de>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Andy Yan <andy.yan@rock-chips.com>,
@@ -56,9 +71,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@pengutronix.de,
 	patchwork-lst@pengutronix.de
-Subject: [PATCH 09/14] drm/bridge: analogix_dp: remove PLL lock check from analogix_dp_config_video
-Date: Fri,  3 May 2024 17:11:24 +0200
-Message-Id: <20240503151129.3901815-10-l.stach@pengutronix.de>
+Subject: [PATCH 10/14] drm/bridge: analogix_dp: move macro reset after link bandwidth setting
+Date: Fri,  3 May 2024 17:11:25 +0200
+Message-Id: <20240503151129.3901815-11-l.stach@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240503151129.3901815-1-l.stach@pengutronix.de>
 References: <20240503151129.3901815-1-l.stach@pengutronix.de>
@@ -68,9 +83,8 @@ X-SA-Exim-Mail-From: l.stach@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_081205_570493_A79DA717 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240503_161239_686119_9431F503 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +101,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This check is way too late in the DP enable flow. The PLL must be locked
-much earlier, before any link training can happen. If the PLL is unlocked
-at that point in time there is something seriously wrong in the enable flow.
+Setting the link bandwidth may change the PLL parameters, which will cause
+the PLL to go out of lock, so make sure to apply the MACRO_RST, which
+according to the comment is required to be pulsed after the PLL is locked.
 
 Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 5 -----
- 1 file changed, 5 deletions(-)
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index fdb2c2a2b69a..b4a47311cfe8 100644
+index b4a47311cfe8..736b2ed745e1 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -720,11 +720,6 @@ static int analogix_dp_config_video(struct analogix_dp_device *dp)
+@@ -243,6 +243,11 @@ static int analogix_dp_link_start(struct analogix_dp_device *dp)
  
- 	analogix_dp_set_video_color_format(dp);
+ 	/* Set link rate and count as you want to establish*/
+ 	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
++	/*
++	 * MACRO_RST must be applied after the PLL_LOCK to avoid
++	 * the DP inter pair skew issue for at least 10 us
++	 */
++	analogix_dp_reset_macro(dp);
+ 	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
  
--	if (analogix_dp_get_pll_lock_status(dp) == PLL_UNLOCKED) {
--		dev_err(dp->dev, "PLL is not locked yet.\n");
--		return -EINVAL;
--	}
+ 	/* Setup RX configuration */
+@@ -565,12 +570,6 @@ static int analogix_dp_full_link_train(struct analogix_dp_device *dp,
+ 	int retval = 0;
+ 	bool training_finished = false;
+ 
+-	/*
+-	 * MACRO_RST must be applied after the PLL_LOCK to avoid
+-	 * the DP inter pair skew issue for at least 10 us
+-	 */
+-	analogix_dp_reset_macro(dp);
 -
- 	for (;;) {
- 		timeout_loop++;
- 		if (analogix_dp_is_slave_video_stream_clock_on(dp) == 0)
+ 	/* Initialize by reading RX's DPCD */
+ 	analogix_dp_get_max_rx_bandwidth(dp, &dp->link_train.link_rate);
+ 	analogix_dp_get_max_rx_lane_count(dp, &dp->link_train.lane_count);
+@@ -637,9 +636,12 @@ static int analogix_dp_fast_link_train(struct analogix_dp_device *dp)
+ 	u8 link_align, link_status[2];
+ 	enum pll_status status;
+ 
+-	analogix_dp_reset_macro(dp);
+-
+ 	analogix_dp_set_link_bandwidth(dp, dp->link_train.link_rate);
++	/*
++	 * MACRO_RST must be applied after the PLL_LOCK to avoid
++	 * the DP inter pair skew issue for at least 10 us
++	 */
++	analogix_dp_reset_macro(dp);
+ 	analogix_dp_set_lane_count(dp, dp->link_train.lane_count);
+ 	analogix_dp_set_lane_link_training(dp);
+ 
 -- 
 2.39.2
 
