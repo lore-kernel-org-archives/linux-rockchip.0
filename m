@@ -4,56 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F5B0C4345F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 11:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3668BC4345F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 May 2024 12:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sYN57U7lrs67Zgfr7Zuo5ibe9PlVgRBCbqEPy2RHEXs=; b=I7fTOhluOqYyJa
-	G5RyUWsRkhQFAvm+/1HkewcU3YjpQULmBJesuxxtY/vHG8JHBGibfrdNF4gwcJwEFVqWTsNjcYowU
-	9DfZ/FeHFbX9moriBm2rox6zWgZgCbzr4rqpfazv3cWBkVfemDBaFp3A4L5g8SQQWNmq0mh+kYE0x
-	EwGhwl3j49tCsc31Qe0ForO79Kaf1XR6o/4+0+c/vSTgePQi2HzEMgG1GdUFWZpWc6KKymcvYZpot
-	UkoVxLoJPb5cuI+Kjkg1ntg8J8uvzup8NcBBuPGgvzMDYo7JD7U0HmCrZc6EXhZhVpyYejg+zBzRS
-	F4Dqv995JRaMnXd0EOuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AeXJo43fNVgX7Kbq3u6bJqXFOZdEZwRZXkvv4dcvdzs=; b=UNp1HPOnBoPbgenX7kPDQs+/Ep
+	vHrqO6XpWGPkkjrQcDFRImViUIqDWmlBg7QSdnchqIHHcaXkISQtcSvw/hMUs17DvTeVDHXF8jKyx
+	69Ow5YQzp9PTnGnvBJM3BQhBTdC61QK3sgTEsUeR9nIXSa04aVIGTjS/386A7SqBtf9JhLacZ/Dhh
+	K3bHva9PRp9hHSYWyfHc+wquHl6W1PPkcRnbMfwNXlz32ciMRFZfsmrBjlc/pLt/zsQsRJ/vblzco
+	zwLeoqvGKYscMIoTOr7UhPlyuZcrqDLy6g2sxvxdG4YGZwvrBss+7blTkn8jg/oYF63g4DPiZwS2p
+	/v+dxiFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2rFr-0000000GHiP-0Dmf;
-	Fri, 03 May 2024 11:39:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1s2rnW-0000000GNhd-34J0;
+	Fri, 03 May 2024 12:13:54 +0000
+Received: from mail-db8eur05on20717.outbound.protection.outlook.com ([2a01:111:f400:7e1a::717] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s2rFc-0000000GHSU-1rnt;
-	Fri, 03 May 2024 11:38:54 +0000
-Received: from [213.70.33.226] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1s2rFR-0000Tc-Tg; Fri, 03 May 2024 13:38:42 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	efectn@6tel.net
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	krzysztof.kozlowski+dt@linaro.org,
-	sebastian.reichel@collabora.com,
-	Muhammed Efe Cetin <efectn@protonmail.com>,
-	linux-kernel@vger.kernel.org,
-	robh+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable GPU on khadas-edge2
-Date: Fri,  3 May 2024 13:38:23 +0200
-Message-Id: <171473602994.3469033.12209087270295782183.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240501142241.98554-1-efectn@6tel.net>
-References: <20240501142241.98554-1-efectn@6tel.net>
+	id 1s2rnS-0000000GNfm-3XSe;
+	Fri, 03 May 2024 12:13:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=a/AYvRlA3p1pPnV7i7gQPZrESMRwT0jYqxq4bXRvEnNNPJ0kt4na9yT0ob4B/KLEnku5BTdZ8To5o4S48VPOTB2g/2k/rOuR3wQkyUk1XFQI04JM26QcYFJ0suUR4vpA2HQFWZJy85FkN8l4f0EFeF2CNSw8Fakp5w3ly7VpOtEl9SZO3wrTk56h5E1C5TIytPA/CvH8rTZHGC1OZWLjRZfIN4kIlIGS2DwUmqJh3UjC1nTnn3VLFaHYTTrXCZMAJmn/sSSyb/9kcuG7jMG1Y/2kkgDpjeCjJVl+Ji7Uic1rZc8BBwkYmXRlKEkcSqoBR9Y6sGx+rIOZfbAyRsNcHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UkQQWDeC+Z1oTTQIq+wmmD8aCoOL7Buzzy4i/4wwYOk=;
+ b=TRmGwJ6b82nj2dfwT/khOWYShMiWYdlsN4xsAj2aVVWszPsyqEoxIlNs4OC+jswhsaKNFNZnGKDbe+XpKFLdspIjKj0E5T7I6vle+7KX5X926Vhr99V8gXQB9V1mxpmQwShbWn5oa1+ukE+L/P5SLDSEMh0gauzm6BgH/H/4Al9AVkaLVpcKTllOIJK4EvdKVtSYlRlZWjbDLtoFtNVFQOWn24PVt4YrGaA/F91ZOXAg4QZrrB3LlDzGv2zdZVQxeJl8LfTHczzHp6vBNE6KtzAqyKNxnRZPHjKjTHp1kHEdn0x6Oawh3mJGpX4q2DwzNGMjRWO6xyoSrRyjOyv2Qg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UkQQWDeC+Z1oTTQIq+wmmD8aCoOL7Buzzy4i/4wwYOk=;
+ b=MBiulqz1B97m2the2aaMzewtQ1okcScKZdyMmw/sXPK7g4J2oWCb9Mqx4uySuhnrz2lovVhW4myyAKUJqDSB/4uJSfJ+Rw33UD6PmQ4m3si65O8U9jIzmp7kF2hBz5Ry7BR1OXDLyO5uRLeSCEZAEOj7WBBNYPi0wAsmeEGiUQY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from DB7PR04MB4842.eurprd04.prod.outlook.com (2603:10a6:10:1b::13)
+ by PA2PR04MB10123.eurprd04.prod.outlook.com (2603:10a6:102:403::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7544.29; Fri, 3 May
+ 2024 12:13:40 +0000
+Received: from DB7PR04MB4842.eurprd04.prod.outlook.com
+ ([fe80::ac08:df46:97bd:4ae6]) by DB7PR04MB4842.eurprd04.prod.outlook.com
+ ([fe80::ac08:df46:97bd:4ae6%6]) with mapi id 15.20.7544.029; Fri, 3 May 2024
+ 12:13:40 +0000
+Message-ID: <cb73853e-4201-4cc9-9e8a-f977e66241f6@cherry.de>
+Date: Fri, 3 May 2024 14:13:37 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] drm/rockchip: vop2: fix rk3588 dp+dsi maxclk
+ verification
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20240425195506.2935955-1-heiko@sntech.de>
+ <20240425195506.2935955-2-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20240425195506.2935955-2-heiko@sntech.de>
+X-ClientProxiedBy: WA1P291CA0007.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::11) To DB7PR04MB4842.eurprd04.prod.outlook.com
+ (2603:10a6:10:1b::13)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB7PR04MB4842:EE_|PA2PR04MB10123:EE_
+X-MS-Office365-Filtering-Correlation-Id: 77eac953-ff15-48ff-c987-08dc6b6a77b5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|1800799015|366007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?RnZDR0V0VWlxUjJUbTRESWU2dmhraCt5M1dqcEEwMTY0dUtiZXpIVWFSNzF4?=
+ =?utf-8?B?K0RZeVpsRWVlSDNIcWtoMGRvUUl3NXdveit3dXllT1F1bkJGUWhIMTBsRjl2?=
+ =?utf-8?B?MWNtbXZWMkRGOTlhSmZVd3NIN3dTU0htSU1VM1lmcjdKN2dTd2dmZGl5NUpp?=
+ =?utf-8?B?bXh1NGRKU0dFZVU5Q2czai8ydXZxU0lrczM4eVlOZk9BVEQvYkVNUmcxcGRh?=
+ =?utf-8?B?RzFqTnc4TTFEdjRPaDBXdkplSzBzUkVaeFFCMnA1QVZxUWg4UHUyaW5qQVRj?=
+ =?utf-8?B?c1JIWWcvR1ZoWGhpR3hWd1NQaitpdXd0cXpxb3dia2lIazZUeW5Xajk4VDQz?=
+ =?utf-8?B?L0tvRTBEQUlQbCtpazMxUnpUaTVBYWR4NzlwRWNROXN2VXFvdUJKRmlPbDlK?=
+ =?utf-8?B?bFRZZGNPdzJQUlJJUWRGVE5ScFI2WU1VS2hoODBjaktRaHVDeXVlekR3VTFI?=
+ =?utf-8?B?Q1IxUCtkK3NvVWpKeTZlemQ1Z1dZYnNXTXVMUUNHb1E4cW4yN0o4UE9WUStp?=
+ =?utf-8?B?ZmJMMmxRUUVsREVuNmJuNzlzZ0dDNWo3T0VLWXF6NUhLeUJKVlBDd0cyM1dG?=
+ =?utf-8?B?MHNMUUJrR0FQTERHaS94WkR4eUFQcklUVUtFVU5wWUdma1NwNW9yWlBpcUpz?=
+ =?utf-8?B?MHl1Vi9PSEVvbExtUVMrUVJKdEdYUmoralFlTUJhK2ZFaWZkWjNNWmVjSTVT?=
+ =?utf-8?B?NDRIWDNkSG9tOWd1UFJzSktHTmQ2NHM2TUpub0gxcGVGdm5ITHVhZ1ZRbzkz?=
+ =?utf-8?B?MGxBK043eVRvbWdKQlZXZW90ZWY0bm9BN1FzL3FhalN2QTJyNG1pMjNSWWFt?=
+ =?utf-8?B?bmc2dFJnSWRZZmRYSHBoYzM4b25PZ1hYdFRtY0R0WTNjYW90R3lsQ1BLcGZD?=
+ =?utf-8?B?V3BlaWdDUmMyQ1hMOGE0V3FzejJ5NW1yZ202MVMvY3dJSk9OOURqNUlYaTM4?=
+ =?utf-8?B?Y2hBRDdVNVFtc0RXT0xmSkl3QUJONTc5MW1PRHpVU2FQdlB4OThBNitZUUpp?=
+ =?utf-8?B?L0Nud1hPMEtoZ1NyNmd1ejROcXdnYU1DWmRobHA2RjVIQXBXbFdQL284OWNG?=
+ =?utf-8?B?TEZUOThLMnhKOTdEY2czTFRGamhwcDU2bWpoY2paWEdtZ1FHdTBhMDRjZ2xM?=
+ =?utf-8?B?YXpTWXp6T3VjdVlad1BoYTVidmd4TkVNaERKRXgrOCtKWUMveVpUc2E2SE9z?=
+ =?utf-8?B?KzMydW5tMGZrYjlya1M2aUxKWG5iL0puQVlQYU1XWDJzMTdNQ3ZGRytrYmsz?=
+ =?utf-8?B?NEo2bkE0OWxXd1FqazAreG1nRVpsbGt3cTNQSkJ0OUVXUE5vd3I1Wjd0d1Ay?=
+ =?utf-8?B?VDRTZUtPU3prS2FmT1lRU1hNay9MQ0t4bmRqQk9ITmJFOHFqVUpraVJYWU1k?=
+ =?utf-8?B?YUV1V3RqYXByc1hXcnRyZXo1ZGJtVUNaS2FmbGUwNEwxaDR4M3U4OGd5QTJL?=
+ =?utf-8?B?dHROV1R3SkpiRWpqdzU5RkdYLzYzZ1hTTmVNNFVIVjg4WnRQMTREbG0wM2g2?=
+ =?utf-8?B?RFhucWNvTnlxL2d5ajNHa3Z4aGhXWXdNUnZ0SGZuK2lCNnkxendnQmMvTWgr?=
+ =?utf-8?B?cDJTWDVhZFl5SE55YmVZcmxYcWIrcmw5RUVlTmNMdnd5c0xsajVnL1lKaVZB?=
+ =?utf-8?B?eWpETTdzNUcyQlhHODBzdzBNOVlQcWdjRndyN0x1NmM3bGQ0bVdNUUhNYVFB?=
+ =?utf-8?B?UFhuVUZjUVpLQnVZTGZIQ2ROV0tpT0FuMDlKeGZsTnYyMS9hMGo3R0NRPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB7PR04MB4842.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376005)(1800799015)(366007);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VCtRVlhCaHFsTVBrTElMTUF3NE1RTDFDYUNhYkZtZzhoL0NZdHVjT3Y4ckJv?=
+ =?utf-8?B?Z2xtdnEzdFA4M1lqWEc2QVRhWVJwZC85b1FFY082QUN4NFoyd3JWS1dVK29U?=
+ =?utf-8?B?UnE0dSthb3krRTQ0UDQ1eDU0aXZoV3ROVzYzWEk4ZlNqSmU1eGN3dTVUbUIz?=
+ =?utf-8?B?am51QUpqYjNnS1R6eDR5QVMxOGFXNUw0alBmdGN5NXpHRm1BVGcwNDhPd1Rw?=
+ =?utf-8?B?czEwT0ZjUW1wNFQ2TlVWSjdHU3gxWW5ENTkwbHN3ZTdCcTFZaForMWdiNFNy?=
+ =?utf-8?B?V3RaazV5TXRwMmJRQ0xZL2xUM2ZYenliN1BrbjRPUWJPUFFqVUxFRGNUZVNz?=
+ =?utf-8?B?SDJxbDNBRWdsZVBITFhLb3FPZUJQNFUxR3hZMmoxazEzVzhsZTBvQTZ1VGNS?=
+ =?utf-8?B?OEdaOE5VWlBCMTRPcDdrakt2SmVrWVpqUVFhcFBSYUljSXFPdFVaR0V2RVJ6?=
+ =?utf-8?B?QWJEa0MvWGxSWTZlRnpIayt0S0xnTTZKR1NJbWtVNnBsWG9SQ3JvQmVsSWll?=
+ =?utf-8?B?YTlxaUJjR3RBeWNkR3lMajhPRVY4ODNVbnhMOU5KRHlRTCs2UitxQ1VPckJX?=
+ =?utf-8?B?UFJYSHorb1R5M3libUh0QmMzVGxUL09NY2pOdDR5UE03M084aCszeDdpNmRT?=
+ =?utf-8?B?TVpPUG8rVlUwalkyMzJHQytLQ0FkTGRqNG8wYkFwSTFRNSt3MDI0YmEzU291?=
+ =?utf-8?B?TWRxb0ZpOXpWTmk5ZlVWTjQ3SG0xNEx3bmg0ckdycGozK3JabzJ6SjgvSnBO?=
+ =?utf-8?B?MTVOUElPSTcrWXMraXgrMkVtR25WSWRQMTI5TWR2cTBVM05vNVVFUndhODRK?=
+ =?utf-8?B?T1ovQ1oxNmJady9MVVNVbUt1K0grWlpTaHNwbERKaWJuNENGckl0Z0RHVXpw?=
+ =?utf-8?B?djB4T25uNTVhZmx6S3RRbnlaYy8wekh6WGRPenh0YS9qQWozRW43Mi9Iekth?=
+ =?utf-8?B?cmI5Y0FYSWVhM2MzQlhwMmk3TnE1WlRpcHNDdklaWWlLTTZYSDRVaFdxV0hy?=
+ =?utf-8?B?ZGhOM0ZsK0p1b3BFL2JsTitleHBTYk1LdExZQW9BbENSOExHbEpnOEV5VjhT?=
+ =?utf-8?B?Z3U1aG9LZlJ5RWtJWFFLdEZ6alFLeHM3WWxjRVlWM1VjdVFWd3JXOEZ4MWUw?=
+ =?utf-8?B?UGtsa0RlZEx3TitieWVTRDB1b1MrcjJMbzlya24va1llOFBYNHBMVHJocWNM?=
+ =?utf-8?B?blUrME5sV0wwMDIwZEx1RVpvdWowS25TMDZLZit2b2c5VE9jYnNiY3ZjSE9S?=
+ =?utf-8?B?TXlCREtJWUovQlMvRmtWd3M2SWh5UXNmYlVlZlVKOTZSUWFXZWxjYi9Ebmda?=
+ =?utf-8?B?elM4VnRJdEMwQkF3OHpxMW9WREpNczBpTHZZaUxhdjdZL3VWVXJ3eGxqN1JH?=
+ =?utf-8?B?eFpYK1RBSXpVWFh5djEwSnpvSDJUbVNjMU1BZGFRMVR5dXFwdTlvbFhsREpB?=
+ =?utf-8?B?VXFrQlBnNjVMRm1IR29FcmpCcFdlSHJ5dGJrcnJqZXNUdWlvTVR2Uk1Kd1I3?=
+ =?utf-8?B?Yyt6aFlYdy9UcWdVQ3JxU3hoUWpDdFJMcFBwRk0vVldwaWJDdjF4cjJHb1dH?=
+ =?utf-8?B?RUVmZUpMemEranpqaTFRbFp2a3dYU1g4bmFzU0IwTEpscGNaL3dFdm45bkRo?=
+ =?utf-8?B?c2llWUtQMHdieDdld2FudUU1ZXJvTTJVd1cvSG4wUDZzTWV4WnZJUjZmdHhP?=
+ =?utf-8?B?bGN2aWkrSnJoV21YdUMwWUJnY3pHRTVralRXWis2eW5YNTBtUytUeGU4dXNZ?=
+ =?utf-8?B?WkhPWEJ2bHNXWEU2b2R4MkRpaHp2YmJUSisyVWlLWDNLa2xiOERGeVhCbzNr?=
+ =?utf-8?B?THM4eGZ4Szlsb0tWN2JMSDFRZEJ1SGRpN2dtVzRiVGJxbVA1bXB1R2lXVWJQ?=
+ =?utf-8?B?akJvZlVMUFNLcC9HeGtRUlRncjVlNVR3dkU2MW02Wjg3TnVTS01GSndGbzEy?=
+ =?utf-8?B?RFBBWGRKQTVBMmF5b2JBdWVDOVZSWERmVFl5cDZ0NXZnNnRudEJwdXBhcnVM?=
+ =?utf-8?B?VCtvNDdsVm1QRW5xMytKWEh2VGVPb3lreXQydmVVRVFIUWVlWDhDN0RKMTRP?=
+ =?utf-8?B?MUtDVGZkb3JmVFJxUk5OUlpjbmJkdzNvRWthcWxKdlEwdG4vUWF1OXFVZ0VU?=
+ =?utf-8?B?RDc0VTVENmtucGtvUHR2YlJzNnY3L0xRRWRtcjZVVWMxcjFGdDRvRzBiUnNl?=
+ =?utf-8?B?cnc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 77eac953-ff15-48ff-c987-08dc6b6a77b5
+X-MS-Exchange-CrossTenant-AuthSource: DB7PR04MB4842.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 May 2024 12:13:40.0432
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JVixKWnqChLmwhX4C6jYix7emsLPkI4EMxNlDZNVM3etQ6gsbMgzdfVWM617GBXOsXNC9kCybPOwu9AFDIsaoySUXIGwG1DP0vBqye4qgTI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA2PR04MB10123
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240503_043852_553380_317B810C 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240503_051351_233330_7372E5EE 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,26 +170,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 1 May 2024 17:22:41 +0300, efectn@6tel.net wrote:
-> From: Muhammed Efe Cetin <efectn@protonmail.com>
-> 
-> Enable the Mali GPU node on Khadas Edge 2.
-> 
-> 
+Hi Heiko,
 
-Applied, thanks!
+On 4/25/24 9:55 PM, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> The clock is in Hz while the value checked against is in kHz, so
+> actual frequencies will never be able to be below to max value.
+> Fix this by specifying the max-value in Hz too.
+> 
+> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 9bee1fd88e6a2..523880a4e8e74 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1719,7 +1719,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   		else
+>   			dclk_out_rate = v_pixclk >> 2;
+>   
+> -		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
+> +		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
+>   		if (!dclk_rate) {
+>   			drm_err(vop2->drm, "DP dclk_out_rate out of range, dclk_out_rate: %ld KHZ\n",
 
-[1/1] arm64: dts: rockchip: enable GPU on khadas-edge2
-      commit: 4aae6cdd61aa0daa2f01d1660be8f22b88b61929
+It seems the error message is incorrect as well and should be saying Hz 
+instead of KHz. (note also the lowercase z).
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+>   				dclk_out_rate);
+> @@ -1736,7 +1736,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   		 * dclk_rate = N * dclk_core_rate N = (1,2,4 ),
+>   		 * we get a little factor here
+>   		 */
+> -		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000);
+> +		dclk_rate = rk3588_calc_dclk(dclk_out_rate, 600000000);
+>   		if (!dclk_rate) {
+>   			drm_err(vop2->drm, "MIPI dclk out of range, dclk_out_rate: %ld KHZ\n",
+
+Ditto.
+
+Otherwise,
+
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+
+Thanks!
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
