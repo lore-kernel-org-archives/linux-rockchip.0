@@ -4,57 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6619C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 17:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC91C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 19:44:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YuM5Z6L0Yk0LYQ4vFHonqfls3gTsgITSnUSxA7dScBE=; b=jG+SOFcwO6Cn68
-	gergMPiJQntVDO3S5/CwVwzdmf3GxaiyXqrpXYcOjy1ppU91DJPKjaMD9fcdEFskO9e9Y9Y2zfKWE
-	4O0r9QUs9Ur23L5Wbcyp7/7CnmuGMsP/Y2AGfGldNrDG6obGZpfaALpRn7kbosRZjYu7HLvLdy8ui
-	zYhi2eBdKfxN/vNN8UAS/bqpSRWAFH+SJ6tprtPTQJR8AJZ8rupnMugxcxdKWiGM5yxlgKrD7yL2W
-	Q81DyXgIslpxcuzNPW9CLz1Xs5OP2uP9VfOWNZE/xmXBCZvTney92u8HRmIfZR4lLfjpOZUBlenzF
-	55zqBqW9AV0bHJj85lUA==;
+	List-Owner; bh=hqVUihMrJXNn97rc7/gML4t3C/AdsxwuqU1z5uuoev0=; b=k1r7gLzHQ/dbN0
+	bgfaTyFtO39E6ucVBinosNdHrysMSonTakT2QpCjDvfboEaTuhci2WfDUWnQgxPxcelQ2KZ1aQE9r
+	+u7PPorIaonaXs4QxVeCiCr7BJ797S0GRgOgXzYNtJEWXk4X3dt0SQ96tGFuBD/c8WuktLoXGW09O
+	uw6sxfBY+WqKzQ4DHjBgGWCSDpNX6+lRoq0lWKxa/higrLiI0u2jcPWBH+NmOrPYFlFENxmoYruhK
+	XJcFSUTO/8VFKlNYQKQR92F8Oo9kRHI0/UQ5A3ENiu6enngr2ZuffwPll253u0VsnbW8pHJFOhIO1
+	lku6N/CQ237fyaQTseGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s42WV-00000008IhC-1YhX;
-	Mon, 06 May 2024 17:53:11 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1s44Fr-00000008YDU-2g5q;
+	Mon, 06 May 2024 19:44:07 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s42WR-00000008IeN-0rtl
-	for linux-rockchip@lists.infradead.org;
-	Mon, 06 May 2024 17:53:08 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BD5731211;
-	Mon,  6 May 2024 19:53:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1715017984;
-	bh=TnNuQX2g0PtHRgzNjj1qruspQOLkETZhXtGC/kAGMIs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=py8S/sp6nYZTH20Bl4ddC+yS7WxqFIbyWpZb5SYybtwwagF8CuytwQotAY3haJkhl
-	 c+e1K+cuxTry+ZyT0dtPfagfEuU0j5f96pJk6wPEQKqyKFnANWNHFJ3c8euEQ64aWC
-	 1eBoafLonz2up1HjC21DFKdAUJP0CR3HW0GNrc+s=
-From: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: linux-renesas-soc@vger.kernel.org,
-	Sakari Ailus <sakari.ailus@iki.fi>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 1/2] media: v4l2-subdev: Provide const-aware subdev state accessors
-Date: Mon,  6 May 2024 20:52:54 +0300
-Message-ID: <20240506175255.24394-2-laurent.pinchart+renesas@ideasonboard.com>
+	id 1s44Fm-00000008Y95-0DEZ;
+	Mon, 06 May 2024 19:44:03 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-51f1bf83f06so2789645e87.1;
+        Mon, 06 May 2024 12:44:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715024639; x=1715629439; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hiy2vL57H3KzFyuIeojalhw0sromROUcEPl800VpgDs=;
+        b=Rrder2MuI52lWOtoYr+73a8g7wKFHIMHA6GVzdgscT3ZZsdcphPvMVTRRaaqUm+mDD
+         uQNfXvHaLBW/TUvNBl5Jim2MbybFD8iGbmnWpudZyXZYIsNFIPqMQD2HEfnRvwM7A+pw
+         SLxQKCa5joji4HibU0O48JpNDwibHiwdKUIh3gTRNpPqkt84LRQYfjCu7byG7+DH9H8C
+         8fd5gJ1RGWEvN9L808BQ6TNOMzTgrvUB84U3s/4DSMF5o+kYN7jRJAHKXw2sIWrNUgZl
+         OYo6J198N+GwmMEayl7F0vGu1virQYGWgudhnm2kZAwpmlwDfW8am1LT0V6gB9W0VNz+
+         UaQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715024639; x=1715629439;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hiy2vL57H3KzFyuIeojalhw0sromROUcEPl800VpgDs=;
+        b=QPoUTdzICsTM6jYEwU7AsG/fEmZWvmI7CGbeAREOsGKId+257aQE4RXjQuUrcyhbPv
+         uGBL53CvZNnvgoTZiOwBVDMVM4svWum93VpMgG9Bmm17+7fbLUbpfXPuZ/nq/BF0K+ED
+         /wPjuaFHHjW1OuO4ecyD9ANzx3lxj1EADLDPEipJ8cqwOvOxxzI1bUaCaZTeseR//Ueo
+         Mbg0If75wWnTQf4V9C9Jz9TDJukh4t4CHEcvJV7yuzGsIEbQWHRXeuKcxyt3kCAX2CDH
+         +iSP4Ng4rkSYniRBiCGFcayvftvVTEEblXp8iIuX8aBWz/4lN8JK9w48sBJelyG86FAY
+         ghoA==
+X-Forwarded-Encrypted: i=1; AJvYcCWoBb5eSg22roDNULr6kXks+xMsIRgm3tYaYiRnsDMvfYJESzD9iSKcnzST8iycMchR2qm35UfCgPScYTZJXwMSNCSxTPYugmAUl+Q1niwoU47RoilhHXSKvX4dxdtvWTG/zWsrb/7PNVTlFEvtaT48pkuQsLXj1Xo=
+X-Gm-Message-State: AOJu0Yw+1TocJ9VUPj/57P8hR3Tj60QMeNaRpEmMeSXa8Wu1Lh562ePW
+	10+357wtfOC0ZxMReXG0MJDMrI1Abr2g+ucvxLpALhmO7IUN/Fk=
+X-Google-Smtp-Source: AGHT+IE3JAd8h4TS07pAYS2PxovxmJduheJelK1ti9csXaOuNGCuxVp7c/O9qhjmBPiNhSTXCswuGQ==
+X-Received: by 2002:a05:6512:2090:b0:515:9abe:6c46 with SMTP id t16-20020a056512209000b005159abe6c46mr6362105lfr.34.1715024638800;
+        Mon, 06 May 2024 12:43:58 -0700 (PDT)
+Received: from U4.lan ([2a02:810b:f40:4600:1c62:e77:6753:5729])
+        by smtp.gmail.com with ESMTPSA id f13-20020a1709067f8d00b00a59d146f034sm1367321ejr.132.2024.05.06.12.43.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 May 2024 12:43:58 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>
+Cc: dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 1/7] dt-bindings: display: rockchip,dw-mipi-dsi: Document RK3128 DSI
+Date: Mon,  6 May 2024 21:43:36 +0200
+Message-ID: <20240506194343.282119-2-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240506175255.24394-1-laurent.pinchart+renesas@ideasonboard.com>
-References: <20240506175255.24394-1-laurent.pinchart+renesas@ideasonboard.com>
+In-Reply-To: <20240506194343.282119-1-knaerzche@gmail.com>
+References: <20240506194343.282119-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_105307_756228_7F555B0A 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20240506_124402_110291_AAE453C1 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,215 +110,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It would be useful to mark instances of v4l2_subdev_state structures as
-const when code needs to access them read-only. This isn't currently
-possible, as the v4l2_subdev_state_get_*() accessor functions take a
-non-const pointer to the state.
+Document the MIPI DSI controller for Rockchip RK3128. The integration is
+similar to PX30 so it's bindings-constraints can be re-used.
 
-Use _Generic() to provide two different versions of the accessors, for
-const and non-const states respectively. The former returns a const
-pointer to the requested format, rectangle or interval, implementing
-const-correctness. The latter returns a non-const pointer, preserving
-the current behaviour for drivers.
-
-Signed-off-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
-Bike-shedding about names and the 4 leading underscores is allowed (and
-expected).
----
- drivers/media/v4l2-core/v4l2-subdev.c | 24 +++++-----
- include/media/v4l2-subdev.h           | 66 ++++++++++++++++++---------
- 2 files changed, 57 insertions(+), 33 deletions(-)
+ .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml         | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/v4l2-core/v4l2-subdev.c b/drivers/media/v4l2-core/v4l2-subdev.c
-index 83c6d1e36871..af1fbc28c8f0 100644
---- a/drivers/media/v4l2-core/v4l2-subdev.c
-+++ b/drivers/media/v4l2-core/v4l2-subdev.c
-@@ -1616,8 +1616,8 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd)
- EXPORT_SYMBOL_GPL(v4l2_subdev_cleanup);
- 
- struct v4l2_mbus_framefmt *
--__v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
--			       unsigned int pad, u32 stream)
-+____v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-+				 unsigned int pad, u32 stream)
- {
- 	struct v4l2_subdev_stream_configs *stream_configs;
- 	unsigned int i;
-@@ -1647,11 +1647,11 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
- 
- 	return NULL;
- }
--EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_format);
-+EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_format);
- 
- struct v4l2_rect *
--__v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
--			     u32 stream)
-+____v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-+			       u32 stream)
- {
- 	struct v4l2_subdev_stream_configs *stream_configs;
- 	unsigned int i;
-@@ -1681,11 +1681,11 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
- 
- 	return NULL;
- }
--EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_crop);
-+EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_crop);
- 
- struct v4l2_rect *
--__v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
--				unsigned int pad, u32 stream)
-+____v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-+				  unsigned int pad, u32 stream)
- {
- 	struct v4l2_subdev_stream_configs *stream_configs;
- 	unsigned int i;
-@@ -1715,11 +1715,11 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
- 
- 	return NULL;
- }
--EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_compose);
-+EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_compose);
- 
- struct v4l2_fract *
--__v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
--				 unsigned int pad, u32 stream)
-+____v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-+				   unsigned int pad, u32 stream)
- {
- 	struct v4l2_subdev_stream_configs *stream_configs;
- 	unsigned int i;
-@@ -1751,7 +1751,7 @@ __v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
- 
- 	return NULL;
- }
--EXPORT_SYMBOL_GPL(__v4l2_subdev_state_get_interval);
-+EXPORT_SYMBOL_GPL(____v4l2_subdev_state_get_interval);
- 
- #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
- 
-diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
-index e30c463d90e5..ba722ab501c1 100644
---- a/include/media/v4l2-subdev.h
-+++ b/include/media/v4l2-subdev.h
-@@ -1340,21 +1340,27 @@ void v4l2_subdev_cleanup(struct v4l2_subdev *sd);
-  */
- /*
-  * Wrap v4l2_subdev_state_get_format(), allowing the function to be called with
-- * two or three arguments. The purpose of the __v4l2_subdev_state_get_format()
-+ * two or three arguments. The purpose of the __v4l2_subdev_state_gen_call()
-  * macro below is to come up with the name of the function or macro to call,
-  * using the last two arguments (_stream and _pad). The selected function or
-  * macro is then called using the arguments specified by the caller. A similar
-  * arrangement is used for v4l2_subdev_state_crop() and
-  * v4l2_subdev_state_compose() below.
-  */
--#define v4l2_subdev_state_get_format(state, pad, ...)			\
--	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)	\
-+#define v4l2_subdev_state_get_format(state, pad, ...)				\
-+	__v4l2_subdev_state_gen_call(format, ##__VA_ARGS__, , _pad)		\
- 		(state, pad, ##__VA_ARGS__)
--#define __v4l2_subdev_state_get_format_pad(state, pad)	\
-+#define __v4l2_subdev_state_get_format_pad(state, pad)				\
- 	__v4l2_subdev_state_get_format(state, pad, 0)
-+#define __v4l2_subdev_state_get_format(state, pad, stream)			\
-+	_Generic(state,								\
-+		const struct v4l2_subdev_state *: ((const struct v4l2_mbus_framefmt *)	\
-+			____v4l2_subdev_state_get_format((struct v4l2_subdev_state *)state, pad, stream)), \
-+		default: ____v4l2_subdev_state_get_format((struct v4l2_subdev_state *)state, pad, stream) \
-+	)
- struct v4l2_mbus_framefmt *
--__v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
--			       unsigned int pad, u32 stream);
-+____v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-+				 unsigned int pad, u32 stream);
- 
- /**
-  * v4l2_subdev_state_get_crop() - Get pointer to a stream crop rectangle
-@@ -1368,14 +1374,20 @@ __v4l2_subdev_state_get_format(struct v4l2_subdev_state *state,
-  * For stream-unaware drivers the crop rectangle for the corresponding pad is
-  * returned. If the pad does not exist, NULL is returned.
-  */
--#define v4l2_subdev_state_get_crop(state, pad, ...)			\
--	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)	\
-+#define v4l2_subdev_state_get_crop(state, pad, ...)				\
-+	__v4l2_subdev_state_gen_call(crop, ##__VA_ARGS__, , _pad)		\
- 		(state, pad, ##__VA_ARGS__)
--#define __v4l2_subdev_state_get_crop_pad(state, pad)	\
-+#define __v4l2_subdev_state_get_crop_pad(state, pad)				\
- 	__v4l2_subdev_state_get_crop(state, pad, 0)
-+#define __v4l2_subdev_state_get_crop(state, pad, stream)			\
-+	_Generic(state,								\
-+		const struct v4l2_subdev_state *: ((const struct v4l2_rect *)		\
-+			____v4l2_subdev_state_get_crop((struct v4l2_subdev_state *)state, pad, stream)), \
-+		default: ____v4l2_subdev_state_get_crop((struct v4l2_subdev_state *)state, pad, stream) \
-+	)
- struct v4l2_rect *
--__v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
--			     u32 stream);
-+____v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-+			       u32 stream);
- 
- /**
-  * v4l2_subdev_state_get_compose() - Get pointer to a stream compose rectangle
-@@ -1389,14 +1401,20 @@ __v4l2_subdev_state_get_crop(struct v4l2_subdev_state *state, unsigned int pad,
-  * For stream-unaware drivers the compose rectangle for the corresponding pad is
-  * returned. If the pad does not exist, NULL is returned.
-  */
--#define v4l2_subdev_state_get_compose(state, pad, ...)			\
--	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)	\
-+#define v4l2_subdev_state_get_compose(state, pad, ...)				\
-+	__v4l2_subdev_state_gen_call(compose, ##__VA_ARGS__, , _pad)		\
- 		(state, pad, ##__VA_ARGS__)
--#define __v4l2_subdev_state_get_compose_pad(state, pad)	\
-+#define __v4l2_subdev_state_get_compose_pad(state, pad)				\
- 	__v4l2_subdev_state_get_compose(state, pad, 0)
-+#define __v4l2_subdev_state_get_compose(state, pad, stream)			\
-+	_Generic(state,								\
-+		const struct v4l2_subdev_state *: ((const struct v4l2_rect *)		\
-+			____v4l2_subdev_state_get_compose((struct v4l2_subdev_state *)state, pad, stream)), \
-+		default: ____v4l2_subdev_state_get_compose((struct v4l2_subdev_state *)state, pad, stream) \
-+	)
- struct v4l2_rect *
--__v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
--				unsigned int pad, u32 stream);
-+____v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-+				  unsigned int pad, u32 stream);
- 
- /**
-  * v4l2_subdev_state_get_interval() - Get pointer to a stream frame interval
-@@ -1410,14 +1428,20 @@ __v4l2_subdev_state_get_compose(struct v4l2_subdev_state *state,
-  * For stream-unaware drivers the frame interval for the corresponding pad is
-  * returned. If the pad does not exist, NULL is returned.
-  */
--#define v4l2_subdev_state_get_interval(state, pad, ...)			\
--	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)	\
-+#define v4l2_subdev_state_get_interval(state, pad, ...)				\
-+	__v4l2_subdev_state_gen_call(interval, ##__VA_ARGS__, , _pad)		\
- 		(state, pad, ##__VA_ARGS__)
--#define __v4l2_subdev_state_get_interval_pad(state, pad)	\
-+#define __v4l2_subdev_state_get_interval_pad(state, pad)			\
- 	__v4l2_subdev_state_get_interval(state, pad, 0)
-+#define __v4l2_subdev_state_get_interval(state, pad, stream)			\
-+	_Generic(state,								\
-+		const struct v4l2_subdev_state *: ((const struct v4l2_frac *)		\
-+			____v4l2_subdev_state_get_interval((struct v4l2_subdev_state *)state, pad, stream)), \
-+		default: ____v4l2_subdev_state_get_interval((struct v4l2_subdev_state *)state, pad, stream) \
-+	)
- struct v4l2_fract *
--__v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
--				 unsigned int pad, u32 stream);
-+____v4l2_subdev_state_get_interval(struct v4l2_subdev_state *state,
-+				   unsigned int pad, u32 stream);
- 
- #if defined(CONFIG_VIDEO_V4L2_SUBDEV_API)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+index ccf79e738fa1..ccd71c5324af 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+@@ -15,6 +15,7 @@ properties:
+     items:
+       - enum:
+           - rockchip,px30-mipi-dsi
++          - rockchip,rk3128-mipi-dsi
+           - rockchip,rk3288-mipi-dsi
+           - rockchip,rk3399-mipi-dsi
+           - rockchip,rk3568-mipi-dsi
+@@ -77,6 +78,7 @@ allOf:
+           contains:
+             enum:
+               - rockchip,px30-mipi-dsi
++              - rockchip,rk3128-mipi-dsi
+               - rockchip,rk3568-mipi-dsi
+               - rockchip,rv1126-mipi-dsi
  
 -- 
-Regards,
-
-Laurent Pinchart
+2.43.2
 
 
 _______________________________________________
