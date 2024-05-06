@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A353C25B10
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C73A7C25B10
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,50 +13,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=MeepmX1PS+Z3etjCeyuuhgbJXWq4Fz6gJ/gOD8Q9N0o=; b=TbWLD6AHgtF6hR1mkY1rcebhxL
-	0Sp5GnLrar0aN1JEpAaLltsafQ2fXMxQtTzXRcchMjs/TXX3LEBxp25w5na+ZVU3X4m7ArpK01oGj
-	9aP6N+2kkJ7X7kVDlgelyu6TOfz0bnXUYX13qG870NnHYuLfK6N4SMA+UsbOXwDZasAQps1nqcS3H
-	KSNTTVDLvKCr2ToGLFNFDfuQjEPZfk2wCLLHMRKg6dKIDk4ZFeLv5+ueoe9iNtrvmxFbJyumoiHWv
-	y2KRMv/YGSsoFkCLA8gIk1VBwYQDTtHEgoVa1lIVJCcxAhAvFg3XmqxZsHPkxD5Obxf3rkTLQVMeB
-	LIqOb9/g==;
+	bh=0g109qf+CwGXtjB3YCNdKvNTYPwQYD+HOiy7SXXtCok=; b=QRGHJ6JlPeXRZvOkpp1xVUmmUG
+	l055bpXy566ykhWS8Zmwtj2hPlBSwGTVJmLsrHdUlRYqOwBwQO02Xq5aPZ6kh/jYr+yO5QSBiYT96
+	FXHmhhN5Z+eBFWnHLO6jEfksLTEbPNTSvdR5GSvh/3jmOp2da8OIwmKF5L2bafxRV6APREpt2Fmtz
+	dbGK3aYKdX+oU//V8/yq1eX0l3DRq070NMKoWGa0knM0SragvMAYp9GdPhhzYQMeLtXXFKSRRcNEj
+	Mq4Aiiw/Vz2EWVYD84y/1aKczTchJbybb632QtZYqBaro00F9kIpgV1W5TnaTudYcjmIw8EcmnK7R
+	p0M6PFvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s458W-00000008hQi-1Fdx;
-	Mon, 06 May 2024 20:40:36 +0000
+	id 1s458d-00000008hWC-3JNB;
+	Mon, 06 May 2024 20:40:43 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s458Q-00000008hNR-0vw5;
-	Mon, 06 May 2024 20:40:32 +0000
+	id 1s458W-00000008hQn-3sst;
+	Mon, 06 May 2024 20:40:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ABC4A6147B;
-	Mon,  6 May 2024 20:40:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 320EFC3277B;
-	Mon,  6 May 2024 20:40:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6EBCB6145B;
+	Mon,  6 May 2024 20:40:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0A1DC4AF67;
+	Mon,  6 May 2024 20:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715028029;
-	bh=W8JyiNuyGZ1ybRJ7NFoFHEw6kBYOtJo8wyxLY7egqCo=;
+	s=k20201202; t=1715028036;
+	bh=+vK6cEbZRHBbjIHqnVT2sOnHYT4Yyy5hSCTEpe7Wizs=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=EYlx/Ohz1LjUbmhzjGNEQ5sRbyH5aqCD1S0QtP44gkn0/P9SXLR2AxFTke0JWlI7m
-	 p3qH3dZQ9pg/ScHDWSfZSkFM1S//fgw8EF8GyiX+YAZRZQHBk+nUw2fGZJtisZncPd
-	 Di0rPOqMqWv9HG7ewBP7SrC2v+A37ppHeNveZEU6hAaaxaZqNCuel1L1in+GkGN7Uh
-	 XhlDPVa2FrDGwkUcz6F9WMONkx/wEvc57gQTfbxmXeNpm7vitY1Pjhxx2JLooxaobs
-	 GJA0gGzPwclTy1I2qveq6U5M8oZFEXjV9BXu7RkwOplVq3b4JpUM554v9XQg0A7xz/
-	 He6ZOW75cC5DA==
-Date: Mon, 06 May 2024 15:40:27 -0500
+	b=mx6DVh5fDjjEvG9Z9+FSsL4fi9y/Tyeo+AhPoN5Zu5OGveJugoshd6ejrtu1uw60s
+	 3XoM7m/1LxjR6VCmSOsxWkqjchxr4JrvzFtwqQtUA+IvmPBaAMzOc1Eu69Mra9C3hU
+	 /DVOyvyi3lVXFD4GQqKVIgyFHBFfg51OdTB+OFN1boGx4KzFoQ/8ewL+x2MPmVSH9d
+	 XFOV6l7YT/osUekMz3PIQHWsOkjEuL+KGqL7fM4T6Esnk//StHRRjz//lIeKtv1IL9
+	 il5TuUdrQini8h/AciCh6k+nTokAXGWDY20wGKRvwlV00xRqrV9EO7uQGrnyin48gy
+	 PGHIIXIDWP3YQ==
+Date: Mon, 06 May 2024 15:40:34 -0500
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20240505202522.2999503-1-jonas@kwiboo.se>
-References: <20240505202522.2999503-1-jonas@kwiboo.se>
-Message-Id: <171502764382.89564.9287218118633077994.robh@kernel.org>
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add Xunlong Orange Pi 3B
+To: Farouk Bouabid <farouk.bouabid@cherry.de>
+Cc: linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, 
+ Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>, 
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+ linux-kernel@vger.kernel.org, 
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ linux-arm-kernel@lists.infradead.org, Peter Rosin <peda@axentia.se>, 
+ Quentin Schulz <quentin.schulz@cherry.de>, devicetree@vger.kernel.org
+In-Reply-To: <20240506-dev-mule-i2c-mux-v2-0-a91c954f65d7@cherry.de>
+References: <20240506-dev-mule-i2c-mux-v2-0-a91c954f65d7@cherry.de>
+Message-Id: <171502764639.89716.24967031696813886.robh@kernel.org>
+Subject: Re: [PATCH v2 0/7] Add Mule I2C multiplexer support
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_134030_326790_A875875E 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20240506_134037_104804_25642634 
+X-CRM114-Status: GOOD (  27.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,26 +79,103 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 05 May 2024 20:25:15 +0000, Jonas Karlman wrote:
-> This series adds initial support for the Xunlong Orange Pi 3B board.
+On Mon, 06 May 2024 13:37:51 +0200, Farouk Bouabid wrote:
+> Mule is an mcu that emulates a set of i2c devices which are reachable
+> through an i2c-mux.
 > 
-> The Xunlong Orange Pi 3B is a single-board computer based on the
-> Rockchip RK3566 SoC.
+> The emulated devices share a single i2c address with the mux core itself
+> where the requested register is what determines which logic is executed
+> (muxing logic or device logic):
 > 
-> Schematic for Orange Pi 3B can be downloaded from:
-> http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-3B.html
+> 1- The devices on the mux core can be selected (muxing functionality) by
+> writing the appropriate device number to an i2c config register (0xff)
+> that is not used by any device logic.
 > 
-> Jonas Karlman (2):
->   dt-bindings: arm: rockchip: Add Xunlong Orange Pi 3B
->   arm64: dts: rockchip: Add Xunlong Orange Pi 3B
+> 2- Any access to a register other than the config register will be
+> handled by the previously selected device.
 > 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  .../boot/dts/rockchip/rk3566-orangepi-3b.dts  | 694 ++++++++++++++++++
->  2 files changed, 699 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dts
+>       +-------------------------------------------------------+
+>       |  Mule                                                 |
+>       |        +---------------+                              |
+>     ----+-(1)->|Config register|-----+                        |
+>       | |      +---------------+     |                        |
+>       | |                            V_                       |
+>       | |                            |  \          +--------+ |
+>       | |                            |   \-------->| dev #0 | |
+>       | |                            |   |         +--------+ |
+>       | |                            | M |-------->| dev #1 | |
+>       | +-----------(2)------------->| U |         +--------+ |
+>       |                              | X |-------->| dev #2 | |
+>       |                              |   |         +--------+ |
+>       |                              |   /-------->| dev #3 | |
+>       |                              |__/          +--------+ |
+>       +-------------------------------------------------------+
 > 
+> The current i2c-mux implementation does not allow the mux core to use the
+> i2c address of a child device. As a workaround, A new i2c-adapter quirk is
+> introduced to skip the check for conflict between a child device and the
+> mux core i2c address when adding the child device.
+> 
+> This patch-series adds support for this multiplexer. Mule is integrated
+> as part of rk3399-puma, px30-ringneck, rk3588-tiger and rk3588-jaguar
+> boards.
+> 
+> To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> To: Peter Rosin <peda@axentia.se>
+> To: Andi Shyti <andi.shyti@kernel.org>
+> To: Rob Herring <robh@kernel.org>
+> To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+> To: Conor Dooley <conor+dt@kernel.org>
+> To: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> To: Heiko Stuebner <heiko@sntech.de>
+> To: Quentin Schulz <quentin.schulz@cherry.de>
+> Cc: linux-i2c@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+> 
+> Changes in v2:
+> - Add i2c-adapter quirks to skip checking for conflict between the mux core
+>   and a child device address.
+> - Rename dt-binding to "tsd,mule-i2c-mux.yaml"
+> - Add Mule description to kconfig
+> - Fix indentation
+> - Move device table after probe
+> 
+> - Link to v1: https://lore.kernel.org/r/20240426-dev-mule-i2c-mux-v1-0-045a482f6ffb@theobroma-systems.com
+> 
+> ---
+> Farouk Bouabid (7):
+>       i2c: mux: add the ability to share mux core address with child nodes
+>       dt-bindings: i2c: mux: mule: add dt-bindings for mule i2c multiplexer
+>       i2c: muxes: add support for mule i2c multiplexer
+>       arm64: dts: rockchip: add mule i2c mux (0x18) on rk3399-puma
+>       arm64: dts: rockchip: add mule i2c mux (0x18) on rk3588-tiger
+>       arm64: dts: rockchip: add mule i2c mux (0x18) on px30-ringneck
+>       arm64: dts: rockchip: add mule i2c mux (0x18) on rk3588-jaguar
+> 
+>  .../devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml  |  80 +++++++++++
+>  arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |  20 ++-
+>  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  20 ++-
+>  arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     |  19 ++-
+>  arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi     |  19 ++-
+>  drivers/i2c/i2c-core-base.c                        |   6 +-
+>  drivers/i2c/i2c-mux.c                              |  25 +++-
+>  drivers/i2c/muxes/Kconfig                          |  18 +++
+>  drivers/i2c/muxes/Makefile                         |   1 +
+>  drivers/i2c/muxes/i2c-mux-mule.c                   | 157 +++++++++++++++++++++
+>  include/linux/i2c-mux.h                            |   1 +
+>  include/linux/i2c.h                                |   7 +
+>  12 files changed, 361 insertions(+), 12 deletions(-)
+> ---
+> base-commit: 23918f4e52d072b96a4d909e91298b8dd6ad4325
+> change-id: 20240404-dev-mule-i2c-mux-9103cde07021
+> 
+> Best regards,
 > --
-> 2.43.2
+> Farouk Bouabid <farouk.bouabid@cherry.de>
 > 
 > 
 > 
@@ -113,10 +195,10 @@ make sure dt-schema is up to date:
   pip3 install dtschema --upgrade
 
 
-New warnings running 'make CHECK_DTBS=y rockchip/rk3566-orangepi-3b.dtb' for 20240505202522.2999503-1-jonas@kwiboo.se:
+New warnings running 'make CHECK_DTBS=y rockchip/rk3588-jaguar.dtb' for 20240506-dev-mule-i2c-mux-v2-0-a91c954f65d7@cherry.de:
 
-arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtb: pmic@20: '#sound-dai-cells', 'assigned-clock-parents', 'assigned-clocks', 'clock-names', 'clocks', 'codec' do not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+arch/arm64/boot/dts/rockchip/rk3588-jaguar.dtb: fan@18: '#cooling-cells' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/trivial-devices.yaml#
 
 
 
