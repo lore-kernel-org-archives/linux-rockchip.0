@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2A28C25B4F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 19:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C44AC25B74
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 19:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FzJnwiGcLgbSno3/G09Fr4rbyKCMWi4e8f1rjTm9TbM=; b=VRnig+fj6HDl0J
-	hkou4Ar9rzc0Q6fCI5sO4RwJPEVJ1P9zCIJhiD/8eusbIU9c7G7gHfmuRsYON5mPZSkU23+2E6/2/
-	6Po+s6LqPIdz4vEqJdVi4oqsCCfLiurkpOUSrcBE/ELLA3Q/Uuwk5XoxkvGgJoAdbnbzxFRVppJTq
-	qUHdfBDcy8bvfjXqr9kXY7RCDPbtQbssSOirm6OX0MC4/oEeHw5dtzMFstoED0sDjp5TDUw0lXgnK
-	yPzs5/Ra5kdr1FGJwzS9w7JVm6gneZbRZbTRzqFYNivv0YpeiTFdUZWKSmM5o3q9PWuEfh1e+q/8I
-	fKC4hWF0U3o1bjjSFhFw==;
+	List-Owner; bh=1pTZeubCTNYWc0ANyqFcAVGBF82YJRgBIFxyaRhx1Hg=; b=dXua2P1kcV6dAp
+	Fo4xRNTz77NmfOq88t0H1fptSFuwOrVDCoW/tXbPt7ewG3EYzecJxja0wp7ijGsakTyDybHrvikpU
+	fYsOoDW/v/vPOret2cQfWGdQxH3a8HyRq4SW9e3T6+j+PsySTDUFempMG2EosdVNbTMMBWhY91VgA
+	mgI7lUgY1a626ueBitpp93rPwE18iBMhLDpGmz5g5Vl3Np1cKAIhKq6677kdS9pP0YRhIXalW7/G3
+	wpO+KWIFUL3pUv1/PzbHOKFyOSV+fV5fO3oV8WBkSZGCG2KLOd5m6jUimR1TB8EzvEcUMg3eB0ZOu
+	VGeRW3IaVB/Xo0nvZdFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44Fx-00000008YIl-0eGh;
-	Mon, 06 May 2024 19:44:13 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1s44Fv-00000008YGh-1A66;
+	Mon, 06 May 2024 19:44:11 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44Fn-00000008Y9M-0rPQ;
-	Mon, 06 May 2024 19:44:04 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a59b178b75bso370852466b.0;
+	id 1s44Fm-00000008Y98-2Tac;
+	Mon, 06 May 2024 19:44:03 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a59ab4f60a6so492271766b.0;
         Mon, 06 May 2024 12:44:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1715024640; x=1715629440; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=PLmJpQfp0i8fR/OZHQc7F6SpjNiFbXRgibuQG4wYtJE=;
-        b=J6Ikmhe8A6t3cQwggLuF+QrJ0obfpjpO2QmOH4Ttkr3ob5FX7aFg6Al7unSm1rLpCw
-         F2MgiGZIe5z/xZQj/YUHohQrVpcjQDwfOMUTkP+GB7nUBuRB5OghY+UCxaP+THdjODeW
-         yhSpAkIjSpVjPI/u7WVqfE99mEk5gJJCELVFJy3lY91VrAGSM/N8DsihfGJGuC/UN9m9
-         dhmZ8qBMD96XM5f8vB8Pkz4hLfqWVsZ9el2AtlORBoxYjx34aRyqs7YuwrKMlR7gaFnC
-         oUyOcyVI/5o1Ati/kDf/Gt2a/6mEtuBxXozp1nyxBRZsxVrwZ/+qpuecpcLrbNUCFCfE
-         E1og==
+        bh=yZPuZVUOkEjt2jKWfIEHf/5qiKMeNNTvIl6Wxm0Wr0M=;
+        b=GuKgSOWauFcTbCtz3w/muBDnLdjy2ceEmHT3ghh9G6pdPW7OKYnjP2iStUL32IUjX9
+         6a1it6JvJ46YdAED9K4kvKuHTetHLQ89l0x8K5f6R/7TSQWs+qqUED1BZLlGU019V3sn
+         p+ElIvzjJHCZAuV1jqQSvU07mga6uhDhelNIeQb3tsc5LCkLBHstizTbmu1zKJdHzUQH
+         c5dpONgWp4/Z4QvYf9Ue1hl+KSzK8HEJcENoYISxXg1HvF4slsHMyf5AMT5qc/9mTqWU
+         XzjuYzj0lgQNSo9rTo+N2/RfUW9XDcrogAjZ0aY9kdvErSaSPtASPlPKsx6BXqv0XDTf
+         RM6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1715024640; x=1715629440;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=PLmJpQfp0i8fR/OZHQc7F6SpjNiFbXRgibuQG4wYtJE=;
-        b=RSV4DC4zPu4amwKIlTpAD1kZKIlbZ1CY9f5E9AGNfEcRtlrQQVRP+kxldqzx6N+lbS
-         Df/KNIPpNoksooZuZRSyEYokPzSM6YuaDh9UXvIbOTFjDhQEi/CE80CdCvE+8vK471VT
-         h7B83Z1n+9C9/6bUjmjYtqruhuT+XlZP6FMpW2M2Ml6MyJUfyg9mxmEjOAn58dG9JWWv
-         Cb5mKjZB3ycebNpUPCZms/Sed2ks6KLuCOQscHKikDHjtxRy5X2q1bY6A3j/DHcFqcc+
-         udpDpWomRbq7JxRLPJKWzJACBndgG+N28N0vrvnZC38Ge2sbXM3bYSs3qqFgzDqo8T7J
-         gPUw==
-X-Forwarded-Encrypted: i=1; AJvYcCUl13JgCKcTC8tIXoiq9sCoVWDvfIq22ibSwnvibpuYOdyMcjZxOgPvobJYvNHV/jANtyQfwI1/PPPBqvoAYE7X1r4wghmyszYXS3SypkRafqFMuGcMvh/Rdk7eMWdqsHwFse0Lmf35E08nuEAU+aXM0wSAuEZOiCg=
-X-Gm-Message-State: AOJu0YxQWONMeLeL9UsKhS9IGLfjQE6Lt7n8ejj0SYK4hkXiPhEY6maO
-	9XoyHRryUNuhHPpUHUeNqcejiHnJ+ILNl2ufGxwDG4BrrJuyJxU=
-X-Google-Smtp-Source: AGHT+IGDj+tvzGciAi1r06OdYCZHDNbAHnwx7wQTTzXXKYnWB5EWtuUN/+YC062uYGlKprlYMawinA==
-X-Received: by 2002:a17:906:65d2:b0:a59:a727:1e8a with SMTP id z18-20020a17090665d200b00a59a7271e8amr4215668ejn.8.1715024640454;
-        Mon, 06 May 2024 12:44:00 -0700 (PDT)
+        bh=yZPuZVUOkEjt2jKWfIEHf/5qiKMeNNTvIl6Wxm0Wr0M=;
+        b=X1hvHIaR4pNmduG5MCjE356QTaIXKeXjdQQLL7a5uSI71MaRJxwlRwmsTGtMKTRw8H
+         VrVhPanP3vXTOzNxUbk8tbYs1fWIcmWgVcekysQFagwRO1asDbwp3LlcVqjvQmz+rIxU
+         eP+peorhK0EBGvhED7itxg6Ng9jrmdaS1UcL5TwHWZihlNmvato12sJk57p9MSOE9Xe3
+         FIdEjFekdIi6xJQlQKFBxzYc7yhwRAgSqT8fFv8TfKkMdeRjIgD98g9YbmI4f1/UYLs8
+         7Lloelwlfk+uxET25A+OnEZjV1R2hBVYyFCLTF/6DGYw3QPVLamc1QAd56siAlB/RyOb
+         VtiQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVRNvN4OdcEDCKm9tIXbhcu+jvBspedjfBpbncYLB6kC+4WSsuXASZBDOb70J9L5hJHFN3HChagIh6ouczdY5c8Y4FdkD4M16cRfS14jMCR/xHStbx+BK4FadT42K++FVGcywTdB2newHpeiC9Jovx7ufnpphWcSaU=
+X-Gm-Message-State: AOJu0YzVR3yk27Dka2jldL76nvdcxi23tr9W4+t2KAFkKWTQXZDeNcKD
+	zDC7ytjNIRJRIAFdwPlW4ZAnzMtdlRWltnpd2P55AEGIpDzCddU=
+X-Google-Smtp-Source: AGHT+IGnSZ98ZQbdnsdJyC90pRyVt1nr5YcSW20LHXMtpRatNPwIAZ0FaJwwj91H77v0m8hCBi2Kpw==
+X-Received: by 2002:a17:907:6e87:b0:a59:b9b1:a1d1 with SMTP id sh7-20020a1709076e8700b00a59b9b1a1d1mr7115835ejc.46.1715024639700;
+        Mon, 06 May 2024 12:43:59 -0700 (PDT)
 Received: from U4.lan ([2a02:810b:f40:4600:1c62:e77:6753:5729])
-        by smtp.gmail.com with ESMTPSA id f13-20020a1709067f8d00b00a59d146f034sm1367321ejr.132.2024.05.06.12.43.59
+        by smtp.gmail.com with ESMTPSA id f13-20020a1709067f8d00b00a59d146f034sm1367321ejr.132.2024.05.06.12.43.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 May 2024 12:44:00 -0700 (PDT)
+        Mon, 06 May 2024 12:43:59 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -83,16 +83,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 3/7] clk: rockchip: rk3128: Export PCLK_MIPIPHY
-Date: Mon,  6 May 2024 21:43:38 +0200
-Message-ID: <20240506194343.282119-4-knaerzche@gmail.com>
+Subject: [PATCH 2/7] dt-bindings: clock: rk3128: Add PCLK_MIPIPHY
+Date: Mon,  6 May 2024 21:43:37 +0200
+Message-ID: <20240506194343.282119-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240506194343.282119-1-knaerzche@gmail.com>
 References: <20240506194343.282119-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_124403_273039_8C58A995 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240506_124402_656790_9F92A66D 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,27 +110,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DPHY driver requires to specify a pclk so it gets exported here. I also
-dropped the CLK_IGNORE_UNUSED-flag as we will enable the clock on demand.
+The DPHY's APB clock is required to be exposed in order to be able to
+enable it and access the phy's registers.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/clk/rockchip/clk-rk3128.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/dt-bindings/clock/rk3128-cru.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3128.c b/drivers/clk/rockchip/clk-rk3128.c
-index 75071e0cd321..a20d1fd25e2a 100644
---- a/drivers/clk/rockchip/clk-rk3128.c
-+++ b/drivers/clk/rockchip/clk-rk3128.c
-@@ -526,7 +526,7 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	GATE(PCLK_ACODEC, "pclk_acodec", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 14, GFLAGS),
- 	GATE(0, "pclk_ddrupctl", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 7, GFLAGS),
- 	GATE(0, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 4, GFLAGS),
--	GATE(0, "pclk_mipiphy", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 0, GFLAGS),
-+	GATE(PCLK_MIPIPHY, "pclk_mipiphy", "pclk_cpu", 0, RK2928_CLKGATE_CON(5), 0, GFLAGS),
+diff --git a/include/dt-bindings/clock/rk3128-cru.h b/include/dt-bindings/clock/rk3128-cru.h
+index 6a47825dac5d..1be455ba4985 100644
+--- a/include/dt-bindings/clock/rk3128-cru.h
++++ b/include/dt-bindings/clock/rk3128-cru.h
+@@ -116,6 +116,7 @@
+ #define PCLK_GMAC		367
+ #define PCLK_PMU_PRE		368
+ #define PCLK_SIM_CARD		369
++#define PCLK_MIPIPHY		370
  
- 	GATE(0, "pclk_pmu", "pclk_pmu_pre", 0, RK2928_CLKGATE_CON(9), 2, GFLAGS),
- 	GATE(0, "pclk_pmu_niu", "pclk_pmu_pre", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(9), 3, GFLAGS),
+ /* hclk gates */
+ #define HCLK_SPDIF		440
 -- 
 2.43.2
 
