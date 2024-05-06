@@ -4,84 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1675C10F16
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 15:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61BC5C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 16:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zy8FPmZn03irzbuujWE2rHG8SqT93de0OrREKl22hLo=; b=CAfVR2PPQRkUoe
-	dy1sSz+o6G3cHpA7HqRdPDcO/eXpt6COdSSq54RUoWMvlBRwFIlzm9SafgA37AfW1A9ISwCOelBGu
-	/OfmD2vBK0XLlb05xhAofujb50cnCBXNUKaZYRU1ECBdrjduQ7dYyyMc/GS9BmMK11wLWirZdmPuU
-	Vy0+8IZWwKPuHp+OwVG+EgbkcAeG2TVBBMNZD0WyLJM1ZA/GSD+ZP6tzREFlEFjpYKS8ItrdcXhQI
-	TzDtNQ9eInz14z437CRHJBmycvfQ1gDnyIVoSySnDt97gUxWGUZ7dX43B8thn3NL1Lp5B+YYb0bIY
-	XkKU4K5eQaBNp1kc2vKg==;
+	List-Owner; bh=5zxZAX0h35czbRzUHVgzCoTf4c7ZXsf9oDFhQq2BKLA=; b=sMCzhp4Utu6Wed
+	yICZiZW2DQ/JT5HKNN1Oc+wS+n1ft758T7gGZk2nUGys9oM6dkePDPpD4v1f/5XtXWDREZDGvy/lK
+	Cin5dStRA0x6dmE2MWEK9uITRleaIYiZopdys7X3qiOVIhlHjEJGTAlkdkEYl8mKs0rFoRAI4f8yB
+	0p+tN3UiIgwdspoIZoRHg/yyFKTfzG3o6e7hatMTJ/tus3tng4ttgLkqOanbdLCTmf+IxAiYksGjd
+	PkmVgL74xI6C1DDz3k2p2jWdIkoF9wqGepQyHguBwnVNbswD9VEI3rBG9b5JTjYHZxmPIVM90UNLE
+	sR54dkSI4IGEkR0dfOrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s40cg-00000007vZN-1R8Y;
-	Mon, 06 May 2024 15:51:26 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1s40zN-000000080ow-0Kky;
+	Mon, 06 May 2024 16:14:53 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s40cZ-00000007vUI-0e4w;
-	Mon, 06 May 2024 15:51:21 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a52223e004dso432271766b.2;
-        Mon, 06 May 2024 08:51:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1715010675; x=1715615475; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8I21WtsUZcdgpZuf38No+IlnE5W2vGDappaz3+ciLm0=;
-        b=InvnENNe1kKVXnRvPYw8zdQPXBVJlXWOKA3+BTHvSq9Z17aUfUZqjsUCjPcWe3v2h3
-         ymCeLXAK1wHAhGf/EVRIZecoXKvD3RsDWUQl0YjpkdSIDbiELTjAKOPL8DwZqAgw38mz
-         VXkRNSsIvZXpZS8PsQVM2DebBQXQdZvZ5LQRd3IX80ZewchPsg9dn2jNicWlimUSjW3/
-         diENZH7JEP4nFQMVMqY1NYpWBCWA5Q+OisiNYVIjJGTUATOVPJOcb18XHB03PJUtzUBb
-         nPhW8EXncr6jPaLsUOdybtsCc207eZa6BeJXEKSxXVbMBK+T2lwgh1RfBbKrxEjGq+kG
-         bEUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715010675; x=1715615475;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8I21WtsUZcdgpZuf38No+IlnE5W2vGDappaz3+ciLm0=;
-        b=Ooe9PEYOIpEDk1jJMrj0GSWN/Ht0bfdYXQs1WiWji6pZ153d2CCij313yCBenDW/CY
-         iac1B6FjXXqovRXubvg3H0Np34JV+Oz5D4MCFTtbXxybos89DEJYqbYxtijgShWDB2ou
-         /Utvo+p6ist4HZwAdXMKsNhHltjqe50SBKqYLo0IPf4PDxc6VTiL5quErE5G4z90ropp
-         H4+zPyyi1krTZOdl27MhZMNECgYYRCjtPZMWnixpoBkZdTSWhElw/0r+LWpbllN4fsLo
-         LpYLunItLbMWBwC0h0mN/O0ptFRZy4qqeCpwfTmGxJimgY6ufAq78U+H/KKbY1a4x3iV
-         jbJA==
-X-Forwarded-Encrypted: i=1; AJvYcCXVgDTaMO/dv70mcq4mQ2J0fCtiD0jOMFJ3J1sarQAA+KdX2BxcTxMX1vTXWl3tptLxgssAsBNPehdtQuOPuxfNKkCfrN8s16++AUvXnpXfR2/hJKM/XtnHTVmQlsbYUt+xO9pWRXxSrG1cU3fEnxYuW/25yrh4FEs=
-X-Gm-Message-State: AOJu0Ywc1uDiHOkOiyikkGhXOcQ5gK3WJeUUty+74OUCn1sZcYDo6lqw
-	VDQGY8lSP991EQRlJu4HOfy9Yk0E7kIjk4t1kK8oZDVhmZ31Awo=
-X-Google-Smtp-Source: AGHT+IGUXcRYajK3MdV54mEIKa/3JOK3wciOaMvhxvgKosMw2KgO/7txS4O4aJlUGlkK5fzdsMOW2Q==
-X-Received: by 2002:a17:907:7e97:b0:a59:b1cf:fea0 with SMTP id qb23-20020a1709077e9700b00a59b1cffea0mr6357081ejc.19.1715010674674;
-        Mon, 06 May 2024 08:51:14 -0700 (PDT)
-Received: from U4.lan ([2a02:810b:f40:4600:1c62:e77:6753:5729])
-        by smtp.gmail.com with ESMTPSA id y24-20020a170906071800b00a59cec38bf3sm1356230ejb.52.2024.05.06.08.51.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 May 2024 08:51:14 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 2/2] ARM: dts: rockchip: Add spdif node for RK3128
-Date: Mon,  6 May 2024 17:51:03 +0200
-Message-ID: <20240506155103.206592-3-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240506155103.206592-1-knaerzche@gmail.com>
-References: <20240506155103.206592-1-knaerzche@gmail.com>
+	id 1s40zK-000000080nJ-19Ow
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 May 2024 16:14:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1715012056;
+ bh=N/kMPXOW+9pj2iXbtfmhz5wAtX8HuIAcCJSd79oIR9Y=;
+ b=ul3ihFHV4SbKwJnLGHOHuXodFg8JiSVR38YAEVKiCAj/Fuwcj3kTIRiqmfoviRFYbRwAJwRk2
+ FgugDDjnKi2J6AfLVfbnmt48aZpU+XgvoAxC7Wp+zrkffUe1XKbPocI6r2PcakkC6YMORSSDusv
+ lZpyOnkDi306aDmUidqZiI6z9aDaVMTNbHyx9YEpVl/n3cfMvHSBKFLSMc2TrmIeVwN9xj9EEHZ
+ KJWBm9+AyAv+z0duMXdynYov0kdpJ/RGXIqnK1NPZ3kvBv/kdvex87C9A+XC/fJJ14cEuyk0JsS
+ t4bg2sMIwX9G6c4BSJK5RTpUurNa6rokI7siotj24tMQ==
+Message-ID: <76519e53-a226-497b-9db1-4f11ea83151a@kwiboo.se>
+Date: Mon, 6 May 2024 18:14:03 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: mfd: rk809: Add audio codec properties
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko
+ Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>, Chris Zhong
+ <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>
+References: <20240505134120.2828885-1-jonas@kwiboo.se>
+ <20240505134120.2828885-3-jonas@kwiboo.se>
+ <5c4a6d57-82e0-430b-a12e-59c331a32eab@linaro.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <5c4a6d57-82e0-430b-a12e-59c331a32eab@linaro.org>
+X-Report-Abuse-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-ForwardEmail-Version: 0.4.40
+X-ForwardEmail-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-ForwardEmail-ID: 663901d049216dcdc6f4249f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_085119_215509_782678B5 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20240506_091450_421629_FBF11F40 
+X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,41 +81,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SoC has a S/PDIF TX controller which is fully compatible with older
-generation Rockchip SoCs.
+Hi Krzysztof,
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- arch/arm/boot/dts/rockchip/rk3128.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+On 2024-05-06 12:47, Krzysztof Kozlowski wrote:
+> On 05/05/2024 15:41, Jonas Karlman wrote:
+>> Similar to RK817 the RK809 also integrates a complete audio system.
+>>
+>> Add audio codec properties to binding to reflect this.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> 
+> Except sending untested patches...
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-index d0d1d7c2ab2f..bf6e05503141 100644
---- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
-@@ -372,6 +372,20 @@ i2s_8ch: i2s@10200000 {
- 		status = "disabled";
- 	};
- 
-+	spdif: spdif@10204000 {
-+		compatible = "rockchip,rk3128-spdif", "rockchip,rk3066-spdif";
-+		reg = <0x10204000 0x1000>;
-+		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_SPDIF>, <&cru HCLK_SPDIF>;
-+		clock-names = "mclk", "hclk";
-+		dmas = <&pdma 13>;
-+		dma-names = "tx";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&spdif_tx>;
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	sdmmc: mmc@10214000 {
- 		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x10214000 0x4000>;
--- 
-2.43.2
+This patch was a 1:1 copy from rockchip,rk817.yaml so I expected
+everything to already be correct, my bad.
+
+Guess rockchip,rk817.yaml also needs same fixes/changes as listed below.
+
+Will send a v2 with example fixed in a separate patch and try to fix
+your remarks on this patch in v2.
+
+> 
+>> ---
+>>  .../bindings/mfd/rockchip,rk809.yaml          | 34 ++++++++++++++++++-
+>>  1 file changed, 33 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+>> index c951056b8b4d..b78e1b090105 100644
+>> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+>> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+>> @@ -12,7 +12,7 @@ maintainers:
+>>  
+>>  description: |
+>>    Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
+>> -  that includes regulators, an RTC, and power button.
+>> +  that includes regulators, an RTC, a power button and an audio codec.
+>>  
+>>  properties:
+>>    compatible:
+>> @@ -93,6 +93,34 @@ properties:
+>>          unevaluatedProperties: false
+>>      unevaluatedProperties: false
+>>  
+>> +  clocks:
+>> +    description:
+>> +      The input clock for the audio codec.
+> 
+> No, this allows anything. You must be here specific, see example-schema.
+> maxItems: 1
+> 
+> Drop description, redundant.
+> 
+>> +
+>> +  clock-names:
+>> +    description:
+>> +      The clock name for the codec clock.
+> 
+> Drop description, redundant.
+> 
+>> +    items:
+>> +      - const: mclk
+>> +
+>> +  '#sound-dai-cells':
+>> +    description:
+>> +      Needed for the interpretation of sound dais.
+> 
+> Drop description, redundant. Do you see it anywhere for such properties?
+> 
+>> +    const: 0
+> 
+> 
+> Missing ref to dai-common in your allOf (again: take a look how other
+> bindings are doing it).
+> 
+> 
+>> +
+>> +  codec:
+>> +    description: |
+> 
+> Do not need '|' unless you need to preserve formatting.
+> 
+>> +      The child node for the codec to hold additional properties. If no
+>> +      additional properties are required for the codec, this node can be
+>> +      omitted.
+> 
+> That's useless description. Describe hardware, not syntax. This must say
+> what this node represents.
+> 
+> Anyway drop it. You do not have any resources there, so put properties
+> in top level.
+
+This just tries to follow the rockchip,rk817 binding, not fully sure
+about the reasoning behind this node in the the rk817 binding.
+
+RK809/RK817 are very similar and their schema files could possible be
+merged.
+
+> 
+> 
+>> +    type: object
+>> +    additionalProperties: false
+>> +    properties:
+>> +      rockchip,mic-in-differential:
+>> +        type: boolean
+>> +        description:
+>> +          Describes if the microphone uses differential mode.
+> 
+> Your description copies property name. Do not describe the syntax
+> "Description describes", but say what is it.
+> 
+>> +
+>>  allOf:
+>>    - if:
+>>        properties:
+>> @@ -284,5 +312,9 @@ examples:
+>>                      };
+>>                  };
+>>              };
+>> +
+>> +            rk809_codec: codec {
+>> +                rockchip,mic-in-differential;
+> 
+> Missing all other properties. Make your example complete.
+
+Noticed that the example used in this schema file is for RK808 and not
+RK809 so will also add a patch that replaces/fixes the example in v2.
+
+Regards,
+Jonas
+
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
 _______________________________________________
