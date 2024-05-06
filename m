@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3561FC10F16
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 14:39:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0960C10F16
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 15:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WPPMMdyx8iQvliSEbVYZjiFcXmcSXCj9v6P7XsA7mVE=; b=A2MQYf7GHWRwz3
-	HxJTEis0SiWH3p4foG8f6XnseyV4sEjff8bi/qTMqoPUWWDibSpkHRP+uROV3XJPC/FjZz2pbH7RQ
-	InATSN4YontxhoC4bCwDAa2jWszvzrOclvCEq66Vf5mOJXx6FlpdbrcavZ5S9baNLgpfpIQUhyyGn
-	620d5zchM/NQBUsstn5sWAd1VRD3UqKz6BvSLTEh0sfD5GdCpxFfI3qR8ERcBZynuM8O7IGw559t1
-	CSaC2pgY8KFtRgWFVpy9XFHTANSNIZvphjQXu9izOJ1dj4A2lzhvvrlw23lCWeBA2EXb5tyUbtD3/
-	RboR/XMkgkUYHZrNJCtg==;
+	List-Owner; bh=r0Z58/v3PYt3Z7WrY6kSwU3WOevbAJRX0f/cOP80qdA=; b=oH4uH2xvgAVjgT
+	oPjxoPw6f/D/SVswC8y39hnfO8dfwdOcT2j+HKIIcov5i4otLTUGC50hjgklOIbCduznsRu0t91V9
+	KrSSpwv0RjC5fFjWl8hxNOiXlPtXTJt9Iq/9wLkS22+QfSc7/NDQZQ0zxcekgaUuBX6jExfOiY92x
+	9/jRX4SPFSi6ks+MVM8dvnsgpb5US1OU8q9jnIKUhXHBXrw5rgpSnl24CxEUDZfQL+seQwVJmGam4
+	xSoJP0H3G/lMyrRtvtyZ1jtxbv0gjHliFSroD/1Pkl12HEOi6kvNw6WTI2iTx3CX61AGT3OfQl6Xl
+	aTiIf13cs5bZVL2MnvQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3zUZ-00000007hFZ-3bkl;
-	Mon, 06 May 2024 14:38:59 +0000
-Received: from madrid.collaboradmins.com ([46.235.227.194])
+	id 1s40cd-00000007vX4-1sBk;
+	Mon, 06 May 2024 15:51:23 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3zUV-00000007hCg-2oZr;
-	Mon, 06 May 2024 14:38:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1715006334;
-	bh=27tHSW1zl7ehj6fVxvf4O5x37/NDiU0iDr5TcXznQAQ=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=Ka6OY6yZfrHN6wP/B4YWxipAoFoi4Gv2tqTmEd/8d+1NsD0nmxJS9fg566Yje1GWu
-	 Ov6JBpMQ6fIf+G1MtReBJd+Yisz9KbLOUplNZX6oa8ATXWh1DQxmCKyslvXX8xYBuX
-	 f0yVrQUcqvtEK1waV2VSjhhsvyqcRZhxu6j3vJxXdEFTSt3BEON7TTN250+4gdW2j2
-	 ZGbNtR/J0mMe7HZFeYYZZaDTWJ5wRQuR3OxdAWV6Igx9Gk2v1UetPWZG/svFB+TIq8
-	 +O6SExrzXZFBwYs32v5f4ZlRlZCgul90qSSsZXG8Ubxk2JkJ7oHqyIL+Xz77oGpywA
-	 MgQEiWHCdS+0A==
-Received: from [100.93.89.217] (cola.collaboradmins.com [195.201.22.229])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madrid.collaboradmins.com (Postfix) with ESMTPSA id E804E3781107;
-	Mon,  6 May 2024 14:38:53 +0000 (UTC)
-Message-ID: <c747a5e6-e3f2-4bea-87e2-92b71501db9a@collabora.com>
-Date: Mon, 6 May 2024 16:38:53 +0200
+	id 1s40cY-00000007vUE-2GNi;
+	Mon, 06 May 2024 15:51:20 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-a59b58fe083so264241766b.0;
+        Mon, 06 May 2024 08:51:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1715010674; x=1715615474; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r6WL+utsI5ALbgqCnqncesAytLi3m+WaTzt+MUlSYpc=;
+        b=nYSocjnwUIkFU8HZy0v+u11X+ftDipHn1rQzk1tUftJ6p9YqNmyJ7p4qZHY+XHBN6d
+         GtNFF1gFaamoM2ojq+ncFY86hyOU4ubJNHJNpVGVeA9Pmh2YUypsSPG18svAPe0a5ZEI
+         ebg0KLa3C+s4Dw4VvPhGCmwft/rWK8vF/jCr4VBQKEmAjgMwr1kvDe2/9Bt6fWBzFERS
+         YJEhAK9GOpuEjgmKagicIISRjjVg4hjuISBFnA445NCc4O3+hRINgiSPNFbo/RNCspbV
+         +IPRGZ27GKJxc/M+BEeI8YlyaycD9Gant//YJ7ERsntlV3jYW3s5U7oECPKRUVXEdGDJ
+         UPig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715010674; x=1715615474;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=r6WL+utsI5ALbgqCnqncesAytLi3m+WaTzt+MUlSYpc=;
+        b=L/F/rGzyXZEiLgc1PAETnSSXyoBbAEsNSdlFC0IfefnwtqcCYaMtRaRJ0KPchbx1ZS
+         EzyiYKOSt1UnKniZrc4B8aUxn6Pxu6edUdSzKW5NIPF9M1D1V7c7/tGryRB8wUVMW+Yx
+         6kbVCpYF9j8SG40CzOL9TCCQqBuPEnQP7hngvE+YXkmxPORpyMnkHJzZTtwjqg9uaul0
+         5rFsYXv5JapxP3XQ/VQrvXuCqdwh4OkgJ89DrMKzk/olgmJA8u9AcDW4KioZjEle7g88
+         s7xaUvmiDnXQrxvs+tujooA1iMrVDDpNQ0QH4gxmJu8CwRUBvbJH1eouWZ9m2r21RCQb
+         yqpw==
+X-Forwarded-Encrypted: i=1; AJvYcCXW9FK2uqITdsgsvLDQSA4gLwa7XsKLeXXbV+PTR0hT39zKpt8IsK3aXDe7tAtRanM9CASMkMjM1CZ1T0gnsKpwLRcToAOEVvrGzURguZ3rL0pgf3EbMcg3AD17L4rH3lyOS3ElY8Jocb2vu0ue2vq4TSCpLehxjqI=
+X-Gm-Message-State: AOJu0Yxl3qsc9w3YJ8gDU7KlUcNBPufOYAkhrtOu609e0f0Zm1WXoPz+
+	hp/xw66Jqi7se9MBeVJARUwGmG7m4/cpjHvTb/LE6oqHKEl9/qo=
+X-Google-Smtp-Source: AGHT+IHhmPeJC0I0evCo/zPiqGgGGWlw4mGMDbzXZO590N8dUNiAb2cYXbXPNJmb8x7X0qmUdBjj5g==
+X-Received: by 2002:a17:906:787:b0:a59:9e01:e784 with SMTP id l7-20020a170906078700b00a599e01e784mr4665005ejc.5.1715010673882;
+        Mon, 06 May 2024 08:51:13 -0700 (PDT)
+Received: from U4.lan ([2a02:810b:f40:4600:1c62:e77:6753:5729])
+        by smtp.gmail.com with ESMTPSA id y24-20020a170906071800b00a59cec38bf3sm1356230ejb.52.2024.05.06.08.51.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 May 2024 08:51:13 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Add i2s nodes for RK3128
+Date: Mon,  6 May 2024 17:51:02 +0200
+Message-ID: <20240506155103.206592-2-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240506155103.206592-1-knaerzche@gmail.com>
+References: <20240506155103.206592-1-knaerzche@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: verisilicon: AV1: Be more fexible on postproc
- capabilities
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20240328093439.18712-1-benjamin.gaignard@collabora.com>
- <e4d01c27aa976c44e0b7122e39111be062a4deb4.camel@ndufresne.ca>
- <ebbe249f-bce6-4e81-969f-c63ab4b063f3@collabora.com>
-Content-Language: en-US
-In-Reply-To: <ebbe249f-bce6-4e81-969f-c63ab4b063f3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_073855_860218_92356E56 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20240506_085118_637156_0879CC4F 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,47 +93,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA1LzA0LzIwMjQgw6AgMTA6MTcsIEJlbmphbWluIEdhaWduYXJkIGEgw6ljcml0wqA6Cj4K
-PiBMZSAwNC8wNC8yMDI0IMOgIDE5OjU5LCBOaWNvbGFzIER1ZnJlc25lIGEgw6ljcml0wqA6Cj4+
-IEhpLAo+Pgo+PiBMZSBqZXVkaSAyOCBtYXJzIDIwMjQgw6AgMTA6MzQgKzAxMDAsIEJlbmphbWlu
-IEdhaWduYXJkIGEgw6ljcml0wqA6Cj4+PiBSSzM1ODggcG9zdC1wcm9jZXNzb3IgYmxvY2sgaXMg
-YWJsZSB0byBjb252ZXJ0IDEwIGJpdHMgc3RyZWFtcwo+Pj4gaW50byA4IGJpdHMgcGl4ZWxzIGZv
-cm1hdC4KPj4gRG9lcyBpdCBjb21lIHdpdGggYW55IEhEUiB0byBTRFIgY2FwYWJpbGl0aWVzID8g
-Y2F1c2Ugc3RyaXBwaW5nIG9mZiAyIAo+PiBiaXRzIG1lYW5zCj4+IHRoYXQgdG9uZSBtYXBwaW5n
-IHdpbGwgY2F1c2UgYSBsb3Qgb2YgYmFuZGluZyBhcyBpdCB3b24ndCBoYXZlIHRoZSAKPj4gZXhw
-ZWN0ZWQKPj4gcHJlY2lzaW9uLiBJJ20gc2ltcGx5IHRyeWluZyB0byBtYWtlIHVwIHRoZSBiaWcg
-cG9ydHJhaXQgc28gd2UgZG9uJ3QgCj4+IGp1c3Qgb2ZmZXIKPj4geWV0IGFub3RoZXIgZm9vdCBn
-dW4uIEJ1dCBwZXJoYXBzIGl0cyBmaW5lIHRvIG9mZmVyIHRoaXMsIGl0cyBqdXN0IAo+PiB0aGF0
-IHdlIGRvbid0Cj4+IGhhdmUgYSBtZWNoYW5pc20gdG8gcmVwb3J0IHdoaWNoIHBpeGVsIGZvcm1h
-dCBpbiB0aGUgc2VsZWN0aW9uIHdpbGwgCj4+IGNhdXNlIGRhdGEKPj4gbG9zdC4KPgo+IE5vIGl0
-IGp1c3QgdG8gZW5hYmxlIHBvc3QtcHJvY2Vzc29yIGNhcGFiaWxpdGllcyBsaWtlIHdlIGhhdmUg
-YWxyZWFkeSAKPiBmb3IgRzIvSEVWQy4KPiBTaW5jZSBpdCBpcyBhIHBvc3QtcHJvY2Vzc29yIHBp
-eGVsIGZvcm1hdCBpdCB3aWxsIGJlIGVudW1lcmF0ZWQgYWZ0ZXIgCj4gVjRMMl9QSVhfRk1UX05W
-MTVfNEw0Cj4gc28gaXQgd2lsbCB1cGRhdGUgdG8gdXNlcmxhbmQgdG8gZGVjaWRlIHRvIHVzZSBp
-dCBvciBub3QuCgpHZW50bGUgcGluZywKUmVnYXJkcywKQmVuamFtaW4KCj4KPiBCZW5qYW1pbgo+
-Cj4+Cj4+IE5pY29sYXMKPj4KPj4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxi
-ZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+Pj4gRml4ZXM6IDAwM2FmZGE5N2M2NSAo
-Im1lZGlhOiB2ZXJpc2lsaWNvbjogRW5hYmxlIEFWMSBkZWNvZGVyIG9uIAo+Pj4gcmszNTg4IikK
-Pj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9yb2NrY2hp
-cF92cHVfaHcuYyB8IDEgLQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRpb24oLSkKPj4+
-Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9yb2Nr
-Y2hpcF92cHVfaHcuYyAKPj4+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9y
-b2NrY2hpcF92cHVfaHcuYwo+Pj4gaW5kZXggZjk3NTI3NjcwNzgzLi45NjQxMjJlN2MzNTUgMTAw
-NjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3JvY2tjaGlw
-X3ZwdV9ody5jCj4+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3Jv
-Y2tjaGlwX3ZwdV9ody5jCj4+PiBAQCAtODIsNyArODIsNiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
-IGhhbnRyb19mbXQgCj4+PiByb2NrY2hpcF92cHU5ODFfcG9zdHByb2NfZm10c1tdID0gewo+Pj4g
-wqDCoMKgwqDCoCB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgLmZvdXJjYyA9IFY0TDJfUElYX0ZN
-VF9OVjEyLAo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIC5jb2RlY19tb2RlID0gSEFOVFJPX01PREVf
-Tk9ORSwKPj4+IC3CoMKgwqDCoMKgwqDCoCAubWF0Y2hfZGVwdGggPSB0cnVlLAo+Pj4gwqDCoMKg
-wqDCoMKgwqDCoMKgIC5wb3N0cHJvY2Vzc2VkID0gdHJ1ZSwKPj4+IMKgwqDCoMKgwqDCoMKgwqDC
-oCAuZnJtc2l6ZSA9IHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC5taW5fd2lkdGgg
-PSBST0NLQ0hJUF9WUFU5ODFfTUlOX1NJWkUsCj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+RK3128 SoCs have two i2s controllers. i2s_8ch has 8 tx and 2 rx channels
+and is internally hard-wired to the hdmi-controller respectivly the SoC's
+analog codec. i2s_2ch has 2 tx and 2 rx channels and can also be used
+externally as it's pins are exposed though pinctrl.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ arch/arm/boot/dts/rockchip/rk3128.dtsi | 27 ++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rockchip/rk3128.dtsi b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+index fb98873fd94e..d0d1d7c2ab2f 100644
+--- a/arch/arm/boot/dts/rockchip/rk3128.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3128.dtsi
+@@ -360,6 +360,18 @@ usb_host_ohci: usb@101e0000 {
+ 		status = "disabled";
+ 	};
+ 
++	i2s_8ch: i2s@10200000 {
++		compatible = "rockchip,rk3128-i2s", "rockchip,rk3066-i2s";
++		reg = <0x10200000 0x1000>;
++		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_I2S0>, <&cru HCLK_I2S_8CH>;
++		clock-names = "i2s_clk", "i2s_hclk";
++		dmas = <&pdma 14>, <&pdma 15>;
++		dma-names = "tx", "rx";
++		#sound-dai-cells = <0>;
++		status = "disabled";
++	};
++
+ 	sdmmc: mmc@10214000 {
+ 		compatible = "rockchip,rk3128-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x10214000 0x4000>;
+@@ -408,6 +420,21 @@ emmc: mmc@1021c000 {
+ 		status = "disabled";
+ 	};
+ 
++	i2s_2ch: i2s@10220000 {
++		compatible = "rockchip,rk3128-i2s", "rockchip,rk3066-i2s";
++		reg = <0x10220000 0x1000>;
++		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_I2S1>, <&cru HCLK_I2S_2CH>;
++		clock-names = "i2s_clk", "i2s_hclk";
++		dmas = <&pdma 0>, <&pdma 1>;
++		dma-names = "tx", "rx";
++		rockchip,playback-channels = <2>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&i2s_bus>;
++		#sound-dai-cells = <0>;
++		status = "disabled";
++	};
++
+ 	nfc: nand-controller@10500000 {
+ 		compatible = "rockchip,rk3128-nfc", "rockchip,rk2928-nfc";
+ 		reg = <0x10500000 0x4000>;
+-- 
+2.43.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
