@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE09C4345F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 06:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CAAC4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 06:18:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=As9esYYvO8FaWCpL4H5VuDeuNnEWLLVoqnY0Oya7/zc=; b=qNoeA79jITdcu/
-	inoY/Z7JBC97y+Ha9kOPRQ13i55qOtBLfPhf36KWyBqBPXEOR485HhCFOO3SMfCMTSCgKl/BtJ/Xy
-	//a9qISGF1jt9oi1eMGbgP7HFcptz2Tmq2wLfupQzmKR8l/4MDv9riHwuD1zZ52ETkIQieteoiVWB
-	i1NtDV1nrBv1Uy42texdIV3EcE35zdINkTkRvRTgJ7N5k4fZEdyo/8WyJ+d3jOx8TaMxQzjxsYAzu
-	pGPS5NYC660Ai6iWSc7KDGFtzz+MyOuqCYOki2vH3AkZAbHCV5krS3lAM+g+C0vqlq307EFhEspID
-	U1xv3on9P0e3XHMWDJ3g==;
+	List-Owner; bh=Pl9oJ7p5/oDDtFtEDSI3t9v4Lup5LIO/VvMem85e/W0=; b=L0ZwIZ5RfELYsV
+	wHsPEwoM+ZDlo/hdDFBK0sBGXR8gDx6+BDTCZaXYj4G6wguxHrz5zPnpmy7siaWItgQUGm5VL9t2M
+	p8z5d52fw4rC0tNg3LcpKMfVCVdLt3kpBqfrgZXk8kgiflLMISRXyUJIszonfQSbG92T47AfG/c+l
+	x2ikWu+6r7Vo8GyXyG0Qm7IH9AFX7XZ3w4QiFVTT74IdJDnd6AtZkW1IJyM8PzgFcr9XVslk5jHgw
+	/DlUBXAzjU7p3hsjCLTSbr+udmue8nPm+nzEvAQ+kcBbS6/opcUIJiR2c9T5SSzEDH/iISGXXa9zW
+	RjseDslmdpl93mrXocvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3rdL-00000006GdG-0Jax;
-	Mon, 06 May 2024 06:15:31 +0000
+	id 1s3rfm-00000006H6Z-0g9a;
+	Mon, 06 May 2024 06:18:02 +0000
 Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3rdI-00000006Gbk-38jL
+	id 1s3rfi-00000006H5V-3cbg
 	for linux-rockchip@lists.infradead.org;
-	Mon, 06 May 2024 06:15:30 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a59a0e4b773so330846766b.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 05 May 2024 23:15:24 -0700 (PDT)
+	Mon, 06 May 2024 06:18:00 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a59a609dd3fso237087166b.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 05 May 2024 23:17:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714976123; x=1715580923; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1714976277; x=1715581077; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=S9wObN6TBLWPc+V9fxL/eI2bLCxn0LE6fCG15LIXY5Y=;
-        b=EN6qRRnZEK2pEZ9Bo6r8hCTzOsmi7LQHRLyX09jNqcFE3UsekOJNls75PzzOZ865EU
-         uaS3dgoJpZf2tehMS3Ci4TXwKyAYfH+CNExldX3u5rjeRheunqtaVySLJjpnostYZC/R
-         TmhV0c5SDirtzfz7PgwkBmgmJEEBL2hXB5KOr9LspDXGg/arguf+xKY8NnAW8gjEq8OK
-         1mtttV6XIxTng2N1FkYhWXvaToVKNIgZn2BpQyXg+ICI6SbmCVsEtO2VjgbZqe8V3x+f
-         PbdGNufHPE7SY9aQDbiamv/JkBwAYHGcP9pjNAZ0cVWXk8/hsEmPpPE/YOEp3X+nVdPC
-         Qd8g==
+        bh=yEmvSOI95EnC3gCixvxxGGL65BHN4N4QcC1kzsHesiU=;
+        b=yNnwJGWpHY2Hrda+iyzsKPYItiwCuJ50dA9P7L3m2L3Ih0dAsvf+wRA9QNYqzfcuLF
+         s6ynFIJ9aBeHMNQYHqiz4DOxsi2ne/v3J218NczQOOs4QxXQu2SMvckYyZCva1HTKa+h
+         hjNDt5oyri/JJnfv31LW4lzwZ8IA2kBemjr+Wr5VI+xEeYLP9BT+e0roPHrpqONts4NI
+         sjJCkVj/QClQv8T2bO575J8R0C/hW0tA4TlR6mJH9K8AD/syb4EiGLiAyD6Xo2MBTGIK
+         nJ2LeY1SP6H8kFZT7Tx0tYkPj4pzgFQ1/Yd2C7hAun5zoBRrLgFkFCvFicr2gq1xqrxj
+         syag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714976123; x=1715580923;
+        d=1e100.net; s=20230601; t=1714976277; x=1715581077;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=S9wObN6TBLWPc+V9fxL/eI2bLCxn0LE6fCG15LIXY5Y=;
-        b=vHKyM5Q4YxYRBiiZcCjQ5bcyeISmTAB1iOkRvYA3Px9UoiygzixLexCeJM0NFP9gGa
-         TDS2MTu8NoEu+XAbP8ZSa+iQ9/uK0YL3m4FOfO/UlT5MYV8bbi8wvDkSX10WsAnFA3fl
-         uG4ESehBl3Z3Br/toT372z0ZCVVlvet4v0d1J8leOfps3AdrOrrs7SJxJ0W1jxrIound
-         BQTEDTPLmZFxIh4tJukvqyIomYB0AEVdafxYzU5lDCd35AwYxLc8U7QwAbzhcUuL10Dl
-         LTTobZy3+qx90needxNLaHAvoHup6eN1JQ8LOQAQ49zYYC+sxVMUgzgG6lLPuJo1OZLD
-         cS9g==
-X-Forwarded-Encrypted: i=1; AJvYcCUJ6uSuSWX9IfECcXccYHuR9uwR3vQya/OT+TVpReznnoHSEQs23Q55h9Ov9VJsM12blrzADGCPL9AVnh44pGDpFs+dpxwC/RK6zYQrRw2y4Azl
-X-Gm-Message-State: AOJu0YzACMoMKt2kMWZSFS/2if4rZ3MrSYPPBwfB5BVhEbfvkDrpqVoQ
-	xX1WOdQ350ZrkfzzUy5zWB/xeGHT5vGiymEw0AeGEGKWPW+clLDfJeTDVbSAYkE=
-X-Google-Smtp-Source: AGHT+IFFH3c0vowpeBsFZ8YV+tCU1X+eBYe5jlVCItS67nqtE1ckMbfybcNbW/WPWDF2jsZDPuooHw==
-X-Received: by 2002:a17:906:a099:b0:a59:6888:f6f0 with SMTP id q25-20020a170906a09900b00a596888f6f0mr4849135ejy.47.1714976123346;
-        Sun, 05 May 2024 23:15:23 -0700 (PDT)
+        bh=yEmvSOI95EnC3gCixvxxGGL65BHN4N4QcC1kzsHesiU=;
+        b=dwAjEmw7A/6LW1lxwiUjtD5qF41XZVjtmNaWdinLuDo284B8RtCNN9Y9brnKdgMXj3
+         3UazJZB5z9bhQpav6Gfvxa/qlGITms6YZ/VYRD0t92cAeDuk7nU69vHddgoKnLUSnUaK
+         ReH36OOUKXIp2L1Aq5Xok0JcmQ2fwZ1q0pIyFLclFvol4grqAbFfzJAD2zCvBKwlD0oR
+         Ibo7gvaVBtlarHPJ1wwsK3x+eBLkQQSJjPhJarm9TJb/a4VxZLCI/0uq1TRDKKsmtycU
+         E5JL6uS/QvIsrpAfpstmRwY24dr8E8RHRJGTm14MGDMu1pxVL8dQFKXIge83zr+1PVQt
+         GXvQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWHNTR2xp8cLWfAkDtk+KVlBJ9t1ULmsNlcYhr2mSDenB5hObmr0hSAoZqrGEF3nuKYAYxmVd2Dl/7zn5taglmOnyZJMT4DqdRq2ETqn9TN4Qlk
+X-Gm-Message-State: AOJu0YxLACwvgRpiAka4nhRMPpg4R9sa6dWYE+oFiPX3TB21M6nRWg8J
+	nVfSYuHL/0e/yxmPr6gyK5d15LS0RLgSgstpAJGynfgfHLt5WyWeqNV+QG/Iglk=
+X-Google-Smtp-Source: AGHT+IHj5CkBOojV8uMgChr50kxW1Jvosa2ZojGf5/IiUnTILyF1NDG/UEDBqeiAxhdEf8gChEoorA==
+X-Received: by 2002:a17:907:1b1c:b0:a58:b479:8fdc with SMTP id mp28-20020a1709071b1c00b00a58b4798fdcmr11814840ejc.1.1714976277234;
+        Sun, 05 May 2024 23:17:57 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id lb11-20020a170906adcb00b00a59ba26bed1sm1894810ejb.135.2024.05.05.23.15.22
+        by smtp.gmail.com with ESMTPSA id dc2-20020a170906c7c200b00a59aaf2f626sm2483968ejb.26.2024.05.05.23.17.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 05 May 2024 23:15:22 -0700 (PDT)
-Message-ID: <957a3758-88ae-4856-8958-7a6dea896f63@linaro.org>
-Date: Mon, 6 May 2024 08:15:21 +0200
+        Sun, 05 May 2024 23:17:56 -0700 (PDT)
+Message-ID: <e3a58e55-25cc-42dd-aa6d-6a436d615a87@linaro.org>
+Date: Mon, 6 May 2024 08:17:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Xunlong Orange Pi 3B
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Xunlong Orange Pi 3B
 To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
  Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -76,7 +76,7 @@ To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240505202522.2999503-1-jonas@kwiboo.se>
- <20240505202522.2999503-2-jonas@kwiboo.se>
+ <20240505202522.2999503-3-jonas@kwiboo.se>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -123,10 +123,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <20240505202522.2999503-2-jonas@kwiboo.se>
+In-Reply-To: <20240505202522.2999503-3-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240505_231528_832860_00D3E106 
-X-CRM114-Status: UNSURE (   5.84  )
+X-CRM114-CacheID: sfid-20240505_231758_945509_AFA0C957 
+X-CRM114-Status: UNSURE (   7.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -145,12 +145,24 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 05/05/2024 22:25, Jonas Karlman wrote:
-> Add devicetree binding for the Xunlong Orange Pi 3B board.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
+> The Xunlong Orange Pi 3B is a single-board computer based on the
+> Rockchip RK3566 SoC.
+> +
+> +	vcc5v0_sys: vcc5v0-sys-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +	};
+> +
+> +	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Please use name for all fixed regulators which matches current format
+recommendation: 'regulator-[0-9]+v[0-9]+'
+
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git/commit/?id=b6d4b3500d57370f5b3abf0701c9166b384db976
 
 Best regards,
 Krzysztof
