@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DADC25B10
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3468DC25B10
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:09:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ag2plW33opTOiXdlVvLi54gzDe7e/bj2cpuxJZXDmwo=; b=ex8TudL2ul1D+s
-	9X3L8aXEmcezp+FFhVhrW7mvHVGVt1jG5qvJ1Y+yzGXVJQLPNb506TI0/GjuB1316Pnry5jdaiYJV
-	tmAoJ+zltIevDOEmxrQ5O+gCN1jlQIyzJeccQuwCS+NdA9aURrfodyyIZ0CTEwgN13J2Noo+pk3uU
-	QdSuVair9s2WPdiq22+0z61MkFn+d9IMZmqBYS38FcxxWsWYxUGgBdnwb0emcXzhsVKiN86YgcPZ5
-	OjbUu7lhtv6L/znC1FpIzTIkPnsh6YgdLBZvGt9uE1ctsapq6pNKEPF77k5b9UXnwDOActtB48cfj
-	u2rmm3jiCiBz8IXGS7EQ==;
+	List-Owner; bh=4HZBNsvVcA8MS40T/eJiXRjX49ahathHd00c00LIxAA=; b=yXlY9scVVkVqcr
+	9hZgj71ziiJoaz4KwoJp0GszJrzriSsYLBYE0ZUcm8D1jtQlGh7aZVlAkkG5DUJhGpZgfqUhC5kYp
+	IhjCfkA13DXW0zNcvIqzjtNXAxFwT+oftN+liodudlIX1jOm9fZOSU8uP3HnFQvJ/fE/XQ1+RjEOP
+	aYoZDzt2xLMygQf3MCUAcbU54+TIecCf5HYi1shKQ6Qh8VjmtbM/3+BqouKlDAOAIdHsuHsPFf860
+	J4mOU1eOciTO6NLSZ19IbArMoS74DapDnGvk8BBwGion5OsaAenEnJToea+jJOQ6CF9FDDSuJUMoq
+	ra2WNraaog5EmitJ+0sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44d8-00000008cRm-2WN1;
-	Mon, 06 May 2024 20:08:10 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1s44ee-00000008coQ-3Mmg;
+	Mon, 06 May 2024 20:09:45 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44d5-00000008cPk-0bZD
+	id 1s44ec-00000008cmQ-1AJn
 	for linux-rockchip@lists.infradead.org;
-	Mon, 06 May 2024 20:08:09 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2dcc8d10d39so26069531fa.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 06 May 2024 13:08:05 -0700 (PDT)
+	Mon, 06 May 2024 20:09:43 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-a59e4136010so101754866b.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 May 2024 13:09:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1715026083; x=1715630883; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1715026178; x=1715630978; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=4r2QFiv+Y5YFHDZS/uVsaIfDuAxtmH3kZzYhY3bwJMg=;
-        b=Xa7WcjTGp73diyFxuEn1cUDIUHknECd19x6qejETKaHucr/Muz16TxINgRl/YUKExB
-         MEatRh7yOiOv6O7YwXdqEh+2TTkT2z7A8Rk9LIrbDY3w6hk37ZVnfvqdhL3q3cYqtRJf
-         9Rt+2H/9elb8dyyo5HdTm3UaVdwTiVRYUXFGbK1wajI7qk0qMWtuOTgC4Ve0N57fv89j
-         HHvL1caWPw4zOAQ/jU0Fz7vVYEBw8+S/XPAVmKGPNXoHAlPGlT+u4r3BG5akLirXoBQI
-         pGnQw5lLbI8EINhF0kaZPp39sZXYOeRMf9LhwADBKAIZZmDppZKFsr6WQ1a6kpWrI3Gh
-         tcfQ==
+        bh=fP1I9IhgTZGBV03Pf96OiwAha2qPEClVzUK53DdRWTk=;
+        b=GR8qseog0MQ3aA2VPzbbwnBLJlG46DGe6gxUQQd+VrYj0VZ61omEQCOJhKW7hl6rpf
+         fEVjRWiPgJE50yTbfccIg4QfPMQQsAtTSIVlCXw7+OU86xR9BRKNWNlyBDBOQpPnxERf
+         uMab3PU0nrbFVQitXM3HcmsCXonSuplA/Q7kgGM2EoCO3LxERptYprON9vgJXkdFwN6m
+         LT1ehxk6eCQSAqFginx1HxU9A4ZlC2MFH4sO1ljKDHZQ0ARdE57z2VwNa3OqfxqRQUtk
+         jTJbkZibgwwQ36tGyyOL1WNh46CP5lrni9/kn+YeKPIlIsECFrvW8VLx1dfdwWyInk83
+         PQMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715026083; x=1715630883;
+        d=1e100.net; s=20230601; t=1715026178; x=1715630978;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4r2QFiv+Y5YFHDZS/uVsaIfDuAxtmH3kZzYhY3bwJMg=;
-        b=ZZVk0wCDGjWrzfvlPpjB+tCSoOFldb9F3yGKrhEHdhXPnG3gaD66UkbkvXfLfJgvtW
-         lzndhwIe7rjeTf6YFbZ0crmNcweZlC94cAQmWxtyjkPzxK2gjN31xNzsrVFyEodiJG3C
-         pkWYLkz9lacjMhjVrvnVSs39WcK8Vekaqb5lIaiEkEpXROsPV060PD4WCS8XvBRvzV8+
-         R1BpjpB8j8sSIo9ndGWfWrsAHO98oWEskxEF9VNqJg7XMSv1Pm9tbA6yvwrEzsIY3rh+
-         GNYqFYa4XMNI4VJ3TwnRFPQ7XMka+OdhJ57arF6SSR+vI8qL85x1LKEjL0neZi9tylmX
-         6SSw==
-X-Forwarded-Encrypted: i=1; AJvYcCW8qJBvESeucYUYugyLb+yuzghkNNY0nWMlncrzuiOSAXMdUFjacLXYCaXXJjyUg8sft5fgbvRgM5EkHGbTFbCMwIK1i8ix1YbzHTNJ9Dp2VHOv
-X-Gm-Message-State: AOJu0Yy3BDDCTY324cxIMJI5fVC2h2y5J5vY4Heytic4+WroISyQsIEt
-	O4ny9VWGB8laIxYmid0jihHJsSPn5q1lDhn453HwGcHhVk/91CITJ0d0e0e/0q8=
-X-Google-Smtp-Source: AGHT+IGFIeRBBk7VGAPYN4qg+AUifIyYRtOsm5z71dsKQvzhwE0BVV5mvFEKkqGRIJ/bqHj8NG2rsA==
-X-Received: by 2002:a05:651c:1691:b0:2e1:d747:8c0 with SMTP id bd17-20020a05651c169100b002e1d74708c0mr7451991ljb.21.1715026083131;
-        Mon, 06 May 2024 13:08:03 -0700 (PDT)
+        bh=fP1I9IhgTZGBV03Pf96OiwAha2qPEClVzUK53DdRWTk=;
+        b=Smc4c7aFx7iuZrIZlx7nL3e2i+Xmyd5j+9Y6Jpph1hIQMBS7JYSuXMLEZTAqfXsqT/
+         6G9WChMSQlO5L7Fh/gpo+fsX4+YlDKLdZLsLsJ9EuOJGj5Utjt0t17f926/PFI6LjSH0
+         MpfRN9TvSb2emnyPN2QtzUddPM4LpHHFUznjLIZH/Qwpp1vjvtRaGZ1NlisdroVEMlkr
+         MAnheCisfFQq0EqkYKNqFDxGuYeKKj1S5zMA89aLdbh5kjtGDPF9JLSCLx1QrLfhuI+N
+         H/sVefF/EwgoRLDRTeVVLgnxFb4go5q8hmMzUdnk7v3eTLVMt1DEXl60SxApJtzp+5hk
+         Fu6A==
+X-Forwarded-Encrypted: i=1; AJvYcCWpkGIzyPrk9jHKVPybfAVbezKygAbIKc48dPlc21BPMTUwGZPS39sOxeelEbF6HVcjSfdOvLFXiXMLQTvEVI4vTFjMF2bCO5ACcFRWoaKy8t/W
+X-Gm-Message-State: AOJu0YzH2Fo+/bYYvIBpd7bXnDKBC2LxoRvrnWbRBrNYM6y2i/fT9Ds0
+	OgvZai8rLZjqZNe+1xnKrDVLUkONzv/TB0TZ/QS2IvMnw7w8Y/TqAb8bfXo5ywI=
+X-Google-Smtp-Source: AGHT+IGy2455buKr6CDgCPdc69ltaxc9eSph4eNlTnSW2h33rr4CCl2tGP2gBFXJBNLxPw3EzCthUg==
+X-Received: by 2002:a17:906:c311:b0:a59:b099:1544 with SMTP id s17-20020a170906c31100b00a59b0991544mr3463968ejz.42.1715026178297;
+        Mon, 06 May 2024 13:09:38 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.206.169])
-        by smtp.gmail.com with ESMTPSA id w26-20020aa7da5a000000b005722cb1dd6fsm5486170eds.27.2024.05.06.13.08.01
+        by smtp.gmail.com with ESMTPSA id u18-20020a170906125200b00a59c9c927e5sm1987971eja.57.2024.05.06.13.09.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 May 2024 13:08:02 -0700 (PDT)
-Message-ID: <ad7f3328-6eb7-4b32-9316-b0c79fd2753e@linaro.org>
-Date: Mon, 6 May 2024 22:08:00 +0200
+        Mon, 06 May 2024 13:09:37 -0700 (PDT)
+Message-ID: <d6fc16fd-0803-4a9e-ac3b-3183e47c73dd@linaro.org>
+Date: Mon, 6 May 2024 22:09:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: mfd: rk809: Add audio codec properties
-To: Jonas Karlman <jonas@kwiboo.se>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH 3/4] dt-bindings: arm: rockchip: Add Radxa ROCK 3B
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20240505134120.2828885-1-jonas@kwiboo.se>
- <20240505134120.2828885-3-jonas@kwiboo.se>
- <5c4a6d57-82e0-430b-a12e-59c331a32eab@linaro.org>
- <76519e53-a226-497b-9db1-4f11ea83151a@kwiboo.se>
+ <20240505134120.2828885-4-jonas@kwiboo.se>
+ <ade304a1-ea43-46cb-b425-b08055db49dc@linaro.org>
+ <c306b46bc695a256c35e506d98a08e47@manjaro.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Content-Language: en-US
 Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
@@ -126,10 +126,10 @@ Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
  KQ06ztUMRrj8eVtpImjsWCd0bDWRaaR4vqhCHvAG9iWXZu4qh3ipie2Y0oSJygcZT7H3UZxq
  fyYKiqEmRuqsvv6dcbblD8ZLkz1EVZL6djImH5zc5x8qpVxlA0A0i23v5QvN00m6G9NFF0Le
  D2GYIS41Kv4Isx2dEFh+/Q==
-In-Reply-To: <76519e53-a226-497b-9db1-4f11ea83151a@kwiboo.se>
+In-Reply-To: <c306b46bc695a256c35e506d98a08e47@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_130807_225123_E6D40546 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20240506_130942_336201_0E2A431C 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,33 +146,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/05/2024 18:14, Jonas Karlman wrote:
->>
->>> +
->>> +  codec:
->>> +    description: |
->>
->> Do not need '|' unless you need to preserve formatting.
->>
->>> +      The child node for the codec to hold additional properties. If no
->>> +      additional properties are required for the codec, this node can be
->>> +      omitted.
->>
->> That's useless description. Describe hardware, not syntax. This must say
->> what this node represents.
->>
->> Anyway drop it. You do not have any resources there, so put properties
->> in top level.
+On 06/05/2024 13:46, Dragan Simic wrote:
+> Hello Krzysztof,
 > 
-> This just tries to follow the rockchip,rk817 binding, not fully sure
-> about the reasoning behind this node in the the rk817 binding.
+> On 2024-05-06 12:48, Krzysztof Kozlowski wrote:
+>> On 05/05/2024 15:41, Jonas Karlman wrote:
+>>> Add devicetree binding documentation for the Radxa ROCK 3B board.
+>>>
+>>> The Radxa ROCK 3B is a single-board computer based on the Pico-ITX 
+>>> form
+>>> factor (100mm x 75mm). Two versions of the ROCK 3B exists, a community
+>>> version based on the RK3568 SoC and an industrial version based on the
+>>> RK3568J SoC.
+>>>
+>>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>>> ---
+>>>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml 
+>>> b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>> index 51cdaabaf0d9..41f2ab79e612 100644
+>>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>>> @@ -799,6 +799,11 @@ properties:
+>>>            - const: radxa,rock3a
+>>>            - const: rockchip,rk3568
+>>>
+>>> +      - description: Radxa ROCK 3B
+>>
+>> Does not look like it matches recent fixups for names.
 > 
-> RK809/RK817 are very similar and their schema files could possible be
-> merged.
+> Actually, I can confirm that "Radxa ROCK 3B" conforms to the recently
+> employed naming scheme for Radxa boards.
 
-That binding was a conversion from something older, so it might not be
-in good shape. At least new binding should follow usual rules/style.
+Hm, I could have looked at older code.
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
