@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B9DC25B74
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068D3C25B10
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 20:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,57 +13,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Cc:To:From:MIME-Version:Date:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=oPj2VI2k7eWfkKqGhoHT7bzC0DgBTu8VjguAaK974Bw=; b=AVcPLUmmP6SRbVrbmTE7M1kGz6
-	+xXjGsDv2jcDFnz+hP0bXabA82o9SmKXtuiwzd2LUF/AApQtmA3Nyb6lCFM2G9uam2lLY4TCNXZnn
-	fa6gc3BLHvSzv3HVm98LC9vsFb8U0Ch596sSCN4H2sJhvpnB7jd0wiAmjt0EmMSWrCb12mjPcuILI
-	J+DqOMVOlceyijS0fkoh4f+ekoo8ZXa6fUX0QLQlZSnTxE+IiyVX27zEjASsE/W1dIlxO/OrDLsWt
-	Uaz8USuWJ/Xh1D/DdbfpbsHCLKwfPI3l56PZ/WxIRDFibtJ1WN8mEyCkqb7uI1tm0/yRlfeiIvQcd
-	R5PXOY4Q==;
+	bh=izn4IsirpCpq1RC7adzRpxoKL6pvRUrjxD7G71FwUWY=; b=Al7pElbcxQHK2288YkS9ZxXt1c
+	iiZpFzCKo2mxc8S+8owzBj2oODJlGDhq/bCkfQLOAcTVKJTNcydVxdoq+VDu0cby3rBinycuM2ymb
+	GLDJle3MWKrkAXm0Q9oqk69oRbG5Gibp6uZO1dGe0s579voVVnSRxtqJB1zMFkX++1L/4D0vw+3Dn
+	QJyf2yRevLmYf/AuT06vbBwFFInqJbpuo+lEr7YtPo8fOw75WQrqHAKkHxgEbSYHTfehYbbsQfcSH
+	npaCTUaHdScZiJGTYjIVnJ2cuWF004lLbmn9L7a9WrWF3jKPXecauRAEvRBEhhxxJUiWuSc2FARNd
+	PKxuRnjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44uw-00000008fRt-0wtJ;
-	Mon, 06 May 2024 20:26:34 +0000
+	id 1s44v0-00000008fUS-02QP;
+	Mon, 06 May 2024 20:26:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s44us-00000008fQf-3IzN;
-	Mon, 06 May 2024 20:26:32 +0000
+	id 1s44uu-00000008fR6-0xUl;
+	Mon, 06 May 2024 20:26:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2E79361458;
-	Mon,  6 May 2024 20:26:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 283A0C3277B;
-	Mon,  6 May 2024 20:26:28 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AABAD61470;
+	Mon,  6 May 2024 20:26:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 340EDC116B1;
+	Mon,  6 May 2024 20:26:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715027188;
-	bh=iPhiz4umi131UrJgZazOVWc0VpO7pipi62CDJOV7Yw8=;
+	s=k20201202; t=1715027191;
+	bh=5FaFsrCBU94mRwsXyuX1NTdoCg00sIuyi7QCDGgdxuY=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=Gdj/Wm9QSyDgIvZiTnoVOcOHQ9lleZ85g29zVSHjM5G4ljViI+X+FR6lufsyFFMTV
-	 bN1DONDwwVGV16KbCCOtZ5rSJEljzFsnhVnhxGr7K+sJLzFMs0OEO3ZyPGwTAHCbfZ
-	 tj/TTcTOin3mlG0Si64jz1yzDkZmOVSn3Rr1id6+q7ywRm7+Z60+/qS6ra5LqT+Sjg
-	 rMWXIC1UWKpYhRsGLOA1dQ4M64+3c8/wbG4HiU3rBx3x3wx5XUZXdglE1CJLQYGDRv
-	 UuyWXeNEgOPz/Umw8AXqe/lDfoOx/cFDtA2Ft4vRcDndY41v3/oDo1GXkJqW8ag4OM
-	 IgStE22x8bUVg==
-Date: Mon, 06 May 2024 15:26:24 -0500
+	b=X5jBP/Oalm1vimfJv8a8bJ2lC/hwUzE8jRbYArIZW6zWV9/WC17q8O1vfeaq9+Scr
+	 DzpOL6XPw6jdh4AxeaDG2/YR49NdXmnvBdNiecxOMt+s0T9A1srdlQdUyeQYuiEbfB
+	 3I4cl5KJLwovDDPBjeZ8QXn8/gWssyIv/2WxMocJo++YBkAf760x5PegRrdkbU4hvl
+	 S1O00hdRTekYjk/1ChmyTEg0mJ52bYBdMxJt8Q2rSOaU2LGmCKKmyf6MtRtkThhSny
+	 fAkJ/nlTXUmBmT+iSh5WSn60lzRDXUhe2/8AFu6YaVd60EGrqdln2SsIoiiAWCYHLZ
+	 yW+pAp1qVdwFA==
+Date: Mon, 06 May 2024 15:26:29 -0500
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Farouk Bouabid <farouk.bouabid@cherry.de>
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, 
- Wolfram Sang <wsa+renesas@sang-engineering.com>, 
- Heiko Stuebner <heiko@sntech.de>, Andi Shyti <andi.shyti@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
- Peter Rosin <peda@axentia.se>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-In-Reply-To: <20240506-dev-mule-i2c-mux-v2-2-a91c954f65d7@cherry.de>
-References: <20240506-dev-mule-i2c-mux-v2-0-a91c954f65d7@cherry.de>
- <20240506-dev-mule-i2c-mux-v2-2-a91c954f65d7@cherry.de>
-Message-Id: <171502718333.3555.5534178605435468851.robh@kernel.org>
-Subject: Re: [PATCH v2 2/7] dt-bindings: i2c: mux: mule: add dt-bindings
- for mule i2c multiplexer
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ Heiko Stuebner <heiko.stuebner@cherry.de>, linux-phy@lists.infradead.org, 
+ devicetree@vger.kernel.org, vkoul@kernel.org, quentin.schulz@cherry.de, 
+ linux-arm-kernel@lists.infradead.org, kishon@kernel.org
+In-Reply-To: <20240506124836.3621528-2-heiko@sntech.de>
+References: <20240506124836.3621528-1-heiko@sntech.de>
+ <20240506124836.3621528-2-heiko@sntech.de>
+Message-Id: <171502718485.3739.8024239966625128556.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: phy: Add Rockchip MIPI CSI/DSI PHY
+ schema
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_132631_009572_790AAAA3 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20240506_132632_340546_6189E144 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +78,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 06 May 2024 13:37:53 +0200, Farouk Bouabid wrote:
-> Mule is an MCU that emulates a set of i2c devices which are reachable
-> through an i2c-mux.
+On Mon, 06 May 2024 14:48:35 +0200, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
 > 
-> The emulated devices share a single i2c address with the mux core itself
-> where the requested register is what determines which logic is executed
-> (mux logic or device logic).
+> Add dt-binding schema for the MIPI CSI/DSI PHY found on
+> Rockchip RK3588 SoCs.
 > 
-> Add support for the Mule I2C multiplexer bindings.
-> 
-> Signed-off-by: Farouk Bouabid <farouk.bouabid@cherry.de>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 > ---
->  .../devicetree/bindings/i2c/tsd,mule-i2c-mux.yaml  | 80 ++++++++++++++++++++++
->  1 file changed, 80 insertions(+)
+>  .../phy/rockchip,rk3588-mipi-dcphy.yaml       | 76 +++++++++++++++++++
+>  1 file changed, 76 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
@@ -102,12 +96,15 @@ My bot found errors running 'make dt_binding_check' on your patch:
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/i2c/tsd,mule-i2c-mux.example.dtb: fan@18: '#cooling-cells' does not match any of the regexes: 'pinctrl-[0-9]+'
-	from schema $id: http://devicetree.org/schemas/trivial-devices.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
+ 	 $id: http://devicetree.org/schemas/phy/phy-rockchip-mipidc.yaml
+ 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.example.dtb: phy@feda0000: reg: [[0, 4275699712], [0, 65536]] is too long
+	from schema $id: http://devicetree.org/schemas/phy/phy-rockchip-mipidc.yaml#
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240506-dev-mule-i2c-mux-v2-2-a91c954f65d7@cherry.de
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240506124836.3621528-2-heiko@sntech.de
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
