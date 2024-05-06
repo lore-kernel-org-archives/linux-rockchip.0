@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F11F9C25B5C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 07:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEA1C4345F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 May 2024 08:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZsDkVPKKSGBKvi2V+oypVIAV1EEH+vc6K0Fz2FYTB/I=; b=FFskyenuwPbS5Ef99O/4Ksxx4M
-	c88bCzbm9jzuibFP7gjACdDDHUY9N7Tpk6N8Kq33SpU18zcid4cwd+rSVRagV7M+6nPRYgXXrhgvG
-	w1Qa896Y/ghATCvx0szqAOrsWei5+LqrML4Lj29AgTTktFON0tBarSxdSW5Rr43BCkug/IReCDq/g
-	qvS7hrv/dY5ZXunqwztpDtli2Wv8zixf9j+Zrj9sgLwJPvNICNMCCzcSbQwszhkGI0lnp8eHFpweC
-	3MAShZVjhxOeHdDQ/yRcFNIinpboG5whSwavEPDjSGFfcBPX2v1/ReGkZt/lPllR742f/MKB28zOX
-	+jelstQw==;
+	bh=gm9F2mZRuKdbN78VLgxhDRU6FjFqtbKyRvwLJ4Mv9WA=; b=ciFmtS/2P01Sohn1PRS3FWJRC6
+	tFe9t/GnEaqXriBcmk95WDHWljMeIdoKZnmAc52r4aQSLZ9YHnwb4aSOzlV1hYRAhJrPrTLGp69yN
+	lekJtaZl5gdSzFsJQlQQYUiaZCK02gQFiySgjV91U4pRAT6IjuxKBe/W8slq7qgAeeN8DuG+qMJEw
+	7FcxkDofZRXqghJaMb5W/IypVx6S4KII6KcHzN7cTh8fl2ueDreE35+XNFGfT4i7pXPqIoj1pPtto
+	5EN/Z84mWOcLQ6+7YhQ7GEY6roiTQl/q4vzaJGBUKopXMr/6Ym0TmobL6XTN+8hb1C6w0D608rE4V
+	csBn4bFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3t6q-00000006Vfj-2wJO;
-	Mon, 06 May 2024 07:50:04 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s3tGO-00000006Xd0-1CQh;
+	Mon, 06 May 2024 07:59:56 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s3t6m-00000006VeR-2DMz;
-	Mon, 06 May 2024 07:50:01 +0000
+	id 1s3tGK-00000006XaI-1Bj4;
+	Mon, 06 May 2024 07:59:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7643961085;
-	Mon,  6 May 2024 07:49:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2080C116B1;
-	Mon,  6 May 2024 07:49:58 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 7DA9CCE0B64;
+	Mon,  6 May 2024 07:59:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 633A4C116B1;
+	Mon,  6 May 2024 07:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1714981799;
-	bh=PScBbjAnxeZJlVZobb9RkhFjTBeBleYHRdB7+WbwtCg=;
+	s=k20201202; t=1714982389;
+	bh=kXDv39J5t7+acyzhkvD/8KkU35rQ6ddgsltaOx/5nD0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=daqEwQT72wzzVhhxaadbP0J7TfhVeGtkoDLVZBhP67FR+IrIX9JHHo5CMTt+aeT2o
-	 5fctJhDPhApWE6WV6FdDfuDqZFLm63Lonzwveroz2A3WUVGRjCWfv1GO6DdiUYCSbs
-	 iWg8thDix9w6nDLLjKVHPRm89YVBA4CgH0uwE1o98twpcLoR4sDWHKbJwpSFoGTtmq
-	 GoO1+LeN1pys+rFLW30DL8rfeo7kPYlTewsrNBRffJy23vjB7xLjIes4dwzyF78zzR
-	 gP65FY8VYbf5uWYIqxCQemcDrv9wvkDIWZa8F0plLIKNXcPQoze93iXeAwJoUTo+m7
-	 u0qAt/aGZx7Og==
-Date: Mon, 6 May 2024 09:49:56 +0200
+	b=cc2PEqMgbdM9UjJMlXDzTrgq5i2alAxqGMK3tmB0AzkrkGRM1wGDkVcKTYqKgaDDu
+	 AjUM3T0lEL+Pa2M8sCJnKJ9g61Sj7+BIaeMydEea1CVjZF4J4uBqC1AvaBGWUEG/8u
+	 wsjXUs1UwexHcGMQuigbb5LfrnekMtA7pjvOCVqfID/ew3m98UD/Q4gyiNPQN+zC+l
+	 rrA3D0A36BeKUlYpMj3DUJJ+iRhmRuDnHLpvnY09HflG0TW7f/uCsrAQ3vX45W28lB
+	 jHLyx94A51D6IsFrKMwEiC5vvO0LFM5KpukPbkkP4e3UJjvgfor5eBGRZMSgce0oPy
+	 rcgySN8F6YU5w==
+Date: Mon, 6 May 2024 09:59:46 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Andy Yan <andy.yan@rock-chips.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -56,15 +56,15 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	linux-sunxi@lists.linux.dev
 Subject: Re: [PATCH v12 27/28] drm/rockchip: inno_hdmi: Switch to HDMI
  connector
-Message-ID: <20240506-elated-cheetah-of-awe-bd10cb@houat>
+Message-ID: <20240506-eccentric-wren-of-peace-819aad@houat>
 References: <20240423-kms-hdmi-connector-state-v12-0-3338e4c0b189@kernel.org>
  <20240423-kms-hdmi-connector-state-v12-27-3338e4c0b189@kernel.org>
- <bab90a27-b742-4587-aec6-e4e1fdf2d186@rock-chips.com>
+ <68eba0ec-bf9c-4d76-a362-5304a4cb61d5@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <bab90a27-b742-4587-aec6-e4e1fdf2d186@rock-chips.com>
+In-Reply-To: <68eba0ec-bf9c-4d76-a362-5304a4cb61d5@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240506_005000_696649_33BDE15E 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20240506_005952_706861_05ED6374 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,75 +76,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7565908544807900757=="
+Content-Type: multipart/mixed; boundary="===============0194452299436301053=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7565908544807900757==
+--===============0194452299436301053==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="5r5gd5hzylmqbla5"
+	protocol="application/pgp-signature"; boundary="v4sajugv7aqwu3jz"
 Content-Disposition: inline
 
 
---5r5gd5hzylmqbla5
+--v4sajugv7aqwu3jz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-Hi,
+Hi Andy,
 
-On Sat, Apr 27, 2024 at 06:12:26PM GMT, Andy Yan wrote:
-> On 4/23/24 18:45, Maxime Ripard wrote:
-> > The new HDMI connector infrastructure allows to remove some boilerplate,
-> > especially to generate infoframes. Let's switch to it.
-> >=20
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> > Acked-by: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > ---
-> >   drivers/gpu/drm/rockchip/Kconfig     |   1 +
-> >   drivers/gpu/drm/rockchip/inno_hdmi.c | 143 +++++++++++++-------------=
----------
-> >   2 files changed, 53 insertions(+), 91 deletions(-)
-> >=20
-> > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchi=
-p/Kconfig
-> > index 4c7072e6e34e..e2ec20c2e2eb 100644
-> > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > @@ -72,10 +72,11 @@ config ROCKCHIP_DW_MIPI_DSI
-> >   	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
-> >   	  select this option.
-> >   config ROCKCHIP_INNO_HDMI
-> >   	bool "Rockchip specific extensions for Innosilicon HDMI"
-> > +	depends on
->=20
-> Is this supposed to be  DRM_DISPLAY_HDMI_STATE_HELPER whith you introduce=
-d in PATCH 04/28?
-> I couldn't find any place where  DRM_HDMI_STATE_HELPER is defined.
+Thanks a lot for giving it a try
 
-Yes, it was a typo indeed. I've fixed it in the next version.
+All the issues you raised in your review are fixed.
 
-Thanks!
+On Sat, Apr 27, 2024 at 06:44:54PM GMT, Andy Yan wrote:
+> And after this whole series applied on linux 6.9-rc4, the display on rk3036 kylin is lost, I get
+> the following error:
+> [  178.999421] rockchip-drm display-subsystem: [drm:drm_atomic_check_only] checking 87b7fbde
+> [  178.999471] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] mode changed
+> [  178.999498] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] enable changed
+> [  178.999521] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CRTC:35:crtc-0] active changed
+> [  178.999547] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] Updating routing for [CONNECTOR:37:HDMI-A-1]
+> [  178.999575] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CONNECTOR:37:HDMI-A-1] using [ENCODER:36:TMDS-36] on [CRTC:35:crtc-0]
+> [  178.999604] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Trying with a 8 bpc output
+> [  178.999636] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Trying RGB output format
+> [  178.999730] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] RGB Format, checking the constraints.
+> [  178.999757] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] RGB output format not supported with 8 bpc
+> [  178.999783] rockchip-drm display-subsystem: [drm:drm_atomic_helper_connector_hdmi_check] Failed. No Format Supported for that bpc count.
+> [  178.999810] rockchip-drm display-subsystem: [drm:drm_atomic_helper_check_modeset] [CONNECTOR:37:HDMI-A-1] driver check failed
+> [  178.999836] rockchip-drm display-subsystem: [drm:drm_atomic_check_only] atomic driver check for 87b7fbde failed: -22
+> [  178.999868] rockchip-drm display-subsystem: [drm:drm_atomic_state_default_clear] Clearing atomic state 87b7fbde
+> [  178.999898] [drm:drm_mode_object_put] OBJ ID: 37 (4)
+> [  178.999922] [drm:drm_mode_object_put] OBJ ID: 37 (3)
+> [  178.999944] [drm:drm_mode_object_put] OBJ ID: 40 (1)
+> [  178.999971] [drm:drm_mode_object_put] OBJ ID: 39 (2)
+
+Which kind of display are you testing with? The only reason it could do
+so is if the display claim it doesn't support RGB in its EDID which is
+contradicting the HDMI spec. Are you using an Analog display by any
+chance? or the built-in EDIDs through the drm.edid_firmware mechanism?
+
 Maxime
 
---5r5gd5hzylmqbla5
+--v4sajugv7aqwu3jz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZjiLowAKCRAnX84Zoj2+
-dhERAX4hDKKQK0zUSiy8s+7HxdEWgMiPtGfXL1zjlOPBVdxa0oBEfrdf0wSgA6ZC
-GvcBlYYBfiq7TVSrJMvpZnnDzUsshI7PPYS7GaVjK5IcPqxFB7jgVDcNihybvsg/
-4zQYJv8UYA==
-=CFE1
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCZjiN8gAKCRAnX84Zoj2+
+dj7PAXsF7+5aPmDPt0ja154YvieqqvYikRBh9/V5pDrDw3cYprK2R83EgS3cBHli
+wJnpqsYBf0ew1rxNKgDWA+diKWge0oHO2I7Ul+ScFLDcuz23NHCYlB74/qNhIWaY
+8yng08R+LA==
+=WFGm
 -----END PGP SIGNATURE-----
 
---5r5gd5hzylmqbla5--
+--v4sajugv7aqwu3jz--
 
 
---===============7565908544807900757==
+--===============0194452299436301053==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -155,5 +152,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7565908544807900757==--
+--===============0194452299436301053==--
 
