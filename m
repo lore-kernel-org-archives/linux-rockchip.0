@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCA6C10F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 15:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3523C25B4F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 15:49:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vhvvGxBXtaUbjOOQBqzlW6Evl9wMeYhFCqXro5B0138=; b=FPX7QUHlIfDL5s
-	GhxOuLzo0HZxYXuP0IVE/3xcfmJJE7xoeuOH7Yu1JsT+LaubSvNZsI/M4Rvy89J5Qkrv4UjAFCsC7
-	W3/oFHQVZOimHhBzxqvRreIl7sBTD4Ek1dSAJKudGrWMrHcVG7u5xTg7MKWxG3LLCNz/188OEkdtY
-	2Seuv2ACMqTOmTKikn3iiIUY6V9F5Q+8wu40nojr+9Q8Ld0ZNXgSJxeZbl+uCj/EwDR4Qip6dQXo8
-	C2SN3HSuWCeClsrG9XwkZUrowpLtNJFTg89060UTu6hQIccao0tsaVpiozt65OnkAfaoDbTxwNZ2N
-	XZqXh/tlNzp0LGtWPqFA==;
+	List-Owner; bh=W4qpiTXKiLcaxammRaXvyh2Pdo3up385myLgKtYmBp0=; b=sccjLtugxtDrUZ
+	GMd353UU9FwXRI/+gBu0GL7hsVJdTOhdbU8n/Hy6vr4LW+8DSCwaNQ/OQENofHNvRB1oKKlcbDIw8
+	OXC2eN81CM/sPXiow23TqReJkUu9NZGGfasb331VByRudhyg7QuDmg/uherHE3UR4FMALGJmpUNFS
+	7TkzxnMfq0jOzwrA+XkfRXQEyFQCIDp/PRycDx00ZaOdDFWPZ9XAS/4JcOApVAbJpgazA1fy++3WH
+	fvlmC7oTAgeMgZxEi7ffmM+dqK5W3U3ObFg1fTOgqbeZ6bQMSpWl1tjntXOyGrty6UmjZvI2bUgGo
+	0g46sl3SJgCFogT84+jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4N3W-0000000Bntc-2wgU;
-	Tue, 07 May 2024 15:48:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s4N4P-0000000Bo28-1wue;
+	Tue, 07 May 2024 15:49:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4N3T-0000000Bnrv-1uq2
+	id 1s4N4N-0000000Bo0w-1ljt
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 May 2024 15:48:37 +0000
+	Tue, 07 May 2024 15:49:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B413061629;
-	Tue,  7 May 2024 15:48:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EE12C2BBFC;
-	Tue,  7 May 2024 15:48:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BD1146178E;
+	Tue,  7 May 2024 15:49:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64EF0C4AF63;
+	Tue,  7 May 2024 15:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715096914;
-	bh=gI67a6xryCcnkpSsoDWEUmaILOz0kViHVclTsm+/VAc=;
+	s=k20201202; t=1715096970;
+	bh=KDIJNxijUzjbFsJERLqaSytYfJ7yDDJ3cokD8Y4RusY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h9J5t600DgWbX9Xkp9ZhW74uRsmKygOuMNhgNgFgGIs8UF8QeuVfvlbYczHQg6Rwo
-	 pNCCsAqBQO7mHMA0biTYolBuYN7mguCEXiRrH543pNxfV6lbp5rbHNIl1kaRubV6kr
-	 tFan6u8KZQ1QRfjyOO5t5VY0MQtZC5TXycdQhDIkHdfRhgYQPa5f9AgSuqeZJM0crX
-	 ycuGZYPIzXA/oCgGS+/vvLsFEh3muKZLUOm7GVstIOOD2n0fBLau2PEemacHdAr2Ws
-	 88GuxKmR8pIGHvYeYgj297Os+7+jYqGQ4Ltv8X0J6yLg71+nT4dJ8JP5sHxjCtAi/F
-	 b3906vY54y88w==
-Date: Tue, 7 May 2024 10:48:32 -0500
+	b=AJ/CJLHJAkdklO5snRDaDzohANmWZuZ9TGt+Rb+0gVkKXBtlYI6VxkeA7pdrSYORF
+	 GNfI8a5PbhmbU58P2WVoys6rL+cUQkCd34umRbXhHnKIciyRsjVUQqbFf+OH/p1BlP
+	 uZVb0txOh7ndFPn5AjpfdNS5w/UQO6ivC2iWM17mOrUix9w4nEnSnilufO63cl5CYx
+	 IS6wDDAi9BuZNujBjevGIlWpRqNdBnfrLqUYlFNk8bhk3D7EjNS/Ul3IFpz7pvzZhF
+	 Ozszh9Lve/isuW7cIdak2BjTjILhisZs4pKaPzL7AqFZZ/t21x0bQyvO/bpmS4FRNR
+	 2wKy0cUgFxRIg==
+Date: Tue, 7 May 2024 10:49:28 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Niklas Cassel <cassel@kernel.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>, Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Damien Le Moal <dlemoal@kernel.org>, Simon Xue <xxm@rock-chips.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Jon Lin <jon.lin@rock-chips.com>,
+Cc: Jon Lin <jon.lin@rock-chips.com>, Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	linux-pci@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 04/14] dt-bindings: PCI: rockchip-dw-pcie: Prepare for
- Endpoint mode support
-Message-ID: <171509686127.528404.2616172017611002206.robh@kernel.org>
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Simon Xue <xxm@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+	Damien Le Moal <dlemoal@kernel.org>, devicetree@vger.kernel.org,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v2 05/14] dt-bindings: PCI: rockchip-dw-pcie: Fix
+ description of legacy irq
+Message-ID: <171509696640.530353.4535122936200527416.robh@kernel.org>
 References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
- <20240430-rockchip-pcie-ep-v1-v2-4-a0f5ee2a77b6@kernel.org>
+ <20240430-rockchip-pcie-ep-v1-v2-5-a0f5ee2a77b6@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-4-a0f5ee2a77b6@kernel.org>
+In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-5-a0f5ee2a77b6@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_084835_570761_A4A626BB 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240507_084931_715097_1F234A79 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,17 +86,27 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 30 Apr 2024 14:01:01 +0200, Niklas Cassel wrote:
-> Refactor the rockchip-dw-pcie binding to move generic properties to a new
-> rockchip-dw-pcie-common binding that can be shared by both RC and EP mode.
+On Tue, 30 Apr 2024 14:01:02 +0200, Niklas Cassel wrote:
+> The descriptions of the combined interrupt signals (level1) mention
+> all the lower interrupt signals (level2) for each combined interrupt,
+> regardless if the lower (level2) signal is RC or EP specific.
 > 
-> No functional change intended.
+> E.g. the description of "Combined system interrupt" includes rbar_update,
+> which is EP specific, and the description of "Combined message interrupt"
+> includes obff_idle, obff_obff, obff_cpu_active, which are all EP specific.
+> 
+> The only exception is the "Combined legacy interrupt", which for some
+> reason does not provide an exhaustive list of the lower (level2) signals.
+> 
+> Add the missing lower interrupt signals: tx_inta, tx_intb, tx_intc, and
+> tx_intd for the "Combined legacy interrupt", as per the rk3568 and rk3588
+> Technical Reference Manuals, such that the descriptions of the combined
+> interrupt signals are consistent.
 > 
 > Signed-off-by: Niklas Cassel <cassel@kernel.org>
 > ---
->  .../bindings/pci/rockchip-dw-pcie-common.yaml      | 111 +++++++++++++++++++++
->  .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  |  93 +----------------
->  2 files changed, 114 insertions(+), 90 deletions(-)
+>  Documentation/devicetree/bindings/pci/rockchip-dw-pcie-common.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
