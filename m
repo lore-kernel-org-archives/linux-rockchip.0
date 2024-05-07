@@ -4,59 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E55EEC10F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 15:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCA6C10F1A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 15:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XMh7e7Sd/NKvApPCvID0olbVTUK8FoGFqowD+jCi6I0=; b=NCNJBgVSbhFQ/pWZJ/AShhile8
-	evRznbI51FL8YCwPTSvtr3HxtFdpRWtcIN5ZbG7yTh2zptSIESp32RgDQT4ky3G/Y8eeM9E6XsfLE
-	YzXOuQ8yR42v64PnBd+bSc4XA6iLfo+O5XlFPYkUSyh7OPuokQEcp7Gm1Kt8y7Hqu5HrrAE/gT+UN
-	dJ/54zQiYijtJnOeVE4MrqeyfuhkxJeyl6z1nhOORjYg+d4b2EMJ0zk/++NxLeKr/crUx8lSIcrE6
-	fc2ytiax0psdRjiiAUAvhf/UrJ0TaynTl+hvJ4mf4JkOA9IkECaL3gVqzzTEi64zrLrp8XXdJmHyy
-	Z1ZObuPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vhvvGxBXtaUbjOOQBqzlW6Evl9wMeYhFCqXro5B0138=; b=FPX7QUHlIfDL5s
+	GhxOuLzo0HZxYXuP0IVE/3xcfmJJE7xoeuOH7Yu1JsT+LaubSvNZsI/M4Rvy89J5Qkrv4UjAFCsC7
+	W3/oFHQVZOimHhBzxqvRreIl7sBTD4Ek1dSAJKudGrWMrHcVG7u5xTg7MKWxG3LLCNz/188OEkdtY
+	2Seuv2ACMqTOmTKikn3iiIUY6V9F5Q+8wu40nojr+9Q8Ld0ZNXgSJxeZbl+uCj/EwDR4Qip6dQXo8
+	C2SN3HSuWCeClsrG9XwkZUrowpLtNJFTg89060UTu6hQIccao0tsaVpiozt65OnkAfaoDbTxwNZ2N
+	XZqXh/tlNzp0LGtWPqFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4MRE-0000000BfsK-3ps4;
-	Tue, 07 May 2024 15:09:04 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s4N3W-0000000Bntc-2wgU;
+	Tue, 07 May 2024 15:48:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4MR9-0000000BfmK-11jj;
-	Tue, 07 May 2024 15:09:01 +0000
+	id 1s4N3T-0000000Bnrv-1uq2
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 May 2024 15:48:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 147B1CE13AF;
-	Tue,  7 May 2024 15:08:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88102C4AF18;
-	Tue,  7 May 2024 15:08:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B413061629;
+	Tue,  7 May 2024 15:48:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EE12C2BBFC;
+	Tue,  7 May 2024 15:48:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715094534;
-	bh=ycm52fKCEVH22ltB8v+hNmkSggINFRR1kVE47PuUHP4=;
+	s=k20201202; t=1715096914;
+	bh=gI67a6xryCcnkpSsoDWEUmaILOz0kViHVclTsm+/VAc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hQpdtnh8YlsVoCH2VLVBNtU2+8DjCmRVpmI21ogmnm+njIqlao248WDYkDMmoe9/Y
-	 6wzui6NhfrCOsnXRkaZ2U9ucyRqWQanyCm858zh3Hxcof2nKCcdPYZmaPhKVHCxNhG
-	 pndnuBaAiTfDmt+LOSk9aJ3DxaOcAM/ERHs0bSpmOxK63GdGlEbaEDSvSs2fBQiJdX
-	 ODP68zn3KOy3gIBKOVUK3YUJonztbsYkvC3hp738xPjF+vRqIhCulzlIX/eplDYwm5
-	 +vggzua9WHBPpInKvPjUc90mDc91A5LjKDtoWmzdhXL13AyACK3milO1x/zZSjcKI/
-	 mFM+dzuNsPsRA==
-Date: Tue, 7 May 2024 16:08:50 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	andy.yan@rock-chips.com, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	quentin.schulz@cherry.de, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH] dt-bindings: soc: rockchip: add rk3588 mipi dcphy syscon
-Message-ID: <20240507-obligate-ripping-76ed73f46f57@spud>
-References: <20240506124632.3621378-1-heiko@sntech.de>
+	b=h9J5t600DgWbX9Xkp9ZhW74uRsmKygOuMNhgNgFgGIs8UF8QeuVfvlbYczHQg6Rwo
+	 pNCCsAqBQO7mHMA0biTYolBuYN7mguCEXiRrH543pNxfV6lbp5rbHNIl1kaRubV6kr
+	 tFan6u8KZQ1QRfjyOO5t5VY0MQtZC5TXycdQhDIkHdfRhgYQPa5f9AgSuqeZJM0crX
+	 ycuGZYPIzXA/oCgGS+/vvLsFEh3muKZLUOm7GVstIOOD2n0fBLau2PEemacHdAr2Ws
+	 88GuxKmR8pIGHvYeYgj297Os+7+jYqGQ4Ltv8X0J6yLg71+nT4dJ8JP5sHxjCtAi/F
+	 b3906vY54y88w==
+Date: Tue, 7 May 2024 10:48:32 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Damien Le Moal <dlemoal@kernel.org>, Simon Xue <xxm@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jon Lin <jon.lin@rock-chips.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	linux-pci@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/14] dt-bindings: PCI: rockchip-dw-pcie: Prepare for
+ Endpoint mode support
+Message-ID: <171509686127.528404.2616172017611002206.robh@kernel.org>
+References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
+ <20240430-rockchip-pcie-ep-v1-v2-4-a0f5ee2a77b6@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20240506124632.3621378-1-heiko@sntech.de>
+Content-Disposition: inline
+In-Reply-To: <20240430-rockchip-pcie-ep-v1-v2-4-a0f5ee2a77b6@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_080859_594554_23E49CDA 
-X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-CacheID: sfid-20240507_084835_570761_A4A626BB 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,58 +81,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0452074942342481353=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0452074942342481353==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="5hlEgOW23HF9FJZj"
-Content-Disposition: inline
+On Tue, 30 Apr 2024 14:01:01 +0200, Niklas Cassel wrote:
+> Refactor the rockchip-dw-pcie binding to move generic properties to a new
+> rockchip-dw-pcie-common binding that can be shared by both RC and EP mode.
+> 
+> No functional change intended.
+> 
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie-common.yaml      | 111 +++++++++++++++++++++
+>  .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  |  93 +----------------
+>  2 files changed, 114 insertions(+), 90 deletions(-)
+> 
 
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
---5hlEgOW23HF9FJZj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 06, 2024 at 02:46:32PM +0200, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
->=20
-> RK3588 CSI and DSI support requires the GRF for DC-PHY.
->=20
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
---5hlEgOW23HF9FJZj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZjpEAgAKCRB4tDGHoIJi
-0olBAP9j0q1yLiXyy+lGOVgDlPpLYQPtcvDZFQmtY8MeXiLU2AEApyZLt7KBt/v1
-Y3oPzSZfq5aiOJR5N+pAz9i30QD0VAw=
-=fh3/
------END PGP SIGNATURE-----
-
---5hlEgOW23HF9FJZj--
-
-
---===============0452074942342481353==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0452074942342481353==--
-
