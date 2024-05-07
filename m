@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 773B6C19F4F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33AA0C19F4F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Itw/w+FTE94kRCTUAcduF9M3e1z2l+we/p0zEH7vaA=; b=U8puYZ0DKj/wB6
-	aKrD/d0P2I6KrqHT8bg37d7DOiGwhEn9VfHDCAFcq+MivAnt61QuQggxWNTyy7p8uCMzl+GXPSL5D
-	0AHCV0a6AgQqKihSOg4+0TQ8FTrq9c10hSdum3jqMGLjOCItnMpSye+OEf7ZeSZ5yoU2mcdUOqUgH
-	zCBl4cjfMXTBajh5g12vQFS5B/jyuhnNEqCRCH1zv9gLQcxW7SMysQpQhZ3jc5xWpg9uWBgQ95klx
-	plzdb2DbjxE/tMwBq9LuJSzXhKWGJx9Kx3F3yUBb6kPyGX236T6kSPFNgazLNIl+qOjiIkGxMESFQ
-	IeCG01uozKCWpB7fPPIg==;
+	List-Owner; bh=38JqXo10KSNpojK4ljbIjiw1gsZbxCEt1vjxy5Riy9M=; b=hWG6smJ+FKEsoG
+	wq4Vwg2JVPuJeCirhmygcLngdDC9qBJVYFXKi5tsepcDiN0fCjpwakpHvW9Qinqre6rqAbT5dUcBE
+	gbNUM3/ub7boowb8S53rlxblmK8+47EYJa/DT+sVGMV2iFqKZUm8RJvkR4PmQonFEAx6VsVT1b92d
+	mbvvz+J4GnX/IpNDpwTaVHnw2XMQ2Br4HCkT2ZWAjYMnXQtRPDvfVXsve4B6A+686OR0B9PpLB7Vt
+	cdnkd2dZS05ZwsRMwA0U4Z0ICKXPFQJ0GyRKh5iX622yrhjlvkAUu1C6OkLk5LVIkrhIkoHCUvHOG
+	v4SrOTTIULvvIukgy9Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4ToM-0000000D7iN-3QfS;
-	Tue, 07 May 2024 23:01:26 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1s4UYV-0000000DONF-0aD2;
+	Tue, 07 May 2024 23:49:07 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4ToI-0000000D7gh-0fcV;
-	Tue, 07 May 2024 23:01:24 +0000
+	id 1s4UYR-0000000DOLV-3h61
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 May 2024 23:49:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8AFB961A05;
-	Tue,  7 May 2024 23:01:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5667C4AF17;
-	Tue,  7 May 2024 23:01:19 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id E0731CE12F2;
+	Tue,  7 May 2024 23:49:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F5C1C2BBFC;
+	Tue,  7 May 2024 23:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715122881;
-	bh=rFAC8oNtjUVBchYHdF8+lnywIFKHivJ6mH4y+PqvvW0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dfzDXk2If9DqyP2OSdNXqmdslfPiWI68Fa/0paak/Pd/UU6AtVAbCxCEPwNZOspu7
-	 c/IYzE34xVvNlvNrdDvWJiiXdtwTqpUxGA6lVULH+E1msGZaRrkYpx6w4dm49rlBvn
-	 NkVrEObqKCLVXmZQ15CVQPkEL0TfOx+0obStFHo9lKs1XjZ8uwAJ92zi7t92Bb37Og
-	 ex+o4XkTQY3whNZBcL5nyZJQgme6/OuFwkj46xN1o9tZeK/+ZAZiPWK14wTXD1J1BQ
-	 jtWM3lstdSLRAXCEtklXSD0XEzz5MI9qxKSRJ8nRejXnzSTOwbhwyj0R94Tv05JavU
-	 /iptvHDfISeSg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Rob Herring <robh@kernel.org>,
+	s=k20201202; t=1715125740;
+	bh=noVNgvWjzAT0Hiwx4C0UMc3fu1gXKLlhnK+/oON4fBg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PPH4ucDhv4ZX/JyqUyq9R/QxhYRa1e5eDijcrK4DpNHrMSpsqfnLlWPAU/QSZS1VG
+	 Cz551IMTUFtu8kQhE54Xkp3RRWwhUJRwZyEVlJ0s9+Hj6b+wvP5tTSEYZScaXQasAo
+	 /fRsOXMjjvbriUxX0qYT/a9G5ub6USYADmMSwOwxD1K/oQSGfJF+LX1byrKjUY/xUS
+	 gukVTkqNEIMK18Twypr8FXDLFDsy34uRX2Otw1UbUJrVu/fR/SRPoRCNnZAMHFLa+1
+	 ECDODpcuLdFVud7/Y9fasVd5n70zGfWAH550ZATQeR8ReAHe6T0LeNWmiMC4Z4bkMF
+	 u1pV70A2xmLjg==
+Date: Wed, 8 May 2024 01:48:53 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Sasha Levin <sashal@kernel.org>,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	sebastian.reichel@collabora.com,
-	cristian.ciocaltea@collabora.com,
-	andy.yan@rock-chips.com,
-	s.hauer@pengutronix.de,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 2/5] dt-bindings: rockchip: grf: Add missing type to 'pcie-phy' node
-Date: Tue,  7 May 2024 19:01:06 -0400
-Message-ID: <20240507230115.391725-2-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240507230115.391725-1-sashal@kernel.org>
-References: <20240507230115.391725-1-sashal@kernel.org>
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>, Damien Le Moal <dlemoal@kernel.org>,
+	Jon Lin <jon.lin@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 00/14] PCI: dw-rockchip: Add endpoint mode support
+Message-ID: <Zjq95dc1odHpNRn7@ryzen.lan>
+References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
+ <20240504170537.GC4315@thinkpad>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.158
+Content-Disposition: inline
+In-Reply-To: <20240504170537.GC4315@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_160122_281944_DFBF6FD7 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240507_164904_300998_7680EFDF 
+X-CRM114-Status: GOOD (  25.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +84,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Rob Herring <robh@kernel.org>
+Hello Mani,
 
-[ Upstream commit d41201c90f825f19a46afbfb502f22f612d8ccc4 ]
+On Sat, May 04, 2024 at 10:35:37PM +0530, Manivannan Sadhasivam wrote:
+> On Tue, Apr 30, 2024 at 02:00:57PM +0200, Niklas Cassel wrote:
+> > Hello all,
+> > 
+> > This series adds PCIe endpoint mode support for the rockchip rk3588 and
+> > rk3568 SoCs.
+> > 
+> > This series is based on: pci/next
+> > (git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git)
+> > 
+> > This series has the following dependencies:
+> > 1) https://lore.kernel.org/linux-pci/20240430-pci-epf-rework-v4-0-22832d0d456f@linaro.org/
+> > The series in 1) has not been merged to pci/next yet.
+> > 
+> > 2) https://lore.kernel.org/linux-phy/20240412125818.17052-1-cassel@kernel.org/
+> > The series in 2) has already been merged to phy/next.
+> > 
+> > Even though this series (the series in $subject) has a runtime dependency
+> > on the changes that are currently queued in the PHY tree, there is no need
+> > to coordinate between the PCI tree and the PHY tree (i.e. this series can
+> > be merged via the PCI tree even for the coming merge window (v6.10-rc1)).
+> > 
+> > This is because there is no compile time dependency between the changes in
+> > the PHY tree and this series. Likewise, the device tree overlays in this
+> > series passes "make CHECK_DTBS=y" even without the changes in the PHY tree.
+> > 
+> > This series (including dependencies) can also be found in git:
+> > https://github.com/floatious/linux/commits/rockchip-pcie-ep-v2
+> > 
+> > Testing done:
+> > This series has been tested with two rock5b:s, one running in RC mode and
+> > one running in EP mode. This series has also been tested with an Intel x86
+> > host and rock5b running in EP mode.
+> > 
+> > BAR4 exposes the ATU Port Logic Structure and the DMA Port Logic Structure
+> 
+> Is this for configuring the EP from host? Just curious.
 
-'pcie-phy' is missing any type. Add 'type: object' to indicate it's a
-node.
+That is what I assume as well.
+(As I cannot come up with any other reason why they have done this.)
 
-Signed-off-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Link: https://lore.kernel.org/r/20240401204959.1698106-1-robh@kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index dfebf425ca49c..8fe31a7083db8 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -141,6 +141,7 @@ allOf:
-           unevaluatedProperties: false
- 
-         pcie-phy:
-+          type: object
-           description:
-             Documentation/devicetree/bindings/phy/rockchip-pcie-phy.txt
- 
--- 
-2.43.0
+> > pci_epf_test pci_epf_test.0: READ => Size: 1024 B, DMA: YES, Time: 0.000177625 s, Rate: 5764 KB/s
+> > pci_epf_test pci_epf_test.0: READ => Size: 1025 B, DMA: YES, Time: 0.000171208 s, Rate: 5986 KB/s
+> > pci_epf_test pci_epf_test.0: READ => Size: 1024000 B, DMA: YES, Time: 0.000701167 s, Rate: 1460422 KB/s
+> > pci_epf_test pci_epf_test.0: READ => Size: 1024001 B, DMA: YES, Time: 0.000702625 s, Rate: 1457393 KB/s
+> > 
+> 
+> Thanks a lot for sharing the pcitest results in the cover letter.
 
+Thank you for the review!
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
