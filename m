@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5820C10F1A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36CBEC19F4F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 May 2024 23:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s3sjapn+AuGtJc8qh5eaKf9QN1eKBAPh9ccML8rc1rE=; b=GqPWhFkXD0m2Fm
-	gfNVJjMdYhZaEb/WN2D6E0JmnU2TKIoRyS5NXZ9p/hDS05NAEGLD1qmZGjpF7U2FI1ocN2WcrOh6F
-	9zgcmzSZUhFjMHTmcODNB/uFCdWYD75HeHOokXOn93hnyDeHztGM5X5XCHo6OwD4zgUPsofj4EG8r
-	c9zRPg8ZXxwFbfNSjWIIWnF0vphBAc0Cdt2DPc1bsIu80N05Bn4qRvzbq5jmIvH6hoGpZPf/SM7F3
-	WQ5AwZG+xrFehsa8wVHZKOcmQzhqKAVxqZjctcbLwUQm7bNiTsMlS9/Rdlc/4ZvxTdAymMOW63FS1
-	ktPVZmU0CtQ2KEo0n5WQ==;
+	List-Owner; bh=+pF4BVnEzyUb9trSc8+XOHnAWBXFnE/qfaYLIKmlh7A=; b=Gq/ZDXRQ24I8x+
+	+FYMZXeig6Kl1E6AUapfX1kXE/3xqltIoPYs5AHzl0MWQCIxgM6xWFAS7CgWuiyeJX3ruaGq/6qEH
+	NdjC4DXLYUibWCkX3h53RSuQ1Nq+iqwcI7//krsYbcxYFEOYYBjtHv8ZmmWkRXQdEENaSfqwtRE6A
+	k/Xo9EN9nwYfj1VQrhyF7iObUZJqwxwUB8f9QD7eeagc/04ZOwlInlY56pl8efBbS249quzC8tI7i
+	C4xZ7AuA3PTYqpjAxImQJZTcNYEyWqqtSFQ5IwaVi14f0e2LXmX0Fzo6v9PX1ZAe/a+y+NEIgsQBt
+	vahn/6qdt1WWlZzEsn6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4UaY-0000000DP3Z-2Gv6;
-	Tue, 07 May 2024 23:51:14 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1s4Ubi-0000000DPOW-1cim;
+	Tue, 07 May 2024 23:52:26 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1s4UaW-0000000DP2E-01Sa
+	id 1s4Ubf-0000000DPN1-2ONE
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 May 2024 23:51:13 +0000
+	Tue, 07 May 2024 23:52:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id BD684CE0286;
-	Tue,  7 May 2024 23:51:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44E07C2BBFC;
-	Tue,  7 May 2024 23:51:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 22FB16194B;
+	Tue,  7 May 2024 23:52:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F2D4C2BBFC;
+	Tue,  7 May 2024 23:52:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1715125869;
-	bh=nBkak3DvBc1FaTh/QK5dcoo1obeQ+aUlzl90N+QxZ3U=;
+	s=k20201202; t=1715125940;
+	bh=flVj7RZb0AT5hfErHsd362JN98Gup7/B3ZzRrEJKWBk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qYzlUkuPTXD/MSt+31ZNZCHjvIWMkvXz4qF5M5kBUYJriZ9Q76IbXYcZqGUTvSCyF
-	 Ve6WQOleRQ+1gdzwXUe6KOEEqqUtDS+2sCURg8l4Ei0VsKBK6gLX8Py9DqoD3DTl2L
-	 K6CaHhRVUVkLxhKHoSfpL6gnkHOLpLrF8rUJQmRtViCFANPF9qp2vjopFw3fOcdqjf
-	 7sC4N4lwbXy04W5b2XbbacsqXw8+SkL7k7XrDHfcQPm33dLbCX/UlHkm4TyoUPhVs8
-	 KeTXo95TliZij7wGhTHEdfnzlLCkpi+WfV4qxcorM+Ccmi+I2CsxDqhPzrnYTA3VHh
-	 Ud7IteUsYMujw==
-Date: Wed, 8 May 2024 01:51:02 +0200
+	b=KCt7rlYPdGVR3gfL7yhbSKdrP3rjNiKyJ+kXXvhPVuBYLnyHn/QJRlcsl5CNddrb2
+	 R/BoFsyGgpmZKiyuSKwTE1Kg4/k3jf7OHX+kHUMqKWR/CYl7dAcpBCCKUZpFvsiy39
+	 IsD7Hblx8upmbmil4PsAibENqtxrAGBVbQYd1PxOvW+5MA9wDVfefIkx/VEJrESDB9
+	 TXGgAiDNb78rVZQOod00NkCSElkjh2chYpjRIeheO78skN0KWNVn9JaySZ2qYlKjzp
+	 BuZrJZGbamCSgwoKajDx6tL5c+qivWVglBzJuexqeFQzBT4RRX0J3c8gdCHblIII/y
+	 ksCBwYGdiQBVA==
+Date: Wed, 8 May 2024 01:52:14 +0200
 From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>,
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
 	Kishon Vijay Abraham I <kishon@kernel.org>,
 	Arnd Bergmann <arnd@arndb.de>, Damien Le Moal <dlemoal@kernel.org>,
 	Jon Lin <jon.lin@rock-chips.com>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
 	Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 13/14] arm64: dts: rockchip: Add PCIe endpoint mode
- support
-Message-ID: <Zjq-Zto5KlOvm8Sj@ryzen.lan>
+Subject: Re: [PATCH v2 14/14] arm64: dts: rockchip: Add rock5b overlays for
+ PCIe endpoint mode
+Message-ID: <Zjq-rqVdL0r-Wque@ryzen.lan>
 References: <20240430-rockchip-pcie-ep-v1-v2-0-a0f5ee2a77b6@kernel.org>
- <20240430-rockchip-pcie-ep-v1-v2-13-a0f5ee2a77b6@kernel.org>
- <20240504173420.GJ4315@thinkpad>
+ <20240430-rockchip-pcie-ep-v1-v2-14-a0f5ee2a77b6@kernel.org>
+ <20240504173730.GK4315@thinkpad>
+ <2986540.X9hSmTKtgW@diego>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240504173420.GJ4315@thinkpad>
+In-Reply-To: <2986540.X9hSmTKtgW@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240507_165112_428715_7B071CC7 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20240507_165223_846492_553912A0 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,90 +83,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mani,
-
-On Sat, May 04, 2024 at 11:04:20PM +0530, Manivannan Sadhasivam wrote:
-> On Tue, Apr 30, 2024 at 02:01:10PM +0200, Niklas Cassel wrote:
-> > Add a device tree node representing PCIe endpoint mode.
-> > 
-> > The controller can either be configured to run in Root Complex or Endpoint
-> > node.
-> > 
-> > If a user wants to run the controller in endpoint mode, the user has to
-> > disable the pcie3x4 node and enable the pcie3x4_ep node.
-> > 
-> > Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3588.dtsi | 35 ++++++++++++++++++++++++++++++++
-> >  1 file changed, 35 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588.dtsi b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > index 5519c1430cb7..09a06e8c43b7 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3588.dtsi
-> > @@ -136,6 +136,41 @@ pcie3x4_intc: legacy-interrupt-controller {
-> >  		};
-> >  	};
-> >  
-> > +	pcie3x4_ep: pcie-ep@fe150000 {
-> > +		compatible = "rockchip,rk3588-pcie-ep";
-> > +		clocks = <&cru ACLK_PCIE_4L_MSTR>, <&cru ACLK_PCIE_4L_SLV>,
-> > +			 <&cru ACLK_PCIE_4L_DBI>, <&cru PCLK_PCIE_4L>,
-> > +			 <&cru CLK_PCIE_AUX0>, <&cru CLK_PCIE4L_PIPE>;
-> > +		clock-names = "aclk_mst", "aclk_slv",
-> > +			      "aclk_dbi", "pclk",
-> > +			      "aux", "pipe";
-> > +		interrupts = <GIC_SPI 263 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 262 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 261 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 260 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 259 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 271 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>,
-> > +			     <GIC_SPI 270 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
-> > +				  "dma0", "dma1", "dma2", "dma3";
-> > +		max-link-speed = <3>;
-> > +		num-lanes = <4>;
-> > +		phys = <&pcie30phy>;
-> > +		phy-names = "pcie-phy";
-> > +		power-domains = <&power RK3588_PD_PCIE>;
-> > +		reg = <0xa 0x40000000 0x0 0x00100000>,
-> > +		      <0xa 0x40100000 0x0 0x00100000>,
-> > +		      <0x0 0xfe150000 0x0 0x00010000>,
-> > +		      <0x9 0x00000000 0x0 0x40000000>,
-> > +		      <0xa 0x40300000 0x0 0x00100000>;
-> > +		reg-names = "dbi", "dbi2", "apb", "addr_space", "atu";
-> 
-> Isn't it common to define 'reg' property just below 'compatible'?
-
-Looking at the result from:
-
-$ git grep -A 4 "compatible = \"" Documentation/devicetree/bindings/pci/
-
-Common, yes, but far from all examples in
-Documentation/devicetree/bindings/pci/ do it that way.
-
-The example in the yaml for this binding passes "make dt_binding_check".
-If the device tree maintainers had a strong opinion on this, I would have
-expected "make dt_binding_check" to emit a warning or error for this.
-
-Additionally, the "pcie3x4" (RC-node) in rk3588.dtsi already use this same
-ordering. I do think there is some value in keeping the ordering in "pcie3x4"
-and "pcie3x4_ep" the same, so I will keep the ordering unless the device tree
-maintainers start screaming at me :)
-
-
-Kind regards,
-Niklas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCBNYXkgMDUsIDIwMjQgYXQgMDI6MTQ6NDVQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIg
+d3JvdGU6Cj4gQW0gU2Ftc3RhZywgNC4gTWFpIDIwMjQsIDE5OjM3OjMwIENFU1Qgc2NocmllYiBN
+YW5pdmFubmFuIFNhZGhhc2l2YW06Cj4gPiBPbiBUdWUsIEFwciAzMCwgMjAyNCBhdCAwMjowMTox
+MVBNICswMjAwLCBOaWtsYXMgQ2Fzc2VsIHdyb3RlOgo+ID4gPiBBZGQgcm9jazViIG92ZXJsYXlz
+IGZvciBQQ0llIGVuZHBvaW50IG1vZGUgc3VwcG9ydC4KPiA+ID4gCj4gPiAKPiA+IEknbSBub3Qg
+YXdhcmUgb2YgbWFpbmxpbmUgdXNpbmcgb3ZlcmxheXMuIElzIHRoaXMgYSBuZXcgb25lPwo+IAo+
+IEkgZ3Vlc3MgeW91IGNvdWxkIHN0aWxsIGNhbGwgaXQgbmV3J2lzaCA7LSkKPiAKPiBCdXQgdGhl
+IG1haW5saW5lIGtlcm5lbCBkb2VzIGNhcnJ5IGEgbnVtYmVyIG9mIG92ZXJsYXlzIGFscmVhZHkg
+WzBdIC4KPiBUaGlzIGRvZXMgb2YgY291cnNlIG5vdCBoYW5kbGUgdGhlIGFjdHVhbCBhcHBsaWNh
+dGlvbiBvZiBvdmVybGF5cywKPiB3aGljaCBJIGd1ZXNzIGJvb3Rsb2FkZXJzIGRvIG9ubHkgYXQg
+dGhpcyBwb2ludC4KClllcywgQUZBSUNULCB0aGUgYWN0dWFsIGFwcGxpY2F0aW9uIGlzIGhhbmRs
+ZWQgYnkgYm9vdGxvYWRlcnMuCihXZWxsLCB0aGVyZSBpcyBhICJPdmVybGF5IGluLWtlcm5lbCBB
+UEkiLCBidXQgbm90IGEgdXNlciBBUEkuKQoKCj4gPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9NYWtlZmlsZQo+ID4gPiBpbmRleCBmOTA2YTg2OGI3MWEuLmQ4Mjc0MzJkNTExMSAxMDA2NDQK
+PiA+ID4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+ID4gPiAr
+KysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gPiA+IEBAIC0xMTcs
+NiArMTE3LDggQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1uYW5vcGMt
+dDYuZHRiCj4gPiA+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LW9yYW5n
+ZXBpLTUtcGx1cy5kdGIKPiA+ID4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1
+ODgtcXVhcnR6cHJvNjQuZHRiCj4gPiA+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0g
+cmszNTg4LXJvY2stNWIuZHRiCj4gPiA+ICtkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0g
+cmszNTg4LXJvY2stNWItcGNpZS1lcC5kdGJvCj4gPiA+ICtkdGItJChDT05GSUdfQVJDSF9ST0NL
+Q0hJUCkgKz0gcmszNTg4LXJvY2stNWItcGNpZS1zcm5zLmR0Ym8KPiA+ID4gIGR0Yi0kKENPTkZJ
+R19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtdGlnZXItaGFpa291LmR0Ygo+ID4gPiAgZHRiLSQo
+Q09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC10b3licmljay14MC5kdGIKPiA+ID4gIGR0
+Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtdHVyaW5nLXJrMS5kdGIKPiA+ID4g
+QEAgLTEyNywzICsxMjksNiBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4
+cy1uYW5vcGktcjZzLmR0Ygo+ID4gPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJr
+MzU4OHMtbmFub3BpLXI2Yy5kdGIKPiA+ID4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSAr
+PSByazM1ODhzLXJvY2stNWEuZHRiCj4gPiA+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkg
+Kz0gcmszNTg4cy1vcmFuZ2VwaS01LmR0Ygo+ID4gPiArCj4gPiA+ICsjIEVuYWJsZSBzdXBwb3J0
+IGZvciBkZXZpY2UtdHJlZSBvdmVybGF5cwo+ID4gPiArRFRDX0ZMQUdTX3JrMzU4OC1yb2NrLTVi
+ICs9IC1ACgpOb3RlIHRoYXQgdGhpcyBEVEMgY29tcGlsZXIgZmxhZyBpcyBuZWVkZWQgZm9yIHRo
+ZSBvdmVybGF5IGZvciB0aGUKYm9vdGxvYWRlciB0byBiZSBhYmxlIHRvIGFwcGx5IHRoZSBvdmVy
+bGF5IHN1Y2Nlc3NmdWxseS4KCihJbiBvcmRlciB0byBzdXBwbHkgdGhlIC5kdGJvIGNvbXBpbGVk
+IGJ5IHRoZSBrZXJuZWwgZGlyZWN0bHkgdG8gdS1ib290LikKCkknbSBub3Qgc3VyZSBob3cgdGhl
+IG90aGVyIHJvY2tjaGlwIG92ZXJsYXlzIGNvbXBpbGVkIGJ5IHRoZSBrZXJuZWwgY2FuCndvcmsg
+d2hlbiBzdXBwbGluZyB0aGVtIHRvIHUtYm9vdC4KCkknbSBndWVzc2luZyB0aGF0IHRoZXkgY29t
+cGlsZSB0aGVtIGV4dGVybmFsbHkvbWFudWFsbHkgb3V0c2lkZSB0aGUgc291cmNlCnRyZWUgd2l0
+aCB0aGUgLUAgZmxhZyBlbmFibGVkLgoKCklmIHdlIGxvb2sgYXQgb3RoZXIgYXJtNjQgZGV2aWNl
+IHRyZWUgb3ZlcmxheXMgaW4gdGhlIGtlcm5lbCwgZS5nLiBUSSwKdGhleSBzZWVtIHRvIHN1cHBs
+eSAtQCBmb3IgYWxsIHRoZWlyIC5kdHNvIGZpbGVzOgoKJCBnaXQgZ3JlcCAtLSAiLUAiIGFyY2gv
+YXJtNjQvCgoKS2luZCByZWdhcmRzLApOaWtsYXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
